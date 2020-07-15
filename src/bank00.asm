@@ -6479,22 +6479,22 @@ code_000_27ce:
     call code_000_04aa                                 ;; 00:27ce $cd $aa $04
     push AF                                            ;; 00:27d1 $f5
     ld   A, $00                                        ;; 00:27d2 $3e $00
-    jp   code_000_1f35                                 ;; 00:27d4 $c3 $35 $1f
+    jp   callFunctionInBank03                          ;; 00:27d4 $c3 $35 $1f
 
 code_000_27d7:
     push AF                                            ;; 00:27d7 $f5
     ld   A, $01                                        ;; 00:27d8 $3e $01
-    jp   code_000_1f35                                 ;; 00:27da $c3 $35 $1f
+    jp   callFunctionInBank03                          ;; 00:27da $c3 $35 $1f
 
 code_000_27dd:
     push AF                                            ;; 00:27dd $f5
     ld   A, $02                                        ;; 00:27de $3e $02
-    jp   code_000_1f35                                 ;; 00:27e0 $c3 $35 $1f
+    jp   callFunctionInBank03                          ;; 00:27e0 $c3 $35 $1f
 
 code_000_27e3:
     push AF                                            ;; 00:27e3 $f5
     ld   A, $03                                        ;; 00:27e4 $3e $03
-    jp   code_000_1f35                                 ;; 00:27e6 $c3 $35 $1f
+    jp   callFunctionInBank03                          ;; 00:27e6 $c3 $35 $1f
 
 code_000_27e9:
     ld   HL, wC4E0                                     ;; 00:27e9 $21 $e0 $c4
@@ -6528,7 +6528,7 @@ code_000_2819:
     ld   A, [HL+]                                      ;; 00:2819 $2a
     push AF                                            ;; 00:281a $f5
     ld   A, $05                                        ;; 00:281b $3e $05
-    jp   code_000_1f35                                 ;; 00:281d $c3 $35 $1f
+    jp   callFunctionInBank03                          ;; 00:281d $c3 $35 $1f
 
 code_000_2820:
     ld   A, [wD499]                                    ;; 00:2820 $fa $99 $d4
@@ -6550,22 +6550,22 @@ code_000_2840:
     ld   A, [HL+]                                      ;; 00:2840 $2a
     push AF                                            ;; 00:2841 $f5
     ld   A, $04                                        ;; 00:2842 $3e $04
-    jp   code_000_1f35                                 ;; 00:2844 $c3 $35 $1f
+    jp   callFunctionInBank03                          ;; 00:2844 $c3 $35 $1f
 
 code_000_2847:
     push AF                                            ;; 00:2847 $f5
     ld   A, $06                                        ;; 00:2848 $3e $06
-    jp   code_000_1f35                                 ;; 00:284a $c3 $35 $1f
+    jp   callFunctionInBank03                          ;; 00:284a $c3 $35 $1f
 
 code_000_284d:
     push AF                                            ;; 00:284d $f5
     ld   A, $08                                        ;; 00:284e $3e $08
-    jp   code_000_1f35                                 ;; 00:2850 $c3 $35 $1f
+    jp   callFunctionInBank03                          ;; 00:2850 $c3 $35 $1f
 
 code_000_2853:
     push AF                                            ;; 00:2853 $f5
     ld   A, $09                                        ;; 00:2854 $3e $09
-    jp   code_000_1f35                                 ;; 00:2856 $c3 $35 $1f
+    jp   callFunctionInBank03                          ;; 00:2856 $c3 $35 $1f
 
 code_000_2859:
     push BC                                            ;; 00:2859 $c5
@@ -6603,22 +6603,22 @@ code_000_2879:
 code_000_2883:
     push AF                                            ;; 00:2883 $f5
     ld   A, $0a                                        ;; 00:2884 $3e $0a
-    jp   code_000_1f35                                 ;; 00:2886 $c3 $35 $1f
+    jp   callFunctionInBank03                          ;; 00:2886 $c3 $35 $1f
 
 code_000_2889:
     push AF                                            ;; 00:2889 $f5
     ld   A, $0b                                        ;; 00:288a $3e $0b
-    jp   code_000_1f35                                 ;; 00:288c $c3 $35 $1f
+    jp   callFunctionInBank03                          ;; 00:288c $c3 $35 $1f
 
 code_000_288f:
     push AF                                            ;; 00:288f $f5
     ld   A, $0c                                        ;; 00:2890 $3e $0c
-    jp   code_000_1f35                                 ;; 00:2892 $c3 $35 $1f
+    jp   callFunctionInBank03                          ;; 00:2892 $c3 $35 $1f
 
 code_000_2895:
     push AF                                            ;; 00:2895 $f5
     ld   A, $0f                                        ;; 00:2896 $3e $0f
-    jp   code_000_1f35                                 ;; 00:2898 $c3 $35 $1f
+    jp   callFunctionInBank03                          ;; 00:2898 $c3 $35 $1f
 
 code_000_289b:
     ld   HL, wC5A0                                     ;; 00:289b $21 $a0 $c5
@@ -6636,17 +6636,17 @@ code_000_289b:
 code_000_28aa:
     push AF                                            ;; 00:28aa $f5
     ld   A, $0d                                        ;; 00:28ab $3e $0d
-    jp   code_000_1f35                                 ;; 00:28ad $c3 $35 $1f
+    jp   callFunctionInBank03                          ;; 00:28ad $c3 $35 $1f
 
 code_000_28b0:
     push AF                                            ;; 00:28b0 $f5
     ld   A, $0e                                        ;; 00:28b1 $3e $0e
-    jp   code_000_1f35                                 ;; 00:28b3 $c3 $35 $1f
+    jp   callFunctionInBank03                          ;; 00:28b3 $c3 $35 $1f
 
 code_000_28b6:
     push AF                                            ;; 00:28b6 $f5
     ld   A, $07                                        ;; 00:28b7 $3e $07
-    jp   code_000_1f35                                 ;; 00:28b9 $c3 $35 $1f
+    jp   callFunctionInBank03                          ;; 00:28b9 $c3 $35 $1f
 
 code_000_28bc:
     ld   HL, $0003                                     ;; 00:28bc $21 $03 $00
@@ -6717,7 +6717,7 @@ code_000_290d:
     ret  NZ                                            ;; 00:2913 $c0
     push AF                                            ;; 00:2914 $f5
     ld   A, $15                                        ;; 00:2915 $3e $15
-    jp   code_000_1f35                                 ;; 00:2917 $c3 $35 $1f
+    jp   callFunctionInBank03                          ;; 00:2917 $c3 $35 $1f
 
 code_000_291a:
     ld   A, [wC0A1]                                    ;; 00:291a $fa $a1 $c0
@@ -6725,27 +6725,27 @@ code_000_291a:
     ret  NZ                                            ;; 00:291f $c0
     push AF                                            ;; 00:2920 $f5
     ld   A, $13                                        ;; 00:2921 $3e $13
-    jp   code_000_1f35                                 ;; 00:2923 $c3 $35 $1f
+    jp   callFunctionInBank03                          ;; 00:2923 $c3 $35 $1f
 
 code_000_2926:
     push AF                                            ;; 00:2926 $f5
     ld   A, $14                                        ;; 00:2927 $3e $14
-    jp   code_000_1f35                                 ;; 00:2929 $c3 $35 $1f
+    jp   callFunctionInBank03                          ;; 00:2929 $c3 $35 $1f
 
 code_000_292c:
     push AF                                            ;; 00:292c $f5
     ld   A, $10                                        ;; 00:292d $3e $10
-    jp   code_000_1f35                                 ;; 00:292f $c3 $35 $1f
+    jp   callFunctionInBank03                          ;; 00:292f $c3 $35 $1f
 
 code_000_2932:
     push AF                                            ;; 00:2932 $f5
     ld   A, $11                                        ;; 00:2933 $3e $11
-    jp   code_000_1f35                                 ;; 00:2935 $c3 $35 $1f
+    jp   callFunctionInBank03                          ;; 00:2935 $c3 $35 $1f
 
 code_000_2938:
     push AF                                            ;; 00:2938 $f5
     ld   A, $12                                        ;; 00:2939 $3e $12
-    jp   code_000_1f35                                 ;; 00:293b $c3 $35 $1f
+    jp   callFunctionInBank03                          ;; 00:293b $c3 $35 $1f
 
 code_000_293e:
     push HL                                            ;; 00:293e $e5
