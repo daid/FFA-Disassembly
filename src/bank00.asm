@@ -3945,7 +3945,7 @@ code_000_1700:
     ret  Z                                             ;; 00:1766 $c8
     ld   L, A                                          ;; 00:1767 $6f
     ld   H, $00                                        ;; 00:1768 $26 $00
-    ld   A, [wD7BA]                                    ;; 00:176a $fa $ba $d7
+    ld   A, [wLevel]                                   ;; 00:176a $fa $ba $d7
     call MultiplyHL_by_A                               ;; 00:176d $cd $7b $2b
     call code_000_3e25                                 ;; 00:1770 $cd $25 $3e
     ld   A, $0d                                        ;; 00:1773 $3e $0d
@@ -4809,7 +4809,7 @@ code_000_1d1b:
     ret  NZ                                            ;; 00:1d25 $c0
     push HL                                            ;; 00:1d26 $e5
     ld   HL, wD880                                     ;; 00:1d27 $21 $80 $d8
-    ld   A, [wD7C4]                                    ;; 00:1d2a $fa $c4 $d7
+    ld   A, [wStatWill]                                ;; 00:1d2a $fa $c4 $d7
     add  A, [HL]                                       ;; 00:1d2d $86
     ld   [HL], A                                       ;; 00:1d2e $77
     cp   A, $96                                        ;; 00:1d2f $fe $96
@@ -4827,7 +4827,7 @@ code_000_1d1b:
 
 code_000_1d44:
     ld   HL, wD7D8                                     ;; 00:1d44 $21 $d8 $d7
-    ld   DE, wD7C1                                     ;; 00:1d47 $11 $c1 $d7
+    ld   DE, wStatStamina                              ;; 00:1d47 $11 $c1 $d7
     ld   B, $04                                        ;; 00:1d4a $06 $04
 .code_1d4c:
     ld   A, [HL+]                                      ;; 00:1d4c $2a
@@ -9352,14 +9352,14 @@ code_000_392f:
     ret                                                ;; 00:3946 $c9
 
 code_000_3947:
-    ld   A, [wD7B5]                                    ;; 00:3947 $fa $b5 $d7
+    ld   A, [wMaxHPHigh]                               ;; 00:3947 $fa $b5 $d7
     ld   D, A                                          ;; 00:394a $57
-    ld   A, [wD7B4]                                    ;; 00:394b $fa $b4 $d7
+    ld   A, [wMaxHPLow]                                ;; 00:394b $fa $b4 $d7
     ld   E, A                                          ;; 00:394e $5f
     ld   A, D                                          ;; 00:394f $7a
-    ld   [wD7B3], A                                    ;; 00:3950 $ea $b3 $d7
+    ld   [wHPHigh], A                                  ;; 00:3950 $ea $b3 $d7
     ld   A, E                                          ;; 00:3953 $7b
-    ld   [wD7B2], A                                    ;; 00:3954 $ea $b2 $d7
+    ld   [wHPLow], A                                   ;; 00:3954 $ea $b2 $d7
     push HL                                            ;; 00:3957 $e5
     call code_000_310b                                 ;; 00:3958 $cd $0b $31
     pop  HL                                            ;; 00:395b $e1
@@ -9367,14 +9367,14 @@ code_000_3947:
     ret                                                ;; 00:395f $c9
 
 code_000_3960:
-    ld   A, [wD7B9]                                    ;; 00:3960 $fa $b9 $d7
+    ld   A, [wMaxManaHigh]                             ;; 00:3960 $fa $b9 $d7
     ld   D, A                                          ;; 00:3963 $57
-    ld   A, [wD7B8]                                    ;; 00:3964 $fa $b8 $d7
+    ld   A, [wMaxManaLow]                              ;; 00:3964 $fa $b8 $d7
     ld   E, A                                          ;; 00:3967 $5f
     ld   A, D                                          ;; 00:3968 $7a
-    ld   [wD7B7], A                                    ;; 00:3969 $ea $b7 $d7
+    ld   [wManaHigh], A                                ;; 00:3969 $ea $b7 $d7
     ld   A, E                                          ;; 00:396c $7b
-    ld   [wD7B6], A                                    ;; 00:396d $ea $b6 $d7
+    ld   [wManaLow], A                                 ;; 00:396d $ea $b6 $d7
     push HL                                            ;; 00:3970 $e5
     call code_000_3111                                 ;; 00:3971 $cd $11 $31
     pop  HL                                            ;; 00:3974 $e1
@@ -9482,9 +9482,9 @@ code_000_3a14:
     ld   D, [HL]                                       ;; 00:3a16 $56
     inc  HL                                            ;; 00:3a17 $23
     push HL                                            ;; 00:3a18 $e5
-    ld   A, [wD7BC]                                    ;; 00:3a19 $fa $bc $d7
+    ld   A, [wXPHigh]                                  ;; 00:3a19 $fa $bc $d7
     ld   H, A                                          ;; 00:3a1c $67
-    ld   A, [wD7BB]                                    ;; 00:3a1d $fa $bb $d7
+    ld   A, [wXPLow]                                   ;; 00:3a1d $fa $bb $d7
     ld   L, A                                          ;; 00:3a20 $6f
     ld   A, [wD7BD]                                    ;; 00:3a21 $fa $bd $d7
     ld   C, A                                          ;; 00:3a24 $4f
@@ -9502,9 +9502,9 @@ code_000_3a14:
     ld   C, $00                                        ;; 00:3a34 $0e $00
 .code_3a36:
     ld   A, H                                          ;; 00:3a36 $7c
-    ld   [wD7BC], A                                    ;; 00:3a37 $ea $bc $d7
+    ld   [wXPHigh], A                                  ;; 00:3a37 $ea $bc $d7
     ld   A, L                                          ;; 00:3a3a $7d
-    ld   [wD7BB], A                                    ;; 00:3a3b $ea $bb $d7
+    ld   [wXPLow], A                                   ;; 00:3a3b $ea $bb $d7
     ld   A, C                                          ;; 00:3a3e $79
     ld   [wD7BD], A                                    ;; 00:3a3f $ea $bd $d7
     pop  HL                                            ;; 00:3a42 $e1
@@ -9517,18 +9517,18 @@ code_000_3a47:
     ld   D, [HL]                                       ;; 00:3a49 $56
     inc  HL                                            ;; 00:3a4a $23
     push HL                                            ;; 00:3a4b $e5
-    ld   A, [wD7BF]                                    ;; 00:3a4c $fa $bf $d7
+    ld   A, [wMoneyHigh]                               ;; 00:3a4c $fa $bf $d7
     ld   H, A                                          ;; 00:3a4f $67
-    ld   A, [wD7BE]                                    ;; 00:3a50 $fa $be $d7
+    ld   A, [wMoneyLow]                                ;; 00:3a50 $fa $be $d7
     ld   L, A                                          ;; 00:3a53 $6f
     add  HL, DE                                        ;; 00:3a54 $19
     jr   NC, .code_3a5a                                ;; 00:3a55 $30 $03
     ld   HL, rIE                                       ;; 00:3a57 $21 $ff $ff
 .code_3a5a:
     ld   A, H                                          ;; 00:3a5a $7c
-    ld   [wD7BF], A                                    ;; 00:3a5b $ea $bf $d7
+    ld   [wMoneyHigh], A                               ;; 00:3a5b $ea $bf $d7
     ld   A, L                                          ;; 00:3a5e $7d
-    ld   [wD7BE], A                                    ;; 00:3a5f $ea $be $d7
+    ld   [wMoneyLow], A                                ;; 00:3a5f $ea $be $d7
     call code_000_3117                                 ;; 00:3a62 $cd $17 $31
     pop  HL                                            ;; 00:3a65 $e1
     call code_000_3727                                 ;; 00:3a66 $cd $27 $37
@@ -9540,9 +9540,9 @@ code_000_3a6a:
     ld   D, [HL]                                       ;; 00:3a6c $56
     inc  HL                                            ;; 00:3a6d $23
     push HL                                            ;; 00:3a6e $e5
-    ld   A, [wD7BF]                                    ;; 00:3a6f $fa $bf $d7
+    ld   A, [wMoneyHigh]                               ;; 00:3a6f $fa $bf $d7
     ld   H, A                                          ;; 00:3a72 $67
-    ld   A, [wD7BE]                                    ;; 00:3a73 $fa $be $d7
+    ld   A, [wMoneyLow]                                ;; 00:3a73 $fa $be $d7
     ld   L, A                                          ;; 00:3a76 $6f
     ld   A, L                                          ;; 00:3a77 $7d
     sub  A, E                                          ;; 00:3a78 $93
@@ -9556,9 +9556,9 @@ code_000_3a6a:
     jr   .code_3a93                                    ;; 00:3a84 $18 $0d
 .code_3a86:
     ld   A, H                                          ;; 00:3a86 $7c
-    ld   [wD7BF], A                                    ;; 00:3a87 $ea $bf $d7
+    ld   [wMoneyHigh], A                               ;; 00:3a87 $ea $bf $d7
     ld   A, L                                          ;; 00:3a8a $7d
-    ld   [wD7BE], A                                    ;; 00:3a8b $ea $be $d7
+    ld   [wMoneyLow], A                                ;; 00:3a8b $ea $be $d7
     ld   A, $06                                        ;; 00:3a8e $3e $06
     call code_000_3bee                                 ;; 00:3a90 $cd $ee $3b
 .code_3a93:
@@ -9997,9 +9997,9 @@ code_000_3d12:
 
 code_000_3d16:
     push DE                                            ;; 00:3d16 $d5
-    ld   A, [wD7BC]                                    ;; 00:3d17 $fa $bc $d7
+    ld   A, [wXPHigh]                                  ;; 00:3d17 $fa $bc $d7
     ld   D, A                                          ;; 00:3d1a $57
-    ld   A, [wD7BB]                                    ;; 00:3d1b $fa $bb $d7
+    ld   A, [wXPLow]                                   ;; 00:3d1b $fa $bb $d7
     ld   E, A                                          ;; 00:3d1e $5f
     ld   A, [wD7BD]                                    ;; 00:3d1f $fa $bd $d7
     add  HL, DE                                        ;; 00:3d22 $19
@@ -10020,9 +10020,9 @@ code_000_3d16:
     ld   C, $0f                                        ;; 00:3d3b $0e $0f
 .code_3d3d:
     ld   A, H                                          ;; 00:3d3d $7c
-    ld   [wD7BC], A                                    ;; 00:3d3e $ea $bc $d7
+    ld   [wXPHigh], A                                  ;; 00:3d3e $ea $bc $d7
     ld   A, L                                          ;; 00:3d41 $7d
-    ld   [wD7BB], A                                    ;; 00:3d42 $ea $bb $d7
+    ld   [wXPLow], A                                   ;; 00:3d42 $ea $bb $d7
     ld   A, C                                          ;; 00:3d45 $79
     ld   [wD7BD], A                                    ;; 00:3d46 $ea $bd $d7
     pop  DE                                            ;; 00:3d49 $d1
@@ -10032,9 +10032,9 @@ code_000_3d4b:
     ld   A, [wC0A0]                                    ;; 00:3d4b $fa $a0 $c0
     and  A, A                                          ;; 00:3d4e $a7
     ret  NZ                                            ;; 00:3d4f $c0
-    ld   A, [wD7BC]                                    ;; 00:3d50 $fa $bc $d7
+    ld   A, [wXPHigh]                                  ;; 00:3d50 $fa $bc $d7
     ld   H, A                                          ;; 00:3d53 $67
-    ld   A, [wD7BB]                                    ;; 00:3d54 $fa $bb $d7
+    ld   A, [wXPLow]                                   ;; 00:3d54 $fa $bb $d7
     ld   L, A                                          ;; 00:3d57 $6f
     ld   A, [wD7BD]                                    ;; 00:3d58 $fa $bd $d7
     ld   B, A                                          ;; 00:3d5b $47
@@ -10055,9 +10055,9 @@ code_000_3d4b:
 
 code_000_3d72:
     push DE                                            ;; 00:3d72 $d5
-    ld   A, [wD7BF]                                    ;; 00:3d73 $fa $bf $d7
+    ld   A, [wMoneyHigh]                               ;; 00:3d73 $fa $bf $d7
     ld   D, A                                          ;; 00:3d76 $57
-    ld   A, [wD7BE]                                    ;; 00:3d77 $fa $be $d7
+    ld   A, [wMoneyLow]                                ;; 00:3d77 $fa $be $d7
     ld   E, A                                          ;; 00:3d7a $5f
     add  HL, DE                                        ;; 00:3d7b $19
     pop  DE                                            ;; 00:3d7c $d1
@@ -10065,9 +10065,9 @@ code_000_3d72:
     ld   HL, rIE                                       ;; 00:3d7f $21 $ff $ff
 .code_3d82:
     ld   A, H                                          ;; 00:3d82 $7c
-    ld   [wD7BF], A                                    ;; 00:3d83 $ea $bf $d7
+    ld   [wMoneyHigh], A                               ;; 00:3d83 $ea $bf $d7
     ld   A, L                                          ;; 00:3d86 $7d
-    ld   [wD7BE], A                                    ;; 00:3d87 $ea $be $d7
+    ld   [wMoneyLow], A                                ;; 00:3d87 $ea $be $d7
     call code_000_3117                                 ;; 00:3d8a $cd $17 $31
     ret                                                ;; 00:3d8d $c9
     db   $d5, $fa, $bf, $d7, $57, $fa, $be, $d7        ;; 00:3d8e ????????
@@ -10082,7 +10082,7 @@ code_000_3daf:
     ret  Z                                             ;; 00:3db3 $c8
     push BC                                            ;; 00:3db4 $c5
     ld   B, A                                          ;; 00:3db5 $47
-    ld   A, [wD7C3]                                    ;; 00:3db6 $fa $c3 $d7
+    ld   A, [wStatWisdom]                              ;; 00:3db6 $fa $c3 $d7
     add  A, B                                          ;; 00:3db9 $80
     jr   NC, .code_3dbe                                ;; 00:3dba $30 $02
     ld   A, $ff                                        ;; 00:3dbc $3e $ff
@@ -10120,26 +10120,26 @@ code_000_3de9:
     ret                                                ;; 00:3dec $c9
 
 code_000_3ded:
-    ld   A, [wD7B3]                                    ;; 00:3ded $fa $b3 $d7
+    ld   A, [wHPHigh]                                  ;; 00:3ded $fa $b3 $d7
     ld   H, A                                          ;; 00:3df0 $67
-    ld   A, [wD7B2]                                    ;; 00:3df1 $fa $b2 $d7
+    ld   A, [wHPLow]                                   ;; 00:3df1 $fa $b2 $d7
     ld   L, A                                          ;; 00:3df4 $6f
     ret                                                ;; 00:3df5 $c9
 
 code_000_3df6:
     push DE                                            ;; 00:3df6 $d5
-    ld   A, [wD7B3]                                    ;; 00:3df7 $fa $b3 $d7
+    ld   A, [wHPHigh]                                  ;; 00:3df7 $fa $b3 $d7
     ld   D, A                                          ;; 00:3dfa $57
-    ld   A, [wD7B2]                                    ;; 00:3dfb $fa $b2 $d7
+    ld   A, [wHPLow]                                   ;; 00:3dfb $fa $b2 $d7
     ld   E, A                                          ;; 00:3dfe $5f
     add  HL, DE                                        ;; 00:3dff $19
     ld   A, H                                          ;; 00:3e00 $7c
-    ld   [wD7B3], A                                    ;; 00:3e01 $ea $b3 $d7
+    ld   [wHPHigh], A                                  ;; 00:3e01 $ea $b3 $d7
     ld   A, L                                          ;; 00:3e04 $7d
-    ld   [wD7B2], A                                    ;; 00:3e05 $ea $b2 $d7
-    ld   A, [wD7B5]                                    ;; 00:3e08 $fa $b5 $d7
+    ld   [wHPLow], A                                   ;; 00:3e05 $ea $b2 $d7
+    ld   A, [wMaxHPHigh]                               ;; 00:3e08 $fa $b5 $d7
     ld   D, A                                          ;; 00:3e0b $57
-    ld   A, [wD7B4]                                    ;; 00:3e0c $fa $b4 $d7
+    ld   A, [wMaxHPLow]                                ;; 00:3e0c $fa $b4 $d7
     ld   E, A                                          ;; 00:3e0f $5f
     ld   A, L                                          ;; 00:3e10 $7d
     sub  A, E                                          ;; 00:3e11 $93
@@ -10150,18 +10150,18 @@ code_000_3df6:
     pop  HL                                            ;; 00:3e17 $e1
 .code_3e18:
     ld   A, H                                          ;; 00:3e18 $7c
-    ld   [wD7B3], A                                    ;; 00:3e19 $ea $b3 $d7
+    ld   [wHPHigh], A                                  ;; 00:3e19 $ea $b3 $d7
     ld   A, L                                          ;; 00:3e1c $7d
-    ld   [wD7B2], A                                    ;; 00:3e1d $ea $b2 $d7
+    ld   [wHPLow], A                                   ;; 00:3e1d $ea $b2 $d7
     pop  DE                                            ;; 00:3e20 $d1
     call code_000_310b                                 ;; 00:3e21 $cd $0b $31
     ret                                                ;; 00:3e24 $c9
 
 code_000_3e25:
     push DE                                            ;; 00:3e25 $d5
-    ld   A, [wD7B3]                                    ;; 00:3e26 $fa $b3 $d7
+    ld   A, [wHPHigh]                                  ;; 00:3e26 $fa $b3 $d7
     ld   D, A                                          ;; 00:3e29 $57
-    ld   A, [wD7B2]                                    ;; 00:3e2a $fa $b2 $d7
+    ld   A, [wHPLow]                                   ;; 00:3e2a $fa $b2 $d7
     ld   E, A                                          ;; 00:3e2d $5f
     ld   A, E                                          ;; 00:3e2e $7b
     sub  A, L                                          ;; 00:3e2f $95
@@ -10174,16 +10174,16 @@ code_000_3e25:
     ld   HL, $0000                                     ;; 00:3e37 $21 $00 $00
 .code_3e3a:
     ld   A, H                                          ;; 00:3e3a $7c
-    ld   [wD7B3], A                                    ;; 00:3e3b $ea $b3 $d7
+    ld   [wHPHigh], A                                  ;; 00:3e3b $ea $b3 $d7
     ld   A, L                                          ;; 00:3e3e $7d
-    ld   [wD7B2], A                                    ;; 00:3e3f $ea $b2 $d7
+    ld   [wHPLow], A                                   ;; 00:3e3f $ea $b2 $d7
     call code_000_310b                                 ;; 00:3e42 $cd $0b $31
     ret                                                ;; 00:3e45 $c9
 
 code_000_3e46:
-    ld   A, [wD7B3]                                    ;; 00:3e46 $fa $b3 $d7
+    ld   A, [wHPHigh]                                  ;; 00:3e46 $fa $b3 $d7
     ld   D, A                                          ;; 00:3e49 $57
-    ld   A, [wD7B2]                                    ;; 00:3e4a $fa $b2 $d7
+    ld   A, [wHPLow]                                   ;; 00:3e4a $fa $b2 $d7
     ld   E, A                                          ;; 00:3e4d $5f
     or   A, D                                          ;; 00:3e4e $b2
     ret  NZ                                            ;; 00:3e4f $c0

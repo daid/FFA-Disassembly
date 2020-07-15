@@ -2290,7 +2290,7 @@ code_002_4f19:
     add  HL, BC                                        ;; 02:4f40 $09
     ld   A, $04                                        ;; 02:4f41 $3e $04
     ld   DE, wD78F                                     ;; 02:4f43 $11 $8f $d7
-    ld   BC, wD7C1                                     ;; 02:4f46 $01 $c1 $d7
+    ld   BC, wStatStamina                              ;; 02:4f46 $01 $c1 $d7
 .code_4f49:
     push AF                                            ;; 02:4f49 $f5
     ld   A, [BC]                                       ;; 02:4f4a $0a
@@ -2478,9 +2478,9 @@ code_002_5086:
     ld   A, [HL+]                                      ;; 02:508d $2a
     ld   H, [HL]                                       ;; 02:508e $66
     ld   L, A                                          ;; 02:508f $6f
-    ld   A, [wD7BF]                                    ;; 02:5090 $fa $bf $d7
+    ld   A, [wMoneyHigh]                               ;; 02:5090 $fa $bf $d7
     ld   D, A                                          ;; 02:5093 $57
-    ld   A, [wD7BE]                                    ;; 02:5094 $fa $be $d7
+    ld   A, [wMoneyLow]                                ;; 02:5094 $fa $be $d7
     ld   E, A                                          ;; 02:5097 $5f
     ld   A, D                                          ;; 02:5098 $7a
     cp   A, H                                          ;; 02:5099 $bc
@@ -2555,9 +2555,9 @@ code_002_50b5:
     ld   A, [HL+]                                      ;; 02:510e $2a
     ld   H, [HL]                                       ;; 02:510f $66
     ld   L, A                                          ;; 02:5110 $6f
-    ld   A, [wD7BF]                                    ;; 02:5111 $fa $bf $d7
+    ld   A, [wMoneyHigh]                               ;; 02:5111 $fa $bf $d7
     ld   D, A                                          ;; 02:5114 $57
-    ld   A, [wD7BE]                                    ;; 02:5115 $fa $be $d7
+    ld   A, [wMoneyLow]                                ;; 02:5115 $fa $be $d7
     ld   E, A                                          ;; 02:5118 $5f
     ld   A, E                                          ;; 02:5119 $7b
     sub  A, L                                          ;; 02:511a $95
@@ -2566,9 +2566,9 @@ code_002_50b5:
     sbc  A, H                                          ;; 02:511d $9c
     ld   D, A                                          ;; 02:511e $57
     ld   A, D                                          ;; 02:511f $7a
-    ld   [wD7BF], A                                    ;; 02:5120 $ea $bf $d7
+    ld   [wMoneyHigh], A                               ;; 02:5120 $ea $bf $d7
     ld   A, E                                          ;; 02:5123 $7b
-    ld   [wD7BE], A                                    ;; 02:5124 $ea $be $d7
+    ld   [wMoneyLow], A                                ;; 02:5124 $ea $be $d7
     ld   DE, $0206                                     ;; 02:5127 $11 $06 $02
     ld   B, $05                                        ;; 02:512a $06 $05
 .code_512c:
@@ -2712,18 +2712,18 @@ code_002_51fb:
     ld   [HL+], A                                      ;; 02:5211 $22
     push BC                                            ;; 02:5212 $c5
     pop  HL                                            ;; 02:5213 $e1
-    ld   A, [wD7BF]                                    ;; 02:5214 $fa $bf $d7
+    ld   A, [wMoneyHigh]                               ;; 02:5214 $fa $bf $d7
     ld   D, A                                          ;; 02:5217 $57
-    ld   A, [wD7BE]                                    ;; 02:5218 $fa $be $d7
+    ld   A, [wMoneyLow]                                ;; 02:5218 $fa $be $d7
     ld   E, A                                          ;; 02:521b $5f
     add  HL, DE                                        ;; 02:521c $19
     jr   NC, .code_5222                                ;; 02:521d $30 $03
     ld   HL, rIE                                       ;; 02:521f $21 $ff $ff
 .code_5222:
     ld   A, H                                          ;; 02:5222 $7c
-    ld   [wD7BF], A                                    ;; 02:5223 $ea $bf $d7
+    ld   [wMoneyHigh], A                               ;; 02:5223 $ea $bf $d7
     ld   A, L                                          ;; 02:5226 $7d
-    ld   [wD7BE], A                                    ;; 02:5227 $ea $be $d7
+    ld   [wMoneyLow], A                                ;; 02:5227 $ea $be $d7
     call code_002_523c                                 ;; 02:522a $cd $3c $52
 
 code_002_522d:
@@ -2869,7 +2869,7 @@ code_002_531c:
     call code_002_6c98                                 ;; 02:5322 $cd $98 $6c
     ret  Z                                             ;; 02:5325 $c8
     ld   B, $04                                        ;; 02:5326 $06 $04
-    ld   DE, wD7C1                                     ;; 02:5328 $11 $c1 $d7
+    ld   DE, wStatStamina                              ;; 02:5328 $11 $c1 $d7
     ld   HL, wD78F                                     ;; 02:532b $21 $8f $d7
 .code_532e:
     ld   A, [HL+]                                      ;; 02:532e $2a
@@ -2878,7 +2878,7 @@ code_002_531c:
     dec  B                                             ;; 02:5331 $05
     jr   NZ, .code_532e                                ;; 02:5332 $20 $fa
     ld   H, $00                                        ;; 02:5334 $26 $00
-    ld   A, [wD7C1]                                    ;; 02:5336 $fa $c1 $d7
+    ld   A, [wStatStamina]                             ;; 02:5336 $fa $c1 $d7
     ld   L, A                                          ;; 02:5339 $6f
     call MultiplyHL_by_A                               ;; 02:533a $cd $7b $2b
     ld   A, $0a                                        ;; 02:533d $3e $0a
@@ -2894,14 +2894,14 @@ code_002_531c:
     ld   HL, $03e7                                     ;; 02:534f $21 $e7 $03
 .code_5352:
     ld   A, H                                          ;; 02:5352 $7c
-    ld   [wD7B5], A                                    ;; 02:5353 $ea $b5 $d7
+    ld   [wMaxHPHigh], A                               ;; 02:5353 $ea $b5 $d7
     ld   A, L                                          ;; 02:5356 $7d
-    ld   [wD7B4], A                                    ;; 02:5357 $ea $b4 $d7
+    ld   [wMaxHPLow], A                                ;; 02:5357 $ea $b4 $d7
     ld   A, H                                          ;; 02:535a $7c
-    ld   [wD7B3], A                                    ;; 02:535b $ea $b3 $d7
+    ld   [wHPHigh], A                                  ;; 02:535b $ea $b3 $d7
     ld   A, L                                          ;; 02:535e $7d
-    ld   [wD7B2], A                                    ;; 02:535f $ea $b2 $d7
-    ld   A, [wD7C3]                                    ;; 02:5362 $fa $c3 $d7
+    ld   [wHPLow], A                                   ;; 02:535f $ea $b2 $d7
+    ld   A, [wStatWisdom]                              ;; 02:5362 $fa $c3 $d7
     ld   H, $00                                        ;; 02:5365 $26 $00
     ld   L, A                                          ;; 02:5367 $6f
     ld   A, $5e                                        ;; 02:5368 $3e $5e
@@ -2914,8 +2914,8 @@ code_002_531c:
     jr   C, .code_537b                                 ;; 02:5377 $38 $02
     ld   A, $63                                        ;; 02:5379 $3e $63
 .code_537b:
-    ld   [wD7B8], A                                    ;; 02:537b $ea $b8 $d7
-    ld   [wD7B6], A                                    ;; 02:537e $ea $b6 $d7
+    ld   [wMaxManaLow], A                              ;; 02:537b $ea $b8 $d7
+    ld   [wManaLow], A                                 ;; 02:537e $ea $b6 $d7
     call code_002_77ae                                 ;; 02:5381 $cd $ae $77
     call code_002_6b51                                 ;; 02:5384 $cd $51 $6b
     ld   HL, wD872                                     ;; 02:5387 $21 $72 $d8
@@ -2928,7 +2928,7 @@ code_002_531c:
     ret                                                ;; 02:5398 $c9
 
 code_002_5399:
-    ld   HL, wD7BA                                     ;; 02:5399 $21 $ba $d7
+    ld   HL, wLevel                                    ;; 02:5399 $21 $ba $d7
     ld   A, [HL]                                       ;; 02:539c $7e
     inc  A                                             ;; 02:539d $3c
     ld   [HL], A                                       ;; 02:539e $77
@@ -3664,7 +3664,7 @@ code_002_57d6:
     ret  NZ                                            ;; 02:57db $c0
     call code_002_5b9d                                 ;; 02:57dc $cd $9d $5b
     ld   B, A                                          ;; 02:57df $47
-    ld   A, [wD7C2]                                    ;; 02:57e0 $fa $c2 $d7
+    ld   A, [wStatPower]                               ;; 02:57e0 $fa $c2 $d7
     add  A, B                                          ;; 02:57e3 $80
     ld   [wD6C1], A                                    ;; 02:57e4 $ea $c1 $d6
     ld   [wD7DF], A                                    ;; 02:57e7 $ea $df $d7
@@ -3672,7 +3672,7 @@ code_002_57d6:
     ld   B, A                                          ;; 02:57ed $47
     ld   A, [wD6C2]                                    ;; 02:57ee $fa $c2 $d6
     ld   C, A                                          ;; 02:57f1 $4f
-    ld   A, [wD7C1]                                    ;; 02:57f2 $fa $c1 $d7
+    ld   A, [wStatStamina]                             ;; 02:57f2 $fa $c1 $d7
     add  A, B                                          ;; 02:57f5 $80
     add  A, C                                          ;; 02:57f6 $81
     ld   [wD6C3], A                                    ;; 02:57f7 $ea $c3 $d6
@@ -3892,7 +3892,7 @@ code_002_5959:
     call code_000_3844                                 ;; 02:5966 $cd $44 $38
     inc  E                                             ;; 02:5969 $1c
     inc  E                                             ;; 02:596a $1c
-    ld   A, [wD7BA]                                    ;; 02:596b $fa $ba $d7
+    ld   A, [wLevel]                                   ;; 02:596b $fa $ba $d7
     ld   H, $00                                        ;; 02:596e $26 $00
     ld   L, A                                          ;; 02:5970 $6f
     push DE                                            ;; 02:5971 $d5
@@ -3908,9 +3908,9 @@ code_002_5959:
     ld   A, $3e                                        ;; 02:5981 $3e $3e BackgroundTile
     call code_000_3844                                 ;; 02:5983 $cd $44 $38
     inc  E                                             ;; 02:5986 $1c
-    ld   A, [wD7BC]                                    ;; 02:5987 $fa $bc $d7
+    ld   A, [wXPHigh]                                  ;; 02:5987 $fa $bc $d7
     ld   H, A                                          ;; 02:598a $67
-    ld   A, [wD7BB]                                    ;; 02:598b $fa $bb $d7
+    ld   A, [wXPLow]                                   ;; 02:598b $fa $bb $d7
     ld   L, A                                          ;; 02:598e $6f
     ld   A, [wD7BD]                                    ;; 02:598f $fa $bd $d7
     ld   C, A                                          ;; 02:5992 $4f
@@ -4731,7 +4731,7 @@ code_002_6656:
     ld   A, [HL]                                       ;; 02:6667 $7e
     and  A, $1f                                        ;; 02:6668 $e6 $1f
     ld   B, A                                          ;; 02:666a $47
-    ld   A, [wD7B6]                                    ;; 02:666b $fa $b6 $d7
+    ld   A, [wManaLow]                                 ;; 02:666b $fa $b6 $d7
     sub  A, B                                          ;; 02:666e $90
 .code_666f:
     push AF                                            ;; 02:666f $f5
@@ -5816,7 +5816,7 @@ code_002_6ce4:
     db   $6c, $cd, $49, $2b, $f1, $c9                  ;; 02:6d05 ??????
 
 code_002_6d0b:
-    ld   HL, wD7C1                                     ;; 02:6d0b $21 $c1 $d7
+    ld   HL, wStatStamina                              ;; 02:6d0b $21 $c1 $d7
     ld   DE, wD78F                                     ;; 02:6d0e $11 $8f $d7
     ld   B, $04                                        ;; 02:6d11 $06 $04
 .code_6d13:
@@ -5825,9 +5825,9 @@ code_002_6d0b:
     inc  DE                                            ;; 02:6d15 $13
     dec  B                                             ;; 02:6d16 $05
     jr   NZ, .code_6d13                                ;; 02:6d17 $20 $fa
-    ld   A, [wD7C2]                                    ;; 02:6d19 $fa $c2 $d7
+    ld   A, [wStatPower]                               ;; 02:6d19 $fa $c2 $d7
     ld   [wD790], A                                    ;; 02:6d1c $ea $90 $d7
-    ld   A, [wD7C1]                                    ;; 02:6d1f $fa $c1 $d7
+    ld   A, [wStatStamina]                             ;; 02:6d1f $fa $c1 $d7
     ld   [wD78F], A                                    ;; 02:6d22 $ea $8f $d7
     ret                                                ;; 02:6d25 $c9
 
@@ -6047,13 +6047,13 @@ code_002_6e25:
     ld   [wD6F0], A                                    ;; 02:6e65 $ea $f0 $d6
     ld   B, $04                                        ;; 02:6e68 $06 $04
     ld   A, $02                                        ;; 02:6e6a $3e $02
-    ld   HL, wD7C1                                     ;; 02:6e6c $21 $c1 $d7
+    ld   HL, wStatStamina                              ;; 02:6e6c $21 $c1 $d7
 .code_6e6f:
     ld   [HL+], A                                      ;; 02:6e6f $22
     dec  B                                             ;; 02:6e70 $05
     jr   NZ, .code_6e6f                                ;; 02:6e71 $20 $fc
     ld   DE, $0013                                     ;; 02:6e73 $11 $13 $00
-    ld   HL, wD7B2                                     ;; 02:6e76 $21 $b2 $d7
+    ld   HL, wHPLow                                    ;; 02:6e76 $21 $b2 $d7
     ld   [HL], E                                       ;; 02:6e79 $73
     inc  HL                                            ;; 02:6e7a $23
     ld   [HL], D                                       ;; 02:6e7b $72
@@ -6062,7 +6062,7 @@ code_002_6e25:
     inc  HL                                            ;; 02:6e7e $23
     ld   [HL], D                                       ;; 02:6e7f $72
     ld   DE, $0006                                     ;; 02:6e80 $11 $06 $00
-    ld   HL, wD7B6                                     ;; 02:6e83 $21 $b6 $d7
+    ld   HL, wManaLow                                  ;; 02:6e83 $21 $b6 $d7
     ld   [HL], E                                       ;; 02:6e86 $73
     inc  HL                                            ;; 02:6e87 $23
     ld   [HL], D                                       ;; 02:6e88 $72
@@ -6075,20 +6075,20 @@ code_002_6e25:
     ld   [HL+], A                                      ;; 02:6e92 $22
     inc  A                                             ;; 02:6e93 $3c
     ld   [HL+], A                                      ;; 02:6e94 $22
-    ld   A, [wD7C2]                                    ;; 02:6e95 $fa $c2 $d7
+    ld   A, [wStatPower]                               ;; 02:6e95 $fa $c2 $d7
     ld   [wD790], A                                    ;; 02:6e98 $ea $90 $d7
-    ld   A, [wD7C1]                                    ;; 02:6e9b $fa $c1 $d7
+    ld   A, [wStatStamina]                             ;; 02:6e9b $fa $c1 $d7
     ld   [wD78F], A                                    ;; 02:6e9e $ea $8f $d7
     call code_002_57d6                                 ;; 02:6ea1 $cd $d6 $57
     ld   HL, $0000                                     ;; 02:6ea4 $21 $00 $00
     ld   A, H                                          ;; 02:6ea7 $7c
-    ld   [wD7BC], A                                    ;; 02:6ea8 $ea $bc $d7
+    ld   [wXPHigh], A                                  ;; 02:6ea8 $ea $bc $d7
     ld   A, L                                          ;; 02:6eab $7d
-    ld   [wD7BB], A                                    ;; 02:6eac $ea $bb $d7
+    ld   [wXPLow], A                                   ;; 02:6eac $ea $bb $d7
     xor  A, A                                          ;; 02:6eaf $af
     ld   [wD7BD], A                                    ;; 02:6eb0 $ea $bd $d7
     inc  A                                             ;; 02:6eb3 $3c
-    ld   [wD7BA], A                                    ;; 02:6eb4 $ea $ba $d7
+    ld   [wLevel], A                                   ;; 02:6eb4 $ea $ba $d7
     call code_000_3ea3                                 ;; 02:6eb7 $cd $a3 $3e
     ld   HL, wD683                                     ;; 02:6eba $21 $83 $d6
     ld   A, H                                          ;; 02:6ebd $7c
@@ -6099,9 +6099,9 @@ code_002_6e25:
     ld   [wD858], A                                    ;; 02:6ec7 $ea $58 $d8
     ld   HL, $0032                                     ;; 02:6eca $21 $32 $00
     ld   A, H                                          ;; 02:6ecd $7c
-    ld   [wD7BF], A                                    ;; 02:6ece $ea $bf $d7
+    ld   [wMoneyHigh], A                               ;; 02:6ece $ea $bf $d7
     ld   A, L                                          ;; 02:6ed1 $7d
-    ld   [wD7BE], A                                    ;; 02:6ed2 $ea $be $d7
+    ld   [wMoneyLow], A                                ;; 02:6ed2 $ea $be $d7
     ld   A, $ff                                        ;; 02:6ed5 $3e $ff
     ld   [wD87E], A                                    ;; 02:6ed7 $ea $7e $d8
     xor  A, A                                          ;; 02:6eda $af
@@ -6155,9 +6155,9 @@ code_002_6f29:
     ld   B, $04                                        ;; 02:6f2d $06 $04
     call code_002_6f6b                                 ;; 02:6f2f $cd $6b $6f
     pop  DE                                            ;; 02:6f32 $d1
-    ld   A, [wD7B3]                                    ;; 02:6f33 $fa $b3 $d7
+    ld   A, [wHPHigh]                                  ;; 02:6f33 $fa $b3 $d7
     ld   H, A                                          ;; 02:6f36 $67
-    ld   A, [wD7B2]                                    ;; 02:6f37 $fa $b2 $d7
+    ld   A, [wHPLow]                                   ;; 02:6f37 $fa $b2 $d7
     ld   L, A                                          ;; 02:6f3a $6f
     call code_002_6f77                                 ;; 02:6f3b $cd $77 $6f
     ret                                                ;; 02:6f3e $c9
@@ -6168,9 +6168,9 @@ code_002_6f3f:
     ld   B, $03                                        ;; 02:6f43 $06 $03
     call code_002_6f6b                                 ;; 02:6f45 $cd $6b $6f
     pop  DE                                            ;; 02:6f48 $d1
-    ld   A, [wD7B7]                                    ;; 02:6f49 $fa $b7 $d7
+    ld   A, [wManaHigh]                                ;; 02:6f49 $fa $b7 $d7
     ld   H, A                                          ;; 02:6f4c $67
-    ld   A, [wD7B6]                                    ;; 02:6f4d $fa $b6 $d7
+    ld   A, [wManaLow]                                 ;; 02:6f4d $fa $b6 $d7
     ld   L, A                                          ;; 02:6f50 $6f
     call code_002_6f77                                 ;; 02:6f51 $cd $77 $6f
     ret                                                ;; 02:6f54 $c9
@@ -6181,9 +6181,9 @@ code_002_6f55:
     ld   B, $05                                        ;; 02:6f59 $06 $05
     call code_002_6f6b                                 ;; 02:6f5b $cd $6b $6f
     pop  DE                                            ;; 02:6f5e $d1
-    ld   A, [wD7BF]                                    ;; 02:6f5f $fa $bf $d7
+    ld   A, [wMoneyHigh]                               ;; 02:6f5f $fa $bf $d7
     ld   H, A                                          ;; 02:6f62 $67
-    ld   A, [wD7BE]                                    ;; 02:6f63 $fa $be $d7
+    ld   A, [wMoneyLow]                                ;; 02:6f63 $fa $be $d7
     ld   L, A                                          ;; 02:6f66 $6f
     call code_002_6f77                                 ;; 02:6f67 $cd $77 $6f
     ret                                                ;; 02:6f6a $c9
@@ -6242,9 +6242,9 @@ code_002_6fb4:
     ld   C, A                                          ;; 02:6fbe $4f
     ret  Z                                             ;; 02:6fbf $c8
     push DE                                            ;; 02:6fc0 $d5
-    ld   A, [wD7B3]                                    ;; 02:6fc1 $fa $b3 $d7
+    ld   A, [wHPHigh]                                  ;; 02:6fc1 $fa $b3 $d7
     ld   D, A                                          ;; 02:6fc4 $57
-    ld   A, [wD7B2]                                    ;; 02:6fc5 $fa $b2 $d7
+    ld   A, [wHPLow]                                   ;; 02:6fc5 $fa $b2 $d7
     ld   E, A                                          ;; 02:6fc8 $5f
     or   A, D                                          ;; 02:6fc9 $b2
     pop  DE                                            ;; 02:6fca $d1
@@ -6279,7 +6279,7 @@ code_002_6fb4:
     and  A, $03                                        ;; 02:6ffa $e6 $03
     ld   L, A                                          ;; 02:6ffc $6f
     ld   H, $00                                        ;; 02:6ffd $26 $00
-    ld   A, [wD7C3]                                    ;; 02:6fff $fa $c3 $d7
+    ld   A, [wStatWisdom]                              ;; 02:6fff $fa $c3 $d7
     push BC                                            ;; 02:7002 $c5
     call MultiplyHL_by_A                               ;; 02:7003 $cd $7b $2b
     pop  BC                                            ;; 02:7006 $c1
@@ -6294,14 +6294,14 @@ code_002_6fb4:
     ld   L, H                                          ;; 02:7012 $6c
     ld   H, $00                                        ;; 02:7013 $26 $00
 .code_7015:
-    ld   A, [wD7B3]                                    ;; 02:7015 $fa $b3 $d7
+    ld   A, [wHPHigh]                                  ;; 02:7015 $fa $b3 $d7
     ld   D, A                                          ;; 02:7018 $57
-    ld   A, [wD7B2]                                    ;; 02:7019 $fa $b2 $d7
+    ld   A, [wHPLow]                                   ;; 02:7019 $fa $b2 $d7
     ld   E, A                                          ;; 02:701c $5f
     add  HL, DE                                        ;; 02:701d $19
-    ld   A, [wD7B5]                                    ;; 02:701e $fa $b5 $d7
+    ld   A, [wMaxHPHigh]                               ;; 02:701e $fa $b5 $d7
     ld   D, A                                          ;; 02:7021 $57
-    ld   A, [wD7B4]                                    ;; 02:7022 $fa $b4 $d7
+    ld   A, [wMaxHPLow]                                ;; 02:7022 $fa $b4 $d7
     ld   E, A                                          ;; 02:7025 $5f
     ld   A, H                                          ;; 02:7026 $7c
     cp   A, D                                          ;; 02:7027 $ba
@@ -6315,22 +6315,22 @@ code_002_6fb4:
     pop  HL                                            ;; 02:7031 $e1
 .code_7032:
     ld   A, H                                          ;; 02:7032 $7c
-    ld   [wD7B3], A                                    ;; 02:7033 $ea $b3 $d7
+    ld   [wHPHigh], A                                  ;; 02:7033 $ea $b3 $d7
     ld   A, L                                          ;; 02:7036 $7d
-    ld   [wD7B2], A                                    ;; 02:7037 $ea $b2 $d7
+    ld   [wHPLow], A                                   ;; 02:7037 $ea $b2 $d7
     pop  HL                                            ;; 02:703a $e1
     ld   A, C                                          ;; 02:703b $79
     cp   A, $01                                        ;; 02:703c $fe $01
     jr   Z, .code_704f                                 ;; 02:703e $28 $0f
-    ld   A, [wD7B6]                                    ;; 02:7040 $fa $b6 $d7
+    ld   A, [wManaLow]                                 ;; 02:7040 $fa $b6 $d7
     add  A, L                                          ;; 02:7043 $85
     ld   B, A                                          ;; 02:7044 $47
-    ld   A, [wD7B8]                                    ;; 02:7045 $fa $b8 $d7
+    ld   A, [wMaxManaLow]                              ;; 02:7045 $fa $b8 $d7
     cp   A, B                                          ;; 02:7048 $b8
     jr   C, .code_704c                                 ;; 02:7049 $38 $01
     ld   A, B                                          ;; 02:704b $78
 .code_704c:
-    ld   [wD7B6], A                                    ;; 02:704c $ea $b6 $d7
+    ld   [wManaLow], A                                 ;; 02:704c $ea $b6 $d7
 .code_704f:
     call code_002_6f29                                 ;; 02:704f $cd $29 $6f
     call code_002_6f3f                                 ;; 02:7052 $cd $3f $6f
@@ -6372,7 +6372,7 @@ code_002_6fb4:
     cp   A, $ff                                        ;; 02:708f $fe $ff
     ret  NZ                                            ;; 02:7091 $c0
     push HL                                            ;; 02:7092 $e5
-    ld   HL, wD7C1                                     ;; 02:7093 $21 $c1 $d7
+    ld   HL, wStatStamina                              ;; 02:7093 $21 $c1 $d7
     ld   DE, wD7D8                                     ;; 02:7096 $11 $d8 $d7
     push HL                                            ;; 02:7099 $e5
     ld   B, $04                                        ;; 02:709a $06 $04
@@ -6536,10 +6536,10 @@ code_002_7185:
     ld   A, [HL]                                       ;; 02:718c $7e
     and  A, $1f                                        ;; 02:718d $e6 $1f
     ld   B, A                                          ;; 02:718f $47
-    ld   A, [wD7B6]                                    ;; 02:7190 $fa $b6 $d7
+    ld   A, [wManaLow]                                 ;; 02:7190 $fa $b6 $d7
     sub  A, B                                          ;; 02:7193 $90
     jr   C, .code_719f                                 ;; 02:7194 $38 $09
-    ld   [wD7B6], A                                    ;; 02:7196 $ea $b6 $d7
+    ld   [wManaLow], A                                 ;; 02:7196 $ea $b6 $d7
     call code_002_6f3f                                 ;; 02:7199 $cd $3f $6f
     pop  AF                                            ;; 02:719c $f1
     or   A, A                                          ;; 02:719d $b7
@@ -6631,7 +6631,7 @@ code_002_71fb:
     push BC                                            ;; 02:7225 $c5
     push DE                                            ;; 02:7226 $d5
     push HL                                            ;; 02:7227 $e5
-    ld   HL, wD7C1                                     ;; 02:7228 $21 $c1 $d7
+    ld   HL, wStatStamina                              ;; 02:7228 $21 $c1 $d7
     ld   DE, wD7D8                                     ;; 02:722b $11 $d8 $d7
     ld   B, $04                                        ;; 02:722e $06 $04
     call code_002_72b3                                 ;; 02:7230 $cd $b3 $72
@@ -6684,7 +6684,7 @@ code_002_71fb:
     push DE                                            ;; 02:729b $d5
     push HL                                            ;; 02:729c $e5
     ld   HL, wD7D8                                     ;; 02:729d $21 $d8 $d7
-    ld   DE, wD7C1                                     ;; 02:72a0 $11 $c1 $d7
+    ld   DE, wStatStamina                              ;; 02:72a0 $11 $c1 $d7
     ld   B, $04                                        ;; 02:72a3 $06 $04
     call code_002_72b3                                 ;; 02:72a5 $cd $b3 $72
     pop  HL                                            ;; 02:72a8 $e1
@@ -6831,7 +6831,7 @@ code_002_7322:
     ld   C, A                                          ;; 02:7397 $4f
     ld   B, $00                                        ;; 02:7398 $06 $00
     call code_002_7859                                 ;; 02:739a $cd $59 $78
-    ld   A, [wD7BA]                                    ;; 02:739d $fa $ba $d7
+    ld   A, [wLevel]                                   ;; 02:739d $fa $ba $d7
     call code_000_3ea3                                 ;; 02:73a0 $cd $a3 $3e
     pop  HL                                            ;; 02:73a3 $e1
     call code_002_7a7f                                 ;; 02:73a4 $cd $7f $7a
@@ -7177,7 +7177,7 @@ code_002_7589:
     inc  E                                             ;; 02:75b9 $1c
     inc  E                                             ;; 02:75ba $1c
     call code_002_59ae                                 ;; 02:75bb $cd $ae $59
-    ld   A, [wD7BA]                                    ;; 02:75be $fa $ba $d7
+    ld   A, [wLevel]                                   ;; 02:75be $fa $ba $d7
     call code_000_3ea3                                 ;; 02:75c1 $cd $a3 $3e
     ret                                                ;; 02:75c4 $c9
 
@@ -7229,9 +7229,9 @@ code_002_75f4:
     jr   NZ, .code_760a                                ;; 02:7607 $20 $01
     dec  E                                             ;; 02:7609 $1d
 .code_760a:
-    ld   A, [wD7BF]                                    ;; 02:760a $fa $bf $d7
+    ld   A, [wMoneyHigh]                               ;; 02:760a $fa $bf $d7
     ld   H, A                                          ;; 02:760d $67
-    ld   A, [wD7BE]                                    ;; 02:760e $fa $be $d7
+    ld   A, [wMoneyLow]                                ;; 02:760e $fa $be $d7
     ld   L, A                                          ;; 02:7611 $6f
     ld   A, H                                          ;; 02:7612 $7c
     or   A, L                                          ;; 02:7613 $b5
@@ -7253,17 +7253,17 @@ code_002_75f4:
 
 code_002_762d:
     ld   HL, wD793                                     ;; 02:762d $21 $93 $d7
-    ld   A, [wD7B3]                                    ;; 02:7630 $fa $b3 $d7
+    ld   A, [wHPHigh]                                  ;; 02:7630 $fa $b3 $d7
     ld   D, A                                          ;; 02:7633 $57
-    ld   A, [wD7B2]                                    ;; 02:7634 $fa $b2 $d7
+    ld   A, [wHPLow]                                   ;; 02:7634 $fa $b2 $d7
     ld   E, A                                          ;; 02:7637 $5f
     ld   [HL], E                                       ;; 02:7638 $73
     inc  HL                                            ;; 02:7639 $23
     ld   [HL], D                                       ;; 02:763a $72
     inc  HL                                            ;; 02:763b $23
-    ld   A, [wD7B5]                                    ;; 02:763c $fa $b5 $d7
+    ld   A, [wMaxHPHigh]                               ;; 02:763c $fa $b5 $d7
     ld   D, A                                          ;; 02:763f $57
-    ld   A, [wD7B4]                                    ;; 02:7640 $fa $b4 $d7
+    ld   A, [wMaxHPLow]                                ;; 02:7640 $fa $b4 $d7
     ld   E, A                                          ;; 02:7643 $5f
     ld   [HL], E                                       ;; 02:7644 $73
     inc  HL                                            ;; 02:7645 $23
@@ -7272,13 +7272,13 @@ code_002_762d:
     inc  HL                                            ;; 02:7648 $23
     inc  HL                                            ;; 02:7649 $23
     ld   D, $00                                        ;; 02:764a $16 $00
-    ld   A, [wD7B6]                                    ;; 02:764c $fa $b6 $d7
+    ld   A, [wManaLow]                                 ;; 02:764c $fa $b6 $d7
     ld   E, A                                          ;; 02:764f $5f
     ld   [HL], E                                       ;; 02:7650 $73
     inc  HL                                            ;; 02:7651 $23
     ld   [HL], D                                       ;; 02:7652 $72
     inc  HL                                            ;; 02:7653 $23
-    ld   A, [wD7B8]                                    ;; 02:7654 $fa $b8 $d7
+    ld   A, [wMaxManaLow]                              ;; 02:7654 $fa $b8 $d7
     ld   E, A                                          ;; 02:7657 $5f
     ld   [HL], E                                       ;; 02:7658 $73
     inc  HL                                            ;; 02:7659 $23
@@ -7676,9 +7676,9 @@ code_002_78c6:
     ld   A, [wC0A0]                                    ;; 02:78c6 $fa $a0 $c0
     cp   A, $00                                        ;; 02:78c9 $fe $00
     ret  NZ                                            ;; 02:78cb $c0
-    ld   A, [wD7B3]                                    ;; 02:78cc $fa $b3 $d7
+    ld   A, [wHPHigh]                                  ;; 02:78cc $fa $b3 $d7
     ld   B, A                                          ;; 02:78cf $47
-    ld   A, [wD7B2]                                    ;; 02:78d0 $fa $b2 $d7
+    ld   A, [wHPLow]                                   ;; 02:78d0 $fa $b2 $d7
     ld   C, A                                          ;; 02:78d3 $4f
     or   A, B                                          ;; 02:78d4 $b0
     ret  Z                                             ;; 02:78d5 $c8
@@ -7706,9 +7706,9 @@ code_002_78c6:
     ld   A, [wD87C]                                    ;; 02:790b $fa $7c $d8
     call code_000_300a                                 ;; 02:790e $cd $0a $30
     call Z, code_002_79ba                              ;; 02:7911 $cc $ba $79
-    ld   A, [wD7B3]                                    ;; 02:7914 $fa $b3 $d7
+    ld   A, [wHPHigh]                                  ;; 02:7914 $fa $b3 $d7
     ld   D, A                                          ;; 02:7917 $57
-    ld   A, [wD7B2]                                    ;; 02:7918 $fa $b2 $d7
+    ld   A, [wHPLow]                                   ;; 02:7918 $fa $b2 $d7
     ld   E, A                                          ;; 02:791b $5f
     ld   A, [wD881]                                    ;; 02:791c $fa $81 $d8
     call code_000_300a                                 ;; 02:791f $cd $0a $30
@@ -7729,9 +7729,9 @@ code_002_7930:
     ld   [HL], A                                       ;; 02:7937 $77
     call code_002_7970                                 ;; 02:7938 $cd $70 $79
     add  HL, DE                                        ;; 02:793b $19
-    ld   A, [wD7B5]                                    ;; 02:793c $fa $b5 $d7
+    ld   A, [wMaxHPHigh]                               ;; 02:793c $fa $b5 $d7
     ld   D, A                                          ;; 02:793f $57
-    ld   A, [wD7B4]                                    ;; 02:7940 $fa $b4 $d7
+    ld   A, [wMaxHPLow]                                ;; 02:7940 $fa $b4 $d7
     ld   E, A                                          ;; 02:7943 $5f
     ld   A, E                                          ;; 02:7944 $7b
     sub  A, L                                          ;; 02:7945 $95
@@ -7760,23 +7760,23 @@ code_002_794e:
 
 code_002_7964:
     ld   A, D                                          ;; 02:7964 $7a
-    ld   [wD7B3], A                                    ;; 02:7965 $ea $b3 $d7
+    ld   [wHPHigh], A                                  ;; 02:7965 $ea $b3 $d7
     ld   A, E                                          ;; 02:7968 $7b
-    ld   [wD7B2], A                                    ;; 02:7969 $ea $b2 $d7
+    ld   [wHPLow], A                                   ;; 02:7969 $ea $b2 $d7
     call code_002_6f29                                 ;; 02:796c $cd $29 $6f
     ret                                                ;; 02:796f $c9
 
 code_002_7970:
-    ld   A, [wD7B5]                                    ;; 02:7970 $fa $b5 $d7
+    ld   A, [wMaxHPHigh]                               ;; 02:7970 $fa $b5 $d7
     ld   H, A                                          ;; 02:7973 $67
-    ld   A, [wD7B4]                                    ;; 02:7974 $fa $b4 $d7
+    ld   A, [wMaxHPLow]                                ;; 02:7974 $fa $b4 $d7
     ld   L, A                                          ;; 02:7977 $6f
     ld   A, $14                                        ;; 02:7978 $3e $14
     call code_000_2b8b                                 ;; 02:797a $cd $8b $2b
     inc  HL                                            ;; 02:797d $23
-    ld   A, [wD7B3]                                    ;; 02:797e $fa $b3 $d7
+    ld   A, [wHPHigh]                                  ;; 02:797e $fa $b3 $d7
     ld   D, A                                          ;; 02:7981 $57
-    ld   A, [wD7B2]                                    ;; 02:7982 $fa $b2 $d7
+    ld   A, [wHPLow]                                   ;; 02:7982 $fa $b2 $d7
     ld   E, A                                          ;; 02:7985 $5f
     ret                                                ;; 02:7986 $c9
 

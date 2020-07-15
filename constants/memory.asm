@@ -602,43 +602,43 @@ wD7AA: ;; $d7aa
   ds 7
 wD7B1: ;; $d7b1
   ds 1
-wD7B2: ;; $d7b2
+wHPLow: ;; $d7b2
   ds 1
-wD7B3: ;; $d7b3
+wHPHigh: ;; $d7b3
   ds 1
-wD7B4: ;; $d7b4
+wMaxHPLow: ;; $d7b4
   ds 1
-wD7B5: ;; $d7b5
+wMaxHPHigh: ;; $d7b5
   ds 1
-wD7B6: ;; $d7b6
+wManaLow: ;; $d7b6
   ds 1
-wD7B7: ;; $d7b7
+wManaHigh: ;; $d7b7
   ds 1
-wD7B8: ;; $d7b8
+wMaxManaLow: ;; $d7b8
   ds 1
-wD7B9: ;; $d7b9
+wMaxManaHigh: ;; $d7b9
   ds 1
-wD7BA: ;; $d7ba
+wLevel: ;; $d7ba
   ds 1
-wD7BB: ;; $d7bb
+wXPLow: ;; $d7bb
   ds 1
-wD7BC: ;; $d7bc
+wXPHigh: ;; $d7bc
   ds 1
 wD7BD: ;; $d7bd
   ds 1
-wD7BE: ;; $d7be
+wMoneyLow: ;; $d7be
   ds 1
-wD7BF: ;; $d7bf
+wMoneyHigh: ;; $d7bf
   ds 1
 wD7C0: ;; $d7c0
   ds 1
-wD7C1: ;; $d7c1
+wStatStamina: ;; $d7c1
   ds 1
-wD7C2: ;; $d7c2
+wStatPower: ;; $d7c2
   ds 1
-wD7C3: ;; $d7c3
+wStatWisdom: ;; $d7c3
   ds 1
-wD7C4: ;; $d7c4
+wStatWill: ;; $d7c4
   ds 2
 wD7C6: ;; $d7c6
   ds 4
