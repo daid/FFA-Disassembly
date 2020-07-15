@@ -64,7 +64,7 @@ code_002_4074:
     ld   A, [wD399]                                    ;; 02:4074 $fa $99 $d3
     and  A, $0f                                        ;; 02:4077 $e6 $0f
     ld   HL, data_002_4084                             ;; 02:4079 $21 $84 $40
-    call code_000_2b70                                 ;; 02:407c $cd $70 $2b
+    call callJumptable                                 ;; 02:407c $cd $70 $2b
     ld   HL, wD399                                     ;; 02:407f $21 $99 $d3
     inc  [HL]                                          ;; 02:4082 $34
     ret                                                ;; 02:4083 $c9
@@ -6264,7 +6264,7 @@ code_002_6fb4:
     jr   NZ, .code_7012                                ;; 02:6fe1 $20 $2f
     push BC                                            ;; 02:6fe3 $c5
     push HL                                            ;; 02:6fe4 $e5
-    call code_000_2b1e                                 ;; 02:6fe5 $cd $1e $2b
+    call getRandomByte                                 ;; 02:6fe5 $cd $1e $2b
     pop  HL                                            ;; 02:6fe8 $e1
     ld   L, A                                          ;; 02:6fe9 $6f
     ld   A, H                                          ;; 02:6fea $7c
@@ -8080,12 +8080,12 @@ code_002_7b3c:
     ld   A, $08                                        ;; 02:7b49 $3e $08
     call code_002_747c                                 ;; 02:7b4b $cd $7c $74
     ld   A, E                                          ;; 02:7b4e $7b
-    ld   [wC0B0], A                                    ;; 02:7b4f $ea $b0 $c0
+    ld   [wRndState0], A                               ;; 02:7b4f $ea $b0 $c0
     ld   HL, $a100                                     ;; 02:7b52 $21 $00 $a1
     ld   A, $10                                        ;; 02:7b55 $3e $10
     call code_002_747c                                 ;; 02:7b57 $cd $7c $74
     ld   A, E                                          ;; 02:7b5a $7b
-    ld   [wC0B1], A                                    ;; 02:7b5b $ea $b1 $c0
+    ld   [wRndState1], A                               ;; 02:7b5b $ea $b1 $c0
     ld   HL, wD613                                     ;; 02:7b5e $21 $13 $d6
     ld   DE, data_002_7b9c                             ;; 02:7b61 $11 $9c $7b
 .code_7b64:

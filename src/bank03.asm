@@ -110,7 +110,7 @@ code_003_404a:
     ld   DE, data_003_563e                             ;; 03:409e $11 $3e $56
     add  HL, DE                                        ;; 03:40a1 $19
     push HL                                            ;; 03:40a2 $e5
-    call code_000_2b1e                                 ;; 03:40a3 $cd $1e $2b
+    call getRandomByte                                 ;; 03:40a3 $cd $1e $2b
     pop  HL                                            ;; 03:40a6 $e1
     ld   C, A                                          ;; 03:40a7 $4f
     and  A, $0f                                        ;; 03:40a8 $e6 $0f
@@ -149,7 +149,7 @@ code_003_40c7:
     pop  DE                                            ;; 03:40d1 $d1
     push DE                                            ;; 03:40d2 $d5
     ld   HL, data_003_4c55                             ;; 03:40d3 $21 $55 $4c
-    call code_000_2b70                                 ;; 03:40d6 $cd $70 $2b
+    call callJumptable                                 ;; 03:40d6 $cd $70 $2b
     pop  DE                                            ;; 03:40d9 $d1
     push DE                                            ;; 03:40da $d5
     push AF                                            ;; 03:40db $f5
@@ -551,7 +551,7 @@ code_003_42bd:
     push BC                                            ;; 03:430a $c5
     push DE                                            ;; 03:430b $d5
     push HL                                            ;; 03:430c $e5
-    call code_000_2b1e                                 ;; 03:430d $cd $1e $2b
+    call getRandomByte                                 ;; 03:430d $cd $1e $2b
     and  A, $07                                        ;; 03:4310 $e6 $07
     inc  A                                             ;; 03:4312 $3c
     pop  HL                                            ;; 03:4313 $e1
@@ -560,7 +560,7 @@ code_003_42bd:
     pop  BC                                            ;; 03:4316 $c1
     push DE                                            ;; 03:4317 $d5
     push BC                                            ;; 03:4318 $c5
-    call code_000_2b1e                                 ;; 03:4319 $cd $1e $2b
+    call getRandomByte                                 ;; 03:4319 $cd $1e $2b
     pop  BC                                            ;; 03:431c $c1
     ld   HL, $0001                                     ;; 03:431d $21 $01 $00
     add  HL, BC                                        ;; 03:4320 $09
@@ -785,7 +785,7 @@ code_003_444a:
     inc  HL                                            ;; 03:4461 $23
     push HL                                            ;; 03:4462 $e5
     push BC                                            ;; 03:4463 $c5
-    call code_000_2b1e                                 ;; 03:4464 $cd $1e $2b
+    call getRandomByte                                 ;; 03:4464 $cd $1e $2b
     and  A, $03                                        ;; 03:4467 $e6 $03
     ld   E, A                                          ;; 03:4469 $5f
     ld   D, $00                                        ;; 03:446a $16 $00
@@ -875,7 +875,7 @@ code_003_44cd:
     push HL                                            ;; 03:44cd $e5
     push BC                                            ;; 03:44ce $c5
 .code_44cf:
-    call code_000_2b1e                                 ;; 03:44cf $cd $1e $2b
+    call getRandomByte                                 ;; 03:44cf $cd $1e $2b
     and  A, $0f                                        ;; 03:44d2 $e6 $0f
     cp   A, $0f                                        ;; 03:44d4 $fe $0f
     jr   NC, .code_44cf                                ;; 03:44d6 $30 $f7
@@ -883,7 +883,7 @@ code_003_44cd:
     ld   E, A                                          ;; 03:44da $5f
     push DE                                            ;; 03:44db $d5
 .code_44dc:
-    call code_000_2b1e                                 ;; 03:44dc $cd $1e $2b
+    call getRandomByte                                 ;; 03:44dc $cd $1e $2b
     and  A, $0f                                        ;; 03:44df $e6 $0f
     cp   A, $0b                                        ;; 03:44e1 $fe $0b
     jr   NC, .code_44dc                                ;; 03:44e3 $30 $f7
@@ -923,7 +923,7 @@ code_003_44ed:
     push HL                                            ;; 03:450c $e5
     ld   C, A                                          ;; 03:450d $4f
     push BC                                            ;; 03:450e $c5
-    call code_000_2b1e                                 ;; 03:450f $cd $1e $2b
+    call getRandomByte                                 ;; 03:450f $cd $1e $2b
     pop  BC                                            ;; 03:4512 $c1
     inc  C                                             ;; 03:4513 $0c
     ld   L, C                                          ;; 03:4514 $69
@@ -1443,7 +1443,7 @@ code_003_480a:
     ld   A, [HL]                                       ;; 03:4830 $7e
     call code_003_48bc                                 ;; 03:4831 $cd $bc $48
     call code_000_3d72                                 ;; 03:4834 $cd $72 $3d
-    call code_000_2b1e                                 ;; 03:4837 $cd $1e $2b
+    call getRandomByte                                 ;; 03:4837 $cd $1e $2b
     and  A, $07                                        ;; 03:483a $e6 $07
     jr   NZ, code_003_48b6                             ;; 03:483c $20 $78
     pop  HL                                            ;; 03:483e $e1
@@ -1537,7 +1537,7 @@ code_003_48b6:
 
 code_003_48bc:
     push AF                                            ;; 03:48bc $f5
-    call code_000_2b1e                                 ;; 03:48bd $cd $1e $2b
+    call getRandomByte                                 ;; 03:48bd $cd $1e $2b
     ld   L, A                                          ;; 03:48c0 $6f
     ld   H, $00                                        ;; 03:48c1 $26 $00
     pop  AF                                            ;; 03:48c3 $f1
@@ -1776,7 +1776,7 @@ code_003_49c6:
 code_003_49f6:
     push HL                                            ;; 03:49f6 $e5
     push DE                                            ;; 03:49f7 $d5
-    call code_000_2b1e                                 ;; 03:49f8 $cd $1e $2b
+    call getRandomByte                                 ;; 03:49f8 $cd $1e $2b
     pop  HL                                            ;; 03:49fb $e1
     call MultiplyHL_by_A                               ;; 03:49fc $cd $7b $2b
     srl  H                                             ;; 03:49ff $cb $3c

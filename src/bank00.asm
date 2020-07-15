@@ -57,7 +57,7 @@ VBlankInterruptHandler:
     call hOAM_DMA_Routine                              ;; 00:006b $cd $80 $ff
     call updateVideoRegisters                          ;; 00:006e $cd $aa $00
     call code_000_2d57                                 ;; 00:0071 $cd $57 $2d
-    call code_000_2b1e                                 ;; 00:0074 $cd $1e $2b
+    call getRandomByte                                 ;; 00:0074 $cd $1e $2b
     ld   HL, wC0AE                                     ;; 00:0077 $21 $ae $c0
     ldh  A, [rIF]                                      ;; 00:007a $f0 $0f
     or   A, [HL]                                       ;; 00:007c $b6
@@ -840,7 +840,7 @@ code_000_051d:
     call code_000_05bb                                 ;; 00:051e $cd $bb $05
     push HL                                            ;; 00:0521 $e5
     ld   A, $08                                        ;; 00:0522 $3e $08 Bank
-    call code_000_29fb                                 ;; 00:0524 $cd $fb $29
+    call pushBankNrAndSwitch                           ;; 00:0524 $cd $fb $29
     pop  HL                                            ;; 00:0527 $e1
     pop  DE                                            ;; 00:0528 $d1
     ld   A, E                                          ;; 00:0529 $7b
@@ -890,7 +890,7 @@ code_000_051d:
     pop  BC                                            ;; 00:0563 $c1
     ld   H, C                                          ;; 00:0564 $61
     call code_000_048c                                 ;; 00:0565 $cd $8c $04
-    call code_000_2a0a                                 ;; 00:0568 $cd $0a $2a
+    call popBankNrAndSwitch                            ;; 00:0568 $cd $0a $2a
     ret                                                ;; 00:056b $c9
 
 code_000_056c:
@@ -898,7 +898,7 @@ code_000_056c:
     call code_000_05bb                                 ;; 00:056d $cd $bb $05
     push HL                                            ;; 00:0570 $e5
     ld   A, $08                                        ;; 00:0571 $3e $08 Bank
-    call code_000_29fb                                 ;; 00:0573 $cd $fb $29
+    call pushBankNrAndSwitch                           ;; 00:0573 $cd $fb $29
     pop  HL                                            ;; 00:0576 $e1
     pop  DE                                            ;; 00:0577 $d1
     ld   A, E                                          ;; 00:0578 $7b
@@ -948,7 +948,7 @@ code_000_056c:
     pop  BC                                            ;; 00:05b2 $c1
     ld   H, C                                          ;; 00:05b3 $61
     call code_000_0495                                 ;; 00:05b4 $cd $95 $04
-    call code_000_2a0a                                 ;; 00:05b7 $cd $0a $2a
+    call popBankNrAndSwitch                            ;; 00:05b7 $cd $0a $2a
     ret                                                ;; 00:05ba $c9
 
 code_000_05bb:
@@ -1397,7 +1397,7 @@ code_000_0828:
     ld   E, A                                          ;; 00:084e $5f
     call code_000_16af                                 ;; 00:084f $cd $af $16
     ld   DE, $0800                                     ;; 00:0852 $11 $00 $08
-    call code_000_29b2                                 ;; 00:0855 $cd $b2 $29
+    call HLandDE                                       ;; 00:0855 $cd $b2 $29
     pop  DE                                            ;; 00:0858 $d1
     jr   Z, .code_085d                                 ;; 00:0859 $28 $02
     ld   D, $04                                        ;; 00:085b $16 $04
@@ -2408,7 +2408,7 @@ code_000_0dbc:
 
 code_000_0de6:
     ld   A, [wD4A0]                                    ;; 00:0de6 $fa $a0 $d4
-    call code_000_29fb                                 ;; 00:0de9 $cd $fb $29
+    call pushBankNrAndSwitch                           ;; 00:0de9 $cd $fb $29
     ld   A, [wD49D]                                    ;; 00:0dec $fa $9d $d4
     ld   D, A                                          ;; 00:0def $57
     ld   E, $00                                        ;; 00:0df0 $1e $00
@@ -2429,7 +2429,7 @@ code_000_0de6:
     ld   E, A                                          ;; 00:0e07 $5f
     dec  B                                             ;; 00:0e08 $05
     jr   NZ, .code_0df4                                ;; 00:0e09 $20 $e9
-    call code_000_2a0a                                 ;; 00:0e0b $cd $0a $2a
+    call popBankNrAndSwitch                            ;; 00:0e0b $cd $0a $2a
     ret                                                ;; 00:0e0e $c9
 
 code_000_0e0f:
@@ -2557,7 +2557,7 @@ code_000_0eb2:
     ld   E, L                                          ;; 00:0eb3 $5d
     ld   A, [wD499]                                    ;; 00:0eb4 $fa $99 $d4
     ld   HL, $0eca                                     ;; 00:0eb7 $21 $ca $0e
-    call code_000_2b70                                 ;; 00:0eba $cd $70 $2b
+    call callJumptable                                 ;; 00:0eba $cd $70 $2b
     ret                                                ;; 00:0ebd $c9
     db   $00, $10, $10, $00, $10, $10, $00, $10        ;; 00:0ebe ????????
     db   $10, $00, $10, $10                            ;; 00:0ec6 ????
@@ -3827,7 +3827,7 @@ code_000_168e:
 code_000_16af:
     push DE                                            ;; 00:16af $d5
     ld   A, $08                                        ;; 00:16b0 $3e $08 Bank
-    call code_000_29fb                                 ;; 00:16b2 $cd $fb $29
+    call pushBankNrAndSwitch                           ;; 00:16b2 $cd $fb $29
     pop  DE                                            ;; 00:16b5 $d1
     ld   A, E                                          ;; 00:16b6 $7b
     cp   A, $14                                        ;; 00:16b7 $fe $14
@@ -3870,7 +3870,7 @@ code_000_16af:
     ld   H, [HL]                                       ;; 00:16f1 $66
     ld   L, A                                          ;; 00:16f2 $6f
     push HL                                            ;; 00:16f3 $e5
-    call code_000_2a0a                                 ;; 00:16f4 $cd $0a $2a
+    call popBankNrAndSwitch                            ;; 00:16f4 $cd $0a $2a
     pop  HL                                            ;; 00:16f7 $e1
     ret                                                ;; 00:16f8 $c9
     db   $cd, $0a, $2a, $21, $00, $00, $c9             ;; 00:16f9 ???????
@@ -3900,7 +3900,7 @@ code_000_1700:
     add  HL, DE                                        ;; 00:1724 $19
     push HL                                            ;; 00:1725 $e5
     ld   A, [wC3F0]                                    ;; 00:1726 $fa $f0 $c3
-    call code_000_29fb                                 ;; 00:1729 $cd $fb $29
+    call pushBankNrAndSwitch                           ;; 00:1729 $cd $fb $29
     pop  HL                                            ;; 00:172c $e1
     pop  DE                                            ;; 00:172d $d1
     pop  BC                                            ;; 00:172e $c1
@@ -3920,7 +3920,7 @@ code_000_1700:
     ld   A, B                                          ;; 00:173e $78
     call code_000_31ad                                 ;; 00:173f $cd $ad $31
 .code_1742:
-    call code_000_2a0a                                 ;; 00:1742 $cd $0a $2a
+    call popBankNrAndSwitch                            ;; 00:1742 $cd $0a $2a
     ret                                                ;; 00:1745 $c9
 .code_1746:
     ld   A, [wC0A1]                                    ;; 00:1746 $fa $a1 $c0
@@ -3966,7 +3966,7 @@ code_000_177e:
     push DE                                            ;; 00:178c $d5
     push BC                                            ;; 00:178d $c5
     ld   A, $08                                        ;; 00:178e $3e $08 Bank
-    call code_000_29fb                                 ;; 00:1790 $cd $fb $29
+    call pushBankNrAndSwitch                           ;; 00:1790 $cd $fb $29
     pop  BC                                            ;; 00:1793 $c1
     push BC                                            ;; 00:1794 $c5
     ld   A, $00                                        ;; 00:1795 $3e $00
@@ -4038,7 +4038,7 @@ code_000_177e:
     ld   A, $02                                        ;; 00:17fd $3e $02
     call code_000_0d08                                 ;; 00:17ff $cd $08 $0d
 .code_1802:
-    call code_000_2a0a                                 ;; 00:1802 $cd $0a $2a
+    call popBankNrAndSwitch                            ;; 00:1802 $cd $0a $2a
     ret                                                ;; 00:1805 $c9
 .code_1806:
     ld   A, B                                          ;; 00:1806 $78
@@ -4057,7 +4057,7 @@ code_000_1815:
     push BC                                            ;; 00:1817 $c5
     push DE                                            ;; 00:1818 $d5
     ld   A, $08                                        ;; 00:1819 $3e $08 Bank
-    call code_000_29fb                                 ;; 00:181b $cd $fb $29
+    call pushBankNrAndSwitch                           ;; 00:181b $cd $fb $29
     pop  DE                                            ;; 00:181e $d1
     pop  BC                                            ;; 00:181f $c1
     pop  AF                                            ;; 00:1820 $f1
@@ -4153,7 +4153,7 @@ code_000_1815:
     call code_000_1700                                 ;; 00:18b4 $cd $00 $17
     jr   .code_18b9                                    ;; 00:18b7 $18 $00
 .code_18b9:
-    call code_000_2a0a                                 ;; 00:18b9 $cd $0a $2a
+    call popBankNrAndSwitch                            ;; 00:18b9 $cd $0a $2a
     pop  DE                                            ;; 00:18bc $d1
     pop  BC                                            ;; 00:18bd $c1
     pop  DE                                            ;; 00:18be $d1
@@ -4174,7 +4174,7 @@ code_000_18c0:
     inc  E                                             ;; 00:18cf $1c
     call code_000_16af                                 ;; 00:18d0 $cd $af $16
     pop  DE                                            ;; 00:18d3 $d1
-    call code_000_29b2                                 ;; 00:18d4 $cd $b2 $29
+    call HLandDE                                       ;; 00:18d4 $cd $b2 $29
     pop  AF                                            ;; 00:18d7 $f1
     pop  DE                                            ;; 00:18d8 $d1
     call code_000_190f                                 ;; 00:18d9 $cd $0f $19
@@ -4249,39 +4249,39 @@ code_000_190f:
 .code_1936:
     pop  HL                                            ;; 00:1936 $e1
     ld   DE, $0400                                     ;; 00:1937 $11 $00 $04
-    call code_000_29b2                                 ;; 00:193a $cd $b2 $29
+    call HLandDE                                       ;; 00:193a $cd $b2 $29
     pop  DE                                            ;; 00:193d $d1
     ld   B, $00                                        ;; 00:193e $06 $00
     ret                                                ;; 00:1940 $c9
 .code_1941:
     pop  HL                                            ;; 00:1941 $e1
     ld   DE, $0200                                     ;; 00:1942 $11 $00 $02
-    call code_000_29b2                                 ;; 00:1945 $cd $b2 $29
+    call HLandDE                                       ;; 00:1945 $cd $b2 $29
     pop  DE                                            ;; 00:1948 $d1
     ld   B, $00                                        ;; 00:1949 $06 $00
     ret                                                ;; 00:194b $c9
 .code_194c:
     pop  HL                                            ;; 00:194c $e1
     ld   DE, $0100                                     ;; 00:194d $11 $00 $01
-    call code_000_29b2                                 ;; 00:1950 $cd $b2 $29
+    call HLandDE                                       ;; 00:1950 $cd $b2 $29
     pop  DE                                            ;; 00:1953 $d1
     ld   B, $00                                        ;; 00:1954 $06 $00
     ret                                                ;; 00:1956 $c9
 .code_1957:
     pop  HL                                            ;; 00:1957 $e1
     ld   DE, $00c0                                     ;; 00:1958 $11 $c0 $00
-    call code_000_29b2                                 ;; 00:195b $cd $b2 $29
+    call HLandDE                                       ;; 00:195b $cd $b2 $29
     pop  DE                                            ;; 00:195e $d1
     ld   B, $00                                        ;; 00:195f $06 $00
     ret  Z                                             ;; 00:1961 $c8
     push DE                                            ;; 00:1962 $d5
     ld   DE, $0080                                     ;; 00:1963 $11 $80 $00
     push HL                                            ;; 00:1966 $e5
-    call code_000_29b2                                 ;; 00:1967 $cd $b2 $29
+    call HLandDE                                       ;; 00:1967 $cd $b2 $29
     pop  HL                                            ;; 00:196a $e1
     jr   Z, .code_197d                                 ;; 00:196b $28 $10
     ld   DE, $0040                                     ;; 00:196d $11 $40 $00
-    call code_000_29b2                                 ;; 00:1970 $cd $b2 $29
+    call HLandDE                                       ;; 00:1970 $cd $b2 $29
     pop  DE                                            ;; 00:1973 $d1
     ld   B, $00                                        ;; 00:1974 $06 $00
     ret  NZ                                            ;; 00:1976 $c0
@@ -4297,7 +4297,7 @@ code_000_190f:
 .code_1983:
     pop  HL                                            ;; 00:1983 $e1
     ld   DE, $0030                                     ;; 00:1984 $11 $30 $00
-    call code_000_29b2                                 ;; 00:1987 $cd $b2 $29
+    call HLandDE                                       ;; 00:1987 $cd $b2 $29
     pop  DE                                            ;; 00:198a $d1
     jr   Z, .code_1991                                 ;; 00:198b $28 $04
     call code_000_1a0b                                 ;; 00:198d $cd $0b $1a
@@ -4343,7 +4343,7 @@ code_000_190f:
 .code_19cd:
     call code_000_16af                                 ;; 00:19cd $cd $af $16
     ld   DE, $0008                                     ;; 00:19d0 $11 $08 $00
-    call code_000_29b2                                 ;; 00:19d3 $cd $b2 $29
+    call HLandDE                                       ;; 00:19d3 $cd $b2 $29
     pop  BC                                            ;; 00:19d6 $c1
     ret                                                ;; 00:19d7 $c9
 .code_19d8:
@@ -4375,7 +4375,7 @@ code_000_190f:
     push BC                                            ;; 00:19ff $c5
     call code_000_16af                                 ;; 00:1a00 $cd $af $16
     ld   DE, $0008                                     ;; 00:1a03 $11 $08 $00
-    call code_000_29b2                                 ;; 00:1a06 $cd $b2 $29
+    call HLandDE                                       ;; 00:1a06 $cd $b2 $29
     pop  BC                                            ;; 00:1a09 $c1
     ret                                                ;; 00:1a0a $c9
 
@@ -4383,11 +4383,11 @@ code_000_1a0b:
     push DE                                            ;; 00:1a0b $d5
     ld   DE, $0020                                     ;; 00:1a0c $11 $20 $00
     push HL                                            ;; 00:1a0f $e5
-    call code_000_29b2                                 ;; 00:1a10 $cd $b2 $29
+    call HLandDE                                       ;; 00:1a10 $cd $b2 $29
     pop  HL                                            ;; 00:1a13 $e1
     jr   Z, .code_1a28                                 ;; 00:1a14 $28 $12
     ld   DE, $0010                                     ;; 00:1a16 $11 $10 $00
-    call code_000_29b2                                 ;; 00:1a19 $cd $b2 $29
+    call HLandDE                                       ;; 00:1a19 $cd $b2 $29
     pop  DE                                            ;; 00:1a1c $d1
     ld   B, $00                                        ;; 00:1a1d $06 $00
     ret  NZ                                            ;; 00:1a1f $c0
@@ -4422,7 +4422,7 @@ code_000_1a3b:
 code_000_1a44:
     push AF                                            ;; 00:1a44 $f5
     ld   A, $08                                        ;; 00:1a45 $3e $08 Bank
-    call code_000_29fb                                 ;; 00:1a47 $cd $fb $29
+    call pushBankNrAndSwitch                           ;; 00:1a47 $cd $fb $29
     pop  AF                                            ;; 00:1a4a $f1
     call code_000_1b19                                 ;; 00:1a4b $cd $19 $1b
     ld   B, $04                                        ;; 00:1a4e $06 $04
@@ -4446,7 +4446,7 @@ code_000_1a44:
     ld   A, C                                          ;; 00:1a67 $79
     cp   A, $00                                        ;; 00:1a68 $fe $00
     push AF                                            ;; 00:1a6a $f5
-    call code_000_2a0a                                 ;; 00:1a6b $cd $0a $2a
+    call popBankNrAndSwitch                            ;; 00:1a6b $cd $0a $2a
     pop  AF                                            ;; 00:1a6e $f1
     ret                                                ;; 00:1a6f $c9
 
@@ -4640,7 +4640,7 @@ code_000_1b4e:
 code_000_1b74:
     push HL                                            ;; 00:1b74 $e5
     ld   A, $08                                        ;; 00:1b75 $3e $08 Bank
-    call code_000_29fb                                 ;; 00:1b77 $cd $fb $29
+    call pushBankNrAndSwitch                           ;; 00:1b77 $cd $fb $29
     pop  HL                                            ;; 00:1b7a $e1
     push HL                                            ;; 00:1b7b $e5
     call code_000_1b2b                                 ;; 00:1b7c $cd $2b $1b
@@ -4666,7 +4666,7 @@ code_000_1b8c:
     pop  HL                                            ;; 00:1b98 $e1
     dec  B                                             ;; 00:1b99 $05
     jp   NZ, code_000_1b85                             ;; 00:1b9a $c2 $85 $1b
-    call code_000_2a0a                                 ;; 00:1b9d $cd $0a $2a
+    call popBankNrAndSwitch                            ;; 00:1b9d $cd $0a $2a
     ret                                                ;; 00:1ba0 $c9
 
 code_000_1ba1:
@@ -4762,12 +4762,12 @@ code_000_1ba1:
     jr   Z, .code_1c2d                                 ;; 00:1c2a $28 $01
     dec  A                                             ;; 00:1c2c $3d
 .code_1c2d:
-    call code_000_29fb                                 ;; 00:1c2d $cd $fb $29
+    call pushBankNrAndSwitch                           ;; 00:1c2d $cd $fb $29
     pop  DE                                            ;; 00:1c30 $d1
     pop  HL                                            ;; 00:1c31 $e1
     ld   B, $10                                        ;; 00:1c32 $06 $10
     call copyHLtoDE                                    ;; 00:1c34 $cd $49 $2b
-    call code_000_2a0a                                 ;; 00:1c37 $cd $0a $2a
+    call popBankNrAndSwitch                            ;; 00:1c37 $cd $0a $2a
 .code_1c3a:
     pop  HL                                            ;; 00:1c3a $e1
     ret                                                ;; 00:1c3b $c9
@@ -4911,7 +4911,7 @@ code_000_1dda:
     cp   A, $8c                                        ;; 00:1de8 $fe $8c
     ret  NC                                            ;; 00:1dea $d0
     ld   A, $01                                        ;; 00:1deb $3e $01 Bank
-    call code_000_29fb                                 ;; 00:1ded $cd $fb $29
+    call pushBankNrAndSwitch                           ;; 00:1ded $cd $fb $29
     ld   A, [wCEE8]                                    ;; 00:1df0 $fa $e8 $ce
     ld   B, A                                          ;; 00:1df3 $47
     ld   HL, wC8E8                                     ;; 00:1df4 $21 $e8 $c8
@@ -4964,7 +4964,7 @@ code_000_1dda:
     jr   NZ, .code_1df7                                ;; 00:1e2f $20 $c6
     ld   A, $00                                        ;; 00:1e31 $3e $00
     ld   [wCEE8], A                                    ;; 00:1e33 $ea $e8 $ce
-    call code_000_2a0a                                 ;; 00:1e36 $cd $0a $2a
+    call popBankNrAndSwitch                            ;; 00:1e36 $cd $0a $2a
     ret                                                ;; 00:1e39 $c9
 .code_1e3a:
     cp   A, $10                                        ;; 00:1e3a $fe $10
@@ -4985,7 +4985,7 @@ code_000_1dda:
     ld   [wCEE8], A                                    ;; 00:1e4f $ea $e8 $ce
     push HL                                            ;; 00:1e52 $e5
     push AF                                            ;; 00:1e53 $f5
-    call code_000_2a0a                                 ;; 00:1e54 $cd $0a $2a
+    call popBankNrAndSwitch                            ;; 00:1e54 $cd $0a $2a
     pop  AF                                            ;; 00:1e57 $f1
     pop  HL                                            ;; 00:1e58 $e1
     cp   A, $00                                        ;; 00:1e59 $fe $00
@@ -5071,7 +5071,7 @@ code_000_1ed7:
     ld   HL, code_000_1fc2                             ;; 00:1ee6 $21 $c2 $1f
     push HL                                            ;; 00:1ee9 $e5
     ld   A, $01                                        ;; 00:1eea $3e $01 Bank
-    call code_000_29fb                                 ;; 00:1eec $cd $fb $29
+    call pushBankNrAndSwitch                           ;; 00:1eec $cd $fb $29
     ld   A, [wC0B2]                                    ;; 00:1eef $fa $b2 $c0
     add  A, A                                          ;; 00:1ef2 $87
     ld   L, A                                          ;; 00:1ef3 $6f
@@ -5100,7 +5100,7 @@ code_000_1f06:
     ld   HL, code_000_1fc2                             ;; 00:1f15 $21 $c2 $1f
     push HL                                            ;; 00:1f18 $e5
     ld   A, $02                                        ;; 00:1f19 $3e $02 Bank
-    call code_000_29fb                                 ;; 00:1f1b $cd $fb $29
+    call pushBankNrAndSwitch                           ;; 00:1f1b $cd $fb $29
     ld   A, [wC0B2]                                    ;; 00:1f1e $fa $b2 $c0
     add  A, A                                          ;; 00:1f21 $87
     ld   L, A                                          ;; 00:1f22 $6f
@@ -5127,7 +5127,7 @@ code_000_1f35:
     ld   HL, code_000_1fc2                             ;; 00:1f44 $21 $c2 $1f
     push HL                                            ;; 00:1f47 $e5
     ld   A, $03                                        ;; 00:1f48 $3e $03 Bank
-    call code_000_29fb                                 ;; 00:1f4a $cd $fb $29
+    call pushBankNrAndSwitch                           ;; 00:1f4a $cd $fb $29
     ld   A, [wC0B2]                                    ;; 00:1f4d $fa $b2 $c0
     add  A, A                                          ;; 00:1f50 $87
     ld   L, A                                          ;; 00:1f51 $6f
@@ -5154,7 +5154,7 @@ code_000_1f64:
     ld   HL, code_000_1fc2                             ;; 00:1f73 $21 $c2 $1f
     push HL                                            ;; 00:1f76 $e5
     ld   A, $04                                        ;; 00:1f77 $3e $04 Bank
-    call code_000_29fb                                 ;; 00:1f79 $cd $fb $29
+    call pushBankNrAndSwitch                           ;; 00:1f79 $cd $fb $29
     ld   A, [wC0B2]                                    ;; 00:1f7c $fa $b2 $c0
     add  A, A                                          ;; 00:1f7f $87
     ld   L, A                                          ;; 00:1f80 $6f
@@ -5181,7 +5181,7 @@ code_000_1f93:
     ld   HL, code_000_1fc2                             ;; 00:1fa2 $21 $c2 $1f
     push HL                                            ;; 00:1fa5 $e5
     ld   A, $09                                        ;; 00:1fa6 $3e $09 Bank
-    call code_000_29fb                                 ;; 00:1fa8 $cd $fb $29
+    call pushBankNrAndSwitch                           ;; 00:1fa8 $cd $fb $29
     ld   A, [wC0B2]                                    ;; 00:1fab $fa $b2 $c0
     add  A, A                                          ;; 00:1fae $87
     ld   L, A                                          ;; 00:1faf $6f
@@ -5200,7 +5200,7 @@ code_000_1f93:
 code_000_1fc2:
     push AF                                            ;; 00:1fc2 $f5
     push HL                                            ;; 00:1fc3 $e5
-    call code_000_2a0a                                 ;; 00:1fc4 $cd $0a $2a
+    call popBankNrAndSwitch                            ;; 00:1fc4 $cd $0a $2a
     pop  HL                                            ;; 00:1fc7 $e1
     pop  AF                                            ;; 00:1fc8 $f1
     ret                                                ;; 00:1fc9 $c9
@@ -5241,10 +5241,10 @@ InitPreIntEnable:
     ld   HL, hOAM_DMA_Routine                          ;; 00:2009 $21 $80 $ff
     ld   B, $80                                        ;; 00:200c $06 $80
     call fillMemory                                    ;; 00:200e $cd $5d $2b
-    ld   HL, wC0C0                                     ;; 00:2011 $21 $c0 $c0
+    ld   HL, wBankStack                                ;; 00:2011 $21 $c0 $c0
     ld   [HL], $01                                     ;; 00:2014 $36 $01
     ld   A, L                                          ;; 00:2016 $7d
-    ldh  [hFF8A], A                                    ;; 00:2017 $e0 $8a
+    ldh  [hBankStackPointer], A                        ;; 00:2017 $e0 $8a
     ld   A, $08                                        ;; 00:2019 $3e $08 Bank
     ld   [MBCBankSelect], A                            ;; 00:201b $ea $00 $21
     ld   HL, $6700                                     ;; 00:201e $21 $00 $67
@@ -5421,9 +5421,9 @@ DisableLCD:
 
 code_000_217b:
     ld   A, $0f                                        ;; 00:217b $3e $0f
-    call code_000_29fb                                 ;; 00:217d $cd $fb $29
+    call pushBankNrAndSwitch                           ;; 00:217d $cd $fb $29
     call $4000                                         ;; 00:2180 $cd $00 $40
-    call code_000_2a0a                                 ;; 00:2183 $cd $0a $2a
+    call popBankNrAndSwitch                            ;; 00:2183 $cd $0a $2a
     call code_000_0447                                 ;; 00:2186 $cd $47 $04
     ld   A, [wC0A2]                                    ;; 00:2189 $fa $a2 $c0
     ld   [wC0A1], A                                    ;; 00:218c $ea $a1 $c0
@@ -5679,7 +5679,7 @@ code_000_22fe:
     cp   A, $00                                        ;; 00:2302 $fe $00
     jr   Z, .code_2359                                 ;; 00:2304 $28 $53
     ld   A, [wC3F0]                                    ;; 00:2306 $fa $f0 $c3
-    call code_000_29fb                                 ;; 00:2309 $cd $fb $29
+    call pushBankNrAndSwitch                           ;; 00:2309 $cd $fb $29
     pop  AF                                            ;; 00:230c $f1
     push AF                                            ;; 00:230d $f5
     cpl                                                ;; 00:230e $2f
@@ -5723,7 +5723,7 @@ code_000_22fe:
     ld   A, B                                          ;; 00:234f $78
     ld   B, $00                                        ;; 00:2350 $06 $00
     call Z, code_000_288f                              ;; 00:2352 $cc $8f $28
-    call code_000_2a0a                                 ;; 00:2355 $cd $0a $2a
+    call popBankNrAndSwitch                            ;; 00:2355 $cd $0a $2a
     ret                                                ;; 00:2358 $c9
 .code_2359:
     pop  AF                                            ;; 00:2359 $f1
@@ -5735,7 +5735,7 @@ code_000_235b:
     cp   A, $00                                        ;; 00:235f $fe $00
     jr   Z, .code_2383                                 ;; 00:2361 $28 $20
     ld   A, [wC3F0]                                    ;; 00:2363 $fa $f0 $c3
-    call code_000_29fb                                 ;; 00:2366 $cd $fb $29
+    call pushBankNrAndSwitch                           ;; 00:2366 $cd $fb $29
     pop  AF                                            ;; 00:2369 $f1
     ld   C, A                                          ;; 00:236a $4f
     ld   A, [wC3F4]                                    ;; 00:236b $fa $f4 $c3
@@ -5749,7 +5749,7 @@ code_000_235b:
     ld   H, $00                                        ;; 00:2379 $26 $00
     add  HL, HL                                        ;; 00:237b $29
     call code_000_2281                                 ;; 00:237c $cd $81 $22
-    call code_000_2a0a                                 ;; 00:237f $cd $0a $2a
+    call popBankNrAndSwitch                            ;; 00:237f $cd $0a $2a
     ret                                                ;; 00:2382 $c9
 .code_2383:
     pop  AF                                            ;; 00:2383 $f1
@@ -5805,7 +5805,7 @@ code_000_23b9:
     ret  Z                                             ;; 00:23c0 $c8
     push DE                                            ;; 00:23c1 $d5
     ld   A, [wC3F0]                                    ;; 00:23c2 $fa $f0 $c3
-    call code_000_29fb                                 ;; 00:23c5 $cd $fb $29
+    call pushBankNrAndSwitch                           ;; 00:23c5 $cd $fb $29
     pop  DE                                            ;; 00:23c8 $d1
     call code_000_2385                                 ;; 00:23c9 $cd $85 $23
     jr   NZ, .code_23ea                                ;; 00:23cc $20 $1c
@@ -5823,12 +5823,12 @@ code_000_23b9:
     ld   B, [HL]                                       ;; 00:23e2 $46
 .code_23e3:
     push BC                                            ;; 00:23e3 $c5
-    call code_000_2a0a                                 ;; 00:23e4 $cd $0a $2a
+    call popBankNrAndSwitch                            ;; 00:23e4 $cd $0a $2a
     pop  BC                                            ;; 00:23e7 $c1
     xor  A, A                                          ;; 00:23e8 $af
     ret                                                ;; 00:23e9 $c9
 .code_23ea:
-    call code_000_2a0a                                 ;; 00:23ea $cd $0a $2a
+    call popBankNrAndSwitch                            ;; 00:23ea $cd $0a $2a
     xor  A, A                                          ;; 00:23ed $af
     ld   B, A                                          ;; 00:23ee $47
     inc  A                                             ;; 00:23ef $3c
@@ -5852,7 +5852,7 @@ code_000_2400:
     push AF                                            ;; 00:2400 $f5
     push DE                                            ;; 00:2401 $d5
     ld   A, [wC3F0]                                    ;; 00:2402 $fa $f0 $c3
-    call code_000_29fb                                 ;; 00:2405 $cd $fb $29
+    call pushBankNrAndSwitch                           ;; 00:2405 $cd $fb $29
     pop  DE                                            ;; 00:2408 $d1
     push DE                                            ;; 00:2409 $d5
     call code_000_23f1                                 ;; 00:240a $cd $f1 $23
@@ -5869,7 +5869,7 @@ code_000_2400:
     pop  DE                                            ;; 00:241d $d1
     pop  AF                                            ;; 00:241e $f1
     call code_000_056c                                 ;; 00:241f $cd $6c $05
-    call code_000_2a0a                                 ;; 00:2422 $cd $0a $2a
+    call popBankNrAndSwitch                            ;; 00:2422 $cd $0a $2a
     ret                                                ;; 00:2425 $c9
 
 code_000_2426:
@@ -5914,7 +5914,7 @@ LoadMapTiles:
 
 code_000_2460:
     ld   A, [wC3F0]                                    ;; 00:2460 $fa $f0 $c3
-    call code_000_29fb                                 ;; 00:2463 $cd $fb $29
+    call pushBankNrAndSwitch                           ;; 00:2463 $cd $fb $29
     ld   A, [wC3FF]                                    ;; 00:2466 $fa $ff $c3
     ld   H, A                                          ;; 00:2469 $67
     ld   A, [wC3FE]                                    ;; 00:246a $fa $fe $c3
@@ -5929,12 +5929,12 @@ code_000_2460:
     ld   C, $c9                                        ;; 00:2479 $0e $c9
     pop  HL                                            ;; 00:247b $e1
     call code_000_31ad                                 ;; 00:247c $cd $ad $31
-    call code_000_2a0a                                 ;; 00:247f $cd $0a $2a
+    call popBankNrAndSwitch                            ;; 00:247f $cd $0a $2a
     ret                                                ;; 00:2482 $c9
 
 code_000_2483:
     ld   A, [wC3F0]                                    ;; 00:2483 $fa $f0 $c3
-    call code_000_29fb                                 ;; 00:2486 $cd $fb $29
+    call pushBankNrAndSwitch                           ;; 00:2486 $cd $fb $29
     ld   A, [wC3FF]                                    ;; 00:2489 $fa $ff $c3
     ld   H, A                                          ;; 00:248c $67
     ld   A, [wC3FE]                                    ;; 00:248d $fa $fe $c3
@@ -5950,7 +5950,7 @@ code_000_2483:
     ld   C, $c9                                        ;; 00:249d $0e $c9
     pop  HL                                            ;; 00:249f $e1
     call code_000_31ad                                 ;; 00:24a0 $cd $ad $31
-    call code_000_2a0a                                 ;; 00:24a3 $cd $0a $2a
+    call popBankNrAndSwitch                            ;; 00:24a3 $cd $0a $2a
     ret                                                ;; 00:24a6 $c9
 
 code_000_24a7:
@@ -5958,7 +5958,7 @@ code_000_24a7:
     set  $07, A                                        ;; 00:24aa $cb $ff
     ld   [wC400], A                                    ;; 00:24ac $ea $00 $c4
     ld   A, [wC3F0]                                    ;; 00:24af $fa $f0 $c3
-    call code_000_29fb                                 ;; 00:24b2 $cd $fb $29
+    call pushBankNrAndSwitch                           ;; 00:24b2 $cd $fb $29
     ld   A, [wC3FF]                                    ;; 00:24b5 $fa $ff $c3
     ld   H, A                                          ;; 00:24b8 $67
     ld   A, [wC3FE]                                    ;; 00:24b9 $fa $fe $c3
@@ -5975,12 +5975,12 @@ code_000_24a7:
     ld   C, $c9                                        ;; 00:24ca $0e $c9
     pop  HL                                            ;; 00:24cc $e1
     call code_000_31ad                                 ;; 00:24cd $cd $ad $31
-    call code_000_2a0a                                 ;; 00:24d0 $cd $0a $2a
+    call popBankNrAndSwitch                            ;; 00:24d0 $cd $0a $2a
     ret                                                ;; 00:24d3 $c9
 
 code_000_24d4:
     ld   A, [wC3F0]                                    ;; 00:24d4 $fa $f0 $c3
-    call code_000_29fb                                 ;; 00:24d7 $cd $fb $29
+    call pushBankNrAndSwitch                           ;; 00:24d7 $cd $fb $29
     ld   A, [wC3FF]                                    ;; 00:24da $fa $ff $c3
     ld   H, A                                          ;; 00:24dd $67
     ld   A, [wC3FE]                                    ;; 00:24de $fa $fe $c3
@@ -5996,13 +5996,13 @@ code_000_24d4:
     pop  HL                                            ;; 00:24ef $e1
     call code_000_3213                                 ;; 00:24f0 $cd $13 $32
     push HL                                            ;; 00:24f3 $e5
-    call code_000_2a0a                                 ;; 00:24f4 $cd $0a $2a
+    call popBankNrAndSwitch                            ;; 00:24f4 $cd $0a $2a
     pop  HL                                            ;; 00:24f7 $e1
     ret                                                ;; 00:24f8 $c9
 
 code_000_24f9:
     ld   A, [wC3F0]                                    ;; 00:24f9 $fa $f0 $c3
-    call code_000_29fb                                 ;; 00:24fc $cd $fb $29
+    call pushBankNrAndSwitch                           ;; 00:24fc $cd $fb $29
     ld   A, [wC3FF]                                    ;; 00:24ff $fa $ff $c3
     ld   H, A                                          ;; 00:2502 $67
     ld   A, [wC3FE]                                    ;; 00:2503 $fa $fe $c3
@@ -6019,13 +6019,13 @@ code_000_24f9:
     pop  HL                                            ;; 00:2515 $e1
     call code_000_3213                                 ;; 00:2516 $cd $13 $32
     push HL                                            ;; 00:2519 $e5
-    call code_000_2a0a                                 ;; 00:251a $cd $0a $2a
+    call popBankNrAndSwitch                            ;; 00:251a $cd $0a $2a
     pop  HL                                            ;; 00:251d $e1
     ret                                                ;; 00:251e $c9
 
 code_000_251f:
     ld   A, [wC3F0]                                    ;; 00:251f $fa $f0 $c3
-    call code_000_29fb                                 ;; 00:2522 $cd $fb $29
+    call pushBankNrAndSwitch                           ;; 00:2522 $cd $fb $29
     ld   A, [wC3FF]                                    ;; 00:2525 $fa $ff $c3
     ld   H, A                                          ;; 00:2528 $67
     ld   A, [wC3FE]                                    ;; 00:2529 $fa $fe $c3
@@ -6043,7 +6043,7 @@ code_000_251f:
     pop  HL                                            ;; 00:253c $e1
     call code_000_3213                                 ;; 00:253d $cd $13 $32
     push HL                                            ;; 00:2540 $e5
-    call code_000_2a0a                                 ;; 00:2541 $cd $0a $2a
+    call popBankNrAndSwitch                            ;; 00:2541 $cd $0a $2a
     pop  HL                                            ;; 00:2544 $e1
     ret                                                ;; 00:2545 $c9
 
@@ -6213,7 +6213,7 @@ code_000_2617:
     push AF                                            ;; 00:2619 $f5
     push HL                                            ;; 00:261a $e5
     ld   A, [wC3F0]                                    ;; 00:261b $fa $f0 $c3
-    call code_000_29fb                                 ;; 00:261e $cd $fb $29
+    call pushBankNrAndSwitch                           ;; 00:261e $cd $fb $29
     pop  HL                                            ;; 00:2621 $e1
     ld   A, [wRoomY]                                   ;; 00:2622 $fa $f7 $c3
     ld   D, A                                          ;; 00:2625 $57
@@ -6310,7 +6310,7 @@ code_000_2617:
     call code_000_255d                                 ;; 00:26b9 $cd $5d $25
 .code_26bc:
     call code_000_1b74                                 ;; 00:26bc $cd $74 $1b
-    call code_000_2a0a                                 ;; 00:26bf $cd $0a $2a
+    call popBankNrAndSwitch                            ;; 00:26bf $cd $0a $2a
     pop  DE                                            ;; 00:26c2 $d1
     pop  HL                                            ;; 00:26c3 $e1
     ret                                                ;; 00:26c4 $c9
@@ -6325,7 +6325,7 @@ code_000_2617:
 .code_26d4:
     push HL                                            ;; 00:26d4 $e5
     push DE                                            ;; 00:26d5 $d5
-    call code_000_2a0a                                 ;; 00:26d6 $cd $0a $2a
+    call popBankNrAndSwitch                            ;; 00:26d6 $cd $0a $2a
     pop  DE                                            ;; 00:26d9 $d1
     pop  HL                                            ;; 00:26da $e1
     ret                                                ;; 00:26db $c9
@@ -6335,7 +6335,7 @@ code_000_26dc:
     push DE                                            ;; 00:26df $d5
     push AF                                            ;; 00:26e0 $f5
     ld   A, $08                                        ;; 00:26e1 $3e $08 Bank
-    call code_000_29fb                                 ;; 00:26e3 $cd $fb $29
+    call pushBankNrAndSwitch                           ;; 00:26e3 $cd $fb $29
     pop  AF                                            ;; 00:26e6 $f1
     ld   HL, $000b                                     ;; 00:26e7 $21 $0b $00
     call MultiplyHL_by_A                               ;; 00:26ea $cd $7b $2b
@@ -6363,9 +6363,9 @@ code_000_26dc:
     ld   HL, $4000                                     ;; 00:270a $21 $00 $40
     add  HL, BC                                        ;; 00:270d $09
     call code_000_1af3                                 ;; 00:270e $cd $f3 $1a
-    call code_000_2a0a                                 ;; 00:2711 $cd $0a $2a
+    call popBankNrAndSwitch                            ;; 00:2711 $cd $0a $2a
     ld   A, [wC3F0]                                    ;; 00:2714 $fa $f0 $c3
-    call code_000_29fb                                 ;; 00:2717 $cd $fb $29
+    call pushBankNrAndSwitch                           ;; 00:2717 $cd $fb $29
     pop  DE                                            ;; 00:271a $d1
     ld   A, [wC3F3]                                    ;; 00:271b $fa $f3 $c3
     ld   H, A                                          ;; 00:271e $67
@@ -6397,7 +6397,7 @@ code_000_26dc:
     ld   [wC3FE], A                                    ;; 00:2752 $ea $fe $c3
     call LoadMapTiles                                  ;; 00:2755 $cd $2b $24
     call code_000_1b74                                 ;; 00:2758 $cd $74 $1b
-    call code_000_2a0a                                 ;; 00:275b $cd $0a $2a
+    call popBankNrAndSwitch                            ;; 00:275b $cd $0a $2a
     ret                                                ;; 00:275e $c9
 .code_275f:
     push HL                                            ;; 00:275f $e5
@@ -6416,7 +6416,7 @@ code_000_26dc:
     ld   A, $00                                        ;; 00:2776 $3e $00
     call code_000_255d                                 ;; 00:2778 $cd $5d $25
     call code_000_1b74                                 ;; 00:277b $cd $74 $1b
-    call code_000_2a0a                                 ;; 00:277e $cd $0a $2a
+    call popBankNrAndSwitch                            ;; 00:277e $cd $0a $2a
     ret                                                ;; 00:2781 $c9
 
 code_000_2782:
@@ -6846,7 +6846,7 @@ code_000_299a:
     ld   A, $04                                        ;; 00:29af $3e $04
     ret                                                ;; 00:29b1 $c9
 
-code_000_29b2:
+HLandDE:
     ld   A, H                                          ;; 00:29b2 $7c
     and  A, D                                          ;; 00:29b3 $a2
     ld   H, A                                          ;; 00:29b4 $67
@@ -6885,6 +6885,23 @@ code_000_29dc:
     add  A, $04                                        ;; 00:29e1 $c6 $04
     ret                                                ;; 00:29e3 $c9
 
+; WTF Does this do?
+; 0x00 -> 0x00
+; 0x01 -> 0x02
+; 0x02 -> 0x01
+; 0x03 -> 0x00
+; 0x04 -> 0x08
+; 0x05 -> 0x0A
+; 0x06 -> 0x09
+; 0x07 -> 0x08
+; 0x08 -> 0x04
+; 0x09 -> 0x06
+; 0x0A -> 0x05
+; 0x0B -> 0x04
+; 0x0C -> 0x04
+; 0x0D -> 0x02
+; 0x0E -> 0x01
+; 0x0F -> 0x00
 code_000_29e4:
     and  A, $0f                                        ;; 00:29e4 $e6 $0f
     bit  $00, A                                        ;; 00:29e6 $cb $47
@@ -6903,11 +6920,11 @@ code_000_29e4:
 .code_29fa:
     ret                                                ;; 00:29fa $c9
 
-code_000_29fb:
+pushBankNrAndSwitch:
     ld   H, A                                          ;; 00:29fb $67
-    ldh  A, [hFF8A]                                    ;; 00:29fc $f0 $8a
+    ldh  A, [hBankStackPointer]                        ;; 00:29fc $f0 $8a
     inc  A                                             ;; 00:29fe $3c
-    ldh  [hFF8A], A                                    ;; 00:29ff $e0 $8a
+    ldh  [hBankStackPointer], A                        ;; 00:29ff $e0 $8a
     ld   L, A                                          ;; 00:2a01 $6f
     ld   A, H                                          ;; 00:2a02 $7c
     ld   H, $c0                                        ;; 00:2a03 $26 $c0
@@ -6915,24 +6932,24 @@ code_000_29fb:
     ld   [MBCBankSelect], A                            ;; 00:2a06 $ea $00 $21
     ret                                                ;; 00:2a09 $c9
 
-code_000_2a0a:
-    ldh  A, [hFF8A]                                    ;; 00:2a0a $f0 $8a
+popBankNrAndSwitch:
+    ldh  A, [hBankStackPointer]                        ;; 00:2a0a $f0 $8a
     dec  A                                             ;; 00:2a0c $3d
-    ldh  [hFF8A], A                                    ;; 00:2a0d $e0 $8a
+    ldh  [hBankStackPointer], A                        ;; 00:2a0d $e0 $8a
     ld   L, A                                          ;; 00:2a0f $6f
     ld   H, $c0                                        ;; 00:2a10 $26 $c0
     ld   A, [HL]                                       ;; 00:2a12 $7e
     ld   [MBCBankSelect], A                            ;; 00:2a13 $ea $00 $21
     ret                                                ;; 00:2a16 $c9
 
-code_000_2a17:
-    ldh  A, [hFF8A]                                    ;; 00:2a17 $f0 $8a
+getCurrentBankNr:
+    ldh  A, [hBankStackPointer]                        ;; 00:2a17 $f0 $8a
     ld   L, A                                          ;; 00:2a19 $6f
     ld   H, $c0                                        ;; 00:2a1a $26 $c0
     ld   A, [HL]                                       ;; 00:2a1c $7e
     ret                                                ;; 00:2a1d $c9
 
-data_000_2a1e:
+rndDataTable:
     db   $c6, $7e, $81, $6b, $4b, $fb, $e2, $54        ;; 00:2a1e ........
     db   $f6, $bd, $df, $7c, $1c, $e1, $87, $01        ;; 00:2a26 ........
     db   $bf, $31, $de, $56, $72, $0f, $47, $67        ;; 00:2a2e ........
@@ -6966,20 +6983,22 @@ data_000_2a1e:
     db   $84, $c4, $cb, $b9, $18, $f2, $d0, $a3        ;; 00:2b0e ........
     db   $f0, $82, $b8, $e8, $40, $0e, $ec, $97        ;; 00:2b16 ........
 
-code_000_2b1e:
+; It is an assumption that this gets a random byte, but the code
+; makes no sense for anything else.
+getRandomByte:
     push DE                                            ;; 00:2b1e $d5
-    ld   A, [wC0B0]                                    ;; 00:2b1f $fa $b0 $c0
+    ld   A, [wRndState0]                               ;; 00:2b1f $fa $b0 $c0
     inc  A                                             ;; 00:2b22 $3c
-    ld   [wC0B0], A                                    ;; 00:2b23 $ea $b0 $c0
+    ld   [wRndState0], A                               ;; 00:2b23 $ea $b0 $c0
     ld   L, A                                          ;; 00:2b26 $6f
-    ld   A, [wC0B1]                                    ;; 00:2b27 $fa $b1 $c0
+    ld   A, [wRndState1]                               ;; 00:2b27 $fa $b1 $c0
     cp   A, L                                          ;; 00:2b2a $bd
     jr   NZ, .code_2b31                                ;; 00:2b2b $20 $04
     dec  A                                             ;; 00:2b2d $3d
-    ld   [wC0B1], A                                    ;; 00:2b2e $ea $b1 $c0
+    ld   [wRndState1], A                               ;; 00:2b2e $ea $b1 $c0
 .code_2b31:
     ld   H, $00                                        ;; 00:2b31 $26 $00
-    ld   DE, data_000_2a1e                             ;; 00:2b33 $11 $1e $2a
+    ld   DE, rndDataTable                              ;; 00:2b33 $11 $1e $2a
     add  HL, DE                                        ;; 00:2b36 $19
     ld   H, [HL]                                       ;; 00:2b37 $66
     ld   L, A                                          ;; 00:2b38 $6f
@@ -7033,7 +7052,7 @@ fillMemory:
     ld   [HL+], A                                      ;; 00:2b60 $22
     jr   .code_2b5e                                    ;; 00:2b61 $18 $fb
 
-code_000_2b63:
+getPointerFromHL:
     add  A, A                                          ;; 00:2b63 $87
     jr   NC, .code_2b67                                ;; 00:2b64 $30 $01
     inc  H                                             ;; 00:2b66 $24
@@ -7048,8 +7067,8 @@ code_000_2b63:
     ld   L, A                                          ;; 00:2b6e $6f
     ret                                                ;; 00:2b6f $c9
 
-code_000_2b70:
-    call code_000_2b63                                 ;; 00:2b70 $cd $63 $2b
+callJumptable:
+    call getPointerFromHL                              ;; 00:2b70 $cd $63 $2b
     jp   HL                                            ;; 00:2b73 $e9
     db   $29, $54, $5d, $29, $29, $19, $c9             ;; 00:2b74 ???????
 
@@ -7446,7 +7465,7 @@ code_000_2d57:
     ld   SP, HL                                        ;; 00:2dd0 $f9
     ld   A, B                                          ;; 00:2dd1 $78
     push AF                                            ;; 00:2dd2 $f5
-    call code_000_2a17                                 ;; 00:2dd3 $cd $17 $2a
+    call getCurrentBankNr                              ;; 00:2dd3 $cd $17 $2a
     ld   [MBCBankSelect], A                            ;; 00:2dd6 $ea $00 $21
     pop  AF                                            ;; 00:2dd9 $f1
     cp   A, $00                                        ;; 00:2dda $fe $00
@@ -8141,7 +8160,7 @@ code_000_31c7:
     call code_000_3c44                                 ;; 00:31f9 $cd $44 $3c
     call code_000_3727                                 ;; 00:31fc $cd $27 $37
     push HL                                            ;; 00:31ff $e5
-    call code_000_2a0a                                 ;; 00:3200 $cd $0a $2a
+    call popBankNrAndSwitch                            ;; 00:3200 $cd $0a $2a
     ld   HL, wC0A1                                     ;; 00:3203 $21 $a1 $c0
     set  $02, [HL]                                     ;; 00:3206 $cb $d6
     set  $01, [HL]                                     ;; 00:3208 $cb $ce
@@ -8217,14 +8236,14 @@ code_000_3274:
     ld   A, L                                          ;; 00:3278 $7d
     ld   [wD8B6], A                                    ;; 00:3279 $ea $b6 $d8
     push HL                                            ;; 00:327c $e5
-    call code_000_2a0a                                 ;; 00:327d $cd $0a $2a
+    call popBankNrAndSwitch                            ;; 00:327d $cd $0a $2a
     pop  HL                                            ;; 00:3280 $e1
     ret                                                ;; 00:3281 $c9
 
 code_000_3282:
     push HL                                            ;; 00:3282 $e5
     ld   A, $08                                        ;; 00:3283 $3e $08 Bank
-    call code_000_29fb                                 ;; 00:3285 $cd $fb $29
+    call pushBankNrAndSwitch                           ;; 00:3285 $cd $fb $29
     pop  BC                                            ;; 00:3288 $c1
     ld   HL, $4f05                                     ;; 00:3289 $21 $05 $4f
     add  HL, BC                                        ;; 00:328c $09
@@ -8233,7 +8252,7 @@ code_000_3282:
     ld   H, [HL]                                       ;; 00:328f $66
     ld   L, A                                          ;; 00:3290 $6f
     push HL                                            ;; 00:3291 $e5
-    call code_000_2a0a                                 ;; 00:3292 $cd $0a $2a
+    call popBankNrAndSwitch                            ;; 00:3292 $cd $0a $2a
     pop  HL                                            ;; 00:3295 $e1
     ret                                                ;; 00:3296 $c9
 
@@ -8274,7 +8293,7 @@ code_000_3297:
     ld   [wD8B7], A                                    ;; 00:32d2 $ea $b7 $d8
     ld   A, L                                          ;; 00:32d5 $7d
     ld   [wD8B6], A                                    ;; 00:32d6 $ea $b6 $d8
-    call code_000_2a0a                                 ;; 00:32d9 $cd $0a $2a
+    call popBankNrAndSwitch                            ;; 00:32d9 $cd $0a $2a
     call code_000_3c44                                 ;; 00:32dc $cd $44 $3c
     call code_000_3727                                 ;; 00:32df $cd $27 $37
     ret                                                ;; 00:32e2 $c9
@@ -8326,7 +8345,7 @@ code_000_3304:
     ld   [wD8B7], A                                    ;; 00:331e $ea $b7 $d8
     ld   A, L                                          ;; 00:3321 $7d
     ld   [wD8B6], A                                    ;; 00:3322 $ea $b6 $d8
-    call code_000_2a0a                                 ;; 00:3325 $cd $0a $2a
+    call popBankNrAndSwitch                            ;; 00:3325 $cd $0a $2a
     call code_000_3c44                                 ;; 00:3328 $cd $44 $3c
     call code_000_3727                                 ;; 00:332b $cd $27 $37
     ret                                                ;; 00:332e $c9
@@ -9399,7 +9418,7 @@ code_000_39a7:
 
 code_000_39b2:
     push HL                                            ;; 00:39b2 $e5
-    call code_000_2b1e                                 ;; 00:39b3 $cd $1e $2b
+    call getRandomByte                                 ;; 00:39b3 $cd $1e $2b
     and  A, $03                                        ;; 00:39b6 $e6 $03
     ld   B, A                                          ;; 00:39b8 $47
     ld   A, [wD7D5]                                    ;; 00:39b9 $fa $d5 $d7
@@ -9867,7 +9886,7 @@ code_000_3c44:
 code_000_3c60:
     ld   A, [wD86A]                                    ;; 00:3c60 $fa $6a $d8
     push HL                                            ;; 00:3c63 $e5
-    call code_000_29fb                                 ;; 00:3c64 $cd $fb $29
+    call pushBankNrAndSwitch                           ;; 00:3c64 $cd $fb $29
     pop  HL                                            ;; 00:3c67 $e1
     ret                                                ;; 00:3c68 $c9
 
@@ -10214,7 +10233,7 @@ code_000_3ea3:
     push BC                                            ;; 00:3ea3 $c5
     push AF                                            ;; 00:3ea4 $f5
     ld   A, $08                                        ;; 00:3ea5 $3e $08 Bank
-    call code_000_29fb                                 ;; 00:3ea7 $cd $fb $29
+    call pushBankNrAndSwitch                           ;; 00:3ea7 $cd $fb $29
     pop  AF                                            ;; 00:3eaa $f1
     ld   HL, $4dd6                                     ;; 00:3eab $21 $d6 $4d
     ld   B, A                                          ;; 00:3eae $47
@@ -10237,7 +10256,7 @@ code_000_3ea3:
     ld   A, C                                          ;; 00:3ec5 $79
     ld   [wD8C2], A                                    ;; 00:3ec6 $ea $c2 $d8
     push HL                                            ;; 00:3ec9 $e5
-    call code_000_2a0a                                 ;; 00:3eca $cd $0a $2a
+    call popBankNrAndSwitch                            ;; 00:3eca $cd $0a $2a
     pop  HL                                            ;; 00:3ecd $e1
     pop  BC                                            ;; 00:3ece $c1
     ret                                                ;; 00:3ecf $c9

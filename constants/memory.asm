@@ -38,9 +38,9 @@ wC0AE: ;; $c0ae
   ds 1
 wC0AF: ;; $c0af
   ds 1
-wC0B0: ;; $c0b0
+wRndState0: ;; $c0b0
   ds 1
-wC0B1: ;; $c0b1
+wRndState1: ;; $c0b1
   ds 1
 wC0B2: ;; $c0b2
   ds 1
@@ -50,7 +50,7 @@ wC0B4: ;; $c0b4
   ds 1
 wC0B5: ;; $c0b5
   ds 11
-wC0C0: ;; $c0c0
+wBankStack: ;; $c0c0
   ds 64
 wC100: ;; $c100
   ds 1
@@ -933,7 +933,7 @@ wD8DB: ;; $d8db
 SECTION "HRAM", HRAM
 hOAM_DMA_Routine: ;; $ff80
   ds 10
-hFF8A: ;; $ff8a
+hBankStackPointer: ;; $ff8a
   ds 6
 hFF90: ;; $ff90
   ds 1

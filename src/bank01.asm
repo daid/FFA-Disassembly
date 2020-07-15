@@ -154,7 +154,7 @@ code_001_4130:
     ld   E, L                                          ;; 01:4131 $5d
     ld   A, [wD499]                                    ;; 01:4132 $fa $99 $d4
     ld   HL, data_001_413c                             ;; 01:4135 $21 $3c $41
-    call code_000_2b70                                 ;; 01:4138 $cd $70 $2b
+    call callJumptable                                 ;; 01:4138 $cd $70 $2b
     ret                                                ;; 01:413b $c9
 
 data_001_413c:
@@ -172,7 +172,7 @@ code_001_414c:
     ld   E, L                                          ;; 01:414d $5d
     ld   A, [wD499]                                    ;; 01:414e $fa $99 $d4
     ld   HL, data_001_4158                             ;; 01:4151 $21 $58 $41
-    call code_000_2b70                                 ;; 01:4154 $cd $70 $2b
+    call callJumptable                                 ;; 01:4154 $cd $70 $2b
     ret                                                ;; 01:4157 $c9
 
 data_001_4158:
@@ -188,7 +188,7 @@ code_001_4164:
     ld   E, L                                          ;; 01:4165 $5d
     ld   A, [wD499]                                    ;; 01:4166 $fa $99 $d4
     ld   HL, data_001_4170                             ;; 01:4169 $21 $70 $41
-    call code_000_2b70                                 ;; 01:416c $cd $70 $2b
+    call callJumptable                                 ;; 01:416c $cd $70 $2b
     ret                                                ;; 01:416f $c9
 
 data_001_4170:
@@ -206,7 +206,7 @@ code_001_4180:
     ld   E, L                                          ;; 01:4181 $5d
     ld   A, [wD499]                                    ;; 01:4182 $fa $99 $d4
     ld   HL, data_001_418c                             ;; 01:4185 $21 $8c $41
-    call code_000_2b70                                 ;; 01:4188 $cd $70 $2b
+    call callJumptable                                 ;; 01:4188 $cd $70 $2b
     ret                                                ;; 01:418b $c9
 
 data_001_418c:
@@ -1150,7 +1150,7 @@ code_001_48be:
     inc  E                                             ;; 01:48ee $1c
     call code_000_16af                                 ;; 01:48ef $cd $af $16
     ld   DE, $0800                                     ;; 01:48f2 $11 $00 $08
-    call code_000_29b2                                 ;; 01:48f5 $cd $b2 $29
+    call HLandDE                                       ;; 01:48f5 $cd $b2 $29
     pop  BC                                            ;; 01:48f8 $c1
     jr   Z, .code_48fd                                 ;; 01:48f9 $28 $02
     ld   C, $04                                        ;; 01:48fb $0e $04
@@ -1269,7 +1269,7 @@ code_001_499e:
     ld   E, B                                          ;; 01:49a2 $58
     ld   HL, data_001_49ad                             ;; 01:49a3 $21 $ad $49
     ld   A, [wC0A0]                                    ;; 01:49a6 $fa $a0 $c0
-    call code_000_2b70                                 ;; 01:49a9 $cd $70 $2b
+    call callJumptable                                 ;; 01:49a9 $cd $70 $2b
     ret                                                ;; 01:49ac $c9
 
 ;@jumptable: 18
@@ -2338,7 +2338,7 @@ code_001_50ac:
 .code_50c0:
     inc  HL                                            ;; 01:50c0 $23
     push HL                                            ;; 01:50c1 $e5
-    call code_000_2b1e                                 ;; 01:50c2 $cd $1e $2b
+    call getRandomByte                                 ;; 01:50c2 $cd $1e $2b
     pop  HL                                            ;; 01:50c5 $e1
     push HL                                            ;; 01:50c6 $e5
     call MultiplyHL_by_A                               ;; 01:50c7 $cd $7b $2b
@@ -2363,7 +2363,7 @@ code_001_50ac:
     ret  Z                                             ;; 01:50e6 $c8
     ld   C, A                                          ;; 01:50e7 $4f
     push BC                                            ;; 01:50e8 $c5
-    call code_000_2b1e                                 ;; 01:50e9 $cd $1e $2b
+    call getRandomByte                                 ;; 01:50e9 $cd $1e $2b
     pop  BC                                            ;; 01:50ec $c1
     ld   B, A                                          ;; 01:50ed $47
     swap A                                             ;; 01:50ee $cb $37
@@ -2510,7 +2510,7 @@ code_001_51e1:
     ld   A, C                                          ;; 01:51e8 $79
     and  A, $07                                        ;; 01:51e9 $e6 $07
     ld   HL, data_001_51f2                             ;; 01:51eb $21 $f2 $51
-    call code_000_2b70                                 ;; 01:51ee $cd $70 $2b
+    call callJumptable                                 ;; 01:51ee $cd $70 $2b
     ret                                                ;; 01:51f1 $c9
 
 ;@jumptable: 8
@@ -2645,7 +2645,7 @@ code_001_52b3:
     or   A, A                                          ;; 01:52bc $b7
     jr   Z, .code_52c5                                 ;; 01:52bd $28 $06
     ld   HL, data_001_52cd                             ;; 01:52bf $21 $cd $52
-    call code_000_2b70                                 ;; 01:52c2 $cd $70 $2b
+    call callJumptable                                 ;; 01:52c2 $cd $70 $2b
 .code_52c5:
     pop  HL                                            ;; 01:52c5 $e1
     dec  B                                             ;; 01:52c6 $05
