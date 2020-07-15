@@ -1264,7 +1264,7 @@ code_001_4996:
     ret                                                ;; 01:499d $c9
 
 code_001_499e:
-    call code_000_1ed1                                 ;; 01:499e $cd $d1 $1e
+    call trampolineUpdateJoypadInput                   ;; 01:499e $cd $d1 $1e
     ld   D, A                                          ;; 01:49a1 $57
     ld   E, B                                          ;; 01:49a2 $58
     ld   HL, data_001_49ad                             ;; 01:49a3 $21 $ad $49

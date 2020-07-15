@@ -32,11 +32,11 @@ wVideoOBP0: ;; $c0ab
   ds 1
 wVideoOBP1: ;; $c0ac
   ds 1
-wC0AD: ;; $c0ad
+wVBlankDone: ;; $c0ad
   ds 1
-wC0AE: ;; $c0ae
+wInterruptFiredFlags: ;; $c0ae
   ds 1
-wC0AF: ;; $c0af
+wJoypadInput: ;; $c0af
   ds 1
 wRndState0: ;; $c0b0
   ds 1

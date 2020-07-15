@@ -1,6 +1,6 @@
 
 rst_00:
-    jp   code_000_0150                                 ;; 00:0000 $c3 $50 $01
+    jp   FullReset                                     ;; 00:0000 $c3 $50 $01
     ds   5                                             ;; 00:0003 ?..??
 
 rst_08:
@@ -30,22 +30,22 @@ VBlankInterrupt:
     ds   4                                             ;; 00:0044 ????
 
 LCDCInterrupt:
-    call code_000_0097                                 ;; 00:0048 $cd $97 $00
+    call LCDCInterruptHandler                          ;; 00:0048 $cd $97 $00
     reti                                               ;; 00:004b $d9
     ds   4                                             ;; 00:004c ????
 
 TimerOverflowInterrupt:
-    call code_000_0087                                 ;; 00:0050 $cd $87 $00
+    call DummyInterruptHandler                         ;; 00:0050 $cd $87 $00
     reti                                               ;; 00:0053 $d9
     ds   4                                             ;; 00:0054 ????
 
 SerialTransferInterrupt:
-    call code_000_0087                                 ;; 00:0058 $cd $87 $00
+    call DummyInterruptHandler                         ;; 00:0058 $cd $87 $00
     reti                                               ;; 00:005b $d9
     ds   4                                             ;; 00:005c ????
 
 JoypadInterrupt:
-    call code_000_0087                                 ;; 00:0060 $cd $87 $00
+    call DummyInterruptHandler                         ;; 00:0060 $cd $87 $00
     reti                                               ;; 00:0063 $d9
 
 VBlankInterruptHandler:
@@ -58,11 +58,11 @@ VBlankInterruptHandler:
     call updateVideoRegisters                          ;; 00:006e $cd $aa $00
     call code_000_2d57                                 ;; 00:0071 $cd $57 $2d
     call getRandomByte                                 ;; 00:0074 $cd $1e $2b
-    ld   HL, wC0AE                                     ;; 00:0077 $21 $ae $c0
+    ld   HL, wInterruptFiredFlags                      ;; 00:0077 $21 $ae $c0
     ldh  A, [rIF]                                      ;; 00:007a $f0 $0f
     or   A, [HL]                                       ;; 00:007c $b6
     ld   [HL], A                                       ;; 00:007d $77
-    ld   HL, wC0AD                                     ;; 00:007e $21 $ad $c0
+    ld   HL, wVBlankDone                               ;; 00:007e $21 $ad $c0
     inc  [HL]                                          ;; 00:0081 $34
     pop  HL                                            ;; 00:0082 $e1
     pop  DE                                            ;; 00:0083 $d1
@@ -70,12 +70,12 @@ VBlankInterruptHandler:
     pop  AF                                            ;; 00:0085 $f1
     ret                                                ;; 00:0086 $c9
 
-code_000_0087:
+DummyInterruptHandler:
     push AF                                            ;; 00:0087 $f5
     push BC                                            ;; 00:0088 $c5
     push DE                                            ;; 00:0089 $d5
     push HL                                            ;; 00:008a $e5
-    ld   HL, wC0AE                                     ;; 00:008b $21 $ae $c0
+    ld   HL, wInterruptFiredFlags                      ;; 00:008b $21 $ae $c0
     ldh  A, [rIF]                                      ;; 00:008e $f0 $0f
     or   A, [HL]                                       ;; 00:0090 $b6
     ld   [HL], A                                       ;; 00:0091 $77
@@ -85,13 +85,13 @@ code_000_0087:
     pop  AF                                            ;; 00:0095 $f1
     ret                                                ;; 00:0096 $c9
 
-code_000_0097:
+LCDCInterruptHandler:
     push AF                                            ;; 00:0097 $f5
     push BC                                            ;; 00:0098 $c5
     push DE                                            ;; 00:0099 $d5
     push HL                                            ;; 00:009a $e5
     call code_000_032d                                 ;; 00:009b $cd $2d $03
-    ld   HL, wC0AE                                     ;; 00:009e $21 $ae $c0
+    ld   HL, wInterruptFiredFlags                      ;; 00:009e $21 $ae $c0
     ldh  A, [rIF]                                      ;; 00:00a1 $f0 $0f
     or   A, [HL]                                       ;; 00:00a3 $b6
     ld   [HL], A                                       ;; 00:00a4 $77
@@ -123,7 +123,7 @@ updateVideoRegisters:
 
 Reset:
     nop                                                ;; 00:0100 $00
-    jp   code_000_0150                                 ;; 00:0101 $c3 $50 $01
+    jp   FullReset                                     ;; 00:0101 $c3 $50 $01
 
 Header:
     db   $ce, $ed, $66, $66, $cc, $0d, $00, $0b        ;; 00:0104 ????????
@@ -137,7 +137,7 @@ Header:
     db   $00, $00, $00, $06, $03, $00, $01, $c3        ;; 00:0144 ????????
     db   $00, $d0, $d9, $f2                            ;; 00:014c ????
 
-code_000_0150:
+FullReset:
     jp   Init                                          ;; 00:0150 $c3 $ca $1f
 
 code_000_0153:
@@ -197,7 +197,7 @@ code_000_0194:
 code_000_019d:
     push AF                                            ;; 00:019d $f5
     ld   A, $09                                        ;; 00:019e $3e $09
-    jp   code_000_1ed7                                 ;; 00:01a0 $c3 $d7 $1e
+    jp   callFunctionInBank01                          ;; 00:01a0 $c3 $d7 $1e
 
 code_000_01a3:
     push HL                                            ;; 00:01a3 $e5
@@ -209,7 +209,7 @@ code_000_01a3:
 code_000_01ac:
     push AF                                            ;; 00:01ac $f5
     ld   A, $0a                                        ;; 00:01ad $3e $0a
-    jp   code_000_1ed7                                 ;; 00:01af $c3 $d7 $1e
+    jp   callFunctionInBank01                          ;; 00:01af $c3 $d7 $1e
 
 code_000_01b2:
     push HL                                            ;; 00:01b2 $e5
@@ -221,7 +221,7 @@ code_000_01b2:
 code_000_01bb:
     push AF                                            ;; 00:01bb $f5
     ld   A, $0b                                        ;; 00:01bc $3e $0b
-    jp   code_000_1ed7                                 ;; 00:01be $c3 $d7 $1e
+    jp   callFunctionInBank01                          ;; 00:01be $c3 $d7 $1e
 
 code_000_01c1:
     push HL                                            ;; 00:01c1 $e5
@@ -233,7 +233,7 @@ code_000_01c1:
 code_000_01ca:
     push AF                                            ;; 00:01ca $f5
     ld   A, $08                                        ;; 00:01cb $3e $08
-    jp   code_000_1ed7                                 ;; 00:01cd $c3 $d7 $1e
+    jp   callFunctionInBank01                          ;; 00:01cd $c3 $d7 $1e
 
 code_000_01d0:
     ld   A, [wC4D4]                                    ;; 00:01d0 $fa $d4 $c4
@@ -297,42 +297,42 @@ code_000_0226:
 code_000_022c:
     push AF                                            ;; 00:022c $f5
     ld   A, $00                                        ;; 00:022d $3e $00
-    jp   code_000_1ed7                                 ;; 00:022f $c3 $d7 $1e
+    jp   callFunctionInBank01                          ;; 00:022f $c3 $d7 $1e
 
 code_000_0232:
     push AF                                            ;; 00:0232 $f5
     ld   A, $01                                        ;; 00:0233 $3e $01
-    jp   code_000_1ed7                                 ;; 00:0235 $c3 $d7 $1e
+    jp   callFunctionInBank01                          ;; 00:0235 $c3 $d7 $1e
 
 code_000_0238:
     push AF                                            ;; 00:0238 $f5
     ld   A, $02                                        ;; 00:0239 $3e $02
-    jp   code_000_1ed7                                 ;; 00:023b $c3 $d7 $1e
+    jp   callFunctionInBank01                          ;; 00:023b $c3 $d7 $1e
 
 code_000_023e:
     push AF                                            ;; 00:023e $f5
     ld   A, $03                                        ;; 00:023f $3e $03
-    jp   code_000_1ed7                                 ;; 00:0241 $c3 $d7 $1e
+    jp   callFunctionInBank01                          ;; 00:0241 $c3 $d7 $1e
 
 code_000_0244:
     push AF                                            ;; 00:0244 $f5
     ld   A, $05                                        ;; 00:0245 $3e $05
-    jp   code_000_1ed7                                 ;; 00:0247 $c3 $d7 $1e
+    jp   callFunctionInBank01                          ;; 00:0247 $c3 $d7 $1e
 
 code_000_024a:
     push AF                                            ;; 00:024a $f5
     ld   A, $06                                        ;; 00:024b $3e $06
-    jp   code_000_1ed7                                 ;; 00:024d $c3 $d7 $1e
+    jp   callFunctionInBank01                          ;; 00:024d $c3 $d7 $1e
 
 code_000_0250:
     push AF                                            ;; 00:0250 $f5
     ld   A, $04                                        ;; 00:0251 $3e $04
-    jp   code_000_1ed7                                 ;; 00:0253 $c3 $d7 $1e
+    jp   callFunctionInBank01                          ;; 00:0253 $c3 $d7 $1e
 
 code_000_0256:
     push AF                                            ;; 00:0256 $f5
     ld   A, $07                                        ;; 00:0257 $3e $07
-    jp   code_000_1ed7                                 ;; 00:0259 $c3 $d7 $1e
+    jp   callFunctionInBank01                          ;; 00:0259 $c3 $d7 $1e
 
 code_000_025c:
     ld   A, $06                                        ;; 00:025c $3e $06
@@ -408,12 +408,12 @@ code_000_02bd:
 code_000_02c3:
     push AF                                            ;; 00:02c3 $f5
     ld   A, $0c                                        ;; 00:02c4 $3e $0c
-    jp   code_000_1ed7                                 ;; 00:02c6 $c3 $d7 $1e
+    jp   callFunctionInBank01                          ;; 00:02c6 $c3 $d7 $1e
 
 code_000_02c9:
     push AF                                            ;; 00:02c9 $f5
     ld   A, $0d                                        ;; 00:02ca $3e $0d
-    jp   code_000_1ed7                                 ;; 00:02cc $c3 $d7 $1e
+    jp   callFunctionInBank01                          ;; 00:02cc $c3 $d7 $1e
 
 code_000_02cf:
     call code_000_02b7                                 ;; 00:02cf $cd $b7 $02
@@ -662,22 +662,22 @@ code_000_041c:
     ld   A, L                                          ;; 00:0422 $7d
     push AF                                            ;; 00:0423 $f5
     ld   A, $07                                        ;; 00:0424 $3e $07
-    jp   code_000_1f06                                 ;; 00:0426 $c3 $06 $1f
+    jp   callFunctionInBank02                          ;; 00:0426 $c3 $06 $1f
 
 code_000_0429:
     push AF                                            ;; 00:0429 $f5
     ld   A, $06                                        ;; 00:042a $3e $06
-    jp   code_000_1f06                                 ;; 00:042c $c3 $06 $1f
+    jp   callFunctionInBank02                          ;; 00:042c $c3 $06 $1f
 
 code_000_042f:
     push AF                                            ;; 00:042f $f5
     ld   A, $04                                        ;; 00:0430 $3e $04
-    jp   code_000_1f06                                 ;; 00:0432 $c3 $06 $1f
+    jp   callFunctionInBank02                          ;; 00:0432 $c3 $06 $1f
 
 code_000_0435:
     push AF                                            ;; 00:0435 $f5
     ld   A, $05                                        ;; 00:0436 $3e $05
-    jp   code_000_1f06                                 ;; 00:0438 $c3 $06 $1f
+    jp   callFunctionInBank02                          ;; 00:0438 $c3 $06 $1f
 
 code_000_043b:
     ld   A, [wD3E8]                                    ;; 00:043b $fa $e8 $d3
@@ -685,12 +685,12 @@ code_000_043b:
     ret  NZ                                            ;; 00:0440 $c0
     push AF                                            ;; 00:0441 $f5
     ld   A, $02                                        ;; 00:0442 $3e $02
-    jp   code_000_1f06                                 ;; 00:0444 $c3 $06 $1f
+    jp   callFunctionInBank02                          ;; 00:0444 $c3 $06 $1f
 
 code_000_0447:
     push AF                                            ;; 00:0447 $f5
     ld   A, $03                                        ;; 00:0448 $3e $03
-    jp   code_000_1f06                                 ;; 00:044a $c3 $06 $1f
+    jp   callFunctionInBank02                          ;; 00:044a $c3 $06 $1f
 
 code_000_044d:
     ld   HL, wC4A1                                     ;; 00:044d $21 $a1 $c4
@@ -754,12 +754,12 @@ code_000_0495:
 code_000_049e:
     push AF                                            ;; 00:049e $f5
     ld   A, $18                                        ;; 00:049f $3e $18
-    jp   code_000_1ed7                                 ;; 00:04a1 $c3 $d7 $1e
+    jp   callFunctionInBank01                          ;; 00:04a1 $c3 $d7 $1e
 
 code_000_04a4:
     push AF                                            ;; 00:04a4 $f5
     ld   A, $19                                        ;; 00:04a5 $3e $19
-    jp   code_000_1ed7                                 ;; 00:04a7 $c3 $d7 $1e
+    jp   callFunctionInBank01                          ;; 00:04a7 $c3 $d7 $1e
 
 code_000_04aa:
     ld   A, [wD3E8]                                    ;; 00:04aa $fa $e8 $d3
@@ -2351,7 +2351,7 @@ code_000_0d8c:
 code_000_0d95:
     push AF                                            ;; 00:0d95 $f5
     ld   A, $16                                        ;; 00:0d96 $3e $16
-    jp   code_000_1ed7                                 ;; 00:0d98 $c3 $d7 $1e
+    jp   callFunctionInBank01                          ;; 00:0d98 $c3 $d7 $1e
 
 code_000_0d9b:
     push HL                                            ;; 00:0d9b $e5
@@ -2363,26 +2363,26 @@ code_000_0d9b:
 code_000_0da4:
     push AF                                            ;; 00:0da4 $f5
     ld   A, $17                                        ;; 00:0da5 $3e $17
-    jp   code_000_1ed7                                 ;; 00:0da7 $c3 $d7 $1e
+    jp   callFunctionInBank01                          ;; 00:0da7 $c3 $d7 $1e
 
 code_000_0daa:
     push AF                                            ;; 00:0daa $f5
     ld   A, $13                                        ;; 00:0dab $3e $13
-    jp   code_000_1ed7                                 ;; 00:0dad $c3 $d7 $1e
+    jp   callFunctionInBank01                          ;; 00:0dad $c3 $d7 $1e
 
 code_000_0db0:
     push AF                                            ;; 00:0db0 $f5
     ld   A, $14                                        ;; 00:0db1 $3e $14
-    jp   code_000_1ed7                                 ;; 00:0db3 $c3 $d7 $1e
+    jp   callFunctionInBank01                          ;; 00:0db3 $c3 $d7 $1e
 
 code_000_0db6:
     push AF                                            ;; 00:0db6 $f5
     ld   A, $15                                        ;; 00:0db7 $3e $15
-    jp   code_000_1ed7                                 ;; 00:0db9 $c3 $d7 $1e
+    jp   callFunctionInBank01                          ;; 00:0db9 $c3 $d7 $1e
 
 code_000_0dbc:
     push HL                                            ;; 00:0dbc $e5
-    call code_000_1ed1                                 ;; 00:0dbd $cd $d1 $1e
+    call trampolineUpdateJoypadInput                   ;; 00:0dbd $cd $d1 $1e
     cp   A, $00                                        ;; 00:0dc0 $fe $00
     jr   NZ, .code_0de1                                ;; 00:0dc2 $20 $1d
     ld   A, [wD49A]                                    ;; 00:0dc4 $fa $9a $d4
@@ -2983,7 +2983,7 @@ code_000_11b7:
 code_000_11c8:
     push AF                                            ;; 00:11c8 $f5
     ld   A, $0f                                        ;; 00:11c9 $3e $0f
-    jp   code_000_1ed7                                 ;; 00:11cb $c3 $d7 $1e
+    jp   callFunctionInBank01                          ;; 00:11cb $c3 $d7 $1e
 
 code_000_11ce:
     ld   A, [HL+]                                      ;; 00:11ce $2a
@@ -3000,7 +3000,7 @@ code_000_11ce:
 code_000_11df:
     push AF                                            ;; 00:11df $f5
     ld   A, $10                                        ;; 00:11e0 $3e $10
-    jp   code_000_1ed7                                 ;; 00:11e2 $c3 $d7 $1e
+    jp   callFunctionInBank01                          ;; 00:11e2 $c3 $d7 $1e
 
 code_000_11e5:
     call code_000_11f2                                 ;; 00:11e5 $cd $f2 $11
@@ -3013,7 +3013,7 @@ code_000_11e5:
 code_000_11f2:
     push AF                                            ;; 00:11f2 $f5
     ld   A, $11                                        ;; 00:11f3 $3e $11
-    jp   code_000_1ed7                                 ;; 00:11f5 $c3 $d7 $1e
+    jp   callFunctionInBank01                          ;; 00:11f5 $c3 $d7 $1e
 
 code_000_11f8:
     call code_000_1205                                 ;; 00:11f8 $cd $05 $12
@@ -3026,7 +3026,7 @@ code_000_11f8:
 code_000_1205:
     push AF                                            ;; 00:1205 $f5
     ld   A, $12                                        ;; 00:1206 $3e $12
-    jp   code_000_1ed7                                 ;; 00:1208 $c3 $d7 $1e
+    jp   callFunctionInBank01                          ;; 00:1208 $c3 $d7 $1e
 
 code_000_120b:
     ld   A, [HL+]                                      ;; 00:120b $2a
@@ -4453,7 +4453,7 @@ code_000_1a44:
 code_000_1a70:
     push AF                                            ;; 00:1a70 $f5
     ld   A, $00                                        ;; 00:1a71 $3e $00
-    jp   code_000_1f06                                 ;; 00:1a73 $c3 $06 $1f
+    jp   callFunctionInBank02                          ;; 00:1a73 $c3 $06 $1f
 
 code_000_1a76:
     push HL                                            ;; 00:1a76 $e5
@@ -4904,7 +4904,7 @@ code_000_1dda:
     ld   A, [wCEE8]                                    ;; 00:1dda $fa $e8 $ce
     cp   A, $00                                        ;; 00:1ddd $fe $00
     ret  Z                                             ;; 00:1ddf $c8
-    ld   A, [wC0AD]                                    ;; 00:1de0 $fa $ad $c0
+    ld   A, [wVBlankDone]                              ;; 00:1de0 $fa $ad $c0
     cp   A, $01                                        ;; 00:1de3 $fe $01
     ret  NZ                                            ;; 00:1de5 $c0
     ldh  A, [rLY]                                      ;; 00:1de6 $f0 $44
@@ -5055,12 +5055,12 @@ code_000_1e9f:
     db   $d1, $7b, $22, $72, $21, $e8, $ce, $34        ;; 00:1ec8 ????????
     db   $c9                                           ;; 00:1ed0 ?
 
-code_000_1ed1:
+trampolineUpdateJoypadInput:
     push AF                                            ;; 00:1ed1 $f5
     ld   A, $01                                        ;; 00:1ed2 $3e $01
-    jp   code_000_1f06                                 ;; 00:1ed4 $c3 $06 $1f
+    jp   callFunctionInBank02                          ;; 00:1ed4 $c3 $06 $1f
 
-code_000_1ed7:
+callFunctionInBank01:
     ld   [wC0B2], A                                    ;; 00:1ed7 $ea $b2 $c0
     pop  AF                                            ;; 00:1eda $f1
     ld   [wC0B3], A                                    ;; 00:1edb $ea $b3 $c0
@@ -5068,7 +5068,7 @@ code_000_1ed7:
     ld   [wC0B5], A                                    ;; 00:1edf $ea $b5 $c0
     ld   A, L                                          ;; 00:1ee2 $7d
     ld   [wC0B4], A                                    ;; 00:1ee3 $ea $b4 $c0
-    ld   HL, code_000_1fc2                             ;; 00:1ee6 $21 $c2 $1f
+    ld   HL, returnFromBankCall                        ;; 00:1ee6 $21 $c2 $1f
     push HL                                            ;; 00:1ee9 $e5
     ld   A, $01                                        ;; 00:1eea $3e $01 Bank
     call pushBankNrAndSwitch                           ;; 00:1eec $cd $fb $29
@@ -5089,7 +5089,7 @@ code_000_1f01:
     ld   A, [wC0B3]                                    ;; 00:1f02 $fa $b3 $c0
     ret                                                ;; 00:1f05 $c9
 
-code_000_1f06:
+callFunctionInBank02:
     ld   [wC0B2], A                                    ;; 00:1f06 $ea $b2 $c0
     pop  AF                                            ;; 00:1f09 $f1
     ld   [wC0B3], A                                    ;; 00:1f0a $ea $b3 $c0
@@ -5097,7 +5097,7 @@ code_000_1f06:
     ld   [wC0B5], A                                    ;; 00:1f0e $ea $b5 $c0
     ld   A, L                                          ;; 00:1f11 $7d
     ld   [wC0B4], A                                    ;; 00:1f12 $ea $b4 $c0
-    ld   HL, code_000_1fc2                             ;; 00:1f15 $21 $c2 $1f
+    ld   HL, returnFromBankCall                        ;; 00:1f15 $21 $c2 $1f
     push HL                                            ;; 00:1f18 $e5
     ld   A, $02                                        ;; 00:1f19 $3e $02 Bank
     call pushBankNrAndSwitch                           ;; 00:1f1b $cd $fb $29
@@ -5124,7 +5124,7 @@ code_000_1f35:
     ld   [wC0B5], A                                    ;; 00:1f3d $ea $b5 $c0
     ld   A, L                                          ;; 00:1f40 $7d
     ld   [wC0B4], A                                    ;; 00:1f41 $ea $b4 $c0
-    ld   HL, code_000_1fc2                             ;; 00:1f44 $21 $c2 $1f
+    ld   HL, returnFromBankCall                        ;; 00:1f44 $21 $c2 $1f
     push HL                                            ;; 00:1f47 $e5
     ld   A, $03                                        ;; 00:1f48 $3e $03 Bank
     call pushBankNrAndSwitch                           ;; 00:1f4a $cd $fb $29
@@ -5151,7 +5151,7 @@ code_000_1f64:
     ld   [wC0B5], A                                    ;; 00:1f6c $ea $b5 $c0
     ld   A, L                                          ;; 00:1f6f $7d
     ld   [wC0B4], A                                    ;; 00:1f70 $ea $b4 $c0
-    ld   HL, code_000_1fc2                             ;; 00:1f73 $21 $c2 $1f
+    ld   HL, returnFromBankCall                        ;; 00:1f73 $21 $c2 $1f
     push HL                                            ;; 00:1f76 $e5
     ld   A, $04                                        ;; 00:1f77 $3e $04 Bank
     call pushBankNrAndSwitch                           ;; 00:1f79 $cd $fb $29
@@ -5178,7 +5178,7 @@ code_000_1f93:
     ld   [wC0B5], A                                    ;; 00:1f9b $ea $b5 $c0
     ld   A, L                                          ;; 00:1f9e $7d
     ld   [wC0B4], A                                    ;; 00:1f9f $ea $b4 $c0
-    ld   HL, code_000_1fc2                             ;; 00:1fa2 $21 $c2 $1f
+    ld   HL, returnFromBankCall                        ;; 00:1fa2 $21 $c2 $1f
     push HL                                            ;; 00:1fa5 $e5
     ld   A, $09                                        ;; 00:1fa6 $3e $09 Bank
     call pushBankNrAndSwitch                           ;; 00:1fa8 $cd $fb $29
@@ -5197,7 +5197,7 @@ code_000_1f93:
     ld   A, [wC0B3]                                    ;; 00:1fbe $fa $b3 $c0
     ret                                                ;; 00:1fc1 $c9
 
-code_000_1fc2:
+returnFromBankCall:
     push AF                                            ;; 00:1fc2 $f5
     push HL                                            ;; 00:1fc3 $e5
     call popBankNrAndSwitch                            ;; 00:1fc4 $cd $0a $2a
@@ -5214,14 +5214,14 @@ Init:
 
 code_000_1fd5:
     halt                                               ;; 00:1fd5 $76 $00
-    ld   A, [wC0AD]                                    ;; 00:1fd7 $fa $ad $c0
+    ld   A, [wVBlankDone]                              ;; 00:1fd7 $fa $ad $c0
     cp   A, $01                                        ;; 00:1fda $fe $01
     jr   C, code_000_1fd5                              ;; 00:1fdc $38 $f7
 .code_1fde:
     call code_000_217b                                 ;; 00:1fde $cd $7b $21
     call code_000_022c                                 ;; 00:1fe1 $cd $2c $02
     call code_000_2190                                 ;; 00:1fe4 $cd $90 $21
-    ld   HL, wC0AD                                     ;; 00:1fe7 $21 $ad $c0
+    ld   HL, wVBlankDone                               ;; 00:1fe7 $21 $ad $c0
     dec  [HL]                                          ;; 00:1fea $35
     jr   NZ, .code_1fde                                ;; 00:1feb $20 $f1
     jp   code_000_1fd5                                 ;; 00:1fed $c3 $d5 $1f
@@ -5282,7 +5282,7 @@ InitPreIntEnable:
     ld   A, $30                                        ;; 00:2071 $3e $30 rP1
     ld_long_store rP1                                  ;; 00:2073 $ea $00 $ff
     ld   A, $00                                        ;; 00:2076 $3e $00
-    ld   [wC0AD], A                                    ;; 00:2078 $ea $ad $c0
+    ld   [wVBlankDone], A                              ;; 00:2078 $ea $ad $c0
     ld   A, $01                                        ;; 00:207b $3e $01 Bank
     ld   [MBCBankSelect], A                            ;; 00:207d $ea $00 $21
     ld   A, $87                                        ;; 00:2080 $3e $87
@@ -7199,17 +7199,17 @@ code_000_2c15:
 code_000_2c1b:
     push AF                                            ;; 00:2c1b $f5
     ld   A, $1b                                        ;; 00:2c1c $3e $1b
-    jp   code_000_1ed7                                 ;; 00:2c1e $c3 $d7 $1e
+    jp   callFunctionInBank01                          ;; 00:2c1e $c3 $d7 $1e
 
 code_000_2c21:
     push AF                                            ;; 00:2c21 $f5
     ld   A, $1a                                        ;; 00:2c22 $3e $1a
-    jp   code_000_1ed7                                 ;; 00:2c24 $c3 $d7 $1e
+    jp   callFunctionInBank01                          ;; 00:2c24 $c3 $d7 $1e
 
 code_000_2c27:
     push AF                                            ;; 00:2c27 $f5
     ld   A, $1c                                        ;; 00:2c28 $3e $1c
-    jp   code_000_1ed7                                 ;; 00:2c2a $c3 $d7 $1e
+    jp   callFunctionInBank01                          ;; 00:2c2a $c3 $d7 $1e
 
 code_000_2c2d:
     bit  $00, A                                        ;; 00:2c2d $cb $47
@@ -7575,42 +7575,42 @@ code_000_2ec9:
 code_000_2ed3:
     push AF                                            ;; 00:2ed3 $f5
     ld   A, $1d                                        ;; 00:2ed4 $3e $1d
-    jp   code_000_1ed7                                 ;; 00:2ed6 $c3 $d7 $1e
+    jp   callFunctionInBank01                          ;; 00:2ed6 $c3 $d7 $1e
 
 code_000_2ed9:
     push AF                                            ;; 00:2ed9 $f5
     ld   A, $20                                        ;; 00:2eda $3e $20
-    jp   code_000_1ed7                                 ;; 00:2edc $c3 $d7 $1e
+    jp   callFunctionInBank01                          ;; 00:2edc $c3 $d7 $1e
 
 code_000_2edf:
     push AF                                            ;; 00:2edf $f5
     ld   A, $21                                        ;; 00:2ee0 $3e $21
-    jp   code_000_1ed7                                 ;; 00:2ee2 $c3 $d7 $1e
+    jp   callFunctionInBank01                          ;; 00:2ee2 $c3 $d7 $1e
 
 code_000_2ee5:
     push AF                                            ;; 00:2ee5 $f5
     ld   A, $22                                        ;; 00:2ee6 $3e $22
-    jp   code_000_1ed7                                 ;; 00:2ee8 $c3 $d7 $1e
+    jp   callFunctionInBank01                          ;; 00:2ee8 $c3 $d7 $1e
 
 code_000_2eeb:
     push AF                                            ;; 00:2eeb $f5
     ld   A, $23                                        ;; 00:2eec $3e $23
-    jp   code_000_1ed7                                 ;; 00:2eee $c3 $d7 $1e
+    jp   callFunctionInBank01                          ;; 00:2eee $c3 $d7 $1e
 
 code_000_2ef1:
     push AF                                            ;; 00:2ef1 $f5
     ld   A, $1e                                        ;; 00:2ef2 $3e $1e
-    jp   code_000_1ed7                                 ;; 00:2ef4 $c3 $d7 $1e
+    jp   callFunctionInBank01                          ;; 00:2ef4 $c3 $d7 $1e
 
 code_000_2ef7:
     push AF                                            ;; 00:2ef7 $f5
     ld   A, $1f                                        ;; 00:2ef8 $3e $1f
-    jp   code_000_1ed7                                 ;; 00:2efa $c3 $d7 $1e
+    jp   callFunctionInBank01                          ;; 00:2efa $c3 $d7 $1e
 
 code_000_2efd:
     push AF                                            ;; 00:2efd $f5
     ld   A, $25                                        ;; 00:2efe $3e $25
-    jp   code_000_1ed7                                 ;; 00:2f00 $c3 $d7 $1e
+    jp   callFunctionInBank01                          ;; 00:2f00 $c3 $d7 $1e
     db   $f5, $3e, $26, $c3, $d7, $1e                  ;; 00:2f03 ??????
 
 code_000_2f09:
@@ -7642,7 +7642,7 @@ code_000_2f2c:
 code_000_2f3e:
     push AF                                            ;; 00:2f3e $f5
     ld   A, $24                                        ;; 00:2f3f $3e $24
-    jp   code_000_1ed7                                 ;; 00:2f41 $c3 $d7 $1e
+    jp   callFunctionInBank01                          ;; 00:2f41 $c3 $d7 $1e
 
 code_000_2f44:
     ld   A, [wCF60]                                    ;; 00:2f44 $fa $60 $cf
@@ -7677,7 +7677,7 @@ code_000_2f76:
     ret  Z                                             ;; 00:2f78 $c8
     push AF                                            ;; 00:2f79 $f5
     ld   A, $27                                        ;; 00:2f7a $3e $27
-    jp   code_000_1ed7                                 ;; 00:2f7c $c3 $d7 $1e
+    jp   callFunctionInBank01                          ;; 00:2f7c $c3 $d7 $1e
 
 code_000_2f7f:
     push HL                                            ;; 00:2f7f $e5
@@ -7889,7 +7889,7 @@ code_000_3057:
 code_000_3063:
     push AF                                            ;; 00:3063 $f5
     ld   A, $08                                        ;; 00:3064 $3e $08
-    jp   code_000_1f06                                 ;; 00:3066 $c3 $06 $1f
+    jp   callFunctionInBank02                          ;; 00:3066 $c3 $06 $1f
     db   $f5, $3e, $09, $c3, $06, $1f, $f5, $3e        ;; 00:3069 ????????
     db   $0a, $c3, $06, $1f, $f5, $3e, $0b, $c3        ;; 00:3071 ????????
     db   $06, $1f, $f5, $3e, $0c, $c3, $06, $1f        ;; 00:3079 ????????
@@ -7897,207 +7897,207 @@ code_000_3063:
 code_000_3081:
     push AF                                            ;; 00:3081 $f5
     ld   A, $0d                                        ;; 00:3082 $3e $0d
-    jp   code_000_1f06                                 ;; 00:3084 $c3 $06 $1f
+    jp   callFunctionInBank02                          ;; 00:3084 $c3 $06 $1f
 
 code_000_3087:
     push AF                                            ;; 00:3087 $f5
     ld   A, $0e                                        ;; 00:3088 $3e $0e
-    jp   code_000_1f06                                 ;; 00:308a $c3 $06 $1f
+    jp   callFunctionInBank02                          ;; 00:308a $c3 $06 $1f
     db   $f5, $3e, $0f, $c3, $06, $1f, $f5, $3e        ;; 00:308d ????????
     db   $10, $c3, $06, $1f                            ;; 00:3095 ????
 
 code_000_3099:
     push AF                                            ;; 00:3099 $f5
     ld   A, $11                                        ;; 00:309a $3e $11
-    jp   code_000_1f06                                 ;; 00:309c $c3 $06 $1f
+    jp   callFunctionInBank02                          ;; 00:309c $c3 $06 $1f
 
 code_000_309f:
     push AF                                            ;; 00:309f $f5
     ld   A, $12                                        ;; 00:30a0 $3e $12
-    jp   code_000_1f06                                 ;; 00:30a2 $c3 $06 $1f
+    jp   callFunctionInBank02                          ;; 00:30a2 $c3 $06 $1f
 
 code_000_30a5:
     push AF                                            ;; 00:30a5 $f5
     ld   A, $13                                        ;; 00:30a6 $3e $13
-    jp   code_000_1f06                                 ;; 00:30a8 $c3 $06 $1f
+    jp   callFunctionInBank02                          ;; 00:30a8 $c3 $06 $1f
 
 code_000_30ab:
     push AF                                            ;; 00:30ab $f5
     ld   A, $14                                        ;; 00:30ac $3e $14
-    jp   code_000_1f06                                 ;; 00:30ae $c3 $06 $1f
+    jp   callFunctionInBank02                          ;; 00:30ae $c3 $06 $1f
 
 code_000_30b1:
     push AF                                            ;; 00:30b1 $f5
     ld   A, $15                                        ;; 00:30b2 $3e $15
-    jp   code_000_1f06                                 ;; 00:30b4 $c3 $06 $1f
+    jp   callFunctionInBank02                          ;; 00:30b4 $c3 $06 $1f
 
 code_000_30b7:
     push AF                                            ;; 00:30b7 $f5
     ld   A, $16                                        ;; 00:30b8 $3e $16
-    jp   code_000_1f06                                 ;; 00:30ba $c3 $06 $1f
+    jp   callFunctionInBank02                          ;; 00:30ba $c3 $06 $1f
 
 code_000_30bd:
     push AF                                            ;; 00:30bd $f5
     ld   A, $17                                        ;; 00:30be $3e $17
-    jp   code_000_1f06                                 ;; 00:30c0 $c3 $06 $1f
+    jp   callFunctionInBank02                          ;; 00:30c0 $c3 $06 $1f
 
 code_000_30c3:
     push AF                                            ;; 00:30c3 $f5
     ld   A, $18                                        ;; 00:30c4 $3e $18
-    jp   code_000_1f06                                 ;; 00:30c6 $c3 $06 $1f
+    jp   callFunctionInBank02                          ;; 00:30c6 $c3 $06 $1f
 
 code_000_30c9:
     push AF                                            ;; 00:30c9 $f5
     ld   A, $19                                        ;; 00:30ca $3e $19
-    jp   code_000_1f06                                 ;; 00:30cc $c3 $06 $1f
+    jp   callFunctionInBank02                          ;; 00:30cc $c3 $06 $1f
 
 code_000_30cf:
     push AF                                            ;; 00:30cf $f5
     ld   A, $1a                                        ;; 00:30d0 $3e $1a
-    jp   code_000_1f06                                 ;; 00:30d2 $c3 $06 $1f
+    jp   callFunctionInBank02                          ;; 00:30d2 $c3 $06 $1f
 
 code_000_30d5:
     push AF                                            ;; 00:30d5 $f5
     ld   A, $1b                                        ;; 00:30d6 $3e $1b
-    jp   code_000_1f06                                 ;; 00:30d8 $c3 $06 $1f
+    jp   callFunctionInBank02                          ;; 00:30d8 $c3 $06 $1f
 
 code_000_30db:
     push AF                                            ;; 00:30db $f5
     ld   A, $1c                                        ;; 00:30dc $3e $1c
-    jp   code_000_1f06                                 ;; 00:30de $c3 $06 $1f
+    jp   callFunctionInBank02                          ;; 00:30de $c3 $06 $1f
 
 code_000_30e1:
     push AF                                            ;; 00:30e1 $f5
     ld   A, $1d                                        ;; 00:30e2 $3e $1d
-    jp   code_000_1f06                                 ;; 00:30e4 $c3 $06 $1f
+    jp   callFunctionInBank02                          ;; 00:30e4 $c3 $06 $1f
 
 code_000_30e7:
     push AF                                            ;; 00:30e7 $f5
     ld   A, $1e                                        ;; 00:30e8 $3e $1e
-    jp   code_000_1f06                                 ;; 00:30ea $c3 $06 $1f
+    jp   callFunctionInBank02                          ;; 00:30ea $c3 $06 $1f
 
 code_000_30ed:
     push AF                                            ;; 00:30ed $f5
     ld   A, $1f                                        ;; 00:30ee $3e $1f
-    jp   code_000_1f06                                 ;; 00:30f0 $c3 $06 $1f
+    jp   callFunctionInBank02                          ;; 00:30f0 $c3 $06 $1f
 
 code_000_30f3:
     push AF                                            ;; 00:30f3 $f5
     ld   A, $20                                        ;; 00:30f4 $3e $20
-    jp   code_000_1f06                                 ;; 00:30f6 $c3 $06 $1f
+    jp   callFunctionInBank02                          ;; 00:30f6 $c3 $06 $1f
     db   $f5, $3e, $21, $c3, $06, $1f                  ;; 00:30f9 ??????
 
 code_000_30ff:
     push AF                                            ;; 00:30ff $f5
     ld   A, $22                                        ;; 00:3100 $3e $22
-    jp   code_000_1f06                                 ;; 00:3102 $c3 $06 $1f
+    jp   callFunctionInBank02                          ;; 00:3102 $c3 $06 $1f
     db   $f5, $3e, $23, $c3, $06, $1f                  ;; 00:3105 ??????
 
 code_000_310b:
     push AF                                            ;; 00:310b $f5
     ld   A, $24                                        ;; 00:310c $3e $24
-    jp   code_000_1f06                                 ;; 00:310e $c3 $06 $1f
+    jp   callFunctionInBank02                          ;; 00:310e $c3 $06 $1f
 
 code_000_3111:
     push AF                                            ;; 00:3111 $f5
     ld   A, $25                                        ;; 00:3112 $3e $25
-    jp   code_000_1f06                                 ;; 00:3114 $c3 $06 $1f
+    jp   callFunctionInBank02                          ;; 00:3114 $c3 $06 $1f
 
 code_000_3117:
     push AF                                            ;; 00:3117 $f5
     ld   A, $26                                        ;; 00:3118 $3e $26
-    jp   code_000_1f06                                 ;; 00:311a $c3 $06 $1f
+    jp   callFunctionInBank02                          ;; 00:311a $c3 $06 $1f
 
 code_000_311d:
     push AF                                            ;; 00:311d $f5
     ld   A, $27                                        ;; 00:311e $3e $27
-    jp   code_000_1f06                                 ;; 00:3120 $c3 $06 $1f
+    jp   callFunctionInBank02                          ;; 00:3120 $c3 $06 $1f
 
 code_000_3123:
     push AF                                            ;; 00:3123 $f5
     ld   A, $28                                        ;; 00:3124 $3e $28
-    jp   code_000_1f06                                 ;; 00:3126 $c3 $06 $1f
+    jp   callFunctionInBank02                          ;; 00:3126 $c3 $06 $1f
 
 code_000_3129:
     push AF                                            ;; 00:3129 $f5
     ld   A, $29                                        ;; 00:312a $3e $29
-    jp   code_000_1f06                                 ;; 00:312c $c3 $06 $1f
+    jp   callFunctionInBank02                          ;; 00:312c $c3 $06 $1f
 
 code_000_312f:
     push AF                                            ;; 00:312f $f5
     ld   A, $2a                                        ;; 00:3130 $3e $2a
-    jp   code_000_1f06                                 ;; 00:3132 $c3 $06 $1f
+    jp   callFunctionInBank02                          ;; 00:3132 $c3 $06 $1f
 
 code_000_3135:
     push AF                                            ;; 00:3135 $f5
     ld   A, $2b                                        ;; 00:3136 $3e $2b
-    jp   code_000_1f06                                 ;; 00:3138 $c3 $06 $1f
+    jp   callFunctionInBank02                          ;; 00:3138 $c3 $06 $1f
 
 code_000_313b:
     push AF                                            ;; 00:313b $f5
     ld   A, $2c                                        ;; 00:313c $3e $2c
-    jp   code_000_1f06                                 ;; 00:313e $c3 $06 $1f
+    jp   callFunctionInBank02                          ;; 00:313e $c3 $06 $1f
     db   $f5, $3e, $2d, $c3, $06, $1f                  ;; 00:3141 ??????
 
 code_000_3147:
     push AF                                            ;; 00:3147 $f5
     ld   A, $2e                                        ;; 00:3148 $3e $2e
-    jp   code_000_1f06                                 ;; 00:314a $c3 $06 $1f
+    jp   callFunctionInBank02                          ;; 00:314a $c3 $06 $1f
 
 code_000_314d:
     push AF                                            ;; 00:314d $f5
     ld   A, $2f                                        ;; 00:314e $3e $2f
-    jp   code_000_1f06                                 ;; 00:3150 $c3 $06 $1f
+    jp   callFunctionInBank02                          ;; 00:3150 $c3 $06 $1f
 
 code_000_3153:
     push AF                                            ;; 00:3153 $f5
     ld   A, $30                                        ;; 00:3154 $3e $30
-    jp   code_000_1f06                                 ;; 00:3156 $c3 $06 $1f
+    jp   callFunctionInBank02                          ;; 00:3156 $c3 $06 $1f
 
 code_000_3159:
     push AF                                            ;; 00:3159 $f5
     ld   A, $31                                        ;; 00:315a $3e $31
-    jp   code_000_1f06                                 ;; 00:315c $c3 $06 $1f
+    jp   callFunctionInBank02                          ;; 00:315c $c3 $06 $1f
 
 code_000_315f:
     push AF                                            ;; 00:315f $f5
     ld   A, $32                                        ;; 00:3160 $3e $32
-    jp   code_000_1f06                                 ;; 00:3162 $c3 $06 $1f
+    jp   callFunctionInBank02                          ;; 00:3162 $c3 $06 $1f
 
 code_000_3165:
     push AF                                            ;; 00:3165 $f5
     ld   A, $33                                        ;; 00:3166 $3e $33
-    jp   code_000_1f06                                 ;; 00:3168 $c3 $06 $1f
+    jp   callFunctionInBank02                          ;; 00:3168 $c3 $06 $1f
 
 code_000_316b:
     push AF                                            ;; 00:316b $f5
     ld   A, $34                                        ;; 00:316c $3e $34
-    jp   code_000_1f06                                 ;; 00:316e $c3 $06 $1f
+    jp   callFunctionInBank02                          ;; 00:316e $c3 $06 $1f
 
 code_000_3171:
     push AF                                            ;; 00:3171 $f5
     ld   A, $35                                        ;; 00:3172 $3e $35
-    jp   code_000_1f06                                 ;; 00:3174 $c3 $06 $1f
+    jp   callFunctionInBank02                          ;; 00:3174 $c3 $06 $1f
 
 code_000_3177:
     push AF                                            ;; 00:3177 $f5
     ld   A, $36                                        ;; 00:3178 $3e $36
-    jp   code_000_1f06                                 ;; 00:317a $c3 $06 $1f
+    jp   callFunctionInBank02                          ;; 00:317a $c3 $06 $1f
 
 code_000_317d:
     push AF                                            ;; 00:317d $f5
     ld   A, $37                                        ;; 00:317e $3e $37
-    jp   code_000_1f06                                 ;; 00:3180 $c3 $06 $1f
+    jp   callFunctionInBank02                          ;; 00:3180 $c3 $06 $1f
 
 code_000_3183:
     push AF                                            ;; 00:3183 $f5
     ld   A, $38                                        ;; 00:3184 $3e $38
-    jp   code_000_1f06                                 ;; 00:3186 $c3 $06 $1f
+    jp   callFunctionInBank02                          ;; 00:3186 $c3 $06 $1f
 
 code_000_3189:
     push AF                                            ;; 00:3189 $f5
     ld   A, $39                                        ;; 00:318a $3e $39
-    jp   code_000_1f06                                 ;; 00:318c $c3 $06 $1f
+    jp   callFunctionInBank02                          ;; 00:318c $c3 $06 $1f
 
 code_000_318f:
     ld   HL, wD874                                     ;; 00:318f $21 $74 $d8
@@ -8660,7 +8660,7 @@ code_000_34f4:
     ret                                                ;; 00:3501 $c9
 
 code_000_3502:
-    call code_000_1ed1                                 ;; 00:3502 $cd $d1 $1e
+    call trampolineUpdateJoypadInput                   ;; 00:3502 $cd $d1 $1e
     pop  HL                                            ;; 00:3505 $e1
     ld   A, C                                          ;; 00:3506 $79
     or   A, A                                          ;; 00:3507 $b7
@@ -8670,7 +8670,7 @@ code_000_3502:
     ret                                                ;; 00:350e $c9
 
 code_000_350f:
-    call code_000_1ed1                                 ;; 00:350f $cd $d1 $1e
+    call trampolineUpdateJoypadInput                   ;; 00:350f $cd $d1 $1e
     pop  HL                                            ;; 00:3512 $e1
     ld   A, C                                          ;; 00:3513 $79
     and  A, A                                          ;; 00:3514 $a7
@@ -9082,7 +9082,7 @@ code_000_3777:
     push HL                                            ;; 00:37ab $e5
     push DE                                            ;; 00:37ac $d5
     push BC                                            ;; 00:37ad $c5
-    call code_000_1ed1                                 ;; 00:37ae $cd $d1 $1e
+    call trampolineUpdateJoypadInput                   ;; 00:37ae $cd $d1 $1e
     ld   A, B                                          ;; 00:37b1 $78
     or   A, C                                          ;; 00:37b2 $b1
     pop  BC                                            ;; 00:37b3 $c1
@@ -9641,7 +9641,7 @@ code_000_3aee:
     ret                                                ;; 00:3b0c $c9
 
 code_000_3b0d:
-    call code_000_1ed1                                 ;; 00:3b0d $cd $d1 $1e
+    call trampolineUpdateJoypadInput                   ;; 00:3b0d $cd $d1 $1e
     pop  HL                                            ;; 00:3b10 $e1
     ld   A, D                                          ;; 00:3b11 $7a
     and  A, E                                          ;; 00:3b12 $a3
@@ -9748,7 +9748,7 @@ code_000_3b76:
     ret                                                ;; 00:3b9d $c9
 
 code_000_3b9e:
-    jp   code_000_0150                                 ;; 00:3b9e $c3 $50 $01
+    jp   FullReset                                     ;; 00:3b9e $c3 $50 $01
 
 ;@jumptable: 11
 data_000_3ba1:

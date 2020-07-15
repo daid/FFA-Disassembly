@@ -2,7 +2,7 @@
 ;@jumptable: 58
 data_002_4000:
     dw   code_002_4074                                 ;; 02:4000 $74 $40
-    dw   code_002_4218                                 ;; 02:4002 $18 $42
+    dw   updateJoypadInput                             ;; 02:4002 $18 $42
     dw   code_002_44fa                                 ;; 02:4004 $fa $44
     dw   code_002_44c4                                 ;; 02:4006 $c4 $44
     dw   code_002_442b                                 ;; 02:4008 $2b $44
@@ -319,7 +319,7 @@ code_002_4213:
     inc  [HL]                                          ;; 02:4216 $34
     ret                                                ;; 02:4217 $c9
 
-code_002_4218:
+updateJoypadInput:
     ld   HL, rP1                                       ;; 02:4218 $21 $00 $ff
     ld   [HL], $10                                     ;; 02:421b $36 $10 rP1
     ld   A, [HL]                                       ;; 02:421d $7e
@@ -328,7 +328,7 @@ code_002_4218:
     cpl                                                ;; 02:4221 $2f
     and  A, $0f                                        ;; 02:4222 $e6 $0f
     cp   A, $0f                                        ;; 02:4224 $fe $0f
-    jp   Z, code_000_0150                              ;; 02:4226 $ca $50 $01
+    jp   Z, FullReset                                  ;; 02:4226 $ca $50 $01
     swap A                                             ;; 02:4229 $cb $37
     ld   C, A                                          ;; 02:422b $4f
     ld   B, $08                                        ;; 02:422c $06 $08
@@ -341,12 +341,12 @@ code_002_4218:
     and  A, $0f                                        ;; 02:4235 $e6 $0f
     or   A, C                                          ;; 02:4237 $b1
     ld   C, A                                          ;; 02:4238 $4f
-    ld   A, [wC0AF]                                    ;; 02:4239 $fa $af $c0
+    ld   A, [wJoypadInput]                             ;; 02:4239 $fa $af $c0
     xor  A, C                                          ;; 02:423c $a9
     and  A, C                                          ;; 02:423d $a1
     ld   B, A                                          ;; 02:423e $47
     ld   A, C                                          ;; 02:423f $79
-    ld   [wC0AF], A                                    ;; 02:4240 $ea $af $c0
+    ld   [wJoypadInput], A                             ;; 02:4240 $ea $af $c0
     ret                                                ;; 02:4243 $c9
 
 code_002_4244:
@@ -2672,7 +2672,7 @@ data_002_51d3:
     db   $f0, $00                                      ;; 02:51d3 ..
 
 code_002_51d5:
-    call code_000_1ed1                                 ;; 02:51d5 $cd $d1 $1e
+    call trampolineUpdateJoypadInput                   ;; 02:51d5 $cd $d1 $1e
     ld   A, E                                          ;; 02:51d8 $7b
     and  A, D                                          ;; 02:51d9 $a2
     ret  Z                                             ;; 02:51da $c8
@@ -3097,7 +3097,7 @@ code_002_547e:
     ret                                                ;; 02:548f $c9
 
 code_002_5490:
-    call code_000_1ed1                                 ;; 02:5490 $cd $d1 $1e
+    call trampolineUpdateJoypadInput                   ;; 02:5490 $cd $d1 $1e
     ld   A, D                                          ;; 02:5493 $7a
     and  A, A                                          ;; 02:5494 $a7
     ret  Z                                             ;; 02:5495 $c8
@@ -3507,7 +3507,7 @@ code_002_56c9:
     cp   A, D                                          ;; 02:56df $ba
 .code_56e0:
     call NZ, code_002_6b20                             ;; 02:56e0 $c4 $20 $6b
-    call code_000_1ed1                                 ;; 02:56e3 $cd $d1 $1e
+    call trampolineUpdateJoypadInput                   ;; 02:56e3 $cd $d1 $1e
     bit  $04, C                                        ;; 02:56e6 $cb $61
     ret  NZ                                            ;; 02:56e8 $c0
     call code_002_6bbe                                 ;; 02:56e9 $cd $be $6b
@@ -4987,7 +4987,7 @@ code_002_680e:
     ld   [wD849], A                                    ;; 02:681a $ea $49 $d8
     push HL                                            ;; 02:681d $e5
     push DE                                            ;; 02:681e $d5
-    call code_000_1ed1                                 ;; 02:681f $cd $d1 $1e
+    call trampolineUpdateJoypadInput                   ;; 02:681f $cd $d1 $1e
     pop  DE                                            ;; 02:6822 $d1
     pop  HL                                            ;; 02:6823 $e1
     push BC                                            ;; 02:6824 $c5
@@ -8252,7 +8252,7 @@ code_002_7c3f:
     ret                                                ;; 02:7c8e $c9
 
 code_002_7c8f:
-    call code_000_1ed1                                 ;; 02:7c8f $cd $d1 $1e
+    call trampolineUpdateJoypadInput                   ;; 02:7c8f $cd $d1 $1e
     bit  $04, C                                        ;; 02:7c92 $cb $61
     jr   NZ, .code_7cbb                                ;; 02:7c94 $20 $25
     ld   HL, wD889                                     ;; 02:7c96 $21 $89 $d8
