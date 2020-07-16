@@ -3934,7 +3934,7 @@ code_000_1700:
     ld   HL, $0002                                     ;; 00:1721 $21 $02 $00
     add  HL, DE                                        ;; 00:1724 $19
     push HL                                            ;; 00:1725 $e5
-    ld   A, [wC3F0]                                    ;; 00:1726 $fa $f0 $c3
+    ld   A, [wMapTableBankNr]                          ;; 00:1726 $fa $f0 $c3
     call pushBankNrAndSwitch                           ;; 00:1729 $cd $fb $29
     pop  HL                                            ;; 00:172c $e1
     pop  DE                                            ;; 00:172d $d1
@@ -5498,7 +5498,7 @@ code_000_21bf:
     ld   E, A                                          ;; 00:21c0 $5f
     ld   HL, wC400                                     ;; 00:21c1 $21 $00 $c4
     ld   B, $40                                        ;; 00:21c4 $06 $40
-    ld   A, [wC3F5]                                    ;; 00:21c6 $fa $f5 $c3
+    ld   A, [wMapNumber]                               ;; 00:21c6 $fa $f5 $c3
     ld   D, A                                          ;; 00:21c9 $57
 .code_21ca:
     ld   A, D                                          ;; 00:21ca $7a
@@ -5507,7 +5507,7 @@ code_000_21bf:
     ld   A, E                                          ;; 00:21cd $7b
     ld   E, [HL]                                       ;; 00:21ce $5e
     ld   [HL+], A                                      ;; 00:21cf $22
-    ld   A, [wC3F5]                                    ;; 00:21d0 $fa $f5 $c3
+    ld   A, [wMapNumber]                               ;; 00:21d0 $fa $f5 $c3
     xor  A, D                                          ;; 00:21d3 $aa
     and  A, $7f                                        ;; 00:21d4 $e6 $7f
     jr   NZ, .code_21dc                                ;; 00:21d6 $20 $04
@@ -5554,7 +5554,7 @@ code_000_21f6:
     ret                                                ;; 00:2209 $c9
 
 code_000_220a:
-    ld   A, [wC3F5]                                    ;; 00:220a $fa $f5 $c3
+    ld   A, [wMapNumber]                               ;; 00:220a $fa $f5 $c3
     ret                                                ;; 00:220d $c9
 
 LoadRoomXY_to_A:
@@ -5717,7 +5717,7 @@ code_000_22fe:
     ld   A, [wC3F8]                                    ;; 00:22ff $fa $f8 $c3
     cp   A, $00                                        ;; 00:2302 $fe $00
     jr   Z, .code_2359                                 ;; 00:2304 $28 $53
-    ld   A, [wC3F0]                                    ;; 00:2306 $fa $f0 $c3
+    ld   A, [wMapTableBankNr]                          ;; 00:2306 $fa $f0 $c3
     call pushBankNrAndSwitch                           ;; 00:2309 $cd $fb $29
     pop  AF                                            ;; 00:230c $f1
     push AF                                            ;; 00:230d $f5
@@ -5773,7 +5773,7 @@ code_000_235b:
     ld   A, [wC3F8]                                    ;; 00:235c $fa $f8 $c3
     cp   A, $00                                        ;; 00:235f $fe $00
     jr   Z, .code_2383                                 ;; 00:2361 $28 $20
-    ld   A, [wC3F0]                                    ;; 00:2363 $fa $f0 $c3
+    ld   A, [wMapTableBankNr]                          ;; 00:2363 $fa $f0 $c3
     call pushBankNrAndSwitch                           ;; 00:2366 $cd $fb $29
     pop  AF                                            ;; 00:2369 $f1
     ld   C, A                                          ;; 00:236a $4f
@@ -5843,7 +5843,7 @@ code_000_23b9:
     ld   B, $00                                        ;; 00:23be $06 $00
     ret  Z                                             ;; 00:23c0 $c8
     push DE                                            ;; 00:23c1 $d5
-    ld   A, [wC3F0]                                    ;; 00:23c2 $fa $f0 $c3
+    ld   A, [wMapTableBankNr]                          ;; 00:23c2 $fa $f0 $c3
     call pushBankNrAndSwitch                           ;; 00:23c5 $cd $fb $29
     pop  DE                                            ;; 00:23c8 $d1
     call code_000_2385                                 ;; 00:23c9 $cd $85 $23
@@ -5890,7 +5890,7 @@ code_000_23f1:
 code_000_2400:
     push AF                                            ;; 00:2400 $f5
     push DE                                            ;; 00:2401 $d5
-    ld   A, [wC3F0]                                    ;; 00:2402 $fa $f0 $c3
+    ld   A, [wMapTableBankNr]                          ;; 00:2402 $fa $f0 $c3
     call pushBankNrAndSwitch                           ;; 00:2405 $cd $fb $29
     pop  DE                                            ;; 00:2408 $d1
     push DE                                            ;; 00:2409 $d5
@@ -5952,7 +5952,7 @@ LoadMapTiles:
     ret                                                ;; 00:245f $c9
 
 code_000_2460:
-    ld   A, [wC3F0]                                    ;; 00:2460 $fa $f0 $c3
+    ld   A, [wMapTableBankNr]                          ;; 00:2460 $fa $f0 $c3
     call pushBankNrAndSwitch                           ;; 00:2463 $cd $fb $29
     ld   A, [wC3FF]                                    ;; 00:2466 $fa $ff $c3
     ld   H, A                                          ;; 00:2469 $67
@@ -5972,7 +5972,7 @@ code_000_2460:
     ret                                                ;; 00:2482 $c9
 
 code_000_2483:
-    ld   A, [wC3F0]                                    ;; 00:2483 $fa $f0 $c3
+    ld   A, [wMapTableBankNr]                          ;; 00:2483 $fa $f0 $c3
     call pushBankNrAndSwitch                           ;; 00:2486 $cd $fb $29
     ld   A, [wC3FF]                                    ;; 00:2489 $fa $ff $c3
     ld   H, A                                          ;; 00:248c $67
@@ -5996,7 +5996,7 @@ code_000_24a7:
     ld   A, [wC400]                                    ;; 00:24a7 $fa $00 $c4
     set  $07, A                                        ;; 00:24aa $cb $ff
     ld   [wC400], A                                    ;; 00:24ac $ea $00 $c4
-    ld   A, [wC3F0]                                    ;; 00:24af $fa $f0 $c3
+    ld   A, [wMapTableBankNr]                          ;; 00:24af $fa $f0 $c3
     call pushBankNrAndSwitch                           ;; 00:24b2 $cd $fb $29
     ld   A, [wC3FF]                                    ;; 00:24b5 $fa $ff $c3
     ld   H, A                                          ;; 00:24b8 $67
@@ -6018,7 +6018,7 @@ code_000_24a7:
     ret                                                ;; 00:24d3 $c9
 
 code_000_24d4:
-    ld   A, [wC3F0]                                    ;; 00:24d4 $fa $f0 $c3
+    ld   A, [wMapTableBankNr]                          ;; 00:24d4 $fa $f0 $c3
     call pushBankNrAndSwitch                           ;; 00:24d7 $cd $fb $29
     ld   A, [wC3FF]                                    ;; 00:24da $fa $ff $c3
     ld   H, A                                          ;; 00:24dd $67
@@ -6040,7 +6040,7 @@ code_000_24d4:
     ret                                                ;; 00:24f8 $c9
 
 code_000_24f9:
-    ld   A, [wC3F0]                                    ;; 00:24f9 $fa $f0 $c3
+    ld   A, [wMapTableBankNr]                          ;; 00:24f9 $fa $f0 $c3
     call pushBankNrAndSwitch                           ;; 00:24fc $cd $fb $29
     ld   A, [wC3FF]                                    ;; 00:24ff $fa $ff $c3
     ld   H, A                                          ;; 00:2502 $67
@@ -6063,7 +6063,7 @@ code_000_24f9:
     ret                                                ;; 00:251e $c9
 
 code_000_251f:
-    ld   A, [wC3F0]                                    ;; 00:251f $fa $f0 $c3
+    ld   A, [wMapTableBankNr]                          ;; 00:251f $fa $f0 $c3
     call pushBankNrAndSwitch                           ;; 00:2522 $cd $fb $29
     ld   A, [wC3FF]                                    ;; 00:2525 $fa $ff $c3
     ld   H, A                                          ;; 00:2528 $67
@@ -6255,7 +6255,7 @@ code_000_2617:
     ld   L, E                                          ;; 00:2618 $6b
     push AF                                            ;; 00:2619 $f5
     push HL                                            ;; 00:261a $e5
-    ld   A, [wC3F0]                                    ;; 00:261b $fa $f0 $c3
+    ld   A, [wMapTableBankNr]                          ;; 00:261b $fa $f0 $c3
     call pushBankNrAndSwitch                           ;; 00:261e $cd $fb $29
     pop  HL                                            ;; 00:2621 $e1
     ld   A, [wRoomY]                                   ;; 00:2622 $fa $f7 $c3
@@ -6374,7 +6374,7 @@ code_000_2617:
     ret                                                ;; 00:26db $c9
 
 code_000_26dc:
-    ld   [wC3F5], A                                    ;; 00:26dc $ea $f5 $c3
+    ld   [wMapNumber], A                               ;; 00:26dc $ea $f5 $c3
     push DE                                            ;; 00:26df $d5
     push AF                                            ;; 00:26e0 $f5
     ld   A, $08                                        ;; 00:26e1 $3e $08 Bank
@@ -6395,7 +6395,7 @@ code_000_26dc:
     inc  HL                                            ;; 00:26f9 $23
     inc  HL                                            ;; 00:26fa $23
     ld   A, [HL+]                                      ;; 00:26fb $2a
-    ld   [wC3F0], A                                    ;; 00:26fc $ea $f0 $c3
+    ld   [wMapTableBankNr], A                          ;; 00:26fc $ea $f0 $c3
     ld   A, [HL+]                                      ;; 00:26ff $2a
     ld   H, [HL]                                       ;; 00:2700 $66
     ld   L, A                                          ;; 00:2701 $6f
@@ -6407,7 +6407,7 @@ code_000_26dc:
     add  HL, BC                                        ;; 00:270d $09
     call code_000_1af3                                 ;; 00:270e $cd $f3 $1a
     call popBankNrAndSwitch                            ;; 00:2711 $cd $0a $2a
-    ld   A, [wC3F0]                                    ;; 00:2714 $fa $f0 $c3
+    ld   A, [wMapTableBankNr]                          ;; 00:2714 $fa $f0 $c3
     call pushBankNrAndSwitch                           ;; 00:2717 $cd $fb $29
     pop  DE                                            ;; 00:271a $d1
     ld   A, [wMapTablePointerHigh]                     ;; 00:271b $fa $f3 $c3

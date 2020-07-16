@@ -1,5 +1,6 @@
 ;; Disassembled with BadBoy Disassembler: https://github.com/daid/BadBoy
 
+; Looks like some map info is stored here, at least: Size of each map, Runlength length
 data_006_4000:
     db   $00, $04, $08, $08, $04, $41, $0a, $41        ;; 06:4000 ....????
     db   $39, $41, $3f, $41, $7a, $41, $80, $41        ;; 06:4008 ????????

@@ -1,5 +1,7 @@
 ;; Disassembled with BadBoy Disassembler: https://github.com/daid/BadBoy
 
+; This bank seems to start with some kind of map information with 11 bytes per record
+; There is a least a pointer and a bank number in that data.
 data_008_4000:
     db   $00, $00, $00, $b0, $40, $80, $05, $00        ;; 08:4000 ..?..?..
     db   $40, $d7, $3c, $00, $00, $00, $b0, $40        ;; 08:4008 .??..?..

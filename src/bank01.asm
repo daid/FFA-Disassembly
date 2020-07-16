@@ -365,7 +365,7 @@ code_001_4279:
     ld   [wD4A1], A                                    ;; 01:4289 $ea $a1 $d4
     ld   A, [wMapWidth]                                ;; 01:428c $fa $fb $c3
     ld   [wD49F], A                                    ;; 01:428f $ea $9f $d4
-    ld   A, [wC3F0]                                    ;; 01:4292 $fa $f0 $c3
+    ld   A, [wMapTableBankNr]                          ;; 01:4292 $fa $f0 $c3
     ld   [wD4A0], A                                    ;; 01:4295 $ea $a0 $d4
     ld   A, [wD49D]                                    ;; 01:4298 $fa $9d $d4
     ld   E, A                                          ;; 01:429b $5f

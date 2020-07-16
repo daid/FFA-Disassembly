@@ -228,7 +228,7 @@ wMapTiles: ;; $c350
   ds 80
 wC3A0: ;; $c3a0
   ds 80
-wC3F0: ;; $c3f0
+wMapTableBankNr: ;; $c3f0
   ds 1
 wC3F1: ;; $c3f1
   ds 1
@@ -238,7 +238,7 @@ wMapTablePointerHigh: ;; $c3f3
   ds 1
 wC3F4: ;; $c3f4
   ds 1
-wC3F5: ;; $c3f5
+wMapNumber: ;; $c3f5
   ds 1
 wRoomX: ;; $c3f6
   ds 1
