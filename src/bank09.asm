@@ -1,3 +1,4 @@
+;; Disassembled with BadBoy Disassembler: https://github.com/daid/BadBoy
 
 ;@jumptable
 data_009_4000:

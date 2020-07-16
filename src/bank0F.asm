@@ -1,3 +1,4 @@
+;; Disassembled with BadBoy Disassembler: https://github.com/daid/BadBoy
 
 code_00f_4000:
     jr   code_00f_4006                                 ;; 0f:4000 $18 $04

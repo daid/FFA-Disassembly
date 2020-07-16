@@ -1,3 +1,4 @@
+;; Disassembled with BadBoy Disassembler: https://github.com/daid/BadBoy
 
 data_005_4000:
     db   $00, $03, $10, $10, $04, $44, $0a, $44        ;; 05:4000 ....????

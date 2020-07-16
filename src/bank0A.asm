@@ -1,3 +1,4 @@
+;; Disassembled with BadBoy Disassembler: https://github.com/daid/BadBoy
 
 ;@gfx
 data_00a_4000:

@@ -1,3 +1,4 @@
+;; Disassembled with BadBoy Disassembler: https://github.com/daid/BadBoy
 
 rst_00:
     jp   FullReset                                     ;; 00:0000 $c3 $50 $01
@@ -132,10 +133,43 @@ Header:
     db   $dc, $cc, $6e, $e6, $dd, $dd, $d9, $99        ;; 00:011c ????????
     db   $bb, $bb, $67, $63, $6e, $0e, $ec, $cc        ;; 00:0124 ????????
     db   $dd, $dc, $99, $9f, $bb, $b9, $33, $3e        ;; 00:012c ????????
+
+HeaderTitle:
     db   $53, $45, $49, $4b, $45, $4e, $20, $44        ;; 00:0134 ????????
-    db   $45, $4e, $53, $45, $54, $53, $55, $00        ;; 00:013c ????????
-    db   $00, $00, $00, $06, $03, $00, $01, $c3        ;; 00:0144 ????????
-    db   $00, $d0, $d9, $f2                            ;; 00:014c ????
+    db   $45, $4e, $53, $45, $54, $53, $55             ;; 00:013c ???????
+
+HeaderGBCFlag:
+    db   $00                                           ;; 00:0143 ?
+
+HeaderNewLicenseCode:
+    db   $00, $00                                      ;; 00:0144 ??
+
+HeaderSGBFlag:
+    db   $00                                           ;; 00:0146 ?
+
+HeaderCardType:
+    db   $06                                           ;; 00:0147 ?
+
+HeaderRomSize:
+    db   $03                                           ;; 00:0148 ?
+
+HeaderRamSize:
+    db   $00                                           ;; 00:0149 ?
+
+HeaderWorldOrJapanFlag:
+    db   $01                                           ;; 00:014a ?
+
+HeaderLicenseCode:
+    db   $c3                                           ;; 00:014b ?
+
+HeaderROMVersion:
+    db   $00                                           ;; 00:014c ?
+
+HeaderChecksum:
+    db   $d0                                           ;; 00:014d ?
+
+HeaderGlobalChecksum:
+    db   $d9, $f2                                      ;; 00:014e ??
 
 FullReset:
     jp   Init                                          ;; 00:0150 $c3 $ca $1f
@@ -706,8 +740,8 @@ code_000_0454:
     ld   [wC344], A                                    ;; 00:0459 $ea $44 $c3
     ret                                                ;; 00:045c $c9
 
-code_000_045d:
-    ld   A, [wC343]                                    ;; 00:045d $fa $43 $c3
+getBackgroundDrawAddress:
+    ld   A, [wBackgroundDrawPositionY]                 ;; 00:045d $fa $43 $c3
     add  A, D                                          ;; 00:0460 $82
     and  A, $1f                                        ;; 00:0461 $e6 $1f
     ld   D, A                                          ;; 00:0463 $57
@@ -718,7 +752,7 @@ code_000_045d:
     add  HL, HL                                        ;; 00:0469 $29
     add  HL, HL                                        ;; 00:046a $29
     add  HL, HL                                        ;; 00:046b $29
-    ld   A, [wC342]                                    ;; 00:046c $fa $42 $c3
+    ld   A, [wBackgroundDrawPositionX]                 ;; 00:046c $fa $42 $c3
     add  A, E                                          ;; 00:046f $83
     and  A, $1f                                        ;; 00:0470 $e6 $1f
     ld   E, A                                          ;; 00:0472 $5f
@@ -731,24 +765,24 @@ code_000_045d:
 
 code_000_047c:
     push AF                                            ;; 00:047c $f5
-    call code_000_045d                                 ;; 00:047d $cd $5d $04
+    call getBackgroundDrawAddress                      ;; 00:047d $cd $5d $04
     pop  AF                                            ;; 00:0480 $f1
-    call code_000_1d5e                                 ;; 00:0481 $cd $5e $1d
+    call storeBatHLinVRAM                              ;; 00:0481 $cd $5e $1d
     ret                                                ;; 00:0484 $c9
     db   $cd, $5d, $04, $cd, $8a, $1d, $c9             ;; 00:0485 ???????
 
 code_000_048c:
     push HL                                            ;; 00:048c $e5
-    call code_000_045d                                 ;; 00:048d $cd $5d $04
+    call getBackgroundDrawAddress                      ;; 00:048d $cd $5d $04
     pop  DE                                            ;; 00:0490 $d1
     call code_000_1e9f                                 ;; 00:0491 $cd $9f $1e
     ret                                                ;; 00:0494 $c9
 
 code_000_0495:
     push HL                                            ;; 00:0495 $e5
-    call code_000_045d                                 ;; 00:0496 $cd $5d $04
+    call getBackgroundDrawAddress                      ;; 00:0496 $cd $5d $04
     pop  DE                                            ;; 00:0499 $d1
-    call code_000_1d74                                 ;; 00:049a $cd $74 $1d
+    call storeDEinVRAM                                 ;; 00:049a $cd $74 $1d
     ret                                                ;; 00:049d $c9
 
 code_000_049e:
@@ -1019,7 +1053,8 @@ code_000_05ef:
     dec  E                                             ;; 00:060f $1d
     ret                                                ;; 00:0610 $c9
 
-code_000_0611:
+; Update the object at index C to the position at D,E
+updateObjectPosition:
     ld   L, A                                          ;; 00:0611 $6f
     ld   A, C                                          ;; 00:0612 $79
     cp   A, $14                                        ;; 00:0613 $fe $14
@@ -4841,7 +4876,9 @@ code_000_1d44:
     ld   [wD87E], A                                    ;; 00:1d5a $ea $7e $d8
     ret                                                ;; 00:1d5d $c9
 
-code_000_1d5e:
+; Store B in the VRAM address HL and return the overridden value in A
+; This waits till VRAM writting is available.
+storeBatHLinVRAM:
     ld   B, A                                          ;; 00:1d5e $47
     ldh  A, [rLCDC]                                    ;; 00:1d5f $f0 $40
     bit  $07, A                                        ;; 00:1d61 $cb $7f
@@ -4860,7 +4897,8 @@ code_000_1d5e:
     ld   [HL], B                                       ;; 00:1d72 $70
     ret                                                ;; 00:1d73 $c9
 
-code_000_1d74:
+; Store D and E at vram HL, waits till we can write to VRAM.
+storeDEinVRAM:
     ldh  A, [rLCDC]                                    ;; 00:1d74 $f0 $40
     bit  $07, A                                        ;; 00:1d76 $cb $7f
     jr   Z, .code_1d86                                 ;; 00:1d78 $28 $0c
@@ -4949,7 +4987,7 @@ code_000_1dda:
     push DE                                            ;; 00:1e1c $d5
     ld   D, C                                          ;; 00:1e1d $51
     ld   E, A                                          ;; 00:1e1e $5f
-    call code_000_1d74                                 ;; 00:1e1f $cd $74 $1d
+    call storeDEinVRAM                                 ;; 00:1e1f $cd $74 $1d
     inc  HL                                            ;; 00:1e22 $23
     pop  DE                                            ;; 00:1e23 $d1
     pop  BC                                            ;; 00:1e24 $c1
@@ -4970,10 +5008,10 @@ code_000_1dda:
     cp   A, $10                                        ;; 00:1e3a $fe $10
     ld   A, D                                          ;; 00:1e3c $7a
     jr   Z, .code_1e44                                 ;; 00:1e3d $28 $05
-    call code_000_1d74                                 ;; 00:1e3f $cd $74 $1d
+    call storeDEinVRAM                                 ;; 00:1e3f $cd $74 $1d
     jr   .code_1e28                                    ;; 00:1e42 $18 $e4
 .code_1e44:
-    call code_000_1d5e                                 ;; 00:1e44 $cd $5e $1d
+    call storeBatHLinVRAM                              ;; 00:1e44 $cd $5e $1d
     jr   .code_1e28                                    ;; 00:1e47 $18 $df
 .code_1e49:
     pop  HL                                            ;; 00:1e49 $e1
@@ -5055,6 +5093,7 @@ code_000_1e9f:
     db   $d1, $7b, $22, $72, $21, $e8, $ce, $34        ;; 00:1ec8 ????????
     db   $c9                                           ;; 00:1ed0 ?
 
+; This returns the currently hold joypad inputs in A and the newly pressed inputs in B
 trampolineUpdateJoypadInput:
     push AF                                            ;; 00:1ed1 $f5
     ld   A, $01                                        ;; 00:1ed2 $3e $01
@@ -6859,12 +6898,12 @@ HLandDE:
 code_000_29ba:
     push BC                                            ;; 00:29ba $c5
     call GetObjectY                                    ;; 00:29bb $cd $3e $0c
-    call code_000_29dc                                 ;; 00:29be $cd $dc $29
+    call snapPositionToNearestTile8                    ;; 00:29be $cd $dc $29
     pop  BC                                            ;; 00:29c1 $c1
     ld   B, A                                          ;; 00:29c2 $47
     push BC                                            ;; 00:29c3 $c5
     call GetObjectX                                    ;; 00:29c4 $cd $2d $0c
-    call code_000_29dc                                 ;; 00:29c7 $cd $dc $29
+    call snapPositionToNearestTile8                    ;; 00:29c7 $cd $dc $29
     pop  BC                                            ;; 00:29ca $c1
     ld   E, A                                          ;; 00:29cb $5f
     ld   D, B                                          ;; 00:29cc $50
@@ -6875,10 +6914,10 @@ code_000_29ba:
     pop  BC                                            ;; 00:29d4 $c1
     pop  DE                                            ;; 00:29d5 $d1
     ld   B, $00                                        ;; 00:29d6 $06 $00
-    call code_000_0611                                 ;; 00:29d8 $cd $11 $06
+    call updateObjectPosition                          ;; 00:29d8 $cd $11 $06
     ret                                                ;; 00:29db $c9
 
-code_000_29dc:
+snapPositionToNearestTile8:
     and  A, $fc                                        ;; 00:29dc $e6 $fc
     bit  $02, A                                        ;; 00:29de $cb $57
     ret  Z                                             ;; 00:29e0 $c8
@@ -9231,7 +9270,7 @@ code_000_3891:
     call code_000_047c                                 ;; 00:389b $cd $7c $04
     jr   .code_38a3                                    ;; 00:389e $18 $03
 .code_38a0:
-    call code_000_1d5e                                 ;; 00:38a0 $cd $5e $1d
+    call storeBatHLinVRAM                              ;; 00:38a0 $cd $5e $1d
 .code_38a3:
     pop  HL                                            ;; 00:38a3 $e1
     pop  DE                                            ;; 00:38a4 $d1

@@ -212,9 +212,9 @@ wC340: ;; $c340
   ds 1
 wC341: ;; $c341
   ds 1
-wC342: ;; $c342
+wBackgroundDrawPositionX: ;; $c342
   ds 1
-wC343: ;; $c343
+wBackgroundDrawPositionY: ;; $c343
   ds 1
 wC344: ;; $c344
   ds 1

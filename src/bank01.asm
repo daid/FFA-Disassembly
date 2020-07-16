@@ -1,3 +1,4 @@
+;; Disassembled with BadBoy Disassembler: https://github.com/daid/BadBoy
 
 ;@jumptable: 40
 data_001_4000:
@@ -276,7 +277,7 @@ code_001_41d6:
     ld   A, [wVideoLCDC]                               ;; 01:41f4 $fa $a5 $c0
     and  A, $fc                                        ;; 01:41f7 $e6 $fc
     ld   HL, rLCDC                                     ;; 01:41f9 $21 $40 $ff
-    call code_000_1d5e                                 ;; 01:41fc $cd $5e $1d
+    call storeBatHLinVRAM                              ;; 01:41fc $cd $5e $1d
     ld   HL, wD499                                     ;; 01:41ff $21 $99 $d4
     inc  [HL]                                          ;; 01:4202 $34
     pop  HL                                            ;; 01:4203 $e1
@@ -425,7 +426,7 @@ code_001_42d1:
     ld   C, $00                                        ;; 01:42ef $0e $00
     ld   B, $00                                        ;; 01:42f1 $06 $00
     ld   A, $00                                        ;; 01:42f3 $3e $00
-    call code_000_0611                                 ;; 01:42f5 $cd $11 $06
+    call updateObjectPosition                          ;; 01:42f5 $cd $11 $06
     ld   HL, $4260                                     ;; 01:42f8 $21 $60 $42
     ld   DE, $8080                                     ;; 01:42fb $11 $80 $80
     ld   A, $0c                                        ;; 01:42fe $3e $0c Bank
@@ -485,7 +486,7 @@ code_001_433e:
     ld   C, $00                                        ;; 01:437c $0e $00
     ld   B, $00                                        ;; 01:437e $06 $00
     ld   A, $00                                        ;; 01:4380 $3e $00
-    call code_000_0611                                 ;; 01:4382 $cd $11 $06
+    call updateObjectPosition                          ;; 01:4382 $cd $11 $06
     pop  HL                                            ;; 01:4385 $e1
     ret                                                ;; 01:4386 $c9
 
@@ -786,11 +787,11 @@ code_001_44d8:
     ld   E, A                                          ;; 01:4577 $5f
     ld   D, $ff                                        ;; 01:4578 $16 $ff
     call code_001_4690                                 ;; 01:457a $cd $90 $46
-    ld   A, [wC342]                                    ;; 01:457d $fa $42 $c3
+    ld   A, [wBackgroundDrawPositionX]                 ;; 01:457d $fa $42 $c3
     dec  A                                             ;; 01:4580 $3d
     dec  A                                             ;; 01:4581 $3d
     and  A, $1f                                        ;; 01:4582 $e6 $1f
-    ld   [wC342], A                                    ;; 01:4584 $ea $42 $c3
+    ld   [wBackgroundDrawPositionX], A                 ;; 01:4584 $ea $42 $c3
 .code_4587:
     ld   A, $b1                                        ;; 01:4587 $3e $b1
     call code_000_0429                                 ;; 01:4589 $cd $29 $04
@@ -833,11 +834,11 @@ code_001_4597:
     ld   E, A                                          ;; 01:45ca $5f
     ld   D, $0a                                        ;; 01:45cb $16 $0a
     call code_001_4690                                 ;; 01:45cd $cd $90 $46
-    ld   A, [wC342]                                    ;; 01:45d0 $fa $42 $c3
+    ld   A, [wBackgroundDrawPositionX]                 ;; 01:45d0 $fa $42 $c3
     inc  A                                             ;; 01:45d3 $3c
     inc  A                                             ;; 01:45d4 $3c
     and  A, $1f                                        ;; 01:45d5 $e6 $1f
-    ld   [wC342], A                                    ;; 01:45d7 $ea $42 $c3
+    ld   [wBackgroundDrawPositionX], A                 ;; 01:45d7 $ea $42 $c3
 .code_45da:
     ld   A, $b2                                        ;; 01:45da $3e $b2
     call code_000_0429                                 ;; 01:45dc $cd $29 $04
@@ -879,11 +880,11 @@ code_001_45e7:
     srl  A                                             ;; 01:461e $cb $3f
     ld   D, A                                          ;; 01:4620 $57
     call code_001_46aa                                 ;; 01:4621 $cd $aa $46
-    ld   A, [wC343]                                    ;; 01:4624 $fa $43 $c3
+    ld   A, [wBackgroundDrawPositionY]                 ;; 01:4624 $fa $43 $c3
     inc  A                                             ;; 01:4627 $3c
     inc  A                                             ;; 01:4628 $3c
     and  A, $1f                                        ;; 01:4629 $e6 $1f
-    ld   [wC343], A                                    ;; 01:462b $ea $43 $c3
+    ld   [wBackgroundDrawPositionY], A                 ;; 01:462b $ea $43 $c3
 .code_462e:
     ld   A, $b4                                        ;; 01:462e $3e $b4
     call code_000_0429                                 ;; 01:4630 $cd $29 $04
@@ -924,11 +925,11 @@ code_001_463a:
     ld   E, A                                          ;; 01:4670 $5f
     ld   D, $ff                                        ;; 01:4671 $16 $ff
     call code_001_46aa                                 ;; 01:4673 $cd $aa $46
-    ld   A, [wC343]                                    ;; 01:4676 $fa $43 $c3
+    ld   A, [wBackgroundDrawPositionY]                 ;; 01:4676 $fa $43 $c3
     dec  A                                             ;; 01:4679 $3d
     dec  A                                             ;; 01:467a $3d
     and  A, $1f                                        ;; 01:467b $e6 $1f
-    ld   [wC343], A                                    ;; 01:467d $ea $43 $c3
+    ld   [wBackgroundDrawPositionY], A                 ;; 01:467d $ea $43 $c3
 .code_4680:
     ld   A, $b8                                        ;; 01:4680 $3e $b8
     call code_000_0429                                 ;; 01:4682 $cd $29 $04
@@ -1038,8 +1039,8 @@ code_001_471d:
     ld   A, $00                                        ;; 01:471d $3e $00 rSCY
     ld   [wVideoSCX], A                                ;; 01:471f $ea $a6 $c0
     ld   [wVideoSCY], A                                ;; 01:4722 $ea $a7 $c0
-    ld   [wC342], A                                    ;; 01:4725 $ea $42 $c3
-    ld   [wC343], A                                    ;; 01:4728 $ea $43 $c3
+    ld   [wBackgroundDrawPositionX], A                 ;; 01:4725 $ea $42 $c3
+    ld   [wBackgroundDrawPositionY], A                 ;; 01:4728 $ea $43 $c3
     dec  A                                             ;; 01:472b $3d
     ld   [wC344], A                                    ;; 01:472c $ea $44 $c3
     ld   [wC345], A                                    ;; 01:472f $ea $45 $c3
@@ -1254,7 +1255,7 @@ code_001_498b:
 code_001_498e:
     ld   B, $00                                        ;; 01:498e $06 $00
     ld   C, $04                                        ;; 01:4990 $0e $04
-    call code_000_0611                                 ;; 01:4992 $cd $11 $06
+    call updateObjectPosition                          ;; 01:4992 $cd $11 $06
     ret                                                ;; 01:4995 $c9
 
 code_001_4996:
@@ -3947,7 +3948,7 @@ code_001_59d0:
     ld   B, $00                                        ;; 01:59da $06 $00
     ld   A, $08                                        ;; 01:59dc $3e $08
     push BC                                            ;; 01:59de $c5
-    call code_000_0611                                 ;; 01:59df $cd $11 $06
+    call updateObjectPosition                          ;; 01:59df $cd $11 $06
     pop  BC                                            ;; 01:59e2 $c1
     ld   HL, wCEF0                                     ;; 01:59e3 $21 $f0 $ce
     add  HL, BC                                        ;; 01:59e6 $09

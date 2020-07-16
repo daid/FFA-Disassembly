@@ -7,3 +7,12 @@ rom.gb: src/main.o
 
 src/main.o: $(ASM_FILES)
 	rgbasm --export-all -o $@ src/main.asm
+
+check: rom.gb rom.md5
+	md5sum -c rom.md5
+
+clean:
+	rm -rf src/main.o rom.gb rom.sym
+
+.PHONY: all clean check
+all: rom.gb

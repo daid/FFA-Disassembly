@@ -1,3 +1,4 @@
+;; Disassembled with BadBoy Disassembler: https://github.com/daid/BadBoy
 
 ;@jumptable
 data_004_4000:
@@ -154,7 +155,7 @@ code_004_40a4:
     ld   A, [wD3E8]                                    ;; 04:40e0 $fa $e8 $d3
     ld   C, A                                          ;; 04:40e3 $4f
     pop  AF                                            ;; 04:40e4 $f1
-    call code_000_0611                                 ;; 04:40e5 $cd $11 $06
+    call updateObjectPosition                          ;; 04:40e5 $cd $11 $06
     pop  DE                                            ;; 04:40e8 $d1
     call code_004_40f3                                 ;; 04:40e9 $cd $f3 $40
     ld   HL, wD3EE                                     ;; 04:40ec $21 $ee $d3
@@ -217,7 +218,7 @@ code_004_40f3:
     ld   D, A                                          ;; 04:4137 $57
     pop  AF                                            ;; 04:4138 $f1
     push HL                                            ;; 04:4139 $e5
-    call code_000_0611                                 ;; 04:413a $cd $11 $06
+    call updateObjectPosition                          ;; 04:413a $cd $11 $06
     pop  HL                                            ;; 04:413d $e1
     pop  DE                                            ;; 04:413e $d1
     pop  BC                                            ;; 04:413f $c1

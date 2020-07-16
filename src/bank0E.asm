@@ -1,3 +1,4 @@
+;; Disassembled with BadBoy Disassembler: https://github.com/daid/BadBoy
 
 unknown_00e_4000:
     db   $0b, $c9, $00, $33, $08, $52, $c8, $00        ;; 0e:4000 ????????
