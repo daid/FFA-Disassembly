@@ -5307,7 +5307,7 @@ InitPreIntEnable:
     call copyHLtoDE                                    ;; 00:204f $cd $49 $2b
     ld   A, $0f                                        ;; 00:2052 $3e $0f Bank
     ld   [MBCBankSelect], A                            ;; 00:2054 $ea $00 $21
-    call $4003                                         ;; 00:2057 $cd $03 $40
+    call code_00f_4003                                 ;; 00:2057 $cd $03 $40
     ld   A, $e4                                        ;; 00:205a $3e $e4 rBGP
     ldh  [rBGP], A                                     ;; 00:205c $e0 $47
     ld   [wVideoBGP], A                                ;; 00:205e $ea $aa $c0
@@ -5461,7 +5461,7 @@ DisableLCD:
 code_000_217b:
     ld   A, $0f                                        ;; 00:217b $3e $0f
     call pushBankNrAndSwitch                           ;; 00:217d $cd $fb $29
-    call $4000                                         ;; 00:2180 $cd $00 $40
+    call code_00f_4000                                 ;; 00:2180 $cd $00 $40
     call popBankNrAndSwitch                            ;; 00:2183 $cd $0a $2a
     call code_000_0447                                 ;; 00:2186 $cd $47 $04
     ld   A, [wC0A2]                                    ;; 00:2189 $fa $a2 $c0
@@ -6382,7 +6382,7 @@ loadMap:
     pop  AF                                            ;; 00:26e6 $f1
     ld   HL, $000b                                     ;; 00:26e7 $21 $0b $00
     call MultiplyHL_by_A                               ;; 00:26ea $cd $7b $2b
-    ld   DE, $4000                                     ;; 00:26ed $11 $00 $40
+    ld   DE, data_008_4000                             ;; 00:26ed $11 $00 $40
     add  HL, DE                                        ;; 00:26f0 $19
     ld   C, [HL]                                       ;; 00:26f1 $4e
     inc  HL                                            ;; 00:26f2 $23
@@ -6403,7 +6403,7 @@ loadMap:
     ld   [wMapTablePointerHigh], A                     ;; 00:2703 $ea $f3 $c3
     ld   A, L                                          ;; 00:2706 $7d
     ld   [wMapTablePointerLow], A                      ;; 00:2707 $ea $f2 $c3
-    ld   HL, $4000                                     ;; 00:270a $21 $00 $40
+    ld   HL, data_008_4000                             ;; 00:270a $21 $00 $40
     add  HL, BC                                        ;; 00:270d $09
     call code_000_1af3                                 ;; 00:270e $cd $f3 $1a
     call popBankNrAndSwitch                            ;; 00:2711 $cd $0a $2a
@@ -8192,7 +8192,7 @@ code_000_31c7:
     jr   .code_31f1                                    ;; 00:31e8 $18 $07
 .code_31ea:
     call code_000_3282                                 ;; 00:31ea $cd $82 $32
-    ld   DE, $4000                                     ;; 00:31ed $11 $00 $40
+    ld   DE, data_001_4000                             ;; 00:31ed $11 $00 $40
     add  HL, DE                                        ;; 00:31f0 $19
 .code_31f1:
     ld   A, H                                          ;; 00:31f1 $7c
@@ -8376,12 +8376,12 @@ code_000_3304:
     ld   A, [wD86A]                                    ;; 00:330a $fa $6a $d8
     cp   A, $0e                                        ;; 00:330d $fe $0e
     jr   NZ, .code_3315                                ;; 00:330f $20 $04
-    ld   DE, $4000                                     ;; 00:3311 $11 $00 $40
+    ld   DE, data_007_4000                             ;; 00:3311 $11 $00 $40
     add  HL, DE                                        ;; 00:3314 $19
 .code_3315:
     call code_000_36df                                 ;; 00:3315 $cd $df $36
     pop  HL                                            ;; 00:3318 $e1
-    ld   DE, $4000                                     ;; 00:3319 $11 $00 $40
+    ld   DE, data_005_4000                             ;; 00:3319 $11 $00 $40
     add  HL, DE                                        ;; 00:331c $19
     ld   A, H                                          ;; 00:331d $7c
     ld   [wD8B7], A                                    ;; 00:331e $ea $b7 $d8
