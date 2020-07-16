@@ -905,7 +905,7 @@ code_004_450e:
     call code_004_4685                                 ;; 04:452d $cd $85 $46
     pop  DE                                            ;; 04:4530 $d1
     ld   D, $00                                        ;; 04:4531 $16 $00
-    call code_000_2bab                                 ;; 04:4533 $cd $ab $2b
+    call sub_HL_DE                                     ;; 04:4533 $cd $ab $2b
     pop  DE                                            ;; 04:4536 $d1
     pop  BC                                            ;; 04:4537 $c1
     jr   C, code_004_4554                              ;; 04:4538 $38 $1a
@@ -1140,7 +1140,7 @@ code_004_4685:
 
 code_004_469b:
     ld   D, $00                                        ;; 04:469b $16 $00
-    call code_000_2bab                                 ;; 04:469d $cd $ab $2b
+    call sub_HL_DE                                     ;; 04:469d $cd $ab $2b
     jr   C, .code_46c1                                 ;; 04:46a0 $38 $1f
     ret  Z                                             ;; 04:46a2 $c8
     push HL                                            ;; 04:46a3 $e5
@@ -1167,7 +1167,7 @@ code_004_469b:
 
 code_004_46c6:
     ld   D, $00                                        ;; 04:46c6 $16 $00
-    call code_000_2bab                                 ;; 04:46c8 $cd $ab $2b
+    call sub_HL_DE                                     ;; 04:46c8 $cd $ab $2b
     jr   C, .code_46f1                                 ;; 04:46cb $38 $24
     ret  Z                                             ;; 04:46cd $c8
     push HL                                            ;; 04:46ce $e5
@@ -1219,7 +1219,7 @@ code_004_470b:
     ld   H, A                                          ;; 04:4710 $67
     ld   A, [wD3F4]                                    ;; 04:4711 $fa $f4 $d3
     ld   L, A                                          ;; 04:4714 $6f
-    call code_000_2bab                                 ;; 04:4715 $cd $ab $2b
+    call sub_HL_DE                                     ;; 04:4715 $cd $ab $2b
     jr   Z, .code_471c                                 ;; 04:4718 $28 $02
     jr   NC, .code_471f                                ;; 04:471a $30 $03
 .code_471c:

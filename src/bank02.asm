@@ -760,7 +760,7 @@ code_002_4469:
     push HL                                            ;; 02:4486 $e5
     push BC                                            ;; 02:4487 $c5
     ld   DE, wC4A2                                     ;; 02:4488 $11 $a2 $c4
-    call code_000_2bab                                 ;; 02:448b $cd $ab $2b
+    call sub_HL_DE                                     ;; 02:448b $cd $ab $2b
     pop  BC                                            ;; 02:448e $c1
     sla  L                                             ;; 02:448f $cb $25
     sla  L                                             ;; 02:4491 $cb $25
@@ -8097,7 +8097,7 @@ code_002_7b3c:
     jr   NZ, .code_7b64                                ;; 02:7b68 $20 $fa
     ld   A, $07                                        ;; 02:7b6a $3e $07
     ld   DE, $0101                                     ;; 02:7b6c $11 $01 $01
-    call code_000_26dc                                 ;; 02:7b6f $cd $dc $26
+    call loadMap                                       ;; 02:7b6f $cd $dc $26
     call code_000_04a4                                 ;; 02:7b72 $cd $a4 $04
     ld   HL, wVideoWY                                  ;; 02:7b75 $21 $a9 $c0
     ld   A, [HL]                                       ;; 02:7b78 $7e

@@ -390,7 +390,7 @@ code_003_41fc:
     jr   Z, .code_4242                                 ;; 03:422a $28 $16
     call code_000_3ded                                 ;; 03:422c $cd $ed $3d
     pop  DE                                            ;; 03:422f $d1
-    call code_000_2bab                                 ;; 03:4230 $cd $ab $2b
+    call sub_HL_DE                                     ;; 03:4230 $cd $ab $2b
     jr   C, .code_4239                                 ;; 03:4233 $38 $04
     ld   DE, $0010                                     ;; 03:4235 $11 $10 $00
     ret                                                ;; 03:4238 $c9
@@ -1370,7 +1370,7 @@ code_003_479d:
     call code_003_4985                                 ;; 03:47c2 $cd $85 $49
     pop  DE                                            ;; 03:47c5 $d1
     ld   D, $00                                        ;; 03:47c6 $16 $00
-    call code_000_2bab                                 ;; 03:47c8 $cd $ab $2b
+    call sub_HL_DE                                     ;; 03:47c8 $cd $ab $2b
     pop  DE                                            ;; 03:47cb $d1
     pop  BC                                            ;; 03:47cc $c1
     jr   C, code_003_47eb                              ;; 03:47cd $38 $1c
@@ -1455,7 +1455,7 @@ code_003_480a:
     ld   H, [HL]                                       ;; 03:4845 $66
     ld   L, A                                          ;; 03:4846 $6f
     ld   DE, unknown_003_5f5a                          ;; 03:4847 $11 $5a $5f
-    call code_000_2bab                                 ;; 03:484a $cd $ab $2b
+    call sub_HL_DE                                     ;; 03:484a $cd $ab $2b
     ld   A, $18                                        ;; 03:484d $3e $18
     call code_000_2b8b                                 ;; 03:484f $cd $8b $2b
     ld   A, L                                          ;; 03:4852 $7d
@@ -1718,7 +1718,7 @@ code_003_4985:
 
 code_003_499b:
     ld   D, $00                                        ;; 03:499b $16 $00
-    call code_000_2bab                                 ;; 03:499d $cd $ab $2b
+    call sub_HL_DE                                     ;; 03:499d $cd $ab $2b
     jr   C, .code_49c1                                 ;; 03:49a0 $38 $1f
     ret  Z                                             ;; 03:49a2 $c8
     push HL                                            ;; 03:49a3 $e5
@@ -1745,7 +1745,7 @@ code_003_499b:
 
 code_003_49c6:
     ld   D, $00                                        ;; 03:49c6 $16 $00
-    call code_000_2bab                                 ;; 03:49c8 $cd $ab $2b
+    call sub_HL_DE                                     ;; 03:49c8 $cd $ab $2b
     jr   C, .code_49f1                                 ;; 03:49cb $38 $24
     ret  Z                                             ;; 03:49cd $c8
     push HL                                            ;; 03:49ce $e5
@@ -1801,7 +1801,7 @@ code_003_4a0b:
     ld   A, [HL+]                                      ;; 03:4a14 $2a
     ld   H, [HL]                                       ;; 03:4a15 $66
     ld   L, A                                          ;; 03:4a16 $6f
-    call code_000_2bab                                 ;; 03:4a17 $cd $ab $2b
+    call sub_HL_DE                                     ;; 03:4a17 $cd $ab $2b
     jr   NC, .code_4a1f                                ;; 03:4a1a $30 $03
     ld   HL, $0000                                     ;; 03:4a1c $21 $00 $00
 .code_4a1f:

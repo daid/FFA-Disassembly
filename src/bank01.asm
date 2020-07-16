@@ -340,7 +340,7 @@ code_001_4252:
     ld   [wD49F], A                                    ;; 01:425b $ea $9f $d4
     ld   D, A                                          ;; 01:425e $57
     ld   A, $07                                        ;; 01:425f $3e $07
-    call code_000_26dc                                 ;; 01:4261 $cd $dc $26
+    call loadMap                                       ;; 01:4261 $cd $dc $26
     call code_000_04a4                                 ;; 01:4264 $cd $a4 $04
     ld   A, [wD49E]                                    ;; 01:4267 $fa $9e $d4
     ld   C, A                                          ;; 01:426a $4f
@@ -371,7 +371,7 @@ code_001_4279:
     ld   E, A                                          ;; 01:429b $5f
     ld   D, $00                                        ;; 01:429c $16 $00
     ld   A, $07                                        ;; 01:429e $3e $07
-    call code_000_26dc                                 ;; 01:42a0 $cd $dc $26
+    call loadMap                                       ;; 01:42a0 $cd $dc $26
     call code_000_04a4                                 ;; 01:42a3 $cd $a4 $04
     ld   A, [wD49E]                                    ;; 01:42a6 $fa $9e $d4
     add  A, $44                                        ;; 01:42a9 $c6 $44
@@ -467,7 +467,7 @@ code_001_433e:
     and  A, $0f                                        ;; 01:4349 $e6 $0f
     ld   E, A                                          ;; 01:434b $5f
     ld   A, [wD49D]                                    ;; 01:434c $fa $9d $d4
-    call code_000_26dc                                 ;; 01:434f $cd $dc $26
+    call loadMap                                       ;; 01:434f $cd $dc $26
     ld   HL, wC3A0                                     ;; 01:4352 $21 $a0 $c3
     ld   DE, wMapTiles                                 ;; 01:4355 $11 $50 $c3
     ld   B, $50                                        ;; 01:4358 $06 $50
@@ -502,7 +502,7 @@ code_001_4387:
     and  A, $0f                                        ;; 01:4391 $e6 $0f
     ld   E, A                                          ;; 01:4393 $5f
     ld   A, C                                          ;; 01:4394 $79
-    call code_000_26dc                                 ;; 01:4395 $cd $dc $26
+    call loadMap                                       ;; 01:4395 $cd $dc $26
     call code_000_04a4                                 ;; 01:4398 $cd $a4 $04
     ld   HL, wD499                                     ;; 01:439b $21 $99 $d4
     inc  [HL]                                          ;; 01:439e $34
@@ -2333,7 +2333,7 @@ code_001_50ac:
     push BC                                            ;; 01:50b4 $c5
     ld   L, B                                          ;; 01:50b5 $68
     ld   H, $00                                        ;; 01:50b6 $26 $00
-    call code_000_2bab                                 ;; 01:50b8 $cd $ab $2b
+    call sub_HL_DE                                     ;; 01:50b8 $cd $ab $2b
     jr   NC, .code_50c0                                ;; 01:50bb $30 $03
     ld   HL, $0000                                     ;; 01:50bd $21 $00 $00
 .code_50c0:
@@ -3281,7 +3281,7 @@ code_001_5626:
     ld   A, [HL+]                                      ;; 01:5657 $2a
     ld   H, [HL]                                       ;; 01:5658 $66
     ld   L, A                                          ;; 01:5659 $6f
-    call code_000_2bab                                 ;; 01:565a $cd $ab $2b
+    call sub_HL_DE                                     ;; 01:565a $cd $ab $2b
     pop  HL                                            ;; 01:565d $e1
     pop  DE                                            ;; 01:565e $d1
     pop  BC                                            ;; 01:565f $c1
@@ -3430,7 +3430,7 @@ code_001_56e1:
     ld   A, [HL+]                                      ;; 01:5712 $2a
     ld   H, [HL]                                       ;; 01:5713 $66
     ld   L, A                                          ;; 01:5714 $6f
-    call code_000_2bab                                 ;; 01:5715 $cd $ab $2b
+    call sub_HL_DE                                     ;; 01:5715 $cd $ab $2b
     pop  HL                                            ;; 01:5718 $e1
     pop  DE                                            ;; 01:5719 $d1
     pop  BC                                            ;; 01:571a $c1

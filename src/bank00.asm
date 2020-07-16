@@ -1710,7 +1710,7 @@ code_000_0961:
     push DE                                            ;; 00:09cd $d5
     push HL                                            ;; 00:09ce $e5
     ld   DE, wObjectRuntimeData                        ;; 00:09cf $11 $00 $c2
-    call code_000_2bab                                 ;; 00:09d2 $cd $ab $2b
+    call sub_HL_DE                                     ;; 00:09d2 $cd $ab $2b
     ld   A, L                                          ;; 00:09d5 $7d
     and  A, $f0                                        ;; 00:09d6 $e6 $f0
     swap A                                             ;; 00:09d8 $cb $37
@@ -4780,7 +4780,7 @@ code_000_1ba1:
     ld   D, A                                          ;; 00:1c0d $57
     ld   A, [wD390]                                    ;; 00:1c0e $fa $90 $d3
     ld   E, A                                          ;; 00:1c11 $5f
-    call code_000_2bab                                 ;; 00:1c12 $cd $ab $2b
+    call sub_HL_DE                                     ;; 00:1c12 $cd $ab $2b
     pop  BC                                            ;; 00:1c15 $c1
     ld   A, H                                          ;; 00:1c16 $7c
     cp   A, $00                                        ;; 00:1c17 $fe $00
@@ -6225,7 +6225,7 @@ code_000_25d1:
 ; Input: D, E = x,y position on the map
 ; Output: DE = pointer to object/enemy table?
 ; Output: HL = pointer to map tile data
-getMapPointer:
+getRoomPointer:
     push DE                                            ;; 00:25f6 $d5
     ld   L, D                                          ;; 00:25f7 $6a
     ld   H, $00                                        ;; 00:25f8 $26 $00
@@ -6320,7 +6320,7 @@ code_000_2617:
     ld   A, [wC3F8]                                    ;; 00:267e $fa $f8 $c3
     cp   A, $00                                        ;; 00:2681 $fe $00
     jr   NZ, .code_2697                                ;; 00:2683 $20 $12
-    call getMapPointer                                 ;; 00:2685 $cd $f6 $25
+    call getRoomPointer                                ;; 00:2685 $cd $f6 $25
     ld   A, D                                          ;; 00:2688 $7a
     ld   [wC3FF], A                                    ;; 00:2689 $ea $ff $c3
     ld   A, E                                          ;; 00:268c $7b
@@ -6361,7 +6361,7 @@ code_000_2617:
     ld   A, [wC3F8]                                    ;; 00:26c5 $fa $f8 $c3
     cp   A, $00                                        ;; 00:26c8 $fe $00
     jr   NZ, .code_26d1                                ;; 00:26ca $20 $05
-    call getMapPointer                                 ;; 00:26cc $cd $f6 $25
+    call getRoomPointer                                ;; 00:26cc $cd $f6 $25
     jr   .code_26d4                                    ;; 00:26cf $18 $03
 .code_26d1:
     call code_000_25d1                                 ;; 00:26d1 $cd $d1 $25
@@ -6373,7 +6373,7 @@ code_000_2617:
     pop  HL                                            ;; 00:26da $e1
     ret                                                ;; 00:26db $c9
 
-code_000_26dc:
+loadMap:
     ld   [wMapNumber], A                               ;; 00:26dc $ea $f5 $c3
     push DE                                            ;; 00:26df $d5
     push AF                                            ;; 00:26e0 $f5
@@ -6433,7 +6433,7 @@ code_000_26dc:
     ld   A, [wC3F8]                                    ;; 00:2743 $fa $f8 $c3
     cp   A, $00                                        ;; 00:2746 $fe $00
     jr   NZ, .code_275f                                ;; 00:2748 $20 $15
-    call getMapPointer                                 ;; 00:274a $cd $f6 $25
+    call getRoomPointer                                ;; 00:274a $cd $f6 $25
     ld   A, D                                          ;; 00:274d $7a
     ld   [wC3FF], A                                    ;; 00:274e $ea $ff $c3
     ld   A, E                                          ;; 00:2751 $7b
@@ -7153,7 +7153,8 @@ code_000_2b8b:
     jr   NZ, .code_2b98                                ;; 00:2ba8 $20 $ee
     ret                                                ;; 00:2baa $c9
 
-code_000_2bab:
+; HL -= DE
+sub_HL_DE:
     ld   A, D                                          ;; 00:2bab $7a
     cpl                                                ;; 00:2bac $2f
     ld   D, A                                          ;; 00:2bad $57
