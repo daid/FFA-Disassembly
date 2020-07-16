@@ -651,7 +651,7 @@ code_000_039a:
     inc  A                                             ;; 00:03e0 $3c
     cp   A, D                                          ;; 00:03e1 $ba
     jr   Z, .code_03e9                                 ;; 00:03e2 $28 $05
-    jr   NC, .code_0404                                ;; 00:03e4 $30 $1e
+    jr   NC, code_000_0404                             ;; 00:03e4 $30 $1e
 .code_03e6:
     ld   A, $08                                        ;; 00:03e6 $3e $08
     ret                                                ;; 00:03e8 $c9
@@ -660,33 +660,45 @@ code_000_039a:
     ret                                                ;; 00:03eb $c9
 .code_03ec:
     bit  $07, E                                        ;; 00:03ec $cb $7b
-    jr   NZ, .code_03fe                                ;; 00:03ee $20 $0e
+    jr   NZ, code_000_03fe                             ;; 00:03ee $20 $0e
     ld   A, D                                          ;; 00:03f0 $7a
     cpl                                                ;; 00:03f1 $2f
     inc  A                                             ;; 00:03f2 $3c
     cp   A, E                                          ;; 00:03f3 $bb
-    jr   Z, .code_03fb                                 ;; 00:03f4 $28 $05
+    jr   Z, code_000_03fb                              ;; 00:03f4 $28 $05
     jr   C, .code_03cb                                 ;; 00:03f6 $38 $d3
-.code_03f8:
+
+code_000_03f8:
     ld   A, $04                                        ;; 00:03f8 $3e $04
     ret                                                ;; 00:03fa $c9
-.code_03fb:
+
+code_000_03fb:
     ld   A, $05                                        ;; 00:03fb $3e $05
     ret                                                ;; 00:03fd $c9
-.code_03fe:
+
+code_000_03fe:
     ld   A, E                                          ;; 00:03fe $7b
     cp   A, D                                          ;; 00:03ff $ba
-    jr   Z, .code_0407                                 ;; 00:0400 $28 $05
-    jr   NC, .code_03f8                                ;; 00:0402 $30 $f4
-.code_0404:
+
+code_000_0400:
+    jr   Z, code_000_0407                              ;; 00:0400 $28 $05
+
+code_000_0402:
+    jr   NC, code_000_03f8                             ;; 00:0402 $30 $f4
+
+code_000_0404:
     ld   A, $02                                        ;; 00:0404 $3e $02
     ret                                                ;; 00:0406 $c9
-.code_0407:
+
+code_000_0407:
     ld   A, $06                                        ;; 00:0407 $3e $06
     ret                                                ;; 00:0409 $c9
-    db   $f5, $c5, $3e, $03, $cd, $fb, $29, $c1        ;; 00:040a ????????
-    db   $f1, $cd, $95, $06, $f5, $cd, $0a, $2a        ;; 00:0412 ????????
-    db   $f1, $c9                                      ;; 00:041a ??
+    db   $f5                                           ;; 00:040a ?
+
+unknown_000_040b:
+    db   $c5, $3e, $03, $cd, $fb, $29, $c1, $f1        ;; 00:040b ????????
+    db   $cd, $95, $06, $f5, $cd, $0a, $2a, $f1        ;; 00:0413 ????????
+    db   $c9                                           ;; 00:041b ?
 
 code_000_041c:
     ld   L, A                                          ;; 00:041c $6f
@@ -851,11 +863,14 @@ code_000_04fa:
     ld   HL, wD442                                     ;; 00:04ff $21 $42 $d4
     ld   DE, $0006                                     ;; 00:0502 $11 $06 $00
     ld   B, $0e                                        ;; 00:0505 $06 $0e
-.code_0507:
+
+code_000_0507:
     ld   [HL], A                                       ;; 00:0507 $77
     add  HL, DE                                        ;; 00:0508 $19
+
+code_000_0509:
     dec  B                                             ;; 00:0509 $05
-    jr   NZ, .code_0507                                ;; 00:050a $20 $fb
+    jr   NZ, code_000_0507                             ;; 00:050a $20 $fb
     ret                                                ;; 00:050c $c9
     db   $21, $00, $00, $c9                            ;; 00:050d ????
 
@@ -1063,6 +1078,8 @@ updateObjectPosition:
     ld   A, L                                          ;; 00:0619 $7d
     push BC                                            ;; 00:061a $c5
     ld   L, C                                          ;; 00:061b $69
+
+code_000_061c:
     ld   H, $00                                        ;; 00:061c $26 $00
     add  HL, HL                                        ;; 00:061e $29
     add  HL, HL                                        ;; 00:061f $29
@@ -1551,6 +1568,8 @@ code_000_08d4:
     call code_000_2982                                 ;; 00:08fb $cd $82 $29
     pop  BC                                            ;; 00:08fe $c1
     push BC                                            ;; 00:08ff $c5
+
+code_000_0900:
     sla  B                                             ;; 00:0900 $cb $20
     sla  B                                             ;; 00:0902 $cb $20
     add  A, B                                          ;; 00:0904 $80
@@ -1700,7 +1719,7 @@ code_000_0961:
     pop  HL                                            ;; 00:09bf $e1
     pop  BC                                            ;; 00:09c0 $c1
     bit  $06, [HL]                                     ;; 00:09c1 $cb $76
-    jr   NZ, .code_0a30                                ;; 00:09c3 $20 $6b
+    jr   NZ, code_000_0a30                             ;; 00:09c3 $20 $6b
     ld   A, E                                          ;; 00:09c5 $7b
     or   A, D                                          ;; 00:09c6 $b2
     and  A, $07                                        ;; 00:09c7 $e6 $07
@@ -1729,37 +1748,42 @@ code_000_0961:
     pop  HL                                            ;; 00:09e8 $e1
     ld   A, $00                                        ;; 00:09e9 $3e $00
     cp   A, H                                          ;; 00:09eb $bc
-    jr   Z, .code_0a0e                                 ;; 00:09ec $28 $20
+    jr   Z, code_000_0a0e                              ;; 00:09ec $28 $20
     bit  $07, H                                        ;; 00:09ee $cb $7c
-    jr   Z, .code_0a01                                 ;; 00:09f0 $28 $0f
+    jr   Z, code_000_0a01                              ;; 00:09f0 $28 $0f
     ld   A, H                                          ;; 00:09f2 $7c
     and  A, $f0                                        ;; 00:09f3 $e6 $f0
     cp   A, $f0                                        ;; 00:09f5 $fe $f0
-    jr   Z, .code_09fd                                 ;; 00:09f7 $28 $04
+    jr   Z, code_000_09fd                              ;; 00:09f7 $28 $04
     bit  $03, H                                        ;; 00:09f9 $cb $5c
-    jr   NZ, .code_0a0a                                ;; 00:09fb $20 $0d
-.code_09fd:
+    jr   NZ, code_000_0a0a                             ;; 00:09fb $20 $0d
+
+code_000_09fd:
     ld   A, $04                                        ;; 00:09fd $3e $04
-    jr   .code_0a1b                                    ;; 00:09ff $18 $1a
-.code_0a01:
+    jr   code_000_0a1b                                 ;; 00:09ff $18 $1a
+
+code_000_0a01:
     ld   A, H                                          ;; 00:0a01 $7c
     and  A, $f0                                        ;; 00:0a02 $e6 $f0
-    jr   Z, .code_0a0a                                 ;; 00:0a04 $28 $04
+    jr   Z, code_000_0a0a                              ;; 00:0a04 $28 $04
     bit  $03, H                                        ;; 00:0a06 $cb $5c
-    jr   Z, .code_09fd                                 ;; 00:0a08 $28 $f3
-.code_0a0a:
+    jr   Z, code_000_09fd                              ;; 00:0a08 $28 $f3
+
+code_000_0a0a:
     ld   A, $08                                        ;; 00:0a0a $3e $08
-    jr   .code_0a1b                                    ;; 00:0a0c $18 $0d
-.code_0a0e:
+    jr   code_000_0a1b                                 ;; 00:0a0c $18 $0d
+
+code_000_0a0e:
     cp   A, L                                          ;; 00:0a0e $bd
-    jr   Z, .code_0a2a                                 ;; 00:0a0f $28 $19
+    jr   Z, code_000_0a2a                              ;; 00:0a0f $28 $19
     bit  $07, L                                        ;; 00:0a11 $cb $7d
     jr   Z, .code_0a19                                 ;; 00:0a13 $28 $04
     ld   A, $02                                        ;; 00:0a15 $3e $02
-    jr   .code_0a1b                                    ;; 00:0a17 $18 $02
+    jr   code_000_0a1b                                 ;; 00:0a17 $18 $02
 .code_0a19:
     ld   A, $01                                        ;; 00:0a19 $3e $01
-.code_0a1b:
+
+code_000_0a1b:
     ld   HL, wC0A1                                     ;; 00:0a1b $21 $a1 $c0
     bit  $01, [HL]                                     ;; 00:0a1e $cb $4e
     jr   NZ, .code_0a25                                ;; 00:0a20 $20 $03
@@ -1768,12 +1792,14 @@ code_000_0961:
     call code_000_177e                                 ;; 00:0a25 $cd $7e $17
     xor  A, A                                          ;; 00:0a28 $af
     ret                                                ;; 00:0a29 $c9
-.code_0a2a:
+
+code_000_0a2a:
     call code_000_177e                                 ;; 00:0a2a $cd $7e $17
     xor  A, A                                          ;; 00:0a2d $af
     scf                                                ;; 00:0a2e $37
     ret                                                ;; 00:0a2f $c9
-.code_0a30:
+
+code_000_0a30:
     res  $06, [HL]                                     ;; 00:0a30 $cb $b6
     ret                                                ;; 00:0a32 $c9
 
@@ -2612,6 +2638,8 @@ code_000_0f0a:
     push HL                                            ;; 00:0f0b $e5
     call code_000_2895                                 ;; 00:0f0c $cd $95 $28
     pop  HL                                            ;; 00:0f0f $e1
+
+code_000_0f10:
     call code_000_3727                                 ;; 00:0f10 $cd $27 $37
     ret                                                ;; 00:0f13 $c9
 
@@ -9335,10 +9363,10 @@ data_000_38ee:
     dw   $351a                                         ;; 00:38f4 $1a $35
     dw   code_000_357d                                 ;; 00:38f6 $7d $35
     dw   code_000_3582                                 ;; 00:38f8 $82 $35
-    dw   $00                                           ;; 00:38fa $00 $00
-    dw   $00                                           ;; 00:38fc $00 $00
-    dw   $00                                           ;; 00:38fe $00 $00
-    dw   $00                                           ;; 00:3900 $00 $00
+    dw   $0000                                         ;; 00:38fa $00 $00
+    dw   $0000                                         ;; 00:38fc $00 $00
+    dw   $0000                                         ;; 00:38fe $00 $00
+    dw   $0000                                         ;; 00:3900 $00 $00
     dw   code_000_35b0                                 ;; 00:3902 $b0 $35
     dw   code_000_35c1                                 ;; 00:3904 $c1 $35
     dw   code_000_35c6                                 ;; 00:3906 $c6 $35
