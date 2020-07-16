@@ -1,5 +1,7 @@
 ;; Disassembled with BadBoy Disassembler: https://github.com/daid/BadBoy
 
+; This seems to contain map data
+; Basic format is 2 pointers pointing to a "object table" and runlength encoded "tilemap" data
 data_005_4000:
     db   $00, $03, $10, $10, $04, $44, $0a, $44        ;; 05:4000 ....????
     db   $3c, $44, $3f, $44, $6d, $44, $70, $44        ;; 05:4008 ????????

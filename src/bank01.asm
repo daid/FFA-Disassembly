@@ -355,15 +355,15 @@ code_001_4252:
 
 code_001_4279:
     call code_001_4331                                 ;; 01:4279 $cd $31 $43
-    ld   A, [wC3F3]                                    ;; 01:427c $fa $f3 $c3
+    ld   A, [wMapTablePointerHigh]                     ;; 01:427c $fa $f3 $c3
     ld   H, A                                          ;; 01:427f $67
-    ld   A, [wC3F2]                                    ;; 01:4280 $fa $f2 $c3
+    ld   A, [wMapTablePointerLow]                      ;; 01:4280 $fa $f2 $c3
     ld   L, A                                          ;; 01:4283 $6f
     ld   A, H                                          ;; 01:4284 $7c
     ld   [wD4A2], A                                    ;; 01:4285 $ea $a2 $d4
     ld   A, L                                          ;; 01:4288 $7d
     ld   [wD4A1], A                                    ;; 01:4289 $ea $a1 $d4
-    ld   A, [wC3FB]                                    ;; 01:428c $fa $fb $c3
+    ld   A, [wMapWidth]                                ;; 01:428c $fa $fb $c3
     ld   [wD49F], A                                    ;; 01:428f $ea $9f $d4
     ld   A, [wC3F0]                                    ;; 01:4292 $fa $f0 $c3
     ld   [wD4A0], A                                    ;; 01:4295 $ea $a0 $d4

@@ -5618,9 +5618,9 @@ code_000_225d:
 
 code_000_2281:
     push DE                                            ;; 00:2281 $d5
-    ld   A, [wC3F3]                                    ;; 00:2282 $fa $f3 $c3
+    ld   A, [wMapTablePointerHigh]                     ;; 00:2282 $fa $f3 $c3
     ld   D, A                                          ;; 00:2285 $57
-    ld   A, [wC3F2]                                    ;; 00:2286 $fa $f2 $c3
+    ld   A, [wMapTablePointerLow]                      ;; 00:2286 $fa $f2 $c3
     ld   E, A                                          ;; 00:2289 $5f
     inc  DE                                            ;; 00:228a $13
     inc  DE                                            ;; 00:228b $13
@@ -6198,16 +6198,16 @@ code_000_25d1:
     push DE                                            ;; 00:25d1 $d5
     ld   L, D                                          ;; 00:25d2 $6a
     ld   H, $00                                        ;; 00:25d3 $26 $00
-    ld   A, [wC3FB]                                    ;; 00:25d5 $fa $fb $c3
+    ld   A, [wMapWidth]                                ;; 00:25d5 $fa $fb $c3
     call MultiplyHL_by_A                               ;; 00:25d8 $cd $7b $2b
     pop  DE                                            ;; 00:25db $d1
     ld   D, $00                                        ;; 00:25dc $16 $00
     add  HL, DE                                        ;; 00:25de $19
     add  HL, HL                                        ;; 00:25df $29
     add  HL, HL                                        ;; 00:25e0 $29
-    ld   A, [wC3F3]                                    ;; 00:25e1 $fa $f3 $c3
+    ld   A, [wMapTablePointerHigh]                     ;; 00:25e1 $fa $f3 $c3
     ld   D, A                                          ;; 00:25e4 $57
-    ld   A, [wC3F2]                                    ;; 00:25e5 $fa $f2 $c3
+    ld   A, [wMapTablePointerLow]                      ;; 00:25e5 $fa $f2 $c3
     ld   E, A                                          ;; 00:25e8 $5f
     add  HL, DE                                        ;; 00:25e9 $19
     ld   DE, $001a                                     ;; 00:25ea $11 $1a $00
@@ -6221,20 +6221,24 @@ code_000_25d1:
     ld   L, A                                          ;; 00:25f4 $6f
     ret                                                ;; 00:25f5 $c9
 
-code_000_25f6:
+; Get the pointer to the map data in bank 05
+; Input: D, E = x,y position on the map
+; Output: DE = pointer to object/enemy table?
+; Output: HL = pointer to map tile data
+getMapPointer:
     push DE                                            ;; 00:25f6 $d5
     ld   L, D                                          ;; 00:25f7 $6a
     ld   H, $00                                        ;; 00:25f8 $26 $00
-    ld   A, [wC3FB]                                    ;; 00:25fa $fa $fb $c3
+    ld   A, [wMapWidth]                                ;; 00:25fa $fa $fb $c3
     call MultiplyHL_by_A                               ;; 00:25fd $cd $7b $2b
     pop  DE                                            ;; 00:2600 $d1
     ld   D, $00                                        ;; 00:2601 $16 $00
     add  HL, DE                                        ;; 00:2603 $19
     add  HL, HL                                        ;; 00:2604 $29
     add  HL, HL                                        ;; 00:2605 $29
-    ld   A, [wC3F3]                                    ;; 00:2606 $fa $f3 $c3
+    ld   A, [wMapTablePointerHigh]                     ;; 00:2606 $fa $f3 $c3
     ld   D, A                                          ;; 00:2609 $57
-    ld   A, [wC3F2]                                    ;; 00:260a $fa $f2 $c3
+    ld   A, [wMapTablePointerLow]                      ;; 00:260a $fa $f2 $c3
     ld   E, A                                          ;; 00:260d $5f
     add  HL, DE                                        ;; 00:260e $19
     ld   E, [HL]                                       ;; 00:260f $5e
@@ -6273,14 +6277,14 @@ code_000_2617:
     jr   .code_2670                                    ;; 00:2640 $18 $2e
 .code_2642:
     inc  E                                             ;; 00:2642 $1c
-    ld   A, [wC3FB]                                    ;; 00:2643 $fa $fb $c3
+    ld   A, [wMapWidth]                                ;; 00:2643 $fa $fb $c3
     cp   A, E                                          ;; 00:2646 $bb
     jr   NZ, .code_2670                                ;; 00:2647 $20 $27
     ld   E, $00                                        ;; 00:2649 $1e $00
     jr   .code_2670                                    ;; 00:264b $18 $23
 .code_264d:
     dec  E                                             ;; 00:264d $1d
-    ld   A, [wC3FB]                                    ;; 00:264e $fa $fb $c3
+    ld   A, [wMapWidth]                                ;; 00:264e $fa $fb $c3
     cp   A, E                                          ;; 00:2651 $bb
     jr   NC, .code_2670                                ;; 00:2652 $30 $1c
     ld   E, A                                          ;; 00:2654 $5f
@@ -6316,7 +6320,7 @@ code_000_2617:
     ld   A, [wC3F8]                                    ;; 00:267e $fa $f8 $c3
     cp   A, $00                                        ;; 00:2681 $fe $00
     jr   NZ, .code_2697                                ;; 00:2683 $20 $12
-    call code_000_25f6                                 ;; 00:2685 $cd $f6 $25
+    call getMapPointer                                 ;; 00:2685 $cd $f6 $25
     ld   A, D                                          ;; 00:2688 $7a
     ld   [wC3FF], A                                    ;; 00:2689 $ea $ff $c3
     ld   A, E                                          ;; 00:268c $7b
@@ -6341,9 +6345,9 @@ code_000_2617:
     push DE                                            ;; 00:26ad $d5
     ld   D, H                                          ;; 00:26ae $54
     ld   E, L                                          ;; 00:26af $5d
-    ld   A, [wC3F3]                                    ;; 00:26b0 $fa $f3 $c3
+    ld   A, [wMapTablePointerHigh]                     ;; 00:26b0 $fa $f3 $c3
     ld   H, A                                          ;; 00:26b3 $67
-    ld   A, [wC3F2]                                    ;; 00:26b4 $fa $f2 $c3
+    ld   A, [wMapTablePointerLow]                      ;; 00:26b4 $fa $f2 $c3
     ld   L, A                                          ;; 00:26b7 $6f
     ld   A, C                                          ;; 00:26b8 $79
     call code_000_255d                                 ;; 00:26b9 $cd $5d $25
@@ -6357,7 +6361,7 @@ code_000_2617:
     ld   A, [wC3F8]                                    ;; 00:26c5 $fa $f8 $c3
     cp   A, $00                                        ;; 00:26c8 $fe $00
     jr   NZ, .code_26d1                                ;; 00:26ca $20 $05
-    call code_000_25f6                                 ;; 00:26cc $cd $f6 $25
+    call getMapPointer                                 ;; 00:26cc $cd $f6 $25
     jr   .code_26d4                                    ;; 00:26cf $18 $03
 .code_26d1:
     call code_000_25d1                                 ;; 00:26d1 $cd $d1 $25
@@ -6396,9 +6400,9 @@ code_000_26dc:
     ld   H, [HL]                                       ;; 00:2700 $66
     ld   L, A                                          ;; 00:2701 $6f
     ld   A, H                                          ;; 00:2702 $7c
-    ld   [wC3F3], A                                    ;; 00:2703 $ea $f3 $c3
+    ld   [wMapTablePointerHigh], A                     ;; 00:2703 $ea $f3 $c3
     ld   A, L                                          ;; 00:2706 $7d
-    ld   [wC3F2], A                                    ;; 00:2707 $ea $f2 $c3
+    ld   [wMapTablePointerLow], A                      ;; 00:2707 $ea $f2 $c3
     ld   HL, $4000                                     ;; 00:270a $21 $00 $40
     add  HL, BC                                        ;; 00:270d $09
     call code_000_1af3                                 ;; 00:270e $cd $f3 $1a
@@ -6406,9 +6410,9 @@ code_000_26dc:
     ld   A, [wC3F0]                                    ;; 00:2714 $fa $f0 $c3
     call pushBankNrAndSwitch                           ;; 00:2717 $cd $fb $29
     pop  DE                                            ;; 00:271a $d1
-    ld   A, [wC3F3]                                    ;; 00:271b $fa $f3 $c3
+    ld   A, [wMapTablePointerHigh]                     ;; 00:271b $fa $f3 $c3
     ld   H, A                                          ;; 00:271e $67
-    ld   A, [wC3F2]                                    ;; 00:271f $fa $f2 $c3
+    ld   A, [wMapTablePointerLow]                      ;; 00:271f $fa $f2 $c3
     ld   L, A                                          ;; 00:2722 $6f
     ld   A, [HL+]                                      ;; 00:2723 $2a
     ld   [wC3F8], A                                    ;; 00:2724 $ea $f8 $c3
@@ -6417,11 +6421,11 @@ code_000_26dc:
     ld   A, [HL+]                                      ;; 00:272b $2a
     ld   [wC3FA], A                                    ;; 00:272c $ea $fa $c3
     ld   A, [HL+]                                      ;; 00:272f $2a
-    ld   [wC3FB], A                                    ;; 00:2730 $ea $fb $c3
+    ld   [wMapWidth], A                                ;; 00:2730 $ea $fb $c3
     ld   A, H                                          ;; 00:2733 $7c
-    ld   [wC3F3], A                                    ;; 00:2734 $ea $f3 $c3
+    ld   [wMapTablePointerHigh], A                     ;; 00:2734 $ea $f3 $c3
     ld   A, L                                          ;; 00:2737 $7d
-    ld   [wC3F2], A                                    ;; 00:2738 $ea $f2 $c3
+    ld   [wMapTablePointerLow], A                      ;; 00:2738 $ea $f2 $c3
     ld   A, D                                          ;; 00:273b $7a
     ld   [wRoomY], A                                   ;; 00:273c $ea $f7 $c3
     ld   A, E                                          ;; 00:273f $7b
@@ -6429,7 +6433,7 @@ code_000_26dc:
     ld   A, [wC3F8]                                    ;; 00:2743 $fa $f8 $c3
     cp   A, $00                                        ;; 00:2746 $fe $00
     jr   NZ, .code_275f                                ;; 00:2748 $20 $15
-    call code_000_25f6                                 ;; 00:274a $cd $f6 $25
+    call getMapPointer                                 ;; 00:274a $cd $f6 $25
     ld   A, D                                          ;; 00:274d $7a
     ld   [wC3FF], A                                    ;; 00:274e $ea $ff $c3
     ld   A, E                                          ;; 00:2751 $7b

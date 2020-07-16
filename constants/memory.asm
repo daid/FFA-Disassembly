@@ -232,9 +232,9 @@ wC3F0: ;; $c3f0
   ds 1
 wC3F1: ;; $c3f1
   ds 1
-wC3F2: ;; $c3f2
+wMapTablePointerLow: ;; $c3f2
   ds 1
-wC3F3: ;; $c3f3
+wMapTablePointerHigh: ;; $c3f3
   ds 1
 wC3F4: ;; $c3f4
   ds 1
@@ -250,7 +250,7 @@ wMapTileRLECount: ;; $c3f9
   ds 1
 wC3FA: ;; $c3fa
   ds 1
-wC3FB: ;; $c3fb
+wMapWidth: ;; $c3fb
   ds 1
 wC3FC: ;; $c3fc
   ds 1
