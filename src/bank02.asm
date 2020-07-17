@@ -2740,7 +2740,7 @@ code_002_523c:
     ld   A, [wD876]                                    ;; 02:523c $fa $76 $d8
     inc  A                                             ;; 02:523f $3c
     ld   C, A                                          ;; 02:5240 $4f
-    ld   HL, wD6C5                                     ;; 02:5241 $21 $c5 $d6
+    ld   HL, wItemInventory                            ;; 02:5241 $21 $c5 $d6
     ld   DE, wD69B                                     ;; 02:5244 $11 $9b $d6
     ld   B, $11                                        ;; 02:5247 $06 $11
     call code_002_525c                                 ;; 02:5249 $cd $5c $52
@@ -2954,7 +2954,7 @@ code_002_53b6:
     ret                                                ;; 02:53ba $c9
 
 code_002_53bb:
-    ld   HL, wD6C5                                     ;; 02:53bb $21 $c5 $d6
+    ld   HL, wItemInventory                            ;; 02:53bb $21 $c5 $d6
     ld   DE, wD69B                                     ;; 02:53be $11 $9b $d6
     ld   B, $10                                        ;; 02:53c1 $06 $10
     ld   C, A                                          ;; 02:53c3 $4f
@@ -3022,7 +3022,7 @@ code_002_5410:
 code_002_5419:
     ld   B, $10                                        ;; 02:5419 $06 $10
     ld   C, A                                          ;; 02:541b $4f
-    ld   HL, wD6C5                                     ;; 02:541c $21 $c5 $d6
+    ld   HL, wItemInventory                            ;; 02:541c $21 $c5 $d6
     ld   DE, unknown_002_5e62                          ;; 02:541f $11 $62 $5e
     push DE                                            ;; 02:5422 $d5
     ld   DE, wD69B                                     ;; 02:5423 $11 $9b $d6
@@ -3133,7 +3133,7 @@ code_002_54a6:
     ld   HL, wD72F                                     ;; 02:54c4 $21 $2f $d7
 .code_54c7:
     push HL                                            ;; 02:54c7 $e5
-    ld   HL, wD6C5                                     ;; 02:54c8 $21 $c5 $d6
+    ld   HL, wItemInventory                            ;; 02:54c8 $21 $c5 $d6
     add  HL, BC                                        ;; 02:54cb $09
     ld   A, [HL]                                       ;; 02:54cc $7e
     and  A, $7f                                        ;; 02:54cd $e6 $7f
@@ -3577,7 +3577,7 @@ code_002_5709:
     ld   A, [wD6EF]                                    ;; 02:5757 $fa $ef $d6
     cp   A, $80                                        ;; 02:575a $fe $80
     jr   Z, .code_5781                                 ;; 02:575c $28 $23
-    ld   HL, wD6C5                                     ;; 02:575e $21 $c5 $d6
+    ld   HL, wItemInventory                            ;; 02:575e $21 $c5 $d6
     ld   DE, wD69B                                     ;; 02:5761 $11 $9b $d6
     ld   B, $18                                        ;; 02:5764 $06 $18
 .code_5766:
@@ -6013,7 +6013,7 @@ code_002_6e25:
     dec  B                                             ;; 02:6e2c $05
     jr   NZ, .code_6e2b                                ;; 02:6e2d $20 $fc
     ld   B, $2e                                        ;; 02:6e2f $06 $2e
-    ld   HL, wD6C5                                     ;; 02:6e31 $21 $c5 $d6
+    ld   HL, wItemInventory                            ;; 02:6e31 $21 $c5 $d6
 .code_6e34:
     ld   [HL+], A                                      ;; 02:6e34 $22
     dec  B                                             ;; 02:6e35 $05
@@ -6570,7 +6570,7 @@ code_002_71a2:
     ld   A, $80                                        ;; 02:71c0 $3e $80
     ld   [wD6EF], A                                    ;; 02:71c2 $ea $ef $d6
     ld   [wD6F1], A                                    ;; 02:71c5 $ea $f1 $d6
-    ld   HL, wD6C5                                     ;; 02:71c8 $21 $c5 $d6
+    ld   HL, wItemInventory                            ;; 02:71c8 $21 $c5 $d6
 .code_71cb:
     cp   A, [HL]                                       ;; 02:71cb $be
     inc  HL                                            ;; 02:71cc $23

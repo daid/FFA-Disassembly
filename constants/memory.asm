@@ -552,7 +552,7 @@ wD6C2: ;; $d6c2
   ds 1
 wD6C3: ;; $d6c3
   ds 2
-wD6C5: ;; $d6c5
+wItemInventory: ;; $d6c5
   ds 16
 wD6D5: ;; $d6d5
   ds 8

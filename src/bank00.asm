@@ -6222,7 +6222,11 @@ code_000_255d:
     ld   HL, wMapTiles                                 ;; 00:25cd $21 $50 $c3
     ret                                                ;; 00:25d0 $c9
 
-code_000_25d1:
+; Get the pointer to the map data. Difference with getRoomPointer is that this adds a 0x001A offset for some reason.
+; Input: D, E = x,y position on the map
+; Output: DE = pointer to object/enemy table?
+; Output: HL = pointer to map tile data
+getRoomPointerV2:
     push DE                                            ;; 00:25d1 $d5
     ld   L, D                                          ;; 00:25d2 $6a
     ld   H, $00                                        ;; 00:25d3 $26 $00
@@ -6359,7 +6363,7 @@ code_000_2617:
     jr   .code_26bc                                    ;; 00:2695 $18 $25
 .code_2697:
     push BC                                            ;; 00:2697 $c5
-    call code_000_25d1                                 ;; 00:2698 $cd $d1 $25
+    call getRoomPointerV2                              ;; 00:2698 $cd $d1 $25
     ld   A, D                                          ;; 00:269b $7a
     ld   [wC3FF], A                                    ;; 00:269c $ea $ff $c3
     ld   A, E                                          ;; 00:269f $7b
@@ -6392,7 +6396,7 @@ code_000_2617:
     call getRoomPointer                                ;; 00:26cc $cd $f6 $25
     jr   .code_26d4                                    ;; 00:26cf $18 $03
 .code_26d1:
-    call code_000_25d1                                 ;; 00:26d1 $cd $d1 $25
+    call getRoomPointerV2                              ;; 00:26d1 $cd $d1 $25
 .code_26d4:
     push HL                                            ;; 00:26d4 $e5
     push DE                                            ;; 00:26d5 $d5
@@ -6472,7 +6476,7 @@ loadMap:
     ret                                                ;; 00:275e $c9
 .code_275f:
     push HL                                            ;; 00:275f $e5
-    call code_000_25d1                                 ;; 00:2760 $cd $d1 $25
+    call getRoomPointerV2                              ;; 00:2760 $cd $d1 $25
     ld   A, D                                          ;; 00:2763 $7a
     ld   [wC3FF], A                                    ;; 00:2764 $ea $ff $c3
     ld   A, E                                          ;; 00:2767 $7b
@@ -8503,7 +8507,7 @@ code_000_33aa:
     ret                                                ;; 00:33af $c9
 
 code_000_33b0:
-    ld   DE, wD6C5                                     ;; 00:33b0 $11 $c5 $d6
+    ld   DE, wItemInventory                            ;; 00:33b0 $11 $c5 $d6
     ld   A, D                                          ;; 00:33b3 $7a
     ld   [wD891], A                                    ;; 00:33b4 $ea $91 $d8
     ld   A, E                                          ;; 00:33b7 $7b
@@ -8530,7 +8534,7 @@ code_000_33cf:
     ld   HL, wD6DD                                     ;; 00:33da $21 $dd $d6
     ld   B, $0c                                        ;; 00:33dd $06 $0c
     call code_000_343f                                 ;; 00:33df $cd $3f $34
-    ld   HL, wD6C5                                     ;; 00:33e2 $21 $c5 $d6
+    ld   HL, wItemInventory                            ;; 00:33e2 $21 $c5 $d6
     ld   B, $10                                        ;; 00:33e5 $06 $10
     ld   C, $08                                        ;; 00:33e7 $0e $08
     call code_000_343f                                 ;; 00:33e9 $cd $3f $34
@@ -8574,7 +8578,7 @@ code_000_3411:
     ld   HL, wD6DD                                     ;; 00:341c $21 $dd $d6
     ld   B, $0c                                        ;; 00:341f $06 $0c
     call code_000_3430                                 ;; 00:3421 $cd $30 $34
-    ld   HL, wD6C5                                     ;; 00:3424 $21 $c5 $d6
+    ld   HL, wItemInventory                            ;; 00:3424 $21 $c5 $d6
     ld   B, $10                                        ;; 00:3427 $06 $10
     ld   C, $08                                        ;; 00:3429 $0e $08
     call code_000_3430                                 ;; 00:342b $cd $30 $34
@@ -9800,7 +9804,7 @@ code_000_3b76:
     ld   A, $80                                        ;; 00:3b81 $3e $80
     ld   [wD6EF], A                                    ;; 00:3b83 $ea $ef $d6
     ld   [wD6F1], A                                    ;; 00:3b86 $ea $f1 $d6
-    ld   HL, wD6C5                                     ;; 00:3b89 $21 $c5 $d6
+    ld   HL, wItemInventory                            ;; 00:3b89 $21 $c5 $d6
     ld   B, $18                                        ;; 00:3b8c $06 $18
 .code_3b8e:
     ld   A, [HL+]                                      ;; 00:3b8e $2a
