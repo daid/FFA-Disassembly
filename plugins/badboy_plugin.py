@@ -1,14 +1,14 @@
 import annotations
 import struct
 
-def mapRoomData(dis, addr):
+def mapRoomData(dis, addr, index):
     unknown, rle, h, w = struct.unpack("<BBBB", dis.rom.data[addr:addr + 4])
     if unknown:
-        return
+        addr += 0x1A
     addr += 4
     for n in range(w * h):
-        obj_addr = dis.info.markAsPointer(dis.rom, addr + 0)
-        tile_addr = dis.info.markAsPointer(dis.rom, addr + 2)
+        obj_addr = dis.info.markAsPointer(dis.rom, addr + 0, name="map%02x_room%02x_%02x_objects" % (index, n % w, n // w))
+        tile_addr = dis.info.markAsPointer(dis.rom, addr + 2, name="map%02x_room%02x_%02x_tiles" % (index, n % w, n // w))
         assert obj_addr >= 0x4000, hex(addr)
         assert tile_addr >= 0x4000, hex(addr)
         addr += 4
@@ -35,7 +35,7 @@ def mapRoomData(dis, addr):
                     line = []
             return addr
 
-        if dis.rom.data[tile_addr] != 0xff:
+        if dis.rom.data[tile_addr] != 0xff and unknown == 0:
             dis.formatter[tile_addr] = roomTileFormatter
 
 def mapHeaders(dis, addr, params):
@@ -55,15 +55,15 @@ def mapHeaders(dis, addr, params):
     for n in range(int(params[0])):
         tile_set_A, u1, tile_set_B, u2, bank, room_data_ptr, u3, u4 = struct.unpack("<HBHBBHBB", dis.rom.data[addr:addr + 11])
 
-        dis.info.addAbsoluteRomSymbol(addr)
+        dis.info.addAbsoluteRomSymbol(addr, name="mapHeader_%02x" % (n))
         dis.info.addRelativeSymbol(tile_set_B, addr)
 
         dis.info.setActiveBank(addr + 7, bank)
-        dis.info.addAbsoluteRomSymbol(bank << 14 | (room_data_ptr & 0x3FFF))
+        dis.info.addAbsoluteRomSymbol(bank << 14 | (room_data_ptr & 0x3FFF), name="mapRoomPointers_%02x" % (n))
 
         dis.formatter[addr] = mapHeaderFormatter
         addr += 11
 
-        mapRoomData(dis, bank << 14 | (room_data_ptr & 0x3FFF))
+        mapRoomData(dis, bank << 14 | (room_data_ptr & 0x3FFF), n)
 
 annotations.ALL["map_headers"] = mapHeaders

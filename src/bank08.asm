@@ -9,148 +9,148 @@
 ;  db $00 ; ignored
 ;  db BankNr
 ;  dw MapPointer
-data_008_4000:
+mapHeader_00:
     dw $0000                                           ;; 08:4000 $00 $00
     db $00                                             ;; 08:4002 $00
     dw data_008_40b0                                   ;; 08:4003 $b0 $40
     db $80                                             ;; 08:4005 $80
     db $05                                             ;; 08:4006 $05 Bank
-    dw data_005_4000                                   ;; 08:4007 $00 $40
+    dw mapRoomPointers_00                              ;; 08:4007 $00 $40
     db $d7, $3c                                        ;; 08:4009 $d7 $3c
 
-data_008_400b:
+mapHeader_01:
     dw $0000                                           ;; 08:400b $00 $00
     db $00                                             ;; 08:400d $00
     dw data_008_40b0                                   ;; 08:400e $b0 $40
     db $80                                             ;; 08:4010 $80
     db $06                                             ;; 08:4011 $06 Bank
-    dw data_006_4000                                   ;; 08:4012 $00 $40
+    dw mapRoomPointers_01                              ;; 08:4012 $00 $40
     db $0e, $11                                        ;; 08:4014 $0e $11
 
-data_008_4016:
+mapHeader_02:
     dw $2000                                           ;; 08:4016 $00 $20
     db $00                                             ;; 08:4018 $00
     dw data_008_46b0                                   ;; 08:4019 $b0 $46
     db $6c                                             ;; 08:401b $6c
     db $07                                             ;; 08:401c $07 Bank
-    dw data_007_4871                                   ;; 08:401d $71 $48
+    dw mapRoomPointers_02                              ;; 08:401d $71 $48
     db $63, $08                                        ;; 08:401f $63 $08
 
-data_008_4021:
+mapHeader_03:
     dw $2000                                           ;; 08:4021 $00 $20
     db $00                                             ;; 08:4023 $00
     dw data_008_46b0                                   ;; 08:4024 $b0 $46
     db $6c                                             ;; 08:4026 $6c
     db $07                                             ;; 08:4027 $07 Bank
-    dw data_007_4000                                   ;; 08:4028 $00 $40
+    dw mapRoomPointers_03                              ;; 08:4028 $00 $40
     db $71, $08                                        ;; 08:402a $71 $08
 
-data_008_402c:
+mapHeader_04:
     dw $2000                                           ;; 08:402c $00 $20
     db $00                                             ;; 08:402e $00
     dw data_008_46b0                                   ;; 08:402f $b0 $46
     db $6c                                             ;; 08:4031 $6c
     db $07                                             ;; 08:4032 $07 Bank
-    dw data_007_5932                                   ;; 08:4033 $32 $59
+    dw mapRoomPointers_04                              ;; 08:4033 $32 $59
     db $3e, $08                                        ;; 08:4035 $3e $08
 
-unknown_008_4037:
+mapHeader_05:
     dw $2000                                           ;; 08:4037 $00 $20
     db $00                                             ;; 08:4039 $00
     dw data_008_46b0                                   ;; 08:403a $b0 $46
     db $6c                                             ;; 08:403c $6c
     db $07                                             ;; 08:403d $07
-    dw unknown_007_6170                                ;; 08:403e $70 $61
+    dw mapRoomPointers_05                              ;; 08:403e $70 $61
     db $6f, $07                                        ;; 08:4040 $6f $07
 
-data_008_4042:
+mapHeader_06:
     dw $2000                                           ;; 08:4042 $00 $20
     db $00                                             ;; 08:4044 $00
     dw data_008_46b0                                   ;; 08:4045 $b0 $46
     db $6c                                             ;; 08:4047 $6c
     db $07                                             ;; 08:4048 $07 Bank
-    dw data_007_75d0                                   ;; 08:4049 $d0 $75
+    dw mapRoomPointers_06                              ;; 08:4049 $d0 $75
     db $e1, $05                                        ;; 08:404b $e1 $05
 
-data_008_404d:
-    dw data_008_4000                                   ;; 08:404d $00 $40
+mapHeader_07:
+    dw mapHeader_00                                    ;; 08:404d $00 $40
     db $c0                                             ;; 08:404f $c0
     dw data_008_4c1a                                   ;; 08:4050 $1a $4c
     db $4a                                             ;; 08:4052 $4a
     db $07                                             ;; 08:4053 $07 Bank
-    dw data_007_7bb1                                   ;; 08:4054 $b1 $7b
+    dw mapRoomPointers_07                              ;; 08:4054 $b1 $7b
     db $09, $04                                        ;; 08:4056 $09 $04
 
-unknown_008_4058:
+mapHeader_08:
     dw code_000_3000                                   ;; 08:4058 $00 $30
     db $00                                             ;; 08:405a $00
     dw data_008_4938                                   ;; 08:405b $38 $49
     db $7b                                             ;; 08:405d $7b
     db $06                                             ;; 08:405e $06
-    dw unknown_006_799c                                ;; 08:405f $9c $79
+    dw mapRoomPointers_08                              ;; 08:405f $9c $79
     db $59, $06                                        ;; 08:4061 $59 $06
 
-unknown_008_4063:
+mapHeader_09:
     dw code_000_3000                                   ;; 08:4063 $00 $30
     db $00                                             ;; 08:4065 $00
     dw data_008_4938                                   ;; 08:4066 $38 $49
     db $7b                                             ;; 08:4068 $7b
     db $05                                             ;; 08:4069 $05
-    dw unknown_005_7cd7                                ;; 08:406a $d7 $7c
+    dw mapRoomPointers_09                              ;; 08:406a $d7 $7c
     db $86, $02                                        ;; 08:406c $86 $02
 
-unknown_008_406e:
+mapHeader_0a:
     dw code_000_3000                                   ;; 08:406e $00 $30
     db $00                                             ;; 08:4070 $00
     dw data_008_4938                                   ;; 08:4071 $38 $49
     db $7b                                             ;; 08:4073 $7b
     db $06                                             ;; 08:4074 $06
-    dw unknown_006_6f65                                ;; 08:4075 $65 $6f
+    dw mapRoomPointers_0a                              ;; 08:4075 $65 $6f
     db $37, $0a                                        ;; 08:4077 $37 $0a
 
-unknown_008_4079:
+mapHeader_0b:
     dw code_000_3000                                   ;; 08:4079 $00 $30
     db $00                                             ;; 08:407b $00
     dw data_008_4938                                   ;; 08:407c $38 $49
     db $7b                                             ;; 08:407e $7b
     db $07                                             ;; 08:407f $07
-    dw unknown_007_68df                                ;; 08:4080 $df $68
+    dw mapRoomPointers_0b                              ;; 08:4080 $df $68
     db $b8, $06                                        ;; 08:4082 $b8 $06
 
-unknown_008_4084:
+mapHeader_0c:
     dw code_000_3000                                   ;; 08:4084 $00 $30
     db $00                                             ;; 08:4086 $00
     dw data_008_4938                                   ;; 08:4087 $38 $49
     db $7b                                             ;; 08:4089 $7b
     db $07                                             ;; 08:408a $07
-    dw unknown_007_6f97                                ;; 08:408b $97 $6f
+    dw mapRoomPointers_0c                              ;; 08:408b $97 $6f
     db $39, $06                                        ;; 08:408d $39 $06
 
-data_008_408f:
+mapHeader_0d:
     dw code_000_3000                                   ;; 08:408f $00 $30
     db $00                                             ;; 08:4091 $00
     dw data_008_4938                                   ;; 08:4092 $38 $49
     db $7b                                             ;; 08:4094 $7b
     db $07                                             ;; 08:4095 $07 Bank
-    dw data_007_50d4                                   ;; 08:4096 $d4 $50
+    dw mapRoomPointers_0d                              ;; 08:4096 $d4 $50
     db $5e, $08                                        ;; 08:4098 $5e $08
 
-data_008_409a:
+mapHeader_0e:
     dw $1000                                           ;; 08:409a $00 $10
     db $00                                             ;; 08:409c $00
     dw data_008_43b0                                   ;; 08:409d $b0 $43
     db $80                                             ;; 08:409f $80
     db $06                                             ;; 08:40a0 $06 Bank
-    dw data_006_60fc                                   ;; 08:40a1 $fc $60
+    dw mapRoomPointers_0e                              ;; 08:40a1 $fc $60
     db $69, $0e                                        ;; 08:40a3 $69 $0e
 
-data_008_40a5:
+mapHeader_0f:
     dw $1000                                           ;; 08:40a5 $00 $10
     db $00                                             ;; 08:40a7 $00
     dw data_008_43b0                                   ;; 08:40a8 $b0 $43
     db $80                                             ;; 08:40aa $80
     db $06                                             ;; 08:40ab $06 Bank
-    dw data_006_510e                                   ;; 08:40ac $0e $51
+    dw mapRoomPointers_0f                              ;; 08:40ac $0e $51
     db $ee, $0f                                        ;; 08:40ae $ee $0f
 
 data_008_40b0:

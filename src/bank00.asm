@@ -6414,7 +6414,7 @@ loadMap:
     pop  AF                                            ;; 00:26e6 $f1
     ld   HL, $000b                                     ;; 00:26e7 $21 $0b $00
     call MultiplyHL_by_A                               ;; 00:26ea $cd $7b $2b
-    ld   DE, data_008_4000                             ;; 00:26ed $11 $00 $40
+    ld   DE, mapHeader_00                              ;; 00:26ed $11 $00 $40
     add  HL, DE                                        ;; 00:26f0 $19
     ld   C, [HL]                                       ;; 00:26f1 $4e
     inc  HL                                            ;; 00:26f2 $23
@@ -6435,7 +6435,7 @@ loadMap:
     ld   [wMapTablePointerHigh], A                     ;; 00:2703 $ea $f3 $c3
     ld   A, L                                          ;; 00:2706 $7d
     ld   [wMapTablePointerLow], A                      ;; 00:2707 $ea $f2 $c3
-    ld   HL, data_008_4000                             ;; 00:270a $21 $00 $40
+    ld   HL, mapHeader_00                              ;; 00:270a $21 $00 $40
     add  HL, BC                                        ;; 00:270d $09
     call code_000_1af3                                 ;; 00:270e $cd $f3 $1a
     call popBankNrAndSwitch                            ;; 00:2711 $cd $0a $2a
@@ -8408,12 +8408,12 @@ code_000_3304:
     ld   A, [wD86A]                                    ;; 00:330a $fa $6a $d8
     cp   A, $0e                                        ;; 00:330d $fe $0e
     jr   NZ, .code_3315                                ;; 00:330f $20 $04
-    ld   DE, data_007_4000                             ;; 00:3311 $11 $00 $40
+    ld   DE, mapRoomPointers_03                        ;; 00:3311 $11 $00 $40
     add  HL, DE                                        ;; 00:3314 $19
 .code_3315:
     call code_000_36df                                 ;; 00:3315 $cd $df $36
     pop  HL                                            ;; 00:3318 $e1
-    ld   DE, data_005_4000                             ;; 00:3319 $11 $00 $40
+    ld   DE, mapRoomPointers_00                        ;; 00:3319 $11 $00 $40
     add  HL, DE                                        ;; 00:331c $19
     ld   A, H                                          ;; 00:331d $7c
     ld   [wD8B7], A                                    ;; 00:331e $ea $b7 $d8
