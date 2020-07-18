@@ -1150,7 +1150,7 @@ code_001_48be:
     inc  D                                             ;; 01:48ed $14
     inc  E                                             ;; 01:48ee $1c
     call code_000_16af                                 ;; 01:48ef $cd $af $16
-    ld   DE, $0800                                     ;; 01:48f2 $11 $00 $08
+    ld   DE, code_000_0800                             ;; 01:48f2 $11 $00 $08
     call HLandDE                                       ;; 01:48f5 $cd $b2 $29
     pop  BC                                            ;; 01:48f8 $c1
     jr   Z, .code_48fd                                 ;; 01:48f9 $28 $02

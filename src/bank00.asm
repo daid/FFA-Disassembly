@@ -1448,7 +1448,7 @@ code_000_0828:
     srl  A                                             ;; 00:084c $cb $3f
     ld   E, A                                          ;; 00:084e $5f
     call code_000_16af                                 ;; 00:084f $cd $af $16
-    ld   DE, $0800                                     ;; 00:0852 $11 $00 $08
+    ld   DE, code_000_0800                             ;; 00:0852 $11 $00 $08
     call HLandDE                                       ;; 00:0855 $cd $b2 $29
     pop  DE                                            ;; 00:0858 $d1
     jr   Z, .code_085d                                 ;; 00:0859 $28 $02
@@ -2122,7 +2122,7 @@ code_000_0bd1:
     push BC                                            ;; 00:0bfb $c5
     ld   A, $01                                        ;; 00:0bfc $3e $01
     ld   DE, $fefe                                     ;; 00:0bfe $11 $fe $fe
-    ld   HL, $0bc5                                     ;; 00:0c01 $21 $c5 $0b
+    ld   HL, unknown_000_0bc5                          ;; 00:0c01 $21 $c5 $0b
     call code_000_0a74                                 ;; 00:0c04 $cd $74 $0a
     pop  BC                                            ;; 00:0c07 $c1
     dec  B                                             ;; 00:0c08 $05
@@ -2617,7 +2617,7 @@ code_000_0eb2:
     ld   D, H                                          ;; 00:0eb2 $54
     ld   E, L                                          ;; 00:0eb3 $5d
     ld   A, [wD499]                                    ;; 00:0eb4 $fa $99 $d4
-    ld   HL, $0eca                                     ;; 00:0eb7 $21 $ca $0e
+    ld   HL, unknown_000_0eca                          ;; 00:0eb7 $21 $ca $0e
     call callJumptable                                 ;; 00:0eba $cd $70 $2b
     ret                                                ;; 00:0ebd $c9
     db   $00, $10, $10, $00, $10, $10, $00, $10        ;; 00:0ebe ????????
@@ -5318,12 +5318,12 @@ InitPreIntEnable:
     ld   [MBCBankSelect], A                            ;; 00:201b $ea $00 $21
     ld   HL, $6700                                     ;; 00:201e $21 $00 $67
     ld   DE, $8f00                                     ;; 00:2021 $11 $00 $8f
-    ld   BC, $0900                                     ;; 00:2024 $01 $00 $09
+    ld   BC, code_000_0900                             ;; 00:2024 $01 $00 $09
     call CopyHL_to_DE_size_BC                          ;; 00:2027 $cd $40 $2b
     call code_000_2140                                 ;; 00:202a $cd $40 $21
     ld   A, $7f                                        ;; 00:202d $3e $7f BackgroundTile
     ld   HL, $9800                                     ;; 00:202f $21 $00 $98
-    ld   BC, $0800                                     ;; 00:2032 $01 $00 $08
+    ld   BC, code_000_0800                             ;; 00:2032 $01 $00 $08
     call FillHL_with_A_times_BC                        ;; 00:2035 $cd $54 $2b
     ld   A, $00                                        ;; 00:2038 $3e $00 Sprite Attribute
     ld   HL, $fe00                                     ;; 00:203a $21 $00 $fe
