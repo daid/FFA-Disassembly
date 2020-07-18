@@ -4,521 +4,522 @@
 ; Basic format is 2 pointers pointing to a "object table" and runlength encoded "tilemap" data
 mapRoomPointers_00:
     db   $00, $03, $10, $10                            ;; 05:4000 ....
-    dw   map00_room00_00_objects                       ;; 05:4004 $04 $44
+    dw   map00_room00_00_script                        ;; 05:4004 $04 $44
     dw   map00_room00_00_tiles                         ;; 05:4006 $0a $44
-    dw   map00_room01_00_objects                       ;; 05:4008 $3c $44
+    dw   map00_room01_00_script                        ;; 05:4008 $3c $44
     dw   map00_room01_00_tiles                         ;; 05:400a $3f $44
-    dw   map00_room02_00_objects                       ;; 05:400c $6d $44
+    dw   map00_room02_00_script                        ;; 05:400c $6d $44
     dw   map00_room02_00_tiles                         ;; 05:400e $70 $44
-    dw   map00_room03_00_objects                       ;; 05:4010 $a2 $44
+    dw   map00_room03_00_script                        ;; 05:4010 $a2 $44
     dw   map00_room03_00_tiles                         ;; 05:4012 $a5 $44
-    dw   map00_room04_00_objects                       ;; 05:4014 $d1 $44
+    dw   map00_room04_00_script                        ;; 05:4014 $d1 $44
     dw   map00_room04_00_tiles                         ;; 05:4016 $d4 $44
-    dw   map00_room05_00_objects                       ;; 05:4018 $04 $45
+    dw   map00_room05_00_script                        ;; 05:4018 $04 $45
     dw   map00_room05_00_tiles                         ;; 05:401a $07 $45
-    dw   map00_room06_00_objects                       ;; 05:401c $33 $45
+    dw   map00_room06_00_script                        ;; 05:401c $33 $45
     dw   map00_room06_00_tiles                         ;; 05:401e $39 $45
-    dw   map00_room07_00_objects                       ;; 05:4020 $67 $45
+    dw   map00_room07_00_script                        ;; 05:4020 $67 $45
     dw   map00_room07_00_tiles                         ;; 05:4022 $6d $45
-    dw   map00_room08_00_objects                       ;; 05:4024 $97 $45
+    dw   map00_room08_00_script                        ;; 05:4024 $97 $45
     dw   map00_room08_00_tiles                         ;; 05:4026 $9a $45
-    dw   map00_room09_00_objects                       ;; 05:4028 $d0 $45
+    dw   map00_room09_00_script                        ;; 05:4028 $d0 $45
     dw   map00_room09_00_tiles                         ;; 05:402a $d6 $45
-    dw   map00_room0a_00_objects                       ;; 05:402c $04 $46
+    dw   map00_room0a_00_script                        ;; 05:402c $04 $46
     dw   map00_room0a_00_tiles                         ;; 05:402e $07 $46
-    dw   map00_room0b_00_objects                       ;; 05:4030 $33 $46
+    dw   map00_room0b_00_script                        ;; 05:4030 $33 $46
     dw   map00_room0b_00_tiles                         ;; 05:4032 $36 $46
-    dw   map00_room0c_00_objects                       ;; 05:4034 $62 $46
+    dw   map00_room0c_00_script                        ;; 05:4034 $62 $46
     dw   map00_room0c_00_tiles                         ;; 05:4036 $65 $46
-    dw   map00_room0d_00_objects                       ;; 05:4038 $95 $46
+    dw   map00_room0d_00_script                        ;; 05:4038 $95 $46
     dw   map00_room0d_00_tiles                         ;; 05:403a $98 $46
-    dw   map00_room0e_00_objects                       ;; 05:403c $ca $46
+    dw   map00_room0e_00_script                        ;; 05:403c $ca $46
     dw   map00_room0e_00_tiles                         ;; 05:403e $cd $46
-    dw   map00_room0f_00_objects                       ;; 05:4040 $07 $47
+    dw   map00_room0f_00_script                        ;; 05:4040 $07 $47
     dw   map00_room0f_00_tiles                         ;; 05:4042 $0d $47
-    dw   map00_room00_01_objects                       ;; 05:4044 $51 $47
+    dw   map00_room00_01_script                        ;; 05:4044 $51 $47
     dw   map00_room00_01_tiles                         ;; 05:4046 $54 $47
-    dw   map00_room01_01_objects                       ;; 05:4048 $8e $47
+    dw   map00_room01_01_script                        ;; 05:4048 $8e $47
     dw   map00_room01_01_tiles                         ;; 05:404a $91 $47
-    dw   map00_room02_01_objects                       ;; 05:404c $cb $47
+    dw   map00_room02_01_script                        ;; 05:404c $cb $47
     dw   map00_room02_01_tiles                         ;; 05:404e $ce $47
-    dw   map00_room03_01_objects                       ;; 05:4050 $0e $48
+    dw   map00_room03_01_script                        ;; 05:4050 $0e $48
     dw   map00_room03_01_tiles                         ;; 05:4052 $11 $48
-    dw   map00_room04_01_objects                       ;; 05:4054 $49 $48
+    dw   map00_room04_01_script                        ;; 05:4054 $49 $48
     dw   map00_room04_01_tiles                         ;; 05:4056 $4c $48
-    dw   map00_room05_01_objects                       ;; 05:4058 $82 $48
+    dw   map00_room05_01_script                        ;; 05:4058 $82 $48
     dw   map00_room05_01_tiles                         ;; 05:405a $88 $48
-    dw   map00_room06_01_objects                       ;; 05:405c $c6 $48
+    dw   map00_room06_01_script                        ;; 05:405c $c6 $48
     dw   map00_room06_01_tiles                         ;; 05:405e $c9 $48
-    dw   map00_room07_01_objects                       ;; 05:4060 $03 $49
+    dw   map00_room07_01_script                        ;; 05:4060 $03 $49
     dw   map00_room07_01_tiles                         ;; 05:4062 $06 $49
-    dw   map00_room08_01_objects                       ;; 05:4064 $2c $49
+    dw   map00_room08_01_script                        ;; 05:4064 $2c $49
     dw   map00_room08_01_tiles                         ;; 05:4066 $2f $49
-    dw   map00_room09_01_objects                       ;; 05:4068 $61 $49
+    dw   map00_room09_01_script                        ;; 05:4068 $61 $49
     dw   map00_room09_01_tiles                         ;; 05:406a $64 $49
-    dw   map00_room0a_01_objects                       ;; 05:406c $96 $49
+    dw   map00_room0a_01_script                        ;; 05:406c $96 $49
     dw   map00_room0a_01_tiles                         ;; 05:406e $9c $49
-    dw   map00_room0b_01_objects                       ;; 05:4070 $da $49
+    dw   map00_room0b_01_script                        ;; 05:4070 $da $49
     dw   map00_room0b_01_tiles                         ;; 05:4072 $dd $49
-    dw   map00_room0c_01_objects                       ;; 05:4074 $13 $4a
+    dw   map00_room0c_01_script                        ;; 05:4074 $13 $4a
     dw   map00_room0c_01_tiles                         ;; 05:4076 $16 $4a
-    dw   map00_room0d_01_objects                       ;; 05:4078 $52 $4a
+    dw   map00_room0d_01_script                        ;; 05:4078 $52 $4a
     dw   map00_room0d_01_tiles                         ;; 05:407a $58 $4a
-    dw   map00_room0e_01_objects                       ;; 05:407c $8a $4a
+    dw   map00_room0e_01_script                        ;; 05:407c $8a $4a
     dw   map00_room0e_01_tiles                         ;; 05:407e $8d $4a
-    dw   map00_room0f_01_objects                       ;; 05:4080 $b9 $4a
+    dw   map00_room0f_01_script                        ;; 05:4080 $b9 $4a
     dw   map00_room0f_01_tiles                         ;; 05:4082 $bc $4a
-    dw   map00_room00_02_objects                       ;; 05:4084 $ea $4a
+    dw   map00_room00_02_script                        ;; 05:4084 $ea $4a
     dw   map00_room00_02_tiles                         ;; 05:4086 $ed $4a
-    dw   map00_room01_02_objects                       ;; 05:4088 $23 $4b
+    dw   map00_room01_02_script                        ;; 05:4088 $23 $4b
     dw   map00_room01_02_tiles                         ;; 05:408a $29 $4b
-    dw   map00_room02_02_objects                       ;; 05:408c $5d $4b
+    dw   map00_room02_02_script                        ;; 05:408c $5d $4b
     dw   map00_room02_02_tiles                         ;; 05:408e $60 $4b
-    dw   map00_room03_02_objects                       ;; 05:4090 $8c $4b
+    dw   map00_room03_02_script                        ;; 05:4090 $8c $4b
     dw   map00_room03_02_tiles                         ;; 05:4092 $8f $4b
-    dw   map00_room04_02_objects                       ;; 05:4094 $cb $4b
+    dw   map00_room04_02_script                        ;; 05:4094 $cb $4b
     dw   map00_room04_02_tiles                         ;; 05:4096 $ce $4b
-    dw   map00_room05_02_objects                       ;; 05:4098 $04 $4c
+    dw   map00_room05_02_script                        ;; 05:4098 $04 $4c
     dw   map00_room05_02_tiles                         ;; 05:409a $07 $4c
-    dw   map00_room06_02_objects                       ;; 05:409c $41 $4c
+    dw   map00_room06_02_script                        ;; 05:409c $41 $4c
     dw   map00_room06_02_tiles                         ;; 05:409e $47 $4c
-    dw   map00_room07_02_objects                       ;; 05:40a0 $8b $4c
+    dw   map00_room07_02_script                        ;; 05:40a0 $8b $4c
     dw   map00_room07_02_tiles                         ;; 05:40a2 $8e $4c
-    dw   map00_room08_02_objects                       ;; 05:40a4 $c2 $4c
+    dw   map00_room08_02_script                        ;; 05:40a4 $c2 $4c
     dw   map00_room08_02_tiles                         ;; 05:40a6 $c5 $4c
-    dw   map00_room09_02_objects                       ;; 05:40a8 $ed $4c
+    dw   map00_room09_02_script                        ;; 05:40a8 $ed $4c
     dw   map00_room09_02_tiles                         ;; 05:40aa $f3 $4c
-    dw   map00_room0a_02_objects                       ;; 05:40ac $2d $4d
+    dw   map00_room0a_02_script                        ;; 05:40ac $2d $4d
     dw   map00_room0a_02_tiles                         ;; 05:40ae $30 $4d
-    dw   map00_room0b_02_objects                       ;; 05:40b0 $70 $4d
+    dw   map00_room0b_02_script                        ;; 05:40b0 $70 $4d
     dw   map00_room0b_02_tiles                         ;; 05:40b2 $73 $4d
-    dw   map00_room0c_02_objects                       ;; 05:40b4 $a9 $4d
+    dw   map00_room0c_02_script                        ;; 05:40b4 $a9 $4d
     dw   map00_room0c_02_tiles                         ;; 05:40b6 $ac $4d
-    dw   map00_room0d_02_objects                       ;; 05:40b8 $e0 $4d
+    dw   map00_room0d_02_script                        ;; 05:40b8 $e0 $4d
     dw   map00_room0d_02_tiles                         ;; 05:40ba $e3 $4d
-    dw   map00_room0e_02_objects                       ;; 05:40bc $25 $4e
+    dw   map00_room0e_02_script                        ;; 05:40bc $25 $4e
     dw   map00_room0e_02_tiles                         ;; 05:40be $28 $4e
-    dw   map00_room0f_02_objects                       ;; 05:40c0 $50 $4e
+    dw   map00_room0f_02_script                        ;; 05:40c0 $50 $4e
     dw   map00_room0f_02_tiles                         ;; 05:40c2 $56 $4e
-    dw   map00_room00_03_objects                       ;; 05:40c4 $82 $4e
+    dw   map00_room00_03_script                        ;; 05:40c4 $82 $4e
     dw   map00_room00_03_tiles                         ;; 05:40c6 $85 $4e
-    dw   map00_room01_03_objects                       ;; 05:40c8 $c1 $4e
+    dw   map00_room01_03_script                        ;; 05:40c8 $c1 $4e
     dw   map00_room01_03_tiles                         ;; 05:40ca $c4 $4e
-    dw   map00_room02_03_objects                       ;; 05:40cc $fc $4e
+    dw   map00_room02_03_script                        ;; 05:40cc $fc $4e
     dw   map00_room02_03_tiles                         ;; 05:40ce $02 $4f
-    dw   map00_room03_03_objects                       ;; 05:40d0 $44 $4f
+    dw   map00_room03_03_script                        ;; 05:40d0 $44 $4f
     dw   map00_room03_03_tiles                         ;; 05:40d2 $4a $4f
-    dw   map00_room04_03_objects                       ;; 05:40d4 $8c $4f
+    dw   map00_room04_03_script                        ;; 05:40d4 $8c $4f
     dw   map00_room04_03_tiles                         ;; 05:40d6 $92 $4f
-    dw   map00_room05_03_objects                       ;; 05:40d8 $c8 $4f
+    dw   map00_room05_03_script                        ;; 05:40d8 $c8 $4f
     dw   map00_room05_03_tiles                         ;; 05:40da $cb $4f
-    dw   map00_room06_03_objects                       ;; 05:40dc $05 $50
+    dw   map00_room06_03_script                        ;; 05:40dc $05 $50
     dw   map00_room06_03_tiles                         ;; 05:40de $08 $50
-    dw   map00_room07_03_objects                       ;; 05:40e0 $40 $50
+    dw   map00_room07_03_script                        ;; 05:40e0 $40 $50
     dw   map00_room07_03_tiles                         ;; 05:40e2 $46 $50
-    dw   map00_room08_03_objects                       ;; 05:40e4 $6e $50
+    dw   map00_room08_03_script                        ;; 05:40e4 $6e $50
     dw   map00_room08_03_tiles                         ;; 05:40e6 $71 $50
-    dw   map00_room09_03_objects                       ;; 05:40e8 $99 $50
+    dw   map00_room09_03_script                        ;; 05:40e8 $99 $50
     dw   map00_room09_03_tiles                         ;; 05:40ea $9c $50
-    dw   map00_room0a_03_objects                       ;; 05:40ec $cc $50
+    dw   map00_room0a_03_script                        ;; 05:40ec $cc $50
     dw   map00_room0a_03_tiles                         ;; 05:40ee $cf $50
-    dw   map00_room0b_03_objects                       ;; 05:40f0 $11 $51
+    dw   map00_room0b_03_script                        ;; 05:40f0 $11 $51
     dw   map00_room0b_03_tiles                         ;; 05:40f2 $14 $51
-    dw   map00_room0c_03_objects                       ;; 05:40f4 $4a $51
+    dw   map00_room0c_03_script                        ;; 05:40f4 $4a $51
     dw   map00_room0c_03_tiles                         ;; 05:40f6 $4d $51
-    dw   map00_room0d_03_objects                       ;; 05:40f8 $7f $51
+    dw   map00_room0d_03_script                        ;; 05:40f8 $7f $51
     dw   map00_room0d_03_tiles                         ;; 05:40fa $85 $51
-    dw   map00_room0e_03_objects                       ;; 05:40fc $c1 $51
+    dw   map00_room0e_03_script                        ;; 05:40fc $c1 $51
     dw   map00_room0e_03_tiles                         ;; 05:40fe $c4 $51
-    dw   map00_room0f_03_objects                       ;; 05:4100 $f4 $51
+    dw   map00_room0f_03_script                        ;; 05:4100 $f4 $51
     dw   map00_room0f_03_tiles                         ;; 05:4102 $f7 $51
-    dw   map00_room00_04_objects                       ;; 05:4104 $23 $52
+    dw   map00_room00_04_script                        ;; 05:4104 $23 $52
     dw   map00_room00_04_tiles                         ;; 05:4106 $26 $52
-    dw   map00_room01_04_objects                       ;; 05:4108 $64 $52
+    dw   map00_room01_04_script                        ;; 05:4108 $64 $52
     dw   map00_room01_04_tiles                         ;; 05:410a $67 $52
-    dw   map00_room02_04_objects                       ;; 05:410c $9f $52
+    dw   map00_room02_04_script                        ;; 05:410c $9f $52
     dw   map00_room02_04_tiles                         ;; 05:410e $a2 $52
-    dw   map00_room03_04_objects                       ;; 05:4110 $e2 $52
+    dw   map00_room03_04_script                        ;; 05:4110 $e2 $52
     dw   map00_room03_04_tiles                         ;; 05:4112 $e5 $52
-    dw   map00_room04_04_objects                       ;; 05:4114 $27 $53
+    dw   map00_room04_04_script                        ;; 05:4114 $27 $53
     dw   map00_room04_04_tiles                         ;; 05:4116 $2a $53
-    dw   map00_room05_04_objects                       ;; 05:4118 $66 $53
+    dw   map00_room05_04_script                        ;; 05:4118 $66 $53
     dw   map00_room05_04_tiles                         ;; 05:411a $69 $53
-    dw   map00_room06_04_objects                       ;; 05:411c $a3 $53
+    dw   map00_room06_04_script                        ;; 05:411c $a3 $53
     dw   map00_room06_04_tiles                         ;; 05:411e $a9 $53
-    dw   map00_room07_04_objects                       ;; 05:4120 $e3 $53
+    dw   map00_room07_04_script                        ;; 05:4120 $e3 $53
     dw   map00_room07_04_tiles                         ;; 05:4122 $e6 $53
-    dw   map00_room08_04_objects                       ;; 05:4124 $2a $54
+    dw   map00_room08_04_script                        ;; 05:4124 $2a $54
     dw   map00_room08_04_tiles                         ;; 05:4126 $2d $54
-    dw   map00_room09_04_objects                       ;; 05:4128 $65 $54
+    dw   map00_room09_04_script                        ;; 05:4128 $65 $54
     dw   map00_room09_04_tiles                         ;; 05:412a $68 $54
-    dw   map00_room0a_04_objects                       ;; 05:412c $a4 $54
+    dw   map00_room0a_04_script                        ;; 05:412c $a4 $54
     dw   map00_room0a_04_tiles                         ;; 05:412e $a7 $54
-    dw   map00_room0b_04_objects                       ;; 05:4130 $ef $54
+    dw   map00_room0b_04_script                        ;; 05:4130 $ef $54
     dw   map00_room0b_04_tiles                         ;; 05:4132 $f2 $54
-    dw   map00_room0c_04_objects                       ;; 05:4134 $26 $55
+    dw   map00_room0c_04_script                        ;; 05:4134 $26 $55
     dw   map00_room0c_04_tiles                         ;; 05:4136 $29 $55
-    dw   map00_room0d_04_objects                       ;; 05:4138 $5f $55
+    dw   map00_room0d_04_script                        ;; 05:4138 $5f $55
     dw   map00_room0d_04_tiles                         ;; 05:413a $62 $55
-    dw   map00_room0e_04_objects                       ;; 05:413c $92 $55
+    dw   map00_room0e_04_script                        ;; 05:413c $92 $55
     dw   map00_room0e_04_tiles                         ;; 05:413e $95 $55
-    dw   map00_room0f_04_objects                       ;; 05:4140 $d9 $55
+    dw   map00_room0f_04_script                        ;; 05:4140 $d9 $55
     dw   map00_room0f_04_tiles                         ;; 05:4142 $dc $55
-    dw   map00_room00_05_objects                       ;; 05:4144 $14 $56
+    dw   map00_room00_05_script                        ;; 05:4144 $14 $56
     dw   map00_room00_05_tiles                         ;; 05:4146 $17 $56
-    dw   map00_room01_05_objects                       ;; 05:4148 $57 $56
+    dw   map00_room01_05_script                        ;; 05:4148 $57 $56
     dw   map00_room01_05_tiles                         ;; 05:414a $5a $56
-    dw   map00_room02_05_objects                       ;; 05:414c $90 $56
+    dw   map00_room02_05_script                        ;; 05:414c $90 $56
     dw   map00_room02_05_tiles                         ;; 05:414e $93 $56
-    dw   map00_room03_05_objects                       ;; 05:4150 $c1 $56
+    dw   map00_room03_05_script                        ;; 05:4150 $c1 $56
     dw   map00_room03_05_tiles                         ;; 05:4152 $c4 $56
-    dw   map00_room04_05_objects                       ;; 05:4154 $f6 $56
+    dw   map00_room04_05_script                        ;; 05:4154 $f6 $56
     dw   map00_room04_05_tiles                         ;; 05:4156 $f9 $56
-    dw   map00_room05_05_objects                       ;; 05:4158 $39 $57
+    dw   map00_room05_05_script                        ;; 05:4158 $39 $57
     dw   map00_room05_05_tiles                         ;; 05:415a $3f $57
-    dw   map00_room06_05_objects                       ;; 05:415c $73 $57
+    dw   map00_room06_05_script                        ;; 05:415c $73 $57
     dw   map00_room06_05_tiles                         ;; 05:415e $76 $57
-    dw   map00_room07_05_objects                       ;; 05:4160 $ac $57
+    dw   map00_room07_05_script                        ;; 05:4160 $ac $57
     dw   map00_room07_05_tiles                         ;; 05:4162 $af $57
-    dw   map00_room08_05_objects                       ;; 05:4164 $e5 $57
+    dw   map00_room08_05_script                        ;; 05:4164 $e5 $57
     dw   map00_room08_05_tiles                         ;; 05:4166 $e8 $57
-    dw   map00_room09_05_objects                       ;; 05:4168 $20 $58
+    dw   map00_room09_05_script                        ;; 05:4168 $20 $58
     dw   map00_room09_05_tiles                         ;; 05:416a $26 $58
-    dw   map00_room0a_05_objects                       ;; 05:416c $5a $58
+    dw   map00_room0a_05_script                        ;; 05:416c $5a $58
     dw   map00_room0a_05_tiles                         ;; 05:416e $60 $58
-    dw   map00_room0b_05_objects                       ;; 05:4170 $a2 $58
+    dw   map00_room0b_05_script                        ;; 05:4170 $a2 $58
     dw   map00_room0b_05_tiles                         ;; 05:4172 $a5 $58
-    dw   map00_room0c_05_objects                       ;; 05:4174 $df $58
+    dw   map00_room0c_05_script                        ;; 05:4174 $df $58
     dw   map00_room0c_05_tiles                         ;; 05:4176 $e8 $58
-    dw   map00_room0d_05_objects                       ;; 05:4178 $2a $59
+    dw   map00_room0d_05_script                        ;; 05:4178 $2a $59
     dw   map00_room0d_05_tiles                         ;; 05:417a $2d $59
-    dw   map00_room0e_05_objects                       ;; 05:417c $65 $59
+    dw   map00_room0e_05_script                        ;; 05:417c $65 $59
     dw   map00_room0e_05_tiles                         ;; 05:417e $68 $59
-    dw   map00_room0f_05_objects                       ;; 05:4180 $9e $59
+    dw   map00_room0f_05_script                        ;; 05:4180 $9e $59
     dw   map00_room0f_05_tiles                         ;; 05:4182 $a1 $59
-    dw   map00_room00_06_objects                       ;; 05:4184 $db $59
+    dw   map00_room00_06_script                        ;; 05:4184 $db $59
     dw   map00_room00_06_tiles                         ;; 05:4186 $de $59
-    dw   map00_room01_06_objects                       ;; 05:4188 $18 $5a
+    dw   map00_room01_06_script                        ;; 05:4188 $18 $5a
     dw   map00_room01_06_tiles                         ;; 05:418a $1b $5a
-    dw   map00_room02_06_objects                       ;; 05:418c $51 $5a
+    dw   map00_room02_06_script                        ;; 05:418c $51 $5a
     dw   map00_room02_06_tiles                         ;; 05:418e $54 $5a
-    dw   map00_room03_06_objects                       ;; 05:4190 $8a $5a
+    dw   map00_room03_06_script                        ;; 05:4190 $8a $5a
     dw   map00_room03_06_tiles                         ;; 05:4192 $8d $5a
-    dw   map00_room04_06_objects                       ;; 05:4194 $c3 $5a
+    dw   map00_room04_06_script                        ;; 05:4194 $c3 $5a
     dw   map00_room04_06_tiles                         ;; 05:4196 $c6 $5a
-    dw   map00_room05_06_objects                       ;; 05:4198 $0a $5b
+    dw   map00_room05_06_script                        ;; 05:4198 $0a $5b
     dw   map00_room05_06_tiles                         ;; 05:419a $0d $5b
-    dw   map00_room06_06_objects                       ;; 05:419c $3d $5b
+    dw   map00_room06_06_script                        ;; 05:419c $3d $5b
     dw   map00_room06_06_tiles                         ;; 05:419e $40 $5b
-    dw   map00_room07_06_objects                       ;; 05:41a0 $72 $5b
+    dw   map00_room07_06_script                        ;; 05:41a0 $72 $5b
     dw   map00_room07_06_tiles                         ;; 05:41a2 $75 $5b
-    dw   map00_room08_06_objects                       ;; 05:41a4 $a9 $5b
+    dw   map00_room08_06_script                        ;; 05:41a4 $a9 $5b
     dw   map00_room08_06_tiles                         ;; 05:41a6 $ac $5b
-    dw   map00_room09_06_objects                       ;; 05:41a8 $d6 $5b
+    dw   map00_room09_06_script                        ;; 05:41a8 $d6 $5b
     dw   map00_room09_06_tiles                         ;; 05:41aa $dc $5b
-    dw   map00_room0a_06_objects                       ;; 05:41ac $10 $5c
+    dw   map00_room0a_06_script                        ;; 05:41ac $10 $5c
     dw   map00_room0a_06_tiles                         ;; 05:41ae $13 $5c
-    dw   map00_room0b_06_objects                       ;; 05:41b0 $41 $5c
+    dw   map00_room0b_06_script                        ;; 05:41b0 $41 $5c
     dw   map00_room0b_06_tiles                         ;; 05:41b2 $44 $5c
-    dw   map00_room0c_06_objects                       ;; 05:41b4 $7a $5c
+    dw   map00_room0c_06_script                        ;; 05:41b4 $7a $5c
     dw   map00_room0c_06_tiles                         ;; 05:41b6 $7d $5c
-    dw   map00_room0d_06_objects                       ;; 05:41b8 $b5 $5c
+    dw   map00_room0d_06_script                        ;; 05:41b8 $b5 $5c
     dw   map00_room0d_06_tiles                         ;; 05:41ba $bb $5c
-    dw   map00_room0e_06_objects                       ;; 05:41bc $03 $5d
+    dw   map00_room0e_06_script                        ;; 05:41bc $03 $5d
     dw   map00_room0e_06_tiles                         ;; 05:41be $06 $5d
-    dw   map00_room0f_06_objects                       ;; 05:41c0 $4e $5d
+    dw   map00_room0f_06_script                        ;; 05:41c0 $4e $5d
     dw   map00_room0f_06_tiles                         ;; 05:41c2 $51 $5d
-    dw   map00_room00_07_objects                       ;; 05:41c4 $85 $5d
+    dw   map00_room00_07_script                        ;; 05:41c4 $85 $5d
     dw   map00_room00_07_tiles                         ;; 05:41c6 $88 $5d
-    dw   map00_room01_07_objects                       ;; 05:41c8 $ba $5d
+    dw   map00_room01_07_script                        ;; 05:41c8 $ba $5d
     dw   map00_room01_07_tiles                         ;; 05:41ca $bd $5d
-    dw   map00_room02_07_objects                       ;; 05:41cc $f5 $5d
+    dw   map00_room02_07_script                        ;; 05:41cc $f5 $5d
     dw   map00_room02_07_tiles                         ;; 05:41ce $f8 $5d
-    dw   map00_room03_07_objects                       ;; 05:41d0 $38 $5e
+    dw   map00_room03_07_script                        ;; 05:41d0 $38 $5e
     dw   map00_room03_07_tiles                         ;; 05:41d2 $3b $5e
-    dw   map00_room04_07_objects                       ;; 05:41d4 $77 $5e
+    dw   map00_room04_07_script                        ;; 05:41d4 $77 $5e
     dw   map00_room04_07_tiles                         ;; 05:41d6 $7a $5e
-    dw   map00_room05_07_objects                       ;; 05:41d8 $ac $5e
+    dw   map00_room05_07_script                        ;; 05:41d8 $ac $5e
     dw   map00_room05_07_tiles                         ;; 05:41da $af $5e
-    dw   map00_room06_07_objects                       ;; 05:41dc $db $5e
+    dw   map00_room06_07_script                        ;; 05:41dc $db $5e
     dw   map00_room06_07_tiles                         ;; 05:41de $de $5e
-    dw   map00_room07_07_objects                       ;; 05:41e0 $10 $5f
+    dw   map00_room07_07_script                        ;; 05:41e0 $10 $5f
     dw   map00_room07_07_tiles                         ;; 05:41e2 $13 $5f
-    dw   map00_room08_07_objects                       ;; 05:41e4 $49 $5f
+    dw   map00_room08_07_script                        ;; 05:41e4 $49 $5f
     dw   map00_room08_07_tiles                         ;; 05:41e6 $4f $5f
-    dw   map00_room09_07_objects                       ;; 05:41e8 $81 $5f
+    dw   map00_room09_07_script                        ;; 05:41e8 $81 $5f
     dw   map00_room09_07_tiles                         ;; 05:41ea $84 $5f
-    dw   map00_room0a_07_objects                       ;; 05:41ec $b0 $5f
+    dw   map00_room0a_07_script                        ;; 05:41ec $b0 $5f
     dw   map00_room0a_07_tiles                         ;; 05:41ee $b3 $5f
-    dw   map00_room0b_07_objects                       ;; 05:41f0 $e3 $5f
+    dw   map00_room0b_07_script                        ;; 05:41f0 $e3 $5f
     dw   map00_room0b_07_tiles                         ;; 05:41f2 $e6 $5f
-    dw   map00_room0c_07_objects                       ;; 05:41f4 $10 $60
+    dw   map00_room0c_07_script                        ;; 05:41f4 $10 $60
     dw   map00_room0c_07_tiles                         ;; 05:41f6 $16 $60
-    dw   map00_room0d_07_objects                       ;; 05:41f8 $42 $60
+    dw   map00_room0d_07_script                        ;; 05:41f8 $42 $60
     dw   map00_room0d_07_tiles                         ;; 05:41fa $45 $60
-    dw   map00_room0e_07_objects                       ;; 05:41fc $79 $60
+    dw   map00_room0e_07_script                        ;; 05:41fc $79 $60
     dw   map00_room0e_07_tiles                         ;; 05:41fe $7c $60
-    dw   map00_room0f_07_objects                       ;; 05:4200 $b8 $60
+    dw   map00_room0f_07_script                        ;; 05:4200 $b8 $60
     dw   map00_room0f_07_tiles                         ;; 05:4202 $bb $60
-    dw   map00_room00_08_objects                       ;; 05:4204 $ed $60
+    dw   map00_room00_08_script                        ;; 05:4204 $ed $60
     dw   map00_room00_08_tiles                         ;; 05:4206 $f3 $60
-    dw   map00_room01_08_objects                       ;; 05:4208 $25 $61
+    dw   map00_room01_08_script                        ;; 05:4208 $25 $61
     dw   map00_room01_08_tiles                         ;; 05:420a $2e $61
-    dw   map00_room02_08_objects                       ;; 05:420c $72 $61
+    dw   map00_room02_08_script                        ;; 05:420c $72 $61
     dw   map00_room02_08_tiles                         ;; 05:420e $75 $61
-    dw   map00_room03_08_objects                       ;; 05:4210 $af $61
+    dw   map00_room03_08_script                        ;; 05:4210 $af $61
     dw   map00_room03_08_tiles                         ;; 05:4212 $b2 $61
-    dw   map00_room04_08_objects                       ;; 05:4214 $ec $61
+    dw   map00_room04_08_script                        ;; 05:4214 $ec $61
     dw   map00_room04_08_tiles                         ;; 05:4216 $ef $61
-    dw   map00_room05_08_objects                       ;; 05:4218 $29 $62
+    dw   map00_room05_08_script                        ;; 05:4218 $29 $62
     dw   map00_room05_08_tiles                         ;; 05:421a $2c $62
-    dw   map00_room06_08_objects                       ;; 05:421c $68 $62
+    dw   map00_room06_08_script                        ;; 05:421c $68 $62
     dw   map00_room06_08_tiles                         ;; 05:421e $6b $62
-    dw   map00_room07_08_objects                       ;; 05:4220 $95 $62
+    dw   map00_room07_08_script                        ;; 05:4220 $95 $62
     dw   map00_room07_08_tiles                         ;; 05:4222 $98 $62
-    dw   map00_room08_08_objects                       ;; 05:4224 $c2 $62
+    dw   map00_room08_08_script                        ;; 05:4224 $c2 $62
     dw   map00_room08_08_tiles                         ;; 05:4226 $c5 $62
-    dw   map00_room09_08_objects                       ;; 05:4228 $ef $62
+    dw   map00_room09_08_script                        ;; 05:4228 $ef $62
     dw   map00_room09_08_tiles                         ;; 05:422a $f2 $62
-    dw   map00_room0a_08_objects                       ;; 05:422c $1c $63
+    dw   map00_room0a_08_script                        ;; 05:422c $1c $63
     dw   map00_room0a_08_tiles                         ;; 05:422e $1f $63
-    dw   map00_room0b_08_objects                       ;; 05:4230 $4d $63
+    dw   map00_room0b_08_script                        ;; 05:4230 $4d $63
     dw   map00_room0b_08_tiles                         ;; 05:4232 $50 $63
-    dw   map00_room0c_08_objects                       ;; 05:4234 $7c $63
+    dw   map00_room0c_08_script                        ;; 05:4234 $7c $63
     dw   map00_room0c_08_tiles                         ;; 05:4236 $7f $63
-    dw   map00_room0d_08_objects                       ;; 05:4238 $b7 $63
+    dw   map00_room0d_08_script                        ;; 05:4238 $b7 $63
     dw   map00_room0d_08_tiles                         ;; 05:423a $ba $63
-    dw   map00_room0e_08_objects                       ;; 05:423c $f0 $63
+    dw   map00_room0e_08_script                        ;; 05:423c $f0 $63
     dw   map00_room0e_08_tiles                         ;; 05:423e $f6 $63
-    dw   map00_room0f_08_objects                       ;; 05:4240 $30 $64
+    dw   map00_room0f_08_script                        ;; 05:4240 $30 $64
     dw   map00_room0f_08_tiles                         ;; 05:4242 $33 $64
-    dw   map00_room00_09_objects                       ;; 05:4244 $63 $64
+    dw   map00_room00_09_script                        ;; 05:4244 $63 $64
     dw   map00_room00_09_tiles                         ;; 05:4246 $66 $64
-    dw   map00_room01_09_objects                       ;; 05:4248 $92 $64
+    dw   map00_room01_09_script                        ;; 05:4248 $92 $64
     dw   map00_room01_09_tiles                         ;; 05:424a $95 $64
-    dw   map00_room02_09_objects                       ;; 05:424c $d1 $64
+    dw   map00_room02_09_script                        ;; 05:424c $d1 $64
     dw   map00_room02_09_tiles                         ;; 05:424e $d4 $64
-    dw   map00_room03_09_objects                       ;; 05:4250 $08 $65
+    dw   map00_room03_09_script                        ;; 05:4250 $08 $65
     dw   map00_room03_09_tiles                         ;; 05:4252 $0b $65
-    dw   map00_room04_09_objects                       ;; 05:4254 $4d $65
+    dw   map00_room04_09_script                        ;; 05:4254 $4d $65
     dw   map00_room04_09_tiles                         ;; 05:4256 $53 $65
-    dw   map00_room05_09_objects                       ;; 05:4258 $89 $65
+    dw   map00_room05_09_script                        ;; 05:4258 $89 $65
     dw   map00_room05_09_tiles                         ;; 05:425a $8c $65
-    dw   map00_room06_09_objects                       ;; 05:425c $bc $65
+    dw   map00_room06_09_script                        ;; 05:425c $bc $65
     dw   map00_room06_09_tiles                         ;; 05:425e $c2 $65
-    dw   map00_room07_09_objects                       ;; 05:4260 $fc $65
+    dw   map00_room07_09_script                        ;; 05:4260 $fc $65
     dw   map00_room07_09_tiles                         ;; 05:4262 $ff $65
-    dw   map00_room08_09_objects                       ;; 05:4264 $33 $66
+    dw   map00_room08_09_script                        ;; 05:4264 $33 $66
     dw   map00_room08_09_tiles                         ;; 05:4266 $36 $66
-    dw   map00_room09_09_objects                       ;; 05:4268 $68 $66
+    dw   map00_room09_09_script                        ;; 05:4268 $68 $66
     dw   map00_room09_09_tiles                         ;; 05:426a $6b $66
-    dw   map00_room0a_09_objects                       ;; 05:426c $99 $66
+    dw   map00_room0a_09_script                        ;; 05:426c $99 $66
     dw   map00_room0a_09_tiles                         ;; 05:426e $9f $66
-    dw   map00_room0b_09_objects                       ;; 05:4270 $d9 $66
+    dw   map00_room0b_09_script                        ;; 05:4270 $d9 $66
     dw   map00_room0b_09_tiles                         ;; 05:4272 $dc $66
-    dw   map00_room0c_09_objects                       ;; 05:4274 $0c $67
+    dw   map00_room0c_09_script                        ;; 05:4274 $0c $67
     dw   map00_room0c_09_tiles                         ;; 05:4276 $0f $67
-    dw   map00_room0d_09_objects                       ;; 05:4278 $43 $67
+    dw   map00_room0d_09_script                        ;; 05:4278 $43 $67
     dw   map00_room0d_09_tiles                         ;; 05:427a $46 $67
-    dw   map00_room0e_09_objects                       ;; 05:427c $6c $67
+    dw   map00_room0e_09_script                        ;; 05:427c $6c $67
     dw   map00_room0e_09_tiles                         ;; 05:427e $6f $67
-    dw   map00_room0f_09_objects                       ;; 05:4280 $9d $67
+    dw   map00_room0f_09_script                        ;; 05:4280 $9d $67
     dw   map00_room0f_09_tiles                         ;; 05:4282 $a0 $67
-    dw   map00_room00_0a_objects                       ;; 05:4284 $dc $67
+    dw   map00_room00_0a_script                        ;; 05:4284 $dc $67
     dw   map00_room00_0a_tiles                         ;; 05:4286 $e2 $67
-    dw   map00_room01_0a_objects                       ;; 05:4288 $16 $68
+    dw   map00_room01_0a_script                        ;; 05:4288 $16 $68
     dw   map00_room01_0a_tiles                         ;; 05:428a $19 $68
-    dw   map00_room02_0a_objects                       ;; 05:428c $51 $68
+    dw   map00_room02_0a_script                        ;; 05:428c $51 $68
     dw   map00_room02_0a_tiles                         ;; 05:428e $54 $68
-    dw   map00_room03_0a_objects                       ;; 05:4290 $84 $68
+    dw   map00_room03_0a_script                        ;; 05:4290 $84 $68
     dw   map00_room03_0a_tiles                         ;; 05:4292 $87 $68
-    dw   map00_room04_0a_objects                       ;; 05:4294 $b7 $68
+    dw   map00_room04_0a_script                        ;; 05:4294 $b7 $68
     dw   map00_room04_0a_tiles                         ;; 05:4296 $ba $68
-    dw   map00_room05_0a_objects                       ;; 05:4298 $ec $68
+    dw   map00_room05_0a_script                        ;; 05:4298 $ec $68
     dw   map00_room05_0a_tiles                         ;; 05:429a $ef $68
-    dw   map00_room06_0a_objects                       ;; 05:429c $1d $69
+    dw   map00_room06_0a_script                        ;; 05:429c $1d $69
     dw   map00_room06_0a_tiles                         ;; 05:429e $20 $69
-    dw   map00_room07_0a_objects                       ;; 05:42a0 $52 $69
+    dw   map00_room07_0a_script                        ;; 05:42a0 $52 $69
     dw   map00_room07_0a_tiles                         ;; 05:42a2 $55 $69
-    dw   map00_room08_0a_objects                       ;; 05:42a4 $89 $69
+    dw   map00_room08_0a_script                        ;; 05:42a4 $89 $69
     dw   map00_room08_0a_tiles                         ;; 05:42a6 $8c $69
-    dw   map00_room09_0a_objects                       ;; 05:42a8 $c6 $69
+    dw   map00_room09_0a_script                        ;; 05:42a8 $c6 $69
     dw   map00_room09_0a_tiles                         ;; 05:42aa $c9 $69
-    dw   map00_room0a_0a_objects                       ;; 05:42ac $ff $69
+    dw   map00_room0a_0a_script                        ;; 05:42ac $ff $69
     dw   map00_room0a_0a_tiles                         ;; 05:42ae $05 $6a
-    dw   map00_room0b_0a_objects                       ;; 05:42b0 $37 $6a
+    dw   map00_room0b_0a_script                        ;; 05:42b0 $37 $6a
     dw   map00_room0b_0a_tiles                         ;; 05:42b2 $3a $6a
-    dw   map00_room0c_0a_objects                       ;; 05:42b4 $78 $6a
+    dw   map00_room0c_0a_script                        ;; 05:42b4 $78 $6a
     dw   map00_room0c_0a_tiles                         ;; 05:42b6 $7b $6a
-    dw   map00_room0d_0a_objects                       ;; 05:42b8 $ad $6a
+    dw   map00_room0d_0a_script                        ;; 05:42b8 $ad $6a
     dw   map00_room0d_0a_tiles                         ;; 05:42ba $b0 $6a
-    dw   map00_room0e_0a_objects                       ;; 05:42bc $ea $6a
+    dw   map00_room0e_0a_script                        ;; 05:42bc $ea $6a
     dw   map00_room0e_0a_tiles                         ;; 05:42be $ed $6a
-    dw   map00_room0f_0a_objects                       ;; 05:42c0 $21 $6b
+    dw   map00_room0f_0a_script                        ;; 05:42c0 $21 $6b
     dw   map00_room0f_0a_tiles                         ;; 05:42c2 $24 $6b
-    dw   map00_room00_0b_objects                       ;; 05:42c4 $5a $6b
+    dw   map00_room00_0b_script                        ;; 05:42c4 $5a $6b
     dw   map00_room00_0b_tiles                         ;; 05:42c6 $5d $6b
-    dw   map00_room01_0b_objects                       ;; 05:42c8 $8f $6b
+    dw   map00_room01_0b_script                        ;; 05:42c8 $8f $6b
     dw   map00_room01_0b_tiles                         ;; 05:42ca $92 $6b
-    dw   map00_room02_0b_objects                       ;; 05:42cc $c6 $6b
+    dw   map00_room02_0b_script                        ;; 05:42cc $c6 $6b
     dw   map00_room02_0b_tiles                         ;; 05:42ce $c9 $6b
-    dw   map00_room03_0b_objects                       ;; 05:42d0 $f7 $6b
+    dw   map00_room03_0b_script                        ;; 05:42d0 $f7 $6b
     dw   map00_room03_0b_tiles                         ;; 05:42d2 $fa $6b
-    dw   map00_room04_0b_objects                       ;; 05:42d4 $2c $6c
+    dw   map00_room04_0b_script                        ;; 05:42d4 $2c $6c
     dw   map00_room04_0b_tiles                         ;; 05:42d6 $2f $6c
-    dw   map00_room05_0b_objects                       ;; 05:42d8 $6b $6c
+    dw   map00_room05_0b_script                        ;; 05:42d8 $6b $6c
     dw   map00_room05_0b_tiles                         ;; 05:42da $71 $6c
-    dw   map00_room06_0b_objects                       ;; 05:42dc $a5 $6c
+    dw   map00_room06_0b_script                        ;; 05:42dc $a5 $6c
     dw   map00_room06_0b_tiles                         ;; 05:42de $a8 $6c
-    dw   map00_room07_0b_objects                       ;; 05:42e0 $de $6c
+    dw   map00_room07_0b_script                        ;; 05:42e0 $de $6c
     dw   map00_room07_0b_tiles                         ;; 05:42e2 $e1 $6c
-    dw   map00_room08_0b_objects                       ;; 05:42e4 $13 $6d
+    dw   map00_room08_0b_script                        ;; 05:42e4 $13 $6d
     dw   map00_room08_0b_tiles                         ;; 05:42e6 $19 $6d
-    dw   map00_room09_0b_objects                       ;; 05:42e8 $57 $6d
+    dw   map00_room09_0b_script                        ;; 05:42e8 $57 $6d
     dw   map00_room09_0b_tiles                         ;; 05:42ea $5d $6d
-    dw   map00_room0a_0b_objects                       ;; 05:42ec $93 $6d
+    dw   map00_room0a_0b_script                        ;; 05:42ec $93 $6d
     dw   map00_room0a_0b_tiles                         ;; 05:42ee $96 $6d
-    dw   map00_room0b_0b_objects                       ;; 05:42f0 $d0 $6d
+    dw   map00_room0b_0b_script                        ;; 05:42f0 $d0 $6d
     dw   map00_room0b_0b_tiles                         ;; 05:42f2 $d3 $6d
-    dw   map00_room0c_0b_objects                       ;; 05:42f4 $ff $6d
+    dw   map00_room0c_0b_script                        ;; 05:42f4 $ff $6d
     dw   map00_room0c_0b_tiles                         ;; 05:42f6 $02 $6e
-    dw   map00_room0d_0b_objects                       ;; 05:42f8 $38 $6e
+    dw   map00_room0d_0b_script                        ;; 05:42f8 $38 $6e
     dw   map00_room0d_0b_tiles                         ;; 05:42fa $3e $6e
-    dw   map00_room0e_0b_objects                       ;; 05:42fc $72 $6e
+    dw   map00_room0e_0b_script                        ;; 05:42fc $72 $6e
     dw   map00_room0e_0b_tiles                         ;; 05:42fe $75 $6e
-    dw   map00_room0f_0b_objects                       ;; 05:4300 $af $6e
+    dw   map00_room0f_0b_script                        ;; 05:4300 $af $6e
     dw   map00_room0f_0b_tiles                         ;; 05:4302 $b2 $6e
-    dw   map00_room00_0c_objects                       ;; 05:4304 $ea $6e
+    dw   map00_room00_0c_script                        ;; 05:4304 $ea $6e
     dw   map00_room00_0c_tiles                         ;; 05:4306 $ed $6e
-    dw   map00_room01_0c_objects                       ;; 05:4308 $23 $6f
+    dw   map00_room01_0c_script                        ;; 05:4308 $23 $6f
     dw   map00_room01_0c_tiles                         ;; 05:430a $26 $6f
-    dw   map00_room02_0c_objects                       ;; 05:430c $5a $6f
+    dw   map00_room02_0c_script                        ;; 05:430c $5a $6f
     dw   map00_room02_0c_tiles                         ;; 05:430e $69 $6f
-    dw   map00_room03_0c_objects                       ;; 05:4310 $a1 $6f
+    dw   map00_room03_0c_script                        ;; 05:4310 $a1 $6f
     dw   map00_room03_0c_tiles                         ;; 05:4312 $a4 $6f
-    dw   map00_room04_0c_objects                       ;; 05:4314 $d6 $6f
+    dw   map00_room04_0c_script                        ;; 05:4314 $d6 $6f
     dw   map00_room04_0c_tiles                         ;; 05:4316 $d9 $6f
-    dw   map00_room05_0c_objects                       ;; 05:4318 $11 $70
+    dw   map00_room05_0c_script                        ;; 05:4318 $11 $70
     dw   map00_room05_0c_tiles                         ;; 05:431a $14 $70
-    dw   map00_room06_0c_objects                       ;; 05:431c $48 $70
+    dw   map00_room06_0c_script                        ;; 05:431c $48 $70
     dw   map00_room06_0c_tiles                         ;; 05:431e $4b $70
-    dw   map00_room07_0c_objects                       ;; 05:4320 $81 $70
+    dw   map00_room07_0c_script                        ;; 05:4320 $81 $70
     dw   map00_room07_0c_tiles                         ;; 05:4322 $87 $70
-    dw   map00_room08_0c_objects                       ;; 05:4324 $bf $70
+    dw   map00_room08_0c_script                        ;; 05:4324 $bf $70
     dw   map00_room08_0c_tiles                         ;; 05:4326 $c2 $70
-    dw   map00_room09_0c_objects                       ;; 05:4328 $fa $70
+    dw   map00_room09_0c_script                        ;; 05:4328 $fa $70
     dw   map00_room09_0c_tiles                         ;; 05:432a $fd $70
-    dw   map00_room0a_0c_objects                       ;; 05:432c $29 $71
+    dw   map00_room0a_0c_script                        ;; 05:432c $29 $71
     dw   map00_room0a_0c_tiles                         ;; 05:432e $2c $71
-    dw   map00_room0b_0c_objects                       ;; 05:4330 $60 $71
+    dw   map00_room0b_0c_script                        ;; 05:4330 $60 $71
     dw   map00_room0b_0c_tiles                         ;; 05:4332 $63 $71
-    dw   map00_room0c_0c_objects                       ;; 05:4334 $8b $71
+    dw   map00_room0c_0c_script                        ;; 05:4334 $8b $71
     dw   map00_room0c_0c_tiles                         ;; 05:4336 $8e $71
-    dw   map00_room0d_0c_objects                       ;; 05:4338 $c6 $71
+    dw   map00_room0d_0c_script                        ;; 05:4338 $c6 $71
     dw   map00_room0d_0c_tiles                         ;; 05:433a $cf $71
-    dw   map00_room0e_0c_objects                       ;; 05:433c $0b $72
+    dw   map00_room0e_0c_script                        ;; 05:433c $0b $72
     dw   map00_room0e_0c_tiles                         ;; 05:433e $0e $72
-    dw   map00_room0f_0c_objects                       ;; 05:4340 $4e $72
+    dw   map00_room0f_0c_script                        ;; 05:4340 $4e $72
     dw   map00_room0f_0c_tiles                         ;; 05:4342 $51 $72
-    dw   map00_room00_0d_objects                       ;; 05:4344 $85 $72
+    dw   map00_room00_0d_script                        ;; 05:4344 $85 $72
     dw   map00_room00_0d_tiles                         ;; 05:4346 $88 $72
-    dw   map00_room01_0d_objects                       ;; 05:4348 $b6 $72
+    dw   map00_room01_0d_script                        ;; 05:4348 $b6 $72
     dw   map00_room01_0d_tiles                         ;; 05:434a $b9 $72
-    dw   map00_room02_0d_objects                       ;; 05:434c $e3 $72
+    dw   map00_room02_0d_script                        ;; 05:434c $e3 $72
     dw   map00_room02_0d_tiles                         ;; 05:434e $e6 $72
-    dw   map00_room03_0d_objects                       ;; 05:4350 $14 $73
+    dw   map00_room03_0d_script                        ;; 05:4350 $14 $73
     dw   map00_room03_0d_tiles                         ;; 05:4352 $17 $73
-    dw   map00_room04_0d_objects                       ;; 05:4354 $4f $73
+    dw   map00_room04_0d_script                        ;; 05:4354 $4f $73
     dw   map00_room04_0d_tiles                         ;; 05:4356 $55 $73
-    dw   map00_room05_0d_objects                       ;; 05:4358 $8f $73
+    dw   map00_room05_0d_script                        ;; 05:4358 $8f $73
     dw   map00_room05_0d_tiles                         ;; 05:435a $92 $73
-    dw   map00_room06_0d_objects                       ;; 05:435c $ca $73
+    dw   map00_room06_0d_script                        ;; 05:435c $ca $73
     dw   map00_room06_0d_tiles                         ;; 05:435e $d0 $73
-    dw   map00_room07_0d_objects                       ;; 05:4360 $f8 $73
+    dw   map00_room07_0d_script                        ;; 05:4360 $f8 $73
     dw   map00_room07_0d_tiles                         ;; 05:4362 $fb $73
-    dw   map00_room08_0d_objects                       ;; 05:4364 $37 $74
+    dw   map00_room08_0d_script                        ;; 05:4364 $37 $74
     dw   map00_room08_0d_tiles                         ;; 05:4366 $3d $74
-    dw   map00_room09_0d_objects                       ;; 05:4368 $7b $74
+    dw   map00_room09_0d_script                        ;; 05:4368 $7b $74
     dw   map00_room09_0d_tiles                         ;; 05:436a $7e $74
-    dw   map00_room0a_0d_objects                       ;; 05:436c $b2 $74
+    dw   map00_room0a_0d_script                        ;; 05:436c $b2 $74
     dw   map00_room0a_0d_tiles                         ;; 05:436e $b5 $74
-    dw   map00_room0b_0d_objects                       ;; 05:4370 $ed $74
+    dw   map00_room0b_0d_script                        ;; 05:4370 $ed $74
     dw   map00_room0b_0d_tiles                         ;; 05:4372 $f0 $74
-    dw   map00_room0c_0d_objects                       ;; 05:4374 $26 $75
+    dw   map00_room0c_0d_script                        ;; 05:4374 $26 $75
     dw   map00_room0c_0d_tiles                         ;; 05:4376 $29 $75
-    dw   map00_room0d_0d_objects                       ;; 05:4378 $5b $75
+    dw   map00_room0d_0d_script                        ;; 05:4378 $5b $75
     dw   map00_room0d_0d_tiles                         ;; 05:437a $5e $75
-    dw   map00_room0e_0d_objects                       ;; 05:437c $8c $75
+    dw   map00_room0e_0d_script                        ;; 05:437c $8c $75
     dw   map00_room0e_0d_tiles                         ;; 05:437e $8f $75
-    dw   map00_room0f_0d_objects                       ;; 05:4380 $d9 $75
+    dw   map00_room0f_0d_script                        ;; 05:4380 $d9 $75
     dw   map00_room0f_0d_tiles                         ;; 05:4382 $dc $75
-    dw   map00_room00_0e_objects                       ;; 05:4384 $12 $76
+    dw   map00_room00_0e_script                        ;; 05:4384 $12 $76
     dw   map00_room00_0e_tiles                         ;; 05:4386 $1b $76
-    dw   map00_room01_0e_objects                       ;; 05:4388 $57 $76
+    dw   map00_room01_0e_script                        ;; 05:4388 $57 $76
     dw   map00_room01_0e_tiles                         ;; 05:438a $5a $76
-    dw   map00_room02_0e_objects                       ;; 05:438c $90 $76
+    dw   map00_room02_0e_script                        ;; 05:438c $90 $76
     dw   map00_room02_0e_tiles                         ;; 05:438e $93 $76
-    dw   map00_room03_0e_objects                       ;; 05:4390 $c3 $76
+    dw   map00_room03_0e_script                        ;; 05:4390 $c3 $76
     dw   map00_room03_0e_tiles                         ;; 05:4392 $c9 $76
-    dw   map00_room04_0e_objects                       ;; 05:4394 $fb $76
+    dw   map00_room04_0e_script                        ;; 05:4394 $fb $76
     dw   map00_room04_0e_tiles                         ;; 05:4396 $fe $76
-    dw   map00_room05_0e_objects                       ;; 05:4398 $36 $77
+    dw   map00_room05_0e_script                        ;; 05:4398 $36 $77
     dw   map00_room05_0e_tiles                         ;; 05:439a $39 $77
-    dw   map00_room06_0e_objects                       ;; 05:439c $69 $77
+    dw   map00_room06_0e_script                        ;; 05:439c $69 $77
     dw   map00_room06_0e_tiles                         ;; 05:439e $6c $77
-    dw   map00_room07_0e_objects                       ;; 05:43a0 $98 $77
+    dw   map00_room07_0e_script                        ;; 05:43a0 $98 $77
     dw   map00_room07_0e_tiles                         ;; 05:43a2 $9b $77
-    dw   map00_room08_0e_objects                       ;; 05:43a4 $cf $77
+    dw   map00_room08_0e_script                        ;; 05:43a4 $cf $77
     dw   map00_room08_0e_tiles                         ;; 05:43a6 $d2 $77
-    dw   map00_room09_0e_objects                       ;; 05:43a8 $04 $78
+    dw   map00_room09_0e_script                        ;; 05:43a8 $04 $78
     dw   map00_room09_0e_tiles                         ;; 05:43aa $0a $78
-    dw   map00_room0a_0e_objects                       ;; 05:43ac $42 $78
+    dw   map00_room0a_0e_script                        ;; 05:43ac $42 $78
     dw   map00_room0a_0e_tiles                         ;; 05:43ae $45 $78
-    dw   map00_room0b_0e_objects                       ;; 05:43b0 $7d $78
+    dw   map00_room0b_0e_script                        ;; 05:43b0 $7d $78
     dw   map00_room0b_0e_tiles                         ;; 05:43b2 $80 $78
-    dw   map00_room0c_0e_objects                       ;; 05:43b4 $b6 $78
+    dw   map00_room0c_0e_script                        ;; 05:43b4 $b6 $78
     dw   map00_room0c_0e_tiles                         ;; 05:43b6 $b9 $78
-    dw   map00_room0d_0e_objects                       ;; 05:43b8 $ed $78
+    dw   map00_room0d_0e_script                        ;; 05:43b8 $ed $78
     dw   map00_room0d_0e_tiles                         ;; 05:43ba $f3 $78
-    dw   map00_room0e_0e_objects                       ;; 05:43bc $2b $79
+    dw   map00_room0e_0e_script                        ;; 05:43bc $2b $79
     dw   map00_room0e_0e_tiles                         ;; 05:43be $2e $79
-    dw   map00_room0f_0e_objects                       ;; 05:43c0 $78 $79
+    dw   map00_room0f_0e_script                        ;; 05:43c0 $78 $79
     dw   map00_room0f_0e_tiles                         ;; 05:43c2 $7b $79
-    dw   map00_room00_0f_objects                       ;; 05:43c4 $b7 $79
+    dw   map00_room00_0f_script                        ;; 05:43c4 $b7 $79
     dw   map00_room00_0f_tiles                         ;; 05:43c6 $ba $79
-    dw   map00_room01_0f_objects                       ;; 05:43c8 $e8 $79
+    dw   map00_room01_0f_script                        ;; 05:43c8 $e8 $79
     dw   map00_room01_0f_tiles                         ;; 05:43ca $eb $79
-    dw   map00_room02_0f_objects                       ;; 05:43cc $19 $7a
+    dw   map00_room02_0f_script                        ;; 05:43cc $19 $7a
     dw   map00_room02_0f_tiles                         ;; 05:43ce $1c $7a
-    dw   map00_room03_0f_objects                       ;; 05:43d0 $3c $7a
+    dw   map00_room03_0f_script                        ;; 05:43d0 $3c $7a
     dw   map00_room03_0f_tiles                         ;; 05:43d2 $3f $7a
-    dw   map00_room04_0f_objects                       ;; 05:43d4 $67 $7a
+    dw   map00_room04_0f_script                        ;; 05:43d4 $67 $7a
     dw   map00_room04_0f_tiles                         ;; 05:43d6 $6a $7a
-    dw   map00_room05_0f_objects                       ;; 05:43d8 $8c $7a
+    dw   map00_room05_0f_script                        ;; 05:43d8 $8c $7a
     dw   map00_room05_0f_tiles                         ;; 05:43da $8f $7a
-    dw   map00_room06_0f_objects                       ;; 05:43dc $b5 $7a
+    dw   map00_room06_0f_script                        ;; 05:43dc $b5 $7a
     dw   map00_room06_0f_tiles                         ;; 05:43de $b8 $7a
-    dw   map00_room07_0f_objects                       ;; 05:43e0 $e4 $7a
+    dw   map00_room07_0f_script                        ;; 05:43e0 $e4 $7a
     dw   map00_room07_0f_tiles                         ;; 05:43e2 $e7 $7a
-    dw   map00_room08_0f_objects                       ;; 05:43e4 $17 $7b
+    dw   map00_room08_0f_script                        ;; 05:43e4 $17 $7b
     dw   map00_room08_0f_tiles                         ;; 05:43e6 $1a $7b
-    dw   map00_room09_0f_objects                       ;; 05:43e8 $4e $7b
+    dw   map00_room09_0f_script                        ;; 05:43e8 $4e $7b
     dw   map00_room09_0f_tiles                         ;; 05:43ea $51 $7b
-    dw   map00_room0a_0f_objects                       ;; 05:43ec $89 $7b
+    dw   map00_room0a_0f_script                        ;; 05:43ec $89 $7b
     dw   map00_room0a_0f_tiles                         ;; 05:43ee $8f $7b
-    dw   map00_room0b_0f_objects                       ;; 05:43f0 $c3 $7b
+    dw   map00_room0b_0f_script                        ;; 05:43f0 $c3 $7b
     dw   map00_room0b_0f_tiles                         ;; 05:43f2 $c6 $7b
-    dw   map00_room0c_0f_objects                       ;; 05:43f4 $f2 $7b
+    dw   map00_room0c_0f_script                        ;; 05:43f4 $f2 $7b
     dw   map00_room0c_0f_tiles                         ;; 05:43f6 $f5 $7b
-    dw   map00_room0d_0f_objects                       ;; 05:43f8 $23 $7c
+    dw   map00_room0d_0f_script                        ;; 05:43f8 $23 $7c
     dw   map00_room0d_0f_tiles                         ;; 05:43fa $29 $7c
-    dw   map00_room0e_0f_objects                       ;; 05:43fc $61 $7c
+    dw   map00_room0e_0f_script                        ;; 05:43fc $61 $7c
     dw   map00_room0e_0f_tiles                         ;; 05:43fe $64 $7c
-    dw   map00_room0f_0f_objects                       ;; 05:4400 $9e $7c
+    dw   map00_room0f_0f_script                        ;; 05:4400 $9e $7c
     dw   map00_room0f_0f_tiles                         ;; 05:4402 $a1 $7c
 
-map00_room00_00_objects:
-    db   $76, $00, $33, $80, $03, $ff                  ;; 05:4404 ??????
+map00_room00_00_script:
+    dw   $0076                                         ;; 05:4404 $76 $00
+    db   $33, $80, $03, $ff                            ;; 05:4406 ????
 
 map00_room00_00_tiles:
     db         $91,        $91,        $91,$11         ;; 05:440a ????
@@ -530,8 +531,9 @@ map00_room00_00_tiles:
     db $40,        $80,$30,$31,$40,$00,$00,$30         ;; 05:442c ????????
     db $41,$40,$30,        $c1,$41,$40,$00,$41         ;; 05:4434 ????????
 
-map00_room01_00_objects:
-    db   $7c, $00, $ff                                 ;; 05:443c ???
+map00_room01_00_script:
+    dw   $007c                                         ;; 05:443c $7c $00
+    db   $ff                                           ;; 05:443e ?
 
 map00_room01_00_tiles:
     db         $91,        $91,        $91,$11         ;; 05:443f ????
@@ -543,8 +545,9 @@ map00_room01_00_tiles:
     db $40,$30,$40,$00,$00,$3b,        $80,$34         ;; 05:445d ????????
     db         $c1,$40,$30,$40,$00,$00,$34,$42         ;; 05:4465 ????????
 
-map00_room02_00_objects:
-    db   $64, $00, $ff                                 ;; 05:446d ???
+map00_room02_00_script:
+    dw   $0064                                         ;; 05:446d $64 $00
+    db   $ff                                           ;; 05:446f ?
 
 map00_room02_00_tiles:
     db         $91,        $91,        $91,$11         ;; 05:4470 ????
@@ -556,8 +559,9 @@ map00_room02_00_tiles:
     db $23,$23,$2b,$42,$11,$11,        $c2,$42         ;; 05:4492 ????????
     db $42,$42,$2b,$42,$11,$11,        $c2,$42         ;; 05:449a ????????
 
-map00_room03_00_objects:
-    db   $64, $00, $ff                                 ;; 05:44a2 ???
+map00_room03_00_script:
+    dw   $0064                                         ;; 05:44a2 $64 $00
+    db   $ff                                           ;; 05:44a4 ?
 
 map00_room03_00_tiles:
     db         $91,        $91,        $91,$11         ;; 05:44a5 ????
@@ -569,8 +573,9 @@ map00_room03_00_tiles:
     db $42,$30,$40,        $80,$30,$41,$41,$40         ;; 05:44c1 ????????
     db $30,$41,$41,$40,$00,$30,        $c1,$41         ;; 05:44c9 ????????
 
-map00_room04_00_objects:
-    db   $64, $00, $ff                                 ;; 05:44d1 ???
+map00_room04_00_script:
+    dw   $0064                                         ;; 05:44d1 $64 $00
+    db   $ff                                           ;; 05:44d3 ?
 
 map00_room04_00_tiles:
     db         $91,        $91,        $91,$11         ;; 05:44d4 ????
@@ -582,8 +587,9 @@ map00_room04_00_tiles:
     db $30,$40,        $80,$00,$30,$40,$00,$00         ;; 05:44f2 ????????
     db $41,$41,$40,$00,$00,$30,$41,$41,$40,$30         ;; 05:44fa ??????????
 
-map00_room05_00_objects:
-    db   $64, $00, $ff                                 ;; 05:4504 ???
+map00_room05_00_script:
+    dw   $0064                                         ;; 05:4504 $64 $00
+    db   $ff                                           ;; 05:4506 ?
 
 map00_room05_00_tiles:
     db         $91,        $91,        $91,$11         ;; 05:4507 ????
@@ -595,8 +601,9 @@ map00_room05_00_tiles:
     db         $80,        $80,$00,        $c1         ;; 05:4529 ????
     db $31,$40,        $80,$30,$40,        $c1         ;; 05:452d ??????
 
-map00_room06_00_objects:
-    db   $3d, $00, $37, $74, $04, $ff                  ;; 05:4533 ??????
+map00_room06_00_script:
+    dw   $003d                                         ;; 05:4533 $3d $00
+    db   $37, $74, $04, $ff                            ;; 05:4535 ????
 
 map00_room06_00_tiles:
     db         $91,        $91,        $91,$11         ;; 05:4539 ????
@@ -608,8 +615,9 @@ map00_room06_00_tiles:
     db $41,$41,$30,$40,        $85,        $85         ;; 05:455b ??????
     db         $c1,$41,        $85,$05,$05,$46         ;; 05:4561 ??????
 
-map00_room07_00_objects:
-    db   $9a, $04, $57, $8b, $02, $ff                  ;; 05:4567 ??????
+map00_room07_00_script:
+    dw   $049a                                         ;; 05:4567 $9a $04
+    db   $57, $8b, $02, $ff                            ;; 05:4569 ????
 
 map00_room07_00_tiles:
     db         $91,        $91,        $91,$11         ;; 05:456d ????
@@ -621,8 +629,9 @@ map00_room07_00_tiles:
     db         $85,        $85,        $85,$05         ;; 05:458d ????
     db $46,        $85,        $85,$05,$05,$46         ;; 05:4591 ??????
 
-map00_room08_00_objects:
-    db   $6d, $00, $ff                                 ;; 05:4597 ???
+map00_room08_00_script:
+    dw   $006d                                         ;; 05:4597 $6d $00
+    db   $ff                                           ;; 05:4599 ?
 
 map00_room08_00_tiles:
     db         $91,        $91,        $91,$11         ;; 05:459a ????
@@ -634,8 +643,9 @@ map00_room08_00_tiles:
     db         $85,$05,$05,$50,$51,$51,$41,$31         ;; 05:45c2 ????????
     db $46,        $85,        $85,$46,$50,$41         ;; 05:45ca ??????
 
-map00_room09_00_objects:
-    db   $70, $00, $36, $81, $03, $ff                  ;; 05:45d0 ??????
+map00_room09_00_script:
+    dw   $0070                                         ;; 05:45d0 $70 $00
+    db   $36, $81, $03, $ff                            ;; 05:45d2 ????
 
 map00_room09_00_tiles:
     db         $91,        $91,        $91,$11         ;; 05:45d6 ????
@@ -647,8 +657,9 @@ map00_room09_00_tiles:
     db $31,$11,$11,$42,$23,        $a5,$25,$35         ;; 05:45f4 ????????
     db $41,$11,$11,$42,$42,        $a3,$23,$23         ;; 05:45fc ????????
 
-map00_room0a_00_objects:
-    db   $73, $00, $ff                                 ;; 05:4604 ???
+map00_room0a_00_script:
+    dw   $0073                                         ;; 05:4604 $73 $00
+    db   $ff                                           ;; 05:4606 ?
 
 map00_room0a_00_tiles:
     db         $91,        $91,        $91,$11         ;; 05:4607 ????
@@ -660,8 +671,9 @@ map00_room0a_00_tiles:
     db         $b5,        $a5,        $a5,$35         ;; 05:4627 ????
     db $23,$23,$35,$35,        $a5,$25,$35,$35         ;; 05:462b ????????
 
-map00_room0b_00_objects:
-    db   $70, $00, $ff                                 ;; 05:4633 ???
+map00_room0b_00_script:
+    dw   $0070                                         ;; 05:4633 $70 $00
+    db   $ff                                           ;; 05:4635 ?
 
 map00_room0b_00_tiles:
     db         $91,        $91,        $91,$11         ;; 05:4636 ????
@@ -673,8 +685,9 @@ map00_room0b_00_tiles:
     db $35,        $a5,        $a5,$25,$30,$31         ;; 05:4654 ??????
     db         $b5,$35,$25,$25,$30,$31,$41,$41         ;; 05:465a ????????
 
-map00_room0c_00_objects:
-    db   $73, $00, $ff                                 ;; 05:4662 ???
+map00_room0c_00_script:
+    dw   $0073                                         ;; 05:4662 $73 $00
+    db   $ff                                           ;; 05:4664 ?
 
 map00_room0c_00_tiles:
     db         $91,        $91,        $91,$11         ;; 05:4665 ????
@@ -686,8 +699,9 @@ map00_room0c_00_tiles:
     db $40,        $a5,        $a5,$25,$30,$40         ;; 05:4685 ??????
     db $41,$40,$30,$40,$30,$40,$25,$25,$41,$41         ;; 05:468b ??????????
 
-map00_room0d_00_objects:
-    db   $79, $00, $ff                                 ;; 05:4695 ???
+map00_room0d_00_script:
+    dw   $0079                                         ;; 05:4695 $79 $00
+    db   $ff                                           ;; 05:4697 ?
 
 map00_room0d_00_tiles:
     db         $91,$11,        $80,$00,$00,$50         ;; 05:4698 ??????
@@ -699,8 +713,9 @@ map00_room0d_00_tiles:
     db $30,$40,$20,        $91,        $91,$11         ;; 05:46bc ??????
     db $41,$41,$40,$30,$40,$20,        $91,$11         ;; 05:46c2 ????????
 
-map00_room0e_00_objects:
-    db   $79, $00, $ff                                 ;; 05:46ca ???
+map00_room0e_00_script:
+    dw   $0079                                         ;; 05:46ca $79 $00
+    db   $ff                                           ;; 05:46cc ?
 
 map00_room0e_00_tiles:
     db $51,$51,$52,$50,        $c1,$42,$51,$51         ;; 05:46cd ????????
@@ -712,8 +727,9 @@ map00_room0e_00_tiles:
     db $11,$02,$50,        $80,        $80,$50         ;; 05:46fb ??????
     db $11,$11,$38,        $80,        $80,$30         ;; 05:4701 ??????
 
-map00_room0f_00_objects:
-    db   $a3, $04, $44, $70, $02, $ff                  ;; 05:4707 ??????
+map00_room0f_00_script:
+    dw   $04a3                                         ;; 05:4707 $a3 $04
+    db   $44, $70, $02, $ff                            ;; 05:4709 ????
 
 map00_room0f_00_tiles:
     db $51,$53,$50,$41,$51,$41,$42,$52,$10,$11         ;; 05:470d ??????????
@@ -725,8 +741,9 @@ map00_room0f_00_tiles:
     db $41,        $80,        $80,$00,$30,$41         ;; 05:4741 ??????
     db $41,$40,$30,$40,$30,$40,$30,$31,$41,$41         ;; 05:4747 ??????????
 
-map00_room00_01_objects:
-    db   $76, $00, $ff                                 ;; 05:4751 ???
+map00_room00_01_script:
+    dw   $0076                                         ;; 05:4751 $76 $00
+    db   $ff                                           ;; 05:4753 ?
 
 map00_room00_01_tiles:
     db $41,$42,$52,$50,$51,$41,$41,$42,$00,$50         ;; 05:4754 ??????????
@@ -738,8 +755,9 @@ map00_room00_01_tiles:
     db $38,$02,$50,        $80,        $80,$30         ;; 05:4780 ??????
     db $11,$11,$38,        $80,$00,$00,$30,$41         ;; 05:4786 ????????
 
-map00_room01_01_objects:
-    db   $79, $00, $ff                                 ;; 05:478e ???
+map00_room01_01_script:
+    dw   $0079                                         ;; 05:478e $79 $00
+    db   $ff                                           ;; 05:4790 ?
 
 map00_room01_01_tiles:
     db $51,$51,        $c1,$42,$00,$00,$35,$35         ;; 05:4791 ????????
@@ -751,8 +769,9 @@ map00_room01_01_tiles:
     db $40,$30,        $c1,        $c1,$41,$41         ;; 05:47c1 ??????
     db         $c1,        $c1,        $c1,$41         ;; 05:47c7 ????
 
-map00_room02_01_objects:
-    db   $7c, $00, $ff                                 ;; 05:47cb ???
+map00_room02_01_script:
+    dw   $007c                                         ;; 05:47cb $7c $00
+    db   $ff                                           ;; 05:47cd ?
 
 map00_room02_01_tiles:
     db $42,$42,$2b,$42,$11,$11,        $c2,$42         ;; 05:47ce ????????
@@ -764,8 +783,9 @@ map00_room02_01_tiles:
     db $41,$30,$40,        $85,$05,$30,$40,$41         ;; 05:4800 ????????
     db         $c1,$40,$30,$40,$30,        $c1         ;; 05:4808 ??????
 
-map00_room03_01_objects:
-    db   $64, $00, $ff                                 ;; 05:480e ???
+map00_room03_01_script:
+    dw   $0064                                         ;; 05:480e $64 $00
+    db   $ff                                           ;; 05:4810 ?
 
 map00_room03_01_tiles:
     db $42,$41,$42,$42,$00,        $c1,$41,$41         ;; 05:4811 ????????
@@ -777,8 +797,9 @@ map00_room03_01_tiles:
     db $41,$30,$40,        $80,$30,$40,$41,$41         ;; 05:483d ????????
     db         $c1,        $80,        $c1,$41         ;; 05:4845 ????
 
-map00_room04_01_objects:
-    db   $64, $00, $ff                                 ;; 05:4849 ???
+map00_room04_01_script:
+    dw   $0064                                         ;; 05:4849 $64 $00
+    db   $ff                                           ;; 05:484b ?
 
 map00_room04_01_tiles:
     db         $c1,$00,$00,$50,        $d1,$51         ;; 05:484c ??????
@@ -790,8 +811,9 @@ map00_room04_01_tiles:
     db $41,$40,        $80,        $80,$30,$41         ;; 05:4872 ??????
     db $41,$41,$40,$00,$30,$31,$40,$30,$41,$41         ;; 05:4878 ??????????
 
-map00_room05_01_objects:
-    db   $ac, $04, $37, $86, $02, $ff                  ;; 05:4882 ??????
+map00_room05_01_script:
+    dw   $04ac                                         ;; 05:4882 $ac $04
+    db   $37, $86, $02, $ff                            ;; 05:4884 ????
 
 map00_room05_01_tiles:
     db $51,$53,        $80,$41,$41,        $c2         ;; 05:4888 ??????
@@ -803,8 +825,9 @@ map00_room05_01_tiles:
     db $41,        $c2,$41,$64,$2b,$64,$42,$42         ;; 05:48b6 ????????
     db $41,        $c2,$41,$41,$2b,$41,$42,$42         ;; 05:48be ????????
 
-map00_room06_01_objects:
-    db   $6d, $00, $ff                                 ;; 05:48c6 ???
+map00_room06_01_script:
+    dw   $006d                                         ;; 05:48c6 $6d $00
+    db   $ff                                           ;; 05:48c8 ?
 
 map00_room06_01_tiles:
     db         $c1,$42,        $85,$05,$05,$46         ;; 05:48c9 ??????
@@ -816,8 +839,9 @@ map00_room06_01_tiles:
     db         $c2,$41,$41,        $c2,$41,$42         ;; 05:48f5 ??????
     db $42,$42,$41,$41,        $c2,$41,$41,$42         ;; 05:48fb ????????
 
-map00_room07_01_objects:
-    db   $6d, $00, $ff                                 ;; 05:4903 ???
+map00_room07_01_script:
+    dw   $006d                                         ;; 05:4903 $6d $00
+    db   $ff                                           ;; 05:4905 ?
 
 map00_room07_01_tiles:
     db $46,        $85,        $85,$05,$05,$46         ;; 05:4906 ??????
@@ -829,8 +853,9 @@ map00_room07_01_tiles:
     db $40,        $85,        $85,        $85         ;; 05:4922 ????
     db $41,        $85,        $85,$05,$05,$46         ;; 05:4926 ??????
 
-map00_room08_01_objects:
-    db   $6a, $00, $ff                                 ;; 05:492c ???
+map00_room08_01_script:
+    dw   $006a                                         ;; 05:492c $6a $00
+    db   $ff                                           ;; 05:492e ?
 
 map00_room08_01_tiles:
     db $46,        $85,        $85,$46,$46,$41         ;; 05:492f ??????
@@ -842,8 +867,9 @@ map00_room08_01_tiles:
     db         $85,        $85,        $85,$30         ;; 05:4957 ????
     db $46,        $85,        $85,$05,$46,$41         ;; 05:495b ??????
 
-map00_room09_01_objects:
-    db   $7c, $00, $ff                                 ;; 05:4961 ???
+map00_room09_01_script:
+    dw   $007c                                         ;; 05:4961 $7c $00
+    db   $ff                                           ;; 05:4963 ?
 
 map00_room09_01_tiles:
     db $41,$11,$11,        $c2,        $c2,$42         ;; 05:4964 ??????
@@ -855,8 +881,9 @@ map00_room09_01_tiles:
     db         $c1,        $c1,$40,$30,$40,$30         ;; 05:498c ??????
     db         $c1,        $c1,        $c1,$41         ;; 05:4992 ????
 
-map00_room0a_01_objects:
-    db   $70, $00, $66, $b0, $04, $ff                  ;; 05:4996 ??????
+map00_room0a_01_script:
+    dw   $0070                                         ;; 05:4996 $70 $00
+    db   $66, $b0, $04, $ff                            ;; 05:4998 ????
 
 map00_room0a_01_tiles:
     db $42,$42,$23,$35,        $a5,$25,$35,$35         ;; 05:499c ????????
@@ -868,8 +895,9 @@ map00_room0a_01_tiles:
     db $40,$20,$11,$11,$41,$64,$7d,$64,$33,$35         ;; 05:49c6 ??????????
     db $41,$40,$10,$11,$41,$41,$2a,$41,$41,$64         ;; 05:49d0 ??????????
 
-map00_room0b_01_objects:
-    db   $73, $00, $ff                                 ;; 05:49da ???
+map00_room0b_01_script:
+    dw   $0073                                         ;; 05:49da $73 $00
+    db   $ff                                           ;; 05:49dc ?
 
 map00_room0b_01_tiles:
     db         $b5,$35,$25,$25,$50,$51,$41,$41         ;; 05:49dd ????????
@@ -881,8 +909,9 @@ map00_room0b_01_tiles:
     db $41,$41,$33,$25,$25,$30,$40,$30,$41,$41         ;; 05:4a03 ??????????
     db         $c1,$40,$30,        $c1,$41,$41         ;; 05:4a0d ??????
 
-map00_room0c_01_objects:
-    db   $70, $00, $ff                                 ;; 05:4a13 ???
+map00_room0c_01_script:
+    dw   $0070                                         ;; 05:4a13 $70 $00
+    db   $ff                                           ;; 05:4a15 ?
 
 map00_room0c_01_tiles:
     db $41,$42,$42,$41,$41,$42,$25,$25,$41,$41         ;; 05:4a16 ??????????
@@ -894,8 +923,9 @@ map00_room0c_01_tiles:
     db $41,$40,$25,$3e,        $a5,$25,$30,$41         ;; 05:4a42 ????????
     db $41,$41,        $a5,$25,$3d,$25,$41,$41         ;; 05:4a4a ????????
 
-map00_room0d_01_objects:
-    db   $7c, $00, $32, $83, $03, $ff                  ;; 05:4a52 ??????
+map00_room0d_01_script:
+    dw   $007c                                         ;; 05:4a52 $7c $00
+    db   $32, $83, $03, $ff                            ;; 05:4a54 ????
 
 map00_room0d_01_tiles:
     db $42,        $c1,$41,$40,$10,        $91         ;; 05:4a58 ??????
@@ -907,8 +937,9 @@ map00_room0d_01_tiles:
     db $41,$40,        $c9,$49,$10,        $91         ;; 05:4a7e ??????
     db $41,$41,        $c9,$49,$10,        $91         ;; 05:4a84 ??????
 
-map00_room0e_01_objects:
-    db   $7c, $00, $ff                                 ;; 05:4a8a ???
+map00_room0e_01_script:
+    dw   $007c                                         ;; 05:4a8a $7c $00
+    db   $ff                                           ;; 05:4a8c ?
 
 map00_room0e_01_tiles:
     db         $91,        $80,        $80,$41         ;; 05:4a8d ????
@@ -920,8 +951,9 @@ map00_room0e_01_tiles:
     db         $91,        $91,        $91,$11         ;; 05:4ab1 ????
     db         $91,        $91,        $91,$11         ;; 05:4ab5 ????
 
-map00_room0f_01_objects:
-    db   $79, $00, $ff                                 ;; 05:4ab9 ???
+map00_room0f_01_script:
+    dw   $0079                                         ;; 05:4ab9 $79 $00
+    db   $ff                                           ;; 05:4abb ?
 
 map00_room0f_01_tiles:
     db $41,$42,        $d1,        $d1,$41,$41         ;; 05:4abc ??????
@@ -933,8 +965,9 @@ map00_room0f_01_tiles:
     db         $91,$11,        $b8,        $b8         ;; 05:4ae2 ????
     db         $91,        $91,        $91,$11         ;; 05:4ae6 ????
 
-map00_room00_02_objects:
-    db   $67, $00, $ff                                 ;; 05:4aea ???
+map00_room00_02_script:
+    dw   $0067                                         ;; 05:4aea $67 $00
+    db   $ff                                           ;; 05:4aec ?
 
 map00_room00_02_tiles:
     db         $91,        $80,$00,$00,$41,$41         ;; 05:4aed ??????
@@ -946,8 +979,9 @@ map00_room00_02_tiles:
     db $11,$11,$22,        $80,        $80,$00         ;; 05:4b13 ??????
     db $11,$12,$00,$00,$48,$00,$48,$00,$30,$31         ;; 05:4b19 ??????????
 
-map00_room01_02_objects:
-    db   $a9, $04, $26, $84, $02, $ff                  ;; 05:4b23 ??????
+map00_room01_02_script:
+    dw   $04a9                                         ;; 05:4b23 $a9 $04
+    db   $26, $84, $02, $ff                            ;; 05:4b25 ????
 
 map00_room01_02_tiles:
     db         $c1,$42,        $c1,        $c1         ;; 05:4b29 ????
@@ -959,8 +993,9 @@ map00_room01_02_tiles:
     db         $80,        $80,$00,$00,$30,$41         ;; 05:4b4d ??????
     db $31,$31,$40,$30,$40,$30,$40,$30,$41,$41         ;; 05:4b53 ??????????
 
-map00_room02_02_objects:
-    db   $64, $00, $ff                                 ;; 05:4b5d ???
+map00_room02_02_script:
+    dw   $0064                                         ;; 05:4b5d $64 $00
+    db   $ff                                           ;; 05:4b5f ?
 
 map00_room02_02_tiles:
     db         $c2,$42,        $d1,        $d1         ;; 05:4b60 ????
@@ -972,8 +1007,9 @@ map00_room02_02_tiles:
     db $42,$41,        $e4,        $e4,$64,$64         ;; 05:4b82 ??????
     db $42,        $c1,        $c1,        $c1         ;; 05:4b88 ????
 
-map00_room03_02_objects:
-    db   $64, $00, $ff                                 ;; 05:4b8c ???
+map00_room03_02_script:
+    dw   $0064                                         ;; 05:4b8c $64 $00
+    db   $ff                                           ;; 05:4b8e ?
 
 map00_room03_02_tiles:
     db $51,$51,$53,        $80,$50,$51,$41,$41         ;; 05:4b8f ????????
@@ -985,8 +1021,9 @@ map00_room03_02_tiles:
     db $64,$64,$0b,        $e4,$64,$64,$42,$42         ;; 05:4bbb ????????
     db $41,$41,$0b,        $c1,$41,$41,$42,$42         ;; 05:4bc3 ????????
 
-map00_room04_02_objects:
-    db   $61, $00, $ff                                 ;; 05:4bcb ???
+map00_room04_02_script:
+    dw   $0061                                         ;; 05:4bcb $61 $00
+    db   $ff                                           ;; 05:4bcd ?
 
 map00_room04_02_tiles:
     db $42,$41,$42,$00,$50,$51,$51,        $c1         ;; 05:4bce ????????
@@ -998,8 +1035,9 @@ map00_room04_02_tiles:
     db $41,$33,$30,$40,$30,$41,$41,$40,$30,$41         ;; 05:4bf4 ??????????
     db $41,$41,$50,        $c1,        $c1,$41         ;; 05:4bfe ??????
 
-map00_room05_02_objects:
-    db   $61, $00, $ff                                 ;; 05:4c04 ???
+map00_room05_02_script:
+    dw   $0061                                         ;; 05:4c04 $61 $00
+    db   $ff                                           ;; 05:4c06 ?
 
 map00_room05_02_tiles:
     db $41,        $c2,$41,$41,$2b,$41,$42,$42         ;; 05:4c07 ????????
@@ -1011,8 +1049,9 @@ map00_room05_02_tiles:
     db $41,$40,$30,$40,$00,$00,$30,$40,$30,$41         ;; 05:4c2f ??????????
     db $41,$41,$31,$41,$40,$30,$31,        $c1         ;; 05:4c39 ????????
 
-map00_room06_02_objects:
-    db   $3d, $00, $36, $84, $03, $ff                  ;; 05:4c41 ??????
+map00_room06_02_script:
+    dw   $003d                                         ;; 05:4c41 $3d $00
+    db   $36, $84, $03, $ff                            ;; 05:4c43 ????
 
 map00_room06_02_tiles:
     db $42,$42,$41,$41,$42,$42,$41,$42,$42,$41         ;; 05:4c47 ??????????
@@ -1024,8 +1063,9 @@ map00_room06_02_tiles:
     db $41,$42,$41,$64,$64,$2b,$64,$64,$42,$41         ;; 05:4c79 ??????????
     db $41,$42,        $c1,$2b,$41,$41,$42,$41         ;; 05:4c83 ????????
 
-map00_room07_02_objects:
-    db   $6a, $00, $ff                                 ;; 05:4c8b ???
+map00_room07_02_script:
+    dw   $006a                                         ;; 05:4c8b $6a $00
+    db   $ff                                           ;; 05:4c8d ?
 
 map00_room07_02_tiles:
     db $41,        $85,        $85,$05,$05,$46         ;; 05:4c8e ??????
@@ -1037,8 +1077,9 @@ map00_room07_02_tiles:
     db $41,$41,$46,        $85,        $85,$05         ;; 05:4cb6 ??????
     db $41,$41,        $c6,        $c6,$46,$46         ;; 05:4cbc ??????
 
-map00_room08_02_objects:
-    db   $6a, $00, $ff                                 ;; 05:4cc2 ???
+map00_room08_02_script:
+    dw   $006a                                         ;; 05:4cc2 $6a $00
+    db   $ff                                           ;; 05:4cc4 ?
 
 map00_room08_02_tiles:
     db $46,        $85,        $85,$05,$46,$50         ;; 05:4cc5 ??????
@@ -1050,8 +1091,9 @@ map00_room08_02_tiles:
     db         $85,        $85,        $85,$46         ;; 05:4ce3 ????
     db $46,        $85,        $85,$05,$46,$46         ;; 05:4ce7 ??????
 
-map00_room09_02_objects:
-    db   $97, $04, $25, $88, $02, $ff                  ;; 05:4ced ??????
+map00_room09_02_script:
+    dw   $0497                                         ;; 05:4ced $97 $04
+    db   $25, $88, $02, $ff                            ;; 05:4cef ????
 
 map00_room09_02_tiles:
     db $41,$41,$09,$0a,        $d5,$09,$0a,$41         ;; 05:4cf3 ????????
@@ -1063,8 +1105,9 @@ map00_room09_02_tiles:
     db $46,$46,        $85,        $85,$05,$30         ;; 05:4d21 ??????
     db $46,$46,        $85,        $85,$30,$41         ;; 05:4d27 ??????
 
-map00_room0a_02_objects:
-    db   $82, $04, $ff                                 ;; 05:4d2d ???
+map00_room0a_02_script:
+    dw   $0482                                         ;; 05:4d2d $82 $04
+    db   $ff                                           ;; 05:4d2f ?
 
 map00_room0a_02_tiles:
     db $41,$42,$11,$12,$41,$41,$2a,        $c1         ;; 05:4d30 ????????
@@ -1076,8 +1119,9 @@ map00_room0a_02_tiles:
     db $41,$10,$11,$35,        $80,$00,$00,$35         ;; 05:4d60 ????????
     db $41,$10,$11,$35,        $80,$00,$00,$35         ;; 05:4d68 ????????
 
-map00_room0b_02_objects:
-    db   $73, $00, $ff                                 ;; 05:4d70 ???
+map00_room0b_02_script:
+    dw   $0073                                         ;; 05:4d70 $73 $00
+    db   $ff                                           ;; 05:4d72 ?
 
 map00_room0b_02_tiles:
     db $41,$42,$42,        $d1,$51,$51,$41,$41         ;; 05:4d73 ????????
@@ -1089,8 +1133,9 @@ map00_room0b_02_tiles:
     db $41,$40,        $a5,        $a5,$25,$30         ;; 05:4d9b ??????
     db $41,$41,$25,$25,$3e,        $a5,$30,$41         ;; 05:4da1 ????????
 
-map00_room0c_02_objects:
-    db   $70, $00, $ff                                 ;; 05:4da9 ???
+map00_room0c_02_script:
+    dw   $0070                                         ;; 05:4da9 $70 $00
+    db   $ff                                           ;; 05:4dab ?
 
 map00_room0c_02_tiles:
     db $41,$42,        $a5,$25,$3d,$25,$41,$41         ;; 05:4dac ????????
@@ -1102,8 +1147,9 @@ map00_room0c_02_tiles:
     db $40,        $a5,$25,$25,$30,$40,$30,$41         ;; 05:4dd0 ????????
     db $41,$40,$30,$40,$30,$31,        $c1,$41         ;; 05:4dd8 ????????
 
-map00_room0d_02_objects:
-    db   $76, $00, $ff                                 ;; 05:4de0 ???
+map00_room0d_02_script:
+    dw   $0076                                         ;; 05:4de0 $76 $00
+    db   $ff                                           ;; 05:4de2 ?
 
 map00_room0d_02_tiles:
     db $42,$42,        $c9,$49,$10,        $91         ;; 05:4de3 ??????
@@ -1115,8 +1161,9 @@ map00_room0d_02_tiles:
     db $41,$40,        $c9,        $c9,$49,$30         ;; 05:4e17 ??????
     db $41,$41,$40,$30,        $b1,$40,$30,$41         ;; 05:4e1d ????????
 
-map00_room0e_02_objects:
-    db   $7c, $00, $ff                                 ;; 05:4e25 ???
+map00_room0e_02_script:
+    dw   $007c                                         ;; 05:4e25 $7c $00
+    db   $ff                                           ;; 05:4e27 ?
 
 map00_room0e_02_tiles:
     db         $91,        $91,        $91,$11         ;; 05:4e28 ????
@@ -1128,8 +1175,9 @@ map00_room0e_02_tiles:
     db $31,$40,        $c9,$49,$10,        $91         ;; 05:4e44 ??????
     db $41,$41,$40,        $c9,$10,        $91         ;; 05:4e4a ??????
 
-map00_room0f_02_objects:
-    db   $28, $04, $57, $74, $04, $ff                  ;; 05:4e50 ??????
+map00_room0f_02_script:
+    dw   $0428                                         ;; 05:4e50 $28 $04
+    db   $57, $74, $04, $ff                            ;; 05:4e52 ????
 
 map00_room0f_02_tiles:
     db         $91,        $91,        $91,$11         ;; 05:4e56 ????
@@ -1141,8 +1189,9 @@ map00_room0f_02_tiles:
     db         $91,        $b8,$38,        $91         ;; 05:4e7a ????
     db         $91,        $91,        $91,$11         ;; 05:4e7e ????
 
-map00_room00_03_objects:
-    db   $67, $00, $ff                                 ;; 05:4e82 ???
+map00_room00_03_script:
+    dw   $0067                                         ;; 05:4e82 $67 $00
+    db   $ff                                           ;; 05:4e84 ?
 
 map00_room00_03_tiles:
     db $11,$12,$00,$00,$48,$00,$48,$00,$41,$41         ;; 05:4e85 ??????????
@@ -1154,8 +1203,9 @@ map00_room00_03_tiles:
     db $11,$12,        $80,$30,$40,$30,$41,$41         ;; 05:4eb1 ????????
     db $11,$12,$30,$40,$30,        $c1,$41,$41         ;; 05:4eb9 ????????
 
-map00_room01_03_objects:
-    db   $61, $00, $ff                                 ;; 05:4ec1 ???
+map00_room01_03_script:
+    dw   $0061                                         ;; 05:4ec1 $61 $00
+    db   $ff                                           ;; 05:4ec3 ?
 
 map00_room01_03_tiles:
     db $41,$42,$41,$42,$51,        $c1,$41,$41         ;; 05:4ec4 ????????
@@ -1167,8 +1217,9 @@ map00_room01_03_tiles:
     db $41,$40,        $80,        $80,$30,$41         ;; 05:4eee ??????
     db $41,$41,$31,$40,        $80,$00,$41,$41         ;; 05:4ef4 ????????
 
-map00_room02_03_objects:
-    db   $64, $00, $35, $82, $03, $ff                  ;; 05:4efc ??????
+map00_room02_03_script:
+    dw   $0064                                         ;; 05:4efc $64 $00
+    db   $35, $82, $03, $ff                            ;; 05:4efe ????
 
 map00_room02_03_tiles:
     db $42,$42,        $c1,        $c1,$41,$41         ;; 05:4f02 ??????
@@ -1180,8 +1231,9 @@ map00_room02_03_tiles:
     db $42,$42,$33,$00,$34,$2b,$33,$00,$34,$41         ;; 05:4f30 ??????????
     db $42,$42,$41,$64,$42,$2b,$41,$64,$42,$41         ;; 05:4f3a ??????????
 
-map00_room03_03_objects:
-    db   $61, $00, $26, $df, $04, $ff                  ;; 05:4f44 ??????
+map00_room03_03_script:
+    dw   $0061                                         ;; 05:4f44 $61 $00
+    db   $26, $df, $04, $ff                            ;; 05:4f46 ????
 
 map00_room03_03_tiles:
     db $41,$41,$0b,        $c1,        $c1,$41         ;; 05:4f4a ??????
@@ -1193,8 +1245,9 @@ map00_room03_03_tiles:
     db $41,$41,$0b,$41,$41,$64,$0b,$64,$64,$41         ;; 05:4f7c ??????????
     db $41,$41,$0b,        $c1,$0b,        $c1         ;; 05:4f86 ??????
 
-map00_room04_03_objects:
-    db   $a6, $04, $38, $85, $02, $ff                  ;; 05:4f8c ??????
+map00_room04_03_script:
+    dw   $04a6                                         ;; 05:4f8c $a6 $04
+    db   $38, $85, $02, $ff                            ;; 05:4f8e ????
 
 map00_room04_03_tiles:
     db         $c1,$42,$5b,$5b,$42,        $c1         ;; 05:4f92 ??????
@@ -1206,8 +1259,9 @@ map00_room04_03_tiles:
     db         $c1,$42,$5b,$5b,$42,$41,$64,$64         ;; 05:4fba ????????
     db         $c1,$42,$5b,$5b,$42,        $c1         ;; 05:4fc2 ??????
 
-map00_room05_03_objects:
-    db   $61, $00, $ff                                 ;; 05:4fc8 ???
+map00_room05_03_script:
+    dw   $0061                                         ;; 05:4fc8 $61 $00
+    db   $ff                                           ;; 05:4fca ?
 
 map00_room05_03_tiles:
     db $41,$0b,$41,$0b,$41,$41,$0b,$0b,$41,$41         ;; 05:4fcb ??????????
@@ -1219,8 +1273,9 @@ map00_room05_03_tiles:
     db $64,$64,$2b,$64,$0b,$64,$0b,$64,$42,$41         ;; 05:4ff1 ??????????
     db $41,$41,$2b,$41,$0b,$41,$0b,$41,$42,$41         ;; 05:4ffb ??????????
 
-map00_room06_03_objects:
-    db   $6a, $00, $ff                                 ;; 05:5005 ???
+map00_room06_03_script:
+    dw   $006a                                         ;; 05:5005 $6a $00
+    db   $ff                                           ;; 05:5007 ?
 
 map00_room06_03_tiles:
     db $41,$42,        $c1,$2b,$41,$41,$42,$41         ;; 05:5008 ????????
@@ -1232,8 +1287,9 @@ map00_room06_03_tiles:
     db $41,$41,$33,        $85,$05,$05,$30,$31         ;; 05:5032 ????????
     db         $c1,        $b1,$31,$31,$41,$41         ;; 05:503a ??????
 
-map00_room07_03_objects:
-    db   $e8, $03, $25, $82, $02, $ff                  ;; 05:5040 ??????
+map00_room07_03_script:
+    dw   $03e8                                         ;; 05:5040 $e8 $03
+    db   $25, $82, $02, $ff                            ;; 05:5042 ????
 
 map00_room07_03_tiles:
     db $41,$41,        $c6,        $c6,$46,$46         ;; 05:5046 ??????
@@ -1245,8 +1301,9 @@ map00_room07_03_tiles:
     db $31,$33,        $85,        $85,$05,$05         ;; 05:5062 ??????
     db $41,$41,        $b1,        $b1,$31,$31         ;; 05:5068 ??????
 
-map00_room08_03_objects:
-    db   $6d, $00, $ff                                 ;; 05:506e ???
+map00_room08_03_script:
+    dw   $006d                                         ;; 05:506e $6d $00
+    db   $ff                                           ;; 05:5070 ?
 
 map00_room08_03_tiles:
     db $46,        $85,        $85,$05,$46,$46         ;; 05:5071 ??????
@@ -1258,8 +1315,9 @@ map00_room08_03_tiles:
     db         $85,        $85,        $85,$05         ;; 05:508f ????
     db $33,        $85,        $85,$05,$46,$46         ;; 05:5093 ??????
 
-map00_room09_03_objects:
-    db   $6a, $00, $ff                                 ;; 05:5099 ???
+map00_room09_03_script:
+    dw   $006a                                         ;; 05:5099 $6a $00
+    db   $ff                                           ;; 05:509b ?
 
 map00_room09_03_tiles:
     db $46,$46,        $85,        $85,$50,$41         ;; 05:509c ??????
@@ -1271,8 +1329,9 @@ map00_room09_03_tiles:
     db         $85,        $85,$05,$05,$30,$41         ;; 05:50be ??????
     db $46,        $85,$05,$05,$30,$31,$41,$41         ;; 05:50c4 ????????
 
-map00_room0a_03_objects:
-    db   $67, $00, $ff                                 ;; 05:50cc ???
+map00_room0a_03_script:
+    dw   $0067                                         ;; 05:50cc $67 $00
+    db   $ff                                           ;; 05:50ce ?
 
 map00_room0a_03_tiles:
     db $41,$11,$11,$35,        $80,$00,$00,$35         ;; 05:50cf ????????
@@ -1284,8 +1343,9 @@ map00_room0a_03_tiles:
     db $41,$40,$10,$11,$42,        $80,$30,$41         ;; 05:50ff ????????
     db $41,$53,$10,$11,$42,$23,$00,$30,$41,$41         ;; 05:5107 ??????????
 
-map00_room0b_03_objects:
-    db   $70, $00, $ff                                 ;; 05:5111 ???
+map00_room0b_03_script:
+    dw   $0070                                         ;; 05:5111 $70 $00
+    db   $ff                                           ;; 05:5113 ?
 
 map00_room0b_03_tiles:
     db $41,$42,$25,$25,$35,        $a5,$41,$41         ;; 05:5114 ????????
@@ -1297,8 +1357,9 @@ map00_room0b_03_tiles:
     db $41,$40,        $a5,$25,$30,$40,$30,$31         ;; 05:513a ????????
     db $41,$41,$40,$30,$40,$30,        $c1,$41         ;; 05:5142 ????????
 
-map00_room0c_03_objects:
-    db   $73, $00, $ff                                 ;; 05:514a ???
+map00_room0c_03_script:
+    dw   $0073                                         ;; 05:514a $73 $00
+    db   $ff                                           ;; 05:514c ?
 
 map00_room0c_03_tiles:
     db $42,        $d1,        $d1,        $c1         ;; 05:514d ????
@@ -1310,8 +1371,9 @@ map00_room0c_03_tiles:
     db $40,$25,$25,$3e,        $a5,$25,$25,$35         ;; 05:5171 ????????
     db $41,$40,        $a5,        $a5,$35,$35         ;; 05:5179 ??????
 
-map00_room0d_03_objects:
-    db   $70, $00, $26, $89, $02, $ff                  ;; 05:517f ??????
+map00_room0d_03_script:
+    dw   $0070                                         ;; 05:517f $70 $00
+    db   $26, $89, $02, $ff                            ;; 05:5181 ????
 
 map00_room0d_03_tiles:
     db $41,$42,$41,$41,$42,        $c1,$41,$41         ;; 05:5185 ????????
@@ -1323,8 +1385,9 @@ map00_room0d_03_tiles:
     db $35,        $a5,        $a5,$25,$25,$30         ;; 05:51b5 ??????
     db $35,$35,        $a5,        $a5,$25,$41         ;; 05:51bb ??????
 
-map00_room0e_03_objects:
-    db   $76, $00, $ff                                 ;; 05:51c1 ???
+map00_room0e_03_script:
+    dw   $0076                                         ;; 05:51c1 $76 $00
+    db   $ff                                           ;; 05:51c3 ?
 
 map00_room0e_03_tiles:
     db         $c2,        $c9,$10,        $91         ;; 05:51c4 ????
@@ -1336,8 +1399,9 @@ map00_room0e_03_tiles:
     db         $c1,$40,        $c9,$49,$30,$40         ;; 05:51e6 ??????
     db         $c1,$41,$40,$30,$40,$30,$41,$41         ;; 05:51ec ????????
 
-map00_room0f_03_objects:
-    db   $7c, $00, $ff                                 ;; 05:51f4 ???
+map00_room0f_03_script:
+    dw   $007c                                         ;; 05:51f4 $7c $00
+    db   $ff                                           ;; 05:51f6 ?
 
 map00_room0f_03_tiles:
     db         $91,        $91,        $91,$11         ;; 05:51f7 ????
@@ -1349,8 +1413,9 @@ map00_room0f_03_tiles:
     db $30,$40,        $c9,        $c9,$10,$11         ;; 05:5215 ??????
     db $41,$41,$40,$30,$40,        $c9,$10,$11         ;; 05:521b ????????
 
-map00_room00_04_objects:
-    db   $67, $00, $ff                                 ;; 05:5223 ???
+map00_room00_04_script:
+    dw   $0067                                         ;; 05:5223 $67 $00
+    db   $ff                                           ;; 05:5225 ?
 
 map00_room00_04_tiles:
     db $11,$12,$41,$41,$42,        $d1,$41,$41         ;; 05:5226 ????????
@@ -1362,8 +1427,9 @@ map00_room00_04_tiles:
     db $11,$12,$00,$30,$40,        $80,$00,$30         ;; 05:5252 ????????
     db $11,$12,$30,$41,$41,$40,$30,$40,$30,$41         ;; 05:525a ??????????
 
-map00_room01_04_objects:
-    db   $61, $00, $ff                                 ;; 05:5264 ???
+map00_room01_04_script:
+    dw   $0061                                         ;; 05:5264 $61 $00
+    db   $ff                                           ;; 05:5266 ?
 
 map00_room01_04_tiles:
     db $41,$42,$51,$53,        $80,$00,$50,$41         ;; 05:5267 ????????
@@ -1375,8 +1441,9 @@ map00_room01_04_tiles:
     db $40,        $80,        $80,$00,$00,$30         ;; 05:528f ??????
     db $41,$31,$40,$00,$30,$31,$40,$00,$30,$41         ;; 05:5295 ??????????
 
-map00_room02_04_objects:
-    db   $61, $00, $ff                                 ;; 05:529f ???
+map00_room02_04_script:
+    dw   $0061                                         ;; 05:529f $61 $00
+    db   $ff                                           ;; 05:52a1 ?
 
 map00_room02_04_tiles:
     db $42,$42,$41,$41,$42,$2b,$41,$41,$42,$41         ;; 05:52a2 ??????????
@@ -1388,8 +1455,9 @@ map00_room02_04_tiles:
     db $40,        $80,        $80,$00,$00,$41         ;; 05:52d2 ??????
     db $41,$31,$40,$30,$31,$40,$30,$40,$30,$41         ;; 05:52d8 ??????????
 
-map00_room03_04_objects:
-    db   $61, $00, $ff                                 ;; 05:52e2 ???
+map00_room03_04_script:
+    dw   $0061                                         ;; 05:52e2 $61 $00
+    db   $ff                                           ;; 05:52e4 ?
 
 map00_room03_04_tiles:
     db $41,$41,$0b,        $c1,$0b,        $c1         ;; 05:52e5 ??????
@@ -1401,8 +1469,9 @@ map00_room03_04_tiles:
     db $41,$41,$0b,$41,$64,$42,$0b,$41,$41,$42         ;; 05:5313 ??????????
     db $41,$41,$0b,$41,$41,$42,$0b,$41,$41,$42         ;; 05:531d ??????????
 
-map00_room04_04_objects:
-    db   $61, $00, $ff                                 ;; 05:5327 ???
+map00_room04_04_script:
+    dw   $0061                                         ;; 05:5327 $61 $00
+    db   $ff                                           ;; 05:5329 ?
 
 map00_room04_04_tiles:
     db         $c1,$42,$5b,$5b,$42,        $c1         ;; 05:532a ??????
@@ -1414,8 +1483,9 @@ map00_room04_04_tiles:
     db $41,$2b,$64,$42,$5b,$5b,$42,$41,$64,$64         ;; 05:5354 ??????????
     db $41,$2b,$41,$42,$5b,$5b,$42,        $c1         ;; 05:535e ????????
 
-map00_room05_04_objects:
-    db   $61, $00, $ff                                 ;; 05:5366 ???
+map00_room05_04_script:
+    dw   $0061                                         ;; 05:5366 $61 $00
+    db   $ff                                           ;; 05:5368 ?
 
 map00_room05_04_tiles:
     db $41,$41,$2b,$41,$0b,$41,$0b,        $c1         ;; 05:5369 ????????
@@ -1427,8 +1497,9 @@ map00_room05_04_tiles:
     db         $e4,$42,        $c1,$0b,$41,$41         ;; 05:5397 ??????
     db         $c1,$42,        $c1,$0b,$41,$41         ;; 05:539d ??????
 
-map00_room06_04_objects:
-    db   $3d, $00, $37, $72, $02, $ff                  ;; 05:53a3 .....?
+map00_room06_04_script:
+    dw   $003d                                         ;; 05:53a3 $3d $00
+    db   $37, $72, $02, $ff                            ;; 05:53a5 ...?
 
 map00_room06_04_tiles:
     db $41,$42,        $db,$5b,$42,        $c1         ;; 05:53a9 ......
@@ -1440,8 +1511,9 @@ map00_room06_04_tiles:
     db $41,$42,        $db,$5b,$41,$41,$0b,$42         ;; 05:53d3 ........
     db $41,$42,        $db,$5b,$41,$41,$0b,$42         ;; 05:53db ........
 
-map00_room07_04_objects:
-    db   $40, $00, $ff                                 ;; 05:53e3 ..?
+map00_room07_04_script:
+    dw   $0040                                         ;; 05:53e3 $40 $00
+    db   $ff                                           ;; 05:53e5 ?
 
 map00_room07_04_tiles:
     db $41,$41,        $d1,$51,$51,        $c1         ;; 05:53e6 ......
@@ -1453,8 +1525,9 @@ map00_room07_04_tiles:
     db $33,        $80,$34,$41,$64,$0b,$42,$41         ;; 05:5418 ........
     db $41,$64,$0b,$64,$42,$41,$41,$0b,$42,$41         ;; 05:5420 ..........
 
-map00_room08_04_objects:
-    db   $6a, $00, $ff                                 ;; 05:542a ???
+map00_room08_04_script:
+    dw   $006a                                         ;; 05:542a $6a $00
+    db   $ff                                           ;; 05:542c ?
 
 map00_room08_04_tiles:
     db $53,        $85,        $85,$05,$46,$46         ;; 05:542d ??????
@@ -1466,8 +1539,9 @@ map00_room08_04_tiles:
     db $41,$40,        $85,$05,$30,$40,$05,$05         ;; 05:5453 ????????
     db $41,$41,$40,$30,$40,$30,$41,$41,$40,$30         ;; 05:545b ??????????
 
-map00_room09_04_objects:
-    db   $6d, $00, $ff                                 ;; 05:5465 ???
+map00_room09_04_script:
+    dw   $006d                                         ;; 05:5465 $6d $00
+    db   $ff                                           ;; 05:5467 ?
 
 map00_room09_04_tiles:
     db $46,        $85,$05,$05,$50,$51,$41,$41         ;; 05:5468 ????????
@@ -1479,8 +1553,9 @@ map00_room09_04_tiles:
     db $05,$05,$30,$40,        $85,$05,$30,$41         ;; 05:5492 ????????
     db $40,$30,$41,$41,$40,$30,$40,$30,$41,$41         ;; 05:549a ??????????
 
-map00_room0a_04_objects:
-    db   $67, $00, $ff                                 ;; 05:54a4 ???
+map00_room0a_04_script:
+    dw   $0067                                         ;; 05:54a4 $67 $00
+    db   $ff                                           ;; 05:54a6 ?
 
 map00_room0a_04_tiles:
     db $41,$40,$11,$11,$42,$42,$00,        $c1         ;; 05:54a7 ????????
@@ -1492,8 +1567,9 @@ map00_room0a_04_tiles:
     db $51,$53,$23,        $91,$41,$41,$2b,$23         ;; 05:54df ????????
     db $23,$23,$42,        $91,$41,$41,$2b,$42         ;; 05:54e7 ????????
 
-map00_room0b_04_objects:
-    db   $64, $00, $ff                                 ;; 05:54ef ???
+map00_room0b_04_script:
+    dw   $0064                                         ;; 05:54ef $64 $00
+    db   $ff                                           ;; 05:54f1 ?
 
 map00_room0b_04_tiles:
     db $41,$42,$42,$51,$51,        $c1,$41,$41         ;; 05:54f2 ????????
@@ -1505,8 +1581,9 @@ map00_room0b_04_tiles:
     db $23,$23,$33,        $80,$30,$31,$41,$41         ;; 05:5518 ????????
     db $42,$42,$41,        $80,        $c1,$41         ;; 05:5520 ??????
 
-map00_room0c_04_objects:
-    db   $70, $00, $ff                                 ;; 05:5526 ???
+map00_room0c_04_script:
+    dw   $0070                                         ;; 05:5526 $70 $00
+    db   $ff                                           ;; 05:5528 ?
 
 map00_room0c_04_tiles:
     db $41,$42,        $a5,        $a5,$35,$35         ;; 05:5529 ??????
@@ -1518,8 +1595,9 @@ map00_room0c_04_tiles:
     db $41,$41,$40,$25,$25,$30,$31,$31,$40,$25         ;; 05:554f ??????????
     db         $c1,$31,$31,        $c1,$41,$31         ;; 05:5559 ??????
 
-map00_room0d_04_objects:
-    db   $73, $00, $ff                                 ;; 05:555f ???
+map00_room0d_04_script:
+    dw   $0073                                         ;; 05:555f $73 $00
+    db   $ff                                           ;; 05:5561 ?
 
 map00_room0d_04_tiles:
     db $35,$35,        $a5,        $a5,$25,$41         ;; 05:5562 ??????
@@ -1531,8 +1609,9 @@ map00_room0d_04_tiles:
     db         $a5,        $a5,$30,        $c1         ;; 05:5586 ????
     db $31,$31,$40,$30,$40,$30,        $c1,$41         ;; 05:558a ????????
 
-map00_room0e_04_objects:
-    db   $e5, $03, $ff                                 ;; 05:5592 ???
+map00_room0e_04_script:
+    dw   $03e5                                         ;; 05:5592 $e5 $03
+    db   $ff                                           ;; 05:5594 ?
 
 map00_room0e_04_tiles:
     db $41,$42,        $c1,        $c1,$41,$41         ;; 05:5595 ??????
@@ -1544,8 +1623,9 @@ map00_room0e_04_tiles:
     db $41,$40,$00,        $ca,$4a,$00,$25,$41         ;; 05:55c7 ????????
     db $41,$41,$31,$40,$00,$00,$30,$31,$31,$41         ;; 05:55cf ??????????
 
-map00_room0f_04_objects:
-    db   $76, $00, $ff                                 ;; 05:55d9 ???
+map00_room0f_04_script:
+    dw   $0076                                         ;; 05:55d9 $76 $00
+    db   $ff                                           ;; 05:55db ?
 
 map00_room0f_04_tiles:
     db $41,$42,$41,$41,$42,        $c9,$10,$11         ;; 05:55dc ????????
@@ -1557,8 +1637,9 @@ map00_room0f_04_tiles:
     db $41,$40,        $c9,$49,$10,        $91         ;; 05:5606 ??????
     db $41,$41,$31,$40,$49,$49,$10,        $91         ;; 05:560c ????????
 
-map00_room00_05_objects:
-    db   $67, $00, $ff                                 ;; 05:5614 ???
+map00_room00_05_script:
+    dw   $0067                                         ;; 05:5614 $67 $00
+    db   $ff                                           ;; 05:5616 ?
 
 map00_room00_05_tiles:
     db $11,$12,$50,$41,$41,$42,$51,$51,$41,$41         ;; 05:5617 ??????????
@@ -1570,8 +1651,9 @@ map00_room00_05_tiles:
     db $11,$11,$12,        $80,$00,$00,$30,$41         ;; 05:5645 ????????
     db $11,$11,$12,$00,$00,$30,$31,$31,$41,$41         ;; 05:564d ??????????
 
-map00_room01_05_objects:
-    db   $61, $00, $ff                                 ;; 05:5657 ???
+map00_room01_05_script:
+    dw   $0061                                         ;; 05:5657 $61 $00
+    db   $ff                                           ;; 05:5659 ?
 
 map00_room01_05_tiles:
     db         $c1,$00,        $c1,$00,$41,$41         ;; 05:565a ??????
@@ -1583,8 +1665,9 @@ map00_room01_05_tiles:
     db $41,        $80,$00,$30,$40,$00,$00,$50         ;; 05:567e ????????
     db $41,$40,$00,$30,$31,$41,$41,$00,$00,$30         ;; 05:5686 ??????????
 
-map00_room02_05_objects:
-    db   $64, $00, $ff                                 ;; 05:5690 ???
+map00_room02_05_script:
+    dw   $0064                                         ;; 05:5690 $64 $00
+    db   $ff                                           ;; 05:5692 ?
 
 map00_room02_05_tiles:
     db         $c1,        $c1,        $c1,$41         ;; 05:5693 ????
@@ -1596,8 +1679,9 @@ map00_room02_05_tiles:
     db         $c1,$41,$2b,        $c1,$41,$41         ;; 05:56b5 ??????
     db         $c1,$41,$2b,        $c1,$41,$41         ;; 05:56bb ??????
 
-map00_room03_05_objects:
-    db   $64, $00, $ff                                 ;; 05:56c1 ???
+map00_room03_05_script:
+    dw   $0064                                         ;; 05:56c1 $64 $00
+    db   $ff                                           ;; 05:56c3 ?
 
 map00_room03_05_tiles:
     db $41,$41,$0b,        $c1,$0b,        $c1         ;; 05:56c4 ??????
@@ -1609,8 +1693,9 @@ map00_room03_05_tiles:
     db         $c1,        $e4,$64,$64,$42,$41         ;; 05:56ea ??????
     db         $c1,        $c1,$41,$41,$42,$41         ;; 05:56f0 ??????
 
-map00_room04_05_objects:
-    db   $46, $00, $ff                                 ;; 05:56f6 ???
+map00_room04_05_script:
+    dw   $0046                                         ;; 05:56f6 $46 $00
+    db   $ff                                           ;; 05:56f8 ?
 
 map00_room04_05_tiles:
     db $41,$2b,$51,$42,$5b,$5b,$42,        $d1         ;; 05:56f9 ????????
@@ -1622,8 +1707,9 @@ map00_room04_05_tiles:
     db $41,$63,$00,$24,$24,        $97,$17,$27         ;; 05:5729 ????????
     db $41,$24,$00,$24,$24,        $97,$18,$37         ;; 05:5731 ????????
 
-map00_room05_05_objects:
-    db   $3d, $00, $24, $85, $03, $ff                  ;; 05:5739 ??????
+map00_room05_05_script:
+    dw   $003d                                         ;; 05:5739 $3d $00
+    db   $24, $85, $03, $ff                            ;; 05:573b ????
 
 map00_room05_05_tiles:
     db $51,$51,        $c1,$41,$41,$0b,$41,$41         ;; 05:573f ????????
@@ -1635,8 +1721,9 @@ map00_room05_05_tiles:
     db         $a7,        $a7,        $a7,$27         ;; 05:576b ????
     db         $b7,        $b7,        $b7,$37         ;; 05:576f ????
 
-map00_room06_05_objects:
-    db   $3d, $00, $ff                                 ;; 05:5773 ..?
+map00_room06_05_script:
+    dw   $003d                                         ;; 05:5773 $3d $00
+    db   $ff                                           ;; 05:5775 ?
 
 map00_room06_05_tiles:
     db $41,$42,        $db,$5b,$42,$41,$0b,$41         ;; 05:5776 ........
@@ -1648,8 +1735,9 @@ map00_room06_05_tiles:
     db         $a7,$27,$14,        $80,$00,$00         ;; 05:57a0 ......
     db         $b7,$37,$37,$00,        $b7,$37         ;; 05:57a6 ......
 
-map00_room07_05_objects:
-    db   $40, $00, $ff                                 ;; 05:57ac ..?
+map00_room07_05_script:
+    dw   $0040                                         ;; 05:57ac $40 $00
+    db   $ff                                           ;; 05:57ae ?
 
 map00_room07_05_tiles:
     db $41,$41,$0b,        $c1,$51,$0b,$51,$51         ;; 05:57af ........
@@ -1661,8 +1749,9 @@ map00_room07_05_tiles:
     db         $80,$00,$00,$17,        $80,$30         ;; 05:57d9 ......
     db $37,$37,        $80,$17,        $80,$41         ;; 05:57df ......
 
-map00_room08_05_objects:
-    db   $40, $00, $ff                                 ;; 05:57e5 ..?
+map00_room08_05_script:
+    dw   $0040                                         ;; 05:57e5 $40 $00
+    db   $ff                                           ;; 05:57e7 ?
 
 map00_room08_05_tiles:
     db         $d1,$51,        $c1,        $c1         ;; 05:57e8 ....
@@ -1674,8 +1763,9 @@ map00_room08_05_tiles:
     db $41,$33,        $80,        $80,$34,$41         ;; 05:5812 ......
     db $41,$41,$64,$64,$0b,        $e4,$42,$41         ;; 05:5818 ........
 
-map00_room09_05_objects:
-    db   $40, $00, $46, $9b, $03, $ff                  ;; 05:5820 .....?
+map00_room09_05_script:
+    dw   $0040                                         ;; 05:5820 $40 $00
+    db   $46, $9b, $03, $ff                            ;; 05:5822 ...?
 
 map00_room09_05_tiles:
     db         $c1,        $d1,$51,$51,$41,$41         ;; 05:5826 ......
@@ -1687,8 +1777,9 @@ map00_room09_05_tiles:
     db         $c1,$33,        $80,$34,$42,$41         ;; 05:584e ......
     db         $c1,$41,        $e4,$42,$42,$41         ;; 05:5854 ......
 
-map00_room0a_05_objects:
-    db   $67, $00, $57, $74, $04, $ff                  ;; 05:585a ??????
+map00_room0a_05_script:
+    dw   $0067                                         ;; 05:585a $67 $00
+    db   $57, $74, $04, $ff                            ;; 05:585c ????
 
 map00_room0a_05_tiles:
     db         $c2,$10,$11,$12,$41,$41,$2b,$42         ;; 05:5860 ????????
@@ -1700,8 +1791,9 @@ map00_room0a_05_tiles:
     db $37,$37,$20,$21,$21,$11,$21,$22,$00,$37         ;; 05:5892 ??????????
     db         $b7,$37,$37,$17,        $b7,$37         ;; 05:589c ??????
 
-map00_room0b_05_objects:
-    db   $64, $00, $ff                                 ;; 05:58a2 ???
+map00_room0b_05_script:
+    dw   $0064                                         ;; 05:58a2 $64 $00
+    db   $ff                                           ;; 05:58a4 ?
 
 map00_room0b_05_tiles:
     db $41,$41,$53,        $80,        $c1,$41         ;; 05:58a5 ??????
@@ -1713,9 +1805,9 @@ map00_room0b_05_tiles:
     db $37,$37,$41,$41,        $80,$00,$41,$41         ;; 05:58cf ????????
     db $37,$37,$41,$41,        $80,$00,$41,$41         ;; 05:58d7 ????????
 
-map00_room0c_05_objects:
-    db   $9d, $04, $34, $8a, $02, $35, $8a, $02        ;; 05:58df ????????
-    db   $ff                                           ;; 05:58e7 ?
+map00_room0c_05_script:
+    dw   $049d                                         ;; 05:58df $9d $04
+    db   $34, $8a, $02, $35, $8a, $02, $ff             ;; 05:58e1 ???????
 
 map00_room0c_05_tiles:
     db $55,$0a,        $d5,        $d5,$09,$55         ;; 05:58e8 ??????
@@ -1727,8 +1819,9 @@ map00_room0c_05_tiles:
     db $41,$41,$64,$33,$00,$00,$30,$64,$42,$41         ;; 05:5918 ??????????
     db         $c1,$41,$2b,$2b,$41,$41,$42,$41         ;; 05:5922 ????????
 
-map00_room0d_05_objects:
-    db   $76, $00, $ff                                 ;; 05:592a ???
+map00_room0d_05_script:
+    dw   $0076                                         ;; 05:592a $76 $00
+    db   $ff                                           ;; 05:592c ?
 
 map00_room0d_05_tiles:
     db $41,$42,        $c1,        $c1,$41,$41         ;; 05:592d ??????
@@ -1740,8 +1833,9 @@ map00_room0d_05_tiles:
     db $41,$40,        $80,$49,$17,$17,$30,$40         ;; 05:5953 ????????
     db $41,$41,$40,$30,$40,$49,$17,$17,$41,$41         ;; 05:595b ??????????
 
-map00_room0e_05_objects:
-    db   $76, $00, $ff                                 ;; 05:5965 ???
+map00_room0e_05_script:
+    dw   $0076                                         ;; 05:5965 $76 $00
+    db   $ff                                           ;; 05:5967 ?
 
 map00_room0e_05_tiles:
     db         $c1,$41,$00,$00,        $c1,$41         ;; 05:5968 ??????
@@ -1753,8 +1847,9 @@ map00_room0e_05_tiles:
     db $30,$40,$00,$4e,$17,$17,$00,$49,$49,$30         ;; 05:598c ??????????
     db $41,$41,$00,$00,$17,$17,        $80,$41         ;; 05:5996 ????????
 
-map00_room0f_05_objects:
-    db   $7c, $00, $ff                                 ;; 05:599e ???
+map00_room0f_05_script:
+    dw   $007c                                         ;; 05:599e $7c $00
+    db   $ff                                           ;; 05:59a0 ?
 
 map00_room0f_05_tiles:
     db $42,$51,$51,$53,$49,$49,$10,        $91         ;; 05:59a1 ????????
@@ -1766,8 +1861,9 @@ map00_room0f_05_tiles:
     db $41,        $c9,$49,$10,        $91,$11         ;; 05:59cf ??????
     db $41,$40,        $c9,$10,        $91,$11         ;; 05:59d5 ??????
 
-map00_room00_06_objects:
-    db   $67, $00, $ff                                 ;; 05:59db ???
+map00_room00_06_script:
+    dw   $0067                                         ;; 05:59db $67 $00
+    db   $ff                                           ;; 05:59dd ?
 
 map00_room00_06_tiles:
     db $11,$11,$12,$00,$00,$50,$51,        $c1         ;; 05:59de ????????
@@ -1779,8 +1875,9 @@ map00_room00_06_tiles:
     db         $91,$11,$38,$02,        $80,$41         ;; 05:5a0a ??????
     db         $91,$11,$11,$12,$30,$40,$30,$41         ;; 05:5a10 ????????
 
-map00_room01_06_objects:
-    db   $61, $00, $ff                                 ;; 05:5a18 ???
+map00_room01_06_script:
+    dw   $0061                                         ;; 05:5a18 $61 $00
+    db   $ff                                           ;; 05:5a1a ?
 
 map00_room01_06_tiles:
     db $41,$41,$00,$50,$51,$51,$53,$00,$00,$41         ;; 05:5a1b ??????????
@@ -1792,8 +1889,9 @@ map00_room01_06_tiles:
     db $40,$00,$00,$48,$30,$40,        $80,$30         ;; 05:5a41 ????????
     db $41,$40,$00,$30,$41,$41,        $80,$41         ;; 05:5a49 ????????
 
-map00_room02_06_objects:
-    db   $61, $00, $ff                                 ;; 05:5a51 ???
+map00_room02_06_script:
+    dw   $0061                                         ;; 05:5a51 $61 $00
+    db   $ff                                           ;; 05:5a53 ?
 
 map00_room02_06_tiles:
     db         $c1,$41,$2b,        $c1,$41,$41         ;; 05:5a54 ??????
@@ -1805,8 +1903,9 @@ map00_room02_06_tiles:
     db $40,        $80,$00,$30,$40,$00,$00,$30         ;; 05:5a78 ????????
     db $41,$40,$30,$40,$30,$41,$41,$40,$30,$41         ;; 05:5a80 ??????????
 
-map00_room03_06_objects:
-    db   $23, $02, $ff                                 ;; 05:5a8a ???
+map00_room03_06_script:
+    dw   $0223                                         ;; 05:5a8a $23 $02
+    db   $ff                                           ;; 05:5a8c ?
 
 map00_room03_06_tiles:
     db $41,$42,        $c1,        $c1,$42,$51         ;; 05:5a8d ??????
@@ -1818,8 +1917,9 @@ map00_room03_06_tiles:
     db $41,$61,$00,$00,$24,        $ff,$7f,$24         ;; 05:5ab3 ????????
     db $41,$41,$00,$24,$24,$06,        $87,$07         ;; 05:5abb ????????
 
-map00_room04_06_objects:
-    db   $67, $00, $ff                                 ;; 05:5ac3 ???
+map00_room04_06_script:
+    dw   $0067                                         ;; 05:5ac3 $67 $00
+    db   $ff                                           ;; 05:5ac5 ?
 
 map00_room04_06_tiles:
     db $63,$24,$00,$24,$24,$16,$17,$17,$18,$37         ;; 05:5ac6 ??????????
@@ -1831,8 +1931,9 @@ map00_room04_06_tiles:
     db         $a4,$24,$24,$16,$18,        $80         ;; 05:5afc ??????
     db         $87,$07,$07,$17,$18,$00,$00,$37         ;; 05:5b02 ????????
 
-map00_room05_06_objects:
-    db   $3d, $00, $ff                                 ;; 05:5b0a ..?
+map00_room05_06_script:
+    dw   $003d                                         ;; 05:5b0a $3d $00
+    db   $ff                                           ;; 05:5b0c ?
 
 map00_room05_06_tiles:
     db         $b7,        $b7,        $b7,$37         ;; 05:5b0d ....
@@ -1844,8 +1945,9 @@ map00_room05_06_tiles:
     db         $80,$17,        $80,$00,$37,$37         ;; 05:5b31 ......
     db $37,$00,$00,$17,        $b7,        $b7         ;; 05:5b37 ......
 
-map00_room06_06_objects:
-    db   $43, $00, $ff                                 ;; 05:5b3d ..?
+map00_room06_06_script:
+    dw   $0043                                         ;; 05:5b3d $43 $00
+    db   $ff                                           ;; 05:5b3f ?
 
 map00_room06_06_tiles:
     db         $b7,$37,$37,$6e,        $b7,$37         ;; 05:5b40 ......
@@ -1857,8 +1959,9 @@ map00_room06_06_tiles:
     db $37,        $80,        $80,$00,$00,$37         ;; 05:5b68 ......
     db         $b7,        $b7,        $b7,$37         ;; 05:5b6e ....
 
-map00_room07_06_objects:
-    db   $43, $00, $ff                                 ;; 05:5b72 ..?
+map00_room07_06_script:
+    dw   $0043                                         ;; 05:5b72 $43 $00
+    db   $ff                                           ;; 05:5b74 ?
 
 map00_room07_06_tiles:
     db $37,$37,$6e,$00,$00,$17,        $80,$41         ;; 05:5b75 ........
@@ -1870,8 +1973,9 @@ map00_room07_06_tiles:
     db $37,$37,        $80,        $80,$00,$36         ;; 05:5b9d ......
     db $37,$37,$00,$00,        $b6,        $b6         ;; 05:5ba3 ......
 
-map00_room08_06_objects:
-    db   $40, $00, $ff                                 ;; 05:5ba9 ..?
+map00_room08_06_script:
+    dw   $0040                                         ;; 05:5ba9 $40 $00
+    db   $ff                                           ;; 05:5bab ?
 
 map00_room08_06_tiles:
     db         $c1,$41,$0b,        $c1,$41,$41         ;; 05:5bac ......
@@ -1883,8 +1987,9 @@ map00_room08_06_tiles:
     db         $b6,        $80,        $80,$00         ;; 05:5bce ....
     db         $b6,        $b6,        $b6,$36         ;; 05:5bd2 ....
 
-map00_room09_06_objects:
-    db   $43, $00, $16, $9c, $03, $ff                  ;; 05:5bd6 .....?
+map00_room09_06_script:
+    dw   $0043                                         ;; 05:5bd6 $43 $00
+    db   $16, $9c, $03, $ff                            ;; 05:5bd8 ...?
 
 map00_room09_06_tiles:
     db $41,$42,$41,$41,$42,        $c1,$41,$41         ;; 05:5bdc ........
@@ -1896,8 +2001,9 @@ map00_room09_06_tiles:
     db         $80,$00,$29,        $80,$00,$00         ;; 05:5c04 ......
     db         $b6,$36,$17,$00,$00,        $b6         ;; 05:5c0a ......
 
-map00_room0a_06_objects:
-    db   $40, $00, $ff                                 ;; 05:5c10 ..?
+map00_room0a_06_script:
+    dw   $0040                                         ;; 05:5c10 $40 $00
+    db   $ff                                           ;; 05:5c12 ?
 
 map00_room0a_06_tiles:
     db         $c1,$41,$42,$17,        $b6,$36         ;; 05:5c13 ......
@@ -1909,8 +2015,9 @@ map00_room0a_06_tiles:
     db         $80,$00,$00,$17,        $b6,$36         ;; 05:5c35 ......
     db $36,        $80,$00,$17,        $b6,$36         ;; 05:5c3b ......
 
-map00_room0b_06_objects:
-    db   $40, $00, $ff                                 ;; 05:5c41 ..?
+map00_room0b_06_script:
+    dw   $0040                                         ;; 05:5c41 $40 $00
+    db   $ff                                           ;; 05:5c43 ?
 
 map00_room0b_06_tiles:
     db $36,$36,$50,$41,        $80,$00,$41,$41         ;; 05:5c44 ........
@@ -1922,8 +2029,9 @@ map00_room0b_06_tiles:
     db $36,$36,$00,$00,$50,$41,        $e4,$64         ;; 05:5c6c ........
     db         $b6,$00,$00,        $c1,$41,$41         ;; 05:5c74 ......
 
-map00_room0c_06_objects:
-    db   $64, $00, $ff                                 ;; 05:5c7a ???
+map00_room0c_06_script:
+    dw   $0064                                         ;; 05:5c7a $64 $00
+    db   $ff                                           ;; 05:5c7c ?
 
 map00_room0c_06_tiles:
     db         $c1,$41,$2b,$2b,$41,$41,$42,$41         ;; 05:5c7d ????????
@@ -1935,8 +2043,9 @@ map00_room0c_06_tiles:
     db         $e4,        $e4,$64,$64,$42,$17         ;; 05:5ca9 ??????
     db         $c1,        $c1,$41,$41,$42,$17         ;; 05:5caf ??????
 
-map00_room0d_06_objects:
-    db   $3d, $00, $45, $74, $04, $ff                  ;; 05:5cb5 ??????
+map00_room0d_06_script:
+    dw   $003d                                         ;; 05:5cb5 $3d $00
+    db   $45, $74, $04, $ff                            ;; 05:5cb7 ????
 
 map00_room0d_06_tiles:
     db $41,$42,$42,$41,$42,$49,$17,$17,$41,$41         ;; 05:5cbb ??????????
@@ -1948,8 +2057,9 @@ map00_room0d_06_tiles:
     db         $97,        $97,$17,$14,$30,$40         ;; 05:5cf3 ??????
     db $17,$30,$40,$30,$31,$31,$40,$30,$41,$41         ;; 05:5cf9 ??????????
 
-map00_room0e_06_objects:
-    db   $76, $00, $ff                                 ;; 05:5d03 ???
+map00_room0e_06_script:
+    dw   $0076                                         ;; 05:5d03 $76 $00
+    db   $ff                                           ;; 05:5d05 ?
 
 map00_room0e_06_tiles:
     db $41,$41,$00,$00,$17,$17,        $80,$41         ;; 05:5d06 ????????
@@ -1961,8 +2071,9 @@ map00_room0e_06_tiles:
     db $30,$40,$00,$49,$17,$17,$30,$40,$30,$41         ;; 05:5d3c ??????????
     db $41,$41,$00,$00,$17,$17,        $c1,$41         ;; 05:5d46 ????????
 
-map00_room0f_06_objects:
-    db   $7c, $00, $ff                                 ;; 05:5d4e ???
+map00_room0f_06_script:
+    dw   $007c                                         ;; 05:5d4e $7c $00
+    db   $ff                                           ;; 05:5d50 ?
 
 map00_room0f_06_tiles:
     db $41,$41,        $c9,$10,        $91,$11         ;; 05:5d51 ??????
@@ -1974,8 +2085,9 @@ map00_room0f_06_tiles:
     db $41,        $c9,$1b,$20,        $91,$11         ;; 05:5d77 ??????
     db $41,$40,$30,$40,$1b,$1b,$10,        $91         ;; 05:5d7d ????????
 
-map00_room00_07_objects:
-    db   $3d, $00, $ff                                 ;; 05:5d85 ???
+map00_room00_07_script:
+    dw   $003d                                         ;; 05:5d85 $3d $00
+    db   $ff                                           ;; 05:5d87 ?
 
 map00_room00_07_tiles:
     db         $91,        $91,        $c1,$41         ;; 05:5d88 ????
@@ -1987,8 +2099,9 @@ map00_room00_07_tiles:
     db         $91,$11,$41,$64,$64,$0b,$64,$41         ;; 05:5dac ????????
     db         $91,$11,        $c1,$0b,$41,$41         ;; 05:5db4 ??????
 
-map00_room01_07_objects:
-    db   $64, $00, $ff                                 ;; 05:5dba ???
+map00_room01_07_script:
+    dw   $0064                                         ;; 05:5dba $64 $00
+    db   $ff                                           ;; 05:5dbc ?
 
 map00_room01_07_tiles:
     db $41,$41,$00,$41,$41,$42,        $80,$41         ;; 05:5dbd ????????
@@ -2000,8 +2113,9 @@ map00_room01_07_tiles:
     db $41,$40,$30,$40,        $80,$00,$30,$41         ;; 05:5de5 ????????
     db         $c1,$41,$40,$30,$40,$30,$41,$41         ;; 05:5ded ????????
 
-map00_room02_07_objects:
-    db   $e5, $03, $ff                                 ;; 05:5df5 ???
+map00_room02_07_script:
+    dw   $03e5                                         ;; 05:5df5 $e5 $03
+    db   $ff                                           ;; 05:5df7 ?
 
 map00_room02_07_tiles:
     db $42,$42,        $d1,        $d1,$41,$41         ;; 05:5df8 ??????
@@ -2013,8 +2127,9 @@ map00_room02_07_tiles:
     db $41,$61,        $ca,$4a,$60,$61,$60,$41         ;; 05:5e28 ????????
     db $41,$41,$61,$60,$61,$60,        $c1,$41         ;; 05:5e30 ????????
 
-map00_room03_07_objects:
-    db   $61, $00, $ff                                 ;; 05:5e38 ???
+map00_room03_07_script:
+    dw   $0061                                         ;; 05:5e38 $61 $00
+    db   $ff                                           ;; 05:5e3a ?
 
 map00_room03_07_tiles:
     db $41,$41,$00,$24,$24,$16,        $97,$17         ;; 05:5e3b ????????
@@ -2026,8 +2141,9 @@ map00_room03_07_tiles:
     db $41,$61,$60,$61,$60,$41,$41,$00,$00,$43         ;; 05:5e67 ??????????
     db         $c1,        $c1,$41,$00,$00,$0c         ;; 05:5e71 ??????
 
-map00_room04_07_objects:
-    db   $23, $02, $ff                                 ;; 05:5e77 ???
+map00_room04_07_script:
+    dw   $0223                                         ;; 05:5e77 $23 $02
+    db   $ff                                           ;; 05:5e79 ?
 
 map00_room04_07_tiles:
     db         $97,        $97,$18,$00,$00,$37         ;; 05:5e7a ??????
@@ -2039,8 +2155,9 @@ map00_room04_07_tiles:
     db $44,        $80,$00,$00,$30,$40,$30,$40         ;; 05:5e9c ????????
     db $0c,$00,$00,$30,$40,$30,        $c1,$41         ;; 05:5ea4 ????????
 
-map00_room05_07_objects:
-    db   $3d, $00, $ff                                 ;; 05:5eac ???
+map00_room05_07_script:
+    dw   $003d                                         ;; 05:5eac $3d $00
+    db   $ff                                           ;; 05:5eae ?
 
 map00_room05_07_tiles:
     db $37,$00,$00,$17,        $b7,        $b7         ;; 05:5eaf ??????
@@ -2052,8 +2169,9 @@ map00_room05_07_tiles:
     db         $b7,$37,$06,        $87,$07,$07         ;; 05:5ecf ??????
     db         $b7,$37,$16,        $97,$17,$17         ;; 05:5ed5 ??????
 
-map00_room06_07_objects:
-    db   $93, $01, $ff                                 ;; 05:5edb ???
+map00_room06_07_script:
+    dw   $0193                                         ;; 05:5edb $93 $01
+    db   $ff                                           ;; 05:5edd ?
 
 map00_room06_07_tiles:
     db         $b7,        $b7,        $b7,$37         ;; 05:5ede ????
@@ -2065,8 +2183,9 @@ map00_room06_07_tiles:
     db $07,$07,$17,        $87,        $87,$07         ;; 05:5f06 ??????
     db         $97,        $97,        $97,$17         ;; 05:5f0c ????
 
-map00_room07_07_objects:
-    db   $43, $00, $ff                                 ;; 05:5f10 ..?
+map00_room07_07_script:
+    dw   $0043                                         ;; 05:5f10 $43 $00
+    db   $ff                                           ;; 05:5f12 ?
 
 map00_room07_07_tiles:
     db $37,$37,$00,$00,        $b6,        $b6         ;; 05:5f13 ......
@@ -2078,8 +2197,9 @@ map00_room07_07_tiles:
     db         $87,$08,        $80,$00,$00,$36         ;; 05:5f3b ......
     db         $97,$18,$36,$00,$36,$00,$36,$36         ;; 05:5f41 ........
 
-map00_room08_07_objects:
-    db   $85, $04, $14, $71, $02, $ff                  ;; 05:5f49 .....?
+map00_room08_07_script:
+    dw   $0485                                         ;; 05:5f49 $85 $04
+    db   $14, $71, $02, $ff                            ;; 05:5f4b ...?
 
 map00_room08_07_tiles:
     db $4f,        $a4,$7c,        $a4,$24,$4f         ;; 05:5f4f ......
@@ -2091,8 +2211,9 @@ map00_room08_07_tiles:
     db $36,$36,$26,$27,$28,        $80,$36,$36         ;; 05:5f73 ........
     db         $b6,$36,$36,$00,        $b6,$36         ;; 05:5f7b ......
 
-map00_room09_07_objects:
-    db   $43, $00, $ff                                 ;; 05:5f81 ..?
+map00_room09_07_script:
+    dw   $0043                                         ;; 05:5f81 $43 $00
+    db   $ff                                           ;; 05:5f83 ?
 
 map00_room09_07_tiles:
     db         $b6,$36,$17,$00,$00,        $b6         ;; 05:5f84 ......
@@ -2104,8 +2225,9 @@ map00_room09_07_tiles:
     db $36,        $80,        $80,        $80         ;; 05:5fa6 ....
     db         $b6,        $b6,$36,$00,$36,$36         ;; 05:5faa ......
 
-map00_room0a_07_objects:
-    db   $43, $00, $ff                                 ;; 05:5fb0 ..?
+map00_room0a_07_script:
+    dw   $0043                                         ;; 05:5fb0 $43 $00
+    db   $ff                                           ;; 05:5fb2 ?
 
 map00_room0a_07_tiles:
     db $36,        $80,$00,$17,        $b6,$36         ;; 05:5fb3 ......
@@ -2117,8 +2239,9 @@ map00_room0a_07_tiles:
     db         $80,$00,$00,$36,        $80,$00         ;; 05:5fd7 ......
     db $36,$36,$00,$00,        $b6,        $b6         ;; 05:5fdd ......
 
-map00_room0b_07_objects:
-    db   $43, $00, $ff                                 ;; 05:5fe3 ..?
+map00_room0b_07_script:
+    dw   $0043                                         ;; 05:5fe3 $43 $00
+    db   $ff                                           ;; 05:5fe5 ?
 
 map00_room0b_07_tiles:
     db         $b6,$00,$00,        $c1,$41,$41         ;; 05:5fe6 ......
@@ -2130,8 +2253,9 @@ map00_room0b_07_tiles:
     db         $80,$00,$00,        $b6,$36,$36         ;; 05:6004 ......
     db         $b6,$00,$00,        $b6,$36,$36         ;; 05:600a ......
 
-map00_room0c_07_objects:
-    db   $43, $00, $34, $a1, $03, $ff                  ;; 05:6010 .....?
+map00_room0c_07_script:
+    dw   $0043                                         ;; 05:6010 $43 $00
+    db   $34, $a1, $03, $ff                            ;; 05:6012 ...?
 
 map00_room0c_07_tiles:
     db         $c1,        $c1,$41,$41,$42,$17         ;; 05:6016 ......
@@ -2143,8 +2267,9 @@ map00_room0c_07_tiles:
     db         $b6,        $b6,        $b6,$17         ;; 05:6038 ....
     db $36,$36,$03,        $97,        $97,$17         ;; 05:603c ......
 
-map00_room0d_07_objects:
-    db   $4c, $00, $ff                                 ;; 05:6042 ..?
+map00_room0d_07_script:
+    dw   $004c                                         ;; 05:6042 $4c $00
+    db   $ff                                           ;; 05:6044 ?
 
 map00_room0d_07_tiles:
     db $17,$62,        $d1,        $d1,$41,$41         ;; 05:6045 ......
@@ -2156,8 +2281,9 @@ map00_room0d_07_tiles:
     db $17,$24,$45,$45,        $a4,$24,$60,$41         ;; 05:606b ........
     db $17,        $a4,        $a4,$24,$41,$41         ;; 05:6073 ......
 
-map00_room0e_07_objects:
-    db   $76, $00, $ff                                 ;; 05:6079 ???
+map00_room0e_07_script:
+    dw   $0076                                         ;; 05:6079 $76 $00
+    db   $ff                                           ;; 05:607b ?
 
 map00_room0e_07_tiles:
     db $41,$41,$49,$49,$17,$17,        $c1,$41         ;; 05:607c ????????
@@ -2169,8 +2295,9 @@ map00_room0e_07_tiles:
     db $41,$41,$40,$30,$40,        $80,$00,$30         ;; 05:60a8 ????????
     db         $c1,$41,$41,$40,$30,$40,$30,$41         ;; 05:60b0 ????????
 
-map00_room0f_07_objects:
-    db   $7c, $00, $ff                                 ;; 05:60b8 ???
+map00_room0f_07_script:
+    dw   $007c                                         ;; 05:60b8 $7c $00
+    db   $ff                                           ;; 05:60ba ?
 
 map00_room0f_07_tiles:
     db $41,$42,$41,$52,$1b,$1b,$10,        $91         ;; 05:60bb ????????
@@ -2182,8 +2309,9 @@ map00_room0f_07_tiles:
     db $40,        $80,$00,$00,$10,        $91         ;; 05:60e1 ??????
     db $41,$40,        $80,$00,$10,        $91         ;; 05:60e7 ??????
 
-map00_room00_08_objects:
-    db   $46, $00, $45, $74, $04, $ff                  ;; 05:60ed ??????
+map00_room00_08_script:
+    dw   $0046                                         ;; 05:60ed $46 $00
+    db   $45, $74, $04, $ff                            ;; 05:60ef ????
 
 map00_room00_08_tiles:
     db         $91,$11,        $c1,$0b,$41,$41         ;; 05:60f3 ??????
@@ -2195,9 +2323,9 @@ map00_room00_08_tiles:
     db         $91,$11,$11,$22,        $80,$47         ;; 05:6119 ??????
     db         $91,$11,$12,        $80,$00,$47         ;; 05:611f ??????
 
-map00_room01_08_objects:
-    db   $79, $04, $34, $80, $02, $35, $80, $02        ;; 05:6125 ????????
-    db   $ff                                           ;; 05:612d ?
+map00_room01_08_script:
+    dw   $0479                                         ;; 05:6125 $79 $04
+    db   $34, $80, $02, $35, $80, $02, $ff             ;; 05:6127 ???????
 
 map00_room01_08_tiles:
     db $09,$55,$0a,        $d5,$55,$09,$55,$0a         ;; 05:612e ????????
@@ -2209,8 +2337,9 @@ map00_room01_08_tiles:
     db $47,        $85,        $85,$05,$05,$47         ;; 05:6162 ??????
     db $47,$05,$47,$05,$47,$47,$05,$47,$05,$47         ;; 05:6168 ??????????
 
-map00_room02_08_objects:
-    db   $5e, $00, $ff                                 ;; 05:6172 ???
+map00_room02_08_script:
+    dw   $005e                                         ;; 05:6172 $5e $00
+    db   $ff                                           ;; 05:6174 ?
 
 map00_room02_08_tiles:
     db $41,$42,$42,        $d1,        $d1,$51         ;; 05:6175 ??????
@@ -2222,8 +2351,9 @@ map00_room02_08_tiles:
     db $41,$40,        $85,        $85,$30,$41         ;; 05:619f ??????
     db $41,$41,$31,$31,$40,$05,$05,$30,$31,$41         ;; 05:61a5 ??????????
 
-map00_room03_08_objects:
-    db   $d6, $03, $ff                                 ;; 05:61af ???
+map00_room03_08_script:
+    dw   $03d6                                         ;; 05:61af $d6 $03
+    db   $ff                                           ;; 05:61b1 ?
 
 map00_room03_08_tiles:
     db $51,$51,        $c1,$42,$52,$00,$00,$0c         ;; 05:61b2 ????????
@@ -2235,8 +2365,9 @@ map00_room03_08_tiles:
     db $51,$41,$33,        $80,$34,$42,$43,$0c         ;; 05:61dc ????????
     db $0c,$44,$41,        $e4,$42,$43,$0c,$0c         ;; 05:61e4 ????????
 
-map00_room04_08_objects:
-    db   $a6, $00, $ff                                 ;; 05:61ec ???
+map00_room04_08_script:
+    dw   $00a6                                         ;; 05:61ec $a6 $00
+    db   $ff                                           ;; 05:61ee ?
 
 map00_room04_08_tiles:
     db $0c,$00,$00,$41,$41,$42,$42,        $c1         ;; 05:61ef ????????
@@ -2248,8 +2379,9 @@ map00_room04_08_tiles:
     db $0c,$44,        $c1,$41,$41,$43,$0c,$0c         ;; 05:621d ????????
     db         $8c,        $8c,        $8c,$0c         ;; 05:6225 ????
 
-map00_room05_08_objects:
-    db   $58, $00, $ff                                 ;; 05:6229 ???
+map00_room05_08_script:
+    dw   $0058                                         ;; 05:6229 $58 $00
+    db   $ff                                           ;; 05:622b ?
 
 map00_room05_08_tiles:
     db         $b7,$37,$16,        $97,$17,$17         ;; 05:622c ??????
@@ -2261,8 +2393,9 @@ map00_room05_08_tiles:
     db $37,$37,$00,$37,$16,$17,$07,$07,$17,$17         ;; 05:6256 ??????????
     db $37,$37,$00,$37,$16,        $97,$17,$17         ;; 05:6260 ????????
 
-map00_room06_08_objects:
-    db   $3d, $00, $ff                                 ;; 05:6268 ???
+map00_room06_08_script:
+    dw   $003d                                         ;; 05:6268 $3d $00
+    db   $ff                                           ;; 05:626a ?
 
 map00_room06_08_tiles:
     db         $97,        $97,        $97,$17         ;; 05:626b ????
@@ -2274,8 +2407,9 @@ map00_room06_08_tiles:
     db         $97,        $97,$18,$24,$16,$17         ;; 05:6289 ??????
     db         $97,        $97,$18,$24,$16,$17         ;; 05:628f ??????
 
-map00_room07_08_objects:
-    db   $43, $00, $ff                                 ;; 05:6295 ???
+map00_room07_08_script:
+    dw   $0043                                         ;; 05:6295 $43 $00
+    db   $ff                                           ;; 05:6297 ?
 
 map00_room07_08_tiles:
     db         $97,$18,$36,$00,$36,$00,$36,$36         ;; 05:6298 ????????
@@ -2287,8 +2421,9 @@ map00_room07_08_tiles:
     db         $97,$17,        $87,        $87         ;; 05:62ba ????
     db         $97,        $97,        $97,$17         ;; 05:62be ????
 
-map00_room08_08_objects:
-    db   $43, $00, $ff                                 ;; 05:62c2 ..?
+map00_room08_08_script:
+    dw   $0043                                         ;; 05:62c2 $43 $00
+    db   $ff                                           ;; 05:62c4 ?
 
 map00_room08_08_tiles:
     db         $b6,$36,$36,$00,        $b6,$36         ;; 05:62c5 ......
@@ -2300,8 +2435,9 @@ map00_room08_08_tiles:
     db         $87,$08,        $b6,        $b6         ;; 05:62e7 ....
     db         $97,$18,        $b6,        $b6         ;; 05:62eb ....
 
-map00_room09_08_objects:
-    db   $f5, $00, $ff                                 ;; 05:62ef ..?
+map00_room09_08_script:
+    dw   $00f5                                         ;; 05:62ef $f5 $00
+    db   $ff                                           ;; 05:62f1 ?
 
 map00_room09_08_tiles:
     db         $b6,        $b6,$36,$00,$36,$36         ;; 05:62f2 ......
@@ -2313,8 +2449,9 @@ map00_room09_08_tiles:
     db $36,        $80,        $80,        $80         ;; 05:6314 ....
     db         $b6,        $b6,        $b6,$36         ;; 05:6318 ....
 
-map00_room0a_08_objects:
-    db   $43, $00, $ff                                 ;; 05:631c ..?
+map00_room0a_08_script:
+    dw   $0043                                         ;; 05:631c $43 $00
+    db   $ff                                           ;; 05:631e ?
 
 map00_room0a_08_tiles:
     db $36,$36,$00,$00,        $b6,        $b6         ;; 05:631f ......
@@ -2326,8 +2463,9 @@ map00_room0a_08_tiles:
     db         $80,        $80,        $80,$00         ;; 05:6345 ....
     db         $b6,        $b6,        $b6,$36         ;; 05:6349 ....
 
-map00_room0b_08_objects:
-    db   $43, $00, $ff                                 ;; 05:634d ..?
+map00_room0b_08_script:
+    dw   $0043                                         ;; 05:634d $43 $00
+    db   $ff                                           ;; 05:634f ?
 
 map00_room0b_08_tiles:
     db         $b6,$00,$00,        $b6,$36,$36         ;; 05:6350 ......
@@ -2339,8 +2477,9 @@ map00_room0b_08_tiles:
     db         $80,        $80,        $80,$00         ;; 05:6372 ....
     db         $b6,$00,$00,        $b6,$36,$36         ;; 05:6376 ......
 
-map00_room0c_08_objects:
-    db   $4c, $00, $ff                                 ;; 05:637c ..?
+map00_room0c_08_script:
+    dw   $004c                                         ;; 05:637c $4c $00
+    db   $ff                                           ;; 05:637e ?
 
 map00_room0c_08_tiles:
     db $36,$36,        $97,        $97,$17,$17         ;; 05:637f ......
@@ -2352,8 +2491,9 @@ map00_room0c_08_tiles:
     db $00,$00,$17,        $a4,        $a4,$60         ;; 05:63a7 ......
     db $36,$00,$17,$60,$31,$31,$61,$24,$60,$41         ;; 05:63ad ..........
 
-map00_room0d_08_objects:
-    db   $4c, $00, $ff                                 ;; 05:63b7 ..?
+map00_room0d_08_script:
+    dw   $004c                                         ;; 05:63b7 $4c $00
+    db   $ff                                           ;; 05:63b9 ?
 
 map00_room0d_08_tiles:
     db $14,        $a4,        $a4,$24,$41,$41         ;; 05:63ba ......
@@ -2365,8 +2505,9 @@ map00_room0d_08_tiles:
     db $61,        $a4,        $a4,$24,$60,$41         ;; 05:63e4 ......
     db $41,        $a4,$60,        $b1,$41,$41         ;; 05:63ea ......
 
-map00_room0e_08_objects:
-    db   $8b, $04, $15, $75, $02, $ff                  ;; 05:63f0 .....?
+map00_room0e_08_script:
+    dw   $048b                                         ;; 05:63f0 $8b $04
+    db   $15, $75, $02, $ff                            ;; 05:63f2 ...?
 
 map00_room0e_08_tiles:
     db $42,$42,        $c1,        $c1,$41,$41         ;; 05:63f6 ......
@@ -2378,8 +2519,9 @@ map00_room0e_08_tiles:
     db $41,        $a4,        $a4,$24,$24,$41         ;; 05:6424 ......
     db $41,$61,        $a4,        $a4,$60,$41         ;; 05:642a ......
 
-map00_room0f_08_objects:
-    db   $7c, $00, $ff                                 ;; 05:6430 ???
+map00_room0f_08_script:
+    dw   $007c                                         ;; 05:6430 $7c $00
+    db   $ff                                           ;; 05:6432 ?
 
 map00_room0f_08_tiles:
     db $42,$42,        $80,$00,$10,        $91         ;; 05:6433 ??????
@@ -2391,8 +2533,9 @@ map00_room0f_08_tiles:
     db $41,        $80,$00,$00,$10,        $91         ;; 05:6457 ??????
     db $41,        $80,$00,$00,$10,        $91         ;; 05:645d ??????
 
-map00_room00_09_objects:
-    db   $46, $00, $ff                                 ;; 05:6463 ???
+map00_room00_09_script:
+    dw   $0046                                         ;; 05:6463 $46 $00
+    db   $ff                                           ;; 05:6465 ?
 
 map00_room00_09_tiles:
     db         $91,$11,$12,        $85,$05,$47         ;; 05:6466 ??????
@@ -2404,8 +2547,9 @@ map00_room00_09_tiles:
     db         $91,$12,        $85,$05,$47,$47         ;; 05:6488 ??????
     db         $91,$12,        $c7,        $c7         ;; 05:648e ????
 
-map00_room01_09_objects:
-    db   $5b, $00, $ff                                 ;; 05:6492 ???
+map00_room01_09_script:
+    dw   $005b                                         ;; 05:6492 $5b $00
+    db   $ff                                           ;; 05:6494 ?
 
 map00_room01_09_tiles:
     db $47,$05,$47,$05,$47,$47,$05,$47,$05,$47         ;; 05:6495 ??????????
@@ -2417,8 +2561,9 @@ map00_room01_09_tiles:
     db $47,        $85,        $85,$05,$05,$47         ;; 05:64c7 ??????
     db         $c7,        $c7,        $c7,$47         ;; 05:64cd ????
 
-map00_room02_09_objects:
-    db   $5b, $00, $ff                                 ;; 05:64d1 ???
+map00_room02_09_script:
+    dw   $005b                                         ;; 05:64d1 $5b $00
+    db   $ff                                           ;; 05:64d3 ?
 
 map00_room02_09_tiles:
     db $41,$42,$42,$51,$52,$05,$05,        $c1         ;; 05:64d4 ????????
@@ -2430,8 +2575,9 @@ map00_room02_09_tiles:
     db $41,$41,        $85,        $85,$05,$41         ;; 05:64f8 ??????
     db $41,$41,$40,$05,$05,$30,$40,$05,$05,$41         ;; 05:64fe ??????????
 
-map00_room03_09_objects:
-    db   $5b, $00, $ff                                 ;; 05:6508 ???
+map00_room03_09_script:
+    dw   $005b                                         ;; 05:6508 $5b $00
+    db   $ff                                           ;; 05:650a ?
 
 map00_room03_09_tiles:
     db $41,$42,$41,$42,        $d1,$51,$41,$41         ;; 05:650b ????????
@@ -2443,8 +2589,9 @@ map00_room03_09_tiles:
     db $41,        $85,        $85,$05,$30,$41         ;; 05:653d ??????
     db $41,$40,$30,$40,$05,$30,$40,$30,$41,$41         ;; 05:6543 ??????????
 
-map00_room04_09_objects:
-    db   $76, $04, $14, $7f, $02, $ff                  ;; 05:654d ??????
+map00_room04_09_script:
+    dw   $0476                                         ;; 05:654d $76 $04
+    db   $14, $7f, $02, $ff                            ;; 05:654f ????
 
 map00_room04_09_tiles:
     db $41,$42,$4f,$37,$7c,$37,$37,$4f,$41,$41         ;; 05:6553 ??????????
@@ -2456,8 +2603,9 @@ map00_room04_09_tiles:
     db $41,$41,$40,        $80,$30,$31,$41,$41         ;; 05:657d ????????
     db         $c1,        $80,        $c1,$41         ;; 05:6585 ????
 
-map00_room05_09_objects:
-    db   $46, $00, $ff                                 ;; 05:6589 ???
+map00_room05_09_script:
+    dw   $0046                                         ;; 05:6589 $46 $00
+    db   $ff                                           ;; 05:658b ?
 
 map00_room05_09_tiles:
     db $36,$36,$00,$36,$16,        $97,$17,$17         ;; 05:658c ????????
@@ -2469,8 +2617,9 @@ map00_room05_09_tiles:
     db $36,        $80,        $80,        $80         ;; 05:65b2 ????
     db         $b6,        $b6,$00,$00,$36,$36         ;; 05:65b6 ??????
 
-map00_room06_09_objects:
-    db   $3d, $00, $07, $7c, $02, $ff                  ;; 05:65bc ??????
+map00_room06_09_script:
+    dw   $003d                                         ;; 05:65bc $3d $00
+    db   $07, $7c, $02, $ff                            ;; 05:65be ????
 
 map00_room06_09_tiles:
     db         $97,        $97,$18,$70,$26,$27         ;; 05:65c2 ??????
@@ -2482,8 +2631,9 @@ map00_room06_09_tiles:
     db         $80,$00,$16,$18,$00,$24,$26,$17         ;; 05:65ea ????????
     db $36,$36,$00,$00,$16,$18,$00,$24,$24,$16         ;; 05:65f2 ??????????
 
-map00_room07_09_objects:
-    db   $a6, $00, $ff                                 ;; 05:65fc ???
+map00_room07_09_script:
+    dw   $00a6                                         ;; 05:65fc $a6 $00
+    db   $ff                                           ;; 05:65fe ?
 
 map00_room07_09_tiles:
     db         $a7,$27,        $97,        $a7         ;; 05:65ff ????
@@ -2495,8 +2645,9 @@ map00_room07_09_tiles:
     db         $97,$17,$17,$28,$24,$16,$17,$07         ;; 05:6623 ????????
     db         $97,$17,$18,$24,$24,$16,$17,$17         ;; 05:662b ????????
 
-map00_room08_09_objects:
-    db   $a6, $00, $ff                                 ;; 05:6633 ???
+map00_room08_09_script:
+    dw   $00a6                                         ;; 05:6633 $a6 $00
+    db   $ff                                           ;; 05:6635 ?
 
 map00_room08_09_tiles:
     db $27,$27,$41,$41,        $d1,        $d1         ;; 05:6636 ??????
@@ -2508,8 +2659,9 @@ map00_room08_09_tiles:
     db         $87,        $87,$08,$4e,$00,$00         ;; 05:665c ??????
     db         $97,        $97,$18,$00,$00,$37         ;; 05:6662 ??????
 
-map00_room09_09_objects:
-    db   $58, $00, $ff                                 ;; 05:6668 ???
+map00_room09_09_script:
+    dw   $0058                                         ;; 05:6668 $58 $00
+    db   $ff                                           ;; 05:666a ?
 
 map00_room09_09_tiles:
     db         $d1,        $d1,        $c1,$41         ;; 05:666b ????
@@ -2521,8 +2673,9 @@ map00_room09_09_tiles:
     db         $80,        $80,$00,$00,$37,$37         ;; 05:668f ??????
     db         $b7,        $b7,        $b7,$37         ;; 05:6695 ????
 
-map00_room0a_09_objects:
-    db   $88, $04, $25, $76, $02, $ff                  ;; 05:6699 ??????
+map00_room0a_09_script:
+    dw   $0488                                         ;; 05:6699 $88 $04
+    db   $25, $76, $02, $ff                            ;; 05:669b ????
 
 map00_room0a_09_tiles:
     db $41,$42,$09,$0a,        $d5,$09,$0a,$37         ;; 05:669f ????????
@@ -2534,8 +2687,9 @@ map00_room0a_09_tiles:
     db $37,$37,        $a4,$24,$24,        $80         ;; 05:66cf ??????
     db         $b7,        $b7,        $b7,$37         ;; 05:66d5 ????
 
-map00_room0b_09_objects:
-    db   $4c, $00, $ff                                 ;; 05:66d9 ???
+map00_room0b_09_script:
+    dw   $004c                                         ;; 05:66d9 $4c $00
+    db   $ff                                           ;; 05:66db ?
 
 map00_room0b_09_tiles:
     db         $b6,$00,$00,        $b6,$36,$36         ;; 05:66dc ??????
@@ -2547,8 +2701,9 @@ map00_room0b_09_tiles:
     db         $80,$00,$17,        $a4,$24,$24         ;; 05:6700 ??????
     db         $b6,$36,$17,$60,        $b1,$31         ;; 05:6706 ??????
 
-map00_room0c_09_objects:
-    db   $4c, $00, $ff                                 ;; 05:670c ..?
+map00_room0c_09_script:
+    dw   $004c                                         ;; 05:670c $4c $00
+    db   $ff                                           ;; 05:670e ?
 
 map00_room0c_09_tiles:
     db $36,$00,$17,$62,$51,$51,$63,$24,$62,$41         ;; 05:670f ..........
@@ -2560,8 +2715,9 @@ map00_room0c_09_tiles:
     db         $a4,$24,$60,$31,$31,$61,$24,$24         ;; 05:6735 ........
     db         $b1,$31,        $c1,$41,$31,$31         ;; 05:673d ......
 
-map00_room0d_09_objects:
-    db   $49, $00, $ff                                 ;; 05:6743 ..?
+map00_room0d_09_script:
+    dw   $0049                                         ;; 05:6743 $49 $00
+    db   $ff                                           ;; 05:6745 ?
 
 map00_room0d_09_tiles:
     db $41,        $a4,        $c1,        $c1         ;; 05:6746 ....
@@ -2573,8 +2729,9 @@ map00_room0d_09_tiles:
     db         $a4,        $a4,        $a4,$24         ;; 05:6760 ....
     db         $b1,$61,$60,$61,$24,$24,$60,$31         ;; 05:6764 ........
 
-map00_room0e_09_objects:
-    db   $49, $00, $ff                                 ;; 05:676c ..?
+map00_room0e_09_script:
+    dw   $0049                                         ;; 05:676c $49 $00
+    db   $ff                                           ;; 05:676e ?
 
 map00_room0e_09_tiles:
     db $41,$63,        $a4,        $a4,$62,$41         ;; 05:676f ......
@@ -2586,8 +2743,9 @@ map00_room0e_09_tiles:
     db         $a4,        $a4,$24,$24,$60,$41         ;; 05:6791 ......
     db $61,$60,        $b1,        $b1,$41,$41         ;; 05:6797 ......
 
-map00_room0f_09_objects:
-    db   $7c, $00, $ff                                 ;; 05:679d ???
+map00_room0f_09_script:
+    dw   $007c                                         ;; 05:679d $7c $00
+    db   $ff                                           ;; 05:679f ?
 
 map00_room0f_09_tiles:
     db $42,        $80,$00,$00,$10,        $91         ;; 05:67a0 ??????
@@ -2599,8 +2757,9 @@ map00_room0f_09_tiles:
     db $41,$41,$40,        $80,$00,$10,$11,$11         ;; 05:67ce ????????
     db         $c1,        $80,$00,$10,$11,$11         ;; 05:67d6 ??????
 
-map00_room00_0a_objects:
-    db   $46, $00, $27, $86, $03, $ff                  ;; 05:67dc ??????
+map00_room00_0a_script:
+    dw   $0046                                         ;; 05:67dc $46 $00
+    db   $27, $86, $03, $ff                            ;; 05:67de ????
 
 map00_room00_0a_tiles:
     db         $91,$12,        $c1,        $c1         ;; 05:67e2 ????
@@ -2612,8 +2771,9 @@ map00_room00_0a_tiles:
     db         $91,$11,$02,        $85,$05,$30         ;; 05:680a ??????
     db         $91,$11,$12,        $85,$05,$41         ;; 05:6810 ??????
 
-map00_room01_0a_objects:
-    db   $5e, $00, $ff                                 ;; 05:6816 ???
+map00_room01_0a_script:
+    dw   $005e                                         ;; 05:6816 $5e $00
+    db   $ff                                           ;; 05:6818 ?
 
 map00_room01_0a_tiles:
     db $41,$42,$42,$41,$41,$42,$42,$52,$50,$41         ;; 05:6819 ??????????
@@ -2625,8 +2785,9 @@ map00_room01_0a_tiles:
     db $41,$40,        $85,$30,$40,        $85         ;; 05:6841 ??????
     db $41,$41,$05,$05,$30,$41,$41,$40,$30,$31         ;; 05:6847 ??????????
 
-map00_room02_0a_objects:
-    db   $5b, $00, $ff                                 ;; 05:6851 ???
+map00_room02_0a_script:
+    dw   $005b                                         ;; 05:6851 $5b $00
+    db   $ff                                           ;; 05:6853 ?
 
 map00_room02_0a_tiles:
     db $42,$51,$52,$05,$05,$41,$42,$05,$05,$41         ;; 05:6854 ??????????
@@ -2638,8 +2799,9 @@ map00_room02_0a_tiles:
     db         $85,        $85,        $85,$30         ;; 05:6876 ????
     db $31,$40,$05,$05,$30,$40,$30,$40,$30,$41         ;; 05:687a ??????????
 
-map00_room03_0a_objects:
-    db   $5b, $00, $ff                                 ;; 05:6884 ???
+map00_room03_0a_script:
+    dw   $005b                                         ;; 05:6884 $5b $00
+    db   $ff                                           ;; 05:6886 ?
 
 map00_room03_0a_tiles:
     db         $c1,$42,$05,        $c1,$41,$41         ;; 05:6887 ??????
@@ -2651,8 +2813,9 @@ map00_room03_0a_tiles:
     db $40,        $85,        $85,$05,$05,$41         ;; 05:68a9 ??????
     db $41,$31,$31,$40,        $85,$05,$05,$41         ;; 05:68af ????????
 
-map00_room04_0a_objects:
-    db   $58, $00, $ff                                 ;; 05:68b7 ???
+map00_room04_0a_script:
+    dw   $0058                                         ;; 05:68b7 $58 $00
+    db   $ff                                           ;; 05:68b9 ?
 
 map00_room04_0a_tiles:
     db         $c2,        $80,$50,        $d1         ;; 05:68ba ????
@@ -2664,8 +2827,9 @@ map00_room04_0a_tiles:
     db $41,$00,$00,$36,$17,        $80,$00,$00         ;; 05:68dc ????????
     db $41,$00,$00,$36,$17,        $80,$30,$31         ;; 05:68e4 ????????
 
-map00_room05_0a_objects:
-    db   $58, $00, $ff                                 ;; 05:68ec ???
+map00_room05_0a_script:
+    dw   $0058                                         ;; 05:68ec $58 $00
+    db   $ff                                           ;; 05:68ee ?
 
 map00_room05_0a_tiles:
     db         $b6,        $b6,$00,$00,$36,$36         ;; 05:68ef ??????
@@ -2677,8 +2841,9 @@ map00_room05_0a_tiles:
     db         $80,        $80,$00,$00,$30,$41         ;; 05:690d ??????
     db $31,$40,$30,$40,$30,$31,$40,$30,$41,$41         ;; 05:6913 ??????????
 
-map00_room06_0a_objects:
-    db   $a6, $00, $ff                                 ;; 05:691d ???
+map00_room06_0a_script:
+    dw   $00a6                                         ;; 05:691d $a6 $00
+    db   $ff                                           ;; 05:691f ?
 
 map00_room06_0a_tiles:
     db $36,$36,$00,$00,$16,$18,$00,$24,$24,$26         ;; 05:6920 ??????????
@@ -2690,8 +2855,9 @@ map00_room06_0a_tiles:
     db $41,$40,        $80,        $80,$00,$00         ;; 05:6946 ??????
     db $41,$41,        $b7,        $b7,$37,$37         ;; 05:694c ??????
 
-map00_room07_0a_objects:
-    db   $46, $00, $ff                                 ;; 05:6952 ???
+map00_room07_0a_script:
+    dw   $0046                                         ;; 05:6952 $46 $00
+    db   $ff                                           ;; 05:6954 ?
 
 map00_room07_0a_tiles:
     db $27,        $97,$28,$24,$24,$16,$17,$17         ;; 05:6955 ????????
@@ -2703,8 +2869,9 @@ map00_room07_0a_tiles:
     db         $80,$00,        $ff,$7f,$7f,$37         ;; 05:697d ??????
     db $37,$37,$00,        $b7,        $b7,$37         ;; 05:6983 ??????
 
-map00_room08_0a_objects:
-    db   $a6, $00, $ff                                 ;; 05:6989 ???
+map00_room08_0a_script:
+    dw   $00a6                                         ;; 05:6989 $a6 $00
+    db   $ff                                           ;; 05:698b ?
 
 map00_room08_0a_tiles:
     db         $97,        $97,$18,$00,$00,$37         ;; 05:698c ??????
@@ -2716,8 +2883,9 @@ map00_room08_0a_tiles:
     db $37,$37,$00,        $97,        $97,$17         ;; 05:69b8 ??????
     db $37,$37,$00,$17,$30,        $b1,$31,$31         ;; 05:69be ????????
 
-map00_room09_0a_objects:
-    db   $52, $00, $ff                                 ;; 05:69c6 ???
+map00_room09_0a_script:
+    dw   $0052                                         ;; 05:69c6 $52 $00
+    db   $ff                                           ;; 05:69c8 ?
 
 map00_room09_0a_tiles:
     db         $b6,        $b6,        $b6,$36         ;; 05:69c9 ????
@@ -2729,8 +2897,9 @@ map00_room09_0a_tiles:
     db $17,$14,$30,$40,        $80,$00,$36,$36         ;; 05:69ed ????????
     db $40,$30,$41,$41,$31,$40,$00,$00,$36,$36         ;; 05:69f5 ??????????
 
-map00_room0a_0a_objects:
-    db   $4f, $00, $47, $87, $03, $ff                  ;; 05:69ff ??????
+map00_room0a_0a_script:
+    dw   $004f                                         ;; 05:69ff $4f $00
+    db   $47, $87, $03, $ff                            ;; 05:6a01 ????
 
 map00_room0a_0a_tiles:
     db         $b6,        $b6,        $b6,$36         ;; 05:6a05 ????
@@ -2742,8 +2911,9 @@ map00_room0a_0a_tiles:
     db $36,$36,$00,$13,        $97,        $97         ;; 05:6a2b ??????
     db $36,$36,$00,        $b6,        $b6,$36         ;; 05:6a31 ??????
 
-map00_room0b_0a_objects:
-    db   $4c, $00, $ff                                 ;; 05:6a37 ???
+map00_room0b_0a_script:
+    dw   $004c                                         ;; 05:6a37 $4c $00
+    db   $ff                                           ;; 05:6a39 ?
 
 map00_room0b_0a_tiles:
     db $42,        $d1,$17,$41,        $d1,$41         ;; 05:6a3a ??????
@@ -2755,8 +2925,9 @@ map00_room0b_0a_tiles:
     db $17,$2a,        $97,        $a4,$24,$41         ;; 05:6a6c ??????
     db $37,        $80,$17,        $a4,$24,$41         ;; 05:6a72 ??????
 
-map00_room0c_0a_objects:
-    db   $49, $00, $ff                                 ;; 05:6a78 ???
+map00_room0c_0a_script:
+    dw   $0049                                         ;; 05:6a78 $49 $00
+    db   $ff                                           ;; 05:6a7a ?
 
 map00_room0c_0a_tiles:
     db $41,$42,        $d1,        $d1,$41,$41         ;; 05:6a7b ??????
@@ -2768,8 +2939,9 @@ map00_room0c_0a_tiles:
     db $41,$61,        $a4,        $c5,$45,$60         ;; 05:6a9f ??????
     db $41,$41,$31,$61,        $a4,$24,$60,$41         ;; 05:6aa5 ????????
 
-map00_room0d_0a_objects:
-    db   $d6, $00, $ff                                 ;; 05:6aad ???
+map00_room0d_0a_script:
+    dw   $00d6                                         ;; 05:6aad $d6 $00
+    db   $ff                                           ;; 05:6aaf ?
 
 map00_room0d_0a_tiles:
     db $42,$42,        $d1,$75,$24,$24,$62,$41         ;; 05:6ab0 ????????
@@ -2781,8 +2953,9 @@ map00_room0d_0a_tiles:
     db $61,        $a4,        $a4,$24,$60,$41         ;; 05:6ada ??????
     db $41,$61,$60,$31,$61,$60,$61,$60,$41,$41         ;; 05:6ae0 ??????????
 
-map00_room0e_0a_objects:
-    db   $79, $00, $ff                                 ;; 05:6aea ???
+map00_room0e_0a_script:
+    dw   $0079                                         ;; 05:6aea $79 $00
+    db   $ff                                           ;; 05:6aec ?
 
 map00_room0e_0a_tiles:
     db $41,$42,$42,        $d1,        $c1,$41         ;; 05:6aed ??????
@@ -2794,8 +2967,9 @@ map00_room0e_0a_tiles:
     db $40,        $80,        $80,$3b,$00,$50         ;; 05:6b15 ??????
     db $41,$31,$40,        $80,        $80,$30         ;; 05:6b1b ??????
 
-map00_room0f_0a_objects:
-    db   $7c, $00, $ff                                 ;; 05:6b21 ???
+map00_room0f_0a_script:
+    dw   $007c                                         ;; 05:6b21 $7c $00
+    db   $ff                                           ;; 05:6b23 ?
 
 map00_room0f_0a_tiles:
     db $41,$41,$42,        $80,$00,$10,$11,$11         ;; 05:6b24 ????????
@@ -2807,8 +2981,9 @@ map00_room0f_0a_tiles:
     db $41,$40,        $80,$00,$20,        $91         ;; 05:6b4a ??????
     db $41,$41,$31,$40,$30,$31,$40,$10,$11,$11         ;; 05:6b50 ??????????
 
-map00_room00_0b_objects:
-    db   $46, $00, $ff                                 ;; 05:6b5a ???
+map00_room00_0b_script:
+    dw   $0046                                         ;; 05:6b5a $46 $00
+    db   $ff                                           ;; 05:6b5c ?
 
 map00_room00_0b_tiles:
     db         $91,$11,$12,        $85,$05,$41         ;; 05:6b5d ??????
@@ -2820,8 +2995,9 @@ map00_room00_0b_tiles:
     db         $91,$12,        $85,$05,$05,$30         ;; 05:6b81 ??????
     db         $91,$12,$30,$40,$30,$40,$30,$41         ;; 05:6b87 ????????
 
-map00_room01_0b_objects:
-    db   $5b, $00, $ff                                 ;; 05:6b8f ???
+map00_room01_0b_script:
+    dw   $005b                                         ;; 05:6b8f $5b $00
+    db   $ff                                           ;; 05:6b91 ?
 
 map00_room01_0b_tiles:
     db $41,$42,$05,$05,        $c1,        $c1         ;; 05:6b92 ??????
@@ -2833,8 +3009,9 @@ map00_room01_0b_tiles:
     db $40,$30,$40,        $85,$05,$05,$30,$31         ;; 05:6bb6 ????????
     db         $c1,$40,$05,$05,$30,$31,$41,$41         ;; 05:6bbe ????????
 
-map00_room02_0b_objects:
-    db   $5e, $00, $ff                                 ;; 05:6bc6 ???
+map00_room02_0b_script:
+    dw   $005e                                         ;; 05:6bc6 $5e $00
+    db   $ff                                           ;; 05:6bc8 ?
 
 map00_room02_0b_tiles:
     db $42,$52,$05,$05,$50,        $d1,$41,$41         ;; 05:6bc9 ????????
@@ -2846,8 +3023,9 @@ map00_room02_0b_tiles:
     db $40,$30,        $c1,$41,$40,$30,$40,$30         ;; 05:6beb ????????
     db         $c1,        $c1,        $c1,$41         ;; 05:6bf3 ????
 
-map00_room03_0b_objects:
-    db   $5b, $00, $ff                                 ;; 05:6bf7 ???
+map00_room03_0b_script:
+    dw   $005b                                         ;; 05:6bf7 $5b $00
+    db   $ff                                           ;; 05:6bf9 ?
 
 map00_room03_0b_tiles:
     db $42,$42,$51,$52,        $85,$05,$05,$41         ;; 05:6bfa ????????
@@ -2859,8 +3037,9 @@ map00_room03_0b_tiles:
     db $40,$30,$40,        $85,$05,$05,$30,$41         ;; 05:6c1c ????????
     db         $c1,$40,$05,$30,$31,$31,$41,$41         ;; 05:6c24 ????????
 
-map00_room04_0b_objects:
-    db   $58, $00, $ff                                 ;; 05:6c2c ???
+map00_room04_0b_script:
+    dw   $0058                                         ;; 05:6c2c $58 $00
+    db   $ff                                           ;; 05:6c2e ?
 
 map00_room04_0b_tiles:
     db $42,$00,$00,$36,$17,        $80,$50,$41         ;; 05:6c2f ????????
@@ -2872,8 +3051,9 @@ map00_room04_0b_tiles:
     db $41,$40,$30,$40,$00,$00,$30,$40,$30,$31         ;; 05:6c5b ??????????
     db         $c1,$41,$40,$30,        $c1,$41         ;; 05:6c65 ??????
 
-map00_room05_0b_objects:
-    db   $58, $00, $24, $88, $03, $ff                  ;; 05:6c6b ??????
+map00_room05_0b_script:
+    dw   $0058                                         ;; 05:6c6b $58 $00
+    db   $24, $88, $03, $ff                            ;; 05:6c6d ????
 
 map00_room05_0b_tiles:
     db $41,$42,$42,        $d1,$41,        $d1         ;; 05:6c71 ??????
@@ -2885,8 +3065,9 @@ map00_room05_0b_tiles:
     db $31,$40,        $80,$29,        $80,$37         ;; 05:6c97 ??????
     db $41,$41,        $80,$17,$37,$37,$00,$37         ;; 05:6c9d ????????
 
-map00_room06_0b_objects:
-    db   $58, $00, $ff                                 ;; 05:6ca5 ???
+map00_room06_0b_script:
+    dw   $0058                                         ;; 05:6ca5 $58 $00
+    db   $ff                                           ;; 05:6ca7 ?
 
 map00_room06_0b_tiles:
     db $51,$53,        $b7,        $b7,$37,$37         ;; 05:6ca8 ??????
@@ -2898,8 +3079,9 @@ map00_room06_0b_tiles:
     db $37,$6e,        $80,        $80,$00,$00         ;; 05:6cd0 ??????
     db $37,$6e,$00,        $b7,$00,$00,$37,$37         ;; 05:6cd6 ????????
 
-map00_room07_0b_objects:
-    db   $58, $00, $ff                                 ;; 05:6cde ???
+map00_room07_0b_script:
+    dw   $0058                                         ;; 05:6cde $58 $00
+    db   $ff                                           ;; 05:6ce0 ?
 
 map00_room07_0b_tiles:
     db $37,$37,$6e,$33,        $b7,        $b7         ;; 05:6ce1 ??????
@@ -2911,8 +3093,9 @@ map00_room07_0b_tiles:
     db         $80,$00,        $b7,        $b7         ;; 05:6d0b ????
     db         $b7,        $b7,        $b7,$37         ;; 05:6d0f ????
 
-map00_room08_0b_objects:
-    db   $3d, $00, $16, $7a, $02, $ff                  ;; 05:6d13 ??????
+map00_room08_0b_script:
+    dw   $003d                                         ;; 05:6d13 $3d $00
+    db   $16, $7a, $02, $ff                            ;; 05:6d15 ????
 
 map00_room08_0b_tiles:
     db $37,$37,$6e,$17,$41,$41,$1c,        $c1         ;; 05:6d19 ????????
@@ -2924,8 +3107,9 @@ map00_room08_0b_tiles:
     db $37,$37,        $80,$00,$17,$00,$00,$41         ;; 05:6d47 ????????
     db $37,$37,$6e,        $80,$17,$00,$00,$41         ;; 05:6d4f ????????
 
-map00_room09_0b_objects:
-    db   $91, $04, $22, $79, $02, $ff                  ;; 05:6d57 ??????
+map00_room09_0b_script:
+    dw   $0491                                         ;; 05:6d57 $91 $04
+    db   $22, $79, $02, $ff                            ;; 05:6d59 ????
 
 map00_room09_0b_tiles:
     db $41,$42,        $c1,$42,$00,$00,$37,$37         ;; 05:6d5d ????????
@@ -2937,8 +3121,9 @@ map00_room09_0b_tiles:
     db $41,$40,        $80,        $80,$00,$30         ;; 05:6d85 ??????
     db $41,$41,        $b1,$40,$30,$40,$30,$41         ;; 05:6d8b ????????
 
-map00_room0a_0b_objects:
-    db   $52, $00, $ff                                 ;; 05:6d93 ???
+map00_room0a_0b_script:
+    dw   $0052                                         ;; 05:6d93 $52 $00
+    db   $ff                                           ;; 05:6d95 ?
 
 map00_room0a_0b_tiles:
     db $37,$37,$00,        $b7,        $b7,$37         ;; 05:6d96 ??????
@@ -2950,8 +3135,9 @@ map00_room0a_0b_tiles:
     db $40,$7f,$7f,$00,$00,$7f,$7f,        $b7         ;; 05:6dc0 ????????
     db $41,$31,$40,$00,$00,        $b7,$37,$37         ;; 05:6dc8 ????????
 
-map00_room0b_0b_objects:
-    db   $49, $00, $ff                                 ;; 05:6dd0 ???
+map00_room0b_0b_script:
+    dw   $0049                                         ;; 05:6dd0 $49 $00
+    db   $ff                                           ;; 05:6dd2 ?
 
 map00_room0b_0b_tiles:
     db $37,        $80,$17,        $a4,$24,$41         ;; 05:6dd3 ??????
@@ -2963,8 +3149,9 @@ map00_room0b_0b_tiles:
     db $37,$37,        $80,        $80,$00,$00         ;; 05:6df5 ??????
     db         $b7,        $b7,        $b7,$37         ;; 05:6dfb ????
 
-map00_room0c_0b_objects:
-    db   $49, $00, $ff                                 ;; 05:6dff ???
+map00_room0c_0b_script:
+    dw   $0049                                         ;; 05:6dff $49 $00
+    db   $ff                                           ;; 05:6e01 ?
 
 map00_room0c_0b_tiles:
     db $42,$51,$51,$75,        $a4,$24,$62,$41         ;; 05:6e02 ????????
@@ -2976,8 +3163,9 @@ map00_room0c_0b_tiles:
     db         $80,        $80,$00,$00,$17,$07         ;; 05:6e28 ??????
     db $37,$37,$00,$00,$37,$37,$00,$00,$17,$6c         ;; 05:6e2e ??????????
 
-map00_room0d_0b_objects:
-    db   $79, $00, $24, $89, $03, $ff                  ;; 05:6e38 ??????
+map00_room0d_0b_script:
+    dw   $0079                                         ;; 05:6e38 $79 $00
+    db   $24, $89, $03, $ff                            ;; 05:6e3a ????
 
 map00_room0d_0b_tiles:
     db         $c1,        $c1,        $c1,$41         ;; 05:6e3e ????
@@ -2989,8 +3177,9 @@ map00_room0d_0b_tiles:
     db         $87,        $87,        $87,$07         ;; 05:6e64 ????
     db $6d,$6c,$6d,$6c,$6d,$6c,$6d,$6c,$6d,$6c         ;; 05:6e68 ??????????
 
-map00_room0e_0b_objects:
-    db   $79, $00, $ff                                 ;; 05:6e72 ???
+map00_room0e_0b_script:
+    dw   $0079                                         ;; 05:6e72 $79 $00
+    db   $ff                                           ;; 05:6e74 ?
 
 map00_room0e_0b_tiles:
     db $41,$41,$53,        $80,        $80,$41         ;; 05:6e75 ??????
@@ -3002,8 +3191,9 @@ map00_room0e_0b_tiles:
     db $07,$08,        $c1,        $80,$00,$41         ;; 05:6ea1 ??????
     db $6c,$18,        $c1,$40,$00,$00,$30,$41         ;; 05:6ea7 ????????
 
-map00_room0f_0b_objects:
-    db   $7c, $00, $ff                                 ;; 05:6eaf ???
+map00_room0f_0b_script:
+    dw   $007c                                         ;; 05:6eaf $7c $00
+    db   $ff                                           ;; 05:6eb1 ?
 
 map00_room0f_0b_tiles:
     db $41,$42,        $d1,$51,$53,$10,$11,$11         ;; 05:6eb2 ????????
@@ -3015,8 +3205,9 @@ map00_room0f_0b_tiles:
     db $40,        $80,$00,$00,$10,        $91         ;; 05:6edc ??????
     db $41,$40,$30,$40,$30,$40,$10,        $91         ;; 05:6ee2 ????????
 
-map00_room00_0c_objects:
-    db   $5b, $00, $ff                                 ;; 05:6eea ???
+map00_room00_0c_script:
+    dw   $005b                                         ;; 05:6eea $5b $00
+    db   $ff                                           ;; 05:6eec ?
 
 map00_room00_0c_tiles:
     db         $91,$12,$50,$51,$52,$50,$41,$41         ;; 05:6eed ????????
@@ -3028,8 +3219,9 @@ map00_room00_0c_tiles:
     db $11,$11,$12,        $85,$05,$05,$47,$41         ;; 05:6f13 ????????
     db $11,$11,$12,        $85,$05,$47,$30,$41         ;; 05:6f1b ????????
 
-map00_room01_0c_objects:
-    db   $5e, $00, $ff                                 ;; 05:6f23 ???
+map00_room01_0c_script:
+    dw   $005e                                         ;; 05:6f23 $5e $00
+    db   $ff                                           ;; 05:6f25 ?
 
 map00_room01_0c_tiles:
     db $41,$42,$51,$52,$05,$05,$50,$51,$41,$41         ;; 05:6f26 ??????????
@@ -3041,9 +3233,10 @@ map00_room01_0c_tiles:
     db $41,$40,        $85,        $85,$50,$41         ;; 05:6f4a ??????
     db $41,$41,$40,$30,$40,$30,$40,$05,$30,$41         ;; 05:6f50 ??????????
 
-map00_room02_0c_objects:
-    db   $7c, $04, $17, $81, $02, $34, $0c, $04        ;; 05:6f5a ????????
-    db   $36, $0d, $04, $38, $0e, $04, $ff             ;; 05:6f62 ???????
+map00_room02_0c_script:
+    dw   $047c                                         ;; 05:6f5a $7c $04
+    db   $17, $81, $02, $34, $0c, $04, $36, $0d        ;; 05:6f5c ????????
+    db   $04, $38, $0e, $04, $ff                       ;; 05:6f64 ?????
 
 map00_room02_0c_tiles:
     db         $c7,$47,$47,        $c1,$41,$41         ;; 05:6f69 ??????
@@ -3055,8 +3248,9 @@ map00_room02_0c_tiles:
     db         $c7,$26,$27,$28,        $80,$47         ;; 05:6f95 ??????
     db         $c7,        $c7,$00,$00,$47,$47         ;; 05:6f9b ??????
 
-map00_room03_0c_objects:
-    db   $5e, $00, $ff                                 ;; 05:6fa1 ???
+map00_room03_0c_script:
+    dw   $005e                                         ;; 05:6fa1 $5e $00
+    db   $ff                                           ;; 05:6fa3 ?
 
 map00_room03_0c_tiles:
     db $41,$42,$51,$52,$05,$50,$51,$51,$41,$41         ;; 05:6fa4 ??????????
@@ -3068,8 +3262,9 @@ map00_room03_0c_tiles:
     db $41,$40,        $85,        $85,$05,$30         ;; 05:6fc8 ??????
     db $41,$41,        $85,$05,$30,$40,$30,$41         ;; 05:6fce ????????
 
-map00_room04_0c_objects:
-    db   $5e, $00, $ff                                 ;; 05:6fd6 ???
+map00_room04_0c_script:
+    dw   $005e                                         ;; 05:6fd6 $5e $00
+    db   $ff                                           ;; 05:6fd8 ?
 
 map00_room04_0c_tiles:
     db $42,$42,        $d1,        $c1,$41,$41         ;; 05:6fd9 ??????
@@ -3081,8 +3276,9 @@ map00_room04_0c_tiles:
     db $31,$40,        $85,$05,$30,$40,$30,$41         ;; 05:7001 ????????
     db $41,$41,$40,$30,$40,$30,        $c1,$41         ;; 05:7009 ????????
 
-map00_room05_0c_objects:
-    db   $58, $00, $ff                                 ;; 05:7011 ???
+map00_room05_0c_script:
+    dw   $0058                                         ;; 05:7011 $58 $00
+    db   $ff                                           ;; 05:7013 ?
 
 map00_room05_0c_tiles:
     db $41,$53,        $80,$17,$37,$37,$6e,$37         ;; 05:7014 ????????
@@ -3094,8 +3290,9 @@ map00_room05_0c_tiles:
     db $41,$41,$31,$40,        $80,        $80         ;; 05:703c ??????
     db         $c1,$41,        $b1,$31,$40,$30         ;; 05:7042 ??????
 
-map00_room06_0c_objects:
-    db   $58, $00, $ff                                 ;; 05:7048 ???
+map00_room06_0c_script:
+    dw   $0058                                         ;; 05:7048 $58 $00
+    db   $ff                                           ;; 05:704a ?
 
 map00_room06_0c_tiles:
     db $37,$6e,$00,        $b7,$6e,$00,$37,$37         ;; 05:704b ????????
@@ -3107,8 +3304,9 @@ map00_room06_0c_tiles:
     db         $80,$00,$15,$11,        $b8,$38         ;; 05:7073 ??????
     db $40,$30,$31,$40,$10,        $91,$11,$11         ;; 05:7079 ????????
 
-map00_room07_0c_objects:
-    db   $58, $00, $24, $8a, $03, $ff                  ;; 05:7081 ??????
+map00_room07_0c_script:
+    dw   $0058                                         ;; 05:7081 $58 $00
+    db   $24, $8a, $03, $ff                            ;; 05:7083 ????
 
 map00_room07_0c_tiles:
     db         $b7,        $b7,        $b7,$37         ;; 05:7087 ????
@@ -3120,8 +3318,9 @@ map00_room07_0c_tiles:
     db $38,$02,        $80,$00,$00,$30,$40,$30         ;; 05:70af ????????
     db $11,$11,$02,$00,$30,$40,$30,        $c1         ;; 05:70b7 ????????
 
-map00_room08_0c_objects:
-    db   $55, $00, $ff                                 ;; 05:70bf ???
+map00_room08_0c_script:
+    dw   $0055                                         ;; 05:70bf $55 $00
+    db   $ff                                           ;; 05:70c1 ?
 
 map00_room08_0c_tiles:
     db $37,$37,$6e,        $80,$17,$00,$00,$41         ;; 05:70c2 ????????
@@ -3133,8 +3332,9 @@ map00_room08_0c_tiles:
     db $40,$00,$00,$30,$40,$00,$17,$00,$00,$37         ;; 05:70e6 ??????????
     db $41,$40,$30,$41,$41,$40,$17,$00,$00,$37         ;; 05:70f0 ??????????
 
-map00_room09_0c_objects:
-    db   $4f, $00, $ff                                 ;; 05:70fa ???
+map00_room09_0c_script:
+    dw   $004f                                         ;; 05:70fa $4f $00
+    db   $ff                                           ;; 05:70fc ?
 
 map00_room09_0c_tiles:
     db $41,$42,        $d1,        $c1,$41,$41         ;; 05:70fd ??????
@@ -3146,8 +3346,9 @@ map00_room09_0c_tiles:
     db $37,$37,$00,        $b7,$00,$00,$37,$37         ;; 05:7119 ????????
     db $37,$37,$00,        $b7,$00,$00,$37,$37         ;; 05:7121 ????????
 
-map00_room0a_0c_objects:
-    db   $52, $00, $ff                                 ;; 05:7129 ???
+map00_room0a_0c_script:
+    dw   $0052                                         ;; 05:7129 $52 $00
+    db   $ff                                           ;; 05:712b ?
 
 map00_room0a_0c_tiles:
     db $41,$42,$42,$00,$00,        $b7,$37,$37         ;; 05:712c ????????
@@ -3159,8 +3360,9 @@ map00_room0a_0c_tiles:
     db $37,$37,$00,$37,$00,        $b7,$37,$37         ;; 05:7150 ????????
     db $37,$37,$00,$37,$00,        $b7,$37,$37         ;; 05:7158 ????????
 
-map00_room0b_0c_objects:
-    db   $4f, $00, $ff                                 ;; 05:7160 ???
+map00_room0b_0c_script:
+    dw   $004f                                         ;; 05:7160 $4f $00
+    db   $ff                                           ;; 05:7162 ?
 
 map00_room0b_0c_tiles:
     db         $b7,        $b7,        $b7,$37         ;; 05:7163 ????
@@ -3172,8 +3374,9 @@ map00_room0b_0c_tiles:
     db         $b7,$37,$00,$00,        $b7,$37         ;; 05:717f ??????
     db         $b7,$37,$00,$00,        $b7,$37         ;; 05:7185 ??????
 
-map00_room0c_0c_objects:
-    db   $52, $00, $ff                                 ;; 05:718b ???
+map00_room0c_0c_script:
+    dw   $0052                                         ;; 05:718b $52 $00
+    db   $ff                                           ;; 05:718d ?
 
 map00_room0c_0c_tiles:
     db $37,$37,$00,$00,$37,$37,$00,$00,$16,$09         ;; 05:718e ??????????
@@ -3185,9 +3388,9 @@ map00_room0c_0c_tiles:
     db $37,$37,        $80,$00,$00,$37,$16,$23         ;; 05:71b6 ????????
     db $37,$37,$00,$00,        $b7,$37,$16,$17         ;; 05:71be ????????
 
-map00_room0d_0c_objects:
-    db   $8e, $04, $44, $77, $02, $45, $77, $02        ;; 05:71c6 ????????
-    db   $ff                                           ;; 05:71ce ?
+map00_room0d_0c_script:
+    dw   $048e                                         ;; 05:71c6 $8e $04
+    db   $44, $77, $02, $45, $77, $02, $ff             ;; 05:71c8 ???????
 
 map00_room0d_0c_tiles:
     db $55,$0a,        $d5,        $d5,$09,$55         ;; 05:71cf ??????
@@ -3199,8 +3402,9 @@ map00_room0d_0c_tiles:
     db         $a3,$23,$56,$57,        $a3,$23         ;; 05:71ff ??????
     db         $97,$17,$56,$57,        $97,$17         ;; 05:7205 ??????
 
-map00_room0e_0c_objects:
-    db   $79, $00, $ff                                 ;; 05:720b ???
+map00_room0e_0c_script:
+    dw   $0079                                         ;; 05:720b $79 $00
+    db   $ff                                           ;; 05:720d ?
 
 map00_room0e_0c_tiles:
     db $0a,$18,$41,$41,$51,$53,$00,$00,$50,$41         ;; 05:720e ??????????
@@ -3212,8 +3416,9 @@ map00_room0e_0c_tiles:
     db $23,$18,$30,$41,$41,$40,$30,$40,$00,$00         ;; 05:723e ??????????
     db $17,$18,        $c1,        $c1,$40,$30         ;; 05:7248 ??????
 
-map00_room0f_0c_objects:
-    db   $7c, $00, $ff                                 ;; 05:724e ???
+map00_room0f_0c_script:
+    dw   $007c                                         ;; 05:724e $7c $00
+    db   $ff                                           ;; 05:7250 ?
 
 map00_room0f_0c_tiles:
     db $41,$42,$42,$51,$51,$52,$10,        $91         ;; 05:7251 ????????
@@ -3225,8 +3430,9 @@ map00_room0f_0c_tiles:
     db         $80,$00,$00,$10,        $91,$11         ;; 05:7279 ??????
     db $40,        $80,$00,$10,        $91,$11         ;; 05:727f ??????
 
-map00_room00_0d_objects:
-    db   $5e, $00, $ff                                 ;; 05:7285 ???
+map00_room00_0d_script:
+    dw   $005e                                         ;; 05:7285 $5e $00
+    db   $ff                                           ;; 05:7287 ?
 
 map00_room00_0d_tiles:
     db $11,$11,$12,        $85,$05,$47,$50,$51         ;; 05:7288 ????????
@@ -3238,8 +3444,9 @@ map00_room00_0d_tiles:
     db         $91,        $91,        $91,$11         ;; 05:72ae ????
     db         $91,        $91,        $91,$11         ;; 05:72b2 ????
 
-map00_room01_0d_objects:
-    db   $46, $00, $ff                                 ;; 05:72b6 ???
+map00_room01_0d_script:
+    dw   $0046                                         ;; 05:72b6 $46 $00
+    db   $ff                                           ;; 05:72b8 ?
 
 map00_room01_0d_tiles:
     db $51,$51,$52,$50,$51,$51,$52,$05,$50,$51         ;; 05:72b9 ??????????
@@ -3251,8 +3458,9 @@ map00_room01_0d_tiles:
     db         $91,        $91,        $91,$11         ;; 05:72db ????
     db         $91,        $91,        $91,$11         ;; 05:72df ????
 
-map00_room02_0d_objects:
-    db   $5b, $00, $ff                                 ;; 05:72e3 ???
+map00_room02_0d_script:
+    dw   $005b                                         ;; 05:72e3 $5b $00
+    db   $ff                                           ;; 05:72e5 ?
 
 map00_room02_0d_tiles:
     db         $d1,$51,$51,$53,$05,$05,$50,$41         ;; 05:72e6 ????????
@@ -3264,8 +3472,9 @@ map00_room02_0d_tiles:
     db $11,$11,$02,        $85,        $85,$05         ;; 05:7304 ??????
     db $11,$11,$12,$30,$31,$40,$05,$30,$40,$30         ;; 05:730a ??????????
 
-map00_room03_0d_objects:
-    db   $5e, $00, $ff                                 ;; 05:7314 ???
+map00_room03_0d_script:
+    dw   $005e                                         ;; 05:7314 $5e $00
+    db   $ff                                           ;; 05:7316 ?
 
 map00_room03_0d_tiles:
     db $42,$52,        $85,$05,$50,$51,$41,$41         ;; 05:7317 ????????
@@ -3277,8 +3486,9 @@ map00_room03_0d_tiles:
     db $31,$40,        $85,$05,$30,$40,$05,$30         ;; 05:733d ????????
     db $41,$41,$40,$30,$40,$30,$41,$41,$31,$41         ;; 05:7345 ??????????
 
-map00_room04_0d_objects:
-    db   $5e, $00, $25, $8b, $03, $ff                  ;; 05:734f ??????
+map00_room04_0d_script:
+    dw   $005e                                         ;; 05:734f $5e $00
+    db   $25, $8b, $03, $ff                            ;; 05:7351 ????
 
 map00_room04_0d_tiles:
     db $41,$42,        $c1,        $c1,$41,$41         ;; 05:7355 ??????
@@ -3290,8 +3500,9 @@ map00_room04_0d_tiles:
     db $40,        $80,$00,$30,$40,$00,$00,$41         ;; 05:737d ????????
     db $41,$40,$30,$40,$30,$41,$41,$40,$30,$41         ;; 05:7385 ??????????
 
-map00_room05_0d_objects:
-    db   $7c, $00, $ff                                 ;; 05:738f ???
+map00_room05_0d_script:
+    dw   $007c                                         ;; 05:738f $7c $00
+    db   $ff                                           ;; 05:7391 ?
 
 map00_room05_0d_tiles:
     db $42,$42,        $d1,        $d1,$51,$51         ;; 05:7392 ??????
@@ -3303,8 +3514,9 @@ map00_room05_0d_tiles:
     db $40,$47,$05,$47,$10,        $91,$11,$11         ;; 05:73ba ????????
     db $41,$47,$05,$47,$10,        $91,$11,$11         ;; 05:73c2 ????????
 
-map00_room06_0d_objects:
-    db   $7c, $00, $14, $74, $04, $ff                  ;; 05:73ca ??????
+map00_room06_0d_script:
+    dw   $007c                                         ;; 05:73ca $7c $00
+    db   $14, $74, $04, $ff                            ;; 05:73cc ????
 
 map00_room06_0d_tiles:
     db         $d1,$53,$10,        $91,$11,$11         ;; 05:73d0 ??????
@@ -3316,8 +3528,9 @@ map00_room06_0d_tiles:
     db         $91,        $91,        $91,$11         ;; 05:73f0 ????
     db         $91,        $91,        $91,$11         ;; 05:73f4 ????
 
-map00_room07_0d_objects:
-    db   $46, $00, $ff                                 ;; 05:73f8 ???
+map00_room07_0d_script:
+    dw   $0046                                         ;; 05:73f8 $46 $00
+    db   $ff                                           ;; 05:73fa ?
 
 map00_room07_0d_tiles:
     db $11,$11,$12,$00,$50,        $c1,$41,$41         ;; 05:73fb ????????
@@ -3329,8 +3542,9 @@ map00_room07_0d_tiles:
     db         $91,$12,        $80,$00,$00,$30         ;; 05:742b ??????
     db         $91,$12,        $80,$00,$30,$41         ;; 05:7431 ??????
 
-map00_room08_0d_objects:
-    db   $3d, $00, $33, $7b, $02, $ff                  ;; 05:7437 ??????
+map00_room08_0d_script:
+    dw   $003d                                         ;; 05:7437 $3d $00
+    db   $33, $7b, $02, $ff                            ;; 05:7439 ????
 
 map00_room08_0d_tiles:
     db $41,$42,        $c1,$42,$17,$00,$00,$37         ;; 05:743d ????????
@@ -3342,8 +3556,9 @@ map00_room08_0d_tiles:
     db $41,$40,        $80,        $80,$30,$31         ;; 05:746b ??????
     db $41,$41,$00,$30,$31,$31,$40,$00,$41,$41         ;; 05:7471 ??????????
 
-map00_room09_0d_objects:
-    db   $52, $00, $ff                                 ;; 05:747b ???
+map00_room09_0d_script:
+    dw   $0052                                         ;; 05:747b $52 $00
+    db   $ff                                           ;; 05:747d ?
 
 map00_room09_0d_tiles:
     db $37,$37,$00,        $b7,$00,$00,$37,$37         ;; 05:747e ????????
@@ -3355,8 +3570,9 @@ map00_room09_0d_tiles:
     db $31,$40,$00,$4e,$17,$00,$30,$31,$31,$41         ;; 05:74a0 ??????????
     db $41,$41,$00,$00,$17,$00,        $c1,$41         ;; 05:74aa ????????
 
-map00_room0a_0d_objects:
-    db   $4f, $00, $ff                                 ;; 05:74b2 ???
+map00_room0a_0d_script:
+    dw   $004f                                         ;; 05:74b2 $4f $00
+    db   $ff                                           ;; 05:74b4 ?
 
 map00_room0a_0d_tiles:
     db $37,$37,$00,$37,$00,        $b7,$37,$37         ;; 05:74b5 ????????
@@ -3368,8 +3584,9 @@ map00_room0a_0d_tiles:
     db $41,        $80,        $80,        $80         ;; 05:74df ????
     db $41,$40,$30,$40,$00,$00,$37,$37,$00,$37         ;; 05:74e3 ??????????
 
-map00_room0b_0d_objects:
-    db   $52, $00, $ff                                 ;; 05:74ed ???
+map00_room0b_0d_script:
+    dw   $0052                                         ;; 05:74ed $52 $00
+    db   $ff                                           ;; 05:74ef ?
 
 map00_room0b_0d_tiles:
     db         $b7,$37,$00,$00,        $b7,$37         ;; 05:74f0 ??????
@@ -3381,8 +3598,9 @@ map00_room0b_0d_tiles:
     db         $80,$00,$37,$00,$00,        $b7         ;; 05:751a ??????
     db $37,        $80,$37,$00,$00,        $b7         ;; 05:7520 ??????
 
-map00_room0c_0d_objects:
-    db   $4f, $00, $ff                                 ;; 05:7526 ???
+map00_room0c_0d_script:
+    dw   $004f                                         ;; 05:7526 $4f $00
+    db   $ff                                           ;; 05:7528 ?
 
 map00_room0c_0d_tiles:
     db $37,$37,$00,$00,        $b7,$37,$26,$27         ;; 05:7529 ????????
@@ -3394,8 +3612,9 @@ map00_room0c_0d_tiles:
     db $37,$37,$00,$00,        $b7,$37,$37,$30         ;; 05:754b ????????
     db $37,$37,$00,$00,        $b7,$37,$30,$41         ;; 05:7553 ????????
 
-map00_room0d_0d_objects:
-    db   $52, $00, $ff                                 ;; 05:755b ???
+map00_room0d_0d_script:
+    dw   $0052                                         ;; 05:755b $52 $00
+    db   $ff                                           ;; 05:755d ?
 
 map00_room0d_0d_tiles:
     db         $a7,$27,$56,$57,        $a7,$27         ;; 05:755e ??????
@@ -3407,8 +3626,9 @@ map00_room0d_0d_tiles:
     db $37,$37,        $80,        $b7,$37,$30         ;; 05:757e ??????
     db $31,$31,$40,$00,$30,        $b1,$31,$41         ;; 05:7584 ????????
 
-map00_room0e_0d_objects:
-    db   $79, $00, $ff                                 ;; 05:758c ???
+map00_room0e_0d_script:
+    dw   $0079                                         ;; 05:758c $79 $00
+    db   $ff                                           ;; 05:758e ?
 
 map00_room0e_0d_tiles:
     db $17,$17,        $c1,$42,$51,$51,$41,$41         ;; 05:758f ????????
@@ -3420,8 +3640,9 @@ map00_room0e_0d_tiles:
     db $31,$40,$49,$49,$00,$17,$00,$49,$30,$41         ;; 05:75c5 ??????????
     db $41,$41,$40,$49,$00,$17,$00,$49,$41,$41         ;; 05:75cf ??????????
 
-map00_room0f_0d_objects:
-    db   $7c, $00, $ff                                 ;; 05:75d9 ???
+map00_room0f_0d_script:
+    dw   $007c                                         ;; 05:75d9 $7c $00
+    db   $ff                                           ;; 05:75db ?
 
 map00_room0f_0d_tiles:
     db $42,        $80,$00,$10,        $91,$11         ;; 05:75dc ??????
@@ -3433,9 +3654,9 @@ map00_room0f_0d_tiles:
     db $53,$49,$49,        $80,$10,        $91         ;; 05:7606 ??????
     db $40,        $c9,$00,$00,$10,        $91         ;; 05:760c ??????
 
-map00_room00_0e_objects:
-    db   $3d, $00, $27, $8c, $02, $56, $8d, $02        ;; 05:7612 ????????
-    db   $ff                                           ;; 05:761a ?
+map00_room00_0e_script:
+    dw   $003d                                         ;; 05:7612 $3d $00
+    db   $27, $8c, $02, $56, $8d, $02, $ff             ;; 05:7614 ???????
 
 map00_room00_0e_tiles:
     db         $91,        $91,$11,        $a1         ;; 05:761b ????
@@ -3447,8 +3668,9 @@ map00_room00_0e_tiles:
     db $11,$11,$12,        $80,$00,$50,$42,$41         ;; 05:7647 ????????
     db $11,$11,$12,        $80,$00,$30,$41,$41         ;; 05:764f ????????
 
-map00_room01_0e_objects:
-    db   $79, $00, $ff                                 ;; 05:7657 ???
+map00_room01_0e_script:
+    dw   $0079                                         ;; 05:7657 $79 $00
+    db   $ff                                           ;; 05:7659 ?
 
 map00_room01_0e_tiles:
     db $21,$21,        $91,        $91,$11,$11         ;; 05:765a ??????
@@ -3460,8 +3682,9 @@ map00_room01_0e_tiles:
     db $41,$32,$47,$47,        $80,$10,$11,$11         ;; 05:767e ????????
     db $41,$42,$32,$30,$32,$00,$00,$10,$11,$11         ;; 05:7686 ??????????
 
-map00_room02_0e_objects:
-    db   $46, $00, $ff                                 ;; 05:7690 ???
+map00_room02_0e_script:
+    dw   $0046                                         ;; 05:7690 $46 $00
+    db   $ff                                           ;; 05:7692 ?
 
 map00_room02_0e_tiles:
     db $11,$11,$12,$50,$51,$53,$05,$50,$51,$41         ;; 05:7693 ??????????
@@ -3473,8 +3696,9 @@ map00_room02_0e_tiles:
     db         $91,        $91,        $91,$11         ;; 05:76bb ????
     db         $91,        $91,        $91,$11         ;; 05:76bf ????
 
-map00_room03_0e_objects:
-    db   $a0, $04, $36, $9f, $03, $ff                  ;; 05:76c3 ??????
+map00_room03_0e_script:
+    dw   $04a0                                         ;; 05:76c3 $a0 $04
+    db   $36, $9f, $03, $ff                            ;; 05:76c5 ????
 
 map00_room03_0e_tiles:
     db         $c1,        $c1,        $c1,$41         ;; 05:76c9 ????
@@ -3486,8 +3710,9 @@ map00_room03_0e_tiles:
     db         $91,$12,        $85,$05,$05,$47         ;; 05:76ef ??????
     db         $91,$12,        $85,$05,$47,$47         ;; 05:76f5 ??????
 
-map00_room04_0e_objects:
-    db   $76, $00, $ff                                 ;; 05:76fb ???
+map00_room04_0e_script:
+    dw   $0076                                         ;; 05:76fb $76 $00
+    db   $ff                                           ;; 05:76fd ?
 
 map00_room04_0e_tiles:
     db $41,$42,$42,        $c1,        $c1,$41         ;; 05:76fe ??????
@@ -3499,8 +3724,9 @@ map00_room04_0e_tiles:
     db $47,$47,        $85,        $85,$05,$05         ;; 05:772a ??????
     db         $c7,        $c7,$05,$47,$05,$47         ;; 05:7730 ??????
 
-map00_room05_0e_objects:
-    db   $7c, $00, $ff                                 ;; 05:7736 ???
+map00_room05_0e_script:
+    dw   $007c                                         ;; 05:7736 $7c $00
+    db   $ff                                           ;; 05:7738 ?
 
 map00_room05_0e_tiles:
     db $41,$47,$05,$47,$10,        $91,$11,$11         ;; 05:7739 ????????
@@ -3512,8 +3738,9 @@ map00_room05_0e_tiles:
     db         $85,        $85,        $85,$05         ;; 05:775f ????
     db $47,        $85,        $85,$05,$05,$47         ;; 05:7763 ??????
 
-map00_room06_0e_objects:
-    db   $7c, $00, $ff                                 ;; 05:7769 ???
+map00_room06_0e_script:
+    dw   $007c                                         ;; 05:7769 $7c $00
+    db   $ff                                           ;; 05:776b ?
 
 map00_room06_0e_tiles:
     db         $91,        $91,        $91,$11         ;; 05:776c ????
@@ -3525,8 +3752,9 @@ map00_room06_0e_tiles:
     db         $85,        $85,$05,$05,$10,$11         ;; 05:778c ??????
     db $47,        $85,        $85,$05,$10,$11         ;; 05:7792 ??????
 
-map00_room07_0e_objects:
-    db   $55, $00, $ff                                 ;; 05:7798 ???
+map00_room07_0e_script:
+    dw   $0055                                         ;; 05:7798 $55 $00
+    db   $ff                                           ;; 05:779a ?
 
 map00_room07_0e_tiles:
     db         $91,$12,        $80,$00,$50,$41         ;; 05:779b ??????
@@ -3538,8 +3766,9 @@ map00_room07_0e_tiles:
     db $11,$11,$12,        $80,$30,$40,$30,$31         ;; 05:77bf ????????
     db $11,$11,$12,$00,$00,$30,        $c1,$41         ;; 05:77c7 ????????
 
-map00_room08_0e_objects:
-    db   $23, $02, $ff                                 ;; 05:77cf ???
+map00_room08_0e_script:
+    dw   $0223                                         ;; 05:77cf $23 $02
+    db   $ff                                           ;; 05:77d1 ?
 
 map00_room08_0e_tiles:
     db $37,$37,$00,        $b7,$37,$00,$37,$37         ;; 05:77d2 ????????
@@ -3551,8 +3780,9 @@ map00_room08_0e_tiles:
     db         $b7,        $b7,        $80,$37         ;; 05:77fa ????
     db         $b7,        $b7,$37,$00,$37,$37         ;; 05:77fe ??????
 
-map00_room09_0e_objects:
-    db   $94, $04, $18, $78, $02, $ff                  ;; 05:7804 ??????
+map00_room09_0e_script:
+    dw   $0494                                         ;; 05:7804 $94 $04
+    db   $18, $78, $02, $ff                            ;; 05:7806 ????
 
 map00_room09_0e_tiles:
     db $41,$42,$00,$00,$17,$00,        $c1,$41         ;; 05:780a ????????
@@ -3564,8 +3794,9 @@ map00_room09_0e_tiles:
     db $41,$40,        $80,        $80,$00,$00         ;; 05:7834 ??????
     db $41,$41,$31,$31,$40,$00,$30,        $b1         ;; 05:783a ????????
 
-map00_room0a_0e_objects:
-    db   $55, $00, $ff                                 ;; 05:7842 ???
+map00_room0a_0e_script:
+    dw   $0055                                         ;; 05:7842 $55 $00
+    db   $ff                                           ;; 05:7844 ?
 
 map00_room0a_0e_tiles:
     db $41,$41,$42,$42,$00,$00,$37,$37,$00,$37         ;; 05:7845 ??????????
@@ -3577,8 +3808,9 @@ map00_room0a_0e_tiles:
     db $00,$00,        $85,$05,$20,        $91         ;; 05:786f ??????
     db         $b1,$31,$40,$05,$05,$10,$11,$11         ;; 05:7875 ????????
 
-map00_room0b_0e_objects:
-    db   $55, $00, $ff                                 ;; 05:787d ???
+map00_room0b_0e_script:
+    dw   $0055                                         ;; 05:787d $55 $00
+    db   $ff                                           ;; 05:787f ?
 
 map00_room0b_0e_tiles:
     db $37,        $80,$37,$00,$00,        $b7         ;; 05:7880 ??????
@@ -3590,8 +3822,9 @@ map00_room0b_0e_tiles:
     db $11,$11,$12,        $85,        $85,$41         ;; 05:78a8 ??????
     db $11,$11,$12,        $85,$05,$05,$30,$41         ;; 05:78ae ????????
 
-map00_room0c_0e_objects:
-    db   $52, $00, $ff                                 ;; 05:78b6 ???
+map00_room0c_0e_script:
+    dw   $0052                                         ;; 05:78b6 $52 $00
+    db   $ff                                           ;; 05:78b8 ?
 
 map00_room0c_0e_tiles:
     db $37,$37,$00,$00,        $b7,$37,$41,$41         ;; 05:78b9 ????????
@@ -3603,8 +3836,9 @@ map00_room0c_0e_tiles:
     db $41,$40,        $85,        $85,$10,$11         ;; 05:78dd ??????
     db $41,$41,$40,$30,$31,$40,$05,$05,$10,$11         ;; 05:78e3 ??????????
 
-map00_room0d_0e_objects:
-    db   $55, $00, $44, $74, $04, $ff                  ;; 05:78ed ??????
+map00_room0d_0e_script:
+    dw   $0055                                         ;; 05:78ed $55 $00
+    db   $44, $74, $04, $ff                            ;; 05:78ef ????
 
 map00_room0d_0e_tiles:
     db $41,$42,$42,$2b,        $c1,        $c1         ;; 05:78f3 ??????
@@ -3616,8 +3850,9 @@ map00_room0d_0e_tiles:
     db         $91,$12,$30,$40,$30,        $c1         ;; 05:7921 ??????
     db         $91,$12,        $c1,        $c1         ;; 05:7927 ????
 
-map00_room0e_0e_objects:
-    db   $76, $00, $ff                                 ;; 05:792b ???
+map00_room0e_0e_script:
+    dw   $0076                                         ;; 05:792b $76 $00
+    db   $ff                                           ;; 05:792d ?
 
 map00_room0e_0e_tiles:
     db $41,$42,$42,$49,$00,$17,$00,$49,$50,$51         ;; 05:792e ??????????
@@ -3629,8 +3864,9 @@ map00_room0e_0e_tiles:
     db $40,$49,        $80,$17,$00,$49,$49,$50         ;; 05:7968 ????????
     db $41,$40,        $80,$17,$00,$49,$49,$30         ;; 05:7970 ????????
 
-map00_room0f_0e_objects:
-    db   $7c, $00, $ff                                 ;; 05:7978 ???
+map00_room0f_0e_script:
+    dw   $007c                                         ;; 05:7978 $7c $00
+    db   $ff                                           ;; 05:797a ?
 
 map00_room0f_0e_tiles:
     db $53,        $c9,$00,$00,$10,        $91         ;; 05:797b ??????
@@ -3642,8 +3878,9 @@ map00_room0f_0e_tiles:
     db $41,$53,$49,$49,        $80,$10,$11,$11         ;; 05:79a7 ????????
     db $41,$49,$49,        $80,$00,$10,$11,$11         ;; 05:79af ????????
 
-map00_room00_0f_objects:
-    db   $7c, $00, $ff                                 ;; 05:79b7 ???
+map00_room00_0f_script:
+    dw   $007c                                         ;; 05:79b7 $7c $00
+    db   $ff                                           ;; 05:79b9 ?
 
 map00_room00_0f_tiles:
     db $11,$11,$12,        $80,$00,$50,$41,$42         ;; 05:79ba ????????
@@ -3655,8 +3892,9 @@ map00_room00_0f_tiles:
     db         $91,        $91,        $91,$11         ;; 05:79e0 ????
     db         $91,        $91,        $91,$11         ;; 05:79e4 ????
 
-map00_room01_0f_objects:
-    db   $7c, $00, $ff                                 ;; 05:79e8 ???
+map00_room01_0f_script:
+    dw   $007c                                         ;; 05:79e8 $7c $00
+    db   $ff                                           ;; 05:79ea ?
 
 map00_room01_0f_tiles:
     db         $c2,$42,$52,$00,$00,$10,$11,$11         ;; 05:79eb ????????
@@ -3668,8 +3906,9 @@ map00_room01_0f_tiles:
     db         $91,        $91,        $91,$11         ;; 05:7a11 ????
     db         $91,        $91,        $91,$11         ;; 05:7a15 ????
 
-map00_room02_0f_objects:
-    db   $3d, $00, $ff                                 ;; 05:7a19 ???
+map00_room02_0f_script:
+    dw   $003d                                         ;; 05:7a19 $3d $00
+    db   $ff                                           ;; 05:7a1b ?
 
 map00_room02_0f_tiles:
     db         $91,        $91,        $91,$11         ;; 05:7a1c ????
@@ -3681,8 +3920,9 @@ map00_room02_0f_tiles:
     db         $91,        $91,        $91,$11         ;; 05:7a34 ????
     db         $91,        $91,        $91,$11         ;; 05:7a38 ????
 
-map00_room03_0f_objects:
-    db   $7c, $00, $ff                                 ;; 05:7a3c ???
+map00_room03_0f_script:
+    dw   $007c                                         ;; 05:7a3c $7c $00
+    db   $ff                                           ;; 05:7a3e ?
 
 map00_room03_0f_tiles:
     db         $91,$12,        $85,$05,$47,$47         ;; 05:7a3f ??????
@@ -3694,8 +3934,9 @@ map00_room03_0f_tiles:
     db         $91,        $91,        $91,$11         ;; 05:7a5f ????
     db         $91,        $91,        $91,$11         ;; 05:7a63 ????
 
-map00_room04_0f_objects:
-    db   $7c, $00, $ff                                 ;; 05:7a67 ???
+map00_room04_0f_script:
+    dw   $007c                                         ;; 05:7a67 $7c $00
+    db   $ff                                           ;; 05:7a69 ?
 
 map00_room04_0f_tiles:
     db         $c7,        $c7,$05,$47,$05,$47         ;; 05:7a6a ??????
@@ -3707,8 +3948,9 @@ map00_room04_0f_tiles:
     db         $91,        $91,        $91,$11         ;; 05:7a84 ????
     db         $91,        $91,        $91,$11         ;; 05:7a88 ????
 
-map00_room05_0f_objects:
-    db   $7c, $00, $ff                                 ;; 05:7a8c ???
+map00_room05_0f_script:
+    dw   $007c                                         ;; 05:7a8c $7c $00
+    db   $ff                                           ;; 05:7a8e ?
 
 map00_room05_0f_tiles:
     db $47,        $85,        $85,$05,$47,$47         ;; 05:7a8f ??????
@@ -3720,8 +3962,9 @@ map00_room05_0f_tiles:
     db         $91,        $91,        $91,$11         ;; 05:7aad ????
     db         $91,        $91,        $91,$11         ;; 05:7ab1 ????
 
-map00_room06_0f_objects:
-    db   $7c, $00, $ff                                 ;; 05:7ab5 ???
+map00_room06_0f_script:
+    dw   $007c                                         ;; 05:7ab5 $7c $00
+    db   $ff                                           ;; 05:7ab7 ?
 
 map00_room06_0f_tiles:
     db $47,        $85,        $85,$05,$10,$11         ;; 05:7ab8 ??????
@@ -3733,8 +3976,9 @@ map00_room06_0f_tiles:
     db         $91,        $91,        $91,$11         ;; 05:7adc ????
     db         $91,        $91,        $91,$11         ;; 05:7ae0 ????
 
-map00_room07_0f_objects:
-    db   $46, $00, $ff                                 ;; 05:7ae4 ???
+map00_room07_0f_script:
+    dw   $0046                                         ;; 05:7ae4 $46 $00
+    db   $ff                                           ;; 05:7ae6 ?
 
 map00_room07_0f_tiles:
     db $11,$11,$12,$00,$00,$50,$51,$51,$41,$41         ;; 05:7ae7 ??????????
@@ -3746,8 +3990,9 @@ map00_room07_0f_tiles:
     db         $91,        $91,$11,        $b8         ;; 05:7b0f ????
     db         $91,        $91,        $91,$11         ;; 05:7b13 ????
 
-map00_room08_0f_objects:
-    db   $55, $00, $ff                                 ;; 05:7b17 ???
+map00_room08_0f_script:
+    dw   $0055                                         ;; 05:7b17 $55 $00
+    db   $ff                                           ;; 05:7b19 ?
 
 map00_room08_0f_tiles:
     db $41,$41,$42,$42,        $c1,$00,$41,$41         ;; 05:7b1a ????????
@@ -3759,8 +4004,9 @@ map00_room08_0f_tiles:
     db         $b8,        $b8,$38,        $91         ;; 05:7b46 ????
     db         $91,        $91,        $91,$11         ;; 05:7b4a ????
 
-map00_room09_0f_objects:
-    db   $55, $00, $ff                                 ;; 05:7b4e ???
+map00_room09_0f_script:
+    dw   $0055                                         ;; 05:7b4e $55 $00
+    db   $ff                                           ;; 05:7b50 ?
 
 map00_room09_0f_tiles:
     db $41,$42,$42,$41,$42,$00,        $c1,$41         ;; 05:7b51 ????????
@@ -3772,8 +4018,9 @@ map00_room09_0f_tiles:
     db         $91,$11,$11,        $b8,$38,$38         ;; 05:7b7f ??????
     db         $91,        $91,        $91,$11         ;; 05:7b85 ????
 
-map00_room0a_0f_objects:
-    db   $55, $00, $22, $8d, $03, $ff                  ;; 05:7b89 ??????
+map00_room0a_0f_script:
+    dw   $0055                                         ;; 05:7b89 $55 $00
+    db   $22, $8d, $03, $ff                            ;; 05:7b8b ????
 
 map00_room0a_0f_tiles:
     db         $c1,$41,$42,$05,$05,$10,$11,$11         ;; 05:7b8f ????????
@@ -3785,8 +4032,9 @@ map00_room0a_0f_tiles:
     db         $b8,$38,$38,        $91,$11,$11         ;; 05:7bb9 ??????
     db         $91,        $91,        $91,$11         ;; 05:7bbf ????
 
-map00_room0b_0f_objects:
-    db   $55, $00, $ff                                 ;; 05:7bc3 ???
+map00_room0b_0f_script:
+    dw   $0055                                         ;; 05:7bc3 $55 $00
+    db   $ff                                           ;; 05:7bc5 ?
 
 map00_room0b_0f_tiles:
     db $11,$11,$12,        $85,$05,$05,$41,$41         ;; 05:7bc6 ????????
@@ -3798,8 +4046,9 @@ map00_room0b_0f_tiles:
     db         $91,        $91,        $91,$11         ;; 05:7bea ????
     db         $91,        $91,        $91,$11         ;; 05:7bee ????
 
-map00_room0c_0f_objects:
-    db   $55, $00, $ff                                 ;; 05:7bf2 ???
+map00_room0c_0f_script:
+    dw   $0055                                         ;; 05:7bf2 $55 $00
+    db   $ff                                           ;; 05:7bf4 ?
 
 map00_room0c_0f_tiles:
     db $41,$41,$42,$41,$41,$52,$05,$05,$10,$11         ;; 05:7bf5 ??????????
@@ -3811,8 +4060,9 @@ map00_room0c_0f_tiles:
     db         $91,        $91,        $91,$11         ;; 05:7c1b ????
     db         $91,        $91,        $91,$11         ;; 05:7c1f ????
 
-map00_room0d_0f_objects:
-    db   $79, $00, $25, $8c, $03, $ff                  ;; 05:7c23 ??????
+map00_room0d_0f_script:
+    dw   $0079                                         ;; 05:7c23 $79 $00
+    db   $25, $8c, $03, $ff                            ;; 05:7c25 ????
 
 map00_room0d_0f_tiles:
     db         $91,$12,$50,        $c1,$41,$41         ;; 05:7c29 ??????
@@ -3824,8 +4074,9 @@ map00_room0d_0f_tiles:
     db $11,$11,$02,$50,        $80,        $80         ;; 05:7c55 ??????
     db         $91,$38,        $80,$00,$00,$30         ;; 05:7c5b ??????
 
-map00_room0e_0f_objects:
-    db   $79, $00, $ff                                 ;; 05:7c61 ???
+map00_room0e_0f_script:
+    dw   $0079                                         ;; 05:7c61 $79 $00
+    db   $ff                                           ;; 05:7c63 ?
 
 map00_room0e_0f_tiles:
     db $42,$42,        $80,$17,$00,$49,$49,$50         ;; 05:7c64 ????????
@@ -3837,8 +4088,9 @@ map00_room0e_0f_tiles:
     db $30,$40,$30,$40,        $80,$00,$30,$40         ;; 05:7c8e ????????
     db         $c1,$41,$40,$30,$40,$30,$41,$41         ;; 05:7c96 ????????
 
-map00_room0f_0f_objects:
-    db   $79, $00, $ff                                 ;; 05:7c9e ???
+map00_room0f_0f_script:
+    dw   $0079                                         ;; 05:7c9e $79 $00
+    db   $ff                                           ;; 05:7ca0 ?
 
 map00_room0f_0f_tiles:
     db $53,$49,        $80,$00,$00,$10,$11,$11         ;; 05:7ca1 ????????
@@ -3856,45 +4108,45 @@ mapRoomPointers_09:
     db   $25, $35, $20, $30, $14, $03, $52, $53        ;; 05:7cdd ????????
     db   $24, $34, $21, $31, $12, $13, $42, $43        ;; 05:7ce5 ????????
     db   $15, $45, $10, $40, $01, $04, $51, $54        ;; 05:7ced ????????
-    dw   map09_room00_00_objects                       ;; 05:7cf5 $71 $7d
+    dw   map09_room00_00_script                        ;; 05:7cf5 $71 $7d
     dw   map09_room00_00_tiles                         ;; 05:7cf7 $74 $7d
-    dw   map09_room01_00_objects                       ;; 05:7cf9 $82 $7d
+    dw   map09_room01_00_script                        ;; 05:7cf9 $82 $7d
     dw   map09_room01_00_tiles                         ;; 05:7cfb $88 $7d
-    dw   map09_room02_00_objects                       ;; 05:7cfd $9a $7d
+    dw   map09_room02_00_script                        ;; 05:7cfd $9a $7d
     dw   map09_room02_00_tiles                         ;; 05:7cff $a3 $7d
-    dw   map09_room03_00_objects                       ;; 05:7d01 $bb $7d
+    dw   map09_room03_00_script                        ;; 05:7d01 $bb $7d
     dw   map09_room03_00_tiles                         ;; 05:7d03 $be $7d
-    dw   map09_room04_00_objects                       ;; 05:7d05 $dc $7d
+    dw   map09_room04_00_script                        ;; 05:7d05 $dc $7d
     dw   map09_room04_00_tiles                         ;; 05:7d07 $e2 $7d
-    dw   map09_room00_01_objects                       ;; 05:7d09 $fe $7d
+    dw   map09_room00_01_script                        ;; 05:7d09 $fe $7d
     dw   map09_room00_01_tiles                         ;; 05:7d0b $01 $7e
-    dw   map09_room01_01_objects                       ;; 05:7d0d $1b $7e
+    dw   map09_room01_01_script                        ;; 05:7d0d $1b $7e
     dw   map09_room01_01_tiles                         ;; 05:7d0f $1e $7e
-    dw   map09_room02_01_objects                       ;; 05:7d11 $2c $7e
+    dw   map09_room02_01_script                        ;; 05:7d11 $2c $7e
     dw   map09_room02_01_tiles                         ;; 05:7d13 $35 $7e
-    dw   map09_room03_01_objects                       ;; 05:7d15 $45 $7e
+    dw   map09_room03_01_script                        ;; 05:7d15 $45 $7e
     dw   map09_room03_01_tiles                         ;; 05:7d17 $4b $7e
-    dw   map09_room04_01_objects                       ;; 05:7d19 $63 $7e
+    dw   map09_room04_01_script                        ;; 05:7d19 $63 $7e
     dw   map09_room04_01_tiles                         ;; 05:7d1b $69 $7e
-    dw   map09_room00_02_objects                       ;; 05:7d1d $7b $7e
+    dw   map09_room00_02_script                        ;; 05:7d1d $7b $7e
     dw   map09_room00_02_tiles                         ;; 05:7d1f $7e $7e
-    dw   map09_room01_02_objects                       ;; 05:7d21 $92 $7e
+    dw   map09_room01_02_script                        ;; 05:7d21 $92 $7e
     dw   map09_room01_02_tiles                         ;; 05:7d23 $95 $7e
-    dw   map09_room02_02_objects                       ;; 05:7d25 $af $7e
+    dw   map09_room02_02_script                        ;; 05:7d25 $af $7e
     dw   map09_room02_02_tiles                         ;; 05:7d27 $b2 $7e
-    dw   map09_room03_02_objects                       ;; 05:7d29 $c0 $7e
+    dw   map09_room03_02_script                        ;; 05:7d29 $c0 $7e
     dw   map09_room03_02_tiles                         ;; 05:7d2b $c3 $7e
-    dw   map09_room04_02_objects                       ;; 05:7d2d $d5 $7e
+    dw   map09_room04_02_script                        ;; 05:7d2d $d5 $7e
     dw   map09_room04_02_tiles                         ;; 05:7d2f $d8 $7e
-    dw   map09_room00_03_objects                       ;; 05:7d31 $de $7e
+    dw   map09_room00_03_script                        ;; 05:7d31 $de $7e
     dw   map09_room00_03_tiles                         ;; 05:7d33 $e4 $7e
-    dw   map09_room01_03_objects                       ;; 05:7d35 $14 $7f
+    dw   map09_room01_03_script                        ;; 05:7d35 $14 $7f
     dw   map09_room01_03_tiles                         ;; 05:7d37 $17 $7f
-    dw   map09_room02_03_objects                       ;; 05:7d39 $2d $7f
+    dw   map09_room02_03_script                        ;; 05:7d39 $2d $7f
     dw   map09_room02_03_tiles                         ;; 05:7d3b $30 $7f
-    dw   map09_room03_03_objects                       ;; 05:7d3d $3e $7f
+    dw   map09_room03_03_script                        ;; 05:7d3d $3e $7f
     dw   map09_room03_03_tiles                         ;; 05:7d3f $44 $7f
-    dw   map09_room04_03_objects                       ;; 05:7d41 $54 $7f
+    dw   map09_room04_03_script                        ;; 05:7d41 $54 $7f
     dw   map09_room04_03_tiles                         ;; 05:7d43 $57 $7f
 
 map09_room_tile_template:
@@ -3907,32 +4159,35 @@ map09_room_tile_template:
     db $40,            $80,            $80,$45         ;; 05:7d63 ????
     db $50,$51,$51,$51,$52,$53,$54,$54,$54,$55         ;; 05:7d67 ??????????
 
-map09_room00_00_objects:
-    db   $82, $00, $ff                                 ;; 05:7d71 ???
+map09_room00_00_script:
+    dw   $0082                                         ;; 05:7d71 $82 $00
+    db   $ff                                           ;; 05:7d73 ?
 
 map09_room00_00_tiles:
     db   $89, $02, $02, $00, $2c, $36, $2c, $37        ;; 05:7d74 ????????
     db   $2c, $47, $2c, $58, $ff, $ff                  ;; 05:7d7c ??????
 
-map09_room01_00_objects:
-    db   $82, $00, $18, $61, $03, $ff                  ;; 05:7d82 ??????
+map09_room01_00_script:
+    dw   $0082                                         ;; 05:7d82 $82 $00
+    db   $18, $61, $03, $ff                            ;; 05:7d84 ????
 
 map09_room01_00_tiles:
     db   $02, $01, $02, $02, $19, $16, $19, $17        ;; 05:7d88 ????????
     db   $6a, $18, $19, $27, $19, $28, $19, $38        ;; 05:7d90 ????????
     db   $ff, $ff                                      ;; 05:7d98 ??
 
-map09_room02_00_objects:
-    db   $82, $00, $64, $7d, $02, $11, $63, $03        ;; 05:7d9a ????????
-    db   $ff                                           ;; 05:7da2 ?
+map09_room02_00_script:
+    dw   $0082                                         ;; 05:7d9a $82 $00
+    db   $64, $7d, $02, $11, $63, $03, $ff             ;; 05:7d9c ???????
 
 map09_room02_00_tiles:
     db   $00, $02, $02, $02, $4f, $13, $4f, $24        ;; 05:7da3 ????????
     db   $4f, $28, $4f, $37, $4f, $42, $4f, $51        ;; 05:7dab ????????
     db   $4f, $54, $4e, $64, $4f, $65, $ff, $ff        ;; 05:7db3 ????????
 
-map09_room03_00_objects:
-    db   $82, $00, $ff                                 ;; 05:7dbb ???
+map09_room03_00_script:
+    dw   $0082                                         ;; 05:7dbb $82 $00
+    db   $ff                                           ;; 05:7dbd ?
 
 map09_room03_00_tiles:
     db   $02, $00, $02, $00, $09, $51, $09, $52        ;; 05:7dbe ????????
@@ -3940,8 +4195,9 @@ map09_room03_00_tiles:
     db   $09, $61, $09, $62, $09, $63, $09, $66        ;; 05:7dce ????????
     db   $09, $67, $09, $68, $ff, $ff                  ;; 05:7dd6 ??????
 
-map09_room04_00_objects:
-    db   $9a, $00, $18, $f4, $02, $ff                  ;; 05:7ddc ??????
+map09_room04_00_script:
+    dw   $009a                                         ;; 05:7ddc $9a $00
+    db   $18, $f4, $02, $ff                            ;; 05:7dde ????
 
 map09_room04_00_tiles:
     db   $02, $02, $02, $01, $02, $18, $4f, $24        ;; 05:7de2 ????????
@@ -3949,8 +4205,9 @@ map09_room04_00_tiles:
     db   $4f, $41, $4f, $42, $4f, $43, $4f, $44        ;; 05:7df2 ????????
     db   $4f, $45, $ff, $ff                            ;; 05:7dfa ????
 
-map09_room00_01_objects:
-    db   $7f, $00, $ff                                 ;; 05:7dfe ???
+map09_room00_01_script:
+    dw   $007f                                         ;; 05:7dfe $7f $00
+    db   $ff                                           ;; 05:7e00 ?
 
 map09_room00_01_tiles:
     db   $05, $02, $00, $00, $47, $16, $47, $17        ;; 05:7e01 ????????
@@ -3958,47 +4215,52 @@ map09_room00_01_tiles:
     db   $47, $31, $47, $32, $47, $33, $47, $42        ;; 05:7e11 ????????
     db   $ff, $ff                                      ;; 05:7e19 ??
 
-map09_room01_01_objects:
-    db   $af, $00, $ff                                 ;; 05:7e1b ???
+map09_room01_01_script:
+    dw   $00af                                         ;; 05:7e1b $af $00
+    db   $ff                                           ;; 05:7e1d ?
 
 map09_room01_01_tiles:
     db   $02, $09, $02, $02, $4f, $24, $4f, $25        ;; 05:7e1e ????????
     db   $4f, $54, $4f, $55, $ff, $ff                  ;; 05:7e26 ??????
 
-map09_room02_01_objects:
-    db   $eb, $03, $61, $7e, $02, $18, $65, $03        ;; 05:7e2c ????????
-    db   $ff                                           ;; 05:7e34 ?
+map09_room02_01_script:
+    dw   $03eb                                         ;; 05:7e2c $eb $03
+    db   $61, $7e, $02, $18, $65, $03, $ff             ;; 05:7e2e ???????
 
 map09_room02_01_tiles:
     db   $02, $02, $02, $01, $4f, $21, $4f, $28        ;; 05:7e35 ????????
     db   $4f, $51, $4f, $58, $4e, $61, $ff, $ff        ;; 05:7e3d ????????
 
-map09_room03_01_objects:
-    db   $90, $01, $18, $94, $02, $ff                  ;; 05:7e45 ??????
+map09_room03_01_script:
+    dw   $0190                                         ;; 05:7e45 $90 $01
+    db   $18, $94, $02, $ff                            ;; 05:7e47 ????
 
 map09_room03_01_tiles:
     db   $02, $02, $00, $00, $11, $18, $47, $32        ;; 05:7e4b ????????
     db   $47, $33, $47, $36, $47, $37, $47, $42        ;; 05:7e53 ????????
     db   $47, $43, $47, $46, $47, $47, $ff, $ff        ;; 05:7e5b ????????
 
-map09_room04_01_objects:
-    db   $97, $00, $18, $5a, $03, $ff                  ;; 05:7e63 ??????
+map09_room04_01_script:
+    dw   $0097                                         ;; 05:7e63 $97 $00
+    db   $18, $5a, $03, $ff                            ;; 05:7e65 ????
 
 map09_room04_01_tiles:
     db   $02, $02, $01, $02, $4f, $16, $11, $18        ;; 05:7e69 ????????
     db   $4f, $26, $4f, $36, $4f, $56, $4f, $66        ;; 05:7e71 ????????
     db   $ff, $ff                                      ;; 05:7e79 ??
 
-map09_room00_02_objects:
-    db   $82, $00, $ff                                 ;; 05:7e7b ???
+map09_room00_02_script:
+    dw   $0082                                         ;; 05:7e7b $82 $00
+    db   $ff                                           ;; 05:7e7d ?
 
 map09_room00_02_tiles:
     db   $00, $02, $00, $02, $09, $18, $09, $26        ;; 05:7e7e ????????
     db   $09, $27, $09, $28, $09, $34, $09, $35        ;; 05:7e86 ????????
     db   $09, $36, $ff, $ff                            ;; 05:7e8e ????
 
-map09_room01_02_objects:
-    db   $82, $00, $ff                                 ;; 05:7e92 ???
+map09_room01_02_script:
+    dw   $0082                                         ;; 05:7e92 $82 $00
+    db   $ff                                           ;; 05:7e94 ?
 
 map09_room01_02_tiles:
     db   $00, $00, $02, $02, $05, $04, $16, $05        ;; 05:7e95 ????????
@@ -4006,29 +4268,33 @@ map09_room01_02_tiles:
     db   $15, $34, $10, $35, $1b, $44, $17, $45        ;; 05:7ea5 ????????
     db   $ff, $ff                                      ;; 05:7ead ??
 
-map09_room02_02_objects:
-    db   $7f, $00, $ff                                 ;; 05:7eaf ???
+map09_room02_02_script:
+    dw   $007f                                         ;; 05:7eaf $7f $00
+    db   $ff                                           ;; 05:7eb1 ?
 
 map09_room02_02_tiles:
     db   $00, $00, $05, $02, $4f, $33, $4f, $36        ;; 05:7eb2 ????????
     db   $4f, $43, $4f, $46, $ff, $ff                  ;; 05:7eba ??????
 
-map09_room03_02_objects:
-    db   $2a, $01, $ff                                 ;; 05:7ec0 ???
+map09_room03_02_script:
+    dw   $012a                                         ;; 05:7ec0 $2a $01
+    db   $ff                                           ;; 05:7ec2 ?
 
 map09_room03_02_tiles:
     db   $02, $02, $00, $02, $19, $11, $19, $12        ;; 05:7ec3 ????????
     db   $19, $21, $19, $51, $19, $61, $19, $62        ;; 05:7ecb ????????
     db   $ff, $ff                                      ;; 05:7ed3 ??
 
-map09_room04_02_objects:
-    db   $ff, $ff, $ff                                 ;; 05:7ed5 ???
+map09_room04_02_script:
+    dw   $ffff                                         ;; 05:7ed5 $ff $ff
+    db   $ff                                           ;; 05:7ed7 ?
 
 map09_room04_02_tiles:
     db   $00, $00, $00, $00, $ff, $ff                  ;; 05:7ed8 ??????
 
-map09_room00_03_objects:
-    db   $97, $00, $61, $69, $03, $ff                  ;; 05:7ede ??????
+map09_room00_03_script:
+    dw   $0097                                         ;; 05:7ede $97 $00
+    db   $61, $69, $03, $ff                            ;; 05:7ee0 ????
 
 map09_room00_03_tiles:
     db   $00, $02, $02, $02, $16, $25, $01, $26        ;; 05:7ee4 ????????
@@ -4038,30 +4304,34 @@ map09_room00_03_tiles:
     db   $51, $57, $51, $58, $11, $61, $45, $62        ;; 05:7f04 ????????
     db   $40, $63, $55, $72, $50, $73, $ff, $ff        ;; 05:7f0c ????????
 
-map09_room01_03_objects:
-    db   $49, $00, $ff                                 ;; 05:7f14 ???
+map09_room01_03_script:
+    dw   $0049                                         ;; 05:7f14 $49 $00
+    db   $ff                                           ;; 05:7f16 ?
 
 map09_room01_03_tiles:
     db   $00, $00, $02, $02, $09, $25, $09, $33        ;; 05:7f17 ????????
     db   $09, $34, $09, $35, $09, $44, $09, $45        ;; 05:7f1f ????????
     db   $09, $46, $09, $54, $ff, $ff                  ;; 05:7f27 ??????
 
-map09_room02_03_objects:
-    db   $94, $00, $ff                                 ;; 05:7f2d ???
+map09_room02_03_script:
+    dw   $0094                                         ;; 05:7f2d $94 $00
+    db   $ff                                           ;; 05:7f2f ?
 
 map09_room02_03_tiles:
     db   $00, $00, $02, $02, $47, $24, $47, $35        ;; 05:7f30 ????????
     db   $47, $44, $47, $55, $ff, $ff                  ;; 05:7f38 ??????
 
-map09_room03_03_objects:
-    db   $a6, $00, $18, $99, $03, $ff                  ;; 05:7f3e ??????
+map09_room03_03_script:
+    dw   $00a6                                         ;; 05:7f3e $a6 $00
+    db   $18, $99, $03, $ff                            ;; 05:7f40 ????
 
 map09_room03_03_tiles:
     db   $02, $00, $02, $02, $4f, $16, $11, $18        ;; 05:7f44 ????????
     db   $4f, $26, $4f, $36, $4f, $46, $ff, $ff        ;; 05:7f4c ????????
 
-map09_room04_03_objects:
-    db   $ff, $ff, $ff                                 ;; 05:7f54 ???
+map09_room04_03_script:
+    dw   $ffff                                         ;; 05:7f54 $ff $ff
+    db   $ff                                           ;; 05:7f56 ?
 
 map09_room04_03_tiles:
     db   $00, $00, $00, $00, $ff, $ff, $0f, $c1        ;; 05:7f57 ????????

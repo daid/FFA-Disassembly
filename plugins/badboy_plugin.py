@@ -33,11 +33,13 @@ def mapRoomData(dis, addr, index):
         dis.formatter[tile_addr] = roomTileFormatter
         addr += 0x1A
     for n in range(w * h):
-        obj_addr = dis.info.markAsPointer(dis.rom, addr + 0, name="map%02x_room%02x_%02x_objects" % (index, n % w, n // w))
+        obj_addr = dis.info.markAsPointer(dis.rom, addr + 0, name="map%02x_room%02x_%02x_script" % (index, n % w, n // w))
         tile_addr = dis.info.markAsPointer(dis.rom, addr + 2, name="map%02x_room%02x_%02x_tiles" % (index, n % w, n // w))
         assert obj_addr >= 0x4000, hex(addr)
         assert tile_addr >= 0x4000, hex(addr)
         addr += 4
+        
+        script_index = dis.info.markAsWord(dis.rom, obj_addr)
 
         if dis.rom.data[tile_addr] != 0xff and unknown == 0:
             dis.formatter[tile_addr] = roomTileFormatter
@@ -70,4 +72,12 @@ def mapHeaders(dis, addr, params):
 
         mapRoomData(dis, bank << 14 | (room_data_ptr & 0x3FFF), n)
 
+def scriptPointers(dis, addr, params):
+    for n in range(int(params[0])):
+        script_pointer = dis.info.markAsWord(dis.rom, addr)
+        dis.info.addAbsoluteRomSymbol((0x0D << 14) + script_pointer, name="script_%04x" % (script_pointer))
+        addr += 2
+
+
 annotations.ALL["map_headers"] = mapHeaders
+annotations.ALL["script_pointers"] = scriptPointers
