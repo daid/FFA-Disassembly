@@ -224,7 +224,7 @@ wC348: ;; $c348
   ds 1
 wC349: ;; $c349
   ds 7
-wMapTiles: ;; $c350
+wRoomTiles: ;; $c350
   ds 80
 wC3A0: ;; $c3a0
   ds 80
@@ -248,7 +248,7 @@ wC3F8: ;; $c3f8
   ds 1
 wMapTileRLECount: ;; $c3f9
   ds 1
-wC3FA: ;; $c3fa
+wMapHeight: ;; $c3fa
   ds 1
 wMapWidth: ;; $c3fb
   ds 1
@@ -414,9 +414,9 @@ wD390: ;; $d390
   ds 1
 wD391: ;; $d391
   ds 1
-wD392: ;; $d392
+wTileDataTablePointerLow: ;; $d392
   ds 1
-wD393: ;; $d393
+wTileDataTablePointerHigh: ;; $d393
   ds 1
 wD394: ;; $d394
   ds 4
@@ -710,7 +710,7 @@ wD858: ;; $d858
   ds 1
 wD859: ;; $d859
   ds 1
-wD85A: ;; $d85a
+wScriptCommand: ;; $d85a
   ds 2
 wD85C: ;; $d85c
   ds 1
@@ -738,7 +738,7 @@ wD868: ;; $d868
   ds 1
 wD869: ;; $d869
   ds 1
-wD86A: ;; $d86a
+wScriptBank: ;; $d86a
   ds 1
 wD86B: ;; $d86b
   ds 1
@@ -884,9 +884,9 @@ wD8B4: ;; $d8b4
   ds 1
 wD8B5: ;; $d8b5
   ds 1
-wD8B6: ;; $d8b6
+wScriptPointerLow: ;; $d8b6
   ds 1
-wD8B7: ;; $d8b7
+wScriptPointerHigh: ;; $d8b7
   ds 1
 wD8B8: ;; $d8b8
   ds 1

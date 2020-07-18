@@ -179,7 +179,7 @@ code_000_0153:
     ld   A, $02                                        ;; 00:0154 $3e $02
     call code_000_02a5                                 ;; 00:0156 $cd $a5 $02
     pop  HL                                            ;; 00:0159 $e1
-    call code_000_3727                                 ;; 00:015a $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:015a $cd $27 $37
     ret                                                ;; 00:015d $c9
 
 code_000_015e:
@@ -187,7 +187,7 @@ code_000_015e:
     ld   A, $01                                        ;; 00:015f $3e $01
     call code_000_02a5                                 ;; 00:0161 $cd $a5 $02
     pop  HL                                            ;; 00:0164 $e1
-    call code_000_3727                                 ;; 00:0165 $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:0165 $cd $27 $37
     ret                                                ;; 00:0168 $c9
 
 code_000_0169:
@@ -225,7 +225,7 @@ code_000_0194:
     push HL                                            ;; 00:0194 $e5
     call code_000_019d                                 ;; 00:0195 $cd $9d $01
     pop  HL                                            ;; 00:0198 $e1
-    call code_000_3727                                 ;; 00:0199 $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:0199 $cd $27 $37
     ret                                                ;; 00:019c $c9
 
 code_000_019d:
@@ -237,7 +237,7 @@ code_000_01a3:
     push HL                                            ;; 00:01a3 $e5
     call code_000_01ac                                 ;; 00:01a4 $cd $ac $01
     pop  HL                                            ;; 00:01a7 $e1
-    call code_000_3727                                 ;; 00:01a8 $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:01a8 $cd $27 $37
     ret                                                ;; 00:01ab $c9
 
 code_000_01ac:
@@ -249,7 +249,7 @@ code_000_01b2:
     push HL                                            ;; 00:01b2 $e5
     call code_000_01bb                                 ;; 00:01b3 $cd $bb $01
     pop  HL                                            ;; 00:01b6 $e1
-    call code_000_3727                                 ;; 00:01b7 $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:01b7 $cd $27 $37
     ret                                                ;; 00:01ba $c9
 
 code_000_01bb:
@@ -261,7 +261,7 @@ code_000_01c1:
     push HL                                            ;; 00:01c1 $e5
     call code_000_01ca                                 ;; 00:01c2 $cd $ca $01
     pop  HL                                            ;; 00:01c5 $e1
-    call code_000_3727                                 ;; 00:01c6 $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:01c6 $cd $27 $37
     ret                                                ;; 00:01c9 $c9
 
 code_000_01ca:
@@ -273,21 +273,21 @@ code_000_01d0:
     ld   A, [wC4D4]                                    ;; 00:01d0 $fa $d4 $c4
     set  $04, A                                        ;; 00:01d3 $cb $e7
     ld   [wC4D4], A                                    ;; 00:01d5 $ea $d4 $c4
-    call code_000_3727                                 ;; 00:01d8 $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:01d8 $cd $27 $37
     ret                                                ;; 00:01db $c9
 
 code_000_01dc:
     ld   A, [wC4D4]                                    ;; 00:01dc $fa $d4 $c4
     set  $05, A                                        ;; 00:01df $cb $ef
     ld   [wC4D4], A                                    ;; 00:01e1 $ea $d4 $c4
-    call code_000_3727                                 ;; 00:01e4 $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:01e4 $cd $27 $37
     ret                                                ;; 00:01e7 $c9
 
 code_000_01e8:
     ld   A, [wC4D4]                                    ;; 00:01e8 $fa $d4 $c4
     set  $06, A                                        ;; 00:01eb $cb $f7
     ld   [wC4D4], A                                    ;; 00:01ed $ea $d4 $c4
-    call code_000_3727                                 ;; 00:01f0 $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:01f0 $cd $27 $37
     ret                                                ;; 00:01f3 $c9
 
 code_000_01f4:
@@ -775,7 +775,7 @@ getBackgroundDrawAddress:
     add  HL, BC                                        ;; 00:047a $09
     ret                                                ;; 00:047b $c9
 
-code_000_047c:
+storeBatBackgroundDrawPosition:
     push AF                                            ;; 00:047c $f5
     call getBackgroundDrawAddress                      ;; 00:047d $cd $5d $04
     pop  AF                                            ;; 00:0480 $f1
@@ -790,7 +790,7 @@ code_000_048c:
     call code_000_1e9f                                 ;; 00:0491 $cd $9f $1e
     ret                                                ;; 00:0494 $c9
 
-code_000_0495:
+storeDEatBackgroundDrawPosition:
     push HL                                            ;; 00:0495 $e5
     call getBackgroundDrawAddress                      ;; 00:0496 $cd $5d $04
     pop  DE                                            ;; 00:0499 $d1
@@ -975,7 +975,7 @@ code_000_056c:
     ld   L, [HL]                                       ;; 00:0594 $6e
     pop  BC                                            ;; 00:0595 $c1
     ld   H, C                                          ;; 00:0596 $61
-    call code_000_0495                                 ;; 00:0597 $cd $95 $04
+    call storeDEatBackgroundDrawPosition               ;; 00:0597 $cd $95 $04
     pop  DE                                            ;; 00:059a $d1
     pop  HL                                            ;; 00:059b $e1
     inc  D                                             ;; 00:059c $14
@@ -996,7 +996,7 @@ code_000_056c:
     ld   L, [HL]                                       ;; 00:05b1 $6e
     pop  BC                                            ;; 00:05b2 $c1
     ld   H, C                                          ;; 00:05b3 $61
-    call code_000_0495                                 ;; 00:05b4 $cd $95 $04
+    call storeDEatBackgroundDrawPosition               ;; 00:05b4 $cd $95 $04
     call popBankNrAndSwitch                            ;; 00:05b7 $cd $0a $2a
     ret                                                ;; 00:05ba $c9
 
@@ -1008,9 +1008,9 @@ code_000_05bb:
     add  HL, HL                                        ;; 00:05c0 $29
     add  HL, DE                                        ;; 00:05c1 $19
     add  HL, HL                                        ;; 00:05c2 $29
-    ld   A, [wD393]                                    ;; 00:05c3 $fa $93 $d3
+    ld   A, [wTileDataTablePointerHigh]                ;; 00:05c3 $fa $93 $d3
     ld   D, A                                          ;; 00:05c6 $57
-    ld   A, [wD392]                                    ;; 00:05c7 $fa $92 $d3
+    ld   A, [wTileDataTablePointerLow]                 ;; 00:05c7 $fa $92 $d3
     ld   E, A                                          ;; 00:05ca $5f
     add  HL, DE                                        ;; 00:05cb $19
     ret                                                ;; 00:05cc $c9
@@ -2362,7 +2362,7 @@ code_000_0d1b:
     ld   [wD49A], A                                    ;; 00:0d49 $ea $9a $d4
     ret                                                ;; 00:0d4c $c9
 .code_0d4d:
-    call code_000_3727                                 ;; 00:0d4d $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:0d4d $cd $27 $37
     ret                                                ;; 00:0d50 $c9
 
 code_000_0d51:
@@ -2386,27 +2386,27 @@ code_000_0d5f:
     ld   A, $7f                                        ;; 00:0d6f $3e $7f
     call code_000_3be4                                 ;; 00:0d71 $cd $e4 $3b
     pop  HL                                            ;; 00:0d74 $e1
-    call code_000_3727                                 ;; 00:0d75 $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:0d75 $cd $27 $37
     ret                                                ;; 00:0d78 $c9
 .code_0d79:
     ld   A, $7f                                        ;; 00:0d79 $3e $7f
     call code_000_3bee                                 ;; 00:0d7b $cd $ee $3b
     pop  HL                                            ;; 00:0d7e $e1
-    call code_000_3727                                 ;; 00:0d7f $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:0d7f $cd $27 $37
     ret                                                ;; 00:0d82 $c9
 
 code_000_0d83:
     push HL                                            ;; 00:0d83 $e5
     call code_000_21b4                                 ;; 00:0d84 $cd $b4 $21
     pop  HL                                            ;; 00:0d87 $e1
-    call code_000_3727                                 ;; 00:0d88 $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:0d88 $cd $27 $37
     ret                                                ;; 00:0d8b $c9
 
 code_000_0d8c:
     push HL                                            ;; 00:0d8c $e5
     call code_000_0d95                                 ;; 00:0d8d $cd $95 $0d
     pop  HL                                            ;; 00:0d90 $e1
-    call code_000_3727                                 ;; 00:0d91 $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:0d91 $cd $27 $37
     ret                                                ;; 00:0d94 $c9
 
 code_000_0d95:
@@ -2418,7 +2418,7 @@ code_000_0d9b:
     push HL                                            ;; 00:0d9b $e5
     call code_000_0da4                                 ;; 00:0d9c $cd $a4 $0d
     pop  HL                                            ;; 00:0d9f $e1
-    call code_000_3727                                 ;; 00:0da0 $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:0da0 $cd $27 $37
     ret                                                ;; 00:0da3 $c9
 
 code_000_0da4:
@@ -2464,7 +2464,7 @@ code_000_0dbc:
     ret                                                ;; 00:0de0 $c9
 .code_0de1:
     pop  HL                                            ;; 00:0de1 $e1
-    call code_000_3727                                 ;; 00:0de2 $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:0de2 $cd $27 $37
     ret                                                ;; 00:0de5 $c9
 
 code_000_0de6:
@@ -2527,7 +2527,7 @@ code_000_0e0f:
     add  A, $06                                        ;; 00:0e3b $c6 $06
     ld   E, A                                          ;; 00:0e3d $5f
     ld   A, C                                          ;; 00:0e3e $79
-    call code_000_047c                                 ;; 00:0e3f $cd $7c $04
+    call storeBatBackgroundDrawPosition                ;; 00:0e3f $cd $7c $04
     pop  DE                                            ;; 00:0e42 $d1
     ret                                                ;; 00:0e43 $c9
 
@@ -2563,7 +2563,7 @@ code_000_0e69:
     push HL                                            ;; 00:0e6a $e5
     call code_000_04e2                                 ;; 00:0e6b $cd $e2 $04
     pop  HL                                            ;; 00:0e6e $e1
-    call code_000_3727                                 ;; 00:0e6f $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:0e6f $cd $27 $37
     ret                                                ;; 00:0e72 $c9
 
 code_000_0e73:
@@ -2586,7 +2586,7 @@ code_000_0e7f:
     push HL                                            ;; 00:0e83 $e5
     call code_000_0454                                 ;; 00:0e84 $cd $54 $04
     pop  HL                                            ;; 00:0e87 $e1
-    call code_000_3727                                 ;; 00:0e88 $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:0e88 $cd $27 $37
     ret                                                ;; 00:0e8b $c9
 
 code_000_0e8c:
@@ -2610,7 +2610,7 @@ code_000_0e8c:
     inc  A                                             ;; 00:0ea8 $3c
     and  A, $3f                                        ;; 00:0ea9 $e6 $3f
     ld   [wD499], A                                    ;; 00:0eab $ea $99 $d4
-    call Z, code_000_3727                              ;; 00:0eae $cc $27 $37
+    call Z, getNextScriptInstruction                   ;; 00:0eae $cc $27 $37
     ret                                                ;; 00:0eb1 $c9
 
 code_000_0eb2:
@@ -2640,7 +2640,7 @@ code_000_0f0a:
     pop  HL                                            ;; 00:0f0f $e1
 
 code_000_0f10:
-    call code_000_3727                                 ;; 00:0f10 $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:0f10 $cd $27 $37
     ret                                                ;; 00:0f13 $c9
 
 code_000_0f14:
@@ -2648,7 +2648,7 @@ code_000_0f14:
     push HL                                            ;; 00:0f15 $e5
     call code_000_2895                                 ;; 00:0f16 $cd $95 $28
     pop  HL                                            ;; 00:0f19 $e1
-    call code_000_3727                                 ;; 00:0f1a $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:0f1a $cd $27 $37
     ret                                                ;; 00:0f1d $c9
 
 code_000_0f1e:
@@ -2660,7 +2660,7 @@ code_000_0f1e:
     push HL                                            ;; 00:0f23 $e5
     call code_000_2400                                 ;; 00:0f24 $cd $00 $24
     pop  HL                                            ;; 00:0f27 $e1
-    call code_000_3727                                 ;; 00:0f28 $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:0f28 $cd $27 $37
     ret                                                ;; 00:0f2b $c9
 
 code_000_0f2c:
@@ -2674,7 +2674,7 @@ code_000_0f2c:
     pop  HL                                            ;; 00:0f3b $e1
     cp   A, $00                                        ;; 00:0f3c $fe $00
     ret  NZ                                            ;; 00:0f3e $c0
-    call code_000_3727                                 ;; 00:0f3f $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:0f3f $cd $27 $37
     ret                                                ;; 00:0f42 $c9
 
 code_000_0f43:
@@ -2688,7 +2688,7 @@ code_000_0f43:
     pop  HL                                            ;; 00:0f52 $e1
     cp   A, $00                                        ;; 00:0f53 $fe $00
     ret  NZ                                            ;; 00:0f55 $c0
-    call code_000_3727                                 ;; 00:0f56 $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:0f56 $cd $27 $37
     ret                                                ;; 00:0f59 $c9
 
 code_000_0f5a:
@@ -2702,7 +2702,7 @@ code_000_0f5a:
     pop  HL                                            ;; 00:0f69 $e1
     cp   A, $00                                        ;; 00:0f6a $fe $00
     ret  NZ                                            ;; 00:0f6c $c0
-    call code_000_3727                                 ;; 00:0f6d $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:0f6d $cd $27 $37
     ret                                                ;; 00:0f70 $c9
 
 code_000_0f71:
@@ -2716,7 +2716,7 @@ code_000_0f71:
     pop  HL                                            ;; 00:0f80 $e1
     cp   A, $00                                        ;; 00:0f81 $fe $00
     ret  NZ                                            ;; 00:0f83 $c0
-    call code_000_3727                                 ;; 00:0f84 $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:0f84 $cd $27 $37
     ret                                                ;; 00:0f87 $c9
 
 code_000_0f88:
@@ -2724,7 +2724,7 @@ code_000_0f88:
     ld   A, $01                                        ;; 00:0f89 $3e $01
     call code_000_235b                                 ;; 00:0f8b $cd $5b $23
     pop  HL                                            ;; 00:0f8e $e1
-    call code_000_3727                                 ;; 00:0f8f $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:0f8f $cd $27 $37
     ret                                                ;; 00:0f92 $c9
 
 code_000_0f93:
@@ -2732,7 +2732,7 @@ code_000_0f93:
     ld   A, $01                                        ;; 00:0f94 $3e $01
     call code_000_22fe                                 ;; 00:0f96 $cd $fe $22
     pop  HL                                            ;; 00:0f99 $e1
-    call code_000_3727                                 ;; 00:0f9a $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:0f9a $cd $27 $37
     ret                                                ;; 00:0f9d $c9
 
 code_000_0f9e:
@@ -2740,7 +2740,7 @@ code_000_0f9e:
     ld   A, $02                                        ;; 00:0f9f $3e $02
     call code_000_235b                                 ;; 00:0fa1 $cd $5b $23
     pop  HL                                            ;; 00:0fa4 $e1
-    call code_000_3727                                 ;; 00:0fa5 $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:0fa5 $cd $27 $37
     ret                                                ;; 00:0fa8 $c9
 
 code_000_0fa9:
@@ -2748,7 +2748,7 @@ code_000_0fa9:
     ld   A, $02                                        ;; 00:0faa $3e $02
     call code_000_22fe                                 ;; 00:0fac $cd $fe $22
     pop  HL                                            ;; 00:0faf $e1
-    call code_000_3727                                 ;; 00:0fb0 $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:0fb0 $cd $27 $37
     ret                                                ;; 00:0fb3 $c9
 
 code_000_0fb4:
@@ -2756,7 +2756,7 @@ code_000_0fb4:
     ld   A, $04                                        ;; 00:0fb5 $3e $04
     call code_000_235b                                 ;; 00:0fb7 $cd $5b $23
     pop  HL                                            ;; 00:0fba $e1
-    call code_000_3727                                 ;; 00:0fbb $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:0fbb $cd $27 $37
     ret                                                ;; 00:0fbe $c9
 
 code_000_0fbf:
@@ -2764,7 +2764,7 @@ code_000_0fbf:
     ld   A, $04                                        ;; 00:0fc0 $3e $04
     call code_000_22fe                                 ;; 00:0fc2 $cd $fe $22
     pop  HL                                            ;; 00:0fc5 $e1
-    call code_000_3727                                 ;; 00:0fc6 $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:0fc6 $cd $27 $37
     ret                                                ;; 00:0fc9 $c9
 
 code_000_0fca:
@@ -2772,7 +2772,7 @@ code_000_0fca:
     ld   A, $08                                        ;; 00:0fcb $3e $08
     call code_000_235b                                 ;; 00:0fcd $cd $5b $23
     pop  HL                                            ;; 00:0fd0 $e1
-    call code_000_3727                                 ;; 00:0fd1 $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:0fd1 $cd $27 $37
     ret                                                ;; 00:0fd4 $c9
 
 code_000_0fd5:
@@ -2780,7 +2780,7 @@ code_000_0fd5:
     ld   A, $08                                        ;; 00:0fd6 $3e $08
     call code_000_22fe                                 ;; 00:0fd8 $cd $fe $22
     pop  HL                                            ;; 00:0fdb $e1
-    call code_000_3727                                 ;; 00:0fdc $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:0fdc $cd $27 $37
     ret                                                ;; 00:0fdf $c9
 
 code_000_0fe0:
@@ -2799,7 +2799,7 @@ code_000_0fe0:
     ret  C                                             ;; 00:0ffd $d8
     ld   A, $00                                        ;; 00:0ffe $3e $00
     ld   [wD499], A                                    ;; 00:1000 $ea $99 $d4
-    call code_000_3727                                 ;; 00:1003 $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:1003 $cd $27 $37
     ret                                                ;; 00:1006 $c9
 .code_1007:
     ld   A, $3f                                        ;; 00:1007 $3e $3f rOBP1
@@ -2971,7 +2971,7 @@ code_000_1142:
     ret  C                                             ;; 00:115a $d8
     ld   A, $00                                        ;; 00:115b $3e $00
     ld   [wD499], A                                    ;; 00:115d $ea $99 $d4
-    call code_000_3727                                 ;; 00:1160 $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:1160 $cd $27 $37
     ret                                                ;; 00:1163 $c9
 
 code_000_1164:
@@ -2994,7 +2994,7 @@ code_000_1178:
     set  $00, [HL]                                     ;; 00:117c $cb $c6
     call code_000_01f4                                 ;; 00:117e $cd $f4 $01
     pop  HL                                            ;; 00:1181 $e1
-    call code_000_3727                                 ;; 00:1182 $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:1182 $cd $27 $37
     ret                                                ;; 00:1185 $c9
 
 code_000_1186:
@@ -3003,13 +3003,13 @@ code_000_1186:
     res  $00, [HL]                                     ;; 00:118a $cb $86
     call code_000_0204                                 ;; 00:118c $cd $04 $02
     pop  HL                                            ;; 00:118f $e1
-    call code_000_3727                                 ;; 00:1190 $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:1190 $cd $27 $37
     ret                                                ;; 00:1193 $c9
 
 code_000_1194:
     ld   A, [HL+]                                      ;; 00:1194 $2a
     ldh  [hFF92], A                                    ;; 00:1195 $e0 $92
-    call code_000_3727                                 ;; 00:1197 $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:1197 $cd $27 $37
     ret                                                ;; 00:119a $c9
 
 code_000_119b:
@@ -3017,7 +3017,7 @@ code_000_119b:
     ldh  [hFF90], A                                    ;; 00:119c $e0 $90
     ld   [wD49B], A                                    ;; 00:119e $ea $9b $d4
     ld   [wD4A3], A                                    ;; 00:11a1 $ea $a3 $d4
-    call code_000_3727                                 ;; 00:11a4 $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:11a4 $cd $27 $37
     ret                                                ;; 00:11a7 $c9
 
 code_000_11a8:
@@ -3040,7 +3040,7 @@ code_000_11b7:
     ld   A, [wD499]                                    ;; 00:11be $fa $99 $d4
     cp   A, $00                                        ;; 00:11c1 $fe $00
     ret  NZ                                            ;; 00:11c3 $c0
-    call code_000_3727                                 ;; 00:11c4 $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:11c4 $cd $27 $37
     ret                                                ;; 00:11c7 $c9
 
 code_000_11c8:
@@ -3057,7 +3057,7 @@ code_000_11ce:
     ld   A, [wD499]                                    ;; 00:11d5 $fa $99 $d4
     cp   A, $00                                        ;; 00:11d8 $fe $00
     ret  NZ                                            ;; 00:11da $c0
-    call code_000_3727                                 ;; 00:11db $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:11db $cd $27 $37
     ret                                                ;; 00:11de $c9
 
 code_000_11df:
@@ -3070,7 +3070,7 @@ code_000_11e5:
     ld   A, [wD499]                                    ;; 00:11e8 $fa $99 $d4
     cp   A, $00                                        ;; 00:11eb $fe $00
     ret  NZ                                            ;; 00:11ed $c0
-    call code_000_3727                                 ;; 00:11ee $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:11ee $cd $27 $37
     ret                                                ;; 00:11f1 $c9
 
 code_000_11f2:
@@ -3083,7 +3083,7 @@ code_000_11f8:
     ld   A, [wD499]                                    ;; 00:11fb $fa $99 $d4
     cp   A, $00                                        ;; 00:11fe $fe $00
     ret  NZ                                            ;; 00:1200 $c0
-    call code_000_3727                                 ;; 00:1201 $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:1201 $cd $27 $37
     ret                                                ;; 00:1204 $c9
 
 code_000_1205:
@@ -3150,7 +3150,7 @@ code_000_123e:
     ld   D, A                                          ;; 00:1253 $57
     call code_000_28aa                                 ;; 00:1254 $cd $aa $28
     pop  HL                                            ;; 00:1257 $e1
-    call code_000_3727                                 ;; 00:1258 $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:1258 $cd $27 $37
     ret                                                ;; 00:125b $c9
 
 code_000_125c:
@@ -3778,7 +3778,7 @@ code_000_15fb:
     call code_000_1588                                 ;; 00:15fb $cd $88 $15
     ret  NZ                                            ;; 00:15fe $c0
     call code_000_120b                                 ;; 00:15ff $cd $0b $12
-    call code_000_3727                                 ;; 00:1602 $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:1602 $cd $27 $37
     ret                                                ;; 00:1605 $c9
 
 code_000_1606:
@@ -3837,7 +3837,7 @@ code_000_1654:
     ret                                                ;; 00:165e $c9
 
 code_000_165f:
-    call code_000_3727                                 ;; 00:165f $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:165f $cd $27 $37
     ret                                                ;; 00:1662 $c9
 
 code_000_1663:
@@ -3849,7 +3849,7 @@ code_000_1663:
 .code_166e:
     inc  HL                                            ;; 00:166e $23
     inc  HL                                            ;; 00:166f $23
-    call code_000_3727                                 ;; 00:1670 $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:1670 $cd $27 $37
     ret                                                ;; 00:1673 $c9
 
 code_000_1674:
@@ -3879,7 +3879,7 @@ code_000_168e:
     dec  B                                             ;; 00:1699 $05
     jr   NZ, .code_1694                                ;; 00:169a $20 $f8
     pop  HL                                            ;; 00:169c $e1
-    call code_000_3727                                 ;; 00:169d $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:169d $cd $27 $37
     ret                                                ;; 00:16a0 $c9
 .code_16a1:
     pop  HL                                            ;; 00:16a1 $e1
@@ -3922,9 +3922,9 @@ code_000_16af:
     add  HL, HL                                        ;; 00:16e0 $29
     add  HL, DE                                        ;; 00:16e1 $19
     add  HL, HL                                        ;; 00:16e2 $29
-    ld   A, [wD393]                                    ;; 00:16e3 $fa $93 $d3
+    ld   A, [wTileDataTablePointerHigh]                ;; 00:16e3 $fa $93 $d3
     ld   D, A                                          ;; 00:16e6 $57
-    ld   A, [wD392]                                    ;; 00:16e7 $fa $92 $d3
+    ld   A, [wTileDataTablePointerLow]                 ;; 00:16e7 $fa $92 $d3
     ld   E, A                                          ;; 00:16ea $5f
     add  HL, DE                                        ;; 00:16eb $19
     ld   DE, $0004                                     ;; 00:16ec $11 $04 $00
@@ -4487,7 +4487,7 @@ code_000_1a44:
     ld   A, $08                                        ;; 00:1a45 $3e $08 Bank
     call pushBankNrAndSwitch                           ;; 00:1a47 $cd $fb $29
     pop  AF                                            ;; 00:1a4a $f1
-    call code_000_1b19                                 ;; 00:1a4b $cd $19 $1b
+    call getTileInfoPointer                            ;; 00:1a4b $cd $19 $1b
     ld   B, $04                                        ;; 00:1a4e $06 $04
     ld   C, $04                                        ;; 00:1a50 $0e $04
 .code_1a52:
@@ -4616,9 +4616,9 @@ code_000_1af3:
     ld   A, L                                          ;; 00:1af7 $7d
     ld   [wD390], A                                    ;; 00:1af8 $ea $90 $d3
     ld   A, D                                          ;; 00:1afb $7a
-    ld   [wD393], A                                    ;; 00:1afc $ea $93 $d3
+    ld   [wTileDataTablePointerHigh], A                ;; 00:1afc $ea $93 $d3
     ld   A, E                                          ;; 00:1aff $7b
-    ld   [wD392], A                                    ;; 00:1b00 $ea $92 $d3
+    ld   [wTileDataTablePointerLow], A                 ;; 00:1b00 $ea $92 $d3
     ld   A, $00                                        ;; 00:1b03 $3e $00
     ld   B, $ff                                        ;; 00:1b05 $06 $ff
     ld   HL, wD170                                     ;; 00:1b07 $21 $70 $d1
@@ -4630,7 +4630,9 @@ code_000_1af3:
     call fillMemory                                    ;; 00:1b15 $cd $5d $2b
     ret                                                ;; 00:1b18 $c9
 
-code_000_1b19:
+; Input A: room tile number
+; Output HL: Pointer to 6 bytes of tile info.
+getTileInfoPointer:
     ld   L, A                                          ;; 00:1b19 $6f
     ld   H, $00                                        ;; 00:1b1a $26 $00
     ld   D, H                                          ;; 00:1b1c $54
@@ -4638,9 +4640,9 @@ code_000_1b19:
     add  HL, HL                                        ;; 00:1b1e $29
     add  HL, DE                                        ;; 00:1b1f $19
     add  HL, HL                                        ;; 00:1b20 $29
-    ld   A, [wD393]                                    ;; 00:1b21 $fa $93 $d3
+    ld   A, [wTileDataTablePointerHigh]                ;; 00:1b21 $fa $93 $d3
     ld   D, A                                          ;; 00:1b24 $57
-    ld   A, [wD392]                                    ;; 00:1b25 $fa $92 $d3
+    ld   A, [wTileDataTablePointerLow]                 ;; 00:1b25 $fa $92 $d3
     ld   E, A                                          ;; 00:1b28 $5f
     add  HL, DE                                        ;; 00:1b29 $19
     ret                                                ;; 00:1b2a $c9
@@ -4650,7 +4652,7 @@ code_000_1b2b:
 .code_1b2d:
     ld   A, [HL+]                                      ;; 00:1b2d $2a
     push HL                                            ;; 00:1b2e $e5
-    call code_000_1b19                                 ;; 00:1b2f $cd $19 $1b
+    call getTileInfoPointer                            ;; 00:1b2f $cd $19 $1b
     ld   C, $04                                        ;; 00:1b32 $0e $04
 .code_1b34:
     ld   A, [HL+]                                      ;; 00:1b34 $2a
@@ -4714,7 +4716,7 @@ code_000_1b74:
 code_000_1b85:
     ld   A, [HL+]                                      ;; 00:1b85 $2a
     push HL                                            ;; 00:1b86 $e5
-    call code_000_1b19                                 ;; 00:1b87 $cd $19 $1b
+    call getTileInfoPointer                            ;; 00:1b87 $cd $19 $1b
     ld   C, $04                                        ;; 00:1b8a $0e $04
 
 code_000_1b8c:
@@ -5671,7 +5673,7 @@ code_000_2281:
     ld   [DE], A                                       ;; 00:229c $12
     push HL                                            ;; 00:229d $e5
     push BC                                            ;; 00:229e $c5
-    ld   HL, wMapTiles                                 ;; 00:229f $21 $50 $c3
+    ld   HL, wRoomTiles                                ;; 00:229f $21 $50 $c3
     call code_000_1b74                                 ;; 00:22a2 $cd $74 $1b
     pop  BC                                            ;; 00:22a5 $c1
     pop  HL                                            ;; 00:22a6 $e1
@@ -5902,7 +5904,7 @@ code_000_23b9:
     ret                                                ;; 00:23f0 $c9
 
 code_000_23f1:
-    ld   HL, wMapTiles                                 ;; 00:23f1 $21 $50 $c3
+    ld   HL, wRoomTiles                                ;; 00:23f1 $21 $50 $c3
     ld   A, D                                          ;; 00:23f4 $7a
     add  A, A                                          ;; 00:23f5 $87
     ld   C, A                                          ;; 00:23f6 $4f
@@ -5930,7 +5932,7 @@ code_000_2400:
     push DE                                            ;; 00:2411 $d5
     call code_000_1a44                                 ;; 00:2412 $cd $44 $1a
     jr   Z, .code_241d                                 ;; 00:2415 $28 $06
-    ld   HL, wMapTiles                                 ;; 00:2417 $21 $50 $c3
+    ld   HL, wRoomTiles                                ;; 00:2417 $21 $50 $c3
     call code_000_1b74                                 ;; 00:241a $cd $74 $1b
 .code_241d:
     pop  DE                                            ;; 00:241d $d1
@@ -5944,7 +5946,7 @@ code_000_2426:
     ld   A, [HL]                                       ;; 00:2429 $7e
     ret                                                ;; 00:242a $c9
 
-LoadMapTiles:
+loadRoomTiles:
     push HL                                            ;; 00:242b $e5
     ld   A, $07                                        ;; 00:242c $3e $07
     call code_000_3bee                                 ;; 00:242e $cd $ee $3b
@@ -5953,7 +5955,7 @@ LoadMapTiles:
     ld   A, $07                                        ;; 00:2437 $3e $07
     call NZ, code_000_3be4                             ;; 00:2439 $c4 $e4 $3b
     pop  DE                                            ;; 00:243c $d1
-    ld   HL, wMapTiles                                 ;; 00:243d $21 $50 $c3
+    ld   HL, wRoomTiles                                ;; 00:243d $21 $50 $c3
     ld   B, $50                                        ;; 00:2440 $06 $50
 .code_2442:
     ld   A, [DE]                                       ;; 00:2442 $1a
@@ -5976,7 +5978,7 @@ LoadMapTiles:
     dec  B                                             ;; 00:2459 $05
     jr   NZ, .code_2442                                ;; 00:245a $20 $e6
 .code_245c:
-    ld   HL, wMapTiles                                 ;; 00:245c $21 $50 $c3
+    ld   HL, wRoomTiles                                ;; 00:245c $21 $50 $c3
     ret                                                ;; 00:245f $c9
 
 code_000_2460:
@@ -6129,7 +6131,7 @@ code_000_2546:
     add  A, E                                          ;; 00:2554 $83
     ld   E, A                                          ;; 00:2555 $5f
     ld   D, $00                                        ;; 00:2556 $16 $00
-    ld   HL, wMapTiles                                 ;; 00:2558 $21 $50 $c3
+    ld   HL, wRoomTiles                                ;; 00:2558 $21 $50 $c3
     add  HL, DE                                        ;; 00:255b $19
     ret                                                ;; 00:255c $c9
 
@@ -6141,7 +6143,7 @@ code_000_255d:
     ld   A, [HL+]                                      ;; 00:2563 $2a
     ld   H, [HL]                                       ;; 00:2564 $66
     ld   L, A                                          ;; 00:2565 $6f
-    call LoadMapTiles                                  ;; 00:2566 $cd $2b $24
+    call loadRoomTiles                                 ;; 00:2566 $cd $2b $24
     pop  AF                                            ;; 00:2569 $f1
     ld   C, A                                          ;; 00:256a $4f
     pop  DE                                            ;; 00:256b $d1
@@ -6219,7 +6221,7 @@ code_000_255d:
     pop  HL                                            ;; 00:25ca $e1
     jr   .code_25be                                    ;; 00:25cb $18 $f1
 .code_25cd:
-    ld   HL, wMapTiles                                 ;; 00:25cd $21 $50 $c3
+    ld   HL, wRoomTiles                                ;; 00:25cd $21 $50 $c3
     ret                                                ;; 00:25d0 $c9
 
 ; Get the pointer to the map data. Difference with getRoomPointer is that this adds a 0x001A offset for some reason.
@@ -6324,7 +6326,7 @@ code_000_2617:
     jr   .code_2670                                    ;; 00:2656 $18 $18
 .code_2658:
     dec  D                                             ;; 00:2658 $15
-    ld   A, [wC3FA]                                    ;; 00:2659 $fa $fa $c3
+    ld   A, [wMapHeight]                               ;; 00:2659 $fa $fa $c3
     cp   A, D                                          ;; 00:265c $ba
     jr   NC, .code_2670                                ;; 00:265d $30 $11
     ld   D, A                                          ;; 00:265f $57
@@ -6332,7 +6334,7 @@ code_000_2617:
     jr   .code_2670                                    ;; 00:2661 $18 $0d
 .code_2663:
     inc  D                                             ;; 00:2663 $14
-    ld   A, [wC3FA]                                    ;; 00:2664 $fa $fa $c3
+    ld   A, [wMapHeight]                               ;; 00:2664 $fa $fa $c3
     cp   A, D                                          ;; 00:2667 $ba
     jr   NZ, .code_2670                                ;; 00:2668 $20 $06
     ld   D, $00                                        ;; 00:266a $16 $00
@@ -6359,7 +6361,7 @@ code_000_2617:
     ld   [wC3FE], A                                    ;; 00:268d $ea $fe $c3
     push HL                                            ;; 00:2690 $e5
     push DE                                            ;; 00:2691 $d5
-    call LoadMapTiles                                  ;; 00:2692 $cd $2b $24
+    call loadRoomTiles                                 ;; 00:2692 $cd $2b $24
     jr   .code_26bc                                    ;; 00:2695 $18 $25
 .code_2697:
     push BC                                            ;; 00:2697 $c5
@@ -6451,7 +6453,7 @@ loadMap:
     ld   A, [HL+]                                      ;; 00:2727 $2a
     ld   [wMapTileRLECount], A                         ;; 00:2728 $ea $f9 $c3
     ld   A, [HL+]                                      ;; 00:272b $2a
-    ld   [wC3FA], A                                    ;; 00:272c $ea $fa $c3
+    ld   [wMapHeight], A                               ;; 00:272c $ea $fa $c3
     ld   A, [HL+]                                      ;; 00:272f $2a
     ld   [wMapWidth], A                                ;; 00:2730 $ea $fb $c3
     ld   A, H                                          ;; 00:2733 $7c
@@ -6470,7 +6472,7 @@ loadMap:
     ld   [wC3FF], A                                    ;; 00:274e $ea $ff $c3
     ld   A, E                                          ;; 00:2751 $7b
     ld   [wC3FE], A                                    ;; 00:2752 $ea $fe $c3
-    call LoadMapTiles                                  ;; 00:2755 $cd $2b $24
+    call loadRoomTiles                                 ;; 00:2755 $cd $2b $24
     call code_000_1b74                                 ;; 00:2758 $cd $74 $1b
     call popBankNrAndSwitch                            ;; 00:275b $cd $0a $2a
     ret                                                ;; 00:275e $c9
@@ -6596,7 +6598,7 @@ code_000_27f9:
     cp   A, $00                                        ;; 00:280f $fe $00
     ret  NZ                                            ;; 00:2811 $c0
     ld   [wD499], A                                    ;; 00:2812 $ea $99 $d4
-    call code_000_3727                                 ;; 00:2815 $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:2815 $cd $27 $37
     ret                                                ;; 00:2818 $c9
 
 code_000_2819:
@@ -6618,7 +6620,7 @@ code_000_2820:
     cp   A, $00                                        ;; 00:2836 $fe $00
     ret  NZ                                            ;; 00:2838 $c0
     ld   [wD499], A                                    ;; 00:2839 $ea $99 $d4
-    call code_000_3727                                 ;; 00:283c $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:283c $cd $27 $37
     ret                                                ;; 00:283f $c9
 
 code_000_2840:
@@ -6664,7 +6666,7 @@ code_000_2859:
     ld   C, [HL]                                       ;; 00:2870 $4e
     call code_000_27e3                                 ;; 00:2871 $cd $e3 $27
     pop  HL                                            ;; 00:2874 $e1
-    call code_000_3727                                 ;; 00:2875 $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:2875 $cd $27 $37
     ret                                                ;; 00:2878 $c9
 
 code_000_2879:
@@ -6672,7 +6674,7 @@ code_000_2879:
     call code_000_2883                                 ;; 00:287a $cd $83 $28
     pop  HL                                            ;; 00:287d $e1
     ret  NZ                                            ;; 00:287e $c0
-    call code_000_3727                                 ;; 00:287f $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:287f $cd $27 $37
     ret                                                ;; 00:2882 $c9
 
 code_000_2883:
@@ -7379,7 +7381,7 @@ code_000_2ce7:
     ld   A, $0f                                        ;; 00:2cf9 $3e $0f
     call code_000_297d                                 ;; 00:2cfb $cd $7d $29
     pop  HL                                            ;; 00:2cfe $e1
-    call code_000_3727                                 ;; 00:2cff $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:2cff $cd $27 $37
     ret                                                ;; 00:2d02 $c9
 
 code_000_2d03:
@@ -7757,7 +7759,7 @@ code_000_2f7f:
     push HL                                            ;; 00:2f7f $e5
     call code_000_2ef7                                 ;; 00:2f80 $cd $f7 $2e
     pop  HL                                            ;; 00:2f83 $e1
-    call code_000_3727                                 ;; 00:2f84 $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:2f84 $cd $27 $37
     ret                                                ;; 00:2f87 $c9
 
 code_000_2f88:
@@ -8228,11 +8230,11 @@ code_000_31c7:
     add  HL, DE                                        ;; 00:31f0 $19
 .code_31f1:
     ld   A, H                                          ;; 00:31f1 $7c
-    ld   [wD8B7], A                                    ;; 00:31f2 $ea $b7 $d8
+    ld   [wScriptPointerHigh], A                       ;; 00:31f2 $ea $b7 $d8
     ld   A, L                                          ;; 00:31f5 $7d
-    ld   [wD8B6], A                                    ;; 00:31f6 $ea $b6 $d8
-    call code_000_3c44                                 ;; 00:31f9 $cd $44 $3c
-    call code_000_3727                                 ;; 00:31fc $cd $27 $37
+    ld   [wScriptPointerLow], A                        ;; 00:31f6 $ea $b6 $d8
+    call getBankNrForScript                            ;; 00:31f9 $cd $44 $3c
+    call getNextScriptInstruction                      ;; 00:31fc $cd $27 $37
     push HL                                            ;; 00:31ff $e5
     call popBankNrAndSwitch                            ;; 00:3200 $cd $0a $2a
     ld   HL, wC0A1                                     ;; 00:3203 $21 $a1 $c0
@@ -8245,11 +8247,11 @@ code_000_31c7:
     ret                                                ;; 00:3212 $c9
 
 code_000_3213:
-    ld   A, [wD86A]                                    ;; 00:3213 $fa $6a $d8
+    ld   A, [wScriptBank]                              ;; 00:3213 $fa $6a $d8
     push AF                                            ;; 00:3216 $f5
-    ld   A, [wD8B7]                                    ;; 00:3217 $fa $b7 $d8
+    ld   A, [wScriptPointerHigh]                       ;; 00:3217 $fa $b7 $d8
     ld   D, A                                          ;; 00:321a $57
-    ld   A, [wD8B6]                                    ;; 00:321b $fa $b6 $d8
+    ld   A, [wScriptPointerLow]                        ;; 00:321b $fa $b6 $d8
     ld   E, A                                          ;; 00:321e $5f
     ld   A, D                                          ;; 00:321f $7a
     cp   A, $80                                        ;; 00:3220 $fe $80
@@ -8268,7 +8270,7 @@ code_000_3213:
     pop  DE                                            ;; 00:3233 $d1
     pop  HL                                            ;; 00:3234 $e1
     ld   B, $02                                        ;; 00:3235 $06 $02
-    ld   A, [wD86A]                                    ;; 00:3237 $fa $6a $d8
+    ld   A, [wScriptBank]                              ;; 00:3237 $fa $6a $d8
     cp   A, $0e                                        ;; 00:323a $fe $0e
     jr   Z, .code_3242                                 ;; 00:323c $28 $04
     ld   A, D                                          ;; 00:323e $7a
@@ -8276,15 +8278,15 @@ code_000_3213:
     ld   D, A                                          ;; 00:3241 $57
 .code_3242:
     dec  DE                                            ;; 00:3242 $1b
-    ld   A, [wD86A]                                    ;; 00:3243 $fa $6a $d8
+    ld   A, [wScriptBank]                              ;; 00:3243 $fa $6a $d8
     ld   B, A                                          ;; 00:3246 $47
     pop  AF                                            ;; 00:3247 $f1
-    ld   [wD86A], A                                    ;; 00:3248 $ea $6a $d8
+    ld   [wScriptBank], A                              ;; 00:3248 $ea $6a $d8
     push BC                                            ;; 00:324b $c5
     call code_000_3304                                 ;; 00:324c $cd $04 $33
     pop  BC                                            ;; 00:324f $c1
     ld   A, B                                          ;; 00:3250 $78
-    ld   [wD86A], A                                    ;; 00:3251 $ea $6a $d8
+    ld   [wScriptBank], A                              ;; 00:3251 $ea $6a $d8
 
 code_000_3254:
     call code_000_28b0                                 ;; 00:3254 $cd $b0 $28
@@ -8298,17 +8300,17 @@ code_000_3254:
     push HL                                            ;; 00:3266 $e5
     call code_000_3165                                 ;; 00:3267 $cd $65 $31
     push HL                                            ;; 00:326a $e5
-    ld   A, [wD8B7]                                    ;; 00:326b $fa $b7 $d8
+    ld   A, [wScriptPointerHigh]                       ;; 00:326b $fa $b7 $d8
     ld   H, A                                          ;; 00:326e $67
-    ld   A, [wD8B6]                                    ;; 00:326f $fa $b6 $d8
+    ld   A, [wScriptPointerLow]                        ;; 00:326f $fa $b6 $d8
     ld   L, A                                          ;; 00:3272 $6f
     ret                                                ;; 00:3273 $c9
 
 code_000_3274:
     ld   A, H                                          ;; 00:3274 $7c
-    ld   [wD8B7], A                                    ;; 00:3275 $ea $b7 $d8
+    ld   [wScriptPointerHigh], A                       ;; 00:3275 $ea $b7 $d8
     ld   A, L                                          ;; 00:3278 $7d
-    ld   [wD8B6], A                                    ;; 00:3279 $ea $b6 $d8
+    ld   [wScriptPointerLow], A                        ;; 00:3279 $ea $b6 $d8
     push HL                                            ;; 00:327c $e5
     call popBankNrAndSwitch                            ;; 00:327d $cd $0a $2a
     pop  HL                                            ;; 00:3280 $e1
@@ -8319,7 +8321,7 @@ code_000_3282:
     ld   A, $08                                        ;; 00:3283 $3e $08 Bank
     call pushBankNrAndSwitch                           ;; 00:3285 $cd $fb $29
     pop  BC                                            ;; 00:3288 $c1
-    ld   HL, $4f05                                     ;; 00:3289 $21 $05 $4f
+    ld   HL, scriptPointersTable                       ;; 00:3289 $21 $05 $4f
     add  HL, BC                                        ;; 00:328c $09
     add  HL, BC                                        ;; 00:328d $09
     ld   A, [HL+]                                      ;; 00:328e $2a
@@ -8338,7 +8340,7 @@ code_000_3297:
     and  A, A                                          ;; 00:32a0 $a7
     jr   NZ, .code_32c0                                ;; 00:32a1 $20 $1d
     xor  A, A                                          ;; 00:32a3 $af
-    ld   [wD85A], A                                    ;; 00:32a4 $ea $5a $d8
+    ld   [wScriptCommand], A                           ;; 00:32a4 $ea $5a $d8
     ld   A, [wD86E]                                    ;; 00:32a7 $fa $6e $d8
     ld   [wC0A0], A                                    ;; 00:32aa $ea $a0 $c0
     ld   HL, wC0A1                                     ;; 00:32ad $21 $a1 $c0
@@ -8364,12 +8366,12 @@ code_000_3297:
     push DE                                            ;; 00:32cf $d5
     pop  HL                                            ;; 00:32d0 $e1
     ld   A, H                                          ;; 00:32d1 $7c
-    ld   [wD8B7], A                                    ;; 00:32d2 $ea $b7 $d8
+    ld   [wScriptPointerHigh], A                       ;; 00:32d2 $ea $b7 $d8
     ld   A, L                                          ;; 00:32d5 $7d
-    ld   [wD8B6], A                                    ;; 00:32d6 $ea $b6 $d8
+    ld   [wScriptPointerLow], A                        ;; 00:32d6 $ea $b6 $d8
     call popBankNrAndSwitch                            ;; 00:32d9 $cd $0a $2a
-    call code_000_3c44                                 ;; 00:32dc $cd $44 $3c
-    call code_000_3727                                 ;; 00:32df $cd $27 $37
+    call getBankNrForScript                            ;; 00:32dc $cd $44 $3c
+    call getNextScriptInstruction                      ;; 00:32df $cd $27 $37
     ret                                                ;; 00:32e2 $c9
 .code_32e3:
     dec  C                                             ;; 00:32e3 $0d
@@ -8377,10 +8379,10 @@ code_000_3297:
     push DE                                            ;; 00:32e6 $d5
     pop  HL                                            ;; 00:32e7 $e1
     call code_000_36df                                 ;; 00:32e8 $cd $df $36
-    call code_000_3727                                 ;; 00:32eb $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:32eb $cd $27 $37
     ret                                                ;; 00:32ee $c9
 .code_32ef:
-    call code_000_3727                                 ;; 00:32ef $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:32ef $cd $27 $37
     ret                                                ;; 00:32f2 $c9
 
 code_000_32f3:
@@ -8390,7 +8392,7 @@ code_000_32f3:
     ld   D, $00                                        ;; 00:32f6 $16 $00
     add  HL, DE                                        ;; 00:32f8 $19
     pop  DE                                            ;; 00:32f9 $d1
-    call code_000_3727                                 ;; 00:32fa $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:32fa $cd $27 $37
     ret                                                ;; 00:32fd $c9
 
 code_000_32fe:
@@ -8405,7 +8407,7 @@ code_000_3304:
     ld   A, H                                          ;; 00:3305 $7c
     cp   A, $80                                        ;; 00:3306 $fe $80
     jr   NC, .code_3315                                ;; 00:3308 $30 $0b
-    ld   A, [wD86A]                                    ;; 00:330a $fa $6a $d8
+    ld   A, [wScriptBank]                              ;; 00:330a $fa $6a $d8
     cp   A, $0e                                        ;; 00:330d $fe $0e
     jr   NZ, .code_3315                                ;; 00:330f $20 $04
     ld   DE, mapRoomPointers_03                        ;; 00:3311 $11 $00 $40
@@ -8416,21 +8418,21 @@ code_000_3304:
     ld   DE, mapRoomPointers_00                        ;; 00:3319 $11 $00 $40
     add  HL, DE                                        ;; 00:331c $19
     ld   A, H                                          ;; 00:331d $7c
-    ld   [wD8B7], A                                    ;; 00:331e $ea $b7 $d8
+    ld   [wScriptPointerHigh], A                       ;; 00:331e $ea $b7 $d8
     ld   A, L                                          ;; 00:3321 $7d
-    ld   [wD8B6], A                                    ;; 00:3322 $ea $b6 $d8
+    ld   [wScriptPointerLow], A                        ;; 00:3322 $ea $b6 $d8
     call popBankNrAndSwitch                            ;; 00:3325 $cd $0a $2a
-    call code_000_3c44                                 ;; 00:3328 $cd $44 $3c
-    call code_000_3727                                 ;; 00:332b $cd $27 $37
+    call getBankNrForScript                            ;; 00:3328 $cd $44 $3c
+    call getNextScriptInstruction                      ;; 00:332b $cd $27 $37
     ret                                                ;; 00:332e $c9
 
 code_000_332f:
-    call code_000_3727                                 ;; 00:332f $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:332f $cd $27 $37
     ld   B, $03                                        ;; 00:3332 $06 $03
     ld   C, A                                          ;; 00:3334 $4f
     inc  HL                                            ;; 00:3335 $23
     call code_000_36df                                 ;; 00:3336 $cd $df $36
-    call code_000_3727                                 ;; 00:3339 $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:3339 $cd $27 $37
     ret                                                ;; 00:333c $c9
 
 code_000_333d:
@@ -8449,7 +8451,7 @@ code_000_333d:
     and  A, A                                          ;; 00:3356 $a7
     jr   NZ, .code_335e                                ;; 00:3357 $20 $05
     inc  HL                                            ;; 00:3359 $23
-    call code_000_3727                                 ;; 00:335a $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:335a $cd $27 $37
     ret                                                ;; 00:335d $c9
 .code_335e:
     push HL                                            ;; 00:335e $e5
@@ -8466,7 +8468,7 @@ code_000_333d:
     jp   HL                                            ;; 00:336f $e9
 
 code_000_3370:
-    call code_000_3727                                 ;; 00:3370 $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:3370 $cd $27 $37
     and  A, A                                          ;; 00:3373 $a7
     jr   Z, .code_338b                                 ;; 00:3374 $28 $15
     push BC                                            ;; 00:3376 $c5
@@ -8478,13 +8480,13 @@ code_000_3370:
     and  A, A                                          ;; 00:337e $a7
     jr   NZ, .code_337d                                ;; 00:337f $20 $fc
     dec  HL                                            ;; 00:3381 $2b
-    call code_000_3727                                 ;; 00:3382 $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:3382 $cd $27 $37
     ld   A, $01                                        ;; 00:3385 $3e $01
-    ld   [wD85A], A                                    ;; 00:3387 $ea $5a $d8
+    ld   [wScriptCommand], A                           ;; 00:3387 $ea $5a $d8
     ret                                                ;; 00:338a $c9
 .code_338b:
     inc  HL                                            ;; 00:338b $23
-    call code_000_3727                                 ;; 00:338c $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:338c $cd $27 $37
     ret                                                ;; 00:338f $c9
 
 code_000_3390:
@@ -8503,7 +8505,7 @@ code_000_3390:
 
 code_000_33aa:
     ld   A, $01                                        ;; 00:33aa $3e $01
-    ld   [wD85A], A                                    ;; 00:33ac $ea $5a $d8
+    ld   [wScriptCommand], A                           ;; 00:33ac $ea $5a $d8
     ret                                                ;; 00:33af $c9
 
 code_000_33b0:
@@ -8522,7 +8524,7 @@ code_000_33b0:
 
 code_000_33ca:
     inc  HL                                            ;; 00:33ca $23
-    call code_000_3727                                 ;; 00:33cb $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:33cb $cd $27 $37
     ret                                                ;; 00:33ce $c9
 
 code_000_33cf:
@@ -8639,7 +8641,7 @@ code_000_3466:
     and  A, A                                          ;; 00:346e $a7
     jr   NZ, .code_346d                                ;; 00:346f $20 $fc
     inc  HL                                            ;; 00:3471 $23
-    call code_000_3727                                 ;; 00:3472 $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:3472 $cd $27 $37
     ret                                                ;; 00:3475 $c9
 
 code_000_3476:
@@ -8649,7 +8651,7 @@ code_000_3476:
 
 code_000_347a:
     ld   A, $01                                        ;; 00:347a $3e $01
-    ld   [wD85A], A                                    ;; 00:347c $ea $5a $d8
+    ld   [wScriptCommand], A                           ;; 00:347c $ea $5a $d8
     ret                                                ;; 00:347f $c9
 
 code_000_3480:
@@ -8666,9 +8668,9 @@ code_000_3480:
     call code_000_3c73                                 ;; 00:3494 $cd $73 $3c
     dec  HL                                            ;; 00:3497 $2b
     ld   A, H                                          ;; 00:3498 $7c
-    ld   [wD8B7], A                                    ;; 00:3499 $ea $b7 $d8
+    ld   [wScriptPointerHigh], A                       ;; 00:3499 $ea $b7 $d8
     ld   A, L                                          ;; 00:349c $7d
-    ld   [wD8B6], A                                    ;; 00:349d $ea $b6 $d8
+    ld   [wScriptPointerLow], A                        ;; 00:349d $ea $b6 $d8
     call code_000_36d0                                 ;; 00:34a0 $cd $d0 $36
     ret                                                ;; 00:34a3 $c9
 
@@ -9028,11 +9030,11 @@ code_000_36c2:
 code_000_36d0:
     inc  HL                                            ;; 00:36d0 $23
     ld   A, H                                          ;; 00:36d1 $7c
-    ld   [wD8B7], A                                    ;; 00:36d2 $ea $b7 $d8
+    ld   [wScriptPointerHigh], A                       ;; 00:36d2 $ea $b7 $d8
     ld   A, L                                          ;; 00:36d5 $7d
-    ld   [wD8B6], A                                    ;; 00:36d6 $ea $b6 $d8
+    ld   [wScriptPointerLow], A                        ;; 00:36d6 $ea $b6 $d8
     ld   A, $04                                        ;; 00:36d9 $3e $04
-    ld   [wD85A], A                                    ;; 00:36db $ea $5a $d8
+    ld   [wScriptCommand], A                           ;; 00:36db $ea $5a $d8
     ret                                                ;; 00:36de $c9
 
 code_000_36df:
@@ -9079,14 +9081,14 @@ code_000_3705:
     ld   [wD865], A                                    ;; 00:3723 $ea $65 $d8
     ret                                                ;; 00:3726 $c9
 
-code_000_3727:
+getNextScriptInstruction:
     ld   A, [HL+]                                      ;; 00:3727 $2a
-    ld   [wD85A], A                                    ;; 00:3728 $ea $5a $d8
+    ld   [wScriptCommand], A                           ;; 00:3728 $ea $5a $d8
     push AF                                            ;; 00:372b $f5
     ld   A, H                                          ;; 00:372c $7c
-    ld   [wD8B7], A                                    ;; 00:372d $ea $b7 $d8
+    ld   [wScriptPointerHigh], A                       ;; 00:372d $ea $b7 $d8
     ld   A, L                                          ;; 00:3730 $7d
-    ld   [wD8B6], A                                    ;; 00:3731 $ea $b6 $d8
+    ld   [wScriptPointerLow], A                        ;; 00:3731 $ea $b6 $d8
     pop  AF                                            ;; 00:3734 $f1
     ret                                                ;; 00:3735 $c9
 
@@ -9304,7 +9306,7 @@ code_000_3891:
     call code_000_38bb                                 ;; 00:3895 $cd $bb $38
     ld   A, B                                          ;; 00:3898 $78
     jr   C, .code_38a0                                 ;; 00:3899 $38 $05
-    call code_000_047c                                 ;; 00:389b $cd $7c $04
+    call storeBatBackgroundDrawPosition                ;; 00:389b $cd $7c $04
     jr   .code_38a3                                    ;; 00:389e $18 $03
 .code_38a0:
     call storeBatHLinVRAM                              ;; 00:38a0 $cd $5e $1d
@@ -9422,7 +9424,7 @@ code_000_392f:
     ld   [HL+], A                                      ;; 00:393f $22
     ld   [HL], $00                                     ;; 00:3940 $36 $00
     pop  HL                                            ;; 00:3942 $e1
-    call code_000_3727                                 ;; 00:3943 $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:3943 $cd $27 $37
     ret                                                ;; 00:3946 $c9
 
 code_000_3947:
@@ -9437,7 +9439,7 @@ code_000_3947:
     push HL                                            ;; 00:3957 $e5
     call code_000_310b                                 ;; 00:3958 $cd $0b $31
     pop  HL                                            ;; 00:395b $e1
-    call code_000_3727                                 ;; 00:395c $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:395c $cd $27 $37
     ret                                                ;; 00:395f $c9
 
 code_000_3960:
@@ -9452,7 +9454,7 @@ code_000_3960:
     push HL                                            ;; 00:3970 $e5
     call code_000_3111                                 ;; 00:3971 $cd $11 $31
     pop  HL                                            ;; 00:3974 $e1
-    call code_000_3727                                 ;; 00:3975 $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:3975 $cd $27 $37
     ret                                                ;; 00:3978 $c9
 
 code_000_3979:
@@ -9471,7 +9473,7 @@ code_000_3979:
     bit  $04, C                                        ;; 00:3991 $cb $61
     call Z, code_000_3183                              ;; 00:3993 $cc $83 $31
     pop  HL                                            ;; 00:3996 $e1
-    call code_000_3727                                 ;; 00:3997 $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:3997 $cd $27 $37
     ret                                                ;; 00:399a $c9
 
 code_000_399b:
@@ -9487,7 +9489,7 @@ code_000_39a7:
     ld   A, [wD86E]                                    ;; 00:39a7 $fa $6e $d8
     ld   [wD862], A                                    ;; 00:39aa $ea $62 $d8
     pop  HL                                            ;; 00:39ad $e1
-    call code_000_3727                                 ;; 00:39ae $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:39ae $cd $27 $37
     ret                                                ;; 00:39b1 $c9
 
 code_000_39b2:
@@ -9500,7 +9502,7 @@ code_000_39b2:
     or   A, B                                          ;; 00:39be $b0
     ld   [wD7D5], A                                    ;; 00:39bf $ea $d5 $d7
     pop  HL                                            ;; 00:39c2 $e1
-    call code_000_3727                                 ;; 00:39c3 $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:39c3 $cd $27 $37
     ret                                                ;; 00:39c6 $c9
 
 code_000_39c7:
@@ -9534,7 +9536,7 @@ code_000_39c7:
     ret                                                ;; 00:3a00 $c9
 
 code_000_3a01:
-    call code_000_3727                                 ;; 00:3a01 $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:3a01 $cd $27 $37
     ret                                                ;; 00:3a04 $c9
 
 code_000_3a05:
@@ -9547,7 +9549,7 @@ code_000_3a05:
     pop  HL                                            ;; 00:3a0b $e1
     call code_000_3d16                                 ;; 00:3a0c $cd $16 $3d
     pop  HL                                            ;; 00:3a0f $e1
-    call code_000_3727                                 ;; 00:3a10 $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:3a10 $cd $27 $37
     ret                                                ;; 00:3a13 $c9
 
 code_000_3a14:
@@ -9582,7 +9584,7 @@ code_000_3a14:
     ld   A, C                                          ;; 00:3a3e $79
     ld   [wD7BD], A                                    ;; 00:3a3f $ea $bd $d7
     pop  HL                                            ;; 00:3a42 $e1
-    call code_000_3727                                 ;; 00:3a43 $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:3a43 $cd $27 $37
     ret                                                ;; 00:3a46 $c9
 
 code_000_3a47:
@@ -9605,7 +9607,7 @@ code_000_3a47:
     ld   [wMoneyLow], A                                ;; 00:3a5f $ea $be $d7
     call code_000_3117                                 ;; 00:3a62 $cd $17 $31
     pop  HL                                            ;; 00:3a65 $e1
-    call code_000_3727                                 ;; 00:3a66 $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:3a66 $cd $27 $37
     ret                                                ;; 00:3a69 $c9
 
 code_000_3a6a:
@@ -9638,12 +9640,12 @@ code_000_3a6a:
 .code_3a93:
     call code_000_3117                                 ;; 00:3a93 $cd $17 $31
     pop  HL                                            ;; 00:3a96 $e1
-    call code_000_3727                                 ;; 00:3a97 $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:3a97 $cd $27 $37
     ret                                                ;; 00:3a9a $c9
 
 code_000_3a9b:
     dec  HL                                            ;; 00:3a9b $2b
-    call code_000_3727                                 ;; 00:3a9c $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:3a9c $cd $27 $37
     ret                                                ;; 00:3a9f $c9
 
 code_000_3aa0:
@@ -9655,7 +9657,7 @@ code_000_3aa0:
     ld   A, [wD86F]                                    ;; 00:3aa7 $fa $6f $d8
     bit  $01, A                                        ;; 00:3aaa $cb $4f
     jr   NZ, code_000_3ad6                             ;; 00:3aac $20 $28
-    call code_000_3727                                 ;; 00:3aae $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:3aae $cd $27 $37
     ret                                                ;; 00:3ab1 $c9
 
 code_000_3ab2:
@@ -9667,7 +9669,7 @@ code_000_3ab2:
     ld   A, [wD86F]                                    ;; 00:3ab9 $fa $6f $d8
     bit  $01, A                                        ;; 00:3abc $cb $4f
     jr   NZ, code_000_3ad6                             ;; 00:3abe $20 $16
-    call code_000_3727                                 ;; 00:3ac0 $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:3ac0 $cd $27 $37
     ret                                                ;; 00:3ac3 $c9
 
 code_000_3ac4:
@@ -9679,7 +9681,7 @@ code_000_3ac4:
     ld   A, [wD86F]                                    ;; 00:3acb $fa $6f $d8
     bit  $01, A                                        ;; 00:3ace $cb $4f
     jr   NZ, code_000_3ad6                             ;; 00:3ad0 $20 $04
-    call code_000_3727                                 ;; 00:3ad2 $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:3ad2 $cd $27 $37
     ret                                                ;; 00:3ad5 $c9
 
 code_000_3ad6:
@@ -9734,7 +9736,7 @@ code_000_3b21:
     and  A, $80                                        ;; 00:3b27 $e6 $80
     pop  HL                                            ;; 00:3b29 $e1
     ret  NZ                                            ;; 00:3b2a $c0
-    call code_000_3727                                 ;; 00:3b2b $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:3b2b $cd $27 $37
     ret                                                ;; 00:3b2e $c9
 
 code_000_3b2f:
@@ -9743,7 +9745,7 @@ code_000_3b2f:
     push HL                                            ;; 00:3b31 $e5
     call code_000_30d5                                 ;; 00:3b32 $cd $d5 $30
     pop  HL                                            ;; 00:3b35 $e1
-    call code_000_3727                                 ;; 00:3b36 $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:3b36 $cd $27 $37
     ret                                                ;; 00:3b39 $c9
 
 code_000_3b3a:
@@ -9752,7 +9754,7 @@ code_000_3b3a:
     push HL                                            ;; 00:3b3c $e5
     call code_000_30e1                                 ;; 00:3b3d $cd $e1 $30
     pop  HL                                            ;; 00:3b40 $e1
-    call code_000_3727                                 ;; 00:3b41 $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:3b41 $cd $27 $37
     ret                                                ;; 00:3b44 $c9
 
 code_000_3b45:
@@ -9761,7 +9763,7 @@ code_000_3b45:
     push HL                                            ;; 00:3b47 $e5
     call code_000_30db                                 ;; 00:3b48 $cd $db $30
     pop  HL                                            ;; 00:3b4b $e1
-    call code_000_3727                                 ;; 00:3b4c $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:3b4c $cd $27 $37
     ret                                                ;; 00:3b4f $c9
 
 code_000_3b50:
@@ -9769,7 +9771,7 @@ code_000_3b50:
     ld   HL, wD874                                     ;; 00:3b51 $21 $74 $d8
     set  $01, [HL]                                     ;; 00:3b54 $cb $ce
     pop  HL                                            ;; 00:3b56 $e1
-    call code_000_3727                                 ;; 00:3b57 $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:3b57 $cd $27 $37
     ret                                                ;; 00:3b5a $c9
 
 code_000_3b5b:
@@ -9777,7 +9779,7 @@ code_000_3b5b:
     ld   HL, wD874                                     ;; 00:3b5c $21 $74 $d8
     res  $01, [HL]                                     ;; 00:3b5f $cb $8e
     pop  HL                                            ;; 00:3b61 $e1
-    call code_000_3727                                 ;; 00:3b62 $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:3b62 $cd $27 $37
     ret                                                ;; 00:3b65 $c9
 
 code_000_3b66:
@@ -9789,7 +9791,7 @@ code_000_3b66:
     and  A, $c0                                        ;; 00:3b6e $e6 $c0
     or   A, C                                          ;; 00:3b70 $b1
     ld   [DE], A                                       ;; 00:3b71 $12
-    call code_000_3727                                 ;; 00:3b72 $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:3b72 $cd $27 $37
     ret                                                ;; 00:3b75 $c9
 
 code_000_3b76:
@@ -9818,7 +9820,7 @@ code_000_3b76:
     ld   [HL], A                                       ;; 00:3b98 $77
 .code_3b99:
     pop  HL                                            ;; 00:3b99 $e1
-    call code_000_3727                                 ;; 00:3b9a $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:3b9a $cd $27 $37
     ret                                                ;; 00:3b9d $c9
 
 code_000_3b9e:
@@ -9860,15 +9862,15 @@ code_000_3bcb:
     ret                                                ;; 00:3bcf $c9
 
 code_000_3bd0:
-    call code_000_3727                                 ;; 00:3bd0 $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:3bd0 $cd $27 $37
     call code_000_3be4                                 ;; 00:3bd3 $cd $e4 $3b
-    call code_000_3727                                 ;; 00:3bd6 $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:3bd6 $cd $27 $37
     ret                                                ;; 00:3bd9 $c9
 
 code_000_3bda:
-    call code_000_3727                                 ;; 00:3bda $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:3bda $cd $27 $37
     call code_000_3bee                                 ;; 00:3bdd $cd $ee $3b
-    call code_000_3727                                 ;; 00:3be0 $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:3be0 $cd $27 $37
     ret                                                ;; 00:3be3 $c9
 
 code_000_3be4:
@@ -9893,7 +9895,7 @@ code_000_3bee:
     ret                                                ;; 00:3bf8 $c9
 
 code_000_3bf9:
-    call code_000_3727                                 ;; 00:3bf9 $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:3bf9 $cd $27 $37
     push HL                                            ;; 00:3bfc $e5
     ld   H, $00                                        ;; 00:3bfd $26 $00
     ld   L, A                                          ;; 00:3bff $6f
@@ -9914,7 +9916,7 @@ code_000_3c10:
     ld   A, [wD84D]                                    ;; 00:3c19 $fa $4d $d8
     call code_000_2fca                                 ;; 00:3c1c $cd $ca $2f
     pop  HL                                            ;; 00:3c1f $e1
-    call code_000_3727                                 ;; 00:3c20 $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:3c20 $cd $27 $37
     ret                                                ;; 00:3c23 $c9
 
 code_000_3c24:
@@ -9939,10 +9941,10 @@ code_000_3c24:
     pop  BC                                            ;; 00:3c42 $c1
     ret                                                ;; 00:3c43 $c9
 
-code_000_3c44:
-    ld   A, [wD8B7]                                    ;; 00:3c44 $fa $b7 $d8
+getBankNrForScript:
+    ld   A, [wScriptPointerHigh]                       ;; 00:3c44 $fa $b7 $d8
     ld   H, A                                          ;; 00:3c47 $67
-    ld   A, [wD8B6]                                    ;; 00:3c48 $fa $b6 $d8
+    ld   A, [wScriptPointerLow]                        ;; 00:3c48 $fa $b6 $d8
     ld   L, A                                          ;; 00:3c4b $6f
     ld   A, H                                          ;; 00:3c4c $7c
     cp   A, $80                                        ;; 00:3c4d $fe $80
@@ -9955,10 +9957,10 @@ code_000_3c44:
     ld   H, A                                          ;; 00:3c5b $67
 .code_3c5c:
     ld   A, B                                          ;; 00:3c5c $78
-    ld   [wD86A], A                                    ;; 00:3c5d $ea $6a $d8
+    ld   [wScriptBank], A                              ;; 00:3c5d $ea $6a $d8
 
 code_000_3c60:
-    ld   A, [wD86A]                                    ;; 00:3c60 $fa $6a $d8
+    ld   A, [wScriptBank]                              ;; 00:3c60 $fa $6a $d8
     push HL                                            ;; 00:3c63 $e5
     call pushBankNrAndSwitch                           ;; 00:3c64 $cd $fb $29
     pop  HL                                            ;; 00:3c67 $e1
@@ -9968,7 +9970,7 @@ code_000_3c69:
     ld   A, B                                          ;; 00:3c69 $78
     ld   [wD86B], A                                    ;; 00:3c6a $ea $6b $d8
     ld   A, $ff                                        ;; 00:3c6d $3e $ff
-    ld   [wD85A], A                                    ;; 00:3c6f $ea $5a $d8
+    ld   [wScriptCommand], A                           ;; 00:3c6f $ea $5a $d8
     ret                                                ;; 00:3c72 $c9
 
 code_000_3c73:
@@ -10033,7 +10035,7 @@ code_000_3cd1:
     ld   A, [wD884]                                    ;; 00:3cd1 $fa $84 $d8
     ld   [wVideoWY], A                                 ;; 00:3cd4 $ea $a9 $c0
     ld   A, [wD86C]                                    ;; 00:3cd7 $fa $6c $d8
-    ld   [wD85A], A                                    ;; 00:3cda $ea $5a $d8
+    ld   [wScriptCommand], A                           ;; 00:3cda $ea $5a $d8
     ld   DE, $0000                                     ;; 00:3cdd $11 $00 $00
     ld   HL, code_000_1214                             ;; 00:3ce0 $21 $14 $12
     call code_000_0435                                 ;; 00:3ce3 $cd $35 $04
@@ -10043,12 +10045,12 @@ code_000_3cd1:
     inc  HL                                            ;; 00:3ced $23
     inc  HL                                            ;; 00:3cee $23
     ld   A, H                                          ;; 00:3cef $7c
-    ld   [wD8B7], A                                    ;; 00:3cf0 $ea $b7 $d8
+    ld   [wScriptPointerHigh], A                       ;; 00:3cf0 $ea $b7 $d8
     ld   A, L                                          ;; 00:3cf3 $7d
-    ld   [wD8B6], A                                    ;; 00:3cf4 $ea $b6 $d8
+    ld   [wScriptPointerLow], A                        ;; 00:3cf4 $ea $b6 $d8
     ld   A, [wD84A]                                    ;; 00:3cf7 $fa $4a $d8
     cp   A, $1e                                        ;; 00:3cfa $fe $1e
-    call Z, code_000_3727                              ;; 00:3cfc $cc $27 $37
+    call Z, getNextScriptInstruction                   ;; 00:3cfc $cc $27 $37
     jr   Z, .code_3d01                                 ;; 00:3cff $28 $00
 .code_3d01:
     call code_000_3063                                 ;; 00:3d01 $cd $63 $30
@@ -10370,7 +10372,7 @@ code_000_3efb:
     ret                                                ;; 00:3f00 $c9
 
 code_000_3f01:
-    call code_000_3727                                 ;; 00:3f01 $cd $27 $37
+    call getNextScriptInstruction                      ;; 00:3f01 $cd $27 $37
     ret                                                ;; 00:3f04 $c9
 
 code_000_3f05:

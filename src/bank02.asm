@@ -915,7 +915,7 @@ code_002_44fa:
     ret                                                ;; 02:4566 $c9
 
 code_002_4567:
-    ld   A, [wD85A]                                    ;; 02:4567 $fa $5a $d8
+    ld   A, [wScriptCommand]                           ;; 02:4567 $fa $5a $d8
     ld   C, A                                          ;; 02:456a $4f
     ld   B, $00                                        ;; 02:456b $06 $00
     ld   HL, data_002_4576                             ;; 02:456d $21 $76 $45
@@ -3403,7 +3403,7 @@ code_002_5638:
     ld   A, $05                                        ;; 02:563e $3e $05
     ld   [wD86B], A                                    ;; 02:5640 $ea $6b $d8
     ld   A, $ff                                        ;; 02:5643 $3e $ff
-    ld   [wD85A], A                                    ;; 02:5645 $ea $5a $d8
+    ld   [wScriptCommand], A                           ;; 02:5645 $ea $5a $d8
     call code_002_564c                                 ;; 02:5648 $cd $4c $56
     ret                                                ;; 02:564b $c9
 
@@ -5223,16 +5223,16 @@ code_002_6943:
     xor  A, A                                          ;; 02:698e $af
     ld   [wD854], A                                    ;; 02:698f $ea $54 $d8
     ld   [wD853], A                                    ;; 02:6992 $ea $53 $d8
-    ld   A, [wD8B7]                                    ;; 02:6995 $fa $b7 $d8
+    ld   A, [wScriptPointerHigh]                       ;; 02:6995 $fa $b7 $d8
     ld   H, A                                          ;; 02:6998 $67
-    ld   A, [wD8B6]                                    ;; 02:6999 $fa $b6 $d8
+    ld   A, [wScriptPointerLow]                        ;; 02:6999 $fa $b6 $d8
     ld   L, A                                          ;; 02:699c $6f
     dec  HL                                            ;; 02:699d $2b
     dec  HL                                            ;; 02:699e $2b
     ld   A, H                                          ;; 02:699f $7c
-    ld   [wD8B7], A                                    ;; 02:69a0 $ea $b7 $d8
+    ld   [wScriptPointerHigh], A                       ;; 02:69a0 $ea $b7 $d8
     ld   A, L                                          ;; 02:69a3 $7d
-    ld   [wD8B6], A                                    ;; 02:69a4 $ea $b6 $d8
+    ld   [wScriptPointerLow], A                        ;; 02:69a4 $ea $b6 $d8
     jp   code_002_5638                                 ;; 02:69a7 $c3 $38 $56
 
 code_002_69aa:

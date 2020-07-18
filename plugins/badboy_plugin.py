@@ -2,38 +2,42 @@ import annotations
 import struct
 
 def mapRoomData(dis, addr, index):
+    def roomTileFormatter(output, addr):
+        x = 0
+        y = 0
+        line = []
+        start_addr = addr
+        while y < 8:
+            b = dis.rom.data[addr]
+            addr += 1
+            if b & 0x80:
+                x += rle
+                line.append(("    " * (rle - 1)) + "$%02x" % (b))
+            else:
+                line.append("$%02x" % (b))
+                x += 1
+            if x >= 10:
+                x -= 10
+                y += 1
+                dis.formatLine(output, start_addr, addr - start_addr, "db " + ",".join(line), is_data=True)
+                start_addr = addr
+                line = []
+        return addr
+
     unknown, rle, h, w = struct.unpack("<BBBB", dis.rom.data[addr:addr + 4])
-    if unknown:
-        addr += 0x1A
     addr += 4
+    if unknown:
+        # 0x1A bytes of data follow
+        # First 2 bytes are a pointer to a room template, which is used as primary tile data
+        tile_addr = dis.info.markAsPointer(dis.rom, addr + 0, name="map%02x_room_tile_template" % (index))
+        dis.formatter[tile_addr] = roomTileFormatter
+        addr += 0x1A
     for n in range(w * h):
         obj_addr = dis.info.markAsPointer(dis.rom, addr + 0, name="map%02x_room%02x_%02x_objects" % (index, n % w, n // w))
         tile_addr = dis.info.markAsPointer(dis.rom, addr + 2, name="map%02x_room%02x_%02x_tiles" % (index, n % w, n // w))
         assert obj_addr >= 0x4000, hex(addr)
         assert tile_addr >= 0x4000, hex(addr)
         addr += 4
-
-        def roomTileFormatter(output, addr):
-            x = 0
-            y = 0
-            line = []
-            start_addr = addr
-            while y < 8:
-                b = dis.rom.data[addr]
-                addr += 1
-                if b & 0x80:
-                    x += rle
-                    line.append(("    " * (rle - 1)) + "$%02x" % (b))
-                else:
-                    line.append("$%02x" % (b))
-                    x += 1
-                if x >= 10:
-                    x -= 10
-                    y += 1
-                    dis.formatLine(output, start_addr, addr - start_addr, "db " + ",".join(line), is_data=True)
-                    start_addr = addr
-                    line = []
-            return addr
 
         if dis.rom.data[tile_addr] != 0xff and unknown == 0:
             dis.formatter[tile_addr] = roomTileFormatter

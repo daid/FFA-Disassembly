@@ -311,7 +311,7 @@ code_001_4205:
 
 code_001_422b:
     push DE                                            ;; 01:422b $d5
-    ld   HL, wMapTiles                                 ;; 01:422c $21 $50 $c3
+    ld   HL, wRoomTiles                                ;; 01:422c $21 $50 $c3
     ld   DE, wC3A0                                     ;; 01:422f $11 $a0 $c3
     ld   B, $50                                        ;; 01:4232 $06 $50
     call copyHLtoDE                                    ;; 01:4234 $cd $49 $2b
@@ -469,10 +469,10 @@ code_001_433e:
     ld   A, [wD49D]                                    ;; 01:434c $fa $9d $d4
     call loadMap                                       ;; 01:434f $cd $dc $26
     ld   HL, wC3A0                                     ;; 01:4352 $21 $a0 $c3
-    ld   DE, wMapTiles                                 ;; 01:4355 $11 $50 $c3
+    ld   DE, wRoomTiles                                ;; 01:4355 $11 $50 $c3
     ld   B, $50                                        ;; 01:4358 $06 $50
     call copyHLtoDE                                    ;; 01:435a $cd $49 $2b
-    ld   HL, wMapTiles                                 ;; 01:435d $21 $50 $c3
+    ld   HL, wRoomTiles                                ;; 01:435d $21 $50 $c3
     call code_000_1b74                                 ;; 01:4360 $cd $74 $1b
     ld   A, [wD4A4]                                    ;; 01:4363 $fa $a4 $d4
     ld   [wC3F4], A                                    ;; 01:4366 $ea $f4 $c3
