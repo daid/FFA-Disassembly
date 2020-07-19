@@ -174,7 +174,7 @@ HeaderGlobalChecksum:
 FullReset:
     jp   Init                                          ;; 00:0150 $c3 $ca $1f
 
-code_000_0153:
+scriptOpCode88:
     push HL                                            ;; 00:0153 $e5
     ld   A, $02                                        ;; 00:0154 $3e $02
     call code_000_02a5                                 ;; 00:0156 $cd $a5 $02
@@ -182,7 +182,7 @@ code_000_0153:
     call getNextScriptInstruction                      ;; 00:015a $cd $27 $37
     ret                                                ;; 00:015d $c9
 
-code_000_015e:
+scriptOpCode89:
     push HL                                            ;; 00:015e $e5
     ld   A, $01                                        ;; 00:015f $3e $01
     call code_000_02a5                                 ;; 00:0161 $cd $a5 $02
@@ -221,7 +221,7 @@ code_000_016f:
     ld   A, $04                                        ;; 00:0191 $3e $04
     ret                                                ;; 00:0193 $c9
 
-code_000_0194:
+scriptOpCodeA0:
     push HL                                            ;; 00:0194 $e5
     call code_000_019d                                 ;; 00:0195 $cd $9d $01
     pop  HL                                            ;; 00:0198 $e1
@@ -233,7 +233,7 @@ code_000_019d:
     ld   A, $09                                        ;; 00:019e $3e $09
     jp   callFunctionInBank01                          ;; 00:01a0 $c3 $d7 $1e
 
-code_000_01a3:
+scriptOpCodeA1:
     push HL                                            ;; 00:01a3 $e5
     call code_000_01ac                                 ;; 00:01a4 $cd $ac $01
     pop  HL                                            ;; 00:01a7 $e1
@@ -245,7 +245,7 @@ code_000_01ac:
     ld   A, $0a                                        ;; 00:01ad $3e $0a
     jp   callFunctionInBank01                          ;; 00:01af $c3 $d7 $1e
 
-code_000_01b2:
+scriptOpCodeA2:
     push HL                                            ;; 00:01b2 $e5
     call code_000_01bb                                 ;; 00:01b3 $cd $bb $01
     pop  HL                                            ;; 00:01b6 $e1
@@ -257,7 +257,7 @@ code_000_01bb:
     ld   A, $0b                                        ;; 00:01bc $3e $0b
     jp   callFunctionInBank01                          ;; 00:01be $c3 $d7 $1e
 
-code_000_01c1:
+scriptOpCodeA4:
     push HL                                            ;; 00:01c1 $e5
     call code_000_01ca                                 ;; 00:01c2 $cd $ca $01
     pop  HL                                            ;; 00:01c5 $e1
@@ -269,21 +269,21 @@ code_000_01ca:
     ld   A, $08                                        ;; 00:01cb $3e $08
     jp   callFunctionInBank01                          ;; 00:01cd $c3 $d7 $1e
 
-code_000_01d0:
+scriptOpCodeA3:
     ld   A, [wC4D4]                                    ;; 00:01d0 $fa $d4 $c4
     set  $04, A                                        ;; 00:01d3 $cb $e7
     ld   [wC4D4], A                                    ;; 00:01d5 $ea $d4 $c4
     call getNextScriptInstruction                      ;; 00:01d8 $cd $27 $37
     ret                                                ;; 00:01db $c9
 
-code_000_01dc:
+scriptOpCodeA5:
     ld   A, [wC4D4]                                    ;; 00:01dc $fa $d4 $c4
     set  $05, A                                        ;; 00:01df $cb $ef
     ld   [wC4D4], A                                    ;; 00:01e1 $ea $d4 $c4
     call getNextScriptInstruction                      ;; 00:01e4 $cd $27 $37
     ret                                                ;; 00:01e7 $c9
 
-code_000_01e8:
+scriptOpCodeA6:
     ld   A, [wC4D4]                                    ;; 00:01e8 $fa $d4 $c4
     set  $06, A                                        ;; 00:01eb $cb $f7
     ld   [wC4D4], A                                    ;; 00:01ed $ea $d4 $c4
@@ -2334,7 +2334,7 @@ code_000_0d08:
     ld   A, C                                          ;; 00:0d19 $79
     ret                                                ;; 00:0d1a $c9
 
-code_000_0d1b:
+scriptOpCode8B:
     ld   A, [wD499]                                    ;; 00:0d1b $fa $99 $d4
     cp   A, $00                                        ;; 00:0d1e $fe $00
     call Z, code_000_0d51                              ;; 00:0d20 $cc $51 $0d
@@ -2374,7 +2374,7 @@ code_000_0d51:
     ld   A, $00                                        ;; 00:0d5c $3e $00
     ret                                                ;; 00:0d5e $c9
 
-code_000_0d5f:
+scriptOpCodeA9:
     push HL                                            ;; 00:0d5f $e5
     call code_000_220a                                 ;; 00:0d60 $cd $0a $22
     cp   A, $01                                        ;; 00:0d63 $fe $01
@@ -2395,14 +2395,14 @@ code_000_0d5f:
     call getNextScriptInstruction                      ;; 00:0d7f $cd $27 $37
     ret                                                ;; 00:0d82 $c9
 
-code_000_0d83:
+scriptOpCodeAB:
     push HL                                            ;; 00:0d83 $e5
     call code_000_21b4                                 ;; 00:0d84 $cd $b4 $21
     pop  HL                                            ;; 00:0d87 $e1
     call getNextScriptInstruction                      ;; 00:0d88 $cd $27 $37
     ret                                                ;; 00:0d8b $c9
 
-code_000_0d8c:
+scriptOpCodeB6:
     push HL                                            ;; 00:0d8c $e5
     call code_000_0d95                                 ;; 00:0d8d $cd $95 $0d
     pop  HL                                            ;; 00:0d90 $e1
@@ -2414,7 +2414,7 @@ code_000_0d95:
     ld   A, $16                                        ;; 00:0d96 $3e $16
     jp   callFunctionInBank01                          ;; 00:0d98 $c3 $d7 $1e
 
-code_000_0d9b:
+scriptOpCodeB7:
     push HL                                            ;; 00:0d9b $e5
     call code_000_0da4                                 ;; 00:0d9c $cd $a4 $0d
     pop  HL                                            ;; 00:0d9f $e1
@@ -2441,7 +2441,7 @@ code_000_0db6:
     ld   A, $15                                        ;; 00:0db7 $3e $15
     jp   callFunctionInBank01                          ;; 00:0db9 $c3 $d7 $1e
 
-code_000_0dbc:
+scriptOpCodeAD:
     push HL                                            ;; 00:0dbc $e5
     call trampolineUpdateJoypadInput                   ;; 00:0dbd $cd $d1 $1e
     cp   A, $00                                        ;; 00:0dc0 $fe $00
@@ -2558,7 +2558,7 @@ code_000_0e44:
     ld   L, A                                          ;; 00:0e67 $6f
     ret                                                ;; 00:0e68 $c9
 
-code_000_0e69:
+scriptOpCodeFE:
     ld   A, [HL+]                                      ;; 00:0e69 $2a
     push HL                                            ;; 00:0e6a $e5
     call code_000_04e2                                 ;; 00:0e6b $cd $e2 $04
@@ -2566,19 +2566,19 @@ code_000_0e69:
     call getNextScriptInstruction                      ;; 00:0e6f $cd $27 $37
     ret                                                ;; 00:0e72 $c9
 
-code_000_0e73:
+scriptOpCodeEC:
     call code_000_24d4                                 ;; 00:0e73 $cd $d4 $24
     ret                                                ;; 00:0e76 $c9
 
-code_000_0e77:
+scriptOpCodeED:
     call code_000_24f9                                 ;; 00:0e77 $cd $f9 $24
     ret                                                ;; 00:0e7a $c9
 
-code_000_0e7b:
+scriptOpCodeEE:
     call code_000_251f                                 ;; 00:0e7b $cd $1f $25
     ret                                                ;; 00:0e7e $c9
 
-code_000_0e7f:
+scriptOpCodeEF:
     ld   A, [HL+]                                      ;; 00:0e7f $2a
     ld   E, A                                          ;; 00:0e80 $5f
     ld   A, [HL+]                                      ;; 00:0e81 $2a
@@ -2589,7 +2589,7 @@ code_000_0e7f:
     call getNextScriptInstruction                      ;; 00:0e88 $cd $27 $37
     ret                                                ;; 00:0e8b $c9
 
-code_000_0e8c:
+scriptOpCodeFB:
     ld   A, [wVideoSCX]                                ;; 00:0e8c $fa $a6 $c0
     ld   C, A                                          ;; 00:0e8f $4f
     ld   A, [wD499]                                    ;; 00:0e90 $fa $99 $d4
@@ -2613,7 +2613,7 @@ code_000_0e8c:
     call Z, getNextScriptInstruction                   ;; 00:0eae $cc $27 $37
     ret                                                ;; 00:0eb1 $c9
 
-code_000_0eb2:
+scriptOpCodeBA:
     ld   D, H                                          ;; 00:0eb2 $54
     ld   E, L                                          ;; 00:0eb3 $5d
     ld   A, [wD499]                                    ;; 00:0eb4 $fa $99 $d4
@@ -2633,7 +2633,7 @@ unknown_000_0eca:
     db   $cd, $e3, $0a, $3e, $00, $ea, $99, $d4        ;; 00:0efa ????????
     db   $ea, $9a, $d4, $e1, $cd, $27, $37, $c9        ;; 00:0f02 ????????
 
-code_000_0f0a:
+scriptOpCode9C:
     ld   A, [HL+]                                      ;; 00:0f0a $2a
     push HL                                            ;; 00:0f0b $e5
     call code_000_2895                                 ;; 00:0f0c $cd $95 $28
@@ -2643,7 +2643,7 @@ code_000_0f10:
     call getNextScriptInstruction                      ;; 00:0f10 $cd $27 $37
     ret                                                ;; 00:0f13 $c9
 
-code_000_0f14:
+scriptOpCode9D:
     ld   A, [HL+]                                      ;; 00:0f14 $2a
     push HL                                            ;; 00:0f15 $e5
     call code_000_2895                                 ;; 00:0f16 $cd $95 $28
@@ -2651,7 +2651,7 @@ code_000_0f14:
     call getNextScriptInstruction                      ;; 00:0f1a $cd $27 $37
     ret                                                ;; 00:0f1d $c9
 
-code_000_0f1e:
+scriptOpCodeB0:
     ld   A, [HL+]                                      ;; 00:0f1e $2a
     ld   E, [HL]                                       ;; 00:0f1f $5e
     inc  HL                                            ;; 00:0f20 $23
@@ -2663,7 +2663,7 @@ code_000_0f1e:
     call getNextScriptInstruction                      ;; 00:0f28 $cd $27 $37
     ret                                                ;; 00:0f2b $c9
 
-code_000_0f2c:
+scriptOpCodeEA:
     push HL                                            ;; 00:0f2c $e5
     ld   B, $00                                        ;; 00:0f2d $06 $00
     ld   A, $82                                        ;; 00:0f2f $3e $82
@@ -2677,7 +2677,7 @@ code_000_0f2c:
     call getNextScriptInstruction                      ;; 00:0f3f $cd $27 $37
     ret                                                ;; 00:0f42 $c9
 
-code_000_0f43:
+scriptOpCodeEB:
     push HL                                            ;; 00:0f43 $e5
     ld   B, $00                                        ;; 00:0f44 $06 $00
     ld   A, $81                                        ;; 00:0f46 $3e $81
@@ -2691,7 +2691,7 @@ code_000_0f43:
     call getNextScriptInstruction                      ;; 00:0f56 $cd $27 $37
     ret                                                ;; 00:0f59 $c9
 
-code_000_0f5a:
+scriptOpCodeE8:
     push HL                                            ;; 00:0f5a $e5
     ld   B, $00                                        ;; 00:0f5b $06 $00
     ld   A, $88                                        ;; 00:0f5d $3e $88
@@ -2705,7 +2705,7 @@ code_000_0f5a:
     call getNextScriptInstruction                      ;; 00:0f6d $cd $27 $37
     ret                                                ;; 00:0f70 $c9
 
-code_000_0f71:
+scriptOpCodeE9:
     push HL                                            ;; 00:0f71 $e5
     ld   B, $00                                        ;; 00:0f72 $06 $00
     ld   A, $84                                        ;; 00:0f74 $3e $84
@@ -2719,7 +2719,7 @@ code_000_0f71:
     call getNextScriptInstruction                      ;; 00:0f84 $cd $27 $37
     ret                                                ;; 00:0f87 $c9
 
-code_000_0f88:
+scriptOpCodeE4:
     push HL                                            ;; 00:0f88 $e5
     ld   A, $01                                        ;; 00:0f89 $3e $01
     call code_000_235b                                 ;; 00:0f8b $cd $5b $23
@@ -2727,7 +2727,7 @@ code_000_0f88:
     call getNextScriptInstruction                      ;; 00:0f8f $cd $27 $37
     ret                                                ;; 00:0f92 $c9
 
-code_000_0f93:
+scriptOpCodeE5:
     push HL                                            ;; 00:0f93 $e5
     ld   A, $01                                        ;; 00:0f94 $3e $01
     call code_000_22fe                                 ;; 00:0f96 $cd $fe $22
@@ -2735,7 +2735,7 @@ code_000_0f93:
     call getNextScriptInstruction                      ;; 00:0f9a $cd $27 $37
     ret                                                ;; 00:0f9d $c9
 
-code_000_0f9e:
+scriptOpCodeE6:
     push HL                                            ;; 00:0f9e $e5
     ld   A, $02                                        ;; 00:0f9f $3e $02
     call code_000_235b                                 ;; 00:0fa1 $cd $5b $23
@@ -2743,7 +2743,7 @@ code_000_0f9e:
     call getNextScriptInstruction                      ;; 00:0fa5 $cd $27 $37
     ret                                                ;; 00:0fa8 $c9
 
-code_000_0fa9:
+scriptOpCodeE7:
     push HL                                            ;; 00:0fa9 $e5
     ld   A, $02                                        ;; 00:0faa $3e $02
     call code_000_22fe                                 ;; 00:0fac $cd $fe $22
@@ -2751,7 +2751,7 @@ code_000_0fa9:
     call getNextScriptInstruction                      ;; 00:0fb0 $cd $27 $37
     ret                                                ;; 00:0fb3 $c9
 
-code_000_0fb4:
+scriptOpCodeE0:
     push HL                                            ;; 00:0fb4 $e5
     ld   A, $04                                        ;; 00:0fb5 $3e $04
     call code_000_235b                                 ;; 00:0fb7 $cd $5b $23
@@ -2759,7 +2759,7 @@ code_000_0fb4:
     call getNextScriptInstruction                      ;; 00:0fbb $cd $27 $37
     ret                                                ;; 00:0fbe $c9
 
-code_000_0fbf:
+scriptOpCodeE1:
     push HL                                            ;; 00:0fbf $e5
     ld   A, $04                                        ;; 00:0fc0 $3e $04
     call code_000_22fe                                 ;; 00:0fc2 $cd $fe $22
@@ -2767,7 +2767,7 @@ code_000_0fbf:
     call getNextScriptInstruction                      ;; 00:0fc6 $cd $27 $37
     ret                                                ;; 00:0fc9 $c9
 
-code_000_0fca:
+scriptOpCodeE2:
     push HL                                            ;; 00:0fca $e5
     ld   A, $08                                        ;; 00:0fcb $3e $08
     call code_000_235b                                 ;; 00:0fcd $cd $5b $23
@@ -2775,7 +2775,7 @@ code_000_0fca:
     call getNextScriptInstruction                      ;; 00:0fd1 $cd $27 $37
     ret                                                ;; 00:0fd4 $c9
 
-code_000_0fd5:
+scriptOpCodeE3:
     push HL                                            ;; 00:0fd5 $e5
     ld   A, $08                                        ;; 00:0fd6 $3e $08
     call code_000_22fe                                 ;; 00:0fd8 $cd $fe $22
@@ -2783,7 +2783,7 @@ code_000_0fd5:
     call getNextScriptInstruction                      ;; 00:0fdc $cd $27 $37
     ret                                                ;; 00:0fdf $c9
 
-code_000_0fe0:
+scriptOpCodeBF:
     ld   A, [wD499]                                    ;; 00:0fe0 $fa $99 $d4
     cp   A, $05                                        ;; 00:0fe3 $fe $05
     jr   C, .code_1007                                 ;; 00:0fe5 $38 $20
@@ -2821,7 +2821,7 @@ data_000_1030:
     db   $e7, $e7, $e7, $eb, $eb, $eb, $eb, $fb        ;; 00:1038 RRRRRRRR
     db   $fb, $fb, $fb, $fb, $fb, $ff                  ;; 00:1040 RRRRRR
 
-code_000_1046:
+scriptOpCodeBD:
     push HL                                            ;; 00:1046 $e5
     ld   A, [wD499]                                    ;; 00:1047 $fa $99 $d4
     add  A, A                                          ;; 00:104a $87
@@ -2863,7 +2863,7 @@ unknown_000_1091:
     db   $50, $50, $50, $40, $50, $40, $40, $40        ;; 00:1099 ????????
     db   $40, $40, $40, $00, $40, $00                  ;; 00:10a1 ??????
 
-code_000_10a7:
+scriptOpCodeBE:
     push HL                                            ;; 00:10a7 $e5
     ld   A, [wD499]                                    ;; 00:10a8 $fa $99 $d4
     add  A, A                                          ;; 00:10ab $87
@@ -2895,7 +2895,7 @@ code_000_10a7:
     call code_000_1142                                 ;; 00:10d8 $cd $42 $11
     ret                                                ;; 00:10db $c9
 
-code_000_10dc:
+scriptOpCodeBC:
     push HL                                            ;; 00:10dc $e5
     ld   A, [wD499]                                    ;; 00:10dd $fa $99 $d4
     add  A, A                                          ;; 00:10e0 $87
@@ -2988,7 +2988,7 @@ code_000_116e:
     call code_000_01f4                                 ;; 00:1174 $cd $f4 $01
     ret                                                ;; 00:1177 $c9
 
-code_000_1178:
+scriptOpCodeB8:
     push HL                                            ;; 00:1178 $e5
     ld   HL, wC3F1                                     ;; 00:1179 $21 $f1 $c3
     set  $00, [HL]                                     ;; 00:117c $cb $c6
@@ -2997,7 +2997,7 @@ code_000_1178:
     call getNextScriptInstruction                      ;; 00:1182 $cd $27 $37
     ret                                                ;; 00:1185 $c9
 
-code_000_1186:
+scriptOpCodeB9:
     push HL                                            ;; 00:1186 $e5
     ld   HL, wC3F1                                     ;; 00:1187 $21 $f1 $c3
     res  $00, [HL]                                     ;; 00:118a $cb $86
@@ -3006,13 +3006,13 @@ code_000_1186:
     call getNextScriptInstruction                      ;; 00:1190 $cd $27 $37
     ret                                                ;; 00:1193 $c9
 
-code_000_1194:
+scriptOpCodeF9:
     ld   A, [HL+]                                      ;; 00:1194 $2a
     ldh  [hFF92], A                                    ;; 00:1195 $e0 $92
     call getNextScriptInstruction                      ;; 00:1197 $cd $27 $37
     ret                                                ;; 00:119a $c9
 
-code_000_119b:
+scriptOpCodeF8:
     ld   A, [HL+]                                      ;; 00:119b $2a
     ldh  [hFF90], A                                    ;; 00:119c $e0 $90
     ld   [wD49B], A                                    ;; 00:119e $ea $9b $d4
@@ -3031,7 +3031,7 @@ code_000_11b1:
     ldh  [hFF90], A                                    ;; 00:11b4 $e0 $90
     ret                                                ;; 00:11b6 $c9
 
-code_000_11b7:
+scriptOpCodeF4:
     ld   A, [HL+]                                      ;; 00:11b7 $2a
     ld   B, A                                          ;; 00:11b8 $47
     ld   A, [HL-]                                      ;; 00:11b9 $3a
@@ -3048,7 +3048,7 @@ code_000_11c8:
     ld   A, $0f                                        ;; 00:11c9 $3e $0f
     jp   callFunctionInBank01                          ;; 00:11cb $c3 $d7 $1e
 
-code_000_11ce:
+scriptOpCodeF3:
     ld   A, [HL+]                                      ;; 00:11ce $2a
     ld   B, A                                          ;; 00:11cf $47
     ld   A, [HL-]                                      ;; 00:11d0 $3a
@@ -3065,7 +3065,7 @@ code_000_11df:
     ld   A, $10                                        ;; 00:11e0 $3e $10
     jp   callFunctionInBank01                          ;; 00:11e2 $c3 $d7 $1e
 
-code_000_11e5:
+scriptOpCodeAC:
     call code_000_11f2                                 ;; 00:11e5 $cd $f2 $11
     ld   A, [wD499]                                    ;; 00:11e8 $fa $99 $d4
     cp   A, $00                                        ;; 00:11eb $fe $00
@@ -3078,7 +3078,7 @@ code_000_11f2:
     ld   A, $11                                        ;; 00:11f3 $3e $11
     jp   callFunctionInBank01                          ;; 00:11f5 $c3 $d7 $1e
 
-code_000_11f8:
+scriptOpCodeAE:
     call code_000_1205                                 ;; 00:11f8 $cd $05 $12
     ld   A, [wD499]                                    ;; 00:11fb $fa $99 $d4
     cp   A, $00                                        ;; 00:11fe $fe $00
@@ -3153,7 +3153,7 @@ code_000_123e:
     call getNextScriptInstruction                      ;; 00:1258 $cd $27 $37
     ret                                                ;; 00:125b $c9
 
-code_000_125c:
+scriptOpCode10:
     call code_000_28c2                                 ;; 00:125c $cd $c2 $28
     add  A, $00                                        ;; 00:125f $c6 $00
     ld   C, A                                          ;; 00:1261 $4f
@@ -3161,7 +3161,7 @@ code_000_125c:
     call code_000_2879                                 ;; 00:1264 $cd $79 $28
     ret                                                ;; 00:1267 $c9
 
-code_000_1268:
+scriptOpCode11:
     call code_000_28c2                                 ;; 00:1268 $cd $c2 $28
     add  A, $00                                        ;; 00:126b $c6 $00
     ld   C, A                                          ;; 00:126d $4f
@@ -3169,7 +3169,7 @@ code_000_1268:
     call code_000_2879                                 ;; 00:1270 $cd $79 $28
     ret                                                ;; 00:1273 $c9
 
-code_000_1274:
+scriptOpCode16:
     call code_000_28c2                                 ;; 00:1274 $cd $c2 $28
     add  A, $00                                        ;; 00:1277 $c6 $00
     ld   C, A                                          ;; 00:1279 $4f
@@ -3177,7 +3177,7 @@ code_000_1274:
     call code_000_2879                                 ;; 00:127c $cd $79 $28
     ret                                                ;; 00:127f $c9
 
-code_000_1280:
+scriptOpCode17:
     call code_000_28c2                                 ;; 00:1280 $cd $c2 $28
     add  A, $00                                        ;; 00:1283 $c6 $00
     ld   C, A                                          ;; 00:1285 $4f
@@ -3185,7 +3185,7 @@ code_000_1280:
     call code_000_2879                                 ;; 00:1288 $cd $79 $28
     ret                                                ;; 00:128b $c9
 
-code_000_128c:
+scriptOpCode14:
     call code_000_28c2                                 ;; 00:128c $cd $c2 $28
     add  A, $00                                        ;; 00:128f $c6 $00
     ld   C, A                                          ;; 00:1291 $4f
@@ -3193,7 +3193,7 @@ code_000_128c:
     call code_000_2879                                 ;; 00:1294 $cd $79 $28
     ret                                                ;; 00:1297 $c9
 
-code_000_1298:
+scriptOpCode15:
     call code_000_28c2                                 ;; 00:1298 $cd $c2 $28
     add  A, $00                                        ;; 00:129b $c6 $00
     ld   C, A                                          ;; 00:129d $4f
@@ -3201,21 +3201,21 @@ code_000_1298:
     call code_000_2879                                 ;; 00:12a0 $cd $79 $28
     ret                                                ;; 00:12a3 $c9
 
-code_000_12a4:
+scriptOpCode18:
     call code_000_28c2                                 ;; 00:12a4 $cd $c2 $28
     add  A, $00                                        ;; 00:12a7 $c6 $00
     ld   C, A                                          ;; 00:12a9 $4f
     call code_000_2859                                 ;; 00:12aa $cd $59 $28
     ret                                                ;; 00:12ad $c9
 
-code_000_12ae:
+scriptOpCode19:
     call code_000_28c2                                 ;; 00:12ae $cd $c2 $28
     add  A, $00                                        ;; 00:12b1 $c6 $00
     ld   C, A                                          ;; 00:12b3 $4f
     call code_000_123e                                 ;; 00:12b4 $cd $3e $12
     ret                                                ;; 00:12b7 $c9
 
-code_000_12b8:
+scriptOpCode1A:
     call code_000_28c2                                 ;; 00:12b8 $cd $c2 $28
     add  A, $00                                        ;; 00:12bb $c6 $00
     ld   C, A                                          ;; 00:12bd $4f
@@ -3223,7 +3223,7 @@ code_000_12b8:
     call code_000_2879                                 ;; 00:12c0 $cd $79 $28
     ret                                                ;; 00:12c3 $c9
 
-code_000_12c4:
+scriptOpCode1B:
     call code_000_28c2                                 ;; 00:12c4 $cd $c2 $28
     add  A, $00                                        ;; 00:12c7 $c6 $00
     ld   C, A                                          ;; 00:12c9 $4f
@@ -3231,7 +3231,7 @@ code_000_12c4:
     call code_000_2879                                 ;; 00:12cc $cd $79 $28
     ret                                                ;; 00:12cf $c9
 
-code_000_12d0:
+scriptOpCode20:
     call code_000_28c2                                 ;; 00:12d0 $cd $c2 $28
     add  A, $01                                        ;; 00:12d3 $c6 $01
     ld   C, A                                          ;; 00:12d5 $4f
@@ -3239,7 +3239,7 @@ code_000_12d0:
     call code_000_2879                                 ;; 00:12d8 $cd $79 $28
     ret                                                ;; 00:12db $c9
 
-code_000_12dc:
+scriptOpCode21:
     call code_000_28c2                                 ;; 00:12dc $cd $c2 $28
     add  A, $01                                        ;; 00:12df $c6 $01
     ld   C, A                                          ;; 00:12e1 $4f
@@ -3247,7 +3247,7 @@ code_000_12dc:
     call code_000_2879                                 ;; 00:12e4 $cd $79 $28
     ret                                                ;; 00:12e7 $c9
 
-code_000_12e8:
+scriptOpCode26:
     call code_000_28c2                                 ;; 00:12e8 $cd $c2 $28
     add  A, $01                                        ;; 00:12eb $c6 $01
     ld   C, A                                          ;; 00:12ed $4f
@@ -3255,7 +3255,7 @@ code_000_12e8:
     call code_000_2879                                 ;; 00:12f0 $cd $79 $28
     ret                                                ;; 00:12f3 $c9
 
-code_000_12f4:
+scriptOpCode27:
     call code_000_28c2                                 ;; 00:12f4 $cd $c2 $28
     add  A, $01                                        ;; 00:12f7 $c6 $01
     ld   C, A                                          ;; 00:12f9 $4f
@@ -3263,7 +3263,7 @@ code_000_12f4:
     call code_000_2879                                 ;; 00:12fc $cd $79 $28
     ret                                                ;; 00:12ff $c9
 
-code_000_1300:
+scriptOpCode24:
     call code_000_28c2                                 ;; 00:1300 $cd $c2 $28
     add  A, $01                                        ;; 00:1303 $c6 $01
     ld   C, A                                          ;; 00:1305 $4f
@@ -3271,7 +3271,7 @@ code_000_1300:
     call code_000_2879                                 ;; 00:1308 $cd $79 $28
     ret                                                ;; 00:130b $c9
 
-code_000_130c:
+scriptOpCode25:
     call code_000_28c2                                 ;; 00:130c $cd $c2 $28
     add  A, $01                                        ;; 00:130f $c6 $01
     ld   C, A                                          ;; 00:1311 $4f
@@ -3279,21 +3279,21 @@ code_000_130c:
     call code_000_2879                                 ;; 00:1314 $cd $79 $28
     ret                                                ;; 00:1317 $c9
 
-code_000_1318:
+scriptOpCode28:
     call code_000_28c2                                 ;; 00:1318 $cd $c2 $28
     add  A, $01                                        ;; 00:131b $c6 $01
     ld   C, A                                          ;; 00:131d $4f
     call code_000_2859                                 ;; 00:131e $cd $59 $28
     ret                                                ;; 00:1321 $c9
 
-code_000_1322:
+scriptOpCode29:
     call code_000_28c2                                 ;; 00:1322 $cd $c2 $28
     add  A, $01                                        ;; 00:1325 $c6 $01
     ld   C, A                                          ;; 00:1327 $4f
     call code_000_123e                                 ;; 00:1328 $cd $3e $12
     ret                                                ;; 00:132b $c9
 
-code_000_132c:
+scriptOpCode2A:
     call code_000_28c2                                 ;; 00:132c $cd $c2 $28
     add  A, $01                                        ;; 00:132f $c6 $01
     ld   C, A                                          ;; 00:1331 $4f
@@ -3301,7 +3301,7 @@ code_000_132c:
     call code_000_2879                                 ;; 00:1334 $cd $79 $28
     ret                                                ;; 00:1337 $c9
 
-code_000_1338:
+scriptOpCode2B:
     call code_000_28c2                                 ;; 00:1338 $cd $c2 $28
     add  A, $01                                        ;; 00:133b $c6 $01
     ld   C, A                                          ;; 00:133d $4f
@@ -3309,7 +3309,7 @@ code_000_1338:
     call code_000_2879                                 ;; 00:1340 $cd $79 $28
     ret                                                ;; 00:1343 $c9
 
-code_000_1344:
+scriptOpCode30:
     call code_000_28c2                                 ;; 00:1344 $cd $c2 $28
     add  A, $02                                        ;; 00:1347 $c6 $02
     ld   C, A                                          ;; 00:1349 $4f
@@ -3317,7 +3317,7 @@ code_000_1344:
     call code_000_2879                                 ;; 00:134c $cd $79 $28
     ret                                                ;; 00:134f $c9
 
-code_000_1350:
+scriptOpCode31:
     call code_000_28c2                                 ;; 00:1350 $cd $c2 $28
     add  A, $02                                        ;; 00:1353 $c6 $02
     ld   C, A                                          ;; 00:1355 $4f
@@ -3325,7 +3325,7 @@ code_000_1350:
     call code_000_2879                                 ;; 00:1358 $cd $79 $28
     ret                                                ;; 00:135b $c9
 
-code_000_135c:
+scriptOpCode36:
     call code_000_28c2                                 ;; 00:135c $cd $c2 $28
     add  A, $02                                        ;; 00:135f $c6 $02
     ld   C, A                                          ;; 00:1361 $4f
@@ -3333,7 +3333,7 @@ code_000_135c:
     call code_000_2879                                 ;; 00:1364 $cd $79 $28
     ret                                                ;; 00:1367 $c9
 
-code_000_1368:
+scriptOpCode37:
     call code_000_28c2                                 ;; 00:1368 $cd $c2 $28
     add  A, $02                                        ;; 00:136b $c6 $02
     ld   C, A                                          ;; 00:136d $4f
@@ -3341,7 +3341,7 @@ code_000_1368:
     call code_000_2879                                 ;; 00:1370 $cd $79 $28
     ret                                                ;; 00:1373 $c9
 
-code_000_1374:
+scriptOpCode34:
     call code_000_28c2                                 ;; 00:1374 $cd $c2 $28
     add  A, $02                                        ;; 00:1377 $c6 $02
     ld   C, A                                          ;; 00:1379 $4f
@@ -3349,7 +3349,7 @@ code_000_1374:
     call code_000_2879                                 ;; 00:137c $cd $79 $28
     ret                                                ;; 00:137f $c9
 
-code_000_1380:
+scriptOpCode35:
     call code_000_28c2                                 ;; 00:1380 $cd $c2 $28
     add  A, $02                                        ;; 00:1383 $c6 $02
     ld   C, A                                          ;; 00:1385 $4f
@@ -3357,21 +3357,21 @@ code_000_1380:
     call code_000_2879                                 ;; 00:1388 $cd $79 $28
     ret                                                ;; 00:138b $c9
 
-code_000_138c:
+scriptOpCode38:
     call code_000_28c2                                 ;; 00:138c $cd $c2 $28
     add  A, $02                                        ;; 00:138f $c6 $02
     ld   C, A                                          ;; 00:1391 $4f
     call code_000_2859                                 ;; 00:1392 $cd $59 $28
     ret                                                ;; 00:1395 $c9
 
-code_000_1396:
+scriptOpCode39:
     call code_000_28c2                                 ;; 00:1396 $cd $c2 $28
     add  A, $02                                        ;; 00:1399 $c6 $02
     ld   C, A                                          ;; 00:139b $4f
     call code_000_123e                                 ;; 00:139c $cd $3e $12
     ret                                                ;; 00:139f $c9
 
-code_000_13a0:
+scriptOpCode3A:
     call code_000_28c2                                 ;; 00:13a0 $cd $c2 $28
     add  A, $02                                        ;; 00:13a3 $c6 $02
     ld   C, A                                          ;; 00:13a5 $4f
@@ -3379,7 +3379,7 @@ code_000_13a0:
     call code_000_2879                                 ;; 00:13a8 $cd $79 $28
     ret                                                ;; 00:13ab $c9
 
-code_000_13ac:
+scriptOpCode3B:
     call code_000_28c2                                 ;; 00:13ac $cd $c2 $28
     add  A, $02                                        ;; 00:13af $c6 $02
     ld   C, A                                          ;; 00:13b1 $4f
@@ -3387,7 +3387,7 @@ code_000_13ac:
     call code_000_2879                                 ;; 00:13b4 $cd $79 $28
     ret                                                ;; 00:13b7 $c9
 
-code_000_13b8:
+scriptOpCode40:
     call code_000_28c2                                 ;; 00:13b8 $cd $c2 $28
     add  A, $03                                        ;; 00:13bb $c6 $03
     ld   C, A                                          ;; 00:13bd $4f
@@ -3395,7 +3395,7 @@ code_000_13b8:
     call code_000_2879                                 ;; 00:13c0 $cd $79 $28
     ret                                                ;; 00:13c3 $c9
 
-code_000_13c4:
+scriptOpCode41:
     call code_000_28c2                                 ;; 00:13c4 $cd $c2 $28
     add  A, $03                                        ;; 00:13c7 $c6 $03
     ld   C, A                                          ;; 00:13c9 $4f
@@ -3403,7 +3403,7 @@ code_000_13c4:
     call code_000_2879                                 ;; 00:13cc $cd $79 $28
     ret                                                ;; 00:13cf $c9
 
-code_000_13d0:
+scriptOpCode46:
     call code_000_28c2                                 ;; 00:13d0 $cd $c2 $28
     add  A, $03                                        ;; 00:13d3 $c6 $03
     ld   C, A                                          ;; 00:13d5 $4f
@@ -3411,7 +3411,7 @@ code_000_13d0:
     call code_000_2879                                 ;; 00:13d8 $cd $79 $28
     ret                                                ;; 00:13db $c9
 
-code_000_13dc:
+scriptOpCode47:
     call code_000_28c2                                 ;; 00:13dc $cd $c2 $28
     add  A, $03                                        ;; 00:13df $c6 $03
     ld   C, A                                          ;; 00:13e1 $4f
@@ -3419,7 +3419,7 @@ code_000_13dc:
     call code_000_2879                                 ;; 00:13e4 $cd $79 $28
     ret                                                ;; 00:13e7 $c9
 
-code_000_13e8:
+scriptOpCode44:
     call code_000_28c2                                 ;; 00:13e8 $cd $c2 $28
     add  A, $03                                        ;; 00:13eb $c6 $03
     ld   C, A                                          ;; 00:13ed $4f
@@ -3427,7 +3427,7 @@ code_000_13e8:
     call code_000_2879                                 ;; 00:13f0 $cd $79 $28
     ret                                                ;; 00:13f3 $c9
 
-code_000_13f4:
+scriptOpCode45:
     call code_000_28c2                                 ;; 00:13f4 $cd $c2 $28
     add  A, $03                                        ;; 00:13f7 $c6 $03
     ld   C, A                                          ;; 00:13f9 $4f
@@ -3435,21 +3435,21 @@ code_000_13f4:
     call code_000_2879                                 ;; 00:13fc $cd $79 $28
     ret                                                ;; 00:13ff $c9
 
-code_000_1400:
+scriptOpCode48:
     call code_000_28c2                                 ;; 00:1400 $cd $c2 $28
     add  A, $03                                        ;; 00:1403 $c6 $03
     ld   C, A                                          ;; 00:1405 $4f
     call code_000_2859                                 ;; 00:1406 $cd $59 $28
     ret                                                ;; 00:1409 $c9
 
-code_000_140a:
+scriptOpCode49:
     call code_000_28c2                                 ;; 00:140a $cd $c2 $28
     add  A, $03                                        ;; 00:140d $c6 $03
     ld   C, A                                          ;; 00:140f $4f
     call code_000_123e                                 ;; 00:1410 $cd $3e $12
     ret                                                ;; 00:1413 $c9
 
-code_000_1414:
+scriptOpCode4A:
     call code_000_28c2                                 ;; 00:1414 $cd $c2 $28
     add  A, $03                                        ;; 00:1417 $c6 $03
     ld   C, A                                          ;; 00:1419 $4f
@@ -3457,7 +3457,7 @@ code_000_1414:
     call code_000_2879                                 ;; 00:141c $cd $79 $28
     ret                                                ;; 00:141f $c9
 
-code_000_1420:
+scriptOpCode4B:
     call code_000_28c2                                 ;; 00:1420 $cd $c2 $28
     add  A, $03                                        ;; 00:1423 $c6 $03
     ld   C, A                                          ;; 00:1425 $4f
@@ -3465,7 +3465,7 @@ code_000_1420:
     call code_000_2879                                 ;; 00:1428 $cd $79 $28
     ret                                                ;; 00:142b $c9
 
-code_000_142c:
+scriptOpCode50:
     call code_000_28c2                                 ;; 00:142c $cd $c2 $28
     add  A, $04                                        ;; 00:142f $c6 $04
     ld   C, A                                          ;; 00:1431 $4f
@@ -3473,7 +3473,7 @@ code_000_142c:
     call code_000_2879                                 ;; 00:1434 $cd $79 $28
     ret                                                ;; 00:1437 $c9
 
-code_000_1438:
+scriptOpCode51:
     call code_000_28c2                                 ;; 00:1438 $cd $c2 $28
     add  A, $04                                        ;; 00:143b $c6 $04
     ld   C, A                                          ;; 00:143d $4f
@@ -3481,7 +3481,7 @@ code_000_1438:
     call code_000_2879                                 ;; 00:1440 $cd $79 $28
     ret                                                ;; 00:1443 $c9
 
-code_000_1444:
+scriptOpCode56:
     call code_000_28c2                                 ;; 00:1444 $cd $c2 $28
     add  A, $04                                        ;; 00:1447 $c6 $04
     ld   C, A                                          ;; 00:1449 $4f
@@ -3489,7 +3489,7 @@ code_000_1444:
     call code_000_2879                                 ;; 00:144c $cd $79 $28
     ret                                                ;; 00:144f $c9
 
-code_000_1450:
+scriptOpCode57:
     call code_000_28c2                                 ;; 00:1450 $cd $c2 $28
     add  A, $04                                        ;; 00:1453 $c6 $04
     ld   C, A                                          ;; 00:1455 $4f
@@ -3497,7 +3497,7 @@ code_000_1450:
     call code_000_2879                                 ;; 00:1458 $cd $79 $28
     ret                                                ;; 00:145b $c9
 
-code_000_145c:
+scriptOpCode54:
     call code_000_28c2                                 ;; 00:145c $cd $c2 $28
     add  A, $04                                        ;; 00:145f $c6 $04
     ld   C, A                                          ;; 00:1461 $4f
@@ -3505,7 +3505,7 @@ code_000_145c:
     call code_000_2879                                 ;; 00:1464 $cd $79 $28
     ret                                                ;; 00:1467 $c9
 
-code_000_1468:
+scriptOpCode55:
     call code_000_28c2                                 ;; 00:1468 $cd $c2 $28
     add  A, $04                                        ;; 00:146b $c6 $04
     ld   C, A                                          ;; 00:146d $4f
@@ -3513,21 +3513,21 @@ code_000_1468:
     call code_000_2879                                 ;; 00:1470 $cd $79 $28
     ret                                                ;; 00:1473 $c9
 
-code_000_1474:
+scriptOpCode58:
     call code_000_28c2                                 ;; 00:1474 $cd $c2 $28
     add  A, $04                                        ;; 00:1477 $c6 $04
     ld   C, A                                          ;; 00:1479 $4f
     call code_000_2859                                 ;; 00:147a $cd $59 $28
     ret                                                ;; 00:147d $c9
 
-code_000_147e:
+scriptOpCode59:
     call code_000_28c2                                 ;; 00:147e $cd $c2 $28
     add  A, $04                                        ;; 00:1481 $c6 $04
     ld   C, A                                          ;; 00:1483 $4f
     call code_000_123e                                 ;; 00:1484 $cd $3e $12
     ret                                                ;; 00:1487 $c9
 
-code_000_1488:
+scriptOpCode5A:
     call code_000_28c2                                 ;; 00:1488 $cd $c2 $28
     add  A, $04                                        ;; 00:148b $c6 $04
     ld   C, A                                          ;; 00:148d $4f
@@ -3535,7 +3535,7 @@ code_000_1488:
     call code_000_2879                                 ;; 00:1490 $cd $79 $28
     ret                                                ;; 00:1493 $c9
 
-code_000_1494:
+scriptOpCode5B:
     call code_000_28c2                                 ;; 00:1494 $cd $c2 $28
     add  A, $04                                        ;; 00:1497 $c6 $04
     ld   C, A                                          ;; 00:1499 $4f
@@ -3543,7 +3543,7 @@ code_000_1494:
     call code_000_2879                                 ;; 00:149c $cd $79 $28
     ret                                                ;; 00:149f $c9
 
-code_000_14a0:
+scriptOpCode60:
     call code_000_28c2                                 ;; 00:14a0 $cd $c2 $28
     add  A, $05                                        ;; 00:14a3 $c6 $05
     ld   C, A                                          ;; 00:14a5 $4f
@@ -3551,7 +3551,7 @@ code_000_14a0:
     call code_000_2879                                 ;; 00:14a8 $cd $79 $28
     ret                                                ;; 00:14ab $c9
 
-code_000_14ac:
+scriptOpCode61:
     call code_000_28c2                                 ;; 00:14ac $cd $c2 $28
     add  A, $05                                        ;; 00:14af $c6 $05
     ld   C, A                                          ;; 00:14b1 $4f
@@ -3559,7 +3559,7 @@ code_000_14ac:
     call code_000_2879                                 ;; 00:14b4 $cd $79 $28
     ret                                                ;; 00:14b7 $c9
 
-code_000_14b8:
+scriptOpCode66:
     call code_000_28c2                                 ;; 00:14b8 $cd $c2 $28
     add  A, $05                                        ;; 00:14bb $c6 $05
     ld   C, A                                          ;; 00:14bd $4f
@@ -3567,7 +3567,7 @@ code_000_14b8:
     call code_000_2879                                 ;; 00:14c0 $cd $79 $28
     ret                                                ;; 00:14c3 $c9
 
-code_000_14c4:
+scriptOpCode67:
     call code_000_28c2                                 ;; 00:14c4 $cd $c2 $28
     add  A, $05                                        ;; 00:14c7 $c6 $05
     ld   C, A                                          ;; 00:14c9 $4f
@@ -3575,7 +3575,7 @@ code_000_14c4:
     call code_000_2879                                 ;; 00:14cc $cd $79 $28
     ret                                                ;; 00:14cf $c9
 
-code_000_14d0:
+scriptOpCode64:
     call code_000_28c2                                 ;; 00:14d0 $cd $c2 $28
     add  A, $05                                        ;; 00:14d3 $c6 $05
     ld   C, A                                          ;; 00:14d5 $4f
@@ -3583,7 +3583,7 @@ code_000_14d0:
     call code_000_2879                                 ;; 00:14d8 $cd $79 $28
     ret                                                ;; 00:14db $c9
 
-code_000_14dc:
+scriptOpCode65:
     call code_000_28c2                                 ;; 00:14dc $cd $c2 $28
     add  A, $05                                        ;; 00:14df $c6 $05
     ld   C, A                                          ;; 00:14e1 $4f
@@ -3591,21 +3591,21 @@ code_000_14dc:
     call code_000_2879                                 ;; 00:14e4 $cd $79 $28
     ret                                                ;; 00:14e7 $c9
 
-code_000_14e8:
+scriptOpCode68:
     call code_000_28c2                                 ;; 00:14e8 $cd $c2 $28
     add  A, $05                                        ;; 00:14eb $c6 $05
     ld   C, A                                          ;; 00:14ed $4f
     call code_000_2859                                 ;; 00:14ee $cd $59 $28
     ret                                                ;; 00:14f1 $c9
 
-code_000_14f2:
+scriptOpCode69:
     call code_000_28c2                                 ;; 00:14f2 $cd $c2 $28
     add  A, $05                                        ;; 00:14f5 $c6 $05
     ld   C, A                                          ;; 00:14f7 $4f
     call code_000_123e                                 ;; 00:14f8 $cd $3e $12
     ret                                                ;; 00:14fb $c9
 
-code_000_14fc:
+scriptOpCode6A:
     call code_000_28c2                                 ;; 00:14fc $cd $c2 $28
     add  A, $05                                        ;; 00:14ff $c6 $05
     ld   C, A                                          ;; 00:1501 $4f
@@ -3613,7 +3613,7 @@ code_000_14fc:
     call code_000_2879                                 ;; 00:1504 $cd $79 $28
     ret                                                ;; 00:1507 $c9
 
-code_000_1508:
+scriptOpCode6B:
     call code_000_28c2                                 ;; 00:1508 $cd $c2 $28
     add  A, $05                                        ;; 00:150b $c6 $05
     ld   C, A                                          ;; 00:150d $4f
@@ -3621,7 +3621,7 @@ code_000_1508:
     call code_000_2879                                 ;; 00:1510 $cd $79 $28
     ret                                                ;; 00:1513 $c9
 
-code_000_1514:
+scriptOpCode70:
     call code_000_28c2                                 ;; 00:1514 $cd $c2 $28
     add  A, $06                                        ;; 00:1517 $c6 $06
     ld   C, A                                          ;; 00:1519 $4f
@@ -3629,7 +3629,7 @@ code_000_1514:
     call code_000_2879                                 ;; 00:151c $cd $79 $28
     ret                                                ;; 00:151f $c9
 
-code_000_1520:
+scriptOpCode71:
     call code_000_28c2                                 ;; 00:1520 $cd $c2 $28
     add  A, $06                                        ;; 00:1523 $c6 $06
     ld   C, A                                          ;; 00:1525 $4f
@@ -3637,7 +3637,7 @@ code_000_1520:
     call code_000_2879                                 ;; 00:1528 $cd $79 $28
     ret                                                ;; 00:152b $c9
 
-code_000_152c:
+scriptOpCode76:
     call code_000_28c2                                 ;; 00:152c $cd $c2 $28
     add  A, $06                                        ;; 00:152f $c6 $06
     ld   C, A                                          ;; 00:1531 $4f
@@ -3645,7 +3645,7 @@ code_000_152c:
     call code_000_2879                                 ;; 00:1534 $cd $79 $28
     ret                                                ;; 00:1537 $c9
 
-code_000_1538:
+scriptOpCode77:
     call code_000_28c2                                 ;; 00:1538 $cd $c2 $28
     add  A, $06                                        ;; 00:153b $c6 $06
     ld   C, A                                          ;; 00:153d $4f
@@ -3653,7 +3653,7 @@ code_000_1538:
     call code_000_2879                                 ;; 00:1540 $cd $79 $28
     ret                                                ;; 00:1543 $c9
 
-code_000_1544:
+scriptOpCode74:
     call code_000_28c2                                 ;; 00:1544 $cd $c2 $28
     add  A, $06                                        ;; 00:1547 $c6 $06
     ld   C, A                                          ;; 00:1549 $4f
@@ -3661,7 +3661,7 @@ code_000_1544:
     call code_000_2879                                 ;; 00:154c $cd $79 $28
     ret                                                ;; 00:154f $c9
 
-code_000_1550:
+scriptOpCode75:
     call code_000_28c2                                 ;; 00:1550 $cd $c2 $28
     add  A, $06                                        ;; 00:1553 $c6 $06
     ld   C, A                                          ;; 00:1555 $4f
@@ -3669,21 +3669,21 @@ code_000_1550:
     call code_000_2879                                 ;; 00:1558 $cd $79 $28
     ret                                                ;; 00:155b $c9
 
-code_000_155c:
+scriptOpCode78:
     call code_000_28c2                                 ;; 00:155c $cd $c2 $28
     add  A, $06                                        ;; 00:155f $c6 $06
     ld   C, A                                          ;; 00:1561 $4f
     call code_000_2859                                 ;; 00:1562 $cd $59 $28
     ret                                                ;; 00:1565 $c9
 
-code_000_1566:
+scriptOpCode79:
     call code_000_28c2                                 ;; 00:1566 $cd $c2 $28
     add  A, $06                                        ;; 00:1569 $c6 $06
     ld   C, A                                          ;; 00:156b $4f
     call code_000_123e                                 ;; 00:156c $cd $3e $12
     ret                                                ;; 00:156f $c9
 
-code_000_1570:
+scriptOpCode7A:
     call code_000_28c2                                 ;; 00:1570 $cd $c2 $28
     add  A, $06                                        ;; 00:1573 $c6 $06
     ld   C, A                                          ;; 00:1575 $4f
@@ -3691,7 +3691,7 @@ code_000_1570:
     call code_000_2879                                 ;; 00:1578 $cd $79 $28
     ret                                                ;; 00:157b $c9
 
-code_000_157c:
+scriptOpCode7B:
     call code_000_28c2                                 ;; 00:157c $cd $c2 $28
     add  A, $06                                        ;; 00:157f $c6 $06
     ld   C, A                                          ;; 00:1581 $4f
@@ -3718,7 +3718,7 @@ code_000_1588:
     dec  A                                             ;; 00:15a2 $3d
     ret                                                ;; 00:15a3 $c9
 
-code_000_15a4:
+scriptOpCode80:
     call code_000_1588                                 ;; 00:15a4 $cd $88 $15
     ret  NZ                                            ;; 00:15a7 $c0
     push HL                                            ;; 00:15a8 $e5
@@ -3730,7 +3730,7 @@ code_000_15a4:
     call code_000_2879                                 ;; 00:15b3 $cd $79 $28
     ret                                                ;; 00:15b6 $c9
 
-code_000_15b7:
+scriptOpCode81:
     call code_000_1588                                 ;; 00:15b7 $cd $88 $15
     ret  NZ                                            ;; 00:15ba $c0
     push HL                                            ;; 00:15bb $e5
@@ -3742,7 +3742,7 @@ code_000_15b7:
     call code_000_2879                                 ;; 00:15c7 $cd $79 $28
     ret                                                ;; 00:15ca $c9
 
-code_000_15cb:
+scriptOpCode86:
     call code_000_1588                                 ;; 00:15cb $cd $88 $15
     ret  NZ                                            ;; 00:15ce $c0
     ld   A, $01                                        ;; 00:15cf $3e $01
@@ -3750,7 +3750,7 @@ code_000_15cb:
     call code_000_2879                                 ;; 00:15d3 $cd $79 $28
     ret                                                ;; 00:15d6 $c9
 
-code_000_15d7:
+scriptOpCode87:
     call code_000_1588                                 ;; 00:15d7 $cd $88 $15
     ret  NZ                                            ;; 00:15da $c0
     ld   A, $02                                        ;; 00:15db $3e $02
@@ -3758,7 +3758,7 @@ code_000_15d7:
     call code_000_2879                                 ;; 00:15df $cd $79 $28
     ret                                                ;; 00:15e2 $c9
 
-code_000_15e3:
+scriptOpCode84:
     call code_000_1588                                 ;; 00:15e3 $cd $88 $15
     ret  NZ                                            ;; 00:15e6 $c0
     ld   A, $04                                        ;; 00:15e7 $3e $04
@@ -3766,7 +3766,7 @@ code_000_15e3:
     call code_000_2879                                 ;; 00:15eb $cd $79 $28
     ret                                                ;; 00:15ee $c9
 
-code_000_15ef:
+scriptOpCode85:
     call code_000_1588                                 ;; 00:15ef $cd $88 $15
     ret  NZ                                            ;; 00:15f2 $c0
     ld   A, $08                                        ;; 00:15f3 $3e $08
@@ -3774,14 +3774,14 @@ code_000_15ef:
     call code_000_2879                                 ;; 00:15f7 $cd $79 $28
     ret                                                ;; 00:15fa $c9
 
-code_000_15fb:
+scriptOpCode8A:
     call code_000_1588                                 ;; 00:15fb $cd $88 $15
     ret  NZ                                            ;; 00:15fe $c0
     call code_000_120b                                 ;; 00:15ff $cd $0b $12
     call getNextScriptInstruction                      ;; 00:1602 $cd $27 $37
     ret                                                ;; 00:1605 $c9
 
-code_000_1606:
+scriptOpCode90:
     call code_000_28c2                                 ;; 00:1606 $cd $c2 $28
     jr   NZ, code_000_165f                             ;; 00:1609 $20 $54
     ld   A, $04                                        ;; 00:160b $3e $04
@@ -3789,7 +3789,7 @@ code_000_1606:
     call code_000_2879                                 ;; 00:160f $cd $79 $28
     ret                                                ;; 00:1612 $c9
 
-code_000_1613:
+scriptOpCode91:
     call code_000_28c2                                 ;; 00:1613 $cd $c2 $28
     jr   NZ, code_000_165f                             ;; 00:1616 $20 $47
     ld   A, $05                                        ;; 00:1618 $3e $05
@@ -3797,7 +3797,7 @@ code_000_1613:
     call code_000_2879                                 ;; 00:161c $cd $79 $28
     ret                                                ;; 00:161f $c9
 
-code_000_1620:
+scriptOpCode96:
     call code_000_28c2                                 ;; 00:1620 $cd $c2 $28
     jr   NZ, code_000_165f                             ;; 00:1623 $20 $3a
     ld   A, $1c                                        ;; 00:1625 $3e $1c
@@ -3805,7 +3805,7 @@ code_000_1620:
     call code_000_2879                                 ;; 00:1629 $cd $79 $28
     ret                                                ;; 00:162c $c9
 
-code_000_162d:
+scriptOpCode97:
     call code_000_28c2                                 ;; 00:162d $cd $c2 $28
     jr   NZ, code_000_165f                             ;; 00:1630 $20 $2d
     ld   A, $1d                                        ;; 00:1632 $3e $1d
@@ -3813,7 +3813,7 @@ code_000_162d:
     call code_000_2879                                 ;; 00:1636 $cd $79 $28
     ret                                                ;; 00:1639 $c9
 
-code_000_163a:
+scriptOpCode94:
     call code_000_28c2                                 ;; 00:163a $cd $c2 $28
     jr   NZ, code_000_165f                             ;; 00:163d $20 $20
     ld   A, $1e                                        ;; 00:163f $3e $1e
@@ -3821,7 +3821,7 @@ code_000_163a:
     call code_000_2879                                 ;; 00:1643 $cd $79 $28
     ret                                                ;; 00:1646 $c9
 
-code_000_1647:
+scriptOpCode95:
     call code_000_28c2                                 ;; 00:1647 $cd $c2 $28
     jr   NZ, code_000_165f                             ;; 00:164a $20 $13
     ld   A, $1f                                        ;; 00:164c $3e $1f
@@ -3829,7 +3829,7 @@ code_000_1647:
     call code_000_2879                                 ;; 00:1650 $cd $79 $28
     ret                                                ;; 00:1653 $c9
 
-code_000_1654:
+scriptOpCode98:
     call code_000_28c2                                 ;; 00:1654 $cd $c2 $28
     jr   NZ, code_000_165f                             ;; 00:1657 $20 $06
     ld   C, $00                                        ;; 00:1659 $0e $00
@@ -3840,7 +3840,7 @@ code_000_165f:
     call getNextScriptInstruction                      ;; 00:165f $cd $27 $37
     ret                                                ;; 00:1662 $c9
 
-code_000_1663:
+scriptOpCode99:
     call code_000_28c2                                 ;; 00:1663 $cd $c2 $28
     jr   NZ, .code_166e                                ;; 00:1666 $20 $06
     ld   C, $00                                        ;; 00:1668 $0e $00
@@ -3852,7 +3852,7 @@ code_000_1663:
     call getNextScriptInstruction                      ;; 00:1670 $cd $27 $37
     ret                                                ;; 00:1673 $c9
 
-code_000_1674:
+scriptOpCode9A:
     call code_000_28c2                                 ;; 00:1674 $cd $c2 $28
     jr   NZ, code_000_165f                             ;; 00:1677 $20 $e6
     ld   A, $0e                                        ;; 00:1679 $3e $0e
@@ -3860,7 +3860,7 @@ code_000_1674:
     call code_000_2879                                 ;; 00:167d $cd $79 $28
     ret                                                ;; 00:1680 $c9
 
-code_000_1681:
+scriptOpCode9B:
     call code_000_28c2                                 ;; 00:1681 $cd $c2 $28
     jr   NZ, code_000_165f                             ;; 00:1684 $20 $d9
     ld   A, $0f                                        ;; 00:1686 $3e $0f
@@ -3868,7 +3868,7 @@ code_000_1681:
     call code_000_2879                                 ;; 00:168a $cd $79 $28
     ret                                                ;; 00:168d $c9
 
-code_000_168e:
+scriptOpCode8F:
     push HL                                            ;; 00:168e $e5
     ld   HL, wC5A0                                     ;; 00:168f $21 $a0 $c5
     ld   B, $08                                        ;; 00:1692 $06 $08
@@ -6585,7 +6585,7 @@ code_000_27e9:
     jr   NZ, .code_27f3                                ;; 00:27f6 $20 $fb
     ret                                                ;; 00:27f8 $c9
 
-code_000_27f9:
+scriptOpCodeFC:
     ld   A, [wD499]                                    ;; 00:27f9 $fa $99 $d4
     cp   A, $00                                        ;; 00:27fc $fe $00
     call Z, code_000_2819                              ;; 00:27fe $cc $19 $28
@@ -6607,7 +6607,7 @@ code_000_2819:
     ld   A, $05                                        ;; 00:281b $3e $05
     jp   callFunctionInBank03                          ;; 00:281d $c3 $35 $1f
 
-code_000_2820:
+scriptOpCodeFD:
     ld   A, [wD499]                                    ;; 00:2820 $fa $99 $d4
     cp   A, $00                                        ;; 00:2823 $fe $00
     call Z, code_000_2840                              ;; 00:2825 $cc $40 $28
@@ -7367,7 +7367,7 @@ code_000_2ce1:
     call code_000_27dd                                 ;; 00:2ce3 $cd $dd $27
     ret                                                ;; 00:2ce6 $c9
 
-code_000_2ce7:
+scriptOpCodeAF:
     push HL                                            ;; 00:2ce7 $e5
     ld   A, [wC5B0]                                    ;; 00:2ce8 $fa $b0 $c5
     ld   C, A                                          ;; 00:2ceb $4f
@@ -7755,7 +7755,7 @@ code_000_2f76:
     ld   A, $27                                        ;; 00:2f7a $3e $27
     jp   callFunctionInBank01                          ;; 00:2f7c $c3 $d7 $1e
 
-code_000_2f7f:
+scriptOpCodeAA:
     push HL                                            ;; 00:2f7f $e5
     call code_000_2ef7                                 ;; 00:2f80 $cd $f7 $2e
     pop  HL                                            ;; 00:2f83 $e1
@@ -8332,7 +8332,7 @@ code_000_3282:
     pop  HL                                            ;; 00:3295 $e1
     ret                                                ;; 00:3296 $c9
 
-code_000_3297:
+scriptOpCode00:
     ld   A, [wD874]                                    ;; 00:3297 $fa $74 $d8
     bit  $00, A                                        ;; 00:329a $cb $47
     ret  NZ                                            ;; 00:329c $c0
@@ -8385,7 +8385,7 @@ code_000_3297:
     call getNextScriptInstruction                      ;; 00:32ef $cd $27 $37
     ret                                                ;; 00:32f2 $c9
 
-code_000_32f3:
+scriptOpCode01:
     push DE                                            ;; 00:32f3 $d5
     ld   A, [HL+]                                      ;; 00:32f4 $2a
     ld   E, A                                          ;; 00:32f5 $5f
@@ -8395,7 +8395,7 @@ code_000_32f3:
     call getNextScriptInstruction                      ;; 00:32fa $cd $27 $37
     ret                                                ;; 00:32fd $c9
 
-code_000_32fe:
+scriptOpCode02:
     ld   B, $02                                        ;; 00:32fe $06 $02
     ld   A, [HL+]                                      ;; 00:3300 $2a
     ld   D, A                                          ;; 00:3301 $57
@@ -8426,7 +8426,7 @@ code_000_3304:
     call getNextScriptInstruction                      ;; 00:332b $cd $27 $37
     ret                                                ;; 00:332e $c9
 
-code_000_332f:
+scriptOpCode03:
     call getNextScriptInstruction                      ;; 00:332f $cd $27 $37
     ld   B, $03                                        ;; 00:3332 $06 $03
     ld   C, A                                          ;; 00:3334 $4f
@@ -8435,7 +8435,7 @@ code_000_332f:
     call getNextScriptInstruction                      ;; 00:3339 $cd $27 $37
     ret                                                ;; 00:333c $c9
 
-code_000_333d:
+scriptOpCode04:
     ld   A, [HL]                                       ;; 00:333d $7e
     cp   A, $a0                                        ;; 00:333e $fe $a0
     jp   NC, code_000_3480                             ;; 00:3340 $d2 $80 $34
@@ -8467,14 +8467,14 @@ code_000_333d:
     call code_000_374d                                 ;; 00:336c $cd $4d $37
     jp   HL                                            ;; 00:336f $e9
 
-code_000_3370:
+scriptOpCode08:
     call getNextScriptInstruction                      ;; 00:3370 $cd $27 $37
     and  A, A                                          ;; 00:3373 $a7
     jr   Z, .code_338b                                 ;; 00:3374 $28 $15
     push BC                                            ;; 00:3376 $c5
     call code_000_35ef                                 ;; 00:3377 $cd $ef $35
     pop  BC                                            ;; 00:337a $c1
-    jr   Z, code_000_3370                              ;; 00:337b $28 $f3
+    jr   Z, scriptOpCode08                             ;; 00:337b $28 $f3
 .code_337d:
     ld   A, [HL+]                                      ;; 00:337d $2a
     and  A, A                                          ;; 00:337e $a7
@@ -8489,7 +8489,7 @@ code_000_3370:
     call getNextScriptInstruction                      ;; 00:338c $cd $27 $37
     ret                                                ;; 00:338f $c9
 
-code_000_3390:
+scriptOpCode09:
     ld   DE, wD6E9                                     ;; 00:3390 $11 $e9 $d6
     ld   A, D                                          ;; 00:3393 $7a
     ld   [wD891], A                                    ;; 00:3394 $ea $91 $d8
@@ -8508,7 +8508,7 @@ code_000_33aa:
     ld   [wScriptCommand], A                           ;; 00:33ac $ea $5a $d8
     ret                                                ;; 00:33af $c9
 
-code_000_33b0:
+scriptOpCode0A:
     ld   DE, wItemInventory                            ;; 00:33b0 $11 $c5 $d6
     ld   A, D                                          ;; 00:33b3 $7a
     ld   [wD891], A                                    ;; 00:33b4 $ea $91 $d8
@@ -8615,7 +8615,7 @@ code_000_343f:
     jr   NZ, code_000_343f                             ;; 00:344b $20 $f2
     ret                                                ;; 00:344d $c9
 
-code_000_344e:
+scriptOpCode0B:
     ld   A, [wD871]                                    ;; 00:344e $fa $71 $d8
     ld   C, A                                          ;; 00:3451 $4f
     ld   A, [wD873]                                    ;; 00:3452 $fa $73 $d8
@@ -8623,7 +8623,7 @@ code_000_344e:
     jr   NZ, code_000_3476                             ;; 00:3457 $20 $1d
     jr   code_000_3466                                 ;; 00:3459 $18 $0b
 
-code_000_345b:
+scriptOpCode0C:
     ld   A, [wD871]                                    ;; 00:345b $fa $71 $d8
     ld   C, A                                          ;; 00:345e $4f
     ld   A, [wD873]                                    ;; 00:345f $fa $73 $d8
@@ -9348,7 +9348,7 @@ code_000_38bb:
     scf                                                ;; 00:38dc $37
     ret                                                ;; 00:38dd $c9
 
-code_000_38de:
+scriptOpCodeFF:
     push HL                                            ;; 00:38de $e5
     ld   A, [wD86B]                                    ;; 00:38df $fa $6b $d8
     ld   HL, data_000_3ba1                             ;; 00:38e2 $21 $a1 $3b
@@ -9380,7 +9380,7 @@ data_000_38ee:
     dw   code_000_35d4                                 ;; 00:390a $d4 $35
     dw   code_000_35dd                                 ;; 00:390c $dd $35
 
-code_000_390e:
+scriptOpCodeC9:
     ld   A, [HL+]                                      ;; 00:390e $2a
     ld   D, A                                          ;; 00:390f $57
     ld   A, [HL+]                                      ;; 00:3910 $2a
@@ -9389,7 +9389,7 @@ code_000_390e:
     call code_000_392f                                 ;; 00:3915 $cd $2f $39
     ret                                                ;; 00:3918 $c9
 
-code_000_3919:
+scriptOpCodeCA:
     ld   A, [HL+]                                      ;; 00:3919 $2a
     ld   D, A                                          ;; 00:391a $57
     ld   A, [HL+]                                      ;; 00:391b $2a
@@ -9398,7 +9398,7 @@ code_000_3919:
     call code_000_392f                                 ;; 00:3920 $cd $2f $39
     ret                                                ;; 00:3923 $c9
 
-code_000_3924:
+scriptOpCodeCB:
     ld   A, [HL+]                                      ;; 00:3924 $2a
     ld   D, A                                          ;; 00:3925 $57
     ld   A, [HL+]                                      ;; 00:3926 $2a
@@ -9427,7 +9427,7 @@ code_000_392f:
     call getNextScriptInstruction                      ;; 00:3943 $cd $27 $37
     ret                                                ;; 00:3946 $c9
 
-code_000_3947:
+scriptOpCodeFA:
     ld   A, [wMaxHPHigh]                               ;; 00:3947 $fa $b5 $d7
     ld   D, A                                          ;; 00:394a $57
     ld   A, [wMaxHPLow]                                ;; 00:394b $fa $b4 $d7
@@ -9442,7 +9442,7 @@ code_000_3947:
     call getNextScriptInstruction                      ;; 00:395c $cd $27 $37
     ret                                                ;; 00:395f $c9
 
-code_000_3960:
+scriptOpCodeC1:
     ld   A, [wMaxManaHigh]                             ;; 00:3960 $fa $b9 $d7
     ld   D, A                                          ;; 00:3963 $57
     ld   A, [wMaxManaLow]                              ;; 00:3964 $fa $b8 $d7
@@ -9457,7 +9457,7 @@ code_000_3960:
     call getNextScriptInstruction                      ;; 00:3975 $cd $27 $37
     ret                                                ;; 00:3978 $c9
 
-code_000_3979:
+scriptOpCodeC2:
     ld   A, [HL+]                                      ;; 00:3979 $2a
     cpl                                                ;; 00:397a $2f
     ld   C, A                                          ;; 00:397b $4f
@@ -9476,7 +9476,7 @@ code_000_3979:
     call getNextScriptInstruction                      ;; 00:3997 $cd $27 $37
     ret                                                ;; 00:399a $c9
 
-code_000_399b:
+scriptOpCodeC4:
     ld   A, [HL+]                                      ;; 00:399b $2a
     push HL                                            ;; 00:399c $e5
     call code_000_312f                                 ;; 00:399d $cd $2f $31
@@ -9492,7 +9492,7 @@ code_000_39a7:
     call getNextScriptInstruction                      ;; 00:39ae $cd $27 $37
     ret                                                ;; 00:39b1 $c9
 
-code_000_39b2:
+scriptOpCodeC7:
     push HL                                            ;; 00:39b2 $e5
     call getRandomByte                                 ;; 00:39b3 $cd $1e $2b
     and  A, $03                                        ;; 00:39b6 $e6 $03
@@ -9505,7 +9505,7 @@ code_000_39b2:
     call getNextScriptInstruction                      ;; 00:39c3 $cd $27 $37
     ret                                                ;; 00:39c6 $c9
 
-code_000_39c7:
+scriptOpCodeC6:
     push HL                                            ;; 00:39c7 $e5
     xor  A, A                                          ;; 00:39c8 $af
     ld   [wD86E], A                                    ;; 00:39c9 $ea $6e $d8
@@ -9535,11 +9535,11 @@ code_000_39c7:
     pop  HL                                            ;; 00:39ff $e1
     ret                                                ;; 00:3a00 $c9
 
-code_000_3a01:
+scriptOpCodeC3:
     call getNextScriptInstruction                      ;; 00:3a01 $cd $27 $37
     ret                                                ;; 00:3a04 $c9
 
-code_000_3a05:
+scriptOpCodeD2:
     ld   E, [HL]                                       ;; 00:3a05 $5e
     inc  HL                                            ;; 00:3a06 $23
     ld   D, [HL]                                       ;; 00:3a07 $56
@@ -9552,7 +9552,7 @@ code_000_3a05:
     call getNextScriptInstruction                      ;; 00:3a10 $cd $27 $37
     ret                                                ;; 00:3a13 $c9
 
-code_000_3a14:
+scriptOpCodeD3:
     ld   E, [HL]                                       ;; 00:3a14 $5e
     inc  HL                                            ;; 00:3a15 $23
     ld   D, [HL]                                       ;; 00:3a16 $56
@@ -9587,7 +9587,7 @@ code_000_3a14:
     call getNextScriptInstruction                      ;; 00:3a43 $cd $27 $37
     ret                                                ;; 00:3a46 $c9
 
-code_000_3a47:
+scriptOpCodeD0:
     ld   E, [HL]                                       ;; 00:3a47 $5e
     inc  HL                                            ;; 00:3a48 $23
     ld   D, [HL]                                       ;; 00:3a49 $56
@@ -9610,7 +9610,7 @@ code_000_3a47:
     call getNextScriptInstruction                      ;; 00:3a66 $cd $27 $37
     ret                                                ;; 00:3a69 $c9
 
-code_000_3a6a:
+scriptOpCodeD1:
     ld   E, [HL]                                       ;; 00:3a6a $5e
     inc  HL                                            ;; 00:3a6b $23
     ld   D, [HL]                                       ;; 00:3a6c $56
@@ -9643,12 +9643,12 @@ code_000_3a6a:
     call getNextScriptInstruction                      ;; 00:3a97 $cd $27 $37
     ret                                                ;; 00:3a9a $c9
 
-code_000_3a9b:
+scriptOpCodeCC:
     dec  HL                                            ;; 00:3a9b $2b
     call getNextScriptInstruction                      ;; 00:3a9c $cd $27 $37
     ret                                                ;; 00:3a9f $c9
 
-code_000_3aa0:
+scriptOpCodeD4:
     ld   A, [HL+]                                      ;; 00:3aa0 $2a
     inc  A                                             ;; 00:3aa1 $3c
     push HL                                            ;; 00:3aa2 $e5
@@ -9660,7 +9660,7 @@ code_000_3aa0:
     call getNextScriptInstruction                      ;; 00:3aae $cd $27 $37
     ret                                                ;; 00:3ab1 $c9
 
-code_000_3ab2:
+scriptOpCodeD6:
     ld   A, [HL+]                                      ;; 00:3ab2 $2a
     inc  A                                             ;; 00:3ab3 $3c
     push HL                                            ;; 00:3ab4 $e5
@@ -9672,7 +9672,7 @@ code_000_3ab2:
     call getNextScriptInstruction                      ;; 00:3ac0 $cd $27 $37
     ret                                                ;; 00:3ac3 $c9
 
-code_000_3ac4:
+scriptOpCodeD8:
     ld   A, [HL+]                                      ;; 00:3ac4 $2a
     inc  A                                             ;; 00:3ac5 $3c
     push HL                                            ;; 00:3ac6 $e5
@@ -9739,7 +9739,7 @@ code_000_3b21:
     call getNextScriptInstruction                      ;; 00:3b2b $cd $27 $37
     ret                                                ;; 00:3b2e $c9
 
-code_000_3b2f:
+scriptOpCodeD5:
     ld   A, [HL+]                                      ;; 00:3b2f $2a
     inc  A                                             ;; 00:3b30 $3c
     push HL                                            ;; 00:3b31 $e5
@@ -9748,7 +9748,7 @@ code_000_3b2f:
     call getNextScriptInstruction                      ;; 00:3b36 $cd $27 $37
     ret                                                ;; 00:3b39 $c9
 
-code_000_3b3a:
+scriptOpCodeD7:
     ld   A, [HL+]                                      ;; 00:3b3a $2a
     inc  A                                             ;; 00:3b3b $3c
     push HL                                            ;; 00:3b3c $e5
@@ -9757,7 +9757,7 @@ code_000_3b3a:
     call getNextScriptInstruction                      ;; 00:3b41 $cd $27 $37
     ret                                                ;; 00:3b44 $c9
 
-code_000_3b45:
+scriptOpCodeD9:
     ld   A, [HL+]                                      ;; 00:3b45 $2a
     inc  A                                             ;; 00:3b46 $3c
     push HL                                            ;; 00:3b47 $e5
@@ -9766,7 +9766,7 @@ code_000_3b45:
     call getNextScriptInstruction                      ;; 00:3b4c $cd $27 $37
     ret                                                ;; 00:3b4f $c9
 
-code_000_3b50:
+scriptOpCodeDC:
     push HL                                            ;; 00:3b50 $e5
     ld   HL, wD874                                     ;; 00:3b51 $21 $74 $d8
     set  $01, [HL]                                     ;; 00:3b54 $cb $ce
@@ -9774,7 +9774,7 @@ code_000_3b50:
     call getNextScriptInstruction                      ;; 00:3b57 $cd $27 $37
     ret                                                ;; 00:3b5a $c9
 
-code_000_3b5b:
+scriptOpCodeDD:
     push HL                                            ;; 00:3b5b $e5
     ld   HL, wD874                                     ;; 00:3b5c $21 $74 $d8
     res  $01, [HL]                                     ;; 00:3b5f $cb $8e
@@ -9782,7 +9782,7 @@ code_000_3b5b:
     call getNextScriptInstruction                      ;; 00:3b62 $cd $27 $37
     ret                                                ;; 00:3b65 $c9
 
-code_000_3b66:
+scriptOpCodeC5:
     ld   A, [HL+]                                      ;; 00:3b66 $2a
     and  A, $3f                                        ;; 00:3b67 $e6 $3f
     ld   C, A                                          ;; 00:3b69 $4f
@@ -9794,7 +9794,7 @@ code_000_3b66:
     call getNextScriptInstruction                      ;; 00:3b72 $cd $27 $37
     ret                                                ;; 00:3b75 $c9
 
-code_000_3b76:
+scriptOpCodeDE:
     push HL                                            ;; 00:3b76 $e5
     ld   HL, wD6F0                                     ;; 00:3b77 $21 $f0 $d6
     ld   A, [HL]                                       ;; 00:3b7a $7e
@@ -9823,7 +9823,7 @@ code_000_3b76:
     call getNextScriptInstruction                      ;; 00:3b9a $cd $27 $37
     ret                                                ;; 00:3b9d $c9
 
-code_000_3b9e:
+scriptOpCodeC8:
     jp   FullReset                                     ;; 00:3b9e $c3 $50 $01
 
 ;@jumptable: 11
@@ -9861,13 +9861,13 @@ code_000_3bcb:
     call code_000_30b7                                 ;; 00:3bcc $cd $b7 $30
     ret                                                ;; 00:3bcf $c9
 
-code_000_3bd0:
+scriptOpCodeDA:
     call getNextScriptInstruction                      ;; 00:3bd0 $cd $27 $37
     call code_000_3be4                                 ;; 00:3bd3 $cd $e4 $3b
     call getNextScriptInstruction                      ;; 00:3bd6 $cd $27 $37
     ret                                                ;; 00:3bd9 $c9
 
-code_000_3bda:
+scriptOpCodeDB:
     call getNextScriptInstruction                      ;; 00:3bda $cd $27 $37
     call code_000_3bee                                 ;; 00:3bdd $cd $ee $3b
     call getNextScriptInstruction                      ;; 00:3be0 $cd $27 $37
@@ -9894,7 +9894,7 @@ code_000_3bee:
     pop  HL                                            ;; 00:3bf7 $e1
     ret                                                ;; 00:3bf8 $c9
 
-code_000_3bf9:
+scriptOpCodeF0:
     call getNextScriptInstruction                      ;; 00:3bf9 $cd $27 $37
     push HL                                            ;; 00:3bfc $e5
     ld   H, $00                                        ;; 00:3bfd $26 $00
@@ -10001,7 +10001,7 @@ code_000_3c87:
     pop  BC                                            ;; 00:3c95 $c1
     ret                                                ;; 00:3c96 $c9
 
-code_000_3c97:
+scriptOpCodeF6:
     push HL                                            ;; 00:3c97 $e5
     ld   A, [wC0A0]                                    ;; 00:3c98 $fa $a0 $c0
     ld   [wD862], A                                    ;; 00:3c9b $ea $62 $d8
@@ -10371,7 +10371,7 @@ code_000_3efb:
     cp   A, $40                                        ;; 00:3efe $fe $40
     ret                                                ;; 00:3f00 $c9
 
-code_000_3f01:
+scriptOpCodeDF:
     call getNextScriptInstruction                      ;; 00:3f01 $cd $27 $37
     ret                                                ;; 00:3f04 $c9
 

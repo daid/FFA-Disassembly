@@ -72,10 +72,73 @@ def mapHeaders(dis, addr, params):
 
         mapRoomData(dis, bank << 14 | (room_data_ptr & 0x3FFF), n)
 
+OPCODES = {
+    0x00: ("RET", 0),
+    0x01: ("JR", 1),
+    0x02: ("CALL", 2),
+
+    0x04: ("MSG", -1),
+
+    0x08: ("IF ? JR", -2),
+    0x0B: ("IF JR", -2),
+    0x0C: ("IF ! JR", -2),
+
+    0xC2: ("UNK_C2", 1),
+    0xD1: ("CHECK_MONEY", 2),
+    0xDA: ("UNK_DA", 1),
+    0xDB: ("UNK_DB", 1),
+
+    0xF0: ("UNK_F0", 1),
+    0xF8: ("UNK_MUSIC_F8", 1),
+    0xF9: ("UNK_SFX_F9", 1),
+}
+
+def scriptProcessor(dis, addr, params):
+    opcode = dis.rom.data[addr]
+    
+    def scriptOpcodeFormatter(output, addr):
+        if opcode in OPCODES:
+            name, size = OPCODES[opcode]
+        else:
+            name, size = "UNK_%02x" % (opcode), 1
+        output.write("    db  $%02x ;;%s\n" % (dis.rom.data[addr], name))
+        return addr + 1
+    if addr in dis.formatter:
+        return
+    dis.formatter[addr] = scriptOpcodeFormatter
+
+    if opcode not in OPCODES:
+        return
+
+    addr += 1
+    size = OPCODES[opcode][1]
+    if size < 0:
+        while dis.rom.data[addr] != 0x00:
+            addr += 1
+        addr -= size
+    else:
+        addr += size
+    if opcode in (0x01, 0x08, 0x0B, 0x0C):
+        scriptProcessor(dis, addr + dis.rom.data[addr - 1], params)
+    if opcode not in (0x00, 0x01):
+        scriptProcessor(dis, addr, params)
+
+def scriptPointer(dis, addr, params):
+    script_pointer = dis.info.markAsWord(dis.rom, addr)
+    script_addr = (0x0D << 14) + script_pointer
+    label = "script_%04x" % (0 if script_pointer == 0x000 else params[0])
+    dis.info.addAbsoluteRomSymbol(script_addr, name=label)
+
+    def formatScriptPointer(output, addr):
+        dis.formatLine(output, addr, 2, "dw   ((%s - $4000) + ((BANK(%s) - $0D) * $4000))" % (label, label))
+        return addr + 2
+
+    dis.formatter[addr] = formatScriptPointer
+    scriptProcessor(dis, script_addr, [])
+
 def scriptPointers(dis, addr, params):
     for n in range(int(params[0])):
-        script_pointer = dis.info.markAsWord(dis.rom, addr)
-        dis.info.addAbsoluteRomSymbol((0x0D << 14) + script_pointer, name="script_%04x" % (script_pointer))
+        scriptPointer(dis, addr, [n])
         addr += 2
 
 
