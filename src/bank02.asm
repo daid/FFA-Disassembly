@@ -918,7 +918,7 @@ code_002_4567:
     ld   A, [wScriptCommand]                           ;; 02:4567 $fa $5a $d8
     ld   C, A                                          ;; 02:456a $4f
     ld   B, $00                                        ;; 02:456b $06 $00
-    ld   HL, data_002_4576                             ;; 02:456d $21 $76 $45
+    ld   HL, scriptOpcodeTable                         ;; 02:456d $21 $76 $45
     add  HL, BC                                        ;; 02:4570 $09
     add  HL, BC                                        ;; 02:4571 $09
     ld   A, [HL+]                                      ;; 02:4572 $2a
@@ -927,7 +927,7 @@ code_002_4567:
     ret                                                ;; 02:4575 $c9
 
 ;@jumptable: 256: scriptOpCode%02X
-data_002_4576:
+scriptOpcodeTable:
     dw   scriptOpCode00                                ;; 02:4576 $97 $32
     dw   scriptOpCode01                                ;; 02:4578 $f3 $32
     dw   scriptOpCode02                                ;; 02:457a $fe $32

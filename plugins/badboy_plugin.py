@@ -40,6 +40,11 @@ def mapRoomData(dis, addr, index):
         addr += 4
         
         script_index = dis.info.markAsWord(dis.rom, obj_addr)
+        obj_addr += 2
+        while dis.rom.data[obj_addr] != 0xff:
+            obj_addr += 1
+            script_index = dis.info.markAsWord(dis.rom, obj_addr)
+            obj_addr += 2
 
         if dis.rom.data[tile_addr] != 0xff and unknown == 0:
             dis.formatter[tile_addr] = roomTileFormatter
@@ -76,32 +81,47 @@ OPCODES = {
     0x00: ("RET", 0),
     0x01: ("JR", 1),
     0x02: ("CALL", 2),
+    0x03: ("PLAYER_WALK", 2), # tile count, [ignored]
 
     0x04: ("MSG", -1),
 
     0x08: ("IF ? JR", -2),
+    0x09: ("IF ? JR", -2),
     0x0B: ("IF JR", -2),
     0x0C: ("IF ! JR", -2),
 
+    0x80: ("WAIT_PLAYER_WALK_DONE", 0),
+    0x84: ("SET_PLAYER_DIRECTION_UP", 0),
+    0x85: ("SET_PLAYER_DIRECTION_DOWN", 0),
+    0x86: ("SET_PLAYER_DIRECTION_RIGHT", 0),
+    0x87: ("SET_PLAYER_DIRECTION_LEFT", 0),
+    0x8A: ("SET_PLAYER_POSITION", 2),
+
+    0xB0: ("SET_ROOM_TILE", 3), # tile, x, y
     0xC2: ("UNK_C2", 1),
+    0xC6: ("UNK_C6", 0),
     0xD1: ("CHECK_MONEY", 2),
     0xDA: ("UNK_DA", 1),
     0xDB: ("UNK_DB", 1),
 
-    0xF0: ("UNK_F0", 1),
-    0xF8: ("UNK_MUSIC_F8", 1),
-    0xF9: ("UNK_SFX_F9", 1),
+    0xF0: ("UNK_F0_DELAY?", 1),
+    0xF4: ("LOAD_MAP", 4), # MapNr, RoomXY, PlayerX, PlayerY
+    0xF8: ("SET_MUSIC", 1),
+    0xF9: ("SFX", 1),
+    0xFC: ("SET_ENEMY_TYPES", 1),
+    0xFD: ("SPAWN_ENEMY", 1),
+    0xFE: ("SPAWN_BOSS", 1),
 }
 
-def scriptProcessor(dis, addr, params):
+def scriptProcessor(dis, addr, *, allow_continue=False):
     opcode = dis.rom.data[addr]
     
     def scriptOpcodeFormatter(output, addr):
         if opcode in OPCODES:
             name, size = OPCODES[opcode]
         else:
-            name, size = "UNK_%02x" % (opcode), 1
-        output.write("    db  $%02x ;;%s\n" % (dis.rom.data[addr], name))
+            name, size = "UNK_%02x??" % (opcode), 1
+        dis.formatLine(output, addr, 1, "db  $%02x ;;%s" % (dis.rom.data[addr], name))
         return addr + 1
     if addr in dis.formatter:
         return
@@ -118,10 +138,16 @@ def scriptProcessor(dis, addr, params):
         addr -= size
     else:
         addr += size
-    if opcode in (0x01, 0x08, 0x0B, 0x0C):
-        scriptProcessor(dis, addr + dis.rom.data[addr - 1], params)
-    if opcode not in (0x00, 0x01):
-        scriptProcessor(dis, addr, params)
+    if opcode in (0x01, 0x08, 0x0B, 0x0C): # JR
+        scriptProcessor(dis, addr + dis.rom.data[addr - 1])
+    if opcode in (0x03,):
+        allow_continue = True
+    
+    if opcode not in (0x00, 0x01): # No continue opcode
+        scriptProcessor(dis, addr, allow_continue=allow_continue)
+    elif opcode == 0x00 and allow_continue:
+        scriptProcessor(dis, addr)
+    
 
 def scriptPointer(dis, addr, params):
     script_pointer = dis.info.markAsWord(dis.rom, addr)
@@ -134,7 +160,7 @@ def scriptPointer(dis, addr, params):
         return addr + 2
 
     dis.formatter[addr] = formatScriptPointer
-    scriptProcessor(dis, script_addr, [])
+    scriptProcessor(dis, script_addr)
 
 def scriptPointers(dis, addr, params):
     for n in range(int(params[0])):
