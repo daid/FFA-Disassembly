@@ -1,7 +1,7 @@
 ;; Disassembled with BadBoy Disassembler: https://github.com/daid/BadBoy
 
 script_0000:
-    db  $00 ;;RET                                      ;; 0d:4000 $00
+    db  $00 ;;END                                      ;; 0d:4000 $00
 
 script_0001:
     db  $08 ;;IF ? JR                                  ;; 0d:4001 $08
@@ -27,10 +27,10 @@ script_0001:
     db  $f9 ;;SFX                                      ;; 0d:4020 $f9
     db   $10                                           ;; 0d:4021 ?
     db  $e2 ;;UNK_e2??                                 ;; 0d:4022 $e2
-    db  $00 ;;RET                                      ;; 0d:4023 $00
+    db  $00 ;;END                                      ;; 0d:4023 $00
 
 script_0002:
-    db  $00 ;;RET                                      ;; 0d:4024 $00
+    db  $00 ;;END                                      ;; 0d:4024 $00
 
 script_0003:
     db  $f8 ;;SET_MUSIC                                ;; 0d:4025 $f8
@@ -40,7 +40,7 @@ script_0003:
     db   $01, $47, $12, $0a                            ;; 0d:4029 ....
     db  $02 ;;CALL                                     ;; 0d:402d $02
     db   $06, $cc                                      ;; 0d:402e ..
-    db  $00 ;;RET                                      ;; 0d:4030 $00
+    db  $00 ;;END                                      ;; 0d:4030 $00
 
 script_0004:
     db  $08 ;;IF ? JR                                  ;; 0d:4031 $08
@@ -177,12 +177,12 @@ script_0005:
     db   $39, $f0, $12, $11, $00, $00                  ;; 0d:4140 ??????
 
 script_0006:
-    db  $00 ;;RET                                      ;; 0d:4146 $00
+    db  $00 ;;END                                      ;; 0d:4146 $00
 
 script_0007:
     db  $f8 ;;SET_MUSIC                                ;; 0d:4147 $f8
     db   $00                                           ;; 0d:4148 .
-    db  $03 ;;PLAYER_WALK                              ;; 0d:4149 $03
+    db  $03 ;;LOOP                                     ;; 0d:4149 $03
     db   $04, $0d                                      ;; 0d:414a .?
     db  $86 ;;SET_PLAYER_DIRECTION_RIGHT               ;; 0d:414c $86
     db  $f0 ;;UNK_F0_DELAY?                            ;; 0d:414d $f0
@@ -196,7 +196,7 @@ script_0007:
     db  $84 ;;SET_PLAYER_DIRECTION_UP                  ;; 0d:4155 $84
     db  $f0 ;;UNK_F0_DELAY?                            ;; 0d:4156 $f0
     db   $05                                           ;; 0d:4157 .
-    db  $00 ;;RET                                      ;; 0d:4158 $00
+    db  $00 ;;END                                      ;; 0d:4158 $00
     db  $a6 ;;UNK_a6??                                 ;; 0d:4159 $a6
     db   $86, $f0, $2c, $f8, $17, $04, $10, $1a        ;; 0d:415a ........
     db   $69, $69, $14, $52, $66, $df, $f1, $12        ;; 0d:4162 ........
@@ -278,13 +278,13 @@ script_0009:
     db  $04 ;;MSG                                      ;; 0d:4227 $04
     db   $10, $ff, $bd, $e2, $54, $e1, $ee, $28        ;; 0d:4228 ........
     db   $e2, $e3, $4e, $f0, $12, $11, $00             ;; 0d:4230 .......
-    db  $00 ;;RET                                      ;; 0d:4237 $00
+    db  $00 ;;END                                      ;; 0d:4237 $00
 
 script_000a:
-    db  $00 ;;RET                                      ;; 0d:4238 $00
+    db  $00 ;;END                                      ;; 0d:4238 $00
 
 script_000b:
-    db  $00 ;;RET                                      ;; 0d:4239 $00
+    db  $00 ;;END                                      ;; 0d:4239 $00
 
 script_000c:
     db  $08 ;;IF ? JR                                  ;; 0d:423a $08
@@ -403,7 +403,7 @@ script_000c:
     db   $0e, $15, $0c, $0a                            ;; 0d:437d ????
     db  $ab ;;UNK_ab??                                 ;; 0d:4381 $ab
     db   $ec                                           ;; 0d:4382 .
-    db  $00 ;;RET                                      ;; 0d:4383 $00
+    db  $00 ;;END                                      ;; 0d:4383 $00
 
 script_000d:
     db  $08 ;;IF ? JR                                  ;; 0d:4384 $08
@@ -423,110 +423,110 @@ script_000d:
     db  $04 ;;MSG                                      ;; 0d:439b $04
     db   $35, $1a, $f1, $49, $e7, $6c, $52, $5f        ;; 0d:439c ????????
     db   $ed, $4e, $f0, $12, $11, $00                  ;; 0d:43a4 ??????
-    db  $00 ;;RET                                      ;; 0d:43aa $00
+    db  $00 ;;END                                      ;; 0d:43aa $00
 
 script_000e:
-    db  $00 ;;RET                                      ;; 0d:43ab $00
+    db  $00 ;;END                                      ;; 0d:43ab $00
 
 script_000f:
-    db  $00 ;;RET                                      ;; 0d:43ac $00
+    db  $00 ;;END                                      ;; 0d:43ac $00
 
 script_0010:
-    db  $00 ;;RET                                      ;; 0d:43ad $00
+    db  $00 ;;END                                      ;; 0d:43ad $00
 
 script_0011:
-    db  $00 ;;RET                                      ;; 0d:43ae $00
+    db  $00 ;;END                                      ;; 0d:43ae $00
 
 script_0012:
-    db  $00 ;;RET                                      ;; 0d:43af $00
+    db  $00 ;;END                                      ;; 0d:43af $00
 
 script_0013:
-    db  $00 ;;RET                                      ;; 0d:43b0 $00
+    db  $00 ;;END                                      ;; 0d:43b0 $00
 
 script_0014:
-    db  $00 ;;RET                                      ;; 0d:43b1 $00
+    db  $00 ;;END                                      ;; 0d:43b1 $00
 
 script_0015:
-    db  $00 ;;RET                                      ;; 0d:43b2 $00
+    db  $00 ;;END                                      ;; 0d:43b2 $00
 
 script_0016:
-    db  $00 ;;RET                                      ;; 0d:43b3 $00
+    db  $00 ;;END                                      ;; 0d:43b3 $00
 
 script_0017:
-    db  $00 ;;RET                                      ;; 0d:43b4 $00
+    db  $00 ;;END                                      ;; 0d:43b4 $00
 
 script_0018:
-    db  $00 ;;RET                                      ;; 0d:43b5 $00
+    db  $00 ;;END                                      ;; 0d:43b5 $00
 
 script_0019:
-    db  $00 ;;RET                                      ;; 0d:43b6 $00
+    db  $00 ;;END                                      ;; 0d:43b6 $00
 
 script_001a:
-    db  $00 ;;RET                                      ;; 0d:43b7 $00
+    db  $00 ;;END                                      ;; 0d:43b7 $00
 
 script_001b:
-    db  $00 ;;RET                                      ;; 0d:43b8 $00
+    db  $00 ;;END                                      ;; 0d:43b8 $00
 
 script_001c:
-    db  $00 ;;RET                                      ;; 0d:43b9 $00
+    db  $00 ;;END                                      ;; 0d:43b9 $00
 
 script_001d:
-    db  $00 ;;RET                                      ;; 0d:43ba $00
+    db  $00 ;;END                                      ;; 0d:43ba $00
 
 script_001e:
-    db  $00 ;;RET                                      ;; 0d:43bb $00
+    db  $00 ;;END                                      ;; 0d:43bb $00
 
 script_001f:
     db  $a9 ;;UNK_a9??                                 ;; 0d:43bc $a9
     db   $08, $7f, $00, $03, $ac, $ad, $ae, $00        ;; 0d:43bd ...?....
 
 script_0020:
-    db  $00 ;;RET                                      ;; 0d:43c5 $00
+    db  $00 ;;END                                      ;; 0d:43c5 $00
 
 script_0021:
-    db  $00 ;;RET                                      ;; 0d:43c6 $00
+    db  $00 ;;END                                      ;; 0d:43c6 $00
 
 script_0022:
-    db  $00 ;;RET                                      ;; 0d:43c7 $00
+    db  $00 ;;END                                      ;; 0d:43c7 $00
 
 script_0023:
-    db  $00 ;;RET                                      ;; 0d:43c8 $00
+    db  $00 ;;END                                      ;; 0d:43c8 $00
 
 script_0024:
-    db  $00 ;;RET                                      ;; 0d:43c9 $00
+    db  $00 ;;END                                      ;; 0d:43c9 $00
 
 script_0025:
-    db  $00 ;;RET                                      ;; 0d:43ca $00
+    db  $00 ;;END                                      ;; 0d:43ca $00
 
 script_0026:
-    db  $00 ;;RET                                      ;; 0d:43cb $00
+    db  $00 ;;END                                      ;; 0d:43cb $00
 
 script_0027:
-    db  $00 ;;RET                                      ;; 0d:43cc $00
+    db  $00 ;;END                                      ;; 0d:43cc $00
 
 script_0028:
-    db  $00 ;;RET                                      ;; 0d:43cd $00
+    db  $00 ;;END                                      ;; 0d:43cd $00
 
 script_0029:
-    db  $00 ;;RET                                      ;; 0d:43ce $00
+    db  $00 ;;END                                      ;; 0d:43ce $00
 
 script_002a:
-    db  $00 ;;RET                                      ;; 0d:43cf $00
+    db  $00 ;;END                                      ;; 0d:43cf $00
 
 script_002b:
-    db  $00 ;;RET                                      ;; 0d:43d0 $00
+    db  $00 ;;END                                      ;; 0d:43d0 $00
 
 script_002c:
-    db  $00 ;;RET                                      ;; 0d:43d1 $00
+    db  $00 ;;END                                      ;; 0d:43d1 $00
 
 script_002d:
-    db  $00 ;;RET                                      ;; 0d:43d2 $00
+    db  $00 ;;END                                      ;; 0d:43d2 $00
 
 script_002e:
-    db  $00 ;;RET                                      ;; 0d:43d3 $00
+    db  $00 ;;END                                      ;; 0d:43d3 $00
 
 script_002f:
-    db  $00 ;;RET                                      ;; 0d:43d4 $00
+    db  $00 ;;END                                      ;; 0d:43d4 $00
 
 script_0030:
     db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:43d5 $fc
@@ -535,16 +535,16 @@ script_0030:
     db   $00                                           ;; 0d:43d8 ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:43d9 $fd
     db   $01                                           ;; 0d:43da ?
-    db  $00 ;;RET                                      ;; 0d:43db $00
+    db  $00 ;;END                                      ;; 0d:43db $00
 
 script_003d:
-    db  $00 ;;RET                                      ;; 0d:43dc $00
+    db  $00 ;;END                                      ;; 0d:43dc $00
 
 script_003e:
-    db  $00 ;;RET                                      ;; 0d:43dd $00
+    db  $00 ;;END                                      ;; 0d:43dd $00
 
 script_003f:
-    db  $00 ;;RET                                      ;; 0d:43de $00
+    db  $00 ;;END                                      ;; 0d:43de $00
 
 script_0040:
     db  $08 ;;IF ? JR                                  ;; 0d:43df $08
@@ -555,13 +555,13 @@ script_0040:
     db   $00                                           ;; 0d:43e6 .
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:43e7 $fd
     db   $01                                           ;; 0d:43e8 .
-    db  $00 ;;RET                                      ;; 0d:43e9 $00
+    db  $00 ;;END                                      ;; 0d:43e9 $00
 
 script_0041:
-    db  $00 ;;RET                                      ;; 0d:43ea $00
+    db  $00 ;;END                                      ;; 0d:43ea $00
 
 script_0042:
-    db  $00 ;;RET                                      ;; 0d:43eb $00
+    db  $00 ;;END                                      ;; 0d:43eb $00
 
 script_0043:
     db  $08 ;;IF ? JR                                  ;; 0d:43ec $08
@@ -572,13 +572,13 @@ script_0043:
     db   $00                                           ;; 0d:43f3 .
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:43f4 $fd
     db   $01                                           ;; 0d:43f5 .
-    db  $00 ;;RET                                      ;; 0d:43f6 $00
+    db  $00 ;;END                                      ;; 0d:43f6 $00
 
 script_0044:
-    db  $00 ;;RET                                      ;; 0d:43f7 $00
+    db  $00 ;;END                                      ;; 0d:43f7 $00
 
 script_0045:
-    db  $00 ;;RET                                      ;; 0d:43f8 $00
+    db  $00 ;;END                                      ;; 0d:43f8 $00
 
 script_0046:
     db  $08 ;;IF ? JR                                  ;; 0d:43f9 $08
@@ -587,13 +587,13 @@ script_0046:
     db   $00                                           ;; 0d:43fe ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:43ff $fd
     db   $02                                           ;; 0d:4400 ?
-    db  $00 ;;RET                                      ;; 0d:4401 $00
+    db  $00 ;;END                                      ;; 0d:4401 $00
 
 script_0047:
-    db  $00 ;;RET                                      ;; 0d:4402 $00
+    db  $00 ;;END                                      ;; 0d:4402 $00
 
 script_0048:
-    db  $00 ;;RET                                      ;; 0d:4403 $00
+    db  $00 ;;END                                      ;; 0d:4403 $00
 
 script_0049:
     db  $08 ;;IF ? JR                                  ;; 0d:4404 $08
@@ -604,13 +604,13 @@ script_0049:
     db   $01                                           ;; 0d:440b .
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:440c $fd
     db   $00                                           ;; 0d:440d .
-    db  $00 ;;RET                                      ;; 0d:440e $00
+    db  $00 ;;END                                      ;; 0d:440e $00
 
 script_004a:
-    db  $00 ;;RET                                      ;; 0d:440f $00
+    db  $00 ;;END                                      ;; 0d:440f $00
 
 script_004b:
-    db  $00 ;;RET                                      ;; 0d:4410 $00
+    db  $00 ;;END                                      ;; 0d:4410 $00
 
 script_004c:
     db  $08 ;;IF ? JR                                  ;; 0d:4411 $08
@@ -621,13 +621,13 @@ script_004c:
     db   $00                                           ;; 0d:4418 .
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:4419 $fd
     db   $01                                           ;; 0d:441a .
-    db  $00 ;;RET                                      ;; 0d:441b $00
+    db  $00 ;;END                                      ;; 0d:441b $00
 
 script_004d:
-    db  $00 ;;RET                                      ;; 0d:441c $00
+    db  $00 ;;END                                      ;; 0d:441c $00
 
 script_004e:
-    db  $00 ;;RET                                      ;; 0d:441d $00
+    db  $00 ;;END                                      ;; 0d:441d $00
 
 script_004f:
     db  $08 ;;IF ? JR                                  ;; 0d:441e $08
@@ -636,13 +636,13 @@ script_004f:
     db   $08                                           ;; 0d:4423 ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:4424 $fd
     db   $00                                           ;; 0d:4425 ?
-    db  $00 ;;RET                                      ;; 0d:4426 $00
+    db  $00 ;;END                                      ;; 0d:4426 $00
 
 script_0050:
-    db  $00 ;;RET                                      ;; 0d:4427 $00
+    db  $00 ;;END                                      ;; 0d:4427 $00
 
 script_0051:
-    db  $00 ;;RET                                      ;; 0d:4428 $00
+    db  $00 ;;END                                      ;; 0d:4428 $00
 
 script_0052:
     db  $08 ;;IF ? JR                                  ;; 0d:4429 $08
@@ -651,13 +651,13 @@ script_0052:
     db   $09                                           ;; 0d:442e ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:442f $fd
     db   $00                                           ;; 0d:4430 ?
-    db  $00 ;;RET                                      ;; 0d:4431 $00
+    db  $00 ;;END                                      ;; 0d:4431 $00
 
 script_0053:
-    db  $00 ;;RET                                      ;; 0d:4432 $00
+    db  $00 ;;END                                      ;; 0d:4432 $00
 
 script_0054:
-    db  $00 ;;RET                                      ;; 0d:4433 $00
+    db  $00 ;;END                                      ;; 0d:4433 $00
 
 script_0055:
     db  $08 ;;IF ? JR                                  ;; 0d:4434 $08
@@ -666,13 +666,13 @@ script_0055:
     db   $09                                           ;; 0d:4439 ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:443a $fd
     db   $01                                           ;; 0d:443b ?
-    db  $00 ;;RET                                      ;; 0d:443c $00
+    db  $00 ;;END                                      ;; 0d:443c $00
 
 script_0056:
-    db  $00 ;;RET                                      ;; 0d:443d $00
+    db  $00 ;;END                                      ;; 0d:443d $00
 
 script_0057:
-    db  $00 ;;RET                                      ;; 0d:443e $00
+    db  $00 ;;END                                      ;; 0d:443e $00
 
 script_0058:
     db  $08 ;;IF ? JR                                  ;; 0d:443f $08
@@ -683,13 +683,13 @@ script_0058:
     db   $01                                           ;; 0d:4446 ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:4447 $fd
     db   $02                                           ;; 0d:4448 ?
-    db  $00 ;;RET                                      ;; 0d:4449 $00
+    db  $00 ;;END                                      ;; 0d:4449 $00
 
 script_0059:
-    db  $00 ;;RET                                      ;; 0d:444a $00
+    db  $00 ;;END                                      ;; 0d:444a $00
 
 script_005a:
-    db  $00 ;;RET                                      ;; 0d:444b $00
+    db  $00 ;;END                                      ;; 0d:444b $00
 
 script_005b:
     db  $08 ;;IF ? JR                                  ;; 0d:444c $08
@@ -700,13 +700,13 @@ script_005b:
     db   $00                                           ;; 0d:4453 ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:4454 $fd
     db   $01                                           ;; 0d:4455 ?
-    db  $00 ;;RET                                      ;; 0d:4456 $00
+    db  $00 ;;END                                      ;; 0d:4456 $00
 
 script_005c:
-    db  $00 ;;RET                                      ;; 0d:4457 $00
+    db  $00 ;;END                                      ;; 0d:4457 $00
 
 script_005d:
-    db  $00 ;;RET                                      ;; 0d:4458 $00
+    db  $00 ;;END                                      ;; 0d:4458 $00
 
 script_005e:
     db  $08 ;;IF ? JR                                  ;; 0d:4459 $08
@@ -715,13 +715,13 @@ script_005e:
     db   $0d                                           ;; 0d:445e ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:445f $fd
     db   $02                                           ;; 0d:4460 ?
-    db  $00 ;;RET                                      ;; 0d:4461 $00
+    db  $00 ;;END                                      ;; 0d:4461 $00
 
 script_005f:
-    db  $00 ;;RET                                      ;; 0d:4462 $00
+    db  $00 ;;END                                      ;; 0d:4462 $00
 
 script_0060:
-    db  $00 ;;RET                                      ;; 0d:4463 $00
+    db  $00 ;;END                                      ;; 0d:4463 $00
 
 script_0061:
     db  $08 ;;IF ? JR                                  ;; 0d:4464 $08
@@ -732,13 +732,13 @@ script_0061:
     db   $00                                           ;; 0d:446b ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:446c $fd
     db   $01                                           ;; 0d:446d ?
-    db  $00 ;;RET                                      ;; 0d:446e $00
+    db  $00 ;;END                                      ;; 0d:446e $00
 
 script_0062:
-    db  $00 ;;RET                                      ;; 0d:446f $00
+    db  $00 ;;END                                      ;; 0d:446f $00
 
 script_0063:
-    db  $00 ;;RET                                      ;; 0d:4470 $00
+    db  $00 ;;END                                      ;; 0d:4470 $00
 
 script_0064:
     db  $08 ;;IF ? JR                                  ;; 0d:4471 $08
@@ -753,13 +753,13 @@ script_0064:
     db   $78                                           ;; 0d:447c ?
     db  $db ;;UNK_DB                                   ;; 0d:447d $db
     db   $79                                           ;; 0d:447e ?
-    db  $00 ;;RET                                      ;; 0d:447f $00
+    db  $00 ;;END                                      ;; 0d:447f $00
 
 script_0065:
-    db  $00 ;;RET                                      ;; 0d:4480 $00
+    db  $00 ;;END                                      ;; 0d:4480 $00
 
 script_0066:
-    db  $00 ;;RET                                      ;; 0d:4481 $00
+    db  $00 ;;END                                      ;; 0d:4481 $00
 
 script_0067:
     db  $08 ;;IF ? JR                                  ;; 0d:4482 $08
@@ -770,13 +770,13 @@ script_0067:
     db   $01                                           ;; 0d:4489 ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:448a $fd
     db   $02                                           ;; 0d:448b ?
-    db  $00 ;;RET                                      ;; 0d:448c $00
+    db  $00 ;;END                                      ;; 0d:448c $00
 
 script_0068:
-    db  $00 ;;RET                                      ;; 0d:448d $00
+    db  $00 ;;END                                      ;; 0d:448d $00
 
 script_0069:
-    db  $00 ;;RET                                      ;; 0d:448e $00
+    db  $00 ;;END                                      ;; 0d:448e $00
 
 script_006a:
     db  $08 ;;IF ? JR                                  ;; 0d:448f $08
@@ -787,13 +787,13 @@ script_006a:
     db   $00                                           ;; 0d:4496 ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:4497 $fd
     db   $01                                           ;; 0d:4498 ?
-    db  $00 ;;RET                                      ;; 0d:4499 $00
+    db  $00 ;;END                                      ;; 0d:4499 $00
 
 script_006b:
-    db  $00 ;;RET                                      ;; 0d:449a $00
+    db  $00 ;;END                                      ;; 0d:449a $00
 
 script_006c:
-    db  $00 ;;RET                                      ;; 0d:449b $00
+    db  $00 ;;END                                      ;; 0d:449b $00
 
 script_006d:
     db  $08 ;;IF ? JR                                  ;; 0d:449c $08
@@ -802,13 +802,13 @@ script_006d:
     db   $18                                           ;; 0d:44a1 ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:44a2 $fd
     db   $02                                           ;; 0d:44a3 ?
-    db  $00 ;;RET                                      ;; 0d:44a4 $00
+    db  $00 ;;END                                      ;; 0d:44a4 $00
 
 script_006e:
-    db  $00 ;;RET                                      ;; 0d:44a5 $00
+    db  $00 ;;END                                      ;; 0d:44a5 $00
 
 script_006f:
-    db  $00 ;;RET                                      ;; 0d:44a6 $00
+    db  $00 ;;END                                      ;; 0d:44a6 $00
 
 script_0070:
     db  $08 ;;IF ? JR                                  ;; 0d:44a7 $08
@@ -817,13 +817,13 @@ script_0070:
     db   $19                                           ;; 0d:44ac ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:44ad $fd
     db   $00                                           ;; 0d:44ae ?
-    db  $00 ;;RET                                      ;; 0d:44af $00
+    db  $00 ;;END                                      ;; 0d:44af $00
 
 script_0071:
-    db  $00 ;;RET                                      ;; 0d:44b0 $00
+    db  $00 ;;END                                      ;; 0d:44b0 $00
 
 script_0072:
-    db  $00 ;;RET                                      ;; 0d:44b1 $00
+    db  $00 ;;END                                      ;; 0d:44b1 $00
 
 script_0073:
     db  $08 ;;IF ? JR                                  ;; 0d:44b2 $08
@@ -834,13 +834,13 @@ script_0073:
     db   $01                                           ;; 0d:44b9 ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:44ba $fd
     db   $02                                           ;; 0d:44bb ?
-    db  $00 ;;RET                                      ;; 0d:44bc $00
+    db  $00 ;;END                                      ;; 0d:44bc $00
 
 script_0074:
-    db  $00 ;;RET                                      ;; 0d:44bd $00
+    db  $00 ;;END                                      ;; 0d:44bd $00
 
 script_0075:
-    db  $00 ;;RET                                      ;; 0d:44be $00
+    db  $00 ;;END                                      ;; 0d:44be $00
 
 script_0076:
     db  $08 ;;IF ? JR                                  ;; 0d:44bf $08
@@ -851,13 +851,13 @@ script_0076:
     db   $00                                           ;; 0d:44c6 ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:44c7 $fd
     db   $01                                           ;; 0d:44c8 ?
-    db  $00 ;;RET                                      ;; 0d:44c9 $00
+    db  $00 ;;END                                      ;; 0d:44c9 $00
 
 script_0077:
-    db  $00 ;;RET                                      ;; 0d:44ca $00
+    db  $00 ;;END                                      ;; 0d:44ca $00
 
 script_0078:
-    db  $00 ;;RET                                      ;; 0d:44cb $00
+    db  $00 ;;END                                      ;; 0d:44cb $00
 
 script_0079:
     db  $08 ;;IF ? JR                                  ;; 0d:44cc $08
@@ -866,13 +866,13 @@ script_0079:
     db   $1d                                           ;; 0d:44d1 ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:44d2 $fd
     db   $00                                           ;; 0d:44d3 ?
-    db  $00 ;;RET                                      ;; 0d:44d4 $00
+    db  $00 ;;END                                      ;; 0d:44d4 $00
 
 script_007a:
-    db  $00 ;;RET                                      ;; 0d:44d5 $00
+    db  $00 ;;END                                      ;; 0d:44d5 $00
 
 script_007b:
-    db  $00 ;;RET                                      ;; 0d:44d6 $00
+    db  $00 ;;END                                      ;; 0d:44d6 $00
 
 script_007c:
     db  $08 ;;IF ? JR                                  ;; 0d:44d7 $08
@@ -881,13 +881,13 @@ script_007c:
     db   $1c                                           ;; 0d:44dc ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:44dd $fd
     db   $02                                           ;; 0d:44de ?
-    db  $00 ;;RET                                      ;; 0d:44df $00
+    db  $00 ;;END                                      ;; 0d:44df $00
 
 script_007d:
-    db  $00 ;;RET                                      ;; 0d:44e0 $00
+    db  $00 ;;END                                      ;; 0d:44e0 $00
 
 script_007e:
-    db  $00 ;;RET                                      ;; 0d:44e1 $00
+    db  $00 ;;END                                      ;; 0d:44e1 $00
 
 script_007f:
     db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:44e2 $fc
@@ -900,13 +900,13 @@ script_007f:
     db   $78                                           ;; 0d:44e9 ?
     db  $db ;;UNK_DB                                   ;; 0d:44ea $db
     db   $79                                           ;; 0d:44eb ?
-    db  $00 ;;RET                                      ;; 0d:44ec $00
+    db  $00 ;;END                                      ;; 0d:44ec $00
 
 script_0080:
-    db  $00 ;;RET                                      ;; 0d:44ed $00
+    db  $00 ;;END                                      ;; 0d:44ed $00
 
 script_0081:
-    db  $00 ;;RET                                      ;; 0d:44ee $00
+    db  $00 ;;END                                      ;; 0d:44ee $00
 
 script_0082:
     db  $08 ;;IF ? JR                                  ;; 0d:44ef $08
@@ -917,13 +917,13 @@ script_0082:
     db   $00                                           ;; 0d:44f6 ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:44f7 $fd
     db   $01                                           ;; 0d:44f8 ?
-    db  $00 ;;RET                                      ;; 0d:44f9 $00
+    db  $00 ;;END                                      ;; 0d:44f9 $00
 
 script_0083:
-    db  $00 ;;RET                                      ;; 0d:44fa $00
+    db  $00 ;;END                                      ;; 0d:44fa $00
 
 script_0084:
-    db  $00 ;;RET                                      ;; 0d:44fb $00
+    db  $00 ;;END                                      ;; 0d:44fb $00
 
 script_0085:
     db  $08 ;;IF ? JR                                  ;; 0d:44fc $08
@@ -934,13 +934,13 @@ script_0085:
     db   $00                                           ;; 0d:4503 ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:4504 $fd
     db   $01                                           ;; 0d:4505 ?
-    db  $00 ;;RET                                      ;; 0d:4506 $00
+    db  $00 ;;END                                      ;; 0d:4506 $00
 
 script_0086:
-    db  $00 ;;RET                                      ;; 0d:4507 $00
+    db  $00 ;;END                                      ;; 0d:4507 $00
 
 script_0087:
-    db  $00 ;;RET                                      ;; 0d:4508 $00
+    db  $00 ;;END                                      ;; 0d:4508 $00
 
 script_0088:
     db  $08 ;;IF ? JR                                  ;; 0d:4509 $08
@@ -951,13 +951,13 @@ script_0088:
     db   $00                                           ;; 0d:4510 ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:4511 $fd
     db   $01                                           ;; 0d:4512 ?
-    db  $00 ;;RET                                      ;; 0d:4513 $00
+    db  $00 ;;END                                      ;; 0d:4513 $00
 
 script_0089:
-    db  $00 ;;RET                                      ;; 0d:4514 $00
+    db  $00 ;;END                                      ;; 0d:4514 $00
 
 script_008a:
-    db  $00 ;;RET                                      ;; 0d:4515 $00
+    db  $00 ;;END                                      ;; 0d:4515 $00
 
 script_008b:
     db  $08 ;;IF ? JR                                  ;; 0d:4516 $08
@@ -966,13 +966,13 @@ script_008b:
     db   $0a                                           ;; 0d:451b ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:451c $fd
     db   $00                                           ;; 0d:451d ?
-    db  $00 ;;RET                                      ;; 0d:451e $00
+    db  $00 ;;END                                      ;; 0d:451e $00
 
 script_008c:
-    db  $00 ;;RET                                      ;; 0d:451f $00
+    db  $00 ;;END                                      ;; 0d:451f $00
 
 script_008d:
-    db  $00 ;;RET                                      ;; 0d:4520 $00
+    db  $00 ;;END                                      ;; 0d:4520 $00
 
 script_008e:
     db  $08 ;;IF ? JR                                  ;; 0d:4521 $08
@@ -985,13 +985,13 @@ script_008e:
     db   $02                                           ;; 0d:452a ?
     db  $db ;;UNK_DB                                   ;; 0d:452b $db
     db   $78                                           ;; 0d:452c ?
-    db  $00 ;;RET                                      ;; 0d:452d $00
+    db  $00 ;;END                                      ;; 0d:452d $00
 
 script_008f:
-    db  $00 ;;RET                                      ;; 0d:452e $00
+    db  $00 ;;END                                      ;; 0d:452e $00
 
 script_0090:
-    db  $00 ;;RET                                      ;; 0d:452f $00
+    db  $00 ;;END                                      ;; 0d:452f $00
 
 script_0091:
     db  $08 ;;IF ? JR                                  ;; 0d:4530 $08
@@ -1000,13 +1000,13 @@ script_0091:
     db   $0c                                           ;; 0d:4535 ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:4536 $fd
     db   $00                                           ;; 0d:4537 ?
-    db  $00 ;;RET                                      ;; 0d:4538 $00
+    db  $00 ;;END                                      ;; 0d:4538 $00
 
 script_0092:
-    db  $00 ;;RET                                      ;; 0d:4539 $00
+    db  $00 ;;END                                      ;; 0d:4539 $00
 
 script_0093:
-    db  $00 ;;RET                                      ;; 0d:453a $00
+    db  $00 ;;END                                      ;; 0d:453a $00
 
 script_0094:
     db  $08 ;;IF ? JR                                  ;; 0d:453b $08
@@ -1015,13 +1015,13 @@ script_0094:
     db   $0c                                           ;; 0d:4540 ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:4541 $fd
     db   $02                                           ;; 0d:4542 ?
-    db  $00 ;;RET                                      ;; 0d:4543 $00
+    db  $00 ;;END                                      ;; 0d:4543 $00
 
 script_0095:
-    db  $00 ;;RET                                      ;; 0d:4544 $00
+    db  $00 ;;END                                      ;; 0d:4544 $00
 
 script_0096:
-    db  $00 ;;RET                                      ;; 0d:4545 $00
+    db  $00 ;;END                                      ;; 0d:4545 $00
 
 script_0097:
     db  $08 ;;IF ? JR                                  ;; 0d:4546 $08
@@ -1036,13 +1036,13 @@ script_0097:
     db   $78                                           ;; 0d:4551 ?
     db  $db ;;UNK_DB                                   ;; 0d:4552 $db
     db   $79                                           ;; 0d:4553 ?
-    db  $00 ;;RET                                      ;; 0d:4554 $00
+    db  $00 ;;END                                      ;; 0d:4554 $00
 
 script_0098:
-    db  $00 ;;RET                                      ;; 0d:4555 $00
+    db  $00 ;;END                                      ;; 0d:4555 $00
 
 script_0099:
-    db  $00 ;;RET                                      ;; 0d:4556 $00
+    db  $00 ;;END                                      ;; 0d:4556 $00
 
 script_009a:
     db  $08 ;;IF ? JR                                  ;; 0d:4557 $08
@@ -1053,13 +1053,13 @@ script_009a:
     db   $01                                           ;; 0d:455e ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:455f $fd
     db   $02                                           ;; 0d:4560 ?
-    db  $00 ;;RET                                      ;; 0d:4561 $00
+    db  $00 ;;END                                      ;; 0d:4561 $00
 
 script_009b:
-    db  $00 ;;RET                                      ;; 0d:4562 $00
+    db  $00 ;;END                                      ;; 0d:4562 $00
 
 script_009c:
-    db  $00 ;;RET                                      ;; 0d:4563 $00
+    db  $00 ;;END                                      ;; 0d:4563 $00
 
 script_009d:
     db  $08 ;;IF ? JR                                  ;; 0d:4564 $08
@@ -1078,13 +1078,13 @@ script_009d:
     db   $7a                                           ;; 0d:4573 ?
     db  $db ;;UNK_DB                                   ;; 0d:4574 $db
     db   $7b                                           ;; 0d:4575 ?
-    db  $00 ;;RET                                      ;; 0d:4576 $00
+    db  $00 ;;END                                      ;; 0d:4576 $00
 
 script_009e:
-    db  $00 ;;RET                                      ;; 0d:4577 $00
+    db  $00 ;;END                                      ;; 0d:4577 $00
 
 script_009f:
-    db  $00 ;;RET                                      ;; 0d:4578 $00
+    db  $00 ;;END                                      ;; 0d:4578 $00
 
 script_00a0:
     db  $08 ;;IF ? JR                                  ;; 0d:4579 $08
@@ -1093,13 +1093,13 @@ script_00a0:
     db   $11                                           ;; 0d:457e ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:457f $fd
     db   $02                                           ;; 0d:4580 ?
-    db  $00 ;;RET                                      ;; 0d:4581 $00
+    db  $00 ;;END                                      ;; 0d:4581 $00
 
 script_00a1:
-    db  $00 ;;RET                                      ;; 0d:4582 $00
+    db  $00 ;;END                                      ;; 0d:4582 $00
 
 script_00a2:
-    db  $00 ;;RET                                      ;; 0d:4583 $00
+    db  $00 ;;END                                      ;; 0d:4583 $00
 
 script_00a3:
     db  $08 ;;IF ? JR                                  ;; 0d:4584 $08
@@ -1110,13 +1110,13 @@ script_00a3:
     db   $00                                           ;; 0d:458b ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:458c $fd
     db   $01                                           ;; 0d:458d ?
-    db  $00 ;;RET                                      ;; 0d:458e $00
+    db  $00 ;;END                                      ;; 0d:458e $00
 
 script_00a4:
-    db  $00 ;;RET                                      ;; 0d:458f $00
+    db  $00 ;;END                                      ;; 0d:458f $00
 
 script_00a5:
-    db  $00 ;;RET                                      ;; 0d:4590 $00
+    db  $00 ;;END                                      ;; 0d:4590 $00
 
 script_00a6:
     db  $08 ;;IF ? JR                                  ;; 0d:4591 $08
@@ -1125,13 +1125,13 @@ script_00a6:
     db   $08                                           ;; 0d:4596 ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:4597 $fd
     db   $01                                           ;; 0d:4598 ?
-    db  $00 ;;RET                                      ;; 0d:4599 $00
+    db  $00 ;;END                                      ;; 0d:4599 $00
 
 script_00a7:
-    db  $00 ;;RET                                      ;; 0d:459a $00
+    db  $00 ;;END                                      ;; 0d:459a $00
 
 script_00a8:
-    db  $00 ;;RET                                      ;; 0d:459b $00
+    db  $00 ;;END                                      ;; 0d:459b $00
 
 script_00a9:
     db  $08 ;;IF ? JR                                  ;; 0d:459c $08
@@ -1146,13 +1146,13 @@ script_00a9:
     db   $78                                           ;; 0d:45a7 ?
     db  $db ;;UNK_DB                                   ;; 0d:45a8 $db
     db   $79                                           ;; 0d:45a9 ?
-    db  $00 ;;RET                                      ;; 0d:45aa $00
+    db  $00 ;;END                                      ;; 0d:45aa $00
 
 script_00aa:
-    db  $00 ;;RET                                      ;; 0d:45ab $00
+    db  $00 ;;END                                      ;; 0d:45ab $00
 
 script_00ab:
-    db  $00 ;;RET                                      ;; 0d:45ac $00
+    db  $00 ;;END                                      ;; 0d:45ac $00
 
 script_00ac:
     db  $08 ;;IF ? JR                                  ;; 0d:45ad $08
@@ -1161,13 +1161,13 @@ script_00ac:
     db   $17                                           ;; 0d:45b2 ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:45b3 $fd
     db   $00                                           ;; 0d:45b4 ?
-    db  $00 ;;RET                                      ;; 0d:45b5 $00
+    db  $00 ;;END                                      ;; 0d:45b5 $00
 
 script_00ad:
-    db  $00 ;;RET                                      ;; 0d:45b6 $00
+    db  $00 ;;END                                      ;; 0d:45b6 $00
 
 script_00ae:
-    db  $00 ;;RET                                      ;; 0d:45b7 $00
+    db  $00 ;;END                                      ;; 0d:45b7 $00
 
 script_00af:
     db  $e7 ;;UNK_e7??                                 ;; 0d:45b8 $e7
@@ -1175,7 +1175,7 @@ script_00af:
     db   $00                                           ;; 0d:45c1 ?
 
 script_00b0:
-    db  $00 ;;RET                                      ;; 0d:45c2 $00
+    db  $00 ;;END                                      ;; 0d:45c2 $00
 
 script_00b1:
     db  $08 ;;IF ? JR                                  ;; 0d:45c3 $08
@@ -1196,13 +1196,13 @@ script_00b2:
     db   $1a                                           ;; 0d:45d5 ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:45d6 $fd
     db   $01                                           ;; 0d:45d7 ?
-    db  $00 ;;RET                                      ;; 0d:45d8 $00
+    db  $00 ;;END                                      ;; 0d:45d8 $00
 
 script_00b3:
-    db  $00 ;;RET                                      ;; 0d:45d9 $00
+    db  $00 ;;END                                      ;; 0d:45d9 $00
 
 script_00b4:
-    db  $00 ;;RET                                      ;; 0d:45da $00
+    db  $00 ;;END                                      ;; 0d:45da $00
 
 script_00b5:
     db  $08 ;;IF ? JR                                  ;; 0d:45db $08
@@ -1213,13 +1213,13 @@ script_00b5:
     db   $00                                           ;; 0d:45e2 ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:45e3 $fd
     db   $01                                           ;; 0d:45e4 ?
-    db  $00 ;;RET                                      ;; 0d:45e5 $00
+    db  $00 ;;END                                      ;; 0d:45e5 $00
 
 script_00b6:
-    db  $00 ;;RET                                      ;; 0d:45e6 $00
+    db  $00 ;;END                                      ;; 0d:45e6 $00
 
 script_00b7:
-    db  $00 ;;RET                                      ;; 0d:45e7 $00
+    db  $00 ;;END                                      ;; 0d:45e7 $00
 
 script_00b8:
     db  $08 ;;IF ? JR                                  ;; 0d:45e8 $08
@@ -1230,13 +1230,13 @@ script_00b8:
     db   $00                                           ;; 0d:45ef ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:45f0 $fd
     db   $01                                           ;; 0d:45f1 ?
-    db  $00 ;;RET                                      ;; 0d:45f2 $00
+    db  $00 ;;END                                      ;; 0d:45f2 $00
 
 script_00b9:
-    db  $00 ;;RET                                      ;; 0d:45f3 $00
+    db  $00 ;;END                                      ;; 0d:45f3 $00
 
 script_00ba:
-    db  $00 ;;RET                                      ;; 0d:45f4 $00
+    db  $00 ;;END                                      ;; 0d:45f4 $00
 
 script_00bb:
     db  $08 ;;IF ? JR                                  ;; 0d:45f5 $08
@@ -1245,13 +1245,13 @@ script_00bb:
     db   $1a                                           ;; 0d:45fa ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:45fb $fd
     db   $00                                           ;; 0d:45fc ?
-    db  $00 ;;RET                                      ;; 0d:45fd $00
+    db  $00 ;;END                                      ;; 0d:45fd $00
 
 script_00bc:
-    db  $00 ;;RET                                      ;; 0d:45fe $00
+    db  $00 ;;END                                      ;; 0d:45fe $00
 
 script_00bd:
-    db  $00 ;;RET                                      ;; 0d:45ff $00
+    db  $00 ;;END                                      ;; 0d:45ff $00
 
 script_00be:
     db  $08 ;;IF ? JR                                  ;; 0d:4600 $08
@@ -1262,13 +1262,13 @@ script_00be:
     db   $00                                           ;; 0d:4607 ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:4608 $fd
     db   $01                                           ;; 0d:4609 ?
-    db  $00 ;;RET                                      ;; 0d:460a $00
+    db  $00 ;;END                                      ;; 0d:460a $00
 
 script_00bf:
-    db  $00 ;;RET                                      ;; 0d:460b $00
+    db  $00 ;;END                                      ;; 0d:460b $00
 
 script_00c0:
-    db  $00 ;;RET                                      ;; 0d:460c $00
+    db  $00 ;;END                                      ;; 0d:460c $00
 
 script_00c1:
     db  $08 ;;IF ? JR                                  ;; 0d:460d $08
@@ -1277,13 +1277,13 @@ script_00c1:
     db   $1f                                           ;; 0d:4612 ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:4613 $fd
     db   $02                                           ;; 0d:4614 ?
-    db  $00 ;;RET                                      ;; 0d:4615 $00
+    db  $00 ;;END                                      ;; 0d:4615 $00
 
 script_00c2:
-    db  $00 ;;RET                                      ;; 0d:4616 $00
+    db  $00 ;;END                                      ;; 0d:4616 $00
 
 script_00c3:
-    db  $00 ;;RET                                      ;; 0d:4617 $00
+    db  $00 ;;END                                      ;; 0d:4617 $00
 
 script_00c4:
     db  $08 ;;IF ? JR                                  ;; 0d:4618 $08
@@ -1302,13 +1302,13 @@ script_00c4:
     db   $7a                                           ;; 0d:4627 ?
     db  $db ;;UNK_DB                                   ;; 0d:4628 $db
     db   $7b                                           ;; 0d:4629 ?
-    db  $00 ;;RET                                      ;; 0d:462a $00
+    db  $00 ;;END                                      ;; 0d:462a $00
 
 script_00c5:
-    db  $00 ;;RET                                      ;; 0d:462b $00
+    db  $00 ;;END                                      ;; 0d:462b $00
 
 script_00c6:
-    db  $00 ;;RET                                      ;; 0d:462c $00
+    db  $00 ;;END                                      ;; 0d:462c $00
 
 script_00c7:
     db  $08 ;;IF ? JR                                  ;; 0d:462d $08
@@ -1319,13 +1319,13 @@ script_00c7:
     db   $00                                           ;; 0d:4634 ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:4635 $fd
     db   $01                                           ;; 0d:4636 ?
-    db  $00 ;;RET                                      ;; 0d:4637 $00
+    db  $00 ;;END                                      ;; 0d:4637 $00
 
 script_00c8:
-    db  $00 ;;RET                                      ;; 0d:4638 $00
+    db  $00 ;;END                                      ;; 0d:4638 $00
 
 script_00c9:
-    db  $00 ;;RET                                      ;; 0d:4639 $00
+    db  $00 ;;END                                      ;; 0d:4639 $00
 
 script_00ca:
     db  $08 ;;IF ? JR                                  ;; 0d:463a $08
@@ -1334,13 +1334,13 @@ script_00ca:
     db   $22                                           ;; 0d:463f ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:4640 $fd
     db   $00                                           ;; 0d:4641 ?
-    db  $00 ;;RET                                      ;; 0d:4642 $00
+    db  $00 ;;END                                      ;; 0d:4642 $00
 
 script_00cb:
-    db  $00 ;;RET                                      ;; 0d:4643 $00
+    db  $00 ;;END                                      ;; 0d:4643 $00
 
 script_00cc:
-    db  $00 ;;RET                                      ;; 0d:4644 $00
+    db  $00 ;;END                                      ;; 0d:4644 $00
 
 script_00cd:
     db  $08 ;;IF ? JR                                  ;; 0d:4645 $08
@@ -1349,13 +1349,13 @@ script_00cd:
     db   $22                                           ;; 0d:464a ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:464b $fd
     db   $01                                           ;; 0d:464c ?
-    db  $00 ;;RET                                      ;; 0d:464d $00
+    db  $00 ;;END                                      ;; 0d:464d $00
 
 script_00ce:
-    db  $00 ;;RET                                      ;; 0d:464e $00
+    db  $00 ;;END                                      ;; 0d:464e $00
 
 script_00cf:
-    db  $00 ;;RET                                      ;; 0d:464f $00
+    db  $00 ;;END                                      ;; 0d:464f $00
 
 script_00d0:
     db  $08 ;;IF ? JR                                  ;; 0d:4650 $08
@@ -1364,13 +1364,13 @@ script_00d0:
     db   $23                                           ;; 0d:4655 ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:4656 $fd
     db   $01                                           ;; 0d:4657 ?
-    db  $00 ;;RET                                      ;; 0d:4658 $00
+    db  $00 ;;END                                      ;; 0d:4658 $00
 
 script_00d1:
-    db  $00 ;;RET                                      ;; 0d:4659 $00
+    db  $00 ;;END                                      ;; 0d:4659 $00
 
 script_00d2:
-    db  $00 ;;RET                                      ;; 0d:465a $00
+    db  $00 ;;END                                      ;; 0d:465a $00
 
 script_00d3:
     db  $08 ;;IF ? JR                                  ;; 0d:465b $08
@@ -1379,13 +1379,13 @@ script_00d3:
     db   $23                                           ;; 0d:4660 ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:4661 $fd
     db   $02                                           ;; 0d:4662 ?
-    db  $00 ;;RET                                      ;; 0d:4663 $00
+    db  $00 ;;END                                      ;; 0d:4663 $00
 
 script_00d4:
-    db  $00 ;;RET                                      ;; 0d:4664 $00
+    db  $00 ;;END                                      ;; 0d:4664 $00
 
 script_00d5:
-    db  $00 ;;RET                                      ;; 0d:4665 $00
+    db  $00 ;;END                                      ;; 0d:4665 $00
 
 script_00d6:
     db  $db ;;UNK_DB                                   ;; 0d:4666 $db
@@ -1406,10 +1406,10 @@ script_00d6:
     db   $02                                           ;; 0d:4679 ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:467a $fd
     db   $02                                           ;; 0d:467b ?
-    db  $00 ;;RET                                      ;; 0d:467c $00
+    db  $00 ;;END                                      ;; 0d:467c $00
 
 script_00d7:
-    db  $00 ;;RET                                      ;; 0d:467d $00
+    db  $00 ;;END                                      ;; 0d:467d $00
 
 script_00d8:
     db  $08 ;;IF ? JR                                  ;; 0d:467e $08
@@ -1424,14 +1424,14 @@ script_00d8:
     db   $04, $41                                      ;; 0d:468b ??
     db  $da ;;UNK_DA                                   ;; 0d:468d $da
     db   $78                                           ;; 0d:468e ?
-    db  $00 ;;RET                                      ;; 0d:468f $00
+    db  $00 ;;END                                      ;; 0d:468f $00
 
 script_00d9:
     db  $e1 ;;UNK_e1??                                 ;; 0d:4690 $e1
     db   $fc, $0e, $fd, $02, $fd, $02, $00             ;; 0d:4691 ???????
 
 script_00da:
-    db  $00 ;;RET                                      ;; 0d:4698 $00
+    db  $00 ;;END                                      ;; 0d:4698 $00
 
 script_00db:
     db  $08 ;;IF ? JR                                  ;; 0d:4699 $08
@@ -1450,7 +1450,7 @@ script_00dc:
     db   $fc, $0a, $fd, $01, $fd, $01, $00             ;; 0d:46a7 ???????
 
 script_00dd:
-    db  $00 ;;RET                                      ;; 0d:46ae $00
+    db  $00 ;;END                                      ;; 0d:46ae $00
 
 script_00de:
     db  $08 ;;IF ? JR                                  ;; 0d:46af $08
@@ -1469,13 +1469,13 @@ script_00e0:
     db   $24                                           ;; 0d:46bd ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:46be $fd
     db   $02                                           ;; 0d:46bf ?
-    db  $00 ;;RET                                      ;; 0d:46c0 $00
+    db  $00 ;;END                                      ;; 0d:46c0 $00
 
 script_00e1:
-    db  $00 ;;RET                                      ;; 0d:46c1 $00
+    db  $00 ;;END                                      ;; 0d:46c1 $00
 
 script_00e2:
-    db  $00 ;;RET                                      ;; 0d:46c2 $00
+    db  $00 ;;END                                      ;; 0d:46c2 $00
 
 script_00e3:
     db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:46c3 $fc
@@ -1484,13 +1484,13 @@ script_00e3:
     db   $00                                           ;; 0d:46c6 .
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:46c7 $fd
     db   $02                                           ;; 0d:46c8 .
-    db  $00 ;;RET                                      ;; 0d:46c9 $00
+    db  $00 ;;END                                      ;; 0d:46c9 $00
 
 script_00e4:
-    db  $00 ;;RET                                      ;; 0d:46ca $00
+    db  $00 ;;END                                      ;; 0d:46ca $00
 
 script_00e5:
-    db  $00 ;;RET                                      ;; 0d:46cb $00
+    db  $00 ;;END                                      ;; 0d:46cb $00
 
 script_00e6:
     db  $f8 ;;SET_MUSIC                                ;; 0d:46cc $f8
@@ -1498,10 +1498,10 @@ script_00e6:
     db  $8a ;;SET_PLAYER_POSITION                      ;; 0d:46ce $8a
     db   $13, $0a                                      ;; 0d:46cf ..
     db  $87 ;;SET_PLAYER_DIRECTION_LEFT                ;; 0d:46d1 $87
-    db  $03 ;;PLAYER_WALK                              ;; 0d:46d2 $03
+    db  $03 ;;LOOP                                     ;; 0d:46d2 $03
     db   $0a, $02                                      ;; 0d:46d3 .?
     db  $80 ;;WAIT_PLAYER_WALK_DONE                    ;; 0d:46d5 $80
-    db  $00 ;;RET                                      ;; 0d:46d6 $00
+    db  $00 ;;END                                      ;; 0d:46d6 $00
     db  $f9 ;;SFX                                      ;; 0d:46d7 $f9
     db   $10                                           ;; 0d:46d8 .
     db  $b0 ;;SET_ROOM_TILE                            ;; 0d:46d9 $b0
@@ -1545,10 +1545,10 @@ script_00e6:
     db   $1f, $05, $01                                 ;; 0d:4717 ...
     db  $f9 ;;SFX                                      ;; 0d:471a $f9
     db   $10                                           ;; 0d:471b .
-    db  $00 ;;RET                                      ;; 0d:471c $00
+    db  $00 ;;END                                      ;; 0d:471c $00
 
 script_00e7:
-    db  $00 ;;RET                                      ;; 0d:471d $00
+    db  $00 ;;END                                      ;; 0d:471d $00
 
 script_00e8:
     db  $08 ;;IF ? JR                                  ;; 0d:471e $08
@@ -1571,7 +1571,7 @@ script_00e8:
     db   $3c                                           ;; 0d:4739 .
     db  $02 ;;CALL                                     ;; 0d:473a $02
     db   $61, $29                                      ;; 0d:473b ..
-    db  $00 ;;RET                                      ;; 0d:473d $00
+    db  $00 ;;END                                      ;; 0d:473d $00
 
 script_00e9:
     db  $08 ;;IF ? JR                                  ;; 0d:473e $08
@@ -1588,26 +1588,26 @@ script_00e9:
     db   $3b                                           ;; 0d:474b ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:474c $fd
     db   $01                                           ;; 0d:474d ?
-    db  $00 ;;RET                                      ;; 0d:474e $00
+    db  $00 ;;END                                      ;; 0d:474e $00
 
 script_00ea:
-    db  $00 ;;RET                                      ;; 0d:474f $00
+    db  $00 ;;END                                      ;; 0d:474f $00
 
 script_00eb:
-    db  $00 ;;RET                                      ;; 0d:4750 $00
+    db  $00 ;;END                                      ;; 0d:4750 $00
 
 script_00ec:
     db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4751 $fc
     db   $3c                                           ;; 0d:4752 ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:4753 $fd
     db   $01                                           ;; 0d:4754 ?
-    db  $00 ;;RET                                      ;; 0d:4755 $00
+    db  $00 ;;END                                      ;; 0d:4755 $00
 
 script_00ed:
-    db  $00 ;;RET                                      ;; 0d:4756 $00
+    db  $00 ;;END                                      ;; 0d:4756 $00
 
 script_00ee:
-    db  $00 ;;RET                                      ;; 0d:4757 $00
+    db  $00 ;;END                                      ;; 0d:4757 $00
 
 script_00ef:
     db  $08 ;;IF ? JR                                  ;; 0d:4758 $08
@@ -1632,20 +1632,20 @@ script_00ef:
     db   $63, $de                                      ;; 0d:4778 ..
     db  $02 ;;CALL                                     ;; 0d:477a $02
     db   $64, $3a                                      ;; 0d:477b ..
-    db  $00 ;;RET                                      ;; 0d:477d $00
+    db  $00 ;;END                                      ;; 0d:477d $00
 
 script_00f0:
-    db  $00 ;;RET                                      ;; 0d:477e $00
+    db  $00 ;;END                                      ;; 0d:477e $00
 
 script_00f1:
-    db  $00 ;;RET                                      ;; 0d:477f $00
+    db  $00 ;;END                                      ;; 0d:477f $00
 
 script_00f2:
     db  $e7 ;;UNK_e7??                                 ;; 0d:4780 $e7
     db   $fc, $16, $fd, $02, $fd, $02, $00             ;; 0d:4781 ???????
 
 script_00f3:
-    db  $00 ;;RET                                      ;; 0d:4788 $00
+    db  $00 ;;END                                      ;; 0d:4788 $00
 
 script_00f4:
     db  $08 ;;IF ? JR                                  ;; 0d:4789 $08
@@ -1684,14 +1684,14 @@ script_00f5:
     db   $0b, $00, $03                                 ;; 0d:47be ...
     db  $02 ;;CALL                                     ;; 0d:47c1 $02
     db   $03, $ec                                      ;; 0d:47c2 ??
-    db  $00 ;;RET                                      ;; 0d:47c4 $00
+    db  $00 ;;END                                      ;; 0d:47c4 $00
 
 script_00f6:
     db  $08 ;;IF ? JR                                  ;; 0d:47c5 $08
     db   $8b, $00, $02                                 ;; 0d:47c6 ...
     db  $f8 ;;SET_MUSIC                                ;; 0d:47c9 $f8
     db   $14                                           ;; 0d:47ca ?
-    db  $00 ;;RET                                      ;; 0d:47cb $00
+    db  $00 ;;END                                      ;; 0d:47cb $00
 
 script_00f7:
     db  $08 ;;IF ? JR                                  ;; 0d:47cc $08
@@ -1700,33 +1700,33 @@ script_00f7:
     db   $00                                           ;; 0d:47d1 .
     db  $da ;;UNK_DA                                   ;; 0d:47d2 $da
     db   $0a                                           ;; 0d:47d3 .
-    db  $00 ;;RET                                      ;; 0d:47d4 $00
+    db  $00 ;;END                                      ;; 0d:47d4 $00
 
 script_00f8:
     db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:47d5 $fc
     db   $2b                                           ;; 0d:47d6 .
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:47d7 $fd
     db   $00                                           ;; 0d:47d8 .
-    db  $00 ;;RET                                      ;; 0d:47d9 $00
+    db  $00 ;;END                                      ;; 0d:47d9 $00
 
 script_00f9:
-    db  $00 ;;RET                                      ;; 0d:47da $00
+    db  $00 ;;END                                      ;; 0d:47da $00
 
 script_00fa:
-    db  $00 ;;RET                                      ;; 0d:47db $00
+    db  $00 ;;END                                      ;; 0d:47db $00
 
 script_00fb:
     db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:47dc $fc
     db   $2b                                           ;; 0d:47dd .
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:47de $fd
     db   $01                                           ;; 0d:47df .
-    db  $00 ;;RET                                      ;; 0d:47e0 $00
+    db  $00 ;;END                                      ;; 0d:47e0 $00
 
 script_00fc:
-    db  $00 ;;RET                                      ;; 0d:47e1 $00
+    db  $00 ;;END                                      ;; 0d:47e1 $00
 
 script_00fd:
-    db  $00 ;;RET                                      ;; 0d:47e2 $00
+    db  $00 ;;END                                      ;; 0d:47e2 $00
 
 script_00fe:
     db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:47e3 $fc
@@ -1735,13 +1735,13 @@ script_00fe:
     db   $01                                           ;; 0d:47e6 ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:47e7 $fd
     db   $02                                           ;; 0d:47e8 ?
-    db  $00 ;;RET                                      ;; 0d:47e9 $00
+    db  $00 ;;END                                      ;; 0d:47e9 $00
 
 script_00ff:
-    db  $00 ;;RET                                      ;; 0d:47ea $00
+    db  $00 ;;END                                      ;; 0d:47ea $00
 
 script_0100:
-    db  $00 ;;RET                                      ;; 0d:47eb $00
+    db  $00 ;;END                                      ;; 0d:47eb $00
 
 script_0101:
     db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:47ec $fc
@@ -1750,10 +1750,10 @@ script_0101:
     db   $00                                           ;; 0d:47ef ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:47f0 $fd
     db   $00                                           ;; 0d:47f1 ?
-    db  $00 ;;RET                                      ;; 0d:47f2 $00
+    db  $00 ;;END                                      ;; 0d:47f2 $00
 
 script_0102:
-    db  $00 ;;RET                                      ;; 0d:47f3 $00
+    db  $00 ;;END                                      ;; 0d:47f3 $00
 
 script_0103:
     db  $08 ;;IF ? JR                                  ;; 0d:47f4 $08
@@ -1764,13 +1764,13 @@ script_0103:
     db   $00                                           ;; 0d:47fb ?
     db  $c9 ;;UNK_c9??                                 ;; 0d:47fc $c9
     db   $04, $61                                      ;; 0d:47fd ??
-    db  $00 ;;RET                                      ;; 0d:47ff $00
+    db  $00 ;;END                                      ;; 0d:47ff $00
 
 script_0104:
-    db  $00 ;;RET                                      ;; 0d:4800 $00
+    db  $00 ;;END                                      ;; 0d:4800 $00
 
 script_0105:
-    db  $00 ;;RET                                      ;; 0d:4801 $00
+    db  $00 ;;END                                      ;; 0d:4801 $00
 
 script_0106:
     db  $08 ;;IF ? JR                                  ;; 0d:4802 $08
@@ -1799,13 +1799,13 @@ script_0106:
     db   $00                                           ;; 0d:4822 ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:4823 $fd
     db   $01                                           ;; 0d:4824 ?
-    db  $00 ;;RET                                      ;; 0d:4825 $00
+    db  $00 ;;END                                      ;; 0d:4825 $00
 
 script_0107:
-    db  $00 ;;RET                                      ;; 0d:4826 $00
+    db  $00 ;;END                                      ;; 0d:4826 $00
 
 script_0108:
-    db  $00 ;;RET                                      ;; 0d:4827 $00
+    db  $00 ;;END                                      ;; 0d:4827 $00
 
 script_0109:
     db  $08 ;;IF ? JR                                  ;; 0d:4828 $08
@@ -1832,13 +1832,13 @@ script_0109:
     db   $34                                           ;; 0d:4844 ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:4845 $fd
     db   $00                                           ;; 0d:4846 ?
-    db  $00 ;;RET                                      ;; 0d:4847 $00
+    db  $00 ;;END                                      ;; 0d:4847 $00
 
 script_010a:
-    db  $00 ;;RET                                      ;; 0d:4848 $00
+    db  $00 ;;END                                      ;; 0d:4848 $00
 
 script_010b:
-    db  $00 ;;RET                                      ;; 0d:4849 $00
+    db  $00 ;;END                                      ;; 0d:4849 $00
 
 script_010c:
     db  $08 ;;IF ? JR                                  ;; 0d:484a $08
@@ -1847,13 +1847,13 @@ script_010c:
     db   $24                                           ;; 0d:4850 ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:4851 $fd
     db   $02                                           ;; 0d:4852 ?
-    db  $00 ;;RET                                      ;; 0d:4853 $00
+    db  $00 ;;END                                      ;; 0d:4853 $00
 
 script_010d:
-    db  $00 ;;RET                                      ;; 0d:4854 $00
+    db  $00 ;;END                                      ;; 0d:4854 $00
 
 script_010e:
-    db  $00 ;;RET                                      ;; 0d:4855 $00
+    db  $00 ;;END                                      ;; 0d:4855 $00
 
 script_010f:
     db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4856 $fc
@@ -1889,13 +1889,13 @@ script_010f:
     db   $14, $f9, $25, $03, $05, $02, $bf, $00        ;; 0d:490c ????????
     db   $bd, $f0, $28, $f8, $03, $f0, $c8, $fd        ;; 0d:4914 ????????
     db   $01, $bc, $02, $68, $e9                       ;; 0d:491c ?????
-    db  $00 ;;RET                                      ;; 0d:4921 $00
+    db  $00 ;;END                                      ;; 0d:4921 $00
 
 script_0110:
-    db  $00 ;;RET                                      ;; 0d:4922 $00
+    db  $00 ;;END                                      ;; 0d:4922 $00
 
 script_0111:
-    db  $00 ;;RET                                      ;; 0d:4923 $00
+    db  $00 ;;END                                      ;; 0d:4923 $00
 
 script_0112:
     db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4924 $fc
@@ -1904,26 +1904,26 @@ script_0112:
     db   $00                                           ;; 0d:4927 ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:4928 $fd
     db   $01                                           ;; 0d:4929 ?
-    db  $00 ;;RET                                      ;; 0d:492a $00
+    db  $00 ;;END                                      ;; 0d:492a $00
 
 script_0113:
-    db  $00 ;;RET                                      ;; 0d:492b $00
+    db  $00 ;;END                                      ;; 0d:492b $00
 
 script_0114:
-    db  $00 ;;RET                                      ;; 0d:492c $00
+    db  $00 ;;END                                      ;; 0d:492c $00
 
 script_0115:
     db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:492d $fc
     db   $2e                                           ;; 0d:492e ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:492f $fd
     db   $00                                           ;; 0d:4930 ?
-    db  $00 ;;RET                                      ;; 0d:4931 $00
+    db  $00 ;;END                                      ;; 0d:4931 $00
 
 script_0116:
-    db  $00 ;;RET                                      ;; 0d:4932 $00
+    db  $00 ;;END                                      ;; 0d:4932 $00
 
 script_0117:
-    db  $00 ;;RET                                      ;; 0d:4933 $00
+    db  $00 ;;END                                      ;; 0d:4933 $00
 
 script_0118:
     db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4934 $fc
@@ -1932,13 +1932,13 @@ script_0118:
     db   $00                                           ;; 0d:4937 ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:4938 $fd
     db   $01                                           ;; 0d:4939 ?
-    db  $00 ;;RET                                      ;; 0d:493a $00
+    db  $00 ;;END                                      ;; 0d:493a $00
 
 script_0119:
-    db  $00 ;;RET                                      ;; 0d:493b $00
+    db  $00 ;;END                                      ;; 0d:493b $00
 
 script_011a:
-    db  $00 ;;RET                                      ;; 0d:493c $00
+    db  $00 ;;END                                      ;; 0d:493c $00
 
 script_011b:
     db  $08 ;;IF ? JR                                  ;; 0d:493d $08
@@ -1947,13 +1947,13 @@ script_011b:
     db   $30                                           ;; 0d:4942 ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:4943 $fd
     db   $00                                           ;; 0d:4944 ?
-    db  $00 ;;RET                                      ;; 0d:4945 $00
+    db  $00 ;;END                                      ;; 0d:4945 $00
 
 script_011c:
-    db  $00 ;;RET                                      ;; 0d:4946 $00
+    db  $00 ;;END                                      ;; 0d:4946 $00
 
 script_011d:
-    db  $00 ;;RET                                      ;; 0d:4947 $00
+    db  $00 ;;END                                      ;; 0d:4947 $00
 
 script_011e:
     db  $08 ;;IF ? JR                                  ;; 0d:4948 $08
@@ -1962,13 +1962,13 @@ script_011e:
     db   $0f                                           ;; 0d:494d ?
     db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:494e $fc
     db   $6c                                           ;; 0d:494f ?
-    db  $03 ;;PLAYER_WALK                              ;; 0d:4950 $03
+    db  $03 ;;LOOP                                     ;; 0d:4950 $03
     db   $05, $04                                      ;; 0d:4951 ??
     db  $f9 ;;SFX                                      ;; 0d:4953 $f9
     db   $14                                           ;; 0d:4954 ?
     db  $bf ;;UNK_bf??                                 ;; 0d:4955 $bf
     db   $00, $fd, $00, $01, $32                       ;; 0d:4956 ?????
-    db  $03 ;;PLAYER_WALK                              ;; 0d:495b $03
+    db  $03 ;;LOOP                                     ;; 0d:495b $03
     db   $03, $04                                      ;; 0d:495c ??
     db  $f9 ;;SFX                                      ;; 0d:495e $f9
     db   $14                                           ;; 0d:495f ?
@@ -1981,7 +1981,7 @@ script_011e:
     db   $fe, $0e, $f8, $13, $00                       ;; 0d:4989 ?????
 
 script_011f:
-    db  $00 ;;RET                                      ;; 0d:498e $00
+    db  $00 ;;END                                      ;; 0d:498e $00
 
 script_0120:
     db  $08 ;;IF ? JR                                  ;; 0d:498f $08
@@ -2038,7 +2038,7 @@ script_0120:
     db   $e5, $1a, $93, $32, $4d, $40, $27, $20        ;; 0d:4a51 ????????
     db   $56, $dc, $4d, $f3, $12, $11, $00, $9c        ;; 0d:4a59 ????????
     db   $01, $da, $51, $ec                            ;; 0d:4a61 ????
-    db  $00 ;;RET                                      ;; 0d:4a65 $00
+    db  $00 ;;END                                      ;; 0d:4a65 $00
 
 script_0121:
     db  $08 ;;IF ? JR                                  ;; 0d:4a66 $08
@@ -2065,13 +2065,13 @@ script_0121:
     db   $34                                           ;; 0d:4a82 ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:4a83 $fd
     db   $01                                           ;; 0d:4a84 ?
-    db  $00 ;;RET                                      ;; 0d:4a85 $00
+    db  $00 ;;END                                      ;; 0d:4a85 $00
 
 script_0122:
-    db  $00 ;;RET                                      ;; 0d:4a86 $00
+    db  $00 ;;END                                      ;; 0d:4a86 $00
 
 script_0123:
-    db  $00 ;;RET                                      ;; 0d:4a87 $00
+    db  $00 ;;END                                      ;; 0d:4a87 $00
 
 script_0124:
     db  $08 ;;IF ? JR                                  ;; 0d:4a88 $08
@@ -2080,13 +2080,13 @@ script_0124:
     db   $2c                                           ;; 0d:4a8d .
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:4a8e $fd
     db   $02                                           ;; 0d:4a8f .
-    db  $00 ;;RET                                      ;; 0d:4a90 $00
+    db  $00 ;;END                                      ;; 0d:4a90 $00
 
 script_0125:
-    db  $00 ;;RET                                      ;; 0d:4a91 $00
+    db  $00 ;;END                                      ;; 0d:4a91 $00
 
 script_0126:
-    db  $00 ;;RET                                      ;; 0d:4a92 $00
+    db  $00 ;;END                                      ;; 0d:4a92 $00
 
 script_0127:
     db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4a93 $fc
@@ -2097,13 +2097,13 @@ script_0127:
     db   $01                                           ;; 0d:4a9a .
     db  $c9 ;;UNK_c9??                                 ;; 0d:4a9b $c9
     db   $04, $43                                      ;; 0d:4a9c ..
-    db  $00 ;;RET                                      ;; 0d:4a9e $00
+    db  $00 ;;END                                      ;; 0d:4a9e $00
 
 script_0128:
-    db  $00 ;;RET                                      ;; 0d:4a9f $00
+    db  $00 ;;END                                      ;; 0d:4a9f $00
 
 script_0129:
-    db  $00 ;;RET                                      ;; 0d:4aa0 $00
+    db  $00 ;;END                                      ;; 0d:4aa0 $00
 
 script_012a:
     db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4aa1 $fc
@@ -2112,26 +2112,26 @@ script_012a:
     db   $02                                           ;; 0d:4aa4 ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:4aa5 $fd
     db   $00                                           ;; 0d:4aa6 ?
-    db  $00 ;;RET                                      ;; 0d:4aa7 $00
+    db  $00 ;;END                                      ;; 0d:4aa7 $00
 
 script_012b:
-    db  $00 ;;RET                                      ;; 0d:4aa8 $00
+    db  $00 ;;END                                      ;; 0d:4aa8 $00
 
 script_012c:
-    db  $00 ;;RET                                      ;; 0d:4aa9 $00
+    db  $00 ;;END                                      ;; 0d:4aa9 $00
 
 script_012d:
     db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4aaa $fc
     db   $3f                                           ;; 0d:4aab ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:4aac $fd
     db   $01                                           ;; 0d:4aad ?
-    db  $00 ;;RET                                      ;; 0d:4aae $00
+    db  $00 ;;END                                      ;; 0d:4aae $00
 
 script_012e:
-    db  $00 ;;RET                                      ;; 0d:4aaf $00
+    db  $00 ;;END                                      ;; 0d:4aaf $00
 
 script_012f:
-    db  $00 ;;RET                                      ;; 0d:4ab0 $00
+    db  $00 ;;END                                      ;; 0d:4ab0 $00
 
 script_0130:
     db  $08 ;;IF ? JR                                  ;; 0d:4ab1 $08
@@ -2140,39 +2140,39 @@ script_0130:
     db   $60                                           ;; 0d:4ab6 ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:4ab7 $fd
     db   $00                                           ;; 0d:4ab8 ?
-    db  $00 ;;RET                                      ;; 0d:4ab9 $00
+    db  $00 ;;END                                      ;; 0d:4ab9 $00
 
 script_0131:
-    db  $00 ;;RET                                      ;; 0d:4aba $00
+    db  $00 ;;END                                      ;; 0d:4aba $00
 
 script_0132:
-    db  $00 ;;RET                                      ;; 0d:4abb $00
+    db  $00 ;;END                                      ;; 0d:4abb $00
 
 script_0133:
     db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4abc $fc
     db   $40                                           ;; 0d:4abd ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:4abe $fd
     db   $00                                           ;; 0d:4abf ?
-    db  $00 ;;RET                                      ;; 0d:4ac0 $00
+    db  $00 ;;END                                      ;; 0d:4ac0 $00
 
 script_0134:
-    db  $00 ;;RET                                      ;; 0d:4ac1 $00
+    db  $00 ;;END                                      ;; 0d:4ac1 $00
 
 script_0135:
-    db  $00 ;;RET                                      ;; 0d:4ac2 $00
+    db  $00 ;;END                                      ;; 0d:4ac2 $00
 
 script_0136:
     db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4ac3 $fc
     db   $40                                           ;; 0d:4ac4 ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:4ac5 $fd
     db   $01                                           ;; 0d:4ac6 ?
-    db  $00 ;;RET                                      ;; 0d:4ac7 $00
+    db  $00 ;;END                                      ;; 0d:4ac7 $00
 
 script_0137:
-    db  $00 ;;RET                                      ;; 0d:4ac8 $00
+    db  $00 ;;END                                      ;; 0d:4ac8 $00
 
 script_0138:
-    db  $00 ;;RET                                      ;; 0d:4ac9 $00
+    db  $00 ;;END                                      ;; 0d:4ac9 $00
 
 script_0139:
     db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4aca $fc
@@ -2181,26 +2181,26 @@ script_0139:
     db   $02                                           ;; 0d:4acd ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:4ace $fd
     db   $00                                           ;; 0d:4acf ?
-    db  $00 ;;RET                                      ;; 0d:4ad0 $00
+    db  $00 ;;END                                      ;; 0d:4ad0 $00
 
 script_013a:
-    db  $00 ;;RET                                      ;; 0d:4ad1 $00
+    db  $00 ;;END                                      ;; 0d:4ad1 $00
 
 script_013b:
-    db  $00 ;;RET                                      ;; 0d:4ad2 $00
+    db  $00 ;;END                                      ;; 0d:4ad2 $00
 
 script_013c:
     db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4ad3 $fc
     db   $40                                           ;; 0d:4ad4 ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:4ad5 $fd
     db   $02                                           ;; 0d:4ad6 ?
-    db  $00 ;;RET                                      ;; 0d:4ad7 $00
+    db  $00 ;;END                                      ;; 0d:4ad7 $00
 
 script_013d:
-    db  $00 ;;RET                                      ;; 0d:4ad8 $00
+    db  $00 ;;END                                      ;; 0d:4ad8 $00
 
 script_013e:
-    db  $00 ;;RET                                      ;; 0d:4ad9 $00
+    db  $00 ;;END                                      ;; 0d:4ad9 $00
 
 script_013f:
     db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4ada $fc
@@ -2213,7 +2213,7 @@ script_013f:
     db   $16, $d4, $00, $02                            ;; 0d:4ae1 ????
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:4ae5 $fd
     db   $02                                           ;; 0d:4ae6 ?
-    db  $00 ;;RET                                      ;; 0d:4ae7 $00
+    db  $00 ;;END                                      ;; 0d:4ae7 $00
 
 script_0140:
     db  $08 ;;IF ? JR                                  ;; 0d:4ae8 $08
@@ -2226,10 +2226,10 @@ script_0140:
     db   $12, $11, $00                                 ;; 0d:4b0e ???
     db  $98 ;;UNK_98??                                 ;; 0d:4b11 $98
     db   $db, $54                                      ;; 0d:4b12 ??
-    db  $00 ;;RET                                      ;; 0d:4b14 $00
+    db  $00 ;;END                                      ;; 0d:4b14 $00
 
 script_0141:
-    db  $00 ;;RET                                      ;; 0d:4b15 $00
+    db  $00 ;;END                                      ;; 0d:4b15 $00
 
 script_0142:
     db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4b16 $fc
@@ -2238,13 +2238,13 @@ script_0142:
     db   $00                                           ;; 0d:4b19 ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:4b1a $fd
     db   $01                                           ;; 0d:4b1b ?
-    db  $00 ;;RET                                      ;; 0d:4b1c $00
+    db  $00 ;;END                                      ;; 0d:4b1c $00
 
 script_0143:
-    db  $00 ;;RET                                      ;; 0d:4b1d $00
+    db  $00 ;;END                                      ;; 0d:4b1d $00
 
 script_0144:
-    db  $00 ;;RET                                      ;; 0d:4b1e $00
+    db  $00 ;;END                                      ;; 0d:4b1e $00
 
 script_0145:
     db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4b1f $fc
@@ -2253,65 +2253,65 @@ script_0145:
     db   $00                                           ;; 0d:4b22 ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:4b23 $fd
     db   $01                                           ;; 0d:4b24 ?
-    db  $00 ;;RET                                      ;; 0d:4b25 $00
+    db  $00 ;;END                                      ;; 0d:4b25 $00
 
 script_0146:
-    db  $00 ;;RET                                      ;; 0d:4b26 $00
+    db  $00 ;;END                                      ;; 0d:4b26 $00
 
 script_0147:
-    db  $00 ;;RET                                      ;; 0d:4b27 $00
+    db  $00 ;;END                                      ;; 0d:4b27 $00
 
 script_0148:
     db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4b28 $fc
     db   $3b                                           ;; 0d:4b29 ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:4b2a $fd
     db   $00                                           ;; 0d:4b2b ?
-    db  $00 ;;RET                                      ;; 0d:4b2c $00
+    db  $00 ;;END                                      ;; 0d:4b2c $00
 
 script_0149:
-    db  $00 ;;RET                                      ;; 0d:4b2d $00
+    db  $00 ;;END                                      ;; 0d:4b2d $00
 
 script_014a:
-    db  $00 ;;RET                                      ;; 0d:4b2e $00
+    db  $00 ;;END                                      ;; 0d:4b2e $00
 
 script_014b:
     db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4b2f $fc
     db   $3c                                           ;; 0d:4b30 ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:4b31 $fd
     db   $00                                           ;; 0d:4b32 ?
-    db  $00 ;;RET                                      ;; 0d:4b33 $00
+    db  $00 ;;END                                      ;; 0d:4b33 $00
 
 script_014c:
-    db  $00 ;;RET                                      ;; 0d:4b34 $00
+    db  $00 ;;END                                      ;; 0d:4b34 $00
 
 script_014d:
-    db  $00 ;;RET                                      ;; 0d:4b35 $00
+    db  $00 ;;END                                      ;; 0d:4b35 $00
 
 script_014e:
     db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4b36 $fc
     db   $3b                                           ;; 0d:4b37 ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:4b38 $fd
     db   $02                                           ;; 0d:4b39 ?
-    db  $00 ;;RET                                      ;; 0d:4b3a $00
+    db  $00 ;;END                                      ;; 0d:4b3a $00
 
 script_014f:
-    db  $00 ;;RET                                      ;; 0d:4b3b $00
+    db  $00 ;;END                                      ;; 0d:4b3b $00
 
 script_0150:
-    db  $00 ;;RET                                      ;; 0d:4b3c $00
+    db  $00 ;;END                                      ;; 0d:4b3c $00
 
 script_0151:
     db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4b3d $fc
     db   $30                                           ;; 0d:4b3e ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:4b3f $fd
     db   $01                                           ;; 0d:4b40 ?
-    db  $00 ;;RET                                      ;; 0d:4b41 $00
+    db  $00 ;;END                                      ;; 0d:4b41 $00
 
 script_0152:
-    db  $00 ;;RET                                      ;; 0d:4b42 $00
+    db  $00 ;;END                                      ;; 0d:4b42 $00
 
 script_0153:
-    db  $00 ;;RET                                      ;; 0d:4b43 $00
+    db  $00 ;;END                                      ;; 0d:4b43 $00
 
 script_0154:
     db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4b44 $fc
@@ -2341,13 +2341,13 @@ script_0154:
     db   $e6, $1a, $2d, $3a, $6f, $57, $e0, $ec        ;; 0d:4b7e ????????
     db   $6b, $df, $d9, $f0, $12, $11, $00, $da        ;; 0d:4b86 ????????
     db   $56                                           ;; 0d:4b8e ?
-    db  $00 ;;RET                                      ;; 0d:4b8f $00
+    db  $00 ;;END                                      ;; 0d:4b8f $00
 
 script_0155:
-    db  $00 ;;RET                                      ;; 0d:4b90 $00
+    db  $00 ;;END                                      ;; 0d:4b90 $00
 
 script_0156:
-    db  $00 ;;RET                                      ;; 0d:4b91 $00
+    db  $00 ;;END                                      ;; 0d:4b91 $00
 
 script_0157:
     db  $08 ;;IF ? JR                                  ;; 0d:4b92 $08
@@ -2356,13 +2356,13 @@ script_0157:
     db   $4c                                           ;; 0d:4b98 ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:4b99 $fd
     db   $01                                           ;; 0d:4b9a ?
-    db  $00 ;;RET                                      ;; 0d:4b9b $00
+    db  $00 ;;END                                      ;; 0d:4b9b $00
 
 script_0158:
-    db  $00 ;;RET                                      ;; 0d:4b9c $00
+    db  $00 ;;END                                      ;; 0d:4b9c $00
 
 script_0159:
-    db  $00 ;;RET                                      ;; 0d:4b9d $00
+    db  $00 ;;END                                      ;; 0d:4b9d $00
 
 script_015a:
     db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4b9e $fc
@@ -2371,13 +2371,13 @@ script_015a:
     db   $00                                           ;; 0d:4ba1 ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:4ba2 $fd
     db   $01                                           ;; 0d:4ba3 ?
-    db  $00 ;;RET                                      ;; 0d:4ba4 $00
+    db  $00 ;;END                                      ;; 0d:4ba4 $00
 
 script_015b:
-    db  $00 ;;RET                                      ;; 0d:4ba5 $00
+    db  $00 ;;END                                      ;; 0d:4ba5 $00
 
 script_015c:
-    db  $00 ;;RET                                      ;; 0d:4ba6 $00
+    db  $00 ;;END                                      ;; 0d:4ba6 $00
 
 script_015d:
     db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4ba7 $fc
@@ -2386,117 +2386,117 @@ script_015d:
     db   $00                                           ;; 0d:4baa ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:4bab $fd
     db   $01                                           ;; 0d:4bac ?
-    db  $00 ;;RET                                      ;; 0d:4bad $00
+    db  $00 ;;END                                      ;; 0d:4bad $00
 
 script_015e:
-    db  $00 ;;RET                                      ;; 0d:4bae $00
+    db  $00 ;;END                                      ;; 0d:4bae $00
 
 script_015f:
-    db  $00 ;;RET                                      ;; 0d:4baf $00
+    db  $00 ;;END                                      ;; 0d:4baf $00
 
 script_0160:
     db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4bb0 $fc
     db   $43                                           ;; 0d:4bb1 ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:4bb2 $fd
     db   $00                                           ;; 0d:4bb3 ?
-    db  $00 ;;RET                                      ;; 0d:4bb4 $00
+    db  $00 ;;END                                      ;; 0d:4bb4 $00
 
 script_0161:
-    db  $00 ;;RET                                      ;; 0d:4bb5 $00
+    db  $00 ;;END                                      ;; 0d:4bb5 $00
 
 script_0162:
-    db  $00 ;;RET                                      ;; 0d:4bb6 $00
+    db  $00 ;;END                                      ;; 0d:4bb6 $00
 
 script_0163:
     db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4bb7 $fc
     db   $43                                           ;; 0d:4bb8 ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:4bb9 $fd
     db   $01                                           ;; 0d:4bba ?
-    db  $00 ;;RET                                      ;; 0d:4bbb $00
+    db  $00 ;;END                                      ;; 0d:4bbb $00
 
 script_0164:
-    db  $00 ;;RET                                      ;; 0d:4bbc $00
+    db  $00 ;;END                                      ;; 0d:4bbc $00
 
 script_0165:
-    db  $00 ;;RET                                      ;; 0d:4bbd $00
+    db  $00 ;;END                                      ;; 0d:4bbd $00
 
 script_0166:
     db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4bbe $fc
     db   $43                                           ;; 0d:4bbf ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:4bc0 $fd
     db   $02                                           ;; 0d:4bc1 ?
-    db  $00 ;;RET                                      ;; 0d:4bc2 $00
+    db  $00 ;;END                                      ;; 0d:4bc2 $00
 
 script_0167:
-    db  $00 ;;RET                                      ;; 0d:4bc3 $00
+    db  $00 ;;END                                      ;; 0d:4bc3 $00
 
 script_0168:
-    db  $00 ;;RET                                      ;; 0d:4bc4 $00
+    db  $00 ;;END                                      ;; 0d:4bc4 $00
 
 script_0169:
     db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4bc5 $fc
     db   $44                                           ;; 0d:4bc6 ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:4bc7 $fd
     db   $00                                           ;; 0d:4bc8 ?
-    db  $00 ;;RET                                      ;; 0d:4bc9 $00
+    db  $00 ;;END                                      ;; 0d:4bc9 $00
 
 script_016a:
-    db  $00 ;;RET                                      ;; 0d:4bca $00
+    db  $00 ;;END                                      ;; 0d:4bca $00
 
 script_016b:
-    db  $00 ;;RET                                      ;; 0d:4bcb $00
+    db  $00 ;;END                                      ;; 0d:4bcb $00
 
 script_016c:
     db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4bcc $fc
     db   $44                                           ;; 0d:4bcd ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:4bce $fd
     db   $02                                           ;; 0d:4bcf ?
-    db  $00 ;;RET                                      ;; 0d:4bd0 $00
+    db  $00 ;;END                                      ;; 0d:4bd0 $00
 
 script_016d:
-    db  $00 ;;RET                                      ;; 0d:4bd1 $00
+    db  $00 ;;END                                      ;; 0d:4bd1 $00
 
 script_016e:
-    db  $00 ;;RET                                      ;; 0d:4bd2 $00
+    db  $00 ;;END                                      ;; 0d:4bd2 $00
 
 script_016f:
     db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4bd3 $fc
     db   $44                                           ;; 0d:4bd4 ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:4bd5 $fd
     db   $01                                           ;; 0d:4bd6 ?
-    db  $00 ;;RET                                      ;; 0d:4bd7 $00
+    db  $00 ;;END                                      ;; 0d:4bd7 $00
 
 script_0170:
-    db  $00 ;;RET                                      ;; 0d:4bd8 $00
+    db  $00 ;;END                                      ;; 0d:4bd8 $00
 
 script_0171:
-    db  $00 ;;RET                                      ;; 0d:4bd9 $00
+    db  $00 ;;END                                      ;; 0d:4bd9 $00
 
 script_0172:
     db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4bda $fc
     db   $45                                           ;; 0d:4bdb ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:4bdc $fd
     db   $00                                           ;; 0d:4bdd ?
-    db  $00 ;;RET                                      ;; 0d:4bde $00
+    db  $00 ;;END                                      ;; 0d:4bde $00
 
 script_0173:
-    db  $00 ;;RET                                      ;; 0d:4bdf $00
+    db  $00 ;;END                                      ;; 0d:4bdf $00
 
 script_0174:
-    db  $00 ;;RET                                      ;; 0d:4be0 $00
+    db  $00 ;;END                                      ;; 0d:4be0 $00
 
 script_0175:
     db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4be1 $fc
     db   $45                                           ;; 0d:4be2 ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:4be3 $fd
     db   $01                                           ;; 0d:4be4 ?
-    db  $00 ;;RET                                      ;; 0d:4be5 $00
+    db  $00 ;;END                                      ;; 0d:4be5 $00
 
 script_0176:
-    db  $00 ;;RET                                      ;; 0d:4be6 $00
+    db  $00 ;;END                                      ;; 0d:4be6 $00
 
 script_0177:
-    db  $00 ;;RET                                      ;; 0d:4be7 $00
+    db  $00 ;;END                                      ;; 0d:4be7 $00
 
 script_0178:
     db  $08 ;;IF ? JR                                  ;; 0d:4be8 $08
@@ -2505,13 +2505,13 @@ script_0178:
     db   $28                                           ;; 0d:4bed ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:4bee $fd
     db   $02                                           ;; 0d:4bef ?
-    db  $00 ;;RET                                      ;; 0d:4bf0 $00
+    db  $00 ;;END                                      ;; 0d:4bf0 $00
 
 script_0179:
-    db  $00 ;;RET                                      ;; 0d:4bf1 $00
+    db  $00 ;;END                                      ;; 0d:4bf1 $00
 
 script_017a:
-    db  $00 ;;RET                                      ;; 0d:4bf2 $00
+    db  $00 ;;END                                      ;; 0d:4bf2 $00
 
 script_017b:
     db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4bf3 $fc
@@ -2524,26 +2524,26 @@ script_017b:
     db   $02                                           ;; 0d:4bfc ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:4bfd $fd
     db   $00                                           ;; 0d:4bfe ?
-    db  $00 ;;RET                                      ;; 0d:4bff $00
+    db  $00 ;;END                                      ;; 0d:4bff $00
 
 script_017c:
-    db  $00 ;;RET                                      ;; 0d:4c00 $00
+    db  $00 ;;END                                      ;; 0d:4c00 $00
 
 script_017d:
-    db  $00 ;;RET                                      ;; 0d:4c01 $00
+    db  $00 ;;END                                      ;; 0d:4c01 $00
 
 script_017e:
     db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4c02 $fc
     db   $46                                           ;; 0d:4c03 ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:4c04 $fd
     db   $02                                           ;; 0d:4c05 ?
-    db  $00 ;;RET                                      ;; 0d:4c06 $00
+    db  $00 ;;END                                      ;; 0d:4c06 $00
 
 script_017f:
-    db  $00 ;;RET                                      ;; 0d:4c07 $00
+    db  $00 ;;END                                      ;; 0d:4c07 $00
 
 script_0180:
-    db  $00 ;;RET                                      ;; 0d:4c08 $00
+    db  $00 ;;END                                      ;; 0d:4c08 $00
 
 script_0181:
     db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4c09 $fc
@@ -2556,26 +2556,26 @@ script_0181:
     db   $02                                           ;; 0d:4c12 ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:4c13 $fd
     db   $00                                           ;; 0d:4c14 ?
-    db  $00 ;;RET                                      ;; 0d:4c15 $00
+    db  $00 ;;END                                      ;; 0d:4c15 $00
 
 script_0182:
-    db  $00 ;;RET                                      ;; 0d:4c16 $00
+    db  $00 ;;END                                      ;; 0d:4c16 $00
 
 script_0183:
-    db  $00 ;;RET                                      ;; 0d:4c17 $00
+    db  $00 ;;END                                      ;; 0d:4c17 $00
 
 script_0184:
     db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4c18 $fc
     db   $37                                           ;; 0d:4c19 ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:4c1a $fd
     db   $02                                           ;; 0d:4c1b ?
-    db  $00 ;;RET                                      ;; 0d:4c1c $00
+    db  $00 ;;END                                      ;; 0d:4c1c $00
 
 script_0185:
-    db  $00 ;;RET                                      ;; 0d:4c1d $00
+    db  $00 ;;END                                      ;; 0d:4c1d $00
 
 script_0186:
-    db  $00 ;;RET                                      ;; 0d:4c1e $00
+    db  $00 ;;END                                      ;; 0d:4c1e $00
 
 script_0187:
     db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4c1f $fc
@@ -2584,13 +2584,13 @@ script_0187:
     db   $02                                           ;; 0d:4c22 ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:4c23 $fd
     db   $01                                           ;; 0d:4c24 ?
-    db  $00 ;;RET                                      ;; 0d:4c25 $00
+    db  $00 ;;END                                      ;; 0d:4c25 $00
 
 script_0188:
-    db  $00 ;;RET                                      ;; 0d:4c26 $00
+    db  $00 ;;END                                      ;; 0d:4c26 $00
 
 script_0189:
-    db  $00 ;;RET                                      ;; 0d:4c27 $00
+    db  $00 ;;END                                      ;; 0d:4c27 $00
 
 script_018a:
     db  $08 ;;IF ? JR                                  ;; 0d:4c28 $08
@@ -2599,13 +2599,13 @@ script_018a:
     db   $35                                           ;; 0d:4c2d ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:4c2e $fd
     db   $00                                           ;; 0d:4c2f ?
-    db  $00 ;;RET                                      ;; 0d:4c30 $00
+    db  $00 ;;END                                      ;; 0d:4c30 $00
 
 script_018b:
-    db  $00 ;;RET                                      ;; 0d:4c31 $00
+    db  $00 ;;END                                      ;; 0d:4c31 $00
 
 script_018c:
-    db  $00 ;;RET                                      ;; 0d:4c32 $00
+    db  $00 ;;END                                      ;; 0d:4c32 $00
 
 script_018d:
     db  $08 ;;IF ? JR                                  ;; 0d:4c33 $08
@@ -2614,13 +2614,13 @@ script_018d:
     db   $32                                           ;; 0d:4c38 ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:4c39 $fd
     db   $00                                           ;; 0d:4c3a ?
-    db  $00 ;;RET                                      ;; 0d:4c3b $00
+    db  $00 ;;END                                      ;; 0d:4c3b $00
 
 script_018e:
-    db  $00 ;;RET                                      ;; 0d:4c3c $00
+    db  $00 ;;END                                      ;; 0d:4c3c $00
 
 script_018f:
-    db  $00 ;;RET                                      ;; 0d:4c3d $00
+    db  $00 ;;END                                      ;; 0d:4c3d $00
 
 script_0190:
     db  $08 ;;IF ? JR                                  ;; 0d:4c3e $08
@@ -2629,13 +2629,13 @@ script_0190:
     db   $4d                                           ;; 0d:4c44 ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:4c45 $fd
     db   $00                                           ;; 0d:4c46 ?
-    db  $00 ;;RET                                      ;; 0d:4c47 $00
+    db  $00 ;;END                                      ;; 0d:4c47 $00
 
 script_0191:
-    db  $00 ;;RET                                      ;; 0d:4c48 $00
+    db  $00 ;;END                                      ;; 0d:4c48 $00
 
 script_0192:
-    db  $00 ;;RET                                      ;; 0d:4c49 $00
+    db  $00 ;;END                                      ;; 0d:4c49 $00
 
 script_0193:
     db  $08 ;;IF ? JR                                  ;; 0d:4c4a $08
@@ -2648,17 +2648,17 @@ script_0193:
     db   $50                                           ;; 0d:4c55 ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:4c56 $fd
     db   $00                                           ;; 0d:4c57 ?
-    db  $00 ;;RET                                      ;; 0d:4c58 $00
+    db  $00 ;;END                                      ;; 0d:4c58 $00
 
 script_0194:
     db  $08 ;;IF ? JR                                  ;; 0d:4c59 $08
     db   $d8, $00, $02                                 ;; 0d:4c5a ???
     db  $f8 ;;SET_MUSIC                                ;; 0d:4c5d $f8
     db   $14                                           ;; 0d:4c5e ?
-    db  $00 ;;RET                                      ;; 0d:4c5f $00
+    db  $00 ;;END                                      ;; 0d:4c5f $00
 
 script_0195:
-    db  $00 ;;RET                                      ;; 0d:4c60 $00
+    db  $00 ;;END                                      ;; 0d:4c60 $00
 
 script_0196:
     db  $08 ;;IF ? JR                                  ;; 0d:4c61 $08
@@ -2667,13 +2667,13 @@ script_0196:
     db   $30                                           ;; 0d:4c67 ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:4c68 $fd
     db   $00                                           ;; 0d:4c69 ?
-    db  $00 ;;RET                                      ;; 0d:4c6a $00
+    db  $00 ;;END                                      ;; 0d:4c6a $00
 
 script_0197:
-    db  $00 ;;RET                                      ;; 0d:4c6b $00
+    db  $00 ;;END                                      ;; 0d:4c6b $00
 
 script_0198:
-    db  $00 ;;RET                                      ;; 0d:4c6c $00
+    db  $00 ;;END                                      ;; 0d:4c6c $00
 
 script_0199:
     db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4c6d $fc
@@ -2682,16 +2682,16 @@ script_0199:
     db   $02                                           ;; 0d:4c70 ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:4c71 $fd
     db   $00                                           ;; 0d:4c72 ?
-    db  $00 ;;RET                                      ;; 0d:4c73 $00
+    db  $00 ;;END                                      ;; 0d:4c73 $00
 
 script_019a:
-    db  $00 ;;RET                                      ;; 0d:4c74 $00
+    db  $00 ;;END                                      ;; 0d:4c74 $00
 
 script_019b:
-    db  $00 ;;RET                                      ;; 0d:4c75 $00
+    db  $00 ;;END                                      ;; 0d:4c75 $00
 
 script_019c:
-    db  $00 ;;RET                                      ;; 0d:4c76 $00
+    db  $00 ;;END                                      ;; 0d:4c76 $00
 
 script_019d:
     db  $08 ;;IF ? JR                                  ;; 0d:4c77 $08
@@ -2747,16 +2747,16 @@ script_019d:
     db   $10                                           ;; 0d:4d2e ?
     db  $f0 ;;UNK_F0_DELAY?                            ;; 0d:4d2f $f0
     db   $0a                                           ;; 0d:4d30 ?
-    db  $03 ;;PLAYER_WALK                              ;; 0d:4d31 $03
+    db  $03 ;;LOOP                                     ;; 0d:4d31 $03
     db   $0a, $04                                      ;; 0d:4d32 ??
     db  $f9 ;;SFX                                      ;; 0d:4d34 $f9
     db   $14                                           ;; 0d:4d35 ?
     db  $bf ;;UNK_bf??                                 ;; 0d:4d36 $bf
     db   $00, $fe, $11, $f8, $10                       ;; 0d:4d37 ?????
-    db  $00 ;;RET                                      ;; 0d:4d3c $00
+    db  $00 ;;END                                      ;; 0d:4d3c $00
 
 script_019e:
-    db  $00 ;;RET                                      ;; 0d:4d3d $00
+    db  $00 ;;END                                      ;; 0d:4d3d $00
 
 script_019f:
     db  $02 ;;CALL                                     ;; 0d:4d3e $02
@@ -2780,12 +2780,12 @@ script_01a0:
     db  $01 ;;JR                                       ;; 0d:4d53 $01
     db   $01                                           ;; 0d:4d54 ?
     db  $ee ;;UNK_ee??                                 ;; 0d:4d55 $ee
-    db  $00 ;;RET                                      ;; 0d:4d56 $00
+    db  $00 ;;END                                      ;; 0d:4d56 $00
 
 script_01a1:
     db  $f8 ;;SET_MUSIC                                ;; 0d:4d57 $f8
     db   $07                                           ;; 0d:4d58 ?
-    db  $00 ;;RET                                      ;; 0d:4d59 $00
+    db  $00 ;;END                                      ;; 0d:4d59 $00
 
 script_01a2:
     db  $f8 ;;SET_MUSIC                                ;; 0d:4d5a $f8
@@ -2814,7 +2814,7 @@ script_01a2:
     db   $02                                           ;; 0d:4d7e ?
     db  $ca ;;UNK_ca??                                 ;; 0d:4d7f $ca
     db   $04, $51                                      ;; 0d:4d80 ??
-    db  $00 ;;RET                                      ;; 0d:4d82 $00
+    db  $00 ;;END                                      ;; 0d:4d82 $00
 
 script_01a3:
     db  $08 ;;IF ? JR                                  ;; 0d:4d83 $08
@@ -2847,12 +2847,12 @@ script_01a3:
     db   $f0, $1e, $fe, $0d, $f8, $0f, $01, $04        ;; 0d:4dcb ????????
     db  $b0 ;;SET_ROOM_TILE                            ;; 0d:4dd3 $b0
     db   $59, $08, $01                                 ;; 0d:4dd4 ???
-    db  $00 ;;RET                                      ;; 0d:4dd7 $00
+    db  $00 ;;END                                      ;; 0d:4dd7 $00
 
 script_01a4:
     db  $f8 ;;SET_MUSIC                                ;; 0d:4dd8 $f8
     db   $16                                           ;; 0d:4dd9 ?
-    db  $00 ;;RET                                      ;; 0d:4dda $00
+    db  $00 ;;END                                      ;; 0d:4dda $00
 
 script_01a5:
     db  $08 ;;IF ? JR                                  ;; 0d:4ddb $08
@@ -2900,7 +2900,7 @@ script_01a5:
     db   $1e                                           ;; 0d:4e56 ?
     db  $f8 ;;SET_MUSIC                                ;; 0d:4e57 $f8
     db   $16                                           ;; 0d:4e58 ?
-    db  $00 ;;RET                                      ;; 0d:4e59 $00
+    db  $00 ;;END                                      ;; 0d:4e59 $00
 
 script_01a6:
     db  $08 ;;IF ? JR                                  ;; 0d:4e5a $08
@@ -2932,12 +2932,12 @@ script_01a6:
     db   $14                                           ;; 0d:4e93 ?
     db  $bf ;;UNK_bf??                                 ;; 0d:4e94 $bf
     db   $bf, $bf, $f0, $0a, $f8, $0f, $fe, $00        ;; 0d:4e95 ????????
-    db  $00 ;;RET                                      ;; 0d:4e9d $00
+    db  $00 ;;END                                      ;; 0d:4e9d $00
 
 script_01a7:
     db  $f8 ;;SET_MUSIC                                ;; 0d:4e9e $f8
     db   $07                                           ;; 0d:4e9f ?
-    db  $00 ;;RET                                      ;; 0d:4ea0 $00
+    db  $00 ;;END                                      ;; 0d:4ea0 $00
 
 script_01a8:
     db  $08 ;;IF ? JR                                  ;; 0d:4ea1 $08
@@ -2992,12 +2992,12 @@ script_01a9:
     db   $04, $35, $01, $04                            ;; 0d:4f5b ????
     db  $b0 ;;SET_ROOM_TILE                            ;; 0d:4f5f $b0
     db   $59, $02, $01                                 ;; 0d:4f60 ???
-    db  $00 ;;RET                                      ;; 0d:4f63 $00
+    db  $00 ;;END                                      ;; 0d:4f63 $00
 
 script_01aa:
     db  $f8 ;;SET_MUSIC                                ;; 0d:4f64 $f8
     db   $07                                           ;; 0d:4f65 ?
-    db  $00 ;;RET                                      ;; 0d:4f66 $00
+    db  $00 ;;END                                      ;; 0d:4f66 $00
 
 script_01ab:
     db  $f0 ;;UNK_F0_DELAY?                            ;; 0d:4f67 $f0
@@ -3042,12 +3042,12 @@ script_01ac:
     db   $1c, $b5, $00, $02                            ;; 0d:4fc6 ????
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:4fca $fd
     db   $01                                           ;; 0d:4fcb ?
-    db  $00 ;;RET                                      ;; 0d:4fcc $00
+    db  $00 ;;END                                      ;; 0d:4fcc $00
 
 script_01ad:
     db  $f8 ;;SET_MUSIC                                ;; 0d:4fcd $f8
     db   $08                                           ;; 0d:4fce ?
-    db  $00 ;;RET                                      ;; 0d:4fcf $00
+    db  $00 ;;END                                      ;; 0d:4fcf $00
 
 script_01ae:
     db  $08 ;;IF ? JR                                  ;; 0d:4fd0 $08
@@ -3076,7 +3076,7 @@ script_01ae:
     db   $22, $36, $c3, $d4, $d7, $25, $d9, $8b        ;; 0d:504b ????????
     db   $45, $f0, $12, $11, $00, $86, $80, $80        ;; 0d:5053 ????????
     db   $02, $28, $9c, $db, $55, $da, $27             ;; 0d:505b ???????
-    db  $00 ;;RET                                      ;; 0d:5062 $00
+    db  $00 ;;END                                      ;; 0d:5062 $00
 
 script_01af:
     db  $08 ;;IF ? JR                                  ;; 0d:5063 $08
@@ -3098,14 +3098,14 @@ script_01af:
     db   $f8, $13                                      ;; 0d:50a0 ??
     db  $da ;;UNK_DA                                   ;; 0d:50a2 $da
     db   $79                                           ;; 0d:50a3 ?
-    db  $00 ;;RET                                      ;; 0d:50a4 $00
+    db  $00 ;;END                                      ;; 0d:50a4 $00
 
 script_01b0:
     db  $db ;;UNK_DB                                   ;; 0d:50a5 $db
     db   $79                                           ;; 0d:50a6 ?
     db  $f8 ;;SET_MUSIC                                ;; 0d:50a7 $f8
     db   $07                                           ;; 0d:50a8 ?
-    db  $00 ;;RET                                      ;; 0d:50a9 $00
+    db  $00 ;;END                                      ;; 0d:50a9 $00
 
 script_01b1:
     db  $f8 ;;SET_MUSIC                                ;; 0d:50aa $f8
@@ -3182,12 +3182,12 @@ script_01b2:
     db   $01                                           ;; 0d:5218 ?
     db  $c9 ;;UNK_c9??                                 ;; 0d:5219 $c9
     db   $04, $5d                                      ;; 0d:521a ??
-    db  $00 ;;RET                                      ;; 0d:521c $00
+    db  $00 ;;END                                      ;; 0d:521c $00
 
 script_01b3:
     db  $f8 ;;SET_MUSIC                                ;; 0d:521d $f8
     db   $07                                           ;; 0d:521e ?
-    db  $00 ;;RET                                      ;; 0d:521f $00
+    db  $00 ;;END                                      ;; 0d:521f $00
 
 script_01b4:
     db  $f8 ;;SET_MUSIC                                ;; 0d:5220 $f8
@@ -3215,14 +3215,14 @@ script_01b5:
     db   $03                                           ;; 0d:524c ?
     db  $02 ;;CALL                                     ;; 0d:524d $02
     db   $33, $e7                                      ;; 0d:524e ??
-    db  $00 ;;RET                                      ;; 0d:5250 $00
+    db  $00 ;;END                                      ;; 0d:5250 $00
 
 script_01b6:
     db  $08 ;;IF ? JR                                  ;; 0d:5251 $08
     db   $b1, $00, $02                                 ;; 0d:5252 ???
     db  $f8 ;;SET_MUSIC                                ;; 0d:5255 $f8
     db   $0c                                           ;; 0d:5256 ?
-    db  $00 ;;RET                                      ;; 0d:5257 $00
+    db  $00 ;;END                                      ;; 0d:5257 $00
 
 script_01b7:
     db  $f8 ;;SET_MUSIC                                ;; 0d:5258 $f8
@@ -3257,7 +3257,7 @@ script_01b8:
 script_01b9:
     db  $f8 ;;SET_MUSIC                                ;; 0d:52ba $f8
     db   $07                                           ;; 0d:52bb ?
-    db  $00 ;;RET                                      ;; 0d:52bc $00
+    db  $00 ;;END                                      ;; 0d:52bc $00
 
 script_01ba:
     db  $f8 ;;SET_MUSIC                                ;; 0d:52bd $f8
@@ -3308,10 +3308,10 @@ script_01bb:
     db   $6f, $e2, $ec, $80, $14, $f3, $1a, $ff        ;; 0d:53ae ????????
     db   $35, $ff, $c7, $46, $80, $d6, $64, $9b        ;; 0d:53b6 ????????
     db   $12, $11, $00, $f8, $13                       ;; 0d:53be ?????
-    db  $00 ;;RET                                      ;; 0d:53c3 $00
+    db  $00 ;;END                                      ;; 0d:53c3 $00
 
 script_01bc:
-    db  $00 ;;RET                                      ;; 0d:53c4 $00
+    db  $00 ;;END                                      ;; 0d:53c4 $00
 
 script_01bd:
     db  $f8 ;;SET_MUSIC                                ;; 0d:53c5 $f8
@@ -3350,7 +3350,7 @@ script_01bd:
     db   $2c                                           ;; 0d:5423 ?
     db  $f8 ;;SET_MUSIC                                ;; 0d:5424 $f8
     db   $0e                                           ;; 0d:5425 ?
-    db  $00 ;;RET                                      ;; 0d:5426 $00
+    db  $00 ;;END                                      ;; 0d:5426 $00
 
 script_01be:
     db  $08 ;;IF ? JR                                  ;; 0d:5427 $08
@@ -3370,12 +3370,12 @@ script_01be:
     db   $00                                           ;; 0d:5440 ?
     db  $c9 ;;UNK_c9??                                 ;; 0d:5441 $c9
     db   $04, $64                                      ;; 0d:5442 ??
-    db  $00 ;;RET                                      ;; 0d:5444 $00
+    db  $00 ;;END                                      ;; 0d:5444 $00
 
 script_01bf:
     db  $f8 ;;SET_MUSIC                                ;; 0d:5445 $f8
     db   $0c                                           ;; 0d:5446 ?
-    db  $00 ;;RET                                      ;; 0d:5447 $00
+    db  $00 ;;END                                      ;; 0d:5447 $00
 
 script_01c0:
     db  $f8 ;;SET_MUSIC                                ;; 0d:5448 $f8
@@ -3406,12 +3406,12 @@ script_01c1:
     db   $00                                           ;; 0d:5476 ?
     db  $c9 ;;UNK_c9??                                 ;; 0d:5477 $c9
     db   $04, $37                                      ;; 0d:5478 ??
-    db  $00 ;;RET                                      ;; 0d:547a $00
+    db  $00 ;;END                                      ;; 0d:547a $00
 
 script_01c2:
     db  $f8 ;;SET_MUSIC                                ;; 0d:547b $f8
     db   $07                                           ;; 0d:547c ?
-    db  $00 ;;RET                                      ;; 0d:547d $00
+    db  $00 ;;END                                      ;; 0d:547d $00
 
 script_01c3:
     db  $f8 ;;SET_MUSIC                                ;; 0d:547e $f8
@@ -3437,12 +3437,12 @@ script_01c4:
     db   $14                                           ;; 0d:54a2 ?
     db  $bf ;;UNK_bf??                                 ;; 0d:54a3 $bf
     db   $f9, $14, $bf, $fe, $07, $f8, $0f             ;; 0d:54a4 ???????
-    db  $00 ;;RET                                      ;; 0d:54ab $00
+    db  $00 ;;END                                      ;; 0d:54ab $00
 
 script_01c5:
     db  $f8 ;;SET_MUSIC                                ;; 0d:54ac $f8
     db   $0e                                           ;; 0d:54ad ?
-    db  $00 ;;RET                                      ;; 0d:54ae $00
+    db  $00 ;;END                                      ;; 0d:54ae $00
 
 script_01c6:
     db  $f8 ;;SET_MUSIC                                ;; 0d:54af $f8
@@ -3460,7 +3460,7 @@ script_01c6:
     db   $1e                                           ;; 0d:54cb ?
     db  $f8 ;;SET_MUSIC                                ;; 0d:54cc $f8
     db   $0e                                           ;; 0d:54cd ?
-    db  $00 ;;RET                                      ;; 0d:54ce $00
+    db  $00 ;;END                                      ;; 0d:54ce $00
 
 script_01c7:
     db  $08 ;;IF ? JR                                  ;; 0d:54cf $08
@@ -3474,12 +3474,12 @@ script_01c7:
     db   $04                                           ;; 0d:54e0 ?
     db  $b0 ;;SET_ROOM_TILE                            ;; 0d:54e1 $b0
     db   $4c, $08, $02                                 ;; 0d:54e2 ???
-    db  $00 ;;RET                                      ;; 0d:54e5 $00
+    db  $00 ;;END                                      ;; 0d:54e5 $00
 
 script_01c8:
     db  $f8 ;;SET_MUSIC                                ;; 0d:54e6 $f8
     db   $07                                           ;; 0d:54e7 ?
-    db  $00 ;;RET                                      ;; 0d:54e8 $00
+    db  $00 ;;END                                      ;; 0d:54e8 $00
 
 script_01c9:
     db  $f8 ;;SET_MUSIC                                ;; 0d:54e9 $f8
@@ -3502,12 +3502,12 @@ script_01ca:
     db   $14                                           ;; 0d:5512 ?
     db  $bf ;;UNK_bf??                                 ;; 0d:5513 $bf
     db   $f9, $14, $bf, $fe, $0b, $f8, $0f             ;; 0d:5514 ???????
-    db  $00 ;;RET                                      ;; 0d:551b $00
+    db  $00 ;;END                                      ;; 0d:551b $00
 
 script_01cb:
     db  $f8 ;;SET_MUSIC                                ;; 0d:551c $f8
     db   $07                                           ;; 0d:551d ?
-    db  $00 ;;RET                                      ;; 0d:551e $00
+    db  $00 ;;END                                      ;; 0d:551e $00
 
 script_01cc:
     db  $f8 ;;SET_MUSIC                                ;; 0d:551f $f8
@@ -3531,13 +3531,13 @@ script_01cd:
     db   $3d                                           ;; 0d:5569 ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:556a $fd
     db   $01                                           ;; 0d:556b ?
-    db  $00 ;;RET                                      ;; 0d:556c $00
+    db  $00 ;;END                                      ;; 0d:556c $00
 
 script_01ce:
-    db  $00 ;;RET                                      ;; 0d:556d $00
+    db  $00 ;;END                                      ;; 0d:556d $00
 
 script_01cf:
-    db  $00 ;;RET                                      ;; 0d:556e $00
+    db  $00 ;;END                                      ;; 0d:556e $00
 
 script_01e0:
     db  $04 ;;MSG                                      ;; 0d:556f $04
@@ -3585,7 +3585,7 @@ script_01e0:
     db   $27, $f0, $12, $11, $00, $01, $04             ;; 0d:562e ???????
     db  $04 ;;MSG                                      ;; 0d:5635 $04
     db   $12, $11, $00                                 ;; 0d:5636 ???
-    db  $00 ;;RET                                      ;; 0d:5639 $00
+    db  $00 ;;END                                      ;; 0d:5639 $00
 
 script_01e1:
     db  $04 ;;MSG                                      ;; 0d:563a $04
@@ -3598,7 +3598,7 @@ script_01e1:
     db   $38, $22, $db, $38, $ea, $37, $e7, $1a        ;; 0d:566b ????????
     db   $d4, $82, $57, $2f, $2d, $87, $5a, $61        ;; 0d:5673 ????????
     db   $12, $11, $00                                 ;; 0d:567b ???
-    db  $00 ;;RET                                      ;; 0d:567e $00
+    db  $00 ;;END                                      ;; 0d:567e $00
 
 script_01e2:
     db  $04 ;;MSG                                      ;; 0d:567f $04
@@ -3610,7 +3610,7 @@ script_01e2:
     db   $4e, $22, $2a, $ff, $bc, $5a, $d8, $1a        ;; 0d:56a8 ????????
     db   $50, $51, $2e, $e6, $db, $f0, $12, $11        ;; 0d:56b0 ????????
     db   $12, $11, $00                                 ;; 0d:56b8 ???
-    db  $00 ;;RET                                      ;; 0d:56bb $00
+    db  $00 ;;END                                      ;; 0d:56bb $00
 
 script_01e3:
     db  $18 ;;UNK_18??                                 ;; 0d:56bc $18
@@ -3643,7 +3643,7 @@ script_01e4:
     db   $ff, $00, $04                                 ;; 0d:5768 ???
     db  $9c ;;UNK_9c??                                 ;; 0d:576b $9c
     db   $02, $da, $52                                 ;; 0d:576c ???
-    db  $00 ;;RET                                      ;; 0d:576f $00
+    db  $00 ;;END                                      ;; 0d:576f $00
 
 script_01e5:
     db  $ba ;;UNK_ba??                                 ;; 0d:5770 $ba
@@ -3656,7 +3656,7 @@ script_01e6:
     db   $4e, $d7, $66, $ef, $1a, $23, $20, $e6        ;; 0d:5784 ????????
     db   $d4, $d6, $38, $25, $33, $ea, $e1, $f0        ;; 0d:578c ????????
     db   $12, $11, $00                                 ;; 0d:5794 ???
-    db  $00 ;;RET                                      ;; 0d:5797 $00
+    db  $00 ;;END                                      ;; 0d:5797 $00
 
 script_01e7:
     db  $08 ;;IF ? JR                                  ;; 0d:5798 $08
@@ -3665,7 +3665,7 @@ script_01e7:
     db   $10, $c1, $f1, $40, $20, $30, $96, $9e        ;; 0d:579e ????????
     db   $39, $1a, $e0, $20, $d9, $5f, $8c, $d5        ;; 0d:57a6 ????????
     db   $d8, $5c, $2b, $f1, $f3, $12, $11, $00        ;; 0d:57ae ????????
-    db  $00 ;;RET                                      ;; 0d:57b6 $00
+    db  $00 ;;END                                      ;; 0d:57b6 $00
 
 script_01e8:
     db  $04 ;;MSG                                      ;; 0d:57b7 $04
@@ -3673,7 +3673,7 @@ script_01e8:
     db   $d4, $da, $8a, $e1, $f3, $1a, $97, $46        ;; 0d:57c0 ????????
     db   $ee, $4d, $59, $21, $6f, $d8, $4e, $f4        ;; 0d:57c8 ????????
     db   $12, $11, $00                                 ;; 0d:57d0 ???
-    db  $00 ;;RET                                      ;; 0d:57d3 $00
+    db  $00 ;;END                                      ;; 0d:57d3 $00
 
 script_01e9:
     db  $04 ;;MSG                                      ;; 0d:57d4 $04
@@ -3688,14 +3688,14 @@ script_01e9:
     db   $1b, $62, $e1, $58, $31, $3d, $e8, $e3        ;; 0d:5815 ????????
     db   $e3, $3c, $e7, $2f, $da, $1a, $21, $4c        ;; 0d:581d ????????
     db   $e1, $30, $67, $61, $12, $11, $00             ;; 0d:5825 ???????
-    db  $00 ;;RET                                      ;; 0d:582c $00
+    db  $00 ;;END                                      ;; 0d:582c $00
 
 script_01ea:
     db  $04 ;;MSG                                      ;; 0d:582d $04
     db   $10, $bd, $82, $e5, $53, $bc, $5a, $20        ;; 0d:582e ????????
     db   $31, $1a, $33, $22, $2a, $43, $54, $e7        ;; 0d:5836 ????????
     db   $f3, $12, $11, $00                            ;; 0d:583e ????
-    db  $00 ;;RET                                      ;; 0d:5842 $00
+    db  $00 ;;END                                      ;; 0d:5842 $00
 
 script_01eb:
     db  $04 ;;MSG                                      ;; 0d:5843 $04
@@ -3704,7 +3704,7 @@ script_01eb:
     db   $39, $22, $36, $d5, $20, $d4, $1a, $da        ;; 0d:5854 ????????
     db   $38, $30, $43, $2e, $e5, $dc, $3c, $f0        ;; 0d:585c ????????
     db   $12, $11, $00                                 ;; 0d:5864 ???
-    db  $00 ;;RET                                      ;; 0d:5867 $00
+    db  $00 ;;END                                      ;; 0d:5867 $00
 
 script_01ec:
     db  $04 ;;MSG                                      ;; 0d:5868 $04
@@ -3728,7 +3728,7 @@ script_01ec:
     db   $27, $4a, $6b, $d4, $f0, $00                  ;; 0d:58be ??????
     db  $04 ;;MSG                                      ;; 0d:58c4 $04
     db   $12, $11, $00                                 ;; 0d:58c5 ???
-    db  $00 ;;RET                                      ;; 0d:58c8 $00
+    db  $00 ;;END                                      ;; 0d:58c8 $00
 
 script_01ed:
     db  $04 ;;MSG                                      ;; 0d:58c9 $04
@@ -3736,7 +3736,7 @@ script_01ed:
     db   $d8, $1a, $cd, $38, $20, $50, $51, $29        ;; 0d:58d2 ????????
     db   $58, $31, $1a, $4d, $e5, $57, $d5, $32        ;; 0d:58da ????????
     db   $84, $dc, $d9, $90, $35, $12, $11, $00        ;; 0d:58e2 ????????
-    db  $00 ;;RET                                      ;; 0d:58ea $00
+    db  $00 ;;END                                      ;; 0d:58ea $00
 
 script_01ee:
     db  $04 ;;MSG                                      ;; 0d:58eb $04
@@ -3756,7 +3756,7 @@ script_01ee:
     db   $00                                           ;; 0d:5924 ?
     db  $04 ;;MSG                                      ;; 0d:5925 $04
     db   $12, $11, $00                                 ;; 0d:5926 ???
-    db  $00 ;;RET                                      ;; 0d:5929 $00
+    db  $00 ;;END                                      ;; 0d:5929 $00
 
 script_01ef:
     db  $0a ;;UNK_0a??                                 ;; 0d:592a $0a
@@ -3839,7 +3839,7 @@ script_01f0:
     db   $e5, $34, $bb, $46, $46, $f0, $1a, $97        ;; 0d:5b58 ????????
     db   $20, $de, $95, $ea, $26, $48, $43, $66        ;; 0d:5b60 ????????
     db   $df, $f0, $12, $11, $00                       ;; 0d:5b68 ?????
-    db  $00 ;;RET                                      ;; 0d:5b6d $00
+    db  $00 ;;END                                      ;; 0d:5b6d $00
 
 script_01f1:
     db  $ba ;;UNK_ba??                                 ;; 0d:5b6e $ba
@@ -3851,7 +3851,7 @@ script_01f2:
     db   $66, $d6, $64, $20, $33, $22, $2a, $1a        ;; 0d:5b7e ????????
     db   $bd, $82, $e5, $53, $bc, $5a, $9b, $12        ;; 0d:5b86 ????????
     db   $11, $00                                      ;; 0d:5b8e ??
-    db  $00 ;;RET                                      ;; 0d:5b90 $00
+    db  $00 ;;END                                      ;; 0d:5b90 $00
 
 script_01f3:
     db  $04 ;;MSG                                      ;; 0d:5b91 $04
@@ -3867,7 +3867,7 @@ script_01f3:
     db   $1a, $5d, $d4, $d7, $26, $33, $22, $2a        ;; 0d:5bb8 ????????
     db   $1a, $99, $45, $27, $4a, $df, $29, $d7        ;; 0d:5bc0 ????????
     db   $f0, $12, $11, $00                            ;; 0d:5bc8 ????
-    db  $00 ;;RET                                      ;; 0d:5bcc $00
+    db  $00 ;;END                                      ;; 0d:5bcc $00
 
 script_01f4:
     db  $04 ;;MSG                                      ;; 0d:5bcd $04
@@ -3897,7 +3897,7 @@ script_01f4:
     db   $d9, $d9, $f3, $00                            ;; 0d:5c42 ????
     db  $04 ;;MSG                                      ;; 0d:5c46 $04
     db   $12, $11, $00                                 ;; 0d:5c47 ???
-    db  $00 ;;RET                                      ;; 0d:5c4a $00
+    db  $00 ;;END                                      ;; 0d:5c4a $00
 
 script_01f5:
     db  $04 ;;MSG                                      ;; 0d:5c4b $04
@@ -3908,7 +3908,7 @@ script_01f5:
     db   $e5, $f0, $1a, $cc, $e7, $e5, $29, $da        ;; 0d:5c6c ????????
     db   $d8, $80, $31, $e1, $ee, $28, $48, $f4        ;; 0d:5c74 ????????
     db   $12, $11, $00                                 ;; 0d:5c7c ???
-    db  $00 ;;RET                                      ;; 0d:5c7f $00
+    db  $00 ;;END                                      ;; 0d:5c7f $00
 
 script_01f6:
     db  $04 ;;MSG                                      ;; 0d:5c80 $04
@@ -3931,10 +3931,10 @@ script_01f6:
     db   $4d, $4c, $45, $e8, $d9, $d9, $f3, $00        ;; 0d:5ccf ????????
     db  $04 ;;MSG                                      ;; 0d:5cd7 $04
     db   $12, $11, $00                                 ;; 0d:5cd8 ???
-    db  $00 ;;RET                                      ;; 0d:5cdb $00
+    db  $00 ;;END                                      ;; 0d:5cdb $00
 
 script_01f7:
-    db  $00 ;;RET                                      ;; 0d:5cdc $00
+    db  $00 ;;END                                      ;; 0d:5cdc $00
 
 script_01f8:
     db  $04 ;;MSG                                      ;; 0d:5cdd $04
@@ -4017,7 +4017,7 @@ script_01fe:
     db   $89, $6e, $d5, $67, $f3, $00, $da, $38        ;; 0d:5df8 ????????
     db  $04 ;;MSG                                      ;; 0d:5e00 $04
     db   $12, $11, $00                                 ;; 0d:5e01 ???
-    db  $00 ;;RET                                      ;; 0d:5e04 $00
+    db  $00 ;;END                                      ;; 0d:5e04 $00
 
 script_01ff:
     db  $08 ;;IF ? JR                                  ;; 0d:5e05 $08
@@ -4030,7 +4030,7 @@ script_01ff:
     db   $7f, $7e, $00, $02, $f8, $09, $08, $ff        ;; 0d:5e21 ????????
     db   $7e, $00, $02, $f8, $07, $08, $ff, $fe        ;; 0d:5e29 ????????
     db   $00, $02, $f8, $0e                            ;; 0d:5e31 ????
-    db  $00 ;;RET                                      ;; 0d:5e35 $00
+    db  $00 ;;END                                      ;; 0d:5e35 $00
 
 script_0200:
     db  $04 ;;MSG                                      ;; 0d:5e36 $04
@@ -4043,7 +4043,7 @@ script_0200:
     db   $00                                           ;; 0d:5e4e ?
 
 script_0201:
-    db  $00 ;;RET                                      ;; 0d:5e4f $00
+    db  $00 ;;END                                      ;; 0d:5e4f $00
 
 script_0202:
     db  $04 ;;MSG                                      ;; 0d:5e50 $04
@@ -4066,7 +4066,7 @@ script_0203:
     db   $d9, $d9, $27, $4e, $28, $ea, $2a, $4a        ;; 0d:5e9d ????????
     db   $24, $e8, $1a, $5c, $28, $23, $d8, $e0        ;; 0d:5ea5 ????????
     db   $f0, $12, $11, $00                            ;; 0d:5ead ????
-    db  $00 ;;RET                                      ;; 0d:5eb1 $00
+    db  $00 ;;END                                      ;; 0d:5eb1 $00
 
 script_0204:
     db  $04 ;;MSG                                      ;; 0d:5eb2 $04
@@ -4087,7 +4087,7 @@ script_0205:
     db   $2a, $4a, $24, $67, $6a, $83, $df, $1a        ;; 0d:5efd ????????
     db   $c9, $46, $27, $37, $26, $d9, $90, $df        ;; 0d:5f05 ????????
     db   $f0, $12, $11, $00                            ;; 0d:5f0d ????
-    db  $00 ;;RET                                      ;; 0d:5f11 $00
+    db  $00 ;;END                                      ;; 0d:5f11 $00
 
 script_0206:
     db  $04 ;;MSG                                      ;; 0d:5f12 $04
@@ -4098,7 +4098,7 @@ script_0206:
     db   $05                                           ;; 0d:5f28 ?
     db  $c2 ;;UNK_C2                                   ;; 0d:5f29 $c2
     db   $04                                           ;; 0d:5f2a ?
-    db  $00 ;;RET                                      ;; 0d:5f2b $00
+    db  $00 ;;END                                      ;; 0d:5f2b $00
 
 script_0207:
     db  $04 ;;MSG                                      ;; 0d:5f2c $04
@@ -4179,19 +4179,19 @@ script_0209:
     db   $ff, $5f, $64, $1a, $2f, $22, $5c, $26        ;; 0d:6110 ????????
     db   $8a, $e5, $e6, $5c, $e3, $f3, $12, $11        ;; 0d:6118 ????????
     db   $00                                           ;; 0d:6120 ?
-    db  $00 ;;RET                                      ;; 0d:6121 $00
+    db  $00 ;;END                                      ;; 0d:6121 $00
 
 script_020a:
-    db  $00 ;;RET                                      ;; 0d:6122 $00
+    db  $00 ;;END                                      ;; 0d:6122 $00
 
 script_020b:
     db  $04 ;;MSG                                      ;; 0d:6123 $04
     db   $10, $c0, $98, $6f, $d4, $9e, $22, $36        ;; 0d:6124 ????????
     db   $ea, $3c, $de, $f3, $12, $11, $00             ;; 0d:612c ???????
-    db  $00 ;;RET                                      ;; 0d:6133 $00
+    db  $00 ;;END                                      ;; 0d:6133 $00
 
 script_020c:
-    db  $00 ;;RET                                      ;; 0d:6134 $00
+    db  $00 ;;END                                      ;; 0d:6134 $00
 
 script_020d:
     db  $04 ;;MSG                                      ;; 0d:6135 $04
@@ -4204,7 +4204,7 @@ script_020d:
     db   $4c, $c0, $df, $8a, $4d, $f0, $1a, $35        ;; 0d:6166 ????????
     db   $68, $3b, $e7, $6c, $ff, $c3, $90, $dc        ;; 0d:616e ????????
     db   $41, $f0, $12, $11, $00                       ;; 0d:6176 ?????
-    db  $00 ;;RET                                      ;; 0d:617b $00
+    db  $00 ;;END                                      ;; 0d:617b $00
 
 script_020e:
     db  $04 ;;MSG                                      ;; 0d:617c $04
@@ -4213,7 +4213,7 @@ script_020e:
     db   $e5, $da, $20, $50, $22, $5c, $e6, $1a        ;; 0d:618d ????????
     db   $8a, $e5, $e6, $5c, $e3, $f0, $12, $11        ;; 0d:6195 ????????
     db   $00                                           ;; 0d:619d ?
-    db  $00 ;;RET                                      ;; 0d:619e $00
+    db  $00 ;;END                                      ;; 0d:619e $00
 
 script_020f:
     db  $14 ;;UNK_14??                                 ;; 0d:619f $14
@@ -4280,7 +4280,7 @@ script_0210:
     db   $40, $46, $22, $36, $da, $98, $22, $2a        ;; 0d:6367 ????????
     db   $38, $f0, $1a, $97, $d8, $ee, $3a, $40        ;; 0d:636f ????????
     db   $66, $e3, $59, $21, $f0, $00                  ;; 0d:6377 ??????
-    db  $00 ;;RET                                      ;; 0d:637d $00
+    db  $00 ;;END                                      ;; 0d:637d $00
 
 script_0211:
     db  $04 ;;MSG                                      ;; 0d:637e $04
@@ -4292,7 +4292,7 @@ script_0211:
     db   $83, $df, $d4, $da, $20, $32, $e5, $6e        ;; 0d:63a7 ????????
     db   $27, $1a, $23, $31, $42, $3c, $e1, $2f        ;; 0d:63af ????????
     db   $da, $f0, $12, $11, $00                       ;; 0d:63b7 ?????
-    db  $00 ;;RET                                      ;; 0d:63bc $00
+    db  $00 ;;END                                      ;; 0d:63bc $00
 
 script_0212:
     db  $04 ;;MSG                                      ;; 0d:63bd $04
@@ -4304,7 +4304,7 @@ script_0212:
     db   $4a, $d4, $1a, $d9, $3c, $54, $28, $e8        ;; 0d:63e6 ????????
     db   $e3, $ff, $95, $e5, $23, $f3, $12, $11        ;; 0d:63ee ????????
     db   $00                                           ;; 0d:63f6 ?
-    db  $00 ;;RET                                      ;; 0d:63f7 $00
+    db  $00 ;;END                                      ;; 0d:63f7 $00
 
 script_0213:
     db  $04 ;;MSG                                      ;; 0d:63f8 $04
@@ -4316,7 +4316,7 @@ script_0213:
     db   $2f, $da, $40, $2e, $e3, $1a, $2f, $2d        ;; 0d:6421 ????????
     db   $22, $46, $4a, $89, $3a, $39, $1a, $c3        ;; 0d:6429 ????????
     db   $d4, $d7, $d7, $f0, $12, $11, $00             ;; 0d:6431 ???????
-    db  $00 ;;RET                                      ;; 0d:6438 $00
+    db  $00 ;;END                                      ;; 0d:6438 $00
 
 script_0214:
     db  $04 ;;MSG                                      ;; 0d:6439 $04
@@ -4329,7 +4329,7 @@ script_0214:
     db   $e5, $23, $ff, $4e, $25, $50, $1a, $23        ;; 0d:646a ????????
     db   $20, $d7, $54, $27, $e7, $f0, $12, $11        ;; 0d:6472 ????????
     db   $00                                           ;; 0d:647a ?
-    db  $00 ;;RET                                      ;; 0d:647b $00
+    db  $00 ;;END                                      ;; 0d:647b $00
 
 script_0215:
     db  $04 ;;MSG                                      ;; 0d:647c $04
@@ -4338,7 +4338,7 @@ script_0215:
     db   $4e, $3d, $64, $d8, $ea, $2a, $38, $1a        ;; 0d:648d ????????
     db   $2f, $22, $2a, $ff, $d7, $54, $27, $e7        ;; 0d:6495 ????????
     db   $f3, $12, $11, $00                            ;; 0d:649d ????
-    db  $00 ;;RET                                      ;; 0d:64a1 $00
+    db  $00 ;;END                                      ;; 0d:64a1 $00
 
 script_0216:
     db  $04 ;;MSG                                      ;; 0d:64a2 $04
@@ -4347,7 +4347,7 @@ script_0216:
     db   $df, $30, $66, $ec, $f4, $1a, $cc, $2a        ;; 0d:64b3 ????????
     db   $6c, $ff, $d7, $d8, $e3, $38, $e6, $6b        ;; 0d:64bb ????????
     db   $d7, $f0, $12, $11, $00                       ;; 0d:64c3 ?????
-    db  $00 ;;RET                                      ;; 0d:64c8 $00
+    db  $00 ;;END                                      ;; 0d:64c8 $00
 
 script_0217:
     db  $04 ;;MSG                                      ;; 0d:64c9 $04
@@ -4401,7 +4401,7 @@ script_0218:
     db   $1a                                           ;; 0d:65e8 ?
     db  $04 ;;MSG                                      ;; 0d:65e9 $04
     db   $11, $00                                      ;; 0d:65ea ??
-    db  $00 ;;RET                                      ;; 0d:65ec $00
+    db  $00 ;;END                                      ;; 0d:65ec $00
 
 script_0219:
     db  $09 ;;IF ? JR                                  ;; 0d:65ed $09
@@ -4436,7 +4436,7 @@ script_021a:
     db   $34, $5b, $3b, $3f, $37, $e7, $f0, $00        ;; 0d:6669 ????????
     db  $04 ;;MSG                                      ;; 0d:6671 $04
     db   $12, $11, $00                                 ;; 0d:6672 ???
-    db  $00 ;;RET                                      ;; 0d:6675 $00
+    db  $00 ;;END                                      ;; 0d:6675 $00
 
 script_021b:
     db  $04 ;;MSG                                      ;; 0d:6676 $04
@@ -4459,7 +4459,7 @@ script_021b:
     db   $34, $cb, $e2, $9e, $e6, $f3, $00             ;; 0d:66c6 ???????
     db  $04 ;;MSG                                      ;; 0d:66cd $04
     db   $12, $11, $00                                 ;; 0d:66ce ???
-    db  $00 ;;RET                                      ;; 0d:66d1 $00
+    db  $00 ;;END                                      ;; 0d:66d1 $00
 
 script_021c:
     db  $04 ;;MSG                                      ;; 0d:66d2 $04
@@ -4468,7 +4468,7 @@ script_021c:
     db   $ea, $2a, $e1, $1a, $23, $20, $3b, $e5        ;; 0d:66e3 ????????
     db   $e3, $3d, $33, $e3, $e3, $39, $f0, $12        ;; 0d:66eb ????????
     db   $11, $00                                      ;; 0d:66f3 ??
-    db  $00 ;;RET                                      ;; 0d:66f5 $00
+    db  $00 ;;END                                      ;; 0d:66f5 $00
 
 script_021d:
     db  $04 ;;MSG                                      ;; 0d:66f6 $04
@@ -4477,7 +4477,7 @@ script_021d:
     db   $f4, $68, $3b, $e7, $6c, $1a, $bd, $5a        ;; 0d:6707 ????????
     db   $dc, $4b, $6c, $40, $21, $6b, $f3, $12        ;; 0d:670f ????????
     db   $11, $00                                      ;; 0d:6717 ??
-    db  $00 ;;RET                                      ;; 0d:6719 $00
+    db  $00 ;;END                                      ;; 0d:6719 $00
 
 script_021e:
     db  $04 ;;MSG                                      ;; 0d:671a $04
@@ -4491,7 +4491,7 @@ script_021e:
     db   $d6, $20, $29, $d7, $1a, $e1, $d8, $4d        ;; 0d:6753 ????????
     db   $4c, $89, $e0, $20, $92, $9e, $f3, $12        ;; 0d:675b ????????
     db   $11, $00                                      ;; 0d:6763 ??
-    db  $00 ;;RET                                      ;; 0d:6765 $00
+    db  $00 ;;END                                      ;; 0d:6765 $00
 
 script_021f:
     db  $04 ;;MSG                                      ;; 0d:6766 $04
@@ -4499,7 +4499,7 @@ script_021f:
     db   $24, $e8, $1a, $e1, $d8, $39, $2d, $22        ;; 0d:676f ????????
     db   $32, $8e, $5f, $e3, $1a, $50, $51, $39        ;; 0d:6777 ????????
     db   $41, $d4, $f0, $12, $11, $00                  ;; 0d:677f ??????
-    db  $00 ;;RET                                      ;; 0d:6785 $00
+    db  $00 ;;END                                      ;; 0d:6785 $00
 
 script_0220:
     db  $04 ;;MSG                                      ;; 0d:6786 $04
@@ -4516,7 +4516,7 @@ script_0220:
     db   $6f, $e2, $57, $de, $95, $ea, $e6, $1a        ;; 0d:67d7 ????????
     db   $db, $46, $22, $36, $da, $98, $37, $e1        ;; 0d:67df ????????
     db   $f3, $12, $11, $00                            ;; 0d:67e7 ????
-    db  $00 ;;RET                                      ;; 0d:67eb $00
+    db  $00 ;;END                                      ;; 0d:67eb $00
 
 script_0221:
     db  $04 ;;MSG                                      ;; 0d:67ec $04
@@ -4542,26 +4542,26 @@ script_0221:
     db   $5d, $f3, $00                                 ;; 0d:6855 ???
     db  $04 ;;MSG                                      ;; 0d:6858 $04
     db   $12, $11, $00                                 ;; 0d:6859 ???
-    db  $00 ;;RET                                      ;; 0d:685c $00
+    db  $00 ;;END                                      ;; 0d:685c $00
 
 script_0222:
     db  $04 ;;MSG                                      ;; 0d:685d $04
     db   $10, $8d, $45, $27, $f5, $c0, $5e, $25        ;; 0d:685e ????????
     db   $df, $e8, $9e, $f3, $12, $11, $00             ;; 0d:6866 ???????
-    db  $00 ;;RET                                      ;; 0d:686d $00
+    db  $00 ;;END                                      ;; 0d:686d $00
 
 script_0223:
     db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:686e $fc
     db   $5e                                           ;; 0d:686f ?
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:6870 $fd
     db   $00                                           ;; 0d:6871 ?
-    db  $00 ;;RET                                      ;; 0d:6872 $00
+    db  $00 ;;END                                      ;; 0d:6872 $00
 
 script_0224:
-    db  $00 ;;RET                                      ;; 0d:6873 $00
+    db  $00 ;;END                                      ;; 0d:6873 $00
 
 script_0225:
-    db  $00 ;;RET                                      ;; 0d:6874 $00
+    db  $00 ;;END                                      ;; 0d:6874 $00
 
 script_0226:
     db  $fd ;;SPAWN_ENEMY                              ;; 0d:6875 $fd
@@ -4574,7 +4574,7 @@ script_0226:
     db   $00                                           ;; 0d:6898 ?
     db  $da ;;UNK_DA                                   ;; 0d:6899 $da
     db   $1c                                           ;; 0d:689a ?
-    db  $00 ;;RET                                      ;; 0d:689b $00
+    db  $00 ;;END                                      ;; 0d:689b $00
 
 script_0227:
     db  $95 ;;UNK_95??                                 ;; 0d:689c $95
@@ -4672,7 +4672,7 @@ script_0229:
     db   $78                                           ;; 0d:6ab5 .
     db  $04 ;;MSG                                      ;; 0d:6ab6 $04
     db   $12, $11, $00                                 ;; 0d:6ab7 ...
-    db  $00 ;;RET                                      ;; 0d:6aba $00
+    db  $00 ;;END                                      ;; 0d:6aba $00
 
 script_022a:
     db  $04 ;;MSG                                      ;; 0d:6abb $04
@@ -4760,7 +4760,7 @@ script_022b:
     db   $5d, $25, $d0, $4e, $d7, $66, $f0, $1a        ;; 0d:6c90 ........
     db   $97, $20, $de, $95, $ea, $26, $e0, $3c        ;; 0d:6c98 ........
     db   $61, $12, $11, $00                            ;; 0d:6ca0 ....
-    db  $00 ;;RET                                      ;; 0d:6ca4 $00
+    db  $00 ;;END                                      ;; 0d:6ca4 $00
 
 script_022c:
     db  $04 ;;MSG                                      ;; 0d:6ca5 $04
@@ -4783,7 +4783,7 @@ script_022c:
     db   $47, $80, $14, $f0, $00                       ;; 0d:6cdc ?????
     db  $04 ;;MSG                                      ;; 0d:6ce1 $04
     db   $12, $11, $00                                 ;; 0d:6ce2 ???
-    db  $00 ;;RET                                      ;; 0d:6ce5 $00
+    db  $00 ;;END                                      ;; 0d:6ce5 $00
 
 script_022d:
     db  $04 ;;MSG                                      ;; 0d:6ce6 $04
@@ -4791,7 +4791,7 @@ script_022d:
     db   $ee, $3a, $22, $d4, $de, $d8, $1a, $87        ;; 0d:6cef ????????
     db   $2e, $20, $50, $40, $27, $f0, $12, $11        ;; 0d:6cf7 ????????
     db   $00                                           ;; 0d:6cff ?
-    db  $00 ;;RET                                      ;; 0d:6d00 $00
+    db  $00 ;;END                                      ;; 0d:6d00 $00
 
 script_022e:
     db  $04 ;;MSG                                      ;; 0d:6d01 $04
@@ -4803,7 +4803,7 @@ script_022e:
     db   $14                                           ;; 0d:6d1c ?
     db  $04 ;;MSG                                      ;; 0d:6d1d $04
     db   $c0, $e2, $28, $48, $f4, $00                  ;; 0d:6d1e ??????
-    db  $00 ;;RET                                      ;; 0d:6d24 $00
+    db  $00 ;;END                                      ;; 0d:6d24 $00
 
 script_022f:
     db  $04 ;;MSG                                      ;; 0d:6d25 $04
@@ -4846,7 +4846,7 @@ script_022f:
     db   $db, $f3, $00                                 ;; 0d:6e15 ???
     db  $04 ;;MSG                                      ;; 0d:6e18 $04
     db   $12, $11, $00                                 ;; 0d:6e19 ???
-    db  $00 ;;RET                                      ;; 0d:6e1c $00
+    db  $00 ;;END                                      ;; 0d:6e1c $00
 
 script_0230:
     db  $04 ;;MSG                                      ;; 0d:6e1d $04
@@ -4860,7 +4860,7 @@ script_0230:
     db   $4f, $f0, $12, $1b, $c1, $20, $6e, $4d        ;; 0d:6e56 ????????
     db   $26, $2f, $2d, $1a, $db, $21, $6b, $3e        ;; 0d:6e5e ????????
     db   $4d, $4c, $23, $27, $61, $12, $11, $00        ;; 0d:6e66 ????????
-    db  $00 ;;RET                                      ;; 0d:6e6e $00
+    db  $00 ;;END                                      ;; 0d:6e6e $00
 
 script_0231:
     db  $04 ;;MSG                                      ;; 0d:6e6f $04
@@ -4877,7 +4877,7 @@ script_0231:
     db   $2e, $9a                                      ;; 0d:6e90 ??
     db  $11 ;;UNK_11??                                 ;; 0d:6e92 $11
     db   $11, $15, $11, $11, $da, $20                  ;; 0d:6e93 ??????
-    db  $00 ;;RET                                      ;; 0d:6e99 $00
+    db  $00 ;;END                                      ;; 0d:6e99 $00
 
 script_0232:
     db  $04 ;;MSG                                      ;; 0d:6e9a $04
@@ -4923,7 +4923,7 @@ script_0232:
     db   $22, $38, $30, $39, $2d, $28, $bd, $e2        ;; 0d:6fd3 ????????
     db   $d6, $33, $e5, $1a, $ff, $bb, $46, $46        ;; 0d:6fdb ????????
     db   $6c, $40, $21, $6b, $f0, $12, $11, $00        ;; 0d:6fe3 ????????
-    db  $00 ;;RET                                      ;; 0d:6feb $00
+    db  $00 ;;END                                      ;; 0d:6feb $00
 
 script_0233:
     db  $04 ;;MSG                                      ;; 0d:6fec $04
@@ -4941,7 +4941,7 @@ script_0233:
     db   $cf, $29, $d7, $e2, $5d, $93, $dc, $54        ;; 0d:7045 ????????
     db   $ff, $44, $d7, $27, $1a, $23, $20, $d7        ;; 0d:704d ????????
     db   $54, $27, $e7, $f0, $12, $11, $00             ;; 0d:7055 ???????
-    db  $00 ;;RET                                      ;; 0d:705c $00
+    db  $00 ;;END                                      ;; 0d:705c $00
 
 script_0234:
     db  $04 ;;MSG                                      ;; 0d:705d $04
@@ -4953,7 +4953,7 @@ script_0234:
     db  $04 ;;MSG                                      ;; 0d:7076 $04
     db   $1a, $c2, $26, $48, $3d, $d4, $d9, $20        ;; 0d:7077 ????????
     db   $2a, $38, $f4, $12, $11, $00                  ;; 0d:707f ??????
-    db  $00 ;;RET                                      ;; 0d:7085 $00
+    db  $00 ;;END                                      ;; 0d:7085 $00
 
 script_0235:
     db  $04 ;;MSG                                      ;; 0d:7086 $04
@@ -4966,7 +4966,7 @@ script_0235:
     db   $da, $38, $30, $ff, $bd, $dc, $e0, $20        ;; 0d:70b7 ????????
     db   $cd, $46, $27, $f0, $1a, $bb, $84, $37        ;; 0d:70bf ????????
     db   $28, $e6, $29, $de, $35, $12, $11, $00        ;; 0d:70c7 ????????
-    db  $00 ;;RET                                      ;; 0d:70cf $00
+    db  $00 ;;END                                      ;; 0d:70cf $00
 
 script_0236:
     db  $04 ;;MSG                                      ;; 0d:70d0 $04
@@ -4980,7 +4980,7 @@ script_0236:
     db   $3c, $d7, $f3, $1a, $f1, $6a, $3b, $e7        ;; 0d:7109 ????????
     db   $ee, $3a, $43, $20, $d7, $e2, $f4, $12        ;; 0d:7111 ????????
     db   $11, $00                                      ;; 0d:7119 ??
-    db  $00 ;;RET                                      ;; 0d:711b $00
+    db  $00 ;;END                                      ;; 0d:711b $00
 
 script_0237:
     db  $04 ;;MSG                                      ;; 0d:711c $04
@@ -4990,25 +4990,25 @@ script_0237:
     db   $54, $27, $e7, $f0, $12, $1b, $be, $4d        ;; 0d:7135 ????????
     db   $4a, $d9, $3c, $ff, $bc, $db, $e2, $d6        ;; 0d:713d ????????
     db   $e2, $d5, $e2, $e6, $f3, $12, $11, $00        ;; 0d:7145 ????????
-    db  $00 ;;RET                                      ;; 0d:714d $00
+    db  $00 ;;END                                      ;; 0d:714d $00
 
 script_0238:
-    db  $00 ;;RET                                      ;; 0d:714e $00
+    db  $00 ;;END                                      ;; 0d:714e $00
 
 script_0239:
-    db  $00 ;;RET                                      ;; 0d:714f $00
+    db  $00 ;;END                                      ;; 0d:714f $00
 
 script_023a:
-    db  $00 ;;RET                                      ;; 0d:7150 $00
+    db  $00 ;;END                                      ;; 0d:7150 $00
 
 script_023b:
-    db  $00 ;;RET                                      ;; 0d:7151 $00
+    db  $00 ;;END                                      ;; 0d:7151 $00
 
 script_023c:
-    db  $00 ;;RET                                      ;; 0d:7152 $00
+    db  $00 ;;END                                      ;; 0d:7152 $00
 
 script_023d:
-    db  $00 ;;RET                                      ;; 0d:7153 $00
+    db  $00 ;;END                                      ;; 0d:7153 $00
 
 script_023e:
     db  $04 ;;MSG                                      ;; 0d:7154 $04
@@ -5018,7 +5018,7 @@ script_023e:
     db   $9d, $1a, $be, $c7, $be, $cb, $c0, $d2        ;; 0d:716d ????????
     db   $ff, $c8, $bf, $ff, $c7, $ba, $cd, $ce        ;; 0d:7175 ????????
     db   $cb, $be, $f0, $12, $11, $00                  ;; 0d:717d ??????
-    db  $00 ;;RET                                      ;; 0d:7183 $00
+    db  $00 ;;END                                      ;; 0d:7183 $00
 
 script_023f:
     db  $04 ;;MSG                                      ;; 0d:7184 $04
@@ -5028,7 +5028,7 @@ script_023f:
     db   $c6, $ba, $c4, $be, $cc, $1a, $cd, $9d        ;; 0d:719d ????????
     db   $68, $cb, $be, $6d, $be, $cf, $c2, $c5        ;; 0d:71a5 ????????
     db   $f0, $12, $11, $00                            ;; 0d:71ad ????
-    db  $00 ;;RET                                      ;; 0d:71b1 $00
+    db  $00 ;;END                                      ;; 0d:71b1 $00
 
 script_0240:
     db  $04 ;;MSG                                      ;; 0d:71b2 $04
@@ -5044,7 +5044,7 @@ script_0240:
     db   $be, $c7, $1a, $be, $c7, $be, $cb, $c0        ;; 0d:71fb ????????
     db   $d2, $ff, $ba, $c7, $bd, $51, $ba, $c7        ;; 0d:7203 ????????
     db   $ba, $f0, $12, $11, $00                       ;; 0d:720b ?????
-    db  $00 ;;RET                                      ;; 0d:7210 $00
+    db  $00 ;;END                                      ;; 0d:7210 $00
 
 script_0241:
     db  $04 ;;MSG                                      ;; 0d:7211 $04
@@ -5054,7 +5054,7 @@ script_0241:
     db   $c0, $be, $cd, $cc, $1a, $cd, $9d, $51        ;; 0d:722a ????????
     db   $c2, $c0, $c1, $cd, $d2, $ff, $c9, $c8        ;; 0d:7232 ????????
     db   $d0, $be, $cb, $f0, $12, $11, $00             ;; 0d:723a ???????
-    db  $00 ;;RET                                      ;; 0d:7241 $00
+    db  $00 ;;END                                      ;; 0d:7241 $00
 
 script_0242:
     db  $04 ;;MSG                                      ;; 0d:7242 $04
@@ -5073,7 +5073,7 @@ script_0242:
     db   $35, $1a, $d0, $c2, $cd, $c1, $68, $9d        ;; 0d:72a3 ????????
     db   $35, $1a, $be, $d1, $bc, $ba, $c5, $c2        ;; 0d:72ab ????????
     db   $bb, $ce, $cb, $35, $12, $11, $00             ;; 0d:72b3 ???????
-    db  $00 ;;RET                                      ;; 0d:72ba $00
+    db  $00 ;;END                                      ;; 0d:72ba $00
 
 script_0243:
     db  $04 ;;MSG                                      ;; 0d:72bb $04
@@ -5092,7 +5092,7 @@ script_0243:
     db   $cb, $bd, $ef, $1a, $be, $d1, $bc, $ba        ;; 0d:731c ????????
     db   $c5, $c2, $bb, $ce, $cb, $35, $f3, $12        ;; 0d:7324 ????????
     db   $11, $00                                      ;; 0d:732c ??
-    db  $00 ;;RET                                      ;; 0d:732e $00
+    db  $00 ;;END                                      ;; 0d:732e $00
 
 script_0244:
     db  $04 ;;MSG                                      ;; 0d:732f $04
@@ -5102,7 +5102,7 @@ script_0244:
     db   $68, $9d, $1a, $cc, $c1, $cb, $c2, $c7        ;; 0d:7348 ????????
     db   $6d, $c8, $bf, $51, $ba, $c7, $ba, $f0        ;; 0d:7350 ????????
     db   $12, $11, $00                                 ;; 0d:7358 ???
-    db  $00 ;;RET                                      ;; 0d:735b $00
+    db  $00 ;;END                                      ;; 0d:735b $00
 
 script_0245:
     db  $04 ;;MSG                                      ;; 0d:735c $04
@@ -5122,7 +5122,7 @@ script_0245:
     db   $bc, $c1, $c2, $c5, $bd, $1a, $c8, $bf        ;; 0d:73c5 ????????
     db   $97, $c8, $c9, $be, $35, $f3, $12, $11        ;; 0d:73cd ????????
     db   $00                                           ;; 0d:73d5 ?
-    db  $00 ;;RET                                      ;; 0d:73d6 $00
+    db  $00 ;;END                                      ;; 0d:73d6 $00
 
 script_0246:
     db  $f9 ;;SFX                                      ;; 0d:73d7 $f9
@@ -5143,7 +5143,7 @@ script_0248:
     db   $43, $01, $04                                 ;; 0d:73ec ???
     db  $b0 ;;SET_ROOM_TILE                            ;; 0d:73ef $b0
     db   $31, $01, $05                                 ;; 0d:73f0 ???
-    db  $00 ;;RET                                      ;; 0d:73f3 $00
+    db  $00 ;;END                                      ;; 0d:73f3 $00
 
 script_0249:
     db  $bf ;;UNK_bf??                                 ;; 0d:73f4 $bf
@@ -5216,22 +5216,22 @@ script_0249:
     db   $f0, $3c, $bc, $f0, $3c, $db, $57, $00        ;; 0d:7605 ????????
 
 script_024a:
-    db  $00 ;;RET                                      ;; 0d:760d $00
+    db  $00 ;;END                                      ;; 0d:760d $00
 
 script_024b:
-    db  $00 ;;RET                                      ;; 0d:760e $00
+    db  $00 ;;END                                      ;; 0d:760e $00
 
 script_024c:
-    db  $00 ;;RET                                      ;; 0d:760f $00
+    db  $00 ;;END                                      ;; 0d:760f $00
 
 script_024d:
-    db  $00 ;;RET                                      ;; 0d:7610 $00
+    db  $00 ;;END                                      ;; 0d:7610 $00
 
 script_024e:
-    db  $00 ;;RET                                      ;; 0d:7611 $00
+    db  $00 ;;END                                      ;; 0d:7611 $00
 
 script_024f:
-    db  $03 ;;PLAYER_WALK                              ;; 0d:7612 $03
+    db  $03 ;;LOOP                                     ;; 0d:7612 $03
     db   $08, $04                                      ;; 0d:7613 ??
     db  $f9 ;;SFX                                      ;; 0d:7615 $f9
     db   $14                                           ;; 0d:7616 ?
@@ -5271,32 +5271,32 @@ script_0250:
     db   $64, $f0, $00                                 ;; 0d:76cd ???
     db  $04 ;;MSG                                      ;; 0d:76d0 $04
     db   $12, $11, $00                                 ;; 0d:76d1 ???
-    db  $00 ;;RET                                      ;; 0d:76d4 $00
+    db  $00 ;;END                                      ;; 0d:76d4 $00
 
 script_0251:
     db  $04 ;;MSG                                      ;; 0d:76d5 $04
     db   $10, $35, $ff, $bf, $5f, $ed, $4e, $f0        ;; 0d:76d6 ????????
     db   $12, $11, $00                                 ;; 0d:76de ???
-    db  $00 ;;RET                                      ;; 0d:76e1 $00
+    db  $00 ;;END                                      ;; 0d:76e1 $00
 
 script_0252:
     db  $04 ;;MSG                                      ;; 0d:76e2 $04
     db   $10, $d0, $46, $f3, $1a, $c0, $5e, $25        ;; 0d:76e3 ????????
     db   $e0, $3c, $e1, $2f, $da, $f3, $12, $11        ;; 0d:76eb ????????
     db   $00                                           ;; 0d:76f3 ?
-    db  $00 ;;RET                                      ;; 0d:76f4 $00
+    db  $00 ;;END                                      ;; 0d:76f4 $00
 
 script_0253:
     db  $04 ;;MSG                                      ;; 0d:76f5 $04
     db   $10, $d0, $66, $d6, $64, $20, $33, $ff        ;; 0d:76f6 ????????
     db   $c5, $3c, $dc, $e0, $f3, $12, $11, $00        ;; 0d:76fe ????????
-    db  $00 ;;RET                                      ;; 0d:7706 $00
+    db  $00 ;;END                                      ;; 0d:7706 $00
 
 script_0254:
-    db  $00 ;;RET                                      ;; 0d:7707 $00
+    db  $00 ;;END                                      ;; 0d:7707 $00
 
 script_0255:
-    db  $00 ;;RET                                      ;; 0d:7708 $00
+    db  $00 ;;END                                      ;; 0d:7708 $00
 
 script_0256:
     db  $08 ;;IF ? JR                                  ;; 0d:7709 $08
@@ -5311,7 +5311,7 @@ script_0256:
     db   $89, $00, $03                                 ;; 0d:771a ...
     db  $02 ;;CALL                                     ;; 0d:771d $02
     db   $38, $f9                                      ;; 0d:771e ..
-    db  $00 ;;RET                                      ;; 0d:7720 $00
+    db  $00 ;;END                                      ;; 0d:7720 $00
 
 script_0257:
     db  $08 ;;IF ? JR                                  ;; 0d:7721 $08
@@ -5330,7 +5330,7 @@ script_0257:
     db   $8c, $00, $03                                 ;; 0d:7739 ..?
     db  $02 ;;CALL                                     ;; 0d:773c $02
     db   $2a, $48                                      ;; 0d:773d ..
-    db  $00 ;;RET                                      ;; 0d:773f $00
+    db  $00 ;;END                                      ;; 0d:773f $00
 
 script_0258:
     db  $08 ;;IF ? JR                                  ;; 0d:7740 $08
@@ -5341,7 +5341,7 @@ script_0258:
     db   $8b, $00, $03                                 ;; 0d:7748 ???
     db  $02 ;;CALL                                     ;; 0d:774b $02
     db   $3a, $53                                      ;; 0d:774c ??
-    db  $00 ;;RET                                      ;; 0d:774e $00
+    db  $00 ;;END                                      ;; 0d:774e $00
 
 script_0259:
     db  $08 ;;IF ? JR                                  ;; 0d:774f $08
@@ -5352,7 +5352,7 @@ script_0259:
     db   $a3, $00, $03                                 ;; 0d:7758 ???
     db  $02 ;;CALL                                     ;; 0d:775b $02
     db   $16, $e8                                      ;; 0d:775c ??
-    db  $00 ;;RET                                      ;; 0d:775e $00
+    db  $00 ;;END                                      ;; 0d:775e $00
 
 script_025a:
     db  $08 ;;IF ? JR                                  ;; 0d:775f $08
@@ -5363,13 +5363,13 @@ script_025a:
     db   $9f, $00, $03                                 ;; 0d:7767 ???
     db  $02 ;;CALL                                     ;; 0d:776a $02
     db   $18, $eb                                      ;; 0d:776b ??
-    db  $00 ;;RET                                      ;; 0d:776d $00
+    db  $00 ;;END                                      ;; 0d:776d $00
 
 script_025b:
-    db  $00 ;;RET                                      ;; 0d:776e $00
+    db  $00 ;;END                                      ;; 0d:776e $00
 
 script_025c:
-    db  $00 ;;RET                                      ;; 0d:776f $00
+    db  $00 ;;END                                      ;; 0d:776f $00
 
 script_025d:
     db  $08 ;;IF ? JR                                  ;; 0d:7770 $08
@@ -5388,7 +5388,7 @@ script_025d:
     db   $76, $00, $02                                 ;; 0d:7787 ???
     db  $f6 ;;UNK_f6??                                 ;; 0d:778a $f6
     db   $10                                           ;; 0d:778b ?
-    db  $00 ;;RET                                      ;; 0d:778c $00
+    db  $00 ;;END                                      ;; 0d:778c $00
 
 script_025e:
     db  $15 ;;UNK_15??                                 ;; 0d:778d $15
@@ -5447,20 +5447,20 @@ script_0261:
     db   $2b, $3d, $d8, $20, $e0, $ec, $1a, $93        ;; 0d:78e3 ........
     db   $48, $e7, $5d, $6f, $5f, $23, $27, $35        ;; 0d:78eb ........
     db   $12, $11, $00                                 ;; 0d:78f3 ...
-    db  $00 ;;RET                                      ;; 0d:78f6 $00
+    db  $00 ;;END                                      ;; 0d:78f6 $00
 
 script_0262:
-    db  $00 ;;RET                                      ;; 0d:78f7 $00
+    db  $00 ;;END                                      ;; 0d:78f7 $00
 
 script_0263:
-    db  $00 ;;RET                                      ;; 0d:78f8 $00
+    db  $00 ;;END                                      ;; 0d:78f8 $00
 
 script_0264:
     db  $04 ;;MSG                                      ;; 0d:78f9 $04
     db   $10, $14, $f5, $d0, $83, $df, $ec, $35        ;; 0d:78fa ........
     db   $1a, $49, $ee, $3a, $2d, $4d, $4f, $20        ;; 0d:7902 ........
     db   $24, $e8, $f3, $12, $11, $00                  ;; 0d:790a ......
-    db  $00 ;;RET                                      ;; 0d:7910 $00
+    db  $00 ;;END                                      ;; 0d:7910 $00
 
 script_0265:
     db  $04 ;;MSG                                      ;; 0d:7911 $04
@@ -5470,7 +5470,7 @@ script_0265:
     db   $33, $3e, $84, $e6, $dc, $d7, $61, $12        ;; 0d:792a ........
     db   $1b, $cd, $d4, $de, $20, $24, $67, $87        ;; 0d:7932 ........
     db   $3b, $e1, $d6, $9b, $12, $11, $00             ;; 0d:793a .......
-    db  $00 ;;RET                                      ;; 0d:7941 $00
+    db  $00 ;;END                                      ;; 0d:7941 $00
 
 script_0266:
     db  $04 ;;MSG                                      ;; 0d:7942 $04
@@ -5478,7 +5478,7 @@ script_0266:
     db   $da, $42, $29, $f3, $1a, $d0, $66, $d6        ;; 0d:794b ........
     db   $64, $20, $33, $68, $e2, $e3, $e3, $5d        ;; 0d:7953 ........
     db   $f3, $12, $11, $00                            ;; 0d:795b ....
-    db  $00 ;;RET                                      ;; 0d:795f $00
+    db  $00 ;;END                                      ;; 0d:795f $00
 
 script_0267:
     db  $04 ;;MSG                                      ;; 0d:7960 $04
@@ -5487,7 +5487,7 @@ script_0267:
     db   $f3, $f3, $69, $5b, $89, $e1, $ee, $e7        ;; 0d:7971 ........
     db   $1a, $45, $29, $25, $48, $2d, $e1, $ec        ;; 0d:7979 ........
     db   $e0, $3c, $9b, $12, $11, $00                  ;; 0d:7981 ......
-    db  $00 ;;RET                                      ;; 0d:7987 $00
+    db  $00 ;;END                                      ;; 0d:7987 $00
 
 script_0268:
     db  $04 ;;MSG                                      ;; 0d:7988 $04
@@ -5500,7 +5500,7 @@ script_0268:
     db   $d6, $38, $28, $50, $1a, $23, $20, $cd        ;; 0d:79b9 ........
     db   $38, $20, $50, $51, $29, $d4, $f4, $12        ;; 0d:79c1 ........
     db   $11, $00                                      ;; 0d:79c9 ..
-    db  $00 ;;RET                                      ;; 0d:79cb $00
+    db  $00 ;;END                                      ;; 0d:79cb $00
 
 script_0269:
     db  $04 ;;MSG                                      ;; 0d:79cc $04
@@ -5513,7 +5513,7 @@ script_0269:
     db   $28, $de, $e1, $8f, $91, $ef, $1a, $d5        ;; 0d:79fd ........
     db   $84, $ff, $95, $28, $29, $ec, $e0, $3c        ;; 0d:7a05 ........
     db   $9b, $12, $11, $00                            ;; 0d:7a0d ....
-    db  $00 ;;RET                                      ;; 0d:7a11 $00
+    db  $00 ;;END                                      ;; 0d:7a11 $00
 
 script_026a:
     db  $04 ;;MSG                                      ;; 0d:7a12 $04
@@ -5525,7 +5525,7 @@ script_026a:
     db   $5f, $3f, $d6, $e7, $2f, $da, $ff, $41        ;; 0d:7a3b ........
     db   $1a, $d9, $5f, $8c, $d8, $e9, $83, $22        ;; 0d:7a43 ........
     db   $5c, $4f, $e6, $f0, $12, $11, $00             ;; 0d:7a4b .......
-    db  $00 ;;RET                                      ;; 0d:7a52 $00
+    db  $00 ;;END                                      ;; 0d:7a52 $00
 
 script_026b:
     db  $04 ;;MSG                                      ;; 0d:7a53 $04
@@ -5533,7 +5533,7 @@ script_026b:
     db   $e0, $6c, $60, $e2, $e7, $1a, $2d, $3d        ;; 0d:7a5c ????????
     db   $27, $dc, $21, $26, $ea, $21, $2b, $f3        ;; 0d:7a64 ????????
     db   $12, $11, $00                                 ;; 0d:7a6c ???
-    db  $00 ;;RET                                      ;; 0d:7a6f $00
+    db  $00 ;;END                                      ;; 0d:7a6f $00
 
 script_026c:
     db  $08 ;;IF ? JR                                  ;; 0d:7a70 $08
@@ -5570,7 +5570,7 @@ script_026c:
     db  $9c ;;UNK_9c??                                 ;; 0d:7b0b $9c
     db   $01, $04, $11, $00, $da, $0b, $da, $51        ;; 0d:7b0c ........
     db   $f8, $14                                      ;; 0d:7b14 ..
-    db  $00 ;;RET                                      ;; 0d:7b16 $00
+    db  $00 ;;END                                      ;; 0d:7b16 $00
 
 script_026d:
     db  $04 ;;MSG                                      ;; 0d:7b17 $04
@@ -5610,7 +5610,7 @@ script_0270:
     db  $01 ;;JR                                       ;; 0d:7bab $01
     db   $0b, $04, $10, $ff, $c5, $e2, $9e, $39        ;; 0d:7bac ????????
     db   $f0, $12, $11, $00                            ;; 0d:7bb4 ????
-    db  $00 ;;RET                                      ;; 0d:7bb8 $00
+    db  $00 ;;END                                      ;; 0d:7bb8 $00
 
 script_0271:
     db  $0b ;;IF JR                                    ;; 0d:7bb9 $0b
@@ -5628,7 +5628,7 @@ script_0271:
     db  $f8 ;;SET_MUSIC                                ;; 0d:7bcd $f8
     db   $04                                           ;; 0d:7bce .
     db  $ec ;;UNK_ec??                                 ;; 0d:7bcf $ec
-    db  $00 ;;RET                                      ;; 0d:7bd0 $00
+    db  $00 ;;END                                      ;; 0d:7bd0 $00
 
 script_0272:
     db  $0b ;;IF JR                                    ;; 0d:7bd1 $0b
@@ -5641,7 +5641,7 @@ script_0272:
     db   $02, $08, $a6, $00, $06, $db, $78, $db        ;; 0d:7bdd ....?...
     db   $79, $db, $7a, $08, $0c, $00, $03, $f9        ;; 0d:7be5 .......?
     db   $10, $e0, $ec                                 ;; 0d:7bed ??.
-    db  $00 ;;RET                                      ;; 0d:7bf0 $00
+    db  $00 ;;END                                      ;; 0d:7bf0 $00
 
 script_0273:
     db  $0b ;;IF JR                                    ;; 0d:7bf1 $0b
@@ -5655,7 +5655,7 @@ script_0273:
     db  $f4 ;;LOAD_MAP                                 ;; 0d:7bfd $f4
     db   $03, $11, $09, $07                            ;; 0d:7bfe ????
     db  $ec ;;UNK_ec??                                 ;; 0d:7c02 $ec
-    db  $00 ;;RET                                      ;; 0d:7c03 $00
+    db  $00 ;;END                                      ;; 0d:7c03 $00
 
 script_0274:
     db  $0b ;;IF JR                                    ;; 0d:7c04 $0b
@@ -5669,7 +5669,7 @@ script_0274:
     db  $f4 ;;LOAD_MAP                                 ;; 0d:7c10 $f4
     db   $06, $07, $09, $07                            ;; 0d:7c11 ????
     db  $ec ;;UNK_ec??                                 ;; 0d:7c15 $ec
-    db  $00 ;;RET                                      ;; 0d:7c16 $00
+    db  $00 ;;END                                      ;; 0d:7c16 $00
 
 script_0275:
     db  $0b ;;IF JR                                    ;; 0d:7c17 $0b
@@ -5695,7 +5695,7 @@ script_0275:
     db  $01 ;;JR                                       ;; 0d:7c37 $01
     db   $0b, $04, $10, $ff, $c5, $e2, $9e, $39        ;; 0d:7c38 ?.......
     db   $f0, $12, $11, $00                            ;; 0d:7c40 ....
-    db  $00 ;;RET                                      ;; 0d:7c44 $00
+    db  $00 ;;END                                      ;; 0d:7c44 $00
 
 script_0276:
     db  $0b ;;IF JR                                    ;; 0d:7c45 $0b
@@ -5709,7 +5709,7 @@ script_0276:
     db  $c5 ;;UNK_c5??                                 ;; 0d:7c52 $c5
     db   $00, $f4, $03, $41, $09, $0c, $f8, $07        ;; 0d:7c53 ????????
     db   $ec                                           ;; 0d:7c5b ?
-    db  $00 ;;RET                                      ;; 0d:7c5c $00
+    db  $00 ;;END                                      ;; 0d:7c5c $00
 
 script_0277:
     db  $0b ;;IF JR                                    ;; 0d:7c5d $0b
@@ -5725,7 +5725,7 @@ script_0277:
     db  $f8 ;;SET_MUSIC                                ;; 0d:7c6f $f8
     db   $0b                                           ;; 0d:7c70 ?
     db  $ec ;;UNK_ec??                                 ;; 0d:7c71 $ec
-    db  $00 ;;RET                                      ;; 0d:7c72 $00
+    db  $00 ;;END                                      ;; 0d:7c72 $00
 
 script_0278:
     db  $0b ;;IF JR                                    ;; 0d:7c73 $0b
@@ -5741,7 +5741,7 @@ script_0278:
     db  $f8 ;;SET_MUSIC                                ;; 0d:7c85 $f8
     db   $18                                           ;; 0d:7c86 ?
     db  $ec ;;UNK_ec??                                 ;; 0d:7c87 $ec
-    db  $00 ;;RET                                      ;; 0d:7c88 $00
+    db  $00 ;;END                                      ;; 0d:7c88 $00
 
 script_0279:
     db  $0b ;;IF JR                                    ;; 0d:7c89 $0b
@@ -5767,7 +5767,7 @@ script_0279:
     db  $f8 ;;SET_MUSIC                                ;; 0d:7cc3 $f8
     db   $07                                           ;; 0d:7cc4 ?
     db  $ec ;;UNK_ec??                                 ;; 0d:7cc5 $ec
-    db  $00 ;;RET                                      ;; 0d:7cc6 $00
+    db  $00 ;;END                                      ;; 0d:7cc6 $00
 
 script_027a:
     db  $0b ;;IF JR                                    ;; 0d:7cc7 $0b
@@ -5793,7 +5793,7 @@ script_027a:
     db   $28, $04, $69, $d2, $e8, $9e, $f3, $f3        ;; 0d:7d2f ????????
     db   $00, $f0, $3c, $04, $11, $00, $f9, $0c        ;; 0d:7d37 ????????
     db   $8a, $0c, $03, $03, $02, $02, $81, $00        ;; 0d:7d3f ????????
-    db  $00 ;;RET                                      ;; 0d:7d47 $00
+    db  $00 ;;END                                      ;; 0d:7d47 $00
 
 script_027b:
     db  $0b ;;IF JR                                    ;; 0d:7d48 $0b
@@ -5803,7 +5803,7 @@ script_027b:
     db  $f8 ;;SET_MUSIC                                ;; 0d:7d51 $f8
     db   $07                                           ;; 0d:7d52 ?
     db  $ec ;;UNK_ec??                                 ;; 0d:7d53 $ec
-    db  $00 ;;RET                                      ;; 0d:7d54 $00
+    db  $00 ;;END                                      ;; 0d:7d54 $00
 
 script_027c:
     db  $0b ;;IF JR                                    ;; 0d:7d55 $0b
@@ -5815,7 +5815,7 @@ script_027c:
     db  $f8 ;;SET_MUSIC                                ;; 0d:7d62 $f8
     db   $0e                                           ;; 0d:7d63 ?
     db  $ec ;;UNK_ec??                                 ;; 0d:7d64 $ec
-    db  $00 ;;RET                                      ;; 0d:7d65 $00
+    db  $00 ;;END                                      ;; 0d:7d65 $00
 
 script_027d:
     db  $0b ;;IF JR                                    ;; 0d:7d66 $0b
@@ -5824,7 +5824,7 @@ script_027d:
     db   $18                                           ;; 0d:7d6b ?
     db  $b0 ;;SET_ROOM_TILE                            ;; 0d:7d6c $b0
     db   $02, $01, $01                                 ;; 0d:7d6d ???
-    db  $00 ;;RET                                      ;; 0d:7d70 $00
+    db  $00 ;;END                                      ;; 0d:7d70 $00
 
 script_027e:
     db  $0b ;;IF JR                                    ;; 0d:7d71 $0b
@@ -5839,7 +5839,7 @@ script_027e:
     db   $18                                           ;; 0d:7d81 ?
     db  $b0 ;;SET_ROOM_TILE                            ;; 0d:7d82 $b0
     db   $00, $08, $01                                 ;; 0d:7d83 ???
-    db  $00 ;;RET                                      ;; 0d:7d86 $00
+    db  $00 ;;END                                      ;; 0d:7d86 $00
 
 script_027f:
     db  $0b ;;IF JR                                    ;; 0d:7d87 $0b
@@ -5855,7 +5855,7 @@ script_027f:
     db  $f8 ;;SET_MUSIC                                ;; 0d:7d99 $f8
     db   $04                                           ;; 0d:7d9a ?
     db  $ec ;;UNK_ec??                                 ;; 0d:7d9b $ec
-    db  $00 ;;RET                                      ;; 0d:7d9c $00
+    db  $00 ;;END                                      ;; 0d:7d9c $00
 
 script_0280:
     db  $0b ;;IF JR                                    ;; 0d:7d9d $0b
@@ -5877,7 +5877,7 @@ script_0280:
     db  $f8 ;;SET_MUSIC                                ;; 0d:7db9 $f8
     db   $0d                                           ;; 0d:7dba ?
     db  $ec ;;UNK_ec??                                 ;; 0d:7dbb $ec
-    db  $00 ;;RET                                      ;; 0d:7dbc $00
+    db  $00 ;;END                                      ;; 0d:7dbc $00
 
 script_0281:
     db  $0b ;;IF JR                                    ;; 0d:7dbd $0b
@@ -5907,7 +5907,7 @@ script_0281:
     db   $6f, $d4, $9e, $f3, $00, $01, $03, $02        ;; 0d:7e02 ????????
     db   $6d, $f9, $04, $12, $11, $00, $9c, $05        ;; 0d:7e0a ????????
     db   $da, $55                                      ;; 0d:7e12 ??
-    db  $00 ;;RET                                      ;; 0d:7e14 $00
+    db  $00 ;;END                                      ;; 0d:7e14 $00
 
 script_0282:
     db  $0b ;;IF JR                                    ;; 0d:7e15 $0b
@@ -5937,10 +5937,10 @@ script_0282:
     db   $cd, $ba, $c4, $6d, $c6, $6d, $d0, $c2        ;; 0d:7e9b ????????
     db   $cd, $c1, $ff, $d2, $c8, $ce, $f0, $12        ;; 0d:7ea3 ????????
     db   $11, $00, $9c, $07, $da, $57                  ;; 0d:7eab ??????
-    db  $00 ;;RET                                      ;; 0d:7eb1 $00
+    db  $00 ;;END                                      ;; 0d:7eb1 $00
 
 script_0283:
-    db  $00 ;;RET                                      ;; 0d:7eb2 $00
+    db  $00 ;;END                                      ;; 0d:7eb2 $00
 
 script_0284:
     db  $0b ;;IF JR                                    ;; 0d:7eb3 $0b
@@ -5956,7 +5956,7 @@ script_0284:
     db  $f8 ;;SET_MUSIC                                ;; 0d:7ec5 $f8
     db   $08                                           ;; 0d:7ec6 ?
     db  $ec ;;UNK_ec??                                 ;; 0d:7ec7 $ec
-    db  $00 ;;RET                                      ;; 0d:7ec8 $00
+    db  $00 ;;END                                      ;; 0d:7ec8 $00
 
 script_0285:
     db  $0b ;;IF JR                                    ;; 0d:7ec9 $0b
@@ -5972,7 +5972,7 @@ script_0285:
     db  $f8 ;;SET_MUSIC                                ;; 0d:7edb $f8
     db   $08                                           ;; 0d:7edc ?
     db  $ec ;;UNK_ec??                                 ;; 0d:7edd $ec
-    db  $00 ;;RET                                      ;; 0d:7ede $00
+    db  $00 ;;END                                      ;; 0d:7ede $00
 
 script_0286:
     db  $0b ;;IF JR                                    ;; 0d:7edf $0b
@@ -5987,7 +5987,7 @@ script_0286:
     db   $08, $03, $08, $08                            ;; 0d:7eed ????
     db  $f8 ;;SET_MUSIC                                ;; 0d:7ef1 $f8
     db   $07                                           ;; 0d:7ef2 ?
-    db  $00 ;;RET                                      ;; 0d:7ef3 $00
+    db  $00 ;;END                                      ;; 0d:7ef3 $00
 
 script_0287:
     db  $0b ;;IF JR                                    ;; 0d:7ef4 $0b
@@ -5996,7 +5996,7 @@ script_0287:
     db   $0f, $10, $10, $02                            ;; 0d:7ef9 ????
     db  $f8 ;;SET_MUSIC                                ;; 0d:7efd $f8
     db   $07                                           ;; 0d:7efe ?
-    db  $00 ;;RET                                      ;; 0d:7eff $00
+    db  $00 ;;END                                      ;; 0d:7eff $00
 
 script_0288:
     db  $0b ;;IF JR                                    ;; 0d:7f00 $0b
@@ -6018,7 +6018,7 @@ script_0288:
     db  $f8 ;;SET_MUSIC                                ;; 0d:7f1a $f8
     db   $1b                                           ;; 0d:7f1b ?
     db  $ec ;;UNK_ec??                                 ;; 0d:7f1c $ec
-    db  $00 ;;RET                                      ;; 0d:7f1d $00
+    db  $00 ;;END                                      ;; 0d:7f1d $00
 
 script_0289:
     db  $0b ;;IF JR                                    ;; 0d:7f1e $0b
@@ -6028,7 +6028,7 @@ script_0289:
     db  $f8 ;;SET_MUSIC                                ;; 0d:7f27 $f8
     db   $0c                                           ;; 0d:7f28 ?
     db  $ec ;;UNK_ec??                                 ;; 0d:7f29 $ec
-    db  $00 ;;RET                                      ;; 0d:7f2a $00
+    db  $00 ;;END                                      ;; 0d:7f2a $00
 
 script_028a:
     db  $0b ;;IF JR                                    ;; 0d:7f2b $0b
@@ -6043,7 +6043,7 @@ script_028a:
     db   $04, $f4, $03, $47, $09, $0c, $08, $2d        ;; 0d:7f39 ????????
     db   $00, $04, $f8, $0b, $01, $02, $f8, $0a        ;; 0d:7f41 ????????
     db   $ec                                           ;; 0d:7f49 ?
-    db  $00 ;;RET                                      ;; 0d:7f4a $00
+    db  $00 ;;END                                      ;; 0d:7f4a $00
 
 script_028b:
     db  $0b ;;IF JR                                    ;; 0d:7f4b $0b
@@ -6061,7 +6061,7 @@ script_028b:
     db  $da ;;UNK_DA                                   ;; 0d:7f5f $da
     db   $47                                           ;; 0d:7f60 ?
     db  $ec ;;UNK_ec??                                 ;; 0d:7f61 $ec
-    db  $00 ;;RET                                      ;; 0d:7f62 $00
+    db  $00 ;;END                                      ;; 0d:7f62 $00
 
 script_028c:
     db  $0b ;;IF JR                                    ;; 0d:7f63 $0b
@@ -6072,7 +6072,7 @@ script_028c:
     db   $07                                           ;; 0d:7f6d ?
     db  $02 ;;CALL                                     ;; 0d:7f6e $02
     db   $14, $cf                                      ;; 0d:7f6f ??
-    db  $00 ;;RET                                      ;; 0d:7f71 $00
+    db  $00 ;;END                                      ;; 0d:7f71 $00
 
 script_028d:
     db  $0b ;;IF JR                                    ;; 0d:7f72 $0b
@@ -6082,13 +6082,13 @@ script_028d:
     db  $f8 ;;SET_MUSIC                                ;; 0d:7f7b $f8
     db   $07                                           ;; 0d:7f7c ?
     db  $ec ;;UNK_ec??                                 ;; 0d:7f7d $ec
-    db  $00 ;;RET                                      ;; 0d:7f7e $00
+    db  $00 ;;END                                      ;; 0d:7f7e $00
 
 script_028e:
-    db  $00 ;;RET                                      ;; 0d:7f7f $00
+    db  $00 ;;END                                      ;; 0d:7f7f $00
 
 script_028f:
-    db  $00 ;;RET                                      ;; 0d:7f80 $00
+    db  $00 ;;END                                      ;; 0d:7f80 $00
 
 script_0290:
     db  $0b ;;IF JR                                    ;; 0d:7f81 $0b
@@ -6099,7 +6099,7 @@ script_0290:
     db   $19                                           ;; 0d:7f8b ?
     db  $ab ;;UNK_ab??                                 ;; 0d:7f8c $ab
     db   $ec                                           ;; 0d:7f8d ?
-    db  $00 ;;RET                                      ;; 0d:7f8e $00
+    db  $00 ;;END                                      ;; 0d:7f8e $00
 
 script_0291:
     db  $0b ;;IF JR                                    ;; 0d:7f8f $0b
@@ -6111,7 +6111,7 @@ script_0291:
     db  $f8 ;;SET_MUSIC                                ;; 0d:7f9b $f8
     db   $14                                           ;; 0d:7f9c .
     db  $ec ;;UNK_ec??                                 ;; 0d:7f9d $ec
-    db  $00 ;;RET                                      ;; 0d:7f9e $00
+    db  $00 ;;END                                      ;; 0d:7f9e $00
 
 script_0292:
     db  $0b ;;IF JR                                    ;; 0d:7f9f $0b
@@ -6125,10 +6125,10 @@ script_0292:
     db  $f4 ;;LOAD_MAP                                 ;; 0d:7fab $f4
     db   $06, $26, $09, $07                            ;; 0d:7fac ????
     db  $ec ;;UNK_ec??                                 ;; 0d:7fb0 $ec
-    db  $00 ;;RET                                      ;; 0d:7fb1 $00
+    db  $00 ;;END                                      ;; 0d:7fb1 $00
 
 script_0293:
-    db  $00 ;;RET                                      ;; 0d:7fb2 $00
+    db  $00 ;;END                                      ;; 0d:7fb2 $00
     db   $0b, $c9, $00, $33, $08, $52, $c8, $00        ;; 0d:7fb3 ????????
     db   $25, $04, $10, $62, $e1, $f5, $bd, $dc        ;; 0d:7fbb ????????
     db   $d7, $e1, $ee, $28, $24, $e8, $1a, $87        ;; 0d:7fc3 ????????

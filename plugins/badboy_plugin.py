@@ -78,17 +78,59 @@ def mapHeaders(dis, addr, params):
         mapRoomData(dis, bank << 14 | (room_data_ptr & 0x3FFF), n)
 
 OPCODES = {
-    0x00: ("RET", 0),
+    0x00: ("END", 0),
     0x01: ("JR", 1),
     0x02: ("CALL", 2),
-    0x03: ("PLAYER_WALK", 2), # tile count, [ignored]
-
+    0x03: ("LOOP", 2), # loop count, [ignored]
     0x04: ("MSG", -1),
+
+    0x05: ("NOP", 0),
+    0x06: ("NOP", 0),
+    0x07: ("NOP", 0),
 
     0x08: ("IF ? JR", -2),
     0x09: ("IF ? JR", -2),
     0x0B: ("IF JR", -2),
     0x0C: ("IF ! JR", -2),
+
+    0x0D: ("NOP", 0),
+    0x0E: ("NOP", 0),
+    0x0F: ("NOP", 0),
+
+    0x1C: ("NOP", 0),
+    0x1D: ("NOP", 0),
+    0x1E: ("NOP", 0),
+    0x1F: ("NOP", 0),
+
+    0x2C: ("NOP", 0),
+    0x2D: ("NOP", 0),
+    0x2E: ("NOP", 0),
+    0x2F: ("NOP", 0),
+
+    0x3C: ("NOP", 0),
+    0x3D: ("NOP", 0),
+    0x3E: ("NOP", 0),
+    0x3F: ("NOP", 0),
+
+    0x4C: ("NOP", 0),
+    0x4D: ("NOP", 0),
+    0x4E: ("NOP", 0),
+    0x4F: ("NOP", 0),
+
+    0x5C: ("NOP", 0),
+    0x5D: ("NOP", 0),
+    0x5E: ("NOP", 0),
+    0x5F: ("NOP", 0),
+
+    0x6C: ("NOP", 0),
+    0x6D: ("NOP", 0),
+    0x6E: ("NOP", 0),
+    0x6F: ("NOP", 0),
+
+    0x7C: ("NOP", 0),
+    0x7D: ("NOP", 0),
+    0x7E: ("NOP", 0),
+    0x7F: ("NOP", 0),
 
     0x80: ("WAIT_PLAYER_WALK_DONE", 0),
     0x84: ("SET_PLAYER_DIRECTION_UP", 0),
@@ -97,12 +139,28 @@ OPCODES = {
     0x87: ("SET_PLAYER_DIRECTION_LEFT", 0),
     0x8A: ("SET_PLAYER_POSITION", 2),
 
+    0x9E: ("NOP", 0),
+    0x9F: ("NOP", 0),
+
+    0xA7: ("NOP", 0),
+    0xA8: ("NOP", 0),
+
     0xB0: ("SET_ROOM_TILE", 3), # tile, x, y
+    0xB1: ("NOP", 0),
+    0xB2: ("NOP", 0),
+    0xB3: ("NOP", 0),
+    0xB4: ("NOP", 0),
+    0xB5: ("NOP", 0),
+    0xBB: ("NOP", 0),
     0xC2: ("UNK_C2", 1),
     0xC6: ("UNK_C6", 0),
+    0xCD: ("NOP", 0),
+    0xCE: ("NOP", 0),
+    0xCF: ("NOP", 0),
     0xD1: ("CHECK_MONEY", 2),
     0xDA: ("UNK_DA", 1),
     0xDB: ("UNK_DB", 1),
+    0xDF: ("NOP", 0),
 
     0xF0: ("UNK_F0_DELAY?", 1),
     0xF4: ("LOAD_MAP", 4), # MapNr, RoomXY, PlayerX, PlayerY
