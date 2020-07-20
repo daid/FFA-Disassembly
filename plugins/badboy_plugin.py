@@ -209,6 +209,16 @@ def scriptProcessor(dis, addr, *, allow_continue=False):
             name, size = "UNK_%02x??" % (opcode), 1
         dis.formatLine(output, addr, 1, "db  $%02x ;;%s" % (dis.rom.data[addr], name))
         return addr + 1
+    def textFormatter(output, addr):
+        s = ""
+        length = 0
+        while dis.rom.data[addr + length] != 0x00:
+            s += dis.charmaps["main"][dis.rom.data[addr + length]]
+            length += 1
+        length += 1
+        dis.formatLine(output, addr, length, "db   \"%s\", $00" % (s))
+        return addr + length
+
     if addr in dis.formatter:
         return
     dis.formatter[addr] = scriptOpcodeFormatter
@@ -219,6 +229,8 @@ def scriptProcessor(dis, addr, *, allow_continue=False):
     dis.info.mark(addr, dis.info.MARK_DATA)
 
     addr += 1
+    if opcode == 0x04:
+        dis.formatter[addr] = textFormatter
     size = OPCODES[opcode][1]
     if size < 0:
         while dis.rom.data[addr] != 0x00:
@@ -266,7 +278,33 @@ def scriptPointers(dis, addr, params):
         scriptPointer(dis, addr, [n])
         addr += 2
 
+def dualCharMap(dis, addr, params):
+    charmap = {n: "<%02x>" % (n) for n in range(256)}
+    for n in range(10):
+        charmap[0xB0 + n] = str(n)
+    for n in range(26):
+        charmap[0xBA + n] = chr(65 + n)
+        charmap[0xD4 + n] = chr(97 + n)
+    charmap[0x1A] = "\\n"
+    charmap[0xEE] = "'"
+    charmap[0xEF] = ","
+    charmap[0xF0] = "."
+    charmap[0xF1] = "_"
+    charmap[0xF2] = "-"
+    charmap[0xF3] = "!"
+    charmap[0xF4] = "?"
+    charmap[0xF5] = ":"
+    charmap[0xF6] = "/"
+    charmap[0xFF] = " "
+    for n in range(0x70):
+        d0 = dis.rom.data[addr + n * 2]
+        d1 = dis.rom.data[addr + n * 2 + 1]
+        if 0x30 + n >= 0x80:
+            charmap[0x30 + n] = charmap[d0] + charmap[d1]
+        else:
+            charmap[0x20 + n] = charmap[d0] + charmap[d1]
+    dis.charmaps["main"] = charmap
 
 annotations.ALL["map_headers"] = mapHeaders
 annotations.ALL["script_pointers"] = scriptPointers
-
+annotations.ALL["dual_char_map"] = dualCharMap
