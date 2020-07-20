@@ -36,7 +36,7 @@ code_00f_4006:
     jr   NZ, .code_4037                                ;; 0f:402c $20 $09
     ldh  A, [hFF93]                                    ;; 0f:402e $f0 $93
     ld   B, A                                          ;; 0f:4030 $47
-    ldh  A, [hFF90]                                    ;; 0f:4031 $f0 $90
+    ldh  A, [hCurrentMusic]                            ;; 0f:4031 $f0 $90
     cp   A, B                                          ;; 0f:4033 $b8
     call NZ, code_00f_409e                             ;; 0f:4034 $c4 $9e $40
 .code_4037:
@@ -73,7 +73,7 @@ code_00f_4048:
     ldh  [rNR50], A                                    ;; 0f:4070 $e0 $24
     ld   A, $ff                                        ;; 0f:4072 $3e $ff rNR51
     ldh  [rNR51], A                                    ;; 0f:4074 $e0 $25
-    ld   HL, hFF90                                     ;; 0f:4076 $21 $90 $ff
+    ld   HL, hCurrentMusic                             ;; 0f:4076 $21 $90 $ff
     ld   C, $10                                        ;; 0f:4079 $0e $10
     xor  A, A                                          ;; 0f:407b $af
 .code_407c:

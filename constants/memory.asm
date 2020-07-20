@@ -935,7 +935,7 @@ hOAM_DMA_Routine: ;; $ff80
   ds 10
 hBankStackPointer: ;; $ff8a
   ds 6
-hFF90: ;; $ff90
+hCurrentMusic: ;; $ff90
   ds 1
 hFF91: ;; $ff91
   ds 1

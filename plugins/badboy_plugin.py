@@ -99,6 +99,8 @@ OPCODES = {
 
     0x10: ("NPC_1_STEP_FORWARD", 0),
     0x11: ("NPC_2_STEP_BACKWARDS", 0),
+    0x12: ("FULL_HP_DUMMY", 0),
+    0x13: ("FULL_HP_DUMMY", 0),
     0x14: ("SET_NPC_1_DIRECTION_UP", 0),
     0x15: ("SET_NPC_1_DIRECTION_DOWN", 0),
     0x16: ("SET_NPC_1_DIRECTION_RIGHT", 0),
@@ -111,6 +113,8 @@ OPCODES = {
 
     0x20: ("NPC_1_STEP_FORWARD", 0),
     0x21: ("NPC_2_STEP_BACKWARDS", 0),
+    0x22: ("FULL_HP_DUMMY", 0),
+    0x23: ("FULL_HP_DUMMY", 0),
     0x24: ("SET_NPC_2_DIRECTION_UP", 0),
     0x25: ("SET_NPC_2_DIRECTION_DOWN", 0),
     0x26: ("SET_NPC_2_DIRECTION_RIGHT", 0),
@@ -121,26 +125,36 @@ OPCODES = {
     0x2E: ("NOP", 0),
     0x2F: ("NOP", 0),
 
+    0x32: ("FULL_HP_DUMMY", 0),
+    0x33: ("FULL_HP_DUMMY", 0),
     0x3C: ("NOP", 0),
     0x3D: ("NOP", 0),
     0x3E: ("NOP", 0),
     0x3F: ("NOP", 0),
 
+    0x42: ("FULL_HP_DUMMY", 0),
+    0x43: ("FULL_HP_DUMMY", 0),
     0x4C: ("NOP", 0),
     0x4D: ("NOP", 0),
     0x4E: ("NOP", 0),
     0x4F: ("NOP", 0),
 
+    0x52: ("FULL_HP_DUMMY", 0),
+    0x53: ("FULL_HP_DUMMY", 0),
     0x5C: ("NOP", 0),
     0x5D: ("NOP", 0),
     0x5E: ("NOP", 0),
     0x5F: ("NOP", 0),
 
+    0x62: ("FULL_HP_DUMMY", 0),
+    0x63: ("FULL_HP_DUMMY", 0),
     0x6C: ("NOP", 0),
     0x6D: ("NOP", 0),
     0x6E: ("NOP", 0),
     0x6F: ("NOP", 0),
 
+    0x62: ("FULL_HP_DUMMY", 0),
+    0x63: ("FULL_HP_DUMMY", 0),
     0x7C: ("NOP", 0),
     0x7D: ("NOP", 0),
     0x7E: ("NOP", 0),
@@ -148,6 +162,8 @@ OPCODES = {
 
     0x80: ("PLAYER_STEP_FORWARD", 0),
     0x81: ("PLAYER_STEP_BACKWARD", 0),
+    0x82: ("FULL_HP_DUMMY", 0),
+    0x83: ("FULL_HP_DUMMY", 0),
     0x84: ("SET_PLAYER_DIRECTION_UP", 0),
     0x85: ("SET_PLAYER_DIRECTION_DOWN", 0),
     0x86: ("SET_PLAYER_DIRECTION_RIGHT", 0),
@@ -155,12 +171,18 @@ OPCODES = {
     0x88: ("SET_FAST_MOVEMENT", 0),
     0x89: ("CLEAR_FAST_MOVEMENT", 0),
     0x8A: ("SET_PLAYER_POSITION", 2),
+    0x8C: ("FULL_HP_DUMMY", 0),
+    0x8D: ("FULL_HP_DUMMY", 0),
+    0x8E: ("FULL_HP_DUMMY", 0),
 
+    0x92: ("FULL_HP_DUMMY", 0),
+    0x93: ("FULL_HP_DUMMY", 0),
     0x9E: ("NOP", 0),
     0x9F: ("NOP", 0),
 
-    0xA4: ("CLEAR_PLAYER_HURT_SPRITE", 0),
+    0xA4: ("SET_PLAYER_NORMAL_SPRITE", 0),
     0xA5: ("SET_PLAYER_HURT_SPRITE", 0),
+    0xA6: ("SET_PLAYER_LAYDOWN_SPRITE", 0),
     0xA7: ("NOP", 0),
     0xA8: ("NOP", 0),
 
@@ -170,13 +192,16 @@ OPCODES = {
     0xB3: ("NOP", 0),
     0xB4: ("NOP", 0),
     0xB5: ("NOP", 0),
+    0xBA: ("UNK_BA", 3),
     0xBB: ("NOP", 0),
     0xBC: ("FADE_TO_NORMAL", 0),
     0xBD: ("FADE_TO_BLACK", 0),
     0xBF: ("FLASH_SCREEN", 0),
-    0xC0: ("UNK_C0", 0),
+    0xC0: ("FULL_HP", 0),
+    0xC1: ("FULL_MANA", 0),
     0xC2: ("UNK_C2", 1),
     0xC6: ("UNK_C6", 0),
+    0xC9: ("UNK_C9", 2),
     0xCD: ("NOP", 0),
     0xCE: ("NOP", 0),
     0xCF: ("NOP", 0),
@@ -194,18 +219,25 @@ OPCODES = {
     0xE9: ("SCROLL_ROOM_UP", 0),
     0xEA: ("SCROLL_ROOM_LEFT", 0),
     0xEB: ("SCROLL_ROOM_RIGHT", 0),
+    0xEF: ("UNK_EF", 2),
 
     0xF0: ("DELAY", 1),
+    0xF1: ("FULL_HP_DUMMY", 0),
+    0xF2: ("FULL_HP_DUMMY", 0),
     0xF3: ("LOAD_MAP_INSTANT", 4), # MapNr, RoomXY, PlayerX, PlayerY
     0xF4: ("LOAD_MAP", 4), # MapNr, RoomXY, PlayerX, PlayerY
+    0xF5: ("FULL_HP_DUMMY", 0),
+    0xF7: ("FULL_HP_DUMMY", 0),
     0xF8: ("SET_MUSIC", 1),
     0xF9: ("SFX", 1),
+    0xFA: ("FULL_HP_DUMMY", 0),
+    0xFB: ("SHAKE_SCREEN", 0),
     0xFC: ("SET_NPC_TYPES", 1),
     0xFD: ("SPAWN_NPC", 1),
     0xFE: ("SPAWN_BOSS", 1),
 }
 
-def scriptProcessor(dis, addr, *, allow_continue=False):
+def scriptProcessor(dis, addr, *, loop_level=0):
     opcode = dis.rom.data[addr]
     
     def scriptOpcodeFormatter(output, addr):
@@ -261,12 +293,12 @@ def scriptProcessor(dis, addr, *, allow_continue=False):
         scriptProcessor(dis, call_addr)
         dis.info.addAbsoluteRomSymbol(call_addr)
     if opcode in (0x03,): # loop
-        allow_continue = True
+        loop_level += 1
 
     if opcode not in (0x00, 0x01): # No continue opcode
-        scriptProcessor(dis, addr, allow_continue=allow_continue)
-    elif opcode == 0x00 and allow_continue:
-        scriptProcessor(dis, addr)
+        scriptProcessor(dis, addr, loop_level=loop_level)
+    elif opcode == 0x00 and loop_level > 0:
+        scriptProcessor(dis, addr, loop_level=loop_level-1)
 
 
 def scriptPointer(dis, addr, params):

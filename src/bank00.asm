@@ -2620,18 +2620,54 @@ scriptOpCodeBA:
     ld   HL, $0eca                                     ;; 00:0eb7 $21 $ca $0e
     call callJumptable                                 ;; 00:0eba $cd $70 $2b
     ret                                                ;; 00:0ebd $c9
+
+unknown_000_0ebe:
     db   $00, $10, $10, $00, $10, $10, $00, $10        ;; 00:0ebe ????????
     db   $10, $00, $10, $10                            ;; 00:0ec6 ????
 
-unknown_000_0eca:
-    db   $ce, $0e, $ef, $0e, $62, $6b, $2a, $5e        ;; 00:0eca ????????
-    db   $23, $56, $23, $e5, $f5, $21, $be, $0e        ;; 00:0ed2 ????????
-    db   $0e, $07, $3e, $00, $cd, $74, $0a, $ea        ;; 00:0eda ????????
-    db   $9a, $d4, $4f, $f1, $cd, $03, $2f, $21        ;; 00:0ee2 ????????
-    db   $99, $d4, $34, $e1, $c9, $d5, $cd, $d3        ;; 00:0eea ????????
-    db   $2e, $e1, $c0, $e5, $fa, $9a, $d4, $4f        ;; 00:0ef2 ????????
-    db   $cd, $e3, $0a, $3e, $00, $ea, $99, $d4        ;; 00:0efa ????????
-    db   $ea, $9a, $d4, $e1, $cd, $27, $37, $c9        ;; 00:0f02 ????????
+;@jumptable: 2
+data_000_0eca:
+    dw   code_000_0ece                                 ;; 00:0eca $ce $0e
+    dw   code_000_0eef                                 ;; 00:0ecc $ef $0e
+
+code_000_0ece:
+    ld   H, D                                          ;; 00:0ece $62
+    ld   L, E                                          ;; 00:0ecf $6b
+    ld   A, [HL+]                                      ;; 00:0ed0 $2a
+    ld   E, [HL]                                       ;; 00:0ed1 $5e
+    inc  HL                                            ;; 00:0ed2 $23
+    ld   D, [HL]                                       ;; 00:0ed3 $56
+    inc  HL                                            ;; 00:0ed4 $23
+    push HL                                            ;; 00:0ed5 $e5
+    push AF                                            ;; 00:0ed6 $f5
+    ld   HL, $0ebe                                     ;; 00:0ed7 $21 $be $0e
+    ld   C, $07                                        ;; 00:0eda $0e $07
+    ld   A, $00                                        ;; 00:0edc $3e $00
+    call code_000_0a74                                 ;; 00:0ede $cd $74 $0a
+    ld   [wD49A], A                                    ;; 00:0ee1 $ea $9a $d4
+    ld   C, A                                          ;; 00:0ee4 $4f
+    pop  AF                                            ;; 00:0ee5 $f1
+    call code_000_2f03                                 ;; 00:0ee6 $cd $03 $2f
+    ld   HL, wD499                                     ;; 00:0ee9 $21 $99 $d4
+    inc  [HL]                                          ;; 00:0eec $34
+    pop  HL                                            ;; 00:0eed $e1
+    ret                                                ;; 00:0eee $c9
+
+code_000_0eef:
+    push DE                                            ;; 00:0eef $d5
+    call code_000_2ed3                                 ;; 00:0ef0 $cd $d3 $2e
+    pop  HL                                            ;; 00:0ef3 $e1
+    ret  NZ                                            ;; 00:0ef4 $c0
+    push HL                                            ;; 00:0ef5 $e5
+    ld   A, [wD49A]                                    ;; 00:0ef6 $fa $9a $d4
+    ld   C, A                                          ;; 00:0ef9 $4f
+    call code_000_0ae3                                 ;; 00:0efa $cd $e3 $0a
+    ld   A, $00                                        ;; 00:0efd $3e $00
+    ld   [wD499], A                                    ;; 00:0eff $ea $99 $d4
+    ld   [wD49A], A                                    ;; 00:0f02 $ea $9a $d4
+    pop  HL                                            ;; 00:0f05 $e1
+    call getNextScriptInstruction                      ;; 00:0f06 $cd $27 $37
+    ret                                                ;; 00:0f09 $c9
 
 scriptOpCode9C:
     ld   A, [HL+]                                      ;; 00:0f0a $2a
@@ -3014,21 +3050,21 @@ scriptOpCodeF9:
 
 scriptOpCodeF8:
     ld   A, [HL+]                                      ;; 00:119b $2a
-    ldh  [hFF90], A                                    ;; 00:119c $e0 $90
+    ldh  [hCurrentMusic], A                            ;; 00:119c $e0 $90
     ld   [wD49B], A                                    ;; 00:119e $ea $9b $d4
     ld   [wD4A3], A                                    ;; 00:11a1 $ea $a3 $d4
     call getNextScriptInstruction                      ;; 00:11a4 $cd $27 $37
     ret                                                ;; 00:11a7 $c9
 
 code_000_11a8:
-    ldh  [hFF90], A                                    ;; 00:11a8 $e0 $90
+    ldh  [hCurrentMusic], A                            ;; 00:11a8 $e0 $90
     ld   A, [wD49B]                                    ;; 00:11aa $fa $9b $d4
     ld   [wD4A3], A                                    ;; 00:11ad $ea $a3 $d4
     ret                                                ;; 00:11b0 $c9
 
 code_000_11b1:
     ld   A, [wD4A3]                                    ;; 00:11b1 $fa $a3 $d4
-    ldh  [hFF90], A                                    ;; 00:11b4 $e0 $90
+    ldh  [hCurrentMusic], A                            ;; 00:11b4 $e0 $90
     ret                                                ;; 00:11b6 $c9
 
 scriptOpCodeF4:
@@ -7687,7 +7723,11 @@ code_000_2efd:
     push AF                                            ;; 00:2efd $f5
     ld   A, $25                                        ;; 00:2efe $3e $25
     jp   callFunctionInBank01                          ;; 00:2f00 $c3 $d7 $1e
-    db   $f5, $3e, $26, $c3, $d7, $1e                  ;; 00:2f03 ??????
+
+code_000_2f03:
+    push AF                                            ;; 00:2f03 $f5
+    ld   A, $26                                        ;; 00:2f04 $3e $26
+    jp   callFunctionInBank01                          ;; 00:2f06 $c3 $d7 $1e
 
 code_000_2f09:
     ld   A, $00                                        ;; 00:2f09 $3e $00
@@ -10283,7 +10323,7 @@ code_000_3e6b:
     ld   A, [wD49B]                                    ;; 00:3e73 $fa $9b $d4
     ld   [wD842], A                                    ;; 00:3e76 $ea $42 $d8
     ld   A, $1c                                        ;; 00:3e79 $3e $1c
-    ldh  [hFF90], A                                    ;; 00:3e7b $e0 $90
+    ldh  [hCurrentMusic], A                            ;; 00:3e7b $e0 $90
     ld   A, $21                                        ;; 00:3e7d $3e $21
     ld   [wD84A], A                                    ;; 00:3e7f $ea $4a $d8
     call code_000_30b1                                 ;; 00:3e82 $cd $b1 $30

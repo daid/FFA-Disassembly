@@ -2249,7 +2249,7 @@ code_002_4ee1:
     ld   A, $01                                        ;; 02:4ef2 $3e $01
     ld   [wD853], A                                    ;; 02:4ef4 $ea $53 $d8
     ld   A, [wD842]                                    ;; 02:4ef7 $fa $42 $d8
-    ldh  [hFF90], A                                    ;; 02:4efa $e0 $90
+    ldh  [hCurrentMusic], A                            ;; 02:4efa $e0 $90
     ret                                                ;; 02:4efc $c9
 
 code_002_4efd:
