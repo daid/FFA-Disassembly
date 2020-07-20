@@ -626,1360 +626,1360 @@ data_008_4c1a:
 ;@script_pointers: 1354
 ; The following data is pointers to the scripts in bank $0D and $0E
 scriptPointersTable:
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:4f05 $00 $00
-    dw   ((script_0001 - $4000) + ((BANK(script_0001) - $0D) * $4000)) ;; 08:4f07 $01 $00
-    dw   ((script_0002 - $4000) + ((BANK(script_0002) - $0D) * $4000)) ;; 08:4f09 $24 $00
-    dw   ((script_0003 - $4000) + ((BANK(script_0003) - $0D) * $4000)) ;; 08:4f0b $25 $00
-    dw   ((script_0004 - $4000) + ((BANK(script_0004) - $0D) * $4000)) ;; 08:4f0d $31 $00
-    dw   ((script_0005 - $4000) + ((BANK(script_0005) - $0D) * $4000)) ;; 08:4f0f $11 $01
-    dw   ((script_0006 - $4000) + ((BANK(script_0006) - $0D) * $4000)) ;; 08:4f11 $46 $01
-    dw   ((script_0007 - $4000) + ((BANK(script_0007) - $0D) * $4000)) ;; 08:4f13 $47 $01
-    dw   ((script_0008 - $4000) + ((BANK(script_0008) - $0D) * $4000)) ;; 08:4f15 $6e $01
-    dw   ((script_0009 - $4000) + ((BANK(script_0009) - $0D) * $4000)) ;; 08:4f17 $27 $02
-    dw   ((script_000a - $4000) + ((BANK(script_000a) - $0D) * $4000)) ;; 08:4f19 $38 $02
-    dw   ((script_000b - $4000) + ((BANK(script_000b) - $0D) * $4000)) ;; 08:4f1b $39 $02
-    dw   ((script_000c - $4000) + ((BANK(script_000c) - $0D) * $4000)) ;; 08:4f1d $3a $02
-    dw   ((script_000d - $4000) + ((BANK(script_000d) - $0D) * $4000)) ;; 08:4f1f $84 $03
-    dw   ((script_000e - $4000) + ((BANK(script_000e) - $0D) * $4000)) ;; 08:4f21 $ab $03
-    dw   ((script_000f - $4000) + ((BANK(script_000f) - $0D) * $4000)) ;; 08:4f23 $ac $03
-    dw   ((script_0010 - $4000) + ((BANK(script_0010) - $0D) * $4000)) ;; 08:4f25 $ad $03
-    dw   ((script_0011 - $4000) + ((BANK(script_0011) - $0D) * $4000)) ;; 08:4f27 $ae $03
-    dw   ((script_0012 - $4000) + ((BANK(script_0012) - $0D) * $4000)) ;; 08:4f29 $af $03
-    dw   ((script_0013 - $4000) + ((BANK(script_0013) - $0D) * $4000)) ;; 08:4f2b $b0 $03
-    dw   ((script_0014 - $4000) + ((BANK(script_0014) - $0D) * $4000)) ;; 08:4f2d $b1 $03
-    dw   ((script_0015 - $4000) + ((BANK(script_0015) - $0D) * $4000)) ;; 08:4f2f $b2 $03
-    dw   ((script_0016 - $4000) + ((BANK(script_0016) - $0D) * $4000)) ;; 08:4f31 $b3 $03
-    dw   ((script_0017 - $4000) + ((BANK(script_0017) - $0D) * $4000)) ;; 08:4f33 $b4 $03
-    dw   ((script_0018 - $4000) + ((BANK(script_0018) - $0D) * $4000)) ;; 08:4f35 $b5 $03
-    dw   ((script_0019 - $4000) + ((BANK(script_0019) - $0D) * $4000)) ;; 08:4f37 $b6 $03
-    dw   ((script_001a - $4000) + ((BANK(script_001a) - $0D) * $4000)) ;; 08:4f39 $b7 $03
-    dw   ((script_001b - $4000) + ((BANK(script_001b) - $0D) * $4000)) ;; 08:4f3b $b8 $03
-    dw   ((script_001c - $4000) + ((BANK(script_001c) - $0D) * $4000)) ;; 08:4f3d $b9 $03
-    dw   ((script_001d - $4000) + ((BANK(script_001d) - $0D) * $4000)) ;; 08:4f3f $ba $03
-    dw   ((script_001e - $4000) + ((BANK(script_001e) - $0D) * $4000)) ;; 08:4f41 $bb $03
-    dw   ((script_001f - $4000) + ((BANK(script_001f) - $0D) * $4000)) ;; 08:4f43 $bc $03
-    dw   ((script_0020 - $4000) + ((BANK(script_0020) - $0D) * $4000)) ;; 08:4f45 $c5 $03
-    dw   ((script_0021 - $4000) + ((BANK(script_0021) - $0D) * $4000)) ;; 08:4f47 $c6 $03
-    dw   ((script_0022 - $4000) + ((BANK(script_0022) - $0D) * $4000)) ;; 08:4f49 $c7 $03
-    dw   ((script_0023 - $4000) + ((BANK(script_0023) - $0D) * $4000)) ;; 08:4f4b $c8 $03
-    dw   ((script_0024 - $4000) + ((BANK(script_0024) - $0D) * $4000)) ;; 08:4f4d $c9 $03
-    dw   ((script_0025 - $4000) + ((BANK(script_0025) - $0D) * $4000)) ;; 08:4f4f $ca $03
-    dw   ((script_0026 - $4000) + ((BANK(script_0026) - $0D) * $4000)) ;; 08:4f51 $cb $03
-    dw   ((script_0027 - $4000) + ((BANK(script_0027) - $0D) * $4000)) ;; 08:4f53 $cc $03
-    dw   ((script_0028 - $4000) + ((BANK(script_0028) - $0D) * $4000)) ;; 08:4f55 $cd $03
-    dw   ((script_0029 - $4000) + ((BANK(script_0029) - $0D) * $4000)) ;; 08:4f57 $ce $03
-    dw   ((script_002a - $4000) + ((BANK(script_002a) - $0D) * $4000)) ;; 08:4f59 $cf $03
-    dw   ((script_002b - $4000) + ((BANK(script_002b) - $0D) * $4000)) ;; 08:4f5b $d0 $03
-    dw   ((script_002c - $4000) + ((BANK(script_002c) - $0D) * $4000)) ;; 08:4f5d $d1 $03
-    dw   ((script_002d - $4000) + ((BANK(script_002d) - $0D) * $4000)) ;; 08:4f5f $d2 $03
-    dw   ((script_002e - $4000) + ((BANK(script_002e) - $0D) * $4000)) ;; 08:4f61 $d3 $03
-    dw   ((script_002f - $4000) + ((BANK(script_002f) - $0D) * $4000)) ;; 08:4f63 $d4 $03
-    dw   ((script_0030 - $4000) + ((BANK(script_0030) - $0D) * $4000)) ;; 08:4f65 $d5 $03
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:4f67 $00 $00
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:4f69 $00 $00
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:4f6b $00 $00
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:4f6d $00 $00
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:4f6f $00 $00
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:4f71 $00 $00
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:4f73 $00 $00
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:4f75 $00 $00
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:4f77 $00 $00
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:4f79 $00 $00
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:4f7b $00 $00
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:4f7d $00 $00
-    dw   ((script_003d - $4000) + ((BANK(script_003d) - $0D) * $4000)) ;; 08:4f7f $dc $03
-    dw   ((script_003e - $4000) + ((BANK(script_003e) - $0D) * $4000)) ;; 08:4f81 $dd $03
-    dw   ((script_003f - $4000) + ((BANK(script_003f) - $0D) * $4000)) ;; 08:4f83 $de $03
-    dw   ((script_0040 - $4000) + ((BANK(script_0040) - $0D) * $4000)) ;; 08:4f85 $df $03
-    dw   ((script_0041 - $4000) + ((BANK(script_0041) - $0D) * $4000)) ;; 08:4f87 $ea $03
-    dw   ((script_0042 - $4000) + ((BANK(script_0042) - $0D) * $4000)) ;; 08:4f89 $eb $03
-    dw   ((script_0043 - $4000) + ((BANK(script_0043) - $0D) * $4000)) ;; 08:4f8b $ec $03
-    dw   ((script_0044 - $4000) + ((BANK(script_0044) - $0D) * $4000)) ;; 08:4f8d $f7 $03
-    dw   ((script_0045 - $4000) + ((BANK(script_0045) - $0D) * $4000)) ;; 08:4f8f $f8 $03
-    dw   ((script_0046 - $4000) + ((BANK(script_0046) - $0D) * $4000)) ;; 08:4f91 $f9 $03
-    dw   ((script_0047 - $4000) + ((BANK(script_0047) - $0D) * $4000)) ;; 08:4f93 $02 $04
-    dw   ((script_0048 - $4000) + ((BANK(script_0048) - $0D) * $4000)) ;; 08:4f95 $03 $04
-    dw   ((script_0049 - $4000) + ((BANK(script_0049) - $0D) * $4000)) ;; 08:4f97 $04 $04
-    dw   ((script_004a - $4000) + ((BANK(script_004a) - $0D) * $4000)) ;; 08:4f99 $0f $04
-    dw   ((script_004b - $4000) + ((BANK(script_004b) - $0D) * $4000)) ;; 08:4f9b $10 $04
-    dw   ((script_004c - $4000) + ((BANK(script_004c) - $0D) * $4000)) ;; 08:4f9d $11 $04
-    dw   ((script_004d - $4000) + ((BANK(script_004d) - $0D) * $4000)) ;; 08:4f9f $1c $04
-    dw   ((script_004e - $4000) + ((BANK(script_004e) - $0D) * $4000)) ;; 08:4fa1 $1d $04
-    dw   ((script_004f - $4000) + ((BANK(script_004f) - $0D) * $4000)) ;; 08:4fa3 $1e $04
-    dw   ((script_0050 - $4000) + ((BANK(script_0050) - $0D) * $4000)) ;; 08:4fa5 $27 $04
-    dw   ((script_0051 - $4000) + ((BANK(script_0051) - $0D) * $4000)) ;; 08:4fa7 $28 $04
-    dw   ((script_0052 - $4000) + ((BANK(script_0052) - $0D) * $4000)) ;; 08:4fa9 $29 $04
-    dw   ((script_0053 - $4000) + ((BANK(script_0053) - $0D) * $4000)) ;; 08:4fab $32 $04
-    dw   ((script_0054 - $4000) + ((BANK(script_0054) - $0D) * $4000)) ;; 08:4fad $33 $04
-    dw   ((script_0055 - $4000) + ((BANK(script_0055) - $0D) * $4000)) ;; 08:4faf $34 $04
-    dw   ((script_0056 - $4000) + ((BANK(script_0056) - $0D) * $4000)) ;; 08:4fb1 $3d $04
-    dw   ((script_0057 - $4000) + ((BANK(script_0057) - $0D) * $4000)) ;; 08:4fb3 $3e $04
-    dw   ((script_0058 - $4000) + ((BANK(script_0058) - $0D) * $4000)) ;; 08:4fb5 $3f $04
-    dw   ((script_0059 - $4000) + ((BANK(script_0059) - $0D) * $4000)) ;; 08:4fb7 $4a $04
-    dw   ((script_005a - $4000) + ((BANK(script_005a) - $0D) * $4000)) ;; 08:4fb9 $4b $04
-    dw   ((script_005b - $4000) + ((BANK(script_005b) - $0D) * $4000)) ;; 08:4fbb $4c $04
-    dw   ((script_005c - $4000) + ((BANK(script_005c) - $0D) * $4000)) ;; 08:4fbd $57 $04
-    dw   ((script_005d - $4000) + ((BANK(script_005d) - $0D) * $4000)) ;; 08:4fbf $58 $04
-    dw   ((script_005e - $4000) + ((BANK(script_005e) - $0D) * $4000)) ;; 08:4fc1 $59 $04
-    dw   ((script_005f - $4000) + ((BANK(script_005f) - $0D) * $4000)) ;; 08:4fc3 $62 $04
-    dw   ((script_0060 - $4000) + ((BANK(script_0060) - $0D) * $4000)) ;; 08:4fc5 $63 $04
-    dw   ((script_0061 - $4000) + ((BANK(script_0061) - $0D) * $4000)) ;; 08:4fc7 $64 $04
-    dw   ((script_0062 - $4000) + ((BANK(script_0062) - $0D) * $4000)) ;; 08:4fc9 $6f $04
-    dw   ((script_0063 - $4000) + ((BANK(script_0063) - $0D) * $4000)) ;; 08:4fcb $70 $04
-    dw   ((script_0064 - $4000) + ((BANK(script_0064) - $0D) * $4000)) ;; 08:4fcd $71 $04
-    dw   ((script_0065 - $4000) + ((BANK(script_0065) - $0D) * $4000)) ;; 08:4fcf $80 $04
-    dw   ((script_0066 - $4000) + ((BANK(script_0066) - $0D) * $4000)) ;; 08:4fd1 $81 $04
-    dw   ((script_0067 - $4000) + ((BANK(script_0067) - $0D) * $4000)) ;; 08:4fd3 $82 $04
-    dw   ((script_0068 - $4000) + ((BANK(script_0068) - $0D) * $4000)) ;; 08:4fd5 $8d $04
-    dw   ((script_0069 - $4000) + ((BANK(script_0069) - $0D) * $4000)) ;; 08:4fd7 $8e $04
-    dw   ((script_006a - $4000) + ((BANK(script_006a) - $0D) * $4000)) ;; 08:4fd9 $8f $04
-    dw   ((script_006b - $4000) + ((BANK(script_006b) - $0D) * $4000)) ;; 08:4fdb $9a $04
-    dw   ((script_006c - $4000) + ((BANK(script_006c) - $0D) * $4000)) ;; 08:4fdd $9b $04
-    dw   ((script_006d - $4000) + ((BANK(script_006d) - $0D) * $4000)) ;; 08:4fdf $9c $04
-    dw   ((script_006e - $4000) + ((BANK(script_006e) - $0D) * $4000)) ;; 08:4fe1 $a5 $04
-    dw   ((script_006f - $4000) + ((BANK(script_006f) - $0D) * $4000)) ;; 08:4fe3 $a6 $04
-    dw   ((script_0070 - $4000) + ((BANK(script_0070) - $0D) * $4000)) ;; 08:4fe5 $a7 $04
-    dw   ((script_0071 - $4000) + ((BANK(script_0071) - $0D) * $4000)) ;; 08:4fe7 $b0 $04
-    dw   ((script_0072 - $4000) + ((BANK(script_0072) - $0D) * $4000)) ;; 08:4fe9 $b1 $04
-    dw   ((script_0073 - $4000) + ((BANK(script_0073) - $0D) * $4000)) ;; 08:4feb $b2 $04
-    dw   ((script_0074 - $4000) + ((BANK(script_0074) - $0D) * $4000)) ;; 08:4fed $bd $04
-    dw   ((script_0075 - $4000) + ((BANK(script_0075) - $0D) * $4000)) ;; 08:4fef $be $04
-    dw   ((script_0076 - $4000) + ((BANK(script_0076) - $0D) * $4000)) ;; 08:4ff1 $bf $04
-    dw   ((script_0077 - $4000) + ((BANK(script_0077) - $0D) * $4000)) ;; 08:4ff3 $ca $04
-    dw   ((script_0078 - $4000) + ((BANK(script_0078) - $0D) * $4000)) ;; 08:4ff5 $cb $04
-    dw   ((script_0079 - $4000) + ((BANK(script_0079) - $0D) * $4000)) ;; 08:4ff7 $cc $04
-    dw   ((script_007a - $4000) + ((BANK(script_007a) - $0D) * $4000)) ;; 08:4ff9 $d5 $04
-    dw   ((script_007b - $4000) + ((BANK(script_007b) - $0D) * $4000)) ;; 08:4ffb $d6 $04
-    dw   ((script_007c - $4000) + ((BANK(script_007c) - $0D) * $4000)) ;; 08:4ffd $d7 $04
-    dw   ((script_007d - $4000) + ((BANK(script_007d) - $0D) * $4000)) ;; 08:4fff $e0 $04
-    dw   ((script_007e - $4000) + ((BANK(script_007e) - $0D) * $4000)) ;; 08:5001 $e1 $04
-    dw   ((script_007f - $4000) + ((BANK(script_007f) - $0D) * $4000)) ;; 08:5003 $e2 $04
-    dw   ((script_0080 - $4000) + ((BANK(script_0080) - $0D) * $4000)) ;; 08:5005 $ed $04
-    dw   ((script_0081 - $4000) + ((BANK(script_0081) - $0D) * $4000)) ;; 08:5007 $ee $04
-    dw   ((script_0082 - $4000) + ((BANK(script_0082) - $0D) * $4000)) ;; 08:5009 $ef $04
-    dw   ((script_0083 - $4000) + ((BANK(script_0083) - $0D) * $4000)) ;; 08:500b $fa $04
-    dw   ((script_0084 - $4000) + ((BANK(script_0084) - $0D) * $4000)) ;; 08:500d $fb $04
-    dw   ((script_0085 - $4000) + ((BANK(script_0085) - $0D) * $4000)) ;; 08:500f $fc $04
-    dw   ((script_0086 - $4000) + ((BANK(script_0086) - $0D) * $4000)) ;; 08:5011 $07 $05
-    dw   ((script_0087 - $4000) + ((BANK(script_0087) - $0D) * $4000)) ;; 08:5013 $08 $05
-    dw   ((script_0088 - $4000) + ((BANK(script_0088) - $0D) * $4000)) ;; 08:5015 $09 $05
-    dw   ((script_0089 - $4000) + ((BANK(script_0089) - $0D) * $4000)) ;; 08:5017 $14 $05
-    dw   ((script_008a - $4000) + ((BANK(script_008a) - $0D) * $4000)) ;; 08:5019 $15 $05
-    dw   ((script_008b - $4000) + ((BANK(script_008b) - $0D) * $4000)) ;; 08:501b $16 $05
-    dw   ((script_008c - $4000) + ((BANK(script_008c) - $0D) * $4000)) ;; 08:501d $1f $05
-    dw   ((script_008d - $4000) + ((BANK(script_008d) - $0D) * $4000)) ;; 08:501f $20 $05
-    dw   ((script_008e - $4000) + ((BANK(script_008e) - $0D) * $4000)) ;; 08:5021 $21 $05
-    dw   ((script_008f - $4000) + ((BANK(script_008f) - $0D) * $4000)) ;; 08:5023 $2e $05
-    dw   ((script_0090 - $4000) + ((BANK(script_0090) - $0D) * $4000)) ;; 08:5025 $2f $05
-    dw   ((script_0091 - $4000) + ((BANK(script_0091) - $0D) * $4000)) ;; 08:5027 $30 $05
-    dw   ((script_0092 - $4000) + ((BANK(script_0092) - $0D) * $4000)) ;; 08:5029 $39 $05
-    dw   ((script_0093 - $4000) + ((BANK(script_0093) - $0D) * $4000)) ;; 08:502b $3a $05
-    dw   ((script_0094 - $4000) + ((BANK(script_0094) - $0D) * $4000)) ;; 08:502d $3b $05
-    dw   ((script_0095 - $4000) + ((BANK(script_0095) - $0D) * $4000)) ;; 08:502f $44 $05
-    dw   ((script_0096 - $4000) + ((BANK(script_0096) - $0D) * $4000)) ;; 08:5031 $45 $05
-    dw   ((script_0097 - $4000) + ((BANK(script_0097) - $0D) * $4000)) ;; 08:5033 $46 $05
-    dw   ((script_0098 - $4000) + ((BANK(script_0098) - $0D) * $4000)) ;; 08:5035 $55 $05
-    dw   ((script_0099 - $4000) + ((BANK(script_0099) - $0D) * $4000)) ;; 08:5037 $56 $05
-    dw   ((script_009a - $4000) + ((BANK(script_009a) - $0D) * $4000)) ;; 08:5039 $57 $05
-    dw   ((script_009b - $4000) + ((BANK(script_009b) - $0D) * $4000)) ;; 08:503b $62 $05
-    dw   ((script_009c - $4000) + ((BANK(script_009c) - $0D) * $4000)) ;; 08:503d $63 $05
-    dw   ((script_009d - $4000) + ((BANK(script_009d) - $0D) * $4000)) ;; 08:503f $64 $05
-    dw   ((script_009e - $4000) + ((BANK(script_009e) - $0D) * $4000)) ;; 08:5041 $77 $05
-    dw   ((script_009f - $4000) + ((BANK(script_009f) - $0D) * $4000)) ;; 08:5043 $78 $05
-    dw   ((script_00a0 - $4000) + ((BANK(script_00a0) - $0D) * $4000)) ;; 08:5045 $79 $05
-    dw   ((script_00a1 - $4000) + ((BANK(script_00a1) - $0D) * $4000)) ;; 08:5047 $82 $05
-    dw   ((script_00a2 - $4000) + ((BANK(script_00a2) - $0D) * $4000)) ;; 08:5049 $83 $05
-    dw   ((script_00a3 - $4000) + ((BANK(script_00a3) - $0D) * $4000)) ;; 08:504b $84 $05
-    dw   ((script_00a4 - $4000) + ((BANK(script_00a4) - $0D) * $4000)) ;; 08:504d $8f $05
-    dw   ((script_00a5 - $4000) + ((BANK(script_00a5) - $0D) * $4000)) ;; 08:504f $90 $05
-    dw   ((script_00a6 - $4000) + ((BANK(script_00a6) - $0D) * $4000)) ;; 08:5051 $91 $05
-    dw   ((script_00a7 - $4000) + ((BANK(script_00a7) - $0D) * $4000)) ;; 08:5053 $9a $05
-    dw   ((script_00a8 - $4000) + ((BANK(script_00a8) - $0D) * $4000)) ;; 08:5055 $9b $05
-    dw   ((script_00a9 - $4000) + ((BANK(script_00a9) - $0D) * $4000)) ;; 08:5057 $9c $05
-    dw   ((script_00aa - $4000) + ((BANK(script_00aa) - $0D) * $4000)) ;; 08:5059 $ab $05
-    dw   ((script_00ab - $4000) + ((BANK(script_00ab) - $0D) * $4000)) ;; 08:505b $ac $05
-    dw   ((script_00ac - $4000) + ((BANK(script_00ac) - $0D) * $4000)) ;; 08:505d $ad $05
-    dw   ((script_00ad - $4000) + ((BANK(script_00ad) - $0D) * $4000)) ;; 08:505f $b6 $05
-    dw   ((script_00ae - $4000) + ((BANK(script_00ae) - $0D) * $4000)) ;; 08:5061 $b7 $05
-    dw   ((script_00af - $4000) + ((BANK(script_00af) - $0D) * $4000)) ;; 08:5063 $b8 $05
-    dw   ((script_00b0 - $4000) + ((BANK(script_00b0) - $0D) * $4000)) ;; 08:5065 $c2 $05
-    dw   ((script_00b1 - $4000) + ((BANK(script_00b1) - $0D) * $4000)) ;; 08:5067 $c3 $05
-    dw   ((script_00b2 - $4000) + ((BANK(script_00b2) - $0D) * $4000)) ;; 08:5069 $d0 $05
-    dw   ((script_00b3 - $4000) + ((BANK(script_00b3) - $0D) * $4000)) ;; 08:506b $d9 $05
-    dw   ((script_00b4 - $4000) + ((BANK(script_00b4) - $0D) * $4000)) ;; 08:506d $da $05
-    dw   ((script_00b5 - $4000) + ((BANK(script_00b5) - $0D) * $4000)) ;; 08:506f $db $05
-    dw   ((script_00b6 - $4000) + ((BANK(script_00b6) - $0D) * $4000)) ;; 08:5071 $e6 $05
-    dw   ((script_00b7 - $4000) + ((BANK(script_00b7) - $0D) * $4000)) ;; 08:5073 $e7 $05
-    dw   ((script_00b8 - $4000) + ((BANK(script_00b8) - $0D) * $4000)) ;; 08:5075 $e8 $05
-    dw   ((script_00b9 - $4000) + ((BANK(script_00b9) - $0D) * $4000)) ;; 08:5077 $f3 $05
-    dw   ((script_00ba - $4000) + ((BANK(script_00ba) - $0D) * $4000)) ;; 08:5079 $f4 $05
-    dw   ((script_00bb - $4000) + ((BANK(script_00bb) - $0D) * $4000)) ;; 08:507b $f5 $05
-    dw   ((script_00bc - $4000) + ((BANK(script_00bc) - $0D) * $4000)) ;; 08:507d $fe $05
-    dw   ((script_00bd - $4000) + ((BANK(script_00bd) - $0D) * $4000)) ;; 08:507f $ff $05
-    dw   ((script_00be - $4000) + ((BANK(script_00be) - $0D) * $4000)) ;; 08:5081 $00 $06
-    dw   ((script_00bf - $4000) + ((BANK(script_00bf) - $0D) * $4000)) ;; 08:5083 $0b $06
-    dw   ((script_00c0 - $4000) + ((BANK(script_00c0) - $0D) * $4000)) ;; 08:5085 $0c $06
-    dw   ((script_00c1 - $4000) + ((BANK(script_00c1) - $0D) * $4000)) ;; 08:5087 $0d $06
-    dw   ((script_00c2 - $4000) + ((BANK(script_00c2) - $0D) * $4000)) ;; 08:5089 $16 $06
-    dw   ((script_00c3 - $4000) + ((BANK(script_00c3) - $0D) * $4000)) ;; 08:508b $17 $06
-    dw   ((script_00c4 - $4000) + ((BANK(script_00c4) - $0D) * $4000)) ;; 08:508d $18 $06
-    dw   ((script_00c5 - $4000) + ((BANK(script_00c5) - $0D) * $4000)) ;; 08:508f $2b $06
-    dw   ((script_00c6 - $4000) + ((BANK(script_00c6) - $0D) * $4000)) ;; 08:5091 $2c $06
-    dw   ((script_00c7 - $4000) + ((BANK(script_00c7) - $0D) * $4000)) ;; 08:5093 $2d $06
-    dw   ((script_00c8 - $4000) + ((BANK(script_00c8) - $0D) * $4000)) ;; 08:5095 $38 $06
-    dw   ((script_00c9 - $4000) + ((BANK(script_00c9) - $0D) * $4000)) ;; 08:5097 $39 $06
-    dw   ((script_00ca - $4000) + ((BANK(script_00ca) - $0D) * $4000)) ;; 08:5099 $3a $06
-    dw   ((script_00cb - $4000) + ((BANK(script_00cb) - $0D) * $4000)) ;; 08:509b $43 $06
-    dw   ((script_00cc - $4000) + ((BANK(script_00cc) - $0D) * $4000)) ;; 08:509d $44 $06
-    dw   ((script_00cd - $4000) + ((BANK(script_00cd) - $0D) * $4000)) ;; 08:509f $45 $06
-    dw   ((script_00ce - $4000) + ((BANK(script_00ce) - $0D) * $4000)) ;; 08:50a1 $4e $06
-    dw   ((script_00cf - $4000) + ((BANK(script_00cf) - $0D) * $4000)) ;; 08:50a3 $4f $06
-    dw   ((script_00d0 - $4000) + ((BANK(script_00d0) - $0D) * $4000)) ;; 08:50a5 $50 $06
-    dw   ((script_00d1 - $4000) + ((BANK(script_00d1) - $0D) * $4000)) ;; 08:50a7 $59 $06
-    dw   ((script_00d2 - $4000) + ((BANK(script_00d2) - $0D) * $4000)) ;; 08:50a9 $5a $06
-    dw   ((script_00d3 - $4000) + ((BANK(script_00d3) - $0D) * $4000)) ;; 08:50ab $5b $06
-    dw   ((script_00d4 - $4000) + ((BANK(script_00d4) - $0D) * $4000)) ;; 08:50ad $64 $06
-    dw   ((script_00d5 - $4000) + ((BANK(script_00d5) - $0D) * $4000)) ;; 08:50af $65 $06
-    dw   ((script_00d6 - $4000) + ((BANK(script_00d6) - $0D) * $4000)) ;; 08:50b1 $66 $06
-    dw   ((script_00d7 - $4000) + ((BANK(script_00d7) - $0D) * $4000)) ;; 08:50b3 $7d $06
-    dw   ((script_00d8 - $4000) + ((BANK(script_00d8) - $0D) * $4000)) ;; 08:50b5 $7e $06
-    dw   ((script_00d9 - $4000) + ((BANK(script_00d9) - $0D) * $4000)) ;; 08:50b7 $90 $06
-    dw   ((script_00da - $4000) + ((BANK(script_00da) - $0D) * $4000)) ;; 08:50b9 $98 $06
-    dw   ((script_00db - $4000) + ((BANK(script_00db) - $0D) * $4000)) ;; 08:50bb $99 $06
-    dw   ((script_00dc - $4000) + ((BANK(script_00dc) - $0D) * $4000)) ;; 08:50bd $a6 $06
-    dw   ((script_00dd - $4000) + ((BANK(script_00dd) - $0D) * $4000)) ;; 08:50bf $ae $06
-    dw   ((script_00de - $4000) + ((BANK(script_00de) - $0D) * $4000)) ;; 08:50c1 $af $06
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:50c3 $00 $00
-    dw   ((script_00e0 - $4000) + ((BANK(script_00e0) - $0D) * $4000)) ;; 08:50c5 $bc $06
-    dw   ((script_00e1 - $4000) + ((BANK(script_00e1) - $0D) * $4000)) ;; 08:50c7 $c1 $06
-    dw   ((script_00e2 - $4000) + ((BANK(script_00e2) - $0D) * $4000)) ;; 08:50c9 $c2 $06
-    dw   ((script_00e3 - $4000) + ((BANK(script_00e3) - $0D) * $4000)) ;; 08:50cb $c3 $06
-    dw   ((script_00e4 - $4000) + ((BANK(script_00e4) - $0D) * $4000)) ;; 08:50cd $ca $06
-    dw   ((script_00e5 - $4000) + ((BANK(script_00e5) - $0D) * $4000)) ;; 08:50cf $cb $06
-    dw   ((script_00e6 - $4000) + ((BANK(script_00e6) - $0D) * $4000)) ;; 08:50d1 $cc $06
-    dw   ((script_00e7 - $4000) + ((BANK(script_00e7) - $0D) * $4000)) ;; 08:50d3 $1d $07
-    dw   ((script_00e8 - $4000) + ((BANK(script_00e8) - $0D) * $4000)) ;; 08:50d5 $1e $07
-    dw   ((script_00e9 - $4000) + ((BANK(script_00e9) - $0D) * $4000)) ;; 08:50d7 $3e $07
-    dw   ((script_00ea - $4000) + ((BANK(script_00ea) - $0D) * $4000)) ;; 08:50d9 $4f $07
-    dw   ((script_00eb - $4000) + ((BANK(script_00eb) - $0D) * $4000)) ;; 08:50db $50 $07
-    dw   ((script_00ec - $4000) + ((BANK(script_00ec) - $0D) * $4000)) ;; 08:50dd $51 $07
-    dw   ((script_00ed - $4000) + ((BANK(script_00ed) - $0D) * $4000)) ;; 08:50df $56 $07
-    dw   ((script_00ee - $4000) + ((BANK(script_00ee) - $0D) * $4000)) ;; 08:50e1 $57 $07
-    dw   ((script_00ef - $4000) + ((BANK(script_00ef) - $0D) * $4000)) ;; 08:50e3 $58 $07
-    dw   ((script_00f0 - $4000) + ((BANK(script_00f0) - $0D) * $4000)) ;; 08:50e5 $7e $07
-    dw   ((script_00f1 - $4000) + ((BANK(script_00f1) - $0D) * $4000)) ;; 08:50e7 $7f $07
-    dw   ((script_00f2 - $4000) + ((BANK(script_00f2) - $0D) * $4000)) ;; 08:50e9 $80 $07
-    dw   ((script_00f3 - $4000) + ((BANK(script_00f3) - $0D) * $4000)) ;; 08:50eb $88 $07
-    dw   ((script_00f4 - $4000) + ((BANK(script_00f4) - $0D) * $4000)) ;; 08:50ed $89 $07
-    dw   ((script_00f5 - $4000) + ((BANK(script_00f5) - $0D) * $4000)) ;; 08:50ef $96 $07
-    dw   ((script_00f6 - $4000) + ((BANK(script_00f6) - $0D) * $4000)) ;; 08:50f1 $c5 $07
-    dw   ((script_00f7 - $4000) + ((BANK(script_00f7) - $0D) * $4000)) ;; 08:50f3 $cc $07
-    dw   ((script_00f8 - $4000) + ((BANK(script_00f8) - $0D) * $4000)) ;; 08:50f5 $d5 $07
-    dw   ((script_00f9 - $4000) + ((BANK(script_00f9) - $0D) * $4000)) ;; 08:50f7 $da $07
-    dw   ((script_00fa - $4000) + ((BANK(script_00fa) - $0D) * $4000)) ;; 08:50f9 $db $07
-    dw   ((script_00fb - $4000) + ((BANK(script_00fb) - $0D) * $4000)) ;; 08:50fb $dc $07
-    dw   ((script_00fc - $4000) + ((BANK(script_00fc) - $0D) * $4000)) ;; 08:50fd $e1 $07
-    dw   ((script_00fd - $4000) + ((BANK(script_00fd) - $0D) * $4000)) ;; 08:50ff $e2 $07
-    dw   ((script_00fe - $4000) + ((BANK(script_00fe) - $0D) * $4000)) ;; 08:5101 $e3 $07
-    dw   ((script_00ff - $4000) + ((BANK(script_00ff) - $0D) * $4000)) ;; 08:5103 $ea $07
-    dw   ((script_0100 - $4000) + ((BANK(script_0100) - $0D) * $4000)) ;; 08:5105 $eb $07
-    dw   ((script_0101 - $4000) + ((BANK(script_0101) - $0D) * $4000)) ;; 08:5107 $ec $07
-    dw   ((script_0102 - $4000) + ((BANK(script_0102) - $0D) * $4000)) ;; 08:5109 $f3 $07
-    dw   ((script_0103 - $4000) + ((BANK(script_0103) - $0D) * $4000)) ;; 08:510b $f4 $07
-    dw   ((script_0104 - $4000) + ((BANK(script_0104) - $0D) * $4000)) ;; 08:510d $00 $08
-    dw   ((script_0105 - $4000) + ((BANK(script_0105) - $0D) * $4000)) ;; 08:510f $01 $08
-    dw   ((script_0106 - $4000) + ((BANK(script_0106) - $0D) * $4000)) ;; 08:5111 $02 $08
-    dw   ((script_0107 - $4000) + ((BANK(script_0107) - $0D) * $4000)) ;; 08:5113 $26 $08
-    dw   ((script_0108 - $4000) + ((BANK(script_0108) - $0D) * $4000)) ;; 08:5115 $27 $08
-    dw   ((script_0109 - $4000) + ((BANK(script_0109) - $0D) * $4000)) ;; 08:5117 $28 $08
-    dw   ((script_010a - $4000) + ((BANK(script_010a) - $0D) * $4000)) ;; 08:5119 $48 $08
-    dw   ((script_010b - $4000) + ((BANK(script_010b) - $0D) * $4000)) ;; 08:511b $49 $08
-    dw   ((script_010c - $4000) + ((BANK(script_010c) - $0D) * $4000)) ;; 08:511d $4a $08
-    dw   ((script_010d - $4000) + ((BANK(script_010d) - $0D) * $4000)) ;; 08:511f $54 $08
-    dw   ((script_010e - $4000) + ((BANK(script_010e) - $0D) * $4000)) ;; 08:5121 $55 $08
-    dw   ((script_010f - $4000) + ((BANK(script_010f) - $0D) * $4000)) ;; 08:5123 $56 $08
-    dw   ((script_0110 - $4000) + ((BANK(script_0110) - $0D) * $4000)) ;; 08:5125 $22 $09
-    dw   ((script_0111 - $4000) + ((BANK(script_0111) - $0D) * $4000)) ;; 08:5127 $23 $09
-    dw   ((script_0112 - $4000) + ((BANK(script_0112) - $0D) * $4000)) ;; 08:5129 $24 $09
-    dw   ((script_0113 - $4000) + ((BANK(script_0113) - $0D) * $4000)) ;; 08:512b $2b $09
-    dw   ((script_0114 - $4000) + ((BANK(script_0114) - $0D) * $4000)) ;; 08:512d $2c $09
-    dw   ((script_0115 - $4000) + ((BANK(script_0115) - $0D) * $4000)) ;; 08:512f $2d $09
-    dw   ((script_0116 - $4000) + ((BANK(script_0116) - $0D) * $4000)) ;; 08:5131 $32 $09
-    dw   ((script_0117 - $4000) + ((BANK(script_0117) - $0D) * $4000)) ;; 08:5133 $33 $09
-    dw   ((script_0118 - $4000) + ((BANK(script_0118) - $0D) * $4000)) ;; 08:5135 $34 $09
-    dw   ((script_0119 - $4000) + ((BANK(script_0119) - $0D) * $4000)) ;; 08:5137 $3b $09
-    dw   ((script_011a - $4000) + ((BANK(script_011a) - $0D) * $4000)) ;; 08:5139 $3c $09
-    dw   ((script_011b - $4000) + ((BANK(script_011b) - $0D) * $4000)) ;; 08:513b $3d $09
-    dw   ((script_011c - $4000) + ((BANK(script_011c) - $0D) * $4000)) ;; 08:513d $46 $09
-    dw   ((script_011d - $4000) + ((BANK(script_011d) - $0D) * $4000)) ;; 08:513f $47 $09
-    dw   ((script_011e - $4000) + ((BANK(script_011e) - $0D) * $4000)) ;; 08:5141 $48 $09
-    dw   ((script_011f - $4000) + ((BANK(script_011f) - $0D) * $4000)) ;; 08:5143 $8e $09
-    dw   ((script_0120 - $4000) + ((BANK(script_0120) - $0D) * $4000)) ;; 08:5145 $8f $09
-    dw   ((script_0121 - $4000) + ((BANK(script_0121) - $0D) * $4000)) ;; 08:5147 $66 $0a
-    dw   ((script_0122 - $4000) + ((BANK(script_0122) - $0D) * $4000)) ;; 08:5149 $86 $0a
-    dw   ((script_0123 - $4000) + ((BANK(script_0123) - $0D) * $4000)) ;; 08:514b $87 $0a
-    dw   ((script_0124 - $4000) + ((BANK(script_0124) - $0D) * $4000)) ;; 08:514d $88 $0a
-    dw   ((script_0125 - $4000) + ((BANK(script_0125) - $0D) * $4000)) ;; 08:514f $91 $0a
-    dw   ((script_0126 - $4000) + ((BANK(script_0126) - $0D) * $4000)) ;; 08:5151 $92 $0a
-    dw   ((script_0127 - $4000) + ((BANK(script_0127) - $0D) * $4000)) ;; 08:5153 $93 $0a
-    dw   ((script_0128 - $4000) + ((BANK(script_0128) - $0D) * $4000)) ;; 08:5155 $9f $0a
-    dw   ((script_0129 - $4000) + ((BANK(script_0129) - $0D) * $4000)) ;; 08:5157 $a0 $0a
-    dw   ((script_012a - $4000) + ((BANK(script_012a) - $0D) * $4000)) ;; 08:5159 $a1 $0a
-    dw   ((script_012b - $4000) + ((BANK(script_012b) - $0D) * $4000)) ;; 08:515b $a8 $0a
-    dw   ((script_012c - $4000) + ((BANK(script_012c) - $0D) * $4000)) ;; 08:515d $a9 $0a
-    dw   ((script_012d - $4000) + ((BANK(script_012d) - $0D) * $4000)) ;; 08:515f $aa $0a
-    dw   ((script_012e - $4000) + ((BANK(script_012e) - $0D) * $4000)) ;; 08:5161 $af $0a
-    dw   ((script_012f - $4000) + ((BANK(script_012f) - $0D) * $4000)) ;; 08:5163 $b0 $0a
-    dw   ((script_0130 - $4000) + ((BANK(script_0130) - $0D) * $4000)) ;; 08:5165 $b1 $0a
-    dw   ((script_0131 - $4000) + ((BANK(script_0131) - $0D) * $4000)) ;; 08:5167 $ba $0a
-    dw   ((script_0132 - $4000) + ((BANK(script_0132) - $0D) * $4000)) ;; 08:5169 $bb $0a
-    dw   ((script_0133 - $4000) + ((BANK(script_0133) - $0D) * $4000)) ;; 08:516b $bc $0a
-    dw   ((script_0134 - $4000) + ((BANK(script_0134) - $0D) * $4000)) ;; 08:516d $c1 $0a
-    dw   ((script_0135 - $4000) + ((BANK(script_0135) - $0D) * $4000)) ;; 08:516f $c2 $0a
-    dw   ((script_0136 - $4000) + ((BANK(script_0136) - $0D) * $4000)) ;; 08:5171 $c3 $0a
-    dw   ((script_0137 - $4000) + ((BANK(script_0137) - $0D) * $4000)) ;; 08:5173 $c8 $0a
-    dw   ((script_0138 - $4000) + ((BANK(script_0138) - $0D) * $4000)) ;; 08:5175 $c9 $0a
-    dw   ((script_0139 - $4000) + ((BANK(script_0139) - $0D) * $4000)) ;; 08:5177 $ca $0a
-    dw   ((script_013a - $4000) + ((BANK(script_013a) - $0D) * $4000)) ;; 08:5179 $d1 $0a
-    dw   ((script_013b - $4000) + ((BANK(script_013b) - $0D) * $4000)) ;; 08:517b $d2 $0a
-    dw   ((script_013c - $4000) + ((BANK(script_013c) - $0D) * $4000)) ;; 08:517d $d3 $0a
-    dw   ((script_013d - $4000) + ((BANK(script_013d) - $0D) * $4000)) ;; 08:517f $d8 $0a
-    dw   ((script_013e - $4000) + ((BANK(script_013e) - $0D) * $4000)) ;; 08:5181 $d9 $0a
-    dw   ((script_013f - $4000) + ((BANK(script_013f) - $0D) * $4000)) ;; 08:5183 $da $0a
-    dw   ((script_0140 - $4000) + ((BANK(script_0140) - $0D) * $4000)) ;; 08:5185 $e8 $0a
-    dw   ((script_0141 - $4000) + ((BANK(script_0141) - $0D) * $4000)) ;; 08:5187 $15 $0b
-    dw   ((script_0142 - $4000) + ((BANK(script_0142) - $0D) * $4000)) ;; 08:5189 $16 $0b
-    dw   ((script_0143 - $4000) + ((BANK(script_0143) - $0D) * $4000)) ;; 08:518b $1d $0b
-    dw   ((script_0144 - $4000) + ((BANK(script_0144) - $0D) * $4000)) ;; 08:518d $1e $0b
-    dw   ((script_0145 - $4000) + ((BANK(script_0145) - $0D) * $4000)) ;; 08:518f $1f $0b
-    dw   ((script_0146 - $4000) + ((BANK(script_0146) - $0D) * $4000)) ;; 08:5191 $26 $0b
-    dw   ((script_0147 - $4000) + ((BANK(script_0147) - $0D) * $4000)) ;; 08:5193 $27 $0b
-    dw   ((script_0148 - $4000) + ((BANK(script_0148) - $0D) * $4000)) ;; 08:5195 $28 $0b
-    dw   ((script_0149 - $4000) + ((BANK(script_0149) - $0D) * $4000)) ;; 08:5197 $2d $0b
-    dw   ((script_014a - $4000) + ((BANK(script_014a) - $0D) * $4000)) ;; 08:5199 $2e $0b
-    dw   ((script_014b - $4000) + ((BANK(script_014b) - $0D) * $4000)) ;; 08:519b $2f $0b
-    dw   ((script_014c - $4000) + ((BANK(script_014c) - $0D) * $4000)) ;; 08:519d $34 $0b
-    dw   ((script_014d - $4000) + ((BANK(script_014d) - $0D) * $4000)) ;; 08:519f $35 $0b
-    dw   ((script_014e - $4000) + ((BANK(script_014e) - $0D) * $4000)) ;; 08:51a1 $36 $0b
-    dw   ((script_014f - $4000) + ((BANK(script_014f) - $0D) * $4000)) ;; 08:51a3 $3b $0b
-    dw   ((script_0150 - $4000) + ((BANK(script_0150) - $0D) * $4000)) ;; 08:51a5 $3c $0b
-    dw   ((script_0151 - $4000) + ((BANK(script_0151) - $0D) * $4000)) ;; 08:51a7 $3d $0b
-    dw   ((script_0152 - $4000) + ((BANK(script_0152) - $0D) * $4000)) ;; 08:51a9 $42 $0b
-    dw   ((script_0153 - $4000) + ((BANK(script_0153) - $0D) * $4000)) ;; 08:51ab $43 $0b
-    dw   ((script_0154 - $4000) + ((BANK(script_0154) - $0D) * $4000)) ;; 08:51ad $44 $0b
-    dw   ((script_0155 - $4000) + ((BANK(script_0155) - $0D) * $4000)) ;; 08:51af $90 $0b
-    dw   ((script_0156 - $4000) + ((BANK(script_0156) - $0D) * $4000)) ;; 08:51b1 $91 $0b
-    dw   ((script_0157 - $4000) + ((BANK(script_0157) - $0D) * $4000)) ;; 08:51b3 $92 $0b
-    dw   ((script_0158 - $4000) + ((BANK(script_0158) - $0D) * $4000)) ;; 08:51b5 $9c $0b
-    dw   ((script_0159 - $4000) + ((BANK(script_0159) - $0D) * $4000)) ;; 08:51b7 $9d $0b
-    dw   ((script_015a - $4000) + ((BANK(script_015a) - $0D) * $4000)) ;; 08:51b9 $9e $0b
-    dw   ((script_015b - $4000) + ((BANK(script_015b) - $0D) * $4000)) ;; 08:51bb $a5 $0b
-    dw   ((script_015c - $4000) + ((BANK(script_015c) - $0D) * $4000)) ;; 08:51bd $a6 $0b
-    dw   ((script_015d - $4000) + ((BANK(script_015d) - $0D) * $4000)) ;; 08:51bf $a7 $0b
-    dw   ((script_015e - $4000) + ((BANK(script_015e) - $0D) * $4000)) ;; 08:51c1 $ae $0b
-    dw   ((script_015f - $4000) + ((BANK(script_015f) - $0D) * $4000)) ;; 08:51c3 $af $0b
-    dw   ((script_0160 - $4000) + ((BANK(script_0160) - $0D) * $4000)) ;; 08:51c5 $b0 $0b
-    dw   ((script_0161 - $4000) + ((BANK(script_0161) - $0D) * $4000)) ;; 08:51c7 $b5 $0b
-    dw   ((script_0162 - $4000) + ((BANK(script_0162) - $0D) * $4000)) ;; 08:51c9 $b6 $0b
-    dw   ((script_0163 - $4000) + ((BANK(script_0163) - $0D) * $4000)) ;; 08:51cb $b7 $0b
-    dw   ((script_0164 - $4000) + ((BANK(script_0164) - $0D) * $4000)) ;; 08:51cd $bc $0b
-    dw   ((script_0165 - $4000) + ((BANK(script_0165) - $0D) * $4000)) ;; 08:51cf $bd $0b
-    dw   ((script_0166 - $4000) + ((BANK(script_0166) - $0D) * $4000)) ;; 08:51d1 $be $0b
-    dw   ((script_0167 - $4000) + ((BANK(script_0167) - $0D) * $4000)) ;; 08:51d3 $c3 $0b
-    dw   ((script_0168 - $4000) + ((BANK(script_0168) - $0D) * $4000)) ;; 08:51d5 $c4 $0b
-    dw   ((script_0169 - $4000) + ((BANK(script_0169) - $0D) * $4000)) ;; 08:51d7 $c5 $0b
-    dw   ((script_016a - $4000) + ((BANK(script_016a) - $0D) * $4000)) ;; 08:51d9 $ca $0b
-    dw   ((script_016b - $4000) + ((BANK(script_016b) - $0D) * $4000)) ;; 08:51db $cb $0b
-    dw   ((script_016c - $4000) + ((BANK(script_016c) - $0D) * $4000)) ;; 08:51dd $cc $0b
-    dw   ((script_016d - $4000) + ((BANK(script_016d) - $0D) * $4000)) ;; 08:51df $d1 $0b
-    dw   ((script_016e - $4000) + ((BANK(script_016e) - $0D) * $4000)) ;; 08:51e1 $d2 $0b
-    dw   ((script_016f - $4000) + ((BANK(script_016f) - $0D) * $4000)) ;; 08:51e3 $d3 $0b
-    dw   ((script_0170 - $4000) + ((BANK(script_0170) - $0D) * $4000)) ;; 08:51e5 $d8 $0b
-    dw   ((script_0171 - $4000) + ((BANK(script_0171) - $0D) * $4000)) ;; 08:51e7 $d9 $0b
-    dw   ((script_0172 - $4000) + ((BANK(script_0172) - $0D) * $4000)) ;; 08:51e9 $da $0b
-    dw   ((script_0173 - $4000) + ((BANK(script_0173) - $0D) * $4000)) ;; 08:51eb $df $0b
-    dw   ((script_0174 - $4000) + ((BANK(script_0174) - $0D) * $4000)) ;; 08:51ed $e0 $0b
-    dw   ((script_0175 - $4000) + ((BANK(script_0175) - $0D) * $4000)) ;; 08:51ef $e1 $0b
-    dw   ((script_0176 - $4000) + ((BANK(script_0176) - $0D) * $4000)) ;; 08:51f1 $e6 $0b
-    dw   ((script_0177 - $4000) + ((BANK(script_0177) - $0D) * $4000)) ;; 08:51f3 $e7 $0b
-    dw   ((script_0178 - $4000) + ((BANK(script_0178) - $0D) * $4000)) ;; 08:51f5 $e8 $0b
-    dw   ((script_0179 - $4000) + ((BANK(script_0179) - $0D) * $4000)) ;; 08:51f7 $f1 $0b
-    dw   ((script_017a - $4000) + ((BANK(script_017a) - $0D) * $4000)) ;; 08:51f9 $f2 $0b
-    dw   ((script_017b - $4000) + ((BANK(script_017b) - $0D) * $4000)) ;; 08:51fb $f3 $0b
-    dw   ((script_017c - $4000) + ((BANK(script_017c) - $0D) * $4000)) ;; 08:51fd $00 $0c
-    dw   ((script_017d - $4000) + ((BANK(script_017d) - $0D) * $4000)) ;; 08:51ff $01 $0c
-    dw   ((script_017e - $4000) + ((BANK(script_017e) - $0D) * $4000)) ;; 08:5201 $02 $0c
-    dw   ((script_017f - $4000) + ((BANK(script_017f) - $0D) * $4000)) ;; 08:5203 $07 $0c
-    dw   ((script_0180 - $4000) + ((BANK(script_0180) - $0D) * $4000)) ;; 08:5205 $08 $0c
-    dw   ((script_0181 - $4000) + ((BANK(script_0181) - $0D) * $4000)) ;; 08:5207 $09 $0c
-    dw   ((script_0182 - $4000) + ((BANK(script_0182) - $0D) * $4000)) ;; 08:5209 $16 $0c
-    dw   ((script_0183 - $4000) + ((BANK(script_0183) - $0D) * $4000)) ;; 08:520b $17 $0c
-    dw   ((script_0184 - $4000) + ((BANK(script_0184) - $0D) * $4000)) ;; 08:520d $18 $0c
-    dw   ((script_0185 - $4000) + ((BANK(script_0185) - $0D) * $4000)) ;; 08:520f $1d $0c
-    dw   ((script_0186 - $4000) + ((BANK(script_0186) - $0D) * $4000)) ;; 08:5211 $1e $0c
-    dw   ((script_0187 - $4000) + ((BANK(script_0187) - $0D) * $4000)) ;; 08:5213 $1f $0c
-    dw   ((script_0188 - $4000) + ((BANK(script_0188) - $0D) * $4000)) ;; 08:5215 $26 $0c
-    dw   ((script_0189 - $4000) + ((BANK(script_0189) - $0D) * $4000)) ;; 08:5217 $27 $0c
-    dw   ((script_018a - $4000) + ((BANK(script_018a) - $0D) * $4000)) ;; 08:5219 $28 $0c
-    dw   ((script_018b - $4000) + ((BANK(script_018b) - $0D) * $4000)) ;; 08:521b $31 $0c
-    dw   ((script_018c - $4000) + ((BANK(script_018c) - $0D) * $4000)) ;; 08:521d $32 $0c
-    dw   ((script_018d - $4000) + ((BANK(script_018d) - $0D) * $4000)) ;; 08:521f $33 $0c
-    dw   ((script_018e - $4000) + ((BANK(script_018e) - $0D) * $4000)) ;; 08:5221 $3c $0c
-    dw   ((script_018f - $4000) + ((BANK(script_018f) - $0D) * $4000)) ;; 08:5223 $3d $0c
-    dw   ((script_0190 - $4000) + ((BANK(script_0190) - $0D) * $4000)) ;; 08:5225 $3e $0c
-    dw   ((script_0191 - $4000) + ((BANK(script_0191) - $0D) * $4000)) ;; 08:5227 $48 $0c
-    dw   ((script_0192 - $4000) + ((BANK(script_0192) - $0D) * $4000)) ;; 08:5229 $49 $0c
-    dw   ((script_0193 - $4000) + ((BANK(script_0193) - $0D) * $4000)) ;; 08:522b $4a $0c
-    dw   ((script_0194 - $4000) + ((BANK(script_0194) - $0D) * $4000)) ;; 08:522d $59 $0c
-    dw   ((script_0195 - $4000) + ((BANK(script_0195) - $0D) * $4000)) ;; 08:522f $60 $0c
-    dw   ((script_0196 - $4000) + ((BANK(script_0196) - $0D) * $4000)) ;; 08:5231 $61 $0c
-    dw   ((script_0197 - $4000) + ((BANK(script_0197) - $0D) * $4000)) ;; 08:5233 $6b $0c
-    dw   ((script_0198 - $4000) + ((BANK(script_0198) - $0D) * $4000)) ;; 08:5235 $6c $0c
-    dw   ((script_0199 - $4000) + ((BANK(script_0199) - $0D) * $4000)) ;; 08:5237 $6d $0c
-    dw   ((script_019a - $4000) + ((BANK(script_019a) - $0D) * $4000)) ;; 08:5239 $74 $0c
-    dw   ((script_019b - $4000) + ((BANK(script_019b) - $0D) * $4000)) ;; 08:523b $75 $0c
-    dw   ((script_019c - $4000) + ((BANK(script_019c) - $0D) * $4000)) ;; 08:523d $76 $0c
-    dw   ((script_019d - $4000) + ((BANK(script_019d) - $0D) * $4000)) ;; 08:523f $77 $0c
-    dw   ((script_019e - $4000) + ((BANK(script_019e) - $0D) * $4000)) ;; 08:5241 $3d $0d
-    dw   ((script_019f - $4000) + ((BANK(script_019f) - $0D) * $4000)) ;; 08:5243 $3e $0d
-    dw   ((script_01a0 - $4000) + ((BANK(script_01a0) - $0D) * $4000)) ;; 08:5245 $49 $0d
-    dw   ((script_01a1 - $4000) + ((BANK(script_01a1) - $0D) * $4000)) ;; 08:5247 $57 $0d
-    dw   ((script_01a2 - $4000) + ((BANK(script_01a2) - $0D) * $4000)) ;; 08:5249 $5a $0d
-    dw   ((script_01a3 - $4000) + ((BANK(script_01a3) - $0D) * $4000)) ;; 08:524b $83 $0d
-    dw   ((script_01a4 - $4000) + ((BANK(script_01a4) - $0D) * $4000)) ;; 08:524d $d8 $0d
-    dw   ((script_01a5 - $4000) + ((BANK(script_01a5) - $0D) * $4000)) ;; 08:524f $db $0d
-    dw   ((script_01a6 - $4000) + ((BANK(script_01a6) - $0D) * $4000)) ;; 08:5251 $5a $0e
-    dw   ((script_01a7 - $4000) + ((BANK(script_01a7) - $0D) * $4000)) ;; 08:5253 $9e $0e
-    dw   ((script_01a8 - $4000) + ((BANK(script_01a8) - $0D) * $4000)) ;; 08:5255 $a1 $0e
-    dw   ((script_01a9 - $4000) + ((BANK(script_01a9) - $0D) * $4000)) ;; 08:5257 $41 $0f
-    dw   ((script_01aa - $4000) + ((BANK(script_01aa) - $0D) * $4000)) ;; 08:5259 $64 $0f
-    dw   ((script_01ab - $4000) + ((BANK(script_01ab) - $0D) * $4000)) ;; 08:525b $67 $0f
-    dw   ((script_01ac - $4000) + ((BANK(script_01ac) - $0D) * $4000)) ;; 08:525d $7f $0f
-    dw   ((script_01ad - $4000) + ((BANK(script_01ad) - $0D) * $4000)) ;; 08:525f $cd $0f
-    dw   ((script_01ae - $4000) + ((BANK(script_01ae) - $0D) * $4000)) ;; 08:5261 $d0 $0f
-    dw   ((script_01af - $4000) + ((BANK(script_01af) - $0D) * $4000)) ;; 08:5263 $63 $10
-    dw   ((script_01b0 - $4000) + ((BANK(script_01b0) - $0D) * $4000)) ;; 08:5265 $a5 $10
-    dw   ((script_01b1 - $4000) + ((BANK(script_01b1) - $0D) * $4000)) ;; 08:5267 $aa $10
-    dw   ((script_01b2 - $4000) + ((BANK(script_01b2) - $0D) * $4000)) ;; 08:5269 $ff $11
-    dw   ((script_01b3 - $4000) + ((BANK(script_01b3) - $0D) * $4000)) ;; 08:526b $1d $12
-    dw   ((script_01b4 - $4000) + ((BANK(script_01b4) - $0D) * $4000)) ;; 08:526d $20 $12
-    dw   ((script_01b5 - $4000) + ((BANK(script_01b5) - $0D) * $4000)) ;; 08:526f $3b $12
-    dw   ((script_01b6 - $4000) + ((BANK(script_01b6) - $0D) * $4000)) ;; 08:5271 $51 $12
-    dw   ((script_01b7 - $4000) + ((BANK(script_01b7) - $0D) * $4000)) ;; 08:5273 $58 $12
-    dw   ((script_01b8 - $4000) + ((BANK(script_01b8) - $0D) * $4000)) ;; 08:5275 $a6 $12
-    dw   ((script_01b9 - $4000) + ((BANK(script_01b9) - $0D) * $4000)) ;; 08:5277 $ba $12
-    dw   ((script_01ba - $4000) + ((BANK(script_01ba) - $0D) * $4000)) ;; 08:5279 $bd $12
-    dw   ((script_01bb - $4000) + ((BANK(script_01bb) - $0D) * $4000)) ;; 08:527b $04 $13
-    dw   ((script_01bc - $4000) + ((BANK(script_01bc) - $0D) * $4000)) ;; 08:527d $c4 $13
-    dw   ((script_01bd - $4000) + ((BANK(script_01bd) - $0D) * $4000)) ;; 08:527f $c5 $13
-    dw   ((script_01be - $4000) + ((BANK(script_01be) - $0D) * $4000)) ;; 08:5281 $27 $14
-    dw   ((script_01bf - $4000) + ((BANK(script_01bf) - $0D) * $4000)) ;; 08:5283 $45 $14
-    dw   ((script_01c0 - $4000) + ((BANK(script_01c0) - $0D) * $4000)) ;; 08:5285 $48 $14
-    dw   ((script_01c1 - $4000) + ((BANK(script_01c1) - $0D) * $4000)) ;; 08:5287 $5d $14
-    dw   ((script_01c2 - $4000) + ((BANK(script_01c2) - $0D) * $4000)) ;; 08:5289 $7b $14
-    dw   ((script_01c3 - $4000) + ((BANK(script_01c3) - $0D) * $4000)) ;; 08:528b $7e $14
-    dw   ((script_01c4 - $4000) + ((BANK(script_01c4) - $0D) * $4000)) ;; 08:528d $95 $14
-    dw   ((script_01c5 - $4000) + ((BANK(script_01c5) - $0D) * $4000)) ;; 08:528f $ac $14
-    dw   ((script_01c6 - $4000) + ((BANK(script_01c6) - $0D) * $4000)) ;; 08:5291 $af $14
-    dw   ((script_01c7 - $4000) + ((BANK(script_01c7) - $0D) * $4000)) ;; 08:5293 $cf $14
-    dw   ((script_01c8 - $4000) + ((BANK(script_01c8) - $0D) * $4000)) ;; 08:5295 $e6 $14
-    dw   ((script_01c9 - $4000) + ((BANK(script_01c9) - $0D) * $4000)) ;; 08:5297 $e9 $14
-    dw   ((script_01ca - $4000) + ((BANK(script_01ca) - $0D) * $4000)) ;; 08:5299 $0b $15
-    dw   ((script_01cb - $4000) + ((BANK(script_01cb) - $0D) * $4000)) ;; 08:529b $1c $15
-    dw   ((script_01cc - $4000) + ((BANK(script_01cc) - $0D) * $4000)) ;; 08:529d $1f $15
-    dw   ((script_01cd - $4000) + ((BANK(script_01cd) - $0D) * $4000)) ;; 08:529f $68 $15
-    dw   ((script_01ce - $4000) + ((BANK(script_01ce) - $0D) * $4000)) ;; 08:52a1 $6d $15
-    dw   ((script_01cf - $4000) + ((BANK(script_01cf) - $0D) * $4000)) ;; 08:52a3 $6e $15
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:52a5 $00 $00
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:52a7 $00 $00
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:52a9 $00 $00
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:52ab $00 $00
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:52ad $00 $00
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:52af $00 $00
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:52b1 $00 $00
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:52b3 $00 $00
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:52b5 $00 $00
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:52b7 $00 $00
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:52b9 $00 $00
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:52bb $00 $00
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:52bd $00 $00
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:52bf $00 $00
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:52c1 $00 $00
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:52c3 $00 $00
-    dw   ((script_01e0 - $4000) + ((BANK(script_01e0) - $0D) * $4000)) ;; 08:52c5 $6f $15
-    dw   ((script_01e1 - $4000) + ((BANK(script_01e1) - $0D) * $4000)) ;; 08:52c7 $3a $16
-    dw   ((script_01e2 - $4000) + ((BANK(script_01e2) - $0D) * $4000)) ;; 08:52c9 $7f $16
-    dw   ((script_01e3 - $4000) + ((BANK(script_01e3) - $0D) * $4000)) ;; 08:52cb $bc $16
-    dw   ((script_01e4 - $4000) + ((BANK(script_01e4) - $0D) * $4000)) ;; 08:52cd $e8 $16
-    dw   ((script_01e5 - $4000) + ((BANK(script_01e5) - $0D) * $4000)) ;; 08:52cf $70 $17
-    dw   ((script_01e6 - $4000) + ((BANK(script_01e6) - $0D) * $4000)) ;; 08:52d1 $7b $17
-    dw   ((script_01e7 - $4000) + ((BANK(script_01e7) - $0D) * $4000)) ;; 08:52d3 $98 $17
-    dw   ((script_01e8 - $4000) + ((BANK(script_01e8) - $0D) * $4000)) ;; 08:52d5 $b7 $17
-    dw   ((script_01e9 - $4000) + ((BANK(script_01e9) - $0D) * $4000)) ;; 08:52d7 $d4 $17
-    dw   ((script_01ea - $4000) + ((BANK(script_01ea) - $0D) * $4000)) ;; 08:52d9 $2d $18
-    dw   ((script_01eb - $4000) + ((BANK(script_01eb) - $0D) * $4000)) ;; 08:52db $43 $18
-    dw   ((script_01ec - $4000) + ((BANK(script_01ec) - $0D) * $4000)) ;; 08:52dd $68 $18
-    dw   ((script_01ed - $4000) + ((BANK(script_01ed) - $0D) * $4000)) ;; 08:52df $c9 $18
-    dw   ((script_01ee - $4000) + ((BANK(script_01ee) - $0D) * $4000)) ;; 08:52e1 $eb $18
-    dw   ((script_01ef - $4000) + ((BANK(script_01ef) - $0D) * $4000)) ;; 08:52e3 $2a $19
-    dw   ((script_01f0 - $4000) + ((BANK(script_01f0) - $0D) * $4000)) ;; 08:52e5 $f5 $19
-    dw   ((script_01f1 - $4000) + ((BANK(script_01f1) - $0D) * $4000)) ;; 08:52e7 $6e $1b
-    dw   ((script_01f2 - $4000) + ((BANK(script_01f2) - $0D) * $4000)) ;; 08:52e9 $75 $1b
-    dw   ((script_01f3 - $4000) + ((BANK(script_01f3) - $0D) * $4000)) ;; 08:52eb $91 $1b
-    dw   ((script_01f4 - $4000) + ((BANK(script_01f4) - $0D) * $4000)) ;; 08:52ed $cd $1b
-    dw   ((script_01f5 - $4000) + ((BANK(script_01f5) - $0D) * $4000)) ;; 08:52ef $4b $1c
-    dw   ((script_01f6 - $4000) + ((BANK(script_01f6) - $0D) * $4000)) ;; 08:52f1 $80 $1c
-    dw   ((script_01f7 - $4000) + ((BANK(script_01f7) - $0D) * $4000)) ;; 08:52f3 $dc $1c
-    dw   ((script_01f8 - $4000) + ((BANK(script_01f8) - $0D) * $4000)) ;; 08:52f5 $dd $1c
-    dw   ((script_01f9 - $4000) + ((BANK(script_01f9) - $0D) * $4000)) ;; 08:52f7 $20 $1d
-    dw   ((script_01fa - $4000) + ((BANK(script_01fa) - $0D) * $4000)) ;; 08:52f9 $3d $1d
-    dw   ((script_01fb - $4000) + ((BANK(script_01fb) - $0D) * $4000)) ;; 08:52fb $4a $1d
-    dw   ((script_01fc - $4000) + ((BANK(script_01fc) - $0D) * $4000)) ;; 08:52fd $57 $1d
-    dw   ((script_01fd - $4000) + ((BANK(script_01fd) - $0D) * $4000)) ;; 08:52ff $64 $1d
-    dw   ((script_01fe - $4000) + ((BANK(script_01fe) - $0D) * $4000)) ;; 08:5301 $71 $1d
-    dw   ((script_01ff - $4000) + ((BANK(script_01ff) - $0D) * $4000)) ;; 08:5303 $05 $1e
-    dw   ((script_0200 - $4000) + ((BANK(script_0200) - $0D) * $4000)) ;; 08:5305 $36 $1e
-    dw   ((script_0201 - $4000) + ((BANK(script_0201) - $0D) * $4000)) ;; 08:5307 $4f $1e
-    dw   ((script_0202 - $4000) + ((BANK(script_0202) - $0D) * $4000)) ;; 08:5309 $50 $1e
-    dw   ((script_0203 - $4000) + ((BANK(script_0203) - $0D) * $4000)) ;; 08:530b $6c $1e
-    dw   ((script_0204 - $4000) + ((BANK(script_0204) - $0D) * $4000)) ;; 08:530d $b2 $1e
-    dw   ((script_0205 - $4000) + ((BANK(script_0205) - $0D) * $4000)) ;; 08:530f $cc $1e
-    dw   ((script_0206 - $4000) + ((BANK(script_0206) - $0D) * $4000)) ;; 08:5311 $12 $1f
-    dw   ((script_0207 - $4000) + ((BANK(script_0207) - $0D) * $4000)) ;; 08:5313 $2c $1f
-    dw   ((script_0208 - $4000) + ((BANK(script_0208) - $0D) * $4000)) ;; 08:5315 $df $1f
-    dw   ((script_0209 - $4000) + ((BANK(script_0209) - $0D) * $4000)) ;; 08:5317 $ff $20
-    dw   ((script_020a - $4000) + ((BANK(script_020a) - $0D) * $4000)) ;; 08:5319 $22 $21
-    dw   ((script_020b - $4000) + ((BANK(script_020b) - $0D) * $4000)) ;; 08:531b $23 $21
-    dw   ((script_020c - $4000) + ((BANK(script_020c) - $0D) * $4000)) ;; 08:531d $34 $21
-    dw   ((script_020d - $4000) + ((BANK(script_020d) - $0D) * $4000)) ;; 08:531f $35 $21
-    dw   ((script_020e - $4000) + ((BANK(script_020e) - $0D) * $4000)) ;; 08:5321 $7c $21
-    dw   ((script_020f - $4000) + ((BANK(script_020f) - $0D) * $4000)) ;; 08:5323 $9f $21
-    dw   ((script_0210 - $4000) + ((BANK(script_0210) - $0D) * $4000)) ;; 08:5325 $3e $22
-    dw   ((script_0211 - $4000) + ((BANK(script_0211) - $0D) * $4000)) ;; 08:5327 $7e $23
-    dw   ((script_0212 - $4000) + ((BANK(script_0212) - $0D) * $4000)) ;; 08:5329 $bd $23
-    dw   ((script_0213 - $4000) + ((BANK(script_0213) - $0D) * $4000)) ;; 08:532b $f8 $23
-    dw   ((script_0214 - $4000) + ((BANK(script_0214) - $0D) * $4000)) ;; 08:532d $39 $24
-    dw   ((script_0215 - $4000) + ((BANK(script_0215) - $0D) * $4000)) ;; 08:532f $7c $24
-    dw   ((script_0216 - $4000) + ((BANK(script_0216) - $0D) * $4000)) ;; 08:5331 $a2 $24
-    dw   ((script_0217 - $4000) + ((BANK(script_0217) - $0D) * $4000)) ;; 08:5333 $c9 $24
-    dw   ((script_0218 - $4000) + ((BANK(script_0218) - $0D) * $4000)) ;; 08:5335 $73 $25
-    dw   ((script_0219 - $4000) + ((BANK(script_0219) - $0D) * $4000)) ;; 08:5337 $ed $25
-    dw   ((script_021a - $4000) + ((BANK(script_021a) - $0D) * $4000)) ;; 08:5339 $45 $26
-    dw   ((script_021b - $4000) + ((BANK(script_021b) - $0D) * $4000)) ;; 08:533b $76 $26
-    dw   ((script_021c - $4000) + ((BANK(script_021c) - $0D) * $4000)) ;; 08:533d $d2 $26
-    dw   ((script_021d - $4000) + ((BANK(script_021d) - $0D) * $4000)) ;; 08:533f $f6 $26
-    dw   ((script_021e - $4000) + ((BANK(script_021e) - $0D) * $4000)) ;; 08:5341 $1a $27
-    dw   ((script_021f - $4000) + ((BANK(script_021f) - $0D) * $4000)) ;; 08:5343 $66 $27
-    dw   ((script_0220 - $4000) + ((BANK(script_0220) - $0D) * $4000)) ;; 08:5345 $86 $27
-    dw   ((script_0221 - $4000) + ((BANK(script_0221) - $0D) * $4000)) ;; 08:5347 $ec $27
-    dw   ((script_0222 - $4000) + ((BANK(script_0222) - $0D) * $4000)) ;; 08:5349 $5d $28
-    dw   ((script_0223 - $4000) + ((BANK(script_0223) - $0D) * $4000)) ;; 08:534b $6e $28
-    dw   ((script_0224 - $4000) + ((BANK(script_0224) - $0D) * $4000)) ;; 08:534d $73 $28
-    dw   ((script_0225 - $4000) + ((BANK(script_0225) - $0D) * $4000)) ;; 08:534f $74 $28
-    dw   ((script_0226 - $4000) + ((BANK(script_0226) - $0D) * $4000)) ;; 08:5351 $75 $28
-    dw   ((script_0227 - $4000) + ((BANK(script_0227) - $0D) * $4000)) ;; 08:5353 $9c $28
-    dw   ((script_0228 - $4000) + ((BANK(script_0228) - $0D) * $4000)) ;; 08:5355 $ff $29
-    dw   ((script_0229 - $4000) + ((BANK(script_0229) - $0D) * $4000)) ;; 08:5357 $48 $2a
-    dw   ((script_022a - $4000) + ((BANK(script_022a) - $0D) * $4000)) ;; 08:5359 $bb $2a
-    dw   ((script_022b - $4000) + ((BANK(script_022b) - $0D) * $4000)) ;; 08:535b $14 $2c
-    dw   ((script_022c - $4000) + ((BANK(script_022c) - $0D) * $4000)) ;; 08:535d $a5 $2c
-    dw   ((script_022d - $4000) + ((BANK(script_022d) - $0D) * $4000)) ;; 08:535f $e6 $2c
-    dw   ((script_022e - $4000) + ((BANK(script_022e) - $0D) * $4000)) ;; 08:5361 $01 $2d
-    dw   ((script_022f - $4000) + ((BANK(script_022f) - $0D) * $4000)) ;; 08:5363 $25 $2d
-    dw   ((script_0230 - $4000) + ((BANK(script_0230) - $0D) * $4000)) ;; 08:5365 $1d $2e
-    dw   ((script_0231 - $4000) + ((BANK(script_0231) - $0D) * $4000)) ;; 08:5367 $6f $2e
-    dw   ((script_0232 - $4000) + ((BANK(script_0232) - $0D) * $4000)) ;; 08:5369 $9a $2e
-    dw   ((script_0233 - $4000) + ((BANK(script_0233) - $0D) * $4000)) ;; 08:536b $ec $2f
-    dw   ((script_0234 - $4000) + ((BANK(script_0234) - $0D) * $4000)) ;; 08:536d $5d $30
-    dw   ((script_0235 - $4000) + ((BANK(script_0235) - $0D) * $4000)) ;; 08:536f $86 $30
-    dw   ((script_0236 - $4000) + ((BANK(script_0236) - $0D) * $4000)) ;; 08:5371 $d0 $30
-    dw   ((script_0237 - $4000) + ((BANK(script_0237) - $0D) * $4000)) ;; 08:5373 $1c $31
-    dw   ((script_0238 - $4000) + ((BANK(script_0238) - $0D) * $4000)) ;; 08:5375 $4e $31
-    dw   ((script_0239 - $4000) + ((BANK(script_0239) - $0D) * $4000)) ;; 08:5377 $4f $31
-    dw   ((script_023a - $4000) + ((BANK(script_023a) - $0D) * $4000)) ;; 08:5379 $50 $31
-    dw   ((script_023b - $4000) + ((BANK(script_023b) - $0D) * $4000)) ;; 08:537b $51 $31
-    dw   ((script_023c - $4000) + ((BANK(script_023c) - $0D) * $4000)) ;; 08:537d $52 $31
-    dw   ((script_023d - $4000) + ((BANK(script_023d) - $0D) * $4000)) ;; 08:537f $53 $31
-    dw   ((script_023e - $4000) + ((BANK(script_023e) - $0D) * $4000)) ;; 08:5381 $54 $31
-    dw   ((script_023f - $4000) + ((BANK(script_023f) - $0D) * $4000)) ;; 08:5383 $84 $31
-    dw   ((script_0240 - $4000) + ((BANK(script_0240) - $0D) * $4000)) ;; 08:5385 $b2 $31
-    dw   ((script_0241 - $4000) + ((BANK(script_0241) - $0D) * $4000)) ;; 08:5387 $11 $32
-    dw   ((script_0242 - $4000) + ((BANK(script_0242) - $0D) * $4000)) ;; 08:5389 $42 $32
-    dw   ((script_0243 - $4000) + ((BANK(script_0243) - $0D) * $4000)) ;; 08:538b $bb $32
-    dw   ((script_0244 - $4000) + ((BANK(script_0244) - $0D) * $4000)) ;; 08:538d $2f $33
-    dw   ((script_0245 - $4000) + ((BANK(script_0245) - $0D) * $4000)) ;; 08:538f $5c $33
-    dw   ((script_0246 - $4000) + ((BANK(script_0246) - $0D) * $4000)) ;; 08:5391 $d7 $33
-    dw   ((script_0247 - $4000) + ((BANK(script_0247) - $0D) * $4000)) ;; 08:5393 $de $33
-    dw   ((script_0248 - $4000) + ((BANK(script_0248) - $0D) * $4000)) ;; 08:5395 $e7 $33
-    dw   ((script_0249 - $4000) + ((BANK(script_0249) - $0D) * $4000)) ;; 08:5397 $f4 $33
-    dw   ((script_024a - $4000) + ((BANK(script_024a) - $0D) * $4000)) ;; 08:5399 $0d $36
-    dw   ((script_024b - $4000) + ((BANK(script_024b) - $0D) * $4000)) ;; 08:539b $0e $36
-    dw   ((script_024c - $4000) + ((BANK(script_024c) - $0D) * $4000)) ;; 08:539d $0f $36
-    dw   ((script_024d - $4000) + ((BANK(script_024d) - $0D) * $4000)) ;; 08:539f $10 $36
-    dw   ((script_024e - $4000) + ((BANK(script_024e) - $0D) * $4000)) ;; 08:53a1 $11 $36
-    dw   ((script_024f - $4000) + ((BANK(script_024f) - $0D) * $4000)) ;; 08:53a3 $12 $36
-    dw   ((script_0250 - $4000) + ((BANK(script_0250) - $0D) * $4000)) ;; 08:53a5 $1a $36
-    dw   ((script_0251 - $4000) + ((BANK(script_0251) - $0D) * $4000)) ;; 08:53a7 $d5 $36
-    dw   ((script_0252 - $4000) + ((BANK(script_0252) - $0D) * $4000)) ;; 08:53a9 $e2 $36
-    dw   ((script_0253 - $4000) + ((BANK(script_0253) - $0D) * $4000)) ;; 08:53ab $f5 $36
-    dw   ((script_0254 - $4000) + ((BANK(script_0254) - $0D) * $4000)) ;; 08:53ad $07 $37
-    dw   ((script_0255 - $4000) + ((BANK(script_0255) - $0D) * $4000)) ;; 08:53af $08 $37
-    dw   ((script_0256 - $4000) + ((BANK(script_0256) - $0D) * $4000)) ;; 08:53b1 $09 $37
-    dw   ((script_0257 - $4000) + ((BANK(script_0257) - $0D) * $4000)) ;; 08:53b3 $21 $37
-    dw   ((script_0258 - $4000) + ((BANK(script_0258) - $0D) * $4000)) ;; 08:53b5 $40 $37
-    dw   ((script_0259 - $4000) + ((BANK(script_0259) - $0D) * $4000)) ;; 08:53b7 $4f $37
-    dw   ((script_025a - $4000) + ((BANK(script_025a) - $0D) * $4000)) ;; 08:53b9 $5f $37
-    dw   ((script_025b - $4000) + ((BANK(script_025b) - $0D) * $4000)) ;; 08:53bb $6e $37
-    dw   ((script_025c - $4000) + ((BANK(script_025c) - $0D) * $4000)) ;; 08:53bd $6f $37
-    dw   ((script_025d - $4000) + ((BANK(script_025d) - $0D) * $4000)) ;; 08:53bf $70 $37
-    dw   ((script_025e - $4000) + ((BANK(script_025e) - $0D) * $4000)) ;; 08:53c1 $8d $37
-    dw   ((script_025f - $4000) + ((BANK(script_025f) - $0D) * $4000)) ;; 08:53c3 $dd $37
-    dw   ((script_0260 - $4000) + ((BANK(script_0260) - $0D) * $4000)) ;; 08:53c5 $25 $38
-    dw   ((script_0261 - $4000) + ((BANK(script_0261) - $0D) * $4000)) ;; 08:53c7 $aa $38
-    dw   ((script_0262 - $4000) + ((BANK(script_0262) - $0D) * $4000)) ;; 08:53c9 $f7 $38
-    dw   ((script_0263 - $4000) + ((BANK(script_0263) - $0D) * $4000)) ;; 08:53cb $f8 $38
-    dw   ((script_0264 - $4000) + ((BANK(script_0264) - $0D) * $4000)) ;; 08:53cd $f9 $38
-    dw   ((script_0265 - $4000) + ((BANK(script_0265) - $0D) * $4000)) ;; 08:53cf $11 $39
-    dw   ((script_0266 - $4000) + ((BANK(script_0266) - $0D) * $4000)) ;; 08:53d1 $42 $39
-    dw   ((script_0267 - $4000) + ((BANK(script_0267) - $0D) * $4000)) ;; 08:53d3 $60 $39
-    dw   ((script_0268 - $4000) + ((BANK(script_0268) - $0D) * $4000)) ;; 08:53d5 $88 $39
-    dw   ((script_0269 - $4000) + ((BANK(script_0269) - $0D) * $4000)) ;; 08:53d7 $cc $39
-    dw   ((script_026a - $4000) + ((BANK(script_026a) - $0D) * $4000)) ;; 08:53d9 $12 $3a
-    dw   ((script_026b - $4000) + ((BANK(script_026b) - $0D) * $4000)) ;; 08:53db $53 $3a
-    dw   ((script_026c - $4000) + ((BANK(script_026c) - $0D) * $4000)) ;; 08:53dd $70 $3a
-    dw   ((script_026d - $4000) + ((BANK(script_026d) - $0D) * $4000)) ;; 08:53df $17 $3b
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:53e1 $00 $00
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:53e3 $00 $00
-    dw   ((script_0270 - $4000) + ((BANK(script_0270) - $0D) * $4000)) ;; 08:53e5 $93 $3b
-    dw   ((script_0271 - $4000) + ((BANK(script_0271) - $0D) * $4000)) ;; 08:53e7 $b9 $3b
-    dw   ((script_0272 - $4000) + ((BANK(script_0272) - $0D) * $4000)) ;; 08:53e9 $d1 $3b
-    dw   ((script_0273 - $4000) + ((BANK(script_0273) - $0D) * $4000)) ;; 08:53eb $f1 $3b
-    dw   ((script_0274 - $4000) + ((BANK(script_0274) - $0D) * $4000)) ;; 08:53ed $04 $3c
-    dw   ((script_0275 - $4000) + ((BANK(script_0275) - $0D) * $4000)) ;; 08:53ef $17 $3c
-    dw   ((script_0276 - $4000) + ((BANK(script_0276) - $0D) * $4000)) ;; 08:53f1 $45 $3c
-    dw   ((script_0277 - $4000) + ((BANK(script_0277) - $0D) * $4000)) ;; 08:53f3 $5d $3c
-    dw   ((script_0278 - $4000) + ((BANK(script_0278) - $0D) * $4000)) ;; 08:53f5 $73 $3c
-    dw   ((script_0279 - $4000) + ((BANK(script_0279) - $0D) * $4000)) ;; 08:53f7 $89 $3c
-    dw   ((script_027a - $4000) + ((BANK(script_027a) - $0D) * $4000)) ;; 08:53f9 $c7 $3c
-    dw   ((script_027b - $4000) + ((BANK(script_027b) - $0D) * $4000)) ;; 08:53fb $48 $3d
-    dw   ((script_027c - $4000) + ((BANK(script_027c) - $0D) * $4000)) ;; 08:53fd $55 $3d
-    dw   ((script_027d - $4000) + ((BANK(script_027d) - $0D) * $4000)) ;; 08:53ff $66 $3d
-    dw   ((script_027e - $4000) + ((BANK(script_027e) - $0D) * $4000)) ;; 08:5401 $71 $3d
-    dw   ((script_027f - $4000) + ((BANK(script_027f) - $0D) * $4000)) ;; 08:5403 $87 $3d
-    dw   ((script_0280 - $4000) + ((BANK(script_0280) - $0D) * $4000)) ;; 08:5405 $9d $3d
-    dw   ((script_0281 - $4000) + ((BANK(script_0281) - $0D) * $4000)) ;; 08:5407 $bd $3d
-    dw   ((script_0282 - $4000) + ((BANK(script_0282) - $0D) * $4000)) ;; 08:5409 $15 $3e
-    dw   ((script_0283 - $4000) + ((BANK(script_0283) - $0D) * $4000)) ;; 08:540b $b2 $3e
-    dw   ((script_0284 - $4000) + ((BANK(script_0284) - $0D) * $4000)) ;; 08:540d $b3 $3e
-    dw   ((script_0285 - $4000) + ((BANK(script_0285) - $0D) * $4000)) ;; 08:540f $c9 $3e
-    dw   ((script_0286 - $4000) + ((BANK(script_0286) - $0D) * $4000)) ;; 08:5411 $df $3e
-    dw   ((script_0287 - $4000) + ((BANK(script_0287) - $0D) * $4000)) ;; 08:5413 $f4 $3e
-    dw   ((script_0288 - $4000) + ((BANK(script_0288) - $0D) * $4000)) ;; 08:5415 $00 $3f
-    dw   ((script_0289 - $4000) + ((BANK(script_0289) - $0D) * $4000)) ;; 08:5417 $1e $3f
-    dw   ((script_028a - $4000) + ((BANK(script_028a) - $0D) * $4000)) ;; 08:5419 $2b $3f
-    dw   ((script_028b - $4000) + ((BANK(script_028b) - $0D) * $4000)) ;; 08:541b $4b $3f
-    dw   ((script_028c - $4000) + ((BANK(script_028c) - $0D) * $4000)) ;; 08:541d $63 $3f
-    dw   ((script_028d - $4000) + ((BANK(script_028d) - $0D) * $4000)) ;; 08:541f $72 $3f
-    dw   ((script_028e - $4000) + ((BANK(script_028e) - $0D) * $4000)) ;; 08:5421 $7f $3f
-    dw   ((script_028f - $4000) + ((BANK(script_028f) - $0D) * $4000)) ;; 08:5423 $80 $3f
-    dw   ((script_0290 - $4000) + ((BANK(script_0290) - $0D) * $4000)) ;; 08:5425 $81 $3f
-    dw   ((script_0291 - $4000) + ((BANK(script_0291) - $0D) * $4000)) ;; 08:5427 $8f $3f
-    dw   ((script_0292 - $4000) + ((BANK(script_0292) - $0D) * $4000)) ;; 08:5429 $9f $3f
-    dw   ((script_0293 - $4000) + ((BANK(script_0293) - $0D) * $4000)) ;; 08:542b $b2 $3f
-    dw   ((script_0294 - $4000) + ((BANK(script_0294) - $0D) * $4000)) ;; 08:542d $00 $40
-    dw   ((script_0295 - $4000) + ((BANK(script_0295) - $0D) * $4000)) ;; 08:542f $38 $40
-    dw   ((script_0296 - $4000) + ((BANK(script_0296) - $0D) * $4000)) ;; 08:5431 $50 $40
-    dw   ((script_0297 - $4000) + ((BANK(script_0297) - $0D) * $4000)) ;; 08:5433 $51 $40
-    dw   ((script_0298 - $4000) + ((BANK(script_0298) - $0D) * $4000)) ;; 08:5435 $5f $40
-    dw   ((script_0299 - $4000) + ((BANK(script_0299) - $0D) * $4000)) ;; 08:5437 $6d $40
-    dw   ((script_029a - $4000) + ((BANK(script_029a) - $0D) * $4000)) ;; 08:5439 $7b $40
-    dw   ((script_029b - $4000) + ((BANK(script_029b) - $0D) * $4000)) ;; 08:543b $b7 $40
-    dw   ((script_029c - $4000) + ((BANK(script_029c) - $0D) * $4000)) ;; 08:543d $5c $41
-    dw   ((script_029d - $4000) + ((BANK(script_029d) - $0D) * $4000)) ;; 08:543f $67 $41
-    dw   ((script_029e - $4000) + ((BANK(script_029e) - $0D) * $4000)) ;; 08:5441 $75 $41
-    dw   ((script_029f - $4000) + ((BANK(script_029f) - $0D) * $4000)) ;; 08:5443 $83 $41
-    dw   ((script_02a0 - $4000) + ((BANK(script_02a0) - $0D) * $4000)) ;; 08:5445 $bb $41
-    dw   ((script_02a1 - $4000) + ((BANK(script_02a1) - $0D) * $4000)) ;; 08:5447 $d0 $41
-    dw   ((script_02a2 - $4000) + ((BANK(script_02a2) - $0D) * $4000)) ;; 08:5449 $de $41
-    dw   ((script_02a3 - $4000) + ((BANK(script_02a3) - $0D) * $4000)) ;; 08:544b $e8 $41
-    dw   ((script_02a4 - $4000) + ((BANK(script_02a4) - $0D) * $4000)) ;; 08:544d $f2 $41
-    dw   ((script_02a5 - $4000) + ((BANK(script_02a5) - $0D) * $4000)) ;; 08:544f $00 $42
-    dw   ((script_02a6 - $4000) + ((BANK(script_02a6) - $0D) * $4000)) ;; 08:5451 $0c $42
-    dw   ((script_02a7 - $4000) + ((BANK(script_02a7) - $0D) * $4000)) ;; 08:5453 $19 $42
-    dw   ((script_02a8 - $4000) + ((BANK(script_02a8) - $0D) * $4000)) ;; 08:5455 $26 $42
-    dw   ((script_02a9 - $4000) + ((BANK(script_02a9) - $0D) * $4000)) ;; 08:5457 $33 $42
-    dw   ((script_02aa - $4000) + ((BANK(script_02aa) - $0D) * $4000)) ;; 08:5459 $40 $42
-    dw   ((script_02ab - $4000) + ((BANK(script_02ab) - $0D) * $4000)) ;; 08:545b $4d $42
-    dw   ((script_02ac - $4000) + ((BANK(script_02ac) - $0D) * $4000)) ;; 08:545d $4e $42
-    dw   ((script_02ad - $4000) + ((BANK(script_02ad) - $0D) * $4000)) ;; 08:545f $5b $42
-    dw   ((script_02ae - $4000) + ((BANK(script_02ae) - $0D) * $4000)) ;; 08:5461 $68 $42
-    dw   ((script_02af - $4000) + ((BANK(script_02af) - $0D) * $4000)) ;; 08:5463 $75 $42
-    dw   ((script_02b0 - $4000) + ((BANK(script_02b0) - $0D) * $4000)) ;; 08:5465 $82 $42
-    dw   ((script_02b1 - $4000) + ((BANK(script_02b1) - $0D) * $4000)) ;; 08:5467 $8f $42
-    dw   ((script_02b2 - $4000) + ((BANK(script_02b2) - $0D) * $4000)) ;; 08:5469 $9c $42
-    dw   ((script_02b3 - $4000) + ((BANK(script_02b3) - $0D) * $4000)) ;; 08:546b $a9 $42
-    dw   ((script_02b4 - $4000) + ((BANK(script_02b4) - $0D) * $4000)) ;; 08:546d $b5 $42
-    dw   ((script_02b5 - $4000) + ((BANK(script_02b5) - $0D) * $4000)) ;; 08:546f $c2 $42
-    dw   ((script_02b6 - $4000) + ((BANK(script_02b6) - $0D) * $4000)) ;; 08:5471 $cf $42
-    dw   ((script_02b7 - $4000) + ((BANK(script_02b7) - $0D) * $4000)) ;; 08:5473 $dc $42
-    dw   ((script_02b8 - $4000) + ((BANK(script_02b8) - $0D) * $4000)) ;; 08:5475 $e9 $42
-    dw   ((script_02b9 - $4000) + ((BANK(script_02b9) - $0D) * $4000)) ;; 08:5477 $f6 $42
-    dw   ((script_02ba - $4000) + ((BANK(script_02ba) - $0D) * $4000)) ;; 08:5479 $03 $43
-    dw   ((script_02bb - $4000) + ((BANK(script_02bb) - $0D) * $4000)) ;; 08:547b $10 $43
-    dw   ((script_02bc - $4000) + ((BANK(script_02bc) - $0D) * $4000)) ;; 08:547d $1d $43
-    dw   ((script_02bd - $4000) + ((BANK(script_02bd) - $0D) * $4000)) ;; 08:547f $2a $43
-    dw   ((script_02be - $4000) + ((BANK(script_02be) - $0D) * $4000)) ;; 08:5481 $37 $43
-    dw   ((script_02bf - $4000) + ((BANK(script_02bf) - $0D) * $4000)) ;; 08:5483 $5e $43
-    dw   ((script_02c0 - $4000) + ((BANK(script_02c0) - $0D) * $4000)) ;; 08:5485 $6a $43
-    dw   ((script_02c1 - $4000) + ((BANK(script_02c1) - $0D) * $4000)) ;; 08:5487 $74 $43
-    dw   ((script_02c2 - $4000) + ((BANK(script_02c2) - $0D) * $4000)) ;; 08:5489 $7e $43
-    dw   ((script_02c3 - $4000) + ((BANK(script_02c3) - $0D) * $4000)) ;; 08:548b $88 $43
-    dw   ((script_02c4 - $4000) + ((BANK(script_02c4) - $0D) * $4000)) ;; 08:548d $92 $43
-    dw   ((script_02c5 - $4000) + ((BANK(script_02c5) - $0D) * $4000)) ;; 08:548f $b7 $43
-    dw   ((script_02c6 - $4000) + ((BANK(script_02c6) - $0D) * $4000)) ;; 08:5491 $b8 $43
-    dw   ((script_02c7 - $4000) + ((BANK(script_02c7) - $0D) * $4000)) ;; 08:5493 $c3 $43
-    dw   ((script_02c8 - $4000) + ((BANK(script_02c8) - $0D) * $4000)) ;; 08:5495 $cd $43
-    dw   ((script_02c9 - $4000) + ((BANK(script_02c9) - $0D) * $4000)) ;; 08:5497 $d7 $43
-    dw   ((script_02ca - $4000) + ((BANK(script_02ca) - $0D) * $4000)) ;; 08:5499 $e1 $43
-    dw   ((script_02cb - $4000) + ((BANK(script_02cb) - $0D) * $4000)) ;; 08:549b $eb $43
-    dw   ((script_02cc - $4000) + ((BANK(script_02cc) - $0D) * $4000)) ;; 08:549d $f5 $43
-    dw   ((script_02cd - $4000) + ((BANK(script_02cd) - $0D) * $4000)) ;; 08:549f $ff $43
-    dw   ((script_02ce - $4000) + ((BANK(script_02ce) - $0D) * $4000)) ;; 08:54a1 $09 $44
-    dw   ((script_02cf - $4000) + ((BANK(script_02cf) - $0D) * $4000)) ;; 08:54a3 $13 $44
-    dw   ((script_02d0 - $4000) + ((BANK(script_02d0) - $0D) * $4000)) ;; 08:54a5 $1d $44
-    dw   ((script_02d1 - $4000) + ((BANK(script_02d1) - $0D) * $4000)) ;; 08:54a7 $27 $44
-    dw   ((script_02d2 - $4000) + ((BANK(script_02d2) - $0D) * $4000)) ;; 08:54a9 $32 $44
-    dw   ((script_02d3 - $4000) + ((BANK(script_02d3) - $0D) * $4000)) ;; 08:54ab $3c $44
-    dw   ((script_02d4 - $4000) + ((BANK(script_02d4) - $0D) * $4000)) ;; 08:54ad $46 $44
-    dw   ((script_02d5 - $4000) + ((BANK(script_02d5) - $0D) * $4000)) ;; 08:54af $50 $44
-    dw   ((script_02d6 - $4000) + ((BANK(script_02d6) - $0D) * $4000)) ;; 08:54b1 $5a $44
-    dw   ((script_02d7 - $4000) + ((BANK(script_02d7) - $0D) * $4000)) ;; 08:54b3 $64 $44
-    dw   ((script_02d8 - $4000) + ((BANK(script_02d8) - $0D) * $4000)) ;; 08:54b5 $6e $44
-    dw   ((script_02d9 - $4000) + ((BANK(script_02d9) - $0D) * $4000)) ;; 08:54b7 $78 $44
-    dw   ((script_02da - $4000) + ((BANK(script_02da) - $0D) * $4000)) ;; 08:54b9 $82 $44
-    dw   ((script_02db - $4000) + ((BANK(script_02db) - $0D) * $4000)) ;; 08:54bb $8c $44
-    dw   ((script_02dc - $4000) + ((BANK(script_02dc) - $0D) * $4000)) ;; 08:54bd $96 $44
-    dw   ((script_02dd - $4000) + ((BANK(script_02dd) - $0D) * $4000)) ;; 08:54bf $a0 $44
-    dw   ((script_02de - $4000) + ((BANK(script_02de) - $0D) * $4000)) ;; 08:54c1 $aa $44
-    dw   ((script_02df - $4000) + ((BANK(script_02df) - $0D) * $4000)) ;; 08:54c3 $b4 $44
-    dw   ((script_02e0 - $4000) + ((BANK(script_02e0) - $0D) * $4000)) ;; 08:54c5 $be $44
-    dw   ((script_02e1 - $4000) + ((BANK(script_02e1) - $0D) * $4000)) ;; 08:54c7 $c8 $44
-    dw   ((script_02e2 - $4000) + ((BANK(script_02e2) - $0D) * $4000)) ;; 08:54c9 $d5 $44
-    dw   ((script_02e3 - $4000) + ((BANK(script_02e3) - $0D) * $4000)) ;; 08:54cb $df $44
-    dw   ((script_02e4 - $4000) + ((BANK(script_02e4) - $0D) * $4000)) ;; 08:54cd $e9 $44
-    dw   ((script_02e5 - $4000) + ((BANK(script_02e5) - $0D) * $4000)) ;; 08:54cf $f3 $44
-    dw   ((script_02e6 - $4000) + ((BANK(script_02e6) - $0D) * $4000)) ;; 08:54d1 $fd $44
-    dw   ((script_02e7 - $4000) + ((BANK(script_02e7) - $0D) * $4000)) ;; 08:54d3 $fe $44
-    dw   ((script_02e8 - $4000) + ((BANK(script_02e8) - $0D) * $4000)) ;; 08:54d5 $08 $45
-    dw   ((script_02e9 - $4000) + ((BANK(script_02e9) - $0D) * $4000)) ;; 08:54d7 $12 $45
-    dw   ((script_02ea - $4000) + ((BANK(script_02ea) - $0D) * $4000)) ;; 08:54d9 $1c $45
-    dw   ((script_02eb - $4000) + ((BANK(script_02eb) - $0D) * $4000)) ;; 08:54db $26 $45
-    dw   ((script_02ec - $4000) + ((BANK(script_02ec) - $0D) * $4000)) ;; 08:54dd $30 $45
-    dw   ((script_02ed - $4000) + ((BANK(script_02ed) - $0D) * $4000)) ;; 08:54df $3a $45
-    dw   ((script_02ee - $4000) + ((BANK(script_02ee) - $0D) * $4000)) ;; 08:54e1 $48 $45
-    dw   ((script_02ef - $4000) + ((BANK(script_02ef) - $0D) * $4000)) ;; 08:54e3 $52 $45
-    dw   ((script_02f0 - $4000) + ((BANK(script_02f0) - $0D) * $4000)) ;; 08:54e5 $53 $45
-    dw   ((script_02f1 - $4000) + ((BANK(script_02f1) - $0D) * $4000)) ;; 08:54e7 $54 $45
-    dw   ((script_02f2 - $4000) + ((BANK(script_02f2) - $0D) * $4000)) ;; 08:54e9 $5f $45
-    dw   ((script_02f3 - $4000) + ((BANK(script_02f3) - $0D) * $4000)) ;; 08:54eb $69 $45
-    dw   ((script_02f4 - $4000) + ((BANK(script_02f4) - $0D) * $4000)) ;; 08:54ed $73 $45
-    dw   ((script_02f5 - $4000) + ((BANK(script_02f5) - $0D) * $4000)) ;; 08:54ef $7d $45
-    dw   ((script_02f6 - $4000) + ((BANK(script_02f6) - $0D) * $4000)) ;; 08:54f1 $ad $45
-    dw   ((script_02f7 - $4000) + ((BANK(script_02f7) - $0D) * $4000)) ;; 08:54f3 $b8 $45
-    dw   ((script_02f8 - $4000) + ((BANK(script_02f8) - $0D) * $4000)) ;; 08:54f5 $c2 $45
-    dw   ((script_02f9 - $4000) + ((BANK(script_02f9) - $0D) * $4000)) ;; 08:54f7 $c3 $45
-    dw   ((script_02fa - $4000) + ((BANK(script_02fa) - $0D) * $4000)) ;; 08:54f9 $c4 $45
-    dw   ((script_02fb - $4000) + ((BANK(script_02fb) - $0D) * $4000)) ;; 08:54fb $c5 $45
-    dw   ((script_02fc - $4000) + ((BANK(script_02fc) - $0D) * $4000)) ;; 08:54fd $cf $45
-    dw   ((script_02fd - $4000) + ((BANK(script_02fd) - $0D) * $4000)) ;; 08:54ff $d9 $45
-    dw   ((script_02fe - $4000) + ((BANK(script_02fe) - $0D) * $4000)) ;; 08:5501 $e3 $45
-    dw   ((script_02ff - $4000) + ((BANK(script_02ff) - $0D) * $4000)) ;; 08:5503 $ed $45
-    dw   ((script_0300 - $4000) + ((BANK(script_0300) - $0D) * $4000)) ;; 08:5505 $f7 $45
-    dw   ((script_0301 - $4000) + ((BANK(script_0301) - $0D) * $4000)) ;; 08:5507 $01 $46
-    dw   ((script_0302 - $4000) + ((BANK(script_0302) - $0D) * $4000)) ;; 08:5509 $0b $46
-    dw   ((script_0303 - $4000) + ((BANK(script_0303) - $0D) * $4000)) ;; 08:550b $15 $46
-    dw   ((script_0304 - $4000) + ((BANK(script_0304) - $0D) * $4000)) ;; 08:550d $1f $46
-    dw   ((script_0305 - $4000) + ((BANK(script_0305) - $0D) * $4000)) ;; 08:550f $29 $46
-    dw   ((script_0306 - $4000) + ((BANK(script_0306) - $0D) * $4000)) ;; 08:5511 $33 $46
-    dw   ((script_0307 - $4000) + ((BANK(script_0307) - $0D) * $4000)) ;; 08:5513 $3e $46
-    dw   ((script_0308 - $4000) + ((BANK(script_0308) - $0D) * $4000)) ;; 08:5515 $48 $46
-    dw   ((script_0309 - $4000) + ((BANK(script_0309) - $0D) * $4000)) ;; 08:5517 $56 $46
-    dw   ((script_030a - $4000) + ((BANK(script_030a) - $0D) * $4000)) ;; 08:5519 $60 $46
-    dw   ((script_030b - $4000) + ((BANK(script_030b) - $0D) * $4000)) ;; 08:551b $6a $46
-    dw   ((script_030c - $4000) + ((BANK(script_030c) - $0D) * $4000)) ;; 08:551d $74 $46
-    dw   ((script_030d - $4000) + ((BANK(script_030d) - $0D) * $4000)) ;; 08:551f $7e $46
-    dw   ((script_030e - $4000) + ((BANK(script_030e) - $0D) * $4000)) ;; 08:5521 $88 $46
-    dw   ((script_030f - $4000) + ((BANK(script_030f) - $0D) * $4000)) ;; 08:5523 $92 $46
-    dw   ((script_0310 - $4000) + ((BANK(script_0310) - $0D) * $4000)) ;; 08:5525 $9c $46
-    dw   ((script_0311 - $4000) + ((BANK(script_0311) - $0D) * $4000)) ;; 08:5527 $a6 $46
-    dw   ((script_0312 - $4000) + ((BANK(script_0312) - $0D) * $4000)) ;; 08:5529 $b8 $46
-    dw   ((script_0313 - $4000) + ((BANK(script_0313) - $0D) * $4000)) ;; 08:552b $c2 $46
-    dw   ((script_0314 - $4000) + ((BANK(script_0314) - $0D) * $4000)) ;; 08:552d $cc $46
-    dw   ((script_0315 - $4000) + ((BANK(script_0315) - $0D) * $4000)) ;; 08:552f $d7 $46
-    dw   ((script_0316 - $4000) + ((BANK(script_0316) - $0D) * $4000)) ;; 08:5531 $e3 $46
-    dw   ((script_0317 - $4000) + ((BANK(script_0317) - $0D) * $4000)) ;; 08:5533 $ee $46
-    dw   ((script_0318 - $4000) + ((BANK(script_0318) - $0D) * $4000)) ;; 08:5535 $f8 $46
-    dw   ((script_0319 - $4000) + ((BANK(script_0319) - $0D) * $4000)) ;; 08:5537 $02 $47
-    dw   ((script_031a - $4000) + ((BANK(script_031a) - $0D) * $4000)) ;; 08:5539 $0c $47
-    dw   ((script_031b - $4000) + ((BANK(script_031b) - $0D) * $4000)) ;; 08:553b $16 $47
-    dw   ((script_031c - $4000) + ((BANK(script_031c) - $0D) * $4000)) ;; 08:553d $20 $47
-    dw   ((script_031d - $4000) + ((BANK(script_031d) - $0D) * $4000)) ;; 08:553f $2a $47
-    dw   ((script_031e - $4000) + ((BANK(script_031e) - $0D) * $4000)) ;; 08:5541 $34 $47
-    dw   ((script_031f - $4000) + ((BANK(script_031f) - $0D) * $4000)) ;; 08:5543 $3e $47
-    dw   ((script_0320 - $4000) + ((BANK(script_0320) - $0D) * $4000)) ;; 08:5545 $6d $47
-    dw   ((script_0321 - $4000) + ((BANK(script_0321) - $0D) * $4000)) ;; 08:5547 $77 $47
-    dw   ((script_0322 - $4000) + ((BANK(script_0322) - $0D) * $4000)) ;; 08:5549 $81 $47
-    dw   ((script_0323 - $4000) + ((BANK(script_0323) - $0D) * $4000)) ;; 08:554b $8b $47
-    dw   ((script_0324 - $4000) + ((BANK(script_0324) - $0D) * $4000)) ;; 08:554d $95 $47
-    dw   ((script_0325 - $4000) + ((BANK(script_0325) - $0D) * $4000)) ;; 08:554f $9f $47
-    dw   ((script_0326 - $4000) + ((BANK(script_0326) - $0D) * $4000)) ;; 08:5551 $a9 $47
-    dw   ((script_0327 - $4000) + ((BANK(script_0327) - $0D) * $4000)) ;; 08:5553 $b3 $47
-    dw   ((script_0328 - $4000) + ((BANK(script_0328) - $0D) * $4000)) ;; 08:5555 $bd $47
-    dw   ((script_0329 - $4000) + ((BANK(script_0329) - $0D) * $4000)) ;; 08:5557 $c7 $47
-    dw   ((script_032a - $4000) + ((BANK(script_032a) - $0D) * $4000)) ;; 08:5559 $d1 $47
-    dw   ((script_032b - $4000) + ((BANK(script_032b) - $0D) * $4000)) ;; 08:555b $db $47
-    dw   ((script_032c - $4000) + ((BANK(script_032c) - $0D) * $4000)) ;; 08:555d $e5 $47
-    dw   ((script_032d - $4000) + ((BANK(script_032d) - $0D) * $4000)) ;; 08:555f $ef $47
-    dw   ((script_032e - $4000) + ((BANK(script_032e) - $0D) * $4000)) ;; 08:5561 $f9 $47
-    dw   ((script_032f - $4000) + ((BANK(script_032f) - $0D) * $4000)) ;; 08:5563 $03 $48
-    dw   ((script_0330 - $4000) + ((BANK(script_0330) - $0D) * $4000)) ;; 08:5565 $04 $48
-    dw   ((script_0331 - $4000) + ((BANK(script_0331) - $0D) * $4000)) ;; 08:5567 $0e $48
-    dw   ((script_0332 - $4000) + ((BANK(script_0332) - $0D) * $4000)) ;; 08:5569 $18 $48
-    dw   ((script_0333 - $4000) + ((BANK(script_0333) - $0D) * $4000)) ;; 08:556b $22 $48
-    dw   ((script_0334 - $4000) + ((BANK(script_0334) - $0D) * $4000)) ;; 08:556d $2c $48
-    dw   ((script_0335 - $4000) + ((BANK(script_0335) - $0D) * $4000)) ;; 08:556f $36 $48
-    dw   ((script_0336 - $4000) + ((BANK(script_0336) - $0D) * $4000)) ;; 08:5571 $40 $48
-    dw   ((script_0337 - $4000) + ((BANK(script_0337) - $0D) * $4000)) ;; 08:5573 $4a $48
-    dw   ((script_0338 - $4000) + ((BANK(script_0338) - $0D) * $4000)) ;; 08:5575 $54 $48
-    dw   ((script_0339 - $4000) + ((BANK(script_0339) - $0D) * $4000)) ;; 08:5577 $5e $48
-    dw   ((script_033a - $4000) + ((BANK(script_033a) - $0D) * $4000)) ;; 08:5579 $68 $48
-    dw   ((script_033b - $4000) + ((BANK(script_033b) - $0D) * $4000)) ;; 08:557b $72 $48
-    dw   ((script_033c - $4000) + ((BANK(script_033c) - $0D) * $4000)) ;; 08:557d $7e $48
-    dw   ((script_033d - $4000) + ((BANK(script_033d) - $0D) * $4000)) ;; 08:557f $8a $48
-    dw   ((script_033e - $4000) + ((BANK(script_033e) - $0D) * $4000)) ;; 08:5581 $96 $48
-    dw   ((script_033f - $4000) + ((BANK(script_033f) - $0D) * $4000)) ;; 08:5583 $a2 $48
-    dw   ((script_0340 - $4000) + ((BANK(script_0340) - $0D) * $4000)) ;; 08:5585 $ac $48
-    dw   ((script_0341 - $4000) + ((BANK(script_0341) - $0D) * $4000)) ;; 08:5587 $b6 $48
-    dw   ((script_0342 - $4000) + ((BANK(script_0342) - $0D) * $4000)) ;; 08:5589 $c0 $48
-    dw   ((script_0343 - $4000) + ((BANK(script_0343) - $0D) * $4000)) ;; 08:558b $ca $48
-    dw   ((script_0344 - $4000) + ((BANK(script_0344) - $0D) * $4000)) ;; 08:558d $d4 $48
-    dw   ((script_0345 - $4000) + ((BANK(script_0345) - $0D) * $4000)) ;; 08:558f $df $48
-    dw   ((script_0346 - $4000) + ((BANK(script_0346) - $0D) * $4000)) ;; 08:5591 $e9 $48
-    dw   ((script_0347 - $4000) + ((BANK(script_0347) - $0D) * $4000)) ;; 08:5593 $f3 $48
-    dw   ((script_0348 - $4000) + ((BANK(script_0348) - $0D) * $4000)) ;; 08:5595 $fe $48
-    dw   ((script_0349 - $4000) + ((BANK(script_0349) - $0D) * $4000)) ;; 08:5597 $08 $49
-    dw   ((script_034a - $4000) + ((BANK(script_034a) - $0D) * $4000)) ;; 08:5599 $09 $49
-    dw   ((script_034b - $4000) + ((BANK(script_034b) - $0D) * $4000)) ;; 08:559b $13 $49
-    dw   ((script_034c - $4000) + ((BANK(script_034c) - $0D) * $4000)) ;; 08:559d $14 $49
-    dw   ((script_034d - $4000) + ((BANK(script_034d) - $0D) * $4000)) ;; 08:559f $20 $49
-    dw   ((script_034e - $4000) + ((BANK(script_034e) - $0D) * $4000)) ;; 08:55a1 $21 $49
-    dw   ((script_034f - $4000) + ((BANK(script_034f) - $0D) * $4000)) ;; 08:55a3 $22 $49
-    dw   ((script_0350 - $4000) + ((BANK(script_0350) - $0D) * $4000)) ;; 08:55a5 $23 $49
-    dw   ((script_0351 - $4000) + ((BANK(script_0351) - $0D) * $4000)) ;; 08:55a7 $24 $49
-    dw   ((script_0352 - $4000) + ((BANK(script_0352) - $0D) * $4000)) ;; 08:55a9 $25 $49
-    dw   ((script_0353 - $4000) + ((BANK(script_0353) - $0D) * $4000)) ;; 08:55ab $8a $49
-    dw   ((script_0354 - $4000) + ((BANK(script_0354) - $0D) * $4000)) ;; 08:55ad $94 $49
-    dw   ((script_0355 - $4000) + ((BANK(script_0355) - $0D) * $4000)) ;; 08:55af $95 $49
-    dw   ((script_0356 - $4000) + ((BANK(script_0356) - $0D) * $4000)) ;; 08:55b1 $96 $49
-    dw   ((script_0357 - $4000) + ((BANK(script_0357) - $0D) * $4000)) ;; 08:55b3 $a4 $49
-    dw   ((script_0358 - $4000) + ((BANK(script_0358) - $0D) * $4000)) ;; 08:55b5 $ae $49
-    dw   ((script_0359 - $4000) + ((BANK(script_0359) - $0D) * $4000)) ;; 08:55b7 $b8 $49
-    dw   ((script_035a - $4000) + ((BANK(script_035a) - $0D) * $4000)) ;; 08:55b9 $c3 $49
-    dw   ((script_035b - $4000) + ((BANK(script_035b) - $0D) * $4000)) ;; 08:55bb $cd $49
-    dw   ((script_035c - $4000) + ((BANK(script_035c) - $0D) * $4000)) ;; 08:55bd $d8 $49
-    dw   ((script_035d - $4000) + ((BANK(script_035d) - $0D) * $4000)) ;; 08:55bf $e2 $49
-    dw   ((script_035e - $4000) + ((BANK(script_035e) - $0D) * $4000)) ;; 08:55c1 $ec $49
-    dw   ((script_035f - $4000) + ((BANK(script_035f) - $0D) * $4000)) ;; 08:55c3 $f6 $49
-    dw   ((script_0360 - $4000) + ((BANK(script_0360) - $0D) * $4000)) ;; 08:55c5 $00 $4a
-    dw   ((script_0361 - $4000) + ((BANK(script_0361) - $0D) * $4000)) ;; 08:55c7 $0a $4a
-    dw   ((script_0362 - $4000) + ((BANK(script_0362) - $0D) * $4000)) ;; 08:55c9 $14 $4a
-    dw   ((script_0363 - $4000) + ((BANK(script_0363) - $0D) * $4000)) ;; 08:55cb $1e $4a
-    dw   ((script_0364 - $4000) + ((BANK(script_0364) - $0D) * $4000)) ;; 08:55cd $28 $4a
-    dw   ((script_0365 - $4000) + ((BANK(script_0365) - $0D) * $4000)) ;; 08:55cf $32 $4a
-    dw   ((script_0366 - $4000) + ((BANK(script_0366) - $0D) * $4000)) ;; 08:55d1 $3d $4a
-    dw   ((script_0367 - $4000) + ((BANK(script_0367) - $0D) * $4000)) ;; 08:55d3 $47 $4a
-    dw   ((script_0368 - $4000) + ((BANK(script_0368) - $0D) * $4000)) ;; 08:55d5 $51 $4a
-    dw   ((script_0369 - $4000) + ((BANK(script_0369) - $0D) * $4000)) ;; 08:55d7 $5d $4a
-    dw   ((script_036a - $4000) + ((BANK(script_036a) - $0D) * $4000)) ;; 08:55d9 $6b $4a
-    dw   ((script_036b - $4000) + ((BANK(script_036b) - $0D) * $4000)) ;; 08:55db $75 $4a
-    dw   ((script_036c - $4000) + ((BANK(script_036c) - $0D) * $4000)) ;; 08:55dd $7f $4a
-    dw   ((script_036d - $4000) + ((BANK(script_036d) - $0D) * $4000)) ;; 08:55df $89 $4a
-    dw   ((script_036e - $4000) + ((BANK(script_036e) - $0D) * $4000)) ;; 08:55e1 $97 $4a
-    dw   ((script_036f - $4000) + ((BANK(script_036f) - $0D) * $4000)) ;; 08:55e3 $a1 $4a
-    dw   ((script_0370 - $4000) + ((BANK(script_0370) - $0D) * $4000)) ;; 08:55e5 $ac $4a
-    dw   ((script_0371 - $4000) + ((BANK(script_0371) - $0D) * $4000)) ;; 08:55e7 $b6 $4a
-    dw   ((script_0372 - $4000) + ((BANK(script_0372) - $0D) * $4000)) ;; 08:55e9 $c0 $4a
-    dw   ((script_0373 - $4000) + ((BANK(script_0373) - $0D) * $4000)) ;; 08:55eb $ca $4a
-    dw   ((script_0374 - $4000) + ((BANK(script_0374) - $0D) * $4000)) ;; 08:55ed $d4 $4a
-    dw   ((script_0375 - $4000) + ((BANK(script_0375) - $0D) * $4000)) ;; 08:55ef $de $4a
-    dw   ((script_0376 - $4000) + ((BANK(script_0376) - $0D) * $4000)) ;; 08:55f1 $e8 $4a
-    dw   ((script_0377 - $4000) + ((BANK(script_0377) - $0D) * $4000)) ;; 08:55f3 $f2 $4a
-    dw   ((script_0378 - $4000) + ((BANK(script_0378) - $0D) * $4000)) ;; 08:55f5 $fc $4a
-    dw   ((script_0379 - $4000) + ((BANK(script_0379) - $0D) * $4000)) ;; 08:55f7 $06 $4b
-    dw   ((script_037a - $4000) + ((BANK(script_037a) - $0D) * $4000)) ;; 08:55f9 $10 $4b
-    dw   ((script_037b - $4000) + ((BANK(script_037b) - $0D) * $4000)) ;; 08:55fb $1e $4b
-    dw   ((script_037c - $4000) + ((BANK(script_037c) - $0D) * $4000)) ;; 08:55fd $28 $4b
-    dw   ((script_037d - $4000) + ((BANK(script_037d) - $0D) * $4000)) ;; 08:55ff $32 $4b
-    dw   ((script_037e - $4000) + ((BANK(script_037e) - $0D) * $4000)) ;; 08:5601 $33 $4b
-    dw   ((script_037f - $4000) + ((BANK(script_037f) - $0D) * $4000)) ;; 08:5603 $34 $4b
-    dw   ((script_0380 - $4000) + ((BANK(script_0380) - $0D) * $4000)) ;; 08:5605 $35 $4b
-    dw   ((script_0381 - $4000) + ((BANK(script_0381) - $0D) * $4000)) ;; 08:5607 $42 $4b
-    dw   ((script_0382 - $4000) + ((BANK(script_0382) - $0D) * $4000)) ;; 08:5609 $4f $4b
-    dw   ((script_0383 - $4000) + ((BANK(script_0383) - $0D) * $4000)) ;; 08:560b $5c $4b
-    dw   ((script_0384 - $4000) + ((BANK(script_0384) - $0D) * $4000)) ;; 08:560d $69 $4b
-    dw   ((script_0385 - $4000) + ((BANK(script_0385) - $0D) * $4000)) ;; 08:560f $76 $4b
-    dw   ((script_0386 - $4000) + ((BANK(script_0386) - $0D) * $4000)) ;; 08:5611 $83 $4b
-    dw   ((script_0387 - $4000) + ((BANK(script_0387) - $0D) * $4000)) ;; 08:5613 $90 $4b
-    dw   ((script_0388 - $4000) + ((BANK(script_0388) - $0D) * $4000)) ;; 08:5615 $9d $4b
-    dw   ((script_0389 - $4000) + ((BANK(script_0389) - $0D) * $4000)) ;; 08:5617 $aa $4b
-    dw   ((script_038a - $4000) + ((BANK(script_038a) - $0D) * $4000)) ;; 08:5619 $b7 $4b
-    dw   ((script_038b - $4000) + ((BANK(script_038b) - $0D) * $4000)) ;; 08:561b $c4 $4b
-    dw   ((script_038c - $4000) + ((BANK(script_038c) - $0D) * $4000)) ;; 08:561d $d1 $4b
-    dw   ((script_038d - $4000) + ((BANK(script_038d) - $0D) * $4000)) ;; 08:561f $de $4b
-    dw   ((script_038e - $4000) + ((BANK(script_038e) - $0D) * $4000)) ;; 08:5621 $eb $4b
-    dw   ((script_038f - $4000) + ((BANK(script_038f) - $0D) * $4000)) ;; 08:5623 $ec $4b
-    dw   ((script_0390 - $4000) + ((BANK(script_0390) - $0D) * $4000)) ;; 08:5625 $ed $4b
-    dw   ((script_0391 - $4000) + ((BANK(script_0391) - $0D) * $4000)) ;; 08:5627 $f7 $4b
-    dw   ((script_0392 - $4000) + ((BANK(script_0392) - $0D) * $4000)) ;; 08:5629 $01 $4c
-    dw   ((script_0393 - $4000) + ((BANK(script_0393) - $0D) * $4000)) ;; 08:562b $0b $4c
-    dw   ((script_0394 - $4000) + ((BANK(script_0394) - $0D) * $4000)) ;; 08:562d $15 $4c
-    dw   ((script_0395 - $4000) + ((BANK(script_0395) - $0D) * $4000)) ;; 08:562f $16 $4c
-    dw   ((script_0396 - $4000) + ((BANK(script_0396) - $0D) * $4000)) ;; 08:5631 $17 $4c
-    dw   ((script_0397 - $4000) + ((BANK(script_0397) - $0D) * $4000)) ;; 08:5633 $23 $4c
-    dw   ((script_0398 - $4000) + ((BANK(script_0398) - $0D) * $4000)) ;; 08:5635 $2f $4c
-    dw   ((script_0399 - $4000) + ((BANK(script_0399) - $0D) * $4000)) ;; 08:5637 $3d $4c
-    dw   ((script_039a - $4000) + ((BANK(script_039a) - $0D) * $4000)) ;; 08:5639 $48 $4c
-    dw   ((script_039b - $4000) + ((BANK(script_039b) - $0D) * $4000)) ;; 08:563b $52 $4c
-    dw   ((script_039c - $4000) + ((BANK(script_039c) - $0D) * $4000)) ;; 08:563d $5c $4c
-    dw   ((script_039d - $4000) + ((BANK(script_039d) - $0D) * $4000)) ;; 08:563f $66 $4c
-    dw   ((script_039e - $4000) + ((BANK(script_039e) - $0D) * $4000)) ;; 08:5641 $71 $4c
-    dw   ((script_039f - $4000) + ((BANK(script_039f) - $0D) * $4000)) ;; 08:5643 $7c $4c
-    dw   ((script_03a0 - $4000) + ((BANK(script_03a0) - $0D) * $4000)) ;; 08:5645 $92 $4c
-    dw   ((script_03a1 - $4000) + ((BANK(script_03a1) - $0D) * $4000)) ;; 08:5647 $a0 $4c
-    dw   ((script_03a2 - $4000) + ((BANK(script_03a2) - $0D) * $4000)) ;; 08:5649 $ad $4c
-    dw   ((script_03a3 - $4000) + ((BANK(script_03a3) - $0D) * $4000)) ;; 08:564b $b8 $4c
-    dw   ((script_03a4 - $4000) + ((BANK(script_03a4) - $0D) * $4000)) ;; 08:564d $c2 $4c
-    dw   ((script_03a5 - $4000) + ((BANK(script_03a5) - $0D) * $4000)) ;; 08:564f $cd $4c
-    dw   ((script_03a6 - $4000) + ((BANK(script_03a6) - $0D) * $4000)) ;; 08:5651 $d8 $4c
-    dw   ((script_03a7 - $4000) + ((BANK(script_03a7) - $0D) * $4000)) ;; 08:5653 $e4 $4c
-    dw   ((script_03a8 - $4000) + ((BANK(script_03a8) - $0D) * $4000)) ;; 08:5655 $f2 $4c
-    dw   ((script_03a9 - $4000) + ((BANK(script_03a9) - $0D) * $4000)) ;; 08:5657 $fd $4c
-    dw   ((script_03aa - $4000) + ((BANK(script_03aa) - $0D) * $4000)) ;; 08:5659 $07 $4d
-    dw   ((script_03ab - $4000) + ((BANK(script_03ab) - $0D) * $4000)) ;; 08:565b $14 $4d
-    dw   ((script_03ac - $4000) + ((BANK(script_03ac) - $0D) * $4000)) ;; 08:565d $1e $4d
-    dw   ((script_03ad - $4000) + ((BANK(script_03ad) - $0D) * $4000)) ;; 08:565f $28 $4d
-    dw   ((script_03ae - $4000) + ((BANK(script_03ae) - $0D) * $4000)) ;; 08:5661 $32 $4d
-    dw   ((script_03af - $4000) + ((BANK(script_03af) - $0D) * $4000)) ;; 08:5663 $3c $4d
-    dw   ((script_03b0 - $4000) + ((BANK(script_03b0) - $0D) * $4000)) ;; 08:5665 $46 $4d
-    dw   ((script_03b1 - $4000) + ((BANK(script_03b1) - $0D) * $4000)) ;; 08:5667 $53 $4d
-    dw   ((script_03b2 - $4000) + ((BANK(script_03b2) - $0D) * $4000)) ;; 08:5669 $5d $4d
-    dw   ((script_03b3 - $4000) + ((BANK(script_03b3) - $0D) * $4000)) ;; 08:566b $67 $4d
-    dw   ((script_03b4 - $4000) + ((BANK(script_03b4) - $0D) * $4000)) ;; 08:566d $71 $4d
-    dw   ((script_03b5 - $4000) + ((BANK(script_03b5) - $0D) * $4000)) ;; 08:566f $7b $4d
-    dw   ((script_03b6 - $4000) + ((BANK(script_03b6) - $0D) * $4000)) ;; 08:5671 $85 $4d
-    dw   ((script_03b7 - $4000) + ((BANK(script_03b7) - $0D) * $4000)) ;; 08:5673 $8f $4d
-    dw   ((script_03b8 - $4000) + ((BANK(script_03b8) - $0D) * $4000)) ;; 08:5675 $99 $4d
-    dw   ((script_03b9 - $4000) + ((BANK(script_03b9) - $0D) * $4000)) ;; 08:5677 $a8 $4d
-    dw   ((script_03ba - $4000) + ((BANK(script_03ba) - $0D) * $4000)) ;; 08:5679 $b2 $4d
-    dw   ((script_03bb - $4000) + ((BANK(script_03bb) - $0D) * $4000)) ;; 08:567b $bc $4d
-    dw   ((script_03bc - $4000) + ((BANK(script_03bc) - $0D) * $4000)) ;; 08:567d $c6 $4d
-    dw   ((script_03bd - $4000) + ((BANK(script_03bd) - $0D) * $4000)) ;; 08:567f $d4 $4d
-    dw   ((script_03be - $4000) + ((BANK(script_03be) - $0D) * $4000)) ;; 08:5681 $df $4d
-    dw   ((script_03bf - $4000) + ((BANK(script_03bf) - $0D) * $4000)) ;; 08:5683 $e0 $4d
-    dw   ((script_03c0 - $4000) + ((BANK(script_03c0) - $0D) * $4000)) ;; 08:5685 $e1 $4d
-    dw   ((script_03c1 - $4000) + ((BANK(script_03c1) - $0D) * $4000)) ;; 08:5687 $eb $4d
-    dw   ((script_03c2 - $4000) + ((BANK(script_03c2) - $0D) * $4000)) ;; 08:5689 $f5 $4d
-    dw   ((script_03c3 - $4000) + ((BANK(script_03c3) - $0D) * $4000)) ;; 08:568b $ff $4d
-    dw   ((script_03c4 - $4000) + ((BANK(script_03c4) - $0D) * $4000)) ;; 08:568d $0a $4e
-    dw   ((script_03c5 - $4000) + ((BANK(script_03c5) - $0D) * $4000)) ;; 08:568f $18 $4e
-    dw   ((script_03c6 - $4000) + ((BANK(script_03c6) - $0D) * $4000)) ;; 08:5691 $22 $4e
-    dw   ((script_03c7 - $4000) + ((BANK(script_03c7) - $0D) * $4000)) ;; 08:5693 $bd $4e
-    dw   ((script_03c8 - $4000) + ((BANK(script_03c8) - $0D) * $4000)) ;; 08:5695 $c7 $4e
-    dw   ((script_03c9 - $4000) + ((BANK(script_03c9) - $0D) * $4000)) ;; 08:5697 $d2 $4e
-    dw   ((script_03ca - $4000) + ((BANK(script_03ca) - $0D) * $4000)) ;; 08:5699 $e3 $4e
-    dw   ((script_03cb - $4000) + ((BANK(script_03cb) - $0D) * $4000)) ;; 08:569b $ee $4e
-    dw   ((script_03cc - $4000) + ((BANK(script_03cc) - $0D) * $4000)) ;; 08:569d $f8 $4e
-    dw   ((script_03cd - $4000) + ((BANK(script_03cd) - $0D) * $4000)) ;; 08:569f $02 $4f
-    dw   ((script_03ce - $4000) + ((BANK(script_03ce) - $0D) * $4000)) ;; 08:56a1 $0c $4f
-    dw   ((script_03cf - $4000) + ((BANK(script_03cf) - $0D) * $4000)) ;; 08:56a3 $16 $4f
-    dw   ((script_03d0 - $4000) + ((BANK(script_03d0) - $0D) * $4000)) ;; 08:56a5 $20 $4f
-    dw   ((script_03d1 - $4000) + ((BANK(script_03d1) - $0D) * $4000)) ;; 08:56a7 $25 $4f
-    dw   ((script_03d2 - $4000) + ((BANK(script_03d2) - $0D) * $4000)) ;; 08:56a9 $2d $4f
-    dw   ((script_03d3 - $4000) + ((BANK(script_03d3) - $0D) * $4000)) ;; 08:56ab $2e $4f
-    dw   ((script_03d4 - $4000) + ((BANK(script_03d4) - $0D) * $4000)) ;; 08:56ad $37 $4f
-    dw   ((script_03d5 - $4000) + ((BANK(script_03d5) - $0D) * $4000)) ;; 08:56af $38 $4f
-    dw   ((script_03d6 - $4000) + ((BANK(script_03d6) - $0D) * $4000)) ;; 08:56b1 $39 $4f
-    dw   ((script_03d7 - $4000) + ((BANK(script_03d7) - $0D) * $4000)) ;; 08:56b3 $6f $4f
-    dw   ((script_03d8 - $4000) + ((BANK(script_03d8) - $0D) * $4000)) ;; 08:56b5 $70 $4f
-    dw   ((script_03d9 - $4000) + ((BANK(script_03d9) - $0D) * $4000)) ;; 08:56b7 $71 $4f
-    dw   ((script_03da - $4000) + ((BANK(script_03da) - $0D) * $4000)) ;; 08:56b9 $8a $4f
-    dw   ((script_03db - $4000) + ((BANK(script_03db) - $0D) * $4000)) ;; 08:56bb $8b $4f
-    dw   ((script_03dc - $4000) + ((BANK(script_03dc) - $0D) * $4000)) ;; 08:56bd $8c $4f
-    dw   ((script_03dd - $4000) + ((BANK(script_03dd) - $0D) * $4000)) ;; 08:56bf $93 $4f
-    dw   ((script_03de - $4000) + ((BANK(script_03de) - $0D) * $4000)) ;; 08:56c1 $94 $4f
-    dw   ((script_03df - $4000) + ((BANK(script_03df) - $0D) * $4000)) ;; 08:56c3 $95 $4f
-    dw   ((script_03e0 - $4000) + ((BANK(script_03e0) - $0D) * $4000)) ;; 08:56c5 $9c $4f
-    dw   ((script_03e1 - $4000) + ((BANK(script_03e1) - $0D) * $4000)) ;; 08:56c7 $9d $4f
-    dw   ((script_03e2 - $4000) + ((BANK(script_03e2) - $0D) * $4000)) ;; 08:56c9 $9e $4f
-    dw   ((script_03e3 - $4000) + ((BANK(script_03e3) - $0D) * $4000)) ;; 08:56cb $a5 $4f
-    dw   ((script_03e4 - $4000) + ((BANK(script_03e4) - $0D) * $4000)) ;; 08:56cd $a6 $4f
-    dw   ((script_03e5 - $4000) + ((BANK(script_03e5) - $0D) * $4000)) ;; 08:56cf $a7 $4f
-    dw   ((script_03e6 - $4000) + ((BANK(script_03e6) - $0D) * $4000)) ;; 08:56d1 $ac $4f
-    dw   ((script_03e7 - $4000) + ((BANK(script_03e7) - $0D) * $4000)) ;; 08:56d3 $ad $4f
-    dw   ((script_03e8 - $4000) + ((BANK(script_03e8) - $0D) * $4000)) ;; 08:56d5 $ae $4f
-    dw   ((script_03e9 - $4000) + ((BANK(script_03e9) - $0D) * $4000)) ;; 08:56d7 $b5 $50
-    dw   ((script_03ea - $4000) + ((BANK(script_03ea) - $0D) * $4000)) ;; 08:56d9 $bc $50
-    dw   ((script_03eb - $4000) + ((BANK(script_03eb) - $0D) * $4000)) ;; 08:56db $bd $50
-    dw   ((script_03ec - $4000) + ((BANK(script_03ec) - $0D) * $4000)) ;; 08:56dd $c2 $50
-    dw   ((script_03ed - $4000) + ((BANK(script_03ed) - $0D) * $4000)) ;; 08:56df $c3 $50
-    dw   ((script_03ee - $4000) + ((BANK(script_03ee) - $0D) * $4000)) ;; 08:56e1 $c4 $50
-    dw   ((script_03ef - $4000) + ((BANK(script_03ef) - $0D) * $4000)) ;; 08:56e3 $c5 $50
-    dw   ((script_03f0 - $4000) + ((BANK(script_03f0) - $0D) * $4000)) ;; 08:56e5 $d4 $50
-    dw   ((script_03f1 - $4000) + ((BANK(script_03f1) - $0D) * $4000)) ;; 08:56e7 $d5 $50
-    dw   ((script_03f2 - $4000) + ((BANK(script_03f2) - $0D) * $4000)) ;; 08:56e9 $d9 $50
-    dw   ((script_03f3 - $4000) + ((BANK(script_03f3) - $0D) * $4000)) ;; 08:56eb $da $50
-    dw   ((script_03f4 - $4000) + ((BANK(script_03f4) - $0D) * $4000)) ;; 08:56ed $e3 $50
-    dw   ((script_03f5 - $4000) + ((BANK(script_03f5) - $0D) * $4000)) ;; 08:56ef $e7 $50
-    dw   ((script_03f6 - $4000) + ((BANK(script_03f6) - $0D) * $4000)) ;; 08:56f1 $e8 $50
-    dw   ((script_03f7 - $4000) + ((BANK(script_03f7) - $0D) * $4000)) ;; 08:56f3 $f1 $50
-    dw   ((script_03f8 - $4000) + ((BANK(script_03f8) - $0D) * $4000)) ;; 08:56f5 $f5 $50
-    dw   ((script_03f9 - $4000) + ((BANK(script_03f9) - $0D) * $4000)) ;; 08:56f7 $f6 $50
-    dw   ((script_03fa - $4000) + ((BANK(script_03fa) - $0D) * $4000)) ;; 08:56f9 $ff $50
-    dw   ((script_03fb - $4000) + ((BANK(script_03fb) - $0D) * $4000)) ;; 08:56fb $10 $51
-    dw   ((script_03fc - $4000) + ((BANK(script_03fc) - $0D) * $4000)) ;; 08:56fd $11 $51
-    dw   ((script_03fd - $4000) + ((BANK(script_03fd) - $0D) * $4000)) ;; 08:56ff $12 $51
-    dw   ((script_03fe - $4000) + ((BANK(script_03fe) - $0D) * $4000)) ;; 08:5701 $17 $51
-    dw   ((script_03ff - $4000) + ((BANK(script_03ff) - $0D) * $4000)) ;; 08:5703 $18 $51
-    dw   ((script_0400 - $4000) + ((BANK(script_0400) - $0D) * $4000)) ;; 08:5705 $19 $51
-    dw   ((script_0401 - $4000) + ((BANK(script_0401) - $0D) * $4000)) ;; 08:5707 $33 $51
-    dw   ((script_0402 - $4000) + ((BANK(script_0402) - $0D) * $4000)) ;; 08:5709 $ee $51
-    dw   ((script_0403 - $4000) + ((BANK(script_0403) - $0D) * $4000)) ;; 08:570b $ef $51
-    dw   ((script_0404 - $4000) + ((BANK(script_0404) - $0D) * $4000)) ;; 08:570d $fa $51
-    dw   ((script_0405 - $4000) + ((BANK(script_0405) - $0D) * $4000)) ;; 08:570f $fb $51
-    dw   ((script_0406 - $4000) + ((BANK(script_0406) - $0D) * $4000)) ;; 08:5711 $12 $52
-    dw   ((script_0407 - $4000) + ((BANK(script_0407) - $0D) * $4000)) ;; 08:5713 $21 $52
-    dw   ((script_0408 - $4000) + ((BANK(script_0408) - $0D) * $4000)) ;; 08:5715 $30 $52
-    dw   ((script_0409 - $4000) + ((BANK(script_0409) - $0D) * $4000)) ;; 08:5717 $31 $52
-    dw   ((script_040a - $4000) + ((BANK(script_040a) - $0D) * $4000)) ;; 08:5719 $32 $52
-    dw   ((script_040b - $4000) + ((BANK(script_040b) - $0D) * $4000)) ;; 08:571b $9f $52
-    dw   ((script_040c - $4000) + ((BANK(script_040c) - $0D) * $4000)) ;; 08:571d $a0 $52
-    dw   ((script_040d - $4000) + ((BANK(script_040d) - $0D) * $4000)) ;; 08:571f $be $52
-    dw   ((script_040e - $4000) + ((BANK(script_040e) - $0D) * $4000)) ;; 08:5721 $e1 $52
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:5723 $00 $00
-    dw   ((script_0410 - $4000) + ((BANK(script_0410) - $0D) * $4000)) ;; 08:5725 $f9 $52
-    dw   ((script_0411 - $4000) + ((BANK(script_0411) - $0D) * $4000)) ;; 08:5727 $05 $53
-    dw   ((script_0412 - $4000) + ((BANK(script_0412) - $0D) * $4000)) ;; 08:5729 $06 $53
-    dw   ((script_0413 - $4000) + ((BANK(script_0413) - $0D) * $4000)) ;; 08:572b $07 $53
-    dw   ((script_0414 - $4000) + ((BANK(script_0414) - $0D) * $4000)) ;; 08:572d $13 $53
-    dw   ((script_0415 - $4000) + ((BANK(script_0415) - $0D) * $4000)) ;; 08:572f $14 $53
-    dw   ((script_0416 - $4000) + ((BANK(script_0416) - $0D) * $4000)) ;; 08:5731 $15 $53
-    dw   ((script_0417 - $4000) + ((BANK(script_0417) - $0D) * $4000)) ;; 08:5733 $21 $53
-    dw   ((script_0418 - $4000) + ((BANK(script_0418) - $0D) * $4000)) ;; 08:5735 $22 $53
-    dw   ((script_0419 - $4000) + ((BANK(script_0419) - $0D) * $4000)) ;; 08:5737 $23 $53
-    dw   ((script_041a - $4000) + ((BANK(script_041a) - $0D) * $4000)) ;; 08:5739 $2f $53
-    dw   ((script_041b - $4000) + ((BANK(script_041b) - $0D) * $4000)) ;; 08:573b $30 $53
-    dw   ((script_041c - $4000) + ((BANK(script_041c) - $0D) * $4000)) ;; 08:573d $31 $53
-    dw   ((script_041d - $4000) + ((BANK(script_041d) - $0D) * $4000)) ;; 08:573f $3d $53
-    dw   ((script_041e - $4000) + ((BANK(script_041e) - $0D) * $4000)) ;; 08:5741 $3e $53
-    dw   ((script_041f - $4000) + ((BANK(script_041f) - $0D) * $4000)) ;; 08:5743 $3f $53
-    dw   ((script_0420 - $4000) + ((BANK(script_0420) - $0D) * $4000)) ;; 08:5745 $48 $53
-    dw   ((script_0421 - $4000) + ((BANK(script_0421) - $0D) * $4000)) ;; 08:5747 $49 $53
-    dw   ((script_0422 - $4000) + ((BANK(script_0422) - $0D) * $4000)) ;; 08:5749 $51 $53
-    dw   ((script_0423 - $4000) + ((BANK(script_0423) - $0D) * $4000)) ;; 08:574b $5d $53
-    dw   ((script_0424 - $4000) + ((BANK(script_0424) - $0D) * $4000)) ;; 08:574d $5e $53
-    dw   ((script_0425 - $4000) + ((BANK(script_0425) - $0D) * $4000)) ;; 08:574f $5f $53
-    dw   ((script_0426 - $4000) + ((BANK(script_0426) - $0D) * $4000)) ;; 08:5751 $6b $53
-    dw   ((script_0427 - $4000) + ((BANK(script_0427) - $0D) * $4000)) ;; 08:5753 $6c $53
-    dw   ((script_0428 - $4000) + ((BANK(script_0428) - $0D) * $4000)) ;; 08:5755 $6d $53
-    dw   ((script_0429 - $4000) + ((BANK(script_0429) - $0D) * $4000)) ;; 08:5757 $76 $53
-    dw   ((script_042a - $4000) + ((BANK(script_042a) - $0D) * $4000)) ;; 08:5759 $77 $53
-    dw   ((script_042b - $4000) + ((BANK(script_042b) - $0D) * $4000)) ;; 08:575b $7f $53
-    dw   ((script_042c - $4000) + ((BANK(script_042c) - $0D) * $4000)) ;; 08:575d $87 $53
-    dw   ((script_042d - $4000) + ((BANK(script_042d) - $0D) * $4000)) ;; 08:575f $88 $53
-    dw   ((script_042e - $4000) + ((BANK(script_042e) - $0D) * $4000)) ;; 08:5761 $89 $53
-    dw   ((script_042f - $4000) + ((BANK(script_042f) - $0D) * $4000)) ;; 08:5763 $a3 $53
-    dw   ((script_0430 - $4000) + ((BANK(script_0430) - $0D) * $4000)) ;; 08:5765 $bc $53
-    dw   ((script_0431 - $4000) + ((BANK(script_0431) - $0D) * $4000)) ;; 08:5767 $d7 $53
-    dw   ((script_0432 - $4000) + ((BANK(script_0432) - $0D) * $4000)) ;; 08:5769 $f2 $53
-    dw   ((script_0433 - $4000) + ((BANK(script_0433) - $0D) * $4000)) ;; 08:576b $0d $54
-    dw   ((script_0434 - $4000) + ((BANK(script_0434) - $0D) * $4000)) ;; 08:576d $0e $54
-    dw   ((script_0435 - $4000) + ((BANK(script_0435) - $0D) * $4000)) ;; 08:576f $28 $54
-    dw   ((script_0436 - $4000) + ((BANK(script_0436) - $0D) * $4000)) ;; 08:5771 $b9 $54
-    dw   ((script_0437 - $4000) + ((BANK(script_0437) - $0D) * $4000)) ;; 08:5773 $ba $54
-    dw   ((script_0438 - $4000) + ((BANK(script_0438) - $0D) * $4000)) ;; 08:5775 $ff $54
-    dw   ((script_0439 - $4000) + ((BANK(script_0439) - $0D) * $4000)) ;; 08:5777 $17 $55
-    dw   ((script_043a - $4000) + ((BANK(script_043a) - $0D) * $4000)) ;; 08:5779 $3a $55
-    dw   ((script_043b - $4000) + ((BANK(script_043b) - $0D) * $4000)) ;; 08:577b $50 $55
-    dw   ((script_043c - $4000) + ((BANK(script_043c) - $0D) * $4000)) ;; 08:577d $69 $55
-    dw   ((script_043d - $4000) + ((BANK(script_043d) - $0D) * $4000)) ;; 08:577f $7f $55
-    dw   ((script_043e - $4000) + ((BANK(script_043e) - $0D) * $4000)) ;; 08:5781 $96 $55
-    dw   ((script_043f - $4000) + ((BANK(script_043f) - $0D) * $4000)) ;; 08:5783 $ae $55
-    dw   ((script_0440 - $4000) + ((BANK(script_0440) - $0D) * $4000)) ;; 08:5785 $af $55
-    dw   ((script_0441 - $4000) + ((BANK(script_0441) - $0D) * $4000)) ;; 08:5787 $c6 $55
-    dw   ((script_0442 - $4000) + ((BANK(script_0442) - $0D) * $4000)) ;; 08:5789 $de $55
-    dw   ((script_0443 - $4000) + ((BANK(script_0443) - $0D) * $4000)) ;; 08:578b $f5 $55
-    dw   ((script_0444 - $4000) + ((BANK(script_0444) - $0D) * $4000)) ;; 08:578d $0f $56
-    dw   ((script_0445 - $4000) + ((BANK(script_0445) - $0D) * $4000)) ;; 08:578f $3b $56
-    dw   ((script_0446 - $4000) + ((BANK(script_0446) - $0D) * $4000)) ;; 08:5791 $5d $56
-    dw   ((script_0447 - $4000) + ((BANK(script_0447) - $0D) * $4000)) ;; 08:5793 $75 $56
-    dw   ((script_0448 - $4000) + ((BANK(script_0448) - $0D) * $4000)) ;; 08:5795 $8e $56
-    dw   ((script_0449 - $4000) + ((BANK(script_0449) - $0D) * $4000)) ;; 08:5797 $a6 $56
-    dw   ((script_044a - $4000) + ((BANK(script_044a) - $0D) * $4000)) ;; 08:5799 $bf $56
-    dw   ((script_044b - $4000) + ((BANK(script_044b) - $0D) * $4000)) ;; 08:579b $d9 $56
-    dw   ((script_044c - $4000) + ((BANK(script_044c) - $0D) * $4000)) ;; 08:579d $fb $56
-    dw   ((script_044d - $4000) + ((BANK(script_044d) - $0D) * $4000)) ;; 08:579f $ff $56
-    dw   ((script_044e - $4000) + ((BANK(script_044e) - $0D) * $4000)) ;; 08:57a1 $38 $57
-    dw   ((script_044f - $4000) + ((BANK(script_044f) - $0D) * $4000)) ;; 08:57a3 $70 $57
-    dw   ((script_0450 - $4000) + ((BANK(script_0450) - $0D) * $4000)) ;; 08:57a5 $a9 $57
-    dw   ((script_0451 - $4000) + ((BANK(script_0451) - $0D) * $4000)) ;; 08:57a7 $cf $57
-    dw   ((script_0452 - $4000) + ((BANK(script_0452) - $0D) * $4000)) ;; 08:57a9 $38 $58
-    dw   ((script_0453 - $4000) + ((BANK(script_0453) - $0D) * $4000)) ;; 08:57ab $50 $58
-    dw   ((script_0454 - $4000) + ((BANK(script_0454) - $0D) * $4000)) ;; 08:57ad $68 $58
-    dw   ((script_0455 - $4000) + ((BANK(script_0455) - $0D) * $4000)) ;; 08:57af $69 $58
-    dw   ((script_0456 - $4000) + ((BANK(script_0456) - $0D) * $4000)) ;; 08:57b1 $81 $58
-    dw   ((script_0457 - $4000) + ((BANK(script_0457) - $0D) * $4000)) ;; 08:57b3 $98 $58
-    dw   ((script_0458 - $4000) + ((BANK(script_0458) - $0D) * $4000)) ;; 08:57b5 $b0 $58
-    dw   ((script_0459 - $4000) + ((BANK(script_0459) - $0D) * $4000)) ;; 08:57b7 $ca $58
-    dw   ((script_045a - $4000) + ((BANK(script_045a) - $0D) * $4000)) ;; 08:57b9 $e3 $58
-    dw   ((script_045b - $4000) + ((BANK(script_045b) - $0D) * $4000)) ;; 08:57bb $fc $58
-    dw   ((script_045c - $4000) + ((BANK(script_045c) - $0D) * $4000)) ;; 08:57bd $14 $59
-    dw   ((script_045d - $4000) + ((BANK(script_045d) - $0D) * $4000)) ;; 08:57bf $2b $59
-    dw   ((script_045e - $4000) + ((BANK(script_045e) - $0D) * $4000)) ;; 08:57c1 $44 $59
-    dw   ((script_045f - $4000) + ((BANK(script_045f) - $0D) * $4000)) ;; 08:57c3 $5d $59
-    dw   ((script_0460 - $4000) + ((BANK(script_0460) - $0D) * $4000)) ;; 08:57c5 $77 $59
-    dw   ((script_0461 - $4000) + ((BANK(script_0461) - $0D) * $4000)) ;; 08:57c7 $8f $59
-    dw   ((script_0462 - $4000) + ((BANK(script_0462) - $0D) * $4000)) ;; 08:57c9 $a8 $59
-    dw   ((script_0463 - $4000) + ((BANK(script_0463) - $0D) * $4000)) ;; 08:57cb $c2 $59
-    dw   ((script_0464 - $4000) + ((BANK(script_0464) - $0D) * $4000)) ;; 08:57cd $dc $59
-    dw   ((script_0465 - $4000) + ((BANK(script_0465) - $0D) * $4000)) ;; 08:57cf $ff $59
-    dw   ((script_0466 - $4000) + ((BANK(script_0466) - $0D) * $4000)) ;; 08:57d1 $00 $5a
-    dw   ((script_0467 - $4000) + ((BANK(script_0467) - $0D) * $4000)) ;; 08:57d3 $27 $5a
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:57d5 $00 $00
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:57d7 $00 $00
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:57d9 $00 $00
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:57db $00 $00
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:57dd $00 $00
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:57df $00 $00
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:57e1 $00 $00
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:57e3 $00 $00
-    dw   ((script_0470 - $4000) + ((BANK(script_0470) - $0D) * $4000)) ;; 08:57e5 $3f $5a
-    dw   ((script_0471 - $4000) + ((BANK(script_0471) - $0D) * $4000)) ;; 08:57e7 $7c $5a
-    dw   ((script_0472 - $4000) + ((BANK(script_0472) - $0D) * $4000)) ;; 08:57e9 $90 $5a
-    dw   ((script_0473 - $4000) + ((BANK(script_0473) - $0D) * $4000)) ;; 08:57eb $e2 $5a
-    dw   ((script_0474 - $4000) + ((BANK(script_0474) - $0D) * $4000)) ;; 08:57ed $f2 $5a
-    dw   ((script_0475 - $4000) + ((BANK(script_0475) - $0D) * $4000)) ;; 08:57ef $01 $5b
-    dw   ((script_0476 - $4000) + ((BANK(script_0476) - $0D) * $4000)) ;; 08:57f1 $18 $5b
-    dw   ((script_0477 - $4000) + ((BANK(script_0477) - $0D) * $4000)) ;; 08:57f3 $20 $5b
-    dw   ((script_0478 - $4000) + ((BANK(script_0478) - $0D) * $4000)) ;; 08:57f5 $21 $5b
-    dw   ((script_0479 - $4000) + ((BANK(script_0479) - $0D) * $4000)) ;; 08:57f7 $22 $5b
-    dw   ((script_047a - $4000) + ((BANK(script_047a) - $0D) * $4000)) ;; 08:57f9 $2a $5b
-    dw   ((script_047b - $4000) + ((BANK(script_047b) - $0D) * $4000)) ;; 08:57fb $2b $5b
-    dw   ((script_047c - $4000) + ((BANK(script_047c) - $0D) * $4000)) ;; 08:57fd $2c $5b
-    dw   ((script_047d - $4000) + ((BANK(script_047d) - $0D) * $4000)) ;; 08:57ff $3c $5b
-    dw   ((script_047e - $4000) + ((BANK(script_047e) - $0D) * $4000)) ;; 08:5801 $3d $5b
-    dw   ((script_047f - $4000) + ((BANK(script_047f) - $0D) * $4000)) ;; 08:5803 $3e $5b
-    dw   ((script_0480 - $4000) + ((BANK(script_0480) - $0D) * $4000)) ;; 08:5805 $3f $5b
-    dw   ((script_0481 - $4000) + ((BANK(script_0481) - $0D) * $4000)) ;; 08:5807 $40 $5b
-    dw   ((script_0482 - $4000) + ((BANK(script_0482) - $0D) * $4000)) ;; 08:5809 $41 $5b
-    dw   ((script_0483 - $4000) + ((BANK(script_0483) - $0D) * $4000)) ;; 08:580b $49 $5b
-    dw   ((script_0484 - $4000) + ((BANK(script_0484) - $0D) * $4000)) ;; 08:580d $4a $5b
-    dw   ((script_0485 - $4000) + ((BANK(script_0485) - $0D) * $4000)) ;; 08:580f $4b $5b
-    dw   ((script_0486 - $4000) + ((BANK(script_0486) - $0D) * $4000)) ;; 08:5811 $53 $5b
-    dw   ((script_0487 - $4000) + ((BANK(script_0487) - $0D) * $4000)) ;; 08:5813 $54 $5b
-    dw   ((script_0488 - $4000) + ((BANK(script_0488) - $0D) * $4000)) ;; 08:5815 $55 $5b
-    dw   ((script_0489 - $4000) + ((BANK(script_0489) - $0D) * $4000)) ;; 08:5817 $5d $5b
-    dw   ((script_048a - $4000) + ((BANK(script_048a) - $0D) * $4000)) ;; 08:5819 $5e $5b
-    dw   ((script_048b - $4000) + ((BANK(script_048b) - $0D) * $4000)) ;; 08:581b $5f $5b
-    dw   ((script_048c - $4000) + ((BANK(script_048c) - $0D) * $4000)) ;; 08:581d $67 $5b
-    dw   ((script_048d - $4000) + ((BANK(script_048d) - $0D) * $4000)) ;; 08:581f $68 $5b
-    dw   ((script_048e - $4000) + ((BANK(script_048e) - $0D) * $4000)) ;; 08:5821 $69 $5b
-    dw   ((script_048f - $4000) + ((BANK(script_048f) - $0D) * $4000)) ;; 08:5823 $71 $5b
-    dw   ((script_0490 - $4000) + ((BANK(script_0490) - $0D) * $4000)) ;; 08:5825 $72 $5b
-    dw   ((script_0491 - $4000) + ((BANK(script_0491) - $0D) * $4000)) ;; 08:5827 $73 $5b
-    dw   ((script_0492 - $4000) + ((BANK(script_0492) - $0D) * $4000)) ;; 08:5829 $7b $5b
-    dw   ((script_0493 - $4000) + ((BANK(script_0493) - $0D) * $4000)) ;; 08:582b $7c $5b
-    dw   ((script_0494 - $4000) + ((BANK(script_0494) - $0D) * $4000)) ;; 08:582d $7d $5b
-    dw   ((script_0495 - $4000) + ((BANK(script_0495) - $0D) * $4000)) ;; 08:582f $85 $5b
-    dw   ((script_0496 - $4000) + ((BANK(script_0496) - $0D) * $4000)) ;; 08:5831 $86 $5b
-    dw   ((script_0497 - $4000) + ((BANK(script_0497) - $0D) * $4000)) ;; 08:5833 $87 $5b
-    dw   ((script_0498 - $4000) + ((BANK(script_0498) - $0D) * $4000)) ;; 08:5835 $8f $5b
-    dw   ((script_0499 - $4000) + ((BANK(script_0499) - $0D) * $4000)) ;; 08:5837 $90 $5b
-    dw   ((script_049a - $4000) + ((BANK(script_049a) - $0D) * $4000)) ;; 08:5839 $91 $5b
-    dw   ((script_049b - $4000) + ((BANK(script_049b) - $0D) * $4000)) ;; 08:583b $a9 $5b
-    dw   ((script_049c - $4000) + ((BANK(script_049c) - $0D) * $4000)) ;; 08:583d $aa $5b
-    dw   ((script_049d - $4000) + ((BANK(script_049d) - $0D) * $4000)) ;; 08:583f $ab $5b
-    dw   ((script_049e - $4000) + ((BANK(script_049e) - $0D) * $4000)) ;; 08:5841 $b3 $5b
-    dw   ((script_049f - $4000) + ((BANK(script_049f) - $0D) * $4000)) ;; 08:5843 $b4 $5b
-    dw   ((script_04a0 - $4000) + ((BANK(script_04a0) - $0D) * $4000)) ;; 08:5845 $b5 $5b
-    dw   ((script_04a1 - $4000) + ((BANK(script_04a1) - $0D) * $4000)) ;; 08:5847 $bd $5b
-    dw   ((script_04a2 - $4000) + ((BANK(script_04a2) - $0D) * $4000)) ;; 08:5849 $be $5b
-    dw   ((script_04a3 - $4000) + ((BANK(script_04a3) - $0D) * $4000)) ;; 08:584b $bf $5b
-    dw   ((script_04a4 - $4000) + ((BANK(script_04a4) - $0D) * $4000)) ;; 08:584d $c7 $5b
-    dw   ((script_04a5 - $4000) + ((BANK(script_04a5) - $0D) * $4000)) ;; 08:584f $c8 $5b
-    dw   ((script_04a6 - $4000) + ((BANK(script_04a6) - $0D) * $4000)) ;; 08:5851 $c9 $5b
-    dw   ((script_04a7 - $4000) + ((BANK(script_04a7) - $0D) * $4000)) ;; 08:5853 $d1 $5b
-    dw   ((script_04a8 - $4000) + ((BANK(script_04a8) - $0D) * $4000)) ;; 08:5855 $d2 $5b
-    dw   ((script_04a9 - $4000) + ((BANK(script_04a9) - $0D) * $4000)) ;; 08:5857 $d3 $5b
-    dw   ((script_04aa - $4000) + ((BANK(script_04aa) - $0D) * $4000)) ;; 08:5859 $db $5b
-    dw   ((script_04ab - $4000) + ((BANK(script_04ab) - $0D) * $4000)) ;; 08:585b $dc $5b
-    dw   ((script_04ac - $4000) + ((BANK(script_04ac) - $0D) * $4000)) ;; 08:585d $dd $5b
-    dw   ((script_04ad - $4000) + ((BANK(script_04ad) - $0D) * $4000)) ;; 08:585f $e5 $5b
-    dw   ((script_04ae - $4000) + ((BANK(script_04ae) - $0D) * $4000)) ;; 08:5861 $e6 $5b
-    dw   ((script_04af - $4000) + ((BANK(script_04af) - $0D) * $4000)) ;; 08:5863 $e7 $5b
-    dw   ((script_04b0 - $4000) + ((BANK(script_04b0) - $0D) * $4000)) ;; 08:5865 $fe $5b
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:5867 $00 $00
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:5869 $00 $00
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:586b $00 $00
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:586d $00 $00
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:586f $00 $00
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:5871 $00 $00
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:5873 $00 $00
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:5875 $00 $00
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:5877 $00 $00
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:5879 $00 $00
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:587b $00 $00
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:587d $00 $00
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:587f $00 $00
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:5881 $00 $00
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:5883 $00 $00
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:5885 $00 $00
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:5887 $00 $00
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:5889 $00 $00
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:588b $00 $00
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:588d $00 $00
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:588f $00 $00
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:5891 $00 $00
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:5893 $00 $00
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:5895 $00 $00
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:5897 $00 $00
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:5899 $00 $00
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:589b $00 $00
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:589d $00 $00
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:589f $00 $00
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:58a1 $00 $00
-    dw   ((script_0000 - $4000) + ((BANK(script_0000) - $0D) * $4000)) ;; 08:58a3 $00 $00
-    dw   ((script_04d0 - $4000) + ((BANK(script_04d0) - $0D) * $4000)) ;; 08:58a5 $3e $5c
-    dw   ((script_04d1 - $4000) + ((BANK(script_04d1) - $0D) * $4000)) ;; 08:58a7 $46 $5c
-    dw   ((script_04d2 - $4000) + ((BANK(script_04d2) - $0D) * $4000)) ;; 08:58a9 $47 $5c
-    dw   ((script_04d3 - $4000) + ((BANK(script_04d3) - $0D) * $4000)) ;; 08:58ab $52 $5c
-    dw   ((script_04d4 - $4000) + ((BANK(script_04d4) - $0D) * $4000)) ;; 08:58ad $64 $5c
-    dw   ((script_04d5 - $4000) + ((BANK(script_04d5) - $0D) * $4000)) ;; 08:58af $6e $5c
-    dw   ((script_04d6 - $4000) + ((BANK(script_04d6) - $0D) * $4000)) ;; 08:58b1 $78 $5c
-    dw   ((script_04d7 - $4000) + ((BANK(script_04d7) - $0D) * $4000)) ;; 08:58b3 $82 $5c
-    dw   ((script_04d8 - $4000) + ((BANK(script_04d8) - $0D) * $4000)) ;; 08:58b5 $8c $5c
-    dw   ((script_04d9 - $4000) + ((BANK(script_04d9) - $0D) * $4000)) ;; 08:58b7 $97 $5c
-    dw   ((script_04da - $4000) + ((BANK(script_04da) - $0D) * $4000)) ;; 08:58b9 $11 $5d
-    dw   ((script_04db - $4000) + ((BANK(script_04db) - $0D) * $4000)) ;; 08:58bb $1c $5d
-    dw   ((script_04dc - $4000) + ((BANK(script_04dc) - $0D) * $4000)) ;; 08:58bd $26 $5d
-    dw   ((script_04dd - $4000) + ((BANK(script_04dd) - $0D) * $4000)) ;; 08:58bf $35 $5d
-    dw   ((script_04de - $4000) + ((BANK(script_04de) - $0D) * $4000)) ;; 08:58c1 $3f $5d
-    dw   ((script_04df - $4000) + ((BANK(script_04df) - $0D) * $4000)) ;; 08:58c3 $49 $5d
-    dw   ((script_04e0 - $4000) + ((BANK(script_04e0) - $0D) * $4000)) ;; 08:58c5 $56 $5d
-    dw   ((script_04e1 - $4000) + ((BANK(script_04e1) - $0D) * $4000)) ;; 08:58c7 $6f $5d
-    dw   ((script_04e2 - $4000) + ((BANK(script_04e2) - $0D) * $4000)) ;; 08:58c9 $76 $5d
-    dw   ((script_04e3 - $4000) + ((BANK(script_04e3) - $0D) * $4000)) ;; 08:58cb $85 $5d
-    dw   ((script_04e4 - $4000) + ((BANK(script_04e4) - $0D) * $4000)) ;; 08:58cd $9c $5d
-    dw   ((script_04e5 - $4000) + ((BANK(script_04e5) - $0D) * $4000)) ;; 08:58cf $b5 $5d
-    dw   ((script_04e6 - $4000) + ((BANK(script_04e6) - $0D) * $4000)) ;; 08:58d1 $c0 $5d
-    dw   ((script_04e7 - $4000) + ((BANK(script_04e7) - $0D) * $4000)) ;; 08:58d3 $cb $5d
-    dw   ((script_04e8 - $4000) + ((BANK(script_04e8) - $0D) * $4000)) ;; 08:58d5 $ea $5d
-    dw   ((script_04e9 - $4000) + ((BANK(script_04e9) - $0D) * $4000)) ;; 08:58d7 $f5 $5d
-    dw   ((script_04ea - $4000) + ((BANK(script_04ea) - $0D) * $4000)) ;; 08:58d9 $fe $5d
-    dw   ((script_04eb - $4000) + ((BANK(script_04eb) - $0D) * $4000)) ;; 08:58db $17 $5e
-    dw   ((script_04ec - $4000) + ((BANK(script_04ec) - $0D) * $4000)) ;; 08:58dd $30 $5e
-    dw   ((script_04ed - $4000) + ((BANK(script_04ed) - $0D) * $4000)) ;; 08:58df $39 $5e
-    dw   ((script_04ee - $4000) + ((BANK(script_04ee) - $0D) * $4000)) ;; 08:58e1 $40 $5e
-    dw   ((script_04ef - $4000) + ((BANK(script_04ef) - $0D) * $4000)) ;; 08:58e3 $41 $5e
-    dw   ((script_04f0 - $4000) + ((BANK(script_04f0) - $0D) * $4000)) ;; 08:58e5 $42 $5e
-    dw   ((script_04f1 - $4000) + ((BANK(script_04f1) - $0D) * $4000)) ;; 08:58e7 $49 $5e
-    dw   ((script_04f2 - $4000) + ((BANK(script_04f2) - $0D) * $4000)) ;; 08:58e9 $58 $5e
-    dw   ((script_04f3 - $4000) + ((BANK(script_04f3) - $0D) * $4000)) ;; 08:58eb $61 $5e
-    dw   ((script_04f4 - $4000) + ((BANK(script_04f4) - $0D) * $4000)) ;; 08:58ed $62 $5e
-    dw   ((script_04f5 - $4000) + ((BANK(script_04f5) - $0D) * $4000)) ;; 08:58ef $63 $5e
-    dw   ((script_04f6 - $4000) + ((BANK(script_04f6) - $0D) * $4000)) ;; 08:58f1 $75 $5e
-    dw   ((script_04f7 - $4000) + ((BANK(script_04f7) - $0D) * $4000)) ;; 08:58f3 $87 $5e
-    dw   ((script_04f8 - $4000) + ((BANK(script_04f8) - $0D) * $4000)) ;; 08:58f5 $9b $5e
-    dw   ((script_04f9 - $4000) + ((BANK(script_04f9) - $0D) * $4000)) ;; 08:58f7 $af $5e
-    dw   ((script_04fa - $4000) + ((BANK(script_04fa) - $0D) * $4000)) ;; 08:58f9 $c0 $5e
-    dw   ((script_04fb - $4000) + ((BANK(script_04fb) - $0D) * $4000)) ;; 08:58fb $d1 $5e
-    dw   ((script_04fc - $4000) + ((BANK(script_04fc) - $0D) * $4000)) ;; 08:58fd $e3 $5e
-    dw   ((script_04fd - $4000) + ((BANK(script_04fd) - $0D) * $4000)) ;; 08:58ff $f5 $5e
-    dw   ((script_04fe - $4000) + ((BANK(script_04fe) - $0D) * $4000)) ;; 08:5901 $05 $5f
-    dw   ((script_04ff - $4000) + ((BANK(script_04ff) - $0D) * $4000)) ;; 08:5903 $15 $5f
-    dw   ((script_0500 - $4000) + ((BANK(script_0500) - $0D) * $4000)) ;; 08:5905 $25 $5f
-    dw   ((script_0501 - $4000) + ((BANK(script_0501) - $0D) * $4000)) ;; 08:5907 $35 $5f
-    dw   ((script_0502 - $4000) + ((BANK(script_0502) - $0D) * $4000)) ;; 08:5909 $3d $5f
-    dw   ((script_0503 - $4000) + ((BANK(script_0503) - $0D) * $4000)) ;; 08:590b $45 $5f
-    dw   ((script_0504 - $4000) + ((BANK(script_0504) - $0D) * $4000)) ;; 08:590d $4d $5f
-    dw   ((script_0505 - $4000) + ((BANK(script_0505) - $0D) * $4000)) ;; 08:590f $5e $5f
-    dw   ((script_0506 - $4000) + ((BANK(script_0506) - $0D) * $4000)) ;; 08:5911 $5f $5f
-    dw   ((script_0507 - $4000) + ((BANK(script_0507) - $0D) * $4000)) ;; 08:5913 $60 $5f
-    dw   ((script_0508 - $4000) + ((BANK(script_0508) - $0D) * $4000)) ;; 08:5915 $71 $5f
-    dw   ((script_0509 - $4000) + ((BANK(script_0509) - $0D) * $4000)) ;; 08:5917 $79 $5f
-    dw   ((script_050a - $4000) + ((BANK(script_050a) - $0D) * $4000)) ;; 08:5919 $8e $5f
-    dw   ((script_050b - $4000) + ((BANK(script_050b) - $0D) * $4000)) ;; 08:591b $a6 $5f
-    dw   ((script_050c - $4000) + ((BANK(script_050c) - $0D) * $4000)) ;; 08:591d $b8 $5f
-    dw   ((script_050d - $4000) + ((BANK(script_050d) - $0D) * $4000)) ;; 08:591f $d1 $5f
-    dw   ((script_050e - $4000) + ((BANK(script_050e) - $0D) * $4000)) ;; 08:5921 $da $5f
-    dw   ((script_050f - $4000) + ((BANK(script_050f) - $0D) * $4000)) ;; 08:5923 $db $5f
-    dw   ((script_0510 - $4000) + ((BANK(script_0510) - $0D) * $4000)) ;; 08:5925 $dc $5f
-    dw   ((script_0511 - $4000) + ((BANK(script_0511) - $0D) * $4000)) ;; 08:5927 $f5 $5f
-    dw   ((script_0512 - $4000) + ((BANK(script_0512) - $0D) * $4000)) ;; 08:5929 $f8 $5f
-    dw   ((script_0513 - $4000) + ((BANK(script_0513) - $0D) * $4000)) ;; 08:592b $1c $60
-    dw   ((script_0514 - $4000) + ((BANK(script_0514) - $0D) * $4000)) ;; 08:592d $32 $60
-    dw   ((script_0515 - $4000) + ((BANK(script_0515) - $0D) * $4000)) ;; 08:592f $35 $60
-    dw   ((script_0516 - $4000) + ((BANK(script_0516) - $0D) * $4000)) ;; 08:5931 $54 $60
-    dw   ((script_0517 - $4000) + ((BANK(script_0517) - $0D) * $4000)) ;; 08:5933 $5d $60
-    dw   ((script_0518 - $4000) + ((BANK(script_0518) - $0D) * $4000)) ;; 08:5935 $5e $60
-    dw   ((script_0519 - $4000) + ((BANK(script_0519) - $0D) * $4000)) ;; 08:5937 $5f $60
-    dw   ((script_051a - $4000) + ((BANK(script_051a) - $0D) * $4000)) ;; 08:5939 $70 $60
-    dw   ((script_051b - $4000) + ((BANK(script_051b) - $0D) * $4000)) ;; 08:593b $71 $60
-    dw   ((script_051c - $4000) + ((BANK(script_051c) - $0D) * $4000)) ;; 08:593d $72 $60
-    dw   ((script_051d - $4000) + ((BANK(script_051d) - $0D) * $4000)) ;; 08:593f $79 $60
-    dw   ((script_051e - $4000) + ((BANK(script_051e) - $0D) * $4000)) ;; 08:5941 $7a $60
-    dw   ((script_051f - $4000) + ((BANK(script_051f) - $0D) * $4000)) ;; 08:5943 $7b $60
-    dw   ((script_0520 - $4000) + ((BANK(script_0520) - $0D) * $4000)) ;; 08:5945 $82 $60
-    dw   ((script_0521 - $4000) + ((BANK(script_0521) - $0D) * $4000)) ;; 08:5947 $83 $60
-    dw   ((script_0522 - $4000) + ((BANK(script_0522) - $0D) * $4000)) ;; 08:5949 $84 $60
-    dw   ((script_0523 - $4000) + ((BANK(script_0523) - $0D) * $4000)) ;; 08:594b $ac $60
-    dw   ((script_0524 - $4000) + ((BANK(script_0524) - $0D) * $4000)) ;; 08:594d $ad $60
-    dw   ((script_0525 - $4000) + ((BANK(script_0525) - $0D) * $4000)) ;; 08:594f $ae $60
-    dw   ((script_0526 - $4000) + ((BANK(script_0526) - $0D) * $4000)) ;; 08:5951 $0e $61
-    dw   ((script_0527 - $4000) + ((BANK(script_0527) - $0D) * $4000)) ;; 08:5953 $0f $61
-    dw   ((script_0528 - $4000) + ((BANK(script_0528) - $0D) * $4000)) ;; 08:5955 $10 $61
-    dw   ((script_0529 - $4000) + ((BANK(script_0529) - $0D) * $4000)) ;; 08:5957 $15 $61
-    dw   ((script_052a - $4000) + ((BANK(script_052a) - $0D) * $4000)) ;; 08:5959 $16 $61
-    dw   ((script_052b - $4000) + ((BANK(script_052b) - $0D) * $4000)) ;; 08:595b $17 $61
-    dw   ((script_052c - $4000) + ((BANK(script_052c) - $0D) * $4000)) ;; 08:595d $20 $61
-    dw   ((script_052d - $4000) + ((BANK(script_052d) - $0D) * $4000)) ;; 08:595f $21 $61
-    dw   ((script_052e - $4000) + ((BANK(script_052e) - $0D) * $4000)) ;; 08:5961 $26 $61
-    dw   ((script_052f - $4000) + ((BANK(script_052f) - $0D) * $4000)) ;; 08:5963 $27 $61
-    dw   ((script_0530 - $4000) + ((BANK(script_0530) - $0D) * $4000)) ;; 08:5965 $28 $61
-    dw   ((script_0531 - $4000) + ((BANK(script_0531) - $0D) * $4000)) ;; 08:5967 $29 $61
-    dw   ((script_0532 - $4000) + ((BANK(script_0532) - $0D) * $4000)) ;; 08:5969 $9f $61
-    dw   ((script_0533 - $4000) + ((BANK(script_0533) - $0D) * $4000)) ;; 08:596b $fa $61
-    dw   ((script_0534 - $4000) + ((BANK(script_0534) - $0D) * $4000)) ;; 08:596d $b2 $62
-    dw   ((script_0535 - $4000) + ((BANK(script_0535) - $0D) * $4000)) ;; 08:596f $de $63
-    dw   ((script_0536 - $4000) + ((BANK(script_0536) - $0D) * $4000)) ;; 08:5971 $3a $64
-    dw   ((script_0537 - $4000) + ((BANK(script_0537) - $0D) * $4000)) ;; 08:5973 $da $64
-    dw   ((script_0538 - $4000) + ((BANK(script_0538) - $0D) * $4000)) ;; 08:5975 $80 $66
-    dw   ((script_0539 - $4000) + ((BANK(script_0539) - $0D) * $4000)) ;; 08:5977 $54 $67
-    dw   ((script_053a - $4000) + ((BANK(script_053a) - $0D) * $4000)) ;; 08:5979 $e9 $68
-    dw   ((script_053b - $4000) + ((BANK(script_053b) - $0D) * $4000)) ;; 08:597b $04 $6b
-    dw   ((script_053c - $4000) + ((BANK(script_053c) - $0D) * $4000)) ;; 08:597d $32 $6d
-    dw   ((script_053d - $4000) + ((BANK(script_053d) - $0D) * $4000)) ;; 08:597f $f9 $6d
-    dw   ((script_053e - $4000) + ((BANK(script_053e) - $0D) * $4000)) ;; 08:5981 $c6 $6e
-    dw   ((script_053f - $4000) + ((BANK(script_053f) - $0D) * $4000)) ;; 08:5983 $ba $6f
-    dw   ((script_0540 - $4000) + ((BANK(script_0540) - $0D) * $4000)) ;; 08:5985 $ec $71
-    dw   ((script_0541 - $4000) + ((BANK(script_0541) - $0D) * $4000)) ;; 08:5987 $0c $74
-    dw   ((script_0542 - $4000) + ((BANK(script_0542) - $0D) * $4000)) ;; 08:5989 $14 $77
-    dw   ((script_0543 - $4000) + ((BANK(script_0543) - $0D) * $4000)) ;; 08:598b $4e $77
-    dw   ((script_0544 - $4000) + ((BANK(script_0544) - $0D) * $4000)) ;; 08:598d $b1 $77
-    dw   ((script_0545 - $4000) + ((BANK(script_0545) - $0D) * $4000)) ;; 08:598f $3f $78
-    dw   ((script_0546 - $4000) + ((BANK(script_0546) - $0D) * $4000)) ;; 08:5991 $08 $79
-    dw   ((script_0547 - $4000) + ((BANK(script_0547) - $0D) * $4000)) ;; 08:5993 $86 $79
-    dw   ((script_0548 - $4000) + ((BANK(script_0548) - $0D) * $4000)) ;; 08:5995 $c3 $79
-    dw   ((script_0549 - $4000) + ((BANK(script_0549) - $0D) * $4000)) ;; 08:5997 $c2 $7a
+    SCRIPT_POINTER script_0000                         ;; 08:4f05 $00 $00
+    SCRIPT_POINTER script_0001                         ;; 08:4f07 $01 $00
+    SCRIPT_POINTER script_0002                         ;; 08:4f09 $24 $00
+    SCRIPT_POINTER script_0003                         ;; 08:4f0b $25 $00
+    SCRIPT_POINTER script_0004                         ;; 08:4f0d $31 $00
+    SCRIPT_POINTER script_0005                         ;; 08:4f0f $11 $01
+    SCRIPT_POINTER script_0006                         ;; 08:4f11 $46 $01
+    SCRIPT_POINTER script_0007                         ;; 08:4f13 $47 $01
+    SCRIPT_POINTER script_0008                         ;; 08:4f15 $6e $01
+    SCRIPT_POINTER script_0009                         ;; 08:4f17 $27 $02
+    SCRIPT_POINTER script_000a                         ;; 08:4f19 $38 $02
+    SCRIPT_POINTER script_000b                         ;; 08:4f1b $39 $02
+    SCRIPT_POINTER script_000c                         ;; 08:4f1d $3a $02
+    SCRIPT_POINTER script_000d                         ;; 08:4f1f $84 $03
+    SCRIPT_POINTER script_000e                         ;; 08:4f21 $ab $03
+    SCRIPT_POINTER script_000f                         ;; 08:4f23 $ac $03
+    SCRIPT_POINTER script_0010                         ;; 08:4f25 $ad $03
+    SCRIPT_POINTER script_0011                         ;; 08:4f27 $ae $03
+    SCRIPT_POINTER script_0012                         ;; 08:4f29 $af $03
+    SCRIPT_POINTER script_0013                         ;; 08:4f2b $b0 $03
+    SCRIPT_POINTER script_0014                         ;; 08:4f2d $b1 $03
+    SCRIPT_POINTER script_0015                         ;; 08:4f2f $b2 $03
+    SCRIPT_POINTER script_0016                         ;; 08:4f31 $b3 $03
+    SCRIPT_POINTER script_0017                         ;; 08:4f33 $b4 $03
+    SCRIPT_POINTER script_0018                         ;; 08:4f35 $b5 $03
+    SCRIPT_POINTER script_0019                         ;; 08:4f37 $b6 $03
+    SCRIPT_POINTER script_001a                         ;; 08:4f39 $b7 $03
+    SCRIPT_POINTER script_001b                         ;; 08:4f3b $b8 $03
+    SCRIPT_POINTER script_001c                         ;; 08:4f3d $b9 $03
+    SCRIPT_POINTER script_001d                         ;; 08:4f3f $ba $03
+    SCRIPT_POINTER script_001e                         ;; 08:4f41 $bb $03
+    SCRIPT_POINTER script_001f                         ;; 08:4f43 $bc $03
+    SCRIPT_POINTER script_0020                         ;; 08:4f45 $c5 $03
+    SCRIPT_POINTER script_0021                         ;; 08:4f47 $c6 $03
+    SCRIPT_POINTER script_0022                         ;; 08:4f49 $c7 $03
+    SCRIPT_POINTER script_0023                         ;; 08:4f4b $c8 $03
+    SCRIPT_POINTER script_0024                         ;; 08:4f4d $c9 $03
+    SCRIPT_POINTER script_0025                         ;; 08:4f4f $ca $03
+    SCRIPT_POINTER script_0026                         ;; 08:4f51 $cb $03
+    SCRIPT_POINTER script_0027                         ;; 08:4f53 $cc $03
+    SCRIPT_POINTER script_0028                         ;; 08:4f55 $cd $03
+    SCRIPT_POINTER script_0029                         ;; 08:4f57 $ce $03
+    SCRIPT_POINTER script_002a                         ;; 08:4f59 $cf $03
+    SCRIPT_POINTER script_002b                         ;; 08:4f5b $d0 $03
+    SCRIPT_POINTER script_002c                         ;; 08:4f5d $d1 $03
+    SCRIPT_POINTER script_002d                         ;; 08:4f5f $d2 $03
+    SCRIPT_POINTER script_002e                         ;; 08:4f61 $d3 $03
+    SCRIPT_POINTER script_002f                         ;; 08:4f63 $d4 $03
+    SCRIPT_POINTER script_0030                         ;; 08:4f65 $d5 $03
+    SCRIPT_POINTER script_0000                         ;; 08:4f67 $00 $00
+    SCRIPT_POINTER script_0000                         ;; 08:4f69 $00 $00
+    SCRIPT_POINTER script_0000                         ;; 08:4f6b $00 $00
+    SCRIPT_POINTER script_0000                         ;; 08:4f6d $00 $00
+    SCRIPT_POINTER script_0000                         ;; 08:4f6f $00 $00
+    SCRIPT_POINTER script_0000                         ;; 08:4f71 $00 $00
+    SCRIPT_POINTER script_0000                         ;; 08:4f73 $00 $00
+    SCRIPT_POINTER script_0000                         ;; 08:4f75 $00 $00
+    SCRIPT_POINTER script_0000                         ;; 08:4f77 $00 $00
+    SCRIPT_POINTER script_0000                         ;; 08:4f79 $00 $00
+    SCRIPT_POINTER script_0000                         ;; 08:4f7b $00 $00
+    SCRIPT_POINTER script_0000                         ;; 08:4f7d $00 $00
+    SCRIPT_POINTER script_003d                         ;; 08:4f7f $dc $03
+    SCRIPT_POINTER script_003e                         ;; 08:4f81 $dd $03
+    SCRIPT_POINTER script_003f                         ;; 08:4f83 $de $03
+    SCRIPT_POINTER script_0040                         ;; 08:4f85 $df $03
+    SCRIPT_POINTER script_0041                         ;; 08:4f87 $ea $03
+    SCRIPT_POINTER script_0042                         ;; 08:4f89 $eb $03
+    SCRIPT_POINTER script_0043                         ;; 08:4f8b $ec $03
+    SCRIPT_POINTER script_0044                         ;; 08:4f8d $f7 $03
+    SCRIPT_POINTER script_0045                         ;; 08:4f8f $f8 $03
+    SCRIPT_POINTER script_0046                         ;; 08:4f91 $f9 $03
+    SCRIPT_POINTER script_0047                         ;; 08:4f93 $02 $04
+    SCRIPT_POINTER script_0048                         ;; 08:4f95 $03 $04
+    SCRIPT_POINTER script_0049                         ;; 08:4f97 $04 $04
+    SCRIPT_POINTER script_004a                         ;; 08:4f99 $0f $04
+    SCRIPT_POINTER script_004b                         ;; 08:4f9b $10 $04
+    SCRIPT_POINTER script_004c                         ;; 08:4f9d $11 $04
+    SCRIPT_POINTER script_004d                         ;; 08:4f9f $1c $04
+    SCRIPT_POINTER script_004e                         ;; 08:4fa1 $1d $04
+    SCRIPT_POINTER script_004f                         ;; 08:4fa3 $1e $04
+    SCRIPT_POINTER script_0050                         ;; 08:4fa5 $27 $04
+    SCRIPT_POINTER script_0051                         ;; 08:4fa7 $28 $04
+    SCRIPT_POINTER script_0052                         ;; 08:4fa9 $29 $04
+    SCRIPT_POINTER script_0053                         ;; 08:4fab $32 $04
+    SCRIPT_POINTER script_0054                         ;; 08:4fad $33 $04
+    SCRIPT_POINTER script_0055                         ;; 08:4faf $34 $04
+    SCRIPT_POINTER script_0056                         ;; 08:4fb1 $3d $04
+    SCRIPT_POINTER script_0057                         ;; 08:4fb3 $3e $04
+    SCRIPT_POINTER script_0058                         ;; 08:4fb5 $3f $04
+    SCRIPT_POINTER script_0059                         ;; 08:4fb7 $4a $04
+    SCRIPT_POINTER script_005a                         ;; 08:4fb9 $4b $04
+    SCRIPT_POINTER script_005b                         ;; 08:4fbb $4c $04
+    SCRIPT_POINTER script_005c                         ;; 08:4fbd $57 $04
+    SCRIPT_POINTER script_005d                         ;; 08:4fbf $58 $04
+    SCRIPT_POINTER script_005e                         ;; 08:4fc1 $59 $04
+    SCRIPT_POINTER script_005f                         ;; 08:4fc3 $62 $04
+    SCRIPT_POINTER script_0060                         ;; 08:4fc5 $63 $04
+    SCRIPT_POINTER script_0061                         ;; 08:4fc7 $64 $04
+    SCRIPT_POINTER script_0062                         ;; 08:4fc9 $6f $04
+    SCRIPT_POINTER script_0063                         ;; 08:4fcb $70 $04
+    SCRIPT_POINTER script_0064                         ;; 08:4fcd $71 $04
+    SCRIPT_POINTER script_0065                         ;; 08:4fcf $80 $04
+    SCRIPT_POINTER script_0066                         ;; 08:4fd1 $81 $04
+    SCRIPT_POINTER script_0067                         ;; 08:4fd3 $82 $04
+    SCRIPT_POINTER script_0068                         ;; 08:4fd5 $8d $04
+    SCRIPT_POINTER script_0069                         ;; 08:4fd7 $8e $04
+    SCRIPT_POINTER script_006a                         ;; 08:4fd9 $8f $04
+    SCRIPT_POINTER script_006b                         ;; 08:4fdb $9a $04
+    SCRIPT_POINTER script_006c                         ;; 08:4fdd $9b $04
+    SCRIPT_POINTER script_006d                         ;; 08:4fdf $9c $04
+    SCRIPT_POINTER script_006e                         ;; 08:4fe1 $a5 $04
+    SCRIPT_POINTER script_006f                         ;; 08:4fe3 $a6 $04
+    SCRIPT_POINTER script_0070                         ;; 08:4fe5 $a7 $04
+    SCRIPT_POINTER script_0071                         ;; 08:4fe7 $b0 $04
+    SCRIPT_POINTER script_0072                         ;; 08:4fe9 $b1 $04
+    SCRIPT_POINTER script_0073                         ;; 08:4feb $b2 $04
+    SCRIPT_POINTER script_0074                         ;; 08:4fed $bd $04
+    SCRIPT_POINTER script_0075                         ;; 08:4fef $be $04
+    SCRIPT_POINTER script_0076                         ;; 08:4ff1 $bf $04
+    SCRIPT_POINTER script_0077                         ;; 08:4ff3 $ca $04
+    SCRIPT_POINTER script_0078                         ;; 08:4ff5 $cb $04
+    SCRIPT_POINTER script_0079                         ;; 08:4ff7 $cc $04
+    SCRIPT_POINTER script_007a                         ;; 08:4ff9 $d5 $04
+    SCRIPT_POINTER script_007b                         ;; 08:4ffb $d6 $04
+    SCRIPT_POINTER script_007c                         ;; 08:4ffd $d7 $04
+    SCRIPT_POINTER script_007d                         ;; 08:4fff $e0 $04
+    SCRIPT_POINTER script_007e                         ;; 08:5001 $e1 $04
+    SCRIPT_POINTER script_007f                         ;; 08:5003 $e2 $04
+    SCRIPT_POINTER script_0080                         ;; 08:5005 $ed $04
+    SCRIPT_POINTER script_0081                         ;; 08:5007 $ee $04
+    SCRIPT_POINTER script_0082                         ;; 08:5009 $ef $04
+    SCRIPT_POINTER script_0083                         ;; 08:500b $fa $04
+    SCRIPT_POINTER script_0084                         ;; 08:500d $fb $04
+    SCRIPT_POINTER script_0085                         ;; 08:500f $fc $04
+    SCRIPT_POINTER script_0086                         ;; 08:5011 $07 $05
+    SCRIPT_POINTER script_0087                         ;; 08:5013 $08 $05
+    SCRIPT_POINTER script_0088                         ;; 08:5015 $09 $05
+    SCRIPT_POINTER script_0089                         ;; 08:5017 $14 $05
+    SCRIPT_POINTER script_008a                         ;; 08:5019 $15 $05
+    SCRIPT_POINTER script_008b                         ;; 08:501b $16 $05
+    SCRIPT_POINTER script_008c                         ;; 08:501d $1f $05
+    SCRIPT_POINTER script_008d                         ;; 08:501f $20 $05
+    SCRIPT_POINTER script_008e                         ;; 08:5021 $21 $05
+    SCRIPT_POINTER script_008f                         ;; 08:5023 $2e $05
+    SCRIPT_POINTER script_0090                         ;; 08:5025 $2f $05
+    SCRIPT_POINTER script_0091                         ;; 08:5027 $30 $05
+    SCRIPT_POINTER script_0092                         ;; 08:5029 $39 $05
+    SCRIPT_POINTER script_0093                         ;; 08:502b $3a $05
+    SCRIPT_POINTER script_0094                         ;; 08:502d $3b $05
+    SCRIPT_POINTER script_0095                         ;; 08:502f $44 $05
+    SCRIPT_POINTER script_0096                         ;; 08:5031 $45 $05
+    SCRIPT_POINTER script_0097                         ;; 08:5033 $46 $05
+    SCRIPT_POINTER script_0098                         ;; 08:5035 $55 $05
+    SCRIPT_POINTER script_0099                         ;; 08:5037 $56 $05
+    SCRIPT_POINTER script_009a                         ;; 08:5039 $57 $05
+    SCRIPT_POINTER script_009b                         ;; 08:503b $62 $05
+    SCRIPT_POINTER script_009c                         ;; 08:503d $63 $05
+    SCRIPT_POINTER script_009d                         ;; 08:503f $64 $05
+    SCRIPT_POINTER script_009e                         ;; 08:5041 $77 $05
+    SCRIPT_POINTER script_009f                         ;; 08:5043 $78 $05
+    SCRIPT_POINTER script_00a0                         ;; 08:5045 $79 $05
+    SCRIPT_POINTER script_00a1                         ;; 08:5047 $82 $05
+    SCRIPT_POINTER script_00a2                         ;; 08:5049 $83 $05
+    SCRIPT_POINTER script_00a3                         ;; 08:504b $84 $05
+    SCRIPT_POINTER script_00a4                         ;; 08:504d $8f $05
+    SCRIPT_POINTER script_00a5                         ;; 08:504f $90 $05
+    SCRIPT_POINTER script_00a6                         ;; 08:5051 $91 $05
+    SCRIPT_POINTER script_00a7                         ;; 08:5053 $9a $05
+    SCRIPT_POINTER script_00a8                         ;; 08:5055 $9b $05
+    SCRIPT_POINTER script_00a9                         ;; 08:5057 $9c $05
+    SCRIPT_POINTER script_00aa                         ;; 08:5059 $ab $05
+    SCRIPT_POINTER script_00ab                         ;; 08:505b $ac $05
+    SCRIPT_POINTER script_00ac                         ;; 08:505d $ad $05
+    SCRIPT_POINTER script_00ad                         ;; 08:505f $b6 $05
+    SCRIPT_POINTER script_00ae                         ;; 08:5061 $b7 $05
+    SCRIPT_POINTER script_00af                         ;; 08:5063 $b8 $05
+    SCRIPT_POINTER script_00b0                         ;; 08:5065 $c2 $05
+    SCRIPT_POINTER script_00b1                         ;; 08:5067 $c3 $05
+    SCRIPT_POINTER script_00b2                         ;; 08:5069 $d0 $05
+    SCRIPT_POINTER script_00b3                         ;; 08:506b $d9 $05
+    SCRIPT_POINTER script_00b4                         ;; 08:506d $da $05
+    SCRIPT_POINTER script_00b5                         ;; 08:506f $db $05
+    SCRIPT_POINTER script_00b6                         ;; 08:5071 $e6 $05
+    SCRIPT_POINTER script_00b7                         ;; 08:5073 $e7 $05
+    SCRIPT_POINTER script_00b8                         ;; 08:5075 $e8 $05
+    SCRIPT_POINTER script_00b9                         ;; 08:5077 $f3 $05
+    SCRIPT_POINTER script_00ba                         ;; 08:5079 $f4 $05
+    SCRIPT_POINTER script_00bb                         ;; 08:507b $f5 $05
+    SCRIPT_POINTER script_00bc                         ;; 08:507d $fe $05
+    SCRIPT_POINTER script_00bd                         ;; 08:507f $ff $05
+    SCRIPT_POINTER script_00be                         ;; 08:5081 $00 $06
+    SCRIPT_POINTER script_00bf                         ;; 08:5083 $0b $06
+    SCRIPT_POINTER script_00c0                         ;; 08:5085 $0c $06
+    SCRIPT_POINTER script_00c1                         ;; 08:5087 $0d $06
+    SCRIPT_POINTER script_00c2                         ;; 08:5089 $16 $06
+    SCRIPT_POINTER script_00c3                         ;; 08:508b $17 $06
+    SCRIPT_POINTER script_00c4                         ;; 08:508d $18 $06
+    SCRIPT_POINTER script_00c5                         ;; 08:508f $2b $06
+    SCRIPT_POINTER script_00c6                         ;; 08:5091 $2c $06
+    SCRIPT_POINTER script_00c7                         ;; 08:5093 $2d $06
+    SCRIPT_POINTER script_00c8                         ;; 08:5095 $38 $06
+    SCRIPT_POINTER script_00c9                         ;; 08:5097 $39 $06
+    SCRIPT_POINTER script_00ca                         ;; 08:5099 $3a $06
+    SCRIPT_POINTER script_00cb                         ;; 08:509b $43 $06
+    SCRIPT_POINTER script_00cc                         ;; 08:509d $44 $06
+    SCRIPT_POINTER script_00cd                         ;; 08:509f $45 $06
+    SCRIPT_POINTER script_00ce                         ;; 08:50a1 $4e $06
+    SCRIPT_POINTER script_00cf                         ;; 08:50a3 $4f $06
+    SCRIPT_POINTER script_00d0                         ;; 08:50a5 $50 $06
+    SCRIPT_POINTER script_00d1                         ;; 08:50a7 $59 $06
+    SCRIPT_POINTER script_00d2                         ;; 08:50a9 $5a $06
+    SCRIPT_POINTER script_00d3                         ;; 08:50ab $5b $06
+    SCRIPT_POINTER script_00d4                         ;; 08:50ad $64 $06
+    SCRIPT_POINTER script_00d5                         ;; 08:50af $65 $06
+    SCRIPT_POINTER script_00d6                         ;; 08:50b1 $66 $06
+    SCRIPT_POINTER script_00d7                         ;; 08:50b3 $7d $06
+    SCRIPT_POINTER script_00d8                         ;; 08:50b5 $7e $06
+    SCRIPT_POINTER script_00d9                         ;; 08:50b7 $90 $06
+    SCRIPT_POINTER script_00da                         ;; 08:50b9 $98 $06
+    SCRIPT_POINTER script_00db                         ;; 08:50bb $99 $06
+    SCRIPT_POINTER script_00dc                         ;; 08:50bd $a6 $06
+    SCRIPT_POINTER script_00dd                         ;; 08:50bf $ae $06
+    SCRIPT_POINTER script_00de                         ;; 08:50c1 $af $06
+    SCRIPT_POINTER script_0000                         ;; 08:50c3 $00 $00
+    SCRIPT_POINTER script_00e0                         ;; 08:50c5 $bc $06
+    SCRIPT_POINTER script_00e1                         ;; 08:50c7 $c1 $06
+    SCRIPT_POINTER script_00e2                         ;; 08:50c9 $c2 $06
+    SCRIPT_POINTER script_00e3                         ;; 08:50cb $c3 $06
+    SCRIPT_POINTER script_00e4                         ;; 08:50cd $ca $06
+    SCRIPT_POINTER script_00e5                         ;; 08:50cf $cb $06
+    SCRIPT_POINTER script_00e6                         ;; 08:50d1 $cc $06
+    SCRIPT_POINTER script_00e7                         ;; 08:50d3 $1d $07
+    SCRIPT_POINTER script_00e8                         ;; 08:50d5 $1e $07
+    SCRIPT_POINTER script_00e9                         ;; 08:50d7 $3e $07
+    SCRIPT_POINTER script_00ea                         ;; 08:50d9 $4f $07
+    SCRIPT_POINTER script_00eb                         ;; 08:50db $50 $07
+    SCRIPT_POINTER script_00ec                         ;; 08:50dd $51 $07
+    SCRIPT_POINTER script_00ed                         ;; 08:50df $56 $07
+    SCRIPT_POINTER script_00ee                         ;; 08:50e1 $57 $07
+    SCRIPT_POINTER script_00ef                         ;; 08:50e3 $58 $07
+    SCRIPT_POINTER script_00f0                         ;; 08:50e5 $7e $07
+    SCRIPT_POINTER script_00f1                         ;; 08:50e7 $7f $07
+    SCRIPT_POINTER script_00f2                         ;; 08:50e9 $80 $07
+    SCRIPT_POINTER script_00f3                         ;; 08:50eb $88 $07
+    SCRIPT_POINTER script_00f4                         ;; 08:50ed $89 $07
+    SCRIPT_POINTER script_00f5                         ;; 08:50ef $96 $07
+    SCRIPT_POINTER script_00f6                         ;; 08:50f1 $c5 $07
+    SCRIPT_POINTER script_00f7                         ;; 08:50f3 $cc $07
+    SCRIPT_POINTER script_00f8                         ;; 08:50f5 $d5 $07
+    SCRIPT_POINTER script_00f9                         ;; 08:50f7 $da $07
+    SCRIPT_POINTER script_00fa                         ;; 08:50f9 $db $07
+    SCRIPT_POINTER script_00fb                         ;; 08:50fb $dc $07
+    SCRIPT_POINTER script_00fc                         ;; 08:50fd $e1 $07
+    SCRIPT_POINTER script_00fd                         ;; 08:50ff $e2 $07
+    SCRIPT_POINTER script_00fe                         ;; 08:5101 $e3 $07
+    SCRIPT_POINTER script_00ff                         ;; 08:5103 $ea $07
+    SCRIPT_POINTER script_0100                         ;; 08:5105 $eb $07
+    SCRIPT_POINTER script_0101                         ;; 08:5107 $ec $07
+    SCRIPT_POINTER script_0102                         ;; 08:5109 $f3 $07
+    SCRIPT_POINTER script_0103                         ;; 08:510b $f4 $07
+    SCRIPT_POINTER script_0104                         ;; 08:510d $00 $08
+    SCRIPT_POINTER script_0105                         ;; 08:510f $01 $08
+    SCRIPT_POINTER script_0106                         ;; 08:5111 $02 $08
+    SCRIPT_POINTER script_0107                         ;; 08:5113 $26 $08
+    SCRIPT_POINTER script_0108                         ;; 08:5115 $27 $08
+    SCRIPT_POINTER script_0109                         ;; 08:5117 $28 $08
+    SCRIPT_POINTER script_010a                         ;; 08:5119 $48 $08
+    SCRIPT_POINTER script_010b                         ;; 08:511b $49 $08
+    SCRIPT_POINTER script_010c                         ;; 08:511d $4a $08
+    SCRIPT_POINTER script_010d                         ;; 08:511f $54 $08
+    SCRIPT_POINTER script_010e                         ;; 08:5121 $55 $08
+    SCRIPT_POINTER script_010f                         ;; 08:5123 $56 $08
+    SCRIPT_POINTER script_0110                         ;; 08:5125 $22 $09
+    SCRIPT_POINTER script_0111                         ;; 08:5127 $23 $09
+    SCRIPT_POINTER script_0112                         ;; 08:5129 $24 $09
+    SCRIPT_POINTER script_0113                         ;; 08:512b $2b $09
+    SCRIPT_POINTER script_0114                         ;; 08:512d $2c $09
+    SCRIPT_POINTER script_0115                         ;; 08:512f $2d $09
+    SCRIPT_POINTER script_0116                         ;; 08:5131 $32 $09
+    SCRIPT_POINTER script_0117                         ;; 08:5133 $33 $09
+    SCRIPT_POINTER script_0118                         ;; 08:5135 $34 $09
+    SCRIPT_POINTER script_0119                         ;; 08:5137 $3b $09
+    SCRIPT_POINTER script_011a                         ;; 08:5139 $3c $09
+    SCRIPT_POINTER script_011b                         ;; 08:513b $3d $09
+    SCRIPT_POINTER script_011c                         ;; 08:513d $46 $09
+    SCRIPT_POINTER script_011d                         ;; 08:513f $47 $09
+    SCRIPT_POINTER script_011e                         ;; 08:5141 $48 $09
+    SCRIPT_POINTER script_011f                         ;; 08:5143 $8e $09
+    SCRIPT_POINTER script_0120                         ;; 08:5145 $8f $09
+    SCRIPT_POINTER script_0121                         ;; 08:5147 $66 $0a
+    SCRIPT_POINTER script_0122                         ;; 08:5149 $86 $0a
+    SCRIPT_POINTER script_0123                         ;; 08:514b $87 $0a
+    SCRIPT_POINTER script_0124                         ;; 08:514d $88 $0a
+    SCRIPT_POINTER script_0125                         ;; 08:514f $91 $0a
+    SCRIPT_POINTER script_0126                         ;; 08:5151 $92 $0a
+    SCRIPT_POINTER script_0127                         ;; 08:5153 $93 $0a
+    SCRIPT_POINTER script_0128                         ;; 08:5155 $9f $0a
+    SCRIPT_POINTER script_0129                         ;; 08:5157 $a0 $0a
+    SCRIPT_POINTER script_012a                         ;; 08:5159 $a1 $0a
+    SCRIPT_POINTER script_012b                         ;; 08:515b $a8 $0a
+    SCRIPT_POINTER script_012c                         ;; 08:515d $a9 $0a
+    SCRIPT_POINTER script_012d                         ;; 08:515f $aa $0a
+    SCRIPT_POINTER script_012e                         ;; 08:5161 $af $0a
+    SCRIPT_POINTER script_012f                         ;; 08:5163 $b0 $0a
+    SCRIPT_POINTER script_0130                         ;; 08:5165 $b1 $0a
+    SCRIPT_POINTER script_0131                         ;; 08:5167 $ba $0a
+    SCRIPT_POINTER script_0132                         ;; 08:5169 $bb $0a
+    SCRIPT_POINTER script_0133                         ;; 08:516b $bc $0a
+    SCRIPT_POINTER script_0134                         ;; 08:516d $c1 $0a
+    SCRIPT_POINTER script_0135                         ;; 08:516f $c2 $0a
+    SCRIPT_POINTER script_0136                         ;; 08:5171 $c3 $0a
+    SCRIPT_POINTER script_0137                         ;; 08:5173 $c8 $0a
+    SCRIPT_POINTER script_0138                         ;; 08:5175 $c9 $0a
+    SCRIPT_POINTER script_0139                         ;; 08:5177 $ca $0a
+    SCRIPT_POINTER script_013a                         ;; 08:5179 $d1 $0a
+    SCRIPT_POINTER script_013b                         ;; 08:517b $d2 $0a
+    SCRIPT_POINTER script_013c                         ;; 08:517d $d3 $0a
+    SCRIPT_POINTER script_013d                         ;; 08:517f $d8 $0a
+    SCRIPT_POINTER script_013e                         ;; 08:5181 $d9 $0a
+    SCRIPT_POINTER script_013f                         ;; 08:5183 $da $0a
+    SCRIPT_POINTER script_0140                         ;; 08:5185 $e8 $0a
+    SCRIPT_POINTER script_0141                         ;; 08:5187 $15 $0b
+    SCRIPT_POINTER script_0142                         ;; 08:5189 $16 $0b
+    SCRIPT_POINTER script_0143                         ;; 08:518b $1d $0b
+    SCRIPT_POINTER script_0144                         ;; 08:518d $1e $0b
+    SCRIPT_POINTER script_0145                         ;; 08:518f $1f $0b
+    SCRIPT_POINTER script_0146                         ;; 08:5191 $26 $0b
+    SCRIPT_POINTER script_0147                         ;; 08:5193 $27 $0b
+    SCRIPT_POINTER script_0148                         ;; 08:5195 $28 $0b
+    SCRIPT_POINTER script_0149                         ;; 08:5197 $2d $0b
+    SCRIPT_POINTER script_014a                         ;; 08:5199 $2e $0b
+    SCRIPT_POINTER script_014b                         ;; 08:519b $2f $0b
+    SCRIPT_POINTER script_014c                         ;; 08:519d $34 $0b
+    SCRIPT_POINTER script_014d                         ;; 08:519f $35 $0b
+    SCRIPT_POINTER script_014e                         ;; 08:51a1 $36 $0b
+    SCRIPT_POINTER script_014f                         ;; 08:51a3 $3b $0b
+    SCRIPT_POINTER script_0150                         ;; 08:51a5 $3c $0b
+    SCRIPT_POINTER script_0151                         ;; 08:51a7 $3d $0b
+    SCRIPT_POINTER script_0152                         ;; 08:51a9 $42 $0b
+    SCRIPT_POINTER script_0153                         ;; 08:51ab $43 $0b
+    SCRIPT_POINTER script_0154                         ;; 08:51ad $44 $0b
+    SCRIPT_POINTER script_0155                         ;; 08:51af $90 $0b
+    SCRIPT_POINTER script_0156                         ;; 08:51b1 $91 $0b
+    SCRIPT_POINTER script_0157                         ;; 08:51b3 $92 $0b
+    SCRIPT_POINTER script_0158                         ;; 08:51b5 $9c $0b
+    SCRIPT_POINTER script_0159                         ;; 08:51b7 $9d $0b
+    SCRIPT_POINTER script_015a                         ;; 08:51b9 $9e $0b
+    SCRIPT_POINTER script_015b                         ;; 08:51bb $a5 $0b
+    SCRIPT_POINTER script_015c                         ;; 08:51bd $a6 $0b
+    SCRIPT_POINTER script_015d                         ;; 08:51bf $a7 $0b
+    SCRIPT_POINTER script_015e                         ;; 08:51c1 $ae $0b
+    SCRIPT_POINTER script_015f                         ;; 08:51c3 $af $0b
+    SCRIPT_POINTER script_0160                         ;; 08:51c5 $b0 $0b
+    SCRIPT_POINTER script_0161                         ;; 08:51c7 $b5 $0b
+    SCRIPT_POINTER script_0162                         ;; 08:51c9 $b6 $0b
+    SCRIPT_POINTER script_0163                         ;; 08:51cb $b7 $0b
+    SCRIPT_POINTER script_0164                         ;; 08:51cd $bc $0b
+    SCRIPT_POINTER script_0165                         ;; 08:51cf $bd $0b
+    SCRIPT_POINTER script_0166                         ;; 08:51d1 $be $0b
+    SCRIPT_POINTER script_0167                         ;; 08:51d3 $c3 $0b
+    SCRIPT_POINTER script_0168                         ;; 08:51d5 $c4 $0b
+    SCRIPT_POINTER script_0169                         ;; 08:51d7 $c5 $0b
+    SCRIPT_POINTER script_016a                         ;; 08:51d9 $ca $0b
+    SCRIPT_POINTER script_016b                         ;; 08:51db $cb $0b
+    SCRIPT_POINTER script_016c                         ;; 08:51dd $cc $0b
+    SCRIPT_POINTER script_016d                         ;; 08:51df $d1 $0b
+    SCRIPT_POINTER script_016e                         ;; 08:51e1 $d2 $0b
+    SCRIPT_POINTER script_016f                         ;; 08:51e3 $d3 $0b
+    SCRIPT_POINTER script_0170                         ;; 08:51e5 $d8 $0b
+    SCRIPT_POINTER script_0171                         ;; 08:51e7 $d9 $0b
+    SCRIPT_POINTER script_0172                         ;; 08:51e9 $da $0b
+    SCRIPT_POINTER script_0173                         ;; 08:51eb $df $0b
+    SCRIPT_POINTER script_0174                         ;; 08:51ed $e0 $0b
+    SCRIPT_POINTER script_0175                         ;; 08:51ef $e1 $0b
+    SCRIPT_POINTER script_0176                         ;; 08:51f1 $e6 $0b
+    SCRIPT_POINTER script_0177                         ;; 08:51f3 $e7 $0b
+    SCRIPT_POINTER script_0178                         ;; 08:51f5 $e8 $0b
+    SCRIPT_POINTER script_0179                         ;; 08:51f7 $f1 $0b
+    SCRIPT_POINTER script_017a                         ;; 08:51f9 $f2 $0b
+    SCRIPT_POINTER script_017b                         ;; 08:51fb $f3 $0b
+    SCRIPT_POINTER script_017c                         ;; 08:51fd $00 $0c
+    SCRIPT_POINTER script_017d                         ;; 08:51ff $01 $0c
+    SCRIPT_POINTER script_017e                         ;; 08:5201 $02 $0c
+    SCRIPT_POINTER script_017f                         ;; 08:5203 $07 $0c
+    SCRIPT_POINTER script_0180                         ;; 08:5205 $08 $0c
+    SCRIPT_POINTER script_0181                         ;; 08:5207 $09 $0c
+    SCRIPT_POINTER script_0182                         ;; 08:5209 $16 $0c
+    SCRIPT_POINTER script_0183                         ;; 08:520b $17 $0c
+    SCRIPT_POINTER script_0184                         ;; 08:520d $18 $0c
+    SCRIPT_POINTER script_0185                         ;; 08:520f $1d $0c
+    SCRIPT_POINTER script_0186                         ;; 08:5211 $1e $0c
+    SCRIPT_POINTER script_0187                         ;; 08:5213 $1f $0c
+    SCRIPT_POINTER script_0188                         ;; 08:5215 $26 $0c
+    SCRIPT_POINTER script_0189                         ;; 08:5217 $27 $0c
+    SCRIPT_POINTER script_018a                         ;; 08:5219 $28 $0c
+    SCRIPT_POINTER script_018b                         ;; 08:521b $31 $0c
+    SCRIPT_POINTER script_018c                         ;; 08:521d $32 $0c
+    SCRIPT_POINTER script_018d                         ;; 08:521f $33 $0c
+    SCRIPT_POINTER script_018e                         ;; 08:5221 $3c $0c
+    SCRIPT_POINTER script_018f                         ;; 08:5223 $3d $0c
+    SCRIPT_POINTER script_0190                         ;; 08:5225 $3e $0c
+    SCRIPT_POINTER script_0191                         ;; 08:5227 $48 $0c
+    SCRIPT_POINTER script_0192                         ;; 08:5229 $49 $0c
+    SCRIPT_POINTER script_0193                         ;; 08:522b $4a $0c
+    SCRIPT_POINTER script_0194                         ;; 08:522d $59 $0c
+    SCRIPT_POINTER script_0195                         ;; 08:522f $60 $0c
+    SCRIPT_POINTER script_0196                         ;; 08:5231 $61 $0c
+    SCRIPT_POINTER script_0197                         ;; 08:5233 $6b $0c
+    SCRIPT_POINTER script_0198                         ;; 08:5235 $6c $0c
+    SCRIPT_POINTER script_0199                         ;; 08:5237 $6d $0c
+    SCRIPT_POINTER script_019a                         ;; 08:5239 $74 $0c
+    SCRIPT_POINTER script_019b                         ;; 08:523b $75 $0c
+    SCRIPT_POINTER script_019c                         ;; 08:523d $76 $0c
+    SCRIPT_POINTER script_019d                         ;; 08:523f $77 $0c
+    SCRIPT_POINTER script_019e                         ;; 08:5241 $3d $0d
+    SCRIPT_POINTER script_019f                         ;; 08:5243 $3e $0d
+    SCRIPT_POINTER script_01a0                         ;; 08:5245 $49 $0d
+    SCRIPT_POINTER script_01a1                         ;; 08:5247 $57 $0d
+    SCRIPT_POINTER script_01a2                         ;; 08:5249 $5a $0d
+    SCRIPT_POINTER script_01a3                         ;; 08:524b $83 $0d
+    SCRIPT_POINTER script_01a4                         ;; 08:524d $d8 $0d
+    SCRIPT_POINTER script_01a5                         ;; 08:524f $db $0d
+    SCRIPT_POINTER script_01a6                         ;; 08:5251 $5a $0e
+    SCRIPT_POINTER script_01a7                         ;; 08:5253 $9e $0e
+    SCRIPT_POINTER script_01a8                         ;; 08:5255 $a1 $0e
+    SCRIPT_POINTER script_01a9                         ;; 08:5257 $41 $0f
+    SCRIPT_POINTER script_01aa                         ;; 08:5259 $64 $0f
+    SCRIPT_POINTER script_01ab                         ;; 08:525b $67 $0f
+    SCRIPT_POINTER script_01ac                         ;; 08:525d $7f $0f
+    SCRIPT_POINTER script_01ad                         ;; 08:525f $cd $0f
+    SCRIPT_POINTER script_01ae                         ;; 08:5261 $d0 $0f
+    SCRIPT_POINTER script_01af                         ;; 08:5263 $63 $10
+    SCRIPT_POINTER script_01b0                         ;; 08:5265 $a5 $10
+    SCRIPT_POINTER script_01b1                         ;; 08:5267 $aa $10
+    SCRIPT_POINTER script_01b2                         ;; 08:5269 $ff $11
+    SCRIPT_POINTER script_01b3                         ;; 08:526b $1d $12
+    SCRIPT_POINTER script_01b4                         ;; 08:526d $20 $12
+    SCRIPT_POINTER script_01b5                         ;; 08:526f $3b $12
+    SCRIPT_POINTER script_01b6                         ;; 08:5271 $51 $12
+    SCRIPT_POINTER script_01b7                         ;; 08:5273 $58 $12
+    SCRIPT_POINTER script_01b8                         ;; 08:5275 $a6 $12
+    SCRIPT_POINTER script_01b9                         ;; 08:5277 $ba $12
+    SCRIPT_POINTER script_01ba                         ;; 08:5279 $bd $12
+    SCRIPT_POINTER script_01bb                         ;; 08:527b $04 $13
+    SCRIPT_POINTER script_01bc                         ;; 08:527d $c4 $13
+    SCRIPT_POINTER script_01bd                         ;; 08:527f $c5 $13
+    SCRIPT_POINTER script_01be                         ;; 08:5281 $27 $14
+    SCRIPT_POINTER script_01bf                         ;; 08:5283 $45 $14
+    SCRIPT_POINTER script_01c0                         ;; 08:5285 $48 $14
+    SCRIPT_POINTER script_01c1                         ;; 08:5287 $5d $14
+    SCRIPT_POINTER script_01c2                         ;; 08:5289 $7b $14
+    SCRIPT_POINTER script_01c3                         ;; 08:528b $7e $14
+    SCRIPT_POINTER script_01c4                         ;; 08:528d $95 $14
+    SCRIPT_POINTER script_01c5                         ;; 08:528f $ac $14
+    SCRIPT_POINTER script_01c6                         ;; 08:5291 $af $14
+    SCRIPT_POINTER script_01c7                         ;; 08:5293 $cf $14
+    SCRIPT_POINTER script_01c8                         ;; 08:5295 $e6 $14
+    SCRIPT_POINTER script_01c9                         ;; 08:5297 $e9 $14
+    SCRIPT_POINTER script_01ca                         ;; 08:5299 $0b $15
+    SCRIPT_POINTER script_01cb                         ;; 08:529b $1c $15
+    SCRIPT_POINTER script_01cc                         ;; 08:529d $1f $15
+    SCRIPT_POINTER script_01cd                         ;; 08:529f $68 $15
+    SCRIPT_POINTER script_01ce                         ;; 08:52a1 $6d $15
+    SCRIPT_POINTER script_01cf                         ;; 08:52a3 $6e $15
+    SCRIPT_POINTER script_0000                         ;; 08:52a5 $00 $00
+    SCRIPT_POINTER script_0000                         ;; 08:52a7 $00 $00
+    SCRIPT_POINTER script_0000                         ;; 08:52a9 $00 $00
+    SCRIPT_POINTER script_0000                         ;; 08:52ab $00 $00
+    SCRIPT_POINTER script_0000                         ;; 08:52ad $00 $00
+    SCRIPT_POINTER script_0000                         ;; 08:52af $00 $00
+    SCRIPT_POINTER script_0000                         ;; 08:52b1 $00 $00
+    SCRIPT_POINTER script_0000                         ;; 08:52b3 $00 $00
+    SCRIPT_POINTER script_0000                         ;; 08:52b5 $00 $00
+    SCRIPT_POINTER script_0000                         ;; 08:52b7 $00 $00
+    SCRIPT_POINTER script_0000                         ;; 08:52b9 $00 $00
+    SCRIPT_POINTER script_0000                         ;; 08:52bb $00 $00
+    SCRIPT_POINTER script_0000                         ;; 08:52bd $00 $00
+    SCRIPT_POINTER script_0000                         ;; 08:52bf $00 $00
+    SCRIPT_POINTER script_0000                         ;; 08:52c1 $00 $00
+    SCRIPT_POINTER script_0000                         ;; 08:52c3 $00 $00
+    SCRIPT_POINTER script_01e0                         ;; 08:52c5 $6f $15
+    SCRIPT_POINTER script_01e1                         ;; 08:52c7 $3a $16
+    SCRIPT_POINTER script_01e2                         ;; 08:52c9 $7f $16
+    SCRIPT_POINTER script_01e3                         ;; 08:52cb $bc $16
+    SCRIPT_POINTER script_01e4                         ;; 08:52cd $e8 $16
+    SCRIPT_POINTER script_01e5                         ;; 08:52cf $70 $17
+    SCRIPT_POINTER script_01e6                         ;; 08:52d1 $7b $17
+    SCRIPT_POINTER script_01e7                         ;; 08:52d3 $98 $17
+    SCRIPT_POINTER script_01e8                         ;; 08:52d5 $b7 $17
+    SCRIPT_POINTER script_01e9                         ;; 08:52d7 $d4 $17
+    SCRIPT_POINTER script_01ea                         ;; 08:52d9 $2d $18
+    SCRIPT_POINTER script_01eb                         ;; 08:52db $43 $18
+    SCRIPT_POINTER script_01ec                         ;; 08:52dd $68 $18
+    SCRIPT_POINTER script_01ed                         ;; 08:52df $c9 $18
+    SCRIPT_POINTER script_01ee                         ;; 08:52e1 $eb $18
+    SCRIPT_POINTER script_01ef                         ;; 08:52e3 $2a $19
+    SCRIPT_POINTER script_01f0                         ;; 08:52e5 $f5 $19
+    SCRIPT_POINTER script_01f1                         ;; 08:52e7 $6e $1b
+    SCRIPT_POINTER script_01f2                         ;; 08:52e9 $75 $1b
+    SCRIPT_POINTER script_01f3                         ;; 08:52eb $91 $1b
+    SCRIPT_POINTER script_01f4                         ;; 08:52ed $cd $1b
+    SCRIPT_POINTER script_01f5                         ;; 08:52ef $4b $1c
+    SCRIPT_POINTER script_01f6                         ;; 08:52f1 $80 $1c
+    SCRIPT_POINTER script_01f7                         ;; 08:52f3 $dc $1c
+    SCRIPT_POINTER script_01f8                         ;; 08:52f5 $dd $1c
+    SCRIPT_POINTER script_01f9                         ;; 08:52f7 $20 $1d
+    SCRIPT_POINTER script_01fa                         ;; 08:52f9 $3d $1d
+    SCRIPT_POINTER script_01fb                         ;; 08:52fb $4a $1d
+    SCRIPT_POINTER script_01fc                         ;; 08:52fd $57 $1d
+    SCRIPT_POINTER script_01fd                         ;; 08:52ff $64 $1d
+    SCRIPT_POINTER script_01fe                         ;; 08:5301 $71 $1d
+    SCRIPT_POINTER script_01ff                         ;; 08:5303 $05 $1e
+    SCRIPT_POINTER script_0200                         ;; 08:5305 $36 $1e
+    SCRIPT_POINTER script_0201                         ;; 08:5307 $4f $1e
+    SCRIPT_POINTER script_0202                         ;; 08:5309 $50 $1e
+    SCRIPT_POINTER script_0203                         ;; 08:530b $6c $1e
+    SCRIPT_POINTER script_0204                         ;; 08:530d $b2 $1e
+    SCRIPT_POINTER script_0205                         ;; 08:530f $cc $1e
+    SCRIPT_POINTER script_0206                         ;; 08:5311 $12 $1f
+    SCRIPT_POINTER script_0207                         ;; 08:5313 $2c $1f
+    SCRIPT_POINTER script_0208                         ;; 08:5315 $df $1f
+    SCRIPT_POINTER script_0209                         ;; 08:5317 $ff $20
+    SCRIPT_POINTER script_020a                         ;; 08:5319 $22 $21
+    SCRIPT_POINTER script_020b                         ;; 08:531b $23 $21
+    SCRIPT_POINTER script_020c                         ;; 08:531d $34 $21
+    SCRIPT_POINTER script_020d                         ;; 08:531f $35 $21
+    SCRIPT_POINTER script_020e                         ;; 08:5321 $7c $21
+    SCRIPT_POINTER script_020f                         ;; 08:5323 $9f $21
+    SCRIPT_POINTER script_0210                         ;; 08:5325 $3e $22
+    SCRIPT_POINTER script_0211                         ;; 08:5327 $7e $23
+    SCRIPT_POINTER script_0212                         ;; 08:5329 $bd $23
+    SCRIPT_POINTER script_0213                         ;; 08:532b $f8 $23
+    SCRIPT_POINTER script_0214                         ;; 08:532d $39 $24
+    SCRIPT_POINTER script_0215                         ;; 08:532f $7c $24
+    SCRIPT_POINTER script_0216                         ;; 08:5331 $a2 $24
+    SCRIPT_POINTER script_0217                         ;; 08:5333 $c9 $24
+    SCRIPT_POINTER script_0218                         ;; 08:5335 $73 $25
+    SCRIPT_POINTER script_0219                         ;; 08:5337 $ed $25
+    SCRIPT_POINTER script_021a                         ;; 08:5339 $45 $26
+    SCRIPT_POINTER script_021b                         ;; 08:533b $76 $26
+    SCRIPT_POINTER script_021c                         ;; 08:533d $d2 $26
+    SCRIPT_POINTER script_021d                         ;; 08:533f $f6 $26
+    SCRIPT_POINTER script_021e                         ;; 08:5341 $1a $27
+    SCRIPT_POINTER script_021f                         ;; 08:5343 $66 $27
+    SCRIPT_POINTER script_0220                         ;; 08:5345 $86 $27
+    SCRIPT_POINTER script_0221                         ;; 08:5347 $ec $27
+    SCRIPT_POINTER script_0222                         ;; 08:5349 $5d $28
+    SCRIPT_POINTER script_0223                         ;; 08:534b $6e $28
+    SCRIPT_POINTER script_0224                         ;; 08:534d $73 $28
+    SCRIPT_POINTER script_0225                         ;; 08:534f $74 $28
+    SCRIPT_POINTER script_0226                         ;; 08:5351 $75 $28
+    SCRIPT_POINTER script_0227                         ;; 08:5353 $9c $28
+    SCRIPT_POINTER script_0228                         ;; 08:5355 $ff $29
+    SCRIPT_POINTER script_0229                         ;; 08:5357 $48 $2a
+    SCRIPT_POINTER script_022a                         ;; 08:5359 $bb $2a
+    SCRIPT_POINTER script_022b                         ;; 08:535b $14 $2c
+    SCRIPT_POINTER script_022c                         ;; 08:535d $a5 $2c
+    SCRIPT_POINTER script_022d                         ;; 08:535f $e6 $2c
+    SCRIPT_POINTER script_022e                         ;; 08:5361 $01 $2d
+    SCRIPT_POINTER script_022f                         ;; 08:5363 $25 $2d
+    SCRIPT_POINTER script_0230                         ;; 08:5365 $1d $2e
+    SCRIPT_POINTER script_0231                         ;; 08:5367 $6f $2e
+    SCRIPT_POINTER script_0232                         ;; 08:5369 $9a $2e
+    SCRIPT_POINTER script_0233                         ;; 08:536b $ec $2f
+    SCRIPT_POINTER script_0234                         ;; 08:536d $5d $30
+    SCRIPT_POINTER script_0235                         ;; 08:536f $86 $30
+    SCRIPT_POINTER script_0236                         ;; 08:5371 $d0 $30
+    SCRIPT_POINTER script_0237                         ;; 08:5373 $1c $31
+    SCRIPT_POINTER script_0238                         ;; 08:5375 $4e $31
+    SCRIPT_POINTER script_0239                         ;; 08:5377 $4f $31
+    SCRIPT_POINTER script_023a                         ;; 08:5379 $50 $31
+    SCRIPT_POINTER script_023b                         ;; 08:537b $51 $31
+    SCRIPT_POINTER script_023c                         ;; 08:537d $52 $31
+    SCRIPT_POINTER script_023d                         ;; 08:537f $53 $31
+    SCRIPT_POINTER script_023e                         ;; 08:5381 $54 $31
+    SCRIPT_POINTER script_023f                         ;; 08:5383 $84 $31
+    SCRIPT_POINTER script_0240                         ;; 08:5385 $b2 $31
+    SCRIPT_POINTER script_0241                         ;; 08:5387 $11 $32
+    SCRIPT_POINTER script_0242                         ;; 08:5389 $42 $32
+    SCRIPT_POINTER script_0243                         ;; 08:538b $bb $32
+    SCRIPT_POINTER script_0244                         ;; 08:538d $2f $33
+    SCRIPT_POINTER script_0245                         ;; 08:538f $5c $33
+    SCRIPT_POINTER script_0246                         ;; 08:5391 $d7 $33
+    SCRIPT_POINTER script_0247                         ;; 08:5393 $de $33
+    SCRIPT_POINTER script_0248                         ;; 08:5395 $e7 $33
+    SCRIPT_POINTER script_0249                         ;; 08:5397 $f4 $33
+    SCRIPT_POINTER script_024a                         ;; 08:5399 $0d $36
+    SCRIPT_POINTER script_024b                         ;; 08:539b $0e $36
+    SCRIPT_POINTER script_024c                         ;; 08:539d $0f $36
+    SCRIPT_POINTER script_024d                         ;; 08:539f $10 $36
+    SCRIPT_POINTER script_024e                         ;; 08:53a1 $11 $36
+    SCRIPT_POINTER script_024f                         ;; 08:53a3 $12 $36
+    SCRIPT_POINTER script_0250                         ;; 08:53a5 $1a $36
+    SCRIPT_POINTER script_0251                         ;; 08:53a7 $d5 $36
+    SCRIPT_POINTER script_0252                         ;; 08:53a9 $e2 $36
+    SCRIPT_POINTER script_0253                         ;; 08:53ab $f5 $36
+    SCRIPT_POINTER script_0254                         ;; 08:53ad $07 $37
+    SCRIPT_POINTER script_0255                         ;; 08:53af $08 $37
+    SCRIPT_POINTER script_0256                         ;; 08:53b1 $09 $37
+    SCRIPT_POINTER script_0257                         ;; 08:53b3 $21 $37
+    SCRIPT_POINTER script_0258                         ;; 08:53b5 $40 $37
+    SCRIPT_POINTER script_0259                         ;; 08:53b7 $4f $37
+    SCRIPT_POINTER script_025a                         ;; 08:53b9 $5f $37
+    SCRIPT_POINTER script_025b                         ;; 08:53bb $6e $37
+    SCRIPT_POINTER script_025c                         ;; 08:53bd $6f $37
+    SCRIPT_POINTER script_025d                         ;; 08:53bf $70 $37
+    SCRIPT_POINTER script_025e                         ;; 08:53c1 $8d $37
+    SCRIPT_POINTER script_025f                         ;; 08:53c3 $dd $37
+    SCRIPT_POINTER script_0260                         ;; 08:53c5 $25 $38
+    SCRIPT_POINTER script_0261                         ;; 08:53c7 $aa $38
+    SCRIPT_POINTER script_0262                         ;; 08:53c9 $f7 $38
+    SCRIPT_POINTER script_0263                         ;; 08:53cb $f8 $38
+    SCRIPT_POINTER script_0264                         ;; 08:53cd $f9 $38
+    SCRIPT_POINTER script_0265                         ;; 08:53cf $11 $39
+    SCRIPT_POINTER script_0266                         ;; 08:53d1 $42 $39
+    SCRIPT_POINTER script_0267                         ;; 08:53d3 $60 $39
+    SCRIPT_POINTER script_0268                         ;; 08:53d5 $88 $39
+    SCRIPT_POINTER script_0269                         ;; 08:53d7 $cc $39
+    SCRIPT_POINTER script_026a                         ;; 08:53d9 $12 $3a
+    SCRIPT_POINTER script_026b                         ;; 08:53db $53 $3a
+    SCRIPT_POINTER script_026c                         ;; 08:53dd $70 $3a
+    SCRIPT_POINTER script_026d                         ;; 08:53df $17 $3b
+    SCRIPT_POINTER script_0000                         ;; 08:53e1 $00 $00
+    SCRIPT_POINTER script_0000                         ;; 08:53e3 $00 $00
+    SCRIPT_POINTER script_0270                         ;; 08:53e5 $93 $3b
+    SCRIPT_POINTER script_0271                         ;; 08:53e7 $b9 $3b
+    SCRIPT_POINTER script_0272                         ;; 08:53e9 $d1 $3b
+    SCRIPT_POINTER script_0273                         ;; 08:53eb $f1 $3b
+    SCRIPT_POINTER script_0274                         ;; 08:53ed $04 $3c
+    SCRIPT_POINTER script_0275                         ;; 08:53ef $17 $3c
+    SCRIPT_POINTER script_0276                         ;; 08:53f1 $45 $3c
+    SCRIPT_POINTER script_0277                         ;; 08:53f3 $5d $3c
+    SCRIPT_POINTER script_0278                         ;; 08:53f5 $73 $3c
+    SCRIPT_POINTER script_0279                         ;; 08:53f7 $89 $3c
+    SCRIPT_POINTER script_027a                         ;; 08:53f9 $c7 $3c
+    SCRIPT_POINTER script_027b                         ;; 08:53fb $48 $3d
+    SCRIPT_POINTER script_027c                         ;; 08:53fd $55 $3d
+    SCRIPT_POINTER script_027d                         ;; 08:53ff $66 $3d
+    SCRIPT_POINTER script_027e                         ;; 08:5401 $71 $3d
+    SCRIPT_POINTER script_027f                         ;; 08:5403 $87 $3d
+    SCRIPT_POINTER script_0280                         ;; 08:5405 $9d $3d
+    SCRIPT_POINTER script_0281                         ;; 08:5407 $bd $3d
+    SCRIPT_POINTER script_0282                         ;; 08:5409 $15 $3e
+    SCRIPT_POINTER script_0283                         ;; 08:540b $b2 $3e
+    SCRIPT_POINTER script_0284                         ;; 08:540d $b3 $3e
+    SCRIPT_POINTER script_0285                         ;; 08:540f $c9 $3e
+    SCRIPT_POINTER script_0286                         ;; 08:5411 $df $3e
+    SCRIPT_POINTER script_0287                         ;; 08:5413 $f4 $3e
+    SCRIPT_POINTER script_0288                         ;; 08:5415 $00 $3f
+    SCRIPT_POINTER script_0289                         ;; 08:5417 $1e $3f
+    SCRIPT_POINTER script_028a                         ;; 08:5419 $2b $3f
+    SCRIPT_POINTER script_028b                         ;; 08:541b $4b $3f
+    SCRIPT_POINTER script_028c                         ;; 08:541d $63 $3f
+    SCRIPT_POINTER script_028d                         ;; 08:541f $72 $3f
+    SCRIPT_POINTER script_028e                         ;; 08:5421 $7f $3f
+    SCRIPT_POINTER script_028f                         ;; 08:5423 $80 $3f
+    SCRIPT_POINTER script_0290                         ;; 08:5425 $81 $3f
+    SCRIPT_POINTER script_0291                         ;; 08:5427 $8f $3f
+    SCRIPT_POINTER script_0292                         ;; 08:5429 $9f $3f
+    SCRIPT_POINTER script_0293                         ;; 08:542b $b2 $3f
+    SCRIPT_POINTER script_0294                         ;; 08:542d $00 $40
+    SCRIPT_POINTER script_0295                         ;; 08:542f $38 $40
+    SCRIPT_POINTER script_0296                         ;; 08:5431 $50 $40
+    SCRIPT_POINTER script_0297                         ;; 08:5433 $51 $40
+    SCRIPT_POINTER script_0298                         ;; 08:5435 $5f $40
+    SCRIPT_POINTER script_0299                         ;; 08:5437 $6d $40
+    SCRIPT_POINTER script_029a                         ;; 08:5439 $7b $40
+    SCRIPT_POINTER script_029b                         ;; 08:543b $b7 $40
+    SCRIPT_POINTER script_029c                         ;; 08:543d $5c $41
+    SCRIPT_POINTER script_029d                         ;; 08:543f $67 $41
+    SCRIPT_POINTER script_029e                         ;; 08:5441 $75 $41
+    SCRIPT_POINTER script_029f                         ;; 08:5443 $83 $41
+    SCRIPT_POINTER script_02a0                         ;; 08:5445 $bb $41
+    SCRIPT_POINTER script_02a1                         ;; 08:5447 $d0 $41
+    SCRIPT_POINTER script_02a2                         ;; 08:5449 $de $41
+    SCRIPT_POINTER script_02a3                         ;; 08:544b $e8 $41
+    SCRIPT_POINTER script_02a4                         ;; 08:544d $f2 $41
+    SCRIPT_POINTER script_02a5                         ;; 08:544f $00 $42
+    SCRIPT_POINTER script_02a6                         ;; 08:5451 $0c $42
+    SCRIPT_POINTER script_02a7                         ;; 08:5453 $19 $42
+    SCRIPT_POINTER script_02a8                         ;; 08:5455 $26 $42
+    SCRIPT_POINTER script_02a9                         ;; 08:5457 $33 $42
+    SCRIPT_POINTER script_02aa                         ;; 08:5459 $40 $42
+    SCRIPT_POINTER script_02ab                         ;; 08:545b $4d $42
+    SCRIPT_POINTER script_02ac                         ;; 08:545d $4e $42
+    SCRIPT_POINTER script_02ad                         ;; 08:545f $5b $42
+    SCRIPT_POINTER script_02ae                         ;; 08:5461 $68 $42
+    SCRIPT_POINTER script_02af                         ;; 08:5463 $75 $42
+    SCRIPT_POINTER script_02b0                         ;; 08:5465 $82 $42
+    SCRIPT_POINTER script_02b1                         ;; 08:5467 $8f $42
+    SCRIPT_POINTER script_02b2                         ;; 08:5469 $9c $42
+    SCRIPT_POINTER script_02b3                         ;; 08:546b $a9 $42
+    SCRIPT_POINTER script_02b4                         ;; 08:546d $b5 $42
+    SCRIPT_POINTER script_02b5                         ;; 08:546f $c2 $42
+    SCRIPT_POINTER script_02b6                         ;; 08:5471 $cf $42
+    SCRIPT_POINTER script_02b7                         ;; 08:5473 $dc $42
+    SCRIPT_POINTER script_02b8                         ;; 08:5475 $e9 $42
+    SCRIPT_POINTER script_02b9                         ;; 08:5477 $f6 $42
+    SCRIPT_POINTER script_02ba                         ;; 08:5479 $03 $43
+    SCRIPT_POINTER script_02bb                         ;; 08:547b $10 $43
+    SCRIPT_POINTER script_02bc                         ;; 08:547d $1d $43
+    SCRIPT_POINTER script_02bd                         ;; 08:547f $2a $43
+    SCRIPT_POINTER script_02be                         ;; 08:5481 $37 $43
+    SCRIPT_POINTER script_02bf                         ;; 08:5483 $5e $43
+    SCRIPT_POINTER script_02c0                         ;; 08:5485 $6a $43
+    SCRIPT_POINTER script_02c1                         ;; 08:5487 $74 $43
+    SCRIPT_POINTER script_02c2                         ;; 08:5489 $7e $43
+    SCRIPT_POINTER script_02c3                         ;; 08:548b $88 $43
+    SCRIPT_POINTER script_02c4                         ;; 08:548d $92 $43
+    SCRIPT_POINTER script_02c5                         ;; 08:548f $b7 $43
+    SCRIPT_POINTER script_02c6                         ;; 08:5491 $b8 $43
+    SCRIPT_POINTER script_02c7                         ;; 08:5493 $c3 $43
+    SCRIPT_POINTER script_02c8                         ;; 08:5495 $cd $43
+    SCRIPT_POINTER script_02c9                         ;; 08:5497 $d7 $43
+    SCRIPT_POINTER script_02ca                         ;; 08:5499 $e1 $43
+    SCRIPT_POINTER script_02cb                         ;; 08:549b $eb $43
+    SCRIPT_POINTER script_02cc                         ;; 08:549d $f5 $43
+    SCRIPT_POINTER script_02cd                         ;; 08:549f $ff $43
+    SCRIPT_POINTER script_02ce                         ;; 08:54a1 $09 $44
+    SCRIPT_POINTER script_02cf                         ;; 08:54a3 $13 $44
+    SCRIPT_POINTER script_02d0                         ;; 08:54a5 $1d $44
+    SCRIPT_POINTER script_02d1                         ;; 08:54a7 $27 $44
+    SCRIPT_POINTER script_02d2                         ;; 08:54a9 $32 $44
+    SCRIPT_POINTER script_02d3                         ;; 08:54ab $3c $44
+    SCRIPT_POINTER script_02d4                         ;; 08:54ad $46 $44
+    SCRIPT_POINTER script_02d5                         ;; 08:54af $50 $44
+    SCRIPT_POINTER script_02d6                         ;; 08:54b1 $5a $44
+    SCRIPT_POINTER script_02d7                         ;; 08:54b3 $64 $44
+    SCRIPT_POINTER script_02d8                         ;; 08:54b5 $6e $44
+    SCRIPT_POINTER script_02d9                         ;; 08:54b7 $78 $44
+    SCRIPT_POINTER script_02da                         ;; 08:54b9 $82 $44
+    SCRIPT_POINTER script_02db                         ;; 08:54bb $8c $44
+    SCRIPT_POINTER script_02dc                         ;; 08:54bd $96 $44
+    SCRIPT_POINTER script_02dd                         ;; 08:54bf $a0 $44
+    SCRIPT_POINTER script_02de                         ;; 08:54c1 $aa $44
+    SCRIPT_POINTER script_02df                         ;; 08:54c3 $b4 $44
+    SCRIPT_POINTER script_02e0                         ;; 08:54c5 $be $44
+    SCRIPT_POINTER script_02e1                         ;; 08:54c7 $c8 $44
+    SCRIPT_POINTER script_02e2                         ;; 08:54c9 $d5 $44
+    SCRIPT_POINTER script_02e3                         ;; 08:54cb $df $44
+    SCRIPT_POINTER script_02e4                         ;; 08:54cd $e9 $44
+    SCRIPT_POINTER script_02e5                         ;; 08:54cf $f3 $44
+    SCRIPT_POINTER script_02e6                         ;; 08:54d1 $fd $44
+    SCRIPT_POINTER script_02e7                         ;; 08:54d3 $fe $44
+    SCRIPT_POINTER script_02e8                         ;; 08:54d5 $08 $45
+    SCRIPT_POINTER script_02e9                         ;; 08:54d7 $12 $45
+    SCRIPT_POINTER script_02ea                         ;; 08:54d9 $1c $45
+    SCRIPT_POINTER script_02eb                         ;; 08:54db $26 $45
+    SCRIPT_POINTER script_02ec                         ;; 08:54dd $30 $45
+    SCRIPT_POINTER script_02ed                         ;; 08:54df $3a $45
+    SCRIPT_POINTER script_02ee                         ;; 08:54e1 $48 $45
+    SCRIPT_POINTER script_02ef                         ;; 08:54e3 $52 $45
+    SCRIPT_POINTER script_02f0                         ;; 08:54e5 $53 $45
+    SCRIPT_POINTER script_02f1                         ;; 08:54e7 $54 $45
+    SCRIPT_POINTER script_02f2                         ;; 08:54e9 $5f $45
+    SCRIPT_POINTER script_02f3                         ;; 08:54eb $69 $45
+    SCRIPT_POINTER script_02f4                         ;; 08:54ed $73 $45
+    SCRIPT_POINTER script_02f5                         ;; 08:54ef $7d $45
+    SCRIPT_POINTER script_02f6                         ;; 08:54f1 $ad $45
+    SCRIPT_POINTER script_02f7                         ;; 08:54f3 $b8 $45
+    SCRIPT_POINTER script_02f8                         ;; 08:54f5 $c2 $45
+    SCRIPT_POINTER script_02f9                         ;; 08:54f7 $c3 $45
+    SCRIPT_POINTER script_02fa                         ;; 08:54f9 $c4 $45
+    SCRIPT_POINTER script_02fb                         ;; 08:54fb $c5 $45
+    SCRIPT_POINTER script_02fc                         ;; 08:54fd $cf $45
+    SCRIPT_POINTER script_02fd                         ;; 08:54ff $d9 $45
+    SCRIPT_POINTER script_02fe                         ;; 08:5501 $e3 $45
+    SCRIPT_POINTER script_02ff                         ;; 08:5503 $ed $45
+    SCRIPT_POINTER script_0300                         ;; 08:5505 $f7 $45
+    SCRIPT_POINTER script_0301                         ;; 08:5507 $01 $46
+    SCRIPT_POINTER script_0302                         ;; 08:5509 $0b $46
+    SCRIPT_POINTER script_0303                         ;; 08:550b $15 $46
+    SCRIPT_POINTER script_0304                         ;; 08:550d $1f $46
+    SCRIPT_POINTER script_0305                         ;; 08:550f $29 $46
+    SCRIPT_POINTER script_0306                         ;; 08:5511 $33 $46
+    SCRIPT_POINTER script_0307                         ;; 08:5513 $3e $46
+    SCRIPT_POINTER script_0308                         ;; 08:5515 $48 $46
+    SCRIPT_POINTER script_0309                         ;; 08:5517 $56 $46
+    SCRIPT_POINTER script_030a                         ;; 08:5519 $60 $46
+    SCRIPT_POINTER script_030b                         ;; 08:551b $6a $46
+    SCRIPT_POINTER script_030c                         ;; 08:551d $74 $46
+    SCRIPT_POINTER script_030d                         ;; 08:551f $7e $46
+    SCRIPT_POINTER script_030e                         ;; 08:5521 $88 $46
+    SCRIPT_POINTER script_030f                         ;; 08:5523 $92 $46
+    SCRIPT_POINTER script_0310                         ;; 08:5525 $9c $46
+    SCRIPT_POINTER script_0311                         ;; 08:5527 $a6 $46
+    SCRIPT_POINTER script_0312                         ;; 08:5529 $b8 $46
+    SCRIPT_POINTER script_0313                         ;; 08:552b $c2 $46
+    SCRIPT_POINTER script_0314                         ;; 08:552d $cc $46
+    SCRIPT_POINTER script_0315                         ;; 08:552f $d7 $46
+    SCRIPT_POINTER script_0316                         ;; 08:5531 $e3 $46
+    SCRIPT_POINTER script_0317                         ;; 08:5533 $ee $46
+    SCRIPT_POINTER script_0318                         ;; 08:5535 $f8 $46
+    SCRIPT_POINTER script_0319                         ;; 08:5537 $02 $47
+    SCRIPT_POINTER script_031a                         ;; 08:5539 $0c $47
+    SCRIPT_POINTER script_031b                         ;; 08:553b $16 $47
+    SCRIPT_POINTER script_031c                         ;; 08:553d $20 $47
+    SCRIPT_POINTER script_031d                         ;; 08:553f $2a $47
+    SCRIPT_POINTER script_031e                         ;; 08:5541 $34 $47
+    SCRIPT_POINTER script_031f                         ;; 08:5543 $3e $47
+    SCRIPT_POINTER script_0320                         ;; 08:5545 $6d $47
+    SCRIPT_POINTER script_0321                         ;; 08:5547 $77 $47
+    SCRIPT_POINTER script_0322                         ;; 08:5549 $81 $47
+    SCRIPT_POINTER script_0323                         ;; 08:554b $8b $47
+    SCRIPT_POINTER script_0324                         ;; 08:554d $95 $47
+    SCRIPT_POINTER script_0325                         ;; 08:554f $9f $47
+    SCRIPT_POINTER script_0326                         ;; 08:5551 $a9 $47
+    SCRIPT_POINTER script_0327                         ;; 08:5553 $b3 $47
+    SCRIPT_POINTER script_0328                         ;; 08:5555 $bd $47
+    SCRIPT_POINTER script_0329                         ;; 08:5557 $c7 $47
+    SCRIPT_POINTER script_032a                         ;; 08:5559 $d1 $47
+    SCRIPT_POINTER script_032b                         ;; 08:555b $db $47
+    SCRIPT_POINTER script_032c                         ;; 08:555d $e5 $47
+    SCRIPT_POINTER script_032d                         ;; 08:555f $ef $47
+    SCRIPT_POINTER script_032e                         ;; 08:5561 $f9 $47
+    SCRIPT_POINTER script_032f                         ;; 08:5563 $03 $48
+    SCRIPT_POINTER script_0330                         ;; 08:5565 $04 $48
+    SCRIPT_POINTER script_0331                         ;; 08:5567 $0e $48
+    SCRIPT_POINTER script_0332                         ;; 08:5569 $18 $48
+    SCRIPT_POINTER script_0333                         ;; 08:556b $22 $48
+    SCRIPT_POINTER script_0334                         ;; 08:556d $2c $48
+    SCRIPT_POINTER script_0335                         ;; 08:556f $36 $48
+    SCRIPT_POINTER script_0336                         ;; 08:5571 $40 $48
+    SCRIPT_POINTER script_0337                         ;; 08:5573 $4a $48
+    SCRIPT_POINTER script_0338                         ;; 08:5575 $54 $48
+    SCRIPT_POINTER script_0339                         ;; 08:5577 $5e $48
+    SCRIPT_POINTER script_033a                         ;; 08:5579 $68 $48
+    SCRIPT_POINTER script_033b                         ;; 08:557b $72 $48
+    SCRIPT_POINTER script_033c                         ;; 08:557d $7e $48
+    SCRIPT_POINTER script_033d                         ;; 08:557f $8a $48
+    SCRIPT_POINTER script_033e                         ;; 08:5581 $96 $48
+    SCRIPT_POINTER script_033f                         ;; 08:5583 $a2 $48
+    SCRIPT_POINTER script_0340                         ;; 08:5585 $ac $48
+    SCRIPT_POINTER script_0341                         ;; 08:5587 $b6 $48
+    SCRIPT_POINTER script_0342                         ;; 08:5589 $c0 $48
+    SCRIPT_POINTER script_0343                         ;; 08:558b $ca $48
+    SCRIPT_POINTER script_0344                         ;; 08:558d $d4 $48
+    SCRIPT_POINTER script_0345                         ;; 08:558f $df $48
+    SCRIPT_POINTER script_0346                         ;; 08:5591 $e9 $48
+    SCRIPT_POINTER script_0347                         ;; 08:5593 $f3 $48
+    SCRIPT_POINTER script_0348                         ;; 08:5595 $fe $48
+    SCRIPT_POINTER script_0349                         ;; 08:5597 $08 $49
+    SCRIPT_POINTER script_034a                         ;; 08:5599 $09 $49
+    SCRIPT_POINTER script_034b                         ;; 08:559b $13 $49
+    SCRIPT_POINTER script_034c                         ;; 08:559d $14 $49
+    SCRIPT_POINTER script_034d                         ;; 08:559f $20 $49
+    SCRIPT_POINTER script_034e                         ;; 08:55a1 $21 $49
+    SCRIPT_POINTER script_034f                         ;; 08:55a3 $22 $49
+    SCRIPT_POINTER script_0350                         ;; 08:55a5 $23 $49
+    SCRIPT_POINTER script_0351                         ;; 08:55a7 $24 $49
+    SCRIPT_POINTER script_0352                         ;; 08:55a9 $25 $49
+    SCRIPT_POINTER script_0353                         ;; 08:55ab $8a $49
+    SCRIPT_POINTER script_0354                         ;; 08:55ad $94 $49
+    SCRIPT_POINTER script_0355                         ;; 08:55af $95 $49
+    SCRIPT_POINTER script_0356                         ;; 08:55b1 $96 $49
+    SCRIPT_POINTER script_0357                         ;; 08:55b3 $a4 $49
+    SCRIPT_POINTER script_0358                         ;; 08:55b5 $ae $49
+    SCRIPT_POINTER script_0359                         ;; 08:55b7 $b8 $49
+    SCRIPT_POINTER script_035a                         ;; 08:55b9 $c3 $49
+    SCRIPT_POINTER script_035b                         ;; 08:55bb $cd $49
+    SCRIPT_POINTER script_035c                         ;; 08:55bd $d8 $49
+    SCRIPT_POINTER script_035d                         ;; 08:55bf $e2 $49
+    SCRIPT_POINTER script_035e                         ;; 08:55c1 $ec $49
+    SCRIPT_POINTER script_035f                         ;; 08:55c3 $f6 $49
+    SCRIPT_POINTER script_0360                         ;; 08:55c5 $00 $4a
+    SCRIPT_POINTER script_0361                         ;; 08:55c7 $0a $4a
+    SCRIPT_POINTER script_0362                         ;; 08:55c9 $14 $4a
+    SCRIPT_POINTER script_0363                         ;; 08:55cb $1e $4a
+    SCRIPT_POINTER script_0364                         ;; 08:55cd $28 $4a
+    SCRIPT_POINTER script_0365                         ;; 08:55cf $32 $4a
+    SCRIPT_POINTER script_0366                         ;; 08:55d1 $3d $4a
+    SCRIPT_POINTER script_0367                         ;; 08:55d3 $47 $4a
+    SCRIPT_POINTER script_0368                         ;; 08:55d5 $51 $4a
+    SCRIPT_POINTER script_0369                         ;; 08:55d7 $5d $4a
+    SCRIPT_POINTER script_036a                         ;; 08:55d9 $6b $4a
+    SCRIPT_POINTER script_036b                         ;; 08:55db $75 $4a
+    SCRIPT_POINTER script_036c                         ;; 08:55dd $7f $4a
+    SCRIPT_POINTER script_036d                         ;; 08:55df $89 $4a
+    SCRIPT_POINTER script_036e                         ;; 08:55e1 $97 $4a
+    SCRIPT_POINTER script_036f                         ;; 08:55e3 $a1 $4a
+    SCRIPT_POINTER script_0370                         ;; 08:55e5 $ac $4a
+    SCRIPT_POINTER script_0371                         ;; 08:55e7 $b6 $4a
+    SCRIPT_POINTER script_0372                         ;; 08:55e9 $c0 $4a
+    SCRIPT_POINTER script_0373                         ;; 08:55eb $ca $4a
+    SCRIPT_POINTER script_0374                         ;; 08:55ed $d4 $4a
+    SCRIPT_POINTER script_0375                         ;; 08:55ef $de $4a
+    SCRIPT_POINTER script_0376                         ;; 08:55f1 $e8 $4a
+    SCRIPT_POINTER script_0377                         ;; 08:55f3 $f2 $4a
+    SCRIPT_POINTER script_0378                         ;; 08:55f5 $fc $4a
+    SCRIPT_POINTER script_0379                         ;; 08:55f7 $06 $4b
+    SCRIPT_POINTER script_037a                         ;; 08:55f9 $10 $4b
+    SCRIPT_POINTER script_037b                         ;; 08:55fb $1e $4b
+    SCRIPT_POINTER script_037c                         ;; 08:55fd $28 $4b
+    SCRIPT_POINTER script_037d                         ;; 08:55ff $32 $4b
+    SCRIPT_POINTER script_037e                         ;; 08:5601 $33 $4b
+    SCRIPT_POINTER script_037f                         ;; 08:5603 $34 $4b
+    SCRIPT_POINTER script_0380                         ;; 08:5605 $35 $4b
+    SCRIPT_POINTER script_0381                         ;; 08:5607 $42 $4b
+    SCRIPT_POINTER script_0382                         ;; 08:5609 $4f $4b
+    SCRIPT_POINTER script_0383                         ;; 08:560b $5c $4b
+    SCRIPT_POINTER script_0384                         ;; 08:560d $69 $4b
+    SCRIPT_POINTER script_0385                         ;; 08:560f $76 $4b
+    SCRIPT_POINTER script_0386                         ;; 08:5611 $83 $4b
+    SCRIPT_POINTER script_0387                         ;; 08:5613 $90 $4b
+    SCRIPT_POINTER script_0388                         ;; 08:5615 $9d $4b
+    SCRIPT_POINTER script_0389                         ;; 08:5617 $aa $4b
+    SCRIPT_POINTER script_038a                         ;; 08:5619 $b7 $4b
+    SCRIPT_POINTER script_038b                         ;; 08:561b $c4 $4b
+    SCRIPT_POINTER script_038c                         ;; 08:561d $d1 $4b
+    SCRIPT_POINTER script_038d                         ;; 08:561f $de $4b
+    SCRIPT_POINTER script_038e                         ;; 08:5621 $eb $4b
+    SCRIPT_POINTER script_038f                         ;; 08:5623 $ec $4b
+    SCRIPT_POINTER script_0390                         ;; 08:5625 $ed $4b
+    SCRIPT_POINTER script_0391                         ;; 08:5627 $f7 $4b
+    SCRIPT_POINTER script_0392                         ;; 08:5629 $01 $4c
+    SCRIPT_POINTER script_0393                         ;; 08:562b $0b $4c
+    SCRIPT_POINTER script_0394                         ;; 08:562d $15 $4c
+    SCRIPT_POINTER script_0395                         ;; 08:562f $16 $4c
+    SCRIPT_POINTER script_0396                         ;; 08:5631 $17 $4c
+    SCRIPT_POINTER script_0397                         ;; 08:5633 $23 $4c
+    SCRIPT_POINTER script_0398                         ;; 08:5635 $2f $4c
+    SCRIPT_POINTER script_0399                         ;; 08:5637 $3d $4c
+    SCRIPT_POINTER script_039a                         ;; 08:5639 $48 $4c
+    SCRIPT_POINTER script_039b                         ;; 08:563b $52 $4c
+    SCRIPT_POINTER script_039c                         ;; 08:563d $5c $4c
+    SCRIPT_POINTER script_039d                         ;; 08:563f $66 $4c
+    SCRIPT_POINTER script_039e                         ;; 08:5641 $71 $4c
+    SCRIPT_POINTER script_039f                         ;; 08:5643 $7c $4c
+    SCRIPT_POINTER script_03a0                         ;; 08:5645 $92 $4c
+    SCRIPT_POINTER script_03a1                         ;; 08:5647 $a0 $4c
+    SCRIPT_POINTER script_03a2                         ;; 08:5649 $ad $4c
+    SCRIPT_POINTER script_03a3                         ;; 08:564b $b8 $4c
+    SCRIPT_POINTER script_03a4                         ;; 08:564d $c2 $4c
+    SCRIPT_POINTER script_03a5                         ;; 08:564f $cd $4c
+    SCRIPT_POINTER script_03a6                         ;; 08:5651 $d8 $4c
+    SCRIPT_POINTER script_03a7                         ;; 08:5653 $e4 $4c
+    SCRIPT_POINTER script_03a8                         ;; 08:5655 $f2 $4c
+    SCRIPT_POINTER script_03a9                         ;; 08:5657 $fd $4c
+    SCRIPT_POINTER script_03aa                         ;; 08:5659 $07 $4d
+    SCRIPT_POINTER script_03ab                         ;; 08:565b $14 $4d
+    SCRIPT_POINTER script_03ac                         ;; 08:565d $1e $4d
+    SCRIPT_POINTER script_03ad                         ;; 08:565f $28 $4d
+    SCRIPT_POINTER script_03ae                         ;; 08:5661 $32 $4d
+    SCRIPT_POINTER script_03af                         ;; 08:5663 $3c $4d
+    SCRIPT_POINTER script_03b0                         ;; 08:5665 $46 $4d
+    SCRIPT_POINTER script_03b1                         ;; 08:5667 $53 $4d
+    SCRIPT_POINTER script_03b2                         ;; 08:5669 $5d $4d
+    SCRIPT_POINTER script_03b3                         ;; 08:566b $67 $4d
+    SCRIPT_POINTER script_03b4                         ;; 08:566d $71 $4d
+    SCRIPT_POINTER script_03b5                         ;; 08:566f $7b $4d
+    SCRIPT_POINTER script_03b6                         ;; 08:5671 $85 $4d
+    SCRIPT_POINTER script_03b7                         ;; 08:5673 $8f $4d
+    SCRIPT_POINTER script_03b8                         ;; 08:5675 $99 $4d
+    SCRIPT_POINTER script_03b9                         ;; 08:5677 $a8 $4d
+    SCRIPT_POINTER script_03ba                         ;; 08:5679 $b2 $4d
+    SCRIPT_POINTER script_03bb                         ;; 08:567b $bc $4d
+    SCRIPT_POINTER script_03bc                         ;; 08:567d $c6 $4d
+    SCRIPT_POINTER script_03bd                         ;; 08:567f $d4 $4d
+    SCRIPT_POINTER script_03be                         ;; 08:5681 $df $4d
+    SCRIPT_POINTER script_03bf                         ;; 08:5683 $e0 $4d
+    SCRIPT_POINTER script_03c0                         ;; 08:5685 $e1 $4d
+    SCRIPT_POINTER script_03c1                         ;; 08:5687 $eb $4d
+    SCRIPT_POINTER script_03c2                         ;; 08:5689 $f5 $4d
+    SCRIPT_POINTER script_03c3                         ;; 08:568b $ff $4d
+    SCRIPT_POINTER script_03c4                         ;; 08:568d $0a $4e
+    SCRIPT_POINTER script_03c5                         ;; 08:568f $18 $4e
+    SCRIPT_POINTER script_03c6                         ;; 08:5691 $22 $4e
+    SCRIPT_POINTER script_03c7                         ;; 08:5693 $bd $4e
+    SCRIPT_POINTER script_03c8                         ;; 08:5695 $c7 $4e
+    SCRIPT_POINTER script_03c9                         ;; 08:5697 $d2 $4e
+    SCRIPT_POINTER script_03ca                         ;; 08:5699 $e3 $4e
+    SCRIPT_POINTER script_03cb                         ;; 08:569b $ee $4e
+    SCRIPT_POINTER script_03cc                         ;; 08:569d $f8 $4e
+    SCRIPT_POINTER script_03cd                         ;; 08:569f $02 $4f
+    SCRIPT_POINTER script_03ce                         ;; 08:56a1 $0c $4f
+    SCRIPT_POINTER script_03cf                         ;; 08:56a3 $16 $4f
+    SCRIPT_POINTER script_03d0                         ;; 08:56a5 $20 $4f
+    SCRIPT_POINTER script_03d1                         ;; 08:56a7 $25 $4f
+    SCRIPT_POINTER script_03d2                         ;; 08:56a9 $2d $4f
+    SCRIPT_POINTER script_03d3                         ;; 08:56ab $2e $4f
+    SCRIPT_POINTER script_03d4                         ;; 08:56ad $37 $4f
+    SCRIPT_POINTER script_03d5                         ;; 08:56af $38 $4f
+    SCRIPT_POINTER script_03d6                         ;; 08:56b1 $39 $4f
+    SCRIPT_POINTER script_03d7                         ;; 08:56b3 $6f $4f
+    SCRIPT_POINTER script_03d8                         ;; 08:56b5 $70 $4f
+    SCRIPT_POINTER script_03d9                         ;; 08:56b7 $71 $4f
+    SCRIPT_POINTER script_03da                         ;; 08:56b9 $8a $4f
+    SCRIPT_POINTER script_03db                         ;; 08:56bb $8b $4f
+    SCRIPT_POINTER script_03dc                         ;; 08:56bd $8c $4f
+    SCRIPT_POINTER script_03dd                         ;; 08:56bf $93 $4f
+    SCRIPT_POINTER script_03de                         ;; 08:56c1 $94 $4f
+    SCRIPT_POINTER script_03df                         ;; 08:56c3 $95 $4f
+    SCRIPT_POINTER script_03e0                         ;; 08:56c5 $9c $4f
+    SCRIPT_POINTER script_03e1                         ;; 08:56c7 $9d $4f
+    SCRIPT_POINTER script_03e2                         ;; 08:56c9 $9e $4f
+    SCRIPT_POINTER script_03e3                         ;; 08:56cb $a5 $4f
+    SCRIPT_POINTER script_03e4                         ;; 08:56cd $a6 $4f
+    SCRIPT_POINTER script_03e5                         ;; 08:56cf $a7 $4f
+    SCRIPT_POINTER script_03e6                         ;; 08:56d1 $ac $4f
+    SCRIPT_POINTER script_03e7                         ;; 08:56d3 $ad $4f
+    SCRIPT_POINTER script_03e8                         ;; 08:56d5 $ae $4f
+    SCRIPT_POINTER script_03e9                         ;; 08:56d7 $b5 $50
+    SCRIPT_POINTER script_03ea                         ;; 08:56d9 $bc $50
+    SCRIPT_POINTER script_03eb                         ;; 08:56db $bd $50
+    SCRIPT_POINTER script_03ec                         ;; 08:56dd $c2 $50
+    SCRIPT_POINTER script_03ed                         ;; 08:56df $c3 $50
+    SCRIPT_POINTER script_03ee                         ;; 08:56e1 $c4 $50
+    SCRIPT_POINTER script_03ef                         ;; 08:56e3 $c5 $50
+    SCRIPT_POINTER script_03f0                         ;; 08:56e5 $d4 $50
+    SCRIPT_POINTER script_03f1                         ;; 08:56e7 $d5 $50
+    SCRIPT_POINTER script_03f2                         ;; 08:56e9 $d9 $50
+    SCRIPT_POINTER script_03f3                         ;; 08:56eb $da $50
+    SCRIPT_POINTER script_03f4                         ;; 08:56ed $e3 $50
+    SCRIPT_POINTER script_03f5                         ;; 08:56ef $e7 $50
+    SCRIPT_POINTER script_03f6                         ;; 08:56f1 $e8 $50
+    SCRIPT_POINTER script_03f7                         ;; 08:56f3 $f1 $50
+    SCRIPT_POINTER script_03f8                         ;; 08:56f5 $f5 $50
+    SCRIPT_POINTER script_03f9                         ;; 08:56f7 $f6 $50
+    SCRIPT_POINTER script_03fa                         ;; 08:56f9 $ff $50
+    SCRIPT_POINTER script_03fb                         ;; 08:56fb $10 $51
+    SCRIPT_POINTER script_03fc                         ;; 08:56fd $11 $51
+    SCRIPT_POINTER script_03fd                         ;; 08:56ff $12 $51
+    SCRIPT_POINTER script_03fe                         ;; 08:5701 $17 $51
+    SCRIPT_POINTER script_03ff                         ;; 08:5703 $18 $51
+    SCRIPT_POINTER script_0400                         ;; 08:5705 $19 $51
+    SCRIPT_POINTER script_0401                         ;; 08:5707 $33 $51
+    SCRIPT_POINTER script_0402                         ;; 08:5709 $ee $51
+    SCRIPT_POINTER script_0403                         ;; 08:570b $ef $51
+    SCRIPT_POINTER script_0404                         ;; 08:570d $fa $51
+    SCRIPT_POINTER script_0405                         ;; 08:570f $fb $51
+    SCRIPT_POINTER script_0406                         ;; 08:5711 $12 $52
+    SCRIPT_POINTER script_0407                         ;; 08:5713 $21 $52
+    SCRIPT_POINTER script_0408                         ;; 08:5715 $30 $52
+    SCRIPT_POINTER script_0409                         ;; 08:5717 $31 $52
+    SCRIPT_POINTER script_040a                         ;; 08:5719 $32 $52
+    SCRIPT_POINTER script_040b                         ;; 08:571b $9f $52
+    SCRIPT_POINTER script_040c                         ;; 08:571d $a0 $52
+    SCRIPT_POINTER script_040d                         ;; 08:571f $be $52
+    SCRIPT_POINTER script_040e                         ;; 08:5721 $e1 $52
+    SCRIPT_POINTER script_0000                         ;; 08:5723 $00 $00
+    SCRIPT_POINTER script_0410                         ;; 08:5725 $f9 $52
+    SCRIPT_POINTER script_0411                         ;; 08:5727 $05 $53
+    SCRIPT_POINTER script_0412                         ;; 08:5729 $06 $53
+    SCRIPT_POINTER script_0413                         ;; 08:572b $07 $53
+    SCRIPT_POINTER script_0414                         ;; 08:572d $13 $53
+    SCRIPT_POINTER script_0415                         ;; 08:572f $14 $53
+    SCRIPT_POINTER script_0416                         ;; 08:5731 $15 $53
+    SCRIPT_POINTER script_0417                         ;; 08:5733 $21 $53
+    SCRIPT_POINTER script_0418                         ;; 08:5735 $22 $53
+    SCRIPT_POINTER script_0419                         ;; 08:5737 $23 $53
+    SCRIPT_POINTER script_041a                         ;; 08:5739 $2f $53
+    SCRIPT_POINTER script_041b                         ;; 08:573b $30 $53
+    SCRIPT_POINTER script_041c                         ;; 08:573d $31 $53
+    SCRIPT_POINTER script_041d                         ;; 08:573f $3d $53
+    SCRIPT_POINTER script_041e                         ;; 08:5741 $3e $53
+    SCRIPT_POINTER script_041f                         ;; 08:5743 $3f $53
+    SCRIPT_POINTER script_0420                         ;; 08:5745 $48 $53
+    SCRIPT_POINTER script_0421                         ;; 08:5747 $49 $53
+    SCRIPT_POINTER script_0422                         ;; 08:5749 $51 $53
+    SCRIPT_POINTER script_0423                         ;; 08:574b $5d $53
+    SCRIPT_POINTER script_0424                         ;; 08:574d $5e $53
+    SCRIPT_POINTER script_0425                         ;; 08:574f $5f $53
+    SCRIPT_POINTER script_0426                         ;; 08:5751 $6b $53
+    SCRIPT_POINTER script_0427                         ;; 08:5753 $6c $53
+    SCRIPT_POINTER script_0428                         ;; 08:5755 $6d $53
+    SCRIPT_POINTER script_0429                         ;; 08:5757 $76 $53
+    SCRIPT_POINTER script_042a                         ;; 08:5759 $77 $53
+    SCRIPT_POINTER script_042b                         ;; 08:575b $7f $53
+    SCRIPT_POINTER script_042c                         ;; 08:575d $87 $53
+    SCRIPT_POINTER script_042d                         ;; 08:575f $88 $53
+    SCRIPT_POINTER script_042e                         ;; 08:5761 $89 $53
+    SCRIPT_POINTER script_042f                         ;; 08:5763 $a3 $53
+    SCRIPT_POINTER script_0430                         ;; 08:5765 $bc $53
+    SCRIPT_POINTER script_0431                         ;; 08:5767 $d7 $53
+    SCRIPT_POINTER script_0432                         ;; 08:5769 $f2 $53
+    SCRIPT_POINTER script_0433                         ;; 08:576b $0d $54
+    SCRIPT_POINTER script_0434                         ;; 08:576d $0e $54
+    SCRIPT_POINTER script_0435                         ;; 08:576f $28 $54
+    SCRIPT_POINTER script_0436                         ;; 08:5771 $b9 $54
+    SCRIPT_POINTER script_0437                         ;; 08:5773 $ba $54
+    SCRIPT_POINTER script_0438                         ;; 08:5775 $ff $54
+    SCRIPT_POINTER script_0439                         ;; 08:5777 $17 $55
+    SCRIPT_POINTER script_043a                         ;; 08:5779 $3a $55
+    SCRIPT_POINTER script_043b                         ;; 08:577b $50 $55
+    SCRIPT_POINTER script_043c                         ;; 08:577d $69 $55
+    SCRIPT_POINTER script_043d                         ;; 08:577f $7f $55
+    SCRIPT_POINTER script_043e                         ;; 08:5781 $96 $55
+    SCRIPT_POINTER script_043f                         ;; 08:5783 $ae $55
+    SCRIPT_POINTER script_0440                         ;; 08:5785 $af $55
+    SCRIPT_POINTER script_0441                         ;; 08:5787 $c6 $55
+    SCRIPT_POINTER script_0442                         ;; 08:5789 $de $55
+    SCRIPT_POINTER script_0443                         ;; 08:578b $f5 $55
+    SCRIPT_POINTER script_0444                         ;; 08:578d $0f $56
+    SCRIPT_POINTER script_0445                         ;; 08:578f $3b $56
+    SCRIPT_POINTER script_0446                         ;; 08:5791 $5d $56
+    SCRIPT_POINTER script_0447                         ;; 08:5793 $75 $56
+    SCRIPT_POINTER script_0448                         ;; 08:5795 $8e $56
+    SCRIPT_POINTER script_0449                         ;; 08:5797 $a6 $56
+    SCRIPT_POINTER script_044a                         ;; 08:5799 $bf $56
+    SCRIPT_POINTER script_044b                         ;; 08:579b $d9 $56
+    SCRIPT_POINTER script_044c                         ;; 08:579d $fb $56
+    SCRIPT_POINTER script_044d                         ;; 08:579f $ff $56
+    SCRIPT_POINTER script_044e                         ;; 08:57a1 $38 $57
+    SCRIPT_POINTER script_044f                         ;; 08:57a3 $70 $57
+    SCRIPT_POINTER script_0450                         ;; 08:57a5 $a9 $57
+    SCRIPT_POINTER script_0451                         ;; 08:57a7 $cf $57
+    SCRIPT_POINTER script_0452                         ;; 08:57a9 $38 $58
+    SCRIPT_POINTER script_0453                         ;; 08:57ab $50 $58
+    SCRIPT_POINTER script_0454                         ;; 08:57ad $68 $58
+    SCRIPT_POINTER script_0455                         ;; 08:57af $69 $58
+    SCRIPT_POINTER script_0456                         ;; 08:57b1 $81 $58
+    SCRIPT_POINTER script_0457                         ;; 08:57b3 $98 $58
+    SCRIPT_POINTER script_0458                         ;; 08:57b5 $b0 $58
+    SCRIPT_POINTER script_0459                         ;; 08:57b7 $ca $58
+    SCRIPT_POINTER script_045a                         ;; 08:57b9 $e3 $58
+    SCRIPT_POINTER script_045b                         ;; 08:57bb $fc $58
+    SCRIPT_POINTER script_045c                         ;; 08:57bd $14 $59
+    SCRIPT_POINTER script_045d                         ;; 08:57bf $2b $59
+    SCRIPT_POINTER script_045e                         ;; 08:57c1 $44 $59
+    SCRIPT_POINTER script_045f                         ;; 08:57c3 $5d $59
+    SCRIPT_POINTER script_0460                         ;; 08:57c5 $77 $59
+    SCRIPT_POINTER script_0461                         ;; 08:57c7 $8f $59
+    SCRIPT_POINTER script_0462                         ;; 08:57c9 $a8 $59
+    SCRIPT_POINTER script_0463                         ;; 08:57cb $c2 $59
+    SCRIPT_POINTER script_0464                         ;; 08:57cd $dc $59
+    SCRIPT_POINTER script_0465                         ;; 08:57cf $ff $59
+    SCRIPT_POINTER script_0466                         ;; 08:57d1 $00 $5a
+    SCRIPT_POINTER script_0467                         ;; 08:57d3 $27 $5a
+    SCRIPT_POINTER script_0000                         ;; 08:57d5 $00 $00
+    SCRIPT_POINTER script_0000                         ;; 08:57d7 $00 $00
+    SCRIPT_POINTER script_0000                         ;; 08:57d9 $00 $00
+    SCRIPT_POINTER script_0000                         ;; 08:57db $00 $00
+    SCRIPT_POINTER script_0000                         ;; 08:57dd $00 $00
+    SCRIPT_POINTER script_0000                         ;; 08:57df $00 $00
+    SCRIPT_POINTER script_0000                         ;; 08:57e1 $00 $00
+    SCRIPT_POINTER script_0000                         ;; 08:57e3 $00 $00
+    SCRIPT_POINTER script_0470                         ;; 08:57e5 $3f $5a
+    SCRIPT_POINTER script_0471                         ;; 08:57e7 $7c $5a
+    SCRIPT_POINTER script_0472                         ;; 08:57e9 $90 $5a
+    SCRIPT_POINTER script_0473                         ;; 08:57eb $e2 $5a
+    SCRIPT_POINTER script_0474                         ;; 08:57ed $f2 $5a
+    SCRIPT_POINTER script_0475                         ;; 08:57ef $01 $5b
+    SCRIPT_POINTER script_0476                         ;; 08:57f1 $18 $5b
+    SCRIPT_POINTER script_0477                         ;; 08:57f3 $20 $5b
+    SCRIPT_POINTER script_0478                         ;; 08:57f5 $21 $5b
+    SCRIPT_POINTER script_0479                         ;; 08:57f7 $22 $5b
+    SCRIPT_POINTER script_047a                         ;; 08:57f9 $2a $5b
+    SCRIPT_POINTER script_047b                         ;; 08:57fb $2b $5b
+    SCRIPT_POINTER script_047c                         ;; 08:57fd $2c $5b
+    SCRIPT_POINTER script_047d                         ;; 08:57ff $3c $5b
+    SCRIPT_POINTER script_047e                         ;; 08:5801 $3d $5b
+    SCRIPT_POINTER script_047f                         ;; 08:5803 $3e $5b
+    SCRIPT_POINTER script_0480                         ;; 08:5805 $3f $5b
+    SCRIPT_POINTER script_0481                         ;; 08:5807 $40 $5b
+    SCRIPT_POINTER script_0482                         ;; 08:5809 $41 $5b
+    SCRIPT_POINTER script_0483                         ;; 08:580b $49 $5b
+    SCRIPT_POINTER script_0484                         ;; 08:580d $4a $5b
+    SCRIPT_POINTER script_0485                         ;; 08:580f $4b $5b
+    SCRIPT_POINTER script_0486                         ;; 08:5811 $53 $5b
+    SCRIPT_POINTER script_0487                         ;; 08:5813 $54 $5b
+    SCRIPT_POINTER script_0488                         ;; 08:5815 $55 $5b
+    SCRIPT_POINTER script_0489                         ;; 08:5817 $5d $5b
+    SCRIPT_POINTER script_048a                         ;; 08:5819 $5e $5b
+    SCRIPT_POINTER script_048b                         ;; 08:581b $5f $5b
+    SCRIPT_POINTER script_048c                         ;; 08:581d $67 $5b
+    SCRIPT_POINTER script_048d                         ;; 08:581f $68 $5b
+    SCRIPT_POINTER script_048e                         ;; 08:5821 $69 $5b
+    SCRIPT_POINTER script_048f                         ;; 08:5823 $71 $5b
+    SCRIPT_POINTER script_0490                         ;; 08:5825 $72 $5b
+    SCRIPT_POINTER script_0491                         ;; 08:5827 $73 $5b
+    SCRIPT_POINTER script_0492                         ;; 08:5829 $7b $5b
+    SCRIPT_POINTER script_0493                         ;; 08:582b $7c $5b
+    SCRIPT_POINTER script_0494                         ;; 08:582d $7d $5b
+    SCRIPT_POINTER script_0495                         ;; 08:582f $85 $5b
+    SCRIPT_POINTER script_0496                         ;; 08:5831 $86 $5b
+    SCRIPT_POINTER script_0497                         ;; 08:5833 $87 $5b
+    SCRIPT_POINTER script_0498                         ;; 08:5835 $8f $5b
+    SCRIPT_POINTER script_0499                         ;; 08:5837 $90 $5b
+    SCRIPT_POINTER script_049a                         ;; 08:5839 $91 $5b
+    SCRIPT_POINTER script_049b                         ;; 08:583b $a9 $5b
+    SCRIPT_POINTER script_049c                         ;; 08:583d $aa $5b
+    SCRIPT_POINTER script_049d                         ;; 08:583f $ab $5b
+    SCRIPT_POINTER script_049e                         ;; 08:5841 $b3 $5b
+    SCRIPT_POINTER script_049f                         ;; 08:5843 $b4 $5b
+    SCRIPT_POINTER script_04a0                         ;; 08:5845 $b5 $5b
+    SCRIPT_POINTER script_04a1                         ;; 08:5847 $bd $5b
+    SCRIPT_POINTER script_04a2                         ;; 08:5849 $be $5b
+    SCRIPT_POINTER script_04a3                         ;; 08:584b $bf $5b
+    SCRIPT_POINTER script_04a4                         ;; 08:584d $c7 $5b
+    SCRIPT_POINTER script_04a5                         ;; 08:584f $c8 $5b
+    SCRIPT_POINTER script_04a6                         ;; 08:5851 $c9 $5b
+    SCRIPT_POINTER script_04a7                         ;; 08:5853 $d1 $5b
+    SCRIPT_POINTER script_04a8                         ;; 08:5855 $d2 $5b
+    SCRIPT_POINTER script_04a9                         ;; 08:5857 $d3 $5b
+    SCRIPT_POINTER script_04aa                         ;; 08:5859 $db $5b
+    SCRIPT_POINTER script_04ab                         ;; 08:585b $dc $5b
+    SCRIPT_POINTER script_04ac                         ;; 08:585d $dd $5b
+    SCRIPT_POINTER script_04ad                         ;; 08:585f $e5 $5b
+    SCRIPT_POINTER script_04ae                         ;; 08:5861 $e6 $5b
+    SCRIPT_POINTER script_04af                         ;; 08:5863 $e7 $5b
+    SCRIPT_POINTER script_04b0                         ;; 08:5865 $fe $5b
+    SCRIPT_POINTER script_0000                         ;; 08:5867 $00 $00
+    SCRIPT_POINTER script_0000                         ;; 08:5869 $00 $00
+    SCRIPT_POINTER script_0000                         ;; 08:586b $00 $00
+    SCRIPT_POINTER script_0000                         ;; 08:586d $00 $00
+    SCRIPT_POINTER script_0000                         ;; 08:586f $00 $00
+    SCRIPT_POINTER script_0000                         ;; 08:5871 $00 $00
+    SCRIPT_POINTER script_0000                         ;; 08:5873 $00 $00
+    SCRIPT_POINTER script_0000                         ;; 08:5875 $00 $00
+    SCRIPT_POINTER script_0000                         ;; 08:5877 $00 $00
+    SCRIPT_POINTER script_0000                         ;; 08:5879 $00 $00
+    SCRIPT_POINTER script_0000                         ;; 08:587b $00 $00
+    SCRIPT_POINTER script_0000                         ;; 08:587d $00 $00
+    SCRIPT_POINTER script_0000                         ;; 08:587f $00 $00
+    SCRIPT_POINTER script_0000                         ;; 08:5881 $00 $00
+    SCRIPT_POINTER script_0000                         ;; 08:5883 $00 $00
+    SCRIPT_POINTER script_0000                         ;; 08:5885 $00 $00
+    SCRIPT_POINTER script_0000                         ;; 08:5887 $00 $00
+    SCRIPT_POINTER script_0000                         ;; 08:5889 $00 $00
+    SCRIPT_POINTER script_0000                         ;; 08:588b $00 $00
+    SCRIPT_POINTER script_0000                         ;; 08:588d $00 $00
+    SCRIPT_POINTER script_0000                         ;; 08:588f $00 $00
+    SCRIPT_POINTER script_0000                         ;; 08:5891 $00 $00
+    SCRIPT_POINTER script_0000                         ;; 08:5893 $00 $00
+    SCRIPT_POINTER script_0000                         ;; 08:5895 $00 $00
+    SCRIPT_POINTER script_0000                         ;; 08:5897 $00 $00
+    SCRIPT_POINTER script_0000                         ;; 08:5899 $00 $00
+    SCRIPT_POINTER script_0000                         ;; 08:589b $00 $00
+    SCRIPT_POINTER script_0000                         ;; 08:589d $00 $00
+    SCRIPT_POINTER script_0000                         ;; 08:589f $00 $00
+    SCRIPT_POINTER script_0000                         ;; 08:58a1 $00 $00
+    SCRIPT_POINTER script_0000                         ;; 08:58a3 $00 $00
+    SCRIPT_POINTER script_04d0                         ;; 08:58a5 $3e $5c
+    SCRIPT_POINTER script_04d1                         ;; 08:58a7 $46 $5c
+    SCRIPT_POINTER script_04d2                         ;; 08:58a9 $47 $5c
+    SCRIPT_POINTER script_04d3                         ;; 08:58ab $52 $5c
+    SCRIPT_POINTER script_04d4                         ;; 08:58ad $64 $5c
+    SCRIPT_POINTER script_04d5                         ;; 08:58af $6e $5c
+    SCRIPT_POINTER script_04d6                         ;; 08:58b1 $78 $5c
+    SCRIPT_POINTER script_04d7                         ;; 08:58b3 $82 $5c
+    SCRIPT_POINTER script_04d8                         ;; 08:58b5 $8c $5c
+    SCRIPT_POINTER script_04d9                         ;; 08:58b7 $97 $5c
+    SCRIPT_POINTER script_04da                         ;; 08:58b9 $11 $5d
+    SCRIPT_POINTER script_04db                         ;; 08:58bb $1c $5d
+    SCRIPT_POINTER script_04dc                         ;; 08:58bd $26 $5d
+    SCRIPT_POINTER script_04dd                         ;; 08:58bf $35 $5d
+    SCRIPT_POINTER script_04de                         ;; 08:58c1 $3f $5d
+    SCRIPT_POINTER script_04df                         ;; 08:58c3 $49 $5d
+    SCRIPT_POINTER script_04e0                         ;; 08:58c5 $56 $5d
+    SCRIPT_POINTER script_04e1                         ;; 08:58c7 $6f $5d
+    SCRIPT_POINTER script_04e2                         ;; 08:58c9 $76 $5d
+    SCRIPT_POINTER script_04e3                         ;; 08:58cb $85 $5d
+    SCRIPT_POINTER script_04e4                         ;; 08:58cd $9c $5d
+    SCRIPT_POINTER script_04e5                         ;; 08:58cf $b5 $5d
+    SCRIPT_POINTER script_04e6                         ;; 08:58d1 $c0 $5d
+    SCRIPT_POINTER script_04e7                         ;; 08:58d3 $cb $5d
+    SCRIPT_POINTER script_04e8                         ;; 08:58d5 $ea $5d
+    SCRIPT_POINTER script_04e9                         ;; 08:58d7 $f5 $5d
+    SCRIPT_POINTER script_04ea                         ;; 08:58d9 $fe $5d
+    SCRIPT_POINTER script_04eb                         ;; 08:58db $17 $5e
+    SCRIPT_POINTER script_04ec                         ;; 08:58dd $30 $5e
+    SCRIPT_POINTER script_04ed                         ;; 08:58df $39 $5e
+    SCRIPT_POINTER script_04ee                         ;; 08:58e1 $40 $5e
+    SCRIPT_POINTER script_04ef                         ;; 08:58e3 $41 $5e
+    SCRIPT_POINTER script_04f0                         ;; 08:58e5 $42 $5e
+    SCRIPT_POINTER script_04f1                         ;; 08:58e7 $49 $5e
+    SCRIPT_POINTER script_04f2                         ;; 08:58e9 $58 $5e
+    SCRIPT_POINTER script_04f3                         ;; 08:58eb $61 $5e
+    SCRIPT_POINTER script_04f4                         ;; 08:58ed $62 $5e
+    SCRIPT_POINTER script_04f5                         ;; 08:58ef $63 $5e
+    SCRIPT_POINTER script_04f6                         ;; 08:58f1 $75 $5e
+    SCRIPT_POINTER script_04f7                         ;; 08:58f3 $87 $5e
+    SCRIPT_POINTER script_04f8                         ;; 08:58f5 $9b $5e
+    SCRIPT_POINTER script_04f9                         ;; 08:58f7 $af $5e
+    SCRIPT_POINTER script_04fa                         ;; 08:58f9 $c0 $5e
+    SCRIPT_POINTER script_04fb                         ;; 08:58fb $d1 $5e
+    SCRIPT_POINTER script_04fc                         ;; 08:58fd $e3 $5e
+    SCRIPT_POINTER script_04fd                         ;; 08:58ff $f5 $5e
+    SCRIPT_POINTER script_04fe                         ;; 08:5901 $05 $5f
+    SCRIPT_POINTER script_04ff                         ;; 08:5903 $15 $5f
+    SCRIPT_POINTER script_0500                         ;; 08:5905 $25 $5f
+    SCRIPT_POINTER script_0501                         ;; 08:5907 $35 $5f
+    SCRIPT_POINTER script_0502                         ;; 08:5909 $3d $5f
+    SCRIPT_POINTER script_0503                         ;; 08:590b $45 $5f
+    SCRIPT_POINTER script_0504                         ;; 08:590d $4d $5f
+    SCRIPT_POINTER script_0505                         ;; 08:590f $5e $5f
+    SCRIPT_POINTER script_0506                         ;; 08:5911 $5f $5f
+    SCRIPT_POINTER script_0507                         ;; 08:5913 $60 $5f
+    SCRIPT_POINTER script_0508                         ;; 08:5915 $71 $5f
+    SCRIPT_POINTER script_0509                         ;; 08:5917 $79 $5f
+    SCRIPT_POINTER script_050a                         ;; 08:5919 $8e $5f
+    SCRIPT_POINTER script_050b                         ;; 08:591b $a6 $5f
+    SCRIPT_POINTER script_050c                         ;; 08:591d $b8 $5f
+    SCRIPT_POINTER script_050d                         ;; 08:591f $d1 $5f
+    SCRIPT_POINTER script_050e                         ;; 08:5921 $da $5f
+    SCRIPT_POINTER script_050f                         ;; 08:5923 $db $5f
+    SCRIPT_POINTER script_0510                         ;; 08:5925 $dc $5f
+    SCRIPT_POINTER script_0511                         ;; 08:5927 $f5 $5f
+    SCRIPT_POINTER script_0512                         ;; 08:5929 $f8 $5f
+    SCRIPT_POINTER script_0513                         ;; 08:592b $1c $60
+    SCRIPT_POINTER script_0514                         ;; 08:592d $32 $60
+    SCRIPT_POINTER script_0515                         ;; 08:592f $35 $60
+    SCRIPT_POINTER script_0516                         ;; 08:5931 $54 $60
+    SCRIPT_POINTER script_0517                         ;; 08:5933 $5d $60
+    SCRIPT_POINTER script_0518                         ;; 08:5935 $5e $60
+    SCRIPT_POINTER script_0519                         ;; 08:5937 $5f $60
+    SCRIPT_POINTER script_051a                         ;; 08:5939 $70 $60
+    SCRIPT_POINTER script_051b                         ;; 08:593b $71 $60
+    SCRIPT_POINTER script_051c                         ;; 08:593d $72 $60
+    SCRIPT_POINTER script_051d                         ;; 08:593f $79 $60
+    SCRIPT_POINTER script_051e                         ;; 08:5941 $7a $60
+    SCRIPT_POINTER script_051f                         ;; 08:5943 $7b $60
+    SCRIPT_POINTER script_0520                         ;; 08:5945 $82 $60
+    SCRIPT_POINTER script_0521                         ;; 08:5947 $83 $60
+    SCRIPT_POINTER script_0522                         ;; 08:5949 $84 $60
+    SCRIPT_POINTER script_0523                         ;; 08:594b $ac $60
+    SCRIPT_POINTER script_0524                         ;; 08:594d $ad $60
+    SCRIPT_POINTER script_0525                         ;; 08:594f $ae $60
+    SCRIPT_POINTER script_0526                         ;; 08:5951 $0e $61
+    SCRIPT_POINTER script_0527                         ;; 08:5953 $0f $61
+    SCRIPT_POINTER script_0528                         ;; 08:5955 $10 $61
+    SCRIPT_POINTER script_0529                         ;; 08:5957 $15 $61
+    SCRIPT_POINTER script_052a                         ;; 08:5959 $16 $61
+    SCRIPT_POINTER script_052b                         ;; 08:595b $17 $61
+    SCRIPT_POINTER script_052c                         ;; 08:595d $20 $61
+    SCRIPT_POINTER script_052d                         ;; 08:595f $21 $61
+    SCRIPT_POINTER script_052e                         ;; 08:5961 $26 $61
+    SCRIPT_POINTER script_052f                         ;; 08:5963 $27 $61
+    SCRIPT_POINTER script_0530                         ;; 08:5965 $28 $61
+    SCRIPT_POINTER script_0531                         ;; 08:5967 $29 $61
+    SCRIPT_POINTER script_0532                         ;; 08:5969 $9f $61
+    SCRIPT_POINTER script_0533                         ;; 08:596b $fa $61
+    SCRIPT_POINTER script_0534                         ;; 08:596d $b2 $62
+    SCRIPT_POINTER script_0535                         ;; 08:596f $de $63
+    SCRIPT_POINTER script_0536                         ;; 08:5971 $3a $64
+    SCRIPT_POINTER script_0537                         ;; 08:5973 $da $64
+    SCRIPT_POINTER script_0538                         ;; 08:5975 $80 $66
+    SCRIPT_POINTER script_0539                         ;; 08:5977 $54 $67
+    SCRIPT_POINTER script_053a                         ;; 08:5979 $e9 $68
+    SCRIPT_POINTER script_053b                         ;; 08:597b $04 $6b
+    SCRIPT_POINTER script_053c                         ;; 08:597d $32 $6d
+    SCRIPT_POINTER script_053d                         ;; 08:597f $f9 $6d
+    SCRIPT_POINTER script_053e                         ;; 08:5981 $c6 $6e
+    SCRIPT_POINTER script_053f                         ;; 08:5983 $ba $6f
+    SCRIPT_POINTER script_0540                         ;; 08:5985 $ec $71
+    SCRIPT_POINTER script_0541                         ;; 08:5987 $0c $74
+    SCRIPT_POINTER script_0542                         ;; 08:5989 $14 $77
+    SCRIPT_POINTER script_0543                         ;; 08:598b $4e $77
+    SCRIPT_POINTER script_0544                         ;; 08:598d $b1 $77
+    SCRIPT_POINTER script_0545                         ;; 08:598f $3f $78
+    SCRIPT_POINTER script_0546                         ;; 08:5991 $08 $79
+    SCRIPT_POINTER script_0547                         ;; 08:5993 $86 $79
+    SCRIPT_POINTER script_0548                         ;; 08:5995 $c3 $79
+    SCRIPT_POINTER script_0549                         ;; 08:5997 $c2 $7a
     db   $69, $2a, $18, $68, $ea, $17, $2a, $a3        ;; 08:5999 ????????
     db   $4b, $a6, $0f, $4b, $66, $19, $4b, $26        ;; 08:59a1 ????????
     db   $0f, $4a, $e6, $19, $4a, $a6, $0f, $6b        ;; 08:59a9 ????????

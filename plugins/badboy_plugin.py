@@ -132,16 +132,21 @@ OPCODES = {
     0x7E: ("NOP", 0),
     0x7F: ("NOP", 0),
 
-    0x80: ("WAIT_PLAYER_WALK_DONE", 0),
+    0x80: ("PLAYER_STEP_FORWARD", 0),
+    0x81: ("PLAYER_STEP_BACKWARD", 0),
     0x84: ("SET_PLAYER_DIRECTION_UP", 0),
     0x85: ("SET_PLAYER_DIRECTION_DOWN", 0),
     0x86: ("SET_PLAYER_DIRECTION_RIGHT", 0),
     0x87: ("SET_PLAYER_DIRECTION_LEFT", 0),
+    0x88: ("SET_FAST_MOVEMENT", 0),
+    0x89: ("CLEAR_FAST_MOVEMENT", 0),
     0x8A: ("SET_PLAYER_POSITION", 2),
 
     0x9E: ("NOP", 0),
     0x9F: ("NOP", 0),
 
+    0xA4: ("CLEAR_PLAYER_HURT_SPRITE", 0),
+    0xA5: ("SET_PLAYER_HURT_SPRITE", 0),
     0xA7: ("NOP", 0),
     0xA8: ("NOP", 0),
 
@@ -162,7 +167,11 @@ OPCODES = {
     0xDB: ("UNK_DB", 1),
     0xDF: ("NOP", 0),
 
-    0xF0: ("UNK_F0_DELAY?", 1),
+    0xE0: ("UNK_E0", 0),
+    0xE2: ("UNK_E2", 0),
+    0xE7: ("UNK_E7", 0),
+
+    0xF0: ("DELAY", 1),
     0xF4: ("LOAD_MAP", 4), # MapNr, RoomXY, PlayerX, PlayerY
     0xF8: ("SET_MUSIC", 1),
     0xF9: ("SFX", 1),
@@ -186,15 +195,22 @@ def scriptProcessor(dis, addr, *, allow_continue=False):
     dis.formatter[addr] = scriptOpcodeFormatter
 
     if opcode not in OPCODES:
+        print("Unknown script opcode: %02x" % (opcode))
         return
+    dis.info.mark(addr, dis.info.MARK_DATA)
 
     addr += 1
     size = OPCODES[opcode][1]
     if size < 0:
         while dis.rom.data[addr] != 0x00:
+            dis.info.mark(addr, dis.info.MARK_DATA)
             addr += 1
+        for n in range(-size):
+            dis.info.mark(addr + n, dis.info.MARK_DATA)
         addr -= size
     else:
+        for n in range(size):
+            dis.info.mark(addr + n, dis.info.MARK_DATA)
         addr += size
     if opcode in (0x01, 0x08, 0x0B, 0x0C): # JR
         scriptProcessor(dis, addr + dis.rom.data[addr - 1])
@@ -208,13 +224,15 @@ def scriptProcessor(dis, addr, *, allow_continue=False):
     
 
 def scriptPointer(dis, addr, params):
+    dis.macros["SCRIPT_POINTER"] = "dw ((\\1 - $4000) + ((BANK(\\1) - $0D) * $4000))"
+
     script_pointer = dis.info.markAsWord(dis.rom, addr)
     script_addr = (0x0D << 14) + script_pointer
     label = "script_%04x" % (0 if script_pointer == 0x000 else params[0])
     dis.info.addAbsoluteRomSymbol(script_addr, name=label)
 
     def formatScriptPointer(output, addr):
-        dis.formatLine(output, addr, 2, "dw   ((%s - $4000) + ((BANK(%s) - $0D) * $4000))" % (label, label))
+        dis.formatLine(output, addr, 2, "SCRIPT_POINTER %s" % (label))
         return addr + 2
 
     dis.formatter[addr] = formatScriptPointer
@@ -228,3 +246,4 @@ def scriptPointers(dis, addr, params):
 
 annotations.ALL["map_headers"] = mapHeaders
 annotations.ALL["script_pointers"] = scriptPointers
+
