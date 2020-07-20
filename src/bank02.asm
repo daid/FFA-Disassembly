@@ -1064,8 +1064,8 @@ scriptOpcodeTable:
     dw   scriptOpCode85                                ;; 02:4680 $ef $15
     dw   scriptOpCode86                                ;; 02:4682 $cb $15
     dw   scriptOpCode87                                ;; 02:4684 $d7 $15
-    dw   $0153                                         ;; 02:4686 $53 $01
-    dw   $015e                                         ;; 02:4688 $5e $01
+    dw   scriptOpCode88                                ;; 02:4686 $53 $01
+    dw   scriptOpCode89                                ;; 02:4688 $5e $01
     dw   scriptOpCode8A                                ;; 02:468a $fb $15
     dw   scriptOpCode8B                                ;; 02:468c $1b $0d
     dw   scriptOpCodeFA                                ;; 02:468e $47 $39
@@ -1088,13 +1088,13 @@ scriptOpcodeTable:
     dw   scriptOpCode9D                                ;; 02:46b0 $14 $0f
     dw   scriptOpCodeDF                                ;; 02:46b2 $01 $3f
     dw   scriptOpCodeDF                                ;; 02:46b4 $01 $3f
-    dw   $0194                                         ;; 02:46b6 $94 $01
-    dw   $01a3                                         ;; 02:46b8 $a3 $01
-    dw   $01b2                                         ;; 02:46ba $b2 $01
-    dw   $01d0                                         ;; 02:46bc $d0 $01
-    dw   $01c1                                         ;; 02:46be $c1 $01
-    dw   $01dc                                         ;; 02:46c0 $dc $01
-    dw   $01e8                                         ;; 02:46c2 $e8 $01
+    dw   scriptOpCodeA0                                ;; 02:46b6 $94 $01
+    dw   scriptOpCodeA1                                ;; 02:46b8 $a3 $01
+    dw   scriptOpCodeA2                                ;; 02:46ba $b2 $01
+    dw   scriptOpCodeA3                                ;; 02:46bc $d0 $01
+    dw   scriptOpCodeA4                                ;; 02:46be $c1 $01
+    dw   scriptOpCodeA5                                ;; 02:46c0 $dc $01
+    dw   scriptOpCodeA6                                ;; 02:46c2 $e8 $01
     dw   scriptOpCodeDF                                ;; 02:46c4 $01 $3f
     dw   scriptOpCodeDF                                ;; 02:46c6 $01 $3f
     dw   scriptOpCodeA9                                ;; 02:46c8 $5f $0d
@@ -4941,7 +4941,7 @@ code_002_67b7:
     call NC, code_002_7a44                             ;; 02:67ba $d4 $44 $7a
     ld   A, $03                                        ;; 02:67bd $3e $03
     ld   [wD854], A                                    ;; 02:67bf $ea $54 $d8
-    ld   DE, code_000_0800                             ;; 02:67c2 $11 $00 $08
+    ld   DE, $0800                                     ;; 02:67c2 $11 $00 $08
     ld   BC, $0913                                     ;; 02:67c5 $01 $13 $09
     call code_002_6d80                                 ;; 02:67c8 $cd $80 $6d
     ld   A, [wD84A]                                    ;; 02:67cb $fa $4a $d8
@@ -5652,7 +5652,7 @@ code_002_6c0b:
     push DE                                            ;; 02:6c12 $d5
     push BC                                            ;; 02:6c13 $c5
     call code_002_4776                                 ;; 02:6c14 $cd $76 $47
-    ld   DE, code_000_0f10                             ;; 02:6c17 $11 $10 $0f
+    ld   DE, $0f10                                     ;; 02:6c17 $11 $10 $0f
     ld   A, [wD84A]                                    ;; 02:6c1a $fa $4a $d8
     cp   A, $04                                        ;; 02:6c1d $fe $04
     jr   NZ, .code_6c23                                ;; 02:6c1f $20 $02
