@@ -171,15 +171,20 @@ OPCODES = {
     0xB4: ("NOP", 0),
     0xB5: ("NOP", 0),
     0xBB: ("NOP", 0),
+    0xBC: ("FADE_TO_NORMAL", 0),
+    0xBD: ("FADE_TO_BLACK", 0),
     0xBF: ("FLASH_SCREEN", 0),
+    0xC0: ("UNK_C0", 0),
     0xC2: ("UNK_C2", 1),
     0xC6: ("UNK_C6", 0),
     0xCD: ("NOP", 0),
     0xCE: ("NOP", 0),
     0xCF: ("NOP", 0),
     0xD1: ("CHECK_MONEY", 2),
-    0xDA: ("UNK_DA", 1),
+    0xDA: ("SET_FLAG", 1),
     0xDB: ("UNK_DB", 1),
+    0xDC: ("UNK_DC", 0),
+    0xDD: ("UNK_DD", 0),
     0xDF: ("NOP", 0),
 
     0xE0: ("UNK_E0", 0),
@@ -191,6 +196,7 @@ OPCODES = {
     0xEB: ("SCROLL_ROOM_RIGHT", 0),
 
     0xF0: ("DELAY", 1),
+    0xF3: ("LOAD_MAP_INSTANT", 4), # MapNr, RoomXY, PlayerX, PlayerY
     0xF4: ("LOAD_MAP", 4), # MapNr, RoomXY, PlayerX, PlayerY
     0xF8: ("SET_MUSIC", 1),
     0xF9: ("SFX", 1),
@@ -214,9 +220,14 @@ def scriptProcessor(dis, addr, *, allow_continue=False):
         length = 0
         while dis.rom.data[addr + length] != 0x00:
             s += dis.charmaps["main"][dis.rom.data[addr + length]]
+            if dis.rom.data[addr + length] == 0x12:
+                dis.formatLine(output, addr, length, "db   \"%s\"" % (s), is_data=True)
+                addr += length
+                length = 0
+                s = ""
             length += 1
         length += 1
-        dis.formatLine(output, addr, length, "db   \"%s\", $00" % (s))
+        dis.formatLine(output, addr, length, "db   \"%s\", $00" % (s), is_data=True)
         return addr + length
 
     if addr in dis.formatter:

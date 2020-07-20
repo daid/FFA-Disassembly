@@ -1,6 +1,7 @@
 include "constants/regs.asm"
 include "constants/memory.asm"
 include "src/macros.asm"
+include "src/charmaps.asm"
 
 SECTION "bank00", ROM0[$0000]
 include "src/bank00.asm"

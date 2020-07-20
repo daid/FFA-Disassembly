@@ -10385,6 +10385,7 @@ unknown_000_3f10:
     db   $bc, $d4, $e1, $ee, $e7, $ff, $d6, $d4        ;; 00:3f10 ????????
     db   $e5, $e5, $ec, $f3, $00                       ;; 00:3f18 ?????
 
+;@dual_char_map
 data_000_3f1d:
     db   $d8, $ff, $e2, $e8, $ff, $e7, $e7, $db        ;; 00:3f1d ........
     db   $ec, $e2, $d7, $ff, $e6, $ff, $d8, $e5        ;; 00:3f25 ........
