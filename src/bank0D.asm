@@ -532,11 +532,11 @@ script_002f:
     db  $00 ;;END                                      ;; 0d:43d4 $00
 
 script_0030:
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:43d5 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:43d5 $fc
     db   $00                                           ;; 0d:43d6 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:43d7 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:43d7 $fd
     db   $00                                           ;; 0d:43d8 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:43d9 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:43d9 $fd
     db   $01                                           ;; 0d:43da .
     db  $00 ;;END                                      ;; 0d:43db $00
 
@@ -552,11 +552,11 @@ script_003f:
 script_0040:
     db  $08 ;;IF ? JR                                  ;; 0d:43df $08
     db   $87, $00, $06                                 ;; 0d:43e0 ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:43e3 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:43e3 $fc
     db   $00                                           ;; 0d:43e4 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:43e5 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:43e5 $fd
     db   $00                                           ;; 0d:43e6 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:43e7 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:43e7 $fd
     db   $01                                           ;; 0d:43e8 .
     db  $00 ;;END                                      ;; 0d:43e9 $00
 
@@ -569,11 +569,11 @@ script_0042:
 script_0043:
     db  $08 ;;IF ? JR                                  ;; 0d:43ec $08
     db   $87, $00, $06                                 ;; 0d:43ed ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:43f0 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:43f0 $fc
     db   $01                                           ;; 0d:43f1 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:43f2 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:43f2 $fd
     db   $00                                           ;; 0d:43f3 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:43f4 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:43f4 $fd
     db   $01                                           ;; 0d:43f5 .
     db  $00 ;;END                                      ;; 0d:43f6 $00
 
@@ -586,9 +586,9 @@ script_0045:
 script_0046:
     db  $08 ;;IF ? JR                                  ;; 0d:43f9 $08
     db   $87, $00, $04                                 ;; 0d:43fa ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:43fd $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:43fd $fc
     db   $00                                           ;; 0d:43fe .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:43ff $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:43ff $fd
     db   $02                                           ;; 0d:4400 .
     db  $00 ;;END                                      ;; 0d:4401 $00
 
@@ -601,11 +601,11 @@ script_0048:
 script_0049:
     db  $08 ;;IF ? JR                                  ;; 0d:4404 $08
     db   $87, $00, $06                                 ;; 0d:4405 ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4408 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4408 $fc
     db   $02                                           ;; 0d:4409 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:440a $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:440a $fd
     db   $01                                           ;; 0d:440b .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:440c $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:440c $fd
     db   $00                                           ;; 0d:440d .
     db  $00 ;;END                                      ;; 0d:440e $00
 
@@ -618,11 +618,11 @@ script_004b:
 script_004c:
     db  $08 ;;IF ? JR                                  ;; 0d:4411 $08
     db   $87, $00, $06                                 ;; 0d:4412 ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4415 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4415 $fc
     db   $03                                           ;; 0d:4416 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4417 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4417 $fd
     db   $00                                           ;; 0d:4418 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4419 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4419 $fd
     db   $01                                           ;; 0d:441a .
     db  $00 ;;END                                      ;; 0d:441b $00
 
@@ -635,9 +635,9 @@ script_004e:
 script_004f:
     db  $08 ;;IF ? JR                                  ;; 0d:441e $08
     db   $87, $00, $04                                 ;; 0d:441f ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4422 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4422 $fc
     db   $08                                           ;; 0d:4423 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4424 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4424 $fd
     db   $00                                           ;; 0d:4425 .
     db  $00 ;;END                                      ;; 0d:4426 $00
 
@@ -650,9 +650,9 @@ script_0051:
 script_0052:
     db  $08 ;;IF ? JR                                  ;; 0d:4429 $08
     db   $87, $00, $04                                 ;; 0d:442a ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:442d $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:442d $fc
     db   $09                                           ;; 0d:442e .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:442f $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:442f $fd
     db   $00                                           ;; 0d:4430 .
     db  $00 ;;END                                      ;; 0d:4431 $00
 
@@ -665,9 +665,9 @@ script_0054:
 script_0055:
     db  $08 ;;IF ? JR                                  ;; 0d:4434 $08
     db   $87, $00, $04                                 ;; 0d:4435 ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4438 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4438 $fc
     db   $09                                           ;; 0d:4439 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:443a $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:443a $fd
     db   $01                                           ;; 0d:443b .
     db  $00 ;;END                                      ;; 0d:443c $00
 
@@ -680,11 +680,11 @@ script_0057:
 script_0058:
     db  $08 ;;IF ? JR                                  ;; 0d:443f $08
     db   $87, $00, $06                                 ;; 0d:4440 ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4443 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4443 $fc
     db   $0b                                           ;; 0d:4444 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4445 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4445 $fd
     db   $01                                           ;; 0d:4446 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4447 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4447 $fd
     db   $02                                           ;; 0d:4448 .
     db  $00 ;;END                                      ;; 0d:4449 $00
 
@@ -697,11 +697,11 @@ script_005a:
 script_005b:
     db  $08 ;;IF ? JR                                  ;; 0d:444c $08
     db   $87, $00, $06                                 ;; 0d:444d ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4450 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4450 $fc
     db   $0d                                           ;; 0d:4451 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4452 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4452 $fd
     db   $00                                           ;; 0d:4453 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4454 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4454 $fd
     db   $01                                           ;; 0d:4455 .
     db  $00 ;;END                                      ;; 0d:4456 $00
 
@@ -714,9 +714,9 @@ script_005d:
 script_005e:
     db  $08 ;;IF ? JR                                  ;; 0d:4459 $08
     db   $87, $00, $04                                 ;; 0d:445a ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:445d $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:445d $fc
     db   $0d                                           ;; 0d:445e .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:445f $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:445f $fd
     db   $02                                           ;; 0d:4460 .
     db  $00 ;;END                                      ;; 0d:4461 $00
 
@@ -729,11 +729,11 @@ script_0060:
 script_0061:
     db  $08 ;;IF ? JR                                  ;; 0d:4464 $08
     db   $87, $00, $06                                 ;; 0d:4465 ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4468 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4468 $fc
     db   $12                                           ;; 0d:4469 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:446a $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:446a $fd
     db   $00                                           ;; 0d:446b .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:446c $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:446c $fd
     db   $01                                           ;; 0d:446d .
     db  $00 ;;END                                      ;; 0d:446e $00
 
@@ -746,11 +746,11 @@ script_0063:
 script_0064:
     db  $08 ;;IF ? JR                                  ;; 0d:4471 $08
     db   $87, $00, $06                                 ;; 0d:4472 ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4475 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4475 $fc
     db   $13                                           ;; 0d:4476 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4477 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4477 $fd
     db   $00                                           ;; 0d:4478 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4479 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4479 $fd
     db   $01                                           ;; 0d:447a .
     db  $db ;;UNK_DB                                   ;; 0d:447b $db
     db   $78                                           ;; 0d:447c .
@@ -767,11 +767,11 @@ script_0066:
 script_0067:
     db  $08 ;;IF ? JR                                  ;; 0d:4482 $08
     db   $87, $00, $06                                 ;; 0d:4483 ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4486 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4486 $fc
     db   $12                                           ;; 0d:4487 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4488 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4488 $fd
     db   $01                                           ;; 0d:4489 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:448a $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:448a $fd
     db   $02                                           ;; 0d:448b .
     db  $00 ;;END                                      ;; 0d:448c $00
 
@@ -784,11 +784,11 @@ script_0069:
 script_006a:
     db  $08 ;;IF ? JR                                  ;; 0d:448f $08
     db   $87, $00, $06                                 ;; 0d:4490 ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4493 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4493 $fc
     db   $18                                           ;; 0d:4494 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4495 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4495 $fd
     db   $00                                           ;; 0d:4496 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4497 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4497 $fd
     db   $01                                           ;; 0d:4498 .
     db  $00 ;;END                                      ;; 0d:4499 $00
 
@@ -801,9 +801,9 @@ script_006c:
 script_006d:
     db  $08 ;;IF ? JR                                  ;; 0d:449c $08
     db   $87, $00, $04                                 ;; 0d:449d ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:44a0 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:44a0 $fc
     db   $18                                           ;; 0d:44a1 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:44a2 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:44a2 $fd
     db   $02                                           ;; 0d:44a3 .
     db  $00 ;;END                                      ;; 0d:44a4 $00
 
@@ -816,9 +816,9 @@ script_006f:
 script_0070:
     db  $08 ;;IF ? JR                                  ;; 0d:44a7 $08
     db   $87, $00, $04                                 ;; 0d:44a8 ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:44ab $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:44ab $fc
     db   $19                                           ;; 0d:44ac .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:44ad $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:44ad $fd
     db   $00                                           ;; 0d:44ae .
     db  $00 ;;END                                      ;; 0d:44af $00
 
@@ -831,11 +831,11 @@ script_0072:
 script_0073:
     db  $08 ;;IF ? JR                                  ;; 0d:44b2 $08
     db   $87, $00, $06                                 ;; 0d:44b3 ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:44b6 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:44b6 $fc
     db   $19                                           ;; 0d:44b7 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:44b8 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:44b8 $fd
     db   $01                                           ;; 0d:44b9 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:44ba $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:44ba $fd
     db   $02                                           ;; 0d:44bb .
     db  $00 ;;END                                      ;; 0d:44bc $00
 
@@ -848,11 +848,11 @@ script_0075:
 script_0076:
     db  $08 ;;IF ? JR                                  ;; 0d:44bf $08
     db   $87, $00, $06                                 ;; 0d:44c0 ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:44c3 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:44c3 $fc
     db   $1c                                           ;; 0d:44c4 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:44c5 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:44c5 $fd
     db   $00                                           ;; 0d:44c6 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:44c7 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:44c7 $fd
     db   $01                                           ;; 0d:44c8 .
     db  $00 ;;END                                      ;; 0d:44c9 $00
 
@@ -865,9 +865,9 @@ script_0078:
 script_0079:
     db  $08 ;;IF ? JR                                  ;; 0d:44cc $08
     db   $87, $00, $04                                 ;; 0d:44cd ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:44d0 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:44d0 $fc
     db   $1d                                           ;; 0d:44d1 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:44d2 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:44d2 $fd
     db   $00                                           ;; 0d:44d3 .
     db  $00 ;;END                                      ;; 0d:44d4 $00
 
@@ -880,9 +880,9 @@ script_007b:
 script_007c:
     db  $08 ;;IF ? JR                                  ;; 0d:44d7 $08
     db   $87, $00, $04                                 ;; 0d:44d8 ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:44db $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:44db $fc
     db   $1c                                           ;; 0d:44dc .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:44dd $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:44dd $fd
     db   $02                                           ;; 0d:44de .
     db  $00 ;;END                                      ;; 0d:44df $00
 
@@ -893,11 +893,11 @@ script_007e:
     db  $00 ;;END                                      ;; 0d:44e1 $00
 
 script_007f:
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:44e2 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:44e2 $fc
     db   $04                                           ;; 0d:44e3 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:44e4 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:44e4 $fd
     db   $00                                           ;; 0d:44e5 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:44e6 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:44e6 $fd
     db   $01                                           ;; 0d:44e7 .
     db  $db ;;UNK_DB                                   ;; 0d:44e8 $db
     db   $78                                           ;; 0d:44e9 .
@@ -914,11 +914,11 @@ script_0081:
 script_0082:
     db  $08 ;;IF ? JR                                  ;; 0d:44ef $08
     db   $87, $00, $06                                 ;; 0d:44f0 ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:44f3 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:44f3 $fc
     db   $05                                           ;; 0d:44f4 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:44f5 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:44f5 $fd
     db   $00                                           ;; 0d:44f6 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:44f7 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:44f7 $fd
     db   $01                                           ;; 0d:44f8 .
     db  $00 ;;END                                      ;; 0d:44f9 $00
 
@@ -931,11 +931,11 @@ script_0084:
 script_0085:
     db  $08 ;;IF ? JR                                  ;; 0d:44fc $08
     db   $87, $00, $06                                 ;; 0d:44fd ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4500 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4500 $fc
     db   $06                                           ;; 0d:4501 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4502 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4502 $fd
     db   $00                                           ;; 0d:4503 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4504 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4504 $fd
     db   $01                                           ;; 0d:4505 .
     db  $00 ;;END                                      ;; 0d:4506 $00
 
@@ -948,11 +948,11 @@ script_0087:
 script_0088:
     db  $08 ;;IF ? JR                                  ;; 0d:4509 $08
     db   $87, $00, $06                                 ;; 0d:450a ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:450d $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:450d $fc
     db   $07                                           ;; 0d:450e .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:450f $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:450f $fd
     db   $00                                           ;; 0d:4510 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4511 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4511 $fd
     db   $01                                           ;; 0d:4512 .
     db  $00 ;;END                                      ;; 0d:4513 $00
 
@@ -965,9 +965,9 @@ script_008a:
 script_008b:
     db  $08 ;;IF ? JR                                  ;; 0d:4516 $08
     db   $87, $00, $04                                 ;; 0d:4517 ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:451a $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:451a $fc
     db   $0a                                           ;; 0d:451b .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:451c $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:451c $fd
     db   $00                                           ;; 0d:451d .
     db  $00 ;;END                                      ;; 0d:451e $00
 
@@ -980,11 +980,11 @@ script_008d:
 script_008e:
     db  $08 ;;IF ? JR                                  ;; 0d:4521 $08
     db   $87, $00, $06                                 ;; 0d:4522 ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4525 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4525 $fc
     db   $0a                                           ;; 0d:4526 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4527 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4527 $fd
     db   $01                                           ;; 0d:4528 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4529 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4529 $fd
     db   $02                                           ;; 0d:452a .
     db  $db ;;UNK_DB                                   ;; 0d:452b $db
     db   $78                                           ;; 0d:452c .
@@ -999,9 +999,9 @@ script_0090:
 script_0091:
     db  $08 ;;IF ? JR                                  ;; 0d:4530 $08
     db   $87, $00, $04                                 ;; 0d:4531 ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4534 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4534 $fc
     db   $0c                                           ;; 0d:4535 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4536 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4536 $fd
     db   $00                                           ;; 0d:4537 .
     db  $00 ;;END                                      ;; 0d:4538 $00
 
@@ -1014,9 +1014,9 @@ script_0093:
 script_0094:
     db  $08 ;;IF ? JR                                  ;; 0d:453b $08
     db   $87, $00, $04                                 ;; 0d:453c ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:453f $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:453f $fc
     db   $0c                                           ;; 0d:4540 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4541 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4541 $fd
     db   $02                                           ;; 0d:4542 .
     db  $00 ;;END                                      ;; 0d:4543 $00
 
@@ -1029,11 +1029,11 @@ script_0096:
 script_0097:
     db  $08 ;;IF ? JR                                  ;; 0d:4546 $08
     db   $87, $00, $06                                 ;; 0d:4547 ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:454a $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:454a $fc
     db   $0e                                           ;; 0d:454b .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:454c $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:454c $fd
     db   $01                                           ;; 0d:454d .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:454e $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:454e $fd
     db   $02                                           ;; 0d:454f .
     db  $db ;;UNK_DB                                   ;; 0d:4550 $db
     db   $78                                           ;; 0d:4551 .
@@ -1050,11 +1050,11 @@ script_0099:
 script_009a:
     db  $08 ;;IF ? JR                                  ;; 0d:4557 $08
     db   $87, $00, $06                                 ;; 0d:4558 ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:455b $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:455b $fc
     db   $0f                                           ;; 0d:455c .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:455d $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:455d $fd
     db   $01                                           ;; 0d:455e .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:455f $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:455f $fd
     db   $02                                           ;; 0d:4560 .
     db  $00 ;;END                                      ;; 0d:4561 $00
 
@@ -1067,11 +1067,11 @@ script_009c:
 script_009d:
     db  $08 ;;IF ? JR                                  ;; 0d:4564 $08
     db   $87, $00, $06                                 ;; 0d:4565 ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4568 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4568 $fc
     db   $10                                           ;; 0d:4569 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:456a $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:456a $fd
     db   $01                                           ;; 0d:456b .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:456c $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:456c $fd
     db   $02                                           ;; 0d:456d .
     db  $db ;;UNK_DB                                   ;; 0d:456e $db
     db   $78                                           ;; 0d:456f .
@@ -1092,9 +1092,9 @@ script_009f:
 script_00a0:
     db  $08 ;;IF ? JR                                  ;; 0d:4579 $08
     db   $87, $00, $04                                 ;; 0d:457a ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:457d $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:457d $fc
     db   $11                                           ;; 0d:457e .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:457f $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:457f $fd
     db   $02                                           ;; 0d:4580 .
     db  $00 ;;END                                      ;; 0d:4581 $00
 
@@ -1107,11 +1107,11 @@ script_00a2:
 script_00a3:
     db  $08 ;;IF ? JR                                  ;; 0d:4584 $08
     db   $87, $00, $06                                 ;; 0d:4585 ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4588 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4588 $fc
     db   $14                                           ;; 0d:4589 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:458a $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:458a $fd
     db   $00                                           ;; 0d:458b .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:458c $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:458c $fd
     db   $01                                           ;; 0d:458d .
     db  $00 ;;END                                      ;; 0d:458e $00
 
@@ -1124,9 +1124,9 @@ script_00a5:
 script_00a6:
     db  $08 ;;IF ? JR                                  ;; 0d:4591 $08
     db   $87, $00, $04                                 ;; 0d:4592 ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4595 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4595 $fc
     db   $08                                           ;; 0d:4596 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4597 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4597 $fd
     db   $01                                           ;; 0d:4598 .
     db  $00 ;;END                                      ;; 0d:4599 $00
 
@@ -1139,11 +1139,11 @@ script_00a8:
 script_00a9:
     db  $08 ;;IF ? JR                                  ;; 0d:459c $08
     db   $87, $00, $06                                 ;; 0d:459d ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:45a0 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:45a0 $fc
     db   $16                                           ;; 0d:45a1 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:45a2 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:45a2 $fd
     db   $01                                           ;; 0d:45a3 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:45a4 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:45a4 $fd
     db   $02                                           ;; 0d:45a5 .
     db  $db ;;UNK_DB                                   ;; 0d:45a6 $db
     db   $78                                           ;; 0d:45a7 .
@@ -1160,9 +1160,9 @@ script_00ab:
 script_00ac:
     db  $08 ;;IF ? JR                                  ;; 0d:45ad $08
     db   $87, $00, $04                                 ;; 0d:45ae ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:45b1 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:45b1 $fc
     db   $17                                           ;; 0d:45b2 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:45b3 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:45b3 $fd
     db   $00                                           ;; 0d:45b4 .
     db  $00 ;;END                                      ;; 0d:45b5 $00
 
@@ -1174,13 +1174,13 @@ script_00ae:
 
 script_00af:
     db  $e7 ;;UNK_E7                                   ;; 0d:45b8 $e7
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:45b9 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:45b9 $fc
     db   $05                                           ;; 0d:45ba .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:45bb $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:45bb $fd
     db   $00                                           ;; 0d:45bc .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:45bd $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:45bd $fd
     db   $00                                           ;; 0d:45be .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:45bf $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:45bf $fd
     db   $00                                           ;; 0d:45c0 .
     db  $00 ;;END                                      ;; 0d:45c1 $00
 
@@ -1190,9 +1190,9 @@ script_00b0:
 script_00b1:
     db  $08 ;;IF ? JR                                  ;; 0d:45c3 $08
     db   $cf, $00, $07                                 ;; 0d:45c4 ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:45c7 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:45c7 $fc
     db   $59                                           ;; 0d:45c8 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:45c9 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:45c9 $fd
     db   $02                                           ;; 0d:45ca .
     db  $ca ;;UNK_ca??                                 ;; 0d:45cb $ca
     db   $04, $5e                                      ;; 0d:45cc ??
@@ -1202,9 +1202,9 @@ script_00b1:
 script_00b2:
     db  $08 ;;IF ? JR                                  ;; 0d:45d0 $08
     db   $87, $00, $04                                 ;; 0d:45d1 ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:45d4 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:45d4 $fc
     db   $1a                                           ;; 0d:45d5 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:45d6 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:45d6 $fd
     db   $01                                           ;; 0d:45d7 .
     db  $00 ;;END                                      ;; 0d:45d8 $00
 
@@ -1217,11 +1217,11 @@ script_00b4:
 script_00b5:
     db  $08 ;;IF ? JR                                  ;; 0d:45db $08
     db   $87, $00, $06                                 ;; 0d:45dc ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:45df $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:45df $fc
     db   $1b                                           ;; 0d:45e0 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:45e1 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:45e1 $fd
     db   $00                                           ;; 0d:45e2 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:45e3 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:45e3 $fd
     db   $01                                           ;; 0d:45e4 .
     db  $00 ;;END                                      ;; 0d:45e5 $00
 
@@ -1234,11 +1234,11 @@ script_00b7:
 script_00b8:
     db  $08 ;;IF ? JR                                  ;; 0d:45e8 $08
     db   $87, $00, $06                                 ;; 0d:45e9 ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:45ec $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:45ec $fc
     db   $1e                                           ;; 0d:45ed .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:45ee $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:45ee $fd
     db   $00                                           ;; 0d:45ef .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:45f0 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:45f0 $fd
     db   $01                                           ;; 0d:45f1 .
     db  $00 ;;END                                      ;; 0d:45f2 $00
 
@@ -1251,9 +1251,9 @@ script_00ba:
 script_00bb:
     db  $08 ;;IF ? JR                                  ;; 0d:45f5 $08
     db   $87, $00, $04                                 ;; 0d:45f6 ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:45f9 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:45f9 $fc
     db   $1a                                           ;; 0d:45fa .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:45fb $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:45fb $fd
     db   $00                                           ;; 0d:45fc .
     db  $00 ;;END                                      ;; 0d:45fd $00
 
@@ -1266,11 +1266,11 @@ script_00bd:
 script_00be:
     db  $08 ;;IF ? JR                                  ;; 0d:4600 $08
     db   $87, $00, $06                                 ;; 0d:4601 ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4604 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4604 $fc
     db   $1f                                           ;; 0d:4605 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4606 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4606 $fd
     db   $00                                           ;; 0d:4607 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4608 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4608 $fd
     db   $01                                           ;; 0d:4609 .
     db  $00 ;;END                                      ;; 0d:460a $00
 
@@ -1283,9 +1283,9 @@ script_00c0:
 script_00c1:
     db  $08 ;;IF ? JR                                  ;; 0d:460d $08
     db   $87, $00, $04                                 ;; 0d:460e ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4611 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4611 $fc
     db   $1f                                           ;; 0d:4612 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4613 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4613 $fd
     db   $02                                           ;; 0d:4614 .
     db  $00 ;;END                                      ;; 0d:4615 $00
 
@@ -1298,11 +1298,11 @@ script_00c3:
 script_00c4:
     db  $08 ;;IF ? JR                                  ;; 0d:4618 $08
     db   $87, $00, $06                                 ;; 0d:4619 ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:461c $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:461c $fc
     db   $20                                           ;; 0d:461d .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:461e $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:461e $fd
     db   $01                                           ;; 0d:461f .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4620 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4620 $fd
     db   $02                                           ;; 0d:4621 .
     db  $db ;;UNK_DB                                   ;; 0d:4622 $db
     db   $78                                           ;; 0d:4623 .
@@ -1323,11 +1323,11 @@ script_00c6:
 script_00c7:
     db  $08 ;;IF ? JR                                  ;; 0d:462d $08
     db   $87, $00, $06                                 ;; 0d:462e ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4631 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4631 $fc
     db   $21                                           ;; 0d:4632 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4633 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4633 $fd
     db   $00                                           ;; 0d:4634 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4635 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4635 $fd
     db   $01                                           ;; 0d:4636 .
     db  $00 ;;END                                      ;; 0d:4637 $00
 
@@ -1340,9 +1340,9 @@ script_00c9:
 script_00ca:
     db  $08 ;;IF ? JR                                  ;; 0d:463a $08
     db   $87, $00, $04                                 ;; 0d:463b ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:463e $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:463e $fc
     db   $22                                           ;; 0d:463f .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4640 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4640 $fd
     db   $00                                           ;; 0d:4641 .
     db  $00 ;;END                                      ;; 0d:4642 $00
 
@@ -1355,9 +1355,9 @@ script_00cc:
 script_00cd:
     db  $08 ;;IF ? JR                                  ;; 0d:4645 $08
     db   $87, $00, $04                                 ;; 0d:4646 ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4649 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4649 $fc
     db   $22                                           ;; 0d:464a .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:464b $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:464b $fd
     db   $01                                           ;; 0d:464c .
     db  $00 ;;END                                      ;; 0d:464d $00
 
@@ -1370,9 +1370,9 @@ script_00cf:
 script_00d0:
     db  $08 ;;IF ? JR                                  ;; 0d:4650 $08
     db   $87, $00, $04                                 ;; 0d:4651 ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4654 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4654 $fc
     db   $23                                           ;; 0d:4655 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4656 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4656 $fd
     db   $01                                           ;; 0d:4657 .
     db  $00 ;;END                                      ;; 0d:4658 $00
 
@@ -1385,9 +1385,9 @@ script_00d2:
 script_00d3:
     db  $08 ;;IF ? JR                                  ;; 0d:465b $08
     db   $87, $00, $04                                 ;; 0d:465c ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:465f $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:465f $fc
     db   $23                                           ;; 0d:4660 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4661 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4661 $fd
     db   $02                                           ;; 0d:4662 .
     db  $00 ;;END                                      ;; 0d:4663 $00
 
@@ -1402,19 +1402,19 @@ script_00d6:
     db   $78                                           ;; 0d:4667 .
     db  $08 ;;IF ? JR                                  ;; 0d:4668 $08
     db   $87, $00, $10                                 ;; 0d:4669 ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:466c $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:466c $fc
     db   $03                                           ;; 0d:466d .
     db  $08 ;;IF ? JR                                  ;; 0d:466e $08
     db   $8d, $00, $06                                 ;; 0d:466f ...
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4672 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4672 $fd
     db   $00                                           ;; 0d:4673 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4674 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4674 $fd
     db   $01                                           ;; 0d:4675 .
     db  $01 ;;JR                                       ;; 0d:4676 $01
     db   $04                                           ;; 0d:4677 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4678 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4678 $fd
     db   $02                                           ;; 0d:4679 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:467a $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:467a $fd
     db   $02                                           ;; 0d:467b .
     db  $00 ;;END                                      ;; 0d:467c $00
 
@@ -1426,9 +1426,9 @@ script_00d8:
     db   $0d, $00, $0b                                 ;; 0d:467f ...
     db  $08 ;;IF ? JR                                  ;; 0d:4682 $08
     db   $f8, $00, $07                                 ;; 0d:4683 ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4686 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4686 $fc
     db   $59                                           ;; 0d:4687 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4688 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4688 $fd
     db   $00                                           ;; 0d:4689 .
     db  $c9 ;;UNK_c9??                                 ;; 0d:468a $c9
     db   $04, $41                                      ;; 0d:468b ??
@@ -1446,9 +1446,9 @@ script_00da:
 script_00db:
     db  $08 ;;IF ? JR                                  ;; 0d:4699 $08
     db   $b9, $00, $07                                 ;; 0d:469a ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:469d $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:469d $fc
     db   $59                                           ;; 0d:469e .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:469f $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:469f $fd
     db   $00                                           ;; 0d:46a0 .
     db  $c9 ;;UNK_c9??                                 ;; 0d:46a1 $c9
     db   $04, $5f                                      ;; 0d:46a2 ??
@@ -1457,11 +1457,11 @@ script_00db:
 
 script_00dc:
     db  $e7 ;;UNK_E7                                   ;; 0d:46a6 $e7
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:46a7 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:46a7 $fc
     db   $0a                                           ;; 0d:46a8 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:46a9 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:46a9 $fd
     db   $01                                           ;; 0d:46aa .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:46ab $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:46ab $fd
     db   $01                                           ;; 0d:46ac .
     db  $00 ;;END                                      ;; 0d:46ad $00
 
@@ -1471,9 +1471,9 @@ script_00dd:
 script_00de:
     db  $08 ;;IF ? JR                                  ;; 0d:46af $08
     db   $bf, $00, $07                                 ;; 0d:46b0 ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:46b3 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:46b3 $fc
     db   $59                                           ;; 0d:46b4 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:46b5 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:46b5 $fd
     db   $00                                           ;; 0d:46b6 .
     db  $c9 ;;UNK_c9??                                 ;; 0d:46b7 $c9
     db   $04, $60                                      ;; 0d:46b8 ??
@@ -1481,9 +1481,9 @@ script_00de:
     db   $00                                           ;; 0d:46bb ?
 
 script_00e0:
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:46bc $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:46bc $fc
     db   $24                                           ;; 0d:46bd .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:46be $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:46be $fd
     db   $02                                           ;; 0d:46bf .
     db  $00 ;;END                                      ;; 0d:46c0 $00
 
@@ -1494,11 +1494,11 @@ script_00e2:
     db  $00 ;;END                                      ;; 0d:46c2 $00
 
 script_00e3:
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:46c3 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:46c3 $fc
     db   $25                                           ;; 0d:46c4 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:46c5 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:46c5 $fd
     db   $00                                           ;; 0d:46c6 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:46c7 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:46c7 $fd
     db   $02                                           ;; 0d:46c8 .
     db  $00 ;;END                                      ;; 0d:46c9 $00
 
@@ -1592,17 +1592,17 @@ script_00e8:
 script_00e9:
     db  $08 ;;IF ? JR                                  ;; 0d:473e $08
     db   $28, $00, $08                                 ;; 0d:473f ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4742 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4742 $fc
     db   $3e                                           ;; 0d:4743 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4744 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4744 $fd
     db   $01                                           ;; 0d:4745 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4746 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4746 $fd
     db   $02                                           ;; 0d:4747 .
     db  $01 ;;JR                                       ;; 0d:4748 $01
     db   $04                                           ;; 0d:4749 .
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:474a $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:474a $fc
     db   $3b                                           ;; 0d:474b .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:474c $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:474c $fd
     db   $01                                           ;; 0d:474d .
     db  $00 ;;END                                      ;; 0d:474e $00
 
@@ -1613,9 +1613,9 @@ script_00eb:
     db  $00 ;;END                                      ;; 0d:4750 $00
 
 script_00ec:
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4751 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4751 $fc
     db   $3c                                           ;; 0d:4752 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4753 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4753 $fd
     db   $01                                           ;; 0d:4754 .
     db  $00 ;;END                                      ;; 0d:4755 $00
 
@@ -1658,11 +1658,11 @@ script_00f1:
 
 script_00f2:
     db  $e7 ;;UNK_E7                                   ;; 0d:4780 $e7
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4781 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4781 $fc
     db   $16                                           ;; 0d:4782 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4783 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4783 $fd
     db   $02                                           ;; 0d:4784 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4785 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4785 $fd
     db   $02                                           ;; 0d:4786 .
     db  $00 ;;END                                      ;; 0d:4787 $00
 
@@ -1672,9 +1672,9 @@ script_00f3:
 script_00f4:
     db  $08 ;;IF ? JR                                  ;; 0d:4789 $08
     db   $bc, $00, $07                                 ;; 0d:478a ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:478d $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:478d $fc
     db   $59                                           ;; 0d:478e .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:478f $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:478f $fd
     db   $00                                           ;; 0d:4790 .
     db  $c9 ;;UNK_c9??                                 ;; 0d:4791 $c9
     db   $04, $63                                      ;; 0d:4792 ??
@@ -1684,17 +1684,17 @@ script_00f4:
 script_00f5:
     db  $08 ;;IF ? JR                                  ;; 0d:4796 $08
     db   $8b, $00, $06                                 ;; 0d:4797 ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:479a $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:479a $fc
     db   $2a                                           ;; 0d:479b .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:479c $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:479c $fd
     db   $00                                           ;; 0d:479d .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:479e $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:479e $fd
     db   $02                                           ;; 0d:479f .
     db  $08 ;;IF ? JR                                  ;; 0d:47a0 $08
     db   $8a, $00, $19                                 ;; 0d:47a1 ...
     db  $f8 ;;SET_MUSIC                                ;; 0d:47a4 $f8
     db   $00                                           ;; 0d:47a5 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:47a6 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:47a6 $fd
     db   $01                                           ;; 0d:47a7 .
     db  $04 ;;MSG                                      ;; 0d:47a8 $04
     db   $10, $97, $be, $c5, $c9, $f3, $1a, $97        ;; 0d:47a9 ........
@@ -1725,9 +1725,9 @@ script_00f7:
     db  $00 ;;END                                      ;; 0d:47d4 $00
 
 script_00f8:
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:47d5 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:47d5 $fc
     db   $2b                                           ;; 0d:47d6 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:47d7 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:47d7 $fd
     db   $00                                           ;; 0d:47d8 .
     db  $00 ;;END                                      ;; 0d:47d9 $00
 
@@ -1738,9 +1738,9 @@ script_00fa:
     db  $00 ;;END                                      ;; 0d:47db $00
 
 script_00fb:
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:47dc $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:47dc $fc
     db   $2b                                           ;; 0d:47dd .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:47de $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:47de $fd
     db   $01                                           ;; 0d:47df .
     db  $00 ;;END                                      ;; 0d:47e0 $00
 
@@ -1751,11 +1751,11 @@ script_00fd:
     db  $00 ;;END                                      ;; 0d:47e2 $00
 
 script_00fe:
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:47e3 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:47e3 $fc
     db   $31                                           ;; 0d:47e4 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:47e5 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:47e5 $fd
     db   $01                                           ;; 0d:47e6 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:47e7 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:47e7 $fd
     db   $02                                           ;; 0d:47e8 .
     db  $00 ;;END                                      ;; 0d:47e9 $00
 
@@ -1766,11 +1766,11 @@ script_0100:
     db  $00 ;;END                                      ;; 0d:47eb $00
 
 script_0101:
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:47ec $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:47ec $fc
     db   $1a                                           ;; 0d:47ed .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:47ee $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:47ee $fd
     db   $00                                           ;; 0d:47ef .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:47f0 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:47f0 $fd
     db   $00                                           ;; 0d:47f1 .
     db  $00 ;;END                                      ;; 0d:47f2 $00
 
@@ -1780,9 +1780,9 @@ script_0102:
 script_0103:
     db  $08 ;;IF ? JR                                  ;; 0d:47f4 $08
     db   $be, $00, $07                                 ;; 0d:47f5 ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:47f8 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:47f8 $fc
     db   $59                                           ;; 0d:47f9 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:47fa $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:47fa $fd
     db   $00                                           ;; 0d:47fb .
     db  $c9 ;;UNK_c9??                                 ;; 0d:47fc $c9
     db   $04, $61                                      ;; 0d:47fd ??
@@ -1797,29 +1797,31 @@ script_0105:
 script_0106:
     db  $08 ;;IF ? JR                                  ;; 0d:4802 $08
     db   $90, $00, $06                                 ;; 0d:4803 ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4806 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4806 $fc
     db   $33                                           ;; 0d:4807 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4808 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4808 $fd
     db   $00                                           ;; 0d:4809 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:480a $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:480a $fd
     db   $01                                           ;; 0d:480b .
     db  $08 ;;IF ? JR                                  ;; 0d:480c $08
     db   $10, $91, $00, $0a                            ;; 0d:480d ....
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4811 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4811 $fc
     db   $00                                           ;; 0d:4812 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4813 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4813 $fd
     db   $00                                           ;; 0d:4814 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4815 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4815 $fd
     db   $01                                           ;; 0d:4816 .
-    db  $bf ;;UNK_bf??                                 ;; 0d:4817 $bf
-    db   $f9, $14, $bf                                 ;; 0d:4818 ???
+    db  $bf ;;FLASH_SCREEN                             ;; 0d:4817 $bf
+    db  $f9 ;;SFX                                      ;; 0d:4818 $f9
+    db   $14                                           ;; 0d:4819 .
+    db  $bf ;;FLASH_SCREEN                             ;; 0d:481a $bf
     db  $08 ;;IF ? JR                                  ;; 0d:481b $08
     db   $11, $00, $06                                 ;; 0d:481c ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:481f $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:481f $fc
     db   $33                                           ;; 0d:4820 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4821 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4821 $fd
     db   $00                                           ;; 0d:4822 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4823 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4823 $fd
     db   $01                                           ;; 0d:4824 .
     db  $00 ;;END                                      ;; 0d:4825 $00
 
@@ -1832,27 +1834,27 @@ script_0108:
 script_0109:
     db  $08 ;;IF ? JR                                  ;; 0d:4828 $08
     db   $90, $00, $04                                 ;; 0d:4829 ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:482c $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:482c $fc
     db   $34                                           ;; 0d:482d .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:482e $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:482e $fd
     db   $00                                           ;; 0d:482f .
     db  $08 ;;IF ? JR                                  ;; 0d:4830 $08
     db   $10, $91, $00, $0a                            ;; 0d:4831 ....
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4835 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4835 $fc
     db   $00                                           ;; 0d:4836 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4837 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4837 $fd
     db   $00                                           ;; 0d:4838 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4839 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4839 $fd
     db   $01                                           ;; 0d:483a .
     db  $f9 ;;SFX                                      ;; 0d:483b $f9
     db   $14                                           ;; 0d:483c .
-    db  $bf ;;UNK_bf??                                 ;; 0d:483d $bf
-    db   $bf                                           ;; 0d:483e ?
+    db  $bf ;;FLASH_SCREEN                             ;; 0d:483d $bf
+    db  $bf ;;FLASH_SCREEN                             ;; 0d:483e $bf
     db  $08 ;;IF ? JR                                  ;; 0d:483f $08
     db   $11, $00, $04                                 ;; 0d:4840 ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4843 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4843 $fc
     db   $34                                           ;; 0d:4844 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4845 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4845 $fd
     db   $00                                           ;; 0d:4846 .
     db  $00 ;;END                                      ;; 0d:4847 $00
 
@@ -1865,9 +1867,9 @@ script_010b:
 script_010c:
     db  $08 ;;IF ? JR                                  ;; 0d:484a $08
     db   $10, $91, $00, $04                            ;; 0d:484b ....
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:484f $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:484f $fc
     db   $24                                           ;; 0d:4850 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4851 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4851 $fd
     db   $02                                           ;; 0d:4852 .
     db  $00 ;;END                                      ;; 0d:4853 $00
 
@@ -1878,11 +1880,11 @@ script_010e:
     db  $00 ;;END                                      ;; 0d:4855 $00
 
 script_010f:
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4856 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4856 $fc
     db   $37                                           ;; 0d:4857 .
     db  $08 ;;IF ? JR                                  ;; 0d:4858 $08
     db   $10, $9f, $00, $02                            ;; 0d:4859 ....
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:485d $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:485d $fd
     db   $02                                           ;; 0d:485e .
     db  $08 ;;IF ? JR                                  ;; 0d:485f $08
     db   $90, $00, $be                                 ;; 0d:4860 ...
@@ -1920,11 +1922,11 @@ script_0111:
     db  $00 ;;END                                      ;; 0d:4923 $00
 
 script_0112:
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4924 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4924 $fc
     db   $2d                                           ;; 0d:4925 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4926 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4926 $fd
     db   $00                                           ;; 0d:4927 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4928 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4928 $fd
     db   $01                                           ;; 0d:4929 .
     db  $00 ;;END                                      ;; 0d:492a $00
 
@@ -1935,9 +1937,9 @@ script_0114:
     db  $00 ;;END                                      ;; 0d:492c $00
 
 script_0115:
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:492d $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:492d $fc
     db   $2e                                           ;; 0d:492e .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:492f $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:492f $fd
     db   $00                                           ;; 0d:4930 .
     db  $00 ;;END                                      ;; 0d:4931 $00
 
@@ -1948,11 +1950,11 @@ script_0117:
     db  $00 ;;END                                      ;; 0d:4933 $00
 
 script_0118:
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4934 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4934 $fc
     db   $2f                                           ;; 0d:4935 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4936 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4936 $fd
     db   $00                                           ;; 0d:4937 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4938 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4938 $fd
     db   $01                                           ;; 0d:4939 .
     db  $00 ;;END                                      ;; 0d:493a $00
 
@@ -1965,9 +1967,9 @@ script_011a:
 script_011b:
     db  $08 ;;IF ? JR                                  ;; 0d:493d $08
     db   $26, $00, $04                                 ;; 0d:493e ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4941 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4941 $fc
     db   $30                                           ;; 0d:4942 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4943 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4943 $fd
     db   $00                                           ;; 0d:4944 .
     db  $00 ;;END                                      ;; 0d:4945 $00
 
@@ -1982,25 +1984,40 @@ script_011e:
     db   $98, $00, $0f                                 ;; 0d:4949 ...
     db  $f8 ;;SET_MUSIC                                ;; 0d:494c $f8
     db   $0f                                           ;; 0d:494d .
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:494e $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:494e $fc
     db   $6c                                           ;; 0d:494f .
     db  $03 ;;LOOP                                     ;; 0d:4950 $03
     db   $05, $04                                      ;; 0d:4951 ..
     db  $f9 ;;SFX                                      ;; 0d:4953 $f9
     db   $14                                           ;; 0d:4954 .
-    db  $bf ;;UNK_bf??                                 ;; 0d:4955 $bf
-    db   $00, $fd, $00, $01, $32                       ;; 0d:4956 ?????
+    db  $bf ;;FLASH_SCREEN                             ;; 0d:4955 $bf
+    db  $00 ;;END                                      ;; 0d:4956 $00
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4957 $fd
+    db   $00                                           ;; 0d:4958 .
+    db  $01 ;;JR                                       ;; 0d:4959 $01
+    db   $32                                           ;; 0d:495a .
     db  $03 ;;LOOP                                     ;; 0d:495b $03
     db   $03, $04                                      ;; 0d:495c ..
     db  $f9 ;;SFX                                      ;; 0d:495e $f9
     db   $14                                           ;; 0d:495f .
-    db  $bf ;;UNK_bf??                                 ;; 0d:4960 $bf
-    db   $00, $04, $10, $c3, $90, $dc, $41, $f5        ;; 0d:4961 ????????
-    db   $cc, $d8, $20, $23, $d8, $1a, $22, $e5        ;; 0d:4969 ????????
-    db   $e8, $20, $e3, $46, $27, $3e, $d9, $1a        ;; 0d:4971 ????????
-    db   $51, $29, $58, $95, $ea, $f3, $12, $11        ;; 0d:4979 ????????
-    db   $00, $03, $05, $04, $f9, $14, $bf, $00        ;; 0d:4981 ????????
-    db   $fe, $0e, $f8, $13, $00                       ;; 0d:4989 ?????
+    db  $bf ;;FLASH_SCREEN                             ;; 0d:4960 $bf
+    db  $00 ;;END                                      ;; 0d:4961 $00
+    db  $04 ;;MSG                                      ;; 0d:4962 $04
+    db   $10, $c3, $90, $dc, $41, $f5, $cc, $d8        ;; 0d:4963 ........
+    db   $20, $23, $d8, $1a, $22, $e5, $e8, $20        ;; 0d:496b ........
+    db   $e3, $46, $27, $3e, $d9, $1a, $51, $29        ;; 0d:4973 ........
+    db   $58, $95, $ea, $f3, $12, $11, $00             ;; 0d:497b .......
+    db  $03 ;;LOOP                                     ;; 0d:4982 $03
+    db   $05, $04                                      ;; 0d:4983 ..
+    db  $f9 ;;SFX                                      ;; 0d:4985 $f9
+    db   $14                                           ;; 0d:4986 .
+    db  $bf ;;FLASH_SCREEN                             ;; 0d:4987 $bf
+    db  $00 ;;END                                      ;; 0d:4988 $00
+    db  $fe ;;SPAWN_BOSS                               ;; 0d:4989 $fe
+    db   $0e                                           ;; 0d:498a .
+    db  $f8 ;;SET_MUSIC                                ;; 0d:498b $f8
+    db   $13                                           ;; 0d:498c .
+    db  $00 ;;END                                      ;; 0d:498d $00
 
 script_011f:
     db  $00 ;;END                                      ;; 0d:498e $00
@@ -2065,27 +2082,27 @@ script_0120:
 script_0121:
     db  $08 ;;IF ? JR                                  ;; 0d:4a66 $08
     db   $90, $00, $04                                 ;; 0d:4a67 ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4a6a $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4a6a $fc
     db   $37                                           ;; 0d:4a6b .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4a6c $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4a6c $fd
     db   $00                                           ;; 0d:4a6d .
     db  $08 ;;IF ? JR                                  ;; 0d:4a6e $08
     db   $10, $91, $00, $0a                            ;; 0d:4a6f ....
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4a73 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4a73 $fc
     db   $00                                           ;; 0d:4a74 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4a75 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4a75 $fd
     db   $00                                           ;; 0d:4a76 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4a77 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4a77 $fd
     db   $01                                           ;; 0d:4a78 .
     db  $f9 ;;SFX                                      ;; 0d:4a79 $f9
     db   $14                                           ;; 0d:4a7a .
-    db  $bf ;;UNK_bf??                                 ;; 0d:4a7b $bf
-    db   $bf                                           ;; 0d:4a7c ?
+    db  $bf ;;FLASH_SCREEN                             ;; 0d:4a7b $bf
+    db  $bf ;;FLASH_SCREEN                             ;; 0d:4a7c $bf
     db  $08 ;;IF ? JR                                  ;; 0d:4a7d $08
     db   $2f, $00, $04                                 ;; 0d:4a7e ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4a81 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4a81 $fc
     db   $34                                           ;; 0d:4a82 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4a83 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4a83 $fd
     db   $01                                           ;; 0d:4a84 .
     db  $00 ;;END                                      ;; 0d:4a85 $00
 
@@ -2098,9 +2115,9 @@ script_0123:
 script_0124:
     db  $08 ;;IF ? JR                                  ;; 0d:4a88 $08
     db   $a6, $00, $04                                 ;; 0d:4a89 ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4a8c $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4a8c $fc
     db   $2c                                           ;; 0d:4a8d .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4a8e $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4a8e $fd
     db   $02                                           ;; 0d:4a8f .
     db  $00 ;;END                                      ;; 0d:4a90 $00
 
@@ -2111,11 +2128,11 @@ script_0126:
     db  $00 ;;END                                      ;; 0d:4a92 $00
 
 script_0127:
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4a93 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4a93 $fc
     db   $59                                           ;; 0d:4a94 .
     db  $08 ;;IF ? JR                                  ;; 0d:4a95 $08
     db   $cd, $00, $05                                 ;; 0d:4a96 ...
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4a99 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4a99 $fd
     db   $01                                           ;; 0d:4a9a .
     db  $c9 ;;UNK_c9??                                 ;; 0d:4a9b $c9
     db   $04, $43                                      ;; 0d:4a9c ..
@@ -2128,11 +2145,11 @@ script_0129:
     db  $00 ;;END                                      ;; 0d:4aa0 $00
 
 script_012a:
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4aa1 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4aa1 $fc
     db   $04                                           ;; 0d:4aa2 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4aa3 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4aa3 $fd
     db   $02                                           ;; 0d:4aa4 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4aa5 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4aa5 $fd
     db   $00                                           ;; 0d:4aa6 .
     db  $00 ;;END                                      ;; 0d:4aa7 $00
 
@@ -2143,9 +2160,9 @@ script_012c:
     db  $00 ;;END                                      ;; 0d:4aa9 $00
 
 script_012d:
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4aaa $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4aaa $fc
     db   $3f                                           ;; 0d:4aab .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4aac $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4aac $fd
     db   $01                                           ;; 0d:4aad .
     db  $00 ;;END                                      ;; 0d:4aae $00
 
@@ -2158,9 +2175,9 @@ script_012f:
 script_0130:
     db  $08 ;;IF ? JR                                  ;; 0d:4ab1 $08
     db   $16, $00, $04                                 ;; 0d:4ab2 ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4ab5 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4ab5 $fc
     db   $60                                           ;; 0d:4ab6 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4ab7 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4ab7 $fd
     db   $00                                           ;; 0d:4ab8 .
     db  $00 ;;END                                      ;; 0d:4ab9 $00
 
@@ -2171,9 +2188,9 @@ script_0132:
     db  $00 ;;END                                      ;; 0d:4abb $00
 
 script_0133:
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4abc $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4abc $fc
     db   $40                                           ;; 0d:4abd .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4abe $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4abe $fd
     db   $00                                           ;; 0d:4abf .
     db  $00 ;;END                                      ;; 0d:4ac0 $00
 
@@ -2184,9 +2201,9 @@ script_0135:
     db  $00 ;;END                                      ;; 0d:4ac2 $00
 
 script_0136:
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4ac3 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4ac3 $fc
     db   $40                                           ;; 0d:4ac4 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4ac5 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4ac5 $fd
     db   $01                                           ;; 0d:4ac6 .
     db  $00 ;;END                                      ;; 0d:4ac7 $00
 
@@ -2197,11 +2214,11 @@ script_0138:
     db  $00 ;;END                                      ;; 0d:4ac9 $00
 
 script_0139:
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4aca $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4aca $fc
     db   $05                                           ;; 0d:4acb .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4acc $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4acc $fd
     db   $02                                           ;; 0d:4acd .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4ace $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4ace $fd
     db   $00                                           ;; 0d:4acf .
     db  $00 ;;END                                      ;; 0d:4ad0 $00
 
@@ -2212,9 +2229,9 @@ script_013b:
     db  $00 ;;END                                      ;; 0d:4ad2 $00
 
 script_013c:
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4ad3 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4ad3 $fc
     db   $40                                           ;; 0d:4ad4 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4ad5 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4ad5 $fd
     db   $02                                           ;; 0d:4ad6 .
     db  $00 ;;END                                      ;; 0d:4ad7 $00
 
@@ -2225,15 +2242,15 @@ script_013e:
     db  $00 ;;END                                      ;; 0d:4ad9 $00
 
 script_013f:
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4ada $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4ada $fc
     db   $58                                           ;; 0d:4adb .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4adc $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4adc $fd
     db   $00                                           ;; 0d:4add .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4ade $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4ade $fd
     db   $01                                           ;; 0d:4adf .
     db  $08 ;;IF ? JR                                  ;; 0d:4ae0 $08
     db   $16, $d4, $00, $02                            ;; 0d:4ae1 ....
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4ae5 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4ae5 $fd
     db   $02                                           ;; 0d:4ae6 .
     db  $00 ;;END                                      ;; 0d:4ae7 $00
 
@@ -2254,11 +2271,11 @@ script_0141:
     db  $00 ;;END                                      ;; 0d:4b15 $00
 
 script_0142:
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4b16 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4b16 $fc
     db   $38                                           ;; 0d:4b17 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4b18 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4b18 $fd
     db   $00                                           ;; 0d:4b19 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4b1a $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4b1a $fd
     db   $01                                           ;; 0d:4b1b .
     db  $00 ;;END                                      ;; 0d:4b1c $00
 
@@ -2269,11 +2286,11 @@ script_0144:
     db  $00 ;;END                                      ;; 0d:4b1e $00
 
 script_0145:
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4b1f $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4b1f $fc
     db   $39                                           ;; 0d:4b20 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4b21 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4b21 $fd
     db   $00                                           ;; 0d:4b22 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4b23 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4b23 $fd
     db   $01                                           ;; 0d:4b24 .
     db  $00 ;;END                                      ;; 0d:4b25 $00
 
@@ -2284,9 +2301,9 @@ script_0147:
     db  $00 ;;END                                      ;; 0d:4b27 $00
 
 script_0148:
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4b28 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4b28 $fc
     db   $3b                                           ;; 0d:4b29 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4b2a $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4b2a $fd
     db   $00                                           ;; 0d:4b2b .
     db  $00 ;;END                                      ;; 0d:4b2c $00
 
@@ -2297,9 +2314,9 @@ script_014a:
     db  $00 ;;END                                      ;; 0d:4b2e $00
 
 script_014b:
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4b2f $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4b2f $fc
     db   $3c                                           ;; 0d:4b30 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4b31 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4b31 $fd
     db   $00                                           ;; 0d:4b32 .
     db  $00 ;;END                                      ;; 0d:4b33 $00
 
@@ -2310,9 +2327,9 @@ script_014d:
     db  $00 ;;END                                      ;; 0d:4b35 $00
 
 script_014e:
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4b36 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4b36 $fc
     db   $3b                                           ;; 0d:4b37 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4b38 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4b38 $fd
     db   $02                                           ;; 0d:4b39 .
     db  $00 ;;END                                      ;; 0d:4b3a $00
 
@@ -2323,9 +2340,9 @@ script_0150:
     db  $00 ;;END                                      ;; 0d:4b3c $00
 
 script_0151:
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4b3d $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4b3d $fc
     db   $30                                           ;; 0d:4b3e .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4b3f $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4b3f $fd
     db   $01                                           ;; 0d:4b40 .
     db  $00 ;;END                                      ;; 0d:4b41 $00
 
@@ -2336,17 +2353,17 @@ script_0153:
     db  $00 ;;END                                      ;; 0d:4b43 $00
 
 script_0154:
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4b44 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4b44 $fc
     db   $41                                           ;; 0d:4b45 .
     db  $08 ;;IF ? JR                                  ;; 0d:4b46 $08
     db   $a7, $00, $04                                 ;; 0d:4b47 ...
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4b4a $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4b4a $fd
     db   $00                                           ;; 0d:4b4b .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4b4c $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4b4c $fd
     db   $01                                           ;; 0d:4b4d .
     db  $08 ;;IF ? JR                                  ;; 0d:4b4e $08
     db   $27, $9d, $00, $02                            ;; 0d:4b4f ....
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4b53 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4b53 $fd
     db   $01                                           ;; 0d:4b54 .
     db  $08 ;;IF ? JR                                  ;; 0d:4b55 $08
     db   $1d, $00, $04                                 ;; 0d:4b56 ...
@@ -2354,7 +2371,7 @@ script_0154:
     db   $02, $08, $06                                 ;; 0d:4b5a ...
     db  $08 ;;IF ? JR                                  ;; 0d:4b5d $08
     db   $1d, $d6, $a8, $00, $2c                       ;; 0d:4b5e .....
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4b63 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4b63 $fd
     db   $02                                           ;; 0d:4b64 .
     db  $9c ;;UNK_9c??                                 ;; 0d:4b65 $9c
     db   $06, $80, $80, $80, $17, $04, $10, $8d        ;; 0d:4b66 ????????
@@ -2374,9 +2391,9 @@ script_0156:
 script_0157:
     db  $08 ;;IF ? JR                                  ;; 0d:4b92 $08
     db   $1f, $a0, $00, $04                            ;; 0d:4b93 ....
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4b97 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4b97 $fc
     db   $4c                                           ;; 0d:4b98 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4b99 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4b99 $fd
     db   $01                                           ;; 0d:4b9a .
     db  $00 ;;END                                      ;; 0d:4b9b $00
 
@@ -2387,11 +2404,11 @@ script_0159:
     db  $00 ;;END                                      ;; 0d:4b9d $00
 
 script_015a:
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4b9e $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4b9e $fc
     db   $48                                           ;; 0d:4b9f .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4ba0 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4ba0 $fd
     db   $00                                           ;; 0d:4ba1 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4ba2 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4ba2 $fd
     db   $01                                           ;; 0d:4ba3 .
     db  $00 ;;END                                      ;; 0d:4ba4 $00
 
@@ -2402,11 +2419,11 @@ script_015c:
     db  $00 ;;END                                      ;; 0d:4ba6 $00
 
 script_015d:
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4ba7 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4ba7 $fc
     db   $49                                           ;; 0d:4ba8 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4ba9 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4ba9 $fd
     db   $00                                           ;; 0d:4baa .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4bab $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4bab $fd
     db   $01                                           ;; 0d:4bac .
     db  $00 ;;END                                      ;; 0d:4bad $00
 
@@ -2417,9 +2434,9 @@ script_015f:
     db  $00 ;;END                                      ;; 0d:4baf $00
 
 script_0160:
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4bb0 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4bb0 $fc
     db   $43                                           ;; 0d:4bb1 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4bb2 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4bb2 $fd
     db   $00                                           ;; 0d:4bb3 .
     db  $00 ;;END                                      ;; 0d:4bb4 $00
 
@@ -2430,9 +2447,9 @@ script_0162:
     db  $00 ;;END                                      ;; 0d:4bb6 $00
 
 script_0163:
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4bb7 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4bb7 $fc
     db   $43                                           ;; 0d:4bb8 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4bb9 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4bb9 $fd
     db   $01                                           ;; 0d:4bba .
     db  $00 ;;END                                      ;; 0d:4bbb $00
 
@@ -2443,9 +2460,9 @@ script_0165:
     db  $00 ;;END                                      ;; 0d:4bbd $00
 
 script_0166:
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4bbe $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4bbe $fc
     db   $43                                           ;; 0d:4bbf .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4bc0 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4bc0 $fd
     db   $02                                           ;; 0d:4bc1 .
     db  $00 ;;END                                      ;; 0d:4bc2 $00
 
@@ -2456,9 +2473,9 @@ script_0168:
     db  $00 ;;END                                      ;; 0d:4bc4 $00
 
 script_0169:
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4bc5 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4bc5 $fc
     db   $44                                           ;; 0d:4bc6 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4bc7 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4bc7 $fd
     db   $00                                           ;; 0d:4bc8 .
     db  $00 ;;END                                      ;; 0d:4bc9 $00
 
@@ -2469,9 +2486,9 @@ script_016b:
     db  $00 ;;END                                      ;; 0d:4bcb $00
 
 script_016c:
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4bcc $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4bcc $fc
     db   $44                                           ;; 0d:4bcd .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4bce $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4bce $fd
     db   $02                                           ;; 0d:4bcf .
     db  $00 ;;END                                      ;; 0d:4bd0 $00
 
@@ -2482,9 +2499,9 @@ script_016e:
     db  $00 ;;END                                      ;; 0d:4bd2 $00
 
 script_016f:
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4bd3 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4bd3 $fc
     db   $44                                           ;; 0d:4bd4 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4bd5 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4bd5 $fd
     db   $01                                           ;; 0d:4bd6 .
     db  $00 ;;END                                      ;; 0d:4bd7 $00
 
@@ -2495,9 +2512,9 @@ script_0171:
     db  $00 ;;END                                      ;; 0d:4bd9 $00
 
 script_0172:
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4bda $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4bda $fc
     db   $45                                           ;; 0d:4bdb .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4bdc $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4bdc $fd
     db   $00                                           ;; 0d:4bdd .
     db  $00 ;;END                                      ;; 0d:4bde $00
 
@@ -2508,9 +2525,9 @@ script_0174:
     db  $00 ;;END                                      ;; 0d:4be0 $00
 
 script_0175:
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4be1 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4be1 $fc
     db   $45                                           ;; 0d:4be2 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4be3 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4be3 $fd
     db   $01                                           ;; 0d:4be4 .
     db  $00 ;;END                                      ;; 0d:4be5 $00
 
@@ -2523,9 +2540,9 @@ script_0177:
 script_0178:
     db  $08 ;;IF ? JR                                  ;; 0d:4be8 $08
     db   $9e, $00, $04                                 ;; 0d:4be9 ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4bec $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4bec $fc
     db   $28                                           ;; 0d:4bed .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4bee $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4bee $fd
     db   $02                                           ;; 0d:4bef .
     db  $00 ;;END                                      ;; 0d:4bf0 $00
 
@@ -2536,15 +2553,15 @@ script_017a:
     db  $00 ;;END                                      ;; 0d:4bf2 $00
 
 script_017b:
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4bf3 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4bf3 $fc
     db   $46                                           ;; 0d:4bf4 .
     db  $08 ;;IF ? JR                                  ;; 0d:4bf5 $08
     db   $ad, $00, $04                                 ;; 0d:4bf6 ...
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4bf9 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4bf9 $fd
     db   $01                                           ;; 0d:4bfa .
     db  $01 ;;JR                                       ;; 0d:4bfb $01
     db   $02                                           ;; 0d:4bfc .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4bfd $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4bfd $fd
     db   $00                                           ;; 0d:4bfe .
     db  $00 ;;END                                      ;; 0d:4bff $00
 
@@ -2555,9 +2572,9 @@ script_017d:
     db  $00 ;;END                                      ;; 0d:4c01 $00
 
 script_017e:
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4c02 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4c02 $fc
     db   $46                                           ;; 0d:4c03 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4c04 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4c04 $fd
     db   $02                                           ;; 0d:4c05 .
     db  $00 ;;END                                      ;; 0d:4c06 $00
 
@@ -2568,15 +2585,15 @@ script_0180:
     db  $00 ;;END                                      ;; 0d:4c08 $00
 
 script_0181:
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4c09 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4c09 $fc
     db   $47                                           ;; 0d:4c0a .
     db  $08 ;;IF ? JR                                  ;; 0d:4c0b $08
     db   $ad, $00, $04                                 ;; 0d:4c0c ...
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4c0f $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4c0f $fd
     db   $01                                           ;; 0d:4c10 .
     db  $01 ;;JR                                       ;; 0d:4c11 $01
     db   $02                                           ;; 0d:4c12 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4c13 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4c13 $fd
     db   $00                                           ;; 0d:4c14 .
     db  $00 ;;END                                      ;; 0d:4c15 $00
 
@@ -2587,9 +2604,9 @@ script_0183:
     db  $00 ;;END                                      ;; 0d:4c17 $00
 
 script_0184:
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4c18 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4c18 $fc
     db   $37                                           ;; 0d:4c19 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4c1a $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4c1a $fd
     db   $02                                           ;; 0d:4c1b .
     db  $00 ;;END                                      ;; 0d:4c1c $00
 
@@ -2600,11 +2617,11 @@ script_0186:
     db  $00 ;;END                                      ;; 0d:4c1e $00
 
 script_0187:
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4c1f $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4c1f $fc
     db   $06                                           ;; 0d:4c20 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4c21 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4c21 $fd
     db   $02                                           ;; 0d:4c22 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4c23 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4c23 $fd
     db   $01                                           ;; 0d:4c24 .
     db  $00 ;;END                                      ;; 0d:4c25 $00
 
@@ -2617,9 +2634,9 @@ script_0189:
 script_018a:
     db  $08 ;;IF ? JR                                  ;; 0d:4c28 $08
     db   $90, $00, $04                                 ;; 0d:4c29 ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4c2c $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4c2c $fc
     db   $35                                           ;; 0d:4c2d .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4c2e $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4c2e $fd
     db   $00                                           ;; 0d:4c2f .
     db  $00 ;;END                                      ;; 0d:4c30 $00
 
@@ -2632,9 +2649,9 @@ script_018c:
 script_018d:
     db  $08 ;;IF ? JR                                  ;; 0d:4c33 $08
     db   $8e, $00, $04                                 ;; 0d:4c34 ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4c37 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4c37 $fc
     db   $32                                           ;; 0d:4c38 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4c39 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4c39 $fd
     db   $00                                           ;; 0d:4c3a .
     db  $00 ;;END                                      ;; 0d:4c3b $00
 
@@ -2647,9 +2664,9 @@ script_018f:
 script_0190:
     db  $08 ;;IF ? JR                                  ;; 0d:4c3e $08
     db   $c8, $d2, $00, $04                            ;; 0d:4c3f ....
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4c43 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4c43 $fc
     db   $4d                                           ;; 0d:4c44 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4c45 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4c45 $fd
     db   $00                                           ;; 0d:4c46 .
     db  $00 ;;END                                      ;; 0d:4c47 $00
 
@@ -2666,9 +2683,9 @@ script_0193:
     db   $08                                           ;; 0d:4c4f .
     db  $08 ;;IF ? JR                                  ;; 0d:4c50 $08
     db   $99, $00, $04                                 ;; 0d:4c51 ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4c54 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4c54 $fc
     db   $50                                           ;; 0d:4c55 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4c56 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4c56 $fd
     db   $00                                           ;; 0d:4c57 .
     db  $00 ;;END                                      ;; 0d:4c58 $00
 
@@ -2685,9 +2702,9 @@ script_0195:
 script_0196:
     db  $08 ;;IF ? JR                                  ;; 0d:4c61 $08
     db   $14, $a6, $00, $04                            ;; 0d:4c62 ....
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4c66 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4c66 $fc
     db   $30                                           ;; 0d:4c67 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4c68 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4c68 $fd
     db   $00                                           ;; 0d:4c69 .
     db  $00 ;;END                                      ;; 0d:4c6a $00
 
@@ -2698,11 +2715,11 @@ script_0198:
     db  $00 ;;END                                      ;; 0d:4c6c $00
 
 script_0199:
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4c6d $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4c6d $fc
     db   $07                                           ;; 0d:4c6e .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4c6f $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4c6f $fd
     db   $02                                           ;; 0d:4c70 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4c71 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4c71 $fd
     db   $00                                           ;; 0d:4c72 .
     db  $00 ;;END                                      ;; 0d:4c73 $00
 
@@ -2720,11 +2737,11 @@ script_019d:
     db   $98, $00, $ae                                 ;; 0d:4c78 ...
     db  $f8 ;;SET_MUSIC                                ;; 0d:4c7b $f8
     db   $00                                           ;; 0d:4c7c .
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4c7d $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4c7d $fc
     db   $26                                           ;; 0d:4c7e .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4c7f $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4c7f $fd
     db   $00                                           ;; 0d:4c80 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4c81 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4c81 $fd
     db   $01                                           ;; 0d:4c82 .
     db  $f0 ;;DELAY                                    ;; 0d:4c83 $f0
     db   $3c                                           ;; 0d:4c84 .
@@ -2773,8 +2790,12 @@ script_019d:
     db   $0a, $04                                      ;; 0d:4d32 ..
     db  $f9 ;;SFX                                      ;; 0d:4d34 $f9
     db   $14                                           ;; 0d:4d35 .
-    db  $bf ;;UNK_bf??                                 ;; 0d:4d36 $bf
-    db   $00, $fe, $11, $f8, $10                       ;; 0d:4d37 ?????
+    db  $bf ;;FLASH_SCREEN                             ;; 0d:4d36 $bf
+    db  $00 ;;END                                      ;; 0d:4d37 $00
+    db  $fe ;;SPAWN_BOSS                               ;; 0d:4d38 $fe
+    db   $11                                           ;; 0d:4d39 .
+    db  $f8 ;;SET_MUSIC                                ;; 0d:4d3a $f8
+    db   $10                                           ;; 0d:4d3b .
     db  $00 ;;END                                      ;; 0d:4d3c $00
 
 script_019e:
@@ -2812,7 +2833,7 @@ script_01a1:
 script_01a2:
     db  $f8 ;;SET_MUSIC                                ;; 0d:4d5a $f8
     db   $00                                           ;; 0d:4d5b .
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4d5c $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4d5c $fc
     db   $59                                           ;; 0d:4d5d .
     db  $b0 ;;SET_ROOM_TILE                            ;; 0d:4d5e $b0
     db   $25, $03, $04                                 ;; 0d:4d5f ...
@@ -2826,13 +2847,13 @@ script_01a2:
     db   $23                                           ;; 0d:4d6f .
     db  $08 ;;IF ? JR                                  ;; 0d:4d70 $08
     db   $c9, $00, $05                                 ;; 0d:4d71 ...
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4d74 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4d74 $fd
     db   $01                                           ;; 0d:4d75 .
     db  $c9 ;;UNK_c9??                                 ;; 0d:4d76 $c9
     db   $04, $50                                      ;; 0d:4d77 ??
     db  $08 ;;IF ? JR                                  ;; 0d:4d79 $08
     db   $c8, $00, $05                                 ;; 0d:4d7a ...
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4d7d $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4d7d $fd
     db   $02                                           ;; 0d:4d7e .
     db  $ca ;;UNK_ca??                                 ;; 0d:4d7f $ca
     db   $04, $51                                      ;; 0d:4d80 ??
@@ -2845,8 +2866,15 @@ script_01a3:
     db   $b4, $00, $0b                                 ;; 0d:4d8d ...
     db  $f9 ;;SFX                                      ;; 0d:4d90 $f9
     db   $14                                           ;; 0d:4d91 .
-    db  $bf ;;UNK_bf??                                 ;; 0d:4d92 $bf
-    db   $f0, $1e, $fe, $0f, $f8, $0f, $01, $04        ;; 0d:4d93 ????????
+    db  $bf ;;FLASH_SCREEN                             ;; 0d:4d92 $bf
+    db  $f0 ;;DELAY                                    ;; 0d:4d93 $f0
+    db   $1e                                           ;; 0d:4d94 .
+    db  $fe ;;SPAWN_BOSS                               ;; 0d:4d95 $fe
+    db   $0f                                           ;; 0d:4d96 .
+    db  $f8 ;;SET_MUSIC                                ;; 0d:4d97 $f8
+    db   $0f                                           ;; 0d:4d98 .
+    db  $01 ;;JR                                       ;; 0d:4d99 $01
+    db   $04                                           ;; 0d:4d9a .
     db  $b0 ;;SET_ROOM_TILE                            ;; 0d:4d9b $b0
     db   $59, $08, $01                                 ;; 0d:4d9c ...
     db  $08 ;;IF ? JR                                  ;; 0d:4d9f $08
@@ -2855,8 +2883,15 @@ script_01a3:
     db   $97, $00, $0b                                 ;; 0d:4da9 ...
     db  $f9 ;;SFX                                      ;; 0d:4dac $f9
     db   $14                                           ;; 0d:4dad .
-    db  $bf ;;UNK_bf??                                 ;; 0d:4dae $bf
-    db   $f0, $1e, $fe, $14, $f8, $0f, $01, $04        ;; 0d:4daf ????????
+    db  $bf ;;FLASH_SCREEN                             ;; 0d:4dae $bf
+    db  $f0 ;;DELAY                                    ;; 0d:4daf $f0
+    db   $1e                                           ;; 0d:4db0 .
+    db  $fe ;;SPAWN_BOSS                               ;; 0d:4db1 $fe
+    db   $14                                           ;; 0d:4db2 .
+    db  $f8 ;;SET_MUSIC                                ;; 0d:4db3 $f8
+    db   $0f                                           ;; 0d:4db4 .
+    db  $01 ;;JR                                       ;; 0d:4db5 $01
+    db   $04                                           ;; 0d:4db6 .
     db  $b0 ;;SET_ROOM_TILE                            ;; 0d:4db7 $b0
     db   $59, $08, $01                                 ;; 0d:4db8 ...
     db  $08 ;;IF ? JR                                  ;; 0d:4dbb $08
@@ -2865,8 +2900,15 @@ script_01a3:
     db   $b2, $00, $0b                                 ;; 0d:4dc5 ...
     db  $f9 ;;SFX                                      ;; 0d:4dc8 $f9
     db   $14                                           ;; 0d:4dc9 .
-    db  $bf ;;UNK_bf??                                 ;; 0d:4dca $bf
-    db   $f0, $1e, $fe, $0d, $f8, $0f, $01, $04        ;; 0d:4dcb ????????
+    db  $bf ;;FLASH_SCREEN                             ;; 0d:4dca $bf
+    db  $f0 ;;DELAY                                    ;; 0d:4dcb $f0
+    db   $1e                                           ;; 0d:4dcc .
+    db  $fe ;;SPAWN_BOSS                               ;; 0d:4dcd $fe
+    db   $0d                                           ;; 0d:4dce .
+    db  $f8 ;;SET_MUSIC                                ;; 0d:4dcf $f8
+    db   $0f                                           ;; 0d:4dd0 .
+    db  $01 ;;JR                                       ;; 0d:4dd1 $01
+    db   $04                                           ;; 0d:4dd2 .
     db  $b0 ;;SET_ROOM_TILE                            ;; 0d:4dd3 $b0
     db   $59, $08, $01                                 ;; 0d:4dd4 ...
     db  $00 ;;END                                      ;; 0d:4dd7 $00
@@ -2927,9 +2969,9 @@ script_01a5:
 script_01a6:
     db  $08 ;;IF ? JR                                  ;; 0d:4e5a $08
     db   $a4, $00, $04                                 ;; 0d:4e5b ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4e5e $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4e5e $fc
     db   $5a                                           ;; 0d:4e5f .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4e60 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4e60 $fd
     db   $01                                           ;; 0d:4e61 .
     db  $08 ;;IF ? JR                                  ;; 0d:4e62 $08
     db   $24, $00, $01                                 ;; 0d:4e63 ...
@@ -2952,8 +2994,15 @@ script_01a6:
     db   $e0, $f3, $12, $11, $00                       ;; 0d:4e8d .....
     db  $f9 ;;SFX                                      ;; 0d:4e92 $f9
     db   $14                                           ;; 0d:4e93 .
-    db  $bf ;;UNK_bf??                                 ;; 0d:4e94 $bf
-    db   $bf, $bf, $f0, $0a, $f8, $0f, $fe, $00        ;; 0d:4e95 ????????
+    db  $bf ;;FLASH_SCREEN                             ;; 0d:4e94 $bf
+    db  $bf ;;FLASH_SCREEN                             ;; 0d:4e95 $bf
+    db  $bf ;;FLASH_SCREEN                             ;; 0d:4e96 $bf
+    db  $f0 ;;DELAY                                    ;; 0d:4e97 $f0
+    db   $0a                                           ;; 0d:4e98 .
+    db  $f8 ;;SET_MUSIC                                ;; 0d:4e99 $f8
+    db   $0f                                           ;; 0d:4e9a .
+    db  $fe ;;SPAWN_BOSS                               ;; 0d:4e9b $fe
+    db   $00                                           ;; 0d:4e9c .
     db  $00 ;;END                                      ;; 0d:4e9d $00
 
 script_01a7:
@@ -3002,13 +3051,20 @@ script_01a9:
     db   $a6, $00, $0b                                 ;; 0d:4f44 ...
     db  $f9 ;;SFX                                      ;; 0d:4f47 $f9
     db   $14                                           ;; 0d:4f48 .
-    db  $bf ;;UNK_bf??                                 ;; 0d:4f49 $bf
-    db   $f0, $1e, $f8, $0f, $fe, $03, $01, $11        ;; 0d:4f4a ????????
+    db  $bf ;;FLASH_SCREEN                             ;; 0d:4f49 $bf
+    db  $f0 ;;DELAY                                    ;; 0d:4f4a $f0
+    db   $1e                                           ;; 0d:4f4b .
+    db  $f8 ;;SET_MUSIC                                ;; 0d:4f4c $f8
+    db   $0f                                           ;; 0d:4f4d .
+    db  $fe ;;SPAWN_BOSS                               ;; 0d:4f4e $fe
+    db   $03                                           ;; 0d:4f4f .
+    db  $01 ;;JR                                       ;; 0d:4f50 $01
+    db   $11                                           ;; 0d:4f51 .
     db  $08 ;;IF ? JR                                  ;; 0d:4f52 $08
     db   $94, $00, $09                                 ;; 0d:4f53 ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4f56 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4f56 $fc
     db   $59                                           ;; 0d:4f57 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4f58 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4f58 $fd
     db   $00                                           ;; 0d:4f59 .
     db  $c9 ;;UNK_c9??                                 ;; 0d:4f5a $c9
     db   $04, $35, $01, $04                            ;; 0d:4f5b ????
@@ -3048,21 +3104,27 @@ script_01ac:
     db   $1e                                           ;; 0d:4fab .
     db  $f9 ;;SFX                                      ;; 0d:4fac $f9
     db   $14                                           ;; 0d:4fad .
-    db  $bf ;;UNK_bf??                                 ;; 0d:4fae $bf
-    db   $bf, $f0, $1e, $f8, $0f, $fe, $02             ;; 0d:4faf ???????
+    db  $bf ;;FLASH_SCREEN                             ;; 0d:4fae $bf
+    db  $bf ;;FLASH_SCREEN                             ;; 0d:4faf $bf
+    db  $f0 ;;DELAY                                    ;; 0d:4fb0 $f0
+    db   $1e                                           ;; 0d:4fb1 .
+    db  $f8 ;;SET_MUSIC                                ;; 0d:4fb2 $f8
+    db   $0f                                           ;; 0d:4fb3 .
+    db  $fe ;;SPAWN_BOSS                               ;; 0d:4fb4 $fe
+    db   $02                                           ;; 0d:4fb5 .
     db  $08 ;;IF ? JR                                  ;; 0d:4fb6 $08
     db   $27, $00, $12                                 ;; 0d:4fb7 ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:4fba $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4fba $fc
     db   $42                                           ;; 0d:4fbb .
     db  $f8 ;;SET_MUSIC                                ;; 0d:4fbc $f8
     db   $02                                           ;; 0d:4fbd .
     db  $08 ;;IF ? JR                                  ;; 0d:4fbe $08
     db   $d5, $9c, $00, $02                            ;; 0d:4fbf ....
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4fc3 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4fc3 $fd
     db   $00                                           ;; 0d:4fc4 .
     db  $08 ;;IF ? JR                                  ;; 0d:4fc5 $08
     db   $1c, $b5, $00, $02                            ;; 0d:4fc6 ....
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:4fca $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4fca $fd
     db   $01                                           ;; 0d:4fcb .
     db  $00 ;;END                                      ;; 0d:4fcc $00
 
@@ -3103,9 +3165,9 @@ script_01ae:
 script_01af:
     db  $08 ;;IF ? JR                                  ;; 0d:5063 $08
     db   $1d, $a8, $00, $3a                            ;; 0d:5064 ....
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:5068 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:5068 $fc
     db   $41                                           ;; 0d:5069 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:506a $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:506a $fd
     db   $00                                           ;; 0d:506b .
     db  $f0 ;;DELAY                                    ;; 0d:506c $f0
     db   $14                                           ;; 0d:506d .
@@ -3114,10 +3176,25 @@ script_01af:
     db   $f3, $1a, $ff, $d2, $21, $87, $29, $ff        ;; 0d:5077 ........
     db   $e1, $d8, $4d, $e5, $1a, $ff, $d7, $d8        ;; 0d:507f ........
     db   $d9, $32, $28, $e0, $9b, $12, $11, $00        ;; 0d:5087 ........
-    db  $bf ;;UNK_bf??                                 ;; 0d:508f $bf
-    db   $f9, $14, $bf, $f9, $14, $18, $f9, $14        ;; 0d:5090 ????????
-    db   $bf, $f9, $14, $bf, $f0, $1e, $fe, $04        ;; 0d:5098 ????????
-    db   $f8, $13                                      ;; 0d:50a0 ??
+    db  $bf ;;FLASH_SCREEN                             ;; 0d:508f $bf
+    db  $f9 ;;SFX                                      ;; 0d:5090 $f9
+    db   $14                                           ;; 0d:5091 .
+    db  $bf ;;FLASH_SCREEN                             ;; 0d:5092 $bf
+    db  $f9 ;;SFX                                      ;; 0d:5093 $f9
+    db   $14                                           ;; 0d:5094 .
+    db  $18 ;;DEL_NPC_1                                ;; 0d:5095 $18
+    db  $f9 ;;SFX                                      ;; 0d:5096 $f9
+    db   $14                                           ;; 0d:5097 .
+    db  $bf ;;FLASH_SCREEN                             ;; 0d:5098 $bf
+    db  $f9 ;;SFX                                      ;; 0d:5099 $f9
+    db   $14                                           ;; 0d:509a .
+    db  $bf ;;FLASH_SCREEN                             ;; 0d:509b $bf
+    db  $f0 ;;DELAY                                    ;; 0d:509c $f0
+    db   $1e                                           ;; 0d:509d .
+    db  $fe ;;SPAWN_BOSS                               ;; 0d:509e $fe
+    db   $04                                           ;; 0d:509f .
+    db  $f8 ;;SET_MUSIC                                ;; 0d:50a0 $f8
+    db   $13                                           ;; 0d:50a1 .
     db  $da ;;UNK_DA                                   ;; 0d:50a2 $da
     db   $79                                           ;; 0d:50a3 .
     db  $00 ;;END                                      ;; 0d:50a4 $00
@@ -3193,14 +3270,21 @@ script_01b2:
     db   $1e                                           ;; 0d:5204 .
     db  $f9 ;;SFX                                      ;; 0d:5205 $f9
     db   $14                                           ;; 0d:5206 .
-    db  $bf ;;UNK_bf??                                 ;; 0d:5207 $bf
-    db   $f9, $14, $bf, $f8, $0f, $fe, $06, $01        ;; 0d:5208 ????????
-    db   $0b                                           ;; 0d:5210 ?
+    db  $bf ;;FLASH_SCREEN                             ;; 0d:5207 $bf
+    db  $f9 ;;SFX                                      ;; 0d:5208 $f9
+    db   $14                                           ;; 0d:5209 .
+    db  $bf ;;FLASH_SCREEN                             ;; 0d:520a $bf
+    db  $f8 ;;SET_MUSIC                                ;; 0d:520b $f8
+    db   $0f                                           ;; 0d:520c .
+    db  $fe ;;SPAWN_BOSS                               ;; 0d:520d $fe
+    db   $06                                           ;; 0d:520e .
+    db  $01 ;;JR                                       ;; 0d:520f $01
+    db   $0b                                           ;; 0d:5210 .
     db  $08 ;;IF ? JR                                  ;; 0d:5211 $08
     db   $ce, $00, $07                                 ;; 0d:5212 ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:5215 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:5215 $fc
     db   $59                                           ;; 0d:5216 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:5217 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:5217 $fd
     db   $01                                           ;; 0d:5218 .
     db  $c9 ;;UNK_c9??                                 ;; 0d:5219 $c9
     db   $04, $5d                                      ;; 0d:521a ??
@@ -3232,9 +3316,16 @@ script_01b5:
     db   $1e                                           ;; 0d:5240 .
     db  $f9 ;;SFX                                      ;; 0d:5241 $f9
     db   $14                                           ;; 0d:5242 .
-    db  $bf ;;UNK_bf??                                 ;; 0d:5243 $bf
-    db   $f9, $14, $bf, $fe, $0c, $f8, $0f, $01        ;; 0d:5244 ????????
-    db   $03                                           ;; 0d:524c ?
+    db  $bf ;;FLASH_SCREEN                             ;; 0d:5243 $bf
+    db  $f9 ;;SFX                                      ;; 0d:5244 $f9
+    db   $14                                           ;; 0d:5245 .
+    db  $bf ;;FLASH_SCREEN                             ;; 0d:5246 $bf
+    db  $fe ;;SPAWN_BOSS                               ;; 0d:5247 $fe
+    db   $0c                                           ;; 0d:5248 .
+    db  $f8 ;;SET_MUSIC                                ;; 0d:5249 $f8
+    db   $0f                                           ;; 0d:524a .
+    db  $01 ;;JR                                       ;; 0d:524b $01
+    db   $03                                           ;; 0d:524c .
     db  $02 ;;CALL                                     ;; 0d:524d $02
     db   $33, $e7                                      ;; 0d:524e ..
     db  $00 ;;END                                      ;; 0d:5250 $00
@@ -3270,9 +3361,16 @@ script_01b8:
     db   $1e                                           ;; 0d:52ab .
     db  $f9 ;;SFX                                      ;; 0d:52ac $f9
     db   $14                                           ;; 0d:52ad .
-    db  $bf ;;UNK_bf??                                 ;; 0d:52ae $bf
-    db   $f9, $14, $bf, $fe, $05, $f8, $0f, $01        ;; 0d:52af ????????
-    db   $01                                           ;; 0d:52b7 ?
+    db  $bf ;;FLASH_SCREEN                             ;; 0d:52ae $bf
+    db  $f9 ;;SFX                                      ;; 0d:52af $f9
+    db   $14                                           ;; 0d:52b0 .
+    db  $bf ;;FLASH_SCREEN                             ;; 0d:52b1 $bf
+    db  $fe ;;SPAWN_BOSS                               ;; 0d:52b2 $fe
+    db   $05                                           ;; 0d:52b3 .
+    db  $f8 ;;SET_MUSIC                                ;; 0d:52b4 $f8
+    db   $0f                                           ;; 0d:52b5 .
+    db  $01 ;;JR                                       ;; 0d:52b6 $01
+    db   $01                                           ;; 0d:52b7 .
     db  $e0 ;;UNK_E0                                   ;; 0d:52b8 $e0
     db  $00 ;;END                                      ;; 0d:52b9 $00
 
@@ -3301,9 +3399,9 @@ script_01ba:
 script_01bb:
     db  $08 ;;IF ? JR                                  ;; 0d:5304 $08
     db   $ac, $00, $bb                                 ;; 0d:5305 ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:5308 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:5308 $fc
     db   $17                                           ;; 0d:5309 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:530a $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:530a $fd
     db   $00                                           ;; 0d:530b .
     db  $87 ;;SET_PLAYER_DIRECTION_LEFT                ;; 0d:530c $87
     db  $94 ;;UNK_94??                                 ;; 0d:530d $94
@@ -3381,14 +3479,21 @@ script_01be:
     db   $14                                           ;; 0d:542c .
     db  $f9 ;;SFX                                      ;; 0d:542d $f9
     db   $14                                           ;; 0d:542e .
-    db  $bf ;;UNK_bf??                                 ;; 0d:542f $bf
-    db   $f9, $14, $bf, $fe, $08, $f8, $0f, $01        ;; 0d:5430 ????????
-    db   $0b                                           ;; 0d:5438 ?
+    db  $bf ;;FLASH_SCREEN                             ;; 0d:542f $bf
+    db  $f9 ;;SFX                                      ;; 0d:5430 $f9
+    db   $14                                           ;; 0d:5431 .
+    db  $bf ;;FLASH_SCREEN                             ;; 0d:5432 $bf
+    db  $fe ;;SPAWN_BOSS                               ;; 0d:5433 $fe
+    db   $08                                           ;; 0d:5434 .
+    db  $f8 ;;SET_MUSIC                                ;; 0d:5435 $f8
+    db   $0f                                           ;; 0d:5436 .
+    db  $01 ;;JR                                       ;; 0d:5437 $01
+    db   $0b                                           ;; 0d:5438 .
     db  $08 ;;IF ? JR                                  ;; 0d:5439 $08
     db   $ba, $00, $07                                 ;; 0d:543a ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:543d $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:543d $fc
     db   $59                                           ;; 0d:543e .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:543f $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:543f $fd
     db   $00                                           ;; 0d:5440 .
     db  $c9 ;;UNK_c9??                                 ;; 0d:5441 $c9
     db   $04, $64                                      ;; 0d:5442 ??
@@ -3417,14 +3522,21 @@ script_01c1:
     db   $14                                           ;; 0d:5462 .
     db  $f9 ;;SFX                                      ;; 0d:5463 $f9
     db   $14                                           ;; 0d:5464 .
-    db  $bf ;;UNK_bf??                                 ;; 0d:5465 $bf
-    db   $f9, $14, $bf, $fe, $0a, $f8, $0f, $01        ;; 0d:5466 ????????
-    db   $0b                                           ;; 0d:546e ?
+    db  $bf ;;FLASH_SCREEN                             ;; 0d:5465 $bf
+    db  $f9 ;;SFX                                      ;; 0d:5466 $f9
+    db   $14                                           ;; 0d:5467 .
+    db  $bf ;;FLASH_SCREEN                             ;; 0d:5468 $bf
+    db  $fe ;;SPAWN_BOSS                               ;; 0d:5469 $fe
+    db   $0a                                           ;; 0d:546a .
+    db  $f8 ;;SET_MUSIC                                ;; 0d:546b $f8
+    db   $0f                                           ;; 0d:546c .
+    db  $01 ;;JR                                       ;; 0d:546d $01
+    db   $0b                                           ;; 0d:546e .
     db  $08 ;;IF ? JR                                  ;; 0d:546f $08
     db   $bb, $00, $07                                 ;; 0d:5470 ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:5473 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:5473 $fc
     db   $59                                           ;; 0d:5474 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:5475 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:5475 $fd
     db   $00                                           ;; 0d:5476 .
     db  $c9 ;;UNK_c9??                                 ;; 0d:5477 $c9
     db   $04, $37                                      ;; 0d:5478 ??
@@ -3457,8 +3569,14 @@ script_01c4:
     db   $14                                           ;; 0d:54a0 .
     db  $f9 ;;SFX                                      ;; 0d:54a1 $f9
     db   $14                                           ;; 0d:54a2 .
-    db  $bf ;;UNK_bf??                                 ;; 0d:54a3 $bf
-    db   $f9, $14, $bf, $fe, $07, $f8, $0f             ;; 0d:54a4 ???????
+    db  $bf ;;FLASH_SCREEN                             ;; 0d:54a3 $bf
+    db  $f9 ;;SFX                                      ;; 0d:54a4 $f9
+    db   $14                                           ;; 0d:54a5 .
+    db  $bf ;;FLASH_SCREEN                             ;; 0d:54a6 $bf
+    db  $fe ;;SPAWN_BOSS                               ;; 0d:54a7 $fe
+    db   $07                                           ;; 0d:54a8 .
+    db  $f8 ;;SET_MUSIC                                ;; 0d:54a9 $f8
+    db   $0f                                           ;; 0d:54aa .
     db  $00 ;;END                                      ;; 0d:54ab $00
 
 script_01c5:
@@ -3491,9 +3609,16 @@ script_01c7:
     db   $14                                           ;; 0d:54d4 .
     db  $f9 ;;SFX                                      ;; 0d:54d5 $f9
     db   $14                                           ;; 0d:54d6 .
-    db  $bf ;;UNK_bf??                                 ;; 0d:54d7 $bf
-    db   $f9, $14, $bf, $fe, $09, $f8, $0f, $01        ;; 0d:54d8 ????????
-    db   $04                                           ;; 0d:54e0 ?
+    db  $bf ;;FLASH_SCREEN                             ;; 0d:54d7 $bf
+    db  $f9 ;;SFX                                      ;; 0d:54d8 $f9
+    db   $14                                           ;; 0d:54d9 .
+    db  $bf ;;FLASH_SCREEN                             ;; 0d:54da $bf
+    db  $fe ;;SPAWN_BOSS                               ;; 0d:54db $fe
+    db   $09                                           ;; 0d:54dc .
+    db  $f8 ;;SET_MUSIC                                ;; 0d:54dd $f8
+    db   $0f                                           ;; 0d:54de .
+    db  $01 ;;JR                                       ;; 0d:54df $01
+    db   $04                                           ;; 0d:54e0 .
     db  $b0 ;;SET_ROOM_TILE                            ;; 0d:54e1 $b0
     db   $4c, $08, $02                                 ;; 0d:54e2 ...
     db  $00 ;;END                                      ;; 0d:54e5 $00
@@ -3522,8 +3647,14 @@ script_01ca:
     db   $14                                           ;; 0d:5510 .
     db  $f9 ;;SFX                                      ;; 0d:5511 $f9
     db   $14                                           ;; 0d:5512 .
-    db  $bf ;;UNK_bf??                                 ;; 0d:5513 $bf
-    db   $f9, $14, $bf, $fe, $0b, $f8, $0f             ;; 0d:5514 ???????
+    db  $bf ;;FLASH_SCREEN                             ;; 0d:5513 $bf
+    db  $f9 ;;SFX                                      ;; 0d:5514 $f9
+    db   $14                                           ;; 0d:5515 .
+    db  $bf ;;FLASH_SCREEN                             ;; 0d:5516 $bf
+    db  $fe ;;SPAWN_BOSS                               ;; 0d:5517 $fe
+    db   $0b                                           ;; 0d:5518 .
+    db  $f8 ;;SET_MUSIC                                ;; 0d:5519 $f8
+    db   $0f                                           ;; 0d:551a .
     db  $00 ;;END                                      ;; 0d:551b $00
 
 script_01cb:
@@ -3549,9 +3680,9 @@ script_01cc:
     db   $19, $ab, $ec, $00                            ;; 0d:5564 ????
 
 script_01cd:
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:5568 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:5568 $fc
     db   $3d                                           ;; 0d:5569 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:556a $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:556a $fd
     db   $01                                           ;; 0d:556b .
     db  $00 ;;END                                      ;; 0d:556c $00
 
@@ -3599,12 +3730,20 @@ script_01e0:
     db   $00                                           ;; 0d:560a .
     db  $f9 ;;SFX                                      ;; 0d:560b $f9
     db   $14                                           ;; 0d:560c .
-    db  $bf ;;UNK_bf??                                 ;; 0d:560d $bf
-    db   $bf, $18, $fd, $02, $f8, $1a, $01, $1d        ;; 0d:560e ????????
-    db   $04, $d2, $21, $4c, $d9, $e5, $dc, $4e        ;; 0d:5616 ????????
-    db   $d7, $f4, $1a, $c7, $e2, $35, $1a, $5b        ;; 0d:561e ????????
-    db   $d7, $36, $95, $28, $de, $95, $ea, $40        ;; 0d:5626 ????????
-    db   $27, $f0, $12, $11, $00, $01, $04             ;; 0d:562e ???????
+    db  $bf ;;FLASH_SCREEN                             ;; 0d:560d $bf
+    db  $bf ;;FLASH_SCREEN                             ;; 0d:560e $bf
+    db  $18 ;;DEL_NPC_1                                ;; 0d:560f $18
+    db  $fd ;;SPAWN_NPC                                ;; 0d:5610 $fd
+    db   $02                                           ;; 0d:5611 .
+    db  $f8 ;;SET_MUSIC                                ;; 0d:5612 $f8
+    db   $1a                                           ;; 0d:5613 .
+    db  $01 ;;JR                                       ;; 0d:5614 $01
+    db   $1d, $04, $d2, $21, $4c, $d9, $e5, $dc        ;; 0d:5615 .???????
+    db   $4e, $d7, $f4, $1a, $c7, $e2, $35, $1a        ;; 0d:561d ????????
+    db   $5b, $d7, $36, $95, $28, $de, $95, $ea        ;; 0d:5625 ????????
+    db   $40, $27, $f0, $12, $11, $00                  ;; 0d:562d ??????
+    db  $01 ;;JR                                       ;; 0d:5633 $01
+    db   $04                                           ;; 0d:5634 .
     db  $04 ;;MSG                                      ;; 0d:5635 $04
     db   $12, $11, $00                                 ;; 0d:5636 ...
     db  $00 ;;END                                      ;; 0d:5639 $00
@@ -3635,13 +3774,17 @@ script_01e2:
     db  $00 ;;END                                      ;; 0d:56bb $00
 
 script_01e3:
-    db  $18 ;;UNK_18??                                 ;; 0d:56bc $18
-    db   $fd, $01, $04, $10, $14, $f5, $15, $f3        ;; 0d:56bd ????????
-    db   $1a, $15, $f5, $c8, $db, $80, $14, $f3        ;; 0d:56c5 ????????
-    db   $12, $1b, $14, $f5, $8d, $e7, $6c, $60        ;; 0d:56cd ????????
-    db   $98, $1a, $3e, $84, $3e, $53, $2a, $38        ;; 0d:56d5 ????????
-    db   $f3, $12, $11, $00, $9c, $01, $da, $51        ;; 0d:56dd ????????
-    db   $da, $0e, $00                                 ;; 0d:56e5 ???
+    db  $18 ;;DEL_NPC_1                                ;; 0d:56bc $18
+    db  $fd ;;SPAWN_NPC                                ;; 0d:56bd $fd
+    db   $01                                           ;; 0d:56be .
+    db  $04 ;;MSG                                      ;; 0d:56bf $04
+    db   $10, $14, $f5, $15, $f3, $1a, $15, $f5        ;; 0d:56c0 ........
+    db   $c8, $db, $80, $14, $f3, $12, $1b, $14        ;; 0d:56c8 ........
+    db   $f5, $8d, $e7, $6c, $60, $98, $1a, $3e        ;; 0d:56d0 ........
+    db   $84, $3e, $53, $2a, $38, $f3, $12, $11        ;; 0d:56d8 ........
+    db   $00                                           ;; 0d:56e0 .
+    db  $9c ;;UNK_9c??                                 ;; 0d:56e1 $9c
+    db   $01, $da, $51, $da, $0e, $00                  ;; 0d:56e2 ??????
 
 script_01e4:
     db  $04 ;;MSG                                      ;; 0d:56e8 $04
@@ -3976,42 +4119,51 @@ script_01f9:
     db   $2d, $00, $07                                 ;; 0d:5d21 ...
     db  $80 ;;PLAYER_STEP_FORWARD                      ;; 0d:5d24 $80
     db  $80 ;;PLAYER_STEP_FORWARD                      ;; 0d:5d25 $80
-    db  $18 ;;UNK_18??                                 ;; 0d:5d26 $18
-    db   $de, $a3, $01, $11, $04, $10, $1a, $c7        ;; 0d:5d27 ????????
-    db   $d8, $39, $26, $33, $6f, $20, $e2, $83        ;; 0d:5d2f ????????
-    db   $39, $f0, $12, $11, $00, $00                  ;; 0d:5d37 ??????
+    db  $18 ;;DEL_NPC_1                                ;; 0d:5d26 $18
+    db  $de ;;UNK_de??                                 ;; 0d:5d27 $de
+    db   $a3, $01, $11, $04, $10, $1a, $c7, $d8        ;; 0d:5d28 ????????
+    db   $39, $26, $33, $6f, $20, $e2, $83, $39        ;; 0d:5d30 ????????
+    db   $f0, $12, $11, $00, $00                       ;; 0d:5d38 ?????
 
 script_01fa:
     db  $0b ;;IF JR                                    ;; 0d:5d3d $0b
     db   $81, $00, $03                                 ;; 0d:5d3e ...
-    db  $18 ;;UNK_18??                                 ;; 0d:5d41 $18
-    db   $01, $05                                      ;; 0d:5d42 ??
+    db  $18 ;;DEL_NPC_1                                ;; 0d:5d41 $18
+    db  $01 ;;JR                                       ;; 0d:5d42 $01
+    db   $05                                           ;; 0d:5d43 .
     db  $ba ;;UNK_ba??                                 ;; 0d:5d44 $ba
-    db   $10, $09, $01, $e0, $00                       ;; 0d:5d45 ?????
+    db   $10, $09, $01, $e0                            ;; 0d:5d45 ????
+    db  $00 ;;END                                      ;; 0d:5d49 $00
 
 script_01fb:
     db  $0b ;;IF JR                                    ;; 0d:5d4a $0b
     db   $81, $00, $03                                 ;; 0d:5d4b ...
-    db  $18 ;;UNK_18??                                 ;; 0d:5d4e $18
-    db   $01, $05                                      ;; 0d:5d4f ??
+    db  $18 ;;DEL_NPC_1                                ;; 0d:5d4e $18
+    db  $01 ;;JR                                       ;; 0d:5d4f $01
+    db   $05                                           ;; 0d:5d50 .
     db  $ba ;;UNK_ba??                                 ;; 0d:5d51 $ba
-    db   $10, $09, $0d, $e2, $00                       ;; 0d:5d52 ?????
+    db   $10, $09, $0d, $e2                            ;; 0d:5d52 ????
+    db  $00 ;;END                                      ;; 0d:5d56 $00
 
 script_01fc:
     db  $0b ;;IF JR                                    ;; 0d:5d57 $0b
     db   $81, $00, $03                                 ;; 0d:5d58 ...
-    db  $18 ;;UNK_18??                                 ;; 0d:5d5b $18
-    db   $01, $05                                      ;; 0d:5d5c ??
+    db  $18 ;;DEL_NPC_1                                ;; 0d:5d5b $18
+    db  $01 ;;JR                                       ;; 0d:5d5c $01
+    db   $05                                           ;; 0d:5d5d .
     db  $ba ;;UNK_ba??                                 ;; 0d:5d5e $ba
-    db   $10, $11, $07, $e4, $00                       ;; 0d:5d5f ?????
+    db   $10, $11, $07, $e4                            ;; 0d:5d5f ????
+    db  $00 ;;END                                      ;; 0d:5d63 $00
 
 script_01fd:
     db  $0b ;;IF JR                                    ;; 0d:5d64 $0b
     db   $81, $00, $03                                 ;; 0d:5d65 ...
-    db  $18 ;;UNK_18??                                 ;; 0d:5d68 $18
-    db   $01, $05                                      ;; 0d:5d69 ??
+    db  $18 ;;DEL_NPC_1                                ;; 0d:5d68 $18
+    db  $01 ;;JR                                       ;; 0d:5d69 $01
+    db   $05                                           ;; 0d:5d6a .
     db  $ba ;;UNK_ba??                                 ;; 0d:5d6b $ba
-    db   $10, $01, $07, $e6, $00                       ;; 0d:5d6c ?????
+    db   $10, $01, $07, $e6                            ;; 0d:5d6c ????
+    db  $00 ;;END                                      ;; 0d:5d70 $00
 
 script_01fe:
     db  $04 ;;MSG                                      ;; 0d:5d71 $04
@@ -4133,25 +4285,33 @@ script_0207:
     db   $f3, $12, $11, $00                            ;; 0d:5f5d ....
     db  $f8 ;;SET_MUSIC                                ;; 0d:5f61 $f8
     db   $09                                           ;; 0d:5f62 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:5f63 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:5f63 $fd
     db   $02                                           ;; 0d:5f64 .
-    db  $26 ;;UNK_26??                                 ;; 0d:5f65 $26
-    db   $f0, $14, $87, $f0, $3c, $f9, $14, $bf        ;; 0d:5f66 ????????
-    db   $bf, $ba, $2c, $02, $08, $ba, $2c, $04        ;; 0d:5f6e ????????
-    db   $08, $ba, $2c, $06, $08, $ba, $2c, $08        ;; 0d:5f76 ????????
-    db   $08, $ba, $10, $0a, $08, $bf, $8a, $0a        ;; 0d:5f7e ????????
-    db   $09, $84, $04, $10, $15, $f5, $c1, $e2        ;; 0d:5f86 ????????
-    db   $df, $25, $47, $f3, $1a, $14, $f5, $c2        ;; 0d:5f8e ????????
-    db   $f1, $87, $29, $ee, $e7, $f1, $12, $11        ;; 0d:5f96 ????????
-    db   $00, $f0, $28, $f8, $00, $85, $a5, $88        ;; 0d:5f9e ????????
-    db   $f9, $0c, $03, $06, $02, $80, $00, $e8        ;; 0d:5fa6 ????????
-    db   $8a, $0a, $00, $f9, $0c, $03, $0e, $02        ;; 0d:5fae ????????
-    db   $80, $00, $f4, $0e, $53, $14, $00, $f0        ;; 0d:5fb6 ????????
-    db   $3c, $8a, $0e, $00, $85, $f9, $0c, $03        ;; 0d:5fbe ????????
-    db   $05, $02, $80, $00, $8a, $14, $00, $ba        ;; 0d:5fc6 ????????
-    db   $10, $0e, $05, $f9, $19, $bf, $fb, $f0        ;; 0d:5fce ????????
-    db   $3c, $89, $a4, $86, $02, $1f, $df, $ab        ;; 0d:5fd6 ????????
-    db   $00                                           ;; 0d:5fde ?
+    db  $26 ;;SET_NPC_2_DIRECTION_RIGHT                ;; 0d:5f65 $26
+    db  $f0 ;;DELAY                                    ;; 0d:5f66 $f0
+    db   $14                                           ;; 0d:5f67 .
+    db  $87 ;;SET_PLAYER_DIRECTION_LEFT                ;; 0d:5f68 $87
+    db  $f0 ;;DELAY                                    ;; 0d:5f69 $f0
+    db   $3c                                           ;; 0d:5f6a .
+    db  $f9 ;;SFX                                      ;; 0d:5f6b $f9
+    db   $14                                           ;; 0d:5f6c .
+    db  $bf ;;FLASH_SCREEN                             ;; 0d:5f6d $bf
+    db  $bf ;;FLASH_SCREEN                             ;; 0d:5f6e $bf
+    db  $ba ;;UNK_ba??                                 ;; 0d:5f6f $ba
+    db   $2c, $02, $08, $ba, $2c, $04, $08, $ba        ;; 0d:5f70 ????????
+    db   $2c, $06, $08, $ba, $2c, $08, $08, $ba        ;; 0d:5f78 ????????
+    db   $10, $0a, $08, $bf, $8a, $0a, $09, $84        ;; 0d:5f80 ????????
+    db   $04, $10, $15, $f5, $c1, $e2, $df, $25        ;; 0d:5f88 ????????
+    db   $47, $f3, $1a, $14, $f5, $c2, $f1, $87        ;; 0d:5f90 ????????
+    db   $29, $ee, $e7, $f1, $12, $11, $00, $f0        ;; 0d:5f98 ????????
+    db   $28, $f8, $00, $85, $a5, $88, $f9, $0c        ;; 0d:5fa0 ????????
+    db   $03, $06, $02, $80, $00, $e8, $8a, $0a        ;; 0d:5fa8 ????????
+    db   $00, $f9, $0c, $03, $0e, $02, $80, $00        ;; 0d:5fb0 ????????
+    db   $f4, $0e, $53, $14, $00, $f0, $3c, $8a        ;; 0d:5fb8 ????????
+    db   $0e, $00, $85, $f9, $0c, $03, $05, $02        ;; 0d:5fc0 ????????
+    db   $80, $00, $8a, $14, $00, $ba, $10, $0e        ;; 0d:5fc8 ????????
+    db   $05, $f9, $19, $bf, $fb, $f0, $3c, $89        ;; 0d:5fd0 ????????
+    db   $a4, $86, $02, $1f, $df, $ab, $00             ;; 0d:5fd8 ???????
 
 script_0208:
     db  $04 ;;MSG                                      ;; 0d:5fdf $04
@@ -4238,27 +4398,28 @@ script_020e:
     db  $00 ;;END                                      ;; 0d:619e $00
 
 script_020f:
-    db  $14 ;;UNK_14??                                 ;; 0d:619f $14
-    db   $1a, $03, $04, $02, $10, $00, $04, $10        ;; 0d:61a0 ????????
-    db   $00, $08, $96, $00, $7d, $04, $14, $f5        ;; 0d:61a8 ????????
-    db   $15, $f3, $1a, $00, $f9, $17, $04, $bb        ;; 0d:61b0 ????????
-    db   $e2, $da, $2e, $d7, $f5, $c1, $67, $e5        ;; 0d:61b8 ????????
-    db   $ec, $f3, $1a, $49, $e7, $6c, $42, $e2        ;; 0d:61c0 ????????
-    db   $e9, $2f, $da, $f3, $12, $1b, $15, $f5        ;; 0d:61c8 ????????
-    db   $85, $31, $ff, $d7, $5e, $e5, $1a, $37        ;; 0d:61d0 ????????
-    db   $26, $df, $e2, $9e, $39, $f3, $12, $1b        ;; 0d:61d8 ????????
-    db   $bb, $e2, $da, $2e, $d7, $f5, $c1, $46        ;; 0d:61e0 ????????
-    db   $2d, $d5, $21, $e7, $1a, $22, $2a, $43        ;; 0d:61e8 ????????
-    db   $2f, $d7, $46, $e6, $f4, $12, $11, $00        ;; 0d:61f0 ????????
-    db   $15, $03, $04, $02, $10, $00, $f0, $14        ;; 0d:61f8 ????????
-    db   $14, $03, $04, $02, $10, $00, $04, $10        ;; 0d:6200 ????????
-    db   $15, $f5, $c2, $28, $63, $57, $e2, $e3        ;; 0d:6208 ????????
-    db   $4e, $f0, $1a, $14, $f5, $c2, $ee, $3a        ;; 0d:6210 ????????
-    db   $60, $98, $59, $21, $1a, $52, $5f, $8c        ;; 0d:6218 ????????
-    db   $21, $e7, $e6, $dc, $d7, $9b, $1b, $00        ;; 0d:6220 ????????
-    db   $da, $16, $04, $15, $f5, $bb, $20, $89        ;; 0d:6228 ????????
-    db   $38, $d9, $90, $f3, $12, $11, $00, $03        ;; 0d:6230 ????????
-    db   $04, $02, $11, $00, $1b, $00                  ;; 0d:6238 ??????
+    db  $14 ;;SET_NPC_1_DIRECTION_UP                   ;; 0d:619f $14
+    db  $1a ;;UNK_1a??                                 ;; 0d:61a0 $1a
+    db   $03, $04, $02, $10, $00, $04, $10, $00        ;; 0d:61a1 ????????
+    db   $08, $96, $00, $7d, $04, $14, $f5, $15        ;; 0d:61a9 ????????
+    db   $f3, $1a, $00, $f9, $17, $04, $bb, $e2        ;; 0d:61b1 ????????
+    db   $da, $2e, $d7, $f5, $c1, $67, $e5, $ec        ;; 0d:61b9 ????????
+    db   $f3, $1a, $49, $e7, $6c, $42, $e2, $e9        ;; 0d:61c1 ????????
+    db   $2f, $da, $f3, $12, $1b, $15, $f5, $85        ;; 0d:61c9 ????????
+    db   $31, $ff, $d7, $5e, $e5, $1a, $37, $26        ;; 0d:61d1 ????????
+    db   $df, $e2, $9e, $39, $f3, $12, $1b, $bb        ;; 0d:61d9 ????????
+    db   $e2, $da, $2e, $d7, $f5, $c1, $46, $2d        ;; 0d:61e1 ????????
+    db   $d5, $21, $e7, $1a, $22, $2a, $43, $2f        ;; 0d:61e9 ????????
+    db   $d7, $46, $e6, $f4, $12, $11, $00, $15        ;; 0d:61f1 ????????
+    db   $03, $04, $02, $10, $00, $f0, $14, $14        ;; 0d:61f9 ????????
+    db   $03, $04, $02, $10, $00, $04, $10, $15        ;; 0d:6201 ????????
+    db   $f5, $c2, $28, $63, $57, $e2, $e3, $4e        ;; 0d:6209 ????????
+    db   $f0, $1a, $14, $f5, $c2, $ee, $3a, $60        ;; 0d:6211 ????????
+    db   $98, $59, $21, $1a, $52, $5f, $8c, $21        ;; 0d:6219 ????????
+    db   $e7, $e6, $dc, $d7, $9b, $1b, $00, $da        ;; 0d:6221 ????????
+    db   $16, $04, $15, $f5, $bb, $20, $89, $38        ;; 0d:6229 ????????
+    db   $d9, $90, $f3, $12, $11, $00, $03, $04        ;; 0d:6231 ????????
+    db   $02, $11, $00, $1b, $00                       ;; 0d:6239 ?????
 
 script_0210:
     db  $04 ;;MSG                                      ;; 0d:623e $04
@@ -4382,25 +4543,67 @@ script_0217:
     db   $00                                           ;; 0d:64e3 .
     db  $f0 ;;DELAY                                    ;; 0d:64e4 $f0
     db   $3c                                           ;; 0d:64e5 .
-    db  $18 ;;UNK_18??                                 ;; 0d:64e6 $18
-    db   $f9, $0f, $fd, $01, $17, $f8, $05, $f0        ;; 0d:64e7 ????????
-    db   $78, $04, $10, $35, $6a, $3b, $28, $2e        ;; 0d:64ef ????????
-    db   $20, $24, $e8, $f4, $f4, $12, $11, $00        ;; 0d:64f7 ????????
-    db   $87, $80, $80, $10, $f9, $07, $f0, $0f        ;; 0d:64ff ????????
-    db   $f9, $07, $10, $f0, $3c, $86, $f0, $28        ;; 0d:6507 ????????
-    db   $04, $10, $35, $97, $d8, $ec, $f3, $1a        ;; 0d:650f ????????
-    db   $bd, $47, $ee, $28, $d9, $e2, $3a, $46        ;; 0d:6517 ????????
-    db   $42, $9b, $12, $11, $00, $87, $80, $80        ;; 0d:651f ????????
-    db   $10, $f9, $07, $f0, $0f, $f9, $07, $10        ;; 0d:6527 ????????
-    db   $f0, $3c, $86, $04, $10, $d2, $21, $22        ;; 0d:652f ????????
-    db   $5c, $e1, $de, $49, $ee, $e0, $1a, $24        ;; 0d:6537 ????????
-    db   $67, $42, $e2, $23, $27, $f4, $12, $1b        ;; 0d:653f ????????
-    db   $35, $ff, $00, $f0, $50, $04, $ff, $c8        ;; 0d:6547 ????????
-    db   $de, $d4, $ec, $f0, $1a, $35, $ff, $bc        ;; 0d:654f ????????
-    db   $64, $20, $9c, $23, $42, $9b, $12, $11        ;; 0d:6557 ????????
-    db   $00, $9c, $09, $da, $19, $da, $58, $f9        ;; 0d:655f ????????
-    db   $07, $f0, $0a, $f9, $07, $f0, $0a, $f9        ;; 0d:6567 ????????
-    db   $07, $f8, $14, $00                            ;; 0d:656f ????
+    db  $18 ;;DEL_NPC_1                                ;; 0d:64e6 $18
+    db  $f9 ;;SFX                                      ;; 0d:64e7 $f9
+    db   $0f                                           ;; 0d:64e8 .
+    db  $fd ;;SPAWN_NPC                                ;; 0d:64e9 $fd
+    db   $01                                           ;; 0d:64ea .
+    db  $17 ;;SET_NPC_1_DIRECTION_LEFT                 ;; 0d:64eb $17
+    db  $f8 ;;SET_MUSIC                                ;; 0d:64ec $f8
+    db   $05                                           ;; 0d:64ed .
+    db  $f0 ;;DELAY                                    ;; 0d:64ee $f0
+    db   $78                                           ;; 0d:64ef .
+    db  $04 ;;MSG                                      ;; 0d:64f0 $04
+    db   $10, $35, $6a, $3b, $28, $2e, $20, $24        ;; 0d:64f1 ........
+    db   $e8, $f4, $f4, $12, $11, $00                  ;; 0d:64f9 ......
+    db  $87 ;;SET_PLAYER_DIRECTION_LEFT                ;; 0d:64ff $87
+    db  $80 ;;PLAYER_STEP_FORWARD                      ;; 0d:6500 $80
+    db  $80 ;;PLAYER_STEP_FORWARD                      ;; 0d:6501 $80
+    db  $10 ;;NPC_1_STEP_FORWARD                       ;; 0d:6502 $10
+    db  $f9 ;;SFX                                      ;; 0d:6503 $f9
+    db   $07                                           ;; 0d:6504 .
+    db  $f0 ;;DELAY                                    ;; 0d:6505 $f0
+    db   $0f                                           ;; 0d:6506 .
+    db  $f9 ;;SFX                                      ;; 0d:6507 $f9
+    db   $07                                           ;; 0d:6508 .
+    db  $10 ;;NPC_1_STEP_FORWARD                       ;; 0d:6509 $10
+    db  $f0 ;;DELAY                                    ;; 0d:650a $f0
+    db   $3c                                           ;; 0d:650b .
+    db  $86 ;;SET_PLAYER_DIRECTION_RIGHT               ;; 0d:650c $86
+    db  $f0 ;;DELAY                                    ;; 0d:650d $f0
+    db   $28                                           ;; 0d:650e .
+    db  $04 ;;MSG                                      ;; 0d:650f $04
+    db   $10, $35, $97, $d8, $ec, $f3, $1a, $bd        ;; 0d:6510 ........
+    db   $47, $ee, $28, $d9, $e2, $3a, $46, $42        ;; 0d:6518 ........
+    db   $9b, $12, $11, $00                            ;; 0d:6520 ....
+    db  $87 ;;SET_PLAYER_DIRECTION_LEFT                ;; 0d:6524 $87
+    db  $80 ;;PLAYER_STEP_FORWARD                      ;; 0d:6525 $80
+    db  $80 ;;PLAYER_STEP_FORWARD                      ;; 0d:6526 $80
+    db  $10 ;;NPC_1_STEP_FORWARD                       ;; 0d:6527 $10
+    db  $f9 ;;SFX                                      ;; 0d:6528 $f9
+    db   $07                                           ;; 0d:6529 .
+    db  $f0 ;;DELAY                                    ;; 0d:652a $f0
+    db   $0f                                           ;; 0d:652b .
+    db  $f9 ;;SFX                                      ;; 0d:652c $f9
+    db   $07                                           ;; 0d:652d .
+    db  $10 ;;NPC_1_STEP_FORWARD                       ;; 0d:652e $10
+    db  $f0 ;;DELAY                                    ;; 0d:652f $f0
+    db   $3c                                           ;; 0d:6530 .
+    db  $86 ;;SET_PLAYER_DIRECTION_RIGHT               ;; 0d:6531 $86
+    db  $04 ;;MSG                                      ;; 0d:6532 $04
+    db   $10, $d2, $21, $22, $5c, $e1, $de, $49        ;; 0d:6533 ........
+    db   $ee, $e0, $1a, $24, $67, $42, $e2, $23        ;; 0d:653b ........
+    db   $27, $f4, $12, $1b, $35, $ff, $00             ;; 0d:6543 .......
+    db  $f0 ;;DELAY                                    ;; 0d:654a $f0
+    db   $50                                           ;; 0d:654b .
+    db  $04 ;;MSG                                      ;; 0d:654c $04
+    db   $ff, $c8, $de, $d4, $ec, $f0, $1a, $35        ;; 0d:654d ........
+    db   $ff, $bc, $64, $20, $9c, $23, $42, $9b        ;; 0d:6555 ........
+    db   $12, $11, $00                                 ;; 0d:655d ...
+    db  $9c ;;UNK_9c??                                 ;; 0d:6560 $9c
+    db   $09, $da, $19, $da, $58, $f9, $07, $f0        ;; 0d:6561 ????????
+    db   $0a, $f9, $07, $f0, $0a, $f9, $07, $f8        ;; 0d:6569 ????????
+    db   $14, $00                                      ;; 0d:6571 ??
 
 script_0218:
     db  $04 ;;MSG                                      ;; 0d:6573 $04
@@ -4573,9 +4776,9 @@ script_0222:
     db  $00 ;;END                                      ;; 0d:686d $00
 
 script_0223:
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:686e $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:686e $fc
     db   $5e                                           ;; 0d:686f .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:6870 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:6870 $fd
     db   $00                                           ;; 0d:6871 .
     db  $00 ;;END                                      ;; 0d:6872 $00
 
@@ -4586,7 +4789,7 @@ script_0225:
     db  $00 ;;END                                      ;; 0d:6874 $00
 
 script_0226:
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:6875 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:6875 $fd
     db   $01                                           ;; 0d:6876 .
     db  $04 ;;MSG                                      ;; 0d:6877 $04
     db   $10, $14, $f5, $35, $c2, $ee, $8c, $e6        ;; 0d:6878 ........
@@ -4897,8 +5100,13 @@ script_0231:
     db   $0a                                           ;; 0d:6e8e .
     db  $02 ;;CALL                                     ;; 0d:6e8f $02
     db   $2e, $9a                                      ;; 0d:6e90 ..
-    db  $11 ;;UNK_11??                                 ;; 0d:6e92 $11
-    db   $11, $15, $11, $11, $da, $20                  ;; 0d:6e93 ??????
+    db  $11 ;;NPC_2_STEP_BACKWARDS                     ;; 0d:6e92 $11
+    db  $11 ;;NPC_2_STEP_BACKWARDS                     ;; 0d:6e93 $11
+    db  $15 ;;SET_NPC_1_DIRECTION_DOWN                 ;; 0d:6e94 $15
+    db  $11 ;;NPC_2_STEP_BACKWARDS                     ;; 0d:6e95 $11
+    db  $11 ;;NPC_2_STEP_BACKWARDS                     ;; 0d:6e96 $11
+    db  $da ;;UNK_DA                                   ;; 0d:6e97 $da
+    db   $20                                           ;; 0d:6e98 .
     db  $00 ;;END                                      ;; 0d:6e99 $00
 
 script_0232:
@@ -5149,14 +5357,22 @@ script_0245:
 script_0246:
     db  $f9 ;;SFX                                      ;; 0d:73d7 $f9
     db   $14                                           ;; 0d:73d8 .
-    db  $bf ;;UNK_bf??                                 ;; 0d:73d9 $bf
-    db   $bf, $f9, $11, $00                            ;; 0d:73da ....
+    db  $bf ;;FLASH_SCREEN                             ;; 0d:73d9 $bf
+    db  $bf ;;FLASH_SCREEN                             ;; 0d:73da $bf
+    db  $f9 ;;SFX                                      ;; 0d:73db $f9
+    db   $11                                           ;; 0d:73dc .
+    db  $00 ;;END                                      ;; 0d:73dd $00
 
 script_0247:
     db  $f9 ;;SFX                                      ;; 0d:73de $f9
     db   $14                                           ;; 0d:73df .
-    db  $bf ;;UNK_bf??                                 ;; 0d:73e0 $bf
-    db   $bf, $f9, $11, $bf, $bf, $00                  ;; 0d:73e1 ??????
+    db  $bf ;;FLASH_SCREEN                             ;; 0d:73e0 $bf
+    db  $bf ;;FLASH_SCREEN                             ;; 0d:73e1 $bf
+    db  $f9 ;;SFX                                      ;; 0d:73e2 $f9
+    db   $11                                           ;; 0d:73e3 .
+    db  $bf ;;FLASH_SCREEN                             ;; 0d:73e4 $bf
+    db  $bf ;;FLASH_SCREEN                             ;; 0d:73e5 $bf
+    db  $00 ;;END                                      ;; 0d:73e6 $00
 
 script_0248:
     db  $b0 ;;SET_ROOM_TILE                            ;; 0d:73e7 $b0
@@ -5168,74 +5384,78 @@ script_0248:
     db  $00 ;;END                                      ;; 0d:73f3 $00
 
 script_0249:
-    db  $bf ;;UNK_bf??                                 ;; 0d:73f4 $bf
-    db   $f9, $25, $bf, $fb, $8a, $12, $08, $97        ;; 0d:73f5 ????????
-    db   $99, $12, $08, $87, $bf, $f9, $14, $b0        ;; 0d:73fd ????????
-    db   $64, $07, $02, $b0, $64, $07, $03, $b0        ;; 0d:7405 ????????
-    db   $64, $07, $04, $b0, $32, $07, $05, $b0        ;; 0d:740d ????????
-    db   $51, $07, $06, $b0, $43, $07, $07, $f0        ;; 0d:7415 ????????
-    db   $05, $bf, $f9, $14, $b0, $64, $07, $05        ;; 0d:741d ????????
-    db   $b0, $64, $07, $06, $b0, $64, $07, $07        ;; 0d:7425 ????????
-    db   $80, $80, $f0, $50, $86, $04, $10, $14        ;; 0d:742d ????????
-    db   $f5, $c8, $db, $35, $ff, $c7, $e2, $35        ;; 0d:7435 ????????
-    db   $1a, $62, $e5, $d6, $dc, $d8, $f5, $5b        ;; 0d:743d ????????
-    db   $cd, $c1, $cb, $c8, $d0, $ff, $d2, $c8        ;; 0d:7445 ????????
-    db   $ce, $1a, $ff, $35, $ff, $ba, $c7, $bd        ;; 0d:744d ????????
-    db   $49, $ff, $c3, $ce, $c6, $c9, $f0, $00        ;; 0d:7455 ????????
-    db   $f0, $32, $04, $1b, $14, $f5, $bc, $29        ;; 0d:745d ????????
-    db   $59, $21, $f4, $1a, $ff, $8d, $e7, $6c        ;; 0d:7465 ????????
-    db   $ff, $d7, $36, $23, $30, $f3, $12, $11        ;; 0d:746d ????????
-    db   $00, $f0, $3c, $87, $f0, $32, $90, $f0        ;; 0d:7475 ????????
-    db   $28, $f9, $0c, $8b, $68, $f0, $28, $86        ;; 0d:747d ????????
-    db   $f9, $25, $fb, $04, $10, $14, $f5, $c7        ;; 0d:7485 ????????
-    db   $46, $f3, $1a, $ff, $bc, $64, $20, $47        ;; 0d:748d ????????
-    db   $80, $62, $e5, $d6, $dc, $9b, $00, $f8        ;; 0d:7495 ????????
-    db   $00, $f0, $50, $04, $1a, $62, $e5, $d6        ;; 0d:749d ????????
-    db   $dc, $d8, $f5, $35, $ff, $35, $12, $1b        ;; 0d:74a5 ????????
-    db   $d2, $c8, $ce, $97, $ba, $cf, $6d, $cd        ;; 0d:74ad ????????
-    db   $c8, $9a, $ba, $cf, $be, $1a, $cd, $9d        ;; 0d:74b5 ????????
-    db   $6a, $c8, $cb, $c5, $bd, $34, $d2, $c8        ;; 0d:74bd ????????
-    db   $ce, $1a, $ba, $cb, $6d, $cd, $9d, $ff        ;; 0d:74c5 ????????
-    db   $c8, $c7, $c5, $d2, $97, $c8, $c9, $be        ;; 0d:74cd ????????
-    db   $f0, $00, $f8, $02, $04, $12, $1b, $14        ;; 0d:74d5 ????????
-    db   $f5, $d0, $3b, $28, $2e, $20, $24, $e8        ;; 0d:74dd ????????
-    db   $1a, $22, $56, $de, $2f, $da, $2d, $d5        ;; 0d:74e5 ????????
-    db   $21, $e7, $f4, $1a, $ff, $35, $ff, $bc        ;; 0d:74ed ????????
-    db   $64, $20, $47, $f3, $12, $1b, $62, $e5        ;; 0d:74f5 ????????
-    db   $d6, $dc, $d8, $f5, $f1, $49, $ff, $ba        ;; 0d:74fd ????????
-    db   $c6, $1a, $ff, $ce, $c7, $ba, $bb, $c5        ;; 0d:7505 ????????
-    db   $6d, $cd, $c8, $ff, $c3, $ce, $c6, $c9        ;; 0d:750d ????????
-    db   $35, $1a, $14, $f5, $f1, $6a, $3b, $e7        ;; 0d:7515 ????????
-    db   $f1, $f4, $f3, $12, $1b, $62, $e5, $d6        ;; 0d:751d ????????
-    db   $dc, $d8, $f5, $5b, $d0, $ba, $cc, $51        ;; 0d:7525 ????????
-    db   $ba, $bd, $be, $1a, $68, $c8, $6a, $c8        ;; 0d:752d ????????
-    db   $cb, $c4, $49, $c7, $97, $be, $cb, $be        ;; 0d:7535 ????????
-    db   $f0, $1a, $ff, $ba, $c7, $bd, $49, $9a        ;; 0d:753d ????????
-    db   $c5, $be, $be, $c9, $97, $be, $cb, $be        ;; 0d:7545 ????????
-    db   $f1, $12, $11, $00, $f0, $28, $bf, $f9        ;; 0d:754d ????????
-    db   $25, $bf, $b0, $64, $08, $03, $b0, $64        ;; 0d:7555 ????????
-    db   $08, $04, $b0, $41, $08, $05, $b0, $43        ;; 0d:755d ????????
-    db   $08, $06, $b0, $31, $08, $07, $99, $11        ;; 0d:7565 ????????
-    db   $0c, $b0, $64, $09, $02, $b0, $64, $09        ;; 0d:756d ????????
-    db   $03, $b0, $32, $09, $04, $b0, $51, $09        ;; 0d:7575 ????????
-    db   $05, $b0, $43, $09, $06, $b0, $30, $09        ;; 0d:757d ????????
-    db   $07, $f0, $05, $bf, $f9, $25, $bf, $b0        ;; 0d:7585 ????????
-    db   $64, $08, $05, $b0, $64, $08, $06, $b0        ;; 0d:758d ????????
-    db   $41, $08, $07, $98, $b0, $64, $09, $04        ;; 0d:7595 ????????
-    db   $b0, $64, $09, $05, $b0, $32, $09, $06        ;; 0d:759d ????????
-    db   $b0, $51, $09, $07, $f0, $05, $bf, $f9        ;; 0d:75a5 ????????
-    db   $25, $bf, $b0, $64, $08, $07, $b0, $64        ;; 0d:75ad ????????
-    db   $09, $06, $b0, $64, $09, $07, $f9, $25        ;; 0d:75b5 ????????
-    db   $fb, $bf, $bf, $f9, $11, $f0, $8c, $04        ;; 0d:75bd ????????
-    db   $10, $14, $f5, $35, $51, $2e, $d6, $dc        ;; 0d:75c5 ????????
-    db   $9b, $12, $11, $00, $bd, $f3, $0f, $55        ;; 0d:75cd ????????
-    db   $14, $00, $bc, $f0, $14, $04, $10, $62        ;; 0d:75d5 ????????
-    db   $e5, $d6, $dc, $d8, $f5, $cc, $be, $6d        ;; 0d:75dd ????????
-    db   $d2, $c8, $ce, $1a, $9a, $c8, $c6, $be        ;; 0d:75e5 ????????
-    db   $cd, $c2, $c6, $be, $ef, $00, $f0, $28        ;; 0d:75ed ????????
-    db   $04, $ff, $c4, $c2, $bd, $35, $12, $11        ;; 0d:75f5 ????????
-    db   $00, $bd, $f3, $01, $56, $0e, $06, $ab        ;; 0d:75fd ????????
-    db   $f0, $3c, $bc, $f0, $3c, $db, $57, $00        ;; 0d:7605 ????????
+    db  $bf ;;FLASH_SCREEN                             ;; 0d:73f4 $bf
+    db  $f9 ;;SFX                                      ;; 0d:73f5 $f9
+    db   $25                                           ;; 0d:73f6 .
+    db  $bf ;;FLASH_SCREEN                             ;; 0d:73f7 $bf
+    db  $fb ;;UNK_fb??                                 ;; 0d:73f8 $fb
+    db   $8a, $12, $08, $97, $99, $12, $08, $87        ;; 0d:73f9 ????????
+    db   $bf, $f9, $14, $b0, $64, $07, $02, $b0        ;; 0d:7401 ????????
+    db   $64, $07, $03, $b0, $64, $07, $04, $b0        ;; 0d:7409 ????????
+    db   $32, $07, $05, $b0, $51, $07, $06, $b0        ;; 0d:7411 ????????
+    db   $43, $07, $07, $f0, $05, $bf, $f9, $14        ;; 0d:7419 ????????
+    db   $b0, $64, $07, $05, $b0, $64, $07, $06        ;; 0d:7421 ????????
+    db   $b0, $64, $07, $07, $80, $80, $f0, $50        ;; 0d:7429 ????????
+    db   $86, $04, $10, $14, $f5, $c8, $db, $35        ;; 0d:7431 ????????
+    db   $ff, $c7, $e2, $35, $1a, $62, $e5, $d6        ;; 0d:7439 ????????
+    db   $dc, $d8, $f5, $5b, $cd, $c1, $cb, $c8        ;; 0d:7441 ????????
+    db   $d0, $ff, $d2, $c8, $ce, $1a, $ff, $35        ;; 0d:7449 ????????
+    db   $ff, $ba, $c7, $bd, $49, $ff, $c3, $ce        ;; 0d:7451 ????????
+    db   $c6, $c9, $f0, $00, $f0, $32, $04, $1b        ;; 0d:7459 ????????
+    db   $14, $f5, $bc, $29, $59, $21, $f4, $1a        ;; 0d:7461 ????????
+    db   $ff, $8d, $e7, $6c, $ff, $d7, $36, $23        ;; 0d:7469 ????????
+    db   $30, $f3, $12, $11, $00, $f0, $3c, $87        ;; 0d:7471 ????????
+    db   $f0, $32, $90, $f0, $28, $f9, $0c, $8b        ;; 0d:7479 ????????
+    db   $68, $f0, $28, $86, $f9, $25, $fb, $04        ;; 0d:7481 ????????
+    db   $10, $14, $f5, $c7, $46, $f3, $1a, $ff        ;; 0d:7489 ????????
+    db   $bc, $64, $20, $47, $80, $62, $e5, $d6        ;; 0d:7491 ????????
+    db   $dc, $9b, $00, $f8, $00, $f0, $50, $04        ;; 0d:7499 ????????
+    db   $1a, $62, $e5, $d6, $dc, $d8, $f5, $35        ;; 0d:74a1 ????????
+    db   $ff, $35, $12, $1b, $d2, $c8, $ce, $97        ;; 0d:74a9 ????????
+    db   $ba, $cf, $6d, $cd, $c8, $9a, $ba, $cf        ;; 0d:74b1 ????????
+    db   $be, $1a, $cd, $9d, $6a, $c8, $cb, $c5        ;; 0d:74b9 ????????
+    db   $bd, $34, $d2, $c8, $ce, $1a, $ba, $cb        ;; 0d:74c1 ????????
+    db   $6d, $cd, $9d, $ff, $c8, $c7, $c5, $d2        ;; 0d:74c9 ????????
+    db   $97, $c8, $c9, $be, $f0, $00, $f8, $02        ;; 0d:74d1 ????????
+    db   $04, $12, $1b, $14, $f5, $d0, $3b, $28        ;; 0d:74d9 ????????
+    db   $2e, $20, $24, $e8, $1a, $22, $56, $de        ;; 0d:74e1 ????????
+    db   $2f, $da, $2d, $d5, $21, $e7, $f4, $1a        ;; 0d:74e9 ????????
+    db   $ff, $35, $ff, $bc, $64, $20, $47, $f3        ;; 0d:74f1 ????????
+    db   $12, $1b, $62, $e5, $d6, $dc, $d8, $f5        ;; 0d:74f9 ????????
+    db   $f1, $49, $ff, $ba, $c6, $1a, $ff, $ce        ;; 0d:7501 ????????
+    db   $c7, $ba, $bb, $c5, $6d, $cd, $c8, $ff        ;; 0d:7509 ????????
+    db   $c3, $ce, $c6, $c9, $35, $1a, $14, $f5        ;; 0d:7511 ????????
+    db   $f1, $6a, $3b, $e7, $f1, $f4, $f3, $12        ;; 0d:7519 ????????
+    db   $1b, $62, $e5, $d6, $dc, $d8, $f5, $5b        ;; 0d:7521 ????????
+    db   $d0, $ba, $cc, $51, $ba, $bd, $be, $1a        ;; 0d:7529 ????????
+    db   $68, $c8, $6a, $c8, $cb, $c4, $49, $c7        ;; 0d:7531 ????????
+    db   $97, $be, $cb, $be, $f0, $1a, $ff, $ba        ;; 0d:7539 ????????
+    db   $c7, $bd, $49, $9a, $c5, $be, $be, $c9        ;; 0d:7541 ????????
+    db   $97, $be, $cb, $be, $f1, $12, $11, $00        ;; 0d:7549 ????????
+    db   $f0, $28, $bf, $f9, $25, $bf, $b0, $64        ;; 0d:7551 ????????
+    db   $08, $03, $b0, $64, $08, $04, $b0, $41        ;; 0d:7559 ????????
+    db   $08, $05, $b0, $43, $08, $06, $b0, $31        ;; 0d:7561 ????????
+    db   $08, $07, $99, $11, $0c, $b0, $64, $09        ;; 0d:7569 ????????
+    db   $02, $b0, $64, $09, $03, $b0, $32, $09        ;; 0d:7571 ????????
+    db   $04, $b0, $51, $09, $05, $b0, $43, $09        ;; 0d:7579 ????????
+    db   $06, $b0, $30, $09, $07, $f0, $05, $bf        ;; 0d:7581 ????????
+    db   $f9, $25, $bf, $b0, $64, $08, $05, $b0        ;; 0d:7589 ????????
+    db   $64, $08, $06, $b0, $41, $08, $07, $98        ;; 0d:7591 ????????
+    db   $b0, $64, $09, $04, $b0, $64, $09, $05        ;; 0d:7599 ????????
+    db   $b0, $32, $09, $06, $b0, $51, $09, $07        ;; 0d:75a1 ????????
+    db   $f0, $05, $bf, $f9, $25, $bf, $b0, $64        ;; 0d:75a9 ????????
+    db   $08, $07, $b0, $64, $09, $06, $b0, $64        ;; 0d:75b1 ????????
+    db   $09, $07, $f9, $25, $fb, $bf, $bf, $f9        ;; 0d:75b9 ????????
+    db   $11, $f0, $8c, $04, $10, $14, $f5, $35        ;; 0d:75c1 ????????
+    db   $51, $2e, $d6, $dc, $9b, $12, $11, $00        ;; 0d:75c9 ????????
+    db   $bd, $f3, $0f, $55, $14, $00, $bc, $f0        ;; 0d:75d1 ????????
+    db   $14, $04, $10, $62, $e5, $d6, $dc, $d8        ;; 0d:75d9 ????????
+    db   $f5, $cc, $be, $6d, $d2, $c8, $ce, $1a        ;; 0d:75e1 ????????
+    db   $9a, $c8, $c6, $be, $cd, $c2, $c6, $be        ;; 0d:75e9 ????????
+    db   $ef, $00, $f0, $28, $04, $ff, $c4, $c2        ;; 0d:75f1 ????????
+    db   $bd, $35, $12, $11, $00, $bd, $f3, $01        ;; 0d:75f9 ????????
+    db   $56, $0e, $06, $ab, $f0, $3c, $bc, $f0        ;; 0d:7601 ????????
+    db   $3c, $db, $57, $00                            ;; 0d:7609 ????
 
 script_024a:
     db  $00 ;;END                                      ;; 0d:760d $00
@@ -5257,8 +5477,9 @@ script_024f:
     db   $08, $04                                      ;; 0d:7613 ..
     db  $f9 ;;SFX                                      ;; 0d:7615 $f9
     db   $14                                           ;; 0d:7616 .
-    db  $bf ;;UNK_bf??                                 ;; 0d:7617 $bf
-    db   $00, $00                                      ;; 0d:7618 ??
+    db  $bf ;;FLASH_SCREEN                             ;; 0d:7617 $bf
+    db  $00 ;;END                                      ;; 0d:7618 $00
+    db  $00 ;;END                                      ;; 0d:7619 $00
 
 script_0250:
     db  $04 ;;MSG                                      ;; 0d:761a $04
@@ -5413,49 +5634,123 @@ script_025d:
     db  $00 ;;END                                      ;; 0d:778c $00
 
 script_025e:
-    db  $15 ;;UNK_15??                                 ;; 0d:778d $15
-    db   $08, $f4, $00, $42, $08, $f5, $f6, $f7        ;; 0d:778e ...?....
-    db   $00, $02, $f6, $04, $08, $f5, $f6, $77        ;; 0d:7796 .?......
-    db   $00, $02, $f6, $05, $08, $f5, $76, $f7        ;; 0d:779e ..??....
-    db   $00, $02, $f6, $07, $08, $f5, $76, $77        ;; 0d:77a6 ..??....
-    db   $00, $02, $f6, $08, $08, $75, $f6, $f7        ;; 0d:77ae ..??....
-    db   $00, $02, $f6, $09, $08, $75, $f6, $77        ;; 0d:77b6 ..??....
-    db   $00, $02, $f6, $0a, $08, $75, $76, $f7        ;; 0d:77be ..??....
-    db   $00, $02, $f6, $0b, $08, $75, $76, $77        ;; 0d:77c6 ..??....
-    db   $00, $02, $f6, $0c, $01, $08, $08, $f5        ;; 0d:77ce ..??..??
-    db   $f6, $f7, $00, $02, $f6, $0d, $00             ;; 0d:77d6 ??????.
+    db  $15 ;;SET_NPC_1_DIRECTION_DOWN                 ;; 0d:778d $15
+    db  $08 ;;IF ? JR                                  ;; 0d:778e $08
+    db   $f4, $00, $42                                 ;; 0d:778f ...
+    db  $08 ;;IF ? JR                                  ;; 0d:7792 $08
+    db   $f5, $f6, $f7, $00, $02                       ;; 0d:7793 .....
+    db  $f6 ;;UNK_f6??                                 ;; 0d:7798 $f6
+    db   $04                                           ;; 0d:7799 .
+    db  $08 ;;IF ? JR                                  ;; 0d:779a $08
+    db   $f5, $f6, $77, $00, $02                       ;; 0d:779b .....
+    db  $f6 ;;UNK_f6??                                 ;; 0d:77a0 $f6
+    db   $05                                           ;; 0d:77a1 ?
+    db  $08 ;;IF ? JR                                  ;; 0d:77a2 $08
+    db   $f5, $76, $f7, $00, $02                       ;; 0d:77a3 .....
+    db  $f6 ;;UNK_f6??                                 ;; 0d:77a8 $f6
+    db   $07                                           ;; 0d:77a9 ?
+    db  $08 ;;IF ? JR                                  ;; 0d:77aa $08
+    db   $f5, $76, $77, $00, $02                       ;; 0d:77ab .....
+    db  $f6 ;;UNK_f6??                                 ;; 0d:77b0 $f6
+    db   $08                                           ;; 0d:77b1 ?
+    db  $08 ;;IF ? JR                                  ;; 0d:77b2 $08
+    db   $75, $f6, $f7, $00, $02                       ;; 0d:77b3 .....
+    db  $f6 ;;UNK_f6??                                 ;; 0d:77b8 $f6
+    db   $09                                           ;; 0d:77b9 ?
+    db  $08 ;;IF ? JR                                  ;; 0d:77ba $08
+    db   $75, $f6, $77, $00, $02                       ;; 0d:77bb .....
+    db  $f6 ;;UNK_f6??                                 ;; 0d:77c0 $f6
+    db   $0a                                           ;; 0d:77c1 ?
+    db  $08 ;;IF ? JR                                  ;; 0d:77c2 $08
+    db   $75, $76, $f7, $00, $02                       ;; 0d:77c3 .....
+    db  $f6 ;;UNK_f6??                                 ;; 0d:77c8 $f6
+    db   $0b                                           ;; 0d:77c9 ?
+    db  $08 ;;IF ? JR                                  ;; 0d:77ca $08
+    db   $75, $76, $77, $00, $02                       ;; 0d:77cb .....
+    db  $f6 ;;UNK_f6??                                 ;; 0d:77d0 $f6
+    db   $0c                                           ;; 0d:77d1 ?
+    db  $01 ;;JR                                       ;; 0d:77d2 $01
+    db   $08                                           ;; 0d:77d3 .
+    db  $08 ;;IF ? JR                                  ;; 0d:77d4 $08
+    db   $f5, $f6, $f7, $00, $02                       ;; 0d:77d5 .....
+    db  $f6 ;;UNK_f6??                                 ;; 0d:77da $f6
+    db   $0d                                           ;; 0d:77db ?
+    db  $00 ;;END                                      ;; 0d:77dc $00
 
 script_025f:
-    db  $15 ;;UNK_15??                                 ;; 0d:77dd $15
-    db   $04, $10, $97, $46, $d7, $ec, $f3, $1a        ;; 0d:77de ........
-    db   $ff, $b1, $b0, $c0, $c9, $f6, $e1, $8f        ;; 0d:77e6 ........
-    db   $91, $f3, $1a, $6a, $29, $e1, $58, $45        ;; 0d:77ee ........
-    db   $d4, $ec, $f4, $12, $13, $00, $08, $ff        ;; 0d:77f6 ........
-    db   $00, $21, $d1, $0a, $00, $08, $06, $00        ;; 0d:77fe .?......
-    db   $17, $04, $1b, $9a, $3c, $e5, $ec, $f0        ;; 0d:7806 .???????
-    db   $1a, $ff, $c7, $e2, $28, $4e, $21, $88        ;; 0d:780e ????????
-    db   $94, $c9, $f3, $12, $11, $00, $01, $03        ;; 0d:7816 ????????
-    db   $02, $51, $fb, $02, $00, $31, $00             ;; 0d:781e .......
+    db  $15 ;;SET_NPC_1_DIRECTION_DOWN                 ;; 0d:77dd $15
+    db  $04 ;;MSG                                      ;; 0d:77de $04
+    db   $10, $97, $46, $d7, $ec, $f3, $1a, $ff        ;; 0d:77df ........
+    db   $b1, $b0, $c0, $c9, $f6, $e1, $8f, $91        ;; 0d:77e7 ........
+    db   $f3, $1a, $6a, $29, $e1, $58, $45, $d4        ;; 0d:77ef ........
+    db   $ec, $f4, $12, $13, $00                       ;; 0d:77f7 .....
+    db  $08 ;;IF ? JR                                  ;; 0d:77fc $08
+    db   $ff, $00, $21                                 ;; 0d:77fd ...
+    db  $d1 ;;CHECK_MONEY                              ;; 0d:7800 $d1
+    db   $0a, $00                                      ;; 0d:7801 ..
+    db  $08 ;;IF ? JR                                  ;; 0d:7803 $08
+    db   $06, $00, $17                                 ;; 0d:7804 ...
+    db  $04 ;;MSG                                      ;; 0d:7807 $04
+    db   $1b, $9a, $3c, $e5, $ec, $f0, $1a, $ff        ;; 0d:7808 ........
+    db   $c7, $e2, $28, $4e, $21, $88, $94, $c9        ;; 0d:7810 ........
+    db   $f3, $12, $11, $00                            ;; 0d:7818 ....
+    db  $01 ;;JR                                       ;; 0d:781c $01
+    db   $03                                           ;; 0d:781d .
+    db  $02 ;;CALL                                     ;; 0d:781e $02
+    db   $51, $fb                                      ;; 0d:781f ..
+    db  $02 ;;CALL                                     ;; 0d:7821 $02
+    db   $00, $31                                      ;; 0d:7822 ..
+    db  $00 ;;END                                      ;; 0d:7824 $00
 
 script_0260:
-    db  $15 ;;UNK_15??                                 ;; 0d:7825 $15
-    db   $08, $74, $00, $04, $f6, $03, $01, $7b        ;; 0d:7826 ....????
-    db   $08, $75, $00, $04, $f6, $03, $01, $73        ;; 0d:782e ....????
-    db   $08, $f6, $f7, $00, $0a, $08, $8c, $00        ;; 0d:7836 ........
-    db   $04, $f6, $00, $01, $02, $f6, $01, $08        ;; 0d:783e ?....??.
-    db   $f6, $77, $00, $25, $0a, $43, $00, $02        ;; 0d:7846 ........
-    db   $01, $03, $02, $7a, $c2, $f6, $01, $04        ;; 0d:784e ??......
-    db   $10, $c2, $e7, $6c, $3d, $82, $e0, $e3        ;; 0d:7856 ........
-    db   $57, $d4, $2a, $d4, $d7, $f0, $1a, $bb        ;; 0d:785e ........
-    db   $20, $89, $38, $d9, $90, $f3, $12, $11        ;; 0d:7866 ........
-    db   $00, $08, $76, $f7, $00, $02, $f6, $01        ;; 0d:786e ......??
-    db   $08, $76, $77, $00, $2e, $08, $11, $00        ;; 0d:7876 .....???
-    db   $04, $f6, $02, $01, $26, $04, $10, $be        ;; 0d:787e ????????
-    db   $eb, $d6, $41, $20, $e0, $d8, $f1, $00        ;; 0d:7886 ????????
-    db   $f0, $1e, $04, $1a, $f1, $97, $66, $df        ;; 0d:788e ????????
-    db   $e2, $f1, $00, $f0, $32, $04, $1a, $f1        ;; 0d:7896 ????????
-    db   $ff, $c7, $36, $29, $e6, $99, $e5, $f0        ;; 0d:789e ????????
-    db   $12, $11, $00, $00                            ;; 0d:78a6 ???.
+    db  $15 ;;SET_NPC_1_DIRECTION_DOWN                 ;; 0d:7825 $15
+    db  $08 ;;IF ? JR                                  ;; 0d:7826 $08
+    db   $74, $00, $04                                 ;; 0d:7827 ...
+    db  $f6 ;;UNK_f6??                                 ;; 0d:782a $f6
+    db   $03, $01, $7b                                 ;; 0d:782b ???
+    db  $08 ;;IF ? JR                                  ;; 0d:782e $08
+    db   $75, $00, $04                                 ;; 0d:782f ...
+    db  $f6 ;;UNK_f6??                                 ;; 0d:7832 $f6
+    db   $03, $01, $73                                 ;; 0d:7833 ???
+    db  $08 ;;IF ? JR                                  ;; 0d:7836 $08
+    db   $f6, $f7, $00, $0a                            ;; 0d:7837 ....
+    db  $08 ;;IF ? JR                                  ;; 0d:783b $08
+    db   $8c, $00, $04                                 ;; 0d:783c ...
+    db  $f6 ;;UNK_f6??                                 ;; 0d:783f $f6
+    db   $00, $01, $02                                 ;; 0d:7840 ...
+    db  $f6 ;;UNK_f6??                                 ;; 0d:7843 $f6
+    db   $01                                           ;; 0d:7844 ?
+    db  $08 ;;IF ? JR                                  ;; 0d:7845 $08
+    db   $f6, $77, $00, $25                            ;; 0d:7846 ....
+    db  $0a ;;UNK_0a??                                 ;; 0d:784a $0a
+    db   $43, $00, $02, $01, $03, $02, $7a, $c2        ;; 0d:784b ...??...
+    db   $f6, $01, $04, $10, $c2, $e7, $6c, $3d        ;; 0d:7853 ........
+    db   $82, $e0, $e3, $57, $d4, $2a, $d4, $d7        ;; 0d:785b ........
+    db   $f0, $1a, $bb, $20, $89, $38, $d9, $90        ;; 0d:7863 ........
+    db   $f3, $12, $11, $00                            ;; 0d:786b ....
+    db  $08 ;;IF ? JR                                  ;; 0d:786f $08
+    db   $76, $f7, $00, $02                            ;; 0d:7870 ....
+    db  $f6 ;;UNK_f6??                                 ;; 0d:7874 $f6
+    db   $01                                           ;; 0d:7875 ?
+    db  $08 ;;IF ? JR                                  ;; 0d:7876 $08
+    db   $76, $77, $00, $2e                            ;; 0d:7877 ....
+    db  $08 ;;IF ? JR                                  ;; 0d:787b $08
+    db   $11, $00, $04                                 ;; 0d:787c ...
+    db  $f6 ;;UNK_f6??                                 ;; 0d:787f $f6
+    db   $02, $01, $26                                 ;; 0d:7880 ???
+    db  $04 ;;MSG                                      ;; 0d:7883 $04
+    db   $10, $be, $eb, $d6, $41, $20, $e0, $d8        ;; 0d:7884 ........
+    db   $f1, $00                                      ;; 0d:788c ..
+    db  $f0 ;;DELAY                                    ;; 0d:788e $f0
+    db   $1e                                           ;; 0d:788f .
+    db  $04 ;;MSG                                      ;; 0d:7890 $04
+    db   $1a, $f1, $97, $66, $df, $e2, $f1, $00        ;; 0d:7891 ........
+    db  $f0 ;;DELAY                                    ;; 0d:7899 $f0
+    db   $32                                           ;; 0d:789a .
+    db  $04 ;;MSG                                      ;; 0d:789b $04
+    db   $1a, $f1, $ff, $c7, $36, $29, $e6, $99        ;; 0d:789c ........
+    db   $e5, $f0, $12, $11, $00                       ;; 0d:78a4 .....
+    db  $00 ;;END                                      ;; 0d:78a9 $00
 
 script_0261:
     db  $04 ;;MSG                                      ;; 0d:78aa $04
@@ -5601,18 +5896,22 @@ script_026d:
     db   $d4, $de, $20, $23, $31, $60, $8b, $df        ;; 0d:7b28 ........
     db   $1a, $22, $e2, $f1, $6a, $4e, $d7, $66        ;; 0d:7b30 ........
     db   $f1, $2d, $2b, $f1, $12, $1b, $00             ;; 0d:7b38 .......
-    db  $17 ;;UNK_17??                                 ;; 0d:7b3f $17
-    db   $04, $3d, $d8, $20, $bb, $e2, $da, $2e        ;; 0d:7b40 ........
-    db   $d7, $35, $f1, $1a, $97, $20, $9c, $3a        ;; 0d:7b48 ........
-    db   $22, $d4, $de, $20, $89, $38, $1a, $3e        ;; 0d:7b50 ........
-    db   $53, $23, $20, $38, $45, $f1, $ff, $f1        ;; 0d:7b58 ........
-    db   $12, $1b, $c0, $8b, $df, $f5, $f1, $ff        ;; 0d:7b60 ........
-    db   $f1, $97, $4b, $dc, $e0, $f3, $f4, $1a        ;; 0d:7b68 ........
-    db   $ff, $f1, $ff, $f1, $97, $ff, $ba, $9a        ;; 0d:7b70 ........
-    db   $49, $51, $f3, $f3, $12, $1b, $00, $f0        ;; 0d:7b78 ........
-    db   $1e, $04, $1a, $c1, $4b, $dc, $8c, $e3        ;; 0d:7b80 ........
-    db   $4b, $6b, $25, $d4, $82, $ec, $f0, $12        ;; 0d:7b88 ........
-    db   $1b, $00, $00                                 ;; 0d:7b90 ...
+    db  $17 ;;SET_NPC_1_DIRECTION_LEFT                 ;; 0d:7b3f $17
+    db  $04 ;;MSG                                      ;; 0d:7b40 $04
+    db   $3d, $d8, $20, $bb, $e2, $da, $2e, $d7        ;; 0d:7b41 ........
+    db   $35, $f1, $1a, $97, $20, $9c, $3a, $22        ;; 0d:7b49 ........
+    db   $d4, $de, $20, $89, $38, $1a, $3e, $53        ;; 0d:7b51 ........
+    db   $23, $20, $38, $45, $f1, $ff, $f1, $12        ;; 0d:7b59 ........
+    db   $1b, $c0, $8b, $df, $f5, $f1, $ff, $f1        ;; 0d:7b61 ........
+    db   $97, $4b, $dc, $e0, $f3, $f4, $1a, $ff        ;; 0d:7b69 ........
+    db   $f1, $ff, $f1, $97, $ff, $ba, $9a, $49        ;; 0d:7b71 ........
+    db   $51, $f3, $f3, $12, $1b, $00                  ;; 0d:7b79 ......
+    db  $f0 ;;DELAY                                    ;; 0d:7b7f $f0
+    db   $1e                                           ;; 0d:7b80 .
+    db  $04 ;;MSG                                      ;; 0d:7b81 $04
+    db   $1a, $c1, $4b, $dc, $8c, $e3, $4b, $6b        ;; 0d:7b82 ........
+    db   $25, $d4, $82, $ec, $f0, $12, $1b, $00        ;; 0d:7b8a ........
+    db  $00 ;;END                                      ;; 0d:7b92 $00
 
 script_0270:
     db  $0b ;;IF JR                                    ;; 0d:7b93 $0b
@@ -5708,9 +6007,9 @@ script_0275:
     db   $09, $31, $10, $02                            ;; 0d:7c29 ....
     db  $08 ;;IF ? JR                                  ;; 0d:7c2d $08
     db   $c8, $00, $04                                 ;; 0d:7c2e ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:7c31 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:7c31 $fc
     db   $4d                                           ;; 0d:7c32 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:7c33 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:7c33 $fd
     db   $00                                           ;; 0d:7c34 .
     db  $f8 ;;SET_MUSIC                                ;; 0d:7c35 $f8
     db   $07                                           ;; 0d:7c36 .
@@ -5916,19 +6215,39 @@ script_0281:
     db   $08                                           ;; 0d:7dd0 .
     db  $08 ;;IF ? JR                                  ;; 0d:7dd1 $08
     db   $a7, $00, $3f                                 ;; 0d:7dd2 ...
-    db  $fc ;;SET_ENEMY_TYPES                          ;; 0d:7dd5 $fc
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:7dd5 $fc
     db   $51                                           ;; 0d:7dd6 .
-    db  $fd ;;SPAWN_ENEMY                              ;; 0d:7dd7 $fd
+    db  $fd ;;SPAWN_NPC                                ;; 0d:7dd7 $fd
     db   $00                                           ;; 0d:7dd8 .
-    db  $16 ;;UNK_16??                                 ;; 0d:7dd9 $16
-    db   $85, $8a, $10, $03, $03, $04, $02, $80        ;; 0d:7dda ????????
-    db   $00, $87, $03, $05, $02, $80, $00, $04        ;; 0d:7de2 ????????
-    db   $10, $00, $08, $1b, $00, $19, $04, $ba        ;; 0d:7dea ????????
-    db   $63, $2b, $d4, $f5, $c2, $ee, $8c, $da        ;; 0d:7df2 ????????
-    db   $df, $d4, $d7, $1a, $59, $21, $ee, $38        ;; 0d:7dfa ????????
-    db   $6f, $d4, $9e, $f3, $00, $01, $03, $02        ;; 0d:7e02 ????????
-    db   $6d, $f9, $04, $12, $11, $00, $9c, $05        ;; 0d:7e0a ????????
-    db   $da, $55                                      ;; 0d:7e12 ??
+    db  $16 ;;SET_NPC_1_DIRECTION_RIGHT                ;; 0d:7dd9 $16
+    db  $85 ;;SET_PLAYER_DIRECTION_DOWN                ;; 0d:7dda $85
+    db  $8a ;;SET_PLAYER_POSITION                      ;; 0d:7ddb $8a
+    db   $10, $03                                      ;; 0d:7ddc ..
+    db  $03 ;;LOOP                                     ;; 0d:7dde $03
+    db   $04, $02                                      ;; 0d:7ddf ..
+    db  $80 ;;PLAYER_STEP_FORWARD                      ;; 0d:7de1 $80
+    db  $00 ;;END                                      ;; 0d:7de2 $00
+    db  $87 ;;SET_PLAYER_DIRECTION_LEFT                ;; 0d:7de3 $87
+    db  $03 ;;LOOP                                     ;; 0d:7de4 $03
+    db   $05, $02                                      ;; 0d:7de5 ..
+    db  $80 ;;PLAYER_STEP_FORWARD                      ;; 0d:7de7 $80
+    db  $00 ;;END                                      ;; 0d:7de8 $00
+    db  $04 ;;MSG                                      ;; 0d:7de9 $04
+    db   $10, $00                                      ;; 0d:7dea ..
+    db  $08 ;;IF ? JR                                  ;; 0d:7dec $08
+    db   $1b, $00, $19                                 ;; 0d:7ded ...
+    db  $04 ;;MSG                                      ;; 0d:7df0 $04
+    db   $ba, $63, $2b, $d4, $f5, $c2, $ee, $8c        ;; 0d:7df1 ........
+    db   $da, $df, $d4, $d7, $1a, $59, $21, $ee        ;; 0d:7df9 ........
+    db   $38, $6f, $d4, $9e, $f3, $00                  ;; 0d:7e01 ......
+    db  $01 ;;JR                                       ;; 0d:7e07 $01
+    db   $03                                           ;; 0d:7e08 .
+    db  $02 ;;CALL                                     ;; 0d:7e09 $02
+    db   $6d, $f9                                      ;; 0d:7e0a ..
+    db  $04 ;;MSG                                      ;; 0d:7e0c $04
+    db   $12, $11, $00                                 ;; 0d:7e0d ...
+    db  $9c ;;UNK_9c??                                 ;; 0d:7e10 $9c
+    db   $05, $da, $55                                 ;; 0d:7e11 ???
     db  $00 ;;END                                      ;; 0d:7e14 $00
 
 script_0282:

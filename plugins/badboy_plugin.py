@@ -81,7 +81,7 @@ OPCODES = {
     0x00: ("END", 0),
     0x01: ("JR", 1),
     0x02: ("CALL", 2),
-    0x03: ("LOOP", 2), # loop count, [ignored]
+    0x03: ("LOOP", 2), # loop count, [ignored, number of bytes in the loop]
     0x04: ("MSG", -1),
 
     0x05: ("NOP", 0),
@@ -97,11 +97,25 @@ OPCODES = {
     0x0E: ("NOP", 0),
     0x0F: ("NOP", 0),
 
+    0x10: ("NPC_1_STEP_FORWARD", 0),
+    0x11: ("NPC_2_STEP_BACKWARDS", 0),
+    0x14: ("SET_NPC_1_DIRECTION_UP", 0),
+    0x15: ("SET_NPC_1_DIRECTION_DOWN", 0),
+    0x16: ("SET_NPC_1_DIRECTION_RIGHT", 0),
+    0x17: ("SET_NPC_1_DIRECTION_LEFT", 0),
+    0x18: ("DEL_NPC_1", 0),
     0x1C: ("NOP", 0),
     0x1D: ("NOP", 0),
     0x1E: ("NOP", 0),
     0x1F: ("NOP", 0),
 
+    0x20: ("NPC_1_STEP_FORWARD", 0),
+    0x21: ("NPC_2_STEP_BACKWARDS", 0),
+    0x24: ("SET_NPC_2_DIRECTION_UP", 0),
+    0x25: ("SET_NPC_2_DIRECTION_DOWN", 0),
+    0x26: ("SET_NPC_2_DIRECTION_RIGHT", 0),
+    0x27: ("SET_NPC_2_DIRECTION_LEFT", 0),
+    0x28: ("DEL_NPC_2", 0),
     0x2C: ("NOP", 0),
     0x2D: ("NOP", 0),
     0x2E: ("NOP", 0),
@@ -157,6 +171,7 @@ OPCODES = {
     0xB4: ("NOP", 0),
     0xB5: ("NOP", 0),
     0xBB: ("NOP", 0),
+    0xBF: ("FLASH_SCREEN", 0),
     0xC2: ("UNK_C2", 1),
     0xC6: ("UNK_C6", 0),
     0xCD: ("NOP", 0),
@@ -170,13 +185,17 @@ OPCODES = {
     0xE0: ("UNK_E0", 0),
     0xE2: ("UNK_E2", 0),
     0xE7: ("UNK_E7", 0),
+    0xE8: ("SCROLL_ROOM_DOWN", 0),
+    0xE9: ("SCROLL_ROOM_UP", 0),
+    0xEA: ("SCROLL_ROOM_LEFT", 0),
+    0xEB: ("SCROLL_ROOM_RIGHT", 0),
 
     0xF0: ("DELAY", 1),
     0xF4: ("LOAD_MAP", 4), # MapNr, RoomXY, PlayerX, PlayerY
     0xF8: ("SET_MUSIC", 1),
     0xF9: ("SFX", 1),
-    0xFC: ("SET_ENEMY_TYPES", 1),
-    0xFD: ("SPAWN_ENEMY", 1),
+    0xFC: ("SET_NPC_TYPES", 1),
+    0xFD: ("SPAWN_NPC", 1),
     0xFE: ("SPAWN_BOSS", 1),
 }
 
@@ -214,14 +233,18 @@ def scriptProcessor(dis, addr, *, allow_continue=False):
         addr += size
     if opcode in (0x01, 0x08, 0x0B, 0x0C): # JR
         scriptProcessor(dis, addr + dis.rom.data[addr - 1])
-    if opcode in (0x03,):
+    if opcode in (0x02,): # call
+        call_addr = (0x0D << 14) + (dis.rom.data[addr - 2] << 8) + (dis.rom.data[addr - 1])
+        scriptProcessor(dis, call_addr)
+        dis.info.addAbsoluteRomSymbol(call_addr)
+    if opcode in (0x03,): # loop
         allow_continue = True
-    
+
     if opcode not in (0x00, 0x01): # No continue opcode
         scriptProcessor(dis, addr, allow_continue=allow_continue)
     elif opcode == 0x00 and allow_continue:
         scriptProcessor(dis, addr)
-    
+
 
 def scriptPointer(dis, addr, params):
     dis.macros["SCRIPT_POINTER"] = "dw ((\\1 - $4000) + ((BANK(\\1) - $0D) * $4000))"
