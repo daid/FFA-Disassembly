@@ -2090,7 +2090,7 @@ unknown_000_0bc5:
 
 code_000_0bd1:
     ld   HL, wObjectRuntimeData                        ;; 00:0bd1 $21 $00 $c2
-    ld   DE, wC000                                     ;; 00:0bd4 $11 $00 $c0
+    ld   DE, wOAMBuffer                                ;; 00:0bd4 $11 $00 $c0
     ld   A, $ff                                        ;; 00:0bd7 $3e $ff
     ld   B, $14                                        ;; 00:0bd9 $06 $14
 .code_0bdb:
@@ -2185,6 +2185,7 @@ GetObjectY:
     db   $00, $c2, $09, $23, $3a, $c9                  ;; 00:0c57 ??????
 
 code_000_0c5d:
+setObjectDirection:
     ld   L, C                                          ;; 00:0c5d $69
     ld   H, $00                                        ;; 00:0c5e $26 $00
     add  HL, HL                                        ;; 00:0c60 $29
@@ -2236,6 +2237,7 @@ code_000_0c86:
     ret                                                ;; 00:0c98 $c9
 
 code_000_0c99:
+getObjectDirection:
     ld   L, C                                          ;; 00:0c99 $69
     ld   H, $00                                        ;; 00:0c9a $26 $00
     add  HL, HL                                        ;; 00:0c9c $29
@@ -4991,8 +4993,8 @@ storeDEinVRAM:
     db   $7a, $cd, $5e, $1d, $57, $c9, $cd, $8a        ;; 00:1dba ????????
     db   $1d, $5f, $23, $cd, $8a, $1d, $57, $c9        ;; 00:1dc2 ????????
 
-code_000_1dca:
-    ld   A, [wCEE8]                                    ;; 00:1dca $fa $e8 $ce
+getNextBackgroundRequestSlot:
+    ld   A, [wBackgroundRenderRequestCount]            ;; 00:1dca $fa $e8 $ce
     ld   L, A                                          ;; 00:1dcd $6f
     ld   H, $00                                        ;; 00:1dce $26 $00
     ld   E, L                                          ;; 00:1dd0 $5d
@@ -5000,12 +5002,12 @@ code_000_1dca:
     add  HL, HL                                        ;; 00:1dd2 $29
     add  HL, DE                                        ;; 00:1dd3 $19
     add  HL, HL                                        ;; 00:1dd4 $29
-    ld   DE, wC8E8                                     ;; 00:1dd5 $11 $e8 $c8
+    ld   DE, wBackgroundRenderRequests                 ;; 00:1dd5 $11 $e8 $c8
     add  HL, DE                                        ;; 00:1dd8 $19
     ret                                                ;; 00:1dd9 $c9
 
-code_000_1dda:
-    ld   A, [wCEE8]                                    ;; 00:1dda $fa $e8 $ce
+processBackgroundRenderRequests:
+    ld   A, [wBackgroundRenderRequestCount]            ;; 00:1dda $fa $e8 $ce
     cp   A, $00                                        ;; 00:1ddd $fe $00
     ret  Z                                             ;; 00:1ddf $c8
     ld   A, [wVBlankDone]                              ;; 00:1de0 $fa $ad $c0
@@ -5016,9 +5018,9 @@ code_000_1dda:
     ret  NC                                            ;; 00:1dea $d0
     ld   A, $01                                        ;; 00:1deb $3e $01 Bank
     call pushBankNrAndSwitch                           ;; 00:1ded $cd $fb $29
-    ld   A, [wCEE8]                                    ;; 00:1df0 $fa $e8 $ce
+    ld   A, [wBackgroundRenderRequestCount]            ;; 00:1df0 $fa $e8 $ce
     ld   B, A                                          ;; 00:1df3 $47
-    ld   HL, wC8E8                                     ;; 00:1df4 $21 $e8 $c8
+    ld   HL, wBackgroundRenderRequests                 ;; 00:1df4 $21 $e8 $c8
 .code_1df7:
     push BC                                            ;; 00:1df7 $c5
     push HL                                            ;; 00:1df8 $e5
@@ -5038,6 +5040,7 @@ code_000_1dda:
     jr   NC, .code_1e3a                                ;; 00:1e07 $30 $31
     ld   [MBCBankSelect], A                            ;; 00:1e09 $ea $00 $21
     ld   C, $44                                        ;; 00:1e0c $0e $44
+; check rLY
 .code_1e0e:
     ldh  A, [C]                                        ;; 00:1e0e $f2
     cp   A, $8c                                        ;; 00:1e0f $fe $8c
@@ -5067,7 +5070,7 @@ code_000_1dda:
     dec  B                                             ;; 00:1e2e $05
     jr   NZ, .code_1df7                                ;; 00:1e2f $20 $c6
     ld   A, $00                                        ;; 00:1e31 $3e $00
-    ld   [wCEE8], A                                    ;; 00:1e33 $ea $e8 $ce
+    ld   [wBackgroundRenderRequestCount], A            ;; 00:1e33 $ea $e8 $ce
     call popBankNrAndSwitch                            ;; 00:1e36 $cd $0a $2a
     ret                                                ;; 00:1e39 $c9
 .code_1e3a:
@@ -5086,7 +5089,7 @@ code_000_1dda:
     dec  HL                                            ;; 00:1e4c $2b
     pop  BC                                            ;; 00:1e4d $c1
     ld   A, B                                          ;; 00:1e4e $78
-    ld   [wCEE8], A                                    ;; 00:1e4f $ea $e8 $ce
+    ld   [wBackgroundRenderRequestCount], A            ;; 00:1e4f $ea $e8 $ce
     push HL                                            ;; 00:1e52 $e5
     push AF                                            ;; 00:1e53 $f5
     call popBankNrAndSwitch                            ;; 00:1e54 $cd $0a $2a
@@ -5104,7 +5107,7 @@ code_000_1dda:
     add  HL, HL                                        ;; 00:1e64 $29
     ld   C, L                                          ;; 00:1e65 $4d
     ld   B, H                                          ;; 00:1e66 $44
-    ld   DE, wC8E8                                     ;; 00:1e67 $11 $e8 $c8
+    ld   DE, wBackgroundRenderRequests                 ;; 00:1e67 $11 $e8 $c8
     pop  HL                                            ;; 00:1e6a $e1
     call CopyHL_to_DE_size_BC                          ;; 00:1e6b $cd $40 $2b
     ret                                                ;; 00:1e6e $c9
@@ -5113,7 +5116,7 @@ code_000_1e6f:
     push DE                                            ;; 00:1e6f $d5
     push HL                                            ;; 00:1e70 $e5
     ld   C, A                                          ;; 00:1e71 $4f
-    call code_000_1dca                                 ;; 00:1e72 $cd $ca $1d
+    call getNextBackgroundRequestSlot                  ;; 00:1e72 $cd $ca $1d
     ld   A, C                                          ;; 00:1e75 $79
     ld   [HL+], A                                      ;; 00:1e76 $22
     ld   A, B                                          ;; 00:1e77 $78
@@ -5127,7 +5130,7 @@ code_000_1e6f:
     ld   A, E                                          ;; 00:1e7f $7b
     ld   [HL+], A                                      ;; 00:1e80 $22
     ld   [HL], D                                       ;; 00:1e81 $72
-    ld   HL, wCEE8                                     ;; 00:1e82 $21 $e8 $ce
+    ld   HL, wBackgroundRenderRequestCount             ;; 00:1e82 $21 $e8 $ce
     inc  [HL]                                          ;; 00:1e85 $34
     ret                                                ;; 00:1e86 $c9
     db   $e5, $47, $cd, $ca, $1d, $3e, $10, $22        ;; 00:1e87 ????????
@@ -5137,7 +5140,7 @@ code_000_1e6f:
 code_000_1e9f:
     push HL                                            ;; 00:1e9f $e5
     push DE                                            ;; 00:1ea0 $d5
-    call code_000_1dca                                 ;; 00:1ea1 $cd $ca $1d
+    call getNextBackgroundRequestSlot                  ;; 00:1ea1 $cd $ca $1d
     ld   A, $20                                        ;; 00:1ea4 $3e $20
     ld   [HL+], A                                      ;; 00:1ea6 $22
     ld   A, $02                                        ;; 00:1ea7 $3e $02
@@ -5151,7 +5154,7 @@ code_000_1e9f:
     ld   A, E                                          ;; 00:1eb0 $7b
     ld   [HL+], A                                      ;; 00:1eb1 $22
     ld   [HL], D                                       ;; 00:1eb2 $72
-    ld   HL, wCEE8                                     ;; 00:1eb3 $21 $e8 $ce
+    ld   HL, wBackgroundRenderRequestCount             ;; 00:1eb3 $21 $e8 $ce
     inc  [HL]                                          ;; 00:1eb6 $34
     ret                                                ;; 00:1eb7 $c9
     db   $e5, $d5, $cd, $ca, $1d, $3e, $20, $22        ;; 00:1eb8 ????????
@@ -5166,18 +5169,18 @@ trampolineUpdateJoypadInput:
     jp   callFunctionInBank02                          ;; 00:1ed4 $c3 $06 $1f
 
 callFunctionInBank01:
-    ld   [wC0B2], A                                    ;; 00:1ed7 $ea $b2 $c0
+    ld   [wScratchBankCallFunctionNumber], A           ;; 00:1ed7 $ea $b2 $c0
     pop  AF                                            ;; 00:1eda $f1
-    ld   [wC0B3], A                                    ;; 00:1edb $ea $b3 $c0
+    ld   [wScratchBankCallA], A                        ;; 00:1edb $ea $b3 $c0
     ld   A, H                                          ;; 00:1ede $7c
-    ld   [wC0B5], A                                    ;; 00:1edf $ea $b5 $c0
+    ld   [wScratchBankCallH], A                        ;; 00:1edf $ea $b5 $c0
     ld   A, L                                          ;; 00:1ee2 $7d
-    ld   [wC0B4], A                                    ;; 00:1ee3 $ea $b4 $c0
+    ld   [wScratchBankCallL], A                        ;; 00:1ee3 $ea $b4 $c0
     ld   HL, returnFromBankCall                        ;; 00:1ee6 $21 $c2 $1f
     push HL                                            ;; 00:1ee9 $e5
     ld   A, $01                                        ;; 00:1eea $3e $01 Bank
     call pushBankNrAndSwitch                           ;; 00:1eec $cd $fb $29
-    ld   A, [wC0B2]                                    ;; 00:1eef $fa $b2 $c0
+    ld   A, [wScratchBankCallFunctionNumber]           ;; 00:1eef $fa $b2 $c0
     add  A, A                                          ;; 00:1ef2 $87
     ld   L, A                                          ;; 00:1ef3 $6f
     ld   H, $40                                        ;; 00:1ef4 $26 $40
@@ -5185,28 +5188,28 @@ callFunctionInBank01:
     ld   H, [HL]                                       ;; 00:1ef7 $66
     ld   L, A                                          ;; 00:1ef8 $6f
     push HL                                            ;; 00:1ef9 $e5
-    ld   A, [wC0B5]                                    ;; 00:1efa $fa $b5 $c0
+    ld   A, [wScratchBankCallH]                        ;; 00:1efa $fa $b5 $c0
     ld   H, A                                          ;; 00:1efd $67
-    ld   A, [wC0B4]                                    ;; 00:1efe $fa $b4 $c0
+    ld   A, [wScratchBankCallL]                        ;; 00:1efe $fa $b4 $c0
 
 code_000_1f01:
     ld   L, A                                          ;; 00:1f01 $6f
-    ld   A, [wC0B3]                                    ;; 00:1f02 $fa $b3 $c0
+    ld   A, [wScratchBankCallA]                        ;; 00:1f02 $fa $b3 $c0
     ret                                                ;; 00:1f05 $c9
 
 callFunctionInBank02:
-    ld   [wC0B2], A                                    ;; 00:1f06 $ea $b2 $c0
+    ld   [wScratchBankCallFunctionNumber], A           ;; 00:1f06 $ea $b2 $c0
     pop  AF                                            ;; 00:1f09 $f1
-    ld   [wC0B3], A                                    ;; 00:1f0a $ea $b3 $c0
+    ld   [wScratchBankCallA], A                        ;; 00:1f0a $ea $b3 $c0
     ld   A, H                                          ;; 00:1f0d $7c
-    ld   [wC0B5], A                                    ;; 00:1f0e $ea $b5 $c0
+    ld   [wScratchBankCallH], A                        ;; 00:1f0e $ea $b5 $c0
     ld   A, L                                          ;; 00:1f11 $7d
-    ld   [wC0B4], A                                    ;; 00:1f12 $ea $b4 $c0
+    ld   [wScratchBankCallL], A                        ;; 00:1f12 $ea $b4 $c0
     ld   HL, returnFromBankCall                        ;; 00:1f15 $21 $c2 $1f
     push HL                                            ;; 00:1f18 $e5
     ld   A, $02                                        ;; 00:1f19 $3e $02 Bank
     call pushBankNrAndSwitch                           ;; 00:1f1b $cd $fb $29
-    ld   A, [wC0B2]                                    ;; 00:1f1e $fa $b2 $c0
+    ld   A, [wScratchBankCallFunctionNumber]           ;; 00:1f1e $fa $b2 $c0
     add  A, A                                          ;; 00:1f21 $87
     ld   L, A                                          ;; 00:1f22 $6f
     ld   H, $40                                        ;; 00:1f23 $26 $40
@@ -5214,26 +5217,26 @@ callFunctionInBank02:
     ld   H, [HL]                                       ;; 00:1f26 $66
     ld   L, A                                          ;; 00:1f27 $6f
     push HL                                            ;; 00:1f28 $e5
-    ld   A, [wC0B5]                                    ;; 00:1f29 $fa $b5 $c0
+    ld   A, [wScratchBankCallH]                        ;; 00:1f29 $fa $b5 $c0
     ld   H, A                                          ;; 00:1f2c $67
-    ld   A, [wC0B4]                                    ;; 00:1f2d $fa $b4 $c0
+    ld   A, [wScratchBankCallL]                        ;; 00:1f2d $fa $b4 $c0
     ld   L, A                                          ;; 00:1f30 $6f
-    ld   A, [wC0B3]                                    ;; 00:1f31 $fa $b3 $c0
+    ld   A, [wScratchBankCallA]                        ;; 00:1f31 $fa $b3 $c0
     ret                                                ;; 00:1f34 $c9
 
 callFunctionInBank03:
-    ld   [wC0B2], A                                    ;; 00:1f35 $ea $b2 $c0
+    ld   [wScratchBankCallFunctionNumber], A           ;; 00:1f35 $ea $b2 $c0
     pop  AF                                            ;; 00:1f38 $f1
-    ld   [wC0B3], A                                    ;; 00:1f39 $ea $b3 $c0
+    ld   [wScratchBankCallA], A                        ;; 00:1f39 $ea $b3 $c0
     ld   A, H                                          ;; 00:1f3c $7c
-    ld   [wC0B5], A                                    ;; 00:1f3d $ea $b5 $c0
+    ld   [wScratchBankCallH], A                        ;; 00:1f3d $ea $b5 $c0
     ld   A, L                                          ;; 00:1f40 $7d
-    ld   [wC0B4], A                                    ;; 00:1f41 $ea $b4 $c0
+    ld   [wScratchBankCallL], A                        ;; 00:1f41 $ea $b4 $c0
     ld   HL, returnFromBankCall                        ;; 00:1f44 $21 $c2 $1f
     push HL                                            ;; 00:1f47 $e5
     ld   A, $03                                        ;; 00:1f48 $3e $03 Bank
     call pushBankNrAndSwitch                           ;; 00:1f4a $cd $fb $29
-    ld   A, [wC0B2]                                    ;; 00:1f4d $fa $b2 $c0
+    ld   A, [wScratchBankCallFunctionNumber]           ;; 00:1f4d $fa $b2 $c0
     add  A, A                                          ;; 00:1f50 $87
     ld   L, A                                          ;; 00:1f51 $6f
     ld   H, $40                                        ;; 00:1f52 $26 $40
@@ -5241,26 +5244,26 @@ callFunctionInBank03:
     ld   H, [HL]                                       ;; 00:1f55 $66
     ld   L, A                                          ;; 00:1f56 $6f
     push HL                                            ;; 00:1f57 $e5
-    ld   A, [wC0B5]                                    ;; 00:1f58 $fa $b5 $c0
+    ld   A, [wScratchBankCallH]                        ;; 00:1f58 $fa $b5 $c0
     ld   H, A                                          ;; 00:1f5b $67
-    ld   A, [wC0B4]                                    ;; 00:1f5c $fa $b4 $c0
+    ld   A, [wScratchBankCallL]                        ;; 00:1f5c $fa $b4 $c0
     ld   L, A                                          ;; 00:1f5f $6f
-    ld   A, [wC0B3]                                    ;; 00:1f60 $fa $b3 $c0
+    ld   A, [wScratchBankCallA]                        ;; 00:1f60 $fa $b3 $c0
     ret                                                ;; 00:1f63 $c9
 
 code_000_1f64:
-    ld   [wC0B2], A                                    ;; 00:1f64 $ea $b2 $c0
+    ld   [wScratchBankCallFunctionNumber], A           ;; 00:1f64 $ea $b2 $c0
     pop  AF                                            ;; 00:1f67 $f1
-    ld   [wC0B3], A                                    ;; 00:1f68 $ea $b3 $c0
+    ld   [wScratchBankCallA], A                        ;; 00:1f68 $ea $b3 $c0
     ld   A, H                                          ;; 00:1f6b $7c
-    ld   [wC0B5], A                                    ;; 00:1f6c $ea $b5 $c0
+    ld   [wScratchBankCallH], A                        ;; 00:1f6c $ea $b5 $c0
     ld   A, L                                          ;; 00:1f6f $7d
-    ld   [wC0B4], A                                    ;; 00:1f70 $ea $b4 $c0
+    ld   [wScratchBankCallL], A                        ;; 00:1f70 $ea $b4 $c0
     ld   HL, returnFromBankCall                        ;; 00:1f73 $21 $c2 $1f
     push HL                                            ;; 00:1f76 $e5
     ld   A, $04                                        ;; 00:1f77 $3e $04 Bank
     call pushBankNrAndSwitch                           ;; 00:1f79 $cd $fb $29
-    ld   A, [wC0B2]                                    ;; 00:1f7c $fa $b2 $c0
+    ld   A, [wScratchBankCallFunctionNumber]           ;; 00:1f7c $fa $b2 $c0
     add  A, A                                          ;; 00:1f7f $87
     ld   L, A                                          ;; 00:1f80 $6f
     ld   H, $40                                        ;; 00:1f81 $26 $40
@@ -5268,26 +5271,26 @@ code_000_1f64:
     ld   H, [HL]                                       ;; 00:1f84 $66
     ld   L, A                                          ;; 00:1f85 $6f
     push HL                                            ;; 00:1f86 $e5
-    ld   A, [wC0B5]                                    ;; 00:1f87 $fa $b5 $c0
+    ld   A, [wScratchBankCallH]                        ;; 00:1f87 $fa $b5 $c0
     ld   H, A                                          ;; 00:1f8a $67
-    ld   A, [wC0B4]                                    ;; 00:1f8b $fa $b4 $c0
+    ld   A, [wScratchBankCallL]                        ;; 00:1f8b $fa $b4 $c0
     ld   L, A                                          ;; 00:1f8e $6f
-    ld   A, [wC0B3]                                    ;; 00:1f8f $fa $b3 $c0
+    ld   A, [wScratchBankCallA]                        ;; 00:1f8f $fa $b3 $c0
     ret                                                ;; 00:1f92 $c9
 
 callFunctionInBank09:
-    ld   [wC0B2], A                                    ;; 00:1f93 $ea $b2 $c0
+    ld   [wScratchBankCallFunctionNumber], A           ;; 00:1f93 $ea $b2 $c0
     pop  AF                                            ;; 00:1f96 $f1
-    ld   [wC0B3], A                                    ;; 00:1f97 $ea $b3 $c0
+    ld   [wScratchBankCallA], A                        ;; 00:1f97 $ea $b3 $c0
     ld   A, H                                          ;; 00:1f9a $7c
-    ld   [wC0B5], A                                    ;; 00:1f9b $ea $b5 $c0
+    ld   [wScratchBankCallH], A                        ;; 00:1f9b $ea $b5 $c0
     ld   A, L                                          ;; 00:1f9e $7d
-    ld   [wC0B4], A                                    ;; 00:1f9f $ea $b4 $c0
+    ld   [wScratchBankCallL], A                        ;; 00:1f9f $ea $b4 $c0
     ld   HL, returnFromBankCall                        ;; 00:1fa2 $21 $c2 $1f
     push HL                                            ;; 00:1fa5 $e5
     ld   A, $09                                        ;; 00:1fa6 $3e $09 Bank
     call pushBankNrAndSwitch                           ;; 00:1fa8 $cd $fb $29
-    ld   A, [wC0B2]                                    ;; 00:1fab $fa $b2 $c0
+    ld   A, [wScratchBankCallFunctionNumber]           ;; 00:1fab $fa $b2 $c0
     add  A, A                                          ;; 00:1fae $87
     ld   L, A                                          ;; 00:1faf $6f
     ld   H, $40                                        ;; 00:1fb0 $26 $40
@@ -5295,11 +5298,11 @@ callFunctionInBank09:
     ld   H, [HL]                                       ;; 00:1fb3 $66
     ld   L, A                                          ;; 00:1fb4 $6f
     push HL                                            ;; 00:1fb5 $e5
-    ld   A, [wC0B5]                                    ;; 00:1fb6 $fa $b5 $c0
+    ld   A, [wScratchBankCallH]                        ;; 00:1fb6 $fa $b5 $c0
     ld   H, A                                          ;; 00:1fb9 $67
-    ld   A, [wC0B4]                                    ;; 00:1fba $fa $b4 $c0
+    ld   A, [wScratchBankCallL]                        ;; 00:1fba $fa $b4 $c0
     ld   L, A                                          ;; 00:1fbd $6f
-    ld   A, [wC0B3]                                    ;; 00:1fbe $fa $b3 $c0
+    ld   A, [wScratchBankCallA]                        ;; 00:1fbe $fa $b3 $c0
     ret                                                ;; 00:1fc1 $c9
 
 returnFromBankCall:
@@ -5336,7 +5339,7 @@ InitPreIntEnable:
     ldh  [rIE], A                                      ;; 00:1ff2 $e0 $ff
     call DisableLCD                                    ;; 00:1ff4 $cd $68 $21
     ld   A, $00                                        ;; 00:1ff7 $3e $00 Sprite Attribute
-    ld   HL, wC000                                     ;; 00:1ff9 $21 $00 $c0
+    ld   HL, wOAMBuffer                                ;; 00:1ff9 $21 $00 $c0
     ld   BC, $2000                                     ;; 00:1ffc $01 $00 $20
     call FillHL_with_A_times_BC                        ;; 00:1fff $cd $54 $2b
     pop  DE                                            ;; 00:2002 $d1
@@ -5545,7 +5548,7 @@ code_000_2190:
     call code_000_313b                                 ;; 00:21a4 $cd $3b $31
     ld   A, $ff                                        ;; 00:21a7 $3e $ff
     call code_000_300a                                 ;; 00:21a9 $cd $0a $30
-    call code_000_1dda                                 ;; 00:21ac $cd $da $1d
+    call processBackgroundRenderRequests               ;; 00:21ac $cd $da $1d
     ret                                                ;; 00:21af $c9
 
 code_000_21b0:
@@ -6630,7 +6633,7 @@ scriptOpCodeFC:
     ld   A, [wC8E0]                                    ;; 00:2806 $fa $e0 $c8
     cp   A, $00                                        ;; 00:2809 $fe $00
     ret  NZ                                            ;; 00:280b $c0
-    ld   A, [wCEE8]                                    ;; 00:280c $fa $e8 $ce
+    ld   A, [wBackgroundRenderRequestCount]            ;; 00:280c $fa $e8 $ce
     cp   A, $00                                        ;; 00:280f $fe $00
     ret  NZ                                            ;; 00:2811 $c0
     ld   [wD499], A                                    ;; 00:2812 $ea $99 $d4
@@ -6652,7 +6655,7 @@ scriptOpCodeFD:
     ld   A, [wC8E0]                                    ;; 00:282d $fa $e0 $c8
     cp   A, $00                                        ;; 00:2830 $fe $00
     ret  NZ                                            ;; 00:2832 $c0
-    ld   A, [wCEE8]                                    ;; 00:2833 $fa $e8 $ce
+    ld   A, [wBackgroundRenderRequestCount]            ;; 00:2833 $fa $e8 $ce
     cp   A, $00                                        ;; 00:2836 $fe $00
     ret  NZ                                            ;; 00:2838 $c0
     ld   [wD499], A                                    ;; 00:2839 $ea $99 $d4

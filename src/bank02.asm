@@ -697,7 +697,7 @@ code_002_442b:
     ret  NC                                            ;; 02:4432 $d0
     call code_002_43f8                                 ;; 02:4433 $cd $f8 $43
     push BC                                            ;; 02:4436 $c5
-    ld   HL, wC000                                     ;; 02:4437 $21 $00 $c0
+    ld   HL, wOAMBuffer                                ;; 02:4437 $21 $00 $c0
     ld   B, $28                                        ;; 02:443a $06 $28
 .code_443c:
     ld   A, [HL]                                       ;; 02:443c $7e
@@ -806,7 +806,7 @@ code_002_44b1:
     ret                                                ;; 02:44c3 $c9
 
 code_002_44c4:
-    ld   HL, wC000                                     ;; 02:44c4 $21 $00 $c0
+    ld   HL, wOAMBuffer                                ;; 02:44c4 $21 $00 $c0
     ld   B, $28                                        ;; 02:44c7 $06 $28
     ld   A, $ce                                        ;; 02:44c9 $3e $ce
     ld   DE, $0004                                     ;; 02:44cb $11 $04 $00
@@ -2341,7 +2341,7 @@ code_002_4f5f:
 code_002_4f97:
     ld   A, [wC001]                                    ;; 02:4f97 $fa $01 $c0
     ld   H, A                                          ;; 02:4f9a $67
-    ld   A, [wC000]                                    ;; 02:4f9b $fa $00 $c0
+    ld   A, [wOAMBuffer]                               ;; 02:4f9b $fa $00 $c0
     ld   L, A                                          ;; 02:4f9e $6f
     ld   A, H                                          ;; 02:4f9f $7c
     ld   [wD8C4], A                                    ;; 02:4fa0 $ea $c4 $d8
@@ -4831,7 +4831,7 @@ code_002_6700:
     ret                                                ;; 02:6709 $c9
 
 code_002_670a:
-    ld   HL, wC000                                     ;; 02:670a $21 $00 $c0
+    ld   HL, wOAMBuffer                                ;; 02:670a $21 $00 $c0
     ld   DE, wD683                                     ;; 02:670d $11 $83 $d6
     ld   B, $18                                        ;; 02:6710 $06 $18
     call copyHLtoDE                                    ;; 02:6712 $cd $49 $2b
@@ -5442,7 +5442,7 @@ code_002_6a59:
     ret                                                ;; 02:6ae6 $c9
 
 code_002_6ae7:
-    ld   A, [wC000]                                    ;; 02:6ae7 $fa $00 $c0
+    ld   A, [wOAMBuffer]                               ;; 02:6ae7 $fa $00 $c0
     and  A, A                                          ;; 02:6aea $a7
     ret  Z                                             ;; 02:6aeb $c8
     push HL                                            ;; 02:6aec $e5
@@ -5479,13 +5479,13 @@ code_002_6b18:
     ret                                                ;; 02:6b1f $c9
 
 code_002_6b20:
-    ld   A, [wC000]                                    ;; 02:6b20 $fa $00 $c0
+    ld   A, [wOAMBuffer]                               ;; 02:6b20 $fa $00 $c0
     and  A, A                                          ;; 02:6b23 $a7
     ret  Z                                             ;; 02:6b24 $c8
     ld   A, [wD844]                                    ;; 02:6b25 $fa $44 $d8
     call code_000_300a                                 ;; 02:6b28 $cd $0a $30
     ret  NZ                                            ;; 02:6b2b $c0
-    ld   A, [wC000]                                    ;; 02:6b2c $fa $00 $c0
+    ld   A, [wOAMBuffer]                               ;; 02:6b2c $fa $00 $c0
     dec  A                                             ;; 02:6b2f $3d
     jr   Z, .code_6b36                                 ;; 02:6b30 $28 $04
     call code_002_6b3a                                 ;; 02:6b32 $cd $3a $6b
@@ -5504,14 +5504,14 @@ code_002_6b3a:
 .code_6b48:
     call code_002_6b84                                 ;; 02:6b48 $cd $84 $6b
     ld   A, $01                                        ;; 02:6b4b $3e $01 Sprite X
-    ld   [wC000], A                                    ;; 02:6b4d $ea $00 $c0
+    ld   [wOAMBuffer], A                               ;; 02:6b4d $ea $00 $c0
     ret                                                ;; 02:6b50 $c9
 
 code_002_6b51:
     push HL                                            ;; 02:6b51 $e5
     push DE                                            ;; 02:6b52 $d5
     push BC                                            ;; 02:6b53 $c5
-    ld   DE, wC000                                     ;; 02:6b54 $11 $00 $c0
+    ld   DE, wOAMBuffer                                ;; 02:6b54 $11 $00 $c0
     ld   HL, wD683                                     ;; 02:6b57 $21 $83 $d6
     ld   B, $18                                        ;; 02:6b5a $06 $18
     call copyHLtoDE                                    ;; 02:6b5c $cd $49 $2b
@@ -5540,7 +5540,7 @@ code_002_6b84:
     push HL                                            ;; 02:6b84 $e5
     push DE                                            ;; 02:6b85 $d5
     push BC                                            ;; 02:6b86 $c5
-    ld   HL, wC000                                     ;; 02:6b87 $21 $00 $c0
+    ld   HL, wOAMBuffer                                ;; 02:6b87 $21 $00 $c0
     jr   code_002_6b95                                 ;; 02:6b8a $18 $09
 
 code_002_6b8c:
@@ -5564,13 +5564,13 @@ code_002_6b95:
     ret                                                ;; 02:6b9f $c9
 
 code_002_6ba0:
-    ld   A, [wC000]                                    ;; 02:6ba0 $fa $00 $c0
+    ld   A, [wOAMBuffer]                               ;; 02:6ba0 $fa $00 $c0
     and  A, A                                          ;; 02:6ba3 $a7
     ret  Z                                             ;; 02:6ba4 $c8
     push HL                                            ;; 02:6ba5 $e5
     push DE                                            ;; 02:6ba6 $d5
     push BC                                            ;; 02:6ba7 $c5
-    ld   HL, wC000                                     ;; 02:6ba8 $21 $00 $c0
+    ld   HL, wOAMBuffer                                ;; 02:6ba8 $21 $00 $c0
     jr   code_002_6bca                                 ;; 02:6bab $18 $1d
 
 code_002_6bad:
@@ -5632,7 +5632,7 @@ code_002_6be8:
     push BC                                            ;; 02:6bf8 $c5
     ld   B, $08                                        ;; 02:6bf9 $06 $08
     ld   DE, wC008                                     ;; 02:6bfb $11 $08 $c0
-    ld   HL, wC000                                     ;; 02:6bfe $21 $00 $c0
+    ld   HL, wOAMBuffer                                ;; 02:6bfe $21 $00 $c0
 .code_6c01:
     ld   A, [DE]                                       ;; 02:6c01 $1a
     ld   [HL+], A                                      ;; 02:6c02 $22

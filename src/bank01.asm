@@ -646,7 +646,7 @@ code_001_4477:
     ld   A, [wC8E0]                                    ;; 01:4478 $fa $e0 $c8
     cp   A, $00                                        ;; 01:447b $fe $00
     jr   NZ, .code_448a                                ;; 01:447d $20 $0b
-    ld   A, [wCEE8]                                    ;; 01:447f $fa $e8 $ce
+    ld   A, [wBackgroundRenderRequestCount]            ;; 01:447f $fa $e8 $ce
     cp   A, $00                                        ;; 01:4482 $fe $00
     jr   NZ, .code_448a                                ;; 01:4484 $20 $04
     ld   HL, wD499                                     ;; 01:4486 $21 $99 $d4
@@ -709,7 +709,7 @@ code_001_44d8:
     ld   A, [wC8E0]                                    ;; 01:44d9 $fa $e0 $c8
     cp   A, $00                                        ;; 01:44dc $fe $00
     ret  NZ                                            ;; 01:44de $c0
-    ld   A, [wCEE8]                                    ;; 01:44df $fa $e8 $ce
+    ld   A, [wBackgroundRenderRequestCount]            ;; 01:44df $fa $e8 $ce
     cp   A, $00                                        ;; 01:44e2 $fe $00
     ret  NZ                                            ;; 01:44e4 $c0
     ld   A, [wC341]                                    ;; 01:44e5 $fa $41 $c3

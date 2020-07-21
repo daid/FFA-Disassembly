@@ -1,6 +1,6 @@
 
 SECTION "WRAM Bank0", WRAM0[$c000]
-wC000: ;; $c000
+wOAMBuffer: ;; $c000
   ds 1
 wC001: ;; $c001
   ds 7
@@ -42,13 +42,13 @@ wRndState0: ;; $c0b0
   ds 1
 wRndState1: ;; $c0b1
   ds 1
-wC0B2: ;; $c0b2
+wScratchBankCallFunctionNumber: ;; $c0b2
   ds 1
-wC0B3: ;; $c0b3
+wScratchBankCallA: ;; $c0b3
   ds 1
-wC0B4: ;; $c0b4
+wScratchBankCallL: ;; $c0b4
   ds 1
-wC0B5: ;; $c0b5
+wScratchBankCallH: ;; $c0b5
   ds 11
 wBankStack: ;; $c0c0
   ds 64
@@ -304,9 +304,9 @@ wC8E2: ;; $c8e2
   ds 1
 wC8E3: ;; $c8e3
   ds 5
-wC8E8: ;; $c8e8
+wBackgroundRenderRequests: ;; $c8e8
   ds 1536
-wCEE8: ;; $cee8
+wBackgroundRenderRequestCount: ;; $cee8
   ds 8
 wCEF0: ;; $cef0
   ds 8
