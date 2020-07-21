@@ -5447,24 +5447,59 @@ script_0538:
     db  $17 ;;SET_NPC_1_DIRECTION_LEFT                 ;; 0e:66ce $17
     db  $f0 ;;DELAY                                    ;; 0e:66cf $f0
     db   $1e                                           ;; 0e:66d0 .
-    db  $1a ;;UNK_1a??                                 ;; 0e:66d1 $1a
-    db   $03, $07, $02, $10, $00, $f0, $64, $f9        ;; 0e:66d2 ????????
-    db   $07, $f0, $0a, $f9, $07, $10, $10, $8a        ;; 0e:66da ????????
-    db   $14, $10, $f0, $14, $16, $03, $0b, $02        ;; 0e:66e2 ????????
-    db   $10, $00, $eb, $fc, $53, $fd, $01, $16        ;; 0e:66ea ????????
-    db   $1a, $03, $0a, $02, $10, $00, $14, $10        ;; 0e:66f2 ????????
-    db   $10, $10, $18, $8a, $14, $00, $a4, $f0        ;; 0e:66fa ????????
-    db   $28, $04, $10, $f1, $cc, $d8, $20, $23        ;; 0e:6702 ????????
-    db   $30, $80, $ba, $44, $e7, $dc, $d8, $f4        ;; 0e:670a ????????
-    db   $1a, $ff, $ba, $6f, $e2, $ec, $6c, $52        ;; 0e:6712 ????????
-    db   $56, $6e, $4f, $f3, $1a, $cc, $2e, $d4        ;; 0e:671a ????????
-    db   $db, $f5, $c8, $db, $80, $ec, $54, $f0        ;; 0e:6722 ????????
-    db   $12, $1b, $f1, $ba, $6f, $8b, $d7, $dc        ;; 0e:672a ????????
-    db   $20, $31, $1a, $52, $56, $6e, $4f, $80        ;; 0e:6732 ????????
-    db   $33, $e2, $f3, $1a, $cc, $2e, $d4, $db        ;; 0e:673a ????????
-    db   $f5, $c8, $db, $f1, $ff, $d7, $32, $e5        ;; 0e:6742 ????????
-    db   $f1, $ff, $f1, $12, $11, $00, $f0, $3c        ;; 0e:674a ????????
-    db   $bd, $00                                      ;; 0e:6752 ??
+    db  $1a ;;UNK_1A                                   ;; 0e:66d1 $1a
+    db  $03 ;;LOOP                                     ;; 0e:66d2 $03
+    db   $07, $02                                      ;; 0e:66d3 ..
+    db  $10 ;;NPC_1_STEP_FORWARD                       ;; 0e:66d5 $10
+    db  $00 ;;END                                      ;; 0e:66d6 $00
+    db  $f0 ;;DELAY                                    ;; 0e:66d7 $f0
+    db   $64                                           ;; 0e:66d8 .
+    db  $f9 ;;SFX                                      ;; 0e:66d9 $f9
+    db   $07                                           ;; 0e:66da .
+    db  $f0 ;;DELAY                                    ;; 0e:66db $f0
+    db   $0a                                           ;; 0e:66dc .
+    db  $f9 ;;SFX                                      ;; 0e:66dd $f9
+    db   $07                                           ;; 0e:66de .
+    db  $10 ;;NPC_1_STEP_FORWARD                       ;; 0e:66df $10
+    db  $10 ;;NPC_1_STEP_FORWARD                       ;; 0e:66e0 $10
+    db  $8a ;;SET_PLAYER_POSITION                      ;; 0e:66e1 $8a
+    db   $14, $10                                      ;; 0e:66e2 ..
+    db  $f0 ;;DELAY                                    ;; 0e:66e4 $f0
+    db   $14                                           ;; 0e:66e5 .
+    db  $16 ;;SET_NPC_1_DIRECTION_RIGHT                ;; 0e:66e6 $16
+    db  $03 ;;LOOP                                     ;; 0e:66e7 $03
+    db   $0b, $02                                      ;; 0e:66e8 ..
+    db  $10 ;;NPC_1_STEP_FORWARD                       ;; 0e:66ea $10
+    db  $00 ;;END                                      ;; 0e:66eb $00
+    db  $eb ;;SCROLL_ROOM_RIGHT                        ;; 0e:66ec $eb
+    db  $fc ;;SET_NPC_TYPES                            ;; 0e:66ed $fc
+    db   $53                                           ;; 0e:66ee .
+    db  $fd ;;SPAWN_NPC                                ;; 0e:66ef $fd
+    db   $01                                           ;; 0e:66f0 .
+    db  $16 ;;SET_NPC_1_DIRECTION_RIGHT                ;; 0e:66f1 $16
+    db  $1a ;;UNK_1A                                   ;; 0e:66f2 $1a
+    db  $03 ;;LOOP                                     ;; 0e:66f3 $03
+    db   $0a, $02                                      ;; 0e:66f4 ..
+    db  $10 ;;NPC_1_STEP_FORWARD                       ;; 0e:66f6 $10
+    db  $00 ;;END                                      ;; 0e:66f7 $00
+    db  $14 ;;SET_NPC_1_DIRECTION_UP                   ;; 0e:66f8 $14
+    db  $10 ;;NPC_1_STEP_FORWARD                       ;; 0e:66f9 $10
+    db  $10 ;;NPC_1_STEP_FORWARD                       ;; 0e:66fa $10
+    db  $10 ;;NPC_1_STEP_FORWARD                       ;; 0e:66fb $10
+    db  $18 ;;DEL_NPC_1                                ;; 0e:66fc $18
+    db  $8a ;;SET_PLAYER_POSITION                      ;; 0e:66fd $8a
+    db   $14, $00                                      ;; 0e:66fe ..
+    db  $a4 ;;SET_PLAYER_NORMAL_SPRITE                 ;; 0e:6700 $a4
+    db  $f0 ;;DELAY                                    ;; 0e:6701 $f0
+    db   $28                                           ;; 0e:6702 .
+    db  $04 ;;MSG                                      ;; 0e:6703 $04
+    db   "<10>_See that, Auntie?\n A boy's falling!\nSarah:Oh, yes.<12>" ;; 0e:6704 ......................................
+    db   "<1b>_A birdie is\n falling, too!\nSarah:Oh_ dear_ _<12>" ;; 0e:672a ...................................
+    db   "<11>", $00                                   ;; 0e:674d ...
+    db  $f0 ;;DELAY                                    ;; 0e:6750 $f0
+    db   $3c                                           ;; 0e:6751 .
+    db  $bd ;;FADE_TO_BLACK                            ;; 0e:6752 $bd
+    db  $00 ;;END                                      ;; 0e:6753 $00
 
 script_0539:
     db  $f3 ;;LOAD_MAP_INSTANT                         ;; 0e:6754 $f3
