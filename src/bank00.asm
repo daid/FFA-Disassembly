@@ -8573,7 +8573,7 @@ code_000_33cf:
     ld   B, $06                                        ;; 00:33d3 $06 $06
     ld   C, $41                                        ;; 00:33d5 $0e $41
     call code_000_343f                                 ;; 00:33d7 $cd $3f $34
-    ld   HL, wD6DD                                     ;; 00:33da $21 $dd $d6
+    ld   HL, wEquipmentInventory                       ;; 00:33da $21 $dd $d6
     ld   B, $0c                                        ;; 00:33dd $06 $0c
     call code_000_343f                                 ;; 00:33df $cd $3f $34
     ld   HL, wItemInventory                            ;; 00:33e2 $21 $c5 $d6
@@ -8617,7 +8617,7 @@ code_000_3411:
     ld   B, $06                                        ;; 00:3415 $06 $06
     ld   C, $41                                        ;; 00:3417 $0e $41
     call code_000_3430                                 ;; 00:3419 $cd $30 $34
-    ld   HL, wD6DD                                     ;; 00:341c $21 $dd $d6
+    ld   HL, wEquipmentInventory                       ;; 00:341c $21 $dd $d6
     ld   B, $0c                                        ;; 00:341f $06 $0c
     call code_000_3430                                 ;; 00:3421 $cd $30 $34
     ld   HL, wItemInventory                            ;; 00:3424 $21 $c5 $d6

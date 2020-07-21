@@ -554,9 +554,9 @@ wD6C3: ;; $d6c3
   ds 2
 wItemInventory: ;; $d6c5
   ds 16
-wD6D5: ;; $d6d5
+wMagicInventory: ;; $d6d5
   ds 8
-wD6DD: ;; $d6dd
+wEquipmentInventory: ;; $d6dd
   ds 12
 wD6E9: ;; $d6e9
   ds 3

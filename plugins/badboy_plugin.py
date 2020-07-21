@@ -258,12 +258,14 @@ OPCODES = {
     0xC0: ("FULL_HP", 0),
     0xC1: ("FULL_MANA", 0),
     0xC2: ("UNK_C2", 1),
+    0xC5: ("UNK_C5", 1),
     0xC6: ("UNK_C6", 0),
     0xC9: ("UNK_C9", 2),
     0xCD: ("NOP", 0),
     0xCE: ("NOP", 0),
     0xCF: ("NOP", 0),
     0xD1: ("CHECK_MONEY", 2),
+    0xD8: ("GIVE_EQUIPMENT", 1),
     0xDA: ("SET_FLAG", 1),
     0xDB: ("UNK_DB", 1),
     0xDC: ("UNK_DC", 0),
@@ -277,6 +279,7 @@ OPCODES = {
     0xE9: ("SCROLL_ROOM_UP", 0),
     0xEA: ("SCROLL_ROOM_LEFT", 0),
     0xEB: ("SCROLL_ROOM_RIGHT", 0),
+    0xEC: ("RUN_ROOM_SCRIPT", 0),
     0xEF: ("UNK_EF", 2),
 
     0xF0: ("DELAY", 1),
@@ -387,6 +390,8 @@ def dualCharMap(dis, addr, params):
     for n in range(26):
         charmap[0xBA + n] = chr(65 + n)
         charmap[0xD4 + n] = chr(97 + n)
+    charmap[0x14] = "<BOY>"
+    charmap[0x15] = "<GIRL>"
     charmap[0x1A] = "\\n"
     charmap[0xEE] = "'"
     charmap[0xEF] = ","

@@ -2746,7 +2746,7 @@ code_002_523c:
     call code_002_525c                                 ;; 02:5249 $cd $5c $52
     and  A, A                                          ;; 02:524c $a7
     ret  Z                                             ;; 02:524d $c8
-    ld   HL, wD6DD                                     ;; 02:524e $21 $dd $d6
+    ld   HL, wEquipmentInventory                       ;; 02:524e $21 $dd $d6
     ld   DE, wD6B3                                     ;; 02:5251 $11 $b3 $d6
     ld   B, $0d                                        ;; 02:5254 $06 $0d
     set  $07, C                                        ;; 02:5256 $cb $f9
@@ -2962,7 +2962,7 @@ code_002_53bb:
     ret                                                ;; 02:53c7 $c9
 
 code_002_53c8:
-    ld   HL, wD6DD                                     ;; 02:53c8 $21 $dd $d6
+    ld   HL, wEquipmentInventory                       ;; 02:53c8 $21 $dd $d6
     ld   DE, wD6B3                                     ;; 02:53cb $11 $b3 $d6
     ld   B, $0c                                        ;; 02:53ce $06 $0c
     ld   C, A                                          ;; 02:53d0 $4f
@@ -2970,7 +2970,7 @@ code_002_53c8:
     ret                                                ;; 02:53d4 $c9
 
 code_002_53d5:
-    ld   HL, wD6D5                                     ;; 02:53d5 $21 $d5 $d6
+    ld   HL, wMagicInventory                           ;; 02:53d5 $21 $d5 $d6
     ld   DE, wD6BF                                     ;; 02:53d8 $11 $bf $d6
     ld   B, $08                                        ;; 02:53db $06 $08
     ld   C, A                                          ;; 02:53dd $4f
@@ -2994,7 +2994,7 @@ code_002_53e2:
 code_002_53f0:
     ld   B, $0c                                        ;; 02:53f0 $06 $0c
     ld   C, A                                          ;; 02:53f2 $4f
-    ld   HL, wD6DD                                     ;; 02:53f3 $21 $dd $d6
+    ld   HL, wEquipmentInventory                       ;; 02:53f3 $21 $dd $d6
     push HL                                            ;; 02:53f6 $e5
     call code_002_5410                                 ;; 02:53f7 $cd $10 $54
     pop  HL                                            ;; 02:53fa $e1
@@ -3031,7 +3031,7 @@ code_002_5419:
 code_002_5428:
     ld   B, $08                                        ;; 02:5428 $06 $08
     ld   C, A                                          ;; 02:542a $4f
-    ld   HL, wD6D5                                     ;; 02:542b $21 $d5 $d6
+    ld   HL, wMagicInventory                           ;; 02:542b $21 $d5 $d6
     ld   DE, unknown_002_5de2                          ;; 02:542e $11 $e2 $5d
     push DE                                            ;; 02:5431 $d5
     ld   DE, wD6AB                                     ;; 02:5432 $11 $ab $d6
@@ -3175,7 +3175,7 @@ code_002_54a6:
     ld   B, $00                                        ;; 02:54fd $06 $00
 .code_54ff:
     push HL                                            ;; 02:54ff $e5
-    ld   HL, wD6DD                                     ;; 02:5500 $21 $dd $d6
+    ld   HL, wEquipmentInventory                       ;; 02:5500 $21 $dd $d6
     add  HL, BC                                        ;; 02:5503 $09
     ld   A, [HL]                                       ;; 02:5504 $7e
     and  A, $7f                                        ;; 02:5505 $e6 $7f
@@ -3724,7 +3724,7 @@ code_002_5822:
 
 code_002_583c:
     push BC                                            ;; 02:583c $c5
-    ld   HL, wD6DD                                     ;; 02:583d $21 $dd $d6
+    ld   HL, wEquipmentInventory                       ;; 02:583d $21 $dd $d6
     ld   A, [wD84C]                                    ;; 02:5840 $fa $4c $d8
     ld   C, A                                          ;; 02:5843 $4f
     ld   B, $00                                        ;; 02:5844 $06 $00
@@ -6773,7 +6773,7 @@ code_002_7322:
     ld   [DE], A                                       ;; 02:733a $12
     ld   A, $01                                        ;; 02:733b $3e $01
     ld   [wD858], A                                    ;; 02:733d $ea $58 $d8
-    ld   HL, wD6D5                                     ;; 02:7340 $21 $d5 $d6
+    ld   HL, wMagicInventory                           ;; 02:7340 $21 $d5 $d6
     ld   DE, wD6AB                                     ;; 02:7343 $11 $ab $d6
     ld   B, $08                                        ;; 02:7346 $06 $08
 .code_7348:
@@ -6788,7 +6788,7 @@ code_002_7322:
     inc  DE                                            ;; 02:7351 $13
     dec  B                                             ;; 02:7352 $05
     jr   NZ, .code_7348                                ;; 02:7353 $20 $f3
-    ld   HL, wD6DD                                     ;; 02:7355 $21 $dd $d6
+    ld   HL, wEquipmentInventory                       ;; 02:7355 $21 $dd $d6
     ld   DE, wD6B3                                     ;; 02:7358 $11 $b3 $d6
     ld   B, $0c                                        ;; 02:735b $06 $0c
 .code_735d:
