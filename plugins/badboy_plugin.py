@@ -77,6 +77,8 @@ def mapHeaders(dis, addr, params):
 
         mapRoomData(dis, bank << 14 | (room_data_ptr & 0x3FFF), n)
 
+# Opcodes marked with DUMMY or NOP are never actually used in the scripts.
+# But the script lookup table maps those to those actions.
 OPCODES = {
     0x00: ("END", 0),
     0x01: ("JR", 1),
@@ -98,7 +100,7 @@ OPCODES = {
     0x0F: ("NOP", 0),
 
     0x10: ("NPC_1_STEP_FORWARD", 0),
-    0x11: ("NPC_2_STEP_BACKWARDS", 0),
+    0x11: ("NPC_1_STEP_BACKWARDS", 0),
     0x12: ("FULL_HP_DUMMY", 0),
     0x13: ("FULL_HP_DUMMY", 0),
     0x14: ("SET_NPC_1_DIRECTION_UP", 0),
@@ -111,7 +113,7 @@ OPCODES = {
     0x1E: ("NOP", 0),
     0x1F: ("NOP", 0),
 
-    0x20: ("NPC_1_STEP_FORWARD", 0),
+    0x20: ("NPC_2_STEP_FORWARD", 0),
     0x21: ("NPC_2_STEP_BACKWARDS", 0),
     0x22: ("FULL_HP_DUMMY", 0),
     0x23: ("FULL_HP_DUMMY", 0),
@@ -125,36 +127,71 @@ OPCODES = {
     0x2E: ("NOP", 0),
     0x2F: ("NOP", 0),
 
+    0x30: ("NPC_3_STEP_FORWARD", 0),
+    0x31: ("NPC_3_STEP_BACKWARDS", 0),
     0x32: ("FULL_HP_DUMMY", 0),
     0x33: ("FULL_HP_DUMMY", 0),
+    0x34: ("SET_NPC_3_DIRECTION_UP", 0),
+    0x35: ("SET_NPC_3_DIRECTION_DOWN", 0),
+    0x36: ("SET_NPC_3_DIRECTION_RIGHT", 0),
+    0x37: ("SET_NPC_3_DIRECTION_LEFT", 0),
+    0x38: ("DEL_NPC_3", 0),
     0x3C: ("NOP", 0),
     0x3D: ("NOP", 0),
     0x3E: ("NOP", 0),
     0x3F: ("NOP", 0),
 
+    0x40: ("NPC_4_STEP_FORWARD", 0),
+    0x41: ("NPC_4_STEP_BACKWARDS", 0),
     0x42: ("FULL_HP_DUMMY", 0),
     0x43: ("FULL_HP_DUMMY", 0),
+    0x44: ("SET_NPC_4_DIRECTION_UP", 0),
+    0x45: ("SET_NPC_4_DIRECTION_DOWN", 0),
+    0x46: ("SET_NPC_4_DIRECTION_RIGHT", 0),
+    0x47: ("SET_NPC_4_DIRECTION_LEFT", 0),
+    0x48: ("DEL_NPC_4", 0),
     0x4C: ("NOP", 0),
     0x4D: ("NOP", 0),
     0x4E: ("NOP", 0),
     0x4F: ("NOP", 0),
 
+    0x50: ("NPC_5_STEP_FORWARD", 0),
+    0x51: ("NPC_5_STEP_BACKWARDS", 0),
     0x52: ("FULL_HP_DUMMY", 0),
     0x53: ("FULL_HP_DUMMY", 0),
+    0x54: ("SET_NPC_5_DIRECTION_UP", 0),
+    0x55: ("SET_NPC_5_DIRECTION_DOWN", 0),
+    0x56: ("SET_NPC_5_DIRECTION_RIGHT", 0),
+    0x57: ("SET_NPC_5_DIRECTION_LEFT", 0),
+    0x58: ("DEL_NPC_5", 0),
     0x5C: ("NOP", 0),
     0x5D: ("NOP", 0),
     0x5E: ("NOP", 0),
     0x5F: ("NOP", 0),
 
+    0x60: ("NPC_6_STEP_FORWARD", 0),
+    0x61: ("NPC_6_STEP_BACKWARDS", 0),
     0x62: ("FULL_HP_DUMMY", 0),
     0x63: ("FULL_HP_DUMMY", 0),
+    0x64: ("SET_NPC_6_DIRECTION_UP", 0),
+    0x65: ("SET_NPC_6_DIRECTION_DOWN", 0),
+    0x66: ("SET_NPC_6_DIRECTION_RIGHT", 0),
+    0x67: ("SET_NPC_6_DIRECTION_LEFT", 0),
+    0x68: ("DEL_NPC_6", 0),
     0x6C: ("NOP", 0),
     0x6D: ("NOP", 0),
     0x6E: ("NOP", 0),
     0x6F: ("NOP", 0),
 
-    0x62: ("FULL_HP_DUMMY", 0),
-    0x63: ("FULL_HP_DUMMY", 0),
+    0x70: ("NPC_7_STEP_FORWARD", 0),
+    0x71: ("NPC_7_STEP_BACKWARDS", 0),
+    0x72: ("FULL_HP_DUMMY", 0),
+    0x73: ("FULL_HP_DUMMY", 0),
+    0x74: ("SET_NPC_7_DIRECTION_UP", 0),
+    0x75: ("SET_NPC_7_DIRECTION_DOWN", 0),
+    0x76: ("SET_NPC_7_DIRECTION_RIGHT", 0),
+    0x77: ("SET_NPC_7_DIRECTION_LEFT", 0),
+    0x78: ("DEL_NPC_7", 0),
     0x7C: ("NOP", 0),
     0x7D: ("NOP", 0),
     0x7E: ("NOP", 0),
@@ -236,6 +273,7 @@ OPCODES = {
     0xFD: ("SPAWN_NPC", 1),
     0xFE: ("SPAWN_BOSS", 1),
 }
+
 
 def scriptProcessor(dis, addr, *, loop_level=0):
     opcode = dis.rom.data[addr]

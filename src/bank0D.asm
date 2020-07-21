@@ -4816,11 +4816,11 @@ script_0231:
     db   $0a                                           ;; 0d:6e8e .
     db  $02 ;;CALL                                     ;; 0d:6e8f $02
     db   $2e, $9a                                      ;; 0d:6e90 ..
-    db  $11 ;;NPC_2_STEP_BACKWARDS                     ;; 0d:6e92 $11
-    db  $11 ;;NPC_2_STEP_BACKWARDS                     ;; 0d:6e93 $11
+    db  $11 ;;NPC_1_STEP_BACKWARDS                     ;; 0d:6e92 $11
+    db  $11 ;;NPC_1_STEP_BACKWARDS                     ;; 0d:6e93 $11
     db  $15 ;;SET_NPC_1_DIRECTION_DOWN                 ;; 0d:6e94 $15
-    db  $11 ;;NPC_2_STEP_BACKWARDS                     ;; 0d:6e95 $11
-    db  $11 ;;NPC_2_STEP_BACKWARDS                     ;; 0d:6e96 $11
+    db  $11 ;;NPC_1_STEP_BACKWARDS                     ;; 0d:6e95 $11
+    db  $11 ;;NPC_1_STEP_BACKWARDS                     ;; 0d:6e96 $11
     db  $da ;;SET_FLAG                                 ;; 0d:6e97 $da
     db   $20                                           ;; 0d:6e98 .
     db  $00 ;;END                                      ;; 0d:6e99 $00
