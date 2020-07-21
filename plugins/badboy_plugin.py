@@ -92,6 +92,7 @@ OPCODES = {
 
     0x08: ("IF ? JR", -2),
     0x09: ("IF ? JR", -2),
+    0x0A: ("IF ? JR", -2),
     0x0B: ("IF JR", -2),
     0x0C: ("IF ! JR", -2),
 
@@ -229,21 +230,32 @@ OPCODES = {
     0x88: ("SET_FAST_MOVEMENT", 0),
     0x89: ("CLEAR_FAST_MOVEMENT", 0),
     0x8A: ("SET_PLAYER_POSITION", 2),
+    0x8B: ("PLAYER_JUMP", 1),
     0x8C: ("FULL_HP_DUMMY", 0),
     0x8D: ("FULL_HP_DUMMY", 0),
     0x8E: ("FULL_HP_DUMMY", 0),
 
+    0x90: ("UNK_90", 0),
     0x92: ("FULL_HP_DUMMY", 0),
     0x93: ("FULL_HP_DUMMY", 0),
+    0x95: ("UNK_95", 0),
+    0x96: ("UNK_96", 0),
+    0x97: ("UNK_97", 0),
+    0x98: ("UNK_98", 0),
+    0x99: ("UNK_99", 2),
+    0x9C: ("UNK_9C", 1),
     0x9E: ("NOP", 0),
     0x9F: ("NOP", 0),
 
+    0xA0: ("UNK_A0", 0),
+    0xA1: ("UNK_A1", 0),
     0xA4: ("SET_PLAYER_NORMAL_SPRITE", 0),
     0xA5: ("SET_PLAYER_HURT_SPRITE", 0),
     0xA6: ("SET_PLAYER_LAYDOWN_SPRITE", 0),
     0xA7: ("NOP", 0),
     0xA8: ("NOP", 0),
     0xAB: ("UNK_AB", 0),
+    0xAF: ("UNK_AF", 0),
 
     0xB0: ("SET_ROOM_TILE", 3), # tile, x, y
     0xB1: ("NOP", 0),
@@ -260,14 +272,18 @@ OPCODES = {
     0xC0: ("FULL_HP", 0),
     0xC1: ("FULL_MANA", 0),
     0xC2: ("UNK_C2", 1),
+    0xC4: ("PLAYER_GIVE_STATUS", 1),
     0xC5: ("UNK_C5", 1),
     0xC6: ("UNK_C6", 0),
+    0xC7: ("UNK_C7", 0),
+    0xC8: ("RESET_GAME", 0),
     0xC9: ("UNK_C9", 2),
     0xCD: ("NOP", 0),
     0xCE: ("NOP", 0),
     0xCF: ("NOP", 0),
 
     0xD1: ("CHECK_MONEY", 2),
+    0xD4: ("UNK_D4", 1),
     0xD6: ("GIVE_MAGIC", 1),
     0xD7: ("UNK_D7", 1),
     0xD8: ("GIVE_EQUIPMENT", 1),
@@ -276,6 +292,7 @@ OPCODES = {
     0xDB: ("UNK_DB", 1),
     0xDC: ("UNK_DC", 0),
     0xDD: ("UNK_DD", 0),
+    0xDE: ("UNK_DE", 0),
     0xDF: ("NOP", 0),
 
     0xE0: ("UNK_E0", 0),
@@ -300,6 +317,7 @@ OPCODES = {
     0xF3: ("LOAD_MAP_INSTANT", 4), # MapNr, RoomXY, PlayerX, PlayerY
     0xF4: ("LOAD_MAP", 4), # MapNr, RoomXY, PlayerX, PlayerY
     0xF5: ("FULL_HP_DUMMY", 0),
+    0xF6: ("OPEN_SHOP", 1), # shop item table number
     0xF7: ("FULL_HP_DUMMY", 0),
     0xF8: ("SET_MUSIC", 1),
     0xF9: ("SFX", 1),
