@@ -243,6 +243,7 @@ OPCODES = {
     0xA6: ("SET_PLAYER_LAYDOWN_SPRITE", 0),
     0xA7: ("NOP", 0),
     0xA8: ("NOP", 0),
+    0xAB: ("UNK_AB", 0),
 
     0xB0: ("SET_ROOM_TILE", 3), # tile, x, y
     0xB1: ("NOP", 0),
@@ -255,6 +256,7 @@ OPCODES = {
     0xBC: ("FADE_TO_NORMAL", 0),
     0xBD: ("FADE_TO_BLACK", 0),
     0xBF: ("FLASH_SCREEN", 0),
+
     0xC0: ("FULL_HP", 0),
     0xC1: ("FULL_MANA", 0),
     0xC2: ("UNK_C2", 1),
@@ -264,8 +266,12 @@ OPCODES = {
     0xCD: ("NOP", 0),
     0xCE: ("NOP", 0),
     0xCF: ("NOP", 0),
+
     0xD1: ("CHECK_MONEY", 2),
+    0xD6: ("GIVE_MAGIC", 1),
+    0xD7: ("UNK_D7", 1),
     0xD8: ("GIVE_EQUIPMENT", 1),
+    0xD9: ("UNK_D9", 1),
     0xDA: ("SET_FLAG", 1),
     0xDB: ("UNK_DB", 1),
     0xDC: ("UNK_DC", 0),
@@ -273,13 +279,19 @@ OPCODES = {
     0xDF: ("NOP", 0),
 
     0xE0: ("UNK_E0", 0),
+    0xE1: ("UNK_E1", 0),
     0xE2: ("UNK_E2", 0),
+    0xE3: ("UNK_E3", 0),
+    0xE4: ("UNK_E4", 0),
+    0xE5: ("UNK_E5", 0),
+    0xE6: ("UNK_E6", 0),
     0xE7: ("UNK_E7", 0),
     0xE8: ("SCROLL_ROOM_DOWN", 0),
     0xE9: ("SCROLL_ROOM_UP", 0),
     0xEA: ("SCROLL_ROOM_LEFT", 0),
     0xEB: ("SCROLL_ROOM_RIGHT", 0),
     0xEC: ("RUN_ROOM_SCRIPT", 0),
+    0xEE: ("UNK_EE", 0),
     0xEF: ("UNK_EF", 2),
 
     0xF0: ("DELAY", 1),

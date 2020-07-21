@@ -8,14 +8,16 @@ script_0001:
     db   $01, $00, $05                                 ;; 0d:4002 ...
     db  $f9 ;;SFX                                      ;; 0d:4005 $f9
     db   $10                                           ;; 0d:4006 .
-    db  $e4 ;;UNK_e4??                                 ;; 0d:4007 $e4
-    db   $01, $19                                      ;; 0d:4008 ??
+    db  $e4 ;;UNK_E4                                   ;; 0d:4007 $e4
+    db  $01 ;;JR                                       ;; 0d:4008 $01
+    db   $19                                           ;; 0d:4009 .
     db  $08 ;;IF ? JR                                  ;; 0d:400a $08
     db   $02, $00, $05                                 ;; 0d:400b ...
     db  $f9 ;;SFX                                      ;; 0d:400e $f9
     db   $10                                           ;; 0d:400f .
-    db  $e6 ;;UNK_e6??                                 ;; 0d:4010 $e6
-    db   $01, $10                                      ;; 0d:4011 ??
+    db  $e6 ;;UNK_E6                                   ;; 0d:4010 $e6
+    db  $01 ;;JR                                       ;; 0d:4011 $01
+    db   $10                                           ;; 0d:4012 .
     db  $08 ;;IF ? JR                                  ;; 0d:4013 $08
     db   $03, $00, $05                                 ;; 0d:4014 ...
     db  $f9 ;;SFX                                      ;; 0d:4017 $f9
@@ -144,8 +146,9 @@ script_0004:
     db   $00, $7c, $08, $04                            ;; 0d:4108 ....
     db  $f8 ;;SET_MUSIC                                ;; 0d:410c $f8
     db   $14                                           ;; 0d:410d .
-    db  $ab ;;UNK_ab??                                 ;; 0d:410e $ab
-    db   $ec, $00                                      ;; 0d:410f .?
+    db  $ab ;;UNK_AB                                   ;; 0d:410e $ab
+    db  $ec ;;RUN_ROOM_SCRIPT                          ;; 0d:410f $ec
+    db  $00 ;;END                                      ;; 0d:4110 $00
 
 script_0005:
     db  $09 ;;IF ? JR                                  ;; 0d:4111 $09
@@ -154,14 +157,16 @@ script_0005:
     db   $01, $00, $05                                 ;; 0d:4116 ...
     db  $f9 ;;SFX                                      ;; 0d:4119 $f9
     db   $10                                           ;; 0d:411a .
-    db  $e4 ;;UNK_e4??                                 ;; 0d:411b $e4
-    db   $01, $19                                      ;; 0d:411c ??
+    db  $e4 ;;UNK_E4                                   ;; 0d:411b $e4
+    db  $01 ;;JR                                       ;; 0d:411c $01
+    db   $19                                           ;; 0d:411d .
     db  $08 ;;IF ? JR                                  ;; 0d:411e $08
     db   $02, $00, $05                                 ;; 0d:411f ...
     db  $f9 ;;SFX                                      ;; 0d:4122 $f9
     db   $10                                           ;; 0d:4123 .
-    db  $e6 ;;UNK_e6??                                 ;; 0d:4124 $e6
-    db   $01, $10                                      ;; 0d:4125 ??
+    db  $e6 ;;UNK_E6                                   ;; 0d:4124 $e6
+    db  $01 ;;JR                                       ;; 0d:4125 $01
+    db   $10                                           ;; 0d:4126 .
     db  $08 ;;IF ? JR                                  ;; 0d:4127 $08
     db   $03, $00, $05                                 ;; 0d:4128 ...
     db  $f9 ;;SFX                                      ;; 0d:412b $f9
@@ -280,8 +285,9 @@ script_0008:
     db   $75, $76, $77, $00, $05                       ;; 0d:421a .....
     db  $f4 ;;LOAD_MAP                                 ;; 0d:421f $f4
     db   $0f, $46, $0e, $06                            ;; 0d:4220 ....
-    db  $ab ;;UNK_ab??                                 ;; 0d:4224 $ab
-    db   $ec, $00                                      ;; 0d:4225 .?
+    db  $ab ;;UNK_AB                                   ;; 0d:4224 $ab
+    db  $ec ;;RUN_ROOM_SCRIPT                          ;; 0d:4225 $ec
+    db  $00 ;;END                                      ;; 0d:4226 $00
 
 script_0009:
     db  $04 ;;MSG                                      ;; 0d:4227 $04
@@ -310,7 +316,7 @@ script_000c:
     db   $14                                           ;; 0d:4251 .
     db  $02 ;;CALL                                     ;; 0d:4252 $02
     db   $5b, $55                                      ;; 0d:4253 ..
-    db  $ab ;;UNK_ab??                                 ;; 0d:4255 $ab
+    db  $ab ;;UNK_AB                                   ;; 0d:4255 $ab
     db  $01 ;;JR                                       ;; 0d:4256 $01
     db   $52                                           ;; 0d:4257 .
     db  $04 ;;MSG                                      ;; 0d:4258 $04
@@ -403,8 +409,8 @@ script_000c:
     db   $75, $76, $f7, $00, $05                       ;; 0d:4377 .....
     db  $f4 ;;LOAD_MAP                                 ;; 0d:437c $f4
     db   $0e, $15, $0c, $0a                            ;; 0d:437d ....
-    db  $ab ;;UNK_ab??                                 ;; 0d:4381 $ab
-    db   $ec                                           ;; 0d:4382 .
+    db  $ab ;;UNK_AB                                   ;; 0d:4381 $ab
+    db  $ec ;;RUN_ROOM_SCRIPT                          ;; 0d:4382 $ec
     db  $00 ;;END                                      ;; 0d:4383 $00
 
 script_000d:
@@ -1196,8 +1202,8 @@ script_00b1:
     db   $02                                           ;; 0d:45ca .
     db  $ca ;;UNK_ca??                                 ;; 0d:45cb $ca
     db   $04, $5e                                      ;; 0d:45cc ??
-    db  $e6 ;;UNK_e6??                                 ;; 0d:45ce $e6
-    db   $00                                           ;; 0d:45cf ?
+    db  $e6 ;;UNK_E6                                   ;; 0d:45ce $e6
+    db  $00 ;;END                                      ;; 0d:45cf $00
 
 script_00b2:
     db  $08 ;;IF ? JR                                  ;; 0d:45d0 $08
@@ -1437,8 +1443,14 @@ script_00d8:
     db  $00 ;;END                                      ;; 0d:468f $00
 
 script_00d9:
-    db  $e1 ;;UNK_e1??                                 ;; 0d:4690 $e1
-    db   $fc, $0e, $fd, $02, $fd, $02, $00             ;; 0d:4691 ???????
+    db  $e1 ;;UNK_E1                                   ;; 0d:4690 $e1
+    db  $fc ;;SET_NPC_TYPES                            ;; 0d:4691 $fc
+    db   $0e                                           ;; 0d:4692 .
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4693 $fd
+    db   $02                                           ;; 0d:4694 .
+    db  $fd ;;SPAWN_NPC                                ;; 0d:4695 $fd
+    db   $02                                           ;; 0d:4696 .
+    db  $00 ;;END                                      ;; 0d:4697 $00
 
 script_00da:
     db  $00 ;;END                                      ;; 0d:4698 $00
@@ -1477,8 +1489,8 @@ script_00de:
     db   $00                                           ;; 0d:46b6 .
     db  $c9 ;;UNK_C9                                   ;; 0d:46b7 $c9
     db   $04, $60                                      ;; 0d:46b8 ..
-    db  $e6 ;;UNK_e6??                                 ;; 0d:46ba $e6
-    db   $00                                           ;; 0d:46bb ?
+    db  $e6 ;;UNK_E6                                   ;; 0d:46ba $e6
+    db  $00 ;;END                                      ;; 0d:46bb $00
 
 script_00e0:
     db  $fc ;;SET_NPC_TYPES                            ;; 0d:46bc $fc
@@ -1678,8 +1690,8 @@ script_00f4:
     db   $00                                           ;; 0d:4790 .
     db  $c9 ;;UNK_C9                                   ;; 0d:4791 $c9
     db   $04, $63                                      ;; 0d:4792 ..
-    db  $e6 ;;UNK_e6??                                 ;; 0d:4794 $e6
-    db   $00                                           ;; 0d:4795 ?
+    db  $e6 ;;UNK_E6                                   ;; 0d:4794 $e6
+    db  $00 ;;END                                      ;; 0d:4795 $00
 
 script_00f5:
     db  $08 ;;IF ? JR                                  ;; 0d:4796 $08
@@ -2821,7 +2833,7 @@ script_01a0:
     db   $01                                           ;; 0d:4d52 .
     db  $01 ;;JR                                       ;; 0d:4d53 $01
     db   $01                                           ;; 0d:4d54 .
-    db  $ee ;;UNK_ee??                                 ;; 0d:4d55 $ee
+    db  $ee ;;UNK_EE                                   ;; 0d:4d55 $ee
     db  $00 ;;END                                      ;; 0d:4d56 $00
 
 script_01a1:
@@ -2972,7 +2984,7 @@ script_01a6:
     db   $01                                           ;; 0d:4e61 .
     db  $08 ;;IF ? JR                                  ;; 0d:4e62 $08
     db   $24, $00, $01                                 ;; 0d:4e63 ...
-    db  $e4 ;;UNK_e4??                                 ;; 0d:4e66 $e4
+    db  $e4 ;;UNK_E4                                   ;; 0d:4e66 $e4
     db  $08 ;;IF ? JR                                  ;; 0d:4e67 $08
     db   $40, $a5, $00, $31                            ;; 0d:4e68 ....
     db  $b0 ;;SET_ROOM_TILE                            ;; 0d:4e6c $b0
@@ -3024,17 +3036,27 @@ script_01a8:
     db   $0f                                           ;; 0d:4ecd .
     db  $04 ;;MSG                                      ;; 0d:4ece $04
     db   "<1b>Received the Magic\nBook of Sleep.\nLearned Slep.", $00 ;; 0d:4ecf ...................................
-    db  $d6 ;;UNK_d6??                                 ;; 0d:4ef2 $d6
-    db   $03, $04, $12, $1b, $14, $f5, $ba, $38        ;; 0d:4ef3 ????????
-    db   $59, $21, $1a, $2d, $df, $e5, $8f, $91        ;; 0d:4efb ????????
-    db   $80, $15, $f4, $1a, $15, $f5, $f1, $ff        ;; 0d:4f03 ????????
-    db   $d2, $32, $db, $f0, $12, $11, $00, $f0        ;; 0d:4f0b ????????
-    db   $14, $f4, $00, $a9, $0a, $06, $f0, $3c        ;; 0d:4f13 ????????
-    db   $04, $10, $15, $f5, $d0, $4e, $d7, $66        ;; 0d:4f1b ????????
-    db   $37, $e6, $1a, $22, $36, $23, $20, $e6        ;; 0d:4f23 ????????
-    db   $21, $23, $f0, $1a, $ff, $8d, $e7, $6c        ;; 0d:4f2b ????????
-    db   $40, $67, $e5, $ec, $f3, $12, $11, $00        ;; 0d:4f33 ????????
-    db   $f8, $14, $da, $25, $ab, $00                  ;; 0d:4f3b ??????
+    db  $d6 ;;GIVE_MAGIC                               ;; 0d:4ef2 $d6
+    db   $03                                           ;; 0d:4ef3 .
+    db  $04 ;;MSG                                      ;; 0d:4ef4 $04
+    db   "<12>"                                        ;; 0d:4ef5 
+    db   "<1b><BOY>:Are you\n alright, <GIRL>?\n<GIRL>:_ Yeah.<12>" ;; 0d:4ef5 ..........................
+    db   "<11>", $00                                   ;; 0d:4f0f ...
+    db  $f0 ;;DELAY                                    ;; 0d:4f12 $f0
+    db   $14                                           ;; 0d:4f13 .
+    db  $f4 ;;LOAD_MAP                                 ;; 0d:4f14 $f4
+    db   $00, $a9, $0a, $06                            ;; 0d:4f15 ....
+    db  $f0 ;;DELAY                                    ;; 0d:4f19 $f0
+    db   $3c                                           ;; 0d:4f1a .
+    db  $04 ;;MSG                                      ;; 0d:4f1b $04
+    db   "<10><GIRL>:Wendel is\n to the south.\n Let's hurry!<12>" ;; 0d:4f1c ............................
+    db   "<11>", $00                                   ;; 0d:4f38 ...
+    db  $f8 ;;SET_MUSIC                                ;; 0d:4f3b $f8
+    db   $14                                           ;; 0d:4f3c .
+    db  $da ;;SET_FLAG                                 ;; 0d:4f3d $da
+    db   $25                                           ;; 0d:4f3e .
+    db  $ab ;;UNK_AB                                   ;; 0d:4f3f $ab
+    db  $00 ;;END                                      ;; 0d:4f40 $00
 
 script_01a9:
     db  $f8 ;;SET_MUSIC                                ;; 0d:4f41 $f8
@@ -3379,14 +3401,21 @@ script_01ba:
     db  $04 ;;MSG                                      ;; 0d:52c1 $04
     db   "<10>Defeated Golem!<12>"                     ;; 0d:52c2 ............
     db   "", $00                                       ;; 0d:52ce ..
-    db  $d6 ;;UNK_d6??                                 ;; 0d:52d0 $d6
-    db   $06, $f9, $0f, $04, $1b, $cb, $d8, $d6        ;; 0d:52d1 ????????
-    db   $d8, $dc, $4d, $25, $23, $20, $62, $da        ;; 0d:52d9 ????????
-    db   $dc, $d6, $1a, $bb, $5e, $de, $3e, $53        ;; 0d:52e1 ????????
-    db   $c5, $8f, $91, $e1, $2f, $da, $f0, $1a        ;; 0d:52e9 ????????
-    db   $8d, $2e, $e1, $39, $ff, $c5, $48, $f0        ;; 0d:52f1 ????????
-    db   $12, $11, $00, $da, $2b, $e0, $f0, $1e        ;; 0d:52f9 ????????
-    db   $f8, $07, $00                                 ;; 0d:5301 ???
+    db  $d6 ;;GIVE_MAGIC                               ;; 0d:52d0 $d6
+    db   $06                                           ;; 0d:52d1 .
+    db  $f9 ;;SFX                                      ;; 0d:52d2 $f9
+    db   $0f                                           ;; 0d:52d3 .
+    db  $04 ;;MSG                                      ;; 0d:52d4 $04
+    db   "<1b>Received the Magic\nBook of Lightning.\nLearned Lit.<12>" ;; 0d:52d5 ....................................
+    db   "<11>", $00                                   ;; 0d:52f9 ...
+    db  $da ;;SET_FLAG                                 ;; 0d:52fc $da
+    db   $2b                                           ;; 0d:52fd .
+    db  $e0 ;;UNK_E0                                   ;; 0d:52fe $e0
+    db  $f0 ;;DELAY                                    ;; 0d:52ff $f0
+    db   $1e                                           ;; 0d:5300 .
+    db  $f8 ;;SET_MUSIC                                ;; 0d:5301 $f8
+    db   $07                                           ;; 0d:5302 .
+    db  $00 ;;END                                      ;; 0d:5303 $00
 
 script_01bb:
     db  $08 ;;IF ? JR                                  ;; 0d:5304 $08
@@ -3663,14 +3692,22 @@ script_01cc:
     db   "<1b>", $00                                   ;; 0d:552e ...
     db  $f9 ;;SFX                                      ;; 0d:5531 $f9
     db   $0f                                           ;; 0d:5532 .
-    db  $d6 ;;UNK_d6??                                 ;; 0d:5533 $d6
-    db   $07, $04, $cb, $d8, $d6, $d8, $dc, $4d        ;; 0d:5534 ????????
-    db   $25, $23, $20, $62, $da, $dc, $d6, $1a        ;; 0d:553c ????????
-    db   $bb, $5e, $de, $3e, $53, $c7, $e8, $de        ;; 0d:5544 ????????
-    db   $61, $1a, $8d, $2e, $e1, $39, $ff, $c7        ;; 0d:554c ????????
-    db   $e8, $de, $9b, $12, $11, $00, $da, $30        ;; 0d:5554 ????????
-    db   $f0, $1e, $f4, $00, $3e, $0c, $07, $f8        ;; 0d:555c ????????
-    db   $19, $ab, $ec, $00                            ;; 0d:5564 ????
+    db  $d6 ;;GIVE_MAGIC                               ;; 0d:5533 $d6
+    db   $07                                           ;; 0d:5534 .
+    db  $04 ;;MSG                                      ;; 0d:5535 $04
+    db   "Received the Magic\nBook of Nuke.\nLearned Nuke!<12>" ;; 0d:5536 .................................
+    db   "<11>", $00                                   ;; 0d:5557 ...
+    db  $da ;;SET_FLAG                                 ;; 0d:555a $da
+    db   $30                                           ;; 0d:555b .
+    db  $f0 ;;DELAY                                    ;; 0d:555c $f0
+    db   $1e                                           ;; 0d:555d .
+    db  $f4 ;;LOAD_MAP                                 ;; 0d:555e $f4
+    db   $00, $3e, $0c, $07                            ;; 0d:555f ....
+    db  $f8 ;;SET_MUSIC                                ;; 0d:5563 $f8
+    db   $19                                           ;; 0d:5564 .
+    db  $ab ;;UNK_AB                                   ;; 0d:5565 $ab
+    db  $ec ;;RUN_ROOM_SCRIPT                          ;; 0d:5566 $ec
+    db  $00 ;;END                                      ;; 0d:5567 $00
 
 script_01cd:
     db  $fc ;;SET_NPC_TYPES                            ;; 0d:5568 $fc
@@ -4032,7 +4069,7 @@ script_01fc:
     db   $05                                           ;; 0d:5d5d .
     db  $ba ;;UNK_BA                                   ;; 0d:5d5e $ba
     db   $10, $11, $07                                 ;; 0d:5d5f ...
-    db  $e4 ;;UNK_e4??                                 ;; 0d:5d62 $e4
+    db  $e4 ;;UNK_E4                                   ;; 0d:5d62 $e4
     db  $00 ;;END                                      ;; 0d:5d63 $00
 
 script_01fd:
@@ -4043,7 +4080,7 @@ script_01fd:
     db   $05                                           ;; 0d:5d6a .
     db  $ba ;;UNK_BA                                   ;; 0d:5d6b $ba
     db   $10, $01, $07                                 ;; 0d:5d6c ...
-    db  $e6 ;;UNK_e6??                                 ;; 0d:5d6f $e6
+    db  $e6 ;;UNK_E6                                   ;; 0d:5d6f $e6
     db  $00 ;;END                                      ;; 0d:5d70 $00
 
 script_01fe:
@@ -4223,8 +4260,8 @@ script_0207:
     db  $86 ;;SET_PLAYER_DIRECTION_RIGHT               ;; 0d:5fd9 $86
     db  $02 ;;CALL                                     ;; 0d:5fda $02
     db   $1f, $df                                      ;; 0d:5fdb ..
-    db  $ab ;;UNK_ab??                                 ;; 0d:5fdd $ab
-    db   $00                                           ;; 0d:5fde ?
+    db  $ab ;;UNK_AB                                   ;; 0d:5fdd $ab
+    db  $00 ;;END                                      ;; 0d:5fde $00
 
 script_0208:
     db  $04 ;;MSG                                      ;; 0d:5fdf $04
@@ -6038,8 +6075,8 @@ script_0290:
     db   $00, $f0, $08, $08                            ;; 0d:7f86 ....
     db  $f8 ;;SET_MUSIC                                ;; 0d:7f8a $f8
     db   $19                                           ;; 0d:7f8b .
-    db  $ab ;;UNK_ab??                                 ;; 0d:7f8c $ab
-    db   $ec                                           ;; 0d:7f8d ?
+    db  $ab ;;UNK_AB                                   ;; 0d:7f8c $ab
+    db  $ec ;;RUN_ROOM_SCRIPT                          ;; 0d:7f8d $ec
     db  $00 ;;END                                      ;; 0d:7f8e $00
 
 script_0291:
