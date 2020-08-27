@@ -545,7 +545,7 @@ code_002_4302:
 code_002_435e:
     push AF                                            ;; 02:435e $f5
     push BC                                            ;; 02:435f $c5
-    call code_000_0c99                                 ;; 02:4360 $cd $99 $0c
+    call getObjectDirection                            ;; 02:4360 $cd $99 $0c
     cp   A, $ff                                        ;; 02:4363 $fe $ff
     jr   Z, .code_43c6                                 ;; 02:4365 $28 $5f
     pop  BC                                            ;; 02:4367 $c1
@@ -557,7 +557,7 @@ code_002_435e:
     ld   A, B                                          ;; 02:4370 $78
     cp   A, $00                                        ;; 02:4371 $fe $00
     jr   Z, .code_437a                                 ;; 02:4373 $28 $05
-    call code_000_0c5d                                 ;; 02:4375 $cd $5d $0c
+    call setObjectDirection                            ;; 02:4375 $cd $5d $0c
     set  $07, A                                        ;; 02:4378 $cb $ff
 .code_437a:
     pop  BC                                            ;; 02:437a $c1
@@ -572,7 +572,7 @@ code_002_435e:
     cp   A, $00                                        ;; 02:4385 $fe $00
     jr   Z, .code_438e                                 ;; 02:4387 $28 $05
     res  $07, A                                        ;; 02:4389 $cb $bf
-    call code_000_0c5d                                 ;; 02:438b $cd $5d $0c
+    call setObjectDirection                            ;; 02:438b $cd $5d $0c
 .code_438e:
     pop  BC                                            ;; 02:438e $c1
     ld   B, A                                          ;; 02:438f $47

@@ -99,7 +99,7 @@ code_009_4031:
     ld   C, A                                          ;; 09:4084 $4f
     push DE                                            ;; 09:4085 $d5
     push BC                                            ;; 09:4086 $c5
-    call code_000_0c99                                 ;; 09:4087 $cd $99 $0c
+    call getObjectDirection                            ;; 09:4087 $cd $99 $0c
     call code_000_2982                                 ;; 09:408a $cd $82 $29
     pop  BC                                            ;; 09:408d $c1
     ld   B, A                                          ;; 09:408e $47
@@ -202,7 +202,7 @@ code_009_40be:
     push HL                                            ;; 09:4113 $e5
     push DE                                            ;; 09:4114 $d5
     ld   C, [HL]                                       ;; 09:4115 $4e
-    call code_000_0c99                                 ;; 09:4116 $cd $99 $0c
+    call getObjectDirection                            ;; 09:4116 $cd $99 $0c
     call code_000_2982                                 ;; 09:4119 $cd $82 $29
     ld   B, A                                          ;; 09:411c $47
     pop  DE                                            ;; 09:411d $d1
@@ -311,7 +311,7 @@ code_009_4197:
 code_009_41ad:
     push DE                                            ;; 09:41ad $d5
     ld   C, A                                          ;; 09:41ae $4f
-    call code_000_0c99                                 ;; 09:41af $cd $99 $0c
+    call getObjectDirection                            ;; 09:41af $cd $99 $0c
     pop  DE                                            ;; 09:41b2 $d1
     bit  $00, A                                        ;; 09:41b3 $cb $47
     ret  NZ                                            ;; 09:41b5 $c0
@@ -452,7 +452,7 @@ code_009_4239:
     ld   A, [DE]                                       ;; 09:4257 $1a
     ld   C, A                                          ;; 09:4258 $4f
     push BC                                            ;; 09:4259 $c5
-    call code_000_0c99                                 ;; 09:425a $cd $99 $0c
+    call getObjectDirection                            ;; 09:425a $cd $99 $0c
     pop  BC                                            ;; 09:425d $c1
     ld   B, A                                          ;; 09:425e $47
     push BC                                            ;; 09:425f $c5

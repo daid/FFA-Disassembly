@@ -381,7 +381,7 @@ code_000_0262:
     call code_000_0c86                                 ;; 00:026b $cd $86 $0c
     ld   A, $01                                        ;; 00:026e $3e $01
     ld   C, $04                                        ;; 00:0270 $0e $04
-    call code_000_0c5d                                 ;; 00:0272 $cd $5d $0c
+    call setObjectDirection                            ;; 00:0272 $cd $5d $0c
     ret                                                ;; 00:0275 $c9
 
 code_000_0276:
@@ -416,12 +416,12 @@ code_000_0299:
 
 code_000_02a5:
     ld   C, $04                                        ;; 00:02a5 $0e $04
-    call code_000_0c5d                                 ;; 00:02a7 $cd $5d $0c
+    call setObjectDirection                            ;; 00:02a7 $cd $5d $0c
     ret                                                ;; 00:02aa $c9
 
 code_000_02ab:
     ld   C, $04                                        ;; 00:02ab $0e $04
-    call code_000_0c99                                 ;; 00:02ad $cd $99 $0c
+    call getObjectDirection                            ;; 00:02ad $cd $99 $0c
     ret                                                ;; 00:02b0 $c9
 
 code_000_02b1:
@@ -641,7 +641,7 @@ code_000_039a:
 .code_03d5:
     push DE                                            ;; 00:03d5 $d5
     ld   C, B                                          ;; 00:03d6 $48
-    call code_000_0c99                                 ;; 00:03d7 $cd $99 $0c
+    call getObjectDirection                            ;; 00:03d7 $cd $99 $0c
     and  A, $0f                                        ;; 00:03da $e6 $0f
     pop  DE                                            ;; 00:03dc $d1
     ret                                                ;; 00:03dd $c9
@@ -2184,7 +2184,6 @@ GetObjectY:
     db   $69, $26, $00, $29, $29, $29, $29, $01        ;; 00:0c4f ????????
     db   $00, $c2, $09, $23, $3a, $c9                  ;; 00:0c57 ??????
 
-code_000_0c5d:
 setObjectDirection:
     ld   L, C                                          ;; 00:0c5d $69
     ld   H, $00                                        ;; 00:0c5e $26 $00
@@ -2236,7 +2235,6 @@ code_000_0c86:
     ld   A, C                                          ;; 00:0c97 $79
     ret                                                ;; 00:0c98 $c9
 
-code_000_0c99:
 getObjectDirection:
     ld   L, C                                          ;; 00:0c99 $69
     ld   H, $00                                        ;; 00:0c9a $26 $00
@@ -2348,7 +2346,7 @@ scriptOpCode8B:
     push HL                                            ;; 00:0d2c $e5
     ld   C, $04                                        ;; 00:0d2d $0e $04
     push BC                                            ;; 00:0d2f $c5
-    call code_000_0c99                                 ;; 00:0d30 $cd $99 $0c
+    call getObjectDirection                            ;; 00:0d30 $cd $99 $0c
     ld   D, A                                          ;; 00:0d33 $57
     pop  BC                                            ;; 00:0d34 $c1
     ld   A, [wD498]                                    ;; 00:0d35 $fa $98 $d4
@@ -4146,7 +4144,7 @@ code_000_177e:
     cp   A, $00                                        ;; 00:1807 $fe $00
     jr   NZ, .code_17f5                                ;; 00:1809 $20 $ea
     push BC                                            ;; 00:180b $c5
-    call code_000_0c99                                 ;; 00:180c $cd $99 $0c
+    call getObjectDirection                            ;; 00:180c $cd $99 $0c
     pop  BC                                            ;; 00:180f $c1
     and  A, $0f                                        ;; 00:1810 $e6 $0f
     ld   B, A                                          ;; 00:1812 $47
@@ -5376,7 +5374,7 @@ InitPreIntEnable:
     call copyHLtoDE                                    ;; 00:204f $cd $49 $2b
     ld   A, $0f                                        ;; 00:2052 $3e $0f Bank
     ld   [MBCBankSelect], A                            ;; 00:2054 $ea $00 $21
-    call code_00f_4003                                 ;; 00:2057 $cd $03 $40
+    call initSoundEngine                               ;; 00:2057 $cd $03 $40
     ld   A, $e4                                        ;; 00:205a $3e $e4 rBGP
     ldh  [rBGP], A                                     ;; 00:205c $e0 $47
     ld   [wVideoBGP], A                                ;; 00:205e $ea $aa $c0
@@ -5530,7 +5528,7 @@ DisableLCD:
 code_000_217b:
     ld   A, $0f                                        ;; 00:217b $3e $0f
     call pushBankNrAndSwitch                           ;; 00:217d $cd $fb $29
-    call code_00f_4000                                 ;; 00:2180 $cd $00 $40
+    call runSoundEngine                                ;; 00:2180 $cd $00 $40
     call popBankNrAndSwitch                            ;; 00:2183 $cd $0a $2a
     call code_000_0447                                 ;; 00:2186 $cd $47 $04
     ld   A, [wC0A2]                                    ;; 00:2189 $fa $a2 $c0
@@ -6986,7 +6984,7 @@ code_000_29ba:
     ld   D, B                                          ;; 00:29cc $50
     push DE                                            ;; 00:29cd $d5
     push BC                                            ;; 00:29ce $c5
-    call code_000_0c99                                 ;; 00:29cf $cd $99 $0c
+    call getObjectDirection                            ;; 00:29cf $cd $99 $0c
     and  A, $0f                                        ;; 00:29d2 $e6 $0f
     pop  BC                                            ;; 00:29d4 $c1
     pop  DE                                            ;; 00:29d5 $d1
@@ -7430,7 +7428,7 @@ code_000_2d03:
     ret  Z                                             ;; 00:2d0a $c8
     push AF                                            ;; 00:2d0b $f5
     ld   A, $01                                        ;; 00:2d0c $3e $01
-    call code_000_0c5d                                 ;; 00:2d0e $cd $5d $0c
+    call setObjectDirection                            ;; 00:2d0e $cd $5d $0c
     pop  AF                                            ;; 00:2d11 $f1
     ret                                                ;; 00:2d12 $c9
 
@@ -7474,7 +7472,7 @@ code_000_2d22:
     jr   Z, .code_2d54                                 ;; 00:2d46 $28 $0c
     push BC                                            ;; 00:2d48 $c5
     ld   C, B                                          ;; 00:2d49 $48
-    call code_000_0c99                                 ;; 00:2d4a $cd $99 $0c
+    call getObjectDirection                            ;; 00:2d4a $cd $99 $0c
     pop  BC                                            ;; 00:2d4d $c1
     or   A, $40                                        ;; 00:2d4e $f6 $40
     ld   C, B                                          ;; 00:2d50 $48
@@ -7753,7 +7751,7 @@ code_000_2f14:
 code_000_2f2c:
     ld   A, [wCF5A]                                    ;; 00:2f2c $fa $5a $cf
     ld   C, A                                          ;; 00:2f2f $4f
-    call code_000_0c99                                 ;; 00:2f30 $cd $99 $0c
+    call getObjectDirection                            ;; 00:2f30 $cd $99 $0c
     ret                                                ;; 00:2f33 $c9
     db   $47, $fa, $5a, $cf, $4f, $78, $cd, $a6        ;; 00:2f34 ????????
     db   $0c, $c9                                      ;; 00:2f3c ??

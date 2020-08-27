@@ -60,9 +60,9 @@ wC102: ;; $c102
   ds 1
 wC103: ;; $c103
   ds 1
-wC104: ;; $c104
+wMusicInstructionPointerLow: ;; $c104
   ds 1
-wC105: ;; $c105
+wMusicInstructionPointerHigh: ;; $c105
   ds 1
 wC106: ;; $c106
   ds 1
