@@ -427,8 +427,8 @@ code_00f_4361:
     jp   code_00f_4361                                 ;; 0f:4361 $c3 $61 $43
     db   $c9                                           ;; 0f:4364 ?
 
-; Jump table for $E0-$ED music "opcodes", guess is that these are flow control codes.
 ;@jumptable: 13
+; Jump table for $E0-$ED music "opcodes", guess is that these are flow control codes.
 data_00f_4365:
     dw   code_00f_4386                                 ;; 0f:4365 $86 $43
     dw   code_00f_43a7                                 ;; 0f:4367 $a7 $43
