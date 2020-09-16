@@ -3357,22 +3357,47 @@ map0a_room00_00_script:
     db   $ff                                           ;; 06:7091 ?
 
 map0a_room00_00_tiles:
-    db   $00, $02, $02, $00, $09, $25, $09, $34        ;; 06:7092 ????????
-    db   $09, $35, $09, $44, $09, $45, $09, $46        ;; 06:709a ????????
-    db   $09, $55, $09, $56, $09, $57, $09, $58        ;; 06:70a2 ????????
-    db   $09, $66, $09, $67, $09, $68, $ff, $ff        ;; 06:70aa ????????
+    db   $00, $02, $02, $00 ;; Door info               ;; 06:7092 ????
+    db   $09, $25 ;; BlockID, XY                       ;; 06:7096 ??
+    db   $09, $34 ;; BlockID, XY                       ;; 06:7098 ??
+    db   $09, $35 ;; BlockID, XY                       ;; 06:709a ??
+    db   $09, $44 ;; BlockID, XY                       ;; 06:709c ??
+    db   $09, $45 ;; BlockID, XY                       ;; 06:709e ??
+    db   $09, $46 ;; BlockID, XY                       ;; 06:70a0 ??
+    db   $09, $55 ;; BlockID, XY                       ;; 06:70a2 ??
+    db   $09, $56 ;; BlockID, XY                       ;; 06:70a4 ??
+    db   $09, $57 ;; BlockID, XY                       ;; 06:70a6 ??
+    db   $09, $58 ;; BlockID, XY                       ;; 06:70a8 ??
+    db   $09, $66 ;; BlockID, XY                       ;; 06:70aa ??
+    db   $09, $67 ;; BlockID, XY                       ;; 06:70ac ??
+    db   $09, $68 ;; BlockID, XY                       ;; 06:70ae ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:70b0 ??
 
 map0a_room01_00_script:
     dw   $00bb                                         ;; 06:70b2 $bb $00
     db   $ff                                           ;; 06:70b4 ?
 
 map0a_room01_00_tiles:
-    db   $01, $00, $02, $02, $16, $12, $01, $13        ;; 06:70b5 ????????
-    db   $05, $14, $10, $22, $07, $23, $15, $24        ;; 06:70bd ????????
-    db   $29, $32, $29, $33, $29, $34, $40, $42        ;; 06:70c5 ????????
-    db   $07, $43, $45, $44, $40, $52, $07, $53        ;; 06:70cd ????????
-    db   $45, $54, $50, $62, $51, $63, $55, $64        ;; 06:70d5 ????????
-    db   $ff, $ff                                      ;; 06:70dd ??
+    db   $01, $00, $02, $02 ;; Door info               ;; 06:70b5 ????
+    db   $16, $12 ;; BlockID, XY                       ;; 06:70b9 ??
+    db   $01, $13 ;; BlockID, XY                       ;; 06:70bb ??
+    db   $05, $14 ;; BlockID, XY                       ;; 06:70bd ??
+    db   $10, $22 ;; BlockID, XY                       ;; 06:70bf ??
+    db   $07, $23 ;; BlockID, XY                       ;; 06:70c1 ??
+    db   $15, $24 ;; BlockID, XY                       ;; 06:70c3 ??
+    db   $29, $32 ;; BlockID, XY                       ;; 06:70c5 ??
+    db   $29, $33 ;; BlockID, XY                       ;; 06:70c7 ??
+    db   $29, $34 ;; BlockID, XY                       ;; 06:70c9 ??
+    db   $40, $42 ;; BlockID, XY                       ;; 06:70cb ??
+    db   $07, $43 ;; BlockID, XY                       ;; 06:70cd ??
+    db   $45, $44 ;; BlockID, XY                       ;; 06:70cf ??
+    db   $40, $52 ;; BlockID, XY                       ;; 06:70d1 ??
+    db   $07, $53 ;; BlockID, XY                       ;; 06:70d3 ??
+    db   $45, $54 ;; BlockID, XY                       ;; 06:70d5 ??
+    db   $50, $62 ;; BlockID, XY                       ;; 06:70d7 ??
+    db   $51, $63 ;; BlockID, XY                       ;; 06:70d9 ??
+    db   $55, $64 ;; BlockID, XY                       ;; 06:70db ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:70dd ??
 
 map0a_room02_00_script:
     dw   $0073                                         ;; 06:70df $73 $00
@@ -3381,17 +3406,28 @@ map0a_room02_00_script:
     db   $ff                                           ;; 06:70e4 ?
 
 map0a_room02_00_tiles:
-    db   $02, $01, $02, $02, $57, $15, $02, $18        ;; 06:70e5 ????????
-    db   $5e, $22, $57, $25, $57, $35, $57, $45        ;; 06:70ed ????????
-    db   $57, $55, $59, $65, $ff, $ff                  ;; 06:70f5 ??????
+    db   $02, $01, $02, $02 ;; Door info               ;; 06:70e5 ????
+    db   $57, $15 ;; BlockID, XY                       ;; 06:70e9 ??
+    db   $02, $18 ;; BlockID, XY                       ;; 06:70eb ??
+    db   $5e, $22 ;; BlockID, XY                       ;; 06:70ed ??
+    db   $57, $25 ;; BlockID, XY                       ;; 06:70ef ??
+    db   $57, $35 ;; BlockID, XY                       ;; 06:70f1 ??
+    db   $57, $45 ;; BlockID, XY                       ;; 06:70f3 ??
+    db   $57, $55 ;; BlockID, XY                       ;; 06:70f5 ??
+    db   $59, $65 ;; BlockID, XY                       ;; 06:70f7 ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:70f9 ??
 
 map0a_room03_00_script:
     dw   $0082                                         ;; 06:70fb $82 $00
     db   $ff                                           ;; 06:70fd ?
 
 map0a_room03_00_tiles:
-    db   $89, $02, $02, $89, $4f, $22, $4f, $27        ;; 06:70fe ????????
-    db   $4f, $52, $4f, $57, $ff, $ff                  ;; 06:7106 ??????
+    db   $89, $02, $02, $89 ;; Door info               ;; 06:70fe ????
+    db   $4f, $22 ;; BlockID, XY                       ;; 06:7102 ??
+    db   $4f, $27 ;; BlockID, XY                       ;; 06:7104 ??
+    db   $4f, $52 ;; BlockID, XY                       ;; 06:7106 ??
+    db   $4f, $57 ;; BlockID, XY                       ;; 06:7108 ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:710a ??
 
 map0a_room04_00_script:
     dw   $0082                                         ;; 06:710c $82 $00
@@ -3400,12 +3436,27 @@ map0a_room04_00_script:
     db   $ff                                           ;; 06:7111 ?
 
 map0a_room04_00_tiles:
-    db   $02, $01, $02, $02, $16, $14, $04, $15        ;; 06:7112 ????????
-    db   $05, $16, $11, $18, $10, $24, $09, $25        ;; 06:711a ????????
-    db   $15, $26, $10, $34, $09, $35, $15, $36        ;; 06:7122 ????????
-    db   $29, $44, $29, $45, $29, $46, $40, $54        ;; 06:712a ????????
-    db   $09, $55, $45, $56, $50, $64, $54, $65        ;; 06:7132 ????????
-    db   $55, $66, $ff, $ff                            ;; 06:713a ????
+    db   $02, $01, $02, $02 ;; Door info               ;; 06:7112 ????
+    db   $16, $14 ;; BlockID, XY                       ;; 06:7116 ??
+    db   $04, $15 ;; BlockID, XY                       ;; 06:7118 ??
+    db   $05, $16 ;; BlockID, XY                       ;; 06:711a ??
+    db   $11, $18 ;; BlockID, XY                       ;; 06:711c ??
+    db   $10, $24 ;; BlockID, XY                       ;; 06:711e ??
+    db   $09, $25 ;; BlockID, XY                       ;; 06:7120 ??
+    db   $15, $26 ;; BlockID, XY                       ;; 06:7122 ??
+    db   $10, $34 ;; BlockID, XY                       ;; 06:7124 ??
+    db   $09, $35 ;; BlockID, XY                       ;; 06:7126 ??
+    db   $15, $36 ;; BlockID, XY                       ;; 06:7128 ??
+    db   $29, $44 ;; BlockID, XY                       ;; 06:712a ??
+    db   $29, $45 ;; BlockID, XY                       ;; 06:712c ??
+    db   $29, $46 ;; BlockID, XY                       ;; 06:712e ??
+    db   $40, $54 ;; BlockID, XY                       ;; 06:7130 ??
+    db   $09, $55 ;; BlockID, XY                       ;; 06:7132 ??
+    db   $45, $56 ;; BlockID, XY                       ;; 06:7134 ??
+    db   $50, $64 ;; BlockID, XY                       ;; 06:7136 ??
+    db   $54, $65 ;; BlockID, XY                       ;; 06:7138 ??
+    db   $55, $66 ;; BlockID, XY                       ;; 06:713a ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:713c ??
 
 map0a_room05_00_script:
     dw   $0082                                         ;; 06:713e $82 $00
@@ -3414,17 +3465,29 @@ map0a_room05_00_script:
     db   $ff                                           ;; 06:7143 ?
 
 map0a_room05_00_tiles:
-    db   $00, $02, $02, $02, $11, $11, $4f, $12        ;; 06:7144 ????????
-    db   $4f, $22, $09, $35, $09, $36, $09, $45        ;; 06:714c ????????
-    db   $09, $46, $4f, $52, $4f, $62, $ff, $ff        ;; 06:7154 ????????
+    db   $00, $02, $02, $02 ;; Door info               ;; 06:7144 ????
+    db   $11, $11 ;; BlockID, XY                       ;; 06:7148 ??
+    db   $4f, $12 ;; BlockID, XY                       ;; 06:714a ??
+    db   $4f, $22 ;; BlockID, XY                       ;; 06:714c ??
+    db   $09, $35 ;; BlockID, XY                       ;; 06:714e ??
+    db   $09, $36 ;; BlockID, XY                       ;; 06:7150 ??
+    db   $09, $45 ;; BlockID, XY                       ;; 06:7152 ??
+    db   $09, $46 ;; BlockID, XY                       ;; 06:7154 ??
+    db   $4f, $52 ;; BlockID, XY                       ;; 06:7156 ??
+    db   $4f, $62 ;; BlockID, XY                       ;; 06:7158 ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:715a ??
 
 map0a_room06_00_script:
     dw   $0139                                         ;; 06:715c $39 $01
     db   $ff                                           ;; 06:715e ?
 
 map0a_room06_00_tiles:
-    db   $02, $00, $02, $02, $2c, $43, $2c, $46        ;; 06:715f ????????
-    db   $2c, $63, $2c, $66, $ff, $ff                  ;; 06:7167 ??????
+    db   $02, $00, $02, $02 ;; Door info               ;; 06:715f ????
+    db   $2c, $43 ;; BlockID, XY                       ;; 06:7163 ??
+    db   $2c, $46 ;; BlockID, XY                       ;; 06:7165 ??
+    db   $2c, $63 ;; BlockID, XY                       ;; 06:7167 ??
+    db   $2c, $66 ;; BlockID, XY                       ;; 06:7169 ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:716b ??
 
 map0a_room00_01_script:
     dw   $00b5                                         ;; 06:716d $b5 $00
@@ -3435,37 +3498,67 @@ map0a_room00_01_script:
     db   $ff                                           ;; 06:7175 ?
 
 map0a_room00_01_tiles:
-    db   $02, $02, $00, $09, $57, $11, $58, $12        ;; 06:7176 ????????
-    db   $58, $13, $58, $14, $58, $15, $58, $16        ;; 06:717e ????????
-    db   $58, $17, $58, $18, $57, $21, $56, $28        ;; 06:7186 ????????
-    db   $57, $31, $5e, $33, $5e, $35, $4e, $37        ;; 06:718e ????????
-    db   $56, $38, $57, $41, $5e, $47, $56, $48        ;; 06:7196 ????????
-    db   $59, $51, $59, $52, $59, $53, $59, $54        ;; 06:719e ????????
-    db   $59, $55, $59, $56, $59, $57, $56, $58        ;; 06:71a6 ????????
-    db   $4e, $67, $ff, $ff                            ;; 06:71ae ????
+    db   $02, $02, $00, $09 ;; Door info               ;; 06:7176 ????
+    db   $57, $11 ;; BlockID, XY                       ;; 06:717a ??
+    db   $58, $12 ;; BlockID, XY                       ;; 06:717c ??
+    db   $58, $13 ;; BlockID, XY                       ;; 06:717e ??
+    db   $58, $14 ;; BlockID, XY                       ;; 06:7180 ??
+    db   $58, $15 ;; BlockID, XY                       ;; 06:7182 ??
+    db   $58, $16 ;; BlockID, XY                       ;; 06:7184 ??
+    db   $58, $17 ;; BlockID, XY                       ;; 06:7186 ??
+    db   $58, $18 ;; BlockID, XY                       ;; 06:7188 ??
+    db   $57, $21 ;; BlockID, XY                       ;; 06:718a ??
+    db   $56, $28 ;; BlockID, XY                       ;; 06:718c ??
+    db   $57, $31 ;; BlockID, XY                       ;; 06:718e ??
+    db   $5e, $33 ;; BlockID, XY                       ;; 06:7190 ??
+    db   $5e, $35 ;; BlockID, XY                       ;; 06:7192 ??
+    db   $4e, $37 ;; BlockID, XY                       ;; 06:7194 ??
+    db   $56, $38 ;; BlockID, XY                       ;; 06:7196 ??
+    db   $57, $41 ;; BlockID, XY                       ;; 06:7198 ??
+    db   $5e, $47 ;; BlockID, XY                       ;; 06:719a ??
+    db   $56, $48 ;; BlockID, XY                       ;; 06:719c ??
+    db   $59, $51 ;; BlockID, XY                       ;; 06:719e ??
+    db   $59, $52 ;; BlockID, XY                       ;; 06:71a0 ??
+    db   $59, $53 ;; BlockID, XY                       ;; 06:71a2 ??
+    db   $59, $54 ;; BlockID, XY                       ;; 06:71a4 ??
+    db   $59, $55 ;; BlockID, XY                       ;; 06:71a6 ??
+    db   $59, $56 ;; BlockID, XY                       ;; 06:71a8 ??
+    db   $59, $57 ;; BlockID, XY                       ;; 06:71aa ??
+    db   $56, $58 ;; BlockID, XY                       ;; 06:71ac ??
+    db   $4e, $67 ;; BlockID, XY                       ;; 06:71ae ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:71b0 ??
 
 map0a_room01_01_script:
     dw   $ffff                                         ;; 06:71b2 $ff $ff
     db   $ff                                           ;; 06:71b4 ?
 
 map0a_room01_01_tiles:
-    db   $00, $00, $00, $00, $ff, $ff                  ;; 06:71b5 ??????
+    db   $00, $00, $00, $00 ;; Door info               ;; 06:71b5 ????
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:71b9 ??
 
 map0a_room02_01_script:
     dw   $ffff                                         ;; 06:71bb $ff $ff
     db   $ff                                           ;; 06:71bd ?
 
 map0a_room02_01_tiles:
-    db   $00, $00, $00, $00, $ff, $ff                  ;; 06:71be ??????
+    db   $00, $00, $00, $00 ;; Door info               ;; 06:71be ????
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:71c2 ??
 
 map0a_room03_01_script:
     dw   $007f                                         ;; 06:71c4 $7f $00
     db   $ff                                           ;; 06:71c6 ?
 
 map0a_room03_01_tiles:
-    db   $05, $02, $00, $02, $5c, $16, $5c, $26        ;; 06:71c7 ????????
-    db   $5c, $33, $5c, $34, $5c, $35, $5c, $36        ;; 06:71cf ????????
-    db   $5c, $44, $5c, $54, $ff, $ff                  ;; 06:71d7 ??????
+    db   $05, $02, $00, $02 ;; Door info               ;; 06:71c7 ????
+    db   $5c, $16 ;; BlockID, XY                       ;; 06:71cb ??
+    db   $5c, $26 ;; BlockID, XY                       ;; 06:71cd ??
+    db   $5c, $33 ;; BlockID, XY                       ;; 06:71cf ??
+    db   $5c, $34 ;; BlockID, XY                       ;; 06:71d1 ??
+    db   $5c, $35 ;; BlockID, XY                       ;; 06:71d3 ??
+    db   $5c, $36 ;; BlockID, XY                       ;; 06:71d5 ??
+    db   $5c, $44 ;; BlockID, XY                       ;; 06:71d7 ??
+    db   $5c, $54 ;; BlockID, XY                       ;; 06:71d9 ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:71db ??
 
 map0a_room04_01_script:
     dw   $007f                                         ;; 06:71dd $7f $00
@@ -3478,11 +3571,24 @@ map0a_room04_01_script:
     db   $ff                                           ;; 06:71e8 ?
 
 map0a_room04_01_tiles:
-    db   $02, $01, $02, $02, $59, $14, $4e, $15        ;; 06:71e9 ????????
-    db   $2c, $16, $58, $24, $58, $25, $2c, $26        ;; 06:71f1 ????????
-    db   $58, $34, $58, $35, $58, $44, $58, $45        ;; 06:71f9 ????????
-    db   $58, $54, $58, $55, $2c, $56, $58, $64        ;; 06:7201 ????????
-    db   $4e, $65, $2c, $66, $ff, $ff                  ;; 06:7209 ??????
+    db   $02, $01, $02, $02 ;; Door info               ;; 06:71e9 ????
+    db   $59, $14 ;; BlockID, XY                       ;; 06:71ed ??
+    db   $4e, $15 ;; BlockID, XY                       ;; 06:71ef ??
+    db   $2c, $16 ;; BlockID, XY                       ;; 06:71f1 ??
+    db   $58, $24 ;; BlockID, XY                       ;; 06:71f3 ??
+    db   $58, $25 ;; BlockID, XY                       ;; 06:71f5 ??
+    db   $2c, $26 ;; BlockID, XY                       ;; 06:71f7 ??
+    db   $58, $34 ;; BlockID, XY                       ;; 06:71f9 ??
+    db   $58, $35 ;; BlockID, XY                       ;; 06:71fb ??
+    db   $58, $44 ;; BlockID, XY                       ;; 06:71fd ??
+    db   $58, $45 ;; BlockID, XY                       ;; 06:71ff ??
+    db   $58, $54 ;; BlockID, XY                       ;; 06:7201 ??
+    db   $58, $55 ;; BlockID, XY                       ;; 06:7203 ??
+    db   $2c, $56 ;; BlockID, XY                       ;; 06:7205 ??
+    db   $58, $64 ;; BlockID, XY                       ;; 06:7207 ??
+    db   $4e, $65 ;; BlockID, XY                       ;; 06:7209 ??
+    db   $2c, $66 ;; BlockID, XY                       ;; 06:720b ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:720d ??
 
 map0a_room05_01_script:
     dw   $03e5                                         ;; 06:720f $e5 $03
@@ -3491,84 +3597,175 @@ map0a_room05_01_script:
     db   $ff                                           ;; 06:7214 ?
 
 map0a_room05_01_tiles:
-    db   $02, $02, $02, $02, $11, $18, $09, $24        ;; 06:7215 ????????
-    db   $09, $25, $09, $33, $47, $34, $47, $35        ;; 06:721d ????????
-    db   $09, $36, $09, $43, $09, $44, $09, $45        ;; 06:7225 ????????
-    db   $09, $46, $09, $54, $09, $55, $ff, $ff        ;; 06:722d ????????
+    db   $02, $02, $02, $02 ;; Door info               ;; 06:7215 ????
+    db   $11, $18 ;; BlockID, XY                       ;; 06:7219 ??
+    db   $09, $24 ;; BlockID, XY                       ;; 06:721b ??
+    db   $09, $25 ;; BlockID, XY                       ;; 06:721d ??
+    db   $09, $33 ;; BlockID, XY                       ;; 06:721f ??
+    db   $47, $34 ;; BlockID, XY                       ;; 06:7221 ??
+    db   $47, $35 ;; BlockID, XY                       ;; 06:7223 ??
+    db   $09, $36 ;; BlockID, XY                       ;; 06:7225 ??
+    db   $09, $43 ;; BlockID, XY                       ;; 06:7227 ??
+    db   $09, $44 ;; BlockID, XY                       ;; 06:7229 ??
+    db   $09, $45 ;; BlockID, XY                       ;; 06:722b ??
+    db   $09, $46 ;; BlockID, XY                       ;; 06:722d ??
+    db   $09, $54 ;; BlockID, XY                       ;; 06:722f ??
+    db   $09, $55 ;; BlockID, XY                       ;; 06:7231 ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7233 ??
 
 map0a_room06_01_script:
     dw   $0410                                         ;; 06:7235 $10 $04
     db   $ff                                           ;; 06:7237 ?
 
 map0a_room06_01_tiles:
-    db   $02, $02, $00, $02, $47, $23, $57, $24        ;; 06:7238 ????????
-    db   $57, $25, $47, $26, $47, $32, $47, $33        ;; 06:7240 ????????
-    db   $47, $36, $47, $37, $47, $42, $47, $43        ;; 06:7248 ????????
-    db   $47, $46, $47, $47, $47, $53, $47, $54        ;; 06:7250 ????????
-    db   $47, $55, $47, $56, $ff, $ff                  ;; 06:7258 ??????
+    db   $02, $02, $00, $02 ;; Door info               ;; 06:7238 ????
+    db   $47, $23 ;; BlockID, XY                       ;; 06:723c ??
+    db   $57, $24 ;; BlockID, XY                       ;; 06:723e ??
+    db   $57, $25 ;; BlockID, XY                       ;; 06:7240 ??
+    db   $47, $26 ;; BlockID, XY                       ;; 06:7242 ??
+    db   $47, $32 ;; BlockID, XY                       ;; 06:7244 ??
+    db   $47, $33 ;; BlockID, XY                       ;; 06:7246 ??
+    db   $47, $36 ;; BlockID, XY                       ;; 06:7248 ??
+    db   $47, $37 ;; BlockID, XY                       ;; 06:724a ??
+    db   $47, $42 ;; BlockID, XY                       ;; 06:724c ??
+    db   $47, $43 ;; BlockID, XY                       ;; 06:724e ??
+    db   $47, $46 ;; BlockID, XY                       ;; 06:7250 ??
+    db   $47, $47 ;; BlockID, XY                       ;; 06:7252 ??
+    db   $47, $53 ;; BlockID, XY                       ;; 06:7254 ??
+    db   $47, $54 ;; BlockID, XY                       ;; 06:7256 ??
+    db   $47, $55 ;; BlockID, XY                       ;; 06:7258 ??
+    db   $47, $56 ;; BlockID, XY                       ;; 06:725a ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:725c ??
 
 map0a_room00_02_script:
     dw   $0070                                         ;; 06:725e $70 $00
     db   $ff                                           ;; 06:7260 ?
 
 map0a_room00_02_tiles:
-    db   $01, $02, $01, $02, $4f, $13, $4f, $16        ;; 06:7261 ????????
-    db   $56, $22, $58, $24, $56, $25, $4f, $33        ;; 06:7269 ????????
-    db   $4f, $34, $4f, $35, $4f, $36, $4f, $43        ;; 06:7271 ????????
-    db   $4f, $46, $56, $54, $59, $55, $57, $57        ;; 06:7279 ????????
-    db   $4f, $63, $4f, $66, $ff, $ff                  ;; 06:7281 ??????
+    db   $01, $02, $01, $02 ;; Door info               ;; 06:7261 ????
+    db   $4f, $13 ;; BlockID, XY                       ;; 06:7265 ??
+    db   $4f, $16 ;; BlockID, XY                       ;; 06:7267 ??
+    db   $56, $22 ;; BlockID, XY                       ;; 06:7269 ??
+    db   $58, $24 ;; BlockID, XY                       ;; 06:726b ??
+    db   $56, $25 ;; BlockID, XY                       ;; 06:726d ??
+    db   $4f, $33 ;; BlockID, XY                       ;; 06:726f ??
+    db   $4f, $34 ;; BlockID, XY                       ;; 06:7271 ??
+    db   $4f, $35 ;; BlockID, XY                       ;; 06:7273 ??
+    db   $4f, $36 ;; BlockID, XY                       ;; 06:7275 ??
+    db   $4f, $43 ;; BlockID, XY                       ;; 06:7277 ??
+    db   $4f, $46 ;; BlockID, XY                       ;; 06:7279 ??
+    db   $56, $54 ;; BlockID, XY                       ;; 06:727b ??
+    db   $59, $55 ;; BlockID, XY                       ;; 06:727d ??
+    db   $57, $57 ;; BlockID, XY                       ;; 06:727f ??
+    db   $4f, $63 ;; BlockID, XY                       ;; 06:7281 ??
+    db   $4f, $66 ;; BlockID, XY                       ;; 06:7283 ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7285 ??
 
 map0a_room01_02_script:
     dw   $0097                                         ;; 06:7287 $97 $00
     db   $ff                                           ;; 06:7289 ?
 
 map0a_room01_02_tiles:
-    db   $00, $01, $02, $02, $5c, $17, $5c, $28        ;; 06:728a ????????
-    db   $5c, $37, $5c, $47, $5c, $58, $5c, $67        ;; 06:7292 ????????
-    db   $ff, $ff                                      ;; 06:729a ??
+    db   $00, $01, $02, $02 ;; Door info               ;; 06:728a ????
+    db   $5c, $17 ;; BlockID, XY                       ;; 06:728e ??
+    db   $5c, $28 ;; BlockID, XY                       ;; 06:7290 ??
+    db   $5c, $37 ;; BlockID, XY                       ;; 06:7292 ??
+    db   $5c, $47 ;; BlockID, XY                       ;; 06:7294 ??
+    db   $5c, $58 ;; BlockID, XY                       ;; 06:7296 ??
+    db   $5c, $67 ;; BlockID, XY                       ;; 06:7298 ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:729a ??
 
 map0a_room02_02_script:
     dw   $00bb                                         ;; 06:729c $bb $00
     db   $ff                                           ;; 06:729e ?
 
 map0a_room02_02_tiles:
-    db   $00, $00, $02, $00, $1b, $29, $4f, $37        ;; 06:729f ????????
-    db   $56, $38, $58, $39, $4f, $47, $59, $48        ;; 06:72a7 ????????
-    db   $59, $49, $4f, $54, $4f, $55, $3b, $59        ;; 06:72af ????????
-    db   $57, $64, $59, $65, $48, $73, $57, $74        ;; 06:72b7 ????????
-    db   $56, $75, $4a, $76, $ff, $ff                  ;; 06:72bf ??????
+    db   $00, $00, $02, $00 ;; Door info               ;; 06:729f ????
+    db   $1b, $29 ;; BlockID, XY                       ;; 06:72a3 ??
+    db   $4f, $37 ;; BlockID, XY                       ;; 06:72a5 ??
+    db   $56, $38 ;; BlockID, XY                       ;; 06:72a7 ??
+    db   $58, $39 ;; BlockID, XY                       ;; 06:72a9 ??
+    db   $4f, $47 ;; BlockID, XY                       ;; 06:72ab ??
+    db   $59, $48 ;; BlockID, XY                       ;; 06:72ad ??
+    db   $59, $49 ;; BlockID, XY                       ;; 06:72af ??
+    db   $4f, $54 ;; BlockID, XY                       ;; 06:72b1 ??
+    db   $4f, $55 ;; BlockID, XY                       ;; 06:72b3 ??
+    db   $3b, $59 ;; BlockID, XY                       ;; 06:72b5 ??
+    db   $57, $64 ;; BlockID, XY                       ;; 06:72b7 ??
+    db   $59, $65 ;; BlockID, XY                       ;; 06:72b9 ??
+    db   $48, $73 ;; BlockID, XY                       ;; 06:72bb ??
+    db   $57, $74 ;; BlockID, XY                       ;; 06:72bd ??
+    db   $56, $75 ;; BlockID, XY                       ;; 06:72bf ??
+    db   $4a, $76 ;; BlockID, XY                       ;; 06:72c1 ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:72c3 ??
 
 map0a_room03_02_script:
     dw   $00b5                                         ;; 06:72c5 $b5 $00
     db   $ff                                           ;; 06:72c7 ?
 
 map0a_room03_02_tiles:
-    db   $00, $00, $02, $02, $17, $20, $44, $21        ;; 06:72c8 ????????
-    db   $44, $22, $44, $27, $44, $28, $1b, $29        ;; 06:72d0 ????????
-    db   $58, $30, $58, $31, $58, $32, $59, $33        ;; 06:72d8 ????????
-    db   $57, $34, $59, $35, $57, $36, $56, $37        ;; 06:72e0 ????????
-    db   $58, $38, $58, $39, $59, $40, $59, $41        ;; 06:72e8 ????????
-    db   $59, $42, $56, $43, $59, $44, $56, $45        ;; 06:72f0 ????????
-    db   $59, $46, $59, $47, $59, $48, $59, $49        ;; 06:72f8 ????????
-    db   $37, $50, $3b, $59, $ff, $ff                  ;; 06:7300 ??????
+    db   $00, $00, $02, $02 ;; Door info               ;; 06:72c8 ????
+    db   $17, $20 ;; BlockID, XY                       ;; 06:72cc ??
+    db   $44, $21 ;; BlockID, XY                       ;; 06:72ce ??
+    db   $44, $22 ;; BlockID, XY                       ;; 06:72d0 ??
+    db   $44, $27 ;; BlockID, XY                       ;; 06:72d2 ??
+    db   $44, $28 ;; BlockID, XY                       ;; 06:72d4 ??
+    db   $1b, $29 ;; BlockID, XY                       ;; 06:72d6 ??
+    db   $58, $30 ;; BlockID, XY                       ;; 06:72d8 ??
+    db   $58, $31 ;; BlockID, XY                       ;; 06:72da ??
+    db   $58, $32 ;; BlockID, XY                       ;; 06:72dc ??
+    db   $59, $33 ;; BlockID, XY                       ;; 06:72de ??
+    db   $57, $34 ;; BlockID, XY                       ;; 06:72e0 ??
+    db   $59, $35 ;; BlockID, XY                       ;; 06:72e2 ??
+    db   $57, $36 ;; BlockID, XY                       ;; 06:72e4 ??
+    db   $56, $37 ;; BlockID, XY                       ;; 06:72e6 ??
+    db   $58, $38 ;; BlockID, XY                       ;; 06:72e8 ??
+    db   $58, $39 ;; BlockID, XY                       ;; 06:72ea ??
+    db   $59, $40 ;; BlockID, XY                       ;; 06:72ec ??
+    db   $59, $41 ;; BlockID, XY                       ;; 06:72ee ??
+    db   $59, $42 ;; BlockID, XY                       ;; 06:72f0 ??
+    db   $56, $43 ;; BlockID, XY                       ;; 06:72f2 ??
+    db   $59, $44 ;; BlockID, XY                       ;; 06:72f4 ??
+    db   $56, $45 ;; BlockID, XY                       ;; 06:72f6 ??
+    db   $59, $46 ;; BlockID, XY                       ;; 06:72f8 ??
+    db   $59, $47 ;; BlockID, XY                       ;; 06:72fa ??
+    db   $59, $48 ;; BlockID, XY                       ;; 06:72fc ??
+    db   $59, $49 ;; BlockID, XY                       ;; 06:72fe ??
+    db   $37, $50 ;; BlockID, XY                       ;; 06:7300 ??
+    db   $3b, $59 ;; BlockID, XY                       ;; 06:7302 ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7304 ??
 
 map0a_room04_02_script:
     dw   $00b5                                         ;; 06:7306 $b5 $00
     db   $ff                                           ;; 06:7308 ?
 
 map0a_room04_02_tiles:
-    db   $02, $00, $02, $00, $17, $20, $58, $30        ;; 06:7309 ????????
-    db   $58, $31, $4f, $32, $59, $40, $57, $41        ;; 06:7311 ????????
-    db   $4f, $42, $37, $50, $4f, $54, $4f, $55        ;; 06:7319 ????????
-    db   $58, $64, $57, $65, $48, $73, $56, $74        ;; 06:7321 ????????
-    db   $57, $75, $4a, $76, $ff, $ff                  ;; 06:7329 ??????
+    db   $02, $00, $02, $00 ;; Door info               ;; 06:7309 ????
+    db   $17, $20 ;; BlockID, XY                       ;; 06:730d ??
+    db   $58, $30 ;; BlockID, XY                       ;; 06:730f ??
+    db   $58, $31 ;; BlockID, XY                       ;; 06:7311 ??
+    db   $4f, $32 ;; BlockID, XY                       ;; 06:7313 ??
+    db   $59, $40 ;; BlockID, XY                       ;; 06:7315 ??
+    db   $57, $41 ;; BlockID, XY                       ;; 06:7317 ??
+    db   $4f, $42 ;; BlockID, XY                       ;; 06:7319 ??
+    db   $37, $50 ;; BlockID, XY                       ;; 06:731b ??
+    db   $4f, $54 ;; BlockID, XY                       ;; 06:731d ??
+    db   $4f, $55 ;; BlockID, XY                       ;; 06:731f ??
+    db   $58, $64 ;; BlockID, XY                       ;; 06:7321 ??
+    db   $57, $65 ;; BlockID, XY                       ;; 06:7323 ??
+    db   $48, $73 ;; BlockID, XY                       ;; 06:7325 ??
+    db   $56, $74 ;; BlockID, XY                       ;; 06:7327 ??
+    db   $57, $75 ;; BlockID, XY                       ;; 06:7329 ??
+    db   $4a, $76 ;; BlockID, XY                       ;; 06:732b ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:732d ??
 
 map0a_room05_02_script:
     dw   $ffff                                         ;; 06:732f $ff $ff
     db   $ff                                           ;; 06:7331 ?
 
 map0a_room05_02_tiles:
-    db   $00, $00, $00, $00, $ff, $ff                  ;; 06:7332 ??????
+    db   $00, $00, $00, $00 ;; Door info               ;; 06:7332 ????
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7336 ??
 
 map0a_room06_02_script:
     dw   $00bb                                         ;; 06:7338 $bb $00
@@ -3577,19 +3774,36 @@ map0a_room06_02_script:
     db   $ff                                           ;; 06:733d ?
 
 map0a_room06_02_tiles:
-    db   $02, $02, $02, $01, $07, $12, $5e, $14        ;; 06:733e ????????
-    db   $11, $18, $07, $22, $07, $32, $07, $33        ;; 06:7346 ????????
-    db   $07, $34, $07, $35, $07, $45, $07, $46        ;; 06:734e ????????
-    db   $07, $47, $07, $48, $5e, $53, $07, $56        ;; 06:7356 ????????
-    db   $07, $66, $5e, $68, $ff, $ff                  ;; 06:735e ??????
+    db   $02, $02, $02, $01 ;; Door info               ;; 06:733e ????
+    db   $07, $12 ;; BlockID, XY                       ;; 06:7342 ??
+    db   $5e, $14 ;; BlockID, XY                       ;; 06:7344 ??
+    db   $11, $18 ;; BlockID, XY                       ;; 06:7346 ??
+    db   $07, $22 ;; BlockID, XY                       ;; 06:7348 ??
+    db   $07, $32 ;; BlockID, XY                       ;; 06:734a ??
+    db   $07, $33 ;; BlockID, XY                       ;; 06:734c ??
+    db   $07, $34 ;; BlockID, XY                       ;; 06:734e ??
+    db   $07, $35 ;; BlockID, XY                       ;; 06:7350 ??
+    db   $07, $45 ;; BlockID, XY                       ;; 06:7352 ??
+    db   $07, $46 ;; BlockID, XY                       ;; 06:7354 ??
+    db   $07, $47 ;; BlockID, XY                       ;; 06:7356 ??
+    db   $07, $48 ;; BlockID, XY                       ;; 06:7358 ??
+    db   $5e, $53 ;; BlockID, XY                       ;; 06:735a ??
+    db   $07, $56 ;; BlockID, XY                       ;; 06:735c ??
+    db   $07, $66 ;; BlockID, XY                       ;; 06:735e ??
+    db   $5e, $68 ;; BlockID, XY                       ;; 06:7360 ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7362 ??
 
 map0a_room00_03_script:
     dw   $008e                                         ;; 06:7364 $8e $00
     db   $ff                                           ;; 06:7366 ?
 
 map0a_room00_03_tiles:
-    db   $00, $02, $02, $00, $4f, $26, $4f, $37        ;; 06:7367 ????????
-    db   $4f, $47, $4f, $58, $ff, $ff                  ;; 06:736f ??????
+    db   $00, $02, $02, $00 ;; Door info               ;; 06:7367 ????
+    db   $4f, $26 ;; BlockID, XY                       ;; 06:736b ??
+    db   $4f, $37 ;; BlockID, XY                       ;; 06:736d ??
+    db   $4f, $47 ;; BlockID, XY                       ;; 06:736f ??
+    db   $4f, $58 ;; BlockID, XY                       ;; 06:7371 ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7373 ??
 
 map0a_room01_03_script:
     dw   $008b                                         ;; 06:7375 $8b $00
@@ -3598,46 +3812,101 @@ map0a_room01_03_script:
     db   $ff                                           ;; 06:737a ?
 
 map0a_room01_03_tiles:
-    db   $02, $00, $02, $02, $3b, $56, $37, $57        ;; 06:737b ????????
-    db   $45, $66, $40, $67, $11, $68, $55, $76        ;; 06:7383 ????????
-    db   $50, $77, $ff, $ff                            ;; 06:738b ????
+    db   $02, $00, $02, $02 ;; Door info               ;; 06:737b ????
+    db   $3b, $56 ;; BlockID, XY                       ;; 06:737f ??
+    db   $37, $57 ;; BlockID, XY                       ;; 06:7381 ??
+    db   $45, $66 ;; BlockID, XY                       ;; 06:7383 ??
+    db   $40, $67 ;; BlockID, XY                       ;; 06:7385 ??
+    db   $11, $68 ;; BlockID, XY                       ;; 06:7387 ??
+    db   $55, $76 ;; BlockID, XY                       ;; 06:7389 ??
+    db   $50, $77 ;; BlockID, XY                       ;; 06:738b ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:738d ??
 
 map0a_room02_03_script:
     dw   $00bb                                         ;; 06:738f $bb $00
     db   $ff                                           ;; 06:7391 ?
 
 map0a_room02_03_tiles:
-    db   $02, $02, $00, $00, $08, $03, $57, $04        ;; 06:7392 ????????
-    db   $56, $05, $0a, $06, $58, $14, $56, $15        ;; 06:739a ????????
-    db   $0b, $23, $0b, $24, $0b, $25, $0b, $26        ;; 06:73a2 ????????
-    db   $29, $33, $0b, $36, $0b, $43, $29, $46        ;; 06:73aa ????????
-    db   $0b, $53, $0b, $54, $0b, $55, $0b, $56        ;; 06:73b2 ????????
-    db   $0b, $63, $59, $64, $57, $65, $0b, $66        ;; 06:73ba ????????
-    db   $48, $73, $56, $74, $57, $75, $4a, $76        ;; 06:73c2 ????????
-    db   $ff, $ff                                      ;; 06:73ca ??
+    db   $02, $02, $00, $00 ;; Door info               ;; 06:7392 ????
+    db   $08, $03 ;; BlockID, XY                       ;; 06:7396 ??
+    db   $57, $04 ;; BlockID, XY                       ;; 06:7398 ??
+    db   $56, $05 ;; BlockID, XY                       ;; 06:739a ??
+    db   $0a, $06 ;; BlockID, XY                       ;; 06:739c ??
+    db   $58, $14 ;; BlockID, XY                       ;; 06:739e ??
+    db   $56, $15 ;; BlockID, XY                       ;; 06:73a0 ??
+    db   $0b, $23 ;; BlockID, XY                       ;; 06:73a2 ??
+    db   $0b, $24 ;; BlockID, XY                       ;; 06:73a4 ??
+    db   $0b, $25 ;; BlockID, XY                       ;; 06:73a6 ??
+    db   $0b, $26 ;; BlockID, XY                       ;; 06:73a8 ??
+    db   $29, $33 ;; BlockID, XY                       ;; 06:73aa ??
+    db   $0b, $36 ;; BlockID, XY                       ;; 06:73ac ??
+    db   $0b, $43 ;; BlockID, XY                       ;; 06:73ae ??
+    db   $29, $46 ;; BlockID, XY                       ;; 06:73b0 ??
+    db   $0b, $53 ;; BlockID, XY                       ;; 06:73b2 ??
+    db   $0b, $54 ;; BlockID, XY                       ;; 06:73b4 ??
+    db   $0b, $55 ;; BlockID, XY                       ;; 06:73b6 ??
+    db   $0b, $56 ;; BlockID, XY                       ;; 06:73b8 ??
+    db   $0b, $63 ;; BlockID, XY                       ;; 06:73ba ??
+    db   $59, $64 ;; BlockID, XY                       ;; 06:73bc ??
+    db   $57, $65 ;; BlockID, XY                       ;; 06:73be ??
+    db   $0b, $66 ;; BlockID, XY                       ;; 06:73c0 ??
+    db   $48, $73 ;; BlockID, XY                       ;; 06:73c2 ??
+    db   $56, $74 ;; BlockID, XY                       ;; 06:73c4 ??
+    db   $57, $75 ;; BlockID, XY                       ;; 06:73c6 ??
+    db   $4a, $76 ;; BlockID, XY                       ;; 06:73c8 ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:73ca ??
 
 map0a_room03_03_script:
     dw   $03e5                                         ;; 06:73cc $e5 $03
     db   $ff                                           ;; 06:73ce ?
 
 map0a_room03_03_tiles:
-    db   $02, $02, $02, $01, $44, $33, $44, $34        ;; 06:73cf ????????
-    db   $44, $35, $44, $36, $44, $43, $09, $44        ;; 06:73d7 ????????
-    db   $09, $45, $44, $46, $44, $53, $09, $54        ;; 06:73df ????????
-    db   $09, $55, $44, $56, $ff, $ff                  ;; 06:73e7 ??????
+    db   $02, $02, $02, $01 ;; Door info               ;; 06:73cf ????
+    db   $44, $33 ;; BlockID, XY                       ;; 06:73d3 ??
+    db   $44, $34 ;; BlockID, XY                       ;; 06:73d5 ??
+    db   $44, $35 ;; BlockID, XY                       ;; 06:73d7 ??
+    db   $44, $36 ;; BlockID, XY                       ;; 06:73d9 ??
+    db   $44, $43 ;; BlockID, XY                       ;; 06:73db ??
+    db   $09, $44 ;; BlockID, XY                       ;; 06:73dd ??
+    db   $09, $45 ;; BlockID, XY                       ;; 06:73df ??
+    db   $44, $46 ;; BlockID, XY                       ;; 06:73e1 ??
+    db   $44, $53 ;; BlockID, XY                       ;; 06:73e3 ??
+    db   $09, $54 ;; BlockID, XY                       ;; 06:73e5 ??
+    db   $09, $55 ;; BlockID, XY                       ;; 06:73e7 ??
+    db   $44, $56 ;; BlockID, XY                       ;; 06:73e9 ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:73eb ??
 
 map0a_room04_03_script:
     dw   $00bb                                         ;; 06:73ed $bb $00
     db   $ff                                           ;; 06:73ef ?
 
 map0a_room04_03_tiles:
-    db   $02, $02, $00, $00, $08, $03, $56, $04        ;; 06:73f0 ????????
-    db   $57, $05, $0a, $06, $56, $14, $59, $15        ;; 06:73f8 ????????
-    db   $09, $24, $09, $25, $09, $33, $09, $34        ;; 06:7400 ????????
-    db   $09, $35, $09, $36, $09, $43, $09, $44        ;; 06:7408 ????????
-    db   $09, $45, $09, $46, $09, $54, $09, $55        ;; 06:7410 ????????
-    db   $58, $64, $57, $65, $48, $73, $56, $74        ;; 06:7418 ????????
-    db   $57, $75, $4a, $76, $ff, $ff                  ;; 06:7420 ??????
+    db   $02, $02, $00, $00 ;; Door info               ;; 06:73f0 ????
+    db   $08, $03 ;; BlockID, XY                       ;; 06:73f4 ??
+    db   $56, $04 ;; BlockID, XY                       ;; 06:73f6 ??
+    db   $57, $05 ;; BlockID, XY                       ;; 06:73f8 ??
+    db   $0a, $06 ;; BlockID, XY                       ;; 06:73fa ??
+    db   $56, $14 ;; BlockID, XY                       ;; 06:73fc ??
+    db   $59, $15 ;; BlockID, XY                       ;; 06:73fe ??
+    db   $09, $24 ;; BlockID, XY                       ;; 06:7400 ??
+    db   $09, $25 ;; BlockID, XY                       ;; 06:7402 ??
+    db   $09, $33 ;; BlockID, XY                       ;; 06:7404 ??
+    db   $09, $34 ;; BlockID, XY                       ;; 06:7406 ??
+    db   $09, $35 ;; BlockID, XY                       ;; 06:7408 ??
+    db   $09, $36 ;; BlockID, XY                       ;; 06:740a ??
+    db   $09, $43 ;; BlockID, XY                       ;; 06:740c ??
+    db   $09, $44 ;; BlockID, XY                       ;; 06:740e ??
+    db   $09, $45 ;; BlockID, XY                       ;; 06:7410 ??
+    db   $09, $46 ;; BlockID, XY                       ;; 06:7412 ??
+    db   $09, $54 ;; BlockID, XY                       ;; 06:7414 ??
+    db   $09, $55 ;; BlockID, XY                       ;; 06:7416 ??
+    db   $58, $64 ;; BlockID, XY                       ;; 06:7418 ??
+    db   $57, $65 ;; BlockID, XY                       ;; 06:741a ??
+    db   $48, $73 ;; BlockID, XY                       ;; 06:741c ??
+    db   $56, $74 ;; BlockID, XY                       ;; 06:741e ??
+    db   $57, $75 ;; BlockID, XY                       ;; 06:7420 ??
+    db   $4a, $76 ;; BlockID, XY                       ;; 06:7422 ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7424 ??
 
 map0a_room05_03_script:
     dw   $00b5                                         ;; 06:7426 $b5 $00
@@ -3646,22 +3915,46 @@ map0a_room05_03_script:
     db   $ff                                           ;; 06:742b ?
 
 map0a_room05_03_tiles:
-    db   $00, $02, $02, $02, $5e, $11, $11, $18        ;; 06:742c ????????
-    db   $09, $23, $09, $24, $09, $25, $09, $26        ;; 06:7434 ????????
-    db   $09, $27, $09, $28, $09, $33, $5e, $35        ;; 06:743c ????????
-    db   $09, $36, $09, $41, $09, $42, $09, $43        ;; 06:7444 ????????
-    db   $09, $46, $09, $56, $09, $66, $5e, $68        ;; 06:744c ????????
-    db   $ff, $ff                                      ;; 06:7454 ??
+    db   $00, $02, $02, $02 ;; Door info               ;; 06:742c ????
+    db   $5e, $11 ;; BlockID, XY                       ;; 06:7430 ??
+    db   $11, $18 ;; BlockID, XY                       ;; 06:7432 ??
+    db   $09, $23 ;; BlockID, XY                       ;; 06:7434 ??
+    db   $09, $24 ;; BlockID, XY                       ;; 06:7436 ??
+    db   $09, $25 ;; BlockID, XY                       ;; 06:7438 ??
+    db   $09, $26 ;; BlockID, XY                       ;; 06:743a ??
+    db   $09, $27 ;; BlockID, XY                       ;; 06:743c ??
+    db   $09, $28 ;; BlockID, XY                       ;; 06:743e ??
+    db   $09, $33 ;; BlockID, XY                       ;; 06:7440 ??
+    db   $5e, $35 ;; BlockID, XY                       ;; 06:7442 ??
+    db   $09, $36 ;; BlockID, XY                       ;; 06:7444 ??
+    db   $09, $41 ;; BlockID, XY                       ;; 06:7446 ??
+    db   $09, $42 ;; BlockID, XY                       ;; 06:7448 ??
+    db   $09, $43 ;; BlockID, XY                       ;; 06:744a ??
+    db   $09, $46 ;; BlockID, XY                       ;; 06:744c ??
+    db   $09, $56 ;; BlockID, XY                       ;; 06:744e ??
+    db   $09, $66 ;; BlockID, XY                       ;; 06:7450 ??
+    db   $5e, $68 ;; BlockID, XY                       ;; 06:7452 ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7454 ??
 
 map0a_room06_03_script:
     dw   $00b2                                         ;; 06:7456 $b2 $00
     db   $ff                                           ;; 06:7458 ?
 
 map0a_room06_03_tiles:
-    db   $02, $00, $01, $01, $4a, $34, $54, $35        ;; 06:7459 ????????
-    db   $54, $36, $54, $37, $54, $38, $55, $39        ;; 06:7461 ????????
-    db   $0a, $44, $04, $45, $04, $46, $04, $47        ;; 06:7469 ????????
-    db   $04, $48, $05, $49, $ff, $ff                  ;; 06:7471 ??????
+    db   $02, $00, $01, $01 ;; Door info               ;; 06:7459 ????
+    db   $4a, $34 ;; BlockID, XY                       ;; 06:745d ??
+    db   $54, $35 ;; BlockID, XY                       ;; 06:745f ??
+    db   $54, $36 ;; BlockID, XY                       ;; 06:7461 ??
+    db   $54, $37 ;; BlockID, XY                       ;; 06:7463 ??
+    db   $54, $38 ;; BlockID, XY                       ;; 06:7465 ??
+    db   $55, $39 ;; BlockID, XY                       ;; 06:7467 ??
+    db   $0a, $44 ;; BlockID, XY                       ;; 06:7469 ??
+    db   $04, $45 ;; BlockID, XY                       ;; 06:746b ??
+    db   $04, $46 ;; BlockID, XY                       ;; 06:746d ??
+    db   $04, $47 ;; BlockID, XY                       ;; 06:746f ??
+    db   $04, $48 ;; BlockID, XY                       ;; 06:7471 ??
+    db   $05, $49 ;; BlockID, XY                       ;; 06:7473 ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7475 ??
 
 map0a_room00_04_script:
     dw   $008e                                         ;; 06:7477 $8e $00
@@ -3672,11 +3965,22 @@ map0a_room00_04_script:
     db   $ff                                           ;; 06:747f ?
 
 map0a_room00_04_tiles:
-    db   $02, $02, $00, $89, $0c, $31, $0c, $33        ;; 06:7480 ????????
-    db   $09, $34, $09, $35, $0c, $36, $0c, $38        ;; 06:7488 ????????
-    db   $1c, $41, $3f, $42, $1c, $43, $09, $44        ;; 06:7490 ????????
-    db   $09, $45, $1c, $46, $3f, $47, $1c, $48        ;; 06:7498 ????????
-    db   $ff, $ff                                      ;; 06:74a0 ??
+    db   $02, $02, $00, $89 ;; Door info               ;; 06:7480 ????
+    db   $0c, $31 ;; BlockID, XY                       ;; 06:7484 ??
+    db   $0c, $33 ;; BlockID, XY                       ;; 06:7486 ??
+    db   $09, $34 ;; BlockID, XY                       ;; 06:7488 ??
+    db   $09, $35 ;; BlockID, XY                       ;; 06:748a ??
+    db   $0c, $36 ;; BlockID, XY                       ;; 06:748c ??
+    db   $0c, $38 ;; BlockID, XY                       ;; 06:748e ??
+    db   $1c, $41 ;; BlockID, XY                       ;; 06:7490 ??
+    db   $3f, $42 ;; BlockID, XY                       ;; 06:7492 ??
+    db   $1c, $43 ;; BlockID, XY                       ;; 06:7494 ??
+    db   $09, $44 ;; BlockID, XY                       ;; 06:7496 ??
+    db   $09, $45 ;; BlockID, XY                       ;; 06:7498 ??
+    db   $1c, $46 ;; BlockID, XY                       ;; 06:749a ??
+    db   $3f, $47 ;; BlockID, XY                       ;; 06:749c ??
+    db   $1c, $48 ;; BlockID, XY                       ;; 06:749e ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:74a0 ??
 
 map0a_room01_04_script:
     dw   $00b2                                         ;; 06:74a2 $b2 $00
@@ -3685,71 +3989,162 @@ map0a_room01_04_script:
     db   $ff                                           ;; 06:74a7 ?
 
 map0a_room01_04_tiles:
-    db   $00, $02, $02, $02, $0b, $13, $5e, $14        ;; 06:74a8 ????????
-    db   $11, $18, $0b, $23, $0b, $26, $0b, $27        ;; 06:74b0 ????????
-    db   $0b, $28, $0b, $33, $0b, $34, $0b, $35        ;; 06:74b8 ????????
-    db   $0b, $36, $5e, $42, $0b, $45, $0b, $55        ;; 06:74c0 ????????
-    db   $0b, $56, $5e, $57, $0b, $66, $0b, $67        ;; 06:74c8 ????????
-    db   $0b, $68, $ff, $ff                            ;; 06:74d0 ????
+    db   $00, $02, $02, $02 ;; Door info               ;; 06:74a8 ????
+    db   $0b, $13 ;; BlockID, XY                       ;; 06:74ac ??
+    db   $5e, $14 ;; BlockID, XY                       ;; 06:74ae ??
+    db   $11, $18 ;; BlockID, XY                       ;; 06:74b0 ??
+    db   $0b, $23 ;; BlockID, XY                       ;; 06:74b2 ??
+    db   $0b, $26 ;; BlockID, XY                       ;; 06:74b4 ??
+    db   $0b, $27 ;; BlockID, XY                       ;; 06:74b6 ??
+    db   $0b, $28 ;; BlockID, XY                       ;; 06:74b8 ??
+    db   $0b, $33 ;; BlockID, XY                       ;; 06:74ba ??
+    db   $0b, $34 ;; BlockID, XY                       ;; 06:74bc ??
+    db   $0b, $35 ;; BlockID, XY                       ;; 06:74be ??
+    db   $0b, $36 ;; BlockID, XY                       ;; 06:74c0 ??
+    db   $5e, $42 ;; BlockID, XY                       ;; 06:74c2 ??
+    db   $0b, $45 ;; BlockID, XY                       ;; 06:74c4 ??
+    db   $0b, $55 ;; BlockID, XY                       ;; 06:74c6 ??
+    db   $0b, $56 ;; BlockID, XY                       ;; 06:74c8 ??
+    db   $5e, $57 ;; BlockID, XY                       ;; 06:74ca ??
+    db   $0b, $66 ;; BlockID, XY                       ;; 06:74cc ??
+    db   $0b, $67 ;; BlockID, XY                       ;; 06:74ce ??
+    db   $0b, $68 ;; BlockID, XY                       ;; 06:74d0 ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:74d2 ??
 
 map0a_room02_04_script:
     dw   $03dc                                         ;; 06:74d4 $dc $03
     db   $ff                                           ;; 06:74d6 ?
 
 map0a_room02_04_tiles:
-    db   $00, $02, $00, $02, $08, $03, $56, $04        ;; 06:74d7 ????????
-    db   $57, $05, $0a, $06, $56, $14, $57, $15        ;; 06:74df ????????
-    db   $5e, $21, $59, $23, $56, $24, $59, $25        ;; 06:74e7 ????????
-    db   $57, $26, $1b, $29, $56, $33, $0c, $34        ;; 06:74ef ????????
-    db   $0c, $35, $59, $36, $59, $37, $59, $38        ;; 06:74f7 ????????
-    db   $59, $39, $56, $43, $1c, $44, $1c, $45        ;; 06:74ff ????????
-    db   $57, $46, $58, $47, $58, $48, $58, $49        ;; 06:7507 ????????
-    db   $5e, $51, $56, $53, $58, $54, $58, $55        ;; 06:750f ????????
-    db   $58, $56, $3b, $59, $ff, $ff                  ;; 06:7517 ??????
+    db   $00, $02, $00, $02 ;; Door info               ;; 06:74d7 ????
+    db   $08, $03 ;; BlockID, XY                       ;; 06:74db ??
+    db   $56, $04 ;; BlockID, XY                       ;; 06:74dd ??
+    db   $57, $05 ;; BlockID, XY                       ;; 06:74df ??
+    db   $0a, $06 ;; BlockID, XY                       ;; 06:74e1 ??
+    db   $56, $14 ;; BlockID, XY                       ;; 06:74e3 ??
+    db   $57, $15 ;; BlockID, XY                       ;; 06:74e5 ??
+    db   $5e, $21 ;; BlockID, XY                       ;; 06:74e7 ??
+    db   $59, $23 ;; BlockID, XY                       ;; 06:74e9 ??
+    db   $56, $24 ;; BlockID, XY                       ;; 06:74eb ??
+    db   $59, $25 ;; BlockID, XY                       ;; 06:74ed ??
+    db   $57, $26 ;; BlockID, XY                       ;; 06:74ef ??
+    db   $1b, $29 ;; BlockID, XY                       ;; 06:74f1 ??
+    db   $56, $33 ;; BlockID, XY                       ;; 06:74f3 ??
+    db   $0c, $34 ;; BlockID, XY                       ;; 06:74f5 ??
+    db   $0c, $35 ;; BlockID, XY                       ;; 06:74f7 ??
+    db   $59, $36 ;; BlockID, XY                       ;; 06:74f9 ??
+    db   $59, $37 ;; BlockID, XY                       ;; 06:74fb ??
+    db   $59, $38 ;; BlockID, XY                       ;; 06:74fd ??
+    db   $59, $39 ;; BlockID, XY                       ;; 06:74ff ??
+    db   $56, $43 ;; BlockID, XY                       ;; 06:7501 ??
+    db   $1c, $44 ;; BlockID, XY                       ;; 06:7503 ??
+    db   $1c, $45 ;; BlockID, XY                       ;; 06:7505 ??
+    db   $57, $46 ;; BlockID, XY                       ;; 06:7507 ??
+    db   $58, $47 ;; BlockID, XY                       ;; 06:7509 ??
+    db   $58, $48 ;; BlockID, XY                       ;; 06:750b ??
+    db   $58, $49 ;; BlockID, XY                       ;; 06:750d ??
+    db   $5e, $51 ;; BlockID, XY                       ;; 06:750f ??
+    db   $56, $53 ;; BlockID, XY                       ;; 06:7511 ??
+    db   $58, $54 ;; BlockID, XY                       ;; 06:7513 ??
+    db   $58, $55 ;; BlockID, XY                       ;; 06:7515 ??
+    db   $58, $56 ;; BlockID, XY                       ;; 06:7517 ??
+    db   $3b, $59 ;; BlockID, XY                       ;; 06:7519 ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:751b ??
 
 map0a_room03_04_script:
     dw   $0070                                         ;; 06:751d $70 $00
     db   $ff                                           ;; 06:751f ?
 
 map0a_room03_04_tiles:
-    db   $00, $00, $05, $02, $17, $20, $16, $22        ;; 06:7520 ????????
-    db   $01, $23, $2b, $24, $04, $25, $04, $26        ;; 06:7528 ????????
-    db   $05, $27, $1b, $29, $59, $30, $56, $31        ;; 06:7530 ????????
-    db   $10, $32, $07, $33, $2b, $34, $07, $35        ;; 06:7538 ????????
-    db   $07, $36, $15, $37, $59, $38, $59, $39        ;; 06:7540 ????????
-    db   $58, $40, $58, $41, $40, $42, $07, $43        ;; 06:7548 ????????
-    db   $2b, $44, $07, $45, $07, $46, $45, $47        ;; 06:7550 ????????
-    db   $57, $48, $58, $49, $37, $50, $50, $52        ;; 06:7558 ????????
-    db   $51, $53, $2b, $54, $54, $55, $54, $56        ;; 06:7560 ????????
-    db   $55, $57, $3b, $59, $ff, $ff                  ;; 06:7568 ??????
+    db   $00, $00, $05, $02 ;; Door info               ;; 06:7520 ????
+    db   $17, $20 ;; BlockID, XY                       ;; 06:7524 ??
+    db   $16, $22 ;; BlockID, XY                       ;; 06:7526 ??
+    db   $01, $23 ;; BlockID, XY                       ;; 06:7528 ??
+    db   $2b, $24 ;; BlockID, XY                       ;; 06:752a ??
+    db   $04, $25 ;; BlockID, XY                       ;; 06:752c ??
+    db   $04, $26 ;; BlockID, XY                       ;; 06:752e ??
+    db   $05, $27 ;; BlockID, XY                       ;; 06:7530 ??
+    db   $1b, $29 ;; BlockID, XY                       ;; 06:7532 ??
+    db   $59, $30 ;; BlockID, XY                       ;; 06:7534 ??
+    db   $56, $31 ;; BlockID, XY                       ;; 06:7536 ??
+    db   $10, $32 ;; BlockID, XY                       ;; 06:7538 ??
+    db   $07, $33 ;; BlockID, XY                       ;; 06:753a ??
+    db   $2b, $34 ;; BlockID, XY                       ;; 06:753c ??
+    db   $07, $35 ;; BlockID, XY                       ;; 06:753e ??
+    db   $07, $36 ;; BlockID, XY                       ;; 06:7540 ??
+    db   $15, $37 ;; BlockID, XY                       ;; 06:7542 ??
+    db   $59, $38 ;; BlockID, XY                       ;; 06:7544 ??
+    db   $59, $39 ;; BlockID, XY                       ;; 06:7546 ??
+    db   $58, $40 ;; BlockID, XY                       ;; 06:7548 ??
+    db   $58, $41 ;; BlockID, XY                       ;; 06:754a ??
+    db   $40, $42 ;; BlockID, XY                       ;; 06:754c ??
+    db   $07, $43 ;; BlockID, XY                       ;; 06:754e ??
+    db   $2b, $44 ;; BlockID, XY                       ;; 06:7550 ??
+    db   $07, $45 ;; BlockID, XY                       ;; 06:7552 ??
+    db   $07, $46 ;; BlockID, XY                       ;; 06:7554 ??
+    db   $45, $47 ;; BlockID, XY                       ;; 06:7556 ??
+    db   $57, $48 ;; BlockID, XY                       ;; 06:7558 ??
+    db   $58, $49 ;; BlockID, XY                       ;; 06:755a ??
+    db   $37, $50 ;; BlockID, XY                       ;; 06:755c ??
+    db   $50, $52 ;; BlockID, XY                       ;; 06:755e ??
+    db   $51, $53 ;; BlockID, XY                       ;; 06:7560 ??
+    db   $2b, $54 ;; BlockID, XY                       ;; 06:7562 ??
+    db   $54, $55 ;; BlockID, XY                       ;; 06:7564 ??
+    db   $54, $56 ;; BlockID, XY                       ;; 06:7566 ??
+    db   $55, $57 ;; BlockID, XY                       ;; 06:7568 ??
+    db   $3b, $59 ;; BlockID, XY                       ;; 06:756a ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:756c ??
 
 map0a_room04_04_script:
     dw   $00b5                                         ;; 06:756e $b5 $00
     db   $ff                                           ;; 06:7570 ?
 
 map0a_room04_04_tiles:
-    db   $02, $00, $00, $02, $08, $03, $56, $04        ;; 06:7571 ????????
-    db   $57, $05, $0a, $06, $5e, $13, $56, $14        ;; 06:7579 ????????
-    db   $57, $15, $17, $20, $56, $24, $57, $25        ;; 06:7581 ????????
-    db   $59, $30, $56, $31, $4f, $32, $56, $34        ;; 06:7589 ????????
-    db   $57, $35, $58, $40, $58, $41, $4f, $42        ;; 06:7591 ????????
-    db   $56, $44, $57, $45, $37, $50, $56, $54        ;; 06:7599 ????????
-    db   $57, $55, $56, $64, $59, $65, $ff, $ff        ;; 06:75a1 ????????
+    db   $02, $00, $00, $02 ;; Door info               ;; 06:7571 ????
+    db   $08, $03 ;; BlockID, XY                       ;; 06:7575 ??
+    db   $56, $04 ;; BlockID, XY                       ;; 06:7577 ??
+    db   $57, $05 ;; BlockID, XY                       ;; 06:7579 ??
+    db   $0a, $06 ;; BlockID, XY                       ;; 06:757b ??
+    db   $5e, $13 ;; BlockID, XY                       ;; 06:757d ??
+    db   $56, $14 ;; BlockID, XY                       ;; 06:757f ??
+    db   $57, $15 ;; BlockID, XY                       ;; 06:7581 ??
+    db   $17, $20 ;; BlockID, XY                       ;; 06:7583 ??
+    db   $56, $24 ;; BlockID, XY                       ;; 06:7585 ??
+    db   $57, $25 ;; BlockID, XY                       ;; 06:7587 ??
+    db   $59, $30 ;; BlockID, XY                       ;; 06:7589 ??
+    db   $56, $31 ;; BlockID, XY                       ;; 06:758b ??
+    db   $4f, $32 ;; BlockID, XY                       ;; 06:758d ??
+    db   $56, $34 ;; BlockID, XY                       ;; 06:758f ??
+    db   $57, $35 ;; BlockID, XY                       ;; 06:7591 ??
+    db   $58, $40 ;; BlockID, XY                       ;; 06:7593 ??
+    db   $58, $41 ;; BlockID, XY                       ;; 06:7595 ??
+    db   $4f, $42 ;; BlockID, XY                       ;; 06:7597 ??
+    db   $56, $44 ;; BlockID, XY                       ;; 06:7599 ??
+    db   $57, $45 ;; BlockID, XY                       ;; 06:759b ??
+    db   $37, $50 ;; BlockID, XY                       ;; 06:759d ??
+    db   $56, $54 ;; BlockID, XY                       ;; 06:759f ??
+    db   $57, $55 ;; BlockID, XY                       ;; 06:75a1 ??
+    db   $56, $64 ;; BlockID, XY                       ;; 06:75a3 ??
+    db   $59, $65 ;; BlockID, XY                       ;; 06:75a5 ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:75a7 ??
 
 map0a_room05_04_script:
     dw   $ffff                                         ;; 06:75a9 $ff $ff
     db   $ff                                           ;; 06:75ab ?
 
 map0a_room05_04_tiles:
-    db   $00, $00, $00, $00, $ff, $ff                  ;; 06:75ac ??????
+    db   $00, $00, $00, $00 ;; Door info               ;; 06:75ac ????
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:75b0 ??
 
 map0a_room06_04_script:
     dw   $00bb                                         ;; 06:75b2 $bb $00
     db   $ff                                           ;; 06:75b4 ?
 
 map0a_room06_04_tiles:
-    db   $02, $02, $01, $02, $41, $14, $41, $15        ;; 06:75b5 ????????
-    db   $ff, $ff                                      ;; 06:75bd ??
+    db   $02, $02, $01, $02 ;; Door info               ;; 06:75b5 ????
+    db   $41, $14 ;; BlockID, XY                       ;; 06:75b9 ??
+    db   $41, $15 ;; BlockID, XY                       ;; 06:75bb ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:75bd ??
 
 map0a_room00_05_script:
     dw   $008b                                         ;; 06:75bf $8b $00
@@ -3758,61 +4153,144 @@ map0a_room00_05_script:
     db   $ff                                           ;; 06:75c4 ?
 
 map0a_room00_05_tiles:
-    db   $02, $02, $01, $02, $4a, $43, $54, $44        ;; 06:75c5 ????????
-    db   $54, $45, $54, $46, $54, $47, $54, $48        ;; 06:75cd ????????
-    db   $55, $49, $0a, $53, $04, $54, $04, $55        ;; 06:75d5 ????????
-    db   $04, $56, $04, $57, $04, $58, $05, $59        ;; 06:75dd ????????
-    db   $11, $68, $ff, $ff                            ;; 06:75e5 ????
+    db   $02, $02, $01, $02 ;; Door info               ;; 06:75c5 ????
+    db   $4a, $43 ;; BlockID, XY                       ;; 06:75c9 ??
+    db   $54, $44 ;; BlockID, XY                       ;; 06:75cb ??
+    db   $54, $45 ;; BlockID, XY                       ;; 06:75cd ??
+    db   $54, $46 ;; BlockID, XY                       ;; 06:75cf ??
+    db   $54, $47 ;; BlockID, XY                       ;; 06:75d1 ??
+    db   $54, $48 ;; BlockID, XY                       ;; 06:75d3 ??
+    db   $55, $49 ;; BlockID, XY                       ;; 06:75d5 ??
+    db   $0a, $53 ;; BlockID, XY                       ;; 06:75d7 ??
+    db   $04, $54 ;; BlockID, XY                       ;; 06:75d9 ??
+    db   $04, $55 ;; BlockID, XY                       ;; 06:75db ??
+    db   $04, $56 ;; BlockID, XY                       ;; 06:75dd ??
+    db   $04, $57 ;; BlockID, XY                       ;; 06:75df ??
+    db   $04, $58 ;; BlockID, XY                       ;; 06:75e1 ??
+    db   $05, $59 ;; BlockID, XY                       ;; 06:75e3 ??
+    db   $11, $68 ;; BlockID, XY                       ;; 06:75e5 ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:75e7 ??
 
 map0a_room01_05_script:
     dw   $003d                                         ;; 06:75e9 $3d $00
     db   $ff                                           ;; 06:75eb ?
 
 map0a_room01_05_tiles:
-    db   $00, $02, $02, $00, $2c, $25, $1b, $29        ;; 06:75ec ????????
-    db   $2c, $34, $65, $35, $60, $36, $60, $37        ;; 06:75f4 ????????
-    db   $60, $38, $60, $39, $2c, $44, $63, $45        ;; 06:75fc ????????
-    db   $2c, $46, $3b, $49, $63, $55, $63, $65        ;; 06:7604 ????????
-    db   $48, $74, $63, $75, $4a, $76, $ff, $ff        ;; 06:760c ????????
+    db   $00, $02, $02, $00 ;; Door info               ;; 06:75ec ????
+    db   $2c, $25 ;; BlockID, XY                       ;; 06:75f0 ??
+    db   $1b, $29 ;; BlockID, XY                       ;; 06:75f2 ??
+    db   $2c, $34 ;; BlockID, XY                       ;; 06:75f4 ??
+    db   $65, $35 ;; BlockID, XY                       ;; 06:75f6 ??
+    db   $60, $36 ;; BlockID, XY                       ;; 06:75f8 ??
+    db   $60, $37 ;; BlockID, XY                       ;; 06:75fa ??
+    db   $60, $38 ;; BlockID, XY                       ;; 06:75fc ??
+    db   $60, $39 ;; BlockID, XY                       ;; 06:75fe ??
+    db   $2c, $44 ;; BlockID, XY                       ;; 06:7600 ??
+    db   $63, $45 ;; BlockID, XY                       ;; 06:7602 ??
+    db   $2c, $46 ;; BlockID, XY                       ;; 06:7604 ??
+    db   $3b, $49 ;; BlockID, XY                       ;; 06:7606 ??
+    db   $63, $55 ;; BlockID, XY                       ;; 06:7608 ??
+    db   $63, $65 ;; BlockID, XY                       ;; 06:760a ??
+    db   $48, $74 ;; BlockID, XY                       ;; 06:760c ??
+    db   $63, $75 ;; BlockID, XY                       ;; 06:760e ??
+    db   $4a, $76 ;; BlockID, XY                       ;; 06:7610 ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7612 ??
 
 map0a_room02_05_script:
     dw   $008b                                         ;; 06:7614 $8b $00
     db   $ff                                           ;; 06:7616 ?
 
 map0a_room02_05_tiles:
-    db   $00, $00, $02, $02, $19, $11, $19, $12        ;; 06:7617 ????????
-    db   $17, $20, $19, $21, $1b, $29, $60, $30        ;; 06:761f ????????
-    db   $60, $31, $60, $32, $60, $33, $60, $34        ;; 06:7627 ????????
-    db   $60, $35, $60, $36, $60, $37, $60, $38        ;; 06:762f ????????
-    db   $60, $39, $37, $40, $3b, $49, $ff, $ff        ;; 06:7637 ????????
+    db   $00, $00, $02, $02 ;; Door info               ;; 06:7617 ????
+    db   $19, $11 ;; BlockID, XY                       ;; 06:761b ??
+    db   $19, $12 ;; BlockID, XY                       ;; 06:761d ??
+    db   $17, $20 ;; BlockID, XY                       ;; 06:761f ??
+    db   $19, $21 ;; BlockID, XY                       ;; 06:7621 ??
+    db   $1b, $29 ;; BlockID, XY                       ;; 06:7623 ??
+    db   $60, $30 ;; BlockID, XY                       ;; 06:7625 ??
+    db   $60, $31 ;; BlockID, XY                       ;; 06:7627 ??
+    db   $60, $32 ;; BlockID, XY                       ;; 06:7629 ??
+    db   $60, $33 ;; BlockID, XY                       ;; 06:762b ??
+    db   $60, $34 ;; BlockID, XY                       ;; 06:762d ??
+    db   $60, $35 ;; BlockID, XY                       ;; 06:762f ??
+    db   $60, $36 ;; BlockID, XY                       ;; 06:7631 ??
+    db   $60, $37 ;; BlockID, XY                       ;; 06:7633 ??
+    db   $60, $38 ;; BlockID, XY                       ;; 06:7635 ??
+    db   $60, $39 ;; BlockID, XY                       ;; 06:7637 ??
+    db   $37, $40 ;; BlockID, XY                       ;; 06:7639 ??
+    db   $3b, $49 ;; BlockID, XY                       ;; 06:763b ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:763d ??
 
 map0a_room03_05_script:
     dw   $03f1                                         ;; 06:763f $f1 $03
     db   $ff                                           ;; 06:7641 ?
 
 map0a_room03_05_tiles:
-    db   $00, $00, $02, $00, $17, $20, $1b, $29        ;; 06:7642 ????????
-    db   $60, $30, $60, $31, $60, $32, $60, $33        ;; 06:764a ????????
-    db   $60, $34, $60, $35, $60, $36, $60, $37        ;; 06:7652 ????????
-    db   $60, $38, $60, $39, $37, $40, $16, $41        ;; 06:765a ????????
-    db   $01, $42, $01, $43, $05, $44, $63, $45        ;; 06:7662 ????????
-    db   $1a, $47, $3b, $49, $10, $51, $07, $52        ;; 06:766a ????????
-    db   $07, $53, $15, $54, $63, $55, $50, $61        ;; 06:7672 ????????
-    db   $51, $62, $54, $63, $55, $64, $63, $65        ;; 06:767a ????????
-    db   $48, $74, $63, $75, $ff, $ff                  ;; 06:7682 ??????
+    db   $00, $00, $02, $00 ;; Door info               ;; 06:7642 ????
+    db   $17, $20 ;; BlockID, XY                       ;; 06:7646 ??
+    db   $1b, $29 ;; BlockID, XY                       ;; 06:7648 ??
+    db   $60, $30 ;; BlockID, XY                       ;; 06:764a ??
+    db   $60, $31 ;; BlockID, XY                       ;; 06:764c ??
+    db   $60, $32 ;; BlockID, XY                       ;; 06:764e ??
+    db   $60, $33 ;; BlockID, XY                       ;; 06:7650 ??
+    db   $60, $34 ;; BlockID, XY                       ;; 06:7652 ??
+    db   $60, $35 ;; BlockID, XY                       ;; 06:7654 ??
+    db   $60, $36 ;; BlockID, XY                       ;; 06:7656 ??
+    db   $60, $37 ;; BlockID, XY                       ;; 06:7658 ??
+    db   $60, $38 ;; BlockID, XY                       ;; 06:765a ??
+    db   $60, $39 ;; BlockID, XY                       ;; 06:765c ??
+    db   $37, $40 ;; BlockID, XY                       ;; 06:765e ??
+    db   $16, $41 ;; BlockID, XY                       ;; 06:7660 ??
+    db   $01, $42 ;; BlockID, XY                       ;; 06:7662 ??
+    db   $01, $43 ;; BlockID, XY                       ;; 06:7664 ??
+    db   $05, $44 ;; BlockID, XY                       ;; 06:7666 ??
+    db   $63, $45 ;; BlockID, XY                       ;; 06:7668 ??
+    db   $1a, $47 ;; BlockID, XY                       ;; 06:766a ??
+    db   $3b, $49 ;; BlockID, XY                       ;; 06:766c ??
+    db   $10, $51 ;; BlockID, XY                       ;; 06:766e ??
+    db   $07, $52 ;; BlockID, XY                       ;; 06:7670 ??
+    db   $07, $53 ;; BlockID, XY                       ;; 06:7672 ??
+    db   $15, $54 ;; BlockID, XY                       ;; 06:7674 ??
+    db   $63, $55 ;; BlockID, XY                       ;; 06:7676 ??
+    db   $50, $61 ;; BlockID, XY                       ;; 06:7678 ??
+    db   $51, $62 ;; BlockID, XY                       ;; 06:767a ??
+    db   $54, $63 ;; BlockID, XY                       ;; 06:767c ??
+    db   $55, $64 ;; BlockID, XY                       ;; 06:767e ??
+    db   $63, $65 ;; BlockID, XY                       ;; 06:7680 ??
+    db   $48, $74 ;; BlockID, XY                       ;; 06:7682 ??
+    db   $63, $75 ;; BlockID, XY                       ;; 06:7684 ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7686 ??
 
 map0a_room04_05_script:
     dw   $008b                                         ;; 06:7688 $8b $00
     db   $ff                                           ;; 06:768a ?
 
 map0a_room04_05_tiles:
-    db   $02, $00, $02, $00, $17, $20, $4f, $24        ;; 06:768b ????????
-    db   $4f, $25, $4f, $26, $1b, $29, $60, $30        ;; 06:7693 ????????
-    db   $60, $31, $60, $32, $60, $33, $60, $34        ;; 06:769b ????????
-    db   $60, $35, $60, $36, $60, $37, $60, $38        ;; 06:76a3 ????????
-    db   $60, $39, $37, $40, $62, $45, $3b, $49        ;; 06:76ab ????????
-    db   $62, $55, $62, $65, $48, $74, $62, $75        ;; 06:76b3 ????????
-    db   $4a, $76, $ff, $ff                            ;; 06:76bb ????
+    db   $02, $00, $02, $00 ;; Door info               ;; 06:768b ????
+    db   $17, $20 ;; BlockID, XY                       ;; 06:768f ??
+    db   $4f, $24 ;; BlockID, XY                       ;; 06:7691 ??
+    db   $4f, $25 ;; BlockID, XY                       ;; 06:7693 ??
+    db   $4f, $26 ;; BlockID, XY                       ;; 06:7695 ??
+    db   $1b, $29 ;; BlockID, XY                       ;; 06:7697 ??
+    db   $60, $30 ;; BlockID, XY                       ;; 06:7699 ??
+    db   $60, $31 ;; BlockID, XY                       ;; 06:769b ??
+    db   $60, $32 ;; BlockID, XY                       ;; 06:769d ??
+    db   $60, $33 ;; BlockID, XY                       ;; 06:769f ??
+    db   $60, $34 ;; BlockID, XY                       ;; 06:76a1 ??
+    db   $60, $35 ;; BlockID, XY                       ;; 06:76a3 ??
+    db   $60, $36 ;; BlockID, XY                       ;; 06:76a5 ??
+    db   $60, $37 ;; BlockID, XY                       ;; 06:76a7 ??
+    db   $60, $38 ;; BlockID, XY                       ;; 06:76a9 ??
+    db   $60, $39 ;; BlockID, XY                       ;; 06:76ab ??
+    db   $37, $40 ;; BlockID, XY                       ;; 06:76ad ??
+    db   $62, $45 ;; BlockID, XY                       ;; 06:76af ??
+    db   $3b, $49 ;; BlockID, XY                       ;; 06:76b1 ??
+    db   $62, $55 ;; BlockID, XY                       ;; 06:76b3 ??
+    db   $62, $65 ;; BlockID, XY                       ;; 06:76b5 ??
+    db   $48, $74 ;; BlockID, XY                       ;; 06:76b7 ??
+    db   $62, $75 ;; BlockID, XY                       ;; 06:76b9 ??
+    db   $4a, $76 ;; BlockID, XY                       ;; 06:76bb ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:76bd ??
 
 map0a_room05_05_script:
     dw   $0151                                         ;; 06:76bf $51 $01
@@ -3821,82 +4299,164 @@ map0a_room05_05_script:
     db   $ff                                           ;; 06:76c4 ?
 
 map0a_room05_05_tiles:
-    db   $02, $00, $02, $02, $11, $18, $17, $20        ;; 06:76c5 ????????
-    db   $5f, $21, $60, $30, $37, $40, $5f, $41        ;; 06:76cd ????????
-    db   $ff, $ff                                      ;; 06:76d5 ??
+    db   $02, $00, $02, $02 ;; Door info               ;; 06:76c5 ????
+    db   $11, $18 ;; BlockID, XY                       ;; 06:76c9 ??
+    db   $17, $20 ;; BlockID, XY                       ;; 06:76cb ??
+    db   $5f, $21 ;; BlockID, XY                       ;; 06:76cd ??
+    db   $60, $30 ;; BlockID, XY                       ;; 06:76cf ??
+    db   $37, $40 ;; BlockID, XY                       ;; 06:76d1 ??
+    db   $5f, $41 ;; BlockID, XY                       ;; 06:76d3 ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:76d5 ??
 
 map0a_room06_05_script:
     dw   $ffff                                         ;; 06:76d7 $ff $ff
     db   $ff                                           ;; 06:76d9 ?
 
 map0a_room06_05_tiles:
-    db   $00, $00, $00, $00, $ff, $ff                  ;; 06:76da ??????
+    db   $00, $00, $00, $00 ;; Door info               ;; 06:76da ????
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:76de ??
 
 map0a_room00_06_script:
     dw   $ffff                                         ;; 06:76e0 $ff $ff
     db   $ff                                           ;; 06:76e2 ?
 
 map0a_room00_06_tiles:
-    db   $00, $00, $00, $00, $ff, $ff                  ;; 06:76e3 ??????
+    db   $00, $00, $00, $00 ;; Door info               ;; 06:76e3 ????
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:76e7 ??
 
 map0a_room01_06_script:
     dw   $008b                                         ;; 06:76e9 $8b $00
     db   $ff                                           ;; 06:76eb ?
 
 map0a_room01_06_tiles:
-    db   $00, $02, $00, $02, $08, $04, $63, $05        ;; 06:76ec ????????
-    db   $0a, $06, $63, $15, $63, $25, $1b, $29        ;; 06:76f4 ????????
-    db   $69, $35, $61, $36, $61, $37, $61, $38        ;; 06:76fc ????????
-    db   $61, $39, $3b, $49, $ff, $ff                  ;; 06:7704 ??????
+    db   $00, $02, $00, $02 ;; Door info               ;; 06:76ec ????
+    db   $08, $04 ;; BlockID, XY                       ;; 06:76f0 ??
+    db   $63, $05 ;; BlockID, XY                       ;; 06:76f2 ??
+    db   $0a, $06 ;; BlockID, XY                       ;; 06:76f4 ??
+    db   $63, $15 ;; BlockID, XY                       ;; 06:76f6 ??
+    db   $63, $25 ;; BlockID, XY                       ;; 06:76f8 ??
+    db   $1b, $29 ;; BlockID, XY                       ;; 06:76fa ??
+    db   $69, $35 ;; BlockID, XY                       ;; 06:76fc ??
+    db   $61, $36 ;; BlockID, XY                       ;; 06:76fe ??
+    db   $61, $37 ;; BlockID, XY                       ;; 06:7700 ??
+    db   $61, $38 ;; BlockID, XY                       ;; 06:7702 ??
+    db   $61, $39 ;; BlockID, XY                       ;; 06:7704 ??
+    db   $3b, $49 ;; BlockID, XY                       ;; 06:7706 ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7708 ??
 
 map0a_room02_06_script:
     dw   $03f4                                         ;; 06:770a $f4 $03
     db   $ff                                           ;; 06:770c ?
 
 map0a_room02_06_tiles:
-    db   $00, $00, $02, $00, $17, $20, $1a, $23        ;; 06:770d ????????
-    db   $1b, $29, $61, $30, $61, $31, $61, $32        ;; 06:7715 ????????
-    db   $61, $33, $61, $34, $61, $35, $61, $36        ;; 06:771d ????????
-    db   $61, $37, $61, $38, $61, $39, $37, $40        ;; 06:7725 ????????
-    db   $16, $41, $04, $42, $04, $43, $04, $44        ;; 06:772d ????????
-    db   $05, $45, $63, $46, $3b, $49, $10, $51        ;; 06:7735 ????????
-    db   $07, $52, $07, $53, $07, $54, $15, $55        ;; 06:773d ????????
-    db   $63, $56, $50, $61, $51, $62, $51, $63        ;; 06:7745 ????????
-    db   $54, $64, $55, $65, $63, $66, $51, $74        ;; 06:774d ????????
-    db   $48, $75, $63, $76, $4a, $77, $ff, $ff        ;; 06:7755 ????????
+    db   $00, $00, $02, $00 ;; Door info               ;; 06:770d ????
+    db   $17, $20 ;; BlockID, XY                       ;; 06:7711 ??
+    db   $1a, $23 ;; BlockID, XY                       ;; 06:7713 ??
+    db   $1b, $29 ;; BlockID, XY                       ;; 06:7715 ??
+    db   $61, $30 ;; BlockID, XY                       ;; 06:7717 ??
+    db   $61, $31 ;; BlockID, XY                       ;; 06:7719 ??
+    db   $61, $32 ;; BlockID, XY                       ;; 06:771b ??
+    db   $61, $33 ;; BlockID, XY                       ;; 06:771d ??
+    db   $61, $34 ;; BlockID, XY                       ;; 06:771f ??
+    db   $61, $35 ;; BlockID, XY                       ;; 06:7721 ??
+    db   $61, $36 ;; BlockID, XY                       ;; 06:7723 ??
+    db   $61, $37 ;; BlockID, XY                       ;; 06:7725 ??
+    db   $61, $38 ;; BlockID, XY                       ;; 06:7727 ??
+    db   $61, $39 ;; BlockID, XY                       ;; 06:7729 ??
+    db   $37, $40 ;; BlockID, XY                       ;; 06:772b ??
+    db   $16, $41 ;; BlockID, XY                       ;; 06:772d ??
+    db   $04, $42 ;; BlockID, XY                       ;; 06:772f ??
+    db   $04, $43 ;; BlockID, XY                       ;; 06:7731 ??
+    db   $04, $44 ;; BlockID, XY                       ;; 06:7733 ??
+    db   $05, $45 ;; BlockID, XY                       ;; 06:7735 ??
+    db   $63, $46 ;; BlockID, XY                       ;; 06:7737 ??
+    db   $3b, $49 ;; BlockID, XY                       ;; 06:7739 ??
+    db   $10, $51 ;; BlockID, XY                       ;; 06:773b ??
+    db   $07, $52 ;; BlockID, XY                       ;; 06:773d ??
+    db   $07, $53 ;; BlockID, XY                       ;; 06:773f ??
+    db   $07, $54 ;; BlockID, XY                       ;; 06:7741 ??
+    db   $15, $55 ;; BlockID, XY                       ;; 06:7743 ??
+    db   $63, $56 ;; BlockID, XY                       ;; 06:7745 ??
+    db   $50, $61 ;; BlockID, XY                       ;; 06:7747 ??
+    db   $51, $62 ;; BlockID, XY                       ;; 06:7749 ??
+    db   $51, $63 ;; BlockID, XY                       ;; 06:774b ??
+    db   $54, $64 ;; BlockID, XY                       ;; 06:774d ??
+    db   $55, $65 ;; BlockID, XY                       ;; 06:774f ??
+    db   $63, $66 ;; BlockID, XY                       ;; 06:7751 ??
+    db   $51, $74 ;; BlockID, XY                       ;; 06:7753 ??
+    db   $48, $75 ;; BlockID, XY                       ;; 06:7755 ??
+    db   $63, $76 ;; BlockID, XY                       ;; 06:7757 ??
+    db   $4a, $77 ;; BlockID, XY                       ;; 06:7759 ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:775b ??
 
 map0a_room03_06_script:
     dw   $008b                                         ;; 06:775d $8b $00
     db   $ff                                           ;; 06:775f ?
 
 map0a_room03_06_tiles:
-    db   $02, $00, $00, $00, $08, $04, $63, $05        ;; 06:7760 ????????
-    db   $0a, $06, $63, $15, $17, $20, $63, $25        ;; 06:7768 ????????
-    db   $61, $30, $61, $31, $61, $32, $61, $33        ;; 06:7770 ????????
-    db   $61, $34, $63, $35, $2c, $36, $37, $40        ;; 06:7778 ????????
-    db   $63, $45, $63, $55, $63, $65, $48, $74        ;; 06:7780 ????????
-    db   $63, $75, $4a, $76, $ff, $ff                  ;; 06:7788 ??????
+    db   $02, $00, $00, $00 ;; Door info               ;; 06:7760 ????
+    db   $08, $04 ;; BlockID, XY                       ;; 06:7764 ??
+    db   $63, $05 ;; BlockID, XY                       ;; 06:7766 ??
+    db   $0a, $06 ;; BlockID, XY                       ;; 06:7768 ??
+    db   $63, $15 ;; BlockID, XY                       ;; 06:776a ??
+    db   $17, $20 ;; BlockID, XY                       ;; 06:776c ??
+    db   $63, $25 ;; BlockID, XY                       ;; 06:776e ??
+    db   $61, $30 ;; BlockID, XY                       ;; 06:7770 ??
+    db   $61, $31 ;; BlockID, XY                       ;; 06:7772 ??
+    db   $61, $32 ;; BlockID, XY                       ;; 06:7774 ??
+    db   $61, $33 ;; BlockID, XY                       ;; 06:7776 ??
+    db   $61, $34 ;; BlockID, XY                       ;; 06:7778 ??
+    db   $63, $35 ;; BlockID, XY                       ;; 06:777a ??
+    db   $2c, $36 ;; BlockID, XY                       ;; 06:777c ??
+    db   $37, $40 ;; BlockID, XY                       ;; 06:777e ??
+    db   $63, $45 ;; BlockID, XY                       ;; 06:7780 ??
+    db   $63, $55 ;; BlockID, XY                       ;; 06:7782 ??
+    db   $63, $65 ;; BlockID, XY                       ;; 06:7784 ??
+    db   $48, $74 ;; BlockID, XY                       ;; 06:7786 ??
+    db   $63, $75 ;; BlockID, XY                       ;; 06:7788 ??
+    db   $4a, $76 ;; BlockID, XY                       ;; 06:778a ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:778c ??
 
 map0a_room04_06_script:
     dw   $003d                                         ;; 06:778e $3d $00
     db   $ff                                           ;; 06:7790 ?
 
 map0a_room04_06_tiles:
-    db   $02, $02, $00, $00, $08, $04, $62, $05        ;; 06:7791 ????????
-    db   $0a, $06, $62, $15, $41, $16, $41, $17        ;; 06:7799 ????????
-    db   $62, $25, $41, $28, $62, $35, $62, $45        ;; 06:77a1 ????????
-    db   $62, $55, $62, $65, $48, $74, $62, $75        ;; 06:77a9 ????????
-    db   $4a, $76, $ff, $ff                            ;; 06:77b1 ????
+    db   $02, $02, $00, $00 ;; Door info               ;; 06:7791 ????
+    db   $08, $04 ;; BlockID, XY                       ;; 06:7795 ??
+    db   $62, $05 ;; BlockID, XY                       ;; 06:7797 ??
+    db   $0a, $06 ;; BlockID, XY                       ;; 06:7799 ??
+    db   $62, $15 ;; BlockID, XY                       ;; 06:779b ??
+    db   $41, $16 ;; BlockID, XY                       ;; 06:779d ??
+    db   $41, $17 ;; BlockID, XY                       ;; 06:779f ??
+    db   $62, $25 ;; BlockID, XY                       ;; 06:77a1 ??
+    db   $41, $28 ;; BlockID, XY                       ;; 06:77a3 ??
+    db   $62, $35 ;; BlockID, XY                       ;; 06:77a5 ??
+    db   $62, $45 ;; BlockID, XY                       ;; 06:77a7 ??
+    db   $62, $55 ;; BlockID, XY                       ;; 06:77a9 ??
+    db   $62, $65 ;; BlockID, XY                       ;; 06:77ab ??
+    db   $48, $74 ;; BlockID, XY                       ;; 06:77ad ??
+    db   $62, $75 ;; BlockID, XY                       ;; 06:77af ??
+    db   $4a, $76 ;; BlockID, XY                       ;; 06:77b1 ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:77b3 ??
 
 map0a_room05_06_script:
     dw   $0112                                         ;; 06:77b5 $12 $01
     db   $ff                                           ;; 06:77b7 ?
 
 map0a_room05_06_tiles:
-    db   $00, $02, $02, $02, $0f, $11, $0f, $13        ;; 06:77b8 ????????
-    db   $2a, $18, $1f, $21, $1f, $23, $0d, $36        ;; 06:77c0 ????????
-    db   $0d, $45, $1d, $46, $0d, $47, $0d, $56        ;; 06:77c8 ????????
-    db   $ff, $ff                                      ;; 06:77d0 ??
+    db   $00, $02, $02, $02 ;; Door info               ;; 06:77b8 ????
+    db   $0f, $11 ;; BlockID, XY                       ;; 06:77bc ??
+    db   $0f, $13 ;; BlockID, XY                       ;; 06:77be ??
+    db   $2a, $18 ;; BlockID, XY                       ;; 06:77c0 ??
+    db   $1f, $21 ;; BlockID, XY                       ;; 06:77c2 ??
+    db   $1f, $23 ;; BlockID, XY                       ;; 06:77c4 ??
+    db   $0d, $36 ;; BlockID, XY                       ;; 06:77c6 ??
+    db   $0d, $45 ;; BlockID, XY                       ;; 06:77c8 ??
+    db   $1d, $46 ;; BlockID, XY                       ;; 06:77ca ??
+    db   $0d, $47 ;; BlockID, XY                       ;; 06:77cc ??
+    db   $0d, $56 ;; BlockID, XY                       ;; 06:77ce ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:77d0 ??
 
 map0a_room06_06_script:
     dw   $0115                                         ;; 06:77d2 $15 $01
@@ -3905,9 +4465,17 @@ map0a_room06_06_script:
     db   $ff                                           ;; 06:77d7 ?
 
 map0a_room06_06_tiles:
-    db   $02, $00, $02, $00, $11, $18, $44, $33        ;; 06:77d8 ????????
-    db   $44, $34, $44, $35, $44, $36, $44, $43        ;; 06:77e0 ????????
-    db   $44, $44, $44, $45, $44, $46, $ff, $ff        ;; 06:77e8 ????????
+    db   $02, $00, $02, $00 ;; Door info               ;; 06:77d8 ????
+    db   $11, $18 ;; BlockID, XY                       ;; 06:77dc ??
+    db   $44, $33 ;; BlockID, XY                       ;; 06:77de ??
+    db   $44, $34 ;; BlockID, XY                       ;; 06:77e0 ??
+    db   $44, $35 ;; BlockID, XY                       ;; 06:77e2 ??
+    db   $44, $36 ;; BlockID, XY                       ;; 06:77e4 ??
+    db   $44, $43 ;; BlockID, XY                       ;; 06:77e6 ??
+    db   $44, $44 ;; BlockID, XY                       ;; 06:77e8 ??
+    db   $44, $45 ;; BlockID, XY                       ;; 06:77ea ??
+    db   $44, $46 ;; BlockID, XY                       ;; 06:77ec ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:77ee ??
 
 map0a_room00_07_script:
     dw   $003d                                         ;; 06:77f0 $3d $00
@@ -3916,96 +4484,237 @@ map0a_room00_07_script:
     db   $ff                                           ;; 06:77f5 ?
 
 map0a_room00_07_tiles:
-    db   $00, $02, $02, $02, $16, $11, $01, $12        ;; 06:77f6 ????????
-    db   $01, $13, $04, $14, $05, $15, $10, $21        ;; 06:77fe ????????
-    db   $07, $22, $07, $23, $07, $24, $15, $25        ;; 06:7806 ????????
-    db   $10, $31, $07, $32, $07, $33, $07, $34        ;; 06:780e ????????
-    db   $15, $35, $15, $39, $40, $41, $07, $42        ;; 06:7816 ????????
-    db   $07, $43, $07, $44, $45, $45, $1b, $49        ;; 06:781e ????????
-    db   $40, $51, $07, $52, $07, $53, $07, $54        ;; 06:7826 ????????
-    db   $45, $55, $4f, $56, $46, $57, $60, $58        ;; 06:782e ????????
-    db   $60, $59, $50, $61, $51, $62, $51, $63        ;; 06:7836 ????????
-    db   $54, $64, $55, $65, $3b, $69, $ff, $ff        ;; 06:783e ????????
+    db   $00, $02, $02, $02 ;; Door info               ;; 06:77f6 ????
+    db   $16, $11 ;; BlockID, XY                       ;; 06:77fa ??
+    db   $01, $12 ;; BlockID, XY                       ;; 06:77fc ??
+    db   $01, $13 ;; BlockID, XY                       ;; 06:77fe ??
+    db   $04, $14 ;; BlockID, XY                       ;; 06:7800 ??
+    db   $05, $15 ;; BlockID, XY                       ;; 06:7802 ??
+    db   $10, $21 ;; BlockID, XY                       ;; 06:7804 ??
+    db   $07, $22 ;; BlockID, XY                       ;; 06:7806 ??
+    db   $07, $23 ;; BlockID, XY                       ;; 06:7808 ??
+    db   $07, $24 ;; BlockID, XY                       ;; 06:780a ??
+    db   $15, $25 ;; BlockID, XY                       ;; 06:780c ??
+    db   $10, $31 ;; BlockID, XY                       ;; 06:780e ??
+    db   $07, $32 ;; BlockID, XY                       ;; 06:7810 ??
+    db   $07, $33 ;; BlockID, XY                       ;; 06:7812 ??
+    db   $07, $34 ;; BlockID, XY                       ;; 06:7814 ??
+    db   $15, $35 ;; BlockID, XY                       ;; 06:7816 ??
+    db   $15, $39 ;; BlockID, XY                       ;; 06:7818 ??
+    db   $40, $41 ;; BlockID, XY                       ;; 06:781a ??
+    db   $07, $42 ;; BlockID, XY                       ;; 06:781c ??
+    db   $07, $43 ;; BlockID, XY                       ;; 06:781e ??
+    db   $07, $44 ;; BlockID, XY                       ;; 06:7820 ??
+    db   $45, $45 ;; BlockID, XY                       ;; 06:7822 ??
+    db   $1b, $49 ;; BlockID, XY                       ;; 06:7824 ??
+    db   $40, $51 ;; BlockID, XY                       ;; 06:7826 ??
+    db   $07, $52 ;; BlockID, XY                       ;; 06:7828 ??
+    db   $07, $53 ;; BlockID, XY                       ;; 06:782a ??
+    db   $07, $54 ;; BlockID, XY                       ;; 06:782c ??
+    db   $45, $55 ;; BlockID, XY                       ;; 06:782e ??
+    db   $4f, $56 ;; BlockID, XY                       ;; 06:7830 ??
+    db   $46, $57 ;; BlockID, XY                       ;; 06:7832 ??
+    db   $60, $58 ;; BlockID, XY                       ;; 06:7834 ??
+    db   $60, $59 ;; BlockID, XY                       ;; 06:7836 ??
+    db   $50, $61 ;; BlockID, XY                       ;; 06:7838 ??
+    db   $51, $62 ;; BlockID, XY                       ;; 06:783a ??
+    db   $51, $63 ;; BlockID, XY                       ;; 06:783c ??
+    db   $54, $64 ;; BlockID, XY                       ;; 06:783e ??
+    db   $55, $65 ;; BlockID, XY                       ;; 06:7840 ??
+    db   $3b, $69 ;; BlockID, XY                       ;; 06:7842 ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7844 ??
 
 map0a_room01_07_script:
     dw   $003d                                         ;; 06:7846 $3d $00
     db   $ff                                           ;; 06:7848 ?
 
 map0a_room01_07_tiles:
-    db   $00, $00, $02, $02, $44, $11, $44, $12        ;; 06:7849 ????????
-    db   $44, $13, $44, $21, $10, $30, $15, $39        ;; 06:7851 ????????
-    db   $17, $40, $1b, $49, $60, $50, $60, $51        ;; 06:7859 ????????
-    db   $60, $52, $60, $53, $60, $54, $60, $55        ;; 06:7861 ????????
-    db   $60, $56, $60, $57, $60, $58, $60, $59        ;; 06:7869 ????????
-    db   $37, $60, $44, $67, $44, $68, $3b, $69        ;; 06:7871 ????????
-    db   $ff, $ff                                      ;; 06:7879 ??
+    db   $00, $00, $02, $02 ;; Door info               ;; 06:7849 ????
+    db   $44, $11 ;; BlockID, XY                       ;; 06:784d ??
+    db   $44, $12 ;; BlockID, XY                       ;; 06:784f ??
+    db   $44, $13 ;; BlockID, XY                       ;; 06:7851 ??
+    db   $44, $21 ;; BlockID, XY                       ;; 06:7853 ??
+    db   $10, $30 ;; BlockID, XY                       ;; 06:7855 ??
+    db   $15, $39 ;; BlockID, XY                       ;; 06:7857 ??
+    db   $17, $40 ;; BlockID, XY                       ;; 06:7859 ??
+    db   $1b, $49 ;; BlockID, XY                       ;; 06:785b ??
+    db   $60, $50 ;; BlockID, XY                       ;; 06:785d ??
+    db   $60, $51 ;; BlockID, XY                       ;; 06:785f ??
+    db   $60, $52 ;; BlockID, XY                       ;; 06:7861 ??
+    db   $60, $53 ;; BlockID, XY                       ;; 06:7863 ??
+    db   $60, $54 ;; BlockID, XY                       ;; 06:7865 ??
+    db   $60, $55 ;; BlockID, XY                       ;; 06:7867 ??
+    db   $60, $56 ;; BlockID, XY                       ;; 06:7869 ??
+    db   $60, $57 ;; BlockID, XY                       ;; 06:786b ??
+    db   $60, $58 ;; BlockID, XY                       ;; 06:786d ??
+    db   $60, $59 ;; BlockID, XY                       ;; 06:786f ??
+    db   $37, $60 ;; BlockID, XY                       ;; 06:7871 ??
+    db   $44, $67 ;; BlockID, XY                       ;; 06:7873 ??
+    db   $44, $68 ;; BlockID, XY                       ;; 06:7875 ??
+    db   $3b, $69 ;; BlockID, XY                       ;; 06:7877 ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7879 ??
 
 map0a_room02_07_script:
     dw   $03f7                                         ;; 06:787b $f7 $03
     db   $ff                                           ;; 06:787d ?
 
 map0a_room02_07_tiles:
-    db   $00, $00, $00, $02, $01, $04, $08, $05        ;; 06:787e ????????
-    db   $63, $06, $0a, $07, $0b, $11, $0b, $12        ;; 06:7886 ????????
-    db   $0b, $13, $19, $14, $19, $15, $63, $16        ;; 06:788e ????????
-    db   $0b, $21, $0b, $22, $19, $23, $19, $24        ;; 06:7896 ????????
-    db   $63, $26, $1a, $27, $10, $30, $19, $31        ;; 06:789e ????????
-    db   $19, $32, $19, $33, $63, $36, $15, $39        ;; 06:78a6 ????????
-    db   $17, $40, $63, $46, $1b, $49, $60, $50        ;; 06:78ae ????????
-    db   $60, $51, $60, $52, $60, $53, $60, $54        ;; 06:78b6 ????????
-    db   $60, $55, $61, $56, $61, $57, $61, $58        ;; 06:78be ????????
-    db   $61, $59, $37, $60, $19, $67, $19, $68        ;; 06:78c6 ????????
-    db   $3b, $69, $ff, $ff                            ;; 06:78ce ????
+    db   $00, $00, $00, $02 ;; Door info               ;; 06:787e ????
+    db   $01, $04 ;; BlockID, XY                       ;; 06:7882 ??
+    db   $08, $05 ;; BlockID, XY                       ;; 06:7884 ??
+    db   $63, $06 ;; BlockID, XY                       ;; 06:7886 ??
+    db   $0a, $07 ;; BlockID, XY                       ;; 06:7888 ??
+    db   $0b, $11 ;; BlockID, XY                       ;; 06:788a ??
+    db   $0b, $12 ;; BlockID, XY                       ;; 06:788c ??
+    db   $0b, $13 ;; BlockID, XY                       ;; 06:788e ??
+    db   $19, $14 ;; BlockID, XY                       ;; 06:7890 ??
+    db   $19, $15 ;; BlockID, XY                       ;; 06:7892 ??
+    db   $63, $16 ;; BlockID, XY                       ;; 06:7894 ??
+    db   $0b, $21 ;; BlockID, XY                       ;; 06:7896 ??
+    db   $0b, $22 ;; BlockID, XY                       ;; 06:7898 ??
+    db   $19, $23 ;; BlockID, XY                       ;; 06:789a ??
+    db   $19, $24 ;; BlockID, XY                       ;; 06:789c ??
+    db   $63, $26 ;; BlockID, XY                       ;; 06:789e ??
+    db   $1a, $27 ;; BlockID, XY                       ;; 06:78a0 ??
+    db   $10, $30 ;; BlockID, XY                       ;; 06:78a2 ??
+    db   $19, $31 ;; BlockID, XY                       ;; 06:78a4 ??
+    db   $19, $32 ;; BlockID, XY                       ;; 06:78a6 ??
+    db   $19, $33 ;; BlockID, XY                       ;; 06:78a8 ??
+    db   $63, $36 ;; BlockID, XY                       ;; 06:78aa ??
+    db   $15, $39 ;; BlockID, XY                       ;; 06:78ac ??
+    db   $17, $40 ;; BlockID, XY                       ;; 06:78ae ??
+    db   $63, $46 ;; BlockID, XY                       ;; 06:78b0 ??
+    db   $1b, $49 ;; BlockID, XY                       ;; 06:78b2 ??
+    db   $60, $50 ;; BlockID, XY                       ;; 06:78b4 ??
+    db   $60, $51 ;; BlockID, XY                       ;; 06:78b6 ??
+    db   $60, $52 ;; BlockID, XY                       ;; 06:78b8 ??
+    db   $60, $53 ;; BlockID, XY                       ;; 06:78ba ??
+    db   $60, $54 ;; BlockID, XY                       ;; 06:78bc ??
+    db   $60, $55 ;; BlockID, XY                       ;; 06:78be ??
+    db   $61, $56 ;; BlockID, XY                       ;; 06:78c0 ??
+    db   $61, $57 ;; BlockID, XY                       ;; 06:78c2 ??
+    db   $61, $58 ;; BlockID, XY                       ;; 06:78c4 ??
+    db   $61, $59 ;; BlockID, XY                       ;; 06:78c6 ??
+    db   $37, $60 ;; BlockID, XY                       ;; 06:78c8 ??
+    db   $19, $67 ;; BlockID, XY                       ;; 06:78ca ??
+    db   $19, $68 ;; BlockID, XY                       ;; 06:78cc ??
+    db   $3b, $69 ;; BlockID, XY                       ;; 06:78ce ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:78d0 ??
 
 map0a_room03_07_script:
     dw   $003d                                         ;; 06:78d2 $3d $00
     db   $ff                                           ;; 06:78d4 ?
 
 map0a_room03_07_tiles:
-    db   $00, $00, $00, $02, $08, $04, $63, $05        ;; 06:78d5 ????????
-    db   $0a, $06, $63, $15, $63, $25, $10, $30        ;; 06:78dd ????????
-    db   $63, $35, $15, $39, $17, $40, $63, $45        ;; 06:78e5 ????????
-    db   $1b, $49, $61, $50, $61, $51, $61, $52        ;; 06:78ed ????????
-    db   $61, $53, $61, $54, $61, $55, $61, $56        ;; 06:78f5 ????????
-    db   $61, $57, $61, $58, $61, $59, $37, $60        ;; 06:78fd ????????
-    db   $2c, $64, $2c, $65, $2c, $66, $3b, $69        ;; 06:7905 ????????
-    db   $ff, $ff                                      ;; 06:790d ??
+    db   $00, $00, $00, $02 ;; Door info               ;; 06:78d5 ????
+    db   $08, $04 ;; BlockID, XY                       ;; 06:78d9 ??
+    db   $63, $05 ;; BlockID, XY                       ;; 06:78db ??
+    db   $0a, $06 ;; BlockID, XY                       ;; 06:78dd ??
+    db   $63, $15 ;; BlockID, XY                       ;; 06:78df ??
+    db   $63, $25 ;; BlockID, XY                       ;; 06:78e1 ??
+    db   $10, $30 ;; BlockID, XY                       ;; 06:78e3 ??
+    db   $63, $35 ;; BlockID, XY                       ;; 06:78e5 ??
+    db   $15, $39 ;; BlockID, XY                       ;; 06:78e7 ??
+    db   $17, $40 ;; BlockID, XY                       ;; 06:78e9 ??
+    db   $63, $45 ;; BlockID, XY                       ;; 06:78eb ??
+    db   $1b, $49 ;; BlockID, XY                       ;; 06:78ed ??
+    db   $61, $50 ;; BlockID, XY                       ;; 06:78ef ??
+    db   $61, $51 ;; BlockID, XY                       ;; 06:78f1 ??
+    db   $61, $52 ;; BlockID, XY                       ;; 06:78f3 ??
+    db   $61, $53 ;; BlockID, XY                       ;; 06:78f5 ??
+    db   $61, $54 ;; BlockID, XY                       ;; 06:78f7 ??
+    db   $61, $55 ;; BlockID, XY                       ;; 06:78f9 ??
+    db   $61, $56 ;; BlockID, XY                       ;; 06:78fb ??
+    db   $61, $57 ;; BlockID, XY                       ;; 06:78fd ??
+    db   $61, $58 ;; BlockID, XY                       ;; 06:78ff ??
+    db   $61, $59 ;; BlockID, XY                       ;; 06:7901 ??
+    db   $37, $60 ;; BlockID, XY                       ;; 06:7903 ??
+    db   $2c, $64 ;; BlockID, XY                       ;; 06:7905 ??
+    db   $2c, $65 ;; BlockID, XY                       ;; 06:7907 ??
+    db   $2c, $66 ;; BlockID, XY                       ;; 06:7909 ??
+    db   $3b, $69 ;; BlockID, XY                       ;; 06:790b ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:790d ??
 
 map0a_room04_07_script:
     dw   $008b                                         ;; 06:790f $8b $00
     db   $ff                                           ;; 06:7911 ?
 
 map0a_room04_07_tiles:
-    db   $02, $00, $00, $02, $08, $04, $62, $05        ;; 06:7912 ????????
-    db   $0a, $06, $16, $11, $01, $12, $01, $13        ;; 06:791a ????????
-    db   $05, $14, $62, $15, $10, $21, $07, $22        ;; 06:7922 ????????
-    db   $07, $23, $45, $24, $62, $25, $10, $30        ;; 06:792a ????????
-    db   $40, $31, $07, $32, $07, $33, $45, $34        ;; 06:7932 ????????
-    db   $62, $35, $17, $40, $50, $41, $51, $42        ;; 06:793a ????????
-    db   $54, $43, $55, $44, $62, $45, $61, $50        ;; 06:7942 ????????
-    db   $61, $51, $61, $52, $61, $53, $61, $54        ;; 06:794a ????????
-    db   $68, $55, $37, $60, $ff, $ff                  ;; 06:7952 ??????
+    db   $02, $00, $00, $02 ;; Door info               ;; 06:7912 ????
+    db   $08, $04 ;; BlockID, XY                       ;; 06:7916 ??
+    db   $62, $05 ;; BlockID, XY                       ;; 06:7918 ??
+    db   $0a, $06 ;; BlockID, XY                       ;; 06:791a ??
+    db   $16, $11 ;; BlockID, XY                       ;; 06:791c ??
+    db   $01, $12 ;; BlockID, XY                       ;; 06:791e ??
+    db   $01, $13 ;; BlockID, XY                       ;; 06:7920 ??
+    db   $05, $14 ;; BlockID, XY                       ;; 06:7922 ??
+    db   $62, $15 ;; BlockID, XY                       ;; 06:7924 ??
+    db   $10, $21 ;; BlockID, XY                       ;; 06:7926 ??
+    db   $07, $22 ;; BlockID, XY                       ;; 06:7928 ??
+    db   $07, $23 ;; BlockID, XY                       ;; 06:792a ??
+    db   $45, $24 ;; BlockID, XY                       ;; 06:792c ??
+    db   $62, $25 ;; BlockID, XY                       ;; 06:792e ??
+    db   $10, $30 ;; BlockID, XY                       ;; 06:7930 ??
+    db   $40, $31 ;; BlockID, XY                       ;; 06:7932 ??
+    db   $07, $32 ;; BlockID, XY                       ;; 06:7934 ??
+    db   $07, $33 ;; BlockID, XY                       ;; 06:7936 ??
+    db   $45, $34 ;; BlockID, XY                       ;; 06:7938 ??
+    db   $62, $35 ;; BlockID, XY                       ;; 06:793a ??
+    db   $17, $40 ;; BlockID, XY                       ;; 06:793c ??
+    db   $50, $41 ;; BlockID, XY                       ;; 06:793e ??
+    db   $51, $42 ;; BlockID, XY                       ;; 06:7940 ??
+    db   $54, $43 ;; BlockID, XY                       ;; 06:7942 ??
+    db   $55, $44 ;; BlockID, XY                       ;; 06:7944 ??
+    db   $62, $45 ;; BlockID, XY                       ;; 06:7946 ??
+    db   $61, $50 ;; BlockID, XY                       ;; 06:7948 ??
+    db   $61, $51 ;; BlockID, XY                       ;; 06:794a ??
+    db   $61, $52 ;; BlockID, XY                       ;; 06:794c ??
+    db   $61, $53 ;; BlockID, XY                       ;; 06:794e ??
+    db   $61, $54 ;; BlockID, XY                       ;; 06:7950 ??
+    db   $68, $55 ;; BlockID, XY                       ;; 06:7952 ??
+    db   $37, $60 ;; BlockID, XY                       ;; 06:7954 ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7956 ??
 
 map0a_room05_07_script:
     dw   $0118                                         ;; 06:7958 $18 $01
     db   $ff                                           ;; 06:795a ?
 
 map0a_room05_07_tiles:
-    db   $00, $02, $02, $02, $2a, $11, $0d, $26        ;; 06:795b ????????
-    db   $0d, $33, $0d, $35, $1d, $36, $0d, $37        ;; 06:7963 ????????
-    db   $0d, $42, $1d, $43, $0d, $44, $0d, $46        ;; 06:796b ????????
-    db   $0d, $53, $ff, $ff                            ;; 06:7973 ????
+    db   $00, $02, $02, $02 ;; Door info               ;; 06:795b ????
+    db   $2a, $11 ;; BlockID, XY                       ;; 06:795f ??
+    db   $0d, $26 ;; BlockID, XY                       ;; 06:7961 ??
+    db   $0d, $33 ;; BlockID, XY                       ;; 06:7963 ??
+    db   $0d, $35 ;; BlockID, XY                       ;; 06:7965 ??
+    db   $1d, $36 ;; BlockID, XY                       ;; 06:7967 ??
+    db   $0d, $37 ;; BlockID, XY                       ;; 06:7969 ??
+    db   $0d, $42 ;; BlockID, XY                       ;; 06:796b ??
+    db   $1d, $43 ;; BlockID, XY                       ;; 06:796d ??
+    db   $0d, $44 ;; BlockID, XY                       ;; 06:796f ??
+    db   $0d, $46 ;; BlockID, XY                       ;; 06:7971 ??
+    db   $0d, $53 ;; BlockID, XY                       ;; 06:7973 ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7975 ??
 
 map0a_room06_07_script:
     dw   $011b                                         ;; 06:7977 $1b $01
     db   $ff                                           ;; 06:7979 ?
 
 map0a_room06_07_tiles:
-    db   $02, $00, $00, $02, $2a, $11, $2a, $12        ;; 06:797a ????????
-    db   $0d, $25, $0d, $26, $0d, $27, $0d, $28        ;; 06:7982 ????????
-    db   $2d, $35, $2e, $36, $2e, $37, $2f, $38        ;; 06:798a ????????
-    db   $0d, $45, $0d, $46, $0d, $47, $0d, $48        ;; 06:7992 ????????
-    db   $ff, $ff                                      ;; 06:799a ??
+    db   $02, $00, $00, $02 ;; Door info               ;; 06:797a ????
+    db   $2a, $11 ;; BlockID, XY                       ;; 06:797e ??
+    db   $2a, $12 ;; BlockID, XY                       ;; 06:7980 ??
+    db   $0d, $25 ;; BlockID, XY                       ;; 06:7982 ??
+    db   $0d, $26 ;; BlockID, XY                       ;; 06:7984 ??
+    db   $0d, $27 ;; BlockID, XY                       ;; 06:7986 ??
+    db   $0d, $28 ;; BlockID, XY                       ;; 06:7988 ??
+    db   $2d, $35 ;; BlockID, XY                       ;; 06:798a ??
+    db   $2e, $36 ;; BlockID, XY                       ;; 06:798c ??
+    db   $2e, $37 ;; BlockID, XY                       ;; 06:798e ??
+    db   $2f, $38 ;; BlockID, XY                       ;; 06:7990 ??
+    db   $0d, $45 ;; BlockID, XY                       ;; 06:7992 ??
+    db   $0d, $46 ;; BlockID, XY                       ;; 06:7994 ??
+    db   $0d, $47 ;; BlockID, XY                       ;; 06:7996 ??
+    db   $0d, $48 ;; BlockID, XY                       ;; 06:7998 ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:799a ??
 
 mapRoomPointers_08:
     db   $01, $04, $08, $07                            ;; 06:799c ????
@@ -4143,68 +4852,106 @@ map08_room00_00_script:
     db   $ff                                           ;; 06:7acb ?
 
 map08_room00_00_tiles:
-    db   $02, $02, $02, $01, $11, $11, $2c, $14        ;; 06:7acc ????????
-    db   $2c, $15, $2c, $23, $2c, $31, $2c, $32        ;; 06:7ad4 ????????
-    db   $ff, $ff                                      ;; 06:7adc ??
+    db   $02, $02, $02, $01 ;; Door info               ;; 06:7acc ????
+    db   $11, $11 ;; BlockID, XY                       ;; 06:7ad0 ??
+    db   $2c, $14 ;; BlockID, XY                       ;; 06:7ad2 ??
+    db   $2c, $15 ;; BlockID, XY                       ;; 06:7ad4 ??
+    db   $2c, $23 ;; BlockID, XY                       ;; 06:7ad6 ??
+    db   $2c, $31 ;; BlockID, XY                       ;; 06:7ad8 ??
+    db   $2c, $32 ;; BlockID, XY                       ;; 06:7ada ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7adc ??
 
 map08_room01_00_script:
     dw   $03d0                                         ;; 06:7ade $d0 $03
     db   $ff                                           ;; 06:7ae0 ?
 
 map08_room01_00_tiles:
-    db   $00, $00, $02, $01, $44, $34, $44, $35        ;; 06:7ae1 ????????
-    db   $44, $44, $44, $45, $ff, $ff                  ;; 06:7ae9 ??????
+    db   $00, $00, $02, $01 ;; Door info               ;; 06:7ae1 ????
+    db   $44, $34 ;; BlockID, XY                       ;; 06:7ae5 ??
+    db   $44, $35 ;; BlockID, XY                       ;; 06:7ae7 ??
+    db   $44, $44 ;; BlockID, XY                       ;; 06:7ae9 ??
+    db   $44, $45 ;; BlockID, XY                       ;; 06:7aeb ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7aed ??
 
 map08_room02_00_script:
     dw   $00a3                                         ;; 06:7aef $a3 $00
     db   $ff                                           ;; 06:7af1 ?
 
 map08_room02_00_tiles:
-    db   $05, $00, $02, $02, $5c, $25, $5c, $26        ;; 06:7af2 ????????
-    db   $5c, $37, $5c, $42, $5c, $53, $5c, $54        ;; 06:7afa ????????
-    db   $ff, $ff                                      ;; 06:7b02 ??
+    db   $05, $00, $02, $02 ;; Door info               ;; 06:7af2 ????
+    db   $5c, $25 ;; BlockID, XY                       ;; 06:7af6 ??
+    db   $5c, $26 ;; BlockID, XY                       ;; 06:7af8 ??
+    db   $5c, $37 ;; BlockID, XY                       ;; 06:7afa ??
+    db   $5c, $42 ;; BlockID, XY                       ;; 06:7afc ??
+    db   $5c, $53 ;; BlockID, XY                       ;; 06:7afe ??
+    db   $5c, $54 ;; BlockID, XY                       ;; 06:7b00 ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7b02 ??
 
 map08_room03_00_script:
     dw   $00a0                                         ;; 06:7b04 $a0 $00
     db   $ff                                           ;; 06:7b06 ?
 
 map08_room03_00_tiles:
-    db   $00, $01, $02, $02, $5c, $15, $5c, $25        ;; 06:7b07 ????????
-    db   $5c, $36, $5c, $46, $5c, $55, $5c, $65        ;; 06:7b0f ????????
-    db   $ff, $ff                                      ;; 06:7b17 ??
+    db   $00, $01, $02, $02 ;; Door info               ;; 06:7b07 ????
+    db   $5c, $15 ;; BlockID, XY                       ;; 06:7b0b ??
+    db   $5c, $25 ;; BlockID, XY                       ;; 06:7b0d ??
+    db   $5c, $36 ;; BlockID, XY                       ;; 06:7b0f ??
+    db   $5c, $46 ;; BlockID, XY                       ;; 06:7b11 ??
+    db   $5c, $55 ;; BlockID, XY                       ;; 06:7b13 ??
+    db   $5c, $65 ;; BlockID, XY                       ;; 06:7b15 ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7b17 ??
 
 map08_room04_00_script:
     dw   $00a6                                         ;; 06:7b19 $a6 $00
     db   $ff                                           ;; 06:7b1b ?
 
 map08_room04_00_tiles:
-    db   $02, $00, $02, $00, $2c, $33, $2c, $36        ;; 06:7b1c ????????
-    db   $2c, $43, $2c, $46, $ff, $ff                  ;; 06:7b24 ??????
+    db   $02, $00, $02, $00 ;; Door info               ;; 06:7b1c ????
+    db   $2c, $33 ;; BlockID, XY                       ;; 06:7b20 ??
+    db   $2c, $36 ;; BlockID, XY                       ;; 06:7b22 ??
+    db   $2c, $43 ;; BlockID, XY                       ;; 06:7b24 ??
+    db   $2c, $46 ;; BlockID, XY                       ;; 06:7b26 ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7b28 ??
 
 map08_room05_00_script:
     dw   $ffff                                         ;; 06:7b2a $ff $ff
     db   $ff                                           ;; 06:7b2c ?
 
 map08_room05_00_tiles:
-    db   $00, $00, $00, $00, $ff, $ff                  ;; 06:7b2d ??????
+    db   $00, $00, $00, $00 ;; Door info               ;; 06:7b2d ????
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7b31 ??
 
 map08_room06_00_script:
     dw   $ffff                                         ;; 06:7b33 $ff $ff
     db   $ff                                           ;; 06:7b35 ?
 
 map08_room06_00_tiles:
-    db   $00, $00, $00, $00, $ff, $ff                  ;; 06:7b36 ??????
+    db   $00, $00, $00, $00 ;; Door info               ;; 06:7b36 ????
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7b3a ??
 
 map08_room00_01_script:
     dw   $01b8                                         ;; 06:7b3c $b8 $01
     db   $ff                                           ;; 06:7b3e ?
 
 map08_room00_01_tiles:
-    db   $02, $02, $09, $01, $28, $11, $28, $12        ;; 06:7b3f ????????
-    db   $28, $13, $28, $14, $28, $15, $28, $16        ;; 06:7b47 ????????
-    db   $28, $17, $28, $18, $28, $22, $28, $23        ;; 06:7b4f ????????
-    db   $28, $24, $28, $25, $28, $26, $28, $27        ;; 06:7b57 ????????
-    db   $28, $34, $28, $35, $ff, $ff                  ;; 06:7b5f ??????
+    db   $02, $02, $09, $01 ;; Door info               ;; 06:7b3f ????
+    db   $28, $11 ;; BlockID, XY                       ;; 06:7b43 ??
+    db   $28, $12 ;; BlockID, XY                       ;; 06:7b45 ??
+    db   $28, $13 ;; BlockID, XY                       ;; 06:7b47 ??
+    db   $28, $14 ;; BlockID, XY                       ;; 06:7b49 ??
+    db   $28, $15 ;; BlockID, XY                       ;; 06:7b4b ??
+    db   $28, $16 ;; BlockID, XY                       ;; 06:7b4d ??
+    db   $28, $17 ;; BlockID, XY                       ;; 06:7b4f ??
+    db   $28, $18 ;; BlockID, XY                       ;; 06:7b51 ??
+    db   $28, $22 ;; BlockID, XY                       ;; 06:7b53 ??
+    db   $28, $23 ;; BlockID, XY                       ;; 06:7b55 ??
+    db   $28, $24 ;; BlockID, XY                       ;; 06:7b57 ??
+    db   $28, $25 ;; BlockID, XY                       ;; 06:7b59 ??
+    db   $28, $26 ;; BlockID, XY                       ;; 06:7b5b ??
+    db   $28, $27 ;; BlockID, XY                       ;; 06:7b5d ??
+    db   $28, $34 ;; BlockID, XY                       ;; 06:7b5f ??
+    db   $28, $35 ;; BlockID, XY                       ;; 06:7b61 ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7b63 ??
 
 map08_room01_01_script:
     dw   $04ed                                         ;; 06:7b65 $ed $04
@@ -4219,33 +4966,50 @@ map08_room01_01_script:
     db   $ff                                           ;; 06:7b73 ?
 
 map08_room01_01_tiles:
-    db   $00, $02, $09, $02, $4e, $22, $4e, $27        ;; 06:7b74 ????????
-    db   $4e, $52, $4e, $57, $ff, $ff                  ;; 06:7b7c ??????
+    db   $00, $02, $09, $02 ;; Door info               ;; 06:7b74 ????
+    db   $4e, $22 ;; BlockID, XY                       ;; 06:7b78 ??
+    db   $4e, $27 ;; BlockID, XY                       ;; 06:7b7a ??
+    db   $4e, $52 ;; BlockID, XY                       ;; 06:7b7c ??
+    db   $4e, $57 ;; BlockID, XY                       ;; 06:7b7e ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7b80 ??
 
 map08_room02_01_script:
     dw   $00a3                                         ;; 06:7b82 $a3 $00
     db   $ff                                           ;; 06:7b84 ?
 
 map08_room02_01_tiles:
-    db   $02, $00, $02, $00, $09, $42, $09, $43        ;; 06:7b85 ????????
-    db   $09, $44, $09, $51, $09, $52, $09, $53        ;; 06:7b8d ????????
-    db   $09, $54, $09, $61, $09, $62, $09, $63        ;; 06:7b95 ????????
-    db   $ff, $ff                                      ;; 06:7b9d ??
+    db   $02, $00, $02, $00 ;; Door info               ;; 06:7b85 ????
+    db   $09, $42 ;; BlockID, XY                       ;; 06:7b89 ??
+    db   $09, $43 ;; BlockID, XY                       ;; 06:7b8b ??
+    db   $09, $44 ;; BlockID, XY                       ;; 06:7b8d ??
+    db   $09, $51 ;; BlockID, XY                       ;; 06:7b8f ??
+    db   $09, $52 ;; BlockID, XY                       ;; 06:7b91 ??
+    db   $09, $53 ;; BlockID, XY                       ;; 06:7b93 ??
+    db   $09, $54 ;; BlockID, XY                       ;; 06:7b95 ??
+    db   $09, $61 ;; BlockID, XY                       ;; 06:7b97 ??
+    db   $09, $62 ;; BlockID, XY                       ;; 06:7b99 ??
+    db   $09, $63 ;; BlockID, XY                       ;; 06:7b9b ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7b9d ??
 
 map08_room03_01_script:
     dw   $ffff                                         ;; 06:7b9f $ff $ff
     db   $ff                                           ;; 06:7ba1 ?
 
 map08_room03_01_tiles:
-    db   $00, $00, $00, $00, $ff, $ff                  ;; 06:7ba2 ??????
+    db   $00, $00, $00, $00 ;; Door info               ;; 06:7ba2 ????
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7ba6 ??
 
 map08_room04_01_script:
     dw   $00a3                                         ;; 06:7ba8 $a3 $00
     db   $ff                                           ;; 06:7baa ?
 
 map08_room04_01_tiles:
-    db   $02, $02, $00, $00, $5c, $23, $5c, $26        ;; 06:7bab ????????
-    db   $5c, $34, $5c, $35, $ff, $ff                  ;; 06:7bb3 ??????
+    db   $02, $02, $00, $00 ;; Door info               ;; 06:7bab ????
+    db   $5c, $23 ;; BlockID, XY                       ;; 06:7baf ??
+    db   $5c, $26 ;; BlockID, XY                       ;; 06:7bb1 ??
+    db   $5c, $34 ;; BlockID, XY                       ;; 06:7bb3 ??
+    db   $5c, $35 ;; BlockID, XY                       ;; 06:7bb5 ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7bb7 ??
 
 map08_room05_01_script:
     dw   $008b                                         ;; 06:7bb9 $8b $00
@@ -4254,65 +5018,100 @@ map08_room05_01_script:
     db   $ff                                           ;; 06:7bbe ?
 
 map08_room05_01_tiles:
-    db   $02, $02, $02, $00, $4f, $14, $11, $18        ;; 06:7bbf ????????
-    db   $4f, $25, $4f, $26, $4f, $37, $4f, $43        ;; 06:7bc7 ????????
-    db   $4f, $54, $4f, $55, $4f, $66, $ff, $ff        ;; 06:7bcf ????????
+    db   $02, $02, $02, $00 ;; Door info               ;; 06:7bbf ????
+    db   $4f, $14 ;; BlockID, XY                       ;; 06:7bc3 ??
+    db   $11, $18 ;; BlockID, XY                       ;; 06:7bc5 ??
+    db   $4f, $25 ;; BlockID, XY                       ;; 06:7bc7 ??
+    db   $4f, $26 ;; BlockID, XY                       ;; 06:7bc9 ??
+    db   $4f, $37 ;; BlockID, XY                       ;; 06:7bcb ??
+    db   $4f, $43 ;; BlockID, XY                       ;; 06:7bcd ??
+    db   $4f, $54 ;; BlockID, XY                       ;; 06:7bcf ??
+    db   $4f, $55 ;; BlockID, XY                       ;; 06:7bd1 ??
+    db   $4f, $66 ;; BlockID, XY                       ;; 06:7bd3 ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7bd5 ??
 
 map08_room06_01_script:
     dw   $ffff                                         ;; 06:7bd7 $ff $ff
     db   $ff                                           ;; 06:7bd9 ?
 
 map08_room06_01_tiles:
-    db   $00, $00, $00, $00, $ff, $ff                  ;; 06:7bda ??????
+    db   $00, $00, $00, $00 ;; Door info               ;; 06:7bda ????
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7bde ??
 
 map08_room00_02_script:
     dw   $03d0                                         ;; 06:7be0 $d0 $03
     db   $ff                                           ;; 06:7be2 ?
 
 map08_room00_02_tiles:
-    db   $00, $00, $05, $00, $0c, $13, $0c, $16        ;; 06:7be3 ????????
-    db   $1c, $23, $1c, $26, $ff, $ff                  ;; 06:7beb ??????
+    db   $00, $00, $05, $00 ;; Door info               ;; 06:7be3 ????
+    db   $0c, $13 ;; BlockID, XY                       ;; 06:7be7 ??
+    db   $0c, $16 ;; BlockID, XY                       ;; 06:7be9 ??
+    db   $1c, $23 ;; BlockID, XY                       ;; 06:7beb ??
+    db   $1c, $26 ;; BlockID, XY                       ;; 06:7bed ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7bef ??
 
 map08_room01_02_script:
     dw   $00a3                                         ;; 06:7bf1 $a3 $00
     db   $ff                                           ;; 06:7bf3 ?
 
 map08_room01_02_tiles:
-    db   $00, $00, $02, $02, $4f, $32, $4f, $37        ;; 06:7bf4 ????????
-    db   $4f, $42, $4f, $47, $ff, $ff                  ;; 06:7bfc ??????
+    db   $00, $00, $02, $02 ;; Door info               ;; 06:7bf4 ????
+    db   $4f, $32 ;; BlockID, XY                       ;; 06:7bf8 ??
+    db   $4f, $37 ;; BlockID, XY                       ;; 06:7bfa ??
+    db   $4f, $42 ;; BlockID, XY                       ;; 06:7bfc ??
+    db   $4f, $47 ;; BlockID, XY                       ;; 06:7bfe ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7c00 ??
 
 map08_room02_02_script:
     dw   $0199                                         ;; 06:7c02 $99 $01
     db   $ff                                           ;; 06:7c04 ?
 
 map08_room02_02_tiles:
-    db   $02, $00, $02, $02, $5b, $11, $5b, $12        ;; 06:7c05 ????????
-    db   $5b, $17, $5b, $18, $5b, $21, $5b, $28        ;; 06:7c0d ????????
-    db   $ff, $ff                                      ;; 06:7c15 ??
+    db   $02, $00, $02, $02 ;; Door info               ;; 06:7c05 ????
+    db   $5b, $11 ;; BlockID, XY                       ;; 06:7c09 ??
+    db   $5b, $12 ;; BlockID, XY                       ;; 06:7c0b ??
+    db   $5b, $17 ;; BlockID, XY                       ;; 06:7c0d ??
+    db   $5b, $18 ;; BlockID, XY                       ;; 06:7c0f ??
+    db   $5b, $21 ;; BlockID, XY                       ;; 06:7c11 ??
+    db   $5b, $28 ;; BlockID, XY                       ;; 06:7c13 ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7c15 ??
 
 map08_room03_02_script:
     dw   $ffff                                         ;; 06:7c17 $ff $ff
     db   $ff                                           ;; 06:7c19 ?
 
 map08_room03_02_tiles:
-    db   $00, $00, $00, $00, $ff, $ff                  ;; 06:7c1a ??????
+    db   $00, $00, $00, $00 ;; Door info               ;; 06:7c1a ????
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7c1e ??
 
 map08_room04_02_script:
     dw   $0094                                         ;; 06:7c20 $94 $00
     db   $ff                                           ;; 06:7c22 ?
 
 map08_room04_02_tiles:
-    db   $02, $02, $00, $00, $4a, $33, $51, $34        ;; 06:7c23 ????????
-    db   $54, $35, $48, $36, $0a, $43, $01, $44        ;; 06:7c2b ????????
-    db   $04, $45, $08, $46, $ff, $ff                  ;; 06:7c33 ??????
+    db   $02, $02, $00, $00 ;; Door info               ;; 06:7c23 ????
+    db   $4a, $33 ;; BlockID, XY                       ;; 06:7c27 ??
+    db   $51, $34 ;; BlockID, XY                       ;; 06:7c29 ??
+    db   $54, $35 ;; BlockID, XY                       ;; 06:7c2b ??
+    db   $48, $36 ;; BlockID, XY                       ;; 06:7c2d ??
+    db   $0a, $43 ;; BlockID, XY                       ;; 06:7c2f ??
+    db   $01, $44 ;; BlockID, XY                       ;; 06:7c31 ??
+    db   $04, $45 ;; BlockID, XY                       ;; 06:7c33 ??
+    db   $08, $46 ;; BlockID, XY                       ;; 06:7c35 ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7c37 ??
 
 map08_room05_02_script:
     dw   $008b                                         ;; 06:7c39 $8b $00
     db   $ff                                           ;; 06:7c3b ?
 
 map08_room05_02_tiles:
-    db   $00, $02, $00, $02, $4f, $27, $4f, $28        ;; 06:7c3c ????????
-    db   $4f, $36, $4f, $46, $4f, $55, $ff, $ff        ;; 06:7c44 ????????
+    db   $00, $02, $00, $02 ;; Door info               ;; 06:7c3c ????
+    db   $4f, $27 ;; BlockID, XY                       ;; 06:7c40 ??
+    db   $4f, $28 ;; BlockID, XY                       ;; 06:7c42 ??
+    db   $4f, $36 ;; BlockID, XY                       ;; 06:7c44 ??
+    db   $4f, $46 ;; BlockID, XY                       ;; 06:7c46 ??
+    db   $4f, $55 ;; BlockID, XY                       ;; 06:7c48 ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7c4a ??
 
 map08_room06_02_script:
     dw   $008b                                         ;; 06:7c4c $8b $00
@@ -4321,9 +5120,17 @@ map08_room06_02_script:
     db   $ff                                           ;; 06:7c51 ?
 
 map08_room06_02_tiles:
-    db   $02, $00, $02, $02, $05, $06, $16, $07        ;; 06:7c52 ????????
-    db   $15, $16, $10, $17, $11, $18, $15, $26        ;; 06:7c5a ????????
-    db   $10, $27, $1b, $36, $17, $37, $ff, $ff        ;; 06:7c62 ????????
+    db   $02, $00, $02, $02 ;; Door info               ;; 06:7c52 ????
+    db   $05, $06 ;; BlockID, XY                       ;; 06:7c56 ??
+    db   $16, $07 ;; BlockID, XY                       ;; 06:7c58 ??
+    db   $15, $16 ;; BlockID, XY                       ;; 06:7c5a ??
+    db   $10, $17 ;; BlockID, XY                       ;; 06:7c5c ??
+    db   $11, $18 ;; BlockID, XY                       ;; 06:7c5e ??
+    db   $15, $26 ;; BlockID, XY                       ;; 06:7c60 ??
+    db   $10, $27 ;; BlockID, XY                       ;; 06:7c62 ??
+    db   $1b, $36 ;; BlockID, XY                       ;; 06:7c64 ??
+    db   $17, $37 ;; BlockID, XY                       ;; 06:7c66 ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7c68 ??
 
 map08_room00_03_script:
     dw   $03ee                                         ;; 06:7c6a $ee $03
@@ -4332,9 +5139,15 @@ map08_room00_03_script:
     db   $ff                                           ;; 06:7c6f ?
 
 map08_room00_03_tiles:
-    db   $00, $00, $00, $02, $41, $18, $41, $22        ;; 06:7c70 ????????
-    db   $2c, $34, $2c, $35, $02, $44, $2c, $45        ;; 06:7c78 ????????
-    db   $41, $57, $ff, $ff                            ;; 06:7c80 ????
+    db   $00, $00, $00, $02 ;; Door info               ;; 06:7c70 ????
+    db   $41, $18 ;; BlockID, XY                       ;; 06:7c74 ??
+    db   $41, $22 ;; BlockID, XY                       ;; 06:7c76 ??
+    db   $2c, $34 ;; BlockID, XY                       ;; 06:7c78 ??
+    db   $2c, $35 ;; BlockID, XY                       ;; 06:7c7a ??
+    db   $02, $44 ;; BlockID, XY                       ;; 06:7c7c ??
+    db   $2c, $45 ;; BlockID, XY                       ;; 06:7c7e ??
+    db   $41, $57 ;; BlockID, XY                       ;; 06:7c80 ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7c82 ??
 
 map08_room01_03_script:
     dw   $007f                                         ;; 06:7c84 $7f $00
@@ -4345,48 +5158,88 @@ map08_room01_03_script:
     db   $ff                                           ;; 06:7c8c ?
 
 map08_room01_03_tiles:
-    db   $09, $02, $02, $00, $59, $11, $4e, $21        ;; 06:7c8d ????????
-    db   $5a, $22, $5a, $27, $56, $31, $56, $41        ;; 06:7c95 ????????
-    db   $4e, $51, $5a, $52, $5e, $54, $5a, $57        ;; 06:7c9d ????????
-    db   $56, $61, $ff, $ff                            ;; 06:7ca5 ????
+    db   $09, $02, $02, $00 ;; Door info               ;; 06:7c8d ????
+    db   $59, $11 ;; BlockID, XY                       ;; 06:7c91 ??
+    db   $4e, $21 ;; BlockID, XY                       ;; 06:7c93 ??
+    db   $5a, $22 ;; BlockID, XY                       ;; 06:7c95 ??
+    db   $5a, $27 ;; BlockID, XY                       ;; 06:7c97 ??
+    db   $56, $31 ;; BlockID, XY                       ;; 06:7c99 ??
+    db   $56, $41 ;; BlockID, XY                       ;; 06:7c9b ??
+    db   $4e, $51 ;; BlockID, XY                       ;; 06:7c9d ??
+    db   $5a, $52 ;; BlockID, XY                       ;; 06:7c9f ??
+    db   $5e, $54 ;; BlockID, XY                       ;; 06:7ca1 ??
+    db   $5a, $57 ;; BlockID, XY                       ;; 06:7ca3 ??
+    db   $56, $61 ;; BlockID, XY                       ;; 06:7ca5 ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7ca7 ??
 
 map08_room02_03_script:
     dw   $0425                                         ;; 06:7ca9 $25 $04
     db   $ff                                           ;; 06:7cab ?
 
 map08_room02_03_tiles:
-    db   $02, $01, $02, $02, $28, $21, $28, $31        ;; 06:7cac ????????
-    db   $28, $32, $28, $41, $28, $42, $28, $51        ;; 06:7cb4 ????????
-    db   $ff, $ff                                      ;; 06:7cbc ??
+    db   $02, $01, $02, $02 ;; Door info               ;; 06:7cac ????
+    db   $28, $21 ;; BlockID, XY                       ;; 06:7cb0 ??
+    db   $28, $31 ;; BlockID, XY                       ;; 06:7cb2 ??
+    db   $28, $32 ;; BlockID, XY                       ;; 06:7cb4 ??
+    db   $28, $41 ;; BlockID, XY                       ;; 06:7cb6 ??
+    db   $28, $42 ;; BlockID, XY                       ;; 06:7cb8 ??
+    db   $28, $51 ;; BlockID, XY                       ;; 06:7cba ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7cbc ??
 
 map08_room03_03_script:
     dw   $009a                                         ;; 06:7cbe $9a $00
     db   $ff                                           ;; 06:7cc0 ?
 
 map08_room03_03_tiles:
-    db   $02, $02, $02, $01, $41, $22, $41, $34        ;; 06:7cc1 ????????
-    db   $41, $67, $ff, $ff                            ;; 06:7cc9 ????
+    db   $02, $02, $02, $01 ;; Door info               ;; 06:7cc1 ????
+    db   $41, $22 ;; BlockID, XY                       ;; 06:7cc5 ??
+    db   $41, $34 ;; BlockID, XY                       ;; 06:7cc7 ??
+    db   $41, $67 ;; BlockID, XY                       ;; 06:7cc9 ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7ccb ??
 
 map08_room04_03_script:
     dw   $03d0                                         ;; 06:7ccd $d0 $03
     db   $ff                                           ;; 06:7ccf ?
 
 map08_room04_03_tiles:
-    db   $00, $00, $00, $02, $44, $34, $44, $35        ;; 06:7cd0 ????????
-    db   $44, $44, $44, $45, $ff, $ff                  ;; 06:7cd8 ??????
+    db   $00, $00, $00, $02 ;; Door info               ;; 06:7cd0 ????
+    db   $44, $34 ;; BlockID, XY                       ;; 06:7cd4 ??
+    db   $44, $35 ;; BlockID, XY                       ;; 06:7cd6 ??
+    db   $44, $44 ;; BlockID, XY                       ;; 06:7cd8 ??
+    db   $44, $45 ;; BlockID, XY                       ;; 06:7cda ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7cdc ??
 
 map08_room05_03_script:
     dw   $00a3                                         ;; 06:7cde $a3 $00
     db   $ff                                           ;; 06:7ce0 ?
 
 map08_room05_03_tiles:
-    db   $00, $00, $02, $02, $16, $13, $01, $14        ;; 06:7ce1 ????????
-    db   $04, $15, $05, $16, $10, $23, $0b, $24        ;; 06:7ce9 ????????
-    db   $0b, $25, $15, $26, $29, $33, $29, $34        ;; 06:7cf1 ????????
-    db   $29, $35, $29, $36, $40, $43, $0b, $44        ;; 06:7cf9 ????????
-    db   $0b, $45, $45, $46, $40, $53, $0b, $54        ;; 06:7d01 ????????
-    db   $0b, $55, $45, $56, $50, $63, $51, $64        ;; 06:7d09 ????????
-    db   $54, $65, $55, $66, $ff, $ff                  ;; 06:7d11 ??????
+    db   $00, $00, $02, $02 ;; Door info               ;; 06:7ce1 ????
+    db   $16, $13 ;; BlockID, XY                       ;; 06:7ce5 ??
+    db   $01, $14 ;; BlockID, XY                       ;; 06:7ce7 ??
+    db   $04, $15 ;; BlockID, XY                       ;; 06:7ce9 ??
+    db   $05, $16 ;; BlockID, XY                       ;; 06:7ceb ??
+    db   $10, $23 ;; BlockID, XY                       ;; 06:7ced ??
+    db   $0b, $24 ;; BlockID, XY                       ;; 06:7cef ??
+    db   $0b, $25 ;; BlockID, XY                       ;; 06:7cf1 ??
+    db   $15, $26 ;; BlockID, XY                       ;; 06:7cf3 ??
+    db   $29, $33 ;; BlockID, XY                       ;; 06:7cf5 ??
+    db   $29, $34 ;; BlockID, XY                       ;; 06:7cf7 ??
+    db   $29, $35 ;; BlockID, XY                       ;; 06:7cf9 ??
+    db   $29, $36 ;; BlockID, XY                       ;; 06:7cfb ??
+    db   $40, $43 ;; BlockID, XY                       ;; 06:7cfd ??
+    db   $0b, $44 ;; BlockID, XY                       ;; 06:7cff ??
+    db   $0b, $45 ;; BlockID, XY                       ;; 06:7d01 ??
+    db   $45, $46 ;; BlockID, XY                       ;; 06:7d03 ??
+    db   $40, $53 ;; BlockID, XY                       ;; 06:7d05 ??
+    db   $0b, $54 ;; BlockID, XY                       ;; 06:7d07 ??
+    db   $0b, $55 ;; BlockID, XY                       ;; 06:7d09 ??
+    db   $45, $56 ;; BlockID, XY                       ;; 06:7d0b ??
+    db   $50, $63 ;; BlockID, XY                       ;; 06:7d0d ??
+    db   $51, $64 ;; BlockID, XY                       ;; 06:7d0f ??
+    db   $54, $65 ;; BlockID, XY                       ;; 06:7d11 ??
+    db   $55, $66 ;; BlockID, XY                       ;; 06:7d13 ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7d15 ??
 
 map08_room06_03_script:
     dw   $00a3                                         ;; 06:7d17 $a3 $00
@@ -4395,24 +5248,35 @@ map08_room06_03_script:
     db   $ff                                           ;; 06:7d1c ?
 
 map08_room06_03_tiles:
-    db   $02, $00, $02, $02, $5a, $24, $5a, $25        ;; 06:7d1d ????????
-    db   $5a, $33, $11, $35, $5a, $43, $5a, $54        ;; 06:7d25 ????????
-    db   $5a, $55, $ff, $ff                            ;; 06:7d2d ????
+    db   $02, $00, $02, $02 ;; Door info               ;; 06:7d1d ????
+    db   $5a, $24 ;; BlockID, XY                       ;; 06:7d21 ??
+    db   $5a, $25 ;; BlockID, XY                       ;; 06:7d23 ??
+    db   $5a, $33 ;; BlockID, XY                       ;; 06:7d25 ??
+    db   $11, $35 ;; BlockID, XY                       ;; 06:7d27 ??
+    db   $5a, $43 ;; BlockID, XY                       ;; 06:7d29 ??
+    db   $5a, $54 ;; BlockID, XY                       ;; 06:7d2b ??
+    db   $5a, $55 ;; BlockID, XY                       ;; 06:7d2d ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7d2f ??
 
 map08_room00_04_script:
     dw   $0097                                         ;; 06:7d31 $97 $00
     db   $ff                                           ;; 06:7d33 ?
 
 map08_room00_04_tiles:
-    db   $00, $02, $02, $05, $4f, $43, $4f, $44        ;; 06:7d34 ????????
-    db   $4f, $55, $4f, $66, $ff, $ff                  ;; 06:7d3c ??????
+    db   $00, $02, $02, $05 ;; Door info               ;; 06:7d34 ????
+    db   $4f, $43 ;; BlockID, XY                       ;; 06:7d38 ??
+    db   $4f, $44 ;; BlockID, XY                       ;; 06:7d3a ??
+    db   $4f, $55 ;; BlockID, XY                       ;; 06:7d3c ??
+    db   $4f, $66 ;; BlockID, XY                       ;; 06:7d3e ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7d40 ??
 
 map08_room01_04_script:
     dw   $0097                                         ;; 06:7d42 $97 $00
     db   $ff                                           ;; 06:7d44 ?
 
 map08_room01_04_tiles:
-    db   $02, $00, $05, $00, $ff, $ff                  ;; 06:7d45 ??????
+    db   $02, $00, $05, $00 ;; Door info               ;; 06:7d45 ????
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7d49 ??
 
 map08_room02_04_script:
     dw   $0085                                         ;; 06:7d4b $85 $00
@@ -4421,27 +5285,48 @@ map08_room02_04_script:
     db   $ff                                           ;; 06:7d50 ?
 
 map08_room02_04_tiles:
-    db   $02, $02, $02, $00, $0d, $12, $02, $18        ;; 06:7d51 ????????
-    db   $0d, $21, $1d, $22, $0d, $23, $0d, $32        ;; 06:7d59 ????????
-    db   $41, $35, $41, $44, $ff, $ff                  ;; 06:7d61 ??????
+    db   $02, $02, $02, $00 ;; Door info               ;; 06:7d51 ????
+    db   $0d, $12 ;; BlockID, XY                       ;; 06:7d55 ??
+    db   $02, $18 ;; BlockID, XY                       ;; 06:7d57 ??
+    db   $0d, $21 ;; BlockID, XY                       ;; 06:7d59 ??
+    db   $1d, $22 ;; BlockID, XY                       ;; 06:7d5b ??
+    db   $0d, $23 ;; BlockID, XY                       ;; 06:7d5d ??
+    db   $0d, $32 ;; BlockID, XY                       ;; 06:7d5f ??
+    db   $41, $35 ;; BlockID, XY                       ;; 06:7d61 ??
+    db   $41, $44 ;; BlockID, XY                       ;; 06:7d63 ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7d65 ??
 
 map08_room03_04_script:
     dw   $0097                                         ;; 06:7d67 $97 $00
     db   $ff                                           ;; 06:7d69 ?
 
 map08_room03_04_tiles:
-    db   $01, $02, $01, $01, $28, $16, $28, $17        ;; 06:7d6a ????????
-    db   $28, $18, $28, $26, $28, $56, $28, $66        ;; 06:7d72 ????????
-    db   $28, $67, $28, $68, $ff, $ff                  ;; 06:7d7a ??????
+    db   $01, $02, $01, $01 ;; Door info               ;; 06:7d6a ????
+    db   $28, $16 ;; BlockID, XY                       ;; 06:7d6e ??
+    db   $28, $17 ;; BlockID, XY                       ;; 06:7d70 ??
+    db   $28, $18 ;; BlockID, XY                       ;; 06:7d72 ??
+    db   $28, $26 ;; BlockID, XY                       ;; 06:7d74 ??
+    db   $28, $56 ;; BlockID, XY                       ;; 06:7d76 ??
+    db   $28, $66 ;; BlockID, XY                       ;; 06:7d78 ??
+    db   $28, $67 ;; BlockID, XY                       ;; 06:7d7a ??
+    db   $28, $68 ;; BlockID, XY                       ;; 06:7d7c ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7d7e ??
 
 map08_room04_04_script:
     dw   $009a                                         ;; 06:7d80 $9a $00
     db   $ff                                           ;; 06:7d82 ?
 
 map08_room04_04_tiles:
-    db   $00, $01, $02, $01, $3b, $26, $37, $27        ;; 06:7d83 ????????
-    db   $15, $36, $10, $37, $15, $46, $40, $47        ;; 06:7d8b ????????
-    db   $1b, $56, $17, $57, $ff, $ff                  ;; 06:7d93 ??????
+    db   $00, $01, $02, $01 ;; Door info               ;; 06:7d83 ????
+    db   $3b, $26 ;; BlockID, XY                       ;; 06:7d87 ??
+    db   $37, $27 ;; BlockID, XY                       ;; 06:7d89 ??
+    db   $15, $36 ;; BlockID, XY                       ;; 06:7d8b ??
+    db   $10, $37 ;; BlockID, XY                       ;; 06:7d8d ??
+    db   $15, $46 ;; BlockID, XY                       ;; 06:7d8f ??
+    db   $40, $47 ;; BlockID, XY                       ;; 06:7d91 ??
+    db   $1b, $56 ;; BlockID, XY                       ;; 06:7d93 ??
+    db   $17, $57 ;; BlockID, XY                       ;; 06:7d95 ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7d97 ??
 
 map08_room05_04_script:
     dw   $0097                                         ;; 06:7d99 $97 $00
@@ -4450,36 +5335,58 @@ map08_room05_04_script:
     db   $ff                                           ;; 06:7d9e ?
 
 map08_room05_04_tiles:
-    db   $00, $00, $02, $01, $28, $15, $28, $16        ;; 06:7d9f ????????
-    db   $28, $17, $11, $18, $28, $27, $28, $28        ;; 06:7da7 ????????
-    db   $ff, $ff                                      ;; 06:7daf ??
+    db   $00, $00, $02, $01 ;; Door info               ;; 06:7d9f ????
+    db   $28, $15 ;; BlockID, XY                       ;; 06:7da3 ??
+    db   $28, $16 ;; BlockID, XY                       ;; 06:7da5 ??
+    db   $28, $17 ;; BlockID, XY                       ;; 06:7da7 ??
+    db   $11, $18 ;; BlockID, XY                       ;; 06:7da9 ??
+    db   $28, $27 ;; BlockID, XY                       ;; 06:7dab ??
+    db   $28, $28 ;; BlockID, XY                       ;; 06:7dad ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7daf ??
 
 map08_room06_04_script:
     dw   $009a                                         ;; 06:7db1 $9a $00
     db   $ff                                           ;; 06:7db3 ?
 
 map08_room06_04_tiles:
-    db   $02, $00, $02, $01, $41, $26, $41, $33        ;; 06:7db4 ????????
-    db   $41, $51, $ff, $ff                            ;; 06:7dbc ????
+    db   $02, $00, $02, $01 ;; Door info               ;; 06:7db4 ????
+    db   $41, $26 ;; BlockID, XY                       ;; 06:7db8 ??
+    db   $41, $33 ;; BlockID, XY                       ;; 06:7dba ??
+    db   $41, $51 ;; BlockID, XY                       ;; 06:7dbc ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7dbe ??
 
 map08_room00_05_script:
     dw   $00d9                                         ;; 06:7dc0 $d9 $00
     db   $ff                                           ;; 06:7dc2 ?
 
 map08_room00_05_tiles:
-    db   $02, $02, $09, $02, $41, $23, $41, $55        ;; 06:7dc3 ????????
-    db   $41, $67, $ff, $ff                            ;; 06:7dcb ????
+    db   $02, $02, $09, $02 ;; Door info               ;; 06:7dc3 ????
+    db   $41, $23 ;; BlockID, XY                       ;; 06:7dc7 ??
+    db   $41, $55 ;; BlockID, XY                       ;; 06:7dc9 ??
+    db   $41, $67 ;; BlockID, XY                       ;; 06:7dcb ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7dcd ??
 
 map08_room01_05_script:
     dw   $008e                                         ;; 06:7dcf $8e $00
     db   $ff                                           ;; 06:7dd1 ?
 
 map08_room01_05_tiles:
-    db   $02, $02, $00, $01, $50, $30, $51, $31        ;; 06:7dd2 ????????
-    db   $51, $32, $51, $33, $51, $34, $51, $35        ;; 06:7dda ????????
-    db   $48, $36, $16, $40, $01, $41, $01, $42        ;; 06:7de2 ????????
-    db   $01, $43, $01, $44, $01, $45, $08, $46        ;; 06:7dea ????????
-    db   $ff, $ff                                      ;; 06:7df2 ??
+    db   $02, $02, $00, $01 ;; Door info               ;; 06:7dd2 ????
+    db   $50, $30 ;; BlockID, XY                       ;; 06:7dd6 ??
+    db   $51, $31 ;; BlockID, XY                       ;; 06:7dd8 ??
+    db   $51, $32 ;; BlockID, XY                       ;; 06:7dda ??
+    db   $51, $33 ;; BlockID, XY                       ;; 06:7ddc ??
+    db   $51, $34 ;; BlockID, XY                       ;; 06:7dde ??
+    db   $51, $35 ;; BlockID, XY                       ;; 06:7de0 ??
+    db   $48, $36 ;; BlockID, XY                       ;; 06:7de2 ??
+    db   $16, $40 ;; BlockID, XY                       ;; 06:7de4 ??
+    db   $01, $41 ;; BlockID, XY                       ;; 06:7de6 ??
+    db   $01, $42 ;; BlockID, XY                       ;; 06:7de8 ??
+    db   $01, $43 ;; BlockID, XY                       ;; 06:7dea ??
+    db   $01, $44 ;; BlockID, XY                       ;; 06:7dec ??
+    db   $01, $45 ;; BlockID, XY                       ;; 06:7dee ??
+    db   $08, $46 ;; BlockID, XY                       ;; 06:7df0 ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7df2 ??
 
 map08_room02_05_script:
     dw   $008b                                         ;; 06:7df4 $8b $00
@@ -4488,67 +5395,122 @@ map08_room02_05_script:
     db   $ff                                           ;; 06:7df9 ?
 
 map08_room02_05_tiles:
-    db   $02, $02, $09, $00, $4e, $11, $19, $12        ;; 06:7dfa ????????
-    db   $19, $13, $19, $14, $19, $15, $19, $16        ;; 06:7e02 ????????
-    db   $19, $17, $19, $18, $19, $21, $19, $28        ;; 06:7e0a ????????
-    db   $56, $31, $56, $32, $56, $33, $56, $34        ;; 06:7e12 ????????
-    db   $56, $35, $56, $36, $56, $37, $57, $38        ;; 06:7e1a ????????
-    db   $19, $41, $19, $48, $19, $51, $19, $58        ;; 06:7e22 ????????
-    db   $19, $61, $19, $62, $19, $63, $19, $64        ;; 06:7e2a ????????
-    db   $19, $65, $19, $66, $19, $67, $19, $68        ;; 06:7e32 ????????
-    db   $ff, $ff                                      ;; 06:7e3a ??
+    db   $02, $02, $09, $00 ;; Door info               ;; 06:7dfa ????
+    db   $4e, $11 ;; BlockID, XY                       ;; 06:7dfe ??
+    db   $19, $12 ;; BlockID, XY                       ;; 06:7e00 ??
+    db   $19, $13 ;; BlockID, XY                       ;; 06:7e02 ??
+    db   $19, $14 ;; BlockID, XY                       ;; 06:7e04 ??
+    db   $19, $15 ;; BlockID, XY                       ;; 06:7e06 ??
+    db   $19, $16 ;; BlockID, XY                       ;; 06:7e08 ??
+    db   $19, $17 ;; BlockID, XY                       ;; 06:7e0a ??
+    db   $19, $18 ;; BlockID, XY                       ;; 06:7e0c ??
+    db   $19, $21 ;; BlockID, XY                       ;; 06:7e0e ??
+    db   $19, $28 ;; BlockID, XY                       ;; 06:7e10 ??
+    db   $56, $31 ;; BlockID, XY                       ;; 06:7e12 ??
+    db   $56, $32 ;; BlockID, XY                       ;; 06:7e14 ??
+    db   $56, $33 ;; BlockID, XY                       ;; 06:7e16 ??
+    db   $56, $34 ;; BlockID, XY                       ;; 06:7e18 ??
+    db   $56, $35 ;; BlockID, XY                       ;; 06:7e1a ??
+    db   $56, $36 ;; BlockID, XY                       ;; 06:7e1c ??
+    db   $56, $37 ;; BlockID, XY                       ;; 06:7e1e ??
+    db   $57, $38 ;; BlockID, XY                       ;; 06:7e20 ??
+    db   $19, $41 ;; BlockID, XY                       ;; 06:7e22 ??
+    db   $19, $48 ;; BlockID, XY                       ;; 06:7e24 ??
+    db   $19, $51 ;; BlockID, XY                       ;; 06:7e26 ??
+    db   $19, $58 ;; BlockID, XY                       ;; 06:7e28 ??
+    db   $19, $61 ;; BlockID, XY                       ;; 06:7e2a ??
+    db   $19, $62 ;; BlockID, XY                       ;; 06:7e2c ??
+    db   $19, $63 ;; BlockID, XY                       ;; 06:7e2e ??
+    db   $19, $64 ;; BlockID, XY                       ;; 06:7e30 ??
+    db   $19, $65 ;; BlockID, XY                       ;; 06:7e32 ??
+    db   $19, $66 ;; BlockID, XY                       ;; 06:7e34 ??
+    db   $19, $67 ;; BlockID, XY                       ;; 06:7e36 ??
+    db   $19, $68 ;; BlockID, XY                       ;; 06:7e38 ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7e3a ??
 
 map08_room03_05_script:
     dw   $009a                                         ;; 06:7e3c $9a $00
     db   $ff                                           ;; 06:7e3e ?
 
 map08_room03_05_tiles:
-    db   $01, $02, $01, $02, $2a, $11, $2a, $18        ;; 06:7e3f ????????
-    db   $2a, $21, $2a, $51, $2a, $61, $2a, $68        ;; 06:7e47 ????????
-    db   $ff, $ff                                      ;; 06:7e4f ??
+    db   $01, $02, $01, $02 ;; Door info               ;; 06:7e3f ????
+    db   $2a, $11 ;; BlockID, XY                       ;; 06:7e43 ??
+    db   $2a, $18 ;; BlockID, XY                       ;; 06:7e45 ??
+    db   $2a, $21 ;; BlockID, XY                       ;; 06:7e47 ??
+    db   $2a, $51 ;; BlockID, XY                       ;; 06:7e49 ??
+    db   $2a, $61 ;; BlockID, XY                       ;; 06:7e4b ??
+    db   $2a, $68 ;; BlockID, XY                       ;; 06:7e4d ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7e4f ??
 
 map08_room04_05_script:
     dw   $008e                                         ;; 06:7e51 $8e $00
     db   $ff                                           ;; 06:7e53 ?
 
 map08_room04_05_tiles:
-    db   $00, $01, $01, $02, $5a, $11, $5a, $18        ;; 06:7e54 ????????
-    db   $5a, $23, $5a, $26, $5a, $53, $5a, $56        ;; 06:7e5c ????????
-    db   $5a, $61, $5a, $68, $ff, $ff                  ;; 06:7e64 ??????
+    db   $00, $01, $01, $02 ;; Door info               ;; 06:7e54 ????
+    db   $5a, $11 ;; BlockID, XY                       ;; 06:7e58 ??
+    db   $5a, $18 ;; BlockID, XY                       ;; 06:7e5a ??
+    db   $5a, $23 ;; BlockID, XY                       ;; 06:7e5c ??
+    db   $5a, $26 ;; BlockID, XY                       ;; 06:7e5e ??
+    db   $5a, $53 ;; BlockID, XY                       ;; 06:7e60 ??
+    db   $5a, $56 ;; BlockID, XY                       ;; 06:7e62 ??
+    db   $5a, $61 ;; BlockID, XY                       ;; 06:7e64 ??
+    db   $5a, $68 ;; BlockID, XY                       ;; 06:7e66 ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7e68 ??
 
 map08_room05_05_script:
     dw   $0139                                         ;; 06:7e6a $39 $01
     db   $ff                                           ;; 06:7e6c ?
 
 map08_room05_05_tiles:
-    db   $00, $00, $01, $02, $4f, $32, $4f, $37        ;; 06:7e6d ????????
-    db   $4f, $42, $4f, $47, $19, $61, $19, $62        ;; 06:7e75 ????????
-    db   $19, $63, $19, $66, $19, $67, $19, $68        ;; 06:7e7d ????????
-    db   $ff, $ff                                      ;; 06:7e85 ??
+    db   $00, $00, $01, $02 ;; Door info               ;; 06:7e6d ????
+    db   $4f, $32 ;; BlockID, XY                       ;; 06:7e71 ??
+    db   $4f, $37 ;; BlockID, XY                       ;; 06:7e73 ??
+    db   $4f, $42 ;; BlockID, XY                       ;; 06:7e75 ??
+    db   $4f, $47 ;; BlockID, XY                       ;; 06:7e77 ??
+    db   $19, $61 ;; BlockID, XY                       ;; 06:7e79 ??
+    db   $19, $62 ;; BlockID, XY                       ;; 06:7e7b ??
+    db   $19, $63 ;; BlockID, XY                       ;; 06:7e7d ??
+    db   $19, $66 ;; BlockID, XY                       ;; 06:7e7f ??
+    db   $19, $67 ;; BlockID, XY                       ;; 06:7e81 ??
+    db   $19, $68 ;; BlockID, XY                       ;; 06:7e83 ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7e85 ??
 
 map08_room06_05_script:
     dw   $0097                                         ;; 06:7e87 $97 $00
     db   $ff                                           ;; 06:7e89 ?
 
 map08_room06_05_tiles:
-    db   $02, $00, $01, $02, $ff, $ff                  ;; 06:7e8a ??????
+    db   $02, $00, $01, $02 ;; Door info               ;; 06:7e8a ????
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7e8e ??
 
 map08_room00_06_script:
     dw   $03e5                                         ;; 06:7e90 $e5 $03
     db   $ff                                           ;; 06:7e92 ?
 
 map08_room00_06_tiles:
-    db   $01, $02, $02, $02, $09, $24, $09, $25        ;; 06:7e93 ????????
-    db   $09, $34, $09, $35, $09, $44, $09, $45        ;; 06:7e9b ????????
-    db   $09, $54, $09, $55, $ff, $ff                  ;; 06:7ea3 ??????
+    db   $01, $02, $02, $02 ;; Door info               ;; 06:7e93 ????
+    db   $09, $24 ;; BlockID, XY                       ;; 06:7e97 ??
+    db   $09, $25 ;; BlockID, XY                       ;; 06:7e99 ??
+    db   $09, $34 ;; BlockID, XY                       ;; 06:7e9b ??
+    db   $09, $35 ;; BlockID, XY                       ;; 06:7e9d ??
+    db   $09, $44 ;; BlockID, XY                       ;; 06:7e9f ??
+    db   $09, $45 ;; BlockID, XY                       ;; 06:7ea1 ??
+    db   $09, $54 ;; BlockID, XY                       ;; 06:7ea3 ??
+    db   $09, $55 ;; BlockID, XY                       ;; 06:7ea5 ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7ea7 ??
 
 map08_room01_06_script:
     dw   $009a                                         ;; 06:7ea9 $9a $00
     db   $ff                                           ;; 06:7eab ?
 
 map08_room01_06_tiles:
-    db   $02, $05, $01, $01, $4f, $25, $4f, $33        ;; 06:7eac ????????
-    db   $4f, $46, $4f, $54, $ff, $ff                  ;; 06:7eb4 ??????
+    db   $02, $05, $01, $01 ;; Door info               ;; 06:7eac ????
+    db   $4f, $25 ;; BlockID, XY                       ;; 06:7eb0 ??
+    db   $4f, $33 ;; BlockID, XY                       ;; 06:7eb2 ??
+    db   $4f, $46 ;; BlockID, XY                       ;; 06:7eb4 ??
+    db   $4f, $54 ;; BlockID, XY                       ;; 06:7eb6 ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7eb8 ??
 
 map08_room02_06_script:
     dw   $03fd                                         ;; 06:7eba $fd $03
@@ -4557,84 +5519,155 @@ map08_room02_06_script:
     db   $ff                                           ;; 06:7ebf ?
 
 map08_room02_06_tiles:
-    db   $02, $02, $09, $00, $4e, $11, $19, $12        ;; 06:7ec0 ????????
-    db   $19, $13, $19, $14, $19, $15, $19, $16        ;; 06:7ec8 ????????
-    db   $19, $17, $19, $18, $19, $21, $19, $28        ;; 06:7ed0 ????????
-    db   $56, $31, $56, $32, $56, $33, $56, $34        ;; 06:7ed8 ????????
-    db   $56, $35, $56, $36, $56, $37, $57, $38        ;; 06:7ee0 ????????
-    db   $19, $41, $19, $48, $19, $51, $19, $58        ;; 06:7ee8 ????????
-    db   $19, $61, $19, $62, $19, $63, $19, $64        ;; 06:7ef0 ????????
-    db   $19, $65, $19, $66, $19, $67, $19, $68        ;; 06:7ef8 ????????
-    db   $ff, $ff                                      ;; 06:7f00 ??
+    db   $02, $02, $09, $00 ;; Door info               ;; 06:7ec0 ????
+    db   $4e, $11 ;; BlockID, XY                       ;; 06:7ec4 ??
+    db   $19, $12 ;; BlockID, XY                       ;; 06:7ec6 ??
+    db   $19, $13 ;; BlockID, XY                       ;; 06:7ec8 ??
+    db   $19, $14 ;; BlockID, XY                       ;; 06:7eca ??
+    db   $19, $15 ;; BlockID, XY                       ;; 06:7ecc ??
+    db   $19, $16 ;; BlockID, XY                       ;; 06:7ece ??
+    db   $19, $17 ;; BlockID, XY                       ;; 06:7ed0 ??
+    db   $19, $18 ;; BlockID, XY                       ;; 06:7ed2 ??
+    db   $19, $21 ;; BlockID, XY                       ;; 06:7ed4 ??
+    db   $19, $28 ;; BlockID, XY                       ;; 06:7ed6 ??
+    db   $56, $31 ;; BlockID, XY                       ;; 06:7ed8 ??
+    db   $56, $32 ;; BlockID, XY                       ;; 06:7eda ??
+    db   $56, $33 ;; BlockID, XY                       ;; 06:7edc ??
+    db   $56, $34 ;; BlockID, XY                       ;; 06:7ede ??
+    db   $56, $35 ;; BlockID, XY                       ;; 06:7ee0 ??
+    db   $56, $36 ;; BlockID, XY                       ;; 06:7ee2 ??
+    db   $56, $37 ;; BlockID, XY                       ;; 06:7ee4 ??
+    db   $57, $38 ;; BlockID, XY                       ;; 06:7ee6 ??
+    db   $19, $41 ;; BlockID, XY                       ;; 06:7ee8 ??
+    db   $19, $48 ;; BlockID, XY                       ;; 06:7eea ??
+    db   $19, $51 ;; BlockID, XY                       ;; 06:7eec ??
+    db   $19, $58 ;; BlockID, XY                       ;; 06:7eee ??
+    db   $19, $61 ;; BlockID, XY                       ;; 06:7ef0 ??
+    db   $19, $62 ;; BlockID, XY                       ;; 06:7ef2 ??
+    db   $19, $63 ;; BlockID, XY                       ;; 06:7ef4 ??
+    db   $19, $64 ;; BlockID, XY                       ;; 06:7ef6 ??
+    db   $19, $65 ;; BlockID, XY                       ;; 06:7ef8 ??
+    db   $19, $66 ;; BlockID, XY                       ;; 06:7efa ??
+    db   $19, $67 ;; BlockID, XY                       ;; 06:7efc ??
+    db   $19, $68 ;; BlockID, XY                       ;; 06:7efe ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7f00 ??
 
 map08_room03_06_script:
     dw   $0097                                         ;; 06:7f02 $97 $00
     db   $ff                                           ;; 06:7f04 ?
 
 map08_room03_06_tiles:
-    db   $01, $02, $02, $01, $5a, $33, $5a, $36        ;; 06:7f05 ????????
-    db   $5a, $43, $5a, $46, $5a, $53, $5a, $56        ;; 06:7f0d ????????
-    db   $5a, $63, $5a, $66, $ff, $ff                  ;; 06:7f15 ??????
+    db   $01, $02, $02, $01 ;; Door info               ;; 06:7f05 ????
+    db   $5a, $33 ;; BlockID, XY                       ;; 06:7f09 ??
+    db   $5a, $36 ;; BlockID, XY                       ;; 06:7f0b ??
+    db   $5a, $43 ;; BlockID, XY                       ;; 06:7f0d ??
+    db   $5a, $46 ;; BlockID, XY                       ;; 06:7f0f ??
+    db   $5a, $53 ;; BlockID, XY                       ;; 06:7f11 ??
+    db   $5a, $56 ;; BlockID, XY                       ;; 06:7f13 ??
+    db   $5a, $63 ;; BlockID, XY                       ;; 06:7f15 ??
+    db   $5a, $66 ;; BlockID, XY                       ;; 06:7f17 ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7f19 ??
 
 map08_room04_06_script:
     dw   $009a                                         ;; 06:7f1b $9a $00
     db   $ff                                           ;; 06:7f1d ?
 
 map08_room04_06_tiles:
-    db   $00, $01, $02, $02, $0c, $33, $0c, $36        ;; 06:7f1e ????????
-    db   $1c, $43, $1c, $46, $ff, $ff                  ;; 06:7f26 ??????
+    db   $00, $01, $02, $02 ;; Door info               ;; 06:7f1e ????
+    db   $0c, $33 ;; BlockID, XY                       ;; 06:7f22 ??
+    db   $0c, $36 ;; BlockID, XY                       ;; 06:7f24 ??
+    db   $1c, $43 ;; BlockID, XY                       ;; 06:7f26 ??
+    db   $1c, $46 ;; BlockID, XY                       ;; 06:7f28 ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7f2a ??
 
 map08_room05_06_script:
     dw   $0097                                         ;; 06:7f2c $97 $00
     db   $ff                                           ;; 06:7f2e ?
 
 map08_room05_06_tiles:
-    db   $01, $00, $00, $02, $5a, $22, $5a, $27        ;; 06:7f2f ????????
-    db   $5a, $52, $5a, $57, $ff, $ff                  ;; 06:7f37 ??????
+    db   $01, $00, $00, $02 ;; Door info               ;; 06:7f2f ????
+    db   $5a, $22 ;; BlockID, XY                       ;; 06:7f33 ??
+    db   $5a, $27 ;; BlockID, XY                       ;; 06:7f35 ??
+    db   $5a, $52 ;; BlockID, XY                       ;; 06:7f37 ??
+    db   $5a, $57 ;; BlockID, XY                       ;; 06:7f39 ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7f3b ??
 
 map08_room06_06_script:
     dw   $007f                                         ;; 06:7f3d $7f $00
     db   $ff                                           ;; 06:7f3f ?
 
 map08_room06_06_tiles:
-    db   $02, $01, $02, $02, $5c, $24, $5c, $25        ;; 06:7f40 ????????
-    db   $5c, $32, $5c, $33, $5c, $36, $5c, $37        ;; 06:7f48 ????????
-    db   $5c, $42, $5c, $43, $5c, $46, $5c, $47        ;; 06:7f50 ????????
-    db   $5c, $54, $5c, $55, $ff, $ff                  ;; 06:7f58 ??????
+    db   $02, $01, $02, $02 ;; Door info               ;; 06:7f40 ????
+    db   $5c, $24 ;; BlockID, XY                       ;; 06:7f44 ??
+    db   $5c, $25 ;; BlockID, XY                       ;; 06:7f46 ??
+    db   $5c, $32 ;; BlockID, XY                       ;; 06:7f48 ??
+    db   $5c, $33 ;; BlockID, XY                       ;; 06:7f4a ??
+    db   $5c, $36 ;; BlockID, XY                       ;; 06:7f4c ??
+    db   $5c, $37 ;; BlockID, XY                       ;; 06:7f4e ??
+    db   $5c, $42 ;; BlockID, XY                       ;; 06:7f50 ??
+    db   $5c, $43 ;; BlockID, XY                       ;; 06:7f52 ??
+    db   $5c, $46 ;; BlockID, XY                       ;; 06:7f54 ??
+    db   $5c, $47 ;; BlockID, XY                       ;; 06:7f56 ??
+    db   $5c, $54 ;; BlockID, XY                       ;; 06:7f58 ??
+    db   $5c, $55 ;; BlockID, XY                       ;; 06:7f5a ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7f5c ??
 
 map08_room00_07_script:
     dw   $ffff                                         ;; 06:7f5e $ff $ff
     db   $ff                                           ;; 06:7f60 ?
 
 map08_room00_07_tiles:
-    db   $00, $00, $00, $00, $ff, $ff                  ;; 06:7f61 ??????
+    db   $00, $00, $00, $00 ;; Door info               ;; 06:7f61 ????
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7f65 ??
 
 map08_room01_07_script:
     dw   $0097                                         ;; 06:7f67 $97 $00
     db   $ff                                           ;; 06:7f69 ?
 
 map08_room01_07_tiles:
-    db   $00, $02, $01, $02, $2c, $27, $2c, $28        ;; 06:7f6a ????????
-    db   $2c, $36, $2c, $44, $2c, $45, $ff, $ff        ;; 06:7f72 ????????
+    db   $00, $02, $01, $02 ;; Door info               ;; 06:7f6a ????
+    db   $2c, $27 ;; BlockID, XY                       ;; 06:7f6e ??
+    db   $2c, $28 ;; BlockID, XY                       ;; 06:7f70 ??
+    db   $2c, $36 ;; BlockID, XY                       ;; 06:7f72 ??
+    db   $2c, $44 ;; BlockID, XY                       ;; 06:7f74 ??
+    db   $2c, $45 ;; BlockID, XY                       ;; 06:7f76 ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7f78 ??
 
 map08_room02_07_script:
     dw   $0199                                         ;; 06:7f7a $99 $01
     db   $ff                                           ;; 06:7f7c ?
 
 map08_room02_07_tiles:
-    db   $00, $00, $02, $02, $0c, $13, $0c, $16        ;; 06:7f7d ????????
-    db   $1c, $23, $1c, $26, $ff, $ff                  ;; 06:7f85 ??????
+    db   $00, $00, $02, $02 ;; Door info               ;; 06:7f7d ????
+    db   $0c, $13 ;; BlockID, XY                       ;; 06:7f81 ??
+    db   $0c, $16 ;; BlockID, XY                       ;; 06:7f83 ??
+    db   $1c, $23 ;; BlockID, XY                       ;; 06:7f85 ??
+    db   $1c, $26 ;; BlockID, XY                       ;; 06:7f87 ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7f89 ??
 
 map08_room03_07_script:
     dw   $009a                                         ;; 06:7f8b $9a $00
     db   $ff                                           ;; 06:7f8d ?
 
 map08_room03_07_tiles:
-    db   $02, $00, $01, $02, $28, $11, $28, $12        ;; 06:7f8e ????????
-    db   $28, $13, $28, $16, $28, $17, $28, $18        ;; 06:7f96 ????????
-    db   $28, $21, $28, $28, $28, $51, $28, $58        ;; 06:7f9e ????????
-    db   $28, $61, $28, $62, $28, $63, $28, $66        ;; 06:7fa6 ????????
-    db   $28, $67, $28, $68, $ff, $ff                  ;; 06:7fae ??????
+    db   $02, $00, $01, $02 ;; Door info               ;; 06:7f8e ????
+    db   $28, $11 ;; BlockID, XY                       ;; 06:7f92 ??
+    db   $28, $12 ;; BlockID, XY                       ;; 06:7f94 ??
+    db   $28, $13 ;; BlockID, XY                       ;; 06:7f96 ??
+    db   $28, $16 ;; BlockID, XY                       ;; 06:7f98 ??
+    db   $28, $17 ;; BlockID, XY                       ;; 06:7f9a ??
+    db   $28, $18 ;; BlockID, XY                       ;; 06:7f9c ??
+    db   $28, $21 ;; BlockID, XY                       ;; 06:7f9e ??
+    db   $28, $28 ;; BlockID, XY                       ;; 06:7fa0 ??
+    db   $28, $51 ;; BlockID, XY                       ;; 06:7fa2 ??
+    db   $28, $58 ;; BlockID, XY                       ;; 06:7fa4 ??
+    db   $28, $61 ;; BlockID, XY                       ;; 06:7fa6 ??
+    db   $28, $62 ;; BlockID, XY                       ;; 06:7fa8 ??
+    db   $28, $63 ;; BlockID, XY                       ;; 06:7faa ??
+    db   $28, $66 ;; BlockID, XY                       ;; 06:7fac ??
+    db   $28, $67 ;; BlockID, XY                       ;; 06:7fae ??
+    db   $28, $68 ;; BlockID, XY                       ;; 06:7fb0 ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7fb2 ??
 
 map08_room04_07_script:
     dw   $008b                                         ;; 06:7fb4 $8b $00
@@ -4643,9 +5676,15 @@ map08_room04_07_script:
     db   $ff                                           ;; 06:7fb9 ?
 
 map08_room04_07_tiles:
-    db   $01, $02, $02, $02, $02, $18, $4f, $27        ;; 06:7fba ????????
-    db   $4f, $28, $4f, $35, $4f, $36, $4f, $43        ;; 06:7fc2 ????????
-    db   $4f, $44, $ff, $ff                            ;; 06:7fca ????
+    db   $01, $02, $02, $02 ;; Door info               ;; 06:7fba ????
+    db   $02, $18 ;; BlockID, XY                       ;; 06:7fbe ??
+    db   $4f, $27 ;; BlockID, XY                       ;; 06:7fc0 ??
+    db   $4f, $28 ;; BlockID, XY                       ;; 06:7fc2 ??
+    db   $4f, $35 ;; BlockID, XY                       ;; 06:7fc4 ??
+    db   $4f, $36 ;; BlockID, XY                       ;; 06:7fc6 ??
+    db   $4f, $43 ;; BlockID, XY                       ;; 06:7fc8 ??
+    db   $4f, $44 ;; BlockID, XY                       ;; 06:7fca ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7fcc ??
 
 map08_room05_07_script:
     dw   $008e                                         ;; 06:7fce $8e $00
@@ -4654,14 +5693,24 @@ map08_room05_07_script:
     db   $ff                                           ;; 06:7fd3 ?
 
 map08_room05_07_tiles:
-    db   $02, $01, $02, $02, $05, $06, $16, $07        ;; 06:7fd4 ????????
-    db   $15, $16, $10, $17, $02, $18, $15, $26        ;; 06:7fdc ????????
-    db   $10, $27, $1b, $36, $17, $37, $ff, $ff        ;; 06:7fe4 ????????
+    db   $02, $01, $02, $02 ;; Door info               ;; 06:7fd4 ????
+    db   $05, $06 ;; BlockID, XY                       ;; 06:7fd8 ??
+    db   $16, $07 ;; BlockID, XY                       ;; 06:7fda ??
+    db   $15, $16 ;; BlockID, XY                       ;; 06:7fdc ??
+    db   $10, $17 ;; BlockID, XY                       ;; 06:7fde ??
+    db   $02, $18 ;; BlockID, XY                       ;; 06:7fe0 ??
+    db   $15, $26 ;; BlockID, XY                       ;; 06:7fe2 ??
+    db   $10, $27 ;; BlockID, XY                       ;; 06:7fe4 ??
+    db   $1b, $36 ;; BlockID, XY                       ;; 06:7fe6 ??
+    db   $17, $37 ;; BlockID, XY                       ;; 06:7fe8 ??
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7fea ??
 
 map08_room06_07_script:
     dw   $ffff                                         ;; 06:7fec $ff $ff
     db   $ff                                           ;; 06:7fee ?
 
 map08_room06_07_tiles:
-    db   $00, $00, $00, $00, $ff, $ff, $1e, $de        ;; 06:7fef ????????
-    db   $21, $bf, $40, $7f, $80, $7f, $80, $ff        ;; 06:7ff7 ????????
+    db   $00, $00, $00, $00 ;; Door info               ;; 06:7fef ????
+    db   $ff, $ff ;; BlockID, XY                       ;; 06:7ff3 ??
+    db   $1e, $de, $21, $bf, $40, $7f, $80, $7f        ;; 06:7ff5 ????????
+    db   $80, $ff, $00                                 ;; 06:7ffd ???

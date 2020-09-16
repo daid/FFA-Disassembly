@@ -23,6 +23,20 @@ def mapRoomData(dis, addr, index):
                 start_addr = addr
                 line = []
         return addr
+    def templatedRoomFormatter(output, addr):
+        line = []
+        for n in range(4):
+            line.append("$%02x" % (dis.rom.data[addr + n]))
+        dis.formatLine(output, addr, 4, "db   " + ", ".join(line) + " ;; Door info", is_data=True)
+        addr += 4
+        while True:
+            line = []
+            for n in range(2):
+                line.append("$%02x" % (dis.rom.data[addr + n]))
+            dis.formatLine(output, addr, 2, "db   " + ", ".join(line) + " ;; BlockID, XY", is_data=True)
+            if dis.rom.data[addr] == 0xff and dis.rom.data[addr + 1] == 0xff:
+                return addr + 2
+            addr += 2
 
     unknown, rle, h, w = struct.unpack("<BBBB", dis.rom.data[addr:addr + 4])
     addr += 4
@@ -46,8 +60,12 @@ def mapRoomData(dis, addr, index):
             script_index = dis.info.markAsWord(dis.rom, obj_addr)
             obj_addr += 2
 
-        if dis.rom.data[tile_addr] != 0xff and unknown == 0:
-            dis.formatter[tile_addr] = roomTileFormatter
+        if dis.rom.data[tile_addr] != 0xff:
+            if unknown == 0:
+                dis.formatter[tile_addr] = roomTileFormatter
+            else:
+                dis.formatter[tile_addr] = templatedRoomFormatter
+            
 
 def mapHeaders(dis, addr, params):
     assert len(params) == 1
