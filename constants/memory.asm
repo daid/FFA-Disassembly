@@ -640,7 +640,7 @@ wStatWisdom: ;; $d7c3
   ds 1
 wStatWill: ;; $d7c4
   ds 2
-wD7C6: ;; $d7c6
+wScriptFlags: ;; $d7c6
   ds 4
 wD7CA: ;; $d7ca
   ds 6

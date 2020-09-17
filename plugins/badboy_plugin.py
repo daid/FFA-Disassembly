@@ -264,7 +264,7 @@ OPCODES = {
     0x99: ("UNK_99", 2),
     0x9A: ("UNK_9A", 0),
     0x9B: ("UNK_9B", 0),
-    0x9C: ("UNK_9C", 1),
+    0x9C: ("GIVE_FOLLOWER", 1), # exact workings unknown, needs a proper NPC with it it seems
     0x9E: ("NOP", 0),
     0x9F: ("NOP", 0),
 
@@ -321,7 +321,7 @@ OPCODES = {
     0xD8: ("GIVE_EQUIPMENT", 1),
     0xD9: ("UNK_D9", 1),
     0xDA: ("SET_FLAG", 1),
-    0xDB: ("UNK_DB", 1),
+    0xDB: ("CLEAR_FLAG", 1),
     0xDC: ("UNK_DC", 0),
     0xDD: ("UNK_DD", 0),
     0xDE: ("UNK_DE", 0),

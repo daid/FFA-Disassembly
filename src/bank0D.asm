@@ -329,7 +329,7 @@ script_000c:
     db   " I'LL STAY HERE\n AND RESEARCH.<12>"         ;; 0d:4260 ...........................
     db   "<11>", $00                                   ;; 0d:427b ...
     db  $98 ;;UNK_98                                   ;; 0d:427e $98
-    db  $db ;;UNK_DB                                   ;; 0d:427f $db
+    db  $db ;;CLEAR_FLAG                               ;; 0d:427f $db
     db   $57                                           ;; 0d:4280 .
     db  $f4 ;;LOAD_MAP                                 ;; 0d:4281 $f4
     db   $00, $73, $0a, $06                            ;; 0d:4282 ....
@@ -361,7 +361,7 @@ script_000c:
     db   "<10>Lester:Won't you\n avenge my sister?\n Well, I'm going!<12>" ;; 0d:42c9 ....................................
     db   "<11>", $00                                   ;; 0d:42ed ...
     db  $98 ;;UNK_98                                   ;; 0d:42f0 $98
-    db  $db ;;UNK_DB                                   ;; 0d:42f1 $db
+    db  $db ;;CLEAR_FLAG                               ;; 0d:42f1 $db
     db   $56                                           ;; 0d:42f2 .
     db  $08 ;;IF ? JR                                  ;; 0d:42f3 $08
     db   $28, $00, $02                                 ;; 0d:42f4 ...
@@ -775,9 +775,9 @@ script_0064:
     db   $00                                           ;; 0d:4478 .
     db  $fd ;;SPAWN_NPC                                ;; 0d:4479 $fd
     db   $01                                           ;; 0d:447a .
-    db  $db ;;UNK_DB                                   ;; 0d:447b $db
+    db  $db ;;CLEAR_FLAG                               ;; 0d:447b $db
     db   $78                                           ;; 0d:447c .
-    db  $db ;;UNK_DB                                   ;; 0d:447d $db
+    db  $db ;;CLEAR_FLAG                               ;; 0d:447d $db
     db   $79                                           ;; 0d:447e .
     db  $00 ;;END                                      ;; 0d:447f $00
 
@@ -922,9 +922,9 @@ script_007f:
     db   $00                                           ;; 0d:44e5 .
     db  $fd ;;SPAWN_NPC                                ;; 0d:44e6 $fd
     db   $01                                           ;; 0d:44e7 .
-    db  $db ;;UNK_DB                                   ;; 0d:44e8 $db
+    db  $db ;;CLEAR_FLAG                               ;; 0d:44e8 $db
     db   $78                                           ;; 0d:44e9 .
-    db  $db ;;UNK_DB                                   ;; 0d:44ea $db
+    db  $db ;;CLEAR_FLAG                               ;; 0d:44ea $db
     db   $79                                           ;; 0d:44eb .
     db  $00 ;;END                                      ;; 0d:44ec $00
 
@@ -1009,7 +1009,7 @@ script_008e:
     db   $01                                           ;; 0d:4528 .
     db  $fd ;;SPAWN_NPC                                ;; 0d:4529 $fd
     db   $02                                           ;; 0d:452a .
-    db  $db ;;UNK_DB                                   ;; 0d:452b $db
+    db  $db ;;CLEAR_FLAG                               ;; 0d:452b $db
     db   $78                                           ;; 0d:452c .
     db  $00 ;;END                                      ;; 0d:452d $00
 
@@ -1058,9 +1058,9 @@ script_0097:
     db   $01                                           ;; 0d:454d .
     db  $fd ;;SPAWN_NPC                                ;; 0d:454e $fd
     db   $02                                           ;; 0d:454f .
-    db  $db ;;UNK_DB                                   ;; 0d:4550 $db
+    db  $db ;;CLEAR_FLAG                               ;; 0d:4550 $db
     db   $78                                           ;; 0d:4551 .
-    db  $db ;;UNK_DB                                   ;; 0d:4552 $db
+    db  $db ;;CLEAR_FLAG                               ;; 0d:4552 $db
     db   $79                                           ;; 0d:4553 .
     db  $00 ;;END                                      ;; 0d:4554 $00
 
@@ -1096,13 +1096,13 @@ script_009d:
     db   $01                                           ;; 0d:456b .
     db  $fd ;;SPAWN_NPC                                ;; 0d:456c $fd
     db   $02                                           ;; 0d:456d .
-    db  $db ;;UNK_DB                                   ;; 0d:456e $db
+    db  $db ;;CLEAR_FLAG                               ;; 0d:456e $db
     db   $78                                           ;; 0d:456f .
-    db  $db ;;UNK_DB                                   ;; 0d:4570 $db
+    db  $db ;;CLEAR_FLAG                               ;; 0d:4570 $db
     db   $79                                           ;; 0d:4571 .
-    db  $db ;;UNK_DB                                   ;; 0d:4572 $db
+    db  $db ;;CLEAR_FLAG                               ;; 0d:4572 $db
     db   $7a                                           ;; 0d:4573 .
-    db  $db ;;UNK_DB                                   ;; 0d:4574 $db
+    db  $db ;;CLEAR_FLAG                               ;; 0d:4574 $db
     db   $7b                                           ;; 0d:4575 .
     db  $00 ;;END                                      ;; 0d:4576 $00
 
@@ -1168,9 +1168,9 @@ script_00a9:
     db   $01                                           ;; 0d:45a3 .
     db  $fd ;;SPAWN_NPC                                ;; 0d:45a4 $fd
     db   $02                                           ;; 0d:45a5 .
-    db  $db ;;UNK_DB                                   ;; 0d:45a6 $db
+    db  $db ;;CLEAR_FLAG                               ;; 0d:45a6 $db
     db   $78                                           ;; 0d:45a7 .
-    db  $db ;;UNK_DB                                   ;; 0d:45a8 $db
+    db  $db ;;CLEAR_FLAG                               ;; 0d:45a8 $db
     db   $79                                           ;; 0d:45a9 .
     db  $00 ;;END                                      ;; 0d:45aa $00
 
@@ -1327,13 +1327,13 @@ script_00c4:
     db   $01                                           ;; 0d:461f .
     db  $fd ;;SPAWN_NPC                                ;; 0d:4620 $fd
     db   $02                                           ;; 0d:4621 .
-    db  $db ;;UNK_DB                                   ;; 0d:4622 $db
+    db  $db ;;CLEAR_FLAG                               ;; 0d:4622 $db
     db   $78                                           ;; 0d:4623 .
-    db  $db ;;UNK_DB                                   ;; 0d:4624 $db
+    db  $db ;;CLEAR_FLAG                               ;; 0d:4624 $db
     db   $79                                           ;; 0d:4625 .
-    db  $db ;;UNK_DB                                   ;; 0d:4626 $db
+    db  $db ;;CLEAR_FLAG                               ;; 0d:4626 $db
     db   $7a                                           ;; 0d:4627 .
-    db  $db ;;UNK_DB                                   ;; 0d:4628 $db
+    db  $db ;;CLEAR_FLAG                               ;; 0d:4628 $db
     db   $7b                                           ;; 0d:4629 .
     db  $00 ;;END                                      ;; 0d:462a $00
 
@@ -1421,7 +1421,7 @@ script_00d5:
     db  $00 ;;END                                      ;; 0d:4665 $00
 
 script_00d6:
-    db  $db ;;UNK_DB                                   ;; 0d:4666 $db
+    db  $db ;;CLEAR_FLAG                               ;; 0d:4666 $db
     db   $78                                           ;; 0d:4667 .
     db  $08 ;;IF ? JR                                  ;; 0d:4668 $08
     db   $87, $00, $10                                 ;; 0d:4669 ...
@@ -2180,7 +2180,7 @@ script_0120:
     db  $04 ;;MSG                                      ;; 0d:4a3e $04
     db   "<10>Julius:<BOY>!\n You will never\n leave here alive!<12>" ;; 0d:4a3f ..............................
     db   "<11>", $00                                   ;; 0d:4a5d ...
-    db  $9c ;;UNK_9C                                   ;; 0d:4a60 $9c
+    db  $9c ;;GIVE_FOLLOWER                            ;; 0d:4a60 $9c
     db   $01                                           ;; 0d:4a61 .
     db  $da ;;SET_FLAG                                 ;; 0d:4a62 $da
     db   $51                                           ;; 0d:4a63 .
@@ -2369,7 +2369,7 @@ script_0140:
     db   "<10>Bogard:I'll stay\n and guard <GIRL>.\n<BOY>:__ Okay.<12>" ;; 0d:4aee ................................
     db   "<11>", $00                                   ;; 0d:4b0e ...
     db  $98 ;;UNK_98                                   ;; 0d:4b11 $98
-    db  $db ;;UNK_DB                                   ;; 0d:4b12 $db
+    db  $db ;;CLEAR_FLAG                               ;; 0d:4b12 $db
     db   $54                                           ;; 0d:4b13 .
     db  $00 ;;END                                      ;; 0d:4b14 $00
 
@@ -2479,7 +2479,7 @@ script_0154:
     db   $1d, $d6, $a8, $00, $2c                       ;; 0d:4b5e .....
     db  $fd ;;SPAWN_NPC                                ;; 0d:4b63 $fd
     db   $02                                           ;; 0d:4b64 .
-    db  $9c ;;UNK_9C                                   ;; 0d:4b65 $9c
+    db  $9c ;;GIVE_FOLLOWER                            ;; 0d:4b65 $9c
     db   $06                                           ;; 0d:4b66 .
     db  $80 ;;PLAYER_STEP_FORWARD                      ;; 0d:4b67 $80
     db  $80 ;;PLAYER_STEP_FORWARD                      ;; 0d:4b68 $80
@@ -3293,7 +3293,7 @@ script_01ae:
     db  $80 ;;PLAYER_STEP_FORWARD                      ;; 0d:505a $80
     db  $02 ;;CALL                                     ;; 0d:505b $02
     db   $28, $9c                                      ;; 0d:505c ..
-    db  $db ;;UNK_DB                                   ;; 0d:505e $db
+    db  $db ;;CLEAR_FLAG                               ;; 0d:505e $db
     db   $55                                           ;; 0d:505f .
     db  $da ;;SET_FLAG                                 ;; 0d:5060 $da
     db   $27                                           ;; 0d:5061 .
@@ -3335,7 +3335,7 @@ script_01af:
     db  $00 ;;END                                      ;; 0d:50a4 $00
 
 script_01b0:
-    db  $db ;;UNK_DB                                   ;; 0d:50a5 $db
+    db  $db ;;CLEAR_FLAG                               ;; 0d:50a5 $db
     db   $79                                           ;; 0d:50a6 .
     db  $f8 ;;SET_MUSIC                                ;; 0d:50a7 $f8
     db   $07                                           ;; 0d:50a8 .
@@ -3396,7 +3396,7 @@ script_01b1:
     db   $02                                           ;; 0d:51f6 .
     db  $f0 ;;DELAY                                    ;; 0d:51f7 $f0
     db   $3c                                           ;; 0d:51f8 .
-    db  $db ;;UNK_DB                                   ;; 0d:51f9 $db
+    db  $db ;;CLEAR_FLAG                               ;; 0d:51f9 $db
     db   $56                                           ;; 0d:51fa .
     db  $da ;;SET_FLAG                                 ;; 0d:51fb $da
     db   $28                                           ;; 0d:51fc .
@@ -3622,7 +3622,7 @@ script_01bd:
     db   $50                                           ;; 0d:541c .
     db  $04 ;;MSG                                      ;; 0d:541d $04
     db   "<11>", $00                                   ;; 0d:541e ..
-    db  $db ;;UNK_DB                                   ;; 0d:5420 $db
+    db  $db ;;CLEAR_FLAG                               ;; 0d:5420 $db
     db   $51                                           ;; 0d:5421 .
     db  $da ;;SET_FLAG                                 ;; 0d:5422 $da
     db   $2c                                           ;; 0d:5423 .
@@ -3933,7 +3933,7 @@ script_01e3:
     db   "<10><BOY>:<GIRL>!\n<GIRL>:Oh, <BOY>!<12>"    ;; 0d:56c0 .............
     db   "<1b><BOY>:Let's get\n out of here!<12>"      ;; 0d:56cd .................
     db   "<11>", $00                                   ;; 0d:56de ...
-    db  $9c ;;UNK_9C                                   ;; 0d:56e1 $9c
+    db  $9c ;;GIVE_FOLLOWER                            ;; 0d:56e1 $9c
     db   $01                                           ;; 0d:56e2 .
     db  $da ;;SET_FLAG                                 ;; 0d:56e3 $da
     db   $51                                           ;; 0d:56e4 .
@@ -3950,7 +3950,7 @@ script_01e4:
     db   "<13><11>", $00                               ;; 0d:5763 ....
     db  $08 ;;IF ? JR                                  ;; 0d:5767 $08
     db   $ff, $00, $04                                 ;; 0d:5768 ...
-    db  $9c ;;UNK_9C                                   ;; 0d:576b $9c
+    db  $9c ;;GIVE_FOLLOWER                            ;; 0d:576b $9c
     db   $02                                           ;; 0d:576c .
     db  $da ;;SET_FLAG                                 ;; 0d:576d $da
     db   $52                                           ;; 0d:576e .
@@ -4694,7 +4694,7 @@ script_0217:
     db  $04 ;;MSG                                      ;; 0d:654c $04
     db   " Okay.\n__ Come with me!<12>"                ;; 0d:654d ................
     db   "<11>", $00                                   ;; 0d:655d ...
-    db  $9c ;;UNK_9C                                   ;; 0d:6560 $9c
+    db  $9c ;;GIVE_FOLLOWER                            ;; 0d:6560 $9c
     db   $09                                           ;; 0d:6561 .
     db  $da ;;SET_FLAG                                 ;; 0d:6562 $da
     db   $19                                           ;; 0d:6563 .
@@ -4744,7 +4744,7 @@ script_0219:
     db   $06                                           ;; 0d:6616 .
     db  $fd ;;SPAWN_NPC                                ;; 0d:6617 $fd
     db   $02                                           ;; 0d:6618 .
-    db  $9c ;;UNK_9C                                   ;; 0d:6619 $9c
+    db  $9c ;;GIVE_FOLLOWER                            ;; 0d:6619 $9c
     db   $06                                           ;; 0d:661a .
     db  $04 ;;MSG                                      ;; 0d:661b $04
     db   "<10>    Lester was\n  released from\n Davias's curse__<12>" ;; 0d:661c ............................
@@ -5473,7 +5473,7 @@ script_0249:
     db  $bc ;;FADE_TO_NORMAL                           ;; 0d:7607 $bc
     db  $f0 ;;DELAY                                    ;; 0d:7608 $f0
     db   $3c                                           ;; 0d:7609 .
-    db  $db ;;UNK_DB                                   ;; 0d:760a $db
+    db  $db ;;CLEAR_FLAG                               ;; 0d:760a $db
     db   $57                                           ;; 0d:760b .
     db  $00 ;;END                                      ;; 0d:760c $00
 
@@ -5850,7 +5850,7 @@ script_026c:
     db   "<1b>", $00                                   ;; 0d:7b06 ...
     db  $f8 ;;SET_MUSIC                                ;; 0d:7b09 $f8
     db   $00                                           ;; 0d:7b0a .
-    db  $9c ;;UNK_9C                                   ;; 0d:7b0b $9c
+    db  $9c ;;GIVE_FOLLOWER                            ;; 0d:7b0b $9c
     db   $01                                           ;; 0d:7b0c .
     db  $04 ;;MSG                                      ;; 0d:7b0d $04
     db   "<11>", $00                                   ;; 0d:7b0e ..
@@ -5927,11 +5927,11 @@ script_0272:
     db   $02                                           ;; 0d:7bdd .
     db  $08 ;;IF ? JR                                  ;; 0d:7bde $08
     db   $a6, $00, $06                                 ;; 0d:7bdf ...
-    db  $db ;;UNK_DB                                   ;; 0d:7be2 $db
+    db  $db ;;CLEAR_FLAG                               ;; 0d:7be2 $db
     db   $78                                           ;; 0d:7be3 .
-    db  $db ;;UNK_DB                                   ;; 0d:7be4 $db
+    db  $db ;;CLEAR_FLAG                               ;; 0d:7be4 $db
     db   $79                                           ;; 0d:7be5 .
-    db  $db ;;UNK_DB                                   ;; 0d:7be6 $db
+    db  $db ;;CLEAR_FLAG                               ;; 0d:7be6 $db
     db   $7a                                           ;; 0d:7be7 .
     db  $08 ;;IF ? JR                                  ;; 0d:7be8 $08
     db   $0c, $00, $03                                 ;; 0d:7be9 ...
@@ -6223,7 +6223,7 @@ script_0281:
     db  $04 ;;MSG                                      ;; 0d:7e0c $04
     db   "<12>"                                        ;; 0d:7e0d 
     db   "<11>", $00                                   ;; 0d:7e0d ...
-    db  $9c ;;UNK_9C                                   ;; 0d:7e10 $9c
+    db  $9c ;;GIVE_FOLLOWER                            ;; 0d:7e10 $9c
     db   $05                                           ;; 0d:7e11 .
     db  $da ;;SET_FLAG                                 ;; 0d:7e12 $da
     db   $55                                           ;; 0d:7e13 .
@@ -6257,7 +6257,7 @@ script_0282:
     db   "<1b>HE LEFT ME HERE.\nI WAITED 50 YEARS.\nHE FORGOT ME.<12>" ;; 0d:7e5f ............................................
     db   "<1b>I CAN HELP YOU.\nTAKE ME WITH YOU.<12>"  ;; 0d:7e8b ...............................
     db   "<11>", $00                                   ;; 0d:7eaa ...
-    db  $9c ;;UNK_9C                                   ;; 0d:7ead $9c
+    db  $9c ;;GIVE_FOLLOWER                            ;; 0d:7ead $9c
     db   $07                                           ;; 0d:7eae .
     db  $da ;;SET_FLAG                                 ;; 0d:7eaf $da
     db   $57                                           ;; 0d:7eb0 .

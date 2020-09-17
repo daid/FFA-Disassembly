@@ -9,7 +9,7 @@ script_0294:
     db   "<10>Man:Didn't you\n come here to get\n the Mirror?<12>" ;; 0e:400a ..............................
     db   "<11>", $00                                   ;; 0e:4028 ...
     db  $98 ;;UNK_98                                   ;; 0e:402b $98
-    db  $db ;;UNK_DB                                   ;; 0e:402c $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:402c $db
     db   $52                                           ;; 0e:402d .
     db  $f4 ;;LOAD_MAP                                 ;; 0e:402e $f4
     db   $00, $e8, $0a, $03                            ;; 0e:402f ....
@@ -97,7 +97,7 @@ script_029a:
     db   $1e                                           ;; 0e:40a2 .
     db  $fd ;;SPAWN_NPC                                ;; 0e:40a3 $fd
     db   $02                                           ;; 0e:40a4 .
-    db  $9c ;;UNK_9C                                   ;; 0e:40a5 $9c
+    db  $9c ;;GIVE_FOLLOWER                            ;; 0e:40a5 $9c
     db   $04                                           ;; 0e:40a6 .
     db  $90 ;;UNK_90                                   ;; 0e:40a7 $90
     db  $90 ;;UNK_90                                   ;; 0e:40a8 $90
@@ -162,7 +162,7 @@ script_029f:
     db  $98 ;;UNK_98                                   ;; 0e:41ac $98
     db  $f0 ;;DELAY                                    ;; 0e:41ad $f0
     db   $1e                                           ;; 0e:41ae .
-    db  $db ;;UNK_DB                                   ;; 0e:41af $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:41af $db
     db   $55                                           ;; 0e:41b0 .
     db  $f4 ;;LOAD_MAP                                 ;; 0e:41b1 $f4
     db   $00, $2c, $0e, $04                            ;; 0e:41b2 ....
@@ -1090,9 +1090,9 @@ script_0311:
     db   $c9, $00, $0d                                 ;; 0e:46a7 ...
     db  $c5 ;;UNK_C5                                   ;; 0e:46aa $c5
     db   $03                                           ;; 0e:46ab .
-    db  $db ;;UNK_DB                                   ;; 0e:46ac $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:46ac $db
     db   $78                                           ;; 0e:46ad .
-    db  $db ;;UNK_DB                                   ;; 0e:46ae $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:46ae $db
     db   $79                                           ;; 0e:46af .
     db  $f4 ;;LOAD_MAP                                 ;; 0e:46b0 $f4
     db   $03, $35, $09, $0c                            ;; 0e:46b1 ....
@@ -1127,7 +1127,7 @@ script_0315:
     db   $c9, $00, $07                                 ;; 0e:46d8 ...
     db  $f4 ;;LOAD_MAP                                 ;; 0e:46db $f4
     db   $03, $55, $10, $0c                            ;; 0e:46dc ....
-    db  $db ;;UNK_DB                                   ;; 0e:46e0 $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:46e0 $db
     db   $78                                           ;; 0e:46e1 .
     db  $00 ;;END                                      ;; 0e:46e2 $00
 
@@ -2614,13 +2614,13 @@ script_03d2:
     db  $00 ;;END                                      ;; 0e:4f2d $00
 
 script_03d3:
-    db  $db ;;UNK_DB                                   ;; 0e:4f2e $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:4f2e $db
     db   $78                                           ;; 0e:4f2f .
-    db  $db ;;UNK_DB                                   ;; 0e:4f30 $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:4f30 $db
     db   $79                                           ;; 0e:4f31 .
-    db  $db ;;UNK_DB                                   ;; 0e:4f32 $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:4f32 $db
     db   $7a                                           ;; 0e:4f33 .
-    db  $db ;;UNK_DB                                   ;; 0e:4f34 $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:4f34 $db
     db   $7b                                           ;; 0e:4f35 .
     db  $00 ;;END                                      ;; 0e:4f36 $00
 
@@ -3096,7 +3096,7 @@ script_0401:
     db  $18 ;;DEL_NPC_1                                ;; 0e:51dd $18
     db  $fd ;;SPAWN_NPC                                ;; 0e:51de $fd
     db   $02                                           ;; 0e:51df .
-    db  $9c ;;UNK_9C                                   ;; 0e:51e0 $9c
+    db  $9c ;;GIVE_FOLLOWER                            ;; 0e:51e0 $9c
     db   $03                                           ;; 0e:51e1 .
     db  $da ;;SET_FLAG                                 ;; 0e:51e2 $da
     db   $53                                           ;; 0e:51e3 .
@@ -3220,13 +3220,13 @@ script_040c:
     db   $4c, $07, $01                                 ;; 0e:52b0 ...
     db  $01 ;;JR                                       ;; 0e:52b3 $01
     db   $08                                           ;; 0e:52b4 .
-    db  $db ;;UNK_DB                                   ;; 0e:52b5 $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:52b5 $db
     db   $78                                           ;; 0e:52b6 .
-    db  $db ;;UNK_DB                                   ;; 0e:52b7 $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:52b7 $db
     db   $79                                           ;; 0e:52b8 .
-    db  $db ;;UNK_DB                                   ;; 0e:52b9 $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:52b9 $db
     db   $7a                                           ;; 0e:52ba .
-    db  $db ;;UNK_DB                                   ;; 0e:52bb $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:52bb $db
     db   $7b                                           ;; 0e:52bc .
     db  $00 ;;END                                      ;; 0e:52bd $00
 
@@ -3245,13 +3245,13 @@ script_040d:
     db   $7a                                           ;; 0e:52d5 .
     db  $01 ;;JR                                       ;; 0e:52d6 $01
     db   $08                                           ;; 0e:52d7 .
-    db  $db ;;UNK_DB                                   ;; 0e:52d8 $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:52d8 $db
     db   $78                                           ;; 0e:52d9 .
-    db  $db ;;UNK_DB                                   ;; 0e:52da $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:52da $db
     db   $79                                           ;; 0e:52db .
-    db  $db ;;UNK_DB                                   ;; 0e:52dc $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:52dc $db
     db   $7a                                           ;; 0e:52dd .
-    db  $db ;;UNK_DB                                   ;; 0e:52de $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:52de $db
     db   $7b                                           ;; 0e:52df .
     db  $00 ;;END                                      ;; 0e:52e0 $00
 
@@ -3264,13 +3264,13 @@ script_040e:
     db   $79                                           ;; 0e:52ed .
     db  $01 ;;JR                                       ;; 0e:52ee $01
     db   $08                                           ;; 0e:52ef .
-    db  $db ;;UNK_DB                                   ;; 0e:52f0 $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:52f0 $db
     db   $78                                           ;; 0e:52f1 .
-    db  $db ;;UNK_DB                                   ;; 0e:52f2 $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:52f2 $db
     db   $79                                           ;; 0e:52f3 .
-    db  $db ;;UNK_DB                                   ;; 0e:52f4 $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:52f4 $db
     db   $7a                                           ;; 0e:52f5 .
-    db  $db ;;UNK_DB                                   ;; 0e:52f6 $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:52f6 $db
     db   $7b                                           ;; 0e:52f7 .
     db  $00 ;;END                                      ;; 0e:52f8 $00
 
@@ -3580,7 +3580,7 @@ script_0435:
     db  $90 ;;UNK_90                                   ;; 0e:54b0 $90
     db  $9b ;;UNK_9B                                   ;; 0e:54b1 $9b
     db  $98 ;;UNK_98                                   ;; 0e:54b2 $98
-    db  $db ;;UNK_DB                                   ;; 0e:54b3 $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:54b3 $db
     db   $53                                           ;; 0e:54b4 .
     db  $f8 ;;SET_MUSIC                                ;; 0e:54b5 $f8
     db   $14                                           ;; 0e:54b6 .
@@ -4015,7 +4015,7 @@ script_0451:
     db   "<1b> Bye!<12>"                               ;; 0e:5821 ......
     db   "<11>", $00                                   ;; 0e:5827 ...
     db  $98 ;;UNK_98                                   ;; 0e:582a $98
-    db  $db ;;UNK_DB                                   ;; 0e:582b $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:582b $db
     db   $52                                           ;; 0e:582c .
     db  $f0 ;;DELAY                                    ;; 0e:582d $f0
     db   $3c                                           ;; 0e:582e .
@@ -4366,7 +4366,7 @@ script_0471:
     db   $07                                           ;; 0e:5a8a .
     db  $f9 ;;SFX                                      ;; 0e:5a8b $f9
     db   $07                                           ;; 0e:5a8c .
-    db  $db ;;UNK_DB                                   ;; 0e:5a8d $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:5a8d $db
     db   $6f                                           ;; 0e:5a8e .
     db  $00 ;;END                                      ;; 0e:5a8f $00
 
@@ -4376,49 +4376,49 @@ script_0472:
     db   "<13>", $00                                   ;; 0e:5aa5 ...
     db  $08 ;;IF ? JR                                  ;; 0e:5aa8 $08
     db   $ff, $00, $2c                                 ;; 0e:5aa9 ...
-    db  $9c ;;UNK_9C                                   ;; 0e:5aac $9c
+    db  $9c ;;GIVE_FOLLOWER                            ;; 0e:5aac $9c
     db   $09                                           ;; 0e:5aad .
     db  $da ;;SET_FLAG                                 ;; 0e:5aae $da
     db   $58                                           ;; 0e:5aaf .
-    db  $db ;;UNK_DB                                   ;; 0e:5ab0 $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:5ab0 $db
     db   $5b                                           ;; 0e:5ab1 .
-    db  $db ;;UNK_DB                                   ;; 0e:5ab2 $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:5ab2 $db
     db   $5c                                           ;; 0e:5ab3 .
-    db  $db ;;UNK_DB                                   ;; 0e:5ab4 $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:5ab4 $db
     db   $5d                                           ;; 0e:5ab5 .
-    db  $db ;;UNK_DB                                   ;; 0e:5ab6 $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:5ab6 $db
     db   $5e                                           ;; 0e:5ab7 .
-    db  $db ;;UNK_DB                                   ;; 0e:5ab8 $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:5ab8 $db
     db   $5f                                           ;; 0e:5ab9 .
-    db  $db ;;UNK_DB                                   ;; 0e:5aba $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:5aba $db
     db   $60                                           ;; 0e:5abb .
-    db  $db ;;UNK_DB                                   ;; 0e:5abc $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:5abc $db
     db   $61                                           ;; 0e:5abd .
-    db  $db ;;UNK_DB                                   ;; 0e:5abe $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:5abe $db
     db   $62                                           ;; 0e:5abf .
-    db  $db ;;UNK_DB                                   ;; 0e:5ac0 $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:5ac0 $db
     db   $63                                           ;; 0e:5ac1 .
-    db  $db ;;UNK_DB                                   ;; 0e:5ac2 $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:5ac2 $db
     db   $64                                           ;; 0e:5ac3 .
-    db  $db ;;UNK_DB                                   ;; 0e:5ac4 $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:5ac4 $db
     db   $65                                           ;; 0e:5ac5 .
-    db  $db ;;UNK_DB                                   ;; 0e:5ac6 $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:5ac6 $db
     db   $66                                           ;; 0e:5ac7 .
-    db  $db ;;UNK_DB                                   ;; 0e:5ac8 $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:5ac8 $db
     db   $67                                           ;; 0e:5ac9 .
-    db  $db ;;UNK_DB                                   ;; 0e:5aca $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:5aca $db
     db   $68                                           ;; 0e:5acb .
-    db  $db ;;UNK_DB                                   ;; 0e:5acc $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:5acc $db
     db   $69                                           ;; 0e:5acd .
-    db  $db ;;UNK_DB                                   ;; 0e:5ace $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:5ace $db
     db   $6a                                           ;; 0e:5acf .
-    db  $db ;;UNK_DB                                   ;; 0e:5ad0 $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:5ad0 $db
     db   $6b                                           ;; 0e:5ad1 .
-    db  $db ;;UNK_DB                                   ;; 0e:5ad2 $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:5ad2 $db
     db   $6c                                           ;; 0e:5ad3 .
-    db  $db ;;UNK_DB                                   ;; 0e:5ad4 $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:5ad4 $db
     db   $6d                                           ;; 0e:5ad5 .
-    db  $db ;;UNK_DB                                   ;; 0e:5ad6 $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:5ad6 $db
     db   $6e                                           ;; 0e:5ad7 .
     db  $04 ;;MSG                                      ;; 0e:5ad8 $04
     db   "<11>", $00                                   ;; 0e:5ad9 ..
@@ -4435,7 +4435,7 @@ script_0473:
     db   "<10> Wait for me!<12>"                       ;; 0e:5ae3 ........
     db   "<11>", $00                                   ;; 0e:5aeb ...
     db  $98 ;;UNK_98                                   ;; 0e:5aee $98
-    db  $db ;;UNK_DB                                   ;; 0e:5aef $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:5aef $db
     db   $58                                           ;; 0e:5af0 .
     db  $00 ;;END                                      ;; 0e:5af1 $00
 
@@ -4448,7 +4448,7 @@ script_0474:
     db  $0b ;;IF JR                                    ;; 0e:5af9 $0b
     db   $f5, $00, $03                                 ;; 0e:5afa ...
     db  $a1 ;;UNK_A1                                   ;; 0e:5afd $a1
-    db  $db ;;UNK_DB                                   ;; 0e:5afe $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:5afe $db
     db   $70                                           ;; 0e:5aff .
     db  $00 ;;END                                      ;; 0e:5b00 $00
 
@@ -4504,13 +4504,13 @@ script_047c:
     db   $5c, $00, $03                                 ;; 0e:5b2d ...
     db  $02 ;;CALL                                     ;; 0e:5b30 $02
     db   $5b, $01                                      ;; 0e:5b31 ..
-    db  $db ;;UNK_DB                                   ;; 0e:5b33 $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:5b33 $db
     db   $78                                           ;; 0e:5b34 .
-    db  $db ;;UNK_DB                                   ;; 0e:5b35 $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:5b35 $db
     db   $79                                           ;; 0e:5b36 .
-    db  $db ;;UNK_DB                                   ;; 0e:5b37 $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:5b37 $db
     db   $7a                                           ;; 0e:5b38 .
-    db  $db ;;UNK_DB                                   ;; 0e:5b39 $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:5b39 $db
     db   $7b                                           ;; 0e:5b3a .
     db  $00 ;;END                                      ;; 0e:5b3b $00
 
@@ -4775,7 +4775,7 @@ script_04b0:
     db  $90 ;;UNK_90                                   ;; 0e:5c36 $90
     db  $00 ;;END                                      ;; 0e:5c37 $00
     db  $98 ;;UNK_98                                   ;; 0e:5c38 $98
-    db  $db ;;UNK_DB                                   ;; 0e:5c39 $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:5c39 $db
     db   $58                                           ;; 0e:5c3a .
     db  $da ;;SET_FLAG                                 ;; 0e:5c3b $da
     db   $5e                                           ;; 0e:5c3c .
@@ -4875,7 +4875,7 @@ script_04d9:
     db   "<1b><GIRL>:We have to\n get it back!\n __ Let's go!<12>" ;; 0e:5cce ............................
     db   "<1b> Dark Lord's room\n is on the top\n floor!<12>" ;; 0e:5cea .............................
     db   "<11>", $00                                   ;; 0e:5d07 ...
-    db  $9c ;;UNK_9C                                   ;; 0e:5d0a $9c
+    db  $9c ;;GIVE_FOLLOWER                            ;; 0e:5d0a $9c
     db   $01                                           ;; 0e:5d0b .
     db  $da ;;SET_FLAG                                 ;; 0e:5d0c $da
     db   $1e                                           ;; 0e:5d0d .
@@ -4959,9 +4959,9 @@ script_04e2:
     db   $79                                           ;; 0e:5d7b .
     db  $08 ;;IF ? JR                                  ;; 0e:5d7c $08
     db   $f8, $00, $04                                 ;; 0e:5d7d ...
-    db  $db ;;UNK_DB                                   ;; 0e:5d80 $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:5d80 $db
     db   $79                                           ;; 0e:5d81 .
-    db  $db ;;UNK_DB                                   ;; 0e:5d82 $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:5d82 $db
     db   $7a                                           ;; 0e:5d83 .
     db  $00 ;;END                                      ;; 0e:5d84 $00
 
@@ -4972,15 +4972,15 @@ script_04e3:
     db   $7a                                           ;; 0e:5d8a .
     db  $08 ;;IF ? JR                                  ;; 0e:5d8b $08
     db   $f8, $00, $04                                 ;; 0e:5d8c ...
-    db  $db ;;UNK_DB                                   ;; 0e:5d8f $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:5d8f $db
     db   $79                                           ;; 0e:5d90 .
-    db  $db ;;UNK_DB                                   ;; 0e:5d91 $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:5d91 $db
     db   $7a                                           ;; 0e:5d92 .
     db  $08 ;;IF ? JR                                  ;; 0e:5d93 $08
     db   $f9, $00, $04                                 ;; 0e:5d94 ...
-    db  $db ;;UNK_DB                                   ;; 0e:5d97 $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:5d97 $db
     db   $78                                           ;; 0e:5d98 .
-    db  $db ;;UNK_DB                                   ;; 0e:5d99 $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:5d99 $db
     db   $7a                                           ;; 0e:5d9a .
     db  $00 ;;END                                      ;; 0e:5d9b $00
 
@@ -4995,11 +4995,11 @@ script_04e4:
     db   $02, $08, $06                                 ;; 0e:5da9 ...
     db  $01 ;;JR                                       ;; 0e:5dac $01
     db   $06                                           ;; 0e:5dad .
-    db  $db ;;UNK_DB                                   ;; 0e:5dae $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:5dae $db
     db   $78                                           ;; 0e:5daf .
-    db  $db ;;UNK_DB                                   ;; 0e:5db0 $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:5db0 $db
     db   $79                                           ;; 0e:5db1 .
-    db  $db ;;UNK_DB                                   ;; 0e:5db2 $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:5db2 $db
     db   $7a                                           ;; 0e:5db3 .
     db  $00 ;;END                                      ;; 0e:5db4 $00
 
@@ -5069,7 +5069,7 @@ script_04ea:
     db   $02, $08, $06                                 ;; 0e:5e0c ...
     db  $0c ;;IF ! JR                                  ;; 0e:5e0f $0c
     db   $a9, $a9, $00, $02                            ;; 0e:5e10 ....
-    db  $db ;;UNK_DB                                   ;; 0e:5e14 $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:5e14 $db
     db   $78                                           ;; 0e:5e15 .
     db  $00 ;;END                                      ;; 0e:5e16 $00
 
@@ -5086,7 +5086,7 @@ script_04eb:
     db   $02, $08, $06                                 ;; 0e:5e25 ...
     db  $0c ;;IF ! JR                                  ;; 0e:5e28 $0c
     db   $a9, $a9, $00, $02                            ;; 0e:5e29 ....
-    db  $db ;;UNK_DB                                   ;; 0e:5e2d $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:5e2d $db
     db   $79                                           ;; 0e:5e2e .
     db  $00 ;;END                                      ;; 0e:5e2f $00
 
@@ -5135,9 +5135,9 @@ script_04f2:
     db   $69                                           ;; 0e:5e59 .
     db  $fd ;;SPAWN_NPC                                ;; 0e:5e5a $fd
     db   $00                                           ;; 0e:5e5b .
-    db  $db ;;UNK_DB                                   ;; 0e:5e5c $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:5e5c $db
     db   $78                                           ;; 0e:5e5d .
-    db  $db ;;UNK_DB                                   ;; 0e:5e5e $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:5e5e $db
     db   $79                                           ;; 0e:5e5f .
     db  $00 ;;END                                      ;; 0e:5e60 $00
 
@@ -5185,7 +5185,7 @@ script_04f7:
     db  $e0 ;;UNK_E0                                   ;; 0e:5e93 $e0
     db  $0c ;;IF ! JR                                  ;; 0e:5e94 $0c
     db   $a9, $00, $02                                 ;; 0e:5e95 ...
-    db  $db ;;UNK_DB                                   ;; 0e:5e98 $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:5e98 $db
     db   $78                                           ;; 0e:5e99 .
     db  $00 ;;END                                      ;; 0e:5e9a $00
 
@@ -5201,7 +5201,7 @@ script_04f8:
     db  $e0 ;;UNK_E0                                   ;; 0e:5ea7 $e0
     db  $0c ;;IF ! JR                                  ;; 0e:5ea8 $0c
     db   $a9, $00, $02                                 ;; 0e:5ea9 ...
-    db  $db ;;UNK_DB                                   ;; 0e:5eac $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:5eac $db
     db   $79                                           ;; 0e:5ead .
     db  $00 ;;END                                      ;; 0e:5eae $00
 
@@ -5243,7 +5243,7 @@ script_04fb:
     db  $e4 ;;UNK_E4                                   ;; 0e:5edd $e4
     db  $01 ;;JR                                       ;; 0e:5ede $01
     db   $02                                           ;; 0e:5edf .
-    db  $db ;;UNK_DB                                   ;; 0e:5ee0 $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:5ee0 $db
     db   $78                                           ;; 0e:5ee1 .
     db  $00 ;;END                                      ;; 0e:5ee2 $00
 
@@ -5259,7 +5259,7 @@ script_04fc:
     db  $e4 ;;UNK_E4                                   ;; 0e:5eef $e4
     db  $01 ;;JR                                       ;; 0e:5ef0 $01
     db   $02                                           ;; 0e:5ef1 .
-    db  $db ;;UNK_DB                                   ;; 0e:5ef2 $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:5ef2 $db
     db   $79                                           ;; 0e:5ef3 .
     db  $00 ;;END                                      ;; 0e:5ef4 $00
 
@@ -5423,7 +5423,7 @@ script_050c:
     db   $c9, $00, $10                                 ;; 0e:5fbd ...
     db  $08 ;;IF ? JR                                  ;; 0e:5fc0 $08
     db   $78, $00, $07                                 ;; 0e:5fc1 ...
-    db  $db ;;UNK_DB                                   ;; 0e:5fc4 $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:5fc4 $db
     db   $78                                           ;; 0e:5fc5 .
     db  $f9 ;;SFX                                      ;; 0e:5fc6 $f9
     db   $10                                           ;; 0e:5fc7 .
@@ -6345,13 +6345,13 @@ script_0539:
     db   $0f, $46, $04, $0a                            ;; 0e:68d7 ....
     db  $da ;;SET_FLAG                                 ;; 0e:68db $da
     db   $1f                                           ;; 0e:68dc .
-    db  $db ;;UNK_DB                                   ;; 0e:68dd $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:68dd $db
     db   $5b                                           ;; 0e:68de .
-    db  $db ;;UNK_DB                                   ;; 0e:68df $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:68df $db
     db   $5c                                           ;; 0e:68e0 .
-    db  $db ;;UNK_DB                                   ;; 0e:68e1 $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:68e1 $db
     db   $5f                                           ;; 0e:68e2 .
-    db  $db ;;UNK_DB                                   ;; 0e:68e3 $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:68e3 $db
     db   $6b                                           ;; 0e:68e4 .
     db  $02 ;;CALL                                     ;; 0e:68e5 $02
     db   $0b, $92                                      ;; 0e:68e6 ..
@@ -6445,7 +6445,7 @@ script_053a:
     db   $24                                           ;; 0e:6afc .
     db  $fd ;;SPAWN_NPC                                ;; 0e:6afd $fd
     db   $02                                           ;; 0e:6afe .
-    db  $db ;;UNK_DB                                   ;; 0e:6aff $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:6aff $db
     db   $51                                           ;; 0e:6b00 .
     db  $da ;;SET_FLAG                                 ;; 0e:6b01 $da
     db   $10                                           ;; 0e:6b02 .
@@ -7838,7 +7838,7 @@ script_0548:
     db  $04 ;;MSG                                      ;; 0e:7a9b $04
     db   "<10><BOY>:_ _ Good m_\n       ?!\n<GIRL> is missing!<12>" ;; 0e:7a9c ............................
     db   "<11>", $00                                   ;; 0e:7ab8 ...
-    db  $db ;;UNK_DB                                   ;; 0e:7abb $db
+    db  $db ;;CLEAR_FLAG                               ;; 0e:7abb $db
     db   $51                                           ;; 0e:7abc .
     db  $da ;;SET_FLAG                                 ;; 0e:7abd $da
     db   $0d                                           ;; 0e:7abe .

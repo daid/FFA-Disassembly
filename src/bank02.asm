@@ -3038,7 +3038,7 @@ code_002_5428:
 
 code_002_5435:
     ld   A, $05                                        ;; 02:5435 $3e $05
-    call code_000_3bee                                 ;; 02:5437 $cd $ee $3b
+    call clearScriptFlag                               ;; 02:5437 $cd $ee $3b
     ld   A, [HL+]                                      ;; 02:543a $2a
     inc  DE                                            ;; 02:543b $13
     or   A, A                                          ;; 02:543c $b7

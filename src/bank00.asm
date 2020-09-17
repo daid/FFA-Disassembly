@@ -2384,13 +2384,13 @@ scriptOpCodeA9:
     cp   A, $0f                                        ;; 00:0d6b $fe $0f
     jr   Z, .code_0d79                                 ;; 00:0d6d $28 $0a
     ld   A, $7f                                        ;; 00:0d6f $3e $7f
-    call code_000_3be4                                 ;; 00:0d71 $cd $e4 $3b
+    call setScriptFlag                                 ;; 00:0d71 $cd $e4 $3b
     pop  HL                                            ;; 00:0d74 $e1
     call getNextScriptInstruction                      ;; 00:0d75 $cd $27 $37
     ret                                                ;; 00:0d78 $c9
 .code_0d79:
     ld   A, $7f                                        ;; 00:0d79 $3e $7f
-    call code_000_3bee                                 ;; 00:0d7b $cd $ee $3b
+    call clearScriptFlag                               ;; 00:0d7b $cd $ee $3b
     pop  HL                                            ;; 00:0d7e $e1
     call getNextScriptInstruction                      ;; 00:0d7f $cd $27 $37
     ret                                                ;; 00:0d82 $c9
@@ -5986,11 +5986,11 @@ code_000_2426:
 loadRoomTiles:
     push HL                                            ;; 00:242b $e5
     ld   A, $07                                        ;; 00:242c $3e $07
-    call code_000_3bee                                 ;; 00:242e $cd $ee $3b
+    call clearScriptFlag                               ;; 00:242e $cd $ee $3b
     call LoadRoomXY_to_A                               ;; 00:2431 $cd $0e $22
     call code_000_21bf                                 ;; 00:2434 $cd $bf $21
     ld   A, $07                                        ;; 00:2437 $3e $07
-    call NZ, code_000_3be4                             ;; 00:2439 $c4 $e4 $3b
+    call NZ, setScriptFlag                             ;; 00:2439 $c4 $e4 $3b
     pop  DE                                            ;; 00:243c $d1
     ld   HL, wRoomTiles                                ;; 00:243d $21 $50 $c3
     ld   B, $50                                        ;; 00:2440 $06 $50
@@ -8926,7 +8926,7 @@ code_000_35e4:
 code_000_35ef:
     push HL                                            ;; 00:35ef $e5
     push AF                                            ;; 00:35f0 $f5
-    call code_000_3602                                 ;; 00:35f1 $cd $02 $36
+    call getScriptFlag                                 ;; 00:35f1 $cd $02 $36
     ld   B, A                                          ;; 00:35f4 $47
     and  A, C                                          ;; 00:35f5 $a1
     ld   C, A                                          ;; 00:35f6 $4f
@@ -8941,7 +8941,13 @@ code_000_35ef:
     and  A, A                                          ;; 00:3600 $a7
     ret                                                ;; 00:3601 $c9
 
-code_000_3602:
+; Get a script flag
+; this required a bit index in A, in the range $00-$7F
+; Returned are:
+; A: Got the proper bit set for the flag number
+; C: Byte containing the flag
+; HL: Pointer to the byte containing the flag.
+getScriptFlag:
     and  A, $7f                                        ;; 00:3602 $e6 $7f
     ld   B, A                                          ;; 00:3604 $47
     ld   A, $7f                                        ;; 00:3605 $3e $7f
@@ -8952,7 +8958,7 @@ code_000_3602:
     srl  B                                             ;; 00:360d $cb $38
     and  A, $07                                        ;; 00:360f $e6 $07
     push AF                                            ;; 00:3611 $f5
-    ld   HL, wD7C6                                     ;; 00:3612 $21 $c6 $d7
+    ld   HL, wScriptFlags                              ;; 00:3612 $21 $c6 $d7
     ld   A, $0f                                        ;; 00:3615 $3e $0f
     sub  A, B                                          ;; 00:3617 $90
     ld   C, A                                          ;; 00:3618 $4f
@@ -9669,7 +9675,7 @@ scriptOpCodeD1:
     ld   H, A                                          ;; 00:3a7c $67
     jr   NC, .code_3a86                                ;; 00:3a7d $30 $07
     ld   A, $06                                        ;; 00:3a7f $3e $06
-    call code_000_3be4                                 ;; 00:3a81 $cd $e4 $3b
+    call setScriptFlag                                 ;; 00:3a81 $cd $e4 $3b
     jr   .code_3a93                                    ;; 00:3a84 $18 $0d
 .code_3a86:
     ld   A, H                                          ;; 00:3a86 $7c
@@ -9677,7 +9683,7 @@ scriptOpCodeD1:
     ld   A, L                                          ;; 00:3a8a $7d
     ld   [wMoneyLow], A                                ;; 00:3a8b $ea $be $d7
     ld   A, $06                                        ;; 00:3a8e $3e $06
-    call code_000_3bee                                 ;; 00:3a90 $cd $ee $3b
+    call clearScriptFlag                               ;; 00:3a90 $cd $ee $3b
 .code_3a93:
     call code_000_3117                                 ;; 00:3a93 $cd $17 $31
     pop  HL                                            ;; 00:3a96 $e1
@@ -9727,7 +9733,7 @@ scriptOpCodeD8:
 
 code_000_3ad6:
     ld   A, $05                                        ;; 00:3ad6 $3e $05
-    call code_000_3be4                                 ;; 00:3ad8 $cd $e4 $3b
+    call setScriptFlag                                 ;; 00:3ad8 $cd $e4 $3b
     push HL                                            ;; 00:3adb $e5
     ld   A, $06                                        ;; 00:3adc $3e $06
     ld   [wD84A], A                                    ;; 00:3ade $ea $4a $d8
@@ -9889,7 +9895,7 @@ code_000_3bb7:
     ld   [HL+], A                                      ;; 00:3bbd $22
     dec  B                                             ;; 00:3bbe $05
     jr   NZ, .code_3bbd                                ;; 00:3bbf $20 $fc
-    ld   HL, wD7C6                                     ;; 00:3bc1 $21 $c6 $d7
+    ld   HL, wScriptFlags                              ;; 00:3bc1 $21 $c6 $d7
     ld   B, $10                                        ;; 00:3bc4 $06 $10
 .code_3bc6:
     ld   [HL+], A                                      ;; 00:3bc6 $22
@@ -9904,30 +9910,32 @@ code_000_3bcb:
 
 scriptOpCodeDA:
     call getNextScriptInstruction                      ;; 00:3bd0 $cd $27 $37
-    call code_000_3be4                                 ;; 00:3bd3 $cd $e4 $3b
+    call setScriptFlag                                 ;; 00:3bd3 $cd $e4 $3b
     call getNextScriptInstruction                      ;; 00:3bd6 $cd $27 $37
     ret                                                ;; 00:3bd9 $c9
 
 scriptOpCodeDB:
     call getNextScriptInstruction                      ;; 00:3bda $cd $27 $37
-    call code_000_3bee                                 ;; 00:3bdd $cd $ee $3b
+    call clearScriptFlag                               ;; 00:3bdd $cd $ee $3b
     call getNextScriptInstruction                      ;; 00:3be0 $cd $27 $37
     ret                                                ;; 00:3be3 $c9
 
-code_000_3be4:
+; Set the script flag indicated by A
+setScriptFlag:
     push HL                                            ;; 00:3be4 $e5
     push BC                                            ;; 00:3be5 $c5
-    call code_000_3602                                 ;; 00:3be6 $cd $02 $36
+    call getScriptFlag                                 ;; 00:3be6 $cd $02 $36
     or   A, C                                          ;; 00:3be9 $b1
     ld   [HL], A                                       ;; 00:3bea $77
     pop  BC                                            ;; 00:3beb $c1
     pop  HL                                            ;; 00:3bec $e1
     ret                                                ;; 00:3bed $c9
 
-code_000_3bee:
+; Clear the script flag incated by A
+clearScriptFlag:
     push HL                                            ;; 00:3bee $e5
     push BC                                            ;; 00:3bef $c5
-    call code_000_3602                                 ;; 00:3bf0 $cd $02 $36
+    call getScriptFlag                                 ;; 00:3bf0 $cd $02 $36
     cpl                                                ;; 00:3bf3 $2f
     and  A, C                                          ;; 00:3bf4 $a1
     ld   [HL], A                                       ;; 00:3bf5 $77
@@ -9972,13 +9980,13 @@ code_000_3c24:
     rl   C                                             ;; 00:3c2f $cb $11
     rl   C                                             ;; 00:3c31 $cb $11
     rl   C                                             ;; 00:3c33 $cb $11
-    ld   A, [wD7C6]                                    ;; 00:3c35 $fa $c6 $d7
+    ld   A, [wScriptFlags]                             ;; 00:3c35 $fa $c6 $d7
     and  A, $87                                        ;; 00:3c38 $e6 $87
     ld   B, A                                          ;; 00:3c3a $47
     ld   A, C                                          ;; 00:3c3b $79
     and  A, $78                                        ;; 00:3c3c $e6 $78
     or   A, B                                          ;; 00:3c3e $b0
-    ld   [wD7C6], A                                    ;; 00:3c3f $ea $c6 $d7
+    ld   [wScriptFlags], A                             ;; 00:3c3f $ea $c6 $d7
     pop  BC                                            ;; 00:3c42 $c1
     ret                                                ;; 00:3c43 $c9
 
