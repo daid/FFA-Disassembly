@@ -1439,7 +1439,7 @@ code_003_480a:
     ld   A, [HL+]                                      ;; 03:4827 $2a
     push HL                                            ;; 03:4828 $e5
     call code_003_48bc                                 ;; 03:4829 $cd $bc $48
-    call code_000_3d16                                 ;; 03:482c $cd $16 $3d
+    call addXP                                         ;; 03:482c $cd $16 $3d
     pop  HL                                            ;; 03:482f $e1
     ld   A, [HL]                                       ;; 03:4830 $7e
     call code_003_48bc                                 ;; 03:4831 $cd $bc $48

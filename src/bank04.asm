@@ -955,7 +955,7 @@ code_004_4575:
     ld   A, [HL+]                                      ;; 04:4581 $2a
     push HL                                            ;; 04:4582 $e5
     call code_004_45ae                                 ;; 04:4583 $cd $ae $45
-    call code_000_3d16                                 ;; 04:4586 $cd $16 $3d
+    call addXP                                         ;; 04:4586 $cd $16 $3d
     pop  HL                                            ;; 04:4589 $e1
     ld   A, [HL]                                       ;; 04:458a $7e
     call code_004_45ae                                 ;; 04:458b $cd $ae $45

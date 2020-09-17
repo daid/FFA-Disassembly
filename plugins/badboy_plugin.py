@@ -314,6 +314,8 @@ OPCODES = {
     0xCF: ("NOP", 0),
 
     0xD1: ("CHECK_MONEY", 2),
+    0xD2: ("GIVE_XP", 2), # Add XP points (unused)
+    0xD3: ("TAKE_XP", 2), # Remove XP points (unused)
     0xD4: ("UNK_D4", 1),
     0xD5: ("UNK_D5", 1),
     0xD6: ("GIVE_MAGIC", 1),

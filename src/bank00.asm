@@ -9594,7 +9594,7 @@ scriptOpCodeD2:
     push HL                                            ;; 00:3a09 $e5
     push DE                                            ;; 00:3a0a $d5
     pop  HL                                            ;; 00:3a0b $e1
-    call code_000_3d16                                 ;; 00:3a0c $cd $16 $3d
+    call addXP                                         ;; 00:3a0c $cd $16 $3d
     pop  HL                                            ;; 00:3a0f $e1
     call getNextScriptInstruction                      ;; 00:3a10 $cd $27 $37
     ret                                                ;; 00:3a13 $c9
@@ -9609,7 +9609,7 @@ scriptOpCodeD3:
     ld   H, A                                          ;; 00:3a1c $67
     ld   A, [wXPLow]                                   ;; 00:3a1d $fa $bb $d7
     ld   L, A                                          ;; 00:3a20 $6f
-    ld   A, [wD7BD]                                    ;; 00:3a21 $fa $bd $d7
+    ld   A, [wXPHighExt]                               ;; 00:3a21 $fa $bd $d7
     ld   C, A                                          ;; 00:3a24 $4f
     ld   A, L                                          ;; 00:3a25 $7d
     sub  A, E                                          ;; 00:3a26 $93
@@ -9629,7 +9629,7 @@ scriptOpCodeD3:
     ld   A, L                                          ;; 00:3a3a $7d
     ld   [wXPLow], A                                   ;; 00:3a3b $ea $bb $d7
     ld   A, C                                          ;; 00:3a3e $79
-    ld   [wD7BD], A                                    ;; 00:3a3f $ea $bd $d7
+    ld   [wXPHighExt], A                               ;; 00:3a3f $ea $bd $d7
     pop  HL                                            ;; 00:3a42 $e1
     call getNextScriptInstruction                      ;; 00:3a43 $cd $27 $37
     ret                                                ;; 00:3a46 $c9
@@ -10120,13 +10120,14 @@ code_000_3d12:
     ld   A, [wD6C3]                                    ;; 00:3d12 $fa $c3 $d6
     ret                                                ;; 00:3d15 $c9
 
-code_000_3d16:
+; Add HL to the amount of XP the player has.
+addXP:
     push DE                                            ;; 00:3d16 $d5
     ld   A, [wXPHigh]                                  ;; 00:3d17 $fa $bc $d7
     ld   D, A                                          ;; 00:3d1a $57
     ld   A, [wXPLow]                                   ;; 00:3d1b $fa $bb $d7
     ld   E, A                                          ;; 00:3d1e $5f
-    ld   A, [wD7BD]                                    ;; 00:3d1f $fa $bd $d7
+    ld   A, [wXPHighExt]                               ;; 00:3d1f $fa $bd $d7
     add  HL, DE                                        ;; 00:3d22 $19
     adc  A, $00                                        ;; 00:3d23 $ce $00
     ld   C, A                                          ;; 00:3d25 $4f
@@ -10149,7 +10150,7 @@ code_000_3d16:
     ld   A, L                                          ;; 00:3d41 $7d
     ld   [wXPLow], A                                   ;; 00:3d42 $ea $bb $d7
     ld   A, C                                          ;; 00:3d45 $79
-    ld   [wD7BD], A                                    ;; 00:3d46 $ea $bd $d7
+    ld   [wXPHighExt], A                               ;; 00:3d46 $ea $bd $d7
     pop  DE                                            ;; 00:3d49 $d1
     ret                                                ;; 00:3d4a $c9
 
@@ -10161,7 +10162,7 @@ code_000_3d4b:
     ld   H, A                                          ;; 00:3d53 $67
     ld   A, [wXPLow]                                   ;; 00:3d54 $fa $bb $d7
     ld   L, A                                          ;; 00:3d57 $6f
-    ld   A, [wD7BD]                                    ;; 00:3d58 $fa $bd $d7
+    ld   A, [wXPHighExt]                               ;; 00:3d58 $fa $bd $d7
     ld   B, A                                          ;; 00:3d5b $47
     ld   A, [wD8C1]                                    ;; 00:3d5c $fa $c1 $d8
     ld   D, A                                          ;; 00:3d5f $57

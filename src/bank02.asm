@@ -3913,7 +3913,7 @@ code_002_5959:
     ld   H, A                                          ;; 02:598a $67
     ld   A, [wXPLow]                                   ;; 02:598b $fa $bb $d7
     ld   L, A                                          ;; 02:598e $6f
-    ld   A, [wD7BD]                                    ;; 02:598f $fa $bd $d7
+    ld   A, [wXPHighExt]                               ;; 02:598f $fa $bd $d7
     ld   C, A                                          ;; 02:5992 $4f
     call code_002_59ae                                 ;; 02:5993 $cd $ae $59
     ld   A, $76                                        ;; 02:5996 $3e $76 BackgroundTile
@@ -4066,7 +4066,7 @@ code_002_5a6e:
     ld   A, [wD874]                                    ;; 02:5a6e $fa $74 $d8
     and  A, B                                          ;; 02:5a71 $a0
     jr   Z, .code_5a8d                                 ;; 02:5a72 $28 $19
-    call code_002_7458                                 ;; 02:5a74 $cd $58 $74
+    call enableSRAM                                    ;; 02:5a74 $cd $58 $74
     call code_002_74d5                                 ;; 02:5a77 $cd $d5 $74
     ld   DE, $0008                                     ;; 02:5a7a $11 $08 $00
     add  HL, DE                                        ;; 02:5a7d $19
@@ -4074,7 +4074,7 @@ code_002_5a6e:
     call code_002_752e                                 ;; 02:5a81 $cd $2e $75
     call code_002_7566                                 ;; 02:5a84 $cd $66 $75
     call code_002_7589                                 ;; 02:5a87 $cd $89 $75
-    call code_002_745e                                 ;; 02:5a8a $cd $5e $74
+    call disableSRAM                                   ;; 02:5a8a $cd $5e $74
 .code_5a8d:
     ld   A, [wD850]                                    ;; 02:5a8d $fa $50 $d8
     ld   [wD853], A                                    ;; 02:5a90 $ea $53 $d8
@@ -6087,7 +6087,7 @@ code_002_6e25:
     ld   A, L                                          ;; 02:6eab $7d
     ld   [wXPLow], A                                   ;; 02:6eac $ea $bb $d7
     xor  A, A                                          ;; 02:6eaf $af
-    ld   [wD7BD], A                                    ;; 02:6eb0 $ea $bd $d7
+    ld   [wXPHighExt], A                               ;; 02:6eb0 $ea $bd $d7
     inc  A                                             ;; 02:6eb3 $3c
     ld   [wLevel], A                                   ;; 02:6eb4 $ea $ba $d7
     call code_000_3ea3                                 ;; 02:6eb7 $cd $a3 $3e
@@ -6635,7 +6635,7 @@ code_002_71fb:
     ld   HL, wStatStamina                              ;; 02:7228 $21 $c1 $d7
     ld   DE, wD7D8                                     ;; 02:722b $11 $d8 $d7
     ld   B, $04                                        ;; 02:722e $06 $04
-    call code_002_72b3                                 ;; 02:7230 $cd $b3 $72
+    call swapHL_DE                                     ;; 02:7230 $cd $b3 $72
     pop  HL                                            ;; 02:7233 $e1
     pop  DE                                            ;; 02:7234 $d1
     pop  BC                                            ;; 02:7235 $c1
@@ -6659,7 +6659,7 @@ code_002_71fb:
     push HL                                            ;; 02:7260 $e5
     pop  DE                                            ;; 02:7261 $d1
     pop  HL                                            ;; 02:7262 $e1
-    call code_002_7458                                 ;; 02:7263 $cd $58 $74
+    call enableSRAM                                    ;; 02:7263 $cd $58 $74
     ld   DE, wD7A7                                     ;; 02:7266 $11 $a7 $d7
     ld   B, $31                                        ;; 02:7269 $06 $31
     call code_002_7448                                 ;; 02:726b $cd $48 $74
@@ -6674,7 +6674,7 @@ code_002_71fb:
     call code_002_7448                                 ;; 02:7283 $cd $48 $74
     ld   A, $c6                                        ;; 02:7286 $3e $c6
     call code_002_7464                                 ;; 02:7288 $cd $64 $74
-    call code_002_745e                                 ;; 02:728b $cd $5e $74
+    call disableSRAM                                   ;; 02:728b $cd $5e $74
     ld   A, $1b                                        ;; 02:728e $3e $1b
     ld   [wD84A], A                                    ;; 02:7290 $ea $4a $d8
     ld   A, $01                                        ;; 02:7293 $3e $01
@@ -6687,7 +6687,7 @@ code_002_71fb:
     ld   HL, wD7D8                                     ;; 02:729d $21 $d8 $d7
     ld   DE, wStatStamina                              ;; 02:72a0 $11 $c1 $d7
     ld   B, $04                                        ;; 02:72a3 $06 $04
-    call code_002_72b3                                 ;; 02:72a5 $cd $b3 $72
+    call swapHL_DE                                     ;; 02:72a5 $cd $b3 $72
     pop  HL                                            ;; 02:72a8 $e1
     pop  DE                                            ;; 02:72a9 $d1
     pop  BC                                            ;; 02:72aa $c1
@@ -6698,7 +6698,8 @@ code_002_72ac:
     call code_002_564c                                 ;; 02:72af $cd $4c $56
     ret                                                ;; 02:72b2 $c9
 
-code_002_72b3:
+; Swap out the memory blocks at HL and DE with the size in B
+swapHL_DE:
     ld   A, [HL]                                       ;; 02:72b3 $7e
     ld   C, A                                          ;; 02:72b4 $4f
     ld   A, [DE]                                       ;; 02:72b5 $1a
@@ -6707,7 +6708,7 @@ code_002_72b3:
     ld   [DE], A                                       ;; 02:72b8 $12
     inc  DE                                            ;; 02:72b9 $13
     dec  B                                             ;; 02:72ba $05
-    jr   NZ, code_002_72b3                             ;; 02:72bb $20 $f6
+    jr   NZ, swapHL_DE                                 ;; 02:72bb $20 $f6
     ret                                                ;; 02:72bd $c9
 
 code_002_72be:
@@ -6737,7 +6738,7 @@ code_002_72be:
 .code_72e9:
     ld   A, [wD84A]                                    ;; 02:72e9 $fa $4a $d8
     ld   [wD84B], A                                    ;; 02:72ec $ea $4b $d8
-    call code_002_7458                                 ;; 02:72ef $cd $58 $74
+    call enableSRAM                                    ;; 02:72ef $cd $58 $74
     ld   DE, wD7A7                                     ;; 02:72f2 $11 $a7 $d7
     ld   B, $31                                        ;; 02:72f5 $06 $31
     call code_002_743f                                 ;; 02:72f7 $cd $3f $74
@@ -6750,7 +6751,7 @@ code_002_72be:
     ld   DE, wD633                                     ;; 02:730a $11 $33 $d6
     ld   B, $08                                        ;; 02:730d $06 $08
     call code_002_743f                                 ;; 02:730f $cd $3f $74
-    call code_002_745e                                 ;; 02:7312 $cd $5e $74
+    call disableSRAM                                   ;; 02:7312 $cd $5e $74
     call code_002_7322                                 ;; 02:7315 $cd $22 $73
     call code_002_7156                                 ;; 02:7318 $cd $56 $71
     call code_002_7165                                 ;; 02:731b $cd $65 $71
@@ -6946,12 +6947,12 @@ code_002_7451:
     jr   NZ, code_002_7451                             ;; 02:7455 $20 $fa
     ret                                                ;; 02:7457 $c9
 
-code_002_7458:
+enableSRAM:
     ld   A, $0a                                        ;; 02:7458 $3e $0a
     ld   [$0000], A                                    ;; 02:745a $ea $00 $00
     ret                                                ;; 02:745d $c9
 
-code_002_745e:
+disableSRAM:
     ld   A, $09                                        ;; 02:745e $3e $09
     ld   [$0000], A                                    ;; 02:7460 $ea $00 $00
     ret                                                ;; 02:7463 $c9
@@ -6980,7 +6981,7 @@ code_002_746f:
 
 code_002_747c:
     push AF                                            ;; 02:747c $f5
-    call code_002_7458                                 ;; 02:747d $cd $58 $74
+    call enableSRAM                                    ;; 02:747d $cd $58 $74
     call code_002_746f                                 ;; 02:7480 $cd $6f $74
     cp   A, $6c                                        ;; 02:7483 $fe $6c
     jr   NZ, .code_74a5                                ;; 02:7485 $20 $1e
@@ -7007,7 +7008,7 @@ code_002_747c:
     inc  HL                                            ;; 02:74a5 $23
     inc  HL                                            ;; 02:74a6 $23
 .code_74a7:
-    call code_002_745e                                 ;; 02:74a7 $cd $5e $74
+    call disableSRAM                                   ;; 02:74a7 $cd $5e $74
     pop  AF                                            ;; 02:74aa $f1
     cpl                                                ;; 02:74ab $2f
     ld   B, A                                          ;; 02:74ac $47
@@ -7017,7 +7018,7 @@ code_002_747c:
     scf                                                ;; 02:74b4 $37
     ret                                                ;; 02:74b5 $c9
 .code_74b6:
-    call code_002_745e                                 ;; 02:74b6 $cd $5e $74
+    call disableSRAM                                   ;; 02:74b6 $cd $5e $74
     pop  HL                                            ;; 02:74b9 $e1
     pop  AF                                            ;; 02:74ba $f1
     ld   B, A                                          ;; 02:74bb $47

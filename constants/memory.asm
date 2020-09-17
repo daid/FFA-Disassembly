@@ -624,7 +624,7 @@ wXPLow: ;; $d7bb
   ds 1
 wXPHigh: ;; $d7bc
   ds 1
-wD7BD: ;; $d7bd
+wXPHighExt: ;; $d7bd
   ds 1
 wMoneyLow: ;; $d7be
   ds 1
