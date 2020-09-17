@@ -348,8 +348,8 @@ OPCODES = {
     0xF0: ("DELAY", 1),
     0xF1: ("FULL_HP_DUMMY", 0),
     0xF2: ("FULL_HP_DUMMY", 0),
-    0xF3: ("LOAD_MAP_INSTANT", 4), # MapNr, RoomXY, PlayerX, PlayerY
-    0xF4: ("LOAD_MAP", 4), # MapNr, RoomXY, PlayerX, PlayerY
+    0xF3: ("LOAD_ROOM_INSTANT", 4), # MapNr, RoomXY, PlayerX, PlayerY
+    0xF4: ("LOAD_ROOM", 4), # MapNr, RoomXY, PlayerX, PlayerY
     0xF5: ("FULL_HP_DUMMY", 0),
     0xF6: ("OPEN_SHOP", 1), # shop item table number
     0xF7: ("FULL_HP_DUMMY", 0),

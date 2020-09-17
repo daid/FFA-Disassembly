@@ -2694,7 +2694,7 @@ scriptOpCodeB0:
     ld   D, [HL]                                       ;; 00:0f21 $56
     inc  HL                                            ;; 00:0f22 $23
     push HL                                            ;; 00:0f23 $e5
-    call code_000_2400                                 ;; 00:0f24 $cd $00 $24
+    call setRoomTile                                   ;; 00:0f24 $cd $00 $24
     pop  HL                                            ;; 00:0f27 $e1
     call getNextScriptInstruction                      ;; 00:0f28 $cd $27 $37
     ret                                                ;; 00:0f2b $c9
@@ -5940,7 +5940,9 @@ code_000_23b9:
     inc  A                                             ;; 00:23ef $3c
     ret                                                ;; 00:23f0 $c9
 
-code_000_23f1:
+; Param: DE = XY position
+; Return: HL = pointer to metatile
+getRoomMetaTilePointer:
     ld   HL, wRoomTiles                                ;; 00:23f1 $21 $50 $c3
     ld   A, D                                          ;; 00:23f4 $7a
     add  A, A                                          ;; 00:23f5 $87
@@ -5954,14 +5956,17 @@ code_000_23f1:
     add  HL, DE                                        ;; 00:23fe $19
     ret                                                ;; 00:23ff $c9
 
-code_000_2400:
+; Set room tile:
+; A = meta tile number
+; DE = XY position
+setRoomTile:
     push AF                                            ;; 00:2400 $f5
     push DE                                            ;; 00:2401 $d5
     ld   A, [wMapTableBankNr]                          ;; 00:2402 $fa $f0 $c3
     call pushBankNrAndSwitch                           ;; 00:2405 $cd $fb $29
     pop  DE                                            ;; 00:2408 $d1
     push DE                                            ;; 00:2409 $d5
-    call code_000_23f1                                 ;; 00:240a $cd $f1 $23
+    call getRoomMetaTilePointer                        ;; 00:240a $cd $f1 $23
     pop  DE                                            ;; 00:240d $d1
     pop  AF                                            ;; 00:240e $f1
     ld   [HL], A                                       ;; 00:240f $77
@@ -5979,7 +5984,7 @@ code_000_2400:
     ret                                                ;; 00:2425 $c9
 
 code_000_2426:
-    call code_000_23f1                                 ;; 00:2426 $cd $f1 $23
+    call getRoomMetaTilePointer                        ;; 00:2426 $cd $f1 $23
     ld   A, [HL]                                       ;; 00:2429 $7e
     ret                                                ;; 00:242a $c9
 
@@ -8110,17 +8115,17 @@ code_000_30ff:
     jp   callFunctionInBank02                          ;; 00:3102 $c3 $06 $1f
     db   $f5, $3e, $23, $c3, $06, $1f                  ;; 00:3105 ??????
 
-code_000_310b:
+drawHPOnStatuBarTrampoline:
     push AF                                            ;; 00:310b $f5
     ld   A, $24                                        ;; 00:310c $3e $24
     jp   callFunctionInBank02                          ;; 00:310e $c3 $06 $1f
 
-code_000_3111:
+drawManaOnStatusBarTrampoline:
     push AF                                            ;; 00:3111 $f5
     ld   A, $25                                        ;; 00:3112 $3e $25
     jp   callFunctionInBank02                          ;; 00:3114 $c3 $06 $1f
 
-code_000_3117:
+drawMoneyOnStatusBarTrampoline:
     push AF                                            ;; 00:3117 $f5
     ld   A, $26                                        ;; 00:3118 $3e $26
     jp   callFunctionInBank02                          ;; 00:311a $c3 $06 $1f
@@ -9484,7 +9489,7 @@ scriptOpCodeFA:
     ld   A, E                                          ;; 00:3953 $7b
     ld   [wHPLow], A                                   ;; 00:3954 $ea $b2 $d7
     push HL                                            ;; 00:3957 $e5
-    call code_000_310b                                 ;; 00:3958 $cd $0b $31
+    call drawHPOnStatuBarTrampoline                    ;; 00:3958 $cd $0b $31
     pop  HL                                            ;; 00:395b $e1
     call getNextScriptInstruction                      ;; 00:395c $cd $27 $37
     ret                                                ;; 00:395f $c9
@@ -9499,7 +9504,7 @@ scriptOpCodeC1:
     ld   A, E                                          ;; 00:396c $7b
     ld   [wManaLow], A                                 ;; 00:396d $ea $b6 $d7
     push HL                                            ;; 00:3970 $e5
-    call code_000_3111                                 ;; 00:3971 $cd $11 $31
+    call drawManaOnStatusBarTrampoline                 ;; 00:3971 $cd $11 $31
     pop  HL                                            ;; 00:3974 $e1
     call getNextScriptInstruction                      ;; 00:3975 $cd $27 $37
     ret                                                ;; 00:3978 $c9
@@ -9652,7 +9657,7 @@ scriptOpCodeD0:
     ld   [wMoneyHigh], A                               ;; 00:3a5b $ea $bf $d7
     ld   A, L                                          ;; 00:3a5e $7d
     ld   [wMoneyLow], A                                ;; 00:3a5f $ea $be $d7
-    call code_000_3117                                 ;; 00:3a62 $cd $17 $31
+    call drawMoneyOnStatusBarTrampoline                ;; 00:3a62 $cd $17 $31
     pop  HL                                            ;; 00:3a65 $e1
     call getNextScriptInstruction                      ;; 00:3a66 $cd $27 $37
     ret                                                ;; 00:3a69 $c9
@@ -9685,7 +9690,7 @@ scriptOpCodeD1:
     ld   A, $06                                        ;; 00:3a8e $3e $06
     call clearScriptFlag                               ;; 00:3a90 $cd $ee $3b
 .code_3a93:
-    call code_000_3117                                 ;; 00:3a93 $cd $17 $31
+    call drawMoneyOnStatusBarTrampoline                ;; 00:3a93 $cd $17 $31
     pop  HL                                            ;; 00:3a96 $e1
     call getNextScriptInstruction                      ;; 00:3a97 $cd $27 $37
     ret                                                ;; 00:3a9a $c9
@@ -10179,7 +10184,8 @@ checkForLevelUp:
     jp   NC, startLevelUp                              ;; 00:3d6e $d2 $6b $3e
     ret                                                ;; 00:3d71 $c9
 
-code_000_3d72:
+; Add HL to the total money amount
+addMoney:
     push DE                                            ;; 00:3d72 $d5
     ld   A, [wMoneyHigh]                               ;; 00:3d73 $fa $bf $d7
     ld   D, A                                          ;; 00:3d76 $57
@@ -10194,7 +10200,7 @@ code_000_3d72:
     ld   [wMoneyHigh], A                               ;; 00:3d83 $ea $bf $d7
     ld   A, L                                          ;; 00:3d86 $7d
     ld   [wMoneyLow], A                                ;; 00:3d87 $ea $be $d7
-    call code_000_3117                                 ;; 00:3d8a $cd $17 $31
+    call drawMoneyOnStatusBarTrampoline                ;; 00:3d8a $cd $17 $31
     ret                                                ;; 00:3d8d $c9
     db   $d5, $fa, $bf, $d7, $57, $fa, $be, $d7        ;; 00:3d8e ????????
     db   $5f, $7b, $95, $6f, $7a, $9c, $67, $30        ;; 00:3d96 ????????
@@ -10280,7 +10286,7 @@ code_000_3df6:
     ld   A, L                                          ;; 00:3e1c $7d
     ld   [wHPLow], A                                   ;; 00:3e1d $ea $b2 $d7
     pop  DE                                            ;; 00:3e20 $d1
-    call code_000_310b                                 ;; 00:3e21 $cd $0b $31
+    call drawHPOnStatuBarTrampoline                    ;; 00:3e21 $cd $0b $31
     ret                                                ;; 00:3e24 $c9
 
 code_000_3e25:
@@ -10303,7 +10309,7 @@ code_000_3e25:
     ld   [wHPHigh], A                                  ;; 00:3e3b $ea $b3 $d7
     ld   A, L                                          ;; 00:3e3e $7d
     ld   [wHPLow], A                                   ;; 00:3e3f $ea $b2 $d7
-    call code_000_310b                                 ;; 00:3e42 $cd $0b $31
+    call drawHPOnStatuBarTrampoline                    ;; 00:3e42 $cd $0b $31
     ret                                                ;; 00:3e45 $c9
 
 code_000_3e46:

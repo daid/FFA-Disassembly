@@ -954,12 +954,12 @@ code_004_4575:
     add  HL, DE                                        ;; 04:4580 $19
     ld   A, [HL+]                                      ;; 04:4581 $2a
     push HL                                            ;; 04:4582 $e5
-    call code_004_45ae                                 ;; 04:4583 $cd $ae $45
+    call add12_5rnd_bank4                              ;; 04:4583 $cd $ae $45
     call addXP                                         ;; 04:4586 $cd $16 $3d
     pop  HL                                            ;; 04:4589 $e1
     ld   A, [HL]                                       ;; 04:458a $7e
-    call code_004_45ae                                 ;; 04:458b $cd $ae $45
-    call code_000_3d72                                 ;; 04:458e $cd $72 $3d
+    call add12_5rnd_bank4                              ;; 04:458b $cd $ae $45
+    call addMoney                                      ;; 04:458e $cd $72 $3d
     call code_004_4425                                 ;; 04:4591 $cd $25 $44
     ld   A, $d0                                        ;; 04:4594 $3e $d0 rOBP1
     ld   [wVideoOBP1], A                               ;; 04:4596 $ea $ac $c0
@@ -969,7 +969,9 @@ code_004_4575:
     db   $cd, $7b, $2b, $cb, $3c, $cb, $3c, $6c        ;; 04:45a3 ????????
     db   $26, $00, $c9                                 ;; 04:45ab ???
 
-code_004_45ae:
+; HL = A + ((A * RND()) >> 11)
+; Add 12.5% randomness to A and store in HL
+add12_5rnd_bank4:
     push AF                                            ;; 04:45ae $f5
     call getRandomByte                                 ;; 04:45af $cd $1e $2b
     ld   L, A                                          ;; 04:45b2 $6f

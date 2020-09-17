@@ -39,7 +39,7 @@ script_0003:
     db  $f8 ;;SET_MUSIC                                ;; 0d:4025 $f8
     db   $01                                           ;; 0d:4026 .
     db  $c6 ;;UNK_C6                                   ;; 0d:4027 $c6
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:4028 $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:4028 $f4
     db   $01, $47, $12, $0a                            ;; 0d:4029 ....
     db  $02 ;;CALL                                     ;; 0d:402d $02
     db   $06, $cc                                      ;; 0d:402e ..
@@ -50,45 +50,45 @@ script_0004:
     db   $f4, $00, $5a                                 ;; 0d:4032 ...
     db  $08 ;;IF ? JR                                  ;; 0d:4035 $08
     db   $f5, $f6, $f7, $00, $05                       ;; 0d:4036 .....
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:403b $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:403b $f4
     db   $0e, $10, $0c, $09                            ;; 0d:403c ....
     db  $08 ;;IF ? JR                                  ;; 0d:4040 $08
     db   $f5, $f6, $77, $00, $05                       ;; 0d:4041 .....
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:4046 $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:4046 $f4
     db   $0e, $06, $0e, $08                            ;; 0d:4047 ....
     db  $08 ;;IF ? JR                                  ;; 0d:404b $08
     db   $f5, $76, $f7, $00, $05                       ;; 0d:404c .....
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:4051 $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:4051 $f4
     db   $00, $5b, $08, $04                            ;; 0d:4052 ....
     db  $08 ;;IF ? JR                                  ;; 0d:4056 $08
     db   $f5, $76, $77, $00, $05                       ;; 0d:4057 .....
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:405c $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:405c $f4
     db   $0e, $53, $06, $06                            ;; 0d:405d ....
     db  $08 ;;IF ? JR                                  ;; 0d:4061 $08
     db   $75, $f6, $f7, $00, $05                       ;; 0d:4062 .....
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:4067 $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:4067 $f4
     db   $0e, $14, $02, $0c                            ;; 0d:4068 ....
     db  $08 ;;IF ? JR                                  ;; 0d:406c $08
     db   $75, $f6, $77, $00, $05                       ;; 0d:406d .....
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:4072 $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:4072 $f4
     db   $00, $33, $0c, $05                            ;; 0d:4073 ....
     db  $08 ;;IF ? JR                                  ;; 0d:4077 $08
     db   $75, $76, $f7, $00, $05                       ;; 0d:4078 .....
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:407d $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:407d $f4
     db   $0f, $46, $0a, $06                            ;; 0d:407e ....
     db  $08 ;;IF ? JR                                  ;; 0d:4082 $08
     db   $75, $76, $77, $00, $05                       ;; 0d:4083 .....
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:4088 $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:4088 $f4
     db   $00, $d1, $04, $06                            ;; 0d:4089 ....
     db  $01 ;;JR                                       ;; 0d:408d $01
     db   $7f                                           ;; 0d:408e .
     db  $08 ;;IF ? JR                                  ;; 0d:408f $08
     db   $f5, $f6, $f7, $00, $05                       ;; 0d:4090 .....
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:4095 $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:4095 $f4
     db   $00, $df, $0a, $04                            ;; 0d:4096 ....
     db  $08 ;;IF ? JR                                  ;; 0d:409a $08
     db   $f5, $f6, $77, $00, $0f                       ;; 0d:409b .....
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:40a0 $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:40a0 $f4
     db   $0e, $14, $0a, $06                            ;; 0d:40a1 ....
     db  $08 ;;IF ? JR                                  ;; 0d:40a5 $08
     db   $a8, $00, $04                                 ;; 0d:40a6 ...
@@ -100,13 +100,13 @@ script_0004:
     db   $0d                                           ;; 0d:40ae .
     db  $08 ;;IF ? JR                                  ;; 0d:40af $08
     db   $f5, $76, $f7, $00, $07                       ;; 0d:40b0 .....
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:40b5 $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:40b5 $f4
     db   $00, $4d, $0a, $04                            ;; 0d:40b6 ....
     db  $f8 ;;SET_MUSIC                                ;; 0d:40ba $f8
     db   $14                                           ;; 0d:40bb .
     db  $08 ;;IF ? JR                                  ;; 0d:40bc $08
     db   $f5, $76, $77, $00, $0f                       ;; 0d:40bd .....
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:40c2 $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:40c2 $f4
     db   $0f, $36, $02, $0b                            ;; 0d:40c3 ....
     db  $08 ;;IF ? JR                                  ;; 0d:40c7 $08
     db   $a1, $00, $04                                 ;; 0d:40c8 ...
@@ -118,13 +118,13 @@ script_0004:
     db   $04                                           ;; 0d:40d0 .
     db  $08 ;;IF ? JR                                  ;; 0d:40d1 $08
     db   $75, $f6, $f7, $00, $07                       ;; 0d:40d2 .....
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:40d7 $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:40d7 $f4
     db   $0e, $01, $0e, $05                            ;; 0d:40d8 ....
     db  $f8 ;;SET_MUSIC                                ;; 0d:40dc $f8
     db   $04                                           ;; 0d:40dd .
     db  $08 ;;IF ? JR                                  ;; 0d:40de $08
     db   $75, $f6, $77, $00, $10                       ;; 0d:40df .....
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:40e4 $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:40e4 $f4
     db   $0e, $17, $10, $08                            ;; 0d:40e5 ....
     db  $08 ;;IF ? JR                                  ;; 0d:40e9 $08
     db   $10, $91, $00, $04                            ;; 0d:40ea ....
@@ -136,13 +136,13 @@ script_0004:
     db   $0b                                           ;; 0d:40f3 .
     db  $08 ;;IF ? JR                                  ;; 0d:40f4 $08
     db   $75, $76, $f7, $00, $07                       ;; 0d:40f5 .....
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:40fa $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:40fa $f4
     db   $00, $aa, $0e, $08                            ;; 0d:40fb ....
     db  $f8 ;;SET_MUSIC                                ;; 0d:40ff $f8
     db   $14                                           ;; 0d:4100 .
     db  $08 ;;IF ? JR                                  ;; 0d:4101 $08
     db   $75, $76, $77, $00, $07                       ;; 0d:4102 .....
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:4107 $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:4107 $f4
     db   $00, $7c, $08, $04                            ;; 0d:4108 ....
     db  $f8 ;;SET_MUSIC                                ;; 0d:410c $f8
     db   $14                                           ;; 0d:410d .
@@ -223,69 +223,69 @@ script_0008:
     db   $f4, $00, $5a                                 ;; 0d:416f ...
     db  $08 ;;IF ? JR                                  ;; 0d:4172 $08
     db   $f5, $f6, $f7, $00, $05                       ;; 0d:4173 .....
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:4178 $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:4178 $f4
     db   $0e, $10, $06, $07                            ;; 0d:4179 ....
     db  $08 ;;IF ? JR                                  ;; 0d:417d $08
     db   $f5, $f6, $77, $00, $05                       ;; 0d:417e .....
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:4183 $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:4183 $f4
     db   $00, $c7, $08, $07                            ;; 0d:4184 ....
     db  $08 ;;IF ? JR                                  ;; 0d:4188 $08
     db   $f5, $76, $f7, $00, $05                       ;; 0d:4189 .....
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:418e $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:418e $f4
     db   $0e, $07, $0c, $04                            ;; 0d:418f ....
     db  $08 ;;IF ? JR                                  ;; 0d:4193 $08
     db   $f5, $76, $77, $00, $05                       ;; 0d:4194 .....
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:4199 $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:4199 $f4
     db   $00, $af, $04, $04                            ;; 0d:419a ....
     db  $08 ;;IF ? JR                                  ;; 0d:419e $08
     db   $75, $f6, $f7, $00, $05                       ;; 0d:419f .....
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:41a4 $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:41a4 $f4
     db   $0e, $63, $0e, $0a                            ;; 0d:41a5 ....
     db  $08 ;;IF ? JR                                  ;; 0d:41a9 $08
     db   $75, $f6, $77, $00, $05                       ;; 0d:41aa .....
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:41af $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:41af $f4
     db   $0e, $24, $0a, $04                            ;; 0d:41b0 ....
     db  $08 ;;IF ? JR                                  ;; 0d:41b4 $08
     db   $75, $76, $f7, $00, $05                       ;; 0d:41b5 .....
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:41ba $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:41ba $f4
     db   $00, $23, $0a, $06                            ;; 0d:41bb ....
     db  $08 ;;IF ? JR                                  ;; 0d:41bf $08
     db   $75, $76, $77, $00, $05                       ;; 0d:41c0 .....
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:41c5 $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:41c5 $f4
     db   $00, $90, $0c, $06                            ;; 0d:41c6 ....
     db  $01 ;;JR                                       ;; 0d:41ca $01
     db   $58                                           ;; 0d:41cb .
     db  $08 ;;IF ? JR                                  ;; 0d:41cc $08
     db   $f5, $f6, $f7, $00, $05                       ;; 0d:41cd .....
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:41d2 $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:41d2 $f4
     db   $00, $db, $08, $04                            ;; 0d:41d3 ....
     db  $08 ;;IF ? JR                                  ;; 0d:41d7 $08
     db   $f5, $f6, $77, $00, $05                       ;; 0d:41d8 .....
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:41dd $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:41dd $f4
     db   $0f, $26, $04, $0c                            ;; 0d:41de ....
     db  $08 ;;IF ? JR                                  ;; 0d:41e2 $08
     db   $f5, $76, $f7, $00, $05                       ;; 0d:41e3 .....
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:41e8 $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:41e8 $f4
     db   $0e, $00, $04, $08                            ;; 0d:41e9 ....
     db  $08 ;;IF ? JR                                  ;; 0d:41ed $08
     db   $f5, $76, $77, $00, $05                       ;; 0d:41ee .....
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:41f3 $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:41f3 $f4
     db   $0e, $06, $06, $08                            ;; 0d:41f4 ....
     db  $08 ;;IF ? JR                                  ;; 0d:41f8 $08
     db   $75, $f6, $f7, $00, $05                       ;; 0d:41f9 .....
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:41fe $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:41fe $f4
     db   $0e, $13, $10, $08                            ;; 0d:41ff ....
     db  $08 ;;IF ? JR                                  ;; 0d:4203 $08
     db   $75, $f6, $77, $00, $05                       ;; 0d:4204 .....
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:4209 $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:4209 $f4
     db   $0e, $63, $0a, $04                            ;; 0d:420a ....
     db  $08 ;;IF ? JR                                  ;; 0d:420e $08
     db   $75, $76, $f7, $00, $05                       ;; 0d:420f .....
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:4214 $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:4214 $f4
     db   $0f, $46, $04, $0a                            ;; 0d:4215 ....
     db  $08 ;;IF ? JR                                  ;; 0d:4219 $08
     db   $75, $76, $77, $00, $05                       ;; 0d:421a .....
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:421f $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:421f $f4
     db   $0f, $46, $0e, $06                            ;; 0d:4220 ....
     db  $ab ;;UNK_AB                                   ;; 0d:4224 $ab
     db  $ec ;;RUN_ROOM_SCRIPT                          ;; 0d:4225 $ec
@@ -312,7 +312,7 @@ script_000c:
     db   $40, $a5, $00, $02                            ;; 0d:4245 ....
     db  $01 ;;JR                                       ;; 0d:4249 $01
     db   $0b                                           ;; 0d:424a .
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:424b $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:424b $f4
     db   $00, $a9, $0a, $05                            ;; 0d:424c ....
     db  $f8 ;;SET_MUSIC                                ;; 0d:4250 $f8
     db   $14                                           ;; 0d:4251 .
@@ -331,7 +331,7 @@ script_000c:
     db  $98 ;;UNK_98                                   ;; 0d:427e $98
     db  $db ;;CLEAR_FLAG                               ;; 0d:427f $db
     db   $57                                           ;; 0d:4280 .
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:4281 $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:4281 $f4
     db   $00, $73, $0a, $06                            ;; 0d:4282 ....
     db  $f8 ;;SET_MUSIC                                ;; 0d:4286 $f8
     db   $14                                           ;; 0d:4287 .
@@ -349,7 +349,7 @@ script_000c:
     db   $f4, $00, $84                                 ;; 0d:42ad ...
     db  $08 ;;IF ? JR                                  ;; 0d:42b0 $08
     db   $f5, $76, $f7, $00, $07                       ;; 0d:42b1 .....
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:42b6 $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:42b6 $f4
     db   $00, $64, $0e, $07                            ;; 0d:42b7 ....
     db  $f8 ;;SET_MUSIC                                ;; 0d:42bb $f8
     db   $14                                           ;; 0d:42bc .
@@ -371,55 +371,55 @@ script_000c:
     db   $a8, $00, $02                                 ;; 0d:42fa ...
     db  $f8 ;;SET_MUSIC                                ;; 0d:42fd $f8
     db   $00                                           ;; 0d:42fe .
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:42ff $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:42ff $f4
     db   $0e, $03, $0c, $08                            ;; 0d:4300 ....
     db  $08 ;;IF ? JR                                  ;; 0d:4304 $08
     db   $75, $f6, $f7, $00, $07                       ;; 0d:4305 .....
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:430a $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:430a $f4
     db   $00, $c5, $09, $08                            ;; 0d:430b ....
     db  $f8 ;;SET_MUSIC                                ;; 0d:430f $f8
     db   $19                                           ;; 0d:4310 .
     db  $08 ;;IF ? JR                                  ;; 0d:4311 $08
     db   $75, $f6, $77, $00, $05                       ;; 0d:4312 .....
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:4317 $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:4317 $f4
     db   $01, $15, $09, $04                            ;; 0d:4318 ....
     db  $08 ;;IF ? JR                                  ;; 0d:431c $08
     db   $75, $76, $f7, $00, $05                       ;; 0d:431d .....
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:4322 $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:4322 $f4
     db   $0f, $22, $02, $0b                            ;; 0d:4323 ....
     db  $08 ;;IF ? JR                                  ;; 0d:4327 $08
     db   $75, $76, $77, $00, $05                       ;; 0d:4328 .....
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:432d $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:432d $f4
     db   $0e, $53, $0e, $08                            ;; 0d:432e ....
     db  $01 ;;JR                                       ;; 0d:4332 $01
     db   $4d                                           ;; 0d:4333 .
     db  $08 ;;IF ? JR                                  ;; 0d:4334 $08
     db   $f5, $f6, $f7, $00, $05                       ;; 0d:4335 .....
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:433a $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:433a $f4
     db   $00, $0a, $0e, $04                            ;; 0d:433b ....
     db  $08 ;;IF ? JR                                  ;; 0d:433f $08
     db   $f5, $f6, $77, $00, $05                       ;; 0d:4340 .....
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:4345 $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:4345 $f4
     db   $00, $55, $08, $04                            ;; 0d:4346 ....
     db  $08 ;;IF ? JR                                  ;; 0d:434a $08
     db   $f5, $76, $f7, $00, $05                       ;; 0d:434b .....
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:4350 $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:4350 $f4
     db   $00, $62, $0c, $06                            ;; 0d:4351 ....
     db  $08 ;;IF ? JR                                  ;; 0d:4355 $08
     db   $f5, $76, $77, $00, $05                       ;; 0d:4356 .....
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:435b $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:435b $f4
     db   $00, $00, $06, $06                            ;; 0d:435c ....
     db  $08 ;;IF ? JR                                  ;; 0d:4360 $08
     db   $75, $f6, $f7, $00, $05                       ;; 0d:4361 .....
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:4366 $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:4366 $f4
     db   $0e, $01, $06, $09                            ;; 0d:4367 ....
     db  $08 ;;IF ? JR                                  ;; 0d:436b $08
     db   $75, $f6, $77, $00, $05                       ;; 0d:436c .....
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:4371 $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:4371 $f4
     db   $0e, $26, $08, $08                            ;; 0d:4372 ....
     db  $08 ;;IF ? JR                                  ;; 0d:4376 $08
     db   $75, $76, $f7, $00, $05                       ;; 0d:4377 .....
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:437c $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:437c $f4
     db   $0e, $15, $0c, $0a                            ;; 0d:437d ....
     db  $ab ;;UNK_AB                                   ;; 0d:4381 $ab
     db  $ec ;;RUN_ROOM_SCRIPT                          ;; 0d:4382 $ec
@@ -2146,7 +2146,7 @@ script_0120:
     db  $f0 ;;DELAY                                    ;; 0d:49ce $f0
     db   $3c                                           ;; 0d:49cf .
     db  $bd ;;FADE_TO_BLACK                            ;; 0d:49d0 $bd
-    db  $f3 ;;LOAD_MAP_INSTANT                         ;; 0d:49d1 $f3
+    db  $f3 ;;LOAD_ROOM_INSTANT                        ;; 0d:49d1 $f3
     db   $0f, $50, $08, $0a                            ;; 0d:49d2 ....
     db  $fc ;;SET_NPC_TYPES                            ;; 0d:49d6 $fc
     db   $32                                           ;; 0d:49d7 .
@@ -2872,7 +2872,7 @@ script_019d:
     db   "<1b> Now that I have\n the mighty power_<12>" ;; 0d:4cef ......................
     db   "<1b> I do not need you\n anymore, <BOY>!<12>" ;; 0d:4d05 .......................
     db   "<11>", $00                                   ;; 0d:4d1c ...
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:4d1f $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:4d1f $f4
     db   $01, $67, $09, $0a                            ;; 0d:4d20 ....
     db  $02 ;;CALL                                     ;; 0d:4d24 $02
     db   $09, $48                                      ;; 0d:4d25 ..
@@ -3143,7 +3143,7 @@ script_01a8:
     db   "<11>", $00                                   ;; 0d:4f0f ...
     db  $f0 ;;DELAY                                    ;; 0d:4f12 $f0
     db   $14                                           ;; 0d:4f13 .
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:4f14 $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:4f14 $f4
     db   $00, $a9, $0a, $06                            ;; 0d:4f15 ....
     db  $f0 ;;DELAY                                    ;; 0d:4f19 $f0
     db   $3c                                           ;; 0d:4f1a .
@@ -3254,7 +3254,7 @@ script_01ae:
     db  $f0 ;;DELAY                                    ;; 0d:4fd8 $f0
     db   $b4                                           ;; 0d:4fd9 .
     db  $bd ;;FADE_TO_BLACK                            ;; 0d:4fda $bd
-    db  $f3 ;;LOAD_MAP_INSTANT                         ;; 0d:4fdb $f3
+    db  $f3 ;;LOAD_ROOM_INSTANT                        ;; 0d:4fdb $f3
     db   $0f, $55, $14, $00                            ;; 0d:4fdc ....
     db  $f8 ;;SET_MUSIC                                ;; 0d:4fe0 $f8
     db   $0a                                           ;; 0d:4fe1 .
@@ -3265,7 +3265,7 @@ script_01ae:
     db  $bd ;;FADE_TO_BLACK                            ;; 0d:500b $bd
     db  $f0 ;;DELAY                                    ;; 0d:500c $f0
     db   $1e                                           ;; 0d:500d .
-    db  $f3 ;;LOAD_MAP_INSTANT                         ;; 0d:500e $f3
+    db  $f3 ;;LOAD_ROOM_INSTANT                        ;; 0d:500e $f3
     db   $01, $30, $0c, $08                            ;; 0d:500f ....
     db  $84 ;;SET_PLAYER_DIRECTION_UP                  ;; 0d:5013 $84
     db  $99 ;;UNK_99                                   ;; 0d:5014 $99
@@ -3364,7 +3364,7 @@ script_01b1:
     db  $f0 ;;DELAY                                    ;; 0d:5115 $f0
     db   $1e                                           ;; 0d:5116 .
     db  $84 ;;SET_PLAYER_DIRECTION_UP                  ;; 0d:5117 $84
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:5118 $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:5118 $f4
     db   $0e, $04, $0c, $0a                            ;; 0d:5119 ....
     db  $f0 ;;DELAY                                    ;; 0d:511d $f0
     db   $1e                                           ;; 0d:511e .
@@ -3843,7 +3843,7 @@ script_01cc:
     db   $30                                           ;; 0d:555b .
     db  $f0 ;;DELAY                                    ;; 0d:555c $f0
     db   $1e                                           ;; 0d:555d .
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:555e $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:555e $f4
     db   $00, $3e, $0c, $07                            ;; 0d:555f ....
     db  $f8 ;;SET_MUSIC                                ;; 0d:5563 $f8
     db   $19                                           ;; 0d:5564 .
@@ -4403,7 +4403,7 @@ script_0207:
     db   $0e, $02                                      ;; 0d:5fb4 ..
     db  $80 ;;PLAYER_STEP_FORWARD                      ;; 0d:5fb6 $80
     db  $00 ;;END                                      ;; 0d:5fb7 $00
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:5fb8 $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:5fb8 $f4
     db   $0e, $53, $14, $00                            ;; 0d:5fb9 ....
     db  $f0 ;;DELAY                                    ;; 0d:5fbd $f0
     db   $3c                                           ;; 0d:5fbe .
@@ -4442,7 +4442,7 @@ script_0208:
     db  $bd ;;FADE_TO_BLACK                            ;; 0d:6024 $bd
     db  $c5 ;;UNK_C5                                   ;; 0d:6025 $c5
     db   $07                                           ;; 0d:6026 .
-    db  $f3 ;;LOAD_MAP_INSTANT                         ;; 0d:6027 $f3
+    db  $f3 ;;LOAD_ROOM_INSTANT                        ;; 0d:6027 $f3
     db   $04, $00, $0e, $03                            ;; 0d:6028 ....
     db  $fc ;;SET_NPC_TYPES                            ;; 0d:602c $fc
     db   $25                                           ;; 0d:602d .
@@ -4927,7 +4927,7 @@ script_0228:
     db  $08 ;;IF ? JR                                  ;; 0d:6a01 $08
     db   $85, $00, $42                                 ;; 0d:6a02 ...
     db  $bd ;;FADE_TO_BLACK                            ;; 0d:6a05 $bd
-    db  $f3 ;;LOAD_MAP_INSTANT                         ;; 0d:6a06 $f3
+    db  $f3 ;;LOAD_ROOM_INSTANT                        ;; 0d:6a06 $f3
     db   $0f, $55, $14, $00                            ;; 0d:6a07 ....
     db  $bc ;;FADE_TO_NORMAL                           ;; 0d:6a0b $bc
     db  $04 ;;MSG                                      ;; 0d:6a0c $04
@@ -4943,7 +4943,7 @@ script_0228:
     db   $00                                           ;; 0d:6a37 .
     db  $f0 ;;DELAY                                    ;; 0d:6a38 $f0
     db   $3c                                           ;; 0d:6a39 .
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:6a3a $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:6a3a $f4
     db   $00, $2c, $0e, $04                            ;; 0d:6a3b ....
     db  $da ;;SET_FLAG                                 ;; 0d:6a3f $da
     db   $35                                           ;; 0d:6a40 .
@@ -5452,7 +5452,7 @@ script_0249:
     db   "<10><BOY>:__ Marcie!<12>"                    ;; 0d:75c5 .........
     db   "<11>", $00                                   ;; 0d:75ce ...
     db  $bd ;;FADE_TO_BLACK                            ;; 0d:75d1 $bd
-    db  $f3 ;;LOAD_MAP_INSTANT                         ;; 0d:75d2 $f3
+    db  $f3 ;;LOAD_ROOM_INSTANT                        ;; 0d:75d2 $f3
     db   $0f, $55, $14, $00                            ;; 0d:75d3 ....
     db  $bc ;;FADE_TO_NORMAL                           ;; 0d:75d7 $bc
     db  $f0 ;;DELAY                                    ;; 0d:75d8 $f0
@@ -5465,7 +5465,7 @@ script_0249:
     db   " KID__<12>"                                  ;; 0d:75f6 .....
     db   "<11>", $00                                   ;; 0d:75fb ...
     db  $bd ;;FADE_TO_BLACK                            ;; 0d:75fe $bd
-    db  $f3 ;;LOAD_MAP_INSTANT                         ;; 0d:75ff $f3
+    db  $f3 ;;LOAD_ROOM_INSTANT                        ;; 0d:75ff $f3
     db   $01, $56, $0e, $06                            ;; 0d:7600 ....
     db  $ab ;;UNK_AB                                   ;; 0d:7604 $ab
     db  $f0 ;;DELAY                                    ;; 0d:7605 $f0
@@ -5889,7 +5889,7 @@ script_0270:
     db   $5a, $e2                                      ;; 0d:7ba0 ..
     db  $da ;;SET_FLAG                                 ;; 0d:7ba2 $da
     db   $6a                                           ;; 0d:7ba3 .
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:7ba4 $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:7ba4 $f4
     db   $0b, $07, $10, $0c                            ;; 0d:7ba5 ....
     db  $f8 ;;SET_MUSIC                                ;; 0d:7ba9 $f8
     db   $07                                           ;; 0d:7baa .
@@ -5907,7 +5907,7 @@ script_0271:
     db   $5a, $e2                                      ;; 0d:7bc2 ..
     db  $da ;;SET_FLAG                                 ;; 0d:7bc4 $da
     db   $60                                           ;; 0d:7bc5 .
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:7bc6 $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:7bc6 $f4
     db   $0e, $01, $0e, $0c                            ;; 0d:7bc7 ....
     db  $f0 ;;DELAY                                    ;; 0d:7bcb $f0
     db   $14                                           ;; 0d:7bcc .
@@ -5919,7 +5919,7 @@ script_0271:
 script_0272:
     db  $0b ;;IF JR                                    ;; 0d:7bd1 $0b
     db   $c9, $00, $1b                                 ;; 0d:7bd2 ...
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:7bd5 $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:7bd5 $f4
     db   $06, $32, $09, $0c                            ;; 0d:7bd6 ....
     db  $f8 ;;SET_MUSIC                                ;; 0d:7bda $f8
     db   $04                                           ;; 0d:7bdb .
@@ -5950,7 +5950,7 @@ script_0273:
     db   $14, $00                                      ;; 0d:7bf9 ..
     db  $f0 ;;DELAY                                    ;; 0d:7bfb $f0
     db   $3c                                           ;; 0d:7bfc .
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:7bfd $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:7bfd $f4
     db   $03, $11, $09, $07                            ;; 0d:7bfe ....
     db  $ec ;;RUN_ROOM_SCRIPT                          ;; 0d:7c02 $ec
     db  $00 ;;END                                      ;; 0d:7c03 $00
@@ -5964,7 +5964,7 @@ script_0274:
     db   $14, $00                                      ;; 0d:7c0c ..
     db  $f0 ;;DELAY                                    ;; 0d:7c0e $f0
     db   $3c                                           ;; 0d:7c0f .
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:7c10 $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:7c10 $f4
     db   $06, $07, $09, $07                            ;; 0d:7c11 ....
     db  $ec ;;RUN_ROOM_SCRIPT                          ;; 0d:7c15 $ec
     db  $00 ;;END                                      ;; 0d:7c16 $00
@@ -5980,7 +5980,7 @@ script_0275:
     db   $5a, $e2                                      ;; 0d:7c24 ..
     db  $da ;;SET_FLAG                                 ;; 0d:7c26 $da
     db   $62                                           ;; 0d:7c27 .
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:7c28 $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:7c28 $f4
     db   $09, $31, $10, $02                            ;; 0d:7c29 ....
     db  $08 ;;IF ? JR                                  ;; 0d:7c2d $08
     db   $c8, $00, $04                                 ;; 0d:7c2e ...
@@ -6006,7 +6006,7 @@ script_0276:
     db   $61                                           ;; 0d:7c51 .
     db  $c5 ;;UNK_C5                                   ;; 0d:7c52 $c5
     db   $00                                           ;; 0d:7c53 .
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:7c54 $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:7c54 $f4
     db   $03, $41, $09, $0c                            ;; 0d:7c55 ....
     db  $f8 ;;SET_MUSIC                                ;; 0d:7c59 $f8
     db   $07                                           ;; 0d:7c5a .
@@ -6022,7 +6022,7 @@ script_0277:
     db   $5a, $e2                                      ;; 0d:7c66 ..
     db  $da ;;SET_FLAG                                 ;; 0d:7c68 $da
     db   $63                                           ;; 0d:7c69 .
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:7c6a $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:7c6a $f4
     db   $0e, $17, $0b, $0c                            ;; 0d:7c6b ....
     db  $f8 ;;SET_MUSIC                                ;; 0d:7c6f $f8
     db   $0b                                           ;; 0d:7c70 .
@@ -6038,7 +6038,7 @@ script_0278:
     db   $5a, $e2                                      ;; 0d:7c7c ..
     db  $da ;;SET_FLAG                                 ;; 0d:7c7e $da
     db   $65                                           ;; 0d:7c7f .
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:7c80 $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:7c80 $f4
     db   $0a, $66, $10, $02                            ;; 0d:7c81 ....
     db  $f8 ;;SET_MUSIC                                ;; 0d:7c85 $f8
     db   $18                                           ;; 0d:7c86 .
@@ -6061,7 +6061,7 @@ script_0279:
     db   "<11>", $00                                   ;; 0d:7cb9 ...
     db  $01 ;;JR                                       ;; 0d:7cbc $01
     db   $08                                           ;; 0d:7cbd .
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:7cbe $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:7cbe $f4
     db   $0a, $55, $10, $02                            ;; 0d:7cbf ....
     db  $f8 ;;SET_MUSIC                                ;; 0d:7cc3 $f8
     db   $07                                           ;; 0d:7cc4 .
@@ -6073,7 +6073,7 @@ script_027a:
     db   $c9, $00, $7c                                 ;; 0d:7cc8 ...
     db  $09 ;;IF ? JR                                  ;; 0d:7ccb $09
     db   $46, $00, $09                                 ;; 0d:7ccc ...
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:7ccf $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:7ccf $f4
     db   $0a, $13, $10, $0c                            ;; 0d:7cd0 ....
     db  $f8 ;;SET_MUSIC                                ;; 0d:7cd4 $f8
     db   $07                                           ;; 0d:7cd5 .
@@ -6097,7 +6097,7 @@ script_027a:
 script_027b:
     db  $0b ;;IF JR                                    ;; 0d:7d48 $0b
     db   $c9, $00, $08                                 ;; 0d:7d49 ...
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:7d4c $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:7d4c $f4
     db   $0a, $05, $10, $0c                            ;; 0d:7d4d ....
     db  $f8 ;;SET_MUSIC                                ;; 0d:7d51 $f8
     db   $07                                           ;; 0d:7d52 .
@@ -6109,7 +6109,7 @@ script_027c:
     db   $c9, $00, $0c                                 ;; 0d:7d56 ...
     db  $08 ;;IF ? JR                                  ;; 0d:7d59 $08
     db   $96, $00, $08                                 ;; 0d:7d5a ...
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:7d5d $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:7d5d $f4
     db   $0e, $62, $0c, $0c                            ;; 0d:7d5e ....
     db  $f8 ;;SET_MUSIC                                ;; 0d:7d62 $f8
     db   $0e                                           ;; 0d:7d63 .
@@ -6149,7 +6149,7 @@ script_027f:
     db   $5a, $e2                                      ;; 0d:7d90 ..
     db  $da ;;SET_FLAG                                 ;; 0d:7d92 $da
     db   $5f                                           ;; 0d:7d93 .
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:7d94 $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:7d94 $f4
     db   $0e, $53, $0d, $0c                            ;; 0d:7d95 ....
     db  $f8 ;;SET_MUSIC                                ;; 0d:7d99 $f8
     db   $04                                           ;; 0d:7d9a .
@@ -6165,7 +6165,7 @@ script_0280:
     db   $5a, $e2                                      ;; 0d:7da6 ..
     db  $da ;;SET_FLAG                                 ;; 0d:7da8 $da
     db   $5b                                           ;; 0d:7da9 .
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:7daa $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:7daa $f4
     db   $0e, $15, $07, $0c                            ;; 0d:7dab ....
     db  $08 ;;IF ? JR                                  ;; 0d:7daf $08
     db   $a8, $00, $02                                 ;; 0d:7db0 ...
@@ -6187,7 +6187,7 @@ script_0281:
     db   $5a, $e2                                      ;; 0d:7dc6 ..
     db  $da ;;SET_FLAG                                 ;; 0d:7dc8 $da
     db   $5c                                           ;; 0d:7dc9 .
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:7dca $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:7dca $f4
     db   $08, $54, $10, $02                            ;; 0d:7dcb ....
     db  $f8 ;;SET_MUSIC                                ;; 0d:7dcf $f8
     db   $08                                           ;; 0d:7dd0 .
@@ -6240,7 +6240,7 @@ script_0282:
     db   $5d                                           ;; 0d:7e21 .
     db  $c5 ;;UNK_C5                                   ;; 0d:7e22 $c5
     db   $01                                           ;; 0d:7e23 .
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:7e24 $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:7e24 $f4
     db   $06, $17, $09, $0c                            ;; 0d:7e25 ....
     db  $f8 ;;SET_MUSIC                                ;; 0d:7e29 $f8
     db   $0c                                           ;; 0d:7e2a .
@@ -6275,7 +6275,7 @@ script_0284:
     db   $5a, $e2                                      ;; 0d:7ebc ..
     db  $da ;;SET_FLAG                                 ;; 0d:7ebe $da
     db   $6c                                           ;; 0d:7ebf .
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:7ec0 $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:7ec0 $f4
     db   $09, $03, $02, $0c                            ;; 0d:7ec1 ....
     db  $f8 ;;SET_MUSIC                                ;; 0d:7ec5 $f8
     db   $08                                           ;; 0d:7ec6 .
@@ -6291,7 +6291,7 @@ script_0285:
     db   $5a, $e2                                      ;; 0d:7ed2 ..
     db  $da ;;SET_FLAG                                 ;; 0d:7ed4 $da
     db   $6b                                           ;; 0d:7ed5 .
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:7ed6 $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:7ed6 $f4
     db   $0d, $77, $10, $0c                            ;; 0d:7ed7 ....
     db  $f8 ;;SET_MUSIC                                ;; 0d:7edb $f8
     db   $08                                           ;; 0d:7edc .
@@ -6307,7 +6307,7 @@ script_0286:
     db   $5a, $e2                                      ;; 0d:7ee8 ..
     db  $da ;;SET_FLAG                                 ;; 0d:7eea $da
     db   $6d                                           ;; 0d:7eeb .
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:7eec $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:7eec $f4
     db   $08, $03, $08, $08                            ;; 0d:7eed ....
     db  $f8 ;;SET_MUSIC                                ;; 0d:7ef1 $f8
     db   $07                                           ;; 0d:7ef2 .
@@ -6316,7 +6316,7 @@ script_0286:
 script_0287:
     db  $0b ;;IF JR                                    ;; 0d:7ef4 $0b
     db   $c9, $00, $07                                 ;; 0d:7ef5 ...
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:7ef8 $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:7ef8 $f4
     db   $0f, $10, $10, $02                            ;; 0d:7ef9 ....
     db  $f8 ;;SET_MUSIC                                ;; 0d:7efd $f8
     db   $07                                           ;; 0d:7efe .
@@ -6331,7 +6331,7 @@ script_0288:
     db   $5a, $e2                                      ;; 0d:7f09 ..
     db  $da ;;SET_FLAG                                 ;; 0d:7f0b $da
     db   $66                                           ;; 0d:7f0c .
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:7f0d $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:7f0d $f4
     db   $0f, $37, $09, $0c                            ;; 0d:7f0e ....
     db  $08 ;;IF ? JR                                  ;; 0d:7f12 $08
     db   $21, $00, $04                                 ;; 0d:7f13 ...
@@ -6347,7 +6347,7 @@ script_0288:
 script_0289:
     db  $0b ;;IF JR                                    ;; 0d:7f1e $0b
     db   $c9, $00, $08                                 ;; 0d:7f1f ...
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:7f22 $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:7f22 $f4
     db   $0d, $17, $10, $0c                            ;; 0d:7f23 ....
     db  $f8 ;;SET_MUSIC                                ;; 0d:7f27 $f8
     db   $0c                                           ;; 0d:7f28 .
@@ -6365,7 +6365,7 @@ script_028a:
     db   $68                                           ;; 0d:7f37 .
     db  $c5 ;;UNK_C5                                   ;; 0d:7f38 $c5
     db   $04                                           ;; 0d:7f39 .
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:7f3a $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:7f3a $f4
     db   $03, $47, $09, $0c                            ;; 0d:7f3b ....
     db  $08 ;;IF ? JR                                  ;; 0d:7f3f $08
     db   $2d, $00, $04                                 ;; 0d:7f40 ...
@@ -6387,7 +6387,7 @@ script_028b:
     db   $5a, $e2                                      ;; 0d:7f54 ..
     db  $da ;;SET_FLAG                                 ;; 0d:7f56 $da
     db   $67                                           ;; 0d:7f57 .
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:7f58 $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:7f58 $f4
     db   $0e, $77, $0e, $02                            ;; 0d:7f59 ....
     db  $f8 ;;SET_MUSIC                                ;; 0d:7f5d $f8
     db   $08                                           ;; 0d:7f5e .
@@ -6399,7 +6399,7 @@ script_028b:
 script_028c:
     db  $0b ;;IF JR                                    ;; 0d:7f63 $0b
     db   $c9, $00, $0a                                 ;; 0d:7f64 ...
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:7f67 $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:7f67 $f4
     db   $01, $17, $10, $05                            ;; 0d:7f68 ....
     db  $f8 ;;SET_MUSIC                                ;; 0d:7f6c $f8
     db   $07                                           ;; 0d:7f6d .
@@ -6410,7 +6410,7 @@ script_028c:
 script_028d:
     db  $0b ;;IF JR                                    ;; 0d:7f72 $0b
     db   $c9, $00, $08                                 ;; 0d:7f73 ...
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:7f76 $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:7f76 $f4
     db   $0b, $76, $10, $02                            ;; 0d:7f77 ....
     db  $f8 ;;SET_MUSIC                                ;; 0d:7f7b $f8
     db   $07                                           ;; 0d:7f7c .
@@ -6426,7 +6426,7 @@ script_028f:
 script_0290:
     db  $0b ;;IF JR                                    ;; 0d:7f81 $0b
     db   $c9, $00, $09                                 ;; 0d:7f82 ...
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:7f85 $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:7f85 $f4
     db   $00, $f0, $08, $08                            ;; 0d:7f86 ....
     db  $f8 ;;SET_MUSIC                                ;; 0d:7f8a $f8
     db   $19                                           ;; 0d:7f8b .
@@ -6437,7 +6437,7 @@ script_0290:
 script_0291:
     db  $0b ;;IF JR                                    ;; 0d:7f8f $0b
     db   $c9, $c1, $00, $0a                            ;; 0d:7f90 ....
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:7f94 $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:7f94 $f4
     db   $00, $87, $08, $02                            ;; 0d:7f95 ....
     db  $f0 ;;DELAY                                    ;; 0d:7f99 $f0
     db   $14                                           ;; 0d:7f9a .
@@ -6455,7 +6455,7 @@ script_0292:
     db   $14, $00                                      ;; 0d:7fa7 ..
     db  $f0 ;;DELAY                                    ;; 0d:7fa9 $f0
     db   $3c                                           ;; 0d:7faa .
-    db  $f4 ;;LOAD_MAP                                 ;; 0d:7fab $f4
+    db  $f4 ;;LOAD_ROOM                                ;; 0d:7fab $f4
     db   $06, $26, $09, $07                            ;; 0d:7fac ....
     db  $ec ;;RUN_ROOM_SCRIPT                          ;; 0d:7fb0 $ec
     db  $00 ;;END                                      ;; 0d:7fb1 $00

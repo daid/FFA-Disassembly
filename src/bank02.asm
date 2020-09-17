@@ -37,10 +37,10 @@ data_002_4000:
     dw   code_002_6dcc                                 ;; 02:4040 $cc $6d
     dw   code_002_6df4                                 ;; 02:4042 $f4 $6d
     dw   code_002_5157                                 ;; 02:4044 $57 $51
-    dw   code_002_6f16                                 ;; 02:4046 $16 $6f
-    dw   code_002_6f29                                 ;; 02:4048 $29 $6f
-    dw   code_002_6f3f                                 ;; 02:404a $3f $6f
-    dw   code_002_6f55                                 ;; 02:404c $55 $6f
+    dw   drawDefaultStatusBar                          ;; 02:4046 $16 $6f
+    dw   drawHPOnStatuBar                              ;; 02:4048 $29 $6f
+    dw   drawManaOnStatusBar                           ;; 02:404a $3f $6f
+    dw   drawMoneyOnStatusBar                          ;; 02:404c $55 $6f
     dw   code_002_6fb4                                 ;; 02:404e $b4 $6f
     dw   code_002_6d26                                 ;; 02:4050 $26 $6d
     dw   code_002_6fab                                 ;; 02:4052 $ab $6f
@@ -3408,10 +3408,10 @@ code_002_5638:
     ret                                                ;; 02:564b $c9
 
 code_002_564c:
-    call code_002_6f16                                 ;; 02:564c $cd $16 $6f
-    call code_002_6f29                                 ;; 02:564f $cd $29 $6f
-    call code_002_6f3f                                 ;; 02:5652 $cd $3f $6f
-    call code_002_6f55                                 ;; 02:5655 $cd $55 $6f
+    call drawDefaultStatusBar                          ;; 02:564c $cd $16 $6f
+    call drawHPOnStatuBar                              ;; 02:564f $cd $29 $6f
+    call drawManaOnStatusBar                           ;; 02:5652 $cd $3f $6f
+    call drawMoneyOnStatusBar                          ;; 02:5655 $cd $55 $6f
     call code_002_6b51                                 ;; 02:5658 $cd $51 $6b
     ld   DE, $9c40                                     ;; 02:565b $11 $40 $9c
     ld   B, $20                                        ;; 02:565e $06 $20
@@ -6136,10 +6136,10 @@ code_002_6ee2:
 data_002_6f10:
     db   $01, $27, $af, $11, $b0, $1c                  ;; 02:6f10 ......
 
-code_002_6f16:
+drawDefaultStatusBar:
     ld   DE, $0000                                     ;; 02:6f16 $11 $00 $00
     ld   B, $14                                        ;; 02:6f19 $06 $14
-    ld   HL, data_002_6f97                             ;; 02:6f1b $21 $97 $6f
+    ld   HL, statusBarTopRowDefault                    ;; 02:6f1b $21 $97 $6f
 .code_6f1e:
     ld   A, [HL+]                                      ;; 02:6f1e $2a
     push DE                                            ;; 02:6f1f $d5
@@ -6150,11 +6150,11 @@ code_002_6f16:
     jr   NZ, .code_6f1e                                ;; 02:6f26 $20 $f6
     ret                                                ;; 02:6f28 $c9
 
-code_002_6f29:
+drawHPOnStatuBar:
     ld   DE, $0006                                     ;; 02:6f29 $11 $06 $00
     push DE                                            ;; 02:6f2c $d5
     ld   B, $04                                        ;; 02:6f2d $06 $04
-    call code_002_6f6b                                 ;; 02:6f2f $cd $6b $6f
+    call clearStatusBarSection                         ;; 02:6f2f $cd $6b $6f
     pop  DE                                            ;; 02:6f32 $d1
     ld   A, [wHPHigh]                                  ;; 02:6f33 $fa $b3 $d7
     ld   H, A                                          ;; 02:6f36 $67
@@ -6163,11 +6163,11 @@ code_002_6f29:
     call code_002_6f77                                 ;; 02:6f3b $cd $77 $6f
     ret                                                ;; 02:6f3e $c9
 
-code_002_6f3f:
+drawManaOnStatusBar:
     ld   DE, $000c                                     ;; 02:6f3f $11 $0c $00
     push DE                                            ;; 02:6f42 $d5
     ld   B, $03                                        ;; 02:6f43 $06 $03
-    call code_002_6f6b                                 ;; 02:6f45 $cd $6b $6f
+    call clearStatusBarSection                         ;; 02:6f45 $cd $6b $6f
     pop  DE                                            ;; 02:6f48 $d1
     ld   A, [wManaHigh]                                ;; 02:6f49 $fa $b7 $d7
     ld   H, A                                          ;; 02:6f4c $67
@@ -6176,11 +6176,11 @@ code_002_6f3f:
     call code_002_6f77                                 ;; 02:6f51 $cd $77 $6f
     ret                                                ;; 02:6f54 $c9
 
-code_002_6f55:
+drawMoneyOnStatusBar:
     ld   DE, $0013                                     ;; 02:6f55 $11 $13 $00
     push DE                                            ;; 02:6f58 $d5
     ld   B, $05                                        ;; 02:6f59 $06 $05
-    call code_002_6f6b                                 ;; 02:6f5b $cd $6b $6f
+    call clearStatusBarSection                         ;; 02:6f5b $cd $6b $6f
     pop  DE                                            ;; 02:6f5e $d1
     ld   A, [wMoneyHigh]                               ;; 02:6f5f $fa $bf $d7
     ld   H, A                                          ;; 02:6f62 $67
@@ -6189,14 +6189,14 @@ code_002_6f55:
     call code_002_6f77                                 ;; 02:6f67 $cd $77 $6f
     ret                                                ;; 02:6f6a $c9
 
-code_002_6f6b:
+clearStatusBarSection:
     ld   A, $7f                                        ;; 02:6f6b $3e $7f BackgroundTile
     push DE                                            ;; 02:6f6d $d5
     call code_000_3866                                 ;; 02:6f6e $cd $66 $38
     pop  DE                                            ;; 02:6f71 $d1
     dec  DE                                            ;; 02:6f72 $1b
     dec  B                                             ;; 02:6f73 $05
-    jr   NZ, code_002_6f6b                             ;; 02:6f74 $20 $f5
+    jr   NZ, clearStatusBarSection                     ;; 02:6f74 $20 $f5
     ret                                                ;; 02:6f76 $c9
 
 code_002_6f77:
@@ -6224,7 +6224,8 @@ code_002_6f77:
     call code_000_3866                                 ;; 02:6f93 $cd $66 $38
     ret                                                ;; 02:6f96 $c9
 
-data_002_6f97:
+; Graphic tile numbers that are shown on the status bar top row.
+statusBarTopRowDefault:
     db   $7f, $41, $49, $7f, $7f, $7f, $7f, $7f        ;; 02:6f97 VVVVVVVV
     db   $46, $49, $7f, $7f, $7f, $7f, $40, $7f        ;; 02:6f9f VVVVVVVV
     db   $7f, $7f, $7f, $7f                            ;; 02:6fa7 VVVV
@@ -6333,8 +6334,8 @@ code_002_6fb4:
 .code_704c:
     ld   [wManaLow], A                                 ;; 02:704c $ea $b6 $d7
 .code_704f:
-    call code_002_6f29                                 ;; 02:704f $cd $29 $6f
-    call code_002_6f3f                                 ;; 02:7052 $cd $3f $6f
+    call drawHPOnStatuBar                              ;; 02:704f $cd $29 $6f
+    call drawManaOnStatusBar                           ;; 02:7052 $cd $3f $6f
     ret                                                ;; 02:7055 $c9
 .code_7056:
     ld   HL, data_002_7b1f                             ;; 02:7056 $21 $1f $7b
@@ -6541,7 +6542,7 @@ code_002_7185:
     sub  A, B                                          ;; 02:7193 $90
     jr   C, .code_719f                                 ;; 02:7194 $38 $09
     ld   [wManaLow], A                                 ;; 02:7196 $ea $b6 $d7
-    call code_002_6f3f                                 ;; 02:7199 $cd $3f $6f
+    call drawManaOnStatusBar                           ;; 02:7199 $cd $3f $6f
     pop  AF                                            ;; 02:719c $f1
     or   A, A                                          ;; 02:719d $b7
     ret                                                ;; 02:719e $c9
@@ -7765,7 +7766,7 @@ code_002_7964:
     ld   [wHPHigh], A                                  ;; 02:7965 $ea $b3 $d7
     ld   A, E                                          ;; 02:7968 $7b
     ld   [wHPLow], A                                   ;; 02:7969 $ea $b2 $d7
-    call code_002_6f29                                 ;; 02:796c $cd $29 $6f
+    call drawHPOnStatuBar                              ;; 02:796c $cd $29 $6f
     ret                                                ;; 02:796f $c9
 
 code_002_7970:

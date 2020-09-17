@@ -1438,12 +1438,12 @@ code_003_480a:
     add  HL, BC                                        ;; 03:4826 $09
     ld   A, [HL+]                                      ;; 03:4827 $2a
     push HL                                            ;; 03:4828 $e5
-    call code_003_48bc                                 ;; 03:4829 $cd $bc $48
+    call add12_5rnd_bank3                              ;; 03:4829 $cd $bc $48
     call addXP                                         ;; 03:482c $cd $16 $3d
     pop  HL                                            ;; 03:482f $e1
     ld   A, [HL]                                       ;; 03:4830 $7e
-    call code_003_48bc                                 ;; 03:4831 $cd $bc $48
-    call code_000_3d72                                 ;; 03:4834 $cd $72 $3d
+    call add12_5rnd_bank3                              ;; 03:4831 $cd $bc $48
+    call addMoney                                      ;; 03:4834 $cd $72 $3d
     call getRandomByte                                 ;; 03:4837 $cd $1e $2b
     and  A, $07                                        ;; 03:483a $e6 $07
     jr   NZ, code_003_48b6                             ;; 03:483c $20 $78
@@ -1536,7 +1536,9 @@ code_003_48b6:
     call code_003_435f                                 ;; 03:48b8 $cd $5f $43
     ret                                                ;; 03:48bb $c9
 
-code_003_48bc:
+; HL = A + ((A * RND()) >> 11)
+; Add 12.5% randomness to A and store in HL
+add12_5rnd_bank3:
     push AF                                            ;; 03:48bc $f5
     call getRandomByte                                 ;; 03:48bd $cd $1e $2b
     ld   L, A                                          ;; 03:48c0 $6f

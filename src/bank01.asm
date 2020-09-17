@@ -2593,7 +2593,7 @@ code_001_526d:
     ld   A, $00                                        ;; 01:5271 $3e $00
     srl  D                                             ;; 01:5273 $cb $3a
     srl  E                                             ;; 01:5275 $cb $3b
-    call code_000_2400                                 ;; 01:5277 $cd $00 $24
+    call setRoomTile                                   ;; 01:5277 $cd $00 $24
     ret                                                ;; 01:527a $c9
 
 code_001_527b:
@@ -2603,7 +2603,7 @@ code_001_527b:
     ld   A, $02                                        ;; 01:527f $3e $02
     srl  D                                             ;; 01:5281 $cb $3a
     srl  E                                             ;; 01:5283 $cb $3b
-    call code_000_2400                                 ;; 01:5285 $cd $00 $24
+    call setRoomTile                                   ;; 01:5285 $cd $00 $24
     ret                                                ;; 01:5288 $c9
 
 code_001_5289:
@@ -2613,7 +2613,7 @@ code_001_5289:
     ld   A, $01                                        ;; 01:528d $3e $01
     srl  D                                             ;; 01:528f $cb $3a
     srl  E                                             ;; 01:5291 $cb $3b
-    call code_000_2400                                 ;; 01:5293 $cd $00 $24
+    call setRoomTile                                   ;; 01:5293 $cd $00 $24
     ret                                                ;; 01:5296 $c9
 
 code_001_5297:
@@ -2623,7 +2623,7 @@ code_001_5297:
     ld   A, $00                                        ;; 01:529b $3e $00
     srl  D                                             ;; 01:529d $cb $3a
     srl  E                                             ;; 01:529f $cb $3b
-    call code_000_2400                                 ;; 01:52a1 $cd $00 $24
+    call setRoomTile                                   ;; 01:52a1 $cd $00 $24
     ret                                                ;; 01:52a4 $c9
 
 code_001_52a5:
@@ -2633,7 +2633,7 @@ code_001_52a5:
     ld   A, $00                                        ;; 01:52a9 $3e $00
     srl  D                                             ;; 01:52ab $cb $3a
     srl  E                                             ;; 01:52ad $cb $3b
-    call code_000_2400                                 ;; 01:52af $cd $00 $24
+    call setRoomTile                                   ;; 01:52af $cd $00 $24
     ret                                                ;; 01:52b2 $c9
 
 code_001_52b3:
