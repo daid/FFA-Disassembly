@@ -3919,11 +3919,11 @@ code_002_5959:
     ld   A, $76                                        ;; 02:5996 $3e $76 BackgroundTile
     call code_000_3844                                 ;; 02:5998 $cd $44 $38
     inc  E                                             ;; 02:599b $1c
-    ld   A, [wD8C1]                                    ;; 02:599c $fa $c1 $d8
+    ld   A, [wNextXPLevelHigh]                         ;; 02:599c $fa $c1 $d8
     ld   H, A                                          ;; 02:599f $67
-    ld   A, [wD8C0]                                    ;; 02:59a0 $fa $c0 $d8
+    ld   A, [wNextXPLevelLow]                          ;; 02:59a0 $fa $c0 $d8
     ld   L, A                                          ;; 02:59a3 $6f
-    ld   A, [wD8C2]                                    ;; 02:59a4 $fa $c2 $d8
+    ld   A, [wNextXPLevelHighExt]                      ;; 02:59a4 $fa $c2 $d8
     ld   C, A                                          ;; 02:59a7 $4f
     call code_002_59ae                                 ;; 02:59a8 $cd $ae $59
     jp   code_002_5922                                 ;; 02:59ab $c3 $22 $59
@@ -7169,11 +7169,11 @@ code_002_7589:
     call code_000_3844                                 ;; 02:75a3 $cd $44 $38
     ld   A, [wD7A7]                                    ;; 02:75a6 $fa $a7 $d7
     call code_000_3ea3                                 ;; 02:75a9 $cd $a3 $3e
-    ld   A, [wD8C1]                                    ;; 02:75ac $fa $c1 $d8
+    ld   A, [wNextXPLevelHigh]                         ;; 02:75ac $fa $c1 $d8
     ld   H, A                                          ;; 02:75af $67
-    ld   A, [wD8C0]                                    ;; 02:75b0 $fa $c0 $d8
+    ld   A, [wNextXPLevelLow]                          ;; 02:75b0 $fa $c0 $d8
     ld   L, A                                          ;; 02:75b3 $6f
-    ld   A, [wD8C2]                                    ;; 02:75b4 $fa $c2 $d8
+    ld   A, [wNextXPLevelHighExt]                      ;; 02:75b4 $fa $c2 $d8
     ld   C, A                                          ;; 02:75b7 $4f
     pop  DE                                            ;; 02:75b8 $d1
     inc  E                                             ;; 02:75b9 $1c

@@ -904,11 +904,11 @@ wD8BE: ;; $d8be
   ds 1
 wD8BF: ;; $d8bf
   ds 1
-wD8C0: ;; $d8c0
+wNextXPLevelLow: ;; $d8c0
   ds 1
-wD8C1: ;; $d8c1
+wNextXPLevelHigh: ;; $d8c1
   ds 1
-wD8C2: ;; $d8c2
+wNextXPLevelHighExt: ;; $d8c2
   ds 1
 wD8C3: ;; $d8c3
   ds 1

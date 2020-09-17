@@ -5542,7 +5542,7 @@ code_000_2190:
     call code_000_291a                                 ;; 00:2198 $cd $1a $29
     call code_000_318f                                 ;; 00:219b $cd $8f $31
     call code_000_1d1b                                 ;; 00:219e $cd $1b $1d
-    call code_000_3d4b                                 ;; 00:21a1 $cd $4b $3d
+    call checkForLevelUp                               ;; 00:21a1 $cd $4b $3d
     call code_000_313b                                 ;; 00:21a4 $cd $3b $31
     ld   A, $ff                                        ;; 00:21a7 $3e $ff
     call code_000_300a                                 ;; 00:21a9 $cd $0a $30
@@ -10154,7 +10154,7 @@ addXP:
     pop  DE                                            ;; 00:3d49 $d1
     ret                                                ;; 00:3d4a $c9
 
-code_000_3d4b:
+checkForLevelUp:
     ld   A, [wC0A0]                                    ;; 00:3d4b $fa $a0 $c0
     and  A, A                                          ;; 00:3d4e $a7
     ret  NZ                                            ;; 00:3d4f $c0
@@ -10164,11 +10164,11 @@ code_000_3d4b:
     ld   L, A                                          ;; 00:3d57 $6f
     ld   A, [wXPHighExt]                               ;; 00:3d58 $fa $bd $d7
     ld   B, A                                          ;; 00:3d5b $47
-    ld   A, [wD8C1]                                    ;; 00:3d5c $fa $c1 $d8
+    ld   A, [wNextXPLevelHigh]                         ;; 00:3d5c $fa $c1 $d8
     ld   D, A                                          ;; 00:3d5f $57
-    ld   A, [wD8C0]                                    ;; 00:3d60 $fa $c0 $d8
+    ld   A, [wNextXPLevelLow]                          ;; 00:3d60 $fa $c0 $d8
     ld   E, A                                          ;; 00:3d63 $5f
-    ld   A, [wD8C2]                                    ;; 00:3d64 $fa $c2 $d8
+    ld   A, [wNextXPLevelHighExt]                      ;; 00:3d64 $fa $c2 $d8
     ld   C, A                                          ;; 00:3d67 $4f
     ld   A, L                                          ;; 00:3d68 $7d
     sub  A, E                                          ;; 00:3d69 $93
@@ -10176,7 +10176,7 @@ code_000_3d4b:
     sbc  A, D                                          ;; 00:3d6b $9a
     ld   A, B                                          ;; 00:3d6c $78
     sbc  A, C                                          ;; 00:3d6d $99
-    jp   NC, code_000_3e6b                             ;; 00:3d6e $d2 $6b $3e
+    jp   NC, startLevelUp                              ;; 00:3d6e $d2 $6b $3e
     ret                                                ;; 00:3d71 $c9
 
 code_000_3d72:
@@ -10326,7 +10326,7 @@ code_000_3e46:
     call code_000_31ad                                 ;; 00:3e67 $cd $ad $31
     ret                                                ;; 00:3e6a $c9
 
-code_000_3e6b:
+startLevelUp:
     ld   A, [wD87E]                                    ;; 00:3e6b $fa $7e $d8
     cp   A, $ff                                        ;; 00:3e6e $fe $ff
     call NZ, code_000_1d44                             ;; 00:3e70 $c4 $44 $1d
@@ -10376,11 +10376,11 @@ code_000_3ea3:
     inc  HL                                            ;; 00:3ebb $23
     ld   E, [HL]                                       ;; 00:3ebc $5e
     ld   A, D                                          ;; 00:3ebd $7a
-    ld   [wD8C1], A                                    ;; 00:3ebe $ea $c1 $d8
+    ld   [wNextXPLevelHigh], A                         ;; 00:3ebe $ea $c1 $d8
     ld   A, E                                          ;; 00:3ec1 $7b
-    ld   [wD8C0], A                                    ;; 00:3ec2 $ea $c0 $d8
+    ld   [wNextXPLevelLow], A                          ;; 00:3ec2 $ea $c0 $d8
     ld   A, C                                          ;; 00:3ec5 $79
-    ld   [wD8C2], A                                    ;; 00:3ec6 $ea $c2 $d8
+    ld   [wNextXPLevelHighExt], A                      ;; 00:3ec6 $ea $c2 $d8
     push HL                                            ;; 00:3ec9 $e5
     call popBankNrAndSwitch                            ;; 00:3eca $cd $0a $2a
     pop  HL                                            ;; 00:3ecd $e1
