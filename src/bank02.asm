@@ -2883,7 +2883,7 @@ code_002_531c:
     ld   L, A                                          ;; 02:5339 $6f
     call MultiplyHL_by_A                               ;; 02:533a $cd $7b $2b
     ld   A, $0a                                        ;; 02:533d $3e $0a
-    call code_000_2b8b                                 ;; 02:533f $cd $8b $2b
+    call divMod                                        ;; 02:533f $cd $8b $2b
     ld   DE, $0013                                     ;; 02:5342 $11 $13 $00
     add  HL, DE                                        ;; 02:5345 $19
     ld   DE, $03e7                                     ;; 02:5346 $11 $e7 $03
@@ -2908,7 +2908,7 @@ code_002_531c:
     ld   A, $5e                                        ;; 02:5368 $3e $5e
     call MultiplyHL_by_A                               ;; 02:536a $cd $7b $2b
     ld   A, $64                                        ;; 02:536d $3e $64
-    call code_000_2b8b                                 ;; 02:536f $cd $8b $2b
+    call divMod                                        ;; 02:536f $cd $8b $2b
     ld   A, L                                          ;; 02:5372 $7d
     add  A, $05                                        ;; 02:5373 $c6 $05
     cp   A, $63                                        ;; 02:5375 $fe $63
@@ -3263,7 +3263,7 @@ code_002_54a6:
     and  A, $70                                        ;; 02:557c $e6 $70
     swap A                                             ;; 02:557e $cb $37
     pop  HL                                            ;; 02:5580 $e1
-    call code_000_2b8b                                 ;; 02:5581 $cd $8b $2b
+    call divMod                                        ;; 02:5581 $cd $8b $2b
     pop  DE                                            ;; 02:5584 $d1
     ld   A, L                                          ;; 02:5585 $7d
     ld   [DE], A                                       ;; 02:5586 $12
@@ -4179,7 +4179,7 @@ code_002_5b18:
     ld   A, $0a                                        ;; 02:5b18 $3e $0a
     push BC                                            ;; 02:5b1a $c5
     push DE                                            ;; 02:5b1b $d5
-    call code_000_2b8b                                 ;; 02:5b1c $cd $8b $2b
+    call divMod                                        ;; 02:5b1c $cd $8b $2b
     pop  DE                                            ;; 02:5b1f $d1
     pop  BC                                            ;; 02:5b20 $c1
     add  A, $30                                        ;; 02:5b21 $c6 $30
@@ -6160,7 +6160,7 @@ drawHPOnStatuBar:
     ld   H, A                                          ;; 02:6f36 $67
     ld   A, [wHPLow]                                   ;; 02:6f37 $fa $b2 $d7
     ld   L, A                                          ;; 02:6f3a $6f
-    call code_002_6f77                                 ;; 02:6f3b $cd $77 $6f
+    call drawNumberOnStatusBar                         ;; 02:6f3b $cd $77 $6f
     ret                                                ;; 02:6f3e $c9
 
 drawManaOnStatusBar:
@@ -6173,7 +6173,7 @@ drawManaOnStatusBar:
     ld   H, A                                          ;; 02:6f4c $67
     ld   A, [wManaLow]                                 ;; 02:6f4d $fa $b6 $d7
     ld   L, A                                          ;; 02:6f50 $6f
-    call code_002_6f77                                 ;; 02:6f51 $cd $77 $6f
+    call drawNumberOnStatusBar                         ;; 02:6f51 $cd $77 $6f
     ret                                                ;; 02:6f54 $c9
 
 drawMoneyOnStatusBar:
@@ -6186,7 +6186,7 @@ drawMoneyOnStatusBar:
     ld   H, A                                          ;; 02:6f62 $67
     ld   A, [wMoneyLow]                                ;; 02:6f63 $fa $be $d7
     ld   L, A                                          ;; 02:6f66 $6f
-    call code_002_6f77                                 ;; 02:6f67 $cd $77 $6f
+    call drawNumberOnStatusBar                         ;; 02:6f67 $cd $77 $6f
     ret                                                ;; 02:6f6a $c9
 
 clearStatusBarSection:
@@ -6199,14 +6199,14 @@ clearStatusBarSection:
     jr   NZ, clearStatusBarSection                     ;; 02:6f74 $20 $f5
     ret                                                ;; 02:6f76 $c9
 
-code_002_6f77:
+drawNumberOnStatusBar:
     ld   A, H                                          ;; 02:6f77 $7c
     or   A, L                                          ;; 02:6f78 $b5
     jr   Z, .code_6f91                                 ;; 02:6f79 $28 $16
 .code_6f7b:
     ld   A, $0a                                        ;; 02:6f7b $3e $0a
     push DE                                            ;; 02:6f7d $d5
-    call code_000_2b8b                                 ;; 02:6f7e $cd $8b $2b
+    call divMod                                        ;; 02:6f7e $cd $8b $2b
     pop  DE                                            ;; 02:6f81 $d1
     push HL                                            ;; 02:6f82 $e5
     push DE                                            ;; 02:6f83 $d5
@@ -6271,7 +6271,7 @@ code_002_6fb4:
     ld   L, A                                          ;; 02:6fe9 $6f
     ld   A, H                                          ;; 02:6fea $7c
     ld   H, $00                                        ;; 02:6feb $26 $00
-    call code_000_2b8b                                 ;; 02:6fed $cd $8b $2b
+    call divMod                                        ;; 02:6fed $cd $8b $2b
     ld   B, A                                          ;; 02:6ff0 $47
     ld   A, [wD858]                                    ;; 02:6ff1 $fa $58 $d8
     add  A, $40                                        ;; 02:6ff4 $c6 $40
@@ -7775,7 +7775,7 @@ code_002_7970:
     ld   A, [wMaxHPLow]                                ;; 02:7974 $fa $b4 $d7
     ld   L, A                                          ;; 02:7977 $6f
     ld   A, $14                                        ;; 02:7978 $3e $14
-    call code_000_2b8b                                 ;; 02:797a $cd $8b $2b
+    call divMod                                        ;; 02:797a $cd $8b $2b
     inc  HL                                            ;; 02:797d $23
     ld   A, [wHPHigh]                                  ;; 02:797e $fa $b3 $d7
     ld   D, A                                          ;; 02:7981 $57

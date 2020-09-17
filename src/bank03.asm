@@ -1457,7 +1457,7 @@ code_003_480a:
     ld   DE, unknown_003_5f5a                          ;; 03:4847 $11 $5a $5f
     call sub_HL_DE                                     ;; 03:484a $cd $ab $2b
     ld   A, $18                                        ;; 03:484d $3e $18
-    call code_000_2b8b                                 ;; 03:484f $cd $8b $2b
+    call divMod                                        ;; 03:484f $cd $8b $2b
     ld   A, L                                          ;; 03:4852 $7d
     ld   HL, wC5A8                                     ;; 03:4853 $21 $a8 $c5
     ld   B, $03                                        ;; 03:4856 $06 $03

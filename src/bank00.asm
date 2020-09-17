@@ -7204,7 +7204,10 @@ MultiplyHL_by_A:
     jr   NZ, .code_2b82                                ;; 00:2b88 $20 $f8
     ret                                                ;; 00:2b8a $c9
 
-code_000_2b8b:
+; modulo function:
+; A = HL % A
+; HL = HL / A
+divMod:
     cp   A, $00                                        ;; 00:2b8b $fe $00
     ret  Z                                             ;; 00:2b8d $c8
     ld   E, L                                          ;; 00:2b8e $5d
