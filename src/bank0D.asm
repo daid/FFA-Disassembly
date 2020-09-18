@@ -328,7 +328,7 @@ script_000c:
     db  $04 ;;MSG                                      ;; 0d:425f $04
     db   " I'LL STAY HERE\n AND RESEARCH.<12>"         ;; 0d:4260 ...........................
     db   "<11>", $00                                   ;; 0d:427b ...
-    db  $98 ;;UNK_98                                   ;; 0d:427e $98
+    db  $98 ;;FOLLOWER_DELETE                          ;; 0d:427e $98
     db  $db ;;CLEAR_FLAG                               ;; 0d:427f $db
     db   $57                                           ;; 0d:4280 .
     db  $f4 ;;LOAD_ROOM                                ;; 0d:4281 $f4
@@ -360,7 +360,7 @@ script_000c:
     db  $04 ;;MSG                                      ;; 0d:42c8 $04
     db   "<10>Lester:Won't you\n avenge my sister?\n Well, I'm going!<12>" ;; 0d:42c9 ....................................
     db   "<11>", $00                                   ;; 0d:42ed ...
-    db  $98 ;;UNK_98                                   ;; 0d:42f0 $98
+    db  $98 ;;FOLLOWER_DELETE                          ;; 0d:42f0 $98
     db  $db ;;CLEAR_FLAG                               ;; 0d:42f1 $db
     db   $56                                           ;; 0d:42f2 .
     db  $08 ;;IF ? JR                                  ;; 0d:42f3 $08
@@ -1916,8 +1916,8 @@ script_010f:
     db   $02                                           ;; 0d:485e .
     db  $08 ;;IF ? JR                                  ;; 0d:485f $08
     db   $90, $00, $be                                 ;; 0d:4860 ...
-    db  $94 ;;UNK_94                                   ;; 0d:4863 $94
-    db  $99 ;;UNK_99                                   ;; 0d:4864 $99
+    db  $94 ;;FOLLOWER_DIRECTION_UP                    ;; 0d:4863 $94
+    db  $99 ;;FOLLOWER_SET_POSITION                    ;; 0d:4864 $99
     db   $09, $0e                                      ;; 0d:4865 ..
     db  $fd ;;SPAWN_NPC                                ;; 0d:4867 $fd
     db   $02                                           ;; 0d:4868 .
@@ -1951,17 +1951,17 @@ script_010f:
     db  $00 ;;END                                      ;; 0d:48e6 $00
     db  $03 ;;LOOP                                     ;; 0d:48e7 $03
     db   $04, $02                                      ;; 0d:48e8 ..
-    db  $90 ;;UNK_90                                   ;; 0d:48ea $90
+    db  $90 ;;FOLLOWER_STEP_FORWARD                    ;; 0d:48ea $90
     db  $00 ;;END                                      ;; 0d:48eb $00
     db  $f0 ;;DELAY                                    ;; 0d:48ec $f0
     db   $14                                           ;; 0d:48ed .
-    db  $90 ;;UNK_90                                   ;; 0d:48ee $90
+    db  $90 ;;FOLLOWER_STEP_FORWARD                    ;; 0d:48ee $90
     db  $f0 ;;DELAY                                    ;; 0d:48ef $f0
     db   $0a                                           ;; 0d:48f0 .
-    db  $90 ;;UNK_90                                   ;; 0d:48f1 $90
+    db  $90 ;;FOLLOWER_STEP_FORWARD                    ;; 0d:48f1 $90
     db  $f0 ;;DELAY                                    ;; 0d:48f2 $f0
     db   $0a                                           ;; 0d:48f3 .
-    db  $90 ;;UNK_90                                   ;; 0d:48f4 $90
+    db  $90 ;;FOLLOWER_STEP_FORWARD                    ;; 0d:48f4 $90
     db  $87 ;;SET_PLAYER_DIRECTION_LEFT                ;; 0d:48f5 $87
     db  $16 ;;SET_NPC_1_DIRECTION_RIGHT                ;; 0d:48f6 $16
     db  $80 ;;PLAYER_STEP_FORWARD                      ;; 0d:48f7 $80
@@ -2368,7 +2368,7 @@ script_0140:
     db  $04 ;;MSG                                      ;; 0d:4aed $04
     db   "<10>Bogard:I'll stay\n and guard <GIRL>.\n<BOY>:__ Okay.<12>" ;; 0d:4aee ................................
     db   "<11>", $00                                   ;; 0d:4b0e ...
-    db  $98 ;;UNK_98                                   ;; 0d:4b11 $98
+    db  $98 ;;FOLLOWER_DELETE                          ;; 0d:4b11 $98
     db  $db ;;CLEAR_FLAG                               ;; 0d:4b12 $db
     db   $54                                           ;; 0d:4b13 .
     db  $00 ;;END                                      ;; 0d:4b14 $00
@@ -3268,19 +3268,19 @@ script_01ae:
     db  $f3 ;;LOAD_ROOM_INSTANT                        ;; 0d:500e $f3
     db   $01, $30, $0c, $08                            ;; 0d:500f ....
     db  $84 ;;SET_PLAYER_DIRECTION_UP                  ;; 0d:5013 $84
-    db  $99 ;;UNK_99                                   ;; 0d:5014 $99
+    db  $99 ;;FOLLOWER_SET_POSITION                    ;; 0d:5014 $99
     db   $0a, $08                                      ;; 0d:5015 ..
     db  $bc ;;FADE_TO_NORMAL                           ;; 0d:5017 $bc
     db  $f0 ;;DELAY                                    ;; 0d:5018 $f0
     db   $3c                                           ;; 0d:5019 .
-    db  $97 ;;UNK_97                                   ;; 0d:501a $97
+    db  $97 ;;FOLLOWER_DIRECTION_LEFT                  ;; 0d:501a $97
     db  $f0 ;;DELAY                                    ;; 0d:501b $f0
     db   $3c                                           ;; 0d:501c .
-    db  $96 ;;UNK_96                                   ;; 0d:501d $96
+    db  $96 ;;FOLLOWER_DIRECTION_RIGHT                 ;; 0d:501d $96
     db  $f0 ;;DELAY                                    ;; 0d:501e $f0
     db   $3c                                           ;; 0d:501f .
     db  $87 ;;SET_PLAYER_DIRECTION_LEFT                ;; 0d:5020 $87
-    db  $99 ;;UNK_99                                   ;; 0d:5021 $99
+    db  $99 ;;FOLLOWER_SET_POSITION                    ;; 0d:5021 $99
     db   $0a, $08                                      ;; 0d:5022 ..
     db  $f0 ;;DELAY                                    ;; 0d:5024 $f0
     db   $3c                                           ;; 0d:5025 .
@@ -3360,7 +3360,7 @@ script_01b1:
     db   $00                                           ;; 0d:5111 .
     db  $f0 ;;DELAY                                    ;; 0d:5112 $f0
     db   $3c                                           ;; 0d:5113 .
-    db  $98 ;;UNK_98                                   ;; 0d:5114 $98
+    db  $98 ;;FOLLOWER_DELETE                          ;; 0d:5114 $98
     db  $f0 ;;DELAY                                    ;; 0d:5115 $f0
     db   $1e                                           ;; 0d:5116 .
     db  $84 ;;SET_PLAYER_DIRECTION_UP                  ;; 0d:5117 $84
@@ -3553,10 +3553,10 @@ script_01bb:
     db  $fd ;;SPAWN_NPC                                ;; 0d:530a $fd
     db   $00                                           ;; 0d:530b .
     db  $87 ;;SET_PLAYER_DIRECTION_LEFT                ;; 0d:530c $87
-    db  $94 ;;UNK_94                                   ;; 0d:530d $94
+    db  $94 ;;FOLLOWER_DIRECTION_UP                    ;; 0d:530d $94
     db  $8a ;;SET_PLAYER_POSITION                      ;; 0d:530e $8a
     db   $10, $0c                                      ;; 0d:530f ..
-    db  $99 ;;UNK_99                                   ;; 0d:5311 $99
+    db  $99 ;;FOLLOWER_SET_POSITION                    ;; 0d:5311 $99
     db   $10, $0c                                      ;; 0d:5312 ..
     db  $03 ;;LOOP                                     ;; 0d:5314 $03
     db   $06, $02                                      ;; 0d:5315 ..
@@ -3568,15 +3568,15 @@ script_01bb:
     db   "<1b> But, not enough\n to fight me, boy!<12>" ;; 0d:533e ........................
     db   "<1b>", $00                                   ;; 0d:5356 ...
     db  $86 ;;SET_PLAYER_DIRECTION_RIGHT               ;; 0d:5359 $86
-    db  $97 ;;UNK_97                                   ;; 0d:535a $97
+    db  $97 ;;FOLLOWER_DIRECTION_LEFT                  ;; 0d:535a $97
     db  $04 ;;MSG                                      ;; 0d:535b $04
     db   "<BOY>:Stay outside.\n It will be too\n dangerous here.<12>" ;; 0d:535c ..............................
     db   "<1b><GIRL>:__ Okay__\n Be careful.<12>"      ;; 0d:537a ....................
     db   "<11>", $00                                   ;; 0d:538e ...
-    db  $95 ;;UNK_95                                   ;; 0d:5391 $95
-    db  $90 ;;UNK_90                                   ;; 0d:5392 $90
-    db  $90 ;;UNK_90                                   ;; 0d:5393 $90
-    db  $98 ;;UNK_98                                   ;; 0d:5394 $98
+    db  $95 ;;FOLLOWER_DIRECTION_DOWN                  ;; 0d:5391 $95
+    db  $90 ;;FOLLOWER_STEP_FORWARD                    ;; 0d:5392 $90
+    db  $90 ;;FOLLOWER_STEP_FORWARD                    ;; 0d:5393 $90
+    db  $98 ;;FOLLOWER_DELETE                          ;; 0d:5394 $98
     db  $f9 ;;SFX                                      ;; 0d:5395 $f9
     db   $10                                           ;; 0d:5396 .
     db  $b0 ;;SET_ROOM_TILE                            ;; 0d:5397 $b0
@@ -4876,7 +4876,7 @@ script_0226:
     db  $00 ;;END                                      ;; 0d:689b $00
 
 script_0227:
-    db  $95 ;;UNK_95                                   ;; 0d:689c $95
+    db  $95 ;;FOLLOWER_DIRECTION_DOWN                  ;; 0d:689c $95
     db  $04 ;;MSG                                      ;; 0d:689d $04
     db   "<10>", $00                                   ;; 0d:689e ..
     db  $f8 ;;SET_MUSIC                                ;; 0d:68a0 $f8
@@ -4898,7 +4898,7 @@ script_0227:
     db   "<1b><BOY>:No, I can't!\nAmanda:I'm gonna\n be a monster__<12>" ;; 0d:6944 ...................................
     db   "<1b> I might lose my\n mind and hurt\n people__<12>" ;; 0d:6967 ............................
     db   "<1b>", $00                                   ;; 0d:6983 ...
-    db  $98 ;;UNK_98                                   ;; 0d:6986 $98
+    db  $98 ;;FOLLOWER_DELETE                          ;; 0d:6986 $98
     db  $fc ;;SET_NPC_TYPES                            ;; 0d:6987 $fc
     db   $42                                           ;; 0d:6988 .
     db  $fd ;;SPAWN_NPC                                ;; 0d:6989 $fd
@@ -5299,8 +5299,8 @@ script_0249:
     db  $fb ;;SHAKE_SCREEN                             ;; 0d:73f8 $fb
     db  $8a ;;SET_PLAYER_POSITION                      ;; 0d:73f9 $8a
     db   $12, $08                                      ;; 0d:73fa ..
-    db  $97 ;;UNK_97                                   ;; 0d:73fc $97
-    db  $99 ;;UNK_99                                   ;; 0d:73fd $99
+    db  $97 ;;FOLLOWER_DIRECTION_LEFT                  ;; 0d:73fc $97
+    db  $99 ;;FOLLOWER_SET_POSITION                    ;; 0d:73fd $99
     db   $12, $08                                      ;; 0d:73fe ..
     db  $87 ;;SET_PLAYER_DIRECTION_LEFT                ;; 0d:7400 $87
     db  $bf ;;FLASH_SCREEN                             ;; 0d:7401 $bf
@@ -5346,7 +5346,7 @@ script_0249:
     db  $87 ;;SET_PLAYER_DIRECTION_LEFT                ;; 0d:7478 $87
     db  $f0 ;;DELAY                                    ;; 0d:7479 $f0
     db   $32                                           ;; 0d:747a .
-    db  $90 ;;UNK_90                                   ;; 0d:747b $90
+    db  $90 ;;FOLLOWER_STEP_FORWARD                    ;; 0d:747b $90
     db  $f0 ;;DELAY                                    ;; 0d:747c $f0
     db   $28                                           ;; 0d:747d .
     db  $f9 ;;SFX                                      ;; 0d:747e $f9
@@ -5392,7 +5392,7 @@ script_0249:
     db   $43, $08, $06                                 ;; 0d:7564 ...
     db  $b0 ;;SET_ROOM_TILE                            ;; 0d:7567 $b0
     db   $31, $08, $07                                 ;; 0d:7568 ...
-    db  $99 ;;UNK_99                                   ;; 0d:756b $99
+    db  $99 ;;FOLLOWER_SET_POSITION                    ;; 0d:756b $99
     db   $11, $0c                                      ;; 0d:756c ..
     db  $b0 ;;SET_ROOM_TILE                            ;; 0d:756e $b0
     db   $64, $09, $02                                 ;; 0d:756f ...
@@ -5418,7 +5418,7 @@ script_0249:
     db   $64, $08, $06                                 ;; 0d:7591 ...
     db  $b0 ;;SET_ROOM_TILE                            ;; 0d:7594 $b0
     db   $41, $08, $07                                 ;; 0d:7595 ...
-    db  $98 ;;UNK_98                                   ;; 0d:7598 $98
+    db  $98 ;;FOLLOWER_DELETE                          ;; 0d:7598 $98
     db  $b0 ;;SET_ROOM_TILE                            ;; 0d:7599 $b0
     db   $64, $09, $04                                 ;; 0d:759a ...
     db  $b0 ;;SET_ROOM_TILE                            ;; 0d:759d $b0

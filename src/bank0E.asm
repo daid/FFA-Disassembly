@@ -8,7 +8,7 @@ script_0294:
     db  $04 ;;MSG                                      ;; 0e:4009 $04
     db   "<10>Man:Didn't you\n come here to get\n the Mirror?<12>" ;; 0e:400a ..............................
     db   "<11>", $00                                   ;; 0e:4028 ...
-    db  $98 ;;UNK_98                                   ;; 0e:402b $98
+    db  $98 ;;FOLLOWER_DELETE                          ;; 0e:402b $98
     db  $db ;;CLEAR_FLAG                               ;; 0e:402c $db
     db   $52                                           ;; 0e:402d .
     db  $f4 ;;LOAD_ROOM                                ;; 0e:402e $f4
@@ -99,8 +99,8 @@ script_029a:
     db   $02                                           ;; 0e:40a4 .
     db  $9c ;;GIVE_FOLLOWER                            ;; 0e:40a5 $9c
     db   $04                                           ;; 0e:40a6 .
-    db  $90 ;;UNK_90                                   ;; 0e:40a7 $90
-    db  $90 ;;UNK_90                                   ;; 0e:40a8 $90
+    db  $90 ;;FOLLOWER_STEP_FORWARD                    ;; 0e:40a7 $90
+    db  $90 ;;FOLLOWER_STEP_FORWARD                    ;; 0e:40a8 $90
     db  $04 ;;MSG                                      ;; 0e:40a9 $04
     db   "<10>", $00                                   ;; 0e:40aa ..
     db  $02 ;;CALL                                     ;; 0e:40ac $02
@@ -159,7 +159,7 @@ script_029f:
     db  $04 ;;MSG                                      ;; 0e:418c $04
     db   "<10>Amanda:Won't you\n come along with\n me, <BOY>?<12>" ;; 0e:418d ............................
     db   "<11>", $00                                   ;; 0e:41a9 ...
-    db  $98 ;;UNK_98                                   ;; 0e:41ac $98
+    db  $98 ;;FOLLOWER_DELETE                          ;; 0e:41ac $98
     db  $f0 ;;DELAY                                    ;; 0e:41ad $f0
     db   $1e                                           ;; 0e:41ae .
     db  $db ;;CLEAR_FLAG                               ;; 0e:41af $db
@@ -3557,8 +3557,8 @@ script_0435:
     db  $f4 ;;LOAD_ROOM                                ;; 0e:543c $f4
     db   $00, $9b, $04, $05                            ;; 0e:543d ....
     db  $86 ;;SET_PLAYER_DIRECTION_RIGHT               ;; 0e:5441 $86
-    db  $97 ;;UNK_97                                   ;; 0e:5442 $97
-    db  $99 ;;UNK_99                                   ;; 0e:5443 $99
+    db  $97 ;;FOLLOWER_DIRECTION_LEFT                  ;; 0e:5442 $97
+    db  $99 ;;FOLLOWER_SET_POSITION                    ;; 0e:5443 $99
     db   $07, $05                                      ;; 0e:5444 ..
     db  $f0 ;;DELAY                                    ;; 0e:5446 $f0
     db   $50                                           ;; 0e:5447 .
@@ -3567,19 +3567,19 @@ script_0435:
     db   "<1b> Gaia will let you\n in if you wear\n Silver stuff!<12>" ;; 0e:546e ..............................
     db   "<1b> Come see me at\n the Dwarf Cave!<12>"   ;; 0e:548c ......................
     db   "<11>", $00                                   ;; 0e:54a2 ...
-    db  $96 ;;UNK_96                                   ;; 0e:54a5 $96
+    db  $96 ;;FOLLOWER_DIRECTION_RIGHT                 ;; 0e:54a5 $96
     db  $9a ;;UNK_9A                                   ;; 0e:54a6 $9a
     db  $03 ;;LOOP                                     ;; 0e:54a7 $03
     db   $09, $02                                      ;; 0e:54a8 ..
-    db  $90 ;;UNK_90                                   ;; 0e:54aa $90
+    db  $90 ;;FOLLOWER_STEP_FORWARD                    ;; 0e:54aa $90
     db  $00 ;;END                                      ;; 0e:54ab $00
-    db  $94 ;;UNK_94                                   ;; 0e:54ac $94
-    db  $90 ;;UNK_90                                   ;; 0e:54ad $90
-    db  $96 ;;UNK_96                                   ;; 0e:54ae $96
-    db  $90 ;;UNK_90                                   ;; 0e:54af $90
-    db  $90 ;;UNK_90                                   ;; 0e:54b0 $90
+    db  $94 ;;FOLLOWER_DIRECTION_UP                    ;; 0e:54ac $94
+    db  $90 ;;FOLLOWER_STEP_FORWARD                    ;; 0e:54ad $90
+    db  $96 ;;FOLLOWER_DIRECTION_RIGHT                 ;; 0e:54ae $96
+    db  $90 ;;FOLLOWER_STEP_FORWARD                    ;; 0e:54af $90
+    db  $90 ;;FOLLOWER_STEP_FORWARD                    ;; 0e:54b0 $90
     db  $9b ;;UNK_9B                                   ;; 0e:54b1 $9b
-    db  $98 ;;UNK_98                                   ;; 0e:54b2 $98
+    db  $98 ;;FOLLOWER_DELETE                          ;; 0e:54b2 $98
     db  $db ;;CLEAR_FLAG                               ;; 0e:54b3 $db
     db   $53                                           ;; 0e:54b4 .
     db  $f8 ;;SET_MUSIC                                ;; 0e:54b5 $f8
@@ -4014,7 +4014,7 @@ script_0451:
     db   "<1b> He'll scream and\n show his true \n colors!<12>" ;; 0e:5803 ..............................
     db   "<1b> Bye!<12>"                               ;; 0e:5821 ......
     db   "<11>", $00                                   ;; 0e:5827 ...
-    db  $98 ;;UNK_98                                   ;; 0e:582a $98
+    db  $98 ;;FOLLOWER_DELETE                          ;; 0e:582a $98
     db  $db ;;CLEAR_FLAG                               ;; 0e:582b $db
     db   $52                                           ;; 0e:582c .
     db  $f0 ;;DELAY                                    ;; 0e:582d $f0
@@ -4434,7 +4434,7 @@ script_0473:
     db  $04 ;;MSG                                      ;; 0e:5ae2 $04
     db   "<10> Wait for me!<12>"                       ;; 0e:5ae3 ........
     db   "<11>", $00                                   ;; 0e:5aeb ...
-    db  $98 ;;UNK_98                                   ;; 0e:5aee $98
+    db  $98 ;;FOLLOWER_DELETE                          ;; 0e:5aee $98
     db  $db ;;CLEAR_FLAG                               ;; 0e:5aef $db
     db   $58                                           ;; 0e:5af0 .
     db  $00 ;;END                                      ;; 0e:5af1 $00
@@ -4769,12 +4769,12 @@ script_04b0:
     db  $04 ;;MSG                                      ;; 0e:5c0f $04
     db   "<10>It's too cold for\nyou ahead.\nWait for me here.<12>" ;; 0e:5c10 ...............................
     db   "<11>", $00                                   ;; 0e:5c2f ...
-    db  $95 ;;UNK_95                                   ;; 0e:5c32 $95
+    db  $95 ;;FOLLOWER_DIRECTION_DOWN                  ;; 0e:5c32 $95
     db  $03 ;;LOOP                                     ;; 0e:5c33 $03
     db   $04, $02                                      ;; 0e:5c34 ..
-    db  $90 ;;UNK_90                                   ;; 0e:5c36 $90
+    db  $90 ;;FOLLOWER_STEP_FORWARD                    ;; 0e:5c36 $90
     db  $00 ;;END                                      ;; 0e:5c37 $00
-    db  $98 ;;UNK_98                                   ;; 0e:5c38 $98
+    db  $98 ;;FOLLOWER_DELETE                          ;; 0e:5c38 $98
     db  $db ;;CLEAR_FLAG                               ;; 0e:5c39 $db
     db   $58                                           ;; 0e:5c3a .
     db  $da ;;SET_FLAG                                 ;; 0e:5c3b $da
@@ -6402,13 +6402,13 @@ script_053a:
     db  $f8 ;;SET_MUSIC                                ;; 0e:6a67 $f8
     db   $09                                           ;; 0e:6a68 .
     db  $85 ;;SET_PLAYER_DIRECTION_DOWN                ;; 0e:6a69 $85
-    db  $95 ;;UNK_95                                   ;; 0e:6a6a $95
+    db  $95 ;;FOLLOWER_DIRECTION_DOWN                  ;; 0e:6a6a $95
     db  $80 ;;PLAYER_STEP_FORWARD                      ;; 0e:6a6b $80
     db  $80 ;;PLAYER_STEP_FORWARD                      ;; 0e:6a6c $80
     db  $86 ;;SET_PLAYER_DIRECTION_RIGHT               ;; 0e:6a6d $86
-    db  $90 ;;UNK_90                                   ;; 0e:6a6e $90
+    db  $90 ;;FOLLOWER_STEP_FORWARD                    ;; 0e:6a6e $90
     db  $80 ;;PLAYER_STEP_FORWARD                      ;; 0e:6a6f $80
-    db  $90 ;;UNK_90                                   ;; 0e:6a70 $90
+    db  $90 ;;FOLLOWER_STEP_FORWARD                    ;; 0e:6a70 $90
     db  $80 ;;PLAYER_STEP_FORWARD                      ;; 0e:6a71 $80
     db  $fd ;;SPAWN_NPC                                ;; 0e:6a72 $fd
     db   $00                                           ;; 0e:6a73 .
@@ -6423,14 +6423,14 @@ script_053a:
     db  $03 ;;LOOP                                     ;; 0e:6abf $03
     db   $03, $03                                      ;; 0e:6ac0 ..
     db  $20 ;;NPC_2_STEP_FORWARD                       ;; 0e:6ac2 $20
-    db  $90 ;;UNK_90                                   ;; 0e:6ac3 $90
+    db  $90 ;;FOLLOWER_STEP_FORWARD                    ;; 0e:6ac3 $90
     db  $00 ;;END                                      ;; 0e:6ac4 $00
     db  $28 ;;DEL_NPC_2                                ;; 0e:6ac5 $28
     db  $03 ;;LOOP                                     ;; 0e:6ac6 $03
     db   $02, $02                                      ;; 0e:6ac7 ..
-    db  $90 ;;UNK_90                                   ;; 0e:6ac9 $90
+    db  $90 ;;FOLLOWER_STEP_FORWARD                    ;; 0e:6ac9 $90
     db  $00 ;;END                                      ;; 0e:6aca $00
-    db  $98 ;;UNK_98                                   ;; 0e:6acb $98
+    db  $98 ;;FOLLOWER_DELETE                          ;; 0e:6acb $98
     db  $15 ;;SET_NPC_1_DIRECTION_DOWN                 ;; 0e:6acc $15
     db  $04 ;;MSG                                      ;; 0e:6acd $04
     db   "<10>Cibba:Where did\n he take her?!\n<BOY>:I'll check.<12>" ;; 0e:6ace .................................
@@ -6749,7 +6749,7 @@ script_053f:
     db   $14                                           ;; 0e:6fd1 .
     db  $00 ;;END                                      ;; 0e:6fd2 $00
     db  $bd ;;FADE_TO_BLACK                            ;; 0e:6fd3 $bd
-    db  $98 ;;UNK_98                                   ;; 0e:6fd4 $98
+    db  $98 ;;FOLLOWER_DELETE                          ;; 0e:6fd4 $98
     db  $f3 ;;LOAD_ROOM_INSTANT                        ;; 0e:6fd5 $f3
     db   $0f, $05, $08, $09                            ;; 0e:6fd6 ....
     db  $f0 ;;DELAY                                    ;; 0e:6fda $f0
@@ -7777,15 +7777,15 @@ script_0547:
     db  $00 ;;END                                      ;; 0e:79c2 $00
 
 script_0548:
-    db  $97 ;;UNK_97                                   ;; 0e:79c3 $97
+    db  $97 ;;FOLLOWER_DIRECTION_LEFT                  ;; 0e:79c3 $97
     db  $f8 ;;SET_MUSIC                                ;; 0e:79c4 $f8
     db   $00                                           ;; 0e:79c5 .
-    db  $99 ;;UNK_99                                   ;; 0e:79c6 $99
+    db  $99 ;;FOLLOWER_SET_POSITION                    ;; 0e:79c6 $99
     db   $04, $03                                      ;; 0e:79c7 ..
     db  $bc ;;FADE_TO_NORMAL                           ;; 0e:79c9 $bc
     db  $f0 ;;DELAY                                    ;; 0e:79ca $f0
     db   $3c                                           ;; 0e:79cb .
-    db  $96 ;;UNK_96                                   ;; 0e:79cc $96
+    db  $96 ;;FOLLOWER_DIRECTION_RIGHT                 ;; 0e:79cc $96
     db  $04 ;;MSG                                      ;; 0e:79cd $04
     db   "<10><GIRL>:_ ", $00                          ;; 0e:79ce ......
     db  $f0 ;;DELAY                                    ;; 0e:79d4 $f0
@@ -7807,12 +7807,12 @@ script_0548:
     db   "<1b><GIRL>:Good night_", $00                 ;; 0e:7a4d ............
     db  $f0 ;;DELAY                                    ;; 0e:7a59 $f0
     db   $3c                                           ;; 0e:7a5a .
-    db  $97 ;;UNK_97                                   ;; 0e:7a5b $97
+    db  $97 ;;FOLLOWER_DIRECTION_LEFT                  ;; 0e:7a5b $97
     db  $04 ;;MSG                                      ;; 0e:7a5c $04
     db   "\n<BOY>:_ Good night_<12>"                   ;; 0e:7a5d ...........
     db   "<11>", $00                                   ;; 0e:7a68 ...
     db  $bd ;;FADE_TO_BLACK                            ;; 0e:7a6b $bd
-    db  $98 ;;UNK_98                                   ;; 0e:7a6c $98
+    db  $98 ;;FOLLOWER_DELETE                          ;; 0e:7a6c $98
     db  $f3 ;;LOAD_ROOM_INSTANT                        ;; 0e:7a6d $f3
     db   $0f, $55, $14, $00                            ;; 0e:7a6e ....
     db  $bc ;;FADE_TO_NORMAL                           ;; 0e:7a72 $bc

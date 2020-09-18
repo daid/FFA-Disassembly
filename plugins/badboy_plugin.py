@@ -253,15 +253,16 @@ OPCODES = {
     0x8D: ("FULL_HP_DUMMY", 0),
     0x8E: ("FULL_HP_DUMMY", 0),
 
-    0x90: ("UNK_90", 0),
+    0x90: ("FOLLOWER_STEP_FORWARD", 0),
+    0x91: ("FOLLOWER_STEP_BACKWARD", 0), # not used by base script
     0x92: ("FULL_HP_DUMMY", 0),
     0x93: ("FULL_HP_DUMMY", 0),
-    0x94: ("UNK_94", 0),
-    0x95: ("UNK_95", 0),
-    0x96: ("UNK_96", 0),
-    0x97: ("UNK_97", 0),
-    0x98: ("UNK_98", 0),
-    0x99: ("UNK_99", 2),
+    0x94: ("FOLLOWER_DIRECTION_UP", 0),
+    0x95: ("FOLLOWER_DIRECTION_DOWN", 0),
+    0x96: ("FOLLOWER_DIRECTION_RIGHT", 0),
+    0x97: ("FOLLOWER_DIRECTION_LEFT", 0),
+    0x98: ("FOLLOWER_DELETE", 0),
+    0x99: ("FOLLOWER_SET_POSITION", 2),
     0x9A: ("UNK_9A", 0),
     0x9B: ("UNK_9B", 0),
     0x9C: ("GIVE_FOLLOWER", 1), # exact workings unknown, needs a proper NPC with it it seems
