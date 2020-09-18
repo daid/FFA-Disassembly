@@ -664,7 +664,7 @@ code_004_4373:
     add  A, $08                                        ;; 04:43b5 $c6 $08
     res  $07, H                                        ;; 04:43b7 $cb $bc
     set  $06, H                                        ;; 04:43b9 $cb $f4
-    call code_000_2df5                                 ;; 04:43bb $cd $f5 $2d
+    call addTileGraphicCopyRequest                     ;; 04:43bb $cd $f5 $2d
     pop  DE                                            ;; 04:43be $d1
     ld   HL, $0010                                     ;; 04:43bf $21 $10 $00
     add  HL, DE                                        ;; 04:43c2 $19

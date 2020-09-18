@@ -60,7 +60,7 @@ code_001_4059:
     ld   HL, $4260                                     ;; 01:4070 $21 $60 $42
     ld   DE, $8f00                                     ;; 01:4073 $11 $00 $8f
     ld   A, $0c                                        ;; 01:4076 $3e $0c
-    call code_000_2df5                                 ;; 01:4078 $cd $f5 $2d
+    call addTileGraphicCopyRequest                     ;; 01:4078 $cd $f5 $2d
     ld   C, $f0                                        ;; 01:407b $0e $f0
     ld   DE, $0000                                     ;; 01:407d $11 $00 $00
     ld   B, $14                                        ;; 01:4080 $06 $14
@@ -389,7 +389,7 @@ code_001_42b2:
     push HL                                            ;; 01:42bd $e5
     push DE                                            ;; 01:42be $d5
     ld   A, C                                          ;; 01:42bf $79
-    call code_000_2df5                                 ;; 01:42c0 $cd $f5 $2d
+    call addTileGraphicCopyRequest                     ;; 01:42c0 $cd $f5 $2d
     pop  HL                                            ;; 01:42c3 $e1
     ld   BC, $0010                                     ;; 01:42c4 $01 $10 $00
     add  HL, BC                                        ;; 01:42c7 $09
@@ -430,19 +430,19 @@ code_001_42d1:
     ld   HL, $4260                                     ;; 01:42f8 $21 $60 $42
     ld   DE, $8080                                     ;; 01:42fb $11 $80 $80
     ld   A, $0c                                        ;; 01:42fe $3e $0c Bank
-    call code_000_2df5                                 ;; 01:4300 $cd $f5 $2d
+    call addTileGraphicCopyRequest                     ;; 01:4300 $cd $f5 $2d
     ld   HL, code_001_4250                             ;; 01:4303 $21 $50 $42
     ld   DE, $8090                                     ;; 01:4306 $11 $90 $80
     ld   A, $0c                                        ;; 01:4309 $3e $0c Bank
-    call code_000_2df5                                 ;; 01:430b $cd $f5 $2d
+    call addTileGraphicCopyRequest                     ;; 01:430b $cd $f5 $2d
     ld   HL, code_001_4250                             ;; 01:430e $21 $50 $42
     ld   DE, $80a0                                     ;; 01:4311 $11 $a0 $80
     ld   A, $0c                                        ;; 01:4314 $3e $0c Bank
-    call code_000_2df5                                 ;; 01:4316 $cd $f5 $2d
+    call addTileGraphicCopyRequest                     ;; 01:4316 $cd $f5 $2d
     ld   HL, code_001_4250                             ;; 01:4319 $21 $50 $42
     ld   DE, $80b0                                     ;; 01:431c $11 $b0 $80
     ld   A, $0c                                        ;; 01:431f $3e $0c Bank
-    call code_000_2df5                                 ;; 01:4321 $cd $f5 $2d
+    call addTileGraphicCopyRequest                     ;; 01:4321 $cd $f5 $2d
     ret                                                ;; 01:4324 $c9
 
 unknown_001_4325:
@@ -643,7 +643,7 @@ code_001_4456:
 
 code_001_4477:
     push DE                                            ;; 01:4477 $d5
-    ld   A, [wC8E0]                                    ;; 01:4478 $fa $e0 $c8
+    ld   A, [wTileCopyRequestCount]                    ;; 01:4478 $fa $e0 $c8
     cp   A, $00                                        ;; 01:447b $fe $00
     jr   NZ, .code_448a                                ;; 01:447d $20 $0b
     ld   A, [wBackgroundRenderRequestCount]            ;; 01:447f $fa $e8 $ce
@@ -706,7 +706,7 @@ code_001_44a5:
 
 code_001_44d8:
     ld   E, A                                          ;; 01:44d8 $5f
-    ld   A, [wC8E0]                                    ;; 01:44d9 $fa $e0 $c8
+    ld   A, [wTileCopyRequestCount]                    ;; 01:44d9 $fa $e0 $c8
     cp   A, $00                                        ;; 01:44dc $fe $00
     ret  NZ                                            ;; 01:44de $c0
     ld   A, [wBackgroundRenderRequestCount]            ;; 01:44df $fa $e8 $ce
@@ -1183,7 +1183,7 @@ code_001_48be:
     ld   A, [wD394]                                    ;; 01:491c $fa $94 $d3
     cp   A, $ff                                        ;; 01:491f $fe $ff
     jr   NZ, .code_492c                                ;; 01:4921 $20 $09
-    ld   A, [wC8E0]                                    ;; 01:4923 $fa $e0 $c8
+    ld   A, [wTileCopyRequestCount]                    ;; 01:4923 $fa $e0 $c8
     cp   A, $00                                        ;; 01:4926 $fe $00
     jr   NZ, .code_4954                                ;; 01:4928 $20 $2a
     ld   A, $ff                                        ;; 01:492a $3e $ff

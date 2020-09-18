@@ -108,7 +108,7 @@ code_002_40a9:
     ld   A, [HL]                                       ;; 02:40b7 $7e
     pop  BC                                            ;; 02:40b8 $c1
     push BC                                            ;; 02:40b9 $c5
-    call code_002_41fe                                 ;; 02:40ba $cd $fe $41
+    call requestBackgroundTileCopy                     ;; 02:40ba $cd $fe $41
     pop  HL                                            ;; 02:40bd $e1
     pop  BC                                            ;; 02:40be $c1
 .code_40bf:
@@ -192,7 +192,7 @@ code_002_411e:
     ld   [HL], D                                       ;; 02:4140 $72
     pop  BC                                            ;; 02:4141 $c1
     pop  AF                                            ;; 02:4142 $f1
-    call code_002_41fe                                 ;; 02:4143 $cd $fe $41
+    call requestBackgroundTileCopy                     ;; 02:4143 $cd $fe $41
     ret                                                ;; 02:4146 $c9
 
 code_002_4147:
@@ -231,7 +231,7 @@ code_002_4160:
     call copyHLtoDE                                    ;; 02:4180 $cd $49 $2b
     pop  BC                                            ;; 02:4183 $c1
     pop  AF                                            ;; 02:4184 $f1
-    call code_002_41fe                                 ;; 02:4185 $cd $fe $41
+    call requestBackgroundTileCopy                     ;; 02:4185 $cd $fe $41
     ret                                                ;; 02:4188 $c9
 
 code_002_4189:
@@ -245,10 +245,10 @@ code_002_4189:
     call code_002_41e9                                 ;; 02:4199 $cd $e9 $41
     ld   A, [wD07C]                                    ;; 02:419c $fa $7c $d0
     ld   BC, wD330                                     ;; 02:419f $01 $30 $d3
-    call code_002_41fe                                 ;; 02:41a2 $cd $fe $41
+    call requestBackgroundTileCopy                     ;; 02:41a2 $cd $fe $41
     ld   A, [wD07D]                                    ;; 02:41a5 $fa $7d $d0
     ld   BC, wD340                                     ;; 02:41a8 $01 $40 $d3
-    call code_002_41fe                                 ;; 02:41ab $cd $fe $41
+    call requestBackgroundTileCopy                     ;; 02:41ab $cd $fe $41
     ret                                                ;; 02:41ae $c9
 .code_41af:
     ld   A, [wD17E]                                    ;; 02:41af $fa $7e $d1
@@ -258,10 +258,10 @@ code_002_4189:
     call code_002_41e9                                 ;; 02:41b8 $cd $e9 $41
     ld   A, [wD07E]                                    ;; 02:41bb $fa $7e $d0
     ld   BC, wD350                                     ;; 02:41be $01 $50 $d3
-    call code_002_41fe                                 ;; 02:41c1 $cd $fe $41
+    call requestBackgroundTileCopy                     ;; 02:41c1 $cd $fe $41
     ld   A, [wD07F]                                    ;; 02:41c4 $fa $7f $d0
     ld   BC, wD360                                     ;; 02:41c7 $01 $60 $d3
-    call code_002_41fe                                 ;; 02:41ca $cd $fe $41
+    call requestBackgroundTileCopy                     ;; 02:41ca $cd $fe $41
     ret                                                ;; 02:41cd $c9
 
 code_002_41ce:
@@ -277,7 +277,7 @@ code_002_41ce:
     jr   NZ, .code_41d9                                ;; 02:41dd $20 $fa
     ld   A, [wD080]                                    ;; 02:41df $fa $80 $d0
     ld   BC, wD370                                     ;; 02:41e2 $01 $70 $d3
-    call code_002_41fe                                 ;; 02:41e5 $cd $fe $41
+    call requestBackgroundTileCopy                     ;; 02:41e5 $cd $fe $41
     ret                                                ;; 02:41e8 $c9
 
 code_002_41e9:
@@ -298,7 +298,10 @@ code_002_41e9:
     jr   NZ, .code_41ed                                ;; 02:41fb $20 $f0
     ret                                                ;; 02:41fd $c9
 
-code_002_41fe:
+; Request to copy a background graphic tile from bank $0C into VRAM
+; A: VRAM target tile number
+; BC: source graphics address
+requestBackgroundTileCopy:
     ld   L, A                                          ;; 02:41fe $6f
     ld   H, $00                                        ;; 02:41ff $26 $00
     add  HL, HL                                        ;; 02:4201 $29
@@ -312,7 +315,7 @@ code_002_41fe:
     ld   H, B                                          ;; 02:420b $60
     ld   L, C                                          ;; 02:420c $69
     ld   A, $0c                                        ;; 02:420d $3e $0c
-    call code_000_2df5                                 ;; 02:420f $cd $f5 $2d
+    call addTileGraphicCopyRequest                     ;; 02:420f $cd $f5 $2d
     ret                                                ;; 02:4212 $c9
 
 code_002_4213:
@@ -1225,7 +1228,7 @@ code_002_478e:
     ld   H, B                                          ;; 02:47a5 $60
     ld   L, C                                          ;; 02:47a6 $69
     push AF                                            ;; 02:47a7 $f5
-    call code_000_2df5                                 ;; 02:47a8 $cd $f5 $2d
+    call addTileGraphicCopyRequest                     ;; 02:47a8 $cd $f5 $2d
     pop  AF                                            ;; 02:47ab $f1
     pop  HL                                            ;; 02:47ac $e1
     pop  BC                                            ;; 02:47ad $c1
@@ -3434,7 +3437,7 @@ code_002_566a:
     push HL                                            ;; 02:5677 $e5
     push BC                                            ;; 02:5678 $c5
     push DE                                            ;; 02:5679 $d5
-    call code_000_2df5                                 ;; 02:567a $cd $f5 $2d
+    call addTileGraphicCopyRequest                     ;; 02:567a $cd $f5 $2d
     pop  HL                                            ;; 02:567d $e1
     ld   BC, $0010                                     ;; 02:567e $01 $10 $00
     add  HL, BC                                        ;; 02:5681 $09

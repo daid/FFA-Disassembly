@@ -4,6 +4,9 @@ ENDM
 bad_halt: MACRO
     db $76
 ENDM
+bad_stop: MACRO
+    db $10
+ENDM
 ld_long_load: MACRO
     db $FA
     dw \1

@@ -57,7 +57,7 @@ VBlankInterruptHandler:
     ld   A, [wOAM_MemoryHighAddress]                   ;; 00:0068 $fa $a4 $c0
     call hOAM_DMA_Routine                              ;; 00:006b $cd $80 $ff
     call updateVideoRegisters                          ;; 00:006e $cd $aa $00
-    call code_000_2d57                                 ;; 00:0071 $cd $57 $2d
+    call vblankGraphicsVRAMCopy                        ;; 00:0071 $cd $57 $2d
     call getRandomByte                                 ;; 00:0074 $cd $1e $2b
     ld   HL, wInterruptFiredFlags                      ;; 00:0077 $21 $ae $c0
     ldh  A, [rIF]                                      ;; 00:007a $f0 $0f
@@ -4604,7 +4604,7 @@ code_000_1a8c:
     jr   .code_1ac0                                    ;; 00:1ab9 $18 $05
 .code_1abb:
     ld   A, $08                                        ;; 00:1abb $3e $08 Bank
-    call code_000_2df5                                 ;; 00:1abd $cd $f5 $2d
+    call addTileGraphicCopyRequest                     ;; 00:1abd $cd $f5 $2d
 .code_1ac0:
     pop  HL                                            ;; 00:1ac0 $e1
     pop  DE                                            ;; 00:1ac1 $d1
@@ -4639,7 +4639,7 @@ code_000_1acd:
     jr   .code_1aef                                    ;; 00:1ae8 $18 $05
 .code_1aea:
     ld   A, $08                                        ;; 00:1aea $3e $08 Bank
-    call code_000_2df5                                 ;; 00:1aec $cd $f5 $2d
+    call addTileGraphicCopyRequest                     ;; 00:1aec $cd $f5 $2d
 .code_1aef:
     pop  BC                                            ;; 00:1aef $c1
     pop  HL                                            ;; 00:1af0 $e1
@@ -4837,7 +4837,7 @@ code_000_1ba1:
     res  $07, H                                        ;; 00:1bfd $cb $bc
     set  $06, H                                        ;; 00:1bff $cb $f4
 .code_1c01:
-    call code_000_2df5                                 ;; 00:1c01 $cd $f5 $2d
+    call addTileGraphicCopyRequest                     ;; 00:1c01 $cd $f5 $2d
     pop  HL                                            ;; 00:1c04 $e1
     push HL                                            ;; 00:1c05 $e5
     ld   DE, hOAM_DMA_Routine                          ;; 00:1c06 $11 $80 $ff
@@ -6633,7 +6633,7 @@ scriptOpCodeFC:
     call Z, code_000_2819                              ;; 00:27fe $cc $19 $28
     ld   A, $01                                        ;; 00:2801 $3e $01
     ld   [wD499], A                                    ;; 00:2803 $ea $99 $d4
-    ld   A, [wC8E0]                                    ;; 00:2806 $fa $e0 $c8
+    ld   A, [wTileCopyRequestCount]                    ;; 00:2806 $fa $e0 $c8
     cp   A, $00                                        ;; 00:2809 $fe $00
     ret  NZ                                            ;; 00:280b $c0
     ld   A, [wBackgroundRenderRequestCount]            ;; 00:280c $fa $e8 $ce
@@ -6655,7 +6655,7 @@ scriptOpCodeFD:
     call Z, code_000_2840                              ;; 00:2825 $cc $40 $28
     ld   A, $01                                        ;; 00:2828 $3e $01
     ld   [wD499], A                                    ;; 00:282a $ea $99 $d4
-    ld   A, [wC8E0]                                    ;; 00:282d $fa $e0 $c8
+    ld   A, [wTileCopyRequestCount]                    ;; 00:282d $fa $e0 $c8
     cp   A, $00                                        ;; 00:2830 $fe $00
     ret  NZ                                            ;; 00:2832 $c0
     ld   A, [wBackgroundRenderRequestCount]            ;; 00:2833 $fa $e8 $ce
@@ -7489,11 +7489,11 @@ code_000_2d22:
     ld   A, $c9                                        ;; 00:2d54 $3e $c9
     ret                                                ;; 00:2d56 $c9
 
-code_000_2d57:
-    ld   A, [wC8E0]                                    ;; 00:2d57 $fa $e0 $c8
+vblankGraphicsVRAMCopy:
+    ld   A, [wTileCopyRequestCount]                    ;; 00:2d57 $fa $e0 $c8
     cp   A, $00                                        ;; 00:2d5a $fe $00
     ret  Z                                             ;; 00:2d5c $c8
-    ld   HL, wC8E1                                     ;; 00:2d5d $21 $e1 $c8
+    ld   HL, wTileCopyRequestMutex                     ;; 00:2d5d $21 $e1 $c8
     ld   A, $00                                        ;; 00:2d60 $3e $00
     cp   A, [HL]                                       ;; 00:2d62 $be
     ret  NZ                                            ;; 00:2d63 $c0
@@ -7504,17 +7504,17 @@ code_000_2d57:
     dec  [HL]                                          ;; 00:2d6a $35
     ret                                                ;; 00:2d6b $c9
 .code_2d6c:
-    ld   A, [wC8E0]                                    ;; 00:2d6c $fa $e0 $c8
+    ld   A, [wTileCopyRequestCount]                    ;; 00:2d6c $fa $e0 $c8
     ld   B, A                                          ;; 00:2d6f $47
     ld   HL, SP+0                                      ;; 00:2d70 $f8 $00
     ld   A, H                                          ;; 00:2d72 $7c
-    ld   [wC8E3], A                                    ;; 00:2d73 $ea $e3 $c8
+    ld   [wStackPointerBackupHigh], A                  ;; 00:2d73 $ea $e3 $c8
     ld   A, L                                          ;; 00:2d76 $7d
-    ld   [wC8E2], A                                    ;; 00:2d77 $ea $e2 $c8
+    ld   [wStackPointerBackupLow], A                   ;; 00:2d77 $ea $e2 $c8
     ldh  A, [rLY]                                      ;; 00:2d7a $f0 $44
     add  A, $06                                        ;; 00:2d7c $c6 $06
     ld   C, A                                          ;; 00:2d7e $4f
-    ld   HL, wC5E0                                     ;; 00:2d7f $21 $e0 $c5
+    ld   HL, wTileCopyRequestData                      ;; 00:2d7f $21 $e0 $c5
     ld   SP, HL                                        ;; 00:2d82 $f9
 .code_2d83:
     ldh  A, [rLY]                                      ;; 00:2d83 $f0 $44
@@ -7575,13 +7575,13 @@ code_000_2d57:
     jr   NZ, .code_2d83                                ;; 00:2dbe $20 $c3
 .code_2dc0:
     ld   A, B                                          ;; 00:2dc0 $78
-    ld   [wC8E0], A                                    ;; 00:2dc1 $ea $e0 $c8
+    ld   [wTileCopyRequestCount], A                    ;; 00:2dc1 $ea $e0 $c8
     ld   HL, SP+0                                      ;; 00:2dc4 $f8 $00
     ld   D, H                                          ;; 00:2dc6 $54
     ld   E, L                                          ;; 00:2dc7 $5d
-    ld   A, [wC8E3]                                    ;; 00:2dc8 $fa $e3 $c8
+    ld   A, [wStackPointerBackupHigh]                  ;; 00:2dc8 $fa $e3 $c8
     ld   H, A                                          ;; 00:2dcb $67
-    ld   A, [wC8E2]                                    ;; 00:2dcc $fa $e2 $c8
+    ld   A, [wStackPointerBackupLow]                   ;; 00:2dcc $fa $e2 $c8
     ld   L, A                                          ;; 00:2dcf $6f
     ld   SP, HL                                        ;; 00:2dd0 $f9
     ld   A, B                                          ;; 00:2dd1 $78
@@ -7601,18 +7601,22 @@ code_000_2d57:
     add  HL, HL                                        ;; 00:2de6 $29
     ld   B, H                                          ;; 00:2de7 $44
     ld   C, L                                          ;; 00:2de8 $4d
-    ld   DE, wC5E0                                     ;; 00:2de9 $11 $e0 $c5
+    ld   DE, wTileCopyRequestData                      ;; 00:2de9 $11 $e0 $c5
     pop  HL                                            ;; 00:2dec $e1
     call CopyHL_to_DE_size_BC                          ;; 00:2ded $cd $40 $2b
 .code_2df0:
-    ld   HL, wC8E1                                     ;; 00:2df0 $21 $e1 $c8
+    ld   HL, wTileCopyRequestMutex                     ;; 00:2df0 $21 $e1 $c8
     dec  [HL]                                          ;; 00:2df3 $35
     ret                                                ;; 00:2df4 $c9
 
-code_000_2df5:
+; Request the VBlank handler to copy 1 graphics tile (16 bytes) from ROM into VRAM.
+; A: source bank
+; DE: target VRAM address
+; HL: source ROM address
+addTileGraphicCopyRequest:
     push HL                                            ;; 00:2df5 $e5
     push AF                                            ;; 00:2df6 $f5
-    ld   HL, wC8E1                                     ;; 00:2df7 $21 $e1 $c8
+    ld   HL, wTileCopyRequestMutex                     ;; 00:2df7 $21 $e1 $c8
     ld   A, $00                                        ;; 00:2dfa $3e $00
     cp   A, [HL]                                       ;; 00:2dfc $be
     jr   NZ, .code_2e06                                ;; 00:2dfd $20 $07
@@ -7629,7 +7633,7 @@ code_000_2df5:
     pop  AF                                            ;; 00:2e09 $f1
     push DE                                            ;; 00:2e0a $d5
     ld   C, A                                          ;; 00:2e0b $4f
-    ld   A, [wC8E0]                                    ;; 00:2e0c $fa $e0 $c8
+    ld   A, [wTileCopyRequestCount]                    ;; 00:2e0c $fa $e0 $c8
     ld   L, A                                          ;; 00:2e0f $6f
     ld   H, $00                                        ;; 00:2e10 $26 $00
     ld   D, H                                          ;; 00:2e12 $54
@@ -7637,7 +7641,7 @@ code_000_2df5:
     add  HL, HL                                        ;; 00:2e14 $29
     add  HL, DE                                        ;; 00:2e15 $19
     add  HL, HL                                        ;; 00:2e16 $29
-    ld   DE, wC5E0                                     ;; 00:2e17 $11 $e0 $c5
+    ld   DE, wTileCopyRequestData                      ;; 00:2e17 $11 $e0 $c5
     add  HL, DE                                        ;; 00:2e1a $19
     ld   A, C                                          ;; 00:2e1b $79
     ld   [HL], $00                                     ;; 00:2e1c $36 $00
@@ -7652,9 +7656,9 @@ code_000_2df5:
     ld   A, E                                          ;; 00:2e26 $7b
     ld   [HL+], A                                      ;; 00:2e27 $22
     ld   [HL], D                                       ;; 00:2e28 $72
-    ld   HL, wC8E0                                     ;; 00:2e29 $21 $e0 $c8
+    ld   HL, wTileCopyRequestCount                     ;; 00:2e29 $21 $e0 $c8
     inc  [HL]                                          ;; 00:2e2c $34
-    ld   HL, wC8E1                                     ;; 00:2e2d $21 $e1 $c8
+    ld   HL, wTileCopyRequestMutex                     ;; 00:2e2d $21 $e1 $c8
     dec  [HL]                                          ;; 00:2e30 $35
     ret                                                ;; 00:2e31 $c9
     db   $09, $e5, $62, $6b, $09, $54, $5d, $e1        ;; 00:2e32 ????????

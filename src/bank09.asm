@@ -414,7 +414,7 @@ code_009_41e9:
     push BC                                            ;; 09:4224 $c5
     push DE                                            ;; 09:4225 $d5
     ld   A, $09                                        ;; 09:4226 $3e $09 Bank
-    call code_000_2df5                                 ;; 09:4228 $cd $f5 $2d
+    call addTileGraphicCopyRequest                     ;; 09:4228 $cd $f5 $2d
     pop  DE                                            ;; 09:422b $d1
     ld   HL, $0010                                     ;; 09:422c $21 $10 $00
     add  HL, DE                                        ;; 09:422f $19

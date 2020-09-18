@@ -294,15 +294,15 @@ wC5B0: ;; $c5b0
   ds 16
 wC5C0: ;; $c5c0
   ds 32
-wC5E0: ;; $c5e0
+wTileCopyRequestData: ;; $c5e0
   ds 768
-wC8E0: ;; $c8e0
+wTileCopyRequestCount: ;; $c8e0
   ds 1
-wC8E1: ;; $c8e1
+wTileCopyRequestMutex: ;; $c8e1
   ds 1
-wC8E2: ;; $c8e2
+wStackPointerBackupLow: ;; $c8e2
   ds 1
-wC8E3: ;; $c8e3
+wStackPointerBackupHigh: ;; $c8e3
   ds 5
 wBackgroundRenderRequests: ;; $c8e8
   ds 1536

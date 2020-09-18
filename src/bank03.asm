@@ -751,7 +751,7 @@ code_003_43dc:
     add  A, $08                                        ;; 03:4433 $c6 $08
     res  $07, H                                        ;; 03:4435 $cb $bc
     set  $06, H                                        ;; 03:4437 $cb $f4
-    call code_000_2df5                                 ;; 03:4439 $cd $f5 $2d
+    call addTileGraphicCopyRequest                     ;; 03:4439 $cd $f5 $2d
     pop  DE                                            ;; 03:443c $d1
     ld   HL, $0010                                     ;; 03:443d $21 $10 $00
     add  HL, DE                                        ;; 03:4440 $19
