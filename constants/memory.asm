@@ -370,7 +370,7 @@ wD07F: ;; $d07f
   ds 1
 wD080: ;; $d080
   ds 240
-wD170: ;; $d170
+wBackgroundGraphicsTileMapping: ;; $d170
   ds 4
 wD174: ;; $d174
   ds 4
@@ -384,7 +384,7 @@ wD17E: ;; $d17e
   ds 2
 wD180: ;; $d180
   ds 240
-wD270: ;; $d270
+wBackgroundGraphicsTileUsed: ;; $d270
   ds 128
 wD2F0: ;; $d2f0
   ds 16
@@ -939,7 +939,7 @@ hCurrentMusic: ;; $ff90
   ds 1
 hFF91: ;; $ff91
   ds 1
-hFF92: ;; $ff92
+hSFX: ;; $ff92
   ds 1
 hFF93: ;; $ff93
   ds 1

@@ -758,7 +758,7 @@ code_009_43ac:
     pop  BC                                            ;; 09:43ff $c1
     call code_000_0ae3                                 ;; 09:4400 $cd $e3 $0a
     ld   A, $15                                        ;; 09:4403 $3e $15
-    call code_000_297d                                 ;; 09:4405 $cd $7d $29
+    call playSFX                                       ;; 09:4405 $cd $7d $29
     xor  A, A                                          ;; 09:4408 $af
     ret                                                ;; 09:4409 $c9
 .code_440a:

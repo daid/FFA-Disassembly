@@ -239,7 +239,7 @@ code_001_419c:
     and  A, $fc                                        ;; 01:41be $e6 $fc
     ld   [wVideoLCDC], A                               ;; 01:41c0 $ea $a5 $c0
     ld   A, $24                                        ;; 01:41c3 $3e $24
-    call code_000_297d                                 ;; 01:41c5 $cd $7d $29
+    call playSFX                                       ;; 01:41c5 $cd $7d $29
     pop  HL                                            ;; 01:41c8 $e1
     ret                                                ;; 01:41c9 $c9
 
@@ -552,7 +552,7 @@ code_001_43a3:
     ld   HL, wD499                                     ;; 01:43de $21 $99 $d4
     inc  [HL]                                          ;; 01:43e1 $34
     ld   A, $23                                        ;; 01:43e2 $3e $23
-    call code_000_297d                                 ;; 01:43e4 $cd $7d $29
+    call playSFX                                       ;; 01:43e4 $cd $7d $29
     call code_000_2ef7                                 ;; 01:43e7 $cd $f7 $2e
     pop  HL                                            ;; 01:43ea $e1
     inc  HL                                            ;; 01:43eb $23
@@ -615,7 +615,7 @@ code_001_4422:
     ld   HL, wD499                                     ;; 01:443f $21 $99 $d4
     inc  [HL]                                          ;; 01:4442 $34
     ld   A, $23                                        ;; 01:4443 $3e $23
-    call code_000_297d                                 ;; 01:4445 $cd $7d $29
+    call playSFX                                       ;; 01:4445 $cd $7d $29
     ld   DE, $0000                                     ;; 01:4448 $11 $00 $00
     ld   HL, $1014                                     ;; 01:444b $21 $14 $10
     call code_000_042f                                 ;; 01:444e $cd $2f $04
@@ -636,7 +636,7 @@ code_001_4456:
     ld   HL, wD499                                     ;; 01:4469 $21 $99 $d4
     inc  [HL]                                          ;; 01:446c $34
     ld   A, $23                                        ;; 01:446d $3e $23
-    call code_000_297d                                 ;; 01:446f $cd $7d $29
+    call playSFX                                       ;; 01:446f $cd $7d $29
     call code_000_2ef7                                 ;; 01:4472 $cd $f7 $2e
     pop  HL                                            ;; 01:4475 $e1
     ret                                                ;; 01:4476 $c9
@@ -2024,7 +2024,7 @@ code_001_4e8d:
     ld   [wC0A0], A                                    ;; 01:4e9d $ea $a0 $c0
     call code_000_2ef7                                 ;; 01:4ea0 $cd $f7 $2e
     ld   A, $22                                        ;; 01:4ea3 $3e $22
-    call code_000_297d                                 ;; 01:4ea5 $cd $7d $29
+    call playSFX                                       ;; 01:4ea5 $cd $7d $29
     ret                                                ;; 01:4ea8 $c9
 
 code_001_4ea9:
@@ -2356,7 +2356,7 @@ code_001_50ac:
     push BC                                            ;; 01:50d7 $c5
     call code_000_3e25                                 ;; 01:50d8 $cd $25 $3e
     ld   A, $0d                                        ;; 01:50db $3e $0d
-    call code_000_297d                                 ;; 01:50dd $cd $7d $29
+    call playSFX                                       ;; 01:50dd $cd $7d $29
     call code_000_3135                                 ;; 01:50e0 $cd $35 $31
     pop  BC                                            ;; 01:50e3 $c1
     cpl                                                ;; 01:50e4 $2f
@@ -4306,7 +4306,7 @@ code_001_5b6d:
     dec  DE                                            ;; 01:5be6 $1b
     ld   A, [DE]                                       ;; 01:5be7 $1a
     push BC                                            ;; 01:5be8 $c5
-    call code_000_297d                                 ;; 01:5be9 $cd $7d $29
+    call playSFX                                       ;; 01:5be9 $cd $7d $29
     pop  BC                                            ;; 01:5bec $c1
     ld   A, $07                                        ;; 01:5bed $3e $07
     sub  A, C                                          ;; 01:5bef $91

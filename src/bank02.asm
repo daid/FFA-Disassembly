@@ -78,7 +78,7 @@ data_002_4084:
     dw   code_002_4147                                 ;; 02:408a $47 $41
     dw   code_002_4189                                 ;; 02:408c $89 $41
     dw   code_002_4189                                 ;; 02:408e $89 $41
-    dw   code_002_41ce                                 ;; 02:4090 $ce $41
+    dw   horizontalScrollTile                          ;; 02:4090 $ce $41
     dw   code_002_40a4                                 ;; 02:4092 $a4 $40
     dw   code_002_4213                                 ;; 02:4094 $13 $42
     dw   code_002_4213                                 ;; 02:4096 $13 $42
@@ -86,7 +86,7 @@ data_002_4084:
     dw   code_002_4147                                 ;; 02:409a $47 $41
     dw   code_002_4189                                 ;; 02:409c $89 $41
     dw   code_002_4189                                 ;; 02:409e $89 $41
-    dw   code_002_41ce                                 ;; 02:40a0 $ce $41
+    dw   horizontalScrollTile                          ;; 02:40a0 $ce $41
     dw   code_002_40a4                                 ;; 02:40a2 $a4 $40
 
 code_002_40a4:
@@ -128,7 +128,7 @@ code_002_40c9:
     ld   A, C                                          ;; 02:40d0 $79
     and  A, $01                                        ;; 02:40d1 $e6 $01
     jr   NZ, .code_40ed                                ;; 02:40d3 $20 $18
-    ld   DE, wD170                                     ;; 02:40d5 $11 $70 $d1
+    ld   DE, wBackgroundGraphicsTileMapping            ;; 02:40d5 $11 $70 $d1
     ld   A, [wD391]                                    ;; 02:40d8 $fa $91 $d3
     ld   H, A                                          ;; 02:40db $67
     ld   A, [wD390]                                    ;; 02:40dc $fa $90 $d3
@@ -264,7 +264,8 @@ code_002_4189:
     call requestBackgroundTileCopy                     ;; 02:41ca $cd $fe $41
     ret                                                ;; 02:41cd $c9
 
-code_002_41ce:
+; Check if we need to horizontally scroll a graphics tile, and scroll it 1 pixel.
+horizontalScrollTile:
     ld   A, [wD180]                                    ;; 02:41ce $fa $80 $d1
     cp   A, $00                                        ;; 02:41d1 $fe $00
     ret  Z                                             ;; 02:41d3 $c8
@@ -5100,7 +5101,7 @@ code_002_68c4:
     ld   A, [wD88D]                                    ;; 02:68cf $fa $8d $d8
     ld   [wD853], A                                    ;; 02:68d2 $ea $53 $d8
     ld   A, $12                                        ;; 02:68d5 $3e $12
-    call code_000_297d                                 ;; 02:68d7 $cd $7d $29
+    call playSFX                                       ;; 02:68d7 $cd $7d $29
     ret                                                ;; 02:68da $c9
 
 code_002_68db:
@@ -7522,7 +7523,7 @@ code_002_77af:
     swap A                                             ;; 02:77c3 $cb $37
     ld   [wD85F], A                                    ;; 02:77c5 $ea $5f $d8
     ld   A, $06                                        ;; 02:77c8 $3e $06
-    call code_000_297d                                 ;; 02:77ca $cd $7d $29
+    call playSFX                                       ;; 02:77ca $cd $7d $29
     ld   A, $38                                        ;; 02:77cd $3e $38
     ld   [wD853], A                                    ;; 02:77cf $ea $53 $d8
     ld   A, $20                                        ;; 02:77d2 $3e $20
@@ -7876,7 +7877,7 @@ code_002_7a00:
 code_002_7a1f:
     push AF                                            ;; 02:7a1f $f5
     ld   A, $0e                                        ;; 02:7a20 $3e $0e
-    call code_000_297d                                 ;; 02:7a22 $cd $7d $29
+    call playSFX                                       ;; 02:7a22 $cd $7d $29
     pop  AF                                            ;; 02:7a25 $f1
     ret                                                ;; 02:7a26 $c9
 

@@ -3044,7 +3044,7 @@ scriptOpCodeB9:
 
 scriptOpCodeF9:
     ld   A, [HL+]                                      ;; 00:1194 $2a
-    ldh  [hFF92], A                                    ;; 00:1195 $e0 $92
+    ldh  [hSFX], A                                     ;; 00:1195 $e0 $92
     call getNextScriptInstruction                      ;; 00:1197 $cd $27 $37
     ret                                                ;; 00:119a $c9
 
@@ -4048,7 +4048,7 @@ code_000_1700:
     call MultiplyHL_by_A                               ;; 00:176d $cd $7b $2b
     call code_000_3e25                                 ;; 00:1770 $cd $25 $3e
     ld   A, $0d                                        ;; 00:1773 $3e $0d
-    call code_000_297d                                 ;; 00:1775 $cd $7d $29
+    call playSFX                                       ;; 00:1775 $cd $7d $29
     ld   A, $33                                        ;; 00:1778 $3e $33
     ld   [wC4D2], A                                    ;; 00:177a $ea $d2 $c4
     ret                                                ;; 00:177d $c9
@@ -4531,7 +4531,7 @@ code_000_1a44:
     push HL                                            ;; 00:1a53 $e5
     ld   E, A                                          ;; 00:1a54 $5f
     ld   D, $00                                        ;; 00:1a55 $16 $00
-    ld   HL, wD170                                     ;; 00:1a57 $21 $70 $d1
+    ld   HL, wBackgroundGraphicsTileMapping            ;; 00:1a57 $21 $70 $d1
     add  HL, DE                                        ;; 00:1a5a $19
     ld   A, [HL]                                       ;; 00:1a5b $7e
     cp   A, $00                                        ;; 00:1a5c $fe $00
@@ -4657,12 +4657,12 @@ code_000_1af3:
     ld   [wTileDataTablePointerLow], A                 ;; 00:1b00 $ea $92 $d3
     ld   A, $00                                        ;; 00:1b03 $3e $00
     ld   B, $ff                                        ;; 00:1b05 $06 $ff
-    ld   HL, wD170                                     ;; 00:1b07 $21 $70 $d1
+    ld   HL, wBackgroundGraphicsTileMapping            ;; 00:1b07 $21 $70 $d1
     ld   [HL+], A                                      ;; 00:1b0a $22
     call fillMemory                                    ;; 00:1b0b $cd $5d $2b
     ld   A, $00                                        ;; 00:1b0e $3e $00
     ld   B, $80                                        ;; 00:1b10 $06 $80
-    ld   HL, wD270                                     ;; 00:1b12 $21 $70 $d2
+    ld   HL, wBackgroundGraphicsTileUsed               ;; 00:1b12 $21 $70 $d2
     call fillMemory                                    ;; 00:1b15 $cd $5d $2b
     ret                                                ;; 00:1b18 $c9
 
@@ -4695,7 +4695,7 @@ code_000_1b2b:
     push HL                                            ;; 00:1b35 $e5
     ld   E, A                                          ;; 00:1b36 $5f
     ld   D, $00                                        ;; 00:1b37 $16 $00
-    ld   HL, wD170                                     ;; 00:1b39 $21 $70 $d1
+    ld   HL, wBackgroundGraphicsTileMapping            ;; 00:1b39 $21 $70 $d1
     add  HL, DE                                        ;; 00:1b3c $19
     ld   A, [HL]                                       ;; 00:1b3d $7e
     cp   A, $00                                        ;; 00:1b3e $fe $00
@@ -4712,7 +4712,7 @@ code_000_1b2b:
     ret                                                ;; 00:1b4d $c9
 
 code_000_1b4e:
-    ld   HL, wD170                                     ;; 00:1b4e $21 $70 $d1
+    ld   HL, wBackgroundGraphicsTileMapping            ;; 00:1b4e $21 $70 $d1
     ld   B, $00                                        ;; 00:1b51 $06 $00
 .code_1b53:
     ld   A, [HL]                                       ;; 00:1b53 $7e
@@ -4727,7 +4727,7 @@ code_000_1b4e:
     add  A, [HL]                                       ;; 00:1b62 $86
     ld   E, A                                          ;; 00:1b63 $5f
     ld   D, $00                                        ;; 00:1b64 $16 $00
-    ld   HL, wD270                                     ;; 00:1b66 $21 $70 $d2
+    ld   HL, wBackgroundGraphicsTileUsed               ;; 00:1b66 $21 $70 $d2
     add  HL, DE                                        ;; 00:1b69 $19
     ld   [HL], $00                                     ;; 00:1b6a $36 $00
     pop  HL                                            ;; 00:1b6c $e1
@@ -4773,7 +4773,7 @@ code_000_1b8c:
 code_000_1ba1:
     ld   E, A                                          ;; 00:1ba1 $5f
     ld   D, $00                                        ;; 00:1ba2 $16 $00
-    ld   HL, wD170                                     ;; 00:1ba4 $21 $70 $d1
+    ld   HL, wBackgroundGraphicsTileMapping            ;; 00:1ba4 $21 $70 $d1
     add  HL, DE                                        ;; 00:1ba7 $19
     ld   A, [HL]                                       ;; 00:1ba8 $7e
     cp   A, $00                                        ;; 00:1ba9 $fe $00
@@ -4784,7 +4784,7 @@ code_000_1ba1:
     ld   A, $00                                        ;; 00:1bb0 $3e $00
     push HL                                            ;; 00:1bb2 $e5
     ld   D, $70                                        ;; 00:1bb3 $16 $70
-    ld   HL, wD270                                     ;; 00:1bb5 $21 $70 $d2
+    ld   HL, wBackgroundGraphicsTileUsed               ;; 00:1bb5 $21 $70 $d2
 .code_1bb8:
     cp   A, [HL]                                       ;; 00:1bb8 $be
     jr   Z, .code_1bc7                                 ;; 00:1bb9 $28 $0c
@@ -6922,9 +6922,9 @@ code_000_2963:
     jr   NZ, .code_296e                                ;; 00:297a $20 $f2
     ret                                                ;; 00:297c $c9
 
-code_000_297d:
+playSFX:
     and  A, $7f                                        ;; 00:297d $e6 $7f
-    ldh  [hFF92], A                                    ;; 00:297f $e0 $92
+    ldh  [hSFX], A                                     ;; 00:297f $e0 $92
     ret                                                ;; 00:2981 $c9
 
 code_000_2982:
@@ -7424,7 +7424,7 @@ scriptOpCodeAF:
     pop  DE                                            ;; 00:2cf5 $d1
     call code_000_2ce1                                 ;; 00:2cf6 $cd $e1 $2c
     ld   A, $0f                                        ;; 00:2cf9 $3e $0f
-    call code_000_297d                                 ;; 00:2cfb $cd $7d $29
+    call playSFX                                       ;; 00:2cfb $cd $7d $29
     pop  HL                                            ;; 00:2cfe $e1
     call getNextScriptInstruction                      ;; 00:2cff $cd $27 $37
     ret                                                ;; 00:2d02 $c9
@@ -10334,7 +10334,7 @@ code_000_3e46:
     ret  Z                                             ;; 00:3e5b $c8
     call code_000_2ef7                                 ;; 00:3e5c $cd $f7 $2e
     ld   A, $20                                        ;; 00:3e5f $3e $20
-    call code_000_297d                                 ;; 00:3e61 $cd $7d $29
+    call playSFX                                       ;; 00:3e61 $cd $7d $29
     ld   HL, $0007                                     ;; 00:3e64 $21 $07 $00
     call code_000_31ad                                 ;; 00:3e67 $cd $ad $31
     ret                                                ;; 00:3e6a $c9

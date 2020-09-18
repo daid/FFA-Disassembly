@@ -932,7 +932,7 @@ code_004_4554:
     ld   A, L                                          ;; 04:455b $7d
     ld   [wD3F2], A                                    ;; 04:455c $ea $f2 $d3
     ld   A, $15                                        ;; 04:455f $3e $15
-    call code_000_297d                                 ;; 04:4561 $cd $7d $29
+    call playSFX                                       ;; 04:4561 $cd $7d $29
     ld   A, $40                                        ;; 04:4564 $3e $40
     ret                                                ;; 04:4566 $c9
 
@@ -1237,7 +1237,7 @@ code_004_4728:
     ld   A, $18                                        ;; 04:4728 $3e $18
     ld   [wD3EB], A                                    ;; 04:472a $ea $eb $d3
     ld   A, $0d                                        ;; 04:472d $3e $0d
-    call code_000_297d                                 ;; 04:472f $cd $7d $29
+    call playSFX                                       ;; 04:472f $cd $7d $29
     ld   A, $40                                        ;; 04:4732 $3e $40
     ret                                                ;; 04:4734 $c9
 

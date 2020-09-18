@@ -1403,7 +1403,7 @@ code_003_47eb:
     inc  HL                                            ;; 03:47f3 $23
     ld   [HL], B                                       ;; 03:47f4 $70
     ld   A, $15                                        ;; 03:47f5 $3e $15
-    call code_000_297d                                 ;; 03:47f7 $cd $7d $29
+    call playSFX                                       ;; 03:47f7 $cd $7d $29
     ld   A, $40                                        ;; 03:47fa $3e $40
     ret                                                ;; 03:47fc $c9
 
@@ -1860,7 +1860,7 @@ code_003_4a26:
     ld   C, [HL]                                       ;; 03:4a67 $4e
     call code_000_0ca6                                 ;; 03:4a68 $cd $a6 $0c
     ld   A, $0d                                        ;; 03:4a6b $3e $0d
-    call code_000_297d                                 ;; 03:4a6d $cd $7d $29
+    call playSFX                                       ;; 03:4a6d $cd $7d $29
     ld   A, $40                                        ;; 03:4a70 $3e $40
     ret                                                ;; 03:4a72 $c9
 .code_4a73:
@@ -1868,7 +1868,7 @@ code_003_4a26:
     add  HL, DE                                        ;; 03:4a76 $19
     ld   [HL], $3c                                     ;; 03:4a77 $36 $3c
     ld   A, $0d                                        ;; 03:4a79 $3e $0d
-    call code_000_297d                                 ;; 03:4a7b $cd $7d $29
+    call playSFX                                       ;; 03:4a7b $cd $7d $29
     ld   A, $40                                        ;; 03:4a7e $3e $40
     ret                                                ;; 03:4a80 $c9
 
@@ -2472,7 +2472,7 @@ code_003_4e4a:
     ld   HL, data_003_4e32                             ;; 03:4e4c $21 $32 $4e
     call code_000_0cba                                 ;; 03:4e4f $cd $ba $0c
     ld   A, $0b                                        ;; 03:4e52 $3e $0b
-    call code_000_297d                                 ;; 03:4e54 $cd $7d $29
+    call playSFX                                       ;; 03:4e54 $cd $7d $29
     pop  DE                                            ;; 03:4e57 $d1
     pop  BC                                            ;; 03:4e58 $c1
     ret                                                ;; 03:4e59 $c9

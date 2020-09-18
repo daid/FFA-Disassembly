@@ -40,7 +40,7 @@ runSoundEngineReal:
     cp   A, B                                          ;; 0f:4033 $b8
     call NZ, code_00f_409e                             ;; 0f:4034 $c4 $9e $40
 .code_4037:
-    ldh  A, [hFF92]                                    ;; 0f:4037 $f0 $92
+    ldh  A, [hSFX]                                     ;; 0f:4037 $f0 $92
     or   A, A                                          ;; 0f:4039 $b7
     call NZ, code_00f_493c                             ;; 0f:403a $c4 $3c $49
 .code_403d:
@@ -1401,7 +1401,7 @@ code_00f_493c:
     ld   [wC11A], A                                    ;; 0f:495b $ea $1a $c1
     ld   [wC14A], A                                    ;; 0f:495e $ea $4a $c1
     xor  A, A                                          ;; 0f:4961 $af
-    ldh  [hFF92], A                                    ;; 0f:4962 $e0 $92
+    ldh  [hSFX], A                                     ;; 0f:4962 $e0 $92
     ret                                                ;; 0f:4964 $c9
 
 code_00f_4965:
