@@ -8278,7 +8278,7 @@ code_000_31c7:
     pop  HL                                            ;; 00:31e7 $e1
     jr   .code_31f1                                    ;; 00:31e8 $18 $07
 .code_31ea:
-    call code_000_3282                                 ;; 00:31ea $cd $82 $32
+    call getScriptPointerFromScriptPointerTable        ;; 00:31ea $cd $82 $32
     ld   DE, data_001_4000                             ;; 00:31ed $11 $00 $40
     add  HL, DE                                        ;; 00:31f0 $19
 .code_31f1:
@@ -8369,7 +8369,9 @@ code_000_3274:
     pop  HL                                            ;; 00:3280 $e1
     ret                                                ;; 00:3281 $c9
 
-code_000_3282:
+; Input: HL, index in the script pointer table
+; Output: HL, script pointer value
+getScriptPointerFromScriptPointerTable:
     push HL                                            ;; 00:3282 $e5
     ld   A, $08                                        ;; 00:3283 $3e $08 Bank
     call pushBankNrAndSwitch                           ;; 00:3285 $cd $fb $29
@@ -9471,7 +9473,7 @@ code_000_392f:
     push BC                                            ;; 00:3930 $c5
     ld   H, D                                          ;; 00:3931 $62
     ld   L, E                                          ;; 00:3932 $6b
-    call code_000_3282                                 ;; 00:3933 $cd $82 $32
+    call getScriptPointerFromScriptPointerTable        ;; 00:3933 $cd $82 $32
     ld   D, H                                          ;; 00:3936 $54
     ld   E, L                                          ;; 00:3937 $5d
     pop  HL                                            ;; 00:3938 $e1
