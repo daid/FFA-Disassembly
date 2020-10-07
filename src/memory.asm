@@ -1,969 +1,1452 @@
 
 SECTION "WRAM Bank0", WRAM0[$c000]
-wOAMBuffer: ;; c000
+wOAMBuffer: 
+;; c000
   ds 1
-wC001: ;; c001
+wC001: 
+;; c001
   ds 7
-wC008: ;; c008
+wC008: 
+;; c008
   ds 8
-wC010: ;; c010
+wC010: 
+;; c010
   ds 144
-wC0A0: ;; c0a0
+wC0A0: 
+;; c0a0
   ds 1
-wC0A1: ;; c0a1
+wC0A1: 
+;; c0a1
   ds 1
-wC0A2: ;; c0a2
+wC0A2: 
+;; c0a2
   ds 2
-wOAM_MemoryHighAddress: ;; c0a4
+wOAM_MemoryHighAddress: 
+;; c0a4
   ds 1
-wVideoLCDC: ;; c0a5
+wVideoLCDC: 
+;; c0a5
   ds 1
-wVideoSCX: ;; c0a6
+wVideoSCX: 
+;; c0a6
   ds 1
-wVideoSCY: ;; c0a7
+wVideoSCY: 
+;; c0a7
   ds 1
-wVideoWX: ;; c0a8
+wVideoWX: 
+;; c0a8
   ds 1
-wVideoWY: ;; c0a9
+wVideoWY: 
+;; c0a9
   ds 1
-wVideoBGP: ;; c0aa
+wVideoBGP: 
+;; c0aa
   ds 1
-wVideoOBP0: ;; c0ab
+wVideoOBP0: 
+;; c0ab
   ds 1
-wVideoOBP1: ;; c0ac
+wVideoOBP1: 
+;; c0ac
   ds 1
-wVBlankDone: ;; c0ad
+wVBlankDone: 
+;; c0ad
   ds 1
-wInterruptFiredFlags: ;; c0ae
+wInterruptFiredFlags: 
+;; c0ae
   ds 1
-wJoypadInput: ;; c0af
+wJoypadInput: 
+;; c0af
   ds 1
-wRndState0: ;; c0b0
+wRndState0: 
+;; c0b0
   ds 1
-wRndState1: ;; c0b1
+wRndState1: 
+;; c0b1
   ds 1
-wScratchBankCallFunctionNumber: ;; c0b2
+wScratchBankCallFunctionNumber: 
+;; c0b2
   ds 1
-wScratchBankCallA: ;; c0b3
+wScratchBankCallA: 
+;; c0b3
   ds 1
-wScratchBankCallL: ;; c0b4
+wScratchBankCallL: 
+;; c0b4
   ds 1
-wScratchBankCallH: ;; c0b5
+wScratchBankCallH: 
+;; c0b5
   ds 11
-wBankStack: ;; c0c0
+wBankStack: 
+;; c0c0
   ds 64
-wC100: ;; c100
+wC100: 
+;; c100
   ds 1
-wC101: ;; c101
+wC101: 
+;; c101
   ds 1
-wC102: ;; c102
+wC102: 
+;; c102
   ds 1
-wC103: ;; c103
+wC103: 
+;; c103
   ds 1
-wMusicInstructionPointerLow: ;; c104
+wMusicInstructionPointerLow: 
+;; c104
   ds 1
-wMusicInstructionPointerHigh: ;; c105
+wMusicInstructionPointerHigh: 
+;; c105
   ds 1
-wC106: ;; c106
+wC106: 
+;; c106
   ds 1
-wC107: ;; c107
+wC107: 
+;; c107
   ds 1
-wC108: ;; c108
+wC108: 
+;; c108
   ds 1
-wC109: ;; c109
+wC109: 
+;; c109
   ds 1
-wC10A: ;; c10a
+wC10A: 
+;; c10a
   ds 1
-wC10B: ;; c10b
+wC10B: 
+;; c10b
   ds 1
-wC10C: ;; c10c
+wC10C: 
+;; c10c
   ds 1
-wC10D: ;; c10d
+wC10D: 
+;; c10d
   ds 1
-wC10E: ;; c10e
+wC10E: 
+;; c10e
   ds 1
-wC10F: ;; c10f
+wC10F: 
+;; c10f
   ds 1
-wC110: ;; c110
+wC110: 
+;; c110
   ds 1
-wC111: ;; c111
+wC111: 
+;; c111
   ds 2
-wC113: ;; c113
+wC113: 
+;; c113
   ds 1
-wC114: ;; c114
+wC114: 
+;; c114
   ds 1
-wC115: ;; c115
+wC115: 
+;; c115
   ds 1
-wC116: ;; c116
+wC116: 
+;; c116
   ds 1
-wC117: ;; c117
+wC117: 
+;; c117
   ds 1
-wC118: ;; c118
+wC118: 
+;; c118
   ds 1
-wC119: ;; c119
+wC119: 
+;; c119
   ds 1
-wC11A: ;; c11a
+wC11A: 
+;; c11a
   ds 1
-wC11B: ;; c11b
+wC11B: 
+;; c11b
   ds 1
-wC11C: ;; c11c
+wC11C: 
+;; c11c
   ds 1
-wC11D: ;; c11d
+wC11D: 
+;; c11d
   ds 1
-wC11E: ;; c11e
+wC11E: 
+;; c11e
   ds 1
-wC11F: ;; c11f
+wC11F: 
+;; c11f
   ds 1
-wC120: ;; c120
+wC120: 
+;; c120
   ds 1
-wC121: ;; c121
+wC121: 
+;; c121
   ds 1
-wC122: ;; c122
+wC122: 
+;; c122
   ds 1
-wC123: ;; c123
+wC123: 
+;; c123
   ds 1
-wC124: ;; c124
+wC124: 
+;; c124
   ds 1
-wC125: ;; c125
+wC125: 
+;; c125
   ds 1
-wC126: ;; c126
+wC126: 
+;; c126
   ds 1
-wC127: ;; c127
+wC127: 
+;; c127
   ds 1
-wC128: ;; c128
+wC128: 
+;; c128
   ds 1
-wC129: ;; c129
+wC129: 
+;; c129
   ds 1
-wC12A: ;; c12a
+wC12A: 
+;; c12a
   ds 1
-wC12B: ;; c12b
+wC12B: 
+;; c12b
   ds 1
-wC12C: ;; c12c
+wC12C: 
+;; c12c
   ds 1
-wC12D: ;; c12d
+wC12D: 
+;; c12d
   ds 1
-wC12E: ;; c12e
+wC12E: 
+;; c12e
   ds 1
-wC12F: ;; c12f
+wC12F: 
+;; c12f
   ds 1
-wC130: ;; c130
+wC130: 
+;; c130
   ds 1
-wC131: ;; c131
+wC131: 
+;; c131
   ds 1
-wC132: ;; c132
+wC132: 
+;; c132
   ds 1
-wC133: ;; c133
+wC133: 
+;; c133
   ds 1
-wC134: ;; c134
+wC134: 
+;; c134
   ds 1
-wC135: ;; c135
+wC135: 
+;; c135
   ds 1
-wC136: ;; c136
+wC136: 
+;; c136
   ds 1
-wC137: ;; c137
+wC137: 
+;; c137
   ds 1
-wC138: ;; c138
+wC138: 
+;; c138
   ds 1
-wC139: ;; c139
+wC139: 
+;; c139
   ds 1
-wC13A: ;; c13a
+wC13A: 
+;; c13a
   ds 1
-wC13B: ;; c13b
+wC13B: 
+;; c13b
   ds 2
-wC13D: ;; c13d
+wC13D: 
+;; c13d
   ds 1
-wC13E: ;; c13e
+wC13E: 
+;; c13e
   ds 1
-wC13F: ;; c13f
+wC13F: 
+;; c13f
   ds 1
-wC140: ;; c140
+wC140: 
+;; c140
   ds 1
-wC141: ;; c141
+wC141: 
+;; c141
   ds 2
-wC143: ;; c143
+wC143: 
+;; c143
   ds 6
-wC149: ;; c149
+wC149: 
+;; c149
   ds 1
-wC14A: ;; c14a
+wC14A: 
+;; c14a
   ds 17
-wC15B: ;; c15b
+wC15B: 
+;; c15b
   ds 7
-wC162: ;; c162
+wC162: 
+;; c162
   ds 98
-wC1C4: ;; c1c4
+wC1C4: 
+;; c1c4
   ds 1
-wC1C5: ;; c1c5
+wC1C5: 
+;; c1c5
   ds 1
-wC1C6: ;; c1c6
+wC1C6: 
+;; c1c6
   ds 1
-wC1C7: ;; c1c7
+wC1C7: 
+;; c1c7
   ds 1
-wC1C8: ;; c1c8
+wC1C8: 
+;; c1c8
   ds 1
-wC1C9: ;; c1c9
+wC1C9: 
+;; c1c9
   ds 1
-wC1CA: ;; c1ca
+wC1CA: 
+;; c1ca
   ds 54
-wObjectRuntimeData: ;; c200
+wObjectRuntimeData: 
+;; c200
   ds 112
-wC270: ;; c270
+wC270: 
+;; c270
   ds 208
-wC340: ;; c340
+wC340: 
+;; c340
   ds 1
-wC341: ;; c341
+wC341: 
+;; c341
   ds 1
-wBackgroundDrawPositionX: ;; c342
+wBackgroundDrawPositionX: 
+;; c342
   ds 1
-wBackgroundDrawPositionY: ;; c343
+wBackgroundDrawPositionY: 
+;; c343
   ds 1
-wC344: ;; c344
+wC344: 
+;; c344
   ds 1
-wC345: ;; c345
+wC345: 
+;; c345
   ds 3
-wC348: ;; c348
+wC348: 
+;; c348
   ds 1
-wC349: ;; c349
+wC349: 
+;; c349
   ds 7
-wRoomTiles: ;; c350
+wRoomTiles: 
+;; c350
   ds 80
-wC3A0: ;; c3a0
+wC3A0: 
+;; c3a0
   ds 80
-wMapTableBankNr: ;; c3f0
+wMapTableBankNr: 
+;; c3f0
   ds 1
-wC3F1: ;; c3f1
+wC3F1: 
+;; c3f1
   ds 1
-wMapTablePointerLow: ;; c3f2
+wMapTablePointerLow: 
+;; c3f2
   ds 1
-wMapTablePointerHigh: ;; c3f3
+wMapTablePointerHigh: 
+;; c3f3
   ds 1
-wC3F4: ;; c3f4
+wC3F4: 
+;; c3f4
   ds 1
-wMapNumber: ;; c3f5
+wMapNumber: 
+;; c3f5
   ds 1
-wRoomX: ;; c3f6
+wRoomX: 
+;; c3f6
   ds 1
-wRoomY: ;; c3f7
+wRoomY: 
+;; c3f7
   ds 1
-wC3F8: ;; c3f8
+wC3F8: 
+;; c3f8
   ds 1
-wMapTileRLECount: ;; c3f9
+wMapTileRLECount: 
+;; c3f9
   ds 1
-wMapHeight: ;; c3fa
+wMapHeight: 
+;; c3fa
   ds 1
-wMapWidth: ;; c3fb
+wMapWidth: 
+;; c3fb
   ds 1
-wC3FC: ;; c3fc
+wC3FC: 
+;; c3fc
   ds 1
-wC3FD: ;; c3fd
+wC3FD: 
+;; c3fd
   ds 1
-wC3FE: ;; c3fe
+wC3FE: 
+;; c3fe
   ds 1
-wC3FF: ;; c3ff
+wC3FF: 
+;; c3ff
   ds 1
-wC400: ;; c400
+wC400: 
+;; c400
   ds 128
-wC480: ;; c480
+wC480: 
+;; c480
   ds 32
-wC4A0: ;; c4a0
+wC4A0: 
+;; c4a0
   ds 1
-wC4A1: ;; c4a1
+wC4A1: 
+;; c4a1
   ds 1
-wC4A2: ;; c4a2
+wC4A2: 
+;; c4a2
   ds 46
-wC4D0: ;; c4d0
+wC4D0: 
+;; c4d0
   ds 1
-wC4D1: ;; c4d1
+wC4D1: 
+;; c4d1
   ds 1
-wC4D2: ;; c4d2
+wC4D2: 
+;; c4d2
   ds 2
-wC4D4: ;; c4d4
+wC4D4: 
+;; c4d4
   ds 12
-wC4E0: ;; c4e0
+wC4E0: 
+;; c4e0
   ds 16
-wC4F0: ;; c4f0
+wC4F0: 
+;; c4f0
   ds 176
-wC5A0: ;; c5a0
+wC5A0: 
+;; c5a0
   ds 8
-wC5A8: ;; c5a8
+wC5A8: 
+;; c5a8
   ds 6
-wC5AE: ;; c5ae
+wC5AE: 
+;; c5ae
   ds 1
-wC5AF: ;; c5af
+wC5AF: 
+;; c5af
   ds 1
-wC5B0: ;; c5b0
+wC5B0: 
+;; c5b0
   ds 16
-wC5C0: ;; c5c0
+wC5C0: 
+;; c5c0
   ds 32
-wTileCopyRequestData: ;; c5e0
+wTileCopyRequestData: 
+;; c5e0
   ds 768
-wTileCopyRequestCount: ;; c8e0
+wTileCopyRequestCount: 
+;; c8e0
   ds 1
-wTileCopyRequestMutex: ;; c8e1
+wTileCopyRequestMutex: 
+;; c8e1
   ds 1
-wStackPointerBackupLow: ;; c8e2
+wStackPointerBackupLow: 
+;; c8e2
   ds 1
-wStackPointerBackupHigh: ;; c8e3
+wStackPointerBackupHigh: 
+;; c8e3
   ds 5
-wBackgroundRenderRequests: ;; c8e8
+wBackgroundRenderRequests: 
+;; c8e8
   ds 1536
-wBackgroundRenderRequestCount: ;; cee8
+wBackgroundRenderRequestCount: 
+;; cee8
   ds 8
-wCEF0: ;; cef0
+wCEF0: 
+;; cef0
   ds 8
-wCEF8: ;; cef8
+wCEF8: 
+;; cef8
   ds 8
-wCF00: ;; cf00
+wCF00: 
+;; cf00
   ds 8
-wCF08: ;; cf08
+wCF08: 
+;; cf08
   ds 16
-wCF18: ;; cf18
+wCF18: 
+;; cf18
   ds 16
-wCF28: ;; cf28
+wCF28: 
+;; cf28
   ds 32
-wCF48: ;; cf48
+wCF48: 
+;; cf48
   ds 8
-wCF50: ;; cf50
+wCF50: 
+;; cf50
   ds 8
-wCF58: ;; cf58
+wCF58: 
+;; cf58
   ds 1
-wCF59: ;; cf59
+wCF59: 
+;; cf59
   ds 1
-wCF5A: ;; cf5a
+wCF5A: 
+;; cf5a
   ds 1
-wCF5B: ;; cf5b
+wCF5B: 
+;; cf5b
   ds 1
-wCF5C: ;; cf5c
+wCF5C: 
+;; cf5c
   ds 1
-wCF5D: ;; cf5d
+wCF5D: 
+;; cf5d
   ds 1
-wCF5E: ;; cf5e
+wCF5E: 
+;; cf5e
   ds 1
-wCF5F: ;; cf5f
+wCF5F: 
+;; cf5f
   ds 1
-wCF60: ;; cf60
+wCF60: 
+;; cf60
   ds 1
-wCF61: ;; cf61
+wCF61: 
+;; cf61
   ds 1
-wCF62: ;; cf62
+wCF62: 
+;; cf62
   ds 1
-wCF63: ;; cf63
+wCF63: 
+;; cf63
 
   ds 112
-wD070: ;; d070
+wD070: 
+;; d070
   ds 8
-wD078: ;; d078
+wD078: 
+;; d078
   ds 1
-wD079: ;; d079
+wD079: 
+;; d079
   ds 1
-wD07A: ;; d07a
+wD07A: 
+;; d07a
   ds 1
-wD07B: ;; d07b
+wD07B: 
+;; d07b
   ds 1
-wD07C: ;; d07c
+wD07C: 
+;; d07c
   ds 1
-wD07D: ;; d07d
+wD07D: 
+;; d07d
   ds 1
-wD07E: ;; d07e
+wD07E: 
+;; d07e
   ds 1
-wD07F: ;; d07f
+wD07F: 
+;; d07f
   ds 1
-wD080: ;; d080
+wD080: 
+;; d080
   ds 240
-wBackgroundGraphicsTileMapping: ;; d170
+wBackgroundGraphicsTileMapping: 
+;; d170
   ds 4
-wD174: ;; d174
+wD174: 
+;; d174
   ds 4
-wD178: ;; d178
+wD178: 
+;; d178
   ds 2
-wD17A: ;; d17a
+wD17A: 
+;; d17a
   ds 2
-wD17C: ;; d17c
+wD17C: 
+;; d17c
   ds 2
-wD17E: ;; d17e
+wD17E: 
+;; d17e
   ds 2
-wD180: ;; d180
+wD180: 
+;; d180
   ds 240
-wBackgroundGraphicsTileUsed: ;; d270
+wBackgroundGraphicsTileUsed: 
+;; d270
   ds 128
-wD2F0: ;; d2f0
+wD2F0: 
+;; d2f0
   ds 16
-wD300: ;; d300
+wD300: 
+;; d300
   ds 16
-wD310: ;; d310
+wD310: 
+;; d310
   ds 16
-wD320: ;; d320
+wD320: 
+;; d320
   ds 16
-wD330: ;; d330
+wD330: 
+;; d330
   ds 16
-wD340: ;; d340
+wD340: 
+;; d340
   ds 16
-wD350: ;; d350
+wD350: 
+;; d350
   ds 16
-wD360: ;; d360
+wD360: 
+;; d360
   ds 16
-wD370: ;; d370
+wD370: 
+;; d370
   ds 16
-wD380: ;; d380
+wD380: 
+;; d380
   ds 14
-wD38E: ;; d38e
+wD38E: 
+;; d38e
   ds 1
-wD38F: ;; d38f
+wD38F: 
+;; d38f
   ds 1
-wD390: ;; d390
+wD390: 
+;; d390
   ds 1
-wD391: ;; d391
+wD391: 
+;; d391
   ds 1
-wTileDataTablePointerLow: ;; d392
+wTileDataTablePointerLow: 
+;; d392
   ds 1
-wTileDataTablePointerHigh: ;; d393
+wTileDataTablePointerHigh: 
+;; d393
   ds 1
-wD394: ;; d394
+wD394: 
+;; d394
   ds 4
-wD398: ;; d398
+wD398: 
+;; d398
   ds 1
-wD399: ;; d399
+wD399: 
+;; d399
   ds 7
-wD3A0: ;; d3a0
+wD3A0: 
+;; d3a0
   ds 3
-wD3A3: ;; d3a3
+wD3A3: 
+;; d3a3
   ds 63
-wD3E2: ;; d3e2
+wD3E2: 
+;; d3e2
   ds 6
-wD3E8: ;; d3e8
+wD3E8: 
+;; d3e8
   ds 1
-wD3E9: ;; d3e9
+wD3E9: 
+;; d3e9
   ds 2
-wD3EB: ;; d3eb
+wD3EB: 
+;; d3eb
   ds 1
-wD3EC: ;; d3ec
+wD3EC: 
+;; d3ec
   ds 1
-wD3ED: ;; d3ed
+wD3ED: 
+;; d3ed
   ds 1
-wD3EE: ;; d3ee
+wD3EE: 
+;; d3ee
   ds 1
-wD3EF: ;; d3ef
+wD3EF: 
+;; d3ef
   ds 1
-wD3F0: ;; d3f0
+wD3F0: 
+;; d3f0
   ds 2
-wD3F2: ;; d3f2
+wD3F2: 
+;; d3f2
   ds 1
-wD3F3: ;; d3f3
+wD3F3: 
+;; d3f3
   ds 1
-wD3F4: ;; d3f4
+wD3F4: 
+;; d3f4
   ds 1
-wD3F5: ;; d3f5
+wD3F5: 
+;; d3f5
   ds 1
-wD3F6: ;; d3f6
+wD3F6: 
+;; d3f6
   ds 66
-wD438: ;; d438
+wD438: 
+;; d438
   ds 1
-wD439: ;; d439
+wD439: 
+;; d439
   ds 1
-wD43A: ;; d43a
+wD43A: 
+;; d43a
   ds 1
-wD43B: ;; d43b
+wD43B: 
+;; d43b
   ds 1
-wD43C: ;; d43c
+wD43C: 
+;; d43c
   ds 1
-wD43D: ;; d43d
+wD43D: 
+;; d43d
   ds 1
-wD43E: ;; d43e
+wD43E: 
+;; d43e
   ds 1
-wD43F: ;; d43f
+wD43F: 
+;; d43f
   ds 1
-wD440: ;; d440
+wD440: 
+;; d440
   ds 1
-wD441: ;; d441
+wD441: 
+;; d441
   ds 1
-wD442: ;; d442
+wD442: 
+;; d442
   ds 4
-wD446: ;; d446
+wD446: 
+;; d446
   ds 82
-wD498: ;; d498
+wD498: 
+;; d498
   ds 1
-wD499: ;; d499
+wD499: 
+;; d499
   ds 1
-wD49A: ;; d49a
+wD49A: 
+;; d49a
   ds 1
-wD49B: ;; d49b
+wD49B: 
+;; d49b
   ds 1
-wD49C: ;; d49c
+wD49C: 
+;; d49c
   ds 1
-wD49D: ;; d49d
+wD49D: 
+;; d49d
   ds 1
-wD49E: ;; d49e
+wD49E: 
+;; d49e
   ds 1
-wD49F: ;; d49f
+wD49F: 
+;; d49f
   ds 1
-wD4A0: ;; d4a0
+wD4A0: 
+;; d4a0
   ds 1
-wD4A1: ;; d4a1
+wD4A1: 
+;; d4a1
   ds 1
-wD4A2: ;; d4a2
+wD4A2: 
+;; d4a2
   ds 1
-wD4A3: ;; d4a3
+wD4A3: 
+;; d4a3
   ds 1
-wD4A4: ;; d4a4
+wD4A4: 
+;; d4a4
   ds 3
-wD4A7: ;; d4a7
+wD4A7: 
+;; d4a7
   ds 1
-wD4A8: ;; d4a8
+wD4A8: 
+;; d4a8
   ds 1
-wD4A9: ;; d4a9
+wD4A9: 
+;; d4a9
   ds 1
-wD4AA: ;; d4aa
+wD4AA: 
+;; d4aa
   ds 1
-wD4AB: ;; d4ab
+wD4AB: 
+;; d4ab
   ds 155
-wD546: ;; d546
+wD546: 
+;; d546
   ds 40
-wD56E: ;; d56e
+wD56E: 
+;; d56e
   ds 62
-wD5AC: ;; d5ac
+wD5AC: 
+;; d5ac
   ds 103
-wD613: ;; d613
+wD613: 
+;; d613
   ds 3
-wD616: ;; d616
+wD616: 
+;; d616
   ds 1
-wD617: ;; d617
+wD617: 
+;; d617
   ds 12
-wD623: ;; d623
+wD623: 
+;; d623
   ds 16
-wD633: ;; d633
+wD633: 
+;; d633
   ds 4
-wD637: ;; d637
+wD637: 
+;; d637
   ds 76
-wD683: ;; d683
+wD683: 
+;; d683
   ds 24
-wD69B: ;; d69b
+wD69B: 
+;; d69b
   ds 16
-wD6AB: ;; d6ab
+wD6AB: 
+;; d6ab
   ds 8
-wD6B3: ;; d6b3
+wD6B3: 
+;; d6b3
   ds 12
-wD6BF: ;; d6bf
+wD6BF: 
+;; d6bf
   ds 1
-wD6C0: ;; d6c0
+wD6C0: 
+;; d6c0
   ds 1
-wD6C1: ;; d6c1
+wD6C1: 
+;; d6c1
   ds 1
-wD6C2: ;; d6c2
+wD6C2: 
+;; d6c2
   ds 1
-wD6C3: ;; d6c3
+wD6C3: 
+;; d6c3
   ds 2
-wItemInventory: ;; d6c5
+wItemInventory: 
+;; d6c5
   ds 16
-wMagicInventory: ;; d6d5
+wMagicInventory: 
+;; d6d5
   ds 8
-wEquipmentInventory: ;; d6dd
+wEquipmentInventory: 
+;; d6dd
   ds 12
-wD6E9: ;; d6e9
+wD6E9: 
+;; d6e9
   ds 3
-wD6EC: ;; d6ec
+wD6EC: 
+;; d6ec
   ds 2
-wD6EE: ;; d6ee
+wD6EE: 
+;; d6ee
   ds 1
-wD6EF: ;; d6ef
+wD6EF: 
+;; d6ef
   ds 1
-wD6F0: ;; d6f0
+wD6F0: 
+;; d6f0
   ds 1
-wD6F1: ;; d6f1
+wD6F1: 
+;; d6f1
   ds 2
-wD6F3: ;; d6f3
+wD6F3: 
+;; d6f3
   ds 7
-wD6FA: ;; d6fa
+wD6FA: 
+;; d6fa
   ds 7
-wD701: ;; d701
+wD701: 
+;; d701
   ds 14
-wD70F: ;; d70f
+wD70F: 
+;; d70f
   ds 32
-wD72F: ;; d72f
+wD72F: 
+;; d72f
   ds 32
-wD74F: ;; d74f
+wD74F: 
+;; d74f
   ds 64
-wD78F: ;; d78f
+wD78F: 
+;; d78f
   ds 1
-wD790: ;; d790
+wD790: 
+;; d790
   ds 1
-wD791: ;; d791
+wD791: 
+;; d791
   ds 2
-wD793: ;; d793
+wD793: 
+;; d793
   ds 10
-wD79D: ;; d79d
+wD79D: 
+;; d79d
   ds 5
-wD7A2: ;; d7a2
+wD7A2: 
+;; d7a2
   ds 5
-wD7A7: ;; d7a7
+wD7A7: 
+;; d7a7
   ds 1
-wD7A8: ;; d7a8
+wD7A8: 
+;; d7a8
   ds 2
-wD7AA: ;; d7aa
+wD7AA: 
+;; d7aa
   ds 7
-wD7B1: ;; d7b1
+wD7B1: 
+;; d7b1
   ds 1
-wHPLow: ;; d7b2
+wHPLow: 
+;; d7b2
   ds 1
-wHPHigh: ;; d7b3
+wHPHigh: 
+;; d7b3
   ds 1
-wMaxHPLow: ;; d7b4
+wMaxHPLow: 
+;; d7b4
   ds 1
-wMaxHPHigh: ;; d7b5
+wMaxHPHigh: 
+;; d7b5
   ds 1
-wManaLow: ;; d7b6
+wManaLow: 
+;; d7b6
   ds 1
-wManaHigh: ;; d7b7
+wManaHigh: 
+;; d7b7
   ds 1
-wMaxManaLow: ;; d7b8
+wMaxManaLow: 
+;; d7b8
   ds 1
-wMaxManaHigh: ;; d7b9
+wMaxManaHigh: 
+;; d7b9
   ds 1
-wLevel: ;; d7ba
+wLevel: 
+;; d7ba
   ds 1
-wXPLow: ;; d7bb
+wXPLow: 
+;; d7bb
   ds 1
-wXPHigh: ;; d7bc
+wXPHigh: 
+;; d7bc
   ds 1
-wXPHighExt: ;; d7bd
+wXPHighExt: 
+;; d7bd
   ds 1
-wMoneyLow: ;; d7be
+wMoneyLow: 
+;; d7be
   ds 1
-wMoneyHigh: ;; d7bf
+wMoneyHigh: 
+;; d7bf
   ds 1
-wD7C0: ;; d7c0
+wD7C0: 
+;; d7c0
   ds 1
-wStatStamina: ;; d7c1
+wStatStamina: 
+;; d7c1
   ds 1
-wStatPower: ;; d7c2
+wStatPower: 
+;; d7c2
   ds 1
-wStatWisdom: ;; d7c3
+wStatWisdom: 
+;; d7c3
   ds 1
-wStatWill: ;; d7c4
+wStatWill: 
+;; d7c4
   ds 2
-wScriptFlags: ;; d7c6
+wScriptFlags: 
+;; d7c6
   ds 4
-wD7CA: ;; d7ca
+wD7CA: 
+;; d7ca
   ds 6
-wD7D0: ;; d7d0
+wD7D0: 
+;; d7d0
   ds 1
-wD7D1: ;; d7d1
+wD7D1: 
+;; d7d1
   ds 3
-wD7D4: ;; d7d4
+wD7D4: 
+;; d7d4
   ds 1
-wD7D5: ;; d7d5
+wD7D5: 
+;; d7d5
   ds 1
-wD7D6: ;; d7d6
+wD7D6: 
+;; d7d6
   ds 1
-wD7D7: ;; d7d7
+wD7D7: 
+;; d7d7
   ds 1
-wD7D8: ;; d7d8
+wD7D8: 
+;; d7d8
   ds 5
-wD7DD: ;; d7dd
+wD7DD: 
+;; d7dd
   ds 2
-wD7DF: ;; d7df
+wD7DF: 
+;; d7df
   ds 1
-wD7E0: ;; d7e0
+wD7E0: 
+;; d7e0
   ds 1
-wD7E1: ;; d7e1
+wD7E1: 
+;; d7e1
   ds 80
-wD831: ;; d831
+wD831: 
+;; d831
   ds 17
-wD842: ;; d842
+wD842: 
+;; d842
   ds 1
-wD843: ;; d843
+wD843: 
+;; d843
   ds 1
-wD844: ;; d844
+wD844: 
+;; d844
   ds 1
-wD845: ;; d845
+wD845: 
+;; d845
   ds 1
-wD846: ;; d846
+wD846: 
+;; d846
   ds 2
-wD848: ;; d848
+wD848: 
+;; d848
   ds 1
-wD849: ;; d849
+wD849: 
+;; d849
   ds 1
-wD84A: ;; d84a
+wD84A: 
+;; d84a
   ds 1
-wD84B: ;; d84b
+wD84B: 
+;; d84b
   ds 1
-wD84C: ;; d84c
+wD84C: 
+;; d84c
   ds 1
-wD84D: ;; d84d
+wD84D: 
+;; d84d
   ds 1
-wD84E: ;; d84e
+wD84E: 
+;; d84e
   ds 1
-wD84F: ;; d84f
+wD84F: 
+;; d84f
   ds 1
-wD850: ;; d850
+wD850: 
+;; d850
   ds 1
-wD851: ;; d851
+wD851: 
+;; d851
   ds 2
-wD853: ;; d853
+wD853: 
+;; d853
   ds 1
-wD854: ;; d854
+wD854: 
+;; d854
   ds 2
-wD856: ;; d856
+wD856: 
+;; d856
   ds 1
-wD857: ;; d857
+wD857: 
+;; d857
   ds 1
-wD858: ;; d858
+wD858: 
+;; d858
   ds 1
-wD859: ;; d859
+wD859: 
+;; d859
   ds 1
-wScriptCommand: ;; d85a
+wScriptCommand: 
+;; d85a
   ds 2
-wD85C: ;; d85c
+wD85C: 
+;; d85c
   ds 1
-wD85D: ;; d85d
+wD85D: 
+;; d85d
   ds 1
-wD85E: ;; d85e
+wD85E: 
+;; d85e
   ds 1
-wD85F: ;; d85f
+wD85F: 
+;; d85f
   ds 1
-wD860: ;; d860
+wD860: 
+;; d860
   ds 2
-wD862: ;; d862
+wD862: 
+;; d862
   ds 1
-wD863: ;; d863
+wD863: 
+;; d863
   ds 1
-wD864: ;; d864
+wD864: 
+;; d864
   ds 1
-wD865: ;; d865
+wD865: 
+;; d865
   ds 1
-wD866: ;; d866
+wD866: 
+;; d866
   ds 1
-wD867: ;; d867
+wD867: 
+;; d867
   ds 1
-wD868: ;; d868
+wD868: 
+;; d868
   ds 1
-wD869: ;; d869
+wD869: 
+;; d869
   ds 1
-wScriptBank: ;; d86a
+wScriptBank: 
+;; d86a
   ds 1
-wD86B: ;; d86b
+wD86B: 
+;; d86b
   ds 1
-wD86C: ;; d86c
+wD86C: 
+;; d86c
   ds 1
-wD86D: ;; d86d
+wD86D: 
+;; d86d
   ds 1
-wD86E: ;; d86e
+wD86E: 
+;; d86e
   ds 1
-wD86F: ;; d86f
+wD86F: 
+;; d86f
   ds 1
-wD870: ;; d870
+wD870: 
+;; d870
   ds 1
-wD871: ;; d871
+wD871: 
+;; d871
   ds 1
-wD872: ;; d872
+wD872: 
+;; d872
   ds 1
-wD873: ;; d873
+wD873: 
+;; d873
   ds 1
-wD874: ;; d874
+wD874: 
+;; d874
   ds 2
-wD876: ;; d876
+wD876: 
+;; d876
   ds 1
-wD877: ;; d877
+wD877: 
+;; d877
   ds 1
-wD878: ;; d878
+wD878: 
+;; d878
   ds 1
-wD879: ;; d879
+wD879: 
+;; d879
   ds 1
-wD87A: ;; d87a
+wD87A: 
+;; d87a
   ds 1
-wD87B: ;; d87b
+wD87B: 
+;; d87b
   ds 1
-wD87C: ;; d87c
+wD87C: 
+;; d87c
   ds 1
-wD87D: ;; d87d
+wD87D: 
+;; d87d
   ds 1
-wD87E: ;; d87e
+wD87E: 
+;; d87e
   ds 1
-wD87F: ;; d87f
+wD87F: 
+;; d87f
   ds 1
-wD880: ;; d880
+wD880: 
+;; d880
   ds 1
-wD881: ;; d881
+wD881: 
+;; d881
   ds 1
-wD882: ;; d882
+wD882: 
+;; d882
   ds 1
-wD883: ;; d883
+wD883: 
+;; d883
   ds 1
-wD884: ;; d884
+wD884: 
+;; d884
   ds 1
-wD885: ;; d885
+wD885: 
+;; d885
   ds 1
-wD886: ;; d886
+wD886: 
+;; d886
   ds 1
-wD887: ;; d887
+wD887: 
+;; d887
   ds 1
-wD888: ;; d888
+wD888: 
+;; d888
   ds 1
-wD889: ;; d889
+wD889: 
+;; d889
   ds 1
-wD88A: ;; d88a
+wD88A: 
+;; d88a
   ds 1
-wD88B: ;; d88b
+wD88B: 
+;; d88b
   ds 1
-wD88C: ;; d88c
+wD88C: 
+;; d88c
   ds 1
-wD88D: ;; d88d
+wD88D: 
+;; d88d
   ds 1
-wD88E: ;; d88e
+wD88E: 
+;; d88e
   ds 1
-wD88F: ;; d88f
+wD88F: 
+;; d88f
   ds 1
-wD890: ;; d890
+wD890: 
+;; d890
   ds 1
-wD891: ;; d891
+wD891: 
+;; d891
   ds 1
-wD892: ;; d892
+wD892: 
+;; d892
   ds 1
-wD893: ;; d893
+wD893: 
+;; d893
   ds 1
-wD894: ;; d894
+wD894: 
+;; d894
   ds 1
-wD895: ;; d895
+wD895: 
+;; d895
   ds 1
-wD896: ;; d896
+wD896: 
+;; d896
   ds 1
-wD897: ;; d897
+wD897: 
+;; d897
   ds 1
-wD898: ;; d898
+wD898: 
+;; d898
   ds 1
-wD899: ;; d899
+wD899: 
+;; d899
   ds 1
-wD89A: ;; d89a
+wD89A: 
+;; d89a
   ds 1
-wD89B: ;; d89b
+wD89B: 
+;; d89b
   ds 1
-wD89C: ;; d89c
+wD89C: 
+;; d89c
   ds 1
-wD89D: ;; d89d
+wD89D: 
+;; d89d
   ds 1
-wD89E: ;; d89e
+wD89E: 
+;; d89e
   ds 1
-wD89F: ;; d89f
+wD89F: 
+;; d89f
   ds 3
-wD8A2: ;; d8a2
+wD8A2: 
+;; d8a2
   ds 1
-wD8A3: ;; d8a3
+wD8A3: 
+;; d8a3
   ds 1
-wD8A4: ;; d8a4
+wD8A4: 
+;; d8a4
   ds 1
-wD8A5: ;; d8a5
+wD8A5: 
+;; d8a5
   ds 1
-wD8A6: ;; d8a6
+wD8A6: 
+;; d8a6
   ds 1
-wD8A7: ;; d8a7
+wD8A7: 
+;; d8a7
   ds 1
-wD8A8: ;; d8a8
+wD8A8: 
+;; d8a8
   ds 1
-wD8A9: ;; d8a9
+wD8A9: 
+;; d8a9
   ds 1
-wD8AA: ;; d8aa
+wD8AA: 
+;; d8aa
   ds 1
-wD8AB: ;; d8ab
+wD8AB: 
+;; d8ab
   ds 1
-wD8AC: ;; d8ac
+wD8AC: 
+;; d8ac
   ds 1
-wD8AD: ;; d8ad
+wD8AD: 
+;; d8ad
   ds 1
-wD8AE: ;; d8ae
+wD8AE: 
+;; d8ae
   ds 1
-wD8AF: ;; d8af
+wD8AF: 
+;; d8af
   ds 1
-wD8B0: ;; d8b0
+wD8B0: 
+;; d8b0
   ds 1
-wD8B1: ;; d8b1
+wD8B1: 
+;; d8b1
   ds 1
-wD8B2: ;; d8b2
+wD8B2: 
+;; d8b2
   ds 1
-wD8B3: ;; d8b3
+wD8B3: 
+;; d8b3
   ds 1
-wD8B4: ;; d8b4
+wD8B4: 
+;; d8b4
   ds 1
-wD8B5: ;; d8b5
+wD8B5: 
+;; d8b5
   ds 1
-wScriptPointerLow: ;; d8b6
+wScriptPointerLow: 
+;; d8b6
   ds 1
-wScriptPointerHigh: ;; d8b7
+wScriptPointerHigh: 
+;; d8b7
   ds 1
-wD8B8: ;; d8b8
+wD8B8: 
+;; d8b8
   ds 1
-wD8B9: ;; d8b9
+wD8B9: 
+;; d8b9
   ds 1
-wD8BA: ;; d8ba
+wD8BA: 
+;; d8ba
   ds 1
-wD8BB: ;; d8bb
+wD8BB: 
+;; d8bb
   ds 1
-wD8BC: ;; d8bc
+wD8BC: 
+;; d8bc
   ds 1
-wD8BD: ;; d8bd
+wD8BD: 
+;; d8bd
   ds 1
-wD8BE: ;; d8be
+wD8BE: 
+;; d8be
   ds 1
-wD8BF: ;; d8bf
+wD8BF: 
+;; d8bf
   ds 1
-wNextXPLevelLow: ;; d8c0
+wNextXPLevelLow: 
+;; d8c0
   ds 1
-wNextXPLevelHigh: ;; d8c1
+wNextXPLevelHigh: 
+;; d8c1
   ds 1
-wNextXPLevelHighExt: ;; d8c2
+wNextXPLevelHighExt: 
+;; d8c2
   ds 1
-wD8C3: ;; d8c3
+wD8C3: 
+;; d8c3
   ds 1
-wD8C4: ;; d8c4
+wD8C4: 
+;; d8c4
   ds 1
-wD8C5: ;; d8c5
+wD8C5: 
+;; d8c5
   ds 1
-wD8C6: ;; d8c6
+wD8C6: 
+;; d8c6
   ds 1
-wD8C7: ;; d8c7
+wD8C7: 
+;; d8c7
   ds 16
-wD8D7: ;; d8d7
+wD8D7: 
+;; d8d7
   ds 1
-wD8D8: ;; d8d8
+wD8D8: 
+;; d8d8
   ds 1
-wD8D9: ;; d8d9
+wD8D9: 
+;; d8d9
   ds 1
-wD8DA: ;; d8da
+wD8DA: 
+;; d8da
   ds 1
-wD8DB: ;; d8db
+wD8DB: 
+;; d8db
 
 SECTION "HRAM", HRAM
-hOAM_DMA_Routine: ;; ff80
+hOAM_DMA_Routine: 
+;; ff80
   ds 10
-hBankStackPointer: ;; ff8a
+hBankStackPointer: 
+;; ff8a
   ds 6
-hCurrentMusic: ;; ff90
+hCurrentMusic: 
+;; ff90
   ds 1
-hFF91: ;; ff91
+hFF91: 
+;; ff91
   ds 1
-hSFX: ;; ff92
+hSFX: 
+;; ff92
   ds 1
-hFF93: ;; ff93
+hFF93: 
+;; ff93
   ds 1
-hFF94: ;; ff94
+hFF94: 
+;; ff94
   ds 1
-hFF95: ;; ff95
+hFF95: 
+;; ff95
   ds 1
-hFF96: ;; ff96
+hFF96: 
+;; ff96
   ds 1
-hFF97: ;; ff97
+hFF97: 
+;; ff97
   ds 2
-hFF99: ;; ff99
+hFF99: 
+;; ff99
   ds 1
-hFF9A: ;; ff9a
+hFF9A: 
+;; ff9a
   ds 1
-hFF9B: ;; ff9b
+hFF9B: 
+;; ff9b
   ds 1
-hFF9C: ;; ff9c
+hFF9C: 
+;; ff9c
   ds 1
-hFF9D: ;; ff9d
+hFF9D: 
+;; ff9d
   ds 93
-hFFFA: ;; fffa
+hFFFA: 
+;; fffa
   ds 2
-hFFFC: ;; fffc
+hFFFC: 
+;; fffc
   ds 1
-hFFFD: ;; fffd
+hFFFD: 
+;; fffd
   ds 1
-hFFFE: ;; fffe
+hFFFE: 
+;; fffe
