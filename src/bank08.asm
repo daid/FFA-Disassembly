@@ -1,6 +1,8 @@
 ;; Disassembled with BadBoy Disassembler: https://github.com/daid/BadBoy
 
-;@map_headers: 16
+SECTION "bank08", ROMX[$4000], BANK[$08]
+
+;@map_headers amount=16
 ; This bank seems to start with some kind of map information with 11 bytes per record
 ; Format:
 ;  dw TileSetData?
@@ -623,7 +625,7 @@ data_008_4c1a:
     db   $ca, $e4, $0f, $3f, $f7, $0f, $b7, $6e        ;; 08:4efa ????????
     db   $0f, $ff, $ff                                 ;; 08:4f02 ???
 
-;@script_pointers: 1354
+;@script_pointers amount=1354
 ; The following data is pointers to the scripts in bank $0D and $0E
 scriptPointersTable:
     SCRIPT_POINTER script_0000                         ;; 08:4f05 $00 $00

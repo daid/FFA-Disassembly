@@ -1,5 +1,7 @@
 ;; Disassembled with BadBoy Disassembler: https://github.com/daid/BadBoy
 
+SECTION "bank0a", ROMX[$4000], BANK[$0a]
+
 ;@gfx
 data_00a_4000:
     dw   `00000000                                     ;; 0a:4000 $00 $00 GFX GFX

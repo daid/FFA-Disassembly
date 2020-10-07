@@ -1,5 +1,7 @@
 ;; Disassembled with BadBoy Disassembler: https://github.com/daid/BadBoy
 
+SECTION "bank0f", ROMX[$4000], BANK[$0f]
+
 runSoundEngine:
     jr   runSoundEngineReal                            ;; 0f:4000 $18 $04
     ds   1                                             ;; 0f:4002 ?
@@ -427,7 +429,7 @@ code_00f_4361:
     jp   code_00f_4361                                 ;; 0f:4361 $c3 $61 $43
     db   $c9                                           ;; 0f:4364 ?
 
-;@jumptable: 13
+;@jumptable amount=13
 ; Jump table for $E0-$ED music "opcodes", guess is that these are flow control codes.
 data_00f_4365:
     dw   code_00f_4386                                 ;; 0f:4365 $86 $43
@@ -812,7 +814,7 @@ code_00f_45c1:
     ld   L, E                                          ;; 0f:45c5 $6b
     jp   HL                                            ;; 0f:45c6 $e9
 
-;@jumptable: 12
+;@jumptable amount=12
 data_00f_45c7:
     dw   code_00f_45df                                 ;; 0f:45c7 $df $45
     dw   code_00f_45fa                                 ;; 0f:45c9 $fa $45
@@ -1025,7 +1027,7 @@ code_00f_471c:
     ld   L, E                                          ;; 0f:4720 $6b
     jp   HL                                            ;; 0f:4721 $e9
 
-;@jumptable: 12
+;@jumptable amount=12
 data_00f_4722:
     dw   code_00f_473a                                 ;; 0f:4722 $3a $47
     dw   code_00f_4743                                 ;; 0f:4724 $43 $47
@@ -1515,7 +1517,7 @@ code_00f_49bc:
 .code_4a11:
     ret                                                ;; 0f:4a11 $c9
 
-;@pointertable: 90
+;@data amount=30 format=ppp
 ; Music data table, 3 pointers per music. Details unknown.
 data_00f_4a12:
     dw   data_00f_4ac9                                 ;; 0f:4a12 $c9 $4a

@@ -1,5 +1,7 @@
 ;; Disassembled with BadBoy Disassembler: https://github.com/daid/BadBoy
 
+SECTION "bank05", ROMX[$4000], BANK[$05]
+
 ; This seems to contain map data
 ; Basic format is 2 pointers pointing to a "object table" and runlength encoded "tilemap" data
 mapRoomPointers_00:

@@ -1,5 +1,7 @@
 ;; Disassembled with BadBoy Disassembler: https://github.com/daid/BadBoy
 
+SECTION "bank00", ROM0[$0000]
+
 rst_00:
     jp   FullReset                                     ;; 00:0000 $c3 $50 $01
     ds   5                                             ;; 00:0003 ?..??
@@ -2625,7 +2627,7 @@ unknown_000_0ebe:
     db   $00, $10, $10, $00, $10, $10, $00, $10        ;; 00:0ebe ????????
     db   $10, $00, $10, $10                            ;; 00:0ec6 ????
 
-;@jumptable: 2
+;@jumptable amount=2
 data_000_0eca:
     dw   code_000_0ece                                 ;; 00:0eca $ce $0e
     dw   code_000_0eef                                 ;; 00:0ecc $ef $0e
@@ -9422,7 +9424,7 @@ scriptOpCodeFF:
     ld   L, A                                          ;; 00:38ec $6f
     jp   HL                                            ;; 00:38ed $e9
 
-;@jumptable
+;@jumptable amount=16
 data_000_38ee:
     dw   code_000_34e7                                 ;; 00:38ee $e7 $34
     dw   code_000_34f4                                 ;; 00:38f0 $f4 $34
@@ -9887,7 +9889,7 @@ scriptOpCodeDE:
 scriptOpCodeC8:
     jp   FullReset                                     ;; 00:3b9e $c3 $50 $01
 
-;@jumptable: 11
+;@jumptable amount=11
 data_000_3ba1:
     dw   code_000_3547                                 ;; 00:3ba1 $47 $35
     dw   code_000_3597                                 ;; 00:3ba3 $97 $35

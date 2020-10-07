@@ -1,5 +1,7 @@
 ;; Disassembled with BadBoy Disassembler: https://github.com/daid/BadBoy
 
+SECTION "bank0e", ROMX[$4000], BANK[$0e]
+
 script_0294:
     db  $0b ;;IF JR                                    ;; 0e:4000 $0b
     db   $c9, $00, $33                                 ;; 0e:4001 ...

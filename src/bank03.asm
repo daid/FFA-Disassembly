@@ -1,5 +1,7 @@
 ;; Disassembled with BadBoy Disassembler: https://github.com/daid/BadBoy
 
+SECTION "bank03", ROMX[$4000], BANK[$03]
+
 ;@jumptable
 data_003_4000:
     dw   code_003_402c                                 ;; 03:4000 $2c $40
@@ -2214,7 +2216,7 @@ code_003_4c38:
     call code_003_4af9                                 ;; 03:4c51 $cd $f9 $4a
     ret                                                ;; 03:4c54 $c9
 
-;@jumptable: 224
+;@jumptable amount=224
 data_003_4c55:
     dw   code_003_4eb3                                 ;; 03:4c55 $b3 $4e
     dw   code_003_4e7c                                 ;; 03:4c57 $7c $4e
@@ -4347,7 +4349,7 @@ data_003_59fe:
     db   $01, $00, $00, $00, $00, $05, $ff, $ff        ;; 03:5f4e ???????.
     db   $00, $00, $00, $00                            ;; 03:5f56 ????
 
-;@data_records: 191: 24
+;@data amount=191 format=bbbbbbbbbbbbbbbbbbbbbbbb
 ;NPC related data, format unknown, source of the index unknown.
 ; Offset $14: script index value (2 bytes)
 unknown_003_5f5a:
@@ -4543,7 +4545,7 @@ unknown_003_5f5a:
     db   $81, $5e, $40, $08, $00, $6a, $5a, $7b, $b6, $7c, $00, $01, $01, $00, $00, $00, $04, $04, $04, $04, $5d, $02, $00, $00 ;; 03:7112 ????????????????????????
     db   $91, $3f, $60, $08, $00, $53, $5a, $7b, $da, $7c, $00, $01, $01, $00, $00, $00, $06, $03, $07, $08, $3d, $00, $00, $00 ;; 03:712a ????????????????????????
 
-;@data_records: 109: 6
+;@data amount=109 format=ppp
 ; Size of the table not sure
 ; Some object or NPC related data, pretty sure these are all pointers.
 data_003_7142:

@@ -1,6 +1,8 @@
 ;; Disassembled with BadBoy Disassembler: https://github.com/daid/BadBoy
 
-;@jumptable
+SECTION "bank04", ROMX[$4000], BANK[$04]
+
+;@jumptable amount=7
 data_004_4000:
     dw   code_004_4090                                 ;; 04:4000 $90 $40
     dw   code_004_42f7                                 ;; 04:4002 $f7 $42
@@ -323,7 +325,7 @@ code_004_419e:
     call code_000_299a                                 ;; 04:41c1 $cd $9a $29
     ret                                                ;; 04:41c4 $c9
 
-;@jumptable
+;@jumptable amount=4
 data_004_41c5:
     dw   code_004_41cd                                 ;; 04:41c5 $cd $41
     dw   code_004_41d1                                 ;; 04:41c7 $d1 $41

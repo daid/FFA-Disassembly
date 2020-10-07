@@ -6,7 +6,7 @@ rom.gb: src/main.o
 	rgbfix --validate $@
 
 src/main.o: $(ASM_FILES)
-	rgbasm --export-all -o $@ src/main.asm
+	rgbasm --export-all -o $@ src/main.asm -Wall -Wextra
 
 check: rom.gb rom.md5
 	md5sum -c rom.md5

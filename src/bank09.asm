@@ -1,5 +1,7 @@
 ;; Disassembled with BadBoy Disassembler: https://github.com/daid/BadBoy
 
+SECTION "bank09", ROMX[$4000], BANK[$09]
+
 ;@jumptable
 data_009_4000:
     dw   code_009_4016                                 ;; 09:4000 $16 $40

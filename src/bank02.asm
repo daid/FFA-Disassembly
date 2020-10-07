@@ -1,6 +1,8 @@
 ;; Disassembled with BadBoy Disassembler: https://github.com/daid/BadBoy
 
-;@jumptable: 58
+SECTION "bank02", ROMX[$4000], BANK[$02]
+
+;@jumptable amount=58
 data_002_4000:
     dw   code_002_4074                                 ;; 02:4000 $74 $40
     dw   updateJoypadInput                             ;; 02:4002 $18 $42
@@ -70,7 +72,7 @@ code_002_4074:
     inc  [HL]                                          ;; 02:4082 $34
     ret                                                ;; 02:4083 $c9
 
-;@jumptable: 16
+;@jumptable amount=16
 data_002_4084:
     dw   code_002_40c9                                 ;; 02:4084 $c9 $40
     dw   code_002_40c9                                 ;; 02:4086 $c9 $40
@@ -930,7 +932,7 @@ code_002_4567:
     ld   L, A                                          ;; 02:4574 $6f
     ret                                                ;; 02:4575 $c9
 
-;@jumptable: 256: scriptOpCode%02X
+;@jumptable amount=256 label=scriptOpCode%02X
 scriptOpcodeTable:
     dw   scriptOpCode00                                ;; 02:4576 $97 $32
     dw   scriptOpCode01                                ;; 02:4578 $f3 $32
@@ -1256,7 +1258,7 @@ data_002_47b8:
     dw   $80f0                                         ;; 02:47c4 $f0 $80
     db   $30, $4c                                      ;; 02:47c6 ..
 
-;@jumptable: 59
+;@jumptable amount=59
 data_002_47c8:
     dw   code_002_487e                                 ;; 02:47c8 $7e $48
     dw   code_002_4889                                 ;; 02:47ca $89 $48
@@ -1721,7 +1723,7 @@ data_002_4b08:
     db   $0d, $0f, $10, $0e, $15, $18, $1f, $1b        ;; 02:4b08 ........
     db   $00                                           ;; 02:4b10 .
 
-;@jumptable: 8
+;@jumptable amount=8
 data_002_4b11:
     dw   code_002_522d                                 ;; 02:4b11 $2d $52
     dw   code_002_522d                                 ;; 02:4b13 $2d $52
