@@ -1,20 +1,22 @@
 ;; Disassembled with BadBoy Disassembler: https://github.com/daid/BadBoy
 
+INCLUDE "include/hardware.inc"
+INCLUDE "include/macros.inc"
+INCLUDE "include/charmaps.inc"
+
 SECTION "bank04", ROMX[$4000], BANK[$04]
-
 ;@jumptable amount=7
-data_004_4000:
-    dw   code_004_4090                                 ;; 04:4000 $90 $40
-    dw   code_004_42f7                                 ;; 04:4002 $f7 $42
-    dw   code_004_4425                                 ;; 04:4004 $25 $44
-    dw   code_004_45fa                                 ;; 04:4006 $fa $45
-    dw   code_004_4735                                 ;; 04:4008 $35 $47
-    dw   code_004_4446                                 ;; 04:400a $46 $44
-    dw   code_004_400e                                 ;; 04:400c $0e $40
+    dw   call_04_4090                                  ;; 04:4000 ..
+    dw   call_04_42f7                                  ;; 04:4002 ..
+    dw   call_04_4425                                  ;; 04:4004 ??
+    dw   call_04_45fa                                  ;; 04:4006 ..
+    dw   call_04_4735                                  ;; 04:4008 ??
+    dw   call_04_4446                                  ;; 04:400a ..
+    dw   call_04_400e                                  ;; 04:400c ..
 
-code_004_400e:
+call_04_400e:
     push BC                                            ;; 04:400e $c5
-    call code_000_0c6d                                 ;; 04:400f $cd $6d $0c
+    call call_00_0c6d                                  ;; 04:400f $cd $6d $0c
     pop  BC                                            ;; 04:4012 $c1
     and  A, $40                                        ;; 04:4013 $e6 $40
     ld   B, A                                          ;; 04:4015 $47
@@ -22,104 +24,104 @@ code_004_400e:
     call GetObjectY                                    ;; 04:4017 $cd $3e $0c
     pop  BC                                            ;; 04:401a $c1
     add  A, $38                                        ;; 04:401b $c6 $38
-    bit  $07, A                                        ;; 04:401d $cb $7f
-    jr   NZ, .code_4025                                ;; 04:401f $20 $04
-    set  $02, B                                        ;; 04:4021 $cb $d0
-    jr   .code_4027                                    ;; 04:4023 $18 $02
-.code_4025:
-    set  $03, B                                        ;; 04:4025 $cb $d8
-.code_4027:
+    bit  7, A                                          ;; 04:401d $cb $7f
+    jr   NZ, .jr_04_4025                               ;; 04:401f $20 $04
+    set  2, B                                          ;; 04:4021 $cb $d0
+    jr   .jr_04_4027                                   ;; 04:4023 $18 $02
+.jr_04_4025:
+    set  3, B                                          ;; 04:4025 $cb $d8
+.jr_04_4027:
     ld   E, A                                          ;; 04:4027 $5f
     ld   L, $40                                        ;; 04:4028 $2e $40
     ld   H, $c0                                        ;; 04:402a $26 $c0
-    bit  $06, B                                        ;; 04:402c $cb $70
-    jr   NZ, .code_4034                                ;; 04:402e $20 $04
+    bit  6, B                                          ;; 04:402c $cb $70
+    jr   NZ, .jr_04_4034                               ;; 04:402e $20 $04
     ld   L, $48                                        ;; 04:4030 $2e $48
     ld   H, $b8                                        ;; 04:4032 $26 $b8
-.code_4034:
+.jr_04_4034:
     sub  A, L                                          ;; 04:4034 $95
     ld   D, A                                          ;; 04:4035 $57
     ld   A, H                                          ;; 04:4036 $7c
     sub  A, E                                          ;; 04:4037 $93
-    bit  $02, B                                        ;; 04:4038 $cb $50
-    jr   NZ, .code_403d                                ;; 04:403a $20 $01
+    bit  2, B                                          ;; 04:4038 $cb $50
+    jr   NZ, .jr_04_403d                               ;; 04:403a $20 $01
     ld   D, A                                          ;; 04:403c $57
-.code_403d:
+.jr_04_403d:
     push DE                                            ;; 04:403d $d5
     push BC                                            ;; 04:403e $c5
     call GetObjectX                                    ;; 04:403f $cd $2d $0c
     pop  BC                                            ;; 04:4042 $c1
     pop  DE                                            ;; 04:4043 $d1
     add  A, $30                                        ;; 04:4044 $c6 $30
-    bit  $07, A                                        ;; 04:4046 $cb $7f
-    jr   Z, .code_404e                                 ;; 04:4048 $28 $04
-    set  $00, B                                        ;; 04:404a $cb $c0
-    jr   .code_4050                                    ;; 04:404c $18 $02
-.code_404e:
-    set  $01, B                                        ;; 04:404e $cb $c8
-.code_4050:
+    bit  7, A                                          ;; 04:4046 $cb $7f
+    jr   Z, .jr_04_404e                                ;; 04:4048 $28 $04
+    set  0, B                                          ;; 04:404a $cb $c0
+    jr   .jr_04_4050                                   ;; 04:404c $18 $02
+.jr_04_404e:
+    set  1, B                                          ;; 04:404e $cb $c8
+.jr_04_4050:
     ld   E, A                                          ;; 04:4050 $5f
     ld   L, $30                                        ;; 04:4051 $2e $30
     ld   H, $d0                                        ;; 04:4053 $26 $d0
-    bit  $06, B                                        ;; 04:4055 $cb $70
-    jr   NZ, .code_405d                                ;; 04:4057 $20 $04
+    bit  6, B                                          ;; 04:4055 $cb $70
+    jr   NZ, .jr_04_405d                               ;; 04:4057 $20 $04
     ld   L, $38                                        ;; 04:4059 $2e $38
     ld   H, $c8                                        ;; 04:405b $26 $c8
-.code_405d:
+.jr_04_405d:
     sub  A, L                                          ;; 04:405d $95
     ld   L, A                                          ;; 04:405e $6f
     ld   A, H                                          ;; 04:405f $7c
     sub  A, E                                          ;; 04:4060 $93
     ld   E, A                                          ;; 04:4061 $5f
-    bit  $00, B                                        ;; 04:4062 $cb $40
-    jr   NZ, .code_4067                                ;; 04:4064 $20 $01
+    bit  0, B                                          ;; 04:4062 $cb $40
+    jr   NZ, .jr_04_4067                               ;; 04:4064 $20 $01
     ld   E, L                                          ;; 04:4066 $5d
-.code_4067:
+.jr_04_4067:
     ld   A, D                                          ;; 04:4067 $7a
     or   A, E                                          ;; 04:4068 $b3
-    bit  $07, A                                        ;; 04:4069 $cb $7f
-    jr   NZ, .code_4080                                ;; 04:406b $20 $13
+    bit  7, A                                          ;; 04:4069 $cb $7f
+    jr   NZ, .jr_04_4080                               ;; 04:406b $20 $13
     ld   A, D                                          ;; 04:406d $7a
     cp   A, E                                          ;; 04:406e $bb
-    jr   C, .code_407a                                 ;; 04:406f $38 $09
-    jr   Z, .code_407e                                 ;; 04:4071 $28 $0b
+    jr   C, .jr_04_407a                                ;; 04:406f $38 $09
+    jr   Z, .jr_04_407e                                ;; 04:4071 $28 $0b
     ld   A, E                                          ;; 04:4073 $7b
-    res  $03, B                                        ;; 04:4074 $cb $98
-    res  $02, B                                        ;; 04:4076 $cb $90
-    jr   .code_407e                                    ;; 04:4078 $18 $04
-.code_407a:
-    res  $01, B                                        ;; 04:407a $cb $88
-    res  $00, B                                        ;; 04:407c $cb $80
-.code_407e:
+    res  3, B                                          ;; 04:4074 $cb $98
+    res  2, B                                          ;; 04:4076 $cb $90
+    jr   .jr_04_407e                                   ;; 04:4078 $18 $04
+.jr_04_407a:
+    res  1, B                                          ;; 04:407a $cb $88
+    res  0, B                                          ;; 04:407c $cb $80
+.jr_04_407e:
     or   A, A                                          ;; 04:407e $b7
     ret                                                ;; 04:407f $c9
-.code_4080:
+.jr_04_4080:
     ld   A, D                                          ;; 04:4080 $7a
-    bit  $07, E                                        ;; 04:4081 $cb $7b
-    jr   Z, .code_408e                                 ;; 04:4083 $28 $09
+    bit  7, E                                          ;; 04:4081 $cb $7b
+    jr   Z, .jr_04_408e                                ;; 04:4083 $28 $09
     ld   A, E                                          ;; 04:4085 $7b
-    bit  $07, D                                        ;; 04:4086 $cb $7a
-    jr   Z, .code_408e                                 ;; 04:4088 $28 $04
+    bit  7, D                                          ;; 04:4086 $cb $7a
+    jr   Z, .jr_04_408e                                ;; 04:4088 $28 $04
     cp   A, D                                          ;; 04:408a $ba
-    jr   Z, .code_408e                                 ;; 04:408b $28 $01
+    jr   Z, .jr_04_408e                                ;; 04:408b $28 $01
     ld   A, D                                          ;; 04:408d $7a
-.code_408e:
+.jr_04_408e:
     or   A, A                                          ;; 04:408e $b7
     ret                                                ;; 04:408f $c9
 
-code_004_4090:
+call_04_4090:
     ld   A, [wD439]                                    ;; 04:4090 $fa $39 $d4
     ld   D, A                                          ;; 04:4093 $57
     ld   A, [wD438]                                    ;; 04:4094 $fa $38 $d4
     ld   E, A                                          ;; 04:4097 $5f
-    ld   HL, $0000                                     ;; 04:4098 $21 $00 $00
+    ld   HL, $00                                       ;; 04:4098 $21 $00 $00
     add  HL, DE                                        ;; 04:409b $19
     ld   A, [HL]                                       ;; 04:409c $7e
     ld   [wD3E9], A                                    ;; 04:409d $ea $e9 $d3
-    call code_004_40a4                                 ;; 04:40a0 $cd $a4 $40
+    call call_04_40a4                                  ;; 04:40a0 $cd $a4 $40
     ret                                                ;; 04:40a3 $c9
 
-code_004_40a4:
+call_04_40a4:
     push DE                                            ;; 04:40a4 $d5
     ld   A, [wD3EE]                                    ;; 04:40a5 $fa $ee $d3
     ld   L, A                                          ;; 04:40a8 $6f
@@ -132,10 +134,10 @@ code_004_40a4:
     add  HL, DE                                        ;; 04:40b4 $19
     ld   A, [HL+]                                      ;; 04:40b5 $2a
     cp   A, $ff                                        ;; 04:40b6 $fe $ff
-    call Z, code_004_4209                              ;; 04:40b8 $cc $09 $42
-    jr   Z, .code_40f1                                 ;; 04:40bb $28 $34
+    call Z, call_04_4209                               ;; 04:40b8 $cc $09 $42
+    jr   Z, .jr_04_40f1                                ;; 04:40bb $28 $34
     ld   DE, wD442                                     ;; 04:40bd $11 $42 $d4
-    call code_004_419e                                 ;; 04:40c0 $cd $9e $41
+    call call_04_419e                                  ;; 04:40c0 $cd $9e $41
     push AF                                            ;; 04:40c3 $f5
     ld   A, [HL+]                                      ;; 04:40c4 $2a
     ld   C, A                                          ;; 04:40c5 $4f
@@ -153,22 +155,22 @@ code_004_40a4:
     sra  A                                             ;; 04:40d9 $cb $2f
     add  A, D                                          ;; 04:40db $82
     ld   D, A                                          ;; 04:40dc $57
-    call code_004_4188                                 ;; 04:40dd $cd $88 $41
+    call call_04_4188                                  ;; 04:40dd $cd $88 $41
     ld   A, [wD3E8]                                    ;; 04:40e0 $fa $e8 $d3
     ld   C, A                                          ;; 04:40e3 $4f
     pop  AF                                            ;; 04:40e4 $f1
     call updateObjectPosition                          ;; 04:40e5 $cd $11 $06
     pop  DE                                            ;; 04:40e8 $d1
-    call code_004_40f3                                 ;; 04:40e9 $cd $f3 $40
+    call call_04_40f3                                  ;; 04:40e9 $cd $f3 $40
     ld   HL, wD3EE                                     ;; 04:40ec $21 $ee $d3
     inc  [HL]                                          ;; 04:40ef $34
     ret                                                ;; 04:40f0 $c9
-.code_40f1:
+.jr_04_40f1:
     pop  DE                                            ;; 04:40f1 $d1
     ret                                                ;; 04:40f2 $c9
 
-code_004_40f3:
-    ld   HL, $0004                                     ;; 04:40f3 $21 $04 $00
+call_04_40f3:
+    ld   HL, $04                                       ;; 04:40f3 $21 $04 $00
     add  HL, DE                                        ;; 04:40f6 $19
     ld   A, [HL]                                       ;; 04:40f7 $7e
     dec  A                                             ;; 04:40f8 $3d
@@ -188,11 +190,11 @@ code_004_40f3:
     add  HL, DE                                        ;; 04:410f $19
     ld   A, [HL]                                       ;; 04:4110 $7e
     cp   A, $ff                                        ;; 04:4111 $fe $ff
-    call Z, code_004_4148                              ;; 04:4113 $cc $48 $41
+    call Z, call_04_4148                               ;; 04:4113 $cc $48 $41
     pop  AF                                            ;; 04:4116 $f1
     ld   B, A                                          ;; 04:4117 $47
     ld   DE, wD442                                     ;; 04:4118 $11 $42 $d4
-.code_411b:
+.jr_04_411b:
     push BC                                            ;; 04:411b $c5
     ld   B, [HL]                                       ;; 04:411c $46
     inc  HL                                            ;; 04:411d $23
@@ -208,7 +210,7 @@ code_004_40f3:
     push HL                                            ;; 04:4129 $e5
     ld   L, C                                          ;; 04:412a $69
     ld   A, B                                          ;; 04:412b $78
-    call code_004_419e                                 ;; 04:412c $cd $9e $41
+    call call_04_419e                                  ;; 04:412c $cd $9e $41
     ld   C, L                                          ;; 04:412f $4d
     pop  HL                                            ;; 04:4130 $e1
     push AF                                            ;; 04:4131 $f5
@@ -225,12 +227,12 @@ code_004_40f3:
     pop  DE                                            ;; 04:413e $d1
     pop  BC                                            ;; 04:413f $c1
     dec  B                                             ;; 04:4140 $05
-    jr   NZ, .code_411b                                ;; 04:4141 $20 $d8
+    jr   NZ, .jr_04_411b                               ;; 04:4141 $20 $d8
     ld   HL, wD3EF                                     ;; 04:4143 $21 $ef $d3
     inc  [HL]                                          ;; 04:4146 $34
     ret                                                ;; 04:4147 $c9
 
-code_004_4148:
+call_04_4148:
     ld   A, $00                                        ;; 04:4148 $3e $00
     ld   [wD3EF], A                                    ;; 04:414a $ea $ef $d3
     ld   A, [wD441]                                    ;; 04:414d $fa $41 $d4
@@ -239,10 +241,10 @@ code_004_4148:
     ld   L, A                                          ;; 04:4154 $6f
     ret                                                ;; 04:4155 $c9
 
-code_004_4156:
+call_04_4156:
     push HL                                            ;; 04:4156 $e5
     push AF                                            ;; 04:4157 $f5
-    ld   HL, $0004                                     ;; 04:4158 $21 $04 $00
+    ld   HL, $04                                       ;; 04:4158 $21 $04 $00
     add  HL, DE                                        ;; 04:415b $19
     ld   A, [HL]                                       ;; 04:415c $7e
     ld   E, A                                          ;; 04:415d $5f
@@ -257,18 +259,18 @@ code_004_4156:
     pop  HL                                            ;; 04:4169 $e1
     ret                                                ;; 04:416a $c9
 
-code_004_416b:
+call_04_416b:
     push HL                                            ;; 04:416b $e5
     push AF                                            ;; 04:416c $f5
-    ld   HL, $0004                                     ;; 04:416d $21 $04 $00
+    ld   HL, $04                                       ;; 04:416d $21 $04 $00
     add  HL, DE                                        ;; 04:4170 $19
     ld   A, [HL]                                       ;; 04:4171 $7e
     ld   E, A                                          ;; 04:4172 $5f
     inc  A                                             ;; 04:4173 $3c
     cp   A, $20                                        ;; 04:4174 $fe $20
-    jr   C, .code_417a                                 ;; 04:4176 $38 $02
+    jr   C, .jr_04_417a                                ;; 04:4176 $38 $02
     ld   A, $00                                        ;; 04:4178 $3e $00
-.code_417a:
+.jr_04_417a:
     ld   [HL], A                                       ;; 04:417a $77
     ld   D, $00                                        ;; 04:417b $16 $00
     ld   HL, wD3F6                                     ;; 04:417d $21 $f6 $d3
@@ -281,7 +283,7 @@ code_004_416b:
     pop  HL                                            ;; 04:4186 $e1
     ret                                                ;; 04:4187 $c9
 
-code_004_4188:
+call_04_4188:
     push HL                                            ;; 04:4188 $e5
     push AF                                            ;; 04:4189 $f5
     push DE                                            ;; 04:418a $d5
@@ -300,7 +302,7 @@ code_004_4188:
     pop  HL                                            ;; 04:419c $e1
     ret                                                ;; 04:419d $c9
 
-code_004_419e:
+call_04_419e:
     ld   C, A                                          ;; 04:419e $4f
     and  A, $3c                                        ;; 04:419f $e6 $3c
     srl  A                                             ;; 04:41a1 $cb $3f
@@ -308,8 +310,8 @@ code_004_419e:
     ld   B, A                                          ;; 04:41a5 $47
     ld   A, [wD3EB]                                    ;; 04:41a6 $fa $eb $d3
     cp   A, $00                                        ;; 04:41a9 $fe $00
-    jr   Z, .code_41ad                                 ;; 04:41ab $28 $00
-.code_41ad:
+    jr   Z, .jr_04_41ad                                ;; 04:41ab $28 $00
+.jr_04_41ad:
     ld   A, C                                          ;; 04:41ad $79
     and  A, $c0                                        ;; 04:41ae $e6 $c0
     swap A                                             ;; 04:41b0 $cb $37
@@ -317,66 +319,65 @@ code_004_419e:
     srl  A                                             ;; 04:41b4 $cb $3f
     push HL                                            ;; 04:41b6 $e5
     push BC                                            ;; 04:41b7 $c5
-    ld   HL, data_004_41c5                             ;; 04:41b8 $21 $c5 $41
+    ld   HL, .data_04_41c5                             ;; 04:41b8 $21 $c5 $41
     call callJumptable                                 ;; 04:41bb $cd $70 $2b
     pop  BC                                            ;; 04:41be $c1
     pop  HL                                            ;; 04:41bf $e1
     ld   A, C                                          ;; 04:41c0 $79
-    call code_000_299a                                 ;; 04:41c1 $cd $9a $29
+    call call_00_299a                                  ;; 04:41c1 $cd $9a $29
     ret                                                ;; 04:41c4 $c9
-
 ;@jumptable amount=4
-data_004_41c5:
-    dw   code_004_41cd                                 ;; 04:41c5 $cd $41
-    dw   code_004_41d1                                 ;; 04:41c7 $d1 $41
-    dw   code_004_41e7                                 ;; 04:41c9 $e7 $41
-    dw   code_004_4205                                 ;; 04:41cb $05 $42
+.data_04_41c5:
+    dw   call_04_41cd                                  ;; 04:41c5 ..
+    dw   call_04_41d1                                  ;; 04:41c7 ??
+    dw   call_04_41e7                                  ;; 04:41c9 ..
+    dw   call_04_4205                                  ;; 04:41cb ??
 
-code_004_41cd:
-    call code_004_4156                                 ;; 04:41cd $cd $56 $41
+call_04_41cd:
+    call call_04_4156                                  ;; 04:41cd $cd $56 $41
     ret                                                ;; 04:41d0 $c9
 
-code_004_41d1:
+call_04_41d1:
     ld   A, [wD439]                                    ;; 04:41d1 $fa $39 $d4
     ld   H, A                                          ;; 04:41d4 $67
     ld   A, [wD438]                                    ;; 04:41d5 $fa $38 $d4
     ld   L, A                                          ;; 04:41d8 $6f
-    ld   BC, $0005                                     ;; 04:41d9 $01 $05 $00
+    ld   BC, $05                                       ;; 04:41d9 $01 $05 $00
     add  HL, BC                                        ;; 04:41dc $09
     ld   A, [HL]                                       ;; 04:41dd $7e
     push DE                                            ;; 04:41de $d5
-    call code_000_2bec                                 ;; 04:41df $cd $ec $2b
+    call call_00_2bec                                  ;; 04:41df $cd $ec $2b
     pop  DE                                            ;; 04:41e2 $d1
-    call code_004_4156                                 ;; 04:41e3 $cd $56 $41
+    call call_04_4156                                  ;; 04:41e3 $cd $56 $41
     ret                                                ;; 04:41e6 $c9
 
-code_004_41e7:
+call_04_41e7:
     push DE                                            ;; 04:41e7 $d5
     ld   A, [wD439]                                    ;; 04:41e8 $fa $39 $d4
     ld   H, A                                          ;; 04:41eb $67
     ld   A, [wD438]                                    ;; 04:41ec $fa $38 $d4
     ld   L, A                                          ;; 04:41ef $6f
-    ld   DE, $0006                                     ;; 04:41f0 $11 $06 $00
+    ld   DE, $06                                       ;; 04:41f0 $11 $06 $00
     add  HL, DE                                        ;; 04:41f3 $19
     ld   A, [HL+]                                      ;; 04:41f4 $2a
     ld   H, [HL]                                       ;; 04:41f5 $66
     ld   L, A                                          ;; 04:41f6 $6f
     ld   A, C                                          ;; 04:41f7 $79
-    call code_000_299a                                 ;; 04:41f8 $cd $9a $29
+    call call_00_299a                                  ;; 04:41f8 $cd $9a $29
     ld   C, $20                                        ;; 04:41fb $0e $20
-    call code_000_31ad                                 ;; 04:41fd $cd $ad $31
+    call call_00_31ad                                  ;; 04:41fd $cd $ad $31
     pop  DE                                            ;; 04:4200 $d1
-    call code_004_4156                                 ;; 04:4201 $cd $56 $41
+    call call_04_4156                                  ;; 04:4201 $cd $56 $41
     ret                                                ;; 04:4204 $c9
 
-code_004_4205:
-    call code_004_416b                                 ;; 04:4205 $cd $6b $41
+call_04_4205:
+    call call_04_416b                                  ;; 04:4205 $cd $6b $41
     ret                                                ;; 04:4208 $c9
 
-code_004_4209:
+call_04_4209:
     ld   HL, wD3F0                                     ;; 04:4209 $21 $f0 $d3
     dec  [HL]                                          ;; 04:420c $35
-    call Z, code_004_4222                              ;; 04:420d $cc $22 $42
+    call Z, call_04_4222                               ;; 04:420d $cc $22 $42
     ld   A, $00                                        ;; 04:4210 $3e $00
     ld   [wD3EE], A                                    ;; 04:4212 $ea $ee $d3
     ld   [wD3EF], A                                    ;; 04:4215 $ea $ef $d3
@@ -387,7 +388,7 @@ code_004_4209:
     ld   A, [HL+]                                      ;; 04:4220 $2a
     ret                                                ;; 04:4221 $c9
 
-code_004_4222:
+call_04_4222:
     ld   A, [wD3ED]                                    ;; 04:4222 $fa $ed $d3
     ld   L, A                                          ;; 04:4225 $6f
     add  A, A                                          ;; 04:4226 $87
@@ -402,12 +403,12 @@ code_004_4222:
     add  HL, DE                                        ;; 04:4234 $19
     ld   A, [HL+]                                      ;; 04:4235 $2a
     cp   A, $ff                                        ;; 04:4236 $fe $ff
-    call Z, code_004_425f                              ;; 04:4238 $cc $5f $42
+    call Z, call_04_425f                               ;; 04:4238 $cc $5f $42
     ret  Z                                             ;; 04:423b $c8
-    call code_004_4240                                 ;; 04:423c $cd $40 $42
+    call call_04_4240                                  ;; 04:423c $cd $40 $42
     ret                                                ;; 04:423f $c9
 
-code_004_4240:
+call_04_4240:
     ld   [wD3F0], A                                    ;; 04:4240 $ea $f0 $d3
     ld   E, [HL]                                       ;; 04:4243 $5e
     inc  HL                                            ;; 04:4244 $23
@@ -428,10 +429,10 @@ code_004_4240:
     inc  [HL]                                          ;; 04:425d $34
     ret                                                ;; 04:425e $c9
 
-code_004_425f:
+call_04_425f:
     ld   A, [wD3F5]                                    ;; 04:425f $fa $f5 $d3
-    bit  $07, A                                        ;; 04:4262 $cb $7f
-    jr   NZ, .code_42ac                                ;; 04:4264 $20 $46
+    bit  7, A                                          ;; 04:4262 $cb $7f
+    jr   NZ, .jr_04_42ac                               ;; 04:4264 $20 $46
     ld   A, [wD3EC]                                    ;; 04:4266 $fa $ec $d3
     ld   L, A                                          ;; 04:4269 $6f
     add  A, A                                          ;; 04:426a $87
@@ -452,9 +453,9 @@ code_004_425f:
     ld   A, D                                          ;; 04:427e $7a
     and  A, E                                          ;; 04:427f $a3
     cp   A, $ff                                        ;; 04:4280 $fe $ff
-    call Z, code_004_42c5                              ;; 04:4282 $cc $c5 $42
+    call Z, call_04_42c5                               ;; 04:4282 $cc $c5 $42
     push HL                                            ;; 04:4285 $e5
-    ld   DE, $0008                                     ;; 04:4286 $11 $08 $00
+    ld   DE, $08                                       ;; 04:4286 $11 $08 $00
     add  HL, DE                                        ;; 04:4289 $19
     ld   A, [HL+]                                      ;; 04:428a $2a
     inc  A                                             ;; 04:428b $3c
@@ -469,7 +470,7 @@ code_004_425f:
     add  A, A                                          ;; 04:4294 $87
     add  A, A                                          ;; 04:4295 $87
     ld   D, A                                          ;; 04:4296 $57
-    call code_004_4188                                 ;; 04:4297 $cd $88 $41
+    call call_04_4188                                  ;; 04:4297 $cd $88 $41
     call getRandomByte                                 ;; 04:429a $cd $1e $2b
     and  A, $03                                        ;; 04:429d $e6 $03
     add  A, A                                          ;; 04:429f $87
@@ -480,13 +481,13 @@ code_004_425f:
     ld   A, [HL+]                                      ;; 04:42a5 $2a
     ld   H, [HL]                                       ;; 04:42a6 $66
     ld   L, A                                          ;; 04:42a7 $6f
-    call code_004_42b0                                 ;; 04:42a8 $cd $b0 $42
+    call call_04_42b0                                  ;; 04:42a8 $cd $b0 $42
     ret                                                ;; 04:42ab $c9
-.code_42ac:
-    call code_004_4575                                 ;; 04:42ac $cd $75 $45
+.jr_04_42ac:
+    call call_04_4575                                  ;; 04:42ac $cd $75 $45
     ret                                                ;; 04:42af $c9
 
-code_004_42b0:
+call_04_42b0:
     push HL                                            ;; 04:42b0 $e5
     ld   A, H                                          ;; 04:42b1 $7c
     ld   [wD43D], A                                    ;; 04:42b2 $ea $3d $d4
@@ -500,20 +501,20 @@ code_004_42b0:
     ld   A, [HL+]                                      ;; 04:42c3 $2a
     ret                                                ;; 04:42c4 $c9
 
-code_004_42c5:
+call_04_42c5:
     ld   A, [wD439]                                    ;; 04:42c5 $fa $39 $d4
     ld   D, A                                          ;; 04:42c8 $57
     ld   A, [wD438]                                    ;; 04:42c9 $fa $38 $d4
     ld   E, A                                          ;; 04:42cc $5f
-    ld   HL, $0012                                     ;; 04:42cd $21 $12 $00
+    ld   HL, $12                                       ;; 04:42cd $21 $12 $00
     add  HL, DE                                        ;; 04:42d0 $19
     ld   A, [HL+]                                      ;; 04:42d1 $2a
     ld   H, [HL]                                       ;; 04:42d2 $66
     ld   L, A                                          ;; 04:42d3 $6f
-    call code_004_42d8                                 ;; 04:42d4 $cd $d8 $42
+    call call_04_42d8                                  ;; 04:42d4 $cd $d8 $42
     ret                                                ;; 04:42d7 $c9
 
-code_004_42d8:
+call_04_42d8:
     ld   A, H                                          ;; 04:42d8 $7c
     ld   [wD43B], A                                    ;; 04:42d9 $ea $3b $d4
     ld   A, L                                          ;; 04:42dc $7d
@@ -522,21 +523,21 @@ code_004_42d8:
     ld   [wD3EC], A                                    ;; 04:42e2 $ea $ec $d3
     ret                                                ;; 04:42e5 $c9
 
-code_004_42e6:
+call_04_42e6:
     ld   B, $0e                                        ;; 04:42e6 $06 $0e
     ld   HL, wD442                                     ;; 04:42e8 $21 $42 $d4
-    ld   DE, $0006                                     ;; 04:42eb $11 $06 $00
-.code_42ee:
+    ld   DE, $06                                       ;; 04:42eb $11 $06 $00
+.jr_04_42ee:
     cp   A, [HL]                                       ;; 04:42ee $be
     ret  Z                                             ;; 04:42ef $c8
     add  HL, DE                                        ;; 04:42f0 $19
     dec  B                                             ;; 04:42f1 $05
-    jr   NZ, .code_42ee                                ;; 04:42f2 $20 $fa
+    jr   NZ, .jr_04_42ee                               ;; 04:42f2 $20 $fa
     xor  A, A                                          ;; 04:42f4 $af
     inc  A                                             ;; 04:42f5 $3c
     ret                                                ;; 04:42f6 $c9
 
-code_004_42f7:
+call_04_42f7:
     ld   L, A                                          ;; 04:42f7 $6f
     ld   H, $00                                        ;; 04:42f8 $26 $00
     ld   E, L                                          ;; 04:42fa $5d
@@ -546,7 +547,7 @@ code_004_42f7:
     add  HL, HL                                        ;; 04:42fe $29
     add  HL, HL                                        ;; 04:42ff $29
     add  HL, HL                                        ;; 04:4300 $29
-    ld   DE, unknown_004_4739                          ;; 04:4301 $11 $39 $47
+    ld   DE, data_04_4739                              ;; 04:4301 $11 $39 $47
     add  HL, DE                                        ;; 04:4304 $19
     ld   A, H                                          ;; 04:4305 $7c
     ld   [wD439], A                                    ;; 04:4306 $ea $39 $d4
@@ -554,11 +555,11 @@ code_004_42f7:
     ld   [wD438], A                                    ;; 04:430a $ea $38 $d4
     ld   D, H                                          ;; 04:430d $54
     ld   E, L                                          ;; 04:430e $5d
-    call code_004_4373                                 ;; 04:430f $cd $73 $43
-    call code_004_43cd                                 ;; 04:4312 $cd $cd $43
-    call code_004_43ff                                 ;; 04:4315 $cd $ff $43
-    call code_004_4334                                 ;; 04:4318 $cd $34 $43
-    ld   HL, $0014                                     ;; 04:431b $21 $14 $00
+    call call_04_4373                                  ;; 04:430f $cd $73 $43
+    call call_04_43cd                                  ;; 04:4312 $cd $cd $43
+    call call_04_43ff                                  ;; 04:4315 $cd $ff $43
+    call call_04_4334                                  ;; 04:4318 $cd $34 $43
+    ld   HL, $14                                       ;; 04:431b $21 $14 $00
     add  HL, DE                                        ;; 04:431e $19
     ld   A, [HL+]                                      ;; 04:431f $2a
     ld   H, [HL]                                       ;; 04:4320 $66
@@ -566,17 +567,17 @@ code_004_42f7:
     ld   A, $01                                        ;; 04:4322 $3e $01
     ld   [wD3F0], A                                    ;; 04:4324 $ea $f0 $d3
     ld   [wD3E9], A                                    ;; 04:4327 $ea $e9 $d3
-    call code_004_42d8                                 ;; 04:432a $cd $d8 $42
-    call code_004_425f                                 ;; 04:432d $cd $5f $42
-    call code_004_4209                                 ;; 04:4330 $cd $09 $42
+    call call_04_42d8                                  ;; 04:432a $cd $d8 $42
+    call call_04_425f                                  ;; 04:432d $cd $5f $42
+    call call_04_4209                                  ;; 04:4330 $cd $09 $42
     ret                                                ;; 04:4333 $c9
 
-code_004_4334:
+call_04_4334:
     push DE                                            ;; 04:4334 $d5
     call getRandomByte                                 ;; 04:4335 $cd $1e $2b
     pop  DE                                            ;; 04:4338 $d1
     push DE                                            ;; 04:4339 $d5
-    ld   HL, $0001                                     ;; 04:433a $21 $01 $00
+    ld   HL, $01                                       ;; 04:433a $21 $01 $00
     add  HL, DE                                        ;; 04:433d $19
     ld   L, [HL]                                       ;; 04:433e $6e
     ld   H, $00                                        ;; 04:433f $26 $00
@@ -587,11 +588,11 @@ code_004_4334:
     srl  A                                             ;; 04:4348 $cb $3f
     cpl                                                ;; 04:434a $2f
     inc  A                                             ;; 04:434b $3c
-    jr   Z, .code_4353                                 ;; 04:434c $28 $05
+    jr   Z, .jr_04_4353                                ;; 04:434c $28 $05
     call MultiplyHL_by_A                               ;; 04:434e $cd $7b $2b
     ld   A, L                                          ;; 04:4351 $7d
     ld   C, H                                          ;; 04:4352 $4c
-.code_4353:
+.jr_04_4353:
     ld   B, $00                                        ;; 04:4353 $06 $00
     add  A, A                                          ;; 04:4355 $87
     rl   C                                             ;; 04:4356 $cb $11
@@ -612,15 +613,15 @@ code_004_4334:
     pop  DE                                            ;; 04:4371 $d1
     ret                                                ;; 04:4372 $c9
 
-code_004_4373:
-    ld   HL, $0005                                     ;; 04:4373 $21 $05 $00
+call_04_4373:
+    ld   HL, $05                                       ;; 04:4373 $21 $05 $00
     add  HL, DE                                        ;; 04:4376 $19
     ld   A, [HL]                                       ;; 04:4377 $7e
     push DE                                            ;; 04:4378 $d5
-    call code_000_2bdd                                 ;; 04:4379 $cd $dd $2b
+    call call_00_2bdd                                  ;; 04:4379 $cd $dd $2b
     pop  DE                                            ;; 04:437c $d1
     push DE                                            ;; 04:437d $d5
-    ld   HL, $0008                                     ;; 04:437e $21 $08 $00
+    ld   HL, $08                                       ;; 04:437e $21 $08 $00
     add  HL, DE                                        ;; 04:4381 $19
     ld   A, [HL+]                                      ;; 04:4382 $2a
     swap A                                             ;; 04:4383 $cb $37
@@ -644,7 +645,7 @@ code_004_4373:
     ld   A, E                                          ;; 04:4399 $7b
     add  A, A                                          ;; 04:439a $87
     pop  DE                                            ;; 04:439b $d1
-.code_439c:
+.jr_04_439c:
     push AF                                            ;; 04:439c $f5
     ld   A, [HL+]                                      ;; 04:439d $2a
     push HL                                            ;; 04:439e $e5
@@ -664,11 +665,11 @@ code_004_4373:
     srl  A                                             ;; 04:43b1 $cb $3f
     and  A, $03                                        ;; 04:43b3 $e6 $03
     add  A, $08                                        ;; 04:43b5 $c6 $08
-    res  $07, H                                        ;; 04:43b7 $cb $bc
-    set  $06, H                                        ;; 04:43b9 $cb $f4
+    res  7, H                                          ;; 04:43b7 $cb $bc
+    set  6, H                                          ;; 04:43b9 $cb $f4
     call addTileGraphicCopyRequest                     ;; 04:43bb $cd $f5 $2d
     pop  DE                                            ;; 04:43be $d1
-    ld   HL, $0010                                     ;; 04:43bf $21 $10 $00
+    ld   HL, $10                                       ;; 04:43bf $21 $10 $00
     add  HL, DE                                        ;; 04:43c2 $19
     ld   E, L                                          ;; 04:43c3 $5d
     ld   D, H                                          ;; 04:43c4 $54
@@ -676,23 +677,23 @@ code_004_4373:
     pop  HL                                            ;; 04:43c6 $e1
     pop  AF                                            ;; 04:43c7 $f1
     dec  A                                             ;; 04:43c8 $3d
-    jr   NZ, .code_439c                                ;; 04:43c9 $20 $d1
+    jr   NZ, .jr_04_439c                               ;; 04:43c9 $20 $d1
     pop  DE                                            ;; 04:43cb $d1
     ret                                                ;; 04:43cc $c9
 
-code_004_43cd:
+call_04_43cd:
     push DE                                            ;; 04:43cd $d5
-    ld   HL, $0004                                     ;; 04:43ce $21 $04 $00
+    ld   HL, $04                                       ;; 04:43ce $21 $04 $00
     add  HL, DE                                        ;; 04:43d1 $19
     ld   B, [HL]                                       ;; 04:43d2 $46
-    ld   HL, $000e                                     ;; 04:43d3 $21 $0e $00
+    ld   HL, $0e                                       ;; 04:43d3 $21 $0e $00
     add  HL, DE                                        ;; 04:43d6 $19
     ld   E, [HL]                                       ;; 04:43d7 $5e
     inc  HL                                            ;; 04:43d8 $23
     ld   D, [HL]                                       ;; 04:43d9 $56
     ld   C, $20                                        ;; 04:43da $0e $20
     ld   HL, wD442                                     ;; 04:43dc $21 $42 $d4
-.code_43df:
+.jr_04_43df:
     push BC                                            ;; 04:43df $c5
     push DE                                            ;; 04:43e0 $d5
     push HL                                            ;; 04:43e1 $e5
@@ -700,32 +701,32 @@ code_004_43cd:
     ld   L, E                                          ;; 04:43e3 $6b
     ld   DE, $fefe                                     ;; 04:43e4 $11 $fe $fe
     ld   A, $00                                        ;; 04:43e7 $3e $00
-    call code_000_0a74                                 ;; 04:43e9 $cd $74 $0a
+    call call_00_0a74                                  ;; 04:43e9 $cd $74 $0a
     pop  HL                                            ;; 04:43ec $e1
     ld   [HL], A                                       ;; 04:43ed $77
-    ld   DE, $0006                                     ;; 04:43ee $11 $06 $00
+    ld   DE, $06                                       ;; 04:43ee $11 $06 $00
     add  HL, DE                                        ;; 04:43f1 $19
     pop  DE                                            ;; 04:43f2 $d1
     pop  BC                                            ;; 04:43f3 $c1
     dec  B                                             ;; 04:43f4 $05
-    jr   NZ, .code_43df                                ;; 04:43f5 $20 $e8
+    jr   NZ, .jr_04_43df                               ;; 04:43f5 $20 $e8
     pop  DE                                            ;; 04:43f7 $d1
     ld   A, [wD442]                                    ;; 04:43f8 $fa $42 $d4
     ld   [wD3E8], A                                    ;; 04:43fb $ea $e8 $d3
     ret                                                ;; 04:43fe $c9
 
-code_004_43ff:
+call_04_43ff:
     push DE                                            ;; 04:43ff $d5
-    ld   HL, $0004                                     ;; 04:4400 $21 $04 $00
+    ld   HL, $04                                       ;; 04:4400 $21 $04 $00
     add  HL, DE                                        ;; 04:4403 $19
     ld   B, [HL]                                       ;; 04:4404 $46
-    ld   HL, $0010                                     ;; 04:4405 $21 $10 $00
+    ld   HL, $10                                       ;; 04:4405 $21 $10 $00
     add  HL, DE                                        ;; 04:4408 $19
     ld   E, [HL]                                       ;; 04:4409 $5e
     inc  HL                                            ;; 04:440a $23
     ld   D, [HL]                                       ;; 04:440b $56
     ld   HL, wD442                                     ;; 04:440c $21 $42 $d4
-.code_440f:
+.jr_04_440f:
     inc  HL                                            ;; 04:440f $23
     ld   [HL], E                                       ;; 04:4410 $73
     inc  HL                                            ;; 04:4411 $23
@@ -736,199 +737,193 @@ code_004_43ff:
     ld   [HL+], A                                      ;; 04:4416 $22
     ld   [HL+], A                                      ;; 04:4417 $22
     push HL                                            ;; 04:4418 $e5
-    ld   HL, $0008                                     ;; 04:4419 $21 $08 $00
+    ld   HL, $08                                       ;; 04:4419 $21 $08 $00
     add  HL, DE                                        ;; 04:441c $19
     ld   D, H                                          ;; 04:441d $54
     ld   E, L                                          ;; 04:441e $5d
     pop  HL                                            ;; 04:441f $e1
     dec  B                                             ;; 04:4420 $05
-    jr   NZ, .code_440f                                ;; 04:4421 $20 $ec
+    jr   NZ, .jr_04_440f                               ;; 04:4421 $20 $ec
     pop  DE                                            ;; 04:4423 $d1
     ret                                                ;; 04:4424 $c9
 
-code_004_4425:
+call_04_4425:
     ld   A, $ff                                        ;; 04:4425 $3e $ff
     ld   [wD3E8], A                                    ;; 04:4427 $ea $e8 $d3
     ld   HL, wD442                                     ;; 04:442a $21 $42 $d4
     ld   B, $0e                                        ;; 04:442d $06 $0e
-.code_442f:
+.jr_04_442f:
     ld   A, [HL]                                       ;; 04:442f $7e
     cp   A, $ff                                        ;; 04:4430 $fe $ff
-    jr   Z, .code_443e                                 ;; 04:4432 $28 $0a
+    jr   Z, .jr_04_443e                                ;; 04:4432 $28 $0a
     push HL                                            ;; 04:4434 $e5
     push BC                                            ;; 04:4435 $c5
     ld   C, A                                          ;; 04:4436 $4f
-    call code_000_0ae3                                 ;; 04:4437 $cd $e3 $0a
+    call call_00_0ae3                                  ;; 04:4437 $cd $e3 $0a
     pop  BC                                            ;; 04:443a $c1
     pop  HL                                            ;; 04:443b $e1
     ld   [HL], $ff                                     ;; 04:443c $36 $ff
-.code_443e:
-    ld   DE, $0006                                     ;; 04:443e $11 $06 $00
+.jr_04_443e:
+    ld   DE, $06                                       ;; 04:443e $11 $06 $00
     add  HL, DE                                        ;; 04:4441 $19
     dec  B                                             ;; 04:4442 $05
-    jr   NZ, .code_442f                                ;; 04:4443 $20 $ea
+    jr   NZ, .jr_04_442f                               ;; 04:4443 $20 $ea
     ret                                                ;; 04:4445 $c9
 
-code_004_4446:
+call_04_4446:
     cp   A, $c9                                        ;; 04:4446 $fe $c9
-    jr   Z, code_004_445e                              ;; 04:4448 $28 $14
+    jr   Z, .jr_04_445e                                ;; 04:4448 $28 $14
     and  A, $f0                                        ;; 04:444a $e6 $f0
     cp   A, $40                                        ;; 04:444c $fe $40
-    jp   Z, code_004_4480                              ;; 04:444e $ca $80 $44
+    jp   Z, .jp_04_4480                                ;; 04:444e $ca $80 $44
     cp   A, $50                                        ;; 04:4451 $fe $50
-    jp   Z, code_004_44d3                              ;; 04:4453 $ca $d3 $44
+    jp   Z, .jp_04_44d3                                ;; 04:4453 $ca $d3 $44
     cp   A, $30                                        ;; 04:4456 $fe $30
-    jp   Z, code_004_450e                              ;; 04:4458 $ca $0e $45
-
-code_004_445b:
+    jp   Z, .jp_04_450e                                ;; 04:4458 $ca $0e $45
+.jp_04_445b:
     ld   A, $00                                        ;; 04:445b $3e $00
     ret                                                ;; 04:445d $c9
-
-code_004_445e:
+.jr_04_445e:
     ld   A, [wD3EB]                                    ;; 04:445e $fa $eb $d3
     cp   A, $00                                        ;; 04:4461 $fe $00
-    jr   NZ, code_004_445b                             ;; 04:4463 $20 $f6
+    jr   NZ, .jp_04_445b                               ;; 04:4463 $20 $f6
     ld   A, C                                          ;; 04:4465 $79
-    call code_004_42e6                                 ;; 04:4466 $cd $e6 $42
-    ld   DE, $0001                                     ;; 04:4469 $11 $01 $00
+    call call_04_42e6                                  ;; 04:4466 $cd $e6 $42
+    ld   DE, $01                                       ;; 04:4469 $11 $01 $00
     add  HL, DE                                        ;; 04:446c $19
     ld   E, [HL]                                       ;; 04:446d $5e
     inc  HL                                            ;; 04:446e $23
     ld   D, [HL]                                       ;; 04:446f $56
-    ld   HL, $0003                                     ;; 04:4470 $21 $03 $00
+    ld   HL, $03                                       ;; 04:4470 $21 $03 $00
     add  HL, DE                                        ;; 04:4473 $19
     ld   B, [HL]                                       ;; 04:4474 $46
-    ld   HL, $0006                                     ;; 04:4475 $21 $06 $00
+    ld   HL, $06                                       ;; 04:4475 $21 $06 $00
     add  HL, DE                                        ;; 04:4478 $19
     ld   C, [HL]                                       ;; 04:4479 $4e
-    call code_000_0256                                 ;; 04:447a $cd $56 $02
+    call call_00_0256                                  ;; 04:447a $cd $56 $02
     ld   A, $c9                                        ;; 04:447d $3e $c9
     ret                                                ;; 04:447f $c9
-
-code_004_4480:
-    call code_004_461c                                 ;; 04:4480 $cd $1c $46
-    jp   NZ, code_004_445b                             ;; 04:4483 $c2 $5b $44
+.jp_04_4480:
+    call call_04_461c                                  ;; 04:4480 $cd $1c $46
+    jp   NZ, .jp_04_445b                               ;; 04:4483 $c2 $5b $44
     push BC                                            ;; 04:4486 $c5
     push HL                                            ;; 04:4487 $e5
-    call code_000_3dc0                                 ;; 04:4488 $cd $c0 $3d
+    call call_00_3dc0                                  ;; 04:4488 $cd $c0 $3d
     pop  DE                                            ;; 04:448b $d1
-    call code_004_4655                                 ;; 04:448c $cd $55 $46
+    call call_04_4655                                  ;; 04:448c $cd $55 $46
     pop  BC                                            ;; 04:448f $c1
-    jp   NZ, code_004_4554                             ;; 04:4490 $c2 $54 $45
+    jp   NZ, .jp_04_4554                               ;; 04:4490 $c2 $54 $45
     push BC                                            ;; 04:4493 $c5
     push DE                                            ;; 04:4494 $d5
-    ld   BC, $0004                                     ;; 04:4495 $01 $04 $00
-    call code_004_466e                                 ;; 04:4498 $cd $6e $46
+    ld   BC, $04                                       ;; 04:4495 $01 $04 $00
+    call call_04_466e                                  ;; 04:4498 $cd $6e $46
     push DE                                            ;; 04:449b $d5
-    call code_000_3d0e                                 ;; 04:449c $cd $0e $3d
-    call code_004_4685                                 ;; 04:449f $cd $85 $46
+    call call_00_3d0e                                  ;; 04:449c $cd $0e $3d
+    call call_04_4685                                  ;; 04:449f $cd $85 $46
     pop  DE                                            ;; 04:44a2 $d1
-    call code_004_469b                                 ;; 04:44a3 $cd $9b $46
+    call call_04_469b                                  ;; 04:44a3 $cd $9b $46
     pop  DE                                            ;; 04:44a6 $d1
     pop  BC                                            ;; 04:44a7 $c1
-    jp   Z, code_004_4554                              ;; 04:44a8 $ca $54 $45
+    jp   Z, .jp_04_4554                                ;; 04:44a8 $ca $54 $45
     push BC                                            ;; 04:44ab $c5
     push DE                                            ;; 04:44ac $d5
     push HL                                            ;; 04:44ad $e5
-    call code_000_3f05                                 ;; 04:44ae $cd $05 $3f
+    call call_00_3f05                                  ;; 04:44ae $cd $05 $3f
     cp   A, $08                                        ;; 04:44b1 $fe $08
-    jr   NZ, .code_44c2                                ;; 04:44b3 $20 $0d
+    jr   NZ, .jr_04_44c2                               ;; 04:44b3 $20 $0d
     pop  HL                                            ;; 04:44b5 $e1
     push HL                                            ;; 04:44b6 $e5
     srl  H                                             ;; 04:44b7 $cb $3c
     rr   L                                             ;; 04:44b9 $cb $1d
     srl  H                                             ;; 04:44bb $cb $3c
     rr   L                                             ;; 04:44bd $cb $1d
-    call code_000_3df6                                 ;; 04:44bf $cd $f6 $3d
-.code_44c2:
+    call call_00_3df6                                  ;; 04:44bf $cd $f6 $3d
+.jr_04_44c2:
     pop  HL                                            ;; 04:44c2 $e1
     pop  DE                                            ;; 04:44c3 $d1
     pop  BC                                            ;; 04:44c4 $c1
-    set  $07, H                                        ;; 04:44c5 $cb $fc
+    set  7, H                                          ;; 04:44c5 $cb $fc
     ld   A, H                                          ;; 04:44c7 $7c
     ld   [wD3F3], A                                    ;; 04:44c8 $ea $f3 $d3
     ld   A, L                                          ;; 04:44cb $7d
     ld   [wD3F2], A                                    ;; 04:44cc $ea $f2 $d3
-    call code_004_4728                                 ;; 04:44cf $cd $28 $47
+    call call_04_4728                                  ;; 04:44cf $cd $28 $47
     ret                                                ;; 04:44d2 $c9
-
-code_004_44d3:
-    call code_004_461c                                 ;; 04:44d3 $cd $1c $46
-    jp   NZ, code_004_445b                             ;; 04:44d6 $c2 $5b $44
+.jp_04_44d3:
+    call call_04_461c                                  ;; 04:44d3 $cd $1c $46
+    jp   NZ, .jp_04_445b                               ;; 04:44d6 $c2 $5b $44
     push BC                                            ;; 04:44d9 $c5
     push HL                                            ;; 04:44da $e5
-    call code_000_3dc0                                 ;; 04:44db $cd $c0 $3d
+    call call_00_3dc0                                  ;; 04:44db $cd $c0 $3d
     pop  DE                                            ;; 04:44de $d1
-    call code_004_4655                                 ;; 04:44df $cd $55 $46
+    call call_04_4655                                  ;; 04:44df $cd $55 $46
     pop  BC                                            ;; 04:44e2 $c1
-    jr   Z, .code_44eb                                 ;; 04:44e3 $28 $06
+    jr   Z, .jr_04_44eb                                ;; 04:44e3 $28 $06
     cp   A, $12                                        ;; 04:44e5 $fe $12
-    jr   Z, code_004_4567                              ;; 04:44e7 $28 $7e
-    jr   code_004_4554                                 ;; 04:44e9 $18 $69
-.code_44eb:
+    jr   Z, .jr_04_4567                                ;; 04:44e7 $28 $7e
+    jr   .jp_04_4554                                   ;; 04:44e9 $18 $69
+.jr_04_44eb:
     push BC                                            ;; 04:44eb $c5
     push DE                                            ;; 04:44ec $d5
-    ld   BC, $0005                                     ;; 04:44ed $01 $05 $00
-    call code_004_466e                                 ;; 04:44f0 $cd $6e $46
+    ld   BC, $05                                       ;; 04:44ed $01 $05 $00
+    call call_04_466e                                  ;; 04:44f0 $cd $6e $46
     push DE                                            ;; 04:44f3 $d5
-    call code_000_3daf                                 ;; 04:44f4 $cd $af $3d
-    call code_004_4685                                 ;; 04:44f7 $cd $85 $46
+    call call_00_3daf                                  ;; 04:44f4 $cd $af $3d
+    call call_04_4685                                  ;; 04:44f7 $cd $85 $46
     pop  DE                                            ;; 04:44fa $d1
-    call code_004_46c6                                 ;; 04:44fb $cd $c6 $46
+    call call_04_46c6                                  ;; 04:44fb $cd $c6 $46
     pop  DE                                            ;; 04:44fe $d1
     pop  BC                                            ;; 04:44ff $c1
-    jr   Z, code_004_4554                              ;; 04:4500 $28 $52
+    jr   Z, .jp_04_4554                                ;; 04:4500 $28 $52
     ld   A, H                                          ;; 04:4502 $7c
     ld   [wD3F3], A                                    ;; 04:4503 $ea $f3 $d3
     ld   A, L                                          ;; 04:4506 $7d
     ld   [wD3F2], A                                    ;; 04:4507 $ea $f2 $d3
-    call code_004_4728                                 ;; 04:450a $cd $28 $47
+    call call_04_4728                                  ;; 04:450a $cd $28 $47
     ret                                                ;; 04:450d $c9
-
-code_004_450e:
-    call code_004_4636                                 ;; 04:450e $cd $36 $46
-    jp   NZ, code_004_445b                             ;; 04:4511 $c2 $5b $44
+.jp_04_450e:
+    call call_04_4636                                  ;; 04:450e $cd $36 $46
+    jp   NZ, .jp_04_445b                               ;; 04:4511 $c2 $5b $44
     push BC                                            ;; 04:4514 $c5
     push HL                                            ;; 04:4515 $e5
     ld   A, B                                          ;; 04:4516 $78
-    call code_000_2c0f                                 ;; 04:4517 $cd $0f $2c
+    call call_00_2c0f                                  ;; 04:4517 $cd $0f $2c
     pop  DE                                            ;; 04:451a $d1
-    call code_004_4655                                 ;; 04:451b $cd $55 $46
+    call call_04_4655                                  ;; 04:451b $cd $55 $46
     pop  BC                                            ;; 04:451e $c1
-    jr   NZ, code_004_4554                             ;; 04:451f $20 $33
+    jr   NZ, .jp_04_4554                               ;; 04:451f $20 $33
     push BC                                            ;; 04:4521 $c5
     push DE                                            ;; 04:4522 $d5
     ld   A, B                                          ;; 04:4523 $78
     push AF                                            ;; 04:4524 $f5
-    call code_004_4668                                 ;; 04:4525 $cd $68 $46
+    call call_04_4668                                  ;; 04:4525 $cd $68 $46
     pop  AF                                            ;; 04:4528 $f1
     push DE                                            ;; 04:4529 $d5
-    call code_000_2c15                                 ;; 04:452a $cd $15 $2c
-    call code_004_4685                                 ;; 04:452d $cd $85 $46
+    call call_00_2c15                                  ;; 04:452a $cd $15 $2c
+    call call_04_4685                                  ;; 04:452d $cd $85 $46
     pop  DE                                            ;; 04:4530 $d1
     ld   D, $00                                        ;; 04:4531 $16 $00
     call sub_HL_DE                                     ;; 04:4533 $cd $ab $2b
     pop  DE                                            ;; 04:4536 $d1
     pop  BC                                            ;; 04:4537 $c1
-    jr   C, code_004_4554                              ;; 04:4538 $38 $1a
+    jr   C, .jp_04_4554                                ;; 04:4538 $38 $1a
     push BC                                            ;; 04:453a $c5
     push DE                                            ;; 04:453b $d5
     ld   D, H                                          ;; 04:453c $54
     ld   E, L                                          ;; 04:453d $5d
-    call code_004_46f6                                 ;; 04:453e $cd $f6 $46
+    call call_04_46f6                                  ;; 04:453e $cd $f6 $46
     pop  DE                                            ;; 04:4541 $d1
     pop  BC                                            ;; 04:4542 $c1
-    jp   Z, code_004_4554                              ;; 04:4543 $ca $54 $45
-    set  $07, H                                        ;; 04:4546 $cb $fc
+    jp   Z, .jp_04_4554                                ;; 04:4543 $ca $54 $45
+    set  7, H                                          ;; 04:4546 $cb $fc
     ld   A, H                                          ;; 04:4548 $7c
     ld   [wD3F3], A                                    ;; 04:4549 $ea $f3 $d3
     ld   A, L                                          ;; 04:454c $7d
     ld   [wD3F2], A                                    ;; 04:454d $ea $f2 $d3
-    call code_004_4728                                 ;; 04:4550 $cd $28 $47
+    call call_04_4728                                  ;; 04:4550 $cd $28 $47
     ret                                                ;; 04:4553 $c9
-
-code_004_4554:
-    ld   HL, $0000                                     ;; 04:4554 $21 $00 $00
+.jp_04_4554:
+    ld   HL, $00                                       ;; 04:4554 $21 $00 $00
     ld   A, H                                          ;; 04:4557 $7c
     ld   [wD3F3], A                                    ;; 04:4558 $ea $f3 $d3
     ld   A, L                                          ;; 04:455b $7d
@@ -937,9 +932,8 @@ code_004_4554:
     call playSFX                                       ;; 04:4561 $cd $7d $29
     ld   A, $40                                        ;; 04:4564 $3e $40
     ret                                                ;; 04:4566 $c9
-
-code_004_4567:
-    ld   HL, $0000                                     ;; 04:4567 $21 $00 $00
+.jr_04_4567:
+    ld   HL, $00                                       ;; 04:4567 $21 $00 $00
     ld   A, H                                          ;; 04:456a $7c
     ld   [wD3F3], A                                    ;; 04:456b $ea $f3 $d3
     ld   A, L                                          ;; 04:456e $7d
@@ -947,12 +941,12 @@ code_004_4567:
     ld   A, $00                                        ;; 04:4572 $3e $00
     ret                                                ;; 04:4574 $c9
 
-code_004_4575:
+call_04_4575:
     ld   A, [wD439]                                    ;; 04:4575 $fa $39 $d4
     ld   D, A                                          ;; 04:4578 $57
     ld   A, [wD438]                                    ;; 04:4579 $fa $38 $d4
     ld   E, A                                          ;; 04:457c $5f
-    ld   HL, $0002                                     ;; 04:457d $21 $02 $00
+    ld   HL, $02                                       ;; 04:457d $21 $02 $00
     add  HL, DE                                        ;; 04:4580 $19
     ld   A, [HL+]                                      ;; 04:4581 $2a
     push HL                                            ;; 04:4582 $e5
@@ -962,8 +956,8 @@ code_004_4575:
     ld   A, [HL]                                       ;; 04:458a $7e
     call add12_5rnd_bank4                              ;; 04:458b $cd $ae $45
     call addMoney                                      ;; 04:458e $cd $72 $3d
-    call code_004_4425                                 ;; 04:4591 $cd $25 $44
-    ld   A, $d0                                        ;; 04:4594 $3e $d0 rOBP1
+    call call_04_4425                                  ;; 04:4591 $cd $25 $44
+    ld   A, $d0                                        ;; 04:4594 $3e $d0
     ld   [wVideoOBP1], A                               ;; 04:4596 $ea $ac $c0
     xor  A, A                                          ;; 04:4599 $af
     ret                                                ;; 04:459a $c9
@@ -992,7 +986,7 @@ add12_5rnd_bank4:
     add  HL, DE                                        ;; 04:45c7 $19
     ret                                                ;; 04:45c8 $c9
 
-code_004_45c9:
+call_04_45c9:
     ld   A, [wD3E8]                                    ;; 04:45c9 $fa $e8 $d3
     ld   C, A                                          ;; 04:45cc $4f
     push BC                                            ;; 04:45cd $c5
@@ -1003,12 +997,12 @@ code_004_45c9:
     call GetObjectX                                    ;; 04:45d4 $cd $2d $0c
     pop  DE                                            ;; 04:45d7 $d1
     ld   E, A                                          ;; 04:45d8 $5f
-    call code_004_4188                                 ;; 04:45d9 $cd $88 $41
+    call call_04_4188                                  ;; 04:45d9 $cd $88 $41
     ld   A, [wD439]                                    ;; 04:45dc $fa $39 $d4
     ld   D, A                                          ;; 04:45df $57
     ld   A, [wD438]                                    ;; 04:45e0 $fa $38 $d4
     ld   E, A                                          ;; 04:45e3 $5f
-    ld   HL, $0016                                     ;; 04:45e4 $21 $16 $00
+    ld   HL, $16                                       ;; 04:45e4 $21 $16 $00
     add  HL, DE                                        ;; 04:45e7 $19
     ld   A, [HL+]                                      ;; 04:45e8 $2a
     ld   H, [HL]                                       ;; 04:45e9 $66
@@ -1016,17 +1010,17 @@ code_004_45c9:
     ld   A, $01                                        ;; 04:45eb $3e $01
     ld   [wD3F0], A                                    ;; 04:45ed $ea $f0 $d3
     ld   [wD3E9], A                                    ;; 04:45f0 $ea $e9 $d3
-    call code_004_42b0                                 ;; 04:45f3 $cd $b0 $42
-    call code_004_4209                                 ;; 04:45f6 $cd $09 $42
+    call call_04_42b0                                  ;; 04:45f3 $cd $b0 $42
+    call call_04_4209                                  ;; 04:45f6 $cd $09 $42
     ret                                                ;; 04:45f9 $c9
 
-code_004_45fa:
+call_04_45fa:
     ld   A, [wD3F3]                                    ;; 04:45fa $fa $f3 $d3
     ld   H, A                                          ;; 04:45fd $67
     ld   A, [wD3F2]                                    ;; 04:45fe $fa $f2 $d3
     ld   L, A                                          ;; 04:4601 $6f
-    res  $07, H                                        ;; 04:4602 $cb $bc
-    ld   BC, $0000                                     ;; 04:4604 $01 $00 $00
+    res  7, H                                          ;; 04:4602 $cb $bc
+    ld   BC, $00                                       ;; 04:4604 $01 $00 $00
     ld   A, B                                          ;; 04:4607 $78
     ld   [wD3F3], A                                    ;; 04:4608 $ea $f3 $d3
     ld   A, C                                          ;; 04:460b $79
@@ -1034,63 +1028,63 @@ code_004_45fa:
     ld   A, H                                          ;; 04:460f $7c
     or   A, L                                          ;; 04:4610 $b5
     ret  Z                                             ;; 04:4611 $c8
-    call code_004_470b                                 ;; 04:4612 $cd $0b $47
-    jr   Z, .code_4618                                 ;; 04:4615 $28 $01
+    call call_04_470b                                  ;; 04:4612 $cd $0b $47
+    jr   Z, .jr_04_4618                                ;; 04:4615 $28 $01
     ret  NC                                            ;; 04:4617 $d0
-.code_4618:
-    call code_004_45c9                                 ;; 04:4618 $cd $c9 $45
+.jr_04_4618:
+    call call_04_45c9                                  ;; 04:4618 $cd $c9 $45
     ret                                                ;; 04:461b $c9
 
-code_004_461c:
+call_04_461c:
     ld   A, [wD3EB]                                    ;; 04:461c $fa $eb $d3
     cp   A, $00                                        ;; 04:461f $fe $00
-    jr   NZ, .code_4633                                ;; 04:4621 $20 $10
+    jr   NZ, .jr_04_4633                               ;; 04:4621 $20 $10
     ld   A, [wCF5B]                                    ;; 04:4623 $fa $5b $cf
     cp   A, D                                          ;; 04:4626 $ba
-    jr   C, .code_4633                                 ;; 04:4627 $38 $0a
+    jr   C, .jr_04_4633                                ;; 04:4627 $38 $0a
     cp   A, E                                          ;; 04:4629 $bb
-    jr   C, .code_4633                                 ;; 04:462a $38 $07
+    jr   C, .jr_04_4633                                ;; 04:462a $38 $07
     push BC                                            ;; 04:462c $c5
     ld   A, C                                          ;; 04:462d $79
-    call code_004_42e6                                 ;; 04:462e $cd $e6 $42
+    call call_04_42e6                                  ;; 04:462e $cd $e6 $42
     pop  BC                                            ;; 04:4631 $c1
     ret                                                ;; 04:4632 $c9
-.code_4633:
+.jr_04_4633:
     xor  A, A                                          ;; 04:4633 $af
     inc  A                                             ;; 04:4634 $3c
     ret                                                ;; 04:4635 $c9
 
-code_004_4636:
+call_04_4636:
     ld   A, [wD3EB]                                    ;; 04:4636 $fa $eb $d3
     cp   A, $00                                        ;; 04:4639 $fe $00
-    jr   NZ, .code_4652                                ;; 04:463b $20 $15
+    jr   NZ, .jr_04_4652                               ;; 04:463b $20 $15
     push DE                                            ;; 04:463d $d5
     push BC                                            ;; 04:463e $c5
     ld   A, B                                          ;; 04:463f $78
-    call code_000_2c09                                 ;; 04:4640 $cd $09 $2c
+    call call_00_2c09                                  ;; 04:4640 $cd $09 $2c
     pop  BC                                            ;; 04:4643 $c1
     pop  DE                                            ;; 04:4644 $d1
     cp   A, D                                          ;; 04:4645 $ba
-    jr   C, .code_4652                                 ;; 04:4646 $38 $0a
+    jr   C, .jr_04_4652                                ;; 04:4646 $38 $0a
     cp   A, E                                          ;; 04:4648 $bb
-    jr   C, .code_4652                                 ;; 04:4649 $38 $07
+    jr   C, .jr_04_4652                                ;; 04:4649 $38 $07
     push BC                                            ;; 04:464b $c5
     ld   A, C                                          ;; 04:464c $79
-    call code_004_42e6                                 ;; 04:464d $cd $e6 $42
+    call call_04_42e6                                  ;; 04:464d $cd $e6 $42
     pop  BC                                            ;; 04:4650 $c1
     ret                                                ;; 04:4651 $c9
-.code_4652:
+.jr_04_4652:
     xor  A, A                                          ;; 04:4652 $af
     inc  A                                             ;; 04:4653 $3c
     ret                                                ;; 04:4654 $c9
 
-code_004_4655:
-    ld   HL, $0001                                     ;; 04:4655 $21 $01 $00
+call_04_4655:
+    ld   HL, $01                                       ;; 04:4655 $21 $01 $00
     add  HL, DE                                        ;; 04:4658 $19
     ld   C, [HL]                                       ;; 04:4659 $4e
     inc  HL                                            ;; 04:465a $23
     ld   B, [HL]                                       ;; 04:465b $46
-    ld   HL, $0001                                     ;; 04:465c $21 $01 $00
+    ld   HL, $01                                       ;; 04:465c $21 $01 $00
     add  HL, BC                                        ;; 04:465f $09
     ld   L, [HL]                                       ;; 04:4660 $6e
     ld   H, B                                          ;; 04:4661 $60
@@ -1101,23 +1095,23 @@ code_004_4655:
     ld   A, B                                          ;; 04:4666 $78
     ret                                                ;; 04:4667 $c9
 
-code_004_4668:
-    ld   DE, $0004                                     ;; 04:4668 $11 $04 $00
+call_04_4668:
+    ld   DE, $04                                       ;; 04:4668 $11 $04 $00
     add  HL, DE                                        ;; 04:466b $19
     ld   E, [HL]                                       ;; 04:466c $5e
     ret                                                ;; 04:466d $c9
 
-code_004_466e:
+call_04_466e:
     push HL                                            ;; 04:466e $e5
     add  HL, BC                                        ;; 04:466f $09
     ld   A, [HL]                                       ;; 04:4670 $7e
     push AF                                            ;; 04:4671 $f5
-    call code_000_3de9                                 ;; 04:4672 $cd $e9 $3d
+    call call_00_3de9                                  ;; 04:4672 $cd $e9 $3d
     ld   D, A                                          ;; 04:4675 $57
     pop  AF                                            ;; 04:4676 $f1
     ld   E, A                                          ;; 04:4677 $5f
     pop  BC                                            ;; 04:4678 $c1
-    ld   HL, $0002                                     ;; 04:4679 $21 $02 $00
+    ld   HL, $02                                       ;; 04:4679 $21 $02 $00
     add  HL, BC                                        ;; 04:467c $09
     ld   A, [HL]                                       ;; 04:467d $7e
     and  A, D                                          ;; 04:467e $a2
@@ -1126,7 +1120,7 @@ code_004_466e:
     srl  E                                             ;; 04:4682 $cb $3b
     ret                                                ;; 04:4684 $c9
 
-code_004_4685:
+call_04_4685:
     ld   L, A                                          ;; 04:4685 $6f
     ld   H, $00                                        ;; 04:4686 $26 $00
     ld   A, [wC0A0]                                    ;; 04:4688 $fa $a0 $c0
@@ -1142,10 +1136,10 @@ code_004_4685:
     rr   L                                             ;; 04:4698 $cb $1d
     ret                                                ;; 04:469a $c9
 
-code_004_469b:
+call_04_469b:
     ld   D, $00                                        ;; 04:469b $16 $00
     call sub_HL_DE                                     ;; 04:469d $cd $ab $2b
-    jr   C, .code_46c1                                 ;; 04:46a0 $38 $1f
+    jr   C, .jr_04_46c1                                ;; 04:46a0 $38 $1f
     ret  Z                                             ;; 04:46a2 $c8
     push HL                                            ;; 04:46a3 $e5
     ld   A, [wCF63]                                    ;; 04:46a4 $fa $63 $cf
@@ -1162,24 +1156,24 @@ code_004_469b:
     pop  HL                                            ;; 04:46ba $e1
     add  HL, DE                                        ;; 04:46bb $19
     pop  DE                                            ;; 04:46bc $d1
-    call code_004_46f6                                 ;; 04:46bd $cd $f6 $46
+    call call_04_46f6                                  ;; 04:46bd $cd $f6 $46
     ret                                                ;; 04:46c0 $c9
-.code_46c1:
-    ld   HL, $0000                                     ;; 04:46c1 $21 $00 $00
+.jr_04_46c1:
+    ld   HL, $00                                       ;; 04:46c1 $21 $00 $00
     xor  A, A                                          ;; 04:46c4 $af
     ret                                                ;; 04:46c5 $c9
 
-code_004_46c6:
+call_04_46c6:
     ld   D, $00                                        ;; 04:46c6 $16 $00
     call sub_HL_DE                                     ;; 04:46c8 $cd $ab $2b
-    jr   C, .code_46f1                                 ;; 04:46cb $38 $24
+    jr   C, .jr_04_46f1                                ;; 04:46cb $38 $24
     ret  Z                                             ;; 04:46cd $c8
     push HL                                            ;; 04:46ce $e5
     ld   A, [wCF63]                                    ;; 04:46cf $fa $63 $cf
     cp   A, $40                                        ;; 04:46d2 $fe $40
-    jr   NZ, .code_46d7                                ;; 04:46d4 $20 $01
+    jr   NZ, .jr_04_46d7                               ;; 04:46d4 $20 $01
     add  HL, HL                                        ;; 04:46d6 $29
-.code_46d7:
+.jr_04_46d7:
     push HL                                            ;; 04:46d7 $e5
     call MultiplyHL_by_A                               ;; 04:46d8 $cd $7b $2b
     ld   D, $00                                        ;; 04:46db $16 $00
@@ -1193,14 +1187,14 @@ code_004_46c6:
     pop  HL                                            ;; 04:46ea $e1
     add  HL, DE                                        ;; 04:46eb $19
     pop  DE                                            ;; 04:46ec $d1
-    call code_004_46f6                                 ;; 04:46ed $cd $f6 $46
+    call call_04_46f6                                  ;; 04:46ed $cd $f6 $46
     ret                                                ;; 04:46f0 $c9
-.code_46f1:
-    ld   HL, $0000                                     ;; 04:46f1 $21 $00 $00
+.jr_04_46f1:
+    ld   HL, $00                                       ;; 04:46f1 $21 $00 $00
     xor  A, A                                          ;; 04:46f4 $af
     ret                                                ;; 04:46f5 $c9
 
-code_004_46f6:
+call_04_46f6:
     push HL                                            ;; 04:46f6 $e5
     push DE                                            ;; 04:46f7 $d5
     call getRandomByte                                 ;; 04:46f8 $cd $1e $2b
@@ -1216,7 +1210,7 @@ code_004_46f6:
     or   A, L                                          ;; 04:4709 $b5
     ret                                                ;; 04:470a $c9
 
-code_004_470b:
+call_04_470b:
     ld   D, H                                          ;; 04:470b $54
     ld   E, L                                          ;; 04:470c $5d
     ld   A, [wD3F5]                                    ;; 04:470d $fa $f5 $d3
@@ -1224,18 +1218,18 @@ code_004_470b:
     ld   A, [wD3F4]                                    ;; 04:4711 $fa $f4 $d3
     ld   L, A                                          ;; 04:4714 $6f
     call sub_HL_DE                                     ;; 04:4715 $cd $ab $2b
-    jr   Z, .code_471c                                 ;; 04:4718 $28 $02
-    jr   NC, .code_471f                                ;; 04:471a $30 $03
-.code_471c:
+    jr   Z, .jr_04_471c                                ;; 04:4718 $28 $02
+    jr   NC, .jr_04_471f                               ;; 04:471a $30 $03
+.jr_04_471c:
     ld   HL, rIE                                       ;; 04:471c $21 $ff $ff
-.code_471f:
+.jr_04_471f:
     ld   A, H                                          ;; 04:471f $7c
     ld   [wD3F5], A                                    ;; 04:4720 $ea $f5 $d3
     ld   A, L                                          ;; 04:4723 $7d
     ld   [wD3F4], A                                    ;; 04:4724 $ea $f4 $d3
     ret                                                ;; 04:4727 $c9
 
-code_004_4728:
+call_04_4728:
     ld   A, $18                                        ;; 04:4728 $3e $18
     ld   [wD3EB], A                                    ;; 04:472a $ea $eb $d3
     ld   A, $0d                                        ;; 04:472d $3e $0d
@@ -1243,11 +1237,11 @@ code_004_4728:
     ld   A, $40                                        ;; 04:4732 $3e $40
     ret                                                ;; 04:4734 $c9
 
-code_004_4735:
-    call code_000_0695                                 ;; 04:4735 $cd $95 $06
+call_04_4735:
+    call call_00_0695                                  ;; 04:4735 $cd $95 $06
     ret                                                ;; 04:4738 $c9
 
-unknown_004_4739:
+data_04_4739:
     db   $08, $19, $14, $0a, $08, $1e, $46, $02        ;; 04:4739 ????????
     db   $40, $0d, $00, $cd, $3d, $79, $a7, $7b        ;; 04:4741 ????????
     db   $31, $49, $21, $4e, $f1, $4d, $35, $54        ;; 04:4749 ????????
@@ -2950,13 +2944,13 @@ unknown_004_4739:
     db   $46, $10, $48, $4a, $10, $50, $52, $10        ;; 04:7c51 ????????
     db   $58, $5a, $30, $46, $44, $10, $38, $3a        ;; 04:7c59 ????????
     db   $10, $3c, $3e, $10, $30, $32, $10, $34        ;; 04:7c61 ????????
-    db   $36, $10, $54, $56, $10, $44, $46, $10        ;; 04:7c69 ???????A
-    db   $40, $42, $10, $44, $46, $10, $48, $4a        ;; 04:7c71 TTATTATT
-    db   $30, $4e, $4c, $30, $4a, $48, $30, $42        ;; 04:7c79 ATTATTAT
-    db   $40, $10, $4c, $4e, $30, $46, $44, $10        ;; 04:7c81 TATTATTA
-    db   $50, $52, $10, $54, $56, $10, $5c, $5e        ;; 04:7c89 TTATTATT
-    db   $10, $58, $5a, $10, $38, $3a, $10, $3c        ;; 04:7c91 ATTATTAT
-    db   $3e, $10, $40, $42, $10, $44, $46, $10        ;; 04:7c99 T???????
+    db   $36, $10, $54, $56, $10, $44, $46, $10        ;; 04:7c69 ???????.
+    db   $40, $42, $10, $44, $46, $10, $48, $4a        ;; 04:7c71 ........
+    db   $30, $4e, $4c, $30, $4a, $48, $30, $42        ;; 04:7c79 ........
+    db   $40, $10, $4c, $4e, $30, $46, $44, $10        ;; 04:7c81 ........
+    db   $50, $52, $10, $54, $56, $10, $5c, $5e        ;; 04:7c89 ........
+    db   $10, $58, $5a, $10, $38, $3a, $10, $3c        ;; 04:7c91 ........
+    db   $3e, $10, $40, $42, $10, $44, $46, $10        ;; 04:7c99 .???????
     db   $60, $62, $10, $5c, $5e, $10, $48, $4a        ;; 04:7ca1 ????????
     db   $30, $42, $40, $30, $62, $60, $30, $62        ;; 04:7ca9 ????????
     db   $60, $30, $46, $44, $10, $4c, $4e, $30        ;; 04:7cb1 ????????

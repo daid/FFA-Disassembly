@@ -1,14 +1,18 @@
 ;; Disassembled with BadBoy Disassembler: https://github.com/daid/BadBoy
 
+INCLUDE "include/hardware.inc"
+INCLUDE "include/macros.inc"
+INCLUDE "include/charmaps.inc"
+
 SECTION "bank0f", ROMX[$4000], BANK[$0f]
 
 runSoundEngine:
     jr   runSoundEngineReal                            ;; 0f:4000 $18 $04
-    ds   1                                             ;; 0f:4002 ?
+    db   $00                                           ;; 0f:4002 ?
 
 initSoundEngine:
     jr   initSoundEngineReal                           ;; 0f:4003 $18 $43
-    ds   1                                             ;; 0f:4005 ?
+    db   $00                                           ;; 0f:4005 ?
 
 runSoundEngineReal:
     push AF                                            ;; 0f:4006 $f5
@@ -17,37 +21,37 @@ runSoundEngineReal:
     push HL                                            ;; 0f:4009 $e5
     ldh  A, [hFF91]                                    ;; 0f:400a $f0 $91
     or   A, A                                          ;; 0f:400c $b7
-    jr   Z, .code_401e                                 ;; 0f:400d $28 $0f
+    jr   Z, .jr_0f_401e                                ;; 0f:400d $28 $0f
     ldh  A, [hFF99]                                    ;; 0f:400f $f0 $99
     or   A, A                                          ;; 0f:4011 $b7
-    jr   Z, .code_4019                                 ;; 0f:4012 $28 $05
-    call code_00f_4110                                 ;; 0f:4014 $cd $10 $41
-    jr   .code_403d                                    ;; 0f:4017 $18 $24
-.code_4019:
-    call code_00f_40ee                                 ;; 0f:4019 $cd $ee $40
-    jr   .code_403d                                    ;; 0f:401c $18 $1f
-.code_401e:
+    jr   Z, .jr_0f_4019                                ;; 0f:4012 $28 $05
+    call call_0f_4110                                  ;; 0f:4014 $cd $10 $41
+    jr   .jr_0f_403d                                   ;; 0f:4017 $18 $24
+.jr_0f_4019:
+    call call_0f_40ee                                  ;; 0f:4019 $cd $ee $40
+    jr   .jr_0f_403d                                   ;; 0f:401c $18 $1f
+.jr_0f_401e:
     ldh  A, [hFF99]                                    ;; 0f:401e $f0 $99
     or   A, A                                          ;; 0f:4020 $b7
-    jr   Z, .code_4028                                 ;; 0f:4021 $28 $05
-    call code_00f_4120                                 ;; 0f:4023 $cd $20 $41
-    jr   .code_403d                                    ;; 0f:4026 $18 $15
-.code_4028:
+    jr   Z, .jr_0f_4028                                ;; 0f:4021 $28 $05
+    call call_0f_4120                                  ;; 0f:4023 $cd $20 $41
+    jr   .jr_0f_403d                                   ;; 0f:4026 $18 $15
+.jr_0f_4028:
     ld   A, [wC11A]                                    ;; 0f:4028 $fa $1a $c1
     or   A, A                                          ;; 0f:402b $b7
-    jr   NZ, .code_4037                                ;; 0f:402c $20 $09
+    jr   NZ, .jr_0f_4037                               ;; 0f:402c $20 $09
     ldh  A, [hFF93]                                    ;; 0f:402e $f0 $93
     ld   B, A                                          ;; 0f:4030 $47
     ldh  A, [hCurrentMusic]                            ;; 0f:4031 $f0 $90
     cp   A, B                                          ;; 0f:4033 $b8
-    call NZ, code_00f_409e                             ;; 0f:4034 $c4 $9e $40
-.code_4037:
+    call NZ, call_0f_409e                              ;; 0f:4034 $c4 $9e $40
+.jr_0f_4037:
     ldh  A, [hSFX]                                     ;; 0f:4037 $f0 $92
     or   A, A                                          ;; 0f:4039 $b7
-    call NZ, code_00f_493c                             ;; 0f:403a $c4 $3c $49
-.code_403d:
-    call code_00f_4257                                 ;; 0f:403d $cd $57 $42
-    call code_00f_4965                                 ;; 0f:4040 $cd $65 $49
+    call NZ, call_0f_493c                              ;; 0f:403a $c4 $3c $49
+.jr_0f_403d:
+    call call_0f_4257                                  ;; 0f:403d $cd $57 $42
+    call call_0f_4965                                  ;; 0f:4040 $cd $65 $49
     pop  HL                                            ;; 0f:4043 $e1
     pop  DE                                            ;; 0f:4044 $d1
     pop  BC                                            ;; 0f:4045 $c1
@@ -55,73 +59,73 @@ runSoundEngineReal:
     ret                                                ;; 0f:4047 $c9
 
 initSoundEngineReal:
-    ld   A, $ff                                        ;; 0f:4048 $3e $ff rNR52
+    ld   A, $ff                                        ;; 0f:4048 $3e $ff
     ldh  [rNR52], A                                    ;; 0f:404a $e0 $26
-    call code_00f_4084                                 ;; 0f:404c $cd $84 $40
+    call call_0f_4084                                  ;; 0f:404c $cd $84 $40
     ld   A, $ff                                        ;; 0f:404f $3e $ff
     ld   [wC113], A                                    ;; 0f:4051 $ea $13 $c1
     ld   [wC12B], A                                    ;; 0f:4054 $ea $2b $c1
     ld   [wC143], A                                    ;; 0f:4057 $ea $43 $c1
     ld   [wC15B], A                                    ;; 0f:405a $ea $5b $c1
-    ld   A, $10                                        ;; 0f:405d $3e $10 rNR42
+    ld   A, $10                                        ;; 0f:405d $3e $10
     ldh  [rNR12], A                                    ;; 0f:405f $e0 $12
     ldh  [rNR22], A                                    ;; 0f:4061 $e0 $17
     ldh  [rNR32], A                                    ;; 0f:4063 $e0 $1c
     ldh  [rNR42], A                                    ;; 0f:4065 $e0 $21
-    call code_00f_40d1                                 ;; 0f:4067 $cd $d1 $40
+    call call_0f_40d1                                  ;; 0f:4067 $cd $d1 $40
     xor  A, A                                          ;; 0f:406a $af
     ld   [wC11A], A                                    ;; 0f:406b $ea $1a $c1
-    ld   A, $77                                        ;; 0f:406e $3e $77 rNR50
+    ld   A, $77                                        ;; 0f:406e $3e $77
     ldh  [rNR50], A                                    ;; 0f:4070 $e0 $24
-    ld   A, $ff                                        ;; 0f:4072 $3e $ff rNR51
+    ld   A, $ff                                        ;; 0f:4072 $3e $ff
     ldh  [rNR51], A                                    ;; 0f:4074 $e0 $25
     ld   HL, hCurrentMusic                             ;; 0f:4076 $21 $90 $ff
     ld   C, $10                                        ;; 0f:4079 $0e $10
     xor  A, A                                          ;; 0f:407b $af
-.code_407c:
+.jr_0f_407c:
     ld   [HL+], A                                      ;; 0f:407c $22
     dec  C                                             ;; 0f:407d $0d
-    jr   NZ, .code_407c                                ;; 0f:407e $20 $fc
+    jr   NZ, .jr_0f_407c                               ;; 0f:407e $20 $fc
     ld   [wC1C8], A                                    ;; 0f:4080 $ea $c8 $c1
     ret                                                ;; 0f:4083 $c9
 
-code_00f_4084:
+call_0f_4084:
     ld   HL, wC100                                     ;; 0f:4084 $21 $00 $c1
     ld   A, $ff                                        ;; 0f:4087 $3e $ff
     ld   [HL+], A                                      ;; 0f:4089 $22
     ld   A, $3c                                        ;; 0f:408a $3e $3c
     ld   [HL+], A                                      ;; 0f:408c $22
     ld   B, $03                                        ;; 0f:408d $06 $03
-.code_408f:
-    ld   DE, data_00f_417a                             ;; 0f:408f $11 $7a $41
+.jr_0f_408f:
+    ld   DE, data_0f_417a                              ;; 0f:408f $11 $7a $41
     ld   C, $18                                        ;; 0f:4092 $0e $18
-.code_4094:
+.jr_0f_4094:
     ld   A, [DE]                                       ;; 0f:4094 $1a
     ld   [HL+], A                                      ;; 0f:4095 $22
     inc  E                                             ;; 0f:4096 $1c
     dec  C                                             ;; 0f:4097 $0d
-    jr   NZ, .code_4094                                ;; 0f:4098 $20 $fa
+    jr   NZ, .jr_0f_4094                               ;; 0f:4098 $20 $fa
     dec  B                                             ;; 0f:409a $05
-    jr   NZ, .code_408f                                ;; 0f:409b $20 $f2
+    jr   NZ, .jr_0f_408f                               ;; 0f:409b $20 $f2
     ret                                                ;; 0f:409d $c9
 
-code_00f_409e:
+call_0f_409e:
     ldh  [hFF93], A                                    ;; 0f:409e $e0 $93
     or   A, A                                          ;; 0f:40a0 $b7
-    jr   NZ, code_00f_40a7                             ;; 0f:40a1 $20 $04
+    jr   NZ, call_0f_40a7                              ;; 0f:40a1 $20 $04
     call initSoundEngineReal                           ;; 0f:40a3 $cd $48 $40
     ret                                                ;; 0f:40a6 $c9
 
-code_00f_40a7:
+call_0f_40a7:
     push AF                                            ;; 0f:40a7 $f5
-    call code_00f_4084                                 ;; 0f:40a8 $cd $84 $40
+    call call_0f_4084                                  ;; 0f:40a8 $cd $84 $40
     pop  AF                                            ;; 0f:40ab $f1
     dec  A                                             ;; 0f:40ac $3d
     ld   E, A                                          ;; 0f:40ad $5f
     add  A, A                                          ;; 0f:40ae $87
     add  A, E                                          ;; 0f:40af $83
     add  A, A                                          ;; 0f:40b0 $87
-    ld   HL, data_00f_4a12                             ;; 0f:40b1 $21 $12 $4a
+    ld   HL, data_0f_4a12                              ;; 0f:40b1 $21 $12 $4a
     ld   E, A                                          ;; 0f:40b4 $5f
     ld   D, $00                                        ;; 0f:40b5 $16 $00
     add  HL, DE                                        ;; 0f:40b7 $19
@@ -139,45 +143,45 @@ code_00f_40a7:
     ld   [wC135], A                                    ;; 0f:40cd $ea $35 $c1
     ret                                                ;; 0f:40d0 $c9
 
-code_00f_40d1:
+call_0f_40d1:
     xor  A, A                                          ;; 0f:40d1 $af
     ldh  [rNR10], A                                    ;; 0f:40d2 $e0 $10
-    ld   A, $ff                                        ;; 0f:40d4 $3e $ff rNR33
+    ld   A, $ff                                        ;; 0f:40d4 $3e $ff
     ldh  [rNR13], A                                    ;; 0f:40d6 $e0 $13
     ldh  [rNR23], A                                    ;; 0f:40d8 $e0 $18
     ldh  [rNR31], A                                    ;; 0f:40da $e0 $1b
     ldh  [rNR33], A                                    ;; 0f:40dc $e0 $1d
-    ld   A, $07                                        ;; 0f:40de $3e $07 rNR34
+    ld   A, $07                                        ;; 0f:40de $3e $07
     ldh  [rNR14], A                                    ;; 0f:40e0 $e0 $14
     ldh  [rNR24], A                                    ;; 0f:40e2 $e0 $19
     ldh  [rNR34], A                                    ;; 0f:40e4 $e0 $1e
     xor  A, A                                          ;; 0f:40e6 $af
     ldh  [rNR42], A                                    ;; 0f:40e7 $e0 $21
-    ld   A, $80                                        ;; 0f:40e9 $3e $80 rNR44
+    ld   A, $80                                        ;; 0f:40e9 $3e $80
     ldh  [rNR44], A                                    ;; 0f:40eb $e0 $23
     ret                                                ;; 0f:40ed $c9
 
-code_00f_40ee:
-    call code_00f_40d1                                 ;; 0f:40ee $cd $d1 $40
+call_0f_40ee:
+    call call_0f_40d1                                  ;; 0f:40ee $cd $d1 $40
     xor  A, A                                          ;; 0f:40f1 $af
     ld   [wC11A], A                                    ;; 0f:40f2 $ea $1a $c1
     ld   [wC14A], A                                    ;; 0f:40f5 $ea $4a $c1
     ld   C, $62                                        ;; 0f:40f8 $0e $62
     ld   HL, wC100                                     ;; 0f:40fa $21 $00 $c1
     ld   DE, wC162                                     ;; 0f:40fd $11 $62 $c1
-.code_4100:
+.jr_0f_4100:
     ld   A, [HL+]                                      ;; 0f:4100 $2a
     ld   [DE], A                                       ;; 0f:4101 $12
     inc  E                                             ;; 0f:4102 $1c
     dec  C                                             ;; 0f:4103 $0d
-    jr   NZ, .code_4100                                ;; 0f:4104 $20 $fa
+    jr   NZ, .jr_0f_4100                               ;; 0f:4104 $20 $fa
     ldh  A, [hFF91]                                    ;; 0f:4106 $f0 $91
-    call code_00f_40a7                                 ;; 0f:4108 $cd $a7 $40
+    call call_0f_40a7                                  ;; 0f:4108 $cd $a7 $40
     ld   A, $01                                        ;; 0f:410b $3e $01
     ldh  [hFF99], A                                    ;; 0f:410d $e0 $99
     ret                                                ;; 0f:410f $c9
 
-code_00f_4110:
+call_0f_4110:
     ld   A, [wC113]                                    ;; 0f:4110 $fa $13 $c1
     ld   E, A                                          ;; 0f:4113 $5f
     ld   A, [wC12B]                                    ;; 0f:4114 $fa $2b $c1
@@ -188,17 +192,17 @@ code_00f_4110:
     cp   A, $ff                                        ;; 0f:411d $fe $ff
     ret  NZ                                            ;; 0f:411f $c0
 
-code_00f_4120:
-    call code_00f_40d1                                 ;; 0f:4120 $cd $d1 $40
+call_0f_4120:
+    call call_0f_40d1                                  ;; 0f:4120 $cd $d1 $40
     ld   C, $62                                        ;; 0f:4123 $0e $62
     ld   HL, wC100                                     ;; 0f:4125 $21 $00 $c1
     ld   DE, wC162                                     ;; 0f:4128 $11 $62 $c1
-.code_412b:
+.jr_0f_412b:
     ld   A, [DE]                                       ;; 0f:412b $1a
     ld   [HL+], A                                      ;; 0f:412c $22
     inc  E                                             ;; 0f:412d $1c
     dec  C                                             ;; 0f:412e $0d
-    jr   NZ, .code_412b                                ;; 0f:412f $20 $fa
+    jr   NZ, .jr_0f_412b                               ;; 0f:412f $20 $fa
     xor  A, A                                          ;; 0f:4131 $af
     ldh  [hFF91], A                                    ;; 0f:4132 $e0 $91
     ldh  [hFF99], A                                    ;; 0f:4134 $e0 $99
@@ -212,9 +216,9 @@ code_00f_4120:
     ld   L, A                                          ;; 0f:4146 $6f
     ldh  A, [hFF9B]                                    ;; 0f:4147 $f0 $9b
     ld   H, A                                          ;; 0f:4149 $67
-    call code_00f_47ad                                 ;; 0f:414a $cd $ad $47
+    call call_0f_47ad                                  ;; 0f:414a $cd $ad $47
 
-code_00f_414d:
+call_0f_414d:
     xor  A, A                                          ;; 0f:414d $af
     ldh  [rNR10], A                                    ;; 0f:414e $e0 $10
     ld   A, [wC124]                                    ;; 0f:4150 $fa $24 $c1
@@ -233,35 +237,35 @@ code_00f_414d:
     ldh  [rNR51], A                                    ;; 0f:416d $e0 $25
     ret                                                ;; 0f:416f $c9
 
-code_00f_4170:
+call_0f_4170:
     xor  A, A                                          ;; 0f:4170 $af
     ldh  [rNR42], A                                    ;; 0f:4171 $e0 $21
     ldh  [rNR43], A                                    ;; 0f:4173 $e0 $22
-    ld   A, $80                                        ;; 0f:4175 $3e $80 rNR44
+    ld   A, $80                                        ;; 0f:4175 $3e $80
     ldh  [rNR44], A                                    ;; 0f:4177 $e0 $23
     ret                                                ;; 0f:4179 $c9
 
-data_00f_417a:
+data_0f_417a:
     db   $00, $01, $00, $00, $14, $92, $41, $92        ;; 0f:417a ........
     db   $41, $60, $00, $00, $00, $00, $10, $0f        ;; 0f:4182 ........
     db   $00, $00, $01, $9b, $41, $9b, $41, $00        ;; 0f:418a ........
     db   $0a, $00, $02, $01, $02, $00, $00, $94        ;; 0f:4192 ????????
     db   $41, $ff, $f0, $00, $9b, $41                  ;; 0f:419a ??????
 
-unknown_00f_41a0:
+data_0f_41a0:
     db   $2c, $80, $9d, $80, $07, $81, $6b, $81        ;; 0f:41a0 ????????
     db   $c9, $81, $23, $82, $77, $82, $c7, $82        ;; 0f:41a8 ????????
-    db   $12, $83, $58, $83, $9b, $83, $da, $83        ;; 0f:41b0 ??????.S
-    db   $16, $84, $4e, $84, $83, $84, $b5, $84        ;; 0f:41b8 .S.S????
-    db   $e5, $84, $11, $85, $3b, $85, $63, $85        ;; 0f:41c0 .....S.S
-    db   $89, $85, $ac, $85, $ce, $85, $ed, $85        ;; 0f:41c8 .S.S.S.S
-    db   $0b, $86, $27, $86, $42, $86, $5b, $86        ;; 0f:41d0 .S.S.S.S
-    db   $72, $86, $89, $86, $9e, $86, $b2, $86        ;; 0f:41d8 .S.S.S.S
-    db   $c4, $86, $d6, $86, $e7, $86, $f7, $86        ;; 0f:41e0 .S.S.S.S
-    db   $06, $87, $14, $87, $21, $87, $2d, $87        ;; 0f:41e8 .S.S.S.S
-    db   $39, $87, $44, $87, $4f, $87, $59, $87        ;; 0f:41f0 .S.S.S.S
-    db   $62, $87, $6b, $87, $73, $87, $7b, $87        ;; 0f:41f8 .S.S.S.S
-    db   $83, $87, $8a, $87, $90, $87, $97, $87        ;; 0f:4200 .S??????
+    db   $12, $83, $58, $83, $9b, $83, $da, $83        ;; 0f:41b0 ??????..
+    db   $16, $84, $4e, $84, $83, $84, $b5, $84        ;; 0f:41b8 ....????
+    db   $e5, $84, $11, $85, $3b, $85, $63, $85        ;; 0f:41c0 ........
+    db   $89, $85, $ac, $85, $ce, $85, $ed, $85        ;; 0f:41c8 ........
+    db   $0b, $86, $27, $86, $42, $86, $5b, $86        ;; 0f:41d0 ........
+    db   $72, $86, $89, $86, $9e, $86, $b2, $86        ;; 0f:41d8 ........
+    db   $c4, $86, $d6, $86, $e7, $86, $f7, $86        ;; 0f:41e0 ........
+    db   $06, $87, $14, $87, $21, $87, $2d, $87        ;; 0f:41e8 ........
+    db   $39, $87, $44, $87, $4f, $87, $59, $87        ;; 0f:41f0 ........
+    db   $62, $87, $6b, $87, $73, $87, $7b, $87        ;; 0f:41f8 ........
+    db   $83, $87, $8a, $87, $90, $87, $97, $87        ;; 0f:4200 ..??????
     db   $9d, $87, $a2, $87, $a7, $87, $ac, $87        ;; 0f:4208 ????????
     db   $b1, $87, $b6, $87, $ba, $87, $be, $87        ;; 0f:4210 ????????
     db   $c1, $87, $c5, $87, $c8, $87, $cb, $87        ;; 0f:4218 ????????
@@ -272,58 +276,58 @@ unknown_00f_41a0:
     db   $ec, $87, $ed, $87, $ee, $87, $ef, $87        ;; 0f:4240 ????????
     db   $f0, $87                                      ;; 0f:4248 ??
 
-data_00f_424a:
+data_0f_424a:
     db   $60, $48, $30, $20, $24, $18, $10, $12        ;; 0f:424a ...?....
     db   $0c, $08, $06, $04, $03                       ;; 0f:4252 .?...
 
-code_00f_4257:
+call_0f_4257:
     ld   A, [wC100]                                    ;; 0f:4257 $fa $00 $c1
     ld   B, A                                          ;; 0f:425a $47
     ld   A, [wC101]                                    ;; 0f:425b $fa $01 $c1
     add  A, B                                          ;; 0f:425e $80
     ld   [wC100], A                                    ;; 0f:425f $ea $00 $c1
-    jr   NC, .code_426e                                ;; 0f:4262 $30 $0a
-    call code_00f_428b                                 ;; 0f:4264 $cd $8b $42
+    jr   NC, .jr_0f_426e                               ;; 0f:4262 $30 $0a
+    call call_0f_428b                                  ;; 0f:4264 $cd $8b $42
     ld   A, [wC1C8]                                    ;; 0f:4267 $fa $c8 $c1
     or   A, A                                          ;; 0f:426a $b7
-    call code_00f_428b                                 ;; 0f:426b $cd $8b $42
-.code_426e:
+    call call_0f_428b                                  ;; 0f:426b $cd $8b $42
+.jr_0f_426e:
     ldh  A, [hFF94]                                    ;; 0f:426e $f0 $94
     inc  A                                             ;; 0f:4270 $3c
     cp   A, $03                                        ;; 0f:4271 $fe $03
-    jr   NZ, .code_4276                                ;; 0f:4273 $20 $01
+    jr   NZ, .jr_0f_4276                               ;; 0f:4273 $20 $01
     xor  A, A                                          ;; 0f:4275 $af
-.code_4276:
+.jr_0f_4276:
     ldh  [hFF94], A                                    ;; 0f:4276 $e0 $94
     or   A, A                                          ;; 0f:4278 $b7
-    call Z, code_00f_47ef                              ;; 0f:4279 $cc $ef $47
+    call Z, call_0f_47ef                               ;; 0f:4279 $cc $ef $47
     ldh  A, [hFF94]                                    ;; 0f:427c $f0 $94
     cp   A, $01                                        ;; 0f:427e $fe $01
-    call Z, code_00f_4869                              ;; 0f:4280 $cc $69 $48
+    call Z, call_0f_4869                               ;; 0f:4280 $cc $69 $48
     ldh  A, [hFF94]                                    ;; 0f:4283 $f0 $94
     cp   A, $02                                        ;; 0f:4285 $fe $02
-    call Z, code_00f_48e3                              ;; 0f:4287 $cc $e3 $48
+    call Z, call_0f_48e3                               ;; 0f:4287 $cc $e3 $48
     ret                                                ;; 0f:428a $c9
 
-code_00f_428b:
+call_0f_428b:
     ld   A, [wC113]                                    ;; 0f:428b $fa $13 $c1
     cp   A, $ff                                        ;; 0f:428e $fe $ff
-    jp   Z, code_00f_44e2                              ;; 0f:4290 $ca $e2 $44
+    jp   Z, jp_0f_44e2                                 ;; 0f:4290 $ca $e2 $44
     ld   A, [wC103]                                    ;; 0f:4293 $fa $03 $c1
     dec  A                                             ;; 0f:4296 $3d
     ld   [wC103], A                                    ;; 0f:4297 $ea $03 $c1
     ldh  [hFF95], A                                    ;; 0f:429a $e0 $95
-    jp   NZ, code_00f_44e2                             ;; 0f:429c $c2 $e2 $44
+    jp   NZ, jp_0f_44e2                                ;; 0f:429c $c2 $e2 $44
 
-code_00f_429f:
-    call code_00f_47d9                                 ;; 0f:429f $cd $d9 $47
+jp_0f_429f:
+    call call_0f_47d9                                  ;; 0f:429f $cd $d9 $47
     ld   E, A                                          ;; 0f:42a2 $5f
     cp   A, $d0                                        ;; 0f:42a3 $fe $d0
-    jr   NC, .code_4311                                ;; 0f:42a5 $30 $6a
+    jr   NC, .jr_0f_4311                               ;; 0f:42a5 $30 $6a
     and  A, $f0                                        ;; 0f:42a7 $e6 $f0
     swap A                                             ;; 0f:42a9 $cb $37
     ld   C, A                                          ;; 0f:42ab $4f
-    ld   HL, data_00f_424a                             ;; 0f:42ac $21 $4a $42
+    ld   HL, data_0f_424a                              ;; 0f:42ac $21 $4a $42
     ld   B, $00                                        ;; 0f:42af $06 $00
     add  HL, BC                                        ;; 0f:42b1 $09
     ld   A, [HL]                                       ;; 0f:42b2 $7e
@@ -332,22 +336,22 @@ code_00f_429f:
     and  A, $0f                                        ;; 0f:42b7 $e6 $0f
     ld   [wC111], A                                    ;; 0f:42b9 $ea $11 $c1
     cp   A, $0e                                        ;; 0f:42bc $fe $0e
-    jp   Z, code_00f_44e2                              ;; 0f:42be $ca $e2 $44
+    jp   Z, jp_0f_44e2                                 ;; 0f:42be $ca $e2 $44
     cp   A, $0f                                        ;; 0f:42c1 $fe $0f
-    jr   NZ, .code_42d0                                ;; 0f:42c3 $20 $0b
-    ld   A, $ff                                        ;; 0f:42c5 $3e $ff rNR23
+    jr   NZ, .jr_0f_42d0                               ;; 0f:42c3 $20 $0b
+    ld   A, $ff                                        ;; 0f:42c5 $3e $ff
     ldh  [rNR23], A                                    ;; 0f:42c7 $e0 $18
-    ld   A, $07                                        ;; 0f:42c9 $3e $07 rNR24
+    ld   A, $07                                        ;; 0f:42c9 $3e $07
     ldh  [rNR24], A                                    ;; 0f:42cb $e0 $19
-    jp   code_00f_44e2                                 ;; 0f:42cd $c3 $e2 $44
-.code_42d0:
+    jp   jp_0f_44e2                                    ;; 0f:42cd $c3 $e2 $44
+.jr_0f_42d0:
     add  A, A                                          ;; 0f:42d0 $87
     ld   E, A                                          ;; 0f:42d1 $5f
     ld   A, [wC10B]                                    ;; 0f:42d2 $fa $0b $c1
     add  A, E                                          ;; 0f:42d5 $83
     ld   E, A                                          ;; 0f:42d6 $5f
     ld   D, $00                                        ;; 0f:42d7 $16 $00
-    ld   HL, unknown_00f_41a0                          ;; 0f:42d9 $21 $a0 $41
+    ld   HL, data_0f_41a0                              ;; 0f:42d9 $21 $a0 $41
     add  HL, DE                                        ;; 0f:42dc $19
     push HL                                            ;; 0f:42dd $e5
     ld   A, [wC115]                                    ;; 0f:42de $fa $15 $c1
@@ -370,23 +374,23 @@ code_00f_429f:
     ldh  [rNR24], A                                    ;; 0f:42fd $e0 $19
     ld   [wC10E], A                                    ;; 0f:42ff $ea $0e $c1
     ld   HL, wC106                                     ;; 0f:4302 $21 $06 $c1
-    call code_00f_47c8                                 ;; 0f:4305 $cd $c8 $47
+    call call_0f_47c8                                  ;; 0f:4305 $cd $c8 $47
     ld   HL, wC114                                     ;; 0f:4308 $21 $14 $c1
-    call code_00f_47c8                                 ;; 0f:430b $cd $c8 $47
-    jp   code_00f_44e2                                 ;; 0f:430e $c3 $e2 $44
-.code_4311:
+    call call_0f_47c8                                  ;; 0f:430b $cd $c8 $47
+    jp   jp_0f_44e2                                    ;; 0f:430e $c3 $e2 $44
+.jr_0f_4311:
     cp   A, $ff                                        ;; 0f:4311 $fe $ff
-    jr   NZ, .code_4321                                ;; 0f:4313 $20 $0c
+    jr   NZ, .jr_0f_4321                               ;; 0f:4313 $20 $0c
     ld   [wC113], A                                    ;; 0f:4315 $ea $13 $c1
     ldh  [rNR23], A                                    ;; 0f:4318 $e0 $18
-    ld   A, $07                                        ;; 0f:431a $3e $07 rNR24
+    ld   A, $07                                        ;; 0f:431a $3e $07
     ldh  [rNR24], A                                    ;; 0f:431c $e0 $19
-    jp   code_00f_44e2                                 ;; 0f:431e $c3 $e2 $44
-.code_4321:
+    jp   jp_0f_44e2                                    ;; 0f:431e $c3 $e2 $44
+.jr_0f_4321:
     cp   A, $e0                                        ;; 0f:4321 $fe $e0
-    jr   NC, .code_434b                                ;; 0f:4323 $30 $26
-    bit  $03, A                                        ;; 0f:4325 $cb $5f
-    jr   NZ, .code_4337                                ;; 0f:4327 $20 $0e
+    jr   NC, .jr_0f_434b                               ;; 0f:4323 $30 $26
+    bit  3, A                                          ;; 0f:4325 $cb $5f
+    jr   NZ, .jr_0f_4337                               ;; 0f:4327 $20 $0e
     and  A, $07                                        ;; 0f:4329 $e6 $07
     add  A, A                                          ;; 0f:432b $87
     add  A, A                                          ;; 0f:432c $87
@@ -395,29 +399,29 @@ code_00f_429f:
     add  A, A                                          ;; 0f:432f $87
     add  A, E                                          ;; 0f:4330 $83
     ld   [wC10B], A                                    ;; 0f:4331 $ea $0b $c1
-    jp   code_00f_429f                                 ;; 0f:4334 $c3 $9f $42
-.code_4337:
+    jp   jp_0f_429f                                    ;; 0f:4334 $c3 $9f $42
+.jr_0f_4337:
     and  A, $07                                        ;; 0f:4337 $e6 $07
     ld   E, A                                          ;; 0f:4339 $5f
     ld   D, $00                                        ;; 0f:433a $16 $00
-    ld   HL, data_00f_47d1                             ;; 0f:433c $21 $d1 $47
+    ld   HL, data_0f_47d1                              ;; 0f:433c $21 $d1 $47
     add  HL, DE                                        ;; 0f:433f $19
     ld   E, [HL]                                       ;; 0f:4340 $5e
     ld   A, [wC10B]                                    ;; 0f:4341 $fa $0b $c1
     add  A, E                                          ;; 0f:4344 $83
     ld   [wC10B], A                                    ;; 0f:4345 $ea $0b $c1
-    jp   code_00f_429f                                 ;; 0f:4348 $c3 $9f $42
-.code_434b:
+    jp   jp_0f_429f                                    ;; 0f:4348 $c3 $9f $42
+.jr_0f_434b:
     and  A, $0f                                        ;; 0f:434b $e6 $0f
     add  A, A                                          ;; 0f:434d $87
-    ld   HL, data_00f_4365                             ;; 0f:434e $21 $65 $43
+    ld   HL, data_0f_4365                              ;; 0f:434e $21 $65 $43
     ld   E, A                                          ;; 0f:4351 $5f
     ld   D, $00                                        ;; 0f:4352 $16 $00
     add  HL, DE                                        ;; 0f:4354 $19
-    call code_00f_435b                                 ;; 0f:4355 $cd $5b $43
-    jp   code_00f_429f                                 ;; 0f:4358 $c3 $9f $42
+    call call_0f_435b                                  ;; 0f:4355 $cd $5b $43
+    jp   jp_0f_429f                                    ;; 0f:4358 $c3 $9f $42
 
-code_00f_435b:
+call_0f_435b:
     ld   A, [HL+]                                      ;; 0f:435b $2a
     ld   E, A                                          ;; 0f:435c $5f
     ld   A, [HL]                                       ;; 0f:435d $7e
@@ -425,33 +429,33 @@ code_00f_435b:
     ld   L, E                                          ;; 0f:435f $6b
     jp   HL                                            ;; 0f:4360 $e9
 
-code_00f_4361:
-    jp   code_00f_4361                                 ;; 0f:4361 $c3 $61 $43
+call_0f_4361:
+    jp   call_0f_4361                                  ;; 0f:4361 $c3 $61 $43
     db   $c9                                           ;; 0f:4364 ?
 
 ;@jumptable amount=13
 ; Jump table for $E0-$ED music "opcodes", guess is that these are flow control codes.
-data_00f_4365:
-    dw   code_00f_4386                                 ;; 0f:4365 $86 $43
-    dw   code_00f_43a7                                 ;; 0f:4367 $a7 $43
-    dw   code_00f_43b7                                 ;; 0f:4369 $b7 $43
-    dw   code_00f_448d                                 ;; 0f:436b $8d $44
-    dw   code_00f_449b                                 ;; 0f:436d $9b $44
-    dw   code_00f_44bc                                 ;; 0f:436f $bc $44
-    dw   code_00f_44c5                                 ;; 0f:4371 $c5 $44
-    dw   code_00f_44db                                 ;; 0f:4373 $db $44
-    dw   code_00f_4361                                 ;; 0f:4375 $61 $43
-    dw   code_00f_43e7                                 ;; 0f:4377 $e7 $43
-    dw   code_00f_4494                                 ;; 0f:4379 $94 $44
-    dw   code_00f_442a                                 ;; 0f:437b $2a $44
-    dw   code_00f_437f                                 ;; 0f:437d $7f $43
+data_0f_4365:
+    dw   call_0f_4386                                  ;; 0f:4365 ..
+    dw   call_0f_43a7                                  ;; 0f:4367 ..
+    dw   call_0f_43b7                                  ;; 0f:4369 ..
+    dw   call_0f_448d                                  ;; 0f:436b ..
+    dw   call_0f_449b                                  ;; 0f:436d ..
+    dw   call_0f_44bc                                  ;; 0f:436f ..
+    dw   call_0f_44c5                                  ;; 0f:4371 ..
+    dw   call_0f_44db                                  ;; 0f:4373 ..
+    dw   call_0f_4361                                  ;; 0f:4375 ??
+    dw   call_0f_43e7                                  ;; 0f:4377 ??
+    dw   call_0f_4494                                  ;; 0f:4379 ??
+    dw   call_0f_442a                                  ;; 0f:437b ..
+    dw   call_0f_437f                                  ;; 0f:437d ??
 
-code_00f_437f:
-    call code_00f_47d9                                 ;; 0f:437f $cd $d9 $47
+call_0f_437f:
+    call call_0f_47d9                                  ;; 0f:437f $cd $d9 $47
     ld   [wC1C8], A                                    ;; 0f:4382 $ea $c8 $c1
     ret                                                ;; 0f:4385 $c9
 
-code_00f_4386:
+call_0f_4386:
     ld   HL, wMusicInstructionPointerLow               ;; 0f:4386 $21 $04 $c1
     ld   E, [HL]                                       ;; 0f:4389 $5e
     inc  HL                                            ;; 0f:438a $23
@@ -472,7 +476,7 @@ code_00f_4386:
     ld   [wMusicInstructionPointerHigh], A             ;; 0f:43a3 $ea $05 $c1
     ret                                                ;; 0f:43a6 $c9
 
-code_00f_43a7:
+call_0f_43a7:
     ld   HL, wMusicInstructionPointerLow               ;; 0f:43a7 $21 $04 $c1
     ld   E, [HL]                                       ;; 0f:43aa $5e
     inc  HL                                            ;; 0f:43ab $23
@@ -484,61 +488,61 @@ code_00f_43a7:
     ld   [wMusicInstructionPointerHigh], A             ;; 0f:43b3 $ea $05 $c1
     ret                                                ;; 0f:43b6 $c9
 
-code_00f_43b7:
+call_0f_43b7:
     ld   HL, wMusicInstructionPointerLow               ;; 0f:43b7 $21 $04 $c1
-    call code_00f_4417                                 ;; 0f:43ba $cd $17 $44
+    call call_0f_4417                                  ;; 0f:43ba $cd $17 $44
     ld   B, A                                          ;; 0f:43bd $47
     ld   A, [wC10F]                                    ;; 0f:43be $fa $0f $c1
     dec  A                                             ;; 0f:43c1 $3d
     ld   [wC10F], A                                    ;; 0f:43c2 $ea $0f $c1
-    jr   code_00f_4420                                 ;; 0f:43c5 $18 $59
+    jr   jr_0f_4420                                    ;; 0f:43c5 $18 $59
 
-code_00f_43c7:
+call_0f_43c7:
     ld   HL, wC11C                                     ;; 0f:43c7 $21 $1c $c1
-    call code_00f_4417                                 ;; 0f:43ca $cd $17 $44
+    call call_0f_4417                                  ;; 0f:43ca $cd $17 $44
     ld   B, A                                          ;; 0f:43cd $47
     ld   A, [wC127]                                    ;; 0f:43ce $fa $27 $c1
     dec  A                                             ;; 0f:43d1 $3d
     ld   [wC127], A                                    ;; 0f:43d2 $ea $27 $c1
-    jr   code_00f_4420                                 ;; 0f:43d5 $18 $49
+    jr   jr_0f_4420                                    ;; 0f:43d5 $18 $49
 
-code_00f_43d7:
+call_0f_43d7:
     ld   HL, wC134                                     ;; 0f:43d7 $21 $34 $c1
-    call code_00f_4417                                 ;; 0f:43da $cd $17 $44
+    call call_0f_4417                                  ;; 0f:43da $cd $17 $44
     ld   B, A                                          ;; 0f:43dd $47
     ld   A, [wC13F]                                    ;; 0f:43de $fa $3f $c1
     dec  A                                             ;; 0f:43e1 $3d
     ld   [wC13F], A                                    ;; 0f:43e2 $ea $3f $c1
-    jr   code_00f_4420                                 ;; 0f:43e5 $18 $39
+    jr   jr_0f_4420                                    ;; 0f:43e5 $18 $39
 
-code_00f_43e7:
+call_0f_43e7:
     ld   HL, wMusicInstructionPointerLow               ;; 0f:43e7 $21 $04 $c1
-    call code_00f_4417                                 ;; 0f:43ea $cd $17 $44
+    call call_0f_4417                                  ;; 0f:43ea $cd $17 $44
     ld   B, A                                          ;; 0f:43ed $47
     ld   A, [wC119]                                    ;; 0f:43ee $fa $19 $c1
     dec  A                                             ;; 0f:43f1 $3d
     ld   [wC119], A                                    ;; 0f:43f2 $ea $19 $c1
-    jr   code_00f_4420                                 ;; 0f:43f5 $18 $29
+    jr   jr_0f_4420                                    ;; 0f:43f5 $18 $29
 
-code_00f_43f7:
+call_0f_43f7:
     ld   HL, wC11C                                     ;; 0f:43f7 $21 $1c $c1
-    call code_00f_4417                                 ;; 0f:43fa $cd $17 $44
+    call call_0f_4417                                  ;; 0f:43fa $cd $17 $44
     ld   B, A                                          ;; 0f:43fd $47
     ld   A, [wC131]                                    ;; 0f:43fe $fa $31 $c1
     dec  A                                             ;; 0f:4401 $3d
     ld   [wC131], A                                    ;; 0f:4402 $ea $31 $c1
-    jr   code_00f_4420                                 ;; 0f:4405 $18 $19
+    jr   jr_0f_4420                                    ;; 0f:4405 $18 $19
 
-code_00f_4407:
+call_0f_4407:
     ld   HL, wC134                                     ;; 0f:4407 $21 $34 $c1
-    call code_00f_4417                                 ;; 0f:440a $cd $17 $44
+    call call_0f_4417                                  ;; 0f:440a $cd $17 $44
     ld   B, A                                          ;; 0f:440d $47
     ld   A, [wC149]                                    ;; 0f:440e $fa $49 $c1
     dec  A                                             ;; 0f:4411 $3d
     ld   [wC149], A                                    ;; 0f:4412 $ea $49 $c1
-    jr   code_00f_4420                                 ;; 0f:4415 $18 $09
+    jr   jr_0f_4420                                    ;; 0f:4415 $18 $09
 
-code_00f_4417:
+call_0f_4417:
     ld   E, [HL]                                       ;; 0f:4417 $5e
     inc  HL                                            ;; 0f:4418 $23
     ld   D, [HL]                                       ;; 0f:4419 $56
@@ -549,20 +553,20 @@ code_00f_4417:
     inc  DE                                            ;; 0f:441e $13
     ret                                                ;; 0f:441f $c9
 
-code_00f_4420:
-    jr   NZ, .code_4426                                ;; 0f:4420 $20 $04
+jr_0f_4420:
+    jr   NZ, .jr_0f_4426                               ;; 0f:4420 $20 $04
     ld   [HL], D                                       ;; 0f:4422 $72
     dec  HL                                            ;; 0f:4423 $2b
     ld   [HL], E                                       ;; 0f:4424 $73
     ret                                                ;; 0f:4425 $c9
-.code_4426:
+.jr_0f_4426:
     ld   [HL], B                                       ;; 0f:4426 $70
     dec  HL                                            ;; 0f:4427 $2b
     ld   [HL], C                                       ;; 0f:4428 $71
     ret                                                ;; 0f:4429 $c9
 
-code_00f_442a:
-    call code_00f_47d9                                 ;; 0f:442a $cd $d9 $47
+call_0f_442a:
+    call call_0f_47d9                                  ;; 0f:442a $cd $d9 $47
     ld   C, A                                          ;; 0f:442d $4f
     ld   A, [wMusicInstructionPointerLow]              ;; 0f:442e $fa $04 $c1
     ld   L, A                                          ;; 0f:4431 $6f
@@ -574,18 +578,18 @@ code_00f_442a:
     ld   D, A                                          ;; 0f:4439 $57
     ld   A, [wC10F]                                    ;; 0f:443a $fa $0f $c1
     cp   A, C                                          ;; 0f:443d $b9
-    jr   NZ, .code_4442                                ;; 0f:443e $20 $02
+    jr   NZ, .jr_0f_4442                               ;; 0f:443e $20 $02
     push DE                                            ;; 0f:4440 $d5
     pop  HL                                            ;; 0f:4441 $e1
-.code_4442:
+.jr_0f_4442:
     ld   A, L                                          ;; 0f:4442 $7d
     ld   [wMusicInstructionPointerLow], A              ;; 0f:4443 $ea $04 $c1
     ld   A, H                                          ;; 0f:4446 $7c
     ld   [wMusicInstructionPointerHigh], A             ;; 0f:4447 $ea $05 $c1
     ret                                                ;; 0f:444a $c9
 
-code_00f_444b:
-    call code_00f_47e5                                 ;; 0f:444b $cd $e5 $47
+call_0f_444b:
+    call call_0f_47e5                                  ;; 0f:444b $cd $e5 $47
     ld   C, A                                          ;; 0f:444e $4f
     ld   A, [wC11C]                                    ;; 0f:444f $fa $1c $c1
     ld   L, A                                          ;; 0f:4452 $6f
@@ -597,18 +601,18 @@ code_00f_444b:
     ld   D, A                                          ;; 0f:445a $57
     ld   A, [wC127]                                    ;; 0f:445b $fa $27 $c1
     cp   A, C                                          ;; 0f:445e $b9
-    jr   NZ, .code_4463                                ;; 0f:445f $20 $02
+    jr   NZ, .jr_0f_4463                               ;; 0f:445f $20 $02
     push DE                                            ;; 0f:4461 $d5
     pop  HL                                            ;; 0f:4462 $e1
-.code_4463:
+.jr_0f_4463:
     ld   A, L                                          ;; 0f:4463 $7d
     ld   [wC11C], A                                    ;; 0f:4464 $ea $1c $c1
     ld   A, H                                          ;; 0f:4467 $7c
     ld   [wC11D], A                                    ;; 0f:4468 $ea $1d $c1
     ret                                                ;; 0f:446b $c9
 
-code_00f_446c:
-    call code_00f_47ea                                 ;; 0f:446c $cd $ea $47
+call_0f_446c:
+    call call_0f_47ea                                  ;; 0f:446c $cd $ea $47
     ld   C, A                                          ;; 0f:446f $4f
     ld   A, [wC134]                                    ;; 0f:4470 $fa $34 $c1
     ld   L, A                                          ;; 0f:4473 $6f
@@ -620,27 +624,27 @@ code_00f_446c:
     ld   D, A                                          ;; 0f:447b $57
     ld   A, [wC13F]                                    ;; 0f:447c $fa $3f $c1
     cp   A, C                                          ;; 0f:447f $b9
-    jr   NZ, .code_4484                                ;; 0f:4480 $20 $02
+    jr   NZ, .jr_0f_4484                               ;; 0f:4480 $20 $02
     push DE                                            ;; 0f:4482 $d5
     pop  HL                                            ;; 0f:4483 $e1
-.code_4484:
+.jr_0f_4484:
     ld   A, L                                          ;; 0f:4484 $7d
     ld   [wC134], A                                    ;; 0f:4485 $ea $34 $c1
     ld   A, H                                          ;; 0f:4488 $7c
     ld   [wC135], A                                    ;; 0f:4489 $ea $35 $c1
     ret                                                ;; 0f:448c $c9
 
-code_00f_448d:
-    call code_00f_47d9                                 ;; 0f:448d $cd $d9 $47
+call_0f_448d:
+    call call_0f_47d9                                  ;; 0f:448d $cd $d9 $47
     ld   [wC10F], A                                    ;; 0f:4490 $ea $0f $c1
     ret                                                ;; 0f:4493 $c9
 
-code_00f_4494:
-    call code_00f_47d9                                 ;; 0f:4494 $cd $d9 $47
+call_0f_4494:
+    call call_0f_47d9                                  ;; 0f:4494 $cd $d9 $47
     ld   [wC119], A                                    ;; 0f:4497 $ea $19 $c1
     ret                                                ;; 0f:449a $c9
 
-code_00f_449b:
+call_0f_449b:
     ld   HL, wMusicInstructionPointerLow               ;; 0f:449b $21 $04 $c1
     ld   E, [HL]                                       ;; 0f:449e $5e
     inc  HL                                            ;; 0f:449f $23
@@ -661,17 +665,17 @@ code_00f_449b:
     ld   [wMusicInstructionPointerHigh], A             ;; 0f:44b8 $ea $05 $c1
     ret                                                ;; 0f:44bb $c9
 
-code_00f_44bc:
-    call code_00f_47d9                                 ;; 0f:44bc $cd $d9 $47
+call_0f_44bc:
+    call call_0f_47d9                                  ;; 0f:44bc $cd $d9 $47
     ldh  [rNR21], A                                    ;; 0f:44bf $e0 $16
     ld   [wC10C], A                                    ;; 0f:44c1 $ea $0c $c1
     ret                                                ;; 0f:44c4 $c9
 
-code_00f_44c5:
-    call code_00f_47d9                                 ;; 0f:44c5 $cd $d9 $47
+call_0f_44c5:
+    call call_0f_47d9                                  ;; 0f:44c5 $cd $d9 $47
     ld   E, A                                          ;; 0f:44c8 $5f
     ld   D, $00                                        ;; 0f:44c9 $16 $00
-    ld   HL, unknown_00f_4664                          ;; 0f:44cb $21 $64 $46
+    ld   HL, data_0f_4664                              ;; 0f:44cb $21 $64 $46
     add  HL, DE                                        ;; 0f:44ce $19
     ldh  A, [rNR51]                                    ;; 0f:44cf $f0 $25
     and  A, $dd                                        ;; 0f:44d1 $e6 $dd
@@ -679,33 +683,33 @@ code_00f_44c5:
     ldh  [rNR51], A                                    ;; 0f:44d4 $e0 $25
     ret                                                ;; 0f:44d6 $c9
 
-unknown_00f_44d7:
+data_0f_44d7:
     db   $00, $01, $10, $11                            ;; 0f:44d7 ?...
 
-code_00f_44db:
-    call code_00f_47d9                                 ;; 0f:44db $cd $d9 $47
+call_0f_44db:
+    call call_0f_47d9                                  ;; 0f:44db $cd $d9 $47
     ld   [wC101], A                                    ;; 0f:44de $ea $01 $c1
     ret                                                ;; 0f:44e1 $c9
 
-code_00f_44e2:
+jp_0f_44e2:
     ld   A, [wC12B]                                    ;; 0f:44e2 $fa $2b $c1
     cp   A, $ff                                        ;; 0f:44e5 $fe $ff
-    jp   Z, code_00f_4668                              ;; 0f:44e7 $ca $68 $46
+    jp   Z, jp_0f_4668                                 ;; 0f:44e7 $ca $68 $46
     ld   A, [wC11B]                                    ;; 0f:44ea $fa $1b $c1
     dec  A                                             ;; 0f:44ed $3d
     ld   [wC11B], A                                    ;; 0f:44ee $ea $1b $c1
     ldh  [hFF96], A                                    ;; 0f:44f1 $e0 $96
-    jp   NZ, code_00f_4668                             ;; 0f:44f3 $c2 $68 $46
+    jp   NZ, jp_0f_4668                                ;; 0f:44f3 $c2 $68 $46
 
-code_00f_44f6:
-    call code_00f_47e5                                 ;; 0f:44f6 $cd $e5 $47
+jp_0f_44f6:
+    call call_0f_47e5                                  ;; 0f:44f6 $cd $e5 $47
     ld   E, A                                          ;; 0f:44f9 $5f
     cp   A, $d0                                        ;; 0f:44fa $fe $d0
-    jr   NC, .code_4577                                ;; 0f:44fc $30 $79
+    jr   NC, .jr_0f_4577                               ;; 0f:44fc $30 $79
     and  A, $f0                                        ;; 0f:44fe $e6 $f0
     swap A                                             ;; 0f:4500 $cb $37
     ld   C, A                                          ;; 0f:4502 $4f
-    ld   HL, data_00f_424a                             ;; 0f:4503 $21 $4a $42
+    ld   HL, data_0f_424a                              ;; 0f:4503 $21 $4a $42
     ld   B, $00                                        ;; 0f:4506 $06 $00
     add  HL, BC                                        ;; 0f:4508 $09
     ld   A, [HL]                                       ;; 0f:4509 $7e
@@ -714,29 +718,29 @@ code_00f_44f6:
     and  A, $0f                                        ;; 0f:450e $e6 $0f
     ld   [wC129], A                                    ;; 0f:4510 $ea $29 $c1
     cp   A, $0e                                        ;; 0f:4513 $fe $0e
-    jp   Z, code_00f_4668                              ;; 0f:4515 $ca $68 $46
+    jp   Z, jp_0f_4668                                 ;; 0f:4515 $ca $68 $46
     ld   C, A                                          ;; 0f:4518 $4f
     ld   A, [wC11A]                                    ;; 0f:4519 $fa $1a $c1
     or   A, A                                          ;; 0f:451c $b7
-    jp   NZ, code_00f_4668                             ;; 0f:451d $c2 $68 $46
+    jp   NZ, jp_0f_4668                                ;; 0f:451d $c2 $68 $46
     ld   A, C                                          ;; 0f:4520 $79
     cp   A, $0f                                        ;; 0f:4521 $fe $0f
-    jr   NZ, .code_4536                                ;; 0f:4523 $20 $11
+    jr   NZ, .jr_0f_4536                               ;; 0f:4523 $20 $11
     ld   A, $ff                                        ;; 0f:4525 $3e $ff
     ldh  [rNR13], A                                    ;; 0f:4527 $e0 $13
     ld   [wC1C9], A                                    ;; 0f:4529 $ea $c9 $c1
     ld   A, $07                                        ;; 0f:452c $3e $07
     ldh  [rNR14], A                                    ;; 0f:452e $e0 $14
     ld   [wC1CA], A                                    ;; 0f:4530 $ea $ca $c1
-    jp   code_00f_4668                                 ;; 0f:4533 $c3 $68 $46
-.code_4536:
+    jp   jp_0f_4668                                    ;; 0f:4533 $c3 $68 $46
+.jr_0f_4536:
     add  A, A                                          ;; 0f:4536 $87
     ld   E, A                                          ;; 0f:4537 $5f
     ld   A, [wC123]                                    ;; 0f:4538 $fa $23 $c1
     add  A, E                                          ;; 0f:453b $83
     ld   E, A                                          ;; 0f:453c $5f
     ld   D, $00                                        ;; 0f:453d $16 $00
-    ld   HL, unknown_00f_41a0                          ;; 0f:453f $21 $a0 $41
+    ld   HL, data_0f_41a0                              ;; 0f:453f $21 $a0 $41
     add  HL, DE                                        ;; 0f:4542 $19
     push HL                                            ;; 0f:4543 $e5
     ld   A, [wC12D]                                    ;; 0f:4544 $fa $2d $c1
@@ -759,23 +763,23 @@ code_00f_44f6:
     ldh  [rNR14], A                                    ;; 0f:4563 $e0 $14
     ld   [wC126], A                                    ;; 0f:4565 $ea $26 $c1
     ld   HL, wC11E                                     ;; 0f:4568 $21 $1e $c1
-    call code_00f_47c8                                 ;; 0f:456b $cd $c8 $47
+    call call_0f_47c8                                  ;; 0f:456b $cd $c8 $47
     ld   HL, wC12C                                     ;; 0f:456e $21 $2c $c1
-    call code_00f_47c8                                 ;; 0f:4571 $cd $c8 $47
-    jp   code_00f_4668                                 ;; 0f:4574 $c3 $68 $46
-.code_4577:
+    call call_0f_47c8                                  ;; 0f:4571 $cd $c8 $47
+    jp   jp_0f_4668                                    ;; 0f:4574 $c3 $68 $46
+.jr_0f_4577:
     cp   A, $ff                                        ;; 0f:4577 $fe $ff
-    jr   NZ, .code_4587                                ;; 0f:4579 $20 $0c
+    jr   NZ, .jr_0f_4587                               ;; 0f:4579 $20 $0c
     ld   [wC12B], A                                    ;; 0f:457b $ea $2b $c1
     ldh  [rNR23], A                                    ;; 0f:457e $e0 $18
-    ld   A, $07                                        ;; 0f:4580 $3e $07 rNR24
+    ld   A, $07                                        ;; 0f:4580 $3e $07
     ldh  [rNR24], A                                    ;; 0f:4582 $e0 $19
-    jp   code_00f_4668                                 ;; 0f:4584 $c3 $68 $46
-.code_4587:
+    jp   jp_0f_4668                                    ;; 0f:4584 $c3 $68 $46
+.jr_0f_4587:
     cp   A, $e0                                        ;; 0f:4587 $fe $e0
-    jr   NC, .code_45b1                                ;; 0f:4589 $30 $26
-    bit  $03, A                                        ;; 0f:458b $cb $5f
-    jr   NZ, .code_459d                                ;; 0f:458d $20 $0e
+    jr   NC, .jr_0f_45b1                               ;; 0f:4589 $30 $26
+    bit  3, A                                          ;; 0f:458b $cb $5f
+    jr   NZ, .jr_0f_459d                               ;; 0f:458d $20 $0e
     and  A, $07                                        ;; 0f:458f $e6 $07
     add  A, A                                          ;; 0f:4591 $87
     add  A, A                                          ;; 0f:4592 $87
@@ -784,29 +788,29 @@ code_00f_44f6:
     add  A, A                                          ;; 0f:4595 $87
     add  A, E                                          ;; 0f:4596 $83
     ld   [wC123], A                                    ;; 0f:4597 $ea $23 $c1
-    jp   code_00f_44f6                                 ;; 0f:459a $c3 $f6 $44
-.code_459d:
+    jp   jp_0f_44f6                                    ;; 0f:459a $c3 $f6 $44
+.jr_0f_459d:
     and  A, $07                                        ;; 0f:459d $e6 $07
     ld   E, A                                          ;; 0f:459f $5f
     ld   D, $00                                        ;; 0f:45a0 $16 $00
-    ld   HL, data_00f_47d1                             ;; 0f:45a2 $21 $d1 $47
+    ld   HL, data_0f_47d1                              ;; 0f:45a2 $21 $d1 $47
     add  HL, DE                                        ;; 0f:45a5 $19
     ld   E, [HL]                                       ;; 0f:45a6 $5e
     ld   A, [wC123]                                    ;; 0f:45a7 $fa $23 $c1
     add  A, E                                          ;; 0f:45aa $83
     ld   [wC123], A                                    ;; 0f:45ab $ea $23 $c1
-    jp   code_00f_44f6                                 ;; 0f:45ae $c3 $f6 $44
-.code_45b1:
+    jp   jp_0f_44f6                                    ;; 0f:45ae $c3 $f6 $44
+.jr_0f_45b1:
     and  A, $0f                                        ;; 0f:45b1 $e6 $0f
     add  A, A                                          ;; 0f:45b3 $87
-    ld   HL, data_00f_45c7                             ;; 0f:45b4 $21 $c7 $45
+    ld   HL, data_0f_45c7                              ;; 0f:45b4 $21 $c7 $45
     ld   E, A                                          ;; 0f:45b7 $5f
     ld   D, $00                                        ;; 0f:45b8 $16 $00
     add  HL, DE                                        ;; 0f:45ba $19
-    call code_00f_45c1                                 ;; 0f:45bb $cd $c1 $45
-    jp   code_00f_44f6                                 ;; 0f:45be $c3 $f6 $44
+    call call_0f_45c1                                  ;; 0f:45bb $cd $c1 $45
+    jp   jp_0f_44f6                                    ;; 0f:45be $c3 $f6 $44
 
-code_00f_45c1:
+call_0f_45c1:
     ld   A, [HL+]                                      ;; 0f:45c1 $2a
     ld   E, A                                          ;; 0f:45c2 $5f
     ld   A, [HL]                                       ;; 0f:45c3 $7e
@@ -815,21 +819,21 @@ code_00f_45c1:
     jp   HL                                            ;; 0f:45c6 $e9
 
 ;@jumptable amount=12
-data_00f_45c7:
-    dw   code_00f_45df                                 ;; 0f:45c7 $df $45
-    dw   code_00f_45fa                                 ;; 0f:45c9 $fa $45
-    dw   code_00f_43c7                                 ;; 0f:45cb $c7 $43
-    dw   code_00f_460a                                 ;; 0f:45cd $0a $46
-    dw   code_00f_4618                                 ;; 0f:45cf $18 $46
-    dw   code_00f_4639                                 ;; 0f:45d1 $39 $46
-    dw   code_00f_4649                                 ;; 0f:45d3 $49 $46
-    dw   code_00f_4361                                 ;; 0f:45d5 $61 $43
-    dw   code_00f_4361                                 ;; 0f:45d7 $61 $43
-    dw   code_00f_43f7                                 ;; 0f:45d9 $f7 $43
-    dw   code_00f_4611                                 ;; 0f:45db $11 $46
-    dw   code_00f_444b                                 ;; 0f:45dd $4b $44
+data_0f_45c7:
+    dw   call_0f_45df                                  ;; 0f:45c7 ..
+    dw   call_0f_45fa                                  ;; 0f:45c9 ..
+    dw   call_0f_43c7                                  ;; 0f:45cb ..
+    dw   call_0f_460a                                  ;; 0f:45cd ..
+    dw   call_0f_4618                                  ;; 0f:45cf ..
+    dw   call_0f_4639                                  ;; 0f:45d1 ..
+    dw   call_0f_4649                                  ;; 0f:45d3 ..
+    dw   call_0f_4361                                  ;; 0f:45d5 ??
+    dw   call_0f_4361                                  ;; 0f:45d7 ??
+    dw   call_0f_43f7                                  ;; 0f:45d9 ??
+    dw   call_0f_4611                                  ;; 0f:45db ??
+    dw   call_0f_444b                                  ;; 0f:45dd ..
 
-code_00f_45df:
+call_0f_45df:
     ld   HL, wC11C                                     ;; 0f:45df $21 $1c $c1
     ld   E, [HL]                                       ;; 0f:45e2 $5e
     inc  HL                                            ;; 0f:45e3 $23
@@ -848,7 +852,7 @@ code_00f_45df:
     ld   [wC11D], A                                    ;; 0f:45f6 $ea $1d $c1
     ret                                                ;; 0f:45f9 $c9
 
-code_00f_45fa:
+call_0f_45fa:
     ld   HL, wC11C                                     ;; 0f:45fa $21 $1c $c1
     ld   E, [HL]                                       ;; 0f:45fd $5e
     inc  HL                                            ;; 0f:45fe $23
@@ -860,17 +864,17 @@ code_00f_45fa:
     ld   [wC11D], A                                    ;; 0f:4606 $ea $1d $c1
     ret                                                ;; 0f:4609 $c9
 
-code_00f_460a:
-    call code_00f_47e5                                 ;; 0f:460a $cd $e5 $47
+call_0f_460a:
+    call call_0f_47e5                                  ;; 0f:460a $cd $e5 $47
     ld   [wC127], A                                    ;; 0f:460d $ea $27 $c1
     ret                                                ;; 0f:4610 $c9
 
-code_00f_4611:
-    call code_00f_47e5                                 ;; 0f:4611 $cd $e5 $47
+call_0f_4611:
+    call call_0f_47e5                                  ;; 0f:4611 $cd $e5 $47
     ld   [wC131], A                                    ;; 0f:4614 $ea $31 $c1
     ret                                                ;; 0f:4617 $c9
 
-code_00f_4618:
+call_0f_4618:
     ld   HL, wC11C                                     ;; 0f:4618 $21 $1c $c1
     ld   E, [HL]                                       ;; 0f:461b $5e
     inc  HL                                            ;; 0f:461c $23
@@ -891,8 +895,8 @@ code_00f_4618:
     ld   [wC11D], A                                    ;; 0f:4635 $ea $1d $c1
     ret                                                ;; 0f:4638 $c9
 
-code_00f_4639:
-    call code_00f_47e5                                 ;; 0f:4639 $cd $e5 $47
+call_0f_4639:
+    call call_0f_47e5                                  ;; 0f:4639 $cd $e5 $47
     ld   [wC124], A                                    ;; 0f:463c $ea $24 $c1
     ld   B, A                                          ;; 0f:463f $47
     ld   A, [wC11A]                                    ;; 0f:4640 $fa $1a $c1
@@ -902,11 +906,11 @@ code_00f_4639:
     ldh  [rNR11], A                                    ;; 0f:4646 $e0 $11
     ret                                                ;; 0f:4648 $c9
 
-code_00f_4649:
-    call code_00f_47e5                                 ;; 0f:4649 $cd $e5 $47
+call_0f_4649:
+    call call_0f_47e5                                  ;; 0f:4649 $cd $e5 $47
     ld   E, A                                          ;; 0f:464c $5f
     ld   D, $00                                        ;; 0f:464d $16 $00
-    ld   HL, unknown_00f_44d7                          ;; 0f:464f $21 $d7 $44
+    ld   HL, data_0f_44d7                              ;; 0f:464f $21 $d7 $44
     add  HL, DE                                        ;; 0f:4652 $19
     ld   A, [HL]                                       ;; 0f:4653 $7e
     ld   [wC12A], A                                    ;; 0f:4654 $ea $2a $c1
@@ -919,28 +923,28 @@ code_00f_4649:
     ldh  [rNR51], A                                    ;; 0f:4661 $e0 $25
     ret                                                ;; 0f:4663 $c9
 
-unknown_00f_4664:
+data_0f_4664:
     db   $00, $02, $20, $22                            ;; 0f:4664 ????
 
-code_00f_4668:
+jp_0f_4668:
     ld   A, [wC143]                                    ;; 0f:4668 $fa $43 $c1
     cp   A, $ff                                        ;; 0f:466b $fe $ff
-    jp   Z, code_00f_47c7                              ;; 0f:466d $ca $c7 $47
+    jp   Z, jp_0f_47c7                                 ;; 0f:466d $ca $c7 $47
     ld   A, [wC133]                                    ;; 0f:4670 $fa $33 $c1
     dec  A                                             ;; 0f:4673 $3d
     ld   [wC133], A                                    ;; 0f:4674 $ea $33 $c1
     ldh  [hFF97], A                                    ;; 0f:4677 $e0 $97
-    jp   NZ, code_00f_47c7                             ;; 0f:4679 $c2 $c7 $47
+    jp   NZ, jp_0f_47c7                                ;; 0f:4679 $c2 $c7 $47
 
-code_00f_467c:
-    call code_00f_47ea                                 ;; 0f:467c $cd $ea $47
+jp_0f_467c:
+    call call_0f_47ea                                  ;; 0f:467c $cd $ea $47
     ld   E, A                                          ;; 0f:467f $5f
     cp   A, $d0                                        ;; 0f:4680 $fe $d0
-    jr   NC, .code_46d2                                ;; 0f:4682 $30 $4e
+    jr   NC, .jr_0f_46d2                               ;; 0f:4682 $30 $4e
     and  A, $f0                                        ;; 0f:4684 $e6 $f0
     swap A                                             ;; 0f:4686 $cb $37
     ld   C, A                                          ;; 0f:4688 $4f
-    ld   HL, data_00f_424a                             ;; 0f:4689 $21 $4a $42
+    ld   HL, data_0f_424a                              ;; 0f:4689 $21 $4a $42
     ld   B, $00                                        ;; 0f:468c $06 $00
     add  HL, BC                                        ;; 0f:468e $09
     ld   A, [HL]                                       ;; 0f:468f $7e
@@ -949,20 +953,20 @@ code_00f_467c:
     and  A, $0f                                        ;; 0f:4694 $e6 $0f
     ld   [wC141], A                                    ;; 0f:4696 $ea $41 $c1
     cp   A, $0e                                        ;; 0f:4699 $fe $0e
-    jp   Z, code_00f_47c7                              ;; 0f:469b $ca $c7 $47
+    jp   Z, jp_0f_47c7                                 ;; 0f:469b $ca $c7 $47
     cp   A, $0f                                        ;; 0f:469e $fe $0f
-    jr   NZ, .code_46a9                                ;; 0f:46a0 $20 $07
-    ld   A, $00                                        ;; 0f:46a2 $3e $00 rNR32
+    jr   NZ, .jr_0f_46a9                               ;; 0f:46a0 $20 $07
+    ld   A, $00                                        ;; 0f:46a2 $3e $00
     ldh  [rNR32], A                                    ;; 0f:46a4 $e0 $1c
-    jp   code_00f_47c7                                 ;; 0f:46a6 $c3 $c7 $47
-.code_46a9:
+    jp   jp_0f_47c7                                    ;; 0f:46a6 $c3 $c7 $47
+.jr_0f_46a9:
     add  A, A                                          ;; 0f:46a9 $87
     ld   E, A                                          ;; 0f:46aa $5f
     ld   A, [wC13B]                                    ;; 0f:46ab $fa $3b $c1
     add  A, E                                          ;; 0f:46ae $83
     ld   E, A                                          ;; 0f:46af $5f
     ld   D, $00                                        ;; 0f:46b0 $16 $00
-    ld   HL, unknown_00f_41a0                          ;; 0f:46b2 $21 $a0 $41
+    ld   HL, data_0f_41a0                              ;; 0f:46b2 $21 $a0 $41
     add  HL, DE                                        ;; 0f:46b5 $19
     ld   A, [wC140]                                    ;; 0f:46b6 $fa $40 $c1
     ldh  [rNR32], A                                    ;; 0f:46b9 $e0 $1c
@@ -974,21 +978,21 @@ code_00f_467c:
     ldh  [rNR34], A                                    ;; 0f:46c4 $e0 $1e
     ld   [wC13E], A                                    ;; 0f:46c6 $ea $3e $c1
     ld   HL, wC136                                     ;; 0f:46c9 $21 $36 $c1
-    call code_00f_47c8                                 ;; 0f:46cc $cd $c8 $47
-    jp   code_00f_47c7                                 ;; 0f:46cf $c3 $c7 $47
-.code_46d2:
+    call call_0f_47c8                                  ;; 0f:46cc $cd $c8 $47
+    jp   jp_0f_47c7                                    ;; 0f:46cf $c3 $c7 $47
+.jr_0f_46d2:
     cp   A, $ff                                        ;; 0f:46d2 $fe $ff
-    jr   NZ, .code_46e2                                ;; 0f:46d4 $20 $0c
+    jr   NZ, .jr_0f_46e2                               ;; 0f:46d4 $20 $0c
     ld   [wC143], A                                    ;; 0f:46d6 $ea $43 $c1
     ldh  [rNR33], A                                    ;; 0f:46d9 $e0 $1d
-    ld   A, $07                                        ;; 0f:46db $3e $07 rNR34
+    ld   A, $07                                        ;; 0f:46db $3e $07
     ldh  [rNR34], A                                    ;; 0f:46dd $e0 $1e
-    jp   code_00f_47c7                                 ;; 0f:46df $c3 $c7 $47
-.code_46e2:
+    jp   jp_0f_47c7                                    ;; 0f:46df $c3 $c7 $47
+.jr_0f_46e2:
     cp   A, $e0                                        ;; 0f:46e2 $fe $e0
-    jr   NC, .code_470c                                ;; 0f:46e4 $30 $26
-    bit  $03, A                                        ;; 0f:46e6 $cb $5f
-    jr   NZ, .code_46f8                                ;; 0f:46e8 $20 $0e
+    jr   NC, .jr_0f_470c                               ;; 0f:46e4 $30 $26
+    bit  3, A                                          ;; 0f:46e6 $cb $5f
+    jr   NZ, .jr_0f_46f8                               ;; 0f:46e8 $20 $0e
     and  A, $07                                        ;; 0f:46ea $e6 $07
     add  A, A                                          ;; 0f:46ec $87
     add  A, A                                          ;; 0f:46ed $87
@@ -997,29 +1001,29 @@ code_00f_467c:
     add  A, A                                          ;; 0f:46f0 $87
     add  A, E                                          ;; 0f:46f1 $83
     ld   [wC13B], A                                    ;; 0f:46f2 $ea $3b $c1
-    jp   code_00f_467c                                 ;; 0f:46f5 $c3 $7c $46
-.code_46f8:
+    jp   jp_0f_467c                                    ;; 0f:46f5 $c3 $7c $46
+.jr_0f_46f8:
     and  A, $07                                        ;; 0f:46f8 $e6 $07
     ld   E, A                                          ;; 0f:46fa $5f
     ld   D, $00                                        ;; 0f:46fb $16 $00
-    ld   HL, data_00f_47d1                             ;; 0f:46fd $21 $d1 $47
+    ld   HL, data_0f_47d1                              ;; 0f:46fd $21 $d1 $47
     add  HL, DE                                        ;; 0f:4700 $19
     ld   E, [HL]                                       ;; 0f:4701 $5e
     ld   A, [wC13B]                                    ;; 0f:4702 $fa $3b $c1
     add  A, E                                          ;; 0f:4705 $83
     ld   [wC13B], A                                    ;; 0f:4706 $ea $3b $c1
-    jp   code_00f_467c                                 ;; 0f:4709 $c3 $7c $46
-.code_470c:
+    jp   jp_0f_467c                                    ;; 0f:4709 $c3 $7c $46
+.jr_0f_470c:
     and  A, $0f                                        ;; 0f:470c $e6 $0f
     add  A, A                                          ;; 0f:470e $87
-    ld   HL, data_00f_4722                             ;; 0f:470f $21 $22 $47
+    ld   HL, data_0f_4722                              ;; 0f:470f $21 $22 $47
     ld   E, A                                          ;; 0f:4712 $5f
     ld   D, $00                                        ;; 0f:4713 $16 $00
     add  HL, DE                                        ;; 0f:4715 $19
-    call code_00f_471c                                 ;; 0f:4716 $cd $1c $47
-    jp   code_00f_467c                                 ;; 0f:4719 $c3 $7c $46
+    call call_0f_471c                                  ;; 0f:4716 $cd $1c $47
+    jp   jp_0f_467c                                    ;; 0f:4719 $c3 $7c $46
 
-code_00f_471c:
+call_0f_471c:
     ld   A, [HL+]                                      ;; 0f:471c $2a
     ld   E, A                                          ;; 0f:471d $5f
     ld   A, [HL]                                       ;; 0f:471e $7e
@@ -1028,27 +1032,27 @@ code_00f_471c:
     jp   HL                                            ;; 0f:4721 $e9
 
 ;@jumptable amount=12
-data_00f_4722:
-    dw   code_00f_473a                                 ;; 0f:4722 $3a $47
-    dw   code_00f_4743                                 ;; 0f:4724 $43 $47
-    dw   code_00f_43d7                                 ;; 0f:4726 $d7 $43
-    dw   code_00f_4753                                 ;; 0f:4728 $53 $47
-    dw   code_00f_4761                                 ;; 0f:472a $61 $47
-    dw   code_00f_4361                                 ;; 0f:472c $61 $43
-    dw   code_00f_4782                                 ;; 0f:472e $82 $47
-    dw   code_00f_4361                                 ;; 0f:4730 $61 $43
-    dw   code_00f_4798                                 ;; 0f:4732 $98 $47
-    dw   code_00f_4407                                 ;; 0f:4734 $07 $44
-    dw   code_00f_475a                                 ;; 0f:4736 $5a $47
-    dw   code_00f_446c                                 ;; 0f:4738 $6c $44
+data_0f_4722:
+    dw   call_0f_473a                                  ;; 0f:4722 ..
+    dw   call_0f_4743                                  ;; 0f:4724 ..
+    dw   call_0f_43d7                                  ;; 0f:4726 ..
+    dw   call_0f_4753                                  ;; 0f:4728 ..
+    dw   call_0f_4761                                  ;; 0f:472a ..
+    dw   call_0f_4361                                  ;; 0f:472c ??
+    dw   call_0f_4782                                  ;; 0f:472e ..
+    dw   call_0f_4361                                  ;; 0f:4730 ??
+    dw   call_0f_4798                                  ;; 0f:4732 ..
+    dw   call_0f_4407                                  ;; 0f:4734 ??
+    dw   call_0f_475a                                  ;; 0f:4736 ??
+    dw   call_0f_446c                                  ;; 0f:4738 ??
 
-code_00f_473a:
-    call code_00f_47ea                                 ;; 0f:473a $cd $ea $47
+call_0f_473a:
+    call call_0f_47ea                                  ;; 0f:473a $cd $ea $47
     ld   [wC140], A                                    ;; 0f:473d $ea $40 $c1
     ldh  [rNR32], A                                    ;; 0f:4740 $e0 $1c
     ret                                                ;; 0f:4742 $c9
 
-code_00f_4743:
+call_0f_4743:
     ld   HL, wC134                                     ;; 0f:4743 $21 $34 $c1
     ld   E, [HL]                                       ;; 0f:4746 $5e
     inc  HL                                            ;; 0f:4747 $23
@@ -1060,17 +1064,17 @@ code_00f_4743:
     ld   [wC135], A                                    ;; 0f:474f $ea $35 $c1
     ret                                                ;; 0f:4752 $c9
 
-code_00f_4753:
-    call code_00f_47ea                                 ;; 0f:4753 $cd $ea $47
+call_0f_4753:
+    call call_0f_47ea                                  ;; 0f:4753 $cd $ea $47
     ld   [wC13F], A                                    ;; 0f:4756 $ea $3f $c1
     ret                                                ;; 0f:4759 $c9
 
-code_00f_475a:
-    call code_00f_47ea                                 ;; 0f:475a $cd $ea $47
+call_0f_475a:
+    call call_0f_47ea                                  ;; 0f:475a $cd $ea $47
     ld   [wC149], A                                    ;; 0f:475d $ea $49 $c1
     ret                                                ;; 0f:4760 $c9
 
-code_00f_4761:
+call_0f_4761:
     ld   HL, wC134                                     ;; 0f:4761 $21 $34 $c1
     ld   E, [HL]                                       ;; 0f:4764 $5e
     inc  HL                                            ;; 0f:4765 $23
@@ -1091,22 +1095,21 @@ code_00f_4761:
     ld   [wC135], A                                    ;; 0f:477e $ea $35 $c1
     ret                                                ;; 0f:4781 $c9
 
-code_00f_4782:
-    call code_00f_47ea                                 ;; 0f:4782 $cd $ea $47
+call_0f_4782:
+    call call_0f_47ea                                  ;; 0f:4782 $cd $ea $47
     ld   E, A                                          ;; 0f:4785 $5f
     ld   D, $00                                        ;; 0f:4786 $16 $00
-    ld   HL, unknown_00f_4794                          ;; 0f:4788 $21 $94 $47
+    ld   HL, .data_0f_4794                             ;; 0f:4788 $21 $94 $47
     add  HL, DE                                        ;; 0f:478b $19
     ldh  A, [rNR51]                                    ;; 0f:478c $f0 $25
     and  A, $bb                                        ;; 0f:478e $e6 $bb
     or   A, [HL]                                       ;; 0f:4790 $b6
     ldh  [rNR51], A                                    ;; 0f:4791 $e0 $25
     ret                                                ;; 0f:4793 $c9
-
-unknown_00f_4794:
+.data_0f_4794:
     db   $00, $04, $40, $44                            ;; 0f:4794 ????
 
-code_00f_4798:
+call_0f_4798:
     ld   HL, wC134                                     ;; 0f:4798 $21 $34 $c1
     ld   E, [HL]                                       ;; 0f:479b $5e
     inc  HL                                            ;; 0f:479c $23
@@ -1125,29 +1128,29 @@ code_00f_4798:
     push BC                                            ;; 0f:47ab $c5
     pop  HL                                            ;; 0f:47ac $e1
 
-code_00f_47ad:
+call_0f_47ad:
     xor  A, A                                          ;; 0f:47ad $af
     ldh  [rNR30], A                                    ;; 0f:47ae $e0 $1a
     ld   C, $30                                        ;; 0f:47b0 $0e $30
     ld   B, $10                                        ;; 0f:47b2 $06 $10
-.code_47b4:
+.jr_0f_47b4:
     ld   A, [HL+]                                      ;; 0f:47b4 $2a
     ldh  [C], A                                        ;; 0f:47b5 $e2
     inc  C                                             ;; 0f:47b6 $0c
     dec  B                                             ;; 0f:47b7 $05
-    jr   NZ, .code_47b4                                ;; 0f:47b8 $20 $fa
-    ld   A, $80                                        ;; 0f:47ba $3e $80 rNR30
+    jr   NZ, .jr_0f_47b4                               ;; 0f:47b8 $20 $fa
+    ld   A, $80                                        ;; 0f:47ba $3e $80
     ldh  [rNR30], A                                    ;; 0f:47bc $e0 $1a
-    ld   A, $00                                        ;; 0f:47be $3e $00 rNR32
+    ld   A, $00                                        ;; 0f:47be $3e $00
     ldh  [rNR32], A                                    ;; 0f:47c0 $e0 $1c
-    ld   A, $87                                        ;; 0f:47c2 $3e $87 rNR34
+    ld   A, $87                                        ;; 0f:47c2 $3e $87
     ldh  [rNR34], A                                    ;; 0f:47c4 $e0 $1e
     ret                                                ;; 0f:47c6 $c9
 
-code_00f_47c7:
+jp_0f_47c7:
     ret                                                ;; 0f:47c7 $c9
 
-code_00f_47c8:
+call_0f_47c8:
     ld   A, $01                                        ;; 0f:47c8 $3e $01
     ld   [HL+], A                                      ;; 0f:47ca $22
     ld   A, [HL+]                                      ;; 0f:47cb $2a
@@ -1157,13 +1160,13 @@ code_00f_47c8:
     ld   [HL], E                                       ;; 0f:47cf $73
     ret                                                ;; 0f:47d0 $c9
 
-data_00f_47d1:
+data_0f_47d1:
     db   $18, $30, $48, $60, $e8, $d0, $b8, $a0        ;; 0f:47d1 .???..??
 
-code_00f_47d9:
+call_0f_47d9:
     ld   HL, wMusicInstructionPointerLow               ;; 0f:47d9 $21 $04 $c1
 
-code_00f_47dc:
+jr_0f_47dc:
     ld   E, [HL]                                       ;; 0f:47dc $5e
     inc  HL                                            ;; 0f:47dd $23
     ld   D, [HL]                                       ;; 0f:47de $56
@@ -1174,15 +1177,15 @@ code_00f_47dc:
     ld   [HL], E                                       ;; 0f:47e3 $73
     ret                                                ;; 0f:47e4 $c9
 
-code_00f_47e5:
+call_0f_47e5:
     ld   HL, wC11C                                     ;; 0f:47e5 $21 $1c $c1
-    jr   code_00f_47dc                                 ;; 0f:47e8 $18 $f2
+    jr   jr_0f_47dc                                    ;; 0f:47e8 $18 $f2
 
-code_00f_47ea:
+call_0f_47ea:
     ld   HL, wC134                                     ;; 0f:47ea $21 $34 $c1
-    jr   code_00f_47dc                                 ;; 0f:47ed $18 $ed
+    jr   jr_0f_47dc                                    ;; 0f:47ed $18 $ed
 
-code_00f_47ef:
+call_0f_47ef:
     ld   A, [wC102]                                    ;; 0f:47ef $fa $02 $c1
     ld   E, A                                          ;; 0f:47f2 $5f
     ld   A, [wC113]                                    ;; 0f:47f3 $fa $13 $c1
@@ -1197,14 +1200,14 @@ code_00f_47ef:
     ld   A, [wC106]                                    ;; 0f:4802 $fa $06 $c1
     dec  A                                             ;; 0f:4805 $3d
     ld   [wC106], A                                    ;; 0f:4806 $ea $06 $c1
-    jr   NZ, .code_483d                                ;; 0f:4809 $20 $32
+    jr   NZ, .jr_0f_483d                               ;; 0f:4809 $20 $32
     ld   A, [wC109]                                    ;; 0f:480b $fa $09 $c1
     ld   L, A                                          ;; 0f:480e $6f
     ld   A, [wC10A]                                    ;; 0f:480f $fa $0a $c1
     ld   H, A                                          ;; 0f:4812 $67
     ld   A, [HL+]                                      ;; 0f:4813 $2a
     or   A, A                                          ;; 0f:4814 $b7
-    call Z, code_00f_4932                              ;; 0f:4815 $cc $32 $49
+    call Z, call_0f_4932                               ;; 0f:4815 $cc $32 $49
     ld   [wC106], A                                    ;; 0f:4818 $ea $06 $c1
     ld   A, [HL+]                                      ;; 0f:481b $2a
     ld   E, A                                          ;; 0f:481c $5f
@@ -1213,10 +1216,10 @@ code_00f_47ef:
     ld   A, H                                          ;; 0f:4821 $7c
     ld   [wC10A], A                                    ;; 0f:4822 $ea $0a $c1
     ld   D, $00                                        ;; 0f:4825 $16 $00
-    bit  $07, E                                        ;; 0f:4827 $cb $7b
-    jr   Z, .code_482c                                 ;; 0f:4829 $28 $01
+    bit  7, E                                          ;; 0f:4827 $cb $7b
+    jr   Z, .jr_0f_482c                                ;; 0f:4829 $28 $01
     dec  D                                             ;; 0f:482b $15
-.code_482c:
+.jr_0f_482c:
     ld   A, [wC10D]                                    ;; 0f:482c $fa $0d $c1
     ld   L, A                                          ;; 0f:482f $6f
     ld   A, [wC10E]                                    ;; 0f:4830 $fa $0e $c1
@@ -1227,7 +1230,7 @@ code_00f_47ef:
     ld   A, H                                          ;; 0f:4838 $7c
     and  A, $07                                        ;; 0f:4839 $e6 $07
     ldh  [rNR24], A                                    ;; 0f:483b $e0 $19
-.code_483d:
+.jr_0f_483d:
     ld   A, [wC114]                                    ;; 0f:483d $fa $14 $c1
     cp   A, $ff                                        ;; 0f:4840 $fe $ff
     ret  Z                                             ;; 0f:4842 $c8
@@ -1240,7 +1243,7 @@ code_00f_47ef:
     ld   H, A                                          ;; 0f:484f $67
     ld   A, [HL+]                                      ;; 0f:4850 $2a
     or   A, A                                          ;; 0f:4851 $b7
-    call Z, code_00f_4932                              ;; 0f:4852 $cc $32 $49
+    call Z, call_0f_4932                               ;; 0f:4852 $cc $32 $49
     ld   [wC114], A                                    ;; 0f:4855 $ea $14 $c1
     ld   A, [HL+]                                      ;; 0f:4858 $2a
     ldh  [rNR22], A                                    ;; 0f:4859 $e0 $17
@@ -1252,7 +1255,7 @@ code_00f_47ef:
     ld   [wC118], A                                    ;; 0f:4865 $ea $18 $c1
     ret                                                ;; 0f:4868 $c9
 
-code_00f_4869:
+call_0f_4869:
     ld   A, [wC11A]                                    ;; 0f:4869 $fa $1a $c1
     ld   E, A                                          ;; 0f:486c $5f
     ld   A, [wC12B]                                    ;; 0f:486d $fa $2b $c1
@@ -1267,14 +1270,14 @@ code_00f_4869:
     ld   A, [wC11E]                                    ;; 0f:487c $fa $1e $c1
     dec  A                                             ;; 0f:487f $3d
     ld   [wC11E], A                                    ;; 0f:4880 $ea $1e $c1
-    jr   NZ, .code_48b7                                ;; 0f:4883 $20 $32
+    jr   NZ, .jr_0f_48b7                               ;; 0f:4883 $20 $32
     ld   A, [wC121]                                    ;; 0f:4885 $fa $21 $c1
     ld   L, A                                          ;; 0f:4888 $6f
     ld   A, [wC122]                                    ;; 0f:4889 $fa $22 $c1
     ld   H, A                                          ;; 0f:488c $67
     ld   A, [HL+]                                      ;; 0f:488d $2a
     or   A, A                                          ;; 0f:488e $b7
-    call Z, code_00f_4932                              ;; 0f:488f $cc $32 $49
+    call Z, call_0f_4932                               ;; 0f:488f $cc $32 $49
     ld   [wC11E], A                                    ;; 0f:4892 $ea $1e $c1
     ld   A, [HL+]                                      ;; 0f:4895 $2a
     ld   E, A                                          ;; 0f:4896 $5f
@@ -1283,10 +1286,10 @@ code_00f_4869:
     ld   A, H                                          ;; 0f:489b $7c
     ld   [wC122], A                                    ;; 0f:489c $ea $22 $c1
     ld   D, $00                                        ;; 0f:489f $16 $00
-    bit  $07, E                                        ;; 0f:48a1 $cb $7b
-    jr   Z, .code_48a6                                 ;; 0f:48a3 $28 $01
+    bit  7, E                                          ;; 0f:48a1 $cb $7b
+    jr   Z, .jr_0f_48a6                                ;; 0f:48a3 $28 $01
     dec  D                                             ;; 0f:48a5 $15
-.code_48a6:
+.jr_0f_48a6:
     ld   A, [wC125]                                    ;; 0f:48a6 $fa $25 $c1
     ld   L, A                                          ;; 0f:48a9 $6f
     ld   A, [wC126]                                    ;; 0f:48aa $fa $26 $c1
@@ -1297,7 +1300,7 @@ code_00f_4869:
     ld   A, H                                          ;; 0f:48b2 $7c
     and  A, $07                                        ;; 0f:48b3 $e6 $07
     ldh  [rNR14], A                                    ;; 0f:48b5 $e0 $14
-.code_48b7:
+.jr_0f_48b7:
     ld   A, [wC12C]                                    ;; 0f:48b7 $fa $2c $c1
     cp   A, $ff                                        ;; 0f:48ba $fe $ff
     ret  Z                                             ;; 0f:48bc $c8
@@ -1310,7 +1313,7 @@ code_00f_4869:
     ld   H, A                                          ;; 0f:48c9 $67
     ld   A, [HL+]                                      ;; 0f:48ca $2a
     or   A, A                                          ;; 0f:48cb $b7
-    call Z, code_00f_4932                              ;; 0f:48cc $cc $32 $49
+    call Z, call_0f_4932                               ;; 0f:48cc $cc $32 $49
     ld   [wC12C], A                                    ;; 0f:48cf $ea $2c $c1
     ld   A, [HL+]                                      ;; 0f:48d2 $2a
     ldh  [rNR12], A                                    ;; 0f:48d3 $e0 $12
@@ -1322,7 +1325,7 @@ code_00f_4869:
     ld   [wC130], A                                    ;; 0f:48df $ea $30 $c1
     ret                                                ;; 0f:48e2 $c9
 
-code_00f_48e3:
+call_0f_48e3:
     ld   A, [wC132]                                    ;; 0f:48e3 $fa $32 $c1
     ld   E, A                                          ;; 0f:48e6 $5f
     ld   A, [wC143]                                    ;; 0f:48e7 $fa $43 $c1
@@ -1337,14 +1340,14 @@ code_00f_48e3:
     ld   A, [wC136]                                    ;; 0f:48f6 $fa $36 $c1
     dec  A                                             ;; 0f:48f9 $3d
     ld   [wC136], A                                    ;; 0f:48fa $ea $36 $c1
-    jr   NZ, .code_4931                                ;; 0f:48fd $20 $32
+    jr   NZ, .jr_0f_4931                               ;; 0f:48fd $20 $32
     ld   A, [wC139]                                    ;; 0f:48ff $fa $39 $c1
     ld   L, A                                          ;; 0f:4902 $6f
     ld   A, [wC13A]                                    ;; 0f:4903 $fa $3a $c1
     ld   H, A                                          ;; 0f:4906 $67
     ld   A, [HL+]                                      ;; 0f:4907 $2a
     or   A, A                                          ;; 0f:4908 $b7
-    call Z, code_00f_4932                              ;; 0f:4909 $cc $32 $49
+    call Z, call_0f_4932                               ;; 0f:4909 $cc $32 $49
     ld   [wC136], A                                    ;; 0f:490c $ea $36 $c1
     ld   A, [HL+]                                      ;; 0f:490f $2a
     ld   E, A                                          ;; 0f:4910 $5f
@@ -1353,10 +1356,10 @@ code_00f_48e3:
     ld   A, H                                          ;; 0f:4915 $7c
     ld   [wC13A], A                                    ;; 0f:4916 $ea $3a $c1
     ld   D, $00                                        ;; 0f:4919 $16 $00
-    bit  $07, E                                        ;; 0f:491b $cb $7b
-    jr   Z, .code_4920                                 ;; 0f:491d $28 $01
+    bit  7, E                                          ;; 0f:491b $cb $7b
+    jr   Z, .jr_0f_4920                                ;; 0f:491d $28 $01
     dec  D                                             ;; 0f:491f $15
-.code_4920:
+.jr_0f_4920:
     ld   A, [wC13D]                                    ;; 0f:4920 $fa $3d $c1
     ld   L, A                                          ;; 0f:4923 $6f
     ld   A, [wC13E]                                    ;; 0f:4924 $fa $3e $c1
@@ -1367,10 +1370,10 @@ code_00f_48e3:
     ld   A, H                                          ;; 0f:492c $7c
     and  A, $07                                        ;; 0f:492d $e6 $07
     ldh  [rNR34], A                                    ;; 0f:492f $e0 $1e
-.code_4931:
+.jr_0f_4931:
     ret                                                ;; 0f:4931 $c9
 
-code_00f_4932:
+call_0f_4932:
     ld   A, [HL+]                                      ;; 0f:4932 $2a
     ld   E, A                                          ;; 0f:4933 $5f
     ld   A, [HL+]                                      ;; 0f:4934 $2a
@@ -1382,18 +1385,18 @@ code_00f_4932:
     ld   A, [HL+]                                      ;; 0f:493a $2a
     ret                                                ;; 0f:493b $c9
 
-code_00f_493c:
+call_0f_493c:
     dec  A                                             ;; 0f:493c $3d
     add  A, A                                          ;; 0f:493d $87
     ld   E, A                                          ;; 0f:493e $5f
     ld   D, $00                                        ;; 0f:493f $16 $00
-    ld   HL, data_00f_7b3c                             ;; 0f:4941 $21 $3c $7b
+    ld   HL, data_0f_7b3c                              ;; 0f:4941 $21 $3c $7b
     add  HL, DE                                        ;; 0f:4944 $19
     ld   A, [HL+]                                      ;; 0f:4945 $2a
     ld   [wC1C4], A                                    ;; 0f:4946 $ea $c4 $c1
     ld   A, [HL]                                       ;; 0f:4949 $7e
     ld   [wC1C5], A                                    ;; 0f:494a $ea $c5 $c1
-    ld   HL, data_00f_7b86                             ;; 0f:494d $21 $86 $7b
+    ld   HL, data_0f_7b86                              ;; 0f:494d $21 $86 $7b
     add  HL, DE                                        ;; 0f:4950 $19
     ld   A, [HL+]                                      ;; 0f:4951 $2a
     ld   [wC1C6], A                                    ;; 0f:4952 $ea $c6 $c1
@@ -1406,28 +1409,28 @@ code_00f_493c:
     ldh  [hSFX], A                                     ;; 0f:4962 $e0 $92
     ret                                                ;; 0f:4964 $c9
 
-code_00f_4965:
+call_0f_4965:
     ld   A, [wC11A]                                    ;; 0f:4965 $fa $1a $c1
     or   A, A                                          ;; 0f:4968 $b7
-    jp   Z, code_00f_49bc                              ;; 0f:4969 $ca $bc $49
+    jp   Z, .jp_0f_49bc                                ;; 0f:4969 $ca $bc $49
     dec  A                                             ;; 0f:496c $3d
     ld   [wC11A], A                                    ;; 0f:496d $ea $1a $c1
     or   A, A                                          ;; 0f:4970 $b7
-    jr   NZ, code_00f_49bc                             ;; 0f:4971 $20 $49
+    jr   NZ, .jp_0f_49bc                               ;; 0f:4971 $20 $49
     ld   A, [wC1C4]                                    ;; 0f:4973 $fa $c4 $c1
     ld   L, A                                          ;; 0f:4976 $6f
     ld   A, [wC1C5]                                    ;; 0f:4977 $fa $c5 $c1
     ld   H, A                                          ;; 0f:497a $67
-.code_497b:
+.jr_0f_497b:
     ld   A, [HL+]                                      ;; 0f:497b $2a
     ld   [wC11A], A                                    ;; 0f:497c $ea $1a $c1
     or   A, A                                          ;; 0f:497f $b7
-    jr   NZ, .code_4987                                ;; 0f:4980 $20 $05
-    call code_00f_414d                                 ;; 0f:4982 $cd $4d $41
-    jr   code_00f_49bc                                 ;; 0f:4985 $18 $35
-.code_4987:
+    jr   NZ, .jr_0f_4987                               ;; 0f:4980 $20 $05
+    call call_0f_414d                                  ;; 0f:4982 $cd $4d $41
+    jr   .jp_0f_49bc                                   ;; 0f:4985 $18 $35
+.jr_0f_4987:
     cp   A, $ef                                        ;; 0f:4987 $fe $ef
-    jr   NZ, .code_499a                                ;; 0f:4989 $20 $0f
+    jr   NZ, .jr_0f_499a                               ;; 0f:4989 $20 $0f
     ld   A, [HL+]                                      ;; 0f:498b $2a
     ld   C, A                                          ;; 0f:498c $4f
     ld   A, [HL+]                                      ;; 0f:498d $2a
@@ -1435,25 +1438,25 @@ code_00f_4965:
     ldh  A, [hFF9C]                                    ;; 0f:498f $f0 $9c
     dec  A                                             ;; 0f:4991 $3d
     ldh  [hFF9C], A                                    ;; 0f:4992 $e0 $9c
-    jr   Z, .code_497b                                 ;; 0f:4994 $28 $e5
+    jr   Z, .jr_0f_497b                                ;; 0f:4994 $28 $e5
     ld   L, C                                          ;; 0f:4996 $69
     ld   H, B                                          ;; 0f:4997 $60
-    jr   .code_497b                                    ;; 0f:4998 $18 $e1
-.code_499a:
+    jr   .jr_0f_497b                                   ;; 0f:4998 $18 $e1
+.jr_0f_499a:
     cp   A, $f0                                        ;; 0f:499a $fe $f0
-    jr   C, .code_49a4                                 ;; 0f:499c $38 $06
+    jr   C, .jr_0f_49a4                                ;; 0f:499c $38 $06
     and  A, $0f                                        ;; 0f:499e $e6 $0f
     ldh  [hFF9C], A                                    ;; 0f:49a0 $e0 $9c
-    jr   .code_497b                                    ;; 0f:49a2 $18 $d7
-.code_49a4:
+    jr   .jr_0f_497b                                   ;; 0f:49a2 $18 $d7
+.jr_0f_49a4:
     ld   C, $10                                        ;; 0f:49a4 $0e $10
     ld   B, $05                                        ;; 0f:49a6 $06 $05
-.code_49a8:
+.jr_0f_49a8:
     ld   A, [HL+]                                      ;; 0f:49a8 $2a
     ldh  [C], A                                        ;; 0f:49a9 $e2
     inc  C                                             ;; 0f:49aa $0c
     dec  B                                             ;; 0f:49ab $05
-    jr   NZ, .code_49a8                                ;; 0f:49ac $20 $fa
+    jr   NZ, .jr_0f_49a8                               ;; 0f:49ac $20 $fa
     ldh  A, [rNR51]                                    ;; 0f:49ae $f0 $25
     or   A, $11                                        ;; 0f:49b0 $f6 $11
     ldh  [rNR51], A                                    ;; 0f:49b2 $e0 $25
@@ -1461,28 +1464,27 @@ code_00f_4965:
     ld   [wC1C4], A                                    ;; 0f:49b5 $ea $c4 $c1
     ld   A, H                                          ;; 0f:49b8 $7c
     ld   [wC1C5], A                                    ;; 0f:49b9 $ea $c5 $c1
-
-code_00f_49bc:
+.jp_0f_49bc:
     ld   A, [wC14A]                                    ;; 0f:49bc $fa $4a $c1
     or   A, A                                          ;; 0f:49bf $b7
-    jr   Z, .code_4a11                                 ;; 0f:49c0 $28 $4f
+    jr   Z, .jr_0f_4a11                                ;; 0f:49c0 $28 $4f
     dec  A                                             ;; 0f:49c2 $3d
     ld   [wC14A], A                                    ;; 0f:49c3 $ea $4a $c1
-    jr   NZ, .code_4a11                                ;; 0f:49c6 $20 $49
+    jr   NZ, .jr_0f_4a11                               ;; 0f:49c6 $20 $49
     ld   A, [wC1C6]                                    ;; 0f:49c8 $fa $c6 $c1
     ld   L, A                                          ;; 0f:49cb $6f
     ld   A, [wC1C7]                                    ;; 0f:49cc $fa $c7 $c1
     ld   H, A                                          ;; 0f:49cf $67
-.code_49d0:
+.jr_0f_49d0:
     ld   A, [HL+]                                      ;; 0f:49d0 $2a
     ld   [wC14A], A                                    ;; 0f:49d1 $ea $4a $c1
     or   A, A                                          ;; 0f:49d4 $b7
-    jr   NZ, .code_49dc                                ;; 0f:49d5 $20 $05
-    call code_00f_4170                                 ;; 0f:49d7 $cd $70 $41
-    jr   .code_4a11                                    ;; 0f:49da $18 $35
-.code_49dc:
+    jr   NZ, .jr_0f_49dc                               ;; 0f:49d5 $20 $05
+    call call_0f_4170                                  ;; 0f:49d7 $cd $70 $41
+    jr   .jr_0f_4a11                                   ;; 0f:49da $18 $35
+.jr_0f_49dc:
     cp   A, $ef                                        ;; 0f:49dc $fe $ef
-    jr   NZ, .code_49ef                                ;; 0f:49de $20 $0f
+    jr   NZ, .jr_0f_49ef                               ;; 0f:49de $20 $0f
     ld   A, [HL+]                                      ;; 0f:49e0 $2a
     ld   C, A                                          ;; 0f:49e1 $4f
     ld   A, [HL+]                                      ;; 0f:49e2 $2a
@@ -1490,22 +1492,22 @@ code_00f_49bc:
     ldh  A, [hFF9D]                                    ;; 0f:49e4 $f0 $9d
     dec  A                                             ;; 0f:49e6 $3d
     ldh  [hFF9D], A                                    ;; 0f:49e7 $e0 $9d
-    jr   Z, .code_49d0                                 ;; 0f:49e9 $28 $e5
+    jr   Z, .jr_0f_49d0                                ;; 0f:49e9 $28 $e5
     ld   L, C                                          ;; 0f:49eb $69
     ld   H, B                                          ;; 0f:49ec $60
-    jr   .code_49d0                                    ;; 0f:49ed $18 $e1
-.code_49ef:
+    jr   .jr_0f_49d0                                   ;; 0f:49ed $18 $e1
+.jr_0f_49ef:
     cp   A, $f0                                        ;; 0f:49ef $fe $f0
-    jr   C, .code_49f9                                 ;; 0f:49f1 $38 $06
+    jr   C, .jr_0f_49f9                                ;; 0f:49f1 $38 $06
     and  A, $0f                                        ;; 0f:49f3 $e6 $0f
     ldh  [hFF9D], A                                    ;; 0f:49f5 $e0 $9d
-    jr   .code_49d0                                    ;; 0f:49f7 $18 $d7
-.code_49f9:
+    jr   .jr_0f_49d0                                   ;; 0f:49f7 $18 $d7
+.jr_0f_49f9:
     ld   A, [HL+]                                      ;; 0f:49f9 $2a
     ldh  [rNR42], A                                    ;; 0f:49fa $e0 $21
     ld   A, [HL+]                                      ;; 0f:49fc $2a
     ldh  [rNR43], A                                    ;; 0f:49fd $e0 $22
-    ld   A, $80                                        ;; 0f:49ff $3e $80 rNR44
+    ld   A, $80                                        ;; 0f:49ff $3e $80
     ldh  [rNR44], A                                    ;; 0f:4a01 $e0 $23
     ldh  A, [rNR51]                                    ;; 0f:4a03 $f0 $25
     or   A, $88                                        ;; 0f:4a05 $f6 $88
@@ -1514,148 +1516,84 @@ code_00f_49bc:
     ld   [wC1C6], A                                    ;; 0f:4a0a $ea $c6 $c1
     ld   A, H                                          ;; 0f:4a0d $7c
     ld   [wC1C7], A                                    ;; 0f:4a0e $ea $c7 $c1
-.code_4a11:
+.jr_0f_4a11:
     ret                                                ;; 0f:4a11 $c9
 
 ;@data amount=30 format=ppp
 ; Music data table, 3 pointers per music. Details unknown.
-data_00f_4a12:
-    dw   data_00f_4ac9                                 ;; 0f:4a12 $c9 $4a
-    dw   data_00f_4b0a                                 ;; 0f:4a14 $0a $4b
-    dw   data_00f_4b7e                                 ;; 0f:4a16 $7e $4b
-    dw   unknown_00f_4bb9                              ;; 0f:4a18 $b9 $4b
-    dw   unknown_00f_4c0f                              ;; 0f:4a1a $0f $4c
-    dw   unknown_00f_4c92                              ;; 0f:4a1c $92 $4c
-    dw   unknown_00f_4cc1                              ;; 0f:4a1e $c1 $4c
-    dw   unknown_00f_4d0d                              ;; 0f:4a20 $0d $4d
-    dw   unknown_00f_4d83                              ;; 0f:4a22 $83 $4d
-    dw   data_00f_4daf                                 ;; 0f:4a24 $af $4d
-    dw   data_00f_4deb                                 ;; 0f:4a26 $eb $4d
-    dw   data_00f_4e33                                 ;; 0f:4a28 $33 $4e
-    dw   unknown_00f_4e5e                              ;; 0f:4a2a $5e $4e
-    dw   unknown_00f_4e9e                              ;; 0f:4a2c $9e $4e
-    dw   unknown_00f_4eb0                              ;; 0f:4a2e $b0 $4e
-    dw   unknown_00f_4edc                              ;; 0f:4a30 $dc $4e
-    dw   unknown_00f_4fb7                              ;; 0f:4a32 $b7 $4f
-    dw   unknown_00f_503d                              ;; 0f:4a34 $3d $50
-    dw   unknown_00f_50c9                              ;; 0f:4a36 $c9 $50
-    dw   unknown_00f_515b                              ;; 0f:4a38 $5b $51
-    dw   unknown_00f_51d2                              ;; 0f:4a3a $d2 $51
-    dw   unknown_00f_523d                              ;; 0f:4a3c $3d $52
-    dw   unknown_00f_52a6                              ;; 0f:4a3e $a6 $52
-    dw   unknown_00f_5344                              ;; 0f:4a40 $44 $53
-    dw   data_00f_5388                                 ;; 0f:4a42 $88 $53
-    dw   data_00f_53bf                                 ;; 0f:4a44 $bf $53
-    dw   data_00f_53ef                                 ;; 0f:4a46 $ef $53
-    dw   data_00f_5442                                 ;; 0f:4a48 $42 $54
-    dw   data_00f_5460                                 ;; 0f:4a4a $60 $54
-    dw   data_00f_54e5                                 ;; 0f:4a4c $e5 $54
-    dw   unknown_00f_556f                              ;; 0f:4a4e $6f $55
-    dw   unknown_00f_55be                              ;; 0f:4a50 $be $55
-    dw   unknown_00f_5627                              ;; 0f:4a52 $27 $56
-    dw   unknown_00f_5661                              ;; 0f:4a54 $61 $56
-    dw   unknown_00f_56ad                              ;; 0f:4a56 $ad $56
-    dw   unknown_00f_5751                              ;; 0f:4a58 $51 $57
-    dw   unknown_00f_57f5                              ;; 0f:4a5a $f5 $57
-    dw   unknown_00f_5897                              ;; 0f:4a5c $97 $58
-    dw   unknown_00f_5910                              ;; 0f:4a5e $10 $59
-    dw   data_00f_5937                                 ;; 0f:4a60 $37 $59
-    dw   data_00f_5a3a                                 ;; 0f:4a62 $3a $5a
-    dw   data_00f_5ac6                                 ;; 0f:4a64 $c6 $5a
-    dw   unknown_00f_5b3c                              ;; 0f:4a66 $3c $5b
-    dw   unknown_00f_5bc8                              ;; 0f:4a68 $c8 $5b
-    dw   unknown_00f_5daa                              ;; 0f:4a6a $aa $5d
-    dw   unknown_00f_5e69                              ;; 0f:4a6c $69 $5e
-    dw   unknown_00f_5faa                              ;; 0f:4a6e $aa $5f
-    dw   unknown_00f_61c2                              ;; 0f:4a70 $c2 $61
-    dw   data_00f_6397                                 ;; 0f:4a72 $97 $63
-    dw   data_00f_63b2                                 ;; 0f:4a74 $b2 $63
-    dw   data_00f_63be                                 ;; 0f:4a76 $be $63
-    dw   unknown_00f_62e9                              ;; 0f:4a78 $e9 $62
-    dw   unknown_00f_632e                              ;; 0f:4a7a $2e $63
-    dw   unknown_00f_6371                              ;; 0f:4a7c $71 $63
-    dw   unknown_00f_63d0                              ;; 0f:4a7e $d0 $63
-    dw   unknown_00f_64a3                              ;; 0f:4a80 $a3 $64
-    dw   unknown_00f_6667                              ;; 0f:4a82 $67 $66
-    dw   data_00f_6819                                 ;; 0f:4a84 $19 $68
-    dw   data_00f_68bd                                 ;; 0f:4a86 $bd $68
-    dw   data_00f_69ff                                 ;; 0f:4a88 $ff $69
-    dw   unknown_00f_6b57                              ;; 0f:4a8a $57 $6b
-    dw   unknown_00f_6c83                              ;; 0f:4a8c $83 $6c
-    dw   unknown_00f_6da9                              ;; 0f:4a8e $a9 $6d
-    dw   unknown_00f_6e8a                              ;; 0f:4a90 $8a $6e
-    dw   unknown_00f_6f5e                              ;; 0f:4a92 $5e $6f
-    dw   unknown_00f_7031                              ;; 0f:4a94 $31 $70
-    dw   data_00f_7070                                 ;; 0f:4a96 $70 $70
-    dw   data_00f_709f                                 ;; 0f:4a98 $9f $70
-    dw   data_00f_70f9                                 ;; 0f:4a9a $f9 $70
-    dw   unknown_00f_7118                              ;; 0f:4a9c $18 $71
-    dw   unknown_00f_71aa                              ;; 0f:4a9e $aa $71
-    dw   unknown_00f_7263                              ;; 0f:4aa0 $63 $72
-    dw   unknown_00f_7349                              ;; 0f:4aa2 $49 $73
-    dw   unknown_00f_741c                              ;; 0f:4aa4 $1c $74
-    dw   unknown_00f_756f                              ;; 0f:4aa6 $6f $75
-    dw   data_00f_76d3                                 ;; 0f:4aa8 $d3 $76
-    dw   data_00f_771c                                 ;; 0f:4aaa $1c $77
-    dw   data_00f_7762                                 ;; 0f:4aac $62 $77
-    dw   unknown_00f_77a8                              ;; 0f:4aae $a8 $77
-    dw   unknown_00f_7811                              ;; 0f:4ab0 $11 $78
-    dw   unknown_00f_78a3                              ;; 0f:4ab2 $a3 $78
-    dw   data_00f_78fa                                 ;; 0f:4ab4 $fa $78
-    dw   data_00f_7924                                 ;; 0f:4ab6 $24 $79
-    dw   data_00f_7948                                 ;; 0f:4ab8 $48 $79
-    dw   unknown_00f_796b                              ;; 0f:4aba $6b $79
-    dw   unknown_00f_7984                              ;; 0f:4abc $84 $79
-    dw   unknown_00f_799a                              ;; 0f:4abe $9a $79
-    dw   unknown_00f_79b6                              ;; 0f:4ac0 $b6 $79
-    dw   unknown_00f_79ea                              ;; 0f:4ac2 $ea $79
-    dw   unknown_00f_7a1d                              ;; 0f:4ac4 $1d $7a
+data_0f_4a12:
+    dw   data_0f_4ac9, data_0f_4b0a, data_0f_4b7e      ;; 0f:4a12 ......
+    dw   data_0f_4bb9, data_0f_4c0f, data_0f_4c92      ;; 0f:4a18 ??????
+    dw   data_0f_4cc1, data_0f_4d0d, data_0f_4d83      ;; 0f:4a1e ??????
+    dw   data_0f_4daf, data_0f_4deb, data_0f_4e33      ;; 0f:4a24 ......
+    dw   data_0f_4e5e, data_0f_4e9e, data_0f_4eb0      ;; 0f:4a2a ??????
+    dw   data_0f_4edc, data_0f_4fb7, data_0f_503d      ;; 0f:4a30 ??????
+    dw   data_0f_50c9, data_0f_515b, data_0f_51d2      ;; 0f:4a36 ??????
+    dw   data_0f_523d, data_0f_52a6, data_0f_5344      ;; 0f:4a3c ??????
+    dw   data_0f_5388, data_0f_53bf, data_0f_53ef      ;; 0f:4a42 ......
+    dw   data_0f_5442, data_0f_5460, data_0f_54e5      ;; 0f:4a48 ......
+    dw   data_0f_556f, data_0f_55be, data_0f_5627      ;; 0f:4a4e ??????
+    dw   data_0f_5661, data_0f_56ad, data_0f_5751      ;; 0f:4a54 ??????
+    dw   data_0f_57f5, data_0f_5897, data_0f_5910      ;; 0f:4a5a ??????
+    dw   data_0f_5937, data_0f_5a3a, data_0f_5ac6      ;; 0f:4a60 ......
+    dw   data_0f_5b3c, data_0f_5bc8, data_0f_5daa      ;; 0f:4a66 ??????
+    dw   data_0f_5e69, data_0f_5faa, data_0f_61c2      ;; 0f:4a6c ??????
+    dw   data_0f_6397, data_0f_63b2, data_0f_63be      ;; 0f:4a72 ......
+    dw   data_0f_62e9, data_0f_632e, data_0f_6371      ;; 0f:4a78 ??????
+    dw   data_0f_63d0, data_0f_64a3, data_0f_6667      ;; 0f:4a7e ??????
+    dw   data_0f_6819, data_0f_68bd, data_0f_69ff      ;; 0f:4a84 ......
+    dw   data_0f_6b57, data_0f_6c83, data_0f_6da9      ;; 0f:4a8a ??????
+    dw   data_0f_6e8a, data_0f_6f5e, data_0f_7031      ;; 0f:4a90 ??????
+    dw   data_0f_7070, data_0f_709f, data_0f_70f9      ;; 0f:4a96 ......
+    dw   data_0f_7118, data_0f_71aa, data_0f_7263      ;; 0f:4a9c ??????
+    dw   data_0f_7349, data_0f_741c, data_0f_756f      ;; 0f:4aa2 ??????
+    dw   data_0f_76d3, data_0f_771c, data_0f_7762      ;; 0f:4aa8 ......
+    dw   data_0f_77a8, data_0f_7811, data_0f_78a3      ;; 0f:4aae ??????
+    dw   data_0f_78fa, data_0f_7924, data_0f_7948      ;; 0f:4ab4 ......
+    dw   data_0f_796b, data_0f_7984, data_0f_799a      ;; 0f:4aba ??????
+    dw   data_0f_79b6, data_0f_79ea, data_0f_7a1d      ;; 0f:4ac0 ??????
     db   $ff, $e7, $14                                 ;; 0f:4ac6 ???
 
-data_00f_4ac9:
+data_0f_4ac9:
     db   $e7, $41, $e4, $4f, $7a, $e0, $82, $7a        ;; 0f:4ac9 ........
     db   $e5, $80, $e6, $03, $e3, $02                  ;; 0f:4ad1 ......
-
-data_00f_4ad7:
+.data_0f_4ad7:
     db   $d3, $82, $87, $04, $8f, $84, $85, $84        ;; 0f:4ad7 ........
     db   $82, $80, $82, $87, $04, $8f, $80, $dc        ;; 0f:4adf ........
     db   $8b, $8c, $8b, $87, $29, $8e, $89, $8b        ;; 0f:4ae7 ........
     db   $8c, $d8, $eb, $01                            ;; 0f:4aef ....
-    dw   data_00f_4b01                                 ;; 0f:4af3 $01 $4b
+    dw   .data_0f_4b01                                 ;; 0f:4af3 ..
     db   $52, $dc, $59, $4b, $8c, $d8, $22, $50        ;; 0f:4af5 ........
     db   $52, $e2                                      ;; 0f:4afd ..
-    dw   data_00f_4ad7                                 ;; 0f:4aff $d7 $4a
-
-data_00f_4b01:
+    dw   .data_0f_4ad7                                 ;; 0f:4aff ..
+.data_0f_4b01:
     db   $52, $54, $42, $80, $00, $0f, $e1, $d5        ;; 0f:4b01 ..??????
     db   $4a                                           ;; 0f:4b09 ?
 
-data_00f_4b0a:
-    db   $e4, $75, $7a, $e0, $c8, $7a, $e5, $40        ;; 0f:4b0a .......S
+data_0f_4b0a:
+    db   $e4, $75, $7a, $e0, $c8, $7a, $e5, $40        ;; 0f:4b0a ........
     db   $e6, $02, $e3, $02                            ;; 0f:4b12 ....
-
-data_00f_4b16:
+.data_0f_4b16:
     db   $e6, $02, $d1, $8f, $87, $8c, $d8, $82        ;; 0f:4b16 ........
     db   $84, $82, $80, $dc, $87, $8f, $87, $d8        ;; 0f:4b1e ........
     db   $84, $80, $89, $87, $85, $84, $e6, $01        ;; 0f:4b26 ........
     db   $8f, $dc, $89, $8c, $d8, $84, $89, $84        ;; 0f:4b2e ........
     db   $82, $84, $50, $54, $57, $52, $e6, $02        ;; 0f:4b36 ........
     db   $8f, $80, $85, $87, $55, $57, $eb, $01        ;; 0f:4b3e ........
-    dw   data_00f_4b5c                                 ;; 0f:4b46 $5c $4b
+    dw   .data_0f_4b5c                                 ;; 0f:4b46 ..
     db   $86, $84, $86, $87, $56, $59, $e6, $01        ;; 0f:4b48 ........
     db   $8f, $82, $87, $82, $85, $80, $87, $82        ;; 0f:4b50 ........
     db   $dc, $e2                                      ;; 0f:4b58 ..
-    dw   data_00f_4b16                                 ;; 0f:4b5a $16 $4b
-
-data_00f_4b5c:
+    dw   .data_0f_4b16                                 ;; 0f:4b5a ..
+.data_0f_4b5c:
     db   $e6, $02, $55, $59, $8b, $89, $87, $85        ;; 0f:4b5c ....????
     db   $e6, $01, $8f, $dc, $87, $8c, $d8, $82        ;; 0f:4b64 ????????
     db   $84, $82, $80, $dc, $87, $8f, $87, $8c        ;; 0f:4b6c ????????
     db   $d8, $82, $84, $82, $84, $85, $dc, $e1        ;; 0f:4b74 ????????
     db   $14, $4b                                      ;; 0f:4b7c ??
 
-data_00f_4b7e:
-    db   $e4, $75, $7a, $e8, $dc, $7a, $e0, $40        ;; 0f:4b7e .......S
+data_0f_4b7e:
+    db   $e4, $75, $7a, $e8, $dc, $7a, $e0, $40        ;; 0f:4b7e ........
     db   $e6, $03, $e3, $02, $d1, $1c, $57, $1c        ;; 0f:4b86 ........
     db   $5b, $19, $d8, $54, $dc, $29, $27, $d8        ;; 0f:4b8e ........
     db   $15, $54, $12, $59, $57, $dc, $57, $59        ;; 0f:4b96 ........
@@ -1664,7 +1602,7 @@ data_00f_4b7e:
     db   $dc, $57, $1c, $57, $2c, $27, $e1, $88        ;; 0f:4bae ????????
     db   $4b, $e7, $14                                 ;; 0f:4bb6 ???
 
-unknown_00f_4bb9:
+data_0f_4bb9:
     db   $e7, $4b, $e4, $4f, $7a, $e0, $82, $7a        ;; 0f:4bb9 ????????
     db   $e5, $80, $e6, $03, $d2, $57, $59, $4a        ;; 0f:4bc1 ????????
     db   $83, $1a, $59, $5c, $5a, $49, $82, $29        ;; 0f:4bc9 ????????
@@ -1677,7 +1615,7 @@ unknown_00f_4bb9:
     db   $82, $53, $55, $50, $53, $02, $5e, $5f        ;; 0f:4c01 ????????
     db   $dc, $57, $59, $e1, $c8, $4b                  ;; 0f:4c09 ??????
 
-unknown_00f_4c0f:
+data_0f_4c0f:
     db   $e4, $75, $7a, $e0, $c8, $7a, $e5, $00        ;; 0f:4c0f ????????
     db   $e6, $03, $2f, $8f, $d1, $87, $8c, $87        ;; 0f:4c17 ????????
     db   $d8, $83, $dc, $87, $8c, $87, $8f, $8c        ;; 0f:4c1f ????????
@@ -1696,7 +1634,7 @@ unknown_00f_4c0f:
     db   $80, $87, $89, $84, $87, $26, $50, $52        ;; 0f:4c87 ????????
     db   $e1, $1a, $4c                                 ;; 0f:4c8f ???
 
-unknown_00f_4c92:
+data_0f_4c92:
     db   $e4, $4f, $7a, $e8, $dc, $7a, $e0, $40        ;; 0f:4c92 ????????
     db   $e6, $03, $2f, $d2, $00, $05, $dc, $0a        ;; 0f:4c9a ????????
     db   $d8, $13, $52, $00, $22, $54, $56, $27        ;; 0f:4ca2 ????????
@@ -1704,7 +1642,7 @@ unknown_00f_4c92:
     db   $57, $59, $5b, $0c, $09, $d8, $02, $2e        ;; 0f:4cb2 ????????
     db   $54, $56, $e1, $9e, $4c, $e7, $14             ;; 0f:4cba ???????
 
-unknown_00f_4cc1:
+data_0f_4cc1:
     db   $e7, $39, $e4, $4f, $7a, $e0, $82, $7a        ;; 0f:4cc1 ????????
     db   $e5, $80, $e6, $03, $d2, $0f, $0f, $e7        ;; 0f:4cc9 ????????
     db   $39, $29, $8e, $a8, $a9, $ab, $a9, $a8        ;; 0f:4cd1 ????????
@@ -1716,7 +1654,7 @@ unknown_00f_4cc1:
     db   $85, $86, $28, $8f, $e7, $37, $85, $86        ;; 0f:4d01 ????????
     db   $88, $e2, $d0, $4c                            ;; 0f:4d09 ????
 
-unknown_00f_4d0d:
+data_0f_4d0d:
     db   $e4, $4f, $7a, $e0, $c4, $7a, $e5, $80        ;; 0f:4d0d ????????
     db   $e6, $03, $d3, $86, $d8, $81, $dc, $8b        ;; 0f:4d15 ????????
     db   $8d, $89, $8d, $88, $8d, $86, $8d, $8b        ;; 0f:4d1d ????????
@@ -1733,7 +1671,7 @@ unknown_00f_4d0d:
     db   $82, $86, $8f, $88, $86, $88, $85, $88        ;; 0f:4d75 ????????
     db   $8b, $8d, $d8, $e2, $2b, $4d                  ;; 0f:4d7d ??????
 
-unknown_00f_4d83:
+data_0f_4d83:
     db   $e4, $4f, $7a, $e8, $dc, $7a, $e0, $40        ;; 0f:4d83 ????????
     db   $d2, $0f, $0f, $e6, $03, $06, $04, $02        ;; 0f:4d8b ????????
     db   $01, $dc, $2b, $d8, $24, $dc, $29, $d8        ;; 0f:4d93 ????????
@@ -1741,10 +1679,9 @@ unknown_00f_4d83:
     db   $d8, $e6, $03, $83, $e6, $01, $85, $e2        ;; 0f:4da3 ????????
     db   $8e, $4d, $e7, $14                            ;; 0f:4dab ????
 
-data_00f_4daf:
+data_0f_4daf:
     db   $e7, $3e, $e4, $4f, $7a                       ;; 0f:4daf .....
-
-data_00f_4db4:
+.data_0f_4db4:
     db   $e0, $82, $7a, $e5, $40, $e6, $03, $d3        ;; 0f:4db4 ........
     db   $54, $82, $84, $22, $50, $dc, $8b, $8c        ;; 0f:4dbc ........
     db   $5b, $57, $89, $87, $89, $8b, $8c, $d8        ;; 0f:4dc4 ........
@@ -1752,13 +1689,12 @@ data_00f_4db4:
     db   $dc, $8b, $8a, $8b, $d8, $54, $52, $80        ;; 0f:4dd4 ........
     db   $82, $84, $80, $59, $87, $85, $54, $85        ;; 0f:4ddc ........
     db   $84, $42, $80, $00, $e1                       ;; 0f:4de4 .....
-    dw   data_00f_4db4                                 ;; 0f:4de9 $b4 $4d
+    dw   .data_0f_4db4                                 ;; 0f:4de9 ..
 
-data_00f_4deb:
+data_0f_4deb:
     db   $e4, $4f, $7a                                 ;; 0f:4deb ...
-
-data_00f_4dee:
-    db   $e0, $b0, $7a, $e5, $40, $e6, $02, $8f        ;; 0f:4dee ....S...
+.data_0f_4dee:
+    db   $e0, $b0, $7a, $e5, $40, $e6, $02, $8f        ;; 0f:4dee ........
     db   $d2, $84, $85, $87, $8f, $82, $84, $82        ;; 0f:4df6 ........
     db   $8f, $84, $82, $84, $8f, $82, $dc, $8b        ;; 0f:4dfe ........
     db   $d8, $82, $85, $84, $85, $87, $56, $87        ;; 0f:4e06 ........
@@ -1767,21 +1703,20 @@ data_00f_4dee:
     db   $59, $5b, $54, $89, $84, $25, $8f, $8c        ;; 0f:4e1e ........
     db   $89, $87, $85, $89, $87, $85, $55, $84        ;; 0f:4e26 ........
     db   $82, $24, $e1                                 ;; 0f:4e2e ...
-    dw   data_00f_4dee                                 ;; 0f:4e31 $ee $4d
+    dw   .data_0f_4dee                                 ;; 0f:4e31 ..
 
-data_00f_4e33:
-    db   $e4, $4f, $7a, $e8, $cc, $7a, $e0, $40        ;; 0f:4e33 .......S
+data_0f_4e33:
+    db   $e4, $4f, $7a, $e8, $cc, $7a, $e0, $40        ;; 0f:4e33 ........
     db   $e6, $03                                      ;; 0f:4e3b ..
-
-data_00f_4e3d:
+.data_0f_4e3d:
     db   $d2, $20, $27, $29, $27, $45, $84, $22        ;; 0f:4e3d ........
     db   $27, $8e, $8b, $8c, $d8, $82, $dc, $24        ;; 0f:4e45 ........
     db   $56, $58, $59, $57, $25, $27, $27, $20        ;; 0f:4e4d ........
     db   $8e, $87, $85, $82, $e1                       ;; 0f:4e55 .....
-    dw   data_00f_4e3d                                 ;; 0f:4e5a $3d $4e
+    dw   .data_0f_4e3d                                 ;; 0f:4e5a ..
     db   $e7, $14                                      ;; 0f:4e5c ??
 
-unknown_00f_4e5e:
+data_0f_4e5e:
     db   $e7, $7c, $e4, $63, $7a, $e0, $8c, $7a        ;; 0f:4e5e ????????
     db   $e5, $00, $e6, $03, $0f, $0f, $d3, $82        ;; 0f:4e66 ????????
     db   $af, $a1, $a2, $af, $a7, $af, $e0, $c2        ;; 0f:4e6e ????????
@@ -1791,12 +1726,12 @@ unknown_00f_4e5e:
     db   $05, $e0, $94, $7a, $8f, $a5, $a7, $a9        ;; 0f:4e8e ????????
     db   $a5, $a2, $dc, $ab, $d8, $e1, $6d, $4e        ;; 0f:4e96 ????????
 
-unknown_00f_4e9e:
+data_0f_4e9e:
     db   $e4, $4f, $7a, $e0, $a0, $7a, $e5, $00        ;; 0f:4e9e ????????
     db   $e6, $03, $8f, $d3, $a1, $ce, $cf, $e1        ;; 0f:4ea6 ????????
     db   $a8, $4e                                      ;; 0f:4eae ??
 
-unknown_00f_4eb0:
+data_0f_4eb0:
     db   $e4, $4f, $7a, $e8, $ec, $7a, $e0, $40        ;; 0f:4eb0 ????????
     db   $e6, $03, $d2, $a7, $af, $d8, $a2, $ce        ;; 0f:4eb8 ????????
     db   $cf, $dc, $a7, $af, $d8, $a2, $ce, $cf        ;; 0f:4ec0 ????????
@@ -1804,7 +1739,7 @@ unknown_00f_4eb0:
     db   $a5, $af, $d8, $a2, $ce, $cf, $dc, $e1        ;; 0f:4ed0 ????????
     db   $ba, $4e, $e7, $14                            ;; 0f:4ed8 ????
 
-unknown_00f_4edc:
+data_0f_4edc:
     db   $e4, $4f, $7a, $e0, $82, $7a, $e5, $00        ;; 0f:4edc ????????
     db   $e6, $03, $e7, $82, $d3, $72, $af, $72        ;; 0f:4ee4 ????????
     db   $af, $e7, $84, $a2, $af, $72, $af, $a2        ;; 0f:4eec ????????
@@ -1834,7 +1769,7 @@ unknown_00f_4edc:
     db   $a2, $af, $2f, $a2, $a4, $a2, $af, $8f        ;; 0f:4fac ????????
     db   $e1, $1b, $4f                                 ;; 0f:4fb4 ???
 
-unknown_00f_4fb7:
+data_0f_4fb7:
     db   $e4, $4f, $7a, $e0, $82, $7a, $e5, $00        ;; 0f:4fb7 ????????
     db   $e6, $03, $d3, $71, $af, $71, $af, $a1        ;; 0f:4fbf ????????
     db   $af, $71, $af, $a1, $af, $a1, $af, $71        ;; 0f:4fc7 ????????
@@ -1853,7 +1788,7 @@ unknown_00f_4fb7:
     db   $8f, $ad, $af, $ad, $af, $2f, $ac, $ab        ;; 0f:502f ????????
     db   $a9, $af, $8f, $e1, $eb, $4f                  ;; 0f:5037 ??????
 
-unknown_00f_503d:
+data_0f_503d:
     db   $e4, $4f, $7a, $e8, $ec, $7a, $e0, $40        ;; 0f:503d ????????
     db   $e6, $03, $d3, $7b, $af, $7b, $af, $a9        ;; 0f:5045 ????????
     db   $af, $79, $af, $a9, $af, $ab, $af, $7b        ;; 0f:504d ????????
@@ -1873,7 +1808,7 @@ unknown_00f_503d:
     db   $a6, $a4, $a2, $af, $5f, $dc, $89, $e1        ;; 0f:50bd ????????
     db   $77, $50, $e7, $14                            ;; 0f:50c5 ????
 
-unknown_00f_50c9:
+data_0f_50c9:
     db   $e7, $60, $e4, $75, $7a, $e0, $82, $7a        ;; 0f:50c9 ????????
     db   $e5, $80, $e6, $03, $d2, $b5, $b6, $b7        ;; 0f:50d1 ????????
     db   $b8, $b9, $ba, $e3, $02, $e5, $40, $ab        ;; 0f:50d9 ????????
@@ -1894,7 +1829,7 @@ unknown_00f_50c9:
     db   $84, $83, $8f, $84, $05, $8e, $dc, $e1        ;; 0f:5151 ????????
     db   $dc, $50                                      ;; 0f:5159 ??
 
-unknown_00f_515b:
+data_0f_515b:
     db   $e4, $4f, $7a, $e0, $82, $7a, $e5, $80        ;; 0f:515b ????????
     db   $e6, $03, $d1, $ba, $bb, $bc, $bd, $d8        ;; 0f:5163 ????????
     db   $b2, $b3, $e3, $08, $e0, $c6, $7a, $e6        ;; 0f:516b ????????
@@ -1911,7 +1846,7 @@ unknown_00f_515b:
     db   $8b, $8a, $8f, $89, $8a, $8f, $8b, $8a        ;; 0f:51c3 ????????
     db   $8f, $8b, $0c, $8e, $e1, $6d, $51             ;; 0f:51cb ???????
 
-unknown_00f_51d2:
+data_0f_51d2:
     db   $e4, $4f, $7a, $e8, $dc, $7a, $e0, $40        ;; 0f:51d2 ????????
     db   $e6, $03, $5f, $e8, $dc, $7a, $e3, $08        ;; 0f:51da ????????
     db   $d2, $24, $dc, $2b, $d8, $22, $dc, $29        ;; 0f:51e2 ????????
@@ -1927,7 +1862,7 @@ unknown_00f_51d2:
     db   $af, $e6, $03, $81, $a2, $a3, $e1, $dd        ;; 0f:5232 ????????
     db   $51, $e7, $14                                 ;; 0f:523a ???
 
-unknown_00f_523d:
+data_0f_523d:
     db   $e4, $75, $7a, $e0, $82, $7a, $e5, $80        ;; 0f:523d ????????
     db   $e6, $03, $e7, $5a, $e3, $02, $d3, $1b        ;; 0f:5245 ????????
     db   $28, $85, $a8, $a5, $14, $52, $54, $52        ;; 0f:524d ????????
@@ -1943,7 +1878,7 @@ unknown_00f_523d:
     db   $80, $b6, $b7, $b8, $b9, $ba, $e1, $40        ;; 0f:529d ????????
     db   $52                                           ;; 0f:52a5 ?
 
-unknown_00f_52a6:
+data_0f_52a6:
     db   $e4, $4f, $7a, $e0, $c2, $7a, $e5, $80        ;; 0f:52a6 ????????
     db   $e6, $02, $d2, $af, $84, $85, $88, $89        ;; 0f:52ae ????????
     db   $88, $85, $84, $85, $88, $89, $88, $85        ;; 0f:52b6 ????????
@@ -1965,7 +1900,7 @@ unknown_00f_52a6:
     db   $a9, $af, $e5, $80, $b9, $ba, $bb, $bc        ;; 0f:5336 ????????
     db   $bd, $d8, $b2, $e1, $a9, $52                  ;; 0f:533e ??????
 
-unknown_00f_5344:
+data_0f_5344:
     db   $e4, $4f, $7a, $e8, $fc, $7a, $e0, $20        ;; 0f:5344 ????????
     db   $e6, $01, $e3, $10, $d3, $84, $85, $88        ;; 0f:534c ????????
     db   $89, $88, $85, $e2, $50, $53, $e8, $dc        ;; 0f:5354 ????????
@@ -1976,43 +1911,38 @@ unknown_00f_5344:
     db   $a3, $af, $8f, $a3, $af, $5f, $d8, $e1        ;; 0f:537c ????????
     db   $47, $53, $e7, $14                            ;; 0f:5384 ????
 
-data_00f_5388:
+data_0f_5388:
     db   $e7, $91, $e4, $75, $7a, $e0, $82, $7a        ;; 0f:5388 ........
     db   $e5, $40                                      ;; 0f:5390 ..
-
-data_00f_5392:
+.data_0f_5392:
     db   $e6, $03, $d3, $16, $54, $59, $57, $56        ;; 0f:5392 ........
     db   $54, $45, $a4, $a3, $02, $af, $dc, $ab        ;; 0f:539a ........
     db   $ac, $ad, $d8, $a2, $a3, $a4, $a5, $16        ;; 0f:53a2 ........
     db   $54, $59, $57, $56, $54, $45, $a8, $a9        ;; 0f:53aa ........
     db   $0b, $ae, $a9, $a8, $a5, $a2, $a5, $a2        ;; 0f:53b2 ........
     db   $dc, $ab, $e1                                 ;; 0f:53ba ...
-    dw   data_00f_5392                                 ;; 0f:53bd $92 $53
+    dw   .data_0f_5392                                 ;; 0f:53bd ..
 
-data_00f_53bf:
-    db   $e4, $75, $7a, $e0, $ae, $7a, $e5, $40        ;; 0f:53bf .......S
+data_0f_53bf:
+    db   $e4, $75, $7a, $e0, $ae, $7a, $e5, $40        ;; 0f:53bf ........
     db   $e6, $03                                      ;; 0f:53c7 ..
-
-data_00f_53c9:
+.data_0f_53c9:
     db   $e3, $04                                      ;; 0f:53c9 ..
-
-data_00f_53cb:
+.data_0f_53cb:
     db   $e6, $03, $d2, $a9, $a6, $a9, $a6, $e6        ;; 0f:53cb ........
     db   $02, $a9, $a6, $a9, $a6, $e2                  ;; 0f:53d3 ......
-    dw   data_00f_53cb                                 ;; 0f:53d9 $cb $53
+    dw   .data_0f_53cb                                 ;; 0f:53d9 ..
     db   $e3, $04                                      ;; 0f:53db ..
-
-data_00f_53dd:
+.data_0f_53dd:
     db   $e6, $03, $a8, $a5, $a8, $a5, $e6, $01        ;; 0f:53dd ........
     db   $a8, $a5, $a8, $a5, $e2                       ;; 0f:53e5 .....
-    dw   data_00f_53dd                                 ;; 0f:53ea $dd $53
+    dw   .data_0f_53dd                                 ;; 0f:53ea ..
     db   $e1                                           ;; 0f:53ec .
-    dw   data_00f_53c9                                 ;; 0f:53ed $c9 $53
+    dw   .data_0f_53c9                                 ;; 0f:53ed ..
 
-data_00f_53ef:
-    db   $e4, $4f, $7a, $e8, $dc, $7a, $e0, $20        ;; 0f:53ef .......S
-
-data_00f_53f7:
+data_0f_53ef:
+    db   $e4, $4f, $7a, $e8, $dc, $7a, $e0, $20        ;; 0f:53ef ........
+.data_0f_53f7:
     db   $e6, $03, $d2, $a0, $af, $a0, $af, $8f        ;; 0f:53f7 ........
     db   $a0, $af, $e6, $02, $8f, $a0, $af, $8f        ;; 0f:53ff ........
     db   $a0, $af, $e6, $03, $a0, $af, $a0, $af        ;; 0f:5407 ........
@@ -2022,67 +1952,64 @@ data_00f_53f7:
     db   $ab, $af, $8f, $ab, $af, $e6, $03, $ab        ;; 0f:5427 ........
     db   $af, $ab, $af, $8f, $ab, $af, $e6, $01        ;; 0f:542f ........
     db   $8f, $ab, $af, $8f, $ab, $af, $e1             ;; 0f:5437 .......
-    dw   data_00f_53f7                                 ;; 0f:543e $f7 $53
+    dw   .data_0f_53f7                                 ;; 0f:543e ..
     db   $e7, $14                                      ;; 0f:5440 ??
 
-data_00f_5442:
+data_0f_5442:
     db   $e7, $7f, $e4, $63, $7a, $e0, $82, $7a        ;; 0f:5442 ........
     db   $e6, $03                                      ;; 0f:544a ..
-
-data_00f_544c:
+.data_0f_544c:
     db   $e5, $40, $d1, $00, $2e, $20, $dc, $0b        ;; 0f:544c ........
     db   $2e, $2b, $d8, $00, $2e, $20, $01, $2e        ;; 0f:5454 ........
     db   $21, $e1                                      ;; 0f:545c ..
-    dw   data_00f_544c                                 ;; 0f:545e $4c $54
+    dw   .data_0f_544c                                 ;; 0f:545e ..
 
-data_00f_5460:
+data_0f_5460:
     db   $e4, $4f, $7a, $e0, $c2, $7a, $e6, $02        ;; 0f:5460 ........
     db   $d2, $af                                      ;; 0f:5468 ..
-
-data_00f_546a:
-    db   $e0, $c2, $7a, $e5, $80, $88, $84, $80        ;; 0f:546a ....S...
+.data_0f_546a:
+    db   $e0, $c2, $7a, $e5, $80, $88, $84, $80        ;; 0f:546a ........
     db   $84, $88, $84, $80, $84, $e0, $c8, $7a        ;; 0f:5472 ........
-    db   $e5, $40, $88, $84, $80, $84, $e5, $00        ;; 0f:547a .S.....S
+    db   $e5, $40, $88, $84, $80, $84, $e5, $00        ;; 0f:547a ........
     db   $88, $84, $80, $84, $e0, $c2, $7a, $e5        ;; 0f:5482 ........
-    db   $80, $87, $83, $dc, $8b, $d8, $83, $87        ;; 0f:548a S.......
+    db   $80, $87, $83, $dc, $8b, $d8, $83, $87        ;; 0f:548a ........
     db   $83, $dc, $8b, $d8, $83, $e0, $c8, $7a        ;; 0f:5492 ........
-    db   $e5, $40, $87, $83, $dc, $8b, $d8, $83        ;; 0f:549a .S......
-    db   $e5, $00, $87, $83, $dc, $8b, $d8, $83        ;; 0f:54a2 .S......
-    db   $e0, $c2, $7a, $e5, $80, $88, $84, $80        ;; 0f:54aa ....S...
+    db   $e5, $40, $87, $83, $dc, $8b, $d8, $83        ;; 0f:549a ........
+    db   $e5, $00, $87, $83, $dc, $8b, $d8, $83        ;; 0f:54a2 ........
+    db   $e0, $c2, $7a, $e5, $80, $88, $84, $80        ;; 0f:54aa ........
     db   $84, $88, $84, $80, $84, $e0, $c8, $7a        ;; 0f:54b2 ........
-    db   $e5, $40, $88, $84, $80, $84, $e5, $00        ;; 0f:54ba .S.....S
+    db   $e5, $40, $88, $84, $80, $84, $e5, $00        ;; 0f:54ba ........
     db   $88, $84, $80, $84, $e0, $c2, $7a, $e5        ;; 0f:54c2 ........
-    db   $80, $89, $85, $81, $85, $89, $85, $81        ;; 0f:54ca S.......
-    db   $85, $e0, $c8, $7a, $e5, $40, $89, $85        ;; 0f:54d2 .....S..
-    db   $81, $85, $e5, $00, $89, $85, $81, $85        ;; 0f:54da ...S....
+    db   $80, $89, $85, $81, $85, $89, $85, $81        ;; 0f:54ca ........
+    db   $85, $e0, $c8, $7a, $e5, $40, $89, $85        ;; 0f:54d2 ........
+    db   $81, $85, $e5, $00, $89, $85, $81, $85        ;; 0f:54da ........
     db   $e1                                           ;; 0f:54e2 .
-    dw   data_00f_546a                                 ;; 0f:54e3 $6a $54
+    dw   .data_0f_546a                                 ;; 0f:54e3 ..
 
-data_00f_54e5:
+data_0f_54e5:
     db   $e4, $4f, $7a, $e6, $01                       ;; 0f:54e5 .....
-
-data_00f_54ea:
-    db   $e8, $cc, $7a, $e0, $20, $d3, $88, $84        ;; 0f:54ea ....S...
+.data_0f_54ea:
+    db   $e8, $cc, $7a, $e0, $20, $d3, $88, $84        ;; 0f:54ea ........
     db   $80, $84, $d3, $88, $84, $80, $84, $e8        ;; 0f:54f2 ........
-    db   $dc, $7a, $e0, $40, $d3, $88, $84, $80        ;; 0f:54fa ...S....
+    db   $dc, $7a, $e0, $40, $d3, $88, $84, $80        ;; 0f:54fa ........
     db   $84, $e8, $ec, $7a, $d3, $88, $84, $80        ;; 0f:5502 ........
-    db   $84, $e8, $cc, $7a, $e0, $20, $87, $83        ;; 0f:550a .....S..
+    db   $84, $e8, $cc, $7a, $e0, $20, $87, $83        ;; 0f:550a ........
     db   $dc, $8b, $d8, $83, $87, $83, $dc, $8b        ;; 0f:5512 ........
-    db   $d8, $83, $e8, $dc, $7a, $e0, $40, $87        ;; 0f:551a ......S.
+    db   $d8, $83, $e8, $dc, $7a, $e0, $40, $87        ;; 0f:551a ........
     db   $83, $dc, $8b, $d8, $83, $e8, $ec, $7a        ;; 0f:5522 ........
     db   $87, $83, $dc, $8b, $d8, $83, $e8, $cc        ;; 0f:552a ........
-    db   $7a, $e0, $20, $88, $84, $80, $84, $88        ;; 0f:5532 ..S.....
-    db   $84, $80, $84, $e8, $dc, $7a, $e0, $40        ;; 0f:553a .......S
+    db   $7a, $e0, $20, $88, $84, $80, $84, $88        ;; 0f:5532 ........
+    db   $84, $80, $84, $e8, $dc, $7a, $e0, $40        ;; 0f:553a ........
     db   $88, $84, $80, $84, $e8, $ec, $7a, $88        ;; 0f:5542 ........
-    db   $84, $80, $84, $e8, $cc, $7a, $e0, $20        ;; 0f:554a .......S
+    db   $84, $80, $84, $e8, $cc, $7a, $e0, $20        ;; 0f:554a ........
     db   $89, $85, $81, $85, $89, $85, $81, $85        ;; 0f:5552 ........
-    db   $e8, $dc, $7a, $e0, $40, $89, $85, $81        ;; 0f:555a ....S...
+    db   $e8, $dc, $7a, $e0, $40, $89, $85, $81        ;; 0f:555a ........
     db   $85, $e8, $ec, $7a, $89, $85, $81, $85        ;; 0f:5562 ........
     db   $e1                                           ;; 0f:556a .
-    dw   data_00f_54ea                                 ;; 0f:556b $ea $54
+    dw   .data_0f_54ea                                 ;; 0f:556b ..
     db   $e7, $14                                      ;; 0f:556d ??
 
-unknown_00f_556f:
+data_0f_556f:
     db   $e7, $3e, $e4, $4f, $7a, $e0, $82, $7a        ;; 0f:556f ????????
     db   $e5, $40, $e6, $03, $e3, $02, $d2, $54        ;; 0f:5577 ????????
     db   $5d, $5b, $59, $58, $56, $5b, $ae, $a9        ;; 0f:557f ????????
@@ -2094,7 +2021,7 @@ unknown_00f_556f:
     db   $56, $e2, $7d, $55, $22, $81, $dc, $8b        ;; 0f:55af ????????
     db   $89, $88, $2b, $29, $e1, $7b, $55             ;; 0f:55b7 ???????
 
-unknown_00f_55be:
+data_0f_55be:
     db   $e4, $4f, $7a, $e0, $c4, $7a, $e5, $00        ;; 0f:55be ????????
     db   $e3, $02, $e6, $02, $d2, $81, $dc, $89        ;; 0f:55c6 ????????
     db   $d8, $84, $89, $58, $54, $e6, $03, $42        ;; 0f:55ce ????????
@@ -2110,7 +2037,7 @@ unknown_00f_55be:
     db   $86, $54, $56, $84, $82, $21, $e1, $c6        ;; 0f:561e ????????
     db   $55                                           ;; 0f:5626 ?
 
-unknown_00f_5627:
+data_0f_5627:
     db   $e4, $4f, $7a, $e8, $dc, $7a, $e0, $40        ;; 0f:5627 ????????
     db   $e6, $03, $e3, $02, $d1, $19, $5d, $d8        ;; 0f:562f ????????
     db   $02, $11, $58, $56, $51, $dc, $56, $5d        ;; 0f:5637 ????????
@@ -2120,7 +2047,7 @@ unknown_00f_5627:
     db   $dc, $8b, $59, $d8, $54, $e1, $31, $56        ;; 0f:5657 ????????
     db   $e7, $14                                      ;; 0f:565f ??
 
-unknown_00f_5661:
+data_0f_5661:
     db   $e7, $82, $e4, $75, $7a, $e0, $82, $7a        ;; 0f:5661 ????????
     db   $e5, $80, $e6, $03, $e3, $02, $d1, $dc        ;; 0f:5669 ????????
     db   $06, $06, $26, $d8, $26, $21, $dc, $26        ;; 0f:5671 ????????
@@ -2132,7 +2059,7 @@ unknown_00f_5661:
     db   $78, $25, $e7, $73, $20, $dc, $e7, $6c        ;; 0f:56a1 ????????
     db   $25, $e1, $61, $56                            ;; 0f:56a9 ????
 
-unknown_00f_56ad:
+data_0f_56ad:
     db   $e4, $4f, $7a, $e0, $c0, $7a, $e5, $80        ;; 0f:56ad ????????
     db   $e6, $02, $d3, $af, $e3, $04, $d3, $84        ;; 0f:56b5 ????????
     db   $dc, $89, $8d, $d8, $84, $86, $dc, $89        ;; 0f:56bd ????????
@@ -2155,7 +2082,7 @@ unknown_00f_56ad:
     db   $85, $dc, $89, $8c, $d8, $85, $e2, $3f        ;; 0f:5745 ????????
     db   $57, $e1, $b9, $56                            ;; 0f:574d ????
 
-unknown_00f_5751:
+data_0f_5751:
     db   $e4, $4f, $7a, $e8, $cc, $7a, $e0, $20        ;; 0f:5751 ????????
     db   $e6, $01, $e3, $04, $d4, $84, $dc, $89        ;; 0f:5759 ????????
     db   $8d, $d8, $84, $86, $dc, $89, $8d, $d8        ;; 0f:5761 ????????
@@ -2178,7 +2105,7 @@ unknown_00f_5751:
     db   $89, $8c, $d8, $85, $e2, $e1, $57, $e1        ;; 0f:57e9 ????????
     db   $5b, $57, $e7, $14                            ;; 0f:57f1 ????
 
-unknown_00f_57f5:
+data_0f_57f5:
     db   $e4, $4f, $7a, $e0, $a8, $7a, $e5, $80        ;; 0f:57f5 ????????
     db   $e6, $03, $e7, $37, $d3, $98, $dc, $9b        ;; 0f:57fd ????????
     db   $d8, $94, $9b, $dc, $e7, $3a, $9b, $d8        ;; 0f:5805 ????????
@@ -2201,7 +2128,7 @@ unknown_00f_57f5:
     db   $91, $96, $e7, $2d, $93, $94, $96, $e1        ;; 0f:588d ????????
     db   $ff, $57                                      ;; 0f:5895 ??
 
-unknown_00f_5897:
+data_0f_5897:
     db   $e4, $4f, $7a, $e0, $b0, $7a, $e5, $40        ;; 0f:5897 ????????
     db   $e6, $03, $d3, $bf, $98, $dc, $9b, $d8        ;; 0f:589f ????????
     db   $94, $9b, $dc, $9b, $d8, $94, $99, $dc        ;; 0f:58a7 ????????
@@ -2219,18 +2146,17 @@ unknown_00f_5897:
     db   $99, $91, $96, $93, $94, $96, $e1, $a3        ;; 0f:5907 ????????
     db   $58                                           ;; 0f:590f ?
 
-unknown_00f_5910:
+data_0f_5910:
     db   $e4, $4f, $7a, $e8, $cc, $7a, $e0, $40        ;; 0f:5910 ????????
     db   $e6, $03, $d2, $24, $23, $22, $31, $93        ;; 0f:5918 ????????
     db   $95, $26, $25, $24, $53, $9e, $94, $96        ;; 0f:5920 ????????
     db   $28, $5d, $5b, $29, $28, $27, $56, $dc        ;; 0f:5928 ????????
     db   $9b, $9d, $d8, $93, $e1, $1a, $59             ;; 0f:5930 ???????
 
-data_00f_5937:
+data_0f_5937:
     db   $e7, $5d, $e4, $4f, $7a, $e0, $a8, $7a        ;; 0f:5937 ........
     db   $e5, $40, $e3, $02                            ;; 0f:593f ....
-
-data_00f_5943:
+.data_0f_5943:
     db   $e0, $b4, $7a, $e6, $03, $d3, $b6, $b3        ;; 0f:5943 ........
     db   $b6, $b3, $b6, $b3, $b6, $b3, $b6, $b3        ;; 0f:594b ........
     db   $b6, $b3, $e6, $02, $b9, $b3, $b9, $b3        ;; 0f:5953 ........
@@ -2239,7 +2165,7 @@ data_00f_5943:
     db   $b8, $b3, $b8, $b3, $b8, $b3, $e6, $01        ;; 0f:596b ........
     db   $b7, $b3, $b7, $b3, $b7, $b3, $b7, $b3        ;; 0f:5973 ........
     db   $b7, $b3, $b7, $b3, $e2                       ;; 0f:597b .....
-    dw   data_00f_5943                                 ;; 0f:5980 $43 $59
+    dw   .data_0f_5943                                 ;; 0f:5980 ..
     db   $e6, $03, $b8, $b5, $b8, $b5, $b8, $b5        ;; 0f:5982 ........
     db   $b8, $b5, $b8, $b5, $b8, $b5, $e6, $02        ;; 0f:598a ........
     db   $bb, $b5, $bb, $b5, $bb, $b5, $bb, $b5        ;; 0f:5992 ........
@@ -2263,77 +2189,69 @@ data_00f_5943:
     db   $ba, $5b, $1a, $88, $8b, $5a, $88, $86        ;; 0f:5a22 ........
     db   $15, $58, $e7, $55, $e0, $82, $7a, $54        ;; 0f:5a2a ........
     db   $57, $e7, $50, $5a, $5d, $e1                  ;; 0f:5a32 ......
-    dw   data_00f_5937                                 ;; 0f:5a38 $37 $59
+    dw   data_0f_5937                                  ;; 0f:5a38 ..
 
-data_00f_5a3a:
+data_0f_5a3a:
     db   $e4, $4f, $7a, $e0, $82, $7a                  ;; 0f:5a3a ......
-
-data_00f_5a40:
-    db   $e6, $03, $e5, $80, $e3, $04                  ;; 0f:5a40 ...S..
-
-data_00f_5a46:
+.data_0f_5a40:
+    db   $e6, $03, $e5, $80, $e3, $04                  ;; 0f:5a40 ......
+.data_0f_5a46:
     db   $d1, $8b, $d8, $8c, $8b, $8a, $89, $88        ;; 0f:5a46 ........
     db   $87, $86, $e2                                 ;; 0f:5a4e ...
-    dw   data_00f_5a46                                 ;; 0f:5a51 $46 $5a
+    dw   .data_0f_5a46                                 ;; 0f:5a51 ..
     db   $81, $d8, $82, $81, $80, $dc, $8b, $8a        ;; 0f:5a53 ........
     db   $89, $88, $81, $d8, $82, $81, $80, $dc        ;; 0f:5a5b ........
     db   $8b, $8a, $89, $88, $82, $d8, $83, $82        ;; 0f:5a63 ........
     db   $81, $80, $dc, $8b, $8a, $89, $82, $d8        ;; 0f:5a6b ........
     db   $83, $82, $81, $80, $dc, $8b, $8a, $89        ;; 0f:5a73 ........
     db   $e3, $02                                      ;; 0f:5a7b ..
-
-data_00f_5a7d:
-    db   $e0, $c8, $7a, $e5, $40, $82, $81, $80        ;; 0f:5a7d ....S...
+.data_0f_5a7d:
+    db   $e0, $c8, $7a, $e5, $40, $82, $81, $80        ;; 0f:5a7d ........
     db   $dc, $8b, $d8, $82, $81, $80, $dc, $8b        ;; 0f:5a85 ........
     db   $d8, $82, $81, $80, $dc, $8b, $d8, $82        ;; 0f:5a8d ........
     db   $81, $80, $dc, $8b, $d8, $e2                  ;; 0f:5a95 ......
-    dw   data_00f_5a7d                                 ;; 0f:5a9b $7d $5a
+    dw   .data_0f_5a7d                                 ;; 0f:5a9b ..
     db   $e3, $02                                      ;; 0f:5a9d ..
-
-data_00f_5a9f:
+.data_0f_5a9f:
     db   $84, $83, $82, $81, $84, $83, $82, $81        ;; 0f:5a9f ........
     db   $84, $83, $82, $81, $84, $83, $82, $81        ;; 0f:5aa7 ........
     db   $e2                                           ;; 0f:5aaf .
-    dw   data_00f_5a9f                                 ;; 0f:5ab0 $9f $5a
+    dw   .data_0f_5a9f                                 ;; 0f:5ab0 ..
     db   $dc, $88, $86, $88, $89, $58, $e0, $82        ;; 0f:5ab2 ........
     db   $7a, $5b, $e6, $02, $57, $5a, $5d, $d8        ;; 0f:5aba ........
     db   $54, $e1                                      ;; 0f:5ac2 ..
-    dw   data_00f_5a40                                 ;; 0f:5ac4 $40 $5a
+    dw   .data_0f_5a40                                 ;; 0f:5ac4 ..
 
-data_00f_5ac6:
+data_0f_5ac6:
     db   $e4, $4f, $7a                                 ;; 0f:5ac6 ...
-
-data_00f_5ac9:
-    db   $e8, $cc, $7a, $e0, $40, $e6, $03, $e3        ;; 0f:5ac9 ....S...
+.data_0f_5ac9:
+    db   $e8, $cc, $7a, $e0, $40, $e6, $03, $e3        ;; 0f:5ac9 ........
     db   $04                                           ;; 0f:5ad1 .
-
-data_00f_5ad2:
+.data_0f_5ad2:
     db   $d1, $8b, $8f, $8b, $8f, $8b, $8f, $8b        ;; 0f:5ad2 ........
     db   $8f, $e2                                      ;; 0f:5ada ..
-    dw   data_00f_5ad2                                 ;; 0f:5adc $d2 $5a
+    dw   .data_0f_5ad2                                 ;; 0f:5adc ..
     db   $8d, $8f, $8d, $8f, $8d, $8f, $8d, $8f        ;; 0f:5ade ........
     db   $8d, $8f, $8d, $8f, $8d, $8f, $8d, $8f        ;; 0f:5ae6 ........
     db   $d8, $82, $8f, $82, $8f, $82, $8f, $82        ;; 0f:5aee ........
     db   $8f, $82, $8f, $82, $8f, $82, $8f, $82        ;; 0f:5af6 ........
     db   $8f, $dc, $e3, $02                            ;; 0f:5afe ....
-
-data_00f_5b02:
+.data_0f_5b02:
     db   $e6, $02, $2b, $d8, $e6, $01, $26, $dc        ;; 0f:5b02 ........
     db   $e6, $02, $2b, $d8, $e6, $01, $26, $dc        ;; 0f:5b0a ........
     db   $e2                                           ;; 0f:5b12 .
-    dw   data_00f_5b02                                 ;; 0f:5b13 $02 $5b
+    dw   .data_0f_5b02                                 ;; 0f:5b13 ..
     db   $e3, $02                                      ;; 0f:5b15 ..
-
-data_00f_5b17:
+.data_0f_5b17:
     db   $e6, $02, $d8, $21, $e6, $01, $28, $e6        ;; 0f:5b17 ........
     db   $02, $21, $e6, $01, $28, $dc, $e2             ;; 0f:5b1f .......
-    dw   data_00f_5b17                                 ;; 0f:5b26 $17 $5b
+    dw   .data_0f_5b17                                 ;; 0f:5b26 ..
     db   $e6, $02, $1b, $d8, $e6, $03, $52, $dc        ;; 0f:5b28 ........
     db   $e6, $01, $5a, $5d, $d8, $54, $57, $e1        ;; 0f:5b30 ........
-    dw   data_00f_5ac9                                 ;; 0f:5b38 $c9 $5a
+    dw   .data_0f_5ac9                                 ;; 0f:5b38 ..
     db   $e7, $14                                      ;; 0f:5b3a ??
 
-unknown_00f_5b3c:
+data_0f_5b3c:
     db   $e4, $4f, $7a, $e0, $c0, $7a, $e5, $40        ;; 0f:5b3c ????????
     db   $e6, $03, $e3, $02, $e7, $85, $d2, $79        ;; 0f:5b44 ????????
     db   $d8, $74, $80, $17, $8e, $a6, $a7, $76        ;; 0f:5b4c ????????
@@ -2353,7 +2271,7 @@ unknown_00f_5b3c:
     db   $5b, $a9, $ab, $ac, $ab, $59, $48, $49        ;; 0f:5bbc ????????
     db   $5b, $e1, $3c, $5b                            ;; 0f:5bc4 ????
 
-unknown_00f_5bc8:
+data_0f_5bc8:
     db   $e4, $4f, $7a, $e0, $ae, $7a, $e5, $00        ;; 0f:5bc8 ????????
     db   $e6, $02, $e3, $02, $e6, $02, $d2, $a4        ;; 0f:5bd0 ????????
     db   $a0, $dc, $ab, $ac, $d8, $e6, $01, $a4        ;; 0f:5bd8 ????????
@@ -2416,7 +2334,7 @@ unknown_00f_5bc8:
     db   $03, $b8, $bb, $e6, $01, $b8, $b4, $e1        ;; 0f:5da0 ????????
     db   $c8, $5b                                      ;; 0f:5da8 ??
 
-unknown_00f_5daa:
+data_0f_5daa:
     db   $e4, $4f, $7a, $e8, $0c, $7b, $e0, $20        ;; 0f:5daa ????????
     db   $e3, $02, $e6, $03, $d1, $a9, $ce, $cf        ;; 0f:5db2 ????????
     db   $a9, $ce, $cf, $4f, $d8, $74, $af, $a4        ;; 0f:5dba ????????
@@ -2442,7 +2360,7 @@ unknown_00f_5daa:
     db   $44, $e6, $01, $46, $e6, $03, $a8, $ce        ;; 0f:5e5a ????????
     db   $cf, $a4, $ce, $cf, $e1, $aa, $5d             ;; 0f:5e62 ???????
 
-unknown_00f_5e69:
+data_0f_5e69:
     db   $e7, $87, $e4, $4f, $7a, $e0, $82, $7a        ;; 0f:5e69 ????????
     db   $e5, $40, $e6, $03, $d3, $53, $ae, $a0        ;; 0f:5e71 ????????
     db   $a2, $a3, $55, $ae, $a2, $a3, $a5, $57        ;; 0f:5e79 ????????
@@ -2485,7 +2403,7 @@ unknown_00f_5e69:
     db   $ab, $ac, $d8, $a2, $a3, $a5, $e1, $69        ;; 0f:5fa1 ????????
     db   $5e                                           ;; 0f:5fa9 ?
 
-unknown_00f_5faa:
+data_0f_5faa:
     db   $e4, $4f, $7a, $e0, $c0, $7a, $e5, $00        ;; 0f:5faa ????????
     db   $e6, $02, $af, $d2, $a0, $a3, $a0, $a2        ;; 0f:5fb2 ????????
     db   $a0, $a3, $a0, $af, $dc, $ab, $d8, $a2        ;; 0f:5fba ????????
@@ -2554,7 +2472,7 @@ unknown_00f_5faa:
     db   $85, $87, $e5, $80, $a3, $a0, $a2, $dc        ;; 0f:61b2 ????????
     db   $ab, $ac, $a8, $ab, $a7, $e1, $aa, $5f        ;; 0f:61ba ????????
 
-unknown_00f_61c2:
+data_0f_61c2:
     db   $e4, $4f, $7a, $e8, $0c, $7b, $e0, $20        ;; 0f:61c2 ????????
     db   $e6, $03, $d2, $20, $dc, $2b, $2a, $29        ;; 0f:61ca ????????
     db   $28, $2a, $d8, $23, $22, $dc, $57, $5b        ;; 0f:61d2 ????????
@@ -2593,7 +2511,7 @@ unknown_00f_61c2:
     db   $e6, $03, $a7, $af, $dc, $57, $d8, $52        ;; 0f:62da ????????
     db   $87, $85, $83, $82, $e1, $c2, $61             ;; 0f:62e2 ???????
 
-unknown_00f_62e9:
+data_0f_62e9:
     db   $e7, $6c, $e4, $4f, $7a, $e0, $c0, $7a        ;; 0f:62e9 ????????
     db   $e5, $00, $e6, $03, $d2, $ab, $7f, $d8        ;; 0f:62f1 ????????
     db   $a6, $af, $a3, $af, $dc, $ab, $7f, $d8        ;; 0f:62f9 ????????
@@ -2604,7 +2522,7 @@ unknown_00f_62e9:
     db   $af, $ab, $d8, $a3, $dc, $ab, $af, $d8        ;; 0f:6321 ????????
     db   $a3, $af, $46, $8f, $ff                       ;; 0f:6329 ?????
 
-unknown_00f_632e:
+data_0f_632e:
     db   $e4, $4f, $7a, $e0, $c6, $7a, $e5, $00        ;; 0f:632e ????????
     db   $e6, $03, $d2, $aa, $7f, $d8, $a5, $af        ;; 0f:6336 ????????
     db   $a2, $af, $dc, $aa, $7f, $d8, $a5, $af        ;; 0f:633e ????????
@@ -2615,29 +2533,29 @@ unknown_00f_632e:
     db   $d8, $a2, $dc, $aa, $af, $d8, $a2, $af        ;; 0f:6366 ????????
     db   $45, $8f, $ff                                 ;; 0f:636e ???
 
-unknown_00f_6371:
+data_0f_6371:
     db   $e4, $4f, $7a, $e8, $cc, $7a, $e0, $40        ;; 0f:6371 ????????
     db   $d1, $ab, $7f, $2f, $56, $ab, $7f, $4f        ;; 0f:6379 ????????
     db   $a6, $af, $a8, $af, $aa, $af, $d1, $ab        ;; 0f:6381 ????????
     db   $7f, $2f, $56, $ab, $7f, $2f, $d8, $a6        ;; 0f:6389 ????????
     db   $a4, $a3, $a1, $dc, $ab, $ff                  ;; 0f:6391 ??????
 
-data_00f_6397:
+data_0f_6397:
     db   $e7, $6b, $e4, $4f, $7a, $e0, $82, $7a        ;; 0f:6397 ........
     db   $e5, $80, $e6, $03, $d3, $a9, $a7, $a6        ;; 0f:639f ........
     db   $a9, $a7, $a6, $a4, $a2, $a1, $af, $a4        ;; 0f:63a7 ........
-    db   $af, $52, $ff                                 ;; 0f:63af ..S
+    db   $af, $52, $ff                                 ;; 0f:63af ...
 
-data_00f_63b2:
-    db   $e4, $4f, $7a, $e0, $82, $7a, $e5, $80        ;; 0f:63b2 .......S
-    db   $e6, $03, $0f, $ff                            ;; 0f:63ba ...S
+data_0f_63b2:
+    db   $e4, $4f, $7a, $e0, $82, $7a, $e5, $80        ;; 0f:63b2 ........
+    db   $e6, $03, $0f, $ff                            ;; 0f:63ba ....
 
-data_00f_63be:
-    db   $e4, $4f, $7a, $e8, $cc, $7a, $e0, $40        ;; 0f:63be .......S
-    db   $e6, $03, $0f, $ff, $d0, $63, $a3, $64        ;; 0f:63c6 ...S????
+data_0f_63be:
+    db   $e4, $4f, $7a, $e8, $cc, $7a, $e0, $40        ;; 0f:63be ........
+    db   $e6, $03, $0f, $ff, $d0, $63, $a3, $64        ;; 0f:63c6 ....????
     db   $67, $66                                      ;; 0f:63ce ??
 
-unknown_00f_63d0:
+data_0f_63d0:
     db   $e7, $82, $e4, $4f, $7a, $e0, $c2, $7a        ;; 0f:63d0 ????????
     db   $e5, $40, $e6, $03, $dc, $0f, $1f, $8f        ;; 0f:63d8 ????????
     db   $d2, $ab, $d8, $a1, $e3, $02, $22, $8e        ;; 0f:63e0 ????????
@@ -2666,7 +2584,7 @@ unknown_00f_63d0:
     db   $e0, $be, $7a, $46, $dc, $ab, $d8, $a1        ;; 0f:6498 ????????
     db   $e1, $e4, $63                                 ;; 0f:64a0 ???
 
-unknown_00f_64a3:
+data_0f_64a3:
     db   $e4, $4f, $7a, $e0, $a8, $7a, $e5, $40        ;; 0f:64a3 ????????
     db   $e6, $03, $d2, $a2, $dc, $ab, $d8, $a4        ;; 0f:64ab ????????
     db   $a1, $a6, $a2, $a7, $a4, $a6, $a2, $a4        ;; 0f:64b3 ????????
@@ -2725,7 +2643,7 @@ unknown_00f_64a3:
     db   $a9, $d8, $e6, $03, $56, $dc, $8a, $d8        ;; 0f:665b ????????
     db   $84, $e1, $dd, $64                            ;; 0f:6663 ????
 
-unknown_00f_6667:
+data_0f_6667:
     db   $e4, $4f, $7a, $e8, $fc, $7a, $e0, $20        ;; 0f:6667 ????????
     db   $e6, $03, $d1, $1b, $8f, $89, $8b, $2f        ;; 0f:666f ????????
     db   $a9, $af, $a9, $af, $89, $e3, $02, $e6        ;; 0f:6677 ????????
@@ -2782,10 +2700,9 @@ unknown_00f_6667:
     db   $56, $e1, $7c, $66, $19, $68, $bd, $68        ;; 0f:680f ????????
     db   $ff, $69                                      ;; 0f:6817 ??
 
-data_00f_6819:
+data_0f_6819:
     db   $e7, $78                                      ;; 0f:6819 ..
-
-data_00f_681b:
+.data_0f_681b:
     db   $e4, $4f, $7a, $e0, $be, $7a, $e5, $40        ;; 0f:681b ........
     db   $e6, $03, $d2, $59, $ae, $a4, $a9, $d8        ;; 0f:6823 ........
     db   $a0, $24, $7e, $72, $80, $dc, $5b, $57        ;; 0f:682b ........
@@ -2806,20 +2723,20 @@ data_00f_681b:
     db   $d8, $70, $72, $84, $73, $74, $86, $04        ;; 0f:68a3 ........
     db   $2e, $ae, $e0, $a8, $7a, $a2, $a0, $dc        ;; 0f:68ab ........
     db   $ab, $d8, $a0, $dc, $ab, $a9, $a8, $e1        ;; 0f:68b3 ........
-    dw   data_00f_681b                                 ;; 0f:68bb $1b $68
+    dw   .data_0f_681b                                 ;; 0f:68bb ..
 
-data_00f_68bd:
-    db   $e4, $4f, $7a, $e0, $c0, $7a, $e5, $00        ;; 0f:68bd .......S
+data_0f_68bd:
+    db   $e4, $4f, $7a, $e0, $c0, $7a, $e5, $00        ;; 0f:68bd ........
     db   $e6, $02, $d2, $40, $ae, $a4, $59, $57        ;; 0f:68c5 ........
     db   $29, $52, $dc, $5b, $d8, $44, $82, $50        ;; 0f:68cd ........
     db   $dc, $5b, $e0, $82, $7a, $e6, $03, $e5        ;; 0f:68d5 ........
-    db   $40, $79, $7b, $d8, $80, $dc, $7b, $d8        ;; 0f:68dd S.......
+    db   $40, $79, $7b, $d8, $80, $dc, $7b, $d8        ;; 0f:68dd ........
     db   $70, $82, $e0, $c0, $7a, $e6, $01, $e5        ;; 0f:68e5 ........
-    db   $00, $40, $ae, $a4, $59, $5b, $d8, $70        ;; 0f:68ed S.......
+    db   $00, $40, $ae, $a4, $59, $5b, $d8, $70        ;; 0f:68ed ........
     db   $dc, $7b, $89, $47, $85, $27, $8e, $a9        ;; 0f:68f5 ........
     db   $ab, $d8, $50, $e0, $82, $7a, $e6, $03        ;; 0f:68fd ........
-    db   $e5, $40, $52, $50, $dc, $7b, $d8, $70        ;; 0f:6905 .S......
-    db   $82, $e0, $c0, $7a, $e6, $02, $e5, $00        ;; 0f:690d .......S
+    db   $e5, $40, $52, $50, $dc, $7b, $d8, $70        ;; 0f:6905 ........
+    db   $82, $e0, $c0, $7a, $e6, $02, $e5, $00        ;; 0f:690d ........
     db   $50, $dc, $59, $65, $b7, $b8, $59, $2b        ;; 0f:6915 ........
     db   $59, $5b, $d8, $40, $dc, $57, $a9, $aa        ;; 0f:691d ........
     db   $5b, $74, $70, $82, $54, $ae, $72, $e6        ;; 0f:6925 ........
@@ -2828,7 +2745,7 @@ data_00f_68bd:
     db   $e6, $01, $d8, $40, $42, $dc, $5b, $e6        ;; 0f:693d ........
     db   $03, $d8, $a0, $a2, $a4, $a2, $a0, $a2        ;; 0f:6945 ........
     db   $a4, $a2, $80, $82, $84, $85, $e0, $ae        ;; 0f:694d ........
-    db   $7a, $e5, $40, $a0, $a2, $a0, $dc, $ab        ;; 0f:6955 ..S.....
+    db   $7a, $e5, $40, $a0, $a2, $a0, $dc, $ab        ;; 0f:6955 ........
     db   $e6, $02, $a9, $ab, $d8, $a0, $a2, $e6        ;; 0f:695d ........
     db   $03, $a0, $dc, $ab, $a9, $ab, $d8, $e6        ;; 0f:6965 ........
     db   $01, $a0, $a2, $a0, $dc, $ab, $e6, $03        ;; 0f:696d ........
@@ -2844,28 +2761,26 @@ data_00f_68bd:
     db   $a0, $dc, $8b, $e6, $03, $d8, $a7, $a9        ;; 0f:69bd ........
     db   $ab, $a9, $a7, $a2, $e0, $c0, $7a, $e6        ;; 0f:69c5 ........
     db   $01, $40, $85, $22, $74, $75, $87, $76        ;; 0f:69cd ........
-    db   $78, $89, $e0, $82, $7a, $e5, $40, $e6        ;; 0f:69d5 ......S.
+    db   $78, $89, $e0, $82, $7a, $e5, $40, $e6        ;; 0f:69d5 ........
     db   $03, $78, $79, $8b, $79, $78, $86, $e0        ;; 0f:69dd ........
     db   $ae, $7a, $a4, $dc, $a8, $ab, $d8, $a4        ;; 0f:69e5 ........
     db   $a6, $dc, $a9, $d8, $a2, $a6, $a8, $a6        ;; 0f:69ed ........
     db   $a4, $a2, $a4, $a2, $a0, $dc, $ab, $e1        ;; 0f:69f5 ........
-    dw   data_00f_68bd                                 ;; 0f:69fd $bd $68
+    dw   data_0f_68bd                                  ;; 0f:69fd ..
 
-data_00f_69ff:
-    db   $e4, $4f, $7a, $e8, $0c, $7b, $e0, $20        ;; 0f:69ff .......S
+data_0f_69ff:
+    db   $e4, $4f, $7a, $e8, $0c, $7b, $e0, $20        ;; 0f:69ff ........
     db   $e6, $03                                      ;; 0f:6a07 ..
-
-data_00f_6a09:
+.data_0f_6a09:
     db   $e3, $03                                      ;; 0f:6a09 ..
-
-data_00f_6a0b:
+.data_0f_6a0b:
     db   $d1, $89, $d8, $a9, $af, $dc, $89, $d8        ;; 0f:6a0b ........
     db   $a9, $af, $dc, $89, $d8, $a9, $af, $dc        ;; 0f:6a13 ........
     db   $87, $d8, $a7, $af, $dc, $85, $d8, $a5        ;; 0f:6a1b ........
     db   $af, $dc, $85, $d8, $a5, $af, $dc, $87        ;; 0f:6a23 ........
     db   $d8, $a7, $af, $dc, $87, $d8, $a7, $af        ;; 0f:6a2b ........
     db   $e2                                           ;; 0f:6a33 .
-    dw   data_00f_6a0b                                 ;; 0f:6a34 $0b $6a
+    dw   .data_0f_6a0b                                 ;; 0f:6a34 ..
     db   $80, $d8, $a0, $af, $dc, $80, $d8, $a0        ;; 0f:6a36 ........
     db   $af, $dc, $80, $d8, $a0, $af, $dc, $80        ;; 0f:6a3e ........
     db   $d8, $a0, $af, $dc, $a4, $af, $a4, $af        ;; 0f:6a46 ........
@@ -2902,10 +2817,10 @@ data_00f_6a0b:
     db   $af, $dc, $e6, $02, $54, $d8, $e6, $03        ;; 0f:6b3e ........
     db   $54, $dc, $e6, $01, $5b, $e6, $03, $54        ;; 0f:6b46 ........
     db   $e1                                           ;; 0f:6b4e .
-    dw   data_00f_6a09                                 ;; 0f:6b4f $09 $6a
+    dw   .data_0f_6a09                                 ;; 0f:6b4f ..
     db   $57, $6b, $83, $6c, $a9, $6d                  ;; 0f:6b51 ??????
 
-unknown_00f_6b57:
+data_0f_6b57:
     db   $e7, $3e, $e4, $4f, $7a, $e0, $82, $7a        ;; 0f:6b57 ????????
     db   $e5, $40, $d2, $87, $d8, $80, $dc, $19        ;; 0f:6b5f ????????
     db   $87, $d8, $80, $dc, $49, $89, $8a, $d8        ;; 0f:6b67 ????????
@@ -2945,7 +2860,7 @@ unknown_00f_6b57:
     db   $38, $5f, $e7, $33, $5f, $e7, $2f, $5f        ;; 0f:6c77 ????????
     db   $e7, $2a, $05, $ff                            ;; 0f:6c7f ????
 
-unknown_00f_6c83:
+data_0f_6c83:
     db   $e4, $4f, $7a, $e0, $82, $7a, $e5, $00        ;; 0f:6c83 ????????
     db   $e6, $03, $8f, $d1, $89, $d8, $80, $dc        ;; 0f:6c8b ????????
     db   $89, $d8, $55, $54, $53, $50, $8e, $85        ;; 0f:6c93 ????????
@@ -2984,7 +2899,7 @@ unknown_00f_6c83:
     db   $80, $dc, $8a, $8f, $89, $8a, $d8, $80        ;; 0f:6d9b ????????
     db   $51, $80, $dc, $8a, $09, $ff                  ;; 0f:6da3 ??????
 
-unknown_00f_6da9:
+data_0f_6da9:
     db   $e4, $4f, $7a, $e8, $dc, $7a, $e0, $40        ;; 0f:6da9 ????????
     db   $d2, $05, $03, $dc, $2a, $d8, $21, $dc        ;; 0f:6db1 ????????
     db   $59, $d8, $54, $52, $50, $dc, $27, $59        ;; 0f:6db9 ????????
@@ -3015,7 +2930,7 @@ unknown_00f_6da9:
     db   $25, $2f, $ff, $8a, $6e, $5e, $6f, $31        ;; 0f:6e81 ????????
     db   $70                                           ;; 0f:6e89 ?
 
-unknown_00f_6e8a:
+data_0f_6e8a:
     db   $e7, $73, $e4, $4f, $7a, $e0, $82, $7a        ;; 0f:6e8a ????????
     db   $e5, $80, $e6, $01, $e3, $02, $d4, $80        ;; 0f:6e92 ????????
     db   $dc, $85, $88, $85, $d8, $81, $dc, $85        ;; 0f:6e9a ????????
@@ -3044,7 +2959,7 @@ unknown_00f_6e8a:
     db   $80, $85, $80, $d8, $80, $dc, $80, $85        ;; 0f:6f52 ????????
     db   $80, $e1, $96, $6e                            ;; 0f:6f5a ????
 
-unknown_00f_6f5e:
+data_0f_6f5e:
     db   $e4, $4f, $7a, $e0, $c0, $7a, $e5, $80        ;; 0f:6f5e ????????
     db   $e6, $02, $af, $e3, $02, $d4, $80, $dc        ;; 0f:6f66 ????????
     db   $85, $88, $85, $d8, $81, $dc, $85, $88        ;; 0f:6f6e ????????
@@ -3073,7 +2988,7 @@ unknown_00f_6f5e:
     db   $85, $80, $d8, $80, $dc, $80, $85, $80        ;; 0f:7026 ????????
     db   $e1, $69, $6f                                 ;; 0f:702e ???
 
-unknown_00f_7031:
+data_0f_7031:
     db   $e4, $4f, $7a, $e8, $cc, $7a, $e0, $40        ;; 0f:7031 ????????
     db   $e6, $03, $e3, $02, $d3, $01, $28, $01        ;; 0f:7039 ????????
     db   $28, $00, $27, $eb, $01, $4d, $70, $00        ;; 0f:7041 ????????
@@ -3083,23 +2998,21 @@ unknown_00f_7031:
     db   $2a, $08, $26, $25, $27, $29, $e1, $3b        ;; 0f:7061 ????????
     db   $70, $70, $70, $9f, $70, $f9, $70             ;; 0f:7069 ???????
 
-data_00f_7070:
+data_0f_7070:
     db   $e7, $3c, $e4, $4f, $7a, $e0, $82, $7a        ;; 0f:7070 ........
     db   $e5, $80                                      ;; 0f:7078 ..
-
-data_00f_707a:
+.data_0f_707a:
     db   $d3, $14, $59, $22, $8e, $dc, $8b, $d8        ;; 0f:707a ........
     db   $80, $82, $24, $59, $d8, $50, $dc, $2b        ;; 0f:7082 ........
     db   $27, $24, $8e, $84, $82, $80, $52, $dc        ;; 0f:708a ........
     db   $5b, $57, $5b, $09, $2e, $8f, $8b, $d8        ;; 0f:7092 ........
     db   $80, $82, $e1                                 ;; 0f:709a ...
-    dw   data_00f_707a                                 ;; 0f:709d $7a $70
+    dw   .data_0f_707a                                 ;; 0f:709d ..
 
-data_00f_709f:
-    db   $e4, $4f, $7a, $e0, $b2, $7a, $e5, $40        ;; 0f:709f .......S
+data_0f_709f:
+    db   $e4, $4f, $7a, $e0, $b2, $7a, $e5, $40        ;; 0f:709f ........
     db   $e6, $03                                      ;; 0f:70a7 ..
-
-data_00f_70a9:
+.data_0f_70a9:
     db   $8f, $d2, $80, $85, $80, $89, $80, $85        ;; 0f:70a9 ........
     db   $80, $8f, $dc, $8b, $d8, $84, $dc, $8b        ;; 0f:70b1 ........
     db   $d8, $87, $dc, $8b, $d8, $84, $87, $8f        ;; 0f:70b9 ........
@@ -3110,19 +3023,18 @@ data_00f_70a9:
     db   $8b, $d8, $82, $dc, $8b, $8f, $d8, $84        ;; 0f:70e1 ........
     db   $85, $84, $8f, $84, $85, $84, $8f, $84        ;; 0f:70e9 ........
     db   $85, $84, $5f, $89, $8b, $e1                  ;; 0f:70f1 ......
-    dw   data_00f_70a9                                 ;; 0f:70f7 $a9 $70
+    dw   .data_0f_70a9                                 ;; 0f:70f7 ..
 
-data_00f_70f9:
-    db   $e4, $4f, $7a, $e8, $cc, $7a, $e0, $40        ;; 0f:70f9 .......S
+data_0f_70f9:
+    db   $e4, $4f, $7a, $e8, $cc, $7a, $e0, $40        ;; 0f:70f9 ........
     db   $e6, $03                                      ;; 0f:7101 ..
-
-data_00f_7103:
+.data_0f_7103:
     db   $d2, $05, $04, $05, $04, $05, $27, $24        ;; 0f:7103 ........
     db   $29, $28, $27, $26, $e1                       ;; 0f:710b .....
-    dw   data_00f_7103                                 ;; 0f:7110 $03 $71
+    dw   .data_0f_7103                                 ;; 0f:7110 ..
     db   $18, $71, $aa, $71, $63, $72                  ;; 0f:7112 ??????
 
-unknown_00f_7118:
+data_0f_7118:
     db   $e7, $5d, $e4, $4f, $7a, $e0, $aa, $7a        ;; 0f:7118 ????????
     db   $e5, $80, $0f, $8f, $d3, $ab, $d8, $a0        ;; 0f:7120 ????????
     db   $a2, $af, $dc, $ab, $af, $d8, $a0, $af        ;; 0f:7128 ????????
@@ -3143,7 +3055,7 @@ unknown_00f_7118:
     db   $a4, $a6, $af, $a9, $af, $d8, $22, $e1        ;; 0f:71a0 ????????
     db   $23, $71                                      ;; 0f:71a8 ??
 
-unknown_00f_71aa:
+data_0f_71aa:
     db   $e4, $4f, $7a, $e0, $b4, $7a, $e5, $40        ;; 0f:71aa ????????
     db   $e6, $03, $0f, $e6, $02, $8f, $d2, $ab        ;; 0f:71b2 ????????
     db   $a9, $ab, $af, $a7, $af, $e6, $03, $79        ;; 0f:71ba ????????
@@ -3169,7 +3081,7 @@ unknown_00f_71aa:
     db   $d8, $84, $a2, $af, $a0, $af, $e1, $b5        ;; 0f:725a ????????
     db   $71                                           ;; 0f:7262 ?
 
-unknown_00f_7263:
+data_0f_7263:
     db   $e4, $4f, $7a, $e8, $cc, $7a, $e0, $40        ;; 0f:7263 ????????
     db   $d1, $a7, $af, $d8, $a2, $af, $dc, $a7        ;; 0f:726b ????????
     db   $af, $d8, $a2, $af, $dc, $a7, $af, $d8        ;; 0f:7273 ????????
@@ -3200,7 +3112,7 @@ unknown_00f_7263:
     db   $e6, $01, $a9, $af, $dc, $e1, $84, $72        ;; 0f:733b ????????
     db   $49, $73, $1c, $74, $6f, $75                  ;; 0f:7343 ??????
 
-unknown_00f_7349:
+data_0f_7349:
     db   $e7, $7d, $e4, $4f, $7a, $e0, $c4, $7a        ;; 0f:7349 ????????
     db   $e5, $40, $e3, $03, $d2, $a4, $a1, $dc        ;; 0f:7351 ????????
     db   $ab, $d8, $a4, $a1, $dc, $ab, $d8, $a4        ;; 0f:7359 ????????
@@ -3229,7 +3141,7 @@ unknown_00f_7349:
     db   $d8, $a1, $a4, $a1, $dc, $ab, $d8, $a1        ;; 0f:7411 ????????
     db   $e1, $82, $73                                 ;; 0f:7419 ???
 
-unknown_00f_741c:
+data_0f_741c:
     db   $e4, $4f, $7a, $e0, $ca, $7a, $e5, $40        ;; 0f:741c ????????
     db   $e6, $03, $e3, $03, $d2, $a4, $a1, $dc        ;; 0f:7424 ????????
     db   $ab, $d8, $a4, $a1, $dc, $ab, $d8, $a4        ;; 0f:742c ????????
@@ -3274,7 +3186,7 @@ unknown_00f_741c:
     db   $a6, $a9, $a8, $a6, $e6, $03, $28, $d8        ;; 0f:7564 ????????
     db   $e1, $51, $74                                 ;; 0f:756c ???
 
-unknown_00f_756f:
+data_0f_756f:
     db   $e4, $4f, $7a, $e8, $fc, $7a, $e0, $20        ;; 0f:756f ????????
     db   $e6, $03, $d1, $a6, $af, $a6, $af, $a6        ;; 0f:7577 ????????
     db   $af, $a6, $af, $a6, $af, $a6, $af, $d8        ;; 0f:757f ????????
@@ -3321,66 +3233,60 @@ unknown_00f_756f:
     db   $88, $41, $8f, $e1, $b5, $75, $d3, $76        ;; 0f:76c7 ????????
     db   $1c, $77, $62, $77                            ;; 0f:76cf ????
 
-data_00f_76d3:
+data_0f_76d3:
     db   $e7, $7b, $e4, $4f, $7a, $e0, $b0, $7a        ;; 0f:76d3 ........
     db   $e5, $00, $e3, $04                            ;; 0f:76db ....
-
-data_00f_76df:
+.data_0f_76df:
     db   $d2, $a3, $a2, $a1, $a0, $a3, $a2, $a1        ;; 0f:76df ........
     db   $a0, $a3, $a2, $a1, $a0, $a3, $a2, $a1        ;; 0f:76e7 ........
     db   $a0, $e2                                      ;; 0f:76ef ..
-    dw   data_00f_76df                                 ;; 0f:76f1 $df $76
+    dw   .data_0f_76df                                 ;; 0f:76f1 ..
     db   $e7, $82, $e0, $be, $7a, $e5, $40, $d8        ;; 0f:76f3 ........
     db   $c3, $cf, $c3, $cf, $c3, $cf, $2f, $af        ;; 0f:76fb ........
     db   $53, $5f, $53, $8f, $83, $8f, $83, $c3        ;; 0f:7703 ........
     db   $cf, $c3, $cf, $c3, $cf, $2f, $af, $53        ;; 0f:770b ........
     db   $5f, $53, $8f, $83, $8f, $83, $e1             ;; 0f:7713 .......
-    dw   data_00f_76d3                                 ;; 0f:771a $d3 $76
+    dw   data_0f_76d3                                  ;; 0f:771a ..
 
-data_00f_771c:
-    db   $e4, $4f, $7a, $e0, $b4, $7a, $e5, $00        ;; 0f:771c .......S
+data_0f_771c:
+    db   $e4, $4f, $7a, $e0, $b4, $7a, $e5, $00        ;; 0f:771c ........
     db   $e6, $03, $e3, $08                            ;; 0f:7724 ....
-
-data_00f_7728:
+.data_0f_7728:
     db   $e6, $03, $d2, $ab, $aa, $e6, $02, $a9        ;; 0f:7728 ........
     db   $a8, $e6, $03, $ab, $aa, $e6, $01, $a9        ;; 0f:7730 ........
     db   $a8, $e2                                      ;; 0f:7738 ..
-    dw   data_00f_7728                                 ;; 0f:773a $28 $77
+    dw   .data_0f_7728                                 ;; 0f:773a ..
     db   $e3, $04                                      ;; 0f:773c ..
-
-data_00f_773e:
-    db   $e0, $ae, $7a, $e5, $40, $e6, $02, $d2        ;; 0f:773e ....S...
+.data_0f_773e:
+    db   $e0, $ae, $7a, $e5, $40, $e6, $02, $d2        ;; 0f:773e ........
     db   $ab, $aa, $a9, $a8, $e6, $01, $ab, $aa        ;; 0f:7746 ........
     db   $a9, $a8, $e6, $02, $a7, $a8, $a9, $aa        ;; 0f:774e ........
     db   $e6, $01, $a7, $a8, $a9, $aa, $e2             ;; 0f:7756 .......
-    dw   data_00f_773e                                 ;; 0f:775d $3e $77
+    dw   .data_0f_773e                                 ;; 0f:775d ..
     db   $e1                                           ;; 0f:775f .
-    dw   data_00f_771c                                 ;; 0f:7760 $1c $77
+    dw   data_0f_771c                                  ;; 0f:7760 ..
 
-data_00f_7762:
+data_0f_7762:
     db   $e4, $4f, $7a                                 ;; 0f:7762 ...
-
-data_00f_7765:
-    db   $e8, $fc, $7a, $e0, $20, $e6, $03, $e3        ;; 0f:7765 ....S...
+.data_0f_7765:
+    db   $e8, $fc, $7a, $e0, $20, $e6, $03, $e3        ;; 0f:7765 ........
     db   $02                                           ;; 0f:776d .
-
-data_00f_776e:
+.data_0f_776e:
     db   $d1, $27, $26, $25, $24, $e2                  ;; 0f:776e ......
-    dw   data_00f_776e                                 ;; 0f:7774 $6e $77
+    dw   .data_0f_776e                                 ;; 0f:7774 ..
     db   $e3, $02                                      ;; 0f:7776 ..
-
-data_00f_7778:
+.data_0f_7778:
     db   $e8, $0c, $7b, $d1, $a7, $af, $a7, $af        ;; 0f:7778 ........
     db   $a7, $af, $a7, $af, $a6, $af, $a6, $af        ;; 0f:7780 ........
     db   $a6, $af, $a6, $af, $a5, $af, $a5, $af        ;; 0f:7788 ........
     db   $a5, $af, $a5, $af, $a4, $af, $a4, $af        ;; 0f:7790 ........
     db   $a4, $af, $a4, $af, $e2                       ;; 0f:7798 .....
-    dw   data_00f_7778                                 ;; 0f:779d $78 $77
+    dw   .data_0f_7778                                 ;; 0f:779d ..
     db   $e1                                           ;; 0f:779f .
-    dw   data_00f_7765                                 ;; 0f:77a0 $65 $77
+    dw   .data_0f_7765                                 ;; 0f:77a0 ..
     db   $a8, $77, $11, $78, $a3, $78                  ;; 0f:77a2 ??????
 
-unknown_00f_77a8:
+data_0f_77a8:
     db   $e7, $3c, $e4, $4f, $7a, $e0, $82, $7a        ;; 0f:77a8 ????????
     db   $e5, $80, $d3, $a2, $a4, $a5, $a7, $29        ;; 0f:77b0 ????????
     db   $8e, $d8, $80, $dc, $7b, $a7, $29, $8e        ;; 0f:77b8 ????????
@@ -3396,7 +3302,7 @@ unknown_00f_77a8:
     db   $2e, $5f, $a2, $a4, $a5, $a7, $e1, $b7        ;; 0f:7808 ????????
     db   $77                                           ;; 0f:7810 ?
 
-unknown_00f_7811:
+data_0f_7811:
     db   $e4, $4f, $7a, $e0, $b0, $7a, $e5, $00        ;; 0f:7811 ????????
     db   $e6, $03, $5f, $8f, $d2, $85, $84, $85        ;; 0f:7819 ????????
     db   $82, $85, $87, $82, $8f, $85, $84, $85        ;; 0f:7821 ????????
@@ -3417,7 +3323,7 @@ unknown_00f_7811:
     db   $8f, $82, $80, $82, $84, $85, $54, $e1        ;; 0f:7899 ????????
     db   $1c, $78                                      ;; 0f:78a1 ??
 
-unknown_00f_78a3:
+data_0f_78a3:
     db   $e4, $4f, $7a, $e8, $dc, $7a, $e0, $40        ;; 0f:78a3 ????????
     db   $e6, $03, $5f, $d2, $12, $8e, $dc, $89        ;; 0f:78ab ????????
     db   $d8, $12, $8e, $80, $dc, $1a, $8e, $d8        ;; 0f:78b3 ????????
@@ -3430,7 +3336,7 @@ unknown_00f_78a3:
     db   $12, $50, $dc, $2a, $d8, $20, $e1, $ae        ;; 0f:78eb ????????
     db   $78, $fa, $78, $24, $79, $48, $79             ;; 0f:78f3 ???????
 
-data_00f_78fa:
+data_0f_78fa:
     db   $e7, $6f, $e4, $4f, $7a, $e0, $82, $7a        ;; 0f:78fa ........
     db   $e5, $40, $e6, $03, $d3, $b0, $bf, $dc        ;; 0f:7902 ........
     db   $ba, $bf, $d8, $b0, $bf, $b2, $bf, $b0        ;; 0f:790a ........
@@ -3438,38 +3344,38 @@ data_00f_78fa:
     db   $bf, $b5, $bf, $b3, $bf, $b1, $bf, $43        ;; 0f:791a ........
     db   $af, $ff                                      ;; 0f:7922 ??
 
-data_00f_7924:
-    db   $e4, $4f, $7a, $e0, $82, $7a, $e5, $00        ;; 0f:7924 .......S
+data_0f_7924:
+    db   $e4, $4f, $7a, $e0, $82, $7a, $e5, $00        ;; 0f:7924 ........
     db   $e6, $03, $d2, $b3, $bf, $b2, $bf, $b3        ;; 0f:792c ........
     db   $bf, $b5, $bf, $b3, $bf, $b5, $bf, $86        ;; 0f:7934 ........
     db   $bf, $b6, $bf, $b8, $bf, $b6, $bf, $b5        ;; 0f:793c ........
     db   $bf, $47, $af, $ff                            ;; 0f:7944 ..??
 
-data_00f_7948:
-    db   $e4, $4f, $7a, $e8, $dc, $7a, $e0, $40        ;; 0f:7948 .......S
+data_0f_7948:
+    db   $e4, $4f, $7a, $e8, $dc, $7a, $e0, $40        ;; 0f:7948 ........
     db   $e6, $03, $d2, $b8, $bf, $b7, $bf, $b8        ;; 0f:7950 ........
     db   $bf, $ba, $bf, $b8, $bf, $ba, $bf, $5b        ;; 0f:7958 ........
     db   $d8, $51, $43, $af, $ff, $6b, $79, $84        ;; 0f:7960 ...?????
     db   $79, $9a, $79                                 ;; 0f:7968 ???
 
-unknown_00f_796b:
+data_0f_796b:
     db   $e7, $7d, $e4, $4f, $7a, $e0, $82, $7a        ;; 0f:796b ????????
     db   $e5, $40, $e6, $03, $d2, $55, $84, $85        ;; 0f:7973 ????????
     db   $56, $5b, $4a, $a9, $a8, $27, $2e, $2f        ;; 0f:797b ????????
     db   $ff                                           ;; 0f:7983 ?
 
-unknown_00f_7984:
+data_0f_7984:
     db   $e4, $4f, $7a, $e0, $82, $7a, $e5, $00        ;; 0f:7984 ????????
     db   $e6, $03, $d2, $52, $81, $82, $23, $44        ;; 0f:798c ????????
     db   $a3, $a2, $21, $2e, $2f, $ff                  ;; 0f:7994 ??????
 
-unknown_00f_799a:
+data_0f_799a:
     db   $e4, $4f, $7a, $e8, $ec, $7a, $e0, $40        ;; 0f:799a ????????
     db   $e6, $03, $d1, $2b, $d8, $20, $41, $a0        ;; 0f:79a2 ????????
     db   $dc, $ab, $2a, $2e, $2f, $ff, $b6, $79        ;; 0f:79aa ????????
     db   $ea, $79, $1d, $7a                            ;; 0f:79b2 ????
 
-unknown_00f_79b6:
+data_0f_79b6:
     db   $e7, $4b, $e4, $4f, $7a, $e0, $82, $7a        ;; 0f:79b6 ????????
     db   $e5, $80, $e6, $01, $d3, $9b, $93, $97        ;; 0f:79be ????????
     db   $9b, $93, $97, $d8, $90, $dc, $94, $98        ;; 0f:79c6 ????????
@@ -3478,7 +3384,7 @@ unknown_00f_79b6:
     db   $90, $dc, $94, $98, $d8, $90, $dc, $94        ;; 0f:79de ????????
     db   $98, $e1, $c2, $79                            ;; 0f:79e6 ????
 
-unknown_00f_79ea:
+data_0f_79ea:
     db   $e4, $4f, $7a, $e0, $c0, $7a, $e5, $80        ;; 0f:79ea ????????
     db   $e6, $02, $bf, $d3, $9b, $93, $97, $9b        ;; 0f:79f2 ????????
     db   $93, $97, $d8, $90, $dc, $94, $98, $d8        ;; 0f:79fa ????????
@@ -3487,7 +3393,7 @@ unknown_00f_79ea:
     db   $dc, $94, $98, $d8, $90, $dc, $94, $98        ;; 0f:7a12 ????????
     db   $e1, $f5, $79                                 ;; 0f:7a1a ???
 
-unknown_00f_7a1d:
+data_0f_7a1d:
     db   $e4, $4f, $7a, $e8, $dc, $7a, $e0, $60        ;; 0f:7a1d ????????
     db   $e6, $03, $d4, $9b, $93, $97, $9b, $93        ;; 0f:7a25 ????????
     db   $97, $d8, $90, $dc, $94, $98, $d8, $90        ;; 0f:7a2d ????????
@@ -3500,32 +3406,32 @@ unknown_00f_7a1d:
     db   $01, $02, $01, $ff, $00, $65, $7a, $05        ;; 0f:7a65 .......?
     db   $00, $02, $01, $02, $00, $00, $6e, $7a        ;; 0f:7a6d ????????
     db   $0a, $00, $01, $02, $01, $04, $01, $02        ;; 0f:7a75 ........
-    db   $01, $00, $00, $77, $7a, $0a, $8c, $63        ;; 0f:7a7d ......S.
-    db   $f7, $ff, $0a, $6c, $63, $35, $ff, $63        ;; 0f:7a85 S???????
+    db   $01, $00, $00, $77, $7a, $0a, $8c, $63        ;; 0f:7a7d ........
+    db   $f7, $ff, $0a, $6c, $63, $35, $ff, $63        ;; 0f:7a85 .???????
     db   $c2, $63, $10, $63, $b2, $63, $10, $63        ;; 0f:7a8d ????????
     db   $a2, $63, $10, $05, $92, $63, $10, $05        ;; 0f:7a95 ????????
     db   $82, $63, $10, $63, $72, $63, $10, $63        ;; 0f:7a9d ????????
-    db   $62, $63, $10, $63, $c4, $63, $b4, $63        ;; 0f:7aa5 ???.S???
-    db   $a4, $63, $94, $63, $84, $63, $74, $63        ;; 0f:7aad ?.S.S.S.
-    db   $64, $63, $54, $63, $44, $63, $34, $63        ;; 0f:7ab5 S???????
-    db   $24, $63, $c7, $63, $b7, $63, $a7, $63        ;; 0f:7abd ?.S.S.S?
-    db   $97, $63, $87, $63, $77, $63, $67, $ff        ;; 0f:7ac5 ???.S??W
-    db   $ff, $ff, $ff, $ff, $ff, $ff, $ff, $00        ;; 0f:7acd WWWWWWWW
-    db   $00, $00, $00, $00, $00, $00, $00, $ff        ;; 0f:7ad5 WWWWWWWW
-    db   $ff, $ff, $ff, $00, $00, $00, $00, $00        ;; 0f:7add WWWWWWWW
-    db   $00, $00, $00, $00, $00, $00, $00, $ff        ;; 0f:7ae5 WWWWWWWW
-    db   $ff, $00, $00, $00, $00, $00, $00, $00        ;; 0f:7aed WWWWWWWW
-    db   $00, $00, $00, $00, $00, $00, $00, $bb        ;; 0f:7af5 WWWWWWWW
-    db   $bb, $bb, $bb, $bb, $bb, $bb, $bb, $00        ;; 0f:7afd WWWWWWWW
-    db   $00, $00, $00, $00, $00, $00, $00, $bb        ;; 0f:7b05 WWWWWWWW
-    db   $bb, $bb, $bb, $00, $00, $00, $00, $00        ;; 0f:7b0d WWWWWWWW
-    db   $00, $00, $00, $00, $00, $00, $00, $bb        ;; 0f:7b15 WWWWWWW?
+    db   $62, $63, $10, $63, $c4, $63, $b4, $63        ;; 0f:7aa5 ???..???
+    db   $a4, $63, $94, $63, $84, $63, $74, $63        ;; 0f:7aad ?.......
+    db   $64, $63, $54, $63, $44, $63, $34, $63        ;; 0f:7ab5 .???????
+    db   $24, $63, $c7, $63, $b7, $63, $a7, $63        ;; 0f:7abd ?......?
+    db   $97, $63, $87, $63, $77, $63, $67, $ff        ;; 0f:7ac5 ???..??.
+    db   $ff, $ff, $ff, $ff, $ff, $ff, $ff, $00        ;; 0f:7acd ........
+    db   $00, $00, $00, $00, $00, $00, $00, $ff        ;; 0f:7ad5 ........
+    db   $ff, $ff, $ff, $00, $00, $00, $00, $00        ;; 0f:7add ........
+    db   $00, $00, $00, $00, $00, $00, $00, $ff        ;; 0f:7ae5 ........
+    db   $ff, $00, $00, $00, $00, $00, $00, $00        ;; 0f:7aed ........
+    db   $00, $00, $00, $00, $00, $00, $00, $bb        ;; 0f:7af5 ........
+    db   $bb, $bb, $bb, $bb, $bb, $bb, $bb, $00        ;; 0f:7afd ........
+    db   $00, $00, $00, $00, $00, $00, $00, $bb        ;; 0f:7b05 ........
+    db   $bb, $bb, $bb, $00, $00, $00, $00, $00        ;; 0f:7b0d ........
+    db   $00, $00, $00, $00, $00, $00, $00, $bb        ;; 0f:7b15 .......?
     db   $bb, $00, $00, $00, $00, $00, $00, $00        ;; 0f:7b1d ????????
     db   $00, $00, $00, $00, $00, $00, $00, $ff        ;; 0f:7b25 ????????
     db   $cc, $99, $66, $99, $cc, $ff, $00, $00        ;; 0f:7b2d ????????
     db   $00, $00, $00, $00, $00, $00, $00             ;; 0f:7b35 ???????
 
-data_00f_7b3c:
+data_0f_7b3c:
     db   $d1, $7b, $e5, $7b, $d0, $7b, $d0, $7b        ;; 0f:7b3c ....????
     db   $10, $7c, $1d, $7c, $4c, $7c, $53, $7c        ;; 0f:7b44 ..??????
     db   $68, $7c, $93, $7c, $b4, $7c, $d1, $7c        ;; 0f:7b4c ????....
@@ -3537,7 +3443,7 @@ data_00f_7b3c:
     db   $66, $7e, $97, $7e, $a2, $7e, $a9, $7e        ;; 0f:7b7c ????....
     db   $d0, $7b                                      ;; 0f:7b84 ??
 
-data_00f_7b86:
+data_0f_7b86:
     db   $de, $7b, $f2, $7b, $f9, $7b, $fd, $7b        ;; 0f:7b86 ....????
     db   $d0, $7b, $3c, $7c, $d0, $7b, $64, $7c        ;; 0f:7b8e ..??????
     db   $d0, $7b, $ac, $7c, $c7, $7c, $d0, $7b        ;; 0f:7b96 ????....
@@ -3547,16 +3453,16 @@ data_00f_7b86:
     db   $ab, $7d, $b5, $7d, $d0, $7d, $ee, $7d        ;; 0f:7bb6 ????????
     db   $02, $7e, $22, $7e, $42, $7e, $5f, $7e        ;; 0f:7bbe ??????..
     db   $d0, $7b, $9e, $7e, $d0, $7b, $d0, $7b        ;; 0f:7bc6 ????....
-    db   $b0, $7e, $00, $08, $23, $40, $f1, $5a        ;; 0f:7bce ??..SSSS
-    db   $84, $07, $25, $80, $51, $ff, $85, $00        ;; 0f:7bd6 S.SSSSS.
-    db   $05, $8a, $4e, $07, $7a, $24, $00, $05        ;; 0f:7bde .SS.SS..
-    db   $23, $40, $f1, $5a, $84, $02, $23, $00        ;; 0f:7be6 SSSSS.SS
-    db   $21, $ff, $85, $00, $02, $8a, $2f, $04        ;; 0f:7bee SSS..SS.
-    db   $7a, $32, $00, $2a, $f8, $56, $00, $05        ;; 0f:7bf6 SS.?????
+    db   $b0, $7e, $00, $08, $23, $40, $f1, $5a        ;; 0f:7bce ??......
+    db   $84, $07, $25, $80, $51, $ff, $85, $00        ;; 0f:7bd6 ........
+    db   $05, $8a, $4e, $07, $7a, $24, $00, $05        ;; 0f:7bde ........
+    db   $23, $40, $f1, $5a, $84, $02, $23, $00        ;; 0f:7be6 ........
+    db   $21, $ff, $85, $00, $02, $8a, $2f, $04        ;; 0f:7bee ........
+    db   $7a, $32, $00, $2a, $f8, $56, $00, $05        ;; 0f:7bf6 ...?????
     db   $f4, $62, $03, $c7, $32, $07, $f3, $37        ;; 0f:7bfe ????????
     db   $05, $f4, $71, $05, $d7, $30, $2b, $f3        ;; 0f:7c06 ????????
-    db   $37, $00, $31, $47, $80, $f5, $a0, $86        ;; 0f:7c0e ??.SSSSS
-    db   $15, $00, $40, $d2, $d9, $87, $00, $03        ;; 0f:7c16 .SSSSS.?
+    db   $37, $00, $31, $47, $80, $f5, $a0, $86        ;; 0f:7c0e ??......
+    db   $15, $00, $40, $d2, $d9, $87, $00, $03        ;; 0f:7c16 .......?
     db   $00, $80, $72, $7a, $87, $03, $00, $80        ;; 0f:7c1e ????????
     db   $92, $8a, $87, $03, $00, $80, $b2, $9a        ;; 0f:7c26 ????????
     db   $87, $03, $00, $80, $d2, $b0, $87, $08        ;; 0f:7c2e ????????
@@ -3575,26 +3481,26 @@ data_00f_7b86:
     db   $b3, $c7, $87, $04, $00, $40, $b3, $cd        ;; 0f:7c96 ????????
     db   $87, $04, $00, $40, $b3, $d3, $87, $15        ;; 0f:7c9e ????????
     db   $00, $40, $d2, $db, $87, $00, $f3, $04        ;; 0f:7ca6 ????????
-    db   $a2, $08, $ef, $ad, $7c, $00, $05, $57        ;; 0f:7cae ??????.S
-    db   $40, $f0, $5a, $85, $01, $00, $00, $00        ;; 0f:7cb6 SSSS.SSS
-    db   $00, $80, $15, $1e, $80, $f3, $ff, $87        ;; 0f:7cbe SS.SSSSS
-    db   $00, $05, $f0, $6b, $01, $00, $00, $15        ;; 0f:7cc6 ..SS.SS.
-    db   $d2, $36, $00, $40, $3f, $80, $f5, $6a        ;; 0f:7cce SS..SSSS
-    db   $87, $00, $03, $af, $5c, $02, $23, $32        ;; 0f:7cd6 S..SS.SS
-    db   $04, $f7, $6b, $00, $f6, $01, $00, $40        ;; 0f:7cde .SS...SS
-    db   $f0, $00, $86, $01, $00, $80, $f0, $00        ;; 0f:7ce6 SSS.SSSS
-    db   $87, $ef, $e3, $7c, $00, $02, $67, $80        ;; 0f:7cee S.....SS
-    db   $a3, $0e, $87, $03, $44, $80, $f0, $0e        ;; 0f:7cf6 SSS.SSSS
-    db   $87, $00, $20, $f2, $62, $00, $f4, $02        ;; 0f:7cfe S..SS...
-    db   $ca, $6a, $06, $fc, $7c, $02, $f9, $d7        ;; 0f:7d06 SS.SS.SS
-    db   $03, $ca, $6a, $07, $fc, $7b, $02, $f9        ;; 0f:7d0e .SS.SS.S
-    db   $d7, $ef, $05, $7d, $07, $f1, $47, $2a        ;; 0f:7d16 S???????
-    db   $f3, $37, $00, $06, $00, $40, $a1, $90        ;; 0f:7d1e ???.SSSS
-    db   $87, $10, $00, $80, $f1, $4c, $87, $00        ;; 0f:7d26 S.SSSSS.
+    db   $a2, $08, $ef, $ad, $7c, $00, $05, $57        ;; 0f:7cae ??????..
+    db   $40, $f0, $5a, $85, $01, $00, $00, $00        ;; 0f:7cb6 ........
+    db   $00, $80, $15, $1e, $80, $f3, $ff, $87        ;; 0f:7cbe ........
+    db   $00, $05, $f0, $6b, $01, $00, $00, $15        ;; 0f:7cc6 ........
+    db   $d2, $36, $00, $40, $3f, $80, $f5, $6a        ;; 0f:7cce ........
+    db   $87, $00, $03, $af, $5c, $02, $23, $32        ;; 0f:7cd6 ........
+    db   $04, $f7, $6b, $00, $f6, $01, $00, $40        ;; 0f:7cde ........
+    db   $f0, $00, $86, $01, $00, $80, $f0, $00        ;; 0f:7ce6 ........
+    db   $87, $ef, $e3, $7c, $00, $02, $67, $80        ;; 0f:7cee ........
+    db   $a3, $0e, $87, $03, $44, $80, $f0, $0e        ;; 0f:7cf6 ........
+    db   $87, $00, $20, $f2, $62, $00, $f4, $02        ;; 0f:7cfe ........
+    db   $ca, $6a, $06, $fc, $7c, $02, $f9, $d7        ;; 0f:7d06 ........
+    db   $03, $ca, $6a, $07, $fc, $7b, $02, $f9        ;; 0f:7d0e ........
+    db   $d7, $ef, $05, $7d, $07, $f1, $47, $2a        ;; 0f:7d16 .???????
+    db   $f3, $37, $00, $06, $00, $40, $a1, $90        ;; 0f:7d1e ???.....
+    db   $87, $10, $00, $80, $f1, $4c, $87, $00        ;; 0f:7d26 ........
     db   $40, $75, $80, $0c, $ff, $84, $00, $03        ;; 0f:7d2e ???????.
-    db   $e1, $6c, $01, $32, $11, $20, $f2, $34        ;; 0f:7d36 SS.SS.SS
-    db   $00, $03, $00, $40, $f2, $7a, $87, $0a        ;; 0f:7d3e ..SSSSS.
-    db   $00, $40, $a1, $ef, $86, $00, $09, $06        ;; 0f:7d46 SSSSS.??
+    db   $e1, $6c, $01, $32, $11, $20, $f2, $34        ;; 0f:7d36 ........
+    db   $00, $03, $00, $40, $f2, $7a, $87, $0a        ;; 0f:7d3e ........
+    db   $00, $40, $a1, $ef, $86, $00, $09, $06        ;; 0f:7d46 ......??
     db   $80, $e1, $b0, $87, $09, $06, $80, $e1        ;; 0f:7d4e ????????
     db   $d0, $87, $09, $06, $80, $e1, $a4, $87        ;; 0f:7d56 ????????
     db   $09, $06, $80, $e1, $c1, $87, $12, $06        ;; 0f:7d5e ????????
@@ -3627,9 +3533,9 @@ data_00f_7b86:
     db   $00, $00, $00, $00, $80, $1a, $00, $80        ;; 0f:7e36 ????????
     db   $a2, $da, $87, $00, $0f, $97, $36, $04        ;; 0f:7e3e ????????
     db   $00, $00, $03, $c2, $33, $02, $52, $77        ;; 0f:7e46 ????????
-    db   $06, $f1, $37, $00, $08, $00, $80, $42        ;; 0f:7e4e ????.SSS
-    db   $aa, $87, $1e, $00, $80, $a2, $ba, $87        ;; 0f:7e56 SS.SSSSS
-    db   $00, $08, $f1, $6c, $1e, $f2, $4b, $00        ;; 0f:7e5e ..SS.SS.
+    db   $06, $f1, $37, $00, $08, $00, $80, $42        ;; 0f:7e4e ????....
+    db   $aa, $87, $1e, $00, $80, $a2, $ba, $87        ;; 0f:7e56 ........
+    db   $00, $08, $f1, $6c, $1e, $f2, $4b, $00        ;; 0f:7e5e ........
     db   $05, $2f, $00, $f8, $0f, $87, $05, $2f        ;; 0f:7e66 ????????
     db   $00, $f8, $3f, $87, $05, $2f, $40, $f8        ;; 0f:7e6e ????????
     db   $6f, $87, $05, $2f, $40, $f8, $8f, $87        ;; 0f:7e76 ????????
@@ -3637,6 +3543,48 @@ data_00f_7b86:
     db   $80, $f8, $cf, $87, $05, $2f, $80, $f8        ;; 0f:7e86 ????????
     db   $df, $87, $05, $2f, $80, $f8, $ff, $87        ;; 0f:7e8e ????????
     db   $00, $00, $00, $00, $00, $00, $80, $00        ;; 0f:7e96 ????????
-    db   $00, $00, $00, $00, $16, $27, $40, $f0        ;; 0f:7e9e ????.SSS
-    db   $4a, $86, $00, $16, $2f, $40, $f8, $4a        ;; 0f:7ea6 SS..SSSS
-    db   $87, $00, $3a, $f0, $8a, $00, $00, $00        ;; 0f:7eae S.??????
+    db   $00, $00, $00, $00, $16, $27, $40, $f0        ;; 0f:7e9e ????....
+    db   $4a, $86, $00, $16, $2f, $40, $f8, $4a        ;; 0f:7ea6 ........
+    db   $87, $00, $3a, $f0, $8a, $00, $00, $00        ;; 0f:7eae ..??????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0f:7eb6 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0f:7ebe ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0f:7ec6 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0f:7ece ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0f:7ed6 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0f:7ede ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0f:7ee6 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0f:7eee ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0f:7ef6 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0f:7efe ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0f:7f06 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0f:7f0e ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0f:7f16 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0f:7f1e ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0f:7f26 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0f:7f2e ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0f:7f36 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0f:7f3e ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0f:7f46 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0f:7f4e ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0f:7f56 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0f:7f5e ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0f:7f66 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0f:7f6e ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0f:7f76 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0f:7f7e ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0f:7f86 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0f:7f8e ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0f:7f96 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0f:7f9e ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0f:7fa6 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0f:7fae ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0f:7fb6 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0f:7fbe ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0f:7fc6 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0f:7fce ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0f:7fd6 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0f:7fde ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0f:7fe6 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0f:7fee ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0f:7ff6 ????????
+    db   $00, $00                                      ;; 0f:7ffe ??
