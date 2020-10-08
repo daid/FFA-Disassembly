@@ -1,8196 +1,2946 @@
 ;; Disassembled with BadBoy Disassembler: https://github.com/daid/BadBoy
 
-;@gfx
-data_00b_4000:
-    dw   `00000000                                     ;; 0b:4000 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4002 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4004 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4006 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4008 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:400a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:400c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:400e $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4010 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4012 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4014 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4016 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4018 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:401a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:401c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:401e $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4020 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4022 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4024 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4026 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4028 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:402a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:402c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:402e $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4030 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4032 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4034 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4036 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4038 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:403a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:403c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:403e $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4040 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4042 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4044 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4046 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4048 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:404a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:404c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:404e $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4050 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4052 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4054 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4056 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4058 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:405a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:405c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:405e $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4060 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4062 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4064 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4066 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4068 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:406a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:406c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:406e $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4070 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4072 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4074 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4076 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4078 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:407a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:407c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:407e $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4080 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4082 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4084 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4086 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4088 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:408a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:408c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:408e $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4090 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4092 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4094 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4096 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4098 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:409a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:409c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:409e $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:40a0 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:40a2 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:40a4 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:40a6 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:40a8 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:40aa $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:40ac $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:40ae $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:40b0 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:40b2 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:40b4 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:40b6 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:40b8 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:40ba $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:40bc $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:40be $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:40c0 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:40c2 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:40c4 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:40c6 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:40c8 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:40ca $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:40cc $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:40ce $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:40d0 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:40d2 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:40d4 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:40d6 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:40d8 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:40da $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:40dc $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:40de $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:40e0 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:40e2 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:40e4 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:40e6 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:40e8 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:40ea $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:40ec $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:40ee $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:40f0 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:40f2 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:40f4 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:40f6 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:40f8 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:40fa $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:40fc $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:40fe $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4100 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4102 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4104 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4106 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4108 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:410a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:410c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:410e $00 $00 GFX GFX
-    dw   `33333333                                     ;; 0b:4110 $ff $ff GFX GFX
-    dw   `30000003                                     ;; 0b:4112 $81 $81 GFX GFX
-    dw   `30000003                                     ;; 0b:4114 $81 $81 GFX GFX
-    dw   `30000003                                     ;; 0b:4116 $81 $81 GFX GFX
-    dw   `30000003                                     ;; 0b:4118 $81 $81 GFX GFX
-    dw   `30000003                                     ;; 0b:411a $81 $81 GFX GFX
-    dw   `30000003                                     ;; 0b:411c $81 $81 GFX GFX
-    dw   `33333333                                     ;; 0b:411e $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:4120 $ff $ff GFX GFX
-    dw   `30000003                                     ;; 0b:4122 $81 $81 GFX GFX
-    dw   `30000003                                     ;; 0b:4124 $81 $81 GFX GFX
-    dw   `30000000                                     ;; 0b:4126 $80 $80 GFX GFX
-    dw   `30000000                                     ;; 0b:4128 $80 $80 GFX GFX
-    dw   `30000003                                     ;; 0b:412a $81 $81 GFX GFX
-    dw   `30000003                                     ;; 0b:412c $81 $81 GFX GFX
-    dw   `33333333                                     ;; 0b:412e $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:4130 $ff $ff GFX GFX
-    dw   `30000003                                     ;; 0b:4132 $81 $81 GFX GFX
-    dw   `30000003                                     ;; 0b:4134 $81 $81 GFX GFX
-    dw   `00000003                                     ;; 0b:4136 $01 $01 GFX GFX
-    dw   `00000003                                     ;; 0b:4138 $01 $01 GFX GFX
-    dw   `30000003                                     ;; 0b:413a $81 $81 GFX GFX
-    dw   `30000003                                     ;; 0b:413c $81 $81 GFX GFX
-    dw   `33333333                                     ;; 0b:413e $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:4140 $ff $ff GFX GFX
-    dw   `30000003                                     ;; 0b:4142 $81 $81 GFX GFX
-    dw   `30000003                                     ;; 0b:4144 $81 $81 GFX GFX
-    dw   `00000000                                     ;; 0b:4146 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4148 $00 $00 GFX GFX
-    dw   `30000003                                     ;; 0b:414a $81 $81 GFX GFX
-    dw   `30000003                                     ;; 0b:414c $81 $81 GFX GFX
-    dw   `33333333                                     ;; 0b:414e $ff $ff GFX GFX
-    dw   `33300333                                     ;; 0b:4150 $e7 $e7 GFX GFX
-    dw   `30000003                                     ;; 0b:4152 $81 $81 GFX GFX
-    dw   `30000003                                     ;; 0b:4154 $81 $81 GFX GFX
-    dw   `30000003                                     ;; 0b:4156 $81 $81 GFX GFX
-    dw   `30000003                                     ;; 0b:4158 $81 $81 GFX GFX
-    dw   `30000003                                     ;; 0b:415a $81 $81 GFX GFX
-    dw   `30000003                                     ;; 0b:415c $81 $81 GFX GFX
-    dw   `33333333                                     ;; 0b:415e $ff $ff GFX GFX
-    dw   `33300333                                     ;; 0b:4160 $e7 $e7 GFX GFX
-    dw   `30000003                                     ;; 0b:4162 $81 $81 GFX GFX
-    dw   `30000003                                     ;; 0b:4164 $81 $81 GFX GFX
-    dw   `30000000                                     ;; 0b:4166 $80 $80 GFX GFX
-    dw   `30000000                                     ;; 0b:4168 $80 $80 GFX GFX
-    dw   `30000003                                     ;; 0b:416a $81 $81 GFX GFX
-    dw   `30000003                                     ;; 0b:416c $81 $81 GFX GFX
-    dw   `33333333                                     ;; 0b:416e $ff $ff GFX GFX
-    dw   `33300033                                     ;; 0b:4170 $e3 $e3 GFX GFX
-    dw   `30000003                                     ;; 0b:4172 $81 $81 GFX GFX
-    dw   `30000003                                     ;; 0b:4174 $81 $81 GFX GFX
-    dw   `00000003                                     ;; 0b:4176 $01 $01 GFX GFX
-    dw   `00000003                                     ;; 0b:4178 $01 $01 GFX GFX
-    dw   `30000003                                     ;; 0b:417a $81 $81 GFX GFX
-    dw   `30000003                                     ;; 0b:417c $81 $81 GFX GFX
-    dw   `33333333                                     ;; 0b:417e $ff $ff GFX GFX
-    dw   `33300333                                     ;; 0b:4180 $e7 $e7 GFX GFX
-    dw   `30000003                                     ;; 0b:4182 $81 $81 GFX GFX
-    dw   `30000003                                     ;; 0b:4184 $81 $81 GFX GFX
-    dw   `00000000                                     ;; 0b:4186 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4188 $00 $00 GFX GFX
-    dw   `30000003                                     ;; 0b:418a $81 $81 GFX GFX
-    dw   `30000003                                     ;; 0b:418c $81 $81 GFX GFX
-    dw   `33333333                                     ;; 0b:418e $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:4190 $ff $ff GFX GFX
-    dw   `30000003                                     ;; 0b:4192 $81 $81 GFX GFX
-    dw   `30000003                                     ;; 0b:4194 $81 $81 GFX GFX
-    dw   `30000003                                     ;; 0b:4196 $81 $81 GFX GFX
-    dw   `30000003                                     ;; 0b:4198 $81 $81 GFX GFX
-    dw   `30000003                                     ;; 0b:419a $81 $81 GFX GFX
-    dw   `30000003                                     ;; 0b:419c $81 $81 GFX GFX
-    dw   `33300333                                     ;; 0b:419e $e7 $e7 GFX GFX
-    dw   `33333333                                     ;; 0b:41a0 $ff $ff GFX GFX
-    dw   `30000003                                     ;; 0b:41a2 $81 $81 GFX GFX
-    dw   `30000003                                     ;; 0b:41a4 $81 $81 GFX GFX
-    dw   `30000000                                     ;; 0b:41a6 $80 $80 GFX GFX
-    dw   `30000000                                     ;; 0b:41a8 $80 $80 GFX GFX
-    dw   `30000003                                     ;; 0b:41aa $81 $81 GFX GFX
-    dw   `30000003                                     ;; 0b:41ac $81 $81 GFX GFX
-    dw   `33300333                                     ;; 0b:41ae $e7 $e7 GFX GFX
-    dw   `33333333                                     ;; 0b:41b0 $ff $ff GFX GFX
-    dw   `30000003                                     ;; 0b:41b2 $81 $81 GFX GFX
-    dw   `30000003                                     ;; 0b:41b4 $81 $81 GFX GFX
-    dw   `00000003                                     ;; 0b:41b6 $01 $01 GFX GFX
-    dw   `00000003                                     ;; 0b:41b8 $01 $01 GFX GFX
-    dw   `30000003                                     ;; 0b:41ba $81 $81 GFX GFX
-    dw   `30000003                                     ;; 0b:41bc $81 $81 GFX GFX
-    dw   `33300333                                     ;; 0b:41be $e7 $e7 GFX GFX
-    dw   `33333333                                     ;; 0b:41c0 $ff $ff GFX GFX
-    dw   `30000003                                     ;; 0b:41c2 $81 $81 GFX GFX
-    dw   `30000003                                     ;; 0b:41c4 $81 $81 GFX GFX
-    dw   `00000000                                     ;; 0b:41c6 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:41c8 $00 $00 GFX GFX
-    dw   `30000003                                     ;; 0b:41ca $81 $81 GFX GFX
-    dw   `30000003                                     ;; 0b:41cc $81 $81 GFX GFX
-    dw   `33300333                                     ;; 0b:41ce $e7 $e7 GFX GFX
-    dw   `33300333                                     ;; 0b:41d0 $e7 $e7 GFX GFX
-    dw   `30000003                                     ;; 0b:41d2 $81 $81 GFX GFX
-    dw   `30000003                                     ;; 0b:41d4 $81 $81 GFX GFX
-    dw   `30000003                                     ;; 0b:41d6 $81 $81 GFX GFX
-    dw   `30000003                                     ;; 0b:41d8 $81 $81 GFX GFX
-    dw   `30000003                                     ;; 0b:41da $81 $81 GFX GFX
-    dw   `30000003                                     ;; 0b:41dc $81 $81 GFX GFX
-    dw   `33300333                                     ;; 0b:41de $e7 $e7 GFX GFX
-    dw   `33300333                                     ;; 0b:41e0 $e7 $e7 GFX GFX
-    dw   `30000003                                     ;; 0b:41e2 $81 $81 GFX GFX
-    dw   `30000003                                     ;; 0b:41e4 $81 $81 GFX GFX
-    dw   `30000000                                     ;; 0b:41e6 $80 $80 GFX GFX
-    dw   `30000000                                     ;; 0b:41e8 $80 $80 GFX GFX
-    dw   `30000003                                     ;; 0b:41ea $81 $81 GFX GFX
-    dw   `30000003                                     ;; 0b:41ec $81 $81 GFX GFX
-    dw   `33300333                                     ;; 0b:41ee $e7 $e7 GFX GFX
-    dw   `33300333                                     ;; 0b:41f0 $e7 $e7 GFX GFX
-    dw   `30000003                                     ;; 0b:41f2 $81 $81 GFX GFX
-    dw   `30000003                                     ;; 0b:41f4 $81 $81 GFX GFX
-    dw   `00000003                                     ;; 0b:41f6 $01 $01 GFX GFX
-    dw   `00000003                                     ;; 0b:41f8 $01 $01 GFX GFX
-    dw   `30000003                                     ;; 0b:41fa $81 $81 GFX GFX
-    dw   `30000003                                     ;; 0b:41fc $81 $81 GFX GFX
-    dw   `33300333                                     ;; 0b:41fe $e7 $e7 GFX GFX
-    dw   `33300333                                     ;; 0b:4200 $e7 $e7 GFX GFX
-    dw   `30000003                                     ;; 0b:4202 $81 $81 GFX GFX
-    dw   `30000003                                     ;; 0b:4204 $81 $81 GFX GFX
-    dw   `00000000                                     ;; 0b:4206 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4208 $00 $00 GFX GFX
-    dw   `30000003                                     ;; 0b:420a $81 $81 GFX GFX
-    dw   `30000003                                     ;; 0b:420c $81 $81 GFX GFX
-    dw   `33300333                                     ;; 0b:420e $e7 $e7 GFX GFX
-    dw   `11333311                                     ;; 0b:4210 $ff $3c GFX GFX
-    dw   `13032231                                     ;; 0b:4212 $d3 $5e GFX GFX
-    dw   `30003223                                     ;; 0b:4214 $89 $8f GFX GFX
-    dw   `30003333                                     ;; 0b:4216 $8f $8f GFX GFX
-    dw   `30303003                                     ;; 0b:4218 $a9 $a9 GFX GFX
-    dw   `30303003                                     ;; 0b:421a $a9 $a9 GFX GFX
-    dw   `30303003                                     ;; 0b:421c $a9 $a9 GFX GFX
-    dw   `33333333                                     ;; 0b:421e $ff $ff GFX GFX
-    dw   `11111111                                     ;; 0b:4220 $ff $00 GFX GFX
-    dw   `11111111                                     ;; 0b:4222 $ff $00 GFX GFX
-    dw   `11111111                                     ;; 0b:4224 $ff $00 GFX GFX
-    dw   `11111111                                     ;; 0b:4226 $ff $00 GFX GFX
-    dw   `11111111                                     ;; 0b:4228 $ff $00 GFX GFX
-    dw   `11111111                                     ;; 0b:422a $ff $00 GFX GFX
-    dw   `11111111                                     ;; 0b:422c $ff $00 GFX GFX
-    dw   `11111111                                     ;; 0b:422e $ff $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4230 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4232 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4234 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4236 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4238 $00 $00 GFX GFX
-    dw   `00000333                                     ;; 0b:423a $07 $07 GFX GFX
-    dw   `00033001                                     ;; 0b:423c $19 $18 GFX GFX
-    dw   `00300133                                     ;; 0b:423e $27 $23 GFX GFX
-    dw   `00000000                                     ;; 0b:4240 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4242 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4244 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4246 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4248 $00 $00 GFX GFX
-    dw   `20000000                                     ;; 0b:424a $00 $80 GFX GFX
-    dw   `03300000                                     ;; 0b:424c $60 $60 GFX GFX
-    dw   `30020000                                     ;; 0b:424e $80 $90 GFX GFX
-    dw   `00000000                                     ;; 0b:4250 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4252 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4254 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4256 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4258 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:425a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:425c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:425e $00 $00 GFX GFX
-    dw   `33333331                                     ;; 0b:4260 $ff $fe GFX GFX
-    dw   `33333331                                     ;; 0b:4262 $ff $fe GFX GFX
-    dw   `33333310                                     ;; 0b:4264 $fe $fc GFX GFX
-    dw   `33333310                                     ;; 0b:4266 $fe $fc GFX GFX
-    dw   `33333111                                     ;; 0b:4268 $ff $f8 GFX GFX
-    dw   `33333111                                     ;; 0b:426a $ff $f8 GFX GFX
-    dw   `33331101                                     ;; 0b:426c $fd $f0 GFX GFX
-    dw   `33331110                                     ;; 0b:426e $fe $f0 GFX GFX
-    dw   `00000000                                     ;; 0b:4270 $00 $00 GFX GFX
-    dw   `00000001                                     ;; 0b:4272 $01 $00 GFX GFX
-    dw   `00011111                                     ;; 0b:4274 $1f $00 GFX GFX
-    dw   `11111010                                     ;; 0b:4276 $fa $00 GFX GFX
-    dw   `11010101                                     ;; 0b:4278 $d5 $00 GFX GFX
-    dw   `10101000                                     ;; 0b:427a $a8 $00 GFX GFX
-    dw   `01000000                                     ;; 0b:427c $40 $00 GFX GFX
-    dw   `10000000                                     ;; 0b:427e $80 $00 GFX GFX
-    dw   `00000111                                     ;; 0b:4280 $07 $00 GFX GFX
-    dw   `11111111                                     ;; 0b:4282 $ff $00 GFX GFX
-    dw   `11110101                                     ;; 0b:4284 $f5 $00 GFX GFX
-    dw   `10101010                                     ;; 0b:4286 $aa $00 GFX GFX
-    dw   `01010000                                     ;; 0b:4288 $50 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:428a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:428c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:428e $00 $00 GFX GFX
-    dw   `11111111                                     ;; 0b:4290 $ff $00 GFX GFX
-    dw   `11111111                                     ;; 0b:4292 $ff $00 GFX GFX
-    dw   `01010101                                     ;; 0b:4294 $55 $00 GFX GFX
-    dw   `10101010                                     ;; 0b:4296 $aa $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4298 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:429a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:429c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:429e $00 $00 GFX GFX
-    dw   `33333333                                     ;; 0b:42a0 $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:42a2 $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:42a4 $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:42a6 $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:42a8 $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:42aa $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:42ac $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:42ae $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:42b0 $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:42b2 $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:42b4 $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:42b6 $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:42b8 $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:42ba $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:42bc $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:42be $ff $ff GFX GFX
-    dw   `11111110                                     ;; 0b:42c0 $fe $00 GFX GFX
-    dw   `11111111                                     ;; 0b:42c2 $ff $00 GFX GFX
-    dw   `10101010                                     ;; 0b:42c4 $aa $00 GFX GFX
-    dw   `01010101                                     ;; 0b:42c6 $55 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:42c8 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:42ca $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:42cc $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:42ce $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:42d0 $00 $00 GFX GFX
-    dw   `11111000                                     ;; 0b:42d2 $f8 $00 GFX GFX
-    dw   `11111111                                     ;; 0b:42d4 $ff $00 GFX GFX
-    dw   `01010101                                     ;; 0b:42d6 $55 $00 GFX GFX
-    dw   `10101010                                     ;; 0b:42d8 $aa $00 GFX GFX
-    dw   `00000001                                     ;; 0b:42da $01 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:42dc $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:42de $00 $00 GFX GFX
-    dw   `00000001                                     ;; 0b:42e0 $01 $00 GFX GFX
-    dw   `00000001                                     ;; 0b:42e2 $01 $00 GFX GFX
-    dw   `10000001                                     ;; 0b:42e4 $81 $00 GFX GFX
-    dw   `11110001                                     ;; 0b:42e6 $f1 $00 GFX GFX
-    dw   `10111101                                     ;; 0b:42e8 $bd $00 GFX GFX
-    dw   `01011111                                     ;; 0b:42ea $5f $00 GFX GFX
-    dw   `00101011                                     ;; 0b:42ec $2b $00 GFX GFX
-    dw   `00010111                                     ;; 0b:42ee $17 $00 GFX GFX
-    dw   `00000001                                     ;; 0b:42f0 $01 $00 GFX GFX
-    dw   `00000001                                     ;; 0b:42f2 $01 $00 GFX GFX
-    dw   `00000001                                     ;; 0b:42f4 $01 $00 GFX GFX
-    dw   `00000001                                     ;; 0b:42f6 $01 $00 GFX GFX
-    dw   `00000001                                     ;; 0b:42f8 $01 $00 GFX GFX
-    dw   `00000001                                     ;; 0b:42fa $01 $00 GFX GFX
-    dw   `00000001                                     ;; 0b:42fc $01 $00 GFX GFX
-    dw   `00000001                                     ;; 0b:42fe $01 $00 GFX GFX
-    dw   `33333331                                     ;; 0b:4300 $ff $fe GFX GFX
-    dw   `33333331                                     ;; 0b:4302 $ff $fe GFX GFX
-    dw   `33333310                                     ;; 0b:4304 $fe $fc GFX GFX
-    dw   `33333310                                     ;; 0b:4306 $fe $fc GFX GFX
-    dw   `33333100                                     ;; 0b:4308 $fc $f8 GFX GFX
-    dw   `33333100                                     ;; 0b:430a $fc $f8 GFX GFX
-    dw   `33331000                                     ;; 0b:430c $f8 $f0 GFX GFX
-    dw   `33331000                                     ;; 0b:430e $f8 $f0 GFX GFX
-    dw   `33310000                                     ;; 0b:4310 $f0 $e0 GFX GFX
-    dw   `33310000                                     ;; 0b:4312 $f0 $e0 GFX GFX
-    dw   `33100000                                     ;; 0b:4314 $e0 $c0 GFX GFX
-    dw   `33100000                                     ;; 0b:4316 $e0 $c0 GFX GFX
-    dw   `31000000                                     ;; 0b:4318 $c0 $80 GFX GFX
-    dw   `31000000                                     ;; 0b:431a $c0 $80 GFX GFX
-    dw   `10000000                                     ;; 0b:431c $80 $00 GFX GFX
-    dw   `10000000                                     ;; 0b:431e $80 $00 GFX GFX
-    dw   `31020000                                     ;; 0b:4320 $c0 $90 GFX GFX
-    dw   `00202000                                     ;; 0b:4322 $00 $28 GFX GFX
-    dw   `20020000                                     ;; 0b:4324 $00 $90 GFX GFX
-    dw   `33101000                                     ;; 0b:4326 $e8 $c0 GFX GFX
-    dw   `11310300                                     ;; 0b:4328 $f4 $24 GFX GFX
-    dw   `31030300                                     ;; 0b:432a $d4 $94 GFX GFX
-    dw   `31131300                                     ;; 0b:432c $fc $94 GFX GFX
-    dw   `33111300                                     ;; 0b:432e $fc $c4 GFX GFX
-    dw   `03331111                                     ;; 0b:4330 $7f $70 GFX GFX
-    dw   `00003311                                     ;; 0b:4332 $0f $0c GFX GFX
-    dw   `00000322                                     ;; 0b:4334 $04 $07 GFX GFX
-    dw   `00000311                                     ;; 0b:4336 $07 $04 GFX GFX
-    dw   `00000033                                     ;; 0b:4338 $03 $03 GFX GFX
-    dw   `00000000                                     ;; 0b:433a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:433c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:433e $00 $00 GFX GFX
-    dw   `13013003                                     ;; 0b:4340 $d9 $49 GFX GFX
-    dw   `22303031                                     ;; 0b:4342 $2b $ea GFX GFX
-    dw   `11230310                                     ;; 0b:4344 $d6 $34 GFX GFX
-    dw   `12131333                                     ;; 0b:4346 $bf $57 GFX GFX
-    dw   `11323213                                     ;; 0b:4348 $eb $3d GFX GFX
-    dw   `33323111                                     ;; 0b:434a $ef $f8 GFX GFX
-    dw   `00230331                                     ;; 0b:434c $17 $36 GFX GFX
-    dw   `02300003                                     ;; 0b:434e $21 $61 GFX GFX
-    dw   `32300000                                     ;; 0b:4350 $a0 $e0 GFX GFX
-    dw   `02030000                                     ;; 0b:4352 $10 $50 GFX GFX
-    dw   `20003000                                     ;; 0b:4354 $08 $88 GFX GFX
-    dw   `33123000                                     ;; 0b:4356 $e8 $d8 GFX GFX
-    dw   `11310300                                     ;; 0b:4358 $f4 $24 GFX GFX
-    dw   `31030300                                     ;; 0b:435a $d4 $94 GFX GFX
-    dw   `31131300                                     ;; 0b:435c $fc $94 GFX GFX
-    dw   `33111300                                     ;; 0b:435e $fc $c4 GFX GFX
-    dw   `33331101                                     ;; 0b:4360 $fd $f0 GFX GFX
-    dw   `33333111                                     ;; 0b:4362 $ff $f8 GFX GFX
-    dw   `33333311                                     ;; 0b:4364 $ff $fc GFX GFX
-    dw   `33333333                                     ;; 0b:4366 $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:4368 $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:436a $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:436c $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:436e $ff $ff GFX GFX
-    dw   `01000000                                     ;; 0b:4370 $40 $00 GFX GFX
-    dw   `10101000                                     ;; 0b:4372 $a8 $00 GFX GFX
-    dw   `11010101                                     ;; 0b:4374 $d5 $00 GFX GFX
-    dw   `11111010                                     ;; 0b:4376 $fa $00 GFX GFX
-    dw   `33311111                                     ;; 0b:4378 $ff $e0 GFX GFX
-    dw   `33333331                                     ;; 0b:437a $ff $fe GFX GFX
-    dw   `33333333                                     ;; 0b:437c $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:437e $ff $ff GFX GFX
-    dw   `00000000                                     ;; 0b:4380 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4382 $00 $00 GFX GFX
-    dw   `01010000                                     ;; 0b:4384 $50 $00 GFX GFX
-    dw   `10101010                                     ;; 0b:4386 $aa $00 GFX GFX
-    dw   `11110101                                     ;; 0b:4388 $f5 $00 GFX GFX
-    dw   `11111111                                     ;; 0b:438a $ff $00 GFX GFX
-    dw   `33333111                                     ;; 0b:438c $ff $f8 GFX GFX
-    dw   `33333333                                     ;; 0b:438e $ff $ff GFX GFX
-    dw   `00000000                                     ;; 0b:4390 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4392 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4394 $00 $00 GFX GFX
-    dw   `10101010                                     ;; 0b:4396 $aa $00 GFX GFX
-    dw   `01010101                                     ;; 0b:4398 $55 $00 GFX GFX
-    dw   `11111111                                     ;; 0b:439a $ff $00 GFX GFX
-    dw   `11111111                                     ;; 0b:439c $ff $00 GFX GFX
-    dw   `33333333                                     ;; 0b:439e $ff $ff GFX GFX
-    dw   `00000000                                     ;; 0b:43a0 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:43a2 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:43a4 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:43a6 $00 $00 GFX GFX
-    dw   `01010101                                     ;; 0b:43a8 $55 $00 GFX GFX
-    dw   `10101010                                     ;; 0b:43aa $aa $00 GFX GFX
-    dw   `11111111                                     ;; 0b:43ac $ff $00 GFX GFX
-    dw   `11111111                                     ;; 0b:43ae $ff $00 GFX GFX
-    dw   `00000000                                     ;; 0b:43b0 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:43b2 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:43b4 $00 $00 GFX GFX
-    dw   `01010101                                     ;; 0b:43b6 $55 $00 GFX GFX
-    dw   `10101010                                     ;; 0b:43b8 $aa $00 GFX GFX
-    dw   `01011111                                     ;; 0b:43ba $5f $00 GFX GFX
-    dw   `11111111                                     ;; 0b:43bc $ff $00 GFX GFX
-    dw   `11113333                                     ;; 0b:43be $ff $0f GFX GFX
-    dw   `00000000                                     ;; 0b:43c0 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:43c2 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:43c4 $00 $00 GFX GFX
-    dw   `01010101                                     ;; 0b:43c6 $55 $00 GFX GFX
-    dw   `10101010                                     ;; 0b:43c8 $aa $00 GFX GFX
-    dw   `11111111                                     ;; 0b:43ca $ff $00 GFX GFX
-    dw   `11111113                                     ;; 0b:43cc $ff $01 GFX GFX
-    dw   `33333333                                     ;; 0b:43ce $ff $ff GFX GFX
-    dw   `00000000                                     ;; 0b:43d0 $00 $00 GFX GFX
-    dw   `00000001                                     ;; 0b:43d2 $01 $00 GFX GFX
-    dw   `10101010                                     ;; 0b:43d4 $aa $00 GFX GFX
-    dw   `01010101                                     ;; 0b:43d6 $55 $00 GFX GFX
-    dw   `11111111                                     ;; 0b:43d8 $ff $00 GFX GFX
-    dw   `11111333                                     ;; 0b:43da $ff $07 GFX GFX
-    dw   `33333333                                     ;; 0b:43dc $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:43de $ff $ff GFX GFX
-    dw   `00101011                                     ;; 0b:43e0 $2b $00 GFX GFX
-    dw   `01011113                                     ;; 0b:43e2 $5f $01 GFX GFX
-    dw   `10111133                                     ;; 0b:43e4 $bf $03 GFX GFX
-    dw   `11113333                                     ;; 0b:43e6 $ff $0f GFX GFX
-    dw   `13333333                                     ;; 0b:43e8 $ff $7f GFX GFX
-    dw   `33333333                                     ;; 0b:43ea $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:43ec $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:43ee $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:43f0 $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:43f2 $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:43f4 $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:43f6 $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:43f8 $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:43fa $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:43fc $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:43fe $ff $ff GFX GFX
-    dw   `00000100                                     ;; 0b:4400 $04 $00 GFX GFX
-    dw   `00000200                                     ;; 0b:4402 $00 $04 GFX GFX
-    dw   `00000200                                     ;; 0b:4404 $00 $04 GFX GFX
-    dw   `00000200                                     ;; 0b:4406 $00 $04 GFX GFX
-    dw   `00002120                                     ;; 0b:4408 $04 $0a GFX GFX
-    dw   `00002120                                     ;; 0b:440a $04 $0a GFX GFX
-    dw   `00021012                                     ;; 0b:440c $0a $11 GFX GFX
-    dw   `12210001                                     ;; 0b:440e $91 $60 GFX GFX
-    dw   `00000000                                     ;; 0b:4410 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4412 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4414 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4416 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4418 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:441a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:441c $00 $00 GFX GFX
-    dw   `22100000                                     ;; 0b:441e $20 $c0 GFX GFX
-    dw   `00021012                                     ;; 0b:4420 $0a $11 GFX GFX
-    dw   `00202020                                     ;; 0b:4422 $00 $2a GFX GFX
-    dw   `20002120                                     ;; 0b:4424 $04 $8a GFX GFX
-    dw   `33100200                                     ;; 0b:4426 $e0 $c4 GFX GFX
-    dw   `11310200                                     ;; 0b:4428 $f0 $24 GFX GFX
-    dw   `31030200                                     ;; 0b:442a $d0 $94 GFX GFX
-    dw   `31130100                                     ;; 0b:442c $f4 $90 GFX GFX
-    dw   `33111000                                     ;; 0b:442e $f8 $c0 GFX GFX
-    dw   `11110100                                     ;; 0b:4430 $f4 $00 GFX GFX
-    dw   `10101010                                     ;; 0b:4432 $aa $00 GFX GFX
-    dw   `01010000                                     ;; 0b:4434 $50 $00 GFX GFX
-    dw   `00000003                                     ;; 0b:4436 $01 $01 GFX GFX
-    dw   `00000122                                     ;; 0b:4438 $04 $03 GFX GFX
-    dw   `00011000                                     ;; 0b:443a $18 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:443c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:443e $00 $00 GFX GFX
-    dw   `02300000                                     ;; 0b:4440 $20 $60 GFX GFX
-    dw   `02300101                                     ;; 0b:4442 $25 $60 GFX GFX
-    dw   `32300000                                     ;; 0b:4444 $a0 $e0 GFX GFX
-    dw   `13222000                                     ;; 0b:4446 $c0 $78 GFX GFX
-    dw   `01301210                                     ;; 0b:4448 $6a $24 GFX GFX
-    dw   `00012221                                     ;; 0b:444a $11 $0e GFX GFX
-    dw   `00000001                                     ;; 0b:444c $01 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:444e $00 $00 GFX GFX
-    dw   `00331301                                     ;; 0b:4450 $3d $34 GFX GFX
-    dw   `00003001                                     ;; 0b:4452 $09 $08 GFX GFX
-    dw   `01000010                                     ;; 0b:4454 $42 $00 GFX GFX
-    dw   `00000001                                     ;; 0b:4456 $01 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4458 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:445a $00 $00 GFX GFX
-    dw   `11000000                                     ;; 0b:445c $c0 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:445e $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4460 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4462 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4464 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4466 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4468 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:446a $00 $00 GFX GFX
-    dw   `20000020                                     ;; 0b:446c $00 $82 GFX GFX
-    dw   `02101200                                     ;; 0b:446e $28 $44 GFX GFX
-    dw   `01222100                                     ;; 0b:4470 $44 $38 GFX GFX
-    dw   `00202000                                     ;; 0b:4472 $00 $28 GFX GFX
-    dw   `01222100                                     ;; 0b:4474 $44 $38 GFX GFX
-    dw   `02101200                                     ;; 0b:4476 $28 $44 GFX GFX
-    dw   `20310020                                     ;; 0b:4478 $30 $a2 GFX GFX
-    dw   `01030300                                     ;; 0b:447a $54 $14 GFX GFX
-    dw   `31131300                                     ;; 0b:447c $fc $94 GFX GFX
-    dw   `33111300                                     ;; 0b:447e $fc $c4 GFX GFX
-    dw   `33333333                                     ;; 0b:4480 $ff $ff GFX GFX
-    dw   `33333330                                     ;; 0b:4482 $fe $fe GFX GFX
-    dw   `33333300                                     ;; 0b:4484 $fc $fc GFX GFX
-    dw   `33333300                                     ;; 0b:4486 $fc $fc GFX GFX
-    dw   `33333310                                     ;; 0b:4488 $fe $fc GFX GFX
-    dw   `33333331                                     ;; 0b:448a $ff $fe GFX GFX
-    dw   `33333333                                     ;; 0b:448c $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:448e $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:4490 $ff $ff GFX GFX
-    dw   `00003330                                     ;; 0b:4492 $0e $0e GFX GFX
-    dw   `11110001                                     ;; 0b:4494 $f1 $00 GFX GFX
-    dw   `33333113                                     ;; 0b:4496 $ff $f9 GFX GFX
-    dw   `03310333                                     ;; 0b:4498 $77 $67 GFX GFX
-    dw   `13331033                                     ;; 0b:449a $fb $73 GFX GFX
-    dw   `33331033                                     ;; 0b:449c $fb $f3 GFX GFX
-    dw   `33331033                                     ;; 0b:449e $fb $f3 GFX GFX
-    dw   `00333333                                     ;; 0b:44a0 $3f $3f GFX GFX
-    dw   `11030033                                     ;; 0b:44a2 $d3 $13 GFX GFX
-    dw   `33030333                                     ;; 0b:44a4 $d7 $d7 GFX GFX
-    dw   `00130333                                     ;; 0b:44a6 $37 $17 GFX GFX
-    dw   `11310333                                     ;; 0b:44a8 $f7 $27 GFX GFX
-    dw   `33310333                                     ;; 0b:44aa $f7 $e7 GFX GFX
-    dw   `33310333                                     ;; 0b:44ac $f7 $e7 GFX GFX
-    dw   `33310300                                     ;; 0b:44ae $f4 $e4 GFX GFX
-    dw   `33333333                                     ;; 0b:44b0 $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:44b2 $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:44b4 $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:44b6 $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:44b8 $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:44ba $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:44bc $ff $ff GFX GFX
-    dw   `33331003                                     ;; 0b:44be $f9 $f1 GFX GFX
-    dw   `33333333                                     ;; 0b:44c0 $ff $ff GFX GFX
-    dw   `33300333                                     ;; 0b:44c2 $e7 $e7 GFX GFX
-    dw   `33330000                                     ;; 0b:44c4 $f0 $f0 GFX GFX
-    dw   `33331011                                     ;; 0b:44c6 $fb $f0 GFX GFX
-    dw   `33331033                                     ;; 0b:44c8 $fb $f3 GFX GFX
-    dw   `33331033                                     ;; 0b:44ca $fb $f3 GFX GFX
-    dw   `33331033                                     ;; 0b:44cc $fb $f3 GFX GFX
-    dw   `33331000                                     ;; 0b:44ce $f8 $f0 GFX GFX
-    dw   `33303333                                     ;; 0b:44d0 $ef $ef GFX GFX
-    dw   `00003333                                     ;; 0b:44d2 $0f $0f GFX GFX
-    dw   `11103333                                     ;; 0b:44d4 $ef $0f GFX GFX
-    dw   `33103333                                     ;; 0b:44d6 $ef $cf GFX GFX
-    dw   `33313333                                     ;; 0b:44d8 $ff $ef GFX GFX
-    dw   `33333333                                     ;; 0b:44da $ff $ff GFX GFX
-    dw   `03333333                                     ;; 0b:44dc $7f $7f GFX GFX
-    dw   `03333100                                     ;; 0b:44de $7c $78 GFX GFX
-    dw   `33333333                                     ;; 0b:44e0 $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:44e2 $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:44e4 $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:44e6 $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:44e8 $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:44ea $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:44ec $ff $ff GFX GFX
-    dw   `30033330                                     ;; 0b:44ee $9e $9e GFX GFX
-    dw   `33333333                                     ;; 0b:44f0 $ff $ff GFX GFX
-    dw   `30003333                                     ;; 0b:44f2 $8f $8f GFX GFX
-    dw   `33100333                                     ;; 0b:44f4 $e7 $c7 GFX GFX
-    dw   `33101333                                     ;; 0b:44f6 $ef $c7 GFX GFX
-    dw   `33103333                                     ;; 0b:44f8 $ef $cf GFX GFX
-    dw   `33103333                                     ;; 0b:44fa $ef $cf GFX GFX
-    dw   `33103333                                     ;; 0b:44fc $ef $cf GFX GFX
-    dw   `00103333                                     ;; 0b:44fe $2f $0f GFX GFX
-    dw   `33331033                                     ;; 0b:4500 $fb $f3 GFX GFX
-    dw   `33331033                                     ;; 0b:4502 $fb $f3 GFX GFX
-    dw   `33331033                                     ;; 0b:4504 $fb $f3 GFX GFX
-    dw   `33331033                                     ;; 0b:4506 $fb $f3 GFX GFX
-    dw   `33331003                                     ;; 0b:4508 $f9 $f1 GFX GFX
-    dw   `33331013                                     ;; 0b:450a $fb $f1 GFX GFX
-    dw   `33310133                                     ;; 0b:450c $f7 $e3 GFX GFX
-    dw   `33311333                                     ;; 0b:450e $ff $e7 GFX GFX
-    dw   `33310011                                     ;; 0b:4510 $f3 $e0 GFX GFX
-    dw   `33310131                                     ;; 0b:4512 $f7 $e2 GFX GFX
-    dw   `33310331                                     ;; 0b:4514 $f7 $e6 GFX GFX
-    dw   `33310331                                     ;; 0b:4516 $f7 $e6 GFX GFX
-    dw   `33310331                                     ;; 0b:4518 $f7 $e6 GFX GFX
-    dw   `33310331                                     ;; 0b:451a $f7 $e6 GFX GFX
-    dw   `33100031                                     ;; 0b:451c $e3 $c2 GFX GFX
-    dw   `33111331                                     ;; 0b:451e $ff $c6 GFX GFX
-    dw   `03310330                                     ;; 0b:4520 $76 $66 GFX GFX
-    dw   `03103331                                     ;; 0b:4522 $6f $4e GFX GFX
-    dw   `03100000                                     ;; 0b:4524 $60 $40 GFX GFX
-    dw   `03103333                                     ;; 0b:4526 $6f $4f GFX GFX
-    dw   `03103333                                     ;; 0b:4528 $6f $4f GFX GFX
-    dw   `03310330                                     ;; 0b:452a $76 $66 GFX GFX
-    dw   `00331001                                     ;; 0b:452c $39 $30 GFX GFX
-    dw   `13333113                                     ;; 0b:452e $ff $79 GFX GFX
-    dw   `33331011                                     ;; 0b:4530 $fb $f0 GFX GFX
-    dw   `03331033                                     ;; 0b:4532 $7b $73 GFX GFX
-    dw   `03331033                                     ;; 0b:4534 $7b $73 GFX GFX
-    dw   `33331033                                     ;; 0b:4536 $fb $f3 GFX GFX
-    dw   `03331033                                     ;; 0b:4538 $7b $73 GFX GFX
-    dw   `33331000                                     ;; 0b:453a $f8 $f0 GFX GFX
-    dw   `33310111                                     ;; 0b:453c $f7 $e0 GFX GFX
-    dw   `33313333                                     ;; 0b:453e $ff $ef GFX GFX
-    dw   `03333310                                     ;; 0b:4540 $7e $7c GFX GFX
-    dw   `03333310                                     ;; 0b:4542 $7e $7c GFX GFX
-    dw   `13333310                                     ;; 0b:4544 $fe $7c GFX GFX
-    dw   `33333310                                     ;; 0b:4546 $fe $fc GFX GFX
-    dw   `33303310                                     ;; 0b:4548 $ee $ec GFX GFX
-    dw   `33103310                                     ;; 0b:454a $ee $cc GFX GFX
-    dw   `00003100                                     ;; 0b:454c $0c $08 GFX GFX
-    dw   `11113113                                     ;; 0b:454e $ff $09 GFX GFX
-    dw   `01103300                                     ;; 0b:4550 $6c $0c GFX GFX
-    dw   `13103103                                     ;; 0b:4552 $ed $49 GFX GFX
-    dw   `33103103                                     ;; 0b:4554 $ed $c9 GFX GFX
-    dw   `33103103                                     ;; 0b:4556 $ed $c9 GFX GFX
-    dw   `33103103                                     ;; 0b:4558 $ed $c9 GFX GFX
-    dw   `33103103                                     ;; 0b:455a $ed $c9 GFX GFX
-    dw   `31100310                                     ;; 0b:455c $e6 $84 GFX GFX
-    dw   `31113331                                     ;; 0b:455e $ff $8e GFX GFX
-    dw   `33003333                                     ;; 0b:4560 $cf $cf GFX GFX
-    dw   `33103333                                     ;; 0b:4562 $ef $cf GFX GFX
-    dw   `33103333                                     ;; 0b:4564 $ef $cf GFX GFX
-    dw   `33103333                                     ;; 0b:4566 $ef $cf GFX GFX
-    dw   `33100333                                     ;; 0b:4568 $e7 $c7 GFX GFX
-    dw   `33000333                                     ;; 0b:456a $c7 $c7 GFX GFX
-    dw   `00011030                                     ;; 0b:456c $1a $02 GFX GFX
-    dw   `11133131                                     ;; 0b:456e $ff $1a GFX GFX
-    dw   `33333332                                     ;; 0b:4570 $fe $ff GFX GFX
-    dw   `33333332                                     ;; 0b:4572 $fe $ff GFX GFX
-    dw   `33333312                                     ;; 0b:4574 $fe $fd GFX GFX
-    dw   `33333321                                     ;; 0b:4576 $fd $fe GFX GFX
-    dw   `33333111                                     ;; 0b:4578 $ff $f8 GFX GFX
-    dw   `33333101                                     ;; 0b:457a $fd $f8 GFX GFX
-    dw   `33331010                                     ;; 0b:457c $fa $f0 GFX GFX
-    dw   `33331000                                     ;; 0b:457e $f8 $f0 GFX GFX
-    dw   `32323232                                     ;; 0b:4580 $aa $ff GFX GFX
-    dw   `23232323                                     ;; 0b:4582 $55 $ff GFX GFX
-    dw   `12121212                                     ;; 0b:4584 $aa $55 GFX GFX
-    dw   `21212121                                     ;; 0b:4586 $55 $aa GFX GFX
-    dw   `11111111                                     ;; 0b:4588 $ff $00 GFX GFX
-    dw   `01010101                                     ;; 0b:458a $55 $00 GFX GFX
-    dw   `10101010                                     ;; 0b:458c $aa $00 GFX GFX
-    dw   `01000100                                     ;; 0b:458e $44 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4590 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4592 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4594 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4596 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4598 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:459a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:459c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:459e $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:45a0 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:45a2 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:45a4 $00 $00 GFX GFX
-    dw   `00000003                                     ;; 0b:45a6 $01 $01 GFX GFX
-    dw   `00000000                                     ;; 0b:45a8 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:45aa $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:45ac $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:45ae $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:45b0 $00 $00 GFX GFX
-    dw   `03330000                                     ;; 0b:45b2 $70 $70 GFX GFX
-    dw   `30013000                                     ;; 0b:45b4 $98 $88 GFX GFX
-    dw   `01122300                                     ;; 0b:45b6 $64 $1c GFX GFX
-    dw   `30023000                                     ;; 0b:45b8 $88 $98 GFX GFX
-    dw   `03330000                                     ;; 0b:45ba $70 $70 GFX GFX
-    dw   `02130000                                     ;; 0b:45bc $30 $50 GFX GFX
-    dw   `30013000                                     ;; 0b:45be $98 $88 GFX GFX
-    dw   `00000000                                     ;; 0b:45c0 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:45c2 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:45c4 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:45c6 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:45c8 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:45ca $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:45cc $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:45ce $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:45d0 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:45d2 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:45d4 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:45d6 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:45d8 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:45da $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:45dc $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:45de $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:45e0 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:45e2 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:45e4 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:45e6 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:45e8 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:45ea $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:45ec $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:45ee $00 $00 GFX GFX
-    dw   `00333300                                     ;; 0b:45f0 $3c $3c GFX GFX
-    dw   `03000030                                     ;; 0b:45f2 $42 $42 GFX GFX
-    dw   `30033003                                     ;; 0b:45f4 $99 $99 GFX GFX
-    dw   `30300003                                     ;; 0b:45f6 $a1 $a1 GFX GFX
-    dw   `30300303                                     ;; 0b:45f8 $a5 $a5 GFX GFX
-    dw   `30033003                                     ;; 0b:45fa $99 $99 GFX GFX
-    dw   `03000030                                     ;; 0b:45fc $42 $42 GFX GFX
-    dw   `00333300                                     ;; 0b:45fe $3c $3c GFX GFX
-    dw   `00000000                                     ;; 0b:4600 $00 $00 GFX GFX
-    dw   `31000333                                     ;; 0b:4602 $c7 $87 GFX GFX
-    dw   `03333333                                     ;; 0b:4604 $7f $7f GFX GFX
-    dw   `01333300                                     ;; 0b:4606 $7c $3c GFX GFX
-    dw   `00333300                                     ;; 0b:4608 $3c $3c GFX GFX
-    dw   `00333300                                     ;; 0b:460a $3c $3c GFX GFX
-    dw   `00333300                                     ;; 0b:460c $3c $3c GFX GFX
-    dw   `00323300                                     ;; 0b:460e $2c $3c GFX GFX
-    dw   `33333300                                     ;; 0b:4610 $fc $fc GFX GFX
-    dw   `33333333                                     ;; 0b:4612 $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:4614 $ff $ff GFX GFX
-    dw   `00333330                                     ;; 0b:4616 $3e $3e GFX GFX
-    dw   `00033300                                     ;; 0b:4618 $1c $1c GFX GFX
-    dw   `00033000                                     ;; 0b:461a $18 $18 GFX GFX
-    dw   `00030000                                     ;; 0b:461c $10 $10 GFX GFX
-    dw   `00000000                                     ;; 0b:461e $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4620 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4622 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4624 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4626 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4628 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:462a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:462c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:462e $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4630 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4632 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4634 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4636 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4638 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:463a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:463c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:463e $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4640 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4642 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4644 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4646 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4648 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:464a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:464c $00 $00 GFX GFX
-    dw   `00030000                                     ;; 0b:464e $10 $10 GFX GFX
-    dw   `00000000                                     ;; 0b:4650 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4652 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4654 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4656 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4658 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:465a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:465c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:465e $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4660 $00 $00 GFX GFX
-    dw   `00031000                                     ;; 0b:4662 $18 $10 GFX GFX
-    dw   `00003333                                     ;; 0b:4664 $0f $0f GFX GFX
-    dw   `00001333                                     ;; 0b:4666 $0f $07 GFX GFX
-    dw   `00000333                                     ;; 0b:4668 $07 $07 GFX GFX
-    dw   `00000333                                     ;; 0b:466a $07 $07 GFX GFX
-    dw   `00000333                                     ;; 0b:466c $07 $07 GFX GFX
-    dw   `00000323                                     ;; 0b:466e $05 $07 GFX GFX
-    dw   `00033333                                     ;; 0b:4670 $1f $1f GFX GFX
-    dw   `33333333                                     ;; 0b:4672 $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:4674 $ff $ff GFX GFX
-    dw   `30000333                                     ;; 0b:4676 $87 $87 GFX GFX
-    dw   `30000033                                     ;; 0b:4678 $83 $83 GFX GFX
-    dw   `30000033                                     ;; 0b:467a $83 $83 GFX GFX
-    dw   `30000030                                     ;; 0b:467c $82 $82 GFX GFX
-    dw   `30000000                                     ;; 0b:467e $80 $80 GFX GFX
-    dw   `30000000                                     ;; 0b:4680 $80 $80 GFX GFX
-    dw   `33300000                                     ;; 0b:4682 $e0 $e0 GFX GFX
-    dw   `33300000                                     ;; 0b:4684 $e0 $e0 GFX GFX
-    dw   `33000000                                     ;; 0b:4686 $c0 $c0 GFX GFX
-    dw   `30000000                                     ;; 0b:4688 $80 $80 GFX GFX
-    dw   `00000000                                     ;; 0b:468a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:468c $00 $00 GFX GFX
-    dw   `00030000                                     ;; 0b:468e $10 $10 GFX GFX
-    dw   `00000000                                     ;; 0b:4690 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4692 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4694 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4696 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4698 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:469a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:469c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:469e $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:46a0 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:46a2 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:46a4 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:46a6 $00 $00 GFX GFX
-    dw   `03300003                                     ;; 0b:46a8 $61 $61 GFX GFX
-    dw   `03033333                                     ;; 0b:46aa $5f $5f GFX GFX
-    dw   `00300001                                     ;; 0b:46ac $21 $20 GFX GFX
-    dw   `00033331                                     ;; 0b:46ae $1f $1e GFX GFX
-    dw   `30113000                                     ;; 0b:46b0 $b8 $88 GFX GFX
-    dw   `30013000                                     ;; 0b:46b2 $98 $88 GFX GFX
-    dw   `30113000                                     ;; 0b:46b4 $b8 $88 GFX GFX
-    dw   `33033000                                     ;; 0b:46b6 $d8 $d8 GFX GFX
-    dw   `11311300                                     ;; 0b:46b8 $fc $24 GFX GFX
-    dw   `13031333                                     ;; 0b:46ba $df $57 GFX GFX
-    dw   `13131111                                     ;; 0b:46bc $ff $50 GFX GFX
-    dw   `13231133                                     ;; 0b:46be $df $73 GFX GFX
-    dw   `00000000                                     ;; 0b:46c0 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:46c2 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:46c4 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:46c6 $00 $00 GFX GFX
-    dw   `00330000                                     ;; 0b:46c8 $30 $30 GFX GFX
-    dw   `33130000                                     ;; 0b:46ca $f0 $d0 GFX GFX
-    dw   `11300000                                     ;; 0b:46cc $e0 $20 GFX GFX
-    dw   `33000000                                     ;; 0b:46ce $c0 $c0 GFX GFX
-    dw   `00000000                                     ;; 0b:46d0 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:46d2 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:46d4 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:46d6 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:46d8 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:46da $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:46dc $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:46de $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:46e0 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:46e2 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:46e4 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:46e6 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:46e8 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:46ea $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:46ec $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:46ee $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:46f0 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:46f2 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:46f4 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:46f6 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:46f8 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:46fa $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:46fc $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:46fe $00 $00 GFX GFX
-    dw   `00332300                                     ;; 0b:4700 $34 $3c GFX GFX
-    dw   `00323300                                     ;; 0b:4702 $2c $3c GFX GFX
-    dw   `00332300                                     ;; 0b:4704 $34 $3c GFX GFX
-    dw   `00322300                                     ;; 0b:4706 $24 $3c GFX GFX
-    dw   `00322300                                     ;; 0b:4708 $24 $3c GFX GFX
-    dw   `00322300                                     ;; 0b:470a $24 $3c GFX GFX
-    dw   `00322300                                     ;; 0b:470c $24 $3c GFX GFX
-    dw   `00312300                                     ;; 0b:470e $34 $2c GFX GFX
-    dw   `00333333                                     ;; 0b:4710 $3f $3f GFX GFX
-    dw   `00033330                                     ;; 0b:4712 $1e $1e GFX GFX
-    dw   `00033330                                     ;; 0b:4714 $1e $1e GFX GFX
-    dw   `00033330                                     ;; 0b:4716 $1e $1e GFX GFX
-    dw   `00032330                                     ;; 0b:4718 $16 $1e GFX GFX
-    dw   `00033230                                     ;; 0b:471a $1a $1e GFX GFX
-    dw   `00032330                                     ;; 0b:471c $16 $1e GFX GFX
-    dw   `33033230                                     ;; 0b:471e $da $de GFX GFX
-    dw   `03333300                                     ;; 0b:4720 $7c $7c GFX GFX
-    dw   `00333300                                     ;; 0b:4722 $3c $3c GFX GFX
-    dw   `00333300                                     ;; 0b:4724 $3c $3c GFX GFX
-    dw   `00333330                                     ;; 0b:4726 $3e $3e GFX GFX
-    dw   `00333330                                     ;; 0b:4728 $3e $3e GFX GFX
-    dw   `00323233                                     ;; 0b:472a $2b $3f GFX GFX
-    dw   `00332323                                     ;; 0b:472c $35 $3f GFX GFX
-    dw   `00322222                                     ;; 0b:472e $20 $3f GFX GFX
-    dw   `03333000                                     ;; 0b:4730 $78 $78 GFX GFX
-    dw   `00330000                                     ;; 0b:4732 $30 $30 GFX GFX
-    dw   `00330033                                     ;; 0b:4734 $33 $33 GFX GFX
-    dw   `00330033                                     ;; 0b:4736 $33 $33 GFX GFX
-    dw   `00330033                                     ;; 0b:4738 $33 $33 GFX GFX
-    dw   `00330033                                     ;; 0b:473a $33 $33 GFX GFX
-    dw   `00330033                                     ;; 0b:473c $33 $33 GFX GFX
-    dw   `30330033                                     ;; 0b:473e $b3 $b3 GFX GFX
-    dw   `00330000                                     ;; 0b:4740 $30 $30 GFX GFX
-    dw   `33330000                                     ;; 0b:4742 $f0 $f0 GFX GFX
-    dw   `33330000                                     ;; 0b:4744 $f0 $f0 GFX GFX
-    dw   `33330000                                     ;; 0b:4746 $f0 $f0 GFX GFX
-    dw   `03333000                                     ;; 0b:4748 $78 $78 GFX GFX
-    dw   `03233000                                     ;; 0b:474a $58 $78 GFX GFX
-    dw   `03323000                                     ;; 0b:474c $68 $78 GFX GFX
-    dw   `03233000                                     ;; 0b:474e $58 $78 GFX GFX
-    dw   `03333330                                     ;; 0b:4750 $7e $7e GFX GFX
-    dw   `00333300                                     ;; 0b:4752 $3c $3c GFX GFX
-    dw   `00333300                                     ;; 0b:4754 $3c $3c GFX GFX
-    dw   `00333300                                     ;; 0b:4756 $3c $3c GFX GFX
-    dw   `00333300                                     ;; 0b:4758 $3c $3c GFX GFX
-    dw   `00323300                                     ;; 0b:475a $2c $3c GFX GFX
-    dw   `00332300                                     ;; 0b:475c $34 $3c GFX GFX
-    dw   `00323300                                     ;; 0b:475e $2c $3c GFX GFX
-    dw   `00000332                                     ;; 0b:4760 $06 $07 GFX GFX
-    dw   `00000323                                     ;; 0b:4762 $05 $07 GFX GFX
-    dw   `00000332                                     ;; 0b:4764 $06 $07 GFX GFX
-    dw   `00000322                                     ;; 0b:4766 $04 $07 GFX GFX
-    dw   `00000322                                     ;; 0b:4768 $04 $07 GFX GFX
-    dw   `00000322                                     ;; 0b:476a $04 $07 GFX GFX
-    dw   `00000322                                     ;; 0b:476c $04 $07 GFX GFX
-    dw   `00000312                                     ;; 0b:476e $06 $05 GFX GFX
-    dw   `30000000                                     ;; 0b:4770 $80 $80 GFX GFX
-    dw   `30000000                                     ;; 0b:4772 $80 $80 GFX GFX
-    dw   `30000033                                     ;; 0b:4774 $83 $83 GFX GFX
-    dw   `30000033                                     ;; 0b:4776 $83 $83 GFX GFX
-    dw   `30000033                                     ;; 0b:4778 $83 $83 GFX GFX
-    dw   `30000033                                     ;; 0b:477a $83 $83 GFX GFX
-    dw   `30000033                                     ;; 0b:477c $83 $83 GFX GFX
-    dw   `30033033                                     ;; 0b:477e $9b $9b GFX GFX
-    dw   `00330000                                     ;; 0b:4780 $30 $30 GFX GFX
-    dw   `33330000                                     ;; 0b:4782 $f0 $f0 GFX GFX
-    dw   `33330000                                     ;; 0b:4784 $f0 $f0 GFX GFX
-    dw   `33330000                                     ;; 0b:4786 $f0 $f0 GFX GFX
-    dw   `03333000                                     ;; 0b:4788 $78 $78 GFX GFX
-    dw   `03233000                                     ;; 0b:478a $58 $78 GFX GFX
-    dw   `03323000                                     ;; 0b:478c $68 $78 GFX GFX
-    dw   `03233000                                     ;; 0b:478e $58 $78 GFX GFX
-    dw   `00333330                                     ;; 0b:4790 $3e $3e GFX GFX
-    dw   `00033330                                     ;; 0b:4792 $1e $1e GFX GFX
-    dw   `00033330                                     ;; 0b:4794 $1e $1e GFX GFX
-    dw   `00033333                                     ;; 0b:4796 $1f $1f GFX GFX
-    dw   `00033333                                     ;; 0b:4798 $1f $1f GFX GFX
-    dw   `00032323                                     ;; 0b:479a $15 $1f GFX GFX
-    dw   `00033232                                     ;; 0b:479c $1a $1f GFX GFX
-    dw   `00032222                                     ;; 0b:479e $10 $1f GFX GFX
-    dw   `00000003                                     ;; 0b:47a0 $01 $01 GFX GFX
-    dw   `00000003                                     ;; 0b:47a2 $01 $01 GFX GFX
-    dw   `00000000                                     ;; 0b:47a4 $00 $00 GFX GFX
-    dw   `00333000                                     ;; 0b:47a6 $38 $38 GFX GFX
-    dw   `00033000                                     ;; 0b:47a8 $18 $18 GFX GFX
-    dw   `30033000                                     ;; 0b:47aa $98 $98 GFX GFX
-    dw   `30033000                                     ;; 0b:47ac $98 $98 GFX GFX
-    dw   `23033000                                     ;; 0b:47ae $58 $d8 GFX GFX
-    dw   `31313300                                     ;; 0b:47b0 $fc $ac GFX GFX
-    dw   `33133300                                     ;; 0b:47b2 $fc $dc GFX GFX
-    dw   `33333000                                     ;; 0b:47b4 $f8 $f8 GFX GFX
-    dw   `31323000                                     ;; 0b:47b6 $e8 $b8 GFX GFX
-    dw   `30323000                                     ;; 0b:47b8 $a8 $b8 GFX GFX
-    dw   `30323000                                     ;; 0b:47ba $a8 $b8 GFX GFX
-    dw   `30323000                                     ;; 0b:47bc $a8 $b8 GFX GFX
-    dw   `30123000                                     ;; 0b:47be $a8 $98 GFX GFX
-    dw   `00000300                                     ;; 0b:47c0 $04 $04 GFX GFX
-    dw   `00003300                                     ;; 0b:47c2 $0c $0c GFX GFX
-    dw   `00333300                                     ;; 0b:47c4 $3c $3c GFX GFX
-    dw   `33333300                                     ;; 0b:47c6 $fc $fc GFX GFX
-    dw   `33033330                                     ;; 0b:47c8 $de $de GFX GFX
-    dw   `33032330                                     ;; 0b:47ca $d6 $de GFX GFX
-    dw   `33033230                                     ;; 0b:47cc $da $de GFX GFX
-    dw   `33032330                                     ;; 0b:47ce $d6 $de GFX GFX
-    dw   `00000333                                     ;; 0b:47d0 $07 $07 GFX GFX
-    dw   `00003330                                     ;; 0b:47d2 $0e $0e GFX GFX
-    dw   `00003300                                     ;; 0b:47d4 $0c $0c GFX GFX
-    dw   `00033300                                     ;; 0b:47d6 $1c $1c GFX GFX
-    dw   `00033300                                     ;; 0b:47d8 $1c $1c GFX GFX
-    dw   `00032330                                     ;; 0b:47da $16 $1e GFX GFX
-    dw   `00033233                                     ;; 0b:47dc $1b $1f GFX GFX
-    dw   `00003323                                     ;; 0b:47de $0d $0f GFX GFX
-    dw   `30303333                                     ;; 0b:47e0 $af $af GFX GFX
-    dw   `33300333                                     ;; 0b:47e2 $e7 $e7 GFX GFX
-    dw   `03300333                                     ;; 0b:47e4 $67 $67 GFX GFX
-    dw   `03300333                                     ;; 0b:47e6 $67 $67 GFX GFX
-    dw   `00300033                                     ;; 0b:47e8 $23 $23 GFX GFX
-    dw   `00300032                                     ;; 0b:47ea $22 $23 GFX GFX
-    dw   `00300033                                     ;; 0b:47ec $23 $23 GFX GFX
-    dw   `00000032                                     ;; 0b:47ee $02 $03 GFX GFX
-    dw   `33003333                                     ;; 0b:47f0 $cf $cf GFX GFX
-    dw   `30000330                                     ;; 0b:47f2 $86 $86 GFX GFX
-    dw   `30000330                                     ;; 0b:47f4 $86 $86 GFX GFX
-    dw   `30003300                                     ;; 0b:47f6 $8c $8c GFX GFX
-    dw   `30003300                                     ;; 0b:47f8 $8c $8c GFX GFX
-    dw   `33003300                                     ;; 0b:47fa $cc $cc GFX GFX
-    dw   `23033000                                     ;; 0b:47fc $58 $d8 GFX GFX
-    dw   `33033000                                     ;; 0b:47fe $d8 $d8 GFX GFX
-    dw   `00321233                                     ;; 0b:4800 $2b $37 GFX GFX
-    dw   `00312133                                     ;; 0b:4802 $37 $2b GFX GFX
-    dw   `00321300                                     ;; 0b:4804 $2c $34 GFX GFX
-    dw   `00311300                                     ;; 0b:4806 $3c $24 GFX GFX
-    dw   `00311300                                     ;; 0b:4808 $3c $24 GFX GFX
-    dw   `00311300                                     ;; 0b:480a $3c $24 GFX GFX
-    dw   `00301300                                     ;; 0b:480c $2c $24 GFX GFX
-    dw   `00310300                                     ;; 0b:480e $34 $24 GFX GFX
-    dw   `33032230                                     ;; 0b:4810 $d2 $de GFX GFX
-    dw   `33032230                                     ;; 0b:4812 $d2 $de GFX GFX
-    dw   `30031230                                     ;; 0b:4814 $9a $96 GFX GFX
-    dw   `30032130                                     ;; 0b:4816 $96 $9a GFX GFX
-    dw   `00031230                                     ;; 0b:4818 $1a $16 GFX GFX
-    dw   `00032130                                     ;; 0b:481a $16 $1a GFX GFX
-    dw   `00031130                                     ;; 0b:481c $1e $12 GFX GFX
-    dw   `00031130                                     ;; 0b:481e $1e $12 GFX GFX
-    dw   `00322222                                     ;; 0b:4820 $20 $3f GFX GFX
-    dw   `00312321                                     ;; 0b:4822 $35 $2e GFX GFX
-    dw   `00323032                                     ;; 0b:4824 $2a $3b GFX GFX
-    dw   `00313003                                     ;; 0b:4826 $39 $29 GFX GFX
-    dw   `00313003                                     ;; 0b:4828 $39 $29 GFX GFX
-    dw   `00313000                                     ;; 0b:482a $38 $28 GFX GFX
-    dw   `00313000                                     ;; 0b:482c $38 $28 GFX GFX
-    dw   `00313000                                     ;; 0b:482e $38 $28 GFX GFX
-    dw   `30330033                                     ;; 0b:4830 $b3 $b3 GFX GFX
-    dw   `23230033                                     ;; 0b:4832 $53 $f3 GFX GFX
-    dw   `13130033                                     ;; 0b:4834 $f3 $53 GFX GFX
-    dw   `11130033                                     ;; 0b:4836 $f3 $13 GFX GFX
-    dw   `11130033                                     ;; 0b:4838 $f3 $13 GFX GFX
-    dw   `31130033                                     ;; 0b:483a $f3 $93 GFX GFX
-    dw   `30130033                                     ;; 0b:483c $b3 $93 GFX GFX
-    dw   `03030033                                     ;; 0b:483e $53 $53 GFX GFX
-    dw   `03223000                                     ;; 0b:4840 $48 $78 GFX GFX
-    dw   `00322300                                     ;; 0b:4842 $24 $3c GFX GFX
-    dw   `00312300                                     ;; 0b:4844 $34 $2c GFX GFX
-    dw   `00321300                                     ;; 0b:4846 $2c $34 GFX GFX
-    dw   `00311300                                     ;; 0b:4848 $3c $24 GFX GFX
-    dw   `03311300                                     ;; 0b:484a $7c $64 GFX GFX
-    dw   `33031130                                     ;; 0b:484c $de $d2 GFX GFX
-    dw   `30031130                                     ;; 0b:484e $9e $92 GFX GFX
-    dw   `00332300                                     ;; 0b:4850 $34 $3c GFX GFX
-    dw   `00322300                                     ;; 0b:4852 $24 $3c GFX GFX
-    dw   `00322300                                     ;; 0b:4854 $24 $3c GFX GFX
-    dw   `00321300                                     ;; 0b:4856 $2c $34 GFX GFX
-    dw   `00312300                                     ;; 0b:4858 $34 $2c GFX GFX
-    dw   `00321300                                     ;; 0b:485a $2c $34 GFX GFX
-    dw   `00311300                                     ;; 0b:485c $3c $24 GFX GFX
-    dw   `00311300                                     ;; 0b:485e $3c $24 GFX GFX
-    dw   `00000321                                     ;; 0b:4860 $05 $06 GFX GFX
-    dw   `00000312                                     ;; 0b:4862 $06 $05 GFX GFX
-    dw   `00000321                                     ;; 0b:4864 $05 $06 GFX GFX
-    dw   `00000311                                     ;; 0b:4866 $07 $04 GFX GFX
-    dw   `00000311                                     ;; 0b:4868 $07 $04 GFX GFX
-    dw   `00000311                                     ;; 0b:486a $07 $04 GFX GFX
-    dw   `00000301                                     ;; 0b:486c $05 $04 GFX GFX
-    dw   `00000310                                     ;; 0b:486e $06 $04 GFX GFX
-    dw   `23333033                                     ;; 0b:4870 $7b $fb GFX GFX
-    dw   `33333033                                     ;; 0b:4872 $fb $fb GFX GFX
-    dw   `30030033                                     ;; 0b:4874 $93 $93 GFX GFX
-    dw   `30030033                                     ;; 0b:4876 $93 $93 GFX GFX
-    dw   `30000033                                     ;; 0b:4878 $83 $83 GFX GFX
-    dw   `30000033                                     ;; 0b:487a $83 $83 GFX GFX
-    dw   `30000033                                     ;; 0b:487c $83 $83 GFX GFX
-    dw   `30000033                                     ;; 0b:487e $83 $83 GFX GFX
-    dw   `03223000                                     ;; 0b:4880 $48 $78 GFX GFX
-    dw   `00322300                                     ;; 0b:4882 $24 $3c GFX GFX
-    dw   `00312300                                     ;; 0b:4884 $34 $2c GFX GFX
-    dw   `00321300                                     ;; 0b:4886 $2c $34 GFX GFX
-    dw   `00311300                                     ;; 0b:4888 $3c $24 GFX GFX
-    dw   `03331300                                     ;; 0b:488a $7c $74 GFX GFX
-    dw   `33031130                                     ;; 0b:488c $de $d2 GFX GFX
-    dw   `30031130                                     ;; 0b:488e $9e $92 GFX GFX
-    dw   `00032222                                     ;; 0b:4890 $10 $1f GFX GFX
-    dw   `00031232                                     ;; 0b:4892 $1a $17 GFX GFX
-    dw   `00032303                                     ;; 0b:4894 $15 $1d GFX GFX
-    dw   `00031300                                     ;; 0b:4896 $1c $14 GFX GFX
-    dw   `00031300                                     ;; 0b:4898 $1c $14 GFX GFX
-    dw   `00031300                                     ;; 0b:489a $1c $14 GFX GFX
-    dw   `00031300                                     ;; 0b:489c $1c $14 GFX GFX
-    dw   `00031300                                     ;; 0b:489e $1c $14 GFX GFX
-    dw   `23033000                                     ;; 0b:48a0 $58 $d8 GFX GFX
-    dw   `12323000                                     ;; 0b:48a2 $a8 $78 GFX GFX
-    dw   `21313000                                     ;; 0b:48a4 $78 $a8 GFX GFX
-    dw   `31113000                                     ;; 0b:48a6 $f8 $88 GFX GFX
-    dw   `31113000                                     ;; 0b:48a8 $f8 $88 GFX GFX
-    dw   `03113000                                     ;; 0b:48aa $78 $48 GFX GFX
-    dw   `03013000                                     ;; 0b:48ac $58 $48 GFX GFX
-    dw   `00303000                                     ;; 0b:48ae $28 $28 GFX GFX
-    dw   `30123000                                     ;; 0b:48b0 $a8 $98 GFX GFX
-    dw   `30123000                                     ;; 0b:48b2 $a8 $98 GFX GFX
-    dw   `30123000                                     ;; 0b:48b4 $a8 $98 GFX GFX
-    dw   `30123000                                     ;; 0b:48b6 $a8 $98 GFX GFX
-    dw   `30123000                                     ;; 0b:48b8 $a8 $98 GFX GFX
-    dw   `30123000                                     ;; 0b:48ba $a8 $98 GFX GFX
-    dw   `30123000                                     ;; 0b:48bc $a8 $98 GFX GFX
-    dw   `32123000                                     ;; 0b:48be $a8 $d8 GFX GFX
-    dw   `33032230                                     ;; 0b:48c0 $d2 $de GFX GFX
-    dw   `33003223                                     ;; 0b:48c2 $c9 $cf GFX GFX
-    dw   `33003123                                     ;; 0b:48c4 $cd $cb GFX GFX
-    dw   `33003213                                     ;; 0b:48c6 $cb $cd GFX GFX
-    dw   `33003113                                     ;; 0b:48c8 $cf $c9 GFX GFX
-    dw   `33033113                                     ;; 0b:48ca $df $d9 GFX GFX
-    dw   `33330311                                     ;; 0b:48cc $f7 $f4 GFX GFX
-    dw   `33300311                                     ;; 0b:48ce $e7 $e4 GFX GFX
-    dw   `00003223                                     ;; 0b:48d0 $09 $0f GFX GFX
-    dw   `00000322                                     ;; 0b:48d2 $04 $07 GFX GFX
-    dw   `00000031                                     ;; 0b:48d4 $03 $02 GFX GFX
-    dw   `00000032                                     ;; 0b:48d6 $02 $03 GFX GFX
-    dw   `00000003                                     ;; 0b:48d8 $01 $01 GFX GFX
-    dw   `00000000                                     ;; 0b:48da $00 $00 GFX GFX
-    dw   `30000000                                     ;; 0b:48dc $80 $80 GFX GFX
-    dw   `30003000                                     ;; 0b:48de $88 $88 GFX GFX
-    dw   `30000003                                     ;; 0b:48e0 $81 $81 GFX GFX
-    dw   `30000003                                     ;; 0b:48e2 $81 $81 GFX GFX
-    dw   `23000003                                     ;; 0b:48e4 $41 $c1 GFX GFX
-    dw   `13000003                                     ;; 0b:48e6 $c1 $41 GFX GFX
-    dw   `11300003                                     ;; 0b:48e8 $e1 $21 GFX GFX
-    dw   `31130000                                     ;; 0b:48ea $f0 $90 GFX GFX
-    dw   `31130000                                     ;; 0b:48ec $f0 $90 GFX GFX
-    dw   `03113000                                     ;; 0b:48ee $78 $48 GFX GFX
-    dw   `23033000                                     ;; 0b:48f0 $58 $d8 GFX GFX
-    dw   `23033000                                     ;; 0b:48f2 $58 $d8 GFX GFX
-    dw   `22230000                                     ;; 0b:48f4 $10 $f0 GFX GFX
-    dw   `21230000                                     ;; 0b:48f6 $50 $b0 GFX GFX
-    dw   `12130000                                     ;; 0b:48f8 $b0 $50 GFX GFX
-    dw   `31300000                                     ;; 0b:48fa $e0 $a0 GFX GFX
-    dw   `31300000                                     ;; 0b:48fc $e0 $a0 GFX GFX
-    dw   `31300000                                     ;; 0b:48fe $e0 $a0 GFX GFX
-    dw   `00301300                                     ;; 0b:4900 $2c $24 GFX GFX
-    dw   `00310300                                     ;; 0b:4902 $34 $24 GFX GFX
-    dw   `00300300                                     ;; 0b:4904 $24 $24 GFX GFX
-    dw   `00300300                                     ;; 0b:4906 $24 $24 GFX GFX
-    dw   `00300300                                     ;; 0b:4908 $24 $24 GFX GFX
-    dw   `00300300                                     ;; 0b:490a $24 $24 GFX GFX
-    dw   `00300300                                     ;; 0b:490c $24 $24 GFX GFX
-    dw   `00300300                                     ;; 0b:490e $24 $24 GFX GFX
-    dw   `00030130                                     ;; 0b:4910 $16 $12 GFX GFX
-    dw   `00031030                                     ;; 0b:4912 $1a $12 GFX GFX
-    dw   `00030130                                     ;; 0b:4914 $16 $12 GFX GFX
-    dw   `00030030                                     ;; 0b:4916 $12 $12 GFX GFX
-    dw   `00030030                                     ;; 0b:4918 $12 $12 GFX GFX
-    dw   `00020020                                     ;; 0b:491a $00 $12 GFX GFX
-    dw   `00222222                                     ;; 0b:491c $00 $3f GFX GFX
-    dw   `00000000                                     ;; 0b:491e $00 $00 GFX GFX
-    dw   `00313000                                     ;; 0b:4920 $38 $28 GFX GFX
-    dw   `00303000                                     ;; 0b:4922 $28 $28 GFX GFX
-    dw   `00313000                                     ;; 0b:4924 $38 $28 GFX GFX
-    dw   `00303000                                     ;; 0b:4926 $28 $28 GFX GFX
-    dw   `00303000                                     ;; 0b:4928 $28 $28 GFX GFX
-    dw   `00202000                                     ;; 0b:492a $00 $28 GFX GFX
-    dw   `02222200                                     ;; 0b:492c $00 $7c GFX GFX
-    dw   `00000000                                     ;; 0b:492e $00 $00 GFX GFX
-    dw   `03130033                                     ;; 0b:4930 $73 $53 GFX GFX
-    dw   `03030023                                     ;; 0b:4932 $51 $53 GFX GFX
-    dw   `00330032                                     ;; 0b:4934 $32 $33 GFX GFX
-    dw   `00230023                                     ;; 0b:4936 $11 $33 GFX GFX
-    dw   `00020032                                     ;; 0b:4938 $02 $13 GFX GFX
-    dw   `00020022                                     ;; 0b:493a $00 $13 GFX GFX
-    dw   `00020222                                     ;; 0b:493c $00 $17 GFX GFX
-    dw   `00000000                                     ;; 0b:493e $00 $00 GFX GFX
-    dw   `00030130                                     ;; 0b:4940 $16 $12 GFX GFX
-    dw   `00031030                                     ;; 0b:4942 $1a $12 GFX GFX
-    dw   `00030130                                     ;; 0b:4944 $16 $12 GFX GFX
-    dw   `00003003                                     ;; 0b:4946 $09 $09 GFX GFX
-    dw   `00003003                                     ;; 0b:4948 $09 $09 GFX GFX
-    dw   `00002002                                     ;; 0b:494a $00 $09 GFX GFX
-    dw   `20022222                                     ;; 0b:494c $00 $9f GFX GFX
-    dw   `00000000                                     ;; 0b:494e $00 $00 GFX GFX
-    dw   `00310300                                     ;; 0b:4950 $34 $24 GFX GFX
-    dw   `00301300                                     ;; 0b:4952 $2c $24 GFX GFX
-    dw   `00310300                                     ;; 0b:4954 $34 $24 GFX GFX
-    dw   `00301300                                     ;; 0b:4956 $2c $24 GFX GFX
-    dw   `00200333                                     ;; 0b:4958 $07 $27 GFX GFX
-    dw   `00200000                                     ;; 0b:495a $00 $20 GFX GFX
-    dw   `22222222                                     ;; 0b:495c $00 $ff GFX GFX
-    dw   `00000000                                     ;; 0b:495e $00 $00 GFX GFX
-    dw   `00300301                                     ;; 0b:4960 $25 $24 GFX GFX
-    dw   `00300310                                     ;; 0b:4962 $26 $24 GFX GFX
-    dw   `03300300                                     ;; 0b:4964 $64 $64 GFX GFX
-    dw   `31300300                                     ;; 0b:4966 $e4 $a4 GFX GFX
-    dw   `00200300                                     ;; 0b:4968 $04 $24 GFX GFX
-    dw   `00200300                                     ;; 0b:496a $04 $24 GFX GFX
-    dw   `22200300                                     ;; 0b:496c $04 $e4 GFX GFX
-    dw   `00000300                                     ;; 0b:496e $04 $04 GFX GFX
-    dw   `30000033                                     ;; 0b:4970 $83 $83 GFX GFX
-    dw   `30000023                                     ;; 0b:4972 $81 $83 GFX GFX
-    dw   `30000032                                     ;; 0b:4974 $82 $83 GFX GFX
-    dw   `30000023                                     ;; 0b:4976 $81 $83 GFX GFX
-    dw   `30000032                                     ;; 0b:4978 $82 $83 GFX GFX
-    dw   `30000022                                     ;; 0b:497a $80 $83 GFX GFX
-    dw   `30000222                                     ;; 0b:497c $80 $87 GFX GFX
-    dw   `20000000                                     ;; 0b:497e $00 $80 GFX GFX
-    dw   `00030130                                     ;; 0b:4980 $16 $12 GFX GFX
-    dw   `00031030                                     ;; 0b:4982 $1a $12 GFX GFX
-    dw   `00030130                                     ;; 0b:4984 $16 $12 GFX GFX
-    dw   `00003003                                     ;; 0b:4986 $09 $09 GFX GFX
-    dw   `00002002                                     ;; 0b:4988 $00 $09 GFX GFX
-    dw   `00002002                                     ;; 0b:498a $00 $09 GFX GFX
-    dw   `20022222                                     ;; 0b:498c $00 $9f GFX GFX
-    dw   `00000000                                     ;; 0b:498e $00 $00 GFX GFX
-    dw   `00031300                                     ;; 0b:4990 $1c $14 GFX GFX
-    dw   `00030300                                     ;; 0b:4992 $14 $14 GFX GFX
-    dw   `00031300                                     ;; 0b:4994 $1c $14 GFX GFX
-    dw   `00030300                                     ;; 0b:4996 $14 $14 GFX GFX
-    dw   `00030300                                     ;; 0b:4998 $14 $14 GFX GFX
-    dw   `00020200                                     ;; 0b:499a $00 $14 GFX GFX
-    dw   `20222220                                     ;; 0b:499c $00 $be GFX GFX
-    dw   `00000000                                     ;; 0b:499e $00 $00 GFX GFX
-    dw   `00313000                                     ;; 0b:49a0 $38 $28 GFX GFX
-    dw   `00303000                                     ;; 0b:49a2 $28 $28 GFX GFX
-    dw   `00033000                                     ;; 0b:49a4 $18 $18 GFX GFX
-    dw   `00023000                                     ;; 0b:49a6 $08 $18 GFX GFX
-    dw   `00002000                                     ;; 0b:49a8 $00 $08 GFX GFX
-    dw   `00002000                                     ;; 0b:49aa $00 $08 GFX GFX
-    dw   `00002000                                     ;; 0b:49ac $00 $08 GFX GFX
-    dw   `00000000                                     ;; 0b:49ae $00 $00 GFX GFX
-    dw   `03130000                                     ;; 0b:49b0 $70 $50 GFX GFX
-    dw   `03130000                                     ;; 0b:49b2 $70 $50 GFX GFX
-    dw   `03130000                                     ;; 0b:49b4 $70 $50 GFX GFX
-    dw   `03130000                                     ;; 0b:49b6 $70 $50 GFX GFX
-    dw   `03130000                                     ;; 0b:49b8 $70 $50 GFX GFX
-    dw   `03130000                                     ;; 0b:49ba $70 $50 GFX GFX
-    dw   `03130002                                     ;; 0b:49bc $70 $51 GFX GFX
-    dw   `03130000                                     ;; 0b:49be $70 $50 GFX GFX
-    dw   `33000301                                     ;; 0b:49c0 $c5 $c4 GFX GFX
-    dw   `33000310                                     ;; 0b:49c2 $c6 $c4 GFX GFX
-    dw   `23000301                                     ;; 0b:49c4 $45 $c4 GFX GFX
-    dw   `32000030                                     ;; 0b:49c6 $82 $c2 GFX GFX
-    dw   `23000020                                     ;; 0b:49c8 $40 $c2 GFX GFX
-    dw   `22000020                                     ;; 0b:49ca $00 $c2 GFX GFX
-    dw   `22200222                                     ;; 0b:49cc $00 $e7 GFX GFX
-    dw   `00000000                                     ;; 0b:49ce $00 $00 GFX GFX
-    dw   `30003000                                     ;; 0b:49d0 $88 $88 GFX GFX
-    dw   `30003000                                     ;; 0b:49d2 $88 $88 GFX GFX
-    dw   `30003300                                     ;; 0b:49d4 $8c $8c GFX GFX
-    dw   `03002300                                     ;; 0b:49d6 $44 $4c GFX GFX
-    dw   `03002230                                     ;; 0b:49d8 $42 $4e GFX GFX
-    dw   `02002022                                     ;; 0b:49da $00 $4b GFX GFX
-    dw   `22202002                                     ;; 0b:49dc $00 $e9 GFX GFX
-    dw   `00000000                                     ;; 0b:49de $00 $00 GFX GFX
-    dw   `03013000                                     ;; 0b:49e0 $58 $48 GFX GFX
-    dw   `03003000                                     ;; 0b:49e2 $48 $48 GFX GFX
-    dw   `03003000                                     ;; 0b:49e4 $48 $48 GFX GFX
-    dw   `02002000                                     ;; 0b:49e6 $00 $48 GFX GFX
-    dw   `20020000                                     ;; 0b:49e8 $00 $90 GFX GFX
-    dw   `00200000                                     ;; 0b:49ea $00 $20 GFX GFX
-    dw   `22000000                                     ;; 0b:49ec $00 $c0 GFX GFX
-    dw   `00000000                                     ;; 0b:49ee $00 $00 GFX GFX
-    dw   `31300000                                     ;; 0b:49f0 $e0 $a0 GFX GFX
-    dw   `31300000                                     ;; 0b:49f2 $e0 $a0 GFX GFX
-    dw   `31300000                                     ;; 0b:49f4 $e0 $a0 GFX GFX
-    dw   `30300000                                     ;; 0b:49f6 $a0 $a0 GFX GFX
-    dw   `31300000                                     ;; 0b:49f8 $e0 $a0 GFX GFX
-    dw   `30300000                                     ;; 0b:49fa $a0 $a0 GFX GFX
-    dw   `30300000                                     ;; 0b:49fc $a0 $a0 GFX GFX
-    dw   `30200000                                     ;; 0b:49fe $80 $a0 GFX GFX
-    dw   `00300220                                     ;; 0b:4a00 $20 $26 GFX GFX
-    dw   `00302000                                     ;; 0b:4a02 $20 $28 GFX GFX
-    dw   `00320000                                     ;; 0b:4a04 $20 $30 GFX GFX
-    dw   `02200000                                     ;; 0b:4a06 $00 $60 GFX GFX
-    dw   `00000000                                     ;; 0b:4a08 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4a0a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4a0c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4a0e $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4a10 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4a12 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4a14 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4a16 $00 $00 GFX GFX
-    dw   `00000003                                     ;; 0b:4a18 $01 $01 GFX GFX
-    dw   `00000003                                     ;; 0b:4a1a $01 $01 GFX GFX
-    dw   `00000003                                     ;; 0b:4a1c $01 $01 GFX GFX
-    dw   `00000030                                     ;; 0b:4a1e $02 $02 GFX GFX
-    dw   `03000003                                     ;; 0b:4a20 $41 $41 GFX GFX
-    dw   `33300000                                     ;; 0b:4a22 $e0 $e0 GFX GFX
-    dw   `33300000                                     ;; 0b:4a24 $e0 $e0 GFX GFX
-    dw   `33300000                                     ;; 0b:4a26 $e0 $e0 GFX GFX
-    dw   `03330000                                     ;; 0b:4a28 $70 $70 GFX GFX
-    dw   `03330000                                     ;; 0b:4a2a $70 $70 GFX GFX
-    dw   `03330000                                     ;; 0b:4a2c $70 $70 GFX GFX
-    dw   `00333000                                     ;; 0b:4a2e $38 $38 GFX GFX
-    dw   `33330003                                     ;; 0b:4a30 $f1 $f1 GFX GFX
-    dw   `33303300                                     ;; 0b:4a32 $ec $ec GFX GFX
-    dw   `33303300                                     ;; 0b:4a34 $ec $ec GFX GFX
-    dw   `33300330                                     ;; 0b:4a36 $e6 $e6 GFX GFX
-    dw   `33300330                                     ;; 0b:4a38 $e6 $e6 GFX GFX
-    dw   `33300330                                     ;; 0b:4a3a $e6 $e6 GFX GFX
-    dw   `33300330                                     ;; 0b:4a3c $e6 $e6 GFX GFX
-    dw   `33300330                                     ;; 0b:4a3e $e6 $e6 GFX GFX
-    dw   `33300333                                     ;; 0b:4a40 $e7 $e7 GFX GFX
-    dw   `33000033                                     ;; 0b:4a42 $c3 $c3 GFX GFX
-    dw   `33000033                                     ;; 0b:4a44 $c3 $c3 GFX GFX
-    dw   `33000033                                     ;; 0b:4a46 $c3 $c3 GFX GFX
-    dw   `33000033                                     ;; 0b:4a48 $c3 $c3 GFX GFX
-    dw   `33300333                                     ;; 0b:4a4a $e7 $e7 GFX GFX
-    dw   `03300330                                     ;; 0b:4a4c $66 $66 GFX GFX
-    dw   `03300330                                     ;; 0b:4a4e $66 $66 GFX GFX
-    dw   `33333333                                     ;; 0b:4a50 $ff $ff GFX GFX
-    dw   `00333003                                     ;; 0b:4a52 $39 $39 GFX GFX
-    dw   `00333000                                     ;; 0b:4a54 $38 $38 GFX GFX
-    dw   `00333000                                     ;; 0b:4a56 $38 $38 GFX GFX
-    dw   `00333000                                     ;; 0b:4a58 $38 $38 GFX GFX
-    dw   `00333003                                     ;; 0b:4a5a $39 $39 GFX GFX
-    dw   `00333333                                     ;; 0b:4a5c $3f $3f GFX GFX
-    dw   `00333003                                     ;; 0b:4a5e $39 $39 GFX GFX
-    dw   `00000300                                     ;; 0b:4a60 $04 $04 GFX GFX
-    dw   `00000302                                     ;; 0b:4a62 $04 $05 GFX GFX
-    dw   `00000220                                     ;; 0b:4a64 $00 $06 GFX GFX
-    dw   `00002200                                     ;; 0b:4a66 $00 $0c GFX GFX
-    dw   `00000000                                     ;; 0b:4a68 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4a6a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4a6c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4a6e $00 $00 GFX GFX
-    dw   `22000000                                     ;; 0b:4a70 $00 $c0 GFX GFX
-    dw   `00000000                                     ;; 0b:4a72 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4a74 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4a76 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4a78 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4a7a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4a7c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4a7e $00 $00 GFX GFX
-    dw   `30333003                                     ;; 0b:4a80 $b9 $b9 GFX GFX
-    dw   `30033300                                     ;; 0b:4a82 $9c $9c GFX GFX
-    dw   `30033300                                     ;; 0b:4a84 $9c $9c GFX GFX
-    dw   `30033330                                     ;; 0b:4a86 $9e $9e GFX GFX
-    dw   `00033330                                     ;; 0b:4a88 $1e $1e GFX GFX
-    dw   `00033333                                     ;; 0b:4a8a $1f $1f GFX GFX
-    dw   `00033033                                     ;; 0b:4a8c $1b $1b GFX GFX
-    dw   `00033033                                     ;; 0b:4a8e $1b $1b GFX GFX
-    dw   `33333333                                     ;; 0b:4a90 $ff $ff GFX GFX
-    dw   `33033033                                     ;; 0b:4a92 $db $db GFX GFX
-    dw   `33030033                                     ;; 0b:4a94 $d3 $d3 GFX GFX
-    dw   `33030033                                     ;; 0b:4a96 $d3 $d3 GFX GFX
-    dw   `33000033                                     ;; 0b:4a98 $c3 $c3 GFX GFX
-    dw   `33000033                                     ;; 0b:4a9a $c3 $c3 GFX GFX
-    dw   `33000033                                     ;; 0b:4a9c $c3 $c3 GFX GFX
-    dw   `33000033                                     ;; 0b:4a9e $c3 $c3 GFX GFX
-    dw   `33333333                                     ;; 0b:4aa0 $ff $ff GFX GFX
-    dw   `30330333                                     ;; 0b:4aa2 $b7 $b7 GFX GFX
-    dw   `30030333                                     ;; 0b:4aa4 $97 $97 GFX GFX
-    dw   `30030333                                     ;; 0b:4aa6 $97 $97 GFX GFX
-    dw   `30000333                                     ;; 0b:4aa8 $87 $87 GFX GFX
-    dw   `30000333                                     ;; 0b:4aaa $87 $87 GFX GFX
-    dw   `30000333                                     ;; 0b:4aac $87 $87 GFX GFX
-    dw   `30000333                                     ;; 0b:4aae $87 $87 GFX GFX
-    dw   `03130000                                     ;; 0b:4ab0 $70 $50 GFX GFX
-    dw   `03130000                                     ;; 0b:4ab2 $70 $50 GFX GFX
-    dw   `03130000                                     ;; 0b:4ab4 $70 $50 GFX GFX
-    dw   `03130000                                     ;; 0b:4ab6 $70 $50 GFX GFX
-    dw   `03130000                                     ;; 0b:4ab8 $70 $50 GFX GFX
-    dw   `01310000                                     ;; 0b:4aba $70 $20 GFX GFX
-    dw   `01310000                                     ;; 0b:4abc $70 $20 GFX GFX
-    dw   `00300000                                     ;; 0b:4abe $20 $20 GFX GFX
-    dw   `30333333                                     ;; 0b:4ac0 $bf $bf GFX GFX
-    dw   `00033003                                     ;; 0b:4ac2 $19 $19 GFX GFX
-    dw   `00033003                                     ;; 0b:4ac4 $19 $19 GFX GFX
-    dw   `00033003                                     ;; 0b:4ac6 $19 $19 GFX GFX
-    dw   `00033003                                     ;; 0b:4ac8 $19 $19 GFX GFX
-    dw   `00033003                                     ;; 0b:4aca $19 $19 GFX GFX
-    dw   `00033003                                     ;; 0b:4acc $19 $19 GFX GFX
-    dw   `00033003                                     ;; 0b:4ace $19 $19 GFX GFX
-    dw   `33333003                                     ;; 0b:4ad0 $f9 $f9 GFX GFX
-    dw   `33003300                                     ;; 0b:4ad2 $cc $cc GFX GFX
-    dw   `33000330                                     ;; 0b:4ad4 $c6 $c6 GFX GFX
-    dw   `33000330                                     ;; 0b:4ad6 $c6 $c6 GFX GFX
-    dw   `33000330                                     ;; 0b:4ad8 $c6 $c6 GFX GFX
-    dw   `33000330                                     ;; 0b:4ada $c6 $c6 GFX GFX
-    dw   `33003300                                     ;; 0b:4adc $cc $cc GFX GFX
-    dw   `33330000                                     ;; 0b:4ade $f0 $f0 GFX GFX
-    dw   `33333330                                     ;; 0b:4ae0 $fe $fe GFX GFX
-    dw   `33300330                                     ;; 0b:4ae2 $e6 $e6 GFX GFX
-    dw   `33300030                                     ;; 0b:4ae4 $e2 $e2 GFX GFX
-    dw   `33300030                                     ;; 0b:4ae6 $e2 $e2 GFX GFX
-    dw   `33300000                                     ;; 0b:4ae8 $e0 $e0 GFX GFX
-    dw   `33300300                                     ;; 0b:4aea $e4 $e4 GFX GFX
-    dw   `33333300                                     ;; 0b:4aec $fc $fc GFX GFX
-    dw   `33300300                                     ;; 0b:4aee $e4 $e4 GFX GFX
-    dw   `30220000                                     ;; 0b:4af0 $80 $b0 GFX GFX
-    dw   `20200000                                     ;; 0b:4af2 $00 $a0 GFX GFX
-    dw   `22000000                                     ;; 0b:4af4 $00 $c0 GFX GFX
-    dw   `20000000                                     ;; 0b:4af6 $00 $80 GFX GFX
-    dw   `00000000                                     ;; 0b:4af8 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4afa $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4afc $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4afe $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4b00 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4b02 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4b04 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4b06 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4b08 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4b0a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4b0c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4b0e $00 $00 GFX GFX
-    dw   `00000030                                     ;; 0b:4b10 $02 $02 GFX GFX
-    dw   `00333333                                     ;; 0b:4b12 $3f $3f GFX GFX
-    dw   `00000300                                     ;; 0b:4b14 $04 $04 GFX GFX
-    dw   `00000300                                     ;; 0b:4b16 $04 $04 GFX GFX
-    dw   `00000300                                     ;; 0b:4b18 $04 $04 GFX GFX
-    dw   `00003000                                     ;; 0b:4b1a $08 $08 GFX GFX
-    dw   `00003000                                     ;; 0b:4b1c $08 $08 GFX GFX
-    dw   `00033330                                     ;; 0b:4b1e $1e $1e GFX GFX
-    dw   `00333000                                     ;; 0b:4b20 $38 $38 GFX GFX
-    dw   `33333000                                     ;; 0b:4b22 $f8 $f8 GFX GFX
-    dw   `00033300                                     ;; 0b:4b24 $1c $1c GFX GFX
-    dw   `00033300                                     ;; 0b:4b26 $1c $1c GFX GFX
-    dw   `00033300                                     ;; 0b:4b28 $1c $1c GFX GFX
-    dw   `00003330                                     ;; 0b:4b2a $0e $0e GFX GFX
-    dw   `00003330                                     ;; 0b:4b2c $0e $0e GFX GFX
-    dw   `00033333                                     ;; 0b:4b2e $1f $1f GFX GFX
-    dw   `33300330                                     ;; 0b:4b30 $e6 $e6 GFX GFX
-    dw   `33300330                                     ;; 0b:4b32 $e6 $e6 GFX GFX
-    dw   `33300330                                     ;; 0b:4b34 $e6 $e6 GFX GFX
-    dw   `33300330                                     ;; 0b:4b36 $e6 $e6 GFX GFX
-    dw   `33300330                                     ;; 0b:4b38 $e6 $e6 GFX GFX
-    dw   `33303300                                     ;; 0b:4b3a $ec $ec GFX GFX
-    dw   `33303300                                     ;; 0b:4b3c $ec $ec GFX GFX
-    dw   `33330000                                     ;; 0b:4b3e $f0 $f0 GFX GFX
-    dw   `03300330                                     ;; 0b:4b40 $66 $66 GFX GFX
-    dw   `03300330                                     ;; 0b:4b42 $66 $66 GFX GFX
-    dw   `00333300                                     ;; 0b:4b44 $3c $3c GFX GFX
-    dw   `00333300                                     ;; 0b:4b46 $3c $3c GFX GFX
-    dw   `00333300                                     ;; 0b:4b48 $3c $3c GFX GFX
-    dw   `00033000                                     ;; 0b:4b4a $18 $18 GFX GFX
-    dw   `00033000                                     ;; 0b:4b4c $18 $18 GFX GFX
-    dw   `00033000                                     ;; 0b:4b4e $18 $18 GFX GFX
-    dw   `00333000                                     ;; 0b:4b50 $38 $38 GFX GFX
-    dw   `00333000                                     ;; 0b:4b52 $38 $38 GFX GFX
-    dw   `00333000                                     ;; 0b:4b54 $38 $38 GFX GFX
-    dw   `00333000                                     ;; 0b:4b56 $38 $38 GFX GFX
-    dw   `00333000                                     ;; 0b:4b58 $38 $38 GFX GFX
-    dw   `00333000                                     ;; 0b:4b5a $38 $38 GFX GFX
-    dw   `00333003                                     ;; 0b:4b5c $39 $39 GFX GFX
-    dw   `03333333                                     ;; 0b:4b5e $7f $7f GFX GFX
-    dw   `00000000                                     ;; 0b:4b60 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4b62 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4b64 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4b66 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4b68 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4b6a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4b6c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4b6e $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4b70 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4b72 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4b74 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4b76 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4b78 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4b7a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4b7c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4b7e $00 $00 GFX GFX
-    dw   `00033003                                     ;; 0b:4b80 $19 $19 GFX GFX
-    dw   `00033003                                     ;; 0b:4b82 $19 $19 GFX GFX
-    dw   `00033003                                     ;; 0b:4b84 $19 $19 GFX GFX
-    dw   `00033000                                     ;; 0b:4b86 $18 $18 GFX GFX
-    dw   `30033000                                     ;; 0b:4b88 $98 $98 GFX GFX
-    dw   `30033000                                     ;; 0b:4b8a $98 $98 GFX GFX
-    dw   `30033000                                     ;; 0b:4b8c $98 $98 GFX GFX
-    dw   `30333300                                     ;; 0b:4b8e $bc $bc GFX GFX
-    dw   `33000033                                     ;; 0b:4b90 $c3 $c3 GFX GFX
-    dw   `33000033                                     ;; 0b:4b92 $c3 $c3 GFX GFX
-    dw   `33000033                                     ;; 0b:4b94 $c3 $c3 GFX GFX
-    dw   `33000033                                     ;; 0b:4b96 $c3 $c3 GFX GFX
-    dw   `23000033                                     ;; 0b:4b98 $43 $c3 GFX GFX
-    dw   `23000033                                     ;; 0b:4b9a $43 $c3 GFX GFX
-    dw   `23000033                                     ;; 0b:4b9c $43 $c3 GFX GFX
-    dw   `23000333                                     ;; 0b:4b9e $47 $c7 GFX GFX
-    dw   `30000333                                     ;; 0b:4ba0 $87 $87 GFX GFX
-    dw   `30000333                                     ;; 0b:4ba2 $87 $87 GFX GFX
-    dw   `30000333                                     ;; 0b:4ba4 $87 $87 GFX GFX
-    dw   `30000333                                     ;; 0b:4ba6 $87 $87 GFX GFX
-    dw   `30000333                                     ;; 0b:4ba8 $87 $87 GFX GFX
-    dw   `30000333                                     ;; 0b:4baa $87 $87 GFX GFX
-    dw   `30000033                                     ;; 0b:4bac $83 $83 GFX GFX
-    dw   `33000003                                     ;; 0b:4bae $c1 $c1 GFX GFX
-    dw   `00300000                                     ;; 0b:4bb0 $20 $20 GFX GFX
-    dw   `00300000                                     ;; 0b:4bb2 $20 $20 GFX GFX
-    dw   `00300000                                     ;; 0b:4bb4 $20 $20 GFX GFX
-    dw   `00300000                                     ;; 0b:4bb6 $20 $20 GFX GFX
-    dw   `00300000                                     ;; 0b:4bb8 $20 $20 GFX GFX
-    dw   `00300000                                     ;; 0b:4bba $20 $20 GFX GFX
-    dw   `00300000                                     ;; 0b:4bbc $20 $20 GFX GFX
-    dw   `00000000                                     ;; 0b:4bbe $00 $00 GFX GFX
-    dw   `00033003                                     ;; 0b:4bc0 $19 $19 GFX GFX
-    dw   `00033003                                     ;; 0b:4bc2 $19 $19 GFX GFX
-    dw   `00033003                                     ;; 0b:4bc4 $19 $19 GFX GFX
-    dw   `00033003                                     ;; 0b:4bc6 $19 $19 GFX GFX
-    dw   `00033003                                     ;; 0b:4bc8 $19 $19 GFX GFX
-    dw   `00033003                                     ;; 0b:4bca $19 $19 GFX GFX
-    dw   `30330003                                     ;; 0b:4bcc $b1 $b1 GFX GFX
-    dw   `33300033                                     ;; 0b:4bce $e3 $e3 GFX GFX
-    dw   `33033000                                     ;; 0b:4bd0 $d8 $d8 GFX GFX
-    dw   `33003000                                     ;; 0b:4bd2 $c8 $c8 GFX GFX
-    dw   `33003300                                     ;; 0b:4bd4 $cc $cc GFX GFX
-    dw   `33003300                                     ;; 0b:4bd6 $cc $cc GFX GFX
-    dw   `33000330                                     ;; 0b:4bd8 $c6 $c6 GFX GFX
-    dw   `33000330                                     ;; 0b:4bda $c6 $c6 GFX GFX
-    dw   `33000330                                     ;; 0b:4bdc $c6 $c6 GFX GFX
-    dw   `33303333                                     ;; 0b:4bde $ef $ef GFX GFX
-    dw   `33300000                                     ;; 0b:4be0 $e0 $e0 GFX GFX
-    dw   `33300000                                     ;; 0b:4be2 $e0 $e0 GFX GFX
-    dw   `33300000                                     ;; 0b:4be4 $e0 $e0 GFX GFX
-    dw   `33300000                                     ;; 0b:4be6 $e0 $e0 GFX GFX
-    dw   `33300030                                     ;; 0b:4be8 $e2 $e2 GFX GFX
-    dw   `33300030                                     ;; 0b:4bea $e2 $e2 GFX GFX
-    dw   `33300330                                     ;; 0b:4bec $e6 $e6 GFX GFX
-    dw   `33333330                                     ;; 0b:4bee $fe $fe GFX GFX
-    dw   `00000000                                     ;; 0b:4bf0 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4bf2 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4bf4 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4bf6 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4bf8 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4bfa $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4bfc $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4bfe $00 $00 GFX GFX
-    dw   `00000003                                     ;; 0b:4c00 $01 $01 GFX GFX
-    dw   `00003330                                     ;; 0b:4c02 $0e $0e GFX GFX
-    dw   `00330030                                     ;; 0b:4c04 $32 $32 GFX GFX
-    dw   `03000033                                     ;; 0b:4c06 $43 $43 GFX GFX
-    dw   `03000003                                     ;; 0b:4c08 $41 $41 GFX GFX
-    dw   `03330001                                     ;; 0b:4c0a $71 $70 GFX GFX
-    dw   `03003333                                     ;; 0b:4c0c $4f $4f GFX GFX
-    dw   `00330000                                     ;; 0b:4c0e $30 $30 GFX GFX
-    dw   `00000000                                     ;; 0b:4c10 $00 $00 GFX GFX
-    dw   `33300000                                     ;; 0b:4c12 $e0 $e0 GFX GFX
-    dw   `30033000                                     ;; 0b:4c14 $98 $98 GFX GFX
-    dw   `30011300                                     ;; 0b:4c16 $9c $84 GFX GFX
-    dw   `01111300                                     ;; 0b:4c18 $7c $04 GFX GFX
-    dw   `11133300                                     ;; 0b:4c1a $fc $1c GFX GFX
-    dw   `33311300                                     ;; 0b:4c1c $fc $e4 GFX GFX
-    dw   `01133000                                     ;; 0b:4c1e $78 $18 GFX GFX
-    dw   `00303333                                     ;; 0b:4c20 $2f $2f GFX GFX
-    dw   `00303030                                     ;; 0b:4c22 $2a $2a GFX GFX
-    dw   `00303030                                     ;; 0b:4c24 $2a $2a GFX GFX
-    dw   `00303030                                     ;; 0b:4c26 $2a $2a GFX GFX
-    dw   `00303030                                     ;; 0b:4c28 $2a $2a GFX GFX
-    dw   `00303031                                     ;; 0b:4c2a $2b $2a GFX GFX
-    dw   `00033031                                     ;; 0b:4c2c $1b $1a GFX GFX
-    dw   `00003333                                     ;; 0b:4c2e $0f $0f GFX GFX
-    dw   `33313000                                     ;; 0b:4c30 $f8 $e8 GFX GFX
-    dw   `31313000                                     ;; 0b:4c32 $f8 $a8 GFX GFX
-    dw   `31313000                                     ;; 0b:4c34 $f8 $a8 GFX GFX
-    dw   `31313000                                     ;; 0b:4c36 $f8 $a8 GFX GFX
-    dw   `31313000                                     ;; 0b:4c38 $f8 $a8 GFX GFX
-    dw   `31313000                                     ;; 0b:4c3a $f8 $a8 GFX GFX
-    dw   `31330000                                     ;; 0b:4c3c $f0 $b0 GFX GFX
-    dw   `33300000                                     ;; 0b:4c3e $e0 $e0 GFX GFX
-    dw   `00000000                                     ;; 0b:4c40 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4c42 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4c44 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4c46 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4c48 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4c4a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4c4c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4c4e $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4c50 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4c52 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4c54 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4c56 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4c58 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4c5a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4c5c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4c5e $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4c60 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4c62 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4c64 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4c66 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4c68 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4c6a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4c6c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4c6e $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4c70 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4c72 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4c74 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4c76 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4c78 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4c7a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4c7c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4c7e $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4c80 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4c82 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4c84 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4c86 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4c88 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4c8a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4c8c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4c8e $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4c90 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4c92 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4c94 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4c96 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4c98 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4c9a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4c9c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4c9e $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4ca0 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4ca2 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4ca4 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4ca6 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4ca8 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4caa $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4cac $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4cae $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4cb0 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4cb2 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4cb4 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4cb6 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4cb8 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4cba $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4cbc $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4cbe $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4cc0 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4cc2 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4cc4 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4cc6 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4cc8 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4cca $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4ccc $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4cce $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4cd0 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4cd2 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4cd4 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4cd6 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4cd8 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4cda $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4cdc $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4cde $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4ce0 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4ce2 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4ce4 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4ce6 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4ce8 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4cea $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4cec $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4cee $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4cf0 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4cf2 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4cf4 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4cf6 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4cf8 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4cfa $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4cfc $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4cfe $00 $00 GFX GFX
-    dw   `00000033                                     ;; 0b:4d00 $03 $03 GFX GFX
-    dw   `00000322                                     ;; 0b:4d02 $04 $07 GFX GFX
-    dw   `00000033                                     ;; 0b:4d04 $03 $03 GFX GFX
-    dw   `00000031                                     ;; 0b:4d06 $03 $02 GFX GFX
-    dw   `00000031                                     ;; 0b:4d08 $03 $02 GFX GFX
-    dw   `00000031                                     ;; 0b:4d0a $03 $02 GFX GFX
-    dw   `00000331                                     ;; 0b:4d0c $07 $06 GFX GFX
-    dw   `00033113                                     ;; 0b:4d0e $1f $19 GFX GFX
-    dw   `00033000                                     ;; 0b:4d10 $18 $18 GFX GFX
-    dw   `33032303                                     ;; 0b:4d12 $d5 $dd GFX GFX
-    dw   `22333232                                     ;; 0b:4d14 $3a $ff GFX GFX
-    dw   `33223222                                     ;; 0b:4d16 $c8 $ff GFX GFX
-    dw   `23222222                                     ;; 0b:4d18 $40 $ff GFX GFX
-    dw   `12322222                                     ;; 0b:4d1a $a0 $7f GFX GFX
-    dw   `12333222                                     ;; 0b:4d1c $b8 $7f GFX GFX
-    dw   `23221322                                     ;; 0b:4d1e $4c $f7 GFX GFX
-    dw   `03311111                                     ;; 0b:4d20 $7f $60 GFX GFX
-    dw   `31111111                                     ;; 0b:4d22 $ff $80 GFX GFX
-    dw   `03311113                                     ;; 0b:4d24 $7f $61 GFX GFX
-    dw   `00033111                                     ;; 0b:4d26 $1f $18 GFX GFX
-    dw   `00003311                                     ;; 0b:4d28 $0f $0c GFX GFX
-    dw   `00033331                                     ;; 0b:4d2a $1f $1e GFX GFX
-    dw   `00033333                                     ;; 0b:4d2c $1f $1f GFX GFX
-    dw   `00033333                                     ;; 0b:4d2e $1f $1f GFX GFX
-    dw   `33321132                                     ;; 0b:4d30 $ee $f3 GFX GFX
-    dw   `32221332                                     ;; 0b:4d32 $8e $f7 GFX GFX
-    dw   `23222312                                     ;; 0b:4d34 $46 $fd GFX GFX
-    dw   `33232222                                     ;; 0b:4d36 $d0 $ff GFX GFX
-    dw   `11333133                                     ;; 0b:4d38 $ff $3b GFX GFX
-    dw   `11131333                                     ;; 0b:4d3a $ff $17 GFX GFX
-    dw   `11113233                                     ;; 0b:4d3c $fb $0f GFX GFX
-    dw   `33311323                                     ;; 0b:4d3e $fd $e7 GFX GFX
-    dw   `00003333                                     ;; 0b:4d40 $0f $0f GFX GFX
-    dw   `00003333                                     ;; 0b:4d42 $0f $0f GFX GFX
-    dw   `00003333                                     ;; 0b:4d44 $0f $0f GFX GFX
-    dw   `00003323                                     ;; 0b:4d46 $0d $0f GFX GFX
-    dw   `00003323                                     ;; 0b:4d48 $0d $0f GFX GFX
-    dw   `00033323                                     ;; 0b:4d4a $1d $1f GFX GFX
-    dw   `00033323                                     ;; 0b:4d4c $1d $1f GFX GFX
-    dw   `00033323                                     ;; 0b:4d4e $1d $1f GFX GFX
-    dw   `33333332                                     ;; 0b:4d50 $fe $ff GFX GFX
-    dw   `33332233                                     ;; 0b:4d52 $f3 $ff GFX GFX
-    dw   `33322311                                     ;; 0b:4d54 $e7 $fc GFX GFX
-    dw   `33332233                                     ;; 0b:4d56 $f3 $ff GFX GFX
-    dw   `33333333                                     ;; 0b:4d58 $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:4d5a $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:4d5c $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:4d5e $ff $ff GFX GFX
-    dw   `00333233                                     ;; 0b:4d60 $3b $3f GFX GFX
-    dw   `00333233                                     ;; 0b:4d62 $3b $3f GFX GFX
-    dw   `03333233                                     ;; 0b:4d64 $7b $7f GFX GFX
-    dw   `03332333                                     ;; 0b:4d66 $77 $7f GFX GFX
-    dw   `33332333                                     ;; 0b:4d68 $f7 $ff GFX GFX
-    dw   `30002333                                     ;; 0b:4d6a $87 $8f GFX GFX
-    dw   `00003300                                     ;; 0b:4d6c $0c $0c GFX GFX
-    dw   `00003000                                     ;; 0b:4d6e $08 $08 GFX GFX
-    dw   `33323333                                     ;; 0b:4d70 $ef $ff GFX GFX
-    dw   `33323333                                     ;; 0b:4d72 $ef $ff GFX GFX
-    dw   `33323333                                     ;; 0b:4d74 $ef $ff GFX GFX
-    dw   `33233333                                     ;; 0b:4d76 $df $ff GFX GFX
-    dw   `33233333                                     ;; 0b:4d78 $df $ff GFX GFX
-    dw   `33233333                                     ;; 0b:4d7a $df $ff GFX GFX
-    dw   `03233333                                     ;; 0b:4d7c $5f $7f GFX GFX
-    dw   `00330003                                     ;; 0b:4d7e $31 $31 GFX GFX
-    dw   `00033000                                     ;; 0b:4d80 $18 $18 GFX GFX
-    dw   `30323033                                     ;; 0b:4d82 $ab $bb GFX GFX
-    dw   `23233322                                     ;; 0b:4d84 $5c $ff GFX GFX
-    dw   `22232233                                     ;; 0b:4d86 $13 $ff GFX GFX
-    dw   `22222232                                     ;; 0b:4d88 $02 $ff GFX GFX
-    dw   `22222321                                     ;; 0b:4d8a $05 $fe GFX GFX
-    dw   `22233321                                     ;; 0b:4d8c $1d $fe GFX GFX
-    dw   `22312232                                     ;; 0b:4d8e $32 $ef GFX GFX
-    dw   `33000000                                     ;; 0b:4d90 $c0 $c0 GFX GFX
-    dw   `22300000                                     ;; 0b:4d92 $20 $e0 GFX GFX
-    dw   `33000000                                     ;; 0b:4d94 $c0 $c0 GFX GFX
-    dw   `13330000                                     ;; 0b:4d96 $f0 $70 GFX GFX
-    dw   `13113033                                     ;; 0b:4d98 $fb $4b GFX GFX
-    dw   `13133323                                     ;; 0b:4d9a $fd $5f GFX GFX
-    dw   `13133233                                     ;; 0b:4d9c $fb $5f GFX GFX
-    dw   `31133232                                     ;; 0b:4d9e $fa $9f GFX GFX
-    dw   `23112333                                     ;; 0b:4da0 $77 $cf GFX GFX
-    dw   `23312223                                     ;; 0b:4da2 $71 $ef GFX GFX
-    dw   `21322232                                     ;; 0b:4da4 $62 $bf GFX GFX
-    dw   `22223233                                     ;; 0b:4da6 $0b $ff GFX GFX
-    dw   `33133333                                     ;; 0b:4da8 $ff $df GFX GFX
-    dw   `33313332                                     ;; 0b:4daa $fe $ef GFX GFX
-    dw   `33233333                                     ;; 0b:4dac $df $ff GFX GFX
-    dw   `32333333                                     ;; 0b:4dae $bf $ff GFX GFX
-    dw   `31332332                                     ;; 0b:4db0 $f6 $bf GFX GFX
-    dw   `11323322                                     ;; 0b:4db2 $ec $3f GFX GFX
-    dw   `33323222                                     ;; 0b:4db4 $e8 $ff GFX GFX
-    dw   `33233222                                     ;; 0b:4db6 $d8 $ff GFX GFX
-    dw   `32333333                                     ;; 0b:4db8 $bf $ff GFX GFX
-    dw   `33331111                                     ;; 0b:4dba $ff $f0 GFX GFX
-    dw   `33111111                                     ;; 0b:4dbc $ff $c0 GFX GFX
-    dw   `11111111                                     ;; 0b:4dbe $ff $00 GFX GFX
-    dw   `23332223                                     ;; 0b:4dc0 $71 $ff GFX GFX
-    dw   `33132231                                     ;; 0b:4dc2 $f3 $de GFX GFX
-    dw   `11322331                                     ;; 0b:4dc4 $e7 $3e GFX GFX
-    dw   `33222231                                     ;; 0b:4dc6 $c3 $fe GFX GFX
-    dw   `22222231                                     ;; 0b:4dc8 $03 $fe GFX GFX
-    dw   `22222223                                     ;; 0b:4dca $01 $ff GFX GFX
-    dw   `33222223                                     ;; 0b:4dcc $c1 $ff GFX GFX
-    dw   `11322212                                     ;; 0b:4dce $e2 $3d GFX GFX
-    dw   `11111111                                     ;; 0b:4dd0 $ff $00 GFX GFX
-    dw   `11111111                                     ;; 0b:4dd2 $ff $00 GFX GFX
-    dw   `11111111                                     ;; 0b:4dd4 $ff $00 GFX GFX
-    dw   `11131111                                     ;; 0b:4dd6 $ff $10 GFX GFX
-    dw   `11113111                                     ;; 0b:4dd8 $ff $08 GFX GFX
-    dw   `12113112                                     ;; 0b:4dda $be $49 GFX GFX
-    dw   `22211311                                     ;; 0b:4ddc $1f $e4 GFX GFX
-    dw   `32222231                                     ;; 0b:4dde $83 $fe GFX GFX
-    dw   `21132222                                     ;; 0b:4de0 $70 $9f GFX GFX
-    dw   `22233333                                     ;; 0b:4de2 $1f $ff GFX GFX
-    dw   `33231111                                     ;; 0b:4de4 $df $f0 GFX GFX
-    dw   `00333111                                     ;; 0b:4de6 $3f $38 GFX GFX
-    dw   `00000333                                     ;; 0b:4de8 $07 $07 GFX GFX
-    dw   `00000333                                     ;; 0b:4dea $07 $07 GFX GFX
-    dw   `00000333                                     ;; 0b:4dec $07 $07 GFX GFX
-    dw   `00000000                                     ;; 0b:4dee $00 $00 GFX GFX
-    dw   `33222232                                     ;; 0b:4df0 $c2 $ff GFX GFX
-    dw   `12333223                                     ;; 0b:4df2 $b9 $7f GFX GFX
-    dw   `11300332                                     ;; 0b:4df4 $e6 $27 GFX GFX
-    dw   `13300003                                     ;; 0b:4df6 $e1 $61 GFX GFX
-    dw   `33333000                                     ;; 0b:4df8 $f8 $f8 GFX GFX
-    dw   `33333330                                     ;; 0b:4dfa $fe $fe GFX GFX
-    dw   `33333333                                     ;; 0b:4dfc $ff $ff GFX GFX
-    dw   `03333333                                     ;; 0b:4dfe $7f $7f GFX GFX
-    dw   `00000000                                     ;; 0b:4e00 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4e02 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4e04 $00 $00 GFX GFX
-    dw   `03330000                                     ;; 0b:4e06 $70 $70 GFX GFX
-    dw   `33223003                                     ;; 0b:4e08 $c9 $f9 GFX GFX
-    dw   `32233332                                     ;; 0b:4e0a $9e $ff GFX GFX
-    dw   `33322222                                     ;; 0b:4e0c $e0 $ff GFX GFX
-    dw   `22212223                                     ;; 0b:4e0e $11 $ef GFX GFX
-    dw   `00000000                                     ;; 0b:4e10 $00 $00 GFX GFX
-    dw   `00033300                                     ;; 0b:4e12 $1c $1c GFX GFX
-    dw   `03322230                                     ;; 0b:4e14 $62 $7e GFX GFX
-    dw   `32223323                                     ;; 0b:4e16 $8d $ff GFX GFX
-    dw   `22233033                                     ;; 0b:4e18 $1b $fb GFX GFX
-    dw   `22313000                                     ;; 0b:4e1a $38 $e8 GFX GFX
-    dw   `22333300                                     ;; 0b:4e1c $3c $fc GFX GFX
-    dw   `32222300                                     ;; 0b:4e1e $84 $fc GFX GFX
-    dw   `11222231                                     ;; 0b:4e20 $c3 $3e GFX GFX
-    dw   `22222311                                     ;; 0b:4e22 $07 $fc GFX GFX
-    dw   `22233111                                     ;; 0b:4e24 $1f $f8 GFX GFX
-    dw   `33311112                                     ;; 0b:4e26 $fe $e1 GFX GFX
-    dw   `13311111                                     ;; 0b:4e28 $ff $60 GFX GFX
-    dw   `11133111                                     ;; 0b:4e2a $ff $18 GFX GFX
-    dw   `11111331                                     ;; 0b:4e2c $ff $06 GFX GFX
-    dw   `11111123                                     ;; 0b:4e2e $fd $03 GFX GFX
-    dw   `13333000                                     ;; 0b:4e30 $f8 $78 GFX GFX
-    dw   `11223000                                     ;; 0b:4e32 $c8 $38 GFX GFX
-    dw   `22230000                                     ;; 0b:4e34 $10 $f0 GFX GFX
-    dw   `22230000                                     ;; 0b:4e36 $10 $f0 GFX GFX
-    dw   `22230000                                     ;; 0b:4e38 $10 $f0 GFX GFX
-    dw   `12230000                                     ;; 0b:4e3a $90 $70 GFX GFX
-    dw   `11223000                                     ;; 0b:4e3c $c8 $38 GFX GFX
-    dw   `31123000                                     ;; 0b:4e3e $e8 $98 GFX GFX
-    dw   `11211112                                     ;; 0b:4e40 $de $21 GFX GFX
-    dw   `11122112                                     ;; 0b:4e42 $e6 $19 GFX GFX
-    dw   `31112222                                     ;; 0b:4e44 $f0 $8f GFX GFX
-    dw   `13111222                                     ;; 0b:4e46 $f8 $47 GFX GFX
-    dw   `11321122                                     ;; 0b:4e48 $ec $33 GFX GFX
-    dw   `11232122                                     ;; 0b:4e4a $d4 $3b GFX GFX
-    dw   `21123222                                     ;; 0b:4e4c $68 $9f GFX GFX
-    dw   `22222322                                     ;; 0b:4e4e $04 $ff GFX GFX
-    dw   `23322300                                     ;; 0b:4e50 $64 $fc GFX GFX
-    dw   `22233230                                     ;; 0b:4e52 $1a $fe GFX GFX
-    dw   `22233330                                     ;; 0b:4e54 $1e $fe GFX GFX
-    dw   `22300003                                     ;; 0b:4e56 $21 $e1 GFX GFX
-    dw   `23000000                                     ;; 0b:4e58 $40 $c0 GFX GFX
-    dw   `23000000                                     ;; 0b:4e5a $40 $c0 GFX GFX
-    dw   `30000000                                     ;; 0b:4e5c $80 $80 GFX GFX
-    dw   `30000000                                     ;; 0b:4e5e $80 $80 GFX GFX
-    dw   `22222232                                     ;; 0b:4e60 $02 $ff GFX GFX
-    dw   `22222223                                     ;; 0b:4e62 $01 $ff GFX GFX
-    dw   `32223333                                     ;; 0b:4e64 $8f $ff GFX GFX
-    dw   `32330000                                     ;; 0b:4e66 $b0 $f0 GFX GFX
-    dw   `33000000                                     ;; 0b:4e68 $c0 $c0 GFX GFX
-    dw   `03000000                                     ;; 0b:4e6a $40 $40 GFX GFX
-    dw   `00000000                                     ;; 0b:4e6c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4e6e $00 $00 GFX GFX
-    dw   `30000000                                     ;; 0b:4e70 $80 $80 GFX GFX
-    dw   `30000000                                     ;; 0b:4e72 $80 $80 GFX GFX
-    dw   `30000000                                     ;; 0b:4e74 $80 $80 GFX GFX
-    dw   `03000000                                     ;; 0b:4e76 $40 $40 GFX GFX
-    dw   `00000000                                     ;; 0b:4e78 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4e7a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4e7c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4e7e $00 $00 GFX GFX
-    dw   `00000003                                     ;; 0b:4e80 $01 $01 GFX GFX
-    dw   `00000031                                     ;; 0b:4e82 $03 $02 GFX GFX
-    dw   `00000321                                     ;; 0b:4e84 $05 $06 GFX GFX
-    dw   `00000311                                     ;; 0b:4e86 $07 $04 GFX GFX
-    dw   `00003111                                     ;; 0b:4e88 $0f $08 GFX GFX
-    dw   `00031211                                     ;; 0b:4e8a $1b $14 GFX GFX
-    dw   `00312311                                     ;; 0b:4e8c $37 $2c GFX GFX
-    dw   `00033211                                     ;; 0b:4e8e $1b $1c GFX GFX
-    dw   `00000000                                     ;; 0b:4e90 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4e92 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4e94 $00 $00 GFX GFX
-    dw   `00000003                                     ;; 0b:4e96 $01 $01 GFX GFX
-    dw   `00330031                                     ;; 0b:4e98 $33 $32 GFX GFX
-    dw   `03130031                                     ;; 0b:4e9a $73 $52 GFX GFX
-    dw   `31300031                                     ;; 0b:4e9c $e3 $a2 GFX GFX
-    dw   `31300031                                     ;; 0b:4e9e $e3 $a2 GFX GFX
-    dw   `00032111                                     ;; 0b:4ea0 $17 $18 GFX GFX
-    dw   `00321111                                     ;; 0b:4ea2 $2f $30 GFX GFX
-    dw   `00331111                                     ;; 0b:4ea4 $3f $30 GFX GFX
-    dw   `30033311                                     ;; 0b:4ea6 $9f $9c GFX GFX
-    dw   `30032231                                     ;; 0b:4ea8 $93 $9e GFX GFX
-    dw   `30031333                                     ;; 0b:4eaa $9f $97 GFX GFX
-    dw   `30323313                                     ;; 0b:4eac $af $bd GFX GFX
-    dw   `13211133                                     ;; 0b:4eae $df $63 GFX GFX
-    dw   `31333032                                     ;; 0b:4eb0 $fa $bb GFX GFX
-    dw   `31132333                                     ;; 0b:4eb2 $f7 $9f GFX GFX
-    dw   `32113233                                     ;; 0b:4eb4 $bb $cf GFX GFX
-    dw   `03113223                                     ;; 0b:4eb6 $79 $4f GFX GFX
-    dw   `03213233                                     ;; 0b:4eb8 $5b $6f GFX GFX
-    dw   `03313223                                     ;; 0b:4eba $79 $6f GFX GFX
-    dw   `03233233                                     ;; 0b:4ebc $5b $7f GFX GFX
-    dw   `03233223                                     ;; 0b:4ebe $59 $7f GFX GFX
-    dw   `11112113                                     ;; 0b:4ec0 $f7 $09 GFX GFX
-    dw   `22223131                                     ;; 0b:4ec2 $0f $fa GFX GFX
-    dw   `33331131                                     ;; 0b:4ec4 $ff $f2 GFX GFX
-    dw   `33311323                                     ;; 0b:4ec6 $fd $e7 GFX GFX
-    dw   `33313332                                     ;; 0b:4ec8 $fe $ef GFX GFX
-    dw   `33313233                                     ;; 0b:4eca $fb $ef GFX GFX
-    dw   `33333323                                     ;; 0b:4ecc $fd $ff GFX GFX
-    dw   `33333323                                     ;; 0b:4ece $fd $ff GFX GFX
-    dw   `03233233                                     ;; 0b:4ed0 $5b $7f GFX GFX
-    dw   `03233233                                     ;; 0b:4ed2 $5b $7f GFX GFX
-    dw   `03232330                                     ;; 0b:4ed4 $56 $7e GFX GFX
-    dw   `00322300                                     ;; 0b:4ed6 $24 $3c GFX GFX
-    dw   `00033003                                     ;; 0b:4ed8 $19 $19 GFX GFX
-    dw   `00000033                                     ;; 0b:4eda $03 $03 GFX GFX
-    dw   `00000322                                     ;; 0b:4edc $04 $07 GFX GFX
-    dw   `00000333                                     ;; 0b:4ede $07 $07 GFX GFX
-    dw   `33333323                                     ;; 0b:4ee0 $fd $ff GFX GFX
-    dw   `33333323                                     ;; 0b:4ee2 $fd $ff GFX GFX
-    dw   `33333323                                     ;; 0b:4ee4 $fd $ff GFX GFX
-    dw   `33333323                                     ;; 0b:4ee6 $fd $ff GFX GFX
-    dw   `33332323                                     ;; 0b:4ee8 $f5 $ff GFX GFX
-    dw   `23232223                                     ;; 0b:4eea $51 $ff GFX GFX
-    dw   `22222230                                     ;; 0b:4eec $02 $fe GFX GFX
-    dw   `33333300                                     ;; 0b:4eee $fc $fc GFX GFX
-    dw   `00000000                                     ;; 0b:4ef0 $00 $00 GFX GFX
-    dw   `30000000                                     ;; 0b:4ef2 $80 $80 GFX GFX
-    dw   `23000000                                     ;; 0b:4ef4 $40 $c0 GFX GFX
-    dw   `13000000                                     ;; 0b:4ef6 $c0 $40 GFX GFX
-    dw   `11300000                                     ;; 0b:4ef8 $e0 $20 GFX GFX
-    dw   `12130000                                     ;; 0b:4efa $b0 $50 GFX GFX
-    dw   `13213000                                     ;; 0b:4efc $d8 $68 GFX GFX
-    dw   `12330000                                     ;; 0b:4efe $b0 $70 GFX GFX
-    dw   `11230000                                     ;; 0b:4f00 $d0 $30 GFX GFX
-    dw   `11123000                                     ;; 0b:4f02 $e8 $18 GFX GFX
-    dw   `11133000                                     ;; 0b:4f04 $f8 $18 GFX GFX
-    dw   `13330003                                     ;; 0b:4f06 $f1 $71 GFX GFX
-    dw   `32230031                                     ;; 0b:4f08 $93 $f2 GFX GFX
-    dw   `33130311                                     ;; 0b:4f0a $f7 $d4 GFX GFX
-    dw   `13323113                                     ;; 0b:4f0c $ef $79 GFX GFX
-    dw   `31111123                                     ;; 0b:4f0e $fd $83 GFX GFX
-    dw   `00000000                                     ;; 0b:4f10 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4f12 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4f14 $00 $00 GFX GFX
-    dw   `30000000                                     ;; 0b:4f16 $80 $80 GFX GFX
-    dw   `13000000                                     ;; 0b:4f18 $c0 $40 GFX GFX
-    dw   `30000000                                     ;; 0b:4f1a $80 $80 GFX GFX
-    dw   `00000000                                     ;; 0b:4f1c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4f1e $00 $00 GFX GFX
-    dw   `21132233                                     ;; 0b:4f20 $73 $9f GFX GFX
-    dw   `32133333                                     ;; 0b:4f22 $bf $df GFX GFX
-    dw   `33211333                                     ;; 0b:4f24 $df $e7 GFX GFX
-    dw   `23333133                                     ;; 0b:4f26 $7f $fb GFX GFX
-    dw   `33333333                                     ;; 0b:4f28 $ff $ff GFX GFX
-    dw   `32333333                                     ;; 0b:4f2a $bf $ff GFX GFX
-    dw   `23333333                                     ;; 0b:4f2c $7f $ff GFX GFX
-    dw   `23333333                                     ;; 0b:4f2e $7f $ff GFX GFX
-    dw   `33000000                                     ;; 0b:4f30 $c0 $c0 GFX GFX
-    dw   `33330000                                     ;; 0b:4f32 $f0 $f0 GFX GFX
-    dw   `33223000                                     ;; 0b:4f34 $c8 $f8 GFX GFX
-    dw   `22332300                                     ;; 0b:4f36 $34 $fc GFX GFX
-    dw   `32333300                                     ;; 0b:4f38 $bc $fc GFX GFX
-    dw   `22311300                                     ;; 0b:4f3a $3c $e4 GFX GFX
-    dw   `32311130                                     ;; 0b:4f3c $be $e2 GFX GFX
-    dw   `22321130                                     ;; 0b:4f3e $2e $f2 GFX GFX
-    dw   `23333333                                     ;; 0b:4f40 $7f $ff GFX GFX
-    dw   `23333333                                     ;; 0b:4f42 $7f $ff GFX GFX
-    dw   `23333300                                     ;; 0b:4f44 $7c $fc GFX GFX
-    dw   `23333330                                     ;; 0b:4f46 $7e $fe GFX GFX
-    dw   `23233330                                     ;; 0b:4f48 $5e $fe GFX GFX
-    dw   `22232323                                     ;; 0b:4f4a $15 $ff GFX GFX
-    dw   `32222222                                     ;; 0b:4f4c $80 $ff GFX GFX
-    dw   `03333333                                     ;; 0b:4f4e $7f $7f GFX GFX
-    dw   `32332113                                     ;; 0b:4f50 $b7 $f9 GFX GFX
-    dw   `32333213                                     ;; 0b:4f52 $bb $fd GFX GFX
-    dw   `32323213                                     ;; 0b:4f54 $ab $fd GFX GFX
-    dw   `03233313                                     ;; 0b:4f56 $5f $7d GFX GFX
-    dw   `00330313                                     ;; 0b:4f58 $37 $35 GFX GFX
-    dw   `30000323                                     ;; 0b:4f5a $85 $87 GFX GFX
-    dw   `23000030                                     ;; 0b:4f5c $42 $c2 GFX GFX
-    dw   `33000000                                     ;; 0b:4f5e $c0 $c0 GFX GFX
-    dw   `00000003                                     ;; 0b:4f60 $01 $01 GFX GFX
-    dw   `00000031                                     ;; 0b:4f62 $03 $02 GFX GFX
-    dw   `00000311                                     ;; 0b:4f64 $07 $04 GFX GFX
-    dw   `03333321                                     ;; 0b:4f66 $7d $7e GFX GFX
-    dw   `31111132                                     ;; 0b:4f68 $fe $83 GFX GFX
-    dw   `03332223                                     ;; 0b:4f6a $71 $7f GFX GFX
-    dw   `00323231                                     ;; 0b:4f6c $2b $3e GFX GFX
-    dw   `00033312                                     ;; 0b:4f6e $1e $1d GFX GFX
-    dw   `00000000                                     ;; 0b:4f70 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4f72 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4f74 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4f76 $00 $00 GFX GFX
-    dw   `00000003                                     ;; 0b:4f78 $01 $01 GFX GFX
-    dw   `00000033                                     ;; 0b:4f7a $03 $03 GFX GFX
-    dw   `00000032                                     ;; 0b:4f7c $02 $03 GFX GFX
-    dw   `00000333                                     ;; 0b:4f7e $07 $07 GFX GFX
-    dw   `00003123                                     ;; 0b:4f80 $0d $0b GFX GFX
-    dw   `00031123                                     ;; 0b:4f82 $1d $13 GFX GFX
-    dw   `03331232                                     ;; 0b:4f84 $7a $77 GFX GFX
-    dw   `32311232                                     ;; 0b:4f86 $ba $e7 GFX GFX
-    dw   `23112332                                     ;; 0b:4f88 $76 $cf GFX GFX
-    dw   `23212333                                     ;; 0b:4f8a $57 $ef GFX GFX
-    dw   `23223313                                     ;; 0b:4f8c $4f $fd GFX GFX
-    dw   `23333133                                     ;; 0b:4f8e $7f $fb GFX GFX
-    dw   `00000332                                     ;; 0b:4f90 $06 $07 GFX GFX
-    dw   `00003333                                     ;; 0b:4f92 $0f $0f GFX GFX
-    dw   `00003332                                     ;; 0b:4f94 $0e $0f GFX GFX
-    dw   `00003333                                     ;; 0b:4f96 $0f $0f GFX GFX
-    dw   `00003333                                     ;; 0b:4f98 $0f $0f GFX GFX
-    dw   `00003333                                     ;; 0b:4f9a $0f $0f GFX GFX
-    dw   `00000333                                     ;; 0b:4f9c $07 $07 GFX GFX
-    dw   `00000033                                     ;; 0b:4f9e $03 $03 GFX GFX
-    dw   `23323113                                     ;; 0b:4fa0 $6f $f9 GFX GFX
-    dw   `23323131                                     ;; 0b:4fa2 $6f $fa GFX GFX
-    dw   `22223131                                     ;; 0b:4fa4 $0f $fa GFX GFX
-    dw   `32231323                                     ;; 0b:4fa6 $9d $f7 GFX GFX
-    dw   `23333332                                     ;; 0b:4fa8 $7e $ff GFX GFX
-    dw   `33323233                                     ;; 0b:4faa $eb $ff GFX GFX
-    dw   `33323323                                     ;; 0b:4fac $ed $ff GFX GFX
-    dw   `33233323                                     ;; 0b:4fae $dd $ff GFX GFX
-    dw   `00000033                                     ;; 0b:4fb0 $03 $03 GFX GFX
-    dw   `00000003                                     ;; 0b:4fb2 $01 $01 GFX GFX
-    dw   `00000000                                     ;; 0b:4fb4 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4fb6 $00 $00 GFX GFX
-    dw   `00000003                                     ;; 0b:4fb8 $01 $01 GFX GFX
-    dw   `00000033                                     ;; 0b:4fba $03 $03 GFX GFX
-    dw   `00000322                                     ;; 0b:4fbc $04 $07 GFX GFX
-    dw   `00000333                                     ;; 0b:4fbe $07 $07 GFX GFX
-    dw   `33233323                                     ;; 0b:4fc0 $dd $ff GFX GFX
-    dw   `32333323                                     ;; 0b:4fc2 $bd $ff GFX GFX
-    dw   `33333323                                     ;; 0b:4fc4 $fd $ff GFX GFX
-    dw   `33332233                                     ;; 0b:4fc6 $f3 $ff GFX GFX
-    dw   `33223323                                     ;; 0b:4fc8 $cd $ff GFX GFX
-    dw   `23232113                                     ;; 0b:4fca $57 $f9 GFX GFX
-    dw   `22333213                                     ;; 0b:4fcc $3b $fd GFX GFX
-    dw   `33000333                                     ;; 0b:4fce $c7 $c7 GFX GFX
-    dw   `00000000                                     ;; 0b:4fd0 $00 $00 GFX GFX
-    dw   `30000000                                     ;; 0b:4fd2 $80 $80 GFX GFX
-    dw   `13000000                                     ;; 0b:4fd4 $c0 $40 GFX GFX
-    dw   `23000000                                     ;; 0b:4fd6 $40 $c0 GFX GFX
-    dw   `23333000                                     ;; 0b:4fd8 $78 $f8 GFX GFX
-    dw   `31111300                                     ;; 0b:4fda $fc $84 GFX GFX
-    dw   `12333000                                     ;; 0b:4fdc $b8 $78 GFX GFX
-    dw   `33000000                                     ;; 0b:4fde $c0 $c0 GFX GFX
-    dw   `22300000                                     ;; 0b:4fe0 $20 $e0 GFX GFX
-    dw   `21130000                                     ;; 0b:4fe2 $70 $90 GFX GFX
-    dw   `32133300                                     ;; 0b:4fe4 $bc $dc GFX GFX
-    dw   `32113230                                     ;; 0b:4fe6 $ba $ce GFX GFX
-    dw   `33211323                                     ;; 0b:4fe8 $dd $e7 GFX GFX
-    dw   `33212323                                     ;; 0b:4fea $d5 $ef GFX GFX
-    dw   `13322322                                     ;; 0b:4fec $e4 $7f GFX GFX
-    dw   `31333323                                     ;; 0b:4fee $fd $bf GFX GFX
-    dw   `00000000                                     ;; 0b:4ff0 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4ff2 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4ff4 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4ff6 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:4ff8 $00 $00 GFX GFX
-    dw   `30000000                                     ;; 0b:4ffa $80 $80 GFX GFX
-    dw   `30000000                                     ;; 0b:4ffc $80 $80 GFX GFX
-    dw   `33000000                                     ;; 0b:4ffe $c0 $c0 GFX GFX
-    dw   `11323322                                     ;; 0b:5000 $ec $3f GFX GFX
-    dw   `31323323                                     ;; 0b:5002 $ed $bf GFX GFX
-    dw   `33322222                                     ;; 0b:5004 $e0 $ff GFX GFX
-    dw   `23332233                                     ;; 0b:5006 $73 $ff GFX GFX
-    dw   `33323323                                     ;; 0b:5008 $ed $ff GFX GFX
-    dw   `32323333                                     ;; 0b:500a $af $ff GFX GFX
-    dw   `23323333                                     ;; 0b:500c $6f $ff GFX GFX
-    dw   `23332333                                     ;; 0b:500e $77 $ff GFX GFX
-    dw   `33000000                                     ;; 0b:5010 $c0 $c0 GFX GFX
-    dw   `33300000                                     ;; 0b:5012 $e0 $e0 GFX GFX
-    dw   `33300000                                     ;; 0b:5014 $e0 $e0 GFX GFX
-    dw   `33300000                                     ;; 0b:5016 $e0 $e0 GFX GFX
-    dw   `33300000                                     ;; 0b:5018 $e0 $e0 GFX GFX
-    dw   `33300000                                     ;; 0b:501a $e0 $e0 GFX GFX
-    dw   `33000000                                     ;; 0b:501c $c0 $c0 GFX GFX
-    dw   `30000000                                     ;; 0b:501e $80 $80 GFX GFX
-    dw   `23332333                                     ;; 0b:5020 $77 $ff GFX GFX
-    dw   `23333233                                     ;; 0b:5022 $7b $ff GFX GFX
-    dw   `23333330                                     ;; 0b:5024 $7e $fe GFX GFX
-    dw   `32233330                                     ;; 0b:5026 $9e $fe GFX GFX
-    dw   `13322333                                     ;; 0b:5028 $e7 $7f GFX GFX
-    dw   `11232323                                     ;; 0b:502a $d5 $3f GFX GFX
-    dw   `12333222                                     ;; 0b:502c $b8 $7f GFX GFX
-    dw   `33000333                                     ;; 0b:502e $c7 $c7 GFX GFX
-    dw   `30000000                                     ;; 0b:5030 $80 $80 GFX GFX
-    dw   `00000000                                     ;; 0b:5032 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5034 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5036 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5038 $00 $00 GFX GFX
-    dw   `30000000                                     ;; 0b:503a $80 $80 GFX GFX
-    dw   `23000000                                     ;; 0b:503c $40 $c0 GFX GFX
-    dw   `33000000                                     ;; 0b:503e $c0 $c0 GFX GFX
-    dw   `00003330                                     ;; 0b:5040 $0e $0e GFX GFX
-    dw   `00332223                                     ;; 0b:5042 $31 $3f GFX GFX
-    dw   `03222222                                     ;; 0b:5044 $40 $7f GFX GFX
-    dw   `03211223                                     ;; 0b:5046 $59 $67 GFX GFX
-    dw   `32111223                                     ;; 0b:5048 $b9 $c7 GFX GFX
-    dw   `32112232                                     ;; 0b:504a $b2 $cf GFX GFX
-    dw   `32112232                                     ;; 0b:504c $b2 $cf GFX GFX
-    dw   `32212232                                     ;; 0b:504e $92 $ef GFX GFX
-    dw   `00003333                                     ;; 0b:5050 $0f $0f GFX GFX
-    dw   `33332222                                     ;; 0b:5052 $f0 $ff GFX GFX
-    dw   `31321112                                     ;; 0b:5054 $ee $b1 GFX GFX
-    dw   `23212222                                     ;; 0b:5056 $50 $ef GFX GFX
-    dw   `23223332                                     ;; 0b:5058 $4e $ff GFX GFX
-    dw   `23232223                                     ;; 0b:505a $51 $ff GFX GFX
-    dw   `23323332                                     ;; 0b:505c $6e $ff GFX GFX
-    dw   `23331132                                     ;; 0b:505e $7e $f3 GFX GFX
-    dw   `03222321                                     ;; 0b:5060 $45 $7e GFX GFX
-    dw   `00322321                                     ;; 0b:5062 $25 $3e GFX GFX
-    dw   `00033321                                     ;; 0b:5064 $1d $1e GFX GFX
-    dw   `00332321                                     ;; 0b:5066 $35 $3e GFX GFX
-    dw   `03123321                                     ;; 0b:5068 $6d $5e GFX GFX
-    dw   `03122232                                     ;; 0b:506a $62 $5f GFX GFX
-    dw   `03122232                                     ;; 0b:506c $62 $5f GFX GFX
-    dw   `00322303                                     ;; 0b:506e $25 $3d GFX GFX
-    dw   `23231132                                     ;; 0b:5070 $5e $f3 GFX GFX
-    dw   `22323333                                     ;; 0b:5072 $2f $ff GFX GFX
-    dw   `22321222                                     ;; 0b:5074 $28 $f7 GFX GFX
-    dw   `22232122                                     ;; 0b:5076 $14 $fb GFX GFX
-    dw   `12223333                                     ;; 0b:5078 $8f $7f GFX GFX
-    dw   `12222222                                     ;; 0b:507a $80 $7f GFX GFX
-    dw   `11222222                                     ;; 0b:507c $c0 $3f GFX GFX
-    dw   `22122222                                     ;; 0b:507e $20 $df GFX GFX
-    dw   `00333300                                     ;; 0b:5080 $3c $3c GFX GFX
-    dw   `03222300                                     ;; 0b:5082 $44 $7c GFX GFX
-    dw   `32233333                                     ;; 0b:5084 $9f $ff GFX GFX
-    dw   `31332231                                     ;; 0b:5086 $f3 $be GFX GFX
-    dw   `03031223                                     ;; 0b:5088 $59 $57 GFX GFX
-    dw   `00312223                                     ;; 0b:508a $31 $2f GFX GFX
-    dw   `00312222                                     ;; 0b:508c $30 $2f GFX GFX
-    dw   `00312222                                     ;; 0b:508e $30 $2f GFX GFX
-    dw   `32222222                                     ;; 0b:5090 $80 $ff GFX GFX
-    dw   `03322222                                     ;; 0b:5092 $60 $7f GFX GFX
-    dw   `31233333                                     ;; 0b:5094 $df $bf GFX GFX
-    dw   `12223122                                     ;; 0b:5096 $8c $7b GFX GFX
-    dw   `22223122                                     ;; 0b:5098 $0c $fb GFX GFX
-    dw   `32330322                                     ;; 0b:509a $b4 $f7 GFX GFX
-    dw   `33000033                                     ;; 0b:509c $c3 $c3 GFX GFX
-    dw   `23000000                                     ;; 0b:509e $40 $c0 GFX GFX
-    dw   `00312222                                     ;; 0b:50a0 $30 $2f GFX GFX
-    dw   `00312222                                     ;; 0b:50a2 $30 $2f GFX GFX
-    dw   `00033332                                     ;; 0b:50a4 $1e $1f GFX GFX
-    dw   `00321233                                     ;; 0b:50a6 $2b $37 GFX GFX
-    dw   `03212223                                     ;; 0b:50a8 $51 $6f GFX GFX
-    dw   `32122223                                     ;; 0b:50aa $a1 $df GFX GFX
-    dw   `32122233                                     ;; 0b:50ac $a3 $df GFX GFX
-    dw   `03333333                                     ;; 0b:50ae $7f $7f GFX GFX
-    dw   `23000000                                     ;; 0b:50b0 $40 $c0 GFX GFX
-    dw   `23000000                                     ;; 0b:50b2 $40 $c0 GFX GFX
-    dw   `31300000                                     ;; 0b:50b4 $e0 $a0 GFX GFX
-    dw   `31330000                                     ;; 0b:50b6 $f0 $b0 GFX GFX
-    dw   `23230003                                     ;; 0b:50b8 $51 $f1 GFX GFX
-    dw   `23333333                                     ;; 0b:50ba $7f $ff GFX GFX
-    dw   `33333333                                     ;; 0b:50bc $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:50be $ff $ff GFX GFX
-    dw   `30000000                                     ;; 0b:50c0 $80 $80 GFX GFX
-    dw   `23000000                                     ;; 0b:50c2 $40 $c0 GFX GFX
-    dw   `22333300                                     ;; 0b:50c4 $3c $fc GFX GFX
-    dw   `22322233                                     ;; 0b:50c6 $23 $ff GFX GFX
-    dw   `22232322                                     ;; 0b:50c8 $14 $ff GFX GFX
-    dw   `22332321                                     ;; 0b:50ca $35 $fe GFX GFX
-    dw   `33133211                                     ;; 0b:50cc $fb $dc GFX GFX
-    dw   `33133211                                     ;; 0b:50ce $fb $dc GFX GFX
-    dw   `00000000                                     ;; 0b:50d0 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:50d2 $00 $00 GFX GFX
-    dw   `33330000                                     ;; 0b:50d4 $f0 $f0 GFX GFX
-    dw   `22223300                                     ;; 0b:50d6 $0c $fc GFX GFX
-    dw   `22222230                                     ;; 0b:50d8 $02 $fe GFX GFX
-    dw   `12222230                                     ;; 0b:50da $82 $7e GFX GFX
-    dw   `11222223                                     ;; 0b:50dc $c1 $3f GFX GFX
-    dw   `11222223                                     ;; 0b:50de $c1 $3f GFX GFX
-    dw   `32333211                                     ;; 0b:50e0 $bb $fc GFX GFX
-    dw   `23223211                                     ;; 0b:50e2 $4b $fc GFX GFX
-    dw   `23223221                                     ;; 0b:50e4 $49 $fe GFX GFX
-    dw   `32222322                                     ;; 0b:50e6 $84 $ff GFX GFX
-    dw   `22222322                                     ;; 0b:50e8 $04 $ff GFX GFX
-    dw   `22222233                                     ;; 0b:50ea $03 $ff GFX GFX
-    dw   `22222223                                     ;; 0b:50ec $01 $ff GFX GFX
-    dw   `22222223                                     ;; 0b:50ee $01 $ff GFX GFX
-    dw   `12222223                                     ;; 0b:50f0 $81 $7f GFX GFX
-    dw   `12222223                                     ;; 0b:50f2 $81 $7f GFX GFX
-    dw   `22233323                                     ;; 0b:50f4 $1d $ff GFX GFX
-    dw   `23333330                                     ;; 0b:50f6 $7e $fe GFX GFX
-    dw   `33322330                                     ;; 0b:50f8 $e6 $fe GFX GFX
-    dw   `23233300                                     ;; 0b:50fa $5c $fc GFX GFX
-    dw   `33312230                                     ;; 0b:50fc $f2 $ee GFX GFX
-    dw   `03122223                                     ;; 0b:50fe $61 $5f GFX GFX
-    dw   `22222230                                     ;; 0b:5100 $02 $fe GFX GFX
-    dw   `22223300                                     ;; 0b:5102 $0c $fc GFX GFX
-    dw   `33333003                                     ;; 0b:5104 $f9 $f9 GFX GFX
-    dw   `22323332                                     ;; 0b:5106 $2e $ff GFX GFX
-    dw   `23232231                                     ;; 0b:5108 $53 $fe GFX GFX
-    dw   `23311131                                     ;; 0b:510a $7f $e2 GFX GFX
-    dw   `30311333                                     ;; 0b:510c $bf $a7 GFX GFX
-    dw   `00031323                                     ;; 0b:510e $1d $17 GFX GFX
-    dw   `03122223                                     ;; 0b:5110 $61 $5f GFX GFX
-    dw   `33122223                                     ;; 0b:5112 $e1 $df GFX GFX
-    dw   `23322223                                     ;; 0b:5114 $61 $ff GFX GFX
-    dw   `22322230                                     ;; 0b:5116 $22 $fe GFX GFX
-    dw   `11333230                                     ;; 0b:5118 $fa $3e GFX GFX
-    dw   `11322300                                     ;; 0b:511a $e4 $3c GFX GFX
-    dw   `13122300                                     ;; 0b:511c $e4 $5c GFX GFX
-    dw   `33112300                                     ;; 0b:511e $f4 $cc GFX GFX
-    dw   `00003322                                     ;; 0b:5120 $0c $0f GFX GFX
-    dw   `00003333                                     ;; 0b:5122 $0f $0f GFX GFX
-    dw   `00032322                                     ;; 0b:5124 $14 $1f GFX GFX
-    dw   `00003323                                     ;; 0b:5126 $0d $0f GFX GFX
-    dw   `33333332                                     ;; 0b:5128 $fe $ff GFX GFX
-    dw   `33333332                                     ;; 0b:512a $fe $ff GFX GFX
-    dw   `33333333                                     ;; 0b:512c $ff $ff GFX GFX
-    dw   `00000000                                     ;; 0b:512e $00 $00 GFX GFX
-    dw   `23113230                                     ;; 0b:5130 $7a $ce GFX GFX
-    dw   `32333223                                     ;; 0b:5132 $b9 $ff GFX GFX
-    dw   `32223113                                     ;; 0b:5134 $8f $f9 GFX GFX
-    dw   `33333130                                     ;; 0b:5136 $fe $fa GFX GFX
-    dw   `22222330                                     ;; 0b:5138 $06 $fe GFX GFX
-    dw   `22222230                                     ;; 0b:513a $02 $fe GFX GFX
-    dw   `33333300                                     ;; 0b:513c $fc $fc GFX GFX
-    dw   `00000000                                     ;; 0b:513e $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5140 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5142 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5144 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5146 $00 $00 GFX GFX
-    dw   `00000003                                     ;; 0b:5148 $01 $01 GFX GFX
-    dw   `00000333                                     ;; 0b:514a $07 $07 GFX GFX
-    dw   `00033222                                     ;; 0b:514c $18 $1f GFX GFX
-    dw   `00322222                                     ;; 0b:514e $20 $3f GFX GFX
-    dw   `00000000                                     ;; 0b:5150 $00 $00 GFX GFX
-    dw   `00000333                                     ;; 0b:5152 $07 $07 GFX GFX
-    dw   `00333222                                     ;; 0b:5154 $38 $3f GFX GFX
-    dw   `33222222                                     ;; 0b:5156 $c0 $ff GFX GFX
-    dw   `22222233                                     ;; 0b:5158 $03 $ff GFX GFX
-    dw   `32222322                                     ;; 0b:515a $84 $ff GFX GFX
-    dw   `23323221                                     ;; 0b:515c $69 $fe GFX GFX
-    dw   `22233212                                     ;; 0b:515e $1a $fd GFX GFX
-    dw   `03221112                                     ;; 0b:5160 $4e $71 GFX GFX
-    dw   `03211111                                     ;; 0b:5162 $5f $60 GFX GFX
-    dw   `32211111                                     ;; 0b:5164 $9f $e0 GFX GFX
-    dw   `32211112                                     ;; 0b:5166 $9e $e1 GFX GFX
-    dw   `32221122                                     ;; 0b:5168 $8c $f3 GFX GFX
-    dw   `33222222                                     ;; 0b:516a $c0 $ff GFX GFX
-    dw   `03322222                                     ;; 0b:516c $60 $7f GFX GFX
-    dw   `03233222                                     ;; 0b:516e $58 $7f GFX GFX
-    dw   `22223222                                     ;; 0b:5170 $08 $ff GFX GFX
-    dw   `22223322                                     ;; 0b:5172 $0c $ff GFX GFX
-    dw   `22222333                                     ;; 0b:5174 $07 $ff GFX GFX
-    dw   `22222331                                     ;; 0b:5176 $07 $fe GFX GFX
-    dw   `22222331                                     ;; 0b:5178 $07 $fe GFX GFX
-    dw   `22223323                                     ;; 0b:517a $0d $ff GFX GFX
-    dw   `22232321                                     ;; 0b:517c $15 $fe GFX GFX
-    dw   `23323233                                     ;; 0b:517e $6b $ff GFX GFX
-    dw   `00312333                                     ;; 0b:5180 $37 $2f GFX GFX
-    dw   `00033222                                     ;; 0b:5182 $18 $1f GFX GFX
-    dw   `00003333                                     ;; 0b:5184 $0f $0f GFX GFX
-    dw   `00333332                                     ;; 0b:5186 $3e $3f GFX GFX
-    dw   `03213233                                     ;; 0b:5188 $5b $6f GFX GFX
-    dw   `03132232                                     ;; 0b:518a $72 $5f GFX GFX
-    dw   `32132223                                     ;; 0b:518c $b1 $df GFX GFX
-    dw   `32132222                                     ;; 0b:518e $b0 $df GFX GFX
-    dw   `32232122                                     ;; 0b:5190 $94 $fb GFX GFX
-    dw   `22333211                                     ;; 0b:5192 $3b $fc GFX GFX
-    dw   `33223322                                     ;; 0b:5194 $cc $ff GFX GFX
-    dw   `32122333                                     ;; 0b:5196 $a7 $df GFX GFX
-    dw   `22112332                                     ;; 0b:5198 $36 $cf GFX GFX
-    dw   `22212322                                     ;; 0b:519a $14 $ef GFX GFX
-    dw   `22223221                                     ;; 0b:519c $09 $fe GFX GFX
-    dw   `33223221                                     ;; 0b:519e $c9 $fe GFX GFX
-    dw   `32133223                                     ;; 0b:51a0 $b9 $df GFX GFX
-    dw   `32213333                                     ;; 0b:51a2 $9f $ef GFX GFX
-    dw   `03221111                                     ;; 0b:51a4 $4f $70 GFX GFX
-    dw   `00322222                                     ;; 0b:51a6 $20 $3f GFX GFX
-    dw   `00033333                                     ;; 0b:51a8 $1f $1f GFX GFX
-    dw   `00000322                                     ;; 0b:51aa $04 $07 GFX GFX
-    dw   `00000322                                     ;; 0b:51ac $04 $07 GFX GFX
-    dw   `00000033                                     ;; 0b:51ae $03 $03 GFX GFX
-    dw   `31333222                                     ;; 0b:51b0 $f8 $bf GFX GFX
-    dw   `12303322                                     ;; 0b:51b2 $ac $6f GFX GFX
-    dw   `23000033                                     ;; 0b:51b4 $43 $c3 GFX GFX
-    dw   `33000000                                     ;; 0b:51b6 $c0 $c0 GFX GFX
-    dw   `23000000                                     ;; 0b:51b8 $40 $c0 GFX GFX
-    dw   `23000000                                     ;; 0b:51ba $40 $c0 GFX GFX
-    dw   `30000000                                     ;; 0b:51bc $80 $80 GFX GFX
-    dw   `00000000                                     ;; 0b:51be $00 $00 GFX GFX
-    dw   `00003333                                     ;; 0b:51c0 $0f $0f GFX GFX
-    dw   `33332222                                     ;; 0b:51c2 $f0 $ff GFX GFX
-    dw   `22233221                                     ;; 0b:51c4 $19 $fe GFX GFX
-    dw   `22222322                                     ;; 0b:51c6 $04 $ff GFX GFX
-    dw   `33322232                                     ;; 0b:51c8 $e2 $ff GFX GFX
-    dw   `22233223                                     ;; 0b:51ca $19 $ff GFX GFX
-    dw   `11123223                                     ;; 0b:51cc $e9 $1f GFX GFX
-    dw   `22222312                                     ;; 0b:51ce $06 $fd GFX GFX
-    dw   `00000000                                     ;; 0b:51d0 $00 $00 GFX GFX
-    dw   `33033300                                     ;; 0b:51d2 $dc $dc GFX GFX
-    dw   `12322230                                     ;; 0b:51d4 $a2 $7e GFX GFX
-    dw   `12333223                                     ;; 0b:51d6 $b9 $7f GFX GFX
-    dw   `22233323                                     ;; 0b:51d8 $1d $ff GFX GFX
-    dw   `22232323                                     ;; 0b:51da $15 $ff GFX GFX
-    dw   `22232323                                     ;; 0b:51dc $15 $ff GFX GFX
-    dw   `32233223                                     ;; 0b:51de $99 $ff GFX GFX
-    dw   `22222312                                     ;; 0b:51e0 $06 $fd GFX GFX
-    dw   `33322312                                     ;; 0b:51e2 $e6 $fd GFX GFX
-    dw   `33232312                                     ;; 0b:51e4 $d6 $fd GFX GFX
-    dw   `13323212                                     ;; 0b:51e6 $ea $7d GFX GFX
-    dw   `13323213                                     ;; 0b:51e8 $eb $7d GFX GFX
-    dw   `33232223                                     ;; 0b:51ea $d1 $ff GFX GFX
-    dw   `22322233                                     ;; 0b:51ec $23 $ff GFX GFX
-    dw   `33222232                                     ;; 0b:51ee $c2 $ff GFX GFX
-    dw   `32322230                                     ;; 0b:51f0 $a2 $fe GFX GFX
-    dw   `32333323                                     ;; 0b:51f2 $bd $ff GFX GFX
-    dw   `33032223                                     ;; 0b:51f4 $d1 $df GFX GFX
-    dw   `30003323                                     ;; 0b:51f6 $8d $8f GFX GFX
-    dw   `00000030                                     ;; 0b:51f8 $02 $02 GFX GFX
-    dw   `00000000                                     ;; 0b:51fa $00 $00 GFX GFX
-    dw   `03330000                                     ;; 0b:51fc $70 $70 GFX GFX
-    dw   `33223300                                     ;; 0b:51fe $cc $fc GFX GFX
-    dw   `22222322                                     ;; 0b:5200 $04 $ff GFX GFX
-    dw   `12233222                                     ;; 0b:5202 $98 $7f GFX GFX
-    dw   `23300332                                     ;; 0b:5204 $66 $e7 GFX GFX
-    dw   `33000313                                     ;; 0b:5206 $c7 $c5 GFX GFX
-    dw   `22300321                                     ;; 0b:5208 $25 $e6 GFX GFX
-    dw   `23300032                                     ;; 0b:520a $62 $e3 GFX GFX
-    dw   `22230032                                     ;; 0b:520c $12 $f3 GFX GFX
-    dw   `12230033                                     ;; 0b:520e $93 $73 GFX GFX
-    dw   `22332130                                     ;; 0b:5210 $36 $fa GFX GFX
-    dw   `22233130                                     ;; 0b:5212 $1e $fa GFX GFX
-    dw   `22223130                                     ;; 0b:5214 $0e $fa GFX GFX
-    dw   `32231230                                     ;; 0b:5216 $9a $f6 GFX GFX
-    dw   `33311230                                     ;; 0b:5218 $fa $e6 GFX GFX
-    dw   `11122230                                     ;; 0b:521a $e2 $1e GFX GFX
-    dw   `22222300                                     ;; 0b:521c $04 $fc GFX GFX
-    dw   `22223000                                     ;; 0b:521e $08 $f8 GFX GFX
-    dw   `22300323                                     ;; 0b:5220 $25 $e7 GFX GFX
-    dw   `22300033                                     ;; 0b:5222 $23 $e3 GFX GFX
-    dw   `33000003                                     ;; 0b:5224 $c1 $c1 GFX GFX
-    dw   `00000000                                     ;; 0b:5226 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5228 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:522a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:522c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:522e $00 $00 GFX GFX
-    dw   `23333000                                     ;; 0b:5230 $78 $f8 GFX GFX
-    dw   `23222300                                     ;; 0b:5232 $44 $fc GFX GFX
-    dw   `32222300                                     ;; 0b:5234 $84 $fc GFX GFX
-    dw   `33222300                                     ;; 0b:5236 $c4 $fc GFX GFX
-    dw   `00333000                                     ;; 0b:5238 $38 $38 GFX GFX
-    dw   `00000000                                     ;; 0b:523a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:523c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:523e $00 $00 GFX GFX
-    dw   `00000333                                     ;; 0b:5240 $07 $07 GFX GFX
-    dw   `00033333                                     ;; 0b:5242 $1f $1f GFX GFX
-    dw   `00333331                                     ;; 0b:5244 $3f $3e GFX GFX
-    dw   `00323332                                     ;; 0b:5246 $2e $3f GFX GFX
-    dw   `03222333                                     ;; 0b:5248 $47 $7f GFX GFX
-    dw   `03212233                                     ;; 0b:524a $53 $6f GFX GFX
-    dw   `03211223                                     ;; 0b:524c $59 $67 GFX GFX
-    dw   `03221223                                     ;; 0b:524e $49 $77 GFX GFX
-    dw   `33300000                                     ;; 0b:5250 $e0 $e0 GFX GFX
-    dw   `33333000                                     ;; 0b:5252 $f8 $f8 GFX GFX
-    dw   `13333300                                     ;; 0b:5254 $fc $7c GFX GFX
-    dw   `23332300                                     ;; 0b:5256 $74 $fc GFX GFX
-    dw   `33322230                                     ;; 0b:5258 $e2 $fe GFX GFX
-    dw   `33221230                                     ;; 0b:525a $ca $f6 GFX GFX
-    dw   `32211230                                     ;; 0b:525c $9a $e6 GFX GFX
-    dw   `32212230                                     ;; 0b:525e $92 $ee GFX GFX
-    dw   `00322233                                     ;; 0b:5260 $23 $3f GFX GFX
-    dw   `00033333                                     ;; 0b:5262 $1f $1f GFX GFX
-    dw   `03000333                                     ;; 0b:5264 $47 $47 GFX GFX
-    dw   `33000033                                     ;; 0b:5266 $c3 $c3 GFX GFX
-    dw   `33333333                                     ;; 0b:5268 $ff $ff GFX GFX
-    dw   `03300003                                     ;; 0b:526a $61 $61 GFX GFX
-    dw   `03300033                                     ;; 0b:526c $63 $63 GFX GFX
-    dw   `00330003                                     ;; 0b:526e $31 $31 GFX GFX
-    dw   `33222300                                     ;; 0b:5270 $c4 $fc GFX GFX
-    dw   `33333000                                     ;; 0b:5272 $f8 $f8 GFX GFX
-    dw   `33300030                                     ;; 0b:5274 $e2 $e2 GFX GFX
-    dw   `33000033                                     ;; 0b:5276 $c3 $c3 GFX GFX
-    dw   `33333333                                     ;; 0b:5278 $ff $ff GFX GFX
-    dw   `30000330                                     ;; 0b:527a $86 $86 GFX GFX
-    dw   `33000330                                     ;; 0b:527c $c6 $c6 GFX GFX
-    dw   `30003300                                     ;; 0b:527e $8c $8c GFX GFX
-    dw   `03333000                                     ;; 0b:5280 $78 $78 GFX GFX
-    dw   `00033300                                     ;; 0b:5282 $1c $1c GFX GFX
-    dw   `00030003                                     ;; 0b:5284 $11 $11 GFX GFX
-    dw   `33330032                                     ;; 0b:5286 $f2 $f3 GFX GFX
-    dw   `03333333                                     ;; 0b:5288 $7f $7f GFX GFX
-    dw   `00333333                                     ;; 0b:528a $3f $3f GFX GFX
-    dw   `00033333                                     ;; 0b:528c $1f $1f GFX GFX
-    dw   `03333333                                     ;; 0b:528e $7f $7f GFX GFX
-    dw   `00000000                                     ;; 0b:5290 $00 $00 GFX GFX
-    dw   `33300000                                     ;; 0b:5292 $e0 $e0 GFX GFX
-    dw   `22230000                                     ;; 0b:5294 $10 $f0 GFX GFX
-    dw   `11223300                                     ;; 0b:5296 $cc $3c GFX GFX
-    dw   `22233330                                     ;; 0b:5298 $1e $fe GFX GFX
-    dw   `33333330                                     ;; 0b:529a $fe $fe GFX GFX
-    dw   `33321333                                     ;; 0b:529c $ef $f7 GFX GFX
-    dw   `33331333                                     ;; 0b:529e $ff $f7 GFX GFX
-    dw   `32233333                                     ;; 0b:52a0 $9f $ff GFX GFX
-    dw   `33232332                                     ;; 0b:52a2 $d6 $ff GFX GFX
-    dw   `03332321                                     ;; 0b:52a4 $75 $7e GFX GFX
-    dw   `00333322                                     ;; 0b:52a6 $3c $3f GFX GFX
-    dw   `30033322                                     ;; 0b:52a8 $9c $9f GFX GFX
-    dw   `33030332                                     ;; 0b:52aa $d6 $d7 GFX GFX
-    dw   `03333333                                     ;; 0b:52ac $7f $7f GFX GFX
-    dw   `00333003                                     ;; 0b:52ae $39 $39 GFX GFX
-    dw   `33333333                                     ;; 0b:52b0 $ff $ff GFX GFX
-    dw   `22333333                                     ;; 0b:52b2 $3f $ff GFX GFX
-    dw   `12233333                                     ;; 0b:52b4 $9f $7f GFX GFX
-    dw   `11223333                                     ;; 0b:52b6 $cf $3f GFX GFX
-    dw   `22223330                                     ;; 0b:52b8 $0e $fe GFX GFX
-    dw   `22233330                                     ;; 0b:52ba $1e $fe GFX GFX
-    dw   `33333300                                     ;; 0b:52bc $fc $fc GFX GFX
-    dw   `33330000                                     ;; 0b:52be $f0 $f0 GFX GFX
-    dw   `00000033                                     ;; 0b:52c0 $03 $03 GFX GFX
-    dw   `00003333                                     ;; 0b:52c2 $0f $0f GFX GFX
-    dw   `00033333                                     ;; 0b:52c4 $1f $1f GFX GFX
-    dw   `00033311                                     ;; 0b:52c6 $1f $1c GFX GFX
-    dw   `00323323                                     ;; 0b:52c8 $2d $3f GFX GFX
-    dw   `03222333                                     ;; 0b:52ca $47 $7f GFX GFX
-    dw   `03212333                                     ;; 0b:52cc $57 $6f GFX GFX
-    dw   `03212333                                     ;; 0b:52ce $57 $6f GFX GFX
-    dw   `33330000                                     ;; 0b:52d0 $f0 $f0 GFX GFX
-    dw   `33333300                                     ;; 0b:52d2 $fc $fc GFX GFX
-    dw   `33333330                                     ;; 0b:52d4 $fe $fe GFX GFX
-    dw   `33333330                                     ;; 0b:52d6 $fe $fe GFX GFX
-    dw   `33322333                                     ;; 0b:52d8 $e7 $ff GFX GFX
-    dw   `33222233                                     ;; 0b:52da $c3 $ff GFX GFX
-    dw   `32212233                                     ;; 0b:52dc $93 $ef GFX GFX
-    dw   `32112233                                     ;; 0b:52de $b3 $cf GFX GFX
-    dw   `00323333                                     ;; 0b:52e0 $2f $3f GFX GFX
-    dw   `00033333                                     ;; 0b:52e2 $1f $1f GFX GFX
-    dw   `03003333                                     ;; 0b:52e4 $4f $4f GFX GFX
-    dw   `33003333                                     ;; 0b:52e6 $cf $cf GFX GFX
-    dw   `33333333                                     ;; 0b:52e8 $ff $ff GFX GFX
-    dw   `30033303                                     ;; 0b:52ea $9d $9d GFX GFX
-    dw   `30033003                                     ;; 0b:52ec $99 $99 GFX GFX
-    dw   `00030000                                     ;; 0b:52ee $10 $10 GFX GFX
-    dw   `32122233                                     ;; 0b:52f0 $a3 $df GFX GFX
-    dw   `33222330                                     ;; 0b:52f2 $c6 $fe GFX GFX
-    dw   `33333330                                     ;; 0b:52f4 $fe $fe GFX GFX
-    dw   `32233033                                     ;; 0b:52f6 $9b $fb GFX GFX
-    dw   `33333333                                     ;; 0b:52f8 $ff $ff GFX GFX
-    dw   `22330033                                     ;; 0b:52fa $33 $f3 GFX GFX
-    dw   `23300330                                     ;; 0b:52fc $66 $e6 GFX GFX
-    dw   `33003300                                     ;; 0b:52fe $cc $cc GFX GFX
-    dw   `00000033                                     ;; 0b:5300 $03 $03 GFX GFX
-    dw   `00003311                                     ;; 0b:5302 $0f $0c GFX GFX
-    dw   `00033331                                     ;; 0b:5304 $1f $1e GFX GFX
-    dw   `00003331                                     ;; 0b:5306 $0f $0e GFX GFX
-    dw   `03033311                                     ;; 0b:5308 $5f $5c GFX GFX
-    dw   `33033313                                     ;; 0b:530a $df $dd GFX GFX
-    dw   `31333113                                     ;; 0b:530c $ff $b9 GFX GFX
-    dw   `31333133                                     ;; 0b:530e $ff $bb GFX GFX
-    dw   `33000000                                     ;; 0b:5310 $c0 $c0 GFX GFX
-    dw   `33330000                                     ;; 0b:5312 $f0 $f0 GFX GFX
-    dw   `13333300                                     ;; 0b:5314 $fc $7c GFX GFX
-    dw   `33331130                                     ;; 0b:5316 $fe $f2 GFX GFX
-    dw   `33331133                                     ;; 0b:5318 $ff $f3 GFX GFX
-    dw   `33311333                                     ;; 0b:531a $ff $e7 GFX GFX
-    dw   `33313033                                     ;; 0b:531c $fb $eb GFX GFX
-    dw   `33113333                                     ;; 0b:531e $ff $cf GFX GFX
-    dw   `31333133                                     ;; 0b:5320 $ff $bb GFX GFX
-    dw   `03330333                                     ;; 0b:5322 $77 $77 GFX GFX
-    dw   `03330333                                     ;; 0b:5324 $77 $77 GFX GFX
-    dw   `03333333                                     ;; 0b:5326 $7f $7f GFX GFX
-    dw   `00331333                                     ;; 0b:5328 $3f $37 GFX GFX
-    dw   `00331333                                     ;; 0b:532a $3f $37 GFX GFX
-    dw   `00003333                                     ;; 0b:532c $0f $0f GFX GFX
-    dw   `00000033                                     ;; 0b:532e $03 $03 GFX GFX
-    dw   `33133330                                     ;; 0b:5330 $fe $de GFX GFX
-    dw   `33133303                                     ;; 0b:5332 $fd $dd GFX GFX
-    dw   `03333033                                     ;; 0b:5334 $7b $7b GFX GFX
-    dw   `00333313                                     ;; 0b:5336 $3f $3d GFX GFX
-    dw   `33333133                                     ;; 0b:5338 $ff $fb GFX GFX
-    dw   `11333330                                     ;; 0b:533a $fe $3e GFX GFX
-    dw   `31133300                                     ;; 0b:533c $fc $9c GFX GFX
-    dw   `33330000                                     ;; 0b:533e $f0 $f0 GFX GFX
-    dw   `00033300                                     ;; 0b:5340 $1c $1c GFX GFX
-    dw   `00333300                                     ;; 0b:5342 $3c $3c GFX GFX
-    dw   `03333300                                     ;; 0b:5344 $7c $7c GFX GFX
-    dw   `03130003                                     ;; 0b:5346 $71 $51 GFX GFX
-    dw   `31133333                                     ;; 0b:5348 $ff $9f GFX GFX
-    dw   `31333333                                     ;; 0b:534a $ff $bf GFX GFX
-    dw   `03333000                                     ;; 0b:534c $78 $78 GFX GFX
-    dw   `33331303                                     ;; 0b:534e $fd $f5 GFX GFX
-    dw   `33300000                                     ;; 0b:5350 $e0 $e0 GFX GFX
-    dw   `33330000                                     ;; 0b:5352 $f0 $f0 GFX GFX
-    dw   `33133300                                     ;; 0b:5354 $fc $dc GFX GFX
-    dw   `33313330                                     ;; 0b:5356 $fe $ee GFX GFX
-    dw   `33313330                                     ;; 0b:5358 $fe $ee GFX GFX
-    dw   `33113313                                     ;; 0b:535a $ff $cd GFX GFX
-    dw   `31133313                                     ;; 0b:535c $ff $9d GFX GFX
-    dw   `33333313                                     ;; 0b:535e $ff $fd GFX GFX
-    dw   `33311333                                     ;; 0b:5360 $ff $e7 GFX GFX
-    dw   `33033333                                     ;; 0b:5362 $df $df GFX GFX
-    dw   `33333331                                     ;; 0b:5364 $ff $fe GFX GFX
-    dw   `33133311                                     ;; 0b:5366 $ff $dc GFX GFX
-    dw   `03333031                                     ;; 0b:5368 $7b $7a GFX GFX
-    dw   `00033033                                     ;; 0b:536a $1b $1b GFX GFX
-    dw   `00033311                                     ;; 0b:536c $1f $1c GFX GFX
-    dw   `00003333                                     ;; 0b:536e $0f $0f GFX GFX
-    dw   `33333113                                     ;; 0b:5370 $ff $f9 GFX GFX
-    dw   `13031133                                     ;; 0b:5372 $df $53 GFX GFX
-    dw   `30033333                                     ;; 0b:5374 $9f $9f GFX GFX
-    dw   `13333330                                     ;; 0b:5376 $fe $7e GFX GFX
-    dw   `33333130                                     ;; 0b:5378 $fe $fa GFX GFX
-    dw   `33331130                                     ;; 0b:537a $fe $f2 GFX GFX
-    dw   `33311300                                     ;; 0b:537c $fc $e4 GFX GFX
-    dw   `03333000                                     ;; 0b:537e $78 $78 GFX GFX
-    dw   `00000033                                     ;; 0b:5380 $03 $03 GFX GFX
-    dw   `00333321                                     ;; 0b:5382 $3d $3e GFX GFX
-    dw   `03333331                                     ;; 0b:5384 $7f $7e GFX GFX
-    dw   `03130333                                     ;; 0b:5386 $77 $57 GFX GFX
-    dw   `03130033                                     ;; 0b:5388 $73 $53 GFX GFX
-    dw   `00313031                                     ;; 0b:538a $3b $2a GFX GFX
-    dw   `03333031                                     ;; 0b:538c $7b $7a GFX GFX
-    dw   `33333333                                     ;; 0b:538e $ff $ff GFX GFX
-    dw   `33000000                                     ;; 0b:5390 $c0 $c0 GFX GFX
-    dw   `12333300                                     ;; 0b:5392 $bc $7c GFX GFX
-    dw   `13333330                                     ;; 0b:5394 $fe $7e GFX GFX
-    dw   `33303130                                     ;; 0b:5396 $ee $ea GFX GFX
-    dw   `33003130                                     ;; 0b:5398 $ce $ca GFX GFX
-    dw   `13031300                                     ;; 0b:539a $dc $54 GFX GFX
-    dw   `13033330                                     ;; 0b:539c $de $5e GFX GFX
-    dw   `33333333                                     ;; 0b:539e $ff $ff GFX GFX
-    dw   `33130333                                     ;; 0b:53a0 $f7 $d7 GFX GFX
-    dw   `31130033                                     ;; 0b:53a2 $f3 $93 GFX GFX
-    dw   `03113031                                     ;; 0b:53a4 $7b $4a GFX GFX
-    dw   `00333321                                     ;; 0b:53a6 $3d $3e GFX GFX
-    dw   `03333333                                     ;; 0b:53a8 $7f $7f GFX GFX
-    dw   `03312333                                     ;; 0b:53aa $77 $6f GFX GFX
-    dw   `00331113                                     ;; 0b:53ac $3f $31 GFX GFX
-    dw   `00003333                                     ;; 0b:53ae $0f $0f GFX GFX
-    dw   `33303133                                     ;; 0b:53b0 $ef $eb GFX GFX
-    dw   `33003113                                     ;; 0b:53b2 $cf $c9 GFX GFX
-    dw   `13031130                                     ;; 0b:53b4 $de $52 GFX GFX
-    dw   `12323300                                     ;; 0b:53b6 $ac $7c GFX GFX
-    dw   `33333330                                     ;; 0b:53b8 $fe $fe GFX GFX
-    dw   `33321330                                     ;; 0b:53ba $ee $f6 GFX GFX
-    dw   `31113300                                     ;; 0b:53bc $fc $8c GFX GFX
-    dw   `33330000                                     ;; 0b:53be $f0 $f0 GFX GFX
-    dw   `00000333                                     ;; 0b:53c0 $07 $07 GFX GFX
-    dw   `00033111                                     ;; 0b:53c2 $1f $18 GFX GFX
-    dw   `00333333                                     ;; 0b:53c4 $3f $3f GFX GFX
-    dw   `00333333                                     ;; 0b:53c6 $3f $3f GFX GFX
-    dw   `03111133                                     ;; 0b:53c8 $7f $43 GFX GFX
-    dw   `33133113                                     ;; 0b:53ca $ff $d9 GFX GFX
-    dw   `33333313                                     ;; 0b:53cc $ff $fd GFX GFX
-    dw   `33333333                                     ;; 0b:53ce $ff $ff GFX GFX
-    dw   `33300000                                     ;; 0b:53d0 $e0 $e0 GFX GFX
-    dw   `13333300                                     ;; 0b:53d2 $fc $7c GFX GFX
-    dw   `11331130                                     ;; 0b:53d4 $fe $32 GFX GFX
-    dw   `31333113                                     ;; 0b:53d6 $ff $b9 GFX GFX
-    dw   `33333313                                     ;; 0b:53d8 $ff $fd GFX GFX
-    dw   `30033333                                     ;; 0b:53da $9f $9f GFX GFX
-    dw   `33033333                                     ;; 0b:53dc $df $df GFX GFX
-    dw   `31313330                                     ;; 0b:53de $fe $ae GFX GFX
-    dw   `00033303                                     ;; 0b:53e0 $1d $1d GFX GFX
-    dw   `00003300                                     ;; 0b:53e2 $0c $0c GFX GFX
-    dw   `33303303                                     ;; 0b:53e4 $ed $ed GFX GFX
-    dw   `33303331                                     ;; 0b:53e6 $ef $ee GFX GFX
-    dw   `33333333                                     ;; 0b:53e8 $ff $ff GFX GFX
-    dw   `03311333                                     ;; 0b:53ea $7f $67 GFX GFX
-    dw   `00331133                                     ;; 0b:53ec $3f $33 GFX GFX
-    dw   `00003303                                     ;; 0b:53ee $0d $0d GFX GFX
-    dw   `33111313                                     ;; 0b:53f0 $ff $c5 GFX GFX
-    dw   `33313313                                     ;; 0b:53f2 $ff $ed GFX GFX
-    dw   `33330033                                     ;; 0b:53f4 $f3 $f3 GFX GFX
-    dw   `13333333                                     ;; 0b:53f6 $ff $7f GFX GFX
-    dw   `13333330                                     ;; 0b:53f8 $fe $7e GFX GFX
-    dw   `30313000                                     ;; 0b:53fa $b8 $a8 GFX GFX
-    dw   `33333000                                     ;; 0b:53fc $f8 $f8 GFX GFX
-    dw   `33330000                                     ;; 0b:53fe $f0 $f0 GFX GFX
-    dw   `00000033                                     ;; 0b:5400 $03 $03 GFX GFX
-    dw   `00303333                                     ;; 0b:5402 $2f $2f GFX GFX
-    dw   `03033333                                     ;; 0b:5404 $5f $5f GFX GFX
-    dw   `33033300                                     ;; 0b:5406 $dc $dc GFX GFX
-    dw   `31333000                                     ;; 0b:5408 $f8 $b8 GFX GFX
-    dw   `31333000                                     ;; 0b:540a $f8 $b8 GFX GFX
-    dw   `03333033                                     ;; 0b:540c $7b $7b GFX GFX
-    dw   `33331333                                     ;; 0b:540e $ff $f7 GFX GFX
-    dw   `33000000                                     ;; 0b:5410 $c0 $c0 GFX GFX
-    dw   `33330300                                     ;; 0b:5412 $f4 $f4 GFX GFX
-    dw   `33333030                                     ;; 0b:5414 $fa $fa GFX GFX
-    dw   `00333033                                     ;; 0b:5416 $3b $3b GFX GFX
-    dw   `00033313                                     ;; 0b:5418 $1f $1d GFX GFX
-    dw   `00033313                                     ;; 0b:541a $1f $1d GFX GFX
-    dw   `33003330                                     ;; 0b:541c $ce $ce GFX GFX
-    dw   `33313333                                     ;; 0b:541e $ff $ef GFX GFX
-    dw   `33003331                                     ;; 0b:5420 $cf $ce GFX GFX
-    dw   `31303311                                     ;; 0b:5422 $ef $ac GFX GFX
-    dw   `03133331                                     ;; 0b:5424 $7f $5e GFX GFX
-    dw   `00333111                                     ;; 0b:5426 $3f $38 GFX GFX
-    dw   `00333313                                     ;; 0b:5428 $3f $3d GFX GFX
-    dw   `00331333                                     ;; 0b:542a $3f $37 GFX GFX
-    dw   `00033133                                     ;; 0b:542c $1f $1b GFX GFX
-    dw   `00000333                                     ;; 0b:542e $07 $07 GFX GFX
-    dw   `13330033                                     ;; 0b:5430 $f3 $73 GFX GFX
-    dw   `11330313                                     ;; 0b:5432 $f7 $35 GFX GFX
-    dw   `13333130                                     ;; 0b:5434 $fe $7a GFX GFX
-    dw   `11133300                                     ;; 0b:5436 $fc $1c GFX GFX
-    dw   `31333300                                     ;; 0b:5438 $fc $bc GFX GFX
-    dw   `33313300                                     ;; 0b:543a $fc $ec GFX GFX
-    dw   `33133000                                     ;; 0b:543c $f8 $d8 GFX GFX
-    dw   `33300000                                     ;; 0b:543e $e0 $e0 GFX GFX
-    dw   `00000000                                     ;; 0b:5440 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5442 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5444 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5446 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5448 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:544a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:544c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:544e $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5450 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5452 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5454 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5456 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5458 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:545a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:545c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:545e $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5460 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5462 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5464 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5466 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5468 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:546a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:546c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:546e $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5470 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5472 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5474 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5476 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5478 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:547a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:547c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:547e $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5480 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5482 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5484 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5486 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5488 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:548a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:548c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:548e $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5490 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5492 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5494 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5496 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5498 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:549a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:549c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:549e $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:54a0 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:54a2 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:54a4 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:54a6 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:54a8 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:54aa $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:54ac $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:54ae $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:54b0 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:54b2 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:54b4 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:54b6 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:54b8 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:54ba $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:54bc $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:54be $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:54c0 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:54c2 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:54c4 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:54c6 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:54c8 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:54ca $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:54cc $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:54ce $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:54d0 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:54d2 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:54d4 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:54d6 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:54d8 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:54da $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:54dc $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:54de $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:54e0 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:54e2 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:54e4 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:54e6 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:54e8 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:54ea $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:54ec $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:54ee $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:54f0 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:54f2 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:54f4 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:54f6 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:54f8 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:54fa $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:54fc $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:54fe $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5500 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5502 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5504 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5506 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5508 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:550a $00 $00 GFX GFX
-    dw   `00000033                                     ;; 0b:550c $03 $03 GFX GFX
-    dw   `00000322                                     ;; 0b:550e $04 $07 GFX GFX
-    dw   `00000000                                     ;; 0b:5510 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5512 $00 $00 GFX GFX
-    dw   `00000033                                     ;; 0b:5514 $03 $03 GFX GFX
-    dw   `00003322                                     ;; 0b:5516 $0c $0f GFX GFX
-    dw   `00332233                                     ;; 0b:5518 $33 $3f GFX GFX
-    dw   `33223332                                     ;; 0b:551a $ce $ff GFX GFX
-    dw   `22331323                                     ;; 0b:551c $3d $f7 GFX GFX
-    dw   `33113231                                     ;; 0b:551e $fb $ce GFX GFX
-    dw   `00003233                                     ;; 0b:5520 $0b $0f GFX GFX
-    dw   `00032311                                     ;; 0b:5522 $17 $1c GFX GFX
-    dw   `00323133                                     ;; 0b:5524 $2f $3b GFX GFX
-    dw   `03233300                                     ;; 0b:5526 $5c $7c GFX GFX
-    dw   `03230000                                     ;; 0b:5528 $50 $70 GFX GFX
-    dw   `32300000                                     ;; 0b:552a $a0 $e0 GFX GFX
-    dw   `32300000                                     ;; 0b:552c $a0 $e0 GFX GFX
-    dw   `03000000                                     ;; 0b:552e $40 $40 GFX GFX
-    dw   `11132311                                     ;; 0b:5530 $f7 $1c GFX GFX
-    dw   `11323111                                     ;; 0b:5532 $ef $38 GFX GFX
-    dw   `31323111                                     ;; 0b:5534 $ef $b8 GFX GFX
-    dw   `03231333                                     ;; 0b:5536 $5f $77 GFX GFX
-    dw   `03230003                                     ;; 0b:5538 $51 $71 GFX GFX
-    dw   `00300003                                     ;; 0b:553a $21 $21 GFX GFX
-    dw   `00000003                                     ;; 0b:553c $01 $01 GFX GFX
-    dw   `00000000                                     ;; 0b:553e $00 $00 GFX GFX
-    dw   `00003333                                     ;; 0b:5540 $0f $0f GFX GFX
-    dw   `03332311                                     ;; 0b:5542 $77 $7c GFX GFX
-    dw   `32222333                                     ;; 0b:5544 $87 $ff GFX GFX
-    dw   `22223000                                     ;; 0b:5546 $08 $f8 GFX GFX
-    dw   `22230000                                     ;; 0b:5548 $10 $f0 GFX GFX
-    dw   `33230000                                     ;; 0b:554a $d0 $f0 GFX GFX
-    dw   `13233000                                     ;; 0b:554c $d8 $78 GFX GFX
-    dw   `13223333                                     ;; 0b:554e $cf $7f GFX GFX
-    dw   `00000000                                     ;; 0b:5550 $00 $00 GFX GFX
-    dw   `30000000                                     ;; 0b:5552 $80 $80 GFX GFX
-    dw   `00000000                                     ;; 0b:5554 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5556 $00 $00 GFX GFX
-    dw   `00030000                                     ;; 0b:5558 $10 $10 GFX GFX
-    dw   `03330033                                     ;; 0b:555a $73 $73 GFX GFX
-    dw   `33303333                                     ;; 0b:555c $ef $ef GFX GFX
-    dw   `33333333                                     ;; 0b:555e $ff $ff GFX GFX
-    dw   `32332223                                     ;; 0b:5560 $b1 $ff GFX GFX
-    dw   `32332332                                     ;; 0b:5562 $b6 $ff GFX GFX
-    dw   `32332113                                     ;; 0b:5564 $b7 $f9 GFX GFX
-    dw   `23313233                                     ;; 0b:5566 $7b $ef GFX GFX
-    dw   `23113333                                     ;; 0b:5568 $7f $cf GFX GFX
-    dw   `23333333                                     ;; 0b:556a $7f $ff GFX GFX
-    dw   `23003333                                     ;; 0b:556c $4f $cf GFX GFX
-    dw   `30030333                                     ;; 0b:556e $97 $97 GFX GFX
-    dw   `33333333                                     ;; 0b:5570 $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:5572 $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:5574 $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:5576 $ff $ff GFX GFX
-    dw   `32333333                                     ;; 0b:5578 $bf $ff GFX GFX
-    dw   `22333233                                     ;; 0b:557a $3b $ff GFX GFX
-    dw   `22232332                                     ;; 0b:557c $16 $ff GFX GFX
-    dw   `33222222                                     ;; 0b:557e $c0 $ff GFX GFX
-    dw   `00033333                                     ;; 0b:5580 $1f $1f GFX GFX
-    dw   `00033333                                     ;; 0b:5582 $1f $1f GFX GFX
-    dw   `00003332                                     ;; 0b:5584 $0e $0f GFX GFX
-    dw   `00033332                                     ;; 0b:5586 $1e $1f GFX GFX
-    dw   `00032332                                     ;; 0b:5588 $16 $1f GFX GFX
-    dw   `00032223                                     ;; 0b:558a $11 $1f GFX GFX
-    dw   `00033223                                     ;; 0b:558c $19 $1f GFX GFX
-    dw   `03323222                                     ;; 0b:558e $68 $7f GFX GFX
-    dw   `11323233                                     ;; 0b:5590 $eb $3f GFX GFX
-    dw   `13322311                                     ;; 0b:5592 $e7 $7c GFX GFX
-    dw   `33322331                                     ;; 0b:5594 $e7 $fe GFX GFX
-    dw   `23222333                                     ;; 0b:5596 $47 $ff GFX GFX
-    dw   `23333222                                     ;; 0b:5598 $78 $ff GFX GFX
-    dw   `22332222                                     ;; 0b:559a $30 $ff GFX GFX
-    dw   `22322222                                     ;; 0b:559c $20 $ff GFX GFX
-    dw   `33233222                                     ;; 0b:559e $d8 $ff GFX GFX
-    dw   `32223212                                     ;; 0b:55a0 $8a $fd GFX GFX
-    dw   `32322312                                     ;; 0b:55a2 $a6 $fd GFX GFX
-    dw   `03322321                                     ;; 0b:55a4 $65 $7e GFX GFX
-    dw   `00333321                                     ;; 0b:55a6 $3d $3e GFX GFX
-    dw   `00000032                                     ;; 0b:55a8 $02 $03 GFX GFX
-    dw   `00000003                                     ;; 0b:55aa $01 $01 GFX GFX
-    dw   `00000003                                     ;; 0b:55ac $01 $01 GFX GFX
-    dw   `00000000                                     ;; 0b:55ae $00 $00 GFX GFX
-    dw   `23222333                                     ;; 0b:55b0 $47 $ff GFX GFX
-    dw   `22333000                                     ;; 0b:55b2 $38 $f8 GFX GFX
-    dw   `22230000                                     ;; 0b:55b4 $10 $f0 GFX GFX
-    dw   `22223000                                     ;; 0b:55b6 $08 $f8 GFX GFX
-    dw   `12323000                                     ;; 0b:55b8 $a8 $78 GFX GFX
-    dw   `22233000                                     ;; 0b:55ba $18 $f8 GFX GFX
-    dw   `23230000                                     ;; 0b:55bc $50 $f0 GFX GFX
-    dw   `33300000                                     ;; 0b:55be $e0 $e0 GFX GFX
-    dw   `00000000                                     ;; 0b:55c0 $00 $00 GFX GFX
-    dw   `03300000                                     ;; 0b:55c2 $60 $60 GFX GFX
-    dw   `03130000                                     ;; 0b:55c4 $70 $50 GFX GFX
-    dw   `00313000                                     ;; 0b:55c6 $38 $28 GFX GFX
-    dw   `00031300                                     ;; 0b:55c8 $1c $14 GFX GFX
-    dw   `30031130                                     ;; 0b:55ca $9e $92 GFX GFX
-    dw   `03333113                                     ;; 0b:55cc $7f $79 GFX GFX
-    dw   `33333213                                     ;; 0b:55ce $fb $fd GFX GFX
-    dw   `00000333                                     ;; 0b:55d0 $07 $07 GFX GFX
-    dw   `33000311                                     ;; 0b:55d2 $c7 $c4 GFX GFX
-    dw   `31300031                                     ;; 0b:55d4 $e3 $a2 GFX GFX
-    dw   `03130003                                     ;; 0b:55d6 $71 $51 GFX GFX
-    dw   `03130003                                     ;; 0b:55d8 $71 $51 GFX GFX
-    dw   `33330332                                     ;; 0b:55da $f6 $f7 GFX GFX
-    dw   `22223113                                     ;; 0b:55dc $0f $f9 GFX GFX
-    dw   `22323123                                     ;; 0b:55de $2d $fb GFX GFX
-    dw   `33111121                                     ;; 0b:55e0 $fd $c2 GFX GFX
-    dw   `33313331                                     ;; 0b:55e2 $ff $ee GFX GFX
-    dw   `33332223                                     ;; 0b:55e4 $f1 $ff GFX GFX
-    dw   `33323323                                     ;; 0b:55e6 $ed $ff GFX GFX
-    dw   `33331123                                     ;; 0b:55e8 $fd $f3 GFX GFX
-    dw   `23333233                                     ;; 0b:55ea $7b $ff GFX GFX
-    dw   `22333333                                     ;; 0b:55ec $3f $ff GFX GFX
-    dw   `22333333                                     ;; 0b:55ee $3f $ff GFX GFX
-    dw   `32331332                                     ;; 0b:55f0 $be $f7 GFX GFX
-    dw   `13111132                                     ;; 0b:55f2 $fe $43 GFX GFX
-    dw   `11111332                                     ;; 0b:55f4 $fe $07 GFX GFX
-    dw   `33113133                                     ;; 0b:55f6 $ff $cb GFX GFX
-    dw   `11313333                                     ;; 0b:55f8 $ff $2f GFX GFX
-    dw   `31312333                                     ;; 0b:55fa $f7 $af GFX GFX
-    dw   `33311230                                     ;; 0b:55fc $fa $e6 GFX GFX
-    dw   `11111230                                     ;; 0b:55fe $fa $06 GFX GFX
-    dw   `32333331                                     ;; 0b:5600 $bf $fe GFX GFX
-    dw   `32233323                                     ;; 0b:5602 $9d $ff GFX GFX
-    dw   `32233332                                     ;; 0b:5604 $9e $ff GFX GFX
-    dw   `22233332                                     ;; 0b:5606 $1e $ff GFX GFX
-    dw   `22333322                                     ;; 0b:5608 $3c $ff GFX GFX
-    dw   `23332222                                     ;; 0b:560a $70 $ff GFX GFX
-    dw   `23333212                                     ;; 0b:560c $7a $fd GFX GFX
-    dw   `33322212                                     ;; 0b:560e $e2 $fd GFX GFX
-    dw   `31111123                                     ;; 0b:5610 $fd $83 GFX GFX
-    dw   `33111113                                     ;; 0b:5612 $ff $c1 GFX GFX
-    dw   `22313313                                     ;; 0b:5614 $3f $ed GFX GFX
-    dw   `22331313                                     ;; 0b:5616 $3f $f5 GFX GFX
-    dw   `22233113                                     ;; 0b:5618 $1f $f9 GFX GFX
-    dw   `23223330                                     ;; 0b:561a $4e $fe GFX GFX
-    dw   `23223000                                     ;; 0b:561c $48 $f8 GFX GFX
-    dw   `23230000                                     ;; 0b:561e $50 $f0 GFX GFX
-    dw   `00322122                                     ;; 0b:5620 $24 $3b GFX GFX
-    dw   `00321222                                     ;; 0b:5622 $28 $37 GFX GFX
-    dw   `03222223                                     ;; 0b:5624 $41 $7f GFX GFX
-    dw   `03232323                                     ;; 0b:5626 $55 $7f GFX GFX
-    dw   `00322330                                     ;; 0b:5628 $26 $3e GFX GFX
-    dw   `00033000                                     ;; 0b:562a $18 $18 GFX GFX
-    dw   `00000000                                     ;; 0b:562c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:562e $00 $00 GFX GFX
-    dw   `32333000                                     ;; 0b:5630 $b8 $f8 GFX GFX
-    dw   `32222300                                     ;; 0b:5632 $84 $fc GFX GFX
-    dw   `22322300                                     ;; 0b:5634 $24 $fc GFX GFX
-    dw   `33333000                                     ;; 0b:5636 $f8 $f8 GFX GFX
-    dw   `00000000                                     ;; 0b:5638 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:563a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:563c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:563e $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5640 $00 $00 GFX GFX
-    dw   `33000000                                     ;; 0b:5642 $c0 $c0 GFX GFX
-    dw   `32330000                                     ;; 0b:5644 $b0 $f0 GFX GFX
-    dw   `22223300                                     ;; 0b:5646 $0c $fc GFX GFX
-    dw   `22222233                                     ;; 0b:5648 $03 $ff GFX GFX
-    dw   `22233322                                     ;; 0b:564a $1c $ff GFX GFX
-    dw   `32231133                                     ;; 0b:564c $9f $f3 GFX GFX
-    dw   `33223111                                     ;; 0b:564e $cf $f8 GFX GFX
-    dw   `00000000                                     ;; 0b:5650 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5652 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5654 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5656 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5658 $00 $00 GFX GFX
-    dw   `30000000                                     ;; 0b:565a $80 $80 GFX GFX
-    dw   `23000000                                     ;; 0b:565c $40 $c0 GFX GFX
-    dw   `32300000                                     ;; 0b:565e $a0 $e0 GFX GFX
-    dw   `31323111                                     ;; 0b:5660 $ef $b8 GFX GFX
-    dw   `31132311                                     ;; 0b:5662 $f7 $9c GFX GFX
-    dw   `31132311                                     ;; 0b:5664 $f7 $9c GFX GFX
-    dw   `23313233                                     ;; 0b:5666 $7b $ef GFX GFX
-    dw   `23033230                                     ;; 0b:5668 $5a $de GFX GFX
-    dw   `23003230                                     ;; 0b:566a $4a $ce GFX GFX
-    dw   `30000300                                     ;; 0b:566c $84 $84 GFX GFX
-    dw   `00000000                                     ;; 0b:566e $00 $00 GFX GFX
-    dw   `13230000                                     ;; 0b:5670 $d0 $70 GFX GFX
-    dw   `11323000                                     ;; 0b:5672 $e8 $38 GFX GFX
-    dw   `33132300                                     ;; 0b:5674 $f4 $dc GFX GFX
-    dw   `00333230                                     ;; 0b:5676 $3a $3e GFX GFX
-    dw   `00003230                                     ;; 0b:5678 $0a $0e GFX GFX
-    dw   `00000323                                     ;; 0b:567a $05 $07 GFX GFX
-    dw   `00000323                                     ;; 0b:567c $05 $07 GFX GFX
-    dw   `00000030                                     ;; 0b:567e $02 $02 GFX GFX
-    dw   `00000000                                     ;; 0b:5680 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5682 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5684 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5686 $00 $00 GFX GFX
-    dw   `03333333                                     ;; 0b:5688 $7f $7f GFX GFX
-    dw   `00322223                                     ;; 0b:568a $21 $3f GFX GFX
-    dw   `00032232                                     ;; 0b:568c $12 $1f GFX GFX
-    dw   `00032222                                     ;; 0b:568e $10 $1f GFX GFX
-    dw   `00000000                                     ;; 0b:5690 $00 $00 GFX GFX
-    dw   `00000003                                     ;; 0b:5692 $01 $01 GFX GFX
-    dw   `00000332                                     ;; 0b:5694 $06 $07 GFX GFX
-    dw   `00033233                                     ;; 0b:5696 $1b $1f GFX GFX
-    dw   `03322332                                     ;; 0b:5698 $66 $7f GFX GFX
-    dw   `32222332                                     ;; 0b:569a $86 $ff GFX GFX
-    dw   `22223032                                     ;; 0b:569c $0a $fb GFX GFX
-    dw   `22230003                                     ;; 0b:569e $11 $f1 GFX GFX
-    dw   `00322222                                     ;; 0b:56a0 $20 $3f GFX GFX
-    dw   `03222222                                     ;; 0b:56a2 $40 $7f GFX GFX
-    dw   `33322232                                     ;; 0b:56a4 $e2 $ff GFX GFX
-    dw   `00323303                                     ;; 0b:56a6 $2d $3d GFX GFX
-    dw   `03230000                                     ;; 0b:56a8 $50 $70 GFX GFX
-    dw   `32300000                                     ;; 0b:56aa $a0 $e0 GFX GFX
-    dw   `33000000                                     ;; 0b:56ac $c0 $c0 GFX GFX
-    dw   `30000000                                     ;; 0b:56ae $80 $80 GFX GFX
-    dw   `23300000                                     ;; 0b:56b0 $60 $e0 GFX GFX
-    dw   `31330000                                     ;; 0b:56b2 $f0 $b0 GFX GFX
-    dw   `31113000                                     ;; 0b:56b4 $f8 $88 GFX GFX
-    dw   `33330000                                     ;; 0b:56b6 $f0 $f0 GFX GFX
-    dw   `00000000                                     ;; 0b:56b8 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:56ba $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:56bc $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:56be $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:56c0 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:56c2 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:56c4 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:56c6 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:56c8 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:56ca $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:56cc $00 $00 GFX GFX
-    dw   `00000003                                     ;; 0b:56ce $01 $01 GFX GFX
-    dw   `00000000                                     ;; 0b:56d0 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:56d2 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:56d4 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:56d6 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:56d8 $00 $00 GFX GFX
-    dw   `03300333                                     ;; 0b:56da $67 $67 GFX GFX
-    dw   `33033333                                     ;; 0b:56dc $df $df GFX GFX
-    dw   `33333333                                     ;; 0b:56de $ff $ff GFX GFX
-    dw   `00033303                                     ;; 0b:56e0 $1d $1d GFX GFX
-    dw   `00032233                                     ;; 0b:56e2 $13 $1f GFX GFX
-    dw   `00032323                                     ;; 0b:56e4 $15 $1f GFX GFX
-    dw   `00032333                                     ;; 0b:56e6 $17 $1f GFX GFX
-    dw   `00003333                                     ;; 0b:56e8 $0f $0f GFX GFX
-    dw   `00003332                                     ;; 0b:56ea $0e $0f GFX GFX
-    dw   `00030333                                     ;; 0b:56ec $17 $17 GFX GFX
-    dw   `00033333                                     ;; 0b:56ee $1f $1f GFX GFX
-    dw   `33333333                                     ;; 0b:56f0 $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:56f2 $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:56f4 $ff $ff GFX GFX
-    dw   `32333232                                     ;; 0b:56f6 $ba $ff GFX GFX
-    dw   `22332222                                     ;; 0b:56f8 $30 $ff GFX GFX
-    dw   `33232333                                     ;; 0b:56fa $d7 $ff GFX GFX
-    dw   `11323111                                     ;; 0b:56fc $ef $38 GFX GFX
-    dw   `13323331                                     ;; 0b:56fe $ef $7e GFX GFX
-    dw   `03333332                                     ;; 0b:5700 $7e $7f GFX GFX
-    dw   `32323322                                     ;; 0b:5702 $ac $ff GFX GFX
-    dw   `33332332                                     ;; 0b:5704 $f6 $ff GFX GFX
-    dw   `23223333                                     ;; 0b:5706 $4f $ff GFX GFX
-    dw   `32232233                                     ;; 0b:5708 $93 $ff GFX GFX
-    dw   `32232233                                     ;; 0b:570a $93 $ff GFX GFX
-    dw   `23333233                                     ;; 0b:570c $7b $ff GFX GFX
-    dw   `32112300                                     ;; 0b:570e $b4 $cc GFX GFX
-    dw   `33333333                                     ;; 0b:5710 $ff $ff GFX GFX
-    dw   `23332222                                     ;; 0b:5712 $70 $ff GFX GFX
-    dw   `22322222                                     ;; 0b:5714 $20 $ff GFX GFX
-    dw   `33333222                                     ;; 0b:5716 $f8 $ff GFX GFX
-    dw   `13331333                                     ;; 0b:5718 $ff $77 GFX GFX
-    dw   `33333332                                     ;; 0b:571a $fe $ff GFX GFX
-    dw   `33333323                                     ;; 0b:571c $fd $ff GFX GFX
-    dw   `31331323                                     ;; 0b:571e $fd $b7 GFX GFX
-    dw   `33333000                                     ;; 0b:5720 $f8 $f8 GFX GFX
-    dw   `00000000                                     ;; 0b:5722 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5724 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5726 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5728 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:572a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:572c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:572e $00 $00 GFX GFX
-    dw   `33222230                                     ;; 0b:5730 $c2 $fe GFX GFX
-    dw   `03333300                                     ;; 0b:5732 $7c $7c GFX GFX
-    dw   `00000000                                     ;; 0b:5734 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5736 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5738 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:573a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:573c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:573e $00 $00 GFX GFX
-    dw   `03300000                                     ;; 0b:5740 $60 $60 GFX GFX
-    dw   `03130000                                     ;; 0b:5742 $70 $50 GFX GFX
-    dw   `00313000                                     ;; 0b:5744 $38 $28 GFX GFX
-    dw   `00031300                                     ;; 0b:5746 $1c $14 GFX GFX
-    dw   `00031130                                     ;; 0b:5748 $1e $12 GFX GFX
-    dw   `00003113                                     ;; 0b:574a $0f $09 GFX GFX
-    dw   `03333213                                     ;; 0b:574c $7b $7d GFX GFX
-    dw   `33111121                                     ;; 0b:574e $fd $c2 GFX GFX
-    dw   `33000000                                     ;; 0b:5750 $c0 $c0 GFX GFX
-    dw   `31300000                                     ;; 0b:5752 $e0 $a0 GFX GFX
-    dw   `03130000                                     ;; 0b:5754 $70 $50 GFX GFX
-    dw   `03130000                                     ;; 0b:5756 $70 $50 GFX GFX
-    dw   `33330333                                     ;; 0b:5758 $f7 $f7 GFX GFX
-    dw   `22223113                                     ;; 0b:575a $0f $f9 GFX GFX
-    dw   `22323123                                     ;; 0b:575c $2d $fb GFX GFX
-    dw   `32332330                                     ;; 0b:575e $b6 $fe GFX GFX
-    dw   `33313331                                     ;; 0b:5760 $ff $ee GFX GFX
-    dw   `33332223                                     ;; 0b:5762 $f1 $ff GFX GFX
-    dw   `33323323                                     ;; 0b:5764 $ed $ff GFX GFX
-    dw   `33333123                                     ;; 0b:5766 $fd $fb GFX GFX
-    dw   `23333233                                     ;; 0b:5768 $7b $ff GFX GFX
-    dw   `32333313                                     ;; 0b:576a $bf $fd GFX GFX
-    dw   `32333331                                     ;; 0b:576c $bf $fe GFX GFX
-    dw   `32233333                                     ;; 0b:576e $9f $ff GFX GFX
-    dw   `13111230                                     ;; 0b:5770 $fa $46 GFX GFX
-    dw   `11111300                                     ;; 0b:5772 $fc $04 GFX GFX
-    dw   `33113130                                     ;; 0b:5774 $fe $ca GFX GFX
-    dw   `11313330                                     ;; 0b:5776 $fe $2e GFX GFX
-    dw   `31312330                                     ;; 0b:5778 $f6 $ae GFX GFX
-    dw   `33311230                                     ;; 0b:577a $fa $e6 GFX GFX
-    dw   `11111230                                     ;; 0b:577c $fa $06 GFX GFX
-    dw   `31111123                                     ;; 0b:577e $fd $83 GFX GFX
-    dw   `22233321                                     ;; 0b:5780 $1d $fe GFX GFX
-    dw   `22333323                                     ;; 0b:5782 $3d $ff GFX GFX
-    dw   `22333332                                     ;; 0b:5784 $3e $ff GFX GFX
-    dw   `23333322                                     ;; 0b:5786 $7c $ff GFX GFX
-    dw   `33332222                                     ;; 0b:5788 $f0 $ff GFX GFX
-    dw   `33333222                                     ;; 0b:578a $f8 $ff GFX GFX
-    dw   `30322212                                     ;; 0b:578c $a2 $bd GFX GFX
-    dw   `03322122                                     ;; 0b:578e $64 $7b GFX GFX
-    dw   `13111113                                     ;; 0b:5790 $ff $41 GFX GFX
-    dw   `32313313                                     ;; 0b:5792 $bf $ed GFX GFX
-    dw   `22331313                                     ;; 0b:5794 $3f $f5 GFX GFX
-    dw   `22233113                                     ;; 0b:5796 $1f $f9 GFX GFX
-    dw   `23223330                                     ;; 0b:5798 $4e $fe GFX GFX
-    dw   `23223000                                     ;; 0b:579a $48 $f8 GFX GFX
-    dw   `23230000                                     ;; 0b:579c $50 $f0 GFX GFX
-    dw   `23230000                                     ;; 0b:579e $50 $f0 GFX GFX
-    dw   `32221222                                     ;; 0b:57a0 $88 $f7 GFX GFX
-    dw   `32322223                                     ;; 0b:57a2 $a1 $ff GFX GFX
-    dw   `33223233                                     ;; 0b:57a4 $cb $ff GFX GFX
-    dw   `03333303                                     ;; 0b:57a6 $7d $7d GFX GFX
-    dw   `00000000                                     ;; 0b:57a8 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:57aa $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:57ac $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:57ae $00 $00 GFX GFX
-    dw   `32223000                                     ;; 0b:57b0 $88 $f8 GFX GFX
-    dw   `32222300                                     ;; 0b:57b2 $84 $fc GFX GFX
-    dw   `22322300                                     ;; 0b:57b4 $24 $fc GFX GFX
-    dw   `33333000                                     ;; 0b:57b6 $f8 $f8 GFX GFX
-    dw   `00000000                                     ;; 0b:57b8 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:57ba $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:57bc $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:57be $00 $00 GFX GFX
-    dw   `33000000                                     ;; 0b:57c0 $c0 $c0 GFX GFX
-    dw   `22300000                                     ;; 0b:57c2 $20 $e0 GFX GFX
-    dw   `32233000                                     ;; 0b:57c4 $98 $f8 GFX GFX
-    dw   `13222330                                     ;; 0b:57c6 $c6 $7e GFX GFX
-    dw   `32322223                                     ;; 0b:57c8 $a1 $ff GFX GFX
-    dw   `32232222                                     ;; 0b:57ca $90 $ff GFX GFX
-    dw   `03333222                                     ;; 0b:57cc $78 $7f GFX GFX
-    dw   `00000322                                     ;; 0b:57ce $04 $07 GFX GFX
-    dw   `00000000                                     ;; 0b:57d0 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:57d2 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:57d4 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:57d6 $00 $00 GFX GFX
-    dw   `33333000                                     ;; 0b:57d8 $f8 $f8 GFX GFX
-    dw   `32222300                                     ;; 0b:57da $84 $fc GFX GFX
-    dw   `23223000                                     ;; 0b:57dc $48 $f8 GFX GFX
-    dw   `22223000                                     ;; 0b:57de $08 $f8 GFX GFX
-    dw   `00000322                                     ;; 0b:57e0 $04 $07 GFX GFX
-    dw   `00033132                                     ;; 0b:57e2 $1e $1b GFX GFX
-    dw   `00311132                                     ;; 0b:57e4 $3e $23 GFX GFX
-    dw   `00033333                                     ;; 0b:57e6 $1f $1f GFX GFX
-    dw   `00000000                                     ;; 0b:57e8 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:57ea $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:57ec $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:57ee $00 $00 GFX GFX
-    dw   `22222300                                     ;; 0b:57f0 $04 $fc GFX GFX
-    dw   `22222300                                     ;; 0b:57f2 $04 $fc GFX GFX
-    dw   `32222230                                     ;; 0b:57f4 $82 $fe GFX GFX
-    dw   `33223333                                     ;; 0b:57f6 $cf $ff GFX GFX
-    dw   `00323000                                     ;; 0b:57f8 $28 $38 GFX GFX
-    dw   `00032300                                     ;; 0b:57fa $14 $1c GFX GFX
-    dw   `00003230                                     ;; 0b:57fc $0a $0e GFX GFX
-    dw   `00000330                                     ;; 0b:57fe $06 $06 GFX GFX
-    dw   `00000000                                     ;; 0b:5800 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5802 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5804 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5806 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5808 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:580a $00 $00 GFX GFX
-    dw   `00300000                                     ;; 0b:580c $20 $20 GFX GFX
-    dw   `03230000                                     ;; 0b:580e $50 $70 GFX GFX
-    dw   `03233300                                     ;; 0b:5810 $5c $7c GFX GFX
-    dw   `00322233                                     ;; 0b:5812 $23 $3f GFX GFX
-    dw   `03222333                                     ;; 0b:5814 $47 $7f GFX GFX
-    dw   `03233223                                     ;; 0b:5816 $59 $7f GFX GFX
-    dw   `03323232                                     ;; 0b:5818 $6a $7f GFX GFX
-    dw   `32323132                                     ;; 0b:581a $ae $fb GFX GFX
-    dw   `32313322                                     ;; 0b:581c $bc $ef GFX GFX
-    dw   `31332232                                     ;; 0b:581e $f2 $bf GFX GFX
-    dw   `00000000                                     ;; 0b:5820 $00 $00 GFX GFX
-    dw   `33033300                                     ;; 0b:5822 $dc $dc GFX GFX
-    dw   `22322233                                     ;; 0b:5824 $23 $ff GFX GFX
-    dw   `21222332                                     ;; 0b:5826 $46 $bf GFX GFX
-    dw   `32222322                                     ;; 0b:5828 $84 $ff GFX GFX
-    dw   `32223221                                     ;; 0b:582a $89 $fe GFX GFX
-    dw   `32223212                                     ;; 0b:582c $8a $fd GFX GFX
-    dw   `23323222                                     ;; 0b:582e $68 $ff GFX GFX
-    dw   `33033333                                     ;; 0b:5830 $df $df GFX GFX
-    dw   `00000000                                     ;; 0b:5832 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5834 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5836 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5838 $00 $00 GFX GFX
-    dw   `00000003                                     ;; 0b:583a $01 $01 GFX GFX
-    dw   `00033331                                     ;; 0b:583c $1f $1e GFX GFX
-    dw   `00322323                                     ;; 0b:583e $25 $3f GFX GFX
-    dw   `22332222                                     ;; 0b:5840 $30 $ff GFX GFX
-    dw   `33032222                                     ;; 0b:5842 $d0 $df GFX GFX
-    dw   `00322222                                     ;; 0b:5844 $20 $3f GFX GFX
-    dw   `00333222                                     ;; 0b:5846 $38 $3f GFX GFX
-    dw   `33222323                                     ;; 0b:5848 $c5 $ff GFX GFX
-    dw   `32112223                                     ;; 0b:584a $b1 $cf GFX GFX
-    dw   `13222230                                     ;; 0b:584c $c2 $7e GFX GFX
-    dw   `11322230                                     ;; 0b:584e $e2 $3e GFX GFX
-    dw   `03233222                                     ;; 0b:5850 $58 $7f GFX GFX
-    dw   `31332232                                     ;; 0b:5852 $f2 $bf GFX GFX
-    dw   `33312332                                     ;; 0b:5854 $f6 $ef GFX GFX
-    dw   `00033033                                     ;; 0b:5856 $1b $1b GFX GFX
-    dw   `00000032                                     ;; 0b:5858 $02 $03 GFX GFX
-    dw   `00000031                                     ;; 0b:585a $03 $02 GFX GFX
-    dw   `00000003                                     ;; 0b:585c $01 $01 GFX GFX
-    dw   `00000000                                     ;; 0b:585e $00 $00 GFX GFX
-    dw   `31323300                                     ;; 0b:5860 $ec $bc GFX GFX
-    dw   `33330000                                     ;; 0b:5862 $f0 $f0 GFX GFX
-    dw   `23000000                                     ;; 0b:5864 $40 $c0 GFX GFX
-    dw   `23000000                                     ;; 0b:5866 $40 $c0 GFX GFX
-    dw   `23000000                                     ;; 0b:5868 $40 $c0 GFX GFX
-    dw   `30000000                                     ;; 0b:586a $80 $80 GFX GFX
-    dw   `00000000                                     ;; 0b:586c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:586e $00 $00 GFX GFX
-    dw   `00000003                                     ;; 0b:5870 $01 $01 GFX GFX
-    dw   `00003332                                     ;; 0b:5872 $0e $0f GFX GFX
-    dw   `00333321                                     ;; 0b:5874 $3d $3e GFX GFX
-    dw   `03332333                                     ;; 0b:5876 $77 $7f GFX GFX
-    dw   `33333333                                     ;; 0b:5878 $ff $ff GFX GFX
-    dw   `32233332                                     ;; 0b:587a $9e $ff GFX GFX
-    dw   `32123321                                     ;; 0b:587c $ad $de GFX GFX
-    dw   `03233332                                     ;; 0b:587e $5e $7f GFX GFX
-    dw   `00333333                                     ;; 0b:5880 $3f $3f GFX GFX
-    dw   `00003333                                     ;; 0b:5882 $0f $0f GFX GFX
-    dw   `00000003                                     ;; 0b:5884 $01 $01 GFX GFX
-    dw   `00000000                                     ;; 0b:5886 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5888 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:588a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:588c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:588e $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5890 $00 $00 GFX GFX
-    dw   `00003333                                     ;; 0b:5892 $0f $0f GFX GFX
-    dw   `00333333                                     ;; 0b:5894 $3f $3f GFX GFX
-    dw   `00333333                                     ;; 0b:5896 $3f $3f GFX GFX
-    dw   `03323332                                     ;; 0b:5898 $6e $7f GFX GFX
-    dw   `03222322                                     ;; 0b:589a $44 $7f GFX GFX
-    dw   `03322222                                     ;; 0b:589c $60 $7f GFX GFX
-    dw   `03132223                                     ;; 0b:589e $71 $5f GFX GFX
-    dw   `03333000                                     ;; 0b:58a0 $78 $78 GFX GFX
-    dw   `31133300                                     ;; 0b:58a2 $fc $9c GFX GFX
-    dw   `33313330                                     ;; 0b:58a4 $fe $ee GFX GFX
-    dw   `33333330                                     ;; 0b:58a6 $fe $fe GFX GFX
-    dw   `23333333                                     ;; 0b:58a8 $7f $ff GFX GFX
-    dw   `22332333                                     ;; 0b:58aa $37 $ff GFX GFX
-    dw   `23332333                                     ;; 0b:58ac $77 $ff GFX GFX
-    dw   `31322333                                     ;; 0b:58ae $e7 $bf GFX GFX
-    dw   `03133233                                     ;; 0b:58b0 $7b $5f GFX GFX
-    dw   `03231213                                     ;; 0b:58b2 $5b $75 GFX GFX
-    dw   `33222222                                     ;; 0b:58b4 $c0 $ff GFX GFX
-    dw   `23323333                                     ;; 0b:58b6 $6f $ff GFX GFX
-    dw   `23232332                                     ;; 0b:58b8 $56 $ff GFX GFX
-    dw   `23223223                                     ;; 0b:58ba $49 $ff GFX GFX
-    dw   `23222332                                     ;; 0b:58bc $46 $ff GFX GFX
-    dw   `23221221                                     ;; 0b:58be $49 $f6 GFX GFX
-    dw   `11322333                                     ;; 0b:58c0 $e7 $3f GFX GFX
-    dw   `12323333                                     ;; 0b:58c2 $af $7f GFX GFX
-    dw   `22333333                                     ;; 0b:58c4 $3f $ff GFX GFX
-    dw   `23333222                                     ;; 0b:58c6 $78 $ff GFX GFX
-    dw   `32322211                                     ;; 0b:58c8 $a3 $fc GFX GFX
-    dw   `22322222                                     ;; 0b:58ca $20 $ff GFX GFX
-    dw   `12322222                                     ;; 0b:58cc $a0 $7f GFX GFX
-    dw   `22332222                                     ;; 0b:58ce $30 $ff GFX GFX
-    dw   `33222222                                     ;; 0b:58d0 $c0 $ff GFX GFX
-    dw   `33222222                                     ;; 0b:58d2 $c0 $ff GFX GFX
-    dw   `32222232                                     ;; 0b:58d4 $82 $ff GFX GFX
-    dw   `32222232                                     ;; 0b:58d6 $82 $ff GFX GFX
-    dw   `33223223                                     ;; 0b:58d8 $c9 $ff GFX GFX
-    dw   `30332222                                     ;; 0b:58da $b0 $bf GFX GFX
-    dw   `00003222                                     ;; 0b:58dc $08 $0f GFX GFX
-    dw   `00003222                                     ;; 0b:58de $08 $0f GFX GFX
-    dw   `22332222                                     ;; 0b:58e0 $30 $ff GFX GFX
-    dw   `22332232                                     ;; 0b:58e2 $32 $ff GFX GFX
-    dw   `22233223                                     ;; 0b:58e4 $19 $ff GFX GFX
-    dw   `22233233                                     ;; 0b:58e6 $1b $ff GFX GFX
-    dw   `22233333                                     ;; 0b:58e8 $1f $ff GFX GFX
-    dw   `33333003                                     ;; 0b:58ea $f9 $f9 GFX GFX
-    dw   `22230000                                     ;; 0b:58ec $10 $f0 GFX GFX
-    dw   `22330000                                     ;; 0b:58ee $30 $f0 GFX GFX
-    dw   `00003322                                     ;; 0b:58f0 $0c $0f GFX GFX
-    dw   `00003133                                     ;; 0b:58f2 $0f $0b GFX GFX
-    dw   `00003111                                     ;; 0b:58f4 $0f $08 GFX GFX
-    dw   `00003311                                     ;; 0b:58f6 $0f $0c GFX GFX
-    dw   `00031233                                     ;; 0b:58f8 $1b $17 GFX GFX
-    dw   `00031122                                     ;; 0b:58fa $1c $13 GFX GFX
-    dw   `00033111                                     ;; 0b:58fc $1f $18 GFX GFX
-    dw   `00322333                                     ;; 0b:58fe $27 $3f GFX GFX
-    dw   `33313000                                     ;; 0b:5900 $f8 $e8 GFX GFX
-    dw   `11113300                                     ;; 0b:5902 $fc $0c GFX GFX
-    dw   `13332130                                     ;; 0b:5904 $f6 $7a GFX GFX
-    dw   `32233230                                     ;; 0b:5906 $9a $fe GFX GFX
-    dw   `22133333                                     ;; 0b:5908 $3f $df GFX GFX
-    dw   `11133333                                     ;; 0b:590a $ff $1f GFX GFX
-    dw   `13333323                                     ;; 0b:590c $fd $7f GFX GFX
-    dw   `32233213                                     ;; 0b:590e $9b $fd GFX GFX
-    dw   `33311222                                     ;; 0b:5910 $f8 $e7 GFX GFX
-    dw   `33331111                                     ;; 0b:5912 $ff $f0 GFX GFX
-    dw   `32323333                                     ;; 0b:5914 $af $ff GFX GFX
-    dw   `33312222                                     ;; 0b:5916 $f0 $ef GFX GFX
-    dw   `03111111                                     ;; 0b:5918 $7f $40 GFX GFX
-    dw   `33311111                                     ;; 0b:591a $ff $e0 GFX GFX
-    dw   `23233333                                     ;; 0b:591c $5f $ff GFX GFX
-    dw   `33122222                                     ;; 0b:591e $e0 $df GFX GFX
-    dw   `21133223                                     ;; 0b:5920 $79 $9f GFX GFX
-    dw   `13333333                                     ;; 0b:5922 $ff $7f GFX GFX
-    dw   `32323333                                     ;; 0b:5924 $af $ff GFX GFX
-    dw   `21312333                                     ;; 0b:5926 $77 $af GFX GFX
-    dw   `13212300                                     ;; 0b:5928 $d4 $6c GFX GFX
-    dw   `33323333                                     ;; 0b:592a $ef $ff GFX GFX
-    dw   `23333323                                     ;; 0b:592c $7d $ff GFX GFX
-    dw   `13323322                                     ;; 0b:592e $ec $7f GFX GFX
-    dw   `33111111                                     ;; 0b:5930 $ff $c0 GFX GFX
-    dw   `23311111                                     ;; 0b:5932 $7f $e0 GFX GFX
-    dw   `33333333                                     ;; 0b:5934 $ff $ff GFX GFX
-    dw   `00322222                                     ;; 0b:5936 $20 $3f GFX GFX
-    dw   `00031111                                     ;; 0b:5938 $1f $10 GFX GFX
-    dw   `00033333                                     ;; 0b:593a $1f $1f GFX GFX
-    dw   `00003322                                     ;; 0b:593c $0c $0f GFX GFX
-    dw   `00000033                                     ;; 0b:593e $03 $03 GFX GFX
-    dw   `33330333                                     ;; 0b:5940 $f7 $f7 GFX GFX
-    dw   `33230033                                     ;; 0b:5942 $d3 $f3 GFX GFX
-    dw   `32123333                                     ;; 0b:5944 $af $df GFX GFX
-    dw   `32123323                                     ;; 0b:5946 $ad $df GFX GFX
-    dw   `33233333                                     ;; 0b:5948 $df $ff GFX GFX
-    dw   `33332333                                     ;; 0b:594a $f7 $ff GFX GFX
-    dw   `23321233                                     ;; 0b:594c $6b $f7 GFX GFX
-    dw   `33333300                                     ;; 0b:594e $fc $fc GFX GFX
-    dw   `00000003                                     ;; 0b:5950 $01 $01 GFX GFX
-    dw   `00000332                                     ;; 0b:5952 $06 $07 GFX GFX
-    dw   `00003232                                     ;; 0b:5954 $0a $0f GFX GFX
-    dw   `00003131                                     ;; 0b:5956 $0f $0a GFX GFX
-    dw   `00000333                                     ;; 0b:5958 $07 $07 GFX GFX
-    dw   `00003322                                     ;; 0b:595a $0c $0f GFX GFX
-    dw   `00032222                                     ;; 0b:595c $10 $1f GFX GFX
-    dw   `00003333                                     ;; 0b:595e $0f $0f GFX GFX
-    dw   `33300000                                     ;; 0b:5960 $e0 $e0 GFX GFX
-    dw   `32330000                                     ;; 0b:5962 $b0 $f0 GFX GFX
-    dw   `32323000                                     ;; 0b:5964 $a8 $f8 GFX GFX
-    dw   `31313000                                     ;; 0b:5966 $f8 $a8 GFX GFX
-    dw   `33233000                                     ;; 0b:5968 $d8 $f8 GFX GFX
-    dw   `32223000                                     ;; 0b:596a $88 $f8 GFX GFX
-    dw   `22233000                                     ;; 0b:596c $18 $f8 GFX GFX
-    dw   `33313000                                     ;; 0b:596e $f8 $e8 GFX GFX
-    dw   `00000000                                     ;; 0b:5970 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5972 $00 $00 GFX GFX
-    dw   `30333300                                     ;; 0b:5974 $bc $bc GFX GFX
-    dw   `23322233                                     ;; 0b:5976 $63 $ff GFX GFX
-    dw   `12233332                                     ;; 0b:5978 $9e $7f GFX GFX
-    dw   `21222223                                     ;; 0b:597a $41 $bf GFX GFX
-    dw   `22222222                                     ;; 0b:597c $00 $ff GFX GFX
-    dw   `22222321                                     ;; 0b:597e $05 $fe GFX GFX
-    dw   `31132300                                     ;; 0b:5980 $f4 $9c GFX GFX
-    dw   `33322300                                     ;; 0b:5982 $e4 $fc GFX GFX
-    dw   `32221230                                     ;; 0b:5984 $8a $f6 GFX GFX
-    dw   `23322130                                     ;; 0b:5986 $66 $fa GFX GFX
-    dw   `32322123                                     ;; 0b:5988 $a5 $fb GFX GFX
-    dw   `32322223                                     ;; 0b:598a $a1 $ff GFX GFX
-    dw   `22322223                                     ;; 0b:598c $21 $ff GFX GFX
-    dw   `22333323                                     ;; 0b:598e $3d $ff GFX GFX
-    dw   `22222321                                     ;; 0b:5990 $05 $fe GFX GFX
-    dw   `22233322                                     ;; 0b:5992 $1c $ff GFX GFX
-    dw   `33300032                                     ;; 0b:5994 $e2 $e3 GFX GFX
-    dw   `00000033                                     ;; 0b:5996 $03 $03 GFX GFX
-    dw   `00000003                                     ;; 0b:5998 $01 $01 GFX GFX
-    dw   `30000003                                     ;; 0b:599a $81 $81 GFX GFX
-    dw   `30000033                                     ;; 0b:599c $83 $83 GFX GFX
-    dw   `03003322                                     ;; 0b:599e $4c $4f GFX GFX
-    dw   `22300030                                     ;; 0b:59a0 $22 $e2 GFX GFX
-    dw   `22300000                                     ;; 0b:59a2 $20 $e0 GFX GFX
-    dw   `22300000                                     ;; 0b:59a4 $20 $e0 GFX GFX
-    dw   `33300000                                     ;; 0b:59a6 $e0 $e0 GFX GFX
-    dw   `11300000                                     ;; 0b:59a8 $e0 $20 GFX GFX
-    dw   `33300000                                     ;; 0b:59aa $e0 $e0 GFX GFX
-    dw   `22300000                                     ;; 0b:59ac $20 $e0 GFX GFX
-    dw   `22230000                                     ;; 0b:59ae $10 $f0 GFX GFX
-    dw   `00032222                                     ;; 0b:59b0 $10 $1f GFX GFX
-    dw   `00031333                                     ;; 0b:59b2 $1f $17 GFX GFX
-    dw   `00033000                                     ;; 0b:59b4 $18 $18 GFX GFX
-    dw   `00000000                                     ;; 0b:59b6 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:59b8 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:59ba $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:59bc $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:59be $00 $00 GFX GFX
-    dw   `23223300                                     ;; 0b:59c0 $4c $fc GFX GFX
-    dw   `22323230                                     ;; 0b:59c2 $2a $fe GFX GFX
-    dw   `32323130                                     ;; 0b:59c4 $ae $fa GFX GFX
-    dw   `32313300                                     ;; 0b:59c6 $bc $ec GFX GFX
-    dw   `31330000                                     ;; 0b:59c8 $f0 $b0 GFX GFX
-    dw   `03000000                                     ;; 0b:59ca $40 $40 GFX GFX
-    dw   `00000000                                     ;; 0b:59cc $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:59ce $00 $00 GFX GFX
-    dw   `33000000                                     ;; 0b:59d0 $c0 $c0 GFX GFX
-    dw   `33330000                                     ;; 0b:59d2 $f0 $f0 GFX GFX
-    dw   `21333300                                     ;; 0b:59d4 $7c $bc GFX GFX
-    dw   `33332133                                     ;; 0b:59d6 $f7 $fb GFX GFX
-    dw   `00333233                                     ;; 0b:59d8 $3b $3f GFX GFX
-    dw   `00003333                                     ;; 0b:59da $0f $0f GFX GFX
-    dw   `33000000                                     ;; 0b:59dc $c0 $c0 GFX GFX
-    dw   `33300000                                     ;; 0b:59de $e0 $e0 GFX GFX
-    dw   `00003300                                     ;; 0b:59e0 $0c $0c GFX GFX
-    dw   `00333330                                     ;; 0b:59e2 $3e $3e GFX GFX
-    dw   `33330003                                     ;; 0b:59e4 $f1 $f1 GFX GFX
-    dw   `33300000                                     ;; 0b:59e6 $e0 $e0 GFX GFX
-    dw   `23000000                                     ;; 0b:59e8 $40 $c0 GFX GFX
-    dw   `30000000                                     ;; 0b:59ea $80 $80 GFX GFX
-    dw   `00000000                                     ;; 0b:59ec $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:59ee $00 $00 GFX GFX
-    dw   `32230000                                     ;; 0b:59f0 $90 $f0 GFX GFX
-    dw   `32130000                                     ;; 0b:59f2 $b0 $d0 GFX GFX
-    dw   `33230000                                     ;; 0b:59f4 $d0 $f0 GFX GFX
-    dw   `33330000                                     ;; 0b:59f6 $f0 $f0 GFX GFX
-    dw   `22300000                                     ;; 0b:59f8 $20 $e0 GFX GFX
-    dw   `23000000                                     ;; 0b:59fa $40 $c0 GFX GFX
-    dw   `30000000                                     ;; 0b:59fc $80 $80 GFX GFX
-    dw   `00000000                                     ;; 0b:59fe $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5a00 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5a02 $00 $00 GFX GFX
-    dw   `30000000                                     ;; 0b:5a04 $80 $80 GFX GFX
-    dw   `33000000                                     ;; 0b:5a06 $c0 $c0 GFX GFX
-    dw   `03330003                                     ;; 0b:5a08 $71 $71 GFX GFX
-    dw   `03333333                                     ;; 0b:5a0a $7f $7f GFX GFX
-    dw   `00332332                                     ;; 0b:5a0c $36 $3f GFX GFX
-    dw   `00003333                                     ;; 0b:5a0e $0f $0f GFX GFX
-    dw   `00000033                                     ;; 0b:5a10 $03 $03 GFX GFX
-    dw   `00003333                                     ;; 0b:5a12 $0f $0f GFX GFX
-    dw   `00333323                                     ;; 0b:5a14 $3d $3f GFX GFX
-    dw   `03333212                                     ;; 0b:5a16 $7a $7d GFX GFX
-    dw   `33223333                                     ;; 0b:5a18 $cf $ff GFX GFX
-    dw   `33213330                                     ;; 0b:5a1a $de $ee GFX GFX
-    dw   `33330000                                     ;; 0b:5a1c $f0 $f0 GFX GFX
-    dw   `30000000                                     ;; 0b:5a1e $80 $80 GFX GFX
-    dw   `00000000                                     ;; 0b:5a20 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5a22 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5a24 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5a26 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5a28 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5a2a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5a2c $00 $00 GFX GFX
-    dw   `33333000                                     ;; 0b:5a2e $f8 $f8 GFX GFX
-    dw   `00000000                                     ;; 0b:5a30 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5a32 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5a34 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5a36 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5a38 $00 $00 GFX GFX
-    dw   `00000003                                     ;; 0b:5a3a $01 $01 GFX GFX
-    dw   `00000333                                     ;; 0b:5a3c $07 $07 GFX GFX
-    dw   `00033332                                     ;; 0b:5a3e $1e $1f GFX GFX
-    dw   `33212333                                     ;; 0b:5a40 $d7 $ef GFX GFX
-    dw   `33323333                                     ;; 0b:5a42 $ef $ff GFX GFX
-    dw   `33333333                                     ;; 0b:5a44 $ff $ff GFX GFX
-    dw   `33332233                                     ;; 0b:5a46 $f3 $ff GFX GFX
-    dw   `33321123                                     ;; 0b:5a48 $ed $f3 GFX GFX
-    dw   `00033333                                     ;; 0b:5a4a $1f $1f GFX GFX
-    dw   `00000003                                     ;; 0b:5a4c $01 $01 GFX GFX
-    dw   `00000000                                     ;; 0b:5a4e $00 $00 GFX GFX
-    dw   `33331223                                     ;; 0b:5a50 $f9 $f7 GFX GFX
-    dw   `23333312                                     ;; 0b:5a52 $7e $fd GFX GFX
-    dw   `33323333                                     ;; 0b:5a54 $ef $ff GFX GFX
-    dw   `33212333                                     ;; 0b:5a56 $d7 $ef GFX GFX
-    dw   `33212333                                     ;; 0b:5a58 $d7 $ef GFX GFX
-    dw   `33323332                                     ;; 0b:5a5a $ee $ff GFX GFX
-    dw   `33333321                                     ;; 0b:5a5c $fd $fe GFX GFX
-    dw   `00033333                                     ;; 0b:5a5e $1f $1f GFX GFX
-    dw   `00312222                                     ;; 0b:5a60 $30 $2f GFX GFX
-    dw   `00331111                                     ;; 0b:5a62 $3f $30 GFX GFX
-    dw   `03223333                                     ;; 0b:5a64 $4f $7f GFX GFX
-    dw   `03122222                                     ;; 0b:5a66 $60 $5f GFX GFX
-    dw   `33331111                                     ;; 0b:5a68 $ff $f0 GFX GFX
-    dw   `21223331                                     ;; 0b:5a6a $4f $be GFX GFX
-    dw   `33122223                                     ;; 0b:5a6c $e1 $df GFX GFX
-    dw   `22333113                                     ;; 0b:5a6e $3f $f9 GFX GFX
-    dw   `21133323                                     ;; 0b:5a70 $7d $9f GFX GFX
-    dw   `11333333                                     ;; 0b:5a72 $ff $3f GFX GFX
-    dw   `31332333                                     ;; 0b:5a74 $f7 $bf GFX GFX
-    dw   `23321230                                     ;; 0b:5a76 $6a $f6 GFX GFX
-    dw   `13321230                                     ;; 0b:5a78 $ea $76 GFX GFX
-    dw   `33332300                                     ;; 0b:5a7a $f4 $fc GFX GFX
-    dw   `33333300                                     ;; 0b:5a7c $fc $fc GFX GFX
-    dw   `33333000                                     ;; 0b:5a7e $f8 $f8 GFX GFX
-    dw   `11222333                                     ;; 0b:5a80 $c7 $3f GFX GFX
-    dw   `31113333                                     ;; 0b:5a82 $ff $8f GFX GFX
-    dw   `33333323                                     ;; 0b:5a84 $fd $ff GFX GFX
-    dw   `33322333                                     ;; 0b:5a86 $e7 $ff GFX GFX
-    dw   `33211233                                     ;; 0b:5a88 $db $e7 GFX GFX
-    dw   `33322330                                     ;; 0b:5a8a $e6 $fe GFX GFX
-    dw   `23333000                                     ;; 0b:5a8c $78 $f8 GFX GFX
-    dw   `33300000                                     ;; 0b:5a8e $e0 $e0 GFX GFX
-    dw   `32233000                                     ;; 0b:5a90 $98 $f8 GFX GFX
-    dw   `32330000                                     ;; 0b:5a92 $b0 $f0 GFX GFX
-    dw   `33300000                                     ;; 0b:5a94 $e0 $e0 GFX GFX
-    dw   `33000000                                     ;; 0b:5a96 $c0 $c0 GFX GFX
-    dw   `30000000                                     ;; 0b:5a98 $80 $80 GFX GFX
-    dw   `00000000                                     ;; 0b:5a9a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5a9c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5a9e $00 $00 GFX GFX
-    dw   `00031333                                     ;; 0b:5aa0 $1f $17 GFX GFX
-    dw   `00331111                                     ;; 0b:5aa2 $3f $30 GFX GFX
-    dw   `03123331                                     ;; 0b:5aa4 $6f $5e GFX GFX
-    dw   `03233223                                     ;; 0b:5aa6 $59 $7f GFX GFX
-    dw   `33333122                                     ;; 0b:5aa8 $fc $fb GFX GFX
-    dw   `33333111                                     ;; 0b:5aaa $ff $f8 GFX GFX
-    dw   `32333331                                     ;; 0b:5aac $bf $fe GFX GFX
-    dw   `31233223                                     ;; 0b:5aae $d9 $bf GFX GFX
-    dw   `22330000                                     ;; 0b:5ab0 $30 $f0 GFX GFX
-    dw   `33130000                                     ;; 0b:5ab2 $f0 $d0 GFX GFX
-    dw   `11130000                                     ;; 0b:5ab4 $f0 $10 GFX GFX
-    dw   `11330000                                     ;; 0b:5ab6 $f0 $30 GFX GFX
-    dw   `33213000                                     ;; 0b:5ab8 $d8 $e8 GFX GFX
-    dw   `22113000                                     ;; 0b:5aba $38 $c8 GFX GFX
-    dw   `11133000                                     ;; 0b:5abc $f8 $18 GFX GFX
-    dw   `33322300                                     ;; 0b:5abe $e4 $fc GFX GFX
-    dw   `03333000                                     ;; 0b:5ac0 $78 $78 GFX GFX
-    dw   `03111333                                     ;; 0b:5ac2 $7f $47 GFX GFX
-    dw   `00331113                                     ;; 0b:5ac4 $3f $31 GFX GFX
-    dw   `00333113                                     ;; 0b:5ac6 $3f $39 GFX GFX
-    dw   `03223332                                     ;; 0b:5ac8 $4e $7f GFX GFX
-    dw   `32223222                                     ;; 0b:5aca $88 $ff GFX GFX
-    dw   `32233233                                     ;; 0b:5acc $9b $ff GFX GFX
-    dw   `32233333                                     ;; 0b:5ace $9f $ff GFX GFX
-    dw   `33333000                                     ;; 0b:5ad0 $f8 $f8 GFX GFX
-    dw   `22222303                                     ;; 0b:5ad2 $05 $fd GFX GFX
-    dw   `22222233                                     ;; 0b:5ad4 $03 $ff GFX GFX
-    dw   `22222232                                     ;; 0b:5ad6 $02 $ff GFX GFX
-    dw   `22222323                                     ;; 0b:5ad8 $05 $ff GFX GFX
-    dw   `22222223                                     ;; 0b:5ada $01 $ff GFX GFX
-    dw   `32222323                                     ;; 0b:5adc $85 $ff GFX GFX
-    dw   `33333222                                     ;; 0b:5ade $f8 $ff GFX GFX
-    dw   `32233311                                     ;; 0b:5ae0 $9f $fc GFX GFX
-    dw   `03233311                                     ;; 0b:5ae2 $5f $7c GFX GFX
-    dw   `03233333                                     ;; 0b:5ae4 $5f $7f GFX GFX
-    dw   `32223322                                     ;; 0b:5ae6 $8c $ff GFX GFX
-    dw   `32223333                                     ;; 0b:5ae8 $8f $ff GFX GFX
-    dw   `32223323                                     ;; 0b:5aea $8d $ff GFX GFX
-    dw   `33222332                                     ;; 0b:5aec $c6 $ff GFX GFX
-    dw   `03333332                                     ;; 0b:5aee $7e $7f GFX GFX
-    dw   `33132232                                     ;; 0b:5af0 $f2 $df GFX GFX
-    dw   `33132232                                     ;; 0b:5af2 $f2 $df GFX GFX
-    dw   `31323233                                     ;; 0b:5af4 $eb $bf GFX GFX
-    dw   `22231333                                     ;; 0b:5af6 $1f $f7 GFX GFX
-    dw   `33311333                                     ;; 0b:5af8 $ff $e7 GFX GFX
-    dw   `33231333                                     ;; 0b:5afa $df $f7 GFX GFX
-    dw   `22233333                                     ;; 0b:5afc $1f $ff GFX GFX
-    dw   `22333333                                     ;; 0b:5afe $3f $ff GFX GFX
-    dw   `32223233                                     ;; 0b:5b00 $8b $ff GFX GFX
-    dw   `32333233                                     ;; 0b:5b02 $bb $ff GFX GFX
-    dw   `32222300                                     ;; 0b:5b04 $84 $fc GFX GFX
-    dw   `32333300                                     ;; 0b:5b06 $bc $fc GFX GFX
-    dw   `32222300                                     ;; 0b:5b08 $84 $fc GFX GFX
-    dw   `03333000                                     ;; 0b:5b0a $78 $78 GFX GFX
-    dw   `00000000                                     ;; 0b:5b0c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5b0e $00 $00 GFX GFX
-    dw   `33333333                                     ;; 0b:5b10 $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:5b12 $ff $ff GFX GFX
-    dw   `33333211                                     ;; 0b:5b14 $fb $fc GFX GFX
-    dw   `00331111                                     ;; 0b:5b16 $3f $30 GFX GFX
-    dw   `03311111                                     ;; 0b:5b18 $7f $60 GFX GFX
-    dw   `03311111                                     ;; 0b:5b1a $7f $60 GFX GFX
-    dw   `03321111                                     ;; 0b:5b1c $6f $70 GFX GFX
-    dw   `03231133                                     ;; 0b:5b1e $5f $73 GFX GFX
-    dw   `00333322                                     ;; 0b:5b20 $3c $3f GFX GFX
-    dw   `00323222                                     ;; 0b:5b22 $28 $3f GFX GFX
-    dw   `00033322                                     ;; 0b:5b24 $1c $1f GFX GFX
-    dw   `00003333                                     ;; 0b:5b26 $0f $0f GFX GFX
-    dw   `00033233                                     ;; 0b:5b28 $1b $1f GFX GFX
-    dw   `00332333                                     ;; 0b:5b2a $37 $3f GFX GFX
-    dw   `00332333                                     ;; 0b:5b2c $37 $3f GFX GFX
-    dw   `00332333                                     ;; 0b:5b2e $37 $3f GFX GFX
-    dw   `00000000                                     ;; 0b:5b30 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5b32 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5b34 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5b36 $00 $00 GFX GFX
-    dw   `03333300                                     ;; 0b:5b38 $7c $7c GFX GFX
-    dw   `32222230                                     ;; 0b:5b3a $82 $fe GFX GFX
-    dw   `32222223                                     ;; 0b:5b3c $81 $ff GFX GFX
-    dw   `03222223                                     ;; 0b:5b3e $41 $7f GFX GFX
-    dw   `03222223                                     ;; 0b:5b40 $41 $7f GFX GFX
-    dw   `03222233                                     ;; 0b:5b42 $43 $7f GFX GFX
-    dw   `00332333                                     ;; 0b:5b44 $37 $3f GFX GFX
-    dw   `00003323                                     ;; 0b:5b46 $0d $0f GFX GFX
-    dw   `00033333                                     ;; 0b:5b48 $1f $1f GFX GFX
-    dw   `00032332                                     ;; 0b:5b4a $16 $1f GFX GFX
-    dw   `00003322                                     ;; 0b:5b4c $0c $0f GFX GFX
-    dw   `00000322                                     ;; 0b:5b4e $04 $07 GFX GFX
-    dw   `00000000                                     ;; 0b:5b50 $00 $00 GFX GFX
-    dw   `30000000                                     ;; 0b:5b52 $80 $80 GFX GFX
-    dw   `33000000                                     ;; 0b:5b54 $c0 $c0 GFX GFX
-    dw   `33000000                                     ;; 0b:5b56 $c0 $c0 GFX GFX
-    dw   `22300000                                     ;; 0b:5b58 $20 $e0 GFX GFX
-    dw   `22230000                                     ;; 0b:5b5a $10 $f0 GFX GFX
-    dw   `22223000                                     ;; 0b:5b5c $08 $f8 GFX GFX
-    dw   `22222300                                     ;; 0b:5b5e $04 $fc GFX GFX
-    dw   `33000032                                     ;; 0b:5b60 $c2 $c3 GFX GFX
-    dw   `23000032                                     ;; 0b:5b62 $42 $c3 GFX GFX
-    dw   `23333332                                     ;; 0b:5b64 $7e $ff GFX GFX
-    dw   `33332223                                     ;; 0b:5b66 $f1 $ff GFX GFX
-    dw   `23322223                                     ;; 0b:5b68 $61 $ff GFX GFX
-    dw   `23322222                                     ;; 0b:5b6a $60 $ff GFX GFX
-    dw   `23322222                                     ;; 0b:5b6c $60 $ff GFX GFX
-    dw   `23322222                                     ;; 0b:5b6e $60 $ff GFX GFX
-    dw   `22222230                                     ;; 0b:5b70 $02 $fe GFX GFX
-    dw   `22222230                                     ;; 0b:5b72 $02 $fe GFX GFX
-    dw   `22222223                                     ;; 0b:5b74 $01 $ff GFX GFX
-    dw   `22222223                                     ;; 0b:5b76 $01 $ff GFX GFX
-    dw   `22222223                                     ;; 0b:5b78 $01 $ff GFX GFX
-    dw   `32222223                                     ;; 0b:5b7a $81 $ff GFX GFX
-    dw   `22222223                                     ;; 0b:5b7c $01 $ff GFX GFX
-    dw   `22223330                                     ;; 0b:5b7e $0e $fe GFX GFX
-    dw   `23322222                                     ;; 0b:5b80 $60 $ff GFX GFX
-    dw   `33322222                                     ;; 0b:5b82 $e0 $ff GFX GFX
-    dw   `33332233                                     ;; 0b:5b84 $f3 $ff GFX GFX
-    dw   `33332322                                     ;; 0b:5b86 $f4 $ff GFX GFX
-    dw   `33333333                                     ;; 0b:5b88 $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:5b8a $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:5b8c $ff $ff GFX GFX
-    dw   `33333330                                     ;; 0b:5b8e $fe $fe GFX GFX
-    dw   `22222300                                     ;; 0b:5b90 $04 $fc GFX GFX
-    dw   `22222300                                     ;; 0b:5b92 $04 $fc GFX GFX
-    dw   `22223000                                     ;; 0b:5b94 $08 $f8 GFX GFX
-    dw   `23330000                                     ;; 0b:5b96 $70 $f0 GFX GFX
-    dw   `30000000                                     ;; 0b:5b98 $80 $80 GFX GFX
-    dw   `00000000                                     ;; 0b:5b9a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5b9c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5b9e $00 $00 GFX GFX
-    dw   `33333330                                     ;; 0b:5ba0 $fe $fe GFX GFX
-    dw   `33333300                                     ;; 0b:5ba2 $fc $fc GFX GFX
-    dw   `22333000                                     ;; 0b:5ba4 $38 $f8 GFX GFX
-    dw   `11123300                                     ;; 0b:5ba6 $ec $1c GFX GFX
-    dw   `11112300                                     ;; 0b:5ba8 $f4 $0c GFX GFX
-    dw   `11322300                                     ;; 0b:5baa $e4 $3c GFX GFX
-    dw   `13332300                                     ;; 0b:5bac $f4 $7c GFX GFX
-    dw   `32223000                                     ;; 0b:5bae $88 $f8 GFX GFX
-    dw   `00000000                                     ;; 0b:5bb0 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5bb2 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5bb4 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5bb6 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5bb8 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5bba $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5bbc $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5bbe $00 $00 GFX GFX
-    dw   `22223000                                     ;; 0b:5bc0 $08 $f8 GFX GFX
-    dw   `22333300                                     ;; 0b:5bc2 $3c $fc GFX GFX
-    dw   `33333330                                     ;; 0b:5bc4 $fe $fe GFX GFX
-    dw   `22333333                                     ;; 0b:5bc6 $3f $ff GFX GFX
-    dw   `33233330                                     ;; 0b:5bc8 $de $fe GFX GFX
-    dw   `33333300                                     ;; 0b:5bca $fc $fc GFX GFX
-    dw   `33330000                                     ;; 0b:5bcc $f0 $f0 GFX GFX
-    dw   `33000000                                     ;; 0b:5bce $c0 $c0 GFX GFX
-    dw   `00000000                                     ;; 0b:5bd0 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5bd2 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5bd4 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5bd6 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5bd8 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5bda $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5bdc $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5bde $00 $00 GFX GFX
-    dw   `32223233                                     ;; 0b:5be0 $8b $ff GFX GFX
-    dw   `32333233                                     ;; 0b:5be2 $bb $ff GFX GFX
-    dw   `32222300                                     ;; 0b:5be4 $84 $fc GFX GFX
-    dw   `32333303                                     ;; 0b:5be6 $bd $fd GFX GFX
-    dw   `32222331                                     ;; 0b:5be8 $87 $fe GFX GFX
-    dw   `03333031                                     ;; 0b:5bea $7b $7a GFX GFX
-    dw   `00000031                                     ;; 0b:5bec $03 $02 GFX GFX
-    dw   `00000031                                     ;; 0b:5bee $03 $02 GFX GFX
-    dw   `33333333                                     ;; 0b:5bf0 $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:5bf2 $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:5bf4 $ff $ff GFX GFX
-    dw   `11122222                                     ;; 0b:5bf6 $e0 $1f GFX GFX
-    dw   `11112231                                     ;; 0b:5bf8 $f3 $0e GFX GFX
-    dw   `11112311                                     ;; 0b:5bfa $f7 $0c GFX GFX
-    dw   `11122311                                     ;; 0b:5bfc $e7 $1c GFX GFX
-    dw   `11122311                                     ;; 0b:5bfe $e7 $1c GFX GFX
-    dw   `00000323                                     ;; 0b:5c00 $05 $07 GFX GFX
-    dw   `00000322                                     ;; 0b:5c02 $04 $07 GFX GFX
-    dw   `00000032                                     ;; 0b:5c04 $02 $03 GFX GFX
-    dw   `00003323                                     ;; 0b:5c06 $0d $0f GFX GFX
-    dw   `00033332                                     ;; 0b:5c08 $1e $1f GFX GFX
-    dw   `00333333                                     ;; 0b:5c0a $3f $3f GFX GFX
-    dw   `00333333                                     ;; 0b:5c0c $3f $3f GFX GFX
-    dw   `00333333                                     ;; 0b:5c0e $3f $3f GFX GFX
-    dw   `33333331                                     ;; 0b:5c10 $ff $fe GFX GFX
-    dw   `22222233                                     ;; 0b:5c12 $03 $ff GFX GFX
-    dw   `22222230                                     ;; 0b:5c14 $02 $fe GFX GFX
-    dw   `33333300                                     ;; 0b:5c16 $fc $fc GFX GFX
-    dw   `33333300                                     ;; 0b:5c18 $fc $fc GFX GFX
-    dw   `33333330                                     ;; 0b:5c1a $fe $fe GFX GFX
-    dw   `33333330                                     ;; 0b:5c1c $fe $fe GFX GFX
-    dw   `33333330                                     ;; 0b:5c1e $fe $fe GFX GFX
-    dw   `00000000                                     ;; 0b:5c20 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5c22 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5c24 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5c26 $00 $00 GFX GFX
-    dw   `00000003                                     ;; 0b:5c28 $01 $01 GFX GFX
-    dw   `00000003                                     ;; 0b:5c2a $01 $01 GFX GFX
-    dw   `00000000                                     ;; 0b:5c2c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5c2e $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5c30 $00 $00 GFX GFX
-    dw   `00033000                                     ;; 0b:5c32 $18 $18 GFX GFX
-    dw   `03322330                                     ;; 0b:5c34 $66 $7e GFX GFX
-    dw   `32222223                                     ;; 0b:5c36 $81 $ff GFX GFX
-    dw   `23222223                                     ;; 0b:5c38 $41 $ff GFX GFX
-    dw   `23222223                                     ;; 0b:5c3a $41 $ff GFX GFX
-    dw   `32222223                                     ;; 0b:5c3c $81 $ff GFX GFX
-    dw   `32222223                                     ;; 0b:5c3e $81 $ff GFX GFX
-    dw   `03222230                                     ;; 0b:5c40 $42 $7e GFX GFX
-    dw   `33333330                                     ;; 0b:5c42 $fe $fe GFX GFX
-    dw   `32323330                                     ;; 0b:5c44 $ae $fe GFX GFX
-    dw   `33333330                                     ;; 0b:5c46 $fe $fe GFX GFX
-    dw   `03333300                                     ;; 0b:5c48 $7c $7c GFX GFX
-    dw   `32222230                                     ;; 0b:5c4a $82 $fe GFX GFX
-    dw   `32222230                                     ;; 0b:5c4c $82 $fe GFX GFX
-    dw   `32222230                                     ;; 0b:5c4e $82 $fe GFX GFX
-    dw   `33000003                                     ;; 0b:5c50 $c1 $c1 GFX GFX
-    dw   `23003333                                     ;; 0b:5c52 $4f $cf GFX GFX
-    dw   `23332223                                     ;; 0b:5c54 $71 $ff GFX GFX
-    dw   `33322223                                     ;; 0b:5c56 $e1 $ff GFX GFX
-    dw   `23322222                                     ;; 0b:5c58 $60 $ff GFX GFX
-    dw   `23322222                                     ;; 0b:5c5a $60 $ff GFX GFX
-    dw   `23322222                                     ;; 0b:5c5c $60 $ff GFX GFX
-    dw   `23322222                                     ;; 0b:5c5e $60 $ff GFX GFX
-    dw   `22222223                                     ;; 0b:5c60 $01 $ff GFX GFX
-    dw   `22222223                                     ;; 0b:5c62 $01 $ff GFX GFX
-    dw   `22222223                                     ;; 0b:5c64 $01 $ff GFX GFX
-    dw   `22222223                                     ;; 0b:5c66 $01 $ff GFX GFX
-    dw   `32222223                                     ;; 0b:5c68 $81 $ff GFX GFX
-    dw   `22222223                                     ;; 0b:5c6a $01 $ff GFX GFX
-    dw   `22222230                                     ;; 0b:5c6c $02 $fe GFX GFX
-    dw   `22322230                                     ;; 0b:5c6e $22 $fe GFX GFX
-    dw   `23322223                                     ;; 0b:5c70 $61 $ff GFX GFX
-    dw   `33332232                                     ;; 0b:5c72 $f2 $ff GFX GFX
-    dw   `33333232                                     ;; 0b:5c74 $fa $ff GFX GFX
-    dw   `33333333                                     ;; 0b:5c76 $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:5c78 $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:5c7a $ff $ff GFX GFX
-    dw   `33333330                                     ;; 0b:5c7c $fe $fe GFX GFX
-    dw   `33333330                                     ;; 0b:5c7e $fe $fe GFX GFX
-    dw   `22233300                                     ;; 0b:5c80 $1c $fc GFX GFX
-    dw   `22230000                                     ;; 0b:5c82 $10 $f0 GFX GFX
-    dw   `22300000                                     ;; 0b:5c84 $20 $e0 GFX GFX
-    dw   `33000000                                     ;; 0b:5c86 $c0 $c0 GFX GFX
-    dw   `00000000                                     ;; 0b:5c88 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5c8a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5c8c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5c8e $00 $00 GFX GFX
-    dw   `33333330                                     ;; 0b:5c90 $fe $fe GFX GFX
-    dw   `33333323                                     ;; 0b:5c92 $fd $ff GFX GFX
-    dw   `33311222                                     ;; 0b:5c94 $f8 $e7 GFX GFX
-    dw   `11111122                                     ;; 0b:5c96 $fc $03 GFX GFX
-    dw   `11111112                                     ;; 0b:5c98 $fe $01 GFX GFX
-    dw   `11111112                                     ;; 0b:5c9a $fe $01 GFX GFX
-    dw   `11111133                                     ;; 0b:5c9c $ff $03 GFX GFX
-    dw   `11111113                                     ;; 0b:5c9e $ff $01 GFX GFX
-    dw   `00000000                                     ;; 0b:5ca0 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5ca2 $00 $00 GFX GFX
-    dw   `30000000                                     ;; 0b:5ca4 $80 $80 GFX GFX
-    dw   `30000000                                     ;; 0b:5ca6 $80 $80 GFX GFX
-    dw   `30000000                                     ;; 0b:5ca8 $80 $80 GFX GFX
-    dw   `30000000                                     ;; 0b:5caa $80 $80 GFX GFX
-    dw   `00000000                                     ;; 0b:5cac $00 $00 GFX GFX
-    dw   `33000000                                     ;; 0b:5cae $c0 $c0 GFX GFX
-    dw   `11111333                                     ;; 0b:5cb0 $ff $07 GFX GFX
-    dw   `11333222                                     ;; 0b:5cb2 $f8 $3f GFX GFX
-    dw   `33222222                                     ;; 0b:5cb4 $c0 $ff GFX GFX
-    dw   `03222333                                     ;; 0b:5cb6 $47 $7f GFX GFX
-    dw   `03333223                                     ;; 0b:5cb8 $79 $7f GFX GFX
-    dw   `33333332                                     ;; 0b:5cba $fe $ff GFX GFX
-    dw   `33333333                                     ;; 0b:5cbc $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:5cbe $ff $ff GFX GFX
-    dw   `22300000                                     ;; 0b:5cc0 $20 $e0 GFX GFX
-    dw   `22300000                                     ;; 0b:5cc2 $20 $e0 GFX GFX
-    dw   `33330000                                     ;; 0b:5cc4 $f0 $f0 GFX GFX
-    dw   `33333000                                     ;; 0b:5cc6 $f8 $f8 GFX GFX
-    dw   `33333000                                     ;; 0b:5cc8 $f8 $f8 GFX GFX
-    dw   `33330000                                     ;; 0b:5cca $f0 $f0 GFX GFX
-    dw   `33000000                                     ;; 0b:5ccc $c0 $c0 GFX GFX
-    dw   `30000000                                     ;; 0b:5cce $80 $80 GFX GFX
-    dw   `00033330                                     ;; 0b:5cd0 $1e $1e GFX GFX
-    dw   `00031113                                     ;; 0b:5cd2 $1f $11 GFX GFX
-    dw   `00003311                                     ;; 0b:5cd4 $0f $0c GFX GFX
-    dw   `00000031                                     ;; 0b:5cd6 $03 $02 GFX GFX
-    dw   `00000033                                     ;; 0b:5cd8 $03 $03 GFX GFX
-    dw   `00000032                                     ;; 0b:5cda $02 $03 GFX GFX
-    dw   `00000032                                     ;; 0b:5cdc $02 $03 GFX GFX
-    dw   `00000333                                     ;; 0b:5cde $07 $07 GFX GFX
-    dw   `00333330                                     ;; 0b:5ce0 $3e $3e GFX GFX
-    dw   `33222223                                     ;; 0b:5ce2 $c1 $ff GFX GFX
-    dw   `13222222                                     ;; 0b:5ce4 $c0 $7f GFX GFX
-    dw   `13222222                                     ;; 0b:5ce6 $c0 $7f GFX GFX
-    dw   `32222223                                     ;; 0b:5ce8 $81 $ff GFX GFX
-    dw   `22222222                                     ;; 0b:5cea $00 $ff GFX GFX
-    dw   `33322223                                     ;; 0b:5cec $e1 $ff GFX GFX
-    dw   `33333332                                     ;; 0b:5cee $fe $ff GFX GFX
-    dw   `00000333                                     ;; 0b:5cf0 $07 $07 GFX GFX
-    dw   `00000333                                     ;; 0b:5cf2 $07 $07 GFX GFX
-    dw   `00000333                                     ;; 0b:5cf4 $07 $07 GFX GFX
-    dw   `00000333                                     ;; 0b:5cf6 $07 $07 GFX GFX
-    dw   `00000033                                     ;; 0b:5cf8 $03 $03 GFX GFX
-    dw   `00000033                                     ;; 0b:5cfa $03 $03 GFX GFX
-    dw   `00000003                                     ;; 0b:5cfc $01 $01 GFX GFX
-    dw   `00033333                                     ;; 0b:5cfe $1f $1f GFX GFX
-    dw   `11331322                                     ;; 0b:5d00 $fc $37 GFX GFX
-    dw   `11331323                                     ;; 0b:5d02 $fd $37 GFX GFX
-    dw   `33313233                                     ;; 0b:5d04 $fb $ef GFX GFX
-    dw   `22223132                                     ;; 0b:5d06 $0e $fb GFX GFX
-    dw   `33331132                                     ;; 0b:5d08 $fe $f3 GFX GFX
-    dw   `23333132                                     ;; 0b:5d0a $7e $fb GFX GFX
-    dw   `22223322                                     ;; 0b:5d0c $0c $ff GFX GFX
-    dw   `22332222                                     ;; 0b:5d0e $30 $ff GFX GFX
-    dw   `00322223                                     ;; 0b:5d10 $21 $3f GFX GFX
-    dw   `03222222                                     ;; 0b:5d12 $40 $7f GFX GFX
-    dw   `32222222                                     ;; 0b:5d14 $80 $ff GFX GFX
-    dw   `32222222                                     ;; 0b:5d16 $80 $ff GFX GFX
-    dw   `32222222                                     ;; 0b:5d18 $80 $ff GFX GFX
-    dw   `03322223                                     ;; 0b:5d1a $61 $7f GFX GFX
-    dw   `00033331                                     ;; 0b:5d1c $1f $1e GFX GFX
-    dw   `00000311                                     ;; 0b:5d1e $07 $04 GFX GFX
-    dw   `33322222                                     ;; 0b:5d20 $e0 $ff GFX GFX
-    dw   `33332222                                     ;; 0b:5d22 $f0 $ff GFX GFX
-    dw   `32332222                                     ;; 0b:5d24 $b0 $ff GFX GFX
-    dw   `33332222                                     ;; 0b:5d26 $f0 $ff GFX GFX
-    dw   `32332222                                     ;; 0b:5d28 $b0 $ff GFX GFX
-    dw   `33333333                                     ;; 0b:5d2a $ff $ff GFX GFX
-    dw   `33312223                                     ;; 0b:5d2c $f1 $ef GFX GFX
-    dw   `11111133                                     ;; 0b:5d2e $ff $03 GFX GFX
-    dw   `00003233                                     ;; 0b:5d30 $0b $0f GFX GFX
-    dw   `00003222                                     ;; 0b:5d32 $08 $0f GFX GFX
-    dw   `00000322                                     ;; 0b:5d34 $04 $07 GFX GFX
-    dw   `00033233                                     ;; 0b:5d36 $1b $1f GFX GFX
-    dw   `00333323                                     ;; 0b:5d38 $3d $3f GFX GFX
-    dw   `03333333                                     ;; 0b:5d3a $7f $7f GFX GFX
-    dw   `03333333                                     ;; 0b:5d3c $7f $7f GFX GFX
-    dw   `03333333                                     ;; 0b:5d3e $7f $7f GFX GFX
-    dw   `33333333                                     ;; 0b:5d40 $ff $ff GFX GFX
-    dw   `22222230                                     ;; 0b:5d42 $02 $fe GFX GFX
-    dw   `22222230                                     ;; 0b:5d44 $02 $fe GFX GFX
-    dw   `33333300                                     ;; 0b:5d46 $fc $fc GFX GFX
-    dw   `33333000                                     ;; 0b:5d48 $f8 $f8 GFX GFX
-    dw   `33333300                                     ;; 0b:5d4a $fc $fc GFX GFX
-    dw   `33333300                                     ;; 0b:5d4c $fc $fc GFX GFX
-    dw   `33333300                                     ;; 0b:5d4e $fc $fc GFX GFX
-    dw   `00330000                                     ;; 0b:5d50 $30 $30 GFX GFX
-    dw   `03230000                                     ;; 0b:5d52 $50 $70 GFX GFX
-    dw   `33230000                                     ;; 0b:5d54 $d0 $f0 GFX GFX
-    dw   `32330000                                     ;; 0b:5d56 $b0 $f0 GFX GFX
-    dw   `23233000                                     ;; 0b:5d58 $58 $f8 GFX GFX
-    dw   `23233330                                     ;; 0b:5d5a $5e $fe GFX GFX
-    dw   `23233333                                     ;; 0b:5d5c $5f $ff GFX GFX
-    dw   `22233333                                     ;; 0b:5d5e $1f $ff GFX GFX
-    dw   `00000000                                     ;; 0b:5d60 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5d62 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5d64 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5d66 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5d68 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5d6a $00 $00 GFX GFX
-    dw   `30000000                                     ;; 0b:5d6c $80 $80 GFX GFX
-    dw   `23000000                                     ;; 0b:5d6e $40 $c0 GFX GFX
-    dw   `33333333                                     ;; 0b:5d70 $ff $ff GFX GFX
-    dw   `32222333                                     ;; 0b:5d72 $87 $ff GFX GFX
-    dw   `22222223                                     ;; 0b:5d74 $01 $ff GFX GFX
-    dw   `22222223                                     ;; 0b:5d76 $01 $ff GFX GFX
-    dw   `22222222                                     ;; 0b:5d78 $00 $ff GFX GFX
-    dw   `22222222                                     ;; 0b:5d7a $00 $ff GFX GFX
-    dw   `32222222                                     ;; 0b:5d7c $80 $ff GFX GFX
-    dw   `32222223                                     ;; 0b:5d7e $81 $ff GFX GFX
-    dw   `32300000                                     ;; 0b:5d80 $a0 $e0 GFX GFX
-    dw   `32300000                                     ;; 0b:5d82 $a0 $e0 GFX GFX
-    dw   `33230000                                     ;; 0b:5d84 $d0 $f0 GFX GFX
-    dw   `33230000                                     ;; 0b:5d86 $d0 $f0 GFX GFX
-    dw   `33300000                                     ;; 0b:5d88 $e0 $e0 GFX GFX
-    dw   `33000000                                     ;; 0b:5d8a $c0 $c0 GFX GFX
-    dw   `33000000                                     ;; 0b:5d8c $c0 $c0 GFX GFX
-    dw   `30000000                                     ;; 0b:5d8e $80 $80 GFX GFX
-    dw   `22322223                                     ;; 0b:5d90 $21 $ff GFX GFX
-    dw   `22222233                                     ;; 0b:5d92 $03 $ff GFX GFX
-    dw   `22223322                                     ;; 0b:5d94 $0c $ff GFX GFX
-    dw   `22232222                                     ;; 0b:5d96 $10 $ff GFX GFX
-    dw   `23322112                                     ;; 0b:5d98 $66 $f9 GFX GFX
-    dw   `33211111                                     ;; 0b:5d9a $df $e0 GFX GFX
-    dw   `11111111                                     ;; 0b:5d9c $ff $00 GFX GFX
-    dw   `11111111                                     ;; 0b:5d9e $ff $00 GFX GFX
-    dw   `30000000                                     ;; 0b:5da0 $80 $80 GFX GFX
-    dw   `00000000                                     ;; 0b:5da2 $00 $00 GFX GFX
-    dw   `30000000                                     ;; 0b:5da4 $80 $80 GFX GFX
-    dw   `30000000                                     ;; 0b:5da6 $80 $80 GFX GFX
-    dw   `23000000                                     ;; 0b:5da8 $40 $c0 GFX GFX
-    dw   `23000000                                     ;; 0b:5daa $40 $c0 GFX GFX
-    dw   `23330000                                     ;; 0b:5dac $70 $f0 GFX GFX
-    dw   `32323000                                     ;; 0b:5dae $a8 $f8 GFX GFX
-    dw   `31111111                                     ;; 0b:5db0 $ff $80 GFX GFX
-    dw   `32111112                                     ;; 0b:5db2 $be $c1 GFX GFX
-    dw   `03211233                                     ;; 0b:5db4 $5b $67 GFX GFX
-    dw   `00333322                                     ;; 0b:5db6 $3c $3f GFX GFX
-    dw   `00000033                                     ;; 0b:5db8 $03 $03 GFX GFX
-    dw   `00000333                                     ;; 0b:5dba $07 $07 GFX GFX
-    dw   `00000333                                     ;; 0b:5dbc $07 $07 GFX GFX
-    dw   `00000333                                     ;; 0b:5dbe $07 $07 GFX GFX
-    dw   `23223330                                     ;; 0b:5dc0 $4e $fe GFX GFX
-    dw   `32223333                                     ;; 0b:5dc2 $8f $ff GFX GFX
-    dw   `22233333                                     ;; 0b:5dc4 $1f $ff GFX GFX
-    dw   `23333333                                     ;; 0b:5dc6 $7f $ff GFX GFX
-    dw   `33323333                                     ;; 0b:5dc8 $ef $ff GFX GFX
-    dw   `33332330                                     ;; 0b:5dca $f6 $fe GFX GFX
-    dw   `33333300                                     ;; 0b:5dcc $fc $fc GFX GFX
-    dw   `33333300                                     ;; 0b:5dce $fc $fc GFX GFX
-    dw   `00000000                                     ;; 0b:5dd0 $00 $00 GFX GFX
-    dw   `03300003                                     ;; 0b:5dd2 $61 $61 GFX GFX
-    dw   `03233003                                     ;; 0b:5dd4 $59 $79 GFX GFX
-    dw   `00322331                                     ;; 0b:5dd6 $27 $3e GFX GFX
-    dw   `00323333                                     ;; 0b:5dd8 $2f $3f GFX GFX
-    dw   `00033233                                     ;; 0b:5dda $1b $1f GFX GFX
-    dw   `00033333                                     ;; 0b:5ddc $1f $1f GFX GFX
-    dw   `00331331                                     ;; 0b:5dde $3f $36 GFX GFX
-    dw   `30000000                                     ;; 0b:5de0 $80 $80 GFX GFX
-    dw   `13000033                                     ;; 0b:5de2 $c3 $43 GFX GFX
-    dw   `23003323                                     ;; 0b:5de4 $4d $cf GFX GFX
-    dw   `22332230                                     ;; 0b:5de6 $32 $fe GFX GFX
-    dw   `23333230                                     ;; 0b:5de8 $7a $fe GFX GFX
-    dw   `33323300                                     ;; 0b:5dea $ec $fc GFX GFX
-    dw   `23333300                                     ;; 0b:5dec $7c $fc GFX GFX
-    dw   `22332330                                     ;; 0b:5dee $36 $fe GFX GFX
-    dw   `03122231                                     ;; 0b:5df0 $63 $5e GFX GFX
-    dw   `00332333                                     ;; 0b:5df2 $37 $3f GFX GFX
-    dw   `00033333                                     ;; 0b:5df4 $1f $1f GFX GFX
-    dw   `00033233                                     ;; 0b:5df6 $1b $1f GFX GFX
-    dw   `00323331                                     ;; 0b:5df8 $2f $3e GFX GFX
-    dw   `00322333                                     ;; 0b:5dfa $27 $3f GFX GFX
-    dw   `03233003                                     ;; 0b:5dfc $59 $79 GFX GFX
-    dw   `03300000                                     ;; 0b:5dfe $60 $60 GFX GFX
-    dw   `22322213                                     ;; 0b:5e00 $23 $fd GFX GFX
-    dw   `23332330                                     ;; 0b:5e02 $76 $fe GFX GFX
-    dw   `33333300                                     ;; 0b:5e04 $fc $fc GFX GFX
-    dw   `23323300                                     ;; 0b:5e06 $6c $fc GFX GFX
-    dw   `22333230                                     ;; 0b:5e08 $3a $fe GFX GFX
-    dw   `23332230                                     ;; 0b:5e0a $72 $fe GFX GFX
-    dw   `13003323                                     ;; 0b:5e0c $cd $4f GFX GFX
-    dw   `30000033                                     ;; 0b:5e0e $83 $83 GFX GFX
-    dw   `00000000                                     ;; 0b:5e10 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5e12 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5e14 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5e16 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5e18 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5e1a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5e1c $00 $00 GFX GFX
-    dw   `03300330                                     ;; 0b:5e1e $66 $66 GFX GFX
-    dw   `30033003                                     ;; 0b:5e20 $99 $99 GFX GFX
-    dw   `03300330                                     ;; 0b:5e22 $66 $66 GFX GFX
-    dw   `00000000                                     ;; 0b:5e24 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5e26 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5e28 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5e2a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5e2c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5e2e $00 $00 GFX GFX
-    dw   `00020002                                     ;; 0b:5e30 $00 $11 GFX GFX
-    dw   `00002023                                     ;; 0b:5e32 $01 $0b GFX GFX
-    dw   `00020002                                     ;; 0b:5e34 $00 $11 GFX GFX
-    dw   `00200000                                     ;; 0b:5e36 $00 $20 GFX GFX
-    dw   `02200002                                     ;; 0b:5e38 $00 $61 GFX GFX
-    dw   `02220222                                     ;; 0b:5e3a $00 $77 GFX GFX
-    dw   `02322233                                     ;; 0b:5e3c $23 $7f GFX GFX
-    dw   `00233331                                     ;; 0b:5e3e $1f $3e GFX GFX
-    dw   `22000233                                     ;; 0b:5e40 $03 $c7 GFX GFX
-    dw   `33223311                                     ;; 0b:5e42 $cf $fc GFX GFX
-    dw   `23331122                                     ;; 0b:5e44 $7c $f3 GFX GFX
-    dw   `23312222                                     ;; 0b:5e46 $70 $ef GFX GFX
-    dw   `33122222                                     ;; 0b:5e48 $e0 $df GFX GFX
-    dw   `31222222                                     ;; 0b:5e4a $c0 $bf GFX GFX
-    dw   `12222222                                     ;; 0b:5e4c $80 $7f GFX GFX
-    dw   `22222221                                     ;; 0b:5e4e $01 $fe GFX GFX
-    dw   `00033312                                     ;; 0b:5e50 $1e $1d GFX GFX
-    dw   `00231122                                     ;; 0b:5e52 $1c $33 GFX GFX
-    dw   `02312222                                     ;; 0b:5e54 $30 $6f GFX GFX
-    dw   `03122333                                     ;; 0b:5e56 $67 $5f GFX GFX
-    dw   `31233333                                     ;; 0b:5e58 $df $bf GFX GFX
-    dw   `32323032                                     ;; 0b:5e5a $aa $fb GFX GFX
-    dw   `32330032                                     ;; 0b:5e5c $b2 $f3 GFX GFX
-    dw   `03000003                                     ;; 0b:5e5e $41 $41 GFX GFX
-    dw   `22111113                                     ;; 0b:5e60 $3f $c1 GFX GFX
-    dw   `23333333                                     ;; 0b:5e62 $7f $ff GFX GFX
-    dw   `21333222                                     ;; 0b:5e64 $78 $bf GFX GFX
-    dw   `22332232                                     ;; 0b:5e66 $32 $ff GFX GFX
-    dw   `21303333                                     ;; 0b:5e68 $6f $af GFX GFX
-    dw   `23000222                                     ;; 0b:5e6a $40 $c7 GFX GFX
-    dw   `30000000                                     ;; 0b:5e6c $80 $80 GFX GFX
-    dw   `00000000                                     ;; 0b:5e6e $00 $00 GFX GFX
-    dw   `00220000                                     ;; 0b:5e70 $00 $30 GFX GFX
-    dw   `00020002                                     ;; 0b:5e72 $00 $11 GFX GFX
-    dw   `00000022                                     ;; 0b:5e74 $00 $03 GFX GFX
-    dw   `00000220                                     ;; 0b:5e76 $00 $06 GFX GFX
-    dw   `20002320                                     ;; 0b:5e78 $04 $8e GFX GFX
-    dw   `02002220                                     ;; 0b:5e7a $00 $4e GFX GFX
-    dw   `20002322                                     ;; 0b:5e7c $04 $8f GFX GFX
-    dw   `22200232                                     ;; 0b:5e7e $02 $e7 GFX GFX
-    dw   `00020000                                     ;; 0b:5e80 $00 $10 GFX GFX
-    dw   `20232202                                     ;; 0b:5e82 $10 $bd GFX GFX
-    dw   `00023333                                     ;; 0b:5e84 $0f $1f GFX GFX
-    dw   `00023331                                     ;; 0b:5e86 $0f $1e GFX GFX
-    dw   `00233112                                     ;; 0b:5e88 $1e $39 GFX GFX
-    dw   `00231222                                     ;; 0b:5e8a $18 $37 GFX GFX
-    dw   `22312222                                     ;; 0b:5e8c $30 $ef GFX GFX
-    dw   `23312222                                     ;; 0b:5e8e $70 $ef GFX GFX
-    dw   `23220233                                     ;; 0b:5e90 $43 $f7 GFX GFX
-    dw   `02222023                                     ;; 0b:5e92 $01 $7b GFX GFX
-    dw   `00232023                                     ;; 0b:5e94 $11 $3b GFX GFX
-    dw   `00233233                                     ;; 0b:5e96 $1b $3f GFX GFX
-    dw   `00223331                                     ;; 0b:5e98 $0f $3e GFX GFX
-    dw   `00233312                                     ;; 0b:5e9a $1e $3d GFX GFX
-    dw   `02333222                                     ;; 0b:5e9c $38 $7f GFX GFX
-    dw   `02333333                                     ;; 0b:5e9e $3f $7f GFX GFX
-    dw   `33122223                                     ;; 0b:5ea0 $e1 $df GFX GFX
-    dw   `33122231                                     ;; 0b:5ea2 $e3 $de GFX GFX
-    dw   `31222312                                     ;; 0b:5ea4 $c6 $bd GFX GFX
-    dw   `12233122                                     ;; 0b:5ea6 $9c $7b GFX GFX
-    dw   `22311222                                     ;; 0b:5ea8 $38 $e7 GFX GFX
-    dw   `23122223                                     ;; 0b:5eaa $61 $df GFX GFX
-    dw   `31222223                                     ;; 0b:5eac $c1 $bf GFX GFX
-    dw   `32222233                                     ;; 0b:5eae $83 $ff GFX GFX
-    dw   `23331111                                     ;; 0b:5eb0 $7f $f0 GFX GFX
-    dw   `31112222                                     ;; 0b:5eb2 $f0 $8f GFX GFX
-    dw   `12222222                                     ;; 0b:5eb4 $80 $7f GFX GFX
-    dw   `22222222                                     ;; 0b:5eb6 $00 $ff GFX GFX
-    dw   `22222222                                     ;; 0b:5eb8 $00 $ff GFX GFX
-    dw   `22222222                                     ;; 0b:5eba $00 $ff GFX GFX
-    dw   `22222222                                     ;; 0b:5ebc $00 $ff GFX GFX
-    dw   `13112222                                     ;; 0b:5ebe $f0 $4f GFX GFX
-    dw   `12222233                                     ;; 0b:5ec0 $83 $7f GFX GFX
-    dw   `21222223                                     ;; 0b:5ec2 $41 $bf GFX GFX
-    dw   `22222232                                     ;; 0b:5ec4 $02 $ff GFX GFX
-    dw   `22222233                                     ;; 0b:5ec6 $03 $ff GFX GFX
-    dw   `22222233                                     ;; 0b:5ec8 $03 $ff GFX GFX
-    dw   `22222223                                     ;; 0b:5eca $01 $ff GFX GFX
-    dw   `22222222                                     ;; 0b:5ecc $00 $ff GFX GFX
-    dw   `23122222                                     ;; 0b:5ece $60 $df GFX GFX
-    dw   `33331111                                     ;; 0b:5ed0 $ff $f0 GFX GFX
-    dw   `22223333                                     ;; 0b:5ed2 $0f $ff GFX GFX
-    dw   `22222332                                     ;; 0b:5ed4 $06 $ff GFX GFX
-    dw   `22233222                                     ;; 0b:5ed6 $18 $ff GFX GFX
-    dw   `33322002                                     ;; 0b:5ed8 $e0 $f9 GFX GFX
-    dw   `22200022                                     ;; 0b:5eda $00 $e3 GFX GFX
-    dw   `00000000                                     ;; 0b:5edc $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5ede $00 $00 GFX GFX
-    dw   `22311222                                     ;; 0b:5ee0 $38 $e7 GFX GFX
-    dw   `33333111                                     ;; 0b:5ee2 $ff $f8 GFX GFX
-    dw   `33323333                                     ;; 0b:5ee4 $ef $ff GFX GFX
-    dw   `22222333                                     ;; 0b:5ee6 $07 $ff GFX GFX
-    dw   `22000222                                     ;; 0b:5ee8 $00 $c7 GFX GFX
-    dw   `00002000                                     ;; 0b:5eea $00 $08 GFX GFX
-    dw   `00000000                                     ;; 0b:5eec $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5eee $00 $00 GFX GFX
-    dw   `02233332                                     ;; 0b:5ef0 $1e $7f GFX GFX
-    dw   `33311113                                     ;; 0b:5ef2 $ff $e1 GFX GFX
-    dw   `31122221                                     ;; 0b:5ef4 $e1 $9e GFX GFX
-    dw   `12222222                                     ;; 0b:5ef6 $80 $7f GFX GFX
-    dw   `22222223                                     ;; 0b:5ef8 $01 $ff GFX GFX
-    dw   `22222231                                     ;; 0b:5efa $03 $fe GFX GFX
-    dw   `32222313                                     ;; 0b:5efc $87 $fd GFX GFX
-    dw   `32322323                                     ;; 0b:5efe $a5 $ff GFX GFX
-    dw   `20222333                                     ;; 0b:5f00 $07 $bf GFX GFX
-    dw   `32333333                                     ;; 0b:5f02 $bf $ff GFX GFX
-    dw   `13331111                                     ;; 0b:5f04 $ff $70 GFX GFX
-    dw   `21112222                                     ;; 0b:5f06 $70 $8f GFX GFX
-    dw   `32222222                                     ;; 0b:5f08 $80 $ff GFX GFX
-    dw   `32222222                                     ;; 0b:5f0a $80 $ff GFX GFX
-    dw   `22222221                                     ;; 0b:5f0c $01 $fe GFX GFX
-    dw   `22332221                                     ;; 0b:5f0e $31 $fe GFX GFX
-    dw   `12323123                                     ;; 0b:5f10 $ad $7b GFX GFX
-    dw   `23133123                                     ;; 0b:5f12 $7d $db GFX GFX
-    dw   `23233123                                     ;; 0b:5f14 $5d $fb GFX GFX
-    dw   `33233222                                     ;; 0b:5f16 $d8 $ff GFX GFX
-    dw   `33123312                                     ;; 0b:5f18 $ee $dd GFX GFX
-    dw   `33122322                                     ;; 0b:5f1a $e4 $df GFX GFX
-    dw   `23312232                                     ;; 0b:5f1c $72 $ef GFX GFX
-    dw   `23322232                                     ;; 0b:5f1e $62 $ff GFX GFX
-    dw   `22233221                                     ;; 0b:5f20 $19 $fe GFX GFX
-    dw   `32231322                                     ;; 0b:5f22 $9c $f7 GFX GFX
-    dw   `33332332                                     ;; 0b:5f24 $f6 $ff GFX GFX
-    dw   `33312332                                     ;; 0b:5f26 $f6 $ef GFX GFX
-    dw   `31223323                                     ;; 0b:5f28 $cd $bf GFX GFX
-    dw   `22233333                                     ;; 0b:5f2a $1f $ff GFX GFX
-    dw   `22233323                                     ;; 0b:5f2c $1d $ff GFX GFX
-    dw   `22222223                                     ;; 0b:5f2e $01 $ff GFX GFX
-    dw   `22223222                                     ;; 0b:5f30 $08 $ff GFX GFX
-    dw   `32222322                                     ;; 0b:5f32 $84 $ff GFX GFX
-    dw   `33232332                                     ;; 0b:5f34 $d6 $ff GFX GFX
-    dw   `32223332                                     ;; 0b:5f36 $8e $ff GFX GFX
-    dw   `22231132                                     ;; 0b:5f38 $1e $f3 GFX GFX
-    dw   `33231132                                     ;; 0b:5f3a $de $f3 GFX GFX
-    dw   `32223322                                     ;; 0b:5f3c $8c $ff GFX GFX
-    dw   `23222222                                     ;; 0b:5f3e $40 $ff GFX GFX
-    dw   `22322233                                     ;; 0b:5f40 $23 $ff GFX GFX
-    dw   `23222332                                     ;; 0b:5f42 $46 $ff GFX GFX
-    dw   `33232223                                     ;; 0b:5f44 $d1 $ff GFX GFX
-    dw   `33322333                                     ;; 0b:5f46 $e7 $ff GFX GFX
-    dw   `31132223                                     ;; 0b:5f48 $f1 $9f GFX GFX
-    dw   `31132233                                     ;; 0b:5f4a $f3 $9f GFX GFX
-    dw   `23322332                                     ;; 0b:5f4c $66 $ff GFX GFX
-    dw   `22223332                                     ;; 0b:5f4e $0e $ff GFX GFX
-    dw   `22323333                                     ;; 0b:5f50 $2f $ff GFX GFX
-    dw   `23323333                                     ;; 0b:5f52 $6f $ff GFX GFX
-    dw   `33332333                                     ;; 0b:5f54 $f7 $ff GFX GFX
-    dw   `23232322                                     ;; 0b:5f56 $54 $ff GFX GFX
-    dw   `22003231                                     ;; 0b:5f58 $0b $ce GFX GFX
-    dw   `00000331                                     ;; 0b:5f5a $07 $06 GFX GFX
-    dw   `00000033                                     ;; 0b:5f5c $03 $03 GFX GFX
-    dw   `00000000                                     ;; 0b:5f5e $00 $00 GFX GFX
-    dw   `33223222                                     ;; 0b:5f60 $c8 $ff GFX GFX
-    dw   `33233212                                     ;; 0b:5f62 $da $fd GFX GFX
-    dw   `32332331                                     ;; 0b:5f64 $b7 $fe GFX GFX
-    dw   `32323223                                     ;; 0b:5f66 $a9 $ff GFX GFX
-    dw   `33202002                                     ;; 0b:5f68 $c0 $e9 GFX GFX
-    dw   `30000002                                     ;; 0b:5f6a $80 $81 GFX GFX
-    dw   `13000000                                     ;; 0b:5f6c $c0 $40 GFX GFX
-    dw   `33000000                                     ;; 0b:5f6e $c0 $c0 GFX GFX
-    dw   `22002020                                     ;; 0b:5f70 $00 $ca GFX GFX
-    dw   `33322002                                     ;; 0b:5f72 $e0 $f9 GFX GFX
-    dw   `11332000                                     ;; 0b:5f74 $f0 $38 GFX GFX
-    dw   `22113200                                     ;; 0b:5f76 $38 $cc GFX GFX
-    dw   `22221322                                     ;; 0b:5f78 $0c $f7 GFX GFX
-    dw   `22221333                                     ;; 0b:5f7a $0f $f7 GFX GFX
-    dw   `32222133                                     ;; 0b:5f7c $87 $fb GFX GFX
-    dw   `32222213                                     ;; 0b:5f7e $83 $fd GFX GFX
-    dw   `00000020                                     ;; 0b:5f80 $00 $02 GFX GFX
-    dw   `20002200                                     ;; 0b:5f82 $00 $8c GFX GFX
-    dw   `20022000                                     ;; 0b:5f84 $00 $98 GFX GFX
-    dw   `22022000                                     ;; 0b:5f86 $00 $d8 GFX GFX
-    dw   `32002200                                     ;; 0b:5f88 $80 $cc GFX GFX
-    dw   `32002320                                     ;; 0b:5f8a $84 $ce GFX GFX
-    dw   `20023320                                     ;; 0b:5f8c $0c $9e GFX GFX
-    dw   `32233332                                     ;; 0b:5f8e $9e $ff GFX GFX
-    dw   `32222213                                     ;; 0b:5f90 $83 $fd GFX GFX
-    dw   `13222221                                     ;; 0b:5f92 $c1 $7e GFX GFX
-    dw   `23222233                                     ;; 0b:5f94 $43 $ff GFX GFX
-    dw   `21323311                                     ;; 0b:5f96 $6f $bc GFX GFX
-    dw   `22133122                                     ;; 0b:5f98 $3c $db GFX GFX
-    dw   `32231222                                     ;; 0b:5f9a $98 $f7 GFX GFX
-    dw   `32312222                                     ;; 0b:5f9c $b0 $ef GFX GFX
-    dw   `32222222                                     ;; 0b:5f9e $80 $ff GFX GFX
-    dw   `33311332                                     ;; 0b:5fa0 $fe $e7 GFX GFX
-    dw   `33121332                                     ;; 0b:5fa2 $ee $d7 GFX GFX
-    dw   `11222132                                     ;; 0b:5fa4 $c6 $3b GFX GFX
-    dw   `22222132                                     ;; 0b:5fa6 $06 $fb GFX GFX
-    dw   `22222213                                     ;; 0b:5fa8 $03 $fd GFX GFX
-    dw   `22222213                                     ;; 0b:5faa $03 $fd GFX GFX
-    dw   `22213213                                     ;; 0b:5fac $1b $ed GFX GFX
-    dw   `22132213                                     ;; 0b:5fae $33 $dd GFX GFX
-    dw   `22222222                                     ;; 0b:5fb0 $00 $ff GFX GFX
-    dw   `32222222                                     ;; 0b:5fb2 $80 $ff GFX GFX
-    dw   `32222222                                     ;; 0b:5fb4 $80 $ff GFX GFX
-    dw   `22222222                                     ;; 0b:5fb6 $00 $ff GFX GFX
-    dw   `22222222                                     ;; 0b:5fb8 $00 $ff GFX GFX
-    dw   `22222222                                     ;; 0b:5fba $00 $ff GFX GFX
-    dw   `22222211                                     ;; 0b:5fbc $03 $fc GFX GFX
-    dw   `22222133                                     ;; 0b:5fbe $07 $fb GFX GFX
-    dw   `22132213                                     ;; 0b:5fc0 $33 $dd GFX GFX
-    dw   `22132213                                     ;; 0b:5fc2 $33 $dd GFX GFX
-    dw   `21322133                                     ;; 0b:5fc4 $67 $bb GFX GFX
-    dw   `21322132                                     ;; 0b:5fc6 $66 $bb GFX GFX
-    dw   `21321320                                     ;; 0b:5fc8 $6c $b6 GFX GFX
-    dw   `13221332                                     ;; 0b:5fca $ce $77 GFX GFX
-    dw   `33213332                                     ;; 0b:5fcc $de $ef GFX GFX
-    dw   `32213320                                     ;; 0b:5fce $9c $ee GFX GFX
-    dw   `22222133                                     ;; 0b:5fd0 $07 $fb GFX GFX
-    dw   `22211332                                     ;; 0b:5fd2 $1e $e7 GFX GFX
-    dw   `11133232                                     ;; 0b:5fd4 $fa $1f GFX GFX
-    dw   `33322332                                     ;; 0b:5fd6 $e6 $ff GFX GFX
-    dw   `33203322                                     ;; 0b:5fd8 $cc $ef GFX GFX
-    dw   `22033222                                     ;; 0b:5fda $18 $df GFX GFX
-    dw   `00322233                                     ;; 0b:5fdc $23 $3f GFX GFX
-    dw   `00333330                                     ;; 0b:5fde $3e $3e GFX GFX
-    dw   `22133200                                     ;; 0b:5fe0 $38 $dc GFX GFX
-    dw   `22132000                                     ;; 0b:5fe2 $30 $d8 GFX GFX
-    dw   `22333320                                     ;; 0b:5fe4 $3c $fe GFX GFX
-    dw   `23213132                                     ;; 0b:5fe6 $5e $eb GFX GFX
-    dw   `22223223                                     ;; 0b:5fe8 $09 $ff GFX GFX
-    dw   `23322323                                     ;; 0b:5fea $65 $ff GFX GFX
-    dw   `33332323                                     ;; 0b:5fec $f5 $ff GFX GFX
-    dw   `00033333                                     ;; 0b:5fee $1f $1f GFX GFX
-    dw   `00000000                                     ;; 0b:5ff0 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5ff2 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5ff4 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5ff6 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5ff8 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5ffa $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5ffc $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:5ffe $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6000 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6002 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6004 $00 $00 GFX GFX
-    dw   `00002220                                     ;; 0b:6006 $00 $0e GFX GFX
-    dw   `00222332                                     ;; 0b:6008 $06 $3f GFX GFX
-    dw   `02000233                                     ;; 0b:600a $03 $47 GFX GFX
-    dw   `00000023                                     ;; 0b:600c $01 $03 GFX GFX
-    dw   `00000233                                     ;; 0b:600e $03 $07 GFX GFX
-    dw   `00020000                                     ;; 0b:6010 $00 $10 GFX GFX
-    dw   `00002200                                     ;; 0b:6012 $00 $0c GFX GFX
-    dw   `00002322                                     ;; 0b:6014 $04 $0f GFX GFX
-    dw   `00223333                                     ;; 0b:6016 $0f $3f GFX GFX
-    dw   `22333332                                     ;; 0b:6018 $3e $ff GFX GFX
-    dw   `33233222                                     ;; 0b:601a $d8 $ff GFX GFX
-    dw   `33332211                                     ;; 0b:601c $f3 $fc GFX GFX
-    dw   `22332111                                     ;; 0b:601e $37 $f8 GFX GFX
-    dw   `00002332                                     ;; 0b:6020 $06 $0f GFX GFX
-    dw   `00002321                                     ;; 0b:6022 $05 $0e GFX GFX
-    dw   `00023321                                     ;; 0b:6024 $0d $1e GFX GFX
-    dw   `00023322                                     ;; 0b:6026 $0c $1f GFX GFX
-    dw   `02233332                                     ;; 0b:6028 $1e $7f GFX GFX
-    dw   `22333333                                     ;; 0b:602a $3f $ff GFX GFX
-    dw   `22233233                                     ;; 0b:602c $1b $ff GFX GFX
-    dw   `20232223                                     ;; 0b:602e $11 $bf GFX GFX
-    dw   `11232221                                     ;; 0b:6030 $d1 $3e GFX GFX
-    dw   `11233222                                     ;; 0b:6032 $d8 $3f GFX GFX
-    dw   `12233333                                     ;; 0b:6034 $9f $7f GFX GFX
-    dw   `22333322                                     ;; 0b:6036 $3c $ff GFX GFX
-    dw   `23323211                                     ;; 0b:6038 $6b $fc GFX GFX
-    dw   `33333211                                     ;; 0b:603a $fb $fc GFX GFX
-    dw   `33333221                                     ;; 0b:603c $f9 $fe GFX GFX
-    dw   `32223322                                     ;; 0b:603e $8c $ff GFX GFX
-    dw   `20232123                                     ;; 0b:6040 $15 $bb GFX GFX
-    dw   `00232123                                     ;; 0b:6042 $15 $3b GFX GFX
-    dw   `00232123                                     ;; 0b:6044 $15 $3b GFX GFX
-    dw   `00023223                                     ;; 0b:6046 $09 $1f GFX GFX
-    dw   `00023333                                     ;; 0b:6048 $0f $1f GFX GFX
-    dw   `00233321                                     ;; 0b:604a $1d $3e GFX GFX
-    dw   `00232322                                     ;; 0b:604c $14 $3f GFX GFX
-    dw   `02322333                                     ;; 0b:604e $27 $7f GFX GFX
-    dw   `22112333                                     ;; 0b:6050 $37 $cf GFX GFX
-    dw   `21112233                                     ;; 0b:6052 $73 $8f GFX GFX
-    dw   `21111233                                     ;; 0b:6054 $7b $87 GFX GFX
-    dw   `22111233                                     ;; 0b:6056 $3b $c7 GFX GFX
-    dw   `32212332                                     ;; 0b:6058 $96 $ef GFX GFX
-    dw   `33222332                                     ;; 0b:605a $c6 $ff GFX GFX
-    dw   `33333332                                     ;; 0b:605c $fe $ff GFX GFX
-    dw   `33222333                                     ;; 0b:605e $c7 $ff GFX GFX
-    dw   `02320233                                     ;; 0b:6060 $23 $77 GFX GFX
-    dw   `02200023                                     ;; 0b:6062 $01 $63 GFX GFX
-    dw   `00200002                                     ;; 0b:6064 $00 $21 GFX GFX
-    dw   `00200002                                     ;; 0b:6066 $00 $21 GFX GFX
-    dw   `00020000                                     ;; 0b:6068 $00 $10 GFX GFX
-    dw   `00000000                                     ;; 0b:606a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:606c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:606e $00 $00 GFX GFX
-    dw   `32212223                                     ;; 0b:6070 $91 $ef GFX GFX
-    dw   `32111122                                     ;; 0b:6072 $bc $c3 GFX GFX
-    dw   `33221122                                     ;; 0b:6074 $cc $f3 GFX GFX
-    dw   `33332223                                     ;; 0b:6076 $f1 $ff GFX GFX
-    dw   `22233333                                     ;; 0b:6078 $1f $ff GFX GFX
-    dw   `00022332                                     ;; 0b:607a $06 $1f GFX GFX
-    dw   `00000233                                     ;; 0b:607c $03 $07 GFX GFX
-    dw   `00000022                                     ;; 0b:607e $00 $03 GFX GFX
-    dw   `00002200                                     ;; 0b:6080 $00 $0c GFX GFX
-    dw   `00000022                                     ;; 0b:6082 $00 $03 GFX GFX
-    dw   `22200002                                     ;; 0b:6084 $00 $e1 GFX GFX
-    dw   `33322200                                     ;; 0b:6086 $e0 $fc GFX GFX
-    dw   `22333322                                     ;; 0b:6088 $3c $ff GFX GFX
-    dw   `12233333                                     ;; 0b:608a $9f $7f GFX GFX
-    dw   `11233223                                     ;; 0b:608c $d9 $3f GFX GFX
-    dw   `11232112                                     ;; 0b:608e $d6 $39 GFX GFX
-    dw   `00000000                                     ;; 0b:6090 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6092 $00 $00 GFX GFX
-    dw   `20000000                                     ;; 0b:6094 $00 $80 GFX GFX
-    dw   `22000000                                     ;; 0b:6096 $00 $c0 GFX GFX
-    dw   `32000020                                     ;; 0b:6098 $80 $c2 GFX GFX
-    dw   `32000200                                     ;; 0b:609a $80 $c4 GFX GFX
-    dw   `33220200                                     ;; 0b:609c $c0 $f4 GFX GFX
-    dw   `33320220                                     ;; 0b:609e $e0 $f6 GFX GFX
-    dw   `12233211                                     ;; 0b:60a0 $9b $7c GFX GFX
-    dw   `23323211                                     ;; 0b:60a2 $6b $fc GFX GFX
-    dw   `33212322                                     ;; 0b:60a4 $d4 $ef GFX GFX
-    dw   `23212333                                     ;; 0b:60a6 $57 $ef GFX GFX
-    dw   `22322322                                     ;; 0b:60a8 $24 $ff GFX GFX
-    dw   `12333212                                     ;; 0b:60aa $ba $7d GFX GFX
-    dw   `12332111                                     ;; 0b:60ac $b7 $78 GFX GFX
-    dw   `23332211                                     ;; 0b:60ae $73 $fc GFX GFX
-    dw   `23320022                                     ;; 0b:60b0 $60 $f3 GFX GFX
-    dw   `23320022                                     ;; 0b:60b2 $60 $f3 GFX GFX
-    dw   `33332232                                     ;; 0b:60b4 $f2 $ff GFX GFX
-    dw   `33233232                                     ;; 0b:60b6 $da $ff GFX GFX
-    dw   `33333320                                     ;; 0b:60b8 $fc $fe GFX GFX
-    dw   `23223220                                     ;; 0b:60ba $48 $fe GFX GFX
-    dw   `23213200                                     ;; 0b:60bc $58 $ec GFX GFX
-    dw   `23213200                                     ;; 0b:60be $58 $ec GFX GFX
-    dw   `33333212                                     ;; 0b:60c0 $fa $fd GFX GFX
-    dw   `32223322                                     ;; 0b:60c2 $8c $ff GFX GFX
-    dw   `22122333                                     ;; 0b:60c4 $27 $df GFX GFX
-    dw   `21112332                                     ;; 0b:60c6 $76 $8f GFX GFX
-    dw   `21112332                                     ;; 0b:60c8 $76 $8f GFX GFX
-    dw   `11112332                                     ;; 0b:60ca $f6 $0f GFX GFX
-    dw   `21122333                                     ;; 0b:60cc $67 $9f GFX GFX
-    dw   `22223333                                     ;; 0b:60ce $0f $ff GFX GFX
-    dw   `23323200                                     ;; 0b:60d0 $68 $fc GFX GFX
-    dw   `33333200                                     ;; 0b:60d2 $f8 $fc GFX GFX
-    dw   `22333222                                     ;; 0b:60d4 $38 $ff GFX GFX
-    dw   `21233320                                     ;; 0b:60d6 $5c $be GFX GFX
-    dw   `11233220                                     ;; 0b:60d8 $d8 $3e GFX GFX
-    dw   `11332000                                     ;; 0b:60da $f0 $38 GFX GFX
-    dw   `22320000                                     ;; 0b:60dc $20 $f0 GFX GFX
-    dw   `33320000                                     ;; 0b:60de $e0 $f0 GFX GFX
-    dw   `33333223                                     ;; 0b:60e0 $f9 $ff GFX GFX
-    dw   `33322123                                     ;; 0b:60e2 $e5 $fb GFX GFX
-    dw   `33321133                                     ;; 0b:60e4 $ef $f3 GFX GFX
-    dw   `32333322                                     ;; 0b:60e6 $bc $ff GFX GFX
-    dw   `33323332                                     ;; 0b:60e8 $ee $ff GFX GFX
-    dw   `22202222                                     ;; 0b:60ea $00 $ef GFX GFX
-    dw   `00000000                                     ;; 0b:60ec $00 $00 GFX GFX
-    dw   `20000000                                     ;; 0b:60ee $00 $80 GFX GFX
-    dw   `33320000                                     ;; 0b:60f0 $e0 $f0 GFX GFX
-    dw   `32200000                                     ;; 0b:60f2 $80 $e0 GFX GFX
-    dw   `20000000                                     ;; 0b:60f4 $00 $80 GFX GFX
-    dw   `00222000                                     ;; 0b:60f6 $00 $38 GFX GFX
-    dw   `22000000                                     ;; 0b:60f8 $00 $c0 GFX GFX
-    dw   `20000000                                     ;; 0b:60fa $00 $80 GFX GFX
-    dw   `00000000                                     ;; 0b:60fc $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:60fe $00 $00 GFX GFX
-    dw   `00000003                                     ;; 0b:6100 $01 $01 GFX GFX
-    dw   `00000032                                     ;; 0b:6102 $02 $03 GFX GFX
-    dw   `00000003                                     ;; 0b:6104 $01 $01 GFX GFX
-    dw   `00003330                                     ;; 0b:6106 $0e $0e GFX GFX
-    dw   `00332223                                     ;; 0b:6108 $31 $3f GFX GFX
-    dw   `03222222                                     ;; 0b:610a $40 $7f GFX GFX
-    dw   `32233323                                     ;; 0b:610c $9d $ff GFX GFX
-    dw   `32332333                                     ;; 0b:610e $b7 $ff GFX GFX
-    dw   `33000033                                     ;; 0b:6110 $c3 $c3 GFX GFX
-    dw   `22330322                                     ;; 0b:6112 $34 $f7 GFX GFX
-    dw   `32223223                                     ;; 0b:6114 $89 $ff GFX GFX
-    dw   `03322333                                     ;; 0b:6116 $67 $7f GFX GFX
-    dw   `32232231                                     ;; 0b:6118 $93 $fe GFX GFX
-    dw   `33232231                                     ;; 0b:611a $d3 $fe GFX GFX
-    dw   `13332312                                     ;; 0b:611c $f6 $7d GFX GFX
-    dw   `11333122                                     ;; 0b:611e $fc $3b GFX GFX
-    dw   `03032233                                     ;; 0b:6120 $53 $5f GFX GFX
-    dw   `00322303                                     ;; 0b:6122 $25 $3d GFX GFX
-    dw   `00033033                                     ;; 0b:6124 $1b $1b GFX GFX
-    dw   `00000322                                     ;; 0b:6126 $04 $07 GFX GFX
-    dw   `33003223                                     ;; 0b:6128 $c9 $cf GFX GFX
-    dw   `32332230                                     ;; 0b:612a $b2 $fe GFX GFX
-    dw   `03222303                                     ;; 0b:612c $45 $7d GFX GFX
-    dw   `00333033                                     ;; 0b:612e $3b $3b GFX GFX
-    dw   `12111221                                     ;; 0b:6130 $b9 $46 GFX GFX
-    dw   `12233323                                     ;; 0b:6132 $9d $7f GFX GFX
-    dw   `31311132                                     ;; 0b:6134 $fe $a3 GFX GFX
-    dw   `31313313                                     ;; 0b:6136 $ff $ad GFX GFX
-    dw   `03312331                                     ;; 0b:6138 $77 $6e GFX GFX
-    dw   `00311331                                     ;; 0b:613a $3f $26 GFX GFX
-    dw   `33031331                                     ;; 0b:613c $df $d6 GFX GFX
-    dw   `33333111                                     ;; 0b:613e $ff $f8 GFX GFX
-    dw   `00000333                                     ;; 0b:6140 $07 $07 GFX GFX
-    dw   `00000031                                     ;; 0b:6142 $03 $02 GFX GFX
-    dw   `00000311                                     ;; 0b:6144 $07 $04 GFX GFX
-    dw   `00000311                                     ;; 0b:6146 $07 $04 GFX GFX
-    dw   `00000311                                     ;; 0b:6148 $07 $04 GFX GFX
-    dw   `00000032                                     ;; 0b:614a $02 $03 GFX GFX
-    dw   `00000003                                     ;; 0b:614c $01 $01 GFX GFX
-    dw   `00000000                                     ;; 0b:614e $00 $00 GFX GFX
-    dw   `33323333                                     ;; 0b:6150 $ef $ff GFX GFX
-    dw   `12331132                                     ;; 0b:6152 $be $73 GFX GFX
-    dw   `13312213                                     ;; 0b:6154 $f3 $6d GFX GFX
-    dw   `13322223                                     ;; 0b:6156 $e1 $7f GFX GFX
-    dw   `33332233                                     ;; 0b:6158 $f3 $ff GFX GFX
-    dw   `33123332                                     ;; 0b:615a $ee $df GFX GFX
-    dw   `31113222                                     ;; 0b:615c $f8 $8f GFX GFX
-    dw   `31113222                                     ;; 0b:615e $f8 $8f GFX GFX
-    dw   `00000000                                     ;; 0b:6160 $00 $00 GFX GFX
-    dw   `00000003                                     ;; 0b:6162 $01 $01 GFX GFX
-    dw   `00000032                                     ;; 0b:6164 $02 $03 GFX GFX
-    dw   `00000031                                     ;; 0b:6166 $03 $02 GFX GFX
-    dw   `00000003                                     ;; 0b:6168 $01 $01 GFX GFX
-    dw   `00000333                                     ;; 0b:616a $07 $07 GFX GFX
-    dw   `00003333                                     ;; 0b:616c $0f $0f GFX GFX
-    dw   `00000033                                     ;; 0b:616e $03 $03 GFX GFX
-    dw   `33332222                                     ;; 0b:6170 $f0 $ff GFX GFX
-    dw   `22222222                                     ;; 0b:6172 $00 $ff GFX GFX
-    dw   `22222222                                     ;; 0b:6174 $00 $ff GFX GFX
-    dw   `22222222                                     ;; 0b:6176 $00 $ff GFX GFX
-    dw   `11222221                                     ;; 0b:6178 $c1 $3e GFX GFX
-    dw   `33111113                                     ;; 0b:617a $ff $c1 GFX GFX
-    dw   `33333333                                     ;; 0b:617c $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:617e $ff $ff GFX GFX
-    dw   `30033330                                     ;; 0b:6180 $9e $9e GFX GFX
-    dw   `23322223                                     ;; 0b:6182 $61 $ff GFX GFX
-    dw   `33223330                                     ;; 0b:6184 $ce $fe GFX GFX
-    dw   `33223000                                     ;; 0b:6186 $c8 $f8 GFX GFX
-    dw   `33322303                                     ;; 0b:6188 $e5 $fd GFX GFX
-    dw   `32322332                                     ;; 0b:618a $a6 $ff GFX GFX
-    dw   `13223313                                     ;; 0b:618c $cf $7d GFX GFX
-    dw   `21333113                                     ;; 0b:618e $7f $b9 GFX GFX
-    dw   `00000000                                     ;; 0b:6190 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6192 $00 $00 GFX GFX
-    dw   `00000330                                     ;; 0b:6194 $06 $06 GFX GFX
-    dw   `33003223                                     ;; 0b:6196 $c9 $cf GFX GFX
-    dw   `22332230                                     ;; 0b:6198 $32 $fe GFX GFX
-    dw   `22232300                                     ;; 0b:619a $14 $fc GFX GFX
-    dw   `32322330                                     ;; 0b:619c $a6 $fe GFX GFX
-    dw   `03323223                                     ;; 0b:619e $69 $7f GFX GFX
-    dw   `22111213                                     ;; 0b:61a0 $3b $c5 GFX GFX
-    dw   `23332213                                     ;; 0b:61a2 $73 $fd GFX GFX
-    dw   `31113132                                     ;; 0b:61a4 $fe $8b GFX GFX
-    dw   `13313132                                     ;; 0b:61a6 $fe $6b GFX GFX
-    dw   `33213303                                     ;; 0b:61a8 $dd $ed GFX GFX
-    dw   `33113000                                     ;; 0b:61aa $f8 $c8 GFX GFX
-    dw   `33130333                                     ;; 0b:61ac $f7 $d7 GFX GFX
-    dw   `11333333                                     ;; 0b:61ae $ff $3f GFX GFX
-    dw   `03223330                                     ;; 0b:61b0 $4e $7e GFX GFX
-    dw   `33230000                                     ;; 0b:61b2 $d0 $f0 GFX GFX
-    dw   `22230000                                     ;; 0b:61b4 $10 $f0 GFX GFX
-    dw   `23330000                                     ;; 0b:61b6 $70 $f0 GFX GFX
-    dw   `33223330                                     ;; 0b:61b8 $ce $fe GFX GFX
-    dw   `00322223                                     ;; 0b:61ba $21 $3f GFX GFX
-    dw   `00033330                                     ;; 0b:61bc $1e $1e GFX GFX
-    dw   `30000000                                     ;; 0b:61be $80 $80 GFX GFX
-    dw   `33323333                                     ;; 0b:61c0 $ef $ff GFX GFX
-    dw   `31132311                                     ;; 0b:61c2 $f7 $9c GFX GFX
-    dw   `12213111                                     ;; 0b:61c4 $9f $68 GFX GFX
-    dw   `22223311                                     ;; 0b:61c6 $0f $fc GFX GFX
-    dw   `32233033                                     ;; 0b:61c8 $9b $fb GFX GFX
-    dw   `33323003                                     ;; 0b:61ca $e9 $f9 GFX GFX
-    dw   `22222303                                     ;; 0b:61cc $05 $fd GFX GFX
-    dw   `23222230                                     ;; 0b:61ce $42 $fe GFX GFX
-    dw   `33000000                                     ;; 0b:61d0 $c0 $c0 GFX GFX
-    dw   `30000000                                     ;; 0b:61d2 $80 $80 GFX GFX
-    dw   `13000000                                     ;; 0b:61d4 $c0 $40 GFX GFX
-    dw   `33000000                                     ;; 0b:61d6 $c0 $c0 GFX GFX
-    dw   `31300000                                     ;; 0b:61d8 $e0 $a0 GFX GFX
-    dw   `11300000                                     ;; 0b:61da $e0 $20 GFX GFX
-    dw   `11300000                                     ;; 0b:61dc $e0 $20 GFX GFX
-    dw   `33000000                                     ;; 0b:61de $c0 $c0 GFX GFX
-    dw   `23222223                                     ;; 0b:61e0 $41 $ff GFX GFX
-    dw   `32222223                                     ;; 0b:61e2 $81 $ff GFX GFX
-    dw   `22222222                                     ;; 0b:61e4 $00 $ff GFX GFX
-    dw   `22222221                                     ;; 0b:61e6 $01 $fe GFX GFX
-    dw   `11122213                                     ;; 0b:61e8 $e3 $1d GFX GFX
-    dw   `33311133                                     ;; 0b:61ea $ff $e3 GFX GFX
-    dw   `22233333                                     ;; 0b:61ec $1f $ff GFX GFX
-    dw   `33333333                                     ;; 0b:61ee $ff $ff GFX GFX
-    dw   `00000000                                     ;; 0b:61f0 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:61f2 $00 $00 GFX GFX
-    dw   `30000000                                     ;; 0b:61f4 $80 $80 GFX GFX
-    dw   `30000000                                     ;; 0b:61f6 $80 $80 GFX GFX
-    dw   `00000000                                     ;; 0b:61f8 $00 $00 GFX GFX
-    dw   `33000000                                     ;; 0b:61fa $c0 $c0 GFX GFX
-    dw   `33300000                                     ;; 0b:61fc $e0 $e0 GFX GFX
-    dw   `30000000                                     ;; 0b:61fe $80 $80 GFX GFX
-    dw   `00000033                                     ;; 0b:6200 $03 $03 GFX GFX
-    dw   `00000322                                     ;; 0b:6202 $04 $07 GFX GFX
-    dw   `00000032                                     ;; 0b:6204 $02 $03 GFX GFX
-    dw   `00000032                                     ;; 0b:6206 $02 $03 GFX GFX
-    dw   `00000333                                     ;; 0b:6208 $07 $07 GFX GFX
-    dw   `03003223                                     ;; 0b:620a $49 $4f GFX GFX
-    dw   `32332333                                     ;; 0b:620c $b7 $ff GFX GFX
-    dw   `32233223                                     ;; 0b:620e $99 $ff GFX GFX
-    dw   `00033000                                     ;; 0b:6210 $18 $18 GFX GFX
-    dw   `30032300                                     ;; 0b:6212 $94 $9c GFX GFX
-    dw   `30003230                                     ;; 0b:6214 $8a $8e GFX GFX
-    dw   `23333233                                     ;; 0b:6216 $7b $ff GFX GFX
-    dw   `22223231                                     ;; 0b:6218 $0b $fe GFX GFX
-    dw   `33322331                                     ;; 0b:621a $e7 $fe GFX GFX
-    dw   `13232312                                     ;; 0b:621c $d6 $7d GFX GFX
-    dw   `11333122                                     ;; 0b:621e $fc $3b GFX GFX
-    dw   `03222233                                     ;; 0b:6220 $43 $7f GFX GFX
-    dw   `00333333                                     ;; 0b:6222 $3f $3f GFX GFX
-    dw   `03222223                                     ;; 0b:6224 $41 $7f GFX GFX
-    dw   `32233322                                     ;; 0b:6226 $9c $ff GFX GFX
-    dw   `32332233                                     ;; 0b:6228 $b3 $ff GFX GFX
-    dw   `03003300                                     ;; 0b:622a $4c $4c GFX GFX
-    dw   `00000003                                     ;; 0b:622c $01 $01 GFX GFX
-    dw   `00000033                                     ;; 0b:622e $03 $03 GFX GFX
-    dw   `12111221                                     ;; 0b:6230 $b9 $46 GFX GFX
-    dw   `12233323                                     ;; 0b:6232 $9d $7f GFX GFX
-    dw   `31311132                                     ;; 0b:6234 $fe $a3 GFX GFX
-    dw   `31331113                                     ;; 0b:6236 $ff $b1 GFX GFX
-    dw   `33313131                                     ;; 0b:6238 $ff $ea GFX GFX
-    dw   `00311331                                     ;; 0b:623a $3f $26 GFX GFX
-    dw   `33031111                                     ;; 0b:623c $df $d0 GFX GFX
-    dw   `33333111                                     ;; 0b:623e $ff $f8 GFX GFX
-    dw   `00333000                                     ;; 0b:6240 $38 $38 GFX GFX
-    dw   `00322300                                     ;; 0b:6242 $24 $3c GFX GFX
-    dw   `33032230                                     ;; 0b:6244 $d2 $de GFX GFX
-    dw   `23332230                                     ;; 0b:6246 $72 $fe GFX GFX
-    dw   `33222300                                     ;; 0b:6248 $c4 $fc GFX GFX
-    dw   `32233333                                     ;; 0b:624a $9f $ff GFX GFX
-    dw   `13322313                                     ;; 0b:624c $e7 $7d GFX GFX
-    dw   `21333113                                     ;; 0b:624e $7f $b9 GFX GFX
-    dw   `00000000                                     ;; 0b:6250 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6252 $00 $00 GFX GFX
-    dw   `00333000                                     ;; 0b:6254 $38 $38 GFX GFX
-    dw   `00322300                                     ;; 0b:6256 $24 $3c GFX GFX
-    dw   `00032230                                     ;; 0b:6258 $12 $1e GFX GFX
-    dw   `33003230                                     ;; 0b:625a $ca $ce GFX GFX
-    dw   `22332230                                     ;; 0b:625c $32 $fe GFX GFX
-    dw   `33222300                                     ;; 0b:625e $c4 $fc GFX GFX
-    dw   `22111213                                     ;; 0b:6260 $3b $c5 GFX GFX
-    dw   `23332213                                     ;; 0b:6262 $73 $fd GFX GFX
-    dw   `31113132                                     ;; 0b:6264 $fe $8b GFX GFX
-    dw   `11133133                                     ;; 0b:6266 $ff $1b GFX GFX
-    dw   `31313303                                     ;; 0b:6268 $fd $ad GFX GFX
-    dw   `33113000                                     ;; 0b:626a $f8 $c8 GFX GFX
-    dw   `11130333                                     ;; 0b:626c $f7 $17 GFX GFX
-    dw   `11333333                                     ;; 0b:626e $ff $3f GFX GFX
-    dw   `23333300                                     ;; 0b:6270 $7c $fc GFX GFX
-    dw   `32322230                                     ;; 0b:6272 $a2 $fe GFX GFX
-    dw   `33223223                                     ;; 0b:6274 $c9 $ff GFX GFX
-    dw   `22233323                                     ;; 0b:6276 $1d $ff GFX GFX
-    dw   `33322330                                     ;; 0b:6278 $e6 $fe GFX GFX
-    dw   `00033230                                     ;; 0b:627a $1a $1e GFX GFX
-    dw   `00000330                                     ;; 0b:627c $06 $06 GFX GFX
-    dw   `30000000                                     ;; 0b:627e $80 $80 GFX GFX
-    dw   `00000333                                     ;; 0b:6280 $07 $07 GFX GFX
-    dw   `00000321                                     ;; 0b:6282 $05 $06 GFX GFX
-    dw   `33000032                                     ;; 0b:6284 $c2 $c3 GFX GFX
-    dw   `32303333                                     ;; 0b:6286 $af $ef GFX GFX
-    dw   `03232123                                     ;; 0b:6288 $55 $7b GFX GFX
-    dw   `03222222                                     ;; 0b:628a $40 $7f GFX GFX
-    dw   `32233323                                     ;; 0b:628c $9d $ff GFX GFX
-    dw   `03332333                                     ;; 0b:628e $77 $7f GFX GFX
-    dw   `33000033                                     ;; 0b:6290 $c3 $c3 GFX GFX
-    dw   `22330322                                     ;; 0b:6292 $34 $f7 GFX GFX
-    dw   `32223223                                     ;; 0b:6294 $89 $ff GFX GFX
-    dw   `03321333                                     ;; 0b:6296 $6f $77 GFX GFX
-    dw   `32232231                                     ;; 0b:6298 $93 $fe GFX GFX
-    dw   `33232231                                     ;; 0b:629a $d3 $fe GFX GFX
-    dw   `13332312                                     ;; 0b:629c $f6 $7d GFX GFX
-    dw   `11333122                                     ;; 0b:629e $fc $3b GFX GFX
-    dw   `00032233                                     ;; 0b:62a0 $13 $1f GFX GFX
-    dw   `00322303                                     ;; 0b:62a2 $25 $3d GFX GFX
-    dw   `00032333                                     ;; 0b:62a4 $17 $1f GFX GFX
-    dw   `33003322                                     ;; 0b:62a6 $cc $cf GFX GFX
-    dw   `32303123                                     ;; 0b:62a8 $ad $eb GFX GFX
-    dw   `03232230                                     ;; 0b:62aa $52 $7e GFX GFX
-    dw   `32222303                                     ;; 0b:62ac $85 $fd GFX GFX
-    dw   `33333033                                     ;; 0b:62ae $fb $fb GFX GFX
-    dw   `12111221                                     ;; 0b:62b0 $b9 $46 GFX GFX
-    dw   `12233323                                     ;; 0b:62b2 $9d $7f GFX GFX
-    dw   `31311132                                     ;; 0b:62b4 $fe $a3 GFX GFX
-    dw   `31333313                                     ;; 0b:62b6 $ff $bd GFX GFX
-    dw   `03313231                                     ;; 0b:62b8 $7b $6e GFX GFX
-    dw   `00313231                                     ;; 0b:62ba $3b $2e GFX GFX
-    dw   `33031331                                     ;; 0b:62bc $df $d6 GFX GFX
-    dw   `33333111                                     ;; 0b:62be $ff $f8 GFX GFX
-    dw   `30033333                                     ;; 0b:62c0 $9f $9f GFX GFX
-    dw   `23322222                                     ;; 0b:62c2 $60 $ff GFX GFX
-    dw   `33123323                                     ;; 0b:62c4 $ed $df GFX GFX
-    dw   `33223030                                     ;; 0b:62c6 $ca $fa GFX GFX
-    dw   `33322303                                     ;; 0b:62c8 $e5 $fd GFX GFX
-    dw   `32322332                                     ;; 0b:62ca $a6 $ff GFX GFX
-    dw   `13223313                                     ;; 0b:62cc $cf $7d GFX GFX
-    dw   `21333113                                     ;; 0b:62ce $7f $b9 GFX GFX
-    dw   `30000000                                     ;; 0b:62d0 $80 $80 GFX GFX
-    dw   `30000333                                     ;; 0b:62d2 $87 $87 GFX GFX
-    dw   `00003223                                     ;; 0b:62d4 $09 $0f GFX GFX
-    dw   `33003230                                     ;; 0b:62d6 $ca $ce GFX GFX
-    dw   `22331223                                     ;; 0b:62d8 $39 $f7 GFX GFX
-    dw   `22232330                                     ;; 0b:62da $16 $fe GFX GFX
-    dw   `32322330                                     ;; 0b:62dc $a6 $fe GFX GFX
-    dw   `03323223                                     ;; 0b:62de $69 $7f GFX GFX
-    dw   `22111213                                     ;; 0b:62e0 $3b $c5 GFX GFX
-    dw   `23332213                                     ;; 0b:62e2 $73 $fd GFX GFX
-    dw   `31113132                                     ;; 0b:62e4 $fe $8b GFX GFX
-    dw   `13333132                                     ;; 0b:62e6 $fe $7b GFX GFX
-    dw   `32313303                                     ;; 0b:62e8 $bd $ed GFX GFX
-    dw   `32313000                                     ;; 0b:62ea $b8 $e8 GFX GFX
-    dw   `33130333                                     ;; 0b:62ec $f7 $d7 GFX GFX
-    dw   `11333333                                     ;; 0b:62ee $ff $3f GFX GFX
-    dw   `03123230                                     ;; 0b:62f0 $6a $5e GFX GFX
-    dw   `33230300                                     ;; 0b:62f2 $d4 $f4 GFX GFX
-    dw   `22230033                                     ;; 0b:62f4 $13 $f3 GFX GFX
-    dw   `23330323                                     ;; 0b:62f6 $75 $f7 GFX GFX
-    dw   `33223123                                     ;; 0b:62f8 $cd $fb GFX GFX
-    dw   `00322230                                     ;; 0b:62fa $22 $3e GFX GFX
-    dw   `00033223                                     ;; 0b:62fc $19 $1f GFX GFX
-    dw   `30000330                                     ;; 0b:62fe $86 $86 GFX GFX
-    dw   `00000003                                     ;; 0b:6300 $01 $01 GFX GFX
-    dw   `33000032                                     ;; 0b:6302 $c2 $c3 GFX GFX
-    dw   `32330322                                     ;; 0b:6304 $b4 $f7 GFX GFX
-    dw   `31230033                                     ;; 0b:6306 $d3 $b3 GFX GFX
-    dw   `32300322                                     ;; 0b:6308 $a4 $e7 GFX GFX
-    dw   `32233223                                     ;; 0b:630a $99 $ff GFX GFX
-    dw   `03222132                                     ;; 0b:630c $46 $7b GFX GFX
-    dw   `00333333                                     ;; 0b:630e $3f $3f GFX GFX
-    dw   `30000333                                     ;; 0b:6310 $87 $87 GFX GFX
-    dw   `30000321                                     ;; 0b:6312 $85 $86 GFX GFX
-    dw   `33330032                                     ;; 0b:6314 $f2 $f3 GFX GFX
-    dw   `22313303                                     ;; 0b:6316 $3d $ed GFX GFX
-    dw   `23132233                                     ;; 0b:6318 $73 $df GFX GFX
-    dw   `32133222                                     ;; 0b:631a $b8 $df GFX GFX
-    dw   `32213332                                     ;; 0b:631c $9e $ef GFX GFX
-    dw   `12221133                                     ;; 0b:631e $8f $73 GFX GFX
-    dw   `33332223                                     ;; 0b:6320 $f1 $ff GFX GFX
-    dw   `32212233                                     ;; 0b:6322 $93 $ef GFX GFX
-    dw   `03323323                                     ;; 0b:6324 $6d $7f GFX GFX
-    dw   `03223222                                     ;; 0b:6326 $48 $7f GFX GFX
-    dw   `00333233                                     ;; 0b:6328 $3b $3f GFX GFX
-    dw   `00000300                                     ;; 0b:632a $04 $04 GFX GFX
-    dw   `00000003                                     ;; 0b:632c $01 $01 GFX GFX
-    dw   `00000033                                     ;; 0b:632e $03 $03 GFX GFX
-    dw   `22211111                                     ;; 0b:6330 $1f $e0 GFX GFX
-    dw   `21133331                                     ;; 0b:6332 $7f $9e GFX GFX
-    dw   `13311113                                     ;; 0b:6334 $ff $61 GFX GFX
-    dw   `32311333                                     ;; 0b:6336 $bf $e7 GFX GFX
-    dw   `03313231                                     ;; 0b:6338 $7b $6e GFX GFX
-    dw   `00313231                                     ;; 0b:633a $3b $2e GFX GFX
-    dw   `33311311                                     ;; 0b:633c $ff $e4 GFX GFX
-    dw   `33331113                                     ;; 0b:633e $ff $f1 GFX GFX
-    dw   `33300000                                     ;; 0b:6340 $e0 $e0 GFX GFX
-    dw   `22233030                                     ;; 0b:6342 $1a $fa GFX GFX
-    dw   `33222323                                     ;; 0b:6344 $c5 $ff GFX GFX
-    dw   `00322333                                     ;; 0b:6346 $27 $3f GFX GFX
-    dw   `33223212                                     ;; 0b:6348 $ca $fd GFX GFX
-    dw   `32332222                                     ;; 0b:634a $b0 $ff GFX GFX
-    dw   `33132233                                     ;; 0b:634c $f3 $df GFX GFX
-    dw   `31132333                                     ;; 0b:634e $f7 $9f GFX GFX
-    dw   `00330033                                     ;; 0b:6350 $33 $33 GFX GFX
-    dw   `00323323                                     ;; 0b:6352 $2d $3f GFX GFX
-    dw   `00322323                                     ;; 0b:6354 $25 $3f GFX GFX
-    dw   `00032230                                     ;; 0b:6356 $12 $1e GFX GFX
-    dw   `33322300                                     ;; 0b:6358 $e4 $fc GFX GFX
-    dw   `22212300                                     ;; 0b:635a $14 $ec GFX GFX
-    dw   `32223000                                     ;; 0b:635c $88 $f8 GFX GFX
-    dw   `03330000                                     ;; 0b:635e $70 $70 GFX GFX
-    dw   `12133223                                     ;; 0b:6360 $b9 $5f GFX GFX
-    dw   `12211332                                     ;; 0b:6362 $9e $67 GFX GFX
-    dw   `31223332                                     ;; 0b:6364 $ce $bf GFX GFX
-    dw   `13132222                                     ;; 0b:6366 $f0 $5f GFX GFX
-    dw   `13132333                                     ;; 0b:6368 $f7 $5f GFX GFX
-    dw   `13133000                                     ;; 0b:636a $f8 $58 GFX GFX
-    dw   `33300333                                     ;; 0b:636c $e7 $e7 GFX GFX
-    dw   `11333333                                     ;; 0b:636e $ff $3f GFX GFX
-    dw   `32223300                                     ;; 0b:6370 $8c $fc GFX GFX
-    dw   `12222230                                     ;; 0b:6372 $82 $7e GFX GFX
-    dw   `23332130                                     ;; 0b:6374 $76 $fa GFX GFX
-    dw   `30003230                                     ;; 0b:6376 $8a $8e GFX GFX
-    dw   `00003230                                     ;; 0b:6378 $0a $0e GFX GFX
-    dw   `00032223                                     ;; 0b:637a $11 $1f GFX GFX
-    dw   `00323323                                     ;; 0b:637c $2d $3f GFX GFX
-    dw   `30330033                                     ;; 0b:637e $b3 $b3 GFX GFX
-    dw   `33300000                                     ;; 0b:6380 $e0 $e0 GFX GFX
-    dw   `32230000                                     ;; 0b:6382 $90 $f0 GFX GFX
-    dw   `03223330                                     ;; 0b:6384 $4e $7e GFX GFX
-    dw   `00322213                                     ;; 0b:6386 $23 $3d GFX GFX
-    dw   `03223222                                     ;; 0b:6388 $48 $7f GFX GFX
-    dw   `00330322                                     ;; 0b:638a $34 $37 GFX GFX
-    dw   `33330032                                     ;; 0b:638c $f2 $f3 GFX GFX
-    dw   `32213032                                     ;; 0b:638e $9a $eb GFX GFX
-    dw   `03330000                                     ;; 0b:6390 $70 $70 GFX GFX
-    dw   `03223000                                     ;; 0b:6392 $48 $78 GFX GFX
-    dw   `00323300                                     ;; 0b:6394 $2c $3c GFX GFX
-    dw   `03222333                                     ;; 0b:6396 $47 $7f GFX GFX
-    dw   `30333122                                     ;; 0b:6398 $bc $bb GFX GFX
-    dw   `30032222                                     ;; 0b:639a $90 $9f GFX GFX
-    dw   `13312233                                     ;; 0b:639c $f3 $6f GFX GFX
-    dw   `23322333                                     ;; 0b:639e $67 $ff GFX GFX
-    dw   `03322332                                     ;; 0b:63a0 $66 $7f GFX GFX
-    dw   `00032233                                     ;; 0b:63a2 $13 $1f GFX GFX
-    dw   `00322333                                     ;; 0b:63a4 $27 $3f GFX GFX
-    dw   `33333312                                     ;; 0b:63a6 $fe $fd GFX GFX
-    dw   `32213223                                     ;; 0b:63a8 $99 $ef GFX GFX
-    dw   `03322233                                     ;; 0b:63aa $63 $7f GFX GFX
-    dw   `03223332                                     ;; 0b:63ac $4e $7f GFX GFX
-    dw   `00330033                                     ;; 0b:63ae $33 $33 GFX GFX
-    dw   `23322322                                     ;; 0b:63b0 $64 $ff GFX GFX
-    dw   `22332232                                     ;; 0b:63b2 $32 $ff GFX GFX
-    dw   `33232223                                     ;; 0b:63b4 $d1 $ff GFX GFX
-    dw   `23332323                                     ;; 0b:63b6 $75 $ff GFX GFX
-    dw   `31223333                                     ;; 0b:63b8 $cf $bf GFX GFX
-    dw   `22222233                                     ;; 0b:63ba $03 $ff GFX GFX
-    dw   `33232333                                     ;; 0b:63bc $d7 $ff GFX GFX
-    dw   `33333111                                     ;; 0b:63be $ff $f8 GFX GFX
-    dw   `00333000                                     ;; 0b:63c0 $38 $38 GFX GFX
-    dw   `03122300                                     ;; 0b:63c2 $64 $5c GFX GFX
-    dw   `32232233                                     ;; 0b:63c4 $93 $ff GFX GFX
-    dw   `32233332                                     ;; 0b:63c6 $9e $ff GFX GFX
-    dw   `33223322                                     ;; 0b:63c8 $cc $ff GFX GFX
-    dw   `23233322                                     ;; 0b:63ca $5c $ff GFX GFX
-    dw   `23321233                                     ;; 0b:63cc $6b $f7 GFX GFX
-    dw   `33222221                                     ;; 0b:63ce $c1 $fe GFX GFX
-    dw   `00000000                                     ;; 0b:63d0 $00 $00 GFX GFX
-    dw   `03333000                                     ;; 0b:63d2 $78 $78 GFX GFX
-    dw   `31222300                                     ;; 0b:63d4 $c4 $bc GFX GFX
-    dw   `22222130                                     ;; 0b:63d6 $06 $fa GFX GFX
-    dw   `22332230                                     ;; 0b:63d8 $32 $fe GFX GFX
-    dw   `33333223                                     ;; 0b:63da $f9 $ff GFX GFX
-    dw   `32232213                                     ;; 0b:63dc $93 $fd GFX GFX
-    dw   `22332323                                     ;; 0b:63de $35 $ff GFX GFX
-    dw   `33233332                                     ;; 0b:63e0 $de $ff GFX GFX
-    dw   `23333333                                     ;; 0b:63e2 $7f $ff GFX GFX
-    dw   `23322132                                     ;; 0b:63e4 $66 $fb GFX GFX
-    dw   `32222223                                     ;; 0b:63e6 $81 $ff GFX GFX
-    dw   `22233321                                     ;; 0b:63e8 $1d $fe GFX GFX
-    dw   `23303222                                     ;; 0b:63ea $68 $ef GFX GFX
-    dw   `33133232                                     ;; 0b:63ec $fa $df GFX GFX
-    dw   `11333333                                     ;; 0b:63ee $ff $3f GFX GFX
-    dw   `23003323                                     ;; 0b:63f0 $4d $cf GFX GFX
-    dw   `22300033                                     ;; 0b:63f2 $23 $e3 GFX GFX
-    dw   `33000000                                     ;; 0b:63f4 $c0 $c0 GFX GFX
-    dw   `22330333                                     ;; 0b:63f6 $37 $f7 GFX GFX
-    dw   `32213223                                     ;; 0b:63f8 $99 $ef GFX GFX
-    dw   `33222230                                     ;; 0b:63fa $c2 $fe GFX GFX
-    dw   `23332223                                     ;; 0b:63fc $71 $ff GFX GFX
-    dw   `23003330                                     ;; 0b:63fe $4e $ce GFX GFX
-    dw   `00000000                                     ;; 0b:6400 $00 $00 GFX GFX
-    dw   `00033330                                     ;; 0b:6402 $1e $1e GFX GFX
-    dw   `03333223                                     ;; 0b:6404 $79 $7f GFX GFX
-    dw   `30000332                                     ;; 0b:6406 $86 $87 GFX GFX
-    dw   `00000003                                     ;; 0b:6408 $01 $01 GFX GFX
-    dw   `00000000                                     ;; 0b:640a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:640c $00 $00 GFX GFX
-    dw   `00000033                                     ;; 0b:640e $03 $03 GFX GFX
-    dw   `00000000                                     ;; 0b:6410 $00 $00 GFX GFX
-    dw   `00000003                                     ;; 0b:6412 $01 $01 GFX GFX
-    dw   `30000031                                     ;; 0b:6414 $83 $82 GFX GFX
-    dw   `33330311                                     ;; 0b:6416 $f7 $f4 GFX GFX
-    dw   `22333311                                     ;; 0b:6418 $3f $fc GFX GFX
-    dw   `32233312                                     ;; 0b:641a $9e $fd GFX GFX
-    dw   `32223312                                     ;; 0b:641c $8e $fd GFX GFX
-    dw   `33333331                                     ;; 0b:641e $ff $fe GFX GFX
-    dw   `03333330                                     ;; 0b:6420 $7e $7e GFX GFX
-    dw   `31111113                                     ;; 0b:6422 $ff $81 GFX GFX
-    dw   `11111111                                     ;; 0b:6424 $ff $00 GFX GFX
-    dw   `11111111                                     ;; 0b:6426 $ff $00 GFX GFX
-    dw   `31222111                                     ;; 0b:6428 $c7 $b8 GFX GFX
-    dw   `23133221                                     ;; 0b:642a $79 $de GFX GFX
-    dw   `23133332                                     ;; 0b:642c $7e $df GFX GFX
-    dw   `23133333                                     ;; 0b:642e $7f $df GFX GFX
-    dw   `00000000                                     ;; 0b:6430 $00 $00 GFX GFX
-    dw   `30000000                                     ;; 0b:6432 $80 $80 GFX GFX
-    dw   `13000000                                     ;; 0b:6434 $c0 $40 GFX GFX
-    dw   `13000000                                     ;; 0b:6436 $c0 $40 GFX GFX
-    dw   `11300000                                     ;; 0b:6438 $e0 $20 GFX GFX
-    dw   `11300000                                     ;; 0b:643a $e0 $20 GFX GFX
-    dw   `11300000                                     ;; 0b:643c $e0 $20 GFX GFX
-    dw   `13300000                                     ;; 0b:643e $e0 $60 GFX GFX
-    dw   `00000322                                     ;; 0b:6440 $04 $07 GFX GFX
-    dw   `00003212                                     ;; 0b:6442 $0a $0d GFX GFX
-    dw   `00003112                                     ;; 0b:6444 $0e $09 GFX GFX
-    dw   `00031112                                     ;; 0b:6446 $1e $11 GFX GFX
-    dw   `00311111                                     ;; 0b:6448 $3f $20 GFX GFX
-    dw   `03111111                                     ;; 0b:644a $7f $40 GFX GFX
-    dw   `03112112                                     ;; 0b:644c $76 $49 GFX GFX
-    dw   `03122112                                     ;; 0b:644e $66 $59 GFX GFX
-    dw   `22212233                                     ;; 0b:6450 $13 $ef GFX GFX
-    dw   `22223223                                     ;; 0b:6452 $09 $ff GFX GFX
-    dw   `33222323                                     ;; 0b:6454 $c5 $ff GFX GFX
-    dw   `31332322                                     ;; 0b:6456 $f4 $bf GFX GFX
-    dw   `23113332                                     ;; 0b:6458 $7e $cf GFX GFX
-    dw   `12331113                                     ;; 0b:645a $bf $71 GFX GFX
-    dw   `33113111                                     ;; 0b:645c $ff $c8 GFX GFX
-    dw   `31333221                                     ;; 0b:645e $f9 $be GFX GFX
-    dw   `23133313                                     ;; 0b:6460 $7f $dd GFX GFX
-    dw   `13111332                                     ;; 0b:6462 $fe $47 GFX GFX
-    dw   `11332111                                     ;; 0b:6464 $f7 $38 GFX GFX
-    dw   `31333131                                     ;; 0b:6466 $ff $ba GFX GFX
-    dw   `23333313                                     ;; 0b:6468 $7f $fd GFX GFX
-    dw   `32223333                                     ;; 0b:646a $8f $ff GFX GFX
-    dw   `13232222                                     ;; 0b:646c $d0 $7f GFX GFX
-    dw   `13322222                                     ;; 0b:646e $e0 $7f GFX GFX
-    dw   `13300000                                     ;; 0b:6470 $e0 $60 GFX GFX
-    dw   `13000000                                     ;; 0b:6472 $c0 $40 GFX GFX
-    dw   `13333000                                     ;; 0b:6474 $f8 $78 GFX GFX
-    dw   `33222300                                     ;; 0b:6476 $c4 $fc GFX GFX
-    dw   `33332230                                     ;; 0b:6478 $f2 $fe GFX GFX
-    dw   `11113230                                     ;; 0b:647a $fa $0e GFX GFX
-    dw   `33111330                                     ;; 0b:647c $fe $c6 GFX GFX
-    dw   `33311123                                     ;; 0b:647e $fd $e3 GFX GFX
-    dw   `00322213                                     ;; 0b:6480 $23 $3d GFX GFX
-    dw   `00322223                                     ;; 0b:6482 $21 $3f GFX GFX
-    dw   `00032222                                     ;; 0b:6484 $10 $1f GFX GFX
-    dw   `00032222                                     ;; 0b:6486 $10 $1f GFX GFX
-    dw   `00032122                                     ;; 0b:6488 $14 $1b GFX GFX
-    dw   `00003222                                     ;; 0b:648a $08 $0f GFX GFX
-    dw   `00003222                                     ;; 0b:648c $08 $0f GFX GFX
-    dw   `00003232                                     ;; 0b:648e $0a $0f GFX GFX
-    dw   `13311313                                     ;; 0b:6490 $ff $65 GFX GFX
-    dw   `13133133                                     ;; 0b:6492 $ff $5b GFX GFX
-    dw   `33131323                                     ;; 0b:6494 $fd $d7 GFX GFX
-    dw   `23131323                                     ;; 0b:6496 $7d $d7 GFX GFX
-    dw   `22323223                                     ;; 0b:6498 $29 $ff GFX GFX
-    dw   `22222223                                     ;; 0b:649a $01 $ff GFX GFX
-    dw   `11222232                                     ;; 0b:649c $c2 $3f GFX GFX
-    dw   `11223232                                     ;; 0b:649e $ca $3f GFX GFX
-    dw   `32222222                                     ;; 0b:64a0 $80 $ff GFX GFX
-    dw   `23222212                                     ;; 0b:64a2 $42 $fd GFX GFX
-    dw   `23222222                                     ;; 0b:64a4 $40 $ff GFX GFX
-    dw   `22311122                                     ;; 0b:64a6 $3c $e3 GFX GFX
-    dw   `22321111                                     ;; 0b:64a8 $2f $f0 GFX GFX
-    dw   `22322111                                     ;; 0b:64aa $27 $f8 GFX GFX
-    dw   `22322211                                     ;; 0b:64ac $23 $fc GFX GFX
-    dw   `22322211                                     ;; 0b:64ae $23 $fc GFX GFX
-    dw   `23333213                                     ;; 0b:64b0 $7b $fd GFX GFX
-    dw   `23333313                                     ;; 0b:64b2 $7f $fd GFX GFX
-    dw   `23311313                                     ;; 0b:64b4 $7f $e5 GFX GFX
-    dw   `22333130                                     ;; 0b:64b6 $3e $fa GFX GFX
-    dw   `22331330                                     ;; 0b:64b8 $3e $f6 GFX GFX
-    dw   `22333230                                     ;; 0b:64ba $3a $fe GFX GFX
-    dw   `12322230                                     ;; 0b:64bc $a2 $7e GFX GFX
-    dw   `12322130                                     ;; 0b:64be $a6 $7a GFX GFX
-    dw   `00003232                                     ;; 0b:64c0 $0a $0f GFX GFX
-    dw   `00003232                                     ;; 0b:64c2 $0a $0f GFX GFX
-    dw   `00032332                                     ;; 0b:64c4 $16 $1f GFX GFX
-    dw   `00032332                                     ;; 0b:64c6 $16 $1f GFX GFX
-    dw   `00032333                                     ;; 0b:64c8 $17 $1f GFX GFX
-    dw   `00322333                                     ;; 0b:64ca $27 $3f GFX GFX
-    dw   `00322233                                     ;; 0b:64cc $23 $3f GFX GFX
-    dw   `00321233                                     ;; 0b:64ce $2b $37 GFX GFX
-    dw   `22223322                                     ;; 0b:64d0 $0c $ff GFX GFX
-    dw   `22222122                                     ;; 0b:64d2 $04 $fb GFX GFX
-    dw   `22222122                                     ;; 0b:64d4 $04 $fb GFX GFX
-    dw   `22222212                                     ;; 0b:64d6 $02 $fd GFX GFX
-    dw   `22312211                                     ;; 0b:64d8 $33 $ec GFX GFX
-    dw   `21312221                                     ;; 0b:64da $71 $ae GFX GFX
-    dw   `21312222                                     ;; 0b:64dc $70 $af GFX GFX
-    dw   `13311122                                     ;; 0b:64de $fc $63 GFX GFX
-    dw   `22322211                                     ;; 0b:64e0 $23 $fc GFX GFX
-    dw   `23222211                                     ;; 0b:64e2 $43 $fc GFX GFX
-    dw   `23222111                                     ;; 0b:64e4 $47 $f8 GFX GFX
-    dw   `32221111                                     ;; 0b:64e6 $8f $f0 GFX GFX
-    dw   `11111311                                     ;; 0b:64e8 $ff $04 GFX GFX
-    dw   `11111311                                     ;; 0b:64ea $ff $04 GFX GFX
-    dw   `21111322                                     ;; 0b:64ec $7c $87 GFX GFX
-    dw   `22223322                                     ;; 0b:64ee $0c $ff GFX GFX
-    dw   `12321130                                     ;; 0b:64f0 $ae $72 GFX GFX
-    dw   `12322130                                     ;; 0b:64f2 $a6 $7a GFX GFX
-    dw   `12322130                                     ;; 0b:64f4 $a6 $7a GFX GFX
-    dw   `12322300                                     ;; 0b:64f6 $a4 $7c GFX GFX
-    dw   `22322300                                     ;; 0b:64f8 $24 $fc GFX GFX
-    dw   `23322300                                     ;; 0b:64fa $64 $fc GFX GFX
-    dw   `23223000                                     ;; 0b:64fc $48 $f8 GFX GFX
-    dw   `23223000                                     ;; 0b:64fe $48 $f8 GFX GFX
-    dw   `00322232                                     ;; 0b:6500 $22 $3f GFX GFX
-    dw   `00032233                                     ;; 0b:6502 $13 $1f GFX GFX
-    dw   `00032232                                     ;; 0b:6504 $12 $1f GFX GFX
-    dw   `00031222                                     ;; 0b:6506 $18 $17 GFX GFX
-    dw   `00031122                                     ;; 0b:6508 $1c $13 GFX GFX
-    dw   `00031232                                     ;; 0b:650a $1a $17 GFX GFX
-    dw   `00032232                                     ;; 0b:650c $12 $1f GFX GFX
-    dw   `00322232                                     ;; 0b:650e $22 $3f GFX GFX
-    dw   `33112232                                     ;; 0b:6510 $f2 $cf GFX GFX
-    dw   `33112322                                     ;; 0b:6512 $f4 $cf GFX GFX
-    dw   `33212322                                     ;; 0b:6514 $d4 $ef GFX GFX
-    dw   `33223322                                     ;; 0b:6516 $cc $ff GFX GFX
-    dw   `33323322                                     ;; 0b:6518 $ec $ff GFX GFX
-    dw   `23323332                                     ;; 0b:651a $6e $ff GFX GFX
-    dw   `22333332                                     ;; 0b:651c $3e $ff GFX GFX
-    dw   `22333233                                     ;; 0b:651e $3b $ff GFX GFX
-    dw   `22223322                                     ;; 0b:6520 $0c $ff GFX GFX
-    dw   `22233212                                     ;; 0b:6522 $1a $fd GFX GFX
-    dw   `22233223                                     ;; 0b:6524 $19 $ff GFX GFX
-    dw   `22332230                                     ;; 0b:6526 $32 $fe GFX GFX
-    dw   `12332300                                     ;; 0b:6528 $b4 $7c GFX GFX
-    dw   `22332300                                     ;; 0b:652a $34 $fc GFX GFX
-    dw   `23333000                                     ;; 0b:652c $78 $f8 GFX GFX
-    dw   `23333000                                     ;; 0b:652e $78 $f8 GFX GFX
-    dw   `33223000                                     ;; 0b:6530 $c8 $f8 GFX GFX
-    dw   `33223000                                     ;; 0b:6532 $c8 $f8 GFX GFX
-    dw   `03323000                                     ;; 0b:6534 $68 $78 GFX GFX
-    dw   `00322300                                     ;; 0b:6536 $24 $3c GFX GFX
-    dw   `00332300                                     ;; 0b:6538 $34 $3c GFX GFX
-    dw   `00032300                                     ;; 0b:653a $14 $1c GFX GFX
-    dw   `00003230                                     ;; 0b:653c $0a $0e GFX GFX
-    dw   `33300330                                     ;; 0b:653e $e6 $e6 GFX GFX
-    dw   `00322303                                     ;; 0b:6540 $25 $3d GFX GFX
-    dw   `03233003                                     ;; 0b:6542 $59 $79 GFX GFX
-    dw   `33300000                                     ;; 0b:6544 $e0 $e0 GFX GFX
-    dw   `00000000                                     ;; 0b:6546 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6548 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:654a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:654c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:654e $00 $00 GFX GFX
-    dw   `22233233                                     ;; 0b:6550 $1b $ff GFX GFX
-    dw   `22223223                                     ;; 0b:6552 $09 $ff GFX GFX
-    dw   `32222122                                     ;; 0b:6554 $84 $fb GFX GFX
-    dw   `03331111                                     ;; 0b:6556 $7f $70 GFX GFX
-    dw   `00003112                                     ;; 0b:6558 $0e $09 GFX GFX
-    dw   `00000331                                     ;; 0b:655a $07 $06 GFX GFX
-    dw   `00000003                                     ;; 0b:655c $01 $01 GFX GFX
-    dw   `00000000                                     ;; 0b:655e $00 $00 GFX GFX
-    dw   `23233333                                     ;; 0b:6560 $5f $ff GFX GFX
-    dw   `33223322                                     ;; 0b:6562 $cc $ff GFX GFX
-    dw   `23321112                                     ;; 0b:6564 $6e $f1 GFX GFX
-    dw   `22222122                                     ;; 0b:6566 $04 $fb GFX GFX
-    dw   `22322222                                     ;; 0b:6568 $20 $ff GFX GFX
-    dw   `22233333                                     ;; 0b:656a $1f $ff GFX GFX
-    dw   `32223000                                     ;; 0b:656c $88 $f8 GFX GFX
-    dw   `03333300                                     ;; 0b:656e $7c $7c GFX GFX
-    dw   `22230003                                     ;; 0b:6570 $11 $f1 GFX GFX
-    dw   `21223000                                     ;; 0b:6572 $48 $b8 GFX GFX
-    dw   `22223000                                     ;; 0b:6574 $08 $f8 GFX GFX
-    dw   `23323000                                     ;; 0b:6576 $68 $f8 GFX GFX
-    dw   `30321300                                     ;; 0b:6578 $ac $b4 GFX GFX
-    dw   `00032300                                     ;; 0b:657a $14 $1c GFX GFX
-    dw   `00003330                                     ;; 0b:657c $0e $0e GFX GFX
-    dw   `00000033                                     ;; 0b:657e $03 $03 GFX GFX
-    dw   `22223322                                     ;; 0b:6580 $0c $ff GFX GFX
-    dw   `22233312                                     ;; 0b:6582 $1e $fd GFX GFX
-    dw   `22233322                                     ;; 0b:6584 $1c $ff GFX GFX
-    dw   `22333332                                     ;; 0b:6586 $3e $ff GFX GFX
-    dw   `12330332                                     ;; 0b:6588 $b6 $77 GFX GFX
-    dw   `22330033                                     ;; 0b:658a $33 $f3 GFX GFX
-    dw   `23333000                                     ;; 0b:658c $78 $f8 GFX GFX
-    dw   `23233000                                     ;; 0b:658e $58 $f8 GFX GFX
-    dw   `33223000                                     ;; 0b:6590 $c8 $f8 GFX GFX
-    dw   `33323000                                     ;; 0b:6592 $e8 $f8 GFX GFX
-    dw   `30323000                                     ;; 0b:6594 $a8 $b8 GFX GFX
-    dw   `30323000                                     ;; 0b:6596 $a8 $b8 GFX GFX
-    dw   `23230000                                     ;; 0b:6598 $50 $f0 GFX GFX
-    dw   `23230000                                     ;; 0b:659a $50 $f0 GFX GFX
-    dw   `32300000                                     ;; 0b:659c $a0 $e0 GFX GFX
-    dw   `03300000                                     ;; 0b:659e $60 $60 GFX GFX
-    dw   `23233330                                     ;; 0b:65a0 $5e $fe GFX GFX
-    dw   `33222333                                     ;; 0b:65a2 $c7 $ff GFX GFX
-    dw   `23322123                                     ;; 0b:65a4 $65 $fb GFX GFX
-    dw   `22221112                                     ;; 0b:65a6 $0e $f1 GFX GFX
-    dw   `22222122                                     ;; 0b:65a8 $04 $fb GFX GFX
-    dw   `22223222                                     ;; 0b:65aa $08 $ff GFX GFX
-    dw   `33222333                                     ;; 0b:65ac $c7 $ff GFX GFX
-    dw   `00333000                                     ;; 0b:65ae $38 $38 GFX GFX
-    dw   `03000333                                     ;; 0b:65b0 $47 $47 GFX GFX
-    dw   `00003230                                     ;; 0b:65b2 $0a $0e GFX GFX
-    dw   `00032300                                     ;; 0b:65b4 $14 $1c GFX GFX
-    dw   `30032300                                     ;; 0b:65b6 $94 $9c GFX GFX
-    dw   `23322300                                     ;; 0b:65b8 $64 $fc GFX GFX
-    dw   `21122300                                     ;; 0b:65ba $64 $9c GFX GFX
-    dw   `22223000                                     ;; 0b:65bc $08 $f8 GFX GFX
-    dw   `33330000                                     ;; 0b:65be $f0 $f0 GFX GFX
-    dw   `00333000                                     ;; 0b:65c0 $38 $38 GFX GFX
-    dw   `03322330                                     ;; 0b:65c2 $66 $7e GFX GFX
-    dw   `30032223                                     ;; 0b:65c4 $91 $9f GFX GFX
-    dw   `00003222                                     ;; 0b:65c6 $08 $0f GFX GFX
-    dw   `00000322                                     ;; 0b:65c8 $04 $07 GFX GFX
-    dw   `00000032                                     ;; 0b:65ca $02 $03 GFX GFX
-    dw   `00000032                                     ;; 0b:65cc $02 $03 GFX GFX
-    dw   `00000032                                     ;; 0b:65ce $02 $03 GFX GFX
-    dw   `00000000                                     ;; 0b:65d0 $00 $00 GFX GFX
-    dw   `00000003                                     ;; 0b:65d2 $01 $01 GFX GFX
-    dw   `30000031                                     ;; 0b:65d4 $83 $82 GFX GFX
-    dw   `33330311                                     ;; 0b:65d6 $f7 $f4 GFX GFX
-    dw   `22333311                                     ;; 0b:65d8 $3f $fc GFX GFX
-    dw   `22233312                                     ;; 0b:65da $1e $fd GFX GFX
-    dw   `22223312                                     ;; 0b:65dc $0e $fd GFX GFX
-    dw   `23333331                                     ;; 0b:65de $7f $fe GFX GFX
-    dw   `03333330                                     ;; 0b:65e0 $7e $7e GFX GFX
-    dw   `31111113                                     ;; 0b:65e2 $ff $81 GFX GFX
-    dw   `11111111                                     ;; 0b:65e4 $ff $00 GFX GFX
-    dw   `11111111                                     ;; 0b:65e6 $ff $00 GFX GFX
-    dw   `31222111                                     ;; 0b:65e8 $c7 $b8 GFX GFX
-    dw   `23133221                                     ;; 0b:65ea $79 $de GFX GFX
-    dw   `23133332                                     ;; 0b:65ec $7e $df GFX GFX
-    dw   `23133333                                     ;; 0b:65ee $7f $df GFX GFX
-    dw   `00000000                                     ;; 0b:65f0 $00 $00 GFX GFX
-    dw   `30000000                                     ;; 0b:65f2 $80 $80 GFX GFX
-    dw   `13000000                                     ;; 0b:65f4 $c0 $40 GFX GFX
-    dw   `13000000                                     ;; 0b:65f6 $c0 $40 GFX GFX
-    dw   `11300000                                     ;; 0b:65f8 $e0 $20 GFX GFX
-    dw   `11300000                                     ;; 0b:65fa $e0 $20 GFX GFX
-    dw   `11303330                                     ;; 0b:65fc $ee $2e GFX GFX
-    dw   `13332223                                     ;; 0b:65fe $f1 $7f GFX GFX
-    dw   `00000000                                     ;; 0b:6600 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6602 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6604 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6606 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6608 $00 $00 GFX GFX
-    dw   `03333000                                     ;; 0b:660a $78 $78 GFX GFX
-    dw   `32222303                                     ;; 0b:660c $85 $fd GFX GFX
-    dw   `22233331                                     ;; 0b:660e $1f $fe GFX GFX
-    dw   `00000000                                     ;; 0b:6610 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6612 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6614 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6616 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6618 $00 $00 GFX GFX
-    dw   `00033300                                     ;; 0b:661a $1c $1c GFX GFX
-    dw   `33323230                                     ;; 0b:661c $ea $fe GFX GFX
-    dw   `11112323                                     ;; 0b:661e $f5 $0f GFX GFX
-    dw   `00000002                                     ;; 0b:6620 $00 $01 GFX GFX
-    dw   `00000033                                     ;; 0b:6622 $03 $03 GFX GFX
-    dw   `00000003                                     ;; 0b:6624 $01 $01 GFX GFX
-    dw   `00000032                                     ;; 0b:6626 $02 $03 GFX GFX
-    dw   `00000032                                     ;; 0b:6628 $02 $03 GFX GFX
-    dw   `00000311                                     ;; 0b:662a $07 $04 GFX GFX
-    dw   `00000311                                     ;; 0b:662c $07 $04 GFX GFX
-    dw   `00003111                                     ;; 0b:662e $0f $08 GFX GFX
-    dw   `33222333                                     ;; 0b:6630 $c7 $ff GFX GFX
-    dw   `22222233                                     ;; 0b:6632 $03 $ff GFX GFX
-    dw   `22122233                                     ;; 0b:6634 $23 $df GFX GFX
-    dw   `21122223                                     ;; 0b:6636 $61 $9f GFX GFX
-    dw   `11122223                                     ;; 0b:6638 $e1 $1f GFX GFX
-    dw   `11112223                                     ;; 0b:663a $f1 $0f GFX GFX
-    dw   `11111222                                     ;; 0b:663c $f8 $07 GFX GFX
-    dw   `11111122                                     ;; 0b:663e $fc $03 GFX GFX
-    dw   `23133313                                     ;; 0b:6640 $7f $dd GFX GFX
-    dw   `13111332                                     ;; 0b:6642 $fe $47 GFX GFX
-    dw   `11333111                                     ;; 0b:6644 $ff $38 GFX GFX
-    dw   `31333131                                     ;; 0b:6646 $ff $ba GFX GFX
-    dw   `21323313                                     ;; 0b:6648 $6f $bd GFX GFX
-    dw   `31333333                                     ;; 0b:664a $ff $bf GFX GFX
-    dw   `31133133                                     ;; 0b:664c $ff $9b GFX GFX
-    dw   `33111333                                     ;; 0b:664e $ff $c7 GFX GFX
-    dw   `13322223                                     ;; 0b:6650 $e1 $7f GFX GFX
-    dw   `13322223                                     ;; 0b:6652 $e1 $7f GFX GFX
-    dw   `13222232                                     ;; 0b:6654 $c2 $7f GFX GFX
-    dw   `32222232                                     ;; 0b:6656 $82 $ff GFX GFX
-    dw   `33222322                                     ;; 0b:6658 $c4 $ff GFX GFX
-    dw   `23323212                                     ;; 0b:665a $6a $fd GFX GFX
-    dw   `32322112                                     ;; 0b:665c $a6 $f9 GFX GFX
-    dw   `32322111                                     ;; 0b:665e $a7 $f8 GFX GFX
-    dw   `22311131                                     ;; 0b:6660 $3f $e2 GFX GFX
-    dw   `22333333                                     ;; 0b:6662 $3f $ff GFX GFX
-    dw   `22332331                                     ;; 0b:6664 $37 $fe GFX GFX
-    dw   `22332331                                     ;; 0b:6666 $37 $fe GFX GFX
-    dw   `23323003                                     ;; 0b:6668 $69 $f9 GFX GFX
-    dw   `23230000                                     ;; 0b:666a $50 $f0 GFX GFX
-    dw   `33300000                                     ;; 0b:666c $e0 $e0 GFX GFX
-    dw   `33000000                                     ;; 0b:666e $c0 $c0 GFX GFX
-    dw   `11233133                                     ;; 0b:6670 $df $3b GFX GFX
-    dw   `31311313                                     ;; 0b:6672 $ff $a5 GFX GFX
-    dw   `13033130                                     ;; 0b:6674 $de $5a GFX GFX
-    dw   `30000313                                     ;; 0b:6676 $87 $85 GFX GFX
-    dw   `13000313                                     ;; 0b:6678 $c7 $45 GFX GFX
-    dw   `31300030                                     ;; 0b:667a $e2 $a2 GFX GFX
-    dw   `03300000                                     ;; 0b:667c $60 $60 GFX GFX
-    dw   `00000000                                     ;; 0b:667e $00 $00 GFX GFX
-    dw   `00003112                                     ;; 0b:6680 $0e $09 GFX GFX
-    dw   `00003122                                     ;; 0b:6682 $0c $0b GFX GFX
-    dw   `00032222                                     ;; 0b:6684 $10 $1f GFX GFX
-    dw   `00032222                                     ;; 0b:6686 $10 $1f GFX GFX
-    dw   `00322223                                     ;; 0b:6688 $21 $3f GFX GFX
-    dw   `00322223                                     ;; 0b:668a $21 $3f GFX GFX
-    dw   `03222223                                     ;; 0b:668c $41 $7f GFX GFX
-    dw   `03222232                                     ;; 0b:668e $42 $7f GFX GFX
-    dw   `11122222                                     ;; 0b:6690 $e0 $1f GFX GFX
-    dw   `21122222                                     ;; 0b:6692 $60 $9f GFX GFX
-    dw   `22122222                                     ;; 0b:6694 $20 $df GFX GFX
-    dw   `32222223                                     ;; 0b:6696 $81 $ff GFX GFX
-    dw   `22222223                                     ;; 0b:6698 $01 $ff GFX GFX
-    dw   `11222232                                     ;; 0b:669a $c2 $3f GFX GFX
-    dw   `11222232                                     ;; 0b:669c $c2 $3f GFX GFX
-    dw   `22222232                                     ;; 0b:669e $02 $ff GFX GFX
-    dw   `23333333                                     ;; 0b:66a0 $7f $ff GFX GFX
-    dw   `22333222                                     ;; 0b:66a2 $38 $ff GFX GFX
-    dw   `32322222                                     ;; 0b:66a4 $a0 $ff GFX GFX
-    dw   `23321223                                     ;; 0b:66a6 $69 $f7 GFX GFX
-    dw   `22322233                                     ;; 0b:66a8 $23 $ff GFX GFX
-    dw   `22332233                                     ;; 0b:66aa $33 $ff GFX GFX
-    dw   `22232323                                     ;; 0b:66ac $15 $ff GFX GFX
-    dw   `12233323                                     ;; 0b:66ae $9d $7f GFX GFX
-    dw   `22322213                                     ;; 0b:66b0 $23 $fd GFX GFX
-    dw   `22322230                                     ;; 0b:66b2 $22 $fe GFX GFX
-    dw   `33322300                                     ;; 0b:66b4 $e4 $fc GFX GFX
-    dw   `33222300                                     ;; 0b:66b6 $c4 $fc GFX GFX
-    dw   `32223000                                     ;; 0b:66b8 $88 $f8 GFX GFX
-    dw   `32223000                                     ;; 0b:66ba $88 $f8 GFX GFX
-    dw   `22123000                                     ;; 0b:66bc $28 $d8 GFX GFX
-    dw   `22123000                                     ;; 0b:66be $28 $d8 GFX GFX
-    dw   `32222232                                     ;; 0b:66c0 $82 $ff GFX GFX
-    dw   `32223322                                     ;; 0b:66c2 $8c $ff GFX GFX
-    dw   `32212333                                     ;; 0b:66c4 $97 $ef GFX GFX
-    dw   `03211232                                     ;; 0b:66c6 $5a $67 GFX GFX
-    dw   `03222322                                     ;; 0b:66c8 $44 $7f GFX GFX
-    dw   `00322321                                     ;; 0b:66ca $25 $3e GFX GFX
-    dw   `00322323                                     ;; 0b:66cc $25 $3f GFX GFX
-    dw   `00322333                                     ;; 0b:66ce $27 $3f GFX GFX
-    dw   `32222322                                     ;; 0b:66d0 $84 $ff GFX GFX
-    dw   `32112322                                     ;; 0b:66d2 $b4 $cf GFX GFX
-    dw   `21122222                                     ;; 0b:66d4 $60 $9f GFX GFX
-    dw   `11222222                                     ;; 0b:66d6 $c0 $3f GFX GFX
-    dw   `11222222                                     ;; 0b:66d8 $c0 $3f GFX GFX
-    dw   `31222222                                     ;; 0b:66da $c0 $bf GFX GFX
-    dw   `11222222                                     ;; 0b:66dc $c0 $3f GFX GFX
-    dw   `11122223                                     ;; 0b:66de $e1 $1f GFX GFX
-    dw   `22223223                                     ;; 0b:66e0 $09 $ff GFX GFX
-    dw   `22332332                                     ;; 0b:66e2 $36 $ff GFX GFX
-    dw   `23223332                                     ;; 0b:66e4 $4e $ff GFX GFX
-    dw   `13223332                                     ;; 0b:66e6 $ce $7f GFX GFX
-    dw   `31222332                                     ;; 0b:66e8 $c6 $bf GFX GFX
-    dw   `31133232                                     ;; 0b:66ea $fa $9f GFX GFX
-    dw   `31133233                                     ;; 0b:66ec $fb $9f GFX GFX
-    dw   `11331330                                     ;; 0b:66ee $fe $36 GFX GFX
-    dw   `11111300                                     ;; 0b:66f0 $fc $04 GFX GFX
-    dw   `21112300                                     ;; 0b:66f2 $74 $8c GFX GFX
-    dw   `11311300                                     ;; 0b:66f4 $fc $24 GFX GFX
-    dw   `12321230                                     ;; 0b:66f6 $aa $76 GFX GFX
-    dw   `23032230                                     ;; 0b:66f8 $52 $de GFX GFX
-    dw   `30032230                                     ;; 0b:66fa $92 $9e GFX GFX
-    dw   `00032300                                     ;; 0b:66fc $14 $1c GFX GFX
-    dw   `00032300                                     ;; 0b:66fe $14 $1c GFX GFX
-    dw   `03112333                                     ;; 0b:6700 $77 $4f GFX GFX
-    dw   `03123323                                     ;; 0b:6702 $6d $5f GFX GFX
-    dw   `32233323                                     ;; 0b:6704 $9d $ff GFX GFX
-    dw   `32233322                                     ;; 0b:6706 $9c $ff GFX GFX
-    dw   `32230332                                     ;; 0b:6708 $96 $f7 GFX GFX
-    dw   `03230032                                     ;; 0b:670a $52 $73 GFX GFX
-    dw   `00323003                                     ;; 0b:670c $29 $39 GFX GFX
-    dw   `00033003                                     ;; 0b:670e $19 $19 GFX GFX
-    dw   `11122221                                     ;; 0b:6710 $e1 $1e GFX GFX
-    dw   `31111111                                     ;; 0b:6712 $ff $80 GFX GFX
-    dw   `33111111                                     ;; 0b:6714 $ff $c0 GFX GFX
-    dw   `33221111                                     ;; 0b:6716 $cf $f0 GFX GFX
-    dw   `33223222                                     ;; 0b:6718 $c8 $ff GFX GFX
-    dw   `32223222                                     ;; 0b:671a $88 $ff GFX GFX
-    dw   `32233222                                     ;; 0b:671c $98 $ff GFX GFX
-    dw   `22332221                                     ;; 0b:671e $31 $fe GFX GFX
-    dw   `11321133                                     ;; 0b:6720 $ef $33 GFX GFX
-    dw   `11332113                                     ;; 0b:6722 $f7 $39 GFX GFX
-    dw   `12333213                                     ;; 0b:6724 $bb $7d GFX GFX
-    dw   `22333333                                     ;; 0b:6726 $3f $ff GFX GFX
-    dw   `22332331                                     ;; 0b:6728 $37 $fe GFX GFX
-    dw   `22232331                                     ;; 0b:672a $17 $fe GFX GFX
-    dw   `22233321                                     ;; 0b:672c $1d $fe GFX GFX
-    dw   `22233313                                     ;; 0b:672e $1f $fd GFX GFX
-    dw   `00323000                                     ;; 0b:6730 $28 $38 GFX GFX
-    dw   `00330000                                     ;; 0b:6732 $30 $30 GFX GFX
-    dw   `33330000                                     ;; 0b:6734 $f0 $f0 GFX GFX
-    dw   `31113300                                     ;; 0b:6736 $fc $8c GFX GFX
-    dw   `13132130                                     ;; 0b:6738 $f6 $5a GFX GFX
-    dw   `11333313                                     ;; 0b:673a $ff $3d GFX GFX
-    dw   `12300033                                     ;; 0b:673c $a3 $63 GFX GFX
-    dw   `23000000                                     ;; 0b:673e $40 $c0 GFX GFX
-    dw   `00000000                                     ;; 0b:6740 $00 $00 GFX GFX
-    dw   `00000003                                     ;; 0b:6742 $01 $01 GFX GFX
-    dw   `03000032                                     ;; 0b:6744 $42 $43 GFX GFX
-    dw   `00330003                                     ;; 0b:6746 $31 $31 GFX GFX
-    dw   `00323333                                     ;; 0b:6748 $2f $3f GFX GFX
-    dw   `00032222                                     ;; 0b:674a $10 $1f GFX GFX
-    dw   `00003332                                     ;; 0b:674c $0e $0f GFX GFX
-    dw   `00000003                                     ;; 0b:674e $01 $01 GFX GFX
-    dw   `33322111                                     ;; 0b:6750 $e7 $f8 GFX GFX
-    dw   `33222211                                     ;; 0b:6752 $c3 $fc GFX GFX
-    dw   `22222312                                     ;; 0b:6754 $06 $fd GFX GFX
-    dw   `32233222                                     ;; 0b:6756 $98 $ff GFX GFX
-    dw   `33322222                                     ;; 0b:6758 $e0 $ff GFX GFX
-    dw   `22221223                                     ;; 0b:675a $09 $f7 GFX GFX
-    dw   `22233330                                     ;; 0b:675c $1e $fe GFX GFX
-    dw   `33300000                                     ;; 0b:675e $e0 $e0 GFX GFX
-    dw   `11233131                                     ;; 0b:6760 $df $3a GFX GFX
-    dw   `12333131                                     ;; 0b:6762 $bf $7a GFX GFX
-    dw   `12323232                                     ;; 0b:6764 $aa $7f GFX GFX
-    dw   `23322313                                     ;; 0b:6766 $67 $fd GFX GFX
-    dw   `33222233                                     ;; 0b:6768 $c3 $ff GFX GFX
-    dw   `32221222                                     ;; 0b:676a $88 $f7 GFX GFX
-    dw   `33322222                                     ;; 0b:676c $e0 $ff GFX GFX
-    dw   `00033333                                     ;; 0b:676e $1f $1f GFX GFX
-    dw   `30000000                                     ;; 0b:6770 $80 $80 GFX GFX
-    dw   `30000333                                     ;; 0b:6772 $87 $87 GFX GFX
-    dw   `30003230                                     ;; 0b:6774 $8a $8e GFX GFX
-    dw   `13332300                                     ;; 0b:6776 $f4 $7c GFX GFX
-    dw   `13222300                                     ;; 0b:6778 $c4 $7c GFX GFX
-    dw   `32223000                                     ;; 0b:677a $88 $f8 GFX GFX
-    dw   `22330000                                     ;; 0b:677c $30 $f0 GFX GFX
-    dw   `33000000                                     ;; 0b:677e $c0 $c0 GFX GFX
-    dw   `33000000                                     ;; 0b:6780 $c0 $c0 GFX GFX
-    dw   `32330000                                     ;; 0b:6782 $b0 $f0 GFX GFX
-    dw   `03213000                                     ;; 0b:6784 $58 $68 GFX GFX
-    dw   `00322300                                     ;; 0b:6786 $24 $3c GFX GFX
-    dw   `00032230                                     ;; 0b:6788 $12 $1e GFX GFX
-    dw   `00032313                                     ;; 0b:678a $17 $1d GFX GFX
-    dw   `00003223                                     ;; 0b:678c $09 $0f GFX GFX
-    dw   `00003231                                     ;; 0b:678e $0b $0e GFX GFX
-    dw   `00000000                                     ;; 0b:6790 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6792 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6794 $00 $00 GFX GFX
-    dw   `00000003                                     ;; 0b:6796 $01 $01 GFX GFX
-    dw   `00000003                                     ;; 0b:6798 $01 $01 GFX GFX
-    dw   `00000003                                     ;; 0b:679a $01 $01 GFX GFX
-    dw   `00000003                                     ;; 0b:679c $01 $01 GFX GFX
-    dw   `30000033                                     ;; 0b:679e $83 $83 GFX GFX
-    dw   `03333000                                     ;; 0b:67a0 $78 $78 GFX GFX
-    dw   `33322300                                     ;; 0b:67a2 $e4 $fc GFX GFX
-    dw   `33221130                                     ;; 0b:67a4 $ce $f2 GFX GFX
-    dw   `33321113                                     ;; 0b:67a6 $ef $f1 GFX GFX
-    dw   `33333331                                     ;; 0b:67a8 $ff $fe GFX GFX
-    dw   `33330003                                     ;; 0b:67aa $f1 $f1 GFX GFX
-    dw   `33000000                                     ;; 0b:67ac $c0 $c0 GFX GFX
-    dw   `30000000                                     ;; 0b:67ae $80 $80 GFX GFX
-    dw   `00000000                                     ;; 0b:67b0 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:67b2 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:67b4 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:67b6 $00 $00 GFX GFX
-    dw   `30000003                                     ;; 0b:67b8 $81 $81 GFX GFX
-    dw   `30000003                                     ;; 0b:67ba $81 $81 GFX GFX
-    dw   `00000000                                     ;; 0b:67bc $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:67be $00 $00 GFX GFX
-    dw   `00333000                                     ;; 0b:67c0 $38 $38 GFX GFX
-    dw   `03323300                                     ;; 0b:67c2 $6c $7c GFX GFX
-    dw   `03112330                                     ;; 0b:67c4 $76 $4e GFX GFX
-    dw   `31122330                                     ;; 0b:67c6 $e6 $9e GFX GFX
-    dw   `13333330                                     ;; 0b:67c8 $fe $7e GFX GFX
-    dw   `30033333                                     ;; 0b:67ca $9f $9f GFX GFX
-    dw   `00003333                                     ;; 0b:67cc $0f $0f GFX GFX
-    dw   `00000333                                     ;; 0b:67ce $07 $07 GFX GFX
-    dw   `00000000                                     ;; 0b:67d0 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:67d2 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:67d4 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:67d6 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:67d8 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:67da $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:67dc $00 $00 GFX GFX
-    dw   `30000000                                     ;; 0b:67de $80 $80 GFX GFX
-    dw   `00003232                                     ;; 0b:67e0 $0a $0f GFX GFX
-    dw   `00003222                                     ;; 0b:67e2 $08 $0f GFX GFX
-    dw   `00003223                                     ;; 0b:67e4 $09 $0f GFX GFX
-    dw   `00003231                                     ;; 0b:67e6 $0b $0e GFX GFX
-    dw   `00032222                                     ;; 0b:67e8 $10 $1f GFX GFX
-    dw   `00032223                                     ;; 0b:67ea $11 $1f GFX GFX
-    dw   `00322223                                     ;; 0b:67ec $21 $3f GFX GFX
-    dw   `00322223                                     ;; 0b:67ee $21 $3f GFX GFX
-    dw   `30000033                                     ;; 0b:67f0 $83 $83 GFX GFX
-    dw   `30000333                                     ;; 0b:67f2 $87 $87 GFX GFX
-    dw   `30000333                                     ;; 0b:67f4 $87 $87 GFX GFX
-    dw   `30003333                                     ;; 0b:67f6 $8f $8f GFX GFX
-    dw   `30003323                                     ;; 0b:67f8 $8d $8f GFX GFX
-    dw   `00033323                                     ;; 0b:67fa $1d $1f GFX GFX
-    dw   `00333222                                     ;; 0b:67fc $38 $3f GFX GFX
-    dw   `00333212                                     ;; 0b:67fe $3a $3d GFX GFX
-    dw   `30000000                                     ;; 0b:6800 $80 $80 GFX GFX
-    dw   `30000000                                     ;; 0b:6802 $80 $80 GFX GFX
-    dw   `30000000                                     ;; 0b:6804 $80 $80 GFX GFX
-    dw   `30000000                                     ;; 0b:6806 $80 $80 GFX GFX
-    dw   `33000000                                     ;; 0b:6808 $c0 $c0 GFX GFX
-    dw   `33330003                                     ;; 0b:680a $f1 $f1 GFX GFX
-    dw   `33333332                                     ;; 0b:680c $fe $ff GFX GFX
-    dw   `23333222                                     ;; 0b:680e $78 $ff GFX GFX
-    dw   `00000000                                     ;; 0b:6810 $00 $00 GFX GFX
-    dw   `00003333                                     ;; 0b:6812 $0f $0f GFX GFX
-    dw   `00332222                                     ;; 0b:6814 $30 $3f GFX GFX
-    dw   `03222222                                     ;; 0b:6816 $40 $7f GFX GFX
-    dw   `32222222                                     ;; 0b:6818 $80 $ff GFX GFX
-    dw   `22222222                                     ;; 0b:681a $00 $ff GFX GFX
-    dw   `22222222                                     ;; 0b:681c $00 $ff GFX GFX
-    dw   `22222222                                     ;; 0b:681e $00 $ff GFX GFX
-    dw   `00000033                                     ;; 0b:6820 $03 $03 GFX GFX
-    dw   `30000003                                     ;; 0b:6822 $81 $81 GFX GFX
-    dw   `23300003                                     ;; 0b:6824 $61 $e1 GFX GFX
-    dw   `22230003                                     ;; 0b:6826 $11 $f1 GFX GFX
-    dw   `22230003                                     ;; 0b:6828 $11 $f1 GFX GFX
-    dw   `22223033                                     ;; 0b:682a $0b $fb GFX GFX
-    dw   `22223333                                     ;; 0b:682c $0f $ff GFX GFX
-    dw   `22223332                                     ;; 0b:682e $0e $ff GFX GFX
-    dw   `30000000                                     ;; 0b:6830 $80 $80 GFX GFX
-    dw   `33000000                                     ;; 0b:6832 $c0 $c0 GFX GFX
-    dw   `33000000                                     ;; 0b:6834 $c0 $c0 GFX GFX
-    dw   `33300000                                     ;; 0b:6836 $e0 $e0 GFX GFX
-    dw   `33330000                                     ;; 0b:6838 $f0 $f0 GFX GFX
-    dw   `23330000                                     ;; 0b:683a $70 $f0 GFX GFX
-    dw   `23333000                                     ;; 0b:683c $78 $f8 GFX GFX
-    dw   `22333000                                     ;; 0b:683e $38 $f8 GFX GFX
-    dw   `03222223                                     ;; 0b:6840 $41 $7f GFX GFX
-    dw   `03222223                                     ;; 0b:6842 $41 $7f GFX GFX
-    dw   `03222223                                     ;; 0b:6844 $41 $7f GFX GFX
-    dw   `32222233                                     ;; 0b:6846 $83 $ff GFX GFX
-    dw   `32222333                                     ;; 0b:6848 $87 $ff GFX GFX
-    dw   `32223333                                     ;; 0b:684a $8f $ff GFX GFX
-    dw   `32223333                                     ;; 0b:684c $8f $ff GFX GFX
-    dw   `32233333                                     ;; 0b:684e $9f $ff GFX GFX
-    dw   `03332121                                     ;; 0b:6850 $75 $7a GFX GFX
-    dw   `33331211                                     ;; 0b:6852 $fb $f4 GFX GFX
-    dw   `33332333                                     ;; 0b:6854 $f7 $ff GFX GFX
-    dw   `33333000                                     ;; 0b:6856 $f8 $f8 GFX GFX
-    dw   `33300000                                     ;; 0b:6858 $e0 $e0 GFX GFX
-    dw   `33300000                                     ;; 0b:685a $e0 $e0 GFX GFX
-    dw   `33300000                                     ;; 0b:685c $e0 $e0 GFX GFX
-    dw   `33000003                                     ;; 0b:685e $c1 $c1 GFX GFX
-    dw   `12322222                                     ;; 0b:6860 $a0 $7f GFX GFX
-    dw   `13222222                                     ;; 0b:6862 $c0 $7f GFX GFX
-    dw   `13222222                                     ;; 0b:6864 $c0 $7f GFX GFX
-    dw   `32222222                                     ;; 0b:6866 $80 $ff GFX GFX
-    dw   `32222222                                     ;; 0b:6868 $80 $ff GFX GFX
-    dw   `33222223                                     ;; 0b:686a $c1 $ff GFX GFX
-    dw   `32222232                                     ;; 0b:686c $82 $ff GFX GFX
-    dw   `22222231                                     ;; 0b:686e $03 $fe GFX GFX
-    dw   `22222222                                     ;; 0b:6870 $00 $ff GFX GFX
-    dw   `22233222                                     ;; 0b:6872 $18 $ff GFX GFX
-    dw   `22223322                                     ;; 0b:6874 $0c $ff GFX GFX
-    dw   `22222322                                     ;; 0b:6876 $04 $ff GFX GFX
-    dw   `22222333                                     ;; 0b:6878 $07 $ff GFX GFX
-    dw   `22222231                                     ;; 0b:687a $03 $fe GFX GFX
-    dw   `22222233                                     ;; 0b:687c $03 $ff GFX GFX
-    dw   `22222333                                     ;; 0b:687e $07 $ff GFX GFX
-    dw   `22222322                                     ;; 0b:6880 $04 $ff GFX GFX
-    dw   `22222312                                     ;; 0b:6882 $06 $fd GFX GFX
-    dw   `22222311                                     ;; 0b:6884 $07 $fc GFX GFX
-    dw   `22222231                                     ;; 0b:6886 $03 $fe GFX GFX
-    dw   `22222233                                     ;; 0b:6888 $03 $ff GFX GFX
-    dw   `32232313                                     ;; 0b:688a $97 $fd GFX GFX
-    dw   `13313223                                     ;; 0b:688c $f9 $6f GFX GFX
-    dw   `22322323                                     ;; 0b:688e $25 $ff GFX GFX
-    dw   `12333000                                     ;; 0b:6890 $b8 $78 GFX GFX
-    dw   `12333300                                     ;; 0b:6892 $bc $7c GFX GFX
-    dw   `21233300                                     ;; 0b:6894 $5c $bc GFX GFX
-    dw   `12233330                                     ;; 0b:6896 $9e $7e GFX GFX
-    dw   `31233330                                     ;; 0b:6898 $de $be GFX GFX
-    dw   `03333330                                     ;; 0b:689a $7e $7e GFX GFX
-    dw   `03003333                                     ;; 0b:689c $4f $4f GFX GFX
-    dw   `30003333                                     ;; 0b:689e $8f $8f GFX GFX
-    dw   `32333333                                     ;; 0b:68a0 $bf $ff GFX GFX
-    dw   `03333333                                     ;; 0b:68a2 $7f $7f GFX GFX
-    dw   `03333333                                     ;; 0b:68a4 $7f $7f GFX GFX
-    dw   `03323333                                     ;; 0b:68a6 $6f $7f GFX GFX
-    dw   `33233332                                     ;; 0b:68a8 $de $ff GFX GFX
-    dw   `33233322                                     ;; 0b:68aa $dc $ff GFX GFX
-    dw   `30333222                                     ;; 0b:68ac $b8 $bf GFX GFX
-    dw   `30333222                                     ;; 0b:68ae $b8 $bf GFX GFX
-    dw   `33300333                                     ;; 0b:68b0 $e7 $e7 GFX GFX
-    dw   `32233232                                     ;; 0b:68b2 $9a $ff GFX GFX
-    dw   `22223232                                     ;; 0b:68b4 $0a $ff GFX GFX
-    dw   `22232232                                     ;; 0b:68b6 $12 $ff GFX GFX
-    dw   `22232232                                     ;; 0b:68b8 $12 $ff GFX GFX
-    dw   `22232223                                     ;; 0b:68ba $11 $ff GFX GFX
-    dw   `22322223                                     ;; 0b:68bc $21 $ff GFX GFX
-    dw   `23222223                                     ;; 0b:68be $41 $ff GFX GFX
-    dw   `22222231                                     ;; 0b:68c0 $03 $fe GFX GFX
-    dw   `22222232                                     ;; 0b:68c2 $02 $ff GFX GFX
-    dw   `22222223                                     ;; 0b:68c4 $01 $ff GFX GFX
-    dw   `22222223                                     ;; 0b:68c6 $01 $ff GFX GFX
-    dw   `22222223                                     ;; 0b:68c8 $01 $ff GFX GFX
-    dw   `22222223                                     ;; 0b:68ca $01 $ff GFX GFX
-    dw   `32222223                                     ;; 0b:68cc $81 $ff GFX GFX
-    dw   `22222232                                     ;; 0b:68ce $02 $ff GFX GFX
-    dw   `11223113                                     ;; 0b:68d0 $cf $39 GFX GFX
-    dw   `11112321                                     ;; 0b:68d2 $f5 $0e GFX GFX
-    dw   `11113322                                     ;; 0b:68d4 $fc $0f GFX GFX
-    dw   `31123132                                     ;; 0b:68d6 $ee $9b GFX GFX
-    dw   `23122312                                     ;; 0b:68d8 $66 $dd GFX GFX
-    dw   `22333332                                     ;; 0b:68da $3e $ff GFX GFX
-    dw   `31112332                                     ;; 0b:68dc $f6 $8f GFX GFX
-    dw   `32112233                                     ;; 0b:68de $b3 $cf GFX GFX
-    dw   `32222223                                     ;; 0b:68e0 $81 $ff GFX GFX
-    dw   `32222222                                     ;; 0b:68e2 $80 $ff GFX GFX
-    dw   `22222222                                     ;; 0b:68e4 $00 $ff GFX GFX
-    dw   `22222222                                     ;; 0b:68e6 $00 $ff GFX GFX
-    dw   `33322223                                     ;; 0b:68e8 $e1 $ff GFX GFX
-    dw   `23132231                                     ;; 0b:68ea $73 $de GFX GFX
-    dw   `23113231                                     ;; 0b:68ec $7b $ce GFX GFX
-    dw   `23133233                                     ;; 0b:68ee $7b $df GFX GFX
-    dw   `13303333                                     ;; 0b:68f0 $ef $6f GFX GFX
-    dw   `23233333                                     ;; 0b:68f2 $5f $ff GFX GFX
-    dw   `23223333                                     ;; 0b:68f4 $4f $ff GFX GFX
-    dw   `23222333                                     ;; 0b:68f6 $47 $ff GFX GFX
-    dw   `33222333                                     ;; 0b:68f8 $c7 $ff GFX GFX
-    dw   `32222333                                     ;; 0b:68fa $87 $ff GFX GFX
-    dw   `32223333                                     ;; 0b:68fc $8f $ff GFX GFX
-    dw   `32230330                                     ;; 0b:68fe $96 $f6 GFX GFX
-    dw   `03333322                                     ;; 0b:6900 $7c $7f GFX GFX
-    dw   `03330033                                     ;; 0b:6902 $73 $73 GFX GFX
-    dw   `03330000                                     ;; 0b:6904 $70 $70 GFX GFX
-    dw   `03300000                                     ;; 0b:6906 $60 $60 GFX GFX
-    dw   `03300000                                     ;; 0b:6908 $60 $60 GFX GFX
-    dw   `03300000                                     ;; 0b:690a $60 $60 GFX GFX
-    dw   `00300000                                     ;; 0b:690c $20 $20 GFX GFX
-    dw   `00300003                                     ;; 0b:690e $21 $21 GFX GFX
-    dw   `23222232                                     ;; 0b:6910 $42 $ff GFX GFX
-    dw   `23222232                                     ;; 0b:6912 $42 $ff GFX GFX
-    dw   `32222232                                     ;; 0b:6914 $82 $ff GFX GFX
-    dw   `32222223                                     ;; 0b:6916 $81 $ff GFX GFX
-    dw   `32222222                                     ;; 0b:6918 $80 $ff GFX GFX
-    dw   `32222222                                     ;; 0b:691a $80 $ff GFX GFX
-    dw   `32222222                                     ;; 0b:691c $80 $ff GFX GFX
-    dw   `22222333                                     ;; 0b:691e $07 $ff GFX GFX
-    dw   `22233233                                     ;; 0b:6920 $1b $ff GFX GFX
-    dw   `22222233                                     ;; 0b:6922 $03 $ff GFX GFX
-    dw   `22222231                                     ;; 0b:6924 $03 $fe GFX GFX
-    dw   `22222232                                     ;; 0b:6926 $02 $ff GFX GFX
-    dw   `32222233                                     ;; 0b:6928 $83 $ff GFX GFX
-    dw   `23222230                                     ;; 0b:692a $42 $fe GFX GFX
-    dw   `33322230                                     ;; 0b:692c $e2 $fe GFX GFX
-    dw   `30322230                                     ;; 0b:692e $a2 $be GFX GFX
-    dw   `23311223                                     ;; 0b:6930 $79 $e7 GFX GFX
-    dw   `11133333                                     ;; 0b:6932 $ff $1f GFX GFX
-    dw   `33111233                                     ;; 0b:6934 $fb $c7 GFX GFX
-    dw   `11333300                                     ;; 0b:6936 $fc $3c GFX GFX
-    dw   `33330000                                     ;; 0b:6938 $f0 $f0 GFX GFX
-    dw   `00000000                                     ;; 0b:693a $00 $00 GFX GFX
-    dw   `00000003                                     ;; 0b:693c $01 $01 GFX GFX
-    dw   `00000332                                     ;; 0b:693e $06 $07 GFX GFX
-    dw   `22333223                                     ;; 0b:6940 $39 $ff GFX GFX
-    dw   `32222223                                     ;; 0b:6942 $81 $ff GFX GFX
-    dw   `33322222                                     ;; 0b:6944 $e0 $ff GFX GFX
-    dw   `03232222                                     ;; 0b:6946 $50 $7f GFX GFX
-    dw   `03323222                                     ;; 0b:6948 $68 $7f GFX GFX
-    dw   `33323222                                     ;; 0b:694a $e8 $ff GFX GFX
-    dw   `32332323                                     ;; 0b:694c $b5 $ff GFX GFX
-    dw   `22233332                                     ;; 0b:694e $1e $ff GFX GFX
-    dw   `22300330                                     ;; 0b:6950 $26 $e6 GFX GFX
-    dw   `23000330                                     ;; 0b:6952 $46 $c6 GFX GFX
-    dw   `30000300                                     ;; 0b:6954 $84 $84 GFX GFX
-    dw   `30000300                                     ;; 0b:6956 $84 $84 GFX GFX
-    dw   `33000300                                     ;; 0b:6958 $c4 $c4 GFX GFX
-    dw   `32300000                                     ;; 0b:695a $a0 $e0 GFX GFX
-    dw   `22233000                                     ;; 0b:695c $18 $f8 GFX GFX
-    dw   `22222330                                     ;; 0b:695e $06 $fe GFX GFX
-    dw   `00000032                                     ;; 0b:6960 $02 $03 GFX GFX
-    dw   `00033322                                     ;; 0b:6962 $1c $1f GFX GFX
-    dw   `03322222                                     ;; 0b:6964 $60 $7f GFX GFX
-    dw   `31133222                                     ;; 0b:6966 $f8 $9f GFX GFX
-    dw   `31311332                                     ;; 0b:6968 $fe $a7 GFX GFX
-    dw   `03113113                                     ;; 0b:696a $7f $49 GFX GFX
-    dw   `03331113                                     ;; 0b:696c $7f $71 GFX GFX
-    dw   `00033333                                     ;; 0b:696e $1f $1f GFX GFX
-    dw   `22223330                                     ;; 0b:6970 $0e $fe GFX GFX
-    dw   `22232313                                     ;; 0b:6972 $17 $fd GFX GFX
-    dw   `22222330                                     ;; 0b:6974 $06 $fe GFX GFX
-    dw   `22223300                                     ;; 0b:6976 $0c $fc GFX GFX
-    dw   `22333333                                     ;; 0b:6978 $3f $ff GFX GFX
-    dw   `23333333                                     ;; 0b:697a $7f $ff GFX GFX
-    dw   `33333333                                     ;; 0b:697c $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:697e $ff $ff GFX GFX
-    dw   `00032223                                     ;; 0b:6980 $11 $1f GFX GFX
-    dw   `00032222                                     ;; 0b:6982 $10 $1f GFX GFX
-    dw   `00322222                                     ;; 0b:6984 $20 $3f GFX GFX
-    dw   `00323323                                     ;; 0b:6986 $2d $3f GFX GFX
-    dw   `33331131                                     ;; 0b:6988 $ff $f2 GFX GFX
-    dw   `33331333                                     ;; 0b:698a $ff $f7 GFX GFX
-    dw   `33333333                                     ;; 0b:698c $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:698e $ff $ff GFX GFX
-    dw   `00003113                                     ;; 0b:6990 $0f $09 GFX GFX
-    dw   `33333133                                     ;; 0b:6992 $ff $fb GFX GFX
-    dw   `23333333                                     ;; 0b:6994 $7f $ff GFX GFX
-    dw   `31133333                                     ;; 0b:6996 $ff $9f GFX GFX
-    dw   `13133333                                     ;; 0b:6998 $ff $5f GFX GFX
-    dw   `13333333                                     ;; 0b:699a $ff $7f GFX GFX
-    dw   `33333333                                     ;; 0b:699c $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:699e $ff $ff GFX GFX
-    dw   `22223032                                     ;; 0b:69a0 $0a $fb GFX GFX
-    dw   `22223332                                     ;; 0b:69a2 $0e $ff GFX GFX
-    dw   `33222333                                     ;; 0b:69a4 $c7 $ff GFX GFX
-    dw   `31332333                                     ;; 0b:69a6 $f7 $bf GFX GFX
-    dw   `11313333                                     ;; 0b:69a8 $ff $2f GFX GFX
-    dw   `33113333                                     ;; 0b:69aa $ff $cf GFX GFX
-    dw   `33333333                                     ;; 0b:69ac $ff $ff GFX GFX
-    dw   `33333300                                     ;; 0b:69ae $fc $fc GFX GFX
-    dw   `23323313                                     ;; 0b:69b0 $6f $fd GFX GFX
-    dw   `31131133                                     ;; 0b:69b2 $ff $93 GFX GFX
-    dw   `31113113                                     ;; 0b:69b4 $ff $89 GFX GFX
-    dw   `33333330                                     ;; 0b:69b6 $fe $fe GFX GFX
-    dw   `00000000                                     ;; 0b:69b8 $00 $00 GFX GFX
-    dw   `30000000                                     ;; 0b:69ba $80 $80 GFX GFX
-    dw   `30000000                                     ;; 0b:69bc $80 $80 GFX GFX
-    dw   `00000000                                     ;; 0b:69be $00 $00 GFX GFX
-    dw   `03222223                                     ;; 0b:69c0 $41 $7f GFX GFX
-    dw   `03222223                                     ;; 0b:69c2 $41 $7f GFX GFX
-    dw   `03222223                                     ;; 0b:69c4 $41 $7f GFX GFX
-    dw   `32222233                                     ;; 0b:69c6 $83 $ff GFX GFX
-    dw   `32222333                                     ;; 0b:69c8 $87 $ff GFX GFX
-    dw   `32223333                                     ;; 0b:69ca $8f $ff GFX GFX
-    dw   `32223333                                     ;; 0b:69cc $8f $ff GFX GFX
-    dw   `32233333                                     ;; 0b:69ce $9f $ff GFX GFX
-    dw   `03332121                                     ;; 0b:69d0 $75 $7a GFX GFX
-    dw   `33331211                                     ;; 0b:69d2 $fb $f4 GFX GFX
-    dw   `33332333                                     ;; 0b:69d4 $f7 $ff GFX GFX
-    dw   `33333000                                     ;; 0b:69d6 $f8 $f8 GFX GFX
-    dw   `33300000                                     ;; 0b:69d8 $e0 $e0 GFX GFX
-    dw   `33300000                                     ;; 0b:69da $e0 $e0 GFX GFX
-    dw   `33300000                                     ;; 0b:69dc $e0 $e0 GFX GFX
-    dw   `33000003                                     ;; 0b:69de $c1 $c1 GFX GFX
-    dw   `32333333                                     ;; 0b:69e0 $bf $ff GFX GFX
-    dw   `03333333                                     ;; 0b:69e2 $7f $7f GFX GFX
-    dw   `03333333                                     ;; 0b:69e4 $7f $7f GFX GFX
-    dw   `03323333                                     ;; 0b:69e6 $6f $7f GFX GFX
-    dw   `33233332                                     ;; 0b:69e8 $de $ff GFX GFX
-    dw   `33233322                                     ;; 0b:69ea $dc $ff GFX GFX
-    dw   `30333222                                     ;; 0b:69ec $b8 $bf GFX GFX
-    dw   `30333222                                     ;; 0b:69ee $b8 $bf GFX GFX
-    dw   `33300333                                     ;; 0b:69f0 $e7 $e7 GFX GFX
-    dw   `32233232                                     ;; 0b:69f2 $9a $ff GFX GFX
-    dw   `22332232                                     ;; 0b:69f4 $32 $ff GFX GFX
-    dw   `23222232                                     ;; 0b:69f6 $42 $ff GFX GFX
-    dw   `32222232                                     ;; 0b:69f8 $82 $ff GFX GFX
-    dw   `32222223                                     ;; 0b:69fa $81 $ff GFX GFX
-    dw   `32222223                                     ;; 0b:69fc $81 $ff GFX GFX
-    dw   `32222223                                     ;; 0b:69fe $81 $ff GFX GFX
-    dw   `22222322                                     ;; 0b:6a00 $04 $ff GFX GFX
-    dw   `22222312                                     ;; 0b:6a02 $06 $fd GFX GFX
-    dw   `22222311                                     ;; 0b:6a04 $07 $fc GFX GFX
-    dw   `22222231                                     ;; 0b:6a06 $03 $fe GFX GFX
-    dw   `22222233                                     ;; 0b:6a08 $03 $ff GFX GFX
-    dw   `32232313                                     ;; 0b:6a0a $97 $fd GFX GFX
-    dw   `13313223                                     ;; 0b:6a0c $f9 $6f GFX GFX
-    dw   `22322323                                     ;; 0b:6a0e $25 $ff GFX GFX
-    dw   `12333000                                     ;; 0b:6a10 $b8 $78 GFX GFX
-    dw   `12333300                                     ;; 0b:6a12 $bc $7c GFX GFX
-    dw   `21233300                                     ;; 0b:6a14 $5c $bc GFX GFX
-    dw   `12233330                                     ;; 0b:6a16 $9e $7e GFX GFX
-    dw   `31233330                                     ;; 0b:6a18 $de $be GFX GFX
-    dw   `03333330                                     ;; 0b:6a1a $7e $7e GFX GFX
-    dw   `03003333                                     ;; 0b:6a1c $4f $4f GFX GFX
-    dw   `30003333                                     ;; 0b:6a1e $8f $8f GFX GFX
-    dw   `32222223                                     ;; 0b:6a20 $81 $ff GFX GFX
-    dw   `32222222                                     ;; 0b:6a22 $80 $ff GFX GFX
-    dw   `22222222                                     ;; 0b:6a24 $00 $ff GFX GFX
-    dw   `22222222                                     ;; 0b:6a26 $00 $ff GFX GFX
-    dw   `33322223                                     ;; 0b:6a28 $e1 $ff GFX GFX
-    dw   `23132231                                     ;; 0b:6a2a $73 $de GFX GFX
-    dw   `23113231                                     ;; 0b:6a2c $7b $ce GFX GFX
-    dw   `23133233                                     ;; 0b:6a2e $7b $df GFX GFX
-    dw   `13003333                                     ;; 0b:6a30 $cf $4f GFX GFX
-    dw   `23003333                                     ;; 0b:6a32 $4f $cf GFX GFX
-    dw   `23003333                                     ;; 0b:6a34 $4f $cf GFX GFX
-    dw   `23300333                                     ;; 0b:6a36 $67 $e7 GFX GFX
-    dw   `33230333                                     ;; 0b:6a38 $d7 $f7 GFX GFX
-    dw   `32230333                                     ;; 0b:6a3a $97 $f7 GFX GFX
-    dw   `32223333                                     ;; 0b:6a3c $8f $ff GFX GFX
-    dw   `32223330                                     ;; 0b:6a3e $8e $fe GFX GFX
-    dw   `03333322                                     ;; 0b:6a40 $7c $7f GFX GFX
-    dw   `03330033                                     ;; 0b:6a42 $73 $73 GFX GFX
-    dw   `03330000                                     ;; 0b:6a44 $70 $70 GFX GFX
-    dw   `03300003                                     ;; 0b:6a46 $61 $61 GFX GFX
-    dw   `03300032                                     ;; 0b:6a48 $62 $63 GFX GFX
-    dw   `03333322                                     ;; 0b:6a4a $7c $7f GFX GFX
-    dw   `03322222                                     ;; 0b:6a4c $60 $7f GFX GFX
-    dw   `31133222                                     ;; 0b:6a4e $f8 $9f GFX GFX
-    dw   `32222232                                     ;; 0b:6a50 $82 $ff GFX GFX
-    dw   `23222232                                     ;; 0b:6a52 $42 $ff GFX GFX
-    dw   `33322232                                     ;; 0b:6a54 $e2 $ff GFX GFX
-    dw   `32222233                                     ;; 0b:6a56 $83 $ff GFX GFX
-    dw   `22222333                                     ;; 0b:6a58 $07 $ff GFX GFX
-    dw   `22222231                                     ;; 0b:6a5a $03 $fe GFX GFX
-    dw   `22222333                                     ;; 0b:6a5c $07 $ff GFX GFX
-    dw   `22223000                                     ;; 0b:6a5e $08 $f8 GFX GFX
-    dw   `22233233                                     ;; 0b:6a60 $1b $ff GFX GFX
-    dw   `22222223                                     ;; 0b:6a62 $01 $ff GFX GFX
-    dw   `22222223                                     ;; 0b:6a64 $01 $ff GFX GFX
-    dw   `22222222                                     ;; 0b:6a66 $00 $ff GFX GFX
-    dw   `33222222                                     ;; 0b:6a68 $c0 $ff GFX GFX
-    dw   `00322222                                     ;; 0b:6a6a $20 $3f GFX GFX
-    dw   `00033222                                     ;; 0b:6a6c $18 $1f GFX GFX
-    dw   `00000322                                     ;; 0b:6a6e $04 $07 GFX GFX
-    dw   `23311223                                     ;; 0b:6a70 $79 $e7 GFX GFX
-    dw   `11133333                                     ;; 0b:6a72 $ff $1f GFX GFX
-    dw   `33111233                                     ;; 0b:6a74 $fb $c7 GFX GFX
-    dw   `31333300                                     ;; 0b:6a76 $fc $bc GFX GFX
-    dw   `33000000                                     ;; 0b:6a78 $c0 $c0 GFX GFX
-    dw   `23330000                                     ;; 0b:6a7a $70 $f0 GFX GFX
-    dw   `32223303                                     ;; 0b:6a7c $8d $fd GFX GFX
-    dw   `22231133                                     ;; 0b:6a7e $1f $f3 GFX GFX
-    dw   `22333222                                     ;; 0b:6a80 $38 $ff GFX GFX
-    dw   `32222222                                     ;; 0b:6a82 $80 $ff GFX GFX
-    dw   `33332222                                     ;; 0b:6a84 $f0 $ff GFX GFX
-    dw   `03233322                                     ;; 0b:6a86 $5c $7f GFX GFX
-    dw   `03233133                                     ;; 0b:6a88 $5f $7b GFX GFX
-    dw   `33233131                                     ;; 0b:6a8a $df $fa GFX GFX
-    dw   `11323333                                     ;; 0b:6a8c $ef $3f GFX GFX
-    dw   `13032333                                     ;; 0b:6a8e $d7 $5f GFX GFX
-    dw   `32223330                                     ;; 0b:6a90 $8e $fe GFX GFX
-    dw   `23230330                                     ;; 0b:6a92 $56 $f6 GFX GFX
-    dw   `23230300                                     ;; 0b:6a94 $54 $f4 GFX GFX
-    dw   `23300300                                     ;; 0b:6a96 $64 $e4 GFX GFX
-    dw   `23300300                                     ;; 0b:6a98 $64 $e4 GFX GFX
-    dw   `33000000                                     ;; 0b:6a9a $c0 $c0 GFX GFX
-    dw   `33000000                                     ;; 0b:6a9c $c0 $c0 GFX GFX
-    dw   `32300000                                     ;; 0b:6a9e $a0 $e0 GFX GFX
-    dw   `31311332                                     ;; 0b:6aa0 $fe $a7 GFX GFX
-    dw   `03113113                                     ;; 0b:6aa2 $7f $49 GFX GFX
-    dw   `33331113                                     ;; 0b:6aa4 $ff $f1 GFX GFX
-    dw   `03333333                                     ;; 0b:6aa6 $7f $7f GFX GFX
-    dw   `00000000                                     ;; 0b:6aa8 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6aaa $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6aac $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6aae $00 $00 GFX GFX
-    dw   `22333333                                     ;; 0b:6ab0 $3f $ff GFX GFX
-    dw   `23333333                                     ;; 0b:6ab2 $7f $ff GFX GFX
-    dw   `33333333                                     ;; 0b:6ab4 $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:6ab6 $ff $ff GFX GFX
-    dw   `00000000                                     ;; 0b:6ab8 $00 $00 GFX GFX
-    dw   `00000003                                     ;; 0b:6aba $01 $01 GFX GFX
-    dw   `00000033                                     ;; 0b:6abc $03 $03 GFX GFX
-    dw   `00000000                                     ;; 0b:6abe $00 $00 GFX GFX
-    dw   `33300322                                     ;; 0b:6ac0 $e4 $e7 GFX GFX
-    dw   `33333323                                     ;; 0b:6ac2 $fd $ff GFX GFX
-    dw   `33333331                                     ;; 0b:6ac4 $ff $fe GFX GFX
-    dw   `33333331                                     ;; 0b:6ac6 $ff $fe GFX GFX
-    dw   `03333333                                     ;; 0b:6ac8 $7f $7f GFX GFX
-    dw   `33333333                                     ;; 0b:6aca $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:6acc $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:6ace $ff $ff GFX GFX
-    dw   `23333133                                     ;; 0b:6ad0 $7f $fb GFX GFX
-    dw   `31133333                                     ;; 0b:6ad2 $ff $9f GFX GFX
-    dw   `33133333                                     ;; 0b:6ad4 $ff $df GFX GFX
-    dw   `33333333                                     ;; 0b:6ad6 $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:6ad8 $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:6ada $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:6adc $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:6ade $ff $ff GFX GFX
-    dw   `30033333                                     ;; 0b:6ae0 $9f $9f GFX GFX
-    dw   `33331313                                     ;; 0b:6ae2 $ff $f5 GFX GFX
-    dw   `33311313                                     ;; 0b:6ae4 $ff $e5 GFX GFX
-    dw   `33333332                                     ;; 0b:6ae6 $fe $ff GFX GFX
-    dw   `33333332                                     ;; 0b:6ae8 $fe $ff GFX GFX
-    dw   `33333333                                     ;; 0b:6aea $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:6aec $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:6aee $ff $ff GFX GFX
-    dw   `22300000                                     ;; 0b:6af0 $20 $e0 GFX GFX
-    dw   `22230000                                     ;; 0b:6af2 $10 $f0 GFX GFX
-    dw   `22223300                                     ;; 0b:6af4 $0c $fc GFX GFX
-    dw   `22222230                                     ;; 0b:6af6 $02 $fe GFX GFX
-    dw   `23323313                                     ;; 0b:6af8 $6f $fd GFX GFX
-    dw   `31131133                                     ;; 0b:6afa $ff $93 GFX GFX
-    dw   `31113113                                     ;; 0b:6afc $ff $89 GFX GFX
-    dw   `33333330                                     ;; 0b:6afe $fe $fe GFX GFX
-    dw   `00000000                                     ;; 0b:6b00 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6b02 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6b04 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6b06 $00 $00 GFX GFX
-    dw   `00000003                                     ;; 0b:6b08 $01 $01 GFX GFX
-    dw   `00000031                                     ;; 0b:6b0a $03 $02 GFX GFX
-    dw   `00300031                                     ;; 0b:6b0c $23 $22 GFX GFX
-    dw   `03130313                                     ;; 0b:6b0e $77 $55 GFX GFX
-    dw   `00000000                                     ;; 0b:6b10 $00 $00 GFX GFX
-    dw   `00030330                                     ;; 0b:6b12 $16 $16 GFX GFX
-    dw   `00323130                                     ;; 0b:6b14 $2e $3a GFX GFX
-    dw   `03231230                                     ;; 0b:6b16 $5a $76 GFX GFX
-    dw   `33312323                                     ;; 0b:6b18 $f5 $ef GFX GFX
-    dw   `11222332                                     ;; 0b:6b1a $c6 $3f GFX GFX
-    dw   `33323223                                     ;; 0b:6b1c $e9 $ff GFX GFX
-    dw   `33313323                                     ;; 0b:6b1e $fd $ef GFX GFX
-    dw   `03133113                                     ;; 0b:6b20 $7f $59 GFX GFX
-    dw   `31111221                                     ;; 0b:6b22 $f9 $86 GFX GFX
-    dw   `33113131                                     ;; 0b:6b24 $ff $ca GFX GFX
-    dw   `31331333                                     ;; 0b:6b26 $ff $b7 GFX GFX
-    dw   `33003331                                     ;; 0b:6b28 $cf $ce GFX GFX
-    dw   `00003311                                     ;; 0b:6b2a $0f $0c GFX GFX
-    dw   `00031133                                     ;; 0b:6b2c $1f $13 GFX GFX
-    dw   `00003300                                     ;; 0b:6b2e $0c $0c GFX GFX
-    dw   `31111123                                     ;; 0b:6b30 $fd $83 GFX GFX
-    dw   `12333233                                     ;; 0b:6b32 $bb $7f GFX GFX
-    dw   `33322330                                     ;; 0b:6b34 $e6 $fe GFX GFX
-    dw   `33111230                                     ;; 0b:6b36 $fa $c6 GFX GFX
-    dw   `31122300                                     ;; 0b:6b38 $e4 $9c GFX GFX
-    dw   `13333000                                     ;; 0b:6b3a $f8 $78 GFX GFX
-    dw   `30000000                                     ;; 0b:6b3c $80 $80 GFX GFX
-    dw   `00000000                                     ;; 0b:6b3e $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6b40 $00 $00 GFX GFX
-    dw   `03003300                                     ;; 0b:6b42 $4c $4c GFX GFX
-    dw   `31331300                                     ;; 0b:6b44 $fc $b4 GFX GFX
-    dw   `21321133                                     ;; 0b:6b46 $6f $b3 GFX GFX
-    dw   `32132132                                     ;; 0b:6b48 $b6 $db GFX GFX
-    dw   `23232132                                     ;; 0b:6b4a $56 $fb GFX GFX
-    dw   `23232322                                     ;; 0b:6b4c $54 $ff GFX GFX
-    dw   `33333123                                     ;; 0b:6b4e $fd $fb GFX GFX
-    dw   `00000000                                     ;; 0b:6b50 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6b52 $00 $00 GFX GFX
-    dw   `03300000                                     ;; 0b:6b54 $60 $60 GFX GFX
-    dw   `31300000                                     ;; 0b:6b56 $e0 $a0 GFX GFX
-    dw   `13000000                                     ;; 0b:6b58 $c0 $40 GFX GFX
-    dw   `13303300                                     ;; 0b:6b5a $ec $6c GFX GFX
-    dw   `32231300                                     ;; 0b:6b5c $9c $f4 GFX GFX
-    dw   `32123000                                     ;; 0b:6b5e $a8 $d8 GFX GFX
-    dw   `30000332                                     ;; 0b:6b60 $86 $87 GFX GFX
-    dw   `00000003                                     ;; 0b:6b62 $01 $01 GFX GFX
-    dw   `00000000                                     ;; 0b:6b64 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6b66 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6b68 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6b6a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6b6c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6b6e $00 $00 GFX GFX
-    dw   `21133300                                     ;; 0b:6b70 $7c $9c GFX GFX
-    dw   `11322130                                     ;; 0b:6b72 $e6 $3a GFX GFX
-    dw   `33211300                                     ;; 0b:6b74 $dc $e4 GFX GFX
-    dw   `32113300                                     ;; 0b:6b76 $bc $cc GFX GFX
-    dw   `03332330                                     ;; 0b:6b78 $76 $7e GFX GFX
-    dw   `03221213                                     ;; 0b:6b7a $4b $75 GFX GFX
-    dw   `03111330                                     ;; 0b:6b7c $7e $46 GFX GFX
-    dw   `03333230                                     ;; 0b:6b7e $7a $7e GFX GFX
-    dw   `00000000                                     ;; 0b:6b80 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6b82 $00 $00 GFX GFX
-    dw   `00300000                                     ;; 0b:6b84 $20 $20 GFX GFX
-    dw   `03133000                                     ;; 0b:6b86 $78 $58 GFX GFX
-    dw   `31112333                                     ;; 0b:6b88 $f7 $8f GFX GFX
-    dw   `33111111                                     ;; 0b:6b8a $ff $c0 GFX GFX
-    dw   `31313113                                     ;; 0b:6b8c $ff $a9 GFX GFX
-    dw   `33031321                                     ;; 0b:6b8e $dd $d6 GFX GFX
-    dw   `00003033                                     ;; 0b:6b90 $0b $0b GFX GFX
-    dw   `00032313                                     ;; 0b:6b92 $17 $1d GFX GFX
-    dw   `00323130                                     ;; 0b:6b94 $2e $3a GFX GFX
-    dw   `33331233                                     ;; 0b:6b96 $fb $f7 GFX GFX
-    dw   `11111233                                     ;; 0b:6b98 $fb $07 GFX GFX
-    dw   `33321313                                     ;; 0b:6b9a $ef $f5 GFX GFX
-    dw   `33332313                                     ;; 0b:6b9c $f7 $fd GFX GFX
-    dw   `13332123                                     ;; 0b:6b9e $f5 $7b GFX GFX
-    dw   `00003313                                     ;; 0b:6ba0 $0f $0d GFX GFX
-    dw   `00000033                                     ;; 0b:6ba2 $03 $03 GFX GFX
-    dw   `00000033                                     ;; 0b:6ba4 $03 $03 GFX GFX
-    dw   `00000313                                     ;; 0b:6ba6 $07 $05 GFX GFX
-    dw   `00033332                                     ;; 0b:6ba8 $1e $1f GFX GFX
-    dw   `00031321                                     ;; 0b:6baa $1d $16 GFX GFX
-    dw   `00003113                                     ;; 0b:6bac $0f $09 GFX GFX
-    dw   `00000330                                     ;; 0b:6bae $06 $06 GFX GFX
-    dw   `11221133                                     ;; 0b:6bb0 $cf $33 GFX GFX
-    dw   `33311330                                     ;; 0b:6bb2 $fe $e6 GFX GFX
-    dw   `33333230                                     ;; 0b:6bb4 $fa $fe GFX GFX
-    dw   `32222130                                     ;; 0b:6bb6 $86 $fa GFX GFX
-    dw   `13311300                                     ;; 0b:6bb8 $fc $64 GFX GFX
-    dw   `33033000                                     ;; 0b:6bba $d8 $d8 GFX GFX
-    dw   `00000000                                     ;; 0b:6bbc $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6bbe $00 $00 GFX GFX
-    dw   `00003000                                     ;; 0b:6bc0 $08 $08 GFX GFX
-    dw   `00031303                                     ;; 0b:6bc2 $1d $15 GFX GFX
-    dw   `00033303                                     ;; 0b:6bc4 $1d $1d GFX GFX
-    dw   `03322132                                     ;; 0b:6bc6 $66 $7b GFX GFX
-    dw   `32132132                                     ;; 0b:6bc8 $b6 $db GFX GFX
-    dw   `23232132                                     ;; 0b:6bca $56 $fb GFX GFX
-    dw   `23231333                                     ;; 0b:6bcc $5f $f7 GFX GFX
-    dw   `23133000                                     ;; 0b:6bce $78 $d8 GFX GFX
-    dw   `30000000                                     ;; 0b:6bd0 $80 $80 GFX GFX
-    dw   `13003300                                     ;; 0b:6bd2 $cc $4c GFX GFX
-    dw   `33031300                                     ;; 0b:6bd4 $dc $d4 GFX GFX
-    dw   `23333033                                     ;; 0b:6bd6 $7b $fb GFX GFX
-    dw   `13223313                                     ;; 0b:6bd8 $cf $7d GFX GFX
-    dw   `13213222                                     ;; 0b:6bda $d8 $6f GFX GFX
-    dw   `32213212                                     ;; 0b:6bdc $9a $ed GFX GFX
-    dw   `03332113                                     ;; 0b:6bde $77 $79 GFX GFX
-    dw   `13300000                                     ;; 0b:6be0 $e0 $60 GFX GFX
-    dw   `30000000                                     ;; 0b:6be2 $80 $80 GFX GFX
-    dw   `00000000                                     ;; 0b:6be4 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6be6 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6be8 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6bea $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6bec $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6bee $00 $00 GFX GFX
-    dw   `00003333                                     ;; 0b:6bf0 $0f $0f GFX GFX
-    dw   `00000032                                     ;; 0b:6bf2 $02 $03 GFX GFX
-    dw   `00000003                                     ;; 0b:6bf4 $01 $01 GFX GFX
-    dw   `00000003                                     ;; 0b:6bf6 $01 $01 GFX GFX
-    dw   `00000000                                     ;; 0b:6bf8 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6bfa $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6bfc $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6bfe $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6c00 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6c02 $00 $00 GFX GFX
-    dw   `00000003                                     ;; 0b:6c04 $01 $01 GFX GFX
-    dw   `00000003                                     ;; 0b:6c06 $01 $01 GFX GFX
-    dw   `00000033                                     ;; 0b:6c08 $03 $03 GFX GFX
-    dw   `30330032                                     ;; 0b:6c0a $b2 $b3 GFX GFX
-    dw   `33130312                                     ;; 0b:6c0c $f6 $d5 GFX GFX
-    dw   `32333111                                     ;; 0b:6c0e $bf $f8 GFX GFX
-    dw   `32222130                                     ;; 0b:6c10 $86 $fa GFX GFX
-    dw   `31113300                                     ;; 0b:6c12 $fc $8c GFX GFX
-    dw   `23333000                                     ;; 0b:6c14 $78 $f8 GFX GFX
-    dw   `22223000                                     ;; 0b:6c16 $08 $f8 GFX GFX
-    dw   `31131300                                     ;; 0b:6c18 $fc $94 GFX GFX
-    dw   `33333000                                     ;; 0b:6c1a $f8 $f8 GFX GFX
-    dw   `22230000                                     ;; 0b:6c1c $10 $f0 GFX GFX
-    dw   `12300000                                     ;; 0b:6c1e $a0 $60 GFX GFX
-    dw   `21333311                                     ;; 0b:6c20 $7f $bc GFX GFX
-    dw   `13322333                                     ;; 0b:6c22 $e7 $7f GFX GFX
-    dw   `23312222                                     ;; 0b:6c24 $70 $ef GFX GFX
-    dw   `33211112                                     ;; 0b:6c26 $de $e1 GFX GFX
-    dw   `33311123                                     ;; 0b:6c28 $fd $e3 GFX GFX
-    dw   `32233333                                     ;; 0b:6c2a $9f $ff GFX GFX
-    dw   `32222223                                     ;; 0b:6c2c $81 $ff GFX GFX
-    dw   `31111133                                     ;; 0b:6c2e $ff $83 GFX GFX
-    dw   `23130000                                     ;; 0b:6c30 $70 $d0 GFX GFX
-    dw   `30330000                                     ;; 0b:6c32 $b0 $b0 GFX GFX
-    dw   `30000000                                     ;; 0b:6c34 $80 $80 GFX GFX
-    dw   `13000000                                     ;; 0b:6c36 $c0 $40 GFX GFX
-    dw   `30000000                                     ;; 0b:6c38 $80 $80 GFX GFX
-    dw   `00000000                                     ;; 0b:6c3a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6c3c $00 $00 GFX GFX
-    dw   `30000000                                     ;; 0b:6c3e $80 $80 GFX GFX
-    dw   `31111331                                     ;; 0b:6c40 $ff $86 GFX GFX
-    dw   `03333223                                     ;; 0b:6c42 $79 $7f GFX GFX
-    dw   `32222222                                     ;; 0b:6c44 $80 $ff GFX GFX
-    dw   `31112333                                     ;; 0b:6c46 $f7 $8f GFX GFX
-    dw   `32223113                                     ;; 0b:6c48 $8f $f9 GFX GFX
-    dw   `33333123                                     ;; 0b:6c4a $fd $fb GFX GFX
-    dw   `03223131                                     ;; 0b:6c4c $4f $7a GFX GFX
-    dw   `03133133                                     ;; 0b:6c4e $7f $5b GFX GFX
-    dw   `30000000                                     ;; 0b:6c50 $80 $80 GFX GFX
-    dw   `03300000                                     ;; 0b:6c52 $60 $60 GFX GFX
-    dw   `33130000                                     ;; 0b:6c54 $f0 $d0 GFX GFX
-    dw   `21130030                                     ;; 0b:6c56 $72 $92 GFX GFX
-    dw   `32300313                                     ;; 0b:6c58 $a7 $e5 GFX GFX
-    dw   `33333123                                     ;; 0b:6c5a $fd $fb GFX GFX
-    dw   `12332230                                     ;; 0b:6c5c $b2 $7e GFX GFX
-    dw   `11233330                                     ;; 0b:6c5e $de $3e GFX GFX
-    dw   `00331233                                     ;; 0b:6c60 $3b $37 GFX GFX
-    dw   `00312333                                     ;; 0b:6c62 $37 $2f GFX GFX
-    dw   `03123231                                     ;; 0b:6c64 $6b $5e GFX GFX
-    dw   `31333331                                     ;; 0b:6c66 $ff $be GFX GFX
-    dw   `33000312                                     ;; 0b:6c68 $c6 $c5 GFX GFX
-    dw   `00003123                                     ;; 0b:6c6a $0d $0b GFX GFX
-    dw   `00032330                                     ;; 0b:6c6c $16 $1e GFX GFX
-    dw   `00033000                                     ;; 0b:6c6e $18 $18 GFX GFX
-    dw   `11233123                                     ;; 0b:6c70 $dd $3b GFX GFX
-    dw   `12231112                                     ;; 0b:6c72 $9e $71 GFX GFX
-    dw   `12323112                                     ;; 0b:6c74 $ae $79 GFX GFX
-    dw   `23333112                                     ;; 0b:6c76 $7e $f9 GFX GFX
-    dw   `33331123                                     ;; 0b:6c78 $fd $f3 GFX GFX
-    dw   `32331233                                     ;; 0b:6c7a $bb $f7 GFX GFX
-    dw   `03312332                                     ;; 0b:6c7c $76 $6f GFX GFX
-    dw   `33223033                                     ;; 0b:6c7e $cb $fb GFX GFX
-    dw   `00000000                                     ;; 0b:6c80 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6c82 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6c84 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6c86 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6c88 $00 $00 GFX GFX
-    dw   `00030000                                     ;; 0b:6c8a $10 $10 GFX GFX
-    dw   `00313000                                     ;; 0b:6c8c $38 $28 GFX GFX
-    dw   `33123000                                     ;; 0b:6c8e $e8 $d8 GFX GFX
-    dw   `32230000                                     ;; 0b:6c90 $90 $f0 GFX GFX
-    dw   `33333003                                     ;; 0b:6c92 $f9 $f9 GFX GFX
-    dw   `32313331                                     ;; 0b:6c94 $bf $ee GFX GFX
-    dw   `32311322                                     ;; 0b:6c96 $bc $e7 GFX GFX
-    dw   `33212333                                     ;; 0b:6c98 $d7 $ef GFX GFX
-    dw   `23112323                                     ;; 0b:6c9a $75 $cf GFX GFX
-    dw   `31123323                                     ;; 0b:6c9c $ed $9f GFX GFX
-    dw   `12233233                                     ;; 0b:6c9e $9b $7f GFX GFX
-    dw   `30000000                                     ;; 0b:6ca0 $80 $80 GFX GFX
-    dw   `13000000                                     ;; 0b:6ca2 $c0 $40 GFX GFX
-    dw   `23000030                                     ;; 0b:6ca4 $42 $c2 GFX GFX
-    dw   `33300313                                     ;; 0b:6ca6 $e7 $e5 GFX GFX
-    dw   `11333123                                     ;; 0b:6ca8 $fd $3b GFX GFX
-    dw   `31233330                                     ;; 0b:6caa $de $be GFX GFX
-    dw   `31233123                                     ;; 0b:6cac $dd $bb GFX GFX
-    dw   `12331233                                     ;; 0b:6cae $bb $77 GFX GFX
-    dw   `00000000                                     ;; 0b:6cb0 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6cb2 $00 $00 GFX GFX
-    dw   `00000003                                     ;; 0b:6cb4 $01 $01 GFX GFX
-    dw   `00000003                                     ;; 0b:6cb6 $01 $01 GFX GFX
-    dw   `00000033                                     ;; 0b:6cb8 $03 $03 GFX GFX
-    dw   `00000032                                     ;; 0b:6cba $02 $03 GFX GFX
-    dw   `00000312                                     ;; 0b:6cbc $06 $05 GFX GFX
-    dw   `00003111                                     ;; 0b:6cbe $0f $08 GFX GFX
-    dw   `32222130                                     ;; 0b:6cc0 $86 $fa GFX GFX
-    dw   `31113300                                     ;; 0b:6cc2 $fc $8c GFX GFX
-    dw   `23333000                                     ;; 0b:6cc4 $78 $f8 GFX GFX
-    dw   `22223000                                     ;; 0b:6cc6 $08 $f8 GFX GFX
-    dw   `31131300                                     ;; 0b:6cc8 $fc $94 GFX GFX
-    dw   `33333000                                     ;; 0b:6cca $f8 $f8 GFX GFX
-    dw   `22230000                                     ;; 0b:6ccc $10 $f0 GFX GFX
-    dw   `12300000                                     ;; 0b:6cce $a0 $60 GFX GFX
-    dw   `00033311                                     ;; 0b:6cd0 $1f $1c GFX GFX
-    dw   `00322333                                     ;; 0b:6cd2 $27 $3f GFX GFX
-    dw   `00312222                                     ;; 0b:6cd4 $30 $2f GFX GFX
-    dw   `03211112                                     ;; 0b:6cd6 $5e $61 GFX GFX
-    dw   `03311123                                     ;; 0b:6cd8 $7d $63 GFX GFX
-    dw   `32233333                                     ;; 0b:6cda $9f $ff GFX GFX
-    dw   `32222223                                     ;; 0b:6cdc $81 $ff GFX GFX
-    dw   `31111133                                     ;; 0b:6cde $ff $83 GFX GFX
-    dw   `23130000                                     ;; 0b:6ce0 $70 $d0 GFX GFX
-    dw   `30330000                                     ;; 0b:6ce2 $b0 $b0 GFX GFX
-    dw   `30000000                                     ;; 0b:6ce4 $80 $80 GFX GFX
-    dw   `13000000                                     ;; 0b:6ce6 $c0 $40 GFX GFX
-    dw   `30000000                                     ;; 0b:6ce8 $80 $80 GFX GFX
-    dw   `00000000                                     ;; 0b:6cea $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6cec $00 $00 GFX GFX
-    dw   `30000000                                     ;; 0b:6cee $80 $80 GFX GFX
-    dw   `00000000                                     ;; 0b:6cf0 $00 $00 GFX GFX
-    dw   `00003033                                     ;; 0b:6cf2 $0b $0b GFX GFX
-    dw   `03031322                                     ;; 0b:6cf4 $5c $57 GFX GFX
-    dw   `31323232                                     ;; 0b:6cf6 $ea $bf GFX GFX
-    dw   `21232132                                     ;; 0b:6cf8 $56 $bb GFX GFX
-    dw   `32132132                                     ;; 0b:6cfa $b6 $db GFX GFX
-    dw   `23232233                                     ;; 0b:6cfc $53 $ff GFX GFX
-    dw   `23233300                                     ;; 0b:6cfe $5c $fc GFX GFX
-    dw   `30003000                                     ;; 0b:6d00 $88 $88 GFX GFX
-    dw   `13031303                                     ;; 0b:6d02 $dd $55 GFX GFX
-    dw   `32323232                                     ;; 0b:6d04 $aa $ff GFX GFX
-    dw   `12321132                                     ;; 0b:6d06 $ae $73 GFX GFX
-    dw   `11321132                                     ;; 0b:6d08 $ee $33 GFX GFX
-    dw   `23211322                                     ;; 0b:6d0a $5c $e7 GFX GFX
-    dw   `30333332                                     ;; 0b:6d0c $be $bf GFX GFX
-    dw   `00000003                                     ;; 0b:6d0e $01 $01 GFX GFX
-    dw   `23330000                                     ;; 0b:6d10 $70 $f0 GFX GFX
-    dw   `30000000                                     ;; 0b:6d12 $80 $80 GFX GFX
-    dw   `00000000                                     ;; 0b:6d14 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6d16 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6d18 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6d1a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6d1c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6d1e $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6d20 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6d22 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6d24 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6d26 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6d28 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6d2a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6d2c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6d2e $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6d30 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6d32 $00 $00 GFX GFX
-    dw   `33000000                                     ;; 0b:6d34 $c0 $c0 GFX GFX
-    dw   `13000000                                     ;; 0b:6d36 $c0 $40 GFX GFX
-    dw   `30033000                                     ;; 0b:6d38 $98 $98 GFX GFX
-    dw   `33313000                                     ;; 0b:6d3a $f8 $e8 GFX GFX
-    dw   `32230000                                     ;; 0b:6d3c $90 $f0 GFX GFX
-    dw   `32213033                                     ;; 0b:6d3e $9b $eb GFX GFX
-    dw   `00000000                                     ;; 0b:6d40 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6d42 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6d44 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6d46 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6d48 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6d4a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6d4c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6d4e $00 $00 GFX GFX
-    dw   `21132313                                     ;; 0b:6d50 $77 $9d GFX GFX
-    dw   `11322330                                     ;; 0b:6d52 $e6 $3e GFX GFX
-    dw   `33211230                                     ;; 0b:6d54 $da $e6 GFX GFX
-    dw   `22113330                                     ;; 0b:6d56 $3e $ce GFX GFX
-    dw   `33332231                                     ;; 0b:6d58 $f3 $fe GFX GFX
-    dw   `32112333                                     ;; 0b:6d5a $b7 $cf GFX GFX
-    dw   `33333223                                     ;; 0b:6d5c $f9 $ff GFX GFX
-    dw   `31122233                                     ;; 0b:6d5e $e3 $9f GFX GFX
-    dw   `00000000                                     ;; 0b:6d60 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6d62 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6d64 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6d66 $00 $00 GFX GFX
-    dw   `30000000                                     ;; 0b:6d68 $80 $80 GFX GFX
-    dw   `00000000                                     ;; 0b:6d6a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6d6c $00 $00 GFX GFX
-    dw   `30000000                                     ;; 0b:6d6e $80 $80 GFX GFX
-    dw   `33322331                                     ;; 0b:6d70 $e7 $fe GFX GFX
-    dw   `13333223                                     ;; 0b:6d72 $f9 $7f GFX GFX
-    dw   `32313333                                     ;; 0b:6d74 $bf $ef GFX GFX
-    dw   `21332332                                     ;; 0b:6d76 $76 $bf GFX GFX
-    dw   `21323113                                     ;; 0b:6d78 $6f $b9 GFX GFX
-    dw   `21323123                                     ;; 0b:6d7a $6d $bb GFX GFX
-    dw   `13223131                                     ;; 0b:6d7c $cf $7a GFX GFX
-    dw   `32123133                                     ;; 0b:6d7e $af $db GFX GFX
-    dw   `30000000                                     ;; 0b:6d80 $80 $80 GFX GFX
-    dw   `00300000                                     ;; 0b:6d82 $20 $20 GFX GFX
-    dw   `03130000                                     ;; 0b:6d84 $70 $50 GFX GFX
-    dw   `31130030                                     ;; 0b:6d86 $f2 $92 GFX GFX
-    dw   `22300313                                     ;; 0b:6d88 $27 $e5 GFX GFX
-    dw   `33333123                                     ;; 0b:6d8a $fd $fb GFX GFX
-    dw   `12322230                                     ;; 0b:6d8c $a2 $7e GFX GFX
-    dw   `11232330                                     ;; 0b:6d8e $d6 $3e GFX GFX
-    dw   `03231233                                     ;; 0b:6d90 $5b $77 GFX GFX
-    dw   `00312333                                     ;; 0b:6d92 $37 $2f GFX GFX
-    dw   `03123231                                     ;; 0b:6d94 $6b $5e GFX GFX
-    dw   `31333331                                     ;; 0b:6d96 $ff $be GFX GFX
-    dw   `33000312                                     ;; 0b:6d98 $c6 $c5 GFX GFX
-    dw   `00003123                                     ;; 0b:6d9a $0d $0b GFX GFX
-    dw   `00032330                                     ;; 0b:6d9c $16 $1e GFX GFX
-    dw   `00033000                                     ;; 0b:6d9e $18 $18 GFX GFX
-    dw   `11233123                                     ;; 0b:6da0 $dd $3b GFX GFX
-    dw   `12231112                                     ;; 0b:6da2 $9e $71 GFX GFX
-    dw   `12323112                                     ;; 0b:6da4 $ae $79 GFX GFX
-    dw   `23333112                                     ;; 0b:6da6 $7e $f9 GFX GFX
-    dw   `33331123                                     ;; 0b:6da8 $fd $f3 GFX GFX
-    dw   `32331233                                     ;; 0b:6daa $bb $f7 GFX GFX
-    dw   `03312332                                     ;; 0b:6dac $76 $6f GFX GFX
-    dw   `33223033                                     ;; 0b:6dae $cb $fb GFX GFX
-    dw   `00000000                                     ;; 0b:6db0 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6db2 $00 $00 GFX GFX
-    dw   `00000003                                     ;; 0b:6db4 $01 $01 GFX GFX
-    dw   `00000003                                     ;; 0b:6db6 $01 $01 GFX GFX
-    dw   `30000033                                     ;; 0b:6db8 $83 $83 GFX GFX
-    dw   `13300032                                     ;; 0b:6dba $e2 $63 GFX GFX
-    dw   `13230312                                     ;; 0b:6dbc $d6 $75 GFX GFX
-    dw   `32213331                                     ;; 0b:6dbe $9f $ee GFX GFX
-    dw   `32222130                                     ;; 0b:6dc0 $86 $fa GFX GFX
-    dw   `31112300                                     ;; 0b:6dc2 $f4 $8c GFX GFX
-    dw   `23333000                                     ;; 0b:6dc4 $78 $f8 GFX GFX
-    dw   `22223000                                     ;; 0b:6dc6 $08 $f8 GFX GFX
-    dw   `31131300                                     ;; 0b:6dc8 $fc $94 GFX GFX
-    dw   `33333000                                     ;; 0b:6dca $f8 $f8 GFX GFX
-    dw   `22230000                                     ;; 0b:6dcc $10 $f0 GFX GFX
-    dw   `12300000                                     ;; 0b:6dce $a0 $60 GFX GFX
-    dw   `21132323                                     ;; 0b:6dd0 $75 $9f GFX GFX
-    dw   `11322332                                     ;; 0b:6dd2 $e6 $3f GFX GFX
-    dw   `33211232                                     ;; 0b:6dd4 $da $e7 GFX GFX
-    dw   `22113333                                     ;; 0b:6dd6 $3f $cf GFX GFX
-    dw   `33332231                                     ;; 0b:6dd8 $f3 $fe GFX GFX
-    dw   `32112333                                     ;; 0b:6dda $b7 $cf GFX GFX
-    dw   `33333223                                     ;; 0b:6ddc $f9 $ff GFX GFX
-    dw   `31122233                                     ;; 0b:6dde $e3 $9f GFX GFX
-    dw   `33130000                                     ;; 0b:6de0 $f0 $d0 GFX GFX
-    dw   `23330000                                     ;; 0b:6de2 $70 $f0 GFX GFX
-    dw   `23000000                                     ;; 0b:6de4 $40 $c0 GFX GFX
-    dw   `30000000                                     ;; 0b:6de6 $80 $80 GFX GFX
-    dw   `30000000                                     ;; 0b:6de8 $80 $80 GFX GFX
-    dw   `00000000                                     ;; 0b:6dea $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6dec $00 $00 GFX GFX
-    dw   `30000000                                     ;; 0b:6dee $80 $80 GFX GFX
-    dw   `00000000                                     ;; 0b:6df0 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6df2 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6df4 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6df6 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6df8 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6dfa $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6dfc $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6dfe $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6e00 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6e02 $00 $00 GFX GFX
-    dw   `00000003                                     ;; 0b:6e04 $01 $01 GFX GFX
-    dw   `00000331                                     ;; 0b:6e06 $07 $06 GFX GFX
-    dw   `00033111                                     ;; 0b:6e08 $1f $18 GFX GFX
-    dw   `03311112                                     ;; 0b:6e0a $7e $61 GFX GFX
-    dw   `31111123                                     ;; 0b:6e0c $fd $83 GFX GFX
-    dw   `03212231                                     ;; 0b:6e0e $53 $6e GFX GFX
-    dw   `00000333                                     ;; 0b:6e10 $07 $07 GFX GFX
-    dw   `00333111                                     ;; 0b:6e12 $3f $38 GFX GFX
-    dw   `33111211                                     ;; 0b:6e14 $fb $c4 GFX GFX
-    dw   `11122111                                     ;; 0b:6e16 $e7 $18 GFX GFX
-    dw   `11221112                                     ;; 0b:6e18 $ce $31 GFX GFX
-    dw   `32211112                                     ;; 0b:6e1a $9e $e1 GFX GFX
-    dw   `12211112                                     ;; 0b:6e1c $9e $61 GFX GFX
-    dw   `22111122                                     ;; 0b:6e1e $3c $c3 GFX GFX
-    dw   `33000000                                     ;; 0b:6e20 $c0 $c0 GFX GFX
-    dw   `12300000                                     ;; 0b:6e22 $a0 $60 GFX GFX
-    dw   `21300000                                     ;; 0b:6e24 $60 $a0 GFX GFX
-    dw   `21300000                                     ;; 0b:6e26 $60 $a0 GFX GFX
-    dw   `11130000                                     ;; 0b:6e28 $f0 $10 GFX GFX
-    dw   `11130000                                     ;; 0b:6e2a $f0 $10 GFX GFX
-    dw   `11130000                                     ;; 0b:6e2c $f0 $10 GFX GFX
-    dw   `11113000                                     ;; 0b:6e2e $f8 $08 GFX GFX
-    dw   `00322312                                     ;; 0b:6e30 $26 $3d GFX GFX
-    dw   `00033122                                     ;; 0b:6e32 $1c $1b GFX GFX
-    dw   `00032222                                     ;; 0b:6e34 $10 $1f GFX GFX
-    dw   `00031222                                     ;; 0b:6e36 $18 $17 GFX GFX
-    dw   `00312221                                     ;; 0b:6e38 $31 $2e GFX GFX
-    dw   `03122221                                     ;; 0b:6e3a $61 $5e GFX GFX
-    dw   `31222211                                     ;; 0b:6e3c $c3 $bc GFX GFX
-    dw   `31222211                                     ;; 0b:6e3e $c3 $bc GFX GFX
-    dw   `22111122                                     ;; 0b:6e40 $3c $c3 GFX GFX
-    dw   `21111232                                     ;; 0b:6e42 $7a $87 GFX GFX
-    dw   `11111232                                     ;; 0b:6e44 $fa $07 GFX GFX
-    dw   `11111232                                     ;; 0b:6e46 $fa $07 GFX GFX
-    dw   `11111232                                     ;; 0b:6e48 $fa $07 GFX GFX
-    dw   `11111232                                     ;; 0b:6e4a $fa $07 GFX GFX
-    dw   `11111132                                     ;; 0b:6e4c $fe $03 GFX GFX
-    dw   `11111123                                     ;; 0b:6e4e $fd $03 GFX GFX
-    dw   `11113000                                     ;; 0b:6e50 $f8 $08 GFX GFX
-    dw   `11113000                                     ;; 0b:6e52 $f8 $08 GFX GFX
-    dw   `21111300                                     ;; 0b:6e54 $7c $84 GFX GFX
-    dw   `21111300                                     ;; 0b:6e56 $7c $84 GFX GFX
-    dw   `22112300                                     ;; 0b:6e58 $34 $cc GFX GFX
-    dw   `22222300                                     ;; 0b:6e5a $04 $fc GFX GFX
-    dw   `33332300                                     ;; 0b:6e5c $f4 $fc GFX GFX
-    dw   `00003000                                     ;; 0b:6e5e $08 $08 GFX GFX
-    dw   `00000003                                     ;; 0b:6e60 $01 $01 GFX GFX
-    dw   `00000003                                     ;; 0b:6e62 $01 $01 GFX GFX
-    dw   `00000031                                     ;; 0b:6e64 $03 $02 GFX GFX
-    dw   `00000031                                     ;; 0b:6e66 $03 $02 GFX GFX
-    dw   `00000312                                     ;; 0b:6e68 $06 $05 GFX GFX
-    dw   `00000312                                     ;; 0b:6e6a $06 $05 GFX GFX
-    dw   `00003122                                     ;; 0b:6e6c $0c $0b GFX GFX
-    dw   `00003122                                     ;; 0b:6e6e $0c $0b GFX GFX
-    dw   `12222211                                     ;; 0b:6e70 $83 $7c GFX GFX
-    dw   `12222111                                     ;; 0b:6e72 $87 $78 GFX GFX
-    dw   `22222111                                     ;; 0b:6e74 $07 $f8 GFX GFX
-    dw   `22222111                                     ;; 0b:6e76 $07 $f8 GFX GFX
-    dw   `22222111                                     ;; 0b:6e78 $07 $f8 GFX GFX
-    dw   `22222111                                     ;; 0b:6e7a $07 $f8 GFX GFX
-    dw   `22222111                                     ;; 0b:6e7c $07 $f8 GFX GFX
-    dw   `22222211                                     ;; 0b:6e7e $03 $fc GFX GFX
-    dw   `11111113                                     ;; 0b:6e80 $ff $01 GFX GFX
-    dw   `11111113                                     ;; 0b:6e82 $ff $01 GFX GFX
-    dw   `11111112                                     ;; 0b:6e84 $fe $01 GFX GFX
-    dw   `11111111                                     ;; 0b:6e86 $ff $00 GFX GFX
-    dw   `11111111                                     ;; 0b:6e88 $ff $00 GFX GFX
-    dw   `11111111                                     ;; 0b:6e8a $ff $00 GFX GFX
-    dw   `12221111                                     ;; 0b:6e8c $8f $70 GFX GFX
-    dw   `22222111                                     ;; 0b:6e8e $07 $f8 GFX GFX
-    dw   `00000000                                     ;; 0b:6e90 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6e92 $00 $00 GFX GFX
-    dw   `30000000                                     ;; 0b:6e94 $80 $80 GFX GFX
-    dw   `23000000                                     ;; 0b:6e96 $40 $c0 GFX GFX
-    dw   `23000000                                     ;; 0b:6e98 $40 $c0 GFX GFX
-    dw   `12300000                                     ;; 0b:6e9a $a0 $60 GFX GFX
-    dw   `12300000                                     ;; 0b:6e9c $a0 $60 GFX GFX
-    dw   `11230000                                     ;; 0b:6e9e $d0 $30 GFX GFX
-    dw   `00003121                                     ;; 0b:6ea0 $0d $0a GFX GFX
-    dw   `00103113                                     ;; 0b:6ea2 $2f $09 GFX GFX
-    dw   `01000333                                     ;; 0b:6ea4 $47 $07 GFX GFX
-    dw   `10010033                                     ;; 0b:6ea6 $93 $03 GFX GFX
-    dw   `10011033                                     ;; 0b:6ea8 $9b $03 GFX GFX
-    dw   `01000033                                     ;; 0b:6eaa $43 $03 GFX GFX
-    dw   `00111003                                     ;; 0b:6eac $39 $01 GFX GFX
-    dw   `00000111                                     ;; 0b:6eae $07 $00 GFX GFX
-    dw   `12222222                                     ;; 0b:6eb0 $80 $7f GFX GFX
-    dw   `33322222                                     ;; 0b:6eb2 $e0 $ff GFX GFX
-    dw   `31132222                                     ;; 0b:6eb4 $f0 $9f GFX GFX
-    dw   `33133223                                     ;; 0b:6eb6 $f9 $df GFX GFX
-    dw   `33332333                                     ;; 0b:6eb8 $f7 $ff GFX GFX
-    dw   `33332333                                     ;; 0b:6eba $f7 $ff GFX GFX
-    dw   `33323333                                     ;; 0b:6ebc $ef $ff GFX GFX
-    dw   `11000111                                     ;; 0b:6ebe $c7 $00 GFX GFX
-    dw   `22222222                                     ;; 0b:6ec0 $00 $ff GFX GFX
-    dw   `22333333                                     ;; 0b:6ec2 $3f $ff GFX GFX
-    dw   `23311330                                     ;; 0b:6ec4 $7e $e6 GFX GFX
-    dw   `33333130                                     ;; 0b:6ec6 $fe $fa GFX GFX
-    dw   `23333330                                     ;; 0b:6ec8 $7e $fe GFX GFX
-    dw   `23333330                                     ;; 0b:6eca $7e $fe GFX GFX
-    dw   `32333300                                     ;; 0b:6ecc $bc $fc GFX GFX
-    dw   `11000011                                     ;; 0b:6ece $c3 $00 GFX GFX
-    dw   `11230000                                     ;; 0b:6ed0 $d0 $30 GFX GFX
-    dw   `22230100                                     ;; 0b:6ed2 $14 $f0 GFX GFX
-    dw   `33300010                                     ;; 0b:6ed4 $e2 $e0 GFX GFX
-    dw   `00001001                                     ;; 0b:6ed6 $09 $00 GFX GFX
-    dw   `00011001                                     ;; 0b:6ed8 $19 $00 GFX GFX
-    dw   `01100010                                     ;; 0b:6eda $62 $00 GFX GFX
-    dw   `00011100                                     ;; 0b:6edc $1c $00 GFX GFX
-    dw   `11100000                                     ;; 0b:6ede $e0 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6ee0 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6ee2 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6ee4 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6ee6 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6ee8 $00 $00 GFX GFX
-    dw   `00000003                                     ;; 0b:6eea $01 $01 GFX GFX
-    dw   `00000031                                     ;; 0b:6eec $03 $02 GFX GFX
-    dw   `00000311                                     ;; 0b:6eee $07 $04 GFX GFX
-    dw   `00000033                                     ;; 0b:6ef0 $03 $03 GFX GFX
-    dw   `00003311                                     ;; 0b:6ef2 $0f $0c GFX GFX
-    dw   `00331111                                     ;; 0b:6ef4 $3f $30 GFX GFX
-    dw   `03211111                                     ;; 0b:6ef6 $5f $60 GFX GFX
-    dw   `31131112                                     ;; 0b:6ef8 $fe $91 GFX GFX
-    dw   `11311112                                     ;; 0b:6efa $fe $21 GFX GFX
-    dw   `13111112                                     ;; 0b:6efc $fe $41 GFX GFX
-    dw   `23111112                                     ;; 0b:6efe $7e $c1 GFX GFX
-    dw   `00000000                                     ;; 0b:6f00 $00 $00 GFX GFX
-    dw   `30000000                                     ;; 0b:6f02 $80 $80 GFX GFX
-    dw   `23000000                                     ;; 0b:6f04 $40 $c0 GFX GFX
-    dw   `13000000                                     ;; 0b:6f06 $c0 $40 GFX GFX
-    dw   `11300000                                     ;; 0b:6f08 $e0 $20 GFX GFX
-    dw   `11130000                                     ;; 0b:6f0a $f0 $10 GFX GFX
-    dw   `11113000                                     ;; 0b:6f0c $f8 $08 GFX GFX
-    dw   `11111300                                     ;; 0b:6f0e $fc $04 GFX GFX
-    dw   `00003112                                     ;; 0b:6f10 $0e $09 GFX GFX
-    dw   `00131112                                     ;; 0b:6f12 $3e $11 GFX GFX
-    dw   `01032223                                     ;; 0b:6f14 $51 $1f GFX GFX
-    dw   `01003323                                     ;; 0b:6f16 $4d $0f GFX GFX
-    dw   `00110001                                     ;; 0b:6f18 $31 $00 GFX GFX
-    dw   `00001110                                     ;; 0b:6f1a $0e $00 GFX GFX
-    dw   `00000001                                     ;; 0b:6f1c $01 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6f1e $00 $00 GFX GFX
-    dw   `31211111                                     ;; 0b:6f20 $df $a0 GFX GFX
-    dw   `32111111                                     ;; 0b:6f22 $bf $c0 GFX GFX
-    dw   `12111111                                     ;; 0b:6f24 $bf $40 GFX GFX
-    dw   `12111111                                     ;; 0b:6f26 $bf $40 GFX GFX
-    dw   `22111111                                     ;; 0b:6f28 $3f $c0 GFX GFX
-    dw   `00000000                                     ;; 0b:6f2a $00 $00 GFX GFX
-    dw   `11111111                                     ;; 0b:6f2c $ff $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6f2e $00 $00 GFX GFX
-    dw   `21111300                                     ;; 0b:6f30 $7c $84 GFX GFX
-    dw   `32111230                                     ;; 0b:6f32 $ba $c6 GFX GFX
-    dw   `32111130                                     ;; 0b:6f34 $be $c2 GFX GFX
-    dw   `13212330                                     ;; 0b:6f36 $d6 $6e GFX GFX
-    dw   `13200010                                     ;; 0b:6f38 $c2 $60 GFX GFX
-    dw   `00011100                                     ;; 0b:6f3a $1c $00 GFX GFX
-    dw   `11100000                                     ;; 0b:6f3c $e0 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6f3e $00 $00 GFX GFX
-    dw   `00000003                                     ;; 0b:6f40 $01 $01 GFX GFX
-    dw   `00000031                                     ;; 0b:6f42 $03 $02 GFX GFX
-    dw   `00000031                                     ;; 0b:6f44 $03 $02 GFX GFX
-    dw   `00000311                                     ;; 0b:6f46 $07 $04 GFX GFX
-    dw   `00000311                                     ;; 0b:6f48 $07 $04 GFX GFX
-    dw   `00003111                                     ;; 0b:6f4a $0f $08 GFX GFX
-    dw   `00003121                                     ;; 0b:6f4c $0d $0a GFX GFX
-    dw   `00031121                                     ;; 0b:6f4e $1d $12 GFX GFX
-    dw   `30000000                                     ;; 0b:6f50 $80 $80 GFX GFX
-    dw   `13000000                                     ;; 0b:6f52 $c0 $40 GFX GFX
-    dw   `13000000                                     ;; 0b:6f54 $c0 $40 GFX GFX
-    dw   `11300000                                     ;; 0b:6f56 $e0 $20 GFX GFX
-    dw   `11300000                                     ;; 0b:6f58 $e0 $20 GFX GFX
-    dw   `11130000                                     ;; 0b:6f5a $f0 $10 GFX GFX
-    dw   `12130000                                     ;; 0b:6f5c $b0 $50 GFX GFX
-    dw   `12113000                                     ;; 0b:6f5e $b8 $48 GFX GFX
-    dw   `00031121                                     ;; 0b:6f60 $1d $12 GFX GFX
-    dw   `00311221                                     ;; 0b:6f62 $39 $26 GFX GFX
-    dw   `00333321                                     ;; 0b:6f64 $3d $3e GFX GFX
-    dw   `01000321                                     ;; 0b:6f66 $45 $06 GFX GFX
-    dw   `10001321                                     ;; 0b:6f68 $8d $06 GFX GFX
-    dw   `10000111                                     ;; 0b:6f6a $87 $00 GFX GFX
-    dw   `01100000                                     ;; 0b:6f6c $60 $00 GFX GFX
-    dw   `00011111                                     ;; 0b:6f6e $1f $00 GFX GFX
-    dw   `12113000                                     ;; 0b:6f70 $b8 $48 GFX GFX
-    dw   `12211300                                     ;; 0b:6f72 $9c $64 GFX GFX
-    dw   `12333300                                     ;; 0b:6f74 $bc $7c GFX GFX
-    dw   `12300010                                     ;; 0b:6f76 $a2 $60 GFX GFX
-    dw   `12310001                                     ;; 0b:6f78 $b1 $60 GFX GFX
-    dw   `11100001                                     ;; 0b:6f7a $e1 $00 GFX GFX
-    dw   `00000110                                     ;; 0b:6f7c $06 $00 GFX GFX
-    dw   `11111000                                     ;; 0b:6f7e $f8 $00 GFX GFX
-    dw   `00000003                                     ;; 0b:6f80 $01 $01 GFX GFX
-    dw   `00000031                                     ;; 0b:6f82 $03 $02 GFX GFX
-    dw   `00000031                                     ;; 0b:6f84 $03 $02 GFX GFX
-    dw   `00000311                                     ;; 0b:6f86 $07 $04 GFX GFX
-    dw   `00000311                                     ;; 0b:6f88 $07 $04 GFX GFX
-    dw   `00003111                                     ;; 0b:6f8a $0f $08 GFX GFX
-    dw   `00003121                                     ;; 0b:6f8c $0d $0a GFX GFX
-    dw   `00031121                                     ;; 0b:6f8e $1d $12 GFX GFX
-    dw   `30000000                                     ;; 0b:6f90 $80 $80 GFX GFX
-    dw   `13000000                                     ;; 0b:6f92 $c0 $40 GFX GFX
-    dw   `13000000                                     ;; 0b:6f94 $c0 $40 GFX GFX
-    dw   `11300000                                     ;; 0b:6f96 $e0 $20 GFX GFX
-    dw   `11300000                                     ;; 0b:6f98 $e0 $20 GFX GFX
-    dw   `11130000                                     ;; 0b:6f9a $f0 $10 GFX GFX
-    dw   `12130000                                     ;; 0b:6f9c $b0 $50 GFX GFX
-    dw   `12113000                                     ;; 0b:6f9e $b8 $48 GFX GFX
-    dw   `00031121                                     ;; 0b:6fa0 $1d $12 GFX GFX
-    dw   `00311221                                     ;; 0b:6fa2 $39 $26 GFX GFX
-    dw   `00333321                                     ;; 0b:6fa4 $3d $3e GFX GFX
-    dw   `00000321                                     ;; 0b:6fa6 $05 $06 GFX GFX
-    dw   `00000321                                     ;; 0b:6fa8 $05 $06 GFX GFX
-    dw   `00000321                                     ;; 0b:6faa $05 $06 GFX GFX
-    dw   `00000321                                     ;; 0b:6fac $05 $06 GFX GFX
-    dw   `00000321                                     ;; 0b:6fae $05 $06 GFX GFX
-    dw   `12113000                                     ;; 0b:6fb0 $b8 $48 GFX GFX
-    dw   `12211300                                     ;; 0b:6fb2 $9c $64 GFX GFX
-    dw   `12333300                                     ;; 0b:6fb4 $bc $7c GFX GFX
-    dw   `12300000                                     ;; 0b:6fb6 $a0 $60 GFX GFX
-    dw   `12300000                                     ;; 0b:6fb8 $a0 $60 GFX GFX
-    dw   `12300000                                     ;; 0b:6fba $a0 $60 GFX GFX
-    dw   `12300000                                     ;; 0b:6fbc $a0 $60 GFX GFX
-    dw   `12300000                                     ;; 0b:6fbe $a0 $60 GFX GFX
-    dw   `00003211                                     ;; 0b:6fc0 $0b $0c GFX GFX
-    dw   `00003211                                     ;; 0b:6fc2 $0b $0c GFX GFX
-    dw   `00032111                                     ;; 0b:6fc4 $17 $18 GFX GFX
-    dw   `00032112                                     ;; 0b:6fc6 $16 $19 GFX GFX
-    dw   `00321122                                     ;; 0b:6fc8 $2c $33 GFX GFX
-    dw   `00321123                                     ;; 0b:6fca $2d $33 GFX GFX
-    dw   `00321123                                     ;; 0b:6fcc $2d $33 GFX GFX
-    dw   `00321123                                     ;; 0b:6fce $2d $33 GFX GFX
-    dw   `12300000                                     ;; 0b:6fd0 $a0 $60 GFX GFX
-    dw   `23000000                                     ;; 0b:6fd2 $40 $c0 GFX GFX
-    dw   `23000000                                     ;; 0b:6fd4 $40 $c0 GFX GFX
-    dw   `30000000                                     ;; 0b:6fd6 $80 $80 GFX GFX
-    dw   `30000000                                     ;; 0b:6fd8 $80 $80 GFX GFX
-    dw   `00000000                                     ;; 0b:6fda $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6fdc $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6fde $00 $00 GFX GFX
-    dw   `00321123                                     ;; 0b:6fe0 $2d $33 GFX GFX
-    dw   `00321112                                     ;; 0b:6fe2 $2e $31 GFX GFX
-    dw   `00032112                                     ;; 0b:6fe4 $16 $19 GFX GFX
-    dw   `01132111                                     ;; 0b:6fe6 $77 $18 GFX GFX
-    dw   `10012211                                     ;; 0b:6fe8 $93 $0c GFX GFX
-    dw   `10000111                                     ;; 0b:6fea $87 $00 GFX GFX
-    dw   `01100000                                     ;; 0b:6fec $60 $00 GFX GFX
-    dw   `00011111                                     ;; 0b:6fee $1f $00 GFX GFX
-    dw   `00000000                                     ;; 0b:6ff0 $00 $00 GFX GFX
-    dw   `30000000                                     ;; 0b:6ff2 $80 $80 GFX GFX
-    dw   `30111000                                     ;; 0b:6ff4 $b8 $80 GFX GFX
-    dw   `23000110                                     ;; 0b:6ff6 $46 $c0 GFX GFX
-    dw   `12110001                                     ;; 0b:6ff8 $b1 $40 GFX GFX
-    dw   `11100001                                     ;; 0b:6ffa $e1 $00 GFX GFX
-    dw   `00000110                                     ;; 0b:6ffc $06 $00 GFX GFX
-    dw   `11111000                                     ;; 0b:6ffe $f8 $00 GFX GFX
-    dw   `00000321                                     ;; 0b:7000 $05 $06 GFX GFX
-    dw   `00000032                                     ;; 0b:7002 $02 $03 GFX GFX
-    dw   `00000032                                     ;; 0b:7004 $02 $03 GFX GFX
-    dw   `00000003                                     ;; 0b:7006 $01 $01 GFX GFX
-    dw   `00000003                                     ;; 0b:7008 $01 $01 GFX GFX
-    dw   `00000000                                     ;; 0b:700a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:700c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:700e $00 $00 GFX GFX
-    dw   `11230000                                     ;; 0b:7010 $d0 $30 GFX GFX
-    dw   `11230000                                     ;; 0b:7012 $d0 $30 GFX GFX
-    dw   `11123000                                     ;; 0b:7014 $e8 $18 GFX GFX
-    dw   `21123000                                     ;; 0b:7016 $68 $98 GFX GFX
-    dw   `22112300                                     ;; 0b:7018 $34 $cc GFX GFX
-    dw   `32112300                                     ;; 0b:701a $b4 $cc GFX GFX
-    dw   `32112300                                     ;; 0b:701c $b4 $cc GFX GFX
-    dw   `32112300                                     ;; 0b:701e $b4 $cc GFX GFX
-    dw   `00000000                                     ;; 0b:7020 $00 $00 GFX GFX
-    dw   `00000003                                     ;; 0b:7022 $01 $01 GFX GFX
-    dw   `00000003                                     ;; 0b:7024 $01 $01 GFX GFX
-    dw   `00000003                                     ;; 0b:7026 $01 $01 GFX GFX
-    dw   `00000032                                     ;; 0b:7028 $02 $03 GFX GFX
-    dw   `00000032                                     ;; 0b:702a $02 $03 GFX GFX
-    dw   `00000321                                     ;; 0b:702c $05 $06 GFX GFX
-    dw   `00000311                                     ;; 0b:702e $07 $04 GFX GFX
-    dw   `32112300                                     ;; 0b:7030 $b4 $cc GFX GFX
-    dw   `21112300                                     ;; 0b:7032 $74 $8c GFX GFX
-    dw   `21123000                                     ;; 0b:7034 $68 $98 GFX GFX
-    dw   `11123000                                     ;; 0b:7036 $e8 $18 GFX GFX
-    dw   `11223000                                     ;; 0b:7038 $c8 $38 GFX GFX
-    dw   `11230000                                     ;; 0b:703a $d0 $30 GFX GFX
-    dw   `11230000                                     ;; 0b:703c $d0 $30 GFX GFX
-    dw   `12300000                                     ;; 0b:703e $a0 $60 GFX GFX
-    dw   `00000000                                     ;; 0b:7040 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7042 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7044 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7046 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7048 $00 $00 GFX GFX
-    dw   `30000000                                     ;; 0b:704a $80 $80 GFX GFX
-    dw   `23300000                                     ;; 0b:704c $60 $e0 GFX GFX
-    dw   `12233000                                     ;; 0b:704e $98 $78 GFX GFX
-    dw   `00000000                                     ;; 0b:7050 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7052 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7054 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7056 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7058 $00 $00 GFX GFX
-    dw   `00000033                                     ;; 0b:705a $03 $03 GFX GFX
-    dw   `00003321                                     ;; 0b:705c $0d $0e GFX GFX
-    dw   `03332211                                     ;; 0b:705e $73 $7c GFX GFX
-    dw   `11122333                                     ;; 0b:7060 $e7 $1f GFX GFX
-    dw   `11112222                                     ;; 0b:7062 $f0 $0f GFX GFX
-    dw   `22111111                                     ;; 0b:7064 $3f $c0 GFX GFX
-    dw   `33221111                                     ;; 0b:7066 $cf $f0 GFX GFX
-    dw   `00332222                                     ;; 0b:7068 $30 $3f GFX GFX
-    dw   `00003333                                     ;; 0b:706a $0f $0f GFX GFX
-    dw   `00000000                                     ;; 0b:706c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:706e $00 $00 GFX GFX
-    dw   `32211111                                     ;; 0b:7070 $9f $e0 GFX GFX
-    dw   `21111112                                     ;; 0b:7072 $7e $81 GFX GFX
-    dw   `11112223                                     ;; 0b:7074 $f1 $0f GFX GFX
-    dw   `11222330                                     ;; 0b:7076 $c6 $3e GFX GFX
-    dw   `22333000                                     ;; 0b:7078 $38 $f8 GFX GFX
-    dw   `33000000                                     ;; 0b:707a $c0 $c0 GFX GFX
-    dw   `00000000                                     ;; 0b:707c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:707e $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7080 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7082 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7084 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7086 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7088 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:708a $00 $00 GFX GFX
-    dw   `00000003                                     ;; 0b:708c $01 $01 GFX GFX
-    dw   `00000032                                     ;; 0b:708e $02 $03 GFX GFX
-    dw   `00000000                                     ;; 0b:7090 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7092 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7094 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7096 $00 $00 GFX GFX
-    dw   `00333330                                     ;; 0b:7098 $3e $3e GFX GFX
-    dw   `33222223                                     ;; 0b:709a $c1 $ff GFX GFX
-    dw   `22111112                                     ;; 0b:709c $3e $c1 GFX GFX
-    dw   `11111111                                     ;; 0b:709e $ff $00 GFX GFX
-    dw   `00000321                                     ;; 0b:70a0 $05 $06 GFX GFX
-    dw   `00000321                                     ;; 0b:70a2 $05 $06 GFX GFX
-    dw   `00003211                                     ;; 0b:70a4 $0b $0c GFX GFX
-    dw   `00003211                                     ;; 0b:70a6 $0b $0c GFX GFX
-    dw   `00003211                                     ;; 0b:70a8 $0b $0c GFX GFX
-    dw   `00003211                                     ;; 0b:70aa $0b $0c GFX GFX
-    dw   `00000321                                     ;; 0b:70ac $05 $06 GFX GFX
-    dw   `00000321                                     ;; 0b:70ae $05 $06 GFX GFX
-    dw   `11111111                                     ;; 0b:70b0 $ff $00 GFX GFX
-    dw   `11122222                                     ;; 0b:70b2 $e0 $1f GFX GFX
-    dw   `11233333                                     ;; 0b:70b4 $df $3f GFX GFX
-    dw   `12300000                                     ;; 0b:70b6 $a0 $60 GFX GFX
-    dw   `12300000                                     ;; 0b:70b8 $a0 $60 GFX GFX
-    dw   `12300000                                     ;; 0b:70ba $a0 $60 GFX GFX
-    dw   `11230000                                     ;; 0b:70bc $d0 $30 GFX GFX
-    dw   `11230000                                     ;; 0b:70be $d0 $30 GFX GFX
-    dw   `00000033                                     ;; 0b:70c0 $03 $03 GFX GFX
-    dw   `00003311                                     ;; 0b:70c2 $0f $0c GFX GFX
-    dw   `00031111                                     ;; 0b:70c4 $1f $10 GFX GFX
-    dw   `00311111                                     ;; 0b:70c6 $3f $20 GFX GFX
-    dw   `00311122                                     ;; 0b:70c8 $3c $23 GFX GFX
-    dw   `03111222                                     ;; 0b:70ca $78 $47 GFX GFX
-    dw   `03111223                                     ;; 0b:70cc $79 $47 GFX GFX
-    dw   `03111233                                     ;; 0b:70ce $7b $47 GFX GFX
-    dw   `00000000                                     ;; 0b:70d0 $00 $00 GFX GFX
-    dw   `33000000                                     ;; 0b:70d2 $c0 $c0 GFX GFX
-    dw   `11330000                                     ;; 0b:70d4 $f0 $30 GFX GFX
-    dw   `11123000                                     ;; 0b:70d6 $e8 $18 GFX GFX
-    dw   `21112330                                     ;; 0b:70d8 $76 $8e GFX GFX
-    dw   `22111223                                     ;; 0b:70da $39 $c7 GFX GFX
-    dw   `32211112                                     ;; 0b:70dc $9e $e1 GFX GFX
-    dw   `03221111                                     ;; 0b:70de $4f $70 GFX GFX
-    dw   `00311123                                     ;; 0b:70e0 $3d $23 GFX GFX
-    dw   `00311122                                     ;; 0b:70e2 $3c $23 GFX GFX
-    dw   `00031112                                     ;; 0b:70e4 $1e $11 GFX GFX
-    dw   `00003111                                     ;; 0b:70e6 $0f $08 GFX GFX
-    dw   `00003211                                     ;; 0b:70e8 $0b $0c GFX GFX
-    dw   `00000311                                     ;; 0b:70ea $07 $04 GFX GFX
-    dw   `00000311                                     ;; 0b:70ec $07 $04 GFX GFX
-    dw   `00000311                                     ;; 0b:70ee $07 $04 GFX GFX
-    dw   `00332221                                     ;; 0b:70f0 $31 $3e GFX GFX
-    dw   `30003322                                     ;; 0b:70f2 $8c $8f GFX GFX
-    dw   `23000033                                     ;; 0b:70f4 $43 $c3 GFX GFX
-    dw   `23000000                                     ;; 0b:70f6 $40 $c0 GFX GFX
-    dw   `22300000                                     ;; 0b:70f8 $20 $e0 GFX GFX
-    dw   `12300000                                     ;; 0b:70fa $a0 $60 GFX GFX
-    dw   `12300000                                     ;; 0b:70fc $a0 $60 GFX GFX
-    dw   `12300000                                     ;; 0b:70fe $a0 $60 GFX GFX
-    dw   `00000000                                     ;; 0b:7100 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7102 $00 $00 GFX GFX
-    dw   `00000330                                     ;; 0b:7104 $06 $06 GFX GFX
-    dw   `00000313                                     ;; 0b:7106 $07 $05 GFX GFX
-    dw   `00000311                                     ;; 0b:7108 $07 $04 GFX GFX
-    dw   `33333321                                     ;; 0b:710a $fd $fe GFX GFX
-    dw   `22222222                                     ;; 0b:710c $00 $ff GFX GFX
-    dw   `11111111                                     ;; 0b:710e $ff $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7110 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7112 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7114 $00 $00 GFX GFX
-    dw   `30000000                                     ;; 0b:7116 $80 $80 GFX GFX
-    dw   `13300000                                     ;; 0b:7118 $e0 $60 GFX GFX
-    dw   `11133000                                     ;; 0b:711a $f8 $18 GFX GFX
-    dw   `22111330                                     ;; 0b:711c $3e $c6 GFX GFX
-    dw   `11111113                                     ;; 0b:711e $ff $01 GFX GFX
-    dw   `11111111                                     ;; 0b:7120 $ff $00 GFX GFX
-    dw   `22222222                                     ;; 0b:7122 $00 $ff GFX GFX
-    dw   `33333321                                     ;; 0b:7124 $fd $fe GFX GFX
-    dw   `00000311                                     ;; 0b:7126 $07 $04 GFX GFX
-    dw   `00000313                                     ;; 0b:7128 $07 $05 GFX GFX
-    dw   `00000330                                     ;; 0b:712a $06 $06 GFX GFX
-    dw   `00000000                                     ;; 0b:712c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:712e $00 $00 GFX GFX
-    dw   `11111113                                     ;; 0b:7130 $ff $01 GFX GFX
-    dw   `22111330                                     ;; 0b:7132 $3e $c6 GFX GFX
-    dw   `11133000                                     ;; 0b:7134 $f8 $18 GFX GFX
-    dw   `13300000                                     ;; 0b:7136 $e0 $60 GFX GFX
-    dw   `30000000                                     ;; 0b:7138 $80 $80 GFX GFX
-    dw   `00000000                                     ;; 0b:713a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:713c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:713e $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7140 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7142 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7144 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7146 $00 $00 GFX GFX
-    dw   `00000003                                     ;; 0b:7148 $01 $01 GFX GFX
-    dw   `00000033                                     ;; 0b:714a $03 $03 GFX GFX
-    dw   `00000033                                     ;; 0b:714c $03 $03 GFX GFX
-    dw   `00000330                                     ;; 0b:714e $06 $06 GFX GFX
-    dw   `00003333                                     ;; 0b:7150 $0f $0f GFX GFX
-    dw   `03331113                                     ;; 0b:7152 $7f $71 GFX GFX
-    dw   `31112231                                     ;; 0b:7154 $f3 $8e GFX GFX
-    dw   `33322312                                     ;; 0b:7156 $e6 $fd GFX GFX
-    dw   `33323122                                     ;; 0b:7158 $ec $fb GFX GFX
-    dw   `33331222                                     ;; 0b:715a $f8 $f7 GFX GFX
-    dw   `00312222                                     ;; 0b:715c $30 $2f GFX GFX
-    dw   `03122222                                     ;; 0b:715e $60 $5f GFX GFX
-    dw   `00000300                                     ;; 0b:7160 $04 $04 GFX GFX
-    dw   `00000303                                     ;; 0b:7162 $05 $05 GFX GFX
-    dw   `00000000                                     ;; 0b:7164 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7166 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7168 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:716a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:716c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:716e $00 $00 GFX GFX
-    dw   `03132223                                     ;; 0b:7170 $71 $5f GFX GFX
-    dw   `33333223                                     ;; 0b:7172 $f9 $ff GFX GFX
-    dw   `00333233                                     ;; 0b:7174 $3b $3f GFX GFX
-    dw   `03330300                                     ;; 0b:7176 $74 $74 GFX GFX
-    dw   `03300003                                     ;; 0b:7178 $61 $61 GFX GFX
-    dw   `03003333                                     ;; 0b:717a $4f $4f GFX GFX
-    dw   `03330000                                     ;; 0b:717c $70 $70 GFX GFX
-    dw   `00000000                                     ;; 0b:717e $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7180 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7182 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7184 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7186 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7188 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:718a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:718c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:718e $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7190 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7192 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7194 $00 $00 GFX GFX
-    dw   `00003300                                     ;; 0b:7196 $0c $0c GFX GFX
-    dw   `00031300                                     ;; 0b:7198 $1c $14 GFX GFX
-    dw   `00031300                                     ;; 0b:719a $1c $14 GFX GFX
-    dw   `00321300                                     ;; 0b:719c $2c $34 GFX GFX
-    dw   `00321130                                     ;; 0b:719e $2e $32 GFX GFX
-    dw   `00030000                                     ;; 0b:71a0 $10 $10 GFX GFX
-    dw   `00313330                                     ;; 0b:71a2 $3e $2e GFX GFX
-    dw   `03123113                                     ;; 0b:71a4 $6f $59 GFX GFX
-    dw   `03123222                                     ;; 0b:71a6 $68 $5f GFX GFX
-    dw   `31223333                                     ;; 0b:71a8 $cf $bf GFX GFX
-    dw   `31233222                                     ;; 0b:71aa $d8 $bf GFX GFX
-    dw   `31232333                                     ;; 0b:71ac $d7 $bf GFX GFX
-    dw   `33333111                                     ;; 0b:71ae $ff $f8 GFX GFX
-    dw   `33321113                                     ;; 0b:71b0 $ef $f1 GFX GFX
-    dw   `31132111                                     ;; 0b:71b2 $f7 $98 GFX GFX
-    dw   `31232122                                     ;; 0b:71b4 $d4 $bb GFX GFX
-    dw   `32323222                                     ;; 0b:71b6 $a8 $ff GFX GFX
-    dw   `33222222                                     ;; 0b:71b8 $c0 $ff GFX GFX
-    dw   `32222222                                     ;; 0b:71ba $80 $ff GFX GFX
-    dw   `33222222                                     ;; 0b:71bc $c0 $ff GFX GFX
-    dw   `33323322                                     ;; 0b:71be $ec $ff GFX GFX
-    dw   `31311222                                     ;; 0b:71c0 $f8 $a7 GFX GFX
-    dw   `12232222                                     ;; 0b:71c2 $90 $7f GFX GFX
-    dw   `22232223                                     ;; 0b:71c4 $11 $ff GFX GFX
-    dw   `22233330                                     ;; 0b:71c6 $1e $fe GFX GFX
-    dw   `22300003                                     ;; 0b:71c8 $21 $e1 GFX GFX
-    dw   `23003331                                     ;; 0b:71ca $4f $ce GFX GFX
-    dw   `23331111                                     ;; 0b:71cc $7f $f0 GFX GFX
-    dw   `32111111                                     ;; 0b:71ce $bf $c0 GFX GFX
-    dw   `23131132                                     ;; 0b:71d0 $7e $d3 GFX GFX
-    dw   `31333213                                     ;; 0b:71d2 $fb $bd GFX GFX
-    dw   `31321313                                     ;; 0b:71d4 $ef $b5 GFX GFX
-    dw   `31112313                                     ;; 0b:71d6 $f7 $8d GFX GFX
-    dw   `21123131                                     ;; 0b:71d8 $6f $9a GFX GFX
-    dw   `11230333                                     ;; 0b:71da $d7 $37 GFX GFX
-    dw   `12300000                                     ;; 0b:71dc $a0 $60 GFX GFX
-    dw   `11300000                                     ;; 0b:71de $e0 $20 GFX GFX
-    dw   `21111111                                     ;; 0b:71e0 $7f $80 GFX GFX
-    dw   `21111112                                     ;; 0b:71e2 $7e $81 GFX GFX
-    dw   `22111112                                     ;; 0b:71e4 $3e $c1 GFX GFX
-    dw   `32221111                                     ;; 0b:71e6 $8f $f0 GFX GFX
-    dw   `33322211                                     ;; 0b:71e8 $e3 $fc GFX GFX
-    dw   `33333322                                     ;; 0b:71ea $fc $ff GFX GFX
-    dw   `00000033                                     ;; 0b:71ec $03 $03 GFX GFX
-    dw   `00000000                                     ;; 0b:71ee $00 $00 GFX GFX
-    dw   `21133333                                     ;; 0b:71f0 $7f $9f GFX GFX
-    dw   `33213333                                     ;; 0b:71f2 $df $ef GFX GFX
-    dw   `33333333                                     ;; 0b:71f4 $ff $ff GFX GFX
-    dw   `23333333                                     ;; 0b:71f6 $7f $ff GFX GFX
-    dw   `11233333                                     ;; 0b:71f8 $df $3f GFX GFX
-    dw   `22111333                                     ;; 0b:71fa $3f $c7 GFX GFX
-    dw   `33222111                                     ;; 0b:71fc $c7 $f8 GFX GFX
-    dw   `00333333                                     ;; 0b:71fe $3f $3f GFX GFX
-    dw   `00000000                                     ;; 0b:7200 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7202 $00 $00 GFX GFX
-    dw   `00300003                                     ;; 0b:7204 $21 $21 GFX GFX
-    dw   `03130332                                     ;; 0b:7206 $76 $57 GFX GFX
-    dw   `03133222                                     ;; 0b:7208 $78 $5f GFX GFX
-    dw   `03213222                                     ;; 0b:720a $58 $6f GFX GFX
-    dw   `03221322                                     ;; 0b:720c $4c $77 GFX GFX
-    dw   `32322222                                     ;; 0b:720e $a0 $ff GFX GFX
-    dw   `00000000                                     ;; 0b:7210 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7212 $00 $00 GFX GFX
-    dw   `30000300                                     ;; 0b:7214 $84 $84 GFX GFX
-    dw   `23303130                                     ;; 0b:7216 $6e $ea GFX GFX
-    dw   `22233130                                     ;; 0b:7218 $1e $fa GFX GFX
-    dw   `22231230                                     ;; 0b:721a $1a $f6 GFX GFX
-    dw   `22312230                                     ;; 0b:721c $32 $ee GFX GFX
-    dw   `22222323                                     ;; 0b:721e $05 $ff GFX GFX
-    dw   `22222222                                     ;; 0b:7220 $00 $ff GFX GFX
-    dw   `22332222                                     ;; 0b:7222 $30 $ff GFX GFX
-    dw   `23132222                                     ;; 0b:7224 $70 $df GFX GFX
-    dw   `23132222                                     ;; 0b:7226 $70 $df GFX GFX
-    dw   `32113222                                     ;; 0b:7228 $b8 $cf GFX GFX
-    dw   `32213322                                     ;; 0b:722a $9c $ef GFX GFX
-    dw   `23222222                                     ;; 0b:722c $40 $ff GFX GFX
-    dw   `22222222                                     ;; 0b:722e $00 $ff GFX GFX
-    dw   `22222222                                     ;; 0b:7230 $00 $ff GFX GFX
-    dw   `22223322                                     ;; 0b:7232 $0c $ff GFX GFX
-    dw   `22223132                                     ;; 0b:7234 $0e $fb GFX GFX
-    dw   `22223132                                     ;; 0b:7236 $0e $fb GFX GFX
-    dw   `22231123                                     ;; 0b:7238 $1d $f3 GFX GFX
-    dw   `22331223                                     ;; 0b:723a $39 $f7 GFX GFX
-    dw   `22222232                                     ;; 0b:723c $02 $ff GFX GFX
-    dw   `22222222                                     ;; 0b:723e $00 $ff GFX GFX
-    dw   `23332222                                     ;; 0b:7240 $70 $ff GFX GFX
-    dw   `33223222                                     ;; 0b:7242 $c8 $ff GFX GFX
-    dw   `32131322                                     ;; 0b:7244 $bc $d7 GFX GFX
-    dw   `32131322                                     ;; 0b:7246 $bc $d7 GFX GFX
-    dw   `13121132                                     ;; 0b:7248 $ee $53 GFX GFX
-    dw   `11331132                                     ;; 0b:724a $fe $33 GFX GFX
-    dw   `33113322                                     ;; 0b:724c $fc $cf GFX GFX
-    dw   `31133232                                     ;; 0b:724e $fa $9f GFX GFX
-    dw   `22223332                                     ;; 0b:7250 $0e $ff GFX GFX
-    dw   `22232233                                     ;; 0b:7252 $13 $ff GFX GFX
-    dw   `22313123                                     ;; 0b:7254 $3d $eb GFX GFX
-    dw   `22313123                                     ;; 0b:7256 $3d $eb GFX GFX
-    dw   `23112131                                     ;; 0b:7258 $77 $ca GFX GFX
-    dw   `23113311                                     ;; 0b:725a $7f $cc GFX GFX
-    dw   `22331133                                     ;; 0b:725c $3f $f3 GFX GFX
-    dw   `23233113                                     ;; 0b:725e $5f $f9 GFX GFX
-    dw   `31331123                                     ;; 0b:7260 $fd $b3 GFX GFX
-    dw   `33131233                                     ;; 0b:7262 $fb $d7 GFX GFX
-    dw   `33333133                                     ;; 0b:7264 $ff $fb GFX GFX
-    dw   `33333333                                     ;; 0b:7266 $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:7268 $ff $ff GFX GFX
-    dw   `00000000                                     ;; 0b:726a $00 $00 GFX GFX
-    dw   `30000000                                     ;; 0b:726c $80 $80 GFX GFX
-    dw   `33000000                                     ;; 0b:726e $c0 $c0 GFX GFX
-    dw   `32113313                                     ;; 0b:7270 $bf $cd GFX GFX
-    dw   `33213133                                     ;; 0b:7272 $df $eb GFX GFX
-    dw   `33133333                                     ;; 0b:7274 $ff $df GFX GFX
-    dw   `33333333                                     ;; 0b:7276 $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:7278 $ff $ff GFX GFX
-    dw   `00000000                                     ;; 0b:727a $00 $00 GFX GFX
-    dw   `00000033                                     ;; 0b:727c $03 $03 GFX GFX
-    dw   `00000000                                     ;; 0b:727e $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7280 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7282 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7284 $00 $00 GFX GFX
-    dw   `00330000                                     ;; 0b:7286 $30 $30 GFX GFX
-    dw   `00313000                                     ;; 0b:7288 $38 $28 GFX GFX
-    dw   `00313003                                     ;; 0b:728a $39 $29 GFX GFX
-    dw   `00312331                                     ;; 0b:728c $37 $2e GFX GFX
-    dw   `03112312                                     ;; 0b:728e $76 $4d GFX GFX
-    dw   `00000000                                     ;; 0b:7290 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7292 $00 $00 GFX GFX
-    dw   `33300000                                     ;; 0b:7294 $e0 $e0 GFX GFX
-    dw   `31130000                                     ;; 0b:7296 $f0 $90 GFX GFX
-    dw   `31233000                                     ;; 0b:7298 $d8 $b8 GFX GFX
-    dw   `13223000                                     ;; 0b:729a $c8 $78 GFX GFX
-    dw   `23231300                                     ;; 0b:729c $5c $f4 GFX GFX
-    dw   `23312300                                     ;; 0b:729e $74 $ec GFX GFX
-    dw   `31112332                                     ;; 0b:72a0 $f6 $8f GFX GFX
-    dw   `11123213                                     ;; 0b:72a2 $eb $1d GFX GFX
-    dw   `22123323                                     ;; 0b:72a4 $2d $df GFX GFX
-    dw   `22232233                                     ;; 0b:72a6 $13 $ff GFX GFX
-    dw   `22222223                                     ;; 0b:72a8 $01 $ff GFX GFX
-    dw   `22222223                                     ;; 0b:72aa $01 $ff GFX GFX
-    dw   `22222233                                     ;; 0b:72ac $03 $ff GFX GFX
-    dw   `22332332                                     ;; 0b:72ae $36 $ff GFX GFX
-    dw   `33312230                                     ;; 0b:72b0 $f2 $ee GFX GFX
-    dw   `31322230                                     ;; 0b:72b2 $e2 $be GFX GFX
-    dw   `12333223                                     ;; 0b:72b4 $b9 $7f GFX GFX
-    dw   `23331323                                     ;; 0b:72b6 $7d $f7 GFX GFX
-    dw   `31312233                                     ;; 0b:72b8 $f3 $af GFX GFX
-    dw   `12312233                                     ;; 0b:72ba $b3 $6f GFX GFX
-    dw   `22312230                                     ;; 0b:72bc $32 $ee GFX GFX
-    dw   `33312230                                     ;; 0b:72be $f2 $ee GFX GFX
-    dw   `23113133                                     ;; 0b:72c0 $7f $cb GFX GFX
-    dw   `31233130                                     ;; 0b:72c2 $de $ba GFX GFX
-    dw   `31313123                                     ;; 0b:72c4 $fd $ab GFX GFX
-    dw   `31321112                                     ;; 0b:72c6 $ee $b1 GFX GFX
-    dw   `13133111                                     ;; 0b:72c8 $ff $58 GFX GFX
-    dw   `33300311                                     ;; 0b:72ca $e7 $e4 GFX GFX
-    dw   `00000311                                     ;; 0b:72cc $07 $04 GFX GFX
-    dw   `00003111                                     ;; 0b:72ce $0f $08 GFX GFX
-    dw   `00312230                                     ;; 0b:72d0 $32 $2e GFX GFX
-    dw   `00312223                                     ;; 0b:72d2 $31 $2f GFX GFX
-    dw   `00312223                                     ;; 0b:72d4 $31 $2f GFX GFX
-    dw   `33031223                                     ;; 0b:72d6 $d9 $d7 GFX GFX
-    dw   `11332223                                     ;; 0b:72d8 $f1 $3f GFX GFX
-    dw   `11123223                                     ;; 0b:72da $e9 $1f GFX GFX
-    dw   `11112323                                     ;; 0b:72dc $f5 $0f GFX GFX
-    dw   `11112323                                     ;; 0b:72de $f5 $0f GFX GFX
-    dw   `33331231                                     ;; 0b:72e0 $fb $f6 GFX GFX
-    dw   `33333331                                     ;; 0b:72e2 $ff $fe GFX GFX
-    dw   `33333311                                     ;; 0b:72e4 $ff $fc GFX GFX
-    dw   `33333111                                     ;; 0b:72e6 $ff $f8 GFX GFX
-    dw   `33311122                                     ;; 0b:72e8 $fc $e3 GFX GFX
-    dw   `31122333                                     ;; 0b:72ea $e7 $9f GFX GFX
-    dw   `33333000                                     ;; 0b:72ec $f8 $f8 GFX GFX
-    dw   `00000000                                     ;; 0b:72ee $00 $00 GFX GFX
-    dw   `11112323                                     ;; 0b:72f0 $f5 $0f GFX GFX
-    dw   `11122333                                     ;; 0b:72f2 $e7 $1f GFX GFX
-    dw   `12223330                                     ;; 0b:72f4 $8e $7e GFX GFX
-    dw   `22333300                                     ;; 0b:72f6 $3c $fc GFX GFX
-    dw   `33003300                                     ;; 0b:72f8 $cc $cc GFX GFX
-    dw   `00003000                                     ;; 0b:72fa $08 $08 GFX GFX
-    dw   `00030000                                     ;; 0b:72fc $10 $10 GFX GFX
-    dw   `00000000                                     ;; 0b:72fe $00 $00 GFX GFX
-    dw   `03300000                                     ;; 0b:7300 $60 $60 GFX GFX
-    dw   `03130000                                     ;; 0b:7302 $70 $50 GFX GFX
-    dw   `00313000                                     ;; 0b:7304 $38 $28 GFX GFX
-    dw   `00313000                                     ;; 0b:7306 $38 $28 GFX GFX
-    dw   `00321300                                     ;; 0b:7308 $2c $34 GFX GFX
-    dw   `00031303                                     ;; 0b:730a $1d $15 GFX GFX
-    dw   `00231233                                     ;; 0b:730c $1b $37 GFX GFX
-    dw   `02031133                                     ;; 0b:730e $1f $53 GFX GFX
-    dw   `00000003                                     ;; 0b:7310 $01 $01 GFX GFX
-    dw   `00030032                                     ;; 0b:7312 $12 $13 GFX GFX
-    dw   `00030323                                     ;; 0b:7314 $15 $17 GFX GFX
-    dw   `00313223                                     ;; 0b:7316 $39 $2f GFX GFX
-    dw   `30313223                                     ;; 0b:7318 $b9 $af GFX GFX
-    dw   `23313222                                     ;; 0b:731a $78 $ef GFX GFX
-    dw   `23321322                                     ;; 0b:731c $6c $f7 GFX GFX
-    dw   `23231322                                     ;; 0b:731e $5c $f7 GFX GFX
-    dw   `33003333                                     ;; 0b:7320 $cf $cf GFX GFX
-    dw   `30332230                                     ;; 0b:7322 $b2 $be GFX GFX
-    dw   `03222300                                     ;; 0b:7324 $44 $7c GFX GFX
-    dw   `32223003                                     ;; 0b:7326 $89 $f9 GFX GFX
-    dw   `32223003                                     ;; 0b:7328 $89 $f9 GFX GFX
-    dw   `32222332                                     ;; 0b:732a $86 $ff GFX GFX
-    dw   `22223222                                     ;; 0b:732c $08 $ff GFX GFX
-    dw   `22222222                                     ;; 0b:732e $00 $ff GFX GFX
-    dw   `00000033                                     ;; 0b:7330 $03 $03 GFX GFX
-    dw   `03300313                                     ;; 0b:7332 $67 $65 GFX GFX
-    dw   `33003130                                     ;; 0b:7334 $ce $ca GFX GFX
-    dw   `23003130                                     ;; 0b:7336 $4e $ca GFX GFX
-    dw   `23031230                                     ;; 0b:7338 $5a $d6 GFX GFX
-    dw   `23031300                                     ;; 0b:733a $5c $d4 GFX GFX
-    dw   `23031300                                     ;; 0b:733c $5c $d4 GFX GFX
-    dw   `32321300                                     ;; 0b:733e $ac $f4 GFX GFX
-    dw   `02003113                                     ;; 0b:7340 $0f $49 GFX GFX
-    dw   `22003212                                     ;; 0b:7342 $0a $cd GFX GFX
-    dw   `23003221                                     ;; 0b:7344 $49 $ce GFX GFX
-    dw   `23200322                                     ;; 0b:7346 $44 $e7 GFX GFX
-    dw   `33200033                                     ;; 0b:7348 $c3 $e3 GFX GFX
-    dw   `33200333                                     ;; 0b:734a $c7 $e7 GFX GFX
-    dw   `33323122                                     ;; 0b:734c $ec $fb GFX GFX
-    dw   `33333333                                     ;; 0b:734e $ff $ff GFX GFX
-    dw   `22232132                                     ;; 0b:7350 $16 $fb GFX GFX
-    dw   `32223213                                     ;; 0b:7352 $8b $fd GFX GFX
-    dw   `13223211                                     ;; 0b:7354 $cb $7c GFX GFX
-    dw   `23222321                                     ;; 0b:7356 $45 $fe GFX GFX
-    dw   `23222232                                     ;; 0b:7358 $42 $ff GFX GFX
-    dw   `33332223                                     ;; 0b:735a $f1 $ff GFX GFX
-    dw   `32313322                                     ;; 0b:735c $bc $ef GFX GFX
-    dw   `32331132                                     ;; 0b:735e $be $f3 GFX GFX
-    dw   `22222233                                     ;; 0b:7360 $03 $ff GFX GFX
-    dw   `32222222                                     ;; 0b:7362 $80 $ff GFX GFX
-    dw   `13222223                                     ;; 0b:7364 $c1 $7f GFX GFX
-    dw   `13222231                                     ;; 0b:7366 $c3 $7e GFX GFX
-    dw   `23222223                                     ;; 0b:7368 $41 $ff GFX GFX
-    dw   `32223233                                     ;; 0b:736a $8b $ff GFX GFX
-    dw   `22331232                                     ;; 0b:736c $3a $f7 GFX GFX
-    dw   `23113332                                     ;; 0b:736e $7e $cf GFX GFX
-    dw   `22311300                                     ;; 0b:7370 $3c $e4 GFX GFX
-    dw   `33112300                                     ;; 0b:7372 $f4 $cc GFX GFX
-    dw   `11123020                                     ;; 0b:7374 $e8 $1a GFX GFX
-    dw   `11223020                                     ;; 0b:7376 $c8 $3a GFX GFX
-    dw   `22330020                                     ;; 0b:7378 $30 $f2 GFX GFX
-    dw   `33300232                                     ;; 0b:737a $e2 $e7 GFX GFX
-    dw   `33300232                                     ;; 0b:737c $e2 $e7 GFX GFX
-    dw   `32232332                                     ;; 0b:737e $96 $ff GFX GFX
-    dw   `33333122                                     ;; 0b:7380 $fc $fb GFX GFX
-    dw   `23331222                                     ;; 0b:7382 $78 $f7 GFX GFX
-    dw   `23331233                                     ;; 0b:7384 $7b $f7 GFX GFX
-    dw   `02333322                                     ;; 0b:7386 $3c $7f GFX GFX
-    dw   `02333122                                     ;; 0b:7388 $3c $7b GFX GFX
-    dw   `00233313                                     ;; 0b:738a $1f $3d GFX GFX
-    dw   `00233333                                     ;; 0b:738c $1f $3f GFX GFX
-    dw   `00233333                                     ;; 0b:738e $1f $3f GFX GFX
-    dw   `33323132                                     ;; 0b:7390 $ee $fb GFX GFX
-    dw   `23332332                                     ;; 0b:7392 $76 $ff GFX GFX
-    dw   `32332322                                     ;; 0b:7394 $b4 $ff GFX GFX
-    dw   `23333323                                     ;; 0b:7396 $7d $ff GFX GFX
-    dw   `22333322                                     ;; 0b:7398 $3c $ff GFX GFX
-    dw   `33223332                                     ;; 0b:739a $ce $ff GFX GFX
-    dw   `11222333                                     ;; 0b:739c $c7 $3f GFX GFX
-    dw   `33112233                                     ;; 0b:739e $f3 $cf GFX GFX
-    dw   `23132323                                     ;; 0b:73a0 $75 $df GFX GFX
-    dw   `33323333                                     ;; 0b:73a2 $ef $ff GFX GFX
-    dw   `32323322                                     ;; 0b:73a4 $ac $ff GFX GFX
-    dw   `32333233                                     ;; 0b:73a6 $bb $ff GFX GFX
-    dw   `22333322                                     ;; 0b:73a8 $3c $ff GFX GFX
-    dw   `23333222                                     ;; 0b:73aa $78 $ff GFX GFX
-    dw   `33223311                                     ;; 0b:73ac $cf $fc GFX GFX
-    dw   `32111333                                     ;; 0b:73ae $bf $c7 GFX GFX
-    dw   `33213332                                     ;; 0b:73b0 $de $ef GFX GFX
-    dw   `21333320                                     ;; 0b:73b2 $7c $be GFX GFX
-    dw   `22113320                                     ;; 0b:73b4 $3c $ce GFX GFX
-    dw   `32213320                                     ;; 0b:73b6 $9c $ee GFX GFX
-    dw   `23213202                                     ;; 0b:73b8 $58 $ed GFX GFX
-    dw   `13133202                                     ;; 0b:73ba $f8 $5d GFX GFX
-    dw   `33333203                                     ;; 0b:73bc $f9 $fd GFX GFX
-    dw   `33332023                                     ;; 0b:73be $f1 $fb GFX GFX
-    dw   `00223311                                     ;; 0b:73c0 $0f $3c GFX GFX
-    dw   `02023323                                     ;; 0b:73c2 $0d $5f GFX GFX
-    dw   `02023333                                     ;; 0b:73c4 $0f $5f GFX GFX
-    dw   `03023333                                     ;; 0b:73c6 $4f $5f GFX GFX
-    dw   `23023333                                     ;; 0b:73c8 $4f $df GFX GFX
-    dw   `23202333                                     ;; 0b:73ca $47 $ef GFX GFX
-    dw   `23302333                                     ;; 0b:73cc $67 $ef GFX GFX
-    dw   `02322333                                     ;; 0b:73ce $27 $7f GFX GFX
-    dw   `33333323                                     ;; 0b:73d0 $fd $ff GFX GFX
-    dw   `32333333                                     ;; 0b:73d2 $bf $ff GFX GFX
-    dw   `33312333                                     ;; 0b:73d4 $f7 $ef GFX GFX
-    dw   `33323313                                     ;; 0b:73d6 $ef $fd GFX GFX
-    dw   `33333131                                     ;; 0b:73d8 $ff $fa GFX GFX
-    dw   `33332111                                     ;; 0b:73da $f7 $f8 GFX GFX
-    dw   `33332131                                     ;; 0b:73dc $f7 $fa GFX GFX
-    dw   `33333131                                     ;; 0b:73de $ff $fa GFX GFX
-    dw   `23333331                                     ;; 0b:73e0 $7f $fe GFX GFX
-    dw   `33333233                                     ;; 0b:73e2 $fb $ff GFX GFX
-    dw   `33213333                                     ;; 0b:73e4 $df $ef GFX GFX
-    dw   `13323333                                     ;; 0b:73e6 $ef $7f GFX GFX
-    dw   `31333333                                     ;; 0b:73e8 $ff $bf GFX GFX
-    dw   `11233333                                     ;; 0b:73ea $df $3f GFX GFX
-    dw   `31233333                                     ;; 0b:73ec $df $bf GFX GFX
-    dw   `31333333                                     ;; 0b:73ee $ff $bf GFX GFX
-    dw   `13332233                                     ;; 0b:73f0 $f3 $7f GFX GFX
-    dw   `23332332                                     ;; 0b:73f2 $76 $ff GFX GFX
-    dw   `33333330                                     ;; 0b:73f4 $fe $fe GFX GFX
-    dw   `33333320                                     ;; 0b:73f6 $fc $fe GFX GFX
-    dw   `33333320                                     ;; 0b:73f8 $fc $fe GFX GFX
-    dw   `33333320                                     ;; 0b:73fa $fc $fe GFX GFX
-    dw   `33332332                                     ;; 0b:73fc $f6 $ff GFX GFX
-    dw   `33332332                                     ;; 0b:73fe $f6 $ff GFX GFX
-    dw   `02332333                                     ;; 0b:7400 $37 $7f GFX GFX
-    dw   `02333333                                     ;; 0b:7402 $3f $7f GFX GFX
-    dw   `00233333                                     ;; 0b:7404 $1f $3f GFX GFX
-    dw   `00233333                                     ;; 0b:7406 $1f $3f GFX GFX
-    dw   `00023333                                     ;; 0b:7408 $0f $1f GFX GFX
-    dw   `00023323                                     ;; 0b:740a $0d $1f GFX GFX
-    dw   `00002302                                     ;; 0b:740c $04 $0d GFX GFX
-    dw   `00002302                                     ;; 0b:740e $04 $0d GFX GFX
-    dw   `33333332                                     ;; 0b:7410 $fe $ff GFX GFX
-    dw   `33333332                                     ;; 0b:7412 $fe $ff GFX GFX
-    dw   `33333333                                     ;; 0b:7414 $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:7416 $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:7418 $ff $ff GFX GFX
-    dw   `33323333                                     ;; 0b:741a $ef $ff GFX GFX
-    dw   `33322333                                     ;; 0b:741c $e7 $ff GFX GFX
-    dw   `33202332                                     ;; 0b:741e $c6 $ef GFX GFX
-    dw   `33333333                                     ;; 0b:7420 $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:7422 $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:7424 $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:7426 $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:7428 $ff $ff GFX GFX
-    dw   `33333323                                     ;; 0b:742a $fd $ff GFX GFX
-    dw   `33333323                                     ;; 0b:742c $fd $ff GFX GFX
-    dw   `33333202                                     ;; 0b:742e $f8 $fd GFX GFX
-    dw   `33332232                                     ;; 0b:7430 $f2 $ff GFX GFX
-    dw   `33333232                                     ;; 0b:7432 $fa $ff GFX GFX
-    dw   `33333200                                     ;; 0b:7434 $f8 $fc GFX GFX
-    dw   `33233320                                     ;; 0b:7436 $dc $fe GFX GFX
-    dw   `33223320                                     ;; 0b:7438 $cc $fe GFX GFX
-    dw   `33202320                                     ;; 0b:743a $c4 $ee GFX GFX
-    dw   `33200320                                     ;; 0b:743c $c4 $e6 GFX GFX
-    dw   `33200320                                     ;; 0b:743e $c4 $e6 GFX GFX
-    dw   `00002323                                     ;; 0b:7440 $05 $0f GFX GFX
-    dw   `00002023                                     ;; 0b:7442 $01 $0b GFX GFX
-    dw   `00000023                                     ;; 0b:7444 $01 $03 GFX GFX
-    dw   `00000023                                     ;; 0b:7446 $01 $03 GFX GFX
-    dw   `00000002                                     ;; 0b:7448 $00 $01 GFX GFX
-    dw   `00000002                                     ;; 0b:744a $00 $01 GFX GFX
-    dw   `00000000                                     ;; 0b:744c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:744e $00 $00 GFX GFX
-    dw   `33203332                                     ;; 0b:7450 $ce $ef GFX GFX
-    dw   `32023302                                     ;; 0b:7452 $8c $dd GFX GFX
-    dw   `32023002                                     ;; 0b:7454 $88 $d9 GFX GFX
-    dw   `32023000                                     ;; 0b:7456 $88 $d8 GFX GFX
-    dw   `33002000                                     ;; 0b:7458 $c0 $c8 GFX GFX
-    dw   `33000200                                     ;; 0b:745a $c0 $c4 GFX GFX
-    dw   `23300002                                     ;; 0b:745c $60 $e1 GFX GFX
-    dw   `00230020                                     ;; 0b:745e $10 $32 GFX GFX
-    dw   `33332002                                     ;; 0b:7460 $f0 $f9 GFX GFX
-    dw   `33332002                                     ;; 0b:7462 $f0 $f9 GFX GFX
-    dw   `23320002                                     ;; 0b:7464 $60 $f1 GFX GFX
-    dw   `23320023                                     ;; 0b:7466 $61 $f3 GFX GFX
-    dw   `23200023                                     ;; 0b:7468 $41 $e3 GFX GFX
-    dw   `32000230                                     ;; 0b:746a $82 $c6 GFX GFX
-    dw   `20000000                                     ;; 0b:746c $00 $80 GFX GFX
-    dw   `00000000                                     ;; 0b:746e $00 $00 GFX GFX
-    dw   `33200200                                     ;; 0b:7470 $c0 $e4 GFX GFX
-    dw   `32000000                                     ;; 0b:7472 $80 $c0 GFX GFX
-    dw   `32000000                                     ;; 0b:7474 $80 $c0 GFX GFX
-    dw   `20000000                                     ;; 0b:7476 $00 $80 GFX GFX
-    dw   `00000000                                     ;; 0b:7478 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:747a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:747c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:747e $00 $00 GFX GFX
-    dw   `03303000                                     ;; 0b:7480 $68 $68 GFX GFX
-    dw   `03232300                                     ;; 0b:7482 $54 $7c GFX GFX
-    dw   `33232230                                     ;; 0b:7484 $d2 $fe GFX GFX
-    dw   `32323223                                     ;; 0b:7486 $a9 $ff GFX GFX
-    dw   `03232322                                     ;; 0b:7488 $54 $7f GFX GFX
-    dw   `03323232                                     ;; 0b:748a $6a $7f GFX GFX
-    dw   `32232322                                     ;; 0b:748c $94 $ff GFX GFX
-    dw   `03323223                                     ;; 0b:748e $69 $7f GFX GFX
-    dw   `00000000                                     ;; 0b:7490 $00 $00 GFX GFX
-    dw   `03300000                                     ;; 0b:7492 $60 $60 GFX GFX
-    dw   `32300000                                     ;; 0b:7494 $a0 $e0 GFX GFX
-    dw   `32300000                                     ;; 0b:7496 $a0 $e0 GFX GFX
-    dw   `32300200                                     ;; 0b:7498 $a0 $e4 GFX GFX
-    dw   `32230320                                     ;; 0b:749a $94 $f6 GFX GFX
-    dw   `32230320                                     ;; 0b:749c $94 $f6 GFX GFX
-    dw   `22230330                                     ;; 0b:749e $16 $f6 GFX GFX
-    dw   `00032223                                     ;; 0b:74a0 $11 $1f GFX GFX
-    dw   `00003223                                     ;; 0b:74a2 $09 $0f GFX GFX
-    dw   `00003222                                     ;; 0b:74a4 $08 $0f GFX GFX
-    dw   `00000322                                     ;; 0b:74a6 $04 $07 GFX GFX
-    dw   `00000033                                     ;; 0b:74a8 $03 $03 GFX GFX
-    dw   `00000000                                     ;; 0b:74aa $00 $00 GFX GFX
-    dw   `00000023                                     ;; 0b:74ac $01 $03 GFX GFX
-    dw   `00022333                                     ;; 0b:74ae $07 $1f GFX GFX
-    dw   `22230332                                     ;; 0b:74b0 $16 $f7 GFX GFX
-    dw   `22233333                                     ;; 0b:74b2 $1f $ff GFX GFX
-    dw   `32223333                                     ;; 0b:74b4 $8f $ff GFX GFX
-    dw   `22223333                                     ;; 0b:74b6 $0f $ff GFX GFX
-    dw   `22233332                                     ;; 0b:74b8 $1e $ff GFX GFX
-    dw   `33333332                                     ;; 0b:74ba $fe $ff GFX GFX
-    dw   `33223320                                     ;; 0b:74bc $cc $fe GFX GFX
-    dw   `22233000                                     ;; 0b:74be $18 $f8 GFX GFX
-    dw   `00002222                                     ;; 0b:74c0 $00 $0f GFX GFX
-    dw   `00020023                                     ;; 0b:74c2 $01 $13 GFX GFX
-    dw   `00000002                                     ;; 0b:74c4 $00 $01 GFX GFX
-    dw   `00000000                                     ;; 0b:74c6 $00 $00 GFX GFX
-    dw   `00003333                                     ;; 0b:74c8 $0f $0f GFX GFX
-    dw   `00032222                                     ;; 0b:74ca $10 $1f GFX GFX
-    dw   `33322222                                     ;; 0b:74cc $e0 $ff GFX GFX
-    dw   `32223322                                     ;; 0b:74ce $8c $ff GFX GFX
-    dw   `00032000                                     ;; 0b:74d0 $10 $18 GFX GFX
-    dw   `32003200                                     ;; 0b:74d2 $88 $cc GFX GFX
-    dw   `33203320                                     ;; 0b:74d4 $cc $ee GFX GFX
-    dw   `33323320                                     ;; 0b:74d6 $ec $fe GFX GFX
-    dw   `33332332                                     ;; 0b:74d8 $f6 $ff GFX GFX
-    dw   `22332332                                     ;; 0b:74da $36 $ff GFX GFX
-    dw   `22233332                                     ;; 0b:74dc $1e $ff GFX GFX
-    dw   `23233332                                     ;; 0b:74de $5e $ff GFX GFX
-    dw   `03332333                                     ;; 0b:74e0 $77 $7f GFX GFX
-    dw   `03223322                                     ;; 0b:74e2 $4c $7f GFX GFX
-    dw   `32232232                                     ;; 0b:74e4 $92 $ff GFX GFX
-    dw   `32322323                                     ;; 0b:74e6 $a5 $ff GFX GFX
-    dw   `32323230                                     ;; 0b:74e8 $aa $fe GFX GFX
-    dw   `32323323                                     ;; 0b:74ea $ad $ff GFX GFX
-    dw   `03032333                                     ;; 0b:74ec $57 $5f GFX GFX
-    dw   `00003300                                     ;; 0b:74ee $0c $0c GFX GFX
-    dw   `32233322                                     ;; 0b:74f0 $9c $ff GFX GFX
-    dw   `22323320                                     ;; 0b:74f2 $2c $fe GFX GFX
-    dw   `33023320                                     ;; 0b:74f4 $cc $de GFX GFX
-    dw   `00023020                                     ;; 0b:74f6 $08 $1a GFX GFX
-    dw   `00022002                                     ;; 0b:74f8 $00 $19 GFX GFX
-    dw   `00002000                                     ;; 0b:74fa $00 $08 GFX GFX
-    dw   `00002000                                     ;; 0b:74fc $00 $08 GFX GFX
-    dw   `00000200                                     ;; 0b:74fe $00 $04 GFX GFX
-    dw   `00000000                                     ;; 0b:7500 $00 $00 GFX GFX
-    dw   `00000033                                     ;; 0b:7502 $03 $03 GFX GFX
-    dw   `00003311                                     ;; 0b:7504 $0f $0c GFX GFX
-    dw   `00031111                                     ;; 0b:7506 $1f $10 GFX GFX
-    dw   `00311111                                     ;; 0b:7508 $3f $20 GFX GFX
-    dw   `00311111                                     ;; 0b:750a $3f $20 GFX GFX
-    dw   `03111222                                     ;; 0b:750c $78 $47 GFX GFX
-    dw   `03122333                                     ;; 0b:750e $67 $5f GFX GFX
-    dw   `03333330                                     ;; 0b:7510 $7e $7e GFX GFX
-    dw   `31112300                                     ;; 0b:7512 $f4 $8c GFX GFX
-    dw   `11113003                                     ;; 0b:7514 $f9 $09 GFX GFX
-    dw   `11113032                                     ;; 0b:7516 $fa $0b GFX GFX
-    dw   `11130033                                     ;; 0b:7518 $f3 $13 GFX GFX
-    dw   `11130323                                     ;; 0b:751a $f5 $17 GFX GFX
-    dw   `11130333                                     ;; 0b:751c $f7 $17 GFX GFX
-    dw   `21130331                                     ;; 0b:751e $77 $96 GFX GFX
-    dw   `31233000                                     ;; 0b:7520 $d8 $b8 GFX GFX
-    dw   `32300003                                     ;; 0b:7522 $a1 $e1 GFX GFX
-    dw   `33000333                                     ;; 0b:7524 $c7 $c7 GFX GFX
-    dw   `30000000                                     ;; 0b:7526 $80 $80 GFX GFX
-    dw   `30000000                                     ;; 0b:7528 $80 $80 GFX GFX
-    dw   `00000000                                     ;; 0b:752a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:752c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:752e $00 $00 GFX GFX
-    dw   `32130323                                     ;; 0b:7530 $b5 $d7 GFX GFX
-    dw   `33213032                                     ;; 0b:7532 $da $eb GFX GFX
-    dw   `11113303                                     ;; 0b:7534 $fd $0d GFX GFX
-    dw   `33111233                                     ;; 0b:7536 $fb $c7 GFX GFX
-    dw   `00321111                                     ;; 0b:7538 $2f $30 GFX GFX
-    dw   `00032112                                     ;; 0b:753a $16 $19 GFX GFX
-    dw   `00003222                                     ;; 0b:753c $08 $0f GFX GFX
-    dw   `00000333                                     ;; 0b:753e $07 $07 GFX GFX
-    dw   `00000000                                     ;; 0b:7540 $00 $00 GFX GFX
-    dw   `03333300                                     ;; 0b:7542 $7c $7c GFX GFX
-    dw   `32333233                                     ;; 0b:7544 $bb $ff GFX GFX
-    dw   `22223331                                     ;; 0b:7546 $0f $fe GFX GFX
-    dw   `33322233                                     ;; 0b:7548 $e3 $ff GFX GFX
-    dw   `33332232                                     ;; 0b:754a $f2 $ff GFX GFX
-    dw   `11133223                                     ;; 0b:754c $f9 $1f GFX GFX
-    dw   `33312323                                     ;; 0b:754e $f5 $ef GFX GFX
-    dw   `03300003                                     ;; 0b:7550 $61 $61 GFX GFX
-    dw   `31133032                                     ;; 0b:7552 $fa $9b GFX GFX
-    dw   `13311322                                     ;; 0b:7554 $fc $67 GFX GFX
-    dw   `30033322                                     ;; 0b:7556 $9c $9f GFX GFX
-    dw   `30313222                                     ;; 0b:7558 $b8 $af GFX GFX
-    dw   `33111322                                     ;; 0b:755a $fc $c7 GFX GFX
-    dw   `23131322                                     ;; 0b:755c $7c $d7 GFX GFX
-    dw   `23131322                                     ;; 0b:755e $7c $d7 GFX GFX
-    dw   `33331222                                     ;; 0b:7560 $f8 $f7 GFX GFX
-    dw   `33223132                                     ;; 0b:7562 $ce $fb GFX GFX
-    dw   `32223123                                     ;; 0b:7564 $8d $fb GFX GFX
-    dw   `22223133                                     ;; 0b:7566 $0f $fb GFX GFX
-    dw   `32333132                                     ;; 0b:7568 $be $fb GFX GFX
-    dw   `33031333                                     ;; 0b:756a $df $d7 GFX GFX
-    dw   `30003331                                     ;; 0b:756c $8f $8e GFX GFX
-    dw   `00000003                                     ;; 0b:756e $01 $01 GFX GFX
-    dw   `23311322                                     ;; 0b:7570 $7c $e7 GFX GFX
-    dw   `23333222                                     ;; 0b:7572 $78 $ff GFX GFX
-    dw   `23231322                                     ;; 0b:7574 $5c $f7 GFX GFX
-    dw   `32311132                                     ;; 0b:7576 $be $e3 GFX GFX
-    dw   `32313333                                     ;; 0b:7578 $bf $ef GFX GFX
-    dw   `22231332                                     ;; 0b:757a $1e $f7 GFX GFX
-    dw   `22223322                                     ;; 0b:757c $0c $ff GFX GFX
-    dw   `12222133                                     ;; 0b:757e $87 $7b GFX GFX
-    dw   `00300000                                     ;; 0b:7580 $20 $20 GFX GFX
-    dw   `03130003                                     ;; 0b:7582 $71 $51 GFX GFX
-    dw   `03130032                                     ;; 0b:7584 $72 $53 GFX GFX
-    dw   `32213032                                     ;; 0b:7586 $9a $eb GFX GFX
-    dw   `32213303                                     ;; 0b:7588 $9d $ed GFX GFX
-    dw   `32221331                                     ;; 0b:758a $8f $f6 GFX GFX
-    dw   `32222113                                     ;; 0b:758c $87 $f9 GFX GFX
-    dw   `03222221                                     ;; 0b:758e $41 $7e GFX GFX
-    dw   `31113322                                     ;; 0b:7590 $fc $8f GFX GFX
-    dw   `23333233                                     ;; 0b:7592 $7b $ff GFX GFX
-    dw   `22332122                                     ;; 0b:7594 $34 $fb GFX GFX
-    dw   `33233311                                     ;; 0b:7596 $df $fc GFX GFX
-    dw   `12323333                                     ;; 0b:7598 $af $7f GFX GFX
-    dw   `22332233                                     ;; 0b:759a $33 $ff GFX GFX
-    dw   `23233322                                     ;; 0b:759c $5c $ff GFX GFX
-    dw   `33233333                                     ;; 0b:759e $df $ff GFX GFX
-    dw   `03222221                                     ;; 0b:75a0 $41 $7e GFX GFX
-    dw   `00322222                                     ;; 0b:75a2 $20 $3f GFX GFX
-    dw   `00333322                                     ;; 0b:75a4 $3c $3f GFX GFX
-    dw   `00032332                                     ;; 0b:75a6 $16 $1f GFX GFX
-    dw   `00032323                                     ;; 0b:75a8 $15 $1f GFX GFX
-    dw   `00323323                                     ;; 0b:75aa $2d $3f GFX GFX
-    dw   `32232223                                     ;; 0b:75ac $91 $ff GFX GFX
-    dw   `33333333                                     ;; 0b:75ae $ff $ff GFX GFX
-    dw   `33322333                                     ;; 0b:75b0 $e7 $ff GFX GFX
-    dw   `13233222                                     ;; 0b:75b2 $d8 $7f GFX GFX
-    dw   `13323333                                     ;; 0b:75b4 $ef $7f GFX GFX
-    dw   `13032333                                     ;; 0b:75b6 $d7 $5f GFX GFX
-    dw   `13003222                                     ;; 0b:75b8 $c8 $4f GFX GFX
-    dw   `30000332                                     ;; 0b:75ba $86 $87 GFX GFX
-    dw   `33333333                                     ;; 0b:75bc $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:75be $ff $ff GFX GFX
-    dw   `30000330                                     ;; 0b:75c0 $86 $86 GFX GFX
-    dw   `23033113                                     ;; 0b:75c2 $5f $d9 GFX GFX
-    dw   `22311331                                     ;; 0b:75c4 $3f $e6 GFX GFX
-    dw   `22333003                                     ;; 0b:75c6 $39 $f9 GFX GFX
-    dw   `22231303                                     ;; 0b:75c8 $1d $f5 GFX GFX
-    dw   `22311133                                     ;; 0b:75ca $3f $e3 GFX GFX
-    dw   `22313132                                     ;; 0b:75cc $3e $eb GFX GFX
-    dw   `22313132                                     ;; 0b:75ce $3e $eb GFX GFX
-    dw   `00000000                                     ;; 0b:75d0 $00 $00 GFX GFX
-    dw   `00333330                                     ;; 0b:75d2 $3e $3e GFX GFX
-    dw   `33233323                                     ;; 0b:75d4 $dd $ff GFX GFX
-    dw   `13332222                                     ;; 0b:75d6 $f0 $7f GFX GFX
-    dw   `33222333                                     ;; 0b:75d8 $c7 $ff GFX GFX
-    dw   `23223333                                     ;; 0b:75da $4f $ff GFX GFX
-    dw   `32233111                                     ;; 0b:75dc $9f $f8 GFX GFX
-    dw   `32321333                                     ;; 0b:75de $af $f7 GFX GFX
-    dw   `22311332                                     ;; 0b:75e0 $3e $e7 GFX GFX
-    dw   `22233332                                     ;; 0b:75e2 $1e $ff GFX GFX
-    dw   `22313232                                     ;; 0b:75e4 $3a $ef GFX GFX
-    dw   `23111323                                     ;; 0b:75e6 $7d $c7 GFX GFX
-    dw   `33331323                                     ;; 0b:75e8 $fd $f7 GFX GFX
-    dw   `23313222                                     ;; 0b:75ea $78 $ef GFX GFX
-    dw   `22332222                                     ;; 0b:75ec $30 $ff GFX GFX
-    dw   `33122221                                     ;; 0b:75ee $e1 $de GFX GFX
-    dw   `22213333                                     ;; 0b:75f0 $1f $ef GFX GFX
-    dw   `23132233                                     ;; 0b:75f2 $73 $df GFX GFX
-    dw   `32132223                                     ;; 0b:75f4 $b1 $df GFX GFX
-    dw   `33132222                                     ;; 0b:75f6 $f0 $df GFX GFX
-    dw   `23133323                                     ;; 0b:75f8 $7d $df GFX GFX
-    dw   `33313033                                     ;; 0b:75fa $fb $eb GFX GFX
-    dw   `13330303                                     ;; 0b:75fc $f5 $75 GFX GFX
-    dw   `30003130                                     ;; 0b:75fe $8e $8a GFX GFX
-    dw   `22331113                                     ;; 0b:7600 $3f $f1 GFX GFX
-    dw   `33233332                                     ;; 0b:7602 $de $ff GFX GFX
-    dw   `22123322                                     ;; 0b:7604 $2c $df GFX GFX
-    dw   `11333233                                     ;; 0b:7606 $fb $3f GFX GFX
-    dw   `33332321                                     ;; 0b:7608 $f5 $fe GFX GFX
-    dw   `33223323                                     ;; 0b:760a $cd $ff GFX GFX
-    dw   `22333233                                     ;; 0b:760c $3b $ff GFX GFX
-    dw   `33333233                                     ;; 0b:760e $fb $ff GFX GFX
-    dw   `30003130                                     ;; 0b:7610 $8e $8a GFX GFX
-    dw   `23031223                                     ;; 0b:7612 $59 $d7 GFX GFX
-    dw   `33031223                                     ;; 0b:7614 $d9 $d7 GFX GFX
-    dw   `13312223                                     ;; 0b:7616 $f1 $6f GFX GFX
-    dw   `31122223                                     ;; 0b:7618 $e1 $9f GFX GFX
-    dw   `12222230                                     ;; 0b:761a $82 $7e GFX GFX
-    dw   `12222230                                     ;; 0b:761c $82 $7e GFX GFX
-    dw   `22222300                                     ;; 0b:761e $04 $fc GFX GFX
-    dw   `33322331                                     ;; 0b:7620 $e7 $fe GFX GFX
-    dw   `22233231                                     ;; 0b:7622 $1b $fe GFX GFX
-    dw   `33332331                                     ;; 0b:7624 $f7 $fe GFX GFX
-    dw   `33323031                                     ;; 0b:7626 $eb $fa GFX GFX
-    dw   `22230003                                     ;; 0b:7628 $11 $f1 GFX GFX
-    dw   `23333333                                     ;; 0b:762a $7f $ff GFX GFX
-    dw   `33333333                                     ;; 0b:762c $ff $ff GFX GFX
-    dw   `33333000                                     ;; 0b:762e $f8 $f8 GFX GFX
-    dw   `22333300                                     ;; 0b:7630 $3c $fc GFX GFX
-    dw   `23323000                                     ;; 0b:7632 $68 $f8 GFX GFX
-    dw   `32323000                                     ;; 0b:7634 $a8 $f8 GFX GFX
-    dw   `32332330                                     ;; 0b:7636 $b6 $fe GFX GFX
-    dw   `32223223                                     ;; 0b:7638 $89 $ff GFX GFX
-    dw   `33332323                                     ;; 0b:763a $f5 $ff GFX GFX
-    dw   `33333333                                     ;; 0b:763c $ff $ff GFX GFX
-    dw   `00000000                                     ;; 0b:763e $00 $00 GFX GFX
-    dw   `03333330                                     ;; 0b:7640 $7e $7e GFX GFX
-    dw   `00321113                                     ;; 0b:7642 $2f $31 GFX GFX
-    dw   `30031111                                     ;; 0b:7644 $9f $90 GFX GFX
-    dw   `23031111                                     ;; 0b:7646 $5f $d0 GFX GFX
-    dw   `33003111                                     ;; 0b:7648 $cf $c8 GFX GFX
-    dw   `32303111                                     ;; 0b:764a $af $e8 GFX GFX
-    dw   `33303111                                     ;; 0b:764c $ef $e8 GFX GFX
-    dw   `13303112                                     ;; 0b:764e $ee $69 GFX GFX
-    dw   `00000000                                     ;; 0b:7650 $00 $00 GFX GFX
-    dw   `33000000                                     ;; 0b:7652 $c0 $c0 GFX GFX
-    dw   `11330000                                     ;; 0b:7654 $f0 $30 GFX GFX
-    dw   `11113000                                     ;; 0b:7656 $f8 $08 GFX GFX
-    dw   `11111300                                     ;; 0b:7658 $fc $04 GFX GFX
-    dw   `11111300                                     ;; 0b:765a $fc $04 GFX GFX
-    dw   `22211130                                     ;; 0b:765c $1e $e2 GFX GFX
-    dw   `33322130                                     ;; 0b:765e $e6 $fa GFX GFX
-    dw   `32303123                                     ;; 0b:7660 $ad $eb GFX GFX
-    dw   `23031233                                     ;; 0b:7662 $5b $d7 GFX GFX
-    dw   `30331111                                     ;; 0b:7664 $bf $b0 GFX GFX
-    dw   `33211133                                     ;; 0b:7666 $df $e3 GFX GFX
-    dw   `11112300                                     ;; 0b:7668 $f4 $0c GFX GFX
-    dw   `21123000                                     ;; 0b:766a $68 $98 GFX GFX
-    dw   `22230000                                     ;; 0b:766c $10 $f0 GFX GFX
-    dw   `33300000                                     ;; 0b:766e $e0 $e0 GFX GFX
-    dw   `00033213                                     ;; 0b:7670 $1b $1d GFX GFX
-    dw   `30000323                                     ;; 0b:7672 $85 $87 GFX GFX
-    dw   `33300033                                     ;; 0b:7674 $e3 $e3 GFX GFX
-    dw   `00000003                                     ;; 0b:7676 $01 $01 GFX GFX
-    dw   `00000003                                     ;; 0b:7678 $01 $01 GFX GFX
-    dw   `00000000                                     ;; 0b:767a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:767c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:767e $00 $00 GFX GFX
-    dw   `30000000                                     ;; 0b:7680 $80 $80 GFX GFX
-    dw   `33000000                                     ;; 0b:7682 $c0 $c0 GFX GFX
-    dw   `31300000                                     ;; 0b:7684 $e0 $a0 GFX GFX
-    dw   `03130000                                     ;; 0b:7686 $70 $50 GFX GFX
-    dw   `03113300                                     ;; 0b:7688 $7c $4c GFX GFX
-    dw   `00311133                                     ;; 0b:768a $3f $23 GFX GFX
-    dw   `00321111                                     ;; 0b:768c $2f $30 GFX GFX
-    dw   `00032111                                     ;; 0b:768e $17 $18 GFX GFX
-    dw   `00000000                                     ;; 0b:7690 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7692 $00 $00 GFX GFX
-    dw   `00000033                                     ;; 0b:7694 $03 $03 GFX GFX
-    dw   `00000321                                     ;; 0b:7696 $05 $06 GFX GFX
-    dw   `00300321                                     ;; 0b:7698 $25 $26 GFX GFX
-    dw   `00330032                                     ;; 0b:769a $32 $33 GFX GFX
-    dw   `33313003                                     ;; 0b:769c $f9 $e9 GFX GFX
-    dw   `11231300                                     ;; 0b:769e $dc $34 GFX GFX
-    dw   `00003211                                     ;; 0b:76a0 $0b $0c GFX GFX
-    dw   `00000321                                     ;; 0b:76a2 $05 $06 GFX GFX
-    dw   `00000032                                     ;; 0b:76a4 $02 $03 GFX GFX
-    dw   `00000003                                     ;; 0b:76a6 $01 $01 GFX GFX
-    dw   `00000000                                     ;; 0b:76a8 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:76aa $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:76ac $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:76ae $00 $00 GFX GFX
-    dw   `11111133                                     ;; 0b:76b0 $ff $03 GFX GFX
-    dw   `11111111                                     ;; 0b:76b2 $ff $00 GFX GFX
-    dw   `11111111                                     ;; 0b:76b4 $ff $00 GFX GFX
-    dw   `22111111                                     ;; 0b:76b6 $3f $c0 GFX GFX
-    dw   `33221111                                     ;; 0b:76b8 $cf $f0 GFX GFX
-    dw   `00332221                                     ;; 0b:76ba $31 $3e GFX GFX
-    dw   `00003332                                     ;; 0b:76bc $0e $0f GFX GFX
-    dw   `00000003                                     ;; 0b:76be $01 $01 GFX GFX
-    dw   `00000000                                     ;; 0b:76c0 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:76c2 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:76c4 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:76c6 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:76c8 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:76ca $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:76cc $00 $00 GFX GFX
-    dw   `00000003                                     ;; 0b:76ce $01 $01 GFX GFX
-    dw   `00000000                                     ;; 0b:76d0 $00 $00 GFX GFX
-    dw   `00003000                                     ;; 0b:76d2 $08 $08 GFX GFX
-    dw   `00031303                                     ;; 0b:76d4 $1d $15 GFX GFX
-    dw   `00031132                                     ;; 0b:76d6 $1e $13 GFX GFX
-    dw   `00031332                                     ;; 0b:76d8 $1e $17 GFX GFX
-    dw   `00031322                                     ;; 0b:76da $1c $17 GFX GFX
-    dw   `00313222                                     ;; 0b:76dc $38 $2f GFX GFX
-    dw   `33111322                                     ;; 0b:76de $fc $c7 GFX GFX
-    dw   `00033332                                     ;; 0b:76e0 $1e $1f GFX GFX
-    dw   `00323333                                     ;; 0b:76e2 $2f $3f GFX GFX
-    dw   `03222223                                     ;; 0b:76e4 $41 $7f GFX GFX
-    dw   `32333222                                     ;; 0b:76e6 $b8 $ff GFX GFX
-    dw   `33333332                                     ;; 0b:76e8 $fe $ff GFX GFX
-    dw   `33111333                                     ;; 0b:76ea $ff $c7 GFX GFX
-    dw   `31333123                                     ;; 0b:76ec $fd $bb GFX GFX
-    dw   `03333312                                     ;; 0b:76ee $7e $7d GFX GFX
-    dw   `23131322                                     ;; 0b:76f0 $7c $d7 GFX GFX
-    dw   `23131322                                     ;; 0b:76f2 $7c $d7 GFX GFX
-    dw   `32311322                                     ;; 0b:76f4 $bc $e7 GFX GFX
-    dw   `33233222                                     ;; 0b:76f6 $d8 $ff GFX GFX
-    dw   `23232322                                     ;; 0b:76f8 $54 $ff GFX GFX
-    dw   `22233132                                     ;; 0b:76fa $1e $fb GFX GFX
-    dw   `32231133                                     ;; 0b:76fc $9f $f3 GFX GFX
-    dw   `32323113                                     ;; 0b:76fe $af $f9 GFX GFX
-    dw   `03223312                                     ;; 0b:7700 $4e $7d GFX GFX
-    dw   `32223312                                     ;; 0b:7702 $8e $fd GFX GFX
-    dw   `33233122                                     ;; 0b:7704 $dc $fb GFX GFX
-    dw   `13313333                                     ;; 0b:7706 $ff $6f GFX GFX
-    dw   `11313032                                     ;; 0b:7708 $fa $2b GFX GFX
-    dw   `11321332                                     ;; 0b:770a $ee $37 GFX GFX
-    dw   `21132113                                     ;; 0b:770c $77 $99 GFX GFX
-    dw   `32132221                                     ;; 0b:770e $b1 $de GFX GFX
-    dw   `32322332                                     ;; 0b:7710 $a6 $ff GFX GFX
-    dw   `23222133                                     ;; 0b:7712 $47 $fb GFX GFX
-    dw   `32113323                                     ;; 0b:7714 $bd $cf GFX GFX
-    dw   `33332122                                     ;; 0b:7716 $f4 $fb GFX GFX
-    dw   `22323311                                     ;; 0b:7718 $2f $fc GFX GFX
-    dw   `23332233                                     ;; 0b:771a $73 $ff GFX GFX
-    dw   `33233322                                     ;; 0b:771c $dc $ff GFX GFX
-    dw   `33322333                                     ;; 0b:771e $e7 $ff GFX GFX
-    dw   `32113221                                     ;; 0b:7720 $b9 $ce GFX GFX
-    dw   `11111322                                     ;; 0b:7722 $fc $07 GFX GFX
-    dw   `11111233                                     ;; 0b:7724 $fb $07 GFX GFX
-    dw   `11111112                                     ;; 0b:7726 $fe $01 GFX GFX
-    dw   `11111111                                     ;; 0b:7728 $ff $00 GFX GFX
-    dw   `11111122                                     ;; 0b:772a $fc $03 GFX GFX
-    dw   `22222233                                     ;; 0b:772c $03 $ff GFX GFX
-    dw   `33333333                                     ;; 0b:772e $ff $ff GFX GFX
-    dw   `33333222                                     ;; 0b:7730 $f8 $ff GFX GFX
-    dw   `13233333                                     ;; 0b:7732 $df $7f GFX GFX
-    dw   `13322333                                     ;; 0b:7734 $e7 $7f GFX GFX
-    dw   `33033222                                     ;; 0b:7736 $d8 $df GFX GFX
-    dw   `12300332                                     ;; 0b:7738 $a6 $67 GFX GFX
-    dw   `23000003                                     ;; 0b:773a $41 $c1 GFX GFX
-    dw   `33333333                                     ;; 0b:773c $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:773e $ff $ff GFX GFX
-    dw   `00000000                                     ;; 0b:7740 $00 $00 GFX GFX
-    dw   `00030000                                     ;; 0b:7742 $10 $10 GFX GFX
-    dw   `30313000                                     ;; 0b:7744 $b8 $a8 GFX GFX
-    dw   `23113000                                     ;; 0b:7746 $78 $c8 GFX GFX
-    dw   `23313000                                     ;; 0b:7748 $78 $e8 GFX GFX
-    dw   `22313000                                     ;; 0b:774a $38 $e8 GFX GFX
-    dw   `22231300                                     ;; 0b:774c $1c $f4 GFX GFX
-    dw   `22311133                                     ;; 0b:774e $3f $e3 GFX GFX
-    dw   `00000000                                     ;; 0b:7750 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7752 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7754 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7756 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7758 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:775a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:775c $00 $00 GFX GFX
-    dw   `30000000                                     ;; 0b:775e $80 $80 GFX GFX
-    dw   `22313132                                     ;; 0b:7760 $3e $eb GFX GFX
-    dw   `22313132                                     ;; 0b:7762 $3e $eb GFX GFX
-    dw   `22311323                                     ;; 0b:7764 $3d $e7 GFX GFX
-    dw   `22233233                                     ;; 0b:7766 $1b $ff GFX GFX
-    dw   `22323232                                     ;; 0b:7768 $2a $ff GFX GFX
-    dw   `23133222                                     ;; 0b:776a $78 $df GFX GFX
-    dw   `33113223                                     ;; 0b:776c $f9 $cf GFX GFX
-    dw   `31132323                                     ;; 0b:776e $f5 $9f GFX GFX
-    dw   `23333000                                     ;; 0b:7770 $78 $f8 GFX GFX
-    dw   `33332300                                     ;; 0b:7772 $f4 $fc GFX GFX
-    dw   `32222230                                     ;; 0b:7774 $82 $fe GFX GFX
-    dw   `22233323                                     ;; 0b:7776 $1d $ff GFX GFX
-    dw   `23333333                                     ;; 0b:7778 $7f $ff GFX GFX
-    dw   `33311133                                     ;; 0b:777a $ff $e3 GFX GFX
-    dw   `32133313                                     ;; 0b:777c $bf $dd GFX GFX
-    dw   `21333330                                     ;; 0b:777e $7e $be GFX GFX
-    dw   `23322323                                     ;; 0b:7780 $65 $ff GFX GFX
-    dw   `33122232                                     ;; 0b:7782 $e2 $df GFX GFX
-    dw   `32331123                                     ;; 0b:7784 $bd $f3 GFX GFX
-    dw   `22123333                                     ;; 0b:7786 $2f $df GFX GFX
-    dw   `11332322                                     ;; 0b:7788 $f4 $3f GFX GFX
-    dw   `33223332                                     ;; 0b:778a $ce $ff GFX GFX
-    dw   `22333233                                     ;; 0b:778c $3b $ff GFX GFX
-    dw   `33322333                                     ;; 0b:778e $e7 $ff GFX GFX
-    dw   `21332230                                     ;; 0b:7790 $72 $be GFX GFX
-    dw   `21332223                                     ;; 0b:7792 $71 $bf GFX GFX
-    dw   `22133233                                     ;; 0b:7794 $3b $df GFX GFX
-    dw   `33331331                                     ;; 0b:7796 $ff $f6 GFX GFX
-    dw   `23031311                                     ;; 0b:7798 $5f $d4 GFX GFX
-    dw   `23312311                                     ;; 0b:779a $77 $ec GFX GFX
-    dw   `31123112                                     ;; 0b:779c $ee $99 GFX GFX
-    dw   `12223123                                     ;; 0b:779e $8d $7b GFX GFX
-    dw   `22233333                                     ;; 0b:77a0 $1f $ff GFX GFX
-    dw   `33333231                                     ;; 0b:77a2 $fb $fe GFX GFX
-    dw   `33322331                                     ;; 0b:77a4 $e7 $fe GFX GFX
-    dw   `22233033                                     ;; 0b:77a6 $1b $fb GFX GFX
-    dw   `23300321                                     ;; 0b:77a8 $65 $e6 GFX GFX
-    dw   `30000032                                     ;; 0b:77aa $82 $83 GFX GFX
-    dw   `33333333                                     ;; 0b:77ac $ff $ff GFX GFX
-    dw   `33333333                                     ;; 0b:77ae $ff $ff GFX GFX
-    dw   `12231123                                     ;; 0b:77b0 $9d $73 GFX GFX
-    dw   `22311111                                     ;; 0b:77b2 $3f $e0 GFX GFX
-    dw   `33211111                                     ;; 0b:77b4 $df $e0 GFX GFX
-    dw   `21111111                                     ;; 0b:77b6 $7f $80 GFX GFX
-    dw   `11111111                                     ;; 0b:77b8 $ff $00 GFX GFX
-    dw   `22111111                                     ;; 0b:77ba $3f $c0 GFX GFX
-    dw   `33222222                                     ;; 0b:77bc $c0 $ff GFX GFX
-    dw   `33333333                                     ;; 0b:77be $ff $ff GFX GFX
-    dw   `00000000                                     ;; 0b:77c0 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:77c2 $00 $00 GFX GFX
-    dw   `33000000                                     ;; 0b:77c4 $c0 $c0 GFX GFX
-    dw   `12300000                                     ;; 0b:77c6 $a0 $60 GFX GFX
-    dw   `12300300                                     ;; 0b:77c8 $a4 $64 GFX GFX
-    dw   `23003300                                     ;; 0b:77ca $4c $cc GFX GFX
-    dw   `30031333                                     ;; 0b:77cc $9f $97 GFX GFX
-    dw   `00313211                                     ;; 0b:77ce $3b $2c GFX GFX
-    dw   `00000003                                     ;; 0b:77d0 $01 $01 GFX GFX
-    dw   `00000033                                     ;; 0b:77d2 $03 $03 GFX GFX
-    dw   `00000313                                     ;; 0b:77d4 $07 $05 GFX GFX
-    dw   `00003130                                     ;; 0b:77d6 $0e $0a GFX GFX
-    dw   `00331130                                     ;; 0b:77d8 $3e $32 GFX GFX
-    dw   `33111300                                     ;; 0b:77da $fc $c4 GFX GFX
-    dw   `11112300                                     ;; 0b:77dc $f4 $0c GFX GFX
-    dw   `11123000                                     ;; 0b:77de $e8 $18 GFX GFX
-    dw   `33111111                                     ;; 0b:77e0 $ff $c0 GFX GFX
-    dw   `11111111                                     ;; 0b:77e2 $ff $00 GFX GFX
-    dw   `11111111                                     ;; 0b:77e4 $ff $00 GFX GFX
-    dw   `11111122                                     ;; 0b:77e6 $fc $03 GFX GFX
-    dw   `11112233                                     ;; 0b:77e8 $f3 $0f GFX GFX
-    dw   `12223300                                     ;; 0b:77ea $8c $7c GFX GFX
-    dw   `23330000                                     ;; 0b:77ec $70 $f0 GFX GFX
-    dw   `30000000                                     ;; 0b:77ee $80 $80 GFX GFX
-    dw   `11230000                                     ;; 0b:77f0 $d0 $30 GFX GFX
-    dw   `12300000                                     ;; 0b:77f2 $a0 $60 GFX GFX
-    dw   `23000000                                     ;; 0b:77f4 $40 $c0 GFX GFX
-    dw   `30000000                                     ;; 0b:77f6 $80 $80 GFX GFX
-    dw   `00000000                                     ;; 0b:77f8 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:77fa $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:77fc $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:77fe $00 $00 GFX GFX
-    dw   `33000000                                     ;; 0b:7800 $c0 $c0 GFX GFX
-    dw   `31300000                                     ;; 0b:7802 $e0 $a0 GFX GFX
-    dw   `03133030                                     ;; 0b:7804 $7a $5a GFX GFX
-    dw   `00311313                                     ;; 0b:7806 $3f $25 GFX GFX
-    dw   `00031311                                     ;; 0b:7808 $1f $14 GFX GFX
-    dw   `00003111                                     ;; 0b:780a $0f $08 GFX GFX
-    dw   `00031111                                     ;; 0b:780c $1f $10 GFX GFX
-    dw   `00311133                                     ;; 0b:780e $3f $23 GFX GFX
-    dw   `00000000                                     ;; 0b:7810 $00 $00 GFX GFX
-    dw   `33330000                                     ;; 0b:7812 $f0 $f0 GFX GFX
-    dw   `31233000                                     ;; 0b:7814 $d8 $b8 GFX GFX
-    dw   `31231300                                     ;; 0b:7816 $dc $b4 GFX GFX
-    dw   `13312230                                     ;; 0b:7818 $f2 $6e GFX GFX
-    dw   `11132330                                     ;; 0b:781a $f6 $1e GFX GFX
-    dw   `11113123                                     ;; 0b:781c $fd $0b GFX GFX
-    dw   `22213233                                     ;; 0b:781e $1b $ef GFX GFX
-    dw   `00311331                                     ;; 0b:7820 $3f $26 GFX GFX
-    dw   `00311331                                     ;; 0b:7822 $3f $26 GFX GFX
-    dw   `00312222                                     ;; 0b:7824 $30 $2f GFX GFX
-    dw   `03112233                                     ;; 0b:7826 $73 $4f GFX GFX
-    dw   `31112303                                     ;; 0b:7828 $f5 $8d GFX GFX
-    dw   `31112303                                     ;; 0b:782a $f5 $8d GFX GFX
-    dw   `33333003                                     ;; 0b:782c $f9 $f9 GFX GFX
-    dw   `00000031                                     ;; 0b:782e $03 $02 GFX GFX
-    dw   `22221313                                     ;; 0b:7830 $0f $f5 GFX GFX
-    dw   `22322323                                     ;; 0b:7832 $25 $ff GFX GFX
-    dw   `22322333                                     ;; 0b:7834 $27 $ff GFX GFX
-    dw   `33222313                                     ;; 0b:7836 $c7 $fd GFX GFX
-    dw   `11222323                                     ;; 0b:7838 $c5 $3f GFX GFX
-    dw   `11222333                                     ;; 0b:783a $c7 $3f GFX GFX
-    dw   `11222313                                     ;; 0b:783c $c7 $3d GFX GFX
-    dw   `11222323                                     ;; 0b:783e $c5 $3f GFX GFX
-    dw   `00000031                                     ;; 0b:7840 $03 $02 GFX GFX
-    dw   `00003311                                     ;; 0b:7842 $0f $0c GFX GFX
-    dw   `00031111                                     ;; 0b:7844 $1f $10 GFX GFX
-    dw   `00031112                                     ;; 0b:7846 $1e $11 GFX GFX
-    dw   `00311112                                     ;; 0b:7848 $3e $21 GFX GFX
-    dw   `00311112                                     ;; 0b:784a $3e $21 GFX GFX
-    dw   `00311112                                     ;; 0b:784c $3e $21 GFX GFX
-    dw   `03133111                                     ;; 0b:784e $7f $58 GFX GFX
-    dw   `12223333                                     ;; 0b:7850 $8f $7f GFX GFX
-    dw   `12223113                                     ;; 0b:7852 $8f $79 GFX GFX
-    dw   `22232223                                     ;; 0b:7854 $11 $ff GFX GFX
-    dw   `22233330                                     ;; 0b:7856 $1e $fe GFX GFX
-    dw   `22231130                                     ;; 0b:7858 $1e $f2 GFX GFX
-    dw   `22232230                                     ;; 0b:785a $12 $fe GFX GFX
-    dw   `22223300                                     ;; 0b:785c $0c $fc GFX GFX
-    dw   `22233230                                     ;; 0b:785e $1a $fe GFX GFX
-    dw   `31111333                                     ;; 0b:7860 $ff $87 GFX GFX
-    dw   `03111111                                     ;; 0b:7862 $7f $40 GFX GFX
-    dw   `00331111                                     ;; 0b:7864 $3f $30 GFX GFX
-    dw   `00313333                                     ;; 0b:7866 $3f $2f GFX GFX
-    dw   `00311111                                     ;; 0b:7868 $3f $20 GFX GFX
-    dw   `00033333                                     ;; 0b:786a $1f $1f GFX GFX
-    dw   `00003111                                     ;; 0b:786c $0f $08 GFX GFX
-    dw   `00000333                                     ;; 0b:786e $07 $07 GFX GFX
-    dw   `33311223                                     ;; 0b:7870 $f9 $e7 GFX GFX
-    dw   `11122230                                     ;; 0b:7872 $e2 $1e GFX GFX
-    dw   `22223300                                     ;; 0b:7874 $0c $fc GFX GFX
-    dw   `33332300                                     ;; 0b:7876 $f4 $fc GFX GFX
-    dw   `22222300                                     ;; 0b:7878 $04 $fc GFX GFX
-    dw   `33333000                                     ;; 0b:787a $f8 $f8 GFX GFX
-    dw   `22230000                                     ;; 0b:787c $10 $f0 GFX GFX
-    dw   `33300000                                     ;; 0b:787e $e0 $e0 GFX GFX
-    dw   `00033000                                     ;; 0b:7880 $18 $18 GFX GFX
-    dw   `00031300                                     ;; 0b:7882 $1c $14 GFX GFX
-    dw   `00031133                                     ;; 0b:7884 $1f $13 GFX GFX
-    dw   `33003112                                     ;; 0b:7886 $ce $c9 GFX GFX
-    dw   `31330311                                     ;; 0b:7888 $f7 $b4 GFX GFX
-    dw   `31113332                                     ;; 0b:788a $fe $8f GFX GFX
-    dw   `03112133                                     ;; 0b:788c $77 $4b GFX GFX
-    dw   `00311231                                     ;; 0b:788e $3b $26 GFX GFX
-    dw   `33000000                                     ;; 0b:7890 $c0 $c0 GFX GFX
-    dw   `31300000                                     ;; 0b:7892 $e0 $a0 GFX GFX
-    dw   `03130000                                     ;; 0b:7894 $70 $50 GFX GFX
-    dw   `33113000                                     ;; 0b:7896 $f8 $c8 GFX GFX
-    dw   `22311300                                     ;; 0b:7898 $3c $e4 GFX GFX
-    dw   `23232130                                     ;; 0b:789a $56 $fa GFX GFX
-    dw   `33123213                                     ;; 0b:789c $eb $dd GFX GFX
-    dw   `23312321                                     ;; 0b:789e $75 $ee GFX GFX
-    dw   `00333223                                     ;; 0b:78a0 $39 $3f GFX GFX
-    dw   `03111333                                     ;; 0b:78a2 $7f $47 GFX GFX
-    dw   `00311213                                     ;; 0b:78a4 $3b $25 GFX GFX
-    dw   `00333122                                     ;; 0b:78a6 $3c $3b GFX GFX
-    dw   `03111333                                     ;; 0b:78a8 $7f $47 GFX GFX
-    dw   `00311123                                     ;; 0b:78aa $3d $23 GFX GFX
-    dw   `00033333                                     ;; 0b:78ac $1f $1f GFX GFX
-    dw   `00331112                                     ;; 0b:78ae $3e $31 GFX GFX
-    dw   `12322232                                     ;; 0b:78b0 $a2 $7f GFX GFX
-    dw   `12232232                                     ;; 0b:78b2 $92 $7f GFX GFX
-    dw   `31223323                                     ;; 0b:78b4 $cd $bf GFX GFX
-    dw   `33222233                                     ;; 0b:78b6 $c3 $ff GFX GFX
-    dw   `11332223                                     ;; 0b:78b8 $f1 $3f GFX GFX
-    dw   `12223322                                     ;; 0b:78ba $8c $7f GFX GFX
-    dw   `31122233                                     ;; 0b:78bc $e3 $9f GFX GFX
-    dw   `23322222                                     ;; 0b:78be $60 $ff GFX GFX
-    dw   `03111121                                     ;; 0b:78c0 $7d $42 GFX GFX
-    dw   `00331112                                     ;; 0b:78c2 $3e $31 GFX GFX
-    dw   `00003333                                     ;; 0b:78c4 $0f $0f GFX GFX
-    dw   `00003311                                     ;; 0b:78c6 $0f $0c GFX GFX
-    dw   `00031112                                     ;; 0b:78c8 $1e $11 GFX GFX
-    dw   `00003111                                     ;; 0b:78ca $0f $08 GFX GFX
-    dw   `00000333                                     ;; 0b:78cc $07 $07 GFX GFX
-    dw   `00000031                                     ;; 0b:78ce $03 $02 GFX GFX
-    dw   `22233322                                     ;; 0b:78d0 $1c $ff GFX GFX
-    dw   `23312333                                     ;; 0b:78d2 $77 $ef GFX GFX
-    dw   `31122222                                     ;; 0b:78d4 $e0 $9f GFX GFX
-    dw   `33311222                                     ;; 0b:78d6 $f8 $e7 GFX GFX
-    dw   `12233333                                     ;; 0b:78d8 $9f $7f GFX GFX
-    dw   `22312222                                     ;; 0b:78da $30 $ef GFX GFX
-    dw   `33233112                                     ;; 0b:78dc $de $f9 GFX GFX
-    dw   `21222333                                     ;; 0b:78de $47 $bf GFX GFX
-    dw   `00000311                                     ;; 0b:78e0 $07 $04 GFX GFX
-    dw   `00000033                                     ;; 0b:78e2 $03 $03 GFX GFX
-    dw   `00000000                                     ;; 0b:78e4 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:78e6 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:78e8 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:78ea $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:78ec $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:78ee $00 $00 GFX GFX
-    dw   `12123312                                     ;; 0b:78f0 $ae $5d GFX GFX
-    dw   `33332231                                     ;; 0b:78f2 $f3 $fe GFX GFX
-    dw   `03121213                                     ;; 0b:78f4 $6b $55 GFX GFX
-    dw   `31112332                                     ;; 0b:78f6 $f6 $8f GFX GFX
-    dw   `03333222                                     ;; 0b:78f8 $78 $7f GFX GFX
-    dw   `00031133                                     ;; 0b:78fa $1f $13 GFX GFX
-    dw   `00003331                                     ;; 0b:78fc $0f $0e GFX GFX
-    dw   `00000033                                     ;; 0b:78fe $03 $03 GFX GFX
-    dw   `00000000                                     ;; 0b:7900 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7902 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7904 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7906 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7908 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:790a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:790c $00 $00 GFX GFX
-    dw   `30000000                                     ;; 0b:790e $80 $80 GFX GFX
-    dw   `00000000                                     ;; 0b:7910 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7912 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7914 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7916 $00 $00 GFX GFX
-    dw   `00000003                                     ;; 0b:7918 $01 $01 GFX GFX
-    dw   `00000031                                     ;; 0b:791a $03 $02 GFX GFX
-    dw   `00000031                                     ;; 0b:791c $03 $02 GFX GFX
-    dw   `00000032                                     ;; 0b:791e $02 $03 GFX GFX
-    dw   `13000000                                     ;; 0b:7920 $c0 $40 GFX GFX
-    dw   `13000000                                     ;; 0b:7922 $c0 $40 GFX GFX
-    dw   `13000000                                     ;; 0b:7924 $c0 $40 GFX GFX
-    dw   `21300000                                     ;; 0b:7926 $60 $a0 GFX GFX
-    dw   `21300000                                     ;; 0b:7928 $60 $a0 GFX GFX
-    dw   `32300000                                     ;; 0b:792a $a0 $e0 GFX GFX
-    dw   `32300000                                     ;; 0b:792c $a0 $e0 GFX GFX
-    dw   `32130000                                     ;; 0b:792e $b0 $d0 GFX GFX
-    dw   `00000003                                     ;; 0b:7930 $01 $01 GFX GFX
-    dw   `00000003                                     ;; 0b:7932 $01 $01 GFX GFX
-    dw   `00000000                                     ;; 0b:7934 $00 $00 GFX GFX
-    dw   `00000003                                     ;; 0b:7936 $01 $01 GFX GFX
-    dw   `00000003                                     ;; 0b:7938 $01 $01 GFX GFX
-    dw   `00000032                                     ;; 0b:793a $02 $03 GFX GFX
-    dw   `00000322                                     ;; 0b:793c $04 $07 GFX GFX
-    dw   `00000322                                     ;; 0b:793e $04 $07 GFX GFX
-    dw   `32213000                                     ;; 0b:7940 $98 $e8 GFX GFX
-    dw   `32213000                                     ;; 0b:7942 $98 $e8 GFX GFX
-    dw   `23221330                                     ;; 0b:7944 $4e $f6 GFX GFX
-    dw   `33222113                                     ;; 0b:7946 $c7 $f9 GFX GFX
-    dw   `23322222                                     ;; 0b:7948 $60 $ff GFX GFX
-    dw   `22332222                                     ;; 0b:794a $30 $ff GFX GFX
-    dw   `23332223                                     ;; 0b:794c $71 $ff GFX GFX
-    dw   `32233222                                     ;; 0b:794e $98 $ff GFX GFX
-    dw   `00003233                                     ;; 0b:7950 $0b $0f GFX GFX
-    dw   `00003231                                     ;; 0b:7952 $0b $0e GFX GFX
-    dw   `00333223                                     ;; 0b:7954 $39 $3f GFX GFX
-    dw   `33111333                                     ;; 0b:7956 $ff $c7 GFX GFX
-    dw   `31313111                                     ;; 0b:7958 $ff $a8 GFX GFX
-    dw   `33111111                                     ;; 0b:795a $ff $c0 GFX GFX
-    dw   `11311121                                     ;; 0b:795c $fd $22 GFX GFX
-    dw   `31111223                                     ;; 0b:795e $f9 $87 GFX GFX
-    dw   `22333223                                     ;; 0b:7960 $39 $ff GFX GFX
-    dw   `33323223                                     ;; 0b:7962 $e9 $ff GFX GFX
-    dw   `31232322                                     ;; 0b:7964 $d4 $bf GFX GFX
-    dw   `23323323                                     ;; 0b:7966 $6d $ff GFX GFX
-    dw   `33213323                                     ;; 0b:7968 $dd $ef GFX GFX
-    dw   `22332322                                     ;; 0b:796a $34 $ff GFX GFX
-    dw   `13323232                                     ;; 0b:796c $ea $7f GFX GFX
-    dw   `33123322                                     ;; 0b:796e $ec $df GFX GFX
-    dw   `11112122                                     ;; 0b:7970 $f4 $0b GFX GFX
-    dw   `13211223                                     ;; 0b:7972 $d9 $67 GFX GFX
-    dw   `31112231                                     ;; 0b:7974 $f3 $8e GFX GFX
-    dw   `11111233                                     ;; 0b:7976 $fb $07 GFX GFX
-    dw   `13112122                                     ;; 0b:7978 $f4 $4b GFX GFX
-    dw   `31113222                                     ;; 0b:797a $f8 $8f GFX GFX
-    dw   `23131231                                     ;; 0b:797c $7b $d6 GFX GFX
-    dw   `22323323                                     ;; 0b:797e $2d $ff GFX GFX
-    dw   `00333222                                     ;; 0b:7980 $38 $3f GFX GFX
-    dw   `00003222                                     ;; 0b:7982 $08 $0f GFX GFX
-    dw   `00032222                                     ;; 0b:7984 $10 $1f GFX GFX
-    dw   `00032222                                     ;; 0b:7986 $10 $1f GFX GFX
-    dw   `00032222                                     ;; 0b:7988 $10 $1f GFX GFX
-    dw   `00322322                                     ;; 0b:798a $24 $3f GFX GFX
-    dw   `00312323                                     ;; 0b:798c $35 $2f GFX GFX
-    dw   `03122233                                     ;; 0b:798e $63 $5f GFX GFX
-    dw   `22222223                                     ;; 0b:7990 $01 $ff GFX GFX
-    dw   `22222223                                     ;; 0b:7992 $01 $ff GFX GFX
-    dw   `22232233                                     ;; 0b:7994 $13 $ff GFX GFX
-    dw   `22223232                                     ;; 0b:7996 $0a $ff GFX GFX
-    dw   `22222322                                     ;; 0b:7998 $04 $ff GFX GFX
-    dw   `22222322                                     ;; 0b:799a $04 $ff GFX GFX
-    dw   `22222232                                     ;; 0b:799c $02 $ff GFX GFX
-    dw   `22222233                                     ;; 0b:799e $03 $ff GFX GFX
-    dw   `03132230                                     ;; 0b:79a0 $72 $5e GFX GFX
-    dw   `31322300                                     ;; 0b:79a2 $e4 $bc GFX GFX
-    dw   `33312300                                     ;; 0b:79a4 $f4 $ec GFX GFX
-    dw   `03132300                                     ;; 0b:79a6 $74 $5c GFX GFX
-    dw   `03131300                                     ;; 0b:79a8 $7c $54 GFX GFX
-    dw   `00313000                                     ;; 0b:79aa $38 $28 GFX GFX
-    dw   `00313000                                     ;; 0b:79ac $38 $28 GFX GFX
-    dw   `00030000                                     ;; 0b:79ae $10 $10 GFX GFX
-    dw   `32222233                                     ;; 0b:79b0 $83 $ff GFX GFX
-    dw   `03322313                                     ;; 0b:79b2 $67 $7d GFX GFX
-    dw   `00033211                                     ;; 0b:79b4 $1b $1c GFX GFX
-    dw   `00000321                                     ;; 0b:79b6 $05 $06 GFX GFX
-    dw   `00000331                                     ;; 0b:79b8 $07 $06 GFX GFX
-    dw   `00003223                                     ;; 0b:79ba $09 $0f GFX GFX
-    dw   `00003230                                     ;; 0b:79bc $0a $0e GFX GFX
-    dw   `00003300                                     ;; 0b:79be $0c $0c GFX GFX
-    dw   `00000033                                     ;; 0b:79c0 $03 $03 GFX GFX
-    dw   `00030313                                     ;; 0b:79c2 $17 $15 GFX GFX
-    dw   `00313123                                     ;; 0b:79c4 $3d $2b GFX GFX
-    dw   `03123123                                     ;; 0b:79c6 $6d $5b GFX GFX
-    dw   `03231231                                     ;; 0b:79c8 $5b $76 GFX GFX
-    dw   `33232232                                     ;; 0b:79ca $d2 $ff GFX GFX
-    dw   `33232232                                     ;; 0b:79cc $d2 $ff GFX GFX
-    dw   `13223222                                     ;; 0b:79ce $c8 $7f GFX GFX
-    dw   `00033300                                     ;; 0b:79d0 $1c $1c GFX GFX
-    dw   `03311300                                     ;; 0b:79d2 $7c $64 GFX GFX
-    dw   `31123000                                     ;; 0b:79d4 $e8 $98 GFX GFX
-    dw   `12230000                                     ;; 0b:79d6 $90 $70 GFX GFX
-    dw   `22300000                                     ;; 0b:79d8 $20 $e0 GFX GFX
-    dw   `22300000                                     ;; 0b:79da $20 $e0 GFX GFX
-    dw   `23000000                                     ;; 0b:79dc $40 $c0 GFX GFX
-    dw   `23000000                                     ;; 0b:79de $40 $c0 GFX GFX
-    dw   `22322222                                     ;; 0b:79e0 $20 $ff GFX GFX
-    dw   `22222222                                     ;; 0b:79e2 $00 $ff GFX GFX
-    dw   `32222222                                     ;; 0b:79e4 $80 $ff GFX GFX
-    dw   `32222222                                     ;; 0b:79e6 $80 $ff GFX GFX
-    dw   `22222233                                     ;; 0b:79e8 $03 $ff GFX GFX
-    dw   `22222300                                     ;; 0b:79ea $04 $fc GFX GFX
-    dw   `22223000                                     ;; 0b:79ec $08 $f8 GFX GFX
-    dw   `22223300                                     ;; 0b:79ee $0c $fc GFX GFX
-    dw   `23000000                                     ;; 0b:79f0 $40 $c0 GFX GFX
-    dw   `23000000                                     ;; 0b:79f2 $40 $c0 GFX GFX
-    dw   `23000000                                     ;; 0b:79f4 $40 $c0 GFX GFX
-    dw   `30000000                                     ;; 0b:79f6 $80 $80 GFX GFX
-    dw   `00000000                                     ;; 0b:79f8 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:79fa $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:79fc $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:79fe $00 $00 GFX GFX
-    dw   `22331130                                     ;; 0b:7a00 $3e $f2 GFX GFX
-    dw   `33213213                                     ;; 0b:7a02 $db $ed GFX GFX
-    dw   `11313321                                     ;; 0b:7a04 $fd $2e GFX GFX
-    dw   `32321321                                     ;; 0b:7a06 $ad $f6 GFX GFX
-    dw   `11111231                                     ;; 0b:7a08 $fb $06 GFX GFX
-    dw   `11111112                                     ;; 0b:7a0a $fe $01 GFX GFX
-    dw   `33111111                                     ;; 0b:7a0c $ff $c0 GFX GFX
-    dw   `11111122                                     ;; 0b:7a0e $fc $03 GFX GFX
-    dw   `33000000                                     ;; 0b:7a10 $c0 $c0 GFX GFX
-    dw   `31300000                                     ;; 0b:7a12 $e0 $a0 GFX GFX
-    dw   `32130000                                     ;; 0b:7a14 $b0 $d0 GFX GFX
-    dw   `33130000                                     ;; 0b:7a16 $f0 $d0 GFX GFX
-    dw   `13133300                                     ;; 0b:7a18 $fc $5c GFX GFX
-    dw   `13231130                                     ;; 0b:7a1a $de $72 GFX GFX
-    dw   `11312300                                     ;; 0b:7a1c $f4 $2c GFX GFX
-    dw   `11113000                                     ;; 0b:7a1e $f8 $08 GFX GFX
-    dw   `33311113                                     ;; 0b:7a20 $ff $e1 GFX GFX
-    dw   `11121121                                     ;; 0b:7a22 $ed $12 GFX GFX
-    dw   `23322121                                     ;; 0b:7a24 $65 $fa GFX GFX
-    dw   `32223221                                     ;; 0b:7a26 $89 $fe GFX GFX
-    dw   `23323222                                     ;; 0b:7a28 $68 $ff GFX GFX
-    dw   `30032332                                     ;; 0b:7a2a $96 $9f GFX GFX
-    dw   `23003223                                     ;; 0b:7a2c $49 $cf GFX GFX
-    dw   `23000323                                     ;; 0b:7a2e $45 $c7 GFX GFX
-    dw   `31113000                                     ;; 0b:7a30 $f8 $88 GFX GFX
-    dw   `13131300                                     ;; 0b:7a32 $fc $54 GFX GFX
-    dw   `33133300                                     ;; 0b:7a34 $fc $dc GFX GFX
-    dw   `33223300                                     ;; 0b:7a36 $cc $fc GFX GFX
-    dw   `31222300                                     ;; 0b:7a38 $c4 $bc GFX GFX
-    dw   `22222230                                     ;; 0b:7a3a $02 $fe GFX GFX
-    dw   `32222230                                     ;; 0b:7a3c $82 $fe GFX GFX
-    dw   `33222223                                     ;; 0b:7a3e $c1 $ff GFX GFX
-    dw   `30000032                                     ;; 0b:7a40 $82 $83 GFX GFX
-    dw   `00000032                                     ;; 0b:7a42 $02 $03 GFX GFX
-    dw   `30000003                                     ;; 0b:7a44 $81 $81 GFX GFX
-    dw   `23000000                                     ;; 0b:7a46 $40 $c0 GFX GFX
-    dw   `22300000                                     ;; 0b:7a48 $20 $e0 GFX GFX
-    dw   `22300000                                     ;; 0b:7a4a $20 $e0 GFX GFX
-    dw   `23130033                                     ;; 0b:7a4c $73 $d3 GFX GFX
-    dw   `32113311                                     ;; 0b:7a4e $bf $cc GFX GFX
-    dw   `33223323                                     ;; 0b:7a50 $cd $ff GFX GFX
-    dw   `33322323                                     ;; 0b:7a52 $e5 $ff GFX GFX
-    dw   `23333223                                     ;; 0b:7a54 $79 $ff GFX GFX
-    dw   `33000323                                     ;; 0b:7a56 $c5 $c7 GFX GFX
-    dw   `00000030                                     ;; 0b:7a58 $02 $02 GFX GFX
-    dw   `33300000                                     ;; 0b:7a5a $e0 $e0 GFX GFX
-    dw   `13230000                                     ;; 0b:7a5c $d0 $70 GFX GFX
-    dw   `13330000                                     ;; 0b:7a5e $f0 $70 GFX GFX
-    dw   `03321111                                     ;; 0b:7a60 $6f $70 GFX GFX
-    dw   `00032111                                     ;; 0b:7a62 $17 $18 GFX GFX
-    dw   `33333233                                     ;; 0b:7a64 $fb $ff GFX GFX
-    dw   `11111330                                     ;; 0b:7a66 $fe $06 GFX GFX
-    dw   `11331223                                     ;; 0b:7a68 $f9 $37 GFX GFX
-    dw   `13223323                                     ;; 0b:7a6a $cd $7f GFX GFX
-    dw   `33323033                                     ;; 0b:7a6c $eb $fb GFX GFX
-    dw   `00033000                                     ;; 0b:7a6e $18 $18 GFX GFX
-    dw   `32230000                                     ;; 0b:7a70 $90 $f0 GFX GFX
-    dw   `13230000                                     ;; 0b:7a72 $d0 $70 GFX GFX
-    dw   `30330000                                     ;; 0b:7a74 $b0 $b0 GFX GFX
-    dw   `00000000                                     ;; 0b:7a76 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7a78 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7a7a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7a7c $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7a7e $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7a80 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7a82 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7a84 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7a86 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7a88 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7a8a $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7a8c $00 $00 GFX GFX
-    dw   `00000003                                     ;; 0b:7a8e $01 $01 GFX GFX
-    dw   `00000000                                     ;; 0b:7a90 $00 $00 GFX GFX
-    dw   `00000033                                     ;; 0b:7a92 $03 $03 GFX GFX
-    dw   `00003322                                     ;; 0b:7a94 $0c $0f GFX GFX
-    dw   `00032222                                     ;; 0b:7a96 $10 $1f GFX GFX
-    dw   `00322222                                     ;; 0b:7a98 $20 $3f GFX GFX
-    dw   `03222222                                     ;; 0b:7a9a $40 $7f GFX GFX
-    dw   `32222222                                     ;; 0b:7a9c $80 $ff GFX GFX
-    dw   `22222222                                     ;; 0b:7a9e $00 $ff GFX GFX
-    dw   `00000032                                     ;; 0b:7aa0 $02 $03 GFX GFX
-    dw   `00000322                                     ;; 0b:7aa2 $04 $07 GFX GFX
-    dw   `00003223                                     ;; 0b:7aa4 $09 $0f GFX GFX
-    dw   `00003232                                     ;; 0b:7aa6 $0a $0f GFX GFX
-    dw   `00032132                                     ;; 0b:7aa8 $16 $1b GFX GFX
-    dw   `00312322                                     ;; 0b:7aaa $34 $2f GFX GFX
-    dw   `00321322                                     ;; 0b:7aac $2c $37 GFX GFX
-    dw   `03113121                                     ;; 0b:7aae $7d $4a GFX GFX
-    dw   `22222222                                     ;; 0b:7ab0 $00 $ff GFX GFX
-    dw   `22222222                                     ;; 0b:7ab2 $00 $ff GFX GFX
-    dw   `22222222                                     ;; 0b:7ab4 $00 $ff GFX GFX
-    dw   `22222222                                     ;; 0b:7ab6 $00 $ff GFX GFX
-    dw   `22222222                                     ;; 0b:7ab8 $00 $ff GFX GFX
-    dw   `22222222                                     ;; 0b:7aba $00 $ff GFX GFX
-    dw   `23222222                                     ;; 0b:7abc $40 $ff GFX GFX
-    dw   `23222222                                     ;; 0b:7abe $40 $ff GFX GFX
-    dw   `03113212                                     ;; 0b:7ac0 $7a $4d GFX GFX
-    dw   `31133121                                     ;; 0b:7ac2 $fd $9a GFX GFX
-    dw   `31331213                                     ;; 0b:7ac4 $fb $b5 GFX GFX
-    dw   `03031213                                     ;; 0b:7ac6 $5b $55 GFX GFX
-    dw   `00031113                                     ;; 0b:7ac8 $1f $11 GFX GFX
-    dw   `00003133                                     ;; 0b:7aca $0f $0b GFX GFX
-    dw   `00003133                                     ;; 0b:7acc $0f $0b GFX GFX
-    dw   `00000303                                     ;; 0b:7ace $05 $05 GFX GFX
-    dw   `32222222                                     ;; 0b:7ad0 $80 $ff GFX GFX
-    dw   `32232222                                     ;; 0b:7ad2 $90 $ff GFX GFX
-    dw   `32232222                                     ;; 0b:7ad4 $90 $ff GFX GFX
-    dw   `22322322                                     ;; 0b:7ad6 $24 $ff GFX GFX
-    dw   `12312322                                     ;; 0b:7ad8 $b4 $6f GFX GFX
-    dw   `21322322                                     ;; 0b:7ada $64 $bf GFX GFX
-    dw   `12321312                                     ;; 0b:7adc $ae $75 GFX GFX
-    dw   `12312322                                     ;; 0b:7ade $b4 $6f GFX GFX
-    dw   `00000003                                     ;; 0b:7ae0 $01 $01 GFX GFX
-    dw   `00000003                                     ;; 0b:7ae2 $01 $01 GFX GFX
-    dw   `00000000                                     ;; 0b:7ae4 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7ae6 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7ae8 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7aea $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7aec $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7aee $00 $00 GFX GFX
-    dw   `11321321                                     ;; 0b:7af0 $ed $36 GFX GFX
-    dw   `13311312                                     ;; 0b:7af2 $fe $65 GFX GFX
-    dw   `30313311                                     ;; 0b:7af4 $bf $ac GFX GFX
-    dw   `00313031                                     ;; 0b:7af6 $3b $2a GFX GFX
-    dw   `00030003                                     ;; 0b:7af8 $11 $11 GFX GFX
-    dw   `00000003                                     ;; 0b:7afa $01 $01 GFX GFX
-    dw   `00000000                                     ;; 0b:7afc $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7afe $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7b00 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7b02 $00 $00 GFX GFX
-    dw   `33300330                                     ;; 0b:7b04 $e6 $e6 GFX GFX
-    dw   `23233123                                     ;; 0b:7b06 $5d $fb GFX GFX
-    dw   `22323312                                     ;; 0b:7b08 $2e $fd GFX GFX
-    dw   `22331111                                     ;; 0b:7b0a $3f $f0 GFX GFX
-    dw   `22313111                                     ;; 0b:7b0c $3f $e8 GFX GFX
-    dw   `22331111                                     ;; 0b:7b0e $3f $f0 GFX GFX
-    dw   `00000003                                     ;; 0b:7b10 $01 $01 GFX GFX
-    dw   `00000333                                     ;; 0b:7b12 $07 $07 GFX GFX
-    dw   `33003311                                     ;; 0b:7b14 $cf $cc GFX GFX
-    dw   `31332132                                     ;; 0b:7b16 $f6 $bb GFX GFX
-    dw   `23113133                                     ;; 0b:7b18 $7f $cb GFX GFX
-    dw   `12323213                                     ;; 0b:7b1a $ab $7d GFX GFX
-    dw   `11111112                                     ;; 0b:7b1c $fe $01 GFX GFX
-    dw   `11111111                                     ;; 0b:7b1e $ff $00 GFX GFX
-    dw   `23113111                                     ;; 0b:7b20 $7f $c8 GFX GFX
-    dw   `23311112                                     ;; 0b:7b22 $7e $e1 GFX GFX
-    dw   `33111121                                     ;; 0b:7b24 $fd $c2 GFX GFX
-    dw   `33132112                                     ;; 0b:7b26 $f6 $d9 GFX GFX
-    dw   `32311122                                     ;; 0b:7b28 $bc $e3 GFX GFX
-    dw   `33111112                                     ;; 0b:7b2a $fe $c1 GFX GFX
-    dw   `33131121                                     ;; 0b:7b2c $fd $d2 GFX GFX
-    dw   `23311132                                     ;; 0b:7b2e $7e $e3 GFX GFX
-    dw   `21331111                                     ;; 0b:7b30 $7f $b0 GFX GFX
-    dw   `23111111                                     ;; 0b:7b32 $7f $c0 GFX GFX
-    dw   `22333111                                     ;; 0b:7b34 $3f $f8 GFX GFX
-    dw   `23111211                                     ;; 0b:7b36 $7b $c4 GFX GFX
-    dw   `31233221                                     ;; 0b:7b38 $d9 $be GFX GFX
-    dw   `33322232                                     ;; 0b:7b3a $e2 $ff GFX GFX
-    dw   `22233232                                     ;; 0b:7b3c $1a $ff GFX GFX
-    dw   `22333323                                     ;; 0b:7b3e $3d $ff GFX GFX
-    dw   `23231312                                     ;; 0b:7b40 $5e $f5 GFX GFX
-    dw   `23223233                                     ;; 0b:7b42 $4b $ff GFX GFX
-    dw   `22322222                                     ;; 0b:7b44 $20 $ff GFX GFX
-    dw   `22322222                                     ;; 0b:7b46 $20 $ff GFX GFX
-    dw   `22322223                                     ;; 0b:7b48 $21 $ff GFX GFX
-    dw   `22232223                                     ;; 0b:7b4a $11 $ff GFX GFX
-    dw   `22232332                                     ;; 0b:7b4c $16 $ff GFX GFX
-    dw   `32223322                                     ;; 0b:7b4e $8c $ff GFX GFX
-    dw   `31232232                                     ;; 0b:7b50 $d2 $bf GFX GFX
-    dw   `23233133                                     ;; 0b:7b52 $5f $fb GFX GFX
-    dw   `33312313                                     ;; 0b:7b54 $f7 $ed GFX GFX
-    dw   `30031313                                     ;; 0b:7b56 $9f $95 GFX GFX
-    dw   `30003033                                     ;; 0b:7b58 $8b $8b GFX GFX
-    dw   `23000000                                     ;; 0b:7b5a $40 $c0 GFX GFX
-    dw   `22300000                                     ;; 0b:7b5c $20 $e0 GFX GFX
-    dw   `22300000                                     ;; 0b:7b5e $20 $e0 GFX GFX
-    dw   `32223332                                     ;; 0b:7b60 $8e $ff GFX GFX
-    dw   `13212333                                     ;; 0b:7b62 $d7 $6f GFX GFX
-    dw   `23121323                                     ;; 0b:7b64 $6d $d7 GFX GFX
-    dw   `13312130                                     ;; 0b:7b66 $f6 $6a GFX GFX
-    dw   `11331213                                     ;; 0b:7b68 $fb $35 GFX GFX
-    dw   `11303111                                     ;; 0b:7b6a $ef $28 GFX GFX
-    dw   `31300331                                     ;; 0b:7b6c $e7 $a6 GFX GFX
-    dw   `03300003                                     ;; 0b:7b6e $61 $61 GFX GFX
-    dw   `23130033                                     ;; 0b:7b70 $73 $d3 GFX GFX
-    dw   `32113311                                     ;; 0b:7b72 $bf $cc GFX GFX
-    dw   `33321111                                     ;; 0b:7b74 $ef $f0 GFX GFX
-    dw   `00332133                                     ;; 0b:7b76 $37 $3b GFX GFX
-    dw   `33333300                                     ;; 0b:7b78 $fc $fc GFX GFX
-    dw   `32230000                                     ;; 0b:7b7a $90 $f0 GFX GFX
-    dw   `13230000                                     ;; 0b:7b7c $d0 $70 GFX GFX
-    dw   `33330000                                     ;; 0b:7b7e $f0 $f0 GFX GFX
-    dw   `33300000                                     ;; 0b:7b80 $e0 $e0 GFX GFX
-    dw   `22230000                                     ;; 0b:7b82 $10 $f0 GFX GFX
-    dw   `32233000                                     ;; 0b:7b84 $98 $f8 GFX GFX
-    dw   `13313300                                     ;; 0b:7b86 $fc $6c GFX GFX
-    dw   `21321330                                     ;; 0b:7b88 $6e $b6 GFX GFX
-    dw   `21331323                                     ;; 0b:7b8a $7d $b7 GFX GFX
-    dw   `31131333                                     ;; 0b:7b8c $ff $97 GFX GFX
-    dw   `12132311                                     ;; 0b:7b8e $b7 $5c GFX GFX
-    dw   `11113123                                     ;; 0b:7b90 $fd $0b GFX GFX
-    dw   `22111133                                     ;; 0b:7b92 $3f $c3 GFX GFX
-    dw   `13311132                                     ;; 0b:7b94 $fe $63 GFX GFX
-    dw   `21131313                                     ;; 0b:7b96 $7f $95 GFX GFX
-    dw   `21331333                                     ;; 0b:7b98 $7f $b7 GFX GFX
-    dw   `21332233                                     ;; 0b:7b9a $73 $bf GFX GFX
-    dw   `22312223                                     ;; 0b:7b9c $31 $ef GFX GFX
-    dw   `32222222                                     ;; 0b:7b9e $80 $ff GFX GFX
-    dw   `33000000                                     ;; 0b:7ba0 $c0 $c0 GFX GFX
-    dw   `23000000                                     ;; 0b:7ba2 $40 $c0 GFX GFX
-    dw   `22300000                                     ;; 0b:7ba4 $20 $e0 GFX GFX
-    dw   `22230000                                     ;; 0b:7ba6 $10 $f0 GFX GFX
-    dw   `22213000                                     ;; 0b:7ba8 $18 $e8 GFX GFX
-    dw   `32221300                                     ;; 0b:7baa $8c $f4 GFX GFX
-    dw   `23122130                                     ;; 0b:7bac $66 $da GFX GFX
-    dw   `32332213                                     ;; 0b:7bae $b3 $fd GFX GFX
-    dw   `23322222                                     ;; 0b:7bb0 $60 $ff GFX GFX
-    dw   `23332222                                     ;; 0b:7bb2 $70 $ff GFX GFX
-    dw   `23332233                                     ;; 0b:7bb4 $73 $ff GFX GFX
-    dw   `23333223                                     ;; 0b:7bb6 $79 $ff GFX GFX
-    dw   `32333332                                     ;; 0b:7bb8 $be $ff GFX GFX
-    dw   `33230033                                     ;; 0b:7bba $d3 $f3 GFX GFX
-    dw   `00330000                                     ;; 0b:7bbc $30 $30 GFX GFX
-    dw   `33300000                                     ;; 0b:7bbe $e0 $e0 GFX GFX
-    dw   `32223221                                     ;; 0b:7bc0 $89 $fe GFX GFX
-    dw   `23312322                                     ;; 0b:7bc2 $74 $ef GFX GFX
-    dw   `23231233                                     ;; 0b:7bc4 $5b $f7 GFX GFX
-    dw   `23223332                                     ;; 0b:7bc6 $4e $ff GFX GFX
-    dw   `23123222                                     ;; 0b:7bc8 $68 $df GFX GFX
-    dw   `23312311                                     ;; 0b:7bca $77 $ec GFX GFX
-    dw   `30033033                                     ;; 0b:7bcc $9b $9b GFX GFX
-    dw   `00000000                                     ;; 0b:7bce $00 $00 GFX GFX
-    dw   `13230000                                     ;; 0b:7bd0 $d0 $70 GFX GFX
-    dw   `13330000                                     ;; 0b:7bd2 $f0 $70 GFX GFX
-    dw   `32230000                                     ;; 0b:7bd4 $90 $f0 GFX GFX
-    dw   `33230000                                     ;; 0b:7bd6 $d0 $f0 GFX GFX
-    dw   `00330000                                     ;; 0b:7bd8 $30 $30 GFX GFX
-    dw   `00000000                                     ;; 0b:7bda $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7bdc $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7bde $00 $00 GFX GFX
-    dw   `30000000                                     ;; 0b:7be0 $80 $80 GFX GFX
-    dw   `13000000                                     ;; 0b:7be2 $c0 $40 GFX GFX
-    dw   `21330000                                     ;; 0b:7be4 $70 $b0 GFX GFX
-    dw   `32123000                                     ;; 0b:7be6 $a8 $d8 GFX GFX
-    dw   `23211300                                     ;; 0b:7be8 $5c $e4 GFX GFX
-    dw   `22331130                                     ;; 0b:7bea $3e $f2 GFX GFX
-    dw   `11233113                                     ;; 0b:7bec $df $39 GFX GFX
-    dw   `33300333                                     ;; 0b:7bee $e7 $e7 GFX GFX
-    dw   `00000000                                     ;; 0b:7bf0 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7bf2 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7bf4 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7bf6 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7bf8 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7bfa $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7bfc $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7bfe $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7c00 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7c02 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7c04 $00 $00 GFX GFX
-    dw   `33000000                                     ;; 0b:7c06 $c0 $c0 GFX GFX
-    dw   `31330033                                     ;; 0b:7c08 $f3 $b3 GFX GFX
-    dw   `03113311                                     ;; 0b:7c0a $7f $4c GFX GFX
-    dw   `03132112                                     ;; 0b:7c0c $76 $59 GFX GFX
-    dw   `00322222                                     ;; 0b:7c0e $20 $3f GFX GFX
-    dw   `00003300                                     ;; 0b:7c10 $0c $0c GFX GFX
-    dw   `00031330                                     ;; 0b:7c12 $1e $16 GFX GFX
-    dw   `00331313                                     ;; 0b:7c14 $3f $35 GFX GFX
-    dw   `03311323                                     ;; 0b:7c16 $7d $67 GFX GFX
-    dw   `31311323                                     ;; 0b:7c18 $fd $a7 GFX GFX
-    dw   `31233223                                     ;; 0b:7c1a $d9 $bf GFX GFX
-    dw   `32222223                                     ;; 0b:7c1c $81 $ff GFX GFX
-    dw   `32222223                                     ;; 0b:7c1e $81 $ff GFX GFX
-    dw   `00000000                                     ;; 0b:7c20 $00 $00 GFX GFX
-    dw   `33000000                                     ;; 0b:7c22 $c0 $c0 GFX GFX
-    dw   `21330000                                     ;; 0b:7c24 $70 $b0 GFX GFX
-    dw   `21233300                                     ;; 0b:7c26 $5c $bc GFX GFX
-    dw   `21232130                                     ;; 0b:7c28 $56 $ba GFX GFX
-    dw   `22232113                                     ;; 0b:7c2a $17 $f9 GFX GFX
-    dw   `22232123                                     ;; 0b:7c2c $15 $fb GFX GFX
-    dw   `22232223                                     ;; 0b:7c2e $11 $ff GFX GFX
-    dw   `00000000                                     ;; 0b:7c30 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7c32 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7c34 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7c36 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7c38 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7c3a $00 $00 GFX GFX
-    dw   `33000000                                     ;; 0b:7c3c $c0 $c0 GFX GFX
-    dw   `21300000                                     ;; 0b:7c3e $60 $a0 GFX GFX
-    dw   `00322222                                     ;; 0b:7c40 $20 $3f GFX GFX
-    dw   `00323322                                     ;; 0b:7c42 $2c $3f GFX GFX
-    dw   `00333332                                     ;; 0b:7c44 $3e $3f GFX GFX
-    dw   `03133313                                     ;; 0b:7c46 $7f $5d GFX GFX
-    dw   `03133113                                     ;; 0b:7c48 $7f $59 GFX GFX
-    dw   `03113332                                     ;; 0b:7c4a $7e $4f GFX GFX
-    dw   `00311133                                     ;; 0b:7c4c $3f $23 GFX GFX
-    dw   `00033300                                     ;; 0b:7c4e $1c $1c GFX GFX
-    dw   `32222232                                     ;; 0b:7c50 $82 $ff GFX GFX
-    dw   `23222233                                     ;; 0b:7c52 $43 $ff GFX GFX
-    dw   `22333323                                     ;; 0b:7c54 $3d $ff GFX GFX
-    dw   `22322223                                     ;; 0b:7c56 $21 $ff GFX GFX
-    dw   `22322223                                     ;; 0b:7c58 $21 $ff GFX GFX
-    dw   `22333332                                     ;; 0b:7c5a $3e $ff GFX GFX
-    dw   `33111311                                     ;; 0b:7c5c $ff $c4 GFX GFX
-    dw   `33333033                                     ;; 0b:7c5e $fb $fb GFX GFX
-    dw   `22232223                                     ;; 0b:7c60 $11 $ff GFX GFX
-    dw   `22232232                                     ;; 0b:7c62 $12 $ff GFX GFX
-    dw   `22232232                                     ;; 0b:7c64 $12 $ff GFX GFX
-    dw   `22322232                                     ;; 0b:7c66 $22 $ff GFX GFX
-    dw   `22322322                                     ;; 0b:7c68 $24 $ff GFX GFX
-    dw   `33233233                                     ;; 0b:7c6a $db $ff GFX GFX
-    dw   `31131130                                     ;; 0b:7c6c $fe $92 GFX GFX
-    dw   `03303300                                     ;; 0b:7c6e $6c $6c GFX GFX
-    dw   `21130000                                     ;; 0b:7c70 $70 $90 GFX GFX
-    dw   `12233033                                     ;; 0b:7c72 $9b $7b GFX GFX
-    dw   `22322313                                     ;; 0b:7c74 $27 $fd GFX GFX
-    dw   `22322230                                     ;; 0b:7c76 $22 $fe GFX GFX
-    dw   `23222330                                     ;; 0b:7c78 $46 $fe GFX GFX
-    dw   `30323130                                     ;; 0b:7c7a $ae $ba GFX GFX
-    dw   `00033313                                     ;; 0b:7c7c $1f $1d GFX GFX
-    dw   `00000030                                     ;; 0b:7c7e $02 $02 GFX GFX
-    dw   `00000000                                     ;; 0b:7c80 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7c82 $00 $00 GFX GFX
-    dw   `00030000                                     ;; 0b:7c84 $10 $10 GFX GFX
-    dw   `00313000                                     ;; 0b:7c86 $38 $28 GFX GFX
-    dw   `00313003                                     ;; 0b:7c88 $39 $29 GFX GFX
-    dw   `00311331                                     ;; 0b:7c8a $3f $26 GFX GFX
-    dw   `00313112                                     ;; 0b:7c8c $3e $29 GFX GFX
-    dw   `00332222                                     ;; 0b:7c8e $30 $3f GFX GFX
-    dw   `00000030                                     ;; 0b:7c90 $02 $02 GFX GFX
-    dw   `00000313                                     ;; 0b:7c92 $07 $05 GFX GFX
-    dw   `00003113                                     ;; 0b:7c94 $0f $09 GFX GFX
-    dw   `00331133                                     ;; 0b:7c96 $3f $33 GFX GFX
-    dw   `33131132                                     ;; 0b:7c98 $fe $d3 GFX GFX
-    dw   `23123322                                     ;; 0b:7c9a $6c $df GFX GFX
-    dw   `23222222                                     ;; 0b:7c9c $40 $ff GFX GFX
-    dw   `23222222                                     ;; 0b:7c9e $40 $ff GFX GFX
-    dw   `00000000                                     ;; 0b:7ca0 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7ca2 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7ca4 $00 $00 GFX GFX
-    dw   `33300000                                     ;; 0b:7ca6 $e0 $e0 GFX GFX
-    dw   `32130000                                     ;; 0b:7ca8 $b0 $d0 GFX GFX
-    dw   `32123330                                     ;; 0b:7caa $ae $de GFX GFX
-    dw   `32123213                                     ;; 0b:7cac $ab $dd GFX GFX
-    dw   `32223211                                     ;; 0b:7cae $8b $fc GFX GFX
-    dw   `00000000                                     ;; 0b:7cb0 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7cb2 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7cb4 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7cb6 $00 $00 GFX GFX
-    dw   `00030030                                     ;; 0b:7cb8 $12 $12 GFX GFX
-    dw   `00313313                                     ;; 0b:7cba $3f $2d GFX GFX
-    dw   `00313313                                     ;; 0b:7cbc $3f $2d GFX GFX
-    dw   `33332333                                     ;; 0b:7cbe $f7 $ff GFX GFX
-    dw   `00322222                                     ;; 0b:7cc0 $20 $3f GFX GFX
-    dw   `00323322                                     ;; 0b:7cc2 $2c $3f GFX GFX
-    dw   `00331132                                     ;; 0b:7cc4 $3e $33 GFX GFX
-    dw   `33133333                                     ;; 0b:7cc6 $ff $df GFX GFX
-    dw   `31131113                                     ;; 0b:7cc8 $ff $91 GFX GFX
-    dw   `31113332                                     ;; 0b:7cca $fe $8f GFX GFX
-    dw   `03111133                                     ;; 0b:7ccc $7f $43 GFX GFX
-    dw   `00333300                                     ;; 0b:7cce $3c $3c GFX GFX
-    dw   `23222223                                     ;; 0b:7cd0 $41 $ff GFX GFX
-    dw   `22322223                                     ;; 0b:7cd2 $21 $ff GFX GFX
-    dw   `22233332                                     ;; 0b:7cd4 $1e $ff GFX GFX
-    dw   `22232222                                     ;; 0b:7cd6 $10 $ff GFX GFX
-    dw   `22322223                                     ;; 0b:7cd8 $21 $ff GFX GFX
-    dw   `22333332                                     ;; 0b:7cda $3e $ff GFX GFX
-    dw   `33311131                                     ;; 0b:7cdc $ff $e2 GFX GFX
-    dw   `03333303                                     ;; 0b:7cde $7d $7d GFX GFX
-    dw   `22223212                                     ;; 0b:7ce0 $0a $fd GFX GFX
-    dw   `32223222                                     ;; 0b:7ce2 $88 $ff GFX GFX
-    dw   `32232223                                     ;; 0b:7ce4 $91 $ff GFX GFX
-    dw   `32232223                                     ;; 0b:7ce6 $91 $ff GFX GFX
-    dw   `22332332                                     ;; 0b:7ce8 $36 $ff GFX GFX
-    dw   `33223223                                     ;; 0b:7cea $c9 $ff GFX GFX
-    dw   `13113113                                     ;; 0b:7cec $ff $49 GFX GFX
-    dw   `30330330                                     ;; 0b:7cee $b6 $b6 GFX GFX
-    dw   `32132223                                     ;; 0b:7cf0 $b1 $df GFX GFX
-    dw   `31223323                                     ;; 0b:7cf2 $cd $bf GFX GFX
-    dw   `22231130                                     ;; 0b:7cf4 $1e $f2 GFX GFX
-    dw   `22231130                                     ;; 0b:7cf6 $1e $f2 GFX GFX
-    dw   `22333300                                     ;; 0b:7cf8 $3c $fc GFX GFX
-    dw   `33000000                                     ;; 0b:7cfa $c0 $c0 GFX GFX
-    dw   `00000000                                     ;; 0b:7cfc $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7cfe $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7d00 $00 $00 GFX GFX
-    dw   `00033003                                     ;; 0b:7d02 $19 $19 GFX GFX
-    dw   `00031331                                     ;; 0b:7d04 $1f $16 GFX GFX
-    dw   `00003132                                     ;; 0b:7d06 $0e $0b GFX GFX
-    dw   `00003113                                     ;; 0b:7d08 $0f $09 GFX GFX
-    dw   `00000332                                     ;; 0b:7d0a $06 $07 GFX GFX
-    dw   `00000033                                     ;; 0b:7d0c $03 $03 GFX GFX
-    dw   `00000322                                     ;; 0b:7d0e $04 $07 GFX GFX
-    dw   `00000000                                     ;; 0b:7d10 $00 $00 GFX GFX
-    dw   `30033000                                     ;; 0b:7d12 $98 $98 GFX GFX
-    dw   `23313000                                     ;; 0b:7d14 $78 $e8 GFX GFX
-    dw   `23130000                                     ;; 0b:7d16 $70 $d0 GFX GFX
-    dw   `31130000                                     ;; 0b:7d18 $f0 $90 GFX GFX
-    dw   `23300000                                     ;; 0b:7d1a $60 $e0 GFX GFX
-    dw   `33000000                                     ;; 0b:7d1c $c0 $c0 GFX GFX
-    dw   `22300000                                     ;; 0b:7d1e $20 $e0 GFX GFX
-    dw   `00003233                                     ;; 0b:7d20 $0b $0f GFX GFX
-    dw   `00032322                                     ;; 0b:7d22 $14 $1f GFX GFX
-    dw   `00033211                                     ;; 0b:7d24 $1b $1c GFX GFX
-    dw   `00332122                                     ;; 0b:7d26 $34 $3b GFX GFX
-    dw   `00322233                                     ;; 0b:7d28 $23 $3f GFX GFX
-    dw   `00323322                                     ;; 0b:7d2a $2c $3f GFX GFX
-    dw   `03232211                                     ;; 0b:7d2c $53 $7c GFX GFX
-    dw   `03322122                                     ;; 0b:7d2e $64 $7b GFX GFX
-    dw   `33230000                                     ;; 0b:7d30 $d0 $f0 GFX GFX
-    dw   `22323000                                     ;; 0b:7d32 $28 $f8 GFX GFX
-    dw   `11233000                                     ;; 0b:7d34 $d8 $38 GFX GFX
-    dw   `22123300                                     ;; 0b:7d36 $2c $dc GFX GFX
-    dw   `33222300                                     ;; 0b:7d38 $c4 $fc GFX GFX
-    dw   `22332300                                     ;; 0b:7d3a $34 $fc GFX GFX
-    dw   `11223230                                     ;; 0b:7d3c $ca $3e GFX GFX
-    dw   `22122330                                     ;; 0b:7d3e $26 $de GFX GFX
-    dw   `03222233                                     ;; 0b:7d40 $43 $7f GFX GFX
-    dw   `33323322                                     ;; 0b:7d42 $ec $ff GFX GFX
-    dw   `31332222                                     ;; 0b:7d44 $f0 $bf GFX GFX
-    dw   `03132233                                     ;; 0b:7d46 $73 $5f GFX GFX
-    dw   `03323323                                     ;; 0b:7d48 $6d $7f GFX GFX
-    dw   `03232231                                     ;; 0b:7d4a $53 $7e GFX GFX
-    dw   `00322231                                     ;; 0b:7d4c $23 $3e GFX GFX
-    dw   `00322223                                     ;; 0b:7d4e $21 $3f GFX GFX
-    dw   `33222230                                     ;; 0b:7d50 $c2 $fe GFX GFX
-    dw   `22332333                                     ;; 0b:7d52 $37 $ff GFX GFX
-    dw   `22223313                                     ;; 0b:7d54 $0f $fd GFX GFX
-    dw   `33223130                                     ;; 0b:7d56 $ce $fa GFX GFX
-    dw   `32332330                                     ;; 0b:7d58 $b6 $fe GFX GFX
-    dw   `13223230                                     ;; 0b:7d5a $ca $7e GFX GFX
-    dw   `13222300                                     ;; 0b:7d5c $c4 $7c GFX GFX
-    dw   `32222300                                     ;; 0b:7d5e $84 $fc GFX GFX
-    dw   `03222222                                     ;; 0b:7d60 $40 $7f GFX GFX
-    dw   `03233222                                     ;; 0b:7d62 $58 $7f GFX GFX
-    dw   `03311332                                     ;; 0b:7d64 $7e $67 GFX GFX
-    dw   `03113333                                     ;; 0b:7d66 $7f $4f GFX GFX
-    dw   `00313311                                     ;; 0b:7d68 $3f $2c GFX GFX
-    dw   `00033313                                     ;; 0b:7d6a $1f $1d GFX GFX
-    dw   `00000311                                     ;; 0b:7d6c $07 $04 GFX GFX
-    dw   `00000033                                     ;; 0b:7d6e $03 $03 GFX GFX
-    dw   `22222230                                     ;; 0b:7d70 $02 $fe GFX GFX
-    dw   `22233230                                     ;; 0b:7d72 $1a $fe GFX GFX
-    dw   `23311330                                     ;; 0b:7d74 $7e $e6 GFX GFX
-    dw   `33331130                                     ;; 0b:7d76 $fe $f2 GFX GFX
-    dw   `31331300                                     ;; 0b:7d78 $fc $b4 GFX GFX
-    dw   `11333000                                     ;; 0b:7d7a $f8 $38 GFX GFX
-    dw   `31300000                                     ;; 0b:7d7c $e0 $a0 GFX GFX
-    dw   `33000000                                     ;; 0b:7d7e $c0 $c0 GFX GFX
-    dw   `00000000                                     ;; 0b:7d80 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7d82 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7d84 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7d86 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7d88 $00 $00 GFX GFX
-    dw   `00033003                                     ;; 0b:7d8a $19 $19 GFX GFX
-    dw   `00031331                                     ;; 0b:7d8c $1f $16 GFX GFX
-    dw   `00003132                                     ;; 0b:7d8e $0e $0b GFX GFX
-    dw   `00000000                                     ;; 0b:7d90 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7d92 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7d94 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7d96 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7d98 $00 $00 GFX GFX
-    dw   `30033000                                     ;; 0b:7d9a $98 $98 GFX GFX
-    dw   `23313000                                     ;; 0b:7d9c $78 $e8 GFX GFX
-    dw   `23130000                                     ;; 0b:7d9e $70 $d0 GFX GFX
-    dw   `00003113                                     ;; 0b:7da0 $0f $09 GFX GFX
-    dw   `00000332                                     ;; 0b:7da2 $06 $07 GFX GFX
-    dw   `00000033                                     ;; 0b:7da4 $03 $03 GFX GFX
-    dw   `00003322                                     ;; 0b:7da6 $0c $0f GFX GFX
-    dw   `00032211                                     ;; 0b:7da8 $13 $1c GFX GFX
-    dw   `00322233                                     ;; 0b:7daa $23 $3f GFX GFX
-    dw   `00323311                                     ;; 0b:7dac $2f $3c GFX GFX
-    dw   `00332122                                     ;; 0b:7dae $34 $3b GFX GFX
-    dw   `31130000                                     ;; 0b:7db0 $f0 $90 GFX GFX
-    dw   `23300000                                     ;; 0b:7db2 $60 $e0 GFX GFX
-    dw   `33000000                                     ;; 0b:7db4 $c0 $c0 GFX GFX
-    dw   `22330000                                     ;; 0b:7db6 $30 $f0 GFX GFX
-    dw   `12223000                                     ;; 0b:7db8 $88 $78 GFX GFX
-    dw   `33222300                                     ;; 0b:7dba $c4 $fc GFX GFX
-    dw   `11332300                                     ;; 0b:7dbc $f4 $3c GFX GFX
-    dw   `22123300                                     ;; 0b:7dbe $2c $dc GFX GFX
-    dw   `03322233                                     ;; 0b:7dc0 $63 $7f GFX GFX
-    dw   `33223322                                     ;; 0b:7dc2 $cc $ff GFX GFX
-    dw   `31332222                                     ;; 0b:7dc4 $f0 $bf GFX GFX
-    dw   `03132233                                     ;; 0b:7dc6 $73 $5f GFX GFX
-    dw   `03323323                                     ;; 0b:7dc8 $6d $7f GFX GFX
-    dw   `03232231                                     ;; 0b:7dca $53 $7e GFX GFX
-    dw   `00322231                                     ;; 0b:7dcc $23 $3e GFX GFX
-    dw   `00322223                                     ;; 0b:7dce $21 $3f GFX GFX
-    dw   `33222330                                     ;; 0b:7dd0 $c6 $fe GFX GFX
-    dw   `22332233                                     ;; 0b:7dd2 $33 $ff GFX GFX
-    dw   `22223313                                     ;; 0b:7dd4 $0f $fd GFX GFX
-    dw   `33223130                                     ;; 0b:7dd6 $ce $fa GFX GFX
-    dw   `32332330                                     ;; 0b:7dd8 $b6 $fe GFX GFX
-    dw   `13223230                                     ;; 0b:7dda $ca $7e GFX GFX
-    dw   `13222300                                     ;; 0b:7ddc $c4 $7c GFX GFX
-    dw   `32222300                                     ;; 0b:7dde $84 $fc GFX GFX
-    dw   `03233222                                     ;; 0b:7de0 $58 $7f GFX GFX
-    dw   `03311332                                     ;; 0b:7de2 $7e $67 GFX GFX
-    dw   `03333333                                     ;; 0b:7de4 $7f $7f GFX GFX
-    dw   `00311311                                     ;; 0b:7de6 $3f $24 GFX GFX
-    dw   `00033313                                     ;; 0b:7de8 $1f $1d GFX GFX
-    dw   `00000311                                     ;; 0b:7dea $07 $04 GFX GFX
-    dw   `00000033                                     ;; 0b:7dec $03 $03 GFX GFX
-    dw   `00000000                                     ;; 0b:7dee $00 $00 GFX GFX
-    dw   `22233230                                     ;; 0b:7df0 $1a $fe GFX GFX
-    dw   `23311330                                     ;; 0b:7df2 $7e $e6 GFX GFX
-    dw   `33333330                                     ;; 0b:7df4 $fe $fe GFX GFX
-    dw   `31311300                                     ;; 0b:7df6 $fc $a4 GFX GFX
-    dw   `11333000                                     ;; 0b:7df8 $f8 $38 GFX GFX
-    dw   `31300000                                     ;; 0b:7dfa $e0 $a0 GFX GFX
-    dw   `33000000                                     ;; 0b:7dfc $c0 $c0 GFX GFX
-    dw   `00000000                                     ;; 0b:7dfe $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7e00 $00 $00 GFX GFX
-    dw   `00000003                                     ;; 0b:7e02 $01 $01 GFX GFX
-    dw   `00000032                                     ;; 0b:7e04 $02 $03 GFX GFX
-    dw   `00000333                                     ;; 0b:7e06 $07 $07 GFX GFX
-    dw   `00003222                                     ;; 0b:7e08 $08 $0f GFX GFX
-    dw   `00003332                                     ;; 0b:7e0a $0e $0f GFX GFX
-    dw   `00333132                                     ;; 0b:7e0c $3e $3b GFX GFX
-    dw   `03323333                                     ;; 0b:7e0e $6f $7f GFX GFX
-    dw   `00000033                                     ;; 0b:7e10 $03 $03 GFX GFX
-    dw   `33000323                                     ;; 0b:7e12 $c5 $c7 GFX GFX
-    dw   `32333223                                     ;; 0b:7e14 $b9 $ff GFX GFX
-    dw   `32232233                                     ;; 0b:7e16 $93 $ff GFX GFX
-    dw   `22322333                                     ;; 0b:7e18 $27 $ff GFX GFX
-    dw   `22333222                                     ;; 0b:7e1a $38 $ff GFX GFX
-    dw   `23322223                                     ;; 0b:7e1c $61 $ff GFX GFX
-    dw   `32233232                                     ;; 0b:7e1e $9a $ff GFX GFX
-    dw   `33132332                                     ;; 0b:7e20 $f6 $df GFX GFX
-    dw   `33332323                                     ;; 0b:7e22 $f5 $ff GFX GFX
-    dw   `32311122                                     ;; 0b:7e24 $bc $e3 GFX GFX
-    dw   `32211123                                     ;; 0b:7e26 $9d $e3 GFX GFX
-    dw   `33222233                                     ;; 0b:7e28 $c3 $ff GFX GFX
-    dw   `32223332                                     ;; 0b:7e2a $8e $ff GFX GFX
-    dw   `32222233                                     ;; 0b:7e2c $83 $ff GFX GFX
-    dw   `32222232                                     ;; 0b:7e2e $82 $ff GFX GFX
-    dw   `22223232                                     ;; 0b:7e30 $0a $ff GFX GFX
-    dw   `33222232                                     ;; 0b:7e32 $c2 $ff GFX GFX
-    dw   `33222232                                     ;; 0b:7e34 $c2 $ff GFX GFX
-    dw   `13233222                                     ;; 0b:7e36 $d8 $7f GFX GFX
-    dw   `32223323                                     ;; 0b:7e38 $8d $ff GFX GFX
-    dw   `23222323                                     ;; 0b:7e3a $45 $ff GFX GFX
-    dw   `32222222                                     ;; 0b:7e3c $80 $ff GFX GFX
-    dw   `33322333                                     ;; 0b:7e3e $e7 $ff GFX GFX
-    dw   `03222332                                     ;; 0b:7e40 $46 $7f GFX GFX
-    dw   `00333322                                     ;; 0b:7e42 $3c $3f GFX GFX
-    dw   `00003322                                     ;; 0b:7e44 $0c $0f GFX GFX
-    dw   `00032322                                     ;; 0b:7e46 $14 $1f GFX GFX
-    dw   `00322322                                     ;; 0b:7e48 $24 $3f GFX GFX
-    dw   `03332232                                     ;; 0b:7e4a $72 $7f GFX GFX
-    dw   `03233222                                     ;; 0b:7e4c $58 $7f GFX GFX
-    dw   `03233322                                     ;; 0b:7e4e $5c $7f GFX GFX
-    dw   `22332232                                     ;; 0b:7e50 $32 $ff GFX GFX
-    dw   `22233333                                     ;; 0b:7e52 $1f $ff GFX GFX
-    dw   `22231323                                     ;; 0b:7e54 $1d $f7 GFX GFX
-    dw   `22231333                                     ;; 0b:7e56 $1f $f7 GFX GFX
-    dw   `22223222                                     ;; 0b:7e58 $08 $ff GFX GFX
-    dw   `22222222                                     ;; 0b:7e5a $00 $ff GFX GFX
-    dw   `22222222                                     ;; 0b:7e5c $00 $ff GFX GFX
-    dw   `22222222                                     ;; 0b:7e5e $00 $ff GFX GFX
-    dw   `00332222                                     ;; 0b:7e60 $30 $3f GFX GFX
-    dw   `00033222                                     ;; 0b:7e62 $18 $1f GFX GFX
-    dw   `03322222                                     ;; 0b:7e64 $60 $7f GFX GFX
-    dw   `33233222                                     ;; 0b:7e66 $d8 $ff GFX GFX
-    dw   `30313333                                     ;; 0b:7e68 $bf $af GFX GFX
-    dw   `00330000                                     ;; 0b:7e6a $30 $30 GFX GFX
-    dw   `00003333                                     ;; 0b:7e6c $0f $0f GFX GFX
-    dw   `00000000                                     ;; 0b:7e6e $00 $00 GFX GFX
-    dw   `32222222                                     ;; 0b:7e70 $80 $ff GFX GFX
-    dw   `23322222                                     ;; 0b:7e72 $60 $ff GFX GFX
-    dw   `22233333                                     ;; 0b:7e74 $1f $ff GFX GFX
-    dw   `33300000                                     ;; 0b:7e76 $e0 $e0 GFX GFX
-    dw   `00000000                                     ;; 0b:7e78 $00 $00 GFX GFX
-    dw   `03333333                                     ;; 0b:7e7a $7f $7f GFX GFX
-    dw   `33333333                                     ;; 0b:7e7c $ff $ff GFX GFX
-    dw   `00000000                                     ;; 0b:7e7e $00 $00 GFX GFX
-    dw   `33300000                                     ;; 0b:7e80 $e0 $e0 GFX GFX
-    dw   `23333000                                     ;; 0b:7e82 $78 $f8 GFX GFX
-    dw   `33222333                                     ;; 0b:7e84 $c7 $ff GFX GFX
-    dw   `22222233                                     ;; 0b:7e86 $03 $ff GFX GFX
-    dw   `33222233                                     ;; 0b:7e88 $c3 $ff GFX GFX
-    dw   `22332232                                     ;; 0b:7e8a $32 $ff GFX GFX
-    dw   `22223322                                     ;; 0b:7e8c $0c $ff GFX GFX
-    dw   `23321133                                     ;; 0b:7e8e $6f $f3 GFX GFX
-    dw   `00000000                                     ;; 0b:7e90 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7e92 $00 $00 GFX GFX
-    dw   `30000000                                     ;; 0b:7e94 $80 $80 GFX GFX
-    dw   `23300000                                     ;; 0b:7e96 $60 $e0 GFX GFX
-    dw   `33230000                                     ;; 0b:7e98 $d0 $f0 GFX GFX
-    dw   `22223000                                     ;; 0b:7e9a $08 $f8 GFX GFX
-    dw   `22223000                                     ;; 0b:7e9c $08 $f8 GFX GFX
-    dw   `33223000                                     ;; 0b:7e9e $c8 $f8 GFX GFX
-    dw   `23232211                                     ;; 0b:7ea0 $53 $fc GFX GFX
-    dw   `22223222                                     ;; 0b:7ea2 $08 $ff GFX GFX
-    dw   `22223333                                     ;; 0b:7ea4 $0f $ff GFX GFX
-    dw   `33321132                                     ;; 0b:7ea6 $ee $f3 GFX GFX
-    dw   `32222213                                     ;; 0b:7ea8 $83 $fd GFX GFX
-    dw   `22233323                                     ;; 0b:7eaa $1d $ff GFX GFX
-    dw   `22221333                                     ;; 0b:7eac $0f $f7 GFX GFX
-    dw   `22332332                                     ;; 0b:7eae $36 $ff GFX GFX
-    dw   `13223300                                     ;; 0b:7eb0 $cc $7c GFX GFX
-    dw   `32233300                                     ;; 0b:7eb2 $9c $fc GFX GFX
-    dw   `22233230                                     ;; 0b:7eb4 $1a $fe GFX GFX
-    dw   `22333333                                     ;; 0b:7eb6 $3f $ff GFX GFX
-    dw   `22222333                                     ;; 0b:7eb8 $07 $ff GFX GFX
-    dw   `22222223                                     ;; 0b:7eba $01 $ff GFX GFX
-    dw   `22222223                                     ;; 0b:7ebc $01 $ff GFX GFX
-    dw   `23322230                                     ;; 0b:7ebe $62 $fe GFX GFX
-    dw   `23333322                                     ;; 0b:7ec0 $7c $ff GFX GFX
-    dw   `33323322                                     ;; 0b:7ec2 $ec $ff GFX GFX
-    dw   `13233222                                     ;; 0b:7ec4 $d8 $7f GFX GFX
-    dw   `13332222                                     ;; 0b:7ec6 $f0 $7f GFX GFX
-    dw   `32313222                                     ;; 0b:7ec8 $b8 $ef GFX GFX
-    dw   `22333232                                     ;; 0b:7eca $3a $ff GFX GFX
-    dw   `22322313                                     ;; 0b:7ecc $27 $fd GFX GFX
-    dw   `22222332                                     ;; 0b:7ece $06 $ff GFX GFX
-    dw   `33333230                                     ;; 0b:7ed0 $fa $fe GFX GFX
-    dw   `23323300                                     ;; 0b:7ed2 $6c $fc GFX GFX
-    dw   `23333000                                     ;; 0b:7ed4 $78 $f8 GFX GFX
-    dw   `22300330                                     ;; 0b:7ed6 $26 $e6 GFX GFX
-    dw   `23003223                                     ;; 0b:7ed8 $49 $cf GFX GFX
-    dw   `22303223                                     ;; 0b:7eda $29 $ef GFX GFX
-    dw   `22333323                                     ;; 0b:7edc $3d $ff GFX GFX
-    dw   `33233330                                     ;; 0b:7ede $de $fe GFX GFX
-    dw   `22223323                                     ;; 0b:7ee0 $0d $ff GFX GFX
-    dw   `22222223                                     ;; 0b:7ee2 $01 $ff GFX GFX
-    dw   `22222222                                     ;; 0b:7ee4 $00 $ff GFX GFX
-    dw   `33332222                                     ;; 0b:7ee6 $f0 $ff GFX GFX
-    dw   `00033223                                     ;; 0b:7ee8 $19 $1f GFX GFX
-    dw   `33333323                                     ;; 0b:7eea $fd $ff GFX GFX
-    dw   `33333333                                     ;; 0b:7eec $ff $ff GFX GFX
-    dw   `00000000                                     ;; 0b:7eee $00 $00 GFX GFX
-    dw   `13232300                                     ;; 0b:7ef0 $d4 $7c GFX GFX
-    dw   `32233300                                     ;; 0b:7ef2 $9c $fc GFX GFX
-    dw   `22222300                                     ;; 0b:7ef4 $04 $fc GFX GFX
-    dw   `22223300                                     ;; 0b:7ef6 $0c $fc GFX GFX
-    dw   `32333130                                     ;; 0b:7ef8 $be $fa GFX GFX
-    dw   `13313330                                     ;; 0b:7efa $fe $6e GFX GFX
-    dw   `33033030                                     ;; 0b:7efc $da $da GFX GFX
-    dw   `03003000                                     ;; 0b:7efe $48 $48 GFX GFX
-    dw   `03300000                                     ;; 0b:7f00 $60 $60 GFX GFX
-    dw   `32330003                                     ;; 0b:7f02 $b1 $f1 GFX GFX
-    dw   `33323332                                     ;; 0b:7f04 $ee $ff GFX GFX
-    dw   `03222223                                     ;; 0b:7f06 $41 $7f GFX GFX
-    dw   `00323332                                     ;; 0b:7f08 $2e $3f GFX GFX
-    dw   `00033322                                     ;; 0b:7f0a $1c $1f GFX GFX
-    dw   `00332322                                     ;; 0b:7f0c $34 $3f GFX GFX
-    dw   `00333223                                     ;; 0b:7f0e $39 $3f GFX GFX
-    dw   `00033333                                     ;; 0b:7f10 $1f $1f GFX GFX
-    dw   `33332333                                     ;; 0b:7f12 $f7 $ff GFX GFX
-    dw   `23222223                                     ;; 0b:7f14 $41 $ff GFX GFX
-    dw   `32223333                                     ;; 0b:7f16 $8f $ff GFX GFX
-    dw   `22333223                                     ;; 0b:7f18 $39 $ff GFX GFX
-    dw   `23322222                                     ;; 0b:7f1a $60 $ff GFX GFX
-    dw   `22222333                                     ;; 0b:7f1c $07 $ff GFX GFX
-    dw   `22223333                                     ;; 0b:7f1e $0f $ff GFX GFX
-    dw   `03222233                                     ;; 0b:7f20 $43 $7f GFX GFX
-    dw   `31322322                                     ;; 0b:7f22 $e4 $bf GFX GFX
-    dw   `33333222                                     ;; 0b:7f24 $f8 $ff GFX GFX
-    dw   `30332222                                     ;; 0b:7f26 $b0 $bf GFX GFX
-    dw   `03322222                                     ;; 0b:7f28 $60 $7f GFX GFX
-    dw   `33322222                                     ;; 0b:7f2a $e0 $ff GFX GFX
-    dw   `33322233                                     ;; 0b:7f2c $e3 $ff GFX GFX
-    dw   `32332231                                     ;; 0b:7f2e $b3 $fe GFX GFX
-    dw   `22233322                                     ;; 0b:7f30 $1c $ff GFX GFX
-    dw   `23332222                                     ;; 0b:7f32 $70 $ff GFX GFX
-    dw   `33222222                                     ;; 0b:7f34 $c0 $ff GFX GFX
-    dw   `22222233                                     ;; 0b:7f36 $03 $ff GFX GFX
-    dw   `22323322                                     ;; 0b:7f38 $2c $ff GFX GFX
-    dw   `23332222                                     ;; 0b:7f3a $70 $ff GFX GFX
-    dw   `33112332                                     ;; 0b:7f3c $f6 $cf GFX GFX
-    dw   `11223232                                     ;; 0b:7f3e $ca $3f GFX GFX
-    dw   `33333223                                     ;; 0b:7f40 $f9 $ff GFX GFX
-    dw   `03332222                                     ;; 0b:7f42 $70 $7f GFX GFX
-    dw   `03222222                                     ;; 0b:7f44 $40 $7f GFX GFX
-    dw   `00322222                                     ;; 0b:7f46 $20 $3f GFX GFX
-    dw   `00332222                                     ;; 0b:7f48 $30 $3f GFX GFX
-    dw   `00032222                                     ;; 0b:7f4a $10 $1f GFX GFX
-    dw   `00033322                                     ;; 0b:7f4c $1c $1f GFX GFX
-    dw   `00003333                                     ;; 0b:7f4e $0f $0f GFX GFX
-    dw   `22232222                                     ;; 0b:7f50 $10 $ff GFX GFX
-    dw   `33332222                                     ;; 0b:7f52 $f0 $ff GFX GFX
-    dw   `23112333                                     ;; 0b:7f54 $77 $cf GFX GFX
-    dw   `31222223                                     ;; 0b:7f56 $c1 $bf GFX GFX
-    dw   `32333223                                     ;; 0b:7f58 $b9 $ff GFX GFX
-    dw   `23312222                                     ;; 0b:7f5a $70 $ef GFX GFX
-    dw   `23323322                                     ;; 0b:7f5c $6c $ff GFX GFX
-    dw   `22233232                                     ;; 0b:7f5e $1a $ff GFX GFX
-    dw   `00003232                                     ;; 0b:7f60 $0a $0f GFX GFX
-    dw   `00000332                                     ;; 0b:7f62 $06 $07 GFX GFX
-    dw   `00000322                                     ;; 0b:7f64 $04 $07 GFX GFX
-    dw   `00000332                                     ;; 0b:7f66 $06 $07 GFX GFX
-    dw   `00003222                                     ;; 0b:7f68 $08 $0f GFX GFX
-    dw   `00031323                                     ;; 0b:7f6a $1d $17 GFX GFX
-    dw   `00033033                                     ;; 0b:7f6c $1b $1b GFX GFX
-    dw   `00003000                                     ;; 0b:7f6e $08 $08 GFX GFX
-    dw   `22233313                                     ;; 0b:7f70 $1f $fd GFX GFX
-    dw   `22233313                                     ;; 0b:7f72 $1f $fd GFX GFX
-    dw   `22333333                                     ;; 0b:7f74 $3f $ff GFX GFX
-    dw   `22223033                                     ;; 0b:7f76 $0b $fb GFX GFX
-    dw   `22222300                                     ;; 0b:7f78 $04 $fc GFX GFX
-    dw   `33233130                                     ;; 0b:7f7a $de $fa GFX GFX
-    dw   `13300300                                     ;; 0b:7f7c $e4 $64 GFX GFX
-    dw   `30000000                                     ;; 0b:7f7e $80 $80 GFX GFX
-    dw   `33300000                                     ;; 0b:7f80 $e0 $e0 GFX GFX
-    dw   `22233000                                     ;; 0b:7f82 $18 $f8 GFX GFX
-    dw   `32222300                                     ;; 0b:7f84 $84 $fc GFX GFX
-    dw   `33332230                                     ;; 0b:7f86 $f2 $fe GFX GFX
-    dw   `32233223                                     ;; 0b:7f88 $99 $ff GFX GFX
-    dw   `22223322                                     ;; 0b:7f8a $0c $ff GFX GFX
-    dw   `33222222                                     ;; 0b:7f8c $c0 $ff GFX GFX
-    dw   `33322222                                     ;; 0b:7f8e $e0 $ff GFX GFX
-    dw   `00000000                                     ;; 0b:7f90 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7f92 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7f94 $00 $00 GFX GFX
-    dw   `00000000                                     ;; 0b:7f96 $00 $00 GFX GFX
-    dw   `30000000                                     ;; 0b:7f98 $80 $80 GFX GFX
-    dw   `23330000                                     ;; 0b:7f9a $70 $f0 GFX GFX
-    dw   `22323000                                     ;; 0b:7f9c $28 $f8 GFX GFX
-    dw   `22333300                                     ;; 0b:7f9e $3c $fc GFX GFX
-    dw   `23332223                                     ;; 0b:7fa0 $71 $ff GFX GFX
-    dw   `22233322                                     ;; 0b:7fa2 $1c $ff GFX GFX
-    dw   `22222332                                     ;; 0b:7fa4 $06 $ff GFX GFX
-    dw   `33323222                                     ;; 0b:7fa6 $e8 $ff GFX GFX
-    dw   `22233322                                     ;; 0b:7fa8 $1c $ff GFX GFX
-    dw   `32222332                                     ;; 0b:7faa $86 $ff GFX GFX
-    dw   `23233223                                     ;; 0b:7fac $59 $ff GFX GFX
-    dw   `23232222                                     ;; 0b:7fae $50 $ff GFX GFX
-    dw   `22222300                                     ;; 0b:7fb0 $04 $fc GFX GFX
-    dw   `32222230                                     ;; 0b:7fb2 $82 $fe GFX GFX
-    dw   `33222313                                     ;; 0b:7fb4 $c7 $fd GFX GFX
-    dw   `22332333                                     ;; 0b:7fb6 $37 $ff GFX GFX
-    dw   `22223003                                     ;; 0b:7fb8 $09 $f9 GFX GFX
-    dw   `22222300                                     ;; 0b:7fba $04 $fc GFX GFX
-    dw   `33222330                                     ;; 0b:7fbc $c6 $fe GFX GFX
-    dw   `23223330                                     ;; 0b:7fbe $4e $fe GFX GFX
-    dw   `23222233                                     ;; 0b:7fc0 $43 $ff GFX GFX
-    dw   `23222233                                     ;; 0b:7fc2 $43 $ff GFX GFX
-    dw   `22233211                                     ;; 0b:7fc4 $1b $fc GFX GFX
-    dw   `32332222                                     ;; 0b:7fc6 $b0 $ff GFX GFX
-    dw   `13132233                                     ;; 0b:7fc8 $f3 $5f GFX GFX
-    dw   `22222223                                     ;; 0b:7fca $01 $ff GFX GFX
-    dw   `33322323                                     ;; 0b:7fcc $e5 $ff GFX GFX
-    dw   `23223332                                     ;; 0b:7fce $4e $ff GFX GFX
-    dw   `32233230                                     ;; 0b:7fd0 $9a $fe GFX GFX
-    dw   `22233330                                     ;; 0b:7fd2 $1e $fe GFX GFX
-    dw   `32223330                                     ;; 0b:7fd4 $8e $fe GFX GFX
-    dw   `13222300                                     ;; 0b:7fd6 $c4 $7c GFX GFX
-    dw   `23222300                                     ;; 0b:7fd8 $44 $fc GFX GFX
-    dw   `32223000                                     ;; 0b:7fda $88 $f8 GFX GFX
-    dw   `22230000                                     ;; 0b:7fdc $10 $f0 GFX GFX
-    dw   `22330000                                     ;; 0b:7fde $30 $f0 GFX GFX
-    dw   `33331322                                     ;; 0b:7fe0 $fc $f7 GFX GFX
-    dw   `33331322                                     ;; 0b:7fe2 $fc $f7 GFX GFX
-    dw   `22233222                                     ;; 0b:7fe4 $18 $ff GFX GFX
-    dw   `33332222                                     ;; 0b:7fe6 $f0 $ff GFX GFX
-    dw   `00322222                                     ;; 0b:7fe8 $20 $3f GFX GFX
-    dw   `03133233                                     ;; 0b:7fea $7b $5f GFX GFX
-    dw   `03300331                                     ;; 0b:7fec $67 $66 GFX GFX
-    dw   `03000003                                     ;; 0b:7fee $41 $41 GFX GFX
-    dw   `33330000                                     ;; 0b:7ff0 $f0 $f0 GFX GFX
-    dw   `32300000                                     ;; 0b:7ff2 $a0 $e0 GFX GFX
-    dw   `23000000                                     ;; 0b:7ff4 $40 $c0 GFX GFX
-    dw   `33000000                                     ;; 0b:7ff6 $c0 $c0 GFX GFX
-    dw   `22330000                                     ;; 0b:7ff8 $30 $f0 GFX GFX
-    dw   `32313000                                     ;; 0b:7ffa $b8 $e8 GFX GFX
-    dw   `33033000                                     ;; 0b:7ffc $d8 $d8 GFX GFX
-    dw   `00030000                                     ;; 0b:7ffe $10 $10 GFX GFX
+INCLUDE "include/hardware.inc"
+INCLUDE "include/macros.inc"
+INCLUDE "include/charmaps.inc"
+
+SECTION "bank0b", ROMX[$4000], BANK[$0b]
+
+data_0b_4000:
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4000 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4008 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4010 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4018 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4020 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4028 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4030 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4038 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4040 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4048 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4050 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4058 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4060 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4068 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4070 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4078 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4080 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4088 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4090 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4098 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:40a0 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:40a8 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:40b0 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:40b8 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:40c0 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:40c8 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:40d0 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:40d8 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:40e0 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:40e8 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:40f0 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:40f8 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4100 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4108 ????????
+    dw   `33333333                                     ;; 0b:4110 $ff $ff
+    dw   `30000003                                     ;; 0b:4112 $81 $81
+    dw   `30000003                                     ;; 0b:4114 $81 $81
+    dw   `30000003                                     ;; 0b:4116 $81 $81
+    dw   `30000003                                     ;; 0b:4118 $81 $81
+    dw   `30000003                                     ;; 0b:411a $81 $81
+    dw   `30000003                                     ;; 0b:411c $81 $81
+    dw   `33333333                                     ;; 0b:411e $ff $ff
+
+    db   $ff, $ff, $81, $81, $81, $81, $80, $80        ;; 0b:4120 ????????
+    db   $80, $80, $81, $81, $81, $81, $ff, $ff        ;; 0b:4128 ????????
+    db   $ff, $ff, $81, $81, $81, $81, $01, $01        ;; 0b:4130 ????????
+    db   $01, $01, $81, $81, $81, $81, $ff, $ff        ;; 0b:4138 ????????
+    db   $ff, $ff, $81, $81, $81, $81, $00, $00        ;; 0b:4140 ????????
+    db   $00, $00, $81, $81, $81, $81, $ff, $ff        ;; 0b:4148 ????????
+    db   $e7, $e7, $81, $81, $81, $81, $81, $81        ;; 0b:4150 ????????
+    db   $81, $81, $81, $81, $81, $81, $ff, $ff        ;; 0b:4158 ????????
+    db   $e7, $e7, $81, $81, $81, $81, $80, $80        ;; 0b:4160 ????????
+    db   $80, $80, $81, $81, $81, $81, $ff, $ff        ;; 0b:4168 ????????
+    db   $e3, $e3, $81, $81, $81, $81, $01, $01        ;; 0b:4170 ????????
+    db   $01, $01, $81, $81, $81, $81, $ff, $ff        ;; 0b:4178 ????????
+    db   $e7, $e7, $81, $81, $81, $81, $00, $00        ;; 0b:4180 ????????
+    db   $00, $00, $81, $81, $81, $81, $ff, $ff        ;; 0b:4188 ????????
+    db   $ff, $ff, $81, $81, $81, $81, $81, $81        ;; 0b:4190 ????????
+    db   $81, $81, $81, $81, $81, $81, $e7, $e7        ;; 0b:4198 ????????
+    db   $ff, $ff, $81, $81, $81, $81, $80, $80        ;; 0b:41a0 ????????
+    db   $80, $80, $81, $81, $81, $81, $e7, $e7        ;; 0b:41a8 ????????
+    db   $ff, $ff, $81, $81, $81, $81, $01, $01        ;; 0b:41b0 ????????
+    db   $01, $01, $81, $81, $81, $81, $e7, $e7        ;; 0b:41b8 ????????
+    db   $ff, $ff, $81, $81, $81, $81, $00, $00        ;; 0b:41c0 ????????
+    db   $00, $00, $81, $81, $81, $81, $e7, $e7        ;; 0b:41c8 ????????
+    db   $e7, $e7, $81, $81, $81, $81, $81, $81        ;; 0b:41d0 ????????
+    db   $81, $81, $81, $81, $81, $81, $e7, $e7        ;; 0b:41d8 ????????
+    db   $e7, $e7, $81, $81, $81, $81, $80, $80        ;; 0b:41e0 ????????
+    db   $80, $80, $81, $81, $81, $81, $e7, $e7        ;; 0b:41e8 ????????
+    db   $e7, $e7, $81, $81, $81, $81, $01, $01        ;; 0b:41f0 ????????
+    db   $01, $01, $81, $81, $81, $81, $e7, $e7        ;; 0b:41f8 ????????
+    db   $e7, $e7, $81, $81, $81, $81, $00, $00        ;; 0b:4200 ????????
+    db   $00, $00, $81, $81, $81, $81, $e7, $e7        ;; 0b:4208 ????????
+    dw   `11333311                                     ;; 0b:4210 $ff $3c
+    dw   `13032231                                     ;; 0b:4212 $d3 $5e
+    dw   `30003223                                     ;; 0b:4214 $89 $8f
+    dw   `30003333                                     ;; 0b:4216 $8f $8f
+    dw   `30303003                                     ;; 0b:4218 $a9 $a9
+    dw   `30303003                                     ;; 0b:421a $a9 $a9
+    dw   `30303003                                     ;; 0b:421c $a9 $a9
+    dw   `33333333                                     ;; 0b:421e $ff $ff
+
+    dw   `11111111                                     ;; 0b:4220 $ff $00
+    dw   `11111111                                     ;; 0b:4222 $ff $00
+    dw   `11111111                                     ;; 0b:4224 $ff $00
+    dw   `11111111                                     ;; 0b:4226 $ff $00
+    dw   `11111111                                     ;; 0b:4228 $ff $00
+    dw   `11111111                                     ;; 0b:422a $ff $00
+    dw   `11111111                                     ;; 0b:422c $ff $00
+    dw   `11111111                                     ;; 0b:422e $ff $00
+
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4230 ????????
+    db   $00, $00, $07, $07, $19, $18, $27, $23        ;; 0b:4238 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4240 ????????
+    db   $00, $00, $00, $80, $60, $60, $80, $90        ;; 0b:4248 ????????
+    dw   `00000000                                     ;; 0b:4250 $00 $00
+    dw   `00000000                                     ;; 0b:4252 $00 $00
+    dw   `00000000                                     ;; 0b:4254 $00 $00
+    dw   `00000000                                     ;; 0b:4256 $00 $00
+    dw   `00000000                                     ;; 0b:4258 $00 $00
+    dw   `00000000                                     ;; 0b:425a $00 $00
+    dw   `00000000                                     ;; 0b:425c $00 $00
+    dw   `00000000                                     ;; 0b:425e $00 $00
+
+    db   $ff, $fe, $ff, $fe, $fe, $fc, $fe, $fc        ;; 0b:4260 ????????
+    db   $ff, $f8, $ff, $f8, $fd, $f0, $fe, $f0        ;; 0b:4268 ????????
+    db   $00, $00, $01, $00, $1f, $00, $fa, $00        ;; 0b:4270 ????????
+    db   $d5, $00, $a8, $00, $40, $00, $80, $00        ;; 0b:4278 ????????
+    db   $07, $00, $ff, $00, $f5, $00, $aa, $00        ;; 0b:4280 ????????
+    db   $50, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4288 ????????
+    db   $ff, $00, $ff, $00, $55, $00, $aa, $00        ;; 0b:4290 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4298 ????????
+    db   $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff        ;; 0b:42a0 ????????
+    db   $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff        ;; 0b:42a8 ????????
+    db   $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff        ;; 0b:42b0 ????????
+    db   $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff        ;; 0b:42b8 ????????
+    db   $fe, $00, $ff, $00, $aa, $00, $55, $00        ;; 0b:42c0 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:42c8 ????????
+    db   $00, $00, $f8, $00, $ff, $00, $55, $00        ;; 0b:42d0 ????????
+    db   $aa, $00, $01, $00, $00, $00, $00, $00        ;; 0b:42d8 ????????
+    db   $01, $00, $01, $00, $81, $00, $f1, $00        ;; 0b:42e0 ????????
+    db   $bd, $00, $5f, $00, $2b, $00, $17, $00        ;; 0b:42e8 ????????
+    db   $01, $00, $01, $00, $01, $00, $01, $00        ;; 0b:42f0 ????????
+    db   $01, $00, $01, $00, $01, $00, $01, $00        ;; 0b:42f8 ????????
+    db   $ff, $fe, $ff, $fe, $fe, $fc, $fe, $fc        ;; 0b:4300 ????????
+    db   $fc, $f8, $fc, $f8, $f8, $f0, $f8, $f0        ;; 0b:4308 ????????
+    db   $f0, $e0, $f0, $e0, $e0, $c0, $e0, $c0        ;; 0b:4310 ????????
+    db   $c0, $80, $c0, $80, $80, $00, $80, $00        ;; 0b:4318 ????????
+    db   $c0, $90, $00, $28, $00, $90, $e8, $c0        ;; 0b:4320 ????????
+    db   $f4, $24, $d4, $94, $fc, $94, $fc, $c4        ;; 0b:4328 ????????
+    db   $7f, $70, $0f, $0c, $04, $07, $07, $04        ;; 0b:4330 ????????
+    db   $03, $03, $00, $00, $00, $00, $00, $00        ;; 0b:4338 ????????
+    db   $d9, $49, $2b, $ea, $d6, $34, $bf, $57        ;; 0b:4340 ????????
+    db   $eb, $3d, $ef, $f8, $17, $36, $21, $61        ;; 0b:4348 ????????
+    db   $a0, $e0, $10, $50, $08, $88, $e8, $d8        ;; 0b:4350 ????????
+    db   $f4, $24, $d4, $94, $fc, $94, $fc, $c4        ;; 0b:4358 ????????
+    db   $fd, $f0, $ff, $f8, $ff, $fc, $ff, $ff        ;; 0b:4360 ????????
+    db   $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff        ;; 0b:4368 ????????
+    db   $40, $00, $a8, $00, $d5, $00, $fa, $00        ;; 0b:4370 ????????
+    db   $ff, $e0, $ff, $fe, $ff, $ff, $ff, $ff        ;; 0b:4378 ????????
+    db   $00, $00, $00, $00, $50, $00, $aa, $00        ;; 0b:4380 ????????
+    db   $f5, $00, $ff, $00, $ff, $f8, $ff, $ff        ;; 0b:4388 ????????
+    db   $00, $00, $00, $00, $00, $00, $aa, $00        ;; 0b:4390 ????????
+    db   $55, $00, $ff, $00, $ff, $00, $ff, $ff        ;; 0b:4398 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:43a0 ????????
+    db   $55, $00, $aa, $00, $ff, $00, $ff, $00        ;; 0b:43a8 ????????
+    db   $00, $00, $00, $00, $00, $00, $55, $00        ;; 0b:43b0 ????????
+    db   $aa, $00, $5f, $00, $ff, $00, $ff, $0f        ;; 0b:43b8 ????????
+    db   $00, $00, $00, $00, $00, $00, $55, $00        ;; 0b:43c0 ????????
+    db   $aa, $00, $ff, $00, $ff, $01, $ff, $ff        ;; 0b:43c8 ????????
+    db   $00, $00, $01, $00, $aa, $00, $55, $00        ;; 0b:43d0 ????????
+    db   $ff, $00, $ff, $07, $ff, $ff, $ff, $ff        ;; 0b:43d8 ????????
+    db   $2b, $00, $5f, $01, $bf, $03, $ff, $0f        ;; 0b:43e0 ????????
+    db   $ff, $7f, $ff, $ff, $ff, $ff, $ff, $ff        ;; 0b:43e8 ????????
+    db   $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff        ;; 0b:43f0 ????????
+    db   $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff        ;; 0b:43f8 ????????
+    db   $04, $00, $00, $04, $00, $04, $00, $04        ;; 0b:4400 ????????
+    db   $04, $0a, $04, $0a, $0a, $11, $91, $60        ;; 0b:4408 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4410 ????????
+    db   $00, $00, $00, $00, $00, $00, $20, $c0        ;; 0b:4418 ????????
+    db   $0a, $11, $00, $2a, $04, $8a, $e0, $c4        ;; 0b:4420 ????????
+    db   $f0, $24, $d0, $94, $f4, $90, $f8, $c0        ;; 0b:4428 ????????
+    db   $f4, $00, $aa, $00, $50, $00, $01, $01        ;; 0b:4430 ????????
+    db   $04, $03, $18, $00, $00, $00, $00, $00        ;; 0b:4438 ????????
+    db   $20, $60, $25, $60, $a0, $e0, $c0, $78        ;; 0b:4440 ????????
+    db   $6a, $24, $11, $0e, $01, $00, $00, $00        ;; 0b:4448 ????????
+    db   $3d, $34, $09, $08, $42, $00, $01, $00        ;; 0b:4450 ????????
+    db   $00, $00, $00, $00, $c0, $00, $00, $00        ;; 0b:4458 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4460 ????????
+    db   $00, $00, $00, $00, $00, $82, $28, $44        ;; 0b:4468 ????????
+    db   $44, $38, $00, $28, $44, $38, $28, $44        ;; 0b:4470 ????????
+    db   $30, $a2, $54, $14, $fc, $94, $fc, $c4        ;; 0b:4478 ????????
+    db   $ff, $ff, $fe, $fe, $fc, $fc, $fc, $fc        ;; 0b:4480 ????????
+    db   $fe, $fc, $ff, $fe, $ff, $ff, $ff, $ff        ;; 0b:4488 ????????
+    db   $ff, $ff, $0e, $0e, $f1, $00, $ff, $f9        ;; 0b:4490 ????????
+    db   $77, $67, $fb, $73, $fb, $f3, $fb, $f3        ;; 0b:4498 ????????
+    db   $3f, $3f, $d3, $13, $d7, $d7, $37, $17        ;; 0b:44a0 ????????
+    db   $f7, $27, $f7, $e7, $f7, $e7, $f4, $e4        ;; 0b:44a8 ????????
+    db   $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff        ;; 0b:44b0 ????????
+    db   $ff, $ff, $ff, $ff, $ff, $ff, $f9, $f1        ;; 0b:44b8 ????????
+    db   $ff, $ff, $e7, $e7, $f0, $f0, $fb, $f0        ;; 0b:44c0 ????????
+    db   $fb, $f3, $fb, $f3, $fb, $f3, $f8, $f0        ;; 0b:44c8 ????????
+    db   $ef, $ef, $0f, $0f, $ef, $0f, $ef, $cf        ;; 0b:44d0 ????????
+    db   $ff, $ef, $ff, $ff, $7f, $7f, $7c, $78        ;; 0b:44d8 ????????
+    db   $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff        ;; 0b:44e0 ????????
+    db   $ff, $ff, $ff, $ff, $ff, $ff, $9e, $9e        ;; 0b:44e8 ????????
+    db   $ff, $ff, $8f, $8f, $e7, $c7, $ef, $c7        ;; 0b:44f0 ????????
+    db   $ef, $cf, $ef, $cf, $ef, $cf, $2f, $0f        ;; 0b:44f8 ????????
+    db   $fb, $f3, $fb, $f3, $fb, $f3, $fb, $f3        ;; 0b:4500 ????????
+    db   $f9, $f1, $fb, $f1, $f7, $e3, $ff, $e7        ;; 0b:4508 ????????
+    db   $f3, $e0, $f7, $e2, $f7, $e6, $f7, $e6        ;; 0b:4510 ????????
+    db   $f7, $e6, $f7, $e6, $e3, $c2, $ff, $c6        ;; 0b:4518 ????????
+    db   $76, $66, $6f, $4e, $60, $40, $6f, $4f        ;; 0b:4520 ????????
+    db   $6f, $4f, $76, $66, $39, $30, $ff, $79        ;; 0b:4528 ????????
+    db   $fb, $f0, $7b, $73, $7b, $73, $fb, $f3        ;; 0b:4530 ????????
+    db   $7b, $73, $f8, $f0, $f7, $e0, $ff, $ef        ;; 0b:4538 ????????
+    db   $7e, $7c, $7e, $7c, $fe, $7c, $fe, $fc        ;; 0b:4540 ????????
+    db   $ee, $ec, $ee, $cc, $0c, $08, $ff, $09        ;; 0b:4548 ????????
+    db   $6c, $0c, $ed, $49, $ed, $c9, $ed, $c9        ;; 0b:4550 ????????
+    db   $ed, $c9, $ed, $c9, $e6, $84, $ff, $8e        ;; 0b:4558 ????????
+    db   $cf, $cf, $ef, $cf, $ef, $cf, $ef, $cf        ;; 0b:4560 ????????
+    db   $e7, $c7, $c7, $c7, $1a, $02, $ff, $1a        ;; 0b:4568 ????????
+    db   $fe, $ff, $fe, $ff, $fe, $fd, $fd, $fe        ;; 0b:4570 ????????
+    db   $ff, $f8, $fd, $f8, $fa, $f0, $f8, $f0        ;; 0b:4578 ????????
+    db   $aa, $ff, $55, $ff, $aa, $55, $55, $aa        ;; 0b:4580 ????????
+    db   $ff, $00, $55, $00, $aa, $00, $44, $00        ;; 0b:4588 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4590 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4598 ????????
+    dw   `00000000                                     ;; 0b:45a0 $00 $00
+    dw   `00000000                                     ;; 0b:45a2 $00 $00
+    dw   `00000000                                     ;; 0b:45a4 $00 $00
+    dw   `00000003                                     ;; 0b:45a6 $01 $01
+    dw   `00000000                                     ;; 0b:45a8 $00 $00
+    dw   `00000000                                     ;; 0b:45aa $00 $00
+    dw   `00000000                                     ;; 0b:45ac $00 $00
+    dw   `00000000                                     ;; 0b:45ae $00 $00
+
+    dw   `00000000                                     ;; 0b:45b0 $00 $00
+    dw   `03330000                                     ;; 0b:45b2 $70 $70
+    dw   `30013000                                     ;; 0b:45b4 $98 $88
+    dw   `01122300                                     ;; 0b:45b6 $64 $1c
+    dw   `30023000                                     ;; 0b:45b8 $88 $98
+    dw   `03330000                                     ;; 0b:45ba $70 $70
+    dw   `02130000                                     ;; 0b:45bc $30 $50
+    dw   `30013000                                     ;; 0b:45be $98 $88
+
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:45c0 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:45c8 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:45d0 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:45d8 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:45e0 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:45e8 ????????
+    db   $3c, $3c, $42, $42, $99, $99, $a1, $a1        ;; 0b:45f0 ????????
+    db   $a5, $a5, $99, $99, $42, $42, $3c, $3c        ;; 0b:45f8 ????????
+    dw   `00000000                                     ;; 0b:4600 $00 $00
+    dw   `31000333                                     ;; 0b:4602 $c7 $87
+    dw   `03333333                                     ;; 0b:4604 $7f $7f
+    dw   `01333300                                     ;; 0b:4606 $7c $3c
+    dw   `00333300                                     ;; 0b:4608 $3c $3c
+    dw   `00333300                                     ;; 0b:460a $3c $3c
+    dw   `00333300                                     ;; 0b:460c $3c $3c
+    dw   `00323300                                     ;; 0b:460e $2c $3c
+
+    dw   `33333300                                     ;; 0b:4610 $fc $fc
+    dw   `33333333                                     ;; 0b:4612 $ff $ff
+    dw   `33333333                                     ;; 0b:4614 $ff $ff
+    dw   `00333330                                     ;; 0b:4616 $3e $3e
+    dw   `00033300                                     ;; 0b:4618 $1c $1c
+    dw   `00033000                                     ;; 0b:461a $18 $18
+    dw   `00030000                                     ;; 0b:461c $10 $10
+    dw   `00000000                                     ;; 0b:461e $00 $00
+
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4620 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4628 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4630 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4638 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4640 ????????
+    db   $00, $00, $00, $00, $00, $00, $10, $10        ;; 0b:4648 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4650 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4658 ????????
+    dw   `00000000                                     ;; 0b:4660 $00 $00
+    dw   `00031000                                     ;; 0b:4662 $18 $10
+    dw   `00003333                                     ;; 0b:4664 $0f $0f
+    dw   `00001333                                     ;; 0b:4666 $0f $07
+    dw   `00000333                                     ;; 0b:4668 $07 $07
+    dw   `00000333                                     ;; 0b:466a $07 $07
+    dw   `00000333                                     ;; 0b:466c $07 $07
+    dw   `00000323                                     ;; 0b:466e $05 $07
+
+    dw   `00033333                                     ;; 0b:4670 $1f $1f
+    dw   `33333333                                     ;; 0b:4672 $ff $ff
+    dw   `33333333                                     ;; 0b:4674 $ff $ff
+    dw   `30000333                                     ;; 0b:4676 $87 $87
+    dw   `30000033                                     ;; 0b:4678 $83 $83
+    dw   `30000033                                     ;; 0b:467a $83 $83
+    dw   `30000030                                     ;; 0b:467c $82 $82
+    dw   `30000000                                     ;; 0b:467e $80 $80
+
+    dw   `30000000                                     ;; 0b:4680 $80 $80
+    dw   `33300000                                     ;; 0b:4682 $e0 $e0
+    dw   `33300000                                     ;; 0b:4684 $e0 $e0
+    dw   `33000000                                     ;; 0b:4686 $c0 $c0
+    dw   `30000000                                     ;; 0b:4688 $80 $80
+    dw   `00000000                                     ;; 0b:468a $00 $00
+    dw   `00000000                                     ;; 0b:468c $00 $00
+    dw   `00030000                                     ;; 0b:468e $10 $10
+
+    dw   `00000000                                     ;; 0b:4690 $00 $00
+    dw   `00000000                                     ;; 0b:4692 $00 $00
+    dw   `00000000                                     ;; 0b:4694 $00 $00
+    dw   `00000000                                     ;; 0b:4696 $00 $00
+    dw   `00000000                                     ;; 0b:4698 $00 $00
+    dw   `00000000                                     ;; 0b:469a $00 $00
+    dw   `00000000                                     ;; 0b:469c $00 $00
+    dw   `00000000                                     ;; 0b:469e $00 $00
+
+    dw   `00000000                                     ;; 0b:46a0 $00 $00
+    dw   `00000000                                     ;; 0b:46a2 $00 $00
+    dw   `00000000                                     ;; 0b:46a4 $00 $00
+    dw   `00000000                                     ;; 0b:46a6 $00 $00
+    dw   `03300003                                     ;; 0b:46a8 $61 $61
+    dw   `03033333                                     ;; 0b:46aa $5f $5f
+    dw   `00300001                                     ;; 0b:46ac $21 $20
+    dw   `00033331                                     ;; 0b:46ae $1f $1e
+
+    dw   `30113000                                     ;; 0b:46b0 $b8 $88
+    dw   `30013000                                     ;; 0b:46b2 $98 $88
+    dw   `30113000                                     ;; 0b:46b4 $b8 $88
+    dw   `33033000                                     ;; 0b:46b6 $d8 $d8
+    dw   `11311300                                     ;; 0b:46b8 $fc $24
+    dw   `13031333                                     ;; 0b:46ba $df $57
+    dw   `13131111                                     ;; 0b:46bc $ff $50
+    dw   `13231133                                     ;; 0b:46be $df $73
+
+    dw   `00000000                                     ;; 0b:46c0 $00 $00
+    dw   `00000000                                     ;; 0b:46c2 $00 $00
+    dw   `00000000                                     ;; 0b:46c4 $00 $00
+    dw   `00000000                                     ;; 0b:46c6 $00 $00
+    dw   `00330000                                     ;; 0b:46c8 $30 $30
+    dw   `33130000                                     ;; 0b:46ca $f0 $d0
+    dw   `11300000                                     ;; 0b:46cc $e0 $20
+    dw   `33000000                                     ;; 0b:46ce $c0 $c0
+
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:46d0 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:46d8 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:46e0 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:46e8 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:46f0 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:46f8 ????????
+    dw   `00332300                                     ;; 0b:4700 $34 $3c
+    dw   `00323300                                     ;; 0b:4702 $2c $3c
+    dw   `00332300                                     ;; 0b:4704 $34 $3c
+    dw   `00322300                                     ;; 0b:4706 $24 $3c
+    dw   `00322300                                     ;; 0b:4708 $24 $3c
+    dw   `00322300                                     ;; 0b:470a $24 $3c
+    dw   `00322300                                     ;; 0b:470c $24 $3c
+    dw   `00312300                                     ;; 0b:470e $34 $2c
+
+    dw   `00333333                                     ;; 0b:4710 $3f $3f
+    dw   `00033330                                     ;; 0b:4712 $1e $1e
+    dw   `00033330                                     ;; 0b:4714 $1e $1e
+    dw   `00033330                                     ;; 0b:4716 $1e $1e
+    dw   `00032330                                     ;; 0b:4718 $16 $1e
+    dw   `00033230                                     ;; 0b:471a $1a $1e
+    dw   `00032330                                     ;; 0b:471c $16 $1e
+    dw   `33033230                                     ;; 0b:471e $da $de
+
+    dw   `03333300                                     ;; 0b:4720 $7c $7c
+    dw   `00333300                                     ;; 0b:4722 $3c $3c
+    dw   `00333300                                     ;; 0b:4724 $3c $3c
+    dw   `00333330                                     ;; 0b:4726 $3e $3e
+    dw   `00333330                                     ;; 0b:4728 $3e $3e
+    dw   `00323233                                     ;; 0b:472a $2b $3f
+    dw   `00332323                                     ;; 0b:472c $35 $3f
+    dw   `00322222                                     ;; 0b:472e $20 $3f
+
+    dw   `03333000                                     ;; 0b:4730 $78 $78
+    dw   `00330000                                     ;; 0b:4732 $30 $30
+    dw   `00330033                                     ;; 0b:4734 $33 $33
+    dw   `00330033                                     ;; 0b:4736 $33 $33
+    dw   `00330033                                     ;; 0b:4738 $33 $33
+    dw   `00330033                                     ;; 0b:473a $33 $33
+    dw   `00330033                                     ;; 0b:473c $33 $33
+    dw   `30330033                                     ;; 0b:473e $b3 $b3
+
+    dw   `00330000                                     ;; 0b:4740 $30 $30
+    dw   `33330000                                     ;; 0b:4742 $f0 $f0
+    dw   `33330000                                     ;; 0b:4744 $f0 $f0
+    dw   `33330000                                     ;; 0b:4746 $f0 $f0
+    dw   `03333000                                     ;; 0b:4748 $78 $78
+    dw   `03233000                                     ;; 0b:474a $58 $78
+    dw   `03323000                                     ;; 0b:474c $68 $78
+    dw   `03233000                                     ;; 0b:474e $58 $78
+
+    dw   `03333330                                     ;; 0b:4750 $7e $7e
+    dw   `00333300                                     ;; 0b:4752 $3c $3c
+    dw   `00333300                                     ;; 0b:4754 $3c $3c
+    dw   `00333300                                     ;; 0b:4756 $3c $3c
+    dw   `00333300                                     ;; 0b:4758 $3c $3c
+    dw   `00323300                                     ;; 0b:475a $2c $3c
+    dw   `00332300                                     ;; 0b:475c $34 $3c
+    dw   `00323300                                     ;; 0b:475e $2c $3c
+
+    dw   `00000332                                     ;; 0b:4760 $06 $07
+    dw   `00000323                                     ;; 0b:4762 $05 $07
+    dw   `00000332                                     ;; 0b:4764 $06 $07
+    dw   `00000322                                     ;; 0b:4766 $04 $07
+    dw   `00000322                                     ;; 0b:4768 $04 $07
+    dw   `00000322                                     ;; 0b:476a $04 $07
+    dw   `00000322                                     ;; 0b:476c $04 $07
+    dw   `00000312                                     ;; 0b:476e $06 $05
+
+    dw   `30000000                                     ;; 0b:4770 $80 $80
+    dw   `30000000                                     ;; 0b:4772 $80 $80
+    dw   `30000033                                     ;; 0b:4774 $83 $83
+    dw   `30000033                                     ;; 0b:4776 $83 $83
+    dw   `30000033                                     ;; 0b:4778 $83 $83
+    dw   `30000033                                     ;; 0b:477a $83 $83
+    dw   `30000033                                     ;; 0b:477c $83 $83
+    dw   `30033033                                     ;; 0b:477e $9b $9b
+
+    dw   `00330000                                     ;; 0b:4780 $30 $30
+    dw   `33330000                                     ;; 0b:4782 $f0 $f0
+    dw   `33330000                                     ;; 0b:4784 $f0 $f0
+    dw   `33330000                                     ;; 0b:4786 $f0 $f0
+    dw   `03333000                                     ;; 0b:4788 $78 $78
+    dw   `03233000                                     ;; 0b:478a $58 $78
+    dw   `03323000                                     ;; 0b:478c $68 $78
+    dw   `03233000                                     ;; 0b:478e $58 $78
+
+    dw   `00333330                                     ;; 0b:4790 $3e $3e
+    dw   `00033330                                     ;; 0b:4792 $1e $1e
+    dw   `00033330                                     ;; 0b:4794 $1e $1e
+    dw   `00033333                                     ;; 0b:4796 $1f $1f
+    dw   `00033333                                     ;; 0b:4798 $1f $1f
+    dw   `00032323                                     ;; 0b:479a $15 $1f
+    dw   `00033232                                     ;; 0b:479c $1a $1f
+    dw   `00032222                                     ;; 0b:479e $10 $1f
+
+    dw   `00000003                                     ;; 0b:47a0 $01 $01
+    dw   `00000003                                     ;; 0b:47a2 $01 $01
+    dw   `00000000                                     ;; 0b:47a4 $00 $00
+    dw   `00333000                                     ;; 0b:47a6 $38 $38
+    dw   `00033000                                     ;; 0b:47a8 $18 $18
+    dw   `30033000                                     ;; 0b:47aa $98 $98
+    dw   `30033000                                     ;; 0b:47ac $98 $98
+    dw   `23033000                                     ;; 0b:47ae $58 $d8
+
+    dw   `31313300                                     ;; 0b:47b0 $fc $ac
+    dw   `33133300                                     ;; 0b:47b2 $fc $dc
+    dw   `33333000                                     ;; 0b:47b4 $f8 $f8
+    dw   `31323000                                     ;; 0b:47b6 $e8 $b8
+    dw   `30323000                                     ;; 0b:47b8 $a8 $b8
+    dw   `30323000                                     ;; 0b:47ba $a8 $b8
+    dw   `30323000                                     ;; 0b:47bc $a8 $b8
+    dw   `30123000                                     ;; 0b:47be $a8 $98
+
+    dw   `00000300                                     ;; 0b:47c0 $04 $04
+    dw   `00003300                                     ;; 0b:47c2 $0c $0c
+    dw   `00333300                                     ;; 0b:47c4 $3c $3c
+    dw   `33333300                                     ;; 0b:47c6 $fc $fc
+    dw   `33033330                                     ;; 0b:47c8 $de $de
+    dw   `33032330                                     ;; 0b:47ca $d6 $de
+    dw   `33033230                                     ;; 0b:47cc $da $de
+    dw   `33032330                                     ;; 0b:47ce $d6 $de
+
+    dw   `00000333                                     ;; 0b:47d0 $07 $07
+    dw   `00003330                                     ;; 0b:47d2 $0e $0e
+    dw   `00003300                                     ;; 0b:47d4 $0c $0c
+    dw   `00033300                                     ;; 0b:47d6 $1c $1c
+    dw   `00033300                                     ;; 0b:47d8 $1c $1c
+    dw   `00032330                                     ;; 0b:47da $16 $1e
+    dw   `00033233                                     ;; 0b:47dc $1b $1f
+    dw   `00003323                                     ;; 0b:47de $0d $0f
+
+    dw   `30303333                                     ;; 0b:47e0 $af $af
+    dw   `33300333                                     ;; 0b:47e2 $e7 $e7
+    dw   `03300333                                     ;; 0b:47e4 $67 $67
+    dw   `03300333                                     ;; 0b:47e6 $67 $67
+    dw   `00300033                                     ;; 0b:47e8 $23 $23
+    dw   `00300032                                     ;; 0b:47ea $22 $23
+    dw   `00300033                                     ;; 0b:47ec $23 $23
+    dw   `00000032                                     ;; 0b:47ee $02 $03
+
+    dw   `33003333                                     ;; 0b:47f0 $cf $cf
+    dw   `30000330                                     ;; 0b:47f2 $86 $86
+    dw   `30000330                                     ;; 0b:47f4 $86 $86
+    dw   `30003300                                     ;; 0b:47f6 $8c $8c
+    dw   `30003300                                     ;; 0b:47f8 $8c $8c
+    dw   `33003300                                     ;; 0b:47fa $cc $cc
+    dw   `23033000                                     ;; 0b:47fc $58 $d8
+    dw   `33033000                                     ;; 0b:47fe $d8 $d8
+
+    dw   `00321233                                     ;; 0b:4800 $2b $37
+    dw   `00312133                                     ;; 0b:4802 $37 $2b
+    dw   `00321300                                     ;; 0b:4804 $2c $34
+    dw   `00311300                                     ;; 0b:4806 $3c $24
+    dw   `00311300                                     ;; 0b:4808 $3c $24
+    dw   `00311300                                     ;; 0b:480a $3c $24
+    dw   `00301300                                     ;; 0b:480c $2c $24
+    dw   `00310300                                     ;; 0b:480e $34 $24
+
+    dw   `33032230                                     ;; 0b:4810 $d2 $de
+    dw   `33032230                                     ;; 0b:4812 $d2 $de
+    dw   `30031230                                     ;; 0b:4814 $9a $96
+    dw   `30032130                                     ;; 0b:4816 $96 $9a
+    dw   `00031230                                     ;; 0b:4818 $1a $16
+    dw   `00032130                                     ;; 0b:481a $16 $1a
+    dw   `00031130                                     ;; 0b:481c $1e $12
+    dw   `00031130                                     ;; 0b:481e $1e $12
+
+    dw   `00322222                                     ;; 0b:4820 $20 $3f
+    dw   `00312321                                     ;; 0b:4822 $35 $2e
+    dw   `00323032                                     ;; 0b:4824 $2a $3b
+    dw   `00313003                                     ;; 0b:4826 $39 $29
+    dw   `00313003                                     ;; 0b:4828 $39 $29
+    dw   `00313000                                     ;; 0b:482a $38 $28
+    dw   `00313000                                     ;; 0b:482c $38 $28
+    dw   `00313000                                     ;; 0b:482e $38 $28
+
+    dw   `30330033                                     ;; 0b:4830 $b3 $b3
+    dw   `23230033                                     ;; 0b:4832 $53 $f3
+    dw   `13130033                                     ;; 0b:4834 $f3 $53
+    dw   `11130033                                     ;; 0b:4836 $f3 $13
+    dw   `11130033                                     ;; 0b:4838 $f3 $13
+    dw   `31130033                                     ;; 0b:483a $f3 $93
+    dw   `30130033                                     ;; 0b:483c $b3 $93
+    dw   `03030033                                     ;; 0b:483e $53 $53
+
+    dw   `03223000                                     ;; 0b:4840 $48 $78
+    dw   `00322300                                     ;; 0b:4842 $24 $3c
+    dw   `00312300                                     ;; 0b:4844 $34 $2c
+    dw   `00321300                                     ;; 0b:4846 $2c $34
+    dw   `00311300                                     ;; 0b:4848 $3c $24
+    dw   `03311300                                     ;; 0b:484a $7c $64
+    dw   `33031130                                     ;; 0b:484c $de $d2
+    dw   `30031130                                     ;; 0b:484e $9e $92
+
+    dw   `00332300                                     ;; 0b:4850 $34 $3c
+    dw   `00322300                                     ;; 0b:4852 $24 $3c
+    dw   `00322300                                     ;; 0b:4854 $24 $3c
+    dw   `00321300                                     ;; 0b:4856 $2c $34
+    dw   `00312300                                     ;; 0b:4858 $34 $2c
+    dw   `00321300                                     ;; 0b:485a $2c $34
+    dw   `00311300                                     ;; 0b:485c $3c $24
+    dw   `00311300                                     ;; 0b:485e $3c $24
+
+    dw   `00000321                                     ;; 0b:4860 $05 $06
+    dw   `00000312                                     ;; 0b:4862 $06 $05
+    dw   `00000321                                     ;; 0b:4864 $05 $06
+    dw   `00000311                                     ;; 0b:4866 $07 $04
+    dw   `00000311                                     ;; 0b:4868 $07 $04
+    dw   `00000311                                     ;; 0b:486a $07 $04
+    dw   `00000301                                     ;; 0b:486c $05 $04
+    dw   `00000310                                     ;; 0b:486e $06 $04
+
+    dw   `23333033                                     ;; 0b:4870 $7b $fb
+    dw   `33333033                                     ;; 0b:4872 $fb $fb
+    dw   `30030033                                     ;; 0b:4874 $93 $93
+    dw   `30030033                                     ;; 0b:4876 $93 $93
+    dw   `30000033                                     ;; 0b:4878 $83 $83
+    dw   `30000033                                     ;; 0b:487a $83 $83
+    dw   `30000033                                     ;; 0b:487c $83 $83
+    dw   `30000033                                     ;; 0b:487e $83 $83
+
+    dw   `03223000                                     ;; 0b:4880 $48 $78
+    dw   `00322300                                     ;; 0b:4882 $24 $3c
+    dw   `00312300                                     ;; 0b:4884 $34 $2c
+    dw   `00321300                                     ;; 0b:4886 $2c $34
+    dw   `00311300                                     ;; 0b:4888 $3c $24
+    dw   `03331300                                     ;; 0b:488a $7c $74
+    dw   `33031130                                     ;; 0b:488c $de $d2
+    dw   `30031130                                     ;; 0b:488e $9e $92
+
+    dw   `00032222                                     ;; 0b:4890 $10 $1f
+    dw   `00031232                                     ;; 0b:4892 $1a $17
+    dw   `00032303                                     ;; 0b:4894 $15 $1d
+    dw   `00031300                                     ;; 0b:4896 $1c $14
+    dw   `00031300                                     ;; 0b:4898 $1c $14
+    dw   `00031300                                     ;; 0b:489a $1c $14
+    dw   `00031300                                     ;; 0b:489c $1c $14
+    dw   `00031300                                     ;; 0b:489e $1c $14
+
+    dw   `23033000                                     ;; 0b:48a0 $58 $d8
+    dw   `12323000                                     ;; 0b:48a2 $a8 $78
+    dw   `21313000                                     ;; 0b:48a4 $78 $a8
+    dw   `31113000                                     ;; 0b:48a6 $f8 $88
+    dw   `31113000                                     ;; 0b:48a8 $f8 $88
+    dw   `03113000                                     ;; 0b:48aa $78 $48
+    dw   `03013000                                     ;; 0b:48ac $58 $48
+    dw   `00303000                                     ;; 0b:48ae $28 $28
+
+    dw   `30123000                                     ;; 0b:48b0 $a8 $98
+    dw   `30123000                                     ;; 0b:48b2 $a8 $98
+    dw   `30123000                                     ;; 0b:48b4 $a8 $98
+    dw   `30123000                                     ;; 0b:48b6 $a8 $98
+    dw   `30123000                                     ;; 0b:48b8 $a8 $98
+    dw   `30123000                                     ;; 0b:48ba $a8 $98
+    dw   `30123000                                     ;; 0b:48bc $a8 $98
+    dw   `32123000                                     ;; 0b:48be $a8 $d8
+
+    dw   `33032230                                     ;; 0b:48c0 $d2 $de
+    dw   `33003223                                     ;; 0b:48c2 $c9 $cf
+    dw   `33003123                                     ;; 0b:48c4 $cd $cb
+    dw   `33003213                                     ;; 0b:48c6 $cb $cd
+    dw   `33003113                                     ;; 0b:48c8 $cf $c9
+    dw   `33033113                                     ;; 0b:48ca $df $d9
+    dw   `33330311                                     ;; 0b:48cc $f7 $f4
+    dw   `33300311                                     ;; 0b:48ce $e7 $e4
+
+    dw   `00003223                                     ;; 0b:48d0 $09 $0f
+    dw   `00000322                                     ;; 0b:48d2 $04 $07
+    dw   `00000031                                     ;; 0b:48d4 $03 $02
+    dw   `00000032                                     ;; 0b:48d6 $02 $03
+    dw   `00000003                                     ;; 0b:48d8 $01 $01
+    dw   `00000000                                     ;; 0b:48da $00 $00
+    dw   `30000000                                     ;; 0b:48dc $80 $80
+    dw   `30003000                                     ;; 0b:48de $88 $88
+
+    dw   `30000003                                     ;; 0b:48e0 $81 $81
+    dw   `30000003                                     ;; 0b:48e2 $81 $81
+    dw   `23000003                                     ;; 0b:48e4 $41 $c1
+    dw   `13000003                                     ;; 0b:48e6 $c1 $41
+    dw   `11300003                                     ;; 0b:48e8 $e1 $21
+    dw   `31130000                                     ;; 0b:48ea $f0 $90
+    dw   `31130000                                     ;; 0b:48ec $f0 $90
+    dw   `03113000                                     ;; 0b:48ee $78 $48
+
+    dw   `23033000                                     ;; 0b:48f0 $58 $d8
+    dw   `23033000                                     ;; 0b:48f2 $58 $d8
+    dw   `22230000                                     ;; 0b:48f4 $10 $f0
+    dw   `21230000                                     ;; 0b:48f6 $50 $b0
+    dw   `12130000                                     ;; 0b:48f8 $b0 $50
+    dw   `31300000                                     ;; 0b:48fa $e0 $a0
+    dw   `31300000                                     ;; 0b:48fc $e0 $a0
+    dw   `31300000                                     ;; 0b:48fe $e0 $a0
+
+    dw   `00301300                                     ;; 0b:4900 $2c $24
+    dw   `00310300                                     ;; 0b:4902 $34 $24
+    dw   `00300300                                     ;; 0b:4904 $24 $24
+    dw   `00300300                                     ;; 0b:4906 $24 $24
+    dw   `00300300                                     ;; 0b:4908 $24 $24
+    dw   `00300300                                     ;; 0b:490a $24 $24
+    dw   `00300300                                     ;; 0b:490c $24 $24
+    dw   `00300300                                     ;; 0b:490e $24 $24
+
+    dw   `00030130                                     ;; 0b:4910 $16 $12
+    dw   `00031030                                     ;; 0b:4912 $1a $12
+    dw   `00030130                                     ;; 0b:4914 $16 $12
+    dw   `00030030                                     ;; 0b:4916 $12 $12
+    dw   `00030030                                     ;; 0b:4918 $12 $12
+    dw   `00020020                                     ;; 0b:491a $00 $12
+    dw   `00222222                                     ;; 0b:491c $00 $3f
+    dw   `00000000                                     ;; 0b:491e $00 $00
+
+    dw   `00313000                                     ;; 0b:4920 $38 $28
+    dw   `00303000                                     ;; 0b:4922 $28 $28
+    dw   `00313000                                     ;; 0b:4924 $38 $28
+    dw   `00303000                                     ;; 0b:4926 $28 $28
+    dw   `00303000                                     ;; 0b:4928 $28 $28
+    dw   `00202000                                     ;; 0b:492a $00 $28
+    dw   `02222200                                     ;; 0b:492c $00 $7c
+    dw   `00000000                                     ;; 0b:492e $00 $00
+
+    dw   `03130033                                     ;; 0b:4930 $73 $53
+    dw   `03030023                                     ;; 0b:4932 $51 $53
+    dw   `00330032                                     ;; 0b:4934 $32 $33
+    dw   `00230023                                     ;; 0b:4936 $11 $33
+    dw   `00020032                                     ;; 0b:4938 $02 $13
+    dw   `00020022                                     ;; 0b:493a $00 $13
+    dw   `00020222                                     ;; 0b:493c $00 $17
+    dw   `00000000                                     ;; 0b:493e $00 $00
+
+    dw   `00030130                                     ;; 0b:4940 $16 $12
+    dw   `00031030                                     ;; 0b:4942 $1a $12
+    dw   `00030130                                     ;; 0b:4944 $16 $12
+    dw   `00003003                                     ;; 0b:4946 $09 $09
+    dw   `00003003                                     ;; 0b:4948 $09 $09
+    dw   `00002002                                     ;; 0b:494a $00 $09
+    dw   `20022222                                     ;; 0b:494c $00 $9f
+    dw   `00000000                                     ;; 0b:494e $00 $00
+
+    dw   `00310300                                     ;; 0b:4950 $34 $24
+    dw   `00301300                                     ;; 0b:4952 $2c $24
+    dw   `00310300                                     ;; 0b:4954 $34 $24
+    dw   `00301300                                     ;; 0b:4956 $2c $24
+    dw   `00200333                                     ;; 0b:4958 $07 $27
+    dw   `00200000                                     ;; 0b:495a $00 $20
+    dw   `22222222                                     ;; 0b:495c $00 $ff
+    dw   `00000000                                     ;; 0b:495e $00 $00
+
+    dw   `00300301                                     ;; 0b:4960 $25 $24
+    dw   `00300310                                     ;; 0b:4962 $26 $24
+    dw   `03300300                                     ;; 0b:4964 $64 $64
+    dw   `31300300                                     ;; 0b:4966 $e4 $a4
+    dw   `00200300                                     ;; 0b:4968 $04 $24
+    dw   `00200300                                     ;; 0b:496a $04 $24
+    dw   `22200300                                     ;; 0b:496c $04 $e4
+    dw   `00000300                                     ;; 0b:496e $04 $04
+
+    dw   `30000033                                     ;; 0b:4970 $83 $83
+    dw   `30000023                                     ;; 0b:4972 $81 $83
+    dw   `30000032                                     ;; 0b:4974 $82 $83
+    dw   `30000023                                     ;; 0b:4976 $81 $83
+    dw   `30000032                                     ;; 0b:4978 $82 $83
+    dw   `30000022                                     ;; 0b:497a $80 $83
+    dw   `30000222                                     ;; 0b:497c $80 $87
+    dw   `20000000                                     ;; 0b:497e $00 $80
+
+    dw   `00030130                                     ;; 0b:4980 $16 $12
+    dw   `00031030                                     ;; 0b:4982 $1a $12
+    dw   `00030130                                     ;; 0b:4984 $16 $12
+    dw   `00003003                                     ;; 0b:4986 $09 $09
+    dw   `00002002                                     ;; 0b:4988 $00 $09
+    dw   `00002002                                     ;; 0b:498a $00 $09
+    dw   `20022222                                     ;; 0b:498c $00 $9f
+    dw   `00000000                                     ;; 0b:498e $00 $00
+
+    dw   `00031300                                     ;; 0b:4990 $1c $14
+    dw   `00030300                                     ;; 0b:4992 $14 $14
+    dw   `00031300                                     ;; 0b:4994 $1c $14
+    dw   `00030300                                     ;; 0b:4996 $14 $14
+    dw   `00030300                                     ;; 0b:4998 $14 $14
+    dw   `00020200                                     ;; 0b:499a $00 $14
+    dw   `20222220                                     ;; 0b:499c $00 $be
+    dw   `00000000                                     ;; 0b:499e $00 $00
+
+    dw   `00313000                                     ;; 0b:49a0 $38 $28
+    dw   `00303000                                     ;; 0b:49a2 $28 $28
+    dw   `00033000                                     ;; 0b:49a4 $18 $18
+    dw   `00023000                                     ;; 0b:49a6 $08 $18
+    dw   `00002000                                     ;; 0b:49a8 $00 $08
+    dw   `00002000                                     ;; 0b:49aa $00 $08
+    dw   `00002000                                     ;; 0b:49ac $00 $08
+    dw   `00000000                                     ;; 0b:49ae $00 $00
+
+    dw   `03130000                                     ;; 0b:49b0 $70 $50
+    dw   `03130000                                     ;; 0b:49b2 $70 $50
+    dw   `03130000                                     ;; 0b:49b4 $70 $50
+    dw   `03130000                                     ;; 0b:49b6 $70 $50
+    dw   `03130000                                     ;; 0b:49b8 $70 $50
+    dw   `03130000                                     ;; 0b:49ba $70 $50
+    dw   `03130002                                     ;; 0b:49bc $70 $51
+    dw   `03130000                                     ;; 0b:49be $70 $50
+
+    dw   `33000301                                     ;; 0b:49c0 $c5 $c4
+    dw   `33000310                                     ;; 0b:49c2 $c6 $c4
+    dw   `23000301                                     ;; 0b:49c4 $45 $c4
+    dw   `32000030                                     ;; 0b:49c6 $82 $c2
+    dw   `23000020                                     ;; 0b:49c8 $40 $c2
+    dw   `22000020                                     ;; 0b:49ca $00 $c2
+    dw   `22200222                                     ;; 0b:49cc $00 $e7
+    dw   `00000000                                     ;; 0b:49ce $00 $00
+
+    dw   `30003000                                     ;; 0b:49d0 $88 $88
+    dw   `30003000                                     ;; 0b:49d2 $88 $88
+    dw   `30003300                                     ;; 0b:49d4 $8c $8c
+    dw   `03002300                                     ;; 0b:49d6 $44 $4c
+    dw   `03002230                                     ;; 0b:49d8 $42 $4e
+    dw   `02002022                                     ;; 0b:49da $00 $4b
+    dw   `22202002                                     ;; 0b:49dc $00 $e9
+    dw   `00000000                                     ;; 0b:49de $00 $00
+
+    dw   `03013000                                     ;; 0b:49e0 $58 $48
+    dw   `03003000                                     ;; 0b:49e2 $48 $48
+    dw   `03003000                                     ;; 0b:49e4 $48 $48
+    dw   `02002000                                     ;; 0b:49e6 $00 $48
+    dw   `20020000                                     ;; 0b:49e8 $00 $90
+    dw   `00200000                                     ;; 0b:49ea $00 $20
+    dw   `22000000                                     ;; 0b:49ec $00 $c0
+    dw   `00000000                                     ;; 0b:49ee $00 $00
+
+    dw   `31300000                                     ;; 0b:49f0 $e0 $a0
+    dw   `31300000                                     ;; 0b:49f2 $e0 $a0
+    dw   `31300000                                     ;; 0b:49f4 $e0 $a0
+    dw   `30300000                                     ;; 0b:49f6 $a0 $a0
+    dw   `31300000                                     ;; 0b:49f8 $e0 $a0
+    dw   `30300000                                     ;; 0b:49fa $a0 $a0
+    dw   `30300000                                     ;; 0b:49fc $a0 $a0
+    dw   `30200000                                     ;; 0b:49fe $80 $a0
+
+    dw   `00300220                                     ;; 0b:4a00 $20 $26
+    dw   `00302000                                     ;; 0b:4a02 $20 $28
+    dw   `00320000                                     ;; 0b:4a04 $20 $30
+    dw   `02200000                                     ;; 0b:4a06 $00 $60
+    dw   `00000000                                     ;; 0b:4a08 $00 $00
+    dw   `00000000                                     ;; 0b:4a0a $00 $00
+    dw   `00000000                                     ;; 0b:4a0c $00 $00
+    dw   `00000000                                     ;; 0b:4a0e $00 $00
+
+    dw   `00000000                                     ;; 0b:4a10 $00 $00
+    dw   `00000000                                     ;; 0b:4a12 $00 $00
+    dw   `00000000                                     ;; 0b:4a14 $00 $00
+    dw   `00000000                                     ;; 0b:4a16 $00 $00
+    dw   `00000003                                     ;; 0b:4a18 $01 $01
+    dw   `00000003                                     ;; 0b:4a1a $01 $01
+    dw   `00000003                                     ;; 0b:4a1c $01 $01
+    dw   `00000030                                     ;; 0b:4a1e $02 $02
+
+    dw   `03000003                                     ;; 0b:4a20 $41 $41
+    dw   `33300000                                     ;; 0b:4a22 $e0 $e0
+    dw   `33300000                                     ;; 0b:4a24 $e0 $e0
+    dw   `33300000                                     ;; 0b:4a26 $e0 $e0
+    dw   `03330000                                     ;; 0b:4a28 $70 $70
+    dw   `03330000                                     ;; 0b:4a2a $70 $70
+    dw   `03330000                                     ;; 0b:4a2c $70 $70
+    dw   `00333000                                     ;; 0b:4a2e $38 $38
+
+    dw   `33330003                                     ;; 0b:4a30 $f1 $f1
+    dw   `33303300                                     ;; 0b:4a32 $ec $ec
+    dw   `33303300                                     ;; 0b:4a34 $ec $ec
+    dw   `33300330                                     ;; 0b:4a36 $e6 $e6
+    dw   `33300330                                     ;; 0b:4a38 $e6 $e6
+    dw   `33300330                                     ;; 0b:4a3a $e6 $e6
+    dw   `33300330                                     ;; 0b:4a3c $e6 $e6
+    dw   `33300330                                     ;; 0b:4a3e $e6 $e6
+
+    dw   `33300333                                     ;; 0b:4a40 $e7 $e7
+    dw   `33000033                                     ;; 0b:4a42 $c3 $c3
+    dw   `33000033                                     ;; 0b:4a44 $c3 $c3
+    dw   `33000033                                     ;; 0b:4a46 $c3 $c3
+    dw   `33000033                                     ;; 0b:4a48 $c3 $c3
+    dw   `33300333                                     ;; 0b:4a4a $e7 $e7
+    dw   `03300330                                     ;; 0b:4a4c $66 $66
+    dw   `03300330                                     ;; 0b:4a4e $66 $66
+
+    dw   `33333333                                     ;; 0b:4a50 $ff $ff
+    dw   `00333003                                     ;; 0b:4a52 $39 $39
+    dw   `00333000                                     ;; 0b:4a54 $38 $38
+    dw   `00333000                                     ;; 0b:4a56 $38 $38
+    dw   `00333000                                     ;; 0b:4a58 $38 $38
+    dw   `00333003                                     ;; 0b:4a5a $39 $39
+    dw   `00333333                                     ;; 0b:4a5c $3f $3f
+    dw   `00333003                                     ;; 0b:4a5e $39 $39
+
+    dw   `00000300                                     ;; 0b:4a60 $04 $04
+    dw   `00000302                                     ;; 0b:4a62 $04 $05
+    dw   `00000220                                     ;; 0b:4a64 $00 $06
+    dw   `00002200                                     ;; 0b:4a66 $00 $0c
+    dw   `00000000                                     ;; 0b:4a68 $00 $00
+    dw   `00000000                                     ;; 0b:4a6a $00 $00
+    dw   `00000000                                     ;; 0b:4a6c $00 $00
+    dw   `00000000                                     ;; 0b:4a6e $00 $00
+
+    dw   `22000000                                     ;; 0b:4a70 $00 $c0
+    dw   `00000000                                     ;; 0b:4a72 $00 $00
+    dw   `00000000                                     ;; 0b:4a74 $00 $00
+    dw   `00000000                                     ;; 0b:4a76 $00 $00
+    dw   `00000000                                     ;; 0b:4a78 $00 $00
+    dw   `00000000                                     ;; 0b:4a7a $00 $00
+    dw   `00000000                                     ;; 0b:4a7c $00 $00
+    dw   `00000000                                     ;; 0b:4a7e $00 $00
+
+    dw   `30333003                                     ;; 0b:4a80 $b9 $b9
+    dw   `30033300                                     ;; 0b:4a82 $9c $9c
+    dw   `30033300                                     ;; 0b:4a84 $9c $9c
+    dw   `30033330                                     ;; 0b:4a86 $9e $9e
+    dw   `00033330                                     ;; 0b:4a88 $1e $1e
+    dw   `00033333                                     ;; 0b:4a8a $1f $1f
+    dw   `00033033                                     ;; 0b:4a8c $1b $1b
+    dw   `00033033                                     ;; 0b:4a8e $1b $1b
+
+    dw   `33333333                                     ;; 0b:4a90 $ff $ff
+    dw   `33033033                                     ;; 0b:4a92 $db $db
+    dw   `33030033                                     ;; 0b:4a94 $d3 $d3
+    dw   `33030033                                     ;; 0b:4a96 $d3 $d3
+    dw   `33000033                                     ;; 0b:4a98 $c3 $c3
+    dw   `33000033                                     ;; 0b:4a9a $c3 $c3
+    dw   `33000033                                     ;; 0b:4a9c $c3 $c3
+    dw   `33000033                                     ;; 0b:4a9e $c3 $c3
+
+    dw   `33333333                                     ;; 0b:4aa0 $ff $ff
+    dw   `30330333                                     ;; 0b:4aa2 $b7 $b7
+    dw   `30030333                                     ;; 0b:4aa4 $97 $97
+    dw   `30030333                                     ;; 0b:4aa6 $97 $97
+    dw   `30000333                                     ;; 0b:4aa8 $87 $87
+    dw   `30000333                                     ;; 0b:4aaa $87 $87
+    dw   `30000333                                     ;; 0b:4aac $87 $87
+    dw   `30000333                                     ;; 0b:4aae $87 $87
+
+    dw   `03130000                                     ;; 0b:4ab0 $70 $50
+    dw   `03130000                                     ;; 0b:4ab2 $70 $50
+    dw   `03130000                                     ;; 0b:4ab4 $70 $50
+    dw   `03130000                                     ;; 0b:4ab6 $70 $50
+    dw   `03130000                                     ;; 0b:4ab8 $70 $50
+    dw   `01310000                                     ;; 0b:4aba $70 $20
+    dw   `01310000                                     ;; 0b:4abc $70 $20
+    dw   `00300000                                     ;; 0b:4abe $20 $20
+
+    dw   `30333333                                     ;; 0b:4ac0 $bf $bf
+    dw   `00033003                                     ;; 0b:4ac2 $19 $19
+    dw   `00033003                                     ;; 0b:4ac4 $19 $19
+    dw   `00033003                                     ;; 0b:4ac6 $19 $19
+    dw   `00033003                                     ;; 0b:4ac8 $19 $19
+    dw   `00033003                                     ;; 0b:4aca $19 $19
+    dw   `00033003                                     ;; 0b:4acc $19 $19
+    dw   `00033003                                     ;; 0b:4ace $19 $19
+
+    dw   `33333003                                     ;; 0b:4ad0 $f9 $f9
+    dw   `33003300                                     ;; 0b:4ad2 $cc $cc
+    dw   `33000330                                     ;; 0b:4ad4 $c6 $c6
+    dw   `33000330                                     ;; 0b:4ad6 $c6 $c6
+    dw   `33000330                                     ;; 0b:4ad8 $c6 $c6
+    dw   `33000330                                     ;; 0b:4ada $c6 $c6
+    dw   `33003300                                     ;; 0b:4adc $cc $cc
+    dw   `33330000                                     ;; 0b:4ade $f0 $f0
+
+    dw   `33333330                                     ;; 0b:4ae0 $fe $fe
+    dw   `33300330                                     ;; 0b:4ae2 $e6 $e6
+    dw   `33300030                                     ;; 0b:4ae4 $e2 $e2
+    dw   `33300030                                     ;; 0b:4ae6 $e2 $e2
+    dw   `33300000                                     ;; 0b:4ae8 $e0 $e0
+    dw   `33300300                                     ;; 0b:4aea $e4 $e4
+    dw   `33333300                                     ;; 0b:4aec $fc $fc
+    dw   `33300300                                     ;; 0b:4aee $e4 $e4
+
+    dw   `30220000                                     ;; 0b:4af0 $80 $b0
+    dw   `20200000                                     ;; 0b:4af2 $00 $a0
+    dw   `22000000                                     ;; 0b:4af4 $00 $c0
+    dw   `20000000                                     ;; 0b:4af6 $00 $80
+    dw   `00000000                                     ;; 0b:4af8 $00 $00
+    dw   `00000000                                     ;; 0b:4afa $00 $00
+    dw   `00000000                                     ;; 0b:4afc $00 $00
+    dw   `00000000                                     ;; 0b:4afe $00 $00
+
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4b00 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4b08 ????????
+    dw   `00000030                                     ;; 0b:4b10 $02 $02
+    dw   `00333333                                     ;; 0b:4b12 $3f $3f
+    dw   `00000300                                     ;; 0b:4b14 $04 $04
+    dw   `00000300                                     ;; 0b:4b16 $04 $04
+    dw   `00000300                                     ;; 0b:4b18 $04 $04
+    dw   `00003000                                     ;; 0b:4b1a $08 $08
+    dw   `00003000                                     ;; 0b:4b1c $08 $08
+    dw   `00033330                                     ;; 0b:4b1e $1e $1e
+
+    dw   `00333000                                     ;; 0b:4b20 $38 $38
+    dw   `33333000                                     ;; 0b:4b22 $f8 $f8
+    dw   `00033300                                     ;; 0b:4b24 $1c $1c
+    dw   `00033300                                     ;; 0b:4b26 $1c $1c
+    dw   `00033300                                     ;; 0b:4b28 $1c $1c
+    dw   `00003330                                     ;; 0b:4b2a $0e $0e
+    dw   `00003330                                     ;; 0b:4b2c $0e $0e
+    dw   `00033333                                     ;; 0b:4b2e $1f $1f
+
+    dw   `33300330                                     ;; 0b:4b30 $e6 $e6
+    dw   `33300330                                     ;; 0b:4b32 $e6 $e6
+    dw   `33300330                                     ;; 0b:4b34 $e6 $e6
+    dw   `33300330                                     ;; 0b:4b36 $e6 $e6
+    dw   `33300330                                     ;; 0b:4b38 $e6 $e6
+    dw   `33303300                                     ;; 0b:4b3a $ec $ec
+    dw   `33303300                                     ;; 0b:4b3c $ec $ec
+    dw   `33330000                                     ;; 0b:4b3e $f0 $f0
+
+    dw   `03300330                                     ;; 0b:4b40 $66 $66
+    dw   `03300330                                     ;; 0b:4b42 $66 $66
+    dw   `00333300                                     ;; 0b:4b44 $3c $3c
+    dw   `00333300                                     ;; 0b:4b46 $3c $3c
+    dw   `00333300                                     ;; 0b:4b48 $3c $3c
+    dw   `00033000                                     ;; 0b:4b4a $18 $18
+    dw   `00033000                                     ;; 0b:4b4c $18 $18
+    dw   `00033000                                     ;; 0b:4b4e $18 $18
+
+    dw   `00333000                                     ;; 0b:4b50 $38 $38
+    dw   `00333000                                     ;; 0b:4b52 $38 $38
+    dw   `00333000                                     ;; 0b:4b54 $38 $38
+    dw   `00333000                                     ;; 0b:4b56 $38 $38
+    dw   `00333000                                     ;; 0b:4b58 $38 $38
+    dw   `00333000                                     ;; 0b:4b5a $38 $38
+    dw   `00333003                                     ;; 0b:4b5c $39 $39
+    dw   `03333333                                     ;; 0b:4b5e $7f $7f
+
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4b60 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4b68 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4b70 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4b78 ????????
+    dw   `00033003                                     ;; 0b:4b80 $19 $19
+    dw   `00033003                                     ;; 0b:4b82 $19 $19
+    dw   `00033003                                     ;; 0b:4b84 $19 $19
+    dw   `00033000                                     ;; 0b:4b86 $18 $18
+    dw   `30033000                                     ;; 0b:4b88 $98 $98
+    dw   `30033000                                     ;; 0b:4b8a $98 $98
+    dw   `30033000                                     ;; 0b:4b8c $98 $98
+    dw   `30333300                                     ;; 0b:4b8e $bc $bc
+
+    dw   `33000033                                     ;; 0b:4b90 $c3 $c3
+    dw   `33000033                                     ;; 0b:4b92 $c3 $c3
+    dw   `33000033                                     ;; 0b:4b94 $c3 $c3
+    dw   `33000033                                     ;; 0b:4b96 $c3 $c3
+    dw   `23000033                                     ;; 0b:4b98 $43 $c3
+    dw   `23000033                                     ;; 0b:4b9a $43 $c3
+    dw   `23000033                                     ;; 0b:4b9c $43 $c3
+    dw   `23000333                                     ;; 0b:4b9e $47 $c7
+
+    dw   `30000333                                     ;; 0b:4ba0 $87 $87
+    dw   `30000333                                     ;; 0b:4ba2 $87 $87
+    dw   `30000333                                     ;; 0b:4ba4 $87 $87
+    dw   `30000333                                     ;; 0b:4ba6 $87 $87
+    dw   `30000333                                     ;; 0b:4ba8 $87 $87
+    dw   `30000333                                     ;; 0b:4baa $87 $87
+    dw   `30000033                                     ;; 0b:4bac $83 $83
+    dw   `33000003                                     ;; 0b:4bae $c1 $c1
+
+    dw   `00300000                                     ;; 0b:4bb0 $20 $20
+    dw   `00300000                                     ;; 0b:4bb2 $20 $20
+    dw   `00300000                                     ;; 0b:4bb4 $20 $20
+    dw   `00300000                                     ;; 0b:4bb6 $20 $20
+    dw   `00300000                                     ;; 0b:4bb8 $20 $20
+    dw   `00300000                                     ;; 0b:4bba $20 $20
+    dw   `00300000                                     ;; 0b:4bbc $20 $20
+    dw   `00000000                                     ;; 0b:4bbe $00 $00
+
+    dw   `00033003                                     ;; 0b:4bc0 $19 $19
+    dw   `00033003                                     ;; 0b:4bc2 $19 $19
+    dw   `00033003                                     ;; 0b:4bc4 $19 $19
+    dw   `00033003                                     ;; 0b:4bc6 $19 $19
+    dw   `00033003                                     ;; 0b:4bc8 $19 $19
+    dw   `00033003                                     ;; 0b:4bca $19 $19
+    dw   `30330003                                     ;; 0b:4bcc $b1 $b1
+    dw   `33300033                                     ;; 0b:4bce $e3 $e3
+
+    dw   `33033000                                     ;; 0b:4bd0 $d8 $d8
+    dw   `33003000                                     ;; 0b:4bd2 $c8 $c8
+    dw   `33003300                                     ;; 0b:4bd4 $cc $cc
+    dw   `33003300                                     ;; 0b:4bd6 $cc $cc
+    dw   `33000330                                     ;; 0b:4bd8 $c6 $c6
+    dw   `33000330                                     ;; 0b:4bda $c6 $c6
+    dw   `33000330                                     ;; 0b:4bdc $c6 $c6
+    dw   `33303333                                     ;; 0b:4bde $ef $ef
+
+    dw   `33300000                                     ;; 0b:4be0 $e0 $e0
+    dw   `33300000                                     ;; 0b:4be2 $e0 $e0
+    dw   `33300000                                     ;; 0b:4be4 $e0 $e0
+    dw   `33300000                                     ;; 0b:4be6 $e0 $e0
+    dw   `33300030                                     ;; 0b:4be8 $e2 $e2
+    dw   `33300030                                     ;; 0b:4bea $e2 $e2
+    dw   `33300330                                     ;; 0b:4bec $e6 $e6
+    dw   `33333330                                     ;; 0b:4bee $fe $fe
+
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4bf0 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4bf8 ????????
+    dw   `00000003                                     ;; 0b:4c00 $01 $01
+    dw   `00003330                                     ;; 0b:4c02 $0e $0e
+    dw   `00330030                                     ;; 0b:4c04 $32 $32
+    dw   `03000033                                     ;; 0b:4c06 $43 $43
+    dw   `03000003                                     ;; 0b:4c08 $41 $41
+    dw   `03330001                                     ;; 0b:4c0a $71 $70
+    dw   `03003333                                     ;; 0b:4c0c $4f $4f
+    dw   `00330000                                     ;; 0b:4c0e $30 $30
+
+    dw   `00000000                                     ;; 0b:4c10 $00 $00
+    dw   `33300000                                     ;; 0b:4c12 $e0 $e0
+    dw   `30033000                                     ;; 0b:4c14 $98 $98
+    dw   `30011300                                     ;; 0b:4c16 $9c $84
+    dw   `01111300                                     ;; 0b:4c18 $7c $04
+    dw   `11133300                                     ;; 0b:4c1a $fc $1c
+    dw   `33311300                                     ;; 0b:4c1c $fc $e4
+    dw   `01133000                                     ;; 0b:4c1e $78 $18
+
+    dw   `00303333                                     ;; 0b:4c20 $2f $2f
+    dw   `00303030                                     ;; 0b:4c22 $2a $2a
+    dw   `00303030                                     ;; 0b:4c24 $2a $2a
+    dw   `00303030                                     ;; 0b:4c26 $2a $2a
+    dw   `00303030                                     ;; 0b:4c28 $2a $2a
+    dw   `00303031                                     ;; 0b:4c2a $2b $2a
+    dw   `00033031                                     ;; 0b:4c2c $1b $1a
+    dw   `00003333                                     ;; 0b:4c2e $0f $0f
+
+    dw   `33313000                                     ;; 0b:4c30 $f8 $e8
+    dw   `31313000                                     ;; 0b:4c32 $f8 $a8
+    dw   `31313000                                     ;; 0b:4c34 $f8 $a8
+    dw   `31313000                                     ;; 0b:4c36 $f8 $a8
+    dw   `31313000                                     ;; 0b:4c38 $f8 $a8
+    dw   `31313000                                     ;; 0b:4c3a $f8 $a8
+    dw   `31330000                                     ;; 0b:4c3c $f0 $b0
+    dw   `33300000                                     ;; 0b:4c3e $e0 $e0
+
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4c40 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4c48 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4c50 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4c58 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4c60 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4c68 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4c70 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4c78 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4c80 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4c88 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4c90 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4c98 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4ca0 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4ca8 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4cb0 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4cb8 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4cc0 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4cc8 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4cd0 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4cd8 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4ce0 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4ce8 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4cf0 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4cf8 ????????
+    db   $03, $03, $04, $07, $03, $03, $03, $02        ;; 0b:4d00 ????????
+    db   $03, $02, $03, $02, $07, $06, $1f, $19        ;; 0b:4d08 ????????
+    db   $18, $18, $d5, $dd, $3a, $ff, $c8, $ff        ;; 0b:4d10 ????????
+    db   $40, $ff, $a0, $7f, $b8, $7f, $4c, $f7        ;; 0b:4d18 ????????
+    db   $7f, $60, $ff, $80, $7f, $61, $1f, $18        ;; 0b:4d20 ????????
+    db   $0f, $0c, $1f, $1e, $1f, $1f, $1f, $1f        ;; 0b:4d28 ????????
+    db   $ee, $f3, $8e, $f7, $46, $fd, $d0, $ff        ;; 0b:4d30 ????????
+    db   $ff, $3b, $ff, $17, $fb, $0f, $fd, $e7        ;; 0b:4d38 ????????
+    db   $0f, $0f, $0f, $0f, $0f, $0f, $0d, $0f        ;; 0b:4d40 ????????
+    db   $0d, $0f, $1d, $1f, $1d, $1f, $1d, $1f        ;; 0b:4d48 ????????
+    db   $fe, $ff, $f3, $ff, $e7, $fc, $f3, $ff        ;; 0b:4d50 ????????
+    db   $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff        ;; 0b:4d58 ????????
+    db   $3b, $3f, $3b, $3f, $7b, $7f, $77, $7f        ;; 0b:4d60 ????????
+    db   $f7, $ff, $87, $8f, $0c, $0c, $08, $08        ;; 0b:4d68 ????????
+    db   $ef, $ff, $ef, $ff, $ef, $ff, $df, $ff        ;; 0b:4d70 ????????
+    db   $df, $ff, $df, $ff, $5f, $7f, $31, $31        ;; 0b:4d78 ????????
+    db   $18, $18, $ab, $bb, $5c, $ff, $13, $ff        ;; 0b:4d80 ????????
+    db   $02, $ff, $05, $fe, $1d, $fe, $32, $ef        ;; 0b:4d88 ????????
+    db   $c0, $c0, $20, $e0, $c0, $c0, $f0, $70        ;; 0b:4d90 ????????
+    db   $fb, $4b, $fd, $5f, $fb, $5f, $fa, $9f        ;; 0b:4d98 ????????
+    db   $77, $cf, $71, $ef, $62, $bf, $0b, $ff        ;; 0b:4da0 ????????
+    db   $ff, $df, $fe, $ef, $df, $ff, $bf, $ff        ;; 0b:4da8 ????????
+    db   $f6, $bf, $ec, $3f, $e8, $ff, $d8, $ff        ;; 0b:4db0 ????????
+    db   $bf, $ff, $ff, $f0, $ff, $c0, $ff, $00        ;; 0b:4db8 ????????
+    db   $71, $ff, $f3, $de, $e7, $3e, $c3, $fe        ;; 0b:4dc0 ????????
+    db   $03, $fe, $01, $ff, $c1, $ff, $e2, $3d        ;; 0b:4dc8 ????????
+    db   $ff, $00, $ff, $00, $ff, $00, $ff, $10        ;; 0b:4dd0 ????????
+    db   $ff, $08, $be, $49, $1f, $e4, $83, $fe        ;; 0b:4dd8 ????????
+    db   $70, $9f, $1f, $ff, $df, $f0, $3f, $38        ;; 0b:4de0 ????????
+    db   $07, $07, $07, $07, $07, $07, $00, $00        ;; 0b:4de8 ????????
+    db   $c2, $ff, $b9, $7f, $e6, $27, $e1, $61        ;; 0b:4df0 ????????
+    db   $f8, $f8, $fe, $fe, $ff, $ff, $7f, $7f        ;; 0b:4df8 ????????
+    db   $00, $00, $00, $00, $00, $00, $70, $70        ;; 0b:4e00 ????????
+    db   $c9, $f9, $9e, $ff, $e0, $ff, $11, $ef        ;; 0b:4e08 ????????
+    db   $00, $00, $1c, $1c, $62, $7e, $8d, $ff        ;; 0b:4e10 ????????
+    db   $1b, $fb, $38, $e8, $3c, $fc, $84, $fc        ;; 0b:4e18 ????????
+    db   $c3, $3e, $07, $fc, $1f, $f8, $fe, $e1        ;; 0b:4e20 ????????
+    db   $ff, $60, $ff, $18, $ff, $06, $fd, $03        ;; 0b:4e28 ????????
+    db   $f8, $78, $c8, $38, $10, $f0, $10, $f0        ;; 0b:4e30 ????????
+    db   $10, $f0, $90, $70, $c8, $38, $e8, $98        ;; 0b:4e38 ????????
+    db   $de, $21, $e6, $19, $f0, $8f, $f8, $47        ;; 0b:4e40 ????????
+    db   $ec, $33, $d4, $3b, $68, $9f, $04, $ff        ;; 0b:4e48 ????????
+    db   $64, $fc, $1a, $fe, $1e, $fe, $21, $e1        ;; 0b:4e50 ????????
+    db   $40, $c0, $40, $c0, $80, $80, $80, $80        ;; 0b:4e58 ????????
+    db   $02, $ff, $01, $ff, $8f, $ff, $b0, $f0        ;; 0b:4e60 ????????
+    db   $c0, $c0, $40, $40, $00, $00, $00, $00        ;; 0b:4e68 ????????
+    db   $80, $80, $80, $80, $80, $80, $40, $40        ;; 0b:4e70 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4e78 ????????
+    db   $01, $01, $03, $02, $05, $06, $07, $04        ;; 0b:4e80 ????????
+    db   $0f, $08, $1b, $14, $37, $2c, $1b, $1c        ;; 0b:4e88 ????????
+    db   $00, $00, $00, $00, $00, $00, $01, $01        ;; 0b:4e90 ????????
+    db   $33, $32, $73, $52, $e3, $a2, $e3, $a2        ;; 0b:4e98 ????????
+    db   $17, $18, $2f, $30, $3f, $30, $9f, $9c        ;; 0b:4ea0 ????????
+    db   $93, $9e, $9f, $97, $af, $bd, $df, $63        ;; 0b:4ea8 ????????
+    db   $fa, $bb, $f7, $9f, $bb, $cf, $79, $4f        ;; 0b:4eb0 ????????
+    db   $5b, $6f, $79, $6f, $5b, $7f, $59, $7f        ;; 0b:4eb8 ????????
+    db   $f7, $09, $0f, $fa, $ff, $f2, $fd, $e7        ;; 0b:4ec0 ????????
+    db   $fe, $ef, $fb, $ef, $fd, $ff, $fd, $ff        ;; 0b:4ec8 ????????
+    db   $5b, $7f, $5b, $7f, $56, $7e, $24, $3c        ;; 0b:4ed0 ????????
+    db   $19, $19, $03, $03, $04, $07, $07, $07        ;; 0b:4ed8 ????????
+    db   $fd, $ff, $fd, $ff, $fd, $ff, $fd, $ff        ;; 0b:4ee0 ????????
+    db   $f5, $ff, $51, $ff, $02, $fe, $fc, $fc        ;; 0b:4ee8 ????????
+    db   $00, $00, $80, $80, $40, $c0, $c0, $40        ;; 0b:4ef0 ????????
+    db   $e0, $20, $b0, $50, $d8, $68, $b0, $70        ;; 0b:4ef8 ????????
+    db   $d0, $30, $e8, $18, $f8, $18, $f1, $71        ;; 0b:4f00 ????????
+    db   $93, $f2, $f7, $d4, $ef, $79, $fd, $83        ;; 0b:4f08 ????????
+    db   $00, $00, $00, $00, $00, $00, $80, $80        ;; 0b:4f10 ????????
+    db   $c0, $40, $80, $80, $00, $00, $00, $00        ;; 0b:4f18 ????????
+    db   $73, $9f, $bf, $df, $df, $e7, $7f, $fb        ;; 0b:4f20 ????????
+    db   $ff, $ff, $bf, $ff, $7f, $ff, $7f, $ff        ;; 0b:4f28 ????????
+    db   $c0, $c0, $f0, $f0, $c8, $f8, $34, $fc        ;; 0b:4f30 ????????
+    db   $bc, $fc, $3c, $e4, $be, $e2, $2e, $f2        ;; 0b:4f38 ????????
+    db   $7f, $ff, $7f, $ff, $7c, $fc, $7e, $fe        ;; 0b:4f40 ????????
+    db   $5e, $fe, $15, $ff, $80, $ff, $7f, $7f        ;; 0b:4f48 ????????
+    db   $b7, $f9, $bb, $fd, $ab, $fd, $5f, $7d        ;; 0b:4f50 ????????
+    db   $37, $35, $85, $87, $42, $c2, $c0, $c0        ;; 0b:4f58 ????????
+    db   $01, $01, $03, $02, $07, $04, $7d, $7e        ;; 0b:4f60 ????????
+    db   $fe, $83, $71, $7f, $2b, $3e, $1e, $1d        ;; 0b:4f68 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4f70 ????????
+    db   $01, $01, $03, $03, $02, $03, $07, $07        ;; 0b:4f78 ????????
+    db   $0d, $0b, $1d, $13, $7a, $77, $ba, $e7        ;; 0b:4f80 ????????
+    db   $76, $cf, $57, $ef, $4f, $fd, $7f, $fb        ;; 0b:4f88 ????????
+    db   $06, $07, $0f, $0f, $0e, $0f, $0f, $0f        ;; 0b:4f90 ????????
+    db   $0f, $0f, $0f, $0f, $07, $07, $03, $03        ;; 0b:4f98 ????????
+    db   $6f, $f9, $6f, $fa, $0f, $fa, $9d, $f7        ;; 0b:4fa0 ????????
+    db   $7e, $ff, $eb, $ff, $ed, $ff, $dd, $ff        ;; 0b:4fa8 ????????
+    db   $03, $03, $01, $01, $00, $00, $00, $00        ;; 0b:4fb0 ????????
+    db   $01, $01, $03, $03, $04, $07, $07, $07        ;; 0b:4fb8 ????????
+    db   $dd, $ff, $bd, $ff, $fd, $ff, $f3, $ff        ;; 0b:4fc0 ????????
+    db   $cd, $ff, $57, $f9, $3b, $fd, $c7, $c7        ;; 0b:4fc8 ????????
+    db   $00, $00, $80, $80, $c0, $40, $40, $c0        ;; 0b:4fd0 ????????
+    db   $78, $f8, $fc, $84, $b8, $78, $c0, $c0        ;; 0b:4fd8 ????????
+    db   $20, $e0, $70, $90, $bc, $dc, $ba, $ce        ;; 0b:4fe0 ????????
+    db   $dd, $e7, $d5, $ef, $e4, $7f, $fd, $bf        ;; 0b:4fe8 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:4ff0 ????????
+    db   $00, $00, $80, $80, $80, $80, $c0, $c0        ;; 0b:4ff8 ????????
+    db   $ec, $3f, $ed, $bf, $e0, $ff, $73, $ff        ;; 0b:5000 ????????
+    db   $ed, $ff, $af, $ff, $6f, $ff, $77, $ff        ;; 0b:5008 ????????
+    db   $c0, $c0, $e0, $e0, $e0, $e0, $e0, $e0        ;; 0b:5010 ????????
+    db   $e0, $e0, $e0, $e0, $c0, $c0, $80, $80        ;; 0b:5018 ????????
+    db   $77, $ff, $7b, $ff, $7e, $fe, $9e, $fe        ;; 0b:5020 ????????
+    db   $e7, $7f, $d5, $3f, $b8, $7f, $c7, $c7        ;; 0b:5028 ????????
+    db   $80, $80, $00, $00, $00, $00, $00, $00        ;; 0b:5030 ????????
+    db   $00, $00, $80, $80, $40, $c0, $c0, $c0        ;; 0b:5038 ????????
+    db   $0e, $0e, $31, $3f, $40, $7f, $59, $67        ;; 0b:5040 ????????
+    db   $b9, $c7, $b2, $cf, $b2, $cf, $92, $ef        ;; 0b:5048 ????????
+    db   $0f, $0f, $f0, $ff, $ee, $b1, $50, $ef        ;; 0b:5050 ????????
+    db   $4e, $ff, $51, $ff, $6e, $ff, $7e, $f3        ;; 0b:5058 ????????
+    db   $45, $7e, $25, $3e, $1d, $1e, $35, $3e        ;; 0b:5060 ????????
+    db   $6d, $5e, $62, $5f, $62, $5f, $25, $3d        ;; 0b:5068 ????????
+    db   $5e, $f3, $2f, $ff, $28, $f7, $14, $fb        ;; 0b:5070 ????????
+    db   $8f, $7f, $80, $7f, $c0, $3f, $20, $df        ;; 0b:5078 ????????
+    db   $3c, $3c, $44, $7c, $9f, $ff, $f3, $be        ;; 0b:5080 ????????
+    db   $59, $57, $31, $2f, $30, $2f, $30, $2f        ;; 0b:5088 ????????
+    db   $80, $ff, $60, $7f, $df, $bf, $8c, $7b        ;; 0b:5090 ????????
+    db   $0c, $fb, $b4, $f7, $c3, $c3, $40, $c0        ;; 0b:5098 ????????
+    db   $30, $2f, $30, $2f, $1e, $1f, $2b, $37        ;; 0b:50a0 ????????
+    db   $51, $6f, $a1, $df, $a3, $df, $7f, $7f        ;; 0b:50a8 ????????
+    db   $40, $c0, $40, $c0, $e0, $a0, $f0, $b0        ;; 0b:50b0 ????????
+    db   $51, $f1, $7f, $ff, $ff, $ff, $ff, $ff        ;; 0b:50b8 ????????
+    db   $80, $80, $40, $c0, $3c, $fc, $23, $ff        ;; 0b:50c0 ????????
+    db   $14, $ff, $35, $fe, $fb, $dc, $fb, $dc        ;; 0b:50c8 ????????
+    db   $00, $00, $00, $00, $f0, $f0, $0c, $fc        ;; 0b:50d0 ????????
+    db   $02, $fe, $82, $7e, $c1, $3f, $c1, $3f        ;; 0b:50d8 ????????
+    db   $bb, $fc, $4b, $fc, $49, $fe, $84, $ff        ;; 0b:50e0 ????????
+    db   $04, $ff, $03, $ff, $01, $ff, $01, $ff        ;; 0b:50e8 ????????
+    db   $81, $7f, $81, $7f, $1d, $ff, $7e, $fe        ;; 0b:50f0 ????????
+    db   $e6, $fe, $5c, $fc, $f2, $ee, $61, $5f        ;; 0b:50f8 ????????
+    db   $02, $fe, $0c, $fc, $f9, $f9, $2e, $ff        ;; 0b:5100 ????????
+    db   $53, $fe, $7f, $e2, $bf, $a7, $1d, $17        ;; 0b:5108 ????????
+    db   $61, $5f, $e1, $df, $61, $ff, $22, $fe        ;; 0b:5110 ????????
+    db   $fa, $3e, $e4, $3c, $e4, $5c, $f4, $cc        ;; 0b:5118 ????????
+    db   $0c, $0f, $0f, $0f, $14, $1f, $0d, $0f        ;; 0b:5120 ????????
+    db   $fe, $ff, $fe, $ff, $ff, $ff, $00, $00        ;; 0b:5128 ????????
+    db   $7a, $ce, $b9, $ff, $8f, $f9, $fe, $fa        ;; 0b:5130 ????????
+    db   $06, $fe, $02, $fe, $fc, $fc, $00, $00        ;; 0b:5138 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:5140 ????????
+    db   $01, $01, $07, $07, $18, $1f, $20, $3f        ;; 0b:5148 ????????
+    db   $00, $00, $07, $07, $38, $3f, $c0, $ff        ;; 0b:5150 ????????
+    db   $03, $ff, $84, $ff, $69, $fe, $1a, $fd        ;; 0b:5158 ????????
+    db   $4e, $71, $5f, $60, $9f, $e0, $9e, $e1        ;; 0b:5160 ????????
+    db   $8c, $f3, $c0, $ff, $60, $7f, $58, $7f        ;; 0b:5168 ????????
+    db   $08, $ff, $0c, $ff, $07, $ff, $07, $fe        ;; 0b:5170 ????????
+    db   $07, $fe, $0d, $ff, $15, $fe, $6b, $ff        ;; 0b:5178 ????????
+    db   $37, $2f, $18, $1f, $0f, $0f, $3e, $3f        ;; 0b:5180 ????????
+    db   $5b, $6f, $72, $5f, $b1, $df, $b0, $df        ;; 0b:5188 ????????
+    db   $94, $fb, $3b, $fc, $cc, $ff, $a7, $df        ;; 0b:5190 ????????
+    db   $36, $cf, $14, $ef, $09, $fe, $c9, $fe        ;; 0b:5198 ????????
+    db   $b9, $df, $9f, $ef, $4f, $70, $20, $3f        ;; 0b:51a0 ????????
+    db   $1f, $1f, $04, $07, $04, $07, $03, $03        ;; 0b:51a8 ????????
+    db   $f8, $bf, $ac, $6f, $43, $c3, $c0, $c0        ;; 0b:51b0 ????????
+    db   $40, $c0, $40, $c0, $80, $80, $00, $00        ;; 0b:51b8 ????????
+    db   $0f, $0f, $f0, $ff, $19, $fe, $04, $ff        ;; 0b:51c0 ????????
+    db   $e2, $ff, $19, $ff, $e9, $1f, $06, $fd        ;; 0b:51c8 ????????
+    db   $00, $00, $dc, $dc, $a2, $7e, $b9, $7f        ;; 0b:51d0 ????????
+    db   $1d, $ff, $15, $ff, $15, $ff, $99, $ff        ;; 0b:51d8 ????????
+    db   $06, $fd, $e6, $fd, $d6, $fd, $ea, $7d        ;; 0b:51e0 ????????
+    db   $eb, $7d, $d1, $ff, $23, $ff, $c2, $ff        ;; 0b:51e8 ????????
+    db   $a2, $fe, $bd, $ff, $d1, $df, $8d, $8f        ;; 0b:51f0 ????????
+    db   $02, $02, $00, $00, $70, $70, $cc, $fc        ;; 0b:51f8 ????????
+    db   $04, $ff, $98, $7f, $66, $e7, $c7, $c5        ;; 0b:5200 ????????
+    db   $25, $e6, $62, $e3, $12, $f3, $93, $73        ;; 0b:5208 ????????
+    db   $36, $fa, $1e, $fa, $0e, $fa, $9a, $f6        ;; 0b:5210 ????????
+    db   $fa, $e6, $e2, $1e, $04, $fc, $08, $f8        ;; 0b:5218 ????????
+    db   $25, $e7, $23, $e3, $c1, $c1, $00, $00        ;; 0b:5220 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:5228 ????????
+    db   $78, $f8, $44, $fc, $84, $fc, $c4, $fc        ;; 0b:5230 ????????
+    db   $38, $38, $00, $00, $00, $00, $00, $00        ;; 0b:5238 ????????
+    db   $07, $07, $1f, $1f, $3f, $3e, $2e, $3f        ;; 0b:5240 ????????
+    db   $47, $7f, $53, $6f, $59, $67, $49, $77        ;; 0b:5248 ????????
+    db   $e0, $e0, $f8, $f8, $fc, $7c, $74, $fc        ;; 0b:5250 ????????
+    db   $e2, $fe, $ca, $f6, $9a, $e6, $92, $ee        ;; 0b:5258 ????????
+    db   $23, $3f, $1f, $1f, $47, $47, $c3, $c3        ;; 0b:5260 ????????
+    db   $ff, $ff, $61, $61, $63, $63, $31, $31        ;; 0b:5268 ????????
+    db   $c4, $fc, $f8, $f8, $e2, $e2, $c3, $c3        ;; 0b:5270 ????????
+    db   $ff, $ff, $86, $86, $c6, $c6, $8c, $8c        ;; 0b:5278 ????????
+    db   $78, $78, $1c, $1c, $11, $11, $f2, $f3        ;; 0b:5280 ????????
+    db   $7f, $7f, $3f, $3f, $1f, $1f, $7f, $7f        ;; 0b:5288 ????????
+    db   $00, $00, $e0, $e0, $10, $f0, $cc, $3c        ;; 0b:5290 ????????
+    db   $1e, $fe, $fe, $fe, $ef, $f7, $ff, $f7        ;; 0b:5298 ????????
+    db   $9f, $ff, $d6, $ff, $75, $7e, $3c, $3f        ;; 0b:52a0 ????????
+    db   $9c, $9f, $d6, $d7, $7f, $7f, $39, $39        ;; 0b:52a8 ????????
+    db   $ff, $ff, $3f, $ff, $9f, $7f, $cf, $3f        ;; 0b:52b0 ????????
+    db   $0e, $fe, $1e, $fe, $fc, $fc, $f0, $f0        ;; 0b:52b8 ????????
+    db   $03, $03, $0f, $0f, $1f, $1f, $1f, $1c        ;; 0b:52c0 ????????
+    db   $2d, $3f, $47, $7f, $57, $6f, $57, $6f        ;; 0b:52c8 ????????
+    db   $f0, $f0, $fc, $fc, $fe, $fe, $fe, $fe        ;; 0b:52d0 ????????
+    db   $e7, $ff, $c3, $ff, $93, $ef, $b3, $cf        ;; 0b:52d8 ????????
+    db   $2f, $3f, $1f, $1f, $4f, $4f, $cf, $cf        ;; 0b:52e0 ????????
+    db   $ff, $ff, $9d, $9d, $99, $99, $10, $10        ;; 0b:52e8 ????????
+    db   $a3, $df, $c6, $fe, $fe, $fe, $9b, $fb        ;; 0b:52f0 ????????
+    db   $ff, $ff, $33, $f3, $66, $e6, $cc, $cc        ;; 0b:52f8 ????????
+    db   $03, $03, $0f, $0c, $1f, $1e, $0f, $0e        ;; 0b:5300 ????????
+    db   $5f, $5c, $df, $dd, $ff, $b9, $ff, $bb        ;; 0b:5308 ????????
+    db   $c0, $c0, $f0, $f0, $fc, $7c, $fe, $f2        ;; 0b:5310 ????????
+    db   $ff, $f3, $ff, $e7, $fb, $eb, $ff, $cf        ;; 0b:5318 ????????
+    db   $ff, $bb, $77, $77, $77, $77, $7f, $7f        ;; 0b:5320 ????????
+    db   $3f, $37, $3f, $37, $0f, $0f, $03, $03        ;; 0b:5328 ????????
+    db   $fe, $de, $fd, $dd, $7b, $7b, $3f, $3d        ;; 0b:5330 ????????
+    db   $ff, $fb, $fe, $3e, $fc, $9c, $f0, $f0        ;; 0b:5338 ????????
+    db   $1c, $1c, $3c, $3c, $7c, $7c, $71, $51        ;; 0b:5340 ????????
+    db   $ff, $9f, $ff, $bf, $78, $78, $fd, $f5        ;; 0b:5348 ????????
+    db   $e0, $e0, $f0, $f0, $fc, $dc, $fe, $ee        ;; 0b:5350 ????????
+    db   $fe, $ee, $ff, $cd, $ff, $9d, $ff, $fd        ;; 0b:5358 ????????
+    db   $ff, $e7, $df, $df, $ff, $fe, $ff, $dc        ;; 0b:5360 ????????
+    db   $7b, $7a, $1b, $1b, $1f, $1c, $0f, $0f        ;; 0b:5368 ????????
+    db   $ff, $f9, $df, $53, $9f, $9f, $fe, $7e        ;; 0b:5370 ????????
+    db   $fe, $fa, $fe, $f2, $fc, $e4, $78, $78        ;; 0b:5378 ????????
+    db   $03, $03, $3d, $3e, $7f, $7e, $77, $57        ;; 0b:5380 ????????
+    db   $73, $53, $3b, $2a, $7b, $7a, $ff, $ff        ;; 0b:5388 ????????
+    db   $c0, $c0, $bc, $7c, $fe, $7e, $ee, $ea        ;; 0b:5390 ????????
+    db   $ce, $ca, $dc, $54, $de, $5e, $ff, $ff        ;; 0b:5398 ????????
+    db   $f7, $d7, $f3, $93, $7b, $4a, $3d, $3e        ;; 0b:53a0 ????????
+    db   $7f, $7f, $77, $6f, $3f, $31, $0f, $0f        ;; 0b:53a8 ????????
+    db   $ef, $eb, $cf, $c9, $de, $52, $ac, $7c        ;; 0b:53b0 ????????
+    db   $fe, $fe, $ee, $f6, $fc, $8c, $f0, $f0        ;; 0b:53b8 ????????
+    db   $07, $07, $1f, $18, $3f, $3f, $3f, $3f        ;; 0b:53c0 ????????
+    db   $7f, $43, $ff, $d9, $ff, $fd, $ff, $ff        ;; 0b:53c8 ????????
+    db   $e0, $e0, $fc, $7c, $fe, $32, $ff, $b9        ;; 0b:53d0 ????????
+    db   $ff, $fd, $9f, $9f, $df, $df, $fe, $ae        ;; 0b:53d8 ????????
+    db   $1d, $1d, $0c, $0c, $ed, $ed, $ef, $ee        ;; 0b:53e0 ????????
+    db   $ff, $ff, $7f, $67, $3f, $33, $0d, $0d        ;; 0b:53e8 ????????
+    db   $ff, $c5, $ff, $ed, $f3, $f3, $ff, $7f        ;; 0b:53f0 ????????
+    db   $fe, $7e, $b8, $a8, $f8, $f8, $f0, $f0        ;; 0b:53f8 ????????
+    db   $03, $03, $2f, $2f, $5f, $5f, $dc, $dc        ;; 0b:5400 ????????
+    db   $f8, $b8, $f8, $b8, $7b, $7b, $ff, $f7        ;; 0b:5408 ????????
+    db   $c0, $c0, $f4, $f4, $fa, $fa, $3b, $3b        ;; 0b:5410 ????????
+    db   $1f, $1d, $1f, $1d, $ce, $ce, $ff, $ef        ;; 0b:5418 ????????
+    db   $cf, $ce, $ef, $ac, $7f, $5e, $3f, $38        ;; 0b:5420 ????????
+    db   $3f, $3d, $3f, $37, $1f, $1b, $07, $07        ;; 0b:5428 ????????
+    db   $f3, $73, $f7, $35, $fe, $7a, $fc, $1c        ;; 0b:5430 ????????
+    db   $fc, $bc, $fc, $ec, $f8, $d8, $e0, $e0        ;; 0b:5438 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:5440 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:5448 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:5450 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:5458 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:5460 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:5468 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:5470 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:5478 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:5480 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:5488 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:5490 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:5498 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:54a0 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:54a8 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:54b0 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:54b8 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:54c0 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:54c8 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:54d0 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:54d8 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:54e0 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:54e8 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:54f0 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:54f8 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:5500 ????????
+    db   $00, $00, $00, $00, $03, $03, $04, $07        ;; 0b:5508 ????????
+    db   $00, $00, $00, $00, $03, $03, $0c, $0f        ;; 0b:5510 ????????
+    db   $33, $3f, $ce, $ff, $3d, $f7, $fb, $ce        ;; 0b:5518 ????????
+    db   $0b, $0f, $17, $1c, $2f, $3b, $5c, $7c        ;; 0b:5520 ????????
+    db   $50, $70, $a0, $e0, $a0, $e0, $40, $40        ;; 0b:5528 ????????
+    db   $f7, $1c, $ef, $38, $ef, $b8, $5f, $77        ;; 0b:5530 ????????
+    db   $51, $71, $21, $21, $01, $01, $00, $00        ;; 0b:5538 ????????
+    db   $0f, $0f, $77, $7c, $87, $ff, $08, $f8        ;; 0b:5540 ????????
+    db   $10, $f0, $d0, $f0, $d8, $78, $cf, $7f        ;; 0b:5548 ????????
+    db   $00, $00, $80, $80, $00, $00, $00, $00        ;; 0b:5550 ????????
+    db   $10, $10, $73, $73, $ef, $ef, $ff, $ff        ;; 0b:5558 ????????
+    db   $b1, $ff, $b6, $ff, $b7, $f9, $7b, $ef        ;; 0b:5560 ????????
+    db   $7f, $cf, $7f, $ff, $4f, $cf, $97, $97        ;; 0b:5568 ????????
+    db   $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff        ;; 0b:5570 ????????
+    db   $bf, $ff, $3b, $ff, $16, $ff, $c0, $ff        ;; 0b:5578 ????????
+    db   $1f, $1f, $1f, $1f, $0e, $0f, $1e, $1f        ;; 0b:5580 ????????
+    db   $16, $1f, $11, $1f, $19, $1f, $68, $7f        ;; 0b:5588 ????????
+    db   $eb, $3f, $e7, $7c, $e7, $fe, $47, $ff        ;; 0b:5590 ????????
+    db   $78, $ff, $30, $ff, $20, $ff, $d8, $ff        ;; 0b:5598 ????????
+    db   $8a, $fd, $a6, $fd, $65, $7e, $3d, $3e        ;; 0b:55a0 ????????
+    db   $02, $03, $01, $01, $01, $01, $00, $00        ;; 0b:55a8 ????????
+    db   $47, $ff, $38, $f8, $10, $f0, $08, $f8        ;; 0b:55b0 ????????
+    db   $a8, $78, $18, $f8, $50, $f0, $e0, $e0        ;; 0b:55b8 ????????
+    db   $00, $00, $60, $60, $70, $50, $38, $28        ;; 0b:55c0 ????????
+    db   $1c, $14, $9e, $92, $7f, $79, $fb, $fd        ;; 0b:55c8 ????????
+    db   $07, $07, $c7, $c4, $e3, $a2, $71, $51        ;; 0b:55d0 ????????
+    db   $71, $51, $f6, $f7, $0f, $f9, $2d, $fb        ;; 0b:55d8 ????????
+    db   $fd, $c2, $ff, $ee, $f1, $ff, $ed, $ff        ;; 0b:55e0 ????????
+    db   $fd, $f3, $7b, $ff, $3f, $ff, $3f, $ff        ;; 0b:55e8 ????????
+    db   $be, $f7, $fe, $43, $fe, $07, $ff, $cb        ;; 0b:55f0 ????????
+    db   $ff, $2f, $f7, $af, $fa, $e6, $fa, $06        ;; 0b:55f8 ????????
+    db   $bf, $fe, $9d, $ff, $9e, $ff, $1e, $ff        ;; 0b:5600 ????????
+    db   $3c, $ff, $70, $ff, $7a, $fd, $e2, $fd        ;; 0b:5608 ????????
+    db   $fd, $83, $ff, $c1, $3f, $ed, $3f, $f5        ;; 0b:5610 ????????
+    db   $1f, $f9, $4e, $fe, $48, $f8, $50, $f0        ;; 0b:5618 ????????
+    db   $24, $3b, $28, $37, $41, $7f, $55, $7f        ;; 0b:5620 ????????
+    db   $26, $3e, $18, $18, $00, $00, $00, $00        ;; 0b:5628 ????????
+    db   $b8, $f8, $84, $fc, $24, $fc, $f8, $f8        ;; 0b:5630 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:5638 ????????
+    db   $00, $00, $c0, $c0, $b0, $f0, $0c, $fc        ;; 0b:5640 ????????
+    db   $03, $ff, $1c, $ff, $9f, $f3, $cf, $f8        ;; 0b:5648 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:5650 ????????
+    db   $00, $00, $80, $80, $40, $c0, $a0, $e0        ;; 0b:5658 ????????
+    db   $ef, $b8, $f7, $9c, $f7, $9c, $7b, $ef        ;; 0b:5660 ????????
+    db   $5a, $de, $4a, $ce, $84, $84, $00, $00        ;; 0b:5668 ????????
+    db   $d0, $70, $e8, $38, $f4, $dc, $3a, $3e        ;; 0b:5670 ????????
+    db   $0a, $0e, $05, $07, $05, $07, $02, $02        ;; 0b:5678 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:5680 ????????
+    db   $7f, $7f, $21, $3f, $12, $1f, $10, $1f        ;; 0b:5688 ????????
+    db   $00, $00, $01, $01, $06, $07, $1b, $1f        ;; 0b:5690 ????????
+    db   $66, $7f, $86, $ff, $0a, $fb, $11, $f1        ;; 0b:5698 ????????
+    db   $20, $3f, $40, $7f, $e2, $ff, $2d, $3d        ;; 0b:56a0 ????????
+    db   $50, $70, $a0, $e0, $c0, $c0, $80, $80        ;; 0b:56a8 ????????
+    db   $60, $e0, $f0, $b0, $f8, $88, $f0, $f0        ;; 0b:56b0 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:56b8 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:56c0 ????????
+    db   $00, $00, $00, $00, $00, $00, $01, $01        ;; 0b:56c8 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:56d0 ????????
+    db   $00, $00, $67, $67, $df, $df, $ff, $ff        ;; 0b:56d8 ????????
+    db   $1d, $1d, $13, $1f, $15, $1f, $17, $1f        ;; 0b:56e0 ????????
+    db   $0f, $0f, $0e, $0f, $17, $17, $1f, $1f        ;; 0b:56e8 ????????
+    db   $ff, $ff, $ff, $ff, $ff, $ff, $ba, $ff        ;; 0b:56f0 ????????
+    db   $30, $ff, $d7, $ff, $ef, $38, $ef, $7e        ;; 0b:56f8 ????????
+    db   $7e, $7f, $ac, $ff, $f6, $ff, $4f, $ff        ;; 0b:5700 ????????
+    db   $93, $ff, $93, $ff, $7b, $ff, $b4, $cc        ;; 0b:5708 ????????
+    db   $ff, $ff, $70, $ff, $20, $ff, $f8, $ff        ;; 0b:5710 ????????
+    db   $ff, $77, $fe, $ff, $fd, $ff, $fd, $b7        ;; 0b:5718 ????????
+    db   $f8, $f8, $00, $00, $00, $00, $00, $00        ;; 0b:5720 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:5728 ????????
+    db   $c2, $fe, $7c, $7c, $00, $00, $00, $00        ;; 0b:5730 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:5738 ????????
+    db   $60, $60, $70, $50, $38, $28, $1c, $14        ;; 0b:5740 ????????
+    db   $1e, $12, $0f, $09, $7b, $7d, $fd, $c2        ;; 0b:5748 ????????
+    db   $c0, $c0, $e0, $a0, $70, $50, $70, $50        ;; 0b:5750 ????????
+    db   $f7, $f7, $0f, $f9, $2d, $fb, $b6, $fe        ;; 0b:5758 ????????
+    db   $ff, $ee, $f1, $ff, $ed, $ff, $fd, $fb        ;; 0b:5760 ????????
+    db   $7b, $ff, $bf, $fd, $bf, $fe, $9f, $ff        ;; 0b:5768 ????????
+    db   $fa, $46, $fc, $04, $fe, $ca, $fe, $2e        ;; 0b:5770 ????????
+    db   $f6, $ae, $fa, $e6, $fa, $06, $fd, $83        ;; 0b:5778 ????????
+    db   $1d, $fe, $3d, $ff, $3e, $ff, $7c, $ff        ;; 0b:5780 ????????
+    db   $f0, $ff, $f8, $ff, $a2, $bd, $64, $7b        ;; 0b:5788 ????????
+    db   $ff, $41, $bf, $ed, $3f, $f5, $1f, $f9        ;; 0b:5790 ????????
+    db   $4e, $fe, $48, $f8, $50, $f0, $50, $f0        ;; 0b:5798 ????????
+    db   $88, $f7, $a1, $ff, $cb, $ff, $7d, $7d        ;; 0b:57a0 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:57a8 ????????
+    db   $88, $f8, $84, $fc, $24, $fc, $f8, $f8        ;; 0b:57b0 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:57b8 ????????
+    db   $c0, $c0, $20, $e0, $98, $f8, $c6, $7e        ;; 0b:57c0 ????????
+    db   $a1, $ff, $90, $ff, $78, $7f, $04, $07        ;; 0b:57c8 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:57d0 ????????
+    db   $f8, $f8, $84, $fc, $48, $f8, $08, $f8        ;; 0b:57d8 ????????
+    db   $04, $07, $1e, $1b, $3e, $23, $1f, $1f        ;; 0b:57e0 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:57e8 ????????
+    db   $04, $fc, $04, $fc, $82, $fe, $cf, $ff        ;; 0b:57f0 ????????
+    db   $28, $38, $14, $1c, $0a, $0e, $06, $06        ;; 0b:57f8 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:5800 ????????
+    db   $00, $00, $00, $00, $20, $20, $50, $70        ;; 0b:5808 ????????
+    db   $5c, $7c, $23, $3f, $47, $7f, $59, $7f        ;; 0b:5810 ????????
+    db   $6a, $7f, $ae, $fb, $bc, $ef, $f2, $bf        ;; 0b:5818 ????????
+    db   $00, $00, $dc, $dc, $23, $ff, $46, $bf        ;; 0b:5820 ????????
+    db   $84, $ff, $89, $fe, $8a, $fd, $68, $ff        ;; 0b:5828 ????????
+    db   $df, $df, $00, $00, $00, $00, $00, $00        ;; 0b:5830 ????????
+    db   $00, $00, $01, $01, $1f, $1e, $25, $3f        ;; 0b:5838 ????????
+    db   $30, $ff, $d0, $df, $20, $3f, $38, $3f        ;; 0b:5840 ????????
+    db   $c5, $ff, $b1, $cf, $c2, $7e, $e2, $3e        ;; 0b:5848 ????????
+    db   $58, $7f, $f2, $bf, $f6, $ef, $1b, $1b        ;; 0b:5850 ????????
+    db   $02, $03, $03, $02, $01, $01, $00, $00        ;; 0b:5858 ????????
+    db   $ec, $bc, $f0, $f0, $40, $c0, $40, $c0        ;; 0b:5860 ????????
+    db   $40, $c0, $80, $80, $00, $00, $00, $00        ;; 0b:5868 ????????
+    db   $01, $01, $0e, $0f, $3d, $3e, $77, $7f        ;; 0b:5870 ????????
+    db   $ff, $ff, $9e, $ff, $ad, $de, $5e, $7f        ;; 0b:5878 ????????
+    db   $3f, $3f, $0f, $0f, $01, $01, $00, $00        ;; 0b:5880 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:5888 ????????
+    db   $00, $00, $0f, $0f, $3f, $3f, $3f, $3f        ;; 0b:5890 ????????
+    db   $6e, $7f, $44, $7f, $60, $7f, $71, $5f        ;; 0b:5898 ????????
+    db   $78, $78, $fc, $9c, $fe, $ee, $fe, $fe        ;; 0b:58a0 ????????
+    db   $7f, $ff, $37, $ff, $77, $ff, $e7, $bf        ;; 0b:58a8 ????????
+    db   $7b, $5f, $5b, $75, $c0, $ff, $6f, $ff        ;; 0b:58b0 ????????
+    db   $56, $ff, $49, $ff, $46, $ff, $49, $f6        ;; 0b:58b8 ????????
+    db   $e7, $3f, $af, $7f, $3f, $ff, $78, $ff        ;; 0b:58c0 ????????
+    db   $a3, $fc, $20, $ff, $a0, $7f, $30, $ff        ;; 0b:58c8 ????????
+    db   $c0, $ff, $c0, $ff, $82, $ff, $82, $ff        ;; 0b:58d0 ????????
+    db   $c9, $ff, $b0, $bf, $08, $0f, $08, $0f        ;; 0b:58d8 ????????
+    db   $30, $ff, $32, $ff, $19, $ff, $1b, $ff        ;; 0b:58e0 ????????
+    db   $1f, $ff, $f9, $f9, $10, $f0, $30, $f0        ;; 0b:58e8 ????????
+    db   $0c, $0f, $0f, $0b, $0f, $08, $0f, $0c        ;; 0b:58f0 ????????
+    db   $1b, $17, $1c, $13, $1f, $18, $27, $3f        ;; 0b:58f8 ????????
+    db   $f8, $e8, $fc, $0c, $f6, $7a, $9a, $fe        ;; 0b:5900 ????????
+    db   $3f, $df, $ff, $1f, $fd, $7f, $9b, $fd        ;; 0b:5908 ????????
+    db   $f8, $e7, $ff, $f0, $af, $ff, $f0, $ef        ;; 0b:5910 ????????
+    db   $7f, $40, $ff, $e0, $5f, $ff, $e0, $df        ;; 0b:5918 ????????
+    db   $79, $9f, $ff, $7f, $af, $ff, $77, $af        ;; 0b:5920 ????????
+    db   $d4, $6c, $ef, $ff, $7d, $ff, $ec, $7f        ;; 0b:5928 ????????
+    db   $ff, $c0, $7f, $e0, $ff, $ff, $20, $3f        ;; 0b:5930 ????????
+    db   $1f, $10, $1f, $1f, $0c, $0f, $03, $03        ;; 0b:5938 ????????
+    db   $f7, $f7, $d3, $f3, $af, $df, $ad, $df        ;; 0b:5940 ????????
+    db   $df, $ff, $f7, $ff, $6b, $f7, $fc, $fc        ;; 0b:5948 ????????
+    db   $01, $01, $06, $07, $0a, $0f, $0f, $0a        ;; 0b:5950 ????????
+    db   $07, $07, $0c, $0f, $10, $1f, $0f, $0f        ;; 0b:5958 ????????
+    db   $e0, $e0, $b0, $f0, $a8, $f8, $f8, $a8        ;; 0b:5960 ????????
+    db   $d8, $f8, $88, $f8, $18, $f8, $f8, $e8        ;; 0b:5968 ????????
+    db   $00, $00, $00, $00, $bc, $bc, $63, $ff        ;; 0b:5970 ????????
+    db   $9e, $7f, $41, $bf, $00, $ff, $05, $fe        ;; 0b:5978 ????????
+    db   $f4, $9c, $e4, $fc, $8a, $f6, $66, $fa        ;; 0b:5980 ????????
+    db   $a5, $fb, $a1, $ff, $21, $ff, $3d, $ff        ;; 0b:5988 ????????
+    db   $05, $fe, $1c, $ff, $e2, $e3, $03, $03        ;; 0b:5990 ????????
+    db   $01, $01, $81, $81, $83, $83, $4c, $4f        ;; 0b:5998 ????????
+    db   $22, $e2, $20, $e0, $20, $e0, $e0, $e0        ;; 0b:59a0 ????????
+    db   $e0, $20, $e0, $e0, $20, $e0, $10, $f0        ;; 0b:59a8 ????????
+    db   $10, $1f, $1f, $17, $18, $18, $00, $00        ;; 0b:59b0 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:59b8 ????????
+    db   $4c, $fc, $2a, $fe, $ae, $fa, $bc, $ec        ;; 0b:59c0 ????????
+    db   $f0, $b0, $40, $40, $00, $00, $00, $00        ;; 0b:59c8 ????????
+    db   $c0, $c0, $f0, $f0, $7c, $bc, $f7, $fb        ;; 0b:59d0 ????????
+    db   $3b, $3f, $0f, $0f, $c0, $c0, $e0, $e0        ;; 0b:59d8 ????????
+    db   $0c, $0c, $3e, $3e, $f1, $f1, $e0, $e0        ;; 0b:59e0 ????????
+    db   $40, $c0, $80, $80, $00, $00, $00, $00        ;; 0b:59e8 ????????
+    db   $90, $f0, $b0, $d0, $d0, $f0, $f0, $f0        ;; 0b:59f0 ????????
+    db   $20, $e0, $40, $c0, $80, $80, $00, $00        ;; 0b:59f8 ????????
+    db   $00, $00, $00, $00, $80, $80, $c0, $c0        ;; 0b:5a00 ????????
+    db   $71, $71, $7f, $7f, $36, $3f, $0f, $0f        ;; 0b:5a08 ????????
+    db   $03, $03, $0f, $0f, $3d, $3f, $7a, $7d        ;; 0b:5a10 ????????
+    db   $cf, $ff, $de, $ee, $f0, $f0, $80, $80        ;; 0b:5a18 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:5a20 ????????
+    db   $00, $00, $00, $00, $00, $00, $f8, $f8        ;; 0b:5a28 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:5a30 ????????
+    db   $00, $00, $01, $01, $07, $07, $1e, $1f        ;; 0b:5a38 ????????
+    db   $d7, $ef, $ef, $ff, $ff, $ff, $f3, $ff        ;; 0b:5a40 ????????
+    db   $ed, $f3, $1f, $1f, $01, $01, $00, $00        ;; 0b:5a48 ????????
+    db   $f9, $f7, $7e, $fd, $ef, $ff, $d7, $ef        ;; 0b:5a50 ????????
+    db   $d7, $ef, $ee, $ff, $fd, $fe, $1f, $1f        ;; 0b:5a58 ????????
+    db   $30, $2f, $3f, $30, $4f, $7f, $60, $5f        ;; 0b:5a60 ????????
+    db   $ff, $f0, $4f, $be, $e1, $df, $3f, $f9        ;; 0b:5a68 ????????
+    db   $7d, $9f, $ff, $3f, $f7, $bf, $6a, $f6        ;; 0b:5a70 ????????
+    db   $ea, $76, $f4, $fc, $fc, $fc, $f8, $f8        ;; 0b:5a78 ????????
+    db   $c7, $3f, $ff, $8f, $fd, $ff, $e7, $ff        ;; 0b:5a80 ????????
+    db   $db, $e7, $e6, $fe, $78, $f8, $e0, $e0        ;; 0b:5a88 ????????
+    db   $98, $f8, $b0, $f0, $e0, $e0, $c0, $c0        ;; 0b:5a90 ????????
+    db   $80, $80, $00, $00, $00, $00, $00, $00        ;; 0b:5a98 ????????
+    db   $1f, $17, $3f, $30, $6f, $5e, $59, $7f        ;; 0b:5aa0 ????????
+    db   $fc, $fb, $ff, $f8, $bf, $fe, $d9, $bf        ;; 0b:5aa8 ????????
+    db   $30, $f0, $f0, $d0, $f0, $10, $f0, $30        ;; 0b:5ab0 ????????
+    db   $d8, $e8, $38, $c8, $f8, $18, $e4, $fc        ;; 0b:5ab8 ????????
+    db   $78, $78, $7f, $47, $3f, $31, $3f, $39        ;; 0b:5ac0 ????????
+    db   $4e, $7f, $88, $ff, $9b, $ff, $9f, $ff        ;; 0b:5ac8 ????????
+    db   $f8, $f8, $05, $fd, $03, $ff, $02, $ff        ;; 0b:5ad0 ????????
+    db   $05, $ff, $01, $ff, $85, $ff, $f8, $ff        ;; 0b:5ad8 ????????
+    db   $9f, $fc, $5f, $7c, $5f, $7f, $8c, $ff        ;; 0b:5ae0 ????????
+    db   $8f, $ff, $8d, $ff, $c6, $ff, $7e, $7f        ;; 0b:5ae8 ????????
+    db   $f2, $df, $f2, $df, $eb, $bf, $1f, $f7        ;; 0b:5af0 ????????
+    db   $ff, $e7, $df, $f7, $1f, $ff, $3f, $ff        ;; 0b:5af8 ????????
+    db   $8b, $ff, $bb, $ff, $84, $fc, $bc, $fc        ;; 0b:5b00 ????????
+    db   $84, $fc, $78, $78, $00, $00, $00, $00        ;; 0b:5b08 ????????
+    db   $ff, $ff, $ff, $ff, $fb, $fc, $3f, $30        ;; 0b:5b10 ????????
+    db   $7f, $60, $7f, $60, $6f, $70, $5f, $73        ;; 0b:5b18 ????????
+    db   $3c, $3f, $28, $3f, $1c, $1f, $0f, $0f        ;; 0b:5b20 ????????
+    db   $1b, $1f, $37, $3f, $37, $3f, $37, $3f        ;; 0b:5b28 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:5b30 ????????
+    db   $7c, $7c, $82, $fe, $81, $ff, $41, $7f        ;; 0b:5b38 ????????
+    db   $41, $7f, $43, $7f, $37, $3f, $0d, $0f        ;; 0b:5b40 ????????
+    db   $1f, $1f, $16, $1f, $0c, $0f, $04, $07        ;; 0b:5b48 ????????
+    db   $00, $00, $80, $80, $c0, $c0, $c0, $c0        ;; 0b:5b50 ????????
+    db   $20, $e0, $10, $f0, $08, $f8, $04, $fc        ;; 0b:5b58 ????????
+    db   $c2, $c3, $42, $c3, $7e, $ff, $f1, $ff        ;; 0b:5b60 ????????
+    db   $61, $ff, $60, $ff, $60, $ff, $60, $ff        ;; 0b:5b68 ????????
+    db   $02, $fe, $02, $fe, $01, $ff, $01, $ff        ;; 0b:5b70 ????????
+    db   $01, $ff, $81, $ff, $01, $ff, $0e, $fe        ;; 0b:5b78 ????????
+    db   $60, $ff, $e0, $ff, $f3, $ff, $f4, $ff        ;; 0b:5b80 ????????
+    db   $ff, $ff, $ff, $ff, $ff, $ff, $fe, $fe        ;; 0b:5b88 ????????
+    db   $04, $fc, $04, $fc, $08, $f8, $70, $f0        ;; 0b:5b90 ????????
+    db   $80, $80, $00, $00, $00, $00, $00, $00        ;; 0b:5b98 ????????
+    db   $fe, $fe, $fc, $fc, $38, $f8, $ec, $1c        ;; 0b:5ba0 ????????
+    db   $f4, $0c, $e4, $3c, $f4, $7c, $88, $f8        ;; 0b:5ba8 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:5bb0 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:5bb8 ????????
+    db   $08, $f8, $3c, $fc, $fe, $fe, $3f, $ff        ;; 0b:5bc0 ????????
+    db   $de, $fe, $fc, $fc, $f0, $f0, $c0, $c0        ;; 0b:5bc8 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:5bd0 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:5bd8 ????????
+    db   $8b, $ff, $bb, $ff, $84, $fc, $bd, $fd        ;; 0b:5be0 ????????
+    db   $87, $fe, $7b, $7a, $03, $02, $03, $02        ;; 0b:5be8 ????????
+    db   $ff, $ff, $ff, $ff, $ff, $ff, $e0, $1f        ;; 0b:5bf0 ????????
+    db   $f3, $0e, $f7, $0c, $e7, $1c, $e7, $1c        ;; 0b:5bf8 ????????
+    db   $05, $07, $04, $07, $02, $03, $0d, $0f        ;; 0b:5c00 ????????
+    db   $1e, $1f, $3f, $3f, $3f, $3f, $3f, $3f        ;; 0b:5c08 ????????
+    db   $ff, $fe, $03, $ff, $02, $fe, $fc, $fc        ;; 0b:5c10 ????????
+    db   $fc, $fc, $fe, $fe, $fe, $fe, $fe, $fe        ;; 0b:5c18 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:5c20 ????????
+    db   $01, $01, $01, $01, $00, $00, $00, $00        ;; 0b:5c28 ????????
+    db   $00, $00, $18, $18, $66, $7e, $81, $ff        ;; 0b:5c30 ????????
+    db   $41, $ff, $41, $ff, $81, $ff, $81, $ff        ;; 0b:5c38 ????????
+    db   $42, $7e, $fe, $fe, $ae, $fe, $fe, $fe        ;; 0b:5c40 ????????
+    db   $7c, $7c, $82, $fe, $82, $fe, $82, $fe        ;; 0b:5c48 ????????
+    db   $c1, $c1, $4f, $cf, $71, $ff, $e1, $ff        ;; 0b:5c50 ????????
+    db   $60, $ff, $60, $ff, $60, $ff, $60, $ff        ;; 0b:5c58 ????????
+    db   $01, $ff, $01, $ff, $01, $ff, $01, $ff        ;; 0b:5c60 ????????
+    db   $81, $ff, $01, $ff, $02, $fe, $22, $fe        ;; 0b:5c68 ????????
+    db   $61, $ff, $f2, $ff, $fa, $ff, $ff, $ff        ;; 0b:5c70 ????????
+    db   $ff, $ff, $ff, $ff, $fe, $fe, $fe, $fe        ;; 0b:5c78 ????????
+    db   $1c, $fc, $10, $f0, $20, $e0, $c0, $c0        ;; 0b:5c80 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:5c88 ????????
+    db   $fe, $fe, $fd, $ff, $f8, $e7, $fc, $03        ;; 0b:5c90 ????????
+    db   $fe, $01, $fe, $01, $ff, $03, $ff, $01        ;; 0b:5c98 ????????
+    db   $00, $00, $00, $00, $80, $80, $80, $80        ;; 0b:5ca0 ????????
+    db   $80, $80, $80, $80, $00, $00, $c0, $c0        ;; 0b:5ca8 ????????
+    db   $ff, $07, $f8, $3f, $c0, $ff, $47, $7f        ;; 0b:5cb0 ????????
+    db   $79, $7f, $fe, $ff, $ff, $ff, $ff, $ff        ;; 0b:5cb8 ????????
+    db   $20, $e0, $20, $e0, $f0, $f0, $f8, $f8        ;; 0b:5cc0 ????????
+    db   $f8, $f8, $f0, $f0, $c0, $c0, $80, $80        ;; 0b:5cc8 ????????
+    db   $1e, $1e, $1f, $11, $0f, $0c, $03, $02        ;; 0b:5cd0 ????????
+    db   $03, $03, $02, $03, $02, $03, $07, $07        ;; 0b:5cd8 ????????
+    db   $3e, $3e, $c1, $ff, $c0, $7f, $c0, $7f        ;; 0b:5ce0 ????????
+    db   $81, $ff, $00, $ff, $e1, $ff, $fe, $ff        ;; 0b:5ce8 ????????
+    db   $07, $07, $07, $07, $07, $07, $07, $07        ;; 0b:5cf0 ????????
+    db   $03, $03, $03, $03, $01, $01, $1f, $1f        ;; 0b:5cf8 ????????
+    db   $fc, $37, $fd, $37, $fb, $ef, $0e, $fb        ;; 0b:5d00 ????????
+    db   $fe, $f3, $7e, $fb, $0c, $ff, $30, $ff        ;; 0b:5d08 ????????
+    db   $21, $3f, $40, $7f, $80, $ff, $80, $ff        ;; 0b:5d10 ????????
+    db   $80, $ff, $61, $7f, $1f, $1e, $07, $04        ;; 0b:5d18 ????????
+    db   $e0, $ff, $f0, $ff, $b0, $ff, $f0, $ff        ;; 0b:5d20 ????????
+    db   $b0, $ff, $ff, $ff, $f1, $ef, $ff, $03        ;; 0b:5d28 ????????
+    db   $0b, $0f, $08, $0f, $04, $07, $1b, $1f        ;; 0b:5d30 ????????
+    db   $3d, $3f, $7f, $7f, $7f, $7f, $7f, $7f        ;; 0b:5d38 ????????
+    db   $ff, $ff, $02, $fe, $02, $fe, $fc, $fc        ;; 0b:5d40 ????????
+    db   $f8, $f8, $fc, $fc, $fc, $fc, $fc, $fc        ;; 0b:5d48 ????????
+    db   $30, $30, $50, $70, $d0, $f0, $b0, $f0        ;; 0b:5d50 ????????
+    db   $58, $f8, $5e, $fe, $5f, $ff, $1f, $ff        ;; 0b:5d58 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:5d60 ????????
+    db   $00, $00, $00, $00, $80, $80, $40, $c0        ;; 0b:5d68 ????????
+    db   $ff, $ff, $87, $ff, $01, $ff, $01, $ff        ;; 0b:5d70 ????????
+    db   $00, $ff, $00, $ff, $80, $ff, $81, $ff        ;; 0b:5d78 ????????
+    db   $a0, $e0, $a0, $e0, $d0, $f0, $d0, $f0        ;; 0b:5d80 ????????
+    db   $e0, $e0, $c0, $c0, $c0, $c0, $80, $80        ;; 0b:5d88 ????????
+    db   $21, $ff, $03, $ff, $0c, $ff, $10, $ff        ;; 0b:5d90 ????????
+    db   $66, $f9, $df, $e0, $ff, $00, $ff, $00        ;; 0b:5d98 ????????
+    db   $80, $80, $00, $00, $80, $80, $80, $80        ;; 0b:5da0 ????????
+    db   $40, $c0, $40, $c0, $70, $f0, $a8, $f8        ;; 0b:5da8 ????????
+    db   $ff, $80, $be, $c1, $5b, $67, $3c, $3f        ;; 0b:5db0 ????????
+    db   $03, $03, $07, $07, $07, $07, $07, $07        ;; 0b:5db8 ????????
+    db   $4e, $fe, $8f, $ff, $1f, $ff, $7f, $ff        ;; 0b:5dc0 ????????
+    db   $ef, $ff, $f6, $fe, $fc, $fc, $fc, $fc        ;; 0b:5dc8 ????????
+    db   $00, $00, $61, $61, $59, $79, $27, $3e        ;; 0b:5dd0 ????????
+    db   $2f, $3f, $1b, $1f, $1f, $1f, $3f, $36        ;; 0b:5dd8 ????????
+    db   $80, $80, $c3, $43, $4d, $cf, $32, $fe        ;; 0b:5de0 ????????
+    db   $7a, $fe, $ec, $fc, $7c, $fc, $36, $fe        ;; 0b:5de8 ????????
+    db   $63, $5e, $37, $3f, $1f, $1f, $1b, $1f        ;; 0b:5df0 ????????
+    db   $2f, $3e, $27, $3f, $59, $79, $60, $60        ;; 0b:5df8 ????????
+    db   $23, $fd, $76, $fe, $fc, $fc, $6c, $fc        ;; 0b:5e00 ????????
+    db   $3a, $fe, $72, $fe, $cd, $4f, $83, $83        ;; 0b:5e08 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:5e10 ????????
+    db   $00, $00, $00, $00, $00, $00, $66, $66        ;; 0b:5e18 ????????
+    db   $99, $99, $66, $66, $00, $00, $00, $00        ;; 0b:5e20 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:5e28 ????????
+    db   $00, $11, $01, $0b, $00, $11, $00, $20        ;; 0b:5e30 ????????
+    db   $00, $61, $00, $77, $23, $7f, $1f, $3e        ;; 0b:5e38 ????????
+    db   $03, $c7, $cf, $fc, $7c, $f3, $70, $ef        ;; 0b:5e40 ????????
+    db   $e0, $df, $c0, $bf, $80, $7f, $01, $fe        ;; 0b:5e48 ????????
+    db   $1e, $1d, $1c, $33, $30, $6f, $67, $5f        ;; 0b:5e50 ????????
+    db   $df, $bf, $aa, $fb, $b2, $f3, $41, $41        ;; 0b:5e58 ????????
+    db   $3f, $c1, $7f, $ff, $78, $bf, $32, $ff        ;; 0b:5e60 ????????
+    db   $6f, $af, $40, $c7, $80, $80, $00, $00        ;; 0b:5e68 ????????
+    db   $00, $30, $00, $11, $00, $03, $00, $06        ;; 0b:5e70 ????????
+    db   $04, $8e, $00, $4e, $04, $8f, $02, $e7        ;; 0b:5e78 ????????
+    db   $00, $10, $10, $bd, $0f, $1f, $0f, $1e        ;; 0b:5e80 ????????
+    db   $1e, $39, $18, $37, $30, $ef, $70, $ef        ;; 0b:5e88 ????????
+    db   $43, $f7, $01, $7b, $11, $3b, $1b, $3f        ;; 0b:5e90 ????????
+    db   $0f, $3e, $1e, $3d, $38, $7f, $3f, $7f        ;; 0b:5e98 ????????
+    db   $e1, $df, $e3, $de, $c6, $bd, $9c, $7b        ;; 0b:5ea0 ????????
+    db   $38, $e7, $61, $df, $c1, $bf, $83, $ff        ;; 0b:5ea8 ????????
+    db   $7f, $f0, $f0, $8f, $80, $7f, $00, $ff        ;; 0b:5eb0 ????????
+    db   $00, $ff, $00, $ff, $00, $ff, $f0, $4f        ;; 0b:5eb8 ????????
+    db   $83, $7f, $41, $bf, $02, $ff, $03, $ff        ;; 0b:5ec0 ????????
+    db   $03, $ff, $01, $ff, $00, $ff, $60, $df        ;; 0b:5ec8 ????????
+    db   $ff, $f0, $0f, $ff, $06, $ff, $18, $ff        ;; 0b:5ed0 ????????
+    db   $e0, $f9, $00, $e3, $00, $00, $00, $00        ;; 0b:5ed8 ????????
+    db   $38, $e7, $ff, $f8, $ef, $ff, $07, $ff        ;; 0b:5ee0 ????????
+    db   $00, $c7, $00, $08, $00, $00, $00, $00        ;; 0b:5ee8 ????????
+    db   $1e, $7f, $ff, $e1, $e1, $9e, $80, $7f        ;; 0b:5ef0 ????????
+    db   $01, $ff, $03, $fe, $87, $fd, $a5, $ff        ;; 0b:5ef8 ????????
+    db   $07, $bf, $bf, $ff, $ff, $70, $70, $8f        ;; 0b:5f00 ????????
+    db   $80, $ff, $80, $ff, $01, $fe, $31, $fe        ;; 0b:5f08 ????????
+    db   $ad, $7b, $7d, $db, $5d, $fb, $d8, $ff        ;; 0b:5f10 ????????
+    db   $ee, $dd, $e4, $df, $72, $ef, $62, $ff        ;; 0b:5f18 ????????
+    db   $19, $fe, $9c, $f7, $f6, $ff, $f6, $ef        ;; 0b:5f20 ????????
+    db   $cd, $bf, $1f, $ff, $1d, $ff, $01, $ff        ;; 0b:5f28 ????????
+    db   $08, $ff, $84, $ff, $d6, $ff, $8e, $ff        ;; 0b:5f30 ????????
+    db   $1e, $f3, $de, $f3, $8c, $ff, $40, $ff        ;; 0b:5f38 ????????
+    db   $23, $ff, $46, $ff, $d1, $ff, $e7, $ff        ;; 0b:5f40 ????????
+    db   $f1, $9f, $f3, $9f, $66, $ff, $0e, $ff        ;; 0b:5f48 ????????
+    db   $2f, $ff, $6f, $ff, $f7, $ff, $54, $ff        ;; 0b:5f50 ????????
+    db   $0b, $ce, $07, $06, $03, $03, $00, $00        ;; 0b:5f58 ????????
+    db   $c8, $ff, $da, $fd, $b7, $fe, $a9, $ff        ;; 0b:5f60 ????????
+    db   $c0, $e9, $80, $81, $c0, $40, $c0, $c0        ;; 0b:5f68 ????????
+    db   $00, $ca, $e0, $f9, $f0, $38, $38, $cc        ;; 0b:5f70 ????????
+    db   $0c, $f7, $0f, $f7, $87, $fb, $83, $fd        ;; 0b:5f78 ????????
+    db   $00, $02, $00, $8c, $00, $98, $00, $d8        ;; 0b:5f80 ????????
+    db   $80, $cc, $84, $ce, $0c, $9e, $9e, $ff        ;; 0b:5f88 ????????
+    db   $83, $fd, $c1, $7e, $43, $ff, $6f, $bc        ;; 0b:5f90 ????????
+    db   $3c, $db, $98, $f7, $b0, $ef, $80, $ff        ;; 0b:5f98 ????????
+    db   $fe, $e7, $ee, $d7, $c6, $3b, $06, $fb        ;; 0b:5fa0 ????????
+    db   $03, $fd, $03, $fd, $1b, $ed, $33, $dd        ;; 0b:5fa8 ????????
+    db   $00, $ff, $80, $ff, $80, $ff, $00, $ff        ;; 0b:5fb0 ????????
+    db   $00, $ff, $00, $ff, $03, $fc, $07, $fb        ;; 0b:5fb8 ????????
+    db   $33, $dd, $33, $dd, $67, $bb, $66, $bb        ;; 0b:5fc0 ????????
+    db   $6c, $b6, $ce, $77, $de, $ef, $9c, $ee        ;; 0b:5fc8 ????????
+    db   $07, $fb, $1e, $e7, $fa, $1f, $e6, $ff        ;; 0b:5fd0 ????????
+    db   $cc, $ef, $18, $df, $23, $3f, $3e, $3e        ;; 0b:5fd8 ????????
+    db   $38, $dc, $30, $d8, $3c, $fe, $5e, $eb        ;; 0b:5fe0 ????????
+    db   $09, $ff, $65, $ff, $f5, $ff, $1f, $1f        ;; 0b:5fe8 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:5ff0 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:5ff8 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $0e        ;; 0b:6000 ????????
+    db   $06, $3f, $03, $47, $01, $03, $03, $07        ;; 0b:6008 ????????
+    db   $00, $10, $00, $0c, $04, $0f, $0f, $3f        ;; 0b:6010 ????????
+    db   $3e, $ff, $d8, $ff, $f3, $fc, $37, $f8        ;; 0b:6018 ????????
+    db   $06, $0f, $05, $0e, $0d, $1e, $0c, $1f        ;; 0b:6020 ????????
+    db   $1e, $7f, $3f, $ff, $1b, $ff, $11, $bf        ;; 0b:6028 ????????
+    db   $d1, $3e, $d8, $3f, $9f, $7f, $3c, $ff        ;; 0b:6030 ????????
+    db   $6b, $fc, $fb, $fc, $f9, $fe, $8c, $ff        ;; 0b:6038 ????????
+    db   $15, $bb, $15, $3b, $15, $3b, $09, $1f        ;; 0b:6040 ????????
+    db   $0f, $1f, $1d, $3e, $14, $3f, $27, $7f        ;; 0b:6048 ????????
+    db   $37, $cf, $73, $8f, $7b, $87, $3b, $c7        ;; 0b:6050 ????????
+    db   $96, $ef, $c6, $ff, $fe, $ff, $c7, $ff        ;; 0b:6058 ????????
+    db   $23, $77, $01, $63, $00, $21, $00, $21        ;; 0b:6060 ????????
+    db   $00, $10, $00, $00, $00, $00, $00, $00        ;; 0b:6068 ????????
+    db   $91, $ef, $bc, $c3, $cc, $f3, $f1, $ff        ;; 0b:6070 ????????
+    db   $1f, $ff, $06, $1f, $03, $07, $00, $03        ;; 0b:6078 ????????
+    db   $00, $0c, $00, $03, $00, $e1, $e0, $fc        ;; 0b:6080 ????????
+    db   $3c, $ff, $9f, $7f, $d9, $3f, $d6, $39        ;; 0b:6088 ????????
+    db   $00, $00, $00, $00, $00, $80, $00, $c0        ;; 0b:6090 ????????
+    db   $80, $c2, $80, $c4, $c0, $f4, $e0, $f6        ;; 0b:6098 ????????
+    db   $9b, $7c, $6b, $fc, $d4, $ef, $57, $ef        ;; 0b:60a0 ????????
+    db   $24, $ff, $ba, $7d, $b7, $78, $73, $fc        ;; 0b:60a8 ????????
+    db   $60, $f3, $60, $f3, $f2, $ff, $da, $ff        ;; 0b:60b0 ????????
+    db   $fc, $fe, $48, $fe, $58, $ec, $58, $ec        ;; 0b:60b8 ????????
+    db   $fa, $fd, $8c, $ff, $27, $df, $76, $8f        ;; 0b:60c0 ????????
+    db   $76, $8f, $f6, $0f, $67, $9f, $0f, $ff        ;; 0b:60c8 ????????
+    db   $68, $fc, $f8, $fc, $38, $ff, $5c, $be        ;; 0b:60d0 ????????
+    db   $d8, $3e, $f0, $38, $20, $f0, $e0, $f0        ;; 0b:60d8 ????????
+    db   $f9, $ff, $e5, $fb, $ef, $f3, $bc, $ff        ;; 0b:60e0 ????????
+    db   $ee, $ff, $00, $ef, $00, $00, $00, $80        ;; 0b:60e8 ????????
+    db   $e0, $f0, $80, $e0, $00, $80, $00, $38        ;; 0b:60f0 ????????
+    db   $00, $c0, $00, $80, $00, $00, $00, $00        ;; 0b:60f8 ????????
+    db   $01, $01, $02, $03, $01, $01, $0e, $0e        ;; 0b:6100 ????????
+    db   $31, $3f, $40, $7f, $9d, $ff, $b7, $ff        ;; 0b:6108 ????????
+    db   $c3, $c3, $34, $f7, $89, $ff, $67, $7f        ;; 0b:6110 ????????
+    db   $93, $fe, $d3, $fe, $f6, $7d, $fc, $3b        ;; 0b:6118 ????????
+    db   $53, $5f, $25, $3d, $1b, $1b, $04, $07        ;; 0b:6120 ????????
+    db   $c9, $cf, $b2, $fe, $45, $7d, $3b, $3b        ;; 0b:6128 ????????
+    db   $b9, $46, $9d, $7f, $fe, $a3, $ff, $ad        ;; 0b:6130 ????????
+    db   $77, $6e, $3f, $26, $df, $d6, $ff, $f8        ;; 0b:6138 ????????
+    db   $07, $07, $03, $02, $07, $04, $07, $04        ;; 0b:6140 ????????
+    db   $07, $04, $02, $03, $01, $01, $00, $00        ;; 0b:6148 ????????
+    db   $ef, $ff, $be, $73, $f3, $6d, $e1, $7f        ;; 0b:6150 ????????
+    db   $f3, $ff, $ee, $df, $f8, $8f, $f8, $8f        ;; 0b:6158 ????????
+    db   $00, $00, $01, $01, $02, $03, $03, $02        ;; 0b:6160 ????????
+    db   $01, $01, $07, $07, $0f, $0f, $03, $03        ;; 0b:6168 ????????
+    db   $f0, $ff, $00, $ff, $00, $ff, $00, $ff        ;; 0b:6170 ????????
+    db   $c1, $3e, $ff, $c1, $ff, $ff, $ff, $ff        ;; 0b:6178 ????????
+    db   $9e, $9e, $61, $ff, $ce, $fe, $c8, $f8        ;; 0b:6180 ????????
+    db   $e5, $fd, $a6, $ff, $cf, $7d, $7f, $b9        ;; 0b:6188 ????????
+    db   $00, $00, $00, $00, $06, $06, $c9, $cf        ;; 0b:6190 ????????
+    db   $32, $fe, $14, $fc, $a6, $fe, $69, $7f        ;; 0b:6198 ????????
+    db   $3b, $c5, $73, $fd, $fe, $8b, $fe, $6b        ;; 0b:61a0 ????????
+    db   $dd, $ed, $f8, $c8, $f7, $d7, $ff, $3f        ;; 0b:61a8 ????????
+    db   $4e, $7e, $d0, $f0, $10, $f0, $70, $f0        ;; 0b:61b0 ????????
+    db   $ce, $fe, $21, $3f, $1e, $1e, $80, $80        ;; 0b:61b8 ????????
+    db   $ef, $ff, $f7, $9c, $9f, $68, $0f, $fc        ;; 0b:61c0 ????????
+    db   $9b, $fb, $e9, $f9, $05, $fd, $42, $fe        ;; 0b:61c8 ????????
+    db   $c0, $c0, $80, $80, $c0, $40, $c0, $c0        ;; 0b:61d0 ????????
+    db   $e0, $a0, $e0, $20, $e0, $20, $c0, $c0        ;; 0b:61d8 ????????
+    db   $41, $ff, $81, $ff, $00, $ff, $01, $fe        ;; 0b:61e0 ????????
+    db   $e3, $1d, $ff, $e3, $1f, $ff, $ff, $ff        ;; 0b:61e8 ????????
+    db   $00, $00, $00, $00, $80, $80, $80, $80        ;; 0b:61f0 ????????
+    db   $00, $00, $c0, $c0, $e0, $e0, $80, $80        ;; 0b:61f8 ????????
+    db   $03, $03, $04, $07, $02, $03, $02, $03        ;; 0b:6200 ????????
+    db   $07, $07, $49, $4f, $b7, $ff, $99, $ff        ;; 0b:6208 ????????
+    db   $18, $18, $94, $9c, $8a, $8e, $7b, $ff        ;; 0b:6210 ????????
+    db   $0b, $fe, $e7, $fe, $d6, $7d, $fc, $3b        ;; 0b:6218 ????????
+    db   $43, $7f, $3f, $3f, $41, $7f, $9c, $ff        ;; 0b:6220 ????????
+    db   $b3, $ff, $4c, $4c, $01, $01, $03, $03        ;; 0b:6228 ????????
+    db   $b9, $46, $9d, $7f, $fe, $a3, $ff, $b1        ;; 0b:6230 ????????
+    db   $ff, $ea, $3f, $26, $df, $d0, $ff, $f8        ;; 0b:6238 ????????
+    db   $38, $38, $24, $3c, $d2, $de, $72, $fe        ;; 0b:6240 ????????
+    db   $c4, $fc, $9f, $ff, $e7, $7d, $7f, $b9        ;; 0b:6248 ????????
+    db   $00, $00, $00, $00, $38, $38, $24, $3c        ;; 0b:6250 ????????
+    db   $12, $1e, $ca, $ce, $32, $fe, $c4, $fc        ;; 0b:6258 ????????
+    db   $3b, $c5, $73, $fd, $fe, $8b, $ff, $1b        ;; 0b:6260 ????????
+    db   $fd, $ad, $f8, $c8, $f7, $17, $ff, $3f        ;; 0b:6268 ????????
+    db   $7c, $fc, $a2, $fe, $c9, $ff, $1d, $ff        ;; 0b:6270 ????????
+    db   $e6, $fe, $1a, $1e, $06, $06, $80, $80        ;; 0b:6278 ????????
+    db   $07, $07, $05, $06, $c2, $c3, $af, $ef        ;; 0b:6280 ????????
+    db   $55, $7b, $40, $7f, $9d, $ff, $77, $7f        ;; 0b:6288 ????????
+    db   $c3, $c3, $34, $f7, $89, $ff, $6f, $77        ;; 0b:6290 ????????
+    db   $93, $fe, $d3, $fe, $f6, $7d, $fc, $3b        ;; 0b:6298 ????????
+    db   $13, $1f, $25, $3d, $17, $1f, $cc, $cf        ;; 0b:62a0 ????????
+    db   $ad, $eb, $52, $7e, $85, $fd, $fb, $fb        ;; 0b:62a8 ????????
+    db   $b9, $46, $9d, $7f, $fe, $a3, $ff, $bd        ;; 0b:62b0 ????????
+    db   $7b, $6e, $3b, $2e, $df, $d6, $ff, $f8        ;; 0b:62b8 ????????
+    db   $9f, $9f, $60, $ff, $ed, $df, $ca, $fa        ;; 0b:62c0 ????????
+    db   $e5, $fd, $a6, $ff, $cf, $7d, $7f, $b9        ;; 0b:62c8 ????????
+    db   $80, $80, $87, $87, $09, $0f, $ca, $ce        ;; 0b:62d0 ????????
+    db   $39, $f7, $16, $fe, $a6, $fe, $69, $7f        ;; 0b:62d8 ????????
+    db   $3b, $c5, $73, $fd, $fe, $8b, $fe, $7b        ;; 0b:62e0 ????????
+    db   $bd, $ed, $b8, $e8, $f7, $d7, $ff, $3f        ;; 0b:62e8 ????????
+    db   $6a, $5e, $d4, $f4, $13, $f3, $75, $f7        ;; 0b:62f0 ????????
+    db   $cd, $fb, $22, $3e, $19, $1f, $86, $86        ;; 0b:62f8 ????????
+    db   $01, $01, $c2, $c3, $b4, $f7, $d3, $b3        ;; 0b:6300 ????????
+    db   $a4, $e7, $99, $ff, $46, $7b, $3f, $3f        ;; 0b:6308 ????????
+    db   $87, $87, $85, $86, $f2, $f3, $3d, $ed        ;; 0b:6310 ????????
+    db   $73, $df, $b8, $df, $9e, $ef, $8f, $73        ;; 0b:6318 ????????
+    db   $f1, $ff, $93, $ef, $6d, $7f, $48, $7f        ;; 0b:6320 ????????
+    db   $3b, $3f, $04, $04, $01, $01, $03, $03        ;; 0b:6328 ????????
+    db   $1f, $e0, $7f, $9e, $ff, $61, $bf, $e7        ;; 0b:6330 ????????
+    db   $7b, $6e, $3b, $2e, $ff, $e4, $ff, $f1        ;; 0b:6338 ????????
+    db   $e0, $e0, $1a, $fa, $c5, $ff, $27, $3f        ;; 0b:6340 ????????
+    db   $ca, $fd, $b0, $ff, $f3, $df, $f7, $9f        ;; 0b:6348 ????????
+    db   $33, $33, $2d, $3f, $25, $3f, $12, $1e        ;; 0b:6350 ????????
+    db   $e4, $fc, $14, $ec, $88, $f8, $70, $70        ;; 0b:6358 ????????
+    db   $b9, $5f, $9e, $67, $ce, $bf, $f0, $5f        ;; 0b:6360 ????????
+    db   $f7, $5f, $f8, $58, $e7, $e7, $ff, $3f        ;; 0b:6368 ????????
+    db   $8c, $fc, $82, $7e, $76, $fa, $8a, $8e        ;; 0b:6370 ????????
+    db   $0a, $0e, $11, $1f, $2d, $3f, $b3, $b3        ;; 0b:6378 ????????
+    db   $e0, $e0, $90, $f0, $4e, $7e, $23, $3d        ;; 0b:6380 ????????
+    db   $48, $7f, $34, $37, $f2, $f3, $9a, $eb        ;; 0b:6388 ????????
+    db   $70, $70, $48, $78, $2c, $3c, $47, $7f        ;; 0b:6390 ????????
+    db   $bc, $bb, $90, $9f, $f3, $6f, $67, $ff        ;; 0b:6398 ????????
+    db   $66, $7f, $13, $1f, $27, $3f, $fe, $fd        ;; 0b:63a0 ????????
+    db   $99, $ef, $63, $7f, $4e, $7f, $33, $33        ;; 0b:63a8 ????????
+    db   $64, $ff, $32, $ff, $d1, $ff, $75, $ff        ;; 0b:63b0 ????????
+    db   $cf, $bf, $03, $ff, $d7, $ff, $ff, $f8        ;; 0b:63b8 ????????
+    db   $38, $38, $64, $5c, $93, $ff, $9e, $ff        ;; 0b:63c0 ????????
+    db   $cc, $ff, $5c, $ff, $6b, $f7, $c1, $fe        ;; 0b:63c8 ????????
+    db   $00, $00, $78, $78, $c4, $bc, $06, $fa        ;; 0b:63d0 ????????
+    db   $32, $fe, $f9, $ff, $93, $fd, $35, $ff        ;; 0b:63d8 ????????
+    db   $de, $ff, $7f, $ff, $66, $fb, $81, $ff        ;; 0b:63e0 ????????
+    db   $1d, $fe, $68, $ef, $fa, $df, $ff, $3f        ;; 0b:63e8 ????????
+    db   $4d, $cf, $23, $e3, $c0, $c0, $37, $f7        ;; 0b:63f0 ????????
+    db   $99, $ef, $c2, $fe, $71, $ff, $4e, $ce        ;; 0b:63f8 ????????
+    db   $00, $00, $1e, $1e, $79, $7f, $86, $87        ;; 0b:6400 ????????
+    db   $01, $01, $00, $00, $00, $00, $03, $03        ;; 0b:6408 ????????
+    db   $00, $00, $01, $01, $83, $82, $f7, $f4        ;; 0b:6410 ????????
+    db   $3f, $fc, $9e, $fd, $8e, $fd, $ff, $fe        ;; 0b:6418 ????????
+    db   $7e, $7e, $ff, $81, $ff, $00, $ff, $00        ;; 0b:6420 ????????
+    db   $c7, $b8, $79, $de, $7e, $df, $7f, $df        ;; 0b:6428 ????????
+    db   $00, $00, $80, $80, $c0, $40, $c0, $40        ;; 0b:6430 ????????
+    db   $e0, $20, $e0, $20, $e0, $20, $e0, $60        ;; 0b:6438 ????????
+    db   $04, $07, $0a, $0d, $0e, $09, $1e, $11        ;; 0b:6440 ????????
+    db   $3f, $20, $7f, $40, $76, $49, $66, $59        ;; 0b:6448 ????????
+    db   $13, $ef, $09, $ff, $c5, $ff, $f4, $bf        ;; 0b:6450 ????????
+    db   $7e, $cf, $bf, $71, $ff, $c8, $f9, $be        ;; 0b:6458 ????????
+    db   $7f, $dd, $fe, $47, $f7, $38, $ff, $ba        ;; 0b:6460 ????????
+    db   $7f, $fd, $8f, $ff, $d0, $7f, $e0, $7f        ;; 0b:6468 ????????
+    db   $e0, $60, $c0, $40, $f8, $78, $c4, $fc        ;; 0b:6470 ????????
+    db   $f2, $fe, $fa, $0e, $fe, $c6, $fd, $e3        ;; 0b:6478 ????????
+    db   $23, $3d, $21, $3f, $10, $1f, $10, $1f        ;; 0b:6480 ????????
+    db   $14, $1b, $08, $0f, $08, $0f, $0a, $0f        ;; 0b:6488 ????????
+    db   $ff, $65, $ff, $5b, $fd, $d7, $7d, $d7        ;; 0b:6490 ????????
+    db   $29, $ff, $01, $ff, $c2, $3f, $ca, $3f        ;; 0b:6498 ????????
+    db   $80, $ff, $42, $fd, $40, $ff, $3c, $e3        ;; 0b:64a0 ????????
+    db   $2f, $f0, $27, $f8, $23, $fc, $23, $fc        ;; 0b:64a8 ????????
+    db   $7b, $fd, $7f, $fd, $7f, $e5, $3e, $fa        ;; 0b:64b0 ????????
+    db   $3e, $f6, $3a, $fe, $a2, $7e, $a6, $7a        ;; 0b:64b8 ????????
+    db   $0a, $0f, $0a, $0f, $16, $1f, $16, $1f        ;; 0b:64c0 ????????
+    db   $17, $1f, $27, $3f, $23, $3f, $2b, $37        ;; 0b:64c8 ????????
+    db   $0c, $ff, $04, $fb, $04, $fb, $02, $fd        ;; 0b:64d0 ????????
+    db   $33, $ec, $71, $ae, $70, $af, $fc, $63        ;; 0b:64d8 ????????
+    db   $23, $fc, $43, $fc, $47, $f8, $8f, $f0        ;; 0b:64e0 ????????
+    db   $ff, $04, $ff, $04, $7c, $87, $0c, $ff        ;; 0b:64e8 ????????
+    db   $ae, $72, $a6, $7a, $a6, $7a, $a4, $7c        ;; 0b:64f0 ????????
+    db   $24, $fc, $64, $fc, $48, $f8, $48, $f8        ;; 0b:64f8 ????????
+    db   $22, $3f, $13, $1f, $12, $1f, $18, $17        ;; 0b:6500 ????????
+    db   $1c, $13, $1a, $17, $12, $1f, $22, $3f        ;; 0b:6508 ????????
+    db   $f2, $cf, $f4, $cf, $d4, $ef, $cc, $ff        ;; 0b:6510 ????????
+    db   $ec, $ff, $6e, $ff, $3e, $ff, $3b, $ff        ;; 0b:6518 ????????
+    db   $0c, $ff, $1a, $fd, $19, $ff, $32, $fe        ;; 0b:6520 ????????
+    db   $b4, $7c, $34, $fc, $78, $f8, $78, $f8        ;; 0b:6528 ????????
+    db   $c8, $f8, $c8, $f8, $68, $78, $24, $3c        ;; 0b:6530 ????????
+    db   $34, $3c, $14, $1c, $0a, $0e, $e6, $e6        ;; 0b:6538 ????????
+    db   $25, $3d, $59, $79, $e0, $e0, $00, $00        ;; 0b:6540 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:6548 ????????
+    db   $1b, $ff, $09, $ff, $84, $fb, $7f, $70        ;; 0b:6550 ????????
+    db   $0e, $09, $07, $06, $01, $01, $00, $00        ;; 0b:6558 ????????
+    db   $5f, $ff, $cc, $ff, $6e, $f1, $04, $fb        ;; 0b:6560 ????????
+    db   $20, $ff, $1f, $ff, $88, $f8, $7c, $7c        ;; 0b:6568 ????????
+    db   $11, $f1, $48, $b8, $08, $f8, $68, $f8        ;; 0b:6570 ????????
+    db   $ac, $b4, $14, $1c, $0e, $0e, $03, $03        ;; 0b:6578 ????????
+    db   $0c, $ff, $1e, $fd, $1c, $ff, $3e, $ff        ;; 0b:6580 ????????
+    db   $b6, $77, $33, $f3, $78, $f8, $58, $f8        ;; 0b:6588 ????????
+    db   $c8, $f8, $e8, $f8, $a8, $b8, $a8, $b8        ;; 0b:6590 ????????
+    db   $50, $f0, $50, $f0, $a0, $e0, $60, $60        ;; 0b:6598 ????????
+    db   $5e, $fe, $c7, $ff, $65, $fb, $0e, $f1        ;; 0b:65a0 ????????
+    db   $04, $fb, $08, $ff, $c7, $ff, $38, $38        ;; 0b:65a8 ????????
+    db   $47, $47, $0a, $0e, $14, $1c, $94, $9c        ;; 0b:65b0 ????????
+    db   $64, $fc, $64, $9c, $08, $f8, $f0, $f0        ;; 0b:65b8 ????????
+    db   $38, $38, $66, $7e, $91, $9f, $08, $0f        ;; 0b:65c0 ????????
+    db   $04, $07, $02, $03, $02, $03, $02, $03        ;; 0b:65c8 ????????
+    db   $00, $00, $01, $01, $83, $82, $f7, $f4        ;; 0b:65d0 ????????
+    db   $3f, $fc, $1e, $fd, $0e, $fd, $7f, $fe        ;; 0b:65d8 ????????
+    db   $7e, $7e, $ff, $81, $ff, $00, $ff, $00        ;; 0b:65e0 ????????
+    db   $c7, $b8, $79, $de, $7e, $df, $7f, $df        ;; 0b:65e8 ????????
+    db   $00, $00, $80, $80, $c0, $40, $c0, $40        ;; 0b:65f0 ????????
+    db   $e0, $20, $e0, $20, $ee, $2e, $f1, $7f        ;; 0b:65f8 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:6600 ????????
+    db   $00, $00, $78, $78, $85, $fd, $1f, $fe        ;; 0b:6608 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:6610 ????????
+    db   $00, $00, $1c, $1c, $ea, $fe, $f5, $0f        ;; 0b:6618 ????????
+    db   $00, $01, $03, $03, $01, $01, $02, $03        ;; 0b:6620 ????????
+    db   $02, $03, $07, $04, $07, $04, $0f, $08        ;; 0b:6628 ????????
+    db   $c7, $ff, $03, $ff, $23, $df, $61, $9f        ;; 0b:6630 ????????
+    db   $e1, $1f, $f1, $0f, $f8, $07, $fc, $03        ;; 0b:6638 ????????
+    db   $7f, $dd, $fe, $47, $ff, $38, $ff, $ba        ;; 0b:6640 ????????
+    db   $6f, $bd, $ff, $bf, $ff, $9b, $ff, $c7        ;; 0b:6648 ????????
+    db   $e1, $7f, $e1, $7f, $c2, $7f, $82, $ff        ;; 0b:6650 ????????
+    db   $c4, $ff, $6a, $fd, $a6, $f9, $a7, $f8        ;; 0b:6658 ????????
+    db   $3f, $e2, $3f, $ff, $37, $fe, $37, $fe        ;; 0b:6660 ????????
+    db   $69, $f9, $50, $f0, $e0, $e0, $c0, $c0        ;; 0b:6668 ????????
+    db   $df, $3b, $ff, $a5, $de, $5a, $87, $85        ;; 0b:6670 ????????
+    db   $c7, $45, $e2, $a2, $60, $60, $00, $00        ;; 0b:6678 ????????
+    db   $0e, $09, $0c, $0b, $10, $1f, $10, $1f        ;; 0b:6680 ????????
+    db   $21, $3f, $21, $3f, $41, $7f, $42, $7f        ;; 0b:6688 ????????
+    db   $e0, $1f, $60, $9f, $20, $df, $81, $ff        ;; 0b:6690 ????????
+    db   $01, $ff, $c2, $3f, $c2, $3f, $02, $ff        ;; 0b:6698 ????????
+    db   $7f, $ff, $38, $ff, $a0, $ff, $69, $f7        ;; 0b:66a0 ????????
+    db   $23, $ff, $33, $ff, $15, $ff, $9d, $7f        ;; 0b:66a8 ????????
+    db   $23, $fd, $22, $fe, $e4, $fc, $c4, $fc        ;; 0b:66b0 ????????
+    db   $88, $f8, $88, $f8, $28, $d8, $28, $d8        ;; 0b:66b8 ????????
+    db   $82, $ff, $8c, $ff, $97, $ef, $5a, $67        ;; 0b:66c0 ????????
+    db   $44, $7f, $25, $3e, $25, $3f, $27, $3f        ;; 0b:66c8 ????????
+    db   $84, $ff, $b4, $cf, $60, $9f, $c0, $3f        ;; 0b:66d0 ????????
+    db   $c0, $3f, $c0, $bf, $c0, $3f, $e1, $1f        ;; 0b:66d8 ????????
+    db   $09, $ff, $36, $ff, $4e, $ff, $ce, $7f        ;; 0b:66e0 ????????
+    db   $c6, $bf, $fa, $9f, $fb, $9f, $fe, $36        ;; 0b:66e8 ????????
+    db   $fc, $04, $74, $8c, $fc, $24, $aa, $76        ;; 0b:66f0 ????????
+    db   $52, $de, $92, $9e, $14, $1c, $14, $1c        ;; 0b:66f8 ????????
+    db   $77, $4f, $6d, $5f, $9d, $ff, $9c, $ff        ;; 0b:6700 ????????
+    db   $96, $f7, $52, $73, $29, $39, $19, $19        ;; 0b:6708 ????????
+    db   $e1, $1e, $ff, $80, $ff, $c0, $cf, $f0        ;; 0b:6710 ????????
+    db   $c8, $ff, $88, $ff, $98, $ff, $31, $fe        ;; 0b:6718 ????????
+    db   $ef, $33, $f7, $39, $bb, $7d, $3f, $ff        ;; 0b:6720 ????????
+    db   $37, $fe, $17, $fe, $1d, $fe, $1f, $fd        ;; 0b:6728 ????????
+    db   $28, $38, $30, $30, $f0, $f0, $fc, $8c        ;; 0b:6730 ????????
+    db   $f6, $5a, $ff, $3d, $a3, $63, $40, $c0        ;; 0b:6738 ????????
+    db   $00, $00, $01, $01, $42, $43, $31, $31        ;; 0b:6740 ????????
+    db   $2f, $3f, $10, $1f, $0e, $0f, $01, $01        ;; 0b:6748 ????????
+    db   $e7, $f8, $c3, $fc, $06, $fd, $98, $ff        ;; 0b:6750 ????????
+    db   $e0, $ff, $09, $f7, $1e, $fe, $e0, $e0        ;; 0b:6758 ????????
+    db   $df, $3a, $bf, $7a, $aa, $7f, $67, $fd        ;; 0b:6760 ????????
+    db   $c3, $ff, $88, $f7, $e0, $ff, $1f, $1f        ;; 0b:6768 ????????
+    db   $80, $80, $87, $87, $8a, $8e, $f4, $7c        ;; 0b:6770 ????????
+    db   $c4, $7c, $88, $f8, $30, $f0, $c0, $c0        ;; 0b:6778 ????????
+    db   $c0, $c0, $b0, $f0, $58, $68, $24, $3c        ;; 0b:6780 ????????
+    db   $12, $1e, $17, $1d, $09, $0f, $0b, $0e        ;; 0b:6788 ????????
+    db   $00, $00, $00, $00, $00, $00, $01, $01        ;; 0b:6790 ????????
+    db   $01, $01, $01, $01, $01, $01, $83, $83        ;; 0b:6798 ????????
+    db   $78, $78, $e4, $fc, $ce, $f2, $ef, $f1        ;; 0b:67a0 ????????
+    db   $ff, $fe, $f1, $f1, $c0, $c0, $80, $80        ;; 0b:67a8 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:67b0 ????????
+    db   $81, $81, $81, $81, $00, $00, $00, $00        ;; 0b:67b8 ????????
+    db   $38, $38, $6c, $7c, $76, $4e, $e6, $9e        ;; 0b:67c0 ????????
+    db   $fe, $7e, $9f, $9f, $0f, $0f, $07, $07        ;; 0b:67c8 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:67d0 ????????
+    db   $00, $00, $00, $00, $00, $00, $80, $80        ;; 0b:67d8 ????????
+    db   $0a, $0f, $08, $0f, $09, $0f, $0b, $0e        ;; 0b:67e0 ????????
+    db   $10, $1f, $11, $1f, $21, $3f, $21, $3f        ;; 0b:67e8 ????????
+    db   $83, $83, $87, $87, $87, $87, $8f, $8f        ;; 0b:67f0 ????????
+    db   $8d, $8f, $1d, $1f, $38, $3f, $3a, $3d        ;; 0b:67f8 ????????
+    db   $80, $80, $80, $80, $80, $80, $80, $80        ;; 0b:6800 ????????
+    db   $c0, $c0, $f1, $f1, $fe, $ff, $78, $ff        ;; 0b:6808 ????????
+    db   $00, $00, $0f, $0f, $30, $3f, $40, $7f        ;; 0b:6810 ????????
+    db   $80, $ff, $00, $ff, $00, $ff, $00, $ff        ;; 0b:6818 ????????
+    db   $03, $03, $81, $81, $61, $e1, $11, $f1        ;; 0b:6820 ????????
+    db   $11, $f1, $0b, $fb, $0f, $ff, $0e, $ff        ;; 0b:6828 ????????
+    db   $80, $80, $c0, $c0, $c0, $c0, $e0, $e0        ;; 0b:6830 ????????
+    db   $f0, $f0, $70, $f0, $78, $f8, $38, $f8        ;; 0b:6838 ????????
+    db   $41, $7f, $41, $7f, $41, $7f, $83, $ff        ;; 0b:6840 ????????
+    db   $87, $ff, $8f, $ff, $8f, $ff, $9f, $ff        ;; 0b:6848 ????????
+    db   $75, $7a, $fb, $f4, $f7, $ff, $f8, $f8        ;; 0b:6850 ????????
+    db   $e0, $e0, $e0, $e0, $e0, $e0, $c1, $c1        ;; 0b:6858 ????????
+    db   $a0, $7f, $c0, $7f, $c0, $7f, $80, $ff        ;; 0b:6860 ????????
+    db   $80, $ff, $c1, $ff, $82, $ff, $03, $fe        ;; 0b:6868 ????????
+    db   $00, $ff, $18, $ff, $0c, $ff, $04, $ff        ;; 0b:6870 ????????
+    db   $07, $ff, $03, $fe, $03, $ff, $07, $ff        ;; 0b:6878 ????????
+    db   $04, $ff, $06, $fd, $07, $fc, $03, $fe        ;; 0b:6880 ????????
+    db   $03, $ff, $97, $fd, $f9, $6f, $25, $ff        ;; 0b:6888 ????????
+    db   $b8, $78, $bc, $7c, $5c, $bc, $9e, $7e        ;; 0b:6890 ????????
+    db   $de, $be, $7e, $7e, $4f, $4f, $8f, $8f        ;; 0b:6898 ????????
+    db   $bf, $ff, $7f, $7f, $7f, $7f, $6f, $7f        ;; 0b:68a0 ????????
+    db   $de, $ff, $dc, $ff, $b8, $bf, $b8, $bf        ;; 0b:68a8 ????????
+    db   $e7, $e7, $9a, $ff, $0a, $ff, $12, $ff        ;; 0b:68b0 ????????
+    db   $12, $ff, $11, $ff, $21, $ff, $41, $ff        ;; 0b:68b8 ????????
+    db   $03, $fe, $02, $ff, $01, $ff, $01, $ff        ;; 0b:68c0 ????????
+    db   $01, $ff, $01, $ff, $81, $ff, $02, $ff        ;; 0b:68c8 ????????
+    db   $cf, $39, $f5, $0e, $fc, $0f, $ee, $9b        ;; 0b:68d0 ????????
+    db   $66, $dd, $3e, $ff, $f6, $8f, $b3, $cf        ;; 0b:68d8 ????????
+    db   $81, $ff, $80, $ff, $00, $ff, $00, $ff        ;; 0b:68e0 ????????
+    db   $e1, $ff, $73, $de, $7b, $ce, $7b, $df        ;; 0b:68e8 ????????
+    db   $ef, $6f, $5f, $ff, $4f, $ff, $47, $ff        ;; 0b:68f0 ????????
+    db   $c7, $ff, $87, $ff, $8f, $ff, $96, $f6        ;; 0b:68f8 ????????
+    db   $7c, $7f, $73, $73, $70, $70, $60, $60        ;; 0b:6900 ????????
+    db   $60, $60, $60, $60, $20, $20, $21, $21        ;; 0b:6908 ????????
+    db   $42, $ff, $42, $ff, $82, $ff, $81, $ff        ;; 0b:6910 ????????
+    db   $80, $ff, $80, $ff, $80, $ff, $07, $ff        ;; 0b:6918 ????????
+    db   $1b, $ff, $03, $ff, $03, $fe, $02, $ff        ;; 0b:6920 ????????
+    db   $83, $ff, $42, $fe, $e2, $fe, $a2, $be        ;; 0b:6928 ????????
+    db   $79, $e7, $ff, $1f, $fb, $c7, $fc, $3c        ;; 0b:6930 ????????
+    db   $f0, $f0, $00, $00, $01, $01, $06, $07        ;; 0b:6938 ????????
+    db   $39, $ff, $81, $ff, $e0, $ff, $50, $7f        ;; 0b:6940 ????????
+    db   $68, $7f, $e8, $ff, $b5, $ff, $1e, $ff        ;; 0b:6948 ????????
+    db   $26, $e6, $46, $c6, $84, $84, $84, $84        ;; 0b:6950 ????????
+    db   $c4, $c4, $a0, $e0, $18, $f8, $06, $fe        ;; 0b:6958 ????????
+    db   $02, $03, $1c, $1f, $60, $7f, $f8, $9f        ;; 0b:6960 ????????
+    db   $fe, $a7, $7f, $49, $7f, $71, $1f, $1f        ;; 0b:6968 ????????
+    db   $0e, $fe, $17, $fd, $06, $fe, $0c, $fc        ;; 0b:6970 ????????
+    db   $3f, $ff, $7f, $ff, $ff, $ff, $ff, $ff        ;; 0b:6978 ????????
+    db   $11, $1f, $10, $1f, $20, $3f, $2d, $3f        ;; 0b:6980 ????????
+    db   $ff, $f2, $ff, $f7, $ff, $ff, $ff, $ff        ;; 0b:6988 ????????
+    db   $0f, $09, $ff, $fb, $7f, $ff, $ff, $9f        ;; 0b:6990 ????????
+    db   $ff, $5f, $ff, $7f, $ff, $ff, $ff, $ff        ;; 0b:6998 ????????
+    db   $0a, $fb, $0e, $ff, $c7, $ff, $f7, $bf        ;; 0b:69a0 ????????
+    db   $ff, $2f, $ff, $cf, $ff, $ff, $fc, $fc        ;; 0b:69a8 ????????
+    db   $6f, $fd, $ff, $93, $ff, $89, $fe, $fe        ;; 0b:69b0 ????????
+    db   $00, $00, $80, $80, $80, $80, $00, $00        ;; 0b:69b8 ????????
+    db   $41, $7f, $41, $7f, $41, $7f, $83, $ff        ;; 0b:69c0 ????????
+    db   $87, $ff, $8f, $ff, $8f, $ff, $9f, $ff        ;; 0b:69c8 ????????
+    db   $75, $7a, $fb, $f4, $f7, $ff, $f8, $f8        ;; 0b:69d0 ????????
+    db   $e0, $e0, $e0, $e0, $e0, $e0, $c1, $c1        ;; 0b:69d8 ????????
+    db   $bf, $ff, $7f, $7f, $7f, $7f, $6f, $7f        ;; 0b:69e0 ????????
+    db   $de, $ff, $dc, $ff, $b8, $bf, $b8, $bf        ;; 0b:69e8 ????????
+    db   $e7, $e7, $9a, $ff, $32, $ff, $42, $ff        ;; 0b:69f0 ????????
+    db   $82, $ff, $81, $ff, $81, $ff, $81, $ff        ;; 0b:69f8 ????????
+    db   $04, $ff, $06, $fd, $07, $fc, $03, $fe        ;; 0b:6a00 ????????
+    db   $03, $ff, $97, $fd, $f9, $6f, $25, $ff        ;; 0b:6a08 ????????
+    db   $b8, $78, $bc, $7c, $5c, $bc, $9e, $7e        ;; 0b:6a10 ????????
+    db   $de, $be, $7e, $7e, $4f, $4f, $8f, $8f        ;; 0b:6a18 ????????
+    db   $81, $ff, $80, $ff, $00, $ff, $00, $ff        ;; 0b:6a20 ????????
+    db   $e1, $ff, $73, $de, $7b, $ce, $7b, $df        ;; 0b:6a28 ????????
+    db   $cf, $4f, $4f, $cf, $4f, $cf, $67, $e7        ;; 0b:6a30 ????????
+    db   $d7, $f7, $97, $f7, $8f, $ff, $8e, $fe        ;; 0b:6a38 ????????
+    db   $7c, $7f, $73, $73, $70, $70, $61, $61        ;; 0b:6a40 ????????
+    db   $62, $63, $7c, $7f, $60, $7f, $f8, $9f        ;; 0b:6a48 ????????
+    db   $82, $ff, $42, $ff, $e2, $ff, $83, $ff        ;; 0b:6a50 ????????
+    db   $07, $ff, $03, $fe, $07, $ff, $08, $f8        ;; 0b:6a58 ????????
+    db   $1b, $ff, $01, $ff, $01, $ff, $00, $ff        ;; 0b:6a60 ????????
+    db   $c0, $ff, $20, $3f, $18, $1f, $04, $07        ;; 0b:6a68 ????????
+    db   $79, $e7, $ff, $1f, $fb, $c7, $fc, $bc        ;; 0b:6a70 ????????
+    db   $c0, $c0, $70, $f0, $8d, $fd, $1f, $f3        ;; 0b:6a78 ????????
+    db   $38, $ff, $80, $ff, $f0, $ff, $5c, $7f        ;; 0b:6a80 ????????
+    db   $5f, $7b, $df, $fa, $ef, $3f, $d7, $5f        ;; 0b:6a88 ????????
+    db   $8e, $fe, $56, $f6, $54, $f4, $64, $e4        ;; 0b:6a90 ????????
+    db   $64, $e4, $c0, $c0, $c0, $c0, $a0, $e0        ;; 0b:6a98 ????????
+    db   $fe, $a7, $7f, $49, $ff, $f1, $7f, $7f        ;; 0b:6aa0 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:6aa8 ????????
+    db   $3f, $ff, $7f, $ff, $ff, $ff, $ff, $ff        ;; 0b:6ab0 ????????
+    db   $00, $00, $01, $01, $03, $03, $00, $00        ;; 0b:6ab8 ????????
+    db   $e4, $e7, $fd, $ff, $ff, $fe, $ff, $fe        ;; 0b:6ac0 ????????
+    db   $7f, $7f, $ff, $ff, $ff, $ff, $ff, $ff        ;; 0b:6ac8 ????????
+    db   $7f, $fb, $ff, $9f, $ff, $df, $ff, $ff        ;; 0b:6ad0 ????????
+    db   $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff        ;; 0b:6ad8 ????????
+    db   $9f, $9f, $ff, $f5, $ff, $e5, $fe, $ff        ;; 0b:6ae0 ????????
+    db   $fe, $ff, $ff, $ff, $ff, $ff, $ff, $ff        ;; 0b:6ae8 ????????
+    db   $20, $e0, $10, $f0, $0c, $fc, $02, $fe        ;; 0b:6af0 ????????
+    db   $6f, $fd, $ff, $93, $ff, $89, $fe, $fe        ;; 0b:6af8 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:6b00 ????????
+    db   $01, $01, $03, $02, $23, $22, $77, $55        ;; 0b:6b08 ????????
+    db   $00, $00, $16, $16, $2e, $3a, $5a, $76        ;; 0b:6b10 ????????
+    db   $f5, $ef, $c6, $3f, $e9, $ff, $fd, $ef        ;; 0b:6b18 ????????
+    db   $7f, $59, $f9, $86, $ff, $ca, $ff, $b7        ;; 0b:6b20 ????????
+    db   $cf, $ce, $0f, $0c, $1f, $13, $0c, $0c        ;; 0b:6b28 ????????
+    db   $fd, $83, $bb, $7f, $e6, $fe, $fa, $c6        ;; 0b:6b30 ????????
+    db   $e4, $9c, $f8, $78, $80, $80, $00, $00        ;; 0b:6b38 ????????
+    db   $00, $00, $4c, $4c, $fc, $b4, $6f, $b3        ;; 0b:6b40 ????????
+    db   $b6, $db, $56, $fb, $54, $ff, $fd, $fb        ;; 0b:6b48 ????????
+    db   $00, $00, $00, $00, $60, $60, $e0, $a0        ;; 0b:6b50 ????????
+    db   $c0, $40, $ec, $6c, $9c, $f4, $a8, $d8        ;; 0b:6b58 ????????
+    db   $86, $87, $01, $01, $00, $00, $00, $00        ;; 0b:6b60 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:6b68 ????????
+    db   $7c, $9c, $e6, $3a, $dc, $e4, $bc, $cc        ;; 0b:6b70 ????????
+    db   $76, $7e, $4b, $75, $7e, $46, $7a, $7e        ;; 0b:6b78 ????????
+    db   $00, $00, $00, $00, $20, $20, $78, $58        ;; 0b:6b80 ????????
+    db   $f7, $8f, $ff, $c0, $ff, $a9, $dd, $d6        ;; 0b:6b88 ????????
+    db   $0b, $0b, $17, $1d, $2e, $3a, $fb, $f7        ;; 0b:6b90 ????????
+    db   $fb, $07, $ef, $f5, $f7, $fd, $f5, $7b        ;; 0b:6b98 ????????
+    db   $0f, $0d, $03, $03, $03, $03, $07, $05        ;; 0b:6ba0 ????????
+    db   $1e, $1f, $1d, $16, $0f, $09, $06, $06        ;; 0b:6ba8 ????????
+    db   $cf, $33, $fe, $e6, $fa, $fe, $86, $fa        ;; 0b:6bb0 ????????
+    db   $fc, $64, $d8, $d8, $00, $00, $00, $00        ;; 0b:6bb8 ????????
+    db   $08, $08, $1d, $15, $1d, $1d, $66, $7b        ;; 0b:6bc0 ????????
+    db   $b6, $db, $56, $fb, $5f, $f7, $78, $d8        ;; 0b:6bc8 ????????
+    db   $80, $80, $cc, $4c, $dc, $d4, $7b, $fb        ;; 0b:6bd0 ????????
+    db   $cf, $7d, $d8, $6f, $9a, $ed, $77, $79        ;; 0b:6bd8 ????????
+    db   $e0, $60, $80, $80, $00, $00, $00, $00        ;; 0b:6be0 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:6be8 ????????
+    db   $0f, $0f, $02, $03, $01, $01, $01, $01        ;; 0b:6bf0 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:6bf8 ????????
+    db   $00, $00, $00, $00, $01, $01, $01, $01        ;; 0b:6c00 ????????
+    db   $03, $03, $b2, $b3, $f6, $d5, $bf, $f8        ;; 0b:6c08 ????????
+    db   $86, $fa, $fc, $8c, $78, $f8, $08, $f8        ;; 0b:6c10 ????????
+    db   $fc, $94, $f8, $f8, $10, $f0, $a0, $60        ;; 0b:6c18 ????????
+    db   $7f, $bc, $e7, $7f, $70, $ef, $de, $e1        ;; 0b:6c20 ????????
+    db   $fd, $e3, $9f, $ff, $81, $ff, $ff, $83        ;; 0b:6c28 ????????
+    db   $70, $d0, $b0, $b0, $80, $80, $c0, $40        ;; 0b:6c30 ????????
+    db   $80, $80, $00, $00, $00, $00, $80, $80        ;; 0b:6c38 ????????
+    db   $ff, $86, $79, $7f, $80, $ff, $f7, $8f        ;; 0b:6c40 ????????
+    db   $8f, $f9, $fd, $fb, $4f, $7a, $7f, $5b        ;; 0b:6c48 ????????
+    db   $80, $80, $60, $60, $f0, $d0, $72, $92        ;; 0b:6c50 ????????
+    db   $a7, $e5, $fd, $fb, $b2, $7e, $de, $3e        ;; 0b:6c58 ????????
+    db   $3b, $37, $37, $2f, $6b, $5e, $ff, $be        ;; 0b:6c60 ????????
+    db   $c6, $c5, $0d, $0b, $16, $1e, $18, $18        ;; 0b:6c68 ????????
+    db   $dd, $3b, $9e, $71, $ae, $79, $7e, $f9        ;; 0b:6c70 ????????
+    db   $fd, $f3, $bb, $f7, $76, $6f, $cb, $fb        ;; 0b:6c78 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:6c80 ????????
+    db   $00, $00, $10, $10, $38, $28, $e8, $d8        ;; 0b:6c88 ????????
+    db   $90, $f0, $f9, $f9, $bf, $ee, $bc, $e7        ;; 0b:6c90 ????????
+    db   $d7, $ef, $75, $cf, $ed, $9f, $9b, $7f        ;; 0b:6c98 ????????
+    db   $80, $80, $c0, $40, $42, $c2, $e7, $e5        ;; 0b:6ca0 ????????
+    db   $fd, $3b, $de, $be, $dd, $bb, $bb, $77        ;; 0b:6ca8 ????????
+    db   $00, $00, $00, $00, $01, $01, $01, $01        ;; 0b:6cb0 ????????
+    db   $03, $03, $02, $03, $06, $05, $0f, $08        ;; 0b:6cb8 ????????
+    db   $86, $fa, $fc, $8c, $78, $f8, $08, $f8        ;; 0b:6cc0 ????????
+    db   $fc, $94, $f8, $f8, $10, $f0, $a0, $60        ;; 0b:6cc8 ????????
+    db   $1f, $1c, $27, $3f, $30, $2f, $5e, $61        ;; 0b:6cd0 ????????
+    db   $7d, $63, $9f, $ff, $81, $ff, $ff, $83        ;; 0b:6cd8 ????????
+    db   $70, $d0, $b0, $b0, $80, $80, $c0, $40        ;; 0b:6ce0 ????????
+    db   $80, $80, $00, $00, $00, $00, $80, $80        ;; 0b:6ce8 ????????
+    db   $00, $00, $0b, $0b, $5c, $57, $ea, $bf        ;; 0b:6cf0 ????????
+    db   $56, $bb, $b6, $db, $53, $ff, $5c, $fc        ;; 0b:6cf8 ????????
+    db   $88, $88, $dd, $55, $aa, $ff, $ae, $73        ;; 0b:6d00 ????????
+    db   $ee, $33, $5c, $e7, $be, $bf, $01, $01        ;; 0b:6d08 ????????
+    db   $70, $f0, $80, $80, $00, $00, $00, $00        ;; 0b:6d10 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:6d18 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:6d20 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:6d28 ????????
+    db   $00, $00, $00, $00, $c0, $c0, $c0, $40        ;; 0b:6d30 ????????
+    db   $98, $98, $f8, $e8, $90, $f0, $9b, $eb        ;; 0b:6d38 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:6d40 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:6d48 ????????
+    db   $77, $9d, $e6, $3e, $da, $e6, $3e, $ce        ;; 0b:6d50 ????????
+    db   $f3, $fe, $b7, $cf, $f9, $ff, $e3, $9f        ;; 0b:6d58 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:6d60 ????????
+    db   $80, $80, $00, $00, $00, $00, $80, $80        ;; 0b:6d68 ????????
+    db   $e7, $fe, $f9, $7f, $bf, $ef, $76, $bf        ;; 0b:6d70 ????????
+    db   $6f, $b9, $6d, $bb, $cf, $7a, $af, $db        ;; 0b:6d78 ????????
+    db   $80, $80, $20, $20, $70, $50, $f2, $92        ;; 0b:6d80 ????????
+    db   $27, $e5, $fd, $fb, $a2, $7e, $d6, $3e        ;; 0b:6d88 ????????
+    db   $5b, $77, $37, $2f, $6b, $5e, $ff, $be        ;; 0b:6d90 ????????
+    db   $c6, $c5, $0d, $0b, $16, $1e, $18, $18        ;; 0b:6d98 ????????
+    db   $dd, $3b, $9e, $71, $ae, $79, $7e, $f9        ;; 0b:6da0 ????????
+    db   $fd, $f3, $bb, $f7, $76, $6f, $cb, $fb        ;; 0b:6da8 ????????
+    db   $00, $00, $00, $00, $01, $01, $01, $01        ;; 0b:6db0 ????????
+    db   $83, $83, $e2, $63, $d6, $75, $9f, $ee        ;; 0b:6db8 ????????
+    db   $86, $fa, $f4, $8c, $78, $f8, $08, $f8        ;; 0b:6dc0 ????????
+    db   $fc, $94, $f8, $f8, $10, $f0, $a0, $60        ;; 0b:6dc8 ????????
+    db   $75, $9f, $e6, $3f, $da, $e7, $3f, $cf        ;; 0b:6dd0 ????????
+    db   $f3, $fe, $b7, $cf, $f9, $ff, $e3, $9f        ;; 0b:6dd8 ????????
+    db   $f0, $d0, $70, $f0, $40, $c0, $80, $80        ;; 0b:6de0 ????????
+    db   $80, $80, $00, $00, $00, $00, $80, $80        ;; 0b:6de8 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:6df0 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:6df8 ????????
+    db   $00, $00, $00, $00, $01, $01, $07, $06        ;; 0b:6e00 ????????
+    db   $1f, $18, $7e, $61, $fd, $83, $53, $6e        ;; 0b:6e08 ????????
+    db   $07, $07, $3f, $38, $fb, $c4, $e7, $18        ;; 0b:6e10 ????????
+    db   $ce, $31, $9e, $e1, $9e, $61, $3c, $c3        ;; 0b:6e18 ????????
+    db   $c0, $c0, $a0, $60, $60, $a0, $60, $a0        ;; 0b:6e20 ????????
+    db   $f0, $10, $f0, $10, $f0, $10, $f8, $08        ;; 0b:6e28 ????????
+    db   $26, $3d, $1c, $1b, $10, $1f, $18, $17        ;; 0b:6e30 ????????
+    db   $31, $2e, $61, $5e, $c3, $bc, $c3, $bc        ;; 0b:6e38 ????????
+    db   $3c, $c3, $7a, $87, $fa, $07, $fa, $07        ;; 0b:6e40 ????????
+    db   $fa, $07, $fa, $07, $fe, $03, $fd, $03        ;; 0b:6e48 ????????
+    db   $f8, $08, $f8, $08, $7c, $84, $7c, $84        ;; 0b:6e50 ????????
+    db   $34, $cc, $04, $fc, $f4, $fc, $08, $08        ;; 0b:6e58 ????????
+    db   $01, $01, $01, $01, $03, $02, $03, $02        ;; 0b:6e60 ????????
+    db   $06, $05, $06, $05, $0c, $0b, $0c, $0b        ;; 0b:6e68 ????????
+    db   $83, $7c, $87, $78, $07, $f8, $07, $f8        ;; 0b:6e70 ????????
+    db   $07, $f8, $07, $f8, $07, $f8, $03, $fc        ;; 0b:6e78 ????????
+    db   $ff, $01, $ff, $01, $fe, $01, $ff, $00        ;; 0b:6e80 ????????
+    db   $ff, $00, $ff, $00, $8f, $70, $07, $f8        ;; 0b:6e88 ????????
+    db   $00, $00, $00, $00, $80, $80, $40, $c0        ;; 0b:6e90 ????????
+    db   $40, $c0, $a0, $60, $a0, $60, $d0, $30        ;; 0b:6e98 ????????
+    db   $0d, $0a, $2f, $09, $47, $07, $93, $03        ;; 0b:6ea0 ????????
+    db   $9b, $03, $43, $03, $39, $01, $07, $00        ;; 0b:6ea8 ????????
+    db   $80, $7f, $e0, $ff, $f0, $9f, $f9, $df        ;; 0b:6eb0 ????????
+    db   $f7, $ff, $f7, $ff, $ef, $ff, $c7, $00        ;; 0b:6eb8 ????????
+    db   $00, $ff, $3f, $ff, $7e, $e6, $fe, $fa        ;; 0b:6ec0 ????????
+    db   $7e, $fe, $7e, $fe, $bc, $fc, $c3, $00        ;; 0b:6ec8 ????????
+    db   $d0, $30, $14, $f0, $e2, $e0, $09, $00        ;; 0b:6ed0 ????????
+    db   $19, $00, $62, $00, $1c, $00, $e0, $00        ;; 0b:6ed8 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:6ee0 ????????
+    db   $00, $00, $01, $01, $03, $02, $07, $04        ;; 0b:6ee8 ????????
+    db   $03, $03, $0f, $0c, $3f, $30, $5f, $60        ;; 0b:6ef0 ????????
+    db   $fe, $91, $fe, $21, $fe, $41, $7e, $c1        ;; 0b:6ef8 ????????
+    db   $00, $00, $80, $80, $40, $c0, $c0, $40        ;; 0b:6f00 ????????
+    db   $e0, $20, $f0, $10, $f8, $08, $fc, $04        ;; 0b:6f08 ????????
+    db   $0e, $09, $3e, $11, $51, $1f, $4d, $0f        ;; 0b:6f10 ????????
+    db   $31, $00, $0e, $00, $01, $00, $00, $00        ;; 0b:6f18 ????????
+    db   $df, $a0, $bf, $c0, $bf, $40, $bf, $40        ;; 0b:6f20 ????????
+    db   $3f, $c0, $00, $00, $ff, $00, $00, $00        ;; 0b:6f28 ????????
+    db   $7c, $84, $ba, $c6, $be, $c2, $d6, $6e        ;; 0b:6f30 ????????
+    db   $c2, $60, $1c, $00, $e0, $00, $00, $00        ;; 0b:6f38 ????????
+    db   $01, $01, $03, $02, $03, $02, $07, $04        ;; 0b:6f40 ????????
+    db   $07, $04, $0f, $08, $0d, $0a, $1d, $12        ;; 0b:6f48 ????????
+    db   $80, $80, $c0, $40, $c0, $40, $e0, $20        ;; 0b:6f50 ????????
+    db   $e0, $20, $f0, $10, $b0, $50, $b8, $48        ;; 0b:6f58 ????????
+    db   $1d, $12, $39, $26, $3d, $3e, $45, $06        ;; 0b:6f60 ????????
+    db   $8d, $06, $87, $00, $60, $00, $1f, $00        ;; 0b:6f68 ????????
+    db   $b8, $48, $9c, $64, $bc, $7c, $a2, $60        ;; 0b:6f70 ????????
+    db   $b1, $60, $e1, $00, $06, $00, $f8, $00        ;; 0b:6f78 ????????
+    db   $01, $01, $03, $02, $03, $02, $07, $04        ;; 0b:6f80 ????????
+    db   $07, $04, $0f, $08, $0d, $0a, $1d, $12        ;; 0b:6f88 ????????
+    db   $80, $80, $c0, $40, $c0, $40, $e0, $20        ;; 0b:6f90 ????????
+    db   $e0, $20, $f0, $10, $b0, $50, $b8, $48        ;; 0b:6f98 ????????
+    db   $1d, $12, $39, $26, $3d, $3e, $05, $06        ;; 0b:6fa0 ????????
+    db   $05, $06, $05, $06, $05, $06, $05, $06        ;; 0b:6fa8 ????????
+    db   $b8, $48, $9c, $64, $bc, $7c, $a0, $60        ;; 0b:6fb0 ????????
+    db   $a0, $60, $a0, $60, $a0, $60, $a0, $60        ;; 0b:6fb8 ????????
+    db   $0b, $0c, $0b, $0c, $17, $18, $16, $19        ;; 0b:6fc0 ????????
+    db   $2c, $33, $2d, $33, $2d, $33, $2d, $33        ;; 0b:6fc8 ????????
+    db   $a0, $60, $40, $c0, $40, $c0, $80, $80        ;; 0b:6fd0 ????????
+    db   $80, $80, $00, $00, $00, $00, $00, $00        ;; 0b:6fd8 ????????
+    db   $2d, $33, $2e, $31, $16, $19, $77, $18        ;; 0b:6fe0 ????????
+    db   $93, $0c, $87, $00, $60, $00, $1f, $00        ;; 0b:6fe8 ????????
+    db   $00, $00, $80, $80, $b8, $80, $46, $c0        ;; 0b:6ff0 ????????
+    db   $b1, $40, $e1, $00, $06, $00, $f8, $00        ;; 0b:6ff8 ????????
+    db   $05, $06, $02, $03, $02, $03, $01, $01        ;; 0b:7000 ????????
+    db   $01, $01, $00, $00, $00, $00, $00, $00        ;; 0b:7008 ????????
+    db   $d0, $30, $d0, $30, $e8, $18, $68, $98        ;; 0b:7010 ????????
+    db   $34, $cc, $b4, $cc, $b4, $cc, $b4, $cc        ;; 0b:7018 ????????
+    db   $00, $00, $01, $01, $01, $01, $01, $01        ;; 0b:7020 ????????
+    db   $02, $03, $02, $03, $05, $06, $07, $04        ;; 0b:7028 ????????
+    db   $b4, $cc, $74, $8c, $68, $98, $e8, $18        ;; 0b:7030 ????????
+    db   $c8, $38, $d0, $30, $d0, $30, $a0, $60        ;; 0b:7038 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:7040 ????????
+    db   $00, $00, $80, $80, $60, $e0, $98, $78        ;; 0b:7048 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:7050 ????????
+    db   $00, $00, $03, $03, $0d, $0e, $73, $7c        ;; 0b:7058 ????????
+    db   $e7, $1f, $f0, $0f, $3f, $c0, $cf, $f0        ;; 0b:7060 ????????
+    db   $30, $3f, $0f, $0f, $00, $00, $00, $00        ;; 0b:7068 ????????
+    db   $9f, $e0, $7e, $81, $f1, $0f, $c6, $3e        ;; 0b:7070 ????????
+    db   $38, $f8, $c0, $c0, $00, $00, $00, $00        ;; 0b:7078 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:7080 ????????
+    db   $00, $00, $00, $00, $01, $01, $02, $03        ;; 0b:7088 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:7090 ????????
+    db   $3e, $3e, $c1, $ff, $3e, $c1, $ff, $00        ;; 0b:7098 ????????
+    db   $05, $06, $05, $06, $0b, $0c, $0b, $0c        ;; 0b:70a0 ????????
+    db   $0b, $0c, $0b, $0c, $05, $06, $05, $06        ;; 0b:70a8 ????????
+    db   $ff, $00, $e0, $1f, $df, $3f, $a0, $60        ;; 0b:70b0 ????????
+    db   $a0, $60, $a0, $60, $d0, $30, $d0, $30        ;; 0b:70b8 ????????
+    db   $03, $03, $0f, $0c, $1f, $10, $3f, $20        ;; 0b:70c0 ????????
+    db   $3c, $23, $78, $47, $79, $47, $7b, $47        ;; 0b:70c8 ????????
+    db   $00, $00, $c0, $c0, $f0, $30, $e8, $18        ;; 0b:70d0 ????????
+    db   $76, $8e, $39, $c7, $9e, $e1, $4f, $70        ;; 0b:70d8 ????????
+    db   $3d, $23, $3c, $23, $1e, $11, $0f, $08        ;; 0b:70e0 ????????
+    db   $0b, $0c, $07, $04, $07, $04, $07, $04        ;; 0b:70e8 ????????
+    db   $31, $3e, $8c, $8f, $43, $c3, $40, $c0        ;; 0b:70f0 ????????
+    db   $20, $e0, $a0, $60, $a0, $60, $a0, $60        ;; 0b:70f8 ????????
+    db   $00, $00, $00, $00, $06, $06, $07, $05        ;; 0b:7100 ????????
+    db   $07, $04, $fd, $fe, $00, $ff, $ff, $00        ;; 0b:7108 ????????
+    db   $00, $00, $00, $00, $00, $00, $80, $80        ;; 0b:7110 ????????
+    db   $e0, $60, $f8, $18, $3e, $c6, $ff, $01        ;; 0b:7118 ????????
+    db   $ff, $00, $00, $ff, $fd, $fe, $07, $04        ;; 0b:7120 ????????
+    db   $07, $05, $06, $06, $00, $00, $00, $00        ;; 0b:7128 ????????
+    db   $ff, $01, $3e, $c6, $f8, $18, $e0, $60        ;; 0b:7130 ????????
+    db   $80, $80, $00, $00, $00, $00, $00, $00        ;; 0b:7138 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:7140 ????????
+    db   $01, $01, $03, $03, $03, $03, $06, $06        ;; 0b:7148 ????????
+    db   $0f, $0f, $7f, $71, $f3, $8e, $e6, $fd        ;; 0b:7150 ????????
+    db   $ec, $fb, $f8, $f7, $30, $2f, $60, $5f        ;; 0b:7158 ????????
+    db   $04, $04, $05, $05, $00, $00, $00, $00        ;; 0b:7160 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:7168 ????????
+    db   $71, $5f, $f9, $ff, $3b, $3f, $74, $74        ;; 0b:7170 ????????
+    db   $61, $61, $4f, $4f, $70, $70, $00, $00        ;; 0b:7178 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:7180 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:7188 ????????
+    db   $00, $00, $00, $00, $00, $00, $0c, $0c        ;; 0b:7190 ????????
+    db   $1c, $14, $1c, $14, $2c, $34, $2e, $32        ;; 0b:7198 ????????
+    db   $10, $10, $3e, $2e, $6f, $59, $68, $5f        ;; 0b:71a0 ????????
+    db   $cf, $bf, $d8, $bf, $d7, $bf, $ff, $f8        ;; 0b:71a8 ????????
+    db   $ef, $f1, $f7, $98, $d4, $bb, $a8, $ff        ;; 0b:71b0 ????????
+    db   $c0, $ff, $80, $ff, $c0, $ff, $ec, $ff        ;; 0b:71b8 ????????
+    db   $f8, $a7, $90, $7f, $11, $ff, $1e, $fe        ;; 0b:71c0 ????????
+    db   $21, $e1, $4f, $ce, $7f, $f0, $bf, $c0        ;; 0b:71c8 ????????
+    db   $7e, $d3, $fb, $bd, $ef, $b5, $f7, $8d        ;; 0b:71d0 ????????
+    db   $6f, $9a, $d7, $37, $a0, $60, $e0, $20        ;; 0b:71d8 ????????
+    db   $7f, $80, $7e, $81, $3e, $c1, $8f, $f0        ;; 0b:71e0 ????????
+    db   $e3, $fc, $fc, $ff, $03, $03, $00, $00        ;; 0b:71e8 ????????
+    db   $7f, $9f, $df, $ef, $ff, $ff, $7f, $ff        ;; 0b:71f0 ????????
+    db   $df, $3f, $3f, $c7, $c7, $f8, $3f, $3f        ;; 0b:71f8 ????????
+    db   $00, $00, $00, $00, $21, $21, $76, $57        ;; 0b:7200 ????????
+    db   $78, $5f, $58, $6f, $4c, $77, $a0, $ff        ;; 0b:7208 ????????
+    db   $00, $00, $00, $00, $84, $84, $6e, $ea        ;; 0b:7210 ????????
+    db   $1e, $fa, $1a, $f6, $32, $ee, $05, $ff        ;; 0b:7218 ????????
+    db   $00, $ff, $30, $ff, $70, $df, $70, $df        ;; 0b:7220 ????????
+    db   $b8, $cf, $9c, $ef, $40, $ff, $00, $ff        ;; 0b:7228 ????????
+    db   $00, $ff, $0c, $ff, $0e, $fb, $0e, $fb        ;; 0b:7230 ????????
+    db   $1d, $f3, $39, $f7, $02, $ff, $00, $ff        ;; 0b:7238 ????????
+    db   $70, $ff, $c8, $ff, $bc, $d7, $bc, $d7        ;; 0b:7240 ????????
+    db   $ee, $53, $fe, $33, $fc, $cf, $fa, $9f        ;; 0b:7248 ????????
+    db   $0e, $ff, $13, $ff, $3d, $eb, $3d, $eb        ;; 0b:7250 ????????
+    db   $77, $ca, $7f, $cc, $3f, $f3, $5f, $f9        ;; 0b:7258 ????????
+    db   $fd, $b3, $fb, $d7, $ff, $fb, $ff, $ff        ;; 0b:7260 ????????
+    db   $ff, $ff, $00, $00, $80, $80, $c0, $c0        ;; 0b:7268 ????????
+    db   $bf, $cd, $df, $eb, $ff, $df, $ff, $ff        ;; 0b:7270 ????????
+    db   $ff, $ff, $00, $00, $03, $03, $00, $00        ;; 0b:7278 ????????
+    db   $00, $00, $00, $00, $00, $00, $30, $30        ;; 0b:7280 ????????
+    db   $38, $28, $39, $29, $37, $2e, $76, $4d        ;; 0b:7288 ????????
+    db   $00, $00, $00, $00, $e0, $e0, $f0, $90        ;; 0b:7290 ????????
+    db   $d8, $b8, $c8, $78, $5c, $f4, $74, $ec        ;; 0b:7298 ????????
+    db   $f6, $8f, $eb, $1d, $2d, $df, $13, $ff        ;; 0b:72a0 ????????
+    db   $01, $ff, $01, $ff, $03, $ff, $36, $ff        ;; 0b:72a8 ????????
+    db   $f2, $ee, $e2, $be, $b9, $7f, $7d, $f7        ;; 0b:72b0 ????????
+    db   $f3, $af, $b3, $6f, $32, $ee, $f2, $ee        ;; 0b:72b8 ????????
+    db   $7f, $cb, $de, $ba, $fd, $ab, $ee, $b1        ;; 0b:72c0 ????????
+    db   $ff, $58, $e7, $e4, $07, $04, $0f, $08        ;; 0b:72c8 ????????
+    db   $32, $2e, $31, $2f, $31, $2f, $d9, $d7        ;; 0b:72d0 ????????
+    db   $f1, $3f, $e9, $1f, $f5, $0f, $f5, $0f        ;; 0b:72d8 ????????
+    db   $fb, $f6, $ff, $fe, $ff, $fc, $ff, $f8        ;; 0b:72e0 ????????
+    db   $fc, $e3, $e7, $9f, $f8, $f8, $00, $00        ;; 0b:72e8 ????????
+    db   $f5, $0f, $e7, $1f, $8e, $7e, $3c, $fc        ;; 0b:72f0 ????????
+    db   $cc, $cc, $08, $08, $10, $10, $00, $00        ;; 0b:72f8 ????????
+    db   $60, $60, $70, $50, $38, $28, $38, $28        ;; 0b:7300 ????????
+    db   $2c, $34, $1d, $15, $1b, $37, $1f, $53        ;; 0b:7308 ????????
+    db   $01, $01, $12, $13, $15, $17, $39, $2f        ;; 0b:7310 ????????
+    db   $b9, $af, $78, $ef, $6c, $f7, $5c, $f7        ;; 0b:7318 ????????
+    db   $cf, $cf, $b2, $be, $44, $7c, $89, $f9        ;; 0b:7320 ????????
+    db   $89, $f9, $86, $ff, $08, $ff, $00, $ff        ;; 0b:7328 ????????
+    db   $03, $03, $67, $65, $ce, $ca, $4e, $ca        ;; 0b:7330 ????????
+    db   $5a, $d6, $5c, $d4, $5c, $d4, $ac, $f4        ;; 0b:7338 ????????
+    db   $0f, $49, $0a, $cd, $49, $ce, $44, $e7        ;; 0b:7340 ????????
+    db   $c3, $e3, $c7, $e7, $ec, $fb, $ff, $ff        ;; 0b:7348 ????????
+    db   $16, $fb, $8b, $fd, $cb, $7c, $45, $fe        ;; 0b:7350 ????????
+    db   $42, $ff, $f1, $ff, $bc, $ef, $be, $f3        ;; 0b:7358 ????????
+    db   $03, $ff, $80, $ff, $c1, $7f, $c3, $7e        ;; 0b:7360 ????????
+    db   $41, $ff, $8b, $ff, $3a, $f7, $7e, $cf        ;; 0b:7368 ????????
+    db   $3c, $e4, $f4, $cc, $e8, $1a, $c8, $3a        ;; 0b:7370 ????????
+    db   $30, $f2, $e2, $e7, $e2, $e7, $96, $ff        ;; 0b:7378 ????????
+    db   $fc, $fb, $78, $f7, $7b, $f7, $3c, $7f        ;; 0b:7380 ????????
+    db   $3c, $7b, $1f, $3d, $1f, $3f, $1f, $3f        ;; 0b:7388 ????????
+    db   $ee, $fb, $76, $ff, $b4, $ff, $7d, $ff        ;; 0b:7390 ????????
+    db   $3c, $ff, $ce, $ff, $c7, $3f, $f3, $cf        ;; 0b:7398 ????????
+    db   $75, $df, $ef, $ff, $ac, $ff, $bb, $ff        ;; 0b:73a0 ????????
+    db   $3c, $ff, $78, $ff, $cf, $fc, $bf, $c7        ;; 0b:73a8 ????????
+    db   $de, $ef, $7c, $be, $3c, $ce, $9c, $ee        ;; 0b:73b0 ????????
+    db   $58, $ed, $f8, $5d, $f9, $fd, $f1, $fb        ;; 0b:73b8 ????????
+    db   $0f, $3c, $0d, $5f, $0f, $5f, $4f, $5f        ;; 0b:73c0 ????????
+    db   $4f, $df, $47, $ef, $67, $ef, $27, $7f        ;; 0b:73c8 ????????
+    db   $fd, $ff, $bf, $ff, $f7, $ef, $ef, $fd        ;; 0b:73d0 ????????
+    db   $ff, $fa, $f7, $f8, $f7, $fa, $ff, $fa        ;; 0b:73d8 ????????
+    db   $7f, $fe, $fb, $ff, $df, $ef, $ef, $7f        ;; 0b:73e0 ????????
+    db   $ff, $bf, $df, $3f, $df, $bf, $ff, $bf        ;; 0b:73e8 ????????
+    db   $f3, $7f, $76, $ff, $fe, $fe, $fc, $fe        ;; 0b:73f0 ????????
+    db   $fc, $fe, $fc, $fe, $f6, $ff, $f6, $ff        ;; 0b:73f8 ????????
+    db   $37, $7f, $3f, $7f, $1f, $3f, $1f, $3f        ;; 0b:7400 ????????
+    db   $0f, $1f, $0d, $1f, $04, $0d, $04, $0d        ;; 0b:7408 ????????
+    db   $fe, $ff, $fe, $ff, $ff, $ff, $ff, $ff        ;; 0b:7410 ????????
+    db   $ff, $ff, $ef, $ff, $e7, $ff, $c6, $ef        ;; 0b:7418 ????????
+    db   $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff        ;; 0b:7420 ????????
+    db   $ff, $ff, $fd, $ff, $fd, $ff, $f8, $fd        ;; 0b:7428 ????????
+    db   $f2, $ff, $fa, $ff, $f8, $fc, $dc, $fe        ;; 0b:7430 ????????
+    db   $cc, $fe, $c4, $ee, $c4, $e6, $c4, $e6        ;; 0b:7438 ????????
+    db   $05, $0f, $01, $0b, $01, $03, $01, $03        ;; 0b:7440 ????????
+    db   $00, $01, $00, $01, $00, $00, $00, $00        ;; 0b:7448 ????????
+    db   $ce, $ef, $8c, $dd, $88, $d9, $88, $d8        ;; 0b:7450 ????????
+    db   $c0, $c8, $c0, $c4, $60, $e1, $10, $32        ;; 0b:7458 ????????
+    db   $f0, $f9, $f0, $f9, $60, $f1, $61, $f3        ;; 0b:7460 ????????
+    db   $41, $e3, $82, $c6, $00, $80, $00, $00        ;; 0b:7468 ????????
+    db   $c0, $e4, $80, $c0, $80, $c0, $00, $80        ;; 0b:7470 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:7478 ????????
+    db   $68, $68, $54, $7c, $d2, $fe, $a9, $ff        ;; 0b:7480 ????????
+    db   $54, $7f, $6a, $7f, $94, $ff, $69, $7f        ;; 0b:7488 ????????
+    db   $00, $00, $60, $60, $a0, $e0, $a0, $e0        ;; 0b:7490 ????????
+    db   $a0, $e4, $94, $f6, $94, $f6, $16, $f6        ;; 0b:7498 ????????
+    db   $11, $1f, $09, $0f, $08, $0f, $04, $07        ;; 0b:74a0 ????????
+    db   $03, $03, $00, $00, $01, $03, $07, $1f        ;; 0b:74a8 ????????
+    db   $16, $f7, $1f, $ff, $8f, $ff, $0f, $ff        ;; 0b:74b0 ????????
+    db   $1e, $ff, $fe, $ff, $cc, $fe, $18, $f8        ;; 0b:74b8 ????????
+    db   $00, $0f, $01, $13, $00, $01, $00, $00        ;; 0b:74c0 ????????
+    db   $0f, $0f, $10, $1f, $e0, $ff, $8c, $ff        ;; 0b:74c8 ????????
+    db   $10, $18, $88, $cc, $cc, $ee, $ec, $fe        ;; 0b:74d0 ????????
+    db   $f6, $ff, $36, $ff, $1e, $ff, $5e, $ff        ;; 0b:74d8 ????????
+    db   $77, $7f, $4c, $7f, $92, $ff, $a5, $ff        ;; 0b:74e0 ????????
+    db   $aa, $fe, $ad, $ff, $57, $5f, $0c, $0c        ;; 0b:74e8 ????????
+    db   $9c, $ff, $2c, $fe, $cc, $de, $08, $1a        ;; 0b:74f0 ????????
+    db   $00, $19, $00, $08, $00, $08, $00, $04        ;; 0b:74f8 ????????
+    db   $00, $00, $03, $03, $0f, $0c, $1f, $10        ;; 0b:7500 ????????
+    db   $3f, $20, $3f, $20, $78, $47, $67, $5f        ;; 0b:7508 ????????
+    db   $7e, $7e, $f4, $8c, $f9, $09, $fa, $0b        ;; 0b:7510 ????????
+    db   $f3, $13, $f5, $17, $f7, $17, $77, $96        ;; 0b:7518 ????????
+    db   $d8, $b8, $a1, $e1, $c7, $c7, $80, $80        ;; 0b:7520 ????????
+    db   $80, $80, $00, $00, $00, $00, $00, $00        ;; 0b:7528 ????????
+    db   $b5, $d7, $da, $eb, $fd, $0d, $fb, $c7        ;; 0b:7530 ????????
+    db   $2f, $30, $16, $19, $08, $0f, $07, $07        ;; 0b:7538 ????????
+    db   $00, $00, $7c, $7c, $bb, $ff, $0f, $fe        ;; 0b:7540 ????????
+    db   $e3, $ff, $f2, $ff, $f9, $1f, $f5, $ef        ;; 0b:7548 ????????
+    db   $61, $61, $fa, $9b, $fc, $67, $9c, $9f        ;; 0b:7550 ????????
+    db   $b8, $af, $fc, $c7, $7c, $d7, $7c, $d7        ;; 0b:7558 ????????
+    db   $f8, $f7, $ce, $fb, $8d, $fb, $0f, $fb        ;; 0b:7560 ????????
+    db   $be, $fb, $df, $d7, $8f, $8e, $01, $01        ;; 0b:7568 ????????
+    db   $7c, $e7, $78, $ff, $5c, $f7, $be, $e3        ;; 0b:7570 ????????
+    db   $bf, $ef, $1e, $f7, $0c, $ff, $87, $7b        ;; 0b:7578 ????????
+    db   $20, $20, $71, $51, $72, $53, $9a, $eb        ;; 0b:7580 ????????
+    db   $9d, $ed, $8f, $f6, $87, $f9, $41, $7e        ;; 0b:7588 ????????
+    db   $fc, $8f, $7b, $ff, $34, $fb, $df, $fc        ;; 0b:7590 ????????
+    db   $af, $7f, $33, $ff, $5c, $ff, $df, $ff        ;; 0b:7598 ????????
+    db   $41, $7e, $20, $3f, $3c, $3f, $16, $1f        ;; 0b:75a0 ????????
+    db   $15, $1f, $2d, $3f, $91, $ff, $ff, $ff        ;; 0b:75a8 ????????
+    db   $e7, $ff, $d8, $7f, $ef, $7f, $d7, $5f        ;; 0b:75b0 ????????
+    db   $c8, $4f, $86, $87, $ff, $ff, $ff, $ff        ;; 0b:75b8 ????????
+    db   $86, $86, $5f, $d9, $3f, $e6, $39, $f9        ;; 0b:75c0 ????????
+    db   $1d, $f5, $3f, $e3, $3e, $eb, $3e, $eb        ;; 0b:75c8 ????????
+    db   $00, $00, $3e, $3e, $dd, $ff, $f0, $7f        ;; 0b:75d0 ????????
+    db   $c7, $ff, $4f, $ff, $9f, $f8, $af, $f7        ;; 0b:75d8 ????????
+    db   $3e, $e7, $1e, $ff, $3a, $ef, $7d, $c7        ;; 0b:75e0 ????????
+    db   $fd, $f7, $78, $ef, $30, $ff, $e1, $de        ;; 0b:75e8 ????????
+    db   $1f, $ef, $73, $df, $b1, $df, $f0, $df        ;; 0b:75f0 ????????
+    db   $7d, $df, $fb, $eb, $f5, $75, $8e, $8a        ;; 0b:75f8 ????????
+    db   $3f, $f1, $de, $ff, $2c, $df, $fb, $3f        ;; 0b:7600 ????????
+    db   $f5, $fe, $cd, $ff, $3b, $ff, $fb, $ff        ;; 0b:7608 ????????
+    db   $8e, $8a, $59, $d7, $d9, $d7, $f1, $6f        ;; 0b:7610 ????????
+    db   $e1, $9f, $82, $7e, $82, $7e, $04, $fc        ;; 0b:7618 ????????
+    db   $e7, $fe, $1b, $fe, $f7, $fe, $eb, $fa        ;; 0b:7620 ????????
+    db   $11, $f1, $7f, $ff, $ff, $ff, $f8, $f8        ;; 0b:7628 ????????
+    db   $3c, $fc, $68, $f8, $a8, $f8, $b6, $fe        ;; 0b:7630 ????????
+    db   $89, $ff, $f5, $ff, $ff, $ff, $00, $00        ;; 0b:7638 ????????
+    db   $7e, $7e, $2f, $31, $9f, $90, $5f, $d0        ;; 0b:7640 ????????
+    db   $cf, $c8, $af, $e8, $ef, $e8, $ee, $69        ;; 0b:7648 ????????
+    db   $00, $00, $c0, $c0, $f0, $30, $f8, $08        ;; 0b:7650 ????????
+    db   $fc, $04, $fc, $04, $1e, $e2, $e6, $fa        ;; 0b:7658 ????????
+    db   $ad, $eb, $5b, $d7, $bf, $b0, $df, $e3        ;; 0b:7660 ????????
+    db   $f4, $0c, $68, $98, $10, $f0, $e0, $e0        ;; 0b:7668 ????????
+    db   $1b, $1d, $85, $87, $e3, $e3, $01, $01        ;; 0b:7670 ????????
+    db   $01, $01, $00, $00, $00, $00, $00, $00        ;; 0b:7678 ????????
+    db   $80, $80, $c0, $c0, $e0, $a0, $70, $50        ;; 0b:7680 ????????
+    db   $7c, $4c, $3f, $23, $2f, $30, $17, $18        ;; 0b:7688 ????????
+    db   $00, $00, $00, $00, $03, $03, $05, $06        ;; 0b:7690 ????????
+    db   $25, $26, $32, $33, $f9, $e9, $dc, $34        ;; 0b:7698 ????????
+    db   $0b, $0c, $05, $06, $02, $03, $01, $01        ;; 0b:76a0 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:76a8 ????????
+    db   $ff, $03, $ff, $00, $ff, $00, $3f, $c0        ;; 0b:76b0 ????????
+    db   $cf, $f0, $31, $3e, $0e, $0f, $01, $01        ;; 0b:76b8 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:76c0 ????????
+    db   $00, $00, $00, $00, $00, $00, $01, $01        ;; 0b:76c8 ????????
+    db   $00, $00, $08, $08, $1d, $15, $1e, $13        ;; 0b:76d0 ????????
+    db   $1e, $17, $1c, $17, $38, $2f, $fc, $c7        ;; 0b:76d8 ????????
+    db   $1e, $1f, $2f, $3f, $41, $7f, $b8, $ff        ;; 0b:76e0 ????????
+    db   $fe, $ff, $ff, $c7, $fd, $bb, $7e, $7d        ;; 0b:76e8 ????????
+    db   $7c, $d7, $7c, $d7, $bc, $e7, $d8, $ff        ;; 0b:76f0 ????????
+    db   $54, $ff, $1e, $fb, $9f, $f3, $af, $f9        ;; 0b:76f8 ????????
+    db   $4e, $7d, $8e, $fd, $dc, $fb, $ff, $6f        ;; 0b:7700 ????????
+    db   $fa, $2b, $ee, $37, $77, $99, $b1, $de        ;; 0b:7708 ????????
+    db   $a6, $ff, $47, $fb, $bd, $cf, $f4, $fb        ;; 0b:7710 ????????
+    db   $2f, $fc, $73, $ff, $dc, $ff, $e7, $ff        ;; 0b:7718 ????????
+    db   $b9, $ce, $fc, $07, $fb, $07, $fe, $01        ;; 0b:7720 ????????
+    db   $ff, $00, $fc, $03, $03, $ff, $ff, $ff        ;; 0b:7728 ????????
+    db   $f8, $ff, $df, $7f, $e7, $7f, $d8, $df        ;; 0b:7730 ????????
+    db   $a6, $67, $41, $c1, $ff, $ff, $ff, $ff        ;; 0b:7738 ????????
+    db   $00, $00, $10, $10, $b8, $a8, $78, $c8        ;; 0b:7740 ????????
+    db   $78, $e8, $38, $e8, $1c, $f4, $3f, $e3        ;; 0b:7748 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:7750 ????????
+    db   $00, $00, $00, $00, $00, $00, $80, $80        ;; 0b:7758 ????????
+    db   $3e, $eb, $3e, $eb, $3d, $e7, $1b, $ff        ;; 0b:7760 ????????
+    db   $2a, $ff, $78, $df, $f9, $cf, $f5, $9f        ;; 0b:7768 ????????
+    db   $78, $f8, $f4, $fc, $82, $fe, $1d, $ff        ;; 0b:7770 ????????
+    db   $7f, $ff, $ff, $e3, $bf, $dd, $7e, $be        ;; 0b:7778 ????????
+    db   $65, $ff, $e2, $df, $bd, $f3, $2f, $df        ;; 0b:7780 ????????
+    db   $f4, $3f, $ce, $ff, $3b, $ff, $e7, $ff        ;; 0b:7788 ????????
+    db   $72, $be, $71, $bf, $3b, $df, $ff, $f6        ;; 0b:7790 ????????
+    db   $5f, $d4, $77, $ec, $ee, $99, $8d, $7b        ;; 0b:7798 ????????
+    db   $1f, $ff, $fb, $fe, $e7, $fe, $1b, $fb        ;; 0b:77a0 ????????
+    db   $65, $e6, $82, $83, $ff, $ff, $ff, $ff        ;; 0b:77a8 ????????
+    db   $9d, $73, $3f, $e0, $df, $e0, $7f, $80        ;; 0b:77b0 ????????
+    db   $ff, $00, $3f, $c0, $c0, $ff, $ff, $ff        ;; 0b:77b8 ????????
+    db   $00, $00, $00, $00, $c0, $c0, $a0, $60        ;; 0b:77c0 ????????
+    db   $a4, $64, $4c, $cc, $9f, $97, $3b, $2c        ;; 0b:77c8 ????????
+    db   $01, $01, $03, $03, $07, $05, $0e, $0a        ;; 0b:77d0 ????????
+    db   $3e, $32, $fc, $c4, $f4, $0c, $e8, $18        ;; 0b:77d8 ????????
+    db   $ff, $c0, $ff, $00, $ff, $00, $fc, $03        ;; 0b:77e0 ????????
+    db   $f3, $0f, $8c, $7c, $70, $f0, $80, $80        ;; 0b:77e8 ????????
+    db   $d0, $30, $a0, $60, $40, $c0, $80, $80        ;; 0b:77f0 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:77f8 ????????
+    db   $c0, $c0, $e0, $a0, $7a, $5a, $3f, $25        ;; 0b:7800 ????????
+    db   $1f, $14, $0f, $08, $1f, $10, $3f, $23        ;; 0b:7808 ????????
+    db   $00, $00, $f0, $f0, $d8, $b8, $dc, $b4        ;; 0b:7810 ????????
+    db   $f2, $6e, $f6, $1e, $fd, $0b, $1b, $ef        ;; 0b:7818 ????????
+    db   $3f, $26, $3f, $26, $30, $2f, $73, $4f        ;; 0b:7820 ????????
+    db   $f5, $8d, $f5, $8d, $f9, $f9, $03, $02        ;; 0b:7828 ????????
+    db   $0f, $f5, $25, $ff, $27, $ff, $c7, $fd        ;; 0b:7830 ????????
+    db   $c5, $3f, $c7, $3f, $c7, $3d, $c5, $3f        ;; 0b:7838 ????????
+    db   $03, $02, $0f, $0c, $1f, $10, $1e, $11        ;; 0b:7840 ????????
+    db   $3e, $21, $3e, $21, $3e, $21, $7f, $58        ;; 0b:7848 ????????
+    db   $8f, $7f, $8f, $79, $11, $ff, $1e, $fe        ;; 0b:7850 ????????
+    db   $1e, $f2, $12, $fe, $0c, $fc, $1a, $fe        ;; 0b:7858 ????????
+    db   $ff, $87, $7f, $40, $3f, $30, $3f, $2f        ;; 0b:7860 ????????
+    db   $3f, $20, $1f, $1f, $0f, $08, $07, $07        ;; 0b:7868 ????????
+    db   $f9, $e7, $e2, $1e, $0c, $fc, $f4, $fc        ;; 0b:7870 ????????
+    db   $04, $fc, $f8, $f8, $10, $f0, $e0, $e0        ;; 0b:7878 ????????
+    db   $18, $18, $1c, $14, $1f, $13, $ce, $c9        ;; 0b:7880 ????????
+    db   $f7, $b4, $fe, $8f, $77, $4b, $3b, $26        ;; 0b:7888 ????????
+    db   $c0, $c0, $e0, $a0, $70, $50, $f8, $c8        ;; 0b:7890 ????????
+    db   $3c, $e4, $56, $fa, $eb, $dd, $75, $ee        ;; 0b:7898 ????????
+    db   $39, $3f, $7f, $47, $3b, $25, $3c, $3b        ;; 0b:78a0 ????????
+    db   $7f, $47, $3d, $23, $1f, $1f, $3e, $31        ;; 0b:78a8 ????????
+    db   $a2, $7f, $92, $7f, $cd, $bf, $c3, $ff        ;; 0b:78b0 ????????
+    db   $f1, $3f, $8c, $7f, $e3, $9f, $60, $ff        ;; 0b:78b8 ????????
+    db   $7d, $42, $3e, $31, $0f, $0f, $0f, $0c        ;; 0b:78c0 ????????
+    db   $1e, $11, $0f, $08, $07, $07, $03, $02        ;; 0b:78c8 ????????
+    db   $1c, $ff, $77, $ef, $e0, $9f, $f8, $e7        ;; 0b:78d0 ????????
+    db   $9f, $7f, $30, $ef, $de, $f9, $47, $bf        ;; 0b:78d8 ????????
+    db   $07, $04, $03, $03, $00, $00, $00, $00        ;; 0b:78e0 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:78e8 ????????
+    db   $ae, $5d, $f3, $fe, $6b, $55, $f6, $8f        ;; 0b:78f0 ????????
+    db   $78, $7f, $1f, $13, $0f, $0e, $03, $03        ;; 0b:78f8 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:7900 ????????
+    db   $00, $00, $00, $00, $00, $00, $80, $80        ;; 0b:7908 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:7910 ????????
+    db   $01, $01, $03, $02, $03, $02, $02, $03        ;; 0b:7918 ????????
+    db   $c0, $40, $c0, $40, $c0, $40, $60, $a0        ;; 0b:7920 ????????
+    db   $60, $a0, $a0, $e0, $a0, $e0, $b0, $d0        ;; 0b:7928 ????????
+    db   $01, $01, $01, $01, $00, $00, $01, $01        ;; 0b:7930 ????????
+    db   $01, $01, $02, $03, $04, $07, $04, $07        ;; 0b:7938 ????????
+    db   $98, $e8, $98, $e8, $4e, $f6, $c7, $f9        ;; 0b:7940 ????????
+    db   $60, $ff, $30, $ff, $71, $ff, $98, $ff        ;; 0b:7948 ????????
+    db   $0b, $0f, $0b, $0e, $39, $3f, $ff, $c7        ;; 0b:7950 ????????
+    db   $ff, $a8, $ff, $c0, $fd, $22, $f9, $87        ;; 0b:7958 ????????
+    db   $39, $ff, $e9, $ff, $d4, $bf, $6d, $ff        ;; 0b:7960 ????????
+    db   $dd, $ef, $34, $ff, $ea, $7f, $ec, $df        ;; 0b:7968 ????????
+    db   $f4, $0b, $d9, $67, $f3, $8e, $fb, $07        ;; 0b:7970 ????????
+    db   $f4, $4b, $f8, $8f, $7b, $d6, $2d, $ff        ;; 0b:7978 ????????
+    db   $38, $3f, $08, $0f, $10, $1f, $10, $1f        ;; 0b:7980 ????????
+    db   $10, $1f, $24, $3f, $35, $2f, $63, $5f        ;; 0b:7988 ????????
+    db   $01, $ff, $01, $ff, $13, $ff, $0a, $ff        ;; 0b:7990 ????????
+    db   $04, $ff, $04, $ff, $02, $ff, $03, $ff        ;; 0b:7998 ????????
+    db   $72, $5e, $e4, $bc, $f4, $ec, $74, $5c        ;; 0b:79a0 ????????
+    db   $7c, $54, $38, $28, $38, $28, $10, $10        ;; 0b:79a8 ????????
+    db   $83, $ff, $67, $7d, $1b, $1c, $05, $06        ;; 0b:79b0 ????????
+    db   $07, $06, $09, $0f, $0a, $0e, $0c, $0c        ;; 0b:79b8 ????????
+    db   $03, $03, $17, $15, $3d, $2b, $6d, $5b        ;; 0b:79c0 ????????
+    db   $5b, $76, $d2, $ff, $d2, $ff, $c8, $7f        ;; 0b:79c8 ????????
+    db   $1c, $1c, $7c, $64, $e8, $98, $90, $70        ;; 0b:79d0 ????????
+    db   $20, $e0, $20, $e0, $40, $c0, $40, $c0        ;; 0b:79d8 ????????
+    db   $20, $ff, $00, $ff, $80, $ff, $80, $ff        ;; 0b:79e0 ????????
+    db   $03, $ff, $04, $fc, $08, $f8, $0c, $fc        ;; 0b:79e8 ????????
+    db   $40, $c0, $40, $c0, $40, $c0, $80, $80        ;; 0b:79f0 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:79f8 ????????
+    db   $3e, $f2, $db, $ed, $fd, $2e, $ad, $f6        ;; 0b:7a00 ????????
+    db   $fb, $06, $fe, $01, $ff, $c0, $fc, $03        ;; 0b:7a08 ????????
+    db   $c0, $c0, $e0, $a0, $b0, $d0, $f0, $d0        ;; 0b:7a10 ????????
+    db   $fc, $5c, $de, $72, $f4, $2c, $f8, $08        ;; 0b:7a18 ????????
+    db   $ff, $e1, $ed, $12, $65, $fa, $89, $fe        ;; 0b:7a20 ????????
+    db   $68, $ff, $96, $9f, $49, $cf, $45, $c7        ;; 0b:7a28 ????????
+    db   $f8, $88, $fc, $54, $fc, $dc, $cc, $fc        ;; 0b:7a30 ????????
+    db   $c4, $bc, $02, $fe, $82, $fe, $c1, $ff        ;; 0b:7a38 ????????
+    db   $82, $83, $02, $03, $81, $81, $40, $c0        ;; 0b:7a40 ????????
+    db   $20, $e0, $20, $e0, $73, $d3, $bf, $cc        ;; 0b:7a48 ????????
+    db   $cd, $ff, $e5, $ff, $79, $ff, $c5, $c7        ;; 0b:7a50 ????????
+    db   $02, $02, $e0, $e0, $d0, $70, $f0, $70        ;; 0b:7a58 ????????
+    db   $6f, $70, $17, $18, $fb, $ff, $fe, $06        ;; 0b:7a60 ????????
+    db   $f9, $37, $cd, $7f, $eb, $fb, $18, $18        ;; 0b:7a68 ????????
+    db   $90, $f0, $d0, $70, $b0, $b0, $00, $00        ;; 0b:7a70 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:7a78 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:7a80 ????????
+    db   $00, $00, $00, $00, $00, $00, $01, $01        ;; 0b:7a88 ????????
+    db   $00, $00, $03, $03, $0c, $0f, $10, $1f        ;; 0b:7a90 ????????
+    db   $20, $3f, $40, $7f, $80, $ff, $00, $ff        ;; 0b:7a98 ????????
+    db   $02, $03, $04, $07, $09, $0f, $0a, $0f        ;; 0b:7aa0 ????????
+    db   $16, $1b, $34, $2f, $2c, $37, $7d, $4a        ;; 0b:7aa8 ????????
+    db   $00, $ff, $00, $ff, $00, $ff, $00, $ff        ;; 0b:7ab0 ????????
+    db   $00, $ff, $00, $ff, $40, $ff, $40, $ff        ;; 0b:7ab8 ????????
+    db   $7a, $4d, $fd, $9a, $fb, $b5, $5b, $55        ;; 0b:7ac0 ????????
+    db   $1f, $11, $0f, $0b, $0f, $0b, $05, $05        ;; 0b:7ac8 ????????
+    db   $80, $ff, $90, $ff, $90, $ff, $24, $ff        ;; 0b:7ad0 ????????
+    db   $b4, $6f, $64, $bf, $ae, $75, $b4, $6f        ;; 0b:7ad8 ????????
+    db   $01, $01, $01, $01, $00, $00, $00, $00        ;; 0b:7ae0 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:7ae8 ????????
+    db   $ed, $36, $fe, $65, $bf, $ac, $3b, $2a        ;; 0b:7af0 ????????
+    db   $11, $11, $01, $01, $00, $00, $00, $00        ;; 0b:7af8 ????????
+    db   $00, $00, $00, $00, $e6, $e6, $5d, $fb        ;; 0b:7b00 ????????
+    db   $2e, $fd, $3f, $f0, $3f, $e8, $3f, $f0        ;; 0b:7b08 ????????
+    db   $01, $01, $07, $07, $cf, $cc, $f6, $bb        ;; 0b:7b10 ????????
+    db   $7f, $cb, $ab, $7d, $fe, $01, $ff, $00        ;; 0b:7b18 ????????
+    db   $7f, $c8, $7e, $e1, $fd, $c2, $f6, $d9        ;; 0b:7b20 ????????
+    db   $bc, $e3, $fe, $c1, $fd, $d2, $7e, $e3        ;; 0b:7b28 ????????
+    db   $7f, $b0, $7f, $c0, $3f, $f8, $7b, $c4        ;; 0b:7b30 ????????
+    db   $d9, $be, $e2, $ff, $1a, $ff, $3d, $ff        ;; 0b:7b38 ????????
+    db   $5e, $f5, $4b, $ff, $20, $ff, $20, $ff        ;; 0b:7b40 ????????
+    db   $21, $ff, $11, $ff, $16, $ff, $8c, $ff        ;; 0b:7b48 ????????
+    db   $d2, $bf, $5f, $fb, $f7, $ed, $9f, $95        ;; 0b:7b50 ????????
+    db   $8b, $8b, $40, $c0, $20, $e0, $20, $e0        ;; 0b:7b58 ????????
+    db   $8e, $ff, $d7, $6f, $6d, $d7, $f6, $6a        ;; 0b:7b60 ????????
+    db   $fb, $35, $ef, $28, $e7, $a6, $61, $61        ;; 0b:7b68 ????????
+    db   $73, $d3, $bf, $cc, $ef, $f0, $37, $3b        ;; 0b:7b70 ????????
+    db   $fc, $fc, $90, $f0, $d0, $70, $f0, $f0        ;; 0b:7b78 ????????
+    db   $e0, $e0, $10, $f0, $98, $f8, $fc, $6c        ;; 0b:7b80 ????????
+    db   $6e, $b6, $7d, $b7, $ff, $97, $b7, $5c        ;; 0b:7b88 ????????
+    db   $fd, $0b, $3f, $c3, $fe, $63, $7f, $95        ;; 0b:7b90 ????????
+    db   $7f, $b7, $73, $bf, $31, $ef, $80, $ff        ;; 0b:7b98 ????????
+    db   $c0, $c0, $40, $c0, $20, $e0, $10, $f0        ;; 0b:7ba0 ????????
+    db   $18, $e8, $8c, $f4, $66, $da, $b3, $fd        ;; 0b:7ba8 ????????
+    db   $60, $ff, $70, $ff, $73, $ff, $79, $ff        ;; 0b:7bb0 ????????
+    db   $be, $ff, $d3, $f3, $30, $30, $e0, $e0        ;; 0b:7bb8 ????????
+    db   $89, $fe, $74, $ef, $5b, $f7, $4e, $ff        ;; 0b:7bc0 ????????
+    db   $68, $df, $77, $ec, $9b, $9b, $00, $00        ;; 0b:7bc8 ????????
+    db   $d0, $70, $f0, $70, $90, $f0, $d0, $f0        ;; 0b:7bd0 ????????
+    db   $30, $30, $00, $00, $00, $00, $00, $00        ;; 0b:7bd8 ????????
+    db   $80, $80, $c0, $40, $70, $b0, $a8, $d8        ;; 0b:7be0 ????????
+    db   $5c, $e4, $3e, $f2, $df, $39, $e7, $e7        ;; 0b:7be8 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:7bf0 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:7bf8 ????????
+    db   $00, $00, $00, $00, $00, $00, $c0, $c0        ;; 0b:7c00 ????????
+    db   $f3, $b3, $7f, $4c, $76, $59, $20, $3f        ;; 0b:7c08 ????????
+    db   $0c, $0c, $1e, $16, $3f, $35, $7d, $67        ;; 0b:7c10 ????????
+    db   $fd, $a7, $d9, $bf, $81, $ff, $81, $ff        ;; 0b:7c18 ????????
+    db   $00, $00, $c0, $c0, $70, $b0, $5c, $bc        ;; 0b:7c20 ????????
+    db   $56, $ba, $17, $f9, $15, $fb, $11, $ff        ;; 0b:7c28 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:7c30 ????????
+    db   $00, $00, $00, $00, $c0, $c0, $60, $a0        ;; 0b:7c38 ????????
+    db   $20, $3f, $2c, $3f, $3e, $3f, $7f, $5d        ;; 0b:7c40 ????????
+    db   $7f, $59, $7e, $4f, $3f, $23, $1c, $1c        ;; 0b:7c48 ????????
+    db   $82, $ff, $43, $ff, $3d, $ff, $21, $ff        ;; 0b:7c50 ????????
+    db   $21, $ff, $3e, $ff, $ff, $c4, $fb, $fb        ;; 0b:7c58 ????????
+    db   $11, $ff, $12, $ff, $12, $ff, $22, $ff        ;; 0b:7c60 ????????
+    db   $24, $ff, $db, $ff, $fe, $92, $6c, $6c        ;; 0b:7c68 ????????
+    db   $70, $90, $9b, $7b, $27, $fd, $22, $fe        ;; 0b:7c70 ????????
+    db   $46, $fe, $ae, $ba, $1f, $1d, $02, $02        ;; 0b:7c78 ????????
+    db   $00, $00, $00, $00, $10, $10, $38, $28        ;; 0b:7c80 ????????
+    db   $39, $29, $3f, $26, $3e, $29, $30, $3f        ;; 0b:7c88 ????????
+    db   $02, $02, $07, $05, $0f, $09, $3f, $33        ;; 0b:7c90 ????????
+    db   $fe, $d3, $6c, $df, $40, $ff, $40, $ff        ;; 0b:7c98 ????????
+    db   $00, $00, $00, $00, $00, $00, $e0, $e0        ;; 0b:7ca0 ????????
+    db   $b0, $d0, $ae, $de, $ab, $dd, $8b, $fc        ;; 0b:7ca8 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:7cb0 ????????
+    db   $12, $12, $3f, $2d, $3f, $2d, $f7, $ff        ;; 0b:7cb8 ????????
+    db   $20, $3f, $2c, $3f, $3e, $33, $ff, $df        ;; 0b:7cc0 ????????
+    db   $ff, $91, $fe, $8f, $7f, $43, $3c, $3c        ;; 0b:7cc8 ????????
+    db   $41, $ff, $21, $ff, $1e, $ff, $10, $ff        ;; 0b:7cd0 ????????
+    db   $21, $ff, $3e, $ff, $ff, $e2, $7d, $7d        ;; 0b:7cd8 ????????
+    db   $0a, $fd, $88, $ff, $91, $ff, $91, $ff        ;; 0b:7ce0 ????????
+    db   $36, $ff, $c9, $ff, $ff, $49, $b6, $b6        ;; 0b:7ce8 ????????
+    db   $b1, $df, $cd, $bf, $1e, $f2, $1e, $f2        ;; 0b:7cf0 ????????
+    db   $3c, $fc, $c0, $c0, $00, $00, $00, $00        ;; 0b:7cf8 ????????
+    db   $00, $00, $19, $19, $1f, $16, $0e, $0b        ;; 0b:7d00 ????????
+    db   $0f, $09, $06, $07, $03, $03, $04, $07        ;; 0b:7d08 ????????
+    db   $00, $00, $98, $98, $78, $e8, $70, $d0        ;; 0b:7d10 ????????
+    db   $f0, $90, $60, $e0, $c0, $c0, $20, $e0        ;; 0b:7d18 ????????
+    db   $0b, $0f, $14, $1f, $1b, $1c, $34, $3b        ;; 0b:7d20 ????????
+    db   $23, $3f, $2c, $3f, $53, $7c, $64, $7b        ;; 0b:7d28 ????????
+    db   $d0, $f0, $28, $f8, $d8, $38, $2c, $dc        ;; 0b:7d30 ????????
+    db   $c4, $fc, $34, $fc, $ca, $3e, $26, $de        ;; 0b:7d38 ????????
+    db   $43, $7f, $ec, $ff, $f0, $bf, $73, $5f        ;; 0b:7d40 ????????
+    db   $6d, $7f, $53, $7e, $23, $3e, $21, $3f        ;; 0b:7d48 ????????
+    db   $c2, $fe, $37, $ff, $0f, $fd, $ce, $fa        ;; 0b:7d50 ????????
+    db   $b6, $fe, $ca, $7e, $c4, $7c, $84, $fc        ;; 0b:7d58 ????????
+    db   $40, $7f, $58, $7f, $7e, $67, $7f, $4f        ;; 0b:7d60 ????????
+    db   $3f, $2c, $1f, $1d, $07, $04, $03, $03        ;; 0b:7d68 ????????
+    db   $02, $fe, $1a, $fe, $7e, $e6, $fe, $f2        ;; 0b:7d70 ????????
+    db   $fc, $b4, $f8, $38, $e0, $a0, $c0, $c0        ;; 0b:7d78 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:7d80 ????????
+    db   $00, $00, $19, $19, $1f, $16, $0e, $0b        ;; 0b:7d88 ????????
+    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:7d90 ????????
+    db   $00, $00, $98, $98, $78, $e8, $70, $d0        ;; 0b:7d98 ????????
+    db   $0f, $09, $06, $07, $03, $03, $0c, $0f        ;; 0b:7da0 ????????
+    db   $13, $1c, $23, $3f, $2f, $3c, $34, $3b        ;; 0b:7da8 ????????
+    db   $f0, $90, $60, $e0, $c0, $c0, $30, $f0        ;; 0b:7db0 ????????
+    db   $88, $78, $c4, $fc, $f4, $3c, $2c, $dc        ;; 0b:7db8 ????????
+    db   $63, $7f, $cc, $ff, $f0, $bf, $73, $5f        ;; 0b:7dc0 ????????
+    db   $6d, $7f, $53, $7e, $23, $3e, $21, $3f        ;; 0b:7dc8 ????????
+    db   $c6, $fe, $33, $ff, $0f, $fd, $ce, $fa        ;; 0b:7dd0 ????????
+    db   $b6, $fe, $ca, $7e, $c4, $7c, $84, $fc        ;; 0b:7dd8 ????????
+    db   $58, $7f, $7e, $67, $7f, $7f, $3f, $24        ;; 0b:7de0 ????????
+    db   $1f, $1d, $07, $04, $03, $03, $00, $00        ;; 0b:7de8 ????????
+    db   $1a, $fe, $7e, $e6, $fe, $fe, $fc, $a4        ;; 0b:7df0 ????????
+    db   $f8, $38, $e0, $a0, $c0, $c0, $00, $00        ;; 0b:7df8 ????????
+    dw   `00000000                                     ;; 0b:7e00 $00 $00
+    dw   `00000003                                     ;; 0b:7e02 $01 $01
+    dw   `00000032                                     ;; 0b:7e04 $02 $03
+    dw   `00000333                                     ;; 0b:7e06 $07 $07
+    dw   `00003222                                     ;; 0b:7e08 $08 $0f
+    dw   `00003332                                     ;; 0b:7e0a $0e $0f
+    dw   `00333132                                     ;; 0b:7e0c $3e $3b
+    dw   `03323333                                     ;; 0b:7e0e $6f $7f
+
+    dw   `00000033                                     ;; 0b:7e10 $03 $03
+    dw   `33000323                                     ;; 0b:7e12 $c5 $c7
+    dw   `32333223                                     ;; 0b:7e14 $b9 $ff
+    dw   `32232233                                     ;; 0b:7e16 $93 $ff
+    dw   `22322333                                     ;; 0b:7e18 $27 $ff
+    dw   `22333222                                     ;; 0b:7e1a $38 $ff
+    dw   `23322223                                     ;; 0b:7e1c $61 $ff
+    dw   `32233232                                     ;; 0b:7e1e $9a $ff
+
+    dw   `33132332                                     ;; 0b:7e20 $f6 $df
+    dw   `33332323                                     ;; 0b:7e22 $f5 $ff
+    dw   `32311122                                     ;; 0b:7e24 $bc $e3
+    dw   `32211123                                     ;; 0b:7e26 $9d $e3
+    dw   `33222233                                     ;; 0b:7e28 $c3 $ff
+    dw   `32223332                                     ;; 0b:7e2a $8e $ff
+    dw   `32222233                                     ;; 0b:7e2c $83 $ff
+    dw   `32222232                                     ;; 0b:7e2e $82 $ff
+
+    dw   `22223232                                     ;; 0b:7e30 $0a $ff
+    dw   `33222232                                     ;; 0b:7e32 $c2 $ff
+    dw   `33222232                                     ;; 0b:7e34 $c2 $ff
+    dw   `13233222                                     ;; 0b:7e36 $d8 $7f
+    dw   `32223323                                     ;; 0b:7e38 $8d $ff
+    dw   `23222323                                     ;; 0b:7e3a $45 $ff
+    dw   `32222222                                     ;; 0b:7e3c $80 $ff
+    dw   `33322333                                     ;; 0b:7e3e $e7 $ff
+
+    dw   `03222332                                     ;; 0b:7e40 $46 $7f
+    dw   `00333322                                     ;; 0b:7e42 $3c $3f
+    dw   `00003322                                     ;; 0b:7e44 $0c $0f
+    dw   `00032322                                     ;; 0b:7e46 $14 $1f
+    dw   `00322322                                     ;; 0b:7e48 $24 $3f
+    dw   `03332232                                     ;; 0b:7e4a $72 $7f
+    dw   `03233222                                     ;; 0b:7e4c $58 $7f
+    dw   `03233322                                     ;; 0b:7e4e $5c $7f
+
+    dw   `22332232                                     ;; 0b:7e50 $32 $ff
+    dw   `22233333                                     ;; 0b:7e52 $1f $ff
+    dw   `22231323                                     ;; 0b:7e54 $1d $f7
+    dw   `22231333                                     ;; 0b:7e56 $1f $f7
+    dw   `22223222                                     ;; 0b:7e58 $08 $ff
+    dw   `22222222                                     ;; 0b:7e5a $00 $ff
+    dw   `22222222                                     ;; 0b:7e5c $00 $ff
+    dw   `22222222                                     ;; 0b:7e5e $00 $ff
+
+    dw   `00332222                                     ;; 0b:7e60 $30 $3f
+    dw   `00033222                                     ;; 0b:7e62 $18 $1f
+    dw   `03322222                                     ;; 0b:7e64 $60 $7f
+    dw   `33233222                                     ;; 0b:7e66 $d8 $ff
+    dw   `30313333                                     ;; 0b:7e68 $bf $af
+    dw   `00330000                                     ;; 0b:7e6a $30 $30
+    dw   `00003333                                     ;; 0b:7e6c $0f $0f
+    dw   `00000000                                     ;; 0b:7e6e $00 $00
+
+    dw   `32222222                                     ;; 0b:7e70 $80 $ff
+    dw   `23322222                                     ;; 0b:7e72 $60 $ff
+    dw   `22233333                                     ;; 0b:7e74 $1f $ff
+    dw   `33300000                                     ;; 0b:7e76 $e0 $e0
+    dw   `00000000                                     ;; 0b:7e78 $00 $00
+    dw   `03333333                                     ;; 0b:7e7a $7f $7f
+    dw   `33333333                                     ;; 0b:7e7c $ff $ff
+    dw   `00000000                                     ;; 0b:7e7e $00 $00
+
+    dw   `33300000                                     ;; 0b:7e80 $e0 $e0
+    dw   `23333000                                     ;; 0b:7e82 $78 $f8
+    dw   `33222333                                     ;; 0b:7e84 $c7 $ff
+    dw   `22222233                                     ;; 0b:7e86 $03 $ff
+    dw   `33222233                                     ;; 0b:7e88 $c3 $ff
+    dw   `22332232                                     ;; 0b:7e8a $32 $ff
+    dw   `22223322                                     ;; 0b:7e8c $0c $ff
+    dw   `23321133                                     ;; 0b:7e8e $6f $f3
+
+    dw   `00000000                                     ;; 0b:7e90 $00 $00
+    dw   `00000000                                     ;; 0b:7e92 $00 $00
+    dw   `30000000                                     ;; 0b:7e94 $80 $80
+    dw   `23300000                                     ;; 0b:7e96 $60 $e0
+    dw   `33230000                                     ;; 0b:7e98 $d0 $f0
+    dw   `22223000                                     ;; 0b:7e9a $08 $f8
+    dw   `22223000                                     ;; 0b:7e9c $08 $f8
+    dw   `33223000                                     ;; 0b:7e9e $c8 $f8
+
+    dw   `23232211                                     ;; 0b:7ea0 $53 $fc
+    dw   `22223222                                     ;; 0b:7ea2 $08 $ff
+    dw   `22223333                                     ;; 0b:7ea4 $0f $ff
+    dw   `33321132                                     ;; 0b:7ea6 $ee $f3
+    dw   `32222213                                     ;; 0b:7ea8 $83 $fd
+    dw   `22233323                                     ;; 0b:7eaa $1d $ff
+    dw   `22221333                                     ;; 0b:7eac $0f $f7
+    dw   `22332332                                     ;; 0b:7eae $36 $ff
+
+    dw   `13223300                                     ;; 0b:7eb0 $cc $7c
+    dw   `32233300                                     ;; 0b:7eb2 $9c $fc
+    dw   `22233230                                     ;; 0b:7eb4 $1a $fe
+    dw   `22333333                                     ;; 0b:7eb6 $3f $ff
+    dw   `22222333                                     ;; 0b:7eb8 $07 $ff
+    dw   `22222223                                     ;; 0b:7eba $01 $ff
+    dw   `22222223                                     ;; 0b:7ebc $01 $ff
+    dw   `23322230                                     ;; 0b:7ebe $62 $fe
+
+    dw   `23333322                                     ;; 0b:7ec0 $7c $ff
+    dw   `33323322                                     ;; 0b:7ec2 $ec $ff
+    dw   `13233222                                     ;; 0b:7ec4 $d8 $7f
+    dw   `13332222                                     ;; 0b:7ec6 $f0 $7f
+    dw   `32313222                                     ;; 0b:7ec8 $b8 $ef
+    dw   `22333232                                     ;; 0b:7eca $3a $ff
+    dw   `22322313                                     ;; 0b:7ecc $27 $fd
+    dw   `22222332                                     ;; 0b:7ece $06 $ff
+
+    dw   `33333230                                     ;; 0b:7ed0 $fa $fe
+    dw   `23323300                                     ;; 0b:7ed2 $6c $fc
+    dw   `23333000                                     ;; 0b:7ed4 $78 $f8
+    dw   `22300330                                     ;; 0b:7ed6 $26 $e6
+    dw   `23003223                                     ;; 0b:7ed8 $49 $cf
+    dw   `22303223                                     ;; 0b:7eda $29 $ef
+    dw   `22333323                                     ;; 0b:7edc $3d $ff
+    dw   `33233330                                     ;; 0b:7ede $de $fe
+
+    dw   `22223323                                     ;; 0b:7ee0 $0d $ff
+    dw   `22222223                                     ;; 0b:7ee2 $01 $ff
+    dw   `22222222                                     ;; 0b:7ee4 $00 $ff
+    dw   `33332222                                     ;; 0b:7ee6 $f0 $ff
+    dw   `00033223                                     ;; 0b:7ee8 $19 $1f
+    dw   `33333323                                     ;; 0b:7eea $fd $ff
+    dw   `33333333                                     ;; 0b:7eec $ff $ff
+    dw   `00000000                                     ;; 0b:7eee $00 $00
+
+    dw   `13232300                                     ;; 0b:7ef0 $d4 $7c
+    dw   `32233300                                     ;; 0b:7ef2 $9c $fc
+    dw   `22222300                                     ;; 0b:7ef4 $04 $fc
+    dw   `22223300                                     ;; 0b:7ef6 $0c $fc
+    dw   `32333130                                     ;; 0b:7ef8 $be $fa
+    dw   `13313330                                     ;; 0b:7efa $fe $6e
+    dw   `33033030                                     ;; 0b:7efc $da $da
+    dw   `03003000                                     ;; 0b:7efe $48 $48
+
+    dw   `03300000                                     ;; 0b:7f00 $60 $60
+    dw   `32330003                                     ;; 0b:7f02 $b1 $f1
+    dw   `33323332                                     ;; 0b:7f04 $ee $ff
+    dw   `03222223                                     ;; 0b:7f06 $41 $7f
+    dw   `00323332                                     ;; 0b:7f08 $2e $3f
+    dw   `00033322                                     ;; 0b:7f0a $1c $1f
+    dw   `00332322                                     ;; 0b:7f0c $34 $3f
+    dw   `00333223                                     ;; 0b:7f0e $39 $3f
+
+    dw   `00033333                                     ;; 0b:7f10 $1f $1f
+    dw   `33332333                                     ;; 0b:7f12 $f7 $ff
+    dw   `23222223                                     ;; 0b:7f14 $41 $ff
+    dw   `32223333                                     ;; 0b:7f16 $8f $ff
+    dw   `22333223                                     ;; 0b:7f18 $39 $ff
+    dw   `23322222                                     ;; 0b:7f1a $60 $ff
+    dw   `22222333                                     ;; 0b:7f1c $07 $ff
+    dw   `22223333                                     ;; 0b:7f1e $0f $ff
+
+    dw   `03222233                                     ;; 0b:7f20 $43 $7f
+    dw   `31322322                                     ;; 0b:7f22 $e4 $bf
+    dw   `33333222                                     ;; 0b:7f24 $f8 $ff
+    dw   `30332222                                     ;; 0b:7f26 $b0 $bf
+    dw   `03322222                                     ;; 0b:7f28 $60 $7f
+    dw   `33322222                                     ;; 0b:7f2a $e0 $ff
+    dw   `33322233                                     ;; 0b:7f2c $e3 $ff
+    dw   `32332231                                     ;; 0b:7f2e $b3 $fe
+
+    dw   `22233322                                     ;; 0b:7f30 $1c $ff
+    dw   `23332222                                     ;; 0b:7f32 $70 $ff
+    dw   `33222222                                     ;; 0b:7f34 $c0 $ff
+    dw   `22222233                                     ;; 0b:7f36 $03 $ff
+    dw   `22323322                                     ;; 0b:7f38 $2c $ff
+    dw   `23332222                                     ;; 0b:7f3a $70 $ff
+    dw   `33112332                                     ;; 0b:7f3c $f6 $cf
+    dw   `11223232                                     ;; 0b:7f3e $ca $3f
+
+    dw   `33333223                                     ;; 0b:7f40 $f9 $ff
+    dw   `03332222                                     ;; 0b:7f42 $70 $7f
+    dw   `03222222                                     ;; 0b:7f44 $40 $7f
+    dw   `00322222                                     ;; 0b:7f46 $20 $3f
+    dw   `00332222                                     ;; 0b:7f48 $30 $3f
+    dw   `00032222                                     ;; 0b:7f4a $10 $1f
+    dw   `00033322                                     ;; 0b:7f4c $1c $1f
+    dw   `00003333                                     ;; 0b:7f4e $0f $0f
+
+    dw   `22232222                                     ;; 0b:7f50 $10 $ff
+    dw   `33332222                                     ;; 0b:7f52 $f0 $ff
+    dw   `23112333                                     ;; 0b:7f54 $77 $cf
+    dw   `31222223                                     ;; 0b:7f56 $c1 $bf
+    dw   `32333223                                     ;; 0b:7f58 $b9 $ff
+    dw   `23312222                                     ;; 0b:7f5a $70 $ef
+    dw   `23323322                                     ;; 0b:7f5c $6c $ff
+    dw   `22233232                                     ;; 0b:7f5e $1a $ff
+
+    dw   `00003232                                     ;; 0b:7f60 $0a $0f
+    dw   `00000332                                     ;; 0b:7f62 $06 $07
+    dw   `00000322                                     ;; 0b:7f64 $04 $07
+    dw   `00000332                                     ;; 0b:7f66 $06 $07
+    dw   `00003222                                     ;; 0b:7f68 $08 $0f
+    dw   `00031323                                     ;; 0b:7f6a $1d $17
+    dw   `00033033                                     ;; 0b:7f6c $1b $1b
+    dw   `00003000                                     ;; 0b:7f6e $08 $08
+
+    dw   `22233313                                     ;; 0b:7f70 $1f $fd
+    dw   `22233313                                     ;; 0b:7f72 $1f $fd
+    dw   `22333333                                     ;; 0b:7f74 $3f $ff
+    dw   `22223033                                     ;; 0b:7f76 $0b $fb
+    dw   `22222300                                     ;; 0b:7f78 $04 $fc
+    dw   `33233130                                     ;; 0b:7f7a $de $fa
+    dw   `13300300                                     ;; 0b:7f7c $e4 $64
+    dw   `30000000                                     ;; 0b:7f7e $80 $80
+
+    dw   `33300000                                     ;; 0b:7f80 $e0 $e0
+    dw   `22233000                                     ;; 0b:7f82 $18 $f8
+    dw   `32222300                                     ;; 0b:7f84 $84 $fc
+    dw   `33332230                                     ;; 0b:7f86 $f2 $fe
+    dw   `32233223                                     ;; 0b:7f88 $99 $ff
+    dw   `22223322                                     ;; 0b:7f8a $0c $ff
+    dw   `33222222                                     ;; 0b:7f8c $c0 $ff
+    dw   `33322222                                     ;; 0b:7f8e $e0 $ff
+
+    dw   `00000000                                     ;; 0b:7f90 $00 $00
+    dw   `00000000                                     ;; 0b:7f92 $00 $00
+    dw   `00000000                                     ;; 0b:7f94 $00 $00
+    dw   `00000000                                     ;; 0b:7f96 $00 $00
+    dw   `30000000                                     ;; 0b:7f98 $80 $80
+    dw   `23330000                                     ;; 0b:7f9a $70 $f0
+    dw   `22323000                                     ;; 0b:7f9c $28 $f8
+    dw   `22333300                                     ;; 0b:7f9e $3c $fc
+
+    dw   `23332223                                     ;; 0b:7fa0 $71 $ff
+    dw   `22233322                                     ;; 0b:7fa2 $1c $ff
+    dw   `22222332                                     ;; 0b:7fa4 $06 $ff
+    dw   `33323222                                     ;; 0b:7fa6 $e8 $ff
+    dw   `22233322                                     ;; 0b:7fa8 $1c $ff
+    dw   `32222332                                     ;; 0b:7faa $86 $ff
+    dw   `23233223                                     ;; 0b:7fac $59 $ff
+    dw   `23232222                                     ;; 0b:7fae $50 $ff
+
+    dw   `22222300                                     ;; 0b:7fb0 $04 $fc
+    dw   `32222230                                     ;; 0b:7fb2 $82 $fe
+    dw   `33222313                                     ;; 0b:7fb4 $c7 $fd
+    dw   `22332333                                     ;; 0b:7fb6 $37 $ff
+    dw   `22223003                                     ;; 0b:7fb8 $09 $f9
+    dw   `22222300                                     ;; 0b:7fba $04 $fc
+    dw   `33222330                                     ;; 0b:7fbc $c6 $fe
+    dw   `23223330                                     ;; 0b:7fbe $4e $fe
+
+    dw   `23222233                                     ;; 0b:7fc0 $43 $ff
+    dw   `23222233                                     ;; 0b:7fc2 $43 $ff
+    dw   `22233211                                     ;; 0b:7fc4 $1b $fc
+    dw   `32332222                                     ;; 0b:7fc6 $b0 $ff
+    dw   `13132233                                     ;; 0b:7fc8 $f3 $5f
+    dw   `22222223                                     ;; 0b:7fca $01 $ff
+    dw   `33322323                                     ;; 0b:7fcc $e5 $ff
+    dw   `23223332                                     ;; 0b:7fce $4e $ff
+
+    dw   `32233230                                     ;; 0b:7fd0 $9a $fe
+    dw   `22233330                                     ;; 0b:7fd2 $1e $fe
+    dw   `32223330                                     ;; 0b:7fd4 $8e $fe
+    dw   `13222300                                     ;; 0b:7fd6 $c4 $7c
+    dw   `23222300                                     ;; 0b:7fd8 $44 $fc
+    dw   `32223000                                     ;; 0b:7fda $88 $f8
+    dw   `22230000                                     ;; 0b:7fdc $10 $f0
+    dw   `22330000                                     ;; 0b:7fde $30 $f0
+
+    dw   `33331322                                     ;; 0b:7fe0 $fc $f7
+    dw   `33331322                                     ;; 0b:7fe2 $fc $f7
+    dw   `22233222                                     ;; 0b:7fe4 $18 $ff
+    dw   `33332222                                     ;; 0b:7fe6 $f0 $ff
+    dw   `00322222                                     ;; 0b:7fe8 $20 $3f
+    dw   `03133233                                     ;; 0b:7fea $7b $5f
+    dw   `03300331                                     ;; 0b:7fec $67 $66
+    dw   `03000003                                     ;; 0b:7fee $41 $41
+
+    dw   `33330000                                     ;; 0b:7ff0 $f0 $f0
+    dw   `32300000                                     ;; 0b:7ff2 $a0 $e0
+    dw   `23000000                                     ;; 0b:7ff4 $40 $c0
+    dw   `33000000                                     ;; 0b:7ff6 $c0 $c0
+    dw   `22330000                                     ;; 0b:7ff8 $30 $f0
+    dw   `32313000                                     ;; 0b:7ffa $b8 $e8
+    dw   `33033000                                     ;; 0b:7ffc $d8 $d8
+    dw   `00030000                                     ;; 0b:7ffe $10 $10
+

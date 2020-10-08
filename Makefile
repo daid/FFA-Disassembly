@@ -1,18 +1,27 @@
+ROM = rom.gb
 
-ASM_FILES = $(shell find -type f -name '*.asm')
+SRCS = $(wildcard src/*.asm)
 
-rom.gb: src/main.o
-	rgblink -n $(basename $@).sym -o $@ $^
-	rgbfix --validate $@
+all: $(ROM)
 
-src/main.o: $(ASM_FILES)
-	rgbasm --export-all -o $@ src/main.asm
-
-check: rom.gb rom.md5
-	md5sum -c rom.md5
+check: $(ROM)
+	md5sum -c $(ROM).md5
 
 clean:
-	rm -rf src/main.o rom.gb rom.sym
+	-rm -rf .bin .obj .dep
 
-.PHONY: all clean check
-all: rom.gb
+$(ROM): $(patsubst src/%.asm,.obj/%.o,$(SRCS))
+	@mkdir -p $(@D)
+	rgblink -w -m $(basename $@).map -n $(basename $@).sym -o $@ $^
+	rgbfix --validate $(FIXFLAGS) $@
+
+
+.obj/%.o $(DEPDIR)/%.mk: src/%.asm
+	@mkdir -p $(dir .obj/$* .dep/$*)
+	rgbasm -Wall -Wextra --export-all -isrc -M .dep/$*.mk -MP -MQ .obj/$*.o -MQ .dep/$*.mk -o .obj/$*.o $<
+
+ifneq ($(MAKECMDGOALS),clean)
+-include $(patsubst src/%.asm,.dep/%.mk,$(SRCS))
+endif
+
+.PHONY: all clean
