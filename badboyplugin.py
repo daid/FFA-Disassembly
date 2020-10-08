@@ -4,6 +4,7 @@ from block.base import Block
 from block.gfx import GfxBlock
 from romInfo import RomInfo
 
+CHARMAP = None
 
 @annotation
 def dual_char_map(memory, addr):
@@ -33,7 +34,10 @@ def dual_char_map(memory, addr):
             charmap[0x30 + n] = charmap[d0] + charmap[d1]
         else:
             charmap[0x20 + n] = charmap[d0] + charmap[d1]
-    #TODO: store charmap
+
+    RomInfo.charmap["SCRIPT"] = charmap
+    global CHARMAP
+    CHARMAP = charmap
 
 @annotation
 def map_headers(memory, addr, *, amount):
@@ -238,12 +242,7 @@ OPCODES = {
     0x01: ("sJR", r"db \1 - @ - 1", "REL_LABEL"),
     0x02: ("sCALL", r"db ((BANK(\1) - $0D) << 6) | (HIGH(\1) & $3F), LOW(\1)", "LABEL"),
     0x03: ("sLOOP", r"db \1, \2", "BYTE", "BYTE"),
-    0x04: ("sMSG", r"""
-REPT _NARG
-    db \1
-    SHIFT
-ENDR
-    db $00""", "MSG"),
+    0x04: ("sMSG", r"SETCHARMAP SCRIPT", "MSG"),
 
     0x05: ("sNOP_05",),
     0x06: ("sNOP_06",),
@@ -508,6 +507,7 @@ class ScriptBlock(Block):
     def __init__(self, memory, addr):
         super().__init__(memory, addr)
         
+        loop_count = 0
         while True:
             if memory[addr + len(self)] is not None:
                 break
@@ -542,10 +542,13 @@ class ScriptBlock(Block):
                         assert False, t
             self.resize(len(self) + size)
             if opcode[0] == "sLOOP":
+                loop_count += 1
                 # For a loop, continue after the sEND of the loop.
-                ScriptBlock(memory, addr + len(self) + memory.byte(addr + len(self) - 1))
             if opcode[0] == "sEND":
-                break
+                if loop_count > 0:
+                    loop_count -= 1
+                else:
+                    break
 
     def export(self, file):
         while file.addr < self.base_address + len(self):
@@ -556,6 +559,7 @@ class ScriptBlock(Block):
 
         size = 1
         args = []
+        msg = None
         if len(opcode) > 2:
             for t in opcode[2:]:
                 if t == "WORD":
@@ -569,9 +573,17 @@ class ScriptBlock(Block):
                     args.append(str(target_bank.getLabel(target)))
 
                     size += 2
-                elif t in ("LIST", "MSG"):
+                elif t == "LIST":
                     while self.memory.byte(file.addr + size) != 0:
                         args.append("$%02x" % (self.memory.byte(file.addr + size)))
+                        size += 1
+                    size += 1
+                elif t == "MSG":
+                    msg = ""
+                    while self.memory.byte(file.addr + size) != 0:
+                        msg += CHARMAP[self.memory.byte(file.addr + size)]
+                        if self.memory.byte(file.addr + size) == 0x12:
+                            msg += "\"\n      db \""
                         size += 1
                     size += 1
                 elif t == "BYTE":
@@ -585,4 +597,8 @@ class ScriptBlock(Block):
                     args.append(str(self.memory.getLabel(target)))
                     size += 1
 
-        file.asmLine(size, opcode[0], *args)
+        if msg is not None:
+            file.asmLine(1, opcode[0], *args)
+            file.asmLine(size - 1, "  db", "\"%s\", $00" % (msg))
+        else:
+            file.asmLine(size, opcode[0], *args)
