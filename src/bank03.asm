@@ -5,29 +5,29 @@ INCLUDE "include/macros.inc"
 INCLUDE "include/charmaps.inc"
 
 SECTION "bank03", ROMX[$4000], BANK[$03]
-;@jumptable
-    dw   call_03_402c                                  ;; 03:4000 ..
-    dw   call_03_4af5                                  ;; 03:4002 ..
-    dw   call_03_42bd                                  ;; 03:4004 ..
-    dw   call_03_435f                                  ;; 03:4006 ..
-    dw   call_03_44ed                                  ;; 03:4008 ..
-    dw   call_03_444a                                  ;; 03:400a ..
-    dw   call_03_455d                                  ;; 03:400c ??
-    dw   call_03_4641                                  ;; 03:400e ..
-    dw   call_03_4561                                  ;; 03:4010 ..
-    dw   call_03_48d7                                  ;; 03:4012 ??
-    dw   call_03_4b70                                  ;; 03:4014 ..
-    dw   call_03_4aed                                  ;; 03:4016 ..
-    dw   call_03_4af1                                  ;; 03:4018 ..
-    dw   call_03_4af9                                  ;; 03:401a ..
-    dw   call_03_4b4f                                  ;; 03:401c ..
-    dw   call_03_43c5                                  ;; 03:401e ..
-    dw   call_03_4a9f                                  ;; 03:4020 ??
-    dw   call_03_4ac1                                  ;; 03:4022 ??
-    dw   call_03_4b62                                  ;; 03:4024 ..
-    dw   call_03_4c30                                  ;; 03:4026 ..
-    dw   call_03_4c38                                  ;; 03:4028 ..
-    dw   call_03_4a81                                  ;; 03:402a ..
+;@call_to_bank_jumptable
+    call_to_bank_target call_03_402c                   ;; 03:4000 ..
+    call_to_bank_target call_03_4af5                   ;; 03:4002 ..
+    call_to_bank_target call_03_42bd                   ;; 03:4004 ..
+    call_to_bank_target call_03_435f                   ;; 03:4006 ..
+    call_to_bank_target call_03_44ed                   ;; 03:4008 ..
+    call_to_bank_target call_03_444a                   ;; 03:400a ..
+    call_to_bank_target call_03_455d                   ;; 03:400c ??
+    call_to_bank_target call_03_4641                   ;; 03:400e ..
+    call_to_bank_target call_03_4561                   ;; 03:4010 ..
+    call_to_bank_target call_03_48d7                   ;; 03:4012 ??
+    call_to_bank_target call_03_4b70                   ;; 03:4014 ..
+    call_to_bank_target call_03_4aed                   ;; 03:4016 ..
+    call_to_bank_target call_03_4af1                   ;; 03:4018 ..
+    call_to_bank_target call_03_4af9                   ;; 03:401a ..
+    call_to_bank_target call_03_4b4f                   ;; 03:401c ..
+    call_to_bank_target call_03_43c5                   ;; 03:401e ..
+    call_to_bank_target call_03_4a9f                   ;; 03:4020 ??
+    call_to_bank_target call_03_4ac1                   ;; 03:4022 ??
+    call_to_bank_target call_03_4b62                   ;; 03:4024 ..
+    call_to_bank_target call_03_4c30                   ;; 03:4026 ..
+    call_to_bank_target call_03_4c38                   ;; 03:4028 ..
+    call_to_bank_target call_03_4a81                   ;; 03:402a ..
 
 call_03_402c:
     ld   HL, wC4E0                                     ;; 03:402c $21 $e0 $c4

@@ -5,14 +5,14 @@ INCLUDE "include/macros.inc"
 INCLUDE "include/charmaps.inc"
 
 SECTION "bank04", ROMX[$4000], BANK[$04]
-;@jumptable amount=7
-    dw   call_04_4090                                  ;; 04:4000 ..
-    dw   call_04_42f7                                  ;; 04:4002 ..
-    dw   call_04_4425                                  ;; 04:4004 ??
-    dw   call_04_45fa                                  ;; 04:4006 ..
-    dw   call_04_4735                                  ;; 04:4008 ??
-    dw   call_04_4446                                  ;; 04:400a ..
-    dw   call_04_400e                                  ;; 04:400c ..
+;@call_to_bank_jumptable amount=7
+    call_to_bank_target call_04_4090                   ;; 04:4000 ..
+    call_to_bank_target call_04_42f7                   ;; 04:4002 ..
+    call_to_bank_target call_04_4425                   ;; 04:4004 ??
+    call_to_bank_target call_04_45fa                   ;; 04:4006 ..
+    call_to_bank_target call_04_4735                   ;; 04:4008 ??
+    call_to_bank_target call_04_4446                   ;; 04:400a ..
+    call_to_bank_target call_04_400e                   ;; 04:400c ..
 
 call_04_400e:
     push BC                                            ;; 04:400e $c5

@@ -17,6 +17,10 @@ ENDM
 SCRIPT_POINTER: MACRO
     dw ((\1 - $4000) + ((BANK(\1) - $0D) * $4000))
 ENDM
+call_to_bank_target: MACRO
+    _call_to_bank_target_\1::
+    dw \1
+ENDM
 data_bbbbbbbbbbbbbbbbbbbbwbb: MACRO
     db \1
     shift
@@ -65,9 +69,14 @@ data_bbbbbbbbbbbbbbbbbbbbwbb: MACRO
     db \1
     shift
 ENDM
+jp_to_bank: MACRO
+    
+                ld   a, (_call_to_bank_target_\2 - $4000) / 2
+                jp callFunctionInBank\1
+ENDM
 ld_long_load: MACRO
     db $FA
-    dw \1
+    dw \2
 ENDM
 ld_long_store: MACRO
     db $EA

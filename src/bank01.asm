@@ -6,48 +6,48 @@ INCLUDE "include/charmaps.inc"
 
 SECTION "bank01", ROMX[$4000], BANK[$01]
 
-;@jumptable amount=40
+;@call_to_bank_jumptable amount=40
 data_01_4000:
-    dw   call_01_499e                                  ;; 01:4000 ..
-    dw   call_01_48be                                  ;; 01:4002 ..
-    dw   call_01_4996                                  ;; 01:4004 ..
-    dw   call_01_498e                                  ;; 01:4006 ..
-    dw   call_01_5090                                  ;; 01:4008 ..
-    dw   call_01_4f7b                                  ;; 01:400a ..
-    dw   call_01_4d0b                                  ;; 01:400c ??
-    dw   call_01_50ac                                  ;; 01:400e ..
-    dw   call_01_50f9                                  ;; 01:4010 ..
-    dw   call_01_5136                                  ;; 01:4012 ??
-    dw   call_01_5156                                  ;; 01:4014 ??
-    dw   call_01_5176                                  ;; 01:4016 ??
-    dw   call_01_5196                                  ;; 01:4018 ..
-    dw   call_01_51bb                                  ;; 01:401a ..
-    dw   call_01_51d5                                  ;; 01:401c ??
-    dw   call_01_4130                                  ;; 01:401e ..
-    dw   call_01_414c                                  ;; 01:4020 ..
-    dw   call_01_4164                                  ;; 01:4022 ..
-    dw   call_01_4180                                  ;; 01:4024 ..
-    dw   call_01_40ca                                  ;; 01:4026 ..
-    dw   call_01_40d8                                  ;; 01:4028 ..
-    dw   call_01_40f3                                  ;; 01:402a ..
-    dw   call_01_4059                                  ;; 01:402c ??
-    dw   call_01_40a0                                  ;; 01:402e ??
-    dw   call_01_44d8                                  ;; 01:4030 ..
-    dw   call_01_471d                                  ;; 01:4032 ..
-    dw   call_01_7647                                  ;; 01:4034 ..
-    dw   call_01_7639                                  ;; 01:4036 ..
-    dw   call_01_76ab                                  ;; 01:4038 ..
-    dw   call_01_52b3                                  ;; 01:403a ..
-    dw   call_01_5d64                                  ;; 01:403c ..
-    dw   call_01_5d82                                  ;; 01:403e ..
-    dw   call_01_5a6b                                  ;; 01:4040 ..
-    dw   call_01_5a77                                  ;; 01:4042 ..
-    dw   call_01_5a83                                  ;; 01:4044 ..
-    dw   call_01_5a8c                                  ;; 01:4046 ??
-    dw   call_01_5d98                                  ;; 01:4048 ..
-    dw   call_01_5cc6                                  ;; 01:404a ..
-    dw   call_01_5db6                                  ;; 01:404c ??
-    dw   call_01_51e1                                  ;; 01:404e ..
+    call_to_bank_target call_01_499e                   ;; 01:4000 ..
+    call_to_bank_target call_01_48be                   ;; 01:4002 ..
+    call_to_bank_target call_01_4996                   ;; 01:4004 ..
+    call_to_bank_target call_01_498e                   ;; 01:4006 ..
+    call_to_bank_target call_01_5090                   ;; 01:4008 ..
+    call_to_bank_target call_01_4f7b                   ;; 01:400a ..
+    call_to_bank_target call_01_4d0b                   ;; 01:400c ??
+    call_to_bank_target call_01_50ac                   ;; 01:400e ..
+    call_to_bank_target call_01_50f9                   ;; 01:4010 ..
+    call_to_bank_target call_01_5136                   ;; 01:4012 ??
+    call_to_bank_target call_01_5156                   ;; 01:4014 ??
+    call_to_bank_target call_01_5176                   ;; 01:4016 ??
+    call_to_bank_target call_01_5196                   ;; 01:4018 ..
+    call_to_bank_target call_01_51bb                   ;; 01:401a ..
+    call_to_bank_target call_01_51d5                   ;; 01:401c ??
+    call_to_bank_target call_01_4130                   ;; 01:401e ..
+    call_to_bank_target call_01_414c                   ;; 01:4020 ..
+    call_to_bank_target call_01_4164                   ;; 01:4022 ..
+    call_to_bank_target call_01_4180                   ;; 01:4024 ..
+    call_to_bank_target call_01_40ca                   ;; 01:4026 ..
+    call_to_bank_target call_01_40d8                   ;; 01:4028 ..
+    call_to_bank_target call_01_40f3                   ;; 01:402a ..
+    call_to_bank_target call_01_4059                   ;; 01:402c ??
+    call_to_bank_target call_01_40a0                   ;; 01:402e ??
+    call_to_bank_target call_01_44d8                   ;; 01:4030 ..
+    call_to_bank_target call_01_471d                   ;; 01:4032 ..
+    call_to_bank_target call_01_7647                   ;; 01:4034 ..
+    call_to_bank_target call_01_7639                   ;; 01:4036 ..
+    call_to_bank_target call_01_76ab                   ;; 01:4038 ..
+    call_to_bank_target call_01_52b3                   ;; 01:403a ..
+    call_to_bank_target call_01_5d64                   ;; 01:403c ..
+    call_to_bank_target call_01_5d82                   ;; 01:403e ..
+    call_to_bank_target call_01_5a6b                   ;; 01:4040 ..
+    call_to_bank_target call_01_5a77                   ;; 01:4042 ..
+    call_to_bank_target call_01_5a83                   ;; 01:4044 ..
+    call_to_bank_target call_01_5a8c                   ;; 01:4046 ??
+    call_to_bank_target call_01_5d98                   ;; 01:4048 ..
+    call_to_bank_target call_01_5cc6                   ;; 01:404a ..
+    call_to_bank_target call_01_5db6                   ;; 01:404c ??
+    call_to_bank_target call_01_51e1                   ;; 01:404e ..
 
 data_01_4050:
     db   $0e, $fc, $03, $e4, $7e, $fc, $01, $e4        ;; 01:4050 ????????
