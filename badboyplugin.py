@@ -617,7 +617,7 @@ class ScriptBlock(Block):
 
         if msg is not None:
             file.asmLine(1, opcode[0], *args)
-            file.asmLine(size - 1, "  db", "\"%s\", $00" % (msg), is_data=True)
+            file.asmLine(size - 1, "  db", "\"%s\", $00" % (msg), is_data=True, add_data_comment=False)
         else:
             file.asmLine(size, opcode[0], *args)
 

@@ -142,7 +142,7 @@ script_0005:
 .jr_0d_413a:
     sMSG                                               ;; 0d:413a $04
       db "<10> Locked.<12>"
-      db "<11>", $00       ;; 0d:413b ??????????
+      db "<11>", $00       ;; 0d:413b
 .jr_0d_4145:
     sEND                                               ;; 0d:4145 $00
 
@@ -167,7 +167,7 @@ script_0007:
     sSET_MUSIC 23                                      ;; 0d:415d $f8 $17
     sMSG                                               ;; 0d:415f $04
       db "<10>\n    <BOY> fell_<12>"
-      db "<11>", $00 ;; 0d:4160 ............
+      db "<11>", $00 ;; 0d:4160
     sRESET_GAME                                        ;; 0d:416c $c8
     sEND                                               ;; 0d:416d $00
 
@@ -230,7 +230,7 @@ script_0008:
 script_0009:
     sMSG                                               ;; 0d:4227 $04
       db "<10> Doesn't open.<12>"
-      db "<11>", $00 ;; 0d:4228 ...............
+      db "<11>", $00 ;; 0d:4228
     sEND                                               ;; 0d:4237 $00
 
 script_000a:
@@ -253,11 +253,11 @@ script_000c:
     sJR  .jr_0d_42aa                                   ;; 0d:4256 $01 $52
 .jr_0d_4258:
     sMSG                                               ;; 0d:4258 $04
-      db "<10>", $00                                   ;; 0d:4259 ??
+      db "<10>", $00                                   ;; 0d:4259
     sIF_08_JR $b1, .jr_0d_428e                         ;; 0d:425b $08 $b1 $00 $2f
     sMSG                                               ;; 0d:425f $04
       db " I'LL STAY HERE\n AND RESEARCH.<12>"
-      db "<11>", $00 ;; 0d:4260 ??????????????????????????????
+      db "<11>", $00 ;; 0d:4260
     sFOLLOWER_DELETE                                   ;; 0d:427e $98
     sCLEAR_FLAG $57                                    ;; 0d:427f $db $57
     sLOAD_ROOM 0, $73, 10, 6                           ;; 0d:4281 $f4 $00 $73 $0a $06
@@ -268,7 +268,7 @@ script_000c:
 .jr_0d_428e:
     sMSG                                               ;; 0d:428e $04
       db "Tower is sinking.\nUnable to get out!<12>"
-      db "<11>", $00 ;; 0d:428f ???????????????????????????
+      db "<11>", $00 ;; 0d:428f
 .jr_0d_42aa:
     sJR  .jr_0d_4383                                   ;; 0d:42aa $01 $d7
 .jr_0d_42ac:
@@ -281,7 +281,7 @@ script_000c:
     sIF_08_JR $56, $a8, .jr_0d_42f3                    ;; 0d:42c3 $08 $56 $a8 $00 $2b
     sMSG                                               ;; 0d:42c8 $04
       db "<10>Lester:Won't you\n avenge my sister?\n Well, I'm going!<12>"
-      db "<11>", $00 ;; 0d:42c9 ???????????????????????????????????????
+      db "<11>", $00 ;; 0d:42c9
     sFOLLOWER_DELETE                                   ;; 0d:42f0 $98
     sCLEAR_FLAG $56                                    ;; 0d:42f1 $db $56
 .jr_0d_42f3:
@@ -341,14 +341,14 @@ script_000d:
     sJR  .jr_0d_43aa                                   ;; 0d:438c $01 $1c
 .jr_0d_438e:
     sMSG                                               ;; 0d:438e $04
-      db "<10>_ _", $00                                ;; 0d:438f ?????
+      db "<10>_ _", $00                                ;; 0d:438f
     sDELAY 30                                          ;; 0d:4394 $f0 $1e
     sMSG                                               ;; 0d:4396 $04
-      db "_", $00                                      ;; 0d:4397 ??
+      db "_", $00                                      ;; 0d:4397
     sDELAY 20                                          ;; 0d:4399 $f0 $14
     sMSG                                               ;; 0d:439b $04
       db "__\n_ It's frozen.<12>"
-      db "<11>", $00 ;; 0d:439c ??????????????
+      db "<11>", $00 ;; 0d:439c
 .jr_0d_43aa:
     sEND                                               ;; 0d:43aa $00
 
@@ -1275,10 +1275,10 @@ script_00e6:
     sSET_PLAYER_DIRECTION_UP                           ;; 0d:46df $84
     sDELAY 20                                          ;; 0d:46e0 $f0 $14
     sMSG                                               ;; 0d:46e2 $04
-      db "<10>Now fight!", $00                         ;; 0d:46e3 ........
+      db "<10>Now fight!", $00                         ;; 0d:46e3
     sDELAY 70                                          ;; 0d:46eb $f0 $46
     sMSG                                               ;; 0d:46ed $04
-      db "<11>", $00                                   ;; 0d:46ee ..
+      db "<11>", $00                                   ;; 0d:46ee
     sSET_MUSIC 26                                      ;; 0d:46f0 $f8 $1a
     sDELAY 60                                          ;; 0d:46f2 $f0 $3c
     sSET_ROOM_TILE $6a, 4, 1                           ;; 0d:46f4 $b0 $6a $04 $01
@@ -1395,7 +1395,7 @@ script_00f5:
     sSPAWN_NPC 1                                       ;; 0d:47a6 $fd $01
     sMSG                                               ;; 0d:47a8 $04
       db "<10> HELP!\n H E L P!!<12>"
-      db "<11>", $00 ;; 0d:47a9 ..................
+      db "<11>", $00 ;; 0d:47a9
     sSET_MUSIC 26                                      ;; 0d:47bb $f8 $1a
 .jr_0d_47bd:
     sIF_08_JR $0b, .jr_0d_47c4                         ;; 0d:47bd $08 $0b $00 $03
@@ -1566,7 +1566,7 @@ script_010f:
       db "<10>Cibba:I am Cibba.\n Bogard told me\n about you.<12>"
       db "<1b> __ Oh, yes!\n It sure is the\n symbol of Mana.<12>"
       db "<1b> Step forward.\n You'll see what\n you must see.<12>"
-      db "<11>", $00 ;; 0d:487f ??????????????????????????????????????????????????????????????????????????????????????????????????
+      db "<11>", $00 ;; 0d:487f
     sSET_NPC_1_DIRECTION_LEFT                          ;; 0d:48e1 $17
     sLOOP 3, 2                                         ;; 0d:48e2 $03 $03 $02
     sNPC_1_STEP_BACKWARDS                              ;; 0d:48e5 $11
@@ -1683,7 +1683,7 @@ script_011e:
     sEND                                               ;; 0d:4961 $00
     sMSG                                               ;; 0d:4962 $04
       db "<10>Julius:See the\n true power of\n Mana now!<12>"
-      db "<11>", $00 ;; 0d:4963 ???????????????????????????????
+      db "<11>", $00 ;; 0d:4963
     sLOOP 5, 4                                         ;; 0d:4982 $03 $05 $04
     sSFX 20                                            ;; 0d:4985 $f9 $14
     sFLASH_SCREEN                                      ;; 0d:4987 $bf
@@ -1704,7 +1704,7 @@ script_0120:
     sDELAY 60                                          ;; 0d:4999 $f0 $3c
     sMSG                                               ;; 0d:499b $04
       db "<10> Defeated Julius.<12>"
-      db "<11>", $00 ;; 0d:499c ????????????????
+      db "<11>", $00 ;; 0d:499c
     sDELAY 30                                          ;; 0d:49ac $f0 $1e
     sCALL script_011e                                  ;; 0d:49ae $02 $09 $48
     sJR  .jr_0d_4a65                                   ;; 0d:49b1 $01 $b2
@@ -1713,11 +1713,11 @@ script_0120:
     sSFX 34                                            ;; 0d:49b5 $f9 $22
     sDELAY 20                                          ;; 0d:49b7 $f0 $14
     sMSG                                               ;; 0d:49b9 $04
-      db "<10>Julius:GRRRR", $00                       ;; 0d:49ba ????????????
+      db "<10>Julius:GRRRR", $00                       ;; 0d:49ba
     sDELAY 30                                          ;; 0d:49c6 $f0 $1e
     sMSG                                               ;; 0d:49c8 $04
       db " __<12>"
-      db "<11>", $00                ;; 0d:49c9 ?????
+      db "<11>", $00                ;; 0d:49c9
     sDELAY 60                                          ;; 0d:49ce $f0 $3c
     sFADE_TO_BLACK                                     ;; 0d:49d0 $bd
     sLOAD_ROOM_INSTANT 15, $50, 8, 10                  ;; 0d:49d1 $f3 $0f $50 $08 $0a
@@ -1730,11 +1730,11 @@ script_0120:
     sMSG                                               ;; 0d:49e1 $04
       db "<10><GIRL>:__ <BOY>.\n<BOY>:Are you\n okay, <GIRL>?<12>"
       db "<1b><BOY>:I defeated\n Julius.\n It's all over.<12>"
-      db "<11>", $00 ;; 0d:49e2 ?????????????????????????????????????????????????????
+      db "<11>", $00 ;; 0d:49e2
     sDELAY 60                                          ;; 0d:4a17 $f0 $3c
     sMSG                                               ;; 0d:4a19 $04
       db "<10>Julius:__ No!!\n __ It is not!<12>"
-      db "<11>", $00 ;; 0d:4a1a ?????????????????????????
+      db "<11>", $00 ;; 0d:4a1a
     sSET_PLAYER_DIRECTION_UP                           ;; 0d:4a33 $84
     sSET_NPC_1_DIRECTION_UP                            ;; 0d:4a34 $14
     sLOOP 5, 4                                         ;; 0d:4a35 $03 $05 $04
@@ -1744,7 +1744,7 @@ script_0120:
     sDELAY 40                                          ;; 0d:4a3c $f0 $28
     sMSG                                               ;; 0d:4a3e $04
       db "<10>Julius:<BOY>!\n You will never\n leave here alive!<12>"
-      db "<11>", $00 ;; 0d:4a3f ?????????????????????????????????
+      db "<11>", $00 ;; 0d:4a3f
     sGIVE_FOLLOWER 1                                   ;; 0d:4a60 $9c $01
     sSET_FLAG $51                                      ;; 0d:4a62 $da $51
     sRUN_ROOM_SCRIPT                                   ;; 0d:4a64 $ec
@@ -1897,7 +1897,7 @@ script_0140:
     sIF_08_JR $16, $54, .jr_0d_4b14                    ;; 0d:4ae8 $08 $16 $54 $00 $27
     sMSG                                               ;; 0d:4aed $04
       db "<10>Bogard:I'll stay\n and guard <GIRL>.\n<BOY>:__ Okay.<12>"
-      db "<11>", $00 ;; 0d:4aee ???????????????????????????????????
+      db "<11>", $00 ;; 0d:4aee
     sFOLLOWER_DELETE                                   ;; 0d:4b11 $98
     sCLEAR_FLAG $54                                    ;; 0d:4b12 $db $54
 .jr_0d_4b14:
@@ -1995,7 +1995,7 @@ script_0154:
     sSET_NPC_1_DIRECTION_LEFT                          ;; 0d:4b6a $17
     sMSG                                               ;; 0d:4b6b $04
       db "<10>Lester:Phew__\n I was helpless\n all by myself.<12>"
-      db "<11>", $00 ;; 0d:4b6c ?????????????????????????????????
+      db "<11>", $00 ;; 0d:4b6c
     sSET_FLAG $56                                      ;; 0d:4b8d $da $56
 .jr_0d_4b8f:
     sEND                                               ;; 0d:4b8f $00
@@ -2305,10 +2305,10 @@ script_019d:
     sDELAY 60                                          ;; 0d:4c83 $f0 $3c
     sSET_MUSIC 10                                      ;; 0d:4c85 $f8 $0a
     sMSG                                               ;; 0d:4c87 $04
-      db "<10><BOY>:<GIRL>!\n<GIRL>:__", $00           ;; 0d:4c88 ??????????
+      db "<10><BOY>:<GIRL>!\n<GIRL>:__", $00           ;; 0d:4c88
     sDELAY 30                                          ;; 0d:4c92 $f0 $1e
     sMSG                                               ;; 0d:4c94 $04
-      db "___", $00                                    ;; 0d:4c95 ???
+      db "___", $00                                    ;; 0d:4c95
     sDELAY 50                                          ;; 0d:4c98 $f0 $32
     sMSG                                               ;; 0d:4c9a $04
       db "<1b>Julius:You're\n late, <BOY>_<12>"
@@ -2316,7 +2316,7 @@ script_019d:
       db "<1b> The time has come\n for the Empire\n Neo-Vandole!<12>"
       db "<1b> Now that I have\n the mighty power_<12>"
       db "<1b> I do not need you\n anymore, <BOY>!<12>"
-      db "<11>", $00 ;; 0d:4c9b ????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
+      db "<11>", $00 ;; 0d:4c9b
     sLOAD_ROOM 1, $67, 9, 10                           ;; 0d:4d1f $f4 $01 $67 $09 $0a
     sCALL script_011e                                  ;; 0d:4d24 $02 $09 $48
     sJR  .jr_0d_4d3c                                   ;; 0d:4d27 $01 $13
@@ -2422,7 +2422,7 @@ script_01a5:
     sSFX 34                                            ;; 0d:4de6 $f9 $22
     sMSG                                               ;; 0d:4de8 $04
       db "<10>Defeated\n   Dragon Zombie!<12>"
-      db "<11>", $00 ;; 0d:4de9 ????????????????????????
+      db "<11>", $00 ;; 0d:4de9
     sSET_FLAG $34                                      ;; 0d:4e01 $da $34
     sSET_ROOM_TILE $59, 8, 1                           ;; 0d:4e03 $b0 $59 $08 $01
 .jr_0d_4e07:
@@ -2431,7 +2431,7 @@ script_01a5:
     sSFX 34                                            ;; 0d:4e12 $f9 $22
     sMSG                                               ;; 0d:4e14 $04
       db "<10>Defeated\n    Red Dragon!<12>"
-      db "<11>", $00 ;; 0d:4e15 ??????????????????????
+      db "<11>", $00 ;; 0d:4e15
     sSET_FLAG $17                                      ;; 0d:4e2b $da $17
     sSET_ROOM_TILE $59, 8, 1                           ;; 0d:4e2d $b0 $59 $08 $01
 .jr_0d_4e31:
@@ -2440,7 +2440,7 @@ script_01a5:
     sSFX 34                                            ;; 0d:4e3c $f9 $22
     sMSG                                               ;; 0d:4e3e $04
       db "<10>Defeated Dragon!<12>"
-      db "<11>", $00 ;; 0d:4e3f ????????????????
+      db "<11>", $00 ;; 0d:4e3f
     sSET_FLAG $32                                      ;; 0d:4e4f $da $32
     sSET_ROOM_TILE $59, 8, 1                           ;; 0d:4e51 $b0 $59 $08 $01
 .jr_0d_4e55:
@@ -2464,7 +2464,7 @@ script_01a6:
     sDELAY 50                                          ;; 0d:4e7a $f0 $32
     sMSG                                               ;; 0d:4e7c $04
       db "<10>Lee:That's my\n victim!<12>"
-      db "<11>", $00 ;; 0d:4e7d ?????????????????????
+      db "<11>", $00 ;; 0d:4e7d
     sSFX 20                                            ;; 0d:4e92 $f9 $14
     sFLASH_SCREEN                                      ;; 0d:4e94 $bf
     sFLASH_SCREEN                                      ;; 0d:4e95 $bf
@@ -2496,21 +2496,21 @@ script_01a8:
     sSET_MUSIC 0                                       ;; 0d:4eb9 $f8 $00
     sMSG                                               ;; 0d:4ebb $04
       db "<10>Defeated Vampire!<12>"
-      db "<1b>", $00 ;; 0d:4ebc ????????????????
+      db "<1b>", $00 ;; 0d:4ebc
     sSFX 15                                            ;; 0d:4ecc $f9 $0f
     sMSG                                               ;; 0d:4ece $04
-      db "<1b>Received the Magic\nBook of Sleep.\nLearned Slep.", $00 ;; 0d:4ecf ???????????????????????????????????
+      db "<1b>Received the Magic\nBook of Sleep.\nLearned Slep.", $00 ;; 0d:4ecf
     sGIVE_MAGIC 3                                      ;; 0d:4ef2 $d6 $03
     sMSG                                               ;; 0d:4ef4 $04
       db "<12>"
       db "<1b><BOY>:Are you\n alright, <GIRL>?\n<GIRL>:_ Yeah.<12>"
-      db "<11>", $00 ;; 0d:4ef5 ?????????????????????????????
+      db "<11>", $00 ;; 0d:4ef5
     sDELAY 20                                          ;; 0d:4f12 $f0 $14
     sLOAD_ROOM 0, $a9, 10, 6                           ;; 0d:4f14 $f4 $00 $a9 $0a $06
     sDELAY 60                                          ;; 0d:4f19 $f0 $3c
     sMSG                                               ;; 0d:4f1b $04
       db "<10><GIRL>:Wendel is\n to the south.\n Let's hurry!<12>"
-      db "<11>", $00 ;; 0d:4f1c ???????????????????????????????
+      db "<11>", $00 ;; 0d:4f1c
     sSET_MUSIC 20                                      ;; 0d:4f3b $f8 $14
     sSET_FLAG $25                                      ;; 0d:4f3d $da $25
     sUNK_AB                                            ;; 0d:4f3f $ab
@@ -2545,7 +2545,7 @@ script_01ab:
     sDELAY 20                                          ;; 0d:4f67 $f0 $14
     sMSG                                               ;; 0d:4f69 $04
       db "<10>Defeated Megapede!<12>"
-      db "<11>", $00 ;; 0d:4f6a ?????????????????
+      db "<11>", $00 ;; 0d:4f6a
     sSET_FLAG $26                                      ;; 0d:4f7b $da $26
     sRUN_ROOM_SCRIPT                                   ;; 0d:4f7d $ec
     sEND                                               ;; 0d:4f7e $00
@@ -2555,7 +2555,7 @@ script_01ac:
     sDELAY 60                                          ;; 0d:4f83 $f0 $3c
     sMSG                                               ;; 0d:4f85 $04
       db "<10>Medusa:This will\n be your place\n to rest forever!<12>"
-      db "<11>", $00 ;; 0d:4f86 ????????????????????????????????????
+      db "<11>", $00 ;; 0d:4f86
     sDELAY 30                                          ;; 0d:4faa $f0 $1e
     sSFX 20                                            ;; 0d:4fac $f9 $14
     sFLASH_SCREEN                                      ;; 0d:4fae $bf
@@ -2590,7 +2590,7 @@ script_01ae:
     sFADE_TO_NORMAL                                    ;; 0d:4fe2 $bc
     sMSG                                               ;; 0d:4fe3 $04
       db "<10>Madusa:Came here\n to get my tears?\n Huh! What a joke!<12>"
-      db "<11>", $00 ;; 0d:4fe4 ???????????????????????????????????????
+      db "<11>", $00 ;; 0d:4fe4
     sFADE_TO_BLACK                                     ;; 0d:500b $bd
     sDELAY 30                                          ;; 0d:500c $f0 $1e
     sLOAD_ROOM_INSTANT 1, $30, 12, 8                   ;; 0d:500e $f3 $01 $30 $0c $08
@@ -2608,7 +2608,7 @@ script_01ae:
     sMSG                                               ;; 0d:5026 $04
       db "<10>Amanda:Can't find\n a drop of tear__<12>"
       db "<1b><BOY>:Let's go back\n to Jadd first.<12>"
-      db "<11>", $00 ;; 0d:5027 ?????????????????????????????????????????????????
+      db "<11>", $00 ;; 0d:5027
     sSET_PLAYER_DIRECTION_RIGHT                        ;; 0d:5058 $86
     sPLAYER_STEP_FORWARD                               ;; 0d:5059 $80
     sPLAYER_STEP_FORWARD                               ;; 0d:505a $80
@@ -2625,7 +2625,7 @@ script_01af:
     sDELAY 20                                          ;; 0d:506c $f0 $14
     sMSG                                               ;; 0d:506e $04
       db "<10>Davias:HA!\n You can never\n defeat me!<12>"
-      db "<11>", $00 ;; 0d:506f ????????????????????????????????
+      db "<11>", $00 ;; 0d:506f
     sFLASH_SCREEN                                      ;; 0d:508f $bf
     sSFX 20                                            ;; 0d:5090 $f9 $14
     sFLASH_SCREEN                                      ;; 0d:5092 $bf
@@ -2652,13 +2652,13 @@ script_01b1:
     sDELAY 80                                          ;; 0d:50ac $f0 $50
     sMSG                                               ;; 0d:50ae $04
       db "<10>Lester:We did it!<12>"
-      db "<1b>Davias:The Pendant\n is no longer\n here, my dear__!", $00 ;; 0d:50af ??????????????????????????????????????????????
+      db "<1b>Davias:The Pendant\n is no longer\n here, my dear__!", $00 ;; 0d:50af
     sSET_MUSIC 10                                      ;; 0d:50dd $f8 $0a
     sMSG                                               ;; 0d:50df $04
       db "<12>"
       db "<1b> Garuda is flying\n over Mt. Rocks\n to Glaive__<12>"
       db "<1b>\n   Davias fell__<12>"
-      db "<11>", $00 ;; 0d:50e0 ????????????????????????????????????????????????
+      db "<11>", $00 ;; 0d:50e0
     sSET_MUSIC 0                                       ;; 0d:5110 $f8 $00
     sDELAY 60                                          ;; 0d:5112 $f0 $3c
     sFOLLOWER_DELETE                                   ;; 0d:5114 $98
@@ -2671,7 +2671,7 @@ script_01b1:
     sMSG                                               ;; 0d:5123 $04
       db "<10>Lester:__Going?\n<BOY>:Yeah__  But\n the poison gas__<12>"
       db "<1b>Lester:My harp\n tunes will clear\n the gas, <BOY>!<12>"
-      db "<11>", $00 ;; 0d:5124 ????????????????????????????????????????????????????????????????
+      db "<11>", $00 ;; 0d:5124
     sSPAWN_NPC 2                                       ;; 0d:5164 $fd $02
     sSET_MUSIC 13                                      ;; 0d:5166 $f8 $0d
     sDELAY 180                                         ;; 0d:5168 $f0 $b4
@@ -2679,11 +2679,11 @@ script_01b1:
       db "<10> __ I'll stay here\n and play requiem\n for my sister.<12>"
       db "<1b><BOY>:Okay, Lester.\n I'm going.\n __ Take care.<12>"
       db "<1b>Lester:Take this\n book with you.\n It might help.<12>"
-      db "<1b>", $00 ;; 0d:516b ??????????????????????????????????????????????????????????????????????????????????????????????????????
+      db "<1b>", $00 ;; 0d:516b
     sSFX 15                                            ;; 0d:51d1 $f9 $0f
     sMSG                                               ;; 0d:51d3 $04
       db "Received the Magic\nBook of Mute.\nLearned Mute.<12>"
-      db "<11>", $00 ;; 0d:51d4 ?????????????????????????????????
+      db "<11>", $00 ;; 0d:51d4
     sGIVE_MAGIC 2                                      ;; 0d:51f5 $d6 $02
     sDELAY 60                                          ;; 0d:51f7 $f0 $3c
     sCLEAR_FLAG $56                                    ;; 0d:51f9 $db $56
@@ -2718,7 +2718,7 @@ script_01b4:
     sDELAY 20                                          ;; 0d:5222 $f0 $14
     sMSG                                               ;; 0d:5224 $04
       db "<10>Defeated Cyclops!<12>"
-      db "<11>", $00 ;; 0d:5225 ??????????????????
+      db "<11>", $00 ;; 0d:5225
     sSET_FLAG $29                                      ;; 0d:5237 $da $29
     sRUN_ROOM_SCRIPT                                   ;; 0d:5239 $ec
     sEND                                               ;; 0d:523a $00
@@ -2751,11 +2751,11 @@ script_01b7:
     sCALL script_0248                                  ;; 0d:525d $02 $33 $e7
     sMSG                                               ;; 0d:5260 $04
       db "<10>Defeated Garuda!<12>"
-      db "<11>", $00 ;; 0d:5261 ???????????????
+      db "<11>", $00 ;; 0d:5261
     sDELAY 60                                          ;; 0d:5270 $f0 $3c
     sMSG                                               ;; 0d:5272 $04
       db "<10>Marcie:TOWER LOST\n ITS BALANCE.\n MUST HURRY OUT.<12>"
-      db "<11>", $00 ;; 0d:5273 ????????????????????????????????????????????????
+      db "<11>", $00 ;; 0d:5273
     sSET_FLAG $31                                      ;; 0d:52a3 $da $31
     sEND                                               ;; 0d:52a5 $00
 
@@ -2783,12 +2783,12 @@ script_01ba:
     sSFX 34                                            ;; 0d:52bf $f9 $22
     sMSG                                               ;; 0d:52c1 $04
       db "<10>Defeated Golem!<12>"
-      db "", $00    ;; 0d:52c2 ??????????????
+      db "", $00    ;; 0d:52c2
     sGIVE_MAGIC 6                                      ;; 0d:52d0 $d6 $06
     sSFX 15                                            ;; 0d:52d2 $f9 $0f
     sMSG                                               ;; 0d:52d4 $04
       db "<1b>Received the Magic\nBook of Lightning.\nLearned Lit.<12>"
-      db "<11>", $00 ;; 0d:52d5 ???????????????????????????????????????
+      db "<11>", $00 ;; 0d:52d5
     sSET_FLAG $2b                                      ;; 0d:52fc $da $2b
     sUNK_E0                                            ;; 0d:52fe $e0
     sDELAY 30                                          ;; 0d:52ff $f0 $1e
@@ -2810,13 +2810,13 @@ script_01bb:
     sMSG                                               ;; 0d:531a $04
       db "<10>Dark Lord:Looks\n like you've been\n a bit stronger.<12>"
       db "<1b> But, not enough\n to fight me, boy!<12>"
-      db "<1b>", $00 ;; 0d:531b ??????????????????????????????????????????????????????????????
+      db "<1b>", $00 ;; 0d:531b
     sSET_PLAYER_DIRECTION_RIGHT                        ;; 0d:5359 $86
     sFOLLOWER_DIRECTION_LEFT                           ;; 0d:535a $97
     sMSG                                               ;; 0d:535b $04
       db "<BOY>:Stay outside.\n It will be too\n dangerous here.<12>"
       db "<1b><GIRL>:__ Okay__\n Be careful.<12>"
-      db "<11>", $00 ;; 0d:535c ?????????????????????????????????????????????????????
+      db "<11>", $00 ;; 0d:535c
     sFOLLOWER_DIRECTION_DOWN                           ;; 0d:5391 $95
     sFOLLOWER_STEP_FORWARD                             ;; 0d:5392 $90
     sFOLLOWER_STEP_FORWARD                             ;; 0d:5393 $90
@@ -2828,7 +2828,7 @@ script_01bb:
     sSET_PLAYER_DIRECTION_UP                           ;; 0d:539f $84
     sMSG                                               ;; 0d:53a0 $04
       db "<10>Dark Lord:Good\n boy, <BOY>!\n __ Now, come!<12>"
-      db "<11>", $00 ;; 0d:53a1 ????????????????????????????????
+      db "<11>", $00 ;; 0d:53a1
     sSET_MUSIC 19                                      ;; 0d:53c1 $f8 $13
 .jr_0d_53c3:
     sEND                                               ;; 0d:53c3 $00
@@ -2842,19 +2842,19 @@ script_01bd:
     sSET_ROOM_TILE $6b, 8, 7                           ;; 0d:53c9 $b0 $6b $08 $07
     sMSG                                               ;; 0d:53cd $04
       db "<10>Defeated Dark Lord<12>"
-      db "<1b>Received Pendant__", $00 ;; 0d:53ce ?????????????????????????????
+      db "<1b>Received Pendant__", $00 ;; 0d:53ce
     sDELAY 100                                         ;; 0d:53eb $f0 $64
     sMSG                                               ;; 0d:53ed $04
-      db "<1b><BOY>:_", $00                            ;; 0d:53ee ?????
+      db "<1b><BOY>:_", $00                            ;; 0d:53ee
     sDELAY 100                                         ;; 0d:53f3 $f0 $64
     sMSG                                               ;; 0d:53f5 $04
-      db "_", $00                                      ;; 0d:53f6 ??
+      db "_", $00                                      ;; 0d:53f6
     sDELAY 60                                          ;; 0d:53f8 $f0 $3c
     sMSG                                               ;; 0d:53fa $04
-      db " It's fake!\n _ Then, where is\n the real Pendant?", $00 ;; 0d:53fb ????????????????????????????????
+      db " It's fake!\n _ Then, where is\n the real Pendant?", $00 ;; 0d:53fb
     sDELAY 80                                          ;; 0d:541b $f0 $50
     sMSG                                               ;; 0d:541d $04
-      db "<11>", $00                                   ;; 0d:541e ??
+      db "<11>", $00                                   ;; 0d:541e
     sCLEAR_FLAG $51                                    ;; 0d:5420 $db $51
     sSET_FLAG $2c                                      ;; 0d:5422 $da $2c
     sSET_MUSIC 14                                      ;; 0d:5424 $f8 $0e
@@ -2886,7 +2886,7 @@ script_01c0:
     sSET_MUSIC 0                                       ;; 0d:5448 $f8 $00
     sMSG                                               ;; 0d:544a $04
       db "<10>Defeated Kary!<12>"
-      db "<11>", $00 ;; 0d:544b ??????????????
+      db "<11>", $00 ;; 0d:544b
     sSET_FLAG $2d                                      ;; 0d:5459 $da $2d
     sRUN_ROOM_SCRIPT                                   ;; 0d:545b $ec
     sEND                                               ;; 0d:545c $00
@@ -2917,7 +2917,7 @@ script_01c3:
     sSET_MUSIC 0                                       ;; 0d:547e $f8 $00
     sMSG                                               ;; 0d:5480 $04
       db "<10>Defeated Iflyte!<12>"
-      db "<11>", $00 ;; 0d:5481 ????????????????
+      db "<11>", $00 ;; 0d:5481
     sSET_FLAG $2f                                      ;; 0d:5491 $da $2f
     sRUN_ROOM_SCRIPT                                   ;; 0d:5493 $ec
     sEND                                               ;; 0d:5494 $00
@@ -2946,7 +2946,7 @@ script_01c6:
     sSET_ROOM_TILE $13, 1, 6                           ;; 0d:54b3 $b0 $13 $01 $06
     sMSG                                               ;; 0d:54b7 $04
       db "<10>Defeated Chimera!<12>"
-      db "<11>", $00 ;; 0d:54b8 ????????????????
+      db "<11>", $00 ;; 0d:54b8
     sSET_FLAG $2a                                      ;; 0d:54c8 $da $2a
     sDELAY 30                                          ;; 0d:54ca $f0 $1e
     sSET_MUSIC 14                                      ;; 0d:54cc $f8 $0e
@@ -2975,7 +2975,7 @@ script_01c9:
     sSET_MUSIC 0                                       ;; 0d:54e9 $f8 $00
     sMSG                                               ;; 0d:54eb $04
       db "<10>Defeated Kraken!<12>"
-      db "<11>", $00 ;; 0d:54ec ????????????????
+      db "<11>", $00 ;; 0d:54ec
     sSET_FLAG $2e                                      ;; 0d:54fc $da $2e
     sUNK_BA $10, $10, $04                              ;; 0d:54fe $ba $10 $10 $04
     sSET_ROOM_TILE $4c, 8, 2                           ;; 0d:5502 $b0 $4c $08 $02
@@ -3003,12 +3003,12 @@ script_01cc:
     sSET_MUSIC 0                                       ;; 0d:551f $f8 $00
     sMSG                                               ;; 0d:5521 $04
       db "<10>Defeated Lich!<12>"
-      db "<1b>", $00 ;; 0d:5522 ???????????????
+      db "<1b>", $00 ;; 0d:5522
     sSFX 15                                            ;; 0d:5531 $f9 $0f
     sGIVE_MAGIC 7                                      ;; 0d:5533 $d6 $07
     sMSG                                               ;; 0d:5535 $04
       db "Received the Magic\nBook of Nuke.\nLearned Nuke!<12>"
-      db "<11>", $00 ;; 0d:5536 ????????????????????????????????????
+      db "<11>", $00 ;; 0d:5536
     sSET_FLAG $30                                      ;; 0d:555a $da $30
     sDELAY 30                                          ;; 0d:555c $f0 $1e
     sLOAD_ROOM 0, $3e, 12, 7                           ;; 0d:555e $f4 $00 $3e $0c $07
@@ -3032,22 +3032,22 @@ script_01e0:
     sMSG                                               ;; 0d:556f $04
       db "<10>Welcome to Kett's.\nRooms ahead are\noccupied.<12>"
       db "<1b>Please feel free\nto use the\nwestern room.<12>"
-      db "<1b>You can't get past\nthis door.\nIt's for Mr. Lee.", $00 ;; 0d:5570 ??????????????????????????????????????????????????????????????????????????????????????????????
+      db "<1b>You can't get past\nthis door.\nIt's for Mr. Lee.", $00 ;; 0d:5570
     sIF_08_JR $0d, .jr_0d_5635                         ;; 0d:55ce $08 $0d $00 $63
     sMSG                                               ;; 0d:55d2 $04
       db "<12>"
-      db "<1b>", $00                   ;; 0d:55d3 ???
+      db "<1b>", $00                   ;; 0d:55d3
     sIF_09_JR $27, .jr_0d_5616                         ;; 0d:55d6 $09 $27 $00 $3c
     sSET_MUSIC 0                                       ;; 0d:55da $f8 $00
     sMSG                                               ;; 0d:55dc $04
-      db "T_that Mirror_!", $00                        ;; 0d:55dd ???????????
+      db "T_that Mirror_!", $00                        ;; 0d:55dd
     sDELAY 30                                          ;; 0d:55e8 $f0 $1e
     sMSG                                               ;; 0d:55ea $04
-      db "\nUGGG_ GRRH_", $00                          ;; 0d:55eb ????????????
+      db "\nUGGG_ GRRH_", $00                          ;; 0d:55eb
     sDELAY 30                                          ;; 0d:55f7 $f0 $1e
     sMSG                                               ;; 0d:55f9 $04
       db "\nUG_ Hg_ GRRR_ _<12>"
-      db "<11>", $00  ;; 0d:55fa ?????????????????
+      db "<11>", $00  ;; 0d:55fa
     sSFX 20                                            ;; 0d:560b $f9 $14
     sFLASH_SCREEN                                      ;; 0d:560d $bf
     sFLASH_SCREEN                                      ;; 0d:560e $bf
@@ -3058,13 +3058,13 @@ script_01e0:
 .jr_0d_5616:
     sMSG                                               ;; 0d:5616 $04
       db "Your friend?\nNo__\nI do not know her.<12>"
-      db "<11>", $00 ;; 0d:5617 ????????????????????????????
+      db "<11>", $00 ;; 0d:5617
 .jr_0d_5633:
     sJR  .jr_0d_5639                                   ;; 0d:5633 $01 $04
 .jr_0d_5635:
     sMSG                                               ;; 0d:5635 $04
       db "<12>"
-      db "<11>", $00                   ;; 0d:5636 ???
+      db "<11>", $00                   ;; 0d:5636
 .jr_0d_5639:
     sEND                                               ;; 0d:5639 $00
 
@@ -3072,7 +3072,7 @@ script_01e1:
     sMSG                                               ;; 0d:563a $04
       db "<10>The mystic Mirror\nreveals people's\ntrue colors.<12>"
       db "<1b>I heard that the\nman here threw it\naway in a cave.<12>"
-      db "<11>", $00 ;; 0d:563b ???????????????????????????????????????????????????????????????????
+      db "<11>", $00 ;; 0d:563b
     sEND                                               ;; 0d:567e $00
 
 script_01e2:
@@ -3080,7 +3080,7 @@ script_01e2:
       db "<10>Lizardmen's nest\nis to the south.<12>"
       db "<1b>They have the key\nto open the Cave\nof Marsh.<12>"
       db "<11><12>"
-      db "<11>", $00 ;; 0d:5680 ???????????????????????????????????????????????????????????
+      db "<11>", $00 ;; 0d:5680
     sEND                                               ;; 0d:56bb $00
 
 script_01e3:
@@ -3089,7 +3089,7 @@ script_01e3:
     sMSG                                               ;; 0d:56bf $04
       db "<10><BOY>:<GIRL>!\n<GIRL>:Oh, <BOY>!<12>"
       db "<1b><BOY>:Let's get\n out of here!<12>"
-      db "<11>", $00 ;; 0d:56c0 ?????????????????????????????????
+      db "<11>", $00 ;; 0d:56c0
     sGIVE_FOLLOWER 1                                   ;; 0d:56e1 $9c $01
     sSET_FLAG $51                                      ;; 0d:56e3 $da $51
     sSET_FLAG $0e                                      ;; 0d:56e5 $da $0e
@@ -3101,7 +3101,7 @@ script_01e4:
       db "<1b> Many girls have\n disappeared in\n that place.<12>"
       db "<1b> They must be kept\n in the caskets\n at the basement.<12>"
       db "<1b> Looking for the \n Mirror?  Do you\n want me to help?<12>"
-      db "<13><11>", $00 ;; 0d:56e9 ??????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
+      db "<13><11>", $00 ;; 0d:56e9
     sIF_08_JR $ff, .jr_0d_576f                         ;; 0d:5767 $08 $ff $00 $04
     sGIVE_FOLLOWER 2                                   ;; 0d:576b $9c $02
     sSET_FLAG $52                                      ;; 0d:576d $da $52
@@ -3117,21 +3117,21 @@ script_01e5:
 script_01e6:
     sMSG                                               ;; 0d:577b $04
       db "<10>Welcome to Wendel,\nthe sacred town.<12>"
-      db "<11>", $00 ;; 0d:577c ???????????????????????????
+      db "<11>", $00 ;; 0d:577c
     sEND                                               ;; 0d:5797 $00
 
 script_01e7:
     sIF_08_JR $10, $91, .jr_0d_57b6                    ;; 0d:5798 $08 $10 $91 $00 $19
     sMSG                                               ;; 0d:579d $04
       db "<10>H_ he attacked\nme from behind_!<12>"
-      db "<11>", $00 ;; 0d:579e ????????????????????????
+      db "<11>", $00 ;; 0d:579e
 .jr_0d_57b6:
     sEND                                               ;; 0d:57b6 $00
 
 script_01e8:
     sMSG                                               ;; 0d:57b7 $04
       db "<10>Man:Hello again!\n How've you been?<12>"
-      db "<11>", $00 ;; 0d:57b8 ???????????????????????????
+      db "<11>", $00 ;; 0d:57b8
     sEND                                               ;; 0d:57d3 $00
 
 script_01e9:
@@ -3139,58 +3139,58 @@ script_01e9:
       db "<10>The Waterfalls\nmake all of our\nrivers flow.<12>"
       db "<1b>The water springs\nfrom the root of\nthe Tree of Mana.<12>"
       db "<1b>Mana is supporting\nour nature.<12>"
-      db "<11>", $00 ;; 0d:57d5 ???????????????????????????????????????????????????????????????????????????????????????
+      db "<11>", $00 ;; 0d:57d5
     sEND                                               ;; 0d:582c $00
 
 script_01ea:
     sMSG                                               ;; 0d:582d $04
       db "<10>Dwarf Cave is\nto the west!<12>"
-      db "<11>", $00 ;; 0d:582e ????????????????????
+      db "<11>", $00 ;; 0d:582e
     sEND                                               ;; 0d:5842 $00
 
 script_01eb:
     sMSG                                               ;; 0d:5843 $04
       db "<10>Cibba is a sage.\nHe used to be a\ngreat warrior.<12>"
-      db "<11>", $00 ;; 0d:5844 ???????????????????????????????????
+      db "<11>", $00 ;; 0d:5844
     sEND                                               ;; 0d:5867 $00
 
 script_01ec:
     sMSG                                               ;; 0d:5868 $04
-      db "<10>", $00                                   ;; 0d:5869 ??
+      db "<10>", $00                                   ;; 0d:5869
     sIF_08_JR $9f, .jr_0d_587d                         ;; 0d:586b $08 $9f $00 $0e
     sMSG                                               ;; 0d:586f $04
-      db "Cibba's in here!", $00                       ;; 0d:5870 ???????????
+      db "Cibba's in here!", $00                       ;; 0d:5870
     sJR  .jr_0d_58c4                                   ;; 0d:587b $01 $47
 .jr_0d_587d:
     sMSG                                               ;; 0d:587d $04
       db "Lorim was attacked\nby many monsters.\nCibba went there.<12>"
-      db "<1b>Lorim is south of\nthe Snowfield over\nthe southern sea.", $00 ;; 0d:587e ??????????????????????????????????????????????????????????????????????
+      db "<1b>Lorim is south of\nthe Snowfield over\nthe southern sea.", $00 ;; 0d:587e
 .jr_0d_58c4:
     sMSG                                               ;; 0d:58c4 $04
       db "<12>"
-      db "<11>", $00                   ;; 0d:58c5 ???
+      db "<11>", $00                   ;; 0d:58c5
     sEND                                               ;; 0d:58c8 $00
 
 script_01ed:
     sMSG                                               ;; 0d:58c9 $04
       db "<10>I hear that the\nTree of Mana is\nvery beautiful__<12>"
-      db "<11>", $00 ;; 0d:58ca ????????????????????????????????
+      db "<11>", $00 ;; 0d:58ca
     sEND                                               ;; 0d:58ea $00
 
 script_01ee:
     sMSG                                               ;; 0d:58eb $04
-      db "<10>", $00                                   ;; 0d:58ec ??
+      db "<10>", $00                                   ;; 0d:58ec
     sIF_08_JR $11, .jr_0d_5913                         ;; 0d:58ee $08 $11 $00 $21
     sMSG                                               ;; 0d:58f2 $04
-      db "Cibba:Julius went\n westward in his\n airship.", $00 ;; 0d:58f3 ??????????????????????????????
+      db "Cibba:Julius went\n westward in his\n airship.", $00 ;; 0d:58f3
     sJR  .jr_0d_5925                                   ;; 0d:5911 $01 $12
 .jr_0d_5913:
     sMSG                                               ;; 0d:5913 $04
-      db "Cibba:Who is\n that man?", $00               ;; 0d:5914 ?????????????????
+      db "Cibba:Who is\n that man?", $00               ;; 0d:5914
 .jr_0d_5925:
     sMSG                                               ;; 0d:5925 $04
       db "<12>"
-      db "<11>", $00                   ;; 0d:5926 ???
+      db "<11>", $00                   ;; 0d:5926
     sEND                                               ;; 0d:5929 $00
 
 script_01ef:
@@ -3201,7 +3201,7 @@ script_01ef:
     sUNK_D4 23                                         ;; 0d:5933 $d4 $17
     sIF_08_JR $85, .jr_0d_59f4                         ;; 0d:5935 $08 $85 $00 $bb
     sMSG                                               ;; 0d:5939 $04
-      db "<10>", $00                                   ;; 0d:593a ??
+      db "<10>", $00                                   ;; 0d:593a
     sSFX 15                                            ;; 0d:593c $f9 $0f
     sMSG                                               ;; 0d:593e $04
       db "Received <aa>Bone.<12>"
@@ -3210,7 +3210,7 @@ script_01ef:
       db "<1b> Use this key at\n the cave in the\n Floatrocks!<12>"
       db "<1b> The guardian\n monster has the\n Legendary Sword.<12>"
       db "<1b> I'll tell you the\n rest when you\n return with it!<12>"
-      db "<11>", $00 ;; 0d:593f ?????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
+      db "<11>", $00 ;; 0d:593f
 .jr_0d_59f4:
     sEND                                               ;; 0d:59f4 $00
 
@@ -3225,13 +3225,13 @@ script_01f0:
       db "<1b> when it approves\n of your using it.<12>"
       db "<1b> If you're a real\n Knight of Gemma,\n it will help you.<12>"
       db "<1b><BOY>:But_ I don't\n know if it _ _<12>"
-      db "<1b>Cibba:Don't worry.\n __", $00 ;; 0d:59f6 ???????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
+      db "<1b>Cibba:Don't worry.\n __", $00 ;; 0d:59f6
     sDELAY 40                                          ;; 0d:5b25 $f0 $28
     sMSG                                               ;; 0d:5b27 $04
       db "Now, go!<12>"
       db "<1b> The Cave of Ruins\n is in the desert\n near Ish.<12>"
       db "<1b> Ask Dr. Bowow.\n He knows it well.<12>"
-      db "<11>", $00 ;; 0d:5b28 ?????????????????????????????????????????????????????????????????????
+      db "<11>", $00 ;; 0d:5b28
     sEND                                               ;; 0d:5b6d $00
 
 script_01f1:
@@ -3243,66 +3243,66 @@ script_01f1:
 script_01f2:
     sMSG                                               ;; 0d:5b75 $04
       db "<10>Hello!\nWelcome to the\nDwarf Cave!<12>"
-      db "<11>", $00 ;; 0d:5b76 ??????????????????????????
+      db "<11>", $00 ;; 0d:5b76
     sEND                                               ;; 0d:5b90 $00
 
 script_01f3:
     sMSG                                               ;; 0d:5b91 $04
-      db "<10>", $00                                   ;; 0d:5b92 ??
+      db "<10>", $00                                   ;; 0d:5b92
     sIF_08_JR $11, $96, .jr_0d_5baf                    ;; 0d:5b94 $08 $11 $96 $00 $16
     sMSG                                               ;; 0d:5b99 $04
       db "The airship went\nto the west!<12>"
-      db "<1b>", $00 ;; 0d:5b9a ?????????????????????
+      db "<1b>", $00 ;; 0d:5b9a
 .jr_0d_5baf:
     sMSG                                               ;; 0d:5baf $04
       db "The Gaia Pass\nleads to the\nwestern land.<12>"
-      db "<11>", $00 ;; 0d:5bb0 ????????????????????????????
+      db "<11>", $00 ;; 0d:5bb0
     sEND                                               ;; 0d:5bcc $00
 
 script_01f4:
     sMSG                                               ;; 0d:5bcd $04
-      db "<10>", $00                                   ;; 0d:5bce ??
+      db "<10>", $00                                   ;; 0d:5bce
     sIF_08_JR $a6, .jr_0d_5c31                         ;; 0d:5bd0 $08 $a6 $00 $5d
     sMSG                                               ;; 0d:5bd4 $04
-      db "I used to play\nat the Old Mine\nwith Watts!", $00 ;; 0d:5bd5 ?????????????????????????????
+      db "I used to play\nat the Old Mine\nwith Watts!", $00 ;; 0d:5bd5
     sIF_08_JR $11, .jr_0d_5c2f                         ;; 0d:5bf2 $08 $11 $00 $39
     sMSG                                               ;; 0d:5bf6 $04
       db "<12>"
       db "<1b>Wanna use the\ntrolley?  You\nhave to oil it!<12>"
-      db "<1b>You can get it\nat the store\nto the south!", $00 ;; 0d:5bf7 ????????????????????????????????????????????????????????
+      db "<1b>You can get it\nat the store\nto the south!", $00 ;; 0d:5bf7
 .jr_0d_5c2f:
     sJR  .jr_0d_5c46                                   ;; 0d:5c2f $01 $15
 .jr_0d_5c31:
     sMSG                                               ;; 0d:5c31 $04
-      db "Watts is selling\nSilver stuff!", $00        ;; 0d:5c32 ????????????????????
+      db "Watts is selling\nSilver stuff!", $00        ;; 0d:5c32
 .jr_0d_5c46:
     sMSG                                               ;; 0d:5c46 $04
       db "<12>"
-      db "<11>", $00                   ;; 0d:5c47 ???
+      db "<11>", $00                   ;; 0d:5c47
     sEND                                               ;; 0d:5c4a $00
 
 script_01f5:
     sMSG                                               ;; 0d:5c4b $04
       db "<10>Gaia has its own\nwill and feelings.<12>"
       db "<1b>It likes Silver.\nStrange, isn't it?<12>"
-      db "<11>", $00 ;; 0d:5c4c ???????????????????????????????????????????????????
+      db "<11>", $00 ;; 0d:5c4c
     sEND                                               ;; 0d:5c7f $00
 
 script_01f6:
     sMSG                                               ;; 0d:5c80 $04
-      db "<10>", $00                                   ;; 0d:5c81 ??
+      db "<10>", $00                                   ;; 0d:5c81
     sIF_08_JR $a6, .jr_0d_5cbe                         ;; 0d:5c83 $08 $a6 $00 $37
     sMSG                                               ;; 0d:5c87 $04
       db "Watts likes the\nmine!  He went\ntheir today, too!<12>"
-      db "<1b>He's looking for\nsome Silver.", $00 ;; 0d:5c88 ????????????????????????????????????????????????????
+      db "<1b>He's looking for\nsome Silver.", $00 ;; 0d:5c88
     sJR  .jr_0d_5cd7                                   ;; 0d:5cbc $01 $19
 .jr_0d_5cbe:
     sMSG                                               ;; 0d:5cbe $04
-      db "Hi!\nWatts made the\nSilver stuff!", $00     ;; 0d:5cbf ????????????????????????
+      db "Hi!\nWatts made the\nSilver stuff!", $00     ;; 0d:5cbf
 .jr_0d_5cd7:
     sMSG                                               ;; 0d:5cd7 $04
       db "<12>"
-      db "<11>", $00                   ;; 0d:5cd8 ???
+      db "<11>", $00                   ;; 0d:5cd8
     sEND                                               ;; 0d:5cdb $00
 
 script_01f7:
@@ -3312,7 +3312,7 @@ script_01f8:
     sMSG                                               ;; 0d:5cdd $04
       db "<10>Watts:I made some\n things out of\n that Silver!<12>"
       db "<1b> Take these and\n you can pass\n through Gaia!<12>"
-      db "<11>", $00 ;; 0d:5cde ???????????????????????????????????????????????????????????????
+      db "<11>", $00 ;; 0d:5cde
     sOPEN_SHOP 6                                       ;; 0d:5d1d $f6 $06
     sEND                                               ;; 0d:5d1f $00
 
@@ -3327,7 +3327,7 @@ script_01f9:
 .jr_0d_5d2b:
     sMSG                                               ;; 0d:5d2b $04
       db "<10>\nNeeds to be oiled.<12>"
-      db "<11>", $00 ;; 0d:5d2c ????????????????
+      db "<11>", $00 ;; 0d:5d2c
 .jr_0d_5d3c:
     sEND                                               ;; 0d:5d3c $00
 
@@ -3373,16 +3373,16 @@ script_01fd:
 
 script_01fe:
     sMSG                                               ;; 0d:5d71 $04
-      db "<10>", $00                                   ;; 0d:5d72 ??
+      db "<10>", $00                                   ;; 0d:5d72
     sIF_09_JR $4f, .jr_0d_5d99                         ;; 0d:5d74 $09 $4f $00 $21
     sMSG                                               ;; 0d:5d78 $04
-      db "Release that\nsword from your\nequipment, <BOY>.", $00 ;; 0d:5d79 ??????????????????????????????
+      db "Release that\nsword from your\nequipment, <BOY>.", $00 ;; 0d:5d79
     sJR  .jr_0d_5e00                                   ;; 0d:5d97 $01 $67
 .jr_0d_5d99:
     sMSG                                               ;; 0d:5d99 $04
       db "You have been a\ngreat Knight of\nGemma, I see.<12>"
       db "<1b>I shall give you\nthe Excalibur.\nNow defeat Julius!<12>"
-      db "<11>", $00 ;; 0d:5d9a ???????????????????????????????????????????????????????????????????
+      db "<11>", $00 ;; 0d:5d9a
     sLOOP 8, 4                                         ;; 0d:5ddd $03 $08 $04
     sFLASH_SCREEN                                      ;; 0d:5de0 $bf
     sSFX 20                                            ;; 0d:5de1 $f9 $14
@@ -3391,19 +3391,19 @@ script_01fe:
     sUNK_D9 13                                         ;; 0d:5de5 $d9 $0d
     sGIVE_EQUIPMENT 15                                 ;; 0d:5de7 $d8 $0f
     sMSG                                               ;; 0d:5de9 $04
-      db "<10>Received\n     Excalibur!", $00          ;; 0d:5dea ????????????????????
+      db "<10>Received\n     Excalibur!", $00          ;; 0d:5dea
     sSET_FLAG $38                                      ;; 0d:5dfe $da $38
 .jr_0d_5e00:
     sMSG                                               ;; 0d:5e00 $04
       db "<12>"
-      db "<11>", $00                   ;; 0d:5e01 ???
+      db "<11>", $00                   ;; 0d:5e01
     sEND                                               ;; 0d:5e04 $00
 
 script_01ff:
     sIF_08_JR $f9, .jr_0d_5e35                         ;; 0d:5e05 $08 $f9 $00 $2c
     sMSG                                               ;; 0d:5e09 $04
       db "<10> Change music?<12>"
-      db "<11>", $00 ;; 0d:5e0a ??????????????
+      db "<11>", $00 ;; 0d:5e0a
     sUNK_C7                                            ;; 0d:5e18 $c7
     sIF_08_JR $7f, $fe, .jr_0d_5e20                    ;; 0d:5e19 $08 $7f $fe $00 $02
     sSET_MUSIC 20                                      ;; 0d:5e1e $f8 $14
@@ -3422,7 +3422,7 @@ script_01ff:
 script_0200:
     sMSG                                               ;; 0d:5e36 $04
       db "<10>I RECOVER YOUR MP.<12>"
-      db "<11>", $00 ;; 0d:5e37 ????????????????????
+      db "<11>", $00 ;; 0d:5e37
     sSFX 5                                             ;; 0d:5e4b $f9 $05
     sFULL_MANA                                         ;; 0d:5e4d $c1
     sEND                                               ;; 0d:5e4e $00
@@ -3433,7 +3433,7 @@ script_0201:
 script_0202:
     sMSG                                               ;; 0d:5e50 $04
       db "<10> Let me treat\n your wound, <BOY>.<12>"
-      db "<11>", $00 ;; 0d:5e51 ......................
+      db "<11>", $00 ;; 0d:5e51
     sSFX 5                                             ;; 0d:5e67 $f9 $05
     sPLAYER_GIVE_STATUS 16                             ;; 0d:5e69 $c4 $10
     sEND                                               ;; 0d:5e6b $00
@@ -3442,13 +3442,13 @@ script_0203:
     sMSG                                               ;; 0d:5e6c $04
       db "<10>Some walls may be\nbroken with <a7>Star\nor <ac>Mattock.<12>"
       db "<1b>Those walls sound\ndifferent when you\nhit them.<12>"
-      db "<11>", $00 ;; 0d:5e6d ????????????????????????????????????????????????????????????????????
+      db "<11>", $00 ;; 0d:5e6d
     sEND                                               ;; 0d:5eb1 $00
 
 script_0204:
     sMSG                                               ;; 0d:5eb2 $04
       db "<10> I have very\n useful things!<12>"
-      db "<11>", $00 ;; 0d:5eb3 ??????????????????????
+      db "<11>", $00 ;; 0d:5eb3
     sOPEN_SHOP 3                                       ;; 0d:5ec9 $f6 $03
     sEND                                               ;; 0d:5ecb $00
 
@@ -3456,13 +3456,13 @@ script_0205:
     sMSG                                               ;; 0d:5ecc $04
       db "<10>Gemma Knights can\nuse the special\npowers of weapons.<12>"
       db "<1b>Try and see it\nwhen your Will\nPower is full.<12>"
-      db "<11>", $00 ;; 0d:5ecd ????????????????????????????????????????????????????????????????????
+      db "<11>", $00 ;; 0d:5ecd
     sEND                                               ;; 0d:5f11 $00
 
 script_0206:
     sMSG                                               ;; 0d:5f12 $04
       db "<10> I'll heal you\n from Stone.<12>"
-      db "<11>", $00 ;; 0d:5f13 ????????????????????
+      db "<11>", $00 ;; 0d:5f13
     sSFX 5                                             ;; 0d:5f27 $f9 $05
     sUNK_C2 4                                          ;; 0d:5f29 $c2 $04
     sEND                                               ;; 0d:5f2b $00
@@ -3471,7 +3471,7 @@ script_0207:
     sMSG                                               ;; 0d:5f2c $04
       db "<10><BOY>:Let's go!\n<GIRL>:Keep this\n Pendant, <BOY>!<12>"
       db "<1b>Julius:Give me\n the Pendant!<12>"
-      db "<11>", $00 ;; 0d:5f2d ????????????????????????????????????????????????????
+      db "<11>", $00 ;; 0d:5f2d
     sSET_MUSIC 9                                       ;; 0d:5f61 $f8 $09
     sSPAWN_NPC 2                                       ;; 0d:5f63 $fd $02
     sSET_NPC_2_DIRECTION_RIGHT                         ;; 0d:5f65 $26
@@ -3491,7 +3491,7 @@ script_0207:
     sSET_PLAYER_DIRECTION_UP                           ;; 0d:5f87 $84
     sMSG                                               ;; 0d:5f88 $04
       db "<10><GIRL>:Hold on!\n<BOY>:I_ can't_<12>"
-      db "<11>", $00 ;; 0d:5f89 ??????????????????????
+      db "<11>", $00 ;; 0d:5f89
     sDELAY 40                                          ;; 0d:5f9f $f0 $28
     sSET_MUSIC 0                                       ;; 0d:5fa1 $f8 $00
     sSET_PLAYER_DIRECTION_DOWN                         ;; 0d:5fa3 $85
@@ -3532,7 +3532,7 @@ script_0208:
     sMSG                                               ;; 0d:5fdf $04
       db "<10>_ Wow!  Somebody\n_ came down from\n_ the sky!<12>"
       db "<1b>_ __ <BOY>?!\n_ Do you know him?\n___ _ <BOY>__!<12>"
-      db "<11>", $00 ;; 0d:5fe0 ????????????????????????????????????????????????????????????????????
+      db "<11>", $00 ;; 0d:5fe0
     sFADE_TO_BLACK                                     ;; 0d:6024 $bd
     sUNK_C5 7                                          ;; 0d:6025 $c5 $07
     sLOAD_ROOM_INSTANT 4, $00, 14, 3                   ;; 0d:6027 $f3 $04 $00 $0e $03
@@ -3549,14 +3549,14 @@ script_0208:
     sMSG                                               ;; 0d:603d $04
       db "<10>Amanda:I'm glad\n to see you again,\n my friend__<12>"
       db "<1b> I came back from\n Glaive after you\n left there__<12>"
-      db "<1b> Oh, <BOY>__\n", $00 ;; 0d:603e ????????????????????????????????????????????????????????????????????????????
+      db "<1b> Oh, <BOY>__\n", $00 ;; 0d:603e
     sDELAY 50                                          ;; 0d:608a $f0 $32
     sMSG                                               ;; 0d:608c $04
-      db " I'm sorry__", $00                           ;; 0d:608d ?????????
+      db " I'm sorry__", $00                           ;; 0d:608d
     sDELAY 40                                          ;; 0d:6096 $f0 $28
     sMSG                                               ;; 0d:6098 $04
       db "\n But I have to__<12>"
-      db "<11>", $00 ;; 0d:6099 ?????????????
+      db "<11>", $00 ;; 0d:6099
     sFADE_TO_BLACK                                     ;; 0d:60a6 $bd
     sDELAY 60                                          ;; 0d:60a7 $f0 $3c
     sDEL_NPC_1                                         ;; 0d:60a9 $18
@@ -3568,19 +3568,19 @@ script_0208:
     sPLAYER_STEP_FORWARD                               ;; 0d:60b1 $80
     sDELAY 50                                          ;; 0d:60b2 $f0 $32
     sMSG                                               ;; 0d:60b4 $04
-      db "<10><BOY>:_Where am I?\n", $00               ;; 0d:60b5 ?????????????
+      db "<10><BOY>:_Where am I?\n", $00               ;; 0d:60b5
     sDELAY 30                                          ;; 0d:60c2 $f0 $1e
     sMSG                                               ;; 0d:60c4 $04
       db " __ Pendant!!\n __ Where is it?!<12>"
       db "<1b> __ I thought that\n it was Amanda\n talking to me__<12>"
-      db "<11>", $00 ;; 0d:60c5 ???????????????????????????????????????????????????????
+      db "<11>", $00 ;; 0d:60c5
     sSET_MUSIC 4                                       ;; 0d:60fc $f8 $04
     sEND                                               ;; 0d:60fe $00
 
 script_0209:
     sMSG                                               ;; 0d:60ff $04
       db "<10>A girl is being\nheld in a room\nin this airship!<12>"
-      db "<11>", $00 ;; 0d:6100 ?????????????????????????????????
+      db "<11>", $00 ;; 0d:6100
     sEND                                               ;; 0d:6121 $00
 
 script_020a:
@@ -3589,7 +3589,7 @@ script_020a:
 script_020b:
     sMSG                                               ;; 0d:6123 $04
       db "<10>Get back to work!<12>"
-      db "<11>", $00 ;; 0d:6124 ???????????????
+      db "<11>", $00 ;; 0d:6124
     sEND                                               ;; 0d:6133 $00
 
 script_020c:
@@ -3599,13 +3599,13 @@ script_020d:
     sMSG                                               ;; 0d:6135 $04
       db "<10>Many years ago,\nDark Lord found\na baby in a cave<12>"
       db "<1b>at the Waterfalls\nnear Glaive.\n__ That's Julius.<12>"
-      db "<11>", $00 ;; 0d:6136 ?????????????????????????????????????????????????????????????????????
+      db "<11>", $00 ;; 0d:6136
     sEND                                               ;; 0d:617b $00
 
 script_020e:
     sMSG                                               ;; 0d:617c $04
       db "<10>Julius is taking\nthe charge of this\nairship.<12>"
-      db "<11>", $00 ;; 0d:617d ?????????????????????????????????
+      db "<11>", $00 ;; 0d:617d
     sEND                                               ;; 0d:619e $00
 
 script_020f:
@@ -3615,16 +3615,16 @@ script_020f:
     sNPC_1_STEP_FORWARD                                ;; 0d:61a4 $10
     sEND                                               ;; 0d:61a5 $00
     sMSG                                               ;; 0d:61a6 $04
-      db "<10>", $00                                   ;; 0d:61a7 ??
+      db "<10>", $00                                   ;; 0d:61a7
     sIF_08_JR $96, .jr_0d_622a                         ;; 0d:61a9 $08 $96 $00 $7d
     sMSG                                               ;; 0d:61ad $04
-      db "<BOY>:<GIRL>!\n", $00                        ;; 0d:61ae ??????
+      db "<BOY>:<GIRL>!\n", $00                        ;; 0d:61ae
     sSFX 23                                            ;; 0d:61b4 $f9 $17
     sMSG                                               ;; 0d:61b6 $04
       db "Bogard:Hurry!\n It's moving!<12>"
       db "<1b><GIRL>:This door\n is locked!<12>"
       db "<1b>Bogard:How about\n the windows?<12>"
-      db "<11>", $00 ;; 0d:61b7 ?????????????????????????????????????????????????????????????????
+      db "<11>", $00 ;; 0d:61b7
     sSET_NPC_1_DIRECTION_DOWN                          ;; 0d:61f8 $15
     sLOOP 4, 2                                         ;; 0d:61f9 $03 $04 $02
     sNPC_1_STEP_FORWARD                                ;; 0d:61fc $10
@@ -3635,12 +3635,12 @@ script_020f:
     sNPC_1_STEP_FORWARD                                ;; 0d:6204 $10
     sEND                                               ;; 0d:6205 $00
     sMSG                                               ;; 0d:6206 $04
-      db "<10><GIRL>:It may open.\n<BOY>:I'll get you\n from outside!<1b>", $00 ;; 0d:6207 ?????????????????????????????????
+      db "<10><GIRL>:It may open.\n<BOY>:I'll get you\n from outside!<1b>", $00 ;; 0d:6207
     sSET_FLAG $16                                      ;; 0d:6228 $da $16
 .jr_0d_622a:
     sMSG                                               ;; 0d:622a $04
       db "<GIRL>:Be careful!<12>"
-      db "<11>", $00 ;; 0d:622b ????????????
+      db "<11>", $00 ;; 0d:622b
     sLOOP 4, 2                                         ;; 0d:6237 $03 $04 $02
     sNPC_1_STEP_BACKWARDS                              ;; 0d:623a $11
     sEND                                               ;; 0d:623b $00
@@ -3658,56 +3658,56 @@ script_0210:
       db "<1b><BOY>:_ You_ _\n_ Where is that\n sword now?<12>"
       db "<1b>Bogard:Somewhere\n in this world__<12>"
       db "<1b> Go to Wendel and\n ask Cibba.\n He knows better.<12>"
-      db "<1b> Ask Dr. Bowow\n how to get there.\n He'll help you.", $00 ;; 0d:623f ??????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
+      db "<1b> Ask Dr. Bowow\n how to get there.\n He'll help you.", $00 ;; 0d:623f
     sEND                                               ;; 0d:637d $00
 
 script_0211:
     sMSG                                               ;; 0d:637e $04
       db "<10>Are you okay, boy?\n_You are in Menos.<12>"
       db "<1b>Amanda left the\nvillage earlier\nthis morning.<12>"
-      db "<11>", $00 ;; 0d:637f ?????????????????????????????????????????????????????????????
+      db "<11>", $00 ;; 0d:637f
     sEND                                               ;; 0d:63bc $00
 
 script_0212:
     sMSG                                               ;; 0d:63bd $04
       db "<10>We used to see\nmany Chocobos\naround here.<12>"
       db "<1b>I saw an egg in a\nforest up north!<12>"
-      db "<11>", $00 ;; 0d:63be ?????????????????????????????????????????????????????????
+      db "<11>", $00 ;; 0d:63be
     sEND                                               ;; 0d:63f7 $00
 
 script_0213:
     sMSG                                               ;; 0d:63f8 $04
       db "<10>Amanda's little\nbrother, Lester,\nis a musician.<12>"
       db "<1b>He's playing harp\nin a town called\nJadd.<12>"
-      db "<11>", $00 ;; 0d:63f9 ???????????????????????????????????????????????????????????????
+      db "<11>", $00 ;; 0d:63f9
     sEND                                               ;; 0d:6438 $00
 
 script_0214:
     sMSG                                               ;; 0d:6439 $04
       db "<10>I used to hear a\nbeautiful sound of\nharp over in Jadd.<12>"
       db "<1b>Jadd is at the\nnorth end of\nthe desert.<12>"
-      db "<11>", $00 ;; 0d:643a ?????????????????????????????????????????????????????????????????
+      db "<11>", $00 ;; 0d:643a
     sEND                                               ;; 0d:647b $00
 
 script_0215:
     sMSG                                               ;; 0d:647c $04
       db "<10>The Book of Ice is\nhidden somewhere\nin the desert!<12>"
-      db "<11>", $00 ;; 0d:647d ????????????????????????????????????
+      db "<11>", $00 ;; 0d:647d
     sEND                                               ;; 0d:64a1 $00
 
 script_0216:
     sMSG                                               ;; 0d:64a2 $04
       db "<10>What's wrong with\nAmanda lately?\nShe's depressed.<12>"
-      db "<11>", $00 ;; 0d:64a3 ?????????????????????????????????????
+      db "<11>", $00 ;; 0d:64a3
     sEND                                               ;; 0d:64c8 $00
 
 script_0217:
     sMSG                                               ;; 0d:64c9 $04
-      db "<10> __??", $00                              ;; 0d:64ca ??????
+      db "<10> __??", $00                              ;; 0d:64ca
     sDELAY 80                                          ;; 0d:64d0 $f0 $50
     sMSG                                               ;; 0d:64d2 $04
       db "  Wow!\n It's moving!<12>"
-      db "<11>", $00 ;; 0d:64d3 ?????????????????
+      db "<11>", $00 ;; 0d:64d3
     sDELAY 60                                          ;; 0d:64e4 $f0 $3c
     sDEL_NPC_1                                         ;; 0d:64e6 $18
     sSFX 15                                            ;; 0d:64e7 $f9 $0f
@@ -3717,7 +3717,7 @@ script_0217:
     sDELAY 120                                         ;; 0d:64ee $f0 $78
     sMSG                                               ;; 0d:64f0 $04
       db "<10>__ What are you??<12>"
-      db "<11>", $00 ;; 0d:64f1 ??????????????
+      db "<11>", $00 ;; 0d:64f1
     sSET_PLAYER_DIRECTION_LEFT                         ;; 0d:64ff $87
     sPLAYER_STEP_FORWARD                               ;; 0d:6500 $80
     sPLAYER_STEP_FORWARD                               ;; 0d:6501 $80
@@ -3731,7 +3731,7 @@ script_0217:
     sDELAY 40                                          ;; 0d:650d $f0 $28
     sMSG                                               ;; 0d:650f $04
       db "<10>__ Hey!\nDon't follow me!<12>"
-      db "<11>", $00 ;; 0d:6510 ????????????????????
+      db "<11>", $00 ;; 0d:6510
     sSET_PLAYER_DIRECTION_LEFT                         ;; 0d:6524 $87
     sPLAYER_STEP_FORWARD                               ;; 0d:6525 $80
     sPLAYER_STEP_FORWARD                               ;; 0d:6526 $80
@@ -3744,11 +3744,11 @@ script_0217:
     sSET_PLAYER_DIRECTION_RIGHT                        ;; 0d:6531 $86
     sMSG                                               ;; 0d:6532 $04
       db "<10>You think I'm\nyour mother?<12>"
-      db "<1b>__ ", $00 ;; 0d:6533 ???????????????????????
+      db "<1b>__ ", $00 ;; 0d:6533
     sDELAY 80                                          ;; 0d:654a $f0 $50
     sMSG                                               ;; 0d:654c $04
       db " Okay.\n__ Come with me!<12>"
-      db "<11>", $00 ;; 0d:654d ???????????????????
+      db "<11>", $00 ;; 0d:654d
     sGIVE_FOLLOWER 9                                   ;; 0d:6560 $9c $09
     sSET_FLAG $19                                      ;; 0d:6562 $da $19
     sSET_FLAG $58                                      ;; 0d:6564 $da $58
@@ -3766,28 +3766,28 @@ script_0218:
       db "<1b> __ Amanda__?\n Oh, yes!\n That girl__<12>"
       db "<1b> She went to the\n Cave of Medusa.\n<12>"
       db "<1b> Nobody ever came\n back from there\n alive though.<12>"
-      db "", $00 ;; 0d:6574 ???????????????????????????????????????????????????????????????????????????????????????????????????????????????????
+      db "", $00 ;; 0d:6574
     sSET_FLAG $1a                                      ;; 0d:65e7 $da $1a
     sMSG                                               ;; 0d:65e9 $04
-      db "<11>", $00                                   ;; 0d:65ea ??
+      db "<11>", $00                                   ;; 0d:65ea
     sEND                                               ;; 0d:65ec $00
 
 script_0219:
     sIF_09_JR $2a, .jr_0d_6644                         ;; 0d:65ed $09 $2a $00 $53
     sSET_MUSIC 0                                       ;; 0d:65f1 $f8 $00
     sMSG                                               ;; 0d:65f3 $04
-      db "<10><BOY> used <a9>Amanda,\nthe tears of\nAmanda__", $00 ;; 0d:65f4 ??????????????????????????
+      db "<10><BOY> used <a9>Amanda,\nthe tears of\nAmanda__", $00 ;; 0d:65f4
     sDELAY 120                                         ;; 0d:660e $f0 $78
     sUNK_DE                                            ;; 0d:6610 $de
     sMSG                                               ;; 0d:6611 $04
-      db "<11>", $00                                   ;; 0d:6612 ??
+      db "<11>", $00                                   ;; 0d:6612
     sDEL_NPC_1                                         ;; 0d:6614 $18
     sSFX 6                                             ;; 0d:6615 $f9 $06
     sSPAWN_NPC 2                                       ;; 0d:6617 $fd $02
     sGIVE_FOLLOWER 6                                   ;; 0d:6619 $9c $06
     sMSG                                               ;; 0d:661b $04
       db "<10>    Lester was\n  released from\n Davias's curse__<12>"
-      db "<1b>", $00 ;; 0d:661c ???????????????????????????????
+      db "<1b>", $00 ;; 0d:661c
     sCALL script_053c                                  ;; 0d:663b $02 $6d $32
     sSET_FLAG $56                                      ;; 0d:663e $da $56
     sSET_FLAG $1d                                      ;; 0d:6640 $da $1d
@@ -3797,56 +3797,56 @@ script_0219:
 
 script_021a:
     sMSG                                               ;; 0d:6645 $04
-      db "<10>Welcome to Jadd.", $00                   ;; 0d:6646 ??????????????
+      db "<10>Welcome to Jadd.", $00                   ;; 0d:6646
     sIF_08_JR $a8, .jr_0d_6671                         ;; 0d:6654 $08 $a8 $00 $19
     sMSG                                               ;; 0d:6658 $04
-      db "\nDavias rules this\ntown. I hate it.", $00  ;; 0d:6659 ????????????????????????
+      db "\nDavias rules this\ntown. I hate it.", $00  ;; 0d:6659
 .jr_0d_6671:
     sMSG                                               ;; 0d:6671 $04
       db "<12>"
-      db "<11>", $00                   ;; 0d:6672 ???
+      db "<11>", $00                   ;; 0d:6672
     sEND                                               ;; 0d:6675 $00
 
 script_021b:
     sMSG                                               ;; 0d:6676 $04
-      db "<10>", $00                                   ;; 0d:6677 ??
+      db "<10>", $00                                   ;; 0d:6677
     sIF_08_JR $a8, .jr_0d_669d                         ;; 0d:6679 $08 $a8 $00 $20
     sMSG                                               ;; 0d:667d $04
-      db "Northern valley is\nfilled with fatal\npoison gas.", $00 ;; 0d:667e ?????????????????????????????
+      db "Northern valley is\nfilled with fatal\npoison gas.", $00 ;; 0d:667e
     sJR  .jr_0d_66cd                                   ;; 0d:669b $01 $30
 .jr_0d_669d:
     sMSG                                               ;; 0d:669d $04
       db "The poison gas is\ncleared!<12>"
-      db "<1b>Head north over\nthe valley to the\nMt. Rocks!", $00 ;; 0d:669e ???????????????????????????????????????????????
+      db "<1b>Head north over\nthe valley to the\nMt. Rocks!", $00 ;; 0d:669e
 .jr_0d_66cd:
     sMSG                                               ;; 0d:66cd $04
       db "<12>"
-      db "<11>", $00                   ;; 0d:66ce ???
+      db "<11>", $00                   ;; 0d:66ce
     sEND                                               ;; 0d:66d1 $00
 
 script_021c:
     sMSG                                               ;; 0d:66d2 $04
       db "<10>The poison gas\nappeared when\nthe harp stopped.<12>"
-      db "<11>", $00 ;; 0d:66d3 ??????????????????????????????????
+      db "<11>", $00 ;; 0d:66d3
     sEND                                               ;; 0d:66f5 $00
 
 script_021d:
     sMSG                                               ;; 0d:66f6 $04
       db "<10>See that huge\nmansion? That's\nDavias's house!<12>"
-      db "<11>", $00 ;; 0d:66f7 ??????????????????????????????????
+      db "<11>", $00 ;; 0d:66f7
     sEND                                               ;; 0d:6719 $00
 
 script_021e:
     sMSG                                               ;; 0d:671a $04
       db "<10>Davias can cast a\nspell to change\npeople to animals.<12>"
       db "<1b>Many people went\nto his place and\nnever came back!<12>"
-      db "<11>", $00 ;; 0d:671b ??????????????????????????????????????????????????????????????????????????
+      db "<11>", $00 ;; 0d:671b
     sEND                                               ;; 0d:6765 $00
 
 script_021f:
     sMSG                                               ;; 0d:6766 $04
       db "<10>To uncurse, you\nneed a teardrop\nof Medusa.<12>"
-      db "<11>", $00 ;; 0d:6767 ??????????????????????????????
+      db "<11>", $00 ;; 0d:6767
     sEND                                               ;; 0d:6785 $00
 
 script_0220:
@@ -3854,13 +3854,13 @@ script_0220:
       db "<10>Davias's mother\nis a Medusa.\nShe is in a cave.<12>"
       db "<1b>It's by the oasis\nat the desert, but\nit's hard to find.<12>"
       db "<1b>I don't know how,\nbut a boy knows\nhow to get in!<12>"
-      db "<11>", $00 ;; 0d:6787 ????????????????????????????????????????????????????????????????????????????????????????????????????
+      db "<11>", $00 ;; 0d:6787
     sEND                                               ;; 0d:67eb $00
 
 script_0221:
     sMSG                                               ;; 0d:67ec $04
       db "<10>Cave of Oasis?\nI'll tell you for\na bag of Fang!<12>"
-      db "<13><1b>", $00 ;; 0d:67ed ???????????????????????????????????
+      db "<13><1b>", $00 ;; 0d:67ed
     sIF_08_JR $ff, .jr_0d_683c                         ;; 0d:6810 $08 $ff $00 $28
     sIF_09_JR $3b, .jr_0d_681e                         ;; 0d:6814 $09 $3b $00 $06
     sUNK_DE                                            ;; 0d:6818 $de
@@ -3873,22 +3873,22 @@ script_0221:
     sJR  .jr_0d_683a                                   ;; 0d:6827 $01 $11
 .jr_0d_6829:
     sMSG                                               ;; 0d:6829 $04
-      db "But, you don't\nhave it!", $00               ;; 0d:682a ????????????????
+      db "But, you don't\nhave it!", $00               ;; 0d:682a
 .jr_0d_683a:
     sJR  .jr_0d_6858                                   ;; 0d:683a $01 $1c
 .jr_0d_683c:
     sMSG                                               ;; 0d:683c $04
-      db "Don't you know?\nIt's very\nvaluable!", $00  ;; 0d:683d ???????????????????????????
+      db "Don't you know?\nIt's very\nvaluable!", $00  ;; 0d:683d
 .jr_0d_6858:
     sMSG                                               ;; 0d:6858 $04
       db "<12>"
-      db "<11>", $00                   ;; 0d:6859 ???
+      db "<11>", $00                   ;; 0d:6859
     sEND                                               ;; 0d:685c $00
 
 script_0222:
     sMSG                                               ;; 0d:685d $04
       db "<10>Lester:Good luck!<12>"
-      db "<11>", $00 ;; 0d:685e ???????????????
+      db "<11>", $00 ;; 0d:685e
     sEND                                               ;; 0d:686d $00
 
 script_0223:
@@ -3906,23 +3906,23 @@ script_0226:
     sSPAWN_NPC 1                                       ;; 0d:6875 $fd $01
     sMSG                                               ;; 0d:6877 $04
       db "<10><BOY>:__I'm sorry,\n Amanda __\n But I had to __<12>"
-      db "<11>", $00 ;; 0d:6878 ?????????????????????????????????
+      db "<11>", $00 ;; 0d:6878
     sSET_FLAG $1c                                      ;; 0d:6899 $da $1c
     sEND                                               ;; 0d:689b $00
 
 script_0227:
     sFOLLOWER_DIRECTION_DOWN                           ;; 0d:689c $95
     sMSG                                               ;; 0d:689d $04
-      db "<10>", $00                                   ;; 0d:689e ??
+      db "<10>", $00                                   ;; 0d:689e
     sSET_MUSIC 0                                       ;; 0d:68a0 $f8 $00
     sMSG                                               ;; 0d:68a2 $04
-      db "Amanda:__Ouch!", $00                         ;; 0d:68a3 ????????????
+      db "Amanda:__Ouch!", $00                         ;; 0d:68a3
     sSET_PLAYER_DIRECTION_LEFT                         ;; 0d:68af $87
     sPLAYER_STEP_FORWARD                               ;; 0d:68b0 $80
     sMSG                                               ;; 0d:68b1 $04
       db "\n<BOY>:Are you okay?<12>"
       db "<1b>Amanda:I guess\n Medusa bit me\n while fighting__<12>"
-      db "", $00 ;; 0d:68b2 ?????????????????????????????????????????????
+      db "", $00 ;; 0d:68b2
     sSET_MUSIC 2                                       ;; 0d:68df $f8 $02
     sMSG                                               ;; 0d:68e1 $04
       db "<1b> __ One who was\n bitten by Medusa\n turns to Medusa.<12>"
@@ -3930,7 +3930,7 @@ script_0227:
       db "<1b> Please do away\n with me and take\n my tears, <BOY>.<12>"
       db "<1b><BOY>:No, I can't!\nAmanda:I'm gonna\n be a monster__<12>"
       db "<1b> I might lose my\n mind and hurt\n people__<12>"
-      db "<1b>", $00 ;; 0d:68e2 ????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
+      db "<1b>", $00 ;; 0d:68e2
     sFOLLOWER_DELETE                                   ;; 0d:6986 $98
     sSET_NPC_TYPES 66                                  ;; 0d:6987 $fc $42
     sSPAWN_NPC 0                                       ;; 0d:6989 $fd $00
@@ -3938,15 +3938,15 @@ script_0227:
     sMSG                                               ;; 0d:698d $04
       db " Please__ <BOY>__\n Before I lose\n my feelings__<12>"
       db "<1b> Please take my\n tears to Lester.<12>"
-      db "<1b> Tell him that\n I loved him__\n", $00 ;; 0d:698e ?????????????????????????????????????????????????????????????????????????
+      db "<1b> Tell him that\n I loved him__\n", $00 ;; 0d:698e
     sDELAY 40                                          ;; 0d:69d7 $f0 $28
     sMSG                                               ;; 0d:69d9 $04
       db " _ Please __<12>"
-      db "<1b> <BOY> __\n", $00 ;; 0d:69da ????????????????
+      db "<1b> <BOY> __\n", $00 ;; 0d:69da
     sDELAY 30                                          ;; 0d:69ea $f0 $1e
     sMSG                                               ;; 0d:69ec $04
       db " Pl_ please_ _ _<12>"
-      db "<11>", $00   ;; 0d:69ed ?????????????????
+      db "<11>", $00   ;; 0d:69ed
     sEND                                               ;; 0d:69fe $00
 
 script_0228:
@@ -3957,10 +3957,10 @@ script_0228:
     sFADE_TO_NORMAL                                    ;; 0d:6a0b $bc
     sMSG                                               ;; 0d:6a0c $04
       db "<10> <BOY> took a drop\n   of tear from\n  Amanda's face.<12>"
-      db "<1b>", $00 ;; 0d:6a0d ??????????????????????????????????
+      db "<1b>", $00 ;; 0d:6a0d
     sDELAY 30                                          ;; 0d:6a2f $f0 $1e
     sMSG                                               ;; 0d:6a31 $04
-      db "<11>", $00                                   ;; 0d:6a32 ??
+      db "<11>", $00                                   ;; 0d:6a32
     sDELAY 60                                          ;; 0d:6a34 $f0 $3c
     sSET_MUSIC 0                                       ;; 0d:6a36 $f8 $00
     sDELAY 60                                          ;; 0d:6a38 $f0 $3c
@@ -3975,10 +3975,10 @@ script_0228:
 
 script_0229:
     sMSG                                               ;; 0d:6a48 $04
-      db "<10>", $00                                   ;; 0d:6a49 ..
+      db "<10>", $00                                   ;; 0d:6a49
     sIF_08_JR $79, .jr_0d_6a67                         ;; 0d:6a4b $08 $79 $00 $18
     sMSG                                               ;; 0d:6a4f $04
-      db "Old man:Go away!", $00                       ;; 0d:6a50 .............
+      db "Old man:Go away!", $00                       ;; 0d:6a50
     sIF_08_JR $0b, $51, .jr_0d_6a67                    ;; 0d:6a5d $08 $0b $51 $00 $05
     sCALL script_022a                                  ;; 0d:6a62 $02 $2a $bb
     sSET_FLAG $0c                                      ;; 0d:6a65 $da $0c
@@ -3986,29 +3986,29 @@ script_0229:
     sIF_08_JR $8c, .jr_0d_6aba                         ;; 0d:6a67 $08 $8c $00 $4f
     sIF_08_JR $78, $f9, .jr_0d_6a8b                    ;; 0d:6a6b $08 $78 $f9 $00 $1b
     sMSG                                               ;; 0d:6a70 $04
-      db "Old man:I don't\n know anything!", $00       ;; 0d:6a71 ........................
+      db "Old man:I don't\n know anything!", $00       ;; 0d:6a71
     sSET_FLAG $79                                      ;; 0d:6a89 $da $79
 .jr_0d_6a8b:
     sIF_08_JR $f8, .jr_0d_6ab6                         ;; 0d:6a8b $08 $f8 $00 $27
     sMSG                                               ;; 0d:6a8f $04
-      db "<BOY>:Excuse me.\n I'm looking for a\n man name Bogard.", $00 ;; 0d:6a90 ....................................
+      db "<BOY>:Excuse me.\n I'm looking for a\n man name Bogard.", $00 ;; 0d:6a90
     sSET_FLAG $78                                      ;; 0d:6ab4 $da $78
 .jr_0d_6ab6:
     sMSG                                               ;; 0d:6ab6 $04
       db "<12>"
-      db "<11>", $00                   ;; 0d:6ab7 ...
+      db "<11>", $00                   ;; 0d:6ab7
 .jr_0d_6aba:
     sEND                                               ;; 0d:6aba $00
 
 script_022a:
     sMSG                                               ;; 0d:6abb $04
-      db "\n", $00                                     ;; 0d:6abc ..
+      db "\n", $00                                     ;; 0d:6abc
     sDELAY 40                                          ;; 0d:6abe $f0 $28
     sMSG                                               ;; 0d:6ac0 $04
-      db " _", $00                                     ;; 0d:6ac1 ...
+      db " _", $00                                     ;; 0d:6ac1
     sDELAY 50                                          ;; 0d:6ac4 $f0 $32
     sMSG                                               ;; 0d:6ac6 $04
-      db " _", $00                                     ;; 0d:6ac7 ...
+      db " _", $00                                     ;; 0d:6ac7
     sDELAY 30                                          ;; 0d:6aca $f0 $1e
     sMSG                                               ;; 0d:6acc $04
       db " That is_ the_\n Pendant of Mana.<12>"
@@ -4022,7 +4022,7 @@ script_022a:
       db "<1b> That lady had\n that Pendant on\n her chest.<12>"
       db "<1b> Seems like this\n girl is the key\n for this time.<12>"
       db "<1b> Take the Mattock\n in the next room!<12>"
-      db "<11>", $00 ;; 0d:6acd ................................................................................................................................................................................................................................................................................................................................
+      db "<11>", $00 ;; 0d:6acd
     sCALL script_022b                                  ;; 0d:6c0d $02 $2c $14
     sSFX 16                                            ;; 0d:6c10 $f9 $10
     sUNK_E0                                            ;; 0d:6c12 $e0
@@ -4030,77 +4030,77 @@ script_022a:
 
 script_022b:
     sMSG                                               ;; 0d:6c14 $04
-      db "<10>", $00                                   ;; 0d:6c15 ..
+      db "<10>", $00                                   ;; 0d:6c15
     sIF_08_JR $0c, .jr_0d_6c3f                         ;; 0d:6c17 $08 $0c $00 $24
     sMSG                                               ;; 0d:6c1b $04
       db " You can buy the\n mattocks at the\n Item Shops also.<12>"
-      db "<1b>", $00 ;; 0d:6c1c ???????????????????????????????????
+      db "<1b>", $00 ;; 0d:6c1c
 .jr_0d_6c3f:
     sMSG                                               ;; 0d:6c3f $04
       db " Go to the cave on\n the east side of\n the mountains.<12>"
       db "<1b> Use Mattock to\n break the rocks\n in the cave. See<12>"
       db "<1b> Cibba in the town\n called Wendel.\n He knows more.<12>"
-      db "<11>", $00 ;; 0d:6c40 ....................................................................................................
+      db "<11>", $00 ;; 0d:6c40
     sEND                                               ;; 0d:6ca4 $00
 
 script_022c:
     sMSG                                               ;; 0d:6ca5 $04
-      db "<10>", $00                                   ;; 0d:6ca6 ??
+      db "<10>", $00                                   ;; 0d:6ca6
     sIF_08_JR $a1, .jr_0d_6cb7                         ;; 0d:6ca8 $08 $a1 $00 $0b
     sMSG                                               ;; 0d:6cac $04
-      db "Bogard:_____", $00                           ;; 0d:6cad ??????????
+      db "Bogard:_____", $00                           ;; 0d:6cad
 .jr_0d_6cb7:
     sIF_08_JR $21, $a2, .jr_0d_6cbf                    ;; 0d:6cb7 $08 $21 $a2 $00 $03
     sCALL script_0210                                  ;; 0d:6cbc $02 $22 $3e
 .jr_0d_6cbf:
     sIF_08_JR $22, .jr_0d_6ce1                         ;; 0d:6cbf $08 $22 $00 $1e
     sMSG                                               ;; 0d:6cc3 $04
-      db "Bogard:To defeat\n the evil!\n Go on, <BOY>.", $00 ;; 0d:6cc4 ?????????????????????????????
+      db "Bogard:To defeat\n the evil!\n Go on, <BOY>.", $00 ;; 0d:6cc4
 .jr_0d_6ce1:
     sMSG                                               ;; 0d:6ce1 $04
       db "<12>"
-      db "<11>", $00                   ;; 0d:6ce2 ???
+      db "<11>", $00                   ;; 0d:6ce2
     sEND                                               ;; 0d:6ce5 $00
 
 script_022d:
     sMSG                                               ;; 0d:6ce6 $04
       db "<10>Bogard:I'll take\n care of her.<12>"
-      db "<11>", $00 ;; 0d:6ce7 ?????????????????????????
+      db "<11>", $00 ;; 0d:6ce7
     sEND                                               ;; 0d:6d00 $00
 
 script_022e:
     sMSG                                               ;; 0d:6d01 $04
-      db "Here's the clue.\nPalm trees_ and 8.\n", $00 ;; 0d:6d02 ?????????????????????????
+      db "Here's the clue.\nPalm trees_ and 8.\n", $00 ;; 0d:6d02
     sDELAY 20                                          ;; 0d:6d1b $f0 $14
     sMSG                                               ;; 0d:6d1d $04
-      db "Got it?", $00                                ;; 0d:6d1e ??????
+      db "Got it?", $00                                ;; 0d:6d1e
     sEND                                               ;; 0d:6d24 $00
 
 script_022f:
     sMSG                                               ;; 0d:6d25 $04
-      db "<10>Bowow:", $00                             ;; 0d:6d26 ??????
+      db "<10>Bowow:", $00                             ;; 0d:6d26
     sIF_08_JR $af, .jr_0d_6d73                         ;; 0d:6d2c $08 $af $00 $43
     sMSG                                               ;; 0d:6d30 $04
       db "Go east on\n the sea from the\n pier at north.<12>"
-      db "<1b> And go north to\n Wendel.__South is\n to the Ammonites.", $00 ;; 0d:6d31 ????????????????????????????????????????????????????????????????
+      db "<1b> And go north to\n Wendel.__South is\n to the Ammonites.", $00 ;; 0d:6d31
     sJR  .jr_0d_6e18                                   ;; 0d:6d71 $01 $a5
 .jr_0d_6d73:
     sMSG                                               ;; 0d:6d73 $04
-      db "Finally!\n", $00                             ;; 0d:6d74 ????????
+      db "Finally!\n", $00                             ;; 0d:6d74
     sIF_0A_JR $08, .jr_0d_6dbc                         ;; 0d:6d7c $0a $08 $00 $3c
     sMSG                                               ;; 0d:6d80 $04
       db "There is a piece\nof crystal you can<12>"
-      db "<1b>blow with Nuke in\nCrystal Desert.\n__ Find it!", $00 ;; 0d:6d81 ?????????????????????????????????????????????????????????
+      db "<1b>blow with Nuke in\nCrystal Desert.\n__ Find it!", $00 ;; 0d:6d81
     sJR  .jr_0d_6e18                                   ;; 0d:6dba $01 $5c
 .jr_0d_6dbc:
     sMSG                                               ;; 0d:6dbc $04
       db "But you need the\nmagic of Nuke.<12>"
       db "<1b>The ultimate magic\nbook of Nuke is\nsealed by Lich.<12>"
-      db "<1b>Go north to the\nPalmy Desert and\ndefeat Lich!", $00 ;; 0d:6dbd ???????????????????????????????????????????????????????????????????????????????????????????
+      db "<1b>Go north to the\nPalmy Desert and\ndefeat Lich!", $00 ;; 0d:6dbd
 .jr_0d_6e18:
     sMSG                                               ;; 0d:6e18 $04
       db "<12>"
-      db "<11>", $00                   ;; 0d:6e19 ???
+      db "<11>", $00                   ;; 0d:6e19
     sEND                                               ;; 0d:6e1c $00
 
 script_0230:
@@ -4108,16 +4108,16 @@ script_0230:
       db "<10>There is no way\nto go on water.\nBut, you know_<12>"
       db "<1b>Dr. Bowow may be\nable to make\nsomething.<12>"
       db "<1b>He lives in a\nhouse over there.<12>"
-      db "<11>", $00 ;; 0d:6e1e ????????????????????????????????????????????????????????????????????????????????
+      db "<11>", $00 ;; 0d:6e1e
     sEND                                               ;; 0d:6e6e $00
 
 script_0231:
     sMSG                                               ;; 0d:6e6f $04
-      db "<10>", $00                                   ;; 0d:6e70 ??
+      db "<10>", $00                                   ;; 0d:6e70
     sIF_08_JR $20, .jr_0d_6e8f                         ;; 0d:6e72 $08 $20 $00 $19
     sMSG                                               ;; 0d:6e76 $04
       db "Sarah:Please__\n Save us all_!<12>"
-      db "<11>", $00 ;; 0d:6e77 ??????????????????????
+      db "<11>", $00 ;; 0d:6e77
     sJR  .jr_0d_6e99                                   ;; 0d:6e8d $01 $0a
 .jr_0d_6e8f:
     sCALL script_0232                                  ;; 0d:6e8f $02 $2e $9a
@@ -4142,7 +4142,7 @@ script_0232:
       db "<1b> Bogard and the\n bird made me\n believe in you_<12>"
       db "<1b> We all believe\n that you'll save\n our world now.<12>"
       db "<1b> Chocobo is being\n treated at Doctor\n Bowow's house.<12>"
-      db "<11>", $00 ;; 0d:6e9b ????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
+      db "<11>", $00 ;; 0d:6e9b
     sEND                                               ;; 0d:6feb $00
 
 script_0233:
@@ -4151,37 +4151,37 @@ script_0233:
       db "<1b>The evil Vandole\nused to prosper\naround this area.<12>"
       db "<1b>But Gemma Knight\nwith some sword\ndefeated the evil.<12>"
       db "<1b>The ruins of\nVandole lies under\nthe desert.<12>"
-      db "<11>", $00 ;; 0d:6fed ???????????????????????????????????????????????????????????????????????????????????????????????????????????????
+      db "<11>", $00 ;; 0d:6fed
     sEND                                               ;; 0d:705c $00
 
 script_0234:
     sMSG                                               ;; 0d:705d $04
-      db "<10>Julius summoned\nevil monsters_", $00    ;; 0d:705e ??????????????????????
+      db "<10>Julius summoned\nevil monsters_", $00    ;; 0d:705e
     sDELAY 40                                          ;; 0d:7074 $f0 $28
     sMSG                                               ;; 0d:7076 $04
       db "\nIs it safe here?<12>"
-      db "<11>", $00 ;; 0d:7077 ??????????????
+      db "<11>", $00 ;; 0d:7077
     sEND                                               ;; 0d:7085 $00
 
 script_0235:
     sMSG                                               ;; 0d:7086 $04
       db "<10>Vandole people\ncould build things\non desert sand.<12>"
       db "<1b>They built the\ngreat Dime Tower.\nBut it sank__<12>"
-      db "<11>", $00 ;; 0d:7087 ????????????????????????????????????????????????????????????????????????
+      db "<11>", $00 ;; 0d:7087
     sEND                                               ;; 0d:70cf $00
 
 script_0236:
     sMSG                                               ;; 0d:70d0 $04
       db "<10>Julius became the\nking of Glaive.\nBut Julius is<12>"
       db "<1b>much crueler than\nthat Dark Lord!\n_ What'll we do?<12>"
-      db "<11>", $00 ;; 0d:70d1 ??????????????????????????????????????????????????????????????????????????
+      db "<11>", $00 ;; 0d:70d1
     sEND                                               ;; 0d:711b $00
 
 script_0237:
     sMSG                                               ;; 0d:711c $04
       db "<10>It's hard to walk\naround in Crystal\nDesert.<12>"
       db "<1b>Even for Chocobos!<12>"
-      db "<11>", $00 ;; 0d:711d ????????????????????????????????????????????????
+      db "<11>", $00 ;; 0d:711d
     sEND                                               ;; 0d:714d $00
 
 script_0238:
@@ -4205,26 +4205,26 @@ script_023d:
 script_023e:
     sMSG                                               ;; 0d:7154 $04
       db "<10>THE TREE OF MANA\nGROWS WITH THE\nENERGY OF NATURE.<12>"
-      db "<11>", $00 ;; 0d:7155 ??????????????????????????????????????????????
+      db "<11>", $00 ;; 0d:7155
     sEND                                               ;; 0d:7183 $00
 
 script_023f:
     sMSG                                               ;; 0d:7184 $04
       db "<10>THE EVIL FORCE\nOF PEOPLE MAKES\nTHE TREE EVIL.<12>"
-      db "<11>", $00 ;; 0d:7185 ????????????????????????????????????????????
+      db "<11>", $00 ;; 0d:7185
     sEND                                               ;; 0d:71b1 $00
 
 script_0240:
     sMSG                                               ;; 0d:71b2 $04
       db "<10>WATER FROM THE\nEVIL MANA TREE\nTURNS PEOPLE EVIL.<12>"
       db "<1b>IT IS A VICIOUS\nCIRCLE BETWEEN\nENERGY AND MANA.<12>"
-      db "<11>", $00 ;; 0d:71b3 ?????????????????????????????????????????????????????????????????????????????????????????????
+      db "<11>", $00 ;; 0d:71b3
     sEND                                               ;; 0d:7210 $00
 
 script_0241:
     sMSG                                               ;; 0d:7211 $04
       db "<10>ONE WHO TOUCHES\nTHE MANA TREE GETS\nTHE MIGHTY POWER.<12>"
-      db "<11>", $00 ;; 0d:7212 ???????????????????????????????????????????????
+      db "<11>", $00 ;; 0d:7212
     sEND                                               ;; 0d:7241 $00
 
 script_0242:
@@ -4232,7 +4232,7 @@ script_0242:
       db "<10>KING OF VANDOLE\nGOT THE MIGHTY\nPOWER OF MANA.<12>"
       db "<1b>THE ONLY ONE WHO\nCAN STAND AGAINST\nIS THE __<12>"
       db "<1b>GEMMA KNIGHT__\nWITH THE__\nEXCALIBUR__<12>"
-      db "<11>", $00 ;; 0d:7243 ???????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
+      db "<11>", $00 ;; 0d:7243
     sEND                                               ;; 0d:72ba $00
 
 script_0243:
@@ -4240,13 +4240,13 @@ script_0243:
       db "<10>GEMMA KNIGHT WITH\nTHE RUSTY SWORD\nWILL BE TESTED.<12>"
       db "<1b>THE TRUE GEMMA\nKNIGHT SHOULD\nBE GIVEN THE<12>"
       db "<1b>LEGENDARY SWORD,\nEXCALIBUR__!<12>"
-      db "<11>", $00 ;; 0d:72bc ??????????????????????????????????????????????????????????????????????????????????????????????????????????????????
+      db "<11>", $00 ;; 0d:72bc
     sEND                                               ;; 0d:732e $00
 
 script_0244:
     sMSG                                               ;; 0d:732f $04
       db "<10>FIGHT WITH THE 3\nDRAGONS IN THE\nSHRINE OF MANA.<12>"
-      db "<11>", $00 ;; 0d:7330 ???????????????????????????????????????????
+      db "<11>", $00 ;; 0d:7330
     sEND                                               ;; 0d:735b $00
 
 script_0245:
@@ -4254,7 +4254,7 @@ script_0245:
       db "<10>THE VANDOLE SOON\nSHOULD FALL.\n<12>"
       db "<1b>WE LEAVE OUR LAST\nHOPE IN THE CAVE\nOF THE WATERFALLS.<12>"
       db "<1b>GLORY TO VANDOLE\nAND TO OUR CHILD\nOF HOPE__!<12>"
-      db "<11>", $00 ;; 0d:735d ?????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
+      db "<11>", $00 ;; 0d:735d
     sEND                                               ;; 0d:73d6 $00
 
 script_0246:
@@ -4307,11 +4307,11 @@ script_0249:
     sDELAY 80                                          ;; 0d:742f $f0 $50
     sSET_PLAYER_DIRECTION_RIGHT                        ;; 0d:7431 $86
     sMSG                                               ;; 0d:7432 $04
-      db "<10><BOY>:Oh__ No__\nMarcie:I THROW YOU\n __ AND I JUMP.", $00 ;; 0d:7433 ??????????????????????????????????????????
+      db "<10><BOY>:Oh__ No__\nMarcie:I THROW YOU\n __ AND I JUMP.", $00 ;; 0d:7433
     sDELAY 50                                          ;; 0d:745d $f0 $32
     sMSG                                               ;; 0d:745f $04
       db "<1b><BOY>:Can you?\n Let's do that!<12>"
-      db "<11>", $00 ;; 0d:7460 ??????????????????????
+      db "<11>", $00 ;; 0d:7460
     sDELAY 60                                          ;; 0d:7476 $f0 $3c
     sSET_PLAYER_DIRECTION_LEFT                         ;; 0d:7478 $87
     sDELAY 50                                          ;; 0d:7479 $f0 $32
@@ -4324,19 +4324,19 @@ script_0249:
     sSFX 37                                            ;; 0d:7485 $f9 $25
     sSHAKE_SCREEN                                      ;; 0d:7487 $fb
     sMSG                                               ;; 0d:7488 $04
-      db "<10><BOY>:Now!\n Come on, Marcie!", $00      ;; 0d:7489 ???????????????????
+      db "<10><BOY>:Now!\n Come on, Marcie!", $00      ;; 0d:7489
     sSET_MUSIC 0                                       ;; 0d:749c $f8 $00
     sDELAY 80                                          ;; 0d:749e $f0 $50
     sMSG                                               ;; 0d:74a0 $04
       db "\nMarcie:__ __<12>"
-      db "<1b>YOU HAVE TO SAVE\nTHE WORLD. YOU\nARE THE ONLY HOPE.", $00 ;; 0d:74a1 ??????????????????????????????????????????????????????
+      db "<1b>YOU HAVE TO SAVE\nTHE WORLD. YOU\nARE THE ONLY HOPE.", $00 ;; 0d:74a1
     sSET_MUSIC 2                                       ;; 0d:74d7 $f8 $02
     sMSG                                               ;; 0d:74d9 $04
       db "<12>"
       db "<1b><BOY>:What are you\n talking about?\n __ Come on!<12>"
       db "<1b>Marcie:_ I AM\n UNABLE TO JUMP__\n<BOY>:_ What_?!<12>"
       db "<1b>Marcie:I WAS MADE\n TO WORK IN HERE.\n AND I SLEEP HERE_<12>"
-      db "<11>", $00 ;; 0d:74da ???????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
+      db "<11>", $00 ;; 0d:74da
     sDELAY 40                                          ;; 0d:7551 $f0 $28
     sFLASH_SCREEN                                      ;; 0d:7553 $bf
     sSFX 37                                            ;; 0d:7554 $f9 $25
@@ -4380,17 +4380,17 @@ script_0249:
     sDELAY 140                                         ;; 0d:75c2 $f0 $8c
     sMSG                                               ;; 0d:75c4 $04
       db "<10><BOY>:__ Marcie!<12>"
-      db "<11>", $00 ;; 0d:75c5 ????????????
+      db "<11>", $00 ;; 0d:75c5
     sFADE_TO_BLACK                                     ;; 0d:75d1 $bd
     sLOAD_ROOM_INSTANT 15, $55, 20, 0                  ;; 0d:75d2 $f3 $0f $55 $14 $00
     sFADE_TO_NORMAL                                    ;; 0d:75d7 $bc
     sDELAY 20                                          ;; 0d:75d8 $f0 $14
     sMSG                                               ;; 0d:75da $04
-      db "<10>Marcie:SEE YOU\n SOMETIME,", $00         ;; 0d:75db ????????????????????????
+      db "<10>Marcie:SEE YOU\n SOMETIME,", $00         ;; 0d:75db
     sDELAY 40                                          ;; 0d:75f3 $f0 $28
     sMSG                                               ;; 0d:75f5 $04
       db " KID__<12>"
-      db "<11>", $00             ;; 0d:75f6 ????????
+      db "<11>", $00             ;; 0d:75f6
     sFADE_TO_BLACK                                     ;; 0d:75fe $bd
     sLOAD_ROOM_INSTANT 1, $56, 14, 6                   ;; 0d:75ff $f3 $01 $56 $0e $06
     sUNK_AB                                            ;; 0d:7604 $ab
@@ -4424,39 +4424,39 @@ script_024f:
 
 script_0250:
     sMSG                                               ;; 0d:761a $04
-      db "<10>", $00                                   ;; 0d:761b ??
+      db "<10>", $00                                   ;; 0d:761b
     sIF_08_JR $ad, .jr_0d_76ac                         ;; 0d:761d $08 $ad $00 $8b
     sMSG                                               ;; 0d:7621 $04
       db "King:Julius has\n summoned monsters\n in this world.<12>"
       db "<1b> One called Kary\n in the Snowfield\n has frozen us.<12>"
       db "<1b> Cibba came, but\n he's stuck in\n the other room.<12>"
-      db "<1b> It is dangerous\n to keep them all\n frozen for long__", $00 ;; 0d:7622 ????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
+      db "<1b> It is dangerous\n to keep them all\n frozen for long__", $00 ;; 0d:7622
     sJR  .jr_0d_76d0                                   ;; 0d:76aa $01 $24
 .jr_0d_76ac:
     sMSG                                               ;; 0d:76ac $04
-      db "Thank you so much.\nCibba is waiting\nin the other room.", $00 ;; 0d:76ad ???????????????????????????????????
+      db "Thank you so much.\nCibba is waiting\nin the other room.", $00 ;; 0d:76ad
 .jr_0d_76d0:
     sMSG                                               ;; 0d:76d0 $04
       db "<12>"
-      db "<11>", $00                   ;; 0d:76d1 ???
+      db "<11>", $00                   ;; 0d:76d1
     sEND                                               ;; 0d:76d4 $00
 
 script_0251:
     sMSG                                               ;; 0d:76d5 $04
       db "<10>__ Frozen.<12>"
-      db "<11>", $00     ;; 0d:76d6 ???????????
+      db "<11>", $00     ;; 0d:76d6
     sEND                                               ;; 0d:76e1 $00
 
 script_0252:
     sMSG                                               ;; 0d:76e2 $04
       db "<10>Wow!\nGood morning!<12>"
-      db "<11>", $00 ;; 0d:76e3 ?????????????????
+      db "<11>", $00 ;; 0d:76e3
     sEND                                               ;; 0d:76f4 $00
 
 script_0253:
     sMSG                                               ;; 0d:76f5 $04
       db "<10>Welcome to Lorim!<12>"
-      db "<11>", $00 ;; 0d:76f6 ????????????????
+      db "<11>", $00 ;; 0d:76f6
     sEND                                               ;; 0d:7706 $00
 
 script_0254:
@@ -4579,13 +4579,13 @@ script_025f:
     sSET_NPC_1_DIRECTION_DOWN                          ;; 0d:77dd $15
     sMSG                                               ;; 0d:77de $04
       db "<10> Howdy!\n 10GP/night!\n Wanna stay?<12>"
-      db "<13>", $00 ;; 0d:77df .............................
+      db "<13>", $00 ;; 0d:77df
     sIF_08_JR $ff, .jr_0d_7821                         ;; 0d:77fc $08 $ff $00 $21
     sCHECK_MONEY 10                                    ;; 0d:7800 $d1 $0a $00
     sIF_08_JR $06, .jr_0d_781e                         ;; 0d:7803 $08 $06 $00 $17
     sMSG                                               ;; 0d:7807 $04
       db "<1b> Sorry.\n Not enough GP!<12>"
-      db "<11>", $00 ;; 0d:7808 ????????????????????
+      db "<11>", $00 ;; 0d:7808
     sJR  .jr_0d_7821                                   ;; 0d:781c $01 $03
 .jr_0d_781e:
     sCALL script_0405                                  ;; 0d:781e $02 $51 $fb
@@ -4619,7 +4619,7 @@ script_0260:
     sOPEN_SHOP 1                                       ;; 0d:7853 $f6 $01
     sMSG                                               ;; 0d:7855 $04
       db "<10>It's swampy ahead.\nBe careful!<12>"
-      db "<11>", $00 ;; 0d:7856 .........................
+      db "<11>", $00 ;; 0d:7856
 .jr_0d_786f:
     sIF_08_JR $76, $f7, .jr_0d_7876                    ;; 0d:786f $08 $76 $f7 $00 $02
     sOPEN_SHOP 1                                       ;; 0d:7874 $f6 $01
@@ -4630,14 +4630,14 @@ script_0260:
     sJR  .jr_0d_78a9                                   ;; 0d:7881 $01 $26
 .jr_0d_7883:
     sMSG                                               ;; 0d:7883 $04
-      db "<10>Excuse me_", $00                         ;; 0d:7884 ??????????
+      db "<10>Excuse me_", $00                         ;; 0d:7884
     sDELAY 30                                          ;; 0d:788e $f0 $1e
     sMSG                                               ;; 0d:7890 $04
-      db "\n_ Hello_", $00                             ;; 0d:7891 ????????
+      db "\n_ Hello_", $00                             ;; 0d:7891
     sDELAY 50                                          ;; 0d:7899 $f0 $32
     sMSG                                               ;; 0d:789b $04
       db "\n_ No answer.<12>"
-      db "<11>", $00     ;; 0d:789c ?????????????
+      db "<11>", $00     ;; 0d:789c
 .jr_0d_78a9:
     sEND                                               ;; 0d:78a9 $00
 
@@ -4646,7 +4646,7 @@ script_0261:
       db "<10>Amanda:I'm sorry\n about Willy.<12>"
       db "<1b> We have to get\n out of here!!<12>"
       db "<1b> I wanna go home\n and see my\n little brother__<12>"
-      db "<11>", $00 ;; 0d:78ab ...........................................................................
+      db "<11>", $00 ;; 0d:78ab
     sEND                                               ;; 0d:78f6 $00
 
 script_0262:
@@ -4658,59 +4658,59 @@ script_0263:
 script_0264:
     sMSG                                               ;; 0d:78f9 $04
       db "<10><BOY>:Willy__\n I'll avenge you!<12>"
-      db "<11>", $00 ;; 0d:78fa ......................
+      db "<11>", $00 ;; 0d:78fa
     sEND                                               ;; 0d:7910 $00
 
 script_0265:
     sMSG                                               ;; 0d:7911 $04
       db "<10>The entrance for\nthe monsters leads\nto outside.<12>"
       db "<1b>Take your chance!<12>"
-      db "<11>", $00 ;; 0d:7912 ...............................................
+      db "<11>", $00 ;; 0d:7912
     sEND                                               ;; 0d:7941 $00
 
 script_0266:
     sMSG                                               ;; 0d:7942 $04
       db "<10>Hello, young man!\nWelcome to Topple!<12>"
-      db "<11>", $00 ;; 0d:7943 ............................
+      db "<11>", $00 ;; 0d:7943
     sEND                                               ;; 0d:795f $00
 
 script_0267:
     sMSG                                               ;; 0d:7960 $04
       db "<10>Dark Lord is so\ncruel!!  I can't\nstand it anymore!<12>"
-      db "<11>", $00 ;; 0d:7961 ......................................
+      db "<11>", $00 ;; 0d:7961
     sEND                                               ;; 0d:7987 $00
 
 script_0268:
     sMSG                                               ;; 0d:7988 $04
       db "<10>Dark Lord is\nlooking for a\ngirl, I heard.<12>"
       db "<1b>Do you know a girl\nwith the secret of\nthe Tree of Mana?<12>"
-      db "<11>", $00 ;; 0d:7989 ..................................................................
+      db "<11>", $00 ;; 0d:7989
     sEND                                               ;; 0d:79cb $00
 
 script_0269:
     sMSG                                               ;; 0d:79cc $04
       db "<10>The old man by\nthe Waterfalls is\nsuch a weirdo!<12>"
       db "<1b>He use to be a\ngallant knight,\nbut not anymore!<12>"
-      db "<11>", $00 ;; 0d:79cd ....................................................................
+      db "<11>", $00 ;; 0d:79cd
     sEND                                               ;; 0d:7a11 $00
 
 script_026a:
     sMSG                                               ;; 0d:7a12 $04
       db "<10>Tree of Mana is\nwatching us from\nabove the clouds.<12>"
       db "<1b>It's protecting us\nfrom evil things.<12>"
-      db "<11>", $00 ;; 0d:7a13 ...............................................................
+      db "<11>", $00 ;; 0d:7a13
     sEND                                               ;; 0d:7a52 $00
 
 script_026b:
     sMSG                                               ;; 0d:7a53 $04
       db "<10>Girl:Hasim's got\n a serious wound!<12>"
-      db "<11>", $00 ;; 0d:7a54 ???????????????????????????
+      db "<11>", $00 ;; 0d:7a54
     sEND                                               ;; 0d:7a6f $00
 
 script_026c:
     sIF_08_JR $0a, .jr_0d_7b16                         ;; 0d:7a70 $08 $0a $00 $a2
     sMSG                                               ;; 0d:7a74 $04
-      db "<10>", $00                                   ;; 0d:7a75 ..
+      db "<10>", $00                                   ;; 0d:7a75
     sDELAY 10                                          ;; 0d:7a77 $f0 $0a
     sSET_MUSIC 23                                      ;; 0d:7a79 $f8 $17
     sCALL script_026d                                  ;; 0d:7a7b $02 $3b $17
@@ -4720,11 +4720,11 @@ script_026c:
       db "<1b> Why don't you\n come with me?\nGirl:Oh _ Can I?<12>"
       db "<1b><BOY>:I can't leave\n you here alone.\n _ I am <BOY>.<12>"
       db "<1b><GIRL>:Call me <GIRL>.<12>"
-      db "<1b>", $00 ;; 0d:7a7f ..........................................................................................................................................
+      db "<1b>", $00 ;; 0d:7a7f
     sSET_MUSIC 0                                       ;; 0d:7b09 $f8 $00
     sGIVE_FOLLOWER 1                                   ;; 0d:7b0b $9c $01
     sMSG                                               ;; 0d:7b0d $04
-      db "<11>", $00                                   ;; 0d:7b0e ..
+      db "<11>", $00                                   ;; 0d:7b0e
     sSET_FLAG $0b                                      ;; 0d:7b10 $da $0b
     sSET_FLAG $51                                      ;; 0d:7b12 $da $51
     sSET_MUSIC 20                                      ;; 0d:7b14 $f8 $14
@@ -4734,16 +4734,16 @@ script_026c:
 script_026d:
     sMSG                                               ;; 0d:7b17 $04
       db "Hasim:Oh_ please_\n take this girl\n to_ Wendel_ and_<12>"
-      db "<1b>", $00 ;; 0d:7b18 .......................................
+      db "<1b>", $00 ;; 0d:7b18
     sSET_NPC_1_DIRECTION_LEFT                          ;; 0d:7b3f $17
     sMSG                                               ;; 0d:7b40 $04
       db " see Bogard___\n He will take care\n of the rest_ _<12>"
       db "<1b>Girl:_ _ Hasim!?\n _ _ H A S I M!!<12>"
-      db "<1b>", $00 ;; 0d:7b41 ..............................................................
+      db "<1b>", $00 ;; 0d:7b41
     sDELAY 30                                          ;; 0d:7b7f $f0 $1e
     sMSG                                               ;; 0d:7b81 $04
       db "\nHasim passed away.<12>"
-      db "<1b>", $00 ;; 0d:7b82 ................
+      db "<1b>", $00 ;; 0d:7b82
     sEND                                               ;; 0d:7b92 $00
 
 script_0270:
@@ -4759,7 +4759,7 @@ script_0270:
 .jr_0d_7bad:
     sMSG                                               ;; 0d:7bad $04
       db "<10> Locked.<12>"
-      db "<11>", $00       ;; 0d:7bae ??????????
+      db "<11>", $00       ;; 0d:7bae
 .jr_0d_7bb8:
     sEND                                               ;; 0d:7bb8 $00
 
@@ -4831,7 +4831,7 @@ script_0275:
 .jr_0d_7c39:
     sMSG                                               ;; 0d:7c39 $04
       db "<10> Locked.<12>"
-      db "<11>", $00       ;; 0d:7c3a ..........
+      db "<11>", $00       ;; 0d:7c3a
 .jr_0d_7c44:
     sEND                                               ;; 0d:7c44 $00
 
@@ -4881,7 +4881,7 @@ script_0279:
     sIF_08_JR $54, .jr_0d_7cbe                         ;; 0d:7c96 $08 $54 $00 $24
     sMSG                                               ;; 0d:7c9a $04
       db "<10>Bogard:Hey! Hey!\n Where are you\n going??<12>"
-      db "<11>", $00 ;; 0d:7c9b ?????????????????????????????????
+      db "<11>", $00 ;; 0d:7c9b
     sJR  .jr_0d_7cc6                                   ;; 0d:7cbc $01 $08
 .jr_0d_7cbe:
     sLOAD_ROOM 10, $55, 16, 2                          ;; 0d:7cbe $f4 $0a $55 $10 $02
@@ -4913,17 +4913,17 @@ script_027a:
     sJR  .jr_0d_7d47                                   ;; 0d:7cfd $01 $48
 .jr_0d_7cff:
     sMSG                                               ;; 0d:7cff $04
-      db "<10>Gaia:Whaaaa_", $00                       ;; 0d:7d00 ????????????
+      db "<10>Gaia:Whaaaa_", $00                       ;; 0d:7d00
     sDELAY 40                                          ;; 0d:7d0c $f0 $28
     sMSG                                               ;; 0d:7d0e $04
       db "\n Doooon't walk in\n my moooouth_<12>"
-      db "<1b>\n Ooooo ", $00 ;; 0d:7d0f ???????????????????????????????
+      db "<1b>\n Ooooo ", $00 ;; 0d:7d0f
     sDELAY 40                                          ;; 0d:7d2e $f0 $28
     sMSG                                               ;; 0d:7d30 $04
-      db "  Yuck!!", $00                               ;; 0d:7d31 ???????
+      db "  Yuck!!", $00                               ;; 0d:7d31
     sDELAY 60                                          ;; 0d:7d38 $f0 $3c
     sMSG                                               ;; 0d:7d3a $04
-      db "<11>", $00                                   ;; 0d:7d3b ??
+      db "<11>", $00                                   ;; 0d:7d3b
     sSFX 12                                            ;; 0d:7d3d $f9 $0c
     sSET_PLAYER_POSITION 12, 3                         ;; 0d:7d3f $8a $0c $03
     sLOOP 2, 2                                         ;; 0d:7d42 $03 $02 $02
@@ -5018,17 +5018,17 @@ script_0281:
     sPLAYER_STEP_FORWARD                               ;; 0d:7de7 $80
     sEND                                               ;; 0d:7de8 $00
     sMSG                                               ;; 0d:7de9 $04
-      db "<10>", $00                                   ;; 0d:7dea ??
+      db "<10>", $00                                   ;; 0d:7dea
     sIF_08_JR $1b, .jr_0d_7e09                         ;; 0d:7dec $08 $1b $00 $19
     sMSG                                               ;; 0d:7df0 $04
-      db "Amanda:I'm glad\n you're back!", $00         ;; 0d:7df1 ??????????????????????
+      db "Amanda:I'm glad\n you're back!", $00         ;; 0d:7df1
     sJR  .jr_0d_7e0c                                   ;; 0d:7e07 $01 $03
 .jr_0d_7e09:
     sCALL script_053d                                  ;; 0d:7e09 $02 $6d $f9
 .jr_0d_7e0c:
     sMSG                                               ;; 0d:7e0c $04
       db "<12>"
-      db "<11>", $00                   ;; 0d:7e0d ???
+      db "<11>", $00                   ;; 0d:7e0d
     sGIVE_FOLLOWER 5                                   ;; 0d:7e10 $9c $05
     sSET_FLAG $55                                      ;; 0d:7e12 $da $55
 .jr_0d_7e14:
@@ -5053,7 +5053,7 @@ script_0282:
       db "<10>I AM MARCIE.\nI SEARCH RELICS.\nDR.BOWOW MADE ME.<12>"
       db "<1b>HE LEFT ME HERE.\nI WAITED 50 YEARS.\nHE FORGOT ME.<12>"
       db "<1b>I CAN HELP YOU.\nTAKE ME WITH YOU.<12>"
-      db "<11>", $00 ;; 0d:7e34 ?????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
+      db "<11>", $00 ;; 0d:7e34
     sGIVE_FOLLOWER 7                                   ;; 0d:7ead $9c $07
     sSET_FLAG $57                                      ;; 0d:7eaf $da $57
 .jr_0d_7eb1:
