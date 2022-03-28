@@ -964,21 +964,51 @@ wStatWill:
     ds 2                                               ;; d7c4
 
 wScriptFlags:
-    ds 4                                               ;; d7c6
+    ds 1                                               ;; d7c6
 
-wD7CA:
-    ds 6                                               ;; d7ca
+wScriptFlags01:
+    ds 1                                               ;; d7c7
 
-wD7D0:
+wScriptFlags02:
+    ds 1                                               ;; d7c8
+
+wScriptFlags03:
+    ds 1                                               ;; d7c9
+
+wScriptFlags04:
+    ds 1                                               ;; d7ca
+
+wScriptFlags05:
+    ds 1                                               ;; d7cb
+
+wScriptFlags06:
+    ds 1                                               ;; d7cc
+
+wScriptFlags07:
+    ds 1                                               ;; d7cd
+
+wScriptFlags08:
+    ds 1                                               ;; d7ce
+
+wScriptFlags09:
+    ds 1                                               ;; d7cf
+
+wScriptFlags0A:
     ds 1                                               ;; d7d0
 
-wD7D1:
-    ds 3                                               ;; d7d1
+wScriptFlags0B:
+    ds 1                                               ;; d7d1
 
-wD7D4:
+wScriptFlags0C:
+    ds 1                                               ;; d7d2
+
+wScriptFlags0D:
+    ds 1                                               ;; d7d3
+
+wScriptFlags0E:
     ds 1                                               ;; d7d4
 
-wD7D5:
+wScriptFlags0F:
     ds 1                                               ;; d7d5
 
 wD7D6:

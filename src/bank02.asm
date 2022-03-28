@@ -6830,10 +6830,10 @@ call_02_7322:
     ld   D, A                                          ;; 02:73ad $57
     ld   A, [wD616]                                    ;; 02:73ae $fa $16 $d6
     ld   E, A                                          ;; 02:73b1 $5f
-    ld   A, [wD7D1]                                    ;; 02:73b2 $fa $d1 $d7
+    ld   A, [wScriptFlags0B]                           ;; 02:73b2 $fa $d1 $d7
     ld   B, A                                          ;; 02:73b5 $47
     rlc  B                                             ;; 02:73b6 $cb $00
-    ld   A, [wD7D0]                                    ;; 02:73b8 $fa $d0 $d7
+    ld   A, [wScriptFlags0A]                           ;; 02:73b8 $fa $d0 $d7
     rla                                                ;; 02:73bb $17
     and  A, A                                          ;; 02:73bc $a7
     jr   Z, .jr_02_73f1                                ;; 02:73bd $28 $32
@@ -6848,7 +6848,7 @@ call_02_7322:
     inc  DE                                            ;; 02:73ca $13
     dec  B                                             ;; 02:73cb $05
     jr   NZ, .jr_02_73c5                               ;; 02:73cc $20 $f7
-    ld   A, [wD7CA]                                    ;; 02:73ce $fa $ca $d7
+    ld   A, [wScriptFlags04]                           ;; 02:73ce $fa $ca $d7
     bit  6, A                                          ;; 02:73d1 $cb $77
     jr   NZ, .jr_02_73d8                               ;; 02:73d3 $20 $03
     inc  DE                                            ;; 02:73d5 $13

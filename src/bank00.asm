@@ -8587,13 +8587,13 @@ call_00_3547:
     ld   DE, wD4A7                                     ;; 00:3549 $11 $a7 $d4
     ld   HL, wD56E                                     ;; 00:354c $21 $6e $d5
     call copyHLtoDE                                    ;; 00:354f $cd $49 $2b
-    ld   A, [wD7D5]                                    ;; 00:3552 $fa $d5 $d7
+    ld   A, [wScriptFlags0F]                           ;; 00:3552 $fa $d5 $d7
     and  A, $fe                                        ;; 00:3555 $e6 $fe
     ld   B, A                                          ;; 00:3557 $47
     ld   A, [wD84B]                                    ;; 00:3558 $fa $4b $d8
     and  A, $01                                        ;; 00:355b $e6 $01
     or   A, B                                          ;; 00:355d $b0
-    ld   [wD7D5], A                                    ;; 00:355e $ea $d5 $d7
+    ld   [wScriptFlags0F], A                           ;; 00:355e $ea $d5 $d7
     ld   A, $06                                        ;; 00:3561 $3e $06
     ld   [wD84A], A                                    ;; 00:3563 $ea $4a $d8
     push AF                                            ;; 00:3566 $f5
@@ -9308,10 +9308,10 @@ scriptOpCodeC7:
     call getRandomByte                                 ;; 00:39b3 $cd $1e $2b
     and  A, $03                                        ;; 00:39b6 $e6 $03
     ld   B, A                                          ;; 00:39b8 $47
-    ld   A, [wD7D5]                                    ;; 00:39b9 $fa $d5 $d7
+    ld   A, [wScriptFlags0F]                           ;; 00:39b9 $fa $d5 $d7
     and  A, $fc                                        ;; 00:39bc $e6 $fc
     or   A, B                                          ;; 00:39be $b0
-    ld   [wD7D5], A                                    ;; 00:39bf $ea $d5 $d7
+    ld   [wScriptFlags0F], A                           ;; 00:39bf $ea $d5 $d7
     pop  HL                                            ;; 00:39c2 $e1
     call getNextScriptInstruction                      ;; 00:39c3 $cd $27 $37
     ret                                                ;; 00:39c6 $c9
@@ -9597,7 +9597,7 @@ scriptOpCodeC5:
     ld   A, [HL+]                                      ;; 00:3b66 $2a
     and  A, $3f                                        ;; 00:3b67 $e6 $3f
     ld   C, A                                          ;; 00:3b69 $4f
-    ld   DE, wD7D4                                     ;; 00:3b6a $11 $d4 $d7
+    ld   DE, wScriptFlags0E                            ;; 00:3b6a $11 $d4 $d7
     ld   A, [DE]                                       ;; 00:3b6d $1a
     and  A, $c0                                        ;; 00:3b6e $e6 $c0
     or   A, C                                          ;; 00:3b70 $b1
