@@ -54,18 +54,18 @@ scriptPointersTable:
     SCRIPT_POINTER script_002e                         ;; 08:4f61 $d3 $03
     SCRIPT_POINTER script_002f                         ;; 08:4f63 $d4 $03
     SCRIPT_POINTER script_0030                         ;; 08:4f65 $d5 $03
-    SCRIPT_POINTER script_0000                         ;; 08:4f67 $00 $00
-    SCRIPT_POINTER script_0000                         ;; 08:4f69 $00 $00
-    SCRIPT_POINTER script_0000                         ;; 08:4f6b $00 $00
-    SCRIPT_POINTER script_0000                         ;; 08:4f6d $00 $00
-    SCRIPT_POINTER script_0000                         ;; 08:4f6f $00 $00
-    SCRIPT_POINTER script_0000                         ;; 08:4f71 $00 $00
-    SCRIPT_POINTER script_0000                         ;; 08:4f73 $00 $00
-    SCRIPT_POINTER script_0000                         ;; 08:4f75 $00 $00
-    SCRIPT_POINTER script_0000                         ;; 08:4f77 $00 $00
-    SCRIPT_POINTER script_0000                         ;; 08:4f79 $00 $00
-    SCRIPT_POINTER script_0000                         ;; 08:4f7b $00 $00
-    SCRIPT_POINTER script_0000                         ;; 08:4f7d $00 $00
+    dw   $0000                                         ;; 08:4f67 $00 $00
+    dw   $0000                                         ;; 08:4f69 $00 $00
+    dw   $0000                                         ;; 08:4f6b $00 $00
+    dw   $0000                                         ;; 08:4f6d $00 $00
+    dw   $0000                                         ;; 08:4f6f $00 $00
+    dw   $0000                                         ;; 08:4f71 $00 $00
+    dw   $0000                                         ;; 08:4f73 $00 $00
+    dw   $0000                                         ;; 08:4f75 $00 $00
+    dw   $0000                                         ;; 08:4f77 $00 $00
+    dw   $0000                                         ;; 08:4f79 $00 $00
+    dw   $0000                                         ;; 08:4f7b $00 $00
+    dw   $0000                                         ;; 08:4f7d $00 $00
     SCRIPT_POINTER script_003d                         ;; 08:4f7f $dc $03
     SCRIPT_POINTER script_003e                         ;; 08:4f81 $dd $03
     SCRIPT_POINTER script_003f                         ;; 08:4f83 $de $03
@@ -228,7 +228,7 @@ scriptPointersTable:
     SCRIPT_POINTER script_00dc                         ;; 08:50bd $a6 $06
     SCRIPT_POINTER script_00dd                         ;; 08:50bf $ae $06
     SCRIPT_POINTER script_00de                         ;; 08:50c1 $af $06
-    SCRIPT_POINTER script_0000                         ;; 08:50c3 $00 $00
+    dw   $0000                                         ;; 08:50c3 $00 $00
     SCRIPT_POINTER script_00e0                         ;; 08:50c5 $bc $06
     SCRIPT_POINTER script_00e1                         ;; 08:50c7 $c1 $06
     SCRIPT_POINTER script_00e2                         ;; 08:50c9 $c2 $06
@@ -469,22 +469,22 @@ scriptPointersTable:
     SCRIPT_POINTER script_01cd                         ;; 08:529f $68 $15
     SCRIPT_POINTER script_01ce                         ;; 08:52a1 $6d $15
     SCRIPT_POINTER script_01cf                         ;; 08:52a3 $6e $15
-    SCRIPT_POINTER script_0000                         ;; 08:52a5 $00 $00
-    SCRIPT_POINTER script_0000                         ;; 08:52a7 $00 $00
-    SCRIPT_POINTER script_0000                         ;; 08:52a9 $00 $00
-    SCRIPT_POINTER script_0000                         ;; 08:52ab $00 $00
-    SCRIPT_POINTER script_0000                         ;; 08:52ad $00 $00
-    SCRIPT_POINTER script_0000                         ;; 08:52af $00 $00
-    SCRIPT_POINTER script_0000                         ;; 08:52b1 $00 $00
-    SCRIPT_POINTER script_0000                         ;; 08:52b3 $00 $00
-    SCRIPT_POINTER script_0000                         ;; 08:52b5 $00 $00
-    SCRIPT_POINTER script_0000                         ;; 08:52b7 $00 $00
-    SCRIPT_POINTER script_0000                         ;; 08:52b9 $00 $00
-    SCRIPT_POINTER script_0000                         ;; 08:52bb $00 $00
-    SCRIPT_POINTER script_0000                         ;; 08:52bd $00 $00
-    SCRIPT_POINTER script_0000                         ;; 08:52bf $00 $00
-    SCRIPT_POINTER script_0000                         ;; 08:52c1 $00 $00
-    SCRIPT_POINTER script_0000                         ;; 08:52c3 $00 $00
+    dw   $0000                                         ;; 08:52a5 $00 $00
+    dw   $0000                                         ;; 08:52a7 $00 $00
+    dw   $0000                                         ;; 08:52a9 $00 $00
+    dw   $0000                                         ;; 08:52ab $00 $00
+    dw   $0000                                         ;; 08:52ad $00 $00
+    dw   $0000                                         ;; 08:52af $00 $00
+    dw   $0000                                         ;; 08:52b1 $00 $00
+    dw   $0000                                         ;; 08:52b3 $00 $00
+    dw   $0000                                         ;; 08:52b5 $00 $00
+    dw   $0000                                         ;; 08:52b7 $00 $00
+    dw   $0000                                         ;; 08:52b9 $00 $00
+    dw   $0000                                         ;; 08:52bb $00 $00
+    dw   $0000                                         ;; 08:52bd $00 $00
+    dw   $0000                                         ;; 08:52bf $00 $00
+    dw   $0000                                         ;; 08:52c1 $00 $00
+    dw   $0000                                         ;; 08:52c3 $00 $00
     SCRIPT_POINTER script_01e0                         ;; 08:52c5 $6f $15
     SCRIPT_POINTER script_01e1                         ;; 08:52c7 $3a $16
     SCRIPT_POINTER script_01e2                         ;; 08:52c9 $7f $16
@@ -627,8 +627,8 @@ scriptPointersTable:
     SCRIPT_POINTER script_026b                         ;; 08:53db $53 $3a
     SCRIPT_POINTER script_026c                         ;; 08:53dd $70 $3a
     SCRIPT_POINTER script_026d                         ;; 08:53df $17 $3b
-    SCRIPT_POINTER script_0000                         ;; 08:53e1 $00 $00
-    SCRIPT_POINTER script_0000                         ;; 08:53e3 $00 $00
+    dw   $0000                                         ;; 08:53e1 $00 $00
+    dw   $0000                                         ;; 08:53e3 $00 $00
     SCRIPT_POINTER script_0270                         ;; 08:53e5 $93 $3b
     SCRIPT_POINTER script_0271                         ;; 08:53e7 $b9 $3b
     SCRIPT_POINTER script_0272                         ;; 08:53e9 $d1 $3b
@@ -1044,7 +1044,7 @@ scriptPointersTable:
     SCRIPT_POINTER script_040c                         ;; 08:571d $a0 $52
     SCRIPT_POINTER script_040d                         ;; 08:571f $be $52
     SCRIPT_POINTER script_040e                         ;; 08:5721 $e1 $52
-    SCRIPT_POINTER script_0000                         ;; 08:5723 $00 $00
+    dw   $0000                                         ;; 08:5723 $00 $00
     SCRIPT_POINTER script_0410                         ;; 08:5725 $f9 $52
     SCRIPT_POINTER script_0411                         ;; 08:5727 $05 $53
     SCRIPT_POINTER script_0412                         ;; 08:5729 $06 $53
@@ -1133,14 +1133,14 @@ scriptPointersTable:
     SCRIPT_POINTER script_0465                         ;; 08:57cf $ff $59
     SCRIPT_POINTER script_0466                         ;; 08:57d1 $00 $5a
     SCRIPT_POINTER script_0467                         ;; 08:57d3 $27 $5a
-    SCRIPT_POINTER script_0000                         ;; 08:57d5 $00 $00
-    SCRIPT_POINTER script_0000                         ;; 08:57d7 $00 $00
-    SCRIPT_POINTER script_0000                         ;; 08:57d9 $00 $00
-    SCRIPT_POINTER script_0000                         ;; 08:57db $00 $00
-    SCRIPT_POINTER script_0000                         ;; 08:57dd $00 $00
-    SCRIPT_POINTER script_0000                         ;; 08:57df $00 $00
-    SCRIPT_POINTER script_0000                         ;; 08:57e1 $00 $00
-    SCRIPT_POINTER script_0000                         ;; 08:57e3 $00 $00
+    dw   $0000                                         ;; 08:57d5 $00 $00
+    dw   $0000                                         ;; 08:57d7 $00 $00
+    dw   $0000                                         ;; 08:57d9 $00 $00
+    dw   $0000                                         ;; 08:57db $00 $00
+    dw   $0000                                         ;; 08:57dd $00 $00
+    dw   $0000                                         ;; 08:57df $00 $00
+    dw   $0000                                         ;; 08:57e1 $00 $00
+    dw   $0000                                         ;; 08:57e3 $00 $00
     SCRIPT_POINTER script_0470                         ;; 08:57e5 $3f $5a
     SCRIPT_POINTER script_0471                         ;; 08:57e7 $7c $5a
     SCRIPT_POINTER script_0472                         ;; 08:57e9 $90 $5a
@@ -1206,37 +1206,37 @@ scriptPointersTable:
     SCRIPT_POINTER script_04ae                         ;; 08:5861 $e6 $5b
     SCRIPT_POINTER script_04af                         ;; 08:5863 $e7 $5b
     SCRIPT_POINTER script_04b0                         ;; 08:5865 $fe $5b
-    SCRIPT_POINTER script_0000                         ;; 08:5867 $00 $00
-    SCRIPT_POINTER script_0000                         ;; 08:5869 $00 $00
-    SCRIPT_POINTER script_0000                         ;; 08:586b $00 $00
-    SCRIPT_POINTER script_0000                         ;; 08:586d $00 $00
-    SCRIPT_POINTER script_0000                         ;; 08:586f $00 $00
-    SCRIPT_POINTER script_0000                         ;; 08:5871 $00 $00
-    SCRIPT_POINTER script_0000                         ;; 08:5873 $00 $00
-    SCRIPT_POINTER script_0000                         ;; 08:5875 $00 $00
-    SCRIPT_POINTER script_0000                         ;; 08:5877 $00 $00
-    SCRIPT_POINTER script_0000                         ;; 08:5879 $00 $00
-    SCRIPT_POINTER script_0000                         ;; 08:587b $00 $00
-    SCRIPT_POINTER script_0000                         ;; 08:587d $00 $00
-    SCRIPT_POINTER script_0000                         ;; 08:587f $00 $00
-    SCRIPT_POINTER script_0000                         ;; 08:5881 $00 $00
-    SCRIPT_POINTER script_0000                         ;; 08:5883 $00 $00
-    SCRIPT_POINTER script_0000                         ;; 08:5885 $00 $00
-    SCRIPT_POINTER script_0000                         ;; 08:5887 $00 $00
-    SCRIPT_POINTER script_0000                         ;; 08:5889 $00 $00
-    SCRIPT_POINTER script_0000                         ;; 08:588b $00 $00
-    SCRIPT_POINTER script_0000                         ;; 08:588d $00 $00
-    SCRIPT_POINTER script_0000                         ;; 08:588f $00 $00
-    SCRIPT_POINTER script_0000                         ;; 08:5891 $00 $00
-    SCRIPT_POINTER script_0000                         ;; 08:5893 $00 $00
-    SCRIPT_POINTER script_0000                         ;; 08:5895 $00 $00
-    SCRIPT_POINTER script_0000                         ;; 08:5897 $00 $00
-    SCRIPT_POINTER script_0000                         ;; 08:5899 $00 $00
-    SCRIPT_POINTER script_0000                         ;; 08:589b $00 $00
-    SCRIPT_POINTER script_0000                         ;; 08:589d $00 $00
-    SCRIPT_POINTER script_0000                         ;; 08:589f $00 $00
-    SCRIPT_POINTER script_0000                         ;; 08:58a1 $00 $00
-    SCRIPT_POINTER script_0000                         ;; 08:58a3 $00 $00
+    dw   $0000                                         ;; 08:5867 $00 $00
+    dw   $0000                                         ;; 08:5869 $00 $00
+    dw   $0000                                         ;; 08:586b $00 $00
+    dw   $0000                                         ;; 08:586d $00 $00
+    dw   $0000                                         ;; 08:586f $00 $00
+    dw   $0000                                         ;; 08:5871 $00 $00
+    dw   $0000                                         ;; 08:5873 $00 $00
+    dw   $0000                                         ;; 08:5875 $00 $00
+    dw   $0000                                         ;; 08:5877 $00 $00
+    dw   $0000                                         ;; 08:5879 $00 $00
+    dw   $0000                                         ;; 08:587b $00 $00
+    dw   $0000                                         ;; 08:587d $00 $00
+    dw   $0000                                         ;; 08:587f $00 $00
+    dw   $0000                                         ;; 08:5881 $00 $00
+    dw   $0000                                         ;; 08:5883 $00 $00
+    dw   $0000                                         ;; 08:5885 $00 $00
+    dw   $0000                                         ;; 08:5887 $00 $00
+    dw   $0000                                         ;; 08:5889 $00 $00
+    dw   $0000                                         ;; 08:588b $00 $00
+    dw   $0000                                         ;; 08:588d $00 $00
+    dw   $0000                                         ;; 08:588f $00 $00
+    dw   $0000                                         ;; 08:5891 $00 $00
+    dw   $0000                                         ;; 08:5893 $00 $00
+    dw   $0000                                         ;; 08:5895 $00 $00
+    dw   $0000                                         ;; 08:5897 $00 $00
+    dw   $0000                                         ;; 08:5899 $00 $00
+    dw   $0000                                         ;; 08:589b $00 $00
+    dw   $0000                                         ;; 08:589d $00 $00
+    dw   $0000                                         ;; 08:589f $00 $00
+    dw   $0000                                         ;; 08:58a1 $00 $00
+    dw   $0000                                         ;; 08:58a3 $00 $00
     SCRIPT_POINTER script_04d0                         ;; 08:58a5 $3e $5c
     SCRIPT_POINTER script_04d1                         ;; 08:58a7 $46 $5c
     SCRIPT_POINTER script_04d2                         ;; 08:58a9 $47 $5c

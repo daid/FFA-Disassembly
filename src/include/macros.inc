@@ -12,10 +12,14 @@ ENDM
 SCRIPT_AT_POS: MACRO
     
                 db ((\1) << 4) | (\2)
-                dw \3
+                SCRIPT_IDX \3
+ENDM
+SCRIPT_IDX: MACRO
+    dw (__script_pointer_\1 - __script_pointer_script_0000) / 2
 ENDM
 SCRIPT_POINTER: MACRO
-    dw ((\1 - $4000) + ((BANK(\1) - $0D) * $4000))
+    __script_pointer_\1::
+      dw ((\1 - $4000) + ((BANK(\1) - $0D) * $4000))
 ENDM
 call_to_bank_target: MACRO
     _call_to_bank_target_\1::

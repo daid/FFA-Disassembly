@@ -61,22 +61,23 @@ def script_pointers(memory, addr, *, amount):
 class ScriptPointerBlock(Block):
     def __init__(self, memory, addr, *, amount):
         super().__init__(memory, addr, size=amount*2)
-        RomInfo.macros["SCRIPT_POINTER"] = "dw ((\\1 - $4000) + ((BANK(\\1) - $0D) * $4000))"
+        RomInfo.macros["SCRIPT_POINTER"] = "__script_pointer_\\1::\n  dw ((\\1 - $4000) + ((BANK(\\1) - $0D) * $4000))"
 
         for n in range(int(amount)):
             pointer = memory.word(addr + n * 2)
             bank = RomInfo.romBank(0x0D + (pointer >> 14))
             bank.addAutoLabel((pointer & 0x3FFF) | 0x4000, None, "data")
-            # TODO Script decoding
-            
             ScriptBlock(bank, (pointer & 0x3FFF) | 0x4000)
 
     def export(self, file):
         for n in range(len(self) // 2):
             pointer = self.memory.word(file.addr)
-            bank = RomInfo.romBank(0x0D + (pointer >> 14))
-            label = bank.getLabel((pointer & 0x3FFF) | 0x4000)
-            file.asmLine(2, "SCRIPT_POINTER", str(label))
+            if pointer == 0x0000 and n > 0:
+                file.asmLine(2, "dw", "$0000")
+            else:
+                bank = RomInfo.romBank(0x0D + (pointer >> 14))
+                label = bank.getLabel((pointer & 0x3FFF) | 0x4000)
+                file.asmLine(2, "SCRIPT_POINTER", str(label))
 
 
 class MapHeaderBlock(Block):
@@ -175,16 +176,31 @@ class ScriptInfoBlock(Block):
             self.resize(len(self) + 3)
         self.resize(len(self) + 1)
         
+        RomInfo.macros["SCRIPT_IDX"] = r"dw (__script_pointer_\1 - __script_pointer_script_0000) / 2"
         RomInfo.macros["SCRIPT_AT_POS"] = r"""
             db ((\1) << 4) | (\2)
-            dw \3
+            SCRIPT_IDX \3
             """
-    
+
+    def getScriptLabel(self, index):
+        pointer = RomInfo.romBank(0x08).word(0x4f05 + index * 2)
+        bank = RomInfo.romBank(0x0D + (pointer >> 14))
+        label = bank.getLabel((pointer & 0x3FFF) | 0x4000)
+        return "%s" % (label)
+
     def export(self, file):
-        file.asmLine(2, "dw", "$%04x" % (self.memory.word(file.addr)))
+        index = self.memory.word(file.addr)
+        if index == 0xFFFF:
+            file.asmLine(2, "dw", "$%04x" % (index))
+        else:
+            file.asmLine(2, "SCRIPT_IDX", self.getScriptLabel(index))
         while self.memory.byte(file.addr) != 0xFF:
             xy = self.memory.byte(file.addr)
-            file.asmLine(3, "SCRIPT_AT_POS", str(xy >> 4), str(xy & 0x0F), "$%04x" % (self.memory.word(file.addr + 1)))
+            index = self.memory.word(file.addr + 1)
+            if index == 0xFFFF: # Todo, figure out what $FFFF means...
+                file.dataLine(3)
+            else:
+                file.asmLine(3, "SCRIPT_AT_POS", str(xy >> 4), str(xy & 0x0F), self.getScriptLabel(index))
         file.asmLine(1, "db", "$ff")
 
 class RLERoomDataBlock(Block):

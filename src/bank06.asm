@@ -76,8 +76,8 @@ mapRoomPointers_01:
     dw   map01_room07_07_script, map01_room07_07_tiles ;; 06:4100 $d0 $50 $d6 $50
 
 map01_room00_00_script:
-    dw   $01a3                                         ;; 06:4104 $a3 $01
-    SCRIPT_AT_POS 1, 8, $031f                          ;; 06:4106 $18 $1f $03
+    SCRIPT_IDX script_01a3                             ;; 06:4104 $a3 $01
+    SCRIPT_AT_POS 1, 8, script_031f                    ;; 06:4106 $18 $1f $03
     db   $ff                                           ;; 06:4109 $ff
 
 map01_room00_00_tiles:
@@ -91,8 +91,8 @@ map01_room00_00_tiles:
     db   $2f, $2b,                $af,                $af ;; 06:4135 ????
 
 map01_room01_00_script:
-    dw   $00cd                                         ;; 06:4139 $cd $00
-    SCRIPT_AT_POS 4, 3, $03aa                          ;; 06:413b $43 $aa $03
+    SCRIPT_IDX script_00cd                             ;; 06:4139 $cd $00
+    SCRIPT_AT_POS 4, 3, script_03aa                    ;; 06:413b $43 $aa $03
     db   $ff                                           ;; 06:413e $ff
 
 map01_room01_00_tiles:
@@ -106,8 +106,8 @@ map01_room01_00_tiles:
     db                  $af,                $af, $2f, $2f ;; 06:4176 ????
 
 map01_room02_00_script:
-    dw   $00d0                                         ;; 06:417a $d0 $00
-    SCRIPT_AT_POS 4, 6, $03ab                          ;; 06:417c $46 $ab $03
+    SCRIPT_IDX script_00d0                             ;; 06:417a $d0 $00
+    SCRIPT_AT_POS 4, 6, script_03ab                    ;; 06:417c $46 $ab $03
     db   $ff                                           ;; 06:417f $ff
 
 map01_room02_00_tiles:
@@ -121,7 +121,7 @@ map01_room02_00_tiles:
     db                  $af,                $af, $2f, $2f ;; 06:41b7 ????
 
 map01_room03_00_script:
-    dw   $01ac                                         ;; 06:41bb $ac $01
+    SCRIPT_IDX script_01ac                             ;; 06:41bb $ac $01
     db   $ff                                           ;; 06:41bd $ff
 
 map01_room03_00_tiles:
@@ -135,8 +135,8 @@ map01_room03_00_tiles:
     db   $41, $40, $30, $31, $40, $30, $40, $30, $41, $41 ;; 06:41e3 ??????????
 
 map01_room04_00_script:
-    dw   $003d                                         ;; 06:41ed $3d $00
-    SCRIPT_AT_POS 0, 7, $03c0                          ;; 06:41ef $07 $c0 $03
+    SCRIPT_IDX script_003d                             ;; 06:41ed $3d $00
+    SCRIPT_AT_POS 0, 7, script_03c0                    ;; 06:41ef $07 $c0 $03
     db   $ff                                           ;; 06:41f2 $ff
 
 map01_room04_00_tiles:
@@ -150,8 +150,8 @@ map01_room04_00_tiles:
     db   $41, $41, $40, $30, $40, $30,                $c1 ;; 06:4230 ???????
 
 map01_room05_00_script:
-    dw   $00cd                                         ;; 06:4237 $cd $00
-    SCRIPT_AT_POS 4, 3, $03ae                          ;; 06:4239 $43 $ae $03
+    SCRIPT_IDX script_00cd                             ;; 06:4237 $cd $00
+    SCRIPT_AT_POS 4, 3, script_03ae                    ;; 06:4239 $43 $ae $03
     db   $ff                                           ;; 06:423c $ff
 
 map01_room05_00_tiles:
@@ -165,8 +165,8 @@ map01_room05_00_tiles:
     db                  $af,                $af, $2f, $2f ;; 06:4274 ????
 
 map01_room06_00_script:
-    dw   $00d0                                         ;; 06:4278 $d0 $00
-    SCRIPT_AT_POS 4, 6, $03af                          ;; 06:427a $46 $af $03
+    SCRIPT_IDX script_00d0                             ;; 06:4278 $d0 $00
+    SCRIPT_AT_POS 4, 6, script_03af                    ;; 06:427a $46 $af $03
     db   $ff                                           ;; 06:427d $ff
 
 map01_room06_00_tiles:
@@ -180,9 +180,9 @@ map01_room06_00_tiles:
     db                  $af,                $af, $2f, $2f ;; 06:42b5 ????
 
 map01_room07_00_script:
-    dw   $00b2                                         ;; 06:42b9 $b2 $00
-    SCRIPT_AT_POS 3, 3, $03b7                          ;; 06:42bb $33 $b7 $03
-    SCRIPT_AT_POS 1, 6, $03b6                          ;; 06:42be $16 $b6 $03
+    SCRIPT_IDX script_00b2                             ;; 06:42b9 $b2 $00
+    SCRIPT_AT_POS 3, 3, script_03b7                    ;; 06:42bb $33 $b7 $03
+    SCRIPT_AT_POS 1, 6, script_03b6                    ;; 06:42be $16 $b6 $03
     db   $ff                                           ;; 06:42c1 $ff
 
 map01_room07_00_tiles:
@@ -196,8 +196,8 @@ map01_room07_00_tiles:
     db   $41, $41, $40, $30, $40, $30, $40, $30, $31, $41 ;; 06:42fc ??????????
 
 map01_room00_01_script:
-    dw   $003d                                         ;; 06:4306 $3d $00
-    SCRIPT_AT_POS 7, 8, $02f5                          ;; 06:4308 $78 $f5 $02
+    SCRIPT_IDX script_003d                             ;; 06:4306 $3d $00
+    SCRIPT_AT_POS 7, 8, script_02f5                    ;; 06:4308 $78 $f5 $02
     db   $ff                                           ;; 06:430b $ff
 
 map01_room00_01_tiles:
@@ -211,8 +211,8 @@ map01_room00_01_tiles:
     db                  $af,                $af, $6b, $2f ;; 06:4340 ????
 
 map01_room01_01_script:
-    dw   $00d0                                         ;; 06:4344 $d0 $00
-    SCRIPT_AT_POS 4, 3, $03ad                          ;; 06:4346 $43 $ad $03
+    SCRIPT_IDX script_00d0                             ;; 06:4344 $d0 $00
+    SCRIPT_AT_POS 4, 3, script_03ad                    ;; 06:4346 $43 $ad $03
     db   $ff                                           ;; 06:4349 $ff
 
 map01_room01_01_tiles:
@@ -226,8 +226,8 @@ map01_room01_01_tiles:
     db                  $af,                $af, $2f, $2f ;; 06:4381 ????
 
 map01_room02_01_script:
-    dw   $00cd                                         ;; 06:4385 $cd $00
-    SCRIPT_AT_POS 4, 6, $03ac                          ;; 06:4387 $46 $ac $03
+    SCRIPT_IDX script_00cd                             ;; 06:4385 $cd $00
+    SCRIPT_AT_POS 4, 6, script_03ac                    ;; 06:4387 $46 $ac $03
     db   $ff                                           ;; 06:438a $ff
 
 map01_room02_01_tiles:
@@ -241,8 +241,8 @@ map01_room02_01_tiles:
     db                  $af,                $af, $2f, $2f ;; 06:43c2 ????
 
 map01_room03_01_script:
-    dw   $00b8                                         ;; 06:43c6 $b8 $00
-    SCRIPT_AT_POS 1, 3, $03c1                          ;; 06:43c8 $13 $c1 $03
+    SCRIPT_IDX script_00b8                             ;; 06:43c6 $b8 $00
+    SCRIPT_AT_POS 1, 3, script_03c1                    ;; 06:43c8 $13 $c1 $03
     db   $ff                                           ;; 06:43cb $ff
 
 map01_room03_01_tiles:
@@ -256,8 +256,8 @@ map01_room03_01_tiles:
     db   $41, $44, $41,                $df, $42, $43, $0c ;; 06:4403 ???????
 
 map01_room04_01_script:
-    dw   $00b8                                         ;; 06:440a $b8 $00
-    SCRIPT_AT_POS 4, 7, $03c2                          ;; 06:440c $47 $c2 $03
+    SCRIPT_IDX script_00b8                             ;; 06:440a $b8 $00
+    SCRIPT_AT_POS 4, 7, script_03c2                    ;; 06:440c $47 $c2 $03
     db   $ff                                           ;; 06:440f $ff
 
 map01_room04_01_tiles:
@@ -271,8 +271,8 @@ map01_room04_01_tiles:
     db   $0c, $44, $41,                $df, $5f, $42, $43 ;; 06:4441 ???????
 
 map01_room05_01_script:
-    dw   $00d0                                         ;; 06:4448 $d0 $00
-    SCRIPT_AT_POS 4, 3, $03b1                          ;; 06:444a $43 $b1 $03
+    SCRIPT_IDX script_00d0                             ;; 06:4448 $d0 $00
+    SCRIPT_AT_POS 4, 3, script_03b1                    ;; 06:444a $43 $b1 $03
     db   $ff                                           ;; 06:444d $ff
 
 map01_room05_01_tiles:
@@ -286,8 +286,8 @@ map01_room05_01_tiles:
     db                  $af,                $af, $2f, $2f ;; 06:4485 ????
 
 map01_room06_01_script:
-    dw   $00cd                                         ;; 06:4489 $cd $00
-    SCRIPT_AT_POS 4, 6, $03b0                          ;; 06:448b $46 $b0 $03
+    SCRIPT_IDX script_00cd                             ;; 06:4489 $cd $00
+    SCRIPT_AT_POS 4, 6, script_03b0                    ;; 06:448b $46 $b0 $03
     db   $ff                                           ;; 06:448e $ff
 
 map01_room06_01_tiles:
@@ -301,11 +301,11 @@ map01_room06_01_tiles:
     db                  $af,                $af, $2f, $2f ;; 06:44c6 ????
 
 map01_room07_01_script:
-    dw   $00b8                                         ;; 06:44ca $b8 $00
-    SCRIPT_AT_POS 3, 1, $03b9                          ;; 06:44cc $31 $b9 $03
-    SCRIPT_AT_POS 7, 4, $03b8                          ;; 06:44cf $74 $b8 $03
-    SCRIPT_AT_POS 3, 8, $03bb                          ;; 06:44d2 $38 $bb $03
-    SCRIPT_AT_POS 2, 4, $03ba                          ;; 06:44d5 $24 $ba $03
+    SCRIPT_IDX script_00b8                             ;; 06:44ca $b8 $00
+    SCRIPT_AT_POS 3, 1, script_03b9                    ;; 06:44cc $31 $b9 $03
+    SCRIPT_AT_POS 7, 4, script_03b8                    ;; 06:44cf $74 $b8 $03
+    SCRIPT_AT_POS 3, 8, script_03bb                    ;; 06:44d2 $38 $bb $03
+    SCRIPT_AT_POS 2, 4, script_03ba                    ;; 06:44d5 $24 $ba $03
     db   $ff                                           ;; 06:44d8 $ff
 
 map01_room07_01_tiles:
@@ -319,8 +319,8 @@ map01_room07_01_tiles:
     db                  $c1, $6b,                $c1, $42 ;; 06:4507 ????
 
 map01_room00_02_script:
-    dw   $00cd                                         ;; 06:450b $cd $00
-    SCRIPT_AT_POS 4, 3, $03b2                          ;; 06:450d $43 $b2 $03
+    SCRIPT_IDX script_00cd                             ;; 06:450b $cd $00
+    SCRIPT_AT_POS 4, 3, script_03b2                    ;; 06:450d $43 $b2 $03
     db   $ff                                           ;; 06:4510 $ff
 
 map01_room00_02_tiles:
@@ -334,8 +334,8 @@ map01_room00_02_tiles:
     db                  $af,                $af, $2f, $2f ;; 06:4548 ????
 
 map01_room01_02_script:
-    dw   $00d0                                         ;; 06:454c $d0 $00
-    SCRIPT_AT_POS 4, 6, $03b3                          ;; 06:454e $46 $b3 $03
+    SCRIPT_IDX script_00d0                             ;; 06:454c $d0 $00
+    SCRIPT_AT_POS 4, 6, script_03b3                    ;; 06:454e $46 $b3 $03
     db   $ff                                           ;; 06:4551 $ff
 
 map01_room01_02_tiles:
@@ -349,8 +349,8 @@ map01_room01_02_tiles:
     db                  $af,                $af, $2f, $2f ;; 06:4589 ????
 
 map01_room02_02_script:
-    dw   $0061                                         ;; 06:458d $61 $00
-    SCRIPT_AT_POS 7, 2, $03be                          ;; 06:458f $72 $be $03
+    SCRIPT_IDX script_0061                             ;; 06:458d $61 $00
+    SCRIPT_AT_POS 7, 2, script_03be                    ;; 06:458f $72 $be $03
     db   $ff                                           ;; 06:4592 $ff
 
 map01_room02_02_tiles:
@@ -364,8 +364,8 @@ map01_room02_02_tiles:
     db   $41, $41, $6b, $41, $41, $61, $60, $61, $60, $61 ;; 06:45c7 ??????????
 
 map01_room03_02_script:
-    dw   $0064                                         ;; 06:45d1 $64 $00
-    SCRIPT_AT_POS 4, 7, $03bf                          ;; 06:45d3 $47 $bf $03
+    SCRIPT_IDX script_0064                             ;; 06:45d1 $64 $00
+    SCRIPT_AT_POS 4, 7, script_03bf                    ;; 06:45d3 $47 $bf $03
     db   $ff                                           ;; 06:45d6 $ff
 
 map01_room03_02_tiles:
@@ -379,7 +379,7 @@ map01_room03_02_tiles:
     db   $60, $61, $60, $61, $60,                $c1, $41 ;; 06:4608 ???????
 
 map01_room04_02_script:
-    dw   $003d                                         ;; 06:460f $3d $00
+    SCRIPT_IDX script_003d                             ;; 06:460f $3d $00
     db   $ff                                           ;; 06:4611 $ff
 
 map01_room04_02_tiles:
@@ -393,9 +393,9 @@ map01_room04_02_tiles:
     db                  $97,                $97, $17, $17 ;; 06:464c ????
 
 map01_room05_02_script:
-    dw   $003d                                         ;; 06:4650 $3d $00
-    SCRIPT_AT_POS 2, 5, $03a9                          ;; 06:4652 $25 $a9 $03
-    SCRIPT_AT_POS 2, 4, $03a9                          ;; 06:4655 $24 $a9 $03
+    SCRIPT_IDX script_003d                             ;; 06:4650 $3d $00
+    SCRIPT_AT_POS 2, 5, script_03a9                    ;; 06:4652 $25 $a9 $03
+    SCRIPT_AT_POS 2, 4, script_03a9                    ;; 06:4655 $24 $a9 $03
     db   $ff                                           ;; 06:4658 $ff
 
 map01_room05_02_tiles:
@@ -409,7 +409,7 @@ map01_room05_02_tiles:
     db   $17, $17, $18, $37, $00, $00, $37, $16, $17, $17 ;; 06:4693 ??????????
 
 map01_room06_02_script:
-    dw   $003d                                         ;; 06:469d $3d $00
+    SCRIPT_IDX script_003d                             ;; 06:469d $3d $00
     db   $ff                                           ;; 06:469f $ff
 
 map01_room06_02_tiles:
@@ -423,8 +423,8 @@ map01_room06_02_tiles:
     db                  $97,                $97, $17, $17 ;; 06:46da ????
 
 map01_room07_02_script:
-    dw   $003d                                         ;; 06:46de $3d $00
-    SCRIPT_AT_POS 0, 5, $03bd                          ;; 06:46e0 $05 $bd $03
+    SCRIPT_IDX script_003d                             ;; 06:46de $3d $00
+    SCRIPT_AT_POS 0, 5, script_03bd                    ;; 06:46e0 $05 $bd $03
     db   $ff                                           ;; 06:46e3 $ff
 
 map01_room07_02_tiles:
@@ -438,8 +438,8 @@ map01_room07_02_tiles:
     db   $7e, $41, $33, $00, $00, $00, $50, $7e, $7e, $7e ;; 06:472a ??????????
 
 map01_room00_03_script:
-    dw   $003d                                         ;; 06:4734 $3d $00
-    SCRIPT_AT_POS 7, 1, $03c9                          ;; 06:4736 $71 $c9 $03
+    SCRIPT_IDX script_003d                             ;; 06:4734 $3d $00
+    SCRIPT_AT_POS 7, 1, script_03c9                    ;; 06:4736 $71 $c9 $03
     db   $ff                                           ;; 06:4739 $ff
 
 map01_room00_03_tiles:
@@ -453,7 +453,7 @@ map01_room00_03_tiles:
     db   $6c, $6b, $6c, $09, $0a, $09, $0a, $09, $0a, $09 ;; 06:4759 ??????????
 
 map01_room01_03_script:
-    dw   $003d                                         ;; 06:4763 $3d $00
+    SCRIPT_IDX script_003d                             ;; 06:4763 $3d $00
     db   $ff                                           ;; 06:4765 $ff
 
 map01_room01_03_tiles:
@@ -467,8 +467,8 @@ map01_room01_03_tiles:
     db   $0a, $09, $0a,                $b7, $09, $0a, $09 ;; 06:478e ???????
 
 map01_room02_03_script:
-    dw   $003d                                         ;; 06:4795 $3d $00
-    SCRIPT_AT_POS 7, 8, $03ca                          ;; 06:4797 $78 $ca $03
+    SCRIPT_IDX script_003d                             ;; 06:4795 $3d $00
+    SCRIPT_AT_POS 7, 8, script_03ca                    ;; 06:4797 $78 $ca $03
     db   $ff                                           ;; 06:479a $ff
 
 map01_room02_03_tiles:
@@ -482,8 +482,8 @@ map01_room02_03_tiles:
     db   $0a, $09, $0a, $09, $0a, $09, $0a, $6c, $6b, $6c ;; 06:47ba ??????????
 
 map01_room03_03_script:
-    dw   $003d                                         ;; 06:47c4 $3d $00
-    SCRIPT_AT_POS 1, 4, $03c7                          ;; 06:47c6 $14 $c7 $03
+    SCRIPT_IDX script_003d                             ;; 06:47c4 $3d $00
+    SCRIPT_AT_POS 1, 4, script_03c7                    ;; 06:47c6 $14 $c7 $03
     db   $ff                                           ;; 06:47c9 $ff
 
 map01_room03_03_tiles:
@@ -497,7 +497,7 @@ map01_room03_03_tiles:
     db   $41, $41, $40, $30, $40, $30,                $c1 ;; 06:4801 ???????
 
 map01_room04_03_script:
-    dw   $01be                                         ;; 06:4808 $be $01
+    SCRIPT_IDX script_01be                             ;; 06:4808 $be $01
     db   $ff                                           ;; 06:480a $ff
 
 map01_room04_03_tiles:
@@ -511,7 +511,7 @@ map01_room04_03_tiles:
     db   $41, $40, $30, $40, $34, $42, $42, $42, $43, $0c ;; 06:4833 ??????????
 
 map01_room05_03_script:
-    dw   $003d                                         ;; 06:483d $3d $00
+    SCRIPT_IDX script_003d                             ;; 06:483d $3d $00
     db   $ff                                           ;; 06:483f $ff
 
 map01_room05_03_tiles:
@@ -525,7 +525,7 @@ map01_room05_03_tiles:
     db                  $c1,                $c1, $41, $41 ;; 06:486e ????
 
 map01_room06_03_script:
-    dw   $003d                                         ;; 06:4872 $3d $00
+    SCRIPT_IDX script_003d                             ;; 06:4872 $3d $00
     db   $ff                                           ;; 06:4874 $ff
 
 map01_room06_03_tiles:
@@ -539,7 +539,7 @@ map01_room06_03_tiles:
     db   $41, $41, $42,                $dc, $41, $41, $41 ;; 06:48a0 ???????
 
 map01_room07_03_script:
-    dw   $00ca                                         ;; 06:48a7 $ca $00
+    SCRIPT_IDX script_00ca                             ;; 06:48a7 $ca $00
     db   $ff                                           ;; 06:48a9 $ff
 
 map01_room07_03_tiles:
@@ -553,8 +553,8 @@ map01_room07_03_tiles:
     db   $7e, $7e, $7e, $53, $00, $00, $00, $34, $42, $7e ;; 06:48f0 ??????????
 
 map01_room00_04_script:
-    dw   $003d                                         ;; 06:48fa $3d $00
-    SCRIPT_AT_POS 2, 3, $03c5                          ;; 06:48fc $23 $c5 $03
+    SCRIPT_IDX script_003d                             ;; 06:48fa $3d $00
+    SCRIPT_AT_POS 2, 3, script_03c5                    ;; 06:48fc $23 $c5 $03
     db   $ff                                           ;; 06:48ff $ff
 
 map01_room00_04_tiles:
@@ -568,8 +568,8 @@ map01_room00_04_tiles:
     db   $42, $42, $41, $41, $0c, $0c, $41, $0b, $41, $41 ;; 06:4931 ??????????
 
 map01_room01_04_script:
-    dw   $01bb                                         ;; 06:493b $bb $01
-    SCRIPT_AT_POS 7, 8, $03c6                          ;; 06:493d $78 $c6 $03
+    SCRIPT_IDX script_01bb                             ;; 06:493b $bb $01
+    SCRIPT_AT_POS 7, 8, script_03c6                    ;; 06:493d $78 $c6 $03
     db   $ff                                           ;; 06:4940 $ff
 
 map01_room01_04_tiles:
@@ -583,8 +583,8 @@ map01_room01_04_tiles:
     db                  $af,                $af, $6b, $2f ;; 06:4969 ????
 
 map01_room02_04_script:
-    dw   $0040                                         ;; 06:496d $40 $00
-    SCRIPT_AT_POS 1, 3, $02c8                          ;; 06:496f $13 $c8 $02
+    SCRIPT_IDX script_0040                             ;; 06:496d $40 $00
+    SCRIPT_AT_POS 1, 3, script_02c8                    ;; 06:496f $13 $c8 $02
     db   $ff                                           ;; 06:4972 $ff
 
 map01_room02_04_tiles:
@@ -598,8 +598,8 @@ map01_room02_04_tiles:
     db   $6c, $37, $00, $37, $09, $55, $55, $0a, $55, $55 ;; 06:49b9 ??????????
 
 map01_room03_04_script:
-    dw   $003d                                         ;; 06:49c3 $3d $00
-    SCRIPT_AT_POS 7, 1, $03c8                          ;; 06:49c5 $71 $c8 $03
+    SCRIPT_IDX script_003d                             ;; 06:49c3 $3d $00
+    SCRIPT_AT_POS 7, 1, script_03c8                    ;; 06:49c5 $71 $c8 $03
     db   $ff                                           ;; 06:49c8 $ff
 
 map01_room03_04_tiles:
@@ -613,7 +613,7 @@ map01_room03_04_tiles:
     db   $67, $6b, $6c,                $c1, $41, $41, $41 ;; 06:4a00 ???????
 
 map01_room04_04_script:
-    dw   $01b2                                         ;; 06:4a07 $b2 $01
+    SCRIPT_IDX script_01b2                             ;; 06:4a07 $b2 $01
     db   $ff                                           ;; 06:4a09 $ff
 
 map01_room04_04_tiles:
@@ -627,7 +627,7 @@ map01_room04_04_tiles:
     db   $41, $41, $61, $60, $61, $60, $31, $31, $41, $41 ;; 06:4a41 ??????????
 
 map01_room05_04_script:
-    dw   $00a3                                         ;; 06:4a4b $a3 $00
+    SCRIPT_IDX script_00a3                             ;; 06:4a4b $a3 $00
     db   $ff                                           ;; 06:4a4d $ff
 
 map01_room05_04_tiles:
@@ -641,7 +641,7 @@ map01_room05_04_tiles:
     db   $55, $09, $55, $55, $0a, $37, $00, $00, $00, $6c ;; 06:4a91 ??????????
 
 map01_room06_04_script:
-    dw   $003d                                         ;; 06:4a9b $3d $00
+    SCRIPT_IDX script_003d                             ;; 06:4a9b $3d $00
     db   $ff                                           ;; 06:4a9d $ff
 
 map01_room06_04_tiles:
@@ -655,7 +655,7 @@ map01_room06_04_tiles:
     db   $41, $41, $42,                $dc, $42, $41, $41 ;; 06:4acf ???????
 
 map01_room07_04_script:
-    dw   $00ca                                         ;; 06:4ad6 $ca $00
+    SCRIPT_IDX script_00ca                             ;; 06:4ad6 $ca $00
     db   $ff                                           ;; 06:4ad8 $ff
 
 map01_room07_04_tiles:
@@ -669,8 +669,8 @@ map01_room07_04_tiles:
     db   $7e, $41, $33, $00, $00, $00, $50, $41, $42, $7e ;; 06:4b1f ??????????
 
 map01_room00_05_script:
-    dw   $01a9                                         ;; 06:4b29 $a9 $01
-    SCRIPT_AT_POS 1, 2, $02bf                          ;; 06:4b2b $12 $bf $02
+    SCRIPT_IDX script_01a9                             ;; 06:4b29 $a9 $01
+    SCRIPT_AT_POS 1, 2, script_02bf                    ;; 06:4b2b $12 $bf $02
     db   $ff                                           ;; 06:4b2e $ff
 
 map01_room00_05_tiles:
@@ -684,11 +684,11 @@ map01_room00_05_tiles:
     db                  $c1, $0c, $0c,                $c1 ;; 06:4b5a ????
 
 map01_room01_05_script:
-    dw   $010c                                         ;; 06:4b5e $0c $01
-    SCRIPT_AT_POS 7, 5, $033c                          ;; 06:4b60 $75 $3c $03
-    SCRIPT_AT_POS 7, 4, $033c                          ;; 06:4b63 $74 $3c $03
-    SCRIPT_AT_POS 2, 5, $033d                          ;; 06:4b66 $25 $3d $03
-    SCRIPT_AT_POS 2, 4, $033d                          ;; 06:4b69 $24 $3d $03
+    SCRIPT_IDX script_010c                             ;; 06:4b5e $0c $01
+    SCRIPT_AT_POS 7, 5, script_033c                    ;; 06:4b60 $75 $3c $03
+    SCRIPT_AT_POS 7, 4, script_033c                    ;; 06:4b63 $74 $3c $03
+    SCRIPT_AT_POS 2, 5, script_033d                    ;; 06:4b66 $25 $3d $03
+    SCRIPT_AT_POS 2, 4, script_033d                    ;; 06:4b69 $24 $3d $03
     db   $ff                                           ;; 06:4b6c $ff
 
 map01_room01_05_tiles:
@@ -702,7 +702,7 @@ map01_room01_05_tiles:
     db                  $b7, $71, $71,                $b7 ;; 06:4bad ????
 
 map01_room02_05_script:
-    dw   $00a3                                         ;; 06:4bb1 $a3 $00
+    SCRIPT_IDX script_00a3                             ;; 06:4bb1 $a3 $00
     db   $ff                                           ;; 06:4bb3 $ff
 
 map01_room02_05_tiles:
@@ -716,7 +716,7 @@ map01_room02_05_tiles:
     db   $6c, $66, $6c, $66, $6c, $66, $6c, $66, $6c, $66 ;; 06:4be5 ??????????
 
 map01_room03_05_script:
-    dw   $00a3                                         ;; 06:4bef $a3 $00
+    SCRIPT_IDX script_00a3                             ;; 06:4bef $a3 $00
     db   $ff                                           ;; 06:4bf1 $ff
 
 map01_room03_05_tiles:
@@ -730,9 +730,9 @@ map01_room03_05_tiles:
     db   $6c, $66, $6c, $66, $6c, $66, $6c, $66, $6c, $58 ;; 06:4c26 ??????????
 
 map01_room04_05_script:
-    dw   $003d                                         ;; 06:4c30 $3d $00
-    SCRIPT_AT_POS 7, 4, $02c6                          ;; 06:4c32 $74 $c6 $02
-    SCRIPT_AT_POS 7, 3, $02c6                          ;; 06:4c35 $73 $c6 $02
+    SCRIPT_IDX script_003d                             ;; 06:4c30 $3d $00
+    SCRIPT_AT_POS 7, 4, script_02c6                    ;; 06:4c32 $74 $c6 $02
+    SCRIPT_AT_POS 7, 3, script_02c6                    ;; 06:4c35 $73 $c6 $02
     db   $ff                                           ;; 06:4c38 $ff
 
 map01_room04_05_tiles:
@@ -746,7 +746,7 @@ map01_room04_05_tiles:
     db   $58, $58, $6c, $70, $70, $6c, $58, $58, $58, $6c ;; 06:4c73 ??????????
 
 map01_room05_05_script:
-    dw   $00a3                                         ;; 06:4c7d $a3 $00
+    SCRIPT_IDX script_00a3                             ;; 06:4c7d $a3 $00
     db   $ff                                           ;; 06:4c7f $ff
 
 map01_room05_05_tiles:
@@ -760,7 +760,7 @@ map01_room05_05_tiles:
     db   $66, $6c, $66, $6c, $66, $6c, $66, $6c, $66, $6c ;; 06:4cb4 ??????????
 
 map01_room06_05_script:
-    dw   $0000                                         ;; 06:4cbe $00 $00
+    SCRIPT_IDX script_0000                             ;; 06:4cbe $00 $00
     db   $ff                                           ;; 06:4cc0 $ff
 
 map01_room06_05_tiles:
@@ -774,8 +774,8 @@ map01_room06_05_tiles:
     db   $07, $07, $17,                $87, $07, $07, $07 ;; 06:4cec ???????
 
 map01_room07_05_script:
-    dw   $003d                                         ;; 06:4cf3 $3d $00
-    SCRIPT_AT_POS 7, 6, $03bc                          ;; 06:4cf5 $76 $bc $03
+    SCRIPT_IDX script_003d                             ;; 06:4cf3 $3d $00
+    SCRIPT_AT_POS 7, 6, script_03bc                    ;; 06:4cf5 $76 $bc $03
     db   $ff                                           ;; 06:4cf8 $ff
 
 map01_room07_05_tiles:
@@ -789,8 +789,8 @@ map01_room07_05_tiles:
     db   $7e, $7e, $7e, $50, $41, $23, $6b, $23, $42, $7e ;; 06:4d3f ??????????
 
 map01_room00_06_script:
-    dw   $00d0                                         ;; 06:4d49 $d0 $00
-    SCRIPT_AT_POS 4, 3, $03b5                          ;; 06:4d4b $43 $b5 $03
+    SCRIPT_IDX script_00d0                             ;; 06:4d49 $d0 $00
+    SCRIPT_AT_POS 4, 3, script_03b5                    ;; 06:4d4b $43 $b5 $03
     db   $ff                                           ;; 06:4d4e $ff
 
 map01_room00_06_tiles:
@@ -804,8 +804,8 @@ map01_room00_06_tiles:
     db                  $af,                $af, $2f, $2f ;; 06:4d86 ????
 
 map01_room01_06_script:
-    dw   $00cd                                         ;; 06:4d8a $cd $00
-    SCRIPT_AT_POS 4, 6, $03b4                          ;; 06:4d8c $46 $b4 $03
+    SCRIPT_IDX script_00cd                             ;; 06:4d8a $cd $00
+    SCRIPT_AT_POS 4, 6, script_03b4                    ;; 06:4d8c $46 $b4 $03
     db   $ff                                           ;; 06:4d8f $ff
 
 map01_room01_06_tiles:
@@ -819,8 +819,8 @@ map01_room01_06_tiles:
     db                  $af,                $af, $2f, $2f ;; 06:4dc7 ????
 
 map01_room02_06_script:
-    dw   $00ef                                         ;; 06:4dcb $ef $00
-    SCRIPT_AT_POS 2, 6, $0287                          ;; 06:4dcd $26 $87 $02
+    SCRIPT_IDX script_00ef                             ;; 06:4dcb $ef $00
+    SCRIPT_AT_POS 2, 6, script_0287                    ;; 06:4dcd $26 $87 $02
     db   $ff                                           ;; 06:4dd0 $ff
 
 map01_room02_06_tiles:
@@ -834,7 +834,7 @@ map01_room02_06_tiles:
     db   $37, $37, $37, $16, $17, $07, $08, $37, $37, $37 ;; 06:4e05 ..........
 
 map01_room03_06_script:
-    dw   $003d                                         ;; 06:4e0f $3d $00
+    SCRIPT_IDX script_003d                             ;; 06:4e0f $3d $00
     db   $ff                                           ;; 06:4e11 $ff
 
 map01_room03_06_tiles:
@@ -848,9 +848,9 @@ map01_room03_06_tiles:
     db   $37, $37, $37,                $80, $34, $42, $42 ;; 06:4e4c .......
 
 map01_room04_06_script:
-    dw   $03d9                                         ;; 06:4e53 $d9 $03
-    SCRIPT_AT_POS 3, 4, $02c7                          ;; 06:4e55 $34 $c7 $02
-    SCRIPT_AT_POS 3, 3, $02c7                          ;; 06:4e58 $33 $c7 $02
+    SCRIPT_IDX script_03d9                             ;; 06:4e53 $d9 $03
+    SCRIPT_AT_POS 3, 4, script_02c7                    ;; 06:4e55 $34 $c7 $02
+    SCRIPT_AT_POS 3, 3, script_02c7                    ;; 06:4e58 $33 $c7 $02
     db   $ff                                           ;; 06:4e5b $ff
 
 map01_room04_06_tiles:
@@ -864,7 +864,7 @@ map01_room04_06_tiles:
     db                  $e4,                $e4, $64, $64 ;; 06:4e90 ....
 
 map01_room05_06_script:
-    dw   $003d                                         ;; 06:4e94 $3d $00
+    SCRIPT_IDX script_003d                             ;; 06:4e94 $3d $00
     db   $ff                                           ;; 06:4e96 $ff
 
 map01_room05_06_tiles:
@@ -885,8 +885,8 @@ map01_room06_06_tiles:
     db   $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff        ;; 06:4ed2 ????????
 
 map01_room07_06_script:
-    dw   $0097                                         ;; 06:4eda $97 $00
-    SCRIPT_AT_POS 2, 6, $0349                          ;; 06:4edc $26 $49 $03
+    SCRIPT_IDX script_0097                             ;; 06:4eda $97 $00
+    SCRIPT_AT_POS 2, 6, script_0349                    ;; 06:4edc $26 $49 $03
     db   $ff                                           ;; 06:4edf $ff
 
 map01_room07_06_tiles:
@@ -900,8 +900,8 @@ map01_room07_06_tiles:
     db   $41, $41, $5f, $2b,                $df, $5f, $42 ;; 06:4f14 ???????
 
 map01_room00_07_script:
-    dw   $003d                                         ;; 06:4f1b $3d $00
-    SCRIPT_AT_POS 0, 1, $03c3                          ;; 06:4f1d $01 $c3 $03
+    SCRIPT_IDX script_003d                             ;; 06:4f1b $3d $00
+    SCRIPT_AT_POS 0, 1, script_03c3                    ;; 06:4f1d $01 $c3 $03
     db   $ff                                           ;; 06:4f20 $ff
 
 map01_room00_07_tiles:
@@ -915,8 +915,8 @@ map01_room00_07_tiles:
     db   $41, $41, $42,                $91, $11, $11, $11 ;; 06:4f58 ???????
 
 map01_room01_07_script:
-    dw   $01c7                                         ;; 06:4f5f $c7 $01
-    SCRIPT_AT_POS 2, 8, $03c4                          ;; 06:4f61 $28 $c4 $03
+    SCRIPT_IDX script_01c7                             ;; 06:4f5f $c7 $01
+    SCRIPT_AT_POS 2, 8, script_03c4                    ;; 06:4f61 $28 $c4 $03
     db   $ff                                           ;; 06:4f64 $ff
 
 map01_room01_07_tiles:
@@ -930,7 +930,7 @@ map01_room01_07_tiles:
     db                  $91,                $91, $41, $42 ;; 06:4f96 ????
 
 map01_room02_07_script:
-    dw   $003d                                         ;; 06:4f9a $3d $00
+    SCRIPT_IDX script_003d                             ;; 06:4f9a $3d $00
     db   $ff                                           ;; 06:4f9c $ff
 
 map01_room02_07_tiles:
@@ -944,7 +944,7 @@ map01_room02_07_tiles:
     db   $41, $41, $42,                $db, $42, $0c, $44 ;; 06:4fd1 .......
 
 map01_room03_07_script:
-    dw   $003d                                         ;; 06:4fd8 $3d $00
+    SCRIPT_IDX script_003d                             ;; 06:4fd8 $3d $00
     db   $ff                                           ;; 06:4fda $ff
 
 map01_room03_07_tiles:
@@ -958,9 +958,9 @@ map01_room03_07_tiles:
     db                  $c1, $41, $42, $42, $0c, $0c, $0c ;; 06:5012 .......
 
 map01_room04_07_script:
-    dw   $00e6                                         ;; 06:5019 $e6 $00
-    SCRIPT_AT_POS 1, 4, $02c4                          ;; 06:501b $14 $c4 $02
-    SCRIPT_AT_POS 1, 5, $02c4                          ;; 06:501e $15 $c4 $02
+    SCRIPT_IDX script_00e6                             ;; 06:5019 $e6 $00
+    SCRIPT_AT_POS 1, 4, script_02c4                    ;; 06:501b $14 $c4 $02
+    SCRIPT_AT_POS 1, 5, script_02c4                    ;; 06:501e $15 $c4 $02
     db   $ff                                           ;; 06:5021 $ff
 
 map01_room04_07_tiles:
@@ -974,8 +974,8 @@ map01_room04_07_tiles:
     db   $6c, $66, $6c, $66, $6c, $6c, $66, $6c, $66, $6c ;; 06:5059 ..........
 
 map01_room05_07_script:
-    dw   $003d                                         ;; 06:5063 $3d $00
-    SCRIPT_AT_POS 6, 7, $03a8                          ;; 06:5065 $67 $a8 $03
+    SCRIPT_IDX script_003d                             ;; 06:5063 $3d $00
+    SCRIPT_AT_POS 6, 7, script_03a8                    ;; 06:5065 $67 $a8 $03
     db   $ff                                           ;; 06:5068 $ff
 
 map01_room05_07_tiles:
@@ -989,7 +989,7 @@ map01_room05_07_tiles:
     db                  $d5, $55, $55, $6c, $6c, $6c, $0c ;; 06:5088 .......
 
 map01_room06_07_script:
-    dw   $011e                                         ;; 06:508f $1e $01
+    SCRIPT_IDX script_011e                             ;; 06:508f $1e $01
     db   $ff                                           ;; 06:5091 $ff
 
 map01_room06_07_tiles:
@@ -1003,8 +1003,8 @@ map01_room06_07_tiles:
     db                  $db,                $db, $5b, $5b ;; 06:50cc ????
 
 map01_room07_07_script:
-    dw   $009a                                         ;; 06:50d0 $9a $00
-    SCRIPT_AT_POS 3, 6, $0353                          ;; 06:50d2 $36 $53 $03
+    SCRIPT_IDX script_009a                             ;; 06:50d0 $9a $00
+    SCRIPT_AT_POS 3, 6, script_0353                    ;; 06:50d2 $36 $53 $03
     db   $ff                                           ;; 06:50d5 $ff
 
 map01_room07_07_tiles:
@@ -1086,8 +1086,8 @@ mapRoomPointers_0f:
     dw   map0f_room07_07_script, map0f_room07_07_tiles ;; 06:520e $c4 $60 $c7 $60
 
 map0f_room00_00_script:
-    dw   $00a6                                         ;; 06:5212 $a6 $00
-    SCRIPT_AT_POS 7, 2, $04d8                          ;; 06:5214 $72 $d8 $04
+    SCRIPT_IDX script_00a6                             ;; 06:5212 $a6 $00
+    SCRIPT_AT_POS 7, 2, script_04d8                    ;; 06:5214 $72 $d8 $04
     db   $ff                                           ;; 06:5217 $ff
 
 map0f_room00_00_tiles:
@@ -1101,8 +1101,8 @@ map0f_room00_00_tiles:
     db   $11, $11, $7f, $12,                $f9, $79, $79 ;; 06:524f ???????
 
 map0f_room01_00_script:
-    dw   $00a6                                         ;; 06:5256 $a6 $00
-    SCRIPT_AT_POS 1, 8, $0352                          ;; 06:5258 $18 $52 $03
+    SCRIPT_IDX script_00a6                             ;; 06:5256 $a6 $00
+    SCRIPT_AT_POS 1, 8, script_0352                    ;; 06:5258 $18 $52 $03
     db   $ff                                           ;; 06:525b $ff
 
 map0f_room01_00_tiles:
@@ -1117,15 +1117,15 @@ map0f_room01_00_tiles:
 
 map0f_room02_00_script:
     dw   $ffff                                         ;; 06:529d $ff $ff
-    SCRIPT_AT_POS 0, 7, $0000                          ;; 06:529f $07 $00 $00
+    SCRIPT_AT_POS 0, 7, script_0000                    ;; 06:529f $07 $00 $00
     db   $ff                                           ;; 06:52a2 $ff
 
 map0f_room02_00_tiles:
     db   $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff        ;; 06:52a3 ????????
 
 map0f_room03_00_script:
-    dw   $00a6                                         ;; 06:52ab $a6 $00
-    SCRIPT_AT_POS 3, 7, $02d8                          ;; 06:52ad $37 $d8 $02
+    SCRIPT_IDX script_00a6                             ;; 06:52ab $a6 $00
+    SCRIPT_AT_POS 3, 7, script_02d8                    ;; 06:52ad $37 $d8 $02
     db   $ff                                           ;; 06:52b0 $ff
 
 map0f_room03_00_tiles:
@@ -1139,7 +1139,7 @@ map0f_room03_00_tiles:
     db   $64, $64, $64, $53, $3f, $50, $50, $1b, $2f, $64 ;; 06:52ee ??????????
 
 map0f_room04_00_script:
-    dw   $01c1                                         ;; 06:52f8 $c1 $01
+    SCRIPT_IDX script_01c1                             ;; 06:52f8 $c1 $01
     db   $ff                                           ;; 06:52fa $ff
 
 map0f_room04_00_tiles:
@@ -1153,7 +1153,7 @@ map0f_room04_00_tiles:
     db   $11, $11, $6d, $10, $08, $08, $3b, $6d, $11, $11 ;; 06:532c ??????????
 
 map0f_room05_00_script:
-    dw   $019d                                         ;; 06:5336 $9d $01
+    SCRIPT_IDX script_019d                             ;; 06:5336 $9d $01
     db   $ff                                           ;; 06:5338 $ff
 
 map0f_room05_00_tiles:
@@ -1167,7 +1167,7 @@ map0f_room05_00_tiles:
     db   $79, $11, $04, $05, $13, $04, $05, $12, $12, $79 ;; 06:5376 ??????????
 
 map0f_room06_00_script:
-    dw   $00ca                                         ;; 06:5380 $ca $00
+    SCRIPT_IDX script_00ca                             ;; 06:5380 $ca $00
     db   $ff                                           ;; 06:5382 $ff
 
 map0f_room06_00_tiles:
@@ -1181,7 +1181,7 @@ map0f_room06_00_tiles:
     db   $17,                $b6, $36, $00, $00, $36, $36 ;; 06:53b4 ???????
 
 map0f_room07_00_script:
-    dw   $003d                                         ;; 06:53bb $3d $00
+    SCRIPT_IDX script_003d                             ;; 06:53bb $3d $00
     db   $ff                                           ;; 06:53bd $ff
 
 map0f_room07_00_tiles:
@@ -1195,7 +1195,7 @@ map0f_room07_00_tiles:
     db   $30, $30, $1c, $1c, $30, $30, $00, $30, $30, $30 ;; 06:53ec ??????????
 
 map0f_room00_01_script:
-    dw   $00a9                                         ;; 06:53f6 $a9 $00
+    SCRIPT_IDX script_00a9                             ;; 06:53f6 $a9 $00
     db   $ff                                           ;; 06:53f8 $ff
 
 map0f_room00_01_tiles:
@@ -1209,7 +1209,7 @@ map0f_room00_01_tiles:
     db   $64, $3f, $2f, $30, $76, $18, $18, $30, $3f, $50 ;; 06:5439 ??????????
 
 map0f_room01_01_script:
-    dw   $00a9                                         ;; 06:5443 $a9 $00
+    SCRIPT_IDX script_00a9                             ;; 06:5443 $a9 $00
     db   $ff                                           ;; 06:5445 $ff
 
 map0f_room01_01_tiles:
@@ -1223,7 +1223,7 @@ map0f_room01_01_tiles:
     db   $52, $50, $52, $50, $52, $50, $52, $50, $52, $50 ;; 06:5474 ??????????
 
 map0f_room02_01_script:
-    dw   $00a9                                         ;; 06:547e $a9 $00
+    SCRIPT_IDX script_00a9                             ;; 06:547e $a9 $00
     db   $ff                                           ;; 06:5480 $ff
 
 map0f_room02_01_tiles:
@@ -1237,8 +1237,8 @@ map0f_room02_01_tiles:
     db   $52, $50, $52, $50, $52, $2f, $30, $78, $30, $78 ;; 06:54b2 ??????????
 
 map0f_room03_01_script:
-    dw   $00a9                                         ;; 06:54bc $a9 $00
-    SCRIPT_AT_POS 2, 5, $02de                          ;; 06:54be $25 $de $02
+    SCRIPT_IDX script_00a9                             ;; 06:54bc $a9 $00
+    SCRIPT_AT_POS 2, 5, script_02de                    ;; 06:54be $25 $de $02
     db   $ff                                           ;; 06:54c1 $ff
 
 map0f_room03_01_tiles:
@@ -1252,7 +1252,7 @@ map0f_room03_01_tiles:
     db   $30, $13, $30, $76, $18, $18, $30, $1b, $2f, $64 ;; 06:54f9 ??????????
 
 map0f_room04_01_script:
-    dw   $00bb                                         ;; 06:5503 $bb $00
+    SCRIPT_IDX script_00bb                             ;; 06:5503 $bb $00
     db   $ff                                           ;; 06:5505 $ff
 
 map0f_room04_01_tiles:
@@ -1266,7 +1266,7 @@ map0f_room04_01_tiles:
     db   $6d, $11, $6d, $10, $08, $08,                $91 ;; 06:5546 ???????
 
 map0f_room05_01_script:
-    dw   $003d                                         ;; 06:554d $3d $00
+    SCRIPT_IDX script_003d                             ;; 06:554d $3d $00
     db   $ff                                           ;; 06:554f $ff
 
 map0f_room05_01_tiles:
@@ -1280,7 +1280,7 @@ map0f_room05_01_tiles:
     db                  $b6,                $b6, $36, $36 ;; 06:558d ????
 
 map0f_room06_01_script:
-    dw   $003d                                         ;; 06:5591 $3d $00
+    SCRIPT_IDX script_003d                             ;; 06:5591 $3d $00
     db   $ff                                           ;; 06:5593 $ff
 
 map0f_room06_01_tiles:
@@ -1294,7 +1294,7 @@ map0f_room06_01_tiles:
     db                  $b6,                $b6, $36, $79 ;; 06:55bf ????
 
 map0f_room07_01_script:
-    dw   $00ca                                         ;; 06:55c3 $ca $00
+    SCRIPT_IDX script_00ca                             ;; 06:55c3 $ca $00
     db   $ff                                           ;; 06:55c5 $ff
 
 map0f_room07_01_tiles:
@@ -1308,8 +1308,8 @@ map0f_room07_01_tiles:
     db   $36, $36, $50, $50, $00, $50,                $b6 ;; 06:5606 ???????
 
 map0f_room00_02_script:
-    dw   $00a9                                         ;; 06:560d $a9 $00
-    SCRIPT_AT_POS 4, 8, $02e3                          ;; 06:560f $48 $e3 $02
+    SCRIPT_IDX script_00a9                             ;; 06:560d $a9 $00
+    SCRIPT_AT_POS 4, 8, script_02e3                    ;; 06:560f $48 $e3 $02
     db   $ff                                           ;; 06:5612 $ff
 
 map0f_room00_02_tiles:
@@ -1323,7 +1323,7 @@ map0f_room00_02_tiles:
     db   $00, $00, $00, $30, $78, $30, $78, $30, $78, $30 ;; 06:5653 ??????????
 
 map0f_room01_02_script:
-    dw   $007f                                         ;; 06:565d $7f $00
+    SCRIPT_IDX script_007f                             ;; 06:565d $7f $00
     db   $ff                                           ;; 06:565f $ff
 
 map0f_room01_02_tiles:
@@ -1337,8 +1337,8 @@ map0f_room01_02_tiles:
     db   $0c, $30, $76, $18, $18, $18, $79, $18, $30, $0c ;; 06:56a3 ??????????
 
 map0f_room02_02_script:
-    dw   $00a9                                         ;; 06:56ad $a9 $00
-    SCRIPT_AT_POS 5, 1, $02e1                          ;; 06:56af $51 $e1 $02
+    SCRIPT_IDX script_00a9                             ;; 06:56ad $a9 $00
+    SCRIPT_AT_POS 5, 1, script_02e1                    ;; 06:56af $51 $e1 $02
     db   $ff                                           ;; 06:56b2 $ff
 
 map0f_room02_02_tiles:
@@ -1352,8 +1352,8 @@ map0f_room02_02_tiles:
     db   $30, $75, $30, $75, $30, $75, $30, $75, $30, $75 ;; 06:56ed ??????????
 
 map0f_room03_02_script:
-    dw   $00a9                                         ;; 06:56f7 $a9 $00
-    SCRIPT_AT_POS 5, 8, $02cb                          ;; 06:56f9 $58 $cb $02
+    SCRIPT_IDX script_00a9                             ;; 06:56f7 $a9 $00
+    SCRIPT_AT_POS 5, 8, script_02cb                    ;; 06:56f9 $58 $cb $02
     db   $ff                                           ;; 06:56fc $ff
 
 map0f_room03_02_tiles:
@@ -1367,8 +1367,8 @@ map0f_room03_02_tiles:
     db   $30, $75, $30, $78, $30, $78, $30, $75, $30, $75 ;; 06:5743 ??????????
 
 map0f_room04_02_script:
-    dw   $00b8                                         ;; 06:574d $b8 $00
-    SCRIPT_AT_POS 6, 8, $037a                          ;; 06:574f $68 $7a $03
+    SCRIPT_IDX script_00b8                             ;; 06:574d $b8 $00
+    SCRIPT_AT_POS 6, 8, script_037a                    ;; 06:574f $68 $7a $03
     db   $ff                                           ;; 06:5752 $ff
 
 map0f_room04_02_tiles:
@@ -1382,8 +1382,8 @@ map0f_room04_02_tiles:
     db   $11, $11, $6d,                $91, $11, $11, $11 ;; 06:578a ???????
 
 map0f_room05_02_script:
-    dw   $00c4                                         ;; 06:5791 $c4 $00
-    SCRIPT_AT_POS 2, 8, $04d5                          ;; 06:5793 $28 $d5 $04
+    SCRIPT_IDX script_00c4                             ;; 06:5791 $c4 $00
+    SCRIPT_AT_POS 2, 8, script_04d5                    ;; 06:5793 $28 $d5 $04
     db   $ff                                           ;; 06:5796 $ff
 
 map0f_room05_02_tiles:
@@ -1397,8 +1397,8 @@ map0f_room05_02_tiles:
     db   $50, $1b, $2f,                $8c, $3f, $52, $1b ;; 06:57ce ???????
 
 map0f_room06_02_script:
-    dw   $00c7                                         ;; 06:57d5 $c7 $00
-    SCRIPT_AT_POS 2, 1, $04d7                          ;; 06:57d7 $21 $d7 $04
+    SCRIPT_IDX script_00c7                             ;; 06:57d5 $c7 $00
+    SCRIPT_AT_POS 2, 1, script_04d7                    ;; 06:57d7 $21 $d7 $04
     db   $ff                                           ;; 06:57da $ff
 
 map0f_room06_02_tiles:
@@ -1412,7 +1412,7 @@ map0f_room06_02_tiles:
     db   $1b, $1b, $2f,                $8c, $3f, $1b, $50 ;; 06:5812 ???????
 
 map0f_room07_02_script:
-    dw   $0516                                         ;; 06:5819 $16 $05
+    SCRIPT_IDX script_0516                             ;; 06:5819 $16 $05
     db   $ff                                           ;; 06:581b $ff
 
 map0f_room07_02_tiles:
@@ -1426,7 +1426,7 @@ map0f_room07_02_tiles:
     db                  $b6, $36, $00,                $b6 ;; 06:5856 ????
 
 map0f_room00_03_script:
-    dw   $008e                                         ;; 06:585a $8e $00
+    SCRIPT_IDX script_008e                             ;; 06:585a $8e $00
     db   $ff                                           ;; 06:585c $ff
 
 map0f_room00_03_tiles:
@@ -1440,7 +1440,7 @@ map0f_room00_03_tiles:
     db   $0c, $30, $76, $79, $18, $18, $30, $0c, $0c, $0c ;; 06:5894 ??????????
 
 map0f_room01_03_script:
-    dw   $0094                                         ;; 06:589e $94 $00
+    SCRIPT_IDX script_0094                             ;; 06:589e $94 $00
     db   $ff                                           ;; 06:58a0 $ff
 
 map0f_room01_03_tiles:
@@ -1454,7 +1454,7 @@ map0f_room01_03_tiles:
     db   $0c, $0c, $79,                $8c, $0c, $0c, $0c ;; 06:58d5 ???????
 
 map0f_room02_03_script:
-    dw   $00a6                                         ;; 06:58dc $a6 $00
+    SCRIPT_IDX script_00a6                             ;; 06:58dc $a6 $00
     db   $ff                                           ;; 06:58de $ff
 
 map0f_room02_03_tiles:
@@ -1468,8 +1468,8 @@ map0f_room02_03_tiles:
     db                  $8c, $0c, $0c, $79, $0c, $0c, $0c ;; 06:5913 ???????
 
 map0f_room03_03_script:
-    dw   $0094                                         ;; 06:591a $94 $00
-    SCRIPT_AT_POS 6, 7, $02ca                          ;; 06:591c $67 $ca $02
+    SCRIPT_IDX script_0094                             ;; 06:591a $94 $00
+    SCRIPT_AT_POS 6, 7, script_02ca                    ;; 06:591c $67 $ca $02
     db   $ff                                           ;; 06:591f $ff
 
 map0f_room03_03_tiles:
@@ -1490,8 +1490,8 @@ map0f_room04_03_tiles:
     db   $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff        ;; 06:5961 ????????
 
 map0f_room05_03_script:
-    dw   $00c7                                         ;; 06:5969 $c7 $00
-    SCRIPT_AT_POS 3, 8, $04d4                          ;; 06:596b $38 $d4 $04
+    SCRIPT_IDX script_00c7                             ;; 06:5969 $c7 $00
+    SCRIPT_AT_POS 3, 8, script_04d4                    ;; 06:596b $38 $d4 $04
     db   $ff                                           ;; 06:596e $ff
 
 map0f_room05_03_tiles:
@@ -1505,8 +1505,8 @@ map0f_room05_03_tiles:
     db   $50, $50, $2f,                $8c, $3f, $50, $1b ;; 06:59a6 ???????
 
 map0f_room06_03_script:
-    dw   $00c4                                         ;; 06:59ad $c4 $00
-    SCRIPT_AT_POS 3, 1, $04d6                          ;; 06:59af $31 $d6 $04
+    SCRIPT_IDX script_00c4                             ;; 06:59ad $c4 $00
+    SCRIPT_AT_POS 3, 1, script_04d6                    ;; 06:59af $31 $d6 $04
     db   $ff                                           ;; 06:59b2 $ff
 
 map0f_room06_03_tiles:
@@ -1520,8 +1520,8 @@ map0f_room06_03_tiles:
     db   $50, $52, $2f,                $8c, $3f, $52, $50 ;; 06:59ea ???????
 
 map0f_room07_03_script:
-    dw   $003d                                         ;; 06:59f1 $3d $00
-    SCRIPT_AT_POS 4, 4, $0344                          ;; 06:59f3 $44 $44 $03
+    SCRIPT_IDX script_003d                             ;; 06:59f1 $3d $00
+    SCRIPT_AT_POS 4, 4, script_0344                    ;; 06:59f3 $44 $44 $03
     db   $ff                                           ;; 06:59f6 $ff
 
 map0f_room07_03_tiles:
@@ -1535,8 +1535,8 @@ map0f_room07_03_tiles:
     db                  $b6,                $b6, $36, $36 ;; 06:5a25 ????
 
 map0f_room00_04_script:
-    dw   $0085                                         ;; 06:5a29 $85 $00
-    SCRIPT_AT_POS 6, 7, $02c9                          ;; 06:5a2b $67 $c9 $02
+    SCRIPT_IDX script_0085                             ;; 06:5a29 $85 $00
+    SCRIPT_AT_POS 6, 7, script_02c9                    ;; 06:5a2b $67 $c9 $02
     db   $ff                                           ;; 06:5a2e $ff
 
 map0f_room00_04_tiles:
@@ -1550,7 +1550,7 @@ map0f_room00_04_tiles:
     db   $0c, $0c, $0c,                $b0, $30, $30, $0c ;; 06:5a6f ???????
 
 map0f_room01_04_script:
-    dw   $0249                                         ;; 06:5a76 $49 $02
+    SCRIPT_IDX script_0249                             ;; 06:5a76 $49 $02
     db   $ff                                           ;; 06:5a78 $ff
 
 map0f_room01_04_tiles:
@@ -1564,7 +1564,7 @@ map0f_room01_04_tiles:
     db                  $91, $11, $11, $12, $64, $3f, $2f ;; 06:5ab0 ???????
 
 map0f_room02_04_script:
-    dw   $003d                                         ;; 06:5ab7 $3d $00
+    SCRIPT_IDX script_003d                             ;; 06:5ab7 $3d $00
     db   $ff                                           ;; 06:5ab9 $ff
 
 map0f_room02_04_tiles:
@@ -1578,7 +1578,7 @@ map0f_room02_04_tiles:
     db   $64, $53, $63, $53, $3f, $50, $2f, $64, $53, $54 ;; 06:5af1 ??????????
 
 map0f_room03_04_script:
-    dw   $01b5                                         ;; 06:5afb $b5 $01
+    SCRIPT_IDX script_01b5                             ;; 06:5afb $b5 $01
     db   $ff                                           ;; 06:5afd $ff
 
 map0f_room03_04_tiles:
@@ -1599,8 +1599,8 @@ map0f_room04_04_tiles:
     db   $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff        ;; 06:5b42 ????????
 
 map0f_room05_04_script:
-    dw   $01c4                                         ;; 06:5b4a $c4 $01
-    SCRIPT_AT_POS 7, 1, $04d9                          ;; 06:5b4c $71 $d9 $04
+    SCRIPT_IDX script_01c4                             ;; 06:5b4a $c4 $01
+    SCRIPT_AT_POS 7, 1, script_04d9                    ;; 06:5b4c $71 $d9 $04
     db   $ff                                           ;; 06:5b4f $ff
 
 map0f_room05_04_tiles:
@@ -1614,8 +1614,8 @@ map0f_room05_04_tiles:
     db   $30, $7e, $30, $30, $78, $30, $78, $30, $78, $30 ;; 06:5b8a ??????????
 
 map0f_room06_04_script:
-    dw   $003d                                         ;; 06:5b94 $3d $00
-    SCRIPT_AT_POS 0, 7, $04da                          ;; 06:5b96 $07 $da $04
+    SCRIPT_IDX script_003d                             ;; 06:5b94 $3d $00
+    SCRIPT_AT_POS 0, 7, script_04da                    ;; 06:5b96 $07 $da $04
     db   $ff                                           ;; 06:5b99 $ff
 
 map0f_room06_04_tiles:
@@ -1636,7 +1636,7 @@ map0f_room07_04_tiles:
     db   $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff        ;; 06:5bd8 ????????
 
 map0f_room00_05_script:
-    dw   $0000                                         ;; 06:5be0 $00 $00
+    SCRIPT_IDX script_0000                             ;; 06:5be0 $00 $00
     db   $ff                                           ;; 06:5be2 $ff
 
 map0f_room00_05_tiles:
@@ -1650,7 +1650,7 @@ map0f_room00_05_tiles:
     db   $79, $11, $04, $05, $13, $04, $05, $12, $12, $79 ;; 06:5c11 ??????????
 
 map0f_room01_05_script:
-    dw   $01af                                         ;; 06:5c1b $af $01
+    SCRIPT_IDX script_01af                             ;; 06:5c1b $af $01
     db   $ff                                           ;; 06:5c1d $ff
 
 map0f_room01_05_tiles:
@@ -1664,8 +1664,8 @@ map0f_room01_05_tiles:
     db   $50, $7a, $30, $7a, $30, $7a, $30, $7a, $30, $30 ;; 06:5c46 ??????????
 
 map0f_room02_05_script:
-    dw   $003d                                         ;; 06:5c50 $3d $00
-    SCRIPT_AT_POS 3, 6, $031e                          ;; 06:5c52 $36 $1e $03
+    SCRIPT_IDX script_003d                             ;; 06:5c50 $3d $00
+    SCRIPT_AT_POS 3, 6, script_031e                    ;; 06:5c52 $36 $1e $03
     db   $ff                                           ;; 06:5c55 $ff
 
 map0f_room02_05_tiles:
@@ -1679,8 +1679,8 @@ map0f_room02_05_tiles:
     db   $30, $7a, $30, $7a, $30, $7a, $30, $7a, $50, $63 ;; 06:5c8a ??????????
 
 map0f_room03_05_script:
-    dw   $003d                                         ;; 06:5c94 $3d $00
-    SCRIPT_AT_POS 3, 7, $02fc                          ;; 06:5c96 $37 $fc $02
+    SCRIPT_IDX script_003d                             ;; 06:5c94 $3d $00
+    SCRIPT_AT_POS 3, 7, script_02fc                    ;; 06:5c96 $37 $fc $02
     db   $ff                                           ;; 06:5c99 $ff
 
 map0f_room03_05_tiles:
@@ -1694,7 +1694,7 @@ map0f_room03_05_tiles:
     db   $53, $54, $3f,                $d0, $50, $50, $50 ;; 06:5cce ???????
 
 map0f_room04_05_script:
-    dw   $003d                                         ;; 06:5cd5 $3d $00
+    SCRIPT_IDX script_003d                             ;; 06:5cd5 $3d $00
     db   $ff                                           ;; 06:5cd7 $ff
 
 map0f_room04_05_tiles:
@@ -1708,7 +1708,7 @@ map0f_room04_05_tiles:
     db                  $8d,                $8d, $0d, $0d ;; 06:5cf4 ????
 
 map0f_room05_05_script:
-    dw   $003d                                         ;; 06:5cf8 $3d $00
+    SCRIPT_IDX script_003d                             ;; 06:5cf8 $3d $00
     db   $ff                                           ;; 06:5cfa $ff
 
 map0f_room05_05_tiles:
@@ -1722,8 +1722,8 @@ map0f_room05_05_tiles:
     db                  $8c,                $8c, $0c, $0c ;; 06:5d17 ....
 
 map0f_room06_05_script:
-    dw   $00a6                                         ;; 06:5d1b $a6 $00
-    SCRIPT_AT_POS 7, 2, $04d8                          ;; 06:5d1d $72 $d8 $04
+    SCRIPT_IDX script_00a6                             ;; 06:5d1b $a6 $00
+    SCRIPT_AT_POS 7, 2, script_04d8                    ;; 06:5d1d $72 $d8 $04
     db   $ff                                           ;; 06:5d20 $ff
 
 map0f_room06_05_tiles:
@@ -1737,8 +1737,8 @@ map0f_room06_05_tiles:
     db   $11, $11, $7f, $12,                $f9, $79, $79 ;; 06:5d58 ???????
 
 map0f_room07_05_script:
-    dw   $00a6                                         ;; 06:5d5f $a6 $00
-    SCRIPT_AT_POS 1, 8, $0352                          ;; 06:5d61 $18 $52 $03
+    SCRIPT_IDX script_00a6                             ;; 06:5d5f $a6 $00
+    SCRIPT_AT_POS 1, 8, script_0352                    ;; 06:5d61 $18 $52 $03
     db   $ff                                           ;; 06:5d64 $ff
 
 map0f_room07_05_tiles:
@@ -1752,10 +1752,10 @@ map0f_room07_05_tiles:
     db                  $f9, $79, $79, $11, $11, $11, $12 ;; 06:5d9f ???????
 
 map0f_room00_06_script:
-    dw   $0000                                         ;; 06:5da6 $00 $00
-    SCRIPT_AT_POS 2, 5, $0000                          ;; 06:5da8 $25 $00 $00
-    SCRIPT_AT_POS 2, 7, $0000                          ;; 06:5dab $27 $00 $00
-    SCRIPT_AT_POS 3, 2, $0000                          ;; 06:5dae $32 $00 $00
+    SCRIPT_IDX script_0000                             ;; 06:5da6 $00 $00
+    SCRIPT_AT_POS 2, 5, script_0000                    ;; 06:5da8 $25 $00 $00
+    SCRIPT_AT_POS 2, 7, script_0000                    ;; 06:5dab $27 $00 $00
+    SCRIPT_AT_POS 3, 2, script_0000                    ;; 06:5dae $32 $00 $00
     db   $ff                                           ;; 06:5db1 $ff
 
 map0f_room00_06_tiles:
@@ -1776,8 +1776,8 @@ map0f_room01_06_tiles:
     db   $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff        ;; 06:5df0 ????????
 
 map0f_room02_06_script:
-    dw   $003d                                         ;; 06:5df8 $3d $00
-    SCRIPT_AT_POS 5, 2, $02be                          ;; 06:5dfa $52 $be $02
+    SCRIPT_IDX script_003d                             ;; 06:5df8 $3d $00
+    SCRIPT_AT_POS 5, 2, script_02be                    ;; 06:5dfa $52 $be $02
     db   $ff                                           ;; 06:5dfd $ff
 
 map0f_room02_06_tiles:
@@ -1791,8 +1791,8 @@ map0f_room02_06_tiles:
     db   $30, $6c, $30, $6c, $30, $6c, $30, $6c, $30, $6c ;; 06:5e35 ??????????
 
 map0f_room03_06_script:
-    dw   $015a                                         ;; 06:5e3f $5a $01
-    SCRIPT_AT_POS 5, 1, $02bc                          ;; 06:5e41 $51 $bc $02
+    SCRIPT_IDX script_015a                             ;; 06:5e3f $5a $01
+    SCRIPT_AT_POS 5, 1, script_02bc                    ;; 06:5e41 $51 $bc $02
     db   $ff                                           ;; 06:5e44 $ff
 
 map0f_room03_06_tiles:
@@ -1806,10 +1806,10 @@ map0f_room03_06_tiles:
     db   $30, $5b,                $80, $00, $00, $00, $30 ;; 06:5e76 ???????
 
 map0f_room04_06_script:
-    dw   $0157                                         ;; 06:5e7d $57 $01
-    SCRIPT_AT_POS 3, 7, $02ba                          ;; 06:5e7f $37 $ba $02
-    SCRIPT_AT_POS 3, 5, $02bb                          ;; 06:5e82 $35 $bb $02
-    SCRIPT_AT_POS 5, 2, $02bd                          ;; 06:5e85 $52 $bd $02
+    SCRIPT_IDX script_0157                             ;; 06:5e7d $57 $01
+    SCRIPT_AT_POS 3, 7, script_02ba                    ;; 06:5e7f $37 $ba $02
+    SCRIPT_AT_POS 3, 5, script_02bb                    ;; 06:5e82 $35 $bb $02
+    SCRIPT_AT_POS 5, 2, script_02bd                    ;; 06:5e85 $52 $bd $02
     db   $ff                                           ;; 06:5e88 $ff
 
 map0f_room04_06_tiles:
@@ -1823,8 +1823,8 @@ map0f_room04_06_tiles:
     db   $6c, $30, $6c, $30, $6c, $30, $6c, $30, $6c, $30 ;; 06:5ec0 ??????????
 
 map0f_room05_06_script:
-    dw   $003d                                         ;; 06:5eca $3d $00
-    SCRIPT_AT_POS 0, 8, $04dc                          ;; 06:5ecc $08 $dc $04
+    SCRIPT_IDX script_003d                             ;; 06:5eca $3d $00
+    SCRIPT_AT_POS 0, 8, script_04dc                    ;; 06:5ecc $08 $dc $04
     db   $ff                                           ;; 06:5ecf $ff
 
 map0f_room05_06_tiles:
@@ -1838,9 +1838,9 @@ map0f_room05_06_tiles:
     db   $11, $12, $12, $12,                $91, $0b, $11 ;; 06:5f07 ???????
 
 map0f_room06_06_script:
-    dw   $0082                                         ;; 06:5f0e $82 $00
-    SCRIPT_AT_POS 5, 7, $04de                          ;; 06:5f10 $57 $de $04
-    SCRIPT_AT_POS 1, 2, $04dd                          ;; 06:5f13 $12 $dd $04
+    SCRIPT_IDX script_0082                             ;; 06:5f0e $82 $00
+    SCRIPT_AT_POS 5, 7, script_04de                    ;; 06:5f10 $57 $de $04
+    SCRIPT_AT_POS 1, 2, script_04dd                    ;; 06:5f13 $12 $dd $04
     db   $ff                                           ;; 06:5f16 $ff
 
 map0f_room06_06_tiles:
@@ -1854,7 +1854,7 @@ map0f_room06_06_tiles:
     db                  $f9,                $f9, $79, $79 ;; 06:5f48 ????
 
 map0f_room07_06_script:
-    dw   $0082                                         ;; 06:5f4c $82 $00
+    SCRIPT_IDX script_0082                             ;; 06:5f4c $82 $00
     db   $ff                                           ;; 06:5f4e $ff
 
 map0f_room07_06_tiles:
@@ -1889,9 +1889,9 @@ map0f_room02_07_tiles:
     db   $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff        ;; 06:5f9d ????????
 
 map0f_room03_07_script:
-    dw   $015d                                         ;; 06:5fa5 $5d $01
-    SCRIPT_AT_POS 7, 4, $02a1                          ;; 06:5fa7 $74 $a1 $02
-    SCRIPT_AT_POS 7, 5, $02a1                          ;; 06:5faa $75 $a1 $02
+    SCRIPT_IDX script_015d                             ;; 06:5fa5 $5d $01
+    SCRIPT_AT_POS 7, 4, script_02a1                    ;; 06:5fa7 $74 $a1 $02
+    SCRIPT_AT_POS 7, 5, script_02a1                    ;; 06:5faa $75 $a1 $02
     db   $ff                                           ;; 06:5fad $ff
 
 map0f_room03_07_tiles:
@@ -1905,8 +1905,8 @@ map0f_room03_07_tiles:
     db   $52, $50, $52, $50, $5e, $5e, $50, $52, $50, $52 ;; 06:5fee ??????????
 
 map0f_room04_07_script:
-    dw   $0082                                         ;; 06:5ff8 $82 $00
-    SCRIPT_AT_POS 3, 2, $04db                          ;; 06:5ffa $32 $db $04
+    SCRIPT_IDX script_0082                             ;; 06:5ff8 $82 $00
+    SCRIPT_AT_POS 3, 2, script_04db                    ;; 06:5ffa $32 $db $04
     db   $ff                                           ;; 06:5ffd $ff
 
 map0f_room04_07_tiles:
@@ -1920,7 +1920,7 @@ map0f_room04_07_tiles:
     db                  $f9,                $f9, $79, $79 ;; 06:6035 ????
 
 map0f_room05_07_script:
-    dw   $0082                                         ;; 06:6039 $82 $00
+    SCRIPT_IDX script_0082                             ;; 06:6039 $82 $00
     db   $ff                                           ;; 06:603b $ff
 
 map0f_room05_07_tiles:
@@ -1934,8 +1934,8 @@ map0f_room05_07_tiles:
     db                  $f9, $79, $07, $1a, $1a, $1a, $2d ;; 06:607c ???????
 
 map0f_room06_07_script:
-    dw   $003d                                         ;; 06:6083 $3d $00
-    SCRIPT_AT_POS 0, 2, $0368                          ;; 06:6085 $02 $68 $03
+    SCRIPT_IDX script_003d                             ;; 06:6083 $3d $00
+    SCRIPT_AT_POS 0, 2, script_0368                    ;; 06:6085 $02 $68 $03
     db   $ff                                           ;; 06:6088 $ff
 
 map0f_room06_07_tiles:
@@ -1949,7 +1949,7 @@ map0f_room06_07_tiles:
     db   $11, $11,                $ed, $6d, $6d, $10, $3b ;; 06:60bd ???????
 
 map0f_room07_07_script:
-    dw   $01a0                                         ;; 06:60c4 $a0 $01
+    SCRIPT_IDX script_01a0                             ;; 06:60c4 $a0 $01
     db   $ff                                           ;; 06:60c6 $ff
 
 map0f_room07_07_tiles:
@@ -2031,8 +2031,8 @@ mapRoomPointers_0e:
     dw   map0e_room07_07_script, map0e_room07_07_tiles ;; 06:61fc $23 $6f $29 $6f
 
 map0e_room00_00_script:
-    dw   $003d                                         ;; 06:6200 $3d $00
-    SCRIPT_AT_POS 3, 2, $02aa                          ;; 06:6202 $32 $aa $02
+    SCRIPT_IDX script_003d                             ;; 06:6200 $3d $00
+    SCRIPT_AT_POS 3, 2, script_02aa                    ;; 06:6202 $32 $aa $02
     db   $ff                                           ;; 06:6205 $ff
 
 map0e_room00_00_tiles:
@@ -2046,9 +2046,9 @@ map0e_room00_00_tiles:
     db             $9c, $1c, $00, $2d,           $9c, $1c ;; 06:6238 ......
 
 map0e_room01_00_script:
-    dw   $00f8                                         ;; 06:623e $f8 $00
-    SCRIPT_AT_POS 4, 6, $02a7                          ;; 06:6240 $46 $a7 $02
-    SCRIPT_AT_POS 3, 3, $02a6                          ;; 06:6243 $33 $a6 $02
+    SCRIPT_IDX script_00f8                             ;; 06:623e $f8 $00
+    SCRIPT_AT_POS 4, 6, script_02a7                    ;; 06:6240 $46 $a7 $02
+    SCRIPT_AT_POS 3, 3, script_02a6                    ;; 06:6243 $33 $a6 $02
     db   $ff                                           ;; 06:6246 $ff
 
 map0e_room01_00_tiles:
@@ -2062,7 +2062,7 @@ map0e_room01_00_tiles:
     db   $1c, $1c, $2d, $2d, $00, $2d, $2d, $79, $1c, $1c ;; 06:627d ..........
 
 map0e_room02_00_script:
-    dw   $00a6                                         ;; 06:6287 $a6 $00
+    SCRIPT_IDX script_00a6                             ;; 06:6287 $a6 $00
     db   $ff                                           ;; 06:6289 $ff
 
 map0e_room02_00_tiles:
@@ -2076,7 +2076,7 @@ map0e_room02_00_tiles:
     db   $28, $28,           $a9, $2e, $29, $29, $28, $28 ;; 06:62c0 ????????
 
 map0e_room03_00_script:
-    dw   $0085                                         ;; 06:62c8 $85 $00
+    SCRIPT_IDX script_0085                             ;; 06:62c8 $85 $00
     db   $ff                                           ;; 06:62ca $ff
 
 map0e_room03_00_tiles:
@@ -2090,7 +2090,7 @@ map0e_room03_00_tiles:
     db             $a8,           $a8, $1e, $1e, $28, $28 ;; 06:62e9 ??????
 
 map0e_room04_00_script:
-    dw   $00a6                                         ;; 06:62ef $a6 $00
+    SCRIPT_IDX script_00a6                             ;; 06:62ef $a6 $00
     db   $ff                                           ;; 06:62f1 $ff
 
 map0e_room04_00_tiles:
@@ -2104,7 +2104,7 @@ map0e_room04_00_tiles:
     db   $28, $28, $1e, $29, $29, $2e, $29, $29, $28, $28 ;; 06:6320 ??????????
 
 map0e_room05_00_script:
-    dw   $0052                                         ;; 06:632a $52 $00
+    SCRIPT_IDX script_0052                             ;; 06:632a $52 $00
     db   $ff                                           ;; 06:632c $ff
 
 map0e_room05_00_tiles:
@@ -2118,7 +2118,7 @@ map0e_room05_00_tiles:
     db             $a8,           $a8, $28, $29, $29, $1e ;; 06:634d ??????
 
 map0e_room06_00_script:
-    dw   $0052                                         ;; 06:6353 $52 $00
+    SCRIPT_IDX script_0052                             ;; 06:6353 $52 $00
     db   $ff                                           ;; 06:6355 $ff
 
 map0e_room06_00_tiles:
@@ -2132,7 +2132,7 @@ map0e_room06_00_tiles:
     db   $1e,           $a9, $29, $2e,           $a9, $1e ;; 06:6382 ??????
 
 map0e_room07_00_script:
-    dw   $00a6                                         ;; 06:6388 $a6 $00
+    SCRIPT_IDX script_00a6                             ;; 06:6388 $a6 $00
     db   $ff                                           ;; 06:638a $ff
 
 map0e_room07_00_tiles:
@@ -2146,10 +2146,10 @@ map0e_room07_00_tiles:
     db   $1e, $1e,           $a9, $2e, $29, $29, $28, $79 ;; 06:63c1 ????????
 
 map0e_room00_01_script:
-    dw   $00fb                                         ;; 06:63c9 $fb $00
-    SCRIPT_AT_POS 7, 7, $0291                          ;; 06:63cb $77 $91 $02
-    SCRIPT_AT_POS 2, 7, $02a8                          ;; 06:63ce $27 $a8 $02
-    SCRIPT_AT_POS 4, 3, $02a9                          ;; 06:63d1 $43 $a9 $02
+    SCRIPT_IDX script_00fb                             ;; 06:63c9 $fb $00
+    SCRIPT_AT_POS 7, 7, script_0291                    ;; 06:63cb $77 $91 $02
+    SCRIPT_AT_POS 2, 7, script_02a8                    ;; 06:63ce $27 $a8 $02
+    SCRIPT_AT_POS 4, 3, script_02a9                    ;; 06:63d1 $43 $a9 $02
     db   $ff                                           ;; 06:63d4 $ff
 
 map0e_room00_01_tiles:
@@ -2163,7 +2163,7 @@ map0e_room00_01_tiles:
     db             $9c,           $9c, $1c, $5e, $1c, $1c ;; 06:6409 ......
 
 map0e_room01_01_script:
-    dw   $00fb                                         ;; 06:640f $fb $00
+    SCRIPT_IDX script_00fb                             ;; 06:640f $fb $00
     db   $ff                                           ;; 06:6411 $ff
 
 map0e_room01_01_tiles:
@@ -2177,7 +2177,7 @@ map0e_room01_01_tiles:
     db             $9c,           $9c,           $9c, $1c ;; 06:6448 ....
 
 map0e_room02_01_script:
-    dw   $0085                                         ;; 06:644c $85 $00
+    SCRIPT_IDX script_0085                             ;; 06:644c $85 $00
     db   $ff                                           ;; 06:644e $ff
 
 map0e_room02_01_tiles:
@@ -2191,8 +2191,8 @@ map0e_room02_01_tiles:
     db   $53, $54, $63, $64, $64, $2c,           $dc, $5c ;; 06:647f ????????
 
 map0e_room03_01_script:
-    dw   $0223                                         ;; 06:6487 $23 $02
-    SCRIPT_AT_POS 1, 2, $0393                          ;; 06:6489 $12 $93 $03
+    SCRIPT_IDX script_0223                             ;; 06:6487 $23 $02
+    SCRIPT_AT_POS 1, 2, script_0393                    ;; 06:6489 $12 $93 $03
     db   $ff                                           ;; 06:648c $ff
 
 map0e_room03_01_tiles:
@@ -2206,7 +2206,7 @@ map0e_room03_01_tiles:
     db   $5c, $24,           $dc,           $dc, $5c, $5c ;; 06:64b9 ??????
 
 map0e_room04_01_script:
-    dw   $0052                                         ;; 06:64bf $52 $00
+    SCRIPT_IDX script_0052                             ;; 06:64bf $52 $00
     db   $ff                                           ;; 06:64c1 $ff
 
 map0e_room04_01_tiles:
@@ -2220,8 +2220,8 @@ map0e_room04_01_tiles:
     db             $dc,           $dc,           $dc, $5c ;; 06:64ec ????
 
 map0e_room05_01_script:
-    dw   $012d                                         ;; 06:64f0 $2d $01
-    SCRIPT_AT_POS 2, 4, $030a                          ;; 06:64f2 $24 $0a $03
+    SCRIPT_IDX script_012d                             ;; 06:64f0 $2d $01
+    SCRIPT_AT_POS 2, 4, script_030a                    ;; 06:64f2 $24 $0a $03
     db   $ff                                           ;; 06:64f5 $ff
 
 map0e_room05_01_tiles:
@@ -2235,10 +2235,10 @@ map0e_room05_01_tiles:
     db             $dc,           $dc,           $dc, $5c ;; 06:651e ????
 
 map0e_room06_01_script:
-    dw   $03fa                                         ;; 06:6522 $fa $03
-    SCRIPT_AT_POS 6, 6, $ffff                          ;; 06:6524 $66 $ff $ff
-    SCRIPT_AT_POS 7, 6, $ffff                          ;; 06:6527 $76 $ff $ff
-    SCRIPT_AT_POS 5, 6, $ffff                          ;; 06:652a $56 $ff $ff
+    SCRIPT_IDX script_03fa                             ;; 06:6522 $fa $03
+    db   $66, $ff, $ff                                 ;; 06:6524 ???
+    db   $76, $ff, $ff                                 ;; 06:6527 ???
+    db   $56, $ff, $ff                                 ;; 06:652a ???
     db   $ff                                           ;; 06:652d $ff
 
 map0e_room06_01_tiles:
@@ -2252,7 +2252,7 @@ map0e_room06_01_tiles:
     db             $dc,           $dc, $2b,           $dc ;; 06:654e ????
 
 map0e_room07_01_script:
-    dw   $0052                                         ;; 06:6552 $52 $00
+    SCRIPT_IDX script_0052                             ;; 06:6552 $52 $00
     db   $ff                                           ;; 06:6554 $ff
 
 map0e_room07_01_tiles:
@@ -2266,7 +2266,7 @@ map0e_room07_01_tiles:
     db             $dc,           $dc, $5c,           $f9 ;; 06:6583 ????
 
 map0e_room00_02_script:
-    dw   $01c1                                         ;; 06:6587 $c1 $01
+    SCRIPT_IDX script_01c1                             ;; 06:6587 $c1 $01
     db   $ff                                           ;; 06:6589 $ff
 
 map0e_room00_02_tiles:
@@ -2280,8 +2280,8 @@ map0e_room00_02_tiles:
     db   $0c, $12, $11, $12, $11, $11, $12, $11, $12, $0c ;; 06:65b8 ??????????
 
 map0e_room01_02_script:
-    dw   $003d                                         ;; 06:65c2 $3d $00
-    SCRIPT_AT_POS 1, 5, $03cb                          ;; 06:65c4 $15 $cb $03
+    SCRIPT_IDX script_003d                             ;; 06:65c2 $3d $00
+    SCRIPT_AT_POS 1, 5, script_03cb                    ;; 06:65c4 $15 $cb $03
     db   $ff                                           ;; 06:65c7 $ff
 
 map0e_room01_02_tiles:
@@ -2303,7 +2303,7 @@ map0e_room02_02_tiles:
     db   $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff        ;; 06:6613 ????????
 
 map0e_room03_02_script:
-    dw   $003d                                         ;; 06:661b $3d $00
+    SCRIPT_IDX script_003d                             ;; 06:661b $3d $00
     db   $ff                                           ;; 06:661d $ff
 
 map0e_room03_02_tiles:
@@ -2317,7 +2317,7 @@ map0e_room03_02_tiles:
     db   $64, $64, $53, $63,           $e4, $64, $64, $53 ;; 06:6648 ????????
 
 map0e_room04_02_script:
-    dw   $0130                                         ;; 06:6650 $30 $01
+    SCRIPT_IDX script_0130                             ;; 06:6650 $30 $01
     db   $ff                                           ;; 06:6652 $ff
 
 map0e_room04_02_tiles:
@@ -2339,8 +2339,8 @@ map0e_room05_02_tiles:
     db   $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff        ;; 06:6688 ????????
 
 map0e_room06_02_script:
-    dw   $003d                                         ;; 06:6690 $3d $00
-    SCRIPT_AT_POS 6, 6, $03a6                          ;; 06:6692 $66 $a6 $03
+    SCRIPT_IDX script_003d                             ;; 06:6690 $3d $00
+    SCRIPT_AT_POS 6, 6, script_03a6                    ;; 06:6692 $66 $a6 $03
     db   $ff                                           ;; 06:6695 $ff
 
 map0e_room06_02_tiles:
@@ -2354,7 +2354,7 @@ map0e_room06_02_tiles:
     db             $f9,           $f9, $1c,           $f9 ;; 06:66b2 ????
 
 map0e_room07_02_script:
-    dw   $003d                                         ;; 06:66b6 $3d $00
+    SCRIPT_IDX script_003d                             ;; 06:66b6 $3d $00
     db   $ff                                           ;; 06:66b8 $ff
 
 map0e_room07_02_tiles:
@@ -2368,8 +2368,8 @@ map0e_room07_02_tiles:
     db   $11, $11, $12,           $89, $09, $12, $11, $11 ;; 06:66f1 ........
 
 map0e_room00_03_script:
-    dw   $003d                                         ;; 06:66f9 $3d $00
-    SCRIPT_AT_POS 4, 6, $0311                          ;; 06:66fb $46 $11 $03
+    SCRIPT_IDX script_003d                             ;; 06:66f9 $3d $00
+    SCRIPT_AT_POS 4, 6, script_0311                    ;; 06:66fb $46 $11 $03
     db   $ff                                           ;; 06:66fe $ff
 
 map0e_room00_03_tiles:
@@ -2383,8 +2383,8 @@ map0e_room00_03_tiles:
     db   $30, $13, $60, $62, $60, $13, $03,           $e1 ;; 06:6733 ????????
 
 map0e_room01_03_script:
-    dw   $003d                                         ;; 06:673b $3d $00
-    SCRIPT_AT_POS 4, 8, $02b9                          ;; 06:673d $48 $b9 $02
+    SCRIPT_IDX script_003d                             ;; 06:673b $3d $00
+    SCRIPT_AT_POS 4, 8, script_02b9                    ;; 06:673d $48 $b9 $02
     db   $ff                                           ;; 06:6740 $ff
 
 map0e_room01_03_tiles:
@@ -2398,7 +2398,7 @@ map0e_room01_03_tiles:
     db   $61, $13,           $e1,           $e1, $61, $60 ;; 06:6775 ??????
 
 map0e_room02_03_script:
-    dw   $0148                                         ;; 06:677b $48 $01
+    SCRIPT_IDX script_0148                             ;; 06:677b $48 $01
     db   $ff                                           ;; 06:677d $ff
 
 map0e_room02_03_tiles:
@@ -2420,7 +2420,7 @@ map0e_room03_03_tiles:
     db   $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff        ;; 06:67c3 ????????
 
 map0e_room04_03_script:
-    dw   $003d                                         ;; 06:67cb $3d $00
+    SCRIPT_IDX script_003d                             ;; 06:67cb $3d $00
     db   $ff                                           ;; 06:67cd $ff
 
 map0e_room04_03_tiles:
@@ -2434,11 +2434,11 @@ map0e_room04_03_tiles:
     db             $e4,           $e4, $64, $64, $53, $63 ;; 06:67f0 ??????
 
 map0e_room05_03_script:
-    dw   $0142                                         ;; 06:67f6 $42 $01
-    SCRIPT_AT_POS 7, 6, $029d                          ;; 06:67f8 $76 $9d $02
-    SCRIPT_AT_POS 7, 7, $029d                          ;; 06:67fb $77 $9d $02
-    SCRIPT_AT_POS 4, 7, $02b3                          ;; 06:67fe $47 $b3 $02
-    SCRIPT_AT_POS 2, 3, $02b2                          ;; 06:6801 $23 $b2 $02
+    SCRIPT_IDX script_0142                             ;; 06:67f6 $42 $01
+    SCRIPT_AT_POS 7, 6, script_029d                    ;; 06:67f8 $76 $9d $02
+    SCRIPT_AT_POS 7, 7, script_029d                    ;; 06:67fb $77 $9d $02
+    SCRIPT_AT_POS 4, 7, script_02b3                    ;; 06:67fe $47 $b3 $02
+    SCRIPT_AT_POS 2, 3, script_02b2                    ;; 06:6801 $23 $b2 $02
     db   $ff                                           ;; 06:6804 $ff
 
 map0e_room05_03_tiles:
@@ -2452,9 +2452,9 @@ map0e_room05_03_tiles:
     db   $1c, $1c, $16, $17, $1c, $1c, $5e, $5e, $1c, $1c ;; 06:6839 ??????????
 
 map0e_room06_03_script:
-    dw   $0145                                         ;; 06:6843 $45 $01
-    SCRIPT_AT_POS 4, 7, $02b1                          ;; 06:6845 $47 $b1 $02
-    SCRIPT_AT_POS 2, 5, $02b4                          ;; 06:6848 $25 $b4 $02
+    SCRIPT_IDX script_0145                             ;; 06:6843 $45 $01
+    SCRIPT_AT_POS 4, 7, script_02b1                    ;; 06:6845 $47 $b1 $02
+    SCRIPT_AT_POS 2, 5, script_02b4                    ;; 06:6848 $25 $b4 $02
     db   $ff                                           ;; 06:684b $ff
 
 map0e_room06_03_tiles:
@@ -2476,7 +2476,7 @@ map0e_room07_03_tiles:
     db   $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff        ;; 06:688b ????????
 
 map0e_room00_04_script:
-    dw   $00e9                                         ;; 06:6893 $e9 $00
+    SCRIPT_IDX script_00e9                             ;; 06:6893 $e9 $00
     db   $ff                                           ;; 06:6895 $ff
 
 map0e_room00_04_tiles:
@@ -2490,9 +2490,9 @@ map0e_room00_04_tiles:
     db   $30, $76,           $e1, $61, $18, $62, $60, $62 ;; 06:68cc ????????
 
 map0e_room01_04_script:
-    dw   $003d                                         ;; 06:68d4 $3d $00
-    SCRIPT_AT_POS 3, 5, $02b7                          ;; 06:68d6 $35 $b7 $02
-    SCRIPT_AT_POS 6, 1, $02b6                          ;; 06:68d9 $61 $b6 $02
+    SCRIPT_IDX script_003d                             ;; 06:68d4 $3d $00
+    SCRIPT_AT_POS 3, 5, script_02b7                    ;; 06:68d6 $35 $b7 $02
+    SCRIPT_AT_POS 6, 1, script_02b6                    ;; 06:68d9 $61 $b6 $02
     db   $ff                                           ;; 06:68dc $ff
 
 map0e_room01_04_tiles:
@@ -2506,8 +2506,8 @@ map0e_room01_04_tiles:
     db   $62,           $98, $18, $18, $70,           $f1 ;; 06:6917 ??????
 
 map0e_room02_04_script:
-    dw   $01cd                                         ;; 06:691d $cd $01
-    SCRIPT_AT_POS 2, 5, $02b5                          ;; 06:691f $25 $b5 $02
+    SCRIPT_IDX script_01cd                             ;; 06:691d $cd $01
+    SCRIPT_AT_POS 2, 5, script_02b5                    ;; 06:691f $25 $b5 $02
     db   $ff                                           ;; 06:6922 $ff
 
 map0e_room02_04_tiles:
@@ -2521,7 +2521,7 @@ map0e_room02_04_tiles:
     db   $62,           $f1, $72, $76, $70, $71, $72, $30 ;; 06:6957 ????????
 
 map0e_room03_04_script:
-    dw   $01ca                                         ;; 06:695f $ca $01
+    SCRIPT_IDX script_01ca                             ;; 06:695f $ca $01
     db   $ff                                           ;; 06:6961 $ff
 
 map0e_room03_04_tiles:
@@ -2535,8 +2535,8 @@ map0e_room03_04_tiles:
     db             $91, $3b, $10, $00, $3b, $10, $11, $11 ;; 06:698e ????????
 
 map0e_room04_04_script:
-    dw   $00b2                                         ;; 06:6996 $b2 $00
-    SCRIPT_AT_POS 2, 2, $03cc                          ;; 06:6998 $22 $cc $03
+    SCRIPT_IDX script_00b2                             ;; 06:6996 $b2 $00
+    SCRIPT_AT_POS 2, 2, script_03cc                    ;; 06:6998 $22 $cc $03
     db   $ff                                           ;; 06:699b $ff
 
 map0e_room04_04_tiles:
@@ -2550,8 +2550,8 @@ map0e_room04_04_tiles:
     db   $0c, $12, $0c, $12, $0c, $0c, $12,           $8c ;; 06:69ce ????????
 
 map0e_room05_04_script:
-    dw   $00b5                                         ;; 06:69d6 $b5 $00
-    SCRIPT_AT_POS 1, 7, $03cd                          ;; 06:69d8 $17 $cd $03
+    SCRIPT_IDX script_00b5                             ;; 06:69d6 $b5 $00
+    SCRIPT_AT_POS 1, 7, script_03cd                    ;; 06:69d8 $17 $cd $03
     db   $ff                                           ;; 06:69db $ff
 
 map0e_room05_04_tiles:
@@ -2581,7 +2581,7 @@ map0e_room07_04_tiles:
     db   $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff        ;; 06:6a3a ????????
 
 map0e_room00_05_script:
-    dw   $014b                                         ;; 06:6a42 $4b $01
+    SCRIPT_IDX script_014b                             ;; 06:6a42 $4b $01
     db   $ff                                           ;; 06:6a44 $ff
 
 map0e_room00_05_tiles:
@@ -2595,10 +2595,10 @@ map0e_room00_05_tiles:
     db   $30, $78, $30, $78, $30, $78, $30, $78, $30, $78 ;; 06:6a7f ??????????
 
 map0e_room01_05_script:
-    dw   $014e                                         ;; 06:6a89 $4e $01
-    SCRIPT_AT_POS 7, 4, $029e                          ;; 06:6a8b $74 $9e $02
-    SCRIPT_AT_POS 7, 3, $029e                          ;; 06:6a8e $73 $9e $02
-    SCRIPT_AT_POS 5, 6, $02b8                          ;; 06:6a91 $56 $b8 $02
+    SCRIPT_IDX script_014e                             ;; 06:6a89 $4e $01
+    SCRIPT_AT_POS 7, 4, script_029e                    ;; 06:6a8b $74 $9e $02
+    SCRIPT_AT_POS 7, 3, script_029e                    ;; 06:6a8e $73 $9e $02
+    SCRIPT_AT_POS 5, 6, script_02b8                    ;; 06:6a91 $56 $b8 $02
     db   $ff                                           ;; 06:6a94 $ff
 
 map0e_room01_05_tiles:
@@ -2612,7 +2612,7 @@ map0e_room01_05_tiles:
     db   $30, $78, $30, $5d, $5d, $30, $78, $30, $78, $30 ;; 06:6ac5 ??????????
 
 map0e_room02_05_script:
-    dw   $00ec                                         ;; 06:6acf $ec $00
+    SCRIPT_IDX script_00ec                             ;; 06:6acf $ec $00
     db   $ff                                           ;; 06:6ad1 $ff
 
 map0e_room02_05_tiles:
@@ -2626,8 +2626,8 @@ map0e_room02_05_tiles:
     db   $78, $30, $78, $30, $78, $30, $78, $30, $78, $30 ;; 06:6afe ??????????
 
 map0e_room03_05_script:
-    dw   $003d                                         ;; 06:6b08 $3d $00
-    SCRIPT_AT_POS 0, 8, $03a5                          ;; 06:6b0a $08 $a5 $03
+    SCRIPT_IDX script_003d                             ;; 06:6b08 $3d $00
+    SCRIPT_AT_POS 0, 8, script_03a5                    ;; 06:6b0a $08 $a5 $03
     db   $ff                                           ;; 06:6b0d $ff
 
 map0e_room03_05_tiles:
@@ -2641,8 +2641,8 @@ map0e_room03_05_tiles:
     db             $91, $10, $3b, $6d, $6d, $10, $11, $11 ;; 06:6b48 ????????
 
 map0e_room04_05_script:
-    dw   $00b2                                         ;; 06:6b50 $b2 $00
-    SCRIPT_AT_POS 4, 1, $03ce                          ;; 06:6b52 $41 $ce $03
+    SCRIPT_IDX script_00b2                             ;; 06:6b50 $b2 $00
+    SCRIPT_AT_POS 4, 1, script_03ce                    ;; 06:6b52 $41 $ce $03
     db   $ff                                           ;; 06:6b55 $ff
 
 map0e_room04_05_tiles:
@@ -2656,8 +2656,8 @@ map0e_room04_05_tiles:
     db   $11, $10, $3b,           $91,           $91, $11 ;; 06:6b86 ??????
 
 map0e_room05_05_script:
-    dw   $00b5                                         ;; 06:6b8c $b5 $00
-    SCRIPT_AT_POS 2, 8, $03cf                          ;; 06:6b8e $28 $cf $03
+    SCRIPT_IDX script_00b5                             ;; 06:6b8c $b5 $00
+    SCRIPT_AT_POS 2, 8, script_03cf                    ;; 06:6b8e $28 $cf $03
     db   $ff                                           ;; 06:6b91 $ff
 
 map0e_room05_05_tiles:
@@ -2687,9 +2687,9 @@ map0e_room07_05_tiles:
     db   $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff        ;; 06:6be6 ????????
 
 map0e_room00_06_script:
-    dw   $003d                                         ;; 06:6bee $3d $00
-    SCRIPT_AT_POS 4, 7, $02ad                          ;; 06:6bf0 $47 $ad $02
-    SCRIPT_AT_POS 4, 3, $02b0                          ;; 06:6bf3 $43 $b0 $02
+    SCRIPT_IDX script_003d                             ;; 06:6bee $3d $00
+    SCRIPT_AT_POS 4, 7, script_02ad                    ;; 06:6bf0 $47 $ad $02
+    SCRIPT_AT_POS 4, 3, script_02b0                    ;; 06:6bf3 $43 $b0 $02
     db   $ff                                           ;; 06:6bf6 $ff
 
 map0e_room00_06_tiles:
@@ -2703,9 +2703,9 @@ map0e_room00_06_tiles:
     db   $30, $5b, $1a, $18, $00,           $e1, $1c, $1c ;; 06:6c2b ????????
 
 map0e_room01_06_script:
-    dw   $0106                                         ;; 06:6c33 $06 $01
-    SCRIPT_AT_POS 0, 5, $033b                          ;; 06:6c35 $05 $3b $03
-    SCRIPT_AT_POS 0, 4, $033b                          ;; 06:6c38 $04 $3b $03
+    SCRIPT_IDX script_0106                             ;; 06:6c33 $06 $01
+    SCRIPT_AT_POS 0, 5, script_033b                    ;; 06:6c35 $05 $3b $03
+    SCRIPT_AT_POS 0, 4, script_033b                    ;; 06:6c38 $04 $3b $03
     db   $ff                                           ;; 06:6c3b $ff
 
 map0e_room01_06_tiles:
@@ -2719,8 +2719,8 @@ map0e_room01_06_tiles:
     db   $1c, $1c, $00, $18, $00,           $9c, $1c, $1c ;; 06:6c72 ????????
 
 map0e_room02_06_script:
-    dw   $003d                                         ;; 06:6c7a $3d $00
-    SCRIPT_AT_POS 4, 4, $02af                          ;; 06:6c7c $44 $af $02
+    SCRIPT_IDX script_003d                             ;; 06:6c7a $3d $00
+    SCRIPT_AT_POS 4, 4, script_02af                    ;; 06:6c7c $44 $af $02
     db   $ff                                           ;; 06:6c7f $ff
 
 map0e_room02_06_tiles:
@@ -2734,8 +2734,8 @@ map0e_room02_06_tiles:
     db   $1c, $1c, $00, $00, $18,           $80, $00, $30 ;; 06:6cb4 ????????
 
 map0e_room03_06_script:
-    dw   $008e                                         ;; 06:6cbc $8e $00
-    SCRIPT_AT_POS 2, 4, $02fd                          ;; 06:6cbe $24 $fd $02
+    SCRIPT_IDX script_008e                             ;; 06:6cbc $8e $00
+    SCRIPT_AT_POS 2, 4, script_02fd                    ;; 06:6cbe $24 $fd $02
     db   $ff                                           ;; 06:6cc1 $ff
 
 map0e_room03_06_tiles:
@@ -2749,7 +2749,7 @@ map0e_room03_06_tiles:
     db   $11, $11,           $ed,           $ed, $6d, $12 ;; 06:6cf0 ??????
 
 map0e_room04_06_script:
-    dw   $008b                                         ;; 06:6cf6 $8b $00
+    SCRIPT_IDX script_008b                             ;; 06:6cf6 $8b $00
     db   $ff                                           ;; 06:6cf8 $ff
 
 map0e_room04_06_tiles:
@@ -2763,8 +2763,8 @@ map0e_room04_06_tiles:
     db   $12,           $8c,           $8c, $0c, $0c, $11 ;; 06:6d23 ??????
 
 map0e_room05_06_script:
-    dw   $003d                                         ;; 06:6d29 $3d $00
-    SCRIPT_AT_POS 0, 5, $035b                          ;; 06:6d2b $05 $5b $03
+    SCRIPT_IDX script_003d                             ;; 06:6d29 $3d $00
+    SCRIPT_AT_POS 0, 5, script_035b                    ;; 06:6d2b $05 $5b $03
     db   $ff                                           ;; 06:6d2e $ff
 
 map0e_room05_06_tiles:
@@ -2794,8 +2794,8 @@ map0e_room07_06_tiles:
     db   $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff        ;; 06:6d81 ????????
 
 map0e_room00_07_script:
-    dw   $0109                                         ;; 06:6d89 $09 $01
-    SCRIPT_AT_POS 2, 6, $02ac                          ;; 06:6d8b $26 $ac $02
+    SCRIPT_IDX script_0109                             ;; 06:6d89 $09 $01
+    SCRIPT_AT_POS 2, 6, script_02ac                    ;; 06:6d8b $26 $ac $02
     db   $ff                                           ;; 06:6d8e $ff
 
 map0e_room00_07_tiles:
@@ -2809,10 +2809,10 @@ map0e_room00_07_tiles:
     db   $30, $75, $30, $75, $30, $75, $30, $75, $30, $75 ;; 06:6dc7 ??????????
 
 map0e_room01_07_script:
-    dw   $018a                                         ;; 06:6dd1 $8a $01
-    SCRIPT_AT_POS 7, 5, $0295                          ;; 06:6dd3 $75 $95 $02
-    SCRIPT_AT_POS 7, 6, $0295                          ;; 06:6dd6 $76 $95 $02
-    SCRIPT_AT_POS 3, 8, $02ae                          ;; 06:6dd9 $38 $ae $02
+    SCRIPT_IDX script_018a                             ;; 06:6dd1 $8a $01
+    SCRIPT_AT_POS 7, 5, script_0295                    ;; 06:6dd3 $75 $95 $02
+    SCRIPT_AT_POS 7, 6, script_0295                    ;; 06:6dd6 $76 $95 $02
+    SCRIPT_AT_POS 3, 8, script_02ae                    ;; 06:6dd9 $38 $ae $02
     db   $ff                                           ;; 06:6ddc $ff
 
 map0e_room01_07_tiles:
@@ -2826,7 +2826,7 @@ map0e_room01_07_tiles:
     db   $30, $75, $30, $75, $30, $5d, $5d, $30, $75, $30 ;; 06:6e13 ??????????
 
 map0e_room02_07_script:
-    dw   $0121                                         ;; 06:6e1d $21 $01
+    SCRIPT_IDX script_0121                             ;; 06:6e1d $21 $01
     db   $ff                                           ;; 06:6e1f $ff
 
 map0e_room02_07_tiles:
@@ -2848,7 +2848,7 @@ map0e_room03_07_tiles:
     db   $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff        ;; 06:6e65 ????????
 
 map0e_room04_07_script:
-    dw   $008e                                         ;; 06:6e6d $8e $00
+    SCRIPT_IDX script_008e                             ;; 06:6e6d $8e $00
     db   $ff                                           ;; 06:6e6f $ff
 
 map0e_room04_07_tiles:
@@ -2862,8 +2862,8 @@ map0e_room04_07_tiles:
     db   $12,           $8c,           $8c, $0c, $0c, $11 ;; 06:6e9a ??????
 
 map0e_room05_07_script:
-    dw   $003d                                         ;; 06:6ea0 $3d $00
-    SCRIPT_AT_POS 7, 1, $04d2                          ;; 06:6ea2 $71 $d2 $04
+    SCRIPT_IDX script_003d                             ;; 06:6ea0 $3d $00
+    SCRIPT_AT_POS 7, 1, script_04d2                    ;; 06:6ea2 $71 $d2 $04
     db   $ff                                           ;; 06:6ea5 $ff
 
 map0e_room05_07_tiles:
@@ -2877,7 +2877,7 @@ map0e_room05_07_tiles:
     db   $30, $7e, $30, $75, $30, $75, $30, $75, $30, $75 ;; 06:6eda ??????????
 
 map0e_room06_07_script:
-    dw   $00be                                         ;; 06:6ee4 $be $00
+    SCRIPT_IDX script_00be                             ;; 06:6ee4 $be $00
     db   $ff                                           ;; 06:6ee6 $ff
 
 map0e_room06_07_tiles:
@@ -2891,8 +2891,8 @@ map0e_room06_07_tiles:
     db   $75, $30, $75, $30, $75, $30, $75, $30, $75, $30 ;; 06:6f19 ??????????
 
 map0e_room07_07_script:
-    dw   $003d                                         ;; 06:6f23 $3d $00
-    SCRIPT_AT_POS 0, 7, $04d3                          ;; 06:6f25 $07 $d3 $04
+    SCRIPT_IDX script_003d                             ;; 06:6f23 $3d $00
+    SCRIPT_AT_POS 0, 7, script_04d3                    ;; 06:6f25 $07 $d3 $04
     db   $ff                                           ;; 06:6f28 $ff
 
 map0e_room07_07_tiles:
@@ -2981,7 +2981,7 @@ map0a_room_tile_template:
     db   $50, $51, $51, $51, $52, $53, $54, $54, $54, $55 ;; 06:7085 ??????????
 
 map0a_room00_00_script:
-    dw   $00b2                                         ;; 06:708f $b2 $00
+    SCRIPT_IDX script_00b2                             ;; 06:708f $b2 $00
     db   $ff                                           ;; 06:7091 $ff
 
 map0a_room00_00_tiles:
@@ -3002,7 +3002,7 @@ map0a_room00_00_tiles:
     db   $ff, $ff                                      ;; 06:70b0 ??
 
 map0a_room01_00_script:
-    dw   $00bb                                         ;; 06:70b2 $bb $00
+    SCRIPT_IDX script_00bb                             ;; 06:70b2 $bb $00
     db   $ff                                           ;; 06:70b4 $ff
 
 map0a_room01_00_tiles:
@@ -3028,8 +3028,8 @@ map0a_room01_00_tiles:
     db   $ff, $ff                                      ;; 06:70dd ??
 
 map0a_room02_00_script:
-    dw   $0073                                         ;; 06:70df $73 $00
-    SCRIPT_AT_POS 1, 8, $0372                          ;; 06:70e1 $18 $72 $03
+    SCRIPT_IDX script_0073                             ;; 06:70df $73 $00
+    SCRIPT_AT_POS 1, 8, script_0372                    ;; 06:70e1 $18 $72 $03
     db   $ff                                           ;; 06:70e4 $ff
 
 map0a_room02_00_tiles:
@@ -3045,7 +3045,7 @@ map0a_room02_00_tiles:
     db   $ff, $ff                                      ;; 06:70f9 ??
 
 map0a_room03_00_script:
-    dw   $0082                                         ;; 06:70fb $82 $00
+    SCRIPT_IDX script_0082                             ;; 06:70fb $82 $00
     db   $ff                                           ;; 06:70fd $ff
 
 map0a_room03_00_tiles:
@@ -3057,8 +3057,8 @@ map0a_room03_00_tiles:
     db   $ff, $ff                                      ;; 06:710a ??
 
 map0a_room04_00_script:
-    dw   $0082                                         ;; 06:710c $82 $00
-    SCRIPT_AT_POS 1, 8, $0362                          ;; 06:710e $18 $62 $03
+    SCRIPT_IDX script_0082                             ;; 06:710c $82 $00
+    SCRIPT_AT_POS 1, 8, script_0362                    ;; 06:710e $18 $62 $03
     db   $ff                                           ;; 06:7111 $ff
 
 map0a_room04_00_tiles:
@@ -3085,8 +3085,8 @@ map0a_room04_00_tiles:
     db   $ff, $ff                                      ;; 06:713c ??
 
 map0a_room05_00_script:
-    dw   $0082                                         ;; 06:713e $82 $00
-    SCRIPT_AT_POS 1, 1, $0364                          ;; 06:7140 $11 $64 $03
+    SCRIPT_IDX script_0082                             ;; 06:713e $82 $00
+    SCRIPT_AT_POS 1, 1, script_0364                    ;; 06:7140 $11 $64 $03
     db   $ff                                           ;; 06:7143 $ff
 
 map0a_room05_00_tiles:
@@ -3103,7 +3103,7 @@ map0a_room05_00_tiles:
     db   $ff, $ff                                      ;; 06:715a ??
 
 map0a_room06_00_script:
-    dw   $0139                                         ;; 06:715c $39 $01
+    SCRIPT_IDX script_0139                             ;; 06:715c $39 $01
     db   $ff                                           ;; 06:715e $ff
 
 map0a_room06_00_tiles:
@@ -3115,9 +3115,9 @@ map0a_room06_00_tiles:
     db   $ff, $ff                                      ;; 06:716b ??
 
 map0a_room00_01_script:
-    dw   $00b5                                         ;; 06:716d $b5 $00
-    SCRIPT_AT_POS 6, 7, $0508                          ;; 06:716f $67 $08 $05
-    SCRIPT_AT_POS 3, 7, $0507                          ;; 06:7172 $37 $07 $05
+    SCRIPT_IDX script_00b5                             ;; 06:716d $b5 $00
+    SCRIPT_AT_POS 6, 7, script_0508                    ;; 06:716f $67 $08 $05
+    SCRIPT_AT_POS 3, 7, script_0507                    ;; 06:7172 $37 $07 $05
     db   $ff                                           ;; 06:7175 $ff
 
 map0a_room00_01_tiles:
@@ -3168,7 +3168,7 @@ map0a_room02_01_tiles:
     db   $ff, $ff                                      ;; 06:71c2 ??
 
 map0a_room03_01_script:
-    dw   $007f                                         ;; 06:71c4 $7f $00
+    SCRIPT_IDX script_007f                             ;; 06:71c4 $7f $00
     db   $ff                                           ;; 06:71c6 $ff
 
 map0a_room03_01_tiles:
@@ -3184,10 +3184,10 @@ map0a_room03_01_tiles:
     db   $ff, $ff                                      ;; 06:71db ??
 
 map0a_room04_01_script:
-    dw   $007f                                         ;; 06:71dd $7f $00
-    SCRIPT_AT_POS 6, 8, $0367                          ;; 06:71df $68 $67 $03
-    SCRIPT_AT_POS 1, 5, $04f0                          ;; 06:71e2 $15 $f0 $04
-    SCRIPT_AT_POS 6, 5, $04f1                          ;; 06:71e5 $65 $f1 $04
+    SCRIPT_IDX script_007f                             ;; 06:71dd $7f $00
+    SCRIPT_AT_POS 6, 8, script_0367                    ;; 06:71df $68 $67 $03
+    SCRIPT_AT_POS 1, 5, script_04f0                    ;; 06:71e2 $15 $f0 $04
+    SCRIPT_AT_POS 6, 5, script_04f1                    ;; 06:71e5 $65 $f1 $04
     db   $ff                                           ;; 06:71e8 $ff
 
 map0a_room04_01_tiles:
@@ -3211,8 +3211,8 @@ map0a_room04_01_tiles:
     db   $ff, $ff                                      ;; 06:720d ??
 
 map0a_room05_01_script:
-    dw   $03e5                                         ;; 06:720f $e5 $03
-    SCRIPT_AT_POS 1, 8, $0366                          ;; 06:7211 $18 $66 $03
+    SCRIPT_IDX script_03e5                             ;; 06:720f $e5 $03
+    SCRIPT_AT_POS 1, 8, script_0366                    ;; 06:7211 $18 $66 $03
     db   $ff                                           ;; 06:7214 $ff
 
 map0a_room05_01_tiles:
@@ -3233,7 +3233,7 @@ map0a_room05_01_tiles:
     db   $ff, $ff                                      ;; 06:7233 ??
 
 map0a_room06_01_script:
-    dw   $0410                                         ;; 06:7235 $10 $04
+    SCRIPT_IDX script_0410                             ;; 06:7235 $10 $04
     db   $ff                                           ;; 06:7237 $ff
 
 map0a_room06_01_tiles:
@@ -3257,7 +3257,7 @@ map0a_room06_01_tiles:
     db   $ff, $ff                                      ;; 06:725c ??
 
 map0a_room00_02_script:
-    dw   $0070                                         ;; 06:725e $70 $00
+    SCRIPT_IDX script_0070                             ;; 06:725e $70 $00
     db   $ff                                           ;; 06:7260 $ff
 
 map0a_room00_02_tiles:
@@ -3281,7 +3281,7 @@ map0a_room00_02_tiles:
     db   $ff, $ff                                      ;; 06:7285 ??
 
 map0a_room01_02_script:
-    dw   $0097                                         ;; 06:7287 $97 $00
+    SCRIPT_IDX script_0097                             ;; 06:7287 $97 $00
     db   $ff                                           ;; 06:7289 $ff
 
 map0a_room01_02_tiles:
@@ -3295,7 +3295,7 @@ map0a_room01_02_tiles:
     db   $ff, $ff                                      ;; 06:729a ??
 
 map0a_room02_02_script:
-    dw   $00bb                                         ;; 06:729c $bb $00
+    SCRIPT_IDX script_00bb                             ;; 06:729c $bb $00
     db   $ff                                           ;; 06:729e $ff
 
 map0a_room02_02_tiles:
@@ -3319,7 +3319,7 @@ map0a_room02_02_tiles:
     db   $ff, $ff                                      ;; 06:72c3 ??
 
 map0a_room03_02_script:
-    dw   $00b5                                         ;; 06:72c5 $b5 $00
+    SCRIPT_IDX script_00b5                             ;; 06:72c5 $b5 $00
     db   $ff                                           ;; 06:72c7 $ff
 
 map0a_room03_02_tiles:
@@ -3355,7 +3355,7 @@ map0a_room03_02_tiles:
     db   $ff, $ff                                      ;; 06:7304 ??
 
 map0a_room04_02_script:
-    dw   $00b5                                         ;; 06:7306 $b5 $00
+    SCRIPT_IDX script_00b5                             ;; 06:7306 $b5 $00
     db   $ff                                           ;; 06:7308 $ff
 
 map0a_room04_02_tiles:
@@ -3387,8 +3387,8 @@ map0a_room05_02_tiles:
     db   $ff, $ff                                      ;; 06:7336 ??
 
 map0a_room06_02_script:
-    dw   $00bb                                         ;; 06:7338 $bb $00
-    SCRIPT_AT_POS 1, 8, $0373                          ;; 06:733a $18 $73 $03
+    SCRIPT_IDX script_00bb                             ;; 06:7338 $bb $00
+    SCRIPT_AT_POS 1, 8, script_0373                    ;; 06:733a $18 $73 $03
     db   $ff                                           ;; 06:733d $ff
 
 map0a_room06_02_tiles:
@@ -3412,7 +3412,7 @@ map0a_room06_02_tiles:
     db   $ff, $ff                                      ;; 06:7362 ??
 
 map0a_room00_03_script:
-    dw   $008e                                         ;; 06:7364 $8e $00
+    SCRIPT_IDX script_008e                             ;; 06:7364 $8e $00
     db   $ff                                           ;; 06:7366 $ff
 
 map0a_room00_03_tiles:
@@ -3424,8 +3424,8 @@ map0a_room00_03_tiles:
     db   $ff, $ff                                      ;; 06:7373 ??
 
 map0a_room01_03_script:
-    dw   $008b                                         ;; 06:7375 $8b $00
-    SCRIPT_AT_POS 6, 8, $0299                          ;; 06:7377 $68 $99 $02
+    SCRIPT_IDX script_008b                             ;; 06:7375 $8b $00
+    SCRIPT_AT_POS 6, 8, script_0299                    ;; 06:7377 $68 $99 $02
     db   $ff                                           ;; 06:737a $ff
 
 map0a_room01_03_tiles:
@@ -3440,7 +3440,7 @@ map0a_room01_03_tiles:
     db   $ff, $ff                                      ;; 06:738d ??
 
 map0a_room02_03_script:
-    dw   $00bb                                         ;; 06:738f $bb $00
+    SCRIPT_IDX script_00bb                             ;; 06:738f $bb $00
     db   $ff                                           ;; 06:7391 $ff
 
 map0a_room02_03_tiles:
@@ -3474,7 +3474,7 @@ map0a_room02_03_tiles:
     db   $ff, $ff                                      ;; 06:73ca ??
 
 map0a_room03_03_script:
-    dw   $03e5                                         ;; 06:73cc $e5 $03
+    SCRIPT_IDX script_03e5                             ;; 06:73cc $e5 $03
     db   $ff                                           ;; 06:73ce $ff
 
 map0a_room03_03_tiles:
@@ -3494,7 +3494,7 @@ map0a_room03_03_tiles:
     db   $ff, $ff                                      ;; 06:73eb ??
 
 map0a_room04_03_script:
-    dw   $00bb                                         ;; 06:73ed $bb $00
+    SCRIPT_IDX script_00bb                             ;; 06:73ed $bb $00
     db   $ff                                           ;; 06:73ef $ff
 
 map0a_room04_03_tiles:
@@ -3526,8 +3526,8 @@ map0a_room04_03_tiles:
     db   $ff, $ff                                      ;; 06:7424 ??
 
 map0a_room05_03_script:
-    dw   $00b5                                         ;; 06:7426 $b5 $00
-    SCRIPT_AT_POS 1, 8, $0358                          ;; 06:7428 $18 $58 $03
+    SCRIPT_IDX script_00b5                             ;; 06:7426 $b5 $00
+    SCRIPT_AT_POS 1, 8, script_0358                    ;; 06:7428 $18 $58 $03
     db   $ff                                           ;; 06:742b $ff
 
 map0a_room05_03_tiles:
@@ -3553,7 +3553,7 @@ map0a_room05_03_tiles:
     db   $ff, $ff                                      ;; 06:7454 ??
 
 map0a_room06_03_script:
-    dw   $00b2                                         ;; 06:7456 $b2 $00
+    SCRIPT_IDX script_00b2                             ;; 06:7456 $b2 $00
     db   $ff                                           ;; 06:7458 $ff
 
 map0a_room06_03_tiles:
@@ -3573,9 +3573,9 @@ map0a_room06_03_tiles:
     db   $ff, $ff                                      ;; 06:7475 ??
 
 map0a_room00_04_script:
-    dw   $008e                                         ;; 06:7477 $8e $00
-    SCRIPT_AT_POS 4, 7, $050c                          ;; 06:7479 $47 $0c $05
-    SCRIPT_AT_POS 4, 2, $050c                          ;; 06:747c $42 $0c $05
+    SCRIPT_IDX script_008e                             ;; 06:7477 $8e $00
+    SCRIPT_AT_POS 4, 7, script_050c                    ;; 06:7479 $47 $0c $05
+    SCRIPT_AT_POS 4, 2, script_050c                    ;; 06:747c $42 $0c $05
     db   $ff                                           ;; 06:747f $ff
 
 map0a_room00_04_tiles:
@@ -3597,8 +3597,8 @@ map0a_room00_04_tiles:
     db   $ff, $ff                                      ;; 06:74a0 ??
 
 map0a_room01_04_script:
-    dw   $00b2                                         ;; 06:74a2 $b2 $00
-    SCRIPT_AT_POS 1, 8, $037c                          ;; 06:74a4 $18 $7c $03
+    SCRIPT_IDX script_00b2                             ;; 06:74a2 $b2 $00
+    SCRIPT_AT_POS 1, 8, script_037c                    ;; 06:74a4 $18 $7c $03
     db   $ff                                           ;; 06:74a7 $ff
 
 map0a_room01_04_tiles:
@@ -3625,7 +3625,7 @@ map0a_room01_04_tiles:
     db   $ff, $ff                                      ;; 06:74d2 ??
 
 map0a_room02_04_script:
-    dw   $03dc                                         ;; 06:74d4 $dc $03
+    SCRIPT_IDX script_03dc                             ;; 06:74d4 $dc $03
     db   $ff                                           ;; 06:74d6 $ff
 
 map0a_room02_04_tiles:
@@ -3665,7 +3665,7 @@ map0a_room02_04_tiles:
     db   $ff, $ff                                      ;; 06:751b ??
 
 map0a_room03_04_script:
-    dw   $0070                                         ;; 06:751d $70 $00
+    SCRIPT_IDX script_0070                             ;; 06:751d $70 $00
     db   $ff                                           ;; 06:751f $ff
 
 map0a_room03_04_tiles:
@@ -3709,7 +3709,7 @@ map0a_room03_04_tiles:
     db   $ff, $ff                                      ;; 06:756c ??
 
 map0a_room04_04_script:
-    dw   $00b5                                         ;; 06:756e $b5 $00
+    SCRIPT_IDX script_00b5                             ;; 06:756e $b5 $00
     db   $ff                                           ;; 06:7570 $ff
 
 map0a_room04_04_tiles:
@@ -3750,7 +3750,7 @@ map0a_room05_04_tiles:
     db   $ff, $ff                                      ;; 06:75b0 ??
 
 map0a_room06_04_script:
-    dw   $00bb                                         ;; 06:75b2 $bb $00
+    SCRIPT_IDX script_00bb                             ;; 06:75b2 $bb $00
     db   $ff                                           ;; 06:75b4 $ff
 
 map0a_room06_04_tiles:
@@ -3760,8 +3760,8 @@ map0a_room06_04_tiles:
     db   $ff, $ff                                      ;; 06:75bd ??
 
 map0a_room00_05_script:
-    dw   $008b                                         ;; 06:75bf $8b $00
-    SCRIPT_AT_POS 6, 8, $029a                          ;; 06:75c1 $68 $9a $02
+    SCRIPT_IDX script_008b                             ;; 06:75bf $8b $00
+    SCRIPT_AT_POS 6, 8, script_029a                    ;; 06:75c1 $68 $9a $02
     db   $ff                                           ;; 06:75c4 $ff
 
 map0a_room00_05_tiles:
@@ -3784,7 +3784,7 @@ map0a_room00_05_tiles:
     db   $ff, $ff                                      ;; 06:75e7 ??
 
 map0a_room01_05_script:
-    dw   $003d                                         ;; 06:75e9 $3d $00
+    SCRIPT_IDX script_003d                             ;; 06:75e9 $3d $00
     db   $ff                                           ;; 06:75eb $ff
 
 map0a_room01_05_tiles:
@@ -3809,7 +3809,7 @@ map0a_room01_05_tiles:
     db   $ff, $ff                                      ;; 06:7612 ??
 
 map0a_room02_05_script:
-    dw   $008b                                         ;; 06:7614 $8b $00
+    SCRIPT_IDX script_008b                             ;; 06:7614 $8b $00
     db   $ff                                           ;; 06:7616 $ff
 
 map0a_room02_05_tiles:
@@ -3834,7 +3834,7 @@ map0a_room02_05_tiles:
     db   $ff, $ff                                      ;; 06:763d ??
 
 map0a_room03_05_script:
-    dw   $03f1                                         ;; 06:763f $f1 $03
+    SCRIPT_IDX script_03f1                             ;; 06:763f $f1 $03
     db   $ff                                           ;; 06:7641 $ff
 
 map0a_room03_05_tiles:
@@ -3874,7 +3874,7 @@ map0a_room03_05_tiles:
     db   $ff, $ff                                      ;; 06:7686 ??
 
 map0a_room04_05_script:
-    dw   $008b                                         ;; 06:7688 $8b $00
+    SCRIPT_IDX script_008b                             ;; 06:7688 $8b $00
     db   $ff                                           ;; 06:768a $ff
 
 map0a_room04_05_tiles:
@@ -3905,8 +3905,8 @@ map0a_room04_05_tiles:
     db   $ff, $ff                                      ;; 06:76bd ??
 
 map0a_room05_05_script:
-    dw   $0151                                         ;; 06:76bf $51 $01
-    SCRIPT_AT_POS 1, 8, $0298                          ;; 06:76c1 $18 $98 $02
+    SCRIPT_IDX script_0151                             ;; 06:76bf $51 $01
+    SCRIPT_AT_POS 1, 8, script_0298                    ;; 06:76c1 $18 $98 $02
     db   $ff                                           ;; 06:76c4 $ff
 
 map0a_room05_05_tiles:
@@ -3936,7 +3936,7 @@ map0a_room00_06_tiles:
     db   $ff, $ff                                      ;; 06:76e7 ??
 
 map0a_room01_06_script:
-    dw   $008b                                         ;; 06:76e9 $8b $00
+    SCRIPT_IDX script_008b                             ;; 06:76e9 $8b $00
     db   $ff                                           ;; 06:76eb $ff
 
 map0a_room01_06_tiles:
@@ -3956,7 +3956,7 @@ map0a_room01_06_tiles:
     db   $ff, $ff                                      ;; 06:7708 ??
 
 map0a_room02_06_script:
-    dw   $03f4                                         ;; 06:770a $f4 $03
+    SCRIPT_IDX script_03f4                             ;; 06:770a $f4 $03
     db   $ff                                           ;; 06:770c $ff
 
 map0a_room02_06_tiles:
@@ -4001,7 +4001,7 @@ map0a_room02_06_tiles:
     db   $ff, $ff                                      ;; 06:775b ??
 
 map0a_room03_06_script:
-    dw   $008b                                         ;; 06:775d $8b $00
+    SCRIPT_IDX script_008b                             ;; 06:775d $8b $00
     db   $ff                                           ;; 06:775f $ff
 
 map0a_room03_06_tiles:
@@ -4029,7 +4029,7 @@ map0a_room03_06_tiles:
     db   $ff, $ff                                      ;; 06:778c ??
 
 map0a_room04_06_script:
-    dw   $003d                                         ;; 06:778e $3d $00
+    SCRIPT_IDX script_003d                             ;; 06:778e $3d $00
     db   $ff                                           ;; 06:7790 $ff
 
 map0a_room04_06_tiles:
@@ -4052,7 +4052,7 @@ map0a_room04_06_tiles:
     db   $ff, $ff                                      ;; 06:77b3 ??
 
 map0a_room05_06_script:
-    dw   $0112                                         ;; 06:77b5 $12 $01
+    SCRIPT_IDX script_0112                             ;; 06:77b5 $12 $01
     db   $ff                                           ;; 06:77b7 $ff
 
 map0a_room05_06_tiles:
@@ -4070,8 +4070,8 @@ map0a_room05_06_tiles:
     db   $ff, $ff                                      ;; 06:77d0 ??
 
 map0a_room06_06_script:
-    dw   $0115                                         ;; 06:77d2 $15 $01
-    SCRIPT_AT_POS 1, 8, $0297                          ;; 06:77d4 $18 $97 $02
+    SCRIPT_IDX script_0115                             ;; 06:77d2 $15 $01
+    SCRIPT_AT_POS 1, 8, script_0297                    ;; 06:77d4 $18 $97 $02
     db   $ff                                           ;; 06:77d7 $ff
 
 map0a_room06_06_tiles:
@@ -4088,8 +4088,8 @@ map0a_room06_06_tiles:
     db   $ff, $ff                                      ;; 06:77ee ??
 
 map0a_room00_07_script:
-    dw   $003d                                         ;; 06:77f0 $3d $00
-    SCRIPT_AT_POS 5, 7, $0401                          ;; 06:77f2 $57 $01 $04
+    SCRIPT_IDX script_003d                             ;; 06:77f0 $3d $00
+    SCRIPT_AT_POS 5, 7, script_0401                    ;; 06:77f2 $57 $01 $04
     db   $ff                                           ;; 06:77f5 $ff
 
 map0a_room00_07_tiles:
@@ -4134,7 +4134,7 @@ map0a_room00_07_tiles:
     db   $ff, $ff                                      ;; 06:7844 ??
 
 map0a_room01_07_script:
-    dw   $003d                                         ;; 06:7846 $3d $00
+    SCRIPT_IDX script_003d                             ;; 06:7846 $3d $00
     db   $ff                                           ;; 06:7848 $ff
 
 map0a_room01_07_tiles:
@@ -4164,7 +4164,7 @@ map0a_room01_07_tiles:
     db   $ff, $ff                                      ;; 06:7879 ??
 
 map0a_room02_07_script:
-    dw   $03f7                                         ;; 06:787b $f7 $03
+    SCRIPT_IDX script_03f7                             ;; 06:787b $f7 $03
     db   $ff                                           ;; 06:787d $ff
 
 map0a_room02_07_tiles:
@@ -4211,7 +4211,7 @@ map0a_room02_07_tiles:
     db   $ff, $ff                                      ;; 06:78d0 ??
 
 map0a_room03_07_script:
-    dw   $003d                                         ;; 06:78d2 $3d $00
+    SCRIPT_IDX script_003d                             ;; 06:78d2 $3d $00
     db   $ff                                           ;; 06:78d4 $ff
 
 map0a_room03_07_tiles:
@@ -4245,7 +4245,7 @@ map0a_room03_07_tiles:
     db   $ff, $ff                                      ;; 06:790d ??
 
 map0a_room04_07_script:
-    dw   $008b                                         ;; 06:790f $8b $00
+    SCRIPT_IDX script_008b                             ;; 06:790f $8b $00
     db   $ff                                           ;; 06:7911 $ff
 
 map0a_room04_07_tiles:
@@ -4285,7 +4285,7 @@ map0a_room04_07_tiles:
     db   $ff, $ff                                      ;; 06:7956 ??
 
 map0a_room05_07_script:
-    dw   $0118                                         ;; 06:7958 $18 $01
+    SCRIPT_IDX script_0118                             ;; 06:7958 $18 $01
     db   $ff                                           ;; 06:795a $ff
 
 map0a_room05_07_tiles:
@@ -4304,7 +4304,7 @@ map0a_room05_07_tiles:
     db   $ff, $ff                                      ;; 06:7975 ??
 
 map0a_room06_07_script:
-    dw   $011b                                         ;; 06:7977 $1b $01
+    SCRIPT_IDX script_011b                             ;; 06:7977 $1b $01
     db   $ff                                           ;; 06:7979 $ff
 
 map0a_room06_07_tiles:
@@ -4401,8 +4401,8 @@ map08_room_tile_template:
     db   $50, $51, $51, $51, $52, $53, $54, $54, $54, $55 ;; 06:7abc ??????????
 
 map08_room00_00_script:
-    dw   $00a0                                         ;; 06:7ac6 $a0 $00
-    SCRIPT_AT_POS 1, 1, $02a0                          ;; 06:7ac8 $11 $a0 $02
+    SCRIPT_IDX script_00a0                             ;; 06:7ac6 $a0 $00
+    SCRIPT_AT_POS 1, 1, script_02a0                    ;; 06:7ac8 $11 $a0 $02
     db   $ff                                           ;; 06:7acb $ff
 
 map08_room00_00_tiles:
@@ -4416,7 +4416,7 @@ map08_room00_00_tiles:
     db   $ff, $ff                                      ;; 06:7adc ??
 
 map08_room01_00_script:
-    dw   $03d0                                         ;; 06:7ade $d0 $03
+    SCRIPT_IDX script_03d0                             ;; 06:7ade $d0 $03
     db   $ff                                           ;; 06:7ae0 $ff
 
 map08_room01_00_tiles:
@@ -4428,7 +4428,7 @@ map08_room01_00_tiles:
     db   $ff, $ff                                      ;; 06:7aed ??
 
 map08_room02_00_script:
-    dw   $00a3                                         ;; 06:7aef $a3 $00
+    SCRIPT_IDX script_00a3                             ;; 06:7aef $a3 $00
     db   $ff                                           ;; 06:7af1 $ff
 
 map08_room02_00_tiles:
@@ -4442,7 +4442,7 @@ map08_room02_00_tiles:
     db   $ff, $ff                                      ;; 06:7b02 ??
 
 map08_room03_00_script:
-    dw   $00a0                                         ;; 06:7b04 $a0 $00
+    SCRIPT_IDX script_00a0                             ;; 06:7b04 $a0 $00
     db   $ff                                           ;; 06:7b06 $ff
 
 map08_room03_00_tiles:
@@ -4456,7 +4456,7 @@ map08_room03_00_tiles:
     db   $ff, $ff                                      ;; 06:7b17 ??
 
 map08_room04_00_script:
-    dw   $00a6                                         ;; 06:7b19 $a6 $00
+    SCRIPT_IDX script_00a6                             ;; 06:7b19 $a6 $00
     db   $ff                                           ;; 06:7b1b $ff
 
 map08_room04_00_tiles:
@@ -4484,7 +4484,7 @@ map08_room06_00_tiles:
     db   $ff, $ff                                      ;; 06:7b3a ??
 
 map08_room00_01_script:
-    dw   $01b8                                         ;; 06:7b3c $b8 $01
+    SCRIPT_IDX script_01b8                             ;; 06:7b3c $b8 $01
     db   $ff                                           ;; 06:7b3e $ff
 
 map08_room00_01_tiles:
@@ -4508,11 +4508,11 @@ map08_room00_01_tiles:
     db   $ff, $ff                                      ;; 06:7b63 ??
 
 map08_room01_01_script:
-    dw   $04ed                                         ;; 06:7b65 $ed $04
-    SCRIPT_AT_POS 5, 2, $0503                          ;; 06:7b67 $52 $03 $05
-    SCRIPT_AT_POS 5, 7, $0503                          ;; 06:7b6a $57 $03 $05
-    SCRIPT_AT_POS 2, 7, $0503                          ;; 06:7b6d $27 $03 $05
-    SCRIPT_AT_POS 2, 2, $0503                          ;; 06:7b70 $22 $03 $05
+    SCRIPT_IDX script_04ed                             ;; 06:7b65 $ed $04
+    SCRIPT_AT_POS 5, 2, script_0503                    ;; 06:7b67 $52 $03 $05
+    SCRIPT_AT_POS 5, 7, script_0503                    ;; 06:7b6a $57 $03 $05
+    SCRIPT_AT_POS 2, 7, script_0503                    ;; 06:7b6d $27 $03 $05
+    SCRIPT_AT_POS 2, 2, script_0503                    ;; 06:7b70 $22 $03 $05
     db   $ff                                           ;; 06:7b73 $ff
 
 map08_room01_01_tiles:
@@ -4524,7 +4524,7 @@ map08_room01_01_tiles:
     db   $ff, $ff                                      ;; 06:7b80 ??
 
 map08_room02_01_script:
-    dw   $00a3                                         ;; 06:7b82 $a3 $00
+    SCRIPT_IDX script_00a3                             ;; 06:7b82 $a3 $00
     db   $ff                                           ;; 06:7b84 $ff
 
 map08_room02_01_tiles:
@@ -4550,7 +4550,7 @@ map08_room03_01_tiles:
     db   $ff, $ff                                      ;; 06:7ba6 ??
 
 map08_room04_01_script:
-    dw   $00a3                                         ;; 06:7ba8 $a3 $00
+    SCRIPT_IDX script_00a3                             ;; 06:7ba8 $a3 $00
     db   $ff                                           ;; 06:7baa $ff
 
 map08_room04_01_tiles:
@@ -4562,8 +4562,8 @@ map08_room04_01_tiles:
     db   $ff, $ff                                      ;; 06:7bb7 ??
 
 map08_room05_01_script:
-    dw   $008b                                         ;; 06:7bb9 $8b $00
-    SCRIPT_AT_POS 1, 8, $035e                          ;; 06:7bbb $18 $5e $03
+    SCRIPT_IDX script_008b                             ;; 06:7bb9 $8b $00
+    SCRIPT_AT_POS 1, 8, script_035e                    ;; 06:7bbb $18 $5e $03
     db   $ff                                           ;; 06:7bbe $ff
 
 map08_room05_01_tiles:
@@ -4588,7 +4588,7 @@ map08_room06_01_tiles:
     db   $ff, $ff                                      ;; 06:7bde ??
 
 map08_room00_02_script:
-    dw   $03d0                                         ;; 06:7be0 $d0 $03
+    SCRIPT_IDX script_03d0                             ;; 06:7be0 $d0 $03
     db   $ff                                           ;; 06:7be2 $ff
 
 map08_room00_02_tiles:
@@ -4600,7 +4600,7 @@ map08_room00_02_tiles:
     db   $ff, $ff                                      ;; 06:7bef ??
 
 map08_room01_02_script:
-    dw   $00a3                                         ;; 06:7bf1 $a3 $00
+    SCRIPT_IDX script_00a3                             ;; 06:7bf1 $a3 $00
     db   $ff                                           ;; 06:7bf3 $ff
 
 map08_room01_02_tiles:
@@ -4612,7 +4612,7 @@ map08_room01_02_tiles:
     db   $ff, $ff                                      ;; 06:7c00 ??
 
 map08_room02_02_script:
-    dw   $0199                                         ;; 06:7c02 $99 $01
+    SCRIPT_IDX script_0199                             ;; 06:7c02 $99 $01
     db   $ff                                           ;; 06:7c04 $ff
 
 map08_room02_02_tiles:
@@ -4634,7 +4634,7 @@ map08_room03_02_tiles:
     db   $ff, $ff                                      ;; 06:7c1e ??
 
 map08_room04_02_script:
-    dw   $0094                                         ;; 06:7c20 $94 $00
+    SCRIPT_IDX script_0094                             ;; 06:7c20 $94 $00
     db   $ff                                           ;; 06:7c22 $ff
 
 map08_room04_02_tiles:
@@ -4650,7 +4650,7 @@ map08_room04_02_tiles:
     db   $ff, $ff                                      ;; 06:7c37 ??
 
 map08_room05_02_script:
-    dw   $008b                                         ;; 06:7c39 $8b $00
+    SCRIPT_IDX script_008b                             ;; 06:7c39 $8b $00
     db   $ff                                           ;; 06:7c3b $ff
 
 map08_room05_02_tiles:
@@ -4663,8 +4663,8 @@ map08_room05_02_tiles:
     db   $ff, $ff                                      ;; 06:7c4a ??
 
 map08_room06_02_script:
-    dw   $008b                                         ;; 06:7c4c $8b $00
-    SCRIPT_AT_POS 1, 8, $02fe                          ;; 06:7c4e $18 $fe $02
+    SCRIPT_IDX script_008b                             ;; 06:7c4c $8b $00
+    SCRIPT_AT_POS 1, 8, script_02fe                    ;; 06:7c4e $18 $fe $02
     db   $ff                                           ;; 06:7c51 $ff
 
 map08_room06_02_tiles:
@@ -4681,8 +4681,8 @@ map08_room06_02_tiles:
     db   $ff, $ff                                      ;; 06:7c68 ??
 
 map08_room00_03_script:
-    dw   $03ee                                         ;; 06:7c6a $ee $03
-    SCRIPT_AT_POS 4, 4, $0356                          ;; 06:7c6c $44 $56 $03
+    SCRIPT_IDX script_03ee                             ;; 06:7c6a $ee $03
+    SCRIPT_AT_POS 4, 4, script_0356                    ;; 06:7c6c $44 $56 $03
     db   $ff                                           ;; 06:7c6f $ff
 
 map08_room00_03_tiles:
@@ -4697,9 +4697,9 @@ map08_room00_03_tiles:
     db   $ff, $ff                                      ;; 06:7c82 ??
 
 map08_room01_03_script:
-    dw   $007f                                         ;; 06:7c84 $7f $00
-    SCRIPT_AT_POS 2, 1, $0502                          ;; 06:7c86 $21 $02 $05
-    SCRIPT_AT_POS 5, 1, $0501                          ;; 06:7c89 $51 $01 $05
+    SCRIPT_IDX script_007f                             ;; 06:7c84 $7f $00
+    SCRIPT_AT_POS 2, 1, script_0502                    ;; 06:7c86 $21 $02 $05
+    SCRIPT_AT_POS 5, 1, script_0501                    ;; 06:7c89 $51 $01 $05
     db   $ff                                           ;; 06:7c8c $ff
 
 map08_room01_03_tiles:
@@ -4718,7 +4718,7 @@ map08_room01_03_tiles:
     db   $ff, $ff                                      ;; 06:7ca7 ??
 
 map08_room02_03_script:
-    dw   $0425                                         ;; 06:7ca9 $25 $04
+    SCRIPT_IDX script_0425                             ;; 06:7ca9 $25 $04
     db   $ff                                           ;; 06:7cab $ff
 
 map08_room02_03_tiles:
@@ -4732,7 +4732,7 @@ map08_room02_03_tiles:
     db   $ff, $ff                                      ;; 06:7cbc ??
 
 map08_room03_03_script:
-    dw   $009a                                         ;; 06:7cbe $9a $00
+    SCRIPT_IDX script_009a                             ;; 06:7cbe $9a $00
     db   $ff                                           ;; 06:7cc0 $ff
 
 map08_room03_03_tiles:
@@ -4743,7 +4743,7 @@ map08_room03_03_tiles:
     db   $ff, $ff                                      ;; 06:7ccb ??
 
 map08_room04_03_script:
-    dw   $03d0                                         ;; 06:7ccd $d0 $03
+    SCRIPT_IDX script_03d0                             ;; 06:7ccd $d0 $03
     db   $ff                                           ;; 06:7ccf $ff
 
 map08_room04_03_tiles:
@@ -4755,7 +4755,7 @@ map08_room04_03_tiles:
     db   $ff, $ff                                      ;; 06:7cdc ??
 
 map08_room05_03_script:
-    dw   $00a3                                         ;; 06:7cde $a3 $00
+    SCRIPT_IDX script_00a3                             ;; 06:7cde $a3 $00
     db   $ff                                           ;; 06:7ce0 $ff
 
 map08_room05_03_tiles:
@@ -4787,8 +4787,8 @@ map08_room05_03_tiles:
     db   $ff, $ff                                      ;; 06:7d15 ??
 
 map08_room06_03_script:
-    dw   $00a3                                         ;; 06:7d17 $a3 $00
-    SCRIPT_AT_POS 3, 5, $0357                          ;; 06:7d19 $35 $57 $03
+    SCRIPT_IDX script_00a3                             ;; 06:7d17 $a3 $00
+    SCRIPT_AT_POS 3, 5, script_0357                    ;; 06:7d19 $35 $57 $03
     db   $ff                                           ;; 06:7d1c $ff
 
 map08_room06_03_tiles:
@@ -4803,7 +4803,7 @@ map08_room06_03_tiles:
     db   $ff, $ff                                      ;; 06:7d2f ??
 
 map08_room00_04_script:
-    dw   $0097                                         ;; 06:7d31 $97 $00
+    SCRIPT_IDX script_0097                             ;; 06:7d31 $97 $00
     db   $ff                                           ;; 06:7d33 $ff
 
 map08_room00_04_tiles:
@@ -4815,7 +4815,7 @@ map08_room00_04_tiles:
     db   $ff, $ff                                      ;; 06:7d40 ??
 
 map08_room01_04_script:
-    dw   $0097                                         ;; 06:7d42 $97 $00
+    SCRIPT_IDX script_0097                             ;; 06:7d42 $97 $00
     db   $ff                                           ;; 06:7d44 $ff
 
 map08_room01_04_tiles:
@@ -4823,8 +4823,8 @@ map08_room01_04_tiles:
     db   $ff, $ff                                      ;; 06:7d49 ??
 
 map08_room02_04_script:
-    dw   $0085                                         ;; 06:7d4b $85 $00
-    SCRIPT_AT_POS 1, 8, $0359                          ;; 06:7d4d $18 $59 $03
+    SCRIPT_IDX script_0085                             ;; 06:7d4b $85 $00
+    SCRIPT_AT_POS 1, 8, script_0359                    ;; 06:7d4d $18 $59 $03
     db   $ff                                           ;; 06:7d50 $ff
 
 map08_room02_04_tiles:
@@ -4840,7 +4840,7 @@ map08_room02_04_tiles:
     db   $ff, $ff                                      ;; 06:7d65 ??
 
 map08_room03_04_script:
-    dw   $0097                                         ;; 06:7d67 $97 $00
+    SCRIPT_IDX script_0097                             ;; 06:7d67 $97 $00
     db   $ff                                           ;; 06:7d69 $ff
 
 map08_room03_04_tiles:
@@ -4856,7 +4856,7 @@ map08_room03_04_tiles:
     db   $ff, $ff                                      ;; 06:7d7e ??
 
 map08_room04_04_script:
-    dw   $009a                                         ;; 06:7d80 $9a $00
+    SCRIPT_IDX script_009a                             ;; 06:7d80 $9a $00
     db   $ff                                           ;; 06:7d82 $ff
 
 map08_room04_04_tiles:
@@ -4872,8 +4872,8 @@ map08_room04_04_tiles:
     db   $ff, $ff                                      ;; 06:7d97 ??
 
 map08_room05_04_script:
-    dw   $0097                                         ;; 06:7d99 $97 $00
-    SCRIPT_AT_POS 1, 8, $029f                          ;; 06:7d9b $18 $9f $02
+    SCRIPT_IDX script_0097                             ;; 06:7d99 $97 $00
+    SCRIPT_AT_POS 1, 8, script_029f                    ;; 06:7d9b $18 $9f $02
     db   $ff                                           ;; 06:7d9e $ff
 
 map08_room05_04_tiles:
@@ -4887,7 +4887,7 @@ map08_room05_04_tiles:
     db   $ff, $ff                                      ;; 06:7daf ??
 
 map08_room06_04_script:
-    dw   $009a                                         ;; 06:7db1 $9a $00
+    SCRIPT_IDX script_009a                             ;; 06:7db1 $9a $00
     db   $ff                                           ;; 06:7db3 $ff
 
 map08_room06_04_tiles:
@@ -4898,7 +4898,7 @@ map08_room06_04_tiles:
     db   $ff, $ff                                      ;; 06:7dbe ??
 
 map08_room00_05_script:
-    dw   $00d9                                         ;; 06:7dc0 $d9 $00
+    SCRIPT_IDX script_00d9                             ;; 06:7dc0 $d9 $00
     db   $ff                                           ;; 06:7dc2 $ff
 
 map08_room00_05_tiles:
@@ -4909,7 +4909,7 @@ map08_room00_05_tiles:
     db   $ff, $ff                                      ;; 06:7dcd ??
 
 map08_room01_05_script:
-    dw   $008e                                         ;; 06:7dcf $8e $00
+    SCRIPT_IDX script_008e                             ;; 06:7dcf $8e $00
     db   $ff                                           ;; 06:7dd1 $ff
 
 map08_room01_05_tiles:
@@ -4931,8 +4931,8 @@ map08_room01_05_tiles:
     db   $ff, $ff                                      ;; 06:7df2 ??
 
 map08_room02_05_script:
-    dw   $008b                                         ;; 06:7df4 $8b $00
-    SCRIPT_AT_POS 1, 1, $0504                          ;; 06:7df6 $11 $04 $05
+    SCRIPT_IDX script_008b                             ;; 06:7df4 $8b $00
+    SCRIPT_AT_POS 1, 1, script_0504                    ;; 06:7df6 $11 $04 $05
     db   $ff                                           ;; 06:7df9 $ff
 
 map08_room02_05_tiles:
@@ -4970,7 +4970,7 @@ map08_room02_05_tiles:
     db   $ff, $ff                                      ;; 06:7e3a ??
 
 map08_room03_05_script:
-    dw   $009a                                         ;; 06:7e3c $9a $00
+    SCRIPT_IDX script_009a                             ;; 06:7e3c $9a $00
     db   $ff                                           ;; 06:7e3e $ff
 
 map08_room03_05_tiles:
@@ -4984,7 +4984,7 @@ map08_room03_05_tiles:
     db   $ff, $ff                                      ;; 06:7e4f ??
 
 map08_room04_05_script:
-    dw   $008e                                         ;; 06:7e51 $8e $00
+    SCRIPT_IDX script_008e                             ;; 06:7e51 $8e $00
     db   $ff                                           ;; 06:7e53 $ff
 
 map08_room04_05_tiles:
@@ -5000,7 +5000,7 @@ map08_room04_05_tiles:
     db   $ff, $ff                                      ;; 06:7e68 ??
 
 map08_room05_05_script:
-    dw   $0139                                         ;; 06:7e6a $39 $01
+    SCRIPT_IDX script_0139                             ;; 06:7e6a $39 $01
     db   $ff                                           ;; 06:7e6c $ff
 
 map08_room05_05_tiles:
@@ -5018,7 +5018,7 @@ map08_room05_05_tiles:
     db   $ff, $ff                                      ;; 06:7e85 ??
 
 map08_room06_05_script:
-    dw   $0097                                         ;; 06:7e87 $97 $00
+    SCRIPT_IDX script_0097                             ;; 06:7e87 $97 $00
     db   $ff                                           ;; 06:7e89 $ff
 
 map08_room06_05_tiles:
@@ -5026,7 +5026,7 @@ map08_room06_05_tiles:
     db   $ff, $ff                                      ;; 06:7e8e ??
 
 map08_room00_06_script:
-    dw   $03e5                                         ;; 06:7e90 $e5 $03
+    SCRIPT_IDX script_03e5                             ;; 06:7e90 $e5 $03
     db   $ff                                           ;; 06:7e92 $ff
 
 map08_room00_06_tiles:
@@ -5042,7 +5042,7 @@ map08_room00_06_tiles:
     db   $ff, $ff                                      ;; 06:7ea7 ??
 
 map08_room01_06_script:
-    dw   $009a                                         ;; 06:7ea9 $9a $00
+    SCRIPT_IDX script_009a                             ;; 06:7ea9 $9a $00
     db   $ff                                           ;; 06:7eab $ff
 
 map08_room01_06_tiles:
@@ -5054,8 +5054,8 @@ map08_room01_06_tiles:
     db   $ff, $ff                                      ;; 06:7eb8 ??
 
 map08_room02_06_script:
-    dw   $03fd                                         ;; 06:7eba $fd $03
-    SCRIPT_AT_POS 1, 1, $0504                          ;; 06:7ebc $11 $04 $05
+    SCRIPT_IDX script_03fd                             ;; 06:7eba $fd $03
+    SCRIPT_AT_POS 1, 1, script_0504                    ;; 06:7ebc $11 $04 $05
     db   $ff                                           ;; 06:7ebf $ff
 
 map08_room02_06_tiles:
@@ -5093,7 +5093,7 @@ map08_room02_06_tiles:
     db   $ff, $ff                                      ;; 06:7f00 ??
 
 map08_room03_06_script:
-    dw   $0097                                         ;; 06:7f02 $97 $00
+    SCRIPT_IDX script_0097                             ;; 06:7f02 $97 $00
     db   $ff                                           ;; 06:7f04 $ff
 
 map08_room03_06_tiles:
@@ -5109,7 +5109,7 @@ map08_room03_06_tiles:
     db   $ff, $ff                                      ;; 06:7f19 ??
 
 map08_room04_06_script:
-    dw   $009a                                         ;; 06:7f1b $9a $00
+    SCRIPT_IDX script_009a                             ;; 06:7f1b $9a $00
     db   $ff                                           ;; 06:7f1d $ff
 
 map08_room04_06_tiles:
@@ -5121,7 +5121,7 @@ map08_room04_06_tiles:
     db   $ff, $ff                                      ;; 06:7f2a ??
 
 map08_room05_06_script:
-    dw   $0097                                         ;; 06:7f2c $97 $00
+    SCRIPT_IDX script_0097                             ;; 06:7f2c $97 $00
     db   $ff                                           ;; 06:7f2e $ff
 
 map08_room05_06_tiles:
@@ -5133,7 +5133,7 @@ map08_room05_06_tiles:
     db   $ff, $ff                                      ;; 06:7f3b ??
 
 map08_room06_06_script:
-    dw   $007f                                         ;; 06:7f3d $7f $00
+    SCRIPT_IDX script_007f                             ;; 06:7f3d $7f $00
     db   $ff                                           ;; 06:7f3f $ff
 
 map08_room06_06_tiles:
@@ -5161,7 +5161,7 @@ map08_room00_07_tiles:
     db   $ff, $ff                                      ;; 06:7f65 ??
 
 map08_room01_07_script:
-    dw   $0097                                         ;; 06:7f67 $97 $00
+    SCRIPT_IDX script_0097                             ;; 06:7f67 $97 $00
     db   $ff                                           ;; 06:7f69 $ff
 
 map08_room01_07_tiles:
@@ -5174,7 +5174,7 @@ map08_room01_07_tiles:
     db   $ff, $ff                                      ;; 06:7f78 ??
 
 map08_room02_07_script:
-    dw   $0199                                         ;; 06:7f7a $99 $01
+    SCRIPT_IDX script_0199                             ;; 06:7f7a $99 $01
     db   $ff                                           ;; 06:7f7c $ff
 
 map08_room02_07_tiles:
@@ -5186,7 +5186,7 @@ map08_room02_07_tiles:
     db   $ff, $ff                                      ;; 06:7f89 ??
 
 map08_room03_07_script:
-    dw   $009a                                         ;; 06:7f8b $9a $00
+    SCRIPT_IDX script_009a                             ;; 06:7f8b $9a $00
     db   $ff                                           ;; 06:7f8d $ff
 
 map08_room03_07_tiles:
@@ -5210,8 +5210,8 @@ map08_room03_07_tiles:
     db   $ff, $ff                                      ;; 06:7fb2 ??
 
 map08_room04_07_script:
-    dw   $008b                                         ;; 06:7fb4 $8b $00
-    SCRIPT_AT_POS 1, 8, $034a                          ;; 06:7fb6 $18 $4a $03
+    SCRIPT_IDX script_008b                             ;; 06:7fb4 $8b $00
+    SCRIPT_AT_POS 1, 8, script_034a                    ;; 06:7fb6 $18 $4a $03
     db   $ff                                           ;; 06:7fb9 $ff
 
 map08_room04_07_tiles:
@@ -5226,8 +5226,8 @@ map08_room04_07_tiles:
     db   $ff, $ff                                      ;; 06:7fcc ??
 
 map08_room05_07_script:
-    dw   $008e                                         ;; 06:7fce $8e $00
-    SCRIPT_AT_POS 1, 8, $035d                          ;; 06:7fd0 $18 $5d $03
+    SCRIPT_IDX script_008e                             ;; 06:7fce $8e $00
+    SCRIPT_AT_POS 1, 8, script_035d                    ;; 06:7fd0 $18 $5d $03
     db   $ff                                           ;; 06:7fd3 $ff
 
 map08_room05_07_tiles:
