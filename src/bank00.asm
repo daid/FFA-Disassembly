@@ -2220,15 +2220,44 @@ call_00_0d08:
     ret                                                ;; 00:0d1a $c9
 
 scriptOpCode8B:
-    db   $fa, $99, $d4, $fe, $00, $cc, $51, $0d        ;; 00:0d1b ????????
-    db   $47, $fa, $9a, $d4, $3d, $ea, $9a, $d4        ;; 00:0d23 ????????
-    db   $c0, $e5, $0e, $04, $c5, $cd, $99, $0c        ;; 00:0d2b ????????
-    db   $57, $c1, $fa, $98, $d4, $5f, $78, $06        ;; 00:0d33 ????????
-    db   $00, $cd, $27, $2c, $e1, $ea, $99, $d4        ;; 00:0d3b ????????
-    db   $fe, $00, $28, $06, $3e, $08, $ea, $9a        ;; 00:0d43 ????????
-    db   $d4, $c9, $cd, $27, $37, $c9, $2a, $d6        ;; 00:0d4b ????????
-    db   $20, $ea, $98, $d4, $3e, $01, $ea, $9a        ;; 00:0d53 ????????
-    db   $d4, $3e, $00, $c9                            ;; 00:0d5b ????
+    ld   A, [wD499]                                    ;; 00:0d1b $fa $99 $d4
+    cp   A, $00                                        ;; 00:0d1e $fe $00
+    call Z, call_00_0d51                               ;; 00:0d20 $cc $51 $0d
+    ld   B, A                                          ;; 00:0d23 $47
+    ld   A, [wD49A]                                    ;; 00:0d24 $fa $9a $d4
+    dec  A                                             ;; 00:0d27 $3d
+    ld   [wD49A], A                                    ;; 00:0d28 $ea $9a $d4
+    ret  NZ                                            ;; 00:0d2b $c0
+    push HL                                            ;; 00:0d2c $e5
+    ld   C, $04                                        ;; 00:0d2d $0e $04
+    push BC                                            ;; 00:0d2f $c5
+    call getObjectDirection                            ;; 00:0d30 $cd $99 $0c
+    ld   D, A                                          ;; 00:0d33 $57
+    pop  BC                                            ;; 00:0d34 $c1
+    ld   A, [wD498]                                    ;; 00:0d35 $fa $98 $d4
+    ld   E, A                                          ;; 00:0d38 $5f
+    ld   A, B                                          ;; 00:0d39 $78
+    ld   B, $00                                        ;; 00:0d3a $06 $00
+    call call_00_2c27                                  ;; 00:0d3c $cd $27 $2c
+    pop  HL                                            ;; 00:0d3f $e1
+    ld   [wD499], A                                    ;; 00:0d40 $ea $99 $d4
+    cp   A, $00                                        ;; 00:0d43 $fe $00
+    jr   Z, .jr_00_0d4d                                ;; 00:0d45 $28 $06
+    ld   A, $08                                        ;; 00:0d47 $3e $08
+    ld   [wD49A], A                                    ;; 00:0d49 $ea $9a $d4
+    ret                                                ;; 00:0d4c $c9
+.jr_00_0d4d:
+    call getNextScriptInstruction                      ;; 00:0d4d $cd $27 $37
+    ret                                                ;; 00:0d50 $c9
+
+call_00_0d51:
+    ld   A, [HL+]                                      ;; 00:0d51 $2a
+    sub  A, $20                                        ;; 00:0d52 $d6 $20
+    ld   [wD498], A                                    ;; 00:0d54 $ea $98 $d4
+    ld   A, $01                                        ;; 00:0d57 $3e $01
+    ld   [wD49A], A                                    ;; 00:0d59 $ea $9a $d4
+    ld   A, $00                                        ;; 00:0d5c $3e $00
+    ret                                                ;; 00:0d5e $c9
 
 scriptOpCodeA9:
     push HL                                            ;; 00:0d5f $e5
@@ -2259,12 +2288,26 @@ scriptOpCodeAB:
     ret                                                ;; 00:0d8b $c9
 
 scriptOpCodeB6:
-    db   $e5, $cd, $95, $0d, $e1, $cd, $27, $37        ;; 00:0d8c ????????
-    db   $c9, $f5, $3e, $16, $c3, $d7, $1e             ;; 00:0d94 ???????
+    push HL                                            ;; 00:0d8c $e5
+    call call_00_0d95                                  ;; 00:0d8d $cd $95 $0d
+    pop  HL                                            ;; 00:0d90 $e1
+    call getNextScriptInstruction                      ;; 00:0d91 $cd $27 $37
+    ret                                                ;; 00:0d94 $c9
+
+call_00_0d95:
+    push AF                                            ;; 00:0d95 $f5
+    jp_to_bank 01, call_01_4059                        ;; 00:0d96 $3e $16 $c3 $d7 $1e
 
 scriptOpCodeB7:
-    db   $e5, $cd, $a4, $0d, $e1, $cd, $27, $37        ;; 00:0d9b ????????
-    db   $c9, $f5, $3e, $17, $c3, $d7, $1e             ;; 00:0da3 ???????
+    push HL                                            ;; 00:0d9b $e5
+    call call_00_0da4                                  ;; 00:0d9c $cd $a4 $0d
+    pop  HL                                            ;; 00:0d9f $e1
+    call getNextScriptInstruction                      ;; 00:0da0 $cd $27 $37
+    ret                                                ;; 00:0da3 $c9
+
+call_00_0da4:
+    push AF                                            ;; 00:0da4 $f5
+    jp_to_bank 01, call_01_40a0                        ;; 00:0da5 $3e $17 $c3 $d7 $1e
 
 call_00_0daa:
     push AF                                            ;; 00:0daa $f5
@@ -2408,10 +2451,12 @@ scriptOpCodeEC:
     ret                                                ;; 00:0e76 $c9
 
 scriptOpCodeED:
-    db   $cd, $f9, $24, $c9                            ;; 00:0e77 ????
+    call call_00_24f9                                  ;; 00:0e77 $cd $f9 $24
+    ret                                                ;; 00:0e7a $c9
 
 scriptOpCodeEE:
-    db   $cd, $1f, $25, $c9                            ;; 00:0e7b ????
+    call call_00_251f                                  ;; 00:0e7b $cd $1f $25
+    ret                                                ;; 00:0e7e $c9
 
 scriptOpCodeEF:
     ld   A, [HL+]                                      ;; 00:0e7f $2a
@@ -2425,16 +2470,38 @@ scriptOpCodeEF:
     ret                                                ;; 00:0e8b $c9
 
 scriptOpCodeFB:
-    db   $fa, $a6, $c0, $4f, $fa, $99, $d4, $e6        ;; 00:0e8c ????????
-    db   $07, $d6, $02, $fe, $04, $30, $04, $0c        ;; 00:0e94 ????????
-    db   $0c, $18, $02, $0d, $0d, $79, $ea, $a6        ;; 00:0e9c ????????
-    db   $c0, $fa, $99, $d4, $3c, $e6, $3f, $ea        ;; 00:0ea4 ????????
-    db   $99, $d4, $cc, $27, $37, $c9                  ;; 00:0eac ??????
+    ld   A, [wVideoSCX]                                ;; 00:0e8c $fa $a6 $c0
+    ld   C, A                                          ;; 00:0e8f $4f
+    ld   A, [wD499]                                    ;; 00:0e90 $fa $99 $d4
+    and  A, $07                                        ;; 00:0e93 $e6 $07
+    sub  A, $02                                        ;; 00:0e95 $d6 $02
+    cp   A, $04                                        ;; 00:0e97 $fe $04
+    jr   NC, .jr_00_0e9f                               ;; 00:0e99 $30 $04
+    inc  C                                             ;; 00:0e9b $0c
+    inc  C                                             ;; 00:0e9c $0c
+    jr   .jr_00_0ea1                                   ;; 00:0e9d $18 $02
+.jr_00_0e9f:
+    dec  C                                             ;; 00:0e9f $0d
+    dec  C                                             ;; 00:0ea0 $0d
+.jr_00_0ea1:
+    ld   A, C                                          ;; 00:0ea1 $79
+    ld   [wVideoSCX], A                                ;; 00:0ea2 $ea $a6 $c0
+    ld   A, [wD499]                                    ;; 00:0ea5 $fa $99 $d4
+    inc  A                                             ;; 00:0ea8 $3c
+    and  A, $3f                                        ;; 00:0ea9 $e6 $3f
+    ld   [wD499], A                                    ;; 00:0eab $ea $99 $d4
+    call Z, getNextScriptInstruction                   ;; 00:0eae $cc $27 $37
+    ret                                                ;; 00:0eb1 $c9
 
 scriptOpCodeBA:
-    db   $54, $5d, $fa, $99, $d4, $21, $ca, $0e        ;; 00:0eb2 ????????
-    db   $cd, $70, $2b, $c9, $00, $10, $10, $00        ;; 00:0eba ????????
-    db   $10, $10, $00, $10, $10, $00, $10, $10        ;; 00:0ec2 ????????
+    ld   D, H                                          ;; 00:0eb2 $54
+    ld   E, L                                          ;; 00:0eb3 $5d
+    ld   A, [wD499]                                    ;; 00:0eb4 $fa $99 $d4
+    ld   HL, $eca                                      ;; 00:0eb7 $21 $ca $0e
+    call callJumptable                                 ;; 00:0eba $cd $70 $2b
+    ret                                                ;; 00:0ebd $c9
+    db   $00, $10, $10, $00, $10, $10, $00, $10        ;; 00:0ebe ????????
+    db   $10, $00, $10, $10                            ;; 00:0ec6 ????
 ;@jumptable amount=2
     dw   call_00_0ece                                  ;; 00:0eca ??
     dw   call_00_0eef                                  ;; 00:0ecc ??
@@ -2487,8 +2554,12 @@ scriptOpCode9C:
     ret                                                ;; 00:0f13 $c9
 
 scriptOpCode9D:
-    db   $2a, $e5, $cd, $95, $28, $e1, $cd, $27        ;; 00:0f14 ????????
-    db   $37, $c9                                      ;; 00:0f1c ??
+    ld   A, [HL+]                                      ;; 00:0f14 $2a
+    push HL                                            ;; 00:0f15 $e5
+    call call_00_2895                                  ;; 00:0f16 $cd $95 $28
+    pop  HL                                            ;; 00:0f19 $e1
+    call getNextScriptInstruction                      ;; 00:0f1a $cd $27 $37
+    ret                                                ;; 00:0f1d $c9
 
 scriptOpCodeB0:
     ld   A, [HL+]                                      ;; 00:0f1e $2a
@@ -2545,25 +2616,50 @@ scriptOpCodeE8:
     ret                                                ;; 00:0f70 $c9
 
 scriptOpCodeE9:
-    db   $e5, $06, $00, $3e, $84, $cd, $32, $02        ;; 00:0f71 ????????
-    db   $16, $04, $3e, $08, $cd, $9e, $04, $e1        ;; 00:0f79 ????????
-    db   $fe, $00, $c0, $cd, $27, $37, $c9             ;; 00:0f81 ???????
+    push HL                                            ;; 00:0f71 $e5
+    ld   B, $00                                        ;; 00:0f72 $06 $00
+    ld   A, $84                                        ;; 00:0f74 $3e $84
+    call call_00_0232                                  ;; 00:0f76 $cd $32 $02
+    ld   D, $04                                        ;; 00:0f79 $16 $04
+    ld   A, $08                                        ;; 00:0f7b $3e $08
+    call call_00_049e                                  ;; 00:0f7d $cd $9e $04
+    pop  HL                                            ;; 00:0f80 $e1
+    cp   A, $00                                        ;; 00:0f81 $fe $00
+    ret  NZ                                            ;; 00:0f83 $c0
+    call getNextScriptInstruction                      ;; 00:0f84 $cd $27 $37
+    ret                                                ;; 00:0f87 $c9
 
 scriptOpCodeE4:
-    db   $e5, $3e, $01, $cd, $5b, $23, $e1, $cd        ;; 00:0f88 ????????
-    db   $27, $37, $c9                                 ;; 00:0f90 ???
+    push HL                                            ;; 00:0f88 $e5
+    ld   A, $01                                        ;; 00:0f89 $3e $01
+    call call_00_235b                                  ;; 00:0f8b $cd $5b $23
+    pop  HL                                            ;; 00:0f8e $e1
+    call getNextScriptInstruction                      ;; 00:0f8f $cd $27 $37
+    ret                                                ;; 00:0f92 $c9
 
 scriptOpCodeE5:
-    db   $e5, $3e, $01, $cd, $fe, $22, $e1, $cd        ;; 00:0f93 ????????
-    db   $27, $37, $c9                                 ;; 00:0f9b ???
+    push HL                                            ;; 00:0f93 $e5
+    ld   A, $01                                        ;; 00:0f94 $3e $01
+    call call_00_22fe                                  ;; 00:0f96 $cd $fe $22
+    pop  HL                                            ;; 00:0f99 $e1
+    call getNextScriptInstruction                      ;; 00:0f9a $cd $27 $37
+    ret                                                ;; 00:0f9d $c9
 
 scriptOpCodeE6:
-    db   $e5, $3e, $02, $cd, $5b, $23, $e1, $cd        ;; 00:0f9e ????????
-    db   $27, $37, $c9                                 ;; 00:0fa6 ???
+    push HL                                            ;; 00:0f9e $e5
+    ld   A, $02                                        ;; 00:0f9f $3e $02
+    call call_00_235b                                  ;; 00:0fa1 $cd $5b $23
+    pop  HL                                            ;; 00:0fa4 $e1
+    call getNextScriptInstruction                      ;; 00:0fa5 $cd $27 $37
+    ret                                                ;; 00:0fa8 $c9
 
 scriptOpCodeE7:
-    db   $e5, $3e, $02, $cd, $fe, $22, $e1, $cd        ;; 00:0fa9 ????????
-    db   $27, $37, $c9                                 ;; 00:0fb1 ???
+    push HL                                            ;; 00:0fa9 $e5
+    ld   A, $02                                        ;; 00:0faa $3e $02
+    call call_00_22fe                                  ;; 00:0fac $cd $fe $22
+    pop  HL                                            ;; 00:0faf $e1
+    call getNextScriptInstruction                      ;; 00:0fb0 $cd $27 $37
+    ret                                                ;; 00:0fb3 $c9
 
 scriptOpCodeE0:
     push HL                                            ;; 00:0fb4 $e5
@@ -2574,16 +2670,28 @@ scriptOpCodeE0:
     ret                                                ;; 00:0fbe $c9
 
 scriptOpCodeE1:
-    db   $e5, $3e, $04, $cd, $fe, $22, $e1, $cd        ;; 00:0fbf ????????
-    db   $27, $37, $c9                                 ;; 00:0fc7 ???
+    push HL                                            ;; 00:0fbf $e5
+    ld   A, $04                                        ;; 00:0fc0 $3e $04
+    call call_00_22fe                                  ;; 00:0fc2 $cd $fe $22
+    pop  HL                                            ;; 00:0fc5 $e1
+    call getNextScriptInstruction                      ;; 00:0fc6 $cd $27 $37
+    ret                                                ;; 00:0fc9 $c9
 
 scriptOpCodeE2:
-    db   $e5, $3e, $08, $cd, $5b, $23, $e1, $cd        ;; 00:0fca ????????
-    db   $27, $37, $c9                                 ;; 00:0fd2 ???
+    push HL                                            ;; 00:0fca $e5
+    ld   A, $08                                        ;; 00:0fcb $3e $08
+    call call_00_235b                                  ;; 00:0fcd $cd $5b $23
+    pop  HL                                            ;; 00:0fd0 $e1
+    call getNextScriptInstruction                      ;; 00:0fd1 $cd $27 $37
+    ret                                                ;; 00:0fd4 $c9
 
 scriptOpCodeE3:
-    db   $e5, $3e, $08, $cd, $fe, $22, $e1, $cd        ;; 00:0fd5 ????????
-    db   $27, $37, $c9                                 ;; 00:0fdd ???
+    push HL                                            ;; 00:0fd5 $e5
+    ld   A, $08                                        ;; 00:0fd6 $3e $08
+    call call_00_22fe                                  ;; 00:0fd8 $cd $fe $22
+    pop  HL                                            ;; 00:0fdb $e1
+    call getNextScriptInstruction                      ;; 00:0fdc $cd $27 $37
+    ret                                                ;; 00:0fdf $c9
 
 scriptOpCodeBF:
     ld   A, [wD499]                                    ;; 00:0fe0 $fa $99 $d4
@@ -2658,13 +2766,36 @@ scriptOpCodeBD:
     db   $40, $00, $40, $00                            ;; 00:10a3 ????
 
 scriptOpCodeBE:
-    db   $e5, $fa, $99, $d4, $87, $5f, $fa, $9a        ;; 00:10a7 ????????
-    db   $d4, $e6, $01, $83, $5f, $16, $00, $21        ;; 00:10af ????????
-    db   $7b, $10, $19, $4e, $fa, $a0, $d3, $fe        ;; 00:10b7 ????????
-    db   $7e, $28, $06, $79, $ea, $a3, $d3, $18        ;; 00:10bf ????????
-    db   $04, $79, $ea, $aa, $c0, $21, $91, $10        ;; 00:10c7 ????????
-    db   $19, $7e, $ea, $ab, $c0, $ea, $ac, $c0        ;; 00:10cf ????????
-    db   $e1, $cd, $42, $11, $c9                       ;; 00:10d7 ?????
+    push HL                                            ;; 00:10a7 $e5
+    ld   A, [wD499]                                    ;; 00:10a8 $fa $99 $d4
+    add  A, A                                          ;; 00:10ab $87
+    ld   E, A                                          ;; 00:10ac $5f
+    ld   A, [wD49A]                                    ;; 00:10ad $fa $9a $d4
+    and  A, $01                                        ;; 00:10b0 $e6 $01
+    add  A, E                                          ;; 00:10b2 $83
+    ld   E, A                                          ;; 00:10b3 $5f
+    ld   D, $00                                        ;; 00:10b4 $16 $00
+    ld   HL, $107b                                     ;; 00:10b6 $21 $7b $10
+    add  HL, DE                                        ;; 00:10b9 $19
+    ld   C, [HL]                                       ;; 00:10ba $4e
+    ld   A, [wD3A0]                                    ;; 00:10bb $fa $a0 $d3
+    cp   A, $7e                                        ;; 00:10be $fe $7e
+    jr   Z, .jr_00_10c8                                ;; 00:10c0 $28 $06
+    ld   A, C                                          ;; 00:10c2 $79
+    ld   [wD3A3], A                                    ;; 00:10c3 $ea $a3 $d3
+    jr   .jr_00_10cc                                   ;; 00:10c6 $18 $04
+.jr_00_10c8:
+    ld   A, C                                          ;; 00:10c8 $79
+    ld   [wVideoBGP], A                                ;; 00:10c9 $ea $aa $c0
+.jr_00_10cc:
+    ld   HL, $1091                                     ;; 00:10cc $21 $91 $10
+    add  HL, DE                                        ;; 00:10cf $19
+    ld   A, [HL]                                       ;; 00:10d0 $7e
+    ld   [wVideoOBP0], A                               ;; 00:10d1 $ea $ab $c0
+    ld   [wVideoOBP1], A                               ;; 00:10d4 $ea $ac $c0
+    pop  HL                                            ;; 00:10d7 $e1
+    call call_00_1142                                  ;; 00:10d8 $cd $42 $11
+    ret                                                ;; 00:10db $c9
 
 scriptOpCodeBC:
     push HL                                            ;; 00:10dc $e5
@@ -2759,12 +2890,22 @@ call_00_116e:
     ret                                                ;; 00:1177 $c9
 
 scriptOpCodeB8:
-    db   $e5, $21, $f1, $c3, $cb, $c6, $cd, $f4        ;; 00:1178 ????????
-    db   $01, $e1, $cd, $27, $37, $c9                  ;; 00:1180 ??????
+    push HL                                            ;; 00:1178 $e5
+    ld   HL, wC3F1                                     ;; 00:1179 $21 $f1 $c3
+    set  0, [HL]                                       ;; 00:117c $cb $c6
+    call call_00_01f4                                  ;; 00:117e $cd $f4 $01
+    pop  HL                                            ;; 00:1181 $e1
+    call getNextScriptInstruction                      ;; 00:1182 $cd $27 $37
+    ret                                                ;; 00:1185 $c9
 
 scriptOpCodeB9:
-    db   $e5, $21, $f1, $c3, $cb, $86, $cd, $04        ;; 00:1186 ????????
-    db   $02, $e1, $cd, $27, $37, $c9                  ;; 00:118e ??????
+    push HL                                            ;; 00:1186 $e5
+    ld   HL, wC3F1                                     ;; 00:1187 $21 $f1 $c3
+    res  0, [HL]                                       ;; 00:118a $cb $86
+    call call_00_0204                                  ;; 00:118c $cd $04 $02
+    pop  HL                                            ;; 00:118f $e1
+    call getNextScriptInstruction                      ;; 00:1190 $cd $27 $37
+    ret                                                ;; 00:1193 $c9
 
 scriptOpCodeF9:
     ld   A, [HL+]                                      ;; 00:1194 $2a
@@ -2880,10 +3021,32 @@ call_00_120b:
     ld   [wC0A1], A                                    ;; 00:1239 $ea $a1 $c0
     pop  HL                                            ;; 00:123c $e1
     ret                                                ;; 00:123d $c9
-    db   $e5, $c5, $cd, $9b, $28, $c1, $e1, $c0        ;; 00:123e ????????
-    db   $2a, $3c, $87, $87, $87, $5f, $2a, $e5        ;; 00:1246 ????????
-    db   $3c, $3c, $87, $87, $87, $57, $cd, $aa        ;; 00:124e ????????
-    db   $28, $e1, $cd, $27, $37, $c9                  ;; 00:1256 ??????
+
+call_00_123e:
+    push HL                                            ;; 00:123e $e5
+    push BC                                            ;; 00:123f $c5
+    call call_00_289b                                  ;; 00:1240 $cd $9b $28
+    pop  BC                                            ;; 00:1243 $c1
+    pop  HL                                            ;; 00:1244 $e1
+    ret  NZ                                            ;; 00:1245 $c0
+    ld   A, [HL+]                                      ;; 00:1246 $2a
+    inc  A                                             ;; 00:1247 $3c
+    add  A, A                                          ;; 00:1248 $87
+    add  A, A                                          ;; 00:1249 $87
+    add  A, A                                          ;; 00:124a $87
+    ld   E, A                                          ;; 00:124b $5f
+    ld   A, [HL+]                                      ;; 00:124c $2a
+    push HL                                            ;; 00:124d $e5
+    inc  A                                             ;; 00:124e $3c
+    inc  A                                             ;; 00:124f $3c
+    add  A, A                                          ;; 00:1250 $87
+    add  A, A                                          ;; 00:1251 $87
+    add  A, A                                          ;; 00:1252 $87
+    ld   D, A                                          ;; 00:1253 $57
+    call call_00_28aa                                  ;; 00:1254 $cd $aa $28
+    pop  HL                                            ;; 00:1257 $e1
+    call getNextScriptInstruction                      ;; 00:1258 $cd $27 $37
+    ret                                                ;; 00:125b $c9
 
 scriptOpCode10:
     call call_00_28c2                                  ;; 00:125c $cd $c2 $28
@@ -2894,8 +3057,12 @@ scriptOpCode10:
     ret                                                ;; 00:1267 $c9
 
 scriptOpCode11:
-    db   $cd, $c2, $28, $c6, $00, $4f, $3e, $05        ;; 00:1268 ????????
-    db   $cd, $79, $28, $c9                            ;; 00:1270 ????
+    call call_00_28c2                                  ;; 00:1268 $cd $c2 $28
+    add  A, $00                                        ;; 00:126b $c6 $00
+    ld   C, A                                          ;; 00:126d $4f
+    ld   A, $05                                        ;; 00:126e $3e $05
+    call call_00_2879                                  ;; 00:1270 $cd $79 $28
+    ret                                                ;; 00:1273 $c9
 
 scriptOpCode16:
     call call_00_28c2                                  ;; 00:1274 $cd $c2 $28
@@ -2930,28 +3097,50 @@ scriptOpCode15:
     ret                                                ;; 00:12a3 $c9
 
 scriptOpCode18:
-    db   $cd, $c2, $28, $c6, $00, $4f, $cd, $59        ;; 00:12a4 ????????
-    db   $28, $c9                                      ;; 00:12ac ??
+    call call_00_28c2                                  ;; 00:12a4 $cd $c2 $28
+    add  A, $00                                        ;; 00:12a7 $c6 $00
+    ld   C, A                                          ;; 00:12a9 $4f
+    call call_00_2859                                  ;; 00:12aa $cd $59 $28
+    ret                                                ;; 00:12ad $c9
 
 scriptOpCode19:
-    db   $cd, $c2, $28, $c6, $00, $4f, $cd, $3e        ;; 00:12ae ????????
-    db   $12, $c9                                      ;; 00:12b6 ??
+    call call_00_28c2                                  ;; 00:12ae $cd $c2 $28
+    add  A, $00                                        ;; 00:12b1 $c6 $00
+    ld   C, A                                          ;; 00:12b3 $4f
+    call call_00_123e                                  ;; 00:12b4 $cd $3e $12
+    ret                                                ;; 00:12b7 $c9
 
 scriptOpCode1A:
-    db   $cd, $c2, $28, $c6, $00, $4f, $3e, $0e        ;; 00:12b8 ????????
-    db   $cd, $79, $28, $c9                            ;; 00:12c0 ????
+    call call_00_28c2                                  ;; 00:12b8 $cd $c2 $28
+    add  A, $00                                        ;; 00:12bb $c6 $00
+    ld   C, A                                          ;; 00:12bd $4f
+    ld   A, $0e                                        ;; 00:12be $3e $0e
+    call call_00_2879                                  ;; 00:12c0 $cd $79 $28
+    ret                                                ;; 00:12c3 $c9
 
 scriptOpCode1B:
-    db   $cd, $c2, $28, $c6, $00, $4f, $3e, $0f        ;; 00:12c4 ????????
-    db   $cd, $79, $28, $c9                            ;; 00:12cc ????
+    call call_00_28c2                                  ;; 00:12c4 $cd $c2 $28
+    add  A, $00                                        ;; 00:12c7 $c6 $00
+    ld   C, A                                          ;; 00:12c9 $4f
+    ld   A, $0f                                        ;; 00:12ca $3e $0f
+    call call_00_2879                                  ;; 00:12cc $cd $79 $28
+    ret                                                ;; 00:12cf $c9
 
 scriptOpCode20:
-    db   $cd, $c2, $28, $c6, $01, $4f, $3e, $04        ;; 00:12d0 ????????
-    db   $cd, $79, $28, $c9                            ;; 00:12d8 ????
+    call call_00_28c2                                  ;; 00:12d0 $cd $c2 $28
+    add  A, $01                                        ;; 00:12d3 $c6 $01
+    ld   C, A                                          ;; 00:12d5 $4f
+    ld   A, $04                                        ;; 00:12d6 $3e $04
+    call call_00_2879                                  ;; 00:12d8 $cd $79 $28
+    ret                                                ;; 00:12db $c9
 
 scriptOpCode21:
-    db   $cd, $c2, $28, $c6, $01, $4f, $3e, $05        ;; 00:12dc ????????
-    db   $cd, $79, $28, $c9                            ;; 00:12e4 ????
+    call call_00_28c2                                  ;; 00:12dc $cd $c2 $28
+    add  A, $01                                        ;; 00:12df $c6 $01
+    ld   C, A                                          ;; 00:12e1 $4f
+    ld   A, $05                                        ;; 00:12e2 $3e $05
+    call call_00_2879                                  ;; 00:12e4 $cd $79 $28
+    ret                                                ;; 00:12e7 $c9
 
 scriptOpCode26:
     call call_00_28c2                                  ;; 00:12e8 $cd $c2 $28
@@ -2993,216 +3182,417 @@ scriptOpCode28:
     ret                                                ;; 00:1321 $c9
 
 scriptOpCode29:
-    db   $cd, $c2, $28, $c6, $01, $4f, $cd, $3e        ;; 00:1322 ????????
-    db   $12, $c9                                      ;; 00:132a ??
+    call call_00_28c2                                  ;; 00:1322 $cd $c2 $28
+    add  A, $01                                        ;; 00:1325 $c6 $01
+    ld   C, A                                          ;; 00:1327 $4f
+    call call_00_123e                                  ;; 00:1328 $cd $3e $12
+    ret                                                ;; 00:132b $c9
 
 scriptOpCode2A:
-    db   $cd, $c2, $28, $c6, $01, $4f, $3e, $0e        ;; 00:132c ????????
-    db   $cd, $79, $28, $c9                            ;; 00:1334 ????
+    call call_00_28c2                                  ;; 00:132c $cd $c2 $28
+    add  A, $01                                        ;; 00:132f $c6 $01
+    ld   C, A                                          ;; 00:1331 $4f
+    ld   A, $0e                                        ;; 00:1332 $3e $0e
+    call call_00_2879                                  ;; 00:1334 $cd $79 $28
+    ret                                                ;; 00:1337 $c9
 
 scriptOpCode2B:
-    db   $cd, $c2, $28, $c6, $01, $4f, $3e, $0f        ;; 00:1338 ????????
-    db   $cd, $79, $28, $c9                            ;; 00:1340 ????
+    call call_00_28c2                                  ;; 00:1338 $cd $c2 $28
+    add  A, $01                                        ;; 00:133b $c6 $01
+    ld   C, A                                          ;; 00:133d $4f
+    ld   A, $0f                                        ;; 00:133e $3e $0f
+    call call_00_2879                                  ;; 00:1340 $cd $79 $28
+    ret                                                ;; 00:1343 $c9
 
 scriptOpCode30:
-    db   $cd, $c2, $28, $c6, $02, $4f, $3e, $04        ;; 00:1344 ????????
-    db   $cd, $79, $28, $c9                            ;; 00:134c ????
+    call call_00_28c2                                  ;; 00:1344 $cd $c2 $28
+    add  A, $02                                        ;; 00:1347 $c6 $02
+    ld   C, A                                          ;; 00:1349 $4f
+    ld   A, $04                                        ;; 00:134a $3e $04
+    call call_00_2879                                  ;; 00:134c $cd $79 $28
+    ret                                                ;; 00:134f $c9
 
 scriptOpCode31:
-    db   $cd, $c2, $28, $c6, $02, $4f, $3e, $05        ;; 00:1350 ????????
-    db   $cd, $79, $28, $c9                            ;; 00:1358 ????
+    call call_00_28c2                                  ;; 00:1350 $cd $c2 $28
+    add  A, $02                                        ;; 00:1353 $c6 $02
+    ld   C, A                                          ;; 00:1355 $4f
+    ld   A, $05                                        ;; 00:1356 $3e $05
+    call call_00_2879                                  ;; 00:1358 $cd $79 $28
+    ret                                                ;; 00:135b $c9
 
 scriptOpCode36:
-    db   $cd, $c2, $28, $c6, $02, $4f, $3e, $1c        ;; 00:135c ????????
-    db   $cd, $79, $28, $c9                            ;; 00:1364 ????
+    call call_00_28c2                                  ;; 00:135c $cd $c2 $28
+    add  A, $02                                        ;; 00:135f $c6 $02
+    ld   C, A                                          ;; 00:1361 $4f
+    ld   A, $1c                                        ;; 00:1362 $3e $1c
+    call call_00_2879                                  ;; 00:1364 $cd $79 $28
+    ret                                                ;; 00:1367 $c9
 
 scriptOpCode37:
-    db   $cd, $c2, $28, $c6, $02, $4f, $3e, $1d        ;; 00:1368 ????????
-    db   $cd, $79, $28, $c9                            ;; 00:1370 ????
+    call call_00_28c2                                  ;; 00:1368 $cd $c2 $28
+    add  A, $02                                        ;; 00:136b $c6 $02
+    ld   C, A                                          ;; 00:136d $4f
+    ld   A, $1d                                        ;; 00:136e $3e $1d
+    call call_00_2879                                  ;; 00:1370 $cd $79 $28
+    ret                                                ;; 00:1373 $c9
 
 scriptOpCode34:
-    db   $cd, $c2, $28, $c6, $02, $4f, $3e, $1e        ;; 00:1374 ????????
-    db   $cd, $79, $28, $c9                            ;; 00:137c ????
+    call call_00_28c2                                  ;; 00:1374 $cd $c2 $28
+    add  A, $02                                        ;; 00:1377 $c6 $02
+    ld   C, A                                          ;; 00:1379 $4f
+    ld   A, $1e                                        ;; 00:137a $3e $1e
+    call call_00_2879                                  ;; 00:137c $cd $79 $28
+    ret                                                ;; 00:137f $c9
 
 scriptOpCode35:
-    db   $cd, $c2, $28, $c6, $02, $4f, $3e, $1f        ;; 00:1380 ????????
-    db   $cd, $79, $28, $c9                            ;; 00:1388 ????
+    call call_00_28c2                                  ;; 00:1380 $cd $c2 $28
+    add  A, $02                                        ;; 00:1383 $c6 $02
+    ld   C, A                                          ;; 00:1385 $4f
+    ld   A, $1f                                        ;; 00:1386 $3e $1f
+    call call_00_2879                                  ;; 00:1388 $cd $79 $28
+    ret                                                ;; 00:138b $c9
 
 scriptOpCode38:
-    db   $cd, $c2, $28, $c6, $02, $4f, $cd, $59        ;; 00:138c ????????
-    db   $28, $c9                                      ;; 00:1394 ??
+    call call_00_28c2                                  ;; 00:138c $cd $c2 $28
+    add  A, $02                                        ;; 00:138f $c6 $02
+    ld   C, A                                          ;; 00:1391 $4f
+    call call_00_2859                                  ;; 00:1392 $cd $59 $28
+    ret                                                ;; 00:1395 $c9
 
 scriptOpCode39:
-    db   $cd, $c2, $28, $c6, $02, $4f, $cd, $3e        ;; 00:1396 ????????
-    db   $12, $c9                                      ;; 00:139e ??
+    call call_00_28c2                                  ;; 00:1396 $cd $c2 $28
+    add  A, $02                                        ;; 00:1399 $c6 $02
+    ld   C, A                                          ;; 00:139b $4f
+    call call_00_123e                                  ;; 00:139c $cd $3e $12
+    ret                                                ;; 00:139f $c9
 
 scriptOpCode3A:
-    db   $cd, $c2, $28, $c6, $02, $4f, $3e, $0e        ;; 00:13a0 ????????
-    db   $cd, $79, $28, $c9                            ;; 00:13a8 ????
+    call call_00_28c2                                  ;; 00:13a0 $cd $c2 $28
+    add  A, $02                                        ;; 00:13a3 $c6 $02
+    ld   C, A                                          ;; 00:13a5 $4f
+    ld   A, $0e                                        ;; 00:13a6 $3e $0e
+    call call_00_2879                                  ;; 00:13a8 $cd $79 $28
+    ret                                                ;; 00:13ab $c9
 
 scriptOpCode3B:
-    db   $cd, $c2, $28, $c6, $02, $4f, $3e, $0f        ;; 00:13ac ????????
-    db   $cd, $79, $28, $c9                            ;; 00:13b4 ????
+    call call_00_28c2                                  ;; 00:13ac $cd $c2 $28
+    add  A, $02                                        ;; 00:13af $c6 $02
+    ld   C, A                                          ;; 00:13b1 $4f
+    ld   A, $0f                                        ;; 00:13b2 $3e $0f
+    call call_00_2879                                  ;; 00:13b4 $cd $79 $28
+    ret                                                ;; 00:13b7 $c9
 
 scriptOpCode40:
-    db   $cd, $c2, $28, $c6, $03, $4f, $3e, $04        ;; 00:13b8 ????????
-    db   $cd, $79, $28, $c9                            ;; 00:13c0 ????
+    call call_00_28c2                                  ;; 00:13b8 $cd $c2 $28
+    add  A, $03                                        ;; 00:13bb $c6 $03
+    ld   C, A                                          ;; 00:13bd $4f
+    ld   A, $04                                        ;; 00:13be $3e $04
+    call call_00_2879                                  ;; 00:13c0 $cd $79 $28
+    ret                                                ;; 00:13c3 $c9
 
 scriptOpCode41:
-    db   $cd, $c2, $28, $c6, $03, $4f, $3e, $05        ;; 00:13c4 ????????
-    db   $cd, $79, $28, $c9                            ;; 00:13cc ????
+    call call_00_28c2                                  ;; 00:13c4 $cd $c2 $28
+    add  A, $03                                        ;; 00:13c7 $c6 $03
+    ld   C, A                                          ;; 00:13c9 $4f
+    ld   A, $05                                        ;; 00:13ca $3e $05
+    call call_00_2879                                  ;; 00:13cc $cd $79 $28
+    ret                                                ;; 00:13cf $c9
 
 scriptOpCode46:
-    db   $cd, $c2, $28, $c6, $03, $4f, $3e, $1c        ;; 00:13d0 ????????
-    db   $cd, $79, $28, $c9                            ;; 00:13d8 ????
+    call call_00_28c2                                  ;; 00:13d0 $cd $c2 $28
+    add  A, $03                                        ;; 00:13d3 $c6 $03
+    ld   C, A                                          ;; 00:13d5 $4f
+    ld   A, $1c                                        ;; 00:13d6 $3e $1c
+    call call_00_2879                                  ;; 00:13d8 $cd $79 $28
+    ret                                                ;; 00:13db $c9
 
 scriptOpCode47:
-    db   $cd, $c2, $28, $c6, $03, $4f, $3e, $1d        ;; 00:13dc ????????
-    db   $cd, $79, $28, $c9                            ;; 00:13e4 ????
+    call call_00_28c2                                  ;; 00:13dc $cd $c2 $28
+    add  A, $03                                        ;; 00:13df $c6 $03
+    ld   C, A                                          ;; 00:13e1 $4f
+    ld   A, $1d                                        ;; 00:13e2 $3e $1d
+    call call_00_2879                                  ;; 00:13e4 $cd $79 $28
+    ret                                                ;; 00:13e7 $c9
 
 scriptOpCode44:
-    db   $cd, $c2, $28, $c6, $03, $4f, $3e, $1e        ;; 00:13e8 ????????
-    db   $cd, $79, $28, $c9                            ;; 00:13f0 ????
+    call call_00_28c2                                  ;; 00:13e8 $cd $c2 $28
+    add  A, $03                                        ;; 00:13eb $c6 $03
+    ld   C, A                                          ;; 00:13ed $4f
+    ld   A, $1e                                        ;; 00:13ee $3e $1e
+    call call_00_2879                                  ;; 00:13f0 $cd $79 $28
+    ret                                                ;; 00:13f3 $c9
 
 scriptOpCode45:
-    db   $cd, $c2, $28, $c6, $03, $4f, $3e, $1f        ;; 00:13f4 ????????
-    db   $cd, $79, $28, $c9                            ;; 00:13fc ????
+    call call_00_28c2                                  ;; 00:13f4 $cd $c2 $28
+    add  A, $03                                        ;; 00:13f7 $c6 $03
+    ld   C, A                                          ;; 00:13f9 $4f
+    ld   A, $1f                                        ;; 00:13fa $3e $1f
+    call call_00_2879                                  ;; 00:13fc $cd $79 $28
+    ret                                                ;; 00:13ff $c9
 
 scriptOpCode48:
-    db   $cd, $c2, $28, $c6, $03, $4f, $cd, $59        ;; 00:1400 ????????
-    db   $28, $c9                                      ;; 00:1408 ??
+    call call_00_28c2                                  ;; 00:1400 $cd $c2 $28
+    add  A, $03                                        ;; 00:1403 $c6 $03
+    ld   C, A                                          ;; 00:1405 $4f
+    call call_00_2859                                  ;; 00:1406 $cd $59 $28
+    ret                                                ;; 00:1409 $c9
 
 scriptOpCode49:
-    db   $cd, $c2, $28, $c6, $03, $4f, $cd, $3e        ;; 00:140a ????????
-    db   $12, $c9                                      ;; 00:1412 ??
+    call call_00_28c2                                  ;; 00:140a $cd $c2 $28
+    add  A, $03                                        ;; 00:140d $c6 $03
+    ld   C, A                                          ;; 00:140f $4f
+    call call_00_123e                                  ;; 00:1410 $cd $3e $12
+    ret                                                ;; 00:1413 $c9
 
 scriptOpCode4A:
-    db   $cd, $c2, $28, $c6, $03, $4f, $3e, $0e        ;; 00:1414 ????????
-    db   $cd, $79, $28, $c9                            ;; 00:141c ????
+    call call_00_28c2                                  ;; 00:1414 $cd $c2 $28
+    add  A, $03                                        ;; 00:1417 $c6 $03
+    ld   C, A                                          ;; 00:1419 $4f
+    ld   A, $0e                                        ;; 00:141a $3e $0e
+    call call_00_2879                                  ;; 00:141c $cd $79 $28
+    ret                                                ;; 00:141f $c9
 
 scriptOpCode4B:
-    db   $cd, $c2, $28, $c6, $03, $4f, $3e, $0f        ;; 00:1420 ????????
-    db   $cd, $79, $28, $c9                            ;; 00:1428 ????
+    call call_00_28c2                                  ;; 00:1420 $cd $c2 $28
+    add  A, $03                                        ;; 00:1423 $c6 $03
+    ld   C, A                                          ;; 00:1425 $4f
+    ld   A, $0f                                        ;; 00:1426 $3e $0f
+    call call_00_2879                                  ;; 00:1428 $cd $79 $28
+    ret                                                ;; 00:142b $c9
 
 scriptOpCode50:
-    db   $cd, $c2, $28, $c6, $04, $4f, $3e, $04        ;; 00:142c ????????
-    db   $cd, $79, $28, $c9                            ;; 00:1434 ????
+    call call_00_28c2                                  ;; 00:142c $cd $c2 $28
+    add  A, $04                                        ;; 00:142f $c6 $04
+    ld   C, A                                          ;; 00:1431 $4f
+    ld   A, $04                                        ;; 00:1432 $3e $04
+    call call_00_2879                                  ;; 00:1434 $cd $79 $28
+    ret                                                ;; 00:1437 $c9
 
 scriptOpCode51:
-    db   $cd, $c2, $28, $c6, $04, $4f, $3e, $05        ;; 00:1438 ????????
-    db   $cd, $79, $28, $c9                            ;; 00:1440 ????
+    call call_00_28c2                                  ;; 00:1438 $cd $c2 $28
+    add  A, $04                                        ;; 00:143b $c6 $04
+    ld   C, A                                          ;; 00:143d $4f
+    ld   A, $05                                        ;; 00:143e $3e $05
+    call call_00_2879                                  ;; 00:1440 $cd $79 $28
+    ret                                                ;; 00:1443 $c9
 
 scriptOpCode56:
-    db   $cd, $c2, $28, $c6, $04, $4f, $3e, $1c        ;; 00:1444 ????????
-    db   $cd, $79, $28, $c9                            ;; 00:144c ????
+    call call_00_28c2                                  ;; 00:1444 $cd $c2 $28
+    add  A, $04                                        ;; 00:1447 $c6 $04
+    ld   C, A                                          ;; 00:1449 $4f
+    ld   A, $1c                                        ;; 00:144a $3e $1c
+    call call_00_2879                                  ;; 00:144c $cd $79 $28
+    ret                                                ;; 00:144f $c9
 
 scriptOpCode57:
-    db   $cd, $c2, $28, $c6, $04, $4f, $3e, $1d        ;; 00:1450 ????????
-    db   $cd, $79, $28, $c9                            ;; 00:1458 ????
+    call call_00_28c2                                  ;; 00:1450 $cd $c2 $28
+    add  A, $04                                        ;; 00:1453 $c6 $04
+    ld   C, A                                          ;; 00:1455 $4f
+    ld   A, $1d                                        ;; 00:1456 $3e $1d
+    call call_00_2879                                  ;; 00:1458 $cd $79 $28
+    ret                                                ;; 00:145b $c9
 
 scriptOpCode54:
-    db   $cd, $c2, $28, $c6, $04, $4f, $3e, $1e        ;; 00:145c ????????
-    db   $cd, $79, $28, $c9                            ;; 00:1464 ????
+    call call_00_28c2                                  ;; 00:145c $cd $c2 $28
+    add  A, $04                                        ;; 00:145f $c6 $04
+    ld   C, A                                          ;; 00:1461 $4f
+    ld   A, $1e                                        ;; 00:1462 $3e $1e
+    call call_00_2879                                  ;; 00:1464 $cd $79 $28
+    ret                                                ;; 00:1467 $c9
 
 scriptOpCode55:
-    db   $cd, $c2, $28, $c6, $04, $4f, $3e, $1f        ;; 00:1468 ????????
-    db   $cd, $79, $28, $c9                            ;; 00:1470 ????
+    call call_00_28c2                                  ;; 00:1468 $cd $c2 $28
+    add  A, $04                                        ;; 00:146b $c6 $04
+    ld   C, A                                          ;; 00:146d $4f
+    ld   A, $1f                                        ;; 00:146e $3e $1f
+    call call_00_2879                                  ;; 00:1470 $cd $79 $28
+    ret                                                ;; 00:1473 $c9
 
 scriptOpCode58:
-    db   $cd, $c2, $28, $c6, $04, $4f, $cd, $59        ;; 00:1474 ????????
-    db   $28, $c9                                      ;; 00:147c ??
+    call call_00_28c2                                  ;; 00:1474 $cd $c2 $28
+    add  A, $04                                        ;; 00:1477 $c6 $04
+    ld   C, A                                          ;; 00:1479 $4f
+    call call_00_2859                                  ;; 00:147a $cd $59 $28
+    ret                                                ;; 00:147d $c9
 
 scriptOpCode59:
-    db   $cd, $c2, $28, $c6, $04, $4f, $cd, $3e        ;; 00:147e ????????
-    db   $12, $c9                                      ;; 00:1486 ??
+    call call_00_28c2                                  ;; 00:147e $cd $c2 $28
+    add  A, $04                                        ;; 00:1481 $c6 $04
+    ld   C, A                                          ;; 00:1483 $4f
+    call call_00_123e                                  ;; 00:1484 $cd $3e $12
+    ret                                                ;; 00:1487 $c9
 
 scriptOpCode5A:
-    db   $cd, $c2, $28, $c6, $04, $4f, $3e, $0e        ;; 00:1488 ????????
-    db   $cd, $79, $28, $c9                            ;; 00:1490 ????
+    call call_00_28c2                                  ;; 00:1488 $cd $c2 $28
+    add  A, $04                                        ;; 00:148b $c6 $04
+    ld   C, A                                          ;; 00:148d $4f
+    ld   A, $0e                                        ;; 00:148e $3e $0e
+    call call_00_2879                                  ;; 00:1490 $cd $79 $28
+    ret                                                ;; 00:1493 $c9
 
 scriptOpCode5B:
-    db   $cd, $c2, $28, $c6, $04, $4f, $3e, $0f        ;; 00:1494 ????????
-    db   $cd, $79, $28, $c9                            ;; 00:149c ????
+    call call_00_28c2                                  ;; 00:1494 $cd $c2 $28
+    add  A, $04                                        ;; 00:1497 $c6 $04
+    ld   C, A                                          ;; 00:1499 $4f
+    ld   A, $0f                                        ;; 00:149a $3e $0f
+    call call_00_2879                                  ;; 00:149c $cd $79 $28
+    ret                                                ;; 00:149f $c9
 
 scriptOpCode60:
-    db   $cd, $c2, $28, $c6, $05, $4f, $3e, $04        ;; 00:14a0 ????????
-    db   $cd, $79, $28, $c9                            ;; 00:14a8 ????
+    call call_00_28c2                                  ;; 00:14a0 $cd $c2 $28
+    add  A, $05                                        ;; 00:14a3 $c6 $05
+    ld   C, A                                          ;; 00:14a5 $4f
+    ld   A, $04                                        ;; 00:14a6 $3e $04
+    call call_00_2879                                  ;; 00:14a8 $cd $79 $28
+    ret                                                ;; 00:14ab $c9
 
 scriptOpCode61:
-    db   $cd, $c2, $28, $c6, $05, $4f, $3e, $05        ;; 00:14ac ????????
-    db   $cd, $79, $28, $c9                            ;; 00:14b4 ????
+    call call_00_28c2                                  ;; 00:14ac $cd $c2 $28
+    add  A, $05                                        ;; 00:14af $c6 $05
+    ld   C, A                                          ;; 00:14b1 $4f
+    ld   A, $05                                        ;; 00:14b2 $3e $05
+    call call_00_2879                                  ;; 00:14b4 $cd $79 $28
+    ret                                                ;; 00:14b7 $c9
 
 scriptOpCode66:
-    db   $cd, $c2, $28, $c6, $05, $4f, $3e, $1c        ;; 00:14b8 ????????
-    db   $cd, $79, $28, $c9                            ;; 00:14c0 ????
+    call call_00_28c2                                  ;; 00:14b8 $cd $c2 $28
+    add  A, $05                                        ;; 00:14bb $c6 $05
+    ld   C, A                                          ;; 00:14bd $4f
+    ld   A, $1c                                        ;; 00:14be $3e $1c
+    call call_00_2879                                  ;; 00:14c0 $cd $79 $28
+    ret                                                ;; 00:14c3 $c9
 
 scriptOpCode67:
-    db   $cd, $c2, $28, $c6, $05, $4f, $3e, $1d        ;; 00:14c4 ????????
-    db   $cd, $79, $28, $c9                            ;; 00:14cc ????
+    call call_00_28c2                                  ;; 00:14c4 $cd $c2 $28
+    add  A, $05                                        ;; 00:14c7 $c6 $05
+    ld   C, A                                          ;; 00:14c9 $4f
+    ld   A, $1d                                        ;; 00:14ca $3e $1d
+    call call_00_2879                                  ;; 00:14cc $cd $79 $28
+    ret                                                ;; 00:14cf $c9
 
 scriptOpCode64:
-    db   $cd, $c2, $28, $c6, $05, $4f, $3e, $1e        ;; 00:14d0 ????????
-    db   $cd, $79, $28, $c9                            ;; 00:14d8 ????
+    call call_00_28c2                                  ;; 00:14d0 $cd $c2 $28
+    add  A, $05                                        ;; 00:14d3 $c6 $05
+    ld   C, A                                          ;; 00:14d5 $4f
+    ld   A, $1e                                        ;; 00:14d6 $3e $1e
+    call call_00_2879                                  ;; 00:14d8 $cd $79 $28
+    ret                                                ;; 00:14db $c9
 
 scriptOpCode65:
-    db   $cd, $c2, $28, $c6, $05, $4f, $3e, $1f        ;; 00:14dc ????????
-    db   $cd, $79, $28, $c9                            ;; 00:14e4 ????
+    call call_00_28c2                                  ;; 00:14dc $cd $c2 $28
+    add  A, $05                                        ;; 00:14df $c6 $05
+    ld   C, A                                          ;; 00:14e1 $4f
+    ld   A, $1f                                        ;; 00:14e2 $3e $1f
+    call call_00_2879                                  ;; 00:14e4 $cd $79 $28
+    ret                                                ;; 00:14e7 $c9
 
 scriptOpCode68:
-    db   $cd, $c2, $28, $c6, $05, $4f, $cd, $59        ;; 00:14e8 ????????
-    db   $28, $c9                                      ;; 00:14f0 ??
+    call call_00_28c2                                  ;; 00:14e8 $cd $c2 $28
+    add  A, $05                                        ;; 00:14eb $c6 $05
+    ld   C, A                                          ;; 00:14ed $4f
+    call call_00_2859                                  ;; 00:14ee $cd $59 $28
+    ret                                                ;; 00:14f1 $c9
 
 scriptOpCode69:
-    db   $cd, $c2, $28, $c6, $05, $4f, $cd, $3e        ;; 00:14f2 ????????
-    db   $12, $c9                                      ;; 00:14fa ??
+    call call_00_28c2                                  ;; 00:14f2 $cd $c2 $28
+    add  A, $05                                        ;; 00:14f5 $c6 $05
+    ld   C, A                                          ;; 00:14f7 $4f
+    call call_00_123e                                  ;; 00:14f8 $cd $3e $12
+    ret                                                ;; 00:14fb $c9
 
 scriptOpCode6A:
-    db   $cd, $c2, $28, $c6, $05, $4f, $3e, $0e        ;; 00:14fc ????????
-    db   $cd, $79, $28, $c9                            ;; 00:1504 ????
+    call call_00_28c2                                  ;; 00:14fc $cd $c2 $28
+    add  A, $05                                        ;; 00:14ff $c6 $05
+    ld   C, A                                          ;; 00:1501 $4f
+    ld   A, $0e                                        ;; 00:1502 $3e $0e
+    call call_00_2879                                  ;; 00:1504 $cd $79 $28
+    ret                                                ;; 00:1507 $c9
 
 scriptOpCode6B:
-    db   $cd, $c2, $28, $c6, $05, $4f, $3e, $0f        ;; 00:1508 ????????
-    db   $cd, $79, $28, $c9                            ;; 00:1510 ????
+    call call_00_28c2                                  ;; 00:1508 $cd $c2 $28
+    add  A, $05                                        ;; 00:150b $c6 $05
+    ld   C, A                                          ;; 00:150d $4f
+    ld   A, $0f                                        ;; 00:150e $3e $0f
+    call call_00_2879                                  ;; 00:1510 $cd $79 $28
+    ret                                                ;; 00:1513 $c9
 
 scriptOpCode70:
-    db   $cd, $c2, $28, $c6, $06, $4f, $3e, $04        ;; 00:1514 ????????
-    db   $cd, $79, $28, $c9                            ;; 00:151c ????
+    call call_00_28c2                                  ;; 00:1514 $cd $c2 $28
+    add  A, $06                                        ;; 00:1517 $c6 $06
+    ld   C, A                                          ;; 00:1519 $4f
+    ld   A, $04                                        ;; 00:151a $3e $04
+    call call_00_2879                                  ;; 00:151c $cd $79 $28
+    ret                                                ;; 00:151f $c9
 
 scriptOpCode71:
-    db   $cd, $c2, $28, $c6, $06, $4f, $3e, $05        ;; 00:1520 ????????
-    db   $cd, $79, $28, $c9                            ;; 00:1528 ????
+    call call_00_28c2                                  ;; 00:1520 $cd $c2 $28
+    add  A, $06                                        ;; 00:1523 $c6 $06
+    ld   C, A                                          ;; 00:1525 $4f
+    ld   A, $05                                        ;; 00:1526 $3e $05
+    call call_00_2879                                  ;; 00:1528 $cd $79 $28
+    ret                                                ;; 00:152b $c9
 
 scriptOpCode76:
-    db   $cd, $c2, $28, $c6, $06, $4f, $3e, $1c        ;; 00:152c ????????
-    db   $cd, $79, $28, $c9                            ;; 00:1534 ????
+    call call_00_28c2                                  ;; 00:152c $cd $c2 $28
+    add  A, $06                                        ;; 00:152f $c6 $06
+    ld   C, A                                          ;; 00:1531 $4f
+    ld   A, $1c                                        ;; 00:1532 $3e $1c
+    call call_00_2879                                  ;; 00:1534 $cd $79 $28
+    ret                                                ;; 00:1537 $c9
 
 scriptOpCode77:
-    db   $cd, $c2, $28, $c6, $06, $4f, $3e, $1d        ;; 00:1538 ????????
-    db   $cd, $79, $28, $c9                            ;; 00:1540 ????
+    call call_00_28c2                                  ;; 00:1538 $cd $c2 $28
+    add  A, $06                                        ;; 00:153b $c6 $06
+    ld   C, A                                          ;; 00:153d $4f
+    ld   A, $1d                                        ;; 00:153e $3e $1d
+    call call_00_2879                                  ;; 00:1540 $cd $79 $28
+    ret                                                ;; 00:1543 $c9
 
 scriptOpCode74:
-    db   $cd, $c2, $28, $c6, $06, $4f, $3e, $1e        ;; 00:1544 ????????
-    db   $cd, $79, $28, $c9                            ;; 00:154c ????
+    call call_00_28c2                                  ;; 00:1544 $cd $c2 $28
+    add  A, $06                                        ;; 00:1547 $c6 $06
+    ld   C, A                                          ;; 00:1549 $4f
+    ld   A, $1e                                        ;; 00:154a $3e $1e
+    call call_00_2879                                  ;; 00:154c $cd $79 $28
+    ret                                                ;; 00:154f $c9
 
 scriptOpCode75:
-    db   $cd, $c2, $28, $c6, $06, $4f, $3e, $1f        ;; 00:1550 ????????
-    db   $cd, $79, $28, $c9                            ;; 00:1558 ????
+    call call_00_28c2                                  ;; 00:1550 $cd $c2 $28
+    add  A, $06                                        ;; 00:1553 $c6 $06
+    ld   C, A                                          ;; 00:1555 $4f
+    ld   A, $1f                                        ;; 00:1556 $3e $1f
+    call call_00_2879                                  ;; 00:1558 $cd $79 $28
+    ret                                                ;; 00:155b $c9
 
 scriptOpCode78:
-    db   $cd, $c2, $28, $c6, $06, $4f, $cd, $59        ;; 00:155c ????????
-    db   $28, $c9                                      ;; 00:1564 ??
+    call call_00_28c2                                  ;; 00:155c $cd $c2 $28
+    add  A, $06                                        ;; 00:155f $c6 $06
+    ld   C, A                                          ;; 00:1561 $4f
+    call call_00_2859                                  ;; 00:1562 $cd $59 $28
+    ret                                                ;; 00:1565 $c9
 
 scriptOpCode79:
-    db   $cd, $c2, $28, $c6, $06, $4f, $cd, $3e        ;; 00:1566 ????????
-    db   $12, $c9                                      ;; 00:156e ??
+    call call_00_28c2                                  ;; 00:1566 $cd $c2 $28
+    add  A, $06                                        ;; 00:1569 $c6 $06
+    ld   C, A                                          ;; 00:156b $4f
+    call call_00_123e                                  ;; 00:156c $cd $3e $12
+    ret                                                ;; 00:156f $c9
 
 scriptOpCode7A:
-    db   $cd, $c2, $28, $c6, $06, $4f, $3e, $0e        ;; 00:1570 ????????
-    db   $cd, $79, $28, $c9                            ;; 00:1578 ????
+    call call_00_28c2                                  ;; 00:1570 $cd $c2 $28
+    add  A, $06                                        ;; 00:1573 $c6 $06
+    ld   C, A                                          ;; 00:1575 $4f
+    ld   A, $0e                                        ;; 00:1576 $3e $0e
+    call call_00_2879                                  ;; 00:1578 $cd $79 $28
+    ret                                                ;; 00:157b $c9
 
 scriptOpCode7B:
-    db   $cd, $c2, $28, $c6, $06, $4f, $3e, $0f        ;; 00:157c ????????
-    db   $cd, $79, $28, $c9                            ;; 00:1584 ????
+    call call_00_28c2                                  ;; 00:157c $cd $c2 $28
+    add  A, $06                                        ;; 00:157f $c6 $06
+    ld   C, A                                          ;; 00:1581 $4f
+    ld   A, $0f                                        ;; 00:1582 $3e $0f
+    call call_00_2879                                  ;; 00:1584 $cd $79 $28
+    ret                                                ;; 00:1587 $c9
 
 call_00_1588:
     push HL                                            ;; 00:1588 $e5
@@ -3287,52 +3677,110 @@ scriptOpCode8A:
     ret                                                ;; 00:1605 $c9
 
 scriptOpCode90:
-    db   $cd, $c2, $28, $20, $54, $3e, $04, $0e        ;; 00:1606 ????????
-    db   $00, $cd, $79, $28, $c9                       ;; 00:160e ?????
+    call call_00_28c2                                  ;; 00:1606 $cd $c2 $28
+    jr   NZ, jr_00_165f                                ;; 00:1609 $20 $54
+    ld   A, $04                                        ;; 00:160b $3e $04
+    ld   C, $00                                        ;; 00:160d $0e $00
+    call call_00_2879                                  ;; 00:160f $cd $79 $28
+    ret                                                ;; 00:1612 $c9
 
 scriptOpCode91:
-    db   $cd, $c2, $28, $20, $47, $3e, $05, $0e        ;; 00:1613 ????????
-    db   $00, $cd, $79, $28, $c9                       ;; 00:161b ?????
+    call call_00_28c2                                  ;; 00:1613 $cd $c2 $28
+    jr   NZ, jr_00_165f                                ;; 00:1616 $20 $47
+    ld   A, $05                                        ;; 00:1618 $3e $05
+    ld   C, $00                                        ;; 00:161a $0e $00
+    call call_00_2879                                  ;; 00:161c $cd $79 $28
+    ret                                                ;; 00:161f $c9
 
 scriptOpCode96:
-    db   $cd, $c2, $28, $20, $3a, $3e, $1c, $0e        ;; 00:1620 ????????
-    db   $00, $cd, $79, $28, $c9                       ;; 00:1628 ?????
+    call call_00_28c2                                  ;; 00:1620 $cd $c2 $28
+    jr   NZ, jr_00_165f                                ;; 00:1623 $20 $3a
+    ld   A, $1c                                        ;; 00:1625 $3e $1c
+    ld   C, $00                                        ;; 00:1627 $0e $00
+    call call_00_2879                                  ;; 00:1629 $cd $79 $28
+    ret                                                ;; 00:162c $c9
 
 scriptOpCode97:
-    db   $cd, $c2, $28, $20, $2d, $3e, $1d, $0e        ;; 00:162d ????????
-    db   $00, $cd, $79, $28, $c9                       ;; 00:1635 ?????
+    call call_00_28c2                                  ;; 00:162d $cd $c2 $28
+    jr   NZ, jr_00_165f                                ;; 00:1630 $20 $2d
+    ld   A, $1d                                        ;; 00:1632 $3e $1d
+    ld   C, $00                                        ;; 00:1634 $0e $00
+    call call_00_2879                                  ;; 00:1636 $cd $79 $28
+    ret                                                ;; 00:1639 $c9
 
 scriptOpCode94:
-    db   $cd, $c2, $28, $20, $20, $3e, $1e, $0e        ;; 00:163a ????????
-    db   $00, $cd, $79, $28, $c9                       ;; 00:1642 ?????
+    call call_00_28c2                                  ;; 00:163a $cd $c2 $28
+    jr   NZ, jr_00_165f                                ;; 00:163d $20 $20
+    ld   A, $1e                                        ;; 00:163f $3e $1e
+    ld   C, $00                                        ;; 00:1641 $0e $00
+    call call_00_2879                                  ;; 00:1643 $cd $79 $28
+    ret                                                ;; 00:1646 $c9
 
 scriptOpCode95:
-    db   $cd, $c2, $28, $20, $13, $3e, $1f, $0e        ;; 00:1647 ????????
-    db   $00, $cd, $79, $28, $c9                       ;; 00:164f ?????
+    call call_00_28c2                                  ;; 00:1647 $cd $c2 $28
+    jr   NZ, jr_00_165f                                ;; 00:164a $20 $13
+    ld   A, $1f                                        ;; 00:164c $3e $1f
+    ld   C, $00                                        ;; 00:164e $0e $00
+    call call_00_2879                                  ;; 00:1650 $cd $79 $28
+    ret                                                ;; 00:1653 $c9
 
 scriptOpCode98:
-    db   $cd, $c2, $28, $20, $06, $0e, $00, $cd        ;; 00:1654 ????????
-    db   $59, $28, $c9, $cd, $27, $37, $c9             ;; 00:165c ???????
+    call call_00_28c2                                  ;; 00:1654 $cd $c2 $28
+    jr   NZ, jr_00_165f                                ;; 00:1657 $20 $06
+    ld   C, $00                                        ;; 00:1659 $0e $00
+    call call_00_2859                                  ;; 00:165b $cd $59 $28
+    ret                                                ;; 00:165e $c9
+
+jr_00_165f:
+    call getNextScriptInstruction                      ;; 00:165f $cd $27 $37
+    ret                                                ;; 00:1662 $c9
 
 scriptOpCode99:
-    db   $cd, $c2, $28, $20, $06, $0e, $00, $cd        ;; 00:1663 ????????
-    db   $3e, $12, $c9, $23, $23, $cd, $27, $37        ;; 00:166b ????????
-    db   $c9                                           ;; 00:1673 ?
+    call call_00_28c2                                  ;; 00:1663 $cd $c2 $28
+    jr   NZ, .jr_00_166e                               ;; 00:1666 $20 $06
+    ld   C, $00                                        ;; 00:1668 $0e $00
+    call call_00_123e                                  ;; 00:166a $cd $3e $12
+    ret                                                ;; 00:166d $c9
+.jr_00_166e:
+    inc  HL                                            ;; 00:166e $23
+    inc  HL                                            ;; 00:166f $23
+    call getNextScriptInstruction                      ;; 00:1670 $cd $27 $37
+    ret                                                ;; 00:1673 $c9
 
 scriptOpCode9A:
-    db   $cd, $c2, $28, $20, $e6, $3e, $0e, $0e        ;; 00:1674 ????????
-    db   $00, $cd, $79, $28, $c9                       ;; 00:167c ?????
+    call call_00_28c2                                  ;; 00:1674 $cd $c2 $28
+    jr   NZ, jr_00_165f                                ;; 00:1677 $20 $e6
+    ld   A, $0e                                        ;; 00:1679 $3e $0e
+    ld   C, $00                                        ;; 00:167b $0e $00
+    call call_00_2879                                  ;; 00:167d $cd $79 $28
+    ret                                                ;; 00:1680 $c9
 
 scriptOpCode9B:
-    db   $cd, $c2, $28, $20, $d9, $3e, $0f, $0e        ;; 00:1681 ????????
-    db   $00, $cd, $79, $28, $c9                       ;; 00:1689 ?????
+    call call_00_28c2                                  ;; 00:1681 $cd $c2 $28
+    jr   NZ, jr_00_165f                                ;; 00:1684 $20 $d9
+    ld   A, $0f                                        ;; 00:1686 $3e $0f
+    ld   C, $00                                        ;; 00:1688 $0e $00
+    call call_00_2879                                  ;; 00:168a $cd $79 $28
+    ret                                                ;; 00:168d $c9
 
 scriptOpCode8F:
-    db   $e5, $21, $a0, $c5, $06, $08, $2a, $fe        ;; 00:168e ????????
-    db   $00, $20, $08, $05, $20, $f8, $e1, $cd        ;; 00:1696 ????????
-    db   $27, $37, $c9, $e1, $c9, $4f, $2a, $b9        ;; 00:169e ????????
-    db   $c8, $fe, $ff, $20, $f9, $79, $fe, $ff        ;; 00:16a6 ????????
-    db   $c9                                           ;; 00:16ae ?
+    push HL                                            ;; 00:168e $e5
+    ld   HL, wC5A0                                     ;; 00:168f $21 $a0 $c5
+    ld   B, $08                                        ;; 00:1692 $06 $08
+.jr_00_1694:
+    ld   A, [HL+]                                      ;; 00:1694 $2a
+    cp   A, $00                                        ;; 00:1695 $fe $00
+    jr   NZ, .jr_00_16a1                               ;; 00:1697 $20 $08
+    dec  B                                             ;; 00:1699 $05
+    jr   NZ, .jr_00_1694                               ;; 00:169a $20 $f8
+    pop  HL                                            ;; 00:169c $e1
+    call getNextScriptInstruction                      ;; 00:169d $cd $27 $37
+    ret                                                ;; 00:16a0 $c9
+.jr_00_16a1:
+    pop  HL                                            ;; 00:16a1 $e1
+    ret                                                ;; 00:16a2 $c9
+    db   $4f, $2a, $b9, $c8, $fe, $ff, $20, $f9        ;; 00:16a3 ????????
+    db   $79, $fe, $ff, $c9                            ;; 00:16ab ????
 
 call_00_16af:
     push DE                                            ;; 00:16af $d5
@@ -5128,26 +5576,110 @@ call_00_2281:
     ld   A, B                                          ;; 00:22b6 $78
     call call_00_056c                                  ;; 00:22b7 $cd $6c $05
     ret                                                ;; 00:22ba $c9
-    db   $c5, $cd, $3e, $0c, $57, $c1, $c5, $d5        ;; 00:22bb ????????
-    db   $cd, $2d, $0c, $d1, $5f, $c1, $cb, $40        ;; 00:22c3 ????????
-    db   $20, $11, $cb, $48, $20, $16, $cb, $50        ;; 00:22cb ????????
-    db   $20, $1b, $7a, $fe, $18, $30, $1f, $16        ;; 00:22d3 ????????
-    db   $18, $18, $1e, $7b, $fe, $18, $30, $16        ;; 00:22db ????????
-    db   $1e, $18, $18, $15, $7b, $fe, $89, $38        ;; 00:22e3 ????????
-    db   $0d, $1e, $88, $18, $0c, $7a, $fe, $71        ;; 00:22eb ????????
-    db   $38, $04, $16, $70, $18, $03, $af, $3d        ;; 00:22f3 ????????
-    db   $c9, $af, $c9, $f5, $fa, $f8, $c3, $fe        ;; 00:22fb ????????
-    db   $00, $28, $53, $fa, $f0, $c3, $cd, $fb        ;; 00:2303 ????????
-    db   $29, $f1, $f5, $2f, $4f, $fa, $f4, $c3        ;; 00:230b ????????
-    db   $a1, $ea, $f4, $c3, $79, $2f, $cd, $5d        ;; 00:2313 ????????
-    db   $22, $e5, $fa, $fd, $c3, $67, $fa, $fc        ;; 00:231b ????????
-    db   $c3, $6f, $06, $00, $09, $7e, $e6, $03        ;; 00:2323 ????????
-    db   $87, $87, $87, $6f, $26, $00, $09, $09        ;; 00:232b ????????
-    db   $d1, $cd, $81, $22, $f1, $cd, $e4, $29        ;; 00:2333 ????????
-    db   $47, $0e, $04, $cd, $bb, $22, $78, $c5        ;; 00:233b ????????
-    db   $cc, $3e, $02, $cd, $c2, $28, $c1, $0e        ;; 00:2343 ????????
-    db   $07, $cc, $bb, $22, $78, $06, $00, $cc        ;; 00:234b ????????
-    db   $8f, $28, $cd, $0a, $2a, $c9, $f1, $c9        ;; 00:2353 ????????
+
+call_00_22bb:
+    push BC                                            ;; 00:22bb $c5
+    call GetObjectY                                    ;; 00:22bc $cd $3e $0c
+    ld   D, A                                          ;; 00:22bf $57
+    pop  BC                                            ;; 00:22c0 $c1
+    push BC                                            ;; 00:22c1 $c5
+    push DE                                            ;; 00:22c2 $d5
+    call GetObjectX                                    ;; 00:22c3 $cd $2d $0c
+    pop  DE                                            ;; 00:22c6 $d1
+    ld   E, A                                          ;; 00:22c7 $5f
+    pop  BC                                            ;; 00:22c8 $c1
+    bit  0, B                                          ;; 00:22c9 $cb $40
+    jr   NZ, .jr_00_22de                               ;; 00:22cb $20 $11
+    bit  1, B                                          ;; 00:22cd $cb $48
+    jr   NZ, .jr_00_22e7                               ;; 00:22cf $20 $16
+    bit  2, B                                          ;; 00:22d1 $cb $50
+    jr   NZ, .jr_00_22f0                               ;; 00:22d3 $20 $1b
+    ld   A, D                                          ;; 00:22d5 $7a
+    cp   A, $18                                        ;; 00:22d6 $fe $18
+    jr   NC, .jr_00_22f9                               ;; 00:22d8 $30 $1f
+    ld   D, $18                                        ;; 00:22da $16 $18
+    jr   .jr_00_22fc                                   ;; 00:22dc $18 $1e
+.jr_00_22de:
+    ld   A, E                                          ;; 00:22de $7b
+    cp   A, $18                                        ;; 00:22df $fe $18
+    jr   NC, .jr_00_22f9                               ;; 00:22e1 $30 $16
+    ld   E, $18                                        ;; 00:22e3 $1e $18
+    jr   .jr_00_22fc                                   ;; 00:22e5 $18 $15
+.jr_00_22e7:
+    ld   A, E                                          ;; 00:22e7 $7b
+    cp   A, $89                                        ;; 00:22e8 $fe $89
+    jr   C, .jr_00_22f9                                ;; 00:22ea $38 $0d
+    ld   E, $88                                        ;; 00:22ec $1e $88
+    jr   .jr_00_22fc                                   ;; 00:22ee $18 $0c
+.jr_00_22f0:
+    ld   A, D                                          ;; 00:22f0 $7a
+    cp   A, $71                                        ;; 00:22f1 $fe $71
+    jr   C, .jr_00_22f9                                ;; 00:22f3 $38 $04
+    ld   D, $70                                        ;; 00:22f5 $16 $70
+    jr   .jr_00_22fc                                   ;; 00:22f7 $18 $03
+.jr_00_22f9:
+    xor  A, A                                          ;; 00:22f9 $af
+    dec  A                                             ;; 00:22fa $3d
+    ret                                                ;; 00:22fb $c9
+.jr_00_22fc:
+    xor  A, A                                          ;; 00:22fc $af
+    ret                                                ;; 00:22fd $c9
+
+call_00_22fe:
+    push AF                                            ;; 00:22fe $f5
+    ld   A, [wC3F8]                                    ;; 00:22ff $fa $f8 $c3
+    cp   A, $00                                        ;; 00:2302 $fe $00
+    jr   Z, .jr_00_2359                                ;; 00:2304 $28 $53
+    ld   A, [wMapTableBankNr]                          ;; 00:2306 $fa $f0 $c3
+    call pushBankNrAndSwitch                           ;; 00:2309 $cd $fb $29
+    pop  AF                                            ;; 00:230c $f1
+    push AF                                            ;; 00:230d $f5
+    cpl                                                ;; 00:230e $2f
+    ld   C, A                                          ;; 00:230f $4f
+    ld   A, [wC3F4]                                    ;; 00:2310 $fa $f4 $c3
+    and  A, C                                          ;; 00:2313 $a1
+    ld   [wC3F4], A                                    ;; 00:2314 $ea $f4 $c3
+    ld   A, C                                          ;; 00:2317 $79
+    cpl                                                ;; 00:2318 $2f
+    call call_00_225d                                  ;; 00:2319 $cd $5d $22
+    push HL                                            ;; 00:231c $e5
+    ld   A, [wC3FD]                                    ;; 00:231d $fa $fd $c3
+    ld   H, A                                          ;; 00:2320 $67
+    ld   A, [wC3FC]                                    ;; 00:2321 $fa $fc $c3
+    ld   L, A                                          ;; 00:2324 $6f
+    ld   B, $00                                        ;; 00:2325 $06 $00
+    add  HL, BC                                        ;; 00:2327 $09
+    ld   A, [HL]                                       ;; 00:2328 $7e
+    and  A, $03                                        ;; 00:2329 $e6 $03
+    add  A, A                                          ;; 00:232b $87
+    add  A, A                                          ;; 00:232c $87
+    add  A, A                                          ;; 00:232d $87
+    ld   L, A                                          ;; 00:232e $6f
+    ld   H, $00                                        ;; 00:232f $26 $00
+    add  HL, BC                                        ;; 00:2331 $09
+    add  HL, BC                                        ;; 00:2332 $09
+    pop  DE                                            ;; 00:2333 $d1
+    call call_00_2281                                  ;; 00:2334 $cd $81 $22
+    pop  AF                                            ;; 00:2337 $f1
+    call call_00_29e4                                  ;; 00:2338 $cd $e4 $29
+    ld   B, A                                          ;; 00:233b $47
+    ld   C, $04                                        ;; 00:233c $0e $04
+    call call_00_22bb                                  ;; 00:233e $cd $bb $22
+    ld   A, B                                          ;; 00:2341 $78
+    push BC                                            ;; 00:2342 $c5
+    call Z, call_00_023e                               ;; 00:2343 $cc $3e $02
+    call call_00_28c2                                  ;; 00:2346 $cd $c2 $28
+    pop  BC                                            ;; 00:2349 $c1
+    ld   C, $07                                        ;; 00:234a $0e $07
+    call Z, call_00_22bb                               ;; 00:234c $cc $bb $22
+    ld   A, B                                          ;; 00:234f $78
+    ld   B, $00                                        ;; 00:2350 $06 $00
+    call Z, call_00_288f                               ;; 00:2352 $cc $8f $28
+    call popBankNrAndSwitch                            ;; 00:2355 $cd $0a $2a
+    ret                                                ;; 00:2358 $c9
+.jr_00_2359:
+    pop  AF                                            ;; 00:2359 $f1
+    ret                                                ;; 00:235a $c9
 
 call_00_235b:
     push AF                                            ;; 00:235b $f5
@@ -5424,16 +5956,53 @@ call_00_24d4:
     call popBankNrAndSwitch                            ;; 00:24f4 $cd $0a $2a
     pop  HL                                            ;; 00:24f7 $e1
     ret                                                ;; 00:24f8 $c9
-    db   $fa, $f0, $c3, $cd, $fb, $29, $fa, $ff        ;; 00:24f9 ????????
-    db   $c3, $67, $fa, $fe, $c3, $6f, $2a, $66        ;; 00:2501 ????????
-    db   $6f, $23, $e5, $cd, $ab, $02, $e6, $0f        ;; 00:2509 ????????
-    db   $f6, $00, $0e, $c9, $e1, $cd, $13, $32        ;; 00:2511 ????????
-    db   $e5, $cd, $0a, $2a, $e1, $c9, $fa, $f0        ;; 00:2519 ????????
-    db   $c3, $cd, $fb, $29, $fa, $ff, $c3, $67        ;; 00:2521 ????????
-    db   $fa, $fe, $c3, $6f, $2a, $66, $6f, $23        ;; 00:2529 ????????
-    db   $23, $e5, $cd, $ab, $02, $e6, $0f, $f6        ;; 00:2531 ????????
-    db   $00, $0e, $c9, $e1, $cd, $13, $32, $e5        ;; 00:2539 ????????
-    db   $cd, $0a, $2a, $e1, $c9                       ;; 00:2541 ?????
+
+call_00_24f9:
+    ld   A, [wMapTableBankNr]                          ;; 00:24f9 $fa $f0 $c3
+    call pushBankNrAndSwitch                           ;; 00:24fc $cd $fb $29
+    ld   A, [wC3FF]                                    ;; 00:24ff $fa $ff $c3
+    ld   H, A                                          ;; 00:2502 $67
+    ld   A, [wC3FE]                                    ;; 00:2503 $fa $fe $c3
+    ld   L, A                                          ;; 00:2506 $6f
+    ld   A, [HL+]                                      ;; 00:2507 $2a
+    ld   H, [HL]                                       ;; 00:2508 $66
+    ld   L, A                                          ;; 00:2509 $6f
+    inc  HL                                            ;; 00:250a $23
+    push HL                                            ;; 00:250b $e5
+    call call_00_02ab                                  ;; 00:250c $cd $ab $02
+    and  A, $0f                                        ;; 00:250f $e6 $0f
+    or   A, $00                                        ;; 00:2511 $f6 $00
+    ld   C, $c9                                        ;; 00:2513 $0e $c9
+    pop  HL                                            ;; 00:2515 $e1
+    call call_00_3213                                  ;; 00:2516 $cd $13 $32
+    push HL                                            ;; 00:2519 $e5
+    call popBankNrAndSwitch                            ;; 00:251a $cd $0a $2a
+    pop  HL                                            ;; 00:251d $e1
+    ret                                                ;; 00:251e $c9
+
+call_00_251f:
+    ld   A, [wMapTableBankNr]                          ;; 00:251f $fa $f0 $c3
+    call pushBankNrAndSwitch                           ;; 00:2522 $cd $fb $29
+    ld   A, [wC3FF]                                    ;; 00:2525 $fa $ff $c3
+    ld   H, A                                          ;; 00:2528 $67
+    ld   A, [wC3FE]                                    ;; 00:2529 $fa $fe $c3
+    ld   L, A                                          ;; 00:252c $6f
+    ld   A, [HL+]                                      ;; 00:252d $2a
+    ld   H, [HL]                                       ;; 00:252e $66
+    ld   L, A                                          ;; 00:252f $6f
+    inc  HL                                            ;; 00:2530 $23
+    inc  HL                                            ;; 00:2531 $23
+    push HL                                            ;; 00:2532 $e5
+    call call_00_02ab                                  ;; 00:2533 $cd $ab $02
+    and  A, $0f                                        ;; 00:2536 $e6 $0f
+    or   A, $00                                        ;; 00:2538 $f6 $00
+    ld   C, $c9                                        ;; 00:253a $0e $c9
+    pop  HL                                            ;; 00:253c $e1
+    call call_00_3213                                  ;; 00:253d $cd $13 $32
+    push HL                                            ;; 00:2540 $e5
+    call popBankNrAndSwitch                            ;; 00:2541 $cd $0a $2a
+    pop  HL                                            ;; 00:2544 $e1
+    ret                                                ;; 00:2545 $c9
 
 call_00_2546:
     ld   D, A                                          ;; 00:2546 $57
@@ -7033,8 +7602,11 @@ call_00_2f76:
     jp_to_bank 01, call_01_51e1                        ;; 00:2f7a $3e $27 $c3 $d7 $1e
 
 scriptOpCodeAA:
-    db   $e5, $cd, $f7, $2e, $e1, $cd, $27, $37        ;; 00:2f7f ????????
-    db   $c9                                           ;; 00:2f87 ?
+    push HL                                            ;; 00:2f7f $e5
+    call call_00_2ef7                                  ;; 00:2f80 $cd $f7 $2e
+    pop  HL                                            ;; 00:2f83 $e1
+    call getNextScriptInstruction                      ;; 00:2f84 $cd $27 $37
+    ret                                                ;; 00:2f87 $c9
 
 call_00_2f88:
     push HL                                            ;; 00:2f88 $e5
@@ -7256,6 +7828,8 @@ call_00_3087:
 call_00_3099:
     push AF                                            ;; 00:3099 $f5
     jp_to_bank 02, call_02_6d80                        ;; 00:309a $3e $11 $c3 $06 $1f
+
+call_00_309f:
     push AF                                            ;; 00:309f $f5
     jp_to_bank 02, call_02_4860                        ;; 00:30a0 $3e $12 $c3 $06 $1f
 
@@ -7282,10 +7856,26 @@ call_00_30bd:
 call_00_30c3:
     push AF                                            ;; 00:30c3 $f5
     jp_to_bank 02, call_02_5419                        ;; 00:30c4 $3e $18 $c3 $06 $1f
-    db   $f5, $3e, $19, $c3, $06, $1f, $f5, $3e        ;; 00:30c9 ????????
-    db   $1a, $c3, $06, $1f, $f5, $3e, $1b, $c3        ;; 00:30d1 ????????
-    db   $06, $1f, $f5, $3e, $1c, $c3, $06, $1f        ;; 00:30d9 ????????
-    db   $f5, $3e, $1d, $c3, $06, $1f                  ;; 00:30e1 ??????
+
+call_00_30c9:
+    push AF                                            ;; 00:30c9 $f5
+    jp_to_bank 02, call_02_5428                        ;; 00:30ca $3e $19 $c3 $06 $1f
+
+call_00_30cf:
+    push AF                                            ;; 00:30cf $f5
+    jp_to_bank 02, call_02_53f0                        ;; 00:30d0 $3e $1a $c3 $06 $1f
+
+call_00_30d5:
+    push AF                                            ;; 00:30d5 $f5
+    jp_to_bank 02, call_02_53bb                        ;; 00:30d6 $3e $1b $c3 $06 $1f
+
+call_00_30db:
+    push AF                                            ;; 00:30db $f5
+    jp_to_bank 02, call_02_53c8                        ;; 00:30dc $3e $1c $c3 $06 $1f
+
+call_00_30e1:
+    push AF                                            ;; 00:30e1 $f5
+    jp_to_bank 02, call_02_53d5                        ;; 00:30e2 $3e $1d $c3 $06 $1f
 
 call_00_30e7:
     push AF                                            ;; 00:30e7 $f5
@@ -7353,6 +7943,8 @@ call_00_314d:
 call_00_3153:
     push AF                                            ;; 00:3153 $f5
     jp_to_bank 02, call_02_7b3c                        ;; 00:3154 $3e $30 $c3 $06 $1f
+
+call_00_3159:
     push AF                                            ;; 00:3159 $f5
     jp_to_bank 02, call_02_7bdd                        ;; 00:315a $3e $31 $c3 $06 $1f
 
@@ -7363,10 +7955,26 @@ call_00_315f:
 call_00_3165:
     push AF                                            ;; 00:3165 $f5
     jp_to_bank 02, call_02_4567                        ;; 00:3166 $3e $33 $c3 $06 $1f
-    db   $f5, $3e, $34, $c3, $06, $1f, $f5, $3e        ;; 00:316b ????????
-    db   $35, $c3, $06, $1f, $f5, $3e, $36, $c3        ;; 00:3173 ????????
-    db   $06, $1f, $f5, $3e, $37, $c3, $06, $1f        ;; 00:317b ????????
-    db   $f5, $3e, $38, $c3, $06, $1f                  ;; 00:3183 ??????
+
+call_00_316b:
+    push AF                                            ;; 00:316b $f5
+    jp_to_bank 02, call_02_7990                        ;; 00:316c $3e $34 $c3 $06 $1f
+
+call_00_3171:
+    push AF                                            ;; 00:3171 $f5
+    jp_to_bank 02, call_02_799c                        ;; 00:3172 $3e $35 $c3 $06 $1f
+
+call_00_3177:
+    push AF                                            ;; 00:3177 $f5
+    jp_to_bank 02, call_02_79ab                        ;; 00:3178 $3e $36 $c3 $06 $1f
+
+call_00_317d:
+    push AF                                            ;; 00:317d $f5
+    jp_to_bank 02, call_02_79ba                        ;; 00:317e $3e $37 $c3 $06 $1f
+
+call_00_3183:
+    push AF                                            ;; 00:3183 $f5
+    jp_to_bank 02, call_02_7987                        ;; 00:3184 $3e $38 $c3 $06 $1f
 
 call_00_3189:
     push AF                                            ;; 00:3189 $f5
@@ -7484,6 +8092,8 @@ call_00_3213:
     pop  BC                                            ;; 00:324f $c1
     ld   A, B                                          ;; 00:3250 $78
     ld   [wScriptBank], A                              ;; 00:3251 $ea $6a $d8
+
+call_00_3254:
     call call_00_28b0                                  ;; 00:3254 $cd $b0 $28
     ld   HL, wD874                                     ;; 00:3257 $21 $74 $d8
     res  0, [HL]                                       ;; 00:325a $cb $86
@@ -7820,8 +8430,11 @@ scriptOpCode0B:
     jr   jr_00_3466                                    ;; 00:3459 $18 $0b
 
 scriptOpCode0C:
-    db   $fa, $71, $d8, $4f, $fa, $73, $d8, $cb        ;; 00:345b ????????
-    db   $7f, $28, $10                                 ;; 00:3463 ???
+    ld   A, [wD871]                                    ;; 00:345b $fa $71 $d8
+    ld   C, A                                          ;; 00:345e $4f
+    ld   A, [wD873]                                    ;; 00:345f $fa $73 $d8
+    bit  7, A                                          ;; 00:3462 $cb $7f
+    jr   Z, jr_00_3476                                 ;; 00:3464 $28 $10
 
 jr_00_3466:
     ld   A, [HL+]                                      ;; 00:3466 $2a
@@ -8588,12 +9201,22 @@ scriptOpCodeC9:
     ret                                                ;; 00:3918 $c9
 
 scriptOpCodeCA:
-    db   $2a, $57, $2a, $5f, $01, $23, $d6, $cd        ;; 00:3919 ????????
-    db   $2f, $39, $c9                                 ;; 00:3921 ???
+    ld   A, [HL+]                                      ;; 00:3919 $2a
+    ld   D, A                                          ;; 00:391a $57
+    ld   A, [HL+]                                      ;; 00:391b $2a
+    ld   E, A                                          ;; 00:391c $5f
+    ld   BC, wD623                                     ;; 00:391d $01 $23 $d6
+    call call_00_392f                                  ;; 00:3920 $cd $2f $39
+    ret                                                ;; 00:3923 $c9
 
 scriptOpCodeCB:
-    db   $2a, $57, $2a, $5f, $01, $33, $d6, $cd        ;; 00:3924 ????????
-    db   $2f, $39, $c9                                 ;; 00:392c ???
+    ld   A, [HL+]                                      ;; 00:3924 $2a
+    ld   D, A                                          ;; 00:3925 $57
+    ld   A, [HL+]                                      ;; 00:3926 $2a
+    ld   E, A                                          ;; 00:3927 $5f
+    ld   BC, wD633                                     ;; 00:3928 $01 $33 $d6
+    call call_00_392f                                  ;; 00:392b $cd $2f $39
+    ret                                                ;; 00:392e $c9
 
 call_00_392f:
     push HL                                            ;; 00:392f $e5
@@ -8646,11 +9269,23 @@ scriptOpCodeC1:
     ret                                                ;; 00:3978 $c9
 
 scriptOpCodeC2:
-    db   $2a, $2f, $4f, $e5, $cb, $41, $cc, $6b        ;; 00:3979 ????????
-    db   $31, $cb, $49, $cc, $71, $31, $cb, $51        ;; 00:3981 ????????
-    db   $cc, $77, $31, $cb, $59, $cc, $7d, $31        ;; 00:3989 ????????
-    db   $cb, $61, $cc, $83, $31, $e1, $cd, $27        ;; 00:3991 ????????
-    db   $37, $c9                                      ;; 00:3999 ??
+    ld   A, [HL+]                                      ;; 00:3979 $2a
+    cpl                                                ;; 00:397a $2f
+    ld   C, A                                          ;; 00:397b $4f
+    push HL                                            ;; 00:397c $e5
+    bit  0, C                                          ;; 00:397d $cb $41
+    call Z, call_00_316b                               ;; 00:397f $cc $6b $31
+    bit  1, C                                          ;; 00:3982 $cb $49
+    call Z, call_00_3171                               ;; 00:3984 $cc $71 $31
+    bit  2, C                                          ;; 00:3987 $cb $51
+    call Z, call_00_3177                               ;; 00:3989 $cc $77 $31
+    bit  3, C                                          ;; 00:398c $cb $59
+    call Z, call_00_317d                               ;; 00:398e $cc $7d $31
+    bit  4, C                                          ;; 00:3991 $cb $61
+    call Z, call_00_3183                               ;; 00:3993 $cc $83 $31
+    pop  HL                                            ;; 00:3996 $e1
+    call getNextScriptInstruction                      ;; 00:3997 $cd $27 $37
+    ret                                                ;; 00:399a $c9
 
 scriptOpCodeC4:
     ld   A, [HL+]                                      ;; 00:399b $2a
@@ -8669,9 +9304,17 @@ call_00_39a7:
     ret                                                ;; 00:39b1 $c9
 
 scriptOpCodeC7:
-    db   $e5, $cd, $1e, $2b, $e6, $03, $47, $fa        ;; 00:39b2 ????????
-    db   $d5, $d7, $e6, $fc, $b0, $ea, $d5, $d7        ;; 00:39ba ????????
-    db   $e1, $cd, $27, $37, $c9                       ;; 00:39c2 ?????
+    push HL                                            ;; 00:39b2 $e5
+    call getRandomByte                                 ;; 00:39b3 $cd $1e $2b
+    and  A, $03                                        ;; 00:39b6 $e6 $03
+    ld   B, A                                          ;; 00:39b8 $47
+    ld   A, [wD7D5]                                    ;; 00:39b9 $fa $d5 $d7
+    and  A, $fc                                        ;; 00:39bc $e6 $fc
+    or   A, B                                          ;; 00:39be $b0
+    ld   [wD7D5], A                                    ;; 00:39bf $ea $d5 $d7
+    pop  HL                                            ;; 00:39c2 $e1
+    call getNextScriptInstruction                      ;; 00:39c3 $cd $27 $37
+    ret                                                ;; 00:39c6 $c9
 
 scriptOpCodeC6:
     push HL                                            ;; 00:39c7 $e5
@@ -8704,27 +9347,79 @@ scriptOpCodeC6:
     ret                                                ;; 00:3a00 $c9
 
 scriptOpCodeC3:
-    db   $cd, $27, $37, $c9                            ;; 00:3a01 ????
+    call getNextScriptInstruction                      ;; 00:3a01 $cd $27 $37
+    ret                                                ;; 00:3a04 $c9
 
 scriptOpCodeD2:
-    db   $5e, $23, $56, $23, $e5, $d5, $e1, $cd        ;; 00:3a05 ????????
-    db   $16, $3d, $e1, $cd, $27, $37, $c9             ;; 00:3a0d ???????
+    ld   E, [HL]                                       ;; 00:3a05 $5e
+    inc  HL                                            ;; 00:3a06 $23
+    ld   D, [HL]                                       ;; 00:3a07 $56
+    inc  HL                                            ;; 00:3a08 $23
+    push HL                                            ;; 00:3a09 $e5
+    push DE                                            ;; 00:3a0a $d5
+    pop  HL                                            ;; 00:3a0b $e1
+    call addXP                                         ;; 00:3a0c $cd $16 $3d
+    pop  HL                                            ;; 00:3a0f $e1
+    call getNextScriptInstruction                      ;; 00:3a10 $cd $27 $37
+    ret                                                ;; 00:3a13 $c9
 
 scriptOpCodeD3:
-    db   $5e, $23, $56, $23, $e5, $fa, $bc, $d7        ;; 00:3a14 ????????
-    db   $67, $fa, $bb, $d7, $6f, $fa, $bd, $d7        ;; 00:3a1c ????????
-    db   $4f, $7d, $93, $6f, $7c, $9a, $67, $79        ;; 00:3a24 ????????
-    db   $de, $00, $4f, $30, $05, $21, $00, $00        ;; 00:3a2c ????????
-    db   $0e, $00, $7c, $ea, $bc, $d7, $7d, $ea        ;; 00:3a34 ????????
-    db   $bb, $d7, $79, $ea, $bd, $d7, $e1, $cd        ;; 00:3a3c ????????
-    db   $27, $37, $c9                                 ;; 00:3a44 ???
+    ld   E, [HL]                                       ;; 00:3a14 $5e
+    inc  HL                                            ;; 00:3a15 $23
+    ld   D, [HL]                                       ;; 00:3a16 $56
+    inc  HL                                            ;; 00:3a17 $23
+    push HL                                            ;; 00:3a18 $e5
+    ld   A, [wXPHigh]                                  ;; 00:3a19 $fa $bc $d7
+    ld   H, A                                          ;; 00:3a1c $67
+    ld   A, [wXPLow]                                   ;; 00:3a1d $fa $bb $d7
+    ld   L, A                                          ;; 00:3a20 $6f
+    ld   A, [wXPHighExt]                               ;; 00:3a21 $fa $bd $d7
+    ld   C, A                                          ;; 00:3a24 $4f
+    ld   A, L                                          ;; 00:3a25 $7d
+    sub  A, E                                          ;; 00:3a26 $93
+    ld   L, A                                          ;; 00:3a27 $6f
+    ld   A, H                                          ;; 00:3a28 $7c
+    sbc  A, D                                          ;; 00:3a29 $9a
+    ld   H, A                                          ;; 00:3a2a $67
+    ld   A, C                                          ;; 00:3a2b $79
+    sbc  A, $00                                        ;; 00:3a2c $de $00
+    ld   C, A                                          ;; 00:3a2e $4f
+    jr   NC, .jr_00_3a36                               ;; 00:3a2f $30 $05
+    ld   HL, $00                                       ;; 00:3a31 $21 $00 $00
+    ld   C, $00                                        ;; 00:3a34 $0e $00
+.jr_00_3a36:
+    ld   A, H                                          ;; 00:3a36 $7c
+    ld   [wXPHigh], A                                  ;; 00:3a37 $ea $bc $d7
+    ld   A, L                                          ;; 00:3a3a $7d
+    ld   [wXPLow], A                                   ;; 00:3a3b $ea $bb $d7
+    ld   A, C                                          ;; 00:3a3e $79
+    ld   [wXPHighExt], A                               ;; 00:3a3f $ea $bd $d7
+    pop  HL                                            ;; 00:3a42 $e1
+    call getNextScriptInstruction                      ;; 00:3a43 $cd $27 $37
+    ret                                                ;; 00:3a46 $c9
 
 scriptOpCodeD0:
-    db   $5e, $23, $56, $23, $e5, $fa, $bf, $d7        ;; 00:3a47 ????????
-    db   $67, $fa, $be, $d7, $6f, $19, $30, $03        ;; 00:3a4f ????????
-    db   $21, $ff, $ff, $7c, $ea, $bf, $d7, $7d        ;; 00:3a57 ????????
-    db   $ea, $be, $d7, $cd, $17, $31, $e1, $cd        ;; 00:3a5f ????????
-    db   $27, $37, $c9                                 ;; 00:3a67 ???
+    ld   E, [HL]                                       ;; 00:3a47 $5e
+    inc  HL                                            ;; 00:3a48 $23
+    ld   D, [HL]                                       ;; 00:3a49 $56
+    inc  HL                                            ;; 00:3a4a $23
+    push HL                                            ;; 00:3a4b $e5
+    ld   A, [wMoneyHigh]                               ;; 00:3a4c $fa $bf $d7
+    ld   H, A                                          ;; 00:3a4f $67
+    ld   A, [wMoneyLow]                                ;; 00:3a50 $fa $be $d7
+    ld   L, A                                          ;; 00:3a53 $6f
+    add  HL, DE                                        ;; 00:3a54 $19
+    jr   NC, .jr_00_3a5a                               ;; 00:3a55 $30 $03
+    ld   HL, rIE                                       ;; 00:3a57 $21 $ff $ff
+.jr_00_3a5a:
+    ld   A, H                                          ;; 00:3a5a $7c
+    ld   [wMoneyHigh], A                               ;; 00:3a5b $ea $bf $d7
+    ld   A, L                                          ;; 00:3a5e $7d
+    ld   [wMoneyLow], A                                ;; 00:3a5f $ea $be $d7
+    call drawMoneyOnStatusBarTrampoline                ;; 00:3a62 $cd $17 $31
+    pop  HL                                            ;; 00:3a65 $e1
+    call getNextScriptInstruction                      ;; 00:3a66 $cd $27 $37
+    ret                                                ;; 00:3a69 $c9
 
 scriptOpCodeD1:
     ld   E, [HL]                                       ;; 00:3a6a $5e
@@ -8760,7 +9455,9 @@ scriptOpCodeD1:
     ret                                                ;; 00:3a9a $c9
 
 scriptOpCodeCC:
-    db   $2b, $cd, $27, $37, $c9                       ;; 00:3a9b ?????
+    dec  HL                                            ;; 00:3a9b $2b
+    call getNextScriptInstruction                      ;; 00:3a9c $cd $27 $37
+    ret                                                ;; 00:3a9f $c9
 
 scriptOpCodeD4:
     ld   A, [HL+]                                      ;; 00:3aa0 $2a
@@ -8775,14 +9472,28 @@ scriptOpCodeD4:
     ret                                                ;; 00:3ab1 $c9
 
 scriptOpCodeD6:
-    db   $2a, $3c, $e5, $cd, $c9, $30, $e1, $fa        ;; 00:3ab2 ????????
-    db   $6f, $d8, $cb, $4f, $20, $16, $cd, $27        ;; 00:3aba ????????
-    db   $37, $c9                                      ;; 00:3ac2 ??
+    ld   A, [HL+]                                      ;; 00:3ab2 $2a
+    inc  A                                             ;; 00:3ab3 $3c
+    push HL                                            ;; 00:3ab4 $e5
+    call call_00_30c9                                  ;; 00:3ab5 $cd $c9 $30
+    pop  HL                                            ;; 00:3ab8 $e1
+    ld   A, [wD86F]                                    ;; 00:3ab9 $fa $6f $d8
+    bit  1, A                                          ;; 00:3abc $cb $4f
+    jr   NZ, jr_00_3ad6                                ;; 00:3abe $20 $16
+    call getNextScriptInstruction                      ;; 00:3ac0 $cd $27 $37
+    ret                                                ;; 00:3ac3 $c9
 
 scriptOpCodeD8:
-    db   $2a, $3c, $e5, $cd, $cf, $30, $e1, $fa        ;; 00:3ac4 ????????
-    db   $6f, $d8, $cb, $4f, $20, $04, $cd, $27        ;; 00:3acc ????????
-    db   $37, $c9                                      ;; 00:3ad4 ??
+    ld   A, [HL+]                                      ;; 00:3ac4 $2a
+    inc  A                                             ;; 00:3ac5 $3c
+    push HL                                            ;; 00:3ac6 $e5
+    call call_00_30cf                                  ;; 00:3ac7 $cd $cf $30
+    pop  HL                                            ;; 00:3aca $e1
+    ld   A, [wD86F]                                    ;; 00:3acb $fa $6f $d8
+    bit  1, A                                          ;; 00:3ace $cb $4f
+    jr   NZ, jr_00_3ad6                                ;; 00:3ad0 $20 $04
+    call getNextScriptInstruction                      ;; 00:3ad2 $cd $27 $37
+    ret                                                ;; 00:3ad5 $c9
 
 jr_00_3ad6:
     ld   A, $05                                        ;; 00:3ad6 $3e $05
@@ -8840,16 +9551,31 @@ call_00_3b21:
     ret                                                ;; 00:3b2e $c9
 
 scriptOpCodeD5:
-    db   $2a, $3c, $e5, $cd, $d5, $30, $e1, $cd        ;; 00:3b2f ????????
-    db   $27, $37, $c9                                 ;; 00:3b37 ???
+    ld   A, [HL+]                                      ;; 00:3b2f $2a
+    inc  A                                             ;; 00:3b30 $3c
+    push HL                                            ;; 00:3b31 $e5
+    call call_00_30d5                                  ;; 00:3b32 $cd $d5 $30
+    pop  HL                                            ;; 00:3b35 $e1
+    call getNextScriptInstruction                      ;; 00:3b36 $cd $27 $37
+    ret                                                ;; 00:3b39 $c9
 
 scriptOpCodeD7:
-    db   $2a, $3c, $e5, $cd, $e1, $30, $e1, $cd        ;; 00:3b3a ????????
-    db   $27, $37, $c9                                 ;; 00:3b42 ???
+    ld   A, [HL+]                                      ;; 00:3b3a $2a
+    inc  A                                             ;; 00:3b3b $3c
+    push HL                                            ;; 00:3b3c $e5
+    call call_00_30e1                                  ;; 00:3b3d $cd $e1 $30
+    pop  HL                                            ;; 00:3b40 $e1
+    call getNextScriptInstruction                      ;; 00:3b41 $cd $27 $37
+    ret                                                ;; 00:3b44 $c9
 
 scriptOpCodeD9:
-    db   $2a, $3c, $e5, $cd, $db, $30, $e1, $cd        ;; 00:3b45 ????????
-    db   $27, $37, $c9                                 ;; 00:3b4d ???
+    ld   A, [HL+]                                      ;; 00:3b45 $2a
+    inc  A                                             ;; 00:3b46 $3c
+    push HL                                            ;; 00:3b47 $e5
+    call call_00_30db                                  ;; 00:3b48 $cd $db $30
+    pop  HL                                            ;; 00:3b4b $e1
+    call getNextScriptInstruction                      ;; 00:3b4c $cd $27 $37
+    ret                                                ;; 00:3b4f $c9
 
 scriptOpCodeDC:
     push HL                                            ;; 00:3b50 $e5
@@ -8880,11 +9606,33 @@ scriptOpCodeC5:
     ret                                                ;; 00:3b75 $c9
 
 scriptOpCodeDE:
-    db   $e5, $21, $f0, $d6, $7e, $a7, $28, $03        ;; 00:3b76 ????????
-    db   $35, $20, $18, $3e, $80, $ea, $ef, $d6        ;; 00:3b7e ????????
-    db   $ea, $f1, $d6, $21, $c5, $d6, $06, $18        ;; 00:3b86 ????????
-    db   $2a, $fe, $80, $28, $03, $05, $20, $f8        ;; 00:3b8e ????????
-    db   $af, $2b, $77, $e1, $cd, $27, $37, $c9        ;; 00:3b96 ????????
+    push HL                                            ;; 00:3b76 $e5
+    ld   HL, wD6F0                                     ;; 00:3b77 $21 $f0 $d6
+    ld   A, [HL]                                       ;; 00:3b7a $7e
+    and  A, A                                          ;; 00:3b7b $a7
+    jr   Z, .jr_00_3b81                                ;; 00:3b7c $28 $03
+    dec  [HL]                                          ;; 00:3b7e $35
+    jr   NZ, .jr_00_3b99                               ;; 00:3b7f $20 $18
+.jr_00_3b81:
+    ld   A, $80                                        ;; 00:3b81 $3e $80
+    ld   [wD6EF], A                                    ;; 00:3b83 $ea $ef $d6
+    ld   [wD6F1], A                                    ;; 00:3b86 $ea $f1 $d6
+    ld   HL, wItemInventory                            ;; 00:3b89 $21 $c5 $d6
+    ld   B, $18                                        ;; 00:3b8c $06 $18
+.jr_00_3b8e:
+    ld   A, [HL+]                                      ;; 00:3b8e $2a
+    cp   A, $80                                        ;; 00:3b8f $fe $80
+    jr   Z, .jr_00_3b96                                ;; 00:3b91 $28 $03
+    dec  B                                             ;; 00:3b93 $05
+    jr   NZ, .jr_00_3b8e                               ;; 00:3b94 $20 $f8
+.jr_00_3b96:
+    xor  A, A                                          ;; 00:3b96 $af
+    dec  HL                                            ;; 00:3b97 $2b
+    ld   [HL], A                                       ;; 00:3b98 $77
+.jr_00_3b99:
+    pop  HL                                            ;; 00:3b99 $e1
+    call getNextScriptInstruction                      ;; 00:3b9a $cd $27 $37
+    ret                                                ;; 00:3b9d $c9
 
 scriptOpCodeC8:
     jp   FullReset                                     ;; 00:3b9e $c3 $50 $01
@@ -9437,7 +10185,8 @@ call_00_3efb:
     ret                                                ;; 00:3f00 $c9
 
 scriptOpCodeDF:
-    db   $cd, $27, $37, $c9                            ;; 00:3f01 ????
+    call getNextScriptInstruction                      ;; 00:3f01 $cd $27 $37
+    ret                                                ;; 00:3f04 $c9
 
 call_00_3f05:
     ld   A, [wD6E9]                                    ;; 00:3f05 $fa $e9 $d6
