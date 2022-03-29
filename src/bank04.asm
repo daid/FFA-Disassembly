@@ -701,7 +701,7 @@ call_04_43cd:
     ld   L, E                                          ;; 04:43e3 $6b
     ld   DE, $fefe                                     ;; 04:43e4 $11 $fe $fe
     ld   A, $00                                        ;; 04:43e7 $3e $00
-    call call_00_0a74                                  ;; 04:43e9 $cd $74 $0a
+    call createObject                                  ;; 04:43e9 $cd $74 $0a
     pop  HL                                            ;; 04:43ec $e1
     ld   [HL], A                                       ;; 04:43ed $77
     ld   DE, $06                                       ;; 04:43ee $11 $06 $00

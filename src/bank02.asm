@@ -3877,7 +3877,7 @@ jp_02_5922:
 
 jp_02_5959:
     call call_02_6da7                                  ;; 02:5959 $cd $a7 $6d
-    ld   HL, wD79D                                     ;; 02:595c $21 $9d $d7
+    ld   HL, wBoyName                                  ;; 02:595c $21 $9d $d7
     call call_00_3777                                  ;; 02:595f $cd $77 $37
     dec  E                                             ;; 02:5962 $1d
     dec  E                                             ;; 02:5963 $1d
@@ -5173,13 +5173,13 @@ jp_02_6943:
     push DE                                            ;; 02:694f $d5
     push BC                                            ;; 02:6950 $c5
     ld   HL, wD7A7                                     ;; 02:6951 $21 $a7 $d7
-    ld   DE, wD79D                                     ;; 02:6954 $11 $9d $d7
+    ld   DE, wBoyName                                  ;; 02:6954 $11 $9d $d7
     ld   B, $04                                        ;; 02:6957 $06 $04
     ld   A, [wD874]                                    ;; 02:6959 $fa $74 $d8
     bit  5, A                                          ;; 02:695c $cb $6f
     push AF                                            ;; 02:695e $f5
     jr   Z, .jr_02_6964                                ;; 02:695f $28 $03
-    ld   DE, wD7A2                                     ;; 02:6961 $11 $a2 $d7
+    ld   DE, wGirlName                                 ;; 02:6961 $11 $a2 $d7
 .jr_02_6964:
     ld   A, [HL+]                                      ;; 02:6964 $2a
     ld   [DE], A                                       ;; 02:6965 $12
@@ -6635,10 +6635,10 @@ jp_02_71fb:
     ld   [wD84B], A                                    ;; 02:7240 $ea $4b $d8
     push HL                                            ;; 02:7243 $e5
     ld   DE, wD7AA                                     ;; 02:7244 $11 $aa $d7
-    ld   HL, wD79D                                     ;; 02:7247 $21 $9d $d7
+    ld   HL, wBoyName                                  ;; 02:7247 $21 $9d $d7
     ld   B, $04                                        ;; 02:724a $06 $04
     call call_02_7451                                  ;; 02:724c $cd $51 $74
-    ld   HL, wD7A2                                     ;; 02:724f $21 $a2 $d7
+    ld   HL, wGirlName                                 ;; 02:724f $21 $a2 $d7
     ld   B, $04                                        ;; 02:7252 $06 $04
     call call_02_7451                                  ;; 02:7254 $cd $51 $74
     call call_02_7735                                  ;; 02:7257 $cd $35 $77
@@ -6750,7 +6750,7 @@ call_02_7322:
     ld   HL, wD613                                     ;; 02:7322 $21 $13 $d6
     push HL                                            ;; 02:7325 $e5
     ld   HL, wD7AA                                     ;; 02:7326 $21 $aa $d7
-    ld   DE, wD79D                                     ;; 02:7329 $11 $9d $d7
+    ld   DE, wBoyName                                  ;; 02:7329 $11 $9d $d7
     ld   B, $04                                        ;; 02:732c $06 $04
     call call_02_7451                                  ;; 02:732e $cd $51 $74
     xor  A, A                                          ;; 02:7331 $af

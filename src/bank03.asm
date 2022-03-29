@@ -8,7 +8,7 @@ SECTION "bank03", ROMX[$4000], BANK[$03]
 ;@call_to_bank_jumptable
     call_to_bank_target call_03_402c                   ;; 03:4000 ..
     call_to_bank_target call_03_4af5                   ;; 03:4002 ..
-    call_to_bank_target call_03_42bd                   ;; 03:4004 ..
+    call_to_bank_target spawnNPC                       ;; 03:4004 ..
     call_to_bank_target call_03_435f                   ;; 03:4006 ..
     call_to_bank_target call_03_44ed                   ;; 03:4008 ..
     call_to_bank_target call_03_444a                   ;; 03:400a ..
@@ -499,7 +499,9 @@ call_03_42ac:
     pop  DE                                            ;; 03:42bb $d1
     ret                                                ;; 03:42bc $c9
 
-call_03_42bd:
+; Create an NPC object.
+; C=NPC type
+spawnNPC:
     push DE                                            ;; 03:42bd $d5
     ld   A, C                                          ;; 03:42be $79
     ld   L, A                                          ;; 03:42bf $6f
@@ -523,7 +525,7 @@ call_03_42bd:
     ld   H, [HL]                                       ;; 03:42d6 $66
     ld   L, A                                          ;; 03:42d7 $6f
     ld   A, $02                                        ;; 03:42d8 $3e $02
-    call call_00_0a74                                  ;; 03:42da $cd $74 $0a
+    call createObject                                  ;; 03:42da $cd $74 $0a
     cp   A, $ff                                        ;; 03:42dd $fe $ff
     jr   Z, .jr_03_435b                                ;; 03:42df $28 $7a
     push BC                                            ;; 03:42e1 $c5
@@ -684,7 +686,7 @@ call_03_43c5:
     call call_03_435f                                  ;; 03:43d3 $cd $5f $43
     pop  DE                                            ;; 03:43d6 $d1
     pop  BC                                            ;; 03:43d7 $c1
-    call call_03_42bd                                  ;; 03:43d8 $cd $bd $42
+    call spawnNPC                                      ;; 03:43d8 $cd $bd $42
     ret                                                ;; 03:43db $c9
 
 call_03_43dc:
@@ -966,7 +968,7 @@ call_03_44ed:
     jr   Z, .jr_03_454b                                ;; 03:453d $28 $0c
     push BC                                            ;; 03:453f $c5
     push HL                                            ;; 03:4540 $e5
-    call call_03_42bd                                  ;; 03:4541 $cd $bd $42
+    call spawnNPC                                      ;; 03:4541 $cd $bd $42
     pop  HL                                            ;; 03:4544 $e1
     pop  BC                                            ;; 03:4545 $c1
     dec  B                                             ;; 03:4546 $05
@@ -979,7 +981,7 @@ call_03_44ed:
     call call_03_4488                                  ;; 03:454e $cd $88 $44
     jr   Z, .jr_03_454b                                ;; 03:4551 $28 $f8
     push BC                                            ;; 03:4553 $c5
-    call call_03_42bd                                  ;; 03:4554 $cd $bd $42
+    call spawnNPC                                      ;; 03:4554 $cd $bd $42
     pop  BC                                            ;; 03:4557 $c1
     dec  B                                             ;; 03:4558 $05
     jr   NZ, .jr_03_454b                               ;; 03:4559 $20 $f0
@@ -1522,7 +1524,7 @@ call_03_480a:
     pop  DE                                            ;; 03:48ae $d1
     pop  AF                                            ;; 03:48af $f1
     ld   C, A                                          ;; 03:48b0 $4f
-    call call_03_42bd                                  ;; 03:48b1 $cd $bd $42
+    call spawnNPC                                      ;; 03:48b1 $cd $bd $42
     ret                                                ;; 03:48b4 $c9
 .jr_03_48b5:
     pop  HL                                            ;; 03:48b5 $e1
@@ -4345,6 +4347,7 @@ data_03_59fe:
 
 ;@data amount=191 format=bbbbbbbbbbbbbbbbbbbbwbb
 ;NPC related data, format unknown, source of the index unknown.
+; Offset $08: Collision flags, see wObjectRuntimeData
 ; Offset $14: script index value (2 bytes)
 data_03_5f5a:
     data_bbbbbbbbbbbbbbbbbbbbwbb $a9, $00, $74, $02, $00, $36, $5a, $7b, $93, $2c, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $003d, $00, $00 ;; 03:5f5a ????????????????????????

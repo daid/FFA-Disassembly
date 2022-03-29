@@ -465,7 +465,7 @@ call_09_4239:
     push AF                                            ;; 09:4269 $f5
     push BC                                            ;; 09:426a $c5
     ld   A, $08                                        ;; 09:426b $3e $08
-    call call_00_0a74                                  ;; 09:426d $cd $74 $0a
+    call createObject                                  ;; 09:426d $cd $74 $0a
     ld   A, C                                          ;; 09:4270 $79
     cp   A, $ff                                        ;; 09:4271 $fe $ff
     pop  BC                                            ;; 09:4273 $c1

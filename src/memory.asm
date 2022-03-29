@@ -312,6 +312,16 @@ wC1C9:
 wC1CA:
     ds 54                                              ;; c1ca
 
+; 16 bytes per object, or potentially 16x16 sprite?
+; 00: Lower nibble, orientation. $80=walking, other bits unknown ($ff indicates unused)
+; 01: Unknown
+; 02: Something collision related ($01: blocked by walls, $80 blocks player, $10 can be pushed by player)
+; 03: Y position
+; 04: X position
+; 05-06: Something sprite related
+; 07-08: Shadow OAM memory location
+; 09-15: Unknown
+; (wC270 seems just more of this data)
 wObjectRuntimeData:
     ds 112                                             ;; c200
 
@@ -889,10 +899,10 @@ wD791:
 wD793:
     ds 10                                              ;; d793
 
-wD79D:
+wBoyName:
     ds 5                                               ;; d79d
 
-wD7A2:
+wGirlName:
     ds 5                                               ;; d7a2
 
 wD7A7:

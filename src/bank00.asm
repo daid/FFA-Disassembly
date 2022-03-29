@@ -1733,7 +1733,7 @@ call_00_0a33:
     call call_00_2c02                                  ;; 00:0a70 $cd $02 $2c
     ret                                                ;; 00:0a73 $c9
 
-call_00_0a74:
+createObject:
     push DE                                            ;; 00:0a74 $d5
     push HL                                            ;; 00:0a75 $e5
     push AF                                            ;; 00:0a76 $f5
@@ -2008,7 +2008,7 @@ call_00_0bd1:
     ld   A, $01                                        ;; 00:0bfc $3e $01
     ld   DE, $fefe                                     ;; 00:0bfe $11 $fe $fe
     ld   HL, $bc5                                      ;; 00:0c01 $21 $c5 $0b
-    call call_00_0a74                                  ;; 00:0c04 $cd $74 $0a
+    call createObject                                  ;; 00:0c04 $cd $74 $0a
     pop  BC                                            ;; 00:0c07 $c1
     dec  B                                             ;; 00:0c08 $05
     jr   NZ, .jr_00_0bfb                               ;; 00:0c09 $20 $f0
@@ -2519,7 +2519,7 @@ call_00_0ece:
     ld   HL, $ebe                                      ;; 00:0ed7 $21 $be $0e
     ld   C, $07                                        ;; 00:0eda $0e $07
     ld   A, $00                                        ;; 00:0edc $3e $00
-    call call_00_0a74                                  ;; 00:0ede $cd $74 $0a
+    call createObject                                  ;; 00:0ede $cd $74 $0a
     ld   [wD49A], A                                    ;; 00:0ee1 $ea $9a $d4
     ld   C, A                                          ;; 00:0ee4 $4f
     pop  AF                                            ;; 00:0ee5 $f1
@@ -6449,9 +6449,9 @@ call_00_27d7:
     push AF                                            ;; 00:27d7 $f5
     jp_to_bank 03, call_03_4af5                        ;; 00:27d8 $3e $01 $c3 $35 $1f
 
-call_00_27dd:
+spawnNPC_trampoline:
     push AF                                            ;; 00:27dd $f5
-    jp_to_bank 03, call_03_42bd                        ;; 00:27de $3e $02 $c3 $35 $1f
+    jp_to_bank 03, spawnNPC                            ;; 00:27de $3e $02 $c3 $35 $1f
 
 call_00_27e3:
     push AF                                            ;; 00:27e3 $f5
@@ -7221,9 +7221,9 @@ call_00_2c2d:
     db   $7c, $7e, $00, $7c, $7e, $00, $7c, $7e        ;; 00:2cd3 ????????
     db   $0e, $0c, $cd, $dd, $27, $c9                  ;; 00:2cdb ??????
 
-call_00_2ce1:
+spawnEmptyChest:
     ld   C, $0f                                        ;; 00:2ce1 $0e $0f
-    call call_00_27dd                                  ;; 00:2ce3 $cd $dd $27
+    call spawnNPC_trampoline                           ;; 00:2ce3 $cd $dd $27
     ret                                                ;; 00:2ce6 $c9
 
 scriptOpCodeAF:
@@ -7236,16 +7236,16 @@ scriptOpCodeAF:
     push DE                                            ;; 00:2cf1 $d5
     call call_00_2d13                                  ;; 00:2cf2 $cd $13 $2d
     pop  DE                                            ;; 00:2cf5 $d1
-    call call_00_2ce1                                  ;; 00:2cf6 $cd $e1 $2c
+    call spawnEmptyChest                               ;; 00:2cf6 $cd $e1 $2c
     ld   A, $0f                                        ;; 00:2cf9 $3e $0f
     call playSFX                                       ;; 00:2cfb $cd $7d $29
     pop  HL                                            ;; 00:2cfe $e1
     call getNextScriptInstruction                      ;; 00:2cff $cd $27 $37
     ret                                                ;; 00:2d02 $c9
 
-call_00_2d03:
+spawnSnowman:
     ld   C, $00                                        ;; 00:2d03 $0e $00
-    call call_00_27dd                                  ;; 00:2d05 $cd $dd $27
+    call spawnNPC_trampoline                           ;; 00:2d05 $cd $dd $27
     cp   A, $ff                                        ;; 00:2d08 $fe $ff
     ret  Z                                             ;; 00:2d0a $c8
     push AF                                            ;; 00:2d0b $f5
@@ -8611,11 +8611,11 @@ call_00_3547:
     ret                                                ;; 00:357c $c9
 
 call_00_357d:
-    ld   HL, wD79D                                     ;; 00:357d $21 $9d $d7
+    ld   HL, wBoyName                                  ;; 00:357d $21 $9d $d7
     jr   jr_00_3585                                    ;; 00:3580 $18 $03
 
 call_00_3582:
-    ld   HL, wD7A2                                     ;; 00:3582 $21 $a2 $d7
+    ld   HL, wGirlName                                 ;; 00:3582 $21 $a2 $d7
 
 jr_00_3585:
     ld   A, H                                          ;; 00:3585 $7c
@@ -9650,7 +9650,7 @@ scriptOpCodeC8:
     dw   call_00_3bcb                                  ;; 00:3bb5 ??
 
 call_00_3bb7:
-    ld   HL, wD79D                                     ;; 00:3bb7 $21 $9d $d7
+    ld   HL, wBoyName                                  ;; 00:3bb7 $21 $9d $d7
     ld   B, $0a                                        ;; 00:3bba $06 $0a
     xor  A, A                                          ;; 00:3bbc $af
 .jr_00_3bbd:

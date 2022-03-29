@@ -2312,7 +2312,7 @@ call_01_5090:
     ld   HL, data_01_4752                              ;; 01:5097 $21 $52 $47
     ld   A, $01                                        ;; 01:509a $3e $01
     ld   C, $c9                                        ;; 01:509c $0e $c9
-    call call_00_0a74                                  ;; 01:509e $cd $74 $0a
+    call createObject                                  ;; 01:509e $cd $74 $0a
     ld   A, $00                                        ;; 01:50a1 $3e $00
     ld   [wC0A0], A                                    ;; 01:50a3 $ea $a0 $c0
     ld   A, $ff                                        ;; 01:50a6 $3e $ff
@@ -4502,7 +4502,7 @@ call_01_5cc6:
     call call_00_0ae3                                  ;; 01:5d26 $cd $e3 $0a
     pop  DE                                            ;; 01:5d29 $d1
     push DE                                            ;; 01:5d2a $d5
-    call call_00_2d03                                  ;; 01:5d2b $cd $03 $2d
+    call spawnSnowman                                  ;; 01:5d2b $cd $03 $2d
     ld   [wCF5D], A                                    ;; 01:5d2e $ea $5d $cf
     call call_01_5d82                                  ;; 01:5d31 $cd $82 $5d
     pop  DE                                            ;; 01:5d34 $d1
@@ -4544,7 +4544,7 @@ call_01_5d64:
     ld   A, $01                                        ;; 01:5d69 $3e $01
     ld   DE, $fefe                                     ;; 01:5d6b $11 $fe $fe
     ld   HL, $2e8d                                     ;; 01:5d6e $21 $8d $2e
-    call call_00_0a74                                  ;; 01:5d71 $cd $74 $0a
+    call createObject                                  ;; 01:5d71 $cd $74 $0a
     pop  BC                                            ;; 01:5d74 $c1
     cp   A, $07                                        ;; 01:5d75 $fe $07
     jr   NC, .jr_01_5d7d                               ;; 01:5d77 $30 $04
