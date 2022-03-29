@@ -53,15 +53,22 @@ def script_pointers(memory, addr, *, amount):
         # !wScriptFlagXX.Y which is a "not" for jump checks.
         RomInfo.macros["FLAG_TO_IDX"] = r"""
 assert STRSUB("\1", STRLEN("\1") - 1, 1) == "."
+LBL equs STRSUB("\1", 1, STRLEN("\1") - 2)
+IDX = STRSUB("\1", STRLEN("\1")) - "0"
+  db (LBL - wScriptFlags) * 8 + (7 - IDX)
+PURGE LBL
+"""
+        RomInfo.macros["FLAG_CONDITION_TO_IDX"] = r"""
+assert STRSUB("\1", STRLEN("\1") - 1, 1) == "."
 IF STRCMP(STRSUB("\1", 1, 1), "!") == 0
 LBL equs STRSUB("\1", 2, STRLEN("\1") - 3)
 IDX = STRSUB("\1", STRLEN("\1")) - "0"
-  db (LBL - wScriptFlags) * 8 + (7 - IDX) | $80
+  db (LBL - wScriptFlags) * 8 + (7 - IDX)
 PURGE LBL
 ELSE
 LBL equs STRSUB("\1", 1, STRLEN("\1") - 2)
 IDX = STRSUB("\1", STRLEN("\1")) - "0"
-  db (LBL - wScriptFlags) * 8 + (7 - IDX)
+  db (LBL - wScriptFlags) * 8 + (7 - IDX) | $80
 PURGE LBL
 ENDC
 """
@@ -287,7 +294,7 @@ OPCODES = {
     0x06: ("sNOP_06",),
     0x07: ("sNOP_07",),
 
-    0x08: ("sIF_08_JR", "REPT _NARG - 1\n FLAG_TO_IDX \\1\n SHIFT\nENDR\n db $00\n db \\1 - @ - 1", "FLAG_LIST", "REL_LABEL"),
+    0x08: ("sIF_FLAG_JR", "REPT _NARG - 1\n FLAG_CONDITION_TO_IDX \\1\n SHIFT\nENDR\n db $00\n db \\1 - @ - 1", "FLAG_LIST", "REL_LABEL"),
     0x09: ("sIF_09_JR", IF_MACRO, "LIST", "REL_LABEL"),
     0x0A: ("sIF_0A_JR", IF_MACRO, "LIST", "REL_LABEL"),
     0x0B: ("sIF_0B_JR", IF_MACRO, "LIST", "REL_LABEL"),
@@ -632,7 +639,7 @@ class ScriptBlock(Block):
                 elif t == "FLAG_LIST":
                     while self.memory.byte(file.addr + size) != 0:
                         flag = self.memory.byte(file.addr + size)
-                        is_not = flag & 0x80 == 0x80
+                        is_not = (flag & 0x80) != 0x80
                         flag = flag & 0x7F
                         label = RomInfo.getWRam().getLabel(0xD7C6 + flag // 8)
                         if is_not:
