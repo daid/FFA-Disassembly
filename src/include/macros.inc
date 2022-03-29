@@ -340,26 +340,6 @@ sGIVE_XP: MACRO
 db $d2
 dw \1
 ENDM
-sIF_09_JR: MACRO
-db $09
-
-REPT _NARG - 1
-    db \1
-    SHIFT
-ENDR
-    db $00
-    db \1 - @ - 1
-ENDM
-sIF_0A_JR: MACRO
-db $0a
-
-REPT _NARG - 1
-    db \1
-    SHIFT
-ENDR
-    db $00
-    db \1 - @ - 1
-ENDM
 sIF_0B_JR: MACRO
 db $0b
 
@@ -388,6 +368,26 @@ REPT _NARG - 1
 ENDR
  db $00
  db \1 - @ - 1
+ENDM
+sIF_NOT_EQUIPED_JR: MACRO
+db $09
+
+REPT _NARG - 1
+    db \1
+    SHIFT
+ENDR
+    db $00
+    db \1 - @ - 1
+ENDM
+sIF_NOT_INVENTORY_JR: MACRO
+db $0a
+
+REPT _NARG - 1
+    db \1
+    SHIFT
+ENDR
+    db $00
+    db \1 - @ - 1
 ENDM
 sJR: MACRO
 db $01

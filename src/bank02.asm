@@ -1374,9 +1374,9 @@ call_02_487e:
 
 call_02_4889:
     ld   HL, wD6F1                                     ;; 02:4889 $21 $f1 $d6
-    ld   A, [wD6EF]                                    ;; 02:488c $fa $ef $d6
+    ld   A, [wEquipedItem]                             ;; 02:488c $fa $ef $d6
     ld   [HL+], A                                      ;; 02:488f $22
-    ld   A, [wD6E9]                                    ;; 02:4890 $fa $e9 $d6
+    ld   A, [wEquipedWeapon]                           ;; 02:4890 $fa $e9 $d6
     and  A, $7f                                        ;; 02:4893 $e6 $7f
     add  A, $41                                        ;; 02:4895 $c6 $41
     ld   [HL], A                                       ;; 02:4897 $77
@@ -2739,7 +2739,7 @@ call_02_523c:
     inc  A                                             ;; 02:523f $3c
     ld   C, A                                          ;; 02:5240 $4f
     ld   HL, wItemInventory                            ;; 02:5241 $21 $c5 $d6
-    ld   DE, wD69B                                     ;; 02:5244 $11 $9b $d6
+    ld   DE, wItemInventoryAmount                      ;; 02:5244 $11 $9b $d6
     ld   B, $11                                        ;; 02:5247 $06 $11
     call call_02_525c                                  ;; 02:5249 $cd $5c $52
     and  A, A                                          ;; 02:524c $a7
@@ -2954,7 +2954,7 @@ capAtLevel100:
 
 call_02_53bb:
     ld   HL, wItemInventory                            ;; 02:53bb $21 $c5 $d6
-    ld   DE, wD69B                                     ;; 02:53be $11 $9b $d6
+    ld   DE, wItemInventoryAmount                      ;; 02:53be $11 $9b $d6
     ld   B, $10                                        ;; 02:53c1 $06 $10
     ld   C, A                                          ;; 02:53c3 $4f
     call call_02_53e2                                  ;; 02:53c4 $cd $e2 $53
@@ -3024,7 +3024,7 @@ call_02_5419:
     ld   HL, wItemInventory                            ;; 02:541c $21 $c5 $d6
     ld   DE, data_02_5e62                              ;; 02:541f $11 $62 $5e
     push DE                                            ;; 02:5422 $d5
-    ld   DE, wD69B                                     ;; 02:5423 $11 $9b $d6
+    ld   DE, wItemInventoryAmount                      ;; 02:5423 $11 $9b $d6
     jr   jr_02_5435                                    ;; 02:5426 $18 $0d
 
 call_02_5428:
@@ -3151,7 +3151,7 @@ jp_02_54a6:
 .jr_02_54e1:
     ld   [DE], A                                       ;; 02:54e1 $12
     push HL                                            ;; 02:54e2 $e5
-    ld   HL, wD69B                                     ;; 02:54e3 $21 $9b $d6
+    ld   HL, wItemInventoryAmount                      ;; 02:54e3 $21 $9b $d6
     add  HL, BC                                        ;; 02:54e6 $09
     ld   A, [HL]                                       ;; 02:54e7 $7e
     pop  HL                                            ;; 02:54e8 $e1
@@ -3572,11 +3572,11 @@ call_02_5709:
     add  HL, BC                                        ;; 02:5754 $09
     ld   A, [HL]                                       ;; 02:5755 $7e
     push AF                                            ;; 02:5756 $f5
-    ld   A, [wD6EF]                                    ;; 02:5757 $fa $ef $d6
+    ld   A, [wEquipedItem]                             ;; 02:5757 $fa $ef $d6
     cp   A, $80                                        ;; 02:575a $fe $80
     jr   Z, .jr_02_5781                                ;; 02:575c $28 $23
     ld   HL, wItemInventory                            ;; 02:575e $21 $c5 $d6
-    ld   DE, wD69B                                     ;; 02:5761 $11 $9b $d6
+    ld   DE, wItemInventoryAmount                      ;; 02:5761 $11 $9b $d6
     ld   B, $18                                        ;; 02:5764 $06 $18
 .jr_02_5766:
     ld   A, [HL+]                                      ;; 02:5766 $2a
@@ -3586,7 +3586,7 @@ call_02_5709:
     dec  B                                             ;; 02:576c $05
     jr   NZ, .jr_02_5766                               ;; 02:576d $20 $f7
 .jr_02_576f:
-    ld   A, [wD6EF]                                    ;; 02:576f $fa $ef $d6
+    ld   A, [wEquipedItem]                             ;; 02:576f $fa $ef $d6
     cp   A, $09                                        ;; 02:5772 $fe $09
     jr   C, .jr_02_5778                                ;; 02:5774 $38 $02
     sub  A, $08                                        ;; 02:5776 $d6 $08
@@ -3594,7 +3594,7 @@ call_02_5709:
     dec  HL                                            ;; 02:5778 $2b
     ld   [HL], A                                       ;; 02:5779 $77
     dec  DE                                            ;; 02:577a $1b
-    ld   A, [wD6F0]                                    ;; 02:577b $fa $f0 $d6
+    ld   A, [wEquipedItemAmount]                       ;; 02:577b $fa $f0 $d6
     ld   [DE], A                                       ;; 02:577e $12
     jr   .jr_02_578f                                   ;; 02:577f $18 $0e
 .jr_02_5781:
@@ -3604,11 +3604,11 @@ call_02_5709:
     ld   A, [wD892]                                    ;; 02:5786 $fa $92 $d8
     ld   L, A                                          ;; 02:5789 $6f
     add  HL, BC                                        ;; 02:578a $09
-    ld   A, [wD6F0]                                    ;; 02:578b $fa $f0 $d6
+    ld   A, [wEquipedItemAmount]                       ;; 02:578b $fa $f0 $d6
     ld   [HL], A                                       ;; 02:578e $77
 .jr_02_578f:
     pop  AF                                            ;; 02:578f $f1
-    ld   [wD6F0], A                                    ;; 02:5790 $ea $f0 $d6
+    ld   [wEquipedItemAmount], A                       ;; 02:5790 $ea $f0 $d6
     pop  HL                                            ;; 02:5793 $e1
     ld   A, $80                                        ;; 02:5794 $3e $80
     ld   [HL], A                                       ;; 02:5796 $77
@@ -4251,7 +4251,7 @@ call_02_5b8e:
 
 call_02_5b9d:
     push HL                                            ;; 02:5b9d $e5
-    ld   A, [wD6E9]                                    ;; 02:5b9e $fa $e9 $d6
+    ld   A, [wEquipedWeapon]                           ;; 02:5b9e $fa $e9 $d6
     ld   HL, data_02_61f6                              ;; 02:5ba1 $21 $f6 $61
     call call_02_7682                                  ;; 02:5ba4 $cd $82 $76
     ld   A, [HL]                                       ;; 02:5ba7 $7e
@@ -4714,7 +4714,7 @@ call_02_664a:
     ret                                                ;; 02:6655 $c9
 
 call_02_6656:
-    ld   A, [wD6EF]                                    ;; 02:6656 $fa $ef $d6
+    ld   A, [wEquipedItem]                             ;; 02:6656 $fa $ef $d6
     and  A, $7f                                        ;; 02:6659 $e6 $7f
     jr   Z, .jr_02_6675                                ;; 02:665b $28 $18
     cp   A, $09                                        ;; 02:665d $fe $09
@@ -5756,7 +5756,7 @@ call_02_6c98:
     ret                                                ;; 02:6cba $c9
 
 call_02_6cbb:
-    ld   A, [wD6E9]                                    ;; 02:6cbb $fa $e9 $d6
+    ld   A, [wEquipedWeapon]                           ;; 02:6cbb $fa $e9 $d6
     dec  A                                             ;; 02:6cbe $3d
     call call_00_2ed9                                  ;; 02:6cbf $cd $d9 $2e
     ld   A, [wD84A]                                    ;; 02:6cc2 $fa $4a $d8
@@ -5774,7 +5774,7 @@ call_02_6cbb:
     ret  Z                                             ;; 02:6cd7 $c8
     dec  A                                             ;; 02:6cd8 $3d
     add  A, B                                          ;; 02:6cd9 $80
-    ld   [wD6EF], A                                    ;; 02:6cda $ea $ef $d6
+    ld   [wEquipedItem], A                             ;; 02:6cda $ea $ef $d6
     dec  A                                             ;; 02:6cdd $3d
     and  A, $7f                                        ;; 02:6cde $e6 $7f
     call call_00_2edf                                  ;; 02:6ce0 $cd $df $2e
@@ -5929,7 +5929,7 @@ call_02_6da7:
 
 call_02_6dcc:
     push HL                                            ;; 02:6dcc $e5
-    ld   A, [wD6E9]                                    ;; 02:6dcd $fa $e9 $d6
+    ld   A, [wEquipedWeapon]                           ;; 02:6dcd $fa $e9 $d6
     jr   jr_02_6deb                                    ;; 02:6dd0 $18 $19
 
 call_02_6dd2:
@@ -5959,7 +5959,7 @@ jr_02_6deb:
     ret                                                ;; 02:6df3 $c9
 
 call_02_6df4:
-    ld   A, [wD6EF]                                    ;; 02:6df4 $fa $ef $d6
+    ld   A, [wEquipedItem]                             ;; 02:6df4 $fa $ef $d6
     cp   A, $09                                        ;; 02:6df7 $fe $09
     jr   C, .jr_02_6e10                                ;; 02:6df9 $38 $15
     push HL                                            ;; 02:6dfb $e5
@@ -5995,7 +5995,7 @@ call_02_6df4:
 call_02_6e25:
     ld   B, $2e                                        ;; 02:6e25 $06 $2e
     xor  A, A                                          ;; 02:6e27 $af
-    ld   HL, wD69B                                     ;; 02:6e28 $21 $9b $d6
+    ld   HL, wItemInventoryAmount                      ;; 02:6e28 $21 $9b $d6
 .jr_02_6e2b:
     ld   [HL+], A                                      ;; 02:6e2b $22
     dec  B                                             ;; 02:6e2c $05
@@ -6006,7 +6006,7 @@ call_02_6e25:
     ld   [HL+], A                                      ;; 02:6e34 $22
     dec  B                                             ;; 02:6e35 $05
     jr   NZ, .jr_02_6e34                               ;; 02:6e36 $20 $fc
-    ld   DE, wD6E9                                     ;; 02:6e38 $11 $e9 $d6
+    ld   DE, wEquipedWeapon                            ;; 02:6e38 $11 $e9 $d6
     ld   HL, data_02_6f10                              ;; 02:6e3b $21 $10 $6f
     ld   B, $06                                        ;; 02:6e3e $06 $06
 .jr_02_6e40:
@@ -6016,7 +6016,7 @@ call_02_6e25:
     dec  B                                             ;; 02:6e43 $05
     jr   NZ, .jr_02_6e40                               ;; 02:6e44 $20 $fa
     ld   B, $06                                        ;; 02:6e46 $06 $06
-    ld   HL, wD6E9                                     ;; 02:6e48 $21 $e9 $d6
+    ld   HL, wEquipedWeapon                            ;; 02:6e48 $21 $e9 $d6
     ld   DE, wD6BF                                     ;; 02:6e4b $11 $bf $d6
 .jr_02_6e4e:
     ld   A, [HL+]                                      ;; 02:6e4e $2a
@@ -6031,9 +6031,9 @@ call_02_6e25:
     dec  B                                             ;; 02:6e5c $05
     jr   NZ, .jr_02_6e4e                               ;; 02:6e5d $20 $ef
     ld   A, $80                                        ;; 02:6e5f $3e $80
-    ld   [wD6EF], A                                    ;; 02:6e61 $ea $ef $d6
+    ld   [wEquipedItem], A                             ;; 02:6e61 $ea $ef $d6
     xor  A, A                                          ;; 02:6e64 $af
-    ld   [wD6F0], A                                    ;; 02:6e65 $ea $f0 $d6
+    ld   [wEquipedItemAmount], A                       ;; 02:6e65 $ea $f0 $d6
     ld   B, $04                                        ;; 02:6e68 $06 $04
     ld   A, $02                                        ;; 02:6e6a $3e $02
     ld   HL, wStatStamina                              ;; 02:6e6c $21 $c1 $d7
@@ -6489,7 +6489,7 @@ call_02_714b:
 
 call_02_7156:
     push HL                                            ;; 02:7156 $e5
-    ld   A, [wD6E9]                                    ;; 02:7157 $fa $e9 $d6
+    ld   A, [wEquipedWeapon]                           ;; 02:7157 $fa $e9 $d6
     ld   HL, data_02_61f4                              ;; 02:715a $21 $f4 $61
     call call_02_7174                                  ;; 02:715d $cd $74 $71
     ld   [wD7D7], A                                    ;; 02:7160 $ea $d7 $d7
@@ -6498,7 +6498,7 @@ call_02_7156:
 
 call_02_7165:
     push HL                                            ;; 02:7165 $e5
-    ld   A, [wD6EF]                                    ;; 02:7166 $fa $ef $d6
+    ld   A, [wEquipedItem]                             ;; 02:7166 $fa $ef $d6
     ld   HL, data_02_5de4                              ;; 02:7169 $21 $e4 $5d
     call call_02_7174                                  ;; 02:716c $cd $74 $71
     pop  HL                                            ;; 02:716f $e1
@@ -6540,7 +6540,7 @@ call_02_7185:
     ret                                                ;; 02:71a1 $c9
 
 call_02_71a2:
-    ld   A, [wD6EF]                                    ;; 02:71a2 $fa $ef $d6
+    ld   A, [wEquipedItem]                             ;; 02:71a2 $fa $ef $d6
     ld   [wD88B], A                                    ;; 02:71a5 $ea $8b $d8
     and  A, $7f                                        ;; 02:71a8 $e6 $7f
     cp   A, $09                                        ;; 02:71aa $fe $09
@@ -6550,14 +6550,14 @@ call_02_71a2:
     ld   A, [HL]                                       ;; 02:71b3 $7e
     and  A, $80                                        ;; 02:71b4 $e6 $80
     ret  Z                                             ;; 02:71b6 $c8
-    ld   HL, wD6F0                                     ;; 02:71b7 $21 $f0 $d6
+    ld   HL, wEquipedItemAmount                        ;; 02:71b7 $21 $f0 $d6
     ld   A, [HL]                                       ;; 02:71ba $7e
     and  A, A                                          ;; 02:71bb $a7
     jr   Z, .jr_02_71d3                                ;; 02:71bc $28 $15
     dec  [HL]                                          ;; 02:71be $35
     ret  NZ                                            ;; 02:71bf $c0
     ld   A, $80                                        ;; 02:71c0 $3e $80
-    ld   [wD6EF], A                                    ;; 02:71c2 $ea $ef $d6
+    ld   [wEquipedItem], A                             ;; 02:71c2 $ea $ef $d6
     ld   [wD6F1], A                                    ;; 02:71c5 $ea $f1 $d6
     ld   HL, wItemInventory                            ;; 02:71c8 $21 $c5 $d6
 .jr_02_71cb:
@@ -6655,7 +6655,7 @@ jp_02_71fb:
     ld   DE, wD6BF                                     ;; 02:726e $11 $bf $d6
     ld   B, $32                                        ;; 02:7271 $06 $32
     call writeDEtimesBtoSRAM                           ;; 02:7273 $cd $48 $74
-    ld   DE, wD69B                                     ;; 02:7276 $11 $9b $d6
+    ld   DE, wItemInventoryAmount                      ;; 02:7276 $11 $9b $d6
     ld   B, $10                                        ;; 02:7279 $06 $10
     call writeDEtimesBtoSRAM                           ;; 02:727b $cd $48 $74
     ld   DE, wD4A7                                     ;; 02:727e $11 $a7 $d4
@@ -6734,7 +6734,7 @@ jp_02_72be:
     ld   DE, wD6BF                                     ;; 02:72fa $11 $bf $d6
     ld   B, $32                                        ;; 02:72fd $06 $32
     call readDEtimesBtoSRAM                            ;; 02:72ff $cd $3f $74
-    ld   DE, wD69B                                     ;; 02:7302 $11 $9b $d6
+    ld   DE, wItemInventoryAmount                      ;; 02:7302 $11 $9b $d6
     ld   B, $10                                        ;; 02:7305 $06 $10
     call readDEtimesBtoSRAM                            ;; 02:7307 $cd $3f $74
     ld   DE, wD633                                     ;; 02:730a $11 $33 $d6
@@ -6899,7 +6899,7 @@ call_02_7322:
 
 call_02_7421:
     call call_02_77ae                                  ;; 02:7421 $cd $ae $77
-    ld   A, [wD6EF]                                    ;; 02:7424 $fa $ef $d6
+    ld   A, [wEquipedItem]                             ;; 02:7424 $fa $ef $d6
     ld   [wD6F1], A                                    ;; 02:7427 $ea $f1 $d6
     and  A, $7f                                        ;; 02:742a $e6 $7f
     dec  A                                             ;; 02:742c $3d
@@ -7473,7 +7473,7 @@ call_02_777d:
     ld   HL, wD6BF                                     ;; 02:7789 $21 $bf $d6
     ld   B, $32                                        ;; 02:778c $06 $32
     call call_02_77a3                                  ;; 02:778e $cd $a3 $77
-    ld   HL, wD69B                                     ;; 02:7791 $21 $9b $d6
+    ld   HL, wItemInventoryAmount                      ;; 02:7791 $21 $9b $d6
     ld   B, $10                                        ;; 02:7794 $06 $10
     call call_02_77a3                                  ;; 02:7796 $cd $a3 $77
     ld   HL, wD4A7                                     ;; 02:7799 $21 $a7 $d4

@@ -295,8 +295,8 @@ OPCODES = {
     0x07: ("sNOP_07",),
 
     0x08: ("sIF_FLAG_JR", "REPT _NARG - 1\n FLAG_CONDITION_TO_IDX \\1\n SHIFT\nENDR\n db $00\n db \\1 - @ - 1", "FLAG_LIST", "REL_LABEL"),
-    0x09: ("sIF_09_JR", IF_MACRO, "LIST", "REL_LABEL"),
-    0x0A: ("sIF_0A_JR", IF_MACRO, "LIST", "REL_LABEL"),
+    0x09: ("sIF_NOT_EQUIPED_JR", IF_MACRO, "LIST", "REL_LABEL"),
+    0x0A: ("sIF_NOT_INVENTORY_JR", IF_MACRO, "LIST", "REL_LABEL"),
     0x0B: ("sIF_0B_JR", IF_MACRO, "LIST", "REL_LABEL"),
     0x0C: ("sIF_0C_JR", IF_MACRO, "LIST", "REL_LABEL"),
 

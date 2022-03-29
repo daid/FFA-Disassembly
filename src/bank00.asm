@@ -8304,7 +8304,7 @@ scriptOpCode08:
     ret                                                ;; 00:338f $c9
 
 scriptOpCode09:
-    ld   DE, wD6E9                                     ;; 00:3390 $11 $e9 $d6
+    ld   DE, wEquipedWeapon                            ;; 00:3390 $11 $e9 $d6
     ld   A, D                                          ;; 00:3393 $7a
     ld   [wD891], A                                    ;; 00:3394 $ea $91 $d8
     ld   A, E                                          ;; 00:3397 $7b
@@ -8343,7 +8343,7 @@ jr_00_33ca:
 
 call_00_33cf:
     push HL                                            ;; 00:33cf $e5
-    ld   HL, wD6E9                                     ;; 00:33d0 $21 $e9 $d6
+    ld   HL, wEquipedWeapon                            ;; 00:33d0 $21 $e9 $d6
     ld   B, $06                                        ;; 00:33d3 $06 $06
     ld   C, $41                                        ;; 00:33d5 $0e $41
     call call_00_343f                                  ;; 00:33d7 $cd $3f $34
@@ -8388,7 +8388,7 @@ jr_00_33ed:
 
 call_00_3411:
     push HL                                            ;; 00:3411 $e5
-    ld   HL, wD6E9                                     ;; 00:3412 $21 $e9 $d6
+    ld   HL, wEquipedWeapon                            ;; 00:3412 $21 $e9 $d6
     ld   B, $06                                        ;; 00:3415 $06 $06
     ld   C, $41                                        ;; 00:3417 $0e $41
     call call_00_3430                                  ;; 00:3419 $cd $30 $34
@@ -9616,7 +9616,7 @@ scriptOpCodeC5:
 
 scriptOpCodeDE:
     push HL                                            ;; 00:3b76 $e5
-    ld   HL, wD6F0                                     ;; 00:3b77 $21 $f0 $d6
+    ld   HL, wEquipedItemAmount                        ;; 00:3b77 $21 $f0 $d6
     ld   A, [HL]                                       ;; 00:3b7a $7e
     and  A, A                                          ;; 00:3b7b $a7
     jr   Z, .jr_00_3b81                                ;; 00:3b7c $28 $03
@@ -9624,7 +9624,7 @@ scriptOpCodeDE:
     jr   NZ, .jr_00_3b99                               ;; 00:3b7f $20 $18
 .jr_00_3b81:
     ld   A, $80                                        ;; 00:3b81 $3e $80
-    ld   [wD6EF], A                                    ;; 00:3b83 $ea $ef $d6
+    ld   [wEquipedItem], A                             ;; 00:3b83 $ea $ef $d6
     ld   [wD6F1], A                                    ;; 00:3b86 $ea $f1 $d6
     ld   HL, wItemInventory                            ;; 00:3b89 $21 $c5 $d6
     ld   B, $18                                        ;; 00:3b8c $06 $18
@@ -10200,7 +10200,7 @@ scriptOpCodeDF:
     ret                                                ;; 00:3f04 $c9
 
 call_00_3f05:
-    ld   A, [wD6E9]                                    ;; 00:3f05 $fa $e9 $d6
+    ld   A, [wEquipedWeapon]                           ;; 00:3f05 $fa $e9 $d6
     dec  A                                             ;; 00:3f08 $3d
     ret                                                ;; 00:3f09 $c9
     db   $d2, $d8, $e6, $c7, $e2, $00, $bc, $d4        ;; 00:3f0a ......??

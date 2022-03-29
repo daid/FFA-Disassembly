@@ -822,7 +822,8 @@ wD637:
 wD683:
     ds 24                                              ;; d683
 
-wD69B:
+; Amount of the same type of item in inventory. wItemInventory indicates the type, wItemInventoryAmount indicates the amount
+wItemInventoryAmount:
     ds 16                                              ;; d69b
 
 wD6AB:
@@ -855,7 +856,7 @@ wMagicInventory:
 wEquipmentInventory:
     ds 12                                              ;; d6dd
 
-wD6E9:
+wEquipedWeapon:
     ds 3                                               ;; d6e9
 
 wD6EC:
@@ -864,10 +865,10 @@ wD6EC:
 wD6EE:
     ds 1                                               ;; d6ee
 
-wD6EF:
+wEquipedItem:
     ds 1                                               ;; d6ef
 
-wD6F0:
+wEquipedItemAmount:
     ds 1                                               ;; d6f0
 
 wD6F1:

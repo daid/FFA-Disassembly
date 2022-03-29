@@ -2592,7 +2592,7 @@ script_0409:
 
 script_040a:
     sIF_0B_JR $c9, .jr_0e_529e                         ;; 0e:5232 $0b $c9 $00 $68
-    sIF_09_JR $4f, .jr_0e_529e                         ;; 0e:5236 $09 $4f $00 $64
+    sIF_NOT_EQUIPED_JR $4f, .jr_0e_529e                ;; 0e:5236 $09 $4f $00 $64
     sSET_MUSIC 0                                       ;; 0e:523a $f8 $00
     sMSG                                               ;; 0e:523c $04
       db "<10>   Rusty sword\n  released it's\n  mystic power__<12>"

@@ -4187,7 +4187,7 @@ data_03_59fe:
 
 ;@data amount=191 format=bbbbbbbbbbbbbbbbbbbbwbb
 ;NPC related data, format unknown, source of the index unknown.
-; Offset $08: Collision flags, see wObjectRuntimeData
+; Offset $00: Collision flags, see wObjectRuntimeData
 ; Offset $14: script index value (2 bytes)
 data_03_5f5a:
     data_bbbbbbbbbbbbbbbbbbbbwbb $a9, $00, $74, $02, $00, $36, $5a, $7b, $93, $2c, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $003d, $00, $00 ;; 03:5f5a ????????????????????????

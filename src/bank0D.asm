@@ -117,7 +117,7 @@ script_0004:
     sEND                                               ;; 0d:4110 $00
 
 script_0005:
-    sIF_09_JR $1f, .jr_0d_413a                         ;; 0d:4111 $09 $1f $00 $25
+    sIF_NOT_EQUIPED_JR $1f, .jr_0d_413a                ;; 0d:4111 $09 $1f $00 $25
     sIF_FLAG_JR !wScriptFlags.6, .jr_0d_411e           ;; 0d:4115 $08 $01 $00 $05
     sSFX 16                                            ;; 0d:4119 $f9 $10
     sUNK_E4                                            ;; 0d:411b $e4
@@ -2482,7 +2482,7 @@ script_01a7:
 script_01a8:
     sIF_FLAG_JR wScriptFlags01.1, .jr_0d_4eb7          ;; 0d:4ea1 $08 $8e $00 $12
     sUNK_D5 30                                         ;; 0d:4ea5 $d5 $1e
-    sIF_09_JR $27, .jr_0d_4eac                         ;; 0d:4ea7 $09 $27 $00 $01
+    sIF_NOT_EQUIPED_JR $27, .jr_0d_4eac                ;; 0d:4ea7 $09 $27 $00 $01
     sUNK_DE                                            ;; 0d:4eab $de
 .jr_0d_4eac:
     sSFX 16                                            ;; 0d:4eac $f9 $10
@@ -3037,7 +3037,7 @@ script_01e0:
     sMSG                                               ;; 0d:55d2 $04
       db "<12>"
       db "<1b>", $00                   ;; 0d:55d3
-    sIF_09_JR $27, .jr_0d_5616                         ;; 0d:55d6 $09 $27 $00 $3c
+    sIF_NOT_EQUIPED_JR $27, .jr_0d_5616                ;; 0d:55d6 $09 $27 $00 $3c
     sSET_MUSIC 0                                       ;; 0d:55da $f8 $00
     sMSG                                               ;; 0d:55dc $04
       db "T_that Mirror_!", $00                        ;; 0d:55dd
@@ -3194,7 +3194,7 @@ script_01ee:
     sEND                                               ;; 0d:5929 $00
 
 script_01ef:
-    sIF_0A_JR $4f, .jr_0d_5933                         ;; 0d:592a $0a $4f $00 $05
+    sIF_NOT_INVENTORY_JR $4f, .jr_0d_5933              ;; 0d:592a $0a $4f $00 $05
     sCALL script_01f0                                  ;; 0d:592e $02 $19 $f5
     sJR  .jr_0d_59f4                                   ;; 0d:5931 $01 $c1
 .jr_0d_5933:
@@ -3317,7 +3317,7 @@ script_01f8:
     sEND                                               ;; 0d:5d1f $00
 
 script_01f9:
-    sIF_09_JR $2d, .jr_0d_5d2b                         ;; 0d:5d20 $09 $2d $00 $07
+    sIF_NOT_EQUIPED_JR $2d, .jr_0d_5d2b                ;; 0d:5d20 $09 $2d $00 $07
     sPLAYER_STEP_FORWARD                               ;; 0d:5d24 $80
     sPLAYER_STEP_FORWARD                               ;; 0d:5d25 $80
     sDEL_NPC_1                                         ;; 0d:5d26 $18
@@ -3374,7 +3374,7 @@ script_01fd:
 script_01fe:
     sMSG                                               ;; 0d:5d71 $04
       db "<10>", $00                                   ;; 0d:5d72
-    sIF_09_JR $4f, .jr_0d_5d99                         ;; 0d:5d74 $09 $4f $00 $21
+    sIF_NOT_EQUIPED_JR $4f, .jr_0d_5d99                ;; 0d:5d74 $09 $4f $00 $21
     sMSG                                               ;; 0d:5d78 $04
       db "Release that\nsword from your\nequipment, <BOY>.", $00 ;; 0d:5d79
     sJR  .jr_0d_5e00                                   ;; 0d:5d97 $01 $67
@@ -3773,7 +3773,7 @@ script_0218:
     sEND                                               ;; 0d:65ec $00
 
 script_0219:
-    sIF_09_JR $2a, .jr_0d_6644                         ;; 0d:65ed $09 $2a $00 $53
+    sIF_NOT_EQUIPED_JR $2a, .jr_0d_6644                ;; 0d:65ed $09 $2a $00 $53
     sSET_MUSIC 0                                       ;; 0d:65f1 $f8 $00
     sMSG                                               ;; 0d:65f3 $04
       db "<10><BOY> used <a9>Amanda,\nthe tears of\nAmanda__", $00 ;; 0d:65f4
@@ -3862,12 +3862,12 @@ script_0221:
       db "<10>Cave of Oasis?\nI'll tell you for\na bag of Fang!<12>"
       db "<13><1b>", $00 ;; 0d:67ed
     sIF_FLAG_JR wScriptFlags0F.0, .jr_0d_683c          ;; 0d:6810 $08 $ff $00 $28
-    sIF_09_JR $3b, .jr_0d_681e                         ;; 0d:6814 $09 $3b $00 $06
+    sIF_NOT_EQUIPED_JR $3b, .jr_0d_681e                ;; 0d:6814 $09 $3b $00 $06
     sUNK_DE                                            ;; 0d:6818 $de
     sCALL script_022e                                  ;; 0d:6819 $02 $2d $01
     sJR  .jr_0d_683a                                   ;; 0d:681c $01 $1c
 .jr_0d_681e:
-    sIF_0A_JR $3b, .jr_0d_6829                         ;; 0d:681e $0a $3b $00 $07
+    sIF_NOT_INVENTORY_JR $3b, .jr_0d_6829              ;; 0d:681e $0a $3b $00 $07
     sUNK_D5 50                                         ;; 0d:6822 $d5 $32
     sCALL script_022e                                  ;; 0d:6824 $02 $2d $01
     sJR  .jr_0d_683a                                   ;; 0d:6827 $01 $11
@@ -4087,7 +4087,7 @@ script_022f:
 .jr_0d_6d73:
     sMSG                                               ;; 0d:6d73 $04
       db "Finally!\n", $00                             ;; 0d:6d74
-    sIF_0A_JR $08, .jr_0d_6dbc                         ;; 0d:6d7c $0a $08 $00 $3c
+    sIF_NOT_INVENTORY_JR $08, .jr_0d_6dbc              ;; 0d:6d7c $0a $08 $00 $3c
     sMSG                                               ;; 0d:6d80 $04
       db "There is a piece\nof crystal you can<12>"
       db "<1b>blow with Nuke in\nCrystal Desert.\n__ Find it!", $00 ;; 0d:6d81
@@ -4611,7 +4611,7 @@ script_0260:
     sOPEN_SHOP 1                                       ;; 0d:7843 $f6 $01
 .jr_0d_7845:
     sIF_FLAG_JR wScriptFlags0E.1, !wScriptFlags0E.0, .jr_0d_786f ;; 0d:7845 $08 $f6 $77 $00 $25
-    sIF_0A_JR $43, .jr_0d_7850                         ;; 0d:784a $0a $43 $00 $02
+    sIF_NOT_INVENTORY_JR $43, .jr_0d_7850              ;; 0d:784a $0a $43 $00 $02
     sJR  .jr_0d_7853                                   ;; 0d:784e $01 $03
 .jr_0d_7850:
     sCALL script_0549                                  ;; 0d:7850 $02 $7a $c2
@@ -4748,7 +4748,7 @@ script_026d:
 
 script_0270:
     sIF_0B_JR $c9, .jr_0d_7bb8                         ;; 0d:7b93 $0b $c9 $00 $21
-    sIF_09_JR $20, .jr_0d_7bad                         ;; 0d:7b97 $09 $20 $00 $12
+    sIF_NOT_EQUIPED_JR $20, .jr_0d_7bad                ;; 0d:7b97 $09 $20 $00 $12
     sIF_FLAG_JR !wScriptFlags0B.7, .jr_0d_7ba4         ;; 0d:7b9b $08 $58 $00 $05
     sCALL script_0473                                  ;; 0d:7b9f $02 $5a $e2
     sSET_FLAG wScriptFlags0D.5                         ;; 0d:7ba2 $da $6a
@@ -4816,7 +4816,7 @@ script_0274:
 
 script_0275:
     sIF_0B_JR $c9, .jr_0d_7c44                         ;; 0d:7c17 $0b $c9 $00 $29
-    sIF_09_JR $21, .jr_0d_7c39                         ;; 0d:7c1b $09 $21 $00 $1a
+    sIF_NOT_EQUIPED_JR $21, .jr_0d_7c39                ;; 0d:7c1b $09 $21 $00 $1a
     sIF_FLAG_JR !wScriptFlags0B.7, .jr_0d_7c28         ;; 0d:7c1f $08 $58 $00 $05
     sCALL script_0473                                  ;; 0d:7c23 $02 $5a $e2
     sSET_FLAG wScriptFlags0C.5                         ;; 0d:7c26 $da $62
@@ -4892,22 +4892,22 @@ script_0279:
 
 script_027a:
     sIF_0B_JR $c9, .jr_0d_7d47                         ;; 0d:7cc7 $0b $c9 $00 $7c
-    sIF_09_JR $46, .jr_0d_7cd8                         ;; 0d:7ccb $09 $46 $00 $09
+    sIF_NOT_EQUIPED_JR $46, .jr_0d_7cd8                ;; 0d:7ccb $09 $46 $00 $09
     sLOAD_ROOM 10, $13, 16, 12                         ;; 0d:7ccf $f4 $0a $13 $10 $0c
     sSET_MUSIC 7                                       ;; 0d:7cd4 $f8 $07
     sJR  .jr_0d_7d47                                   ;; 0d:7cd6 $01 $6f
 .jr_0d_7cd8:
-    sIF_09_JR $54, .jr_0d_7ce5                         ;; 0d:7cd8 $09 $54 $00 $09
+    sIF_NOT_EQUIPED_JR $54, .jr_0d_7ce5                ;; 0d:7cd8 $09 $54 $00 $09
     sLOAD_ROOM 10, $13, 16, 12                         ;; 0d:7cdc $f4 $0a $13 $10 $0c
     sSET_MUSIC 7                                       ;; 0d:7ce1 $f8 $07
     sJR  .jr_0d_7d47                                   ;; 0d:7ce3 $01 $62
 .jr_0d_7ce5:
-    sIF_09_JR $5f, .jr_0d_7cf2                         ;; 0d:7ce5 $09 $5f $00 $09
+    sIF_NOT_EQUIPED_JR $5f, .jr_0d_7cf2                ;; 0d:7ce5 $09 $5f $00 $09
     sLOAD_ROOM 10, $13, 16, 12                         ;; 0d:7ce9 $f4 $0a $13 $10 $0c
     sSET_MUSIC 7                                       ;; 0d:7cee $f8 $07
     sJR  .jr_0d_7d47                                   ;; 0d:7cf0 $01 $55
 .jr_0d_7cf2:
-    sIF_09_JR $6a, .jr_0d_7cff                         ;; 0d:7cf2 $09 $6a $00 $09
+    sIF_NOT_EQUIPED_JR $6a, .jr_0d_7cff                ;; 0d:7cf2 $09 $6a $00 $09
     sLOAD_ROOM 10, $13, 16, 12                         ;; 0d:7cf6 $f4 $0a $13 $10 $0c
     sSET_MUSIC 7                                       ;; 0d:7cfb $f8 $07
     sJR  .jr_0d_7d47                                   ;; 0d:7cfd $01 $48
