@@ -772,7 +772,7 @@ call_03_43dc:
 
 call_03_444a:
     push HL                                            ;; 03:444a $e5
-    ld   [wC5AE], A                                    ;; 03:444b $ea $ae $c5
+    ld   [wNPCSpawnTableIndex], A                      ;; 03:444b $ea $ae $c5
     ld   L, A                                          ;; 03:444e $6f
     ld   H, $00                                        ;; 03:444f $26 $00
     ld   E, L                                          ;; 03:4451 $5d
@@ -780,7 +780,7 @@ call_03_444a:
     add  HL, HL                                        ;; 03:4453 $29
     add  HL, DE                                        ;; 03:4454 $19
     add  HL, HL                                        ;; 03:4455 $29
-    ld   DE, data_03_7142                              ;; 03:4456 $11 $42 $71
+    ld   DE, NPCSpawnPointers                          ;; 03:4456 $11 $42 $71
     add  HL, DE                                        ;; 03:4459 $19
     ld   B, $03                                        ;; 03:445a $06 $03
 .jr_03_445c:
@@ -804,7 +804,7 @@ call_03_444a:
     ld   E, A                                          ;; 03:4472 $5f
     ld   D, $00                                        ;; 03:4473 $16 $00
     ld   A, [HL]                                       ;; 03:4475 $7e
-    ld   HL, wC5A8                                     ;; 03:4476 $21 $a8 $c5
+    ld   HL, wNPCSpawnTypes                            ;; 03:4476 $21 $a8 $c5
     add  HL, DE                                        ;; 03:4479 $19
     ld   [HL], A                                       ;; 03:447a $77
     push BC                                            ;; 03:447b $c5
@@ -908,7 +908,7 @@ call_03_44ed:
     add  A, A                                          ;; 03:44ef $87
     ld   C, A                                          ;; 03:44f0 $4f
     ld   B, $00                                        ;; 03:44f1 $06 $00
-    ld   A, [wC5AE]                                    ;; 03:44f3 $fa $ae $c5
+    ld   A, [wNPCSpawnTableIndex]                      ;; 03:44f3 $fa $ae $c5
     ld   L, A                                          ;; 03:44f6 $6f
     ld   H, $00                                        ;; 03:44f7 $26 $00
     ld   E, L                                          ;; 03:44f9 $5d
@@ -916,7 +916,7 @@ call_03_44ed:
     add  HL, HL                                        ;; 03:44fb $29
     add  HL, DE                                        ;; 03:44fc $19
     add  HL, HL                                        ;; 03:44fd $29
-    ld   DE, data_03_7142                              ;; 03:44fe $11 $42 $71
+    ld   DE, NPCSpawnPointers                          ;; 03:44fe $11 $42 $71
     add  HL, DE                                        ;; 03:4501 $19
     add  HL, BC                                        ;; 03:4502 $09
     ld   A, [HL+]                                      ;; 03:4503 $2a
@@ -952,7 +952,7 @@ call_03_44ed:
     jr   Z, .jr_03_4549                                ;; 03:4528 $28 $1f
     push HL                                            ;; 03:452a $e5
     ld   D, $00                                        ;; 03:452b $16 $00
-    ld   HL, wC5A8                                     ;; 03:452d $21 $a8 $c5
+    ld   HL, wNPCSpawnTypes                            ;; 03:452d $21 $a8 $c5
     add  HL, DE                                        ;; 03:4530 $19
     ld   C, [HL]                                       ;; 03:4531 $4e
     pop  HL                                            ;; 03:4532 $e1
@@ -1458,7 +1458,7 @@ call_03_480a:
     ld   A, $18                                        ;; 03:484d $3e $18
     call divMod                                        ;; 03:484f $cd $8b $2b
     ld   A, L                                          ;; 03:4852 $7d
-    ld   HL, wC5A8                                     ;; 03:4853 $21 $a8 $c5
+    ld   HL, wNPCSpawnTypes                            ;; 03:4853 $21 $a8 $c5
     ld   B, $03                                        ;; 03:4856 $06 $03
 .jr_03_4858:
     cp   A, [HL]                                       ;; 03:4858 $be
@@ -4544,8 +4544,8 @@ data_03_5f5a:
 
 ;@data amount=109 format=ppp
 ; Size of the table not sure
-; Some object or NPC related data, pretty sure these are all pointers.
-data_03_7142:
+; NPC spawn data, selected a row with sSET_NPC_TYPES, and spawn actual NPCs with sSPAWN_NPC to select the column to spawn.
+NPCSpawnPointers:
     dw   data_03_7440, data_03_7448, data_03_7518      ;; 03:7142 ......
     dw   data_03_7450, data_03_7458, data_03_7458      ;; 03:7148 ......
     dw   data_03_7460, data_03_7468, data_03_7470      ;; 03:714e ......
@@ -4656,6 +4656,8 @@ data_03_7142:
     dw   data_03_77ae, data_03_77ae, data_03_77ae      ;; 03:73c4 ??????
     dw   data_03_7724, data_03_7724, data_03_7724      ;; 03:73ca ??????
 
+; Spawn tables:
+; MinSpawn, MaxSpawn, 4x ID (picked at random), Y, X (repeated, $80 $80 indicates random position and ends list)
 data_03_73d0:
     db   $01, $01, $bd, $bd, $bd, $bd, $09, $06        ;; 03:73d0 ????????
     db   $80, $80                                      ;; 03:73d8 ??

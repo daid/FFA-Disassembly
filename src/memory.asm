@@ -315,7 +315,7 @@ wC1CA:
 ; 16 bytes per object, or potentially 16x16 sprite?
 ; 00: Lower nibble, orientation. $80=walking, other bits unknown ($ff indicates unused)
 ; 01: Unknown
-; 02: Something collision related ($01: blocked by walls, $80 blocks player, $10 can be pushed by player)
+; 02: Something collision related ($01: blocked by walls, $80 blocks player, $10 can be pushed by player or take damage on touch?)
 ; 03: Y position
 ; 04: X position
 ; 05-06: Something sprite related
@@ -443,10 +443,12 @@ wC4F0:
 wC5A0:
     ds 8                                               ;; c5a0
 
-wC5A8:
+; List of 3 random NPC types, one per entry of the selected NPCSpawnPointers, selected from the 4 options
+wNPCSpawnTypes:
     ds 6                                               ;; c5a8
 
-wC5AE:
+; Current active index into NPCSpawnPointers.
+wNPCSpawnTableIndex:
     ds 1                                               ;; c5ae
 
 wC5AF:

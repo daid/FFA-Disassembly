@@ -1733,6 +1733,7 @@ call_00_0a33:
     call call_00_2c02                                  ;; 00:0a70 $cd $02 $2c
     ret                                                ;; 00:0a73 $c9
 
+; DE=position in tiles
 createObject:
     push DE                                            ;; 00:0a74 $d5
     push HL                                            ;; 00:0a75 $e5
@@ -10119,13 +10120,14 @@ call_00_3e97:
     call call_00_3147                                  ;; 00:3e9f $cd $47 $31
     ret                                                ;; 00:3ea2 $c9
 
-call_00_3ea3:
+; A=next level
+setNextXPLevel:
     push BC                                            ;; 00:3ea3 $c5
     push AF                                            ;; 00:3ea4 $f5
     ld   A, $08                                        ;; 00:3ea5 $3e $08
     call pushBankNrAndSwitch                           ;; 00:3ea7 $cd $fb $29
     pop  AF                                            ;; 00:3eaa $f1
-    ld   HL, $4dd6                                     ;; 00:3eab $21 $d6 $4d
+    ld   HL, xpPerLevelTable                           ;; 00:3eab $21 $d6 $4d
     ld   B, A                                          ;; 00:3eae $47
     add  A, A                                          ;; 00:3eaf $87
     add  A, B                                          ;; 00:3eb0 $80

@@ -2435,7 +2435,7 @@ jp_02_503a:
     ld   HL, wD872                                     ;; 02:503a $21 $72 $d8
     bit  0, [HL]                                       ;; 02:503d $cb $46
     jr   NZ, call_02_5062                              ;; 02:503f $20 $21
-    call call_02_5399                                  ;; 02:5041 $cd $99 $53
+    call increaseLevel                                 ;; 02:5041 $cd $99 $53
     ld   A, $17                                        ;; 02:5044 $3e $17
     ld   [wD84A], A                                    ;; 02:5046 $ea $4a $d8
     ld   A, $2e                                        ;; 02:5049 $3e $2e
@@ -2890,6 +2890,7 @@ jp_02_531c:
     ld   A, H                                          ;; 02:534b $7c
     sbc  A, D                                          ;; 02:534c $9a
     jr   C, .jr_02_5352                                ;; 02:534d $38 $03
+; Cap HP at 999
     ld   HL, $3e7                                      ;; 02:534f $21 $e7 $03
 .jr_02_5352:
     ld   A, H                                          ;; 02:5352 $7c
@@ -2926,14 +2927,14 @@ jp_02_531c:
     ld   [wD853], A                                    ;; 02:5395 $ea $53 $d8
     ret                                                ;; 02:5398 $c9
 
-call_02_5399:
+increaseLevel:
     ld   HL, wLevel                                    ;; 02:5399 $21 $ba $d7
     ld   A, [HL]                                       ;; 02:539c $7e
     inc  A                                             ;; 02:539d $3c
     ld   [HL], A                                       ;; 02:539e $77
     cp   A, $64                                        ;; 02:539f $fe $64
-    call NC, call_02_53b6                              ;; 02:53a1 $d4 $b6 $53
-    call call_00_3ea3                                  ;; 02:53a4 $cd $a3 $3e
+    call NC, capAtLevel100                             ;; 02:53a1 $d4 $b6 $53
+    call setNextXPLevel                                ;; 02:53a4 $cd $a3 $3e
     ld   HL, data_02_5cfe                              ;; 02:53a7 $21 $fe $5c
     ld   DE, wD831                                     ;; 02:53aa $11 $31 $d8
     ld   B, $10                                        ;; 02:53ad $06 $10
@@ -2945,7 +2946,7 @@ call_02_5399:
     jr   NZ, .jr_02_53af                               ;; 02:53b3 $20 $fa
     ret                                                ;; 02:53b5 $c9
 
-call_02_53b6:
+capAtLevel100:
     ld   A, $63                                        ;; 02:53b6 $3e $63
     ld   [HL], A                                       ;; 02:53b8 $77
     inc  A                                             ;; 02:53b9 $3c
@@ -6077,7 +6078,7 @@ call_02_6e25:
     ld   [wXPHighExt], A                               ;; 02:6eb0 $ea $bd $d7
     inc  A                                             ;; 02:6eb3 $3c
     ld   [wLevel], A                                   ;; 02:6eb4 $ea $ba $d7
-    call call_00_3ea3                                  ;; 02:6eb7 $cd $a3 $3e
+    call setNextXPLevel                                ;; 02:6eb7 $cd $a3 $3e
     ld   HL, wD683                                     ;; 02:6eba $21 $83 $d6
     ld   A, H                                          ;; 02:6ebd $7c
     ld   [wD8BD], A                                    ;; 02:6ebe $ea $bd $d8
@@ -6822,7 +6823,7 @@ call_02_7322:
     ld   B, $00                                        ;; 02:7398 $06 $00
     call call_02_7859                                  ;; 02:739a $cd $59 $78
     ld   A, [wLevel]                                   ;; 02:739d $fa $ba $d7
-    call call_00_3ea3                                  ;; 02:73a0 $cd $a3 $3e
+    call setNextXPLevel                                ;; 02:73a0 $cd $a3 $3e
     pop  HL                                            ;; 02:73a3 $e1
     call call_02_7a7f                                  ;; 02:73a4 $cd $7f $7a
     call call_02_7abf                                  ;; 02:73a7 $cd $bf $7a
@@ -7159,7 +7160,7 @@ call_02_7589:
     push DE                                            ;; 02:75a2 $d5
     call call_00_3844                                  ;; 02:75a3 $cd $44 $38
     ld   A, [wD7A7]                                    ;; 02:75a6 $fa $a7 $d7
-    call call_00_3ea3                                  ;; 02:75a9 $cd $a3 $3e
+    call setNextXPLevel                                ;; 02:75a9 $cd $a3 $3e
     ld   A, [wNextXPLevelHigh]                         ;; 02:75ac $fa $c1 $d8
     ld   H, A                                          ;; 02:75af $67
     ld   A, [wNextXPLevelLow]                          ;; 02:75b0 $fa $c0 $d8
@@ -7171,7 +7172,7 @@ call_02_7589:
     inc  E                                             ;; 02:75ba $1c
     call call_02_59ae                                  ;; 02:75bb $cd $ae $59
     ld   A, [wLevel]                                   ;; 02:75be $fa $ba $d7
-    call call_00_3ea3                                  ;; 02:75c1 $cd $a3 $3e
+    call setNextXPLevel                                ;; 02:75c1 $cd $a3 $3e
     ret                                                ;; 02:75c4 $c9
 
 call_02_75c5:
