@@ -609,6 +609,7 @@ class ScriptBlock(Block):
                     break
 
     def export(self, file):
+        self.__loop_count = 0
         while file.addr < self.base_address + len(self):
             self.outputOpcode(file)
 
@@ -672,11 +673,16 @@ class ScriptBlock(Block):
                     args.append(str(self.memory.getLabel(target)))
                     size += 1
 
+        if opcode[0] == "sEND" and self.__loop_count > 0:
+            self.__loop_count -= 1
+
         if msg is not None:
-            file.asmLine(1, opcode[0], *args)
-            file.asmLine(size - 1, "  db", "\"%s\", $00" % (msg), is_data=True, add_data_comment=False)
+            file.asmLine(1, ("  " * self.__loop_count) + opcode[0], *args)
+            file.asmLine(size - 1, ("  " * self.__loop_count) + "  db", "\"%s\", $00" % (msg), is_data=True, add_data_comment=False)
         else:
-            file.asmLine(size, opcode[0], *args)
+            file.asmLine(size, ("  " * self.__loop_count) + opcode[0], *args)
+        if opcode[0] == "sLOOP":
+            self.__loop_count += 1
 
 
 class CallToBankCodeBlock(CodeBlock):
