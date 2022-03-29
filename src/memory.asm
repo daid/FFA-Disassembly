@@ -434,6 +434,8 @@ wC4D2:
 wC4D4:
     ds 12                                              ;; c4d4
 
+; 8 records of $18 size, related to NPCs
+; 12-13: HP
 wC4E0:
     ds 16                                              ;; c4e0
 
