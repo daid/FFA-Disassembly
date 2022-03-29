@@ -5872,9 +5872,9 @@ loadRoomTiles:
 call_00_2460:
     ld   A, [wMapTableBankNr]                          ;; 00:2460 $fa $f0 $c3
     call pushBankNrAndSwitch                           ;; 00:2463 $cd $fb $29
-    ld   A, [wC3FF]                                    ;; 00:2466 $fa $ff $c3
+    ld   A, [wRoomScriptTableHigh]                     ;; 00:2466 $fa $ff $c3
     ld   H, A                                          ;; 00:2469 $67
-    ld   A, [wC3FE]                                    ;; 00:246a $fa $fe $c3
+    ld   A, [wRoomScriptTableLow]                      ;; 00:246a $fa $fe $c3
     ld   L, A                                          ;; 00:246d $6f
     ld   A, [HL+]                                      ;; 00:246e $2a
     ld   H, [HL]                                       ;; 00:246f $66
@@ -5892,9 +5892,9 @@ call_00_2460:
 call_00_2483:
     ld   A, [wMapTableBankNr]                          ;; 00:2483 $fa $f0 $c3
     call pushBankNrAndSwitch                           ;; 00:2486 $cd $fb $29
-    ld   A, [wC3FF]                                    ;; 00:2489 $fa $ff $c3
+    ld   A, [wRoomScriptTableHigh]                     ;; 00:2489 $fa $ff $c3
     ld   H, A                                          ;; 00:248c $67
-    ld   A, [wC3FE]                                    ;; 00:248d $fa $fe $c3
+    ld   A, [wRoomScriptTableLow]                      ;; 00:248d $fa $fe $c3
     ld   L, A                                          ;; 00:2490 $6f
     ld   A, [HL+]                                      ;; 00:2491 $2a
     ld   H, [HL]                                       ;; 00:2492 $66
@@ -5916,9 +5916,9 @@ call_00_24a7:
     ld   [wC400], A                                    ;; 00:24ac $ea $00 $c4
     ld   A, [wMapTableBankNr]                          ;; 00:24af $fa $f0 $c3
     call pushBankNrAndSwitch                           ;; 00:24b2 $cd $fb $29
-    ld   A, [wC3FF]                                    ;; 00:24b5 $fa $ff $c3
+    ld   A, [wRoomScriptTableHigh]                     ;; 00:24b5 $fa $ff $c3
     ld   H, A                                          ;; 00:24b8 $67
-    ld   A, [wC3FE]                                    ;; 00:24b9 $fa $fe $c3
+    ld   A, [wRoomScriptTableLow]                      ;; 00:24b9 $fa $fe $c3
     ld   L, A                                          ;; 00:24bc $6f
     ld   A, [HL+]                                      ;; 00:24bd $2a
     ld   H, [HL]                                       ;; 00:24be $66
@@ -5938,9 +5938,9 @@ call_00_24a7:
 call_00_24d4:
     ld   A, [wMapTableBankNr]                          ;; 00:24d4 $fa $f0 $c3
     call pushBankNrAndSwitch                           ;; 00:24d7 $cd $fb $29
-    ld   A, [wC3FF]                                    ;; 00:24da $fa $ff $c3
+    ld   A, [wRoomScriptTableHigh]                     ;; 00:24da $fa $ff $c3
     ld   H, A                                          ;; 00:24dd $67
-    ld   A, [wC3FE]                                    ;; 00:24de $fa $fe $c3
+    ld   A, [wRoomScriptTableLow]                      ;; 00:24de $fa $fe $c3
     ld   L, A                                          ;; 00:24e1 $6f
     ld   A, [HL+]                                      ;; 00:24e2 $2a
     ld   H, [HL]                                       ;; 00:24e3 $66
@@ -5960,9 +5960,9 @@ call_00_24d4:
 call_00_24f9:
     ld   A, [wMapTableBankNr]                          ;; 00:24f9 $fa $f0 $c3
     call pushBankNrAndSwitch                           ;; 00:24fc $cd $fb $29
-    ld   A, [wC3FF]                                    ;; 00:24ff $fa $ff $c3
+    ld   A, [wRoomScriptTableHigh]                     ;; 00:24ff $fa $ff $c3
     ld   H, A                                          ;; 00:2502 $67
-    ld   A, [wC3FE]                                    ;; 00:2503 $fa $fe $c3
+    ld   A, [wRoomScriptTableLow]                      ;; 00:2503 $fa $fe $c3
     ld   L, A                                          ;; 00:2506 $6f
     ld   A, [HL+]                                      ;; 00:2507 $2a
     ld   H, [HL]                                       ;; 00:2508 $66
@@ -5983,9 +5983,9 @@ call_00_24f9:
 call_00_251f:
     ld   A, [wMapTableBankNr]                          ;; 00:251f $fa $f0 $c3
     call pushBankNrAndSwitch                           ;; 00:2522 $cd $fb $29
-    ld   A, [wC3FF]                                    ;; 00:2525 $fa $ff $c3
+    ld   A, [wRoomScriptTableHigh]                     ;; 00:2525 $fa $ff $c3
     ld   H, A                                          ;; 00:2528 $67
-    ld   A, [wC3FE]                                    ;; 00:2529 $fa $fe $c3
+    ld   A, [wRoomScriptTableLow]                      ;; 00:2529 $fa $fe $c3
     ld   L, A                                          ;; 00:252c $6f
     ld   A, [HL+]                                      ;; 00:252d $2a
     ld   H, [HL]                                       ;; 00:252e $66
@@ -6244,9 +6244,9 @@ call_00_2617:
     jr   NZ, .jr_00_2697                               ;; 00:2683 $20 $12
     call getRoomPointer                                ;; 00:2685 $cd $f6 $25
     ld   A, D                                          ;; 00:2688 $7a
-    ld   [wC3FF], A                                    ;; 00:2689 $ea $ff $c3
+    ld   [wRoomScriptTableHigh], A                     ;; 00:2689 $ea $ff $c3
     ld   A, E                                          ;; 00:268c $7b
-    ld   [wC3FE], A                                    ;; 00:268d $ea $fe $c3
+    ld   [wRoomScriptTableLow], A                      ;; 00:268d $ea $fe $c3
     push HL                                            ;; 00:2690 $e5
     push DE                                            ;; 00:2691 $d5
     call loadRoomTiles                                 ;; 00:2692 $cd $2b $24
@@ -6255,9 +6255,9 @@ call_00_2617:
     push BC                                            ;; 00:2697 $c5
     call getRoomPointerV2                              ;; 00:2698 $cd $d1 $25
     ld   A, D                                          ;; 00:269b $7a
-    ld   [wC3FF], A                                    ;; 00:269c $ea $ff $c3
+    ld   [wRoomScriptTableHigh], A                     ;; 00:269c $ea $ff $c3
     ld   A, E                                          ;; 00:269f $7b
-    ld   [wC3FE], A                                    ;; 00:26a0 $ea $fe $c3
+    ld   [wRoomScriptTableLow], A                      ;; 00:26a0 $ea $fe $c3
     ld   A, H                                          ;; 00:26a3 $7c
     ld   [wC3FD], A                                    ;; 00:26a4 $ea $fd $c3
     ld   A, L                                          ;; 00:26a7 $7d
@@ -6357,9 +6357,9 @@ loadMap:
     jr   NZ, .jr_00_275f                               ;; 00:2748 $20 $15
     call getRoomPointer                                ;; 00:274a $cd $f6 $25
     ld   A, D                                          ;; 00:274d $7a
-    ld   [wC3FF], A                                    ;; 00:274e $ea $ff $c3
+    ld   [wRoomScriptTableHigh], A                     ;; 00:274e $ea $ff $c3
     ld   A, E                                          ;; 00:2751 $7b
-    ld   [wC3FE], A                                    ;; 00:2752 $ea $fe $c3
+    ld   [wRoomScriptTableLow], A                      ;; 00:2752 $ea $fe $c3
     call loadRoomTiles                                 ;; 00:2755 $cd $2b $24
     call call_00_1b74                                  ;; 00:2758 $cd $74 $1b
     call popBankNrAndSwitch                            ;; 00:275b $cd $0a $2a
@@ -6368,9 +6368,9 @@ loadMap:
     push HL                                            ;; 00:275f $e5
     call getRoomPointerV2                              ;; 00:2760 $cd $d1 $25
     ld   A, D                                          ;; 00:2763 $7a
-    ld   [wC3FF], A                                    ;; 00:2764 $ea $ff $c3
+    ld   [wRoomScriptTableHigh], A                     ;; 00:2764 $ea $ff $c3
     ld   A, E                                          ;; 00:2767 $7b
-    ld   [wC3FE], A                                    ;; 00:2768 $ea $fe $c3
+    ld   [wRoomScriptTableLow], A                      ;; 00:2768 $ea $fe $c3
     ld   A, H                                          ;; 00:276b $7c
     ld   [wC3FD], A                                    ;; 00:276c $ea $fd $c3
     ld   A, L                                          ;; 00:276f $7d

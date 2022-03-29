@@ -210,6 +210,10 @@ class ScriptInfoBlock(Block):
         if index == 0xFFFF:
             file.asmLine(2, "dw", "$%04x" % (index))
         else:
+            # TODO: This is actually used for more then 1 thing.
+            #   The direct index is on entering the room
+            #   index + 1 is used when leaving the room (not when warping)
+            #   index + 2 is used when all monsters are defeated (only if there where monsters)
             file.asmLine(2, "SCRIPT_IDX", self.getScriptLabel(index))
         while self.memory.byte(file.addr) != 0xFF:
             xy = self.memory.byte(file.addr)

@@ -390,10 +390,11 @@ wC3FC:
 wC3FD:
     ds 1                                               ;; c3fd
 
-wC3FE:
+; Points at the mapXX_roomXX_XX_script label of the current room
+wRoomScriptTableLow:
     ds 1                                               ;; c3fe
 
-wC3FF:
+wRoomScriptTableHigh:
     ds 1                                               ;; c3ff
 
 wC400:
