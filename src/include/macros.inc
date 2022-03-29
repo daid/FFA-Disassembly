@@ -1,17 +1,25 @@
-FLAG_TO_IDX: MACRO
+FLAG_CONDITION_TO_IDX: MACRO
 
 assert STRSUB("\1", STRLEN("\1") - 1, 1) == "."
 IF STRCMP(STRSUB("\1", 1, 1), "!") == 0
 LBL equs STRSUB("\1", 2, STRLEN("\1") - 3)
 IDX = STRSUB("\1", STRLEN("\1")) - "0"
-  db (LBL - wScriptFlags) * 8 + (7 - IDX) | $80
+  db (LBL - wScriptFlags) * 8 + (7 - IDX)
 PURGE LBL
 ELSE
 LBL equs STRSUB("\1", 1, STRLEN("\1") - 2)
 IDX = STRSUB("\1", STRLEN("\1")) - "0"
-  db (LBL - wScriptFlags) * 8 + (7 - IDX)
+  db (LBL - wScriptFlags) * 8 + (7 - IDX) | $80
 PURGE LBL
 ENDC
+ENDM
+FLAG_TO_IDX: MACRO
+
+assert STRSUB("\1", STRLEN("\1") - 1, 1) == "."
+LBL equs STRSUB("\1", 1, STRLEN("\1") - 2)
+IDX = STRSUB("\1", STRLEN("\1")) - "0"
+  db (LBL - wScriptFlags) * 8 + (7 - IDX)
+PURGE LBL
 ENDM
 MAP_HEADER: MACRO
 
@@ -284,15 +292,6 @@ sGIVE_XP: MACRO
 db $d2
 dw \1
 ENDM
-sIF_08_JR: MACRO
-db $08
-REPT _NARG - 1
- FLAG_TO_IDX \1
- SHIFT
-ENDR
- db $00
- db \1 - @ - 1
-ENDM
 sIF_09_JR: MACRO
 db $09
 
@@ -332,6 +331,15 @@ REPT _NARG - 1
 ENDR
     db $00
     db \1 - @ - 1
+ENDM
+sIF_FLAG_JR: MACRO
+db $08
+REPT _NARG - 1
+ FLAG_CONDITION_TO_IDX \1
+ SHIFT
+ENDR
+ db $00
+ db \1 - @ - 1
 ENDM
 sJR: MACRO
 db $01
