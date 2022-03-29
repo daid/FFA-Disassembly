@@ -6661,7 +6661,7 @@ jp_02_71fb:
     ld   B, $08                                        ;; 02:7281 $06 $08
     call call_02_7448                                  ;; 02:7283 $cd $48 $74
     ld   A, $c6                                        ;; 02:7286 $3e $c6
-    call call_02_7464                                  ;; 02:7288 $cd $64 $74
+    call writeSRAMByte                                 ;; 02:7288 $cd $64 $74
     call disableSRAM                                   ;; 02:728b $cd $5e $74
     ld   A, $1b                                        ;; 02:728e $3e $1b
     ld   [wD84A], A                                    ;; 02:7290 $ea $4a $d8
@@ -6911,7 +6911,7 @@ call_02_7421:
     ret                                                ;; 02:743e $c9
 
 call_02_743f:
-    call call_02_746f                                  ;; 02:743f $cd $6f $74
+    call readSRAMByte                                  ;; 02:743f $cd $6f $74
     ld   [DE], A                                       ;; 02:7442 $12
     inc  DE                                            ;; 02:7443 $13
     dec  B                                             ;; 02:7444 $05
@@ -6920,7 +6920,7 @@ call_02_743f:
 
 call_02_7448:
     ld   A, [DE]                                       ;; 02:7448 $1a
-    call call_02_7464                                  ;; 02:7449 $cd $64 $74
+    call writeSRAMByte                                 ;; 02:7449 $cd $64 $74
     inc  DE                                            ;; 02:744c $13
     dec  B                                             ;; 02:744d $05
     jr   NZ, call_02_7448                              ;; 02:744e $20 $f8
@@ -6944,7 +6944,7 @@ disableSRAM:
     ld   [$0000], A                                    ;; 02:7460 $ea $00 $00
     ret                                                ;; 02:7463 $c9
 
-call_02_7464:
+writeSRAMByte:
     push AF                                            ;; 02:7464 $f5
     and  A, $0f                                        ;; 02:7465 $e6 $0f
     ld   [HL+], A                                      ;; 02:7467 $22
@@ -6954,7 +6954,9 @@ call_02_7464:
     ld   [HL+], A                                      ;; 02:746d $22
     ret                                                ;; 02:746e $c9
 
-call_02_746f:
+; FFA uses MBC2 SRAM, which only stores 4 bits per address
+; This function reads two addresses from HL and combines those into a single byte in A
+readSRAMByte:
     push BC                                            ;; 02:746f $c5
     ld   A, [HL+]                                      ;; 02:7470 $2a
     and  A, $0f                                        ;; 02:7471 $e6 $0f
@@ -6969,12 +6971,12 @@ call_02_746f:
 call_02_747c:
     push AF                                            ;; 02:747c $f5
     call enableSRAM                                    ;; 02:747d $cd $58 $74
-    call call_02_746f                                  ;; 02:7480 $cd $6f $74
+    call readSRAMByte                                  ;; 02:7480 $cd $6f $74
     cp   A, $6c                                        ;; 02:7483 $fe $6c
     jr   NZ, .jr_02_74a5                               ;; 02:7485 $20 $1e
-    call call_02_746f                                  ;; 02:7487 $cd $6f $74
+    call readSRAMByte                                  ;; 02:7487 $cd $6f $74
     ld   E, A                                          ;; 02:748a $5f
-    call call_02_746f                                  ;; 02:748b $cd $6f $74
+    call readSRAMByte                                  ;; 02:748b $cd $6f $74
     ld   D, A                                          ;; 02:748e $57
     push HL                                            ;; 02:748f $e5
     push DE                                            ;; 02:7490 $d5
@@ -7015,7 +7017,7 @@ call_02_747c:
     ret                                                ;; 02:74c3 $c9
 
 call_02_74c4:
-    call call_02_746f                                  ;; 02:74c4 $cd $6f $74
+    call readSRAMByte                                  ;; 02:74c4 $cd $6f $74
     ld   C, A                                          ;; 02:74c7 $4f
     add  A, E                                          ;; 02:74c8 $83
     ld   E, A                                          ;; 02:74c9 $5f
@@ -7034,7 +7036,7 @@ call_02_74d5:
     ld   DE, wD7AA                                     ;; 02:74d7 $11 $aa $d7
     push DE                                            ;; 02:74da $d5
 .jr_02_74db:
-    call call_02_746f                                  ;; 02:74db $cd $6f $74
+    call readSRAMByte                                  ;; 02:74db $cd $6f $74
     ld   [DE], A                                       ;; 02:74de $12
     inc  DE                                            ;; 02:74df $13
     dec  B                                             ;; 02:74e0 $05
@@ -7058,9 +7060,9 @@ call_02_74f4:
     ld   HL, data_02_7db3                              ;; 02:74fa $21 $b3 $7d
     call call_00_3777                                  ;; 02:74fd $cd $77 $37
     pop  HL                                            ;; 02:7500 $e1
-    call call_02_746f                                  ;; 02:7501 $cd $6f $74
+    call readSRAMByte                                  ;; 02:7501 $cd $6f $74
     ld   E, A                                          ;; 02:7504 $5f
-    call call_02_746f                                  ;; 02:7505 $cd $6f $74
+    call readSRAMByte                                  ;; 02:7505 $cd $6f $74
     ld   D, A                                          ;; 02:7508 $57
     push HL                                            ;; 02:7509 $e5
     push DE                                            ;; 02:750a $d5
@@ -7073,9 +7075,9 @@ call_02_74f4:
     ld   A, $f7                                        ;; 02:7515 $3e $f7
     call call_00_3844                                  ;; 02:7517 $cd $44 $38
     pop  HL                                            ;; 02:751a $e1
-    call call_02_746f                                  ;; 02:751b $cd $6f $74
+    call readSRAMByte                                  ;; 02:751b $cd $6f $74
     ld   E, A                                          ;; 02:751e $5f
-    call call_02_746f                                  ;; 02:751f $cd $6f $74
+    call readSRAMByte                                  ;; 02:751f $cd $6f $74
     ld   D, A                                          ;; 02:7522 $57
     push HL                                            ;; 02:7523 $e5
     push DE                                            ;; 02:7524 $d5
@@ -7092,9 +7094,9 @@ call_02_752e:
     ld   HL, data_02_7dbc                              ;; 02:7534 $21 $bc $7d
     call call_00_3777                                  ;; 02:7537 $cd $77 $37
     pop  HL                                            ;; 02:753a $e1
-    call call_02_746f                                  ;; 02:753b $cd $6f $74
+    call readSRAMByte                                  ;; 02:753b $cd $6f $74
     ld   C, A                                          ;; 02:753e $4f
-    call call_02_746f                                  ;; 02:753f $cd $6f $74
+    call readSRAMByte                                  ;; 02:753f $cd $6f $74
     push HL                                            ;; 02:7542 $e5
     ld   H, A                                          ;; 02:7543 $67
     ld   L, C                                          ;; 02:7544 $69
@@ -7106,9 +7108,9 @@ call_02_752e:
     ld   A, $f7                                        ;; 02:754e $3e $f7
     call call_00_3844                                  ;; 02:7550 $cd $44 $38
     pop  HL                                            ;; 02:7553 $e1
-    call call_02_746f                                  ;; 02:7554 $cd $6f $74
+    call readSRAMByte                                  ;; 02:7554 $cd $6f $74
     ld   C, A                                          ;; 02:7557 $4f
-    call call_02_746f                                  ;; 02:7558 $cd $6f $74
+    call readSRAMByte                                  ;; 02:7558 $cd $6f $74
     push HL                                            ;; 02:755b $e5
     ld   L, C                                          ;; 02:755c $69
     ld   H, A                                          ;; 02:755d $67
@@ -7124,7 +7126,7 @@ call_02_7566:
     inc  E                                             ;; 02:756e $1c
     inc  E                                             ;; 02:756f $1c
     inc  E                                             ;; 02:7570 $1c
-    call call_02_746f                                  ;; 02:7571 $cd $6f $74
+    call readSRAMByte                                  ;; 02:7571 $cd $6f $74
     push HL                                            ;; 02:7574 $e5
     ld   L, A                                          ;; 02:7575 $6f
     ld   [wD7A7], A                                    ;; 02:7576 $ea $a7 $d7
@@ -7140,11 +7142,11 @@ call_02_7566:
     ret                                                ;; 02:7588 $c9
 
 call_02_7589:
-    call call_02_746f                                  ;; 02:7589 $cd $6f $74
+    call readSRAMByte                                  ;; 02:7589 $cd $6f $74
     ld   E, A                                          ;; 02:758c $5f
-    call call_02_746f                                  ;; 02:758d $cd $6f $74
+    call readSRAMByte                                  ;; 02:758d $cd $6f $74
     ld   D, A                                          ;; 02:7590 $57
-    call call_02_746f                                  ;; 02:7591 $cd $6f $74
+    call readSRAMByte                                  ;; 02:7591 $cd $6f $74
     ld   C, A                                          ;; 02:7594 $4f
     push DE                                            ;; 02:7595 $d5
     pop  HL                                            ;; 02:7596 $e1
