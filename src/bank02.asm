@@ -5934,17 +5934,17 @@ call_02_6dcc:
 
 call_02_6dd2:
     push HL                                            ;; 02:6dd2 $e5
-    ld   A, [wD6EC]                                    ;; 02:6dd3 $fa $ec $d6
+    ld   A, [wEquipedArmor]                            ;; 02:6dd3 $fa $ec $d6
     jr   jr_02_6deb                                    ;; 02:6dd6 $18 $13
 
 call_02_6dd8:
     push HL                                            ;; 02:6dd8 $e5
-    ld   A, [wD6EC]                                    ;; 02:6dd9 $fa $ec $d6
+    ld   A, [wEquipedArmor]                            ;; 02:6dd9 $fa $ec $d6
     jr   jr_02_6deb                                    ;; 02:6ddc $18 $0d
 
 call_02_6dde:
     push HL                                            ;; 02:6dde $e5
-    ld   A, [wD6EE]                                    ;; 02:6ddf $fa $ee $d6
+    ld   A, [wEquipedShield]                           ;; 02:6ddf $fa $ee $d6
     ld   HL, data_02_61f4                              ;; 02:6de2 $21 $f4 $61
     call call_02_7682                                  ;; 02:6de5 $cd $82 $76
     ld   A, [HL]                                       ;; 02:6de8 $7e

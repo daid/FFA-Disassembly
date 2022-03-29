@@ -857,12 +857,15 @@ wEquipmentInventory:
     ds 12                                              ;; d6dd
 
 wEquipedWeapon:
-    ds 3                                               ;; d6e9
+    ds 1                                               ;; d6e9
 
-wD6EC:
+wEquipedHelm:
+    ds 2                                               ;; d6ea
+
+wEquipedArmor:
     ds 2                                               ;; d6ec
 
-wD6EE:
+wEquipedShield:
     ds 1                                               ;; d6ee
 
 wEquipedItem:
