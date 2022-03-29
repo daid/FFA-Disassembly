@@ -7624,7 +7624,7 @@ call_00_2f88:
     jr   NZ, .jr_00_2f90                               ;; 00:2f96 $20 $f8
     pop  BC                                            ;; 00:2f98 $c1
     pop  HL                                            ;; 00:2f99 $e1
-    call call_00_3bb7                                  ;; 00:2f9a $cd $b7 $3b
+    call clearNamesAndScriptFlags                      ;; 00:2f9a $cd $b7 $3b
     ret                                                ;; 00:2f9d $c9
 
 call_00_2f9e:
@@ -9649,7 +9649,8 @@ scriptOpCodeC8:
     dw   call_00_39a7                                  ;; 00:3bb3 ..
     dw   call_00_3bcb                                  ;; 00:3bb5 ??
 
-call_00_3bb7:
+; Clears the boy and girl name, and all the script flags.
+clearNamesAndScriptFlags:
     ld   HL, wBoyName                                  ;; 00:3bb7 $21 $9d $d7
     ld   B, $0a                                        ;; 00:3bba $06 $0a
     xor  A, A                                          ;; 00:3bbc $af

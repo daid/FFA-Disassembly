@@ -6637,10 +6637,10 @@ jp_02_71fb:
     ld   DE, wD7AA                                     ;; 02:7244 $11 $aa $d7
     ld   HL, wBoyName                                  ;; 02:7247 $21 $9d $d7
     ld   B, $04                                        ;; 02:724a $06 $04
-    call call_02_7451                                  ;; 02:724c $cd $51 $74
+    call copyHLtoDEtimesB                              ;; 02:724c $cd $51 $74
     ld   HL, wGirlName                                 ;; 02:724f $21 $a2 $d7
     ld   B, $04                                        ;; 02:7252 $06 $04
-    call call_02_7451                                  ;; 02:7254 $cd $51 $74
+    call copyHLtoDEtimesB                              ;; 02:7254 $cd $51 $74
     call call_02_7735                                  ;; 02:7257 $cd $35 $77
     ld   HL, wD7A7                                     ;; 02:725a $21 $a7 $d7
     call call_02_7772                                  ;; 02:725d $cd $72 $77
@@ -6650,16 +6650,16 @@ jp_02_71fb:
     call enableSRAM                                    ;; 02:7263 $cd $58 $74
     ld   DE, wD7A7                                     ;; 02:7266 $11 $a7 $d7
     ld   B, $31                                        ;; 02:7269 $06 $31
-    call call_02_7448                                  ;; 02:726b $cd $48 $74
+    call writeDEtimesBtoSRAM                           ;; 02:726b $cd $48 $74
     ld   DE, wD6BF                                     ;; 02:726e $11 $bf $d6
     ld   B, $32                                        ;; 02:7271 $06 $32
-    call call_02_7448                                  ;; 02:7273 $cd $48 $74
+    call writeDEtimesBtoSRAM                           ;; 02:7273 $cd $48 $74
     ld   DE, wD69B                                     ;; 02:7276 $11 $9b $d6
     ld   B, $10                                        ;; 02:7279 $06 $10
-    call call_02_7448                                  ;; 02:727b $cd $48 $74
+    call writeDEtimesBtoSRAM                           ;; 02:727b $cd $48 $74
     ld   DE, wD4A7                                     ;; 02:727e $11 $a7 $d4
     ld   B, $08                                        ;; 02:7281 $06 $08
-    call call_02_7448                                  ;; 02:7283 $cd $48 $74
+    call writeDEtimesBtoSRAM                           ;; 02:7283 $cd $48 $74
     ld   A, $c6                                        ;; 02:7286 $3e $c6
     call writeSRAMByte                                 ;; 02:7288 $cd $64 $74
     call disableSRAM                                   ;; 02:728b $cd $5e $74
@@ -6729,16 +6729,16 @@ jp_02_72be:
     call enableSRAM                                    ;; 02:72ef $cd $58 $74
     ld   DE, wD7A7                                     ;; 02:72f2 $11 $a7 $d7
     ld   B, $31                                        ;; 02:72f5 $06 $31
-    call call_02_743f                                  ;; 02:72f7 $cd $3f $74
+    call readDEtimesBtoSRAM                            ;; 02:72f7 $cd $3f $74
     ld   DE, wD6BF                                     ;; 02:72fa $11 $bf $d6
     ld   B, $32                                        ;; 02:72fd $06 $32
-    call call_02_743f                                  ;; 02:72ff $cd $3f $74
+    call readDEtimesBtoSRAM                            ;; 02:72ff $cd $3f $74
     ld   DE, wD69B                                     ;; 02:7302 $11 $9b $d6
     ld   B, $10                                        ;; 02:7305 $06 $10
-    call call_02_743f                                  ;; 02:7307 $cd $3f $74
+    call readDEtimesBtoSRAM                            ;; 02:7307 $cd $3f $74
     ld   DE, wD633                                     ;; 02:730a $11 $33 $d6
     ld   B, $08                                        ;; 02:730d $06 $08
-    call call_02_743f                                  ;; 02:730f $cd $3f $74
+    call readDEtimesBtoSRAM                            ;; 02:730f $cd $3f $74
     call disableSRAM                                   ;; 02:7312 $cd $5e $74
     call call_02_7322                                  ;; 02:7315 $cd $22 $73
     call call_02_7156                                  ;; 02:7318 $cd $56 $71
@@ -6752,12 +6752,12 @@ call_02_7322:
     ld   HL, wD7AA                                     ;; 02:7326 $21 $aa $d7
     ld   DE, wBoyName                                  ;; 02:7329 $11 $9d $d7
     ld   B, $04                                        ;; 02:732c $06 $04
-    call call_02_7451                                  ;; 02:732e $cd $51 $74
+    call copyHLtoDEtimesB                              ;; 02:732e $cd $51 $74
     xor  A, A                                          ;; 02:7331 $af
     ld   [DE], A                                       ;; 02:7332 $12
     inc  DE                                            ;; 02:7333 $13
     ld   B, $04                                        ;; 02:7334 $06 $04
-    call call_02_7451                                  ;; 02:7336 $cd $51 $74
+    call copyHLtoDEtimesB                              ;; 02:7336 $cd $51 $74
     xor  A, A                                          ;; 02:7339 $af
     ld   [DE], A                                       ;; 02:733a $12
     ld   A, $01                                        ;; 02:733b $3e $01
@@ -6910,28 +6910,30 @@ call_02_7421:
     call call_02_6c98                                  ;; 02:743b $cd $98 $6c
     ret                                                ;; 02:743e $c9
 
-call_02_743f:
+; Read a block of SRAM into memory pointing at DE
+readDEtimesBtoSRAM:
     call readSRAMByte                                  ;; 02:743f $cd $6f $74
     ld   [DE], A                                       ;; 02:7442 $12
     inc  DE                                            ;; 02:7443 $13
     dec  B                                             ;; 02:7444 $05
-    jr   NZ, call_02_743f                              ;; 02:7445 $20 $f8
+    jr   NZ, readDEtimesBtoSRAM                        ;; 02:7445 $20 $f8
     ret                                                ;; 02:7447 $c9
 
-call_02_7448:
+; Write a block of SRAM from memory pointing at DE
+writeDEtimesBtoSRAM:
     ld   A, [DE]                                       ;; 02:7448 $1a
     call writeSRAMByte                                 ;; 02:7449 $cd $64 $74
     inc  DE                                            ;; 02:744c $13
     dec  B                                             ;; 02:744d $05
-    jr   NZ, call_02_7448                              ;; 02:744e $20 $f8
+    jr   NZ, writeDEtimesBtoSRAM                       ;; 02:744e $20 $f8
     ret                                                ;; 02:7450 $c9
 
-call_02_7451:
+copyHLtoDEtimesB:
     ld   A, [HL+]                                      ;; 02:7451 $2a
     ld   [DE], A                                       ;; 02:7452 $12
     inc  DE                                            ;; 02:7453 $13
     dec  B                                             ;; 02:7454 $05
-    jr   NZ, call_02_7451                              ;; 02:7455 $20 $fa
+    jr   NZ, copyHLtoDEtimesB                          ;; 02:7455 $20 $fa
     ret                                                ;; 02:7457 $c9
 
 enableSRAM:
