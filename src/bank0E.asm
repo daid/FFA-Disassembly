@@ -6132,7 +6132,7 @@ script_0549:
     sIF_FLAG_JR wScriptFlags0F.7, .jr_0e_7b27          ;; 0e:7aeb $08 $ff $00 $38
     sMSG                                               ;; 0e:7aef $04
       db "<11>", $00                                   ;; 0e:7af0
-    sCHECK_MONEY 150                                   ;; 0e:7af2 $d1 $96 $00
+    sTAKE_MONEY 150                                    ;; 0e:7af2 $d1 $96 $00
     sMSG                                               ;; 0e:7af5 $04
       db "<10>", $00                                   ;; 0e:7af6
     sIF_FLAG_JR !wScriptFlags.6, .jr_0e_7b1a           ;; 0e:7af8 $08 $06 $00 $1e

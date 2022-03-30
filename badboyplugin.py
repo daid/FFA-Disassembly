@@ -500,7 +500,7 @@ OPCODES = {
     0xCE: ("sNOP_CE",),
     0xCF: ("sNOP_CF",),
 
-    0xD1: ("sCHECK_MONEY", r"dw \1", "WORD"),
+    0xD1: ("sTAKE_MONEY", r"dw \1", "WORD"), # Take a certain amount of money or set a flag if it failed
     0xD2: ("sGIVE_XP", r"dw \1", "WORD"), # Add XP points (unused)
     0xD3: ("sTAKE_XP", r"dw \1", "WORD"), # Remove XP points (unused)
     0xD4: ("sGIVE_ITEM", r"db \1", "BYTE"),

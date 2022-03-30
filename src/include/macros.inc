@@ -161,10 +161,6 @@ sCALL: MACRO
 db $02
 db ((BANK(\1) - $0D) << 6) | (HIGH(\1) & $3F), LOW(\1)
 ENDM
-sCHECK_MONEY: MACRO
-db $d1
-dw \1
-ENDM
 sCLEAR_FAST_MOVEMENT: MACRO
 db $89
 ENDM
@@ -808,6 +804,10 @@ ENDM
 sSPAWN_NPC: MACRO
 db $fd
 db \1
+ENDM
+sTAKE_MONEY: MACRO
+db $d1
+dw \1
 ENDM
 sTAKE_XP: MACRO
 db $d3

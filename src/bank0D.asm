@@ -4581,7 +4581,7 @@ script_025f:
       db "<10> Howdy!\n 10GP/night!\n Wanna stay?<12>"
       db "<13>", $00 ;; 0d:77df
     sIF_FLAG_JR wScriptFlags0F.7, .jr_0d_7821          ;; 0d:77fc $08 $ff $00 $21
-    sCHECK_MONEY 10                                    ;; 0d:7800 $d1 $0a $00
+    sTAKE_MONEY 10                                     ;; 0d:7800 $d1 $0a $00
     sIF_FLAG_JR !wScriptFlags.6, .jr_0d_781e           ;; 0d:7803 $08 $06 $00 $17
     sMSG                                               ;; 0d:7807 $04
       db "<1b> Sorry.\n Not enough GP!<12>"
