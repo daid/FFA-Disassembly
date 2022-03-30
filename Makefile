@@ -1,6 +1,7 @@
 ROM = rom.gb
 
 SRCS = $(wildcard src/*.asm)
+GFXS = $(wildcard gfx/*.png)
 
 all: $(ROM)
 
@@ -8,7 +9,7 @@ check: $(ROM)
 	md5sum -c $(ROM).md5
 
 clean:
-	-rm -rf .bin .obj .dep
+	-rm -rf .bin .obj .dep .gfx
 
 $(ROM): $(patsubst src/%.asm,.obj/%.o,$(SRCS))
 	@mkdir -p $(@D)
@@ -16,12 +17,17 @@ $(ROM): $(patsubst src/%.asm,.obj/%.o,$(SRCS))
 	rgbfix --validate $(FIXFLAGS) $@
 
 
-.obj/%.o $(DEPDIR)/%.mk: src/%.asm
+.obj/%.o $(DEPDIR)/%.mk: src/%.asm $(patsubst gfx/%.png,.gfx/%.bin,$(GFXS))
 	@mkdir -p $(dir .obj/$* .dep/$*)
-	rgbasm -Wall -Wextra --export-all -isrc -M .dep/$*.mk -MP -MQ .obj/$*.o -MQ .dep/$*.mk -o .obj/$*.o $<
+	rgbasm -Wall -Wextra --export-all -isrc -i.gfx -M .dep/$*.mk -MP -MQ .obj/$*.o -MQ .dep/$*.mk -o .obj/$*.o $<
+
+.gfx/%.bin: gfx/%.png
+	@mkdir -p $(dir .gfx/$*)
+	rgbgfx -o .gfx/$*.bin $<
 
 ifneq ($(MAKECMDGOALS),clean)
 -include $(patsubst src/%.asm,.dep/%.mk,$(SRCS))
 endif
 
 .PHONY: all clean
+.SECONDARY:
