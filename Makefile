@@ -1,7 +1,7 @@
 ROM = rom.gb
 
 SRCS = $(wildcard src/*.asm)
-GFXS = $(wildcard gfx/*.png)
+GFXS = $(shell find gfx/ -type f -name '*.png')
 
 all: $(ROM)
 
