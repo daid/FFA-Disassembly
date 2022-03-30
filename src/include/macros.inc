@@ -171,6 +171,10 @@ ENDM
 sCLOSE_MAP: MACRO
 db $ae
 ENDM
+sCREATE_EFFECT: MACRO
+db $ba
+db \1, \2, \3
+ENDM
 sDELAY: MACRO
 db $f0
 db \1
@@ -884,10 +888,6 @@ db $af
 ENDM
 sUNK_B6: MACRO
 db $b6
-ENDM
-sUNK_BA: MACRO
-db $ba
-db \1, \2, \3
 ENDM
 sUNK_C2: MACRO
 db $c2

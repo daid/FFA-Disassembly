@@ -2977,7 +2977,7 @@ script_01c9:
       db "<10>Defeated Kraken!<12>"
       db "<11>", $00 ;; 0d:54ec
     sSET_FLAG wScriptFlags05.6                         ;; 0d:54fc $da $2e
-    sUNK_BA $10, $10, $04                              ;; 0d:54fe $ba $10 $10 $04
+    sCREATE_EFFECT $10, $10, $04                       ;; 0d:54fe $ba $10 $10 $04
     sSET_ROOM_TILE $4c, 8, 2                           ;; 0d:5502 $b0 $4c $08 $02
     sDELAY 30                                          ;; 0d:5506 $f0 $1e
     sSET_MUSIC 7                                       ;; 0d:5508 $f8 $07
@@ -3109,7 +3109,7 @@ script_01e4:
     sEND                                               ;; 0d:576f $00
 
 script_01e5:
-    sUNK_BA $10, $0e, $0a                              ;; 0d:5770 $ba $10 $0e $0a
+    sCREATE_EFFECT $10, $0e, $0a                       ;; 0d:5770 $ba $10 $0e $0a
     sSET_ROOM_TILE $4b, 7, 5                           ;; 0d:5774 $b0 $4b $07 $05
     sSET_FLAG wScriptFlags06.6                         ;; 0d:5778 $da $36
     sEND                                               ;; 0d:577a $00
@@ -3235,7 +3235,7 @@ script_01f0:
     sEND                                               ;; 0d:5b6d $00
 
 script_01f1:
-    sUNK_BA $08, $09, $0b                              ;; 0d:5b6e $ba $08 $09 $0b
+    sCREATE_EFFECT $08, $09, $0b                       ;; 0d:5b6e $ba $08 $09 $0b
     sFULL_HP                                           ;; 0d:5b72 $c0
     sFULL_MANA                                         ;; 0d:5b73 $c1
     sEND                                               ;; 0d:5b74 $00
@@ -3336,7 +3336,7 @@ script_01fa:
     sDEL_NPC_1                                         ;; 0d:5d41 $18
     sJR  .jr_0d_5d49                                   ;; 0d:5d42 $01 $05
 .jr_0d_5d44:
-    sUNK_BA $10, $09, $01                              ;; 0d:5d44 $ba $10 $09 $01
+    sCREATE_EFFECT $10, $09, $01                       ;; 0d:5d44 $ba $10 $09 $01
     sUNK_E0                                            ;; 0d:5d48 $e0
 .jr_0d_5d49:
     sEND                                               ;; 0d:5d49 $00
@@ -3346,7 +3346,7 @@ script_01fb:
     sDEL_NPC_1                                         ;; 0d:5d4e $18
     sJR  .jr_0d_5d56                                   ;; 0d:5d4f $01 $05
 .jr_0d_5d51:
-    sUNK_BA $10, $09, $0d                              ;; 0d:5d51 $ba $10 $09 $0d
+    sCREATE_EFFECT $10, $09, $0d                       ;; 0d:5d51 $ba $10 $09 $0d
     sUNK_E2                                            ;; 0d:5d55 $e2
 .jr_0d_5d56:
     sEND                                               ;; 0d:5d56 $00
@@ -3356,7 +3356,7 @@ script_01fc:
     sDEL_NPC_1                                         ;; 0d:5d5b $18
     sJR  .jr_0d_5d63                                   ;; 0d:5d5c $01 $05
 .jr_0d_5d5e:
-    sUNK_BA $10, $11, $07                              ;; 0d:5d5e $ba $10 $11 $07
+    sCREATE_EFFECT $10, $11, $07                       ;; 0d:5d5e $ba $10 $11 $07
     sUNK_E4                                            ;; 0d:5d62 $e4
 .jr_0d_5d63:
     sEND                                               ;; 0d:5d63 $00
@@ -3366,7 +3366,7 @@ script_01fd:
     sDEL_NPC_1                                         ;; 0d:5d68 $18
     sJR  .jr_0d_5d70                                   ;; 0d:5d69 $01 $05
 .jr_0d_5d6b:
-    sUNK_BA $10, $01, $07                              ;; 0d:5d6b $ba $10 $01 $07
+    sCREATE_EFFECT $10, $01, $07                       ;; 0d:5d6b $ba $10 $01 $07
     sUNK_E6                                            ;; 0d:5d6f $e6
 .jr_0d_5d70:
     sEND                                               ;; 0d:5d70 $00
@@ -3481,11 +3481,11 @@ script_0207:
     sSFX 20                                            ;; 0d:5f6b $f9 $14
     sFLASH_SCREEN                                      ;; 0d:5f6d $bf
     sFLASH_SCREEN                                      ;; 0d:5f6e $bf
-    sUNK_BA $2c, $02, $08                              ;; 0d:5f6f $ba $2c $02 $08
-    sUNK_BA $2c, $04, $08                              ;; 0d:5f73 $ba $2c $04 $08
-    sUNK_BA $2c, $06, $08                              ;; 0d:5f77 $ba $2c $06 $08
-    sUNK_BA $2c, $08, $08                              ;; 0d:5f7b $ba $2c $08 $08
-    sUNK_BA $10, $0a, $08                              ;; 0d:5f7f $ba $10 $0a $08
+    sCREATE_EFFECT $2c, $02, $08                       ;; 0d:5f6f $ba $2c $02 $08
+    sCREATE_EFFECT $2c, $04, $08                       ;; 0d:5f73 $ba $2c $04 $08
+    sCREATE_EFFECT $2c, $06, $08                       ;; 0d:5f77 $ba $2c $06 $08
+    sCREATE_EFFECT $2c, $08, $08                       ;; 0d:5f7b $ba $2c $08 $08
+    sCREATE_EFFECT $10, $0a, $08                       ;; 0d:5f7f $ba $10 $0a $08
     sFLASH_SCREEN                                      ;; 0d:5f83 $bf
     sSET_PLAYER_POSITION 10, 9                         ;; 0d:5f84 $8a $0a $09
     sSET_PLAYER_DIRECTION_UP                           ;; 0d:5f87 $84
@@ -3516,7 +3516,7 @@ script_0207:
       sPLAYER_STEP_FORWARD                             ;; 0d:5fc8 $80
     sEND                                               ;; 0d:5fc9 $00
     sSET_PLAYER_POSITION 20, 0                         ;; 0d:5fca $8a $14 $00
-    sUNK_BA $10, $0e, $05                              ;; 0d:5fcd $ba $10 $0e $05
+    sCREATE_EFFECT $10, $0e, $05                       ;; 0d:5fcd $ba $10 $0e $05
     sSFX 25                                            ;; 0d:5fd1 $f9 $19
     sFLASH_SCREEN                                      ;; 0d:5fd3 $bf
     sSHAKE_SCREEN                                      ;; 0d:5fd4 $fb

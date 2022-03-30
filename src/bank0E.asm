@@ -2295,10 +2295,10 @@ script_03e8:
     sSFX 37                                            ;; 0e:4fc5 $f9 $25
     sFLASH_SCREEN                                      ;; 0e:4fc7 $bf
     sFLASH_SCREEN                                      ;; 0e:4fc8 $bf
-    sUNK_BA $10, $06, $04                              ;; 0e:4fc9 $ba $10 $06 $04
-    sUNK_BA $10, $0a, $03                              ;; 0e:4fcd $ba $10 $0a $03
-    sUNK_BA $10, $08, $05                              ;; 0e:4fd1 $ba $10 $08 $05
-    sUNK_BA $10, $0c, $04                              ;; 0e:4fd5 $ba $10 $0c $04
+    sCREATE_EFFECT $10, $06, $04                       ;; 0e:4fc9 $ba $10 $06 $04
+    sCREATE_EFFECT $10, $0a, $03                       ;; 0e:4fcd $ba $10 $0a $03
+    sCREATE_EFFECT $10, $08, $05                       ;; 0e:4fd1 $ba $10 $08 $05
+    sCREATE_EFFECT $10, $0c, $04                       ;; 0e:4fd5 $ba $10 $0c $04
     sSFX 37                                            ;; 0e:4fd9 $f9 $25
     sSET_ROOM_TILE $6c, 3, 2                           ;; 0e:4fdb $b0 $6c $03 $02
     sSET_ROOM_TILE $66, 4, 2                           ;; 0e:4fdf $b0 $66 $04 $02
@@ -2621,7 +2621,7 @@ script_040b:
 script_040c:
     sIF_0B_JR $c9, .jr_0e_52bd                         ;; 0e:52a0 $0b $c9 $00 $19
     sIF_FLAG_JR !wScriptFlags0F.0, !wScriptFlags0F.1, !wScriptFlags0F.2, wScriptFlags0F.3, .jr_0e_52b5 ;; 0e:52a4 $08 $78 $79 $7a $fb $00 $0a
-    sUNK_BA $10, $0e, $02                              ;; 0e:52ab $ba $10 $0e $02
+    sCREATE_EFFECT $10, $0e, $02                       ;; 0e:52ab $ba $10 $0e $02
     sSET_ROOM_TILE $4c, 7, 1                           ;; 0e:52af $b0 $4c $07 $01
     sJR  .jr_0e_52bd                                   ;; 0e:52b3 $01 $08
 .jr_0e_52b5:
@@ -4959,7 +4959,7 @@ script_0537:
       sSFX 20                                          ;; 0e:6666 $f9 $14
       sFLASH_SCREEN                                    ;; 0e:6668 $bf
     sEND                                               ;; 0e:6669 $00
-    sUNK_BA $10, $0c, $0c                              ;; 0e:666a $ba $10 $0c $0c
+    sCREATE_EFFECT $10, $0c, $0c                       ;; 0e:666a $ba $10 $0c $0c
     sSET_PLAYER_HURT_SPRITE                            ;; 0e:666e $a5
     sLOOP 5, 2                                         ;; 0e:666f $03 $05 $02
       sPLAYER_STEP_BACKWARD                            ;; 0e:6672 $81
@@ -5245,14 +5245,14 @@ script_053b:
     sSFX 20                                            ;; 0e:6bfc $f9 $14
     sFLASH_SCREEN                                      ;; 0e:6bfe $bf
     sSFX 20                                            ;; 0e:6bff $f9 $14
-    sUNK_BA $10, $08, $0c                              ;; 0e:6c01 $ba $10 $08 $0c
-    sUNK_BA $10, $0a, $0a                              ;; 0e:6c05 $ba $10 $0a $0a
+    sCREATE_EFFECT $10, $08, $0c                       ;; 0e:6c01 $ba $10 $08 $0c
+    sCREATE_EFFECT $10, $0a, $0a                       ;; 0e:6c05 $ba $10 $0a $0a
     sSET_FAST_MOVEMENT                                 ;; 0e:6c09 $88
     sSET_PLAYER_HURT_SPRITE                            ;; 0e:6c0a $a5
     sLOOP 7, 2                                         ;; 0e:6c0b $03 $07 $02
       sPLAYER_STEP_BACKWARD                            ;; 0e:6c0e $81
     sEND                                               ;; 0e:6c0f $00
-    sUNK_BA $10, $09, $03                              ;; 0e:6c10 $ba $10 $09 $03
+    sCREATE_EFFECT $10, $09, $03                       ;; 0e:6c10 $ba $10 $09 $03
     sSFX 12                                            ;; 0e:6c14 $f9 $0c
     sLOOP 7, 2                                         ;; 0e:6c16 $03 $07 $02
       sPLAYER_STEP_FORWARD                             ;; 0e:6c19 $80
@@ -5345,9 +5345,9 @@ script_053d:
 script_053e:
     sSET_NPC_1_DIRECTION_LEFT                          ;; 0e:6ec6 $17
     sSET_MUSIC 0                                       ;; 0e:6ec7 $f8 $00
-    sUNK_BA $10, $03, $02                              ;; 0e:6ec9 $ba $10 $03 $02
-    sUNK_BA $10, $05, $04                              ;; 0e:6ecd $ba $10 $05 $04
-    sUNK_BA $10, $04, $03                              ;; 0e:6ed1 $ba $10 $04 $03
+    sCREATE_EFFECT $10, $03, $02                       ;; 0e:6ec9 $ba $10 $03 $02
+    sCREATE_EFFECT $10, $05, $04                       ;; 0e:6ecd $ba $10 $05 $04
+    sCREATE_EFFECT $10, $04, $03                       ;; 0e:6ed1 $ba $10 $04 $03
     sDELAY 40                                          ;; 0e:6ed5 $f0 $28
     sLOOP 6, 2                                         ;; 0e:6ed7 $03 $06 $02
       sPLAYER_STEP_FORWARD                             ;; 0e:6eda $80
@@ -5396,10 +5396,10 @@ script_053e:
 
 script_053f:
     sSET_MUSIC 0                                       ;; 0e:6fba $f8 $00
-    sUNK_BA $10, $04, $04                              ;; 0e:6fbc $ba $10 $04 $04
-    sUNK_BA $10, $0a, $08                              ;; 0e:6fc0 $ba $10 $0a $08
-    sUNK_BA $10, $07, $03                              ;; 0e:6fc4 $ba $10 $07 $03
-    sUNK_BA $10, $0d, $02                              ;; 0e:6fc8 $ba $10 $0d $02
+    sCREATE_EFFECT $10, $04, $04                       ;; 0e:6fbc $ba $10 $04 $04
+    sCREATE_EFFECT $10, $0a, $08                       ;; 0e:6fc0 $ba $10 $0a $08
+    sCREATE_EFFECT $10, $07, $03                       ;; 0e:6fc4 $ba $10 $07 $03
+    sCREATE_EFFECT $10, $0d, $02                       ;; 0e:6fc8 $ba $10 $0d $02
     sLOOP 10, 4                                        ;; 0e:6fcc $03 $0a $04
       sFLASH_SCREEN                                    ;; 0e:6fcf $bf
       sSFX 20                                          ;; 0e:6fd0 $f9 $14
