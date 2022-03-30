@@ -7895,7 +7895,7 @@ call_02_7a44:
 call_02_7a4e:
     push HL                                            ;; 02:7a4e $e5
     push BC                                            ;; 02:7a4f $c5
-    ld   HL, wD3A0                                     ;; 02:7a50 $21 $a0 $d3
+    ld   HL, wLCDCEffectBuffer                         ;; 02:7a50 $21 $a0 $d3
     ld   B, $10                                        ;; 02:7a53 $06 $10
 .jr_02_7a55:
     ld   A, [HL+]                                      ;; 02:7a55 $2a

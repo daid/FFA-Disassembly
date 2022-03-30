@@ -654,13 +654,19 @@ wD398:
 wD399:
     ds 7                                               ;; d399
 
-wD3A0:
+; Buffer containing LCDC effects. 4 bytes per entry:
+; 0: rLYC value ($FF for no next)
+; 1: rLCDC and MASK
+; 2: rLCDC xor MASK
+; 3: BGP value
+wLCDCEffectBuffer:
     ds 3                                               ;; d3a0
 
 wD3A3:
     ds 63                                              ;; d3a3
 
-wD3E2:
+; Index into the wLCDCEffectBuffer (as entry number, not byte offset)
+wLCDCEffectIndex:
     ds 6                                               ;; d3e2
 
 wD3E8:

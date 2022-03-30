@@ -83,7 +83,7 @@ LCDCInterruptHandler:
     push BC                                            ;; 00:0098 $c5
     push DE                                            ;; 00:0099 $d5
     push HL                                            ;; 00:009a $e5
-    call call_00_032d                                  ;; 00:009b $cd $2d $03
+    call LCDCInterrupt                                 ;; 00:009b $cd $2d $03
     ld   HL, wInterruptFiredFlags                      ;; 00:009e $21 $ae $c0
     ldh  A, [rIF]                                      ;; 00:00a1 $f0 $0f
     or   A, [HL]                                       ;; 00:00a3 $b6
@@ -420,7 +420,7 @@ call_00_02f3:
     add  HL, DE                                        ;; 00:02f6 $19
     ld   B, H                                          ;; 00:02f7 $44
     ld   C, L                                          ;; 00:02f8 $4d
-    ld   HL, wD3A0                                     ;; 00:02f9 $21 $a0 $d3
+    ld   HL, wLCDCEffectBuffer                         ;; 00:02f9 $21 $a0 $d3
     add  HL, DE                                        ;; 00:02fc $19
     ld   A, E                                          ;; 00:02fd $7b
     ld   D, H                                          ;; 00:02fe $54
@@ -447,21 +447,23 @@ call_00_0313:
     ld   A, $7e                                        ;; 00:0313 $3e $7e
     ldh  [rLYC], A                                     ;; 00:0315 $e0 $45
     ld   A, $00                                        ;; 00:0317 $3e $00
-    ld   [wD3E2], A                                    ;; 00:0319 $ea $e2 $d3
-    ld   DE, wD3A0                                     ;; 00:031c $11 $a0 $d3
+    ld   [wLCDCEffectIndex], A                         ;; 00:0319 $ea $e2 $d3
+    ld   DE, wLCDCEffectBuffer                         ;; 00:031c $11 $a0 $d3
     ld   HL, $328                                      ;; 00:031f $21 $28 $03
     ld   B, $05                                        ;; 00:0322 $06 $05
     call copyHLtoDE                                    ;; 00:0324 $cd $49 $2b
     ret                                                ;; 00:0327 $c9
+
+label_0328:
     db   $7e, $fc, $01, $e4, $ff                       ;; 00:0328 .....
 
-call_00_032d:
-    ld   A, [wD3E2]                                    ;; 00:032d $fa $e2 $d3
+LCDCInterrupt:
+    ld   A, [wLCDCEffectIndex]                         ;; 00:032d $fa $e2 $d3
     add  A, A                                          ;; 00:0330 $87
     add  A, A                                          ;; 00:0331 $87
     ld   E, A                                          ;; 00:0332 $5f
     ld   D, $00                                        ;; 00:0333 $16 $00
-    ld   HL, wD3A0                                     ;; 00:0335 $21 $a0 $d3
+    ld   HL, wLCDCEffectBuffer                         ;; 00:0335 $21 $a0 $d3
     add  HL, DE                                        ;; 00:0338 $19
     inc  HL                                            ;; 00:0339 $23
     ld   A, [wVideoLCDC]                               ;; 00:033a $fa $a5 $c0
@@ -475,11 +477,11 @@ call_00_032d:
     ld   A, [HL]                                       ;; 00:0344 $7e
     cp   A, $ff                                        ;; 00:0345 $fe $ff
     jr   NZ, .jr_00_034f                               ;; 00:0347 $20 $06
-    ld   [wD3E2], A                                    ;; 00:0349 $ea $e2 $d3
-    ld   A, [wD3A0]                                    ;; 00:034c $fa $a0 $d3
+    ld   [wLCDCEffectIndex], A                         ;; 00:0349 $ea $e2 $d3
+    ld   A, [wLCDCEffectBuffer]                        ;; 00:034c $fa $a0 $d3
 .jr_00_034f:
     ldh  [rLYC], A                                     ;; 00:034f $e0 $45
-    ld   HL, wD3E2                                     ;; 00:0351 $21 $e2 $d3
+    ld   HL, wLCDCEffectIndex                          ;; 00:0351 $21 $e2 $d3
     inc  [HL]                                          ;; 00:0354 $34
     ld   HL, rLCDC                                     ;; 00:0355 $21 $40 $ff
     ldh  A, [rLCDC]                                    ;; 00:0358 $f0 $40
@@ -2741,7 +2743,7 @@ scriptOpCodeBD:
     ld   HL, $101a                                     ;; 00:1055 $21 $1a $10
     add  HL, DE                                        ;; 00:1058 $19
     ld   C, [HL]                                       ;; 00:1059 $4e
-    ld   A, [wD3A0]                                    ;; 00:105a $fa $a0 $d3
+    ld   A, [wLCDCEffectBuffer]                        ;; 00:105a $fa $a0 $d3
     cp   A, $7e                                        ;; 00:105d $fe $7e
     jr   Z, .jr_00_1067                                ;; 00:105f $28 $06
     ld   A, C                                          ;; 00:1061 $79
@@ -2779,7 +2781,7 @@ scriptOpCodeBE:
     ld   HL, $107b                                     ;; 00:10b6 $21 $7b $10
     add  HL, DE                                        ;; 00:10b9 $19
     ld   C, [HL]                                       ;; 00:10ba $4e
-    ld   A, [wD3A0]                                    ;; 00:10bb $fa $a0 $d3
+    ld   A, [wLCDCEffectBuffer]                        ;; 00:10bb $fa $a0 $d3
     cp   A, $7e                                        ;; 00:10be $fe $7e
     jr   Z, .jr_00_10c8                                ;; 00:10c0 $28 $06
     ld   A, C                                          ;; 00:10c2 $79
@@ -2817,7 +2819,7 @@ scriptOpCodeBC:
     ld   HL, $101a                                     ;; 00:10f6 $21 $1a $10
     add  HL, DE                                        ;; 00:10f9 $19
     ld   C, [HL]                                       ;; 00:10fa $4e
-    ld   A, [wD3A0]                                    ;; 00:10fb $fa $a0 $d3
+    ld   A, [wLCDCEffectBuffer]                        ;; 00:10fb $fa $a0 $d3
     cp   A, $7e                                        ;; 00:10fe $fe $7e
     jr   Z, .jr_00_1108                                ;; 00:1100 $28 $06
     ld   A, C                                          ;; 00:1102 $79
@@ -2839,7 +2841,7 @@ scriptOpCodeBC:
     ld   HL, $107b                                     ;; 00:111c $21 $7b $10
     add  HL, DE                                        ;; 00:111f $19
     ld   C, [HL]                                       ;; 00:1120 $4e
-    ld   A, [wD3A0]                                    ;; 00:1121 $fa $a0 $d3
+    ld   A, [wLCDCEffectBuffer]                        ;; 00:1121 $fa $a0 $d3
     cp   A, $7e                                        ;; 00:1124 $fe $7e
     jr   Z, .jr_00_112e                                ;; 00:1126 $28 $06
     ld   A, C                                          ;; 00:1128 $79

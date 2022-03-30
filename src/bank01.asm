@@ -123,7 +123,7 @@ call_01_40d8:
     cpl                                                ;; 01:40dd $2f
     and  A, $0f                                        ;; 01:40de $e6 $0f
     ld   C, A                                          ;; 01:40e0 $4f
-    ld   HL, wD3A0                                     ;; 01:40e1 $21 $a0 $d3
+    ld   HL, wLCDCEffectBuffer                         ;; 01:40e1 $21 $a0 $d3
     ld   B, $06                                        ;; 01:40e4 $06 $06
     ld   DE, $04                                       ;; 01:40e6 $11 $04 $00
 .jr_01_40e9:
@@ -256,7 +256,7 @@ data_01_41ca:
 
 data_01_41d6:
     push DE                                            ;; 01:41d6 $d5
-    ld   HL, wD3A0                                     ;; 01:41d7 $21 $a0 $d3
+    ld   HL, wLCDCEffectBuffer                         ;; 01:41d7 $21 $a0 $d3
     ld   A, [HL]                                       ;; 01:41da $7e
     add  A, $02                                        ;; 01:41db $c6 $02
     ld   C, A                                          ;; 01:41dd $4f
@@ -290,7 +290,7 @@ data_01_4205:
     ld   HL, wD49A                                     ;; 01:4206 $21 $9a $d4
     dec  [HL]                                          ;; 01:4209 $35
     jr   Z, .jr_01_421c                                ;; 01:420a $28 $10
-    ld   HL, wD3A0                                     ;; 01:420c $21 $a0 $d3
+    ld   HL, wLCDCEffectBuffer                         ;; 01:420c $21 $a0 $d3
     ld   A, [HL]                                       ;; 01:420f $7e
     sub  A, $02                                        ;; 01:4210 $d6 $02
     ld   [HL+], A                                      ;; 01:4212 $22
