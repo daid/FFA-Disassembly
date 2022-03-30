@@ -2935,7 +2935,7 @@ script_0437:
     sEND                                               ;; 0e:54fe $00
 
 script_0438:
-    sUNK_D4 20                                         ;; 0e:54ff $d4 $14
+    sGIVE_ITEM 20                                      ;; 0e:54ff $d4 $14
     sIF_FLAG_JR wScriptFlags.5, .jr_0e_5516            ;; 0e:5501 $08 $85 $00 $11
     sSFX 15                                            ;; 0e:5505 $f9 $0f
     sUNK_AF                                            ;; 0e:5507 $af
@@ -2948,7 +2948,7 @@ script_0438:
 script_0439:
     sUNK_C7                                            ;; 0e:5517 $c7
     sIF_FLAG_JR wScriptFlags0F.6, wScriptFlags0F.7, .jr_0e_5536 ;; 0e:5518 $08 $fe $ff $00 $19
-    sUNK_D4 45                                         ;; 0e:551d $d4 $2d
+    sGIVE_ITEM 45                                      ;; 0e:551d $d4 $2d
     sIF_FLAG_JR wScriptFlags.5, .jr_0e_5534            ;; 0e:551f $08 $85 $00 $11
     sSFX 15                                            ;; 0e:5523 $f9 $0f
     sUNK_AF                                            ;; 0e:5525 $af
@@ -2963,7 +2963,7 @@ script_0439:
     sEND                                               ;; 0e:5539 $00
 
 script_043a:
-    sUNK_D4 0                                          ;; 0e:553a $d4 $00
+    sGIVE_ITEM 0                                       ;; 0e:553a $d4 $00
     sIF_FLAG_JR wScriptFlags.5, .jr_0e_554f            ;; 0e:553c $08 $85 $00 $0f
     sSFX 15                                            ;; 0e:5540 $f9 $0f
     sUNK_AF                                            ;; 0e:5542 $af
@@ -2974,7 +2974,7 @@ script_043a:
     sEND                                               ;; 0e:554f $00
 
 script_043b:
-    sUNK_D4 6                                          ;; 0e:5550 $d4 $06
+    sGIVE_ITEM 6                                       ;; 0e:5550 $d4 $06
     sIF_FLAG_JR wScriptFlags.5, .jr_0e_5568            ;; 0e:5552 $08 $85 $00 $12
     sSFX 15                                            ;; 0e:5556 $f9 $0f
     sUNK_AF                                            ;; 0e:5558 $af
@@ -2985,7 +2985,7 @@ script_043b:
     sEND                                               ;; 0e:5568 $00
 
 script_043c:
-    sUNK_D4 5                                          ;; 0e:5569 $d4 $05
+    sGIVE_ITEM 5                                       ;; 0e:5569 $d4 $05
     sIF_FLAG_JR wScriptFlags.5, .jr_0e_557e            ;; 0e:556b $08 $85 $00 $0f
     sSFX 15                                            ;; 0e:556f $f9 $0f
     sUNK_AF                                            ;; 0e:5571 $af
@@ -2996,7 +2996,7 @@ script_043c:
     sEND                                               ;; 0e:557e $00
 
 script_043d:
-    sUNK_D4 7                                          ;; 0e:557f $d4 $07
+    sGIVE_ITEM 7                                       ;; 0e:557f $d4 $07
     sIF_FLAG_JR wScriptFlags.5, .jr_0e_5595            ;; 0e:5581 $08 $85 $00 $10
     sSFX 15                                            ;; 0e:5585 $f9 $0f
     sUNK_AF                                            ;; 0e:5587 $af
@@ -3007,7 +3007,7 @@ script_043d:
     sEND                                               ;; 0e:5595 $00
 
 script_043e:
-    sUNK_D4 1                                          ;; 0e:5596 $d4 $01
+    sGIVE_ITEM 1                                       ;; 0e:5596 $d4 $01
     sIF_FLAG_JR wScriptFlags.5, .jr_0e_55ad            ;; 0e:5598 $08 $85 $00 $11
     sSFX 15                                            ;; 0e:559c $f9 $0f
     sUNK_AF                                            ;; 0e:559e $af
@@ -3021,7 +3021,7 @@ script_043f:
     sEND                                               ;; 0e:55ae $00
 
 script_0440:
-    sUNK_D4 2                                          ;; 0e:55af $d4 $02
+    sGIVE_ITEM 2                                       ;; 0e:55af $d4 $02
     sIF_FLAG_JR wScriptFlags.5, .jr_0e_55c5            ;; 0e:55b1 $08 $85 $00 $10
     sSFX 15                                            ;; 0e:55b5 $f9 $0f
     sUNK_AF                                            ;; 0e:55b7 $af
@@ -3032,7 +3032,7 @@ script_0440:
     sEND                                               ;; 0e:55c5 $00
 
 script_0441:
-    sUNK_D4 24                                         ;; 0e:55c6 $d4 $18
+    sGIVE_ITEM 24                                      ;; 0e:55c6 $d4 $18
     sIF_FLAG_JR wScriptFlags.5, .jr_0e_55dd            ;; 0e:55c8 $08 $85 $00 $11
     sSFX 15                                            ;; 0e:55cc $f9 $0f
     sUNK_AF                                            ;; 0e:55ce $af
@@ -3043,7 +3043,7 @@ script_0441:
     sEND                                               ;; 0e:55dd $00
 
 script_0442:
-    sUNK_D4 22                                         ;; 0e:55de $d4 $16
+    sGIVE_ITEM 22                                      ;; 0e:55de $d4 $16
     sIF_FLAG_JR wScriptFlags.5, .jr_0e_55f4            ;; 0e:55e0 $08 $85 $00 $10
     sSFX 15                                            ;; 0e:55e4 $f9 $0f
     sUNK_AF                                            ;; 0e:55e6 $af
@@ -3054,7 +3054,7 @@ script_0442:
     sEND                                               ;; 0e:55f4 $00
 
 script_0443:
-    sUNK_D4 53                                         ;; 0e:55f5 $d4 $35
+    sGIVE_ITEM 53                                      ;; 0e:55f5 $d4 $35
     sIF_FLAG_JR wScriptFlags.5, .jr_0e_560e            ;; 0e:55f7 $08 $85 $00 $13
     sSFX 15                                            ;; 0e:55fb $f9 $0f
     sUNK_AF                                            ;; 0e:55fd $af
@@ -3068,7 +3068,7 @@ script_0443:
 script_0444:
     sUNK_C7                                            ;; 0e:560f $c7
     sIF_FLAG_JR wScriptFlags0F.6, .jr_0e_562c          ;; 0e:5610 $08 $fe $00 $18
-    sUNK_D4 50                                         ;; 0e:5614 $d4 $32
+    sGIVE_ITEM 50                                      ;; 0e:5614 $d4 $32
     sIF_FLAG_JR wScriptFlags.5, .jr_0e_562a            ;; 0e:5616 $08 $85 $00 $10
     sSFX 15                                            ;; 0e:561a $f9 $0f
     sUNK_AF                                            ;; 0e:561c $af
@@ -3089,7 +3089,7 @@ script_0444:
 script_0445:
     sUNK_C7                                            ;; 0e:563b $c7
     sIF_FLAG_JR wScriptFlags0F.6, .jr_0e_5659          ;; 0e:563c $08 $fe $00 $19
-    sUNK_D4 49                                         ;; 0e:5640 $d4 $31
+    sGIVE_ITEM 49                                      ;; 0e:5640 $d4 $31
     sIF_FLAG_JR wScriptFlags.5, .jr_0e_5657            ;; 0e:5642 $08 $85 $00 $11
     sSFX 15                                            ;; 0e:5646 $f9 $0f
     sUNK_AF                                            ;; 0e:5648 $af
@@ -3104,7 +3104,7 @@ script_0445:
     sEND                                               ;; 0e:565c $00
 
 script_0446:
-    sUNK_D4 4                                          ;; 0e:565d $d4 $04
+    sGIVE_ITEM 4                                       ;; 0e:565d $d4 $04
     sIF_FLAG_JR wScriptFlags.5, .jr_0e_5674            ;; 0e:565f $08 $85 $00 $11
     sSFX 15                                            ;; 0e:5663 $f9 $0f
     sUNK_AF                                            ;; 0e:5665 $af
@@ -3115,7 +3115,7 @@ script_0446:
     sEND                                               ;; 0e:5674 $00
 
 script_0447:
-    sUNK_D4 41                                         ;; 0e:5675 $d4 $29
+    sGIVE_ITEM 41                                      ;; 0e:5675 $d4 $29
     sIF_FLAG_JR wScriptFlags.5, .jr_0e_568d            ;; 0e:5677 $08 $85 $00 $12
     sSFX 15                                            ;; 0e:567b $f9 $0f
     sUNK_AF                                            ;; 0e:567d $af
@@ -3126,7 +3126,7 @@ script_0447:
     sEND                                               ;; 0e:568d $00
 
 script_0448:
-    sUNK_D4 8                                          ;; 0e:568e $d4 $08
+    sGIVE_ITEM 8                                       ;; 0e:568e $d4 $08
     sIF_FLAG_JR wScriptFlags.5, .jr_0e_56a5            ;; 0e:5690 $08 $85 $00 $11
     sSFX 15                                            ;; 0e:5694 $f9 $0f
     sUNK_AF                                            ;; 0e:5696 $af
@@ -3137,7 +3137,7 @@ script_0448:
     sEND                                               ;; 0e:56a5 $00
 
 script_0449:
-    sUNK_D4 3                                          ;; 0e:56a6 $d4 $03
+    sGIVE_ITEM 3                                       ;; 0e:56a6 $d4 $03
     sIF_FLAG_JR wScriptFlags.5, .jr_0e_56be            ;; 0e:56a8 $08 $85 $00 $12
     sSFX 15                                            ;; 0e:56ac $f9 $0f
     sUNK_AF                                            ;; 0e:56ae $af
@@ -3148,7 +3148,7 @@ script_0449:
     sEND                                               ;; 0e:56be $00
 
 script_044a:
-    sUNK_D4 9                                          ;; 0e:56bf $d4 $09
+    sGIVE_ITEM 9                                       ;; 0e:56bf $d4 $09
     sIF_FLAG_JR wScriptFlags.5, .jr_0e_56d8            ;; 0e:56c1 $08 $85 $00 $13
     sSFX 15                                            ;; 0e:56c5 $f9 $0f
     sUNK_AF                                            ;; 0e:56c7 $af
@@ -3161,7 +3161,7 @@ script_044a:
 script_044b:
     sUNK_C7                                            ;; 0e:56d9 $c7
     sIF_FLAG_JR wScriptFlags0F.6, wScriptFlags0F.7, .jr_0e_56f7 ;; 0e:56da $08 $fe $ff $00 $18
-    sUNK_D4 46                                         ;; 0e:56df $d4 $2e
+    sGIVE_ITEM 46                                      ;; 0e:56df $d4 $2e
     sIF_FLAG_JR wScriptFlags.5, .jr_0e_56f5            ;; 0e:56e1 $08 $85 $00 $10
     sSFX 15                                            ;; 0e:56e5 $f9 $0f
     sUNK_AF                                            ;; 0e:56e7 $af
@@ -3192,7 +3192,7 @@ script_044d:
 .jr_0e_571c:
     sJR  .jr_0e_5737                                   ;; 0e:571c $01 $19
 .jr_0e_571e:
-    sUNK_D4 9                                          ;; 0e:571e $d4 $09
+    sGIVE_ITEM 9                                       ;; 0e:571e $d4 $09
     sIF_FLAG_JR wScriptFlags.5, .jr_0e_5737            ;; 0e:5720 $08 $85 $00 $13
     sSFX 15                                            ;; 0e:5724 $f9 $0f
     sUNK_AF                                            ;; 0e:5726 $af
@@ -3215,7 +3215,7 @@ script_044e:
 .jr_0e_5756:
     sJR  .jr_0e_576f                                   ;; 0e:5756 $01 $17
 .jr_0e_5758:
-    sUNK_D4 4                                          ;; 0e:5758 $d4 $04
+    sGIVE_ITEM 4                                       ;; 0e:5758 $d4 $04
     sIF_FLAG_JR wScriptFlags.5, .jr_0e_576f            ;; 0e:575a $08 $85 $00 $11
     sSFX 15                                            ;; 0e:575e $f9 $0f
     sUNK_AF                                            ;; 0e:5760 $af
@@ -3238,7 +3238,7 @@ script_044f:
 .jr_0e_578e:
     sJR  .jr_0e_57a8                                   ;; 0e:578e $01 $18
 .jr_0e_5790:
-    sUNK_D4 3                                          ;; 0e:5790 $d4 $03
+    sGIVE_ITEM 3                                       ;; 0e:5790 $d4 $03
     sIF_FLAG_JR wScriptFlags.5, .jr_0e_57a8            ;; 0e:5792 $08 $85 $00 $12
     sSFX 15                                            ;; 0e:5796 $f9 $0f
     sUNK_AF                                            ;; 0e:5798 $af
@@ -3258,7 +3258,7 @@ script_0450:
     sEND                                               ;; 0e:57ce $00
 
 script_0451:
-    sUNK_D4 30                                         ;; 0e:57cf $d4 $1e
+    sGIVE_ITEM 30                                      ;; 0e:57cf $d4 $1e
     sIF_FLAG_JR wScriptFlags.5, .jr_0e_5837            ;; 0e:57d1 $08 $85 $00 $62
     sUNK_AF                                            ;; 0e:57d5 $af
     sMSG                                               ;; 0e:57d6 $04
@@ -3282,7 +3282,7 @@ script_0451:
     sEND                                               ;; 0e:5837 $00
 
 script_0452:
-    sUNK_D4 19                                         ;; 0e:5838 $d4 $13
+    sGIVE_ITEM 19                                      ;; 0e:5838 $d4 $13
     sIF_FLAG_JR wScriptFlags.5, .jr_0e_584f            ;; 0e:583a $08 $85 $00 $11
     sSFX 15                                            ;; 0e:583e $f9 $0f
     sUNK_AF                                            ;; 0e:5840 $af
@@ -3293,7 +3293,7 @@ script_0452:
     sEND                                               ;; 0e:584f $00
 
 script_0453:
-    sUNK_D4 11                                         ;; 0e:5850 $d4 $0b
+    sGIVE_ITEM 11                                      ;; 0e:5850 $d4 $0b
     sIF_FLAG_JR wScriptFlags.5, .jr_0e_5867            ;; 0e:5852 $08 $85 $00 $11
     sSFX 15                                            ;; 0e:5856 $f9 $0f
     sUNK_AF                                            ;; 0e:5858 $af
@@ -3307,7 +3307,7 @@ script_0454:
     sEND                                               ;; 0e:5868 $00
 
 script_0455:
-    sUNK_D4 54                                         ;; 0e:5869 $d4 $36
+    sGIVE_ITEM 54                                      ;; 0e:5869 $d4 $36
     sIF_FLAG_JR wScriptFlags.5, .jr_0e_5880            ;; 0e:586b $08 $85 $00 $11
     sSFX 15                                            ;; 0e:586f $f9 $0f
     sUNK_AF                                            ;; 0e:5871 $af
@@ -3318,7 +3318,7 @@ script_0455:
     sEND                                               ;; 0e:5880 $00
 
 script_0456:
-    sUNK_D4 55                                         ;; 0e:5881 $d4 $37
+    sGIVE_ITEM 55                                      ;; 0e:5881 $d4 $37
     sIF_FLAG_JR wScriptFlags.5, .jr_0e_5897            ;; 0e:5883 $08 $85 $00 $10
     sSFX 15                                            ;; 0e:5887 $f9 $0f
     sUNK_AF                                            ;; 0e:5889 $af
@@ -3329,7 +3329,7 @@ script_0456:
     sEND                                               ;; 0e:5897 $00
 
 script_0457:
-    sUNK_D4 14                                         ;; 0e:5898 $d4 $0e
+    sGIVE_ITEM 14                                      ;; 0e:5898 $d4 $0e
     sIF_FLAG_JR wScriptFlags.5, .jr_0e_58af            ;; 0e:589a $08 $85 $00 $11
     sSFX 15                                            ;; 0e:589e $f9 $0f
     sUNK_AF                                            ;; 0e:58a0 $af
@@ -3340,7 +3340,7 @@ script_0457:
     sEND                                               ;; 0e:58af $00
 
 script_0458:
-    sUNK_D4 16                                         ;; 0e:58b0 $d4 $10
+    sGIVE_ITEM 16                                      ;; 0e:58b0 $d4 $10
     sIF_FLAG_JR wScriptFlags.5, .jr_0e_58c9            ;; 0e:58b2 $08 $85 $00 $13
     sSFX 15                                            ;; 0e:58b6 $f9 $0f
     sUNK_AF                                            ;; 0e:58b8 $af
@@ -3351,7 +3351,7 @@ script_0458:
     sEND                                               ;; 0e:58c9 $00
 
 script_0459:
-    sUNK_D4 43                                         ;; 0e:58ca $d4 $2b
+    sGIVE_ITEM 43                                      ;; 0e:58ca $d4 $2b
     sIF_FLAG_JR wScriptFlags.5, .jr_0e_58e2            ;; 0e:58cc $08 $85 $00 $12
     sSFX 15                                            ;; 0e:58d0 $f9 $0f
     sUNK_AF                                            ;; 0e:58d2 $af
@@ -3362,7 +3362,7 @@ script_0459:
     sEND                                               ;; 0e:58e2 $00
 
 script_045a:
-    sUNK_D4 44                                         ;; 0e:58e3 $d4 $2c
+    sGIVE_ITEM 44                                      ;; 0e:58e3 $d4 $2c
     sIF_FLAG_JR wScriptFlags.5, .jr_0e_58fb            ;; 0e:58e5 $08 $85 $00 $12
     sSFX 15                                            ;; 0e:58e9 $f9 $0f
     sUNK_AF                                            ;; 0e:58eb $af
@@ -3373,7 +3373,7 @@ script_045a:
     sEND                                               ;; 0e:58fb $00
 
 script_045b:
-    sUNK_D4 45                                         ;; 0e:58fc $d4 $2d
+    sGIVE_ITEM 45                                      ;; 0e:58fc $d4 $2d
     sIF_FLAG_JR wScriptFlags.5, .jr_0e_5913            ;; 0e:58fe $08 $85 $00 $11
     sSFX 15                                            ;; 0e:5902 $f9 $0f
     sUNK_AF                                            ;; 0e:5904 $af
@@ -3384,7 +3384,7 @@ script_045b:
     sEND                                               ;; 0e:5913 $00
 
 script_045c:
-    sUNK_D4 46                                         ;; 0e:5914 $d4 $2e
+    sGIVE_ITEM 46                                      ;; 0e:5914 $d4 $2e
     sIF_FLAG_JR wScriptFlags.5, .jr_0e_592a            ;; 0e:5916 $08 $85 $00 $10
     sSFX 15                                            ;; 0e:591a $f9 $0f
     sUNK_AF                                            ;; 0e:591c $af
@@ -3509,7 +3509,7 @@ script_0466:
     sEND                                               ;; 0e:5a26 $00
 
 script_0467:
-    sUNK_D4 10                                         ;; 0e:5a27 $d4 $0a
+    sGIVE_ITEM 10                                      ;; 0e:5a27 $d4 $0a
     sIF_FLAG_JR wScriptFlags.5, .jr_0e_5a3e            ;; 0e:5a29 $08 $85 $00 $11
     sSFX 15                                            ;; 0e:5a2d $f9 $0f
     sUNK_AF                                            ;; 0e:5a2f $af

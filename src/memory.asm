@@ -988,6 +988,9 @@ wStatWisdom:
 wStatWill:
     ds 2                                               ;; d7c4
 
+; Script flags bits are numbered from high to low. So Bit0 = $80, Bit7 = $01
+; Bit5: Set by sGIVE_ITEM, sGIVE_EQUIPMENT and sGIVE_MAGIC when there is not enough room in your inventory
+; Bit6: Set by money script code when you do not have enough money
 wScriptFlags:
     ds 1                                               ;; d7c6
 

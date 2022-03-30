@@ -503,7 +503,7 @@ OPCODES = {
     0xD1: ("sCHECK_MONEY", r"dw \1", "WORD"),
     0xD2: ("sGIVE_XP", r"dw \1", "WORD"), # Add XP points (unused)
     0xD3: ("sTAKE_XP", r"dw \1", "WORD"), # Remove XP points (unused)
-    0xD4: ("sUNK_D4", r"db \1", "BYTE"),
+    0xD4: ("sGIVE_ITEM", r"db \1", "BYTE"),
     0xD5: ("sUNK_D5", r"db \1", "BYTE"),
     0xD6: ("sGIVE_MAGIC", r"db \1", "BYTE"),
     0xD7: ("sUNK_D7", r"db \1", "BYTE"),

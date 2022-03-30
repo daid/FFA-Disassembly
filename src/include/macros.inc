@@ -332,6 +332,10 @@ sGIVE_FOLLOWER: MACRO
 db $9c
 db \1
 ENDM
+sGIVE_ITEM: MACRO
+db $d4
+db \1
+ENDM
 sGIVE_MAGIC: MACRO
 db $d6
 db \1
@@ -909,10 +913,6 @@ db \1, \2
 ENDM
 sUNK_CC: MACRO
 db $cc
-ENDM
-sUNK_D4: MACRO
-db $d4
-db \1
 ENDM
 sUNK_D5: MACRO
 db $d5

@@ -3198,7 +3198,7 @@ script_01ef:
     sCALL script_01f0                                  ;; 0d:592e $02 $19 $f5
     sJR  .jr_0d_59f4                                   ;; 0d:5931 $01 $c1
 .jr_0d_5933:
-    sUNK_D4 23                                         ;; 0d:5933 $d4 $17
+    sGIVE_ITEM 23                                      ;; 0d:5933 $d4 $17
     sIF_FLAG_JR wScriptFlags.5, .jr_0d_59f4            ;; 0d:5935 $08 $85 $00 $bb
     sMSG                                               ;; 0d:5939 $04
       db "<10>", $00                                   ;; 0d:593a
@@ -3950,7 +3950,7 @@ script_0227:
     sEND                                               ;; 0d:69fe $00
 
 script_0228:
-    sUNK_D4 33                                         ;; 0d:69ff $d4 $21
+    sGIVE_ITEM 33                                      ;; 0d:69ff $d4 $21
     sIF_FLAG_JR wScriptFlags.5, .jr_0d_6a47            ;; 0d:6a01 $08 $85 $00 $42
     sFADE_TO_BLACK                                     ;; 0d:6a05 $bd
     sLOAD_ROOM_INSTANT 15, $55, 20, 0                  ;; 0d:6a06 $f3 $0f $55 $14 $00
