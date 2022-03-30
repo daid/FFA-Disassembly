@@ -55,7 +55,7 @@ def script_pointers(memory, addr, *, amount):
 assert STRSUB("\1", STRLEN("\1") - 1, 1) == "."
 LBL equs STRSUB("\1", 1, STRLEN("\1") - 2)
 IDX = STRSUB("\1", STRLEN("\1")) - "0"
-  db (LBL - wScriptFlags) * 8 + (7 - IDX)
+  db (LBL - wScriptFlags) * 8 + (IDX)
 PURGE LBL
 """
         RomInfo.macros["FLAG_CONDITION_TO_IDX"] = r"""
@@ -63,12 +63,12 @@ assert STRSUB("\1", STRLEN("\1") - 1, 1) == "."
 IF STRCMP(STRSUB("\1", 1, 1), "!") == 0
 LBL equs STRSUB("\1", 2, STRLEN("\1") - 3)
 IDX = STRSUB("\1", STRLEN("\1")) - "0"
-  db (LBL - wScriptFlags) * 8 + (7 - IDX)
+  db (LBL - wScriptFlags) * 8 + (IDX)
 PURGE LBL
 ELSE
 LBL equs STRSUB("\1", 1, STRLEN("\1") - 2)
 IDX = STRSUB("\1", STRLEN("\1")) - "0"
-  db (LBL - wScriptFlags) * 8 + (7 - IDX) | $80
+  db (LBL - wScriptFlags) * 8 + (IDX) | $80
 PURGE LBL
 ENDC
 """
@@ -644,9 +644,9 @@ class ScriptBlock(Block):
                         flag = flag & 0x7F
                         label = RomInfo.getWRam().getLabel(0xD7C6 + flag // 8)
                         if is_not:
-                            args.append("!%s.%d" % (label, 7 - (flag % 8)))
+                            args.append("!%s.%d" % (label, (flag % 8)))
                         else:
-                            args.append("%s.%d" % (label, 7 - (flag % 8)))
+                            args.append("%s.%d" % (label, (flag % 8)))
                         size += 1
                     size += 1
                 elif t == "MSG":
@@ -666,7 +666,7 @@ class ScriptBlock(Block):
                 elif t == "FLAG":
                     flag = self.memory.byte(file.addr + size)
                     label = RomInfo.getWRam().getLabel(0xD7C6 + flag // 8)
-                    args.append("%s.%d" % (label, 7 - (flag % 8)))
+                    args.append("%s.%d" % (label, (flag % 8)))
                     size += 1
                 elif t == "REL_LABEL":
                     target = file.addr + size + 1 + self.memory.byte(file.addr + size)
