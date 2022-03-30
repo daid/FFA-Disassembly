@@ -8152,7 +8152,7 @@ scriptOpCodeEND:
     ld   A, [wD874]                                    ;; 00:3297 $fa $74 $d8
     bit  0, A                                          ;; 00:329a $cb $47
     ret  NZ                                            ;; 00:329c $c0
-    ld   A, [wD865]                                    ;; 00:329d $fa $65 $d8
+    ld   A, [wScriptStackCount]                        ;; 00:329d $fa $65 $d8
     and  A, A                                          ;; 00:32a0 $a7
     jr   NZ, .jr_00_32c0                               ;; 00:32a1 $20 $1d
     xor  A, A                                          ;; 00:32a3 $af
@@ -8170,7 +8170,7 @@ scriptOpCodeEND:
     ret                                                ;; 00:32bf $c9
 .jr_00_32c0:
     push HL                                            ;; 00:32c0 $e5
-    call call_00_3705                                  ;; 00:32c1 $cd $05 $37
+    call popBCDEfromScriptStack                        ;; 00:32c1 $cd $05 $37
     pop  HL                                            ;; 00:32c4 $e1
     ld   A, B                                          ;; 00:32c5 $78
     cp   A, $03                                        ;; 00:32c6 $fe $03
@@ -8194,7 +8194,7 @@ scriptOpCodeEND:
     jr   Z, .jr_00_32ef                                ;; 00:32e4 $28 $09
     push DE                                            ;; 00:32e6 $d5
     pop  HL                                            ;; 00:32e7 $e1
-    call call_00_36df                                  ;; 00:32e8 $cd $df $36
+    call pushBCDEtoScriptStack                         ;; 00:32e8 $cd $df $36
     call getNextScriptInstruction                      ;; 00:32eb $cd $27 $37
     ret                                                ;; 00:32ee $c9
 .jr_00_32ef:
@@ -8229,7 +8229,7 @@ call_00_3304:
     ld   DE, mapRoomPointers_03                        ;; 00:3311 $11 $00 $40
     add  HL, DE                                        ;; 00:3314 $19
 .jr_00_3315:
-    call call_00_36df                                  ;; 00:3315 $cd $df $36
+    call pushBCDEtoScriptStack                         ;; 00:3315 $cd $df $36
     pop  HL                                            ;; 00:3318 $e1
     ld   DE, mapRoomPointers_00                        ;; 00:3319 $11 $00 $40
     add  HL, DE                                        ;; 00:331c $19
@@ -8247,7 +8247,7 @@ scriptOpCode03:
     ld   B, $03                                        ;; 00:3332 $06 $03
     ld   C, A                                          ;; 00:3334 $4f
     inc  HL                                            ;; 00:3335 $23
-    call call_00_36df                                  ;; 00:3336 $cd $df $36
+    call pushBCDEtoScriptStack                         ;; 00:3336 $cd $df $36
     call getNextScriptInstruction                      ;; 00:3339 $cd $27 $37
     ret                                                ;; 00:333c $c9
 
@@ -8862,48 +8862,50 @@ call_00_36d0:
     ld   [wScriptCommand], A                           ;; 00:36db $ea $5a $d8
     ret                                                ;; 00:36de $c9
 
-call_00_36df:
+; push 4 bytes to the script stack (not interrupt safe!)
+pushBCDEtoScriptStack:
     push HL                                            ;; 00:36df $e5
     pop  DE                                            ;; 00:36e0 $d1
-    ld   [wD8BE], SP                                   ;; 00:36e1 $08 $be $d8
-    ld   A, [wD8BD]                                    ;; 00:36e4 $fa $bd $d8
+    ld   [wStackBackup], SP                            ;; 00:36e1 $08 $be $d8
+    ld   A, [wScriptStackPointer.high]                 ;; 00:36e4 $fa $bd $d8
     ld   H, A                                          ;; 00:36e7 $67
-    ld   A, [wD8BC]                                    ;; 00:36e8 $fa $bc $d8
+    ld   A, [wScriptStackPointer]                      ;; 00:36e8 $fa $bc $d8
     ld   L, A                                          ;; 00:36eb $6f
     ld   SP, HL                                        ;; 00:36ec $f9
     push DE                                            ;; 00:36ed $d5
     push BC                                            ;; 00:36ee $c5
-    ld   [wD8BC], SP                                   ;; 00:36ef $08 $bc $d8
-    ld   A, [wD8BF]                                    ;; 00:36f2 $fa $bf $d8
+    ld   [wScriptStackPointer], SP                     ;; 00:36ef $08 $bc $d8
+    ld   A, [wStackBackup.high]                        ;; 00:36f2 $fa $bf $d8
     ld   H, A                                          ;; 00:36f5 $67
-    ld   A, [wD8BE]                                    ;; 00:36f6 $fa $be $d8
+    ld   A, [wStackBackup]                             ;; 00:36f6 $fa $be $d8
     ld   L, A                                          ;; 00:36f9 $6f
     ld   SP, HL                                        ;; 00:36fa $f9
-    ld   A, [wD865]                                    ;; 00:36fb $fa $65 $d8
+    ld   A, [wScriptStackCount]                        ;; 00:36fb $fa $65 $d8
     inc  A                                             ;; 00:36fe $3c
-    ld   [wD865], A                                    ;; 00:36ff $ea $65 $d8
+    ld   [wScriptStackCount], A                        ;; 00:36ff $ea $65 $d8
     push DE                                            ;; 00:3702 $d5
     pop  HL                                            ;; 00:3703 $e1
     ret                                                ;; 00:3704 $c9
 
-call_00_3705:
-    ld   [wD8BE], SP                                   ;; 00:3705 $08 $be $d8
-    ld   A, [wD8BD]                                    ;; 00:3708 $fa $bd $d8
+; pop 4 bytes from the script stack (not interrupt safe!)
+popBCDEfromScriptStack:
+    ld   [wStackBackup], SP                            ;; 00:3705 $08 $be $d8
+    ld   A, [wScriptStackPointer.high]                 ;; 00:3708 $fa $bd $d8
     ld   H, A                                          ;; 00:370b $67
-    ld   A, [wD8BC]                                    ;; 00:370c $fa $bc $d8
+    ld   A, [wScriptStackPointer]                      ;; 00:370c $fa $bc $d8
     ld   L, A                                          ;; 00:370f $6f
     ld   SP, HL                                        ;; 00:3710 $f9
     pop  BC                                            ;; 00:3711 $c1
     pop  DE                                            ;; 00:3712 $d1
-    ld   [wD8BC], SP                                   ;; 00:3713 $08 $bc $d8
-    ld   A, [wD8BF]                                    ;; 00:3716 $fa $bf $d8
+    ld   [wScriptStackPointer], SP                     ;; 00:3713 $08 $bc $d8
+    ld   A, [wStackBackup.high]                        ;; 00:3716 $fa $bf $d8
     ld   H, A                                          ;; 00:3719 $67
-    ld   A, [wD8BE]                                    ;; 00:371a $fa $be $d8
+    ld   A, [wStackBackup]                             ;; 00:371a $fa $be $d8
     ld   L, A                                          ;; 00:371d $6f
     ld   SP, HL                                        ;; 00:371e $f9
-    ld   A, [wD865]                                    ;; 00:371f $fa $65 $d8
+    ld   A, [wScriptStackCount]                        ;; 00:371f $fa $65 $d8
     dec  A                                             ;; 00:3722 $3d
-    ld   [wD865], A                                    ;; 00:3723 $ea $65 $d8
+    ld   [wScriptStackCount], A                        ;; 00:3723 $ea $65 $d8
     ret                                                ;; 00:3726 $c9
 
 getNextScriptInstruction:

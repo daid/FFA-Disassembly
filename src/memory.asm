@@ -820,7 +820,10 @@ wD633:
 wD637:
     ds 76                                              ;; d637
 
-wD683:
+; End of the script stack, used by script call/loop operations
+; 4 bytes are pushed onto this at a time. Stack grows upwards!
+; Memory below this label is also used to backup and restore some OAM data (when?)
+wScriptStackTop:
     ds 24                                              ;; d683
 
 ; Amount of the same type of item in inventory. wItemInventory indicates the type, wItemInventoryAmount indicates the amount
@@ -1148,7 +1151,8 @@ wD863:
 wD864:
     ds 1                                               ;; d864
 
-wD865:
+; Amount of pushes done on the script stack
+wScriptStackCount:
     ds 1                                               ;; d865
 
 wD866:
@@ -1400,16 +1404,16 @@ wD8BA:
 wD8BB:
     ds 1                                               ;; d8bb
 
-wD8BC:
+; Pointer to the script stack.
+wScriptStackPointer:
     ds 1                                               ;; d8bc
-
-wD8BD:
+.high:
     ds 1                                               ;; d8bd
 
-wD8BE:
+; SP is stored here while operating on the script stack
+wStackBackup:
     ds 1                                               ;; d8be
-
-wD8BF:
+.high:
     ds 1                                               ;; d8bf
 
 wNextXPLevelLow:

@@ -4563,7 +4563,7 @@ call_02_6700:
 
 data_02_670a:
     ld   HL, wOAMBuffer                                ;; 02:670a $21 $00 $c0
-    ld   DE, wD683                                     ;; 02:670d $11 $83 $d6
+    ld   DE, wScriptStackTop                           ;; 02:670d $11 $83 $d6
     ld   B, $18                                        ;; 02:6710 $06 $18
     call copyHLtoDE                                    ;; 02:6712 $cd $49 $2b
     ld   A, [wD84A]                                    ;; 02:6715 $fa $4a $d8
@@ -5243,7 +5243,7 @@ call_02_6b51:
     push DE                                            ;; 02:6b52 $d5
     push BC                                            ;; 02:6b53 $c5
     ld   DE, wOAMBuffer                                ;; 02:6b54 $11 $00 $c0
-    ld   HL, wD683                                     ;; 02:6b57 $21 $83 $d6
+    ld   HL, wScriptStackTop                           ;; 02:6b57 $21 $83 $d6
     ld   B, $18                                        ;; 02:6b5a $06 $18
     call copyHLtoDE                                    ;; 02:6b5c $cd $49 $2b
     call call_02_6b8c                                  ;; 02:6b5f $cd $8c $6b
@@ -5821,11 +5821,11 @@ call_02_6e25:
     inc  A                                             ;; 02:6eb3 $3c
     ld   [wLevel], A                                   ;; 02:6eb4 $ea $ba $d7
     call setNextXPLevel                                ;; 02:6eb7 $cd $a3 $3e
-    ld   HL, wD683                                     ;; 02:6eba $21 $83 $d6
+    ld   HL, wScriptStackTop                           ;; 02:6eba $21 $83 $d6
     ld   A, H                                          ;; 02:6ebd $7c
-    ld   [wD8BD], A                                    ;; 02:6ebe $ea $bd $d8
+    ld   [wScriptStackPointer.high], A                 ;; 02:6ebe $ea $bd $d8
     ld   A, L                                          ;; 02:6ec1 $7d
-    ld   [wD8BC], A                                    ;; 02:6ec2 $ea $bc $d8
+    ld   [wScriptStackPointer], A                      ;; 02:6ec2 $ea $bc $d8
     ld   A, $01                                        ;; 02:6ec5 $3e $01
     ld   [wD858], A                                    ;; 02:6ec7 $ea $58 $d8
     ld   HL, $32                                       ;; 02:6eca $21 $32 $00
