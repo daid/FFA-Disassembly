@@ -1,7 +1,6 @@
 ;; Disassembled with BadBoy Disassembler: https://github.com/daid/BadBoy
 
 
-
 ;Meta tile data, 6 bytes per metatile.
 ; 0-3: Tile graphic index
 ; 4-5: Collision info?

@@ -1,7 +1,6 @@
 ;; Disassembled with BadBoy Disassembler: https://github.com/daid/BadBoy
 
 
-
 ;@map_headers amount=16
 ; This bank seems to start with some kind of map information with 11 bytes per record
 ; Format:

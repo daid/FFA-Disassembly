@@ -1,7 +1,6 @@
 ;; Disassembled with BadBoy Disassembler: https://github.com/daid/BadBoy
 
 
-
 ; Looks like some map info is stored here, at least: Size of each map, Runlength length
 mapRoomPointers_01:
     db   $00, $04, $08, $08                            ;; 06:4000 ....

@@ -1,7 +1,6 @@
 ;; Disassembled with BadBoy Disassembler: https://github.com/daid/BadBoy
 
 
-
 mapRoomPointers_05:
     db   $01, $04, $08, $08                            ;; 07:6170 ????
     dw   map05_room_tile_template                      ;; 07:6174 $8e $62

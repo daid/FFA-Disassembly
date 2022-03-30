@@ -1,7 +1,6 @@
 ;; Disassembled with BadBoy Disassembler: https://github.com/daid/BadBoy
 
 
-
 mapRoomPointers_0f:
     db   $00, $04, $08, $08                            ;; 06:510e ....
     ;;Room data pointers

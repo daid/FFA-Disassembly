@@ -932,6 +932,7 @@ getScriptOpcodeFunction:
     ld   H, [HL]                                       ;; 02:4573 $66
     ld   L, A                                          ;; 02:4574 $6f
     ret                                                ;; 02:4575 $c9
+
 INCLUDE "code/script/opcodetable.asm"
 
 call_02_4776:

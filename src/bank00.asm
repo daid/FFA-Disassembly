@@ -8,34 +8,32 @@ SECTION "bank00", ROM0[$0000]
 
 call_00_0000:
     jp   FullReset                                     ;; 00:0000 $c3 $50 $01
-    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 00:0003 ?..?????
-    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 00:000b ????????
-    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 00:0013 ????????
-    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 00:001b ????????
-    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 00:0023 ????????
-    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 00:002b ????????
-    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 00:0033 ????????
-    db   $00, $00, $00, $00, $00                       ;; 00:003b ?????
+
+SECTION "isrVBlank", ROM0[$0040]
 
 isrVBlank:
     call VBlankInterruptHandler                        ;; 00:0040 $cd $64 $00
     reti                                               ;; 00:0043 $d9
-    db   $00, $00, $00, $00                            ;; 00:0044 ????
+
+SECTION "isrLCDC", ROM0[$0048]
 
 isrLCDC:
     call LCDCInterruptHandler                          ;; 00:0048 $cd $97 $00
     reti                                               ;; 00:004b $d9
-    db   $00, $00, $00, $00                            ;; 00:004c ????
+
+SECTION "isrTimer", ROM0[$0050]
 
 isrTimer:
     call DummyInterruptHandler                         ;; 00:0050 $cd $87 $00
     reti                                               ;; 00:0053 $d9
-    db   $00, $00, $00, $00                            ;; 00:0054 ????
+
+SECTION "isrSerial", ROM0[$0058]
 
 isrSerial:
     call DummyInterruptHandler                         ;; 00:0058 $cd $87 $00
     reti                                               ;; 00:005b $d9
-    db   $00, $00, $00, $00                            ;; 00:005c ????
+
+SECTION "isrJoypad", ROM0[$0060]
 
 isrJoypad:
     call DummyInterruptHandler                         ;; 00:0060 $cd $87 $00
@@ -112,12 +110,8 @@ updateVideoRegisters:
     ld   A, [wVideoWY]                                 ;; 00:00cd $fa $a9 $c0
     ldh  [rWY], A                                      ;; 00:00d0 $e0 $4a
     ret                                                ;; 00:00d2 $c9
-    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 00:00d3 ????????
-    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 00:00db ????????
-    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 00:00e3 ????????
-    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 00:00eb ????????
-    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 00:00f3 ????????
-    db   $00, $00, $00, $00, $00                       ;; 00:00fb ?????
+
+SECTION "entry", ROM0[$0100]
 
 entry:
     nop                                                ;; 00:0100 $00
@@ -146,6 +140,8 @@ HeaderWorldOrJapanFlag:
 
 HeaderChecksum:
     ds   3                                             ;; 00:014d ???
+
+SECTION "bank00_0150", ROM0[$0150]
 
 FullReset:
     jp   Init                                          ;; 00:0150 $c3 $ca $1f
@@ -10279,4 +10275,3 @@ dualCharMapping:
     db   $ff, $c0, $e1, $e2, $e7, $d4, $ff, $c1        ;; 00:3fe5 ........
     db   $d8, $e7, $ea, $d8, $ff, $cc, $d8, $f3        ;; 00:3fed ........
     db   $ea, $dc, $c1, $be, $d6, $de, $e1, $e7        ;; 00:3ff5 ..??....
-    db   $00, $00, $00                                 ;; 00:3ffd ???

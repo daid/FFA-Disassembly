@@ -1,7 +1,6 @@
 ;; Disassembled with BadBoy Disassembler: https://github.com/daid/BadBoy
 
 
-
 ;@jumptable amount=256 label=scriptOpCode%02X
 scriptOpcodeTable:
     dw   scriptOpCodeEND                               ;; 02:4576 ..

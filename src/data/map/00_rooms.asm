@@ -1,7 +1,6 @@
 ;; Disassembled with BadBoy Disassembler: https://github.com/daid/BadBoy
 
 
-
 ; This seems to contain map data
 ; Basic format is 2 pointers pointing to a "object table" and runlength encoded "tilemap" data
 mapRoomPointers_00:

@@ -1,7 +1,6 @@
 ;; Disassembled with BadBoy Disassembler: https://github.com/daid/BadBoy
 
 
-
 ;@data format=bbb amount=100
 xpPerLevelTable:
     db   $00, $00, $00                                 ;; 08:4dd6 ???
