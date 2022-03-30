@@ -7,7 +7,7 @@ INCLUDE "include/charmaps.inc"
 SECTION "bank0b", ROMX[$4000], BANK[$0b]
 
 ;@gfximg name=title_end width=16 height=12
-data_0b_4000:
+tilesetGfxTitle:
     INCBIN "title_end.bin"                             ;; 0b:4000
 ;@gfximg name=trashbin width=2 height=8
     INCBIN "trashbin.bin"                              ;; 0b:4c00
