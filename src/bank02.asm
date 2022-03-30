@@ -6727,7 +6727,7 @@ call_02_747c:
     push DE                                            ;; 02:7490 $d5
     ld   DE, $00                                       ;; 02:7491 $11 $00 $00
     ld   B, $78                                        ;; 02:7494 $06 $78
-    call call_02_74c4                                  ;; 02:7496 $cd $c4 $74
+    call getSRAMChecksum                               ;; 02:7496 $cd $c4 $74
     pop  DE                                            ;; 02:7499 $d1
     ld   A, D                                          ;; 02:749a $7a
     cp   A, H                                          ;; 02:749b $bc
@@ -6761,7 +6761,8 @@ call_02_747c:
     ld   [wD874], A                                    ;; 02:74c0 $ea $74 $d8
     ret                                                ;; 02:74c3 $c9
 
-call_02_74c4:
+; Get SRAM checksum, read B bytes from SRAM and accumulates them into HL, with DE as start value.
+getSRAMChecksum:
     call readSRAMByte                                  ;; 02:74c4 $cd $6f $74
     ld   C, A                                          ;; 02:74c7 $4f
     add  A, E                                          ;; 02:74c8 $83
@@ -6770,7 +6771,7 @@ call_02_74c4:
     adc  A, $00                                        ;; 02:74cb $ce $00
     ld   D, A                                          ;; 02:74cd $57
     dec  B                                             ;; 02:74ce $05
-    jr   NZ, call_02_74c4                              ;; 02:74cf $20 $f3
+    jr   NZ, getSRAMChecksum                           ;; 02:74cf $20 $f3
     push DE                                            ;; 02:74d1 $d5
     pop  HL                                            ;; 02:74d2 $e1
     ld   A, C                                          ;; 02:74d3 $79

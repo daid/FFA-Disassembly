@@ -198,16 +198,37 @@ call_00_016f:
     ret                                                ;; 00:0193 $c9
 
 scriptOpCodeA0:
-    db   $e5, $cd, $9d, $01, $e1, $cd, $27, $37        ;; 00:0194 ????????
-    db   $c9, $f5, $3e, $09, $c3, $d7, $1e             ;; 00:019c ???????
+    push HL                                            ;; 00:0194 $e5
+    call call_00_019d                                  ;; 00:0195 $cd $9d $01
+    pop  HL                                            ;; 00:0198 $e1
+    call getNextScriptInstruction                      ;; 00:0199 $cd $27 $37
+    ret                                                ;; 00:019c $c9
+
+call_00_019d:
+    push AF                                            ;; 00:019d $f5
+    jp_to_bank 01, call_01_5136                        ;; 00:019e $3e $09 $c3 $d7 $1e
 
 scriptOpCodeA1:
-    db   $e5, $cd, $ac, $01, $e1, $cd, $27, $37        ;; 00:01a3 ????????
-    db   $c9, $f5, $3e, $0a, $c3, $d7, $1e             ;; 00:01ab ???????
+    push HL                                            ;; 00:01a3 $e5
+    call call_00_01ac                                  ;; 00:01a4 $cd $ac $01
+    pop  HL                                            ;; 00:01a7 $e1
+    call getNextScriptInstruction                      ;; 00:01a8 $cd $27 $37
+    ret                                                ;; 00:01ab $c9
+
+call_00_01ac:
+    push AF                                            ;; 00:01ac $f5
+    jp_to_bank 01, call_01_5156                        ;; 00:01ad $3e $0a $c3 $d7 $1e
 
 scriptOpCodeA2:
-    db   $e5, $cd, $bb, $01, $e1, $cd, $27, $37        ;; 00:01b2 ????????
-    db   $c9, $f5, $3e, $0b, $c3, $d7, $1e             ;; 00:01ba ???????
+    push HL                                            ;; 00:01b2 $e5
+    call call_00_01bb                                  ;; 00:01b3 $cd $bb $01
+    pop  HL                                            ;; 00:01b6 $e1
+    call getNextScriptInstruction                      ;; 00:01b7 $cd $27 $37
+    ret                                                ;; 00:01ba $c9
+
+call_00_01bb:
+    push AF                                            ;; 00:01bb $f5
+    jp_to_bank 01, call_01_5176                        ;; 00:01bc $3e $0b $c3 $d7 $1e
 
 scriptOpCodeA4:
     push HL                                            ;; 00:01c1 $e5
@@ -221,8 +242,11 @@ call_00_01ca:
     jp_to_bank 01, call_01_50f9                        ;; 00:01cb $3e $08 $c3 $d7 $1e
 
 scriptOpCodeA3:
-    db   $fa, $d4, $c4, $cb, $e7, $ea, $d4, $c4        ;; 00:01d0 ????????
-    db   $cd, $27, $37, $c9                            ;; 00:01d8 ????
+    ld   A, [wC4D4]                                    ;; 00:01d0 $fa $d4 $c4
+    set  4, A                                          ;; 00:01d3 $cb $e7
+    ld   [wC4D4], A                                    ;; 00:01d5 $ea $d4 $c4
+    call getNextScriptInstruction                      ;; 00:01d8 $cd $27 $37
+    ret                                                ;; 00:01db $c9
 
 scriptOpCodeA5:
     ld   A, [wC4D4]                                    ;; 00:01dc $fa $d4 $c4
@@ -2505,7 +2529,9 @@ scriptOpCodeBA:
     ret                                                ;; 00:0ebd $c9
     db   $00, $10, $10, $00, $10, $10, $00, $10        ;; 00:0ebe ????????
     db   $10, $00, $10, $10                            ;; 00:0ec6 ????
+
 ;@jumptable amount=2
+jumptable_0eca:
     dw   call_00_0ece                                  ;; 00:0eca ??
     dw   call_00_0eef                                  ;; 00:0ecc ??
 
@@ -8274,7 +8300,7 @@ scriptOpCode04:
     sub  A, $10                                        ;; 00:335f $d6 $10
     ld   B, $00                                        ;; 00:3361 $06 $00
     ld   C, A                                          ;; 00:3363 $4f
-    ld   HL, $38ee                                     ;; 00:3364 $21 $ee $38
+    ld   HL, jumptable_38ee                            ;; 00:3364 $21 $ee $38
     add  HL, BC                                        ;; 00:3367 $09
     add  HL, BC                                        ;; 00:3368 $09
     ld   A, [HL+]                                      ;; 00:3369 $2a
@@ -9177,7 +9203,7 @@ call_00_38bb:
 scriptOpCodeFF:
     push HL                                            ;; 00:38de $e5
     ld   A, [wD86B]                                    ;; 00:38df $fa $6b $d8
-    ld   HL, $3ba1                                     ;; 00:38e2 $21 $a1 $3b
+    ld   HL, jumptable_3ba1                            ;; 00:38e2 $21 $a1 $3b
     ld   B, $00                                        ;; 00:38e5 $06 $00
     ld   C, A                                          ;; 00:38e7 $4f
     add  HL, BC                                        ;; 00:38e8 $09
@@ -9186,7 +9212,9 @@ scriptOpCodeFF:
     ld   H, [HL]                                       ;; 00:38eb $66
     ld   L, A                                          ;; 00:38ec $6f
     jp   HL                                            ;; 00:38ed $e9
+
 ;@jumptable amount=16
+jumptable_38ee:
     dw   call_00_34e7                                  ;; 00:38ee ..
     dw   call_00_34f4                                  ;; 00:38f0 ..
     dw   call_00_3502                                  ;; 00:38f2 ..
@@ -9649,7 +9677,9 @@ scriptOpCodeDE:
 
 scriptOpCodeC8:
     jp   FullReset                                     ;; 00:3b9e $c3 $50 $01
+
 ;@jumptable amount=11
+jumptable_3ba1:
     dw   call_00_3547                                  ;; 00:3ba1 ..
     dw   call_00_3597                                  ;; 00:3ba3 ..
     dw   call_00_3675                                  ;; 00:3ba5 ..
