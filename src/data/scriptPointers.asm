@@ -2,6 +2,7 @@
 
 
 
+;#ENDINC
 ;@script_pointers amount=1354
 ; The following data is pointers to the scripts in bank $0D and $0E
 scriptPointersTable:
