@@ -123,8 +123,10 @@ class MapHeaderBlock(Block):
         self.unused3 = memory.byte(addr + 10)
 
         RomInfo.macros["MAP_HEADER"] = r"""
+assert BANK(\1) == $0B || BANK(\1) == $0C
 dw (\1) - ($4000 * (BANK(\1) - $0B))
 db \2
+assert BANK(\3) == BANK(@)
 dw \3
 db \4
 db BANK(\5)

@@ -5,12 +5,13 @@
 ;@map_headers amount=16
 ; This bank seems to start with some kind of map information with 11 bytes per record
 ; Format:
-;  dw TileSetData?
+;  dw Graphics data (in bank 0B or 0C)
 ;  db $00 ; ignored
-;  dw TileSetData?
+;  dw Pointer to Metatile info
 ;  db $00 ; ignored
 ;  db BankNr
 ;  dw MapPointer
+;  db ?, ?
 mapHeader_00:
     MAP_HEADER data_0c_4000, $00, data_08_40b0, $80, mapRoomPointers_00, $d7, $3c ;; 08:4000 ..?..?...??
 
