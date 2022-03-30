@@ -7963,9 +7963,9 @@ call_00_315f:
     push AF                                            ;; 00:315f $f5
     jp_to_bank 02, call_02_6656                        ;; 00:3160 $3e $32 $c3 $06 $1f
 
-call_00_3165:
+getScriptOpcodeFunctionTrampoline:
     push AF                                            ;; 00:3165 $f5
-    jp_to_bank 02, call_02_4567                        ;; 00:3166 $3e $33 $c3 $06 $1f
+    jp_to_bank 02, getScriptOpcodeFunction             ;; 00:3166 $3e $33 $c3 $06 $1f
 
 call_00_316b:
     push AF                                            ;; 00:316b $f5
@@ -8114,7 +8114,7 @@ call_00_3254:
     call call_00_3c60                                  ;; 00:3260 $cd $60 $3c
     ld   HL, $3274                                     ;; 00:3263 $21 $74 $32
     push HL                                            ;; 00:3266 $e5
-    call call_00_3165                                  ;; 00:3267 $cd $65 $31
+    call getScriptOpcodeFunctionTrampoline             ;; 00:3267 $cd $65 $31
     push HL                                            ;; 00:326a $e5
     ld   A, [wScriptPointerHigh]                       ;; 00:326b $fa $b7 $d8
     ld   H, A                                          ;; 00:326e $67
@@ -8148,7 +8148,7 @@ getScriptPointerFromScriptPointerTable:
     pop  HL                                            ;; 00:3295 $e1
     ret                                                ;; 00:3296 $c9
 
-scriptOpCode00:
+scriptOpCodeEND:
     ld   A, [wD874]                                    ;; 00:3297 $fa $74 $d8
     bit  0, A                                          ;; 00:329a $cb $47
     ret  NZ                                            ;; 00:329c $c0
