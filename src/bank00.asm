@@ -7931,9 +7931,9 @@ call_00_30f3:
     jp_to_bank 02, call_02_6dcc                        ;; 00:30f4 $3e $20 $c3 $06 $1f
     db   $f5, $3e, $21, $c3, $06, $1f                  ;; 00:30f9 ??????
 
-call_00_30ff:
+clearStatusBarTrampoline:
     push AF                                            ;; 00:30ff $f5
-    jp_to_bank 02, call_02_5157                        ;; 00:3100 $3e $22 $c3 $06 $1f
+    jp_to_bank 02, clearStatusBar                      ;; 00:3100 $3e $22 $c3 $06 $1f
     db   $f5, $3e, $23, $c3, $06, $1f                  ;; 00:3105 ??????
 
 drawHPOnStatuBarTrampoline:
@@ -9369,7 +9369,7 @@ scriptOpCodeC6:
     ld   [wD862], A                                    ;; 00:39cf $ea $62 $d8
     ld   A, [HL+]                                      ;; 00:39d2 $2a
     ld   [wD86C], A                                    ;; 00:39d3 $ea $6c $d8
-    call call_00_30ff                                  ;; 00:39d6 $cd $ff $30
+    call clearStatusBarTrampoline                      ;; 00:39d6 $cd $ff $30
     ld   A, $01                                        ;; 00:39d9 $3e $01
     ld   [wD853], A                                    ;; 00:39db $ea $53 $d8
     ld   A, $1d                                        ;; 00:39de $3e $1d
@@ -9868,7 +9868,7 @@ scriptOpCodeF6:
     ld   [wD86D], A                                    ;; 00:3c9f $ea $6d $d8
     ld   A, [HL+]                                      ;; 00:3ca2 $2a
     ld   [wD86C], A                                    ;; 00:3ca3 $ea $6c $d8
-    call call_00_30ff                                  ;; 00:3ca6 $cd $ff $30
+    call clearStatusBarTrampoline                      ;; 00:3ca6 $cd $ff $30
     ld   HL, wD8D7                                     ;; 00:3ca9 $21 $d7 $d8
     xor  A, A                                          ;; 00:3cac $af
     ld   B, $04                                        ;; 00:3cad $06 $04

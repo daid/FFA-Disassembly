@@ -40,7 +40,7 @@ SECTION "bank02", ROMX[$4000], BANK[$02]
     call_to_bank_target call_02_6dde                   ;; 02:403e ..
     call_to_bank_target call_02_6dcc                   ;; 02:4040 ..
     call_to_bank_target call_02_6df4                   ;; 02:4042 ??
-    call_to_bank_target call_02_5157                   ;; 02:4044 ..
+    call_to_bank_target clearStatusBar                 ;; 02:4044 ..
     call_to_bank_target drawDefaultStatusBar           ;; 02:4046 ??
     call_to_bank_target drawHPOnStatuBar               ;; 02:4048 ..
     call_to_bank_target drawManaOnStatusBar            ;; 02:404a ..
@@ -1988,7 +1988,7 @@ call_02_4ee1:
     ld   [wD853], A                                    ;; 02:4ee3 $ea $53 $d8
     call call_02_667a                                  ;; 02:4ee6 $cd $7a $66
     ret  NZ                                            ;; 02:4ee9 $c0
-    call call_02_5157                                  ;; 02:4eea $cd $57 $51
+    call clearStatusBar                                ;; 02:4eea $cd $57 $51
     ld   A, $12                                        ;; 02:4eed $3e $12
     ld   [wD84A], A                                    ;; 02:4eef $ea $4a $d8
     ld   A, $01                                        ;; 02:4ef2 $3e $01
@@ -2000,7 +2000,7 @@ call_02_4ee1:
 call_02_4efd:
     call call_02_667a                                  ;; 02:4efd $cd $7a $66
     ret  NZ                                            ;; 02:4f00 $c0
-    call call_02_5157                                  ;; 02:4f01 $cd $57 $51
+    call clearStatusBar                                ;; 02:4f01 $cd $57 $51
     ld   A, $12                                        ;; 02:4f04 $3e $12
     ld   [wD84A], A                                    ;; 02:4f06 $ea $4a $d8
     call call_02_6b51                                  ;; 02:4f09 $cd $51 $6b
@@ -2343,7 +2343,7 @@ call_02_50b5:
     ld   [wD853], A                                    ;; 02:5153 $ea $53 $d8
     ret                                                ;; 02:5156 $c9
 
-call_02_5157:
+clearStatusBar:
     ld   A, [wVideoWY]                                 ;; 02:5157 $fa $a9 $c0
     ld   [wD884], A                                    ;; 02:515a $ea $84 $d8
     ld   B, $40                                        ;; 02:515d $06 $40
@@ -6334,7 +6334,7 @@ call_02_71e4:
 jr_02_71e9:
     call call_02_667a                                  ;; 02:71e9 $cd $7a $66
     ret  NZ                                            ;; 02:71ec $c0
-    call call_02_5157                                  ;; 02:71ed $cd $57 $51
+    call clearStatusBar                                ;; 02:71ed $cd $57 $51
     ld   A, $1b                                        ;; 02:71f0 $3e $1b
     ld   [wD84A], A                                    ;; 02:71f2 $ea $4a $d8
     ld   B, $01                                        ;; 02:71f5 $06 $01
