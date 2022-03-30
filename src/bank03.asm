@@ -1897,7 +1897,7 @@ call_03_4a81:
 call_03_4a9f:
     call call_00_3dc0                                  ;; 03:4a9f $cd $c0 $3d
     ld   C, A                                          ;; 03:4aa2 $4f
-    ld   HL, wC4F0                                     ;; 03:4aa3 $21 $f0 $c4
+    ld   HL, wC4E0._10                                 ;; 03:4aa3 $21 $f0 $c4
     ld   B, $08                                        ;; 03:4aa6 $06 $08
 .jr_03_4aa8:
     push BC                                            ;; 03:4aa8 $c5
@@ -1921,7 +1921,7 @@ call_03_4a9f:
 call_03_4ac1:
     call call_00_3dc0                                  ;; 03:4ac1 $cd $c0 $3d
     ld   C, A                                          ;; 03:4ac4 $4f
-    ld   HL, wC4F0                                     ;; 03:4ac5 $21 $f0 $c4
+    ld   HL, wC4E0._10                                 ;; 03:4ac5 $21 $f0 $c4
     ld   B, $08                                        ;; 03:4ac8 $06 $08
 .jr_03_4aca:
     push BC                                            ;; 03:4aca $c5

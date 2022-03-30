@@ -2341,7 +2341,7 @@ call_02_4f5f:
     jp   jp_02_5877                                    ;; 02:4f94 $c3 $77 $58
 
 call_02_4f97:
-    ld   A, [wC001]                                    ;; 02:4f97 $fa $01 $c0
+    ld   A, [wOAMBuffer._01]                           ;; 02:4f97 $fa $01 $c0
     ld   H, A                                          ;; 02:4f9a $67
     ld   A, [wOAMBuffer]                               ;; 02:4f9b $fa $00 $c0
     ld   L, A                                          ;; 02:4f9e $6f
@@ -5522,7 +5522,7 @@ call_02_6b74:
     push HL                                            ;; 02:6b7c $e5
     push DE                                            ;; 02:6b7d $d5
     push BC                                            ;; 02:6b7e $c5
-    ld   HL, wC010                                     ;; 02:6b7f $21 $10 $c0
+    ld   HL, wOAMBuffer._10                            ;; 02:6b7f $21 $10 $c0
     jr   jr_02_6b95                                    ;; 02:6b82 $18 $11
 
 call_02_6b84:
@@ -5536,7 +5536,7 @@ call_02_6b8c:
     push HL                                            ;; 02:6b8c $e5
     push DE                                            ;; 02:6b8d $d5
     push BC                                            ;; 02:6b8e $c5
-    ld   HL, wC008                                     ;; 02:6b8f $21 $08 $c0
+    ld   HL, wOAMBuffer._08                            ;; 02:6b8f $21 $08 $c0
     ld   B, $08                                        ;; 02:6b92 $06 $08
     xor  A, A                                          ;; 02:6b94 $af
 
@@ -5569,7 +5569,7 @@ call_02_6bad:
     push HL                                            ;; 02:6bb3 $e5
     push DE                                            ;; 02:6bb4 $d5
     push BC                                            ;; 02:6bb5 $c5
-    ld   HL, wC008                                     ;; 02:6bb6 $21 $08 $c0
+    ld   HL, wOAMBuffer._08                            ;; 02:6bb6 $21 $08 $c0
     ld   BC, data_02_47b6                              ;; 02:6bb9 $01 $b6 $47
     jr   jr_02_6bcd                                    ;; 02:6bbc $18 $0f
 
@@ -5580,7 +5580,7 @@ call_02_6bbe:
     push HL                                            ;; 02:6bc4 $e5
     push DE                                            ;; 02:6bc5 $d5
     push BC                                            ;; 02:6bc6 $c5
-    ld   HL, wC008                                     ;; 02:6bc7 $21 $08 $c0
+    ld   HL, wOAMBuffer._08                            ;; 02:6bc7 $21 $08 $c0
 
 jr_02_6bca:
     ld   BC, data_02_47b4                              ;; 02:6bca $01 $b4 $47
@@ -5620,7 +5620,7 @@ call_02_6be8:
     push DE                                            ;; 02:6bf7 $d5
     push BC                                            ;; 02:6bf8 $c5
     ld   B, $08                                        ;; 02:6bf9 $06 $08
-    ld   DE, wC008                                     ;; 02:6bfb $11 $08 $c0
+    ld   DE, wOAMBuffer._08                            ;; 02:6bfb $11 $08 $c0
     ld   HL, wOAMBuffer                                ;; 02:6bfe $21 $00 $c0
 .jr_02_6c01:
     ld   A, [DE]                                       ;; 02:6c01 $1a
@@ -5656,7 +5656,7 @@ call_02_6c0b:
     ld   E, $02                                        ;; 02:6c2c $1e $02
     call call_02_6c4b                                  ;; 02:6c2e $cd $4b $6c
     pop  DE                                            ;; 02:6c31 $d1
-    ld   HL, wC010                                     ;; 02:6c32 $21 $10 $c0
+    ld   HL, wOAMBuffer._10                            ;; 02:6c32 $21 $10 $c0
     ld   BC, data_02_47b2                              ;; 02:6c35 $01 $b2 $47
     call call_02_6bd8                                  ;; 02:6c38 $cd $d8 $6b
     inc  E                                             ;; 02:6c3b $1c

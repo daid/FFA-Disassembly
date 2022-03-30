@@ -2747,7 +2747,7 @@ scriptOpCodeBD:
     cp   A, $7e                                        ;; 00:105d $fe $7e
     jr   Z, .jr_00_1067                                ;; 00:105f $28 $06
     ld   A, C                                          ;; 00:1061 $79
-    ld   [wD3A3], A                                    ;; 00:1062 $ea $a3 $d3
+    ld   [wLCDCEffectBuffer._03], A                    ;; 00:1062 $ea $a3 $d3
     jr   .jr_00_106b                                   ;; 00:1065 $18 $04
 .jr_00_1067:
     ld   A, C                                          ;; 00:1067 $79
@@ -2785,7 +2785,7 @@ scriptOpCodeBE:
     cp   A, $7e                                        ;; 00:10be $fe $7e
     jr   Z, .jr_00_10c8                                ;; 00:10c0 $28 $06
     ld   A, C                                          ;; 00:10c2 $79
-    ld   [wD3A3], A                                    ;; 00:10c3 $ea $a3 $d3
+    ld   [wLCDCEffectBuffer._03], A                    ;; 00:10c3 $ea $a3 $d3
     jr   .jr_00_10cc                                   ;; 00:10c6 $18 $04
 .jr_00_10c8:
     ld   A, C                                          ;; 00:10c8 $79
@@ -2823,7 +2823,7 @@ scriptOpCodeBC:
     cp   A, $7e                                        ;; 00:10fe $fe $7e
     jr   Z, .jr_00_1108                                ;; 00:1100 $28 $06
     ld   A, C                                          ;; 00:1102 $79
-    ld   [wD3A3], A                                    ;; 00:1103 $ea $a3 $d3
+    ld   [wLCDCEffectBuffer._03], A                    ;; 00:1103 $ea $a3 $d3
     jr   .jr_00_110c                                   ;; 00:1106 $18 $04
 .jr_00_1108:
     ld   A, C                                          ;; 00:1108 $79
@@ -2845,7 +2845,7 @@ scriptOpCodeBC:
     cp   A, $7e                                        ;; 00:1124 $fe $7e
     jr   Z, .jr_00_112e                                ;; 00:1126 $28 $06
     ld   A, C                                          ;; 00:1128 $79
-    ld   [wD3A3], A                                    ;; 00:1129 $ea $a3 $d3
+    ld   [wLCDCEffectBuffer._03], A                    ;; 00:1129 $ea $a3 $d3
     jr   .jr_00_1132                                   ;; 00:112c $18 $04
 .jr_00_112e:
     ld   A, C                                          ;; 00:112e $79

@@ -8,14 +8,11 @@ SECTION "wram0", WRAM0[$c000]
 
 wOAMBuffer:
     ds 1                                               ;; c000
-
-wC001:
+._01:
     ds 7                                               ;; c001
-
-wC008:
+._08:
     ds 8                                               ;; c008
-
-wC010:
+._10:
     ds 144                                             ;; c010
 
 wC0A0:
@@ -438,8 +435,7 @@ wC4D4:
 ; 12-13: HP
 wC4E0:
     ds 16                                              ;; c4e0
-
-wC4F0:
+._10:
     ds 176                                             ;; c4f0
 
 wC5A0:
@@ -661,8 +657,7 @@ wD399:
 ; 3: BGP value
 wLCDCEffectBuffer:
     ds 3                                               ;; d3a0
-
-wD3A3:
+._03:
     ds 63                                              ;; d3a3
 
 ; Index into the wLCDCEffectBuffer (as entry number, not byte offset)
