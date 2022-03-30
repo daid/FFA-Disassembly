@@ -742,7 +742,8 @@ wD446:
 wD498:
     ds 1                                               ;; d498
 
-wD499:
+; Counter used in various script opcodes, left at 0 after opcode is done.
+wScriptOpCounter:
     ds 1                                               ;; d499
 
 wD49A:

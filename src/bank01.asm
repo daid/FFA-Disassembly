@@ -159,7 +159,7 @@ data_01_4116:
 call_01_4130:
     ld   D, H                                          ;; 01:4130 $54
     ld   E, L                                          ;; 01:4131 $5d
-    ld   A, [wD499]                                    ;; 01:4132 $fa $99 $d4
+    ld   A, [wScriptOpCounter]                         ;; 01:4132 $fa $99 $d4
     ld   HL, .data_01_413c                             ;; 01:4135 $21 $3c $41
     call callJumptable                                 ;; 01:4138 $cd $70 $2b
     ret                                                ;; 01:413b $c9
@@ -176,7 +176,7 @@ call_01_4130:
 call_01_414c:
     ld   D, H                                          ;; 01:414c $54
     ld   E, L                                          ;; 01:414d $5d
-    ld   A, [wD499]                                    ;; 01:414e $fa $99 $d4
+    ld   A, [wScriptOpCounter]                         ;; 01:414e $fa $99 $d4
     ld   HL, .data_01_4158                             ;; 01:4151 $21 $58 $41
     call callJumptable                                 ;; 01:4154 $cd $70 $2b
     ret                                                ;; 01:4157 $c9
@@ -191,7 +191,7 @@ call_01_414c:
 call_01_4164:
     ld   D, H                                          ;; 01:4164 $54
     ld   E, L                                          ;; 01:4165 $5d
-    ld   A, [wD499]                                    ;; 01:4166 $fa $99 $d4
+    ld   A, [wScriptOpCounter]                         ;; 01:4166 $fa $99 $d4
     ld   HL, .data_01_4170                             ;; 01:4169 $21 $70 $41
     call callJumptable                                 ;; 01:416c $cd $70 $2b
     ret                                                ;; 01:416f $c9
@@ -208,7 +208,7 @@ call_01_4164:
 call_01_4180:
     ld   D, H                                          ;; 01:4180 $54
     ld   E, L                                          ;; 01:4181 $5d
-    ld   A, [wD499]                                    ;; 01:4182 $fa $99 $d4
+    ld   A, [wScriptOpCounter]                         ;; 01:4182 $fa $99 $d4
     ld   HL, .data_01_418c                             ;; 01:4185 $21 $8c $41
     call callJumptable                                 ;; 01:4188 $cd $70 $2b
     ret                                                ;; 01:418b $c9
@@ -226,7 +226,7 @@ data_01_419c:
     push DE                                            ;; 01:419c $d5
     ld   A, $00                                        ;; 01:419d $3e $00
     ld   [wD49A], A                                    ;; 01:419f $ea $9a $d4
-    ld   HL, wD499                                     ;; 01:41a2 $21 $99 $d4
+    ld   HL, wScriptOpCounter                          ;; 01:41a2 $21 $99 $d4
     inc  [HL]                                          ;; 01:41a5 $34
     ld   HL, data_01_40fc                              ;; 01:41a6 $21 $fc $40
     ld   A, [wC4D4]                                    ;; 01:41a9 $fa $d4 $c4
@@ -249,7 +249,7 @@ data_01_41ca:
     push DE                                            ;; 01:41ca $d5
     ld   A, $00                                        ;; 01:41cb $3e $00
     ld   [wD49A], A                                    ;; 01:41cd $ea $9a $d4
-    ld   HL, wD499                                     ;; 01:41d0 $21 $99 $d4
+    ld   HL, wScriptOpCounter                          ;; 01:41d0 $21 $99 $d4
     inc  [HL]                                          ;; 01:41d3 $34
     pop  HL                                            ;; 01:41d4 $e1
     ret                                                ;; 01:41d5 $c9
@@ -280,7 +280,7 @@ data_01_41d6:
     and  A, $fc                                        ;; 01:41f7 $e6 $fc
     ld   HL, rLCDC                                     ;; 01:41f9 $21 $40 $ff
     call storeBatHLinVRAM                              ;; 01:41fc $cd $5e $1d
-    ld   HL, wD499                                     ;; 01:41ff $21 $99 $d4
+    ld   HL, wScriptOpCounter                          ;; 01:41ff $21 $99 $d4
     inc  [HL]                                          ;; 01:4202 $34
     pop  HL                                            ;; 01:4203 $e1
     ret                                                ;; 01:4204 $c9
@@ -306,7 +306,7 @@ data_01_4205:
     call call_00_0313                                  ;; 01:421c $cd $13 $03
     ld   A, [wD49C]                                    ;; 01:421f $fa $9c $d4
     ld   [wVideoLCDC], A                               ;; 01:4222 $ea $a5 $c0
-    ld   HL, wD499                                     ;; 01:4225 $21 $99 $d4
+    ld   HL, wScriptOpCounter                          ;; 01:4225 $21 $99 $d4
     inc  [HL]                                          ;; 01:4228 $34
     pop  HL                                            ;; 01:4229 $e1
     ret                                                ;; 01:422a $c9
@@ -327,7 +327,7 @@ data_01_422b:
 .jr_01_4249:
     call call_01_4252                                  ;; 01:4249 $cd $52 $42
 .jr_01_424c:
-    ld   HL, wD499                                     ;; 01:424c $21 $99 $d4
+    ld   HL, wScriptOpCounter                          ;; 01:424c $21 $99 $d4
     inc  [HL]                                          ;; 01:424f $34
 
 data_01_4250:
@@ -478,7 +478,7 @@ data_01_433e:
     ld   A, [wD4A4]                                    ;; 01:4363 $fa $a4 $d4
     ld   [wC3F4], A                                    ;; 01:4366 $ea $f4 $c3
     call call_00_04a4                                  ;; 01:4369 $cd $a4 $04
-    ld   HL, wD499                                     ;; 01:436c $21 $99 $d4
+    ld   HL, wScriptOpCounter                          ;; 01:436c $21 $99 $d4
     inc  [HL]                                          ;; 01:436f $34
     ld   DE, $00                                       ;; 01:4370 $11 $00 $00
     ld   HL, $1014                                     ;; 01:4373 $21 $14 $10
@@ -505,7 +505,7 @@ data_01_4387:
     ld   A, C                                          ;; 01:4394 $79
     call loadMap                                       ;; 01:4395 $cd $dc $26
     call call_00_04a4                                  ;; 01:4398 $cd $a4 $04
-    ld   HL, wD499                                     ;; 01:439b $21 $99 $d4
+    ld   HL, wScriptOpCounter                          ;; 01:439b $21 $99 $d4
     inc  [HL]                                          ;; 01:439e $34
     pop  HL                                            ;; 01:439f $e1
     inc  HL                                            ;; 01:43a0 $23
@@ -550,7 +550,7 @@ data_01_43a3:
 .jr_01_43d9:
     ld   B, $0d                                        ;; 01:43d9 $06 $0d
     call call_00_02f3                                  ;; 01:43db $cd $f3 $02
-    ld   HL, wD499                                     ;; 01:43de $21 $99 $d4
+    ld   HL, wScriptOpCounter                          ;; 01:43de $21 $99 $d4
     inc  [HL]                                          ;; 01:43e1 $34
     ld   A, $23                                        ;; 01:43e2 $3e $23
     call playSFX                                       ;; 01:43e4 $cd $7d $29
@@ -591,7 +591,7 @@ data_01_43ee:
     call call_00_28aa                                  ;; 01:4414 $cd $aa $28
 .jr_01_4417:
     call call_00_2ef7                                  ;; 01:4417 $cd $f7 $2e
-    ld   HL, wD499                                     ;; 01:441a $21 $99 $d4
+    ld   HL, wScriptOpCounter                          ;; 01:441a $21 $99 $d4
     inc  [HL]                                          ;; 01:441d $34
     pop  HL                                            ;; 01:441e $e1
     inc  HL                                            ;; 01:441f $23
@@ -613,7 +613,7 @@ data_01_4422:
 .jr_01_443a:
     ld   B, $0d                                        ;; 01:443a $06 $0d
     call call_00_02f3                                  ;; 01:443c $cd $f3 $02
-    ld   HL, wD499                                     ;; 01:443f $21 $99 $d4
+    ld   HL, wScriptOpCounter                          ;; 01:443f $21 $99 $d4
     inc  [HL]                                          ;; 01:4442 $34
     ld   A, $23                                        ;; 01:4443 $3e $23
     call playSFX                                       ;; 01:4445 $cd $7d $29
@@ -634,7 +634,7 @@ data_01_4456:
 .jr_01_4464:
     ld   B, $0d                                        ;; 01:4464 $06 $0d
     call call_00_02f3                                  ;; 01:4466 $cd $f3 $02
-    ld   HL, wD499                                     ;; 01:4469 $21 $99 $d4
+    ld   HL, wScriptOpCounter                          ;; 01:4469 $21 $99 $d4
     inc  [HL]                                          ;; 01:446c $34
     ld   A, $23                                        ;; 01:446d $3e $23
     call playSFX                                       ;; 01:446f $cd $7d $29
@@ -650,7 +650,7 @@ data_01_4477:
     ld   A, [wBackgroundRenderRequestCount]            ;; 01:447f $fa $e8 $ce
     cp   A, $00                                        ;; 01:4482 $fe $00
     jr   NZ, .jr_01_448a                               ;; 01:4484 $20 $04
-    ld   HL, wD499                                     ;; 01:4486 $21 $99 $d4
+    ld   HL, wScriptOpCounter                          ;; 01:4486 $21 $99 $d4
     inc  [HL]                                          ;; 01:4489 $34
 .jr_01_448a:
     pop  HL                                            ;; 01:448a $e1
@@ -667,7 +667,7 @@ data_01_448c:
 .jr_01_449b:
     call call_00_3e8f                                  ;; 01:449b $cd $8f $3e
     ld   A, $00                                        ;; 01:449e $3e $00
-    ld   [wD499], A                                    ;; 01:44a0 $ea $99 $d4
+    ld   [wScriptOpCounter], A                         ;; 01:44a0 $ea $99 $d4
     pop  HL                                            ;; 01:44a3 $e1
     ret                                                ;; 01:44a4 $c9
 
