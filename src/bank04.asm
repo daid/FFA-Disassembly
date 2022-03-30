@@ -16,7 +16,7 @@ SECTION "bank04", ROMX[$4000], BANK[$04]
 
 call_04_400e:
     push BC                                            ;; 04:400e $c5
-    call call_00_0c6d                                  ;; 04:400f $cd $6d $0c
+    call getObjectCollisionFlags                       ;; 04:400f $cd $6d $0c
     pop  BC                                            ;; 04:4012 $c1
     and  A, $40                                        ;; 04:4013 $e6 $40
     ld   B, A                                          ;; 04:4015 $47

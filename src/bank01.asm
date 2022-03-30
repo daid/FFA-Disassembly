@@ -1521,10 +1521,10 @@ call_01_4b38:
     call call_00_29ba                                  ;; 01:4b5e $cd $ba $29
     ld   A, $01                                        ;; 01:4b61 $3e $01
     ld   C, $04                                        ;; 01:4b63 $0e $04
-    call setObjectDirection                            ;; 01:4b65 $cd $5d $0c
+    call setObjectSpeed                                ;; 01:4b65 $cd $5d $0c
     ld   A, $c9                                        ;; 01:4b68 $3e $c9
     ld   C, $04                                        ;; 01:4b6a $0e $04
-    call call_00_0c86                                  ;; 01:4b6c $cd $86 $0c
+    call setObjectCollisionFlags                       ;; 01:4b6c $cd $86 $0c
     pop  BC                                            ;; 01:4b6f $c1
     pop  DE                                            ;; 01:4b70 $d1
     ret                                                ;; 01:4b71 $c9
@@ -1533,12 +1533,12 @@ call_01_4b38:
     push BC                                            ;; 01:4b73 $c5
     ld   A, $01                                        ;; 01:4b74 $3e $01
     ld   C, $04                                        ;; 01:4b76 $0e $04
-    call setObjectDirection                            ;; 01:4b78 $cd $5d $0c
+    call setObjectSpeed                                ;; 01:4b78 $cd $5d $0c
     ld   C, $04                                        ;; 01:4b7b $0e $04
     call getObjectDirection                            ;; 01:4b7d $cd $99 $0c
     call call_00_29e4                                  ;; 01:4b80 $cd $e4 $29
     ld   C, $04                                        ;; 01:4b83 $0e $04
-    call call_00_0ca6                                  ;; 01:4b85 $cd $a6 $0c
+    call setObjectDirection                            ;; 01:4b85 $cd $a6 $0c
     ld   C, $04                                        ;; 01:4b88 $0e $04
     call call_00_29ba                                  ;; 01:4b8a $cd $ba $29
     pop  BC                                            ;; 01:4b8d $c1
@@ -1996,7 +1996,7 @@ call_01_4dcb:
     pop  AF                                            ;; 01:4e73 $f1
     or   A, B                                          ;; 01:4e74 $b0
     ld   C, $04                                        ;; 01:4e75 $0e $04
-    call call_00_0ca6                                  ;; 01:4e77 $cd $a6 $0c
+    call setObjectDirection                            ;; 01:4e77 $cd $a6 $0c
 .jr_01_4e7a:
     pop  DE                                            ;; 01:4e7a $d1
     call call_00_2f2c                                  ;; 01:4e7b $cd $2c $2f
@@ -2164,10 +2164,10 @@ call_01_4f7b:
     push BC                                            ;; 01:4f9d $c5
     ld   A, $c1                                        ;; 01:4f9e $3e $c1
     ld   C, $04                                        ;; 01:4fa0 $0e $04
-    call call_00_0c86                                  ;; 01:4fa2 $cd $86 $0c
+    call setObjectCollisionFlags                       ;; 01:4fa2 $cd $86 $0c
     ld   A, $04                                        ;; 01:4fa5 $3e $04
     ld   C, $04                                        ;; 01:4fa7 $0e $04
-    call setObjectDirection                            ;; 01:4fa9 $cd $5d $0c
+    call setObjectSpeed                                ;; 01:4fa9 $cd $5d $0c
     ld   A, $3c                                        ;; 01:4fac $3e $3c
     ld   [wC4D2], A                                    ;; 01:4fae $ea $d2 $c4
     call call_00_02ab                                  ;; 01:4fb1 $cd $ab $02
@@ -2380,10 +2380,10 @@ call_01_50f9:
     call call_00_29ba                                  ;; 01:5108 $cd $ba $29
     ld   C, $04                                        ;; 01:510b $0e $04
     ld   A, $01                                        ;; 01:510d $3e $01
-    call setObjectDirection                            ;; 01:510f $cd $5d $0c
+    call setObjectSpeed                                ;; 01:510f $cd $5d $0c
     ld   C, $04                                        ;; 01:5112 $0e $04
     ld   A, $c9                                        ;; 01:5114 $3e $c9
-    call call_00_0c86                                  ;; 01:5116 $cd $86 $0c
+    call setObjectCollisionFlags                       ;; 01:5116 $cd $86 $0c
     call call_00_0299                                  ;; 01:5119 $cd $99 $02
     ld   D, A                                          ;; 01:511c $57
     push DE                                            ;; 01:511d $d5
@@ -2408,10 +2408,10 @@ call_01_5136:
     call call_00_29ba                                  ;; 01:513d $cd $ba $29
     ld   C, $04                                        ;; 01:5140 $0e $04
     ld   A, $02                                        ;; 01:5142 $3e $02
-    call setObjectDirection                            ;; 01:5144 $cd $5d $0c
+    call setObjectSpeed                                ;; 01:5144 $cd $5d $0c
     ld   C, $04                                        ;; 01:5147 $0e $04
     ld   A, $e1                                        ;; 01:5149 $3e $e1
-    call call_00_0c86                                  ;; 01:514b $cd $86 $0c
+    call setObjectCollisionFlags                       ;; 01:514b $cd $86 $0c
     xor  A, A                                          ;; 01:514e $af
     ld   [wC4D2], A                                    ;; 01:514f $ea $d2 $c4
     call call_00_28d5                                  ;; 01:5152 $cd $d5 $28
@@ -2424,10 +2424,10 @@ call_01_5156:
     call call_00_29ba                                  ;; 01:515d $cd $ba $29
     ld   C, $04                                        ;; 01:5160 $0e $04
     ld   A, $02                                        ;; 01:5162 $3e $02
-    call setObjectDirection                            ;; 01:5164 $cd $5d $0c
+    call setObjectSpeed                                ;; 01:5164 $cd $5d $0c
     ld   C, $04                                        ;; 01:5167 $0e $04
     ld   A, $f1                                        ;; 01:5169 $3e $f1
-    call call_00_0c86                                  ;; 01:516b $cd $86 $0c
+    call setObjectCollisionFlags                       ;; 01:516b $cd $86 $0c
     xor  A, A                                          ;; 01:516e $af
     ld   [wC4D2], A                                    ;; 01:516f $ea $d2 $c4
     call call_00_28d5                                  ;; 01:5172 $cd $d5 $28
@@ -2440,10 +2440,10 @@ call_01_5176:
     call call_00_29ba                                  ;; 01:517d $cd $ba $29
     ld   C, $04                                        ;; 01:5180 $0e $04
     ld   A, $02                                        ;; 01:5182 $3e $02
-    call setObjectDirection                            ;; 01:5184 $cd $5d $0c
+    call setObjectSpeed                                ;; 01:5184 $cd $5d $0c
     ld   C, $04                                        ;; 01:5187 $0e $04
     ld   A, $f5                                        ;; 01:5189 $3e $f5
-    call call_00_0c86                                  ;; 01:518b $cd $86 $0c
+    call setObjectCollisionFlags                       ;; 01:518b $cd $86 $0c
     xor  A, A                                          ;; 01:518e $af
     ld   [wC4D2], A                                    ;; 01:518f $ea $d2 $c4
     call call_00_28d5                                  ;; 01:5192 $cd $d5 $28
@@ -2759,7 +2759,7 @@ call_01_52e0:
     call call_01_59ea                                  ;; 01:537f $cd $ea $59
     pop  BC                                            ;; 01:5382 $c1
     pop  AF                                            ;; 01:5383 $f1
-    call call_00_0ca6                                  ;; 01:5384 $cd $a6 $0c
+    call setObjectDirection                            ;; 01:5384 $cd $a6 $0c
     pop  BC                                            ;; 01:5387 $c1
     inc  C                                             ;; 01:5388 $0c
     ret                                                ;; 01:5389 $c9
@@ -2988,7 +2988,7 @@ call_01_53f2:
     dec  A                                             ;; 01:54b8 $3d
     ld   C, A                                          ;; 01:54b9 $4f
     push BC                                            ;; 01:54ba $c5
-    call call_00_0c6d                                  ;; 01:54bb $cd $6d $0c
+    call getObjectCollisionFlags                       ;; 01:54bb $cd $6d $0c
     and  A, $f0                                        ;; 01:54be $e6 $f0
     pop  BC                                            ;; 01:54c0 $c1
     cp   A, $40                                        ;; 01:54c1 $fe $40
@@ -3156,7 +3156,7 @@ jr_01_55a9:
     add  HL, BC                                        ;; 01:55ad $09
     ld   [HL], A                                       ;; 01:55ae $77
     push BC                                            ;; 01:55af $c5
-    call setObjectDirection                            ;; 01:55b0 $cd $5d $0c
+    call setObjectSpeed                                ;; 01:55b0 $cd $5d $0c
     call call_00_02ab                                  ;; 01:55b3 $cd $ab $02
     and  A, $0f                                        ;; 01:55b6 $e6 $0f
     pop  BC                                            ;; 01:55b8 $c1
@@ -3194,7 +3194,7 @@ jr_01_55a9:
     add  HL, BC                                        ;; 01:55ea $09
     ld   [HL], $01                                     ;; 01:55eb $36 $01
     push BC                                            ;; 01:55ed $c5
-    call call_00_0c6d                                  ;; 01:55ee $cd $6d $0c
+    call getObjectCollisionFlags                       ;; 01:55ee $cd $6d $0c
     pop  BC                                            ;; 01:55f1 $c1
     cp   A, $40                                        ;; 01:55f2 $fe $40
     jr   Z, .jr_01_5601                                ;; 01:55f4 $28 $0b
@@ -3202,7 +3202,7 @@ jr_01_55a9:
     cp   A, $50                                        ;; 01:55f8 $fe $50
     jr   Z, .jr_01_5601                                ;; 01:55fa $28 $05
     ld   A, $4a                                        ;; 01:55fc $3e $4a
-    call call_00_0c86                                  ;; 01:55fe $cd $86 $0c
+    call setObjectCollisionFlags                       ;; 01:55fe $cd $86 $0c
 .jr_01_5601:
     pop  HL                                            ;; 01:5601 $e1
     pop  BC                                            ;; 01:5602 $c1
@@ -3573,7 +3573,7 @@ call_01_579c:
     ret                                                ;; 01:57dd $c9
 
 call_01_57de:
-    call call_00_0c6d                                  ;; 01:57de $cd $6d $0c
+    call getObjectCollisionFlags                       ;; 01:57de $cd $6d $0c
     and  A, $f0                                        ;; 01:57e1 $e6 $f0
     cp   A, $90                                        ;; 01:57e3 $fe $90
     ret  Z                                             ;; 01:57e5 $c8
@@ -3930,7 +3930,7 @@ call_01_5903:
 call_01_59d0:
     push BC                                            ;; 01:59d0 $c5
     ld   A, $40                                        ;; 01:59d1 $3e $40
-    call call_00_0c86                                  ;; 01:59d3 $cd $86 $0c
+    call setObjectCollisionFlags                       ;; 01:59d3 $cd $86 $0c
     pop  BC                                            ;; 01:59d6 $c1
     ld   DE, $f8                                       ;; 01:59d7 $11 $f8 $00
     ld   B, $00                                        ;; 01:59da $06 $00
@@ -4261,7 +4261,7 @@ call_01_5b6d:
     ld   A, [HL+]                                      ;; 01:5bb9 $2a
     push BC                                            ;; 01:5bba $c5
     push HL                                            ;; 01:5bbb $e5
-    call call_00_0c86                                  ;; 01:5bbc $cd $86 $0c
+    call setObjectCollisionFlags                       ;; 01:5bbc $cd $86 $0c
     pop  HL                                            ;; 01:5bbf $e1
     ld   A, [HL]                                       ;; 01:5bc0 $7e
     ld   HL, $2e99                                     ;; 01:5bc1 $21 $99 $2e
@@ -4396,7 +4396,7 @@ call_01_5bf1:
     pop  HL                                            ;; 01:5c78 $e1
     ld   A, [wCF5A]                                    ;; 01:5c79 $fa $5a $cf
     ld   C, A                                          ;; 01:5c7c $4f
-    call call_00_0c6d                                  ;; 01:5c7d $cd $6d $0c
+    call getObjectCollisionFlags                       ;; 01:5c7d $cd $6d $0c
     cp   A, $50                                        ;; 01:5c80 $fe $50
     jr   NZ, .jr_01_5c8d                               ;; 01:5c82 $20 $09
     ld   A, [wCF5D]                                    ;; 01:5c84 $fa $5d $cf

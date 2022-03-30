@@ -311,12 +311,13 @@ wC1CA:
 
 ; 16 bytes per object, or potentially 16x16 sprite?
 ; 00: Lower nibble, orientation. $80=walking, other bits unknown ($ff indicates unused)
-; 01: Unknown
+; 01: Movement speed
 ; 02: Something collision related ($01: blocked by walls, $80 blocks player, $10 can be pushed by player or take damage on touch?)
-; 03: Y position
-; 04: X position
-; 05-06: Something sprite related
-; 07-08: Shadow OAM memory location
+; 03: Unknown
+; 04: Y position
+; 05: X position
+; 06-07: Something sprite related
+; 08-09: Shadow OAM memory location
 ; 09-15: Unknown
 ; (wC270 seems just more of this data)
 wObjectRuntimeData:

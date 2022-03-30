@@ -487,7 +487,7 @@ call_09_4239:
     pop  AF                                            ;; 09:4289 $f1
     push HL                                            ;; 09:428a $e5
     push BC                                            ;; 09:428b $c5
-    call call_00_0ca6                                  ;; 09:428c $cd $a6 $0c
+    call setObjectDirection                            ;; 09:428c $cd $a6 $0c
     pop  BC                                            ;; 09:428f $c1
     pop  HL                                            ;; 09:4290 $e1
     pop  DE                                            ;; 09:4291 $d1
