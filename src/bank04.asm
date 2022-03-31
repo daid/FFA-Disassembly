@@ -1253,11 +1253,11 @@ call_04_4735:
 ; graphics related, sets how many tiles need to be loaded into VRAM
 ; graphics related, pointer including bank, allowing everything from bank $08 to $0B to be selected for graphics.
 ; graphics related, points to data of which tile offsets to load from the previous pointer into VRAM
-; ?
-; ?
-; ?
-; ?
-; ?
+; metatile info (list of [attr, tile1, tile2])
+; damage related? Not sure (influences amount of damage done by boss and taken from boss, maybe hit areas as well?)
+; attack pattern related? Not sure.
+; attack pattern related? Not sure.
+; death pattern related? Not sure.
 ;@data amount=21 format=bbbbbbwbbwpppppp
 bossDataTable:
     data_bbbbbbwbbwpppppp $08, $19, $14, $0a, $08, $1e, $0246, $40, $0d, $cd00, data_04_793d, data_04_7ba7, data_04_4931, data_04_4e21, data_04_4df1, data_04_5435 ;; 04:4739 ????????????????????????
