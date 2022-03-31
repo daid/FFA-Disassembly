@@ -98,7 +98,7 @@ shift
 db \1
 shift
 ENDM
-data_bbbbbbwbbbbbbbbbbbbbbbb: MACRO
+data_bbbbbbwbbbbbbbbpbbbbbb: MACRO
 db \1
 shift
 db \1
@@ -129,9 +129,7 @@ db \1
 shift
 db \1
 shift
-db \1
-shift
-db \1
+dw \1
 shift
 db \1
 shift

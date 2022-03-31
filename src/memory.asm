@@ -704,10 +704,9 @@ wD3F5:
 wD3F6:
     ds 66                                              ;; d3f6
 
-wD438:
+wCurrentBossDataPointer:
     ds 1                                               ;; d438
-
-wD439:
+.high:
     ds 1                                               ;; d439
 
 wD43A:
