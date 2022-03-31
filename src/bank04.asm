@@ -1242,39 +1242,45 @@ call_04_4735:
     ret                                                ;; 04:4738 $c9
 
 ; Some kind of boss table? Data is loaded from here on a boss spawn, but not on an NPC spawn. Why does this table look a lot bigger then the amount of bosses available?
-; offset0 = speed (delay between actions, low=fast)
-; offset1 = HP
-; offset6 = index to script when defeated (usually just some simple screen flash or nothing)
-; offset10 = graphics related
-; offset11 = graphics related
-; offset12 = graphics related
-; offset13 = graphics related
-; offset14 = graphics related (metatile?)
-; offset15 = graphics related (metatile?)
-; offset16 = pointer to stats?
-;@data amount=21 format=bbbbbbwbbbbpppppp
+; speed (delay between actions, low=fast)
+; HP
+; ?
+; ?
+; ?
+; ?
+; index to script when defeated (usually just some simple screen flash or nothing)
+; graphics related, sets the VRAM start tile number to load graphics data into
+; graphics related, sets how many tiles need to be loaded into VRAM
+; graphics related, pointer including bank, allowing everything from bank $08 to $0B to be selected for graphics.
+; graphics related, points to data of which tile offsets to load from the previous pointer into VRAM
+; ?
+; ?
+; ?
+; ?
+; ?
+;@data amount=21 format=bbbbbbwbbwpppppp
 bossDataTable:
-    data_bbbbbbwbbbbpppppp $08, $19, $14, $0a, $08, $1e, $0246, $40, $0d, $00, $cd, data_04_793d, data_04_7ba7, data_04_4931, data_04_4e21, data_04_4df1, data_04_5435 ;; 04:4739 ????????????????????????
-    data_bbbbbbwbbbbpppppp $0a, $14, $0a, $5a, $07, $1f, $0246, $40, $18, $d0, $4c, data_04_7957, data_04_7bd1, data_04_4971, data_04_4e37, data_04_4e37, data_04_54bb ;; 04:4751 ????????????????????????
-    data_bbbbbbwbbbbpppppp $06, $3b, $55, $46, $04, $20, $0246, $40, $18, $00, $e1, data_04_7987, data_04_7bfe, data_04_49e1, data_04_4e75, data_04_4e75, data_04_5503 ;; 04:4769 ????????????????????????
-    data_bbbbbbwbbbbpppppp $0a, $1c, $2c, $96, $0b, $16, $0246, $40, $10, $40, $d2, data_04_7987, data_04_7f25, data_04_4cc1, data_04_525b, data_04_4e09, data_04_5541 ;; 04:4781 ????????????????????????
-    data_bbbbbbwbbbbpppppp $08, $4b, $5a, $64, $08, $26, $0246, $40, $14, $80, $ce, data_04_79f3, data_04_7c3a, data_04_4a01, data_04_4edb, data_04_4edb, data_04_5575 ;; 04:4799 ????????????????????????
-    data_bbbbbbwbbbbpppppp $04, $8f, $60, $a0, $06, $16, $0246, $40, $10, $40, $d0, data_04_7987, data_04_7c70, data_04_4a41, data_04_4ee7, data_04_4ee7, data_04_5473 ;; 04:47b1 ????????????????????????
-    data_bbbbbbwbbbbpppppp $06, $6f, $46, $3c, $07, $ff, $0247, $30, $1d, $c0, $da, data_04_7a37, data_04_7cd6, data_04_4ac9, data_04_4fdd, data_04_4fdd, data_04_5435 ;; 04:47c9 ????????????????????????
-    data_bbbbbbwbbbbpppppp $04, $70, $14, $58, $06, $23, $0246, $40, $18, $00, $d5, data_04_7987, data_04_7d06, data_04_4b01, data_04_504d, data_04_504d, data_04_55b3 ;; 04:47e1 ????????????????????????
-    data_bbbbbbwbbbbpppppp $08, $79, $a6, $78, $09, $0d, $024f, $3c, $1a, $00, $d8, data_04_7a71, data_04_7d36, data_04_4b31, data_04_509f, data_04_509f, data_04_56b2 ;; 04:47f9 ????????????????????????
-    data_bbbbbbwbbbbpppppp $0c, $7d, $be, $78, $0a, $14, $0247, $3a, $1b, $00, $ee, data_04_7b51, data_04_7ec8, data_04_4c71, data_04_5231, data_04_4dfd, data_04_56b9 ;; 04:4811 ????????????????????????
-    data_bbbbbbwbbbbpppppp $06, $92, $c8, $fa, $07, $16, $0247, $40, $18, $30, $de, data_04_79c7, data_04_7d78, data_04_4b79, data_04_50f1, data_04_50f1, data_04_566d ;; 04:4829 ????????????????????????
-    data_bbbbbbwbbbbpppppp $0a, $76, $b2, $c8, $07, $22, $0247, $38, $1c, $00, $e4, data_04_7b19, data_04_7e74, data_04_4c39, data_04_5171, data_04_5171, data_04_5435 ;; 04:4841 ????????????????????????
-    data_bbbbbbwbbbbpppppp $04, $bb, $d2, $fa, $08, $21, $0247, $34, $1e, $80, $f8, data_04_7aa5, data_04_7dc6, data_04_4bb1, data_04_5127, data_04_5127, data_04_5435 ;; 04:4859 ????????????????????????
-    data_bbbbbbwbbbbpppppp $08, $6a, $00, $fa, $09, $14, $024f, $38, $1c, $80, $e7, data_04_7ae1, data_04_7e20, data_04_4bf1, data_04_5165, data_04_5165, data_04_56ab ;; 04:4871 ????????????????????????
-    data_bbbbbbwbbbbpppppp $05, $da, $00, $a0, $0b, $24, $0246, $40, $12, $00, $49, data_04_7a13, data_04_7c9a, data_04_4a71, data_04_4f77, data_04_4f77, data_04_55f1 ;; 04:4889 ????????????????????????
-    data_bbbbbbwbbbbpppppp $08, $ce, $00, $fa, $07, $27, $0247, $40, $18, $00, $eb, data_04_7957, data_04_7bd1, data_04_49a9, data_04_4e37, data_04_4e37, data_04_54bb ;; 04:48a1 ????????????????????????
-    data_bbbbbbwbbbbpppppp $05, $02, $00, $00, $06, $16, $0246, $40, $10, $00, $fe, data_04_7987, data_04_7c70, data_04_4d19, data_04_4f4d, data_04_4e15, data_04_5473 ;; 04:48b9 ........................
-    data_bbbbbbwbbbbpppppp $04, $ff, $00, $a0, $08, $25, $0246, $40, $10, $00, $f3, data_04_7b87, data_04_7f4f, data_04_4d49, data_04_531b, data_04_531b, data_04_562f ;; 04:48d1 ????????????????????????
-    data_bbbbbbwbbbbpppppp $0a, $51, $64, $64, $07, $16, $0247, $40, $18, $40, $f1, data_04_79c7, data_04_7d78, data_04_4d89, data_04_50fd, data_04_50fd, data_04_566d ;; 04:48e9 ????????????????????????
-    data_bbbbbbwbbbbpppppp $08, $af, $c7, $dc, $06, $ff, $0246, $40, $18, $00, $f5, data_04_7987, data_04_7d06, data_04_4dc1, data_04_504d, data_04_504d, data_04_55b3 ;; 04:4901 ????????????????????????
-    data_bbbbbbwbbbbpppppp $08, $bb, $00, $fa, $09, $14, $024f, $38, $1c, $80, $e7, data_04_7ae1, data_04_7e20, data_04_4bf1, data_04_5165, data_04_5165, data_04_56ab ;; 04:4919 ????????????????????????
+    data_bbbbbbwbbwpppppp $08, $19, $14, $0a, $08, $1e, $0246, $40, $0d, $cd00, data_04_793d, data_04_7ba7, data_04_4931, data_04_4e21, data_04_4df1, data_04_5435 ;; 04:4739 ????????????????????????
+    data_bbbbbbwbbwpppppp $0a, $14, $0a, $5a, $07, $1f, $0246, $40, $18, $4cd0, data_04_7957, data_04_7bd1, data_04_4971, data_04_4e37, data_04_4e37, data_04_54bb ;; 04:4751 ????????????????????????
+    data_bbbbbbwbbwpppppp $06, $3b, $55, $46, $04, $20, $0246, $40, $18, $e100, data_04_7987, data_04_7bfe, data_04_49e1, data_04_4e75, data_04_4e75, data_04_5503 ;; 04:4769 ????????????????????????
+    data_bbbbbbwbbwpppppp $0a, $1c, $2c, $96, $0b, $16, $0246, $40, $10, $d240, data_04_7987, data_04_7f25, data_04_4cc1, data_04_525b, data_04_4e09, data_04_5541 ;; 04:4781 ????????????????????????
+    data_bbbbbbwbbwpppppp $08, $4b, $5a, $64, $08, $26, $0246, $40, $14, $ce80, data_04_79f3, data_04_7c3a, data_04_4a01, data_04_4edb, data_04_4edb, data_04_5575 ;; 04:4799 ????????????????????????
+    data_bbbbbbwbbwpppppp $04, $8f, $60, $a0, $06, $16, $0246, $40, $10, $d040, data_04_7987, data_04_7c70, data_04_4a41, data_04_4ee7, data_04_4ee7, data_04_5473 ;; 04:47b1 ????????????????????????
+    data_bbbbbbwbbwpppppp $06, $6f, $46, $3c, $07, $ff, $0247, $30, $1d, $dac0, data_04_7a37, data_04_7cd6, data_04_4ac9, data_04_4fdd, data_04_4fdd, data_04_5435 ;; 04:47c9 ????????????????????????
+    data_bbbbbbwbbwpppppp $04, $70, $14, $58, $06, $23, $0246, $40, $18, $d500, data_04_7987, data_04_7d06, data_04_4b01, data_04_504d, data_04_504d, data_04_55b3 ;; 04:47e1 ????????????????????????
+    data_bbbbbbwbbwpppppp $08, $79, $a6, $78, $09, $0d, $024f, $3c, $1a, $d800, data_04_7a71, data_04_7d36, data_04_4b31, data_04_509f, data_04_509f, data_04_56b2 ;; 04:47f9 ????????????????????????
+    data_bbbbbbwbbwpppppp $0c, $7d, $be, $78, $0a, $14, $0247, $3a, $1b, $ee00, data_04_7b51, data_04_7ec8, data_04_4c71, data_04_5231, data_04_4dfd, data_04_56b9 ;; 04:4811 ????????????????????????
+    data_bbbbbbwbbwpppppp $06, $92, $c8, $fa, $07, $16, $0247, $40, $18, $de30, data_04_79c7, data_04_7d78, data_04_4b79, data_04_50f1, data_04_50f1, data_04_566d ;; 04:4829 ????????????????????????
+    data_bbbbbbwbbwpppppp $0a, $76, $b2, $c8, $07, $22, $0247, $38, $1c, $e400, data_04_7b19, data_04_7e74, data_04_4c39, data_04_5171, data_04_5171, data_04_5435 ;; 04:4841 ????????????????????????
+    data_bbbbbbwbbwpppppp $04, $bb, $d2, $fa, $08, $21, $0247, $34, $1e, $f880, data_04_7aa5, data_04_7dc6, data_04_4bb1, data_04_5127, data_04_5127, data_04_5435 ;; 04:4859 ????????????????????????
+    data_bbbbbbwbbwpppppp $08, $6a, $00, $fa, $09, $14, $024f, $38, $1c, $e780, data_04_7ae1, data_04_7e20, data_04_4bf1, data_04_5165, data_04_5165, data_04_56ab ;; 04:4871 ????????????????????????
+    data_bbbbbbwbbwpppppp $05, $da, $00, $a0, $0b, $24, $0246, $40, $12, $4900, data_04_7a13, data_04_7c9a, data_04_4a71, data_04_4f77, data_04_4f77, data_04_55f1 ;; 04:4889 ????????????????????????
+    data_bbbbbbwbbwpppppp $08, $ce, $00, $fa, $07, $27, $0247, $40, $18, $eb00, data_04_7957, data_04_7bd1, data_04_49a9, data_04_4e37, data_04_4e37, data_04_54bb ;; 04:48a1 ????????????????????????
+    data_bbbbbbwbbwpppppp $05, $02, $00, $00, $06, $16, $0246, $40, $10, $fe00, data_04_7987, data_04_7c70, data_04_4d19, data_04_4f4d, data_04_4e15, data_04_5473 ;; 04:48b9 ........................
+    data_bbbbbbwbbwpppppp $04, $ff, $00, $a0, $08, $25, $0246, $40, $10, $f300, data_04_7b87, data_04_7f4f, data_04_4d49, data_04_531b, data_04_531b, data_04_562f ;; 04:48d1 ????????????????????????
+    data_bbbbbbwbbwpppppp $0a, $51, $64, $64, $07, $16, $0247, $40, $18, $f140, data_04_79c7, data_04_7d78, data_04_4d89, data_04_50fd, data_04_50fd, data_04_566d ;; 04:48e9 ????????????????????????
+    data_bbbbbbwbbwpppppp $08, $af, $c7, $dc, $06, $ff, $0246, $40, $18, $f500, data_04_7987, data_04_7d06, data_04_4dc1, data_04_504d, data_04_504d, data_04_55b3 ;; 04:4901 ????????????????????????
+    data_bbbbbbwbbwpppppp $08, $bb, $00, $fa, $09, $14, $024f, $38, $1c, $e780, data_04_7ae1, data_04_7e20, data_04_4bf1, data_04_5165, data_04_5165, data_04_56ab ;; 04:4919 ????????????????????????
 
 data_04_4931:
     db   $20, $90, $01, $1a, $08, $11, $00, $01        ;; 04:4931 ????????
