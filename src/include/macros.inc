@@ -132,6 +132,28 @@ shift
 dw \1
 shift
 ENDM
+data_bpp: MACRO
+db \1
+shift
+dw \1
+shift
+dw \1
+shift
+ENDM
+data_ppppbb: MACRO
+dw \1
+shift
+dw \1
+shift
+dw \1
+shift
+dw \1
+shift
+db \1
+shift
+db \1
+shift
+ENDM
 jp_to_bank: MACRO
 
             ld   a, (_call_to_bank_target_\2 - $4000) / 2
