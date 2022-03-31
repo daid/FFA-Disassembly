@@ -1,3 +1,13 @@
+BOSS_HEADER: MACRO
+
+    db \1, \2, \3, \4, \5, \6
+    dw \7
+ENDM
+BOSS_HEADER_GFX: MACRO
+
+    db \1, \2
+    dw (\3 & $3FFF) | ((BANK(\3) - $08) << 14), \4, \5
+ENDM
 FLAG_CONDITION_TO_IDX: MACRO
 
 assert STRSUB("\1", STRLEN("\1") - 1, 1) == "."
@@ -96,40 +106,6 @@ shift
 db \1
 shift
 db \1
-shift
-ENDM
-data_bbbbbbwbbwpppppp: MACRO
-db \1
-shift
-db \1
-shift
-db \1
-shift
-db \1
-shift
-db \1
-shift
-db \1
-shift
-dw \1
-shift
-db \1
-shift
-db \1
-shift
-dw \1
-shift
-dw \1
-shift
-dw \1
-shift
-dw \1
-shift
-dw \1
-shift
-dw \1
-shift
-dw \1
 shift
 ENDM
 jp_to_bank: MACRO

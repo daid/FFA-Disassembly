@@ -34,6 +34,10 @@ class BossDataBlock(Block):
         memory.addAutoLabel(initial_pattern_ptr, None, "data")
         memory.addAutoLabel(death_animation_ptr, None, "data")
         
+        self.gfx_bank = (gfx_ptr >> 14) + 0x08
+        self.gfx_ptr = (gfx_ptr & 0x3FFF) | 0x4000
+        RomInfo.romBank(self.gfx_bank).addAutoLabel(self.gfx_ptr, None, "data")
+        
         if memory[attack_pattern_ptr] is None:
             BossPatternBlock(memory, attack_pattern_ptr)
         if memory[initial_pattern_ptr] is None:
@@ -45,7 +49,7 @@ class BossDataBlock(Block):
 """
         RomInfo.macros["BOSS_HEADER_GFX"] = r"""
     db \1, \2
-    dw \3, \4, \5
+    dw (\3 & $3FFF) | ((BANK(\3) - $08) << 14), \4, \5
 """
 
     def export(self, file):
@@ -63,7 +67,7 @@ class BossDataBlock(Block):
         file.asmLine(8, "  BOSS_HEADER_GFX",
             "$%02x" % (self.memory.byte(file.addr + 0)),
             "$%02x" % (self.memory.byte(file.addr + 1)),
-            "$%04x" % (self.memory.word(file.addr + 2)),
+            str(RomInfo.romBank(self.gfx_bank).getLabel(self.gfx_ptr)),
             str(self.memory.getLabel(self.memory.word(file.addr + 4))),
             str(self.memory.getLabel(self.memory.word(file.addr + 6))),
             is_data=True
