@@ -98,7 +98,7 @@ shift
 db \1
 shift
 ENDM
-data_bbbbbbwbbbbbbbbpbbbbbb: MACRO
+data_bbbbbbwbbbbpppppp: MACRO
 db \1
 shift
 db \1
@@ -121,27 +121,17 @@ db \1
 shift
 db \1
 shift
-db \1
-shift
-db \1
-shift
-db \1
-shift
-db \1
+dw \1
 shift
 dw \1
 shift
-db \1
+dw \1
 shift
-db \1
+dw \1
 shift
-db \1
+dw \1
 shift
-db \1
-shift
-db \1
-shift
-db \1
+dw \1
 shift
 ENDM
 jp_to_bank: MACRO
