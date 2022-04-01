@@ -59,14 +59,25 @@ assert STRSUB("\1", STRLEN("\1") - 1, 1) == "."
 IF STRCMP(STRSUB("\1", 1, 1), "!") == 0
 LBL equs STRSUB("\1", 2, STRLEN("\1") - 3)
 IDX = STRSUB("\1", STRLEN("\1")) - "0"
-  db (LBL - wScriptFlags) * 8 + (IDX)
+  db (LBL - wScriptFlags) * 8 + (IDX) | $80
 PURGE LBL
 ELSE
 LBL equs STRSUB("\1", 1, STRLEN("\1") - 2)
 IDX = STRSUB("\1", STRLEN("\1")) - "0"
-  db (LBL - wScriptFlags) * 8 + (IDX) | $80
+  db (LBL - wScriptFlags) * 8 + (IDX)
 PURGE LBL
 ENDC
+"""
+        RomInfo.macros["sIF_JMP"] = r"""
+  IF !DEF(IF_LABELS)
+    DEF IF_LABELS equs ""
+  ENDC
+  REDEF IF_LABELS equs STRCAT("{IF_LABELS}", "X", "\@")
+  db .{IF_LABELS} - @ - 1
+"""
+        RomInfo.macros["sENDIF"] = r"""
+  .{IF_LABELS}:
+  REDEF IF_LABELS equs STRSUB("{IF_LABELS}", 1, STRRIN("{IF_LABELS}", "X") - 1)
 """
         for index, data in OPCODES.items():
             assert data[0] not in RomInfo.macros, data[0]
@@ -101,16 +112,23 @@ class ScriptPointerBlock(Block):
 
 
 IF_MACRO = r"""
-REPT _NARG - 1
+REPT _NARG
     db \1
     SHIFT
 ENDR
     db $00
-    db \1 - @ - 1
+    sIF_JMP
 """
 OPCODES = {
     0x00: ("sEND",),
-    0x01: ("sJR", r"db \1 - @ - 1", "REL_LABEL"),
+    0x01: ("sELSE", r"""
+  DEF TMP equs "{IF_LABELS}"
+  REDEF IF_LABELS equs STRSUB("{IF_LABELS}", 1, STRRIN("{IF_LABELS}", "X") - 1)
+  REDEF IF_LABELS equs STRCAT("{IF_LABELS}", "X", "\@")
+  db .{IF_LABELS} - @ - 1
+  .{TMP}:
+  PURGE TMP
+""", "REL_LABEL"),
     0x02: ("sCALL", r"db ((BANK(\1) - $0D) << 6) | (HIGH(\1) & $3F), LOW(\1)", "LABEL"),
     0x03: ("sLOOP", r"db \1, \2", "BYTE", "BYTE"),
     0x04: ("sMSG", r"SETCHARMAP SCRIPT", "MSG"),
@@ -119,11 +137,11 @@ OPCODES = {
     0x06: ("sNOP_06",),
     0x07: ("sNOP_07",),
 
-    0x08: ("sIF_FLAG_JR", "REPT _NARG - 1\n FLAG_CONDITION_TO_IDX \\1\n SHIFT\nENDR\n db $00\n db \\1 - @ - 1", "FLAG_LIST", "REL_LABEL"),
-    0x09: ("sIF_NOT_EQUIPED_JR", IF_MACRO, "LIST", "REL_LABEL"),
-    0x0A: ("sIF_NOT_INVENTORY_JR", IF_MACRO, "LIST", "REL_LABEL"),
-    0x0B: ("sIF_0B_JR", IF_MACRO, "LIST", "REL_LABEL"),
-    0x0C: ("sIF_0C_JR", IF_MACRO, "LIST", "REL_LABEL"),
+    0x08: ("sIF_FLAG", "REPT _NARG\n FLAG_CONDITION_TO_IDX \\1\n SHIFT\nENDR\n db $00\n sIF_JMP", "FLAG_LIST", "REL_LABEL"),
+    0x09: ("sIF_EQUIPED", IF_MACRO, "LIST", "REL_LABEL"),
+    0x0A: ("sIF_INVENTORY", IF_MACRO, "LIST", "REL_LABEL"),
+    0x0B: ("sIF_0B", IF_MACRO, "LIST", "REL_LABEL"),
+    0x0C: ("sIF_0C", IF_MACRO, "LIST", "REL_LABEL"),
 
     0x0D: ("sNOP_0D",),
     0x0E: ("sNOP_0E",),
@@ -377,6 +395,7 @@ OPCODES = {
 class ScriptBlock(Block):
     def __init__(self, memory, addr):
         super().__init__(memory, addr)
+        self.__endif = {}
         
         loop_count = 0
         while True:
@@ -411,8 +430,9 @@ class ScriptBlock(Block):
                         size += 1
                     elif t == "REL_LABEL":
                         target = addr + len(self) + size + 1 + memory.byte(addr + len(self) + size)
-                        memory.addAutoLabel(target, addr + len(self) + 1, "jr")
-                        ScriptBlock(memory, target)
+                        #memory.addAutoLabel(target, addr + len(self) + 1, "jr")
+                        #ScriptBlock(memory, target)
+                        self.__endif[target] = self.__endif.get(target, 0) + 1
                         size += 1
                     elif t in ("BYTE", "HEX"):
                         size += 1
@@ -432,14 +452,24 @@ class ScriptBlock(Block):
                     loop_count -= 1
                 else:
                     break
+            if opcode[0] == "sELSE":
+                self.__endif[addr + len(self)] -= 1
 
     def export(self, file):
         self.__loop_count = 0
+        self.__ii = 0
         while file.addr < self.base_address + len(self):
             self.outputOpcode(file)
 
     def outputOpcode(self, file):
         opcode = OPCODES[self.memory.byte(file.addr)]
+
+        endif = self.__endif.get(file.addr, 0)
+        for n in range(endif):
+            self.__ii -= 1
+            file.asmLine(0, ("  " * (self.__loop_count + self.__ii)) + "sENDIF")
+        if opcode[0] == 'sELSE':
+            self.__ii -= 1
 
         size = 1
         args = []
@@ -465,7 +495,7 @@ class ScriptBlock(Block):
                 elif t == "FLAG_LIST":
                     while self.memory.byte(file.addr + size) != 0:
                         flag = self.memory.byte(file.addr + size)
-                        is_not = (flag & 0x80) != 0x80
+                        is_not = (flag & 0x80) == 0x80
                         flag = flag & 0x7F
                         label = RomInfo.getWRam().getLabel(0xD7C6 + flag // 8)
                         if is_not:
@@ -495,16 +525,18 @@ class ScriptBlock(Block):
                     size += 1
                 elif t == "REL_LABEL":
                     target = file.addr + size + 1 + self.memory.byte(file.addr + size)
-                    args.append(str(self.memory.getLabel(target)))
+                    #args.append(str(self.memory.getLabel(target)))
                     size += 1
 
         if opcode[0] == "sEND" and self.__loop_count > 0:
             self.__loop_count -= 1
 
         if msg is not None:
-            file.asmLine(1, ("  " * self.__loop_count) + opcode[0], *args)
-            file.asmLine(size - 1, ("  " * self.__loop_count) + "  db", "\"%s\", $00" % (msg), is_data=True, add_data_comment=False)
+            file.asmLine(1, ("  " * (self.__loop_count + self.__ii)) + opcode[0], *args)
+            file.asmLine(size - 1, ("  " * (self.__loop_count + self.__ii)) + "  db", "\"%s\", $00" % (msg), is_data=True, add_data_comment=False)
         else:
-            file.asmLine(size, ("  " * self.__loop_count) + opcode[0], *args)
+            file.asmLine(size, ("  " * (self.__loop_count + self.__ii)) + opcode[0], *args)
         if opcode[0] == "sLOOP":
             self.__loop_count += 1
+        if opcode[0].startswith('sIF_') or opcode[0] == 'sELSE':
+            self.__ii += 1

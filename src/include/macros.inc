@@ -14,12 +14,12 @@ assert STRSUB("\1", STRLEN("\1") - 1, 1) == "."
 IF STRCMP(STRSUB("\1", 1, 1), "!") == 0
 LBL equs STRSUB("\1", 2, STRLEN("\1") - 3)
 IDX = STRSUB("\1", STRLEN("\1")) - "0"
-  db (LBL - wScriptFlags) * 8 + (IDX)
+  db (LBL - wScriptFlags) * 8 + (IDX) | $80
 PURGE LBL
 ELSE
 LBL equs STRSUB("\1", 1, STRLEN("\1") - 2)
 IDX = STRSUB("\1", STRLEN("\1")) - "0"
-  db (LBL - wScriptFlags) * 8 + (IDX) | $80
+  db (LBL - wScriptFlags) * 8 + (IDX)
 PURGE LBL
 ENDC
 ENDM
@@ -160,8 +160,23 @@ ENDM
 sDEL_NPC_7: MACRO
 db $78
 ENDM
+sELSE: MACRO
+db $01
+
+  DEF TMP equs "{IF_LABELS}"
+  REDEF IF_LABELS equs STRSUB("{IF_LABELS}", 1, STRRIN("{IF_LABELS}", "X") - 1)
+  REDEF IF_LABELS equs STRCAT("{IF_LABELS}", "X", "\@")
+  db .{IF_LABELS} - @ - 1
+  .{TMP}:
+  PURGE TMP
+ENDM
 sEND: MACRO
 db $00
+ENDM
+sENDIF: MACRO
+
+  .{IF_LABELS}:
+  REDEF IF_LABELS equs STRSUB("{IF_LABELS}", 1, STRRIN("{IF_LABELS}", "X") - 1)
 ENDM
 sFADE_TO_BLACK: MACRO
 db $bd
@@ -307,58 +322,62 @@ ENDM
 sHALT_GAME: MACRO
 db $cc
 ENDM
-sIF_0B_JR: MACRO
+sIF_0B: MACRO
 db $0b
 
-REPT _NARG - 1
+REPT _NARG
     db \1
     SHIFT
 ENDR
     db $00
-    db \1 - @ - 1
+    sIF_JMP
 ENDM
-sIF_0C_JR: MACRO
+sIF_0C: MACRO
 db $0c
 
-REPT _NARG - 1
+REPT _NARG
     db \1
     SHIFT
 ENDR
     db $00
-    db \1 - @ - 1
+    sIF_JMP
 ENDM
-sIF_FLAG_JR: MACRO
+sIF_EQUIPED: MACRO
+db $09
+
+REPT _NARG
+    db \1
+    SHIFT
+ENDR
+    db $00
+    sIF_JMP
+ENDM
+sIF_FLAG: MACRO
 db $08
-REPT _NARG - 1
+REPT _NARG
  FLAG_CONDITION_TO_IDX \1
  SHIFT
 ENDR
  db $00
- db \1 - @ - 1
+ sIF_JMP
 ENDM
-sIF_NOT_EQUIPED_JR: MACRO
-db $09
-
-REPT _NARG - 1
-    db \1
-    SHIFT
-ENDR
-    db $00
-    db \1 - @ - 1
-ENDM
-sIF_NOT_INVENTORY_JR: MACRO
+sIF_INVENTORY: MACRO
 db $0a
 
-REPT _NARG - 1
+REPT _NARG
     db \1
     SHIFT
 ENDR
     db $00
-    db \1 - @ - 1
+    sIF_JMP
 ENDM
-sJR: MACRO
-db $01
-db \1 - @ - 1
+sIF_JMP: MACRO
+
+  IF !DEF(IF_LABELS)
+    DEF IF_LABELS equs ""
+  ENDC
+  REDEF IF_LABELS equs STRCAT("{IF_LABELS}", "X", "\@")
+  db .{IF_LABELS} - @ - 1
 ENDM
 sLOAD_ROOM: MACRO
 db $f4

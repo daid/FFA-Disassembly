@@ -10,25 +10,25 @@ script_0000:
     sEND                                               ;; 0d:4000 $00
 
 script_0001:
-    sIF_FLAG_JR !wScriptFlags.1, .jr_0d_400a           ;; 0d:4001 $08 $01 $00 $05
-    sSFX 16                                            ;; 0d:4005 $f9 $10
-    sUNK_E4                                            ;; 0d:4007 $e4
-    sJR  .jr_0d_4023                                   ;; 0d:4008 $01 $19
-.jr_0d_400a:
-    sIF_FLAG_JR !wScriptFlags.2, .jr_0d_4013           ;; 0d:400a $08 $02 $00 $05
-    sSFX 16                                            ;; 0d:400e $f9 $10
-    sUNK_E6                                            ;; 0d:4010 $e6
-    sJR  .jr_0d_4023                                   ;; 0d:4011 $01 $10
-.jr_0d_4013:
-    sIF_FLAG_JR !wScriptFlags.3, .jr_0d_401c           ;; 0d:4013 $08 $03 $00 $05
-    sSFX 16                                            ;; 0d:4017 $f9 $10
-    sUNK_E0                                            ;; 0d:4019 $e0
-    sJR  .jr_0d_4023                                   ;; 0d:401a $01 $07
-.jr_0d_401c:
-    sIF_FLAG_JR !wScriptFlags.4, .jr_0d_4023           ;; 0d:401c $08 $04 $00 $03
-    sSFX 16                                            ;; 0d:4020 $f9 $10
-    sUNK_E2                                            ;; 0d:4022 $e2
-.jr_0d_4023:
+    sIF_FLAG wScriptFlags.1                            ;; 0d:4001 $08 $01 $00 $05
+      sSFX 16                                          ;; 0d:4005 $f9 $10
+      sUNK_E4                                          ;; 0d:4007 $e4
+    sELSE                                              ;; 0d:4008 $01 $19
+      sIF_FLAG wScriptFlags.2                          ;; 0d:400a $08 $02 $00 $05
+        sSFX 16                                        ;; 0d:400e $f9 $10
+        sUNK_E6                                        ;; 0d:4010 $e6
+      sELSE                                            ;; 0d:4011 $01 $10
+        sIF_FLAG wScriptFlags.3                        ;; 0d:4013 $08 $03 $00 $05
+          sSFX 16                                      ;; 0d:4017 $f9 $10
+          sUNK_E0                                      ;; 0d:4019 $e0
+        sELSE                                          ;; 0d:401a $01 $07
+          sIF_FLAG wScriptFlags.4                      ;; 0d:401c $08 $04 $00 $03
+            sSFX 16                                    ;; 0d:4020 $f9 $10
+            sUNK_E2                                    ;; 0d:4022 $e2
+          sENDIF                                       ;; 0d:4023
+        sENDIF                                         ;; 0d:4023
+      sENDIF                                           ;; 0d:4023
+    sENDIF                                             ;; 0d:4023
     sEND                                               ;; 0d:4023 $00
 
 script_0002:
@@ -42,108 +42,107 @@ script_0003:
     sEND                                               ;; 0d:4030 $00
 
 script_0004:
-    sIF_FLAG_JR wScriptFlags0E.4, .jr_0d_408f          ;; 0d:4031 $08 $f4 $00 $5a
-    sIF_FLAG_JR wScriptFlags0E.5, wScriptFlags0E.6, wScriptFlags0E.7, .jr_0d_4040 ;; 0d:4035 $08 $f5 $f6 $f7 $00 $05
-    sLOAD_ROOM 14, $10, 12, 9                          ;; 0d:403b $f4 $0e $10 $0c $09
-.jr_0d_4040:
-    sIF_FLAG_JR wScriptFlags0E.5, wScriptFlags0E.6, !wScriptFlags0E.7, .jr_0d_404b ;; 0d:4040 $08 $f5 $f6 $77 $00 $05
-    sLOAD_ROOM 14, $06, 14, 8                          ;; 0d:4046 $f4 $0e $06 $0e $08
-.jr_0d_404b:
-    sIF_FLAG_JR wScriptFlags0E.5, !wScriptFlags0E.6, wScriptFlags0E.7, .jr_0d_4056 ;; 0d:404b $08 $f5 $76 $f7 $00 $05
-    sLOAD_ROOM 0, $5b, 8, 4                            ;; 0d:4051 $f4 $00 $5b $08 $04
-.jr_0d_4056:
-    sIF_FLAG_JR wScriptFlags0E.5, !wScriptFlags0E.6, !wScriptFlags0E.7, .jr_0d_4061 ;; 0d:4056 $08 $f5 $76 $77 $00 $05
-    sLOAD_ROOM 14, $53, 6, 6                           ;; 0d:405c $f4 $0e $53 $06 $06
-.jr_0d_4061:
-    sIF_FLAG_JR !wScriptFlags0E.5, wScriptFlags0E.6, wScriptFlags0E.7, .jr_0d_406c ;; 0d:4061 $08 $75 $f6 $f7 $00 $05
-    sLOAD_ROOM 14, $14, 2, 12                          ;; 0d:4067 $f4 $0e $14 $02 $0c
-.jr_0d_406c:
-    sIF_FLAG_JR !wScriptFlags0E.5, wScriptFlags0E.6, !wScriptFlags0E.7, .jr_0d_4077 ;; 0d:406c $08 $75 $f6 $77 $00 $05
-    sLOAD_ROOM 0, $33, 12, 5                           ;; 0d:4072 $f4 $00 $33 $0c $05
-.jr_0d_4077:
-    sIF_FLAG_JR !wScriptFlags0E.5, !wScriptFlags0E.6, wScriptFlags0E.7, .jr_0d_4082 ;; 0d:4077 $08 $75 $76 $f7 $00 $05
-    sLOAD_ROOM 15, $46, 10, 6                          ;; 0d:407d $f4 $0f $46 $0a $06
-.jr_0d_4082:
-    sIF_FLAG_JR !wScriptFlags0E.5, !wScriptFlags0E.6, !wScriptFlags0E.7, .jr_0d_408d ;; 0d:4082 $08 $75 $76 $77 $00 $05
-    sLOAD_ROOM 0, $d1, 4, 6                            ;; 0d:4088 $f4 $00 $d1 $04 $06
-.jr_0d_408d:
-    sJR  .jr_0d_410e                                   ;; 0d:408d $01 $7f
-.jr_0d_408f:
-    sIF_FLAG_JR wScriptFlags0E.5, wScriptFlags0E.6, wScriptFlags0E.7, .jr_0d_409a ;; 0d:408f $08 $f5 $f6 $f7 $00 $05
-    sLOAD_ROOM 0, $df, 10, 4                           ;; 0d:4095 $f4 $00 $df $0a $04
-.jr_0d_409a:
-    sIF_FLAG_JR wScriptFlags0E.5, wScriptFlags0E.6, !wScriptFlags0E.7, .jr_0d_40af ;; 0d:409a $08 $f5 $f6 $77 $00 $0f
-    sLOAD_ROOM 14, $14, 10, 6                          ;; 0d:40a0 $f4 $0e $14 $0a $06
-    sIF_FLAG_JR wScriptFlags05.0, .jr_0d_40ad          ;; 0d:40a5 $08 $a8 $00 $04
-    sSET_MUSIC 0                                       ;; 0d:40a9 $f8 $00
-    sJR  .jr_0d_40af                                   ;; 0d:40ab $01 $02
-.jr_0d_40ad:
-    sSET_MUSIC 13                                      ;; 0d:40ad $f8 $0d
-.jr_0d_40af:
-    sIF_FLAG_JR wScriptFlags0E.5, !wScriptFlags0E.6, wScriptFlags0E.7, .jr_0d_40bc ;; 0d:40af $08 $f5 $76 $f7 $00 $07
-    sLOAD_ROOM 0, $4d, 10, 4                           ;; 0d:40b5 $f4 $00 $4d $0a $04
-    sSET_MUSIC 20                                      ;; 0d:40ba $f8 $14
-.jr_0d_40bc:
-    sIF_FLAG_JR wScriptFlags0E.5, !wScriptFlags0E.6, !wScriptFlags0E.7, .jr_0d_40d1 ;; 0d:40bc $08 $f5 $76 $77 $00 $0f
-    sLOAD_ROOM 15, $36, 2, 11                          ;; 0d:40c2 $f4 $0f $36 $02 $0b
-    sIF_FLAG_JR wScriptFlags04.1, .jr_0d_40cf          ;; 0d:40c7 $08 $a1 $00 $04
-    sSET_MUSIC 27                                      ;; 0d:40cb $f8 $1b
-    sJR  .jr_0d_40d1                                   ;; 0d:40cd $01 $02
-.jr_0d_40cf:
-    sSET_MUSIC 4                                       ;; 0d:40cf $f8 $04
-.jr_0d_40d1:
-    sIF_FLAG_JR !wScriptFlags0E.5, wScriptFlags0E.6, wScriptFlags0E.7, .jr_0d_40de ;; 0d:40d1 $08 $75 $f6 $f7 $00 $07
-    sLOAD_ROOM 14, $01, 14, 5                          ;; 0d:40d7 $f4 $0e $01 $0e $05
-    sSET_MUSIC 4                                       ;; 0d:40dc $f8 $04
-.jr_0d_40de:
-    sIF_FLAG_JR !wScriptFlags0E.5, wScriptFlags0E.6, !wScriptFlags0E.7, .jr_0d_40f4 ;; 0d:40de $08 $75 $f6 $77 $00 $10
-    sLOAD_ROOM 14, $17, 16, 8                          ;; 0d:40e4 $f4 $0e $17 $10 $08
-    sIF_FLAG_JR !wScriptFlags02.0, wScriptFlags02.1, .jr_0d_40f2 ;; 0d:40e9 $08 $10 $91 $00 $04
-    sSET_MUSIC 9                                       ;; 0d:40ee $f8 $09
-    sJR  .jr_0d_40f4                                   ;; 0d:40f0 $01 $02
-.jr_0d_40f2:
-    sSET_MUSIC 11                                      ;; 0d:40f2 $f8 $0b
-.jr_0d_40f4:
-    sIF_FLAG_JR !wScriptFlags0E.5, !wScriptFlags0E.6, wScriptFlags0E.7, .jr_0d_4101 ;; 0d:40f4 $08 $75 $76 $f7 $00 $07
-    sLOAD_ROOM 0, $aa, 14, 8                           ;; 0d:40fa $f4 $00 $aa $0e $08
-    sSET_MUSIC 20                                      ;; 0d:40ff $f8 $14
-.jr_0d_4101:
-    sIF_FLAG_JR !wScriptFlags0E.5, !wScriptFlags0E.6, !wScriptFlags0E.7, .jr_0d_410e ;; 0d:4101 $08 $75 $76 $77 $00 $07
-    sLOAD_ROOM 0, $7c, 8, 4                            ;; 0d:4107 $f4 $00 $7c $08 $04
-    sSET_MUSIC 20                                      ;; 0d:410c $f8 $14
-.jr_0d_410e:
+    sIF_FLAG !wScriptFlags0E.4                         ;; 0d:4031 $08 $f4 $00 $5a
+      sIF_FLAG !wScriptFlags0E.5, !wScriptFlags0E.6, !wScriptFlags0E.7 ;; 0d:4035 $08 $f5 $f6 $f7 $00 $05
+        sLOAD_ROOM 14, $10, 12, 9                      ;; 0d:403b $f4 $0e $10 $0c $09
+      sENDIF                                           ;; 0d:4040
+      sIF_FLAG !wScriptFlags0E.5, !wScriptFlags0E.6, wScriptFlags0E.7 ;; 0d:4040 $08 $f5 $f6 $77 $00 $05
+        sLOAD_ROOM 14, $06, 14, 8                      ;; 0d:4046 $f4 $0e $06 $0e $08
+      sENDIF                                           ;; 0d:404b
+      sIF_FLAG !wScriptFlags0E.5, wScriptFlags0E.6, !wScriptFlags0E.7 ;; 0d:404b $08 $f5 $76 $f7 $00 $05
+        sLOAD_ROOM 0, $5b, 8, 4                        ;; 0d:4051 $f4 $00 $5b $08 $04
+      sENDIF                                           ;; 0d:4056
+      sIF_FLAG !wScriptFlags0E.5, wScriptFlags0E.6, wScriptFlags0E.7 ;; 0d:4056 $08 $f5 $76 $77 $00 $05
+        sLOAD_ROOM 14, $53, 6, 6                       ;; 0d:405c $f4 $0e $53 $06 $06
+      sENDIF                                           ;; 0d:4061
+      sIF_FLAG wScriptFlags0E.5, !wScriptFlags0E.6, !wScriptFlags0E.7 ;; 0d:4061 $08 $75 $f6 $f7 $00 $05
+        sLOAD_ROOM 14, $14, 2, 12                      ;; 0d:4067 $f4 $0e $14 $02 $0c
+      sENDIF                                           ;; 0d:406c
+      sIF_FLAG wScriptFlags0E.5, !wScriptFlags0E.6, wScriptFlags0E.7 ;; 0d:406c $08 $75 $f6 $77 $00 $05
+        sLOAD_ROOM 0, $33, 12, 5                       ;; 0d:4072 $f4 $00 $33 $0c $05
+      sENDIF                                           ;; 0d:4077
+      sIF_FLAG wScriptFlags0E.5, wScriptFlags0E.6, !wScriptFlags0E.7 ;; 0d:4077 $08 $75 $76 $f7 $00 $05
+        sLOAD_ROOM 15, $46, 10, 6                      ;; 0d:407d $f4 $0f $46 $0a $06
+      sENDIF                                           ;; 0d:4082
+      sIF_FLAG wScriptFlags0E.5, wScriptFlags0E.6, wScriptFlags0E.7 ;; 0d:4082 $08 $75 $76 $77 $00 $05
+        sLOAD_ROOM 0, $d1, 4, 6                        ;; 0d:4088 $f4 $00 $d1 $04 $06
+      sENDIF                                           ;; 0d:408d
+    sELSE                                              ;; 0d:408d $01 $7f
+      sIF_FLAG !wScriptFlags0E.5, !wScriptFlags0E.6, !wScriptFlags0E.7 ;; 0d:408f $08 $f5 $f6 $f7 $00 $05
+        sLOAD_ROOM 0, $df, 10, 4                       ;; 0d:4095 $f4 $00 $df $0a $04
+      sENDIF                                           ;; 0d:409a
+      sIF_FLAG !wScriptFlags0E.5, !wScriptFlags0E.6, wScriptFlags0E.7 ;; 0d:409a $08 $f5 $f6 $77 $00 $0f
+        sLOAD_ROOM 14, $14, 10, 6                      ;; 0d:40a0 $f4 $0e $14 $0a $06
+        sIF_FLAG !wScriptFlags05.0                     ;; 0d:40a5 $08 $a8 $00 $04
+          sSET_MUSIC 0                                 ;; 0d:40a9 $f8 $00
+        sELSE                                          ;; 0d:40ab $01 $02
+          sSET_MUSIC 13                                ;; 0d:40ad $f8 $0d
+        sENDIF                                         ;; 0d:40af
+      sENDIF                                           ;; 0d:40af
+      sIF_FLAG !wScriptFlags0E.5, wScriptFlags0E.6, !wScriptFlags0E.7 ;; 0d:40af $08 $f5 $76 $f7 $00 $07
+        sLOAD_ROOM 0, $4d, 10, 4                       ;; 0d:40b5 $f4 $00 $4d $0a $04
+        sSET_MUSIC 20                                  ;; 0d:40ba $f8 $14
+      sENDIF                                           ;; 0d:40bc
+      sIF_FLAG !wScriptFlags0E.5, wScriptFlags0E.6, wScriptFlags0E.7 ;; 0d:40bc $08 $f5 $76 $77 $00 $0f
+        sLOAD_ROOM 15, $36, 2, 11                      ;; 0d:40c2 $f4 $0f $36 $02 $0b
+        sIF_FLAG !wScriptFlags04.1                     ;; 0d:40c7 $08 $a1 $00 $04
+          sSET_MUSIC 27                                ;; 0d:40cb $f8 $1b
+        sELSE                                          ;; 0d:40cd $01 $02
+          sSET_MUSIC 4                                 ;; 0d:40cf $f8 $04
+        sENDIF                                         ;; 0d:40d1
+      sENDIF                                           ;; 0d:40d1
+      sIF_FLAG wScriptFlags0E.5, !wScriptFlags0E.6, !wScriptFlags0E.7 ;; 0d:40d1 $08 $75 $f6 $f7 $00 $07
+        sLOAD_ROOM 14, $01, 14, 5                      ;; 0d:40d7 $f4 $0e $01 $0e $05
+        sSET_MUSIC 4                                   ;; 0d:40dc $f8 $04
+      sENDIF                                           ;; 0d:40de
+      sIF_FLAG wScriptFlags0E.5, !wScriptFlags0E.6, wScriptFlags0E.7 ;; 0d:40de $08 $75 $f6 $77 $00 $10
+        sLOAD_ROOM 14, $17, 16, 8                      ;; 0d:40e4 $f4 $0e $17 $10 $08
+        sIF_FLAG wScriptFlags02.0, !wScriptFlags02.1   ;; 0d:40e9 $08 $10 $91 $00 $04
+          sSET_MUSIC 9                                 ;; 0d:40ee $f8 $09
+        sELSE                                          ;; 0d:40f0 $01 $02
+          sSET_MUSIC 11                                ;; 0d:40f2 $f8 $0b
+        sENDIF                                         ;; 0d:40f4
+      sENDIF                                           ;; 0d:40f4
+      sIF_FLAG wScriptFlags0E.5, wScriptFlags0E.6, !wScriptFlags0E.7 ;; 0d:40f4 $08 $75 $76 $f7 $00 $07
+        sLOAD_ROOM 0, $aa, 14, 8                       ;; 0d:40fa $f4 $00 $aa $0e $08
+        sSET_MUSIC 20                                  ;; 0d:40ff $f8 $14
+      sENDIF                                           ;; 0d:4101
+      sIF_FLAG wScriptFlags0E.5, wScriptFlags0E.6, wScriptFlags0E.7 ;; 0d:4101 $08 $75 $76 $77 $00 $07
+        sLOAD_ROOM 0, $7c, 8, 4                        ;; 0d:4107 $f4 $00 $7c $08 $04
+        sSET_MUSIC 20                                  ;; 0d:410c $f8 $14
+      sENDIF                                           ;; 0d:410e
+    sENDIF                                             ;; 0d:410e
     sUNK_AB                                            ;; 0d:410e $ab
     sRUN_ROOM_SCRIPT                                   ;; 0d:410f $ec
     sEND                                               ;; 0d:4110 $00
 
 script_0005:
-    sIF_NOT_EQUIPED_JR $1f, .jr_0d_413a                ;; 0d:4111 $09 $1f $00 $25
-    sIF_FLAG_JR !wScriptFlags.1, .jr_0d_411e           ;; 0d:4115 $08 $01 $00 $05
-    sSFX 16                                            ;; 0d:4119 $f9 $10
-    sUNK_E4                                            ;; 0d:411b $e4
-    sJR  .jr_0d_4137                                   ;; 0d:411c $01 $19
-.jr_0d_411e:
-    sIF_FLAG_JR !wScriptFlags.2, .jr_0d_4127           ;; 0d:411e $08 $02 $00 $05
-    sSFX 16                                            ;; 0d:4122 $f9 $10
-    sUNK_E6                                            ;; 0d:4124 $e6
-    sJR  .jr_0d_4137                                   ;; 0d:4125 $01 $10
-.jr_0d_4127:
-    sIF_FLAG_JR !wScriptFlags.3, .jr_0d_4130           ;; 0d:4127 $08 $03 $00 $05
-    sSFX 16                                            ;; 0d:412b $f9 $10
-    sUNK_E0                                            ;; 0d:412d $e0
-    sJR  .jr_0d_4137                                   ;; 0d:412e $01 $07
-.jr_0d_4130:
-    sIF_FLAG_JR !wScriptFlags.4, .jr_0d_4137           ;; 0d:4130 $08 $04 $00 $03
-    sSFX 16                                            ;; 0d:4134 $f9 $10
-    sUNK_E2                                            ;; 0d:4136 $e2
-.jr_0d_4137:
-    sUNK_DE                                            ;; 0d:4137 $de
-    sJR  .jr_0d_4145                                   ;; 0d:4138 $01 $0b
-.jr_0d_413a:
-    sMSG                                               ;; 0d:413a $04
-      db "<10> Locked.<12>"
-      db "<11>", $00       ;; 0d:413b
-.jr_0d_4145:
+    sIF_EQUIPED $1f                                    ;; 0d:4111 $09 $1f $00 $25
+      sIF_FLAG wScriptFlags.1                          ;; 0d:4115 $08 $01 $00 $05
+        sSFX 16                                        ;; 0d:4119 $f9 $10
+        sUNK_E4                                        ;; 0d:411b $e4
+      sELSE                                            ;; 0d:411c $01 $19
+        sIF_FLAG wScriptFlags.2                        ;; 0d:411e $08 $02 $00 $05
+          sSFX 16                                      ;; 0d:4122 $f9 $10
+          sUNK_E6                                      ;; 0d:4124 $e6
+        sELSE                                          ;; 0d:4125 $01 $10
+          sIF_FLAG wScriptFlags.3                      ;; 0d:4127 $08 $03 $00 $05
+            sSFX 16                                    ;; 0d:412b $f9 $10
+            sUNK_E0                                    ;; 0d:412d $e0
+          sELSE                                        ;; 0d:412e $01 $07
+            sIF_FLAG wScriptFlags.4                    ;; 0d:4130 $08 $04 $00 $03
+              sSFX 16                                  ;; 0d:4134 $f9 $10
+              sUNK_E2                                  ;; 0d:4136 $e2
+            sENDIF                                     ;; 0d:4137
+          sENDIF                                       ;; 0d:4137
+        sENDIF                                         ;; 0d:4137
+      sENDIF                                           ;; 0d:4137
+      sUNK_DE                                          ;; 0d:4137 $de
+    sELSE                                              ;; 0d:4138 $01 $0b
+      sMSG                                             ;; 0d:413a $04
+        db "<10> Locked.<12>"
+      db "<11>", $00     ;; 0d:413b
+    sENDIF                                             ;; 0d:4145
     sEND                                               ;; 0d:4145 $00
 
 script_0006:
@@ -172,57 +171,57 @@ script_0007:
     sEND                                               ;; 0d:416d $00
 
 script_0008:
-    sIF_FLAG_JR wScriptFlags0E.4, .jr_0d_41cc          ;; 0d:416e $08 $f4 $00 $5a
-    sIF_FLAG_JR wScriptFlags0E.5, wScriptFlags0E.6, wScriptFlags0E.7, .jr_0d_417d ;; 0d:4172 $08 $f5 $f6 $f7 $00 $05
-    sLOAD_ROOM 14, $10, 6, 7                           ;; 0d:4178 $f4 $0e $10 $06 $07
-.jr_0d_417d:
-    sIF_FLAG_JR wScriptFlags0E.5, wScriptFlags0E.6, !wScriptFlags0E.7, .jr_0d_4188 ;; 0d:417d $08 $f5 $f6 $77 $00 $05
-    sLOAD_ROOM 0, $c7, 8, 7                            ;; 0d:4183 $f4 $00 $c7 $08 $07
-.jr_0d_4188:
-    sIF_FLAG_JR wScriptFlags0E.5, !wScriptFlags0E.6, wScriptFlags0E.7, .jr_0d_4193 ;; 0d:4188 $08 $f5 $76 $f7 $00 $05
-    sLOAD_ROOM 14, $07, 12, 4                          ;; 0d:418e $f4 $0e $07 $0c $04
-.jr_0d_4193:
-    sIF_FLAG_JR wScriptFlags0E.5, !wScriptFlags0E.6, !wScriptFlags0E.7, .jr_0d_419e ;; 0d:4193 $08 $f5 $76 $77 $00 $05
-    sLOAD_ROOM 0, $af, 4, 4                            ;; 0d:4199 $f4 $00 $af $04 $04
-.jr_0d_419e:
-    sIF_FLAG_JR !wScriptFlags0E.5, wScriptFlags0E.6, wScriptFlags0E.7, .jr_0d_41a9 ;; 0d:419e $08 $75 $f6 $f7 $00 $05
-    sLOAD_ROOM 14, $63, 14, 10                         ;; 0d:41a4 $f4 $0e $63 $0e $0a
-.jr_0d_41a9:
-    sIF_FLAG_JR !wScriptFlags0E.5, wScriptFlags0E.6, !wScriptFlags0E.7, .jr_0d_41b4 ;; 0d:41a9 $08 $75 $f6 $77 $00 $05
-    sLOAD_ROOM 14, $24, 10, 4                          ;; 0d:41af $f4 $0e $24 $0a $04
-.jr_0d_41b4:
-    sIF_FLAG_JR !wScriptFlags0E.5, !wScriptFlags0E.6, wScriptFlags0E.7, .jr_0d_41bf ;; 0d:41b4 $08 $75 $76 $f7 $00 $05
-    sLOAD_ROOM 0, $23, 10, 6                           ;; 0d:41ba $f4 $00 $23 $0a $06
-.jr_0d_41bf:
-    sIF_FLAG_JR !wScriptFlags0E.5, !wScriptFlags0E.6, !wScriptFlags0E.7, .jr_0d_41ca ;; 0d:41bf $08 $75 $76 $77 $00 $05
-    sLOAD_ROOM 0, $90, 12, 6                           ;; 0d:41c5 $f4 $00 $90 $0c $06
-.jr_0d_41ca:
-    sJR  .jr_0d_4224                                   ;; 0d:41ca $01 $58
-.jr_0d_41cc:
-    sIF_FLAG_JR wScriptFlags0E.5, wScriptFlags0E.6, wScriptFlags0E.7, .jr_0d_41d7 ;; 0d:41cc $08 $f5 $f6 $f7 $00 $05
-    sLOAD_ROOM 0, $db, 8, 4                            ;; 0d:41d2 $f4 $00 $db $08 $04
-.jr_0d_41d7:
-    sIF_FLAG_JR wScriptFlags0E.5, wScriptFlags0E.6, !wScriptFlags0E.7, .jr_0d_41e2 ;; 0d:41d7 $08 $f5 $f6 $77 $00 $05
-    sLOAD_ROOM 15, $26, 4, 12                          ;; 0d:41dd $f4 $0f $26 $04 $0c
-.jr_0d_41e2:
-    sIF_FLAG_JR wScriptFlags0E.5, !wScriptFlags0E.6, wScriptFlags0E.7, .jr_0d_41ed ;; 0d:41e2 $08 $f5 $76 $f7 $00 $05
-    sLOAD_ROOM 14, $00, 4, 8                           ;; 0d:41e8 $f4 $0e $00 $04 $08
-.jr_0d_41ed:
-    sIF_FLAG_JR wScriptFlags0E.5, !wScriptFlags0E.6, !wScriptFlags0E.7, .jr_0d_41f8 ;; 0d:41ed $08 $f5 $76 $77 $00 $05
-    sLOAD_ROOM 14, $06, 6, 8                           ;; 0d:41f3 $f4 $0e $06 $06 $08
-.jr_0d_41f8:
-    sIF_FLAG_JR !wScriptFlags0E.5, wScriptFlags0E.6, wScriptFlags0E.7, .jr_0d_4203 ;; 0d:41f8 $08 $75 $f6 $f7 $00 $05
-    sLOAD_ROOM 14, $13, 16, 8                          ;; 0d:41fe $f4 $0e $13 $10 $08
-.jr_0d_4203:
-    sIF_FLAG_JR !wScriptFlags0E.5, wScriptFlags0E.6, !wScriptFlags0E.7, .jr_0d_420e ;; 0d:4203 $08 $75 $f6 $77 $00 $05
-    sLOAD_ROOM 14, $63, 10, 4                          ;; 0d:4209 $f4 $0e $63 $0a $04
-.jr_0d_420e:
-    sIF_FLAG_JR !wScriptFlags0E.5, !wScriptFlags0E.6, wScriptFlags0E.7, .jr_0d_4219 ;; 0d:420e $08 $75 $76 $f7 $00 $05
-    sLOAD_ROOM 15, $46, 4, 10                          ;; 0d:4214 $f4 $0f $46 $04 $0a
-.jr_0d_4219:
-    sIF_FLAG_JR !wScriptFlags0E.5, !wScriptFlags0E.6, !wScriptFlags0E.7, .jr_0d_4224 ;; 0d:4219 $08 $75 $76 $77 $00 $05
-    sLOAD_ROOM 15, $46, 14, 6                          ;; 0d:421f $f4 $0f $46 $0e $06
-.jr_0d_4224:
+    sIF_FLAG !wScriptFlags0E.4                         ;; 0d:416e $08 $f4 $00 $5a
+      sIF_FLAG !wScriptFlags0E.5, !wScriptFlags0E.6, !wScriptFlags0E.7 ;; 0d:4172 $08 $f5 $f6 $f7 $00 $05
+        sLOAD_ROOM 14, $10, 6, 7                       ;; 0d:4178 $f4 $0e $10 $06 $07
+      sENDIF                                           ;; 0d:417d
+      sIF_FLAG !wScriptFlags0E.5, !wScriptFlags0E.6, wScriptFlags0E.7 ;; 0d:417d $08 $f5 $f6 $77 $00 $05
+        sLOAD_ROOM 0, $c7, 8, 7                        ;; 0d:4183 $f4 $00 $c7 $08 $07
+      sENDIF                                           ;; 0d:4188
+      sIF_FLAG !wScriptFlags0E.5, wScriptFlags0E.6, !wScriptFlags0E.7 ;; 0d:4188 $08 $f5 $76 $f7 $00 $05
+        sLOAD_ROOM 14, $07, 12, 4                      ;; 0d:418e $f4 $0e $07 $0c $04
+      sENDIF                                           ;; 0d:4193
+      sIF_FLAG !wScriptFlags0E.5, wScriptFlags0E.6, wScriptFlags0E.7 ;; 0d:4193 $08 $f5 $76 $77 $00 $05
+        sLOAD_ROOM 0, $af, 4, 4                        ;; 0d:4199 $f4 $00 $af $04 $04
+      sENDIF                                           ;; 0d:419e
+      sIF_FLAG wScriptFlags0E.5, !wScriptFlags0E.6, !wScriptFlags0E.7 ;; 0d:419e $08 $75 $f6 $f7 $00 $05
+        sLOAD_ROOM 14, $63, 14, 10                     ;; 0d:41a4 $f4 $0e $63 $0e $0a
+      sENDIF                                           ;; 0d:41a9
+      sIF_FLAG wScriptFlags0E.5, !wScriptFlags0E.6, wScriptFlags0E.7 ;; 0d:41a9 $08 $75 $f6 $77 $00 $05
+        sLOAD_ROOM 14, $24, 10, 4                      ;; 0d:41af $f4 $0e $24 $0a $04
+      sENDIF                                           ;; 0d:41b4
+      sIF_FLAG wScriptFlags0E.5, wScriptFlags0E.6, !wScriptFlags0E.7 ;; 0d:41b4 $08 $75 $76 $f7 $00 $05
+        sLOAD_ROOM 0, $23, 10, 6                       ;; 0d:41ba $f4 $00 $23 $0a $06
+      sENDIF                                           ;; 0d:41bf
+      sIF_FLAG wScriptFlags0E.5, wScriptFlags0E.6, wScriptFlags0E.7 ;; 0d:41bf $08 $75 $76 $77 $00 $05
+        sLOAD_ROOM 0, $90, 12, 6                       ;; 0d:41c5 $f4 $00 $90 $0c $06
+      sENDIF                                           ;; 0d:41ca
+    sELSE                                              ;; 0d:41ca $01 $58
+      sIF_FLAG !wScriptFlags0E.5, !wScriptFlags0E.6, !wScriptFlags0E.7 ;; 0d:41cc $08 $f5 $f6 $f7 $00 $05
+        sLOAD_ROOM 0, $db, 8, 4                        ;; 0d:41d2 $f4 $00 $db $08 $04
+      sENDIF                                           ;; 0d:41d7
+      sIF_FLAG !wScriptFlags0E.5, !wScriptFlags0E.6, wScriptFlags0E.7 ;; 0d:41d7 $08 $f5 $f6 $77 $00 $05
+        sLOAD_ROOM 15, $26, 4, 12                      ;; 0d:41dd $f4 $0f $26 $04 $0c
+      sENDIF                                           ;; 0d:41e2
+      sIF_FLAG !wScriptFlags0E.5, wScriptFlags0E.6, !wScriptFlags0E.7 ;; 0d:41e2 $08 $f5 $76 $f7 $00 $05
+        sLOAD_ROOM 14, $00, 4, 8                       ;; 0d:41e8 $f4 $0e $00 $04 $08
+      sENDIF                                           ;; 0d:41ed
+      sIF_FLAG !wScriptFlags0E.5, wScriptFlags0E.6, wScriptFlags0E.7 ;; 0d:41ed $08 $f5 $76 $77 $00 $05
+        sLOAD_ROOM 14, $06, 6, 8                       ;; 0d:41f3 $f4 $0e $06 $06 $08
+      sENDIF                                           ;; 0d:41f8
+      sIF_FLAG wScriptFlags0E.5, !wScriptFlags0E.6, !wScriptFlags0E.7 ;; 0d:41f8 $08 $75 $f6 $f7 $00 $05
+        sLOAD_ROOM 14, $13, 16, 8                      ;; 0d:41fe $f4 $0e $13 $10 $08
+      sENDIF                                           ;; 0d:4203
+      sIF_FLAG wScriptFlags0E.5, !wScriptFlags0E.6, wScriptFlags0E.7 ;; 0d:4203 $08 $75 $f6 $77 $00 $05
+        sLOAD_ROOM 14, $63, 10, 4                      ;; 0d:4209 $f4 $0e $63 $0a $04
+      sENDIF                                           ;; 0d:420e
+      sIF_FLAG wScriptFlags0E.5, wScriptFlags0E.6, !wScriptFlags0E.7 ;; 0d:420e $08 $75 $76 $f7 $00 $05
+        sLOAD_ROOM 15, $46, 4, 10                      ;; 0d:4214 $f4 $0f $46 $04 $0a
+      sENDIF                                           ;; 0d:4219
+      sIF_FLAG wScriptFlags0E.5, wScriptFlags0E.6, wScriptFlags0E.7 ;; 0d:4219 $08 $75 $76 $77 $00 $05
+        sLOAD_ROOM 15, $46, 14, 6                      ;; 0d:421f $f4 $0f $46 $0e $06
+      sENDIF                                           ;; 0d:4224
+    sENDIF                                             ;; 0d:4224
     sUNK_AB                                            ;; 0d:4224 $ab
     sRUN_ROOM_SCRIPT                                   ;; 0d:4225 $ec
     sEND                                               ;; 0d:4226 $00
@@ -240,116 +239,112 @@ script_000b:
     sEND                                               ;; 0d:4239 $00
 
 script_000c:
-    sIF_FLAG_JR wScriptFlags0E.4, wScriptFlags0E.5, wScriptFlags0E.6, .jr_0d_42ac ;; 0d:423a $08 $f4 $f5 $f6 $00 $6c
-    sIF_FLAG_JR wScriptFlags0E.7, .jr_0d_4258          ;; 0d:4240 $08 $f7 $00 $14
-    sIF_FLAG_JR !wScriptFlags08.0, wScriptFlags04.5, .jr_0d_424b ;; 0d:4244 $08 $40 $a5 $00 $02
-    sJR  .jr_0d_4256                                   ;; 0d:4249 $01 $0b
-.jr_0d_424b:
-    sLOAD_ROOM 0, $a9, 10, 5                           ;; 0d:424b $f4 $00 $a9 $0a $05
-    sSET_MUSIC 20                                      ;; 0d:4250 $f8 $14
-    sCALL script_0488                                  ;; 0d:4252 $02 $5b $55
-    sUNK_AB                                            ;; 0d:4255 $ab
-.jr_0d_4256:
-    sJR  .jr_0d_42aa                                   ;; 0d:4256 $01 $52
-.jr_0d_4258:
-    sMSG                                               ;; 0d:4258 $04
-      db "<10>", $00                                   ;; 0d:4259
-    sIF_FLAG_JR wScriptFlags06.1, .jr_0d_428e          ;; 0d:425b $08 $b1 $00 $2f
-    sMSG                                               ;; 0d:425f $04
-      db " I'LL STAY HERE\n AND RESEARCH.<12>"
+    sIF_FLAG !wScriptFlags0E.4, !wScriptFlags0E.5, !wScriptFlags0E.6 ;; 0d:423a $08 $f4 $f5 $f6 $00 $6c
+      sIF_FLAG !wScriptFlags0E.7                       ;; 0d:4240 $08 $f7 $00 $14
+        sIF_FLAG wScriptFlags08.0, !wScriptFlags04.5   ;; 0d:4244 $08 $40 $a5 $00 $02
+        sELSE                                          ;; 0d:4249 $01 $0b
+          sLOAD_ROOM 0, $a9, 10, 5                     ;; 0d:424b $f4 $00 $a9 $0a $05
+          sSET_MUSIC 20                                ;; 0d:4250 $f8 $14
+          sCALL script_0488                            ;; 0d:4252 $02 $5b $55
+          sUNK_AB                                      ;; 0d:4255 $ab
+        sENDIF                                         ;; 0d:4256
+      sELSE                                            ;; 0d:4256 $01 $52
+        sMSG                                           ;; 0d:4258 $04
+          db "<10>", $00                               ;; 0d:4259
+        sIF_FLAG !wScriptFlags06.1                     ;; 0d:425b $08 $b1 $00 $2f
+          sMSG                                         ;; 0d:425f $04
+            db " I'LL STAY HERE\n AND RESEARCH.<12>"
       db "<11>", $00 ;; 0d:4260
-    sFOLLOWER_DELETE                                   ;; 0d:427e $98
-    sCLEAR_FLAG wScriptFlags0A.7                       ;; 0d:427f $db $57
-    sLOAD_ROOM 0, $73, 10, 6                           ;; 0d:4281 $f4 $00 $73 $0a $06
-    sSET_MUSIC 20                                      ;; 0d:4286 $f8 $14
-    sCALL script_03e8                                  ;; 0d:4288 $02 $4f $ae
-    sUNK_AB                                            ;; 0d:428b $ab
-    sJR  .jr_0d_42aa                                   ;; 0d:428c $01 $1c
-.jr_0d_428e:
-    sMSG                                               ;; 0d:428e $04
-      db "Tower is sinking.\nUnable to get out!<12>"
+          sFOLLOWER_DELETE                             ;; 0d:427e $98
+          sCLEAR_FLAG wScriptFlags0A.7                 ;; 0d:427f $db $57
+          sLOAD_ROOM 0, $73, 10, 6                     ;; 0d:4281 $f4 $00 $73 $0a $06
+          sSET_MUSIC 20                                ;; 0d:4286 $f8 $14
+          sCALL script_03e8                            ;; 0d:4288 $02 $4f $ae
+          sUNK_AB                                      ;; 0d:428b $ab
+        sELSE                                          ;; 0d:428c $01 $1c
+          sMSG                                         ;; 0d:428e $04
+            db "Tower is sinking.\nUnable to get out!<12>"
       db "<11>", $00 ;; 0d:428f
-.jr_0d_42aa:
-    sJR  .jr_0d_4383                                   ;; 0d:42aa $01 $d7
-.jr_0d_42ac:
-    sIF_FLAG_JR wScriptFlags0E.4, .jr_0d_4334          ;; 0d:42ac $08 $f4 $00 $84
-    sIF_FLAG_JR wScriptFlags0E.5, !wScriptFlags0E.6, wScriptFlags0E.7, .jr_0d_42bd ;; 0d:42b0 $08 $f5 $76 $f7 $00 $07
-    sLOAD_ROOM 0, $64, 14, 7                           ;; 0d:42b6 $f4 $00 $64 $0e $07
-    sSET_MUSIC 20                                      ;; 0d:42bb $f8 $14
-.jr_0d_42bd:
-    sIF_FLAG_JR wScriptFlags0E.5, !wScriptFlags0E.6, !wScriptFlags0E.7, .jr_0d_4304 ;; 0d:42bd $08 $f5 $76 $77 $00 $41
-    sIF_FLAG_JR !wScriptFlags0A.6, wScriptFlags05.0, .jr_0d_42f3 ;; 0d:42c3 $08 $56 $a8 $00 $2b
-    sMSG                                               ;; 0d:42c8 $04
-      db "<10>Lester:Won't you\n avenge my sister?\n Well, I'm going!<12>"
+        sENDIF                                         ;; 0d:42aa
+      sENDIF                                           ;; 0d:42aa
+    sELSE                                              ;; 0d:42aa $01 $d7
+      sIF_FLAG !wScriptFlags0E.4                       ;; 0d:42ac $08 $f4 $00 $84
+        sIF_FLAG !wScriptFlags0E.5, wScriptFlags0E.6, !wScriptFlags0E.7 ;; 0d:42b0 $08 $f5 $76 $f7 $00 $07
+          sLOAD_ROOM 0, $64, 14, 7                     ;; 0d:42b6 $f4 $00 $64 $0e $07
+          sSET_MUSIC 20                                ;; 0d:42bb $f8 $14
+        sENDIF                                         ;; 0d:42bd
+        sIF_FLAG !wScriptFlags0E.5, wScriptFlags0E.6, wScriptFlags0E.7 ;; 0d:42bd $08 $f5 $76 $77 $00 $41
+          sIF_FLAG wScriptFlags0A.6, !wScriptFlags05.0 ;; 0d:42c3 $08 $56 $a8 $00 $2b
+            sMSG                                       ;; 0d:42c8 $04
+              db "<10>Lester:Won't you\n avenge my sister?\n Well, I'm going!<12>"
       db "<11>", $00 ;; 0d:42c9
-    sFOLLOWER_DELETE                                   ;; 0d:42f0 $98
-    sCLEAR_FLAG wScriptFlags0A.6                       ;; 0d:42f1 $db $56
-.jr_0d_42f3:
-    sIF_FLAG_JR !wScriptFlags05.0, .jr_0d_42f9         ;; 0d:42f3 $08 $28 $00 $02
-    sSET_MUSIC 13                                      ;; 0d:42f7 $f8 $0d
-.jr_0d_42f9:
-    sIF_FLAG_JR wScriptFlags05.0, .jr_0d_42ff          ;; 0d:42f9 $08 $a8 $00 $02
-    sSET_MUSIC 0                                       ;; 0d:42fd $f8 $00
-.jr_0d_42ff:
-    sLOAD_ROOM 14, $03, 12, 8                          ;; 0d:42ff $f4 $0e $03 $0c $08
-.jr_0d_4304:
-    sIF_FLAG_JR !wScriptFlags0E.5, wScriptFlags0E.6, wScriptFlags0E.7, .jr_0d_4311 ;; 0d:4304 $08 $75 $f6 $f7 $00 $07
-    sLOAD_ROOM 0, $c5, 9, 8                            ;; 0d:430a $f4 $00 $c5 $09 $08
-    sSET_MUSIC 25                                      ;; 0d:430f $f8 $19
-.jr_0d_4311:
-    sIF_FLAG_JR !wScriptFlags0E.5, wScriptFlags0E.6, !wScriptFlags0E.7, .jr_0d_431c ;; 0d:4311 $08 $75 $f6 $77 $00 $05
-    sLOAD_ROOM 1, $15, 9, 4                            ;; 0d:4317 $f4 $01 $15 $09 $04
-.jr_0d_431c:
-    sIF_FLAG_JR !wScriptFlags0E.5, !wScriptFlags0E.6, wScriptFlags0E.7, .jr_0d_4327 ;; 0d:431c $08 $75 $76 $f7 $00 $05
-    sLOAD_ROOM 15, $22, 2, 11                          ;; 0d:4322 $f4 $0f $22 $02 $0b
-.jr_0d_4327:
-    sIF_FLAG_JR !wScriptFlags0E.5, !wScriptFlags0E.6, !wScriptFlags0E.7, .jr_0d_4332 ;; 0d:4327 $08 $75 $76 $77 $00 $05
-    sLOAD_ROOM 14, $53, 14, 8                          ;; 0d:432d $f4 $0e $53 $0e $08
-.jr_0d_4332:
-    sJR  .jr_0d_4381                                   ;; 0d:4332 $01 $4d
-.jr_0d_4334:
-    sIF_FLAG_JR wScriptFlags0E.5, wScriptFlags0E.6, wScriptFlags0E.7, .jr_0d_433f ;; 0d:4334 $08 $f5 $f6 $f7 $00 $05
-    sLOAD_ROOM 0, $0a, 14, 4                           ;; 0d:433a $f4 $00 $0a $0e $04
-.jr_0d_433f:
-    sIF_FLAG_JR wScriptFlags0E.5, wScriptFlags0E.6, !wScriptFlags0E.7, .jr_0d_434a ;; 0d:433f $08 $f5 $f6 $77 $00 $05
-    sLOAD_ROOM 0, $55, 8, 4                            ;; 0d:4345 $f4 $00 $55 $08 $04
-.jr_0d_434a:
-    sIF_FLAG_JR wScriptFlags0E.5, !wScriptFlags0E.6, wScriptFlags0E.7, .jr_0d_4355 ;; 0d:434a $08 $f5 $76 $f7 $00 $05
-    sLOAD_ROOM 0, $62, 12, 6                           ;; 0d:4350 $f4 $00 $62 $0c $06
-.jr_0d_4355:
-    sIF_FLAG_JR wScriptFlags0E.5, !wScriptFlags0E.6, !wScriptFlags0E.7, .jr_0d_4360 ;; 0d:4355 $08 $f5 $76 $77 $00 $05
-    sLOAD_ROOM 0, $00, 6, 6                            ;; 0d:435b $f4 $00 $00 $06 $06
-.jr_0d_4360:
-    sIF_FLAG_JR !wScriptFlags0E.5, wScriptFlags0E.6, wScriptFlags0E.7, .jr_0d_436b ;; 0d:4360 $08 $75 $f6 $f7 $00 $05
-    sLOAD_ROOM 14, $01, 6, 9                           ;; 0d:4366 $f4 $0e $01 $06 $09
-.jr_0d_436b:
-    sIF_FLAG_JR !wScriptFlags0E.5, wScriptFlags0E.6, !wScriptFlags0E.7, .jr_0d_4376 ;; 0d:436b $08 $75 $f6 $77 $00 $05
-    sLOAD_ROOM 14, $26, 8, 8                           ;; 0d:4371 $f4 $0e $26 $08 $08
-.jr_0d_4376:
-    sIF_FLAG_JR !wScriptFlags0E.5, !wScriptFlags0E.6, wScriptFlags0E.7, .jr_0d_4381 ;; 0d:4376 $08 $75 $76 $f7 $00 $05
-    sLOAD_ROOM 14, $15, 12, 10                         ;; 0d:437c $f4 $0e $15 $0c $0a
-.jr_0d_4381:
-    sUNK_AB                                            ;; 0d:4381 $ab
-    sRUN_ROOM_SCRIPT                                   ;; 0d:4382 $ec
-.jr_0d_4383:
+            sFOLLOWER_DELETE                           ;; 0d:42f0 $98
+            sCLEAR_FLAG wScriptFlags0A.6               ;; 0d:42f1 $db $56
+          sENDIF                                       ;; 0d:42f3
+          sIF_FLAG wScriptFlags05.0                    ;; 0d:42f3 $08 $28 $00 $02
+            sSET_MUSIC 13                              ;; 0d:42f7 $f8 $0d
+          sENDIF                                       ;; 0d:42f9
+          sIF_FLAG !wScriptFlags05.0                   ;; 0d:42f9 $08 $a8 $00 $02
+            sSET_MUSIC 0                               ;; 0d:42fd $f8 $00
+          sENDIF                                       ;; 0d:42ff
+          sLOAD_ROOM 14, $03, 12, 8                    ;; 0d:42ff $f4 $0e $03 $0c $08
+        sENDIF                                         ;; 0d:4304
+        sIF_FLAG wScriptFlags0E.5, !wScriptFlags0E.6, !wScriptFlags0E.7 ;; 0d:4304 $08 $75 $f6 $f7 $00 $07
+          sLOAD_ROOM 0, $c5, 9, 8                      ;; 0d:430a $f4 $00 $c5 $09 $08
+          sSET_MUSIC 25                                ;; 0d:430f $f8 $19
+        sENDIF                                         ;; 0d:4311
+        sIF_FLAG wScriptFlags0E.5, !wScriptFlags0E.6, wScriptFlags0E.7 ;; 0d:4311 $08 $75 $f6 $77 $00 $05
+          sLOAD_ROOM 1, $15, 9, 4                      ;; 0d:4317 $f4 $01 $15 $09 $04
+        sENDIF                                         ;; 0d:431c
+        sIF_FLAG wScriptFlags0E.5, wScriptFlags0E.6, !wScriptFlags0E.7 ;; 0d:431c $08 $75 $76 $f7 $00 $05
+          sLOAD_ROOM 15, $22, 2, 11                    ;; 0d:4322 $f4 $0f $22 $02 $0b
+        sENDIF                                         ;; 0d:4327
+        sIF_FLAG wScriptFlags0E.5, wScriptFlags0E.6, wScriptFlags0E.7 ;; 0d:4327 $08 $75 $76 $77 $00 $05
+          sLOAD_ROOM 14, $53, 14, 8                    ;; 0d:432d $f4 $0e $53 $0e $08
+        sENDIF                                         ;; 0d:4332
+      sELSE                                            ;; 0d:4332 $01 $4d
+        sIF_FLAG !wScriptFlags0E.5, !wScriptFlags0E.6, !wScriptFlags0E.7 ;; 0d:4334 $08 $f5 $f6 $f7 $00 $05
+          sLOAD_ROOM 0, $0a, 14, 4                     ;; 0d:433a $f4 $00 $0a $0e $04
+        sENDIF                                         ;; 0d:433f
+        sIF_FLAG !wScriptFlags0E.5, !wScriptFlags0E.6, wScriptFlags0E.7 ;; 0d:433f $08 $f5 $f6 $77 $00 $05
+          sLOAD_ROOM 0, $55, 8, 4                      ;; 0d:4345 $f4 $00 $55 $08 $04
+        sENDIF                                         ;; 0d:434a
+        sIF_FLAG !wScriptFlags0E.5, wScriptFlags0E.6, !wScriptFlags0E.7 ;; 0d:434a $08 $f5 $76 $f7 $00 $05
+          sLOAD_ROOM 0, $62, 12, 6                     ;; 0d:4350 $f4 $00 $62 $0c $06
+        sENDIF                                         ;; 0d:4355
+        sIF_FLAG !wScriptFlags0E.5, wScriptFlags0E.6, wScriptFlags0E.7 ;; 0d:4355 $08 $f5 $76 $77 $00 $05
+          sLOAD_ROOM 0, $00, 6, 6                      ;; 0d:435b $f4 $00 $00 $06 $06
+        sENDIF                                         ;; 0d:4360
+        sIF_FLAG wScriptFlags0E.5, !wScriptFlags0E.6, !wScriptFlags0E.7 ;; 0d:4360 $08 $75 $f6 $f7 $00 $05
+          sLOAD_ROOM 14, $01, 6, 9                     ;; 0d:4366 $f4 $0e $01 $06 $09
+        sENDIF                                         ;; 0d:436b
+        sIF_FLAG wScriptFlags0E.5, !wScriptFlags0E.6, wScriptFlags0E.7 ;; 0d:436b $08 $75 $f6 $77 $00 $05
+          sLOAD_ROOM 14, $26, 8, 8                     ;; 0d:4371 $f4 $0e $26 $08 $08
+        sENDIF                                         ;; 0d:4376
+        sIF_FLAG wScriptFlags0E.5, wScriptFlags0E.6, !wScriptFlags0E.7 ;; 0d:4376 $08 $75 $76 $f7 $00 $05
+          sLOAD_ROOM 14, $15, 12, 10                   ;; 0d:437c $f4 $0e $15 $0c $0a
+        sENDIF                                         ;; 0d:4381
+      sENDIF                                           ;; 0d:4381
+      sUNK_AB                                          ;; 0d:4381 $ab
+      sRUN_ROOM_SCRIPT                                 ;; 0d:4382 $ec
+    sENDIF                                             ;; 0d:4383
     sEND                                               ;; 0d:4383 $00
 
 script_000d:
-    sIF_FLAG_JR !wScriptFlags05.5, !wScriptFlags.3, .jr_0d_438e ;; 0d:4384 $08 $2d $03 $00 $05
-    sSFX 16                                            ;; 0d:4389 $f9 $10
-    sUNK_E0                                            ;; 0d:438b $e0
-    sJR  .jr_0d_43aa                                   ;; 0d:438c $01 $1c
-.jr_0d_438e:
-    sMSG                                               ;; 0d:438e $04
-      db "<10>_ _", $00                                ;; 0d:438f
-    sDELAY 30                                          ;; 0d:4394 $f0 $1e
-    sMSG                                               ;; 0d:4396 $04
-      db "_", $00                                      ;; 0d:4397
-    sDELAY 20                                          ;; 0d:4399 $f0 $14
-    sMSG                                               ;; 0d:439b $04
-      db "__\n_ It's frozen.<12>"
+    sIF_FLAG wScriptFlags05.5, wScriptFlags.3          ;; 0d:4384 $08 $2d $03 $00 $05
+      sSFX 16                                          ;; 0d:4389 $f9 $10
+      sUNK_E0                                          ;; 0d:438b $e0
+    sELSE                                              ;; 0d:438c $01 $1c
+      sMSG                                             ;; 0d:438e $04
+        db "<10>_ _", $00                              ;; 0d:438f
+      sDELAY 30                                        ;; 0d:4394 $f0 $1e
+      sMSG                                             ;; 0d:4396 $04
+        db "_", $00                                    ;; 0d:4397
+      sDELAY 20                                        ;; 0d:4399 $f0 $14
+      sMSG                                             ;; 0d:439b $04
+        db "__\n_ It's frozen.<12>"
       db "<11>", $00 ;; 0d:439c
-.jr_0d_43aa:
+    sENDIF                                             ;; 0d:43aa
     sEND                                               ;; 0d:43aa $00
 
 script_000e:
@@ -405,11 +400,11 @@ script_001e:
 
 script_001f:
     sUNK_A9                                            ;; 0d:43bc $a9
-    sIF_FLAG_JR !wScriptFlags0F.7, .jr_0d_43c4         ;; 0d:43bd $08 $7f $00 $03
-    sOPEN_MAP                                          ;; 0d:43c1 $ac
-    sWAIT_MAP_CLOSE                                    ;; 0d:43c2 $ad
-    sCLOSE_MAP                                         ;; 0d:43c3 $ae
-.jr_0d_43c4:
+    sIF_FLAG wScriptFlags0F.7                          ;; 0d:43bd $08 $7f $00 $03
+      sOPEN_MAP                                        ;; 0d:43c1 $ac
+      sWAIT_MAP_CLOSE                                  ;; 0d:43c2 $ad
+      sCLOSE_MAP                                       ;; 0d:43c3 $ae
+    sENDIF                                             ;; 0d:43c4
     sEND                                               ;; 0d:43c4 $00
 
 script_0020:
@@ -476,11 +471,11 @@ script_003f:
     sEND                                               ;; 0d:43de $00
 
 script_0040:
-    sIF_FLAG_JR wScriptFlags.7, .jr_0d_43e9            ;; 0d:43df $08 $87 $00 $06
-    sSET_NPC_TYPES 0                                   ;; 0d:43e3 $fc $00
-    sSPAWN_NPC 0                                       ;; 0d:43e5 $fd $00
-    sSPAWN_NPC 1                                       ;; 0d:43e7 $fd $01
-.jr_0d_43e9:
+    sIF_FLAG !wScriptFlags.7                           ;; 0d:43df $08 $87 $00 $06
+      sSET_NPC_TYPES 0                                 ;; 0d:43e3 $fc $00
+      sSPAWN_NPC 0                                     ;; 0d:43e5 $fd $00
+      sSPAWN_NPC 1                                     ;; 0d:43e7 $fd $01
+    sENDIF                                             ;; 0d:43e9
     sEND                                               ;; 0d:43e9 $00
 
 script_0041:
@@ -490,11 +485,11 @@ script_0042:
     sEND                                               ;; 0d:43eb $00
 
 script_0043:
-    sIF_FLAG_JR wScriptFlags.7, .jr_0d_43f6            ;; 0d:43ec $08 $87 $00 $06
-    sSET_NPC_TYPES 1                                   ;; 0d:43f0 $fc $01
-    sSPAWN_NPC 0                                       ;; 0d:43f2 $fd $00
-    sSPAWN_NPC 1                                       ;; 0d:43f4 $fd $01
-.jr_0d_43f6:
+    sIF_FLAG !wScriptFlags.7                           ;; 0d:43ec $08 $87 $00 $06
+      sSET_NPC_TYPES 1                                 ;; 0d:43f0 $fc $01
+      sSPAWN_NPC 0                                     ;; 0d:43f2 $fd $00
+      sSPAWN_NPC 1                                     ;; 0d:43f4 $fd $01
+    sENDIF                                             ;; 0d:43f6
     sEND                                               ;; 0d:43f6 $00
 
 script_0044:
@@ -504,10 +499,10 @@ script_0045:
     sEND                                               ;; 0d:43f8 $00
 
 script_0046:
-    sIF_FLAG_JR wScriptFlags.7, .jr_0d_4401            ;; 0d:43f9 $08 $87 $00 $04
-    sSET_NPC_TYPES 0                                   ;; 0d:43fd $fc $00
-    sSPAWN_NPC 2                                       ;; 0d:43ff $fd $02
-.jr_0d_4401:
+    sIF_FLAG !wScriptFlags.7                           ;; 0d:43f9 $08 $87 $00 $04
+      sSET_NPC_TYPES 0                                 ;; 0d:43fd $fc $00
+      sSPAWN_NPC 2                                     ;; 0d:43ff $fd $02
+    sENDIF                                             ;; 0d:4401
     sEND                                               ;; 0d:4401 $00
 
 script_0047:
@@ -517,11 +512,11 @@ script_0048:
     sEND                                               ;; 0d:4403 $00
 
 script_0049:
-    sIF_FLAG_JR wScriptFlags.7, .jr_0d_440e            ;; 0d:4404 $08 $87 $00 $06
-    sSET_NPC_TYPES 2                                   ;; 0d:4408 $fc $02
-    sSPAWN_NPC 1                                       ;; 0d:440a $fd $01
-    sSPAWN_NPC 0                                       ;; 0d:440c $fd $00
-.jr_0d_440e:
+    sIF_FLAG !wScriptFlags.7                           ;; 0d:4404 $08 $87 $00 $06
+      sSET_NPC_TYPES 2                                 ;; 0d:4408 $fc $02
+      sSPAWN_NPC 1                                     ;; 0d:440a $fd $01
+      sSPAWN_NPC 0                                     ;; 0d:440c $fd $00
+    sENDIF                                             ;; 0d:440e
     sEND                                               ;; 0d:440e $00
 
 script_004a:
@@ -531,11 +526,11 @@ script_004b:
     sEND                                               ;; 0d:4410 $00
 
 script_004c:
-    sIF_FLAG_JR wScriptFlags.7, .jr_0d_441b            ;; 0d:4411 $08 $87 $00 $06
-    sSET_NPC_TYPES 3                                   ;; 0d:4415 $fc $03
-    sSPAWN_NPC 0                                       ;; 0d:4417 $fd $00
-    sSPAWN_NPC 1                                       ;; 0d:4419 $fd $01
-.jr_0d_441b:
+    sIF_FLAG !wScriptFlags.7                           ;; 0d:4411 $08 $87 $00 $06
+      sSET_NPC_TYPES 3                                 ;; 0d:4415 $fc $03
+      sSPAWN_NPC 0                                     ;; 0d:4417 $fd $00
+      sSPAWN_NPC 1                                     ;; 0d:4419 $fd $01
+    sENDIF                                             ;; 0d:441b
     sEND                                               ;; 0d:441b $00
 
 script_004d:
@@ -545,10 +540,10 @@ script_004e:
     sEND                                               ;; 0d:441d $00
 
 script_004f:
-    sIF_FLAG_JR wScriptFlags.7, .jr_0d_4426            ;; 0d:441e $08 $87 $00 $04
-    sSET_NPC_TYPES 8                                   ;; 0d:4422 $fc $08
-    sSPAWN_NPC 0                                       ;; 0d:4424 $fd $00
-.jr_0d_4426:
+    sIF_FLAG !wScriptFlags.7                           ;; 0d:441e $08 $87 $00 $04
+      sSET_NPC_TYPES 8                                 ;; 0d:4422 $fc $08
+      sSPAWN_NPC 0                                     ;; 0d:4424 $fd $00
+    sENDIF                                             ;; 0d:4426
     sEND                                               ;; 0d:4426 $00
 
 script_0050:
@@ -558,10 +553,10 @@ script_0051:
     sEND                                               ;; 0d:4428 $00
 
 script_0052:
-    sIF_FLAG_JR wScriptFlags.7, .jr_0d_4431            ;; 0d:4429 $08 $87 $00 $04
-    sSET_NPC_TYPES 9                                   ;; 0d:442d $fc $09
-    sSPAWN_NPC 0                                       ;; 0d:442f $fd $00
-.jr_0d_4431:
+    sIF_FLAG !wScriptFlags.7                           ;; 0d:4429 $08 $87 $00 $04
+      sSET_NPC_TYPES 9                                 ;; 0d:442d $fc $09
+      sSPAWN_NPC 0                                     ;; 0d:442f $fd $00
+    sENDIF                                             ;; 0d:4431
     sEND                                               ;; 0d:4431 $00
 
 script_0053:
@@ -571,10 +566,10 @@ script_0054:
     sEND                                               ;; 0d:4433 $00
 
 script_0055:
-    sIF_FLAG_JR wScriptFlags.7, .jr_0d_443c            ;; 0d:4434 $08 $87 $00 $04
-    sSET_NPC_TYPES 9                                   ;; 0d:4438 $fc $09
-    sSPAWN_NPC 1                                       ;; 0d:443a $fd $01
-.jr_0d_443c:
+    sIF_FLAG !wScriptFlags.7                           ;; 0d:4434 $08 $87 $00 $04
+      sSET_NPC_TYPES 9                                 ;; 0d:4438 $fc $09
+      sSPAWN_NPC 1                                     ;; 0d:443a $fd $01
+    sENDIF                                             ;; 0d:443c
     sEND                                               ;; 0d:443c $00
 
 script_0056:
@@ -584,11 +579,11 @@ script_0057:
     sEND                                               ;; 0d:443e $00
 
 script_0058:
-    sIF_FLAG_JR wScriptFlags.7, .jr_0d_4449            ;; 0d:443f $08 $87 $00 $06
-    sSET_NPC_TYPES 11                                  ;; 0d:4443 $fc $0b
-    sSPAWN_NPC 1                                       ;; 0d:4445 $fd $01
-    sSPAWN_NPC 2                                       ;; 0d:4447 $fd $02
-.jr_0d_4449:
+    sIF_FLAG !wScriptFlags.7                           ;; 0d:443f $08 $87 $00 $06
+      sSET_NPC_TYPES 11                                ;; 0d:4443 $fc $0b
+      sSPAWN_NPC 1                                     ;; 0d:4445 $fd $01
+      sSPAWN_NPC 2                                     ;; 0d:4447 $fd $02
+    sENDIF                                             ;; 0d:4449
     sEND                                               ;; 0d:4449 $00
 
 script_0059:
@@ -598,11 +593,11 @@ script_005a:
     sEND                                               ;; 0d:444b $00
 
 script_005b:
-    sIF_FLAG_JR wScriptFlags.7, .jr_0d_4456            ;; 0d:444c $08 $87 $00 $06
-    sSET_NPC_TYPES 13                                  ;; 0d:4450 $fc $0d
-    sSPAWN_NPC 0                                       ;; 0d:4452 $fd $00
-    sSPAWN_NPC 1                                       ;; 0d:4454 $fd $01
-.jr_0d_4456:
+    sIF_FLAG !wScriptFlags.7                           ;; 0d:444c $08 $87 $00 $06
+      sSET_NPC_TYPES 13                                ;; 0d:4450 $fc $0d
+      sSPAWN_NPC 0                                     ;; 0d:4452 $fd $00
+      sSPAWN_NPC 1                                     ;; 0d:4454 $fd $01
+    sENDIF                                             ;; 0d:4456
     sEND                                               ;; 0d:4456 $00
 
 script_005c:
@@ -612,10 +607,10 @@ script_005d:
     sEND                                               ;; 0d:4458 $00
 
 script_005e:
-    sIF_FLAG_JR wScriptFlags.7, .jr_0d_4461            ;; 0d:4459 $08 $87 $00 $04
-    sSET_NPC_TYPES 13                                  ;; 0d:445d $fc $0d
-    sSPAWN_NPC 2                                       ;; 0d:445f $fd $02
-.jr_0d_4461:
+    sIF_FLAG !wScriptFlags.7                           ;; 0d:4459 $08 $87 $00 $04
+      sSET_NPC_TYPES 13                                ;; 0d:445d $fc $0d
+      sSPAWN_NPC 2                                     ;; 0d:445f $fd $02
+    sENDIF                                             ;; 0d:4461
     sEND                                               ;; 0d:4461 $00
 
 script_005f:
@@ -625,11 +620,11 @@ script_0060:
     sEND                                               ;; 0d:4463 $00
 
 script_0061:
-    sIF_FLAG_JR wScriptFlags.7, .jr_0d_446e            ;; 0d:4464 $08 $87 $00 $06
-    sSET_NPC_TYPES 18                                  ;; 0d:4468 $fc $12
-    sSPAWN_NPC 0                                       ;; 0d:446a $fd $00
-    sSPAWN_NPC 1                                       ;; 0d:446c $fd $01
-.jr_0d_446e:
+    sIF_FLAG !wScriptFlags.7                           ;; 0d:4464 $08 $87 $00 $06
+      sSET_NPC_TYPES 18                                ;; 0d:4468 $fc $12
+      sSPAWN_NPC 0                                     ;; 0d:446a $fd $00
+      sSPAWN_NPC 1                                     ;; 0d:446c $fd $01
+    sENDIF                                             ;; 0d:446e
     sEND                                               ;; 0d:446e $00
 
 script_0062:
@@ -639,11 +634,11 @@ script_0063:
     sEND                                               ;; 0d:4470 $00
 
 script_0064:
-    sIF_FLAG_JR wScriptFlags.7, .jr_0d_447b            ;; 0d:4471 $08 $87 $00 $06
-    sSET_NPC_TYPES 19                                  ;; 0d:4475 $fc $13
-    sSPAWN_NPC 0                                       ;; 0d:4477 $fd $00
-    sSPAWN_NPC 1                                       ;; 0d:4479 $fd $01
-.jr_0d_447b:
+    sIF_FLAG !wScriptFlags.7                           ;; 0d:4471 $08 $87 $00 $06
+      sSET_NPC_TYPES 19                                ;; 0d:4475 $fc $13
+      sSPAWN_NPC 0                                     ;; 0d:4477 $fd $00
+      sSPAWN_NPC 1                                     ;; 0d:4479 $fd $01
+    sENDIF                                             ;; 0d:447b
     sCLEAR_FLAG wScriptFlags0F.0                       ;; 0d:447b $db $78
     sCLEAR_FLAG wScriptFlags0F.1                       ;; 0d:447d $db $79
     sEND                                               ;; 0d:447f $00
@@ -655,11 +650,11 @@ script_0066:
     sEND                                               ;; 0d:4481 $00
 
 script_0067:
-    sIF_FLAG_JR wScriptFlags.7, .jr_0d_448c            ;; 0d:4482 $08 $87 $00 $06
-    sSET_NPC_TYPES 18                                  ;; 0d:4486 $fc $12
-    sSPAWN_NPC 1                                       ;; 0d:4488 $fd $01
-    sSPAWN_NPC 2                                       ;; 0d:448a $fd $02
-.jr_0d_448c:
+    sIF_FLAG !wScriptFlags.7                           ;; 0d:4482 $08 $87 $00 $06
+      sSET_NPC_TYPES 18                                ;; 0d:4486 $fc $12
+      sSPAWN_NPC 1                                     ;; 0d:4488 $fd $01
+      sSPAWN_NPC 2                                     ;; 0d:448a $fd $02
+    sENDIF                                             ;; 0d:448c
     sEND                                               ;; 0d:448c $00
 
 script_0068:
@@ -669,11 +664,11 @@ script_0069:
     sEND                                               ;; 0d:448e $00
 
 script_006a:
-    sIF_FLAG_JR wScriptFlags.7, .jr_0d_4499            ;; 0d:448f $08 $87 $00 $06
-    sSET_NPC_TYPES 24                                  ;; 0d:4493 $fc $18
-    sSPAWN_NPC 0                                       ;; 0d:4495 $fd $00
-    sSPAWN_NPC 1                                       ;; 0d:4497 $fd $01
-.jr_0d_4499:
+    sIF_FLAG !wScriptFlags.7                           ;; 0d:448f $08 $87 $00 $06
+      sSET_NPC_TYPES 24                                ;; 0d:4493 $fc $18
+      sSPAWN_NPC 0                                     ;; 0d:4495 $fd $00
+      sSPAWN_NPC 1                                     ;; 0d:4497 $fd $01
+    sENDIF                                             ;; 0d:4499
     sEND                                               ;; 0d:4499 $00
 
 script_006b:
@@ -683,10 +678,10 @@ script_006c:
     sEND                                               ;; 0d:449b $00
 
 script_006d:
-    sIF_FLAG_JR wScriptFlags.7, .jr_0d_44a4            ;; 0d:449c $08 $87 $00 $04
-    sSET_NPC_TYPES 24                                  ;; 0d:44a0 $fc $18
-    sSPAWN_NPC 2                                       ;; 0d:44a2 $fd $02
-.jr_0d_44a4:
+    sIF_FLAG !wScriptFlags.7                           ;; 0d:449c $08 $87 $00 $04
+      sSET_NPC_TYPES 24                                ;; 0d:44a0 $fc $18
+      sSPAWN_NPC 2                                     ;; 0d:44a2 $fd $02
+    sENDIF                                             ;; 0d:44a4
     sEND                                               ;; 0d:44a4 $00
 
 script_006e:
@@ -696,10 +691,10 @@ script_006f:
     sEND                                               ;; 0d:44a6 $00
 
 script_0070:
-    sIF_FLAG_JR wScriptFlags.7, .jr_0d_44af            ;; 0d:44a7 $08 $87 $00 $04
-    sSET_NPC_TYPES 25                                  ;; 0d:44ab $fc $19
-    sSPAWN_NPC 0                                       ;; 0d:44ad $fd $00
-.jr_0d_44af:
+    sIF_FLAG !wScriptFlags.7                           ;; 0d:44a7 $08 $87 $00 $04
+      sSET_NPC_TYPES 25                                ;; 0d:44ab $fc $19
+      sSPAWN_NPC 0                                     ;; 0d:44ad $fd $00
+    sENDIF                                             ;; 0d:44af
     sEND                                               ;; 0d:44af $00
 
 script_0071:
@@ -709,11 +704,11 @@ script_0072:
     sEND                                               ;; 0d:44b1 $00
 
 script_0073:
-    sIF_FLAG_JR wScriptFlags.7, .jr_0d_44bc            ;; 0d:44b2 $08 $87 $00 $06
-    sSET_NPC_TYPES 25                                  ;; 0d:44b6 $fc $19
-    sSPAWN_NPC 1                                       ;; 0d:44b8 $fd $01
-    sSPAWN_NPC 2                                       ;; 0d:44ba $fd $02
-.jr_0d_44bc:
+    sIF_FLAG !wScriptFlags.7                           ;; 0d:44b2 $08 $87 $00 $06
+      sSET_NPC_TYPES 25                                ;; 0d:44b6 $fc $19
+      sSPAWN_NPC 1                                     ;; 0d:44b8 $fd $01
+      sSPAWN_NPC 2                                     ;; 0d:44ba $fd $02
+    sENDIF                                             ;; 0d:44bc
     sEND                                               ;; 0d:44bc $00
 
 script_0074:
@@ -723,11 +718,11 @@ script_0075:
     sEND                                               ;; 0d:44be $00
 
 script_0076:
-    sIF_FLAG_JR wScriptFlags.7, .jr_0d_44c9            ;; 0d:44bf $08 $87 $00 $06
-    sSET_NPC_TYPES 28                                  ;; 0d:44c3 $fc $1c
-    sSPAWN_NPC 0                                       ;; 0d:44c5 $fd $00
-    sSPAWN_NPC 1                                       ;; 0d:44c7 $fd $01
-.jr_0d_44c9:
+    sIF_FLAG !wScriptFlags.7                           ;; 0d:44bf $08 $87 $00 $06
+      sSET_NPC_TYPES 28                                ;; 0d:44c3 $fc $1c
+      sSPAWN_NPC 0                                     ;; 0d:44c5 $fd $00
+      sSPAWN_NPC 1                                     ;; 0d:44c7 $fd $01
+    sENDIF                                             ;; 0d:44c9
     sEND                                               ;; 0d:44c9 $00
 
 script_0077:
@@ -737,10 +732,10 @@ script_0078:
     sEND                                               ;; 0d:44cb $00
 
 script_0079:
-    sIF_FLAG_JR wScriptFlags.7, .jr_0d_44d4            ;; 0d:44cc $08 $87 $00 $04
-    sSET_NPC_TYPES 29                                  ;; 0d:44d0 $fc $1d
-    sSPAWN_NPC 0                                       ;; 0d:44d2 $fd $00
-.jr_0d_44d4:
+    sIF_FLAG !wScriptFlags.7                           ;; 0d:44cc $08 $87 $00 $04
+      sSET_NPC_TYPES 29                                ;; 0d:44d0 $fc $1d
+      sSPAWN_NPC 0                                     ;; 0d:44d2 $fd $00
+    sENDIF                                             ;; 0d:44d4
     sEND                                               ;; 0d:44d4 $00
 
 script_007a:
@@ -750,10 +745,10 @@ script_007b:
     sEND                                               ;; 0d:44d6 $00
 
 script_007c:
-    sIF_FLAG_JR wScriptFlags.7, .jr_0d_44df            ;; 0d:44d7 $08 $87 $00 $04
-    sSET_NPC_TYPES 28                                  ;; 0d:44db $fc $1c
-    sSPAWN_NPC 2                                       ;; 0d:44dd $fd $02
-.jr_0d_44df:
+    sIF_FLAG !wScriptFlags.7                           ;; 0d:44d7 $08 $87 $00 $04
+      sSET_NPC_TYPES 28                                ;; 0d:44db $fc $1c
+      sSPAWN_NPC 2                                     ;; 0d:44dd $fd $02
+    sENDIF                                             ;; 0d:44df
     sEND                                               ;; 0d:44df $00
 
 script_007d:
@@ -777,11 +772,11 @@ script_0081:
     sEND                                               ;; 0d:44ee $00
 
 script_0082:
-    sIF_FLAG_JR wScriptFlags.7, .jr_0d_44f9            ;; 0d:44ef $08 $87 $00 $06
-    sSET_NPC_TYPES 5                                   ;; 0d:44f3 $fc $05
-    sSPAWN_NPC 0                                       ;; 0d:44f5 $fd $00
-    sSPAWN_NPC 1                                       ;; 0d:44f7 $fd $01
-.jr_0d_44f9:
+    sIF_FLAG !wScriptFlags.7                           ;; 0d:44ef $08 $87 $00 $06
+      sSET_NPC_TYPES 5                                 ;; 0d:44f3 $fc $05
+      sSPAWN_NPC 0                                     ;; 0d:44f5 $fd $00
+      sSPAWN_NPC 1                                     ;; 0d:44f7 $fd $01
+    sENDIF                                             ;; 0d:44f9
     sEND                                               ;; 0d:44f9 $00
 
 script_0083:
@@ -791,11 +786,11 @@ script_0084:
     sEND                                               ;; 0d:44fb $00
 
 script_0085:
-    sIF_FLAG_JR wScriptFlags.7, .jr_0d_4506            ;; 0d:44fc $08 $87 $00 $06
-    sSET_NPC_TYPES 6                                   ;; 0d:4500 $fc $06
-    sSPAWN_NPC 0                                       ;; 0d:4502 $fd $00
-    sSPAWN_NPC 1                                       ;; 0d:4504 $fd $01
-.jr_0d_4506:
+    sIF_FLAG !wScriptFlags.7                           ;; 0d:44fc $08 $87 $00 $06
+      sSET_NPC_TYPES 6                                 ;; 0d:4500 $fc $06
+      sSPAWN_NPC 0                                     ;; 0d:4502 $fd $00
+      sSPAWN_NPC 1                                     ;; 0d:4504 $fd $01
+    sENDIF                                             ;; 0d:4506
     sEND                                               ;; 0d:4506 $00
 
 script_0086:
@@ -805,11 +800,11 @@ script_0087:
     sEND                                               ;; 0d:4508 $00
 
 script_0088:
-    sIF_FLAG_JR wScriptFlags.7, .jr_0d_4513            ;; 0d:4509 $08 $87 $00 $06
-    sSET_NPC_TYPES 7                                   ;; 0d:450d $fc $07
-    sSPAWN_NPC 0                                       ;; 0d:450f $fd $00
-    sSPAWN_NPC 1                                       ;; 0d:4511 $fd $01
-.jr_0d_4513:
+    sIF_FLAG !wScriptFlags.7                           ;; 0d:4509 $08 $87 $00 $06
+      sSET_NPC_TYPES 7                                 ;; 0d:450d $fc $07
+      sSPAWN_NPC 0                                     ;; 0d:450f $fd $00
+      sSPAWN_NPC 1                                     ;; 0d:4511 $fd $01
+    sENDIF                                             ;; 0d:4513
     sEND                                               ;; 0d:4513 $00
 
 script_0089:
@@ -819,10 +814,10 @@ script_008a:
     sEND                                               ;; 0d:4515 $00
 
 script_008b:
-    sIF_FLAG_JR wScriptFlags.7, .jr_0d_451e            ;; 0d:4516 $08 $87 $00 $04
-    sSET_NPC_TYPES 10                                  ;; 0d:451a $fc $0a
-    sSPAWN_NPC 0                                       ;; 0d:451c $fd $00
-.jr_0d_451e:
+    sIF_FLAG !wScriptFlags.7                           ;; 0d:4516 $08 $87 $00 $04
+      sSET_NPC_TYPES 10                                ;; 0d:451a $fc $0a
+      sSPAWN_NPC 0                                     ;; 0d:451c $fd $00
+    sENDIF                                             ;; 0d:451e
     sEND                                               ;; 0d:451e $00
 
 script_008c:
@@ -832,11 +827,11 @@ script_008d:
     sEND                                               ;; 0d:4520 $00
 
 script_008e:
-    sIF_FLAG_JR wScriptFlags.7, .jr_0d_452b            ;; 0d:4521 $08 $87 $00 $06
-    sSET_NPC_TYPES 10                                  ;; 0d:4525 $fc $0a
-    sSPAWN_NPC 1                                       ;; 0d:4527 $fd $01
-    sSPAWN_NPC 2                                       ;; 0d:4529 $fd $02
-.jr_0d_452b:
+    sIF_FLAG !wScriptFlags.7                           ;; 0d:4521 $08 $87 $00 $06
+      sSET_NPC_TYPES 10                                ;; 0d:4525 $fc $0a
+      sSPAWN_NPC 1                                     ;; 0d:4527 $fd $01
+      sSPAWN_NPC 2                                     ;; 0d:4529 $fd $02
+    sENDIF                                             ;; 0d:452b
     sCLEAR_FLAG wScriptFlags0F.0                       ;; 0d:452b $db $78
     sEND                                               ;; 0d:452d $00
 
@@ -847,10 +842,10 @@ script_0090:
     sEND                                               ;; 0d:452f $00
 
 script_0091:
-    sIF_FLAG_JR wScriptFlags.7, .jr_0d_4538            ;; 0d:4530 $08 $87 $00 $04
-    sSET_NPC_TYPES 12                                  ;; 0d:4534 $fc $0c
-    sSPAWN_NPC 0                                       ;; 0d:4536 $fd $00
-.jr_0d_4538:
+    sIF_FLAG !wScriptFlags.7                           ;; 0d:4530 $08 $87 $00 $04
+      sSET_NPC_TYPES 12                                ;; 0d:4534 $fc $0c
+      sSPAWN_NPC 0                                     ;; 0d:4536 $fd $00
+    sENDIF                                             ;; 0d:4538
     sEND                                               ;; 0d:4538 $00
 
 script_0092:
@@ -860,10 +855,10 @@ script_0093:
     sEND                                               ;; 0d:453a $00
 
 script_0094:
-    sIF_FLAG_JR wScriptFlags.7, .jr_0d_4543            ;; 0d:453b $08 $87 $00 $04
-    sSET_NPC_TYPES 12                                  ;; 0d:453f $fc $0c
-    sSPAWN_NPC 2                                       ;; 0d:4541 $fd $02
-.jr_0d_4543:
+    sIF_FLAG !wScriptFlags.7                           ;; 0d:453b $08 $87 $00 $04
+      sSET_NPC_TYPES 12                                ;; 0d:453f $fc $0c
+      sSPAWN_NPC 2                                     ;; 0d:4541 $fd $02
+    sENDIF                                             ;; 0d:4543
     sEND                                               ;; 0d:4543 $00
 
 script_0095:
@@ -873,11 +868,11 @@ script_0096:
     sEND                                               ;; 0d:4545 $00
 
 script_0097:
-    sIF_FLAG_JR wScriptFlags.7, .jr_0d_4550            ;; 0d:4546 $08 $87 $00 $06
-    sSET_NPC_TYPES 14                                  ;; 0d:454a $fc $0e
-    sSPAWN_NPC 1                                       ;; 0d:454c $fd $01
-    sSPAWN_NPC 2                                       ;; 0d:454e $fd $02
-.jr_0d_4550:
+    sIF_FLAG !wScriptFlags.7                           ;; 0d:4546 $08 $87 $00 $06
+      sSET_NPC_TYPES 14                                ;; 0d:454a $fc $0e
+      sSPAWN_NPC 1                                     ;; 0d:454c $fd $01
+      sSPAWN_NPC 2                                     ;; 0d:454e $fd $02
+    sENDIF                                             ;; 0d:4550
     sCLEAR_FLAG wScriptFlags0F.0                       ;; 0d:4550 $db $78
     sCLEAR_FLAG wScriptFlags0F.1                       ;; 0d:4552 $db $79
     sEND                                               ;; 0d:4554 $00
@@ -889,11 +884,11 @@ script_0099:
     sEND                                               ;; 0d:4556 $00
 
 script_009a:
-    sIF_FLAG_JR wScriptFlags.7, .jr_0d_4561            ;; 0d:4557 $08 $87 $00 $06
-    sSET_NPC_TYPES 15                                  ;; 0d:455b $fc $0f
-    sSPAWN_NPC 1                                       ;; 0d:455d $fd $01
-    sSPAWN_NPC 2                                       ;; 0d:455f $fd $02
-.jr_0d_4561:
+    sIF_FLAG !wScriptFlags.7                           ;; 0d:4557 $08 $87 $00 $06
+      sSET_NPC_TYPES 15                                ;; 0d:455b $fc $0f
+      sSPAWN_NPC 1                                     ;; 0d:455d $fd $01
+      sSPAWN_NPC 2                                     ;; 0d:455f $fd $02
+    sENDIF                                             ;; 0d:4561
     sEND                                               ;; 0d:4561 $00
 
 script_009b:
@@ -903,11 +898,11 @@ script_009c:
     sEND                                               ;; 0d:4563 $00
 
 script_009d:
-    sIF_FLAG_JR wScriptFlags.7, .jr_0d_456e            ;; 0d:4564 $08 $87 $00 $06
-    sSET_NPC_TYPES 16                                  ;; 0d:4568 $fc $10
-    sSPAWN_NPC 1                                       ;; 0d:456a $fd $01
-    sSPAWN_NPC 2                                       ;; 0d:456c $fd $02
-.jr_0d_456e:
+    sIF_FLAG !wScriptFlags.7                           ;; 0d:4564 $08 $87 $00 $06
+      sSET_NPC_TYPES 16                                ;; 0d:4568 $fc $10
+      sSPAWN_NPC 1                                     ;; 0d:456a $fd $01
+      sSPAWN_NPC 2                                     ;; 0d:456c $fd $02
+    sENDIF                                             ;; 0d:456e
     sCLEAR_FLAG wScriptFlags0F.0                       ;; 0d:456e $db $78
     sCLEAR_FLAG wScriptFlags0F.1                       ;; 0d:4570 $db $79
     sCLEAR_FLAG wScriptFlags0F.2                       ;; 0d:4572 $db $7a
@@ -921,10 +916,10 @@ script_009f:
     sEND                                               ;; 0d:4578 $00
 
 script_00a0:
-    sIF_FLAG_JR wScriptFlags.7, .jr_0d_4581            ;; 0d:4579 $08 $87 $00 $04
-    sSET_NPC_TYPES 17                                  ;; 0d:457d $fc $11
-    sSPAWN_NPC 2                                       ;; 0d:457f $fd $02
-.jr_0d_4581:
+    sIF_FLAG !wScriptFlags.7                           ;; 0d:4579 $08 $87 $00 $04
+      sSET_NPC_TYPES 17                                ;; 0d:457d $fc $11
+      sSPAWN_NPC 2                                     ;; 0d:457f $fd $02
+    sENDIF                                             ;; 0d:4581
     sEND                                               ;; 0d:4581 $00
 
 script_00a1:
@@ -934,11 +929,11 @@ script_00a2:
     sEND                                               ;; 0d:4583 $00
 
 script_00a3:
-    sIF_FLAG_JR wScriptFlags.7, .jr_0d_458e            ;; 0d:4584 $08 $87 $00 $06
-    sSET_NPC_TYPES 20                                  ;; 0d:4588 $fc $14
-    sSPAWN_NPC 0                                       ;; 0d:458a $fd $00
-    sSPAWN_NPC 1                                       ;; 0d:458c $fd $01
-.jr_0d_458e:
+    sIF_FLAG !wScriptFlags.7                           ;; 0d:4584 $08 $87 $00 $06
+      sSET_NPC_TYPES 20                                ;; 0d:4588 $fc $14
+      sSPAWN_NPC 0                                     ;; 0d:458a $fd $00
+      sSPAWN_NPC 1                                     ;; 0d:458c $fd $01
+    sENDIF                                             ;; 0d:458e
     sEND                                               ;; 0d:458e $00
 
 script_00a4:
@@ -948,10 +943,10 @@ script_00a5:
     sEND                                               ;; 0d:4590 $00
 
 script_00a6:
-    sIF_FLAG_JR wScriptFlags.7, .jr_0d_4599            ;; 0d:4591 $08 $87 $00 $04
-    sSET_NPC_TYPES 8                                   ;; 0d:4595 $fc $08
-    sSPAWN_NPC 1                                       ;; 0d:4597 $fd $01
-.jr_0d_4599:
+    sIF_FLAG !wScriptFlags.7                           ;; 0d:4591 $08 $87 $00 $04
+      sSET_NPC_TYPES 8                                 ;; 0d:4595 $fc $08
+      sSPAWN_NPC 1                                     ;; 0d:4597 $fd $01
+    sENDIF                                             ;; 0d:4599
     sEND                                               ;; 0d:4599 $00
 
 script_00a7:
@@ -961,11 +956,11 @@ script_00a8:
     sEND                                               ;; 0d:459b $00
 
 script_00a9:
-    sIF_FLAG_JR wScriptFlags.7, .jr_0d_45a6            ;; 0d:459c $08 $87 $00 $06
-    sSET_NPC_TYPES 22                                  ;; 0d:45a0 $fc $16
-    sSPAWN_NPC 1                                       ;; 0d:45a2 $fd $01
-    sSPAWN_NPC 2                                       ;; 0d:45a4 $fd $02
-.jr_0d_45a6:
+    sIF_FLAG !wScriptFlags.7                           ;; 0d:459c $08 $87 $00 $06
+      sSET_NPC_TYPES 22                                ;; 0d:45a0 $fc $16
+      sSPAWN_NPC 1                                     ;; 0d:45a2 $fd $01
+      sSPAWN_NPC 2                                     ;; 0d:45a4 $fd $02
+    sENDIF                                             ;; 0d:45a6
     sCLEAR_FLAG wScriptFlags0F.0                       ;; 0d:45a6 $db $78
     sCLEAR_FLAG wScriptFlags0F.1                       ;; 0d:45a8 $db $79
     sEND                                               ;; 0d:45aa $00
@@ -977,10 +972,10 @@ script_00ab:
     sEND                                               ;; 0d:45ac $00
 
 script_00ac:
-    sIF_FLAG_JR wScriptFlags.7, .jr_0d_45b5            ;; 0d:45ad $08 $87 $00 $04
-    sSET_NPC_TYPES 23                                  ;; 0d:45b1 $fc $17
-    sSPAWN_NPC 0                                       ;; 0d:45b3 $fd $00
-.jr_0d_45b5:
+    sIF_FLAG !wScriptFlags.7                           ;; 0d:45ad $08 $87 $00 $04
+      sSET_NPC_TYPES 23                                ;; 0d:45b1 $fc $17
+      sSPAWN_NPC 0                                     ;; 0d:45b3 $fd $00
+    sENDIF                                             ;; 0d:45b5
     sEND                                               ;; 0d:45b5 $00
 
 script_00ad:
@@ -1001,19 +996,19 @@ script_00b0:
     sEND                                               ;; 0d:45c2 $00
 
 script_00b1:
-    sIF_FLAG_JR wScriptFlags09.7, .jr_0d_45ce          ;; 0d:45c3 $08 $cf $00 $07
-    sSET_NPC_TYPES 89                                  ;; 0d:45c7 $fc $59
-    sSPAWN_NPC 2                                       ;; 0d:45c9 $fd $02
-    sUNK_CA $04, $5e                                   ;; 0d:45cb $ca $04 $5e
-.jr_0d_45ce:
+    sIF_FLAG !wScriptFlags09.7                         ;; 0d:45c3 $08 $cf $00 $07
+      sSET_NPC_TYPES 89                                ;; 0d:45c7 $fc $59
+      sSPAWN_NPC 2                                     ;; 0d:45c9 $fd $02
+      sUNK_CA $04, $5e                                 ;; 0d:45cb $ca $04 $5e
+    sENDIF                                             ;; 0d:45ce
     sUNK_E6                                            ;; 0d:45ce $e6
     sEND                                               ;; 0d:45cf $00
 
 script_00b2:
-    sIF_FLAG_JR wScriptFlags.7, .jr_0d_45d8            ;; 0d:45d0 $08 $87 $00 $04
-    sSET_NPC_TYPES 26                                  ;; 0d:45d4 $fc $1a
-    sSPAWN_NPC 1                                       ;; 0d:45d6 $fd $01
-.jr_0d_45d8:
+    sIF_FLAG !wScriptFlags.7                           ;; 0d:45d0 $08 $87 $00 $04
+      sSET_NPC_TYPES 26                                ;; 0d:45d4 $fc $1a
+      sSPAWN_NPC 1                                     ;; 0d:45d6 $fd $01
+    sENDIF                                             ;; 0d:45d8
     sEND                                               ;; 0d:45d8 $00
 
 script_00b3:
@@ -1023,11 +1018,11 @@ script_00b4:
     sEND                                               ;; 0d:45da $00
 
 script_00b5:
-    sIF_FLAG_JR wScriptFlags.7, .jr_0d_45e5            ;; 0d:45db $08 $87 $00 $06
-    sSET_NPC_TYPES 27                                  ;; 0d:45df $fc $1b
-    sSPAWN_NPC 0                                       ;; 0d:45e1 $fd $00
-    sSPAWN_NPC 1                                       ;; 0d:45e3 $fd $01
-.jr_0d_45e5:
+    sIF_FLAG !wScriptFlags.7                           ;; 0d:45db $08 $87 $00 $06
+      sSET_NPC_TYPES 27                                ;; 0d:45df $fc $1b
+      sSPAWN_NPC 0                                     ;; 0d:45e1 $fd $00
+      sSPAWN_NPC 1                                     ;; 0d:45e3 $fd $01
+    sENDIF                                             ;; 0d:45e5
     sEND                                               ;; 0d:45e5 $00
 
 script_00b6:
@@ -1037,11 +1032,11 @@ script_00b7:
     sEND                                               ;; 0d:45e7 $00
 
 script_00b8:
-    sIF_FLAG_JR wScriptFlags.7, .jr_0d_45f2            ;; 0d:45e8 $08 $87 $00 $06
-    sSET_NPC_TYPES 30                                  ;; 0d:45ec $fc $1e
-    sSPAWN_NPC 0                                       ;; 0d:45ee $fd $00
-    sSPAWN_NPC 1                                       ;; 0d:45f0 $fd $01
-.jr_0d_45f2:
+    sIF_FLAG !wScriptFlags.7                           ;; 0d:45e8 $08 $87 $00 $06
+      sSET_NPC_TYPES 30                                ;; 0d:45ec $fc $1e
+      sSPAWN_NPC 0                                     ;; 0d:45ee $fd $00
+      sSPAWN_NPC 1                                     ;; 0d:45f0 $fd $01
+    sENDIF                                             ;; 0d:45f2
     sEND                                               ;; 0d:45f2 $00
 
 script_00b9:
@@ -1051,10 +1046,10 @@ script_00ba:
     sEND                                               ;; 0d:45f4 $00
 
 script_00bb:
-    sIF_FLAG_JR wScriptFlags.7, .jr_0d_45fd            ;; 0d:45f5 $08 $87 $00 $04
-    sSET_NPC_TYPES 26                                  ;; 0d:45f9 $fc $1a
-    sSPAWN_NPC 0                                       ;; 0d:45fb $fd $00
-.jr_0d_45fd:
+    sIF_FLAG !wScriptFlags.7                           ;; 0d:45f5 $08 $87 $00 $04
+      sSET_NPC_TYPES 26                                ;; 0d:45f9 $fc $1a
+      sSPAWN_NPC 0                                     ;; 0d:45fb $fd $00
+    sENDIF                                             ;; 0d:45fd
     sEND                                               ;; 0d:45fd $00
 
 script_00bc:
@@ -1064,11 +1059,11 @@ script_00bd:
     sEND                                               ;; 0d:45ff $00
 
 script_00be:
-    sIF_FLAG_JR wScriptFlags.7, .jr_0d_460a            ;; 0d:4600 $08 $87 $00 $06
-    sSET_NPC_TYPES 31                                  ;; 0d:4604 $fc $1f
-    sSPAWN_NPC 0                                       ;; 0d:4606 $fd $00
-    sSPAWN_NPC 1                                       ;; 0d:4608 $fd $01
-.jr_0d_460a:
+    sIF_FLAG !wScriptFlags.7                           ;; 0d:4600 $08 $87 $00 $06
+      sSET_NPC_TYPES 31                                ;; 0d:4604 $fc $1f
+      sSPAWN_NPC 0                                     ;; 0d:4606 $fd $00
+      sSPAWN_NPC 1                                     ;; 0d:4608 $fd $01
+    sENDIF                                             ;; 0d:460a
     sEND                                               ;; 0d:460a $00
 
 script_00bf:
@@ -1078,10 +1073,10 @@ script_00c0:
     sEND                                               ;; 0d:460c $00
 
 script_00c1:
-    sIF_FLAG_JR wScriptFlags.7, .jr_0d_4615            ;; 0d:460d $08 $87 $00 $04
-    sSET_NPC_TYPES 31                                  ;; 0d:4611 $fc $1f
-    sSPAWN_NPC 2                                       ;; 0d:4613 $fd $02
-.jr_0d_4615:
+    sIF_FLAG !wScriptFlags.7                           ;; 0d:460d $08 $87 $00 $04
+      sSET_NPC_TYPES 31                                ;; 0d:4611 $fc $1f
+      sSPAWN_NPC 2                                     ;; 0d:4613 $fd $02
+    sENDIF                                             ;; 0d:4615
     sEND                                               ;; 0d:4615 $00
 
 script_00c2:
@@ -1091,11 +1086,11 @@ script_00c3:
     sEND                                               ;; 0d:4617 $00
 
 script_00c4:
-    sIF_FLAG_JR wScriptFlags.7, .jr_0d_4622            ;; 0d:4618 $08 $87 $00 $06
-    sSET_NPC_TYPES 32                                  ;; 0d:461c $fc $20
-    sSPAWN_NPC 1                                       ;; 0d:461e $fd $01
-    sSPAWN_NPC 2                                       ;; 0d:4620 $fd $02
-.jr_0d_4622:
+    sIF_FLAG !wScriptFlags.7                           ;; 0d:4618 $08 $87 $00 $06
+      sSET_NPC_TYPES 32                                ;; 0d:461c $fc $20
+      sSPAWN_NPC 1                                     ;; 0d:461e $fd $01
+      sSPAWN_NPC 2                                     ;; 0d:4620 $fd $02
+    sENDIF                                             ;; 0d:4622
     sCLEAR_FLAG wScriptFlags0F.0                       ;; 0d:4622 $db $78
     sCLEAR_FLAG wScriptFlags0F.1                       ;; 0d:4624 $db $79
     sCLEAR_FLAG wScriptFlags0F.2                       ;; 0d:4626 $db $7a
@@ -1109,11 +1104,11 @@ script_00c6:
     sEND                                               ;; 0d:462c $00
 
 script_00c7:
-    sIF_FLAG_JR wScriptFlags.7, .jr_0d_4637            ;; 0d:462d $08 $87 $00 $06
-    sSET_NPC_TYPES 33                                  ;; 0d:4631 $fc $21
-    sSPAWN_NPC 0                                       ;; 0d:4633 $fd $00
-    sSPAWN_NPC 1                                       ;; 0d:4635 $fd $01
-.jr_0d_4637:
+    sIF_FLAG !wScriptFlags.7                           ;; 0d:462d $08 $87 $00 $06
+      sSET_NPC_TYPES 33                                ;; 0d:4631 $fc $21
+      sSPAWN_NPC 0                                     ;; 0d:4633 $fd $00
+      sSPAWN_NPC 1                                     ;; 0d:4635 $fd $01
+    sENDIF                                             ;; 0d:4637
     sEND                                               ;; 0d:4637 $00
 
 script_00c8:
@@ -1123,10 +1118,10 @@ script_00c9:
     sEND                                               ;; 0d:4639 $00
 
 script_00ca:
-    sIF_FLAG_JR wScriptFlags.7, .jr_0d_4642            ;; 0d:463a $08 $87 $00 $04
-    sSET_NPC_TYPES 34                                  ;; 0d:463e $fc $22
-    sSPAWN_NPC 0                                       ;; 0d:4640 $fd $00
-.jr_0d_4642:
+    sIF_FLAG !wScriptFlags.7                           ;; 0d:463a $08 $87 $00 $04
+      sSET_NPC_TYPES 34                                ;; 0d:463e $fc $22
+      sSPAWN_NPC 0                                     ;; 0d:4640 $fd $00
+    sENDIF                                             ;; 0d:4642
     sEND                                               ;; 0d:4642 $00
 
 script_00cb:
@@ -1136,10 +1131,10 @@ script_00cc:
     sEND                                               ;; 0d:4644 $00
 
 script_00cd:
-    sIF_FLAG_JR wScriptFlags.7, .jr_0d_464d            ;; 0d:4645 $08 $87 $00 $04
-    sSET_NPC_TYPES 34                                  ;; 0d:4649 $fc $22
-    sSPAWN_NPC 1                                       ;; 0d:464b $fd $01
-.jr_0d_464d:
+    sIF_FLAG !wScriptFlags.7                           ;; 0d:4645 $08 $87 $00 $04
+      sSET_NPC_TYPES 34                                ;; 0d:4649 $fc $22
+      sSPAWN_NPC 1                                     ;; 0d:464b $fd $01
+    sENDIF                                             ;; 0d:464d
     sEND                                               ;; 0d:464d $00
 
 script_00ce:
@@ -1149,10 +1144,10 @@ script_00cf:
     sEND                                               ;; 0d:464f $00
 
 script_00d0:
-    sIF_FLAG_JR wScriptFlags.7, .jr_0d_4658            ;; 0d:4650 $08 $87 $00 $04
-    sSET_NPC_TYPES 35                                  ;; 0d:4654 $fc $23
-    sSPAWN_NPC 1                                       ;; 0d:4656 $fd $01
-.jr_0d_4658:
+    sIF_FLAG !wScriptFlags.7                           ;; 0d:4650 $08 $87 $00 $04
+      sSET_NPC_TYPES 35                                ;; 0d:4654 $fc $23
+      sSPAWN_NPC 1                                     ;; 0d:4656 $fd $01
+    sENDIF                                             ;; 0d:4658
     sEND                                               ;; 0d:4658 $00
 
 script_00d1:
@@ -1162,10 +1157,10 @@ script_00d2:
     sEND                                               ;; 0d:465a $00
 
 script_00d3:
-    sIF_FLAG_JR wScriptFlags.7, .jr_0d_4663            ;; 0d:465b $08 $87 $00 $04
-    sSET_NPC_TYPES 35                                  ;; 0d:465f $fc $23
-    sSPAWN_NPC 2                                       ;; 0d:4661 $fd $02
-.jr_0d_4663:
+    sIF_FLAG !wScriptFlags.7                           ;; 0d:465b $08 $87 $00 $04
+      sSET_NPC_TYPES 35                                ;; 0d:465f $fc $23
+      sSPAWN_NPC 2                                     ;; 0d:4661 $fd $02
+    sENDIF                                             ;; 0d:4663
     sEND                                               ;; 0d:4663 $00
 
 script_00d4:
@@ -1176,28 +1171,29 @@ script_00d5:
 
 script_00d6:
     sCLEAR_FLAG wScriptFlags0F.0                       ;; 0d:4666 $db $78
-    sIF_FLAG_JR wScriptFlags.7, .jr_0d_467c            ;; 0d:4668 $08 $87 $00 $10
-    sSET_NPC_TYPES 3                                   ;; 0d:466c $fc $03
-    sIF_FLAG_JR wScriptFlags01.5, .jr_0d_4678          ;; 0d:466e $08 $8d $00 $06
-    sSPAWN_NPC 0                                       ;; 0d:4672 $fd $00
-    sSPAWN_NPC 1                                       ;; 0d:4674 $fd $01
-    sJR  .jr_0d_467c                                   ;; 0d:4676 $01 $04
-.jr_0d_4678:
-    sSPAWN_NPC 2                                       ;; 0d:4678 $fd $02
-    sSPAWN_NPC 2                                       ;; 0d:467a $fd $02
-.jr_0d_467c:
+    sIF_FLAG !wScriptFlags.7                           ;; 0d:4668 $08 $87 $00 $10
+      sSET_NPC_TYPES 3                                 ;; 0d:466c $fc $03
+      sIF_FLAG !wScriptFlags01.5                       ;; 0d:466e $08 $8d $00 $06
+        sSPAWN_NPC 0                                   ;; 0d:4672 $fd $00
+        sSPAWN_NPC 1                                   ;; 0d:4674 $fd $01
+      sELSE                                            ;; 0d:4676 $01 $04
+        sSPAWN_NPC 2                                   ;; 0d:4678 $fd $02
+        sSPAWN_NPC 2                                   ;; 0d:467a $fd $02
+      sENDIF                                           ;; 0d:467c
+    sENDIF                                             ;; 0d:467c
     sEND                                               ;; 0d:467c $00
 
 script_00d7:
     sEND                                               ;; 0d:467d $00
 
 script_00d8:
-    sIF_FLAG_JR !wScriptFlags01.5, .jr_0d_468d         ;; 0d:467e $08 $0d $00 $0b
-    sIF_FLAG_JR wScriptFlags0F.0, .jr_0d_468d          ;; 0d:4682 $08 $f8 $00 $07
-    sSET_NPC_TYPES 89                                  ;; 0d:4686 $fc $59
-    sSPAWN_NPC 0                                       ;; 0d:4688 $fd $00
-    sUNK_C9 $04, $41                                   ;; 0d:468a $c9 $04 $41
-.jr_0d_468d:
+    sIF_FLAG wScriptFlags01.5                          ;; 0d:467e $08 $0d $00 $0b
+      sIF_FLAG !wScriptFlags0F.0                       ;; 0d:4682 $08 $f8 $00 $07
+        sSET_NPC_TYPES 89                              ;; 0d:4686 $fc $59
+        sSPAWN_NPC 0                                   ;; 0d:4688 $fd $00
+        sUNK_C9 $04, $41                               ;; 0d:468a $c9 $04 $41
+      sENDIF                                           ;; 0d:468d
+    sENDIF                                             ;; 0d:468d
     sSET_FLAG wScriptFlags0F.0                         ;; 0d:468d $da $78
     sEND                                               ;; 0d:468f $00
 
@@ -1212,11 +1208,11 @@ script_00da:
     sEND                                               ;; 0d:4698 $00
 
 script_00db:
-    sIF_FLAG_JR wScriptFlags07.1, .jr_0d_46a4          ;; 0d:4699 $08 $b9 $00 $07
-    sSET_NPC_TYPES 89                                  ;; 0d:469d $fc $59
-    sSPAWN_NPC 0                                       ;; 0d:469f $fd $00
-    sUNK_C9 $04, $5f                                   ;; 0d:46a1 $c9 $04 $5f
-.jr_0d_46a4:
+    sIF_FLAG !wScriptFlags07.1                         ;; 0d:4699 $08 $b9 $00 $07
+      sSET_NPC_TYPES 89                                ;; 0d:469d $fc $59
+      sSPAWN_NPC 0                                     ;; 0d:469f $fd $00
+      sUNK_C9 $04, $5f                                 ;; 0d:46a1 $c9 $04 $5f
+    sENDIF                                             ;; 0d:46a4
     sUNK_E0                                            ;; 0d:46a4 $e0
     sEND                                               ;; 0d:46a5 $00
 
@@ -1231,11 +1227,11 @@ script_00dd:
     sEND                                               ;; 0d:46ae $00
 
 script_00de:
-    sIF_FLAG_JR wScriptFlags07.7, .jr_0d_46ba          ;; 0d:46af $08 $bf $00 $07
-    sSET_NPC_TYPES 89                                  ;; 0d:46b3 $fc $59
-    sSPAWN_NPC 0                                       ;; 0d:46b5 $fd $00
-    sUNK_C9 $04, $60                                   ;; 0d:46b7 $c9 $04 $60
-.jr_0d_46ba:
+    sIF_FLAG !wScriptFlags07.7                         ;; 0d:46af $08 $bf $00 $07
+      sSET_NPC_TYPES 89                                ;; 0d:46b3 $fc $59
+      sSPAWN_NPC 0                                     ;; 0d:46b5 $fd $00
+      sUNK_C9 $04, $60                                 ;; 0d:46b7 $c9 $04 $60
+    sENDIF                                             ;; 0d:46ba
     sUNK_E6                                            ;; 0d:46ba $e6
     sEND                                               ;; 0d:46bb $00
 
@@ -1299,30 +1295,28 @@ script_00e7:
     sEND                                               ;; 0d:471d $00
 
 script_00e8:
-    sIF_FLAG_JR !wScriptFlags01.0, .jr_0d_4738         ;; 0d:471e $08 $08 $00 $16
-    sSFX 16                                            ;; 0d:4722 $f9 $10
-    sSET_ROOM_TILE $1f, 4, 0                           ;; 0d:4724 $b0 $1f $04 $00
-    sSET_ROOM_TILE $1f, 5, 0                           ;; 0d:4728 $b0 $1f $05 $00
-    sSET_ROOM_TILE $6a, 4, 1                           ;; 0d:472c $b0 $6a $04 $01
-    sSET_ROOM_TILE $6a, 5, 1                           ;; 0d:4730 $b0 $6a $05 $01
-    sSET_MUSIC 14                                      ;; 0d:4734 $f8 $0e
-    sJR  .jr_0d_473d                                   ;; 0d:4736 $01 $05
-.jr_0d_4738:
-    sDELAY 60                                          ;; 0d:4738 $f0 $3c
-    sCALL script_0531                                  ;; 0d:473a $02 $61 $29
-.jr_0d_473d:
+    sIF_FLAG wScriptFlags01.0                          ;; 0d:471e $08 $08 $00 $16
+      sSFX 16                                          ;; 0d:4722 $f9 $10
+      sSET_ROOM_TILE $1f, 4, 0                         ;; 0d:4724 $b0 $1f $04 $00
+      sSET_ROOM_TILE $1f, 5, 0                         ;; 0d:4728 $b0 $1f $05 $00
+      sSET_ROOM_TILE $6a, 4, 1                         ;; 0d:472c $b0 $6a $04 $01
+      sSET_ROOM_TILE $6a, 5, 1                         ;; 0d:4730 $b0 $6a $05 $01
+      sSET_MUSIC 14                                    ;; 0d:4734 $f8 $0e
+    sELSE                                              ;; 0d:4736 $01 $05
+      sDELAY 60                                        ;; 0d:4738 $f0 $3c
+      sCALL script_0531                                ;; 0d:473a $02 $61 $29
+    sENDIF                                             ;; 0d:473d
     sEND                                               ;; 0d:473d $00
 
 script_00e9:
-    sIF_FLAG_JR !wScriptFlags05.0, .jr_0d_474a         ;; 0d:473e $08 $28 $00 $08
-    sSET_NPC_TYPES 62                                  ;; 0d:4742 $fc $3e
-    sSPAWN_NPC 1                                       ;; 0d:4744 $fd $01
-    sSPAWN_NPC 2                                       ;; 0d:4746 $fd $02
-    sJR  .jr_0d_474e                                   ;; 0d:4748 $01 $04
-.jr_0d_474a:
-    sSET_NPC_TYPES 59                                  ;; 0d:474a $fc $3b
-    sSPAWN_NPC 1                                       ;; 0d:474c $fd $01
-.jr_0d_474e:
+    sIF_FLAG wScriptFlags05.0                          ;; 0d:473e $08 $28 $00 $08
+      sSET_NPC_TYPES 62                                ;; 0d:4742 $fc $3e
+      sSPAWN_NPC 1                                     ;; 0d:4744 $fd $01
+      sSPAWN_NPC 2                                     ;; 0d:4746 $fd $02
+    sELSE                                              ;; 0d:4748 $01 $04
+      sSET_NPC_TYPES 59                                ;; 0d:474a $fc $3b
+      sSPAWN_NPC 1                                     ;; 0d:474c $fd $01
+    sENDIF                                             ;; 0d:474e
     sEND                                               ;; 0d:474e $00
 
 script_00ea:
@@ -1343,20 +1337,20 @@ script_00ee:
     sEND                                               ;; 0d:4757 $00
 
 script_00ef:
-    sIF_FLAG_JR !wScriptFlags05.5, .jr_0d_4762         ;; 0d:4758 $08 $2d $00 $06
-    sCALL script_0543                                  ;; 0d:475c $02 $77 $4e
-    sCALL script_0542                                  ;; 0d:475f $02 $77 $14
-.jr_0d_4762:
-    sIF_FLAG_JR !wScriptFlags05.4, wScriptFlags03.7, .jr_0d_4770 ;; 0d:4762 $08 $2c $9f $00 $09
-    sCALL script_0537                                  ;; 0d:4767 $02 $64 $da
-    sCALL script_0538                                  ;; 0d:476a $02 $66 $80
-    sCALL script_0539                                  ;; 0d:476d $02 $67 $54
-.jr_0d_4770:
-    sIF_FLAG_JR wScriptFlags01.1, .jr_0d_477d          ;; 0d:4770 $08 $89 $00 $09
-    sCALL script_0534                                  ;; 0d:4774 $02 $62 $b2
-    sCALL script_0535                                  ;; 0d:4777 $02 $63 $de
-    sCALL script_0536                                  ;; 0d:477a $02 $64 $3a
-.jr_0d_477d:
+    sIF_FLAG wScriptFlags05.5                          ;; 0d:4758 $08 $2d $00 $06
+      sCALL script_0543                                ;; 0d:475c $02 $77 $4e
+      sCALL script_0542                                ;; 0d:475f $02 $77 $14
+    sENDIF                                             ;; 0d:4762
+    sIF_FLAG wScriptFlags05.4, !wScriptFlags03.7       ;; 0d:4762 $08 $2c $9f $00 $09
+      sCALL script_0537                                ;; 0d:4767 $02 $64 $da
+      sCALL script_0538                                ;; 0d:476a $02 $66 $80
+      sCALL script_0539                                ;; 0d:476d $02 $67 $54
+    sENDIF                                             ;; 0d:4770
+    sIF_FLAG !wScriptFlags01.1                         ;; 0d:4770 $08 $89 $00 $09
+      sCALL script_0534                                ;; 0d:4774 $02 $62 $b2
+      sCALL script_0535                                ;; 0d:4777 $02 $63 $de
+      sCALL script_0536                                ;; 0d:477a $02 $64 $3a
+    sENDIF                                             ;; 0d:477d
     sEND                                               ;; 0d:477d $00
 
 script_00f0:
@@ -1376,44 +1370,44 @@ script_00f3:
     sEND                                               ;; 0d:4788 $00
 
 script_00f4:
-    sIF_FLAG_JR wScriptFlags07.4, .jr_0d_4794          ;; 0d:4789 $08 $bc $00 $07
-    sSET_NPC_TYPES 89                                  ;; 0d:478d $fc $59
-    sSPAWN_NPC 0                                       ;; 0d:478f $fd $00
-    sUNK_C9 $04, $63                                   ;; 0d:4791 $c9 $04 $63
-.jr_0d_4794:
+    sIF_FLAG !wScriptFlags07.4                         ;; 0d:4789 $08 $bc $00 $07
+      sSET_NPC_TYPES 89                                ;; 0d:478d $fc $59
+      sSPAWN_NPC 0                                     ;; 0d:478f $fd $00
+      sUNK_C9 $04, $63                                 ;; 0d:4791 $c9 $04 $63
+    sENDIF                                             ;; 0d:4794
     sUNK_E6                                            ;; 0d:4794 $e6
     sEND                                               ;; 0d:4795 $00
 
 script_00f5:
-    sIF_FLAG_JR wScriptFlags01.3, .jr_0d_47a0          ;; 0d:4796 $08 $8b $00 $06
-    sSET_NPC_TYPES 42                                  ;; 0d:479a $fc $2a
-    sSPAWN_NPC 0                                       ;; 0d:479c $fd $00
-    sSPAWN_NPC 2                                       ;; 0d:479e $fd $02
-.jr_0d_47a0:
-    sIF_FLAG_JR wScriptFlags01.2, .jr_0d_47bd          ;; 0d:47a0 $08 $8a $00 $19
-    sSET_MUSIC 0                                       ;; 0d:47a4 $f8 $00
-    sSPAWN_NPC 1                                       ;; 0d:47a6 $fd $01
-    sMSG                                               ;; 0d:47a8 $04
-      db "<10> HELP!\n H E L P!!<12>"
+    sIF_FLAG !wScriptFlags01.3                         ;; 0d:4796 $08 $8b $00 $06
+      sSET_NPC_TYPES 42                                ;; 0d:479a $fc $2a
+      sSPAWN_NPC 0                                     ;; 0d:479c $fd $00
+      sSPAWN_NPC 2                                     ;; 0d:479e $fd $02
+    sENDIF                                             ;; 0d:47a0
+    sIF_FLAG !wScriptFlags01.2                         ;; 0d:47a0 $08 $8a $00 $19
+      sSET_MUSIC 0                                     ;; 0d:47a4 $f8 $00
+      sSPAWN_NPC 1                                     ;; 0d:47a6 $fd $01
+      sMSG                                             ;; 0d:47a8 $04
+        db "<10> HELP!\n H E L P!!<12>"
       db "<11>", $00 ;; 0d:47a9
-    sSET_MUSIC 26                                      ;; 0d:47bb $f8 $1a
-.jr_0d_47bd:
-    sIF_FLAG_JR !wScriptFlags01.3, .jr_0d_47c4         ;; 0d:47bd $08 $0b $00 $03
-    sCALL script_0043                                  ;; 0d:47c1 $02 $03 $ec
-.jr_0d_47c4:
+      sSET_MUSIC 26                                    ;; 0d:47bb $f8 $1a
+    sENDIF                                             ;; 0d:47bd
+    sIF_FLAG wScriptFlags01.3                          ;; 0d:47bd $08 $0b $00 $03
+      sCALL script_0043                                ;; 0d:47c1 $02 $03 $ec
+    sENDIF                                             ;; 0d:47c4
     sEND                                               ;; 0d:47c4 $00
 
 script_00f6:
-    sIF_FLAG_JR wScriptFlags01.3, .jr_0d_47cb          ;; 0d:47c5 $08 $8b $00 $02
-    sSET_MUSIC 20                                      ;; 0d:47c9 $f8 $14
-.jr_0d_47cb:
+    sIF_FLAG !wScriptFlags01.3                         ;; 0d:47c5 $08 $8b $00 $02
+      sSET_MUSIC 20                                    ;; 0d:47c9 $f8 $14
+    sENDIF                                             ;; 0d:47cb
     sEND                                               ;; 0d:47cb $00
 
 script_00f7:
-    sIF_FLAG_JR wScriptFlags01.2, .jr_0d_47d4          ;; 0d:47cc $08 $8a $00 $04
-    sSET_MUSIC 0                                       ;; 0d:47d0 $f8 $00
-    sSET_FLAG wScriptFlags01.2                         ;; 0d:47d2 $da $0a
-.jr_0d_47d4:
+    sIF_FLAG !wScriptFlags01.2                         ;; 0d:47cc $08 $8a $00 $04
+      sSET_MUSIC 0                                     ;; 0d:47d0 $f8 $00
+      sSET_FLAG wScriptFlags01.2                       ;; 0d:47d2 $da $0a
+    sENDIF                                             ;; 0d:47d4
     sEND                                               ;; 0d:47d4 $00
 
 script_00f8:
@@ -1460,11 +1454,11 @@ script_0102:
     sEND                                               ;; 0d:47f3 $00
 
 script_0103:
-    sIF_FLAG_JR wScriptFlags07.6, .jr_0d_47ff          ;; 0d:47f4 $08 $be $00 $07
-    sSET_NPC_TYPES 89                                  ;; 0d:47f8 $fc $59
-    sSPAWN_NPC 0                                       ;; 0d:47fa $fd $00
-    sUNK_C9 $04, $61                                   ;; 0d:47fc $c9 $04 $61
-.jr_0d_47ff:
+    sIF_FLAG !wScriptFlags07.6                         ;; 0d:47f4 $08 $be $00 $07
+      sSET_NPC_TYPES 89                                ;; 0d:47f8 $fc $59
+      sSPAWN_NPC 0                                     ;; 0d:47fa $fd $00
+      sUNK_C9 $04, $61                                 ;; 0d:47fc $c9 $04 $61
+    sENDIF                                             ;; 0d:47ff
     sEND                                               ;; 0d:47ff $00
 
 script_0104:
@@ -1474,24 +1468,24 @@ script_0105:
     sEND                                               ;; 0d:4801 $00
 
 script_0106:
-    sIF_FLAG_JR wScriptFlags02.0, .jr_0d_480c          ;; 0d:4802 $08 $90 $00 $06
-    sSET_NPC_TYPES 51                                  ;; 0d:4806 $fc $33
-    sSPAWN_NPC 0                                       ;; 0d:4808 $fd $00
-    sSPAWN_NPC 1                                       ;; 0d:480a $fd $01
-.jr_0d_480c:
-    sIF_FLAG_JR !wScriptFlags02.0, wScriptFlags02.1, .jr_0d_481b ;; 0d:480c $08 $10 $91 $00 $0a
-    sSET_NPC_TYPES 0                                   ;; 0d:4811 $fc $00
-    sSPAWN_NPC 0                                       ;; 0d:4813 $fd $00
-    sSPAWN_NPC 1                                       ;; 0d:4815 $fd $01
-    sFLASH_SCREEN                                      ;; 0d:4817 $bf
-    sSFX 20                                            ;; 0d:4818 $f9 $14
-    sFLASH_SCREEN                                      ;; 0d:481a $bf
-.jr_0d_481b:
-    sIF_FLAG_JR !wScriptFlags02.1, .jr_0d_4825         ;; 0d:481b $08 $11 $00 $06
-    sSET_NPC_TYPES 51                                  ;; 0d:481f $fc $33
-    sSPAWN_NPC 0                                       ;; 0d:4821 $fd $00
-    sSPAWN_NPC 1                                       ;; 0d:4823 $fd $01
-.jr_0d_4825:
+    sIF_FLAG !wScriptFlags02.0                         ;; 0d:4802 $08 $90 $00 $06
+      sSET_NPC_TYPES 51                                ;; 0d:4806 $fc $33
+      sSPAWN_NPC 0                                     ;; 0d:4808 $fd $00
+      sSPAWN_NPC 1                                     ;; 0d:480a $fd $01
+    sENDIF                                             ;; 0d:480c
+    sIF_FLAG wScriptFlags02.0, !wScriptFlags02.1       ;; 0d:480c $08 $10 $91 $00 $0a
+      sSET_NPC_TYPES 0                                 ;; 0d:4811 $fc $00
+      sSPAWN_NPC 0                                     ;; 0d:4813 $fd $00
+      sSPAWN_NPC 1                                     ;; 0d:4815 $fd $01
+      sFLASH_SCREEN                                    ;; 0d:4817 $bf
+      sSFX 20                                          ;; 0d:4818 $f9 $14
+      sFLASH_SCREEN                                    ;; 0d:481a $bf
+    sENDIF                                             ;; 0d:481b
+    sIF_FLAG wScriptFlags02.1                          ;; 0d:481b $08 $11 $00 $06
+      sSET_NPC_TYPES 51                                ;; 0d:481f $fc $33
+      sSPAWN_NPC 0                                     ;; 0d:4821 $fd $00
+      sSPAWN_NPC 1                                     ;; 0d:4823 $fd $01
+    sENDIF                                             ;; 0d:4825
     sEND                                               ;; 0d:4825 $00
 
 script_0107:
@@ -1501,22 +1495,22 @@ script_0108:
     sEND                                               ;; 0d:4827 $00
 
 script_0109:
-    sIF_FLAG_JR wScriptFlags02.0, .jr_0d_4830          ;; 0d:4828 $08 $90 $00 $04
-    sSET_NPC_TYPES 52                                  ;; 0d:482c $fc $34
-    sSPAWN_NPC 0                                       ;; 0d:482e $fd $00
-.jr_0d_4830:
-    sIF_FLAG_JR !wScriptFlags02.0, wScriptFlags02.1, .jr_0d_483f ;; 0d:4830 $08 $10 $91 $00 $0a
-    sSET_NPC_TYPES 0                                   ;; 0d:4835 $fc $00
-    sSPAWN_NPC 0                                       ;; 0d:4837 $fd $00
-    sSPAWN_NPC 1                                       ;; 0d:4839 $fd $01
-    sSFX 20                                            ;; 0d:483b $f9 $14
-    sFLASH_SCREEN                                      ;; 0d:483d $bf
-    sFLASH_SCREEN                                      ;; 0d:483e $bf
-.jr_0d_483f:
-    sIF_FLAG_JR !wScriptFlags02.1, .jr_0d_4847         ;; 0d:483f $08 $11 $00 $04
-    sSET_NPC_TYPES 52                                  ;; 0d:4843 $fc $34
-    sSPAWN_NPC 0                                       ;; 0d:4845 $fd $00
-.jr_0d_4847:
+    sIF_FLAG !wScriptFlags02.0                         ;; 0d:4828 $08 $90 $00 $04
+      sSET_NPC_TYPES 52                                ;; 0d:482c $fc $34
+      sSPAWN_NPC 0                                     ;; 0d:482e $fd $00
+    sENDIF                                             ;; 0d:4830
+    sIF_FLAG wScriptFlags02.0, !wScriptFlags02.1       ;; 0d:4830 $08 $10 $91 $00 $0a
+      sSET_NPC_TYPES 0                                 ;; 0d:4835 $fc $00
+      sSPAWN_NPC 0                                     ;; 0d:4837 $fd $00
+      sSPAWN_NPC 1                                     ;; 0d:4839 $fd $01
+      sSFX 20                                          ;; 0d:483b $f9 $14
+      sFLASH_SCREEN                                    ;; 0d:483d $bf
+      sFLASH_SCREEN                                    ;; 0d:483e $bf
+    sENDIF                                             ;; 0d:483f
+    sIF_FLAG wScriptFlags02.1                          ;; 0d:483f $08 $11 $00 $04
+      sSET_NPC_TYPES 52                                ;; 0d:4843 $fc $34
+      sSPAWN_NPC 0                                     ;; 0d:4845 $fd $00
+    sENDIF                                             ;; 0d:4847
     sEND                                               ;; 0d:4847 $00
 
 script_010a:
@@ -1526,10 +1520,10 @@ script_010b:
     sEND                                               ;; 0d:4849 $00
 
 script_010c:
-    sIF_FLAG_JR !wScriptFlags02.0, wScriptFlags02.1, .jr_0d_4853 ;; 0d:484a $08 $10 $91 $00 $04
-    sSET_NPC_TYPES 36                                  ;; 0d:484f $fc $24
-    sSPAWN_NPC 2                                       ;; 0d:4851 $fd $02
-.jr_0d_4853:
+    sIF_FLAG wScriptFlags02.0, !wScriptFlags02.1       ;; 0d:484a $08 $10 $91 $00 $04
+      sSET_NPC_TYPES 36                                ;; 0d:484f $fc $24
+      sSPAWN_NPC 2                                     ;; 0d:4851 $fd $02
+    sENDIF                                             ;; 0d:4853
     sEND                                               ;; 0d:4853 $00
 
 script_010d:
@@ -1540,76 +1534,76 @@ script_010e:
 
 script_010f:
     sSET_NPC_TYPES 55                                  ;; 0d:4856 $fc $37
-    sIF_FLAG_JR !wScriptFlags02.0, wScriptFlags03.7, .jr_0d_485f ;; 0d:4858 $08 $10 $9f $00 $02
-    sSPAWN_NPC 2                                       ;; 0d:485d $fd $02
-.jr_0d_485f:
-    sIF_FLAG_JR wScriptFlags02.0, .jr_0d_4921          ;; 0d:485f $08 $90 $00 $be
-    sFOLLOWER_DIRECTION_UP                             ;; 0d:4863 $94
-    sFOLLOWER_SET_POSITION 9, 14                       ;; 0d:4864 $99 $09 $0e
-    sSPAWN_NPC 2                                       ;; 0d:4867 $fd $02
-    sSET_PLAYER_DIRECTION_UP                           ;; 0d:4869 $84
-    sSET_PLAYER_POSITION 9, 14                         ;; 0d:486a $8a $09 $0e
-    sPLAYER_STEP_FORWARD                               ;; 0d:486d $80
-    sPLAYER_STEP_FORWARD                               ;; 0d:486e $80
-    sSET_PLAYER_DIRECTION_LEFT                         ;; 0d:486f $87
-    sLOOP 3, 2                                         ;; 0d:4870 $03 $03 $02
-      sPLAYER_STEP_FORWARD                             ;; 0d:4873 $80
-    sEND                                               ;; 0d:4874 $00
-    sSET_PLAYER_DIRECTION_RIGHT                        ;; 0d:4875 $86
-    sSET_NPC_1_DIRECTION_LEFT                          ;; 0d:4876 $17
-    sNPC_1_STEP_FORWARD                                ;; 0d:4877 $10
-    sSET_NPC_1_DIRECTION_DOWN                          ;; 0d:4878 $15
-    sLOOP 6, 2                                         ;; 0d:4879 $03 $06 $02
-      sNPC_1_STEP_FORWARD                              ;; 0d:487c $10
-    sEND                                               ;; 0d:487d $00
-    sMSG                                               ;; 0d:487e $04
-      db "<10>Cibba:I am Cibba.\n Bogard told me\n about you.<12>"
+    sIF_FLAG wScriptFlags02.0, !wScriptFlags03.7       ;; 0d:4858 $08 $10 $9f $00 $02
+      sSPAWN_NPC 2                                     ;; 0d:485d $fd $02
+    sENDIF                                             ;; 0d:485f
+    sIF_FLAG !wScriptFlags02.0                         ;; 0d:485f $08 $90 $00 $be
+      sFOLLOWER_DIRECTION_UP                           ;; 0d:4863 $94
+      sFOLLOWER_SET_POSITION 9, 14                     ;; 0d:4864 $99 $09 $0e
+      sSPAWN_NPC 2                                     ;; 0d:4867 $fd $02
+      sSET_PLAYER_DIRECTION_UP                         ;; 0d:4869 $84
+      sSET_PLAYER_POSITION 9, 14                       ;; 0d:486a $8a $09 $0e
+      sPLAYER_STEP_FORWARD                             ;; 0d:486d $80
+      sPLAYER_STEP_FORWARD                             ;; 0d:486e $80
+      sSET_PLAYER_DIRECTION_LEFT                       ;; 0d:486f $87
+      sLOOP 3, 2                                       ;; 0d:4870 $03 $03 $02
+        sPLAYER_STEP_FORWARD                           ;; 0d:4873 $80
+      sEND                                             ;; 0d:4874 $00
+      sSET_PLAYER_DIRECTION_RIGHT                      ;; 0d:4875 $86
+      sSET_NPC_1_DIRECTION_LEFT                        ;; 0d:4876 $17
+      sNPC_1_STEP_FORWARD                              ;; 0d:4877 $10
+      sSET_NPC_1_DIRECTION_DOWN                        ;; 0d:4878 $15
+      sLOOP 6, 2                                       ;; 0d:4879 $03 $06 $02
+        sNPC_1_STEP_FORWARD                            ;; 0d:487c $10
+      sEND                                             ;; 0d:487d $00
+      sMSG                                             ;; 0d:487e $04
+        db "<10>Cibba:I am Cibba.\n Bogard told me\n about you.<12>"
       db "<1b> __ Oh, yes!\n It sure is the\n symbol of Mana.<12>"
       db "<1b> Step forward.\n You'll see what\n you must see.<12>"
       db "<11>", $00 ;; 0d:487f
-    sSET_NPC_1_DIRECTION_LEFT                          ;; 0d:48e1 $17
-    sLOOP 3, 2                                         ;; 0d:48e2 $03 $03 $02
-      sNPC_1_STEP_BACKWARDS                            ;; 0d:48e5 $11
-    sEND                                               ;; 0d:48e6 $00
-    sLOOP 4, 2                                         ;; 0d:48e7 $03 $04 $02
-      sFOLLOWER_STEP_FORWARD                           ;; 0d:48ea $90
-    sEND                                               ;; 0d:48eb $00
-    sDELAY 20                                          ;; 0d:48ec $f0 $14
-    sFOLLOWER_STEP_FORWARD                             ;; 0d:48ee $90
-    sDELAY 10                                          ;; 0d:48ef $f0 $0a
-    sFOLLOWER_STEP_FORWARD                             ;; 0d:48f1 $90
-    sDELAY 10                                          ;; 0d:48f2 $f0 $0a
-    sFOLLOWER_STEP_FORWARD                             ;; 0d:48f4 $90
-    sSET_PLAYER_DIRECTION_LEFT                         ;; 0d:48f5 $87
-    sSET_NPC_1_DIRECTION_RIGHT                         ;; 0d:48f6 $16
-    sPLAYER_STEP_FORWARD                               ;; 0d:48f7 $80
-    sNPC_1_STEP_FORWARD                                ;; 0d:48f8 $10
-    sPLAYER_STEP_FORWARD                               ;; 0d:48f9 $80
-    sNPC_1_STEP_FORWARD                                ;; 0d:48fa $10
-    sSET_PLAYER_DIRECTION_UP                           ;; 0d:48fb $84
-    sSET_NPC_1_DIRECTION_UP                            ;; 0d:48fc $14
-    sLOOP 6, 3                                         ;; 0d:48fd $03 $06 $03
-      sPLAYER_STEP_FORWARD                             ;; 0d:4900 $80
-      sNPC_1_STEP_FORWARD                              ;; 0d:4901 $10
-    sEND                                               ;; 0d:4902 $00
-    sSET_MUSIC 0                                       ;; 0d:4903 $f8 $00
-    sDELAY 60                                          ;; 0d:4905 $f0 $3c
-    sFLASH_SCREEN                                      ;; 0d:4907 $bf
-    sSFX 20                                            ;; 0d:4908 $f9 $14
-    sFLASH_SCREEN                                      ;; 0d:490a $bf
-    sDELAY 20                                          ;; 0d:490b $f0 $14
-    sSFX 37                                            ;; 0d:490d $f9 $25
-    sLOOP 5, 2                                         ;; 0d:490f $03 $05 $02
-      sFLASH_SCREEN                                    ;; 0d:4912 $bf
-    sEND                                               ;; 0d:4913 $00
-    sFADE_TO_BLACK                                     ;; 0d:4914 $bd
-    sDELAY 40                                          ;; 0d:4915 $f0 $28
-    sSET_MUSIC 3                                       ;; 0d:4917 $f8 $03
-    sDELAY 200                                         ;; 0d:4919 $f0 $c8
-    sSPAWN_NPC 1                                       ;; 0d:491b $fd $01
-    sFADE_TO_NORMAL                                    ;; 0d:491d $bc
-    sCALL script_053a                                  ;; 0d:491e $02 $68 $e9
-.jr_0d_4921:
+      sSET_NPC_1_DIRECTION_LEFT                        ;; 0d:48e1 $17
+      sLOOP 3, 2                                       ;; 0d:48e2 $03 $03 $02
+        sNPC_1_STEP_BACKWARDS                          ;; 0d:48e5 $11
+      sEND                                             ;; 0d:48e6 $00
+      sLOOP 4, 2                                       ;; 0d:48e7 $03 $04 $02
+        sFOLLOWER_STEP_FORWARD                         ;; 0d:48ea $90
+      sEND                                             ;; 0d:48eb $00
+      sDELAY 20                                        ;; 0d:48ec $f0 $14
+      sFOLLOWER_STEP_FORWARD                           ;; 0d:48ee $90
+      sDELAY 10                                        ;; 0d:48ef $f0 $0a
+      sFOLLOWER_STEP_FORWARD                           ;; 0d:48f1 $90
+      sDELAY 10                                        ;; 0d:48f2 $f0 $0a
+      sFOLLOWER_STEP_FORWARD                           ;; 0d:48f4 $90
+      sSET_PLAYER_DIRECTION_LEFT                       ;; 0d:48f5 $87
+      sSET_NPC_1_DIRECTION_RIGHT                       ;; 0d:48f6 $16
+      sPLAYER_STEP_FORWARD                             ;; 0d:48f7 $80
+      sNPC_1_STEP_FORWARD                              ;; 0d:48f8 $10
+      sPLAYER_STEP_FORWARD                             ;; 0d:48f9 $80
+      sNPC_1_STEP_FORWARD                              ;; 0d:48fa $10
+      sSET_PLAYER_DIRECTION_UP                         ;; 0d:48fb $84
+      sSET_NPC_1_DIRECTION_UP                          ;; 0d:48fc $14
+      sLOOP 6, 3                                       ;; 0d:48fd $03 $06 $03
+        sPLAYER_STEP_FORWARD                           ;; 0d:4900 $80
+        sNPC_1_STEP_FORWARD                            ;; 0d:4901 $10
+      sEND                                             ;; 0d:4902 $00
+      sSET_MUSIC 0                                     ;; 0d:4903 $f8 $00
+      sDELAY 60                                        ;; 0d:4905 $f0 $3c
+      sFLASH_SCREEN                                    ;; 0d:4907 $bf
+      sSFX 20                                          ;; 0d:4908 $f9 $14
+      sFLASH_SCREEN                                    ;; 0d:490a $bf
+      sDELAY 20                                        ;; 0d:490b $f0 $14
+      sSFX 37                                          ;; 0d:490d $f9 $25
+      sLOOP 5, 2                                       ;; 0d:490f $03 $05 $02
+        sFLASH_SCREEN                                  ;; 0d:4912 $bf
+      sEND                                             ;; 0d:4913 $00
+      sFADE_TO_BLACK                                   ;; 0d:4914 $bd
+      sDELAY 40                                        ;; 0d:4915 $f0 $28
+      sSET_MUSIC 3                                     ;; 0d:4917 $f8 $03
+      sDELAY 200                                       ;; 0d:4919 $f0 $c8
+      sSPAWN_NPC 1                                     ;; 0d:491b $fd $01
+      sFADE_TO_NORMAL                                  ;; 0d:491d $bc
+      sCALL script_053a                                ;; 0d:491e $02 $68 $e9
+    sENDIF                                             ;; 0d:4921
     sEND                                               ;; 0d:4921 $00
 
 script_0110:
@@ -1654,10 +1648,10 @@ script_011a:
     sEND                                               ;; 0d:493c $00
 
 script_011b:
-    sIF_FLAG_JR !wScriptFlags04.6, .jr_0d_4945         ;; 0d:493d $08 $26 $00 $04
-    sSET_NPC_TYPES 48                                  ;; 0d:4941 $fc $30
-    sSPAWN_NPC 0                                       ;; 0d:4943 $fd $00
-.jr_0d_4945:
+    sIF_FLAG wScriptFlags04.6                          ;; 0d:493d $08 $26 $00 $04
+      sSET_NPC_TYPES 48                                ;; 0d:4941 $fc $30
+      sSPAWN_NPC 0                                     ;; 0d:4943 $fd $00
+    sENDIF                                             ;; 0d:4945
     sEND                                               ;; 0d:4945 $00
 
 script_011c:
@@ -1667,107 +1661,105 @@ script_011d:
     sEND                                               ;; 0d:4947 $00
 
 script_011e:
-    sIF_FLAG_JR wScriptFlags03.0, .jr_0d_495b          ;; 0d:4948 $08 $98 $00 $0f
-    sSET_MUSIC 15                                      ;; 0d:494c $f8 $0f
-    sSET_NPC_TYPES 108                                 ;; 0d:494e $fc $6c
-    sLOOP 5, 4                                         ;; 0d:4950 $03 $05 $04
-      sSFX 20                                          ;; 0d:4953 $f9 $14
-      sFLASH_SCREEN                                    ;; 0d:4955 $bf
-    sEND                                               ;; 0d:4956 $00
-    sSPAWN_NPC 0                                       ;; 0d:4957 $fd $00
-    sJR  .jr_0d_498d                                   ;; 0d:4959 $01 $32
-.jr_0d_495b:
-    sLOOP 3, 4                                         ;; 0d:495b $03 $03 $04
-      sSFX 20                                          ;; 0d:495e $f9 $14
-      sFLASH_SCREEN                                    ;; 0d:4960 $bf
-    sEND                                               ;; 0d:4961 $00
-    sMSG                                               ;; 0d:4962 $04
-      db "<10>Julius:See the\n true power of\n Mana now!<12>"
+    sIF_FLAG !wScriptFlags03.0                         ;; 0d:4948 $08 $98 $00 $0f
+      sSET_MUSIC 15                                    ;; 0d:494c $f8 $0f
+      sSET_NPC_TYPES 108                               ;; 0d:494e $fc $6c
+      sLOOP 5, 4                                       ;; 0d:4950 $03 $05 $04
+        sSFX 20                                        ;; 0d:4953 $f9 $14
+        sFLASH_SCREEN                                  ;; 0d:4955 $bf
+      sEND                                             ;; 0d:4956 $00
+      sSPAWN_NPC 0                                     ;; 0d:4957 $fd $00
+    sELSE                                              ;; 0d:4959 $01 $32
+      sLOOP 3, 4                                       ;; 0d:495b $03 $03 $04
+        sSFX 20                                        ;; 0d:495e $f9 $14
+        sFLASH_SCREEN                                  ;; 0d:4960 $bf
+      sEND                                             ;; 0d:4961 $00
+      sMSG                                             ;; 0d:4962 $04
+        db "<10>Julius:See the\n true power of\n Mana now!<12>"
       db "<11>", $00 ;; 0d:4963
-    sLOOP 5, 4                                         ;; 0d:4982 $03 $05 $04
-      sSFX 20                                          ;; 0d:4985 $f9 $14
-      sFLASH_SCREEN                                    ;; 0d:4987 $bf
-    sEND                                               ;; 0d:4988 $00
-    sSPAWN_BOSS 14                                     ;; 0d:4989 $fe $0e
-    sSET_MUSIC 19                                      ;; 0d:498b $f8 $13
-.jr_0d_498d:
+      sLOOP 5, 4                                       ;; 0d:4982 $03 $05 $04
+        sSFX 20                                        ;; 0d:4985 $f9 $14
+        sFLASH_SCREEN                                  ;; 0d:4987 $bf
+      sEND                                             ;; 0d:4988 $00
+      sSPAWN_BOSS 14                                   ;; 0d:4989 $fe $0e
+      sSET_MUSIC 19                                    ;; 0d:498b $f8 $13
+    sENDIF                                             ;; 0d:498d
     sEND                                               ;; 0d:498d $00
 
 script_011f:
     sEND                                               ;; 0d:498e $00
 
 script_0120:
-    sIF_FLAG_JR wScriptFlags03.0, .jr_0d_49b3          ;; 0d:498f $08 $98 $00 $20
-    sSET_MUSIC 0                                       ;; 0d:4993 $f8 $00
-    sSFX 34                                            ;; 0d:4995 $f9 $22
-    sSET_FLAG wScriptFlags03.0                         ;; 0d:4997 $da $18
-    sDELAY 60                                          ;; 0d:4999 $f0 $3c
-    sMSG                                               ;; 0d:499b $04
-      db "<10> Defeated Julius.<12>"
+    sIF_FLAG !wScriptFlags03.0                         ;; 0d:498f $08 $98 $00 $20
+      sSET_MUSIC 0                                     ;; 0d:4993 $f8 $00
+      sSFX 34                                          ;; 0d:4995 $f9 $22
+      sSET_FLAG wScriptFlags03.0                       ;; 0d:4997 $da $18
+      sDELAY 60                                        ;; 0d:4999 $f0 $3c
+      sMSG                                             ;; 0d:499b $04
+        db "<10> Defeated Julius.<12>"
       db "<11>", $00 ;; 0d:499c
-    sDELAY 30                                          ;; 0d:49ac $f0 $1e
-    sCALL script_011e                                  ;; 0d:49ae $02 $09 $48
-    sJR  .jr_0d_4a65                                   ;; 0d:49b1 $01 $b2
-.jr_0d_49b3:
-    sSET_MUSIC 0                                       ;; 0d:49b3 $f8 $00
-    sSFX 34                                            ;; 0d:49b5 $f9 $22
-    sDELAY 20                                          ;; 0d:49b7 $f0 $14
-    sMSG                                               ;; 0d:49b9 $04
-      db "<10>Julius:GRRRR", $00                       ;; 0d:49ba
-    sDELAY 30                                          ;; 0d:49c6 $f0 $1e
-    sMSG                                               ;; 0d:49c8 $04
-      db " __<12>"
-      db "<11>", $00                ;; 0d:49c9
-    sDELAY 60                                          ;; 0d:49ce $f0 $3c
-    sFADE_TO_BLACK                                     ;; 0d:49d0 $bd
-    sLOAD_ROOM_INSTANT 15, $50, 8, 10                  ;; 0d:49d1 $f3 $0f $50 $08 $0a
-    sSET_NPC_TYPES 50                                  ;; 0d:49d6 $fc $32
-    sSPAWN_NPC 1                                       ;; 0d:49d8 $fd $01
-    sSET_PLAYER_POSITION 8, 10                         ;; 0d:49da $8a $08 $0a
-    sSET_PLAYER_DIRECTION_RIGHT                        ;; 0d:49dd $86
-    sFADE_TO_NORMAL                                    ;; 0d:49de $bc
-    sDELAY 100                                         ;; 0d:49df $f0 $64
-    sMSG                                               ;; 0d:49e1 $04
-      db "<10><GIRL>:__ <BOY>.\n<BOY>:Are you\n okay, <GIRL>?<12>"
+      sDELAY 30                                        ;; 0d:49ac $f0 $1e
+      sCALL script_011e                                ;; 0d:49ae $02 $09 $48
+    sELSE                                              ;; 0d:49b1 $01 $b2
+      sSET_MUSIC 0                                     ;; 0d:49b3 $f8 $00
+      sSFX 34                                          ;; 0d:49b5 $f9 $22
+      sDELAY 20                                        ;; 0d:49b7 $f0 $14
+      sMSG                                             ;; 0d:49b9 $04
+        db "<10>Julius:GRRRR", $00                     ;; 0d:49ba
+      sDELAY 30                                        ;; 0d:49c6 $f0 $1e
+      sMSG                                             ;; 0d:49c8 $04
+        db " __<12>"
+      db "<11>", $00              ;; 0d:49c9
+      sDELAY 60                                        ;; 0d:49ce $f0 $3c
+      sFADE_TO_BLACK                                   ;; 0d:49d0 $bd
+      sLOAD_ROOM_INSTANT 15, $50, 8, 10                ;; 0d:49d1 $f3 $0f $50 $08 $0a
+      sSET_NPC_TYPES 50                                ;; 0d:49d6 $fc $32
+      sSPAWN_NPC 1                                     ;; 0d:49d8 $fd $01
+      sSET_PLAYER_POSITION 8, 10                       ;; 0d:49da $8a $08 $0a
+      sSET_PLAYER_DIRECTION_RIGHT                      ;; 0d:49dd $86
+      sFADE_TO_NORMAL                                  ;; 0d:49de $bc
+      sDELAY 100                                       ;; 0d:49df $f0 $64
+      sMSG                                             ;; 0d:49e1 $04
+        db "<10><GIRL>:__ <BOY>.\n<BOY>:Are you\n okay, <GIRL>?<12>"
       db "<1b><BOY>:I defeated\n Julius.\n It's all over.<12>"
       db "<11>", $00 ;; 0d:49e2
-    sDELAY 60                                          ;; 0d:4a17 $f0 $3c
-    sMSG                                               ;; 0d:4a19 $04
-      db "<10>Julius:__ No!!\n __ It is not!<12>"
+      sDELAY 60                                        ;; 0d:4a17 $f0 $3c
+      sMSG                                             ;; 0d:4a19 $04
+        db "<10>Julius:__ No!!\n __ It is not!<12>"
       db "<11>", $00 ;; 0d:4a1a
-    sSET_PLAYER_DIRECTION_UP                           ;; 0d:4a33 $84
-    sSET_NPC_1_DIRECTION_UP                            ;; 0d:4a34 $14
-    sLOOP 5, 4                                         ;; 0d:4a35 $03 $05 $04
-      sSFX 20                                          ;; 0d:4a38 $f9 $14
-      sFLASH_SCREEN                                    ;; 0d:4a3a $bf
-    sEND                                               ;; 0d:4a3b $00
-    sDELAY 40                                          ;; 0d:4a3c $f0 $28
-    sMSG                                               ;; 0d:4a3e $04
-      db "<10>Julius:<BOY>!\n You will never\n leave here alive!<12>"
+      sSET_PLAYER_DIRECTION_UP                         ;; 0d:4a33 $84
+      sSET_NPC_1_DIRECTION_UP                          ;; 0d:4a34 $14
+      sLOOP 5, 4                                       ;; 0d:4a35 $03 $05 $04
+        sSFX 20                                        ;; 0d:4a38 $f9 $14
+        sFLASH_SCREEN                                  ;; 0d:4a3a $bf
+      sEND                                             ;; 0d:4a3b $00
+      sDELAY 40                                        ;; 0d:4a3c $f0 $28
+      sMSG                                             ;; 0d:4a3e $04
+        db "<10>Julius:<BOY>!\n You will never\n leave here alive!<12>"
       db "<11>", $00 ;; 0d:4a3f
-    sGIVE_FOLLOWER 1                                   ;; 0d:4a60 $9c $01
-    sSET_FLAG wScriptFlags0A.1                         ;; 0d:4a62 $da $51
-    sRUN_ROOM_SCRIPT                                   ;; 0d:4a64 $ec
-.jr_0d_4a65:
+      sGIVE_FOLLOWER 1                                 ;; 0d:4a60 $9c $01
+      sSET_FLAG wScriptFlags0A.1                       ;; 0d:4a62 $da $51
+      sRUN_ROOM_SCRIPT                                 ;; 0d:4a64 $ec
+    sENDIF                                             ;; 0d:4a65
     sEND                                               ;; 0d:4a65 $00
 
 script_0121:
-    sIF_FLAG_JR wScriptFlags02.0, .jr_0d_4a6e          ;; 0d:4a66 $08 $90 $00 $04
-    sSET_NPC_TYPES 55                                  ;; 0d:4a6a $fc $37
-    sSPAWN_NPC 0                                       ;; 0d:4a6c $fd $00
-.jr_0d_4a6e:
-    sIF_FLAG_JR !wScriptFlags02.0, wScriptFlags02.1, .jr_0d_4a7d ;; 0d:4a6e $08 $10 $91 $00 $0a
-    sSET_NPC_TYPES 0                                   ;; 0d:4a73 $fc $00
-    sSPAWN_NPC 0                                       ;; 0d:4a75 $fd $00
-    sSPAWN_NPC 1                                       ;; 0d:4a77 $fd $01
-    sSFX 20                                            ;; 0d:4a79 $f9 $14
-    sFLASH_SCREEN                                      ;; 0d:4a7b $bf
-    sFLASH_SCREEN                                      ;; 0d:4a7c $bf
-.jr_0d_4a7d:
-    sIF_FLAG_JR !wScriptFlags05.7, .jr_0d_4a85         ;; 0d:4a7d $08 $2f $00 $04
-    sSET_NPC_TYPES 52                                  ;; 0d:4a81 $fc $34
-    sSPAWN_NPC 1                                       ;; 0d:4a83 $fd $01
-.jr_0d_4a85:
+    sIF_FLAG !wScriptFlags02.0                         ;; 0d:4a66 $08 $90 $00 $04
+      sSET_NPC_TYPES 55                                ;; 0d:4a6a $fc $37
+      sSPAWN_NPC 0                                     ;; 0d:4a6c $fd $00
+    sENDIF                                             ;; 0d:4a6e
+    sIF_FLAG wScriptFlags02.0, !wScriptFlags02.1       ;; 0d:4a6e $08 $10 $91 $00 $0a
+      sSET_NPC_TYPES 0                                 ;; 0d:4a73 $fc $00
+      sSPAWN_NPC 0                                     ;; 0d:4a75 $fd $00
+      sSPAWN_NPC 1                                     ;; 0d:4a77 $fd $01
+      sSFX 20                                          ;; 0d:4a79 $f9 $14
+      sFLASH_SCREEN                                    ;; 0d:4a7b $bf
+      sFLASH_SCREEN                                    ;; 0d:4a7c $bf
+    sENDIF                                             ;; 0d:4a7d
+    sIF_FLAG wScriptFlags05.7                          ;; 0d:4a7d $08 $2f $00 $04
+      sSET_NPC_TYPES 52                                ;; 0d:4a81 $fc $34
+      sSPAWN_NPC 1                                     ;; 0d:4a83 $fd $01
+    sENDIF                                             ;; 0d:4a85
     sEND                                               ;; 0d:4a85 $00
 
 script_0122:
@@ -1777,10 +1769,10 @@ script_0123:
     sEND                                               ;; 0d:4a87 $00
 
 script_0124:
-    sIF_FLAG_JR wScriptFlags04.6, .jr_0d_4a90          ;; 0d:4a88 $08 $a6 $00 $04
-    sSET_NPC_TYPES 44                                  ;; 0d:4a8c $fc $2c
-    sSPAWN_NPC 2                                       ;; 0d:4a8e $fd $02
-.jr_0d_4a90:
+    sIF_FLAG !wScriptFlags04.6                         ;; 0d:4a88 $08 $a6 $00 $04
+      sSET_NPC_TYPES 44                                ;; 0d:4a8c $fc $2c
+      sSPAWN_NPC 2                                     ;; 0d:4a8e $fd $02
+    sENDIF                                             ;; 0d:4a90
     sEND                                               ;; 0d:4a90 $00
 
 script_0125:
@@ -1791,10 +1783,10 @@ script_0126:
 
 script_0127:
     sSET_NPC_TYPES 89                                  ;; 0d:4a93 $fc $59
-    sIF_FLAG_JR wScriptFlags09.5, .jr_0d_4a9e          ;; 0d:4a95 $08 $cd $00 $05
-    sSPAWN_NPC 1                                       ;; 0d:4a99 $fd $01
-    sUNK_C9 $04, $43                                   ;; 0d:4a9b $c9 $04 $43
-.jr_0d_4a9e:
+    sIF_FLAG !wScriptFlags09.5                         ;; 0d:4a95 $08 $cd $00 $05
+      sSPAWN_NPC 1                                     ;; 0d:4a99 $fd $01
+      sUNK_C9 $04, $43                                 ;; 0d:4a9b $c9 $04 $43
+    sENDIF                                             ;; 0d:4a9e
     sEND                                               ;; 0d:4a9e $00
 
 script_0128:
@@ -1827,10 +1819,10 @@ script_012f:
     sEND                                               ;; 0d:4ab0 $00
 
 script_0130:
-    sIF_FLAG_JR !wScriptFlags02.6, .jr_0d_4ab9         ;; 0d:4ab1 $08 $16 $00 $04
-    sSET_NPC_TYPES 96                                  ;; 0d:4ab5 $fc $60
-    sSPAWN_NPC 0                                       ;; 0d:4ab7 $fd $00
-.jr_0d_4ab9:
+    sIF_FLAG wScriptFlags02.6                          ;; 0d:4ab1 $08 $16 $00 $04
+      sSET_NPC_TYPES 96                                ;; 0d:4ab5 $fc $60
+      sSPAWN_NPC 0                                     ;; 0d:4ab7 $fd $00
+    sENDIF                                             ;; 0d:4ab9
     sEND                                               ;; 0d:4ab9 $00
 
 script_0131:
@@ -1888,19 +1880,19 @@ script_013f:
     sSET_NPC_TYPES 88                                  ;; 0d:4ada $fc $58
     sSPAWN_NPC 0                                       ;; 0d:4adc $fd $00
     sSPAWN_NPC 1                                       ;; 0d:4ade $fd $01
-    sIF_FLAG_JR !wScriptFlags02.6, wScriptFlags0A.4, .jr_0d_4ae7 ;; 0d:4ae0 $08 $16 $d4 $00 $02
-    sSPAWN_NPC 2                                       ;; 0d:4ae5 $fd $02
-.jr_0d_4ae7:
+    sIF_FLAG wScriptFlags02.6, !wScriptFlags0A.4       ;; 0d:4ae0 $08 $16 $d4 $00 $02
+      sSPAWN_NPC 2                                     ;; 0d:4ae5 $fd $02
+    sENDIF                                             ;; 0d:4ae7
     sEND                                               ;; 0d:4ae7 $00
 
 script_0140:
-    sIF_FLAG_JR !wScriptFlags02.6, !wScriptFlags0A.4, .jr_0d_4b14 ;; 0d:4ae8 $08 $16 $54 $00 $27
-    sMSG                                               ;; 0d:4aed $04
-      db "<10>Bogard:I'll stay\n and guard <GIRL>.\n<BOY>:__ Okay.<12>"
+    sIF_FLAG wScriptFlags02.6, wScriptFlags0A.4        ;; 0d:4ae8 $08 $16 $54 $00 $27
+      sMSG                                             ;; 0d:4aed $04
+        db "<10>Bogard:I'll stay\n and guard <GIRL>.\n<BOY>:__ Okay.<12>"
       db "<11>", $00 ;; 0d:4aee
-    sFOLLOWER_DELETE                                   ;; 0d:4b11 $98
-    sCLEAR_FLAG wScriptFlags0A.4                       ;; 0d:4b12 $db $54
-.jr_0d_4b14:
+      sFOLLOWER_DELETE                                 ;; 0d:4b11 $98
+      sCLEAR_FLAG wScriptFlags0A.4                     ;; 0d:4b12 $db $54
+    sENDIF                                             ;; 0d:4b14
     sEND                                               ;; 0d:4b14 $00
 
 script_0141:
@@ -1976,28 +1968,28 @@ script_0153:
 
 script_0154:
     sSET_NPC_TYPES 65                                  ;; 0d:4b44 $fc $41
-    sIF_FLAG_JR wScriptFlags04.7, .jr_0d_4b4e          ;; 0d:4b46 $08 $a7 $00 $04
-    sSPAWN_NPC 0                                       ;; 0d:4b4a $fd $00
-    sSPAWN_NPC 1                                       ;; 0d:4b4c $fd $01
-.jr_0d_4b4e:
-    sIF_FLAG_JR !wScriptFlags04.7, wScriptFlags03.5, .jr_0d_4b55 ;; 0d:4b4e $08 $27 $9d $00 $02
-    sSPAWN_NPC 1                                       ;; 0d:4b53 $fd $01
-.jr_0d_4b55:
-    sIF_FLAG_JR !wScriptFlags03.5, .jr_0d_4b5d         ;; 0d:4b55 $08 $1d $00 $04
-    sSET_ROOM_TILE $02, 8, 6                           ;; 0d:4b59 $b0 $02 $08 $06
-.jr_0d_4b5d:
-    sIF_FLAG_JR !wScriptFlags03.5, wScriptFlags0A.6, wScriptFlags05.0, .jr_0d_4b8f ;; 0d:4b5d $08 $1d $d6 $a8 $00 $2c
-    sSPAWN_NPC 2                                       ;; 0d:4b63 $fd $02
-    sGIVE_FOLLOWER 6                                   ;; 0d:4b65 $9c $06
-    sPLAYER_STEP_FORWARD                               ;; 0d:4b67 $80
-    sPLAYER_STEP_FORWARD                               ;; 0d:4b68 $80
-    sPLAYER_STEP_FORWARD                               ;; 0d:4b69 $80
-    sSET_NPC_1_DIRECTION_LEFT                          ;; 0d:4b6a $17
-    sMSG                                               ;; 0d:4b6b $04
-      db "<10>Lester:Phew__\n I was helpless\n all by myself.<12>"
+    sIF_FLAG !wScriptFlags04.7                         ;; 0d:4b46 $08 $a7 $00 $04
+      sSPAWN_NPC 0                                     ;; 0d:4b4a $fd $00
+      sSPAWN_NPC 1                                     ;; 0d:4b4c $fd $01
+    sENDIF                                             ;; 0d:4b4e
+    sIF_FLAG wScriptFlags04.7, !wScriptFlags03.5       ;; 0d:4b4e $08 $27 $9d $00 $02
+      sSPAWN_NPC 1                                     ;; 0d:4b53 $fd $01
+    sENDIF                                             ;; 0d:4b55
+    sIF_FLAG wScriptFlags03.5                          ;; 0d:4b55 $08 $1d $00 $04
+      sSET_ROOM_TILE $02, 8, 6                         ;; 0d:4b59 $b0 $02 $08 $06
+    sENDIF                                             ;; 0d:4b5d
+    sIF_FLAG wScriptFlags03.5, !wScriptFlags0A.6, !wScriptFlags05.0 ;; 0d:4b5d $08 $1d $d6 $a8 $00 $2c
+      sSPAWN_NPC 2                                     ;; 0d:4b63 $fd $02
+      sGIVE_FOLLOWER 6                                 ;; 0d:4b65 $9c $06
+      sPLAYER_STEP_FORWARD                             ;; 0d:4b67 $80
+      sPLAYER_STEP_FORWARD                             ;; 0d:4b68 $80
+      sPLAYER_STEP_FORWARD                             ;; 0d:4b69 $80
+      sSET_NPC_1_DIRECTION_LEFT                        ;; 0d:4b6a $17
+      sMSG                                             ;; 0d:4b6b $04
+        db "<10>Lester:Phew__\n I was helpless\n all by myself.<12>"
       db "<11>", $00 ;; 0d:4b6c
-    sSET_FLAG wScriptFlags0A.6                         ;; 0d:4b8d $da $56
-.jr_0d_4b8f:
+      sSET_FLAG wScriptFlags0A.6                       ;; 0d:4b8d $da $56
+    sENDIF                                             ;; 0d:4b8f
     sEND                                               ;; 0d:4b8f $00
 
 script_0155:
@@ -2007,10 +1999,10 @@ script_0156:
     sEND                                               ;; 0d:4b91 $00
 
 script_0157:
-    sIF_FLAG_JR !wScriptFlags03.7, wScriptFlags04.0, .jr_0d_4b9b ;; 0d:4b92 $08 $1f $a0 $00 $04
-    sSET_NPC_TYPES 76                                  ;; 0d:4b97 $fc $4c
-    sSPAWN_NPC 1                                       ;; 0d:4b99 $fd $01
-.jr_0d_4b9b:
+    sIF_FLAG wScriptFlags03.7, !wScriptFlags04.0       ;; 0d:4b92 $08 $1f $a0 $00 $04
+      sSET_NPC_TYPES 76                                ;; 0d:4b97 $fc $4c
+      sSPAWN_NPC 1                                     ;; 0d:4b99 $fd $01
+    sENDIF                                             ;; 0d:4b9b
     sEND                                               ;; 0d:4b9b $00
 
 script_0158:
@@ -2132,10 +2124,10 @@ script_0177:
     sEND                                               ;; 0d:4be7 $00
 
 script_0178:
-    sIF_FLAG_JR wScriptFlags03.6, .jr_0d_4bf0          ;; 0d:4be8 $08 $9e $00 $04
-    sSET_NPC_TYPES 40                                  ;; 0d:4bec $fc $28
-    sSPAWN_NPC 2                                       ;; 0d:4bee $fd $02
-.jr_0d_4bf0:
+    sIF_FLAG !wScriptFlags03.6                         ;; 0d:4be8 $08 $9e $00 $04
+      sSET_NPC_TYPES 40                                ;; 0d:4bec $fc $28
+      sSPAWN_NPC 2                                     ;; 0d:4bee $fd $02
+    sENDIF                                             ;; 0d:4bf0
     sEND                                               ;; 0d:4bf0 $00
 
 script_0179:
@@ -2146,12 +2138,11 @@ script_017a:
 
 script_017b:
     sSET_NPC_TYPES 70                                  ;; 0d:4bf3 $fc $46
-    sIF_FLAG_JR wScriptFlags05.5, .jr_0d_4bfd          ;; 0d:4bf5 $08 $ad $00 $04
-    sSPAWN_NPC 1                                       ;; 0d:4bf9 $fd $01
-    sJR  .jr_0d_4bff                                   ;; 0d:4bfb $01 $02
-.jr_0d_4bfd:
-    sSPAWN_NPC 0                                       ;; 0d:4bfd $fd $00
-.jr_0d_4bff:
+    sIF_FLAG !wScriptFlags05.5                         ;; 0d:4bf5 $08 $ad $00 $04
+      sSPAWN_NPC 1                                     ;; 0d:4bf9 $fd $01
+    sELSE                                              ;; 0d:4bfb $01 $02
+      sSPAWN_NPC 0                                     ;; 0d:4bfd $fd $00
+    sENDIF                                             ;; 0d:4bff
     sEND                                               ;; 0d:4bff $00
 
 script_017c:
@@ -2173,12 +2164,11 @@ script_0180:
 
 script_0181:
     sSET_NPC_TYPES 71                                  ;; 0d:4c09 $fc $47
-    sIF_FLAG_JR wScriptFlags05.5, .jr_0d_4c13          ;; 0d:4c0b $08 $ad $00 $04
-    sSPAWN_NPC 1                                       ;; 0d:4c0f $fd $01
-    sJR  .jr_0d_4c15                                   ;; 0d:4c11 $01 $02
-.jr_0d_4c13:
-    sSPAWN_NPC 0                                       ;; 0d:4c13 $fd $00
-.jr_0d_4c15:
+    sIF_FLAG !wScriptFlags05.5                         ;; 0d:4c0b $08 $ad $00 $04
+      sSPAWN_NPC 1                                     ;; 0d:4c0f $fd $01
+    sELSE                                              ;; 0d:4c11 $01 $02
+      sSPAWN_NPC 0                                     ;; 0d:4c13 $fd $00
+    sENDIF                                             ;; 0d:4c15
     sEND                                               ;; 0d:4c15 $00
 
 script_0182:
@@ -2211,10 +2201,10 @@ script_0189:
     sEND                                               ;; 0d:4c27 $00
 
 script_018a:
-    sIF_FLAG_JR wScriptFlags02.0, .jr_0d_4c30          ;; 0d:4c28 $08 $90 $00 $04
-    sSET_NPC_TYPES 53                                  ;; 0d:4c2c $fc $35
-    sSPAWN_NPC 0                                       ;; 0d:4c2e $fd $00
-.jr_0d_4c30:
+    sIF_FLAG !wScriptFlags02.0                         ;; 0d:4c28 $08 $90 $00 $04
+      sSET_NPC_TYPES 53                                ;; 0d:4c2c $fc $35
+      sSPAWN_NPC 0                                     ;; 0d:4c2e $fd $00
+    sENDIF                                             ;; 0d:4c30
     sEND                                               ;; 0d:4c30 $00
 
 script_018b:
@@ -2224,10 +2214,10 @@ script_018c:
     sEND                                               ;; 0d:4c32 $00
 
 script_018d:
-    sIF_FLAG_JR wScriptFlags01.6, .jr_0d_4c3b          ;; 0d:4c33 $08 $8e $00 $04
-    sSET_NPC_TYPES 50                                  ;; 0d:4c37 $fc $32
-    sSPAWN_NPC 0                                       ;; 0d:4c39 $fd $00
-.jr_0d_4c3b:
+    sIF_FLAG !wScriptFlags01.6                         ;; 0d:4c33 $08 $8e $00 $04
+      sSET_NPC_TYPES 50                                ;; 0d:4c37 $fc $32
+      sSPAWN_NPC 0                                     ;; 0d:4c39 $fd $00
+    sENDIF                                             ;; 0d:4c3b
     sEND                                               ;; 0d:4c3b $00
 
 script_018e:
@@ -2237,10 +2227,10 @@ script_018f:
     sEND                                               ;; 0d:4c3d $00
 
 script_0190:
-    sIF_FLAG_JR wScriptFlags09.0, wScriptFlags0A.2, .jr_0d_4c47 ;; 0d:4c3e $08 $c8 $d2 $00 $04
-    sSET_NPC_TYPES 77                                  ;; 0d:4c43 $fc $4d
-    sSPAWN_NPC 0                                       ;; 0d:4c45 $fd $00
-.jr_0d_4c47:
+    sIF_FLAG !wScriptFlags09.0, !wScriptFlags0A.2      ;; 0d:4c3e $08 $c8 $d2 $00 $04
+      sSET_NPC_TYPES 77                                ;; 0d:4c43 $fc $4d
+      sSPAWN_NPC 0                                     ;; 0d:4c45 $fd $00
+    sENDIF                                             ;; 0d:4c47
     sEND                                               ;; 0d:4c47 $00
 
 script_0191:
@@ -2250,29 +2240,29 @@ script_0192:
     sEND                                               ;; 0d:4c49 $00
 
 script_0193:
-    sIF_FLAG_JR !wScriptFlags03.7, .jr_0d_4c50         ;; 0d:4c4a $08 $1f $00 $02
-    sJR  .jr_0d_4c58                                   ;; 0d:4c4e $01 $08
-.jr_0d_4c50:
-    sIF_FLAG_JR wScriptFlags03.1, .jr_0d_4c58          ;; 0d:4c50 $08 $99 $00 $04
-    sSET_NPC_TYPES 80                                  ;; 0d:4c54 $fc $50
-    sSPAWN_NPC 0                                       ;; 0d:4c56 $fd $00
-.jr_0d_4c58:
+    sIF_FLAG wScriptFlags03.7                          ;; 0d:4c4a $08 $1f $00 $02
+    sELSE                                              ;; 0d:4c4e $01 $08
+      sIF_FLAG !wScriptFlags03.1                       ;; 0d:4c50 $08 $99 $00 $04
+        sSET_NPC_TYPES 80                              ;; 0d:4c54 $fc $50
+        sSPAWN_NPC 0                                   ;; 0d:4c56 $fd $00
+      sENDIF                                           ;; 0d:4c58
+    sENDIF                                             ;; 0d:4c58
     sEND                                               ;; 0d:4c58 $00
 
 script_0194:
-    sIF_FLAG_JR wScriptFlags0B.0, .jr_0d_4c5f          ;; 0d:4c59 $08 $d8 $00 $02
-    sSET_MUSIC 20                                      ;; 0d:4c5d $f8 $14
-.jr_0d_4c5f:
+    sIF_FLAG !wScriptFlags0B.0                         ;; 0d:4c59 $08 $d8 $00 $02
+      sSET_MUSIC 20                                    ;; 0d:4c5d $f8 $14
+    sENDIF                                             ;; 0d:4c5f
     sEND                                               ;; 0d:4c5f $00
 
 script_0195:
     sEND                                               ;; 0d:4c60 $00
 
 script_0196:
-    sIF_FLAG_JR !wScriptFlags02.4, wScriptFlags04.6, .jr_0d_4c6a ;; 0d:4c61 $08 $14 $a6 $00 $04
-    sSET_NPC_TYPES 48                                  ;; 0d:4c66 $fc $30
-    sSPAWN_NPC 0                                       ;; 0d:4c68 $fd $00
-.jr_0d_4c6a:
+    sIF_FLAG wScriptFlags02.4, !wScriptFlags04.6       ;; 0d:4c61 $08 $14 $a6 $00 $04
+      sSET_NPC_TYPES 48                                ;; 0d:4c66 $fc $30
+      sSPAWN_NPC 0                                     ;; 0d:4c68 $fd $00
+    sENDIF                                             ;; 0d:4c6a
     sEND                                               ;; 0d:4c6a $00
 
 script_0197:
@@ -2297,40 +2287,39 @@ script_019c:
     sEND                                               ;; 0d:4c76 $00
 
 script_019d:
-    sIF_FLAG_JR wScriptFlags03.0, .jr_0d_4d29          ;; 0d:4c77 $08 $98 $00 $ae
-    sSET_MUSIC 0                                       ;; 0d:4c7b $f8 $00
-    sSET_NPC_TYPES 38                                  ;; 0d:4c7d $fc $26
-    sSPAWN_NPC 0                                       ;; 0d:4c7f $fd $00
-    sSPAWN_NPC 1                                       ;; 0d:4c81 $fd $01
-    sDELAY 60                                          ;; 0d:4c83 $f0 $3c
-    sSET_MUSIC 10                                      ;; 0d:4c85 $f8 $0a
-    sMSG                                               ;; 0d:4c87 $04
-      db "<10><BOY>:<GIRL>!\n<GIRL>:__", $00           ;; 0d:4c88
-    sDELAY 30                                          ;; 0d:4c92 $f0 $1e
-    sMSG                                               ;; 0d:4c94 $04
-      db "___", $00                                    ;; 0d:4c95
-    sDELAY 50                                          ;; 0d:4c98 $f0 $32
-    sMSG                                               ;; 0d:4c9a $04
-      db "<1b>Julius:You're\n late, <BOY>_<12>"
+    sIF_FLAG !wScriptFlags03.0                         ;; 0d:4c77 $08 $98 $00 $ae
+      sSET_MUSIC 0                                     ;; 0d:4c7b $f8 $00
+      sSET_NPC_TYPES 38                                ;; 0d:4c7d $fc $26
+      sSPAWN_NPC 0                                     ;; 0d:4c7f $fd $00
+      sSPAWN_NPC 1                                     ;; 0d:4c81 $fd $01
+      sDELAY 60                                        ;; 0d:4c83 $f0 $3c
+      sSET_MUSIC 10                                    ;; 0d:4c85 $f8 $0a
+      sMSG                                             ;; 0d:4c87 $04
+        db "<10><BOY>:<GIRL>!\n<GIRL>:__", $00         ;; 0d:4c88
+      sDELAY 30                                        ;; 0d:4c92 $f0 $1e
+      sMSG                                             ;; 0d:4c94 $04
+        db "___", $00                                  ;; 0d:4c95
+      sDELAY 50                                        ;; 0d:4c98 $f0 $32
+      sMSG                                             ;; 0d:4c9a $04
+        db "<1b>Julius:You're\n late, <BOY>_<12>"
       db "<1b> I already got\n the greatest\n power of Mana!<12>"
       db "<1b> The time has come\n for the Empire\n Neo-Vandole!<12>"
       db "<1b> Now that I have\n the mighty power_<12>"
       db "<1b> I do not need you\n anymore, <BOY>!<12>"
       db "<11>", $00 ;; 0d:4c9b
-    sLOAD_ROOM 1, $67, 9, 10                           ;; 0d:4d1f $f4 $01 $67 $09 $0a
-    sCALL script_011e                                  ;; 0d:4d24 $02 $09 $48
-    sJR  .jr_0d_4d3c                                   ;; 0d:4d27 $01 $13
-.jr_0d_4d29:
-    sSET_ROOM_TILE $11, 4, 7                           ;; 0d:4d29 $b0 $11 $04 $07
-    sSFX 16                                            ;; 0d:4d2d $f9 $10
-    sDELAY 10                                          ;; 0d:4d2f $f0 $0a
-    sLOOP 10, 4                                        ;; 0d:4d31 $03 $0a $04
-      sSFX 20                                          ;; 0d:4d34 $f9 $14
-      sFLASH_SCREEN                                    ;; 0d:4d36 $bf
-    sEND                                               ;; 0d:4d37 $00
-    sSPAWN_BOSS 17                                     ;; 0d:4d38 $fe $11
-    sSET_MUSIC 16                                      ;; 0d:4d3a $f8 $10
-.jr_0d_4d3c:
+      sLOAD_ROOM 1, $67, 9, 10                         ;; 0d:4d1f $f4 $01 $67 $09 $0a
+      sCALL script_011e                                ;; 0d:4d24 $02 $09 $48
+    sELSE                                              ;; 0d:4d27 $01 $13
+      sSET_ROOM_TILE $11, 4, 7                         ;; 0d:4d29 $b0 $11 $04 $07
+      sSFX 16                                          ;; 0d:4d2d $f9 $10
+      sDELAY 10                                        ;; 0d:4d2f $f0 $0a
+      sLOOP 10, 4                                      ;; 0d:4d31 $03 $0a $04
+        sSFX 20                                        ;; 0d:4d34 $f9 $14
+        sFLASH_SCREEN                                  ;; 0d:4d36 $bf
+      sEND                                             ;; 0d:4d37 $00
+      sSPAWN_BOSS 17                                   ;; 0d:4d38 $fe $11
+      sSET_MUSIC 16                                    ;; 0d:4d3a $f8 $10
+    sENDIF                                             ;; 0d:4d3c
     sEND                                               ;; 0d:4d3c $00
 
 script_019e:
@@ -2344,14 +2333,13 @@ script_019f:
     sEND                                               ;; 0d:4d48 $00
 
 script_01a0:
-    sIF_FLAG_JR wScriptFlags04.3, .jr_0d_4d55          ;; 0d:4d49 $08 $a3 $00 $08
-    sSFX 20                                            ;; 0d:4d4d $f9 $14
-    sSET_MUSIC 15                                      ;; 0d:4d4f $f8 $0f
-    sSPAWN_BOSS 1                                      ;; 0d:4d51 $fe $01
-    sJR  .jr_0d_4d56                                   ;; 0d:4d53 $01 $01
-.jr_0d_4d55:
-    sUNK_EE                                            ;; 0d:4d55 $ee
-.jr_0d_4d56:
+    sIF_FLAG !wScriptFlags04.3                         ;; 0d:4d49 $08 $a3 $00 $08
+      sSFX 20                                          ;; 0d:4d4d $f9 $14
+      sSET_MUSIC 15                                    ;; 0d:4d4f $f8 $0f
+      sSPAWN_BOSS 1                                    ;; 0d:4d51 $fe $01
+    sELSE                                              ;; 0d:4d53 $01 $01
+      sUNK_EE                                          ;; 0d:4d55 $ee
+    sENDIF                                             ;; 0d:4d56
     sEND                                               ;; 0d:4d56 $00
 
 script_01a1:
@@ -2366,50 +2354,50 @@ script_01a2:
     sSET_ROOM_TILE $25, 5, 4                           ;; 0d:4d66 $b0 $25 $05 $04
     sSET_ROOM_TILE $25, 6, 4                           ;; 0d:4d6a $b0 $25 $06 $04
     sSET_FLAG wScriptFlags04.3                         ;; 0d:4d6e $da $23
-    sIF_FLAG_JR wScriptFlags09.1, .jr_0d_4d79          ;; 0d:4d70 $08 $c9 $00 $05
-    sSPAWN_NPC 1                                       ;; 0d:4d74 $fd $01
-    sUNK_C9 $04, $50                                   ;; 0d:4d76 $c9 $04 $50
-.jr_0d_4d79:
-    sIF_FLAG_JR wScriptFlags09.0, .jr_0d_4d82          ;; 0d:4d79 $08 $c8 $00 $05
-    sSPAWN_NPC 2                                       ;; 0d:4d7d $fd $02
-    sUNK_CA $04, $51                                   ;; 0d:4d7f $ca $04 $51
-.jr_0d_4d82:
+    sIF_FLAG !wScriptFlags09.1                         ;; 0d:4d70 $08 $c9 $00 $05
+      sSPAWN_NPC 1                                     ;; 0d:4d74 $fd $01
+      sUNK_C9 $04, $50                                 ;; 0d:4d76 $c9 $04 $50
+    sENDIF                                             ;; 0d:4d79
+    sIF_FLAG !wScriptFlags09.0                         ;; 0d:4d79 $08 $c8 $00 $05
+      sSPAWN_NPC 2                                     ;; 0d:4d7d $fd $02
+      sUNK_CA $04, $51                                 ;; 0d:4d7f $ca $04 $51
+    sENDIF                                             ;; 0d:4d82
     sEND                                               ;; 0d:4d82 $00
 
 script_01a3:
-    sIF_FLAG_JR !wScriptFlags0E.2, !wScriptFlags0E.3, wScriptFlags0E.4, !wScriptFlags0E.5, wScriptFlags0E.6, !wScriptFlags0E.7, .jr_0d_4d9f ;; 0d:4d83 $08 $72 $73 $f4 $75 $f6 $77 $00 $13
-    sIF_FLAG_JR wScriptFlags06.4, .jr_0d_4d9b          ;; 0d:4d8c $08 $b4 $00 $0b
-    sSFX 20                                            ;; 0d:4d90 $f9 $14
-    sFLASH_SCREEN                                      ;; 0d:4d92 $bf
-    sDELAY 30                                          ;; 0d:4d93 $f0 $1e
-    sSPAWN_BOSS 15                                     ;; 0d:4d95 $fe $0f
-    sSET_MUSIC 15                                      ;; 0d:4d97 $f8 $0f
-    sJR  .jr_0d_4d9f                                   ;; 0d:4d99 $01 $04
-.jr_0d_4d9b:
-    sSET_ROOM_TILE $59, 8, 1                           ;; 0d:4d9b $b0 $59 $08 $01
-.jr_0d_4d9f:
-    sIF_FLAG_JR !wScriptFlags0E.2, !wScriptFlags0E.3, wScriptFlags0E.4, !wScriptFlags0E.5, !wScriptFlags0E.6, wScriptFlags0E.7, .jr_0d_4dbb ;; 0d:4d9f $08 $72 $73 $f4 $75 $76 $f7 $00 $13
-    sIF_FLAG_JR wScriptFlags02.7, .jr_0d_4db7          ;; 0d:4da8 $08 $97 $00 $0b
-    sSFX 20                                            ;; 0d:4dac $f9 $14
-    sFLASH_SCREEN                                      ;; 0d:4dae $bf
-    sDELAY 30                                          ;; 0d:4daf $f0 $1e
-    sSPAWN_BOSS 20                                     ;; 0d:4db1 $fe $14
-    sSET_MUSIC 15                                      ;; 0d:4db3 $f8 $0f
-    sJR  .jr_0d_4dbb                                   ;; 0d:4db5 $01 $04
-.jr_0d_4db7:
-    sSET_ROOM_TILE $59, 8, 1                           ;; 0d:4db7 $b0 $59 $08 $01
-.jr_0d_4dbb:
-    sIF_FLAG_JR !wScriptFlags0E.2, !wScriptFlags0E.3, wScriptFlags0E.4, !wScriptFlags0E.5, !wScriptFlags0E.6, !wScriptFlags0E.7, .jr_0d_4dd7 ;; 0d:4dbb $08 $72 $73 $f4 $75 $76 $77 $00 $13
-    sIF_FLAG_JR wScriptFlags06.2, .jr_0d_4dd3          ;; 0d:4dc4 $08 $b2 $00 $0b
-    sSFX 20                                            ;; 0d:4dc8 $f9 $14
-    sFLASH_SCREEN                                      ;; 0d:4dca $bf
-    sDELAY 30                                          ;; 0d:4dcb $f0 $1e
-    sSPAWN_BOSS 13                                     ;; 0d:4dcd $fe $0d
-    sSET_MUSIC 15                                      ;; 0d:4dcf $f8 $0f
-    sJR  .jr_0d_4dd7                                   ;; 0d:4dd1 $01 $04
-.jr_0d_4dd3:
-    sSET_ROOM_TILE $59, 8, 1                           ;; 0d:4dd3 $b0 $59 $08 $01
-.jr_0d_4dd7:
+    sIF_FLAG wScriptFlags0E.2, wScriptFlags0E.3, !wScriptFlags0E.4, wScriptFlags0E.5, !wScriptFlags0E.6, wScriptFlags0E.7 ;; 0d:4d83 $08 $72 $73 $f4 $75 $f6 $77 $00 $13
+      sIF_FLAG !wScriptFlags06.4                       ;; 0d:4d8c $08 $b4 $00 $0b
+        sSFX 20                                        ;; 0d:4d90 $f9 $14
+        sFLASH_SCREEN                                  ;; 0d:4d92 $bf
+        sDELAY 30                                      ;; 0d:4d93 $f0 $1e
+        sSPAWN_BOSS 15                                 ;; 0d:4d95 $fe $0f
+        sSET_MUSIC 15                                  ;; 0d:4d97 $f8 $0f
+      sELSE                                            ;; 0d:4d99 $01 $04
+        sSET_ROOM_TILE $59, 8, 1                       ;; 0d:4d9b $b0 $59 $08 $01
+      sENDIF                                           ;; 0d:4d9f
+    sENDIF                                             ;; 0d:4d9f
+    sIF_FLAG wScriptFlags0E.2, wScriptFlags0E.3, !wScriptFlags0E.4, wScriptFlags0E.5, wScriptFlags0E.6, !wScriptFlags0E.7 ;; 0d:4d9f $08 $72 $73 $f4 $75 $76 $f7 $00 $13
+      sIF_FLAG !wScriptFlags02.7                       ;; 0d:4da8 $08 $97 $00 $0b
+        sSFX 20                                        ;; 0d:4dac $f9 $14
+        sFLASH_SCREEN                                  ;; 0d:4dae $bf
+        sDELAY 30                                      ;; 0d:4daf $f0 $1e
+        sSPAWN_BOSS 20                                 ;; 0d:4db1 $fe $14
+        sSET_MUSIC 15                                  ;; 0d:4db3 $f8 $0f
+      sELSE                                            ;; 0d:4db5 $01 $04
+        sSET_ROOM_TILE $59, 8, 1                       ;; 0d:4db7 $b0 $59 $08 $01
+      sENDIF                                           ;; 0d:4dbb
+    sENDIF                                             ;; 0d:4dbb
+    sIF_FLAG wScriptFlags0E.2, wScriptFlags0E.3, !wScriptFlags0E.4, wScriptFlags0E.5, wScriptFlags0E.6, wScriptFlags0E.7 ;; 0d:4dbb $08 $72 $73 $f4 $75 $76 $77 $00 $13
+      sIF_FLAG !wScriptFlags06.2                       ;; 0d:4dc4 $08 $b2 $00 $0b
+        sSFX 20                                        ;; 0d:4dc8 $f9 $14
+        sFLASH_SCREEN                                  ;; 0d:4dca $bf
+        sDELAY 30                                      ;; 0d:4dcb $f0 $1e
+        sSPAWN_BOSS 13                                 ;; 0d:4dcd $fe $0d
+        sSET_MUSIC 15                                  ;; 0d:4dcf $f8 $0f
+      sELSE                                            ;; 0d:4dd1 $01 $04
+        sSET_ROOM_TILE $59, 8, 1                       ;; 0d:4dd3 $b0 $59 $08 $01
+      sENDIF                                           ;; 0d:4dd7
+    sENDIF                                             ;; 0d:4dd7
     sEND                                               ;; 0d:4dd7 $00
 
 script_01a4:
@@ -2417,62 +2405,63 @@ script_01a4:
     sEND                                               ;; 0d:4dda $00
 
 script_01a5:
-    sIF_FLAG_JR !wScriptFlags0E.2, !wScriptFlags0E.3, wScriptFlags0E.4, !wScriptFlags0E.5, wScriptFlags0E.6, !wScriptFlags0E.7, .jr_0d_4e07 ;; 0d:4ddb $08 $72 $73 $f4 $75 $f6 $77 $00 $23
-    sSET_MUSIC 0                                       ;; 0d:4de4 $f8 $00
-    sSFX 34                                            ;; 0d:4de6 $f9 $22
-    sMSG                                               ;; 0d:4de8 $04
-      db "<10>Defeated\n   Dragon Zombie!<12>"
+    sIF_FLAG wScriptFlags0E.2, wScriptFlags0E.3, !wScriptFlags0E.4, wScriptFlags0E.5, !wScriptFlags0E.6, wScriptFlags0E.7 ;; 0d:4ddb $08 $72 $73 $f4 $75 $f6 $77 $00 $23
+      sSET_MUSIC 0                                     ;; 0d:4de4 $f8 $00
+      sSFX 34                                          ;; 0d:4de6 $f9 $22
+      sMSG                                             ;; 0d:4de8 $04
+        db "<10>Defeated\n   Dragon Zombie!<12>"
       db "<11>", $00 ;; 0d:4de9
-    sSET_FLAG wScriptFlags06.4                         ;; 0d:4e01 $da $34
-    sSET_ROOM_TILE $59, 8, 1                           ;; 0d:4e03 $b0 $59 $08 $01
-.jr_0d_4e07:
-    sIF_FLAG_JR !wScriptFlags0E.2, !wScriptFlags0E.3, wScriptFlags0E.4, !wScriptFlags0E.5, !wScriptFlags0E.6, wScriptFlags0E.7, .jr_0d_4e31 ;; 0d:4e07 $08 $72 $73 $f4 $75 $76 $f7 $00 $21
-    sSET_MUSIC 0                                       ;; 0d:4e10 $f8 $00
-    sSFX 34                                            ;; 0d:4e12 $f9 $22
-    sMSG                                               ;; 0d:4e14 $04
-      db "<10>Defeated\n    Red Dragon!<12>"
+      sSET_FLAG wScriptFlags06.4                       ;; 0d:4e01 $da $34
+      sSET_ROOM_TILE $59, 8, 1                         ;; 0d:4e03 $b0 $59 $08 $01
+    sENDIF                                             ;; 0d:4e07
+    sIF_FLAG wScriptFlags0E.2, wScriptFlags0E.3, !wScriptFlags0E.4, wScriptFlags0E.5, wScriptFlags0E.6, !wScriptFlags0E.7 ;; 0d:4e07 $08 $72 $73 $f4 $75 $76 $f7 $00 $21
+      sSET_MUSIC 0                                     ;; 0d:4e10 $f8 $00
+      sSFX 34                                          ;; 0d:4e12 $f9 $22
+      sMSG                                             ;; 0d:4e14 $04
+        db "<10>Defeated\n    Red Dragon!<12>"
       db "<11>", $00 ;; 0d:4e15
-    sSET_FLAG wScriptFlags02.7                         ;; 0d:4e2b $da $17
-    sSET_ROOM_TILE $59, 8, 1                           ;; 0d:4e2d $b0 $59 $08 $01
-.jr_0d_4e31:
-    sIF_FLAG_JR !wScriptFlags0E.2, !wScriptFlags0E.3, wScriptFlags0E.4, !wScriptFlags0E.5, !wScriptFlags0E.6, !wScriptFlags0E.7, .jr_0d_4e55 ;; 0d:4e31 $08 $72 $73 $f4 $75 $76 $77 $00 $1b
-    sSET_MUSIC 0                                       ;; 0d:4e3a $f8 $00
-    sSFX 34                                            ;; 0d:4e3c $f9 $22
-    sMSG                                               ;; 0d:4e3e $04
-      db "<10>Defeated Dragon!<12>"
+      sSET_FLAG wScriptFlags02.7                       ;; 0d:4e2b $da $17
+      sSET_ROOM_TILE $59, 8, 1                         ;; 0d:4e2d $b0 $59 $08 $01
+    sENDIF                                             ;; 0d:4e31
+    sIF_FLAG wScriptFlags0E.2, wScriptFlags0E.3, !wScriptFlags0E.4, wScriptFlags0E.5, wScriptFlags0E.6, wScriptFlags0E.7 ;; 0d:4e31 $08 $72 $73 $f4 $75 $76 $77 $00 $1b
+      sSET_MUSIC 0                                     ;; 0d:4e3a $f8 $00
+      sSFX 34                                          ;; 0d:4e3c $f9 $22
+      sMSG                                             ;; 0d:4e3e $04
+        db "<10>Defeated Dragon!<12>"
       db "<11>", $00 ;; 0d:4e3f
-    sSET_FLAG wScriptFlags06.2                         ;; 0d:4e4f $da $32
-    sSET_ROOM_TILE $59, 8, 1                           ;; 0d:4e51 $b0 $59 $08 $01
-.jr_0d_4e55:
+      sSET_FLAG wScriptFlags06.2                       ;; 0d:4e4f $da $32
+      sSET_ROOM_TILE $59, 8, 1                         ;; 0d:4e51 $b0 $59 $08 $01
+    sENDIF                                             ;; 0d:4e55
     sDELAY 30                                          ;; 0d:4e55 $f0 $1e
     sSET_MUSIC 22                                      ;; 0d:4e57 $f8 $16
     sEND                                               ;; 0d:4e59 $00
 
 script_01a6:
-    sIF_FLAG_JR wScriptFlags04.4, .jr_0d_4e62          ;; 0d:4e5a $08 $a4 $00 $04
-    sSET_NPC_TYPES 90                                  ;; 0d:4e5e $fc $5a
-    sSPAWN_NPC 1                                       ;; 0d:4e60 $fd $01
-.jr_0d_4e62:
-    sIF_FLAG_JR !wScriptFlags04.4, .jr_0d_4e67         ;; 0d:4e62 $08 $24 $00 $01
-    sUNK_E4                                            ;; 0d:4e66 $e4
-.jr_0d_4e67:
-    sIF_FLAG_JR !wScriptFlags08.0, wScriptFlags04.5, .jr_0d_4e9d ;; 0d:4e67 $08 $40 $a5 $00 $31
-    sSET_ROOM_TILE $42, 4, 7                           ;; 0d:4e6c $b0 $42 $04 $07
-    sSET_ROOM_TILE $43, 5, 7                           ;; 0d:4e70 $b0 $43 $05 $07
-    sIF_FLAG_JR !wScriptFlags01.6, .jr_0d_4e9d         ;; 0d:4e74 $08 $0e $00 $25
-    sSET_MUSIC 0                                       ;; 0d:4e78 $f8 $00
-    sDELAY 50                                          ;; 0d:4e7a $f0 $32
-    sMSG                                               ;; 0d:4e7c $04
-      db "<10>Lee:That's my\n victim!<12>"
+    sIF_FLAG !wScriptFlags04.4                         ;; 0d:4e5a $08 $a4 $00 $04
+      sSET_NPC_TYPES 90                                ;; 0d:4e5e $fc $5a
+      sSPAWN_NPC 1                                     ;; 0d:4e60 $fd $01
+    sENDIF                                             ;; 0d:4e62
+    sIF_FLAG wScriptFlags04.4                          ;; 0d:4e62 $08 $24 $00 $01
+      sUNK_E4                                          ;; 0d:4e66 $e4
+    sENDIF                                             ;; 0d:4e67
+    sIF_FLAG wScriptFlags08.0, !wScriptFlags04.5       ;; 0d:4e67 $08 $40 $a5 $00 $31
+      sSET_ROOM_TILE $42, 4, 7                         ;; 0d:4e6c $b0 $42 $04 $07
+      sSET_ROOM_TILE $43, 5, 7                         ;; 0d:4e70 $b0 $43 $05 $07
+      sIF_FLAG wScriptFlags01.6                        ;; 0d:4e74 $08 $0e $00 $25
+        sSET_MUSIC 0                                   ;; 0d:4e78 $f8 $00
+        sDELAY 50                                      ;; 0d:4e7a $f0 $32
+        sMSG                                           ;; 0d:4e7c $04
+          db "<10>Lee:That's my\n victim!<12>"
       db "<11>", $00 ;; 0d:4e7d
-    sSFX 20                                            ;; 0d:4e92 $f9 $14
-    sFLASH_SCREEN                                      ;; 0d:4e94 $bf
-    sFLASH_SCREEN                                      ;; 0d:4e95 $bf
-    sFLASH_SCREEN                                      ;; 0d:4e96 $bf
-    sDELAY 10                                          ;; 0d:4e97 $f0 $0a
-    sSET_MUSIC 15                                      ;; 0d:4e99 $f8 $0f
-    sSPAWN_BOSS 0                                      ;; 0d:4e9b $fe $00
-.jr_0d_4e9d:
+        sSFX 20                                        ;; 0d:4e92 $f9 $14
+        sFLASH_SCREEN                                  ;; 0d:4e94 $bf
+        sFLASH_SCREEN                                  ;; 0d:4e95 $bf
+        sFLASH_SCREEN                                  ;; 0d:4e96 $bf
+        sDELAY 10                                      ;; 0d:4e97 $f0 $0a
+        sSET_MUSIC 15                                  ;; 0d:4e99 $f8 $0f
+        sSPAWN_BOSS 0                                  ;; 0d:4e9b $fe $00
+      sENDIF                                           ;; 0d:4e9d
+    sENDIF                                             ;; 0d:4e9d
     sEND                                               ;; 0d:4e9d $00
 
 script_01a7:
@@ -2480,61 +2469,59 @@ script_01a7:
     sEND                                               ;; 0d:4ea0 $00
 
 script_01a8:
-    sIF_FLAG_JR wScriptFlags01.6, .jr_0d_4eb7          ;; 0d:4ea1 $08 $8e $00 $12
-    sUNK_D5 30                                         ;; 0d:4ea5 $d5 $1e
-    sIF_NOT_EQUIPED_JR $27, .jr_0d_4eac                ;; 0d:4ea7 $09 $27 $00 $01
-    sUNK_DE                                            ;; 0d:4eab $de
-.jr_0d_4eac:
-    sSFX 16                                            ;; 0d:4eac $f9 $10
-    sUNK_E4                                            ;; 0d:4eae $e4
-    sSET_FLAG wScriptFlags04.4                         ;; 0d:4eaf $da $24
-    sDELAY 60                                          ;; 0d:4eb1 $f0 $3c
-    sSET_MUSIC 7                                       ;; 0d:4eb3 $f8 $07
-    sJR  .jr_0d_4f40                                   ;; 0d:4eb5 $01 $89
-.jr_0d_4eb7:
-    sDELAY 30                                          ;; 0d:4eb7 $f0 $1e
-    sSET_MUSIC 0                                       ;; 0d:4eb9 $f8 $00
-    sMSG                                               ;; 0d:4ebb $04
-      db "<10>Defeated Vampire!<12>"
+    sIF_FLAG !wScriptFlags01.6                         ;; 0d:4ea1 $08 $8e $00 $12
+      sUNK_D5 30                                       ;; 0d:4ea5 $d5 $1e
+      sIF_EQUIPED $27                                  ;; 0d:4ea7 $09 $27 $00 $01
+        sUNK_DE                                        ;; 0d:4eab $de
+      sENDIF                                           ;; 0d:4eac
+      sSFX 16                                          ;; 0d:4eac $f9 $10
+      sUNK_E4                                          ;; 0d:4eae $e4
+      sSET_FLAG wScriptFlags04.4                       ;; 0d:4eaf $da $24
+      sDELAY 60                                        ;; 0d:4eb1 $f0 $3c
+      sSET_MUSIC 7                                     ;; 0d:4eb3 $f8 $07
+    sELSE                                              ;; 0d:4eb5 $01 $89
+      sDELAY 30                                        ;; 0d:4eb7 $f0 $1e
+      sSET_MUSIC 0                                     ;; 0d:4eb9 $f8 $00
+      sMSG                                             ;; 0d:4ebb $04
+        db "<10>Defeated Vampire!<12>"
       db "<1b>", $00 ;; 0d:4ebc
-    sSFX 15                                            ;; 0d:4ecc $f9 $0f
-    sMSG                                               ;; 0d:4ece $04
-      db "<1b>Received the Magic\nBook of Sleep.\nLearned Slep.", $00 ;; 0d:4ecf
-    sGIVE_MAGIC 3                                      ;; 0d:4ef2 $d6 $03
-    sMSG                                               ;; 0d:4ef4 $04
-      db "<12>"
+      sSFX 15                                          ;; 0d:4ecc $f9 $0f
+      sMSG                                             ;; 0d:4ece $04
+        db "<1b>Received the Magic\nBook of Sleep.\nLearned Slep.", $00 ;; 0d:4ecf
+      sGIVE_MAGIC 3                                    ;; 0d:4ef2 $d6 $03
+      sMSG                                             ;; 0d:4ef4 $04
+        db "<12>"
       db "<1b><BOY>:Are you\n alright, <GIRL>?\n<GIRL>:_ Yeah.<12>"
       db "<11>", $00 ;; 0d:4ef5
-    sDELAY 20                                          ;; 0d:4f12 $f0 $14
-    sLOAD_ROOM 0, $a9, 10, 6                           ;; 0d:4f14 $f4 $00 $a9 $0a $06
-    sDELAY 60                                          ;; 0d:4f19 $f0 $3c
-    sMSG                                               ;; 0d:4f1b $04
-      db "<10><GIRL>:Wendel is\n to the south.\n Let's hurry!<12>"
+      sDELAY 20                                        ;; 0d:4f12 $f0 $14
+      sLOAD_ROOM 0, $a9, 10, 6                         ;; 0d:4f14 $f4 $00 $a9 $0a $06
+      sDELAY 60                                        ;; 0d:4f19 $f0 $3c
+      sMSG                                             ;; 0d:4f1b $04
+        db "<10><GIRL>:Wendel is\n to the south.\n Let's hurry!<12>"
       db "<11>", $00 ;; 0d:4f1c
-    sSET_MUSIC 20                                      ;; 0d:4f3b $f8 $14
-    sSET_FLAG wScriptFlags04.5                         ;; 0d:4f3d $da $25
-    sUNK_AB                                            ;; 0d:4f3f $ab
-.jr_0d_4f40:
+      sSET_MUSIC 20                                    ;; 0d:4f3b $f8 $14
+      sSET_FLAG wScriptFlags04.5                       ;; 0d:4f3d $da $25
+      sUNK_AB                                          ;; 0d:4f3f $ab
+    sENDIF                                             ;; 0d:4f40
     sEND                                               ;; 0d:4f40 $00
 
 script_01a9:
     sSET_MUSIC 0                                       ;; 0d:4f41 $f8 $00
-    sIF_FLAG_JR wScriptFlags04.6, .jr_0d_4f52          ;; 0d:4f43 $08 $a6 $00 $0b
-    sSFX 20                                            ;; 0d:4f47 $f9 $14
-    sFLASH_SCREEN                                      ;; 0d:4f49 $bf
-    sDELAY 30                                          ;; 0d:4f4a $f0 $1e
-    sSET_MUSIC 15                                      ;; 0d:4f4c $f8 $0f
-    sSPAWN_BOSS 3                                      ;; 0d:4f4e $fe $03
-    sJR  .jr_0d_4f63                                   ;; 0d:4f50 $01 $11
-.jr_0d_4f52:
-    sIF_FLAG_JR wScriptFlags02.4, .jr_0d_4f5f          ;; 0d:4f52 $08 $94 $00 $09
-    sSET_NPC_TYPES 89                                  ;; 0d:4f56 $fc $59
-    sSPAWN_NPC 0                                       ;; 0d:4f58 $fd $00
-    sUNK_C9 $04, $35                                   ;; 0d:4f5a $c9 $04 $35
-    sJR  .jr_0d_4f63                                   ;; 0d:4f5d $01 $04
-.jr_0d_4f5f:
-    sSET_ROOM_TILE $59, 2, 1                           ;; 0d:4f5f $b0 $59 $02 $01
-.jr_0d_4f63:
+    sIF_FLAG !wScriptFlags04.6                         ;; 0d:4f43 $08 $a6 $00 $0b
+      sSFX 20                                          ;; 0d:4f47 $f9 $14
+      sFLASH_SCREEN                                    ;; 0d:4f49 $bf
+      sDELAY 30                                        ;; 0d:4f4a $f0 $1e
+      sSET_MUSIC 15                                    ;; 0d:4f4c $f8 $0f
+      sSPAWN_BOSS 3                                    ;; 0d:4f4e $fe $03
+    sELSE                                              ;; 0d:4f50 $01 $11
+      sIF_FLAG !wScriptFlags02.4                       ;; 0d:4f52 $08 $94 $00 $09
+        sSET_NPC_TYPES 89                              ;; 0d:4f56 $fc $59
+        sSPAWN_NPC 0                                   ;; 0d:4f58 $fd $00
+        sUNK_C9 $04, $35                               ;; 0d:4f5a $c9 $04 $35
+      sELSE                                            ;; 0d:4f5d $01 $04
+        sSET_ROOM_TILE $59, 2, 1                       ;; 0d:4f5f $b0 $59 $02 $01
+      sENDIF                                           ;; 0d:4f63
+    sENDIF                                             ;; 0d:4f63
     sEND                                               ;; 0d:4f63 $00
 
 script_01aa:
@@ -2551,28 +2538,29 @@ script_01ab:
     sEND                                               ;; 0d:4f7e $00
 
 script_01ac:
-    sIF_FLAG_JR wScriptFlags04.7, .jr_0d_4fb6          ;; 0d:4f7f $08 $a7 $00 $33
-    sDELAY 60                                          ;; 0d:4f83 $f0 $3c
-    sMSG                                               ;; 0d:4f85 $04
-      db "<10>Medusa:This will\n be your place\n to rest forever!<12>"
+    sIF_FLAG !wScriptFlags04.7                         ;; 0d:4f7f $08 $a7 $00 $33
+      sDELAY 60                                        ;; 0d:4f83 $f0 $3c
+      sMSG                                             ;; 0d:4f85 $04
+        db "<10>Medusa:This will\n be your place\n to rest forever!<12>"
       db "<11>", $00 ;; 0d:4f86
-    sDELAY 30                                          ;; 0d:4faa $f0 $1e
-    sSFX 20                                            ;; 0d:4fac $f9 $14
-    sFLASH_SCREEN                                      ;; 0d:4fae $bf
-    sFLASH_SCREEN                                      ;; 0d:4faf $bf
-    sDELAY 30                                          ;; 0d:4fb0 $f0 $1e
-    sSET_MUSIC 15                                      ;; 0d:4fb2 $f8 $0f
-    sSPAWN_BOSS 2                                      ;; 0d:4fb4 $fe $02
-.jr_0d_4fb6:
-    sIF_FLAG_JR !wScriptFlags04.7, .jr_0d_4fcc         ;; 0d:4fb6 $08 $27 $00 $12
-    sSET_NPC_TYPES 66                                  ;; 0d:4fba $fc $42
-    sSET_MUSIC 2                                       ;; 0d:4fbc $f8 $02
-    sIF_FLAG_JR wScriptFlags0A.5, wScriptFlags03.4, .jr_0d_4fc5 ;; 0d:4fbe $08 $d5 $9c $00 $02
-    sSPAWN_NPC 0                                       ;; 0d:4fc3 $fd $00
-.jr_0d_4fc5:
-    sIF_FLAG_JR !wScriptFlags03.4, wScriptFlags06.5, .jr_0d_4fcc ;; 0d:4fc5 $08 $1c $b5 $00 $02
-    sSPAWN_NPC 1                                       ;; 0d:4fca $fd $01
-.jr_0d_4fcc:
+      sDELAY 30                                        ;; 0d:4faa $f0 $1e
+      sSFX 20                                          ;; 0d:4fac $f9 $14
+      sFLASH_SCREEN                                    ;; 0d:4fae $bf
+      sFLASH_SCREEN                                    ;; 0d:4faf $bf
+      sDELAY 30                                        ;; 0d:4fb0 $f0 $1e
+      sSET_MUSIC 15                                    ;; 0d:4fb2 $f8 $0f
+      sSPAWN_BOSS 2                                    ;; 0d:4fb4 $fe $02
+    sENDIF                                             ;; 0d:4fb6
+    sIF_FLAG wScriptFlags04.7                          ;; 0d:4fb6 $08 $27 $00 $12
+      sSET_NPC_TYPES 66                                ;; 0d:4fba $fc $42
+      sSET_MUSIC 2                                     ;; 0d:4fbc $f8 $02
+      sIF_FLAG !wScriptFlags0A.5, !wScriptFlags03.4    ;; 0d:4fbe $08 $d5 $9c $00 $02
+        sSPAWN_NPC 0                                   ;; 0d:4fc3 $fd $00
+      sENDIF                                           ;; 0d:4fc5
+      sIF_FLAG wScriptFlags03.4, !wScriptFlags06.5     ;; 0d:4fc5 $08 $1c $b5 $00 $02
+        sSPAWN_NPC 1                                   ;; 0d:4fca $fd $01
+      sENDIF                                           ;; 0d:4fcc
+    sENDIF                                             ;; 0d:4fcc
     sEND                                               ;; 0d:4fcc $00
 
 script_01ad:
@@ -2580,65 +2568,65 @@ script_01ad:
     sEND                                               ;; 0d:4fcf $00
 
 script_01ae:
-    sIF_FLAG_JR wScriptFlags04.7, .jr_0d_5062          ;; 0d:4fd0 $08 $a7 $00 $8e
-    sSET_MUSIC 0                                       ;; 0d:4fd4 $f8 $00
-    sSFX 34                                            ;; 0d:4fd6 $f9 $22
-    sDELAY 180                                         ;; 0d:4fd8 $f0 $b4
-    sFADE_TO_BLACK                                     ;; 0d:4fda $bd
-    sLOAD_ROOM_INSTANT 15, $55, 20, 0                  ;; 0d:4fdb $f3 $0f $55 $14 $00
-    sSET_MUSIC 10                                      ;; 0d:4fe0 $f8 $0a
-    sFADE_TO_NORMAL                                    ;; 0d:4fe2 $bc
-    sMSG                                               ;; 0d:4fe3 $04
-      db "<10>Madusa:Came here\n to get my tears?\n Huh! What a joke!<12>"
+    sIF_FLAG !wScriptFlags04.7                         ;; 0d:4fd0 $08 $a7 $00 $8e
+      sSET_MUSIC 0                                     ;; 0d:4fd4 $f8 $00
+      sSFX 34                                          ;; 0d:4fd6 $f9 $22
+      sDELAY 180                                       ;; 0d:4fd8 $f0 $b4
+      sFADE_TO_BLACK                                   ;; 0d:4fda $bd
+      sLOAD_ROOM_INSTANT 15, $55, 20, 0                ;; 0d:4fdb $f3 $0f $55 $14 $00
+      sSET_MUSIC 10                                    ;; 0d:4fe0 $f8 $0a
+      sFADE_TO_NORMAL                                  ;; 0d:4fe2 $bc
+      sMSG                                             ;; 0d:4fe3 $04
+        db "<10>Madusa:Came here\n to get my tears?\n Huh! What a joke!<12>"
       db "<11>", $00 ;; 0d:4fe4
-    sFADE_TO_BLACK                                     ;; 0d:500b $bd
-    sDELAY 30                                          ;; 0d:500c $f0 $1e
-    sLOAD_ROOM_INSTANT 1, $30, 12, 8                   ;; 0d:500e $f3 $01 $30 $0c $08
-    sSET_PLAYER_DIRECTION_UP                           ;; 0d:5013 $84
-    sFOLLOWER_SET_POSITION 10, 8                       ;; 0d:5014 $99 $0a $08
-    sFADE_TO_NORMAL                                    ;; 0d:5017 $bc
-    sDELAY 60                                          ;; 0d:5018 $f0 $3c
-    sFOLLOWER_DIRECTION_LEFT                           ;; 0d:501a $97
-    sDELAY 60                                          ;; 0d:501b $f0 $3c
-    sFOLLOWER_DIRECTION_RIGHT                          ;; 0d:501d $96
-    sDELAY 60                                          ;; 0d:501e $f0 $3c
-    sSET_PLAYER_DIRECTION_LEFT                         ;; 0d:5020 $87
-    sFOLLOWER_SET_POSITION 10, 8                       ;; 0d:5021 $99 $0a $08
-    sDELAY 60                                          ;; 0d:5024 $f0 $3c
-    sMSG                                               ;; 0d:5026 $04
-      db "<10>Amanda:Can't find\n a drop of tear__<12>"
+      sFADE_TO_BLACK                                   ;; 0d:500b $bd
+      sDELAY 30                                        ;; 0d:500c $f0 $1e
+      sLOAD_ROOM_INSTANT 1, $30, 12, 8                 ;; 0d:500e $f3 $01 $30 $0c $08
+      sSET_PLAYER_DIRECTION_UP                         ;; 0d:5013 $84
+      sFOLLOWER_SET_POSITION 10, 8                     ;; 0d:5014 $99 $0a $08
+      sFADE_TO_NORMAL                                  ;; 0d:5017 $bc
+      sDELAY 60                                        ;; 0d:5018 $f0 $3c
+      sFOLLOWER_DIRECTION_LEFT                         ;; 0d:501a $97
+      sDELAY 60                                        ;; 0d:501b $f0 $3c
+      sFOLLOWER_DIRECTION_RIGHT                        ;; 0d:501d $96
+      sDELAY 60                                        ;; 0d:501e $f0 $3c
+      sSET_PLAYER_DIRECTION_LEFT                       ;; 0d:5020 $87
+      sFOLLOWER_SET_POSITION 10, 8                     ;; 0d:5021 $99 $0a $08
+      sDELAY 60                                        ;; 0d:5024 $f0 $3c
+      sMSG                                             ;; 0d:5026 $04
+        db "<10>Amanda:Can't find\n a drop of tear__<12>"
       db "<1b><BOY>:Let's go back\n to Jadd first.<12>"
       db "<11>", $00 ;; 0d:5027
-    sSET_PLAYER_DIRECTION_RIGHT                        ;; 0d:5058 $86
-    sPLAYER_STEP_FORWARD                               ;; 0d:5059 $80
-    sPLAYER_STEP_FORWARD                               ;; 0d:505a $80
-    sCALL script_0227                                  ;; 0d:505b $02 $28 $9c
-    sCLEAR_FLAG wScriptFlags0A.5                       ;; 0d:505e $db $55
-    sSET_FLAG wScriptFlags04.7                         ;; 0d:5060 $da $27
-.jr_0d_5062:
+      sSET_PLAYER_DIRECTION_RIGHT                      ;; 0d:5058 $86
+      sPLAYER_STEP_FORWARD                             ;; 0d:5059 $80
+      sPLAYER_STEP_FORWARD                             ;; 0d:505a $80
+      sCALL script_0227                                ;; 0d:505b $02 $28 $9c
+      sCLEAR_FLAG wScriptFlags0A.5                     ;; 0d:505e $db $55
+      sSET_FLAG wScriptFlags04.7                       ;; 0d:5060 $da $27
+    sENDIF                                             ;; 0d:5062
     sEND                                               ;; 0d:5062 $00
 
 script_01af:
-    sIF_FLAG_JR !wScriptFlags03.5, wScriptFlags05.0, .jr_0d_50a2 ;; 0d:5063 $08 $1d $a8 $00 $3a
-    sSET_NPC_TYPES 65                                  ;; 0d:5068 $fc $41
-    sSPAWN_NPC 0                                       ;; 0d:506a $fd $00
-    sDELAY 20                                          ;; 0d:506c $f0 $14
-    sMSG                                               ;; 0d:506e $04
-      db "<10>Davias:HA!\n You can never\n defeat me!<12>"
+    sIF_FLAG wScriptFlags03.5, !wScriptFlags05.0       ;; 0d:5063 $08 $1d $a8 $00 $3a
+      sSET_NPC_TYPES 65                                ;; 0d:5068 $fc $41
+      sSPAWN_NPC 0                                     ;; 0d:506a $fd $00
+      sDELAY 20                                        ;; 0d:506c $f0 $14
+      sMSG                                             ;; 0d:506e $04
+        db "<10>Davias:HA!\n You can never\n defeat me!<12>"
       db "<11>", $00 ;; 0d:506f
-    sFLASH_SCREEN                                      ;; 0d:508f $bf
-    sSFX 20                                            ;; 0d:5090 $f9 $14
-    sFLASH_SCREEN                                      ;; 0d:5092 $bf
-    sSFX 20                                            ;; 0d:5093 $f9 $14
-    sDEL_NPC_1                                         ;; 0d:5095 $18
-    sSFX 20                                            ;; 0d:5096 $f9 $14
-    sFLASH_SCREEN                                      ;; 0d:5098 $bf
-    sSFX 20                                            ;; 0d:5099 $f9 $14
-    sFLASH_SCREEN                                      ;; 0d:509b $bf
-    sDELAY 30                                          ;; 0d:509c $f0 $1e
-    sSPAWN_BOSS 4                                      ;; 0d:509e $fe $04
-    sSET_MUSIC 19                                      ;; 0d:50a0 $f8 $13
-.jr_0d_50a2:
+      sFLASH_SCREEN                                    ;; 0d:508f $bf
+      sSFX 20                                          ;; 0d:5090 $f9 $14
+      sFLASH_SCREEN                                    ;; 0d:5092 $bf
+      sSFX 20                                          ;; 0d:5093 $f9 $14
+      sDEL_NPC_1                                       ;; 0d:5095 $18
+      sSFX 20                                          ;; 0d:5096 $f9 $14
+      sFLASH_SCREEN                                    ;; 0d:5098 $bf
+      sSFX 20                                          ;; 0d:5099 $f9 $14
+      sFLASH_SCREEN                                    ;; 0d:509b $bf
+      sDELAY 30                                        ;; 0d:509c $f0 $1e
+      sSPAWN_BOSS 4                                    ;; 0d:509e $fe $04
+      sSET_MUSIC 19                                    ;; 0d:50a0 $f8 $13
+    sENDIF                                             ;; 0d:50a2
     sSET_FLAG wScriptFlags0F.1                         ;; 0d:50a2 $da $79
     sEND                                               ;; 0d:50a4 $00
 
@@ -2692,21 +2680,21 @@ script_01b1:
     sEND                                               ;; 0d:51fe $00
 
 script_01b2:
-    sIF_FLAG_JR wScriptFlags05.1, .jr_0d_5211          ;; 0d:51ff $08 $a9 $00 $0e
-    sDELAY 30                                          ;; 0d:5203 $f0 $1e
-    sSFX 20                                            ;; 0d:5205 $f9 $14
-    sFLASH_SCREEN                                      ;; 0d:5207 $bf
-    sSFX 20                                            ;; 0d:5208 $f9 $14
-    sFLASH_SCREEN                                      ;; 0d:520a $bf
-    sSET_MUSIC 15                                      ;; 0d:520b $f8 $0f
-    sSPAWN_BOSS 6                                      ;; 0d:520d $fe $06
-    sJR  .jr_0d_521c                                   ;; 0d:520f $01 $0b
-.jr_0d_5211:
-    sIF_FLAG_JR wScriptFlags09.6, .jr_0d_521c          ;; 0d:5211 $08 $ce $00 $07
-    sSET_NPC_TYPES 89                                  ;; 0d:5215 $fc $59
-    sSPAWN_NPC 1                                       ;; 0d:5217 $fd $01
-    sUNK_C9 $04, $5d                                   ;; 0d:5219 $c9 $04 $5d
-.jr_0d_521c:
+    sIF_FLAG !wScriptFlags05.1                         ;; 0d:51ff $08 $a9 $00 $0e
+      sDELAY 30                                        ;; 0d:5203 $f0 $1e
+      sSFX 20                                          ;; 0d:5205 $f9 $14
+      sFLASH_SCREEN                                    ;; 0d:5207 $bf
+      sSFX 20                                          ;; 0d:5208 $f9 $14
+      sFLASH_SCREEN                                    ;; 0d:520a $bf
+      sSET_MUSIC 15                                    ;; 0d:520b $f8 $0f
+      sSPAWN_BOSS 6                                    ;; 0d:520d $fe $06
+    sELSE                                              ;; 0d:520f $01 $0b
+      sIF_FLAG !wScriptFlags09.6                       ;; 0d:5211 $08 $ce $00 $07
+        sSET_NPC_TYPES 89                              ;; 0d:5215 $fc $59
+        sSPAWN_NPC 1                                   ;; 0d:5217 $fd $01
+        sUNK_C9 $04, $5d                               ;; 0d:5219 $c9 $04 $5d
+      sENDIF                                           ;; 0d:521c
+    sENDIF                                             ;; 0d:521c
     sEND                                               ;; 0d:521c $00
 
 script_01b3:
@@ -2724,24 +2712,23 @@ script_01b4:
     sEND                                               ;; 0d:523a $00
 
 script_01b5:
-    sIF_FLAG_JR wScriptFlags06.1, .jr_0d_524d          ;; 0d:523b $08 $b1 $00 $0e
-    sDELAY 30                                          ;; 0d:523f $f0 $1e
-    sSFX 20                                            ;; 0d:5241 $f9 $14
-    sFLASH_SCREEN                                      ;; 0d:5243 $bf
-    sSFX 20                                            ;; 0d:5244 $f9 $14
-    sFLASH_SCREEN                                      ;; 0d:5246 $bf
-    sSPAWN_BOSS 12                                     ;; 0d:5247 $fe $0c
-    sSET_MUSIC 15                                      ;; 0d:5249 $f8 $0f
-    sJR  .jr_0d_5250                                   ;; 0d:524b $01 $03
-.jr_0d_524d:
-    sCALL script_0248                                  ;; 0d:524d $02 $33 $e7
-.jr_0d_5250:
+    sIF_FLAG !wScriptFlags06.1                         ;; 0d:523b $08 $b1 $00 $0e
+      sDELAY 30                                        ;; 0d:523f $f0 $1e
+      sSFX 20                                          ;; 0d:5241 $f9 $14
+      sFLASH_SCREEN                                    ;; 0d:5243 $bf
+      sSFX 20                                          ;; 0d:5244 $f9 $14
+      sFLASH_SCREEN                                    ;; 0d:5246 $bf
+      sSPAWN_BOSS 12                                   ;; 0d:5247 $fe $0c
+      sSET_MUSIC 15                                    ;; 0d:5249 $f8 $0f
+    sELSE                                              ;; 0d:524b $01 $03
+      sCALL script_0248                                ;; 0d:524d $02 $33 $e7
+    sENDIF                                             ;; 0d:5250
     sEND                                               ;; 0d:5250 $00
 
 script_01b6:
-    sIF_FLAG_JR wScriptFlags06.1, .jr_0d_5257          ;; 0d:5251 $08 $b1 $00 $02
-    sSET_MUSIC 12                                      ;; 0d:5255 $f8 $0c
-.jr_0d_5257:
+    sIF_FLAG !wScriptFlags06.1                         ;; 0d:5251 $08 $b1 $00 $02
+      sSET_MUSIC 12                                    ;; 0d:5255 $f8 $0c
+    sENDIF                                             ;; 0d:5257
     sEND                                               ;; 0d:5257 $00
 
 script_01b7:
@@ -2760,18 +2747,17 @@ script_01b7:
     sEND                                               ;; 0d:52a5 $00
 
 script_01b8:
-    sIF_FLAG_JR wScriptFlags05.3, .jr_0d_52b8          ;; 0d:52a6 $08 $ab $00 $0e
-    sDELAY 30                                          ;; 0d:52aa $f0 $1e
-    sSFX 20                                            ;; 0d:52ac $f9 $14
-    sFLASH_SCREEN                                      ;; 0d:52ae $bf
-    sSFX 20                                            ;; 0d:52af $f9 $14
-    sFLASH_SCREEN                                      ;; 0d:52b1 $bf
-    sSPAWN_BOSS 5                                      ;; 0d:52b2 $fe $05
-    sSET_MUSIC 15                                      ;; 0d:52b4 $f8 $0f
-    sJR  .jr_0d_52b9                                   ;; 0d:52b6 $01 $01
-.jr_0d_52b8:
-    sUNK_E0                                            ;; 0d:52b8 $e0
-.jr_0d_52b9:
+    sIF_FLAG !wScriptFlags05.3                         ;; 0d:52a6 $08 $ab $00 $0e
+      sDELAY 30                                        ;; 0d:52aa $f0 $1e
+      sSFX 20                                          ;; 0d:52ac $f9 $14
+      sFLASH_SCREEN                                    ;; 0d:52ae $bf
+      sSFX 20                                          ;; 0d:52af $f9 $14
+      sFLASH_SCREEN                                    ;; 0d:52b1 $bf
+      sSPAWN_BOSS 5                                    ;; 0d:52b2 $fe $05
+      sSET_MUSIC 15                                    ;; 0d:52b4 $f8 $0f
+    sELSE                                              ;; 0d:52b6 $01 $01
+      sUNK_E0                                          ;; 0d:52b8 $e0
+    sENDIF                                             ;; 0d:52b9
     sEND                                               ;; 0d:52b9 $00
 
 script_01b9:
@@ -2796,41 +2782,41 @@ script_01ba:
     sEND                                               ;; 0d:5303 $00
 
 script_01bb:
-    sIF_FLAG_JR wScriptFlags05.4, .jr_0d_53c3          ;; 0d:5304 $08 $ac $00 $bb
-    sSET_NPC_TYPES 23                                  ;; 0d:5308 $fc $17
-    sSPAWN_NPC 0                                       ;; 0d:530a $fd $00
-    sSET_PLAYER_DIRECTION_LEFT                         ;; 0d:530c $87
-    sFOLLOWER_DIRECTION_UP                             ;; 0d:530d $94
-    sSET_PLAYER_POSITION 16, 12                        ;; 0d:530e $8a $10 $0c
-    sFOLLOWER_SET_POSITION 16, 12                      ;; 0d:5311 $99 $10 $0c
-    sLOOP 6, 2                                         ;; 0d:5314 $03 $06 $02
-      sPLAYER_STEP_FORWARD                             ;; 0d:5317 $80
-    sEND                                               ;; 0d:5318 $00
-    sSET_PLAYER_DIRECTION_UP                           ;; 0d:5319 $84
-    sMSG                                               ;; 0d:531a $04
-      db "<10>Dark Lord:Looks\n like you've been\n a bit stronger.<12>"
+    sIF_FLAG !wScriptFlags05.4                         ;; 0d:5304 $08 $ac $00 $bb
+      sSET_NPC_TYPES 23                                ;; 0d:5308 $fc $17
+      sSPAWN_NPC 0                                     ;; 0d:530a $fd $00
+      sSET_PLAYER_DIRECTION_LEFT                       ;; 0d:530c $87
+      sFOLLOWER_DIRECTION_UP                           ;; 0d:530d $94
+      sSET_PLAYER_POSITION 16, 12                      ;; 0d:530e $8a $10 $0c
+      sFOLLOWER_SET_POSITION 16, 12                    ;; 0d:5311 $99 $10 $0c
+      sLOOP 6, 2                                       ;; 0d:5314 $03 $06 $02
+        sPLAYER_STEP_FORWARD                           ;; 0d:5317 $80
+      sEND                                             ;; 0d:5318 $00
+      sSET_PLAYER_DIRECTION_UP                         ;; 0d:5319 $84
+      sMSG                                             ;; 0d:531a $04
+        db "<10>Dark Lord:Looks\n like you've been\n a bit stronger.<12>"
       db "<1b> But, not enough\n to fight me, boy!<12>"
       db "<1b>", $00 ;; 0d:531b
-    sSET_PLAYER_DIRECTION_RIGHT                        ;; 0d:5359 $86
-    sFOLLOWER_DIRECTION_LEFT                           ;; 0d:535a $97
-    sMSG                                               ;; 0d:535b $04
-      db "<BOY>:Stay outside.\n It will be too\n dangerous here.<12>"
+      sSET_PLAYER_DIRECTION_RIGHT                      ;; 0d:5359 $86
+      sFOLLOWER_DIRECTION_LEFT                         ;; 0d:535a $97
+      sMSG                                             ;; 0d:535b $04
+        db "<BOY>:Stay outside.\n It will be too\n dangerous here.<12>"
       db "<1b><GIRL>:__ Okay__\n Be careful.<12>"
       db "<11>", $00 ;; 0d:535c
-    sFOLLOWER_DIRECTION_DOWN                           ;; 0d:5391 $95
-    sFOLLOWER_STEP_FORWARD                             ;; 0d:5392 $90
-    sFOLLOWER_STEP_FORWARD                             ;; 0d:5393 $90
-    sFOLLOWER_DELETE                                   ;; 0d:5394 $98
-    sSFX 16                                            ;; 0d:5395 $f9 $10
-    sSET_ROOM_TILE $2f, 8, 7                           ;; 0d:5397 $b0 $2f $08 $07
-    sSET_MUSIC 0                                       ;; 0d:539b $f8 $00
-    sDELAY 20                                          ;; 0d:539d $f0 $14
-    sSET_PLAYER_DIRECTION_UP                           ;; 0d:539f $84
-    sMSG                                               ;; 0d:53a0 $04
-      db "<10>Dark Lord:Good\n boy, <BOY>!\n __ Now, come!<12>"
+      sFOLLOWER_DIRECTION_DOWN                         ;; 0d:5391 $95
+      sFOLLOWER_STEP_FORWARD                           ;; 0d:5392 $90
+      sFOLLOWER_STEP_FORWARD                           ;; 0d:5393 $90
+      sFOLLOWER_DELETE                                 ;; 0d:5394 $98
+      sSFX 16                                          ;; 0d:5395 $f9 $10
+      sSET_ROOM_TILE $2f, 8, 7                         ;; 0d:5397 $b0 $2f $08 $07
+      sSET_MUSIC 0                                     ;; 0d:539b $f8 $00
+      sDELAY 20                                        ;; 0d:539d $f0 $14
+      sSET_PLAYER_DIRECTION_UP                         ;; 0d:539f $84
+      sMSG                                             ;; 0d:53a0 $04
+        db "<10>Dark Lord:Good\n boy, <BOY>!\n __ Now, come!<12>"
       db "<11>", $00 ;; 0d:53a1
-    sSET_MUSIC 19                                      ;; 0d:53c1 $f8 $13
-.jr_0d_53c3:
+      sSET_MUSIC 19                                    ;; 0d:53c1 $f8 $13
+    sENDIF                                             ;; 0d:53c3
     sEND                                               ;; 0d:53c3 $00
 
 script_01bc:
@@ -2861,21 +2847,21 @@ script_01bd:
     sEND                                               ;; 0d:5426 $00
 
 script_01be:
-    sIF_FLAG_JR wScriptFlags05.5, .jr_0d_5439          ;; 0d:5427 $08 $ad $00 $0e
-    sDELAY 20                                          ;; 0d:542b $f0 $14
-    sSFX 20                                            ;; 0d:542d $f9 $14
-    sFLASH_SCREEN                                      ;; 0d:542f $bf
-    sSFX 20                                            ;; 0d:5430 $f9 $14
-    sFLASH_SCREEN                                      ;; 0d:5432 $bf
-    sSPAWN_BOSS 8                                      ;; 0d:5433 $fe $08
-    sSET_MUSIC 15                                      ;; 0d:5435 $f8 $0f
-    sJR  .jr_0d_5444                                   ;; 0d:5437 $01 $0b
-.jr_0d_5439:
-    sIF_FLAG_JR wScriptFlags07.2, .jr_0d_5444          ;; 0d:5439 $08 $ba $00 $07
-    sSET_NPC_TYPES 89                                  ;; 0d:543d $fc $59
-    sSPAWN_NPC 0                                       ;; 0d:543f $fd $00
-    sUNK_C9 $04, $64                                   ;; 0d:5441 $c9 $04 $64
-.jr_0d_5444:
+    sIF_FLAG !wScriptFlags05.5                         ;; 0d:5427 $08 $ad $00 $0e
+      sDELAY 20                                        ;; 0d:542b $f0 $14
+      sSFX 20                                          ;; 0d:542d $f9 $14
+      sFLASH_SCREEN                                    ;; 0d:542f $bf
+      sSFX 20                                          ;; 0d:5430 $f9 $14
+      sFLASH_SCREEN                                    ;; 0d:5432 $bf
+      sSPAWN_BOSS 8                                    ;; 0d:5433 $fe $08
+      sSET_MUSIC 15                                    ;; 0d:5435 $f8 $0f
+    sELSE                                              ;; 0d:5437 $01 $0b
+      sIF_FLAG !wScriptFlags07.2                       ;; 0d:5439 $08 $ba $00 $07
+        sSET_NPC_TYPES 89                              ;; 0d:543d $fc $59
+        sSPAWN_NPC 0                                   ;; 0d:543f $fd $00
+        sUNK_C9 $04, $64                               ;; 0d:5441 $c9 $04 $64
+      sENDIF                                           ;; 0d:5444
+    sENDIF                                             ;; 0d:5444
     sEND                                               ;; 0d:5444 $00
 
 script_01bf:
@@ -2892,21 +2878,21 @@ script_01c0:
     sEND                                               ;; 0d:545c $00
 
 script_01c1:
-    sIF_FLAG_JR wScriptFlags05.7, .jr_0d_546f          ;; 0d:545d $08 $af $00 $0e
-    sDELAY 20                                          ;; 0d:5461 $f0 $14
-    sSFX 20                                            ;; 0d:5463 $f9 $14
-    sFLASH_SCREEN                                      ;; 0d:5465 $bf
-    sSFX 20                                            ;; 0d:5466 $f9 $14
-    sFLASH_SCREEN                                      ;; 0d:5468 $bf
-    sSPAWN_BOSS 10                                     ;; 0d:5469 $fe $0a
-    sSET_MUSIC 15                                      ;; 0d:546b $f8 $0f
-    sJR  .jr_0d_547a                                   ;; 0d:546d $01 $0b
-.jr_0d_546f:
-    sIF_FLAG_JR wScriptFlags07.3, .jr_0d_547a          ;; 0d:546f $08 $bb $00 $07
-    sSET_NPC_TYPES 89                                  ;; 0d:5473 $fc $59
-    sSPAWN_NPC 0                                       ;; 0d:5475 $fd $00
-    sUNK_C9 $04, $37                                   ;; 0d:5477 $c9 $04 $37
-.jr_0d_547a:
+    sIF_FLAG !wScriptFlags05.7                         ;; 0d:545d $08 $af $00 $0e
+      sDELAY 20                                        ;; 0d:5461 $f0 $14
+      sSFX 20                                          ;; 0d:5463 $f9 $14
+      sFLASH_SCREEN                                    ;; 0d:5465 $bf
+      sSFX 20                                          ;; 0d:5466 $f9 $14
+      sFLASH_SCREEN                                    ;; 0d:5468 $bf
+      sSPAWN_BOSS 10                                   ;; 0d:5469 $fe $0a
+      sSET_MUSIC 15                                    ;; 0d:546b $f8 $0f
+    sELSE                                              ;; 0d:546d $01 $0b
+      sIF_FLAG !wScriptFlags07.3                       ;; 0d:546f $08 $bb $00 $07
+        sSET_NPC_TYPES 89                              ;; 0d:5473 $fc $59
+        sSPAWN_NPC 0                                   ;; 0d:5475 $fd $00
+        sUNK_C9 $04, $37                               ;; 0d:5477 $c9 $04 $37
+      sENDIF                                           ;; 0d:547a
+    sENDIF                                             ;; 0d:547a
     sEND                                               ;; 0d:547a $00
 
 script_01c2:
@@ -2923,17 +2909,17 @@ script_01c3:
     sEND                                               ;; 0d:5494 $00
 
 script_01c4:
-    sIF_FLAG_JR wScriptFlags05.2, .jr_0d_54ab          ;; 0d:5495 $08 $aa $00 $12
-    sSFX 16                                            ;; 0d:5499 $f9 $10
-    sSET_ROOM_TILE $30, 1, 6                           ;; 0d:549b $b0 $30 $01 $06
-    sDELAY 20                                          ;; 0d:549f $f0 $14
-    sSFX 20                                            ;; 0d:54a1 $f9 $14
-    sFLASH_SCREEN                                      ;; 0d:54a3 $bf
-    sSFX 20                                            ;; 0d:54a4 $f9 $14
-    sFLASH_SCREEN                                      ;; 0d:54a6 $bf
-    sSPAWN_BOSS 7                                      ;; 0d:54a7 $fe $07
-    sSET_MUSIC 15                                      ;; 0d:54a9 $f8 $0f
-.jr_0d_54ab:
+    sIF_FLAG !wScriptFlags05.2                         ;; 0d:5495 $08 $aa $00 $12
+      sSFX 16                                          ;; 0d:5499 $f9 $10
+      sSET_ROOM_TILE $30, 1, 6                         ;; 0d:549b $b0 $30 $01 $06
+      sDELAY 20                                        ;; 0d:549f $f0 $14
+      sSFX 20                                          ;; 0d:54a1 $f9 $14
+      sFLASH_SCREEN                                    ;; 0d:54a3 $bf
+      sSFX 20                                          ;; 0d:54a4 $f9 $14
+      sFLASH_SCREEN                                    ;; 0d:54a6 $bf
+      sSPAWN_BOSS 7                                    ;; 0d:54a7 $fe $07
+      sSET_MUSIC 15                                    ;; 0d:54a9 $f8 $0f
+    sENDIF                                             ;; 0d:54ab
     sEND                                               ;; 0d:54ab $00
 
 script_01c5:
@@ -2953,18 +2939,17 @@ script_01c6:
     sEND                                               ;; 0d:54ce $00
 
 script_01c7:
-    sIF_FLAG_JR wScriptFlags05.6, .jr_0d_54e1          ;; 0d:54cf $08 $ae $00 $0e
-    sDELAY 20                                          ;; 0d:54d3 $f0 $14
-    sSFX 20                                            ;; 0d:54d5 $f9 $14
-    sFLASH_SCREEN                                      ;; 0d:54d7 $bf
-    sSFX 20                                            ;; 0d:54d8 $f9 $14
-    sFLASH_SCREEN                                      ;; 0d:54da $bf
-    sSPAWN_BOSS 9                                      ;; 0d:54db $fe $09
-    sSET_MUSIC 15                                      ;; 0d:54dd $f8 $0f
-    sJR  .jr_0d_54e5                                   ;; 0d:54df $01 $04
-.jr_0d_54e1:
-    sSET_ROOM_TILE $4c, 8, 2                           ;; 0d:54e1 $b0 $4c $08 $02
-.jr_0d_54e5:
+    sIF_FLAG !wScriptFlags05.6                         ;; 0d:54cf $08 $ae $00 $0e
+      sDELAY 20                                        ;; 0d:54d3 $f0 $14
+      sSFX 20                                          ;; 0d:54d5 $f9 $14
+      sFLASH_SCREEN                                    ;; 0d:54d7 $bf
+      sSFX 20                                          ;; 0d:54d8 $f9 $14
+      sFLASH_SCREEN                                    ;; 0d:54da $bf
+      sSPAWN_BOSS 9                                    ;; 0d:54db $fe $09
+      sSET_MUSIC 15                                    ;; 0d:54dd $f8 $0f
+    sELSE                                              ;; 0d:54df $01 $04
+      sSET_ROOM_TILE $4c, 8, 2                         ;; 0d:54e1 $b0 $4c $08 $02
+    sENDIF                                             ;; 0d:54e5
     sEND                                               ;; 0d:54e5 $00
 
 script_01c8:
@@ -2984,15 +2969,15 @@ script_01c9:
     sEND                                               ;; 0d:550a $00
 
 script_01ca:
-    sIF_FLAG_JR wScriptFlags06.0, .jr_0d_551b          ;; 0d:550b $08 $b0 $00 $0c
-    sDELAY 20                                          ;; 0d:550f $f0 $14
-    sSFX 20                                            ;; 0d:5511 $f9 $14
-    sFLASH_SCREEN                                      ;; 0d:5513 $bf
-    sSFX 20                                            ;; 0d:5514 $f9 $14
-    sFLASH_SCREEN                                      ;; 0d:5516 $bf
-    sSPAWN_BOSS 11                                     ;; 0d:5517 $fe $0b
-    sSET_MUSIC 15                                      ;; 0d:5519 $f8 $0f
-.jr_0d_551b:
+    sIF_FLAG !wScriptFlags06.0                         ;; 0d:550b $08 $b0 $00 $0c
+      sDELAY 20                                        ;; 0d:550f $f0 $14
+      sSFX 20                                          ;; 0d:5511 $f9 $14
+      sFLASH_SCREEN                                    ;; 0d:5513 $bf
+      sSFX 20                                          ;; 0d:5514 $f9 $14
+      sFLASH_SCREEN                                    ;; 0d:5516 $bf
+      sSPAWN_BOSS 11                                   ;; 0d:5517 $fe $0b
+      sSET_MUSIC 15                                    ;; 0d:5519 $f8 $0f
+    sENDIF                                             ;; 0d:551b
     sEND                                               ;; 0d:551b $00
 
 script_01cb:
@@ -3033,39 +3018,37 @@ script_01e0:
       db "<10>Welcome to Kett's.\nRooms ahead are\noccupied.<12>"
       db "<1b>Please feel free\nto use the\nwestern room.<12>"
       db "<1b>You can't get past\nthis door.\nIt's for Mr. Lee.", $00 ;; 0d:5570
-    sIF_FLAG_JR !wScriptFlags01.5, .jr_0d_5635         ;; 0d:55ce $08 $0d $00 $63
-    sMSG                                               ;; 0d:55d2 $04
-      db "<12>"
-      db "<1b>", $00                   ;; 0d:55d3
-    sIF_NOT_EQUIPED_JR $27, .jr_0d_5616                ;; 0d:55d6 $09 $27 $00 $3c
-    sSET_MUSIC 0                                       ;; 0d:55da $f8 $00
-    sMSG                                               ;; 0d:55dc $04
-      db "T_that Mirror_!", $00                        ;; 0d:55dd
-    sDELAY 30                                          ;; 0d:55e8 $f0 $1e
-    sMSG                                               ;; 0d:55ea $04
-      db "\nUGGG_ GRRH_", $00                          ;; 0d:55eb
-    sDELAY 30                                          ;; 0d:55f7 $f0 $1e
-    sMSG                                               ;; 0d:55f9 $04
-      db "\nUG_ Hg_ GRRR_ _<12>"
-      db "<11>", $00  ;; 0d:55fa
-    sSFX 20                                            ;; 0d:560b $f9 $14
-    sFLASH_SCREEN                                      ;; 0d:560d $bf
-    sFLASH_SCREEN                                      ;; 0d:560e $bf
-    sDEL_NPC_1                                         ;; 0d:560f $18
-    sSPAWN_NPC 2                                       ;; 0d:5610 $fd $02
-    sSET_MUSIC 26                                      ;; 0d:5612 $f8 $1a
-    sJR  .jr_0d_5633                                   ;; 0d:5614 $01 $1d
-.jr_0d_5616:
-    sMSG                                               ;; 0d:5616 $04
-      db "Your friend?\nNo__\nI do not know her.<12>"
+    sIF_FLAG wScriptFlags01.5                          ;; 0d:55ce $08 $0d $00 $63
+      sMSG                                             ;; 0d:55d2 $04
+        db "<12>"
+      db "<1b>", $00                 ;; 0d:55d3
+      sIF_EQUIPED $27                                  ;; 0d:55d6 $09 $27 $00 $3c
+        sSET_MUSIC 0                                   ;; 0d:55da $f8 $00
+        sMSG                                           ;; 0d:55dc $04
+          db "T_that Mirror_!", $00                    ;; 0d:55dd
+        sDELAY 30                                      ;; 0d:55e8 $f0 $1e
+        sMSG                                           ;; 0d:55ea $04
+          db "\nUGGG_ GRRH_", $00                      ;; 0d:55eb
+        sDELAY 30                                      ;; 0d:55f7 $f0 $1e
+        sMSG                                           ;; 0d:55f9 $04
+          db "\nUG_ Hg_ GRRR_ _<12>"
+      db "<11>", $00 ;; 0d:55fa
+        sSFX 20                                        ;; 0d:560b $f9 $14
+        sFLASH_SCREEN                                  ;; 0d:560d $bf
+        sFLASH_SCREEN                                  ;; 0d:560e $bf
+        sDEL_NPC_1                                     ;; 0d:560f $18
+        sSPAWN_NPC 2                                   ;; 0d:5610 $fd $02
+        sSET_MUSIC 26                                  ;; 0d:5612 $f8 $1a
+      sELSE                                            ;; 0d:5614 $01 $1d
+        sMSG                                           ;; 0d:5616 $04
+          db "Your friend?\nNo__\nI do not know her.<12>"
       db "<11>", $00 ;; 0d:5617
-.jr_0d_5633:
-    sJR  .jr_0d_5639                                   ;; 0d:5633 $01 $04
-.jr_0d_5635:
-    sMSG                                               ;; 0d:5635 $04
-      db "<12>"
-      db "<11>", $00                   ;; 0d:5636
-.jr_0d_5639:
+      sENDIF                                           ;; 0d:5633
+    sELSE                                              ;; 0d:5633 $01 $04
+      sMSG                                             ;; 0d:5635 $04
+        db "<12>"
+      db "<11>", $00                 ;; 0d:5636
+    sENDIF                                             ;; 0d:5639
     sEND                                               ;; 0d:5639 $00
 
 script_01e1:
@@ -3102,10 +3085,10 @@ script_01e4:
       db "<1b> They must be kept\n in the caskets\n at the basement.<12>"
       db "<1b> Looking for the \n Mirror?  Do you\n want me to help?<12>"
       db "<13><11>", $00 ;; 0d:56e9
-    sIF_FLAG_JR wScriptFlags0F.7, .jr_0d_576f          ;; 0d:5767 $08 $ff $00 $04
-    sGIVE_FOLLOWER 2                                   ;; 0d:576b $9c $02
-    sSET_FLAG wScriptFlags0A.2                         ;; 0d:576d $da $52
-.jr_0d_576f:
+    sIF_FLAG !wScriptFlags0F.7                         ;; 0d:5767 $08 $ff $00 $04
+      sGIVE_FOLLOWER 2                                 ;; 0d:576b $9c $02
+      sSET_FLAG wScriptFlags0A.2                       ;; 0d:576d $da $52
+    sENDIF                                             ;; 0d:576f
     sEND                                               ;; 0d:576f $00
 
 script_01e5:
@@ -3121,11 +3104,11 @@ script_01e6:
     sEND                                               ;; 0d:5797 $00
 
 script_01e7:
-    sIF_FLAG_JR !wScriptFlags02.0, wScriptFlags02.1, .jr_0d_57b6 ;; 0d:5798 $08 $10 $91 $00 $19
-    sMSG                                               ;; 0d:579d $04
-      db "<10>H_ he attacked\nme from behind_!<12>"
+    sIF_FLAG wScriptFlags02.0, !wScriptFlags02.1       ;; 0d:5798 $08 $10 $91 $00 $19
+      sMSG                                             ;; 0d:579d $04
+        db "<10>H_ he attacked\nme from behind_!<12>"
       db "<11>", $00 ;; 0d:579e
-.jr_0d_57b6:
+    sENDIF                                             ;; 0d:57b6
     sEND                                               ;; 0d:57b6 $00
 
 script_01e8:
@@ -3157,15 +3140,14 @@ script_01eb:
 script_01ec:
     sMSG                                               ;; 0d:5868 $04
       db "<10>", $00                                   ;; 0d:5869
-    sIF_FLAG_JR wScriptFlags03.7, .jr_0d_587d          ;; 0d:586b $08 $9f $00 $0e
-    sMSG                                               ;; 0d:586f $04
-      db "Cibba's in here!", $00                       ;; 0d:5870
-    sJR  .jr_0d_58c4                                   ;; 0d:587b $01 $47
-.jr_0d_587d:
-    sMSG                                               ;; 0d:587d $04
-      db "Lorim was attacked\nby many monsters.\nCibba went there.<12>"
+    sIF_FLAG !wScriptFlags03.7                         ;; 0d:586b $08 $9f $00 $0e
+      sMSG                                             ;; 0d:586f $04
+        db "Cibba's in here!", $00                     ;; 0d:5870
+    sELSE                                              ;; 0d:587b $01 $47
+      sMSG                                             ;; 0d:587d $04
+        db "Lorim was attacked\nby many monsters.\nCibba went there.<12>"
       db "<1b>Lorim is south of\nthe Snowfield over\nthe southern sea.", $00 ;; 0d:587e
-.jr_0d_58c4:
+    sENDIF                                             ;; 0d:58c4
     sMSG                                               ;; 0d:58c4 $04
       db "<12>"
       db "<11>", $00                   ;; 0d:58c5
@@ -3180,38 +3162,37 @@ script_01ed:
 script_01ee:
     sMSG                                               ;; 0d:58eb $04
       db "<10>", $00                                   ;; 0d:58ec
-    sIF_FLAG_JR !wScriptFlags02.1, .jr_0d_5913         ;; 0d:58ee $08 $11 $00 $21
-    sMSG                                               ;; 0d:58f2 $04
-      db "Cibba:Julius went\n westward in his\n airship.", $00 ;; 0d:58f3
-    sJR  .jr_0d_5925                                   ;; 0d:5911 $01 $12
-.jr_0d_5913:
-    sMSG                                               ;; 0d:5913 $04
-      db "Cibba:Who is\n that man?", $00               ;; 0d:5914
-.jr_0d_5925:
+    sIF_FLAG wScriptFlags02.1                          ;; 0d:58ee $08 $11 $00 $21
+      sMSG                                             ;; 0d:58f2 $04
+        db "Cibba:Julius went\n westward in his\n airship.", $00 ;; 0d:58f3
+    sELSE                                              ;; 0d:5911 $01 $12
+      sMSG                                             ;; 0d:5913 $04
+        db "Cibba:Who is\n that man?", $00             ;; 0d:5914
+    sENDIF                                             ;; 0d:5925
     sMSG                                               ;; 0d:5925 $04
       db "<12>"
       db "<11>", $00                   ;; 0d:5926
     sEND                                               ;; 0d:5929 $00
 
 script_01ef:
-    sIF_NOT_INVENTORY_JR $4f, .jr_0d_5933              ;; 0d:592a $0a $4f $00 $05
-    sCALL script_01f0                                  ;; 0d:592e $02 $19 $f5
-    sJR  .jr_0d_59f4                                   ;; 0d:5931 $01 $c1
-.jr_0d_5933:
-    sGIVE_ITEM 23                                      ;; 0d:5933 $d4 $17
-    sIF_FLAG_JR wScriptFlags.5, .jr_0d_59f4            ;; 0d:5935 $08 $85 $00 $bb
-    sMSG                                               ;; 0d:5939 $04
-      db "<10>", $00                                   ;; 0d:593a
-    sSFX 15                                            ;; 0d:593c $f9 $0f
-    sMSG                                               ;; 0d:593e $04
-      db "Received <aa>Bone.<12>"
+    sIF_INVENTORY $4f                                  ;; 0d:592a $0a $4f $00 $05
+      sCALL script_01f0                                ;; 0d:592e $02 $19 $f5
+    sELSE                                              ;; 0d:5931 $01 $c1
+      sGIVE_ITEM 23                                    ;; 0d:5933 $d4 $17
+      sIF_FLAG !wScriptFlags.5                         ;; 0d:5935 $08 $85 $00 $bb
+        sMSG                                           ;; 0d:5939 $04
+          db "<10>", $00                               ;; 0d:593a
+        sSFX 15                                        ;; 0d:593c $f9 $0f
+        sMSG                                           ;; 0d:593e $04
+          db "Received <aa>Bone.<12>"
       db "<1b>Cibba:Go up the\n wide river by the\n Ammonite Coast.<12>"
       db "<1b> Go beyond the\n Ammonite Coast\n to Floatrocks.<12>"
       db "<1b> Use this key at\n the cave in the\n Floatrocks!<12>"
       db "<1b> The guardian\n monster has the\n Legendary Sword.<12>"
       db "<1b> I'll tell you the\n rest when you\n return with it!<12>"
       db "<11>", $00 ;; 0d:593f
-.jr_0d_59f4:
+      sENDIF                                           ;; 0d:59f4
+    sENDIF                                             ;; 0d:59f4
     sEND                                               ;; 0d:59f4 $00
 
 script_01f0:
@@ -3249,11 +3230,11 @@ script_01f2:
 script_01f3:
     sMSG                                               ;; 0d:5b91 $04
       db "<10>", $00                                   ;; 0d:5b92
-    sIF_FLAG_JR !wScriptFlags02.1, wScriptFlags02.6, .jr_0d_5baf ;; 0d:5b94 $08 $11 $96 $00 $16
-    sMSG                                               ;; 0d:5b99 $04
-      db "The airship went\nto the west!<12>"
+    sIF_FLAG wScriptFlags02.1, !wScriptFlags02.6       ;; 0d:5b94 $08 $11 $96 $00 $16
+      sMSG                                             ;; 0d:5b99 $04
+        db "The airship went\nto the west!<12>"
       db "<1b>", $00 ;; 0d:5b9a
-.jr_0d_5baf:
+    sENDIF                                             ;; 0d:5baf
     sMSG                                               ;; 0d:5baf $04
       db "The Gaia Pass\nleads to the\nwestern land.<12>"
       db "<11>", $00 ;; 0d:5bb0
@@ -3262,20 +3243,19 @@ script_01f3:
 script_01f4:
     sMSG                                               ;; 0d:5bcd $04
       db "<10>", $00                                   ;; 0d:5bce
-    sIF_FLAG_JR wScriptFlags04.6, .jr_0d_5c31          ;; 0d:5bd0 $08 $a6 $00 $5d
-    sMSG                                               ;; 0d:5bd4 $04
-      db "I used to play\nat the Old Mine\nwith Watts!", $00 ;; 0d:5bd5
-    sIF_FLAG_JR !wScriptFlags02.1, .jr_0d_5c2f         ;; 0d:5bf2 $08 $11 $00 $39
-    sMSG                                               ;; 0d:5bf6 $04
-      db "<12>"
+    sIF_FLAG !wScriptFlags04.6                         ;; 0d:5bd0 $08 $a6 $00 $5d
+      sMSG                                             ;; 0d:5bd4 $04
+        db "I used to play\nat the Old Mine\nwith Watts!", $00 ;; 0d:5bd5
+      sIF_FLAG wScriptFlags02.1                        ;; 0d:5bf2 $08 $11 $00 $39
+        sMSG                                           ;; 0d:5bf6 $04
+          db "<12>"
       db "<1b>Wanna use the\ntrolley?  You\nhave to oil it!<12>"
       db "<1b>You can get it\nat the store\nto the south!", $00 ;; 0d:5bf7
-.jr_0d_5c2f:
-    sJR  .jr_0d_5c46                                   ;; 0d:5c2f $01 $15
-.jr_0d_5c31:
-    sMSG                                               ;; 0d:5c31 $04
-      db "Watts is selling\nSilver stuff!", $00        ;; 0d:5c32
-.jr_0d_5c46:
+      sENDIF                                           ;; 0d:5c2f
+    sELSE                                              ;; 0d:5c2f $01 $15
+      sMSG                                             ;; 0d:5c31 $04
+        db "Watts is selling\nSilver stuff!", $00      ;; 0d:5c32
+    sENDIF                                             ;; 0d:5c46
     sMSG                                               ;; 0d:5c46 $04
       db "<12>"
       db "<11>", $00                   ;; 0d:5c47
@@ -3291,15 +3271,14 @@ script_01f5:
 script_01f6:
     sMSG                                               ;; 0d:5c80 $04
       db "<10>", $00                                   ;; 0d:5c81
-    sIF_FLAG_JR wScriptFlags04.6, .jr_0d_5cbe          ;; 0d:5c83 $08 $a6 $00 $37
-    sMSG                                               ;; 0d:5c87 $04
-      db "Watts likes the\nmine!  He went\ntheir today, too!<12>"
+    sIF_FLAG !wScriptFlags04.6                         ;; 0d:5c83 $08 $a6 $00 $37
+      sMSG                                             ;; 0d:5c87 $04
+        db "Watts likes the\nmine!  He went\ntheir today, too!<12>"
       db "<1b>He's looking for\nsome Silver.", $00 ;; 0d:5c88
-    sJR  .jr_0d_5cd7                                   ;; 0d:5cbc $01 $19
-.jr_0d_5cbe:
-    sMSG                                               ;; 0d:5cbe $04
-      db "Hi!\nWatts made the\nSilver stuff!", $00     ;; 0d:5cbf
-.jr_0d_5cd7:
+    sELSE                                              ;; 0d:5cbc $01 $19
+      sMSG                                             ;; 0d:5cbe $04
+        db "Hi!\nWatts made the\nSilver stuff!", $00   ;; 0d:5cbf
+    sENDIF                                             ;; 0d:5cd7
     sMSG                                               ;; 0d:5cd7 $04
       db "<12>"
       db "<11>", $00                   ;; 0d:5cd8
@@ -3317,106 +3296,101 @@ script_01f8:
     sEND                                               ;; 0d:5d1f $00
 
 script_01f9:
-    sIF_NOT_EQUIPED_JR $2d, .jr_0d_5d2b                ;; 0d:5d20 $09 $2d $00 $07
-    sPLAYER_STEP_FORWARD                               ;; 0d:5d24 $80
-    sPLAYER_STEP_FORWARD                               ;; 0d:5d25 $80
-    sDEL_NPC_1                                         ;; 0d:5d26 $18
-    sUNK_DE                                            ;; 0d:5d27 $de
-    sUNK_A3                                            ;; 0d:5d28 $a3
-    sJR  .jr_0d_5d3c                                   ;; 0d:5d29 $01 $11
-.jr_0d_5d2b:
-    sMSG                                               ;; 0d:5d2b $04
-      db "<10>\nNeeds to be oiled.<12>"
+    sIF_EQUIPED $2d                                    ;; 0d:5d20 $09 $2d $00 $07
+      sPLAYER_STEP_FORWARD                             ;; 0d:5d24 $80
+      sPLAYER_STEP_FORWARD                             ;; 0d:5d25 $80
+      sDEL_NPC_1                                       ;; 0d:5d26 $18
+      sUNK_DE                                          ;; 0d:5d27 $de
+      sUNK_A3                                          ;; 0d:5d28 $a3
+    sELSE                                              ;; 0d:5d29 $01 $11
+      sMSG                                             ;; 0d:5d2b $04
+        db "<10>\nNeeds to be oiled.<12>"
       db "<11>", $00 ;; 0d:5d2c
-.jr_0d_5d3c:
+    sENDIF                                             ;; 0d:5d3c
     sEND                                               ;; 0d:5d3c $00
 
 script_01fa:
-    sIF_0B_JR $81, .jr_0d_5d44                         ;; 0d:5d3d $0b $81 $00 $03
-    sDEL_NPC_1                                         ;; 0d:5d41 $18
-    sJR  .jr_0d_5d49                                   ;; 0d:5d42 $01 $05
-.jr_0d_5d44:
-    sCREATE_EFFECT $10, $09, $01                       ;; 0d:5d44 $ba $10 $09 $01
-    sUNK_E0                                            ;; 0d:5d48 $e0
-.jr_0d_5d49:
+    sIF_0B $81                                         ;; 0d:5d3d $0b $81 $00 $03
+      sDEL_NPC_1                                       ;; 0d:5d41 $18
+    sELSE                                              ;; 0d:5d42 $01 $05
+      sCREATE_EFFECT $10, $09, $01                     ;; 0d:5d44 $ba $10 $09 $01
+      sUNK_E0                                          ;; 0d:5d48 $e0
+    sENDIF                                             ;; 0d:5d49
     sEND                                               ;; 0d:5d49 $00
 
 script_01fb:
-    sIF_0B_JR $81, .jr_0d_5d51                         ;; 0d:5d4a $0b $81 $00 $03
-    sDEL_NPC_1                                         ;; 0d:5d4e $18
-    sJR  .jr_0d_5d56                                   ;; 0d:5d4f $01 $05
-.jr_0d_5d51:
-    sCREATE_EFFECT $10, $09, $0d                       ;; 0d:5d51 $ba $10 $09 $0d
-    sUNK_E2                                            ;; 0d:5d55 $e2
-.jr_0d_5d56:
+    sIF_0B $81                                         ;; 0d:5d4a $0b $81 $00 $03
+      sDEL_NPC_1                                       ;; 0d:5d4e $18
+    sELSE                                              ;; 0d:5d4f $01 $05
+      sCREATE_EFFECT $10, $09, $0d                     ;; 0d:5d51 $ba $10 $09 $0d
+      sUNK_E2                                          ;; 0d:5d55 $e2
+    sENDIF                                             ;; 0d:5d56
     sEND                                               ;; 0d:5d56 $00
 
 script_01fc:
-    sIF_0B_JR $81, .jr_0d_5d5e                         ;; 0d:5d57 $0b $81 $00 $03
-    sDEL_NPC_1                                         ;; 0d:5d5b $18
-    sJR  .jr_0d_5d63                                   ;; 0d:5d5c $01 $05
-.jr_0d_5d5e:
-    sCREATE_EFFECT $10, $11, $07                       ;; 0d:5d5e $ba $10 $11 $07
-    sUNK_E4                                            ;; 0d:5d62 $e4
-.jr_0d_5d63:
+    sIF_0B $81                                         ;; 0d:5d57 $0b $81 $00 $03
+      sDEL_NPC_1                                       ;; 0d:5d5b $18
+    sELSE                                              ;; 0d:5d5c $01 $05
+      sCREATE_EFFECT $10, $11, $07                     ;; 0d:5d5e $ba $10 $11 $07
+      sUNK_E4                                          ;; 0d:5d62 $e4
+    sENDIF                                             ;; 0d:5d63
     sEND                                               ;; 0d:5d63 $00
 
 script_01fd:
-    sIF_0B_JR $81, .jr_0d_5d6b                         ;; 0d:5d64 $0b $81 $00 $03
-    sDEL_NPC_1                                         ;; 0d:5d68 $18
-    sJR  .jr_0d_5d70                                   ;; 0d:5d69 $01 $05
-.jr_0d_5d6b:
-    sCREATE_EFFECT $10, $01, $07                       ;; 0d:5d6b $ba $10 $01 $07
-    sUNK_E6                                            ;; 0d:5d6f $e6
-.jr_0d_5d70:
+    sIF_0B $81                                         ;; 0d:5d64 $0b $81 $00 $03
+      sDEL_NPC_1                                       ;; 0d:5d68 $18
+    sELSE                                              ;; 0d:5d69 $01 $05
+      sCREATE_EFFECT $10, $01, $07                     ;; 0d:5d6b $ba $10 $01 $07
+      sUNK_E6                                          ;; 0d:5d6f $e6
+    sENDIF                                             ;; 0d:5d70
     sEND                                               ;; 0d:5d70 $00
 
 script_01fe:
     sMSG                                               ;; 0d:5d71 $04
       db "<10>", $00                                   ;; 0d:5d72
-    sIF_NOT_EQUIPED_JR $4f, .jr_0d_5d99                ;; 0d:5d74 $09 $4f $00 $21
-    sMSG                                               ;; 0d:5d78 $04
-      db "Release that\nsword from your\nequipment, <BOY>.", $00 ;; 0d:5d79
-    sJR  .jr_0d_5e00                                   ;; 0d:5d97 $01 $67
-.jr_0d_5d99:
-    sMSG                                               ;; 0d:5d99 $04
-      db "You have been a\ngreat Knight of\nGemma, I see.<12>"
+    sIF_EQUIPED $4f                                    ;; 0d:5d74 $09 $4f $00 $21
+      sMSG                                             ;; 0d:5d78 $04
+        db "Release that\nsword from your\nequipment, <BOY>.", $00 ;; 0d:5d79
+    sELSE                                              ;; 0d:5d97 $01 $67
+      sMSG                                             ;; 0d:5d99 $04
+        db "You have been a\ngreat Knight of\nGemma, I see.<12>"
       db "<1b>I shall give you\nthe Excalibur.\nNow defeat Julius!<12>"
       db "<11>", $00 ;; 0d:5d9a
-    sLOOP 8, 4                                         ;; 0d:5ddd $03 $08 $04
-      sFLASH_SCREEN                                    ;; 0d:5de0 $bf
-      sSFX 20                                          ;; 0d:5de1 $f9 $14
-    sEND                                               ;; 0d:5de3 $00
-    sDEL_NPC_1                                         ;; 0d:5de4 $18
-    sUNK_D9 13                                         ;; 0d:5de5 $d9 $0d
-    sGIVE_EQUIPMENT 15                                 ;; 0d:5de7 $d8 $0f
-    sMSG                                               ;; 0d:5de9 $04
-      db "<10>Received\n     Excalibur!", $00          ;; 0d:5dea
-    sSET_FLAG wScriptFlags07.0                         ;; 0d:5dfe $da $38
-.jr_0d_5e00:
+      sLOOP 8, 4                                       ;; 0d:5ddd $03 $08 $04
+        sFLASH_SCREEN                                  ;; 0d:5de0 $bf
+        sSFX 20                                        ;; 0d:5de1 $f9 $14
+      sEND                                             ;; 0d:5de3 $00
+      sDEL_NPC_1                                       ;; 0d:5de4 $18
+      sUNK_D9 13                                       ;; 0d:5de5 $d9 $0d
+      sGIVE_EQUIPMENT 15                               ;; 0d:5de7 $d8 $0f
+      sMSG                                             ;; 0d:5de9 $04
+        db "<10>Received\n     Excalibur!", $00        ;; 0d:5dea
+      sSET_FLAG wScriptFlags07.0                       ;; 0d:5dfe $da $38
+    sENDIF                                             ;; 0d:5e00
     sMSG                                               ;; 0d:5e00 $04
       db "<12>"
       db "<11>", $00                   ;; 0d:5e01
     sEND                                               ;; 0d:5e04 $00
 
 script_01ff:
-    sIF_FLAG_JR wScriptFlags0F.1, .jr_0d_5e35          ;; 0d:5e05 $08 $f9 $00 $2c
-    sMSG                                               ;; 0d:5e09 $04
-      db "<10> Change music?<12>"
+    sIF_FLAG !wScriptFlags0F.1                         ;; 0d:5e05 $08 $f9 $00 $2c
+      sMSG                                             ;; 0d:5e09 $04
+        db "<10> Change music?<12>"
       db "<11>", $00 ;; 0d:5e0a
-    sUNK_C7                                            ;; 0d:5e18 $c7
-    sIF_FLAG_JR !wScriptFlags0F.7, wScriptFlags0F.6, .jr_0d_5e20 ;; 0d:5e19 $08 $7f $fe $00 $02
-    sSET_MUSIC 20                                      ;; 0d:5e1e $f8 $14
-.jr_0d_5e20:
-    sIF_FLAG_JR !wScriptFlags0F.7, !wScriptFlags0F.6, .jr_0d_5e27 ;; 0d:5e20 $08 $7f $7e $00 $02
-    sSET_MUSIC 9                                       ;; 0d:5e25 $f8 $09
-.jr_0d_5e27:
-    sIF_FLAG_JR wScriptFlags0F.7, !wScriptFlags0F.6, .jr_0d_5e2e ;; 0d:5e27 $08 $ff $7e $00 $02
-    sSET_MUSIC 7                                       ;; 0d:5e2c $f8 $07
-.jr_0d_5e2e:
-    sIF_FLAG_JR wScriptFlags0F.7, wScriptFlags0F.6, .jr_0d_5e35 ;; 0d:5e2e $08 $ff $fe $00 $02
-    sSET_MUSIC 14                                      ;; 0d:5e33 $f8 $0e
-.jr_0d_5e35:
+      sUNK_C7                                          ;; 0d:5e18 $c7
+      sIF_FLAG wScriptFlags0F.7, !wScriptFlags0F.6     ;; 0d:5e19 $08 $7f $fe $00 $02
+        sSET_MUSIC 20                                  ;; 0d:5e1e $f8 $14
+      sENDIF                                           ;; 0d:5e20
+      sIF_FLAG wScriptFlags0F.7, wScriptFlags0F.6      ;; 0d:5e20 $08 $7f $7e $00 $02
+        sSET_MUSIC 9                                   ;; 0d:5e25 $f8 $09
+      sENDIF                                           ;; 0d:5e27
+      sIF_FLAG !wScriptFlags0F.7, wScriptFlags0F.6     ;; 0d:5e27 $08 $ff $7e $00 $02
+        sSET_MUSIC 7                                   ;; 0d:5e2c $f8 $07
+      sENDIF                                           ;; 0d:5e2e
+      sIF_FLAG !wScriptFlags0F.7, !wScriptFlags0F.6    ;; 0d:5e2e $08 $ff $fe $00 $02
+        sSET_MUSIC 14                                  ;; 0d:5e33 $f8 $0e
+      sENDIF                                           ;; 0d:5e35
+    sENDIF                                             ;; 0d:5e35
     sEND                                               ;; 0d:5e35 $00
 
 script_0200:
@@ -3616,28 +3590,28 @@ script_020f:
     sEND                                               ;; 0d:61a5 $00
     sMSG                                               ;; 0d:61a6 $04
       db "<10>", $00                                   ;; 0d:61a7
-    sIF_FLAG_JR wScriptFlags02.6, .jr_0d_622a          ;; 0d:61a9 $08 $96 $00 $7d
-    sMSG                                               ;; 0d:61ad $04
-      db "<BOY>:<GIRL>!\n", $00                        ;; 0d:61ae
-    sSFX 23                                            ;; 0d:61b4 $f9 $17
-    sMSG                                               ;; 0d:61b6 $04
-      db "Bogard:Hurry!\n It's moving!<12>"
+    sIF_FLAG !wScriptFlags02.6                         ;; 0d:61a9 $08 $96 $00 $7d
+      sMSG                                             ;; 0d:61ad $04
+        db "<BOY>:<GIRL>!\n", $00                      ;; 0d:61ae
+      sSFX 23                                          ;; 0d:61b4 $f9 $17
+      sMSG                                             ;; 0d:61b6 $04
+        db "Bogard:Hurry!\n It's moving!<12>"
       db "<1b><GIRL>:This door\n is locked!<12>"
       db "<1b>Bogard:How about\n the windows?<12>"
       db "<11>", $00 ;; 0d:61b7
-    sSET_NPC_1_DIRECTION_DOWN                          ;; 0d:61f8 $15
-    sLOOP 4, 2                                         ;; 0d:61f9 $03 $04 $02
-      sNPC_1_STEP_FORWARD                              ;; 0d:61fc $10
-    sEND                                               ;; 0d:61fd $00
-    sDELAY 20                                          ;; 0d:61fe $f0 $14
-    sSET_NPC_1_DIRECTION_UP                            ;; 0d:6200 $14
-    sLOOP 4, 2                                         ;; 0d:6201 $03 $04 $02
-      sNPC_1_STEP_FORWARD                              ;; 0d:6204 $10
-    sEND                                               ;; 0d:6205 $00
-    sMSG                                               ;; 0d:6206 $04
-      db "<10><GIRL>:It may open.\n<BOY>:I'll get you\n from outside!<1b>", $00 ;; 0d:6207
-    sSET_FLAG wScriptFlags02.6                         ;; 0d:6228 $da $16
-.jr_0d_622a:
+      sSET_NPC_1_DIRECTION_DOWN                        ;; 0d:61f8 $15
+      sLOOP 4, 2                                       ;; 0d:61f9 $03 $04 $02
+        sNPC_1_STEP_FORWARD                            ;; 0d:61fc $10
+      sEND                                             ;; 0d:61fd $00
+      sDELAY 20                                        ;; 0d:61fe $f0 $14
+      sSET_NPC_1_DIRECTION_UP                          ;; 0d:6200 $14
+      sLOOP 4, 2                                       ;; 0d:6201 $03 $04 $02
+        sNPC_1_STEP_FORWARD                            ;; 0d:6204 $10
+      sEND                                             ;; 0d:6205 $00
+      sMSG                                             ;; 0d:6206 $04
+        db "<10><GIRL>:It may open.\n<BOY>:I'll get you\n from outside!<1b>", $00 ;; 0d:6207
+      sSET_FLAG wScriptFlags02.6                       ;; 0d:6228 $da $16
+    sENDIF                                             ;; 0d:622a
     sMSG                                               ;; 0d:622a $04
       db "<GIRL>:Be careful!<12>"
       db "<11>", $00 ;; 0d:622b
@@ -3773,35 +3747,35 @@ script_0218:
     sEND                                               ;; 0d:65ec $00
 
 script_0219:
-    sIF_NOT_EQUIPED_JR $2a, .jr_0d_6644                ;; 0d:65ed $09 $2a $00 $53
-    sSET_MUSIC 0                                       ;; 0d:65f1 $f8 $00
-    sMSG                                               ;; 0d:65f3 $04
-      db "<10><BOY> used <a9>Amanda,\nthe tears of\nAmanda__", $00 ;; 0d:65f4
-    sDELAY 120                                         ;; 0d:660e $f0 $78
-    sUNK_DE                                            ;; 0d:6610 $de
-    sMSG                                               ;; 0d:6611 $04
-      db "<11>", $00                                   ;; 0d:6612
-    sDEL_NPC_1                                         ;; 0d:6614 $18
-    sSFX 6                                             ;; 0d:6615 $f9 $06
-    sSPAWN_NPC 2                                       ;; 0d:6617 $fd $02
-    sGIVE_FOLLOWER 6                                   ;; 0d:6619 $9c $06
-    sMSG                                               ;; 0d:661b $04
-      db "<10>    Lester was\n  released from\n Davias's curse__<12>"
+    sIF_EQUIPED $2a                                    ;; 0d:65ed $09 $2a $00 $53
+      sSET_MUSIC 0                                     ;; 0d:65f1 $f8 $00
+      sMSG                                             ;; 0d:65f3 $04
+        db "<10><BOY> used <a9>Amanda,\nthe tears of\nAmanda__", $00 ;; 0d:65f4
+      sDELAY 120                                       ;; 0d:660e $f0 $78
+      sUNK_DE                                          ;; 0d:6610 $de
+      sMSG                                             ;; 0d:6611 $04
+        db "<11>", $00                                 ;; 0d:6612
+      sDEL_NPC_1                                       ;; 0d:6614 $18
+      sSFX 6                                           ;; 0d:6615 $f9 $06
+      sSPAWN_NPC 2                                     ;; 0d:6617 $fd $02
+      sGIVE_FOLLOWER 6                                 ;; 0d:6619 $9c $06
+      sMSG                                             ;; 0d:661b $04
+        db "<10>    Lester was\n  released from\n Davias's curse__<12>"
       db "<1b>", $00 ;; 0d:661c
-    sCALL script_053c                                  ;; 0d:663b $02 $6d $32
-    sSET_FLAG wScriptFlags0A.6                         ;; 0d:663e $da $56
-    sSET_FLAG wScriptFlags03.5                         ;; 0d:6640 $da $1d
-    sSET_MUSIC 14                                      ;; 0d:6642 $f8 $0e
-.jr_0d_6644:
+      sCALL script_053c                                ;; 0d:663b $02 $6d $32
+      sSET_FLAG wScriptFlags0A.6                       ;; 0d:663e $da $56
+      sSET_FLAG wScriptFlags03.5                       ;; 0d:6640 $da $1d
+      sSET_MUSIC 14                                    ;; 0d:6642 $f8 $0e
+    sENDIF                                             ;; 0d:6644
     sEND                                               ;; 0d:6644 $00
 
 script_021a:
     sMSG                                               ;; 0d:6645 $04
       db "<10>Welcome to Jadd.", $00                   ;; 0d:6646
-    sIF_FLAG_JR wScriptFlags05.0, .jr_0d_6671          ;; 0d:6654 $08 $a8 $00 $19
-    sMSG                                               ;; 0d:6658 $04
-      db "\nDavias rules this\ntown. I hate it.", $00  ;; 0d:6659
-.jr_0d_6671:
+    sIF_FLAG !wScriptFlags05.0                         ;; 0d:6654 $08 $a8 $00 $19
+      sMSG                                             ;; 0d:6658 $04
+        db "\nDavias rules this\ntown. I hate it.", $00 ;; 0d:6659
+    sENDIF                                             ;; 0d:6671
     sMSG                                               ;; 0d:6671 $04
       db "<12>"
       db "<11>", $00                   ;; 0d:6672
@@ -3810,15 +3784,14 @@ script_021a:
 script_021b:
     sMSG                                               ;; 0d:6676 $04
       db "<10>", $00                                   ;; 0d:6677
-    sIF_FLAG_JR wScriptFlags05.0, .jr_0d_669d          ;; 0d:6679 $08 $a8 $00 $20
-    sMSG                                               ;; 0d:667d $04
-      db "Northern valley is\nfilled with fatal\npoison gas.", $00 ;; 0d:667e
-    sJR  .jr_0d_66cd                                   ;; 0d:669b $01 $30
-.jr_0d_669d:
-    sMSG                                               ;; 0d:669d $04
-      db "The poison gas is\ncleared!<12>"
+    sIF_FLAG !wScriptFlags05.0                         ;; 0d:6679 $08 $a8 $00 $20
+      sMSG                                             ;; 0d:667d $04
+        db "Northern valley is\nfilled with fatal\npoison gas.", $00 ;; 0d:667e
+    sELSE                                              ;; 0d:669b $01 $30
+      sMSG                                             ;; 0d:669d $04
+        db "The poison gas is\ncleared!<12>"
       db "<1b>Head north over\nthe valley to the\nMt. Rocks!", $00 ;; 0d:669e
-.jr_0d_66cd:
+    sENDIF                                             ;; 0d:66cd
     sMSG                                               ;; 0d:66cd $04
       db "<12>"
       db "<11>", $00                   ;; 0d:66ce
@@ -3861,25 +3834,23 @@ script_0221:
     sMSG                                               ;; 0d:67ec $04
       db "<10>Cave of Oasis?\nI'll tell you for\na bag of Fang!<12>"
       db "<13><1b>", $00 ;; 0d:67ed
-    sIF_FLAG_JR wScriptFlags0F.7, .jr_0d_683c          ;; 0d:6810 $08 $ff $00 $28
-    sIF_NOT_EQUIPED_JR $3b, .jr_0d_681e                ;; 0d:6814 $09 $3b $00 $06
-    sUNK_DE                                            ;; 0d:6818 $de
-    sCALL script_022e                                  ;; 0d:6819 $02 $2d $01
-    sJR  .jr_0d_683a                                   ;; 0d:681c $01 $1c
-.jr_0d_681e:
-    sIF_NOT_INVENTORY_JR $3b, .jr_0d_6829              ;; 0d:681e $0a $3b $00 $07
-    sUNK_D5 50                                         ;; 0d:6822 $d5 $32
-    sCALL script_022e                                  ;; 0d:6824 $02 $2d $01
-    sJR  .jr_0d_683a                                   ;; 0d:6827 $01 $11
-.jr_0d_6829:
-    sMSG                                               ;; 0d:6829 $04
-      db "But, you don't\nhave it!", $00               ;; 0d:682a
-.jr_0d_683a:
-    sJR  .jr_0d_6858                                   ;; 0d:683a $01 $1c
-.jr_0d_683c:
-    sMSG                                               ;; 0d:683c $04
-      db "Don't you know?\nIt's very\nvaluable!", $00  ;; 0d:683d
-.jr_0d_6858:
+    sIF_FLAG !wScriptFlags0F.7                         ;; 0d:6810 $08 $ff $00 $28
+      sIF_EQUIPED $3b                                  ;; 0d:6814 $09 $3b $00 $06
+        sUNK_DE                                        ;; 0d:6818 $de
+        sCALL script_022e                              ;; 0d:6819 $02 $2d $01
+      sELSE                                            ;; 0d:681c $01 $1c
+        sIF_INVENTORY $3b                              ;; 0d:681e $0a $3b $00 $07
+          sUNK_D5 50                                   ;; 0d:6822 $d5 $32
+          sCALL script_022e                            ;; 0d:6824 $02 $2d $01
+        sELSE                                          ;; 0d:6827 $01 $11
+          sMSG                                         ;; 0d:6829 $04
+            db "But, you don't\nhave it!", $00         ;; 0d:682a
+        sENDIF                                         ;; 0d:683a
+      sENDIF                                           ;; 0d:683a
+    sELSE                                              ;; 0d:683a $01 $1c
+      sMSG                                             ;; 0d:683c $04
+        db "Don't you know?\nIt's very\nvaluable!", $00 ;; 0d:683d
+    sENDIF                                             ;; 0d:6858
     sMSG                                               ;; 0d:6858 $04
       db "<12>"
       db "<11>", $00                   ;; 0d:6859
@@ -3951,53 +3922,54 @@ script_0227:
 
 script_0228:
     sGIVE_ITEM 33                                      ;; 0d:69ff $d4 $21
-    sIF_FLAG_JR wScriptFlags.5, .jr_0d_6a47            ;; 0d:6a01 $08 $85 $00 $42
-    sFADE_TO_BLACK                                     ;; 0d:6a05 $bd
-    sLOAD_ROOM_INSTANT 15, $55, 20, 0                  ;; 0d:6a06 $f3 $0f $55 $14 $00
-    sFADE_TO_NORMAL                                    ;; 0d:6a0b $bc
-    sMSG                                               ;; 0d:6a0c $04
-      db "<10> <BOY> took a drop\n   of tear from\n  Amanda's face.<12>"
+    sIF_FLAG !wScriptFlags.5                           ;; 0d:6a01 $08 $85 $00 $42
+      sFADE_TO_BLACK                                   ;; 0d:6a05 $bd
+      sLOAD_ROOM_INSTANT 15, $55, 20, 0                ;; 0d:6a06 $f3 $0f $55 $14 $00
+      sFADE_TO_NORMAL                                  ;; 0d:6a0b $bc
+      sMSG                                             ;; 0d:6a0c $04
+        db "<10> <BOY> took a drop\n   of tear from\n  Amanda's face.<12>"
       db "<1b>", $00 ;; 0d:6a0d
-    sDELAY 30                                          ;; 0d:6a2f $f0 $1e
-    sMSG                                               ;; 0d:6a31 $04
-      db "<11>", $00                                   ;; 0d:6a32
-    sDELAY 60                                          ;; 0d:6a34 $f0 $3c
-    sSET_MUSIC 0                                       ;; 0d:6a36 $f8 $00
-    sDELAY 60                                          ;; 0d:6a38 $f0 $3c
-    sLOAD_ROOM 0, $2c, 14, 4                           ;; 0d:6a3a $f4 $00 $2c $0e $04
-    sSET_FLAG wScriptFlags06.5                         ;; 0d:6a3f $da $35
-    sDELAY 10                                          ;; 0d:6a41 $f0 $0a
-    sSET_MUSIC 20                                      ;; 0d:6a43 $f8 $14
-    sUNK_AB                                            ;; 0d:6a45 $ab
-    sRUN_ROOM_SCRIPT                                   ;; 0d:6a46 $ec
-.jr_0d_6a47:
+      sDELAY 30                                        ;; 0d:6a2f $f0 $1e
+      sMSG                                             ;; 0d:6a31 $04
+        db "<11>", $00                                 ;; 0d:6a32
+      sDELAY 60                                        ;; 0d:6a34 $f0 $3c
+      sSET_MUSIC 0                                     ;; 0d:6a36 $f8 $00
+      sDELAY 60                                        ;; 0d:6a38 $f0 $3c
+      sLOAD_ROOM 0, $2c, 14, 4                         ;; 0d:6a3a $f4 $00 $2c $0e $04
+      sSET_FLAG wScriptFlags06.5                       ;; 0d:6a3f $da $35
+      sDELAY 10                                        ;; 0d:6a41 $f0 $0a
+      sSET_MUSIC 20                                    ;; 0d:6a43 $f8 $14
+      sUNK_AB                                          ;; 0d:6a45 $ab
+      sRUN_ROOM_SCRIPT                                 ;; 0d:6a46 $ec
+    sENDIF                                             ;; 0d:6a47
     sEND                                               ;; 0d:6a47 $00
 
 script_0229:
     sMSG                                               ;; 0d:6a48 $04
       db "<10>", $00                                   ;; 0d:6a49
-    sIF_FLAG_JR !wScriptFlags0F.1, .jr_0d_6a67         ;; 0d:6a4b $08 $79 $00 $18
-    sMSG                                               ;; 0d:6a4f $04
-      db "Old man:Go away!", $00                       ;; 0d:6a50
-    sIF_FLAG_JR !wScriptFlags01.3, !wScriptFlags0A.1, .jr_0d_6a67 ;; 0d:6a5d $08 $0b $51 $00 $05
-    sCALL script_022a                                  ;; 0d:6a62 $02 $2a $bb
-    sSET_FLAG wScriptFlags01.4                         ;; 0d:6a65 $da $0c
-.jr_0d_6a67:
-    sIF_FLAG_JR wScriptFlags01.4, .jr_0d_6aba          ;; 0d:6a67 $08 $8c $00 $4f
-    sIF_FLAG_JR !wScriptFlags0F.0, wScriptFlags0F.1, .jr_0d_6a8b ;; 0d:6a6b $08 $78 $f9 $00 $1b
-    sMSG                                               ;; 0d:6a70 $04
-      db "Old man:I don't\n know anything!", $00       ;; 0d:6a71
-    sSET_FLAG wScriptFlags0F.1                         ;; 0d:6a89 $da $79
-.jr_0d_6a8b:
-    sIF_FLAG_JR wScriptFlags0F.0, .jr_0d_6ab6          ;; 0d:6a8b $08 $f8 $00 $27
-    sMSG                                               ;; 0d:6a8f $04
-      db "<BOY>:Excuse me.\n I'm looking for a\n man name Bogard.", $00 ;; 0d:6a90
-    sSET_FLAG wScriptFlags0F.0                         ;; 0d:6ab4 $da $78
-.jr_0d_6ab6:
-    sMSG                                               ;; 0d:6ab6 $04
-      db "<12>"
-      db "<11>", $00                   ;; 0d:6ab7
-.jr_0d_6aba:
+    sIF_FLAG wScriptFlags0F.1                          ;; 0d:6a4b $08 $79 $00 $18
+      sMSG                                             ;; 0d:6a4f $04
+        db "Old man:Go away!", $00                     ;; 0d:6a50
+      sIF_FLAG wScriptFlags01.3, wScriptFlags0A.1      ;; 0d:6a5d $08 $0b $51 $00 $05
+        sCALL script_022a                              ;; 0d:6a62 $02 $2a $bb
+        sSET_FLAG wScriptFlags01.4                     ;; 0d:6a65 $da $0c
+      sENDIF                                           ;; 0d:6a67
+    sENDIF                                             ;; 0d:6a67
+    sIF_FLAG !wScriptFlags01.4                         ;; 0d:6a67 $08 $8c $00 $4f
+      sIF_FLAG wScriptFlags0F.0, !wScriptFlags0F.1     ;; 0d:6a6b $08 $78 $f9 $00 $1b
+        sMSG                                           ;; 0d:6a70 $04
+          db "Old man:I don't\n know anything!", $00   ;; 0d:6a71
+        sSET_FLAG wScriptFlags0F.1                     ;; 0d:6a89 $da $79
+      sENDIF                                           ;; 0d:6a8b
+      sIF_FLAG !wScriptFlags0F.0                       ;; 0d:6a8b $08 $f8 $00 $27
+        sMSG                                           ;; 0d:6a8f $04
+          db "<BOY>:Excuse me.\n I'm looking for a\n man name Bogard.", $00 ;; 0d:6a90
+        sSET_FLAG wScriptFlags0F.0                     ;; 0d:6ab4 $da $78
+      sENDIF                                           ;; 0d:6ab6
+      sMSG                                             ;; 0d:6ab6 $04
+        db "<12>"
+      db "<11>", $00                 ;; 0d:6ab7
+    sENDIF                                             ;; 0d:6aba
     sEND                                               ;; 0d:6aba $00
 
 script_022a:
@@ -4031,11 +4003,11 @@ script_022a:
 script_022b:
     sMSG                                               ;; 0d:6c14 $04
       db "<10>", $00                                   ;; 0d:6c15
-    sIF_FLAG_JR !wScriptFlags01.4, .jr_0d_6c3f         ;; 0d:6c17 $08 $0c $00 $24
-    sMSG                                               ;; 0d:6c1b $04
-      db " You can buy the\n mattocks at the\n Item Shops also.<12>"
+    sIF_FLAG wScriptFlags01.4                          ;; 0d:6c17 $08 $0c $00 $24
+      sMSG                                             ;; 0d:6c1b $04
+        db " You can buy the\n mattocks at the\n Item Shops also.<12>"
       db "<1b>", $00 ;; 0d:6c1c
-.jr_0d_6c3f:
+    sENDIF                                             ;; 0d:6c3f
     sMSG                                               ;; 0d:6c3f $04
       db " Go to the cave on\n the east side of\n the mountains.<12>"
       db "<1b> Use Mattock to\n break the rocks\n in the cave. See<12>"
@@ -4046,17 +4018,17 @@ script_022b:
 script_022c:
     sMSG                                               ;; 0d:6ca5 $04
       db "<10>", $00                                   ;; 0d:6ca6
-    sIF_FLAG_JR wScriptFlags04.1, .jr_0d_6cb7          ;; 0d:6ca8 $08 $a1 $00 $0b
-    sMSG                                               ;; 0d:6cac $04
-      db "Bogard:_____", $00                           ;; 0d:6cad
-.jr_0d_6cb7:
-    sIF_FLAG_JR !wScriptFlags04.1, wScriptFlags04.2, .jr_0d_6cbf ;; 0d:6cb7 $08 $21 $a2 $00 $03
-    sCALL script_0210                                  ;; 0d:6cbc $02 $22 $3e
-.jr_0d_6cbf:
-    sIF_FLAG_JR !wScriptFlags04.2, .jr_0d_6ce1         ;; 0d:6cbf $08 $22 $00 $1e
-    sMSG                                               ;; 0d:6cc3 $04
-      db "Bogard:To defeat\n the evil!\n Go on, <BOY>.", $00 ;; 0d:6cc4
-.jr_0d_6ce1:
+    sIF_FLAG !wScriptFlags04.1                         ;; 0d:6ca8 $08 $a1 $00 $0b
+      sMSG                                             ;; 0d:6cac $04
+        db "Bogard:_____", $00                         ;; 0d:6cad
+    sENDIF                                             ;; 0d:6cb7
+    sIF_FLAG wScriptFlags04.1, !wScriptFlags04.2       ;; 0d:6cb7 $08 $21 $a2 $00 $03
+      sCALL script_0210                                ;; 0d:6cbc $02 $22 $3e
+    sENDIF                                             ;; 0d:6cbf
+    sIF_FLAG wScriptFlags04.2                          ;; 0d:6cbf $08 $22 $00 $1e
+      sMSG                                             ;; 0d:6cc3 $04
+        db "Bogard:To defeat\n the evil!\n Go on, <BOY>.", $00 ;; 0d:6cc4
+    sENDIF                                             ;; 0d:6ce1
     sMSG                                               ;; 0d:6ce1 $04
       db "<12>"
       db "<11>", $00                   ;; 0d:6ce2
@@ -4079,25 +4051,24 @@ script_022e:
 script_022f:
     sMSG                                               ;; 0d:6d25 $04
       db "<10>Bowow:", $00                             ;; 0d:6d26
-    sIF_FLAG_JR wScriptFlags05.7, .jr_0d_6d73          ;; 0d:6d2c $08 $af $00 $43
-    sMSG                                               ;; 0d:6d30 $04
-      db "Go east on\n the sea from the\n pier at north.<12>"
+    sIF_FLAG !wScriptFlags05.7                         ;; 0d:6d2c $08 $af $00 $43
+      sMSG                                             ;; 0d:6d30 $04
+        db "Go east on\n the sea from the\n pier at north.<12>"
       db "<1b> And go north to\n Wendel.__South is\n to the Ammonites.", $00 ;; 0d:6d31
-    sJR  .jr_0d_6e18                                   ;; 0d:6d71 $01 $a5
-.jr_0d_6d73:
-    sMSG                                               ;; 0d:6d73 $04
-      db "Finally!\n", $00                             ;; 0d:6d74
-    sIF_NOT_INVENTORY_JR $08, .jr_0d_6dbc              ;; 0d:6d7c $0a $08 $00 $3c
-    sMSG                                               ;; 0d:6d80 $04
-      db "There is a piece\nof crystal you can<12>"
+    sELSE                                              ;; 0d:6d71 $01 $a5
+      sMSG                                             ;; 0d:6d73 $04
+        db "Finally!\n", $00                           ;; 0d:6d74
+      sIF_INVENTORY $08                                ;; 0d:6d7c $0a $08 $00 $3c
+        sMSG                                           ;; 0d:6d80 $04
+          db "There is a piece\nof crystal you can<12>"
       db "<1b>blow with Nuke in\nCrystal Desert.\n__ Find it!", $00 ;; 0d:6d81
-    sJR  .jr_0d_6e18                                   ;; 0d:6dba $01 $5c
-.jr_0d_6dbc:
-    sMSG                                               ;; 0d:6dbc $04
-      db "But you need the\nmagic of Nuke.<12>"
+      sELSE                                            ;; 0d:6dba $01 $5c
+        sMSG                                           ;; 0d:6dbc $04
+          db "But you need the\nmagic of Nuke.<12>"
       db "<1b>The ultimate magic\nbook of Nuke is\nsealed by Lich.<12>"
       db "<1b>Go north to the\nPalmy Desert and\ndefeat Lich!", $00 ;; 0d:6dbd
-.jr_0d_6e18:
+      sENDIF                                           ;; 0d:6e18
+    sENDIF                                             ;; 0d:6e18
     sMSG                                               ;; 0d:6e18 $04
       db "<12>"
       db "<11>", $00                   ;; 0d:6e19
@@ -4114,20 +4085,19 @@ script_0230:
 script_0231:
     sMSG                                               ;; 0d:6e6f $04
       db "<10>", $00                                   ;; 0d:6e70
-    sIF_FLAG_JR !wScriptFlags04.0, .jr_0d_6e8f         ;; 0d:6e72 $08 $20 $00 $19
-    sMSG                                               ;; 0d:6e76 $04
-      db "Sarah:Please__\n Save us all_!<12>"
+    sIF_FLAG wScriptFlags04.0                          ;; 0d:6e72 $08 $20 $00 $19
+      sMSG                                             ;; 0d:6e76 $04
+        db "Sarah:Please__\n Save us all_!<12>"
       db "<11>", $00 ;; 0d:6e77
-    sJR  .jr_0d_6e99                                   ;; 0d:6e8d $01 $0a
-.jr_0d_6e8f:
-    sCALL script_0232                                  ;; 0d:6e8f $02 $2e $9a
-    sNPC_1_STEP_BACKWARDS                              ;; 0d:6e92 $11
-    sNPC_1_STEP_BACKWARDS                              ;; 0d:6e93 $11
-    sSET_NPC_1_DIRECTION_DOWN                          ;; 0d:6e94 $15
-    sNPC_1_STEP_BACKWARDS                              ;; 0d:6e95 $11
-    sNPC_1_STEP_BACKWARDS                              ;; 0d:6e96 $11
-    sSET_FLAG wScriptFlags04.0                         ;; 0d:6e97 $da $20
-.jr_0d_6e99:
+    sELSE                                              ;; 0d:6e8d $01 $0a
+      sCALL script_0232                                ;; 0d:6e8f $02 $2e $9a
+      sNPC_1_STEP_BACKWARDS                            ;; 0d:6e92 $11
+      sNPC_1_STEP_BACKWARDS                            ;; 0d:6e93 $11
+      sSET_NPC_1_DIRECTION_DOWN                        ;; 0d:6e94 $15
+      sNPC_1_STEP_BACKWARDS                            ;; 0d:6e95 $11
+      sNPC_1_STEP_BACKWARDS                            ;; 0d:6e96 $11
+      sSET_FLAG wScriptFlags04.0                       ;; 0d:6e97 $da $20
+    sENDIF                                             ;; 0d:6e99
     sEND                                               ;; 0d:6e99 $00
 
 script_0232:
@@ -4425,17 +4395,16 @@ script_024f:
 script_0250:
     sMSG                                               ;; 0d:761a $04
       db "<10>", $00                                   ;; 0d:761b
-    sIF_FLAG_JR wScriptFlags05.5, .jr_0d_76ac          ;; 0d:761d $08 $ad $00 $8b
-    sMSG                                               ;; 0d:7621 $04
-      db "King:Julius has\n summoned monsters\n in this world.<12>"
+    sIF_FLAG !wScriptFlags05.5                         ;; 0d:761d $08 $ad $00 $8b
+      sMSG                                             ;; 0d:7621 $04
+        db "King:Julius has\n summoned monsters\n in this world.<12>"
       db "<1b> One called Kary\n in the Snowfield\n has frozen us.<12>"
       db "<1b> Cibba came, but\n he's stuck in\n the other room.<12>"
       db "<1b> It is dangerous\n to keep them all\n frozen for long__", $00 ;; 0d:7622
-    sJR  .jr_0d_76d0                                   ;; 0d:76aa $01 $24
-.jr_0d_76ac:
-    sMSG                                               ;; 0d:76ac $04
-      db "Thank you so much.\nCibba is waiting\nin the other room.", $00 ;; 0d:76ad
-.jr_0d_76d0:
+    sELSE                                              ;; 0d:76aa $01 $24
+      sMSG                                             ;; 0d:76ac $04
+        db "Thank you so much.\nCibba is waiting\nin the other room.", $00 ;; 0d:76ad
+    sENDIF                                             ;; 0d:76d0
     sMSG                                               ;; 0d:76d0 $04
       db "<12>"
       db "<11>", $00                   ;; 0d:76d1
@@ -4466,57 +4435,57 @@ script_0255:
     sEND                                               ;; 0d:7708 $00
 
 script_0256:
-    sIF_FLAG_JR !wScriptFlags01.3, wScriptFlags02.1, .jr_0d_7711 ;; 0d:7709 $08 $0b $91 $00 $03
-    sCALL script_01e7                                  ;; 0d:770e $02 $17 $98
-.jr_0d_7711:
-    sIF_FLAG_JR !wScriptFlags01.1, wScriptFlags01.3, .jr_0d_7719 ;; 0d:7711 $08 $09 $8b $00 $03
-    sCALL script_026c                                  ;; 0d:7716 $02 $3a $70
-.jr_0d_7719:
-    sIF_FLAG_JR wScriptFlags01.1, .jr_0d_7720          ;; 0d:7719 $08 $89 $00 $03
-    sCALL script_0264                                  ;; 0d:771d $02 $38 $f9
-.jr_0d_7720:
+    sIF_FLAG wScriptFlags01.3, !wScriptFlags02.1       ;; 0d:7709 $08 $0b $91 $00 $03
+      sCALL script_01e7                                ;; 0d:770e $02 $17 $98
+    sENDIF                                             ;; 0d:7711
+    sIF_FLAG wScriptFlags01.1, !wScriptFlags01.3       ;; 0d:7711 $08 $09 $8b $00 $03
+      sCALL script_026c                                ;; 0d:7716 $02 $3a $70
+    sENDIF                                             ;; 0d:7719
+    sIF_FLAG !wScriptFlags01.1                         ;; 0d:7719 $08 $89 $00 $03
+      sCALL script_0264                                ;; 0d:771d $02 $38 $f9
+    sENDIF                                             ;; 0d:7720
     sEND                                               ;; 0d:7720 $00
 
 script_0257:
-    sIF_FLAG_JR !wScriptFlags03.7, .jr_0d_7728         ;; 0d:7721 $08 $1f $00 $03
-    sCALL script_022c                                  ;; 0d:7725 $02 $2c $a5
-.jr_0d_7728:
-    sIF_FLAG_JR !wScriptFlags04.6, wScriptFlags03.7, .jr_0d_7730 ;; 0d:7728 $08 $26 $9f $00 $03
-    sCALL script_022d                                  ;; 0d:772d $02 $2c $e6
-.jr_0d_7730:
-    sIF_FLAG_JR !wScriptFlags01.4, wScriptFlags04.6, .jr_0d_7738 ;; 0d:7730 $08 $0c $a6 $00 $03
-    sCALL script_022b                                  ;; 0d:7735 $02 $2c $14
-.jr_0d_7738:
-    sIF_FLAG_JR wScriptFlags01.4, .jr_0d_773f          ;; 0d:7738 $08 $8c $00 $03
-    sCALL script_0229                                  ;; 0d:773c $02 $2a $48
-.jr_0d_773f:
+    sIF_FLAG wScriptFlags03.7                          ;; 0d:7721 $08 $1f $00 $03
+      sCALL script_022c                                ;; 0d:7725 $02 $2c $a5
+    sENDIF                                             ;; 0d:7728
+    sIF_FLAG wScriptFlags04.6, !wScriptFlags03.7       ;; 0d:7728 $08 $26 $9f $00 $03
+      sCALL script_022d                                ;; 0d:772d $02 $2c $e6
+    sENDIF                                             ;; 0d:7730
+    sIF_FLAG wScriptFlags01.4, !wScriptFlags04.6       ;; 0d:7730 $08 $0c $a6 $00 $03
+      sCALL script_022b                                ;; 0d:7735 $02 $2c $14
+    sENDIF                                             ;; 0d:7738
+    sIF_FLAG !wScriptFlags01.4                         ;; 0d:7738 $08 $8c $00 $03
+      sCALL script_0229                                ;; 0d:773c $02 $2a $48
+    sENDIF                                             ;; 0d:773f
     sEND                                               ;; 0d:773f $00
 
 script_0258:
-    sIF_FLAG_JR !wScriptFlags04.6, .jr_0d_7747         ;; 0d:7740 $08 $26 $00 $03
-    sCALL script_020f                                  ;; 0d:7744 $02 $21 $9f
-.jr_0d_7747:
-    sIF_FLAG_JR wScriptFlags01.3, .jr_0d_774e          ;; 0d:7747 $08 $8b $00 $03
-    sCALL script_026b                                  ;; 0d:774b $02 $3a $53
-.jr_0d_774e:
+    sIF_FLAG wScriptFlags04.6                          ;; 0d:7740 $08 $26 $00 $03
+      sCALL script_020f                                ;; 0d:7744 $02 $21 $9f
+    sENDIF                                             ;; 0d:7747
+    sIF_FLAG !wScriptFlags01.3                         ;; 0d:7747 $08 $8b $00 $03
+      sCALL script_026b                                ;; 0d:774b $02 $3a $53
+    sENDIF                                             ;; 0d:774e
     sEND                                               ;; 0d:774e $00
 
 script_0259:
-    sIF_FLAG_JR !wScriptFlags04.5, wScriptFlags02.0, .jr_0d_7757 ;; 0d:774f $08 $25 $90 $00 $03
-    sCALL script_01e8                                  ;; 0d:7754 $02 $17 $b7
-.jr_0d_7757:
-    sIF_FLAG_JR wScriptFlags04.3, .jr_0d_775e          ;; 0d:7757 $08 $a3 $00 $03
-    sCALL script_01e4                                  ;; 0d:775b $02 $16 $e8
-.jr_0d_775e:
+    sIF_FLAG wScriptFlags04.5, !wScriptFlags02.0       ;; 0d:774f $08 $25 $90 $00 $03
+      sCALL script_01e8                                ;; 0d:7754 $02 $17 $b7
+    sENDIF                                             ;; 0d:7757
+    sIF_FLAG !wScriptFlags04.3                         ;; 0d:7757 $08 $a3 $00 $03
+      sCALL script_01e4                                ;; 0d:775b $02 $16 $e8
+    sENDIF                                             ;; 0d:775e
     sEND                                               ;; 0d:775e $00
 
 script_025a:
-    sIF_FLAG_JR !wScriptFlags03.7, .jr_0d_7766         ;; 0d:775f $08 $1f $00 $03
-    sCALL script_01ef                                  ;; 0d:7763 $02 $19 $2a
-.jr_0d_7766:
-    sIF_FLAG_JR wScriptFlags03.7, .jr_0d_776d          ;; 0d:7766 $08 $9f $00 $03
-    sCALL script_01ee                                  ;; 0d:776a $02 $18 $eb
-.jr_0d_776d:
+    sIF_FLAG wScriptFlags03.7                          ;; 0d:775f $08 $1f $00 $03
+      sCALL script_01ef                                ;; 0d:7763 $02 $19 $2a
+    sENDIF                                             ;; 0d:7766
+    sIF_FLAG !wScriptFlags03.7                         ;; 0d:7766 $08 $9f $00 $03
+      sCALL script_01ee                                ;; 0d:776a $02 $18 $eb
+    sENDIF                                             ;; 0d:776d
     sEND                                               ;; 0d:776d $00
 
 script_025b:
@@ -4526,53 +4495,53 @@ script_025c:
     sEND                                               ;; 0d:776f $00
 
 script_025d:
-    sIF_FLAG_JR wScriptFlags0E.4, .jr_0d_7778          ;; 0d:7770 $08 $f4 $00 $04
-    sOPEN_SHOP 3                                       ;; 0d:7774 $f6 $03
-    sJR  .jr_0d_778c                                   ;; 0d:7776 $01 $14
-.jr_0d_7778:
-    sIF_FLAG_JR wScriptFlags0E.6, wScriptFlags0E.7, .jr_0d_777f ;; 0d:7778 $08 $f6 $f7 $00 $02
-    sOPEN_SHOP 14                                      ;; 0d:777d $f6 $0e
-.jr_0d_777f:
-    sIF_FLAG_JR wScriptFlags0E.6, !wScriptFlags0E.7, .jr_0d_7786 ;; 0d:777f $08 $f6 $77 $00 $02
-    sOPEN_SHOP 15                                      ;; 0d:7784 $f6 $0f
-.jr_0d_7786:
-    sIF_FLAG_JR !wScriptFlags0E.6, .jr_0d_778c         ;; 0d:7786 $08 $76 $00 $02
-    sOPEN_SHOP 16                                      ;; 0d:778a $f6 $10
-.jr_0d_778c:
+    sIF_FLAG !wScriptFlags0E.4                         ;; 0d:7770 $08 $f4 $00 $04
+      sOPEN_SHOP 3                                     ;; 0d:7774 $f6 $03
+    sELSE                                              ;; 0d:7776 $01 $14
+      sIF_FLAG !wScriptFlags0E.6, !wScriptFlags0E.7    ;; 0d:7778 $08 $f6 $f7 $00 $02
+        sOPEN_SHOP 14                                  ;; 0d:777d $f6 $0e
+      sENDIF                                           ;; 0d:777f
+      sIF_FLAG !wScriptFlags0E.6, wScriptFlags0E.7     ;; 0d:777f $08 $f6 $77 $00 $02
+        sOPEN_SHOP 15                                  ;; 0d:7784 $f6 $0f
+      sENDIF                                           ;; 0d:7786
+      sIF_FLAG wScriptFlags0E.6                        ;; 0d:7786 $08 $76 $00 $02
+        sOPEN_SHOP 16                                  ;; 0d:778a $f6 $10
+      sENDIF                                           ;; 0d:778c
+    sENDIF                                             ;; 0d:778c
     sEND                                               ;; 0d:778c $00
 
 script_025e:
     sSET_NPC_1_DIRECTION_DOWN                          ;; 0d:778d $15
-    sIF_FLAG_JR wScriptFlags0E.4, .jr_0d_77d4          ;; 0d:778e $08 $f4 $00 $42
-    sIF_FLAG_JR wScriptFlags0E.5, wScriptFlags0E.6, wScriptFlags0E.7, .jr_0d_779a ;; 0d:7792 $08 $f5 $f6 $f7 $00 $02
-    sOPEN_SHOP 4                                       ;; 0d:7798 $f6 $04
-.jr_0d_779a:
-    sIF_FLAG_JR wScriptFlags0E.5, wScriptFlags0E.6, !wScriptFlags0E.7, .jr_0d_77a2 ;; 0d:779a $08 $f5 $f6 $77 $00 $02
-    sOPEN_SHOP 5                                       ;; 0d:77a0 $f6 $05
-.jr_0d_77a2:
-    sIF_FLAG_JR wScriptFlags0E.5, !wScriptFlags0E.6, wScriptFlags0E.7, .jr_0d_77aa ;; 0d:77a2 $08 $f5 $76 $f7 $00 $02
-    sOPEN_SHOP 7                                       ;; 0d:77a8 $f6 $07
-.jr_0d_77aa:
-    sIF_FLAG_JR wScriptFlags0E.5, !wScriptFlags0E.6, !wScriptFlags0E.7, .jr_0d_77b2 ;; 0d:77aa $08 $f5 $76 $77 $00 $02
-    sOPEN_SHOP 8                                       ;; 0d:77b0 $f6 $08
-.jr_0d_77b2:
-    sIF_FLAG_JR !wScriptFlags0E.5, wScriptFlags0E.6, wScriptFlags0E.7, .jr_0d_77ba ;; 0d:77b2 $08 $75 $f6 $f7 $00 $02
-    sOPEN_SHOP 9                                       ;; 0d:77b8 $f6 $09
-.jr_0d_77ba:
-    sIF_FLAG_JR !wScriptFlags0E.5, wScriptFlags0E.6, !wScriptFlags0E.7, .jr_0d_77c2 ;; 0d:77ba $08 $75 $f6 $77 $00 $02
-    sOPEN_SHOP 10                                      ;; 0d:77c0 $f6 $0a
-.jr_0d_77c2:
-    sIF_FLAG_JR !wScriptFlags0E.5, !wScriptFlags0E.6, wScriptFlags0E.7, .jr_0d_77ca ;; 0d:77c2 $08 $75 $76 $f7 $00 $02
-    sOPEN_SHOP 11                                      ;; 0d:77c8 $f6 $0b
-.jr_0d_77ca:
-    sIF_FLAG_JR !wScriptFlags0E.5, !wScriptFlags0E.6, !wScriptFlags0E.7, .jr_0d_77d2 ;; 0d:77ca $08 $75 $76 $77 $00 $02
-    sOPEN_SHOP 12                                      ;; 0d:77d0 $f6 $0c
-.jr_0d_77d2:
-    sJR  .jr_0d_77dc                                   ;; 0d:77d2 $01 $08
-.jr_0d_77d4:
-    sIF_FLAG_JR wScriptFlags0E.5, wScriptFlags0E.6, wScriptFlags0E.7, .jr_0d_77dc ;; 0d:77d4 $08 $f5 $f6 $f7 $00 $02
-    sOPEN_SHOP 13                                      ;; 0d:77da $f6 $0d
-.jr_0d_77dc:
+    sIF_FLAG !wScriptFlags0E.4                         ;; 0d:778e $08 $f4 $00 $42
+      sIF_FLAG !wScriptFlags0E.5, !wScriptFlags0E.6, !wScriptFlags0E.7 ;; 0d:7792 $08 $f5 $f6 $f7 $00 $02
+        sOPEN_SHOP 4                                   ;; 0d:7798 $f6 $04
+      sENDIF                                           ;; 0d:779a
+      sIF_FLAG !wScriptFlags0E.5, !wScriptFlags0E.6, wScriptFlags0E.7 ;; 0d:779a $08 $f5 $f6 $77 $00 $02
+        sOPEN_SHOP 5                                   ;; 0d:77a0 $f6 $05
+      sENDIF                                           ;; 0d:77a2
+      sIF_FLAG !wScriptFlags0E.5, wScriptFlags0E.6, !wScriptFlags0E.7 ;; 0d:77a2 $08 $f5 $76 $f7 $00 $02
+        sOPEN_SHOP 7                                   ;; 0d:77a8 $f6 $07
+      sENDIF                                           ;; 0d:77aa
+      sIF_FLAG !wScriptFlags0E.5, wScriptFlags0E.6, wScriptFlags0E.7 ;; 0d:77aa $08 $f5 $76 $77 $00 $02
+        sOPEN_SHOP 8                                   ;; 0d:77b0 $f6 $08
+      sENDIF                                           ;; 0d:77b2
+      sIF_FLAG wScriptFlags0E.5, !wScriptFlags0E.6, !wScriptFlags0E.7 ;; 0d:77b2 $08 $75 $f6 $f7 $00 $02
+        sOPEN_SHOP 9                                   ;; 0d:77b8 $f6 $09
+      sENDIF                                           ;; 0d:77ba
+      sIF_FLAG wScriptFlags0E.5, !wScriptFlags0E.6, wScriptFlags0E.7 ;; 0d:77ba $08 $75 $f6 $77 $00 $02
+        sOPEN_SHOP 10                                  ;; 0d:77c0 $f6 $0a
+      sENDIF                                           ;; 0d:77c2
+      sIF_FLAG wScriptFlags0E.5, wScriptFlags0E.6, !wScriptFlags0E.7 ;; 0d:77c2 $08 $75 $76 $f7 $00 $02
+        sOPEN_SHOP 11                                  ;; 0d:77c8 $f6 $0b
+      sENDIF                                           ;; 0d:77ca
+      sIF_FLAG wScriptFlags0E.5, wScriptFlags0E.6, wScriptFlags0E.7 ;; 0d:77ca $08 $75 $76 $77 $00 $02
+        sOPEN_SHOP 12                                  ;; 0d:77d0 $f6 $0c
+      sENDIF                                           ;; 0d:77d2
+    sELSE                                              ;; 0d:77d2 $01 $08
+      sIF_FLAG !wScriptFlags0E.5, !wScriptFlags0E.6, !wScriptFlags0E.7 ;; 0d:77d4 $08 $f5 $f6 $f7 $00 $02
+        sOPEN_SHOP 13                                  ;; 0d:77da $f6 $0d
+      sENDIF                                           ;; 0d:77dc
+    sENDIF                                             ;; 0d:77dc
     sEND                                               ;; 0d:77dc $00
 
 script_025f:
@@ -4580,65 +4549,64 @@ script_025f:
     sMSG                                               ;; 0d:77de $04
       db "<10> Howdy!\n 10GP/night!\n Wanna stay?<12>"
       db "<13>", $00 ;; 0d:77df
-    sIF_FLAG_JR wScriptFlags0F.7, .jr_0d_7821          ;; 0d:77fc $08 $ff $00 $21
-    sTAKE_MONEY 10                                     ;; 0d:7800 $d1 $0a $00
-    sIF_FLAG_JR !wScriptFlags.6, .jr_0d_781e           ;; 0d:7803 $08 $06 $00 $17
-    sMSG                                               ;; 0d:7807 $04
-      db "<1b> Sorry.\n Not enough GP!<12>"
+    sIF_FLAG !wScriptFlags0F.7                         ;; 0d:77fc $08 $ff $00 $21
+      sTAKE_MONEY 10                                   ;; 0d:7800 $d1 $0a $00
+      sIF_FLAG wScriptFlags.6                          ;; 0d:7803 $08 $06 $00 $17
+        sMSG                                           ;; 0d:7807 $04
+          db "<1b> Sorry.\n Not enough GP!<12>"
       db "<11>", $00 ;; 0d:7808
-    sJR  .jr_0d_7821                                   ;; 0d:781c $01 $03
-.jr_0d_781e:
-    sCALL script_0405                                  ;; 0d:781e $02 $51 $fb
-.jr_0d_7821:
+      sELSE                                            ;; 0d:781c $01 $03
+        sCALL script_0405                              ;; 0d:781e $02 $51 $fb
+      sENDIF                                           ;; 0d:7821
+    sENDIF                                             ;; 0d:7821
     sCALL script_0004                                  ;; 0d:7821 $02 $00 $31
     sEND                                               ;; 0d:7824 $00
 
 script_0260:
     sSET_NPC_1_DIRECTION_DOWN                          ;; 0d:7825 $15
-    sIF_FLAG_JR !wScriptFlags0E.4, .jr_0d_782e         ;; 0d:7826 $08 $74 $00 $04
-    sOPEN_SHOP 3                                       ;; 0d:782a $f6 $03
-    sJR  .jr_0d_78a9                                   ;; 0d:782c $01 $7b
-.jr_0d_782e:
-    sIF_FLAG_JR !wScriptFlags0E.5, .jr_0d_7836         ;; 0d:782e $08 $75 $00 $04
-    sOPEN_SHOP 3                                       ;; 0d:7832 $f6 $03
-    sJR  .jr_0d_78a9                                   ;; 0d:7834 $01 $73
-.jr_0d_7836:
-    sIF_FLAG_JR wScriptFlags0E.6, wScriptFlags0E.7, .jr_0d_7845 ;; 0d:7836 $08 $f6 $f7 $00 $0a
-    sIF_FLAG_JR wScriptFlags01.4, .jr_0d_7843          ;; 0d:783b $08 $8c $00 $04
-    sOPEN_SHOP 0                                       ;; 0d:783f $f6 $00
-    sJR  .jr_0d_7845                                   ;; 0d:7841 $01 $02
-.jr_0d_7843:
-    sOPEN_SHOP 1                                       ;; 0d:7843 $f6 $01
-.jr_0d_7845:
-    sIF_FLAG_JR wScriptFlags0E.6, !wScriptFlags0E.7, .jr_0d_786f ;; 0d:7845 $08 $f6 $77 $00 $25
-    sIF_NOT_INVENTORY_JR $43, .jr_0d_7850              ;; 0d:784a $0a $43 $00 $02
-    sJR  .jr_0d_7853                                   ;; 0d:784e $01 $03
-.jr_0d_7850:
-    sCALL script_0549                                  ;; 0d:7850 $02 $7a $c2
-.jr_0d_7853:
-    sOPEN_SHOP 1                                       ;; 0d:7853 $f6 $01
-    sMSG                                               ;; 0d:7855 $04
-      db "<10>It's swampy ahead.\nBe careful!<12>"
+    sIF_FLAG wScriptFlags0E.4                          ;; 0d:7826 $08 $74 $00 $04
+      sOPEN_SHOP 3                                     ;; 0d:782a $f6 $03
+    sELSE                                              ;; 0d:782c $01 $7b
+      sIF_FLAG wScriptFlags0E.5                        ;; 0d:782e $08 $75 $00 $04
+        sOPEN_SHOP 3                                   ;; 0d:7832 $f6 $03
+      sELSE                                            ;; 0d:7834 $01 $73
+        sIF_FLAG !wScriptFlags0E.6, !wScriptFlags0E.7  ;; 0d:7836 $08 $f6 $f7 $00 $0a
+          sIF_FLAG !wScriptFlags01.4                   ;; 0d:783b $08 $8c $00 $04
+            sOPEN_SHOP 0                               ;; 0d:783f $f6 $00
+          sELSE                                        ;; 0d:7841 $01 $02
+            sOPEN_SHOP 1                               ;; 0d:7843 $f6 $01
+          sENDIF                                       ;; 0d:7845
+        sENDIF                                         ;; 0d:7845
+        sIF_FLAG !wScriptFlags0E.6, wScriptFlags0E.7   ;; 0d:7845 $08 $f6 $77 $00 $25
+          sIF_INVENTORY $43                            ;; 0d:784a $0a $43 $00 $02
+          sELSE                                        ;; 0d:784e $01 $03
+            sCALL script_0549                          ;; 0d:7850 $02 $7a $c2
+          sENDIF                                       ;; 0d:7853
+          sOPEN_SHOP 1                                 ;; 0d:7853 $f6 $01
+          sMSG                                         ;; 0d:7855 $04
+            db "<10>It's swampy ahead.\nBe careful!<12>"
       db "<11>", $00 ;; 0d:7856
-.jr_0d_786f:
-    sIF_FLAG_JR !wScriptFlags0E.6, wScriptFlags0E.7, .jr_0d_7876 ;; 0d:786f $08 $76 $f7 $00 $02
-    sOPEN_SHOP 1                                       ;; 0d:7874 $f6 $01
-.jr_0d_7876:
-    sIF_FLAG_JR !wScriptFlags0E.6, !wScriptFlags0E.7, .jr_0d_78a9 ;; 0d:7876 $08 $76 $77 $00 $2e
-    sIF_FLAG_JR !wScriptFlags02.1, .jr_0d_7883         ;; 0d:787b $08 $11 $00 $04
-    sOPEN_SHOP 2                                       ;; 0d:787f $f6 $02
-    sJR  .jr_0d_78a9                                   ;; 0d:7881 $01 $26
-.jr_0d_7883:
-    sMSG                                               ;; 0d:7883 $04
-      db "<10>Excuse me_", $00                         ;; 0d:7884
-    sDELAY 30                                          ;; 0d:788e $f0 $1e
-    sMSG                                               ;; 0d:7890 $04
-      db "\n_ Hello_", $00                             ;; 0d:7891
-    sDELAY 50                                          ;; 0d:7899 $f0 $32
-    sMSG                                               ;; 0d:789b $04
-      db "\n_ No answer.<12>"
-      db "<11>", $00     ;; 0d:789c
-.jr_0d_78a9:
+        sENDIF                                         ;; 0d:786f
+        sIF_FLAG wScriptFlags0E.6, !wScriptFlags0E.7   ;; 0d:786f $08 $76 $f7 $00 $02
+          sOPEN_SHOP 1                                 ;; 0d:7874 $f6 $01
+        sENDIF                                         ;; 0d:7876
+        sIF_FLAG wScriptFlags0E.6, wScriptFlags0E.7    ;; 0d:7876 $08 $76 $77 $00 $2e
+          sIF_FLAG wScriptFlags02.1                    ;; 0d:787b $08 $11 $00 $04
+            sOPEN_SHOP 2                               ;; 0d:787f $f6 $02
+          sELSE                                        ;; 0d:7881 $01 $26
+            sMSG                                       ;; 0d:7883 $04
+              db "<10>Excuse me_", $00                 ;; 0d:7884
+            sDELAY 30                                  ;; 0d:788e $f0 $1e
+            sMSG                                       ;; 0d:7890 $04
+              db "\n_ Hello_", $00                     ;; 0d:7891
+            sDELAY 50                                  ;; 0d:7899 $f0 $32
+            sMSG                                       ;; 0d:789b $04
+              db "\n_ No answer.<12>"
+      db "<11>", $00 ;; 0d:789c
+          sENDIF                                       ;; 0d:78a9
+        sENDIF                                         ;; 0d:78a9
+      sENDIF                                           ;; 0d:78a9
+    sENDIF                                             ;; 0d:78a9
     sEND                                               ;; 0d:78a9 $00
 
 script_0261:
@@ -4708,27 +4676,27 @@ script_026b:
     sEND                                               ;; 0d:7a6f $00
 
 script_026c:
-    sIF_FLAG_JR !wScriptFlags01.2, .jr_0d_7b16         ;; 0d:7a70 $08 $0a $00 $a2
-    sMSG                                               ;; 0d:7a74 $04
-      db "<10>", $00                                   ;; 0d:7a75
-    sDELAY 10                                          ;; 0d:7a77 $f0 $0a
-    sSET_MUSIC 23                                      ;; 0d:7a79 $f8 $17
-    sCALL script_026d                                  ;; 0d:7a7b $02 $3b $17
-    sMSG                                               ;; 0d:7a7e $04
-      db "Girl:Oh_ No_\n Don't leave me\n alone, Hasim!<12>"
+    sIF_FLAG wScriptFlags01.2                          ;; 0d:7a70 $08 $0a $00 $a2
+      sMSG                                             ;; 0d:7a74 $04
+        db "<10>", $00                                 ;; 0d:7a75
+      sDELAY 10                                        ;; 0d:7a77 $f0 $0a
+      sSET_MUSIC 23                                    ;; 0d:7a79 $f8 $17
+      sCALL script_026d                                ;; 0d:7a7b $02 $3b $17
+      sMSG                                             ;; 0d:7a7e $04
+        db "Girl:Oh_ No_\n Don't leave me\n alone, Hasim!<12>"
       db "<1b><BOY>:I'm looking\n for that Bogard,\n too.<12>"
       db "<1b> Why don't you\n come with me?\nGirl:Oh _ Can I?<12>"
       db "<1b><BOY>:I can't leave\n you here alone.\n _ I am <BOY>.<12>"
       db "<1b><GIRL>:Call me <GIRL>.<12>"
       db "<1b>", $00 ;; 0d:7a7f
-    sSET_MUSIC 0                                       ;; 0d:7b09 $f8 $00
-    sGIVE_FOLLOWER 1                                   ;; 0d:7b0b $9c $01
-    sMSG                                               ;; 0d:7b0d $04
-      db "<11>", $00                                   ;; 0d:7b0e
-    sSET_FLAG wScriptFlags01.3                         ;; 0d:7b10 $da $0b
-    sSET_FLAG wScriptFlags0A.1                         ;; 0d:7b12 $da $51
-    sSET_MUSIC 20                                      ;; 0d:7b14 $f8 $14
-.jr_0d_7b16:
+      sSET_MUSIC 0                                     ;; 0d:7b09 $f8 $00
+      sGIVE_FOLLOWER 1                                 ;; 0d:7b0b $9c $01
+      sMSG                                             ;; 0d:7b0d $04
+        db "<11>", $00                                 ;; 0d:7b0e
+      sSET_FLAG wScriptFlags01.3                       ;; 0d:7b10 $da $0b
+      sSET_FLAG wScriptFlags0A.1                       ;; 0d:7b12 $da $51
+      sSET_MUSIC 20                                    ;; 0d:7b14 $f8 $14
+    sENDIF                                             ;; 0d:7b16
     sEND                                               ;; 0d:7b16 $00
 
 script_026d:
@@ -4747,433 +4715,432 @@ script_026d:
     sEND                                               ;; 0d:7b92 $00
 
 script_0270:
-    sIF_0B_JR $c9, .jr_0d_7bb8                         ;; 0d:7b93 $0b $c9 $00 $21
-    sIF_NOT_EQUIPED_JR $20, .jr_0d_7bad                ;; 0d:7b97 $09 $20 $00 $12
-    sIF_FLAG_JR !wScriptFlags0B.0, .jr_0d_7ba4         ;; 0d:7b9b $08 $58 $00 $05
-    sCALL script_0473                                  ;; 0d:7b9f $02 $5a $e2
-    sSET_FLAG wScriptFlags0D.2                         ;; 0d:7ba2 $da $6a
-.jr_0d_7ba4:
-    sLOAD_ROOM 11, $07, 16, 12                         ;; 0d:7ba4 $f4 $0b $07 $10 $0c
-    sSET_MUSIC 7                                       ;; 0d:7ba9 $f8 $07
-    sJR  .jr_0d_7bb8                                   ;; 0d:7bab $01 $0b
-.jr_0d_7bad:
-    sMSG                                               ;; 0d:7bad $04
-      db "<10> Locked.<12>"
-      db "<11>", $00       ;; 0d:7bae
-.jr_0d_7bb8:
+    sIF_0B $c9                                         ;; 0d:7b93 $0b $c9 $00 $21
+      sIF_EQUIPED $20                                  ;; 0d:7b97 $09 $20 $00 $12
+        sIF_FLAG wScriptFlags0B.0                      ;; 0d:7b9b $08 $58 $00 $05
+          sCALL script_0473                            ;; 0d:7b9f $02 $5a $e2
+          sSET_FLAG wScriptFlags0D.2                   ;; 0d:7ba2 $da $6a
+        sENDIF                                         ;; 0d:7ba4
+        sLOAD_ROOM 11, $07, 16, 12                     ;; 0d:7ba4 $f4 $0b $07 $10 $0c
+        sSET_MUSIC 7                                   ;; 0d:7ba9 $f8 $07
+      sELSE                                            ;; 0d:7bab $01 $0b
+        sMSG                                           ;; 0d:7bad $04
+          db "<10> Locked.<12>"
+      db "<11>", $00   ;; 0d:7bae
+      sENDIF                                           ;; 0d:7bb8
+    sENDIF                                             ;; 0d:7bb8
     sEND                                               ;; 0d:7bb8 $00
 
 script_0271:
-    sIF_0B_JR $c9, .jr_0d_7bd0                         ;; 0d:7bb9 $0b $c9 $00 $13
-    sIF_FLAG_JR !wScriptFlags0B.0, .jr_0d_7bc6         ;; 0d:7bbd $08 $58 $00 $05
-    sCALL script_0473                                  ;; 0d:7bc1 $02 $5a $e2
-    sSET_FLAG wScriptFlags0C.0                         ;; 0d:7bc4 $da $60
-.jr_0d_7bc6:
-    sLOAD_ROOM 14, $01, 14, 12                         ;; 0d:7bc6 $f4 $0e $01 $0e $0c
-    sDELAY 20                                          ;; 0d:7bcb $f0 $14
-    sSET_MUSIC 4                                       ;; 0d:7bcd $f8 $04
-    sRUN_ROOM_SCRIPT                                   ;; 0d:7bcf $ec
-.jr_0d_7bd0:
+    sIF_0B $c9                                         ;; 0d:7bb9 $0b $c9 $00 $13
+      sIF_FLAG wScriptFlags0B.0                        ;; 0d:7bbd $08 $58 $00 $05
+        sCALL script_0473                              ;; 0d:7bc1 $02 $5a $e2
+        sSET_FLAG wScriptFlags0C.0                     ;; 0d:7bc4 $da $60
+      sENDIF                                           ;; 0d:7bc6
+      sLOAD_ROOM 14, $01, 14, 12                       ;; 0d:7bc6 $f4 $0e $01 $0e $0c
+      sDELAY 20                                        ;; 0d:7bcb $f0 $14
+      sSET_MUSIC 4                                     ;; 0d:7bcd $f8 $04
+      sRUN_ROOM_SCRIPT                                 ;; 0d:7bcf $ec
+    sENDIF                                             ;; 0d:7bd0
     sEND                                               ;; 0d:7bd0 $00
 
 script_0272:
-    sIF_0B_JR $c9, .jr_0d_7bf0                         ;; 0d:7bd1 $0b $c9 $00 $1b
-    sLOAD_ROOM 6, $32, 9, 12                           ;; 0d:7bd5 $f4 $06 $32 $09 $0c
-    sSET_MUSIC 4                                       ;; 0d:7bda $f8 $04
-    sUNK_C5 2                                          ;; 0d:7bdc $c5 $02
-    sIF_FLAG_JR wScriptFlags04.6, .jr_0d_7be8          ;; 0d:7bde $08 $a6 $00 $06
-    sCLEAR_FLAG wScriptFlags0F.0                       ;; 0d:7be2 $db $78
-    sCLEAR_FLAG wScriptFlags0F.1                       ;; 0d:7be4 $db $79
-    sCLEAR_FLAG wScriptFlags0F.2                       ;; 0d:7be6 $db $7a
-.jr_0d_7be8:
-    sIF_FLAG_JR !wScriptFlags01.4, .jr_0d_7bef         ;; 0d:7be8 $08 $0c $00 $03
-    sSFX 16                                            ;; 0d:7bec $f9 $10
-    sUNK_E0                                            ;; 0d:7bee $e0
-.jr_0d_7bef:
-    sRUN_ROOM_SCRIPT                                   ;; 0d:7bef $ec
-.jr_0d_7bf0:
+    sIF_0B $c9                                         ;; 0d:7bd1 $0b $c9 $00 $1b
+      sLOAD_ROOM 6, $32, 9, 12                         ;; 0d:7bd5 $f4 $06 $32 $09 $0c
+      sSET_MUSIC 4                                     ;; 0d:7bda $f8 $04
+      sUNK_C5 2                                        ;; 0d:7bdc $c5 $02
+      sIF_FLAG !wScriptFlags04.6                       ;; 0d:7bde $08 $a6 $00 $06
+        sCLEAR_FLAG wScriptFlags0F.0                   ;; 0d:7be2 $db $78
+        sCLEAR_FLAG wScriptFlags0F.1                   ;; 0d:7be4 $db $79
+        sCLEAR_FLAG wScriptFlags0F.2                   ;; 0d:7be6 $db $7a
+      sENDIF                                           ;; 0d:7be8
+      sIF_FLAG wScriptFlags01.4                        ;; 0d:7be8 $08 $0c $00 $03
+        sSFX 16                                        ;; 0d:7bec $f9 $10
+        sUNK_E0                                        ;; 0d:7bee $e0
+      sENDIF                                           ;; 0d:7bef
+      sRUN_ROOM_SCRIPT                                 ;; 0d:7bef $ec
+    sENDIF                                             ;; 0d:7bf0
     sEND                                               ;; 0d:7bf0 $00
 
 script_0273:
-    sIF_0B_JR $c9, $c1, .jr_0d_7c03                    ;; 0d:7bf1 $0b $c9 $c1 $00 $0d
-    sSFX 12                                            ;; 0d:7bf6 $f9 $0c
-    sSET_PLAYER_POSITION 20, 0                         ;; 0d:7bf8 $8a $14 $00
-    sDELAY 60                                          ;; 0d:7bfb $f0 $3c
-    sLOAD_ROOM 3, $11, 9, 7                            ;; 0d:7bfd $f4 $03 $11 $09 $07
-    sRUN_ROOM_SCRIPT                                   ;; 0d:7c02 $ec
-.jr_0d_7c03:
+    sIF_0B $c9, $c1                                    ;; 0d:7bf1 $0b $c9 $c1 $00 $0d
+      sSFX 12                                          ;; 0d:7bf6 $f9 $0c
+      sSET_PLAYER_POSITION 20, 0                       ;; 0d:7bf8 $8a $14 $00
+      sDELAY 60                                        ;; 0d:7bfb $f0 $3c
+      sLOAD_ROOM 3, $11, 9, 7                          ;; 0d:7bfd $f4 $03 $11 $09 $07
+      sRUN_ROOM_SCRIPT                                 ;; 0d:7c02 $ec
+    sENDIF                                             ;; 0d:7c03
     sEND                                               ;; 0d:7c03 $00
 
 script_0274:
-    sIF_0B_JR $c9, $c1, .jr_0d_7c16                    ;; 0d:7c04 $0b $c9 $c1 $00 $0d
-    sSFX 12                                            ;; 0d:7c09 $f9 $0c
-    sSET_PLAYER_POSITION 20, 0                         ;; 0d:7c0b $8a $14 $00
-    sDELAY 60                                          ;; 0d:7c0e $f0 $3c
-    sLOAD_ROOM 6, $07, 9, 7                            ;; 0d:7c10 $f4 $06 $07 $09 $07
-    sRUN_ROOM_SCRIPT                                   ;; 0d:7c15 $ec
-.jr_0d_7c16:
+    sIF_0B $c9, $c1                                    ;; 0d:7c04 $0b $c9 $c1 $00 $0d
+      sSFX 12                                          ;; 0d:7c09 $f9 $0c
+      sSET_PLAYER_POSITION 20, 0                       ;; 0d:7c0b $8a $14 $00
+      sDELAY 60                                        ;; 0d:7c0e $f0 $3c
+      sLOAD_ROOM 6, $07, 9, 7                          ;; 0d:7c10 $f4 $06 $07 $09 $07
+      sRUN_ROOM_SCRIPT                                 ;; 0d:7c15 $ec
+    sENDIF                                             ;; 0d:7c16
     sEND                                               ;; 0d:7c16 $00
 
 script_0275:
-    sIF_0B_JR $c9, .jr_0d_7c44                         ;; 0d:7c17 $0b $c9 $00 $29
-    sIF_NOT_EQUIPED_JR $21, .jr_0d_7c39                ;; 0d:7c1b $09 $21 $00 $1a
-    sIF_FLAG_JR !wScriptFlags0B.0, .jr_0d_7c28         ;; 0d:7c1f $08 $58 $00 $05
-    sCALL script_0473                                  ;; 0d:7c23 $02 $5a $e2
-    sSET_FLAG wScriptFlags0C.2                         ;; 0d:7c26 $da $62
-.jr_0d_7c28:
-    sLOAD_ROOM 9, $31, 16, 2                           ;; 0d:7c28 $f4 $09 $31 $10 $02
-    sIF_FLAG_JR wScriptFlags09.0, .jr_0d_7c35          ;; 0d:7c2d $08 $c8 $00 $04
-    sSET_NPC_TYPES 77                                  ;; 0d:7c31 $fc $4d
-    sSPAWN_NPC 0                                       ;; 0d:7c33 $fd $00
-.jr_0d_7c35:
-    sSET_MUSIC 7                                       ;; 0d:7c35 $f8 $07
-    sJR  .jr_0d_7c44                                   ;; 0d:7c37 $01 $0b
-.jr_0d_7c39:
-    sMSG                                               ;; 0d:7c39 $04
-      db "<10> Locked.<12>"
-      db "<11>", $00       ;; 0d:7c3a
-.jr_0d_7c44:
+    sIF_0B $c9                                         ;; 0d:7c17 $0b $c9 $00 $29
+      sIF_EQUIPED $21                                  ;; 0d:7c1b $09 $21 $00 $1a
+        sIF_FLAG wScriptFlags0B.0                      ;; 0d:7c1f $08 $58 $00 $05
+          sCALL script_0473                            ;; 0d:7c23 $02 $5a $e2
+          sSET_FLAG wScriptFlags0C.2                   ;; 0d:7c26 $da $62
+        sENDIF                                         ;; 0d:7c28
+        sLOAD_ROOM 9, $31, 16, 2                       ;; 0d:7c28 $f4 $09 $31 $10 $02
+        sIF_FLAG !wScriptFlags09.0                     ;; 0d:7c2d $08 $c8 $00 $04
+          sSET_NPC_TYPES 77                            ;; 0d:7c31 $fc $4d
+          sSPAWN_NPC 0                                 ;; 0d:7c33 $fd $00
+        sENDIF                                         ;; 0d:7c35
+        sSET_MUSIC 7                                   ;; 0d:7c35 $f8 $07
+      sELSE                                            ;; 0d:7c37 $01 $0b
+        sMSG                                           ;; 0d:7c39 $04
+          db "<10> Locked.<12>"
+      db "<11>", $00   ;; 0d:7c3a
+      sENDIF                                           ;; 0d:7c44
+    sENDIF                                             ;; 0d:7c44
     sEND                                               ;; 0d:7c44 $00
 
 script_0276:
-    sIF_0B_JR $c9, .jr_0d_7c5c                         ;; 0d:7c45 $0b $c9 $00 $13
-    sIF_FLAG_JR !wScriptFlags0B.0, .jr_0d_7c52         ;; 0d:7c49 $08 $58 $00 $05
-    sCALL script_0473                                  ;; 0d:7c4d $02 $5a $e2
-    sSET_FLAG wScriptFlags0C.1                         ;; 0d:7c50 $da $61
-.jr_0d_7c52:
-    sUNK_C5 0                                          ;; 0d:7c52 $c5 $00
-    sLOAD_ROOM 3, $41, 9, 12                           ;; 0d:7c54 $f4 $03 $41 $09 $0c
-    sSET_MUSIC 7                                       ;; 0d:7c59 $f8 $07
-    sRUN_ROOM_SCRIPT                                   ;; 0d:7c5b $ec
-.jr_0d_7c5c:
+    sIF_0B $c9                                         ;; 0d:7c45 $0b $c9 $00 $13
+      sIF_FLAG wScriptFlags0B.0                        ;; 0d:7c49 $08 $58 $00 $05
+        sCALL script_0473                              ;; 0d:7c4d $02 $5a $e2
+        sSET_FLAG wScriptFlags0C.1                     ;; 0d:7c50 $da $61
+      sENDIF                                           ;; 0d:7c52
+      sUNK_C5 0                                        ;; 0d:7c52 $c5 $00
+      sLOAD_ROOM 3, $41, 9, 12                         ;; 0d:7c54 $f4 $03 $41 $09 $0c
+      sSET_MUSIC 7                                     ;; 0d:7c59 $f8 $07
+      sRUN_ROOM_SCRIPT                                 ;; 0d:7c5b $ec
+    sENDIF                                             ;; 0d:7c5c
     sEND                                               ;; 0d:7c5c $00
 
 script_0277:
-    sIF_0B_JR $c9, .jr_0d_7c72                         ;; 0d:7c5d $0b $c9 $00 $11
-    sIF_FLAG_JR !wScriptFlags0B.0, .jr_0d_7c6a         ;; 0d:7c61 $08 $58 $00 $05
-    sCALL script_0473                                  ;; 0d:7c65 $02 $5a $e2
-    sSET_FLAG wScriptFlags0C.3                         ;; 0d:7c68 $da $63
-.jr_0d_7c6a:
-    sLOAD_ROOM 14, $17, 11, 12                         ;; 0d:7c6a $f4 $0e $17 $0b $0c
-    sSET_MUSIC 11                                      ;; 0d:7c6f $f8 $0b
-    sRUN_ROOM_SCRIPT                                   ;; 0d:7c71 $ec
-.jr_0d_7c72:
+    sIF_0B $c9                                         ;; 0d:7c5d $0b $c9 $00 $11
+      sIF_FLAG wScriptFlags0B.0                        ;; 0d:7c61 $08 $58 $00 $05
+        sCALL script_0473                              ;; 0d:7c65 $02 $5a $e2
+        sSET_FLAG wScriptFlags0C.3                     ;; 0d:7c68 $da $63
+      sENDIF                                           ;; 0d:7c6a
+      sLOAD_ROOM 14, $17, 11, 12                       ;; 0d:7c6a $f4 $0e $17 $0b $0c
+      sSET_MUSIC 11                                    ;; 0d:7c6f $f8 $0b
+      sRUN_ROOM_SCRIPT                                 ;; 0d:7c71 $ec
+    sENDIF                                             ;; 0d:7c72
     sEND                                               ;; 0d:7c72 $00
 
 script_0278:
-    sIF_0B_JR $c9, .jr_0d_7c88                         ;; 0d:7c73 $0b $c9 $00 $11
-    sIF_FLAG_JR !wScriptFlags0B.0, .jr_0d_7c80         ;; 0d:7c77 $08 $58 $00 $05
-    sCALL script_0473                                  ;; 0d:7c7b $02 $5a $e2
-    sSET_FLAG wScriptFlags0C.5                         ;; 0d:7c7e $da $65
-.jr_0d_7c80:
-    sLOAD_ROOM 10, $66, 16, 2                          ;; 0d:7c80 $f4 $0a $66 $10 $02
-    sSET_MUSIC 24                                      ;; 0d:7c85 $f8 $18
-    sRUN_ROOM_SCRIPT                                   ;; 0d:7c87 $ec
-.jr_0d_7c88:
+    sIF_0B $c9                                         ;; 0d:7c73 $0b $c9 $00 $11
+      sIF_FLAG wScriptFlags0B.0                        ;; 0d:7c77 $08 $58 $00 $05
+        sCALL script_0473                              ;; 0d:7c7b $02 $5a $e2
+        sSET_FLAG wScriptFlags0C.5                     ;; 0d:7c7e $da $65
+      sENDIF                                           ;; 0d:7c80
+      sLOAD_ROOM 10, $66, 16, 2                        ;; 0d:7c80 $f4 $0a $66 $10 $02
+      sSET_MUSIC 24                                    ;; 0d:7c85 $f8 $18
+      sRUN_ROOM_SCRIPT                                 ;; 0d:7c87 $ec
+    sENDIF                                             ;; 0d:7c88
     sEND                                               ;; 0d:7c88 $00
 
 script_0279:
-    sIF_0B_JR $c9, .jr_0d_7cc6                         ;; 0d:7c89 $0b $c9 $00 $39
-    sIF_FLAG_JR !wScriptFlags0B.0, .jr_0d_7c96         ;; 0d:7c8d $08 $58 $00 $05
-    sCALL script_0473                                  ;; 0d:7c91 $02 $5a $e2
-    sSET_FLAG wScriptFlags0C.4                         ;; 0d:7c94 $da $64
-.jr_0d_7c96:
-    sIF_FLAG_JR !wScriptFlags0A.4, .jr_0d_7cbe         ;; 0d:7c96 $08 $54 $00 $24
-    sMSG                                               ;; 0d:7c9a $04
-      db "<10>Bogard:Hey! Hey!\n Where are you\n going??<12>"
+    sIF_0B $c9                                         ;; 0d:7c89 $0b $c9 $00 $39
+      sIF_FLAG wScriptFlags0B.0                        ;; 0d:7c8d $08 $58 $00 $05
+        sCALL script_0473                              ;; 0d:7c91 $02 $5a $e2
+        sSET_FLAG wScriptFlags0C.4                     ;; 0d:7c94 $da $64
+      sENDIF                                           ;; 0d:7c96
+      sIF_FLAG wScriptFlags0A.4                        ;; 0d:7c96 $08 $54 $00 $24
+        sMSG                                           ;; 0d:7c9a $04
+          db "<10>Bogard:Hey! Hey!\n Where are you\n going??<12>"
       db "<11>", $00 ;; 0d:7c9b
-    sJR  .jr_0d_7cc6                                   ;; 0d:7cbc $01 $08
-.jr_0d_7cbe:
-    sLOAD_ROOM 10, $55, 16, 2                          ;; 0d:7cbe $f4 $0a $55 $10 $02
-    sSET_MUSIC 7                                       ;; 0d:7cc3 $f8 $07
-    sRUN_ROOM_SCRIPT                                   ;; 0d:7cc5 $ec
-.jr_0d_7cc6:
+      sELSE                                            ;; 0d:7cbc $01 $08
+        sLOAD_ROOM 10, $55, 16, 2                      ;; 0d:7cbe $f4 $0a $55 $10 $02
+        sSET_MUSIC 7                                   ;; 0d:7cc3 $f8 $07
+        sRUN_ROOM_SCRIPT                               ;; 0d:7cc5 $ec
+      sENDIF                                           ;; 0d:7cc6
+    sENDIF                                             ;; 0d:7cc6
     sEND                                               ;; 0d:7cc6 $00
 
 script_027a:
-    sIF_0B_JR $c9, .jr_0d_7d47                         ;; 0d:7cc7 $0b $c9 $00 $7c
-    sIF_NOT_EQUIPED_JR $46, .jr_0d_7cd8                ;; 0d:7ccb $09 $46 $00 $09
-    sLOAD_ROOM 10, $13, 16, 12                         ;; 0d:7ccf $f4 $0a $13 $10 $0c
-    sSET_MUSIC 7                                       ;; 0d:7cd4 $f8 $07
-    sJR  .jr_0d_7d47                                   ;; 0d:7cd6 $01 $6f
-.jr_0d_7cd8:
-    sIF_NOT_EQUIPED_JR $54, .jr_0d_7ce5                ;; 0d:7cd8 $09 $54 $00 $09
-    sLOAD_ROOM 10, $13, 16, 12                         ;; 0d:7cdc $f4 $0a $13 $10 $0c
-    sSET_MUSIC 7                                       ;; 0d:7ce1 $f8 $07
-    sJR  .jr_0d_7d47                                   ;; 0d:7ce3 $01 $62
-.jr_0d_7ce5:
-    sIF_NOT_EQUIPED_JR $5f, .jr_0d_7cf2                ;; 0d:7ce5 $09 $5f $00 $09
-    sLOAD_ROOM 10, $13, 16, 12                         ;; 0d:7ce9 $f4 $0a $13 $10 $0c
-    sSET_MUSIC 7                                       ;; 0d:7cee $f8 $07
-    sJR  .jr_0d_7d47                                   ;; 0d:7cf0 $01 $55
-.jr_0d_7cf2:
-    sIF_NOT_EQUIPED_JR $6a, .jr_0d_7cff                ;; 0d:7cf2 $09 $6a $00 $09
-    sLOAD_ROOM 10, $13, 16, 12                         ;; 0d:7cf6 $f4 $0a $13 $10 $0c
-    sSET_MUSIC 7                                       ;; 0d:7cfb $f8 $07
-    sJR  .jr_0d_7d47                                   ;; 0d:7cfd $01 $48
-.jr_0d_7cff:
-    sMSG                                               ;; 0d:7cff $04
-      db "<10>Gaia:Whaaaa_", $00                       ;; 0d:7d00
-    sDELAY 40                                          ;; 0d:7d0c $f0 $28
-    sMSG                                               ;; 0d:7d0e $04
-      db "\n Doooon't walk in\n my moooouth_<12>"
+    sIF_0B $c9                                         ;; 0d:7cc7 $0b $c9 $00 $7c
+      sIF_EQUIPED $46                                  ;; 0d:7ccb $09 $46 $00 $09
+        sLOAD_ROOM 10, $13, 16, 12                     ;; 0d:7ccf $f4 $0a $13 $10 $0c
+        sSET_MUSIC 7                                   ;; 0d:7cd4 $f8 $07
+      sELSE                                            ;; 0d:7cd6 $01 $6f
+        sIF_EQUIPED $54                                ;; 0d:7cd8 $09 $54 $00 $09
+          sLOAD_ROOM 10, $13, 16, 12                   ;; 0d:7cdc $f4 $0a $13 $10 $0c
+          sSET_MUSIC 7                                 ;; 0d:7ce1 $f8 $07
+        sELSE                                          ;; 0d:7ce3 $01 $62
+          sIF_EQUIPED $5f                              ;; 0d:7ce5 $09 $5f $00 $09
+            sLOAD_ROOM 10, $13, 16, 12                 ;; 0d:7ce9 $f4 $0a $13 $10 $0c
+            sSET_MUSIC 7                               ;; 0d:7cee $f8 $07
+          sELSE                                        ;; 0d:7cf0 $01 $55
+            sIF_EQUIPED $6a                            ;; 0d:7cf2 $09 $6a $00 $09
+              sLOAD_ROOM 10, $13, 16, 12               ;; 0d:7cf6 $f4 $0a $13 $10 $0c
+              sSET_MUSIC 7                             ;; 0d:7cfb $f8 $07
+            sELSE                                      ;; 0d:7cfd $01 $48
+              sMSG                                     ;; 0d:7cff $04
+                db "<10>Gaia:Whaaaa_", $00             ;; 0d:7d00
+              sDELAY 40                                ;; 0d:7d0c $f0 $28
+              sMSG                                     ;; 0d:7d0e $04
+                db "\n Doooon't walk in\n my moooouth_<12>"
       db "<1b>\n Ooooo ", $00 ;; 0d:7d0f
-    sDELAY 40                                          ;; 0d:7d2e $f0 $28
-    sMSG                                               ;; 0d:7d30 $04
-      db "  Yuck!!", $00                               ;; 0d:7d31
-    sDELAY 60                                          ;; 0d:7d38 $f0 $3c
-    sMSG                                               ;; 0d:7d3a $04
-      db "<11>", $00                                   ;; 0d:7d3b
-    sSFX 12                                            ;; 0d:7d3d $f9 $0c
-    sSET_PLAYER_POSITION 12, 3                         ;; 0d:7d3f $8a $0c $03
-    sLOOP 2, 2                                         ;; 0d:7d42 $03 $02 $02
-      sPLAYER_STEP_BACKWARD                            ;; 0d:7d45 $81
-    sEND                                               ;; 0d:7d46 $00
-.jr_0d_7d47:
+              sDELAY 40                                ;; 0d:7d2e $f0 $28
+              sMSG                                     ;; 0d:7d30 $04
+                db "  Yuck!!", $00                     ;; 0d:7d31
+              sDELAY 60                                ;; 0d:7d38 $f0 $3c
+              sMSG                                     ;; 0d:7d3a $04
+                db "<11>", $00                         ;; 0d:7d3b
+              sSFX 12                                  ;; 0d:7d3d $f9 $0c
+              sSET_PLAYER_POSITION 12, 3               ;; 0d:7d3f $8a $0c $03
+              sLOOP 2, 2                               ;; 0d:7d42 $03 $02 $02
+                sPLAYER_STEP_BACKWARD                  ;; 0d:7d45 $81
+              sEND                                     ;; 0d:7d46 $00
+            sENDIF                                     ;; 0d:7d47
+          sENDIF                                       ;; 0d:7d47
+        sENDIF                                         ;; 0d:7d47
+      sENDIF                                           ;; 0d:7d47
+    sENDIF                                             ;; 0d:7d47
     sEND                                               ;; 0d:7d47 $00
 
 script_027b:
-    sIF_0B_JR $c9, .jr_0d_7d54                         ;; 0d:7d48 $0b $c9 $00 $08
-    sLOAD_ROOM 10, $05, 16, 12                         ;; 0d:7d4c $f4 $0a $05 $10 $0c
-    sSET_MUSIC 7                                       ;; 0d:7d51 $f8 $07
-    sRUN_ROOM_SCRIPT                                   ;; 0d:7d53 $ec
-.jr_0d_7d54:
+    sIF_0B $c9                                         ;; 0d:7d48 $0b $c9 $00 $08
+      sLOAD_ROOM 10, $05, 16, 12                       ;; 0d:7d4c $f4 $0a $05 $10 $0c
+      sSET_MUSIC 7                                     ;; 0d:7d51 $f8 $07
+      sRUN_ROOM_SCRIPT                                 ;; 0d:7d53 $ec
+    sENDIF                                             ;; 0d:7d54
     sEND                                               ;; 0d:7d54 $00
 
 script_027c:
-    sIF_0B_JR $c9, .jr_0d_7d65                         ;; 0d:7d55 $0b $c9 $00 $0c
-    sIF_FLAG_JR wScriptFlags02.6, .jr_0d_7d65          ;; 0d:7d59 $08 $96 $00 $08
-    sLOAD_ROOM 14, $62, 12, 12                         ;; 0d:7d5d $f4 $0e $62 $0c $0c
-    sSET_MUSIC 14                                      ;; 0d:7d62 $f8 $0e
-    sRUN_ROOM_SCRIPT                                   ;; 0d:7d64 $ec
-.jr_0d_7d65:
+    sIF_0B $c9                                         ;; 0d:7d55 $0b $c9 $00 $0c
+      sIF_FLAG !wScriptFlags02.6                       ;; 0d:7d59 $08 $96 $00 $08
+        sLOAD_ROOM 14, $62, 12, 12                     ;; 0d:7d5d $f4 $0e $62 $0c $0c
+        sSET_MUSIC 14                                  ;; 0d:7d62 $f8 $0e
+        sRUN_ROOM_SCRIPT                               ;; 0d:7d64 $ec
+      sENDIF                                           ;; 0d:7d65
+    sENDIF                                             ;; 0d:7d65
     sEND                                               ;; 0d:7d65 $00
 
 script_027d:
-    sIF_0B_JR $c9, .jr_0d_7d70                         ;; 0d:7d66 $0b $c9 $00 $06
-    sSFX 24                                            ;; 0d:7d6a $f9 $18
-    sSET_ROOM_TILE $02, 1, 1                           ;; 0d:7d6c $b0 $02 $01 $01
-.jr_0d_7d70:
+    sIF_0B $c9                                         ;; 0d:7d66 $0b $c9 $00 $06
+      sSFX 24                                          ;; 0d:7d6a $f9 $18
+      sSET_ROOM_TILE $02, 1, 1                         ;; 0d:7d6c $b0 $02 $01 $01
+    sENDIF                                             ;; 0d:7d70
     sEND                                               ;; 0d:7d70 $00
 
 script_027e:
-    sIF_0B_JR $c9, $a9, .jr_0d_7d7c                    ;; 0d:7d71 $0b $c9 $a9 $00 $06
-    sSFX 24                                            ;; 0d:7d76 $f9 $18
-    sSET_ROOM_TILE $02, 8, 1                           ;; 0d:7d78 $b0 $02 $08 $01
-.jr_0d_7d7c:
-    sIF_0C_JR $c9, .jr_0d_7d86                         ;; 0d:7d7c $0c $c9 $00 $06
-    sSFX 24                                            ;; 0d:7d80 $f9 $18
-    sSET_ROOM_TILE $00, 8, 1                           ;; 0d:7d82 $b0 $00 $08 $01
-.jr_0d_7d86:
+    sIF_0B $c9, $a9                                    ;; 0d:7d71 $0b $c9 $a9 $00 $06
+      sSFX 24                                          ;; 0d:7d76 $f9 $18
+      sSET_ROOM_TILE $02, 8, 1                         ;; 0d:7d78 $b0 $02 $08 $01
+    sENDIF                                             ;; 0d:7d7c
+    sIF_0C $c9                                         ;; 0d:7d7c $0c $c9 $00 $06
+      sSFX 24                                          ;; 0d:7d80 $f9 $18
+      sSET_ROOM_TILE $00, 8, 1                         ;; 0d:7d82 $b0 $00 $08 $01
+    sENDIF                                             ;; 0d:7d86
     sEND                                               ;; 0d:7d86 $00
 
 script_027f:
-    sIF_0B_JR $c9, .jr_0d_7d9c                         ;; 0d:7d87 $0b $c9 $00 $11
-    sIF_FLAG_JR !wScriptFlags0B.0, .jr_0d_7d94         ;; 0d:7d8b $08 $58 $00 $05
-    sCALL script_0473                                  ;; 0d:7d8f $02 $5a $e2
-    sSET_FLAG wScriptFlags0B.7                         ;; 0d:7d92 $da $5f
-.jr_0d_7d94:
-    sLOAD_ROOM 14, $53, 13, 12                         ;; 0d:7d94 $f4 $0e $53 $0d $0c
-    sSET_MUSIC 4                                       ;; 0d:7d99 $f8 $04
-    sRUN_ROOM_SCRIPT                                   ;; 0d:7d9b $ec
-.jr_0d_7d9c:
+    sIF_0B $c9                                         ;; 0d:7d87 $0b $c9 $00 $11
+      sIF_FLAG wScriptFlags0B.0                        ;; 0d:7d8b $08 $58 $00 $05
+        sCALL script_0473                              ;; 0d:7d8f $02 $5a $e2
+        sSET_FLAG wScriptFlags0B.7                     ;; 0d:7d92 $da $5f
+      sENDIF                                           ;; 0d:7d94
+      sLOAD_ROOM 14, $53, 13, 12                       ;; 0d:7d94 $f4 $0e $53 $0d $0c
+      sSET_MUSIC 4                                     ;; 0d:7d99 $f8 $04
+      sRUN_ROOM_SCRIPT                                 ;; 0d:7d9b $ec
+    sENDIF                                             ;; 0d:7d9c
     sEND                                               ;; 0d:7d9c $00
 
 script_0280:
-    sIF_0B_JR $c9, .jr_0d_7dbc                         ;; 0d:7d9d $0b $c9 $00 $1b
-    sIF_FLAG_JR !wScriptFlags0B.0, .jr_0d_7daa         ;; 0d:7da1 $08 $58 $00 $05
-    sCALL script_0473                                  ;; 0d:7da5 $02 $5a $e2
-    sSET_FLAG wScriptFlags0B.3                         ;; 0d:7da8 $da $5b
-.jr_0d_7daa:
-    sLOAD_ROOM 14, $15, 7, 12                          ;; 0d:7daa $f4 $0e $15 $07 $0c
-    sIF_FLAG_JR wScriptFlags05.0, .jr_0d_7db5          ;; 0d:7daf $08 $a8 $00 $02
-    sSET_MUSIC 0                                       ;; 0d:7db3 $f8 $00
-.jr_0d_7db5:
-    sIF_FLAG_JR !wScriptFlags05.0, .jr_0d_7dbb         ;; 0d:7db5 $08 $28 $00 $02
-    sSET_MUSIC 13                                      ;; 0d:7db9 $f8 $0d
-.jr_0d_7dbb:
-    sRUN_ROOM_SCRIPT                                   ;; 0d:7dbb $ec
-.jr_0d_7dbc:
+    sIF_0B $c9                                         ;; 0d:7d9d $0b $c9 $00 $1b
+      sIF_FLAG wScriptFlags0B.0                        ;; 0d:7da1 $08 $58 $00 $05
+        sCALL script_0473                              ;; 0d:7da5 $02 $5a $e2
+        sSET_FLAG wScriptFlags0B.3                     ;; 0d:7da8 $da $5b
+      sENDIF                                           ;; 0d:7daa
+      sLOAD_ROOM 14, $15, 7, 12                        ;; 0d:7daa $f4 $0e $15 $07 $0c
+      sIF_FLAG !wScriptFlags05.0                       ;; 0d:7daf $08 $a8 $00 $02
+        sSET_MUSIC 0                                   ;; 0d:7db3 $f8 $00
+      sENDIF                                           ;; 0d:7db5
+      sIF_FLAG wScriptFlags05.0                        ;; 0d:7db5 $08 $28 $00 $02
+        sSET_MUSIC 13                                  ;; 0d:7db9 $f8 $0d
+      sENDIF                                           ;; 0d:7dbb
+      sRUN_ROOM_SCRIPT                                 ;; 0d:7dbb $ec
+    sENDIF                                             ;; 0d:7dbc
     sEND                                               ;; 0d:7dbc $00
 
 script_0281:
-    sIF_0B_JR $c9, .jr_0d_7e14                         ;; 0d:7dbd $0b $c9 $00 $53
-    sIF_FLAG_JR !wScriptFlags0B.0, .jr_0d_7dca         ;; 0d:7dc1 $08 $58 $00 $05
-    sCALL script_0473                                  ;; 0d:7dc5 $02 $5a $e2
-    sSET_FLAG wScriptFlags0B.4                         ;; 0d:7dc8 $da $5c
-.jr_0d_7dca:
-    sLOAD_ROOM 8, $54, 16, 2                           ;; 0d:7dca $f4 $08 $54 $10 $02
-    sSET_MUSIC 8                                       ;; 0d:7dcf $f8 $08
-    sIF_FLAG_JR wScriptFlags04.7, .jr_0d_7e14          ;; 0d:7dd1 $08 $a7 $00 $3f
-    sSET_NPC_TYPES 81                                  ;; 0d:7dd5 $fc $51
-    sSPAWN_NPC 0                                       ;; 0d:7dd7 $fd $00
-    sSET_NPC_1_DIRECTION_RIGHT                         ;; 0d:7dd9 $16
-    sSET_PLAYER_DIRECTION_DOWN                         ;; 0d:7dda $85
-    sSET_PLAYER_POSITION 16, 3                         ;; 0d:7ddb $8a $10 $03
-    sLOOP 4, 2                                         ;; 0d:7dde $03 $04 $02
-      sPLAYER_STEP_FORWARD                             ;; 0d:7de1 $80
-    sEND                                               ;; 0d:7de2 $00
-    sSET_PLAYER_DIRECTION_LEFT                         ;; 0d:7de3 $87
-    sLOOP 5, 2                                         ;; 0d:7de4 $03 $05 $02
-      sPLAYER_STEP_FORWARD                             ;; 0d:7de7 $80
-    sEND                                               ;; 0d:7de8 $00
-    sMSG                                               ;; 0d:7de9 $04
-      db "<10>", $00                                   ;; 0d:7dea
-    sIF_FLAG_JR !wScriptFlags03.3, .jr_0d_7e09         ;; 0d:7dec $08 $1b $00 $19
-    sMSG                                               ;; 0d:7df0 $04
-      db "Amanda:I'm glad\n you're back!", $00         ;; 0d:7df1
-    sJR  .jr_0d_7e0c                                   ;; 0d:7e07 $01 $03
-.jr_0d_7e09:
-    sCALL script_053d                                  ;; 0d:7e09 $02 $6d $f9
-.jr_0d_7e0c:
-    sMSG                                               ;; 0d:7e0c $04
-      db "<12>"
-      db "<11>", $00                   ;; 0d:7e0d
-    sGIVE_FOLLOWER 5                                   ;; 0d:7e10 $9c $05
-    sSET_FLAG wScriptFlags0A.5                         ;; 0d:7e12 $da $55
-.jr_0d_7e14:
+    sIF_0B $c9                                         ;; 0d:7dbd $0b $c9 $00 $53
+      sIF_FLAG wScriptFlags0B.0                        ;; 0d:7dc1 $08 $58 $00 $05
+        sCALL script_0473                              ;; 0d:7dc5 $02 $5a $e2
+        sSET_FLAG wScriptFlags0B.4                     ;; 0d:7dc8 $da $5c
+      sENDIF                                           ;; 0d:7dca
+      sLOAD_ROOM 8, $54, 16, 2                         ;; 0d:7dca $f4 $08 $54 $10 $02
+      sSET_MUSIC 8                                     ;; 0d:7dcf $f8 $08
+      sIF_FLAG !wScriptFlags04.7                       ;; 0d:7dd1 $08 $a7 $00 $3f
+        sSET_NPC_TYPES 81                              ;; 0d:7dd5 $fc $51
+        sSPAWN_NPC 0                                   ;; 0d:7dd7 $fd $00
+        sSET_NPC_1_DIRECTION_RIGHT                     ;; 0d:7dd9 $16
+        sSET_PLAYER_DIRECTION_DOWN                     ;; 0d:7dda $85
+        sSET_PLAYER_POSITION 16, 3                     ;; 0d:7ddb $8a $10 $03
+        sLOOP 4, 2                                     ;; 0d:7dde $03 $04 $02
+          sPLAYER_STEP_FORWARD                         ;; 0d:7de1 $80
+        sEND                                           ;; 0d:7de2 $00
+        sSET_PLAYER_DIRECTION_LEFT                     ;; 0d:7de3 $87
+        sLOOP 5, 2                                     ;; 0d:7de4 $03 $05 $02
+          sPLAYER_STEP_FORWARD                         ;; 0d:7de7 $80
+        sEND                                           ;; 0d:7de8 $00
+        sMSG                                           ;; 0d:7de9 $04
+          db "<10>", $00                               ;; 0d:7dea
+        sIF_FLAG wScriptFlags03.3                      ;; 0d:7dec $08 $1b $00 $19
+          sMSG                                         ;; 0d:7df0 $04
+            db "Amanda:I'm glad\n you're back!", $00   ;; 0d:7df1
+        sELSE                                          ;; 0d:7e07 $01 $03
+          sCALL script_053d                            ;; 0d:7e09 $02 $6d $f9
+        sENDIF                                         ;; 0d:7e0c
+        sMSG                                           ;; 0d:7e0c $04
+          db "<12>"
+      db "<11>", $00               ;; 0d:7e0d
+        sGIVE_FOLLOWER 5                               ;; 0d:7e10 $9c $05
+        sSET_FLAG wScriptFlags0A.5                     ;; 0d:7e12 $da $55
+      sENDIF                                           ;; 0d:7e14
+    sENDIF                                             ;; 0d:7e14
     sEND                                               ;; 0d:7e14 $00
 
 script_0282:
-    sIF_0B_JR $c9, .jr_0d_7eb1                         ;; 0d:7e15 $0b $c9 $00 $98
-    sIF_FLAG_JR !wScriptFlags0B.0, .jr_0d_7e22         ;; 0d:7e19 $08 $58 $00 $05
-    sCALL script_0473                                  ;; 0d:7e1d $02 $5a $e2
-    sSET_FLAG wScriptFlags0B.5                         ;; 0d:7e20 $da $5d
-.jr_0d_7e22:
-    sUNK_C5 1                                          ;; 0d:7e22 $c5 $01
-    sLOAD_ROOM 6, $17, 9, 12                           ;; 0d:7e24 $f4 $06 $17 $09 $0c
-    sSET_MUSIC 12                                      ;; 0d:7e29 $f8 $0c
-    sSET_NPC_TYPES 82                                  ;; 0d:7e2b $fc $52
-    sSET_PLAYER_DIRECTION_UP                           ;; 0d:7e2d $84
-    sSPAWN_NPC 2                                       ;; 0d:7e2e $fd $02
-    sNPC_1_STEP_FORWARD                                ;; 0d:7e30 $10
-    sNPC_1_STEP_FORWARD                                ;; 0d:7e31 $10
-    sNPC_1_STEP_FORWARD                                ;; 0d:7e32 $10
-    sMSG                                               ;; 0d:7e33 $04
-      db "<10>I AM MARCIE.\nI SEARCH RELICS.\nDR.BOWOW MADE ME.<12>"
+    sIF_0B $c9                                         ;; 0d:7e15 $0b $c9 $00 $98
+      sIF_FLAG wScriptFlags0B.0                        ;; 0d:7e19 $08 $58 $00 $05
+        sCALL script_0473                              ;; 0d:7e1d $02 $5a $e2
+        sSET_FLAG wScriptFlags0B.5                     ;; 0d:7e20 $da $5d
+      sENDIF                                           ;; 0d:7e22
+      sUNK_C5 1                                        ;; 0d:7e22 $c5 $01
+      sLOAD_ROOM 6, $17, 9, 12                         ;; 0d:7e24 $f4 $06 $17 $09 $0c
+      sSET_MUSIC 12                                    ;; 0d:7e29 $f8 $0c
+      sSET_NPC_TYPES 82                                ;; 0d:7e2b $fc $52
+      sSET_PLAYER_DIRECTION_UP                         ;; 0d:7e2d $84
+      sSPAWN_NPC 2                                     ;; 0d:7e2e $fd $02
+      sNPC_1_STEP_FORWARD                              ;; 0d:7e30 $10
+      sNPC_1_STEP_FORWARD                              ;; 0d:7e31 $10
+      sNPC_1_STEP_FORWARD                              ;; 0d:7e32 $10
+      sMSG                                             ;; 0d:7e33 $04
+        db "<10>I AM MARCIE.\nI SEARCH RELICS.\nDR.BOWOW MADE ME.<12>"
       db "<1b>HE LEFT ME HERE.\nI WAITED 50 YEARS.\nHE FORGOT ME.<12>"
       db "<1b>I CAN HELP YOU.\nTAKE ME WITH YOU.<12>"
       db "<11>", $00 ;; 0d:7e34
-    sGIVE_FOLLOWER 7                                   ;; 0d:7ead $9c $07
-    sSET_FLAG wScriptFlags0A.7                         ;; 0d:7eaf $da $57
-.jr_0d_7eb1:
+      sGIVE_FOLLOWER 7                                 ;; 0d:7ead $9c $07
+      sSET_FLAG wScriptFlags0A.7                       ;; 0d:7eaf $da $57
+    sENDIF                                             ;; 0d:7eb1
     sEND                                               ;; 0d:7eb1 $00
 
 script_0283:
     sEND                                               ;; 0d:7eb2 $00
 
 script_0284:
-    sIF_0B_JR $c9, .jr_0d_7ec8                         ;; 0d:7eb3 $0b $c9 $00 $11
-    sIF_FLAG_JR !wScriptFlags0B.0, .jr_0d_7ec0         ;; 0d:7eb7 $08 $58 $00 $05
-    sCALL script_0473                                  ;; 0d:7ebb $02 $5a $e2
-    sSET_FLAG wScriptFlags0D.4                         ;; 0d:7ebe $da $6c
-.jr_0d_7ec0:
-    sLOAD_ROOM 9, $03, 2, 12                           ;; 0d:7ec0 $f4 $09 $03 $02 $0c
-    sSET_MUSIC 8                                       ;; 0d:7ec5 $f8 $08
-    sRUN_ROOM_SCRIPT                                   ;; 0d:7ec7 $ec
-.jr_0d_7ec8:
+    sIF_0B $c9                                         ;; 0d:7eb3 $0b $c9 $00 $11
+      sIF_FLAG wScriptFlags0B.0                        ;; 0d:7eb7 $08 $58 $00 $05
+        sCALL script_0473                              ;; 0d:7ebb $02 $5a $e2
+        sSET_FLAG wScriptFlags0D.4                     ;; 0d:7ebe $da $6c
+      sENDIF                                           ;; 0d:7ec0
+      sLOAD_ROOM 9, $03, 2, 12                         ;; 0d:7ec0 $f4 $09 $03 $02 $0c
+      sSET_MUSIC 8                                     ;; 0d:7ec5 $f8 $08
+      sRUN_ROOM_SCRIPT                                 ;; 0d:7ec7 $ec
+    sENDIF                                             ;; 0d:7ec8
     sEND                                               ;; 0d:7ec8 $00
 
 script_0285:
-    sIF_0B_JR $c9, .jr_0d_7ede                         ;; 0d:7ec9 $0b $c9 $00 $11
-    sIF_FLAG_JR !wScriptFlags0B.0, .jr_0d_7ed6         ;; 0d:7ecd $08 $58 $00 $05
-    sCALL script_0473                                  ;; 0d:7ed1 $02 $5a $e2
-    sSET_FLAG wScriptFlags0D.3                         ;; 0d:7ed4 $da $6b
-.jr_0d_7ed6:
-    sLOAD_ROOM 13, $77, 16, 12                         ;; 0d:7ed6 $f4 $0d $77 $10 $0c
-    sSET_MUSIC 8                                       ;; 0d:7edb $f8 $08
-    sRUN_ROOM_SCRIPT                                   ;; 0d:7edd $ec
-.jr_0d_7ede:
+    sIF_0B $c9                                         ;; 0d:7ec9 $0b $c9 $00 $11
+      sIF_FLAG wScriptFlags0B.0                        ;; 0d:7ecd $08 $58 $00 $05
+        sCALL script_0473                              ;; 0d:7ed1 $02 $5a $e2
+        sSET_FLAG wScriptFlags0D.3                     ;; 0d:7ed4 $da $6b
+      sENDIF                                           ;; 0d:7ed6
+      sLOAD_ROOM 13, $77, 16, 12                       ;; 0d:7ed6 $f4 $0d $77 $10 $0c
+      sSET_MUSIC 8                                     ;; 0d:7edb $f8 $08
+      sRUN_ROOM_SCRIPT                                 ;; 0d:7edd $ec
+    sENDIF                                             ;; 0d:7ede
     sEND                                               ;; 0d:7ede $00
 
 script_0286:
-    sIF_0B_JR $c9, .jr_0d_7ef3                         ;; 0d:7edf $0b $c9 $00 $10
-    sIF_FLAG_JR !wScriptFlags0B.0, .jr_0d_7eec         ;; 0d:7ee3 $08 $58 $00 $05
-    sCALL script_0473                                  ;; 0d:7ee7 $02 $5a $e2
-    sSET_FLAG wScriptFlags0D.5                         ;; 0d:7eea $da $6d
-.jr_0d_7eec:
-    sLOAD_ROOM 8, $03, 8, 8                            ;; 0d:7eec $f4 $08 $03 $08 $08
-    sSET_MUSIC 7                                       ;; 0d:7ef1 $f8 $07
-.jr_0d_7ef3:
+    sIF_0B $c9                                         ;; 0d:7edf $0b $c9 $00 $10
+      sIF_FLAG wScriptFlags0B.0                        ;; 0d:7ee3 $08 $58 $00 $05
+        sCALL script_0473                              ;; 0d:7ee7 $02 $5a $e2
+        sSET_FLAG wScriptFlags0D.5                     ;; 0d:7eea $da $6d
+      sENDIF                                           ;; 0d:7eec
+      sLOAD_ROOM 8, $03, 8, 8                          ;; 0d:7eec $f4 $08 $03 $08 $08
+      sSET_MUSIC 7                                     ;; 0d:7ef1 $f8 $07
+    sENDIF                                             ;; 0d:7ef3
     sEND                                               ;; 0d:7ef3 $00
 
 script_0287:
-    sIF_0B_JR $c9, .jr_0d_7eff                         ;; 0d:7ef4 $0b $c9 $00 $07
-    sLOAD_ROOM 15, $10, 16, 2                          ;; 0d:7ef8 $f4 $0f $10 $10 $02
-    sSET_MUSIC 7                                       ;; 0d:7efd $f8 $07
-.jr_0d_7eff:
+    sIF_0B $c9                                         ;; 0d:7ef4 $0b $c9 $00 $07
+      sLOAD_ROOM 15, $10, 16, 2                        ;; 0d:7ef8 $f4 $0f $10 $10 $02
+      sSET_MUSIC 7                                     ;; 0d:7efd $f8 $07
+    sENDIF                                             ;; 0d:7eff
     sEND                                               ;; 0d:7eff $00
 
 script_0288:
-    sIF_0B_JR $c9, .jr_0d_7f1d                         ;; 0d:7f00 $0b $c9 $00 $19
-    sIF_FLAG_JR !wScriptFlags0B.0, .jr_0d_7f0d         ;; 0d:7f04 $08 $58 $00 $05
-    sCALL script_0473                                  ;; 0d:7f08 $02 $5a $e2
-    sSET_FLAG wScriptFlags0C.6                         ;; 0d:7f0b $da $66
-.jr_0d_7f0d:
-    sLOAD_ROOM 15, $37, 9, 12                          ;; 0d:7f0d $f4 $0f $37 $09 $0c
-    sIF_FLAG_JR !wScriptFlags04.1, .jr_0d_7f1a         ;; 0d:7f12 $08 $21 $00 $04
-    sSET_MUSIC 4                                       ;; 0d:7f16 $f8 $04
-    sJR  .jr_0d_7f1c                                   ;; 0d:7f18 $01 $02
-.jr_0d_7f1a:
-    sSET_MUSIC 27                                      ;; 0d:7f1a $f8 $1b
-.jr_0d_7f1c:
-    sRUN_ROOM_SCRIPT                                   ;; 0d:7f1c $ec
-.jr_0d_7f1d:
+    sIF_0B $c9                                         ;; 0d:7f00 $0b $c9 $00 $19
+      sIF_FLAG wScriptFlags0B.0                        ;; 0d:7f04 $08 $58 $00 $05
+        sCALL script_0473                              ;; 0d:7f08 $02 $5a $e2
+        sSET_FLAG wScriptFlags0C.6                     ;; 0d:7f0b $da $66
+      sENDIF                                           ;; 0d:7f0d
+      sLOAD_ROOM 15, $37, 9, 12                        ;; 0d:7f0d $f4 $0f $37 $09 $0c
+      sIF_FLAG wScriptFlags04.1                        ;; 0d:7f12 $08 $21 $00 $04
+        sSET_MUSIC 4                                   ;; 0d:7f16 $f8 $04
+      sELSE                                            ;; 0d:7f18 $01 $02
+        sSET_MUSIC 27                                  ;; 0d:7f1a $f8 $1b
+      sENDIF                                           ;; 0d:7f1c
+      sRUN_ROOM_SCRIPT                                 ;; 0d:7f1c $ec
+    sENDIF                                             ;; 0d:7f1d
     sEND                                               ;; 0d:7f1d $00
 
 script_0289:
-    sIF_0B_JR $c9, .jr_0d_7f2a                         ;; 0d:7f1e $0b $c9 $00 $08
-    sLOAD_ROOM 13, $17, 16, 12                         ;; 0d:7f22 $f4 $0d $17 $10 $0c
-    sSET_MUSIC 12                                      ;; 0d:7f27 $f8 $0c
-    sRUN_ROOM_SCRIPT                                   ;; 0d:7f29 $ec
-.jr_0d_7f2a:
+    sIF_0B $c9                                         ;; 0d:7f1e $0b $c9 $00 $08
+      sLOAD_ROOM 13, $17, 16, 12                       ;; 0d:7f22 $f4 $0d $17 $10 $0c
+      sSET_MUSIC 12                                    ;; 0d:7f27 $f8 $0c
+      sRUN_ROOM_SCRIPT                                 ;; 0d:7f29 $ec
+    sENDIF                                             ;; 0d:7f2a
     sEND                                               ;; 0d:7f2a $00
 
 script_028a:
-    sIF_0B_JR $c9, .jr_0d_7f4a                         ;; 0d:7f2b $0b $c9 $00 $1b
-    sIF_FLAG_JR !wScriptFlags0B.0, .jr_0d_7f38         ;; 0d:7f2f $08 $58 $00 $05
-    sCALL script_0473                                  ;; 0d:7f33 $02 $5a $e2
-    sSET_FLAG wScriptFlags0D.0                         ;; 0d:7f36 $da $68
-.jr_0d_7f38:
-    sUNK_C5 4                                          ;; 0d:7f38 $c5 $04
-    sLOAD_ROOM 3, $47, 9, 12                           ;; 0d:7f3a $f4 $03 $47 $09 $0c
-    sIF_FLAG_JR !wScriptFlags05.5, .jr_0d_7f47         ;; 0d:7f3f $08 $2d $00 $04
-    sSET_MUSIC 11                                      ;; 0d:7f43 $f8 $0b
-    sJR  .jr_0d_7f49                                   ;; 0d:7f45 $01 $02
-.jr_0d_7f47:
-    sSET_MUSIC 10                                      ;; 0d:7f47 $f8 $0a
-.jr_0d_7f49:
-    sRUN_ROOM_SCRIPT                                   ;; 0d:7f49 $ec
-.jr_0d_7f4a:
+    sIF_0B $c9                                         ;; 0d:7f2b $0b $c9 $00 $1b
+      sIF_FLAG wScriptFlags0B.0                        ;; 0d:7f2f $08 $58 $00 $05
+        sCALL script_0473                              ;; 0d:7f33 $02 $5a $e2
+        sSET_FLAG wScriptFlags0D.0                     ;; 0d:7f36 $da $68
+      sENDIF                                           ;; 0d:7f38
+      sUNK_C5 4                                        ;; 0d:7f38 $c5 $04
+      sLOAD_ROOM 3, $47, 9, 12                         ;; 0d:7f3a $f4 $03 $47 $09 $0c
+      sIF_FLAG wScriptFlags05.5                        ;; 0d:7f3f $08 $2d $00 $04
+        sSET_MUSIC 11                                  ;; 0d:7f43 $f8 $0b
+      sELSE                                            ;; 0d:7f45 $01 $02
+        sSET_MUSIC 10                                  ;; 0d:7f47 $f8 $0a
+      sENDIF                                           ;; 0d:7f49
+      sRUN_ROOM_SCRIPT                                 ;; 0d:7f49 $ec
+    sENDIF                                             ;; 0d:7f4a
     sEND                                               ;; 0d:7f4a $00
 
 script_028b:
-    sIF_0B_JR $c9, .jr_0d_7f62                         ;; 0d:7f4b $0b $c9 $00 $13
-    sIF_FLAG_JR !wScriptFlags0B.0, .jr_0d_7f58         ;; 0d:7f4f $08 $58 $00 $05
-    sCALL script_0473                                  ;; 0d:7f53 $02 $5a $e2
-    sSET_FLAG wScriptFlags0C.7                         ;; 0d:7f56 $da $67
-.jr_0d_7f58:
-    sLOAD_ROOM 14, $77, 14, 2                          ;; 0d:7f58 $f4 $0e $77 $0e $02
-    sSET_MUSIC 8                                       ;; 0d:7f5d $f8 $08
-    sSET_FLAG wScriptFlags08.7                         ;; 0d:7f5f $da $47
-    sRUN_ROOM_SCRIPT                                   ;; 0d:7f61 $ec
-.jr_0d_7f62:
+    sIF_0B $c9                                         ;; 0d:7f4b $0b $c9 $00 $13
+      sIF_FLAG wScriptFlags0B.0                        ;; 0d:7f4f $08 $58 $00 $05
+        sCALL script_0473                              ;; 0d:7f53 $02 $5a $e2
+        sSET_FLAG wScriptFlags0C.7                     ;; 0d:7f56 $da $67
+      sENDIF                                           ;; 0d:7f58
+      sLOAD_ROOM 14, $77, 14, 2                        ;; 0d:7f58 $f4 $0e $77 $0e $02
+      sSET_MUSIC 8                                     ;; 0d:7f5d $f8 $08
+      sSET_FLAG wScriptFlags08.7                       ;; 0d:7f5f $da $47
+      sRUN_ROOM_SCRIPT                                 ;; 0d:7f61 $ec
+    sENDIF                                             ;; 0d:7f62
     sEND                                               ;; 0d:7f62 $00
 
 script_028c:
-    sIF_0B_JR $c9, .jr_0d_7f71                         ;; 0d:7f63 $0b $c9 $00 $0a
-    sLOAD_ROOM 1, $17, 16, 5                           ;; 0d:7f67 $f4 $01 $17 $10 $05
-    sSET_MUSIC 7                                       ;; 0d:7f6c $f8 $07
-    sCALL script_01c7                                  ;; 0d:7f6e $02 $14 $cf
-.jr_0d_7f71:
+    sIF_0B $c9                                         ;; 0d:7f63 $0b $c9 $00 $0a
+      sLOAD_ROOM 1, $17, 16, 5                         ;; 0d:7f67 $f4 $01 $17 $10 $05
+      sSET_MUSIC 7                                     ;; 0d:7f6c $f8 $07
+      sCALL script_01c7                                ;; 0d:7f6e $02 $14 $cf
+    sENDIF                                             ;; 0d:7f71
     sEND                                               ;; 0d:7f71 $00
 
 script_028d:
-    sIF_0B_JR $c9, .jr_0d_7f7e                         ;; 0d:7f72 $0b $c9 $00 $08
-    sLOAD_ROOM 11, $76, 16, 2                          ;; 0d:7f76 $f4 $0b $76 $10 $02
-    sSET_MUSIC 7                                       ;; 0d:7f7b $f8 $07
-    sRUN_ROOM_SCRIPT                                   ;; 0d:7f7d $ec
-.jr_0d_7f7e:
+    sIF_0B $c9                                         ;; 0d:7f72 $0b $c9 $00 $08
+      sLOAD_ROOM 11, $76, 16, 2                        ;; 0d:7f76 $f4 $0b $76 $10 $02
+      sSET_MUSIC 7                                     ;; 0d:7f7b $f8 $07
+      sRUN_ROOM_SCRIPT                                 ;; 0d:7f7d $ec
+    sENDIF                                             ;; 0d:7f7e
     sEND                                               ;; 0d:7f7e $00
 
 script_028e:
@@ -5183,31 +5150,31 @@ script_028f:
     sEND                                               ;; 0d:7f80 $00
 
 script_0290:
-    sIF_0B_JR $c9, .jr_0d_7f8e                         ;; 0d:7f81 $0b $c9 $00 $09
-    sLOAD_ROOM 0, $f0, 8, 8                            ;; 0d:7f85 $f4 $00 $f0 $08 $08
-    sSET_MUSIC 25                                      ;; 0d:7f8a $f8 $19
-    sUNK_AB                                            ;; 0d:7f8c $ab
-    sRUN_ROOM_SCRIPT                                   ;; 0d:7f8d $ec
-.jr_0d_7f8e:
+    sIF_0B $c9                                         ;; 0d:7f81 $0b $c9 $00 $09
+      sLOAD_ROOM 0, $f0, 8, 8                          ;; 0d:7f85 $f4 $00 $f0 $08 $08
+      sSET_MUSIC 25                                    ;; 0d:7f8a $f8 $19
+      sUNK_AB                                          ;; 0d:7f8c $ab
+      sRUN_ROOM_SCRIPT                                 ;; 0d:7f8d $ec
+    sENDIF                                             ;; 0d:7f8e
     sEND                                               ;; 0d:7f8e $00
 
 script_0291:
-    sIF_0B_JR $c9, $c1, .jr_0d_7f9e                    ;; 0d:7f8f $0b $c9 $c1 $00 $0a
-    sLOAD_ROOM 0, $87, 8, 2                            ;; 0d:7f94 $f4 $00 $87 $08 $02
-    sDELAY 20                                          ;; 0d:7f99 $f0 $14
-    sSET_MUSIC 20                                      ;; 0d:7f9b $f8 $14
-    sRUN_ROOM_SCRIPT                                   ;; 0d:7f9d $ec
-.jr_0d_7f9e:
+    sIF_0B $c9, $c1                                    ;; 0d:7f8f $0b $c9 $c1 $00 $0a
+      sLOAD_ROOM 0, $87, 8, 2                          ;; 0d:7f94 $f4 $00 $87 $08 $02
+      sDELAY 20                                        ;; 0d:7f99 $f0 $14
+      sSET_MUSIC 20                                    ;; 0d:7f9b $f8 $14
+      sRUN_ROOM_SCRIPT                                 ;; 0d:7f9d $ec
+    sENDIF                                             ;; 0d:7f9e
     sEND                                               ;; 0d:7f9e $00
 
 script_0292:
-    sIF_0B_JR $c9, $c1, .jr_0d_7fb1                    ;; 0d:7f9f $0b $c9 $c1 $00 $0d
-    sSFX 12                                            ;; 0d:7fa4 $f9 $0c
-    sSET_PLAYER_POSITION 20, 0                         ;; 0d:7fa6 $8a $14 $00
-    sDELAY 60                                          ;; 0d:7fa9 $f0 $3c
-    sLOAD_ROOM 6, $26, 9, 7                            ;; 0d:7fab $f4 $06 $26 $09 $07
-    sRUN_ROOM_SCRIPT                                   ;; 0d:7fb0 $ec
-.jr_0d_7fb1:
+    sIF_0B $c9, $c1                                    ;; 0d:7f9f $0b $c9 $c1 $00 $0d
+      sSFX 12                                          ;; 0d:7fa4 $f9 $0c
+      sSET_PLAYER_POSITION 20, 0                       ;; 0d:7fa6 $8a $14 $00
+      sDELAY 60                                        ;; 0d:7fa9 $f0 $3c
+      sLOAD_ROOM 6, $26, 9, 7                          ;; 0d:7fab $f4 $06 $26 $09 $07
+      sRUN_ROOM_SCRIPT                                 ;; 0d:7fb0 $ec
+    sENDIF                                             ;; 0d:7fb1
     sEND                                               ;; 0d:7fb1 $00
 
 script_0293:

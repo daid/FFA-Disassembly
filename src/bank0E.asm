@@ -7,93 +7,93 @@ INCLUDE "include/charmaps.inc"
 SECTION "bank0e", ROMX[$4000], BANK[$0e]
 
 script_0294:
-    sIF_0B_JR $c9, .jr_0e_4037                         ;; 0e:4000 $0b $c9 $00 $33
-    sIF_FLAG_JR !wScriptFlags0A.2, wScriptFlags09.0, .jr_0e_402e ;; 0e:4004 $08 $52 $c8 $00 $25
-    sMSG                                               ;; 0e:4009 $04
-      db "<10>Man:Didn't you\n come here to get\n the Mirror?<12>"
+    sIF_0B $c9                                         ;; 0e:4000 $0b $c9 $00 $33
+      sIF_FLAG wScriptFlags0A.2, !wScriptFlags09.0     ;; 0e:4004 $08 $52 $c8 $00 $25
+        sMSG                                           ;; 0e:4009 $04
+          db "<10>Man:Didn't you\n come here to get\n the Mirror?<12>"
       db "<11>", $00 ;; 0e:400a
-    sFOLLOWER_DELETE                                   ;; 0e:402b $98
-    sCLEAR_FLAG wScriptFlags0A.2                       ;; 0e:402c $db $52
-.jr_0e_402e:
-    sLOAD_ROOM 0, $e8, 10, 3                           ;; 0e:402e $f4 $00 $e8 $0a $03
-    sSET_MUSIC 20                                      ;; 0e:4033 $f8 $14
-    sUNK_AB                                            ;; 0e:4035 $ab
-    sRUN_ROOM_SCRIPT                                   ;; 0e:4036 $ec
-.jr_0e_4037:
+        sFOLLOWER_DELETE                               ;; 0e:402b $98
+        sCLEAR_FLAG wScriptFlags0A.2                   ;; 0e:402c $db $52
+      sENDIF                                           ;; 0e:402e
+      sLOAD_ROOM 0, $e8, 10, 3                         ;; 0e:402e $f4 $00 $e8 $0a $03
+      sSET_MUSIC 20                                    ;; 0e:4033 $f8 $14
+      sUNK_AB                                          ;; 0e:4035 $ab
+      sRUN_ROOM_SCRIPT                                 ;; 0e:4036 $ec
+    sENDIF                                             ;; 0e:4037
     sEND                                               ;; 0e:4037 $00
 
 script_0295:
-    sIF_0B_JR $c9, $c1, .jr_0e_404f                    ;; 0e:4038 $0b $c9 $c1 $00 $12
-    sLOAD_ROOM 0, $dc, 9, 8                            ;; 0e:403d $f4 $00 $dc $09 $08
-    sIF_FLAG_JR !wScriptFlags02.0, wScriptFlags02.1, .jr_0e_404c ;; 0e:4042 $08 $10 $91 $00 $05
-    sCALL script_053b                                  ;; 0e:4047 $02 $6b $04
-    sJR  .jr_0e_404f                                   ;; 0e:404a $01 $03
-.jr_0e_404c:
-    sSET_MUSIC 20                                      ;; 0e:404c $f8 $14
-    sRUN_ROOM_SCRIPT                                   ;; 0e:404e $ec
-.jr_0e_404f:
+    sIF_0B $c9, $c1                                    ;; 0e:4038 $0b $c9 $c1 $00 $12
+      sLOAD_ROOM 0, $dc, 9, 8                          ;; 0e:403d $f4 $00 $dc $09 $08
+      sIF_FLAG wScriptFlags02.0, !wScriptFlags02.1     ;; 0e:4042 $08 $10 $91 $00 $05
+        sCALL script_053b                              ;; 0e:4047 $02 $6b $04
+      sELSE                                            ;; 0e:404a $01 $03
+        sSET_MUSIC 20                                  ;; 0e:404c $f8 $14
+        sRUN_ROOM_SCRIPT                               ;; 0e:404e $ec
+      sENDIF                                           ;; 0e:404f
+    sENDIF                                             ;; 0e:404f
     sEND                                               ;; 0e:404f $00
 
 script_0296:
     sEND                                               ;; 0e:4050 $00
 
 script_0297:
-    sIF_0B_JR $c9, .jr_0e_405e                         ;; 0e:4051 $0b $c9 $00 $09
-    sLOAD_ROOM 0, $9e, 16, 4                           ;; 0e:4055 $f4 $00 $9e $10 $04
-    sSET_MUSIC 20                                      ;; 0e:405a $f8 $14
-    sUNK_AB                                            ;; 0e:405c $ab
-    sRUN_ROOM_SCRIPT                                   ;; 0e:405d $ec
-.jr_0e_405e:
+    sIF_0B $c9                                         ;; 0e:4051 $0b $c9 $00 $09
+      sLOAD_ROOM 0, $9e, 16, 4                         ;; 0e:4055 $f4 $00 $9e $10 $04
+      sSET_MUSIC 20                                    ;; 0e:405a $f8 $14
+      sUNK_AB                                          ;; 0e:405c $ab
+      sRUN_ROOM_SCRIPT                                 ;; 0e:405d $ec
+    sENDIF                                             ;; 0e:405e
     sEND                                               ;; 0e:405e $00
 
 script_0298:
-    sIF_0B_JR $c9, .jr_0e_406c                         ;; 0e:405f $0b $c9 $00 $09
-    sLOAD_ROOM 0, $9b, 4, 6                            ;; 0e:4063 $f4 $00 $9b $04 $06
-    sSET_MUSIC 20                                      ;; 0e:4068 $f8 $14
-    sUNK_AB                                            ;; 0e:406a $ab
-    sRUN_ROOM_SCRIPT                                   ;; 0e:406b $ec
-.jr_0e_406c:
+    sIF_0B $c9                                         ;; 0e:405f $0b $c9 $00 $09
+      sLOAD_ROOM 0, $9b, 4, 6                          ;; 0e:4063 $f4 $00 $9b $04 $06
+      sSET_MUSIC 20                                    ;; 0e:4068 $f8 $14
+      sUNK_AB                                          ;; 0e:406a $ab
+      sRUN_ROOM_SCRIPT                                 ;; 0e:406b $ec
+    sENDIF                                             ;; 0e:406c
     sEND                                               ;; 0e:406c $00
 
 script_0299:
-    sIF_0B_JR $c9, .jr_0e_407a                         ;; 0e:406d $0b $c9 $00 $09
-    sLOAD_ROOM 0, $8b, 12, 4                           ;; 0e:4071 $f4 $00 $8b $0c $04
-    sSET_MUSIC 20                                      ;; 0e:4076 $f8 $14
-    sUNK_AB                                            ;; 0e:4078 $ab
-    sRUN_ROOM_SCRIPT                                   ;; 0e:4079 $ec
-.jr_0e_407a:
+    sIF_0B $c9                                         ;; 0e:406d $0b $c9 $00 $09
+      sLOAD_ROOM 0, $8b, 12, 4                         ;; 0e:4071 $f4 $00 $8b $0c $04
+      sSET_MUSIC 20                                    ;; 0e:4076 $f8 $14
+      sUNK_AB                                          ;; 0e:4078 $ab
+      sRUN_ROOM_SCRIPT                                 ;; 0e:4079 $ec
+    sENDIF                                             ;; 0e:407a
     sEND                                               ;; 0e:407a $00
 
 script_029a:
-    sIF_0B_JR $c9, .jr_0e_40b6                         ;; 0e:407b $0b $c9 $00 $37
-    sLOAD_ROOM 0, $8d, 6, 8                            ;; 0e:407f $f4 $00 $8d $06 $08
-    sSET_MUSIC 20                                      ;; 0e:4084 $f8 $14
-    sIF_FLAG_JR wScriptFlags0A.4, wScriptFlags02.6, .jr_0e_40b5 ;; 0e:4086 $08 $d4 $96 $00 $2a
-    sSET_NPC_TYPES 79                                  ;; 0e:408b $fc $4f
-    sSET_PLAYER_DIRECTION_DOWN                         ;; 0e:408d $85
-    sLOOP 4, 2                                         ;; 0e:408e $03 $04 $02
-      sPLAYER_STEP_FORWARD                             ;; 0e:4091 $80
-    sEND                                               ;; 0e:4092 $00
-    sMSG                                               ;; 0e:4093 $04
-      db "<10> Wait, <BOY>!<12>"
-      db "<11>", $00  ;; 0e:4094
-    sDELAY 30                                          ;; 0e:409e $f0 $1e
-    sSET_PLAYER_DIRECTION_UP                           ;; 0e:40a0 $84
-    sDELAY 30                                          ;; 0e:40a1 $f0 $1e
-    sSPAWN_NPC 2                                       ;; 0e:40a3 $fd $02
-    sGIVE_FOLLOWER 4                                   ;; 0e:40a5 $9c $04
-    sFOLLOWER_STEP_FORWARD                             ;; 0e:40a7 $90
-    sFOLLOWER_STEP_FORWARD                             ;; 0e:40a8 $90
-    sMSG                                               ;; 0e:40a9 $04
-      db "<10>", $00                                   ;; 0e:40aa
-    sCALL script_029b                                  ;; 0e:40ac $02 $40 $b7
-    sMSG                                               ;; 0e:40af $04
-      db "<12>"
-      db "<11>", $00                   ;; 0e:40b0
-    sSET_FLAG wScriptFlags0A.4                         ;; 0e:40b3 $da $54
-.jr_0e_40b5:
-    sUNK_AB                                            ;; 0e:40b5 $ab
-.jr_0e_40b6:
+    sIF_0B $c9                                         ;; 0e:407b $0b $c9 $00 $37
+      sLOAD_ROOM 0, $8d, 6, 8                          ;; 0e:407f $f4 $00 $8d $06 $08
+      sSET_MUSIC 20                                    ;; 0e:4084 $f8 $14
+      sIF_FLAG !wScriptFlags0A.4, !wScriptFlags02.6    ;; 0e:4086 $08 $d4 $96 $00 $2a
+        sSET_NPC_TYPES 79                              ;; 0e:408b $fc $4f
+        sSET_PLAYER_DIRECTION_DOWN                     ;; 0e:408d $85
+        sLOOP 4, 2                                     ;; 0e:408e $03 $04 $02
+          sPLAYER_STEP_FORWARD                         ;; 0e:4091 $80
+        sEND                                           ;; 0e:4092 $00
+        sMSG                                           ;; 0e:4093 $04
+          db "<10> Wait, <BOY>!<12>"
+      db "<11>", $00 ;; 0e:4094
+        sDELAY 30                                      ;; 0e:409e $f0 $1e
+        sSET_PLAYER_DIRECTION_UP                       ;; 0e:40a0 $84
+        sDELAY 30                                      ;; 0e:40a1 $f0 $1e
+        sSPAWN_NPC 2                                   ;; 0e:40a3 $fd $02
+        sGIVE_FOLLOWER 4                               ;; 0e:40a5 $9c $04
+        sFOLLOWER_STEP_FORWARD                         ;; 0e:40a7 $90
+        sFOLLOWER_STEP_FORWARD                         ;; 0e:40a8 $90
+        sMSG                                           ;; 0e:40a9 $04
+          db "<10>", $00                               ;; 0e:40aa
+        sCALL script_029b                              ;; 0e:40ac $02 $40 $b7
+        sMSG                                           ;; 0e:40af $04
+          db "<12>"
+      db "<11>", $00               ;; 0e:40b0
+        sSET_FLAG wScriptFlags0A.4                     ;; 0e:40b3 $da $54
+      sENDIF                                           ;; 0e:40b5
+      sUNK_AB                                          ;; 0e:40b5 $ab
+    sENDIF                                             ;; 0e:40b6
     sEND                                               ;; 0e:40b6 $00
 
 script_029b:
@@ -106,602 +106,602 @@ script_029b:
     sEND                                               ;; 0e:415b $00
 
 script_029c:
-    sIF_0B_JR $c9, .jr_0e_4166                         ;; 0e:415c $0b $c9 $00 $06
-    sSET_ROOM_TILE $02, 8, 6                           ;; 0e:4160 $b0 $02 $08 $06
-    sSFX 24                                            ;; 0e:4164 $f9 $18
-.jr_0e_4166:
+    sIF_0B $c9                                         ;; 0e:415c $0b $c9 $00 $06
+      sSET_ROOM_TILE $02, 8, 6                         ;; 0e:4160 $b0 $02 $08 $06
+      sSFX 24                                          ;; 0e:4164 $f9 $18
+    sENDIF                                             ;; 0e:4166
     sEND                                               ;; 0e:4166 $00
 
 script_029d:
-    sIF_0B_JR $c9, $c1, .jr_0e_4174                    ;; 0e:4167 $0b $c9 $c1 $00 $08
-    sLOAD_ROOM 0, $49, 8, 2                            ;; 0e:416c $f4 $00 $49 $08 $02
-    sSET_MUSIC 20                                      ;; 0e:4171 $f8 $14
-    sRUN_ROOM_SCRIPT                                   ;; 0e:4173 $ec
-.jr_0e_4174:
+    sIF_0B $c9, $c1                                    ;; 0e:4167 $0b $c9 $c1 $00 $08
+      sLOAD_ROOM 0, $49, 8, 2                          ;; 0e:416c $f4 $00 $49 $08 $02
+      sSET_MUSIC 20                                    ;; 0e:4171 $f8 $14
+      sRUN_ROOM_SCRIPT                                 ;; 0e:4173 $ec
+    sENDIF                                             ;; 0e:4174
     sEND                                               ;; 0e:4174 $00
 
 script_029e:
-    sIF_0B_JR $c9, $c1, .jr_0e_4182                    ;; 0e:4175 $0b $c9 $c1 $00 $08
-    sLOAD_ROOM 0, $18, 9, 8                            ;; 0e:417a $f4 $00 $18 $09 $08
-    sSET_MUSIC 20                                      ;; 0e:417f $f8 $14
-    sRUN_ROOM_SCRIPT                                   ;; 0e:4181 $ec
-.jr_0e_4182:
+    sIF_0B $c9, $c1                                    ;; 0e:4175 $0b $c9 $c1 $00 $08
+      sLOAD_ROOM 0, $18, 9, 8                          ;; 0e:417a $f4 $00 $18 $09 $08
+      sSET_MUSIC 20                                    ;; 0e:417f $f8 $14
+      sRUN_ROOM_SCRIPT                                 ;; 0e:4181 $ec
+    sENDIF                                             ;; 0e:4182
     sEND                                               ;; 0e:4182 $00
 
 script_029f:
-    sIF_0B_JR $c9, .jr_0e_41ba                         ;; 0e:4183 $0b $c9 $00 $33
-    sIF_FLAG_JR !wScriptFlags0A.5, wScriptFlags04.7, .jr_0e_41b1 ;; 0e:4187 $08 $55 $a7 $00 $25
-    sMSG                                               ;; 0e:418c $04
-      db "<10>Amanda:Won't you\n come along with\n me, <BOY>?<12>"
+    sIF_0B $c9                                         ;; 0e:4183 $0b $c9 $00 $33
+      sIF_FLAG wScriptFlags0A.5, !wScriptFlags04.7     ;; 0e:4187 $08 $55 $a7 $00 $25
+        sMSG                                           ;; 0e:418c $04
+          db "<10>Amanda:Won't you\n come along with\n me, <BOY>?<12>"
       db "<11>", $00 ;; 0e:418d
-    sFOLLOWER_DELETE                                   ;; 0e:41ac $98
-    sDELAY 30                                          ;; 0e:41ad $f0 $1e
-    sCLEAR_FLAG wScriptFlags0A.5                       ;; 0e:41af $db $55
-.jr_0e_41b1:
-    sLOAD_ROOM 0, $2c, 14, 4                           ;; 0e:41b1 $f4 $00 $2c $0e $04
-    sSET_MUSIC 20                                      ;; 0e:41b6 $f8 $14
-    sUNK_AB                                            ;; 0e:41b8 $ab
-    sRUN_ROOM_SCRIPT                                   ;; 0e:41b9 $ec
-.jr_0e_41ba:
+        sFOLLOWER_DELETE                               ;; 0e:41ac $98
+        sDELAY 30                                      ;; 0e:41ad $f0 $1e
+        sCLEAR_FLAG wScriptFlags0A.5                   ;; 0e:41af $db $55
+      sENDIF                                           ;; 0e:41b1
+      sLOAD_ROOM 0, $2c, 14, 4                         ;; 0e:41b1 $f4 $00 $2c $0e $04
+      sSET_MUSIC 20                                    ;; 0e:41b6 $f8 $14
+      sUNK_AB                                          ;; 0e:41b8 $ab
+      sRUN_ROOM_SCRIPT                                 ;; 0e:41b9 $ec
+    sENDIF                                             ;; 0e:41ba
     sEND                                               ;; 0e:41ba $00
 
 script_02a0:
-    sIF_0B_JR $c9, .jr_0e_41cf                         ;; 0e:41bb $0b $c9 $00 $10
-    sIF_FLAG_JR wScriptFlags03.7, .jr_0e_41ca          ;; 0e:41bf $08 $9f $00 $07
-    sLOAD_ROOM 15, $65, 4, 12                          ;; 0e:41c3 $f4 $0f $65 $04 $0c
-    sJR  .jr_0e_41cf                                   ;; 0e:41c8 $01 $05
-.jr_0e_41ca:
-    sLOAD_ROOM 15, $00, 4, 12                          ;; 0e:41ca $f4 $0f $00 $04 $0c
-.jr_0e_41cf:
+    sIF_0B $c9                                         ;; 0e:41bb $0b $c9 $00 $10
+      sIF_FLAG !wScriptFlags03.7                       ;; 0e:41bf $08 $9f $00 $07
+        sLOAD_ROOM 15, $65, 4, 12                      ;; 0e:41c3 $f4 $0f $65 $04 $0c
+      sELSE                                            ;; 0e:41c8 $01 $05
+        sLOAD_ROOM 15, $00, 4, 12                      ;; 0e:41ca $f4 $0f $00 $04 $0c
+      sENDIF                                           ;; 0e:41cf
+    sENDIF                                             ;; 0e:41cf
     sEND                                               ;; 0e:41cf $00
 
 script_02a1:
-    sIF_0B_JR $c9, $c1, .jr_0e_41dd                    ;; 0e:41d0 $0b $c9 $c1 $00 $08
-    sLOAD_ROOM 0, $92, 10, 6                           ;; 0e:41d5 $f4 $00 $92 $0a $06
-    sSET_MUSIC 25                                      ;; 0e:41da $f8 $19
-    sRUN_ROOM_SCRIPT                                   ;; 0e:41dc $ec
-.jr_0e_41dd:
+    sIF_0B $c9, $c1                                    ;; 0e:41d0 $0b $c9 $c1 $00 $08
+      sLOAD_ROOM 0, $92, 10, 6                         ;; 0e:41d5 $f4 $00 $92 $0a $06
+      sSET_MUSIC 25                                    ;; 0e:41da $f8 $19
+      sRUN_ROOM_SCRIPT                                 ;; 0e:41dc $ec
+    sENDIF                                             ;; 0e:41dd
     sEND                                               ;; 0e:41dd $00
 
 script_02a2:
-    sIF_0B_JR $c9, .jr_0e_41e7                         ;; 0e:41de $0b $c9 $00 $05
-    sLOAD_ROOM 14, $57, 2, 12                          ;; 0e:41e2 $f4 $0e $57 $02 $0c
-.jr_0e_41e7:
+    sIF_0B $c9                                         ;; 0e:41de $0b $c9 $00 $05
+      sLOAD_ROOM 14, $57, 2, 12                        ;; 0e:41e2 $f4 $0e $57 $02 $0c
+    sENDIF                                             ;; 0e:41e7
     sEND                                               ;; 0e:41e7 $00
 
 script_02a3:
-    sIF_0B_JR $c9, .jr_0e_41f1                         ;; 0e:41e8 $0b $c9 $00 $05
-    sLOAD_ROOM 1, $07, 2, 2                            ;; 0e:41ec $f4 $01 $07 $02 $02
-.jr_0e_41f1:
+    sIF_0B $c9                                         ;; 0e:41e8 $0b $c9 $00 $05
+      sLOAD_ROOM 1, $07, 2, 2                          ;; 0e:41ec $f4 $01 $07 $02 $02
+    sENDIF                                             ;; 0e:41f1
     sEND                                               ;; 0e:41f1 $00
 
 script_02a4:
-    sIF_0B_JR $c9, .jr_0e_41ff                         ;; 0e:41f2 $0b $c9 $00 $09
-    sLOAD_ROOM 0, $0e, 12, 12                          ;; 0e:41f6 $f4 $00 $0e $0c $0c
-    sSET_MUSIC 25                                      ;; 0e:41fb $f8 $19
-    sUNK_AB                                            ;; 0e:41fd $ab
-    sRUN_ROOM_SCRIPT                                   ;; 0e:41fe $ec
-.jr_0e_41ff:
+    sIF_0B $c9                                         ;; 0e:41f2 $0b $c9 $00 $09
+      sLOAD_ROOM 0, $0e, 12, 12                        ;; 0e:41f6 $f4 $00 $0e $0c $0c
+      sSET_MUSIC 25                                    ;; 0e:41fb $f8 $19
+      sUNK_AB                                          ;; 0e:41fd $ab
+      sRUN_ROOM_SCRIPT                                 ;; 0e:41fe $ec
+    sENDIF                                             ;; 0e:41ff
     sEND                                               ;; 0e:41ff $00
 
 script_02a5:
-    sIF_0B_JR $c9, .jr_0e_420b                         ;; 0e:4200 $0b $c9 $00 $07
-    sLOAD_ROOM 1, $52, 9, 4                            ;; 0e:4204 $f4 $01 $52 $09 $04
-    sUNK_AB                                            ;; 0e:4209 $ab
-    sRUN_ROOM_SCRIPT                                   ;; 0e:420a $ec
-.jr_0e_420b:
+    sIF_0B $c9                                         ;; 0e:4200 $0b $c9 $00 $07
+      sLOAD_ROOM 1, $52, 9, 4                          ;; 0e:4204 $f4 $01 $52 $09 $04
+      sUNK_AB                                          ;; 0e:4209 $ab
+      sRUN_ROOM_SCRIPT                                 ;; 0e:420a $ec
+    sENDIF                                             ;; 0e:420b
     sEND                                               ;; 0e:420b $00
 
 script_02a6:
-    sIF_0B_JR $c9, .jr_0e_4218                         ;; 0e:420c $0b $c9 $00 $08
-    sUNK_C5 0                                          ;; 0e:4210 $c5 $00
-    sLOAD_ROOM 2, $00, 9, 12                           ;; 0e:4212 $f4 $02 $00 $09 $0c
-    sRUN_ROOM_SCRIPT                                   ;; 0e:4217 $ec
-.jr_0e_4218:
+    sIF_0B $c9                                         ;; 0e:420c $0b $c9 $00 $08
+      sUNK_C5 0                                        ;; 0e:4210 $c5 $00
+      sLOAD_ROOM 2, $00, 9, 12                         ;; 0e:4212 $f4 $02 $00 $09 $0c
+      sRUN_ROOM_SCRIPT                                 ;; 0e:4217 $ec
+    sENDIF                                             ;; 0e:4218
     sEND                                               ;; 0e:4218 $00
 
 script_02a7:
-    sIF_0B_JR $c9, .jr_0e_4225                         ;; 0e:4219 $0b $c9 $00 $08
-    sUNK_C5 0                                          ;; 0e:421d $c5 $00
-    sLOAD_ROOM 2, $01, 9, 12                           ;; 0e:421f $f4 $02 $01 $09 $0c
-    sRUN_ROOM_SCRIPT                                   ;; 0e:4224 $ec
-.jr_0e_4225:
+    sIF_0B $c9                                         ;; 0e:4219 $0b $c9 $00 $08
+      sUNK_C5 0                                        ;; 0e:421d $c5 $00
+      sLOAD_ROOM 2, $01, 9, 12                         ;; 0e:421f $f4 $02 $01 $09 $0c
+      sRUN_ROOM_SCRIPT                                 ;; 0e:4224 $ec
+    sENDIF                                             ;; 0e:4225
     sEND                                               ;; 0e:4225 $00
 
 script_02a8:
-    sIF_0B_JR $c9, .jr_0e_4232                         ;; 0e:4226 $0b $c9 $00 $08
-    sUNK_C5 12                                         ;; 0e:422a $c5 $0c
-    sLOAD_ROOM 4, $01, 9, 12                           ;; 0e:422c $f4 $04 $01 $09 $0c
-    sRUN_ROOM_SCRIPT                                   ;; 0e:4231 $ec
-.jr_0e_4232:
+    sIF_0B $c9                                         ;; 0e:4226 $0b $c9 $00 $08
+      sUNK_C5 12                                       ;; 0e:422a $c5 $0c
+      sLOAD_ROOM 4, $01, 9, 12                         ;; 0e:422c $f4 $04 $01 $09 $0c
+      sRUN_ROOM_SCRIPT                                 ;; 0e:4231 $ec
+    sENDIF                                             ;; 0e:4232
     sEND                                               ;; 0e:4232 $00
 
 script_02a9:
-    sIF_0B_JR $c9, .jr_0e_423f                         ;; 0e:4233 $0b $c9 $00 $08
-    sUNK_C5 12                                         ;; 0e:4237 $c5 $0c
-    sLOAD_ROOM 3, $00, 9, 12                           ;; 0e:4239 $f4 $03 $00 $09 $0c
-    sRUN_ROOM_SCRIPT                                   ;; 0e:423e $ec
-.jr_0e_423f:
+    sIF_0B $c9                                         ;; 0e:4233 $0b $c9 $00 $08
+      sUNK_C5 12                                       ;; 0e:4237 $c5 $0c
+      sLOAD_ROOM 3, $00, 9, 12                         ;; 0e:4239 $f4 $03 $00 $09 $0c
+      sRUN_ROOM_SCRIPT                                 ;; 0e:423e $ec
+    sENDIF                                             ;; 0e:423f
     sEND                                               ;; 0e:423f $00
 
 script_02aa:
-    sIF_0B_JR $c9, .jr_0e_424c                         ;; 0e:4240 $0b $c9 $00 $08
-    sUNK_C5 10                                         ;; 0e:4244 $c5 $0a
-    sLOAD_ROOM 3, $01, 9, 12                           ;; 0e:4246 $f4 $03 $01 $09 $0c
-    sRUN_ROOM_SCRIPT                                   ;; 0e:424b $ec
-.jr_0e_424c:
+    sIF_0B $c9                                         ;; 0e:4240 $0b $c9 $00 $08
+      sUNK_C5 10                                       ;; 0e:4244 $c5 $0a
+      sLOAD_ROOM 3, $01, 9, 12                         ;; 0e:4246 $f4 $03 $01 $09 $0c
+      sRUN_ROOM_SCRIPT                                 ;; 0e:424b $ec
+    sENDIF                                             ;; 0e:424c
     sEND                                               ;; 0e:424c $00
 
 script_02ab:
     sEND                                               ;; 0e:424d $00
 
 script_02ac:
-    sIF_0B_JR $c9, .jr_0e_425a                         ;; 0e:424e $0b $c9 $00 $08
-    sUNK_C5 2                                          ;; 0e:4252 $c5 $02
-    sLOAD_ROOM 2, $00, 9, 12                           ;; 0e:4254 $f4 $02 $00 $09 $0c
-    sRUN_ROOM_SCRIPT                                   ;; 0e:4259 $ec
-.jr_0e_425a:
+    sIF_0B $c9                                         ;; 0e:424e $0b $c9 $00 $08
+      sUNK_C5 2                                        ;; 0e:4252 $c5 $02
+      sLOAD_ROOM 2, $00, 9, 12                         ;; 0e:4254 $f4 $02 $00 $09 $0c
+      sRUN_ROOM_SCRIPT                                 ;; 0e:4259 $ec
+    sENDIF                                             ;; 0e:425a
     sEND                                               ;; 0e:425a $00
 
 script_02ad:
-    sIF_0B_JR $c9, .jr_0e_4267                         ;; 0e:425b $0b $c9 $00 $08
-    sUNK_C5 1                                          ;; 0e:425f $c5 $01
-    sLOAD_ROOM 2, $01, 9, 12                           ;; 0e:4261 $f4 $02 $01 $09 $0c
-    sRUN_ROOM_SCRIPT                                   ;; 0e:4266 $ec
-.jr_0e_4267:
+    sIF_0B $c9                                         ;; 0e:425b $0b $c9 $00 $08
+      sUNK_C5 1                                        ;; 0e:425f $c5 $01
+      sLOAD_ROOM 2, $01, 9, 12                         ;; 0e:4261 $f4 $02 $01 $09 $0c
+      sRUN_ROOM_SCRIPT                                 ;; 0e:4266 $ec
+    sENDIF                                             ;; 0e:4267
     sEND                                               ;; 0e:4267 $00
 
 script_02ae:
-    sIF_0B_JR $c9, .jr_0e_4274                         ;; 0e:4268 $0b $c9 $00 $08
-    sUNK_C5 13                                         ;; 0e:426c $c5 $0d
-    sLOAD_ROOM 4, $01, 9, 12                           ;; 0e:426e $f4 $04 $01 $09 $0c
-    sRUN_ROOM_SCRIPT                                   ;; 0e:4273 $ec
-.jr_0e_4274:
+    sIF_0B $c9                                         ;; 0e:4268 $0b $c9 $00 $08
+      sUNK_C5 13                                       ;; 0e:426c $c5 $0d
+      sLOAD_ROOM 4, $01, 9, 12                         ;; 0e:426e $f4 $04 $01 $09 $0c
+      sRUN_ROOM_SCRIPT                                 ;; 0e:4273 $ec
+    sENDIF                                             ;; 0e:4274
     sEND                                               ;; 0e:4274 $00
 
 script_02af:
-    sIF_0B_JR $c9, .jr_0e_4281                         ;; 0e:4275 $0b $c9 $00 $08
-    sUNK_C5 13                                         ;; 0e:4279 $c5 $0d
-    sLOAD_ROOM 3, $00, 9, 12                           ;; 0e:427b $f4 $03 $00 $09 $0c
-    sRUN_ROOM_SCRIPT                                   ;; 0e:4280 $ec
-.jr_0e_4281:
+    sIF_0B $c9                                         ;; 0e:4275 $0b $c9 $00 $08
+      sUNK_C5 13                                       ;; 0e:4279 $c5 $0d
+      sLOAD_ROOM 3, $00, 9, 12                         ;; 0e:427b $f4 $03 $00 $09 $0c
+      sRUN_ROOM_SCRIPT                                 ;; 0e:4280 $ec
+    sENDIF                                             ;; 0e:4281
     sEND                                               ;; 0e:4281 $00
 
 script_02b0:
-    sIF_0B_JR $c9, .jr_0e_428e                         ;; 0e:4282 $0b $c9 $00 $08
-    sUNK_C5 11                                         ;; 0e:4286 $c5 $0b
-    sLOAD_ROOM 3, $01, 9, 12                           ;; 0e:4288 $f4 $03 $01 $09 $0c
-    sRUN_ROOM_SCRIPT                                   ;; 0e:428d $ec
-.jr_0e_428e:
+    sIF_0B $c9                                         ;; 0e:4282 $0b $c9 $00 $08
+      sUNK_C5 11                                       ;; 0e:4286 $c5 $0b
+      sLOAD_ROOM 3, $01, 9, 12                         ;; 0e:4288 $f4 $03 $01 $09 $0c
+      sRUN_ROOM_SCRIPT                                 ;; 0e:428d $ec
+    sENDIF                                             ;; 0e:428e
     sEND                                               ;; 0e:428e $00
 
 script_02b1:
-    sIF_0B_JR $c9, .jr_0e_429b                         ;; 0e:428f $0b $c9 $00 $08
-    sUNK_C5 4                                          ;; 0e:4293 $c5 $04
-    sLOAD_ROOM 2, $00, 9, 12                           ;; 0e:4295 $f4 $02 $00 $09 $0c
-    sRUN_ROOM_SCRIPT                                   ;; 0e:429a $ec
-.jr_0e_429b:
+    sIF_0B $c9                                         ;; 0e:428f $0b $c9 $00 $08
+      sUNK_C5 4                                        ;; 0e:4293 $c5 $04
+      sLOAD_ROOM 2, $00, 9, 12                         ;; 0e:4295 $f4 $02 $00 $09 $0c
+      sRUN_ROOM_SCRIPT                                 ;; 0e:429a $ec
+    sENDIF                                             ;; 0e:429b
     sEND                                               ;; 0e:429b $00
 
 script_02b2:
-    sIF_0B_JR $c9, .jr_0e_42a8                         ;; 0e:429c $0b $c9 $00 $08
-    sUNK_C5 3                                          ;; 0e:42a0 $c5 $03
-    sLOAD_ROOM 2, $01, 9, 12                           ;; 0e:42a2 $f4 $02 $01 $09 $0c
-    sRUN_ROOM_SCRIPT                                   ;; 0e:42a7 $ec
-.jr_0e_42a8:
+    sIF_0B $c9                                         ;; 0e:429c $0b $c9 $00 $08
+      sUNK_C5 3                                        ;; 0e:42a0 $c5 $03
+      sLOAD_ROOM 2, $01, 9, 12                         ;; 0e:42a2 $f4 $02 $01 $09 $0c
+      sRUN_ROOM_SCRIPT                                 ;; 0e:42a7 $ec
+    sENDIF                                             ;; 0e:42a8
     sEND                                               ;; 0e:42a8 $00
 
 script_02b3:
-    sIF_0B_JR $c9, .jr_0e_42b4                         ;; 0e:42a9 $0b $c9 $00 $07
-    sUNK_C5 7                                          ;; 0e:42ad $c5 $07
-    sLOAD_ROOM 4, $00, 9, 12                           ;; 0e:42af $f4 $04 $00 $09 $0c
-.jr_0e_42b4:
+    sIF_0B $c9                                         ;; 0e:42a9 $0b $c9 $00 $07
+      sUNK_C5 7                                        ;; 0e:42ad $c5 $07
+      sLOAD_ROOM 4, $00, 9, 12                         ;; 0e:42af $f4 $04 $00 $09 $0c
+    sENDIF                                             ;; 0e:42b4
     sEND                                               ;; 0e:42b4 $00
 
 script_02b4:
-    sIF_0B_JR $c9, .jr_0e_42c1                         ;; 0e:42b5 $0b $c9 $00 $08
-    sUNK_C5 13                                         ;; 0e:42b9 $c5 $0d
-    sLOAD_ROOM 3, $01, 9, 12                           ;; 0e:42bb $f4 $03 $01 $09 $0c
-    sRUN_ROOM_SCRIPT                                   ;; 0e:42c0 $ec
-.jr_0e_42c1:
+    sIF_0B $c9                                         ;; 0e:42b5 $0b $c9 $00 $08
+      sUNK_C5 13                                       ;; 0e:42b9 $c5 $0d
+      sLOAD_ROOM 3, $01, 9, 12                         ;; 0e:42bb $f4 $03 $01 $09 $0c
+      sRUN_ROOM_SCRIPT                                 ;; 0e:42c0 $ec
+    sENDIF                                             ;; 0e:42c1
     sEND                                               ;; 0e:42c1 $00
 
 script_02b5:
-    sIF_0B_JR $c9, .jr_0e_42ce                         ;; 0e:42c2 $0b $c9 $00 $08
-    sUNK_C5 5                                          ;; 0e:42c6 $c5 $05
-    sLOAD_ROOM 2, $00, 9, 12                           ;; 0e:42c8 $f4 $02 $00 $09 $0c
-    sRUN_ROOM_SCRIPT                                   ;; 0e:42cd $ec
-.jr_0e_42ce:
+    sIF_0B $c9                                         ;; 0e:42c2 $0b $c9 $00 $08
+      sUNK_C5 5                                        ;; 0e:42c6 $c5 $05
+      sLOAD_ROOM 2, $00, 9, 12                         ;; 0e:42c8 $f4 $02 $00 $09 $0c
+      sRUN_ROOM_SCRIPT                                 ;; 0e:42cd $ec
+    sENDIF                                             ;; 0e:42ce
     sEND                                               ;; 0e:42ce $00
 
 script_02b6:
-    sIF_0B_JR $c9, .jr_0e_42db                         ;; 0e:42cf $0b $c9 $00 $08
-    sUNK_C5 4                                          ;; 0e:42d3 $c5 $04
-    sLOAD_ROOM 2, $01, 9, 12                           ;; 0e:42d5 $f4 $02 $01 $09 $0c
-    sRUN_ROOM_SCRIPT                                   ;; 0e:42da $ec
-.jr_0e_42db:
+    sIF_0B $c9                                         ;; 0e:42cf $0b $c9 $00 $08
+      sUNK_C5 4                                        ;; 0e:42d3 $c5 $04
+      sLOAD_ROOM 2, $01, 9, 12                         ;; 0e:42d5 $f4 $02 $01 $09 $0c
+      sRUN_ROOM_SCRIPT                                 ;; 0e:42da $ec
+    sENDIF                                             ;; 0e:42db
     sEND                                               ;; 0e:42db $00
 
 script_02b7:
-    sIF_0B_JR $c9, .jr_0e_42e8                         ;; 0e:42dc $0b $c9 $00 $08
-    sUNK_C5 9                                          ;; 0e:42e0 $c5 $09
-    sLOAD_ROOM 4, $01, 9, 12                           ;; 0e:42e2 $f4 $04 $01 $09 $0c
-    sRUN_ROOM_SCRIPT                                   ;; 0e:42e7 $ec
-.jr_0e_42e8:
+    sIF_0B $c9                                         ;; 0e:42dc $0b $c9 $00 $08
+      sUNK_C5 9                                        ;; 0e:42e0 $c5 $09
+      sLOAD_ROOM 4, $01, 9, 12                         ;; 0e:42e2 $f4 $04 $01 $09 $0c
+      sRUN_ROOM_SCRIPT                                 ;; 0e:42e7 $ec
+    sENDIF                                             ;; 0e:42e8
     sEND                                               ;; 0e:42e8 $00
 
 script_02b8:
-    sIF_0B_JR $c9, .jr_0e_42f5                         ;; 0e:42e9 $0b $c9 $00 $08
-    sUNK_C5 14                                         ;; 0e:42ed $c5 $0e
-    sLOAD_ROOM 3, $00, 9, 12                           ;; 0e:42ef $f4 $03 $00 $09 $0c
-    sRUN_ROOM_SCRIPT                                   ;; 0e:42f4 $ec
-.jr_0e_42f5:
+    sIF_0B $c9                                         ;; 0e:42e9 $0b $c9 $00 $08
+      sUNK_C5 14                                       ;; 0e:42ed $c5 $0e
+      sLOAD_ROOM 3, $00, 9, 12                         ;; 0e:42ef $f4 $03 $00 $09 $0c
+      sRUN_ROOM_SCRIPT                                 ;; 0e:42f4 $ec
+    sENDIF                                             ;; 0e:42f5
     sEND                                               ;; 0e:42f5 $00
 
 script_02b9:
-    sIF_0B_JR $c9, .jr_0e_4302                         ;; 0e:42f6 $0b $c9 $00 $08
-    sUNK_C5 12                                         ;; 0e:42fa $c5 $0c
-    sLOAD_ROOM 3, $01, 9, 12                           ;; 0e:42fc $f4 $03 $01 $09 $0c
-    sRUN_ROOM_SCRIPT                                   ;; 0e:4301 $ec
-.jr_0e_4302:
+    sIF_0B $c9                                         ;; 0e:42f6 $0b $c9 $00 $08
+      sUNK_C5 12                                       ;; 0e:42fa $c5 $0c
+      sLOAD_ROOM 3, $01, 9, 12                         ;; 0e:42fc $f4 $03 $01 $09 $0c
+      sRUN_ROOM_SCRIPT                                 ;; 0e:4301 $ec
+    sENDIF                                             ;; 0e:4302
     sEND                                               ;; 0e:4302 $00
 
 script_02ba:
-    sIF_0B_JR $c9, .jr_0e_430f                         ;; 0e:4303 $0b $c9 $00 $08
-    sUNK_C5 15                                         ;; 0e:4307 $c5 $0f
-    sLOAD_ROOM 2, $00, 9, 12                           ;; 0e:4309 $f4 $02 $00 $09 $0c
-    sRUN_ROOM_SCRIPT                                   ;; 0e:430e $ec
-.jr_0e_430f:
+    sIF_0B $c9                                         ;; 0e:4303 $0b $c9 $00 $08
+      sUNK_C5 15                                       ;; 0e:4307 $c5 $0f
+      sLOAD_ROOM 2, $00, 9, 12                         ;; 0e:4309 $f4 $02 $00 $09 $0c
+      sRUN_ROOM_SCRIPT                                 ;; 0e:430e $ec
+    sENDIF                                             ;; 0e:430f
     sEND                                               ;; 0e:430f $00
 
 script_02bb:
-    sIF_0B_JR $c9, .jr_0e_431c                         ;; 0e:4310 $0b $c9 $00 $08
-    sUNK_C5 6                                          ;; 0e:4314 $c5 $06
-    sLOAD_ROOM 2, $01, 9, 12                           ;; 0e:4316 $f4 $02 $01 $09 $0c
-    sRUN_ROOM_SCRIPT                                   ;; 0e:431b $ec
-.jr_0e_431c:
+    sIF_0B $c9                                         ;; 0e:4310 $0b $c9 $00 $08
+      sUNK_C5 6                                        ;; 0e:4314 $c5 $06
+      sLOAD_ROOM 2, $01, 9, 12                         ;; 0e:4316 $f4 $02 $01 $09 $0c
+      sRUN_ROOM_SCRIPT                                 ;; 0e:431b $ec
+    sENDIF                                             ;; 0e:431c
     sEND                                               ;; 0e:431c $00
 
 script_02bc:
-    sIF_0B_JR $c9, .jr_0e_4329                         ;; 0e:431d $0b $c9 $00 $08
-    sUNK_C5 11                                         ;; 0e:4321 $c5 $0b
-    sLOAD_ROOM 4, $01, 9, 12                           ;; 0e:4323 $f4 $04 $01 $09 $0c
-    sRUN_ROOM_SCRIPT                                   ;; 0e:4328 $ec
-.jr_0e_4329:
+    sIF_0B $c9                                         ;; 0e:431d $0b $c9 $00 $08
+      sUNK_C5 11                                       ;; 0e:4321 $c5 $0b
+      sLOAD_ROOM 4, $01, 9, 12                         ;; 0e:4323 $f4 $04 $01 $09 $0c
+      sRUN_ROOM_SCRIPT                                 ;; 0e:4328 $ec
+    sENDIF                                             ;; 0e:4329
     sEND                                               ;; 0e:4329 $00
 
 script_02bd:
-    sIF_0B_JR $c9, .jr_0e_4336                         ;; 0e:432a $0b $c9 $00 $08
-    sUNK_C5 14                                         ;; 0e:432e $c5 $0e
-    sLOAD_ROOM 3, $01, 9, 12                           ;; 0e:4330 $f4 $03 $01 $09 $0c
-    sRUN_ROOM_SCRIPT                                   ;; 0e:4335 $ec
-.jr_0e_4336:
+    sIF_0B $c9                                         ;; 0e:432a $0b $c9 $00 $08
+      sUNK_C5 14                                       ;; 0e:432e $c5 $0e
+      sLOAD_ROOM 3, $01, 9, 12                         ;; 0e:4330 $f4 $03 $01 $09 $0c
+      sRUN_ROOM_SCRIPT                                 ;; 0e:4335 $ec
+    sENDIF                                             ;; 0e:4336
     sEND                                               ;; 0e:4336 $00
 
 script_02be:
-    sIF_0B_JR $c9, .jr_0e_435d                         ;; 0e:4337 $0b $c9 $00 $22
-    sUNK_C5 9                                          ;; 0e:433b $c5 $09
-    sIF_FLAG_JR !wScriptFlags03.7, wScriptFlags04.1, .jr_0e_4357 ;; 0e:433d $08 $1f $a1 $00 $15
-    sSET_MUSIC 0                                       ;; 0e:4342 $f8 $00
-    sSFX 22                                            ;; 0e:4344 $f9 $16
-    sDELAY 70                                          ;; 0e:4346 $f0 $46
-    sSFX 22                                            ;; 0e:4348 $f9 $16
-    sDELAY 70                                          ;; 0e:434a $f0 $46
-    sSFX 37                                            ;; 0e:434c $f9 $25
-    sSHAKE_SCREEN                                      ;; 0e:434e $fb
-    sMSG                                               ;; 0e:434f $04
-      db "<10>  __?<12>"
-      db "<11>", $00          ;; 0e:4350
-.jr_0e_4357:
-    sLOAD_ROOM 3, $01, 9, 12                           ;; 0e:4357 $f4 $03 $01 $09 $0c
-    sRUN_ROOM_SCRIPT                                   ;; 0e:435c $ec
-.jr_0e_435d:
+    sIF_0B $c9                                         ;; 0e:4337 $0b $c9 $00 $22
+      sUNK_C5 9                                        ;; 0e:433b $c5 $09
+      sIF_FLAG wScriptFlags03.7, !wScriptFlags04.1     ;; 0e:433d $08 $1f $a1 $00 $15
+        sSET_MUSIC 0                                   ;; 0e:4342 $f8 $00
+        sSFX 22                                        ;; 0e:4344 $f9 $16
+        sDELAY 70                                      ;; 0e:4346 $f0 $46
+        sSFX 22                                        ;; 0e:4348 $f9 $16
+        sDELAY 70                                      ;; 0e:434a $f0 $46
+        sSFX 37                                        ;; 0e:434c $f9 $25
+        sSHAKE_SCREEN                                  ;; 0e:434e $fb
+        sMSG                                           ;; 0e:434f $04
+          db "<10>  __?<12>"
+      db "<11>", $00      ;; 0e:4350
+      sENDIF                                           ;; 0e:4357
+      sLOAD_ROOM 3, $01, 9, 12                         ;; 0e:4357 $f4 $03 $01 $09 $0c
+      sRUN_ROOM_SCRIPT                                 ;; 0e:435c $ec
+    sENDIF                                             ;; 0e:435d
     sEND                                               ;; 0e:435d $00
 
 script_02bf:
-    sIF_0B_JR $c9, .jr_0e_4369                         ;; 0e:435e $0b $c9 $00 $07
-    sLOAD_ROOM 0, $9b, 4, 5                            ;; 0e:4362 $f4 $00 $9b $04 $05
-    sSET_MUSIC 20                                      ;; 0e:4367 $f8 $14
-.jr_0e_4369:
+    sIF_0B $c9                                         ;; 0e:435e $0b $c9 $00 $07
+      sLOAD_ROOM 0, $9b, 4, 5                          ;; 0e:4362 $f4 $00 $9b $04 $05
+      sSET_MUSIC 20                                    ;; 0e:4367 $f8 $14
+    sENDIF                                             ;; 0e:4369
     sEND                                               ;; 0e:4369 $00
 
 script_02c0:
-    sIF_0B_JR $c9, .jr_0e_4373                         ;; 0e:436a $0b $c9 $00 $05
-    sLOAD_ROOM 1, $57, 14, 12                          ;; 0e:436e $f4 $01 $57 $0e $0c
-.jr_0e_4373:
+    sIF_0B $c9                                         ;; 0e:436a $0b $c9 $00 $05
+      sLOAD_ROOM 1, $57, 14, 12                        ;; 0e:436e $f4 $01 $57 $0e $0c
+    sENDIF                                             ;; 0e:4373
     sEND                                               ;; 0e:4373 $00
 
 script_02c1:
-    sIF_0B_JR $c9, .jr_0e_437d                         ;; 0e:4374 $0b $c9 $00 $05
-    sLOAD_ROOM 1, $71, 2, 6                            ;; 0e:4378 $f4 $01 $71 $02 $06
-.jr_0e_437d:
+    sIF_0B $c9                                         ;; 0e:4374 $0b $c9 $00 $05
+      sLOAD_ROOM 1, $71, 2, 6                          ;; 0e:4378 $f4 $01 $71 $02 $06
+    sENDIF                                             ;; 0e:437d
     sEND                                               ;; 0e:437d $00
 
 script_02c2:
-    sIF_0B_JR $c9, .jr_0e_4387                         ;; 0e:437e $0b $c9 $00 $05
-    sLOAD_ROOM 1, $71, 8, 4                            ;; 0e:4382 $f4 $01 $71 $08 $04
-.jr_0e_4387:
+    sIF_0B $c9                                         ;; 0e:437e $0b $c9 $00 $05
+      sLOAD_ROOM 1, $71, 8, 4                          ;; 0e:4382 $f4 $01 $71 $08 $04
+    sENDIF                                             ;; 0e:4387
     sEND                                               ;; 0e:4387 $00
 
 script_02c3:
-    sIF_0B_JR $c9, .jr_0e_4391                         ;; 0e:4388 $0b $c9 $00 $05
-    sLOAD_ROOM 1, $71, 16, 6                           ;; 0e:438c $f4 $01 $71 $10 $06
-.jr_0e_4391:
+    sIF_0B $c9                                         ;; 0e:4388 $0b $c9 $00 $05
+      sLOAD_ROOM 1, $71, 16, 6                         ;; 0e:438c $f4 $01 $71 $10 $06
+    sENDIF                                             ;; 0e:4391
     sEND                                               ;; 0e:4391 $00
 
 script_02c4:
-    sIF_0B_JR $c9, .jr_0e_43b6                         ;; 0e:4392 $0b $c9 $00 $20
-    sLOAD_ROOM 1, $36, 14, 254                         ;; 0e:4396 $f4 $01 $36 $0e $fe
-    sSET_PLAYER_DIRECTION_UP                           ;; 0e:439b $84
-    sDELAY 30                                          ;; 0e:439c $f0 $1e
-    sPLAYER_STEP_BACKWARD                              ;; 0e:439e $81
-    sDELAY 60                                          ;; 0e:439f $f0 $3c
-    sPLAYER_STEP_BACKWARD                              ;; 0e:43a1 $81
-    sPLAYER_STEP_BACKWARD                              ;; 0e:43a2 $81
-    sDELAY 10                                          ;; 0e:43a3 $f0 $0a
-    sPLAYER_STEP_BACKWARD                              ;; 0e:43a5 $81
-    sDELAY 70                                          ;; 0e:43a6 $f0 $46
-    sSET_PLAYER_DIRECTION_DOWN                         ;; 0e:43a8 $85
-    sSET_PLAYER_HURT_SPRITE                            ;; 0e:43a9 $a5
-    sSET_FAST_MOVEMENT                                 ;; 0e:43aa $88
-    sSFX 12                                            ;; 0e:43ab $f9 $0c
-    sLOOP 6, 2                                         ;; 0e:43ad $03 $06 $02
-      sPLAYER_STEP_FORWARD                             ;; 0e:43b0 $80
-    sEND                                               ;; 0e:43b1 $00
-    sSET_PLAYER_NORMAL_SPRITE                          ;; 0e:43b2 $a4
-    sCLEAR_FAST_MOVEMENT                               ;; 0e:43b3 $89
-    sDELAY 20                                          ;; 0e:43b4 $f0 $14
-.jr_0e_43b6:
+    sIF_0B $c9                                         ;; 0e:4392 $0b $c9 $00 $20
+      sLOAD_ROOM 1, $36, 14, 254                       ;; 0e:4396 $f4 $01 $36 $0e $fe
+      sSET_PLAYER_DIRECTION_UP                         ;; 0e:439b $84
+      sDELAY 30                                        ;; 0e:439c $f0 $1e
+      sPLAYER_STEP_BACKWARD                            ;; 0e:439e $81
+      sDELAY 60                                        ;; 0e:439f $f0 $3c
+      sPLAYER_STEP_BACKWARD                            ;; 0e:43a1 $81
+      sPLAYER_STEP_BACKWARD                            ;; 0e:43a2 $81
+      sDELAY 10                                        ;; 0e:43a3 $f0 $0a
+      sPLAYER_STEP_BACKWARD                            ;; 0e:43a5 $81
+      sDELAY 70                                        ;; 0e:43a6 $f0 $46
+      sSET_PLAYER_DIRECTION_DOWN                       ;; 0e:43a8 $85
+      sSET_PLAYER_HURT_SPRITE                          ;; 0e:43a9 $a5
+      sSET_FAST_MOVEMENT                               ;; 0e:43aa $88
+      sSFX 12                                          ;; 0e:43ab $f9 $0c
+      sLOOP 6, 2                                       ;; 0e:43ad $03 $06 $02
+        sPLAYER_STEP_FORWARD                           ;; 0e:43b0 $80
+      sEND                                             ;; 0e:43b1 $00
+      sSET_PLAYER_NORMAL_SPRITE                        ;; 0e:43b2 $a4
+      sCLEAR_FAST_MOVEMENT                             ;; 0e:43b3 $89
+      sDELAY 20                                        ;; 0e:43b4 $f0 $14
+    sENDIF                                             ;; 0e:43b6
     sEND                                               ;; 0e:43b6 $00
 
 script_02c5:
     sEND                                               ;; 0e:43b7 $00
 
 script_02c6:
-    sIF_0B_JR $c9, $c1, .jr_0e_43c2                    ;; 0e:43b8 $0b $c9 $c1 $00 $05
-    sLOAD_ROOM 1, $46, 7, 8                            ;; 0e:43bd $f4 $01 $46 $07 $08
-.jr_0e_43c2:
+    sIF_0B $c9, $c1                                    ;; 0e:43b8 $0b $c9 $c1 $00 $05
+      sLOAD_ROOM 1, $46, 7, 8                          ;; 0e:43bd $f4 $01 $46 $07 $08
+    sENDIF                                             ;; 0e:43c2
     sEND                                               ;; 0e:43c2 $00
 
 script_02c7:
-    sIF_0B_JR $c9, .jr_0e_43cc                         ;; 0e:43c3 $0b $c9 $00 $05
-    sLOAD_ROOM 1, $45, 7, 12                           ;; 0e:43c7 $f4 $01 $45 $07 $0c
-.jr_0e_43cc:
+    sIF_0B $c9                                         ;; 0e:43c3 $0b $c9 $00 $05
+      sLOAD_ROOM 1, $45, 7, 12                         ;; 0e:43c7 $f4 $01 $45 $07 $0c
+    sENDIF                                             ;; 0e:43cc
     sEND                                               ;; 0e:43cc $00
 
 script_02c8:
-    sIF_0B_JR $c9, .jr_0e_43d6                         ;; 0e:43cd $0b $c9 $00 $05
-    sLOAD_ROOM 15, $04, 14, 12                         ;; 0e:43d1 $f4 $0f $04 $0e $0c
-.jr_0e_43d6:
+    sIF_0B $c9                                         ;; 0e:43cd $0b $c9 $00 $05
+      sLOAD_ROOM 15, $04, 14, 12                       ;; 0e:43d1 $f4 $0f $04 $0e $0c
+    sENDIF                                             ;; 0e:43d6
     sEND                                               ;; 0e:43d6 $00
 
 script_02c9:
-    sIF_0B_JR $c9, .jr_0e_43e0                         ;; 0e:43d7 $0b $c9 $00 $05
-    sLOAD_ROOM 1, $24, 6, 2                            ;; 0e:43db $f4 $01 $24 $06 $02
-.jr_0e_43e0:
+    sIF_0B $c9                                         ;; 0e:43d7 $0b $c9 $00 $05
+      sLOAD_ROOM 1, $24, 6, 2                          ;; 0e:43db $f4 $01 $24 $06 $02
+    sENDIF                                             ;; 0e:43e0
     sEND                                               ;; 0e:43e0 $00
 
 script_02ca:
-    sIF_0B_JR $c9, .jr_0e_43ea                         ;; 0e:43e1 $0b $c9 $00 $05
-    sLOAD_ROOM 15, $32, 16, 10                         ;; 0e:43e5 $f4 $0f $32 $10 $0a
-.jr_0e_43ea:
+    sIF_0B $c9                                         ;; 0e:43e1 $0b $c9 $00 $05
+      sLOAD_ROOM 15, $32, 16, 10                       ;; 0e:43e5 $f4 $0f $32 $10 $0a
+    sENDIF                                             ;; 0e:43ea
     sEND                                               ;; 0e:43ea $00
 
 script_02cb:
-    sIF_0B_JR $c9, .jr_0e_43f4                         ;; 0e:43eb $0b $c9 $00 $05
-    sLOAD_ROOM 15, $33, 14, 12                         ;; 0e:43ef $f4 $0f $33 $0e $0c
-.jr_0e_43f4:
+    sIF_0B $c9                                         ;; 0e:43eb $0b $c9 $00 $05
+      sLOAD_ROOM 15, $33, 14, 12                       ;; 0e:43ef $f4 $0f $33 $0e $0c
+    sENDIF                                             ;; 0e:43f4
     sEND                                               ;; 0e:43f4 $00
 
 script_02cc:
-    sIF_0B_JR $c9, .jr_0e_43fe                         ;; 0e:43f5 $0b $c9 $00 $05
-    sLOAD_ROOM 5, $02, 16, 12                          ;; 0e:43f9 $f4 $05 $02 $10 $0c
-.jr_0e_43fe:
+    sIF_0B $c9                                         ;; 0e:43f5 $0b $c9 $00 $05
+      sLOAD_ROOM 5, $02, 16, 12                        ;; 0e:43f9 $f4 $05 $02 $10 $0c
+    sENDIF                                             ;; 0e:43fe
     sEND                                               ;; 0e:43fe $00
 
 script_02cd:
-    sIF_0B_JR $c9, .jr_0e_4408                         ;; 0e:43ff $0b $c9 $00 $05
-    sLOAD_ROOM 4, $02, 16, 12                          ;; 0e:4403 $f4 $04 $02 $10 $0c
-.jr_0e_4408:
+    sIF_0B $c9                                         ;; 0e:43ff $0b $c9 $00 $05
+      sLOAD_ROOM 4, $02, 16, 12                        ;; 0e:4403 $f4 $04 $02 $10 $0c
+    sENDIF                                             ;; 0e:4408
     sEND                                               ;; 0e:4408 $00
 
 script_02ce:
-    sIF_0B_JR $c9, .jr_0e_4412                         ;; 0e:4409 $0b $c9 $00 $05
-    sLOAD_ROOM 6, $03, 16, 2                           ;; 0e:440d $f4 $06 $03 $10 $02
-.jr_0e_4412:
+    sIF_0B $c9                                         ;; 0e:4409 $0b $c9 $00 $05
+      sLOAD_ROOM 6, $03, 16, 2                         ;; 0e:440d $f4 $06 $03 $10 $02
+    sENDIF                                             ;; 0e:4412
     sEND                                               ;; 0e:4412 $00
 
 script_02cf:
-    sIF_0B_JR $c9, .jr_0e_441c                         ;; 0e:4413 $0b $c9 $00 $05
-    sLOAD_ROOM 5, $03, 16, 2                           ;; 0e:4417 $f4 $05 $03 $10 $02
-.jr_0e_441c:
+    sIF_0B $c9                                         ;; 0e:4413 $0b $c9 $00 $05
+      sLOAD_ROOM 5, $03, 16, 2                         ;; 0e:4417 $f4 $05 $03 $10 $02
+    sENDIF                                             ;; 0e:441c
     sEND                                               ;; 0e:441c $00
 
 script_02d0:
-    sIF_0B_JR $c9, .jr_0e_4426                         ;; 0e:441d $0b $c9 $00 $05
-    sLOAD_ROOM 6, $42, 16, 2                           ;; 0e:4421 $f4 $06 $42 $10 $02
-.jr_0e_4426:
+    sIF_0B $c9                                         ;; 0e:441d $0b $c9 $00 $05
+      sLOAD_ROOM 6, $42, 16, 2                         ;; 0e:4421 $f4 $06 $42 $10 $02
+    sENDIF                                             ;; 0e:4426
     sEND                                               ;; 0e:4426 $00
 
 script_02d1:
-    sIF_0B_JR $c9, .jr_0e_4431                         ;; 0e:4427 $0b $c9 $00 $06
-    sLOAD_ROOM 5, $42, 16, 2                           ;; 0e:442b $f4 $05 $42 $10 $02
-    sRUN_ROOM_SCRIPT                                   ;; 0e:4430 $ec
-.jr_0e_4431:
+    sIF_0B $c9                                         ;; 0e:4427 $0b $c9 $00 $06
+      sLOAD_ROOM 5, $42, 16, 2                         ;; 0e:442b $f4 $05 $42 $10 $02
+      sRUN_ROOM_SCRIPT                                 ;; 0e:4430 $ec
+    sENDIF                                             ;; 0e:4431
     sEND                                               ;; 0e:4431 $00
 
 script_02d2:
-    sIF_0B_JR $c9, .jr_0e_443b                         ;; 0e:4432 $0b $c9 $00 $05
-    sLOAD_ROOM 5, $51, 16, 2                           ;; 0e:4436 $f4 $05 $51 $10 $02
-.jr_0e_443b:
+    sIF_0B $c9                                         ;; 0e:4432 $0b $c9 $00 $05
+      sLOAD_ROOM 5, $51, 16, 2                         ;; 0e:4436 $f4 $05 $51 $10 $02
+    sENDIF                                             ;; 0e:443b
     sEND                                               ;; 0e:443b $00
 
 script_02d3:
-    sIF_0B_JR $c9, .jr_0e_4445                         ;; 0e:443c $0b $c9 $00 $05
-    sLOAD_ROOM 4, $51, 16, 2                           ;; 0e:4440 $f4 $04 $51 $10 $02
-.jr_0e_4445:
+    sIF_0B $c9                                         ;; 0e:443c $0b $c9 $00 $05
+      sLOAD_ROOM 4, $51, 16, 2                         ;; 0e:4440 $f4 $04 $51 $10 $02
+    sENDIF                                             ;; 0e:4445
     sEND                                               ;; 0e:4445 $00
 
 script_02d4:
-    sIF_0B_JR $c9, .jr_0e_444f                         ;; 0e:4446 $0b $c9 $00 $05
-    sLOAD_ROOM 5, $32, 16, 12                          ;; 0e:444a $f4 $05 $32 $10 $0c
-.jr_0e_444f:
+    sIF_0B $c9                                         ;; 0e:4446 $0b $c9 $00 $05
+      sLOAD_ROOM 5, $32, 16, 12                        ;; 0e:444a $f4 $05 $32 $10 $0c
+    sENDIF                                             ;; 0e:444f
     sEND                                               ;; 0e:444f $00
 
 script_02d5:
-    sIF_0B_JR $c9, .jr_0e_4459                         ;; 0e:4450 $0b $c9 $00 $05
-    sLOAD_ROOM 4, $32, 16, 12                          ;; 0e:4454 $f4 $04 $32 $10 $0c
-.jr_0e_4459:
+    sIF_0B $c9                                         ;; 0e:4450 $0b $c9 $00 $05
+      sLOAD_ROOM 4, $32, 16, 12                        ;; 0e:4454 $f4 $04 $32 $10 $0c
+    sENDIF                                             ;; 0e:4459
     sEND                                               ;; 0e:4459 $00
 
 script_02d6:
-    sIF_0B_JR $c9, .jr_0e_4463                         ;; 0e:445a $0b $c9 $00 $05
-    sLOAD_ROOM 4, $21, 10, 8                           ;; 0e:445e $f4 $04 $21 $0a $08
-.jr_0e_4463:
+    sIF_0B $c9                                         ;; 0e:445a $0b $c9 $00 $05
+      sLOAD_ROOM 4, $21, 10, 8                         ;; 0e:445e $f4 $04 $21 $0a $08
+    sENDIF                                             ;; 0e:4463
     sEND                                               ;; 0e:4463 $00
 
 script_02d7:
-    sIF_0B_JR $c9, .jr_0e_446d                         ;; 0e:4464 $0b $c9 $00 $05
-    sLOAD_ROOM 5, $21, 10, 6                           ;; 0e:4468 $f4 $05 $21 $0a $06
-.jr_0e_446d:
+    sIF_0B $c9                                         ;; 0e:4464 $0b $c9 $00 $05
+      sLOAD_ROOM 5, $21, 10, 6                         ;; 0e:4468 $f4 $05 $21 $0a $06
+    sENDIF                                             ;; 0e:446d
     sEND                                               ;; 0e:446d $00
 
 script_02d8:
-    sIF_0B_JR $c9, .jr_0e_4477                         ;; 0e:446e $0b $c9 $00 $05
-    sLOAD_ROOM 6, $71, 2, 2                            ;; 0e:4472 $f4 $06 $71 $02 $02
-.jr_0e_4477:
+    sIF_0B $c9                                         ;; 0e:446e $0b $c9 $00 $05
+      sLOAD_ROOM 6, $71, 2, 2                          ;; 0e:4472 $f4 $06 $71 $02 $02
+    sENDIF                                             ;; 0e:4477
     sEND                                               ;; 0e:4477 $00
 
 script_02d9:
-    sIF_0B_JR $c9, .jr_0e_4481                         ;; 0e:4478 $0b $c9 $00 $05
-    sLOAD_ROOM 15, $30, 14, 6                          ;; 0e:447c $f4 $0f $30 $0e $06
-.jr_0e_4481:
+    sIF_0B $c9                                         ;; 0e:4478 $0b $c9 $00 $05
+      sLOAD_ROOM 15, $30, 14, 6                        ;; 0e:447c $f4 $0f $30 $0e $06
+    sENDIF                                             ;; 0e:4481
     sEND                                               ;; 0e:4481 $00
 
 script_02da:
-    sIF_0B_JR $c9, .jr_0e_448b                         ;; 0e:4482 $0b $c9 $00 $05
-    sLOAD_ROOM 15, $54, 2, 12                          ;; 0e:4486 $f4 $0f $54 $02 $0c
-.jr_0e_448b:
+    sIF_0B $c9                                         ;; 0e:4482 $0b $c9 $00 $05
+      sLOAD_ROOM 15, $54, 2, 12                        ;; 0e:4486 $f4 $0f $54 $02 $0c
+    sENDIF                                             ;; 0e:448b
     sEND                                               ;; 0e:448b $00
 
 script_02db:
-    sIF_0B_JR $c9, .jr_0e_4495                         ;; 0e:448c $0b $c9 $00 $05
-    sLOAD_ROOM 15, $64, 14, 2                          ;; 0e:4490 $f4 $0f $64 $0e $02
-.jr_0e_4495:
+    sIF_0B $c9                                         ;; 0e:448c $0b $c9 $00 $05
+      sLOAD_ROOM 15, $64, 14, 2                        ;; 0e:4490 $f4 $0f $64 $0e $02
+    sENDIF                                             ;; 0e:4495
     sEND                                               ;; 0e:4495 $00
 
 script_02dc:
-    sIF_0B_JR $c9, .jr_0e_449f                         ;; 0e:4496 $0b $c9 $00 $05
-    sLOAD_ROOM 5, $72, 16, 12                          ;; 0e:449a $f4 $05 $72 $10 $0c
-.jr_0e_449f:
+    sIF_0B $c9                                         ;; 0e:4496 $0b $c9 $00 $05
+      sLOAD_ROOM 5, $72, 16, 12                        ;; 0e:449a $f4 $05 $72 $10 $0c
+    sENDIF                                             ;; 0e:449f
     sEND                                               ;; 0e:449f $00
 
 script_02dd:
-    sIF_0B_JR $c9, .jr_0e_44a9                         ;; 0e:44a0 $0b $c9 $00 $05
-    sLOAD_ROOM 5, $70, 16, 12                          ;; 0e:44a4 $f4 $05 $70 $10 $0c
-.jr_0e_44a9:
+    sIF_0B $c9                                         ;; 0e:44a0 $0b $c9 $00 $05
+      sLOAD_ROOM 5, $70, 16, 12                        ;; 0e:44a4 $f4 $05 $70 $10 $0c
+    sENDIF                                             ;; 0e:44a9
     sEND                                               ;; 0e:44a9 $00
 
 script_02de:
-    sIF_0B_JR $c9, .jr_0e_44b3                         ;; 0e:44aa $0b $c9 $00 $05
-    sLOAD_ROOM 5, $70, 16, 2                           ;; 0e:44ae $f4 $05 $70 $10 $02
-.jr_0e_44b3:
+    sIF_0B $c9                                         ;; 0e:44aa $0b $c9 $00 $05
+      sLOAD_ROOM 5, $70, 16, 2                         ;; 0e:44ae $f4 $05 $70 $10 $02
+    sENDIF                                             ;; 0e:44b3
     sEND                                               ;; 0e:44b3 $00
 
 script_02df:
-    sIF_0B_JR $c9, .jr_0e_44bd                         ;; 0e:44b4 $0b $c9 $00 $05
-    sLOAD_ROOM 15, $31, 10, 4                          ;; 0e:44b8 $f4 $0f $31 $0a $04
-.jr_0e_44bd:
+    sIF_0B $c9                                         ;; 0e:44b4 $0b $c9 $00 $05
+      sLOAD_ROOM 15, $31, 10, 4                        ;; 0e:44b8 $f4 $0f $31 $0a $04
+    sENDIF                                             ;; 0e:44bd
     sEND                                               ;; 0e:44bd $00
 
 script_02e0:
-    sIF_0B_JR $c9, .jr_0e_44c7                         ;; 0e:44be $0b $c9 $00 $05
-    sLOAD_ROOM 1, $03, 9, 4                            ;; 0e:44c2 $f4 $01 $03 $09 $04
-.jr_0e_44c7:
+    sIF_0B $c9                                         ;; 0e:44be $0b $c9 $00 $05
+      sLOAD_ROOM 1, $03, 9, 4                          ;; 0e:44c2 $f4 $01 $03 $09 $04
+    sENDIF                                             ;; 0e:44c7
     sEND                                               ;; 0e:44c7 $00
 
 script_02e1:
-    sIF_0B_JR $c9, .jr_0e_44d4                         ;; 0e:44c8 $0b $c9 $00 $08
-    sUNK_C5 6                                          ;; 0e:44cc $c5 $06
-    sLOAD_ROOM 5, $00, 9, 12                           ;; 0e:44ce $f4 $05 $00 $09 $0c
-    sRUN_ROOM_SCRIPT                                   ;; 0e:44d3 $ec
-.jr_0e_44d4:
+    sIF_0B $c9                                         ;; 0e:44c8 $0b $c9 $00 $08
+      sUNK_C5 6                                        ;; 0e:44cc $c5 $06
+      sLOAD_ROOM 5, $00, 9, 12                         ;; 0e:44ce $f4 $05 $00 $09 $0c
+      sRUN_ROOM_SCRIPT                                 ;; 0e:44d3 $ec
+    sENDIF                                             ;; 0e:44d4
     sEND                                               ;; 0e:44d4 $00
 
 script_02e2:
-    sIF_0B_JR $c9, .jr_0e_44de                         ;; 0e:44d5 $0b $c9 $00 $05
-    sLOAD_ROOM 15, $02, 16, 8                          ;; 0e:44d9 $f4 $0f $02 $10 $08
-.jr_0e_44de:
+    sIF_0B $c9                                         ;; 0e:44d5 $0b $c9 $00 $05
+      sLOAD_ROOM 15, $02, 16, 8                        ;; 0e:44d9 $f4 $0f $02 $10 $08
+    sENDIF                                             ;; 0e:44de
     sEND                                               ;; 0e:44de $00
 
 script_02e3:
-    sIF_0B_JR $c9, .jr_0e_44e8                         ;; 0e:44df $0b $c9 $00 $05
-    sLOAD_ROOM 4, $04, 16, 12                          ;; 0e:44e3 $f4 $04 $04 $10 $0c
-.jr_0e_44e8:
+    sIF_0B $c9                                         ;; 0e:44df $0b $c9 $00 $05
+      sLOAD_ROOM 4, $04, 16, 12                        ;; 0e:44e3 $f4 $04 $04 $10 $0c
+    sENDIF                                             ;; 0e:44e8
     sEND                                               ;; 0e:44e8 $00
 
 script_02e4:
-    sIF_0B_JR $c9, .jr_0e_44f2                         ;; 0e:44e9 $0b $c9 $00 $05
-    sLOAD_ROOM 1, $03, 9, 4                            ;; 0e:44ed $f4 $01 $03 $09 $04
-.jr_0e_44f2:
+    sIF_0B $c9                                         ;; 0e:44e9 $0b $c9 $00 $05
+      sLOAD_ROOM 1, $03, 9, 4                          ;; 0e:44ed $f4 $01 $03 $09 $04
+    sENDIF                                             ;; 0e:44f2
     sEND                                               ;; 0e:44f2 $00
 
 script_02e5:
-    sIF_0B_JR $c9, .jr_0e_44fc                         ;; 0e:44f3 $0b $c9 $00 $05
-    sLOAD_ROOM 1, $33, 11, 4                           ;; 0e:44f7 $f4 $01 $33 $0b $04
-.jr_0e_44fc:
+    sIF_0B $c9                                         ;; 0e:44f3 $0b $c9 $00 $05
+      sLOAD_ROOM 1, $33, 11, 4                         ;; 0e:44f7 $f4 $01 $33 $0b $04
+    sENDIF                                             ;; 0e:44fc
     sEND                                               ;; 0e:44fc $00
 
 script_02e6:
     sEND                                               ;; 0e:44fd $00
 
 script_02e7:
-    sIF_0B_JR $c9, .jr_0e_4507                         ;; 0e:44fe $0b $c9 $00 $05
-    sLOAD_ROOM 15, $62, 2, 4                           ;; 0e:4502 $f4 $0f $62 $02 $04
-.jr_0e_4507:
+    sIF_0B $c9                                         ;; 0e:44fe $0b $c9 $00 $05
+      sLOAD_ROOM 15, $62, 2, 4                         ;; 0e:4502 $f4 $0f $62 $02 $04
+    sENDIF                                             ;; 0e:4507
     sEND                                               ;; 0e:4507 $00
 
 script_02e8:
-    sIF_0B_JR $c9, .jr_0e_4511                         ;; 0e:4508 $0b $c9 $00 $05
-    sLOAD_ROOM 15, $63, 2, 6                           ;; 0e:450c $f4 $0f $63 $02 $06
-.jr_0e_4511:
+    sIF_0B $c9                                         ;; 0e:4508 $0b $c9 $00 $05
+      sLOAD_ROOM 15, $63, 2, 6                         ;; 0e:450c $f4 $0f $63 $02 $06
+    sENDIF                                             ;; 0e:4511
     sEND                                               ;; 0e:4511 $00
 
 script_02e9:
-    sIF_0B_JR $c9, .jr_0e_451b                         ;; 0e:4512 $0b $c9 $00 $05
-    sLOAD_ROOM 5, $14, 2, 2                            ;; 0e:4516 $f4 $05 $14 $02 $02
-.jr_0e_451b:
+    sIF_0B $c9                                         ;; 0e:4512 $0b $c9 $00 $05
+      sLOAD_ROOM 5, $14, 2, 2                          ;; 0e:4516 $f4 $05 $14 $02 $02
+    sENDIF                                             ;; 0e:451b
     sEND                                               ;; 0e:451b $00
 
 script_02ea:
-    sIF_0B_JR $c9, .jr_0e_4525                         ;; 0e:451c $0b $c9 $00 $05
-    sLOAD_ROOM 6, $14, 16, 2                           ;; 0e:4520 $f4 $06 $14 $10 $02
-.jr_0e_4525:
+    sIF_0B $c9                                         ;; 0e:451c $0b $c9 $00 $05
+      sLOAD_ROOM 6, $14, 16, 2                         ;; 0e:4520 $f4 $06 $14 $10 $02
+    sENDIF                                             ;; 0e:4525
     sEND                                               ;; 0e:4525 $00
 
 script_02eb:
-    sIF_0B_JR $c9, .jr_0e_452f                         ;; 0e:4526 $0b $c9 $00 $05
-    sLOAD_ROOM 15, $53, 16, 6                          ;; 0e:452a $f4 $0f $53 $10 $06
-.jr_0e_452f:
+    sIF_0B $c9                                         ;; 0e:4526 $0b $c9 $00 $05
+      sLOAD_ROOM 15, $53, 16, 6                        ;; 0e:452a $f4 $0f $53 $10 $06
+    sENDIF                                             ;; 0e:452f
     sEND                                               ;; 0e:452f $00
 
 script_02ec:
-    sIF_0B_JR $c9, .jr_0e_4539                         ;; 0e:4530 $0b $c9 $00 $05
-    sLOAD_ROOM 15, $52, 16, 4                          ;; 0e:4534 $f4 $0f $52 $10 $04
-.jr_0e_4539:
+    sIF_0B $c9                                         ;; 0e:4530 $0b $c9 $00 $05
+      sLOAD_ROOM 15, $52, 16, 4                        ;; 0e:4534 $f4 $0f $52 $10 $04
+    sENDIF                                             ;; 0e:4539
     sEND                                               ;; 0e:4539 $00
 
 script_02ed:
-    sIF_0B_JR $c9, .jr_0e_4547                         ;; 0e:453a $0b $c9 $00 $09
-    sLOAD_ROOM 3, $06, 16, 12                          ;; 0e:453e $f4 $03 $06 $10 $0c
-    sSET_ROOM_TILE $02, 8, 6                           ;; 0e:4543 $b0 $02 $08 $06
-.jr_0e_4547:
+    sIF_0B $c9                                         ;; 0e:453a $0b $c9 $00 $09
+      sLOAD_ROOM 3, $06, 16, 12                        ;; 0e:453e $f4 $03 $06 $10 $0c
+      sSET_ROOM_TILE $02, 8, 6                         ;; 0e:4543 $b0 $02 $08 $06
+    sENDIF                                             ;; 0e:4547
     sEND                                               ;; 0e:4547 $00
 
 script_02ee:
-    sIF_0B_JR $c9, .jr_0e_4551                         ;; 0e:4548 $0b $c9 $00 $05
-    sLOAD_ROOM 4, $06, 16, 12                          ;; 0e:454c $f4 $04 $06 $10 $0c
-.jr_0e_4551:
+    sIF_0B $c9                                         ;; 0e:4548 $0b $c9 $00 $05
+      sLOAD_ROOM 4, $06, 16, 12                        ;; 0e:454c $f4 $04 $06 $10 $0c
+    sENDIF                                             ;; 0e:4551
     sEND                                               ;; 0e:4551 $00
 
 script_02ef:
@@ -711,54 +711,55 @@ script_02f0:
     sEND                                               ;; 0e:4553 $00
 
 script_02f1:
-    sIF_0B_JR $c9, .jr_0e_455e                         ;; 0e:4554 $0b $c9 $00 $06
-    sLOAD_ROOM 2, $06, 16, 2                           ;; 0e:4558 $f4 $02 $06 $10 $02
-    sRUN_ROOM_SCRIPT                                   ;; 0e:455d $ec
-.jr_0e_455e:
+    sIF_0B $c9                                         ;; 0e:4554 $0b $c9 $00 $06
+      sLOAD_ROOM 2, $06, 16, 2                         ;; 0e:4558 $f4 $02 $06 $10 $02
+      sRUN_ROOM_SCRIPT                                 ;; 0e:455d $ec
+    sENDIF                                             ;; 0e:455e
     sEND                                               ;; 0e:455e $00
 
 script_02f2:
-    sIF_0B_JR $c9, .jr_0e_4568                         ;; 0e:455f $0b $c9 $00 $05
-    sLOAD_ROOM 3, $06, 16, 2                           ;; 0e:4563 $f4 $03 $06 $10 $02
-.jr_0e_4568:
+    sIF_0B $c9                                         ;; 0e:455f $0b $c9 $00 $05
+      sLOAD_ROOM 3, $06, 16, 2                         ;; 0e:4563 $f4 $03 $06 $10 $02
+    sENDIF                                             ;; 0e:4568
     sEND                                               ;; 0e:4568 $00
 
 script_02f3:
-    sIF_0B_JR $c9, .jr_0e_4572                         ;; 0e:4569 $0b $c9 $00 $05
-    sLOAD_ROOM 2, $05, 16, 2                           ;; 0e:456d $f4 $02 $05 $10 $02
-.jr_0e_4572:
+    sIF_0B $c9                                         ;; 0e:4569 $0b $c9 $00 $05
+      sLOAD_ROOM 2, $05, 16, 2                         ;; 0e:456d $f4 $02 $05 $10 $02
+    sENDIF                                             ;; 0e:4572
     sEND                                               ;; 0e:4572 $00
 
 script_02f4:
-    sIF_0B_JR $c9, .jr_0e_457c                         ;; 0e:4573 $0b $c9 $00 $05
-    sLOAD_ROOM 1, $40, 14, 1                           ;; 0e:4577 $f4 $01 $40 $0e $01
-.jr_0e_457c:
+    sIF_0B $c9                                         ;; 0e:4573 $0b $c9 $00 $05
+      sLOAD_ROOM 1, $40, 14, 1                         ;; 0e:4577 $f4 $01 $40 $0e $01
+    sENDIF                                             ;; 0e:457c
     sEND                                               ;; 0e:457c $00
 
 script_02f5:
-    sIF_0B_JR $c9, $c1, .jr_0e_45ac                    ;; 0e:457d $0b $c9 $c1 $00 $2a
-    sIF_FLAG_JR !wScriptFlags0E.2, !wScriptFlags0E.3, wScriptFlags0E.4, !wScriptFlags0E.5, wScriptFlags0E.6, !wScriptFlags0E.7, .jr_0e_4590 ;; 0e:4582 $08 $72 $73 $f4 $75 $f6 $77 $00 $05
-    sLOAD_ROOM 2, $74, 14, 4                           ;; 0e:458b $f4 $02 $74 $0e $04
-.jr_0e_4590:
-    sIF_FLAG_JR !wScriptFlags0E.2, !wScriptFlags0E.3, wScriptFlags0E.4, !wScriptFlags0E.5, !wScriptFlags0E.6, wScriptFlags0E.7, .jr_0e_459e ;; 0e:4590 $08 $72 $73 $f4 $75 $76 $f7 $00 $05
-    sLOAD_ROOM 4, $47, 16, 12                          ;; 0e:4599 $f4 $04 $47 $10 $0c
-.jr_0e_459e:
-    sIF_FLAG_JR !wScriptFlags0E.2, !wScriptFlags0E.3, wScriptFlags0E.4, !wScriptFlags0E.5, !wScriptFlags0E.6, !wScriptFlags0E.7, .jr_0e_45ac ;; 0e:459e $08 $72 $73 $f4 $75 $76 $77 $00 $05
-    sLOAD_ROOM 6, $64, 16, 12                          ;; 0e:45a7 $f4 $06 $64 $10 $0c
-.jr_0e_45ac:
+    sIF_0B $c9, $c1                                    ;; 0e:457d $0b $c9 $c1 $00 $2a
+      sIF_FLAG wScriptFlags0E.2, wScriptFlags0E.3, !wScriptFlags0E.4, wScriptFlags0E.5, !wScriptFlags0E.6, wScriptFlags0E.7 ;; 0e:4582 $08 $72 $73 $f4 $75 $f6 $77 $00 $05
+        sLOAD_ROOM 2, $74, 14, 4                       ;; 0e:458b $f4 $02 $74 $0e $04
+      sENDIF                                           ;; 0e:4590
+      sIF_FLAG wScriptFlags0E.2, wScriptFlags0E.3, !wScriptFlags0E.4, wScriptFlags0E.5, wScriptFlags0E.6, !wScriptFlags0E.7 ;; 0e:4590 $08 $72 $73 $f4 $75 $76 $f7 $00 $05
+        sLOAD_ROOM 4, $47, 16, 12                      ;; 0e:4599 $f4 $04 $47 $10 $0c
+      sENDIF                                           ;; 0e:459e
+      sIF_FLAG wScriptFlags0E.2, wScriptFlags0E.3, !wScriptFlags0E.4, wScriptFlags0E.5, wScriptFlags0E.6, wScriptFlags0E.7 ;; 0e:459e $08 $72 $73 $f4 $75 $76 $77 $00 $05
+        sLOAD_ROOM 6, $64, 16, 12                      ;; 0e:45a7 $f4 $06 $64 $10 $0c
+      sENDIF                                           ;; 0e:45ac
+    sENDIF                                             ;; 0e:45ac
     sEND                                               ;; 0e:45ac $00
 
 script_02f6:
-    sIF_0B_JR $c9, .jr_0e_45b7                         ;; 0e:45ad $0b $c9 $00 $06
-    sSET_ROOM_TILE $02, 8, 6                           ;; 0e:45b1 $b0 $02 $08 $06
-    sSFX 24                                            ;; 0e:45b5 $f9 $18
-.jr_0e_45b7:
+    sIF_0B $c9                                         ;; 0e:45ad $0b $c9 $00 $06
+      sSET_ROOM_TILE $02, 8, 6                         ;; 0e:45b1 $b0 $02 $08 $06
+      sSFX 24                                          ;; 0e:45b5 $f9 $18
+    sENDIF                                             ;; 0e:45b7
     sEND                                               ;; 0e:45b7 $00
 
 script_02f7:
-    sIF_0B_JR $c9, .jr_0e_45c1                         ;; 0e:45b8 $0b $c9 $00 $05
-    sLOAD_ROOM 2, $52, 16, 2                           ;; 0e:45bc $f4 $02 $52 $10 $02
-.jr_0e_45c1:
+    sIF_0B $c9                                         ;; 0e:45b8 $0b $c9 $00 $05
+      sLOAD_ROOM 2, $52, 16, 2                         ;; 0e:45bc $f4 $02 $52 $10 $02
+    sENDIF                                             ;; 0e:45c1
     sEND                                               ;; 0e:45c1 $00
 
 script_02f8:
@@ -771,508 +772,509 @@ script_02fa:
     sEND                                               ;; 0e:45c4 $00
 
 script_02fb:
-    sIF_0B_JR $c9, .jr_0e_45ce                         ;; 0e:45c5 $0b $c9 $00 $05
-    sLOAD_ROOM 15, $35, 14, 6                          ;; 0e:45c9 $f4 $0f $35 $0e $06
-.jr_0e_45ce:
+    sIF_0B $c9                                         ;; 0e:45c5 $0b $c9 $00 $05
+      sLOAD_ROOM 15, $35, 14, 6                        ;; 0e:45c9 $f4 $0f $35 $0e $06
+    sENDIF                                             ;; 0e:45ce
     sEND                                               ;; 0e:45ce $00
 
 script_02fc:
-    sIF_0B_JR $c9, .jr_0e_45d8                         ;; 0e:45cf $0b $c9 $00 $05
-    sLOAD_ROOM 2, $16, 16, 12                          ;; 0e:45d3 $f4 $02 $16 $10 $0c
-.jr_0e_45d8:
+    sIF_0B $c9                                         ;; 0e:45cf $0b $c9 $00 $05
+      sLOAD_ROOM 2, $16, 16, 12                        ;; 0e:45d3 $f4 $02 $16 $10 $0c
+    sENDIF                                             ;; 0e:45d8
     sEND                                               ;; 0e:45d8 $00
 
 script_02fd:
-    sIF_0B_JR $c9, .jr_0e_45e2                         ;; 0e:45d9 $0b $c9 $00 $05
-    sLOAD_ROOM 8, $62, 16, 2                           ;; 0e:45dd $f4 $08 $62 $10 $02
-.jr_0e_45e2:
+    sIF_0B $c9                                         ;; 0e:45d9 $0b $c9 $00 $05
+      sLOAD_ROOM 8, $62, 16, 2                         ;; 0e:45dd $f4 $08 $62 $10 $02
+    sENDIF                                             ;; 0e:45e2
     sEND                                               ;; 0e:45e2 $00
 
 script_02fe:
-    sIF_0B_JR $c9, .jr_0e_45ec                         ;; 0e:45e3 $0b $c9 $00 $05
-    sLOAD_ROOM 14, $36, 8, 5                           ;; 0e:45e7 $f4 $0e $36 $08 $05
-.jr_0e_45ec:
+    sIF_0B $c9                                         ;; 0e:45e3 $0b $c9 $00 $05
+      sLOAD_ROOM 14, $36, 8, 5                         ;; 0e:45e7 $f4 $0e $36 $08 $05
+    sENDIF                                             ;; 0e:45ec
     sEND                                               ;; 0e:45ec $00
 
 script_02ff:
-    sIF_0B_JR $c9, .jr_0e_45f6                         ;; 0e:45ed $0b $c9 $00 $05
-    sLOAD_ROOM 2, $50, 16, 2                           ;; 0e:45f1 $f4 $02 $50 $10 $02
-.jr_0e_45f6:
+    sIF_0B $c9                                         ;; 0e:45ed $0b $c9 $00 $05
+      sLOAD_ROOM 2, $50, 16, 2                         ;; 0e:45f1 $f4 $02 $50 $10 $02
+    sENDIF                                             ;; 0e:45f6
     sEND                                               ;; 0e:45f6 $00
 
 script_0300:
-    sIF_0B_JR $c9, .jr_0e_4600                         ;; 0e:45f7 $0b $c9 $00 $05
-    sLOAD_ROOM 3, $50, 16, 2                           ;; 0e:45fb $f4 $03 $50 $10 $02
-.jr_0e_4600:
+    sIF_0B $c9                                         ;; 0e:45f7 $0b $c9 $00 $05
+      sLOAD_ROOM 3, $50, 16, 2                         ;; 0e:45fb $f4 $03 $50 $10 $02
+    sENDIF                                             ;; 0e:4600
     sEND                                               ;; 0e:4600 $00
 
 script_0301:
-    sIF_0B_JR $c9, .jr_0e_460a                         ;; 0e:4601 $0b $c9 $00 $05
-    sLOAD_ROOM 2, $62, 16, 12                          ;; 0e:4605 $f4 $02 $62 $10 $0c
-.jr_0e_460a:
+    sIF_0B $c9                                         ;; 0e:4601 $0b $c9 $00 $05
+      sLOAD_ROOM 2, $62, 16, 12                        ;; 0e:4605 $f4 $02 $62 $10 $0c
+    sENDIF                                             ;; 0e:460a
     sEND                                               ;; 0e:460a $00
 
 script_0302:
-    sIF_0B_JR $c9, .jr_0e_4614                         ;; 0e:460b $0b $c9 $00 $05
-    sLOAD_ROOM 3, $62, 16, 12                          ;; 0e:460f $f4 $03 $62 $10 $0c
-.jr_0e_4614:
+    sIF_0B $c9                                         ;; 0e:460b $0b $c9 $00 $05
+      sLOAD_ROOM 3, $62, 16, 12                        ;; 0e:460f $f4 $03 $62 $10 $0c
+    sENDIF                                             ;; 0e:4614
     sEND                                               ;; 0e:4614 $00
 
 script_0303:
-    sIF_0B_JR $c9, .jr_0e_461e                         ;; 0e:4615 $0b $c9 $00 $05
-    sLOAD_ROOM 2, $10, 16, 2                           ;; 0e:4619 $f4 $02 $10 $10 $02
-.jr_0e_461e:
+    sIF_0B $c9                                         ;; 0e:4615 $0b $c9 $00 $05
+      sLOAD_ROOM 2, $10, 16, 2                         ;; 0e:4619 $f4 $02 $10 $10 $02
+    sENDIF                                             ;; 0e:461e
     sEND                                               ;; 0e:461e $00
 
 script_0304:
-    sIF_0B_JR $c9, .jr_0e_4628                         ;; 0e:461f $0b $c9 $00 $05
-    sLOAD_ROOM 3, $10, 16, 2                           ;; 0e:4623 $f4 $03 $10 $10 $02
-.jr_0e_4628:
+    sIF_0B $c9                                         ;; 0e:461f $0b $c9 $00 $05
+      sLOAD_ROOM 3, $10, 16, 2                         ;; 0e:4623 $f4 $03 $10 $10 $02
+    sENDIF                                             ;; 0e:4628
     sEND                                               ;; 0e:4628 $00
 
 script_0305:
-    sIF_0B_JR $c9, .jr_0e_4632                         ;; 0e:4629 $0b $c9 $00 $05
-    sLOAD_ROOM 2, $20, 16, 2                           ;; 0e:462d $f4 $02 $20 $10 $02
-.jr_0e_4632:
+    sIF_0B $c9                                         ;; 0e:4629 $0b $c9 $00 $05
+      sLOAD_ROOM 2, $20, 16, 2                         ;; 0e:462d $f4 $02 $20 $10 $02
+    sENDIF                                             ;; 0e:4632
     sEND                                               ;; 0e:4632 $00
 
 script_0306:
-    sIF_0B_JR $c9, .jr_0e_463d                         ;; 0e:4633 $0b $c9 $00 $06
-    sLOAD_ROOM 3, $20, 16, 2                           ;; 0e:4637 $f4 $03 $20 $10 $02
-    sRUN_ROOM_SCRIPT                                   ;; 0e:463c $ec
-.jr_0e_463d:
+    sIF_0B $c9                                         ;; 0e:4633 $0b $c9 $00 $06
+      sLOAD_ROOM 3, $20, 16, 2                         ;; 0e:4637 $f4 $03 $20 $10 $02
+      sRUN_ROOM_SCRIPT                                 ;; 0e:463c $ec
+    sENDIF                                             ;; 0e:463d
     sEND                                               ;; 0e:463d $00
 
 script_0307:
-    sIF_0B_JR $c9, .jr_0e_4647                         ;; 0e:463e $0b $c9 $00 $05
-    sLOAD_ROOM 5, $20, 16, 12                          ;; 0e:4642 $f4 $05 $20 $10 $0c
-.jr_0e_4647:
+    sIF_0B $c9                                         ;; 0e:463e $0b $c9 $00 $05
+      sLOAD_ROOM 5, $20, 16, 12                        ;; 0e:4642 $f4 $05 $20 $10 $0c
+    sENDIF                                             ;; 0e:4647
     sEND                                               ;; 0e:4647 $00
 
 script_0308:
-    sIF_0B_JR $c9, .jr_0e_4655                         ;; 0e:4648 $0b $c9 $00 $09
-    sLOAD_ROOM 3, $20, 16, 12                          ;; 0e:464c $f4 $03 $20 $10 $0c
-    sSET_ROOM_TILE $02, 8, 6                           ;; 0e:4651 $b0 $02 $08 $06
-.jr_0e_4655:
+    sIF_0B $c9                                         ;; 0e:4648 $0b $c9 $00 $09
+      sLOAD_ROOM 3, $20, 16, 12                        ;; 0e:464c $f4 $03 $20 $10 $0c
+      sSET_ROOM_TILE $02, 8, 6                         ;; 0e:4651 $b0 $02 $08 $06
+    sENDIF                                             ;; 0e:4655
     sEND                                               ;; 0e:4655 $00
 
 script_0309:
-    sIF_0B_JR $c9, .jr_0e_465f                         ;; 0e:4656 $0b $c9 $00 $05
-    sLOAD_ROOM 14, $51, 8, 6                           ;; 0e:465a $f4 $0e $51 $08 $06
-.jr_0e_465f:
+    sIF_0B $c9                                         ;; 0e:4656 $0b $c9 $00 $05
+      sLOAD_ROOM 14, $51, 8, 6                         ;; 0e:465a $f4 $0e $51 $08 $06
+    sENDIF                                             ;; 0e:465f
     sEND                                               ;; 0e:465f $00
 
 script_030a:
-    sIF_0B_JR $c9, .jr_0e_4669                         ;; 0e:4660 $0b $c9 $00 $05
-    sLOAD_ROOM 2, $73, 16, 2                           ;; 0e:4664 $f4 $02 $73 $10 $02
-.jr_0e_4669:
+    sIF_0B $c9                                         ;; 0e:4660 $0b $c9 $00 $05
+      sLOAD_ROOM 2, $73, 16, 2                         ;; 0e:4664 $f4 $02 $73 $10 $02
+    sENDIF                                             ;; 0e:4669
     sEND                                               ;; 0e:4669 $00
 
 script_030b:
-    sIF_0B_JR $c9, .jr_0e_4673                         ;; 0e:466a $0b $c9 $00 $05
-    sLOAD_ROOM 3, $04, 16, 12                          ;; 0e:466e $f4 $03 $04 $10 $0c
-.jr_0e_4673:
+    sIF_0B $c9                                         ;; 0e:466a $0b $c9 $00 $05
+      sLOAD_ROOM 3, $04, 16, 12                        ;; 0e:466e $f4 $03 $04 $10 $0c
+    sENDIF                                             ;; 0e:4673
     sEND                                               ;; 0e:4673 $00
 
 script_030c:
-    sIF_0B_JR $c9, .jr_0e_467d                         ;; 0e:4674 $0b $c9 $00 $05
-    sLOAD_ROOM 2, $04, 16, 12                          ;; 0e:4678 $f4 $02 $04 $10 $0c
-.jr_0e_467d:
+    sIF_0B $c9                                         ;; 0e:4674 $0b $c9 $00 $05
+      sLOAD_ROOM 2, $04, 16, 12                        ;; 0e:4678 $f4 $02 $04 $10 $0c
+    sENDIF                                             ;; 0e:467d
     sEND                                               ;; 0e:467d $00
 
 script_030d:
-    sIF_0B_JR $c9, .jr_0e_4687                         ;; 0e:467e $0b $c9 $00 $05
-    sLOAD_ROOM 3, $32, 16, 2                           ;; 0e:4682 $f4 $03 $32 $10 $02
-.jr_0e_4687:
+    sIF_0B $c9                                         ;; 0e:467e $0b $c9 $00 $05
+      sLOAD_ROOM 3, $32, 16, 2                         ;; 0e:4682 $f4 $03 $32 $10 $02
+    sENDIF                                             ;; 0e:4687
     sEND                                               ;; 0e:4687 $00
 
 script_030e:
-    sIF_0B_JR $c9, .jr_0e_4691                         ;; 0e:4688 $0b $c9 $00 $05
-    sLOAD_ROOM 2, $32, 16, 2                           ;; 0e:468c $f4 $02 $32 $10 $02
-.jr_0e_4691:
+    sIF_0B $c9                                         ;; 0e:4688 $0b $c9 $00 $05
+      sLOAD_ROOM 2, $32, 16, 2                         ;; 0e:468c $f4 $02 $32 $10 $02
+    sENDIF                                             ;; 0e:4691
     sEND                                               ;; 0e:4691 $00
 
 script_030f:
-    sIF_0B_JR $c9, .jr_0e_469b                         ;; 0e:4692 $0b $c9 $00 $05
-    sLOAD_ROOM 4, $43, 16, 12                          ;; 0e:4696 $f4 $04 $43 $10 $0c
-.jr_0e_469b:
+    sIF_0B $c9                                         ;; 0e:4692 $0b $c9 $00 $05
+      sLOAD_ROOM 4, $43, 16, 12                        ;; 0e:4696 $f4 $04 $43 $10 $0c
+    sENDIF                                             ;; 0e:469b
     sEND                                               ;; 0e:469b $00
 
 script_0310:
-    sIF_0B_JR $c9, .jr_0e_46a5                         ;; 0e:469c $0b $c9 $00 $05
-    sLOAD_ROOM 3, $52, 16, 2                           ;; 0e:46a0 $f4 $03 $52 $10 $02
-.jr_0e_46a5:
+    sIF_0B $c9                                         ;; 0e:469c $0b $c9 $00 $05
+      sLOAD_ROOM 3, $52, 16, 2                         ;; 0e:46a0 $f4 $03 $52 $10 $02
+    sENDIF                                             ;; 0e:46a5
     sEND                                               ;; 0e:46a5 $00
 
 script_0311:
-    sIF_0B_JR $c9, .jr_0e_46b7                         ;; 0e:46a6 $0b $c9 $00 $0d
-    sUNK_C5 3                                          ;; 0e:46aa $c5 $03
-    sCLEAR_FLAG wScriptFlags0F.0                       ;; 0e:46ac $db $78
-    sCLEAR_FLAG wScriptFlags0F.1                       ;; 0e:46ae $db $79
-    sLOAD_ROOM 3, $35, 9, 12                           ;; 0e:46b0 $f4 $03 $35 $09 $0c
-    sSET_MUSIC 14                                      ;; 0e:46b5 $f8 $0e
-.jr_0e_46b7:
+    sIF_0B $c9                                         ;; 0e:46a6 $0b $c9 $00 $0d
+      sUNK_C5 3                                        ;; 0e:46aa $c5 $03
+      sCLEAR_FLAG wScriptFlags0F.0                     ;; 0e:46ac $db $78
+      sCLEAR_FLAG wScriptFlags0F.1                     ;; 0e:46ae $db $79
+      sLOAD_ROOM 3, $35, 9, 12                         ;; 0e:46b0 $f4 $03 $35 $09 $0c
+      sSET_MUSIC 14                                    ;; 0e:46b5 $f8 $0e
+    sENDIF                                             ;; 0e:46b7
     sEND                                               ;; 0e:46b7 $00
 
 script_0312:
-    sIF_0B_JR $c9, .jr_0e_46c1                         ;; 0e:46b8 $0b $c9 $00 $05
-    sLOAD_ROOM 2, $35, 16, 2                           ;; 0e:46bc $f4 $02 $35 $10 $02
-.jr_0e_46c1:
+    sIF_0B $c9                                         ;; 0e:46b8 $0b $c9 $00 $05
+      sLOAD_ROOM 2, $35, 16, 2                         ;; 0e:46bc $f4 $02 $35 $10 $02
+    sENDIF                                             ;; 0e:46c1
     sEND                                               ;; 0e:46c1 $00
 
 script_0313:
-    sIF_0B_JR $c9, .jr_0e_46cb                         ;; 0e:46c2 $0b $c9 $00 $05
-    sLOAD_ROOM 3, $35, 16, 2                           ;; 0e:46c6 $f4 $03 $35 $10 $02
-.jr_0e_46cb:
+    sIF_0B $c9                                         ;; 0e:46c2 $0b $c9 $00 $05
+      sLOAD_ROOM 3, $35, 16, 2                         ;; 0e:46c6 $f4 $03 $35 $10 $02
+    sENDIF                                             ;; 0e:46cb
     sEND                                               ;; 0e:46cb $00
 
 script_0314:
-    sIF_0B_JR $c9, .jr_0e_46d6                         ;; 0e:46cc $0b $c9 $00 $06
-    sLOAD_ROOM 2, $55, 16, 12                          ;; 0e:46d0 $f4 $02 $55 $10 $0c
-    sRUN_ROOM_SCRIPT                                   ;; 0e:46d5 $ec
-.jr_0e_46d6:
+    sIF_0B $c9                                         ;; 0e:46cc $0b $c9 $00 $06
+      sLOAD_ROOM 2, $55, 16, 12                        ;; 0e:46d0 $f4 $02 $55 $10 $0c
+      sRUN_ROOM_SCRIPT                                 ;; 0e:46d5 $ec
+    sENDIF                                             ;; 0e:46d6
     sEND                                               ;; 0e:46d6 $00
 
 script_0315:
-    sIF_0B_JR $c9, .jr_0e_46e2                         ;; 0e:46d7 $0b $c9 $00 $07
-    sLOAD_ROOM 3, $55, 16, 12                          ;; 0e:46db $f4 $03 $55 $10 $0c
-    sCLEAR_FLAG wScriptFlags0F.0                       ;; 0e:46e0 $db $78
-.jr_0e_46e2:
+    sIF_0B $c9                                         ;; 0e:46d7 $0b $c9 $00 $07
+      sLOAD_ROOM 3, $55, 16, 12                        ;; 0e:46db $f4 $03 $55 $10 $0c
+      sCLEAR_FLAG wScriptFlags0F.0                     ;; 0e:46e0 $db $78
+    sENDIF                                             ;; 0e:46e2
     sEND                                               ;; 0e:46e2 $00
 
 script_0316:
-    sIF_0B_JR $c9, .jr_0e_46ed                         ;; 0e:46e3 $0b $c9 $00 $06
-    sLOAD_ROOM 2, $66, 16, 12                          ;; 0e:46e7 $f4 $02 $66 $10 $0c
-    sRUN_ROOM_SCRIPT                                   ;; 0e:46ec $ec
-.jr_0e_46ed:
+    sIF_0B $c9                                         ;; 0e:46e3 $0b $c9 $00 $06
+      sLOAD_ROOM 2, $66, 16, 12                        ;; 0e:46e7 $f4 $02 $66 $10 $0c
+      sRUN_ROOM_SCRIPT                                 ;; 0e:46ec $ec
+    sENDIF                                             ;; 0e:46ed
     sEND                                               ;; 0e:46ed $00
 
 script_0317:
-    sIF_0B_JR $c9, .jr_0e_46f7                         ;; 0e:46ee $0b $c9 $00 $05
-    sLOAD_ROOM 3, $66, 16, 12                          ;; 0e:46f2 $f4 $03 $66 $10 $0c
-.jr_0e_46f7:
+    sIF_0B $c9                                         ;; 0e:46ee $0b $c9 $00 $05
+      sLOAD_ROOM 3, $66, 16, 12                        ;; 0e:46f2 $f4 $03 $66 $10 $0c
+    sENDIF                                             ;; 0e:46f7
     sEND                                               ;; 0e:46f7 $00
 
 script_0318:
-    sIF_0B_JR $c9, .jr_0e_4701                         ;; 0e:46f8 $0b $c9 $00 $05
-    sLOAD_ROOM 2, $64, 16, 2                           ;; 0e:46fc $f4 $02 $64 $10 $02
-.jr_0e_4701:
+    sIF_0B $c9                                         ;; 0e:46f8 $0b $c9 $00 $05
+      sLOAD_ROOM 2, $64, 16, 2                         ;; 0e:46fc $f4 $02 $64 $10 $02
+    sENDIF                                             ;; 0e:4701
     sEND                                               ;; 0e:4701 $00
 
 script_0319:
-    sIF_0B_JR $c9, .jr_0e_470b                         ;; 0e:4702 $0b $c9 $00 $05
-    sLOAD_ROOM 3, $64, 16, 2                           ;; 0e:4706 $f4 $03 $64 $10 $02
-.jr_0e_470b:
+    sIF_0B $c9                                         ;; 0e:4702 $0b $c9 $00 $05
+      sLOAD_ROOM 3, $64, 16, 2                         ;; 0e:4706 $f4 $03 $64 $10 $02
+    sENDIF                                             ;; 0e:470b
     sEND                                               ;; 0e:470b $00
 
 script_031a:
-    sIF_0B_JR $c9, .jr_0e_4715                         ;; 0e:470c $0b $c9 $00 $05
-    sLOAD_ROOM 2, $24, 16, 12                          ;; 0e:4710 $f4 $02 $24 $10 $0c
-.jr_0e_4715:
+    sIF_0B $c9                                         ;; 0e:470c $0b $c9 $00 $05
+      sLOAD_ROOM 2, $24, 16, 12                        ;; 0e:4710 $f4 $02 $24 $10 $0c
+    sENDIF                                             ;; 0e:4715
     sEND                                               ;; 0e:4715 $00
 
 script_031b:
-    sIF_0B_JR $c9, .jr_0e_471f                         ;; 0e:4716 $0b $c9 $00 $05
-    sLOAD_ROOM 3, $24, 16, 12                          ;; 0e:471a $f4 $03 $24 $10 $0c
-.jr_0e_471f:
+    sIF_0B $c9                                         ;; 0e:4716 $0b $c9 $00 $05
+      sLOAD_ROOM 3, $24, 16, 12                        ;; 0e:471a $f4 $03 $24 $10 $0c
+    sENDIF                                             ;; 0e:471f
     sEND                                               ;; 0e:471f $00
 
 script_031c:
-    sIF_0B_JR $c9, .jr_0e_4729                         ;; 0e:4720 $0b $c9 $00 $05
-    sLOAD_ROOM 2, $26, 16, 12                          ;; 0e:4724 $f4 $02 $26 $10 $0c
-.jr_0e_4729:
+    sIF_0B $c9                                         ;; 0e:4720 $0b $c9 $00 $05
+      sLOAD_ROOM 2, $26, 16, 12                        ;; 0e:4724 $f4 $02 $26 $10 $0c
+    sENDIF                                             ;; 0e:4729
     sEND                                               ;; 0e:4729 $00
 
 script_031d:
-    sIF_0B_JR $c9, .jr_0e_4733                         ;; 0e:472a $0b $c9 $00 $05
-    sLOAD_ROOM 3, $26, 16, 12                          ;; 0e:472e $f4 $03 $26 $10 $0c
-.jr_0e_4733:
+    sIF_0B $c9                                         ;; 0e:472a $0b $c9 $00 $05
+      sLOAD_ROOM 3, $26, 16, 12                        ;; 0e:472e $f4 $03 $26 $10 $0c
+    sENDIF                                             ;; 0e:4733
     sEND                                               ;; 0e:4733 $00
 
 script_031e:
-    sIF_0B_JR $c9, .jr_0e_473d                         ;; 0e:4734 $0b $c9 $00 $05
-    sLOAD_ROOM 2, $25, 16, 2                           ;; 0e:4738 $f4 $02 $25 $10 $02
-.jr_0e_473d:
+    sIF_0B $c9                                         ;; 0e:4734 $0b $c9 $00 $05
+      sLOAD_ROOM 2, $25, 16, 2                         ;; 0e:4738 $f4 $02 $25 $10 $02
+    sENDIF                                             ;; 0e:473d
     sEND                                               ;; 0e:473d $00
 
 script_031f:
-    sIF_0B_JR $c9, .jr_0e_476c                         ;; 0e:473e $0b $c9 $00 $2a
-    sIF_FLAG_JR !wScriptFlags0E.2, !wScriptFlags0E.3, wScriptFlags0E.4, !wScriptFlags0E.5, !wScriptFlags0E.6, !wScriptFlags0E.7, .jr_0e_4750 ;; 0e:4742 $08 $72 $73 $f4 $75 $76 $77 $00 $05
-    sLOAD_ROOM 1, $10, 6, 8                            ;; 0e:474b $f4 $01 $10 $06 $08
-.jr_0e_4750:
-    sIF_FLAG_JR !wScriptFlags0E.2, !wScriptFlags0E.3, wScriptFlags0E.4, !wScriptFlags0E.5, !wScriptFlags0E.6, wScriptFlags0E.7, .jr_0e_475e ;; 0e:4750 $08 $72 $73 $f4 $75 $76 $f7 $00 $05
-    sLOAD_ROOM 1, $61, 12, 8                           ;; 0e:4759 $f4 $01 $61 $0c $08
-.jr_0e_475e:
-    sIF_FLAG_JR !wScriptFlags0E.2, !wScriptFlags0E.3, wScriptFlags0E.4, !wScriptFlags0E.5, wScriptFlags0E.6, !wScriptFlags0E.7, .jr_0e_476c ;; 0e:475e $08 $72 $73 $f4 $75 $f6 $77 $00 $05
-    sLOAD_ROOM 1, $75, 12, 12                          ;; 0e:4767 $f4 $01 $75 $0c $0c
-.jr_0e_476c:
+    sIF_0B $c9                                         ;; 0e:473e $0b $c9 $00 $2a
+      sIF_FLAG wScriptFlags0E.2, wScriptFlags0E.3, !wScriptFlags0E.4, wScriptFlags0E.5, wScriptFlags0E.6, wScriptFlags0E.7 ;; 0e:4742 $08 $72 $73 $f4 $75 $76 $77 $00 $05
+        sLOAD_ROOM 1, $10, 6, 8                        ;; 0e:474b $f4 $01 $10 $06 $08
+      sENDIF                                           ;; 0e:4750
+      sIF_FLAG wScriptFlags0E.2, wScriptFlags0E.3, !wScriptFlags0E.4, wScriptFlags0E.5, wScriptFlags0E.6, !wScriptFlags0E.7 ;; 0e:4750 $08 $72 $73 $f4 $75 $76 $f7 $00 $05
+        sLOAD_ROOM 1, $61, 12, 8                       ;; 0e:4759 $f4 $01 $61 $0c $08
+      sENDIF                                           ;; 0e:475e
+      sIF_FLAG wScriptFlags0E.2, wScriptFlags0E.3, !wScriptFlags0E.4, wScriptFlags0E.5, !wScriptFlags0E.6, wScriptFlags0E.7 ;; 0e:475e $08 $72 $73 $f4 $75 $f6 $77 $00 $05
+        sLOAD_ROOM 1, $75, 12, 12                      ;; 0e:4767 $f4 $01 $75 $0c $0c
+      sENDIF                                           ;; 0e:476c
+    sENDIF                                             ;; 0e:476c
     sEND                                               ;; 0e:476c $00
 
 script_0320:
-    sIF_0B_JR $c9, .jr_0e_4776                         ;; 0e:476d $0b $c9 $00 $05
-    sLOAD_ROOM 1, $20, 12, 8                           ;; 0e:4771 $f4 $01 $20 $0c $08
-.jr_0e_4776:
+    sIF_0B $c9                                         ;; 0e:476d $0b $c9 $00 $05
+      sLOAD_ROOM 1, $20, 12, 8                         ;; 0e:4771 $f4 $01 $20 $0c $08
+    sENDIF                                             ;; 0e:4776
     sEND                                               ;; 0e:4776 $00
 
 script_0321:
-    sIF_0B_JR $c9, .jr_0e_4780                         ;; 0e:4777 $0b $c9 $00 $05
-    sLOAD_ROOM 6, $75, 9, 7                            ;; 0e:477b $f4 $06 $75 $09 $07
-.jr_0e_4780:
+    sIF_0B $c9                                         ;; 0e:4777 $0b $c9 $00 $05
+      sLOAD_ROOM 6, $75, 9, 7                          ;; 0e:477b $f4 $06 $75 $09 $07
+    sENDIF                                             ;; 0e:4780
     sEND                                               ;; 0e:4780 $00
 
 script_0322:
-    sIF_0B_JR $c9, .jr_0e_478a                         ;; 0e:4781 $0b $c9 $00 $05
-    sLOAD_ROOM 6, $44, 9, 7                            ;; 0e:4785 $f4 $06 $44 $09 $07
-.jr_0e_478a:
+    sIF_0B $c9                                         ;; 0e:4781 $0b $c9 $00 $05
+      sLOAD_ROOM 6, $44, 9, 7                          ;; 0e:4785 $f4 $06 $44 $09 $07
+    sENDIF                                             ;; 0e:478a
     sEND                                               ;; 0e:478a $00
 
 script_0323:
-    sIF_0B_JR $c9, .jr_0e_4794                         ;; 0e:478b $0b $c9 $00 $05
-    sLOAD_ROOM 1, $21, 12, 8                           ;; 0e:478f $f4 $01 $21 $0c $08
-.jr_0e_4794:
+    sIF_0B $c9                                         ;; 0e:478b $0b $c9 $00 $05
+      sLOAD_ROOM 1, $21, 12, 8                         ;; 0e:478f $f4 $01 $21 $0c $08
+    sENDIF                                             ;; 0e:4794
     sEND                                               ;; 0e:4794 $00
 
 script_0324:
-    sIF_0B_JR $c9, .jr_0e_479e                         ;; 0e:4795 $0b $c9 $00 $05
-    sLOAD_ROOM 1, $11, 6, 8                            ;; 0e:4799 $f4 $01 $11 $06 $08
-.jr_0e_479e:
+    sIF_0B $c9                                         ;; 0e:4795 $0b $c9 $00 $05
+      sLOAD_ROOM 1, $11, 6, 8                          ;; 0e:4799 $f4 $01 $11 $06 $08
+    sENDIF                                             ;; 0e:479e
     sEND                                               ;; 0e:479e $00
 
 script_0325:
-    sIF_0B_JR $c9, .jr_0e_47a8                         ;; 0e:479f $0b $c9 $00 $05
-    sLOAD_ROOM 1, $50, 6, 8                            ;; 0e:47a3 $f4 $01 $50 $06 $08
-.jr_0e_47a8:
+    sIF_0B $c9                                         ;; 0e:479f $0b $c9 $00 $05
+      sLOAD_ROOM 1, $50, 6, 8                          ;; 0e:47a3 $f4 $01 $50 $06 $08
+    sENDIF                                             ;; 0e:47a8
     sEND                                               ;; 0e:47a8 $00
 
 script_0326:
-    sIF_0B_JR $c9, .jr_0e_47b2                         ;; 0e:47a9 $0b $c9 $00 $05
-    sLOAD_ROOM 1, $60, 12, 8                           ;; 0e:47ad $f4 $01 $60 $0c $08
-.jr_0e_47b2:
+    sIF_0B $c9                                         ;; 0e:47a9 $0b $c9 $00 $05
+      sLOAD_ROOM 1, $60, 12, 8                         ;; 0e:47ad $f4 $01 $60 $0c $08
+    sENDIF                                             ;; 0e:47b2
     sEND                                               ;; 0e:47b2 $00
 
 script_0327:
-    sIF_0B_JR $c9, .jr_0e_47bc                         ;; 0e:47b3 $0b $c9 $00 $05
-    sLOAD_ROOM 4, $67, 9, 7                            ;; 0e:47b7 $f4 $04 $67 $09 $07
-.jr_0e_47bc:
+    sIF_0B $c9                                         ;; 0e:47b3 $0b $c9 $00 $05
+      sLOAD_ROOM 4, $67, 9, 7                          ;; 0e:47b7 $f4 $04 $67 $09 $07
+    sENDIF                                             ;; 0e:47bc
     sEND                                               ;; 0e:47bc $00
 
 script_0328:
-    sIF_0B_JR $c9, .jr_0e_47c6                         ;; 0e:47bd $0b $c9 $00 $05
-    sLOAD_ROOM 6, $53, 9, 7                            ;; 0e:47c1 $f4 $06 $53 $09 $07
-.jr_0e_47c6:
+    sIF_0B $c9                                         ;; 0e:47bd $0b $c9 $00 $05
+      sLOAD_ROOM 6, $53, 9, 7                          ;; 0e:47c1 $f4 $06 $53 $09 $07
+    sENDIF                                             ;; 0e:47c6
     sEND                                               ;; 0e:47c6 $00
 
 script_0329:
-    sIF_0B_JR $c9, .jr_0e_47d0                         ;; 0e:47c7 $0b $c9 $00 $05
-    sLOAD_ROOM 4, $45, 9, 7                            ;; 0e:47cb $f4 $04 $45 $09 $07
-.jr_0e_47d0:
+    sIF_0B $c9                                         ;; 0e:47c7 $0b $c9 $00 $05
+      sLOAD_ROOM 4, $45, 9, 7                          ;; 0e:47cb $f4 $04 $45 $09 $07
+    sENDIF                                             ;; 0e:47d0
     sEND                                               ;; 0e:47d0 $00
 
 script_032a:
-    sIF_0B_JR $c9, .jr_0e_47da                         ;; 0e:47d1 $0b $c9 $00 $05
-    sLOAD_ROOM 5, $46, 9, 7                            ;; 0e:47d5 $f4 $05 $46 $09 $07
-.jr_0e_47da:
+    sIF_0B $c9                                         ;; 0e:47d1 $0b $c9 $00 $05
+      sLOAD_ROOM 5, $46, 9, 7                          ;; 0e:47d5 $f4 $05 $46 $09 $07
+    sENDIF                                             ;; 0e:47da
     sEND                                               ;; 0e:47da $00
 
 script_032b:
-    sIF_0B_JR $c9, .jr_0e_47e4                         ;; 0e:47db $0b $c9 $00 $05
-    sLOAD_ROOM 4, $65, 9, 7                            ;; 0e:47df $f4 $04 $65 $09 $07
-.jr_0e_47e4:
+    sIF_0B $c9                                         ;; 0e:47db $0b $c9 $00 $05
+      sLOAD_ROOM 4, $65, 9, 7                          ;; 0e:47df $f4 $04 $65 $09 $07
+    sENDIF                                             ;; 0e:47e4
     sEND                                               ;; 0e:47e4 $00
 
 script_032c:
-    sIF_0B_JR $c9, .jr_0e_47ee                         ;; 0e:47e5 $0b $c9 $00 $05
-    sLOAD_ROOM 5, $63, 9, 7                            ;; 0e:47e9 $f4 $05 $63 $09 $07
-.jr_0e_47ee:
+    sIF_0B $c9                                         ;; 0e:47e5 $0b $c9 $00 $05
+      sLOAD_ROOM 5, $63, 9, 7                          ;; 0e:47e9 $f4 $05 $63 $09 $07
+    sENDIF                                             ;; 0e:47ee
     sEND                                               ;; 0e:47ee $00
 
 script_032d:
-    sIF_0B_JR $c9, .jr_0e_47f8                         ;; 0e:47ef $0b $c9 $00 $05
-    sLOAD_ROOM 5, $40, 9, 7                            ;; 0e:47f3 $f4 $05 $40 $09 $07
-.jr_0e_47f8:
+    sIF_0B $c9                                         ;; 0e:47ef $0b $c9 $00 $05
+      sLOAD_ROOM 5, $40, 9, 7                          ;; 0e:47f3 $f4 $05 $40 $09 $07
+    sENDIF                                             ;; 0e:47f8
     sEND                                               ;; 0e:47f8 $00
 
 script_032e:
-    sIF_0B_JR $c9, .jr_0e_4802                         ;; 0e:47f9 $0b $c9 $00 $05
-    sLOAD_ROOM 5, $52, 9, 7                            ;; 0e:47fd $f4 $05 $52 $09 $07
-.jr_0e_4802:
+    sIF_0B $c9                                         ;; 0e:47f9 $0b $c9 $00 $05
+      sLOAD_ROOM 5, $52, 9, 7                          ;; 0e:47fd $f4 $05 $52 $09 $07
+    sENDIF                                             ;; 0e:4802
     sEND                                               ;; 0e:4802 $00
 
 script_032f:
     sEND                                               ;; 0e:4803 $00
 
 script_0330:
-    sIF_0B_JR $c9, .jr_0e_480d                         ;; 0e:4804 $0b $c9 $00 $05
-    sLOAD_ROOM 1, $51, 6, 8                            ;; 0e:4808 $f4 $01 $51 $06 $08
-.jr_0e_480d:
+    sIF_0B $c9                                         ;; 0e:4804 $0b $c9 $00 $05
+      sLOAD_ROOM 1, $51, 6, 8                          ;; 0e:4808 $f4 $01 $51 $06 $08
+    sENDIF                                             ;; 0e:480d
     sEND                                               ;; 0e:480d $00
 
 script_0331:
-    sIF_0B_JR $c9, .jr_0e_4817                         ;; 0e:480e $0b $c9 $00 $05
-    sLOAD_ROOM 2, $46, 9, 7                            ;; 0e:4812 $f4 $02 $46 $09 $07
-.jr_0e_4817:
+    sIF_0B $c9                                         ;; 0e:480e $0b $c9 $00 $05
+      sLOAD_ROOM 2, $46, 9, 7                          ;; 0e:4812 $f4 $02 $46 $09 $07
+    sENDIF                                             ;; 0e:4817
     sEND                                               ;; 0e:4817 $00
 
 script_0332:
-    sIF_0B_JR $c9, .jr_0e_4821                         ;; 0e:4818 $0b $c9 $00 $05
-    sLOAD_ROOM 3, $33, 9, 7                            ;; 0e:481c $f4 $03 $33 $09 $07
-.jr_0e_4821:
+    sIF_0B $c9                                         ;; 0e:4818 $0b $c9 $00 $05
+      sLOAD_ROOM 3, $33, 9, 7                          ;; 0e:481c $f4 $03 $33 $09 $07
+    sENDIF                                             ;; 0e:4821
     sEND                                               ;; 0e:4821 $00
 
 script_0333:
-    sIF_0B_JR $c9, .jr_0e_482b                         ;; 0e:4822 $0b $c9 $00 $05
-    sLOAD_ROOM 1, $02, 6, 8                            ;; 0e:4826 $f4 $01 $02 $06 $08
-.jr_0e_482b:
+    sIF_0B $c9                                         ;; 0e:4822 $0b $c9 $00 $05
+      sLOAD_ROOM 1, $02, 6, 8                          ;; 0e:4826 $f4 $01 $02 $06 $08
+    sENDIF                                             ;; 0e:482b
     sEND                                               ;; 0e:482b $00
 
 script_0334:
-    sIF_0B_JR $c9, .jr_0e_4835                         ;; 0e:482c $0b $c9 $00 $05
-    sLOAD_ROOM 1, $12, 12, 8                           ;; 0e:4830 $f4 $01 $12 $0c $08
-.jr_0e_4835:
+    sIF_0B $c9                                         ;; 0e:482c $0b $c9 $00 $05
+      sLOAD_ROOM 1, $12, 12, 8                         ;; 0e:4830 $f4 $01 $12 $0c $08
+    sENDIF                                             ;; 0e:4835
     sEND                                               ;; 0e:4835 $00
 
 script_0335:
-    sIF_0B_JR $c9, .jr_0e_483f                         ;; 0e:4836 $0b $c9 $00 $05
-    sLOAD_ROOM 1, $16, 12, 8                           ;; 0e:483a $f4 $01 $16 $0c $08
-.jr_0e_483f:
+    sIF_0B $c9                                         ;; 0e:4836 $0b $c9 $00 $05
+      sLOAD_ROOM 1, $16, 12, 8                         ;; 0e:483a $f4 $01 $16 $0c $08
+    sENDIF                                             ;; 0e:483f
     sEND                                               ;; 0e:483f $00
 
 script_0336:
-    sIF_0B_JR $c9, .jr_0e_4849                         ;; 0e:4840 $0b $c9 $00 $05
-    sLOAD_ROOM 1, $06, 6, 8                            ;; 0e:4844 $f4 $01 $06 $06 $08
-.jr_0e_4849:
+    sIF_0B $c9                                         ;; 0e:4840 $0b $c9 $00 $05
+      sLOAD_ROOM 1, $06, 6, 8                          ;; 0e:4844 $f4 $01 $06 $06 $08
+    sENDIF                                             ;; 0e:4849
     sEND                                               ;; 0e:4849 $00
 
 script_0337:
-    sIF_0B_JR $c9, .jr_0e_4853                         ;; 0e:484a $0b $c9 $00 $05
-    sLOAD_ROOM 2, $17, 9, 7                            ;; 0e:484e $f4 $02 $17 $09 $07
-.jr_0e_4853:
+    sIF_0B $c9                                         ;; 0e:484a $0b $c9 $00 $05
+      sLOAD_ROOM 2, $17, 9, 7                          ;; 0e:484e $f4 $02 $17 $09 $07
+    sENDIF                                             ;; 0e:4853
     sEND                                               ;; 0e:4853 $00
 
 script_0338:
-    sIF_0B_JR $c9, .jr_0e_485d                         ;; 0e:4854 $0b $c9 $00 $05
-    sLOAD_ROOM 6, $21, 9, 7                            ;; 0e:4858 $f4 $06 $21 $09 $07
-.jr_0e_485d:
+    sIF_0B $c9                                         ;; 0e:4854 $0b $c9 $00 $05
+      sLOAD_ROOM 6, $21, 9, 7                          ;; 0e:4858 $f4 $06 $21 $09 $07
+    sENDIF                                             ;; 0e:485d
     sEND                                               ;; 0e:485d $00
 
 script_0339:
-    sIF_0B_JR $c9, .jr_0e_4867                         ;; 0e:485e $0b $c9 $00 $05
-    sLOAD_ROOM 15, $56, 14, 4                          ;; 0e:4862 $f4 $0f $56 $0e $04
-.jr_0e_4867:
+    sIF_0B $c9                                         ;; 0e:485e $0b $c9 $00 $05
+      sLOAD_ROOM 15, $56, 14, 4                        ;; 0e:4862 $f4 $0f $56 $0e $04
+    sENDIF                                             ;; 0e:4867
     sEND                                               ;; 0e:4867 $00
 
 script_033a:
-    sIF_0B_JR $c9, .jr_0e_4871                         ;; 0e:4868 $0b $c9 $00 $05
-    sLOAD_ROOM 3, $56, 16, 2                           ;; 0e:486c $f4 $03 $56 $10 $02
-.jr_0e_4871:
+    sIF_0B $c9                                         ;; 0e:4868 $0b $c9 $00 $05
+      sLOAD_ROOM 3, $56, 16, 2                         ;; 0e:486c $f4 $03 $56 $10 $02
+    sENDIF                                             ;; 0e:4871
     sEND                                               ;; 0e:4871 $00
 
 script_033b:
-    sIF_0B_JR $c9, $c1, .jr_0e_487d                    ;; 0e:4872 $0b $c9 $c1 $00 $06
-    sLOAD_ROOM 1, $15, 9, 12                           ;; 0e:4877 $f4 $01 $15 $09 $0c
-    sRUN_ROOM_SCRIPT                                   ;; 0e:487c $ec
-.jr_0e_487d:
+    sIF_0B $c9, $c1                                    ;; 0e:4872 $0b $c9 $c1 $00 $06
+      sLOAD_ROOM 1, $15, 9, 12                         ;; 0e:4877 $f4 $01 $15 $09 $0c
+      sRUN_ROOM_SCRIPT                                 ;; 0e:487c $ec
+    sENDIF                                             ;; 0e:487d
     sEND                                               ;; 0e:487d $00
 
 script_033c:
-    sIF_0B_JR $c9, $c1, .jr_0e_4889                    ;; 0e:487e $0b $c9 $c1 $00 $06
-    sLOAD_ROOM 14, $16, 9, 2                           ;; 0e:4883 $f4 $0e $16 $09 $02
-    sRUN_ROOM_SCRIPT                                   ;; 0e:4888 $ec
-.jr_0e_4889:
+    sIF_0B $c9, $c1                                    ;; 0e:487e $0b $c9 $c1 $00 $06
+      sLOAD_ROOM 14, $16, 9, 2                         ;; 0e:4883 $f4 $0e $16 $09 $02
+      sRUN_ROOM_SCRIPT                                 ;; 0e:4888 $ec
+    sENDIF                                             ;; 0e:4889
     sEND                                               ;; 0e:4889 $00
 
 script_033d:
-    sIF_0B_JR $c9, .jr_0e_4895                         ;; 0e:488a $0b $c9 $00 $07
-    sUNK_C5 5                                          ;; 0e:488e $c5 $05
-    sLOAD_ROOM 4, $63, 9, 12                           ;; 0e:4890 $f4 $04 $63 $09 $0c
-.jr_0e_4895:
+    sIF_0B $c9                                         ;; 0e:488a $0b $c9 $00 $07
+      sUNK_C5 5                                        ;; 0e:488e $c5 $05
+      sLOAD_ROOM 4, $63, 9, 12                         ;; 0e:4890 $f4 $04 $63 $09 $0c
+    sENDIF                                             ;; 0e:4895
     sEND                                               ;; 0e:4895 $00
 
 script_033e:
-    sIF_0B_JR $c9, .jr_0e_48a1                         ;; 0e:4896 $0b $c9 $00 $07
-    sUNK_C5 35                                         ;; 0e:489a $c5 $23
-    sLOAD_ROOM 6, $46, 16, 2                           ;; 0e:489c $f4 $06 $46 $10 $02
-.jr_0e_48a1:
+    sIF_0B $c9                                         ;; 0e:4896 $0b $c9 $00 $07
+      sUNK_C5 35                                       ;; 0e:489a $c5 $23
+      sLOAD_ROOM 6, $46, 16, 2                         ;; 0e:489c $f4 $06 $46 $10 $02
+    sENDIF                                             ;; 0e:48a1
     sEND                                               ;; 0e:48a1 $00
 
 script_033f:
-    sIF_0B_JR $c9, .jr_0e_48ab                         ;; 0e:48a2 $0b $c9 $00 $05
-    sLOAD_ROOM 2, $46, 16, 2                           ;; 0e:48a6 $f4 $02 $46 $10 $02
-.jr_0e_48ab:
+    sIF_0B $c9                                         ;; 0e:48a2 $0b $c9 $00 $05
+      sLOAD_ROOM 2, $46, 16, 2                         ;; 0e:48a6 $f4 $02 $46 $10 $02
+    sENDIF                                             ;; 0e:48ab
     sEND                                               ;; 0e:48ab $00
 
 script_0340:
-    sIF_0B_JR $c9, .jr_0e_48b5                         ;; 0e:48ac $0b $c9 $00 $05
-    sLOAD_ROOM 4, $67, 16, 2                           ;; 0e:48b0 $f4 $04 $67 $10 $02
-.jr_0e_48b5:
+    sIF_0B $c9                                         ;; 0e:48ac $0b $c9 $00 $05
+      sLOAD_ROOM 4, $67, 16, 2                         ;; 0e:48b0 $f4 $04 $67 $10 $02
+    sENDIF                                             ;; 0e:48b5
     sEND                                               ;; 0e:48b5 $00
 
 script_0341:
-    sIF_0B_JR $c9, .jr_0e_48bf                         ;; 0e:48b6 $0b $c9 $00 $05
-    sLOAD_ROOM 4, $65, 16, 2                           ;; 0e:48ba $f4 $04 $65 $10 $02
-.jr_0e_48bf:
+    sIF_0B $c9                                         ;; 0e:48b6 $0b $c9 $00 $05
+      sLOAD_ROOM 4, $65, 16, 2                         ;; 0e:48ba $f4 $04 $65 $10 $02
+    sENDIF                                             ;; 0e:48bf
     sEND                                               ;; 0e:48bf $00
 
 script_0342:
-    sIF_0B_JR $c9, .jr_0e_48c9                         ;; 0e:48c0 $0b $c9 $00 $05
-    sLOAD_ROOM 6, $75, 16, 2                           ;; 0e:48c4 $f4 $06 $75 $10 $02
-.jr_0e_48c9:
+    sIF_0B $c9                                         ;; 0e:48c0 $0b $c9 $00 $05
+      sLOAD_ROOM 6, $75, 16, 2                         ;; 0e:48c4 $f4 $06 $75 $10 $02
+    sENDIF                                             ;; 0e:48c9
     sEND                                               ;; 0e:48c9 $00
 
 script_0343:
-    sIF_0B_JR $c9, .jr_0e_48d3                         ;; 0e:48ca $0b $c9 $00 $05
-    sLOAD_ROOM 15, $66, 8, 8                           ;; 0e:48ce $f4 $0f $66 $08 $08
-.jr_0e_48d3:
+    sIF_0B $c9                                         ;; 0e:48ca $0b $c9 $00 $05
+      sLOAD_ROOM 15, $66, 8, 8                         ;; 0e:48ce $f4 $0f $66 $08 $08
+    sENDIF                                             ;; 0e:48d3
     sEND                                               ;; 0e:48d3 $00
 
 script_0344:
-    sIF_0B_JR $c9, $c1, .jr_0e_48de                    ;; 0e:48d4 $0b $c9 $c1 $00 $05
-    sLOAD_ROOM 1, $72, 10, 2                           ;; 0e:48d9 $f4 $01 $72 $0a $02
-.jr_0e_48de:
+    sIF_0B $c9, $c1                                    ;; 0e:48d4 $0b $c9 $c1 $00 $05
+      sLOAD_ROOM 1, $72, 10, 2                         ;; 0e:48d9 $f4 $01 $72 $0a $02
+    sENDIF                                             ;; 0e:48de
     sEND                                               ;; 0e:48de $00
 
 script_0345:
-    sIF_0B_JR $c9, .jr_0e_48e8                         ;; 0e:48df $0b $c9 $00 $05
-    sLOAD_ROOM 1, $74, 16, 12                          ;; 0e:48e3 $f4 $01 $74 $10 $0c
-.jr_0e_48e8:
+    sIF_0B $c9                                         ;; 0e:48df $0b $c9 $00 $05
+      sLOAD_ROOM 1, $74, 16, 12                        ;; 0e:48e3 $f4 $01 $74 $10 $0c
+    sENDIF                                             ;; 0e:48e8
     sEND                                               ;; 0e:48e8 $00
 
 script_0346:
-    sIF_0B_JR $c9, .jr_0e_48f2                         ;; 0e:48e9 $0b $c9 $00 $05
-    sLOAD_ROOM 6, $57, 16, 2                           ;; 0e:48ed $f4 $06 $57 $10 $02
-.jr_0e_48f2:
+    sIF_0B $c9                                         ;; 0e:48e9 $0b $c9 $00 $05
+      sLOAD_ROOM 6, $57, 16, 2                         ;; 0e:48ed $f4 $06 $57 $10 $02
+    sENDIF                                             ;; 0e:48f2
     sEND                                               ;; 0e:48f2 $00
 
 script_0347:
-    sIF_0B_JR $c9, .jr_0e_48fd                         ;; 0e:48f3 $0b $c9 $00 $06
-    sLOAD_ROOM 1, $14, 16, 12                          ;; 0e:48f7 $f4 $01 $14 $10 $0c
-    sRUN_ROOM_SCRIPT                                   ;; 0e:48fc $ec
-.jr_0e_48fd:
+    sIF_0B $c9                                         ;; 0e:48f3 $0b $c9 $00 $06
+      sLOAD_ROOM 1, $14, 16, 12                        ;; 0e:48f7 $f4 $01 $14 $10 $0c
+      sRUN_ROOM_SCRIPT                                 ;; 0e:48fc $ec
+    sENDIF                                             ;; 0e:48fd
     sEND                                               ;; 0e:48fd $00
 
 script_0348:
-    sIF_0B_JR $c9, .jr_0e_4907                         ;; 0e:48fe $0b $c9 $00 $05
-    sLOAD_ROOM 1, $03, 2, 12                           ;; 0e:4902 $f4 $01 $03 $02 $0c
-.jr_0e_4907:
+    sIF_0B $c9                                         ;; 0e:48fe $0b $c9 $00 $05
+      sLOAD_ROOM 1, $03, 2, 12                         ;; 0e:4902 $f4 $01 $03 $02 $0c
+    sENDIF                                             ;; 0e:4907
     sEND                                               ;; 0e:4907 $00
 
 script_0349:
     sEND                                               ;; 0e:4908 $00
 
 script_034a:
-    sIF_0B_JR $c9, .jr_0e_4912                         ;; 0e:4909 $0b $c9 $00 $05
-    sLOAD_ROOM 1, $04, 6, 4                            ;; 0e:490d $f4 $01 $04 $06 $04
-.jr_0e_4912:
+    sIF_0B $c9                                         ;; 0e:4909 $0b $c9 $00 $05
+      sLOAD_ROOM 1, $04, 6, 4                          ;; 0e:490d $f4 $01 $04 $06 $04
+    sENDIF                                             ;; 0e:4912
     sEND                                               ;; 0e:4912 $00
 
 script_034b:
     sEND                                               ;; 0e:4913 $00
 
 script_034c:
-    sIF_0B_JR $c9, .jr_0e_491f                         ;; 0e:4914 $0b $c9 $00 $07
-    sUNK_C5 53                                         ;; 0e:4918 $c5 $35
-    sLOAD_ROOM 1, $01, 16, 12                          ;; 0e:491a $f4 $01 $01 $10 $0c
-.jr_0e_491f:
+    sIF_0B $c9                                         ;; 0e:4914 $0b $c9 $00 $07
+      sUNK_C5 53                                       ;; 0e:4918 $c5 $35
+      sLOAD_ROOM 1, $01, 16, 12                        ;; 0e:491a $f4 $01 $01 $10 $0c
+    sENDIF                                             ;; 0e:491f
     sEND                                               ;; 0e:491f $00
 
 script_034d:
@@ -1291,48 +1293,48 @@ script_0351:
     sEND                                               ;; 0e:4924 $00
 
 script_0352:
-    sIF_0B_JR $c9, .jr_0e_4989                         ;; 0e:4925 $0b $c9 $00 $60
-    sIF_FLAG_JR wScriptFlags06.7, .jr_0e_4982          ;; 0e:4929 $08 $b7 $00 $55
-    sSFX 37                                            ;; 0e:492d $f9 $25
-    sSHAKE_SCREEN                                      ;; 0e:492f $fb
-    sMSG                                               ;; 0e:4930 $04
-      db "<10>__?<12>"
-      db "<11>", $00            ;; 0e:4931
-    sPLAYER_STEP_BACKWARD                              ;; 0e:4937 $81
-    sPLAYER_STEP_BACKWARD                              ;; 0e:4938 $81
-    sSET_PLAYER_DIRECTION_LEFT                         ;; 0e:4939 $87
-    sSFX 20                                            ;; 0e:493a $f9 $14
-    sSET_ROOM_TILE $64, 0, 2                           ;; 0e:493c $b0 $64 $00 $02
-    sDELAY 15                                          ;; 0e:4940 $f0 $0f
-    sSFX 20                                            ;; 0e:4942 $f9 $14
-    sSET_ROOM_TILE $64, 1, 2                           ;; 0e:4944 $b0 $64 $01 $02
-    sDELAY 15                                          ;; 0e:4948 $f0 $0f
-    sSFX 20                                            ;; 0e:494a $f9 $14
-    sSET_ROOM_TILE $64, 2, 2                           ;; 0e:494c $b0 $64 $02 $02
-    sDELAY 15                                          ;; 0e:4950 $f0 $0f
-    sSFX 20                                            ;; 0e:4952 $f9 $14
-    sSET_ROOM_TILE $64, 3, 2                           ;; 0e:4954 $b0 $64 $03 $02
-    sDELAY 15                                          ;; 0e:4958 $f0 $0f
-    sSFX 20                                            ;; 0e:495a $f9 $14
-    sSET_ROOM_TILE $64, 4, 2                           ;; 0e:495c $b0 $64 $04 $02
-    sDELAY 15                                          ;; 0e:4960 $f0 $0f
-    sSFX 20                                            ;; 0e:4962 $f9 $14
-    sSET_ROOM_TILE $64, 5, 2                           ;; 0e:4964 $b0 $64 $05 $02
-    sDELAY 60                                          ;; 0e:4968 $f0 $3c
-    sMSG                                               ;; 0e:496a $04
-      db "<10> I can't go back\n anymore __<12>"
+    sIF_0B $c9                                         ;; 0e:4925 $0b $c9 $00 $60
+      sIF_FLAG !wScriptFlags06.7                       ;; 0e:4929 $08 $b7 $00 $55
+        sSFX 37                                        ;; 0e:492d $f9 $25
+        sSHAKE_SCREEN                                  ;; 0e:492f $fb
+        sMSG                                           ;; 0e:4930 $04
+          db "<10>__?<12>"
+      db "<11>", $00        ;; 0e:4931
+        sPLAYER_STEP_BACKWARD                          ;; 0e:4937 $81
+        sPLAYER_STEP_BACKWARD                          ;; 0e:4938 $81
+        sSET_PLAYER_DIRECTION_LEFT                     ;; 0e:4939 $87
+        sSFX 20                                        ;; 0e:493a $f9 $14
+        sSET_ROOM_TILE $64, 0, 2                       ;; 0e:493c $b0 $64 $00 $02
+        sDELAY 15                                      ;; 0e:4940 $f0 $0f
+        sSFX 20                                        ;; 0e:4942 $f9 $14
+        sSET_ROOM_TILE $64, 1, 2                       ;; 0e:4944 $b0 $64 $01 $02
+        sDELAY 15                                      ;; 0e:4948 $f0 $0f
+        sSFX 20                                        ;; 0e:494a $f9 $14
+        sSET_ROOM_TILE $64, 2, 2                       ;; 0e:494c $b0 $64 $02 $02
+        sDELAY 15                                      ;; 0e:4950 $f0 $0f
+        sSFX 20                                        ;; 0e:4952 $f9 $14
+        sSET_ROOM_TILE $64, 3, 2                       ;; 0e:4954 $b0 $64 $03 $02
+        sDELAY 15                                      ;; 0e:4958 $f0 $0f
+        sSFX 20                                        ;; 0e:495a $f9 $14
+        sSET_ROOM_TILE $64, 4, 2                       ;; 0e:495c $b0 $64 $04 $02
+        sDELAY 15                                      ;; 0e:4960 $f0 $0f
+        sSFX 20                                        ;; 0e:4962 $f9 $14
+        sSET_ROOM_TILE $64, 5, 2                       ;; 0e:4964 $b0 $64 $05 $02
+        sDELAY 60                                      ;; 0e:4968 $f0 $3c
+        sMSG                                           ;; 0e:496a $04
+          db "<10> I can't go back\n anymore __<12>"
       db "<11>", $00 ;; 0e:496b
-    sSET_FLAG wScriptFlags06.7                         ;; 0e:4980 $da $37
-.jr_0e_4982:
-    sLOAD_ROOM 1, $26, 12, 4                           ;; 0e:4982 $f4 $01 $26 $0c $04
-    sSET_MUSIC 14                                      ;; 0e:4987 $f8 $0e
-.jr_0e_4989:
+        sSET_FLAG wScriptFlags06.7                     ;; 0e:4980 $da $37
+      sENDIF                                           ;; 0e:4982
+      sLOAD_ROOM 1, $26, 12, 4                         ;; 0e:4982 $f4 $01 $26 $0c $04
+      sSET_MUSIC 14                                    ;; 0e:4987 $f8 $0e
+    sENDIF                                             ;; 0e:4989
     sEND                                               ;; 0e:4989 $00
 
 script_0353:
-    sIF_0B_JR $c9, .jr_0e_4993                         ;; 0e:498a $0b $c9 $00 $05
-    sLOAD_ROOM 9, $40, 16, 2                           ;; 0e:498e $f4 $09 $40 $10 $02
-.jr_0e_4993:
+    sIF_0B $c9                                         ;; 0e:498a $0b $c9 $00 $05
+      sLOAD_ROOM 9, $40, 16, 2                         ;; 0e:498e $f4 $09 $40 $10 $02
+    sENDIF                                             ;; 0e:4993
     sEND                                               ;; 0e:4993 $00
 
 script_0354:
@@ -1342,249 +1344,249 @@ script_0355:
     sEND                                               ;; 0e:4995 $00
 
 script_0356:
-    sIF_0B_JR $c9, .jr_0e_49a3                         ;; 0e:4996 $0b $c9 $00 $09
-    sLOAD_ROOM 0, $51, 14, 8                           ;; 0e:499a $f4 $00 $51 $0e $08
-    sSET_MUSIC 20                                      ;; 0e:499f $f8 $14
-    sUNK_AB                                            ;; 0e:49a1 $ab
-    sRUN_ROOM_SCRIPT                                   ;; 0e:49a2 $ec
-.jr_0e_49a3:
+    sIF_0B $c9                                         ;; 0e:4996 $0b $c9 $00 $09
+      sLOAD_ROOM 0, $51, 14, 8                         ;; 0e:499a $f4 $00 $51 $0e $08
+      sSET_MUSIC 20                                    ;; 0e:499f $f8 $14
+      sUNK_AB                                          ;; 0e:49a1 $ab
+      sRUN_ROOM_SCRIPT                                 ;; 0e:49a2 $ec
+    sENDIF                                             ;; 0e:49a3
     sEND                                               ;; 0e:49a3 $00
 
 script_0357:
-    sIF_0B_JR $c9, .jr_0e_49ad                         ;; 0e:49a4 $0b $c9 $00 $05
-    sLOAD_ROOM 1, $34, 2, 12                           ;; 0e:49a8 $f4 $01 $34 $02 $0c
-.jr_0e_49ad:
+    sIF_0B $c9                                         ;; 0e:49a4 $0b $c9 $00 $05
+      sLOAD_ROOM 1, $34, 2, 12                         ;; 0e:49a8 $f4 $01 $34 $02 $0c
+    sENDIF                                             ;; 0e:49ad
     sEND                                               ;; 0e:49ad $00
 
 script_0358:
-    sIF_0B_JR $c9, .jr_0e_49b7                         ;; 0e:49ae $0b $c9 $00 $05
-    sLOAD_ROOM 14, $55, 16, 4                          ;; 0e:49b2 $f4 $0e $55 $10 $04
-.jr_0e_49b7:
+    sIF_0B $c9                                         ;; 0e:49ae $0b $c9 $00 $05
+      sLOAD_ROOM 14, $55, 16, 4                        ;; 0e:49b2 $f4 $0e $55 $10 $04
+    sENDIF                                             ;; 0e:49b7
     sEND                                               ;; 0e:49b7 $00
 
 script_0359:
-    sIF_0B_JR $c9, .jr_0e_49c2                         ;; 0e:49b8 $0b $c9 $00 $06
-    sLOAD_ROOM 9, $41, 16, 2                           ;; 0e:49bc $f4 $09 $41 $10 $02
-    sRUN_ROOM_SCRIPT                                   ;; 0e:49c1 $ec
-.jr_0e_49c2:
+    sIF_0B $c9                                         ;; 0e:49b8 $0b $c9 $00 $06
+      sLOAD_ROOM 9, $41, 16, 2                         ;; 0e:49bc $f4 $09 $41 $10 $02
+      sRUN_ROOM_SCRIPT                                 ;; 0e:49c1 $ec
+    sENDIF                                             ;; 0e:49c2
     sEND                                               ;; 0e:49c2 $00
 
 script_035a:
-    sIF_0B_JR $c9, .jr_0e_49cc                         ;; 0e:49c3 $0b $c9 $00 $05
-    sLOAD_ROOM 8, $24, 16, 2                           ;; 0e:49c7 $f4 $08 $24 $10 $02
-.jr_0e_49cc:
+    sIF_0B $c9                                         ;; 0e:49c3 $0b $c9 $00 $05
+      sLOAD_ROOM 8, $24, 16, 2                         ;; 0e:49c7 $f4 $08 $24 $10 $02
+    sENDIF                                             ;; 0e:49cc
     sEND                                               ;; 0e:49cc $00
 
 script_035b:
-    sIF_0B_JR $c9, $c1, .jr_0e_49d7                    ;; 0e:49cd $0b $c9 $c1 $00 $05
-    sLOAD_ROOM 11, $36, 16, 12                         ;; 0e:49d2 $f4 $0b $36 $10 $0c
-.jr_0e_49d7:
+    sIF_0B $c9, $c1                                    ;; 0e:49cd $0b $c9 $c1 $00 $05
+      sLOAD_ROOM 11, $36, 16, 12                       ;; 0e:49d2 $f4 $0b $36 $10 $0c
+    sENDIF                                             ;; 0e:49d7
     sEND                                               ;; 0e:49d7 $00
 
 script_035c:
-    sIF_0B_JR $c9, .jr_0e_49e1                         ;; 0e:49d8 $0b $c9 $00 $05
-    sLOAD_ROOM 14, $56, 10, 2                          ;; 0e:49dc $f4 $0e $56 $0a $02
-.jr_0e_49e1:
+    sIF_0B $c9                                         ;; 0e:49d8 $0b $c9 $00 $05
+      sLOAD_ROOM 14, $56, 10, 2                        ;; 0e:49dc $f4 $0e $56 $0a $02
+    sENDIF                                             ;; 0e:49e1
     sEND                                               ;; 0e:49e1 $00
 
 script_035d:
-    sIF_0B_JR $c9, .jr_0e_49eb                         ;; 0e:49e2 $0b $c9 $00 $05
-    sLOAD_ROOM 8, $51, 16, 2                           ;; 0e:49e6 $f4 $08 $51 $10 $02
-.jr_0e_49eb:
+    sIF_0B $c9                                         ;; 0e:49e2 $0b $c9 $00 $05
+      sLOAD_ROOM 8, $51, 16, 2                         ;; 0e:49e6 $f4 $08 $51 $10 $02
+    sENDIF                                             ;; 0e:49eb
     sEND                                               ;; 0e:49eb $00
 
 script_035e:
-    sIF_0B_JR $c9, .jr_0e_49f5                         ;; 0e:49ec $0b $c9 $00 $05
-    sLOAD_ROOM 8, $57, 16, 2                           ;; 0e:49f0 $f4 $08 $57 $10 $02
-.jr_0e_49f5:
+    sIF_0B $c9                                         ;; 0e:49ec $0b $c9 $00 $05
+      sLOAD_ROOM 8, $57, 16, 2                         ;; 0e:49f0 $f4 $08 $57 $10 $02
+    sENDIF                                             ;; 0e:49f5
     sEND                                               ;; 0e:49f5 $00
 
 script_035f:
-    sIF_0B_JR $c9, .jr_0e_49ff                         ;; 0e:49f6 $0b $c9 $00 $05
-    sLOAD_ROOM 3, $43, 16, 12                          ;; 0e:49fa $f4 $03 $43 $10 $0c
-.jr_0e_49ff:
+    sIF_0B $c9                                         ;; 0e:49f6 $0b $c9 $00 $05
+      sLOAD_ROOM 3, $43, 16, 12                        ;; 0e:49fa $f4 $03 $43 $10 $0c
+    sENDIF                                             ;; 0e:49ff
     sEND                                               ;; 0e:49ff $00
 
 script_0360:
-    sIF_0B_JR $c9, .jr_0e_4a09                         ;; 0e:4a00 $0b $c9 $00 $05
-    sLOAD_ROOM 11, $17, 9, 7                           ;; 0e:4a04 $f4 $0b $17 $09 $07
-.jr_0e_4a09:
+    sIF_0B $c9                                         ;; 0e:4a00 $0b $c9 $00 $05
+      sLOAD_ROOM 11, $17, 9, 7                         ;; 0e:4a04 $f4 $0b $17 $09 $07
+    sENDIF                                             ;; 0e:4a09
     sEND                                               ;; 0e:4a09 $00
 
 script_0361:
-    sIF_0B_JR $c9, .jr_0e_4a13                         ;; 0e:4a0a $0b $c9 $00 $05
-    sLOAD_ROOM 15, $56, 16, 2                          ;; 0e:4a0e $f4 $0f $56 $10 $02
-.jr_0e_4a13:
+    sIF_0B $c9                                         ;; 0e:4a0a $0b $c9 $00 $05
+      sLOAD_ROOM 15, $56, 16, 2                        ;; 0e:4a0e $f4 $0f $56 $10 $02
+    sENDIF                                             ;; 0e:4a13
     sEND                                               ;; 0e:4a13 $00
 
 script_0362:
-    sIF_0B_JR $c9, .jr_0e_4a1d                         ;; 0e:4a14 $0b $c9 $00 $05
-    sLOAD_ROOM 15, $47, 4, 6                           ;; 0e:4a18 $f4 $0f $47 $04 $06
-.jr_0e_4a1d:
+    sIF_0B $c9                                         ;; 0e:4a14 $0b $c9 $00 $05
+      sLOAD_ROOM 15, $47, 4, 6                         ;; 0e:4a18 $f4 $0f $47 $04 $06
+    sENDIF                                             ;; 0e:4a1d
     sEND                                               ;; 0e:4a1d $00
 
 script_0363:
-    sIF_0B_JR $c9, .jr_0e_4a27                         ;; 0e:4a1e $0b $c9 $00 $05
-    sLOAD_ROOM 15, $66, 4, 2                           ;; 0e:4a22 $f4 $0f $66 $04 $02
-.jr_0e_4a27:
+    sIF_0B $c9                                         ;; 0e:4a1e $0b $c9 $00 $05
+      sLOAD_ROOM 15, $66, 4, 2                         ;; 0e:4a22 $f4 $0f $66 $04 $02
+    sENDIF                                             ;; 0e:4a27
     sEND                                               ;; 0e:4a27 $00
 
 script_0364:
-    sIF_0B_JR $c9, .jr_0e_4a31                         ;; 0e:4a28 $0b $c9 $00 $05
-    sLOAD_ROOM 15, $66, 14, 10                         ;; 0e:4a2c $f4 $0f $66 $0e $0a
-.jr_0e_4a31:
+    sIF_0B $c9                                         ;; 0e:4a28 $0b $c9 $00 $05
+      sLOAD_ROOM 15, $66, 14, 10                       ;; 0e:4a2c $f4 $0f $66 $0e $0a
+    sENDIF                                             ;; 0e:4a31
     sEND                                               ;; 0e:4a31 $00
 
 script_0365:
-    sIF_0B_JR $c9, .jr_0e_4a3c                         ;; 0e:4a32 $0b $c9 $00 $06
-    sLOAD_ROOM 10, $51, 16, 2                          ;; 0e:4a36 $f4 $0a $51 $10 $02
-    sRUN_ROOM_SCRIPT                                   ;; 0e:4a3b $ec
-.jr_0e_4a3c:
+    sIF_0B $c9                                         ;; 0e:4a32 $0b $c9 $00 $06
+      sLOAD_ROOM 10, $51, 16, 2                        ;; 0e:4a36 $f4 $0a $51 $10 $02
+      sRUN_ROOM_SCRIPT                                 ;; 0e:4a3b $ec
+    sENDIF                                             ;; 0e:4a3c
     sEND                                               ;; 0e:4a3c $00
 
 script_0366:
-    sIF_0B_JR $c9, .jr_0e_4a46                         ;; 0e:4a3d $0b $c9 $00 $05
-    sLOAD_ROOM 9, $21, 16, 2                           ;; 0e:4a41 $f4 $09 $21 $10 $02
-.jr_0e_4a46:
+    sIF_0B $c9                                         ;; 0e:4a3d $0b $c9 $00 $05
+      sLOAD_ROOM 9, $21, 16, 2                         ;; 0e:4a41 $f4 $09 $21 $10 $02
+    sENDIF                                             ;; 0e:4a46
     sEND                                               ;; 0e:4a46 $00
 
 script_0367:
-    sIF_0B_JR $c9, .jr_0e_4a50                         ;; 0e:4a47 $0b $c9 $00 $05
-    sLOAD_ROOM 15, $67, 4, 2                           ;; 0e:4a4b $f4 $0f $67 $04 $02
-.jr_0e_4a50:
+    sIF_0B $c9                                         ;; 0e:4a47 $0b $c9 $00 $05
+      sLOAD_ROOM 15, $67, 4, 2                         ;; 0e:4a4b $f4 $0f $67 $04 $02
+    sENDIF                                             ;; 0e:4a50
     sEND                                               ;; 0e:4a50 $00
 
 script_0368:
-    sIF_0B_JR $c9, $c1, .jr_0e_4a5c                    ;; 0e:4a51 $0b $c9 $c1 $00 $06
-    sLOAD_ROOM 10, $41, 16, 12                         ;; 0e:4a56 $f4 $0a $41 $10 $0c
-    sRUN_ROOM_SCRIPT                                   ;; 0e:4a5b $ec
-.jr_0e_4a5c:
+    sIF_0B $c9, $c1                                    ;; 0e:4a51 $0b $c9 $c1 $00 $06
+      sLOAD_ROOM 10, $41, 16, 12                       ;; 0e:4a56 $f4 $0a $41 $10 $0c
+      sRUN_ROOM_SCRIPT                                 ;; 0e:4a5b $ec
+    sENDIF                                             ;; 0e:4a5c
     sEND                                               ;; 0e:4a5c $00
 
 script_0369:
-    sIF_0B_JR $c9, .jr_0e_4a6a                         ;; 0e:4a5d $0b $c9 $00 $09
-    sLOAD_ROOM 0, $12, 12, 6                           ;; 0e:4a61 $f4 $00 $12 $0c $06
-    sUNK_AB                                            ;; 0e:4a66 $ab
-    sSET_MUSIC 20                                      ;; 0e:4a67 $f8 $14
-    sRUN_ROOM_SCRIPT                                   ;; 0e:4a69 $ec
-.jr_0e_4a6a:
+    sIF_0B $c9                                         ;; 0e:4a5d $0b $c9 $00 $09
+      sLOAD_ROOM 0, $12, 12, 6                         ;; 0e:4a61 $f4 $00 $12 $0c $06
+      sUNK_AB                                          ;; 0e:4a66 $ab
+      sSET_MUSIC 20                                    ;; 0e:4a67 $f8 $14
+      sRUN_ROOM_SCRIPT                                 ;; 0e:4a69 $ec
+    sENDIF                                             ;; 0e:4a6a
     sEND                                               ;; 0e:4a6a $00
 
 script_036a:
-    sIF_0B_JR $c9, .jr_0e_4a74                         ;; 0e:4a6b $0b $c9 $00 $05
-    sLOAD_ROOM 9, $33, 16, 2                           ;; 0e:4a6f $f4 $09 $33 $10 $02
-.jr_0e_4a74:
+    sIF_0B $c9                                         ;; 0e:4a6b $0b $c9 $00 $05
+      sLOAD_ROOM 9, $33, 16, 2                         ;; 0e:4a6f $f4 $09 $33 $10 $02
+    sENDIF                                             ;; 0e:4a74
     sEND                                               ;; 0e:4a74 $00
 
 script_036b:
-    sIF_0B_JR $c9, .jr_0e_4a7e                         ;; 0e:4a75 $0b $c9 $00 $05
-    sLOAD_ROOM 12, $00, 16, 2                          ;; 0e:4a79 $f4 $0c $00 $10 $02
-.jr_0e_4a7e:
+    sIF_0B $c9                                         ;; 0e:4a75 $0b $c9 $00 $05
+      sLOAD_ROOM 12, $00, 16, 2                        ;; 0e:4a79 $f4 $0c $00 $10 $02
+    sENDIF                                             ;; 0e:4a7e
     sEND                                               ;; 0e:4a7e $00
 
 script_036c:
-    sIF_0B_JR $c9, .jr_0e_4a88                         ;; 0e:4a7f $0b $c9 $00 $05
-    sLOAD_ROOM 13, $00, 16, 2                          ;; 0e:4a83 $f4 $0d $00 $10 $02
-.jr_0e_4a88:
+    sIF_0B $c9                                         ;; 0e:4a7f $0b $c9 $00 $05
+      sLOAD_ROOM 13, $00, 16, 2                        ;; 0e:4a83 $f4 $0d $00 $10 $02
+    sENDIF                                             ;; 0e:4a88
     sEND                                               ;; 0e:4a88 $00
 
 script_036d:
-    sIF_0B_JR $c9, .jr_0e_4a96                         ;; 0e:4a89 $0b $c9 $00 $09
-    sLOAD_ROOM 12, $32, 16, 12                         ;; 0e:4a8d $f4 $0c $32 $10 $0c
-    sSET_ROOM_TILE $02, 8, 6                           ;; 0e:4a92 $b0 $02 $08 $06
-.jr_0e_4a96:
+    sIF_0B $c9                                         ;; 0e:4a89 $0b $c9 $00 $09
+      sLOAD_ROOM 12, $32, 16, 12                       ;; 0e:4a8d $f4 $0c $32 $10 $0c
+      sSET_ROOM_TILE $02, 8, 6                         ;; 0e:4a92 $b0 $02 $08 $06
+    sENDIF                                             ;; 0e:4a96
     sEND                                               ;; 0e:4a96 $00
 
 script_036e:
-    sIF_0B_JR $c9, .jr_0e_4aa0                         ;; 0e:4a97 $0b $c9 $00 $05
-    sLOAD_ROOM 13, $32, 16, 12                         ;; 0e:4a9b $f4 $0d $32 $10 $0c
-.jr_0e_4aa0:
+    sIF_0B $c9                                         ;; 0e:4a97 $0b $c9 $00 $05
+      sLOAD_ROOM 13, $32, 16, 12                       ;; 0e:4a9b $f4 $0d $32 $10 $0c
+    sENDIF                                             ;; 0e:4aa0
     sEND                                               ;; 0e:4aa0 $00
 
 script_036f:
-    sIF_0B_JR $c9, .jr_0e_4aab                         ;; 0e:4aa1 $0b $c9 $00 $06
-    sLOAD_ROOM 11, $11, 16, 2                          ;; 0e:4aa5 $f4 $0b $11 $10 $02
-    sRUN_ROOM_SCRIPT                                   ;; 0e:4aaa $ec
-.jr_0e_4aab:
+    sIF_0B $c9                                         ;; 0e:4aa1 $0b $c9 $00 $06
+      sLOAD_ROOM 11, $11, 16, 2                        ;; 0e:4aa5 $f4 $0b $11 $10 $02
+      sRUN_ROOM_SCRIPT                                 ;; 0e:4aaa $ec
+    sENDIF                                             ;; 0e:4aab
     sEND                                               ;; 0e:4aab $00
 
 script_0370:
-    sIF_0B_JR $c9, .jr_0e_4ab5                         ;; 0e:4aac $0b $c9 $00 $05
-    sLOAD_ROOM 12, $11, 16, 2                          ;; 0e:4ab0 $f4 $0c $11 $10 $02
-.jr_0e_4ab5:
+    sIF_0B $c9                                         ;; 0e:4aac $0b $c9 $00 $05
+      sLOAD_ROOM 12, $11, 16, 2                        ;; 0e:4ab0 $f4 $0c $11 $10 $02
+    sENDIF                                             ;; 0e:4ab5
     sEND                                               ;; 0e:4ab5 $00
 
 script_0371:
-    sIF_0B_JR $c9, .jr_0e_4abf                         ;; 0e:4ab6 $0b $c9 $00 $05
-    sLOAD_ROOM 14, $44, 4, 4                           ;; 0e:4aba $f4 $0e $44 $04 $04
-.jr_0e_4abf:
+    sIF_0B $c9                                         ;; 0e:4ab6 $0b $c9 $00 $05
+      sLOAD_ROOM 14, $44, 4, 4                         ;; 0e:4aba $f4 $0e $44 $04 $04
+    sENDIF                                             ;; 0e:4abf
     sEND                                               ;; 0e:4abf $00
 
 script_0372:
-    sIF_0B_JR $c9, .jr_0e_4ac9                         ;; 0e:4ac0 $0b $c9 $00 $05
-    sLOAD_ROOM 14, $54, 14, 2                          ;; 0e:4ac4 $f4 $0e $54 $0e $02
-.jr_0e_4ac9:
+    sIF_0B $c9                                         ;; 0e:4ac0 $0b $c9 $00 $05
+      sLOAD_ROOM 14, $54, 14, 2                        ;; 0e:4ac4 $f4 $0e $54 $0e $02
+    sENDIF                                             ;; 0e:4ac9
     sEND                                               ;; 0e:4ac9 $00
 
 script_0373:
-    sIF_0B_JR $c9, .jr_0e_4ad3                         ;; 0e:4aca $0b $c9 $00 $05
-    sLOAD_ROOM 1, $33, 8, 2                            ;; 0e:4ace $f4 $01 $33 $08 $02
-.jr_0e_4ad3:
+    sIF_0B $c9                                         ;; 0e:4aca $0b $c9 $00 $05
+      sLOAD_ROOM 1, $33, 8, 2                          ;; 0e:4ace $f4 $01 $33 $08 $02
+    sENDIF                                             ;; 0e:4ad3
     sEND                                               ;; 0e:4ad3 $00
 
 script_0374:
-    sIF_0B_JR $c9, .jr_0e_4add                         ;; 0e:4ad4 $0b $c9 $00 $05
-    sLOAD_ROOM 1, $23, 16, 12                          ;; 0e:4ad8 $f4 $01 $23 $10 $0c
-.jr_0e_4add:
+    sIF_0B $c9                                         ;; 0e:4ad4 $0b $c9 $00 $05
+      sLOAD_ROOM 1, $23, 16, 12                        ;; 0e:4ad8 $f4 $01 $23 $10 $0c
+    sENDIF                                             ;; 0e:4add
     sEND                                               ;; 0e:4add $00
 
 script_0375:
-    sIF_0B_JR $c9, .jr_0e_4ae7                         ;; 0e:4ade $0b $c9 $00 $05
-    sLOAD_ROOM 1, $41, 14, 8                           ;; 0e:4ae2 $f4 $01 $41 $0e $08
-.jr_0e_4ae7:
+    sIF_0B $c9                                         ;; 0e:4ade $0b $c9 $00 $05
+      sLOAD_ROOM 1, $41, 14, 8                         ;; 0e:4ae2 $f4 $01 $41 $0e $08
+    sENDIF                                             ;; 0e:4ae7
     sEND                                               ;; 0e:4ae7 $00
 
 script_0376:
-    sIF_0B_JR $c9, .jr_0e_4af1                         ;; 0e:4ae8 $0b $c9 $00 $05
-    sLOAD_ROOM 1, $31, 6, 2                            ;; 0e:4aec $f4 $01 $31 $06 $02
-.jr_0e_4af1:
+    sIF_0B $c9                                         ;; 0e:4ae8 $0b $c9 $00 $05
+      sLOAD_ROOM 1, $31, 6, 2                          ;; 0e:4aec $f4 $01 $31 $06 $02
+    sENDIF                                             ;; 0e:4af1
     sEND                                               ;; 0e:4af1 $00
 
 script_0377:
-    sIF_0B_JR $c9, .jr_0e_4afb                         ;; 0e:4af2 $0b $c9 $00 $05
-    sLOAD_ROOM 1, $70, 6, 6                            ;; 0e:4af6 $f4 $01 $70 $06 $06
-.jr_0e_4afb:
+    sIF_0B $c9                                         ;; 0e:4af2 $0b $c9 $00 $05
+      sLOAD_ROOM 1, $70, 6, 6                          ;; 0e:4af6 $f4 $01 $70 $06 $06
+    sENDIF                                             ;; 0e:4afb
     sEND                                               ;; 0e:4afb $00
 
 script_0378:
-    sIF_0B_JR $c9, .jr_0e_4b05                         ;; 0e:4afc $0b $c9 $00 $05
-    sLOAD_ROOM 1, $70, 12, 2                           ;; 0e:4b00 $f4 $01 $70 $0c $02
-.jr_0e_4b05:
+    sIF_0B $c9                                         ;; 0e:4afc $0b $c9 $00 $05
+      sLOAD_ROOM 1, $70, 12, 2                         ;; 0e:4b00 $f4 $01 $70 $0c $02
+    sENDIF                                             ;; 0e:4b05
     sEND                                               ;; 0e:4b05 $00
 
 script_0379:
-    sIF_0B_JR $c9, .jr_0e_4b0f                         ;; 0e:4b06 $0b $c9 $00 $05
-    sLOAD_ROOM 1, $71, 8, 12                           ;; 0e:4b0a $f4 $01 $71 $08 $0c
-.jr_0e_4b0f:
+    sIF_0B $c9                                         ;; 0e:4b06 $0b $c9 $00 $05
+      sLOAD_ROOM 1, $71, 8, 12                         ;; 0e:4b0a $f4 $01 $71 $08 $0c
+    sENDIF                                             ;; 0e:4b0f
     sEND                                               ;; 0e:4b0f $00
 
 script_037a:
-    sIF_0B_JR $c9, .jr_0e_4b1d                         ;; 0e:4b10 $0b $c9 $00 $09
-    sLOAD_ROOM 13, $73, 16, 12                         ;; 0e:4b14 $f4 $0d $73 $10 $0c
-    sSET_ROOM_TILE $02, 8, 6                           ;; 0e:4b19 $b0 $02 $08 $06
-.jr_0e_4b1d:
+    sIF_0B $c9                                         ;; 0e:4b10 $0b $c9 $00 $09
+      sLOAD_ROOM 13, $73, 16, 12                       ;; 0e:4b14 $f4 $0d $73 $10 $0c
+      sSET_ROOM_TILE $02, 8, 6                         ;; 0e:4b19 $b0 $02 $08 $06
+    sENDIF                                             ;; 0e:4b1d
     sEND                                               ;; 0e:4b1d $00
 
 script_037b:
-    sIF_0B_JR $c9, .jr_0e_4b27                         ;; 0e:4b1e $0b $c9 $00 $05
-    sLOAD_ROOM 14, $12, 10, 2                          ;; 0e:4b22 $f4 $0e $12 $0a $02
-.jr_0e_4b27:
+    sIF_0B $c9                                         ;; 0e:4b1e $0b $c9 $00 $05
+      sLOAD_ROOM 14, $12, 10, 2                        ;; 0e:4b22 $f4 $0e $12 $0a $02
+    sENDIF                                             ;; 0e:4b27
     sEND                                               ;; 0e:4b27 $00
 
 script_037c:
-    sIF_0B_JR $c9, .jr_0e_4b31                         ;; 0e:4b28 $0b $c9 $00 $05
-    sLOAD_ROOM 14, $45, 2, 8                           ;; 0e:4b2c $f4 $0e $45 $02 $08
-.jr_0e_4b31:
+    sIF_0B $c9                                         ;; 0e:4b28 $0b $c9 $00 $05
+      sLOAD_ROOM 14, $45, 2, 8                         ;; 0e:4b2c $f4 $0e $45 $02 $08
+    sENDIF                                             ;; 0e:4b31
     sEND                                               ;; 0e:4b31 $00
 
 script_037d:
@@ -1597,115 +1599,115 @@ script_037f:
     sEND                                               ;; 0e:4b34 $00
 
 script_0380:
-    sIF_0B_JR $c9, .jr_0e_4b41                         ;; 0e:4b35 $0b $c9 $00 $08
-    sUNK_C5 11                                         ;; 0e:4b39 $c5 $0b
-    sLOAD_ROOM 3, $00, 9, 12                           ;; 0e:4b3b $f4 $03 $00 $09 $0c
-    sRUN_ROOM_SCRIPT                                   ;; 0e:4b40 $ec
-.jr_0e_4b41:
+    sIF_0B $c9                                         ;; 0e:4b35 $0b $c9 $00 $08
+      sUNK_C5 11                                       ;; 0e:4b39 $c5 $0b
+      sLOAD_ROOM 3, $00, 9, 12                         ;; 0e:4b3b $f4 $03 $00 $09 $0c
+      sRUN_ROOM_SCRIPT                                 ;; 0e:4b40 $ec
+    sENDIF                                             ;; 0e:4b41
     sEND                                               ;; 0e:4b41 $00
 
 script_0381:
-    sIF_0B_JR $c9, .jr_0e_4b4e                         ;; 0e:4b42 $0b $c9 $00 $08
-    sUNK_C5 7                                          ;; 0e:4b46 $c5 $07
-    sLOAD_ROOM 2, $00, 9, 12                           ;; 0e:4b48 $f4 $02 $00 $09 $0c
-    sRUN_ROOM_SCRIPT                                   ;; 0e:4b4d $ec
-.jr_0e_4b4e:
+    sIF_0B $c9                                         ;; 0e:4b42 $0b $c9 $00 $08
+      sUNK_C5 7                                        ;; 0e:4b46 $c5 $07
+      sLOAD_ROOM 2, $00, 9, 12                         ;; 0e:4b48 $f4 $02 $00 $09 $0c
+      sRUN_ROOM_SCRIPT                                 ;; 0e:4b4d $ec
+    sENDIF                                             ;; 0e:4b4e
     sEND                                               ;; 0e:4b4e $00
 
 script_0382:
-    sIF_0B_JR $c9, .jr_0e_4b5b                         ;; 0e:4b4f $0b $c9 $00 $08
-    sUNK_C5 6                                          ;; 0e:4b53 $c5 $06
-    sLOAD_ROOM 2, $00, 9, 12                           ;; 0e:4b55 $f4 $02 $00 $09 $0c
-    sRUN_ROOM_SCRIPT                                   ;; 0e:4b5a $ec
-.jr_0e_4b5b:
+    sIF_0B $c9                                         ;; 0e:4b4f $0b $c9 $00 $08
+      sUNK_C5 6                                        ;; 0e:4b53 $c5 $06
+      sLOAD_ROOM 2, $00, 9, 12                         ;; 0e:4b55 $f4 $02 $00 $09 $0c
+      sRUN_ROOM_SCRIPT                                 ;; 0e:4b5a $ec
+    sENDIF                                             ;; 0e:4b5b
     sEND                                               ;; 0e:4b5b $00
 
 script_0383:
-    sIF_0B_JR $c9, .jr_0e_4b68                         ;; 0e:4b5c $0b $c9 $00 $08
-    sUNK_C5 7                                          ;; 0e:4b60 $c5 $07
-    sLOAD_ROOM 2, $01, 9, 12                           ;; 0e:4b62 $f4 $02 $01 $09 $0c
-    sRUN_ROOM_SCRIPT                                   ;; 0e:4b67 $ec
-.jr_0e_4b68:
+    sIF_0B $c9                                         ;; 0e:4b5c $0b $c9 $00 $08
+      sUNK_C5 7                                        ;; 0e:4b60 $c5 $07
+      sLOAD_ROOM 2, $01, 9, 12                         ;; 0e:4b62 $f4 $02 $01 $09 $0c
+      sRUN_ROOM_SCRIPT                                 ;; 0e:4b67 $ec
+    sENDIF                                             ;; 0e:4b68
     sEND                                               ;; 0e:4b68 $00
 
 script_0384:
-    sIF_0B_JR $c9, .jr_0e_4b75                         ;; 0e:4b69 $0b $c9 $00 $08
-    sUNK_C5 10                                         ;; 0e:4b6d $c5 $0a
-    sLOAD_ROOM 3, $00, 9, 12                           ;; 0e:4b6f $f4 $03 $00 $09 $0c
-    sRUN_ROOM_SCRIPT                                   ;; 0e:4b74 $ec
-.jr_0e_4b75:
+    sIF_0B $c9                                         ;; 0e:4b69 $0b $c9 $00 $08
+      sUNK_C5 10                                       ;; 0e:4b6d $c5 $0a
+      sLOAD_ROOM 3, $00, 9, 12                         ;; 0e:4b6f $f4 $03 $00 $09 $0c
+      sRUN_ROOM_SCRIPT                                 ;; 0e:4b74 $ec
+    sENDIF                                             ;; 0e:4b75
     sEND                                               ;; 0e:4b75 $00
 
 script_0385:
-    sIF_0B_JR $c9, .jr_0e_4b82                         ;; 0e:4b76 $0b $c9 $00 $08
-    sUNK_C5 9                                          ;; 0e:4b7a $c5 $09
-    sLOAD_ROOM 3, $00, 9, 12                           ;; 0e:4b7c $f4 $03 $00 $09 $0c
-    sRUN_ROOM_SCRIPT                                   ;; 0e:4b81 $ec
-.jr_0e_4b82:
+    sIF_0B $c9                                         ;; 0e:4b76 $0b $c9 $00 $08
+      sUNK_C5 9                                        ;; 0e:4b7a $c5 $09
+      sLOAD_ROOM 3, $00, 9, 12                         ;; 0e:4b7c $f4 $03 $00 $09 $0c
+      sRUN_ROOM_SCRIPT                                 ;; 0e:4b81 $ec
+    sENDIF                                             ;; 0e:4b82
     sEND                                               ;; 0e:4b82 $00
 
 script_0386:
-    sIF_0B_JR $c9, .jr_0e_4b8f                         ;; 0e:4b83 $0b $c9 $00 $08
-    sUNK_C5 8                                          ;; 0e:4b87 $c5 $08
-    sLOAD_ROOM 3, $00, 9, 12                           ;; 0e:4b89 $f4 $03 $00 $09 $0c
-    sRUN_ROOM_SCRIPT                                   ;; 0e:4b8e $ec
-.jr_0e_4b8f:
+    sIF_0B $c9                                         ;; 0e:4b83 $0b $c9 $00 $08
+      sUNK_C5 8                                        ;; 0e:4b87 $c5 $08
+      sLOAD_ROOM 3, $00, 9, 12                         ;; 0e:4b89 $f4 $03 $00 $09 $0c
+      sRUN_ROOM_SCRIPT                                 ;; 0e:4b8e $ec
+    sENDIF                                             ;; 0e:4b8f
     sEND                                               ;; 0e:4b8f $00
 
 script_0387:
-    sIF_0B_JR $c9, .jr_0e_4b9c                         ;; 0e:4b90 $0b $c9 $00 $08
-    sUNK_C5 14                                         ;; 0e:4b94 $c5 $0e
-    sLOAD_ROOM 4, $01, 9, 12                           ;; 0e:4b96 $f4 $04 $01 $09 $0c
-    sRUN_ROOM_SCRIPT                                   ;; 0e:4b9b $ec
-.jr_0e_4b9c:
+    sIF_0B $c9                                         ;; 0e:4b90 $0b $c9 $00 $08
+      sUNK_C5 14                                       ;; 0e:4b94 $c5 $0e
+      sLOAD_ROOM 4, $01, 9, 12                         ;; 0e:4b96 $f4 $04 $01 $09 $0c
+      sRUN_ROOM_SCRIPT                                 ;; 0e:4b9b $ec
+    sENDIF                                             ;; 0e:4b9c
     sEND                                               ;; 0e:4b9c $00
 
 script_0388:
-    sIF_0B_JR $c9, .jr_0e_4ba9                         ;; 0e:4b9d $0b $c9 $00 $08
-    sUNK_C5 2                                          ;; 0e:4ba1 $c5 $02
-    sLOAD_ROOM 2, $01, 9, 12                           ;; 0e:4ba3 $f4 $02 $01 $09 $0c
-    sRUN_ROOM_SCRIPT                                   ;; 0e:4ba8 $ec
-.jr_0e_4ba9:
+    sIF_0B $c9                                         ;; 0e:4b9d $0b $c9 $00 $08
+      sUNK_C5 2                                        ;; 0e:4ba1 $c5 $02
+      sLOAD_ROOM 2, $01, 9, 12                         ;; 0e:4ba3 $f4 $02 $01 $09 $0c
+      sRUN_ROOM_SCRIPT                                 ;; 0e:4ba8 $ec
+    sENDIF                                             ;; 0e:4ba9
     sEND                                               ;; 0e:4ba9 $00
 
 script_0389:
-    sIF_0B_JR $c9, .jr_0e_4bb6                         ;; 0e:4baa $0b $c9 $00 $08
-    sUNK_C5 8                                          ;; 0e:4bae $c5 $08
-    sLOAD_ROOM 2, $00, 9, 12                           ;; 0e:4bb0 $f4 $02 $00 $09 $0c
-    sRUN_ROOM_SCRIPT                                   ;; 0e:4bb5 $ec
-.jr_0e_4bb6:
+    sIF_0B $c9                                         ;; 0e:4baa $0b $c9 $00 $08
+      sUNK_C5 8                                        ;; 0e:4bae $c5 $08
+      sLOAD_ROOM 2, $00, 9, 12                         ;; 0e:4bb0 $f4 $02 $00 $09 $0c
+      sRUN_ROOM_SCRIPT                                 ;; 0e:4bb5 $ec
+    sENDIF                                             ;; 0e:4bb6
     sEND                                               ;; 0e:4bb6 $00
 
 script_038a:
-    sIF_0B_JR $c9, .jr_0e_4bc3                         ;; 0e:4bb7 $0b $c9 $00 $08
-    sUNK_C5 15                                         ;; 0e:4bbb $c5 $0f
-    sLOAD_ROOM 4, $01, 9, 12                           ;; 0e:4bbd $f4 $04 $01 $09 $0c
-    sRUN_ROOM_SCRIPT                                   ;; 0e:4bc2 $ec
-.jr_0e_4bc3:
+    sIF_0B $c9                                         ;; 0e:4bb7 $0b $c9 $00 $08
+      sUNK_C5 15                                       ;; 0e:4bbb $c5 $0f
+      sLOAD_ROOM 4, $01, 9, 12                         ;; 0e:4bbd $f4 $04 $01 $09 $0c
+      sRUN_ROOM_SCRIPT                                 ;; 0e:4bc2 $ec
+    sENDIF                                             ;; 0e:4bc3
     sEND                                               ;; 0e:4bc3 $00
 
 script_038b:
-    sIF_0B_JR $c9, .jr_0e_4bd0                         ;; 0e:4bc4 $0b $c9 $00 $08
-    sUNK_C5 10                                         ;; 0e:4bc8 $c5 $0a
-    sLOAD_ROOM 4, $01, 9, 12                           ;; 0e:4bca $f4 $04 $01 $09 $0c
-    sRUN_ROOM_SCRIPT                                   ;; 0e:4bcf $ec
-.jr_0e_4bd0:
+    sIF_0B $c9                                         ;; 0e:4bc4 $0b $c9 $00 $08
+      sUNK_C5 10                                       ;; 0e:4bc8 $c5 $0a
+      sLOAD_ROOM 4, $01, 9, 12                         ;; 0e:4bca $f4 $04 $01 $09 $0c
+      sRUN_ROOM_SCRIPT                                 ;; 0e:4bcf $ec
+    sENDIF                                             ;; 0e:4bd0
     sEND                                               ;; 0e:4bd0 $00
 
 script_038c:
-    sIF_0B_JR $c9, .jr_0e_4bdd                         ;; 0e:4bd1 $0b $c9 $00 $08
-    sUNK_C5 8                                          ;; 0e:4bd5 $c5 $08
-    sLOAD_ROOM 2, $01, 9, 12                           ;; 0e:4bd7 $f4 $02 $01 $09 $0c
-    sRUN_ROOM_SCRIPT                                   ;; 0e:4bdc $ec
-.jr_0e_4bdd:
+    sIF_0B $c9                                         ;; 0e:4bd1 $0b $c9 $00 $08
+      sUNK_C5 8                                        ;; 0e:4bd5 $c5 $08
+      sLOAD_ROOM 2, $01, 9, 12                         ;; 0e:4bd7 $f4 $02 $01 $09 $0c
+      sRUN_ROOM_SCRIPT                                 ;; 0e:4bdc $ec
+    sENDIF                                             ;; 0e:4bdd
     sEND                                               ;; 0e:4bdd $00
 
 script_038d:
-    sIF_0B_JR $c9, .jr_0e_4bea                         ;; 0e:4bde $0b $c9 $00 $08
-    sUNK_C5 3                                          ;; 0e:4be2 $c5 $03
-    sLOAD_ROOM 2, $00, 9, 12                           ;; 0e:4be4 $f4 $02 $00 $09 $0c
-    sRUN_ROOM_SCRIPT                                   ;; 0e:4be9 $ec
-.jr_0e_4bea:
+    sIF_0B $c9                                         ;; 0e:4bde $0b $c9 $00 $08
+      sUNK_C5 3                                        ;; 0e:4be2 $c5 $03
+      sLOAD_ROOM 2, $00, 9, 12                         ;; 0e:4be4 $f4 $02 $00 $09 $0c
+      sRUN_ROOM_SCRIPT                                 ;; 0e:4be9 $ec
+    sENDIF                                             ;; 0e:4bea
     sEND                                               ;; 0e:4bea $00
 
 script_038e:
@@ -1715,27 +1717,27 @@ script_038f:
     sEND                                               ;; 0e:4bec $00
 
 script_0390:
-    sIF_0B_JR $c9, .jr_0e_4bf6                         ;; 0e:4bed $0b $c9 $00 $05
-    sLOAD_ROOM 3, $02, 16, 12                          ;; 0e:4bf1 $f4 $03 $02 $10 $0c
-.jr_0e_4bf6:
+    sIF_0B $c9                                         ;; 0e:4bed $0b $c9 $00 $05
+      sLOAD_ROOM 3, $02, 16, 12                        ;; 0e:4bf1 $f4 $03 $02 $10 $0c
+    sENDIF                                             ;; 0e:4bf6
     sEND                                               ;; 0e:4bf6 $00
 
 script_0391:
-    sIF_0B_JR $c9, .jr_0e_4c00                         ;; 0e:4bf7 $0b $c9 $00 $05
-    sLOAD_ROOM 14, $31, 4, 2                           ;; 0e:4bfb $f4 $0e $31 $04 $02
-.jr_0e_4c00:
+    sIF_0B $c9                                         ;; 0e:4bf7 $0b $c9 $00 $05
+      sLOAD_ROOM 14, $31, 4, 2                         ;; 0e:4bfb $f4 $0e $31 $04 $02
+    sENDIF                                             ;; 0e:4c00
     sEND                                               ;; 0e:4c00 $00
 
 script_0392:
-    sIF_0B_JR $c9, .jr_0e_4c0a                         ;; 0e:4c01 $0b $c9 $00 $05
-    sLOAD_ROOM 2, $02, 16, 12                          ;; 0e:4c05 $f4 $02 $02 $10 $0c
-.jr_0e_4c0a:
+    sIF_0B $c9                                         ;; 0e:4c01 $0b $c9 $00 $05
+      sLOAD_ROOM 2, $02, 16, 12                        ;; 0e:4c05 $f4 $02 $02 $10 $0c
+    sENDIF                                             ;; 0e:4c0a
     sEND                                               ;; 0e:4c0a $00
 
 script_0393:
-    sIF_0B_JR $c9, .jr_0e_4c14                         ;; 0e:4c0b $0b $c9 $00 $05
-    sLOAD_ROOM 2, $02, 16, 2                           ;; 0e:4c0f $f4 $02 $02 $10 $02
-.jr_0e_4c14:
+    sIF_0B $c9                                         ;; 0e:4c0b $0b $c9 $00 $05
+      sLOAD_ROOM 2, $02, 16, 2                         ;; 0e:4c0f $f4 $02 $02 $10 $02
+    sENDIF                                             ;; 0e:4c14
     sEND                                               ;; 0e:4c14 $00
 
 script_0394:
@@ -1745,275 +1747,275 @@ script_0395:
     sEND                                               ;; 0e:4c16 $00
 
 script_0396:
-    sIF_0B_JR $c9, .jr_0e_4c22                         ;; 0e:4c17 $0b $c9 $00 $07
-    sUNK_C5 54                                         ;; 0e:4c1b $c5 $36
-    sLOAD_ROOM 1, $01, 16, 12                          ;; 0e:4c1d $f4 $01 $01 $10 $0c
-.jr_0e_4c22:
+    sIF_0B $c9                                         ;; 0e:4c17 $0b $c9 $00 $07
+      sUNK_C5 54                                       ;; 0e:4c1b $c5 $36
+      sLOAD_ROOM 1, $01, 16, 12                        ;; 0e:4c1d $f4 $01 $01 $10 $0c
+    sENDIF                                             ;; 0e:4c22
     sEND                                               ;; 0e:4c22 $00
 
 script_0397:
-    sIF_0B_JR $c9, .jr_0e_4c2e                         ;; 0e:4c23 $0b $c9 $00 $07
-    sUNK_C5 55                                         ;; 0e:4c27 $c5 $37
-    sLOAD_ROOM 1, $01, 16, 12                          ;; 0e:4c29 $f4 $01 $01 $10 $0c
-.jr_0e_4c2e:
+    sIF_0B $c9                                         ;; 0e:4c23 $0b $c9 $00 $07
+      sUNK_C5 55                                       ;; 0e:4c27 $c5 $37
+      sLOAD_ROOM 1, $01, 16, 12                        ;; 0e:4c29 $f4 $01 $01 $10 $0c
+    sENDIF                                             ;; 0e:4c2e
     sEND                                               ;; 0e:4c2e $00
 
 script_0398:
-    sIF_0B_JR $c9, .jr_0e_4c3c                         ;; 0e:4c2f $0b $c9 $00 $09
-    sLOAD_ROOM 0, $43, 16, 8                           ;; 0e:4c33 $f4 $00 $43 $10 $08
-    sUNK_AB                                            ;; 0e:4c38 $ab
-    sSET_MUSIC 20                                      ;; 0e:4c39 $f8 $14
-    sRUN_ROOM_SCRIPT                                   ;; 0e:4c3b $ec
-.jr_0e_4c3c:
+    sIF_0B $c9                                         ;; 0e:4c2f $0b $c9 $00 $09
+      sLOAD_ROOM 0, $43, 16, 8                         ;; 0e:4c33 $f4 $00 $43 $10 $08
+      sUNK_AB                                          ;; 0e:4c38 $ab
+      sSET_MUSIC 20                                    ;; 0e:4c39 $f8 $14
+      sRUN_ROOM_SCRIPT                                 ;; 0e:4c3b $ec
+    sENDIF                                             ;; 0e:4c3c
     sEND                                               ;; 0e:4c3c $00
 
 script_0399:
-    sIF_0B_JR $c9, .jr_0e_4c47                         ;; 0e:4c3d $0b $c9 $00 $06
-    sLOAD_ROOM 13, $37, 2, 12                          ;; 0e:4c41 $f4 $0d $37 $02 $0c
-    sRUN_ROOM_SCRIPT                                   ;; 0e:4c46 $ec
-.jr_0e_4c47:
+    sIF_0B $c9                                         ;; 0e:4c3d $0b $c9 $00 $06
+      sLOAD_ROOM 13, $37, 2, 12                        ;; 0e:4c41 $f4 $0d $37 $02 $0c
+      sRUN_ROOM_SCRIPT                                 ;; 0e:4c46 $ec
+    sENDIF                                             ;; 0e:4c47
     sEND                                               ;; 0e:4c47 $00
 
 script_039a:
-    sIF_0B_JR $c9, .jr_0e_4c51                         ;; 0e:4c48 $0b $c9 $00 $05
-    sLOAD_ROOM 15, $25, 12, 6                          ;; 0e:4c4c $f4 $0f $25 $0c $06
-.jr_0e_4c51:
+    sIF_0B $c9                                         ;; 0e:4c48 $0b $c9 $00 $05
+      sLOAD_ROOM 15, $25, 12, 6                        ;; 0e:4c4c $f4 $0f $25 $0c $06
+    sENDIF                                             ;; 0e:4c51
     sEND                                               ;; 0e:4c51 $00
 
 script_039b:
-    sIF_0B_JR $c9, .jr_0e_4c5b                         ;; 0e:4c52 $0b $c9 $00 $05
-    sLOAD_ROOM 13, $05, 16, 2                          ;; 0e:4c56 $f4 $0d $05 $10 $02
-.jr_0e_4c5b:
+    sIF_0B $c9                                         ;; 0e:4c52 $0b $c9 $00 $05
+      sLOAD_ROOM 13, $05, 16, 2                        ;; 0e:4c56 $f4 $0d $05 $10 $02
+    sENDIF                                             ;; 0e:4c5b
     sEND                                               ;; 0e:4c5b $00
 
 script_039c:
-    sIF_0B_JR $c9, .jr_0e_4c65                         ;; 0e:4c5c $0b $c9 $00 $05
-    sLOAD_ROOM 13, $07, 16, 12                         ;; 0e:4c60 $f4 $0d $07 $10 $0c
-.jr_0e_4c65:
+    sIF_0B $c9                                         ;; 0e:4c5c $0b $c9 $00 $05
+      sLOAD_ROOM 13, $07, 16, 12                       ;; 0e:4c60 $f4 $0d $07 $10 $0c
+    sENDIF                                             ;; 0e:4c65
     sEND                                               ;; 0e:4c65 $00
 
 script_039d:
-    sIF_0B_JR $c9, .jr_0e_4c70                         ;; 0e:4c66 $0b $c9 $00 $06
-    sLOAD_ROOM 0, $95, 12, 8                           ;; 0e:4c6a $f4 $00 $95 $0c $08
-    sUNK_AB                                            ;; 0e:4c6f $ab
-.jr_0e_4c70:
+    sIF_0B $c9                                         ;; 0e:4c66 $0b $c9 $00 $06
+      sLOAD_ROOM 0, $95, 12, 8                         ;; 0e:4c6a $f4 $00 $95 $0c $08
+      sUNK_AB                                          ;; 0e:4c6f $ab
+    sENDIF                                             ;; 0e:4c70
     sEND                                               ;; 0e:4c70 $00
 
 script_039e:
-    sIF_0B_JR $c9, .jr_0e_4c7b                         ;; 0e:4c71 $0b $c9 $00 $06
-    sLOAD_ROOM 0, $96, 12, 2                           ;; 0e:4c75 $f4 $00 $96 $0c $02
-    sUNK_AB                                            ;; 0e:4c7a $ab
-.jr_0e_4c7b:
+    sIF_0B $c9                                         ;; 0e:4c71 $0b $c9 $00 $06
+      sLOAD_ROOM 0, $96, 12, 2                         ;; 0e:4c75 $f4 $00 $96 $0c $02
+      sUNK_AB                                          ;; 0e:4c7a $ab
+    sENDIF                                             ;; 0e:4c7b
     sEND                                               ;; 0e:4c7b $00
 
 script_039f:
-    sIF_0B_JR $c9, .jr_0e_4c91                         ;; 0e:4c7c $0b $c9 $00 $11
-    sIF_FLAG_JR !wScriptFlags0B.0, .jr_0e_4c89         ;; 0e:4c80 $08 $58 $00 $05
-    sCALL script_0473                                  ;; 0e:4c84 $02 $5a $e2
-    sSET_FLAG wScriptFlags0D.1                         ;; 0e:4c87 $da $69
-.jr_0e_4c89:
-    sLOAD_ROOM 12, $06, 16, 2                          ;; 0e:4c89 $f4 $0c $06 $10 $02
-    sSET_MUSIC 7                                       ;; 0e:4c8e $f8 $07
-    sRUN_ROOM_SCRIPT                                   ;; 0e:4c90 $ec
-.jr_0e_4c91:
+    sIF_0B $c9                                         ;; 0e:4c7c $0b $c9 $00 $11
+      sIF_FLAG wScriptFlags0B.0                        ;; 0e:4c80 $08 $58 $00 $05
+        sCALL script_0473                              ;; 0e:4c84 $02 $5a $e2
+        sSET_FLAG wScriptFlags0D.1                     ;; 0e:4c87 $da $69
+      sENDIF                                           ;; 0e:4c89
+      sLOAD_ROOM 12, $06, 16, 2                        ;; 0e:4c89 $f4 $0c $06 $10 $02
+      sSET_MUSIC 7                                     ;; 0e:4c8e $f8 $07
+      sRUN_ROOM_SCRIPT                                 ;; 0e:4c90 $ec
+    sENDIF                                             ;; 0e:4c91
     sEND                                               ;; 0e:4c91 $00
 
 script_03a0:
-    sIF_0B_JR $c9, .jr_0e_4c9f                         ;; 0e:4c92 $0b $c9 $00 $09
-    sLOAD_ROOM 0, $3e, 12, 6                           ;; 0e:4c96 $f4 $00 $3e $0c $06
-    sSET_MUSIC 25                                      ;; 0e:4c9b $f8 $19
-    sUNK_AB                                            ;; 0e:4c9d $ab
-    sRUN_ROOM_SCRIPT                                   ;; 0e:4c9e $ec
-.jr_0e_4c9f:
+    sIF_0B $c9                                         ;; 0e:4c92 $0b $c9 $00 $09
+      sLOAD_ROOM 0, $3e, 12, 6                         ;; 0e:4c96 $f4 $00 $3e $0c $06
+      sSET_MUSIC 25                                    ;; 0e:4c9b $f8 $19
+      sUNK_AB                                          ;; 0e:4c9d $ab
+      sRUN_ROOM_SCRIPT                                 ;; 0e:4c9e $ec
+    sENDIF                                             ;; 0e:4c9f
     sEND                                               ;; 0e:4c9f $00
 
 script_03a1:
-    sIF_0B_JR $c9, .jr_0e_4cac                         ;; 0e:4ca0 $0b $c9 $00 $08
-    sLOAD_ROOM 2, $00, 9, 12                           ;; 0e:4ca4 $f4 $02 $00 $09 $0c
-    sUNK_C5 1                                          ;; 0e:4ca9 $c5 $01
-    sRUN_ROOM_SCRIPT                                   ;; 0e:4cab $ec
-.jr_0e_4cac:
+    sIF_0B $c9                                         ;; 0e:4ca0 $0b $c9 $00 $08
+      sLOAD_ROOM 2, $00, 9, 12                         ;; 0e:4ca4 $f4 $02 $00 $09 $0c
+      sUNK_C5 1                                        ;; 0e:4ca9 $c5 $01
+      sRUN_ROOM_SCRIPT                                 ;; 0e:4cab $ec
+    sENDIF                                             ;; 0e:4cac
     sEND                                               ;; 0e:4cac $00
 
 script_03a2:
-    sIF_0B_JR $c9, .jr_0e_4cb7                         ;; 0e:4cad $0b $c9 $00 $06
-    sLOAD_ROOM 12, $07, 16, 2                          ;; 0e:4cb1 $f4 $0c $07 $10 $02
-    sRUN_ROOM_SCRIPT                                   ;; 0e:4cb6 $ec
-.jr_0e_4cb7:
+    sIF_0B $c9                                         ;; 0e:4cad $0b $c9 $00 $06
+      sLOAD_ROOM 12, $07, 16, 2                        ;; 0e:4cb1 $f4 $0c $07 $10 $02
+      sRUN_ROOM_SCRIPT                                 ;; 0e:4cb6 $ec
+    sENDIF                                             ;; 0e:4cb7
     sEND                                               ;; 0e:4cb7 $00
 
 script_03a3:
-    sIF_0B_JR $c9, .jr_0e_4cc1                         ;; 0e:4cb8 $0b $c9 $00 $05
-    sLOAD_ROOM 12, $06, 16, 12                         ;; 0e:4cbc $f4 $0c $06 $10 $0c
-.jr_0e_4cc1:
+    sIF_0B $c9                                         ;; 0e:4cb8 $0b $c9 $00 $05
+      sLOAD_ROOM 12, $06, 16, 12                       ;; 0e:4cbc $f4 $0c $06 $10 $0c
+    sENDIF                                             ;; 0e:4cc1
     sEND                                               ;; 0e:4cc1 $00
 
 script_03a4:
-    sIF_0B_JR $c9, .jr_0e_4ccc                         ;; 0e:4cc2 $0b $c9 $00 $06
-    sLOAD_ROOM 14, $35, 16, 1                          ;; 0e:4cc6 $f4 $0e $35 $10 $01
-    sRUN_ROOM_SCRIPT                                   ;; 0e:4ccb $ec
-.jr_0e_4ccc:
+    sIF_0B $c9                                         ;; 0e:4cc2 $0b $c9 $00 $06
+      sLOAD_ROOM 14, $35, 16, 1                        ;; 0e:4cc6 $f4 $0e $35 $10 $01
+      sRUN_ROOM_SCRIPT                                 ;; 0e:4ccb $ec
+    sENDIF                                             ;; 0e:4ccc
     sEND                                               ;; 0e:4ccc $00
 
 script_03a5:
-    sIF_0B_JR $c9, $c1, .jr_0e_4cd7                    ;; 0e:4ccd $0b $c9 $c1 $00 $05
-    sLOAD_ROOM 12, $07, 16, 12                         ;; 0e:4cd2 $f4 $0c $07 $10 $0c
-.jr_0e_4cd7:
+    sIF_0B $c9, $c1                                    ;; 0e:4ccd $0b $c9 $c1 $00 $05
+      sLOAD_ROOM 12, $07, 16, 12                       ;; 0e:4cd2 $f4 $0c $07 $10 $0c
+    sENDIF                                             ;; 0e:4cd7
     sEND                                               ;; 0e:4cd7 $00
 
 script_03a6:
-    sIF_0B_JR $c9, .jr_0e_4ce3                         ;; 0e:4cd8 $0b $c9 $00 $07
-    sLOAD_ROOM 0, $69, 14, 2                           ;; 0e:4cdc $f4 $00 $69 $0e $02
-    sSET_MUSIC 20                                      ;; 0e:4ce1 $f8 $14
-.jr_0e_4ce3:
+    sIF_0B $c9                                         ;; 0e:4cd8 $0b $c9 $00 $07
+      sLOAD_ROOM 0, $69, 14, 2                         ;; 0e:4cdc $f4 $00 $69 $0e $02
+      sSET_MUSIC 20                                    ;; 0e:4ce1 $f8 $14
+    sENDIF                                             ;; 0e:4ce3
     sEND                                               ;; 0e:4ce3 $00
 
 script_03a7:
-    sIF_0B_JR $c9, .jr_0e_4cf1                         ;; 0e:4ce4 $0b $c9 $00 $09
-    sLOAD_ROOM 0, $d3, 12, 5                           ;; 0e:4ce8 $f4 $00 $d3 $0c $05
-    sSET_MUSIC 25                                      ;; 0e:4ced $f8 $19
-    sUNK_AB                                            ;; 0e:4cef $ab
-    sRUN_ROOM_SCRIPT                                   ;; 0e:4cf0 $ec
-.jr_0e_4cf1:
+    sIF_0B $c9                                         ;; 0e:4ce4 $0b $c9 $00 $09
+      sLOAD_ROOM 0, $d3, 12, 5                         ;; 0e:4ce8 $f4 $00 $d3 $0c $05
+      sSET_MUSIC 25                                    ;; 0e:4ced $f8 $19
+      sUNK_AB                                          ;; 0e:4cef $ab
+      sRUN_ROOM_SCRIPT                                 ;; 0e:4cf0 $ec
+    sENDIF                                             ;; 0e:4cf1
     sEND                                               ;; 0e:4cf1 $00
 
 script_03a8:
-    sIF_0B_JR $c9, $c1, .jr_0e_4cfc                    ;; 0e:4cf2 $0b $c9 $c1 $00 $05
-    sLOAD_ROOM 4, $50, 16, 2                           ;; 0e:4cf7 $f4 $04 $50 $10 $02
-.jr_0e_4cfc:
+    sIF_0B $c9, $c1                                    ;; 0e:4cf2 $0b $c9 $c1 $00 $05
+      sLOAD_ROOM 4, $50, 16, 2                         ;; 0e:4cf7 $f4 $04 $50 $10 $02
+    sENDIF                                             ;; 0e:4cfc
     sEND                                               ;; 0e:4cfc $00
 
 script_03a9:
-    sIF_0B_JR $c9, .jr_0e_4d06                         ;; 0e:4cfd $0b $c9 $00 $05
-    sLOAD_ROOM 6, $46, 16, 2                           ;; 0e:4d01 $f4 $06 $46 $10 $02
-.jr_0e_4d06:
+    sIF_0B $c9                                         ;; 0e:4cfd $0b $c9 $00 $05
+      sLOAD_ROOM 6, $46, 16, 2                         ;; 0e:4d01 $f4 $06 $46 $10 $02
+    sENDIF                                             ;; 0e:4d06
     sEND                                               ;; 0e:4d06 $00
 
 script_03aa:
-    sIF_0B_JR $c9, .jr_0e_4d13                         ;; 0e:4d07 $0b $c9 $00 $08
-    sUNK_C5 55                                         ;; 0e:4d0b $c5 $37
-    sLOAD_ROOM 1, $00, 16, 2                           ;; 0e:4d0d $f4 $01 $00 $10 $02
-    sRUN_ROOM_SCRIPT                                   ;; 0e:4d12 $ec
-.jr_0e_4d13:
+    sIF_0B $c9                                         ;; 0e:4d07 $0b $c9 $00 $08
+      sUNK_C5 55                                       ;; 0e:4d0b $c5 $37
+      sLOAD_ROOM 1, $00, 16, 2                         ;; 0e:4d0d $f4 $01 $00 $10 $02
+      sRUN_ROOM_SCRIPT                                 ;; 0e:4d12 $ec
+    sENDIF                                             ;; 0e:4d13
     sEND                                               ;; 0e:4d13 $00
 
 script_03ab:
-    sIF_0B_JR $c9, .jr_0e_4d1d                         ;; 0e:4d14 $0b $c9 $00 $05
-    sLOAD_ROOM 6, $72, 9, 7                            ;; 0e:4d18 $f4 $06 $72 $09 $07
-.jr_0e_4d1d:
+    sIF_0B $c9                                         ;; 0e:4d14 $0b $c9 $00 $05
+      sLOAD_ROOM 6, $72, 9, 7                          ;; 0e:4d18 $f4 $06 $72 $09 $07
+    sENDIF                                             ;; 0e:4d1d
     sEND                                               ;; 0e:4d1d $00
 
 script_03ac:
-    sIF_0B_JR $c9, .jr_0e_4d27                         ;; 0e:4d1e $0b $c9 $00 $05
-    sLOAD_ROOM 6, $60, 9, 7                            ;; 0e:4d22 $f4 $06 $60 $09 $07
-.jr_0e_4d27:
+    sIF_0B $c9                                         ;; 0e:4d1e $0b $c9 $00 $05
+      sLOAD_ROOM 6, $60, 9, 7                          ;; 0e:4d22 $f4 $06 $60 $09 $07
+    sENDIF                                             ;; 0e:4d27
     sEND                                               ;; 0e:4d27 $00
 
 script_03ad:
-    sIF_0B_JR $c9, .jr_0e_4d31                         ;; 0e:4d28 $0b $c9 $00 $05
-    sLOAD_ROOM 5, $71, 9, 7                            ;; 0e:4d2c $f4 $05 $71 $09 $07
-.jr_0e_4d31:
+    sIF_0B $c9                                         ;; 0e:4d28 $0b $c9 $00 $05
+      sLOAD_ROOM 5, $71, 9, 7                          ;; 0e:4d2c $f4 $05 $71 $09 $07
+    sENDIF                                             ;; 0e:4d31
     sEND                                               ;; 0e:4d31 $00
 
 script_03ae:
-    sIF_0B_JR $c9, .jr_0e_4d3b                         ;; 0e:4d32 $0b $c9 $00 $05
-    sLOAD_ROOM 6, $41, 9, 7                            ;; 0e:4d36 $f4 $06 $41 $09 $07
-.jr_0e_4d3b:
+    sIF_0B $c9                                         ;; 0e:4d32 $0b $c9 $00 $05
+      sLOAD_ROOM 6, $41, 9, 7                          ;; 0e:4d36 $f4 $06 $41 $09 $07
+    sENDIF                                             ;; 0e:4d3b
     sEND                                               ;; 0e:4d3b $00
 
 script_03af:
-    sIF_0B_JR $c9, .jr_0e_4d45                         ;; 0e:4d3c $0b $c9 $00 $05
-    sLOAD_ROOM 5, $74, 9, 7                            ;; 0e:4d40 $f4 $05 $74 $09 $07
-.jr_0e_4d45:
+    sIF_0B $c9                                         ;; 0e:4d3c $0b $c9 $00 $05
+      sLOAD_ROOM 5, $74, 9, 7                          ;; 0e:4d40 $f4 $05 $74 $09 $07
+    sENDIF                                             ;; 0e:4d45
     sEND                                               ;; 0e:4d45 $00
 
 script_03b0:
-    sIF_0B_JR $c9, .jr_0e_4d52                         ;; 0e:4d46 $0b $c9 $00 $08
-    sUNK_C5 54                                         ;; 0e:4d4a $c5 $36
-    sLOAD_ROOM 1, $00, 16, 2                           ;; 0e:4d4c $f4 $01 $00 $10 $02
-    sRUN_ROOM_SCRIPT                                   ;; 0e:4d51 $ec
-.jr_0e_4d52:
+    sIF_0B $c9                                         ;; 0e:4d46 $0b $c9 $00 $08
+      sUNK_C5 54                                       ;; 0e:4d4a $c5 $36
+      sLOAD_ROOM 1, $00, 16, 2                         ;; 0e:4d4c $f4 $01 $00 $10 $02
+      sRUN_ROOM_SCRIPT                                 ;; 0e:4d51 $ec
+    sENDIF                                             ;; 0e:4d52
     sEND                                               ;; 0e:4d52 $00
 
 script_03b1:
-    sIF_0B_JR $c9, .jr_0e_4d5c                         ;; 0e:4d53 $0b $c9 $00 $05
-    sLOAD_ROOM 3, $45, 9, 7                            ;; 0e:4d57 $f4 $03 $45 $09 $07
-.jr_0e_4d5c:
+    sIF_0B $c9                                         ;; 0e:4d53 $0b $c9 $00 $05
+      sLOAD_ROOM 3, $45, 9, 7                          ;; 0e:4d57 $f4 $03 $45 $09 $07
+    sENDIF                                             ;; 0e:4d5c
     sEND                                               ;; 0e:4d5c $00
 
 script_03b2:
-    sIF_0B_JR $c9, .jr_0e_4d66                         ;; 0e:4d5d $0b $c9 $00 $05
-    sLOAD_ROOM 3, $53, 9, 7                            ;; 0e:4d61 $f4 $03 $53 $09 $07
-.jr_0e_4d66:
+    sIF_0B $c9                                         ;; 0e:4d5d $0b $c9 $00 $05
+      sLOAD_ROOM 3, $53, 9, 7                          ;; 0e:4d61 $f4 $03 $53 $09 $07
+    sENDIF                                             ;; 0e:4d66
     sEND                                               ;; 0e:4d66 $00
 
 script_03b3:
-    sIF_0B_JR $c9, .jr_0e_4d70                         ;; 0e:4d67 $0b $c9 $00 $05
-    sLOAD_ROOM 6, $00, 9, 7                            ;; 0e:4d6b $f4 $06 $00 $09 $07
-.jr_0e_4d70:
+    sIF_0B $c9                                         ;; 0e:4d67 $0b $c9 $00 $05
+      sLOAD_ROOM 6, $00, 9, 7                          ;; 0e:4d6b $f4 $06 $00 $09 $07
+    sENDIF                                             ;; 0e:4d70
     sEND                                               ;; 0e:4d70 $00
 
 script_03b4:
-    sIF_0B_JR $c9, .jr_0e_4d7a                         ;; 0e:4d71 $0b $c9 $00 $05
-    sLOAD_ROOM 6, $12, 9, 7                            ;; 0e:4d75 $f4 $06 $12 $09 $07
-.jr_0e_4d7a:
+    sIF_0B $c9                                         ;; 0e:4d71 $0b $c9 $00 $05
+      sLOAD_ROOM 6, $12, 9, 7                          ;; 0e:4d75 $f4 $06 $12 $09 $07
+    sENDIF                                             ;; 0e:4d7a
     sEND                                               ;; 0e:4d7a $00
 
 script_03b5:
-    sIF_0B_JR $c9, .jr_0e_4d84                         ;; 0e:4d7b $0b $c9 $00 $05
-    sLOAD_ROOM 2, $27, 9, 7                            ;; 0e:4d7f $f4 $02 $27 $09 $07
-.jr_0e_4d84:
+    sIF_0B $c9                                         ;; 0e:4d7b $0b $c9 $00 $05
+      sLOAD_ROOM 2, $27, 9, 7                          ;; 0e:4d7f $f4 $02 $27 $09 $07
+    sENDIF                                             ;; 0e:4d84
     sEND                                               ;; 0e:4d84 $00
 
 script_03b6:
-    sIF_0B_JR $c9, .jr_0e_4d8e                         ;; 0e:4d85 $0b $c9 $00 $05
-    sLOAD_ROOM 13, $43, 16, 2                          ;; 0e:4d89 $f4 $0d $43 $10 $02
-.jr_0e_4d8e:
+    sIF_0B $c9                                         ;; 0e:4d85 $0b $c9 $00 $05
+      sLOAD_ROOM 13, $43, 16, 2                        ;; 0e:4d89 $f4 $0d $43 $10 $02
+    sENDIF                                             ;; 0e:4d8e
     sEND                                               ;; 0e:4d8e $00
 
 script_03b7:
-    sIF_0B_JR $c9, .jr_0e_4d98                         ;; 0e:4d8f $0b $c9 $00 $05
-    sLOAD_ROOM 12, $43, 16, 2                          ;; 0e:4d93 $f4 $0c $43 $10 $02
-.jr_0e_4d98:
+    sIF_0B $c9                                         ;; 0e:4d8f $0b $c9 $00 $05
+      sLOAD_ROOM 12, $43, 16, 2                        ;; 0e:4d93 $f4 $0c $43 $10 $02
+    sENDIF                                             ;; 0e:4d98
     sEND                                               ;; 0e:4d98 $00
 
 script_03b8:
-    sIF_0B_JR $c9, $c1, .jr_0e_4da7                    ;; 0e:4d99 $0b $c9 $c1 $00 $09
-    sLOAD_ROOM 13, $73, 16, 12                         ;; 0e:4d9e $f4 $0d $73 $10 $0c
-    sSET_ROOM_TILE $02, 8, 6                           ;; 0e:4da3 $b0 $02 $08 $06
-.jr_0e_4da7:
+    sIF_0B $c9, $c1                                    ;; 0e:4d99 $0b $c9 $c1 $00 $09
+      sLOAD_ROOM 13, $73, 16, 12                       ;; 0e:4d9e $f4 $0d $73 $10 $0c
+      sSET_ROOM_TILE $02, 8, 6                         ;; 0e:4da3 $b0 $02 $08 $06
+    sENDIF                                             ;; 0e:4da7
     sEND                                               ;; 0e:4da7 $00
 
 script_03b9:
-    sIF_0B_JR $c9, .jr_0e_4db1                         ;; 0e:4da8 $0b $c9 $00 $05
-    sLOAD_ROOM 13, $54, 16, 2                          ;; 0e:4dac $f4 $0d $54 $10 $02
-.jr_0e_4db1:
+    sIF_0B $c9                                         ;; 0e:4da8 $0b $c9 $00 $05
+      sLOAD_ROOM 13, $54, 16, 2                        ;; 0e:4dac $f4 $0d $54 $10 $02
+    sENDIF                                             ;; 0e:4db1
     sEND                                               ;; 0e:4db1 $00
 
 script_03ba:
-    sIF_0B_JR $c9, .jr_0e_4dbb                         ;; 0e:4db2 $0b $c9 $00 $05
-    sLOAD_ROOM 13, $74, 16, 2                          ;; 0e:4db6 $f4 $0d $74 $10 $02
-.jr_0e_4dbb:
+    sIF_0B $c9                                         ;; 0e:4db2 $0b $c9 $00 $05
+      sLOAD_ROOM 13, $74, 16, 2                        ;; 0e:4db6 $f4 $0d $74 $10 $02
+    sENDIF                                             ;; 0e:4dbb
     sEND                                               ;; 0e:4dbb $00
 
 script_03bb:
-    sIF_0B_JR $c9, .jr_0e_4dc5                         ;; 0e:4dbc $0b $c9 $00 $05
-    sLOAD_ROOM 13, $50, 16, 2                          ;; 0e:4dc0 $f4 $0d $50 $10 $02
-.jr_0e_4dc5:
+    sIF_0B $c9                                         ;; 0e:4dbc $0b $c9 $00 $05
+      sLOAD_ROOM 13, $50, 16, 2                        ;; 0e:4dc0 $f4 $0d $50 $10 $02
+    sENDIF                                             ;; 0e:4dc5
     sEND                                               ;; 0e:4dc5 $00
 
 script_03bc:
-    sIF_0B_JR $c9, $c1, .jr_0e_4dd3                    ;; 0e:4dc6 $0b $c9 $c1 $00 $08
-    sUNK_C5 53                                         ;; 0e:4dcb $c5 $35
-    sLOAD_ROOM 1, $00, 16, 2                           ;; 0e:4dcd $f4 $01 $00 $10 $02
-    sRUN_ROOM_SCRIPT                                   ;; 0e:4dd2 $ec
-.jr_0e_4dd3:
+    sIF_0B $c9, $c1                                    ;; 0e:4dc6 $0b $c9 $c1 $00 $08
+      sUNK_C5 53                                       ;; 0e:4dcb $c5 $35
+      sLOAD_ROOM 1, $00, 16, 2                         ;; 0e:4dcd $f4 $01 $00 $10 $02
+      sRUN_ROOM_SCRIPT                                 ;; 0e:4dd2 $ec
+    sENDIF                                             ;; 0e:4dd3
     sEND                                               ;; 0e:4dd3 $00
 
 script_03bd:
-    sIF_0B_JR $c9, $c1, .jr_0e_4dde                    ;; 0e:4dd4 $0b $c9 $c1 $00 $05
-    sLOAD_ROOM 15, $73, 8, 8                           ;; 0e:4dd9 $f4 $0f $73 $08 $08
-.jr_0e_4dde:
+    sIF_0B $c9, $c1                                    ;; 0e:4dd4 $0b $c9 $c1 $00 $05
+      sLOAD_ROOM 15, $73, 8, 8                         ;; 0e:4dd9 $f4 $0f $73 $08 $08
+    sENDIF                                             ;; 0e:4dde
     sEND                                               ;; 0e:4dde $00
 
 script_03be:
@@ -2023,144 +2025,145 @@ script_03bf:
     sEND                                               ;; 0e:4de0 $00
 
 script_03c0:
-    sIF_0B_JR $c9, .jr_0e_4dea                         ;; 0e:4de1 $0b $c9 $00 $05
-    sLOAD_ROOM 9, $40, 16, 2                           ;; 0e:4de5 $f4 $09 $40 $10 $02
-.jr_0e_4dea:
+    sIF_0B $c9                                         ;; 0e:4de1 $0b $c9 $00 $05
+      sLOAD_ROOM 9, $40, 16, 2                         ;; 0e:4de5 $f4 $09 $40 $10 $02
+    sENDIF                                             ;; 0e:4dea
     sEND                                               ;; 0e:4dea $00
 
 script_03c1:
-    sIF_0B_JR $c9, .jr_0e_4df4                         ;; 0e:4deb $0b $c9 $00 $05
-    sLOAD_ROOM 12, $46, 16, 12                         ;; 0e:4def $f4 $0c $46 $10 $0c
-.jr_0e_4df4:
+    sIF_0B $c9                                         ;; 0e:4deb $0b $c9 $00 $05
+      sLOAD_ROOM 12, $46, 16, 12                       ;; 0e:4def $f4 $0c $46 $10 $0c
+    sENDIF                                             ;; 0e:4df4
     sEND                                               ;; 0e:4df4 $00
 
 script_03c2:
-    sIF_0B_JR $c9, .jr_0e_4dfe                         ;; 0e:4df5 $0b $c9 $00 $05
-    sLOAD_ROOM 11, $46, 16, 12                         ;; 0e:4df9 $f4 $0b $46 $10 $0c
-.jr_0e_4dfe:
+    sIF_0B $c9                                         ;; 0e:4df5 $0b $c9 $00 $05
+      sLOAD_ROOM 11, $46, 16, 12                       ;; 0e:4df9 $f4 $0b $46 $10 $0c
+    sENDIF                                             ;; 0e:4dfe
     sEND                                               ;; 0e:4dfe $00
 
 script_03c3:
-    sIF_0B_JR $c9, $c1, .jr_0e_4e09                    ;; 0e:4dff $0b $c9 $c1 $00 $05
-    sLOAD_ROOM 11, $32, 16, 2                          ;; 0e:4e04 $f4 $0b $32 $10 $02
-.jr_0e_4e09:
+    sIF_0B $c9, $c1                                    ;; 0e:4dff $0b $c9 $c1 $00 $05
+      sLOAD_ROOM 11, $32, 16, 2                        ;; 0e:4e04 $f4 $0b $32 $10 $02
+    sENDIF                                             ;; 0e:4e09
     sEND                                               ;; 0e:4e09 $00
 
 script_03c4:
-    sIF_0B_JR $c9, .jr_0e_4e17                         ;; 0e:4e0a $0b $c9 $00 $09
-    sLOAD_ROOM 0, $0e, 14, 4                           ;; 0e:4e0e $f4 $00 $0e $0e $04
-    sUNK_AB                                            ;; 0e:4e13 $ab
-    sSET_MUSIC 25                                      ;; 0e:4e14 $f8 $19
-    sRUN_ROOM_SCRIPT                                   ;; 0e:4e16 $ec
-.jr_0e_4e17:
+    sIF_0B $c9                                         ;; 0e:4e0a $0b $c9 $00 $09
+      sLOAD_ROOM 0, $0e, 14, 4                         ;; 0e:4e0e $f4 $00 $0e $0e $04
+      sUNK_AB                                          ;; 0e:4e13 $ab
+      sSET_MUSIC 25                                    ;; 0e:4e14 $f8 $19
+      sRUN_ROOM_SCRIPT                                 ;; 0e:4e16 $ec
+    sENDIF                                             ;; 0e:4e17
     sEND                                               ;; 0e:4e17 $00
 
 script_03c5:
-    sIF_0B_JR $c9, .jr_0e_4e21                         ;; 0e:4e18 $0b $c9 $00 $05
-    sLOAD_ROOM 8, $47, 16, 2                           ;; 0e:4e1c $f4 $08 $47 $10 $02
-.jr_0e_4e21:
+    sIF_0B $c9                                         ;; 0e:4e18 $0b $c9 $00 $05
+      sLOAD_ROOM 8, $47, 16, 2                         ;; 0e:4e1c $f4 $08 $47 $10 $02
+    sENDIF                                             ;; 0e:4e21
     sEND                                               ;; 0e:4e21 $00
 
 script_03c6:
-    sIF_0B_JR $c9, $c1, .jr_0e_4ebc                    ;; 0e:4e22 $0b $c9 $c1 $00 $95
-    sLOAD_ROOM 4, $10, 16, 2                           ;; 0e:4e27 $f4 $04 $10 $10 $02
-    sIF_FLAG_JR !wScriptFlags05.4, wScriptFlags03.7, .jr_0e_4ebc ;; 0e:4e2c $08 $2c $9f $00 $8b
-    sSET_PLAYER_DIRECTION_DOWN                         ;; 0e:4e31 $85
-    sLOOP 4, 2                                         ;; 0e:4e32 $03 $04 $02
-      sPLAYER_STEP_FORWARD                             ;; 0e:4e35 $80
-    sEND                                               ;; 0e:4e36 $00
-    sDELAY 60                                          ;; 0e:4e37 $f0 $3c
-    sSET_PLAYER_DIRECTION_RIGHT                        ;; 0e:4e39 $86
-    sDELAY 60                                          ;; 0e:4e3a $f0 $3c
-    sSET_PLAYER_DIRECTION_LEFT                         ;; 0e:4e3c $87
-    sDELAY 60                                          ;; 0e:4e3d $f0 $3c
-    sSET_PLAYER_DIRECTION_DOWN                         ;; 0e:4e3f $85
-    sMSG                                               ;; 0e:4e40 $04
-      db "<10><GIRL>? __ <GIRL>?!\nWhere could she\nbe_? _", $00 ;; 0e:4e41
-    sDELAY 60                                          ;; 0e:4e5c $f0 $3c
-    sMSG                                               ;; 0e:4e5e $04
-      db " Julius_ ?!<12>"
+    sIF_0B $c9, $c1                                    ;; 0e:4e22 $0b $c9 $c1 $00 $95
+      sLOAD_ROOM 4, $10, 16, 2                         ;; 0e:4e27 $f4 $04 $10 $10 $02
+      sIF_FLAG wScriptFlags05.4, !wScriptFlags03.7     ;; 0e:4e2c $08 $2c $9f $00 $8b
+        sSET_PLAYER_DIRECTION_DOWN                     ;; 0e:4e31 $85
+        sLOOP 4, 2                                     ;; 0e:4e32 $03 $04 $02
+          sPLAYER_STEP_FORWARD                         ;; 0e:4e35 $80
+        sEND                                           ;; 0e:4e36 $00
+        sDELAY 60                                      ;; 0e:4e37 $f0 $3c
+        sSET_PLAYER_DIRECTION_RIGHT                    ;; 0e:4e39 $86
+        sDELAY 60                                      ;; 0e:4e3a $f0 $3c
+        sSET_PLAYER_DIRECTION_LEFT                     ;; 0e:4e3c $87
+        sDELAY 60                                      ;; 0e:4e3d $f0 $3c
+        sSET_PLAYER_DIRECTION_DOWN                     ;; 0e:4e3f $85
+        sMSG                                           ;; 0e:4e40 $04
+          db "<10><GIRL>? __ <GIRL>?!\nWhere could she\nbe_? _", $00 ;; 0e:4e41
+        sDELAY 60                                      ;; 0e:4e5c $f0 $3c
+        sMSG                                           ;; 0e:4e5e $04
+          db " Julius_ ?!<12>"
       db "<1b>Where is he___?\n  !!  Must be at\nthe Waterfalls!!<12>"
       db "<11>", $00 ;; 0e:4e5f
-    sLOAD_ROOM 1, $46, 7, 9                            ;; 0e:4e8d $f4 $01 $46 $07 $09
-    sUNK_AB                                            ;; 0e:4e92 $ab
-    sSET_NPC_TYPES 40                                  ;; 0e:4e93 $fc $28
-    sSPAWN_NPC 0                                       ;; 0e:4e95 $fd $00
-    sSET_NPC_1_DIRECTION_LEFT                          ;; 0e:4e97 $17
-    sLOOP 4, 2                                         ;; 0e:4e98 $03 $04 $02
-      sNPC_1_STEP_FORWARD                              ;; 0e:4e9b $10
-    sEND                                               ;; 0e:4e9c $00
-    sMSG                                               ;; 0e:4e9d $04
-      db "<10><BOY>:<GIRL>!!<12>"
+        sLOAD_ROOM 1, $46, 7, 9                        ;; 0e:4e8d $f4 $01 $46 $07 $09
+        sUNK_AB                                        ;; 0e:4e92 $ab
+        sSET_NPC_TYPES 40                              ;; 0e:4e93 $fc $28
+        sSPAWN_NPC 0                                   ;; 0e:4e95 $fd $00
+        sSET_NPC_1_DIRECTION_LEFT                      ;; 0e:4e97 $17
+        sLOOP 4, 2                                     ;; 0e:4e98 $03 $04 $02
+          sNPC_1_STEP_FORWARD                          ;; 0e:4e9b $10
+        sEND                                           ;; 0e:4e9c $00
+        sMSG                                           ;; 0e:4e9d $04
+          db "<10><BOY>:<GIRL>!!<12>"
       db "<11>", $00 ;; 0e:4e9e
-    sSET_NPC_1_DIRECTION_UP                            ;; 0e:4ea7 $14
-    sDELAY 60                                          ;; 0e:4ea8 $f0 $3c
-    sSET_NPC_1_DIRECTION_LEFT                          ;; 0e:4eaa $17
-    sLOOP 6, 2                                         ;; 0e:4eab $03 $06 $02
-      sNPC_1_STEP_FORWARD                              ;; 0e:4eae $10
-    sEND                                               ;; 0e:4eaf $00
-    sDEL_NPC_1                                         ;; 0e:4eb0 $18
-    sMSG                                               ;; 0e:4eb1 $04
-      db "<10><BOY>:__ <GIRL>?<12>"
+        sSET_NPC_1_DIRECTION_UP                        ;; 0e:4ea7 $14
+        sDELAY 60                                      ;; 0e:4ea8 $f0 $3c
+        sSET_NPC_1_DIRECTION_LEFT                      ;; 0e:4eaa $17
+        sLOOP 6, 2                                     ;; 0e:4eab $03 $06 $02
+          sNPC_1_STEP_FORWARD                          ;; 0e:4eae $10
+        sEND                                           ;; 0e:4eaf $00
+        sDEL_NPC_1                                     ;; 0e:4eb0 $18
+        sMSG                                           ;; 0e:4eb1 $04
+          db "<10><BOY>:__ <GIRL>?<12>"
       db "<11>", $00 ;; 0e:4eb2
-.jr_0e_4ebc:
+      sENDIF                                           ;; 0e:4ebc
+    sENDIF                                             ;; 0e:4ebc
     sEND                                               ;; 0e:4ebc $00
 
 script_03c7:
-    sIF_0B_JR $c9, .jr_0e_4ec6                         ;; 0e:4ebd $0b $c9 $00 $05
-    sLOAD_ROOM 10, $62, 16, 2                          ;; 0e:4ec1 $f4 $0a $62 $10 $02
-.jr_0e_4ec6:
+    sIF_0B $c9                                         ;; 0e:4ebd $0b $c9 $00 $05
+      sLOAD_ROOM 10, $62, 16, 2                        ;; 0e:4ec1 $f4 $0a $62 $10 $02
+    sENDIF                                             ;; 0e:4ec6
     sEND                                               ;; 0e:4ec6 $00
 
 script_03c8:
-    sIF_0B_JR $c9, $c1, .jr_0e_4ed1                    ;; 0e:4ec7 $0b $c9 $c1 $00 $05
-    sLOAD_ROOM 8, $63, 10, 6                           ;; 0e:4ecc $f4 $08 $63 $0a $06
-.jr_0e_4ed1:
+    sIF_0B $c9, $c1                                    ;; 0e:4ec7 $0b $c9 $c1 $00 $05
+      sLOAD_ROOM 8, $63, 10, 6                         ;; 0e:4ecc $f4 $08 $63 $0a $06
+    sENDIF                                             ;; 0e:4ed1
     sEND                                               ;; 0e:4ed1 $00
 
 script_03c9:
-    sIF_0B_JR $c9, $c1, .jr_0e_4ee2                    ;; 0e:4ed2 $0b $c9 $c1 $00 $0b
-    sLOAD_ROOM 2, $22, 16, 2                           ;; 0e:4ed7 $f4 $02 $22 $10 $02
-    sSET_NPC_TYPES 7                                   ;; 0e:4edc $fc $07
-    sSPAWN_NPC 0                                       ;; 0e:4ede $fd $00
-    sSPAWN_NPC 2                                       ;; 0e:4ee0 $fd $02
-.jr_0e_4ee2:
+    sIF_0B $c9, $c1                                    ;; 0e:4ed2 $0b $c9 $c1 $00 $0b
+      sLOAD_ROOM 2, $22, 16, 2                         ;; 0e:4ed7 $f4 $02 $22 $10 $02
+      sSET_NPC_TYPES 7                                 ;; 0e:4edc $fc $07
+      sSPAWN_NPC 0                                     ;; 0e:4ede $fd $00
+      sSPAWN_NPC 2                                     ;; 0e:4ee0 $fd $02
+    sENDIF                                             ;; 0e:4ee2
     sEND                                               ;; 0e:4ee2 $00
 
 script_03ca:
-    sIF_0B_JR $c9, $c1, .jr_0e_4eed                    ;; 0e:4ee3 $0b $c9 $c1 $00 $05
-    sLOAD_ROOM 2, $62, 16, 2                           ;; 0e:4ee8 $f4 $02 $62 $10 $02
-.jr_0e_4eed:
+    sIF_0B $c9, $c1                                    ;; 0e:4ee3 $0b $c9 $c1 $00 $05
+      sLOAD_ROOM 2, $62, 16, 2                         ;; 0e:4ee8 $f4 $02 $62 $10 $02
+    sENDIF                                             ;; 0e:4eed
     sEND                                               ;; 0e:4eed $00
 
 script_03cb:
-    sIF_0B_JR $c9, .jr_0e_4ef7                         ;; 0e:4eee $0b $c9 $00 $05
-    sLOAD_ROOM 13, $40, 16, 2                          ;; 0e:4ef2 $f4 $0d $40 $10 $02
-.jr_0e_4ef7:
+    sIF_0B $c9                                         ;; 0e:4eee $0b $c9 $00 $05
+      sLOAD_ROOM 13, $40, 16, 2                        ;; 0e:4ef2 $f4 $0d $40 $10 $02
+    sENDIF                                             ;; 0e:4ef7
     sEND                                               ;; 0e:4ef7 $00
 
 script_03cc:
-    sIF_0B_JR $c9, .jr_0e_4f01                         ;; 0e:4ef8 $0b $c9 $00 $05
-    sLOAD_ROOM 11, $20, 16, 2                          ;; 0e:4efc $f4 $0b $20 $10 $02
-.jr_0e_4f01:
+    sIF_0B $c9                                         ;; 0e:4ef8 $0b $c9 $00 $05
+      sLOAD_ROOM 11, $20, 16, 2                        ;; 0e:4efc $f4 $0b $20 $10 $02
+    sENDIF                                             ;; 0e:4f01
     sEND                                               ;; 0e:4f01 $00
 
 script_03cd:
-    sIF_0B_JR $c9, .jr_0e_4f0b                         ;; 0e:4f02 $0b $c9 $00 $05
-    sLOAD_ROOM 10, $20, 16, 2                          ;; 0e:4f06 $f4 $0a $20 $10 $02
-.jr_0e_4f0b:
+    sIF_0B $c9                                         ;; 0e:4f02 $0b $c9 $00 $05
+      sLOAD_ROOM 10, $20, 16, 2                        ;; 0e:4f06 $f4 $0a $20 $10 $02
+    sENDIF                                             ;; 0e:4f0b
     sEND                                               ;; 0e:4f0b $00
 
 script_03ce:
-    sIF_0B_JR $c9, .jr_0e_4f15                         ;; 0e:4f0c $0b $c9 $00 $05
-    sLOAD_ROOM 10, $14, 16, 2                          ;; 0e:4f10 $f4 $0a $14 $10 $02
-.jr_0e_4f15:
+    sIF_0B $c9                                         ;; 0e:4f0c $0b $c9 $00 $05
+      sLOAD_ROOM 10, $14, 16, 2                        ;; 0e:4f10 $f4 $0a $14 $10 $02
+    sENDIF                                             ;; 0e:4f15
     sEND                                               ;; 0e:4f15 $00
 
 script_03cf:
-    sIF_0B_JR $c9, .jr_0e_4f1f                         ;; 0e:4f16 $0b $c9 $00 $05
-    sLOAD_ROOM 10, $53, 16, 2                          ;; 0e:4f1a $f4 $0a $53 $10 $02
-.jr_0e_4f1f:
+    sIF_0B $c9                                         ;; 0e:4f16 $0b $c9 $00 $05
+      sLOAD_ROOM 10, $53, 16, 2                        ;; 0e:4f1a $f4 $0a $53 $10 $02
+    sENDIF                                             ;; 0e:4f1f
     sEND                                               ;; 0e:4f1f $00
 
 script_03d0:
@@ -2169,9 +2172,9 @@ script_03d0:
     sEND                                               ;; 0e:4f24 $00
 
 script_03d1:
-    sIF_FLAG_JR !wScriptFlags.2, .jr_0e_4f2c           ;; 0e:4f25 $08 $02 $00 $03
-    sUNK_EF $00, $03                                   ;; 0e:4f29 $ef $00 $03
-.jr_0e_4f2c:
+    sIF_FLAG wScriptFlags.2                            ;; 0e:4f25 $08 $02 $00 $03
+      sUNK_EF $00, $03                                 ;; 0e:4f29 $ef $00 $03
+    sENDIF                                             ;; 0e:4f2c
     sEND                                               ;; 0e:4f2c $00
 
 script_03d2:
@@ -2191,23 +2194,23 @@ script_03d5:
     sEND                                               ;; 0e:4f38 $00
 
 script_03d6:
-    sIF_FLAG_JR wScriptFlags05.0, .jr_0e_4f6e          ;; 0e:4f39 $08 $a8 $00 $31
-    sPLAYER_STEP_FORWARD                               ;; 0e:4f3d $80
-    sPLAYER_STEP_FORWARD                               ;; 0e:4f3e $80
-    sFADE_TO_BLACK                                     ;; 0e:4f3f $bd
-    sIF_FLAG_JR !wScriptFlags0D.7, .jr_0e_4f47         ;; 0e:4f40 $08 $6f $00 $03
-    sCALL script_0470                                  ;; 0e:4f44 $02 $5a $3f
-.jr_0e_4f47:
-    sLOAD_ROOM_INSTANT 15, $55, 20, 0                  ;; 0e:4f47 $f3 $0f $55 $14 $00
-    sFADE_TO_NORMAL                                    ;; 0e:4f4c $bc
-    sMSG                                               ;; 0e:4f4d $04
-      db "<10> AAARGH!!\n Poison gas!!<12>"
+    sIF_FLAG !wScriptFlags05.0                         ;; 0e:4f39 $08 $a8 $00 $31
+      sPLAYER_STEP_FORWARD                             ;; 0e:4f3d $80
+      sPLAYER_STEP_FORWARD                             ;; 0e:4f3e $80
+      sFADE_TO_BLACK                                   ;; 0e:4f3f $bd
+      sIF_FLAG wScriptFlags0D.7                        ;; 0e:4f40 $08 $6f $00 $03
+        sCALL script_0470                              ;; 0e:4f44 $02 $5a $3f
+      sENDIF                                           ;; 0e:4f47
+      sLOAD_ROOM_INSTANT 15, $55, 20, 0                ;; 0e:4f47 $f3 $0f $55 $14 $00
+      sFADE_TO_NORMAL                                  ;; 0e:4f4c $bc
+      sMSG                                             ;; 0e:4f4d $04
+        db "<10> AAARGH!!\n Poison gas!!<12>"
       db "<11>", $00 ;; 0e:4f4e
-    sFADE_TO_BLACK                                     ;; 0e:4f65 $bd
-    sLOAD_ROOM_INSTANT 0, $28, 11, 6                   ;; 0e:4f66 $f3 $00 $28 $0b $06
-    sFADE_TO_NORMAL                                    ;; 0e:4f6b $bc
-    sPLAYER_GIVE_STATUS 1                              ;; 0e:4f6c $c4 $01
-.jr_0e_4f6e:
+      sFADE_TO_BLACK                                   ;; 0e:4f65 $bd
+      sLOAD_ROOM_INSTANT 0, $28, 11, 6                 ;; 0e:4f66 $f3 $00 $28 $0b $06
+      sFADE_TO_NORMAL                                  ;; 0e:4f6b $bc
+      sPLAYER_GIVE_STATUS 1                            ;; 0e:4f6c $c4 $01
+    sENDIF                                             ;; 0e:4f6e
     sEND                                               ;; 0e:4f6e $00
 
 script_03d7:
@@ -2217,14 +2220,14 @@ script_03d8:
     sEND                                               ;; 0e:4f70 $00
 
 script_03d9:
-    sIF_FLAG_JR wScriptFlags01.3, .jr_0e_4f89          ;; 0e:4f71 $08 $8b $00 $14
-    sSET_ROOM_TILE $0f, 3, 2                           ;; 0e:4f75 $b0 $0f $03 $02
-    sSET_ROOM_TILE $0f, 4, 2                           ;; 0e:4f79 $b0 $0f $04 $02
-    sSET_ROOM_TILE $1f, 3, 3                           ;; 0e:4f7d $b0 $1f $03 $03
-    sSET_ROOM_TILE $1f, 4, 3                           ;; 0e:4f81 $b0 $1f $04 $03
-    sDELAY 5                                           ;; 0e:4f85 $f0 $05
-    sSFX 16                                            ;; 0e:4f87 $f9 $10
-.jr_0e_4f89:
+    sIF_FLAG !wScriptFlags01.3                         ;; 0e:4f71 $08 $8b $00 $14
+      sSET_ROOM_TILE $0f, 3, 2                         ;; 0e:4f75 $b0 $0f $03 $02
+      sSET_ROOM_TILE $0f, 4, 2                         ;; 0e:4f79 $b0 $0f $04 $02
+      sSET_ROOM_TILE $1f, 3, 3                         ;; 0e:4f7d $b0 $1f $03 $03
+      sSET_ROOM_TILE $1f, 4, 3                         ;; 0e:4f81 $b0 $1f $04 $03
+      sDELAY 5                                         ;; 0e:4f85 $f0 $05
+      sSFX 16                                          ;; 0e:4f87 $f9 $10
+    sENDIF                                             ;; 0e:4f89
     sEND                                               ;; 0e:4f89 $00
 
 script_03da:
@@ -2281,97 +2284,97 @@ script_03e7:
     sEND                                               ;; 0e:4fad $00
 
 script_03e8:
-    sIF_FLAG_JR !wScriptFlags04.2, .jr_0e_50ad         ;; 0e:4fae $08 $22 $00 $fb
-    sIF_FLAG_JR wScriptFlags02.2, .jr_0e_50aa          ;; 0e:4fb2 $08 $92 $00 $f4
-    sSET_MUSIC 0                                       ;; 0e:4fb6 $f8 $00
-    sIF_FLAG_JR !wScriptFlags0D.7, .jr_0e_4fbf         ;; 0e:4fb8 $08 $6f $00 $03
-    sCALL script_0470                                  ;; 0e:4fbc $02 $5a $3f
-.jr_0e_4fbf:
-    sPLAYER_STEP_FORWARD                               ;; 0e:4fbf $80
-    sPLAYER_STEP_FORWARD                               ;; 0e:4fc0 $80
-    sDELAY 40                                          ;; 0e:4fc1 $f0 $28
-    sSHAKE_SCREEN                                      ;; 0e:4fc3 $fb
-    sFLASH_SCREEN                                      ;; 0e:4fc4 $bf
-    sSFX 37                                            ;; 0e:4fc5 $f9 $25
-    sFLASH_SCREEN                                      ;; 0e:4fc7 $bf
-    sFLASH_SCREEN                                      ;; 0e:4fc8 $bf
-    sCREATE_EFFECT $10, $06, $04                       ;; 0e:4fc9 $ba $10 $06 $04
-    sCREATE_EFFECT $10, $0a, $03                       ;; 0e:4fcd $ba $10 $0a $03
-    sCREATE_EFFECT $10, $08, $05                       ;; 0e:4fd1 $ba $10 $08 $05
-    sCREATE_EFFECT $10, $0c, $04                       ;; 0e:4fd5 $ba $10 $0c $04
-    sSFX 37                                            ;; 0e:4fd9 $f9 $25
-    sSET_ROOM_TILE $6c, 3, 2                           ;; 0e:4fdb $b0 $6c $03 $02
-    sSET_ROOM_TILE $66, 4, 2                           ;; 0e:4fdf $b0 $66 $04 $02
-    sSET_ROOM_TILE $6c, 5, 2                           ;; 0e:4fe3 $b0 $6c $05 $02
-    sSET_ROOM_TILE $66, 6, 2                           ;; 0e:4fe7 $b0 $66 $06 $02
-    sSET_ROOM_TILE $6c, 7, 2                           ;; 0e:4feb $b0 $6c $07 $02
-    sDELAY 5                                           ;; 0e:4fef $f0 $05
-    sFLASH_SCREEN                                      ;; 0e:4ff1 $bf
-    sSFX 37                                            ;; 0e:4ff2 $f9 $25
-    sSET_ROOM_TILE $6c, 3, 1                           ;; 0e:4ff4 $b0 $6c $03 $01
-    sSET_ROOM_TILE $66, 4, 1                           ;; 0e:4ff8 $b0 $66 $04 $01
-    sSET_ROOM_TILE $6c, 5, 1                           ;; 0e:4ffc $b0 $6c $05 $01
-    sSET_ROOM_TILE $66, 6, 1                           ;; 0e:5000 $b0 $66 $06 $01
-    sSET_ROOM_TILE $6c, 7, 1                           ;; 0e:5004 $b0 $6c $07 $01
-    sSET_ROOM_TILE $6c, 3, 2                           ;; 0e:5008 $b0 $6c $03 $02
-    sSET_ROOM_TILE $65, 4, 2                           ;; 0e:500c $b0 $65 $04 $02
-    sSET_ROOM_TILE $65, 5, 2                           ;; 0e:5010 $b0 $65 $05 $02
-    sSET_ROOM_TILE $65, 6, 2                           ;; 0e:5014 $b0 $65 $06 $02
-    sSET_ROOM_TILE $6c, 7, 2                           ;; 0e:5018 $b0 $6c $07 $02
-    sDELAY 5                                           ;; 0e:501c $f0 $05
-    sFLASH_SCREEN                                      ;; 0e:501e $bf
-    sSFX 37                                            ;; 0e:501f $f9 $25
-    sSET_ROOM_TILE $6c, 3, 0                           ;; 0e:5021 $b0 $6c $03 $00
-    sSET_ROOM_TILE $66, 4, 0                           ;; 0e:5025 $b0 $66 $04 $00
-    sSET_ROOM_TILE $6c, 5, 0                           ;; 0e:5029 $b0 $6c $05 $00
-    sSET_ROOM_TILE $66, 6, 0                           ;; 0e:502d $b0 $66 $06 $00
-    sSET_ROOM_TILE $6c, 7, 0                           ;; 0e:5031 $b0 $6c $07 $00
-    sSET_ROOM_TILE $6c, 3, 1                           ;; 0e:5035 $b0 $6c $03 $01
-    sSET_ROOM_TILE $65, 4, 1                           ;; 0e:5039 $b0 $65 $04 $01
-    sSET_ROOM_TILE $65, 5, 1                           ;; 0e:503d $b0 $65 $05 $01
-    sSET_ROOM_TILE $65, 6, 1                           ;; 0e:5041 $b0 $65 $06 $01
-    sSET_ROOM_TILE $6c, 7, 1                           ;; 0e:5045 $b0 $6c $07 $01
-    sSET_ROOM_TILE $6c, 3, 2                           ;; 0e:5049 $b0 $6c $03 $02
-    sSET_ROOM_TILE $72, 4, 2                           ;; 0e:504d $b0 $72 $04 $02
-    sSET_ROOM_TILE $6c, 5, 2                           ;; 0e:5051 $b0 $6c $05 $02
-    sSET_ROOM_TILE $72, 6, 2                           ;; 0e:5055 $b0 $72 $06 $02
-    sSET_ROOM_TILE $6c, 7, 2                           ;; 0e:5059 $b0 $6c $07 $02
-    sDELAY 5                                           ;; 0e:505d $f0 $05
-    sFLASH_SCREEN                                      ;; 0e:505f $bf
-    sSFX 37                                            ;; 0e:5060 $f9 $25
-    sSET_ROOM_TILE $6c, 3, 0                           ;; 0e:5062 $b0 $6c $03 $00
-    sSET_ROOM_TILE $65, 4, 0                           ;; 0e:5066 $b0 $65 $04 $00
-    sSET_ROOM_TILE $65, 5, 0                           ;; 0e:506a $b0 $65 $05 $00
-    sSET_ROOM_TILE $65, 6, 0                           ;; 0e:506e $b0 $65 $06 $00
-    sSET_ROOM_TILE $6c, 7, 0                           ;; 0e:5072 $b0 $6c $07 $00
-    sSET_ROOM_TILE $6c, 3, 1                           ;; 0e:5076 $b0 $6c $03 $01
-    sSET_ROOM_TILE $72, 4, 1                           ;; 0e:507a $b0 $72 $04 $01
-    sSET_ROOM_TILE $6c, 5, 1                           ;; 0e:507e $b0 $6c $05 $01
-    sSET_ROOM_TILE $72, 6, 1                           ;; 0e:5082 $b0 $72 $06 $01
-    sSET_ROOM_TILE $6c, 7, 1                           ;; 0e:5086 $b0 $6c $07 $01
-    sSET_ROOM_TILE $09, 3, 2                           ;; 0e:508a $b0 $09 $03 $02
-    sSET_ROOM_TILE $55, 4, 2                           ;; 0e:508e $b0 $55 $04 $02
-    sSET_ROOM_TILE $55, 5, 2                           ;; 0e:5092 $b0 $55 $05 $02
-    sSET_ROOM_TILE $55, 6, 2                           ;; 0e:5096 $b0 $55 $06 $02
-    sSET_ROOM_TILE $0a, 7, 2                           ;; 0e:509a $b0 $0a $07 $02
-    sDELAY 5                                           ;; 0e:509e $f0 $05
-    sFLASH_SCREEN                                      ;; 0e:50a0 $bf
-    sSFX 37                                            ;; 0e:50a1 $f9 $25
-    sCALL script_0544                                  ;; 0e:50a3 $02 $77 $b1
-    sSET_FLAG wScriptFlags02.2                         ;; 0e:50a6 $da $12
-    sJR  .jr_0e_50ad                                   ;; 0e:50a8 $01 $03
-.jr_0e_50aa:
-    sCALL script_0547                                  ;; 0e:50aa $02 $79 $86
-.jr_0e_50ad:
-    sIF_FLAG_JR !wScriptFlags0B.5, .jr_0e_50b4         ;; 0e:50ad $08 $5d $00 $03
-    sCALL script_0475                                  ;; 0e:50b1 $02 $5b $01
-.jr_0e_50b4:
+    sIF_FLAG wScriptFlags04.2                          ;; 0e:4fae $08 $22 $00 $fb
+      sIF_FLAG !wScriptFlags02.2                       ;; 0e:4fb2 $08 $92 $00 $f4
+        sSET_MUSIC 0                                   ;; 0e:4fb6 $f8 $00
+        sIF_FLAG wScriptFlags0D.7                      ;; 0e:4fb8 $08 $6f $00 $03
+          sCALL script_0470                            ;; 0e:4fbc $02 $5a $3f
+        sENDIF                                         ;; 0e:4fbf
+        sPLAYER_STEP_FORWARD                           ;; 0e:4fbf $80
+        sPLAYER_STEP_FORWARD                           ;; 0e:4fc0 $80
+        sDELAY 40                                      ;; 0e:4fc1 $f0 $28
+        sSHAKE_SCREEN                                  ;; 0e:4fc3 $fb
+        sFLASH_SCREEN                                  ;; 0e:4fc4 $bf
+        sSFX 37                                        ;; 0e:4fc5 $f9 $25
+        sFLASH_SCREEN                                  ;; 0e:4fc7 $bf
+        sFLASH_SCREEN                                  ;; 0e:4fc8 $bf
+        sCREATE_EFFECT $10, $06, $04                   ;; 0e:4fc9 $ba $10 $06 $04
+        sCREATE_EFFECT $10, $0a, $03                   ;; 0e:4fcd $ba $10 $0a $03
+        sCREATE_EFFECT $10, $08, $05                   ;; 0e:4fd1 $ba $10 $08 $05
+        sCREATE_EFFECT $10, $0c, $04                   ;; 0e:4fd5 $ba $10 $0c $04
+        sSFX 37                                        ;; 0e:4fd9 $f9 $25
+        sSET_ROOM_TILE $6c, 3, 2                       ;; 0e:4fdb $b0 $6c $03 $02
+        sSET_ROOM_TILE $66, 4, 2                       ;; 0e:4fdf $b0 $66 $04 $02
+        sSET_ROOM_TILE $6c, 5, 2                       ;; 0e:4fe3 $b0 $6c $05 $02
+        sSET_ROOM_TILE $66, 6, 2                       ;; 0e:4fe7 $b0 $66 $06 $02
+        sSET_ROOM_TILE $6c, 7, 2                       ;; 0e:4feb $b0 $6c $07 $02
+        sDELAY 5                                       ;; 0e:4fef $f0 $05
+        sFLASH_SCREEN                                  ;; 0e:4ff1 $bf
+        sSFX 37                                        ;; 0e:4ff2 $f9 $25
+        sSET_ROOM_TILE $6c, 3, 1                       ;; 0e:4ff4 $b0 $6c $03 $01
+        sSET_ROOM_TILE $66, 4, 1                       ;; 0e:4ff8 $b0 $66 $04 $01
+        sSET_ROOM_TILE $6c, 5, 1                       ;; 0e:4ffc $b0 $6c $05 $01
+        sSET_ROOM_TILE $66, 6, 1                       ;; 0e:5000 $b0 $66 $06 $01
+        sSET_ROOM_TILE $6c, 7, 1                       ;; 0e:5004 $b0 $6c $07 $01
+        sSET_ROOM_TILE $6c, 3, 2                       ;; 0e:5008 $b0 $6c $03 $02
+        sSET_ROOM_TILE $65, 4, 2                       ;; 0e:500c $b0 $65 $04 $02
+        sSET_ROOM_TILE $65, 5, 2                       ;; 0e:5010 $b0 $65 $05 $02
+        sSET_ROOM_TILE $65, 6, 2                       ;; 0e:5014 $b0 $65 $06 $02
+        sSET_ROOM_TILE $6c, 7, 2                       ;; 0e:5018 $b0 $6c $07 $02
+        sDELAY 5                                       ;; 0e:501c $f0 $05
+        sFLASH_SCREEN                                  ;; 0e:501e $bf
+        sSFX 37                                        ;; 0e:501f $f9 $25
+        sSET_ROOM_TILE $6c, 3, 0                       ;; 0e:5021 $b0 $6c $03 $00
+        sSET_ROOM_TILE $66, 4, 0                       ;; 0e:5025 $b0 $66 $04 $00
+        sSET_ROOM_TILE $6c, 5, 0                       ;; 0e:5029 $b0 $6c $05 $00
+        sSET_ROOM_TILE $66, 6, 0                       ;; 0e:502d $b0 $66 $06 $00
+        sSET_ROOM_TILE $6c, 7, 0                       ;; 0e:5031 $b0 $6c $07 $00
+        sSET_ROOM_TILE $6c, 3, 1                       ;; 0e:5035 $b0 $6c $03 $01
+        sSET_ROOM_TILE $65, 4, 1                       ;; 0e:5039 $b0 $65 $04 $01
+        sSET_ROOM_TILE $65, 5, 1                       ;; 0e:503d $b0 $65 $05 $01
+        sSET_ROOM_TILE $65, 6, 1                       ;; 0e:5041 $b0 $65 $06 $01
+        sSET_ROOM_TILE $6c, 7, 1                       ;; 0e:5045 $b0 $6c $07 $01
+        sSET_ROOM_TILE $6c, 3, 2                       ;; 0e:5049 $b0 $6c $03 $02
+        sSET_ROOM_TILE $72, 4, 2                       ;; 0e:504d $b0 $72 $04 $02
+        sSET_ROOM_TILE $6c, 5, 2                       ;; 0e:5051 $b0 $6c $05 $02
+        sSET_ROOM_TILE $72, 6, 2                       ;; 0e:5055 $b0 $72 $06 $02
+        sSET_ROOM_TILE $6c, 7, 2                       ;; 0e:5059 $b0 $6c $07 $02
+        sDELAY 5                                       ;; 0e:505d $f0 $05
+        sFLASH_SCREEN                                  ;; 0e:505f $bf
+        sSFX 37                                        ;; 0e:5060 $f9 $25
+        sSET_ROOM_TILE $6c, 3, 0                       ;; 0e:5062 $b0 $6c $03 $00
+        sSET_ROOM_TILE $65, 4, 0                       ;; 0e:5066 $b0 $65 $04 $00
+        sSET_ROOM_TILE $65, 5, 0                       ;; 0e:506a $b0 $65 $05 $00
+        sSET_ROOM_TILE $65, 6, 0                       ;; 0e:506e $b0 $65 $06 $00
+        sSET_ROOM_TILE $6c, 7, 0                       ;; 0e:5072 $b0 $6c $07 $00
+        sSET_ROOM_TILE $6c, 3, 1                       ;; 0e:5076 $b0 $6c $03 $01
+        sSET_ROOM_TILE $72, 4, 1                       ;; 0e:507a $b0 $72 $04 $01
+        sSET_ROOM_TILE $6c, 5, 1                       ;; 0e:507e $b0 $6c $05 $01
+        sSET_ROOM_TILE $72, 6, 1                       ;; 0e:5082 $b0 $72 $06 $01
+        sSET_ROOM_TILE $6c, 7, 1                       ;; 0e:5086 $b0 $6c $07 $01
+        sSET_ROOM_TILE $09, 3, 2                       ;; 0e:508a $b0 $09 $03 $02
+        sSET_ROOM_TILE $55, 4, 2                       ;; 0e:508e $b0 $55 $04 $02
+        sSET_ROOM_TILE $55, 5, 2                       ;; 0e:5092 $b0 $55 $05 $02
+        sSET_ROOM_TILE $55, 6, 2                       ;; 0e:5096 $b0 $55 $06 $02
+        sSET_ROOM_TILE $0a, 7, 2                       ;; 0e:509a $b0 $0a $07 $02
+        sDELAY 5                                       ;; 0e:509e $f0 $05
+        sFLASH_SCREEN                                  ;; 0e:50a0 $bf
+        sSFX 37                                        ;; 0e:50a1 $f9 $25
+        sCALL script_0544                              ;; 0e:50a3 $02 $77 $b1
+        sSET_FLAG wScriptFlags02.2                     ;; 0e:50a6 $da $12
+      sELSE                                            ;; 0e:50a8 $01 $03
+        sCALL script_0547                              ;; 0e:50aa $02 $79 $86
+      sENDIF                                           ;; 0e:50ad
+    sENDIF                                             ;; 0e:50ad
+    sIF_FLAG wScriptFlags0B.5                          ;; 0e:50ad $08 $5d $00 $03
+      sCALL script_0475                                ;; 0e:50b1 $02 $5b $01
+    sENDIF                                             ;; 0e:50b4
     sEND                                               ;; 0e:50b4 $00
 
 script_03e9:
-    sIF_FLAG_JR wScriptFlags0D.7, .jr_0e_50bb          ;; 0e:50b5 $08 $ef $00 $02
-    sSET_MUSIC 25                                      ;; 0e:50b9 $f8 $19
-.jr_0e_50bb:
+    sIF_FLAG !wScriptFlags0D.7                         ;; 0e:50b5 $08 $ef $00 $02
+      sSET_MUSIC 25                                    ;; 0e:50b9 $f8 $19
+    sENDIF                                             ;; 0e:50bb
     sEND                                               ;; 0e:50bb $00
 
 script_03ea:
@@ -2392,12 +2395,12 @@ script_03ee:
     sEND                                               ;; 0e:50c4 $00
 
 script_03ef:
-    sIF_FLAG_JR !wScriptFlags.1, .jr_0e_50cc           ;; 0e:50c5 $08 $01 $00 $03
-    sUNK_EF $00, $03                                   ;; 0e:50c9 $ef $00 $03
-.jr_0e_50cc:
-    sIF_FLAG_JR !wScriptFlags.2, .jr_0e_50d3           ;; 0e:50cc $08 $02 $00 $03
-    sUNK_EF $00, $03                                   ;; 0e:50d0 $ef $00 $03
-.jr_0e_50d3:
+    sIF_FLAG wScriptFlags.1                            ;; 0e:50c5 $08 $01 $00 $03
+      sUNK_EF $00, $03                                 ;; 0e:50c9 $ef $00 $03
+    sENDIF                                             ;; 0e:50cc
+    sIF_FLAG wScriptFlags.2                            ;; 0e:50cc $08 $02 $00 $03
+      sUNK_EF $00, $03                                 ;; 0e:50d0 $ef $00 $03
+    sENDIF                                             ;; 0e:50d3
     sEND                                               ;; 0e:50d3 $00
 
 script_03f0:
@@ -2440,11 +2443,11 @@ script_03f9:
     sEND                                               ;; 0e:50fe $00
 
 script_03fa:
-    sIF_FLAG_JR !wScriptFlags02.6, .jr_0e_510f         ;; 0e:50ff $08 $16 $00 $0c
-    sSET_ROOM_TILE $5c, 6, 7                           ;; 0e:5103 $b0 $5c $06 $07
-    sSET_ROOM_TILE $5c, 6, 6                           ;; 0e:5107 $b0 $5c $06 $06
-    sSET_ROOM_TILE $5c, 6, 5                           ;; 0e:510b $b0 $5c $06 $05
-.jr_0e_510f:
+    sIF_FLAG wScriptFlags02.6                          ;; 0e:50ff $08 $16 $00 $0c
+      sSET_ROOM_TILE $5c, 6, 7                         ;; 0e:5103 $b0 $5c $06 $07
+      sSET_ROOM_TILE $5c, 6, 6                         ;; 0e:5107 $b0 $5c $06 $06
+      sSET_ROOM_TILE $5c, 6, 5                         ;; 0e:510b $b0 $5c $06 $05
+    sENDIF                                             ;; 0e:510f
     sEND                                               ;; 0e:510f $00
 
 script_03fb:
@@ -2465,91 +2468,90 @@ script_03ff:
     sEND                                               ;; 0e:5118 $00
 
 script_0400:
-    sIF_0B_JR $c9, .jr_0e_5132                         ;; 0e:5119 $0b $c9 $00 $15
-    sSET_PLAYER_POSITION 8, 3                          ;; 0e:511d $8a $08 $03
-    sSET_PLAYER_DIRECTION_RIGHT                        ;; 0e:5120 $86
-    sDELAY 10                                          ;; 0e:5121 $f0 $0a
-    sFADE_TO_BLACK                                     ;; 0e:5123 $bd
-    sDELAY 40                                          ;; 0e:5124 $f0 $28
-    sIF_FLAG_JR wScriptFlags01.5, .jr_0e_512f          ;; 0e:5126 $08 $8d $00 $05
-    sCALL script_0548                                  ;; 0e:512a $02 $79 $c3
-    sJR  .jr_0e_5130                                   ;; 0e:512d $01 $01
-.jr_0e_512f:
-    sFADE_TO_NORMAL                                    ;; 0e:512f $bc
-.jr_0e_5130:
-    sFULL_HP                                           ;; 0e:5130 $c0
-    sFULL_MANA                                         ;; 0e:5131 $c1
-.jr_0e_5132:
+    sIF_0B $c9                                         ;; 0e:5119 $0b $c9 $00 $15
+      sSET_PLAYER_POSITION 8, 3                        ;; 0e:511d $8a $08 $03
+      sSET_PLAYER_DIRECTION_RIGHT                      ;; 0e:5120 $86
+      sDELAY 10                                        ;; 0e:5121 $f0 $0a
+      sFADE_TO_BLACK                                   ;; 0e:5123 $bd
+      sDELAY 40                                        ;; 0e:5124 $f0 $28
+      sIF_FLAG !wScriptFlags01.5                       ;; 0e:5126 $08 $8d $00 $05
+        sCALL script_0548                              ;; 0e:512a $02 $79 $c3
+      sELSE                                            ;; 0e:512d $01 $01
+        sFADE_TO_NORMAL                                ;; 0e:512f $bc
+      sENDIF                                           ;; 0e:5130
+      sFULL_HP                                         ;; 0e:5130 $c0
+      sFULL_MANA                                       ;; 0e:5131 $c1
+    sENDIF                                             ;; 0e:5132
     sEND                                               ;; 0e:5132 $00
 
 script_0401:
-    sIF_0B_JR $c9, .jr_0e_51ed                         ;; 0e:5133 $0b $c9 $00 $b6
-    sSFX 12                                            ;; 0e:5137 $f9 $0c
-    sSET_PLAYER_DIRECTION_LEFT                         ;; 0e:5139 $87
-    sSET_FAST_MOVEMENT                                 ;; 0e:513a $88
-    sPLAYER_JUMP 112                                   ;; 0e:513b $8b $70
-    sCLEAR_FAST_MOVEMENT                               ;; 0e:513d $89
-    sSFX 9                                             ;; 0e:513e $f9 $09
-    sLOOP 6, 5                                         ;; 0e:5140 $03 $06 $05
-      sSET_PLAYER_DIRECTION_UP                         ;; 0e:5143 $84
-      sSET_PLAYER_DIRECTION_RIGHT                      ;; 0e:5144 $86
-      sSET_PLAYER_DIRECTION_DOWN                       ;; 0e:5145 $85
-      sSET_PLAYER_DIRECTION_LEFT                       ;; 0e:5146 $87
-    sEND                                               ;; 0e:5147 $00
-    sSET_PLAYER_POSITION 20, 0                         ;; 0e:5148 $8a $14 $00
-    sDELAY 60                                          ;; 0e:514b $f0 $3c
-    sFADE_TO_BLACK                                     ;; 0e:514d $bd
-    sSET_PLAYER_LAYDOWN_SPRITE                         ;; 0e:514e $a6
-    sLOAD_ROOM_INSTANT 11, $17, 8, 10                  ;; 0e:514f $f3 $0b $17 $08 $0a
-    sIF_FLAG_JR wScriptFlags04.6, .jr_0e_51e6          ;; 0e:5154 $08 $a6 $00 $8e
-    sSET_NPC_TYPES 48                                  ;; 0e:5158 $fc $30
-    sSPAWN_NPC 0                                       ;; 0e:515a $fd $00
-    sDELAY 60                                          ;; 0e:515c $f0 $3c
-    sFADE_TO_NORMAL                                    ;; 0e:515e $bc
-    sDELAY 60                                          ;; 0e:515f $f0 $3c
-    sMSG                                               ;; 0e:5161 $04
-      db "<10>Watts:Wow!?\n Are you okay?\n<BOY>:_ Ouch!_ Oh_<12>"
+    sIF_0B $c9                                         ;; 0e:5133 $0b $c9 $00 $b6
+      sSFX 12                                          ;; 0e:5137 $f9 $0c
+      sSET_PLAYER_DIRECTION_LEFT                       ;; 0e:5139 $87
+      sSET_FAST_MOVEMENT                               ;; 0e:513a $88
+      sPLAYER_JUMP 112                                 ;; 0e:513b $8b $70
+      sCLEAR_FAST_MOVEMENT                             ;; 0e:513d $89
+      sSFX 9                                           ;; 0e:513e $f9 $09
+      sLOOP 6, 5                                       ;; 0e:5140 $03 $06 $05
+        sSET_PLAYER_DIRECTION_UP                       ;; 0e:5143 $84
+        sSET_PLAYER_DIRECTION_RIGHT                    ;; 0e:5144 $86
+        sSET_PLAYER_DIRECTION_DOWN                     ;; 0e:5145 $85
+        sSET_PLAYER_DIRECTION_LEFT                     ;; 0e:5146 $87
+      sEND                                             ;; 0e:5147 $00
+      sSET_PLAYER_POSITION 20, 0                       ;; 0e:5148 $8a $14 $00
+      sDELAY 60                                        ;; 0e:514b $f0 $3c
+      sFADE_TO_BLACK                                   ;; 0e:514d $bd
+      sSET_PLAYER_LAYDOWN_SPRITE                       ;; 0e:514e $a6
+      sLOAD_ROOM_INSTANT 11, $17, 8, 10                ;; 0e:514f $f3 $0b $17 $08 $0a
+      sIF_FLAG !wScriptFlags04.6                       ;; 0e:5154 $08 $a6 $00 $8e
+        sSET_NPC_TYPES 48                              ;; 0e:5158 $fc $30
+        sSPAWN_NPC 0                                   ;; 0e:515a $fd $00
+        sDELAY 60                                      ;; 0e:515c $f0 $3c
+        sFADE_TO_NORMAL                                ;; 0e:515e $bc
+        sDELAY 60                                      ;; 0e:515f $f0 $3c
+        sMSG                                           ;; 0e:5161 $04
+          db "<10>Watts:Wow!?\n Are you okay?\n<BOY>:_ Ouch!_ Oh_<12>"
       db "<11>", $00 ;; 0e:5162
-    sNPC_1_STEP_FORWARD                                ;; 0e:5189 $10
-    sNPC_1_STEP_FORWARD                                ;; 0e:518a $10
-    sSET_NPC_1_DIRECTION_LEFT                          ;; 0e:518b $17
-    sLOOP 4, 2                                         ;; 0e:518c $03 $04 $02
-      sNPC_1_STEP_FORWARD                              ;; 0e:518f $10
-    sEND                                               ;; 0e:5190 $00
-    sDELAY 30                                          ;; 0e:5191 $f0 $1e
-    sSET_PLAYER_NORMAL_SPRITE                          ;; 0e:5193 $a4
-    sSET_PLAYER_DIRECTION_RIGHT                        ;; 0e:5194 $86
-    sDELAY 60                                          ;; 0e:5195 $f0 $3c
-    sMSG                                               ;; 0e:5197 $04
-      db "<10><BOY>:Thanks.\n Do you know this\n cave well?<12>"
+        sNPC_1_STEP_FORWARD                            ;; 0e:5189 $10
+        sNPC_1_STEP_FORWARD                            ;; 0e:518a $10
+        sSET_NPC_1_DIRECTION_LEFT                      ;; 0e:518b $17
+        sLOOP 4, 2                                     ;; 0e:518c $03 $04 $02
+          sNPC_1_STEP_FORWARD                          ;; 0e:518f $10
+        sEND                                           ;; 0e:5190 $00
+        sDELAY 30                                      ;; 0e:5191 $f0 $1e
+        sSET_PLAYER_NORMAL_SPRITE                      ;; 0e:5193 $a4
+        sSET_PLAYER_DIRECTION_RIGHT                    ;; 0e:5194 $86
+        sDELAY 60                                      ;; 0e:5195 $f0 $3c
+        sMSG                                           ;; 0e:5197 $04
+          db "<10><BOY>:Thanks.\n Do you know this\n cave well?<12>"
       db "<1b>Watts:Looking for\n Silver? Let's go\n together, then!<12>"
       db "<11>", $00 ;; 0e:5198
-    sSET_NPC_TYPES 78                                  ;; 0e:51db $fc $4e
-    sDEL_NPC_1                                         ;; 0e:51dd $18
-    sSPAWN_NPC 2                                       ;; 0e:51de $fd $02
-    sGIVE_FOLLOWER 3                                   ;; 0e:51e0 $9c $03
-    sSET_FLAG wScriptFlags0A.3                         ;; 0e:51e2 $da $53
-    sJR  .jr_0e_51ed                                   ;; 0e:51e4 $01 $07
-.jr_0e_51e6:
-    sFADE_TO_NORMAL                                    ;; 0e:51e6 $bc
-    sDELAY 30                                          ;; 0e:51e7 $f0 $1e
-    sSET_PLAYER_NORMAL_SPRITE                          ;; 0e:51e9 $a4
-    sSET_PLAYER_DIRECTION_RIGHT                        ;; 0e:51ea $86
-    sDELAY 60                                          ;; 0e:51eb $f0 $3c
-.jr_0e_51ed:
+        sSET_NPC_TYPES 78                              ;; 0e:51db $fc $4e
+        sDEL_NPC_1                                     ;; 0e:51dd $18
+        sSPAWN_NPC 2                                   ;; 0e:51de $fd $02
+        sGIVE_FOLLOWER 3                               ;; 0e:51e0 $9c $03
+        sSET_FLAG wScriptFlags0A.3                     ;; 0e:51e2 $da $53
+      sELSE                                            ;; 0e:51e4 $01 $07
+        sFADE_TO_NORMAL                                ;; 0e:51e6 $bc
+        sDELAY 30                                      ;; 0e:51e7 $f0 $1e
+        sSET_PLAYER_NORMAL_SPRITE                      ;; 0e:51e9 $a4
+        sSET_PLAYER_DIRECTION_RIGHT                    ;; 0e:51ea $86
+        sDELAY 60                                      ;; 0e:51eb $f0 $3c
+      sENDIF                                           ;; 0e:51ed
+    sENDIF                                             ;; 0e:51ed
     sEND                                               ;; 0e:51ed $00
 
 script_0402:
     sEND                                               ;; 0e:51ee $00
 
 script_0403:
-    sIF_0B_JR $c9, .jr_0e_51f9                         ;; 0e:51ef $0b $c9 $00 $06
-    sFADE_TO_BLACK                                     ;; 0e:51f3 $bd
-    sFULL_HP                                           ;; 0e:51f4 $c0
-    sFULL_MANA                                         ;; 0e:51f5 $c1
-    sDELAY 60                                          ;; 0e:51f6 $f0 $3c
-    sFADE_TO_NORMAL                                    ;; 0e:51f8 $bc
-.jr_0e_51f9:
+    sIF_0B $c9                                         ;; 0e:51ef $0b $c9 $00 $06
+      sFADE_TO_BLACK                                   ;; 0e:51f3 $bd
+      sFULL_HP                                         ;; 0e:51f4 $c0
+      sFULL_MANA                                       ;; 0e:51f5 $c1
+      sDELAY 60                                        ;; 0e:51f6 $f0 $3c
+      sFADE_TO_NORMAL                                  ;; 0e:51f8 $bc
+    sENDIF                                             ;; 0e:51f9
     sEND                                               ;; 0e:51f9 $00
 
 script_0404:
@@ -2569,19 +2571,19 @@ script_0405:
     sEND                                               ;; 0e:5211 $00
 
 script_0406:
-    sIF_0B_JR $c9, .jr_0e_5220                         ;; 0e:5212 $0b $c9 $00 $0a
-    sSFX 24                                            ;; 0e:5216 $f9 $18
-    sSET_ROOM_TILE $46, 4, 6                           ;; 0e:5218 $b0 $46 $04 $06
-    sSET_ROOM_TILE $46, 5, 6                           ;; 0e:521c $b0 $46 $05 $06
-.jr_0e_5220:
+    sIF_0B $c9                                         ;; 0e:5212 $0b $c9 $00 $0a
+      sSFX 24                                          ;; 0e:5216 $f9 $18
+      sSET_ROOM_TILE $46, 4, 6                         ;; 0e:5218 $b0 $46 $04 $06
+      sSET_ROOM_TILE $46, 5, 6                         ;; 0e:521c $b0 $46 $05 $06
+    sENDIF                                             ;; 0e:5220
     sEND                                               ;; 0e:5220 $00
 
 script_0407:
-    sIF_0B_JR $c9, .jr_0e_522f                         ;; 0e:5221 $0b $c9 $00 $0a
-    sSFX 24                                            ;; 0e:5225 $f9 $18
-    sSET_ROOM_TILE $00, 4, 6                           ;; 0e:5227 $b0 $00 $04 $06
-    sSET_ROOM_TILE $00, 5, 6                           ;; 0e:522b $b0 $00 $05 $06
-.jr_0e_522f:
+    sIF_0B $c9                                         ;; 0e:5221 $0b $c9 $00 $0a
+      sSFX 24                                          ;; 0e:5225 $f9 $18
+      sSET_ROOM_TILE $00, 4, 6                         ;; 0e:5227 $b0 $00 $04 $06
+      sSET_ROOM_TILE $00, 5, 6                         ;; 0e:522b $b0 $00 $05 $06
+    sENDIF                                             ;; 0e:522f
     sEND                                               ;; 0e:522f $00
 
 script_0408:
@@ -2591,83 +2593,84 @@ script_0409:
     sEND                                               ;; 0e:5231 $00
 
 script_040a:
-    sIF_0B_JR $c9, .jr_0e_529e                         ;; 0e:5232 $0b $c9 $00 $68
-    sIF_NOT_EQUIPED_JR $4f, .jr_0e_529e                ;; 0e:5236 $09 $4f $00 $64
-    sSET_MUSIC 0                                       ;; 0e:523a $f8 $00
-    sMSG                                               ;; 0e:523c $04
-      db "<10>   Rusty sword\n  released it's\n  mystic power__<12>"
+    sIF_0B $c9                                         ;; 0e:5232 $0b $c9 $00 $68
+      sIF_EQUIPED $4f                                  ;; 0e:5236 $09 $4f $00 $64
+        sSET_MUSIC 0                                   ;; 0e:523a $f8 $00
+        sMSG                                           ;; 0e:523c $04
+          db "<10>   Rusty sword\n  released it's\n  mystic power__<12>"
       db "<11>", $00 ;; 0e:523d
-    sDELAY 120                                         ;; 0e:5260 $f0 $78
-    sSFX 37                                            ;; 0e:5262 $f9 $25
-    sSHAKE_SCREEN                                      ;; 0e:5264 $fb
-    sSFX 37                                            ;; 0e:5265 $f9 $25
-    sSHAKE_SCREEN                                      ;; 0e:5267 $fb
-    sSET_FLAG wScriptFlags04.2                         ;; 0e:5268 $da $22
-    sLOAD_ROOM 0, $70, 14, 11                          ;; 0e:526a $f4 $00 $70 $0e $0b
-    sSFX 37                                            ;; 0e:526f $f9 $25
-    sSHAKE_SCREEN                                      ;; 0e:5271 $fb
-    sMSG                                               ;; 0e:5272 $04
-      db "<10>Tower of Dime will\n appear somewhere\n in this desert!!<12>"
+        sDELAY 120                                     ;; 0e:5260 $f0 $78
+        sSFX 37                                        ;; 0e:5262 $f9 $25
+        sSHAKE_SCREEN                                  ;; 0e:5264 $fb
+        sSFX 37                                        ;; 0e:5265 $f9 $25
+        sSHAKE_SCREEN                                  ;; 0e:5267 $fb
+        sSET_FLAG wScriptFlags04.2                     ;; 0e:5268 $da $22
+        sLOAD_ROOM 0, $70, 14, 11                      ;; 0e:526a $f4 $00 $70 $0e $0b
+        sSFX 37                                        ;; 0e:526f $f9 $25
+        sSHAKE_SCREEN                                  ;; 0e:5271 $fb
+        sMSG                                           ;; 0e:5272 $04
+          db "<10>Tower of Dime will\n appear somewhere\n in this desert!!<12>"
       db "<11>", $00 ;; 0e:5273
-    sSET_MUSIC 25                                      ;; 0e:529a $f8 $19
-    sUNK_AB                                            ;; 0e:529c $ab
-    sRUN_ROOM_SCRIPT                                   ;; 0e:529d $ec
-.jr_0e_529e:
+        sSET_MUSIC 25                                  ;; 0e:529a $f8 $19
+        sUNK_AB                                        ;; 0e:529c $ab
+        sRUN_ROOM_SCRIPT                               ;; 0e:529d $ec
+      sENDIF                                           ;; 0e:529e
+    sENDIF                                             ;; 0e:529e
     sEND                                               ;; 0e:529e $00
 
 script_040b:
     sEND                                               ;; 0e:529f $00
 
 script_040c:
-    sIF_0B_JR $c9, .jr_0e_52bd                         ;; 0e:52a0 $0b $c9 $00 $19
-    sIF_FLAG_JR !wScriptFlags0F.0, !wScriptFlags0F.1, !wScriptFlags0F.2, wScriptFlags0F.3, .jr_0e_52b5 ;; 0e:52a4 $08 $78 $79 $7a $fb $00 $0a
-    sCREATE_EFFECT $10, $0e, $02                       ;; 0e:52ab $ba $10 $0e $02
-    sSET_ROOM_TILE $4c, 7, 1                           ;; 0e:52af $b0 $4c $07 $01
-    sJR  .jr_0e_52bd                                   ;; 0e:52b3 $01 $08
-.jr_0e_52b5:
-    sCLEAR_FLAG wScriptFlags0F.0                       ;; 0e:52b5 $db $78
-    sCLEAR_FLAG wScriptFlags0F.1                       ;; 0e:52b7 $db $79
-    sCLEAR_FLAG wScriptFlags0F.2                       ;; 0e:52b9 $db $7a
-    sCLEAR_FLAG wScriptFlags0F.3                       ;; 0e:52bb $db $7b
-.jr_0e_52bd:
+    sIF_0B $c9                                         ;; 0e:52a0 $0b $c9 $00 $19
+      sIF_FLAG wScriptFlags0F.0, wScriptFlags0F.1, wScriptFlags0F.2, !wScriptFlags0F.3 ;; 0e:52a4 $08 $78 $79 $7a $fb $00 $0a
+        sCREATE_EFFECT $10, $0e, $02                   ;; 0e:52ab $ba $10 $0e $02
+        sSET_ROOM_TILE $4c, 7, 1                       ;; 0e:52af $b0 $4c $07 $01
+      sELSE                                            ;; 0e:52b3 $01 $08
+        sCLEAR_FLAG wScriptFlags0F.0                   ;; 0e:52b5 $db $78
+        sCLEAR_FLAG wScriptFlags0F.1                   ;; 0e:52b7 $db $79
+        sCLEAR_FLAG wScriptFlags0F.2                   ;; 0e:52b9 $db $7a
+        sCLEAR_FLAG wScriptFlags0F.3                   ;; 0e:52bb $db $7b
+      sENDIF                                           ;; 0e:52bd
+    sENDIF                                             ;; 0e:52bd
     sEND                                               ;; 0e:52bd $00
 
 script_040d:
-    sIF_0B_JR $c9, .jr_0e_52e0                         ;; 0e:52be $0b $c9 $00 $1e
-    sIF_FLAG_JR wScriptFlags0F.0, wScriptFlags0F.1, wScriptFlags0F.2, wScriptFlags0F.3, .jr_0e_52cd ;; 0e:52c2 $08 $f8 $f9 $fa $fb $00 $04
-    sSET_FLAG wScriptFlags0F.0                         ;; 0e:52c9 $da $78
-    sJR  .jr_0e_52e0                                   ;; 0e:52cb $01 $13
-.jr_0e_52cd:
-    sIF_FLAG_JR !wScriptFlags0F.0, !wScriptFlags0F.1, wScriptFlags0F.2, wScriptFlags0F.3, .jr_0e_52d8 ;; 0e:52cd $08 $78 $79 $fa $fb $00 $04
-    sSET_FLAG wScriptFlags0F.2                         ;; 0e:52d4 $da $7a
-    sJR  .jr_0e_52e0                                   ;; 0e:52d6 $01 $08
-.jr_0e_52d8:
-    sCLEAR_FLAG wScriptFlags0F.0                       ;; 0e:52d8 $db $78
-    sCLEAR_FLAG wScriptFlags0F.1                       ;; 0e:52da $db $79
-    sCLEAR_FLAG wScriptFlags0F.2                       ;; 0e:52dc $db $7a
-    sCLEAR_FLAG wScriptFlags0F.3                       ;; 0e:52de $db $7b
-.jr_0e_52e0:
+    sIF_0B $c9                                         ;; 0e:52be $0b $c9 $00 $1e
+      sIF_FLAG !wScriptFlags0F.0, !wScriptFlags0F.1, !wScriptFlags0F.2, !wScriptFlags0F.3 ;; 0e:52c2 $08 $f8 $f9 $fa $fb $00 $04
+        sSET_FLAG wScriptFlags0F.0                     ;; 0e:52c9 $da $78
+      sELSE                                            ;; 0e:52cb $01 $13
+        sIF_FLAG wScriptFlags0F.0, wScriptFlags0F.1, !wScriptFlags0F.2, !wScriptFlags0F.3 ;; 0e:52cd $08 $78 $79 $fa $fb $00 $04
+          sSET_FLAG wScriptFlags0F.2                   ;; 0e:52d4 $da $7a
+        sELSE                                          ;; 0e:52d6 $01 $08
+          sCLEAR_FLAG wScriptFlags0F.0                 ;; 0e:52d8 $db $78
+          sCLEAR_FLAG wScriptFlags0F.1                 ;; 0e:52da $db $79
+          sCLEAR_FLAG wScriptFlags0F.2                 ;; 0e:52dc $db $7a
+          sCLEAR_FLAG wScriptFlags0F.3                 ;; 0e:52de $db $7b
+        sENDIF                                         ;; 0e:52e0
+      sENDIF                                           ;; 0e:52e0
+    sENDIF                                             ;; 0e:52e0
     sEND                                               ;; 0e:52e0 $00
 
 script_040e:
-    sIF_0B_JR $c9, .jr_0e_52f8                         ;; 0e:52e1 $0b $c9 $00 $13
-    sIF_FLAG_JR !wScriptFlags0F.0, wScriptFlags0F.1, wScriptFlags0F.2, wScriptFlags0F.3, .jr_0e_52f0 ;; 0e:52e5 $08 $78 $f9 $fa $fb $00 $04
-    sSET_FLAG wScriptFlags0F.1                         ;; 0e:52ec $da $79
-    sJR  .jr_0e_52f8                                   ;; 0e:52ee $01 $08
-.jr_0e_52f0:
-    sCLEAR_FLAG wScriptFlags0F.0                       ;; 0e:52f0 $db $78
-    sCLEAR_FLAG wScriptFlags0F.1                       ;; 0e:52f2 $db $79
-    sCLEAR_FLAG wScriptFlags0F.2                       ;; 0e:52f4 $db $7a
-    sCLEAR_FLAG wScriptFlags0F.3                       ;; 0e:52f6 $db $7b
-.jr_0e_52f8:
+    sIF_0B $c9                                         ;; 0e:52e1 $0b $c9 $00 $13
+      sIF_FLAG wScriptFlags0F.0, !wScriptFlags0F.1, !wScriptFlags0F.2, !wScriptFlags0F.3 ;; 0e:52e5 $08 $78 $f9 $fa $fb $00 $04
+        sSET_FLAG wScriptFlags0F.1                     ;; 0e:52ec $da $79
+      sELSE                                            ;; 0e:52ee $01 $08
+        sCLEAR_FLAG wScriptFlags0F.0                   ;; 0e:52f0 $db $78
+        sCLEAR_FLAG wScriptFlags0F.1                   ;; 0e:52f2 $db $79
+        sCLEAR_FLAG wScriptFlags0F.2                   ;; 0e:52f4 $db $7a
+        sCLEAR_FLAG wScriptFlags0F.3                   ;; 0e:52f6 $db $7b
+      sENDIF                                           ;; 0e:52f8
+    sENDIF                                             ;; 0e:52f8
     sEND                                               ;; 0e:52f8 $00
 
 script_0410:
-    sIF_FLAG_JR wScriptFlags08.1, .jr_0e_5304          ;; 0e:52f9 $08 $c1 $00 $07
-    sSET_NPC_TYPES 89                                  ;; 0e:52fd $fc $59
-    sSPAWN_NPC 0                                       ;; 0e:52ff $fd $00
-    sUNK_C9 $04, $2e                                   ;; 0e:5301 $c9 $04 $2e
-.jr_0e_5304:
+    sIF_FLAG !wScriptFlags08.1                         ;; 0e:52f9 $08 $c1 $00 $07
+      sSET_NPC_TYPES 89                                ;; 0e:52fd $fc $59
+      sSPAWN_NPC 0                                     ;; 0e:52ff $fd $00
+      sUNK_C9 $04, $2e                                 ;; 0e:5301 $c9 $04 $2e
+    sENDIF                                             ;; 0e:5304
     sEND                                               ;; 0e:5304 $00
 
 script_0411:
@@ -2677,11 +2680,11 @@ script_0412:
     sEND                                               ;; 0e:5306 $00
 
 script_0413:
-    sIF_FLAG_JR wScriptFlags08.0, .jr_0e_5312          ;; 0e:5307 $08 $c0 $00 $07
-    sSET_NPC_TYPES 89                                  ;; 0e:530b $fc $59
-    sSPAWN_NPC 0                                       ;; 0e:530d $fd $00
-    sUNK_C9 $04, $2f                                   ;; 0e:530f $c9 $04 $2f
-.jr_0e_5312:
+    sIF_FLAG !wScriptFlags08.0                         ;; 0e:5307 $08 $c0 $00 $07
+      sSET_NPC_TYPES 89                                ;; 0e:530b $fc $59
+      sSPAWN_NPC 0                                     ;; 0e:530d $fd $00
+      sUNK_C9 $04, $2f                                 ;; 0e:530f $c9 $04 $2f
+    sENDIF                                             ;; 0e:5312
     sEND                                               ;; 0e:5312 $00
 
 script_0414:
@@ -2691,11 +2694,11 @@ script_0415:
     sEND                                               ;; 0e:5314 $00
 
 script_0416:
-    sIF_FLAG_JR wScriptFlags09.4, .jr_0e_5320          ;; 0e:5315 $08 $cc $00 $07
-    sSET_NPC_TYPES 89                                  ;; 0e:5319 $fc $59
-    sSPAWN_NPC 0                                       ;; 0e:531b $fd $00
-    sUNK_C9 $04, $30                                   ;; 0e:531d $c9 $04 $30
-.jr_0e_5320:
+    sIF_FLAG !wScriptFlags09.4                         ;; 0e:5315 $08 $cc $00 $07
+      sSET_NPC_TYPES 89                                ;; 0e:5319 $fc $59
+      sSPAWN_NPC 0                                     ;; 0e:531b $fd $00
+      sUNK_C9 $04, $30                                 ;; 0e:531d $c9 $04 $30
+    sENDIF                                             ;; 0e:5320
     sEND                                               ;; 0e:5320 $00
 
 script_0417:
@@ -2705,11 +2708,11 @@ script_0418:
     sEND                                               ;; 0e:5322 $00
 
 script_0419:
-    sIF_FLAG_JR wScriptFlags08.3, .jr_0e_532e          ;; 0e:5323 $08 $c3 $00 $07
-    sSET_NPC_TYPES 89                                  ;; 0e:5327 $fc $59
-    sSPAWN_NPC 0                                       ;; 0e:5329 $fd $00
-    sUNK_C9 $04, $31                                   ;; 0e:532b $c9 $04 $31
-.jr_0e_532e:
+    sIF_FLAG !wScriptFlags08.3                         ;; 0e:5323 $08 $c3 $00 $07
+      sSET_NPC_TYPES 89                                ;; 0e:5327 $fc $59
+      sSPAWN_NPC 0                                     ;; 0e:5329 $fd $00
+      sUNK_C9 $04, $31                                 ;; 0e:532b $c9 $04 $31
+    sENDIF                                             ;; 0e:532e
     sEND                                               ;; 0e:532e $00
 
 script_041a:
@@ -2719,11 +2722,11 @@ script_041b:
     sEND                                               ;; 0e:5330 $00
 
 script_041c:
-    sIF_FLAG_JR wScriptFlags08.4, .jr_0e_533c          ;; 0e:5331 $08 $c4 $00 $07
-    sSET_NPC_TYPES 89                                  ;; 0e:5335 $fc $59
-    sSPAWN_NPC 0                                       ;; 0e:5337 $fd $00
-    sUNK_C9 $04, $32                                   ;; 0e:5339 $c9 $04 $32
-.jr_0e_533c:
+    sIF_FLAG !wScriptFlags08.4                         ;; 0e:5331 $08 $c4 $00 $07
+      sSET_NPC_TYPES 89                                ;; 0e:5335 $fc $59
+      sSPAWN_NPC 0                                     ;; 0e:5337 $fd $00
+      sUNK_C9 $04, $32                                 ;; 0e:5339 $c9 $04 $32
+    sENDIF                                             ;; 0e:533c
     sEND                                               ;; 0e:533c $00
 
 script_041d:
@@ -2733,10 +2736,10 @@ script_041e:
     sEND                                               ;; 0e:533e $00
 
 script_041f:
-    sIF_FLAG_JR wScriptFlags.7, .jr_0e_5347            ;; 0e:533f $08 $87 $00 $04
-    sSET_NPC_TYPES 26                                  ;; 0e:5343 $fc $1a
-    sSPAWN_NPC 1                                       ;; 0e:5345 $fd $01
-.jr_0e_5347:
+    sIF_FLAG !wScriptFlags.7                           ;; 0e:533f $08 $87 $00 $04
+      sSET_NPC_TYPES 26                                ;; 0e:5343 $fc $1a
+      sSPAWN_NPC 1                                     ;; 0e:5345 $fd $01
+    sENDIF                                             ;; 0e:5347
     sEND                                               ;; 0e:5347 $00
 
 script_0420:
@@ -2749,11 +2752,11 @@ script_0421:
     sEND                                               ;; 0e:5350 $00
 
 script_0422:
-    sIF_FLAG_JR wScriptFlags08.6, .jr_0e_535c          ;; 0e:5351 $08 $c6 $00 $07
-    sSET_NPC_TYPES 89                                  ;; 0e:5355 $fc $59
-    sSPAWN_NPC 0                                       ;; 0e:5357 $fd $00
-    sUNK_C9 $04, $34                                   ;; 0e:5359 $c9 $04 $34
-.jr_0e_535c:
+    sIF_FLAG !wScriptFlags08.6                         ;; 0e:5351 $08 $c6 $00 $07
+      sSET_NPC_TYPES 89                                ;; 0e:5355 $fc $59
+      sSPAWN_NPC 0                                     ;; 0e:5357 $fd $00
+      sUNK_C9 $04, $34                                 ;; 0e:5359 $c9 $04 $34
+    sENDIF                                             ;; 0e:535c
     sEND                                               ;; 0e:535c $00
 
 script_0423:
@@ -2763,11 +2766,11 @@ script_0424:
     sEND                                               ;; 0e:535e $00
 
 script_0425:
-    sIF_FLAG_JR wScriptFlags09.2, .jr_0e_536a          ;; 0e:535f $08 $ca $00 $07
-    sSET_NPC_TYPES 89                                  ;; 0e:5363 $fc $59
-    sSPAWN_NPC 0                                       ;; 0e:5365 $fd $00
-    sUNK_C9 $04, $66                                   ;; 0e:5367 $c9 $04 $66
-.jr_0e_536a:
+    sIF_FLAG !wScriptFlags09.2                         ;; 0e:535f $08 $ca $00 $07
+      sSET_NPC_TYPES 89                                ;; 0e:5363 $fc $59
+      sSPAWN_NPC 0                                     ;; 0e:5365 $fd $00
+      sUNK_C9 $04, $66                                 ;; 0e:5367 $c9 $04 $66
+    sENDIF                                             ;; 0e:536a
     sEND                                               ;; 0e:536a $00
 
 script_0426:
@@ -2777,10 +2780,10 @@ script_0427:
     sEND                                               ;; 0e:536c $00
 
 script_0428:
-    sIF_FLAG_JR wScriptFlags.7, .jr_0e_5375            ;; 0e:536d $08 $87 $00 $04
-    sSET_NPC_TYPES 28                                  ;; 0e:5371 $fc $1c
-    sSPAWN_NPC 2                                       ;; 0e:5373 $fd $02
-.jr_0e_5375:
+    sIF_FLAG !wScriptFlags.7                           ;; 0e:536d $08 $87 $00 $04
+      sSET_NPC_TYPES 28                                ;; 0e:5371 $fc $1c
+      sSPAWN_NPC 2                                     ;; 0e:5373 $fd $02
+    sENDIF                                             ;; 0e:5375
     sEND                                               ;; 0e:5375 $00
 
 script_0429:
@@ -2806,62 +2809,62 @@ script_042d:
 
 script_042e:
     sGIVE_EQUIPMENT 2                                  ;; 0e:5389 $d8 $02
-    sIF_FLAG_JR wScriptFlags.5, .jr_0e_53a2            ;; 0e:538b $08 $85 $00 $13
-    sSFX 15                                            ;; 0e:538f $f9 $0f
-    sUNK_AF                                            ;; 0e:5391 $af
-    sMSG                                               ;; 0e:5392 $04
-      db "<10>Found <a6>Sickle!<12>"
+    sIF_FLAG !wScriptFlags.5                           ;; 0e:538b $08 $85 $00 $13
+      sSFX 15                                          ;; 0e:538f $f9 $0f
+      sUNK_AF                                          ;; 0e:5391 $af
+      sMSG                                             ;; 0e:5392 $04
+        db "<10>Found <a6>Sickle!<12>"
       db "<11>", $00 ;; 0e:5393
-    sSET_FLAG wScriptFlags08.1                         ;; 0e:53a0 $da $41
-.jr_0e_53a2:
+      sSET_FLAG wScriptFlags08.1                       ;; 0e:53a0 $da $41
+    sENDIF                                             ;; 0e:53a2
     sEND                                               ;; 0e:53a2 $00
 
 script_042f:
     sGIVE_EQUIPMENT 3                                  ;; 0e:53a3 $d8 $03
-    sIF_FLAG_JR wScriptFlags.5, .jr_0e_53bb            ;; 0e:53a5 $08 $85 $00 $12
-    sSFX 15                                            ;; 0e:53a9 $f9 $0f
-    sUNK_AF                                            ;; 0e:53ab $af
-    sMSG                                               ;; 0e:53ac $04
-      db "<10>Found <a8>Chain!<12>"
+    sIF_FLAG !wScriptFlags.5                           ;; 0e:53a5 $08 $85 $00 $12
+      sSFX 15                                          ;; 0e:53a9 $f9 $0f
+      sUNK_AF                                          ;; 0e:53ab $af
+      sMSG                                             ;; 0e:53ac $04
+        db "<10>Found <a8>Chain!<12>"
       db "<11>", $00 ;; 0e:53ad
-    sSET_FLAG wScriptFlags08.0                         ;; 0e:53b9 $da $40
-.jr_0e_53bb:
+      sSET_FLAG wScriptFlags08.0                       ;; 0e:53b9 $da $40
+    sENDIF                                             ;; 0e:53bb
     sEND                                               ;; 0e:53bb $00
 
 script_0430:
     sGIVE_EQUIPMENT 9                                  ;; 0e:53bc $d8 $09
-    sIF_FLAG_JR wScriptFlags.5, .jr_0e_53d6            ;; 0e:53be $08 $85 $00 $14
-    sSFX 15                                            ;; 0e:53c2 $f9 $0f
-    sUNK_AF                                            ;; 0e:53c4 $af
-    sMSG                                               ;; 0e:53c5 $04
-      db "<10>Found <a4>Dragon!<12>"
+    sIF_FLAG !wScriptFlags.5                           ;; 0e:53be $08 $85 $00 $14
+      sSFX 15                                          ;; 0e:53c2 $f9 $0f
+      sUNK_AF                                          ;; 0e:53c4 $af
+      sMSG                                             ;; 0e:53c5 $04
+        db "<10>Found <a4>Dragon!<12>"
       db "<11>", $00 ;; 0e:53c6
-    sSET_FLAG wScriptFlags09.4                         ;; 0e:53d4 $da $4c
-.jr_0e_53d6:
+      sSET_FLAG wScriptFlags09.4                       ;; 0e:53d4 $da $4c
+    sENDIF                                             ;; 0e:53d6
     sEND                                               ;; 0e:53d6 $00
 
 script_0431:
     sGIVE_EQUIPMENT 32                                 ;; 0e:53d7 $d8 $20
-    sIF_FLAG_JR wScriptFlags.5, .jr_0e_53f1            ;; 0e:53d9 $08 $85 $00 $14
-    sSFX 15                                            ;; 0e:53dd $f9 $0f
-    sUNK_AF                                            ;; 0e:53df $af
-    sMSG                                               ;; 0e:53e0 $04
-      db "<10>Found <a0>Dragon!<12>"
+    sIF_FLAG !wScriptFlags.5                           ;; 0e:53d9 $08 $85 $00 $14
+      sSFX 15                                          ;; 0e:53dd $f9 $0f
+      sUNK_AF                                          ;; 0e:53df $af
+      sMSG                                             ;; 0e:53e0 $04
+        db "<10>Found <a0>Dragon!<12>"
       db "<11>", $00 ;; 0e:53e1
-    sSET_FLAG wScriptFlags08.3                         ;; 0e:53ef $da $43
-.jr_0e_53f1:
+      sSET_FLAG wScriptFlags08.3                       ;; 0e:53ef $da $43
+    sENDIF                                             ;; 0e:53f1
     sEND                                               ;; 0e:53f1 $00
 
 script_0432:
     sGIVE_EQUIPMENT 22                                 ;; 0e:53f2 $d8 $16
-    sIF_FLAG_JR wScriptFlags.5, .jr_0e_540c            ;; 0e:53f4 $08 $85 $00 $14
-    sSFX 15                                            ;; 0e:53f8 $f9 $0f
-    sUNK_AF                                            ;; 0e:53fa $af
-    sMSG                                               ;; 0e:53fb $04
-      db "<10>Found <a2>Dragon!<12>"
+    sIF_FLAG !wScriptFlags.5                           ;; 0e:53f4 $08 $85 $00 $14
+      sSFX 15                                          ;; 0e:53f8 $f9 $0f
+      sUNK_AF                                          ;; 0e:53fa $af
+      sMSG                                             ;; 0e:53fb $04
+        db "<10>Found <a2>Dragon!<12>"
       db "<11>", $00 ;; 0e:53fc
-    sSET_FLAG wScriptFlags08.4                         ;; 0e:540a $da $44
-.jr_0e_540c:
+      sSET_FLAG wScriptFlags08.4                       ;; 0e:540a $da $44
+    sENDIF                                             ;; 0e:540c
     sEND                                               ;; 0e:540c $00
 
 script_0433:
@@ -2869,14 +2872,14 @@ script_0433:
 
 script_0434:
     sGIVE_EQUIPMENT 15                                 ;; 0e:540e $d8 $0f
-    sIF_FLAG_JR wScriptFlags.5, .jr_0e_5427            ;; 0e:5410 $08 $85 $00 $13
-    sSFX 15                                            ;; 0e:5414 $f9 $0f
-    sUNK_AF                                            ;; 0e:5416 $af
-    sMSG                                               ;; 0e:5417 $04
-      db "<10>Found <a4>????!<12>"
+    sIF_FLAG !wScriptFlags.5                           ;; 0e:5410 $08 $85 $00 $13
+      sSFX 15                                          ;; 0e:5414 $f9 $0f
+      sUNK_AF                                          ;; 0e:5416 $af
+      sMSG                                             ;; 0e:5417 $04
+        db "<10>Found <a4>????!<12>"
       db "<11>", $00 ;; 0e:5418
-    sSET_FLAG wScriptFlags08.6                         ;; 0e:5425 $da $46
-.jr_0e_5427:
+      sSET_FLAG wScriptFlags08.6                       ;; 0e:5425 $da $46
+    sENDIF                                             ;; 0e:5427
     sEND                                               ;; 0e:5427 $00
 
 script_0435:
@@ -2919,102 +2922,101 @@ script_0436:
 
 script_0437:
     sGIVE_EQUIPMENT 13                                 ;; 0e:54ba $d8 $0d
-    sIF_FLAG_JR wScriptFlags.5, .jr_0e_54fe            ;; 0e:54bc $08 $85 $00 $3e
-    sSFX 15                                            ;; 0e:54c0 $f9 $0f
-    sUNK_AF                                            ;; 0e:54c2 $af
-    sMSG                                               ;; 0e:54c3 $04
-      db "<10>Received <a4>Rusty!<12>"
+    sIF_FLAG !wScriptFlags.5                           ;; 0e:54bc $08 $85 $00 $3e
+      sSFX 15                                          ;; 0e:54c0 $f9 $0f
+      sUNK_AF                                          ;; 0e:54c2 $af
+      sMSG                                             ;; 0e:54c3 $04
+        db "<10>Received <a4>Rusty!<12>"
       db "<1b><BOY>:Rusty sword?\n Is this the\n Excalibur_?<12>"
       db "<11>", $00 ;; 0e:54c4
-    sSET_FLAG wScriptFlags07.3                         ;; 0e:54f3 $da $3b
-    sLOAD_ROOM 0, $f0, 8, 9                            ;; 0e:54f5 $f4 $00 $f0 $08 $09
-    sSET_MUSIC 25                                      ;; 0e:54fa $f8 $19
-    sUNK_AB                                            ;; 0e:54fc $ab
-    sRUN_ROOM_SCRIPT                                   ;; 0e:54fd $ec
-.jr_0e_54fe:
+      sSET_FLAG wScriptFlags07.3                       ;; 0e:54f3 $da $3b
+      sLOAD_ROOM 0, $f0, 8, 9                          ;; 0e:54f5 $f4 $00 $f0 $08 $09
+      sSET_MUSIC 25                                    ;; 0e:54fa $f8 $19
+      sUNK_AB                                          ;; 0e:54fc $ab
+      sRUN_ROOM_SCRIPT                                 ;; 0e:54fd $ec
+    sENDIF                                             ;; 0e:54fe
     sEND                                               ;; 0e:54fe $00
 
 script_0438:
     sGIVE_ITEM 20                                      ;; 0e:54ff $d4 $14
-    sIF_FLAG_JR wScriptFlags.5, .jr_0e_5516            ;; 0e:5501 $08 $85 $00 $11
-    sSFX 15                                            ;; 0e:5505 $f9 $0f
-    sUNK_AF                                            ;; 0e:5507 $af
-    sMSG                                               ;; 0e:5508 $04
-      db "<10>Found <ab>Candy.<12>"
+    sIF_FLAG !wScriptFlags.5                           ;; 0e:5501 $08 $85 $00 $11
+      sSFX 15                                          ;; 0e:5505 $f9 $0f
+      sUNK_AF                                          ;; 0e:5507 $af
+      sMSG                                             ;; 0e:5508 $04
+        db "<10>Found <ab>Candy.<12>"
       db "<11>", $00 ;; 0e:5509
-.jr_0e_5516:
+    sENDIF                                             ;; 0e:5516
     sEND                                               ;; 0e:5516 $00
 
 script_0439:
     sUNK_C7                                            ;; 0e:5517 $c7
-    sIF_FLAG_JR wScriptFlags0F.6, wScriptFlags0F.7, .jr_0e_5536 ;; 0e:5518 $08 $fe $ff $00 $19
-    sGIVE_ITEM 45                                      ;; 0e:551d $d4 $2d
-    sIF_FLAG_JR wScriptFlags.5, .jr_0e_5534            ;; 0e:551f $08 $85 $00 $11
-    sSFX 15                                            ;; 0e:5523 $f9 $0f
-    sUNK_AF                                            ;; 0e:5525 $af
-    sMSG                                               ;; 0e:5526 $04
-      db "<10>Found <ae>Wisdom.<12>"
+    sIF_FLAG !wScriptFlags0F.6, !wScriptFlags0F.7      ;; 0e:5518 $08 $fe $ff $00 $19
+      sGIVE_ITEM 45                                    ;; 0e:551d $d4 $2d
+      sIF_FLAG !wScriptFlags.5                         ;; 0e:551f $08 $85 $00 $11
+        sSFX 15                                        ;; 0e:5523 $f9 $0f
+        sUNK_AF                                        ;; 0e:5525 $af
+        sMSG                                           ;; 0e:5526 $04
+          db "<10>Found <ae>Wisdom.<12>"
       db "<11>", $00 ;; 0e:5527
-.jr_0e_5534:
-    sJR  .jr_0e_5539                                   ;; 0e:5534 $01 $03
-.jr_0e_5536:
-    sCALL script_0440                                  ;; 0e:5536 $02 $55 $af
-.jr_0e_5539:
+      sENDIF                                           ;; 0e:5534
+    sELSE                                              ;; 0e:5534 $01 $03
+      sCALL script_0440                                ;; 0e:5536 $02 $55 $af
+    sENDIF                                             ;; 0e:5539
     sEND                                               ;; 0e:5539 $00
 
 script_043a:
     sGIVE_ITEM 0                                       ;; 0e:553a $d4 $00
-    sIF_FLAG_JR wScriptFlags.5, .jr_0e_554f            ;; 0e:553c $08 $85 $00 $0f
-    sSFX 15                                            ;; 0e:5540 $f9 $0f
-    sUNK_AF                                            ;; 0e:5542 $af
-    sMSG                                               ;; 0e:5543 $04
-      db "<10>Found <a9>Cure.<12>"
+    sIF_FLAG !wScriptFlags.5                           ;; 0e:553c $08 $85 $00 $0f
+      sSFX 15                                          ;; 0e:5540 $f9 $0f
+      sUNK_AF                                          ;; 0e:5542 $af
+      sMSG                                             ;; 0e:5543 $04
+        db "<10>Found <a9>Cure.<12>"
       db "<11>", $00 ;; 0e:5544
-.jr_0e_554f:
+    sENDIF                                             ;; 0e:554f
     sEND                                               ;; 0e:554f $00
 
 script_043b:
     sGIVE_ITEM 6                                       ;; 0e:5550 $d4 $06
-    sIF_FLAG_JR wScriptFlags.5, .jr_0e_5568            ;; 0e:5552 $08 $85 $00 $12
-    sSFX 15                                            ;; 0e:5556 $f9 $0f
-    sUNK_AF                                            ;; 0e:5558 $af
-    sMSG                                               ;; 0e:5559 $04
-      db "<10>Found <a9>Eyedrop.<12>"
+    sIF_FLAG !wScriptFlags.5                           ;; 0e:5552 $08 $85 $00 $12
+      sSFX 15                                          ;; 0e:5556 $f9 $0f
+      sUNK_AF                                          ;; 0e:5558 $af
+      sMSG                                             ;; 0e:5559 $04
+        db "<10>Found <a9>Eyedrop.<12>"
       db "<11>", $00 ;; 0e:555a
-.jr_0e_5568:
+    sENDIF                                             ;; 0e:5568
     sEND                                               ;; 0e:5568 $00
 
 script_043c:
     sGIVE_ITEM 5                                       ;; 0e:5569 $d4 $05
-    sIF_FLAG_JR wScriptFlags.5, .jr_0e_557e            ;; 0e:556b $08 $85 $00 $0f
-    sSFX 15                                            ;; 0e:556f $f9 $0f
-    sUNK_AF                                            ;; 0e:5571 $af
-    sMSG                                               ;; 0e:5572 $04
-      db "<10>Found <a9>Pure.<12>"
+    sIF_FLAG !wScriptFlags.5                           ;; 0e:556b $08 $85 $00 $0f
+      sSFX 15                                          ;; 0e:556f $f9 $0f
+      sUNK_AF                                          ;; 0e:5571 $af
+      sMSG                                             ;; 0e:5572 $04
+        db "<10>Found <a9>Pure.<12>"
       db "<11>", $00 ;; 0e:5573
-.jr_0e_557e:
+    sENDIF                                             ;; 0e:557e
     sEND                                               ;; 0e:557e $00
 
 script_043d:
     sGIVE_ITEM 7                                       ;; 0e:557f $d4 $07
-    sIF_FLAG_JR wScriptFlags.5, .jr_0e_5595            ;; 0e:5581 $08 $85 $00 $10
-    sSFX 15                                            ;; 0e:5585 $f9 $0f
-    sUNK_AF                                            ;; 0e:5587 $af
-    sMSG                                               ;; 0e:5588 $04
-      db "<10>Found <a9>Soft.<12>"
+    sIF_FLAG !wScriptFlags.5                           ;; 0e:5581 $08 $85 $00 $10
+      sSFX 15                                          ;; 0e:5585 $f9 $0f
+      sUNK_AF                                          ;; 0e:5587 $af
+      sMSG                                             ;; 0e:5588 $04
+        db "<10>Found <a9>Soft.<12>"
       db "<11>", $00 ;; 0e:5589
-.jr_0e_5595:
+    sENDIF                                             ;; 0e:5595
     sEND                                               ;; 0e:5595 $00
 
 script_043e:
     sGIVE_ITEM 1                                       ;; 0e:5596 $d4 $01
-    sIF_FLAG_JR wScriptFlags.5, .jr_0e_55ad            ;; 0e:5598 $08 $85 $00 $11
-    sSFX 15                                            ;; 0e:559c $f9 $0f
-    sUNK_AF                                            ;; 0e:559e $af
-    sMSG                                               ;; 0e:559f $04
-      db "<10>Found <a9>X-Cure.<12>"
+    sIF_FLAG !wScriptFlags.5                           ;; 0e:5598 $08 $85 $00 $11
+      sSFX 15                                          ;; 0e:559c $f9 $0f
+      sUNK_AF                                          ;; 0e:559e $af
+      sMSG                                             ;; 0e:559f $04
+        db "<10>Found <a9>X-Cure.<12>"
       db "<11>", $00 ;; 0e:55a0
-.jr_0e_55ad:
+    sENDIF                                             ;; 0e:55ad
     sEND                                               ;; 0e:55ad $00
 
 script_043f:
@@ -3022,157 +3024,154 @@ script_043f:
 
 script_0440:
     sGIVE_ITEM 2                                       ;; 0e:55af $d4 $02
-    sIF_FLAG_JR wScriptFlags.5, .jr_0e_55c5            ;; 0e:55b1 $08 $85 $00 $10
-    sSFX 15                                            ;; 0e:55b5 $f9 $0f
-    sUNK_AF                                            ;; 0e:55b7 $af
-    sMSG                                               ;; 0e:55b8 $04
-      db "<10>Found <a9>Ether.<12>"
+    sIF_FLAG !wScriptFlags.5                           ;; 0e:55b1 $08 $85 $00 $10
+      sSFX 15                                          ;; 0e:55b5 $f9 $0f
+      sUNK_AF                                          ;; 0e:55b7 $af
+      sMSG                                             ;; 0e:55b8 $04
+        db "<10>Found <a9>Ether.<12>"
       db "<11>", $00 ;; 0e:55b9
-.jr_0e_55c5:
+    sENDIF                                             ;; 0e:55c5
     sEND                                               ;; 0e:55c5 $00
 
 script_0441:
     sGIVE_ITEM 24                                      ;; 0e:55c6 $d4 $18
-    sIF_FLAG_JR wScriptFlags.5, .jr_0e_55dd            ;; 0e:55c8 $08 $85 $00 $11
-    sSFX 15                                            ;; 0e:55cc $f9 $0f
-    sUNK_AF                                            ;; 0e:55ce $af
-    sMSG                                               ;; 0e:55cf $04
-      db "<10>Found <aa>Bronze!<12>"
+    sIF_FLAG !wScriptFlags.5                           ;; 0e:55c8 $08 $85 $00 $11
+      sSFX 15                                          ;; 0e:55cc $f9 $0f
+      sUNK_AF                                          ;; 0e:55ce $af
+      sMSG                                             ;; 0e:55cf $04
+        db "<10>Found <aa>Bronze!<12>"
       db "<11>", $00 ;; 0e:55d0
-.jr_0e_55dd:
+    sENDIF                                             ;; 0e:55dd
     sEND                                               ;; 0e:55dd $00
 
 script_0442:
     sGIVE_ITEM 22                                      ;; 0e:55de $d4 $16
-    sIF_FLAG_JR wScriptFlags.5, .jr_0e_55f4            ;; 0e:55e0 $08 $85 $00 $10
-    sSFX 15                                            ;; 0e:55e4 $f9 $0f
-    sUNK_AF                                            ;; 0e:55e6 $af
-    sMSG                                               ;; 0e:55e7 $04
-      db "<10>Found <aa>Key.<12>"
+    sIF_FLAG !wScriptFlags.5                           ;; 0e:55e0 $08 $85 $00 $10
+      sSFX 15                                          ;; 0e:55e4 $f9 $0f
+      sUNK_AF                                          ;; 0e:55e6 $af
+      sMSG                                             ;; 0e:55e7 $04
+        db "<10>Found <aa>Key.<12>"
       db "<11>", $00 ;; 0e:55e8
-.jr_0e_55f4:
+    sENDIF                                             ;; 0e:55f4
     sEND                                               ;; 0e:55f4 $00
 
 script_0443:
     sGIVE_ITEM 53                                      ;; 0e:55f5 $d4 $35
-    sIF_FLAG_JR wScriptFlags.5, .jr_0e_560e            ;; 0e:55f7 $08 $85 $00 $13
-    sSFX 15                                            ;; 0e:55fb $f9 $0f
-    sUNK_AF                                            ;; 0e:55fd $af
-    sMSG                                               ;; 0e:55fe $04
-      db "<10>Found <ac>Mattock.<12>"
+    sIF_FLAG !wScriptFlags.5                           ;; 0e:55f7 $08 $85 $00 $13
+      sSFX 15                                          ;; 0e:55fb $f9 $0f
+      sUNK_AF                                          ;; 0e:55fd $af
+      sMSG                                             ;; 0e:55fe $04
+        db "<10>Found <ac>Mattock.<12>"
       db "<11>", $00 ;; 0e:55ff
-    sSET_FLAG wScriptFlags09.5                         ;; 0e:560c $da $4d
-.jr_0e_560e:
+      sSET_FLAG wScriptFlags09.5                       ;; 0e:560c $da $4d
+    sENDIF                                             ;; 0e:560e
     sEND                                               ;; 0e:560e $00
 
 script_0444:
     sUNK_C7                                            ;; 0e:560f $c7
-    sIF_FLAG_JR wScriptFlags0F.6, .jr_0e_562c          ;; 0e:5610 $08 $fe $00 $18
-    sGIVE_ITEM 50                                      ;; 0e:5614 $d4 $32
-    sIF_FLAG_JR wScriptFlags.5, .jr_0e_562a            ;; 0e:5616 $08 $85 $00 $10
-    sSFX 15                                            ;; 0e:561a $f9 $0f
-    sUNK_AF                                            ;; 0e:561c $af
-    sMSG                                               ;; 0e:561d $04
-      db "<10>Found <ad>Fang!<12>"
+    sIF_FLAG !wScriptFlags0F.6                         ;; 0e:5610 $08 $fe $00 $18
+      sGIVE_ITEM 50                                    ;; 0e:5614 $d4 $32
+      sIF_FLAG !wScriptFlags.5                         ;; 0e:5616 $08 $85 $00 $10
+        sSFX 15                                        ;; 0e:561a $f9 $0f
+        sUNK_AF                                        ;; 0e:561c $af
+        sMSG                                           ;; 0e:561d $04
+          db "<10>Found <ad>Fang!<12>"
       db "<11>", $00 ;; 0e:561e
-.jr_0e_562a:
-    sJR  .jr_0e_563a                                   ;; 0e:562a $01 $0e
-.jr_0e_562c:
-    sSFX 15                                            ;; 0e:562c $f9 $0f
-    sUNK_AF                                            ;; 0e:562e $af
-    sMSG                                               ;; 0e:562f $04
-      db "<10>Empty.<12>"
-      db "<11>", $00         ;; 0e:5630
-.jr_0e_563a:
+      sENDIF                                           ;; 0e:562a
+    sELSE                                              ;; 0e:562a $01 $0e
+      sSFX 15                                          ;; 0e:562c $f9 $0f
+      sUNK_AF                                          ;; 0e:562e $af
+      sMSG                                             ;; 0e:562f $04
+        db "<10>Empty.<12>"
+      db "<11>", $00       ;; 0e:5630
+    sENDIF                                             ;; 0e:563a
     sEND                                               ;; 0e:563a $00
 
 script_0445:
     sUNK_C7                                            ;; 0e:563b $c7
-    sIF_FLAG_JR wScriptFlags0F.6, .jr_0e_5659          ;; 0e:563c $08 $fe $00 $19
-    sGIVE_ITEM 49                                      ;; 0e:5640 $d4 $31
-    sIF_FLAG_JR wScriptFlags.5, .jr_0e_5657            ;; 0e:5642 $08 $85 $00 $11
-    sSFX 15                                            ;; 0e:5646 $f9 $0f
-    sUNK_AF                                            ;; 0e:5648 $af
-    sMSG                                               ;; 0e:5649 $04
-      db "<10>Found <ad>Gold.<12>"
+    sIF_FLAG !wScriptFlags0F.6                         ;; 0e:563c $08 $fe $00 $19
+      sGIVE_ITEM 49                                    ;; 0e:5640 $d4 $31
+      sIF_FLAG !wScriptFlags.5                         ;; 0e:5642 $08 $85 $00 $11
+        sSFX 15                                        ;; 0e:5646 $f9 $0f
+        sUNK_AF                                        ;; 0e:5648 $af
+        sMSG                                           ;; 0e:5649 $04
+          db "<10>Found <ad>Gold.<12>"
       db "<11>", $00 ;; 0e:564a
-.jr_0e_5657:
-    sJR  .jr_0e_565c                                   ;; 0e:5657 $01 $03
-.jr_0e_5659:
-    sCALL script_0438                                  ;; 0e:5659 $02 $54 $ff
-.jr_0e_565c:
+      sENDIF                                           ;; 0e:5657
+    sELSE                                              ;; 0e:5657 $01 $03
+      sCALL script_0438                                ;; 0e:5659 $02 $54 $ff
+    sENDIF                                             ;; 0e:565c
     sEND                                               ;; 0e:565c $00
 
 script_0446:
     sGIVE_ITEM 4                                       ;; 0e:565d $d4 $04
-    sIF_FLAG_JR wScriptFlags.5, .jr_0e_5674            ;; 0e:565f $08 $85 $00 $11
-    sSFX 15                                            ;; 0e:5663 $f9 $0f
-    sUNK_AF                                            ;; 0e:5665 $af
-    sMSG                                               ;; 0e:5666 $04
-      db "<10>Found <a9>Elixir.<12>"
+    sIF_FLAG !wScriptFlags.5                           ;; 0e:565f $08 $85 $00 $11
+      sSFX 15                                          ;; 0e:5663 $f9 $0f
+      sUNK_AF                                          ;; 0e:5665 $af
+      sMSG                                             ;; 0e:5666 $04
+        db "<10>Found <a9>Elixir.<12>"
       db "<11>", $00 ;; 0e:5667
-.jr_0e_5674:
+    sENDIF                                             ;; 0e:5674
     sEND                                               ;; 0e:5674 $00
 
 script_0447:
     sGIVE_ITEM 41                                      ;; 0e:5675 $d4 $29
-    sIF_FLAG_JR wScriptFlags.5, .jr_0e_568d            ;; 0e:5677 $08 $85 $00 $12
-    sSFX 15                                            ;; 0e:567b $f9 $0f
-    sUNK_AF                                            ;; 0e:567d $af
-    sMSG                                               ;; 0e:567e $04
-      db "<10>Found <ae>Crystal.<12>"
+    sIF_FLAG !wScriptFlags.5                           ;; 0e:5677 $08 $85 $00 $12
+      sSFX 15                                          ;; 0e:567b $f9 $0f
+      sUNK_AF                                          ;; 0e:567d $af
+      sMSG                                             ;; 0e:567e $04
+        db "<10>Found <ae>Crystal.<12>"
       db "<11>", $00 ;; 0e:567f
-.jr_0e_568d:
+    sENDIF                                             ;; 0e:568d
     sEND                                               ;; 0e:568d $00
 
 script_0448:
     sGIVE_ITEM 8                                       ;; 0e:568e $d4 $08
-    sIF_FLAG_JR wScriptFlags.5, .jr_0e_56a5            ;; 0e:5690 $08 $85 $00 $11
-    sSFX 15                                            ;; 0e:5694 $f9 $0f
-    sUNK_AF                                            ;; 0e:5696 $af
-    sMSG                                               ;; 0e:5697 $04
-      db "<10>Found <a9>Moogle.<12>"
+    sIF_FLAG !wScriptFlags.5                           ;; 0e:5690 $08 $85 $00 $11
+      sSFX 15                                          ;; 0e:5694 $f9 $0f
+      sUNK_AF                                          ;; 0e:5696 $af
+      sMSG                                             ;; 0e:5697 $04
+        db "<10>Found <a9>Moogle.<12>"
       db "<11>", $00 ;; 0e:5698
-.jr_0e_56a5:
+    sENDIF                                             ;; 0e:56a5
     sEND                                               ;; 0e:56a5 $00
 
 script_0449:
     sGIVE_ITEM 3                                       ;; 0e:56a6 $d4 $03
-    sIF_FLAG_JR wScriptFlags.5, .jr_0e_56be            ;; 0e:56a8 $08 $85 $00 $12
-    sSFX 15                                            ;; 0e:56ac $f9 $0f
-    sUNK_AF                                            ;; 0e:56ae $af
-    sMSG                                               ;; 0e:56af $04
-      db "<10>Found <a9>X-Ether.<12>"
+    sIF_FLAG !wScriptFlags.5                           ;; 0e:56a8 $08 $85 $00 $12
+      sSFX 15                                          ;; 0e:56ac $f9 $0f
+      sUNK_AF                                          ;; 0e:56ae $af
+      sMSG                                             ;; 0e:56af $04
+        db "<10>Found <a9>X-Ether.<12>"
       db "<11>", $00 ;; 0e:56b0
-.jr_0e_56be:
+    sENDIF                                             ;; 0e:56be
     sEND                                               ;; 0e:56be $00
 
 script_044a:
     sGIVE_ITEM 9                                       ;; 0e:56bf $d4 $09
-    sIF_FLAG_JR wScriptFlags.5, .jr_0e_56d8            ;; 0e:56c1 $08 $85 $00 $13
-    sSFX 15                                            ;; 0e:56c5 $f9 $0f
-    sUNK_AF                                            ;; 0e:56c7 $af
-    sMSG                                               ;; 0e:56c8 $04
-      db "<10>Found <a9>Unicorn.<12>"
+    sIF_FLAG !wScriptFlags.5                           ;; 0e:56c1 $08 $85 $00 $13
+      sSFX 15                                          ;; 0e:56c5 $f9 $0f
+      sUNK_AF                                          ;; 0e:56c7 $af
+      sMSG                                             ;; 0e:56c8 $04
+        db "<10>Found <a9>Unicorn.<12>"
       db "<11>", $00 ;; 0e:56c9
-.jr_0e_56d8:
+    sENDIF                                             ;; 0e:56d8
     sEND                                               ;; 0e:56d8 $00
 
 script_044b:
     sUNK_C7                                            ;; 0e:56d9 $c7
-    sIF_FLAG_JR wScriptFlags0F.6, wScriptFlags0F.7, .jr_0e_56f7 ;; 0e:56da $08 $fe $ff $00 $18
-    sGIVE_ITEM 46                                      ;; 0e:56df $d4 $2e
-    sIF_FLAG_JR wScriptFlags.5, .jr_0e_56f5            ;; 0e:56e1 $08 $85 $00 $10
-    sSFX 15                                            ;; 0e:56e5 $f9 $0f
-    sUNK_AF                                            ;; 0e:56e7 $af
-    sMSG                                               ;; 0e:56e8 $04
-      db "<10>Found <ae>Will.<12>"
+    sIF_FLAG !wScriptFlags0F.6, !wScriptFlags0F.7      ;; 0e:56da $08 $fe $ff $00 $18
+      sGIVE_ITEM 46                                    ;; 0e:56df $d4 $2e
+      sIF_FLAG !wScriptFlags.5                         ;; 0e:56e1 $08 $85 $00 $10
+        sSFX 15                                        ;; 0e:56e5 $f9 $0f
+        sUNK_AF                                        ;; 0e:56e7 $af
+        sMSG                                           ;; 0e:56e8 $04
+          db "<10>Found <ae>Will.<12>"
       db "<11>", $00 ;; 0e:56e9
-.jr_0e_56f5:
-    sJR  .jr_0e_56fa                                   ;; 0e:56f5 $01 $03
-.jr_0e_56f7:
-    sCALL script_0440                                  ;; 0e:56f7 $02 $55 $af
-.jr_0e_56fa:
+      sENDIF                                           ;; 0e:56f5
+    sELSE                                              ;; 0e:56f5 $01 $03
+      sCALL script_0440                                ;; 0e:56f7 $02 $55 $af
+    sENDIF                                             ;; 0e:56fa
     sEND                                               ;; 0e:56fa $00
 
 script_044c:
@@ -3181,71 +3180,71 @@ script_044c:
 
 script_044d:
     sUNK_C7                                            ;; 0e:56ff $c7
-    sIF_FLAG_JR wScriptFlags0F.6, !wScriptFlags0F.7, .jr_0e_571e ;; 0e:5700 $08 $fe $7f $00 $19
-    sGIVE_EQUIPMENT 33                                 ;; 0e:5705 $d8 $21
-    sIF_FLAG_JR wScriptFlags.5, .jr_0e_571c            ;; 0e:5707 $08 $85 $00 $11
-    sSFX 15                                            ;; 0e:570b $f9 $0f
-    sUNK_AF                                            ;; 0e:570d $af
-    sMSG                                               ;; 0e:570e $04
-      db "<10>Found <a0>Aegis!<12>"
+    sIF_FLAG !wScriptFlags0F.6, wScriptFlags0F.7       ;; 0e:5700 $08 $fe $7f $00 $19
+      sGIVE_EQUIPMENT 33                               ;; 0e:5705 $d8 $21
+      sIF_FLAG !wScriptFlags.5                         ;; 0e:5707 $08 $85 $00 $11
+        sSFX 15                                        ;; 0e:570b $f9 $0f
+        sUNK_AF                                        ;; 0e:570d $af
+        sMSG                                           ;; 0e:570e $04
+          db "<10>Found <a0>Aegis!<12>"
       db "<11>", $00 ;; 0e:570f
-.jr_0e_571c:
-    sJR  .jr_0e_5737                                   ;; 0e:571c $01 $19
-.jr_0e_571e:
-    sGIVE_ITEM 9                                       ;; 0e:571e $d4 $09
-    sIF_FLAG_JR wScriptFlags.5, .jr_0e_5737            ;; 0e:5720 $08 $85 $00 $13
-    sSFX 15                                            ;; 0e:5724 $f9 $0f
-    sUNK_AF                                            ;; 0e:5726 $af
-    sMSG                                               ;; 0e:5727 $04
-      db "<10>Found <a9>Unicorn.<12>"
+      sENDIF                                           ;; 0e:571c
+    sELSE                                              ;; 0e:571c $01 $19
+      sGIVE_ITEM 9                                     ;; 0e:571e $d4 $09
+      sIF_FLAG !wScriptFlags.5                         ;; 0e:5720 $08 $85 $00 $13
+        sSFX 15                                        ;; 0e:5724 $f9 $0f
+        sUNK_AF                                        ;; 0e:5726 $af
+        sMSG                                           ;; 0e:5727 $04
+          db "<10>Found <a9>Unicorn.<12>"
       db "<11>", $00 ;; 0e:5728
-.jr_0e_5737:
+      sENDIF                                           ;; 0e:5737
+    sENDIF                                             ;; 0e:5737
     sEND                                               ;; 0e:5737 $00
 
 script_044e:
     sUNK_C7                                            ;; 0e:5738 $c7
-    sIF_FLAG_JR wScriptFlags0F.6, !wScriptFlags0F.7, .jr_0e_5758 ;; 0e:5739 $08 $fe $7f $00 $1a
-    sGIVE_EQUIPMENT 23                                 ;; 0e:573e $d8 $17
-    sIF_FLAG_JR wScriptFlags.5, .jr_0e_5756            ;; 0e:5740 $08 $85 $00 $12
-    sSFX 15                                            ;; 0e:5744 $f9 $0f
-    sUNK_AF                                            ;; 0e:5746 $af
-    sMSG                                               ;; 0e:5747 $04
-      db "<10>Found <a2>Samurai!<12>"
+    sIF_FLAG !wScriptFlags0F.6, wScriptFlags0F.7       ;; 0e:5739 $08 $fe $7f $00 $1a
+      sGIVE_EQUIPMENT 23                               ;; 0e:573e $d8 $17
+      sIF_FLAG !wScriptFlags.5                         ;; 0e:5740 $08 $85 $00 $12
+        sSFX 15                                        ;; 0e:5744 $f9 $0f
+        sUNK_AF                                        ;; 0e:5746 $af
+        sMSG                                           ;; 0e:5747 $04
+          db "<10>Found <a2>Samurai!<12>"
       db "<11>", $00 ;; 0e:5748
-.jr_0e_5756:
-    sJR  .jr_0e_576f                                   ;; 0e:5756 $01 $17
-.jr_0e_5758:
-    sGIVE_ITEM 4                                       ;; 0e:5758 $d4 $04
-    sIF_FLAG_JR wScriptFlags.5, .jr_0e_576f            ;; 0e:575a $08 $85 $00 $11
-    sSFX 15                                            ;; 0e:575e $f9 $0f
-    sUNK_AF                                            ;; 0e:5760 $af
-    sMSG                                               ;; 0e:5761 $04
-      db "<10>Found <a9>Elixir.<12>"
+      sENDIF                                           ;; 0e:5756
+    sELSE                                              ;; 0e:5756 $01 $17
+      sGIVE_ITEM 4                                     ;; 0e:5758 $d4 $04
+      sIF_FLAG !wScriptFlags.5                         ;; 0e:575a $08 $85 $00 $11
+        sSFX 15                                        ;; 0e:575e $f9 $0f
+        sUNK_AF                                        ;; 0e:5760 $af
+        sMSG                                           ;; 0e:5761 $04
+          db "<10>Found <a9>Elixir.<12>"
       db "<11>", $00 ;; 0e:5762
-.jr_0e_576f:
+      sENDIF                                           ;; 0e:576f
+    sENDIF                                             ;; 0e:576f
     sEND                                               ;; 0e:576f $00
 
 script_044f:
     sUNK_C7                                            ;; 0e:5770 $c7
-    sIF_FLAG_JR wScriptFlags0F.6, !wScriptFlags0F.7, .jr_0e_5790 ;; 0e:5771 $08 $fe $7f $00 $1a
-    sGIVE_EQUIPMENT 43                                 ;; 0e:5776 $d8 $2b
-    sIF_FLAG_JR wScriptFlags.5, .jr_0e_578e            ;; 0e:5778 $08 $85 $00 $12
-    sSFX 15                                            ;; 0e:577c $f9 $0f
-    sUNK_AF                                            ;; 0e:577e $af
-    sMSG                                               ;; 0e:577f $04
-      db "<10>Found <a1>Samurai!<12>"
+    sIF_FLAG !wScriptFlags0F.6, wScriptFlags0F.7       ;; 0e:5771 $08 $fe $7f $00 $1a
+      sGIVE_EQUIPMENT 43                               ;; 0e:5776 $d8 $2b
+      sIF_FLAG !wScriptFlags.5                         ;; 0e:5778 $08 $85 $00 $12
+        sSFX 15                                        ;; 0e:577c $f9 $0f
+        sUNK_AF                                        ;; 0e:577e $af
+        sMSG                                           ;; 0e:577f $04
+          db "<10>Found <a1>Samurai!<12>"
       db "<11>", $00 ;; 0e:5780
-.jr_0e_578e:
-    sJR  .jr_0e_57a8                                   ;; 0e:578e $01 $18
-.jr_0e_5790:
-    sGIVE_ITEM 3                                       ;; 0e:5790 $d4 $03
-    sIF_FLAG_JR wScriptFlags.5, .jr_0e_57a8            ;; 0e:5792 $08 $85 $00 $12
-    sSFX 15                                            ;; 0e:5796 $f9 $0f
-    sUNK_AF                                            ;; 0e:5798 $af
-    sMSG                                               ;; 0e:5799 $04
-      db "<10>Found <a9>X-Ether.<12>"
+      sENDIF                                           ;; 0e:578e
+    sELSE                                              ;; 0e:578e $01 $18
+      sGIVE_ITEM 3                                     ;; 0e:5790 $d4 $03
+      sIF_FLAG !wScriptFlags.5                         ;; 0e:5792 $08 $85 $00 $12
+        sSFX 15                                        ;; 0e:5796 $f9 $0f
+        sUNK_AF                                        ;; 0e:5798 $af
+        sMSG                                           ;; 0e:5799 $04
+          db "<10>Found <a9>X-Ether.<12>"
       db "<11>", $00 ;; 0e:579a
-.jr_0e_57a8:
+      sENDIF                                           ;; 0e:57a8
+    sENDIF                                             ;; 0e:57a8
     sEND                                               ;; 0e:57a8 $00
 
 script_0450:
@@ -3259,48 +3258,48 @@ script_0450:
 
 script_0451:
     sGIVE_ITEM 30                                      ;; 0e:57cf $d4 $1e
-    sIF_FLAG_JR wScriptFlags.5, .jr_0e_5837            ;; 0e:57d1 $08 $85 $00 $62
-    sUNK_AF                                            ;; 0e:57d5 $af
-    sMSG                                               ;; 0e:57d6 $04
-      db "<10>Found the Mirror!<12>"
+    sIF_FLAG !wScriptFlags.5                           ;; 0e:57d1 $08 $85 $00 $62
+      sUNK_AF                                          ;; 0e:57d5 $af
+      sMSG                                             ;; 0e:57d6 $04
+        db "<10>Found the Mirror!<12>"
       db "<11>", $00 ;; 0e:57d7
-    sSET_FLAG wScriptFlags09.0                         ;; 0e:57e5 $da $48
-    sIF_FLAG_JR !wScriptFlags0A.2, .jr_0e_582d         ;; 0e:57e7 $08 $52 $00 $42
-    sMSG                                               ;; 0e:57eb $04
-      db "<10>Man:Show it to the\n guy at Kett's!<12>"
+      sSET_FLAG wScriptFlags09.0                       ;; 0e:57e5 $da $48
+      sIF_FLAG wScriptFlags0A.2                        ;; 0e:57e7 $08 $52 $00 $42
+        sMSG                                           ;; 0e:57eb $04
+          db "<10>Man:Show it to the\n guy at Kett's!<12>"
       db "<1b> He'll scream and\n show his true \n colors!<12>"
       db "<1b> Bye!<12>"
       db "<11>", $00 ;; 0e:57ec
-    sFOLLOWER_DELETE                                   ;; 0e:582a $98
-    sCLEAR_FLAG wScriptFlags0A.2                       ;; 0e:582b $db $52
-.jr_0e_582d:
-    sDELAY 60                                          ;; 0e:582d $f0 $3c
-    sLOAD_ROOM 0, $e8, 10, 2                           ;; 0e:582f $f4 $00 $e8 $0a $02
-    sUNK_AB                                            ;; 0e:5834 $ab
-    sSET_MUSIC 20                                      ;; 0e:5835 $f8 $14
-.jr_0e_5837:
+        sFOLLOWER_DELETE                               ;; 0e:582a $98
+        sCLEAR_FLAG wScriptFlags0A.2                   ;; 0e:582b $db $52
+      sENDIF                                           ;; 0e:582d
+      sDELAY 60                                        ;; 0e:582d $f0 $3c
+      sLOAD_ROOM 0, $e8, 10, 2                         ;; 0e:582f $f4 $00 $e8 $0a $02
+      sUNK_AB                                          ;; 0e:5834 $ab
+      sSET_MUSIC 20                                    ;; 0e:5835 $f8 $14
+    sENDIF                                             ;; 0e:5837
     sEND                                               ;; 0e:5837 $00
 
 script_0452:
     sGIVE_ITEM 19                                      ;; 0e:5838 $d4 $13
-    sIF_FLAG_JR wScriptFlags.5, .jr_0e_584f            ;; 0e:583a $08 $85 $00 $11
-    sSFX 15                                            ;; 0e:583e $f9 $0f
-    sUNK_AF                                            ;; 0e:5840 $af
-    sMSG                                               ;; 0e:5841 $04
-      db "<10>Found <af>Thunder.<12>"
+    sIF_FLAG !wScriptFlags.5                           ;; 0e:583a $08 $85 $00 $11
+      sSFX 15                                          ;; 0e:583e $f9 $0f
+      sUNK_AF                                          ;; 0e:5840 $af
+      sMSG                                             ;; 0e:5841 $04
+        db "<10>Found <af>Thunder.<12>"
       db "<11>", $00 ;; 0e:5842
-.jr_0e_584f:
+    sENDIF                                             ;; 0e:584f
     sEND                                               ;; 0e:584f $00
 
 script_0453:
     sGIVE_ITEM 11                                      ;; 0e:5850 $d4 $0b
-    sIF_FLAG_JR wScriptFlags.5, .jr_0e_5867            ;; 0e:5852 $08 $85 $00 $11
-    sSFX 15                                            ;; 0e:5856 $f9 $0f
-    sUNK_AF                                            ;; 0e:5858 $af
-    sMSG                                               ;; 0e:5859 $04
-      db "<10>Found <af>Pillow.<12>"
+    sIF_FLAG !wScriptFlags.5                           ;; 0e:5852 $08 $85 $00 $11
+      sSFX 15                                          ;; 0e:5856 $f9 $0f
+      sUNK_AF                                          ;; 0e:5858 $af
+      sMSG                                             ;; 0e:5859 $04
+        db "<10>Found <af>Pillow.<12>"
       db "<11>", $00 ;; 0e:585a
-.jr_0e_5867:
+    sENDIF                                             ;; 0e:5867
     sEND                                               ;; 0e:5867 $00
 
 script_0454:
@@ -3308,191 +3307,191 @@ script_0454:
 
 script_0455:
     sGIVE_ITEM 54                                      ;; 0e:5869 $d4 $36
-    sIF_FLAG_JR wScriptFlags.5, .jr_0e_5880            ;; 0e:586b $08 $85 $00 $11
-    sSFX 15                                            ;; 0e:586f $f9 $0f
-    sUNK_AF                                            ;; 0e:5871 $af
-    sMSG                                               ;; 0e:5872 $04
-      db "<10>Found <ad>Ruby.<12>"
+    sIF_FLAG !wScriptFlags.5                           ;; 0e:586b $08 $85 $00 $11
+      sSFX 15                                          ;; 0e:586f $f9 $0f
+      sUNK_AF                                          ;; 0e:5871 $af
+      sMSG                                             ;; 0e:5872 $04
+        db "<10>Found <ad>Ruby.<12>"
       db "<11>", $00 ;; 0e:5873
-.jr_0e_5880:
+    sENDIF                                             ;; 0e:5880
     sEND                                               ;; 0e:5880 $00
 
 script_0456:
     sGIVE_ITEM 55                                      ;; 0e:5881 $d4 $37
-    sIF_FLAG_JR wScriptFlags.5, .jr_0e_5897            ;; 0e:5883 $08 $85 $00 $10
-    sSFX 15                                            ;; 0e:5887 $f9 $0f
-    sUNK_AF                                            ;; 0e:5889 $af
-    sMSG                                               ;; 0e:588a $04
-      db "<10>Found <ad>Opal.<12>"
+    sIF_FLAG !wScriptFlags.5                           ;; 0e:5883 $08 $85 $00 $10
+      sSFX 15                                          ;; 0e:5887 $f9 $0f
+      sUNK_AF                                          ;; 0e:5889 $af
+      sMSG                                             ;; 0e:588a $04
+        db "<10>Found <ad>Opal.<12>"
       db "<11>", $00 ;; 0e:588b
-.jr_0e_5897:
+    sENDIF                                             ;; 0e:5897
     sEND                                               ;; 0e:5897 $00
 
 script_0457:
     sGIVE_ITEM 14                                      ;; 0e:5898 $d4 $0e
-    sIF_FLAG_JR wScriptFlags.5, .jr_0e_58af            ;; 0e:589a $08 $85 $00 $11
-    sSFX 15                                            ;; 0e:589e $f9 $0f
-    sUNK_AF                                            ;; 0e:58a0 $af
-    sMSG                                               ;; 0e:58a1 $04
-      db "<10>Found <af>Flame.<12>"
+    sIF_FLAG !wScriptFlags.5                           ;; 0e:589a $08 $85 $00 $11
+      sSFX 15                                          ;; 0e:589e $f9 $0f
+      sUNK_AF                                          ;; 0e:58a0 $af
+      sMSG                                             ;; 0e:58a1 $04
+        db "<10>Found <af>Flame.<12>"
       db "<11>", $00 ;; 0e:58a2
-.jr_0e_58af:
+    sENDIF                                             ;; 0e:58af
     sEND                                               ;; 0e:58af $00
 
 script_0458:
     sGIVE_ITEM 16                                      ;; 0e:58b0 $d4 $10
-    sIF_FLAG_JR wScriptFlags.5, .jr_0e_58c9            ;; 0e:58b2 $08 $85 $00 $13
-    sSFX 15                                            ;; 0e:58b6 $f9 $0f
-    sUNK_AF                                            ;; 0e:58b8 $af
-    sMSG                                               ;; 0e:58b9 $04
-      db "<10>Found <af>Blizzard.<12>"
+    sIF_FLAG !wScriptFlags.5                           ;; 0e:58b2 $08 $85 $00 $13
+      sSFX 15                                          ;; 0e:58b6 $f9 $0f
+      sUNK_AF                                          ;; 0e:58b8 $af
+      sMSG                                             ;; 0e:58b9 $04
+        db "<10>Found <af>Blizzard.<12>"
       db "<11>", $00 ;; 0e:58ba
-.jr_0e_58c9:
+    sENDIF                                             ;; 0e:58c9
     sEND                                               ;; 0e:58c9 $00
 
 script_0459:
     sGIVE_ITEM 43                                      ;; 0e:58ca $d4 $2b
-    sIF_FLAG_JR wScriptFlags.5, .jr_0e_58e2            ;; 0e:58cc $08 $85 $00 $12
-    sSFX 15                                            ;; 0e:58d0 $f9 $0f
-    sUNK_AF                                            ;; 0e:58d2 $af
-    sMSG                                               ;; 0e:58d3 $04
-      db "<10>Found <ae>Nectar.<12>"
+    sIF_FLAG !wScriptFlags.5                           ;; 0e:58cc $08 $85 $00 $12
+      sSFX 15                                          ;; 0e:58d0 $f9 $0f
+      sUNK_AF                                          ;; 0e:58d2 $af
+      sMSG                                             ;; 0e:58d3 $04
+        db "<10>Found <ae>Nectar.<12>"
       db "<11>", $00 ;; 0e:58d4
-.jr_0e_58e2:
+    sENDIF                                             ;; 0e:58e2
     sEND                                               ;; 0e:58e2 $00
 
 script_045a:
     sGIVE_ITEM 44                                      ;; 0e:58e3 $d4 $2c
-    sIF_FLAG_JR wScriptFlags.5, .jr_0e_58fb            ;; 0e:58e5 $08 $85 $00 $12
-    sSFX 15                                            ;; 0e:58e9 $f9 $0f
-    sUNK_AF                                            ;; 0e:58eb $af
-    sMSG                                               ;; 0e:58ec $04
-      db "<10>Found <ae>Stamina.<12>"
+    sIF_FLAG !wScriptFlags.5                           ;; 0e:58e5 $08 $85 $00 $12
+      sSFX 15                                          ;; 0e:58e9 $f9 $0f
+      sUNK_AF                                          ;; 0e:58eb $af
+      sMSG                                             ;; 0e:58ec $04
+        db "<10>Found <ae>Stamina.<12>"
       db "<11>", $00 ;; 0e:58ed
-.jr_0e_58fb:
+    sENDIF                                             ;; 0e:58fb
     sEND                                               ;; 0e:58fb $00
 
 script_045b:
     sGIVE_ITEM 45                                      ;; 0e:58fc $d4 $2d
-    sIF_FLAG_JR wScriptFlags.5, .jr_0e_5913            ;; 0e:58fe $08 $85 $00 $11
-    sSFX 15                                            ;; 0e:5902 $f9 $0f
-    sUNK_AF                                            ;; 0e:5904 $af
-    sMSG                                               ;; 0e:5905 $04
-      db "<10>Found <ae>Wisdom.<12>"
+    sIF_FLAG !wScriptFlags.5                           ;; 0e:58fe $08 $85 $00 $11
+      sSFX 15                                          ;; 0e:5902 $f9 $0f
+      sUNK_AF                                          ;; 0e:5904 $af
+      sMSG                                             ;; 0e:5905 $04
+        db "<10>Found <ae>Wisdom.<12>"
       db "<11>", $00 ;; 0e:5906
-.jr_0e_5913:
+    sENDIF                                             ;; 0e:5913
     sEND                                               ;; 0e:5913 $00
 
 script_045c:
     sGIVE_ITEM 46                                      ;; 0e:5914 $d4 $2e
-    sIF_FLAG_JR wScriptFlags.5, .jr_0e_592a            ;; 0e:5916 $08 $85 $00 $10
-    sSFX 15                                            ;; 0e:591a $f9 $0f
-    sUNK_AF                                            ;; 0e:591c $af
-    sMSG                                               ;; 0e:591d $04
-      db "<10>Found <ae>Will.<12>"
+    sIF_FLAG !wScriptFlags.5                           ;; 0e:5916 $08 $85 $00 $10
+      sSFX 15                                          ;; 0e:591a $f9 $0f
+      sUNK_AF                                          ;; 0e:591c $af
+      sMSG                                             ;; 0e:591d $04
+        db "<10>Found <ae>Will.<12>"
       db "<11>", $00 ;; 0e:591e
-.jr_0e_592a:
+    sENDIF                                             ;; 0e:592a
     sEND                                               ;; 0e:592a $00
 
 script_045d:
     sGIVE_EQUIPMENT 7                                  ;; 0e:592b $d8 $07
-    sIF_FLAG_JR wScriptFlags.5, .jr_0e_5943            ;; 0e:592d $08 $85 $00 $12
-    sSFX 15                                            ;; 0e:5931 $f9 $0f
-    sUNK_AF                                            ;; 0e:5933 $af
-    sMSG                                               ;; 0e:5934 $04
-      db "<10>Found <a7>Star!<12>"
+    sIF_FLAG !wScriptFlags.5                           ;; 0e:592d $08 $85 $00 $12
+      sSFX 15                                          ;; 0e:5931 $f9 $0f
+      sUNK_AF                                          ;; 0e:5933 $af
+      sMSG                                             ;; 0e:5934 $04
+        db "<10>Found <a7>Star!<12>"
       db "<11>", $00 ;; 0e:5935
-    sSET_FLAG wScriptFlags09.6                         ;; 0e:5941 $da $4e
-.jr_0e_5943:
+      sSET_FLAG wScriptFlags09.6                       ;; 0e:5941 $da $4e
+    sENDIF                                             ;; 0e:5943
     sEND                                               ;; 0e:5943 $00
 
 script_045e:
     sGIVE_EQUIPMENT 28                                 ;; 0e:5944 $d8 $1c
-    sIF_FLAG_JR wScriptFlags.5, .jr_0e_595c            ;; 0e:5946 $08 $85 $00 $12
-    sSFX 15                                            ;; 0e:594a $f9 $0f
-    sUNK_AF                                            ;; 0e:594c $af
-    sMSG                                               ;; 0e:594d $04
-      db "<10>Found <a0>Iron.<12>"
+    sIF_FLAG !wScriptFlags.5                           ;; 0e:5946 $08 $85 $00 $12
+      sSFX 15                                          ;; 0e:594a $f9 $0f
+      sUNK_AF                                          ;; 0e:594c $af
+      sMSG                                             ;; 0e:594d $04
+        db "<10>Found <a0>Iron.<12>"
       db "<11>", $00 ;; 0e:594e
-    sSET_FLAG wScriptFlags09.7                         ;; 0e:595a $da $4f
-.jr_0e_595c:
+      sSET_FLAG wScriptFlags09.7                       ;; 0e:595a $da $4f
+    sENDIF                                             ;; 0e:595c
     sEND                                               ;; 0e:595c $00
 
 script_045f:
     sGIVE_EQUIPMENT 19                                 ;; 0e:595d $d8 $13
-    sIF_FLAG_JR wScriptFlags.5, .jr_0e_5976            ;; 0e:595f $08 $85 $00 $13
-    sSFX 15                                            ;; 0e:5963 $f9 $0f
-    sUNK_AF                                            ;; 0e:5965 $af
-    sMSG                                               ;; 0e:5966 $04
-      db "<10>Found <a2>Gold.<12>"
+    sIF_FLAG !wScriptFlags.5                           ;; 0e:595f $08 $85 $00 $13
+      sSFX 15                                          ;; 0e:5963 $f9 $0f
+      sUNK_AF                                          ;; 0e:5965 $af
+      sMSG                                             ;; 0e:5966 $04
+        db "<10>Found <a2>Gold.<12>"
       db "<11>", $00 ;; 0e:5967
-    sSET_FLAG wScriptFlags07.1                         ;; 0e:5974 $da $39
-.jr_0e_5976:
+      sSET_FLAG wScriptFlags07.1                       ;; 0e:5974 $da $39
+    sENDIF                                             ;; 0e:5976
     sEND                                               ;; 0e:5976 $00
 
 script_0460:
     sGIVE_EQUIPMENT 6                                  ;; 0e:5977 $d8 $06
-    sIF_FLAG_JR wScriptFlags.5, .jr_0e_598e            ;; 0e:5979 $08 $85 $00 $11
-    sSFX 15                                            ;; 0e:597d $f9 $0f
-    sUNK_AF                                            ;; 0e:597f $af
-    sMSG                                               ;; 0e:5980 $04
-      db "<10>Found <a5>Were.<12>"
+    sIF_FLAG !wScriptFlags.5                           ;; 0e:5979 $08 $85 $00 $11
+      sSFX 15                                          ;; 0e:597d $f9 $0f
+      sUNK_AF                                          ;; 0e:597f $af
+      sMSG                                             ;; 0e:5980 $04
+        db "<10>Found <a5>Were.<12>"
       db "<11>", $00 ;; 0e:5981
-    sSET_FLAG wScriptFlags07.7                         ;; 0e:598c $da $3f
-.jr_0e_598e:
+      sSET_FLAG wScriptFlags07.7                       ;; 0e:598c $da $3f
+    sENDIF                                             ;; 0e:598e
     sEND                                               ;; 0e:598e $00
 
 script_0461:
     sGIVE_EQUIPMENT 12                                 ;; 0e:598f $d8 $0c
-    sIF_FLAG_JR wScriptFlags.5, .jr_0e_59a7            ;; 0e:5991 $08 $85 $00 $12
-    sSFX 15                                            ;; 0e:5995 $f9 $0f
-    sUNK_AF                                            ;; 0e:5997 $af
-    sMSG                                               ;; 0e:5998 $04
-      db "<10>Found <a5>Zeus.<12>"
+    sIF_FLAG !wScriptFlags.5                           ;; 0e:5991 $08 $85 $00 $12
+      sSFX 15                                          ;; 0e:5995 $f9 $0f
+      sUNK_AF                                          ;; 0e:5997 $af
+      sMSG                                             ;; 0e:5998 $04
+        db "<10>Found <a5>Zeus.<12>"
       db "<11>", $00 ;; 0e:5999
-    sSET_FLAG wScriptFlags07.6                         ;; 0e:59a5 $da $3e
-.jr_0e_59a7:
+      sSET_FLAG wScriptFlags07.6                       ;; 0e:59a5 $da $3e
+    sENDIF                                             ;; 0e:59a7
     sEND                                               ;; 0e:59a7 $00
 
 script_0462:
     sGIVE_EQUIPMENT 33                                 ;; 0e:59a8 $d8 $21
-    sIF_FLAG_JR wScriptFlags.5, .jr_0e_59c1            ;; 0e:59aa $08 $85 $00 $13
-    sSFX 15                                            ;; 0e:59ae $f9 $0f
-    sUNK_AF                                            ;; 0e:59b0 $af
-    sMSG                                               ;; 0e:59b1 $04
-      db "<10>Found <a0>Aegis!<12>"
+    sIF_FLAG !wScriptFlags.5                           ;; 0e:59aa $08 $85 $00 $13
+      sSFX 15                                          ;; 0e:59ae $f9 $0f
+      sUNK_AF                                          ;; 0e:59b0 $af
+      sMSG                                             ;; 0e:59b1 $04
+        db "<10>Found <a0>Aegis!<12>"
       db "<11>", $00 ;; 0e:59b2
-    sSET_FLAG wScriptFlags07.5                         ;; 0e:59bf $da $3d
-.jr_0e_59c1:
+      sSET_FLAG wScriptFlags07.5                       ;; 0e:59bf $da $3d
+    sENDIF                                             ;; 0e:59c1
     sEND                                               ;; 0e:59c1 $00
 
 script_0463:
     sGIVE_EQUIPMENT 8                                  ;; 0e:59c2 $d8 $08
-    sIF_FLAG_JR wScriptFlags.5, .jr_0e_59db            ;; 0e:59c4 $08 $85 $00 $13
-    sSFX 15                                            ;; 0e:59c8 $f9 $0f
-    sUNK_AF                                            ;; 0e:59ca $af
-    sMSG                                               ;; 0e:59cb $04
-      db "<10>Found <a4>Blood.<12>"
+    sIF_FLAG !wScriptFlags.5                           ;; 0e:59c4 $08 $85 $00 $13
+      sSFX 15                                          ;; 0e:59c8 $f9 $0f
+      sUNK_AF                                          ;; 0e:59ca $af
+      sMSG                                             ;; 0e:59cb $04
+        db "<10>Found <a4>Blood.<12>"
       db "<11>", $00 ;; 0e:59cc
-    sSET_FLAG wScriptFlags07.4                         ;; 0e:59d9 $da $3c
-.jr_0e_59db:
+      sSET_FLAG wScriptFlags07.4                       ;; 0e:59d9 $da $3c
+    sENDIF                                             ;; 0e:59db
     sEND                                               ;; 0e:59db $00
 
 script_0464:
     sGIVE_EQUIPMENT 11                                 ;; 0e:59dc $d8 $0b
-    sIF_FLAG_JR wScriptFlags.5, .jr_0e_59fe            ;; 0e:59de $08 $85 $00 $1c
-    sSFX 15                                            ;; 0e:59e2 $f9 $0f
-    sUNK_AF                                            ;; 0e:59e4 $af
-    sMSG                                               ;; 0e:59e5 $04
-      db "<10>Found <a4>Ice.<12>"
+    sIF_FLAG !wScriptFlags.5                           ;; 0e:59de $08 $85 $00 $1c
+      sSFX 15                                          ;; 0e:59e2 $f9 $0f
+      sUNK_AF                                          ;; 0e:59e4 $af
+      sMSG                                             ;; 0e:59e5 $04
+        db "<10>Found <a4>Ice.<12>"
       db "<11>", $00 ;; 0e:59e6
-    sSET_FLAG wScriptFlags07.2                         ;; 0e:59f1 $da $3a
-    sDELAY 40                                          ;; 0e:59f3 $f0 $28
-    sLOAD_ROOM 0, $d3, 12, 6                           ;; 0e:59f5 $f4 $00 $d3 $0c $06
-    sSET_MUSIC 25                                      ;; 0e:59fa $f8 $19
-    sUNK_AB                                            ;; 0e:59fc $ab
-    sRUN_ROOM_SCRIPT                                   ;; 0e:59fd $ec
-.jr_0e_59fe:
+      sSET_FLAG wScriptFlags07.2                       ;; 0e:59f1 $da $3a
+      sDELAY 40                                        ;; 0e:59f3 $f0 $28
+      sLOAD_ROOM 0, $d3, 12, 6                         ;; 0e:59f5 $f4 $00 $d3 $0c $06
+      sSET_MUSIC 25                                    ;; 0e:59fa $f8 $19
+      sUNK_AB                                          ;; 0e:59fc $ab
+      sRUN_ROOM_SCRIPT                                 ;; 0e:59fd $ec
+    sENDIF                                             ;; 0e:59fe
     sEND                                               ;; 0e:59fe $00
 
 script_0465:
@@ -3510,50 +3509,47 @@ script_0466:
 
 script_0467:
     sGIVE_ITEM 10                                      ;; 0e:5a27 $d4 $0a
-    sIF_FLAG_JR wScriptFlags.5, .jr_0e_5a3e            ;; 0e:5a29 $08 $85 $00 $11
-    sSFX 15                                            ;; 0e:5a2d $f9 $0f
-    sUNK_AF                                            ;; 0e:5a2f $af
-    sMSG                                               ;; 0e:5a30 $04
-      db "<10>Found <af>Silence.<12>"
+    sIF_FLAG !wScriptFlags.5                           ;; 0e:5a29 $08 $85 $00 $11
+      sSFX 15                                          ;; 0e:5a2d $f9 $0f
+      sUNK_AF                                          ;; 0e:5a2f $af
+      sMSG                                             ;; 0e:5a30 $04
+        db "<10>Found <af>Silence.<12>"
       db "<11>", $00 ;; 0e:5a31
-.jr_0e_5a3e:
+    sENDIF                                             ;; 0e:5a3e
     sEND                                               ;; 0e:5a3e $00
 
 script_0470:
-    sIF_FLAG_JR !wScriptFlags0D.7, .jr_0e_5a65         ;; 0e:5a3f $08 $6f $00 $22
-    sIF_FLAG_JR wScriptFlags0E.0, .jr_0e_5a4c          ;; 0e:5a43 $08 $f0 $00 $05
-    sCALL script_0471                                  ;; 0e:5a47 $02 $5a $7c
-    sJR  .jr_0e_5a63                                   ;; 0e:5a4a $01 $17
-.jr_0e_5a4c:
-    sMSG                                               ;; 0e:5a4c $04
-      db "<10>  Cannot land on\n    the water.<12>"
+    sIF_FLAG wScriptFlags0D.7                          ;; 0e:5a3f $08 $6f $00 $22
+      sIF_FLAG !wScriptFlags0E.0                       ;; 0e:5a43 $08 $f0 $00 $05
+        sCALL script_0471                              ;; 0e:5a47 $02 $5a $7c
+      sELSE                                            ;; 0e:5a4a $01 $17
+        sMSG                                           ;; 0e:5a4c $04
+          db "<10>  Cannot land on\n    the water.<12>"
       db "<11>", $00 ;; 0e:5a4d
-.jr_0e_5a63:
-    sJR  .jr_0e_5a7b                                   ;; 0e:5a63 $01 $16
-.jr_0e_5a65:
-    sUNK_C2 8                                          ;; 0e:5a65 $c2 $08
-    sSFX 7                                             ;; 0e:5a67 $f9 $07
-    sDELAY 7                                           ;; 0e:5a69 $f0 $07
-    sSFX 7                                             ;; 0e:5a6b $f9 $07
-    sIF_FLAG_JR wScriptFlags04.1, .jr_0e_5a72          ;; 0e:5a6d $08 $a1 $00 $01
-    sUNK_A0                                            ;; 0e:5a71 $a0
-.jr_0e_5a72:
-    sIF_FLAG_JR !wScriptFlags04.1, .jr_0e_5a77         ;; 0e:5a72 $08 $21 $00 $01
-    sUNK_A1                                            ;; 0e:5a76 $a1
-.jr_0e_5a77:
-    sSET_MUSIC 6                                       ;; 0e:5a77 $f8 $06
-    sSET_FLAG wScriptFlags0D.7                         ;; 0e:5a79 $da $6f
-.jr_0e_5a7b:
+      sENDIF                                           ;; 0e:5a63
+    sELSE                                              ;; 0e:5a63 $01 $16
+      sUNK_C2 8                                        ;; 0e:5a65 $c2 $08
+      sSFX 7                                           ;; 0e:5a67 $f9 $07
+      sDELAY 7                                         ;; 0e:5a69 $f0 $07
+      sSFX 7                                           ;; 0e:5a6b $f9 $07
+      sIF_FLAG !wScriptFlags04.1                       ;; 0e:5a6d $08 $a1 $00 $01
+        sUNK_A0                                        ;; 0e:5a71 $a0
+      sENDIF                                           ;; 0e:5a72
+      sIF_FLAG wScriptFlags04.1                        ;; 0e:5a72 $08 $21 $00 $01
+        sUNK_A1                                        ;; 0e:5a76 $a1
+      sENDIF                                           ;; 0e:5a77
+      sSET_MUSIC 6                                     ;; 0e:5a77 $f8 $06
+      sSET_FLAG wScriptFlags0D.7                       ;; 0e:5a79 $da $6f
+    sENDIF                                             ;; 0e:5a7b
     sEND                                               ;; 0e:5a7b $00
 
 script_0471:
     sSET_PLAYER_NORMAL_SPRITE                          ;; 0e:5a7c $a4
-    sIF_FLAG_JR wScriptFlags03.7, .jr_0e_5a85          ;; 0e:5a7d $08 $9f $00 $04
-    sSET_MUSIC 20                                      ;; 0e:5a81 $f8 $14
-    sJR  .jr_0e_5a87                                   ;; 0e:5a83 $01 $02
-.jr_0e_5a85:
-    sSET_MUSIC 25                                      ;; 0e:5a85 $f8 $19
-.jr_0e_5a87:
+    sIF_FLAG !wScriptFlags03.7                         ;; 0e:5a7d $08 $9f $00 $04
+      sSET_MUSIC 20                                    ;; 0e:5a81 $f8 $14
+    sELSE                                              ;; 0e:5a83 $01 $02
+      sSET_MUSIC 25                                    ;; 0e:5a85 $f8 $19
+    sENDIF                                             ;; 0e:5a87
     sSFX 7                                             ;; 0e:5a87 $f9 $07
     sDELAY 7                                           ;; 0e:5a89 $f0 $07
     sSFX 7                                             ;; 0e:5a8b $f9 $07
@@ -3564,30 +3560,30 @@ script_0472:
     sMSG                                               ;; 0e:5a90 $04
       db "<10>Take your\nChocobo with you?<12>"
       db "<13>", $00 ;; 0e:5a91
-    sIF_FLAG_JR wScriptFlags0F.7, .jr_0e_5ad8          ;; 0e:5aa8 $08 $ff $00 $2c
-    sGIVE_FOLLOWER 9                                   ;; 0e:5aac $9c $09
-    sSET_FLAG wScriptFlags0B.0                         ;; 0e:5aae $da $58
-    sCLEAR_FLAG wScriptFlags0B.3                       ;; 0e:5ab0 $db $5b
-    sCLEAR_FLAG wScriptFlags0B.4                       ;; 0e:5ab2 $db $5c
-    sCLEAR_FLAG wScriptFlags0B.5                       ;; 0e:5ab4 $db $5d
-    sCLEAR_FLAG wScriptFlags0B.6                       ;; 0e:5ab6 $db $5e
-    sCLEAR_FLAG wScriptFlags0B.7                       ;; 0e:5ab8 $db $5f
-    sCLEAR_FLAG wScriptFlags0C.0                       ;; 0e:5aba $db $60
-    sCLEAR_FLAG wScriptFlags0C.1                       ;; 0e:5abc $db $61
-    sCLEAR_FLAG wScriptFlags0C.2                       ;; 0e:5abe $db $62
-    sCLEAR_FLAG wScriptFlags0C.3                       ;; 0e:5ac0 $db $63
-    sCLEAR_FLAG wScriptFlags0C.4                       ;; 0e:5ac2 $db $64
-    sCLEAR_FLAG wScriptFlags0C.5                       ;; 0e:5ac4 $db $65
-    sCLEAR_FLAG wScriptFlags0C.6                       ;; 0e:5ac6 $db $66
-    sCLEAR_FLAG wScriptFlags0C.7                       ;; 0e:5ac8 $db $67
-    sCLEAR_FLAG wScriptFlags0D.0                       ;; 0e:5aca $db $68
-    sCLEAR_FLAG wScriptFlags0D.1                       ;; 0e:5acc $db $69
-    sCLEAR_FLAG wScriptFlags0D.2                       ;; 0e:5ace $db $6a
-    sCLEAR_FLAG wScriptFlags0D.3                       ;; 0e:5ad0 $db $6b
-    sCLEAR_FLAG wScriptFlags0D.4                       ;; 0e:5ad2 $db $6c
-    sCLEAR_FLAG wScriptFlags0D.5                       ;; 0e:5ad4 $db $6d
-    sCLEAR_FLAG wScriptFlags0D.6                       ;; 0e:5ad6 $db $6e
-.jr_0e_5ad8:
+    sIF_FLAG !wScriptFlags0F.7                         ;; 0e:5aa8 $08 $ff $00 $2c
+      sGIVE_FOLLOWER 9                                 ;; 0e:5aac $9c $09
+      sSET_FLAG wScriptFlags0B.0                       ;; 0e:5aae $da $58
+      sCLEAR_FLAG wScriptFlags0B.3                     ;; 0e:5ab0 $db $5b
+      sCLEAR_FLAG wScriptFlags0B.4                     ;; 0e:5ab2 $db $5c
+      sCLEAR_FLAG wScriptFlags0B.5                     ;; 0e:5ab4 $db $5d
+      sCLEAR_FLAG wScriptFlags0B.6                     ;; 0e:5ab6 $db $5e
+      sCLEAR_FLAG wScriptFlags0B.7                     ;; 0e:5ab8 $db $5f
+      sCLEAR_FLAG wScriptFlags0C.0                     ;; 0e:5aba $db $60
+      sCLEAR_FLAG wScriptFlags0C.1                     ;; 0e:5abc $db $61
+      sCLEAR_FLAG wScriptFlags0C.2                     ;; 0e:5abe $db $62
+      sCLEAR_FLAG wScriptFlags0C.3                     ;; 0e:5ac0 $db $63
+      sCLEAR_FLAG wScriptFlags0C.4                     ;; 0e:5ac2 $db $64
+      sCLEAR_FLAG wScriptFlags0C.5                     ;; 0e:5ac4 $db $65
+      sCLEAR_FLAG wScriptFlags0C.6                     ;; 0e:5ac6 $db $66
+      sCLEAR_FLAG wScriptFlags0C.7                     ;; 0e:5ac8 $db $67
+      sCLEAR_FLAG wScriptFlags0D.0                     ;; 0e:5aca $db $68
+      sCLEAR_FLAG wScriptFlags0D.1                     ;; 0e:5acc $db $69
+      sCLEAR_FLAG wScriptFlags0D.2                     ;; 0e:5ace $db $6a
+      sCLEAR_FLAG wScriptFlags0D.3                     ;; 0e:5ad0 $db $6b
+      sCLEAR_FLAG wScriptFlags0D.4                     ;; 0e:5ad2 $db $6c
+      sCLEAR_FLAG wScriptFlags0D.5                     ;; 0e:5ad4 $db $6d
+      sCLEAR_FLAG wScriptFlags0D.6                     ;; 0e:5ad6 $db $6e
+    sENDIF                                             ;; 0e:5ad8
     sMSG                                               ;; 0e:5ad8 $04
       db "<11>", $00                                   ;; 0e:5ad9
     sSFX 7                                             ;; 0e:5adb $f9 $07
@@ -3604,34 +3600,34 @@ script_0473:
     sEND                                               ;; 0e:5af1 $00
 
 script_0474:
-    sIF_0B_JR $f1, .jr_0e_5af9                         ;; 0e:5af2 $0b $f1 $00 $03
-    sUNK_A2                                            ;; 0e:5af6 $a2
-    sSET_FLAG wScriptFlags0E.0                         ;; 0e:5af7 $da $70
-.jr_0e_5af9:
-    sIF_0B_JR $f5, .jr_0e_5b00                         ;; 0e:5af9 $0b $f5 $00 $03
-    sUNK_A1                                            ;; 0e:5afd $a1
-    sCLEAR_FLAG wScriptFlags0E.0                       ;; 0e:5afe $db $70
-.jr_0e_5b00:
+    sIF_0B $f1                                         ;; 0e:5af2 $0b $f1 $00 $03
+      sUNK_A2                                          ;; 0e:5af6 $a2
+      sSET_FLAG wScriptFlags0E.0                       ;; 0e:5af7 $da $70
+    sENDIF                                             ;; 0e:5af9
+    sIF_0B $f5                                         ;; 0e:5af9 $0b $f5 $00 $03
+      sUNK_A1                                          ;; 0e:5afd $a1
+      sCLEAR_FLAG wScriptFlags0E.0                     ;; 0e:5afe $db $70
+    sENDIF                                             ;; 0e:5b00
     sEND                                               ;; 0e:5b00 $00
 
 script_0475:
-    sIF_FLAG_JR wScriptFlags0B.0, .jr_0e_5b17          ;; 0e:5b01 $08 $d8 $00 $12
-    sIF_FLAG_JR wScriptFlags04.1, .jr_0e_5b11          ;; 0e:5b05 $08 $a1 $00 $08
-    sSET_NPC_TYPES 80                                  ;; 0e:5b09 $fc $50
-    sDELAY 6                                           ;; 0e:5b0b $f0 $06
-    sSPAWN_NPC 2                                       ;; 0e:5b0d $fd $02
-    sJR  .jr_0e_5b17                                   ;; 0e:5b0f $01 $06
-.jr_0e_5b11:
-    sSET_NPC_TYPES 101                                 ;; 0e:5b11 $fc $65
-    sDELAY 6                                           ;; 0e:5b13 $f0 $06
-    sSPAWN_NPC 0                                       ;; 0e:5b15 $fd $00
-.jr_0e_5b17:
+    sIF_FLAG !wScriptFlags0B.0                         ;; 0e:5b01 $08 $d8 $00 $12
+      sIF_FLAG !wScriptFlags04.1                       ;; 0e:5b05 $08 $a1 $00 $08
+        sSET_NPC_TYPES 80                              ;; 0e:5b09 $fc $50
+        sDELAY 6                                       ;; 0e:5b0b $f0 $06
+        sSPAWN_NPC 2                                   ;; 0e:5b0d $fd $02
+      sELSE                                            ;; 0e:5b0f $01 $06
+        sSET_NPC_TYPES 101                             ;; 0e:5b11 $fc $65
+        sDELAY 6                                       ;; 0e:5b13 $f0 $06
+        sSPAWN_NPC 0                                   ;; 0e:5b15 $fd $00
+      sENDIF                                           ;; 0e:5b17
+    sENDIF                                             ;; 0e:5b17
     sEND                                               ;; 0e:5b17 $00
 
 script_0476:
-    sIF_FLAG_JR !wScriptFlags0B.7, .jr_0e_5b1f         ;; 0e:5b18 $08 $5f $00 $03
-    sCALL script_0475                                  ;; 0e:5b1c $02 $5b $01
-.jr_0e_5b1f:
+    sIF_FLAG wScriptFlags0B.7                          ;; 0e:5b18 $08 $5f $00 $03
+      sCALL script_0475                                ;; 0e:5b1c $02 $5b $01
+    sENDIF                                             ;; 0e:5b1f
     sEND                                               ;; 0e:5b1f $00
 
 script_0477:
@@ -3641,9 +3637,9 @@ script_0478:
     sEND                                               ;; 0e:5b21 $00
 
 script_0479:
-    sIF_FLAG_JR !wScriptFlags0B.3, .jr_0e_5b29         ;; 0e:5b22 $08 $5b $00 $03
-    sCALL script_0475                                  ;; 0e:5b26 $02 $5b $01
-.jr_0e_5b29:
+    sIF_FLAG wScriptFlags0B.3                          ;; 0e:5b22 $08 $5b $00 $03
+      sCALL script_0475                                ;; 0e:5b26 $02 $5b $01
+    sENDIF                                             ;; 0e:5b29
     sEND                                               ;; 0e:5b29 $00
 
 script_047a:
@@ -3653,9 +3649,9 @@ script_047b:
     sEND                                               ;; 0e:5b2b $00
 
 script_047c:
-    sIF_FLAG_JR !wScriptFlags0B.4, .jr_0e_5b33         ;; 0e:5b2c $08 $5c $00 $03
-    sCALL script_0475                                  ;; 0e:5b30 $02 $5b $01
-.jr_0e_5b33:
+    sIF_FLAG wScriptFlags0B.4                          ;; 0e:5b2c $08 $5c $00 $03
+      sCALL script_0475                                ;; 0e:5b30 $02 $5b $01
+    sENDIF                                             ;; 0e:5b33
     sCLEAR_FLAG wScriptFlags0F.0                       ;; 0e:5b33 $db $78
     sCLEAR_FLAG wScriptFlags0F.1                       ;; 0e:5b35 $db $79
     sCLEAR_FLAG wScriptFlags0F.2                       ;; 0e:5b37 $db $7a
@@ -3678,9 +3674,9 @@ script_0481:
     sEND                                               ;; 0e:5b40 $00
 
 script_0482:
-    sIF_FLAG_JR !wScriptFlags0B.6, .jr_0e_5b48         ;; 0e:5b41 $08 $5e $00 $03
-    sCALL script_0475                                  ;; 0e:5b45 $02 $5b $01
-.jr_0e_5b48:
+    sIF_FLAG wScriptFlags0B.6                          ;; 0e:5b41 $08 $5e $00 $03
+      sCALL script_0475                                ;; 0e:5b45 $02 $5b $01
+    sENDIF                                             ;; 0e:5b48
     sEND                                               ;; 0e:5b48 $00
 
 script_0483:
@@ -3690,9 +3686,9 @@ script_0484:
     sEND                                               ;; 0e:5b4a $00
 
 script_0485:
-    sIF_FLAG_JR !wScriptFlags0C.0, .jr_0e_5b52         ;; 0e:5b4b $08 $60 $00 $03
-    sCALL script_0475                                  ;; 0e:5b4f $02 $5b $01
-.jr_0e_5b52:
+    sIF_FLAG wScriptFlags0C.0                          ;; 0e:5b4b $08 $60 $00 $03
+      sCALL script_0475                                ;; 0e:5b4f $02 $5b $01
+    sENDIF                                             ;; 0e:5b52
     sEND                                               ;; 0e:5b52 $00
 
 script_0486:
@@ -3702,9 +3698,9 @@ script_0487:
     sEND                                               ;; 0e:5b54 $00
 
 script_0488:
-    sIF_FLAG_JR !wScriptFlags0C.1, .jr_0e_5b5c         ;; 0e:5b55 $08 $61 $00 $03
-    sCALL script_0475                                  ;; 0e:5b59 $02 $5b $01
-.jr_0e_5b5c:
+    sIF_FLAG wScriptFlags0C.1                          ;; 0e:5b55 $08 $61 $00 $03
+      sCALL script_0475                                ;; 0e:5b59 $02 $5b $01
+    sENDIF                                             ;; 0e:5b5c
     sEND                                               ;; 0e:5b5c $00
 
 script_0489:
@@ -3714,9 +3710,9 @@ script_048a:
     sEND                                               ;; 0e:5b5e $00
 
 script_048b:
-    sIF_FLAG_JR !wScriptFlags0C.2, .jr_0e_5b66         ;; 0e:5b5f $08 $62 $00 $03
-    sCALL script_0475                                  ;; 0e:5b63 $02 $5b $01
-.jr_0e_5b66:
+    sIF_FLAG wScriptFlags0C.2                          ;; 0e:5b5f $08 $62 $00 $03
+      sCALL script_0475                                ;; 0e:5b63 $02 $5b $01
+    sENDIF                                             ;; 0e:5b66
     sEND                                               ;; 0e:5b66 $00
 
 script_048c:
@@ -3726,9 +3722,9 @@ script_048d:
     sEND                                               ;; 0e:5b68 $00
 
 script_048e:
-    sIF_FLAG_JR !wScriptFlags0C.3, .jr_0e_5b70         ;; 0e:5b69 $08 $63 $00 $03
-    sCALL script_0475                                  ;; 0e:5b6d $02 $5b $01
-.jr_0e_5b70:
+    sIF_FLAG wScriptFlags0C.3                          ;; 0e:5b69 $08 $63 $00 $03
+      sCALL script_0475                                ;; 0e:5b6d $02 $5b $01
+    sENDIF                                             ;; 0e:5b70
     sEND                                               ;; 0e:5b70 $00
 
 script_048f:
@@ -3738,9 +3734,9 @@ script_0490:
     sEND                                               ;; 0e:5b72 $00
 
 script_0491:
-    sIF_FLAG_JR !wScriptFlags0C.4, .jr_0e_5b7a         ;; 0e:5b73 $08 $64 $00 $03
-    sCALL script_0475                                  ;; 0e:5b77 $02 $5b $01
-.jr_0e_5b7a:
+    sIF_FLAG wScriptFlags0C.4                          ;; 0e:5b73 $08 $64 $00 $03
+      sCALL script_0475                                ;; 0e:5b77 $02 $5b $01
+    sENDIF                                             ;; 0e:5b7a
     sEND                                               ;; 0e:5b7a $00
 
 script_0492:
@@ -3750,9 +3746,9 @@ script_0493:
     sEND                                               ;; 0e:5b7c $00
 
 script_0494:
-    sIF_FLAG_JR !wScriptFlags0C.5, .jr_0e_5b84         ;; 0e:5b7d $08 $65 $00 $03
-    sCALL script_0475                                  ;; 0e:5b81 $02 $5b $01
-.jr_0e_5b84:
+    sIF_FLAG wScriptFlags0C.5                          ;; 0e:5b7d $08 $65 $00 $03
+      sCALL script_0475                                ;; 0e:5b81 $02 $5b $01
+    sENDIF                                             ;; 0e:5b84
     sEND                                               ;; 0e:5b84 $00
 
 script_0495:
@@ -3762,9 +3758,9 @@ script_0496:
     sEND                                               ;; 0e:5b86 $00
 
 script_0497:
-    sIF_FLAG_JR !wScriptFlags0C.6, .jr_0e_5b8e         ;; 0e:5b87 $08 $66 $00 $03
-    sCALL script_0475                                  ;; 0e:5b8b $02 $5b $01
-.jr_0e_5b8e:
+    sIF_FLAG wScriptFlags0C.6                          ;; 0e:5b87 $08 $66 $00 $03
+      sCALL script_0475                                ;; 0e:5b8b $02 $5b $01
+    sENDIF                                             ;; 0e:5b8e
     sEND                                               ;; 0e:5b8e $00
 
 script_0498:
@@ -3774,17 +3770,16 @@ script_0499:
     sEND                                               ;; 0e:5b90 $00
 
 script_049a:
-    sIF_FLAG_JR !wScriptFlags0C.7, .jr_0e_5b98         ;; 0e:5b91 $08 $67 $00 $03
-    sCALL script_0475                                  ;; 0e:5b95 $02 $5b $01
-.jr_0e_5b98:
-    sIF_FLAG_JR wScriptFlags06.6, .jr_0e_5ba4          ;; 0e:5b98 $08 $b6 $00 $08
-    sSET_NPC_TYPES 52                                  ;; 0e:5b9c $fc $34
-    sDELAY 10                                          ;; 0e:5b9e $f0 $0a
-    sSPAWN_NPC 2                                       ;; 0e:5ba0 $fd $02
-    sJR  .jr_0e_5ba8                                   ;; 0e:5ba2 $01 $04
-.jr_0e_5ba4:
-    sSET_ROOM_TILE $4b, 7, 5                           ;; 0e:5ba4 $b0 $4b $07 $05
-.jr_0e_5ba8:
+    sIF_FLAG wScriptFlags0C.7                          ;; 0e:5b91 $08 $67 $00 $03
+      sCALL script_0475                                ;; 0e:5b95 $02 $5b $01
+    sENDIF                                             ;; 0e:5b98
+    sIF_FLAG !wScriptFlags06.6                         ;; 0e:5b98 $08 $b6 $00 $08
+      sSET_NPC_TYPES 52                                ;; 0e:5b9c $fc $34
+      sDELAY 10                                        ;; 0e:5b9e $f0 $0a
+      sSPAWN_NPC 2                                     ;; 0e:5ba0 $fd $02
+    sELSE                                              ;; 0e:5ba2 $01 $04
+      sSET_ROOM_TILE $4b, 7, 5                         ;; 0e:5ba4 $b0 $4b $07 $05
+    sENDIF                                             ;; 0e:5ba8
     sEND                                               ;; 0e:5ba8 $00
 
 script_049b:
@@ -3794,9 +3789,9 @@ script_049c:
     sEND                                               ;; 0e:5baa $00
 
 script_049d:
-    sIF_FLAG_JR !wScriptFlags0D.0, .jr_0e_5bb2         ;; 0e:5bab $08 $68 $00 $03
-    sCALL script_0475                                  ;; 0e:5baf $02 $5b $01
-.jr_0e_5bb2:
+    sIF_FLAG wScriptFlags0D.0                          ;; 0e:5bab $08 $68 $00 $03
+      sCALL script_0475                                ;; 0e:5baf $02 $5b $01
+    sENDIF                                             ;; 0e:5bb2
     sEND                                               ;; 0e:5bb2 $00
 
 script_049e:
@@ -3806,9 +3801,9 @@ script_049f:
     sEND                                               ;; 0e:5bb4 $00
 
 script_04a0:
-    sIF_FLAG_JR !wScriptFlags0D.1, .jr_0e_5bbc         ;; 0e:5bb5 $08 $69 $00 $03
-    sCALL script_0475                                  ;; 0e:5bb9 $02 $5b $01
-.jr_0e_5bbc:
+    sIF_FLAG wScriptFlags0D.1                          ;; 0e:5bb5 $08 $69 $00 $03
+      sCALL script_0475                                ;; 0e:5bb9 $02 $5b $01
+    sENDIF                                             ;; 0e:5bbc
     sEND                                               ;; 0e:5bbc $00
 
 script_04a1:
@@ -3818,9 +3813,9 @@ script_04a2:
     sEND                                               ;; 0e:5bbe $00
 
 script_04a3:
-    sIF_FLAG_JR !wScriptFlags0D.2, .jr_0e_5bc6         ;; 0e:5bbf $08 $6a $00 $03
-    sCALL script_0475                                  ;; 0e:5bc3 $02 $5b $01
-.jr_0e_5bc6:
+    sIF_FLAG wScriptFlags0D.2                          ;; 0e:5bbf $08 $6a $00 $03
+      sCALL script_0475                                ;; 0e:5bc3 $02 $5b $01
+    sENDIF                                             ;; 0e:5bc6
     sEND                                               ;; 0e:5bc6 $00
 
 script_04a4:
@@ -3830,9 +3825,9 @@ script_04a5:
     sEND                                               ;; 0e:5bc8 $00
 
 script_04a6:
-    sIF_FLAG_JR !wScriptFlags0D.3, .jr_0e_5bd0         ;; 0e:5bc9 $08 $6b $00 $03
-    sCALL script_04af                                  ;; 0e:5bcd $02 $5b $e7
-.jr_0e_5bd0:
+    sIF_FLAG wScriptFlags0D.3                          ;; 0e:5bc9 $08 $6b $00 $03
+      sCALL script_04af                                ;; 0e:5bcd $02 $5b $e7
+    sENDIF                                             ;; 0e:5bd0
     sEND                                               ;; 0e:5bd0 $00
 
 script_04a7:
@@ -3842,9 +3837,9 @@ script_04a8:
     sEND                                               ;; 0e:5bd2 $00
 
 script_04a9:
-    sIF_FLAG_JR !wScriptFlags0D.4, .jr_0e_5bda         ;; 0e:5bd3 $08 $6c $00 $03
-    sCALL script_0475                                  ;; 0e:5bd7 $02 $5b $01
-.jr_0e_5bda:
+    sIF_FLAG wScriptFlags0D.4                          ;; 0e:5bd3 $08 $6c $00 $03
+      sCALL script_0475                                ;; 0e:5bd7 $02 $5b $01
+    sENDIF                                             ;; 0e:5bda
     sEND                                               ;; 0e:5bda $00
 
 script_04aa:
@@ -3854,9 +3849,9 @@ script_04ab:
     sEND                                               ;; 0e:5bdc $00
 
 script_04ac:
-    sIF_FLAG_JR !wScriptFlags0D.5, .jr_0e_5be4         ;; 0e:5bdd $08 $6d $00 $03
-    sCALL script_0475                                  ;; 0e:5be1 $02 $5b $01
-.jr_0e_5be4:
+    sIF_FLAG wScriptFlags0D.5                          ;; 0e:5bdd $08 $6d $00 $03
+      sCALL script_0475                                ;; 0e:5be1 $02 $5b $01
+    sENDIF                                             ;; 0e:5be4
     sEND                                               ;; 0e:5be4 $00
 
 script_04ad:
@@ -3866,280 +3861,286 @@ script_04ae:
     sEND                                               ;; 0e:5be6 $00
 
 script_04af:
-    sIF_FLAG_JR wScriptFlags0B.0, .jr_0e_5bfd          ;; 0e:5be7 $08 $d8 $00 $12
-    sIF_FLAG_JR wScriptFlags04.1, .jr_0e_5bf7          ;; 0e:5beb $08 $a1 $00 $08
-    sSET_NPC_TYPES 83                                  ;; 0e:5bef $fc $53
-    sDELAY 6                                           ;; 0e:5bf1 $f0 $06
-    sSPAWN_NPC 0                                       ;; 0e:5bf3 $fd $00
-    sJR  .jr_0e_5bfd                                   ;; 0e:5bf5 $01 $06
-.jr_0e_5bf7:
-    sSET_NPC_TYPES 101                                 ;; 0e:5bf7 $fc $65
-    sDELAY 6                                           ;; 0e:5bf9 $f0 $06
-    sSPAWN_NPC 2                                       ;; 0e:5bfb $fd $02
-.jr_0e_5bfd:
+    sIF_FLAG !wScriptFlags0B.0                         ;; 0e:5be7 $08 $d8 $00 $12
+      sIF_FLAG !wScriptFlags04.1                       ;; 0e:5beb $08 $a1 $00 $08
+        sSET_NPC_TYPES 83                              ;; 0e:5bef $fc $53
+        sDELAY 6                                       ;; 0e:5bf1 $f0 $06
+        sSPAWN_NPC 0                                   ;; 0e:5bf3 $fd $00
+      sELSE                                            ;; 0e:5bf5 $01 $06
+        sSET_NPC_TYPES 101                             ;; 0e:5bf7 $fc $65
+        sDELAY 6                                       ;; 0e:5bf9 $f0 $06
+        sSPAWN_NPC 2                                   ;; 0e:5bfb $fd $02
+      sENDIF                                           ;; 0e:5bfd
+    sENDIF                                             ;; 0e:5bfd
     sEND                                               ;; 0e:5bfd $00
 
 script_04b0:
-    sIF_0B_JR $f1, .jr_0e_5c05                         ;; 0e:5bfe $0b $f1 $00 $03
-    sCALL script_0470                                  ;; 0e:5c02 $02 $5a $3f
-.jr_0e_5c05:
-    sIF_0B_JR $c9, $c1, $f1, .jr_0e_5c3d               ;; 0e:5c05 $0b $c9 $c1 $f1 $00 $32
-    sIF_FLAG_JR !wScriptFlags0B.0, .jr_0e_5c3d         ;; 0e:5c0b $08 $58 $00 $2e
-    sMSG                                               ;; 0e:5c0f $04
-      db "<10>It's too cold for\nyou ahead.\nWait for me here.<12>"
+    sIF_0B $f1                                         ;; 0e:5bfe $0b $f1 $00 $03
+      sCALL script_0470                                ;; 0e:5c02 $02 $5a $3f
+    sENDIF                                             ;; 0e:5c05
+    sIF_0B $c9, $c1, $f1                               ;; 0e:5c05 $0b $c9 $c1 $f1 $00 $32
+      sIF_FLAG wScriptFlags0B.0                        ;; 0e:5c0b $08 $58 $00 $2e
+        sMSG                                           ;; 0e:5c0f $04
+          db "<10>It's too cold for\nyou ahead.\nWait for me here.<12>"
       db "<11>", $00 ;; 0e:5c10
-    sFOLLOWER_DIRECTION_DOWN                           ;; 0e:5c32 $95
-    sLOOP 4, 2                                         ;; 0e:5c33 $03 $04 $02
-      sFOLLOWER_STEP_FORWARD                           ;; 0e:5c36 $90
-    sEND                                               ;; 0e:5c37 $00
-    sFOLLOWER_DELETE                                   ;; 0e:5c38 $98
-    sCLEAR_FLAG wScriptFlags0B.0                       ;; 0e:5c39 $db $58
-    sSET_FLAG wScriptFlags0B.6                         ;; 0e:5c3b $da $5e
-.jr_0e_5c3d:
+        sFOLLOWER_DIRECTION_DOWN                       ;; 0e:5c32 $95
+        sLOOP 4, 2                                     ;; 0e:5c33 $03 $04 $02
+          sFOLLOWER_STEP_FORWARD                       ;; 0e:5c36 $90
+        sEND                                           ;; 0e:5c37 $00
+        sFOLLOWER_DELETE                               ;; 0e:5c38 $98
+        sCLEAR_FLAG wScriptFlags0B.0                   ;; 0e:5c39 $db $58
+        sSET_FLAG wScriptFlags0B.6                     ;; 0e:5c3b $da $5e
+      sENDIF                                           ;; 0e:5c3d
+    sENDIF                                             ;; 0e:5c3d
     sEND                                               ;; 0e:5c3d $00
 
 script_04d0:
-    sIF_0B_JR $a9, .jr_0e_5c45                         ;; 0e:5c3e $0b $a9 $00 $03
-    sSFX 16                                            ;; 0e:5c42 $f9 $10
-    sUNK_E4                                            ;; 0e:5c44 $e4
-.jr_0e_5c45:
+    sIF_0B $a9                                         ;; 0e:5c3e $0b $a9 $00 $03
+      sSFX 16                                          ;; 0e:5c42 $f9 $10
+      sUNK_E4                                          ;; 0e:5c44 $e4
+    sENDIF                                             ;; 0e:5c45
     sEND                                               ;; 0e:5c45 $00
 
 script_04d1:
     sEND                                               ;; 0e:5c46 $00
 
 script_04d2:
-    sIF_0B_JR $c9, $c1, .jr_0e_5c51                    ;; 0e:5c47 $0b $c9 $c1 $00 $05
-    sLOAD_ROOM 4, $57, 16, 12                          ;; 0e:5c4c $f4 $04 $57 $10 $0c
-.jr_0e_5c51:
+    sIF_0B $c9, $c1                                    ;; 0e:5c47 $0b $c9 $c1 $00 $05
+      sLOAD_ROOM 4, $57, 16, 12                        ;; 0e:5c4c $f4 $04 $57 $10 $0c
+    sENDIF                                             ;; 0e:5c51
     sEND                                               ;; 0e:5c51 $00
 
 script_04d3:
-    sIF_0B_JR $c9, $c1, .jr_0e_5c63                    ;; 0e:5c52 $0b $c9 $c1 $00 $0c
-    sLOAD_ROOM 0, $70, 14, 10                          ;; 0e:5c57 $f4 $00 $70 $0e $0a
-    sSET_MUSIC 25                                      ;; 0e:5c5c $f8 $19
-    sSET_ROOM_TILE $4b, 7, 5                           ;; 0e:5c5e $b0 $4b $07 $05
-    sRUN_ROOM_SCRIPT                                   ;; 0e:5c62 $ec
-.jr_0e_5c63:
+    sIF_0B $c9, $c1                                    ;; 0e:5c52 $0b $c9 $c1 $00 $0c
+      sLOAD_ROOM 0, $70, 14, 10                        ;; 0e:5c57 $f4 $00 $70 $0e $0a
+      sSET_MUSIC 25                                    ;; 0e:5c5c $f8 $19
+      sSET_ROOM_TILE $4b, 7, 5                         ;; 0e:5c5e $b0 $4b $07 $05
+      sRUN_ROOM_SCRIPT                                 ;; 0e:5c62 $ec
+    sENDIF                                             ;; 0e:5c63
     sEND                                               ;; 0e:5c63 $00
 
 script_04d4:
-    sIF_0B_JR $c9, .jr_0e_5c6d                         ;; 0e:5c64 $0b $c9 $00 $05
-    sLOAD_ROOM 5, $27, 8, 6                            ;; 0e:5c68 $f4 $05 $27 $08 $06
-.jr_0e_5c6d:
+    sIF_0B $c9                                         ;; 0e:5c64 $0b $c9 $00 $05
+      sLOAD_ROOM 5, $27, 8, 6                          ;; 0e:5c68 $f4 $05 $27 $08 $06
+    sENDIF                                             ;; 0e:5c6d
     sEND                                               ;; 0e:5c6d $00
 
 script_04d5:
-    sIF_0B_JR $c9, .jr_0e_5c77                         ;; 0e:5c6e $0b $c9 $00 $05
-    sLOAD_ROOM 4, $27, 8, 8                            ;; 0e:5c72 $f4 $04 $27 $08 $08
-.jr_0e_5c77:
+    sIF_0B $c9                                         ;; 0e:5c6e $0b $c9 $00 $05
+      sLOAD_ROOM 4, $27, 8, 8                          ;; 0e:5c72 $f4 $04 $27 $08 $08
+    sENDIF                                             ;; 0e:5c77
     sEND                                               ;; 0e:5c77 $00
 
 script_04d6:
-    sIF_0B_JR $c9, .jr_0e_5c81                         ;; 0e:5c78 $0b $c9 $00 $05
-    sLOAD_ROOM 6, $34, 16, 2                           ;; 0e:5c7c $f4 $06 $34 $10 $02
-.jr_0e_5c81:
+    sIF_0B $c9                                         ;; 0e:5c78 $0b $c9 $00 $05
+      sLOAD_ROOM 6, $34, 16, 2                         ;; 0e:5c7c $f4 $06 $34 $10 $02
+    sENDIF                                             ;; 0e:5c81
     sEND                                               ;; 0e:5c81 $00
 
 script_04d7:
-    sIF_0B_JR $c9, .jr_0e_5c8b                         ;; 0e:5c82 $0b $c9 $00 $05
-    sLOAD_ROOM 5, $34, 16, 2                           ;; 0e:5c86 $f4 $05 $34 $10 $02
-.jr_0e_5c8b:
+    sIF_0B $c9                                         ;; 0e:5c82 $0b $c9 $00 $05
+      sLOAD_ROOM 5, $34, 16, 2                         ;; 0e:5c86 $f4 $05 $34 $10 $02
+    sENDIF                                             ;; 0e:5c8b
     sEND                                               ;; 0e:5c8b $00
 
 script_04d8:
-    sIF_0B_JR $c9, $c1, .jr_0e_5c96                    ;; 0e:5c8c $0b $c9 $c1 $00 $05
-    sLOAD_ROOM 8, $00, 2, 2                            ;; 0e:5c91 $f4 $08 $00 $02 $02
-.jr_0e_5c96:
+    sIF_0B $c9, $c1                                    ;; 0e:5c8c $0b $c9 $c1 $00 $05
+      sLOAD_ROOM 8, $00, 2, 2                          ;; 0e:5c91 $f4 $08 $00 $02 $02
+    sENDIF                                             ;; 0e:5c96
     sEND                                               ;; 0e:5c96 $00
 
 script_04d9:
-    sIF_0B_JR $c9, $c1, .jr_0e_5d10                    ;; 0e:5c97 $0b $c9 $c1 $00 $74
-    sLOAD_ROOM 5, $72, 16, 2                           ;; 0e:5c9c $f4 $05 $72 $10 $02
-    sIF_FLAG_JR wScriptFlags03.6, .jr_0e_5d10          ;; 0e:5ca1 $08 $9e $00 $6b
-    sSET_NPC_TYPES 50                                  ;; 0e:5ca5 $fc $32
-    sSPAWN_NPC 1                                       ;; 0e:5ca7 $fd $01
-    sSET_PLAYER_DIRECTION_DOWN                         ;; 0e:5ca9 $85
-    sSET_NPC_1_DIRECTION_UP                            ;; 0e:5caa $14
-    sLOOP 4, 3                                         ;; 0e:5cab $03 $04 $03
-      sPLAYER_STEP_FORWARD                             ;; 0e:5cae $80
-      sNPC_1_STEP_FORWARD                              ;; 0e:5caf $10
-    sEND                                               ;; 0e:5cb0 $00
-    sSET_PLAYER_DIRECTION_LEFT                         ;; 0e:5cb1 $87
-    sSET_NPC_1_DIRECTION_RIGHT                         ;; 0e:5cb2 $16
-    sPLAYER_STEP_FORWARD                               ;; 0e:5cb3 $80
-    sNPC_1_STEP_FORWARD                                ;; 0e:5cb4 $10
-    sPLAYER_STEP_FORWARD                               ;; 0e:5cb5 $80
-    sNPC_1_STEP_FORWARD                                ;; 0e:5cb6 $10
-    sMSG                                               ;; 0e:5cb7 $04
-      db "<10><BOY>:<GIRL>!\n They took the\n Pendant! <12>"
+    sIF_0B $c9, $c1                                    ;; 0e:5c97 $0b $c9 $c1 $00 $74
+      sLOAD_ROOM 5, $72, 16, 2                         ;; 0e:5c9c $f4 $05 $72 $10 $02
+      sIF_FLAG !wScriptFlags03.6                       ;; 0e:5ca1 $08 $9e $00 $6b
+        sSET_NPC_TYPES 50                              ;; 0e:5ca5 $fc $32
+        sSPAWN_NPC 1                                   ;; 0e:5ca7 $fd $01
+        sSET_PLAYER_DIRECTION_DOWN                     ;; 0e:5ca9 $85
+        sSET_NPC_1_DIRECTION_UP                        ;; 0e:5caa $14
+        sLOOP 4, 3                                     ;; 0e:5cab $03 $04 $03
+          sPLAYER_STEP_FORWARD                         ;; 0e:5cae $80
+          sNPC_1_STEP_FORWARD                          ;; 0e:5caf $10
+        sEND                                           ;; 0e:5cb0 $00
+        sSET_PLAYER_DIRECTION_LEFT                     ;; 0e:5cb1 $87
+        sSET_NPC_1_DIRECTION_RIGHT                     ;; 0e:5cb2 $16
+        sPLAYER_STEP_FORWARD                           ;; 0e:5cb3 $80
+        sNPC_1_STEP_FORWARD                            ;; 0e:5cb4 $10
+        sPLAYER_STEP_FORWARD                           ;; 0e:5cb5 $80
+        sNPC_1_STEP_FORWARD                            ;; 0e:5cb6 $10
+        sMSG                                           ;; 0e:5cb7 $04
+          db "<10><BOY>:<GIRL>!\n They took the\n Pendant! <12>"
       db "<1b><GIRL>:We have to\n get it back!\n __ Let's go!<12>"
       db "<1b> Dark Lord's room\n is on the top\n floor!<12>"
       db "<11>", $00 ;; 0e:5cb8
-    sGIVE_FOLLOWER 1                                   ;; 0e:5d0a $9c $01
-    sSET_FLAG wScriptFlags03.6                         ;; 0e:5d0c $da $1e
-    sSET_FLAG wScriptFlags0A.1                         ;; 0e:5d0e $da $51
-.jr_0e_5d10:
+        sGIVE_FOLLOWER 1                               ;; 0e:5d0a $9c $01
+        sSET_FLAG wScriptFlags03.6                     ;; 0e:5d0c $da $1e
+        sSET_FLAG wScriptFlags0A.1                     ;; 0e:5d0e $da $51
+      sENDIF                                           ;; 0e:5d10
+    sENDIF                                             ;; 0e:5d10
     sEND                                               ;; 0e:5d10 $00
 
 script_04da:
-    sIF_0B_JR $c9, $c1, .jr_0e_5d1b                    ;; 0e:5d11 $0b $c9 $c1 $00 $05
-    sLOAD_ROOM 6, $71, 16, 2                           ;; 0e:5d16 $f4 $06 $71 $10 $02
-.jr_0e_5d1b:
+    sIF_0B $c9, $c1                                    ;; 0e:5d11 $0b $c9 $c1 $00 $05
+      sLOAD_ROOM 6, $71, 16, 2                         ;; 0e:5d16 $f4 $06 $71 $10 $02
+    sENDIF                                             ;; 0e:5d1b
     sEND                                               ;; 0e:5d1b $00
 
 script_04db:
-    sIF_0B_JR $c9, .jr_0e_5d25                         ;; 0e:5d1c $0b $c9 $00 $05
-    sLOAD_ROOM 10, $40, 16, 2                          ;; 0e:5d20 $f4 $0a $40 $10 $02
-.jr_0e_5d25:
+    sIF_0B $c9                                         ;; 0e:5d1c $0b $c9 $00 $05
+      sLOAD_ROOM 10, $40, 16, 2                        ;; 0e:5d20 $f4 $0a $40 $10 $02
+    sENDIF                                             ;; 0e:5d25
     sEND                                               ;; 0e:5d25 $00
 
 script_04dc:
-    sIF_0B_JR $c9, $c1, .jr_0e_5d34                    ;; 0e:5d26 $0b $c9 $c1 $00 $09
-    sLOAD_ROOM 9, $10, 16, 2                           ;; 0e:5d2b $f4 $09 $10 $10 $02
-    sSET_ROOM_TILE $02, 8, 1                           ;; 0e:5d30 $b0 $02 $08 $01
-.jr_0e_5d34:
+    sIF_0B $c9, $c1                                    ;; 0e:5d26 $0b $c9 $c1 $00 $09
+      sLOAD_ROOM 9, $10, 16, 2                         ;; 0e:5d2b $f4 $09 $10 $10 $02
+      sSET_ROOM_TILE $02, 8, 1                         ;; 0e:5d30 $b0 $02 $08 $01
+    sENDIF                                             ;; 0e:5d34
     sEND                                               ;; 0e:5d34 $00
 
 script_04dd:
-    sIF_0B_JR $c9, .jr_0e_5d3e                         ;; 0e:5d35 $0b $c9 $00 $05
-    sLOAD_ROOM 9, $20, 2, 2                            ;; 0e:5d39 $f4 $09 $20 $02 $02
-.jr_0e_5d3e:
+    sIF_0B $c9                                         ;; 0e:5d35 $0b $c9 $00 $05
+      sLOAD_ROOM 9, $20, 2, 2                          ;; 0e:5d39 $f4 $09 $20 $02 $02
+    sENDIF                                             ;; 0e:5d3e
     sEND                                               ;; 0e:5d3e $00
 
 script_04de:
-    sIF_0B_JR $c9, .jr_0e_5d48                         ;; 0e:5d3f $0b $c9 $00 $05
-    sLOAD_ROOM 10, $50, 2, 2                           ;; 0e:5d43 $f4 $0a $50 $02 $02
-.jr_0e_5d48:
+    sIF_0B $c9                                         ;; 0e:5d3f $0b $c9 $00 $05
+      sLOAD_ROOM 10, $50, 2, 2                         ;; 0e:5d43 $f4 $0a $50 $02 $02
+    sENDIF                                             ;; 0e:5d48
     sEND                                               ;; 0e:5d48 $00
 
 script_04df:
-    sIF_0B_JR $c9, .jr_0e_5d55                         ;; 0e:5d49 $0b $c9 $00 $08
-    sUNK_C5 5                                          ;; 0e:5d4d $c5 $05
-    sLOAD_ROOM 2, $01, 9, 12                           ;; 0e:5d4f $f4 $02 $01 $09 $0c
-    sRUN_ROOM_SCRIPT                                   ;; 0e:5d54 $ec
-.jr_0e_5d55:
+    sIF_0B $c9                                         ;; 0e:5d49 $0b $c9 $00 $08
+      sUNK_C5 5                                        ;; 0e:5d4d $c5 $05
+      sLOAD_ROOM 2, $01, 9, 12                         ;; 0e:5d4f $f4 $02 $01 $09 $0c
+      sRUN_ROOM_SCRIPT                                 ;; 0e:5d54 $ec
+    sENDIF                                             ;; 0e:5d55
     sEND                                               ;; 0e:5d55 $00
 
 script_04e0:
-    sIF_0B_JR $c9, $91, $a9, .jr_0e_5d62               ;; 0e:5d56 $0b $c9 $91 $a9 $00 $06
-    sSFX 24                                            ;; 0e:5d5c $f9 $18
-    sSET_ROOM_TILE $02, 8, 1                           ;; 0e:5d5e $b0 $02 $08 $01
-.jr_0e_5d62:
-    sIF_0C_JR $c9, $91, $a9, .jr_0e_5d6e               ;; 0e:5d62 $0c $c9 $91 $a9 $00 $06
-    sSFX 24                                            ;; 0e:5d68 $f9 $18
-    sSET_ROOM_TILE $00, 8, 1                           ;; 0e:5d6a $b0 $00 $08 $01
-.jr_0e_5d6e:
+    sIF_0B $c9, $91, $a9                               ;; 0e:5d56 $0b $c9 $91 $a9 $00 $06
+      sSFX 24                                          ;; 0e:5d5c $f9 $18
+      sSET_ROOM_TILE $02, 8, 1                         ;; 0e:5d5e $b0 $02 $08 $01
+    sENDIF                                             ;; 0e:5d62
+    sIF_0C $c9, $91, $a9                               ;; 0e:5d62 $0c $c9 $91 $a9 $00 $06
+      sSFX 24                                          ;; 0e:5d68 $f9 $18
+      sSET_ROOM_TILE $00, 8, 1                         ;; 0e:5d6a $b0 $00 $08 $01
+    sENDIF                                             ;; 0e:5d6e
     sEND                                               ;; 0e:5d6e $00
 
 script_04e1:
-    sIF_0B_JR $c9, .jr_0e_5d75                         ;; 0e:5d6f $0b $c9 $00 $02
-    sSET_FLAG wScriptFlags0F.0                         ;; 0e:5d73 $da $78
-.jr_0e_5d75:
+    sIF_0B $c9                                         ;; 0e:5d6f $0b $c9 $00 $02
+      sSET_FLAG wScriptFlags0F.0                       ;; 0e:5d73 $da $78
+    sENDIF                                             ;; 0e:5d75
     sEND                                               ;; 0e:5d75 $00
 
 script_04e2:
-    sIF_0B_JR $c9, .jr_0e_5d84                         ;; 0e:5d76 $0b $c9 $00 $0a
-    sSET_FLAG wScriptFlags0F.1                         ;; 0e:5d7a $da $79
-    sIF_FLAG_JR wScriptFlags0F.0, .jr_0e_5d84          ;; 0e:5d7c $08 $f8 $00 $04
-    sCLEAR_FLAG wScriptFlags0F.1                       ;; 0e:5d80 $db $79
-    sCLEAR_FLAG wScriptFlags0F.2                       ;; 0e:5d82 $db $7a
-.jr_0e_5d84:
+    sIF_0B $c9                                         ;; 0e:5d76 $0b $c9 $00 $0a
+      sSET_FLAG wScriptFlags0F.1                       ;; 0e:5d7a $da $79
+      sIF_FLAG !wScriptFlags0F.0                       ;; 0e:5d7c $08 $f8 $00 $04
+        sCLEAR_FLAG wScriptFlags0F.1                   ;; 0e:5d80 $db $79
+        sCLEAR_FLAG wScriptFlags0F.2                   ;; 0e:5d82 $db $7a
+      sENDIF                                           ;; 0e:5d84
+    sENDIF                                             ;; 0e:5d84
     sEND                                               ;; 0e:5d84 $00
 
 script_04e3:
-    sIF_0B_JR $c9, .jr_0e_5d9b                         ;; 0e:5d85 $0b $c9 $00 $12
-    sSET_FLAG wScriptFlags0F.2                         ;; 0e:5d89 $da $7a
-    sIF_FLAG_JR wScriptFlags0F.0, .jr_0e_5d93          ;; 0e:5d8b $08 $f8 $00 $04
-    sCLEAR_FLAG wScriptFlags0F.1                       ;; 0e:5d8f $db $79
-    sCLEAR_FLAG wScriptFlags0F.2                       ;; 0e:5d91 $db $7a
-.jr_0e_5d93:
-    sIF_FLAG_JR wScriptFlags0F.1, .jr_0e_5d9b          ;; 0e:5d93 $08 $f9 $00 $04
-    sCLEAR_FLAG wScriptFlags0F.0                       ;; 0e:5d97 $db $78
-    sCLEAR_FLAG wScriptFlags0F.2                       ;; 0e:5d99 $db $7a
-.jr_0e_5d9b:
+    sIF_0B $c9                                         ;; 0e:5d85 $0b $c9 $00 $12
+      sSET_FLAG wScriptFlags0F.2                       ;; 0e:5d89 $da $7a
+      sIF_FLAG !wScriptFlags0F.0                       ;; 0e:5d8b $08 $f8 $00 $04
+        sCLEAR_FLAG wScriptFlags0F.1                   ;; 0e:5d8f $db $79
+        sCLEAR_FLAG wScriptFlags0F.2                   ;; 0e:5d91 $db $7a
+      sENDIF                                           ;; 0e:5d93
+      sIF_FLAG !wScriptFlags0F.1                       ;; 0e:5d93 $08 $f9 $00 $04
+        sCLEAR_FLAG wScriptFlags0F.0                   ;; 0e:5d97 $db $78
+        sCLEAR_FLAG wScriptFlags0F.2                   ;; 0e:5d99 $db $7a
+      sENDIF                                           ;; 0e:5d9b
+    sENDIF                                             ;; 0e:5d9b
     sEND                                               ;; 0e:5d9b $00
 
 script_04e4:
-    sIF_0B_JR $c9, .jr_0e_5db4                         ;; 0e:5d9c $0b $c9 $00 $14
-    sIF_FLAG_JR !wScriptFlags0F.0, !wScriptFlags0F.1, !wScriptFlags0F.2, .jr_0e_5dae ;; 0e:5da0 $08 $78 $79 $7a $00 $08
-    sSFX 24                                            ;; 0e:5da6 $f9 $18
-    sSET_ROOM_TILE $02, 8, 6                           ;; 0e:5da8 $b0 $02 $08 $06
-    sJR  .jr_0e_5db4                                   ;; 0e:5dac $01 $06
-.jr_0e_5dae:
-    sCLEAR_FLAG wScriptFlags0F.0                       ;; 0e:5dae $db $78
-    sCLEAR_FLAG wScriptFlags0F.1                       ;; 0e:5db0 $db $79
-    sCLEAR_FLAG wScriptFlags0F.2                       ;; 0e:5db2 $db $7a
-.jr_0e_5db4:
+    sIF_0B $c9                                         ;; 0e:5d9c $0b $c9 $00 $14
+      sIF_FLAG wScriptFlags0F.0, wScriptFlags0F.1, wScriptFlags0F.2 ;; 0e:5da0 $08 $78 $79 $7a $00 $08
+        sSFX 24                                        ;; 0e:5da6 $f9 $18
+        sSET_ROOM_TILE $02, 8, 6                       ;; 0e:5da8 $b0 $02 $08 $06
+      sELSE                                            ;; 0e:5dac $01 $06
+        sCLEAR_FLAG wScriptFlags0F.0                   ;; 0e:5dae $db $78
+        sCLEAR_FLAG wScriptFlags0F.1                   ;; 0e:5db0 $db $79
+        sCLEAR_FLAG wScriptFlags0F.2                   ;; 0e:5db2 $db $7a
+      sENDIF                                           ;; 0e:5db4
+    sENDIF                                             ;; 0e:5db4
     sEND                                               ;; 0e:5db4 $00
 
 script_04e5:
-    sIF_0B_JR $c9, .jr_0e_5dbf                         ;; 0e:5db5 $0b $c9 $00 $06
-    sSFX 24                                            ;; 0e:5db9 $f9 $18
-    sSET_ROOM_TILE $00, 8, 1                           ;; 0e:5dbb $b0 $00 $08 $01
-.jr_0e_5dbf:
+    sIF_0B $c9                                         ;; 0e:5db5 $0b $c9 $00 $06
+      sSFX 24                                          ;; 0e:5db9 $f9 $18
+      sSET_ROOM_TILE $00, 8, 1                         ;; 0e:5dbb $b0 $00 $08 $01
+    sENDIF                                             ;; 0e:5dbf
     sEND                                               ;; 0e:5dbf $00
 
 script_04e6:
-    sIF_0B_JR $c9, .jr_0e_5dca                         ;; 0e:5dc0 $0b $c9 $00 $06
-    sSFX 24                                            ;; 0e:5dc4 $f9 $18
-    sSET_ROOM_TILE $02, 8, 1                           ;; 0e:5dc6 $b0 $02 $08 $01
-.jr_0e_5dca:
+    sIF_0B $c9                                         ;; 0e:5dc0 $0b $c9 $00 $06
+      sSFX 24                                          ;; 0e:5dc4 $f9 $18
+      sSET_ROOM_TILE $02, 8, 1                         ;; 0e:5dc6 $b0 $02 $08 $01
+    sENDIF                                             ;; 0e:5dca
     sEND                                               ;; 0e:5dca $00
 
 script_04e7:
-    sIF_0B_JR $c9, .jr_0e_5de9                         ;; 0e:5dcb $0b $c9 $00 $1a
-    sSFX 16                                            ;; 0e:5dcf $f9 $10
-    sSET_ROOM_TILE $00, 2, 1                           ;; 0e:5dd1 $b0 $00 $02 $01
-    sSET_ROOM_TILE $00, 2, 2                           ;; 0e:5dd5 $b0 $00 $02 $02
-    sSET_ROOM_TILE $00, 2, 3                           ;; 0e:5dd9 $b0 $00 $02 $03
-    sSET_ROOM_TILE $00, 2, 4                           ;; 0e:5ddd $b0 $00 $02 $04
-    sSET_ROOM_TILE $00, 2, 5                           ;; 0e:5de1 $b0 $00 $02 $05
-    sSET_ROOM_TILE $00, 2, 6                           ;; 0e:5de5 $b0 $00 $02 $06
-.jr_0e_5de9:
+    sIF_0B $c9                                         ;; 0e:5dcb $0b $c9 $00 $1a
+      sSFX 16                                          ;; 0e:5dcf $f9 $10
+      sSET_ROOM_TILE $00, 2, 1                         ;; 0e:5dd1 $b0 $00 $02 $01
+      sSET_ROOM_TILE $00, 2, 2                         ;; 0e:5dd5 $b0 $00 $02 $02
+      sSET_ROOM_TILE $00, 2, 3                         ;; 0e:5dd9 $b0 $00 $02 $03
+      sSET_ROOM_TILE $00, 2, 4                         ;; 0e:5ddd $b0 $00 $02 $04
+      sSET_ROOM_TILE $00, 2, 5                         ;; 0e:5de1 $b0 $00 $02 $05
+      sSET_ROOM_TILE $00, 2, 6                         ;; 0e:5de5 $b0 $00 $02 $06
+    sENDIF                                             ;; 0e:5de9
     sEND                                               ;; 0e:5de9 $00
 
 script_04e8:
-    sIF_0B_JR $c9, .jr_0e_5df4                         ;; 0e:5dea $0b $c9 $00 $06
-    sSFX 24                                            ;; 0e:5dee $f9 $18
-    sSET_ROOM_TILE $02, 8, 6                           ;; 0e:5df0 $b0 $02 $08 $06
-.jr_0e_5df4:
+    sIF_0B $c9                                         ;; 0e:5dea $0b $c9 $00 $06
+      sSFX 24                                          ;; 0e:5dee $f9 $18
+      sSET_ROOM_TILE $02, 8, 6                         ;; 0e:5df0 $b0 $02 $08 $06
+    sENDIF                                             ;; 0e:5df4
     sEND                                               ;; 0e:5df4 $00
 
 script_04e9:
-    sIF_0B_JR $c9, .jr_0e_5dfd                         ;; 0e:5df5 $0b $c9 $00 $04
-    sSET_ROOM_TILE $02, 8, 6                           ;; 0e:5df9 $b0 $02 $08 $06
-.jr_0e_5dfd:
+    sIF_0B $c9                                         ;; 0e:5df5 $0b $c9 $00 $04
+      sSET_ROOM_TILE $02, 8, 6                         ;; 0e:5df9 $b0 $02 $08 $06
+    sENDIF                                             ;; 0e:5dfd
     sEND                                               ;; 0e:5dfd $00
 
 script_04ea:
-    sIF_0B_JR $a9, $a9, .jr_0e_5e0f                    ;; 0e:5dfe $0b $a9 $a9 $00 $0c
-    sSET_FLAG wScriptFlags0F.0                         ;; 0e:5e03 $da $78
-    sIF_FLAG_JR !wScriptFlags0F.1, .jr_0e_5e0f         ;; 0e:5e05 $08 $79 $00 $06
-    sSFX 24                                            ;; 0e:5e09 $f9 $18
-    sSET_ROOM_TILE $02, 8, 6                           ;; 0e:5e0b $b0 $02 $08 $06
-.jr_0e_5e0f:
-    sIF_0C_JR $a9, $a9, .jr_0e_5e16                    ;; 0e:5e0f $0c $a9 $a9 $00 $02
-    sCLEAR_FLAG wScriptFlags0F.0                       ;; 0e:5e14 $db $78
-.jr_0e_5e16:
+    sIF_0B $a9, $a9                                    ;; 0e:5dfe $0b $a9 $a9 $00 $0c
+      sSET_FLAG wScriptFlags0F.0                       ;; 0e:5e03 $da $78
+      sIF_FLAG wScriptFlags0F.1                        ;; 0e:5e05 $08 $79 $00 $06
+        sSFX 24                                        ;; 0e:5e09 $f9 $18
+        sSET_ROOM_TILE $02, 8, 6                       ;; 0e:5e0b $b0 $02 $08 $06
+      sENDIF                                           ;; 0e:5e0f
+    sENDIF                                             ;; 0e:5e0f
+    sIF_0C $a9, $a9                                    ;; 0e:5e0f $0c $a9 $a9 $00 $02
+      sCLEAR_FLAG wScriptFlags0F.0                     ;; 0e:5e14 $db $78
+    sENDIF                                             ;; 0e:5e16
     sEND                                               ;; 0e:5e16 $00
 
 script_04eb:
-    sIF_0B_JR $a9, $a9, .jr_0e_5e28                    ;; 0e:5e17 $0b $a9 $a9 $00 $0c
-    sSET_FLAG wScriptFlags0F.1                         ;; 0e:5e1c $da $79
-    sIF_FLAG_JR !wScriptFlags0F.0, .jr_0e_5e28         ;; 0e:5e1e $08 $78 $00 $06
-    sSFX 24                                            ;; 0e:5e22 $f9 $18
-    sSET_ROOM_TILE $02, 8, 6                           ;; 0e:5e24 $b0 $02 $08 $06
-.jr_0e_5e28:
-    sIF_0C_JR $a9, $a9, .jr_0e_5e2f                    ;; 0e:5e28 $0c $a9 $a9 $00 $02
-    sCLEAR_FLAG wScriptFlags0F.1                       ;; 0e:5e2d $db $79
-.jr_0e_5e2f:
+    sIF_0B $a9, $a9                                    ;; 0e:5e17 $0b $a9 $a9 $00 $0c
+      sSET_FLAG wScriptFlags0F.1                       ;; 0e:5e1c $da $79
+      sIF_FLAG wScriptFlags0F.0                        ;; 0e:5e1e $08 $78 $00 $06
+        sSFX 24                                        ;; 0e:5e22 $f9 $18
+        sSET_ROOM_TILE $02, 8, 6                       ;; 0e:5e24 $b0 $02 $08 $06
+      sENDIF                                           ;; 0e:5e28
+    sENDIF                                             ;; 0e:5e28
+    sIF_0C $a9, $a9                                    ;; 0e:5e28 $0c $a9 $a9 $00 $02
+      sCLEAR_FLAG wScriptFlags0F.1                     ;; 0e:5e2d $db $79
+    sENDIF                                             ;; 0e:5e2f
     sEND                                               ;; 0e:5e2f $00
 
 script_04ec:
-    sIF_0C_JR $a9, .jr_0e_5e38                         ;; 0e:5e30 $0c $a9 $00 $04
-    sSET_ROOM_TILE $00, 8, 1                           ;; 0e:5e34 $b0 $00 $08 $01
-.jr_0e_5e38:
+    sIF_0C $a9                                         ;; 0e:5e30 $0c $a9 $00 $04
+      sSET_ROOM_TILE $00, 8, 1                         ;; 0e:5e34 $b0 $00 $08 $01
+    sENDIF                                             ;; 0e:5e38
     sEND                                               ;; 0e:5e38 $00
 
 script_04ed:
@@ -4155,17 +4156,18 @@ script_04ef:
     sEND                                               ;; 0e:5e41 $00
 
 script_04f0:
-    sIF_0B_JR $c9, .jr_0e_5e48                         ;; 0e:5e42 $0b $c9 $00 $02
-    sSET_FLAG wScriptFlags0F.0                         ;; 0e:5e46 $da $78
-.jr_0e_5e48:
+    sIF_0B $c9                                         ;; 0e:5e42 $0b $c9 $00 $02
+      sSET_FLAG wScriptFlags0F.0                       ;; 0e:5e46 $da $78
+    sENDIF                                             ;; 0e:5e48
     sEND                                               ;; 0e:5e48 $00
 
 script_04f1:
-    sIF_0B_JR $c9, .jr_0e_5e57                         ;; 0e:5e49 $0b $c9 $00 $0a
-    sIF_FLAG_JR !wScriptFlags0F.0, .jr_0e_5e57         ;; 0e:5e4d $08 $78 $00 $06
-    sSFX 24                                            ;; 0e:5e51 $f9 $18
-    sSET_ROOM_TILE $02, 8, 6                           ;; 0e:5e53 $b0 $02 $08 $06
-.jr_0e_5e57:
+    sIF_0B $c9                                         ;; 0e:5e49 $0b $c9 $00 $0a
+      sIF_FLAG wScriptFlags0F.0                        ;; 0e:5e4d $08 $78 $00 $06
+        sSFX 24                                        ;; 0e:5e51 $f9 $18
+        sSET_ROOM_TILE $02, 8, 6                       ;; 0e:5e53 $b0 $02 $08 $06
+      sENDIF                                           ;; 0e:5e57
+    sENDIF                                             ;; 0e:5e57
     sEND                                               ;; 0e:5e57 $00
 
 script_04f2:
@@ -4182,165 +4184,167 @@ script_04f4:
     sEND                                               ;; 0e:5e62 $00
 
 script_04f5:
-    sIF_0B_JR $87, $a9, .jr_0e_5e74                    ;; 0e:5e63 $0b $87 $a9 $00 $0c
-    sSET_FLAG wScriptFlags0F.0                         ;; 0e:5e68 $da $78
-    sIF_FLAG_JR !wScriptFlags0F.1, .jr_0e_5e74         ;; 0e:5e6a $08 $79 $00 $06
-    sSFX 24                                            ;; 0e:5e6e $f9 $18
-    sSET_ROOM_TILE $02, 8, 1                           ;; 0e:5e70 $b0 $02 $08 $01
-.jr_0e_5e74:
+    sIF_0B $87, $a9                                    ;; 0e:5e63 $0b $87 $a9 $00 $0c
+      sSET_FLAG wScriptFlags0F.0                       ;; 0e:5e68 $da $78
+      sIF_FLAG wScriptFlags0F.1                        ;; 0e:5e6a $08 $79 $00 $06
+        sSFX 24                                        ;; 0e:5e6e $f9 $18
+        sSET_ROOM_TILE $02, 8, 1                       ;; 0e:5e70 $b0 $02 $08 $01
+      sENDIF                                           ;; 0e:5e74
+    sENDIF                                             ;; 0e:5e74
     sEND                                               ;; 0e:5e74 $00
 
 script_04f6:
-    sIF_0B_JR $87, $a9, .jr_0e_5e86                    ;; 0e:5e75 $0b $87 $a9 $00 $0c
-    sSET_FLAG wScriptFlags0F.1                         ;; 0e:5e7a $da $79
-    sIF_FLAG_JR !wScriptFlags0F.0, .jr_0e_5e86         ;; 0e:5e7c $08 $78 $00 $06
-    sSFX 24                                            ;; 0e:5e80 $f9 $18
-    sSET_ROOM_TILE $02, 8, 1                           ;; 0e:5e82 $b0 $02 $08 $01
-.jr_0e_5e86:
+    sIF_0B $87, $a9                                    ;; 0e:5e75 $0b $87 $a9 $00 $0c
+      sSET_FLAG wScriptFlags0F.1                       ;; 0e:5e7a $da $79
+      sIF_FLAG wScriptFlags0F.0                        ;; 0e:5e7c $08 $78 $00 $06
+        sSFX 24                                        ;; 0e:5e80 $f9 $18
+        sSET_ROOM_TILE $02, 8, 1                       ;; 0e:5e82 $b0 $02 $08 $01
+      sENDIF                                           ;; 0e:5e86
+    sENDIF                                             ;; 0e:5e86
     sEND                                               ;; 0e:5e86 $00
 
 script_04f7:
-    sIF_0B_JR $a9, .jr_0e_5e94                         ;; 0e:5e87 $0b $a9 $00 $09
-    sSET_FLAG wScriptFlags0F.0                         ;; 0e:5e8b $da $78
-    sIF_FLAG_JR !wScriptFlags0F.1, .jr_0e_5e94         ;; 0e:5e8d $08 $79 $00 $03
-    sSFX 16                                            ;; 0e:5e91 $f9 $10
-    sUNK_E0                                            ;; 0e:5e93 $e0
-.jr_0e_5e94:
-    sIF_0C_JR $a9, .jr_0e_5e9a                         ;; 0e:5e94 $0c $a9 $00 $02
-    sCLEAR_FLAG wScriptFlags0F.0                       ;; 0e:5e98 $db $78
-.jr_0e_5e9a:
+    sIF_0B $a9                                         ;; 0e:5e87 $0b $a9 $00 $09
+      sSET_FLAG wScriptFlags0F.0                       ;; 0e:5e8b $da $78
+      sIF_FLAG wScriptFlags0F.1                        ;; 0e:5e8d $08 $79 $00 $03
+        sSFX 16                                        ;; 0e:5e91 $f9 $10
+        sUNK_E0                                        ;; 0e:5e93 $e0
+      sENDIF                                           ;; 0e:5e94
+    sENDIF                                             ;; 0e:5e94
+    sIF_0C $a9                                         ;; 0e:5e94 $0c $a9 $00 $02
+      sCLEAR_FLAG wScriptFlags0F.0                     ;; 0e:5e98 $db $78
+    sENDIF                                             ;; 0e:5e9a
     sEND                                               ;; 0e:5e9a $00
 
 script_04f8:
-    sIF_0B_JR $a9, .jr_0e_5ea8                         ;; 0e:5e9b $0b $a9 $00 $09
-    sSET_FLAG wScriptFlags0F.1                         ;; 0e:5e9f $da $79
-    sIF_FLAG_JR !wScriptFlags0F.0, .jr_0e_5ea8         ;; 0e:5ea1 $08 $78 $00 $03
-    sSFX 16                                            ;; 0e:5ea5 $f9 $10
-    sUNK_E0                                            ;; 0e:5ea7 $e0
-.jr_0e_5ea8:
-    sIF_0C_JR $a9, .jr_0e_5eae                         ;; 0e:5ea8 $0c $a9 $00 $02
-    sCLEAR_FLAG wScriptFlags0F.1                       ;; 0e:5eac $db $79
-.jr_0e_5eae:
+    sIF_0B $a9                                         ;; 0e:5e9b $0b $a9 $00 $09
+      sSET_FLAG wScriptFlags0F.1                       ;; 0e:5e9f $da $79
+      sIF_FLAG wScriptFlags0F.0                        ;; 0e:5ea1 $08 $78 $00 $03
+        sSFX 16                                        ;; 0e:5ea5 $f9 $10
+        sUNK_E0                                        ;; 0e:5ea7 $e0
+      sENDIF                                           ;; 0e:5ea8
+    sENDIF                                             ;; 0e:5ea8
+    sIF_0C $a9                                         ;; 0e:5ea8 $0c $a9 $00 $02
+      sCLEAR_FLAG wScriptFlags0F.1                     ;; 0e:5eac $db $79
+    sENDIF                                             ;; 0e:5eae
     sEND                                               ;; 0e:5eae $00
 
 script_04f9:
-    sIF_0B_JR $a9, $87, .jr_0e_5eb7                    ;; 0e:5eaf $0b $a9 $87 $00 $03
-    sSFX 16                                            ;; 0e:5eb4 $f9 $10
-    sUNK_E0                                            ;; 0e:5eb6 $e0
-.jr_0e_5eb7:
-    sIF_0C_JR $a9, $87, .jr_0e_5ebf                    ;; 0e:5eb7 $0c $a9 $87 $00 $03
-    sSFX 16                                            ;; 0e:5ebc $f9 $10
-    sUNK_E1                                            ;; 0e:5ebe $e1
-.jr_0e_5ebf:
+    sIF_0B $a9, $87                                    ;; 0e:5eaf $0b $a9 $87 $00 $03
+      sSFX 16                                          ;; 0e:5eb4 $f9 $10
+      sUNK_E0                                          ;; 0e:5eb6 $e0
+    sENDIF                                             ;; 0e:5eb7
+    sIF_0C $a9, $87                                    ;; 0e:5eb7 $0c $a9 $87 $00 $03
+      sSFX 16                                          ;; 0e:5ebc $f9 $10
+      sUNK_E1                                          ;; 0e:5ebe $e1
+    sENDIF                                             ;; 0e:5ebf
     sEND                                               ;; 0e:5ebf $00
 
 script_04fa:
-    sIF_0B_JR $a9, $87, .jr_0e_5ec8                    ;; 0e:5ec0 $0b $a9 $87 $00 $03
-    sSFX 16                                            ;; 0e:5ec5 $f9 $10
-    sUNK_E4                                            ;; 0e:5ec7 $e4
-.jr_0e_5ec8:
-    sIF_0C_JR $a9, $87, .jr_0e_5ed0                    ;; 0e:5ec8 $0c $a9 $87 $00 $03
-    sSFX 16                                            ;; 0e:5ecd $f9 $10
-    sUNK_E5                                            ;; 0e:5ecf $e5
-.jr_0e_5ed0:
+    sIF_0B $a9, $87                                    ;; 0e:5ec0 $0b $a9 $87 $00 $03
+      sSFX 16                                          ;; 0e:5ec5 $f9 $10
+      sUNK_E4                                          ;; 0e:5ec7 $e4
+    sENDIF                                             ;; 0e:5ec8
+    sIF_0C $a9, $87                                    ;; 0e:5ec8 $0c $a9 $87 $00 $03
+      sSFX 16                                          ;; 0e:5ecd $f9 $10
+      sUNK_E5                                          ;; 0e:5ecf $e5
+    sENDIF                                             ;; 0e:5ed0
     sEND                                               ;; 0e:5ed0 $00
 
 script_04fb:
-    sIF_0C_JR $91, .jr_0e_5ee0                         ;; 0e:5ed1 $0c $91 $00 $0b
-    sSET_FLAG wScriptFlags0F.0                         ;; 0e:5ed5 $da $78
-    sIF_FLAG_JR !wScriptFlags0F.1, .jr_0e_5ede         ;; 0e:5ed7 $08 $79 $00 $03
-    sSFX 16                                            ;; 0e:5edb $f9 $10
-    sUNK_E4                                            ;; 0e:5edd $e4
-.jr_0e_5ede:
-    sJR  .jr_0e_5ee2                                   ;; 0e:5ede $01 $02
-.jr_0e_5ee0:
-    sCLEAR_FLAG wScriptFlags0F.0                       ;; 0e:5ee0 $db $78
-.jr_0e_5ee2:
+    sIF_0C $91                                         ;; 0e:5ed1 $0c $91 $00 $0b
+      sSET_FLAG wScriptFlags0F.0                       ;; 0e:5ed5 $da $78
+      sIF_FLAG wScriptFlags0F.1                        ;; 0e:5ed7 $08 $79 $00 $03
+        sSFX 16                                        ;; 0e:5edb $f9 $10
+        sUNK_E4                                        ;; 0e:5edd $e4
+      sENDIF                                           ;; 0e:5ede
+    sELSE                                              ;; 0e:5ede $01 $02
+      sCLEAR_FLAG wScriptFlags0F.0                     ;; 0e:5ee0 $db $78
+    sENDIF                                             ;; 0e:5ee2
     sEND                                               ;; 0e:5ee2 $00
 
 script_04fc:
-    sIF_0C_JR $91, .jr_0e_5ef2                         ;; 0e:5ee3 $0c $91 $00 $0b
-    sSET_FLAG wScriptFlags0F.1                         ;; 0e:5ee7 $da $79
-    sIF_FLAG_JR !wScriptFlags0F.0, .jr_0e_5ef0         ;; 0e:5ee9 $08 $78 $00 $03
-    sSFX 16                                            ;; 0e:5eed $f9 $10
-    sUNK_E4                                            ;; 0e:5eef $e4
-.jr_0e_5ef0:
-    sJR  .jr_0e_5ef4                                   ;; 0e:5ef0 $01 $02
-.jr_0e_5ef2:
-    sCLEAR_FLAG wScriptFlags0F.1                       ;; 0e:5ef2 $db $79
-.jr_0e_5ef4:
+    sIF_0C $91                                         ;; 0e:5ee3 $0c $91 $00 $0b
+      sSET_FLAG wScriptFlags0F.1                       ;; 0e:5ee7 $da $79
+      sIF_FLAG wScriptFlags0F.0                        ;; 0e:5ee9 $08 $78 $00 $03
+        sSFX 16                                        ;; 0e:5eed $f9 $10
+        sUNK_E4                                        ;; 0e:5eef $e4
+      sENDIF                                           ;; 0e:5ef0
+    sELSE                                              ;; 0e:5ef0 $01 $02
+      sCLEAR_FLAG wScriptFlags0F.1                     ;; 0e:5ef2 $db $79
+    sENDIF                                             ;; 0e:5ef4
     sEND                                               ;; 0e:5ef4 $00
 
 script_04fd:
-    sIF_0B_JR $c9, .jr_0e_5efb                         ;; 0e:5ef5 $0b $c9 $00 $02
-    sSET_FLAG wScriptFlags0F.0                         ;; 0e:5ef9 $da $78
-.jr_0e_5efb:
-    sIF_FLAG_JR !wScriptFlags0F.1, !wScriptFlags0F.2, !wScriptFlags0F.3, .jr_0e_5f04 ;; 0e:5efb $08 $79 $7a $7b $00 $03
-    sSFX 16                                            ;; 0e:5f01 $f9 $10
-    sUNK_E0                                            ;; 0e:5f03 $e0
-.jr_0e_5f04:
+    sIF_0B $c9                                         ;; 0e:5ef5 $0b $c9 $00 $02
+      sSET_FLAG wScriptFlags0F.0                       ;; 0e:5ef9 $da $78
+    sENDIF                                             ;; 0e:5efb
+    sIF_FLAG wScriptFlags0F.1, wScriptFlags0F.2, wScriptFlags0F.3 ;; 0e:5efb $08 $79 $7a $7b $00 $03
+      sSFX 16                                          ;; 0e:5f01 $f9 $10
+      sUNK_E0                                          ;; 0e:5f03 $e0
+    sENDIF                                             ;; 0e:5f04
     sEND                                               ;; 0e:5f04 $00
 
 script_04fe:
-    sIF_0B_JR $c9, .jr_0e_5f0b                         ;; 0e:5f05 $0b $c9 $00 $02
-    sSET_FLAG wScriptFlags0F.1                         ;; 0e:5f09 $da $79
-.jr_0e_5f0b:
-    sIF_FLAG_JR !wScriptFlags0F.0, !wScriptFlags0F.2, !wScriptFlags0F.3, .jr_0e_5f14 ;; 0e:5f0b $08 $78 $7a $7b $00 $03
-    sSFX 16                                            ;; 0e:5f11 $f9 $10
-    sUNK_E0                                            ;; 0e:5f13 $e0
-.jr_0e_5f14:
+    sIF_0B $c9                                         ;; 0e:5f05 $0b $c9 $00 $02
+      sSET_FLAG wScriptFlags0F.1                       ;; 0e:5f09 $da $79
+    sENDIF                                             ;; 0e:5f0b
+    sIF_FLAG wScriptFlags0F.0, wScriptFlags0F.2, wScriptFlags0F.3 ;; 0e:5f0b $08 $78 $7a $7b $00 $03
+      sSFX 16                                          ;; 0e:5f11 $f9 $10
+      sUNK_E0                                          ;; 0e:5f13 $e0
+    sENDIF                                             ;; 0e:5f14
     sEND                                               ;; 0e:5f14 $00
 
 script_04ff:
-    sIF_0B_JR $c9, .jr_0e_5f1b                         ;; 0e:5f15 $0b $c9 $00 $02
-    sSET_FLAG wScriptFlags0F.2                         ;; 0e:5f19 $da $7a
-.jr_0e_5f1b:
-    sIF_FLAG_JR !wScriptFlags0F.0, !wScriptFlags0F.1, !wScriptFlags0F.3, .jr_0e_5f24 ;; 0e:5f1b $08 $78 $79 $7b $00 $03
-    sSFX 16                                            ;; 0e:5f21 $f9 $10
-    sUNK_E0                                            ;; 0e:5f23 $e0
-.jr_0e_5f24:
+    sIF_0B $c9                                         ;; 0e:5f15 $0b $c9 $00 $02
+      sSET_FLAG wScriptFlags0F.2                       ;; 0e:5f19 $da $7a
+    sENDIF                                             ;; 0e:5f1b
+    sIF_FLAG wScriptFlags0F.0, wScriptFlags0F.1, wScriptFlags0F.3 ;; 0e:5f1b $08 $78 $79 $7b $00 $03
+      sSFX 16                                          ;; 0e:5f21 $f9 $10
+      sUNK_E0                                          ;; 0e:5f23 $e0
+    sENDIF                                             ;; 0e:5f24
     sEND                                               ;; 0e:5f24 $00
 
 script_0500:
-    sIF_0B_JR $c9, .jr_0e_5f2b                         ;; 0e:5f25 $0b $c9 $00 $02
-    sSET_FLAG wScriptFlags0F.3                         ;; 0e:5f29 $da $7b
-.jr_0e_5f2b:
-    sIF_FLAG_JR !wScriptFlags0F.0, !wScriptFlags0F.1, !wScriptFlags0F.2, .jr_0e_5f34 ;; 0e:5f2b $08 $78 $79 $7a $00 $03
-    sSFX 16                                            ;; 0e:5f31 $f9 $10
-    sUNK_E0                                            ;; 0e:5f33 $e0
-.jr_0e_5f34:
+    sIF_0B $c9                                         ;; 0e:5f25 $0b $c9 $00 $02
+      sSET_FLAG wScriptFlags0F.3                       ;; 0e:5f29 $da $7b
+    sENDIF                                             ;; 0e:5f2b
+    sIF_FLAG wScriptFlags0F.0, wScriptFlags0F.1, wScriptFlags0F.2 ;; 0e:5f2b $08 $78 $79 $7a $00 $03
+      sSFX 16                                          ;; 0e:5f31 $f9 $10
+      sUNK_E0                                          ;; 0e:5f33 $e0
+    sENDIF                                             ;; 0e:5f34
     sEND                                               ;; 0e:5f34 $00
 
 script_0501:
-    sIF_0B_JR $c9, .jr_0e_5f3c                         ;; 0e:5f35 $0b $c9 $00 $03
-    sSFX 16                                            ;; 0e:5f39 $f9 $10
-    sUNK_E4                                            ;; 0e:5f3b $e4
-.jr_0e_5f3c:
+    sIF_0B $c9                                         ;; 0e:5f35 $0b $c9 $00 $03
+      sSFX 16                                          ;; 0e:5f39 $f9 $10
+      sUNK_E4                                          ;; 0e:5f3b $e4
+    sENDIF                                             ;; 0e:5f3c
     sEND                                               ;; 0e:5f3c $00
 
 script_0502:
-    sIF_0B_JR $c9, .jr_0e_5f44                         ;; 0e:5f3d $0b $c9 $00 $03
-    sSFX 16                                            ;; 0e:5f41 $f9 $10
-    sUNK_E5                                            ;; 0e:5f43 $e5
-.jr_0e_5f44:
+    sIF_0B $c9                                         ;; 0e:5f3d $0b $c9 $00 $03
+      sSFX 16                                          ;; 0e:5f41 $f9 $10
+      sUNK_E5                                          ;; 0e:5f43 $e5
+    sENDIF                                             ;; 0e:5f44
     sEND                                               ;; 0e:5f44 $00
 
 script_0503:
-    sIF_0C_JR $a9, .jr_0e_5f4c                         ;; 0e:5f45 $0c $a9 $00 $03
-    sSFX 16                                            ;; 0e:5f49 $f9 $10
-    sUNK_E0                                            ;; 0e:5f4b $e0
-.jr_0e_5f4c:
+    sIF_0C $a9                                         ;; 0e:5f45 $0c $a9 $00 $03
+      sSFX 16                                          ;; 0e:5f49 $f9 $10
+      sUNK_E0                                          ;; 0e:5f4b $e0
+    sENDIF                                             ;; 0e:5f4c
     sEND                                               ;; 0e:5f4c $00
 
 script_0504:
-    sIF_0B_JR $c9, $a9, .jr_0e_5f55                    ;; 0e:5f4d $0b $c9 $a9 $00 $03
-    sSFX 16                                            ;; 0e:5f52 $f9 $10
-    sUNK_E0                                            ;; 0e:5f54 $e0
-.jr_0e_5f55:
-    sIF_0C_JR $c9, $a9, .jr_0e_5f5d                    ;; 0e:5f55 $0c $c9 $a9 $00 $03
-    sSFX 16                                            ;; 0e:5f5a $f9 $10
-    sUNK_E1                                            ;; 0e:5f5c $e1
-.jr_0e_5f5d:
+    sIF_0B $c9, $a9                                    ;; 0e:5f4d $0b $c9 $a9 $00 $03
+      sSFX 16                                          ;; 0e:5f52 $f9 $10
+      sUNK_E0                                          ;; 0e:5f54 $e0
+    sENDIF                                             ;; 0e:5f55
+    sIF_0C $c9, $a9                                    ;; 0e:5f55 $0c $c9 $a9 $00 $03
+      sSFX 16                                          ;; 0e:5f5a $f9 $10
+      sUNK_E1                                          ;; 0e:5f5c $e1
+    sENDIF                                             ;; 0e:5f5d
     sEND                                               ;; 0e:5f5d $00
 
 script_0505:
@@ -4350,64 +4354,65 @@ script_0506:
     sEND                                               ;; 0e:5f5f $00
 
 script_0507:
-    sIF_0B_JR $c9, .jr_0e_5f70                         ;; 0e:5f60 $0b $c9 $00 $0c
-    sSET_ROOM_TILE $00, 1, 5                           ;; 0e:5f64 $b0 $00 $01 $05
-    sSET_ROOM_TILE $00, 4, 1                           ;; 0e:5f68 $b0 $00 $04 $01
-    sSET_ROOM_TILE $00, 5, 1                           ;; 0e:5f6c $b0 $00 $05 $01
-.jr_0e_5f70:
+    sIF_0B $c9                                         ;; 0e:5f60 $0b $c9 $00 $0c
+      sSET_ROOM_TILE $00, 1, 5                         ;; 0e:5f64 $b0 $00 $01 $05
+      sSET_ROOM_TILE $00, 4, 1                         ;; 0e:5f68 $b0 $00 $04 $01
+      sSET_ROOM_TILE $00, 5, 1                         ;; 0e:5f6c $b0 $00 $05 $01
+    sENDIF                                             ;; 0e:5f70
     sEND                                               ;; 0e:5f70 $00
 
 script_0508:
-    sIF_0B_JR $c9, .jr_0e_5f78                         ;; 0e:5f71 $0b $c9 $00 $03
-    sSFX 16                                            ;; 0e:5f75 $f9 $10
-    sUNK_E2                                            ;; 0e:5f77 $e2
-.jr_0e_5f78:
+    sIF_0B $c9                                         ;; 0e:5f71 $0b $c9 $00 $03
+      sSFX 16                                          ;; 0e:5f75 $f9 $10
+      sUNK_E2                                          ;; 0e:5f77 $e2
+    sENDIF                                             ;; 0e:5f78
     sEND                                               ;; 0e:5f78 $00
 
 script_0509:
-    sIF_0B_JR $c9, .jr_0e_5f8d                         ;; 0e:5f79 $0b $c9 $00 $10
-    sSET_ROOM_TILE $00, 4, 3                           ;; 0e:5f7d $b0 $00 $04 $03
-    sSET_ROOM_TILE $00, 5, 3                           ;; 0e:5f81 $b0 $00 $05 $03
-    sSET_ROOM_TILE $00, 4, 4                           ;; 0e:5f85 $b0 $00 $04 $04
-    sSET_ROOM_TILE $00, 5, 4                           ;; 0e:5f89 $b0 $00 $05 $04
-.jr_0e_5f8d:
+    sIF_0B $c9                                         ;; 0e:5f79 $0b $c9 $00 $10
+      sSET_ROOM_TILE $00, 4, 3                         ;; 0e:5f7d $b0 $00 $04 $03
+      sSET_ROOM_TILE $00, 5, 3                         ;; 0e:5f81 $b0 $00 $05 $03
+      sSET_ROOM_TILE $00, 4, 4                         ;; 0e:5f85 $b0 $00 $04 $04
+      sSET_ROOM_TILE $00, 5, 4                         ;; 0e:5f89 $b0 $00 $05 $04
+    sENDIF                                             ;; 0e:5f8d
     sEND                                               ;; 0e:5f8d $00
 
 script_050a:
-    sIF_0B_JR $c9, .jr_0e_5fa5                         ;; 0e:5f8e $0b $c9 $00 $13
-    sSFX 16                                            ;; 0e:5f92 $f9 $10
-    sUNK_E4                                            ;; 0e:5f94 $e4
-    sSET_ROOM_TILE $00, 4, 3                           ;; 0e:5f95 $b0 $00 $04 $03
-    sSET_ROOM_TILE $00, 5, 3                           ;; 0e:5f99 $b0 $00 $05 $03
-    sSET_ROOM_TILE $00, 4, 4                           ;; 0e:5f9d $b0 $00 $04 $04
-    sSET_ROOM_TILE $00, 5, 4                           ;; 0e:5fa1 $b0 $00 $05 $04
-.jr_0e_5fa5:
+    sIF_0B $c9                                         ;; 0e:5f8e $0b $c9 $00 $13
+      sSFX 16                                          ;; 0e:5f92 $f9 $10
+      sUNK_E4                                          ;; 0e:5f94 $e4
+      sSET_ROOM_TILE $00, 4, 3                         ;; 0e:5f95 $b0 $00 $04 $03
+      sSET_ROOM_TILE $00, 5, 3                         ;; 0e:5f99 $b0 $00 $05 $03
+      sSET_ROOM_TILE $00, 4, 4                         ;; 0e:5f9d $b0 $00 $04 $04
+      sSET_ROOM_TILE $00, 5, 4                         ;; 0e:5fa1 $b0 $00 $05 $04
+    sENDIF                                             ;; 0e:5fa5
     sEND                                               ;; 0e:5fa5 $00
 
 script_050b:
-    sIF_0B_JR $a9, .jr_0e_5fad                         ;; 0e:5fa6 $0b $a9 $00 $03
-    sSFX 16                                            ;; 0e:5faa $f9 $10
-    sUNK_E4                                            ;; 0e:5fac $e4
-.jr_0e_5fad:
-    sIF_0B_JR $c9, .jr_0e_5fb7                         ;; 0e:5fad $0b $c9 $00 $06
-    sSFX 24                                            ;; 0e:5fb1 $f9 $18
-    sSET_ROOM_TILE $59, 4, 4                           ;; 0e:5fb3 $b0 $59 $04 $04
-.jr_0e_5fb7:
+    sIF_0B $a9                                         ;; 0e:5fa6 $0b $a9 $00 $03
+      sSFX 16                                          ;; 0e:5faa $f9 $10
+      sUNK_E4                                          ;; 0e:5fac $e4
+    sENDIF                                             ;; 0e:5fad
+    sIF_0B $c9                                         ;; 0e:5fad $0b $c9 $00 $06
+      sSFX 24                                          ;; 0e:5fb1 $f9 $18
+      sSET_ROOM_TILE $59, 4, 4                         ;; 0e:5fb3 $b0 $59 $04 $04
+    sENDIF                                             ;; 0e:5fb7
     sEND                                               ;; 0e:5fb7 $00
 
 script_050c:
-    sIF_0B_JR $c9, .jr_0e_5fd0                         ;; 0e:5fb8 $0b $c9 $00 $14
-    sIF_0B_JR $c9, .jr_0e_5fd0                         ;; 0e:5fbc $0b $c9 $00 $10
-    sIF_FLAG_JR !wScriptFlags0F.0, .jr_0e_5fcb         ;; 0e:5fc0 $08 $78 $00 $07
-    sCLEAR_FLAG wScriptFlags0F.0                       ;; 0e:5fc4 $db $78
-    sSFX 16                                            ;; 0e:5fc6 $f9 $10
-    sUNK_E2                                            ;; 0e:5fc8 $e2
-    sJR  .jr_0e_5fd0                                   ;; 0e:5fc9 $01 $05
-.jr_0e_5fcb:
-    sSET_FLAG wScriptFlags0F.0                         ;; 0e:5fcb $da $78
-    sSFX 16                                            ;; 0e:5fcd $f9 $10
-    sUNK_E3                                            ;; 0e:5fcf $e3
-.jr_0e_5fd0:
+    sIF_0B $c9                                         ;; 0e:5fb8 $0b $c9 $00 $14
+      sIF_0B $c9                                       ;; 0e:5fbc $0b $c9 $00 $10
+        sIF_FLAG wScriptFlags0F.0                      ;; 0e:5fc0 $08 $78 $00 $07
+          sCLEAR_FLAG wScriptFlags0F.0                 ;; 0e:5fc4 $db $78
+          sSFX 16                                      ;; 0e:5fc6 $f9 $10
+          sUNK_E2                                      ;; 0e:5fc8 $e2
+        sELSE                                          ;; 0e:5fc9 $01 $05
+          sSET_FLAG wScriptFlags0F.0                   ;; 0e:5fcb $da $78
+          sSFX 16                                      ;; 0e:5fcd $f9 $10
+          sUNK_E3                                      ;; 0e:5fcf $e3
+        sENDIF                                         ;; 0e:5fd0
+      sENDIF                                           ;; 0e:5fd0
+    sENDIF                                             ;; 0e:5fd0
     sEND                                               ;; 0e:5fd0 $00
 
 script_050d:
@@ -4424,19 +4429,18 @@ script_050f:
     sEND                                               ;; 0e:5fdb $00
 
 script_0510:
-    sIF_FLAG_JR wScriptFlags02.3, .jr_0e_5fee          ;; 0e:5fdc $08 $93 $00 $0e
-    sDELAY 20                                          ;; 0e:5fe0 $f0 $14
-    sSFX 20                                            ;; 0e:5fe2 $f9 $14
-    sFLASH_SCREEN                                      ;; 0e:5fe4 $bf
-    sSFX 20                                            ;; 0e:5fe5 $f9 $14
-    sFLASH_SCREEN                                      ;; 0e:5fe7 $bf
-    sSPAWN_BOSS 18                                     ;; 0e:5fe8 $fe $12
-    sSET_MUSIC 15                                      ;; 0e:5fea $f8 $0f
-    sJR  .jr_0e_5ff4                                   ;; 0e:5fec $01 $06
-.jr_0e_5fee:
-    sSFX 24                                            ;; 0e:5fee $f9 $18
-    sSET_ROOM_TILE $02, 1, 6                           ;; 0e:5ff0 $b0 $02 $01 $06
-.jr_0e_5ff4:
+    sIF_FLAG !wScriptFlags02.3                         ;; 0e:5fdc $08 $93 $00 $0e
+      sDELAY 20                                        ;; 0e:5fe0 $f0 $14
+      sSFX 20                                          ;; 0e:5fe2 $f9 $14
+      sFLASH_SCREEN                                    ;; 0e:5fe4 $bf
+      sSFX 20                                          ;; 0e:5fe5 $f9 $14
+      sFLASH_SCREEN                                    ;; 0e:5fe7 $bf
+      sSPAWN_BOSS 18                                   ;; 0e:5fe8 $fe $12
+      sSET_MUSIC 15                                    ;; 0e:5fea $f8 $0f
+    sELSE                                              ;; 0e:5fec $01 $06
+      sSFX 24                                          ;; 0e:5fee $f9 $18
+      sSET_ROOM_TILE $02, 1, 6                         ;; 0e:5ff0 $b0 $02 $01 $06
+    sENDIF                                             ;; 0e:5ff4
     sEND                                               ;; 0e:5ff4 $00
 
 script_0511:
@@ -4455,19 +4459,18 @@ script_0512:
     sEND                                               ;; 0e:601b $00
 
 script_0513:
-    sIF_FLAG_JR wScriptFlags02.5, .jr_0e_602e          ;; 0e:601c $08 $95 $00 $0e
-    sDELAY 20                                          ;; 0e:6020 $f0 $14
-    sSFX 20                                            ;; 0e:6022 $f9 $14
-    sFLASH_SCREEN                                      ;; 0e:6024 $bf
-    sSFX 20                                            ;; 0e:6025 $f9 $14
-    sFLASH_SCREEN                                      ;; 0e:6027 $bf
-    sSPAWN_BOSS 19                                     ;; 0e:6028 $fe $13
-    sSET_MUSIC 15                                      ;; 0e:602a $f8 $0f
-    sJR  .jr_0e_6031                                   ;; 0e:602c $01 $03
-.jr_0e_602e:
-    sSFX 16                                            ;; 0e:602e $f9 $10
-    sUNK_E4                                            ;; 0e:6030 $e4
-.jr_0e_6031:
+    sIF_FLAG !wScriptFlags02.5                         ;; 0e:601c $08 $95 $00 $0e
+      sDELAY 20                                        ;; 0e:6020 $f0 $14
+      sSFX 20                                          ;; 0e:6022 $f9 $14
+      sFLASH_SCREEN                                    ;; 0e:6024 $bf
+      sSFX 20                                          ;; 0e:6025 $f9 $14
+      sFLASH_SCREEN                                    ;; 0e:6027 $bf
+      sSPAWN_BOSS 19                                   ;; 0e:6028 $fe $13
+      sSET_MUSIC 15                                    ;; 0e:602a $f8 $0f
+    sELSE                                              ;; 0e:602c $01 $03
+      sSFX 16                                          ;; 0e:602e $f9 $10
+      sUNK_E4                                          ;; 0e:6030 $e4
+    sENDIF                                             ;; 0e:6031
     sEND                                               ;; 0e:6031 $00
 
 script_0514:
@@ -4486,10 +4489,10 @@ script_0515:
     sEND                                               ;; 0e:6053 $00
 
 script_0516:
-    sIF_FLAG_JR wScriptFlags07.0, .jr_0e_605c          ;; 0e:6054 $08 $b8 $00 $04
-    sSET_NPC_TYPES 107                                 ;; 0e:6058 $fc $6b
-    sSPAWN_NPC 0                                       ;; 0e:605a $fd $00
-.jr_0e_605c:
+    sIF_FLAG !wScriptFlags07.0                         ;; 0e:6054 $08 $b8 $00 $04
+      sSET_NPC_TYPES 107                               ;; 0e:6058 $fc $6b
+      sSPAWN_NPC 0                                     ;; 0e:605a $fd $00
+    sENDIF                                             ;; 0e:605c
     sEND                                               ;; 0e:605c $00
 
 script_0517:
@@ -4501,11 +4504,10 @@ script_0518:
 script_0519:
     sSET_NPC_TYPES 84                                  ;; 0e:605f $fc $54
     sSPAWN_NPC 1                                       ;; 0e:6061 $fd $01
-    sIF_FLAG_JR wScriptFlags0E.4, wScriptFlags0E.5, !wScriptFlags0E.6, !wScriptFlags0E.7, wScriptFlags02.1, .jr_0e_606d ;; 0e:6063 $08 $f4 $f5 $76 $77 $91 $00 $02
-    sJR  .jr_0e_606f                                   ;; 0e:606b $01 $02
-.jr_0e_606d:
-    sSPAWN_NPC 0                                       ;; 0e:606d $fd $00
-.jr_0e_606f:
+    sIF_FLAG !wScriptFlags0E.4, !wScriptFlags0E.5, wScriptFlags0E.6, wScriptFlags0E.7, !wScriptFlags02.1 ;; 0e:6063 $08 $f4 $f5 $76 $77 $91 $00 $02
+    sELSE                                              ;; 0e:606b $01 $02
+      sSPAWN_NPC 0                                     ;; 0e:606d $fd $00
+    sENDIF                                             ;; 0e:606f
     sEND                                               ;; 0e:606f $00
 
 script_051a:
@@ -4539,24 +4541,24 @@ script_0521:
     sEND                                               ;; 0e:6083 $00
 
 script_0522:
-    sIF_FLAG_JR wScriptFlags0E.5, .jr_0e_608e          ;; 0e:6084 $08 $f5 $00 $06
-    sSET_NPC_TYPES 106                                 ;; 0e:6088 $fc $6a
-    sSPAWN_NPC 0                                       ;; 0e:608a $fd $00
-    sJR  .jr_0e_60ab                                   ;; 0e:608c $01 $1d
-.jr_0e_608e:
-    sIF_FLAG_JR wScriptFlags0E.6, wScriptFlags0E.7, .jr_0e_6099 ;; 0e:608e $08 $f6 $f7 $00 $06
-    sSET_NPC_TYPES 44                                  ;; 0e:6093 $fc $2c
-    sSPAWN_NPC 0                                       ;; 0e:6095 $fd $00
-    sSPAWN_NPC 1                                       ;; 0e:6097 $fd $01
-.jr_0e_6099:
-    sIF_FLAG_JR wScriptFlags0E.6, !wScriptFlags0E.7, .jr_0e_60a2 ;; 0e:6099 $08 $f6 $77 $00 $04
-    sSET_NPC_TYPES 51                                  ;; 0e:609e $fc $33
-    sSPAWN_NPC 2                                       ;; 0e:60a0 $fd $02
-.jr_0e_60a2:
-    sIF_FLAG_JR !wScriptFlags0E.6, wScriptFlags0E.7, .jr_0e_60ab ;; 0e:60a2 $08 $76 $f7 $00 $04
-    sSET_NPC_TYPES 61                                  ;; 0e:60a7 $fc $3d
-    sSPAWN_NPC 0                                       ;; 0e:60a9 $fd $00
-.jr_0e_60ab:
+    sIF_FLAG !wScriptFlags0E.5                         ;; 0e:6084 $08 $f5 $00 $06
+      sSET_NPC_TYPES 106                               ;; 0e:6088 $fc $6a
+      sSPAWN_NPC 0                                     ;; 0e:608a $fd $00
+    sELSE                                              ;; 0e:608c $01 $1d
+      sIF_FLAG !wScriptFlags0E.6, !wScriptFlags0E.7    ;; 0e:608e $08 $f6 $f7 $00 $06
+        sSET_NPC_TYPES 44                              ;; 0e:6093 $fc $2c
+        sSPAWN_NPC 0                                   ;; 0e:6095 $fd $00
+        sSPAWN_NPC 1                                   ;; 0e:6097 $fd $01
+      sENDIF                                           ;; 0e:6099
+      sIF_FLAG !wScriptFlags0E.6, wScriptFlags0E.7     ;; 0e:6099 $08 $f6 $77 $00 $04
+        sSET_NPC_TYPES 51                              ;; 0e:609e $fc $33
+        sSPAWN_NPC 2                                   ;; 0e:60a0 $fd $02
+      sENDIF                                           ;; 0e:60a2
+      sIF_FLAG wScriptFlags0E.6, !wScriptFlags0E.7     ;; 0e:60a2 $08 $76 $f7 $00 $04
+        sSET_NPC_TYPES 61                              ;; 0e:60a7 $fc $3d
+        sSPAWN_NPC 0                                   ;; 0e:60a9 $fd $00
+      sENDIF                                           ;; 0e:60ab
+    sENDIF                                             ;; 0e:60ab
     sEND                                               ;; 0e:60ab $00
 
 script_0523:
@@ -4566,45 +4568,46 @@ script_0524:
     sEND                                               ;; 0e:60ad $00
 
 script_0525:
-    sIF_FLAG_JR wScriptFlags0E.5, wScriptFlags0E.6, !wScriptFlags0E.7, .jr_0e_60c6 ;; 0e:60ae $08 $f5 $f6 $77 $00 $12
-    sSET_NPC_TYPES 74                                  ;; 0e:60b4 $fc $4a
-    sIF_FLAG_JR !wScriptFlags03.7, wScriptFlags04.1, .jr_0e_60c4 ;; 0e:60b6 $08 $1f $a1 $00 $09
-    sSPAWN_NPC 1                                       ;; 0e:60bb $fd $01
-    sSPAWN_NPC 2                                       ;; 0e:60bd $fd $02
-    sCALL script_053e                                  ;; 0e:60bf $02 $6e $c6
-    sJR  .jr_0e_60c6                                   ;; 0e:60c2 $01 $02
-.jr_0e_60c4:
-    sSPAWN_NPC 2                                       ;; 0e:60c4 $fd $02
-.jr_0e_60c6:
-    sIF_FLAG_JR wScriptFlags0E.5, !wScriptFlags0E.6, wScriptFlags0E.7, .jr_0e_60d0 ;; 0e:60c6 $08 $f5 $76 $f7 $00 $04
-    sSET_NPC_TYPES 43                                  ;; 0e:60cc $fc $2b
-    sSPAWN_NPC 2                                       ;; 0e:60ce $fd $02
-.jr_0e_60d0:
-    sIF_FLAG_JR wScriptFlags0E.5, !wScriptFlags0E.6, !wScriptFlags0E.7, .jr_0e_60da ;; 0e:60d0 $08 $f5 $76 $77 $00 $04
-    sSET_NPC_TYPES 52                                  ;; 0e:60d6 $fc $34
-    sSPAWN_NPC 1                                       ;; 0e:60d8 $fd $01
-.jr_0e_60da:
-    sIF_FLAG_JR !wScriptFlags0E.5, wScriptFlags0E.6, wScriptFlags0E.7, .jr_0e_60e4 ;; 0e:60da $08 $75 $f6 $f7 $00 $04
-    sSET_NPC_TYPES 60                                  ;; 0e:60e0 $fc $3c
-    sSPAWN_NPC 2                                       ;; 0e:60e2 $fd $02
-.jr_0e_60e4:
-    sIF_FLAG_JR !wScriptFlags0E.5, wScriptFlags0E.6, !wScriptFlags0E.7, .jr_0e_60f0 ;; 0e:60e4 $08 $75 $f6 $77 $00 $06
-    sSET_NPC_TYPES 58                                  ;; 0e:60ea $fc $3a
-    sSPAWN_NPC 0                                       ;; 0e:60ec $fd $00
-    sSPAWN_NPC 1                                       ;; 0e:60ee $fd $01
-.jr_0e_60f0:
-    sIF_FLAG_JR !wScriptFlags0E.5, !wScriptFlags0E.6, wScriptFlags0E.7, .jr_0e_610d ;; 0e:60f0 $08 $75 $76 $f7 $00 $17
-    sSET_NPC_TYPES 76                                  ;; 0e:60f6 $fc $4c
-    sIF_FLAG_JR wScriptFlags03.7, .jr_0e_60fe          ;; 0e:60f8 $08 $9f $00 $02
-    sSPAWN_NPC 1                                       ;; 0e:60fc $fd $01
-.jr_0e_60fe:
-    sIF_FLAG_JR !wScriptFlags03.7, wScriptFlags04.0, .jr_0e_6105 ;; 0e:60fe $08 $1f $a0 $00 $02
-    sSPAWN_NPC 0                                       ;; 0e:6103 $fd $00
-.jr_0e_6105:
-    sIF_FLAG_JR !wScriptFlags04.0, .jr_0e_610d         ;; 0e:6105 $08 $20 $00 $04
-    sSPAWN_NPC 0                                       ;; 0e:6109 $fd $00
-    sSPAWN_NPC 1                                       ;; 0e:610b $fd $01
-.jr_0e_610d:
+    sIF_FLAG !wScriptFlags0E.5, !wScriptFlags0E.6, wScriptFlags0E.7 ;; 0e:60ae $08 $f5 $f6 $77 $00 $12
+      sSET_NPC_TYPES 74                                ;; 0e:60b4 $fc $4a
+      sIF_FLAG wScriptFlags03.7, !wScriptFlags04.1     ;; 0e:60b6 $08 $1f $a1 $00 $09
+        sSPAWN_NPC 1                                   ;; 0e:60bb $fd $01
+        sSPAWN_NPC 2                                   ;; 0e:60bd $fd $02
+        sCALL script_053e                              ;; 0e:60bf $02 $6e $c6
+      sELSE                                            ;; 0e:60c2 $01 $02
+        sSPAWN_NPC 2                                   ;; 0e:60c4 $fd $02
+      sENDIF                                           ;; 0e:60c6
+    sENDIF                                             ;; 0e:60c6
+    sIF_FLAG !wScriptFlags0E.5, wScriptFlags0E.6, !wScriptFlags0E.7 ;; 0e:60c6 $08 $f5 $76 $f7 $00 $04
+      sSET_NPC_TYPES 43                                ;; 0e:60cc $fc $2b
+      sSPAWN_NPC 2                                     ;; 0e:60ce $fd $02
+    sENDIF                                             ;; 0e:60d0
+    sIF_FLAG !wScriptFlags0E.5, wScriptFlags0E.6, wScriptFlags0E.7 ;; 0e:60d0 $08 $f5 $76 $77 $00 $04
+      sSET_NPC_TYPES 52                                ;; 0e:60d6 $fc $34
+      sSPAWN_NPC 1                                     ;; 0e:60d8 $fd $01
+    sENDIF                                             ;; 0e:60da
+    sIF_FLAG wScriptFlags0E.5, !wScriptFlags0E.6, !wScriptFlags0E.7 ;; 0e:60da $08 $75 $f6 $f7 $00 $04
+      sSET_NPC_TYPES 60                                ;; 0e:60e0 $fc $3c
+      sSPAWN_NPC 2                                     ;; 0e:60e2 $fd $02
+    sENDIF                                             ;; 0e:60e4
+    sIF_FLAG wScriptFlags0E.5, !wScriptFlags0E.6, wScriptFlags0E.7 ;; 0e:60e4 $08 $75 $f6 $77 $00 $06
+      sSET_NPC_TYPES 58                                ;; 0e:60ea $fc $3a
+      sSPAWN_NPC 0                                     ;; 0e:60ec $fd $00
+      sSPAWN_NPC 1                                     ;; 0e:60ee $fd $01
+    sENDIF                                             ;; 0e:60f0
+    sIF_FLAG wScriptFlags0E.5, wScriptFlags0E.6, !wScriptFlags0E.7 ;; 0e:60f0 $08 $75 $76 $f7 $00 $17
+      sSET_NPC_TYPES 76                                ;; 0e:60f6 $fc $4c
+      sIF_FLAG !wScriptFlags03.7                       ;; 0e:60f8 $08 $9f $00 $02
+        sSPAWN_NPC 1                                   ;; 0e:60fc $fd $01
+      sENDIF                                           ;; 0e:60fe
+      sIF_FLAG wScriptFlags03.7, !wScriptFlags04.0     ;; 0e:60fe $08 $1f $a0 $00 $02
+        sSPAWN_NPC 0                                   ;; 0e:6103 $fd $00
+      sENDIF                                           ;; 0e:6105
+      sIF_FLAG wScriptFlags04.0                        ;; 0e:6105 $08 $20 $00 $04
+        sSPAWN_NPC 0                                   ;; 0e:6109 $fd $00
+        sSPAWN_NPC 1                                   ;; 0e:610b $fd $01
+      sENDIF                                           ;; 0e:610d
+    sENDIF                                             ;; 0e:610d
     sEND                                               ;; 0e:610d $00
 
 script_0526:
@@ -4651,28 +4654,28 @@ script_0530:
     sEND                                               ;; 0e:6128 $00
 
 script_0531:
-    sIF_FLAG_JR wScriptFlags01.0, .jr_0e_619e          ;; 0e:6129 $08 $88 $00 $71
-    sSET_MUSIC 0                                       ;; 0e:612d $f8 $00
-    sUNK_DC                                            ;; 0e:612f $dc
-    sDELAY 90                                          ;; 0e:6130 $f0 $5a
-    sMSG                                               ;; 0e:6132 $04
-      db "<10><BOY> was a fighter\nof Empire Glaive.", $00 ;; 0e:6133
-    sDELAY 80                                          ;; 0e:614a $f0 $50
-    sMSG                                               ;; 0e:614c $04
-      db "<11>", $00                                   ;; 0e:614d
-    sFULL_HP                                           ;; 0e:614f $c0
-    sFADE_TO_BLACK                                     ;; 0e:6150 $bd
-    sLOAD_ROOM_INSTANT 15, $55, 20, 0                  ;; 0e:6151 $f3 $0f $55 $14 $00
-    sFADE_TO_NORMAL                                    ;; 0e:6156 $bc
-    sDELAY 50                                          ;; 0e:6157 $f0 $32
-    sUNK_DD                                            ;; 0e:6159 $dd
-    sMSG                                               ;; 0e:615a $04
-      db "<10><BOY> and friends\nwere forced to\nfight everyday<12>"
+    sIF_FLAG !wScriptFlags01.0                         ;; 0e:6129 $08 $88 $00 $71
+      sSET_MUSIC 0                                     ;; 0e:612d $f8 $00
+      sUNK_DC                                          ;; 0e:612f $dc
+      sDELAY 90                                        ;; 0e:6130 $f0 $5a
+      sMSG                                             ;; 0e:6132 $04
+        db "<10><BOY> was a fighter\nof Empire Glaive.", $00 ;; 0e:6133
+      sDELAY 80                                        ;; 0e:614a $f0 $50
+      sMSG                                             ;; 0e:614c $04
+        db "<11>", $00                                 ;; 0e:614d
+      sFULL_HP                                         ;; 0e:614f $c0
+      sFADE_TO_BLACK                                   ;; 0e:6150 $bd
+      sLOAD_ROOM_INSTANT 15, $55, 20, 0                ;; 0e:6151 $f3 $0f $55 $14 $00
+      sFADE_TO_NORMAL                                  ;; 0e:6156 $bc
+      sDELAY 50                                        ;; 0e:6157 $f0 $32
+      sUNK_DD                                          ;; 0e:6159 $dd
+      sMSG                                             ;; 0e:615a $04
+        db "<10><BOY> and friends\nwere forced to\nfight everyday<12>"
       db "<1b>just for the\nentertainment of\nDark Lord.<12>"
       db "<1b>", $00 ;; 0e:615b
-    sCALL script_0532                                  ;; 0e:6198 $02 $61 $9f
-    sCALL script_0533                                  ;; 0e:619b $02 $61 $fa
-.jr_0e_619e:
+      sCALL script_0532                                ;; 0e:6198 $02 $61 $9f
+      sCALL script_0533                                ;; 0e:619b $02 $61 $fa
+    sENDIF                                             ;; 0e:619e
     sEND                                               ;; 0e:619e $00
 
 script_0532:
@@ -6129,26 +6132,25 @@ script_0549:
     sMSG                                               ;; 0e:7ac2 $04
       db "<10> One and only\n <a5>Battle for only\n 150GP!  Want it?<12>"
       db "<13>", $00 ;; 0e:7ac3
-    sIF_FLAG_JR wScriptFlags0F.7, .jr_0e_7b27          ;; 0e:7aeb $08 $ff $00 $38
-    sMSG                                               ;; 0e:7aef $04
-      db "<11>", $00                                   ;; 0e:7af0
-    sTAKE_MONEY 150                                    ;; 0e:7af2 $d1 $96 $00
-    sMSG                                               ;; 0e:7af5 $04
-      db "<10>", $00                                   ;; 0e:7af6
-    sIF_FLAG_JR !wScriptFlags.6, .jr_0e_7b1a           ;; 0e:7af8 $08 $06 $00 $1e
-    sMSG                                               ;; 0e:7afc $04
-      db " Sorry!\n You don't have\n enough money!", $00 ;; 0e:7afd
-    sJR  .jr_0e_7b24                                   ;; 0e:7b18 $01 $0a
-.jr_0e_7b1a:
-    sMSG                                               ;; 0e:7b1a $04
-      db " Great!", $00                                ;; 0e:7b1b
-    sSFX 15                                            ;; 0e:7b20 $f9 $0f
-    sGIVE_EQUIPMENT 1                                  ;; 0e:7b22 $d8 $01
-.jr_0e_7b24:
-    sMSG                                               ;; 0e:7b24 $04
-      db "<12>"
-      db "", $00                       ;; 0e:7b25
-.jr_0e_7b27:
+    sIF_FLAG !wScriptFlags0F.7                         ;; 0e:7aeb $08 $ff $00 $38
+      sMSG                                             ;; 0e:7aef $04
+        db "<11>", $00                                 ;; 0e:7af0
+      sTAKE_MONEY 150                                  ;; 0e:7af2 $d1 $96 $00
+      sMSG                                             ;; 0e:7af5 $04
+        db "<10>", $00                                 ;; 0e:7af6
+      sIF_FLAG wScriptFlags.6                          ;; 0e:7af8 $08 $06 $00 $1e
+        sMSG                                           ;; 0e:7afc $04
+          db " Sorry!\n You don't have\n enough money!", $00 ;; 0e:7afd
+      sELSE                                            ;; 0e:7b18 $01 $0a
+        sMSG                                           ;; 0e:7b1a $04
+          db " Great!", $00                            ;; 0e:7b1b
+        sSFX 15                                        ;; 0e:7b20 $f9 $0f
+        sGIVE_EQUIPMENT 1                              ;; 0e:7b22 $d8 $01
+      sENDIF                                           ;; 0e:7b24
+      sMSG                                             ;; 0e:7b24 $04
+        db "<12>"
+      db "", $00                     ;; 0e:7b25
+    sENDIF                                             ;; 0e:7b27
     sMSG                                               ;; 0e:7b27 $04
       db "<1b> How about\n some items?<12>"
       db "<11>", $00 ;; 0e:7b28
