@@ -2340,7 +2340,7 @@ script_019f:
     sCALL script_053f                                  ;; 0d:4d3e $02 $6f $ba
     sCALL script_0540                                  ;; 0d:4d41 $02 $71 $ec
     sCALL script_0541                                  ;; 0d:4d44 $02 $74 $0c
-    sUNK_CC                                            ;; 0d:4d47 $cc
+    sHALT_GAME                                         ;; 0d:4d47 $cc
     sEND                                               ;; 0d:4d48 $00
 
 script_01a0:

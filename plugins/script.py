@@ -320,7 +320,7 @@ OPCODES = {
     0xC8: ("sRESET_GAME",),
     0xC9: ("sUNK_C9", r"db \1, \2", "HEX", "HEX"),
     0xCA: ("sUNK_CA", r"db \1, \2", "HEX", "HEX"),
-    0xCC: ("sUNK_CC",), # hangs when testing?
+    0xCC: ("sHALT_GAME",), # Stop the game, blocking in the script forever. Used at the end of the credits
     0xCD: ("sNOP_CD",),
     0xCE: ("sNOP_CE",),
     0xCF: ("sNOP_CF",),

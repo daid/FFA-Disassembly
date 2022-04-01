@@ -304,6 +304,9 @@ sGIVE_XP: MACRO
 db $d2
 dw \1
 ENDM
+sHALT_GAME: MACRO
+db $cc
+ENDM
 sIF_0B_JR: MACRO
 db $0b
 
@@ -870,9 +873,6 @@ ENDM
 sUNK_CA: MACRO
 db $ca
 db \1, \2
-ENDM
-sUNK_CC: MACRO
-db $cc
 ENDM
 sUNK_D5: MACRO
 db $d5
