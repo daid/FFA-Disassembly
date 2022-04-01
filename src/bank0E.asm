@@ -11,7 +11,7 @@ script_0294:
       sIF_FLAG wScriptFlags0A.2, !wScriptFlags09.0     ;; 0e:4004 $08 $52 $c8 $00 $25
         sMSG                                           ;; 0e:4009 $04
           db "<10>Man:Didn't you\n come here to get\n the Mirror?<12>"
-      db "<11>", $00 ;; 0e:400a
+          db "<11>", $00 ;; 0e:400a
         sFOLLOWER_DELETE                               ;; 0e:402b $98
         sCLEAR_FLAG wScriptFlags0A.2                   ;; 0e:402c $db $52
       sENDIF                                           ;; 0e:402e
@@ -76,7 +76,7 @@ script_029a:
         sEND                                           ;; 0e:4092 $00
         sMSG                                           ;; 0e:4093 $04
           db "<10> Wait, <BOY>!<12>"
-      db "<11>", $00 ;; 0e:4094
+          db "<11>", $00 ;; 0e:4094
         sDELAY 30                                      ;; 0e:409e $f0 $1e
         sSET_PLAYER_DIRECTION_UP                       ;; 0e:40a0 $84
         sDELAY 30                                      ;; 0e:40a1 $f0 $1e
@@ -89,7 +89,7 @@ script_029a:
         sCALL script_029b                              ;; 0e:40ac $02 $40 $b7
         sMSG                                           ;; 0e:40af $04
           db "<12>"
-      db "<11>", $00               ;; 0e:40b0
+          db "<11>", $00           ;; 0e:40b0
         sSET_FLAG wScriptFlags0A.4                     ;; 0e:40b3 $da $54
       sENDIF                                           ;; 0e:40b5
       sUNK_AB                                          ;; 0e:40b5 $ab
@@ -133,7 +133,7 @@ script_029f:
       sIF_FLAG wScriptFlags0A.5, !wScriptFlags04.7     ;; 0e:4187 $08 $55 $a7 $00 $25
         sMSG                                           ;; 0e:418c $04
           db "<10>Amanda:Won't you\n come along with\n me, <BOY>?<12>"
-      db "<11>", $00 ;; 0e:418d
+          db "<11>", $00 ;; 0e:418d
         sFOLLOWER_DELETE                               ;; 0e:41ac $98
         sDELAY 30                                      ;; 0e:41ad $f0 $1e
         sCLEAR_FLAG wScriptFlags0A.5                   ;; 0e:41af $db $55
@@ -391,7 +391,7 @@ script_02be:
         sSHAKE_SCREEN                                  ;; 0e:434e $fb
         sMSG                                           ;; 0e:434f $04
           db "<10>  __?<12>"
-      db "<11>", $00      ;; 0e:4350
+          db "<11>", $00  ;; 0e:4350
       sENDIF                                           ;; 0e:4357
       sLOAD_ROOM 3, $01, 9, 12                         ;; 0e:4357 $f4 $03 $01 $09 $0c
       sRUN_ROOM_SCRIPT                                 ;; 0e:435c $ec
@@ -1299,7 +1299,7 @@ script_0352:
         sSHAKE_SCREEN                                  ;; 0e:492f $fb
         sMSG                                           ;; 0e:4930 $04
           db "<10>__?<12>"
-      db "<11>", $00        ;; 0e:4931
+          db "<11>", $00    ;; 0e:4931
         sPLAYER_STEP_BACKWARD                          ;; 0e:4937 $81
         sPLAYER_STEP_BACKWARD                          ;; 0e:4938 $81
         sSET_PLAYER_DIRECTION_LEFT                     ;; 0e:4939 $87
@@ -1323,7 +1323,7 @@ script_0352:
         sDELAY 60                                      ;; 0e:4968 $f0 $3c
         sMSG                                           ;; 0e:496a $04
           db "<10> I can't go back\n anymore __<12>"
-      db "<11>", $00 ;; 0e:496b
+          db "<11>", $00 ;; 0e:496b
         sSET_FLAG wScriptFlags06.7                     ;; 0e:4980 $da $37
       sENDIF                                           ;; 0e:4982
       sLOAD_ROOM 1, $26, 12, 4                         ;; 0e:4982 $f4 $01 $26 $0c $04
@@ -2082,8 +2082,8 @@ script_03c6:
         sDELAY 60                                      ;; 0e:4e5c $f0 $3c
         sMSG                                           ;; 0e:4e5e $04
           db " Julius_ ?!<12>"
-      db "<1b>Where is he___?\n  !!  Must be at\nthe Waterfalls!!<12>"
-      db "<11>", $00 ;; 0e:4e5f
+          db "<1b>Where is he___?\n  !!  Must be at\nthe Waterfalls!!<12>"
+          db "<11>", $00 ;; 0e:4e5f
         sLOAD_ROOM 1, $46, 7, 9                        ;; 0e:4e8d $f4 $01 $46 $07 $09
         sUNK_AB                                        ;; 0e:4e92 $ab
         sSET_NPC_TYPES 40                              ;; 0e:4e93 $fc $28
@@ -2094,7 +2094,7 @@ script_03c6:
         sEND                                           ;; 0e:4e9c $00
         sMSG                                           ;; 0e:4e9d $04
           db "<10><BOY>:<GIRL>!!<12>"
-      db "<11>", $00 ;; 0e:4e9e
+          db "<11>", $00 ;; 0e:4e9e
         sSET_NPC_1_DIRECTION_UP                        ;; 0e:4ea7 $14
         sDELAY 60                                      ;; 0e:4ea8 $f0 $3c
         sSET_NPC_1_DIRECTION_LEFT                      ;; 0e:4eaa $17
@@ -2104,7 +2104,7 @@ script_03c6:
         sDEL_NPC_1                                     ;; 0e:4eb0 $18
         sMSG                                           ;; 0e:4eb1 $04
           db "<10><BOY>:__ <GIRL>?<12>"
-      db "<11>", $00 ;; 0e:4eb2
+          db "<11>", $00 ;; 0e:4eb2
       sENDIF                                           ;; 0e:4ebc
     sENDIF                                             ;; 0e:4ebc
     sEND                                               ;; 0e:4ebc $00
@@ -2205,7 +2205,7 @@ script_03d6:
       sFADE_TO_NORMAL                                  ;; 0e:4f4c $bc
       sMSG                                             ;; 0e:4f4d $04
         db "<10> AAARGH!!\n Poison gas!!<12>"
-      db "<11>", $00 ;; 0e:4f4e
+        db "<11>", $00 ;; 0e:4f4e
       sFADE_TO_BLACK                                   ;; 0e:4f65 $bd
       sLOAD_ROOM_INSTANT 0, $28, 11, 6                 ;; 0e:4f66 $f3 $00 $28 $0b $06
       sFADE_TO_NORMAL                                  ;; 0e:4f6b $bc
@@ -2511,7 +2511,7 @@ script_0401:
         sDELAY 60                                      ;; 0e:515f $f0 $3c
         sMSG                                           ;; 0e:5161 $04
           db "<10>Watts:Wow!?\n Are you okay?\n<BOY>:_ Ouch!_ Oh_<12>"
-      db "<11>", $00 ;; 0e:5162
+          db "<11>", $00 ;; 0e:5162
         sNPC_1_STEP_FORWARD                            ;; 0e:5189 $10
         sNPC_1_STEP_FORWARD                            ;; 0e:518a $10
         sSET_NPC_1_DIRECTION_LEFT                      ;; 0e:518b $17
@@ -2524,8 +2524,8 @@ script_0401:
         sDELAY 60                                      ;; 0e:5195 $f0 $3c
         sMSG                                           ;; 0e:5197 $04
           db "<10><BOY>:Thanks.\n Do you know this\n cave well?<12>"
-      db "<1b>Watts:Looking for\n Silver? Let's go\n together, then!<12>"
-      db "<11>", $00 ;; 0e:5198
+          db "<1b>Watts:Looking for\n Silver? Let's go\n together, then!<12>"
+          db "<11>", $00 ;; 0e:5198
         sSET_NPC_TYPES 78                              ;; 0e:51db $fc $4e
         sDEL_NPC_1                                     ;; 0e:51dd $18
         sSPAWN_NPC 2                                   ;; 0e:51de $fd $02
@@ -2598,7 +2598,7 @@ script_040a:
         sSET_MUSIC 0                                   ;; 0e:523a $f8 $00
         sMSG                                           ;; 0e:523c $04
           db "<10>   Rusty sword\n  released it's\n  mystic power__<12>"
-      db "<11>", $00 ;; 0e:523d
+          db "<11>", $00 ;; 0e:523d
         sDELAY 120                                     ;; 0e:5260 $f0 $78
         sSFX 37                                        ;; 0e:5262 $f9 $25
         sSHAKE_SCREEN                                  ;; 0e:5264 $fb
@@ -2610,7 +2610,7 @@ script_040a:
         sSHAKE_SCREEN                                  ;; 0e:5271 $fb
         sMSG                                           ;; 0e:5272 $04
           db "<10>Tower of Dime will\n appear somewhere\n in this desert!!<12>"
-      db "<11>", $00 ;; 0e:5273
+          db "<11>", $00 ;; 0e:5273
         sSET_MUSIC 25                                  ;; 0e:529a $f8 $19
         sUNK_AB                                        ;; 0e:529c $ab
         sRUN_ROOM_SCRIPT                               ;; 0e:529d $ec
@@ -2814,7 +2814,7 @@ script_042e:
       sUNK_AF                                          ;; 0e:5391 $af
       sMSG                                             ;; 0e:5392 $04
         db "<10>Found <a6>Sickle!<12>"
-      db "<11>", $00 ;; 0e:5393
+        db "<11>", $00 ;; 0e:5393
       sSET_FLAG wScriptFlags08.1                       ;; 0e:53a0 $da $41
     sENDIF                                             ;; 0e:53a2
     sEND                                               ;; 0e:53a2 $00
@@ -2826,7 +2826,7 @@ script_042f:
       sUNK_AF                                          ;; 0e:53ab $af
       sMSG                                             ;; 0e:53ac $04
         db "<10>Found <a8>Chain!<12>"
-      db "<11>", $00 ;; 0e:53ad
+        db "<11>", $00 ;; 0e:53ad
       sSET_FLAG wScriptFlags08.0                       ;; 0e:53b9 $da $40
     sENDIF                                             ;; 0e:53bb
     sEND                                               ;; 0e:53bb $00
@@ -2838,7 +2838,7 @@ script_0430:
       sUNK_AF                                          ;; 0e:53c4 $af
       sMSG                                             ;; 0e:53c5 $04
         db "<10>Found <a4>Dragon!<12>"
-      db "<11>", $00 ;; 0e:53c6
+        db "<11>", $00 ;; 0e:53c6
       sSET_FLAG wScriptFlags09.4                       ;; 0e:53d4 $da $4c
     sENDIF                                             ;; 0e:53d6
     sEND                                               ;; 0e:53d6 $00
@@ -2850,7 +2850,7 @@ script_0431:
       sUNK_AF                                          ;; 0e:53df $af
       sMSG                                             ;; 0e:53e0 $04
         db "<10>Found <a0>Dragon!<12>"
-      db "<11>", $00 ;; 0e:53e1
+        db "<11>", $00 ;; 0e:53e1
       sSET_FLAG wScriptFlags08.3                       ;; 0e:53ef $da $43
     sENDIF                                             ;; 0e:53f1
     sEND                                               ;; 0e:53f1 $00
@@ -2862,7 +2862,7 @@ script_0432:
       sUNK_AF                                          ;; 0e:53fa $af
       sMSG                                             ;; 0e:53fb $04
         db "<10>Found <a2>Dragon!<12>"
-      db "<11>", $00 ;; 0e:53fc
+        db "<11>", $00 ;; 0e:53fc
       sSET_FLAG wScriptFlags08.4                       ;; 0e:540a $da $44
     sENDIF                                             ;; 0e:540c
     sEND                                               ;; 0e:540c $00
@@ -2877,7 +2877,7 @@ script_0434:
       sUNK_AF                                          ;; 0e:5416 $af
       sMSG                                             ;; 0e:5417 $04
         db "<10>Found <a4>????!<12>"
-      db "<11>", $00 ;; 0e:5418
+        db "<11>", $00 ;; 0e:5418
       sSET_FLAG wScriptFlags08.6                       ;; 0e:5425 $da $46
     sENDIF                                             ;; 0e:5427
     sEND                                               ;; 0e:5427 $00
@@ -2927,8 +2927,8 @@ script_0437:
       sUNK_AF                                          ;; 0e:54c2 $af
       sMSG                                             ;; 0e:54c3 $04
         db "<10>Received <a4>Rusty!<12>"
-      db "<1b><BOY>:Rusty sword?\n Is this the\n Excalibur_?<12>"
-      db "<11>", $00 ;; 0e:54c4
+        db "<1b><BOY>:Rusty sword?\n Is this the\n Excalibur_?<12>"
+        db "<11>", $00 ;; 0e:54c4
       sSET_FLAG wScriptFlags07.3                       ;; 0e:54f3 $da $3b
       sLOAD_ROOM 0, $f0, 8, 9                          ;; 0e:54f5 $f4 $00 $f0 $08 $09
       sSET_MUSIC 25                                    ;; 0e:54fa $f8 $19
@@ -2944,7 +2944,7 @@ script_0438:
       sUNK_AF                                          ;; 0e:5507 $af
       sMSG                                             ;; 0e:5508 $04
         db "<10>Found <ab>Candy.<12>"
-      db "<11>", $00 ;; 0e:5509
+        db "<11>", $00 ;; 0e:5509
     sENDIF                                             ;; 0e:5516
     sEND                                               ;; 0e:5516 $00
 
@@ -2957,7 +2957,7 @@ script_0439:
         sUNK_AF                                        ;; 0e:5525 $af
         sMSG                                           ;; 0e:5526 $04
           db "<10>Found <ae>Wisdom.<12>"
-      db "<11>", $00 ;; 0e:5527
+          db "<11>", $00 ;; 0e:5527
       sENDIF                                           ;; 0e:5534
     sELSE                                              ;; 0e:5534 $01 $03
       sCALL script_0440                                ;; 0e:5536 $02 $55 $af
@@ -2971,7 +2971,7 @@ script_043a:
       sUNK_AF                                          ;; 0e:5542 $af
       sMSG                                             ;; 0e:5543 $04
         db "<10>Found <a9>Cure.<12>"
-      db "<11>", $00 ;; 0e:5544
+        db "<11>", $00 ;; 0e:5544
     sENDIF                                             ;; 0e:554f
     sEND                                               ;; 0e:554f $00
 
@@ -2982,7 +2982,7 @@ script_043b:
       sUNK_AF                                          ;; 0e:5558 $af
       sMSG                                             ;; 0e:5559 $04
         db "<10>Found <a9>Eyedrop.<12>"
-      db "<11>", $00 ;; 0e:555a
+        db "<11>", $00 ;; 0e:555a
     sENDIF                                             ;; 0e:5568
     sEND                                               ;; 0e:5568 $00
 
@@ -2993,7 +2993,7 @@ script_043c:
       sUNK_AF                                          ;; 0e:5571 $af
       sMSG                                             ;; 0e:5572 $04
         db "<10>Found <a9>Pure.<12>"
-      db "<11>", $00 ;; 0e:5573
+        db "<11>", $00 ;; 0e:5573
     sENDIF                                             ;; 0e:557e
     sEND                                               ;; 0e:557e $00
 
@@ -3004,7 +3004,7 @@ script_043d:
       sUNK_AF                                          ;; 0e:5587 $af
       sMSG                                             ;; 0e:5588 $04
         db "<10>Found <a9>Soft.<12>"
-      db "<11>", $00 ;; 0e:5589
+        db "<11>", $00 ;; 0e:5589
     sENDIF                                             ;; 0e:5595
     sEND                                               ;; 0e:5595 $00
 
@@ -3015,7 +3015,7 @@ script_043e:
       sUNK_AF                                          ;; 0e:559e $af
       sMSG                                             ;; 0e:559f $04
         db "<10>Found <a9>X-Cure.<12>"
-      db "<11>", $00 ;; 0e:55a0
+        db "<11>", $00 ;; 0e:55a0
     sENDIF                                             ;; 0e:55ad
     sEND                                               ;; 0e:55ad $00
 
@@ -3029,7 +3029,7 @@ script_0440:
       sUNK_AF                                          ;; 0e:55b7 $af
       sMSG                                             ;; 0e:55b8 $04
         db "<10>Found <a9>Ether.<12>"
-      db "<11>", $00 ;; 0e:55b9
+        db "<11>", $00 ;; 0e:55b9
     sENDIF                                             ;; 0e:55c5
     sEND                                               ;; 0e:55c5 $00
 
@@ -3040,7 +3040,7 @@ script_0441:
       sUNK_AF                                          ;; 0e:55ce $af
       sMSG                                             ;; 0e:55cf $04
         db "<10>Found <aa>Bronze!<12>"
-      db "<11>", $00 ;; 0e:55d0
+        db "<11>", $00 ;; 0e:55d0
     sENDIF                                             ;; 0e:55dd
     sEND                                               ;; 0e:55dd $00
 
@@ -3051,7 +3051,7 @@ script_0442:
       sUNK_AF                                          ;; 0e:55e6 $af
       sMSG                                             ;; 0e:55e7 $04
         db "<10>Found <aa>Key.<12>"
-      db "<11>", $00 ;; 0e:55e8
+        db "<11>", $00 ;; 0e:55e8
     sENDIF                                             ;; 0e:55f4
     sEND                                               ;; 0e:55f4 $00
 
@@ -3062,7 +3062,7 @@ script_0443:
       sUNK_AF                                          ;; 0e:55fd $af
       sMSG                                             ;; 0e:55fe $04
         db "<10>Found <ac>Mattock.<12>"
-      db "<11>", $00 ;; 0e:55ff
+        db "<11>", $00 ;; 0e:55ff
       sSET_FLAG wScriptFlags09.5                       ;; 0e:560c $da $4d
     sENDIF                                             ;; 0e:560e
     sEND                                               ;; 0e:560e $00
@@ -3076,14 +3076,14 @@ script_0444:
         sUNK_AF                                        ;; 0e:561c $af
         sMSG                                           ;; 0e:561d $04
           db "<10>Found <ad>Fang!<12>"
-      db "<11>", $00 ;; 0e:561e
+          db "<11>", $00 ;; 0e:561e
       sENDIF                                           ;; 0e:562a
     sELSE                                              ;; 0e:562a $01 $0e
       sSFX 15                                          ;; 0e:562c $f9 $0f
       sUNK_AF                                          ;; 0e:562e $af
       sMSG                                             ;; 0e:562f $04
         db "<10>Empty.<12>"
-      db "<11>", $00       ;; 0e:5630
+        db "<11>", $00     ;; 0e:5630
     sENDIF                                             ;; 0e:563a
     sEND                                               ;; 0e:563a $00
 
@@ -3096,7 +3096,7 @@ script_0445:
         sUNK_AF                                        ;; 0e:5648 $af
         sMSG                                           ;; 0e:5649 $04
           db "<10>Found <ad>Gold.<12>"
-      db "<11>", $00 ;; 0e:564a
+          db "<11>", $00 ;; 0e:564a
       sENDIF                                           ;; 0e:5657
     sELSE                                              ;; 0e:5657 $01 $03
       sCALL script_0438                                ;; 0e:5659 $02 $54 $ff
@@ -3110,7 +3110,7 @@ script_0446:
       sUNK_AF                                          ;; 0e:5665 $af
       sMSG                                             ;; 0e:5666 $04
         db "<10>Found <a9>Elixir.<12>"
-      db "<11>", $00 ;; 0e:5667
+        db "<11>", $00 ;; 0e:5667
     sENDIF                                             ;; 0e:5674
     sEND                                               ;; 0e:5674 $00
 
@@ -3121,7 +3121,7 @@ script_0447:
       sUNK_AF                                          ;; 0e:567d $af
       sMSG                                             ;; 0e:567e $04
         db "<10>Found <ae>Crystal.<12>"
-      db "<11>", $00 ;; 0e:567f
+        db "<11>", $00 ;; 0e:567f
     sENDIF                                             ;; 0e:568d
     sEND                                               ;; 0e:568d $00
 
@@ -3132,7 +3132,7 @@ script_0448:
       sUNK_AF                                          ;; 0e:5696 $af
       sMSG                                             ;; 0e:5697 $04
         db "<10>Found <a9>Moogle.<12>"
-      db "<11>", $00 ;; 0e:5698
+        db "<11>", $00 ;; 0e:5698
     sENDIF                                             ;; 0e:56a5
     sEND                                               ;; 0e:56a5 $00
 
@@ -3143,7 +3143,7 @@ script_0449:
       sUNK_AF                                          ;; 0e:56ae $af
       sMSG                                             ;; 0e:56af $04
         db "<10>Found <a9>X-Ether.<12>"
-      db "<11>", $00 ;; 0e:56b0
+        db "<11>", $00 ;; 0e:56b0
     sENDIF                                             ;; 0e:56be
     sEND                                               ;; 0e:56be $00
 
@@ -3154,7 +3154,7 @@ script_044a:
       sUNK_AF                                          ;; 0e:56c7 $af
       sMSG                                             ;; 0e:56c8 $04
         db "<10>Found <a9>Unicorn.<12>"
-      db "<11>", $00 ;; 0e:56c9
+        db "<11>", $00 ;; 0e:56c9
     sENDIF                                             ;; 0e:56d8
     sEND                                               ;; 0e:56d8 $00
 
@@ -3167,7 +3167,7 @@ script_044b:
         sUNK_AF                                        ;; 0e:56e7 $af
         sMSG                                           ;; 0e:56e8 $04
           db "<10>Found <ae>Will.<12>"
-      db "<11>", $00 ;; 0e:56e9
+          db "<11>", $00 ;; 0e:56e9
       sENDIF                                           ;; 0e:56f5
     sELSE                                              ;; 0e:56f5 $01 $03
       sCALL script_0440                                ;; 0e:56f7 $02 $55 $af
@@ -3187,7 +3187,7 @@ script_044d:
         sUNK_AF                                        ;; 0e:570d $af
         sMSG                                           ;; 0e:570e $04
           db "<10>Found <a0>Aegis!<12>"
-      db "<11>", $00 ;; 0e:570f
+          db "<11>", $00 ;; 0e:570f
       sENDIF                                           ;; 0e:571c
     sELSE                                              ;; 0e:571c $01 $19
       sGIVE_ITEM 9                                     ;; 0e:571e $d4 $09
@@ -3196,7 +3196,7 @@ script_044d:
         sUNK_AF                                        ;; 0e:5726 $af
         sMSG                                           ;; 0e:5727 $04
           db "<10>Found <a9>Unicorn.<12>"
-      db "<11>", $00 ;; 0e:5728
+          db "<11>", $00 ;; 0e:5728
       sENDIF                                           ;; 0e:5737
     sENDIF                                             ;; 0e:5737
     sEND                                               ;; 0e:5737 $00
@@ -3210,7 +3210,7 @@ script_044e:
         sUNK_AF                                        ;; 0e:5746 $af
         sMSG                                           ;; 0e:5747 $04
           db "<10>Found <a2>Samurai!<12>"
-      db "<11>", $00 ;; 0e:5748
+          db "<11>", $00 ;; 0e:5748
       sENDIF                                           ;; 0e:5756
     sELSE                                              ;; 0e:5756 $01 $17
       sGIVE_ITEM 4                                     ;; 0e:5758 $d4 $04
@@ -3219,7 +3219,7 @@ script_044e:
         sUNK_AF                                        ;; 0e:5760 $af
         sMSG                                           ;; 0e:5761 $04
           db "<10>Found <a9>Elixir.<12>"
-      db "<11>", $00 ;; 0e:5762
+          db "<11>", $00 ;; 0e:5762
       sENDIF                                           ;; 0e:576f
     sENDIF                                             ;; 0e:576f
     sEND                                               ;; 0e:576f $00
@@ -3233,7 +3233,7 @@ script_044f:
         sUNK_AF                                        ;; 0e:577e $af
         sMSG                                           ;; 0e:577f $04
           db "<10>Found <a1>Samurai!<12>"
-      db "<11>", $00 ;; 0e:5780
+          db "<11>", $00 ;; 0e:5780
       sENDIF                                           ;; 0e:578e
     sELSE                                              ;; 0e:578e $01 $18
       sGIVE_ITEM 3                                     ;; 0e:5790 $d4 $03
@@ -3242,7 +3242,7 @@ script_044f:
         sUNK_AF                                        ;; 0e:5798 $af
         sMSG                                           ;; 0e:5799 $04
           db "<10>Found <a9>X-Ether.<12>"
-      db "<11>", $00 ;; 0e:579a
+          db "<11>", $00 ;; 0e:579a
       sENDIF                                           ;; 0e:57a8
     sENDIF                                             ;; 0e:57a8
     sEND                                               ;; 0e:57a8 $00
@@ -3262,14 +3262,14 @@ script_0451:
       sUNK_AF                                          ;; 0e:57d5 $af
       sMSG                                             ;; 0e:57d6 $04
         db "<10>Found the Mirror!<12>"
-      db "<11>", $00 ;; 0e:57d7
+        db "<11>", $00 ;; 0e:57d7
       sSET_FLAG wScriptFlags09.0                       ;; 0e:57e5 $da $48
       sIF_FLAG wScriptFlags0A.2                        ;; 0e:57e7 $08 $52 $00 $42
         sMSG                                           ;; 0e:57eb $04
           db "<10>Man:Show it to the\n guy at Kett's!<12>"
-      db "<1b> He'll scream and\n show his true \n colors!<12>"
-      db "<1b> Bye!<12>"
-      db "<11>", $00 ;; 0e:57ec
+          db "<1b> He'll scream and\n show his true \n colors!<12>"
+          db "<1b> Bye!<12>"
+          db "<11>", $00 ;; 0e:57ec
         sFOLLOWER_DELETE                               ;; 0e:582a $98
         sCLEAR_FLAG wScriptFlags0A.2                   ;; 0e:582b $db $52
       sENDIF                                           ;; 0e:582d
@@ -3287,7 +3287,7 @@ script_0452:
       sUNK_AF                                          ;; 0e:5840 $af
       sMSG                                             ;; 0e:5841 $04
         db "<10>Found <af>Thunder.<12>"
-      db "<11>", $00 ;; 0e:5842
+        db "<11>", $00 ;; 0e:5842
     sENDIF                                             ;; 0e:584f
     sEND                                               ;; 0e:584f $00
 
@@ -3298,7 +3298,7 @@ script_0453:
       sUNK_AF                                          ;; 0e:5858 $af
       sMSG                                             ;; 0e:5859 $04
         db "<10>Found <af>Pillow.<12>"
-      db "<11>", $00 ;; 0e:585a
+        db "<11>", $00 ;; 0e:585a
     sENDIF                                             ;; 0e:5867
     sEND                                               ;; 0e:5867 $00
 
@@ -3312,7 +3312,7 @@ script_0455:
       sUNK_AF                                          ;; 0e:5871 $af
       sMSG                                             ;; 0e:5872 $04
         db "<10>Found <ad>Ruby.<12>"
-      db "<11>", $00 ;; 0e:5873
+        db "<11>", $00 ;; 0e:5873
     sENDIF                                             ;; 0e:5880
     sEND                                               ;; 0e:5880 $00
 
@@ -3323,7 +3323,7 @@ script_0456:
       sUNK_AF                                          ;; 0e:5889 $af
       sMSG                                             ;; 0e:588a $04
         db "<10>Found <ad>Opal.<12>"
-      db "<11>", $00 ;; 0e:588b
+        db "<11>", $00 ;; 0e:588b
     sENDIF                                             ;; 0e:5897
     sEND                                               ;; 0e:5897 $00
 
@@ -3334,7 +3334,7 @@ script_0457:
       sUNK_AF                                          ;; 0e:58a0 $af
       sMSG                                             ;; 0e:58a1 $04
         db "<10>Found <af>Flame.<12>"
-      db "<11>", $00 ;; 0e:58a2
+        db "<11>", $00 ;; 0e:58a2
     sENDIF                                             ;; 0e:58af
     sEND                                               ;; 0e:58af $00
 
@@ -3345,7 +3345,7 @@ script_0458:
       sUNK_AF                                          ;; 0e:58b8 $af
       sMSG                                             ;; 0e:58b9 $04
         db "<10>Found <af>Blizzard.<12>"
-      db "<11>", $00 ;; 0e:58ba
+        db "<11>", $00 ;; 0e:58ba
     sENDIF                                             ;; 0e:58c9
     sEND                                               ;; 0e:58c9 $00
 
@@ -3356,7 +3356,7 @@ script_0459:
       sUNK_AF                                          ;; 0e:58d2 $af
       sMSG                                             ;; 0e:58d3 $04
         db "<10>Found <ae>Nectar.<12>"
-      db "<11>", $00 ;; 0e:58d4
+        db "<11>", $00 ;; 0e:58d4
     sENDIF                                             ;; 0e:58e2
     sEND                                               ;; 0e:58e2 $00
 
@@ -3367,7 +3367,7 @@ script_045a:
       sUNK_AF                                          ;; 0e:58eb $af
       sMSG                                             ;; 0e:58ec $04
         db "<10>Found <ae>Stamina.<12>"
-      db "<11>", $00 ;; 0e:58ed
+        db "<11>", $00 ;; 0e:58ed
     sENDIF                                             ;; 0e:58fb
     sEND                                               ;; 0e:58fb $00
 
@@ -3378,7 +3378,7 @@ script_045b:
       sUNK_AF                                          ;; 0e:5904 $af
       sMSG                                             ;; 0e:5905 $04
         db "<10>Found <ae>Wisdom.<12>"
-      db "<11>", $00 ;; 0e:5906
+        db "<11>", $00 ;; 0e:5906
     sENDIF                                             ;; 0e:5913
     sEND                                               ;; 0e:5913 $00
 
@@ -3389,7 +3389,7 @@ script_045c:
       sUNK_AF                                          ;; 0e:591c $af
       sMSG                                             ;; 0e:591d $04
         db "<10>Found <ae>Will.<12>"
-      db "<11>", $00 ;; 0e:591e
+        db "<11>", $00 ;; 0e:591e
     sENDIF                                             ;; 0e:592a
     sEND                                               ;; 0e:592a $00
 
@@ -3400,7 +3400,7 @@ script_045d:
       sUNK_AF                                          ;; 0e:5933 $af
       sMSG                                             ;; 0e:5934 $04
         db "<10>Found <a7>Star!<12>"
-      db "<11>", $00 ;; 0e:5935
+        db "<11>", $00 ;; 0e:5935
       sSET_FLAG wScriptFlags09.6                       ;; 0e:5941 $da $4e
     sENDIF                                             ;; 0e:5943
     sEND                                               ;; 0e:5943 $00
@@ -3412,7 +3412,7 @@ script_045e:
       sUNK_AF                                          ;; 0e:594c $af
       sMSG                                             ;; 0e:594d $04
         db "<10>Found <a0>Iron.<12>"
-      db "<11>", $00 ;; 0e:594e
+        db "<11>", $00 ;; 0e:594e
       sSET_FLAG wScriptFlags09.7                       ;; 0e:595a $da $4f
     sENDIF                                             ;; 0e:595c
     sEND                                               ;; 0e:595c $00
@@ -3424,7 +3424,7 @@ script_045f:
       sUNK_AF                                          ;; 0e:5965 $af
       sMSG                                             ;; 0e:5966 $04
         db "<10>Found <a2>Gold.<12>"
-      db "<11>", $00 ;; 0e:5967
+        db "<11>", $00 ;; 0e:5967
       sSET_FLAG wScriptFlags07.1                       ;; 0e:5974 $da $39
     sENDIF                                             ;; 0e:5976
     sEND                                               ;; 0e:5976 $00
@@ -3436,7 +3436,7 @@ script_0460:
       sUNK_AF                                          ;; 0e:597f $af
       sMSG                                             ;; 0e:5980 $04
         db "<10>Found <a5>Were.<12>"
-      db "<11>", $00 ;; 0e:5981
+        db "<11>", $00 ;; 0e:5981
       sSET_FLAG wScriptFlags07.7                       ;; 0e:598c $da $3f
     sENDIF                                             ;; 0e:598e
     sEND                                               ;; 0e:598e $00
@@ -3448,7 +3448,7 @@ script_0461:
       sUNK_AF                                          ;; 0e:5997 $af
       sMSG                                             ;; 0e:5998 $04
         db "<10>Found <a5>Zeus.<12>"
-      db "<11>", $00 ;; 0e:5999
+        db "<11>", $00 ;; 0e:5999
       sSET_FLAG wScriptFlags07.6                       ;; 0e:59a5 $da $3e
     sENDIF                                             ;; 0e:59a7
     sEND                                               ;; 0e:59a7 $00
@@ -3460,7 +3460,7 @@ script_0462:
       sUNK_AF                                          ;; 0e:59b0 $af
       sMSG                                             ;; 0e:59b1 $04
         db "<10>Found <a0>Aegis!<12>"
-      db "<11>", $00 ;; 0e:59b2
+        db "<11>", $00 ;; 0e:59b2
       sSET_FLAG wScriptFlags07.5                       ;; 0e:59bf $da $3d
     sENDIF                                             ;; 0e:59c1
     sEND                                               ;; 0e:59c1 $00
@@ -3472,7 +3472,7 @@ script_0463:
       sUNK_AF                                          ;; 0e:59ca $af
       sMSG                                             ;; 0e:59cb $04
         db "<10>Found <a4>Blood.<12>"
-      db "<11>", $00 ;; 0e:59cc
+        db "<11>", $00 ;; 0e:59cc
       sSET_FLAG wScriptFlags07.4                       ;; 0e:59d9 $da $3c
     sENDIF                                             ;; 0e:59db
     sEND                                               ;; 0e:59db $00
@@ -3484,7 +3484,7 @@ script_0464:
       sUNK_AF                                          ;; 0e:59e4 $af
       sMSG                                             ;; 0e:59e5 $04
         db "<10>Found <a4>Ice.<12>"
-      db "<11>", $00 ;; 0e:59e6
+        db "<11>", $00 ;; 0e:59e6
       sSET_FLAG wScriptFlags07.2                       ;; 0e:59f1 $da $3a
       sDELAY 40                                        ;; 0e:59f3 $f0 $28
       sLOAD_ROOM 0, $d3, 12, 6                         ;; 0e:59f5 $f4 $00 $d3 $0c $06
@@ -3514,7 +3514,7 @@ script_0467:
       sUNK_AF                                          ;; 0e:5a2f $af
       sMSG                                             ;; 0e:5a30 $04
         db "<10>Found <af>Silence.<12>"
-      db "<11>", $00 ;; 0e:5a31
+        db "<11>", $00 ;; 0e:5a31
     sENDIF                                             ;; 0e:5a3e
     sEND                                               ;; 0e:5a3e $00
 
@@ -3525,7 +3525,7 @@ script_0470:
       sELSE                                            ;; 0e:5a4a $01 $17
         sMSG                                           ;; 0e:5a4c $04
           db "<10>  Cannot land on\n    the water.<12>"
-      db "<11>", $00 ;; 0e:5a4d
+          db "<11>", $00 ;; 0e:5a4d
       sENDIF                                           ;; 0e:5a63
     sELSE                                              ;; 0e:5a63 $01 $16
       sUNK_C2 8                                        ;; 0e:5a65 $c2 $08
@@ -3882,7 +3882,7 @@ script_04b0:
       sIF_FLAG wScriptFlags0B.0                        ;; 0e:5c0b $08 $58 $00 $2e
         sMSG                                           ;; 0e:5c0f $04
           db "<10>It's too cold for\nyou ahead.\nWait for me here.<12>"
-      db "<11>", $00 ;; 0e:5c10
+          db "<11>", $00 ;; 0e:5c10
         sFOLLOWER_DIRECTION_DOWN                       ;; 0e:5c32 $95
         sLOOP 4, 2                                     ;; 0e:5c33 $03 $04 $02
           sFOLLOWER_STEP_FORWARD                       ;; 0e:5c36 $90
@@ -3969,9 +3969,9 @@ script_04d9:
         sNPC_1_STEP_FORWARD                            ;; 0e:5cb6 $10
         sMSG                                           ;; 0e:5cb7 $04
           db "<10><BOY>:<GIRL>!\n They took the\n Pendant! <12>"
-      db "<1b><GIRL>:We have to\n get it back!\n __ Let's go!<12>"
-      db "<1b> Dark Lord's room\n is on the top\n floor!<12>"
-      db "<11>", $00 ;; 0e:5cb8
+          db "<1b><GIRL>:We have to\n get it back!\n __ Let's go!<12>"
+          db "<1b> Dark Lord's room\n is on the top\n floor!<12>"
+          db "<11>", $00 ;; 0e:5cb8
         sGIVE_FOLLOWER 1                               ;; 0e:5d0a $9c $01
         sSET_FLAG wScriptFlags03.6                     ;; 0e:5d0c $da $1e
         sSET_FLAG wScriptFlags0A.1                     ;; 0e:5d0e $da $51
@@ -4671,8 +4671,8 @@ script_0531:
       sUNK_DD                                          ;; 0e:6159 $dd
       sMSG                                             ;; 0e:615a $04
         db "<10><BOY> and friends\nwere forced to\nfight everyday<12>"
-      db "<1b>just for the\nentertainment of\nDark Lord.<12>"
-      db "<1b>", $00 ;; 0e:615b
+        db "<1b>just for the\nentertainment of\nDark Lord.<12>"
+        db "<1b>", $00 ;; 0e:615b
       sCALL script_0532                                ;; 0e:6198 $02 $61 $9f
       sCALL script_0533                                ;; 0e:619b $02 $61 $fa
     sENDIF                                             ;; 0e:619e
@@ -6149,7 +6149,7 @@ script_0549:
       sENDIF                                           ;; 0e:7b24
       sMSG                                             ;; 0e:7b24 $04
         db "<12>"
-      db "", $00                     ;; 0e:7b25
+        db "", $00                   ;; 0e:7b25
     sENDIF                                             ;; 0e:7b27
     sMSG                                               ;; 0e:7b27 $04
       db "<1b> How about\n some items?<12>"

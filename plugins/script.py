@@ -509,7 +509,7 @@ class ScriptBlock(Block):
                     while self.memory.byte(file.addr + size) != 0:
                         msg += CHARMAP[self.memory.byte(file.addr + size)]
                         if self.memory.byte(file.addr + size) == 0x12:
-                            msg += "\"\n      db \""
+                            msg += "\"\n" + ("  " * (self.__loop_count + self.__ii)) + "      db \""
                         size += 1
                     size += 1
                 elif t == "BYTE":

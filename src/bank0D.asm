@@ -141,7 +141,7 @@ script_0005:
     sELSE                                              ;; 0d:4138 $01 $0b
       sMSG                                             ;; 0d:413a $04
         db "<10> Locked.<12>"
-      db "<11>", $00     ;; 0d:413b
+        db "<11>", $00   ;; 0d:413b
     sENDIF                                             ;; 0d:4145
     sEND                                               ;; 0d:4145 $00
 
@@ -254,7 +254,7 @@ script_000c:
         sIF_FLAG !wScriptFlags06.1                     ;; 0d:425b $08 $b1 $00 $2f
           sMSG                                         ;; 0d:425f $04
             db " I'LL STAY HERE\n AND RESEARCH.<12>"
-      db "<11>", $00 ;; 0d:4260
+            db "<11>", $00 ;; 0d:4260
           sFOLLOWER_DELETE                             ;; 0d:427e $98
           sCLEAR_FLAG wScriptFlags0A.7                 ;; 0d:427f $db $57
           sLOAD_ROOM 0, $73, 10, 6                     ;; 0d:4281 $f4 $00 $73 $0a $06
@@ -264,7 +264,7 @@ script_000c:
         sELSE                                          ;; 0d:428c $01 $1c
           sMSG                                         ;; 0d:428e $04
             db "Tower is sinking.\nUnable to get out!<12>"
-      db "<11>", $00 ;; 0d:428f
+            db "<11>", $00 ;; 0d:428f
         sENDIF                                         ;; 0d:42aa
       sENDIF                                           ;; 0d:42aa
     sELSE                                              ;; 0d:42aa $01 $d7
@@ -277,7 +277,7 @@ script_000c:
           sIF_FLAG wScriptFlags0A.6, !wScriptFlags05.0 ;; 0d:42c3 $08 $56 $a8 $00 $2b
             sMSG                                       ;; 0d:42c8 $04
               db "<10>Lester:Won't you\n avenge my sister?\n Well, I'm going!<12>"
-      db "<11>", $00 ;; 0d:42c9
+              db "<11>", $00 ;; 0d:42c9
             sFOLLOWER_DELETE                           ;; 0d:42f0 $98
             sCLEAR_FLAG wScriptFlags0A.6               ;; 0d:42f1 $db $56
           sENDIF                                       ;; 0d:42f3
@@ -343,7 +343,7 @@ script_000d:
       sDELAY 20                                        ;; 0d:4399 $f0 $14
       sMSG                                             ;; 0d:439b $04
         db "__\n_ It's frozen.<12>"
-      db "<11>", $00 ;; 0d:439c
+        db "<11>", $00 ;; 0d:439c
     sENDIF                                             ;; 0d:43aa
     sEND                                               ;; 0d:43aa $00
 
@@ -1389,7 +1389,7 @@ script_00f5:
       sSPAWN_NPC 1                                     ;; 0d:47a6 $fd $01
       sMSG                                             ;; 0d:47a8 $04
         db "<10> HELP!\n H E L P!!<12>"
-      db "<11>", $00 ;; 0d:47a9
+        db "<11>", $00 ;; 0d:47a9
       sSET_MUSIC 26                                    ;; 0d:47bb $f8 $1a
     sENDIF                                             ;; 0d:47bd
     sIF_FLAG wScriptFlags01.3                          ;; 0d:47bd $08 $0b $00 $03
@@ -1558,9 +1558,9 @@ script_010f:
       sEND                                             ;; 0d:487d $00
       sMSG                                             ;; 0d:487e $04
         db "<10>Cibba:I am Cibba.\n Bogard told me\n about you.<12>"
-      db "<1b> __ Oh, yes!\n It sure is the\n symbol of Mana.<12>"
-      db "<1b> Step forward.\n You'll see what\n you must see.<12>"
-      db "<11>", $00 ;; 0d:487f
+        db "<1b> __ Oh, yes!\n It sure is the\n symbol of Mana.<12>"
+        db "<1b> Step forward.\n You'll see what\n you must see.<12>"
+        db "<11>", $00 ;; 0d:487f
       sSET_NPC_1_DIRECTION_LEFT                        ;; 0d:48e1 $17
       sLOOP 3, 2                                       ;; 0d:48e2 $03 $03 $02
         sNPC_1_STEP_BACKWARDS                          ;; 0d:48e5 $11
@@ -1676,7 +1676,7 @@ script_011e:
       sEND                                             ;; 0d:4961 $00
       sMSG                                             ;; 0d:4962 $04
         db "<10>Julius:See the\n true power of\n Mana now!<12>"
-      db "<11>", $00 ;; 0d:4963
+        db "<11>", $00 ;; 0d:4963
       sLOOP 5, 4                                       ;; 0d:4982 $03 $05 $04
         sSFX 20                                        ;; 0d:4985 $f9 $14
         sFLASH_SCREEN                                  ;; 0d:4987 $bf
@@ -1697,7 +1697,7 @@ script_0120:
       sDELAY 60                                        ;; 0d:4999 $f0 $3c
       sMSG                                             ;; 0d:499b $04
         db "<10> Defeated Julius.<12>"
-      db "<11>", $00 ;; 0d:499c
+        db "<11>", $00 ;; 0d:499c
       sDELAY 30                                        ;; 0d:49ac $f0 $1e
       sCALL script_011e                                ;; 0d:49ae $02 $09 $48
     sELSE                                              ;; 0d:49b1 $01 $b2
@@ -1709,7 +1709,7 @@ script_0120:
       sDELAY 30                                        ;; 0d:49c6 $f0 $1e
       sMSG                                             ;; 0d:49c8 $04
         db " __<12>"
-      db "<11>", $00              ;; 0d:49c9
+        db "<11>", $00            ;; 0d:49c9
       sDELAY 60                                        ;; 0d:49ce $f0 $3c
       sFADE_TO_BLACK                                   ;; 0d:49d0 $bd
       sLOAD_ROOM_INSTANT 15, $50, 8, 10                ;; 0d:49d1 $f3 $0f $50 $08 $0a
@@ -1721,12 +1721,12 @@ script_0120:
       sDELAY 100                                       ;; 0d:49df $f0 $64
       sMSG                                             ;; 0d:49e1 $04
         db "<10><GIRL>:__ <BOY>.\n<BOY>:Are you\n okay, <GIRL>?<12>"
-      db "<1b><BOY>:I defeated\n Julius.\n It's all over.<12>"
-      db "<11>", $00 ;; 0d:49e2
+        db "<1b><BOY>:I defeated\n Julius.\n It's all over.<12>"
+        db "<11>", $00 ;; 0d:49e2
       sDELAY 60                                        ;; 0d:4a17 $f0 $3c
       sMSG                                             ;; 0d:4a19 $04
         db "<10>Julius:__ No!!\n __ It is not!<12>"
-      db "<11>", $00 ;; 0d:4a1a
+        db "<11>", $00 ;; 0d:4a1a
       sSET_PLAYER_DIRECTION_UP                         ;; 0d:4a33 $84
       sSET_NPC_1_DIRECTION_UP                          ;; 0d:4a34 $14
       sLOOP 5, 4                                       ;; 0d:4a35 $03 $05 $04
@@ -1736,7 +1736,7 @@ script_0120:
       sDELAY 40                                        ;; 0d:4a3c $f0 $28
       sMSG                                             ;; 0d:4a3e $04
         db "<10>Julius:<BOY>!\n You will never\n leave here alive!<12>"
-      db "<11>", $00 ;; 0d:4a3f
+        db "<11>", $00 ;; 0d:4a3f
       sGIVE_FOLLOWER 1                                 ;; 0d:4a60 $9c $01
       sSET_FLAG wScriptFlags0A.1                       ;; 0d:4a62 $da $51
       sRUN_ROOM_SCRIPT                                 ;; 0d:4a64 $ec
@@ -1889,7 +1889,7 @@ script_0140:
     sIF_FLAG wScriptFlags02.6, wScriptFlags0A.4        ;; 0d:4ae8 $08 $16 $54 $00 $27
       sMSG                                             ;; 0d:4aed $04
         db "<10>Bogard:I'll stay\n and guard <GIRL>.\n<BOY>:__ Okay.<12>"
-      db "<11>", $00 ;; 0d:4aee
+        db "<11>", $00 ;; 0d:4aee
       sFOLLOWER_DELETE                                 ;; 0d:4b11 $98
       sCLEAR_FLAG wScriptFlags0A.4                     ;; 0d:4b12 $db $54
     sENDIF                                             ;; 0d:4b14
@@ -1987,7 +1987,7 @@ script_0154:
       sSET_NPC_1_DIRECTION_LEFT                        ;; 0d:4b6a $17
       sMSG                                             ;; 0d:4b6b $04
         db "<10>Lester:Phew__\n I was helpless\n all by myself.<12>"
-      db "<11>", $00 ;; 0d:4b6c
+        db "<11>", $00 ;; 0d:4b6c
       sSET_FLAG wScriptFlags0A.6                       ;; 0d:4b8d $da $56
     sENDIF                                             ;; 0d:4b8f
     sEND                                               ;; 0d:4b8f $00
@@ -2302,11 +2302,11 @@ script_019d:
       sDELAY 50                                        ;; 0d:4c98 $f0 $32
       sMSG                                             ;; 0d:4c9a $04
         db "<1b>Julius:You're\n late, <BOY>_<12>"
-      db "<1b> I already got\n the greatest\n power of Mana!<12>"
-      db "<1b> The time has come\n for the Empire\n Neo-Vandole!<12>"
-      db "<1b> Now that I have\n the mighty power_<12>"
-      db "<1b> I do not need you\n anymore, <BOY>!<12>"
-      db "<11>", $00 ;; 0d:4c9b
+        db "<1b> I already got\n the greatest\n power of Mana!<12>"
+        db "<1b> The time has come\n for the Empire\n Neo-Vandole!<12>"
+        db "<1b> Now that I have\n the mighty power_<12>"
+        db "<1b> I do not need you\n anymore, <BOY>!<12>"
+        db "<11>", $00 ;; 0d:4c9b
       sLOAD_ROOM 1, $67, 9, 10                         ;; 0d:4d1f $f4 $01 $67 $09 $0a
       sCALL script_011e                                ;; 0d:4d24 $02 $09 $48
     sELSE                                              ;; 0d:4d27 $01 $13
@@ -2410,7 +2410,7 @@ script_01a5:
       sSFX 34                                          ;; 0d:4de6 $f9 $22
       sMSG                                             ;; 0d:4de8 $04
         db "<10>Defeated\n   Dragon Zombie!<12>"
-      db "<11>", $00 ;; 0d:4de9
+        db "<11>", $00 ;; 0d:4de9
       sSET_FLAG wScriptFlags06.4                       ;; 0d:4e01 $da $34
       sSET_ROOM_TILE $59, 8, 1                         ;; 0d:4e03 $b0 $59 $08 $01
     sENDIF                                             ;; 0d:4e07
@@ -2419,7 +2419,7 @@ script_01a5:
       sSFX 34                                          ;; 0d:4e12 $f9 $22
       sMSG                                             ;; 0d:4e14 $04
         db "<10>Defeated\n    Red Dragon!<12>"
-      db "<11>", $00 ;; 0d:4e15
+        db "<11>", $00 ;; 0d:4e15
       sSET_FLAG wScriptFlags02.7                       ;; 0d:4e2b $da $17
       sSET_ROOM_TILE $59, 8, 1                         ;; 0d:4e2d $b0 $59 $08 $01
     sENDIF                                             ;; 0d:4e31
@@ -2428,7 +2428,7 @@ script_01a5:
       sSFX 34                                          ;; 0d:4e3c $f9 $22
       sMSG                                             ;; 0d:4e3e $04
         db "<10>Defeated Dragon!<12>"
-      db "<11>", $00 ;; 0d:4e3f
+        db "<11>", $00 ;; 0d:4e3f
       sSET_FLAG wScriptFlags06.2                       ;; 0d:4e4f $da $32
       sSET_ROOM_TILE $59, 8, 1                         ;; 0d:4e51 $b0 $59 $08 $01
     sENDIF                                             ;; 0d:4e55
@@ -2452,7 +2452,7 @@ script_01a6:
         sDELAY 50                                      ;; 0d:4e7a $f0 $32
         sMSG                                           ;; 0d:4e7c $04
           db "<10>Lee:That's my\n victim!<12>"
-      db "<11>", $00 ;; 0d:4e7d
+          db "<11>", $00 ;; 0d:4e7d
         sSFX 20                                        ;; 0d:4e92 $f9 $14
         sFLASH_SCREEN                                  ;; 0d:4e94 $bf
         sFLASH_SCREEN                                  ;; 0d:4e95 $bf
@@ -2484,21 +2484,21 @@ script_01a8:
       sSET_MUSIC 0                                     ;; 0d:4eb9 $f8 $00
       sMSG                                             ;; 0d:4ebb $04
         db "<10>Defeated Vampire!<12>"
-      db "<1b>", $00 ;; 0d:4ebc
+        db "<1b>", $00 ;; 0d:4ebc
       sSFX 15                                          ;; 0d:4ecc $f9 $0f
       sMSG                                             ;; 0d:4ece $04
         db "<1b>Received the Magic\nBook of Sleep.\nLearned Slep.", $00 ;; 0d:4ecf
       sGIVE_MAGIC 3                                    ;; 0d:4ef2 $d6 $03
       sMSG                                             ;; 0d:4ef4 $04
         db "<12>"
-      db "<1b><BOY>:Are you\n alright, <GIRL>?\n<GIRL>:_ Yeah.<12>"
-      db "<11>", $00 ;; 0d:4ef5
+        db "<1b><BOY>:Are you\n alright, <GIRL>?\n<GIRL>:_ Yeah.<12>"
+        db "<11>", $00 ;; 0d:4ef5
       sDELAY 20                                        ;; 0d:4f12 $f0 $14
       sLOAD_ROOM 0, $a9, 10, 6                         ;; 0d:4f14 $f4 $00 $a9 $0a $06
       sDELAY 60                                        ;; 0d:4f19 $f0 $3c
       sMSG                                             ;; 0d:4f1b $04
         db "<10><GIRL>:Wendel is\n to the south.\n Let's hurry!<12>"
-      db "<11>", $00 ;; 0d:4f1c
+        db "<11>", $00 ;; 0d:4f1c
       sSET_MUSIC 20                                    ;; 0d:4f3b $f8 $14
       sSET_FLAG wScriptFlags04.5                       ;; 0d:4f3d $da $25
       sUNK_AB                                          ;; 0d:4f3f $ab
@@ -2542,7 +2542,7 @@ script_01ac:
       sDELAY 60                                        ;; 0d:4f83 $f0 $3c
       sMSG                                             ;; 0d:4f85 $04
         db "<10>Medusa:This will\n be your place\n to rest forever!<12>"
-      db "<11>", $00 ;; 0d:4f86
+        db "<11>", $00 ;; 0d:4f86
       sDELAY 30                                        ;; 0d:4faa $f0 $1e
       sSFX 20                                          ;; 0d:4fac $f9 $14
       sFLASH_SCREEN                                    ;; 0d:4fae $bf
@@ -2578,7 +2578,7 @@ script_01ae:
       sFADE_TO_NORMAL                                  ;; 0d:4fe2 $bc
       sMSG                                             ;; 0d:4fe3 $04
         db "<10>Madusa:Came here\n to get my tears?\n Huh! What a joke!<12>"
-      db "<11>", $00 ;; 0d:4fe4
+        db "<11>", $00 ;; 0d:4fe4
       sFADE_TO_BLACK                                   ;; 0d:500b $bd
       sDELAY 30                                        ;; 0d:500c $f0 $1e
       sLOAD_ROOM_INSTANT 1, $30, 12, 8                 ;; 0d:500e $f3 $01 $30 $0c $08
@@ -2595,8 +2595,8 @@ script_01ae:
       sDELAY 60                                        ;; 0d:5024 $f0 $3c
       sMSG                                             ;; 0d:5026 $04
         db "<10>Amanda:Can't find\n a drop of tear__<12>"
-      db "<1b><BOY>:Let's go back\n to Jadd first.<12>"
-      db "<11>", $00 ;; 0d:5027
+        db "<1b><BOY>:Let's go back\n to Jadd first.<12>"
+        db "<11>", $00 ;; 0d:5027
       sSET_PLAYER_DIRECTION_RIGHT                      ;; 0d:5058 $86
       sPLAYER_STEP_FORWARD                             ;; 0d:5059 $80
       sPLAYER_STEP_FORWARD                             ;; 0d:505a $80
@@ -2613,7 +2613,7 @@ script_01af:
       sDELAY 20                                        ;; 0d:506c $f0 $14
       sMSG                                             ;; 0d:506e $04
         db "<10>Davias:HA!\n You can never\n defeat me!<12>"
-      db "<11>", $00 ;; 0d:506f
+        db "<11>", $00 ;; 0d:506f
       sFLASH_SCREEN                                    ;; 0d:508f $bf
       sSFX 20                                          ;; 0d:5090 $f9 $14
       sFLASH_SCREEN                                    ;; 0d:5092 $bf
@@ -2795,14 +2795,14 @@ script_01bb:
       sSET_PLAYER_DIRECTION_UP                         ;; 0d:5319 $84
       sMSG                                             ;; 0d:531a $04
         db "<10>Dark Lord:Looks\n like you've been\n a bit stronger.<12>"
-      db "<1b> But, not enough\n to fight me, boy!<12>"
-      db "<1b>", $00 ;; 0d:531b
+        db "<1b> But, not enough\n to fight me, boy!<12>"
+        db "<1b>", $00 ;; 0d:531b
       sSET_PLAYER_DIRECTION_RIGHT                      ;; 0d:5359 $86
       sFOLLOWER_DIRECTION_LEFT                         ;; 0d:535a $97
       sMSG                                             ;; 0d:535b $04
         db "<BOY>:Stay outside.\n It will be too\n dangerous here.<12>"
-      db "<1b><GIRL>:__ Okay__\n Be careful.<12>"
-      db "<11>", $00 ;; 0d:535c
+        db "<1b><GIRL>:__ Okay__\n Be careful.<12>"
+        db "<11>", $00 ;; 0d:535c
       sFOLLOWER_DIRECTION_DOWN                         ;; 0d:5391 $95
       sFOLLOWER_STEP_FORWARD                           ;; 0d:5392 $90
       sFOLLOWER_STEP_FORWARD                           ;; 0d:5393 $90
@@ -2814,7 +2814,7 @@ script_01bb:
       sSET_PLAYER_DIRECTION_UP                         ;; 0d:539f $84
       sMSG                                             ;; 0d:53a0 $04
         db "<10>Dark Lord:Good\n boy, <BOY>!\n __ Now, come!<12>"
-      db "<11>", $00 ;; 0d:53a1
+        db "<11>", $00 ;; 0d:53a1
       sSET_MUSIC 19                                    ;; 0d:53c1 $f8 $13
     sENDIF                                             ;; 0d:53c3
     sEND                                               ;; 0d:53c3 $00
@@ -3021,7 +3021,7 @@ script_01e0:
     sIF_FLAG wScriptFlags01.5                          ;; 0d:55ce $08 $0d $00 $63
       sMSG                                             ;; 0d:55d2 $04
         db "<12>"
-      db "<1b>", $00                 ;; 0d:55d3
+        db "<1b>", $00               ;; 0d:55d3
       sIF_EQUIPED $27                                  ;; 0d:55d6 $09 $27 $00 $3c
         sSET_MUSIC 0                                   ;; 0d:55da $f8 $00
         sMSG                                           ;; 0d:55dc $04
@@ -3032,7 +3032,7 @@ script_01e0:
         sDELAY 30                                      ;; 0d:55f7 $f0 $1e
         sMSG                                           ;; 0d:55f9 $04
           db "\nUG_ Hg_ GRRR_ _<12>"
-      db "<11>", $00 ;; 0d:55fa
+          db "<11>", $00 ;; 0d:55fa
         sSFX 20                                        ;; 0d:560b $f9 $14
         sFLASH_SCREEN                                  ;; 0d:560d $bf
         sFLASH_SCREEN                                  ;; 0d:560e $bf
@@ -3042,12 +3042,12 @@ script_01e0:
       sELSE                                            ;; 0d:5614 $01 $1d
         sMSG                                           ;; 0d:5616 $04
           db "Your friend?\nNo__\nI do not know her.<12>"
-      db "<11>", $00 ;; 0d:5617
+          db "<11>", $00 ;; 0d:5617
       sENDIF                                           ;; 0d:5633
     sELSE                                              ;; 0d:5633 $01 $04
       sMSG                                             ;; 0d:5635 $04
         db "<12>"
-      db "<11>", $00                 ;; 0d:5636
+        db "<11>", $00               ;; 0d:5636
     sENDIF                                             ;; 0d:5639
     sEND                                               ;; 0d:5639 $00
 
@@ -3107,7 +3107,7 @@ script_01e7:
     sIF_FLAG wScriptFlags02.0, !wScriptFlags02.1       ;; 0d:5798 $08 $10 $91 $00 $19
       sMSG                                             ;; 0d:579d $04
         db "<10>H_ he attacked\nme from behind_!<12>"
-      db "<11>", $00 ;; 0d:579e
+        db "<11>", $00 ;; 0d:579e
     sENDIF                                             ;; 0d:57b6
     sEND                                               ;; 0d:57b6 $00
 
@@ -3146,7 +3146,7 @@ script_01ec:
     sELSE                                              ;; 0d:587b $01 $47
       sMSG                                             ;; 0d:587d $04
         db "Lorim was attacked\nby many monsters.\nCibba went there.<12>"
-      db "<1b>Lorim is south of\nthe Snowfield over\nthe southern sea.", $00 ;; 0d:587e
+        db "<1b>Lorim is south of\nthe Snowfield over\nthe southern sea.", $00 ;; 0d:587e
     sENDIF                                             ;; 0d:58c4
     sMSG                                               ;; 0d:58c4 $04
       db "<12>"
@@ -3185,12 +3185,12 @@ script_01ef:
         sSFX 15                                        ;; 0d:593c $f9 $0f
         sMSG                                           ;; 0d:593e $04
           db "Received <aa>Bone.<12>"
-      db "<1b>Cibba:Go up the\n wide river by the\n Ammonite Coast.<12>"
-      db "<1b> Go beyond the\n Ammonite Coast\n to Floatrocks.<12>"
-      db "<1b> Use this key at\n the cave in the\n Floatrocks!<12>"
-      db "<1b> The guardian\n monster has the\n Legendary Sword.<12>"
-      db "<1b> I'll tell you the\n rest when you\n return with it!<12>"
-      db "<11>", $00 ;; 0d:593f
+          db "<1b>Cibba:Go up the\n wide river by the\n Ammonite Coast.<12>"
+          db "<1b> Go beyond the\n Ammonite Coast\n to Floatrocks.<12>"
+          db "<1b> Use this key at\n the cave in the\n Floatrocks!<12>"
+          db "<1b> The guardian\n monster has the\n Legendary Sword.<12>"
+          db "<1b> I'll tell you the\n rest when you\n return with it!<12>"
+          db "<11>", $00 ;; 0d:593f
       sENDIF                                           ;; 0d:59f4
     sENDIF                                             ;; 0d:59f4
     sEND                                               ;; 0d:59f4 $00
@@ -3233,7 +3233,7 @@ script_01f3:
     sIF_FLAG wScriptFlags02.1, !wScriptFlags02.6       ;; 0d:5b94 $08 $11 $96 $00 $16
       sMSG                                             ;; 0d:5b99 $04
         db "The airship went\nto the west!<12>"
-      db "<1b>", $00 ;; 0d:5b9a
+        db "<1b>", $00 ;; 0d:5b9a
     sENDIF                                             ;; 0d:5baf
     sMSG                                               ;; 0d:5baf $04
       db "The Gaia Pass\nleads to the\nwestern land.<12>"
@@ -3249,8 +3249,8 @@ script_01f4:
       sIF_FLAG wScriptFlags02.1                        ;; 0d:5bf2 $08 $11 $00 $39
         sMSG                                           ;; 0d:5bf6 $04
           db "<12>"
-      db "<1b>Wanna use the\ntrolley?  You\nhave to oil it!<12>"
-      db "<1b>You can get it\nat the store\nto the south!", $00 ;; 0d:5bf7
+          db "<1b>Wanna use the\ntrolley?  You\nhave to oil it!<12>"
+          db "<1b>You can get it\nat the store\nto the south!", $00 ;; 0d:5bf7
       sENDIF                                           ;; 0d:5c2f
     sELSE                                              ;; 0d:5c2f $01 $15
       sMSG                                             ;; 0d:5c31 $04
@@ -3274,7 +3274,7 @@ script_01f6:
     sIF_FLAG !wScriptFlags04.6                         ;; 0d:5c83 $08 $a6 $00 $37
       sMSG                                             ;; 0d:5c87 $04
         db "Watts likes the\nmine!  He went\ntheir today, too!<12>"
-      db "<1b>He's looking for\nsome Silver.", $00 ;; 0d:5c88
+        db "<1b>He's looking for\nsome Silver.", $00 ;; 0d:5c88
     sELSE                                              ;; 0d:5cbc $01 $19
       sMSG                                             ;; 0d:5cbe $04
         db "Hi!\nWatts made the\nSilver stuff!", $00   ;; 0d:5cbf
@@ -3305,7 +3305,7 @@ script_01f9:
     sELSE                                              ;; 0d:5d29 $01 $11
       sMSG                                             ;; 0d:5d2b $04
         db "<10>\nNeeds to be oiled.<12>"
-      db "<11>", $00 ;; 0d:5d2c
+        db "<11>", $00 ;; 0d:5d2c
     sENDIF                                             ;; 0d:5d3c
     sEND                                               ;; 0d:5d3c $00
 
@@ -3354,8 +3354,8 @@ script_01fe:
     sELSE                                              ;; 0d:5d97 $01 $67
       sMSG                                             ;; 0d:5d99 $04
         db "You have been a\ngreat Knight of\nGemma, I see.<12>"
-      db "<1b>I shall give you\nthe Excalibur.\nNow defeat Julius!<12>"
-      db "<11>", $00 ;; 0d:5d9a
+        db "<1b>I shall give you\nthe Excalibur.\nNow defeat Julius!<12>"
+        db "<11>", $00 ;; 0d:5d9a
       sLOOP 8, 4                                       ;; 0d:5ddd $03 $08 $04
         sFLASH_SCREEN                                  ;; 0d:5de0 $bf
         sSFX 20                                        ;; 0d:5de1 $f9 $14
@@ -3376,7 +3376,7 @@ script_01ff:
     sIF_FLAG !wScriptFlags0F.1                         ;; 0d:5e05 $08 $f9 $00 $2c
       sMSG                                             ;; 0d:5e09 $04
         db "<10> Change music?<12>"
-      db "<11>", $00 ;; 0d:5e0a
+        db "<11>", $00 ;; 0d:5e0a
       sUNK_C7                                          ;; 0d:5e18 $c7
       sIF_FLAG wScriptFlags0F.7, !wScriptFlags0F.6     ;; 0d:5e19 $08 $7f $fe $00 $02
         sSET_MUSIC 20                                  ;; 0d:5e1e $f8 $14
@@ -3596,9 +3596,9 @@ script_020f:
       sSFX 23                                          ;; 0d:61b4 $f9 $17
       sMSG                                             ;; 0d:61b6 $04
         db "Bogard:Hurry!\n It's moving!<12>"
-      db "<1b><GIRL>:This door\n is locked!<12>"
-      db "<1b>Bogard:How about\n the windows?<12>"
-      db "<11>", $00 ;; 0d:61b7
+        db "<1b><GIRL>:This door\n is locked!<12>"
+        db "<1b>Bogard:How about\n the windows?<12>"
+        db "<11>", $00 ;; 0d:61b7
       sSET_NPC_1_DIRECTION_DOWN                        ;; 0d:61f8 $15
       sLOOP 4, 2                                       ;; 0d:61f9 $03 $04 $02
         sNPC_1_STEP_FORWARD                            ;; 0d:61fc $10
@@ -3761,7 +3761,7 @@ script_0219:
       sGIVE_FOLLOWER 6                                 ;; 0d:6619 $9c $06
       sMSG                                             ;; 0d:661b $04
         db "<10>    Lester was\n  released from\n Davias's curse__<12>"
-      db "<1b>", $00 ;; 0d:661c
+        db "<1b>", $00 ;; 0d:661c
       sCALL script_053c                                ;; 0d:663b $02 $6d $32
       sSET_FLAG wScriptFlags0A.6                       ;; 0d:663e $da $56
       sSET_FLAG wScriptFlags03.5                       ;; 0d:6640 $da $1d
@@ -3790,7 +3790,7 @@ script_021b:
     sELSE                                              ;; 0d:669b $01 $30
       sMSG                                             ;; 0d:669d $04
         db "The poison gas is\ncleared!<12>"
-      db "<1b>Head north over\nthe valley to the\nMt. Rocks!", $00 ;; 0d:669e
+        db "<1b>Head north over\nthe valley to the\nMt. Rocks!", $00 ;; 0d:669e
     sENDIF                                             ;; 0d:66cd
     sMSG                                               ;; 0d:66cd $04
       db "<12>"
@@ -3928,7 +3928,7 @@ script_0228:
       sFADE_TO_NORMAL                                  ;; 0d:6a0b $bc
       sMSG                                             ;; 0d:6a0c $04
         db "<10> <BOY> took a drop\n   of tear from\n  Amanda's face.<12>"
-      db "<1b>", $00 ;; 0d:6a0d
+        db "<1b>", $00 ;; 0d:6a0d
       sDELAY 30                                        ;; 0d:6a2f $f0 $1e
       sMSG                                             ;; 0d:6a31 $04
         db "<11>", $00                                 ;; 0d:6a32
@@ -3968,7 +3968,7 @@ script_0229:
       sENDIF                                           ;; 0d:6ab6
       sMSG                                             ;; 0d:6ab6 $04
         db "<12>"
-      db "<11>", $00                 ;; 0d:6ab7
+        db "<11>", $00               ;; 0d:6ab7
     sENDIF                                             ;; 0d:6aba
     sEND                                               ;; 0d:6aba $00
 
@@ -4006,7 +4006,7 @@ script_022b:
     sIF_FLAG wScriptFlags01.4                          ;; 0d:6c17 $08 $0c $00 $24
       sMSG                                             ;; 0d:6c1b $04
         db " You can buy the\n mattocks at the\n Item Shops also.<12>"
-      db "<1b>", $00 ;; 0d:6c1c
+        db "<1b>", $00 ;; 0d:6c1c
     sENDIF                                             ;; 0d:6c3f
     sMSG                                               ;; 0d:6c3f $04
       db " Go to the cave on\n the east side of\n the mountains.<12>"
@@ -4054,19 +4054,19 @@ script_022f:
     sIF_FLAG !wScriptFlags05.7                         ;; 0d:6d2c $08 $af $00 $43
       sMSG                                             ;; 0d:6d30 $04
         db "Go east on\n the sea from the\n pier at north.<12>"
-      db "<1b> And go north to\n Wendel.__South is\n to the Ammonites.", $00 ;; 0d:6d31
+        db "<1b> And go north to\n Wendel.__South is\n to the Ammonites.", $00 ;; 0d:6d31
     sELSE                                              ;; 0d:6d71 $01 $a5
       sMSG                                             ;; 0d:6d73 $04
         db "Finally!\n", $00                           ;; 0d:6d74
       sIF_INVENTORY $08                                ;; 0d:6d7c $0a $08 $00 $3c
         sMSG                                           ;; 0d:6d80 $04
           db "There is a piece\nof crystal you can<12>"
-      db "<1b>blow with Nuke in\nCrystal Desert.\n__ Find it!", $00 ;; 0d:6d81
+          db "<1b>blow with Nuke in\nCrystal Desert.\n__ Find it!", $00 ;; 0d:6d81
       sELSE                                            ;; 0d:6dba $01 $5c
         sMSG                                           ;; 0d:6dbc $04
           db "But you need the\nmagic of Nuke.<12>"
-      db "<1b>The ultimate magic\nbook of Nuke is\nsealed by Lich.<12>"
-      db "<1b>Go north to the\nPalmy Desert and\ndefeat Lich!", $00 ;; 0d:6dbd
+          db "<1b>The ultimate magic\nbook of Nuke is\nsealed by Lich.<12>"
+          db "<1b>Go north to the\nPalmy Desert and\ndefeat Lich!", $00 ;; 0d:6dbd
       sENDIF                                           ;; 0d:6e18
     sENDIF                                             ;; 0d:6e18
     sMSG                                               ;; 0d:6e18 $04
@@ -4088,7 +4088,7 @@ script_0231:
     sIF_FLAG wScriptFlags04.0                          ;; 0d:6e72 $08 $20 $00 $19
       sMSG                                             ;; 0d:6e76 $04
         db "Sarah:Please__\n Save us all_!<12>"
-      db "<11>", $00 ;; 0d:6e77
+        db "<11>", $00 ;; 0d:6e77
     sELSE                                              ;; 0d:6e8d $01 $0a
       sCALL script_0232                                ;; 0d:6e8f $02 $2e $9a
       sNPC_1_STEP_BACKWARDS                            ;; 0d:6e92 $11
@@ -4398,9 +4398,9 @@ script_0250:
     sIF_FLAG !wScriptFlags05.5                         ;; 0d:761d $08 $ad $00 $8b
       sMSG                                             ;; 0d:7621 $04
         db "King:Julius has\n summoned monsters\n in this world.<12>"
-      db "<1b> One called Kary\n in the Snowfield\n has frozen us.<12>"
-      db "<1b> Cibba came, but\n he's stuck in\n the other room.<12>"
-      db "<1b> It is dangerous\n to keep them all\n frozen for long__", $00 ;; 0d:7622
+        db "<1b> One called Kary\n in the Snowfield\n has frozen us.<12>"
+        db "<1b> Cibba came, but\n he's stuck in\n the other room.<12>"
+        db "<1b> It is dangerous\n to keep them all\n frozen for long__", $00 ;; 0d:7622
     sELSE                                              ;; 0d:76aa $01 $24
       sMSG                                             ;; 0d:76ac $04
         db "Thank you so much.\nCibba is waiting\nin the other room.", $00 ;; 0d:76ad
@@ -4554,7 +4554,7 @@ script_025f:
       sIF_FLAG wScriptFlags.6                          ;; 0d:7803 $08 $06 $00 $17
         sMSG                                           ;; 0d:7807 $04
           db "<1b> Sorry.\n Not enough GP!<12>"
-      db "<11>", $00 ;; 0d:7808
+          db "<11>", $00 ;; 0d:7808
       sELSE                                            ;; 0d:781c $01 $03
         sCALL script_0405                              ;; 0d:781e $02 $51 $fb
       sENDIF                                           ;; 0d:7821
@@ -4585,7 +4585,7 @@ script_0260:
           sOPEN_SHOP 1                                 ;; 0d:7853 $f6 $01
           sMSG                                         ;; 0d:7855 $04
             db "<10>It's swampy ahead.\nBe careful!<12>"
-      db "<11>", $00 ;; 0d:7856
+            db "<11>", $00 ;; 0d:7856
         sENDIF                                         ;; 0d:786f
         sIF_FLAG wScriptFlags0E.6, !wScriptFlags0E.7   ;; 0d:786f $08 $76 $f7 $00 $02
           sOPEN_SHOP 1                                 ;; 0d:7874 $f6 $01
@@ -4602,7 +4602,7 @@ script_0260:
             sDELAY 50                                  ;; 0d:7899 $f0 $32
             sMSG                                       ;; 0d:789b $04
               db "\n_ No answer.<12>"
-      db "<11>", $00 ;; 0d:789c
+              db "<11>", $00 ;; 0d:789c
           sENDIF                                       ;; 0d:78a9
         sENDIF                                         ;; 0d:78a9
       sENDIF                                           ;; 0d:78a9
@@ -4684,11 +4684,11 @@ script_026c:
       sCALL script_026d                                ;; 0d:7a7b $02 $3b $17
       sMSG                                             ;; 0d:7a7e $04
         db "Girl:Oh_ No_\n Don't leave me\n alone, Hasim!<12>"
-      db "<1b><BOY>:I'm looking\n for that Bogard,\n too.<12>"
-      db "<1b> Why don't you\n come with me?\nGirl:Oh _ Can I?<12>"
-      db "<1b><BOY>:I can't leave\n you here alone.\n _ I am <BOY>.<12>"
-      db "<1b><GIRL>:Call me <GIRL>.<12>"
-      db "<1b>", $00 ;; 0d:7a7f
+        db "<1b><BOY>:I'm looking\n for that Bogard,\n too.<12>"
+        db "<1b> Why don't you\n come with me?\nGirl:Oh _ Can I?<12>"
+        db "<1b><BOY>:I can't leave\n you here alone.\n _ I am <BOY>.<12>"
+        db "<1b><GIRL>:Call me <GIRL>.<12>"
+        db "<1b>", $00 ;; 0d:7a7f
       sSET_MUSIC 0                                     ;; 0d:7b09 $f8 $00
       sGIVE_FOLLOWER 1                                 ;; 0d:7b0b $9c $01
       sMSG                                             ;; 0d:7b0d $04
@@ -4726,7 +4726,7 @@ script_0270:
       sELSE                                            ;; 0d:7bab $01 $0b
         sMSG                                           ;; 0d:7bad $04
           db "<10> Locked.<12>"
-      db "<11>", $00   ;; 0d:7bae
+          db "<11>", $00 ;; 0d:7bae
       sENDIF                                           ;; 0d:7bb8
     sENDIF                                             ;; 0d:7bb8
     sEND                                               ;; 0d:7bb8 $00
@@ -4798,7 +4798,7 @@ script_0275:
       sELSE                                            ;; 0d:7c37 $01 $0b
         sMSG                                           ;; 0d:7c39 $04
           db "<10> Locked.<12>"
-      db "<11>", $00   ;; 0d:7c3a
+          db "<11>", $00 ;; 0d:7c3a
       sENDIF                                           ;; 0d:7c44
     sENDIF                                             ;; 0d:7c44
     sEND                                               ;; 0d:7c44 $00
@@ -4849,7 +4849,7 @@ script_0279:
       sIF_FLAG wScriptFlags0A.4                        ;; 0d:7c96 $08 $54 $00 $24
         sMSG                                           ;; 0d:7c9a $04
           db "<10>Bogard:Hey! Hey!\n Where are you\n going??<12>"
-      db "<11>", $00 ;; 0d:7c9b
+          db "<11>", $00 ;; 0d:7c9b
       sELSE                                            ;; 0d:7cbc $01 $08
         sLOAD_ROOM 10, $55, 16, 2                      ;; 0d:7cbe $f4 $0a $55 $10 $02
         sSET_MUSIC 7                                   ;; 0d:7cc3 $f8 $07
@@ -4881,7 +4881,7 @@ script_027a:
               sDELAY 40                                ;; 0d:7d0c $f0 $28
               sMSG                                     ;; 0d:7d0e $04
                 db "\n Doooon't walk in\n my moooouth_<12>"
-      db "<1b>\n Ooooo ", $00 ;; 0d:7d0f
+                db "<1b>\n Ooooo ", $00 ;; 0d:7d0f
               sDELAY 40                                ;; 0d:7d2e $f0 $28
               sMSG                                     ;; 0d:7d30 $04
                 db "  Yuck!!", $00                     ;; 0d:7d31
@@ -4996,7 +4996,7 @@ script_0281:
         sENDIF                                         ;; 0d:7e0c
         sMSG                                           ;; 0d:7e0c $04
           db "<12>"
-      db "<11>", $00               ;; 0d:7e0d
+          db "<11>", $00           ;; 0d:7e0d
         sGIVE_FOLLOWER 5                               ;; 0d:7e10 $9c $05
         sSET_FLAG wScriptFlags0A.5                     ;; 0d:7e12 $da $55
       sENDIF                                           ;; 0d:7e14
@@ -5020,9 +5020,9 @@ script_0282:
       sNPC_1_STEP_FORWARD                              ;; 0d:7e32 $10
       sMSG                                             ;; 0d:7e33 $04
         db "<10>I AM MARCIE.\nI SEARCH RELICS.\nDR.BOWOW MADE ME.<12>"
-      db "<1b>HE LEFT ME HERE.\nI WAITED 50 YEARS.\nHE FORGOT ME.<12>"
-      db "<1b>I CAN HELP YOU.\nTAKE ME WITH YOU.<12>"
-      db "<11>", $00 ;; 0d:7e34
+        db "<1b>HE LEFT ME HERE.\nI WAITED 50 YEARS.\nHE FORGOT ME.<12>"
+        db "<1b>I CAN HELP YOU.\nTAKE ME WITH YOU.<12>"
+        db "<11>", $00 ;; 0d:7e34
       sGIVE_FOLLOWER 7                                 ;; 0d:7ead $9c $07
       sSET_FLAG wScriptFlags0A.7                       ;; 0d:7eaf $da $57
     sENDIF                                             ;; 0d:7eb1
