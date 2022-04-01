@@ -8,46 +8,46 @@ SECTION "bank01", ROMX[$4000], BANK[$01]
 
 ;@call_to_bank_jumptable amount=40
 data_01_4000:
-    call_to_bank_target call_01_499e                   ;; 01:4000 ..
-    call_to_bank_target call_01_48be                   ;; 01:4002 ..
-    call_to_bank_target call_01_4996                   ;; 01:4004 ..
-    call_to_bank_target call_01_498e                   ;; 01:4006 ..
-    call_to_bank_target call_01_5090                   ;; 01:4008 ..
-    call_to_bank_target call_01_4f7b                   ;; 01:400a ..
+    call_to_bank_target call_01_499e                   ;; 01:4000 pP
+    call_to_bank_target call_01_48be                   ;; 01:4002 pP
+    call_to_bank_target call_01_4996                   ;; 01:4004 pP
+    call_to_bank_target call_01_498e                   ;; 01:4006 pP
+    call_to_bank_target call_01_5090                   ;; 01:4008 pP
+    call_to_bank_target call_01_4f7b                   ;; 01:400a pP
     call_to_bank_target call_01_4d0b                   ;; 01:400c ??
-    call_to_bank_target call_01_50ac                   ;; 01:400e ..
-    call_to_bank_target call_01_50f9                   ;; 01:4010 ..
+    call_to_bank_target call_01_50ac                   ;; 01:400e pP
+    call_to_bank_target call_01_50f9                   ;; 01:4010 pP
     call_to_bank_target call_01_5136                   ;; 01:4012 ??
     call_to_bank_target call_01_5156                   ;; 01:4014 ??
     call_to_bank_target call_01_5176                   ;; 01:4016 ??
-    call_to_bank_target call_01_5196                   ;; 01:4018 ..
-    call_to_bank_target call_01_51bb                   ;; 01:401a ..
+    call_to_bank_target call_01_5196                   ;; 01:4018 pP
+    call_to_bank_target call_01_51bb                   ;; 01:401a pP
     call_to_bank_target call_01_51d5                   ;; 01:401c ??
-    call_to_bank_target call_01_4130                   ;; 01:401e ..
-    call_to_bank_target call_01_414c                   ;; 01:4020 ..
-    call_to_bank_target call_01_4164                   ;; 01:4022 ..
-    call_to_bank_target call_01_4180                   ;; 01:4024 ..
-    call_to_bank_target call_01_40ca                   ;; 01:4026 ..
-    call_to_bank_target call_01_40d8                   ;; 01:4028 ..
-    call_to_bank_target call_01_40f3                   ;; 01:402a ..
+    call_to_bank_target call_01_4130                   ;; 01:401e pP
+    call_to_bank_target call_01_414c                   ;; 01:4020 pP
+    call_to_bank_target call_01_4164                   ;; 01:4022 pP
+    call_to_bank_target call_01_4180                   ;; 01:4024 pP
+    call_to_bank_target call_01_40ca                   ;; 01:4026 pP
+    call_to_bank_target call_01_40d8                   ;; 01:4028 pP
+    call_to_bank_target call_01_40f3                   ;; 01:402a pP
     call_to_bank_target call_01_4059                   ;; 01:402c ??
     call_to_bank_target call_01_40a0                   ;; 01:402e ??
-    call_to_bank_target call_01_44d8                   ;; 01:4030 ..
-    call_to_bank_target call_01_471d                   ;; 01:4032 ..
-    call_to_bank_target call_01_7647                   ;; 01:4034 ..
-    call_to_bank_target call_01_7639                   ;; 01:4036 ..
-    call_to_bank_target call_01_76ab                   ;; 01:4038 ..
-    call_to_bank_target call_01_52b3                   ;; 01:403a ..
-    call_to_bank_target call_01_5d64                   ;; 01:403c ..
-    call_to_bank_target call_01_5d82                   ;; 01:403e ..
-    call_to_bank_target call_01_5a6b                   ;; 01:4040 ..
-    call_to_bank_target call_01_5a77                   ;; 01:4042 ..
-    call_to_bank_target call_01_5a83                   ;; 01:4044 ..
+    call_to_bank_target call_01_44d8                   ;; 01:4030 pP
+    call_to_bank_target call_01_471d                   ;; 01:4032 pP
+    call_to_bank_target call_01_7647                   ;; 01:4034 pP
+    call_to_bank_target call_01_7639                   ;; 01:4036 pP
+    call_to_bank_target call_01_76ab                   ;; 01:4038 pP
+    call_to_bank_target call_01_52b3                   ;; 01:403a pP
+    call_to_bank_target call_01_5d64                   ;; 01:403c pP
+    call_to_bank_target call_01_5d82                   ;; 01:403e pP
+    call_to_bank_target call_01_5a6b                   ;; 01:4040 pP
+    call_to_bank_target call_01_5a77                   ;; 01:4042 pP
+    call_to_bank_target call_01_5a83                   ;; 01:4044 pP
     call_to_bank_target call_01_5a8c                   ;; 01:4046 ??
-    call_to_bank_target call_01_5d98                   ;; 01:4048 ..
-    call_to_bank_target call_01_5cc6                   ;; 01:404a ..
+    call_to_bank_target call_01_5d98                   ;; 01:4048 pP
+    call_to_bank_target call_01_5cc6                   ;; 01:404a pP
     call_to_bank_target call_01_5db6                   ;; 01:404c ??
-    call_to_bank_target call_01_51e1                   ;; 01:404e ..
+    call_to_bank_target call_01_51e1                   ;; 01:404e pP
 
 data_01_4050:
     db   $0e, $fc, $03, $e4, $7e, $fc, $01, $e4        ;; 01:4050 ????????
@@ -164,14 +164,14 @@ call_01_4130:
     call callJumptable                                 ;; 01:4138 $cd $70 $2b
     ret                                                ;; 01:413b $c9
 .data_01_413c:
-    dw   data_01_419c                                  ;; 01:413c ..
-    dw   data_01_4477                                  ;; 01:413e ..
-    dw   data_01_41d6                                  ;; 01:4140 ..
-    dw   data_01_4387                                  ;; 01:4142 ..
-    dw   data_01_4477                                  ;; 01:4144 ..
-    dw   data_01_43a3                                  ;; 01:4146 ..
-    dw   data_01_4205                                  ;; 01:4148 ..
-    dw   data_01_448c                                  ;; 01:414a ..
+    dw   data_01_419c                                  ;; 01:413c pP
+    dw   data_01_4477                                  ;; 01:413e pP
+    dw   data_01_41d6                                  ;; 01:4140 pP
+    dw   data_01_4387                                  ;; 01:4142 pP
+    dw   data_01_4477                                  ;; 01:4144 pP
+    dw   data_01_43a3                                  ;; 01:4146 pP
+    dw   data_01_4205                                  ;; 01:4148 pP
+    dw   data_01_448c                                  ;; 01:414a pP
 
 call_01_414c:
     ld   D, H                                          ;; 01:414c $54
@@ -181,12 +181,12 @@ call_01_414c:
     call callJumptable                                 ;; 01:4154 $cd $70 $2b
     ret                                                ;; 01:4157 $c9
 .data_01_4158:
-    dw   data_01_41ca                                  ;; 01:4158 ..
-    dw   data_01_4477                                  ;; 01:415a ..
-    dw   data_01_4387                                  ;; 01:415c ..
-    dw   data_01_4477                                  ;; 01:415e ..
-    dw   data_01_43ee                                  ;; 01:4160 ..
-    dw   data_01_448c                                  ;; 01:4162 ..
+    dw   data_01_41ca                                  ;; 01:4158 pP
+    dw   data_01_4477                                  ;; 01:415a pP
+    dw   data_01_4387                                  ;; 01:415c pP
+    dw   data_01_4477                                  ;; 01:415e pP
+    dw   data_01_43ee                                  ;; 01:4160 pP
+    dw   data_01_448c                                  ;; 01:4162 pP
 
 call_01_4164:
     ld   D, H                                          ;; 01:4164 $54
@@ -196,14 +196,14 @@ call_01_4164:
     call callJumptable                                 ;; 01:416c $cd $70 $2b
     ret                                                ;; 01:416f $c9
 .data_01_4170:
-    dw   data_01_419c                                  ;; 01:4170 ..
-    dw   data_01_4477                                  ;; 01:4172 ..
-    dw   data_01_41d6                                  ;; 01:4174 ..
-    dw   data_01_422b                                  ;; 01:4176 ..
-    dw   data_01_4477                                  ;; 01:4178 ..
-    dw   data_01_4422                                  ;; 01:417a ..
-    dw   data_01_4205                                  ;; 01:417c ..
-    dw   data_01_448c                                  ;; 01:417e ..
+    dw   data_01_419c                                  ;; 01:4170 pP
+    dw   data_01_4477                                  ;; 01:4172 pP
+    dw   data_01_41d6                                  ;; 01:4174 pP
+    dw   data_01_422b                                  ;; 01:4176 pP
+    dw   data_01_4477                                  ;; 01:4178 pP
+    dw   data_01_4422                                  ;; 01:417a pP
+    dw   data_01_4205                                  ;; 01:417c pP
+    dw   data_01_448c                                  ;; 01:417e pP
 
 call_01_4180:
     ld   D, H                                          ;; 01:4180 $54
@@ -213,14 +213,14 @@ call_01_4180:
     call callJumptable                                 ;; 01:4188 $cd $70 $2b
     ret                                                ;; 01:418b $c9
 .data_01_418c:
-    dw   data_01_419c                                  ;; 01:418c ..
-    dw   data_01_4477                                  ;; 01:418e ..
-    dw   data_01_41d6                                  ;; 01:4190 ..
-    dw   data_01_433e                                  ;; 01:4192 ..
-    dw   data_01_4477                                  ;; 01:4194 ..
-    dw   data_01_4456                                  ;; 01:4196 ..
-    dw   data_01_4205                                  ;; 01:4198 ..
-    dw   data_01_448c                                  ;; 01:419a ..
+    dw   data_01_419c                                  ;; 01:418c pP
+    dw   data_01_4477                                  ;; 01:418e pP
+    dw   data_01_41d6                                  ;; 01:4190 pP
+    dw   data_01_433e                                  ;; 01:4192 pP
+    dw   data_01_4477                                  ;; 01:4194 pP
+    dw   data_01_4456                                  ;; 01:4196 pP
+    dw   data_01_4205                                  ;; 01:4198 pP
+    dw   data_01_448c                                  ;; 01:419a pP
 
 data_01_419c:
     push DE                                            ;; 01:419c $d5
@@ -1272,24 +1272,24 @@ call_01_499e:
     ret                                                ;; 01:49ac $c9
 ;@jumptable amount=18
 .data_01_49ad:
-    dw   call_01_49d1                                  ;; 01:49ad ..
+    dw   call_01_49d1                                  ;; 01:49ad pP
     dw   call_01_49d1                                  ;; 01:49af ??
-    dw   call_01_4ea9                                  ;; 01:49b1 ..
+    dw   call_01_4ea9                                  ;; 01:49b1 pP
     dw   call_01_4d8f                                  ;; 01:49b3 ??
     dw   call_01_4c5d                                  ;; 01:49b5 ??
     dw   call_01_4dcb                                  ;; 01:49b7 ??
     dw   call_01_4c3e                                  ;; 01:49b9 ??
     dw   call_01_49d1                                  ;; 01:49bb ??
-    dw   call_01_4ee2                                  ;; 01:49bd ..
-    dw   call_01_4efb                                  ;; 01:49bf ..
-    dw   call_01_4f14                                  ;; 01:49c1 ..
-    dw   call_01_4f2f                                  ;; 01:49c3 ..
+    dw   call_01_4ee2                                  ;; 01:49bd pP
+    dw   call_01_4efb                                  ;; 01:49bf pP
+    dw   call_01_4f14                                  ;; 01:49c1 pP
+    dw   call_01_4f2f                                  ;; 01:49c3 pP
     dw   call_01_4b94                                  ;; 01:49c5 ??
     dw   call_01_4bd4                                  ;; 01:49c7 ??
     dw   call_01_4c09                                  ;; 01:49c9 ??
-    dw   call_00_309f                                  ;; 01:49cb ..
-    dw   call_00_3254                                  ;; 01:49cd ..
-    dw   call_00_3159                                  ;; 01:49cf ..
+    dw   call_00_309f                                  ;; 01:49cb pP
+    dw   call_00_3254                                  ;; 01:49cd pP
+    dw   call_00_3159                                  ;; 01:49cf pP
 
 call_01_49d1:
     push DE                                            ;; 01:49d1 $d5
@@ -2512,11 +2512,11 @@ call_01_51e1:
 .data_01_51f2:
     dw   call_01_5202                                  ;; 01:51f2 ??
     dw   call_01_5214                                  ;; 01:51f4 ??
-    dw   call_01_526d                                  ;; 01:51f6 ..
+    dw   call_01_526d                                  ;; 01:51f6 pP
     dw   call_01_527b                                  ;; 01:51f8 ??
-    dw   call_01_5289                                  ;; 01:51fa ..
+    dw   call_01_5289                                  ;; 01:51fa pP
     dw   call_01_5297                                  ;; 01:51fc ??
-    dw   call_01_52a5                                  ;; 01:51fe ..
+    dw   call_01_52a5                                  ;; 01:51fe pP
     dw   call_01_5203                                  ;; 01:5200 ??
 
 call_01_5202:
@@ -2651,7 +2651,7 @@ call_01_52b3:
 ;@jumptable amount=9
 .data_01_52cd:
     dw   call_01_52df                                  ;; 01:52cd ??
-    dw   call_01_54d5                                  ;; 01:52cf ..
+    dw   call_01_54d5                                  ;; 01:52cf pP
     dw   call_01_53f2                                  ;; 01:52d1 ??
     dw   call_01_53bd                                  ;; 01:52d3 ??
     dw   call_01_57ec                                  ;; 01:52d5 ??
@@ -4625,30 +4625,30 @@ data_01_5ddd:
 
 data_01_5e1d:
     db   $00, $00                                      ;; 01:5e1d ??
-    dw   data_01_60ff                                  ;; 01:5e1f ..
+    dw   data_01_60ff                                  ;; 01:5e1f pP
     db   $69, $66, $93, $66, $65, $67, $b9, $67        ;; 01:5e21 ????????
     db   $0d, $68, $00, $00                            ;; 01:5e29 ????
-    dw   data_01_62a3                                  ;; 01:5e2d ..
+    dw   data_01_62a3                                  ;; 01:5e2d pP
     db   $4b, $63, $ef, $64, $47, $64, $29, $61        ;; 01:5e2f ????????
     db   $29, $61, $29, $61, $29, $61, $61, $68        ;; 01:5e37 ????????
     db   $1d, $64, $00, $00, $bd, $66, $8f, $67        ;; 01:5e3f ????????
     db   $e3, $67, $11, $67, $00, $00                  ;; 01:5e47 ??????
-    dw   data_01_62cd                                  ;; 01:5e4d ..
+    dw   data_01_62cd                                  ;; 01:5e4d pP
     db   $75, $63, $19, $65, $71, $64, $53, $61        ;; 01:5e4f ????????
     db   $7d, $61, $eb, $65, $97, $65, $8b, $68        ;; 01:5e57 ????????
     db   $00, $00, $00, $00, $e7, $66, $00, $00        ;; 01:5e5f ????????
     db   $00, $00, $3b, $67, $00, $00                  ;; 01:5e67 ??????
-    dw   data_01_62f7                                  ;; 01:5e6d ..
+    dw   data_01_62f7                                  ;; 01:5e6d pP
     db   $9f, $63, $43, $65, $9b, $64, $a7, $61        ;; 01:5e6f ????????
     db   $fb, $61, $15, $66, $c1, $65, $b5, $68        ;; 01:5e77 ????????
     db   $00, $00, $00, $00, $11, $67, $00, $00        ;; 01:5e7f ????????
     db   $00, $00, $00, $00, $00, $00                  ;; 01:5e87 ??????
-    dw   data_01_6321                                  ;; 01:5e8d ..
+    dw   data_01_6321                                  ;; 01:5e8d pP
     db   $c9, $63, $6d, $65, $c5, $64, $d1, $61        ;; 01:5e8f ????????
     db   $25, $62, $3f, $66, $00, $00, $00, $00        ;; 01:5e97 ????????
     db   $00, $00, $00, $00, $3b, $67, $00, $00        ;; 01:5e9f ????????
     db   $00, $00                                      ;; 01:5ea7 ??
-    dw   data_01_6837                                  ;; 01:5ea9 ..
+    dw   data_01_6837                                  ;; 01:5ea9 pP
     db   $00, $00, $00, $00, $f3, $63, $00, $00        ;; 01:5eab ????????
     db   $00, $00, $00, $00, $4f, $62, $00, $00        ;; 01:5eb3 ????????
     db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 01:5ebb ????????
@@ -4730,9 +4730,9 @@ data_01_5edd:
 
 data_01_60ff:
     db   $04, $48, $02, $05, $0a, $00, $00, $70        ;; 01:60ff .....?..
-    db   $df, $68, $a1, $69, $b0, $69, $bf, $69        ;; 01:6107 ........
-    db   $ce, $69, $dd, $69, $f0, $69, $03, $6a        ;; 01:610f ........
-    db   $16, $6a, $29, $6a, $30, $6a, $37, $6a        ;; 01:6117 ..??????
+    db   $df, $68, $a1, $69, $b0, $69, $bf, $69        ;; 01:6107 ...P.P.P
+    db   $ce, $69, $dd, $69, $f0, $69, $03, $6a        ;; 01:610f .P.P.P.P
+    db   $16, $6a, $29, $6a, $30, $6a, $37, $6a        ;; 01:6117 .P??????
     db   $3e, $6a, $45, $6a, $68, $6a, $8b, $6a        ;; 01:611f ????????
     db   $ae, $6a, $06, $50, $03, $06, $00, $00        ;; 01:6127 ????????
     db   $80, $75, $03, $69, $d1, $6a, $e8, $6a        ;; 01:612f ????????
@@ -4786,7 +4786,7 @@ data_01_60ff:
 data_01_62a3:
     db   $04, $50, $02, $03, $00, $00, $00, $75        ;; 01:62a3 .....?..
     db   $3f, $69, $30, $72, $30, $72, $30, $72        ;; 01:62ab ..??????
-    db   $30, $72, $30, $72, $30, $72, $30, $72        ;; 01:62b3 ????..??
+    db   $30, $72, $30, $72, $30, $72, $30, $72        ;; 01:62b3 ????.P??
     db   $30, $72, $30, $72, $30, $72, $30, $72        ;; 01:62bb ????????
     db   $30, $72, $30, $72, $30, $72, $30, $72        ;; 01:62c3 ????????
     db   $30, $72                                      ;; 01:62cb ??
@@ -4794,7 +4794,7 @@ data_01_62a3:
 data_01_62cd:
     db   $04, $50, $03, $02, $00, $00, $00, $75        ;; 01:62cd .....?..
     db   $3f, $69, $bd, $72, $bd, $72, $bd, $72        ;; 01:62d5 ..??????
-    db   $bd, $72, $bd, $72, $bd, $72, $bd, $72        ;; 01:62dd ????..??
+    db   $bd, $72, $bd, $72, $bd, $72, $bd, $72        ;; 01:62dd ????.P??
     db   $bd, $72, $bd, $72, $bd, $72, $bd, $72        ;; 01:62e5 ????????
     db   $bd, $72, $bd, $72, $bd, $72, $bd, $72        ;; 01:62ed ????????
     db   $bd, $72                                      ;; 01:62f5 ??
@@ -4802,7 +4802,7 @@ data_01_62cd:
 data_01_62f7:
     db   $04, $50, $02, $01, $00, $00, $00, $75        ;; 01:62f7 .....?..
     db   $3f, $69, $5f, $72, $5f, $72, $5f, $72        ;; 01:62ff ..??????
-    db   $5f, $72, $5f, $72, $5f, $72, $5f, $72        ;; 01:6307 ????..??
+    db   $5f, $72, $5f, $72, $5f, $72, $5f, $72        ;; 01:6307 ????.P??
     db   $5f, $72, $5f, $72, $5f, $72, $5f, $72        ;; 01:630f ????????
     db   $5f, $72, $5f, $72, $5f, $72, $5f, $72        ;; 01:6317 ????????
     db   $5f, $72                                      ;; 01:631f ??
@@ -4810,7 +4810,7 @@ data_01_62f7:
 data_01_6321:
     db   $04, $50, $03, $00, $00, $00, $00, $75        ;; 01:6321 .....?..
     db   $3f, $69, $8e, $72, $8e, $72, $8e, $72        ;; 01:6329 ..??????
-    db   $8e, $72, $8e, $72, $8e, $72, $8e, $72        ;; 01:6331 ????..??
+    db   $8e, $72, $8e, $72, $8e, $72, $8e, $72        ;; 01:6331 ????.P??
     db   $8e, $72, $8e, $72, $8e, $72, $8e, $72        ;; 01:6339 ????????
     db   $8e, $72, $8e, $72, $8e, $72, $8e, $72        ;; 01:6341 ????????
     db   $8e, $72, $04, $50, $03, $05, $00, $00        ;; 01:6349 ????????
@@ -4976,7 +4976,7 @@ data_01_6837:
     db   $06, $48, $02, $05, $0c, $00, $40, $74        ;; 01:6837 .....?..
     db   $df, $68, $dd, $69, $f0, $69, $03, $6a        ;; 01:683f ..??????
     db   $16, $6a, $dd, $69, $f0, $69, $03, $6a        ;; 01:6847 ????????
-    db   $16, $6a, $dd, $69, $f0, $69, $03, $6a        ;; 01:684f ..??????
+    db   $16, $6a, $dd, $69, $f0, $69, $03, $6a        ;; 01:684f .P??????
     db   $16, $6a, $dd, $69, $f0, $69, $03, $6a        ;; 01:6857 ????????
     db   $16, $6a, $04, $50, $02, $06, $00, $00        ;; 01:685f ????????
     db   $40, $78, $03, $69, $d6, $75, $d6, $75        ;; 01:6867 ????????

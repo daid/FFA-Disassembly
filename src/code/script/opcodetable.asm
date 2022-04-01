@@ -3,30 +3,30 @@
 
 ;@jumptable amount=256 label=scriptOpCode%02X
 scriptOpcodeTable:
-    dw   scriptOpCodeEND                               ;; 02:4576 ..
-    dw   scriptOpCode01                                ;; 02:4578 ..
-    dw   scriptOpCode02                                ;; 02:457a ..
-    dw   scriptOpCode03                                ;; 02:457c ..
-    dw   scriptOpCode04                                ;; 02:457e ..
+    dw   scriptOpCodeEND                               ;; 02:4576 pP
+    dw   scriptOpCode01                                ;; 02:4578 pP
+    dw   scriptOpCode02                                ;; 02:457a pP
+    dw   scriptOpCode03                                ;; 02:457c pP
+    dw   scriptOpCode04                                ;; 02:457e pP
     dw   scriptOpCodeDF                                ;; 02:4580 ??
     dw   scriptOpCodeDF                                ;; 02:4582 ??
     dw   scriptOpCodeDF                                ;; 02:4584 ??
-    dw   scriptOpCode08                                ;; 02:4586 ..
-    dw   scriptOpCode09                                ;; 02:4588 ..
-    dw   scriptOpCode0A                                ;; 02:458a ..
-    dw   scriptOpCode0B                                ;; 02:458c ..
+    dw   scriptOpCode08                                ;; 02:4586 pP
+    dw   scriptOpCode09                                ;; 02:4588 pP
+    dw   scriptOpCode0A                                ;; 02:458a pP
+    dw   scriptOpCode0B                                ;; 02:458c pP
     dw   scriptOpCode0C                                ;; 02:458e ??
     dw   scriptOpCodeDF                                ;; 02:4590 ??
     dw   scriptOpCodeDF                                ;; 02:4592 ??
     dw   scriptOpCodeDF                                ;; 02:4594 ??
-    dw   scriptOpCodeNpc1StepForward                   ;; 02:4596 ..
+    dw   scriptOpCodeNpc1StepForward                   ;; 02:4596 pP
     dw   scriptOpCodeNpc1StepBackwards                 ;; 02:4598 ??
     dw   scriptOpCodeFA                                ;; 02:459a ??
     dw   scriptOpCodeFA                                ;; 02:459c ??
-    dw   scriptOpCodeNpc1DirectionUp                   ;; 02:459e ..
-    dw   scriptOpCodeNpc1DirectionDown                 ;; 02:45a0 ..
-    dw   scriptOpCodeNpc1DirectionRight                ;; 02:45a2 ..
-    dw   scriptOpCodeNpc1DirectionLeft                 ;; 02:45a4 ..
+    dw   scriptOpCodeNpc1DirectionUp                   ;; 02:459e pP
+    dw   scriptOpCodeNpc1DirectionDown                 ;; 02:45a0 pP
+    dw   scriptOpCodeNpc1DirectionRight                ;; 02:45a2 pP
+    dw   scriptOpCodeNpc1DirectionLeft                 ;; 02:45a4 pP
     dw   scriptOpCodeNpc1Delete                        ;; 02:45a6 ??
     dw   scriptOpCodeNpc1SetPosition                   ;; 02:45a8 ??
     dw   scriptOpCode1A                                ;; 02:45aa ??
@@ -39,11 +39,11 @@ scriptOpcodeTable:
     dw   scriptOpCode21                                ;; 02:45b8 ??
     dw   scriptOpCodeFA                                ;; 02:45ba ??
     dw   scriptOpCodeFA                                ;; 02:45bc ??
-    dw   scriptOpCode24                                ;; 02:45be ..
-    dw   scriptOpCode25                                ;; 02:45c0 ..
-    dw   scriptOpCode26                                ;; 02:45c2 ..
-    dw   scriptOpCode27                                ;; 02:45c4 ..
-    dw   scriptOpCode28                                ;; 02:45c6 ..
+    dw   scriptOpCode24                                ;; 02:45be pP
+    dw   scriptOpCode25                                ;; 02:45c0 pP
+    dw   scriptOpCode26                                ;; 02:45c2 pP
+    dw   scriptOpCode27                                ;; 02:45c4 pP
+    dw   scriptOpCode28                                ;; 02:45c6 pP
     dw   scriptOpCode29                                ;; 02:45c8 ??
     dw   scriptOpCode2A                                ;; 02:45ca ??
     dw   scriptOpCode2B                                ;; 02:45cc ??
@@ -131,17 +131,17 @@ scriptOpcodeTable:
     dw   scriptOpCodeDF                                ;; 02:4670 ??
     dw   scriptOpCodeDF                                ;; 02:4672 ??
     dw   scriptOpCodeDF                                ;; 02:4674 ??
-    dw   scriptOpCode80                                ;; 02:4676 ..
-    dw   scriptOpCode81                                ;; 02:4678 ..
+    dw   scriptOpCode80                                ;; 02:4676 pP
+    dw   scriptOpCode81                                ;; 02:4678 pP
     dw   scriptOpCodeFA                                ;; 02:467a ??
     dw   scriptOpCodeFA                                ;; 02:467c ??
-    dw   scriptOpCode84                                ;; 02:467e ..
-    dw   scriptOpCode85                                ;; 02:4680 ..
-    dw   scriptOpCode86                                ;; 02:4682 ..
-    dw   scriptOpCode87                                ;; 02:4684 ..
-    dw   scriptOpCodeSetFastMovement                   ;; 02:4686 ..
-    dw   scriptOpCodeClearFastMovement                 ;; 02:4688 ..
-    dw   scriptOpCode8A                                ;; 02:468a ..
+    dw   scriptOpCode84                                ;; 02:467e pP
+    dw   scriptOpCode85                                ;; 02:4680 pP
+    dw   scriptOpCode86                                ;; 02:4682 pP
+    dw   scriptOpCode87                                ;; 02:4684 pP
+    dw   scriptOpCodeSetFastMovement                   ;; 02:4686 pP
+    dw   scriptOpCodeClearFastMovement                 ;; 02:4688 pP
+    dw   scriptOpCode8A                                ;; 02:468a pP
     dw   scriptOpCodePlayerJump                        ;; 02:468c ??
     dw   scriptOpCodeFA                                ;; 02:468e ??
     dw   scriptOpCodeFA                                ;; 02:4690 ??
@@ -159,7 +159,7 @@ scriptOpcodeTable:
     dw   scriptOpCode99                                ;; 02:46a8 ??
     dw   scriptOpCode9A                                ;; 02:46aa ??
     dw   scriptOpCode9B                                ;; 02:46ac ??
-    dw   scriptOpCodeGiveFollower                      ;; 02:46ae ..
+    dw   scriptOpCodeGiveFollower                      ;; 02:46ae pP
     dw   scriptOpCode9D                                ;; 02:46b0 ??
     dw   scriptOpCodeDF                                ;; 02:46b2 ??
     dw   scriptOpCodeDF                                ;; 02:46b4 ??
@@ -167,19 +167,19 @@ scriptOpcodeTable:
     dw   scriptOpCodeA1                                ;; 02:46b8 ??
     dw   scriptOpCodeA2                                ;; 02:46ba ??
     dw   scriptOpCodeA3                                ;; 02:46bc ??
-    dw   scriptOpCodeSetPlayerNormalSprite             ;; 02:46be ..
-    dw   scriptOpCodeSetPlayerHurtSprite               ;; 02:46c0 ..
-    dw   scriptOpCodeSetPlayerLaydownSprite            ;; 02:46c2 ..
+    dw   scriptOpCodeSetPlayerNormalSprite             ;; 02:46be pP
+    dw   scriptOpCodeSetPlayerHurtSprite               ;; 02:46c0 pP
+    dw   scriptOpCodeSetPlayerLaydownSprite            ;; 02:46c2 pP
     dw   scriptOpCodeDF                                ;; 02:46c4 ??
     dw   scriptOpCodeDF                                ;; 02:46c6 ??
-    dw   scriptOpCodeA9                                ;; 02:46c8 ..
+    dw   scriptOpCodeA9                                ;; 02:46c8 pP
     dw   scriptOpCodeAA                                ;; 02:46ca ??
-    dw   scriptOpCodeAB                                ;; 02:46cc ..
-    dw   scriptOpCodeOpenMap                           ;; 02:46ce ..
-    dw   scriptOpCodeWaitMapClose                      ;; 02:46d0 ..
-    dw   scriptOpCodeCloseMap                          ;; 02:46d2 ..
-    dw   scriptOpCodeAF                                ;; 02:46d4 ..
-    dw   scriptOpCodeSetRoomTile                       ;; 02:46d6 ..
+    dw   scriptOpCodeAB                                ;; 02:46cc pP
+    dw   scriptOpCodeOpenMap                           ;; 02:46ce pP
+    dw   scriptOpCodeWaitMapClose                      ;; 02:46d0 pP
+    dw   scriptOpCodeCloseMap                          ;; 02:46d2 pP
+    dw   scriptOpCodeAF                                ;; 02:46d4 pP
+    dw   scriptOpCodeSetRoomTile                       ;; 02:46d6 pP
     dw   scriptOpCodeDF                                ;; 02:46d8 ??
     dw   scriptOpCodeDF                                ;; 02:46da ??
     dw   scriptOpCodeDF                                ;; 02:46dc ??
@@ -191,20 +191,20 @@ scriptOpcodeTable:
     dw   scriptOpCodeB9                                ;; 02:46e8 ??
     dw   scriptOpCodeBA                                ;; 02:46ea ??
     dw   scriptOpCodeDF                                ;; 02:46ec ??
-    dw   scriptOpCodeFadeToNormal                      ;; 02:46ee ..
-    dw   scriptOpCodeFadeToBlack                       ;; 02:46f0 ..
+    dw   scriptOpCodeFadeToNormal                      ;; 02:46ee pP
+    dw   scriptOpCodeFadeToBlack                       ;; 02:46f0 pP
     dw   scriptOpCodeFadeToWhite                       ;; 02:46f2 ??
-    dw   scriptOpCodeFlashScreen                       ;; 02:46f4 ..
-    dw   scriptOpCodeFA                                ;; 02:46f6 ..
-    dw   scriptOpCodeC1                                ;; 02:46f8 ..
+    dw   scriptOpCodeFlashScreen                       ;; 02:46f4 pP
+    dw   scriptOpCodeFA                                ;; 02:46f6 pP
+    dw   scriptOpCodeC1                                ;; 02:46f8 pP
     dw   scriptOpCodeC2                                ;; 02:46fa ??
     dw   scriptOpCodeC3                                ;; 02:46fc ??
-    dw   scriptOpCodeC4                                ;; 02:46fe ..
-    dw   scriptOpCodeC5                                ;; 02:4700 ..
-    dw   scriptOpCodeC6                                ;; 02:4702 ..
+    dw   scriptOpCodeC4                                ;; 02:46fe pP
+    dw   scriptOpCodeC5                                ;; 02:4700 pP
+    dw   scriptOpCodeC6                                ;; 02:4702 pP
     dw   scriptOpCodeC7                                ;; 02:4704 ??
-    dw   scriptOpCodeC8                                ;; 02:4706 ..
-    dw   scriptOpCodeC9                                ;; 02:4708 ..
+    dw   scriptOpCodeC8                                ;; 02:4706 pP
+    dw   scriptOpCodeC9                                ;; 02:4708 pP
     dw   scriptOpCodeCA                                ;; 02:470a ??
     dw   scriptOpCodeCB                                ;; 02:470c ??
     dw   scriptOpCodeCC                                ;; 02:470e ??
@@ -212,22 +212,22 @@ scriptOpcodeTable:
     dw   scriptOpCodeDF                                ;; 02:4712 ??
     dw   scriptOpCodeDF                                ;; 02:4714 ??
     dw   scriptOpCodeD0                                ;; 02:4716 ??
-    dw   scriptOpCodeD1                                ;; 02:4718 ..
+    dw   scriptOpCodeD1                                ;; 02:4718 pP
     dw   scriptOpCodeD2                                ;; 02:471a ??
     dw   scriptOpCodeD3                                ;; 02:471c ??
-    dw   scriptOpCodeD4                                ;; 02:471e ..
+    dw   scriptOpCodeD4                                ;; 02:471e pP
     dw   scriptOpCodeD5                                ;; 02:4720 ??
     dw   scriptOpCodeD6                                ;; 02:4722 ??
     dw   scriptOpCodeD7                                ;; 02:4724 ??
     dw   scriptOpCodeD8                                ;; 02:4726 ??
     dw   scriptOpCodeD9                                ;; 02:4728 ??
-    dw   scriptOpCodeDA                                ;; 02:472a ..
-    dw   scriptOpCodeDB                                ;; 02:472c ..
-    dw   scriptOpCodeDC                                ;; 02:472e ..
-    dw   scriptOpCodeDD                                ;; 02:4730 ..
+    dw   scriptOpCodeDA                                ;; 02:472a pP
+    dw   scriptOpCodeDB                                ;; 02:472c pP
+    dw   scriptOpCodeDC                                ;; 02:472e pP
+    dw   scriptOpCodeDD                                ;; 02:4730 pP
     dw   scriptOpCodeDE                                ;; 02:4732 ??
     dw   scriptOpCodeDF                                ;; 02:4734 ??
-    dw   scriptOpCodeE0                                ;; 02:4736 ..
+    dw   scriptOpCodeE0                                ;; 02:4736 pP
     dw   scriptOpCodeE1                                ;; 02:4738 ??
     dw   scriptOpCodeE2                                ;; 02:473a ??
     dw   scriptOpCodeE3                                ;; 02:473c ??
@@ -235,27 +235,27 @@ scriptOpcodeTable:
     dw   scriptOpCodeE5                                ;; 02:4740 ??
     dw   scriptOpCodeE6                                ;; 02:4742 ??
     dw   scriptOpCodeE7                                ;; 02:4744 ??
-    dw   scriptOpCodeScrollRoomDown                    ;; 02:4746 ..
+    dw   scriptOpCodeScrollRoomDown                    ;; 02:4746 pP
     dw   scriptOpCodeScrollRoomUp                      ;; 02:4748 ??
-    dw   scriptOpCodeScrollRoomLeft                    ;; 02:474a ..
-    dw   scriptOpCodeScrollRoomRight                   ;; 02:474c ..
-    dw   scriptOpCodeRunRoomScript                     ;; 02:474e ..
+    dw   scriptOpCodeScrollRoomLeft                    ;; 02:474a pP
+    dw   scriptOpCodeScrollRoomRight                   ;; 02:474c pP
+    dw   scriptOpCodeRunRoomScript                     ;; 02:474e pP
     dw   scriptOpCodeED                                ;; 02:4750 ??
     dw   scriptOpCodeEE                                ;; 02:4752 ??
-    dw   scriptOpCodeEF                                ;; 02:4754 ..
-    dw   scriptOpCodeF0                                ;; 02:4756 ..
+    dw   scriptOpCodeEF                                ;; 02:4754 pP
+    dw   scriptOpCodeF0                                ;; 02:4756 pP
     dw   scriptOpCodeFA                                ;; 02:4758 ??
     dw   scriptOpCodeFA                                ;; 02:475a ??
-    dw   scriptOpCodeLoadRoomInstant                   ;; 02:475c ..
-    dw   scriptOpCodeLoadRoom                          ;; 02:475e ..
+    dw   scriptOpCodeLoadRoomInstant                   ;; 02:475c pP
+    dw   scriptOpCodeLoadRoom                          ;; 02:475e pP
     dw   scriptOpCodeFA                                ;; 02:4760 ??
-    dw   scriptOpCodeF6                                ;; 02:4762 ..
+    dw   scriptOpCodeF6                                ;; 02:4762 pP
     dw   scriptOpCodeFA                                ;; 02:4764 ??
-    dw   scriptOpCodeSetMusic                          ;; 02:4766 ..
-    dw   scriptOpCodeSFX                               ;; 02:4768 ..
+    dw   scriptOpCodeSetMusic                          ;; 02:4766 pP
+    dw   scriptOpCodeSFX                               ;; 02:4768 pP
     dw   scriptOpCodeFA                                ;; 02:476a ??
     dw   scriptOpCodeShakeScreen                       ;; 02:476c ??
-    dw   scriptOpCodeFC                                ;; 02:476e ..
-    dw   scriptOpCodeFD                                ;; 02:4770 ..
-    dw   scriptOpCodeSpawnBoss                         ;; 02:4772 ..
-    dw   scriptOpCodeFF                                ;; 02:4774 ..
+    dw   scriptOpCodeFC                                ;; 02:476e pP
+    dw   scriptOpCodeFD                                ;; 02:4770 pP
+    dw   scriptOpCodeSpawnBoss                         ;; 02:4772 pP
+    dw   scriptOpCodeFF                                ;; 02:4774 pP

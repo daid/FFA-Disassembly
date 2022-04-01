@@ -6,13 +6,13 @@ INCLUDE "include/charmaps.inc"
 
 SECTION "bank04", ROMX[$4000], BANK[$04]
 ;@call_to_bank_jumptable amount=7
-    call_to_bank_target call_04_4090                   ;; 04:4000 ..
-    call_to_bank_target call_04_42f7                   ;; 04:4002 ..
+    call_to_bank_target call_04_4090                   ;; 04:4000 pP
+    call_to_bank_target call_04_42f7                   ;; 04:4002 pP
     call_to_bank_target call_04_4425                   ;; 04:4004 ??
-    call_to_bank_target call_04_45fa                   ;; 04:4006 ..
+    call_to_bank_target call_04_45fa                   ;; 04:4006 pP
     call_to_bank_target call_04_4735                   ;; 04:4008 ??
-    call_to_bank_target call_04_4446                   ;; 04:400a ..
-    call_to_bank_target call_04_400e                   ;; 04:400c ..
+    call_to_bank_target call_04_4446                   ;; 04:400a pP
+    call_to_bank_target call_04_400e                   ;; 04:400c pP
 
 call_04_400e:
     push BC                                            ;; 04:400e $c5
@@ -328,9 +328,9 @@ call_04_419e:
     ret                                                ;; 04:41c4 $c9
 ;@jumptable amount=4
 .data_04_41c5:
-    dw   call_04_41cd                                  ;; 04:41c5 ..
+    dw   call_04_41cd                                  ;; 04:41c5 pP
     dw   call_04_41d1                                  ;; 04:41c7 ??
-    dw   call_04_41e7                                  ;; 04:41c9 ..
+    dw   call_04_41e7                                  ;; 04:41c9 pP
     dw   call_04_4205                                  ;; 04:41cb ??
 
 call_04_41cd:

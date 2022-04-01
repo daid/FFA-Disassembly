@@ -6,64 +6,64 @@ INCLUDE "include/charmaps.inc"
 
 SECTION "bank02", ROMX[$4000], BANK[$02]
 ;@call_to_bank_jumptable amount=58
-    call_to_bank_target call_02_4074                   ;; 02:4000 ..
-    call_to_bank_target updateJoypadInput              ;; 02:4002 ..
-    call_to_bank_target call_02_44fa                   ;; 02:4004 ..
-    call_to_bank_target call_02_44c4                   ;; 02:4006 ..
-    call_to_bank_target call_02_442b                   ;; 02:4008 ..
-    call_to_bank_target call_02_4469                   ;; 02:400a ..
-    call_to_bank_target call_02_43dd                   ;; 02:400c ..
-    call_to_bank_target call_02_4244                   ;; 02:400e ..
-    call_to_bank_target call_02_6b51                   ;; 02:4010 ..
+    call_to_bank_target call_02_4074                   ;; 02:4000 pP
+    call_to_bank_target updateJoypadInput              ;; 02:4002 pP
+    call_to_bank_target call_02_44fa                   ;; 02:4004 pP
+    call_to_bank_target call_02_44c4                   ;; 02:4006 pP
+    call_to_bank_target call_02_442b                   ;; 02:4008 pP
+    call_to_bank_target call_02_4469                   ;; 02:400a pP
+    call_to_bank_target call_02_43dd                   ;; 02:400c pP
+    call_to_bank_target call_02_4244                   ;; 02:400e pP
+    call_to_bank_target call_02_6b51                   ;; 02:4010 pP
     call_to_bank_target call_02_6bbe                   ;; 02:4012 ??
     call_to_bank_target call_02_4776                   ;; 02:4014 ??
     call_to_bank_target call_02_67f9                   ;; 02:4016 ??
     call_to_bank_target call_02_6d5b                   ;; 02:4018 ??
-    call_to_bank_target call_02_6da7                   ;; 02:401a ..
-    call_to_bank_target call_02_7693                   ;; 02:401c ..
+    call_to_bank_target call_02_6da7                   ;; 02:401a pP
+    call_to_bank_target call_02_7693                   ;; 02:401c pP
     call_to_bank_target call_02_7682                   ;; 02:401e ??
     call_to_bank_target call_02_6d34                   ;; 02:4020 ??
-    call_to_bank_target call_02_6d80                   ;; 02:4022 ..
-    call_to_bank_target call_02_4860                   ;; 02:4024 ..
-    call_to_bank_target call_02_667a                   ;; 02:4026 ..
-    call_to_bank_target call_02_6700                   ;; 02:4028 ..
-    call_to_bank_target call_02_483e                   ;; 02:402a ..
+    call_to_bank_target call_02_6d80                   ;; 02:4022 pP
+    call_to_bank_target call_02_4860                   ;; 02:4024 pP
+    call_to_bank_target call_02_667a                   ;; 02:4026 pP
+    call_to_bank_target call_02_6700                   ;; 02:4028 pP
+    call_to_bank_target call_02_483e                   ;; 02:402a pP
     call_to_bank_target call_02_5b68                   ;; 02:402c ??
-    call_to_bank_target call_02_6e25                   ;; 02:402e ..
-    call_to_bank_target call_02_5419                   ;; 02:4030 ..
+    call_to_bank_target call_02_6e25                   ;; 02:402e pP
+    call_to_bank_target call_02_5419                   ;; 02:4030 pP
     call_to_bank_target call_02_5428                   ;; 02:4032 ??
     call_to_bank_target call_02_53f0                   ;; 02:4034 ??
     call_to_bank_target call_02_53bb                   ;; 02:4036 ??
     call_to_bank_target call_02_53c8                   ;; 02:4038 ??
     call_to_bank_target call_02_53d5                   ;; 02:403a ??
-    call_to_bank_target call_02_6dd8                   ;; 02:403c ..
-    call_to_bank_target call_02_6dde                   ;; 02:403e ..
-    call_to_bank_target call_02_6dcc                   ;; 02:4040 ..
+    call_to_bank_target call_02_6dd8                   ;; 02:403c pP
+    call_to_bank_target call_02_6dde                   ;; 02:403e pP
+    call_to_bank_target call_02_6dcc                   ;; 02:4040 pP
     call_to_bank_target call_02_6df4                   ;; 02:4042 ??
-    call_to_bank_target clearStatusBar                 ;; 02:4044 ..
+    call_to_bank_target clearStatusBar                 ;; 02:4044 pP
     call_to_bank_target drawDefaultStatusBar           ;; 02:4046 ??
-    call_to_bank_target drawHPOnStatuBar               ;; 02:4048 ..
-    call_to_bank_target drawManaOnStatusBar            ;; 02:404a ..
-    call_to_bank_target drawMoneyOnStatusBar           ;; 02:404c ..
-    call_to_bank_target call_02_6fb4                   ;; 02:404e ..
+    call_to_bank_target drawHPOnStatuBar               ;; 02:4048 pP
+    call_to_bank_target drawManaOnStatusBar            ;; 02:404a pP
+    call_to_bank_target drawMoneyOnStatusBar           ;; 02:404c pP
+    call_to_bank_target call_02_6fb4                   ;; 02:404e pP
     call_to_bank_target call_02_6d26                   ;; 02:4050 ??
-    call_to_bank_target call_02_6fab                   ;; 02:4052 ..
-    call_to_bank_target call_02_77af                   ;; 02:4054 ..
-    call_to_bank_target call_02_71db                   ;; 02:4056 ..
-    call_to_bank_target call_02_78c6                   ;; 02:4058 ..
+    call_to_bank_target call_02_6fab                   ;; 02:4052 pP
+    call_to_bank_target call_02_77af                   ;; 02:4054 pP
+    call_to_bank_target call_02_71db                   ;; 02:4056 pP
+    call_to_bank_target call_02_78c6                   ;; 02:4058 pP
     call_to_bank_target call_02_717b                   ;; 02:405a ??
-    call_to_bank_target call_02_6623                   ;; 02:405c ..
-    call_to_bank_target call_02_65fa                   ;; 02:405e ..
-    call_to_bank_target call_02_7b3c                   ;; 02:4060 ..
-    call_to_bank_target call_02_7bdd                   ;; 02:4062 ..
-    call_to_bank_target call_02_6656                   ;; 02:4064 ..
-    call_to_bank_target getScriptOpcodeFunction        ;; 02:4066 ..
+    call_to_bank_target call_02_6623                   ;; 02:405c pP
+    call_to_bank_target call_02_65fa                   ;; 02:405e pP
+    call_to_bank_target call_02_7b3c                   ;; 02:4060 pP
+    call_to_bank_target call_02_7bdd                   ;; 02:4062 pP
+    call_to_bank_target call_02_6656                   ;; 02:4064 pP
+    call_to_bank_target getScriptOpcodeFunction        ;; 02:4066 pP
     call_to_bank_target call_02_7990                   ;; 02:4068 ??
     call_to_bank_target call_02_799c                   ;; 02:406a ??
     call_to_bank_target call_02_79ab                   ;; 02:406c ??
     call_to_bank_target call_02_79ba                   ;; 02:406e ??
     call_to_bank_target call_02_7987                   ;; 02:4070 ??
-    call_to_bank_target call_02_6dd2                   ;; 02:4072 ..
+    call_to_bank_target call_02_6dd2                   ;; 02:4072 pP
 
 call_02_4074:
     ld   A, [wD399]                                    ;; 02:4074 $fa $99 $d3
@@ -75,22 +75,22 @@ call_02_4074:
     ret                                                ;; 02:4083 $c9
 ;@jumptable amount=16
 .data_02_4084:
-    dw   call_02_40c9                                  ;; 02:4084 ..
-    dw   call_02_40c9                                  ;; 02:4086 ..
-    dw   call_02_4105                                  ;; 02:4088 ..
-    dw   call_02_4147                                  ;; 02:408a ..
-    dw   call_02_4189                                  ;; 02:408c ..
-    dw   call_02_4189                                  ;; 02:408e ..
-    dw   horizontalScrollTile                          ;; 02:4090 ..
-    dw   call_02_40a4                                  ;; 02:4092 ..
-    dw   call_02_4213                                  ;; 02:4094 ..
+    dw   call_02_40c9                                  ;; 02:4084 pP
+    dw   call_02_40c9                                  ;; 02:4086 pP
+    dw   call_02_4105                                  ;; 02:4088 pP
+    dw   call_02_4147                                  ;; 02:408a pP
+    dw   call_02_4189                                  ;; 02:408c pP
+    dw   call_02_4189                                  ;; 02:408e pP
+    dw   horizontalScrollTile                          ;; 02:4090 pP
+    dw   call_02_40a4                                  ;; 02:4092 pP
+    dw   call_02_4213                                  ;; 02:4094 pP
     dw   call_02_4213                                  ;; 02:4096 ??
-    dw   call_02_4105                                  ;; 02:4098 ..
-    dw   call_02_4147                                  ;; 02:409a ..
-    dw   call_02_4189                                  ;; 02:409c ..
-    dw   call_02_4189                                  ;; 02:409e ..
-    dw   horizontalScrollTile                          ;; 02:40a0 ..
-    dw   call_02_40a4                                  ;; 02:40a2 ..
+    dw   call_02_4105                                  ;; 02:4098 pP
+    dw   call_02_4147                                  ;; 02:409a pP
+    dw   call_02_4189                                  ;; 02:409c pP
+    dw   call_02_4189                                  ;; 02:409e pP
+    dw   horizontalScrollTile                          ;; 02:40a0 pP
+    dw   call_02_40a4                                  ;; 02:40a2 pP
 
 call_02_40a4:
     ld   HL, wD398                                     ;; 02:40a4 $21 $98 $d3
@@ -993,73 +993,73 @@ data_02_47b6:
     db   $12, $16                                      ;; 02:47b6 ..
 
 data_02_47b8:
-    dw   $80c0                                         ;; 02:47b8 ..
+    dw   $80c0                                         ;; 02:47b8 pP
     db   $00, $4c                                      ;; 02:47ba ..
-    dw   $80d0                                         ;; 02:47bc ..
+    dw   $80d0                                         ;; 02:47bc pP
     db   $20, $4c                                      ;; 02:47be ..
-    dw   $80e0                                         ;; 02:47c0 ..
+    dw   $80e0                                         ;; 02:47c0 pP
     db   $10, $4c                                      ;; 02:47c2 ..
-    dw   $80f0                                         ;; 02:47c4 ..
+    dw   $80f0                                         ;; 02:47c4 pP
     db   $30, $4c                                      ;; 02:47c6 ..
 
 ;@jumptable amount=59
 data_02_47c8:
-    dw   call_02_487e                                  ;; 02:47c8 ..
-    dw   call_02_4889                                  ;; 02:47ca ..
-    dw   call_02_49c7                                  ;; 02:47cc ..
-    dw   call_02_4a79                                  ;; 02:47ce ..
-    dw   call_02_4ae4                                  ;; 02:47d0 ..
-    dw   call_02_4c0e                                  ;; 02:47d2 ..
-    dw   call_02_4c53                                  ;; 02:47d4 ..
-    dw   call_02_4c64                                  ;; 02:47d6 ..
-    dw   call_02_4cf7                                  ;; 02:47d8 ..
+    dw   call_02_487e                                  ;; 02:47c8 pP
+    dw   call_02_4889                                  ;; 02:47ca pP
+    dw   call_02_49c7                                  ;; 02:47cc pP
+    dw   call_02_4a79                                  ;; 02:47ce pP
+    dw   call_02_4ae4                                  ;; 02:47d0 pP
+    dw   call_02_4c0e                                  ;; 02:47d2 pP
+    dw   call_02_4c53                                  ;; 02:47d4 pP
+    dw   call_02_4c64                                  ;; 02:47d6 pP
+    dw   call_02_4cf7                                  ;; 02:47d8 pP
     dw   call_02_4c9a                                  ;; 02:47da ??
     dw   call_02_4cc7                                  ;; 02:47dc ??
-    dw   call_02_4d36                                  ;; 02:47de ..
-    dw   call_02_4d89                                  ;; 02:47e0 ..
-    dw   call_02_4db0                                  ;; 02:47e2 ..
-    dw   call_02_4e5b                                  ;; 02:47e4 ..
-    dw   call_02_4e7b                                  ;; 02:47e6 ..
-    dw   call_02_4b7b                                  ;; 02:47e8 ..
-    dw   call_02_5709                                  ;; 02:47ea ..
-    dw   call_02_57a0                                  ;; 02:47ec ..
-    dw   call_02_48a9                                  ;; 02:47ee ..
-    dw   call_02_4e14                                  ;; 02:47f0 ..
+    dw   call_02_4d36                                  ;; 02:47de pP
+    dw   call_02_4d89                                  ;; 02:47e0 pP
+    dw   call_02_4db0                                  ;; 02:47e2 pP
+    dw   call_02_4e5b                                  ;; 02:47e4 pP
+    dw   call_02_4e7b                                  ;; 02:47e6 pP
+    dw   call_02_4b7b                                  ;; 02:47e8 pP
+    dw   call_02_5709                                  ;; 02:47ea pP
+    dw   call_02_57a0                                  ;; 02:47ec pP
+    dw   call_02_48a9                                  ;; 02:47ee pP
+    dw   call_02_4e14                                  ;; 02:47f0 pP
     dw   call_02_4fe8                                  ;; 02:47f2 ??
-    dw   call_02_4e37                                  ;; 02:47f4 ..
-    dw   call_02_5895                                  ;; 02:47f6 ..
-    dw   call_02_5b68                                  ;; 02:47f8 ..
+    dw   call_02_4e37                                  ;; 02:47f4 pP
+    dw   call_02_5895                                  ;; 02:47f6 pP
+    dw   call_02_5b68                                  ;; 02:47f8 pP
     dw   call_02_4aa2                                  ;; 02:47fa ??
     dw   call_02_4c79                                  ;; 02:47fc ??
-    dw   call_02_4a14                                  ;; 02:47fe ..
-    dw   call_02_4da4                                  ;; 02:4800 ..
+    dw   call_02_4a14                                  ;; 02:47fe pP
+    dw   call_02_4da4                                  ;; 02:4800 pP
     dw   call_02_4d77                                  ;; 02:4802 ??
     dw   call_00_3675                                  ;; 02:4804 ??
     dw   call_02_5880                                  ;; 02:4806 ??
-    dw   call_02_4b4b                                  ;; 02:4808 ..
-    dw   call_02_4b72                                  ;; 02:480a ..
-    dw   call_02_4b2e                                  ;; 02:480c ..
-    dw   call_02_4b93                                  ;; 02:480e ..
-    dw   call_02_5174                                  ;; 02:4810 ..
-    dw   call_02_5182                                  ;; 02:4812 ..
-    dw   call_02_51d5                                  ;; 02:4814 ..
+    dw   call_02_4b4b                                  ;; 02:4808 pP
+    dw   call_02_4b72                                  ;; 02:480a pP
+    dw   call_02_4b2e                                  ;; 02:480c pP
+    dw   call_02_4b93                                  ;; 02:480e pP
+    dw   call_02_5174                                  ;; 02:4810 pP
+    dw   call_02_5182                                  ;; 02:4812 pP
+    dw   call_02_51d5                                  ;; 02:4814 pP
     dw   call_02_5475                                  ;; 02:4816 ??
     dw   call_02_547e                                  ;; 02:4818 ??
     dw   call_02_5490                                  ;; 02:481a ??
-    dw   call_02_48f0                                  ;; 02:481c ..
-    dw   call_02_498c                                  ;; 02:481e ..
-    dw   call_02_492b                                  ;; 02:4820 ..
-    dw   call_02_4efd                                  ;; 02:4822 ..
-    dw   call_02_504f                                  ;; 02:4824 ..
-    dw   call_02_4f5f                                  ;; 02:4826 ..
-    dw   call_02_4f97                                  ;; 02:4828 ..
+    dw   call_02_48f0                                  ;; 02:481c pP
+    dw   call_02_498c                                  ;; 02:481e pP
+    dw   call_02_492b                                  ;; 02:4820 pP
+    dw   call_02_4efd                                  ;; 02:4822 pP
+    dw   call_02_504f                                  ;; 02:4824 pP
+    dw   call_02_4f5f                                  ;; 02:4826 pP
+    dw   call_02_4f97                                  ;; 02:4828 pP
     dw   call_02_4cba                                  ;; 02:482a ??
-    dw   call_02_5292                                  ;; 02:482c ..
-    dw   call_02_48cd                                  ;; 02:482e ..
-    dw   call_02_71e4                                  ;; 02:4830 ..
+    dw   call_02_5292                                  ;; 02:482c pP
+    dw   call_02_48cd                                  ;; 02:482e pP
+    dw   call_02_71e4                                  ;; 02:4830 pP
     dw   call_02_71dd                                  ;; 02:4832 ??
-    dw   call_02_4ec3                                  ;; 02:4834 ..
-    dw   call_02_4ee1                                  ;; 02:4836 ..
+    dw   call_02_4ec3                                  ;; 02:4834 pP
+    dw   call_02_4ee1                                  ;; 02:4836 pP
     dw   call_02_77d8                                  ;; 02:4838 ??
     dw   call_02_77f1                                  ;; 02:483a ??
     dw   call_02_781e                                  ;; 02:483c ??
@@ -1273,21 +1273,21 @@ data_02_4991:
 
 data_02_4997:
     db   $e5, $7d, $0a, $54                            ;; 02:4997 ....
-    dw   $d558                                         ;; 02:499b ..
+    dw   $d558                                         ;; 02:499b pP
     db   $f1, $d6, $00, $ff, $f6, $7c                  ;; 02:499d ......
 
 data_02_49a3:
     db   $5d, $7d, $0c, $01                            ;; 02:49a3 ....
-    dw   $d612                                         ;; 02:49a7 ..
+    dw   $d612                                         ;; 02:49a7 pP
     db   $00, $00, $0b, $ff, $8e, $7d                  ;; 02:49a9 ......
 
 data_02_49af:
     db   $9c, $7d, $13, $01                            ;; 02:49af ....
-    dw   $d612                                         ;; 02:49b3 ..
+    dw   $d612                                         ;; 02:49b3 pP
     db   $00, $00, $14, $01                            ;; 02:49b5 ....
-    dw   $d612                                         ;; 02:49b9 ..
+    dw   $d612                                         ;; 02:49b9 pP
     db   $b3, $7d, $1a, $01                            ;; 02:49bb ....
-    dw   $d612                                         ;; 02:49bf ..
+    dw   $d612                                         ;; 02:49bf pP
     db   $dd, $d7, $15, $ff, $00, $00                  ;; 02:49c1 ......
 
 call_02_49c7:
@@ -1466,14 +1466,14 @@ call_02_4ae4:
     db   $00                                           ;; 02:4b10 .
 ;@jumptable amount=8
 .data_02_4b11:
-    dw   call_02_522d                                  ;; 02:4b11 ..
+    dw   call_02_522d                                  ;; 02:4b11 pP
     dw   call_02_522d                                  ;; 02:4b13 ??
     dw   call_02_522d                                  ;; 02:4b15 ??
-    dw   call_02_522d                                  ;; 02:4b17 ..
+    dw   call_02_522d                                  ;; 02:4b17 pP
     dw   call_02_5062                                  ;; 02:4b19 ??
     dw   call_02_4a79                                  ;; 02:4b1b ??
     dw   call_02_4a14                                  ;; 02:4b1d ??
-    dw   call_02_4beb                                  ;; 02:4b1f ..
+    dw   call_02_4beb                                  ;; 02:4b1f pP
 .jr_02_4b21:
     call call_02_667a                                  ;; 02:4b21 $cd $7a $66
     ld   B, $23                                        ;; 02:4b24 $06 $23
@@ -3495,11 +3495,11 @@ call_02_583c:
     db   $01, $02, $04, $08                            ;; 02:5863 ????
 
 data_02_5867:
-    dw   $d6bf                                         ;; 02:5867 ..
+    dw   $d6bf                                         ;; 02:5867 pP
     db   $c2, $d6, $c0, $d6, $c4, $d6                  ;; 02:5869 ??????
 
 data_02_586f:
-    dw   $d6e9                                         ;; 02:586f ..
+    dw   $d6e9                                         ;; 02:586f pP
     db   $ec, $d6, $ea, $d6, $ee, $d6                  ;; 02:5871 ??????
 
 jp_02_5877:
@@ -4485,8 +4485,8 @@ call_02_667a:
     call call_02_4875                                  ;; 02:6680 $cd $75 $48
     ret                                                ;; 02:6683 $c9
 .data_02_6684:
-    dw   .data_02_6688                                 ;; 02:6684 ..
-    dw   .data_02_66ab                                 ;; 02:6686 ..
+    dw   .data_02_6688                                 ;; 02:6684 pP
+    dw   .data_02_66ab                                 ;; 02:6686 pP
 .data_02_6688:
     ld   A, [wD853]                                    ;; 02:6688 $fa $53 $d8
     or   A, $80                                        ;; 02:668b $f6 $80
@@ -4551,10 +4551,10 @@ call_02_667a:
     ret                                                ;; 02:66f7 $c9
 
 data_02_66f8:
-    dw   data_02_670a                                  ;; 02:66f8 ..
-    dw   call_02_6783                                  ;; 02:66fa ..
-    dw   data_02_6798                                  ;; 02:66fc ..
-    dw   data_02_67b4                                  ;; 02:66fe ..
+    dw   data_02_670a                                  ;; 02:66f8 pP
+    dw   call_02_6783                                  ;; 02:66fa pP
+    dw   data_02_6798                                  ;; 02:66fc pP
+    dw   data_02_67b4                                  ;; 02:66fe pP
 
 call_02_6700:
     ld   HL, data_02_66f8                              ;; 02:6700 $21 $f8 $66
@@ -4698,8 +4698,8 @@ jr_02_67b7:
     ret                                                ;; 02:67f4 $c9
 
 data_02_67f5:
-    dw   data_02_680e                                  ;; 02:67f5 ..
-    dw   data_02_6840                                  ;; 02:67f7 ..
+    dw   data_02_680e                                  ;; 02:67f5 pP
+    dw   data_02_6840                                  ;; 02:67f7 pP
 
 call_02_67f9:
     ld   A, [wD853]                                    ;; 02:67f9 $fa $53 $d8
@@ -7903,11 +7903,11 @@ call_02_7bdd:
     ld   L, A                                          ;; 02:7bea $6f
     jp   HL                                            ;; 02:7beb $e9
 .data_02_7bec:
-    dw   .data_02_7bf6                                 ;; 02:7bec ..
-    dw   .data_02_7c3f                                 ;; 02:7bee ..
-    dw   .data_02_7c8f                                 ;; 02:7bf0 ..
-    dw   .data_02_7cc9                                 ;; 02:7bf2 ..
-    dw   data_02_7b85                                  ;; 02:7bf4 ..
+    dw   .data_02_7bf6                                 ;; 02:7bec pP
+    dw   .data_02_7c3f                                 ;; 02:7bee pP
+    dw   .data_02_7c8f                                 ;; 02:7bf0 pP
+    dw   .data_02_7cc9                                 ;; 02:7bf2 pP
+    dw   data_02_7b85                                  ;; 02:7bf4 pP
 .data_02_7bf6:
     ld   HL, wVideoSCY                                 ;; 02:7bf6 $21 $a7 $c0
     ld   A, [HL]                                       ;; 02:7bf9 $7e

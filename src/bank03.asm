@@ -6,28 +6,28 @@ INCLUDE "include/charmaps.inc"
 
 SECTION "bank03", ROMX[$4000], BANK[$03]
 ;@call_to_bank_jumptable
-    call_to_bank_target call_03_402c                   ;; 03:4000 ..
-    call_to_bank_target call_03_4af5                   ;; 03:4002 ..
-    call_to_bank_target spawnNPC                       ;; 03:4004 ..
-    call_to_bank_target call_03_435f                   ;; 03:4006 ..
-    call_to_bank_target call_03_44ed                   ;; 03:4008 ..
-    call_to_bank_target call_03_444a                   ;; 03:400a ..
+    call_to_bank_target call_03_402c                   ;; 03:4000 pP
+    call_to_bank_target call_03_4af5                   ;; 03:4002 pP
+    call_to_bank_target spawnNPC                       ;; 03:4004 pP
+    call_to_bank_target call_03_435f                   ;; 03:4006 pP
+    call_to_bank_target call_03_44ed                   ;; 03:4008 pP
+    call_to_bank_target call_03_444a                   ;; 03:400a pP
     call_to_bank_target call_03_455d                   ;; 03:400c ??
-    call_to_bank_target call_03_4641                   ;; 03:400e ..
-    call_to_bank_target call_03_4561                   ;; 03:4010 ..
+    call_to_bank_target call_03_4641                   ;; 03:400e pP
+    call_to_bank_target call_03_4561                   ;; 03:4010 pP
     call_to_bank_target call_03_48d7                   ;; 03:4012 ??
-    call_to_bank_target call_03_4b70                   ;; 03:4014 ..
-    call_to_bank_target call_03_4aed                   ;; 03:4016 ..
-    call_to_bank_target call_03_4af1                   ;; 03:4018 ..
-    call_to_bank_target call_03_4af9                   ;; 03:401a ..
-    call_to_bank_target call_03_4b4f                   ;; 03:401c ..
-    call_to_bank_target call_03_43c5                   ;; 03:401e ..
+    call_to_bank_target call_03_4b70                   ;; 03:4014 pP
+    call_to_bank_target call_03_4aed                   ;; 03:4016 pP
+    call_to_bank_target call_03_4af1                   ;; 03:4018 pP
+    call_to_bank_target call_03_4af9                   ;; 03:401a pP
+    call_to_bank_target call_03_4b4f                   ;; 03:401c pP
+    call_to_bank_target call_03_43c5                   ;; 03:401e pP
     call_to_bank_target call_03_4a9f                   ;; 03:4020 ??
     call_to_bank_target call_03_4ac1                   ;; 03:4022 ??
-    call_to_bank_target call_03_4b62                   ;; 03:4024 ..
-    call_to_bank_target call_03_4c30                   ;; 03:4026 ..
-    call_to_bank_target call_03_4c38                   ;; 03:4028 ..
-    call_to_bank_target call_03_4a81                   ;; 03:402a ..
+    call_to_bank_target call_03_4b62                   ;; 03:4024 pP
+    call_to_bank_target call_03_4c30                   ;; 03:4026 pP
+    call_to_bank_target call_03_4c38                   ;; 03:4028 pP
+    call_to_bank_target call_03_4a81                   ;; 03:402a pP
 
 call_03_402c:
     ld   HL, wC4E0                                     ;; 03:402c $21 $e0 $c4
@@ -2215,25 +2215,25 @@ call_03_4c38:
 ;@jumptable amount=224
 data_03_4c55:
     dw   call_03_4eb3                                  ;; 03:4c55 ??
-    dw   call_03_4e7c                                  ;; 03:4c57 ..
-    dw   call_03_4ec9                                  ;; 03:4c59 ..
-    dw   call_03_4ef0                                  ;; 03:4c5b ..
-    dw   call_03_4f07                                  ;; 03:4c5d ..
-    dw   call_03_4f1d                                  ;; 03:4c5f ..
-    dw   call_03_4f4d                                  ;; 03:4c61 ..
-    dw   call_03_4f5a                                  ;; 03:4c63 ..
-    dw   call_03_4f67                                  ;; 03:4c65 ..
-    dw   call_03_4f74                                  ;; 03:4c67 ..
-    dw   call_03_4f88                                  ;; 03:4c69 ..
-    dw   call_03_4fa3                                  ;; 03:4c6b ..
+    dw   call_03_4e7c                                  ;; 03:4c57 pP
+    dw   call_03_4ec9                                  ;; 03:4c59 pP
+    dw   call_03_4ef0                                  ;; 03:4c5b pP
+    dw   call_03_4f07                                  ;; 03:4c5d pP
+    dw   call_03_4f1d                                  ;; 03:4c5f pP
+    dw   call_03_4f4d                                  ;; 03:4c61 pP
+    dw   call_03_4f5a                                  ;; 03:4c63 pP
+    dw   call_03_4f67                                  ;; 03:4c65 pP
+    dw   call_03_4f74                                  ;; 03:4c67 pP
+    dw   call_03_4f88                                  ;; 03:4c69 pP
+    dw   call_03_4fa3                                  ;; 03:4c6b pP
     dw   call_03_4fbe                                  ;; 03:4c6d ??
     dw   call_03_4fd9                                  ;; 03:4c6f ??
-    dw   call_03_4ff4                                  ;; 03:4c71 ..
-    dw   call_03_4ffd                                  ;; 03:4c73 ..
-    dw   call_03_500d                                  ;; 03:4c75 ..
-    dw   call_03_5019                                  ;; 03:4c77 ..
+    dw   call_03_4ff4                                  ;; 03:4c71 pP
+    dw   call_03_4ffd                                  ;; 03:4c73 pP
+    dw   call_03_500d                                  ;; 03:4c75 pP
+    dw   call_03_5019                                  ;; 03:4c77 pP
     dw   call_03_5025                                  ;; 03:4c79 ??
-    dw   call_03_5031                                  ;; 03:4c7b ..
+    dw   call_03_5031                                  ;; 03:4c7b pP
     dw   call_03_503d                                  ;; 03:4c7d ??
     dw   call_03_5049                                  ;; 03:4c7f ??
     dw   call_03_4eb3                                  ;; 03:4c81 ??
@@ -2242,19 +2242,19 @@ data_03_4c55:
     dw   call_03_4eb3                                  ;; 03:4c87 ??
     dw   call_03_4eb3                                  ;; 03:4c89 ??
     dw   call_03_4eb5                                  ;; 03:4c8b ??
-    dw   call_03_5055                                  ;; 03:4c8d ..
-    dw   call_03_505f                                  ;; 03:4c8f ..
-    dw   call_03_5069                                  ;; 03:4c91 ..
-    dw   call_03_5073                                  ;; 03:4c93 ..
-    dw   call_03_507d                                  ;; 03:4c95 ..
+    dw   call_03_5055                                  ;; 03:4c8d pP
+    dw   call_03_505f                                  ;; 03:4c8f pP
+    dw   call_03_5069                                  ;; 03:4c91 pP
+    dw   call_03_5073                                  ;; 03:4c93 pP
+    dw   call_03_507d                                  ;; 03:4c95 pP
     dw   call_03_5092                                  ;; 03:4c97 ??
-    dw   call_03_50a7                                  ;; 03:4c99 ..
+    dw   call_03_50a7                                  ;; 03:4c99 pP
     dw   call_03_50bc                                  ;; 03:4c9b ??
-    dw   call_03_50d1                                  ;; 03:4c9d ..
+    dw   call_03_50d1                                  ;; 03:4c9d pP
     dw   call_03_50d5                                  ;; 03:4c9f ??
     dw   call_03_50d9                                  ;; 03:4ca1 ??
     dw   call_03_50dd                                  ;; 03:4ca3 ??
-    dw   call_03_50e1                                  ;; 03:4ca5 ..
+    dw   call_03_50e1                                  ;; 03:4ca5 pP
     dw   call_03_50e5                                  ;; 03:4ca7 ??
     dw   call_03_50e9                                  ;; 03:4ca9 ??
     dw   call_03_50ed                                  ;; 03:4cab ??
@@ -2286,20 +2286,20 @@ data_03_4c55:
     dw   call_03_5155                                  ;; 03:4cdf ??
     dw   call_03_5159                                  ;; 03:4ce1 ??
     dw   call_03_515d                                  ;; 03:4ce3 ??
-    dw   call_03_5161                                  ;; 03:4ce5 ..
-    dw   call_03_5165                                  ;; 03:4ce7 ..
-    dw   call_03_5169                                  ;; 03:4ce9 ..
-    dw   call_03_516d                                  ;; 03:4ceb ..
-    dw   call_03_5171                                  ;; 03:4ced ..
-    dw   call_03_5175                                  ;; 03:4cef ..
-    dw   call_03_5179                                  ;; 03:4cf1 ..
-    dw   call_03_517d                                  ;; 03:4cf3 ..
+    dw   call_03_5161                                  ;; 03:4ce5 pP
+    dw   call_03_5165                                  ;; 03:4ce7 pP
+    dw   call_03_5169                                  ;; 03:4ce9 pP
+    dw   call_03_516d                                  ;; 03:4ceb pP
+    dw   call_03_5171                                  ;; 03:4ced pP
+    dw   call_03_5175                                  ;; 03:4cef pP
+    dw   call_03_5179                                  ;; 03:4cf1 pP
+    dw   call_03_517d                                  ;; 03:4cf3 pP
     dw   call_03_5181                                  ;; 03:4cf5 ??
     dw   call_03_5185                                  ;; 03:4cf7 ??
     dw   call_03_5189                                  ;; 03:4cf9 ??
     dw   call_03_518d                                  ;; 03:4cfb ??
-    dw   call_03_5191                                  ;; 03:4cfd ..
-    dw   call_03_5195                                  ;; 03:4cff ..
+    dw   call_03_5191                                  ;; 03:4cfd pP
+    dw   call_03_5195                                  ;; 03:4cff pP
     dw   call_03_5199                                  ;; 03:4d01 ??
     dw   call_03_519d                                  ;; 03:4d03 ??
     dw   call_03_51a1                                  ;; 03:4d05 ??
@@ -2319,25 +2319,25 @@ data_03_4c55:
     dw   call_03_51d9                                  ;; 03:4d21 ??
     dw   call_03_51dd                                  ;; 03:4d23 ??
     dw   call_03_51e1                                  ;; 03:4d25 ??
-    dw   call_03_51e5                                  ;; 03:4d27 ..
+    dw   call_03_51e5                                  ;; 03:4d27 pP
     dw   call_03_51e9                                  ;; 03:4d29 ??
     dw   call_03_51ed                                  ;; 03:4d2b ??
-    dw   call_03_51f1                                  ;; 03:4d2d ..
-    dw   call_03_51f5                                  ;; 03:4d2f ..
-    dw   call_03_51f9                                  ;; 03:4d31 ..
-    dw   call_03_51fd                                  ;; 03:4d33 ..
-    dw   call_03_5201                                  ;; 03:4d35 ..
+    dw   call_03_51f1                                  ;; 03:4d2d pP
+    dw   call_03_51f5                                  ;; 03:4d2f pP
+    dw   call_03_51f9                                  ;; 03:4d31 pP
+    dw   call_03_51fd                                  ;; 03:4d33 pP
+    dw   call_03_5201                                  ;; 03:4d35 pP
     dw   call_03_5205                                  ;; 03:4d37 ??
     dw   call_03_5209                                  ;; 03:4d39 ??
-    dw   call_03_520d                                  ;; 03:4d3b ..
-    dw   call_03_5211                                  ;; 03:4d3d ..
-    dw   call_03_5215                                  ;; 03:4d3f ..
+    dw   call_03_520d                                  ;; 03:4d3b pP
+    dw   call_03_5211                                  ;; 03:4d3d pP
+    dw   call_03_5215                                  ;; 03:4d3f pP
     dw   call_03_5219                                  ;; 03:4d41 ??
     dw   call_03_521d                                  ;; 03:4d43 ??
-    dw   call_03_5221                                  ;; 03:4d45 ..
-    dw   call_03_5225                                  ;; 03:4d47 ..
-    dw   call_03_5229                                  ;; 03:4d49 ..
-    dw   call_03_522d                                  ;; 03:4d4b ..
+    dw   call_03_5221                                  ;; 03:4d45 pP
+    dw   call_03_5225                                  ;; 03:4d47 pP
+    dw   call_03_5229                                  ;; 03:4d49 pP
+    dw   call_03_522d                                  ;; 03:4d4b pP
     dw   call_03_5231                                  ;; 03:4d4d ??
     dw   call_03_5235                                  ;; 03:4d4f ??
     dw   call_03_5239                                  ;; 03:4d51 ??
@@ -2363,13 +2363,13 @@ data_03_4c55:
     dw   call_03_526c                                  ;; 03:4d79 ??
     dw   call_03_5270                                  ;; 03:4d7b ??
     dw   call_03_5274                                  ;; 03:4d7d ??
-    dw   call_03_5278                                  ;; 03:4d7f ..
+    dw   call_03_5278                                  ;; 03:4d7f pP
     dw   call_03_527c                                  ;; 03:4d81 ??
     dw   call_03_5280                                  ;; 03:4d83 ??
     dw   call_03_5284                                  ;; 03:4d85 ??
     dw   call_03_5288                                  ;; 03:4d87 ??
-    dw   call_03_528c                                  ;; 03:4d89 ..
-    dw   call_03_5290                                  ;; 03:4d8b ..
+    dw   call_03_528c                                  ;; 03:4d89 pP
+    dw   call_03_5290                                  ;; 03:4d8b pP
     dw   call_03_5294                                  ;; 03:4d8d ??
     dw   call_03_5298                                  ;; 03:4d8f ??
     dw   call_03_529c                                  ;; 03:4d91 ??
@@ -2394,11 +2394,11 @@ data_03_4c55:
     dw   call_03_537b                                  ;; 03:4db7 ??
     dw   call_03_537f                                  ;; 03:4db9 ??
     dw   call_03_5383                                  ;; 03:4dbb ??
-    dw   call_03_5387                                  ;; 03:4dbd ..
-    dw   call_03_538b                                  ;; 03:4dbf ..
+    dw   call_03_5387                                  ;; 03:4dbd pP
+    dw   call_03_538b                                  ;; 03:4dbf pP
     dw   call_03_538f                                  ;; 03:4dc1 ??
     dw   call_03_5393                                  ;; 03:4dc3 ??
-    dw   call_03_5397                                  ;; 03:4dc5 ..
+    dw   call_03_5397                                  ;; 03:4dc5 pP
     dw   call_03_539b                                  ;; 03:4dc7 ??
     dw   call_03_539f                                  ;; 03:4dc9 ??
     dw   call_03_53a3                                  ;; 03:4dcb ??

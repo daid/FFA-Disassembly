@@ -436,18 +436,18 @@ call_0f_4361:
 ;@jumptable amount=13
 ; Jump table for $E0-$ED music "opcodes", guess is that these are flow control codes.
 data_0f_4365:
-    dw   call_0f_4386                                  ;; 0f:4365 ..
-    dw   call_0f_43a7                                  ;; 0f:4367 ..
-    dw   call_0f_43b7                                  ;; 0f:4369 ..
-    dw   call_0f_448d                                  ;; 0f:436b ..
-    dw   call_0f_449b                                  ;; 0f:436d ..
-    dw   call_0f_44bc                                  ;; 0f:436f ..
-    dw   call_0f_44c5                                  ;; 0f:4371 ..
-    dw   call_0f_44db                                  ;; 0f:4373 ..
+    dw   call_0f_4386                                  ;; 0f:4365 pP
+    dw   call_0f_43a7                                  ;; 0f:4367 pP
+    dw   call_0f_43b7                                  ;; 0f:4369 pP
+    dw   call_0f_448d                                  ;; 0f:436b pP
+    dw   call_0f_449b                                  ;; 0f:436d pP
+    dw   call_0f_44bc                                  ;; 0f:436f pP
+    dw   call_0f_44c5                                  ;; 0f:4371 pP
+    dw   call_0f_44db                                  ;; 0f:4373 pP
     dw   call_0f_4361                                  ;; 0f:4375 ??
     dw   call_0f_43e7                                  ;; 0f:4377 ??
     dw   call_0f_4494                                  ;; 0f:4379 ??
-    dw   call_0f_442a                                  ;; 0f:437b ..
+    dw   call_0f_442a                                  ;; 0f:437b pP
     dw   call_0f_437f                                  ;; 0f:437d ??
 
 call_0f_437f:
@@ -820,18 +820,18 @@ call_0f_45c1:
 
 ;@jumptable amount=12
 data_0f_45c7:
-    dw   call_0f_45df                                  ;; 0f:45c7 ..
-    dw   call_0f_45fa                                  ;; 0f:45c9 ..
-    dw   call_0f_43c7                                  ;; 0f:45cb ..
-    dw   call_0f_460a                                  ;; 0f:45cd ..
-    dw   call_0f_4618                                  ;; 0f:45cf ..
-    dw   call_0f_4639                                  ;; 0f:45d1 ..
-    dw   call_0f_4649                                  ;; 0f:45d3 ..
+    dw   call_0f_45df                                  ;; 0f:45c7 pP
+    dw   call_0f_45fa                                  ;; 0f:45c9 pP
+    dw   call_0f_43c7                                  ;; 0f:45cb pP
+    dw   call_0f_460a                                  ;; 0f:45cd pP
+    dw   call_0f_4618                                  ;; 0f:45cf pP
+    dw   call_0f_4639                                  ;; 0f:45d1 pP
+    dw   call_0f_4649                                  ;; 0f:45d3 pP
     dw   call_0f_4361                                  ;; 0f:45d5 ??
     dw   call_0f_4361                                  ;; 0f:45d7 ??
     dw   call_0f_43f7                                  ;; 0f:45d9 ??
     dw   call_0f_4611                                  ;; 0f:45db ??
-    dw   call_0f_444b                                  ;; 0f:45dd ..
+    dw   call_0f_444b                                  ;; 0f:45dd pP
 
 call_0f_45df:
     ld   HL, wC11C                                     ;; 0f:45df $21 $1c $c1
@@ -1033,15 +1033,15 @@ call_0f_471c:
 
 ;@jumptable amount=12
 data_0f_4722:
-    dw   call_0f_473a                                  ;; 0f:4722 ..
-    dw   call_0f_4743                                  ;; 0f:4724 ..
-    dw   call_0f_43d7                                  ;; 0f:4726 ..
-    dw   call_0f_4753                                  ;; 0f:4728 ..
-    dw   call_0f_4761                                  ;; 0f:472a ..
+    dw   call_0f_473a                                  ;; 0f:4722 pP
+    dw   call_0f_4743                                  ;; 0f:4724 pP
+    dw   call_0f_43d7                                  ;; 0f:4726 pP
+    dw   call_0f_4753                                  ;; 0f:4728 pP
+    dw   call_0f_4761                                  ;; 0f:472a pP
     dw   call_0f_4361                                  ;; 0f:472c ??
-    dw   call_0f_4782                                  ;; 0f:472e ..
+    dw   call_0f_4782                                  ;; 0f:472e pP
     dw   call_0f_4361                                  ;; 0f:4730 ??
-    dw   call_0f_4798                                  ;; 0f:4732 ..
+    dw   call_0f_4798                                  ;; 0f:4732 pP
     dw   call_0f_4407                                  ;; 0f:4734 ??
     dw   call_0f_475a                                  ;; 0f:4736 ??
     dw   call_0f_446c                                  ;; 0f:4738 ??
@@ -1522,34 +1522,34 @@ call_0f_4965:
 ;@data amount=30 format=ppp
 ; Music data table, 3 pointers per music. Details unknown.
 data_0f_4a12:
-    dw   data_0f_4ac9, data_0f_4b0a, data_0f_4b7e      ;; 0f:4a12 ......
+    dw   data_0f_4ac9, data_0f_4b0a, data_0f_4b7e      ;; 0f:4a12 pPpPpP
     dw   data_0f_4bb9, data_0f_4c0f, data_0f_4c92      ;; 0f:4a18 ??????
     dw   data_0f_4cc1, data_0f_4d0d, data_0f_4d83      ;; 0f:4a1e ??????
-    dw   data_0f_4daf, data_0f_4deb, data_0f_4e33      ;; 0f:4a24 ......
+    dw   data_0f_4daf, data_0f_4deb, data_0f_4e33      ;; 0f:4a24 pPpPpP
     dw   data_0f_4e5e, data_0f_4e9e, data_0f_4eb0      ;; 0f:4a2a ??????
     dw   data_0f_4edc, data_0f_4fb7, data_0f_503d      ;; 0f:4a30 ??????
     dw   data_0f_50c9, data_0f_515b, data_0f_51d2      ;; 0f:4a36 ??????
     dw   data_0f_523d, data_0f_52a6, data_0f_5344      ;; 0f:4a3c ??????
-    dw   data_0f_5388, data_0f_53bf, data_0f_53ef      ;; 0f:4a42 ......
-    dw   data_0f_5442, data_0f_5460, data_0f_54e5      ;; 0f:4a48 ......
+    dw   data_0f_5388, data_0f_53bf, data_0f_53ef      ;; 0f:4a42 pPpPpP
+    dw   data_0f_5442, data_0f_5460, data_0f_54e5      ;; 0f:4a48 pPpPpP
     dw   data_0f_556f, data_0f_55be, data_0f_5627      ;; 0f:4a4e ??????
     dw   data_0f_5661, data_0f_56ad, data_0f_5751      ;; 0f:4a54 ??????
     dw   data_0f_57f5, data_0f_5897, data_0f_5910      ;; 0f:4a5a ??????
-    dw   data_0f_5937, data_0f_5a3a, data_0f_5ac6      ;; 0f:4a60 ......
+    dw   data_0f_5937, data_0f_5a3a, data_0f_5ac6      ;; 0f:4a60 pPpPpP
     dw   data_0f_5b3c, data_0f_5bc8, data_0f_5daa      ;; 0f:4a66 ??????
     dw   data_0f_5e69, data_0f_5faa, data_0f_61c2      ;; 0f:4a6c ??????
-    dw   data_0f_6397, data_0f_63b2, data_0f_63be      ;; 0f:4a72 ......
+    dw   data_0f_6397, data_0f_63b2, data_0f_63be      ;; 0f:4a72 pPpPpP
     dw   data_0f_62e9, data_0f_632e, data_0f_6371      ;; 0f:4a78 ??????
     dw   data_0f_63d0, data_0f_64a3, data_0f_6667      ;; 0f:4a7e ??????
-    dw   data_0f_6819, data_0f_68bd, data_0f_69ff      ;; 0f:4a84 ......
+    dw   data_0f_6819, data_0f_68bd, data_0f_69ff      ;; 0f:4a84 pPpPpP
     dw   data_0f_6b57, data_0f_6c83, data_0f_6da9      ;; 0f:4a8a ??????
     dw   data_0f_6e8a, data_0f_6f5e, data_0f_7031      ;; 0f:4a90 ??????
-    dw   data_0f_7070, data_0f_709f, data_0f_70f9      ;; 0f:4a96 ......
+    dw   data_0f_7070, data_0f_709f, data_0f_70f9      ;; 0f:4a96 pPpPpP
     dw   data_0f_7118, data_0f_71aa, data_0f_7263      ;; 0f:4a9c ??????
     dw   data_0f_7349, data_0f_741c, data_0f_756f      ;; 0f:4aa2 ??????
-    dw   data_0f_76d3, data_0f_771c, data_0f_7762      ;; 0f:4aa8 ......
+    dw   data_0f_76d3, data_0f_771c, data_0f_7762      ;; 0f:4aa8 pPpPpP
     dw   data_0f_77a8, data_0f_7811, data_0f_78a3      ;; 0f:4aae ??????
-    dw   data_0f_78fa, data_0f_7924, data_0f_7948      ;; 0f:4ab4 ......
+    dw   data_0f_78fa, data_0f_7924, data_0f_7948      ;; 0f:4ab4 pPpPpP
     dw   data_0f_796b, data_0f_7984, data_0f_799a      ;; 0f:4aba ??????
     dw   data_0f_79b6, data_0f_79ea, data_0f_7a1d      ;; 0f:4ac0 ??????
     db   $ff, $e7, $14                                 ;; 0f:4ac6 ???
@@ -1562,10 +1562,10 @@ data_0f_4ac9:
     db   $82, $80, $82, $87, $04, $8f, $80, $dc        ;; 0f:4adf ........
     db   $8b, $8c, $8b, $87, $29, $8e, $89, $8b        ;; 0f:4ae7 ........
     db   $8c, $d8, $eb, $01                            ;; 0f:4aef ....
-    dw   .data_0f_4b01                                 ;; 0f:4af3 ..
+    dw   .data_0f_4b01                                 ;; 0f:4af3 pP
     db   $52, $dc, $59, $4b, $8c, $d8, $22, $50        ;; 0f:4af5 ........
     db   $52, $e2                                      ;; 0f:4afd ..
-    dw   .data_0f_4ad7                                 ;; 0f:4aff ..
+    dw   .data_0f_4ad7                                 ;; 0f:4aff pP
 .data_0f_4b01:
     db   $52, $54, $42, $80, $00, $0f, $e1, $d5        ;; 0f:4b01 ..??????
     db   $4a                                           ;; 0f:4b09 ?
@@ -1580,11 +1580,11 @@ data_0f_4b0a:
     db   $8f, $dc, $89, $8c, $d8, $84, $89, $84        ;; 0f:4b2e ........
     db   $82, $84, $50, $54, $57, $52, $e6, $02        ;; 0f:4b36 ........
     db   $8f, $80, $85, $87, $55, $57, $eb, $01        ;; 0f:4b3e ........
-    dw   .data_0f_4b5c                                 ;; 0f:4b46 ..
+    dw   .data_0f_4b5c                                 ;; 0f:4b46 pP
     db   $86, $84, $86, $87, $56, $59, $e6, $01        ;; 0f:4b48 ........
     db   $8f, $82, $87, $82, $85, $80, $87, $82        ;; 0f:4b50 ........
     db   $dc, $e2                                      ;; 0f:4b58 ..
-    dw   .data_0f_4b16                                 ;; 0f:4b5a ..
+    dw   .data_0f_4b16                                 ;; 0f:4b5a pP
 .data_0f_4b5c:
     db   $e6, $02, $55, $59, $8b, $89, $87, $85        ;; 0f:4b5c ....????
     db   $e6, $01, $8f, $dc, $87, $8c, $d8, $82        ;; 0f:4b64 ????????
@@ -1689,7 +1689,7 @@ data_0f_4daf:
     db   $dc, $8b, $8a, $8b, $d8, $54, $52, $80        ;; 0f:4dd4 ........
     db   $82, $84, $80, $59, $87, $85, $54, $85        ;; 0f:4ddc ........
     db   $84, $42, $80, $00, $e1                       ;; 0f:4de4 .....
-    dw   .data_0f_4db4                                 ;; 0f:4de9 ..
+    dw   .data_0f_4db4                                 ;; 0f:4de9 pP
 
 data_0f_4deb:
     db   $e4, $4f, $7a                                 ;; 0f:4deb ...
@@ -1703,7 +1703,7 @@ data_0f_4deb:
     db   $59, $5b, $54, $89, $84, $25, $8f, $8c        ;; 0f:4e1e ........
     db   $89, $87, $85, $89, $87, $85, $55, $84        ;; 0f:4e26 ........
     db   $82, $24, $e1                                 ;; 0f:4e2e ...
-    dw   .data_0f_4dee                                 ;; 0f:4e31 ..
+    dw   .data_0f_4dee                                 ;; 0f:4e31 pP
 
 data_0f_4e33:
     db   $e4, $4f, $7a, $e8, $cc, $7a, $e0, $40        ;; 0f:4e33 ........
@@ -1713,7 +1713,7 @@ data_0f_4e33:
     db   $27, $8e, $8b, $8c, $d8, $82, $dc, $24        ;; 0f:4e45 ........
     db   $56, $58, $59, $57, $25, $27, $27, $20        ;; 0f:4e4d ........
     db   $8e, $87, $85, $82, $e1                       ;; 0f:4e55 .....
-    dw   .data_0f_4e3d                                 ;; 0f:4e5a ..
+    dw   .data_0f_4e3d                                 ;; 0f:4e5a pP
     db   $e7, $14                                      ;; 0f:4e5c ??
 
 data_0f_4e5e:
@@ -1921,7 +1921,7 @@ data_0f_5388:
     db   $54, $59, $57, $56, $54, $45, $a8, $a9        ;; 0f:53aa ........
     db   $0b, $ae, $a9, $a8, $a5, $a2, $a5, $a2        ;; 0f:53b2 ........
     db   $dc, $ab, $e1                                 ;; 0f:53ba ...
-    dw   .data_0f_5392                                 ;; 0f:53bd ..
+    dw   .data_0f_5392                                 ;; 0f:53bd pP
 
 data_0f_53bf:
     db   $e4, $75, $7a, $e0, $ae, $7a, $e5, $40        ;; 0f:53bf ........
@@ -1931,14 +1931,14 @@ data_0f_53bf:
 .data_0f_53cb:
     db   $e6, $03, $d2, $a9, $a6, $a9, $a6, $e6        ;; 0f:53cb ........
     db   $02, $a9, $a6, $a9, $a6, $e2                  ;; 0f:53d3 ......
-    dw   .data_0f_53cb                                 ;; 0f:53d9 ..
+    dw   .data_0f_53cb                                 ;; 0f:53d9 pP
     db   $e3, $04                                      ;; 0f:53db ..
 .data_0f_53dd:
     db   $e6, $03, $a8, $a5, $a8, $a5, $e6, $01        ;; 0f:53dd ........
     db   $a8, $a5, $a8, $a5, $e2                       ;; 0f:53e5 .....
-    dw   .data_0f_53dd                                 ;; 0f:53ea ..
+    dw   .data_0f_53dd                                 ;; 0f:53ea pP
     db   $e1                                           ;; 0f:53ec .
-    dw   .data_0f_53c9                                 ;; 0f:53ed ..
+    dw   .data_0f_53c9                                 ;; 0f:53ed pP
 
 data_0f_53ef:
     db   $e4, $4f, $7a, $e8, $dc, $7a, $e0, $20        ;; 0f:53ef ........
@@ -1952,7 +1952,7 @@ data_0f_53ef:
     db   $ab, $af, $8f, $ab, $af, $e6, $03, $ab        ;; 0f:5427 ........
     db   $af, $ab, $af, $8f, $ab, $af, $e6, $01        ;; 0f:542f ........
     db   $8f, $ab, $af, $8f, $ab, $af, $e1             ;; 0f:5437 .......
-    dw   .data_0f_53f7                                 ;; 0f:543e ..
+    dw   .data_0f_53f7                                 ;; 0f:543e pP
     db   $e7, $14                                      ;; 0f:5440 ??
 
 data_0f_5442:
@@ -1962,7 +1962,7 @@ data_0f_5442:
     db   $e5, $40, $d1, $00, $2e, $20, $dc, $0b        ;; 0f:544c ........
     db   $2e, $2b, $d8, $00, $2e, $20, $01, $2e        ;; 0f:5454 ........
     db   $21, $e1                                      ;; 0f:545c ..
-    dw   .data_0f_544c                                 ;; 0f:545e ..
+    dw   .data_0f_544c                                 ;; 0f:545e pP
 
 data_0f_5460:
     db   $e4, $4f, $7a, $e0, $c2, $7a, $e6, $02        ;; 0f:5460 ........
@@ -1984,7 +1984,7 @@ data_0f_5460:
     db   $85, $e0, $c8, $7a, $e5, $40, $89, $85        ;; 0f:54d2 ........
     db   $81, $85, $e5, $00, $89, $85, $81, $85        ;; 0f:54da ........
     db   $e1                                           ;; 0f:54e2 .
-    dw   .data_0f_546a                                 ;; 0f:54e3 ..
+    dw   .data_0f_546a                                 ;; 0f:54e3 pP
 
 data_0f_54e5:
     db   $e4, $4f, $7a, $e6, $01                       ;; 0f:54e5 .....
@@ -2006,7 +2006,7 @@ data_0f_54e5:
     db   $e8, $dc, $7a, $e0, $40, $89, $85, $81        ;; 0f:555a ........
     db   $85, $e8, $ec, $7a, $89, $85, $81, $85        ;; 0f:5562 ........
     db   $e1                                           ;; 0f:556a .
-    dw   .data_0f_54ea                                 ;; 0f:556b ..
+    dw   .data_0f_54ea                                 ;; 0f:556b pP
     db   $e7, $14                                      ;; 0f:556d ??
 
 data_0f_556f:
@@ -2165,7 +2165,7 @@ data_0f_5937:
     db   $b8, $b3, $b8, $b3, $b8, $b3, $e6, $01        ;; 0f:596b ........
     db   $b7, $b3, $b7, $b3, $b7, $b3, $b7, $b3        ;; 0f:5973 ........
     db   $b7, $b3, $b7, $b3, $e2                       ;; 0f:597b .....
-    dw   .data_0f_5943                                 ;; 0f:5980 ..
+    dw   .data_0f_5943                                 ;; 0f:5980 pP
     db   $e6, $03, $b8, $b5, $b8, $b5, $b8, $b5        ;; 0f:5982 ........
     db   $b8, $b5, $b8, $b5, $b8, $b5, $e6, $02        ;; 0f:598a ........
     db   $bb, $b5, $bb, $b5, $bb, $b5, $bb, $b5        ;; 0f:5992 ........
@@ -2189,7 +2189,7 @@ data_0f_5937:
     db   $ba, $5b, $1a, $88, $8b, $5a, $88, $86        ;; 0f:5a22 ........
     db   $15, $58, $e7, $55, $e0, $82, $7a, $54        ;; 0f:5a2a ........
     db   $57, $e7, $50, $5a, $5d, $e1                  ;; 0f:5a32 ......
-    dw   data_0f_5937                                  ;; 0f:5a38 ..
+    dw   data_0f_5937                                  ;; 0f:5a38 pP
 
 data_0f_5a3a:
     db   $e4, $4f, $7a, $e0, $82, $7a                  ;; 0f:5a3a ......
@@ -2198,7 +2198,7 @@ data_0f_5a3a:
 .data_0f_5a46:
     db   $d1, $8b, $d8, $8c, $8b, $8a, $89, $88        ;; 0f:5a46 ........
     db   $87, $86, $e2                                 ;; 0f:5a4e ...
-    dw   .data_0f_5a46                                 ;; 0f:5a51 ..
+    dw   .data_0f_5a46                                 ;; 0f:5a51 pP
     db   $81, $d8, $82, $81, $80, $dc, $8b, $8a        ;; 0f:5a53 ........
     db   $89, $88, $81, $d8, $82, $81, $80, $dc        ;; 0f:5a5b ........
     db   $8b, $8a, $89, $88, $82, $d8, $83, $82        ;; 0f:5a63 ........
@@ -2210,17 +2210,17 @@ data_0f_5a3a:
     db   $dc, $8b, $d8, $82, $81, $80, $dc, $8b        ;; 0f:5a85 ........
     db   $d8, $82, $81, $80, $dc, $8b, $d8, $82        ;; 0f:5a8d ........
     db   $81, $80, $dc, $8b, $d8, $e2                  ;; 0f:5a95 ......
-    dw   .data_0f_5a7d                                 ;; 0f:5a9b ..
+    dw   .data_0f_5a7d                                 ;; 0f:5a9b pP
     db   $e3, $02                                      ;; 0f:5a9d ..
 .data_0f_5a9f:
     db   $84, $83, $82, $81, $84, $83, $82, $81        ;; 0f:5a9f ........
     db   $84, $83, $82, $81, $84, $83, $82, $81        ;; 0f:5aa7 ........
     db   $e2                                           ;; 0f:5aaf .
-    dw   .data_0f_5a9f                                 ;; 0f:5ab0 ..
+    dw   .data_0f_5a9f                                 ;; 0f:5ab0 pP
     db   $dc, $88, $86, $88, $89, $58, $e0, $82        ;; 0f:5ab2 ........
     db   $7a, $5b, $e6, $02, $57, $5a, $5d, $d8        ;; 0f:5aba ........
     db   $54, $e1                                      ;; 0f:5ac2 ..
-    dw   .data_0f_5a40                                 ;; 0f:5ac4 ..
+    dw   .data_0f_5a40                                 ;; 0f:5ac4 pP
 
 data_0f_5ac6:
     db   $e4, $4f, $7a                                 ;; 0f:5ac6 ...
@@ -2230,7 +2230,7 @@ data_0f_5ac6:
 .data_0f_5ad2:
     db   $d1, $8b, $8f, $8b, $8f, $8b, $8f, $8b        ;; 0f:5ad2 ........
     db   $8f, $e2                                      ;; 0f:5ada ..
-    dw   .data_0f_5ad2                                 ;; 0f:5adc ..
+    dw   .data_0f_5ad2                                 ;; 0f:5adc pP
     db   $8d, $8f, $8d, $8f, $8d, $8f, $8d, $8f        ;; 0f:5ade ........
     db   $8d, $8f, $8d, $8f, $8d, $8f, $8d, $8f        ;; 0f:5ae6 ........
     db   $d8, $82, $8f, $82, $8f, $82, $8f, $82        ;; 0f:5aee ........
@@ -2240,15 +2240,15 @@ data_0f_5ac6:
     db   $e6, $02, $2b, $d8, $e6, $01, $26, $dc        ;; 0f:5b02 ........
     db   $e6, $02, $2b, $d8, $e6, $01, $26, $dc        ;; 0f:5b0a ........
     db   $e2                                           ;; 0f:5b12 .
-    dw   .data_0f_5b02                                 ;; 0f:5b13 ..
+    dw   .data_0f_5b02                                 ;; 0f:5b13 pP
     db   $e3, $02                                      ;; 0f:5b15 ..
 .data_0f_5b17:
     db   $e6, $02, $d8, $21, $e6, $01, $28, $e6        ;; 0f:5b17 ........
     db   $02, $21, $e6, $01, $28, $dc, $e2             ;; 0f:5b1f .......
-    dw   .data_0f_5b17                                 ;; 0f:5b26 ..
+    dw   .data_0f_5b17                                 ;; 0f:5b26 pP
     db   $e6, $02, $1b, $d8, $e6, $03, $52, $dc        ;; 0f:5b28 ........
     db   $e6, $01, $5a, $5d, $d8, $54, $57, $e1        ;; 0f:5b30 ........
-    dw   .data_0f_5ac9                                 ;; 0f:5b38 ..
+    dw   .data_0f_5ac9                                 ;; 0f:5b38 pP
     db   $e7, $14                                      ;; 0f:5b3a ??
 
 data_0f_5b3c:
@@ -2723,7 +2723,7 @@ data_0f_6819:
     db   $d8, $70, $72, $84, $73, $74, $86, $04        ;; 0f:68a3 ........
     db   $2e, $ae, $e0, $a8, $7a, $a2, $a0, $dc        ;; 0f:68ab ........
     db   $ab, $d8, $a0, $dc, $ab, $a9, $a8, $e1        ;; 0f:68b3 ........
-    dw   .data_0f_681b                                 ;; 0f:68bb ..
+    dw   .data_0f_681b                                 ;; 0f:68bb pP
 
 data_0f_68bd:
     db   $e4, $4f, $7a, $e0, $c0, $7a, $e5, $00        ;; 0f:68bd ........
@@ -2766,7 +2766,7 @@ data_0f_68bd:
     db   $ae, $7a, $a4, $dc, $a8, $ab, $d8, $a4        ;; 0f:69e5 ........
     db   $a6, $dc, $a9, $d8, $a2, $a6, $a8, $a6        ;; 0f:69ed ........
     db   $a4, $a2, $a4, $a2, $a0, $dc, $ab, $e1        ;; 0f:69f5 ........
-    dw   data_0f_68bd                                  ;; 0f:69fd ..
+    dw   data_0f_68bd                                  ;; 0f:69fd pP
 
 data_0f_69ff:
     db   $e4, $4f, $7a, $e8, $0c, $7b, $e0, $20        ;; 0f:69ff ........
@@ -2780,7 +2780,7 @@ data_0f_69ff:
     db   $af, $dc, $85, $d8, $a5, $af, $dc, $87        ;; 0f:6a23 ........
     db   $d8, $a7, $af, $dc, $87, $d8, $a7, $af        ;; 0f:6a2b ........
     db   $e2                                           ;; 0f:6a33 .
-    dw   .data_0f_6a0b                                 ;; 0f:6a34 ..
+    dw   .data_0f_6a0b                                 ;; 0f:6a34 pP
     db   $80, $d8, $a0, $af, $dc, $80, $d8, $a0        ;; 0f:6a36 ........
     db   $af, $dc, $80, $d8, $a0, $af, $dc, $80        ;; 0f:6a3e ........
     db   $d8, $a0, $af, $dc, $a4, $af, $a4, $af        ;; 0f:6a46 ........
@@ -2817,7 +2817,7 @@ data_0f_69ff:
     db   $af, $dc, $e6, $02, $54, $d8, $e6, $03        ;; 0f:6b3e ........
     db   $54, $dc, $e6, $01, $5b, $e6, $03, $54        ;; 0f:6b46 ........
     db   $e1                                           ;; 0f:6b4e .
-    dw   .data_0f_6a09                                 ;; 0f:6b4f ..
+    dw   .data_0f_6a09                                 ;; 0f:6b4f pP
     db   $57, $6b, $83, $6c, $a9, $6d                  ;; 0f:6b51 ??????
 
 data_0f_6b57:
@@ -3007,7 +3007,7 @@ data_0f_7070:
     db   $27, $24, $8e, $84, $82, $80, $52, $dc        ;; 0f:708a ........
     db   $5b, $57, $5b, $09, $2e, $8f, $8b, $d8        ;; 0f:7092 ........
     db   $80, $82, $e1                                 ;; 0f:709a ...
-    dw   .data_0f_707a                                 ;; 0f:709d ..
+    dw   .data_0f_707a                                 ;; 0f:709d pP
 
 data_0f_709f:
     db   $e4, $4f, $7a, $e0, $b2, $7a, $e5, $40        ;; 0f:709f ........
@@ -3023,7 +3023,7 @@ data_0f_709f:
     db   $8b, $d8, $82, $dc, $8b, $8f, $d8, $84        ;; 0f:70e1 ........
     db   $85, $84, $8f, $84, $85, $84, $8f, $84        ;; 0f:70e9 ........
     db   $85, $84, $5f, $89, $8b, $e1                  ;; 0f:70f1 ......
-    dw   .data_0f_70a9                                 ;; 0f:70f7 ..
+    dw   .data_0f_70a9                                 ;; 0f:70f7 pP
 
 data_0f_70f9:
     db   $e4, $4f, $7a, $e8, $cc, $7a, $e0, $40        ;; 0f:70f9 ........
@@ -3031,7 +3031,7 @@ data_0f_70f9:
 .data_0f_7103:
     db   $d2, $05, $04, $05, $04, $05, $27, $24        ;; 0f:7103 ........
     db   $29, $28, $27, $26, $e1                       ;; 0f:710b .....
-    dw   .data_0f_7103                                 ;; 0f:7110 ..
+    dw   .data_0f_7103                                 ;; 0f:7110 pP
     db   $18, $71, $aa, $71, $63, $72                  ;; 0f:7112 ??????
 
 data_0f_7118:
@@ -3240,13 +3240,13 @@ data_0f_76d3:
     db   $d2, $a3, $a2, $a1, $a0, $a3, $a2, $a1        ;; 0f:76df ........
     db   $a0, $a3, $a2, $a1, $a0, $a3, $a2, $a1        ;; 0f:76e7 ........
     db   $a0, $e2                                      ;; 0f:76ef ..
-    dw   .data_0f_76df                                 ;; 0f:76f1 ..
+    dw   .data_0f_76df                                 ;; 0f:76f1 pP
     db   $e7, $82, $e0, $be, $7a, $e5, $40, $d8        ;; 0f:76f3 ........
     db   $c3, $cf, $c3, $cf, $c3, $cf, $2f, $af        ;; 0f:76fb ........
     db   $53, $5f, $53, $8f, $83, $8f, $83, $c3        ;; 0f:7703 ........
     db   $cf, $c3, $cf, $c3, $cf, $2f, $af, $53        ;; 0f:770b ........
     db   $5f, $53, $8f, $83, $8f, $83, $e1             ;; 0f:7713 .......
-    dw   data_0f_76d3                                  ;; 0f:771a ..
+    dw   data_0f_76d3                                  ;; 0f:771a pP
 
 data_0f_771c:
     db   $e4, $4f, $7a, $e0, $b4, $7a, $e5, $00        ;; 0f:771c ........
@@ -3255,16 +3255,16 @@ data_0f_771c:
     db   $e6, $03, $d2, $ab, $aa, $e6, $02, $a9        ;; 0f:7728 ........
     db   $a8, $e6, $03, $ab, $aa, $e6, $01, $a9        ;; 0f:7730 ........
     db   $a8, $e2                                      ;; 0f:7738 ..
-    dw   .data_0f_7728                                 ;; 0f:773a ..
+    dw   .data_0f_7728                                 ;; 0f:773a pP
     db   $e3, $04                                      ;; 0f:773c ..
 .data_0f_773e:
     db   $e0, $ae, $7a, $e5, $40, $e6, $02, $d2        ;; 0f:773e ........
     db   $ab, $aa, $a9, $a8, $e6, $01, $ab, $aa        ;; 0f:7746 ........
     db   $a9, $a8, $e6, $02, $a7, $a8, $a9, $aa        ;; 0f:774e ........
     db   $e6, $01, $a7, $a8, $a9, $aa, $e2             ;; 0f:7756 .......
-    dw   .data_0f_773e                                 ;; 0f:775d ..
+    dw   .data_0f_773e                                 ;; 0f:775d pP
     db   $e1                                           ;; 0f:775f .
-    dw   data_0f_771c                                  ;; 0f:7760 ..
+    dw   data_0f_771c                                  ;; 0f:7760 pP
 
 data_0f_7762:
     db   $e4, $4f, $7a                                 ;; 0f:7762 ...
@@ -3273,7 +3273,7 @@ data_0f_7762:
     db   $02                                           ;; 0f:776d .
 .data_0f_776e:
     db   $d1, $27, $26, $25, $24, $e2                  ;; 0f:776e ......
-    dw   .data_0f_776e                                 ;; 0f:7774 ..
+    dw   .data_0f_776e                                 ;; 0f:7774 pP
     db   $e3, $02                                      ;; 0f:7776 ..
 .data_0f_7778:
     db   $e8, $0c, $7b, $d1, $a7, $af, $a7, $af        ;; 0f:7778 ........
@@ -3281,9 +3281,9 @@ data_0f_7762:
     db   $a6, $af, $a6, $af, $a5, $af, $a5, $af        ;; 0f:7788 ........
     db   $a5, $af, $a5, $af, $a4, $af, $a4, $af        ;; 0f:7790 ........
     db   $a4, $af, $a4, $af, $e2                       ;; 0f:7798 .....
-    dw   .data_0f_7778                                 ;; 0f:779d ..
+    dw   .data_0f_7778                                 ;; 0f:779d pP
     db   $e1                                           ;; 0f:779f .
-    dw   .data_0f_7765                                 ;; 0f:77a0 ..
+    dw   .data_0f_7765                                 ;; 0f:77a0 pP
     db   $a8, $77, $11, $78, $a3, $78                  ;; 0f:77a2 ??????
 
 data_0f_77a8:
