@@ -57,7 +57,7 @@ bossDataTable:
       BOSS_HEADER_GFX $38, $1c, bossGfxLich, data_04_7b19, data_04_7e74 ;; 04:4849 ????????
       dw data_04_4c39, data_04_5171, data_04_5171, data_04_5435 ;; 04:4851 ????????
     BOSS_HEADER $04, $bb, $d2, $fa, $08, $21, $0247    ;; 04:4859 ????????
-      BOSS_HEADER_GFX $34, $1e, data_0b_7880, data_04_7aa5, data_04_7dc6 ;; 04:4861 ????????
+      BOSS_HEADER_GFX $34, $1e, bossGfxGaruda, data_04_7aa5, data_04_7dc6 ;; 04:4861 ????????
       dw data_04_4bb1, data_04_5127, data_04_5127, data_04_5435 ;; 04:4869 ????????
     BOSS_HEADER $08, $6a, $00, $fa, $09, $14, $024f    ;; 04:4871 ????????
       BOSS_HEADER_GFX $38, $1c, bossGfxDragon, data_04_7ae1, data_04_7e20 ;; 04:4879 ????????
@@ -69,7 +69,7 @@ bossDataTable:
       BOSS_HEADER_GFX $40, $18, bossGfxDragonZombie, data_04_7957, data_04_7bd1 ;; 04:48a9 ????????
       dw data_04_49a9, data_04_4e37, data_04_4e37, data_04_54bb ;; 04:48b1 ????????
     BOSS_HEADER $05, $02, $00, $00, $06, $16, $0246    ;; 04:48b9 ........
-      BOSS_HEADER_GFX $40, $10, data_0b_7e00, data_04_7987, data_04_7c70 ;; 04:48c1 ........
+      BOSS_HEADER_GFX $40, $10, bossGfxJackal, data_04_7987, data_04_7c70 ;; 04:48c1 ........
       dw data_04_4d19, data_04_4f4d, data_04_4e15, data_04_5473 ;; 04:48c9 ........
     BOSS_HEADER $04, $ff, $00, $a0, $08, $25, $0246    ;; 04:48d1 ????????
       BOSS_HEADER_GFX $40, $10, data_0b_7300, data_04_7b87, data_04_7f4f ;; 04:48d9 ????????
@@ -78,7 +78,7 @@ bossDataTable:
       BOSS_HEADER_GFX $40, $18, bossGfxMetalCrab, data_04_79c7, data_04_7d78 ;; 04:48f1 ????????
       dw data_04_4d89, data_04_50fd, data_04_50fd, data_04_566d ;; 04:48f9 ????????
     BOSS_HEADER $08, $af, $c7, $dc, $06, $ff, $0246    ;; 04:4901 ????????
-      BOSS_HEADER_GFX $40, $18, data_0b_7500, data_04_7987, data_04_7d06 ;; 04:4909 ????????
+      BOSS_HEADER_GFX $40, $18, bossGfxMantisAnt, data_04_7987, data_04_7d06 ;; 04:4909 ????????
       dw data_04_4dc1, data_04_504d, data_04_504d, data_04_55b3 ;; 04:4911 ????????
     BOSS_HEADER $08, $bb, $00, $fa, $09, $14, $024f    ;; 04:4919 ????????
       BOSS_HEADER_GFX $38, $1c, bossGfxDragon, data_04_7ae1, data_04_7e20 ;; 04:4921 ????????
