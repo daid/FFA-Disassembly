@@ -28,7 +28,9 @@ INCLUDE "data/scriptPointers.asm"
     db   $4d, $2e, $0e, $6c, $ae, $4c, $0d             ;; 08:59f9 ???????
 ;@gfximg name=player width=2 height=40
     INCBIN "player.bin"                                ;; 08:5a00
+
 ;@gfximg name=chest width=2 height=3
+data_08_5f00:
     INCBIN "chest.bin"                                 ;; 08:5f00
 ;@gfximg name=hand_spark width=2 height=5
     INCBIN "hand_spark.bin"                            ;; 08:5f60
@@ -50,9 +52,13 @@ INCLUDE "data/scriptPointers.asm"
     INCBIN "attacks1.bin"                              ;; 08:7000
 ;@gfximg name=attacks2 width=20 height=1
     INCBIN "attacks2.bin"                              ;; 08:7300
-;@gfximg name=attacks3 width=2 height=40
+;@gfximg name=attacks3 width=2 height=14
     INCBIN "attacks3.bin"                              ;; 08:7440
-;@gfximg name=attacks4 width=1 height=1
-    INCBIN "attacks4.bin"                              ;; 08:7940
-;@gfximg name=attacks5 width=2 height=39
-    INCBIN "attacks5.bin"                              ;; 08:7950
+
+;@gfximg name=attacks4 width=2 height=26
+data_08_7600:
+    INCBIN "attacks4.bin"                              ;; 08:7600
+;@gfximg name=attacks5 width=1 height=1
+    INCBIN "attacks5.bin"                              ;; 08:7940
+;@gfximg name=attacks6 width=2 height=39
+    INCBIN "attacks6.bin"                              ;; 08:7950

@@ -44,6 +44,17 @@ dw \5
 db \6
 db \7
 ENDM
+NPC_DATA: MACRO
+
+    db \1, \2, \3, \4
+    dw (\5 & $3FFF) | ((BANK(\5) - $08) << 14), \6, \7
+    db \8, \9
+    SHIFT 9
+    db \1, \2, \3, \4, \5, \6, \7, \8
+    SCRIPT_IDX \9
+    SHIFT 9
+    db \1, \2
+ENDM
 SCRIPT_AT_POS: MACRO
 
             db ((\1) << 4) | (\2)
@@ -59,50 +70,6 @@ ENDM
 call_to_bank_target: MACRO
 _call_to_bank_target_\1::
 dw \1
-ENDM
-data_bbbbbbppbbbbbbbbbbwbb: MACRO
-db \1
-shift
-db \1
-shift
-db \1
-shift
-db \1
-shift
-db \1
-shift
-db \1
-shift
-dw \1
-shift
-dw \1
-shift
-db \1
-shift
-db \1
-shift
-db \1
-shift
-db \1
-shift
-db \1
-shift
-db \1
-shift
-db \1
-shift
-db \1
-shift
-db \1
-shift
-db \1
-shift
-dw \1
-shift
-db \1
-shift
-db \1
-shift
 ENDM
 jp_to_bank: MACRO
 
