@@ -60,7 +60,7 @@ call_to_bank_target: MACRO
 _call_to_bank_target_\1::
 dw \1
 ENDM
-data_bbbbbbbbbbbbbbbbbbbbwbb: MACRO
+data_bbbbbbppbbbbbbbbbbwbb: MACRO
 db \1
 shift
 db \1
@@ -73,13 +73,9 @@ db \1
 shift
 db \1
 shift
-db \1
+dw \1
 shift
-db \1
-shift
-db \1
-shift
-db \1
+dw \1
 shift
 db \1
 shift
