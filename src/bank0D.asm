@@ -137,7 +137,7 @@ script_0005:
           sENDIF                                       ;; 0d:4137
         sENDIF                                         ;; 0d:4137
       sENDIF                                           ;; 0d:4137
-      sUNK_DE                                          ;; 0d:4137 $de
+      sTAKE_EQUIPED_ITEM                               ;; 0d:4137 $de
     sELSE                                              ;; 0d:4138 $01 $0b
       sMSG                                             ;; 0d:413a $04
         db "<10> Locked.<12>"
@@ -2472,7 +2472,7 @@ script_01a8:
     sIF_FLAG !wScriptFlags01.6                         ;; 0d:4ea1 $08 $8e $00 $12
       sUNK_D5 30                                       ;; 0d:4ea5 $d5 $1e
       sIF_EQUIPED $27                                  ;; 0d:4ea7 $09 $27 $00 $01
-        sUNK_DE                                        ;; 0d:4eab $de
+        sTAKE_EQUIPED_ITEM                             ;; 0d:4eab $de
       sENDIF                                           ;; 0d:4eac
       sSFX 16                                          ;; 0d:4eac $f9 $10
       sUNK_E4                                          ;; 0d:4eae $e4
@@ -3300,7 +3300,7 @@ script_01f9:
       sPLAYER_STEP_FORWARD                             ;; 0d:5d24 $80
       sPLAYER_STEP_FORWARD                             ;; 0d:5d25 $80
       sDEL_NPC_1                                       ;; 0d:5d26 $18
-      sUNK_DE                                          ;; 0d:5d27 $de
+      sTAKE_EQUIPED_ITEM                               ;; 0d:5d27 $de
       sUNK_A3                                          ;; 0d:5d28 $a3
     sELSE                                              ;; 0d:5d29 $01 $11
       sMSG                                             ;; 0d:5d2b $04
@@ -3752,7 +3752,7 @@ script_0219:
       sMSG                                             ;; 0d:65f3 $04
         db "<10><BOY> used <a9>Amanda,\nthe tears of\nAmanda__", $00 ;; 0d:65f4
       sDELAY 120                                       ;; 0d:660e $f0 $78
-      sUNK_DE                                          ;; 0d:6610 $de
+      sTAKE_EQUIPED_ITEM                               ;; 0d:6610 $de
       sMSG                                             ;; 0d:6611 $04
         db "<11>", $00                                 ;; 0d:6612
       sDEL_NPC_1                                       ;; 0d:6614 $18
@@ -3836,7 +3836,7 @@ script_0221:
       db "<13><1b>", $00 ;; 0d:67ed
     sIF_FLAG !wScriptFlags0F.7                         ;; 0d:6810 $08 $ff $00 $28
       sIF_EQUIPED $3b                                  ;; 0d:6814 $09 $3b $00 $06
-        sUNK_DE                                        ;; 0d:6818 $de
+        sTAKE_EQUIPED_ITEM                             ;; 0d:6818 $de
         sCALL script_022e                              ;; 0d:6819 $02 $2d $01
       sELSE                                            ;; 0d:681c $01 $1c
         sIF_INVENTORY $3b                              ;; 0d:681e $0a $3b $00 $07

@@ -758,6 +758,9 @@ sSPAWN_NPC: MACRO
 db $fd
 db \1
 ENDM
+sTAKE_EQUIPED_ITEM: MACRO
+db $de
+ENDM
 sTAKE_MONEY: MACRO
 db $d1
 dw \1
@@ -877,9 +880,6 @@ db $dc
 ENDM
 sUNK_DD: MACRO
 db $dd
-ENDM
-sUNK_DE: MACRO
-db $de
 ENDM
 sUNK_E0: MACRO
 db $e0

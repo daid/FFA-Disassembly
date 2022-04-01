@@ -356,7 +356,7 @@ OPCODES = {
     0xDB: ("sCLEAR_FLAG", r" FLAG_TO_IDX \1", "FLAG"),
     0xDC: ("sUNK_DC",),
     0xDD: ("sUNK_DD",),
-    0xDE: ("sUNK_DE",),
+    0xDE: ("sTAKE_EQUIPED_ITEM",), # Take 1 of your currently equiped item
     0xDF: ("sNOP_DF",),
 
     0xE0: ("sUNK_E0",),
