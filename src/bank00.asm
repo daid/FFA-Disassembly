@@ -5318,6 +5318,8 @@ call_00_2092:
     call call_00_2ed9                                  ;; 00:20c9 $cd $d9 $2e
     call call_00_30bd                                  ;; 00:20cc $cd $bd $30
     ret                                                ;; 00:20cf $c9
+
+something_20d0:
     dw   $8040                                         ;; 00:20d0 pP
     db   $00, $5a                                      ;; 00:20d2 ..
     dw   $8050                                         ;; 00:20d4 pP
@@ -5376,7 +5378,7 @@ call_00_2092:
 call_00_2140:
     ld   A, $08                                        ;; 00:2140 $3e $08
     ld   [$2100], A                                    ;; 00:2142 $ea $00 $21
-    ld   HL, $20d0                                     ;; 00:2145 $21 $d0 $20
+    ld   HL, something_20d0                            ;; 00:2145 $21 $d0 $20
     ld   B, $1c                                        ;; 00:2148 $06 $1c
 .jr_00_214a:
     push BC                                            ;; 00:214a $c5
@@ -8148,7 +8150,7 @@ call_00_3254:
     set  0, [HL]                                       ;; 00:325e $cb $c6
 .jr_00_3260:
     call call_00_3c60                                  ;; 00:3260 $cd $60 $3c
-    ld   HL, $3274                                     ;; 00:3263 $21 $74 $32
+    ld   HL, call_00_3254.ret_by_push                  ;; 00:3263 $21 $74 $32
     push HL                                            ;; 00:3266 $e5
     call getScriptOpcodeFunctionTrampoline             ;; 00:3267 $cd $65 $31
     push HL                                            ;; 00:326a $e5
@@ -8157,6 +8159,7 @@ call_00_3254:
     ld   A, [wScriptPointerLow]                        ;; 00:326f $fa $b6 $d8
     ld   L, A                                          ;; 00:3272 $6f
     ret                                                ;; 00:3273 $c9
+.ret_by_push:
     ld   A, H                                          ;; 00:3274 $7c
     ld   [wScriptPointerHigh], A                       ;; 00:3275 $ea $b7 $d8
     ld   A, L                                          ;; 00:3278 $7d
