@@ -75,6 +75,18 @@ call_to_bank_target: MACRO
 _call_to_bank_target_\1::
 dw \1
 ENDM
+data_bbbbp: MACRO
+db \1
+shift
+db \1
+shift
+db \1
+shift
+db \1
+shift
+dw \1
+shift
+ENDM
 jp_to_bank: MACRO
 
             ld   a, (_call_to_bank_target_\2 - $4000) / 2
