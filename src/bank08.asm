@@ -30,7 +30,7 @@ INCLUDE "data/scriptPointers.asm"
     INCBIN "player.bin"                                ;; 08:5a00
 
 ;@gfximg name=chest width=2 height=3
-data_08_5f00:
+gfxChest:
     INCBIN "chest.bin"                                 ;; 08:5f00
 ;@gfximg name=hand_spark width=2 height=5
     INCBIN "hand_spark.bin"                            ;; 08:5f60
@@ -55,9 +55,11 @@ data_08_5f00:
 ;@gfximg name=attacks3 width=2 height=14
     INCBIN "attacks3.bin"                              ;; 08:7440
 
-;@gfximg name=attacks4 width=2 height=26
-data_08_7600:
-    INCBIN "attacks4.bin"                              ;; 08:7600
+;@gfximg name=effect/snowman width=2 height=2
+gfxSnowman:
+    INCBIN "effect/snowman.bin"                        ;; 08:7600
+;@gfximg name=attacks4 width=2 height=24
+    INCBIN "attacks4.bin"                              ;; 08:7640
 ;@gfximg name=attacks5 width=1 height=1
     INCBIN "attacks5.bin"                              ;; 08:7940
 ;@gfximg name=attacks6 width=2 height=39
