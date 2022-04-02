@@ -3414,7 +3414,7 @@ script_0202:
 
 script_0203:
     sMSG                                               ;; 0d:5e6c $04
-      db "<10>Some walls may be\nbroken with <MSTAR>Star\nor <ac>Mattock.<12>"
+      db "<10>Some walls may be\nbroken with <MSTAR>Star\nor <MATT>Mattock.<12>"
       db "<1b>Those walls sound\ndifferent when you\nhit them.<12>"
       db "<11>", $00 ;; 0d:5e6d
     sEND                                               ;; 0d:5eb1 $00
