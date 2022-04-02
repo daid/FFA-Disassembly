@@ -4426,7 +4426,7 @@ call_00_1a44:
     push HL                                            ;; 00:1a53 $e5
     ld   E, A                                          ;; 00:1a54 $5f
     ld   D, $00                                        ;; 00:1a55 $16 $00
-    ld   HL, wBackgroundGraphicsTileMapping            ;; 00:1a57 $21 $70 $d1
+    ld   HL, wD170                                     ;; 00:1a57 $21 $70 $d1
     add  HL, DE                                        ;; 00:1a5a $19
     ld   A, [HL]                                       ;; 00:1a5b $7e
     cp   A, $00                                        ;; 00:1a5c $fe $00
@@ -4551,7 +4551,7 @@ call_00_1af3:
     ld   [wTileDataTablePointer], A                    ;; 00:1b00 $ea $92 $d3
     ld   A, $00                                        ;; 00:1b03 $3e $00
     ld   B, $ff                                        ;; 00:1b05 $06 $ff
-    ld   HL, wBackgroundGraphicsTileMapping            ;; 00:1b07 $21 $70 $d1
+    ld   HL, wD170                                     ;; 00:1b07 $21 $70 $d1
     ld   [HL+], A                                      ;; 00:1b0a $22
     call fillMemory                                    ;; 00:1b0b $cd $5d $2b
     ld   A, $00                                        ;; 00:1b0e $3e $00
@@ -4589,7 +4589,7 @@ call_00_1b2b:
     push HL                                            ;; 00:1b35 $e5
     ld   E, A                                          ;; 00:1b36 $5f
     ld   D, $00                                        ;; 00:1b37 $16 $00
-    ld   HL, wBackgroundGraphicsTileMapping            ;; 00:1b39 $21 $70 $d1
+    ld   HL, wD170                                     ;; 00:1b39 $21 $70 $d1
     add  HL, DE                                        ;; 00:1b3c $19
     ld   A, [HL]                                       ;; 00:1b3d $7e
     cp   A, $00                                        ;; 00:1b3e $fe $00
@@ -4606,7 +4606,7 @@ call_00_1b2b:
     ret                                                ;; 00:1b4d $c9
 
 call_00_1b4e:
-    ld   HL, wBackgroundGraphicsTileMapping            ;; 00:1b4e $21 $70 $d1
+    ld   HL, wD170                                     ;; 00:1b4e $21 $70 $d1
     ld   B, $00                                        ;; 00:1b51 $06 $00
 .jr_00_1b53:
     ld   A, [HL]                                       ;; 00:1b53 $7e
@@ -4665,7 +4665,7 @@ call_00_1b74:
 call_00_1ba1:
     ld   E, A                                          ;; 00:1ba1 $5f
     ld   D, $00                                        ;; 00:1ba2 $16 $00
-    ld   HL, wBackgroundGraphicsTileMapping            ;; 00:1ba4 $21 $70 $d1
+    ld   HL, wD170                                     ;; 00:1ba4 $21 $70 $d1
     add  HL, DE                                        ;; 00:1ba7 $19
     ld   A, [HL]                                       ;; 00:1ba8 $7e
     cp   A, $00                                        ;; 00:1ba9 $fe $00

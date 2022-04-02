@@ -131,7 +131,7 @@ call_02_40c9:
     ld   A, C                                          ;; 02:40d0 $79
     and  A, $01                                        ;; 02:40d1 $e6 $01
     jr   NZ, .jr_02_40ed                               ;; 02:40d3 $20 $18
-    ld   DE, wBackgroundGraphicsTileMapping            ;; 02:40d5 $11 $70 $d1
+    ld   DE, wD170                                     ;; 02:40d5 $11 $70 $d1
     ld   A, [wMapHeaderPointer.High]                   ;; 02:40d8 $fa $91 $d3
     ld   H, A                                          ;; 02:40db $67
     ld   A, [wMapHeaderPointer]                        ;; 02:40dc $fa $90 $d3
@@ -269,7 +269,7 @@ call_02_4189:
 
 ; Check if we need to horizontally scroll a graphics tile, and scroll it 1 pixel.
 horizontalScrollTile:
-    ld   A, [wD180]                                    ;; 02:41ce $fa $80 $d1
+    ld   A, [wBackgroundGraphicsTileState]             ;; 02:41ce $fa $80 $d1
     cp   A, $00                                        ;; 02:41d1 $fe $00
     ret  Z                                             ;; 02:41d3 $c8
     ld   HL, wD370                                     ;; 02:41d4 $21 $70 $d3
@@ -279,7 +279,7 @@ horizontalScrollTile:
     inc  HL                                            ;; 02:41db $23
     dec  B                                             ;; 02:41dc $05
     jr   NZ, .jr_02_41d9                               ;; 02:41dd $20 $fa
-    ld   A, [wD080]                                    ;; 02:41df $fa $80 $d0
+    ld   A, [wBackgroundGraphicsTileMapping]           ;; 02:41df $fa $80 $d0
     ld   BC, wD370                                     ;; 02:41e2 $01 $70 $d3
     call requestBackgroundTileCopy                     ;; 02:41e5 $cd $fe $41
     ret                                                ;; 02:41e8 $c9

@@ -567,10 +567,11 @@ wD07E:
 wD07F:
     ds 1                                               ;; d07f
 
-wD080:
+; Loopup of graphics tile number -> VRAM tile number
+wBackgroundGraphicsTileMapping:
     ds 240                                             ;; d080
 
-wBackgroundGraphicsTileMapping:
+wD170:
     ds 4                                               ;; d170
 
 wD174:
@@ -588,9 +589,11 @@ wD17C:
 wD17E:
     ds 2                                               ;; d17e
 
-wD180:
+; Written to $0F when this graphic tile index is loaded into VRAM
+wBackgroundGraphicsTileState:
     ds 240                                             ;; d180
 
+; Written to $01 when a VRAM tile is used, starting from tile $80
 wBackgroundGraphicsTileUsed:
     ds 128                                             ;; d270
 
