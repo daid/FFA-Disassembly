@@ -12,19 +12,19 @@ script_0000:
 script_0001:
     sIF_FLAG wScriptFlags.1                            ;; 0d:4001 $08 $01 $00 $05
       sSFX 16                                          ;; 0d:4005 $f9 $10
-      sUNK_E4                                          ;; 0d:4007 $e4
+      sOPEN_EAST_DOOR                                  ;; 0d:4007 $e4
     sELSE                                              ;; 0d:4008 $01 $19
       sIF_FLAG wScriptFlags.2                          ;; 0d:400a $08 $02 $00 $05
         sSFX 16                                        ;; 0d:400e $f9 $10
-        sUNK_E6                                        ;; 0d:4010 $e6
+        sOPEN_WEST_DOOR                                ;; 0d:4010 $e6
       sELSE                                            ;; 0d:4011 $01 $10
         sIF_FLAG wScriptFlags.3                        ;; 0d:4013 $08 $03 $00 $05
           sSFX 16                                      ;; 0d:4017 $f9 $10
-          sUNK_E0                                      ;; 0d:4019 $e0
+          sOPEN_NORTH_DOOR                             ;; 0d:4019 $e0
         sELSE                                          ;; 0d:401a $01 $07
           sIF_FLAG wScriptFlags.4                      ;; 0d:401c $08 $04 $00 $03
             sSFX 16                                    ;; 0d:4020 $f9 $10
-            sUNK_E2                                    ;; 0d:4022 $e2
+            sOPEN_SOUTH_DOOR                           ;; 0d:4022 $e2
           sENDIF                                       ;; 0d:4023
         sENDIF                                         ;; 0d:4023
       sENDIF                                           ;; 0d:4023
@@ -120,19 +120,19 @@ script_0005:
     sIF_EQUIPED $1f                                    ;; 0d:4111 $09 $1f $00 $25
       sIF_FLAG wScriptFlags.1                          ;; 0d:4115 $08 $01 $00 $05
         sSFX 16                                        ;; 0d:4119 $f9 $10
-        sUNK_E4                                        ;; 0d:411b $e4
+        sOPEN_EAST_DOOR                                ;; 0d:411b $e4
       sELSE                                            ;; 0d:411c $01 $19
         sIF_FLAG wScriptFlags.2                        ;; 0d:411e $08 $02 $00 $05
           sSFX 16                                      ;; 0d:4122 $f9 $10
-          sUNK_E6                                      ;; 0d:4124 $e6
+          sOPEN_WEST_DOOR                              ;; 0d:4124 $e6
         sELSE                                          ;; 0d:4125 $01 $10
           sIF_FLAG wScriptFlags.3                      ;; 0d:4127 $08 $03 $00 $05
             sSFX 16                                    ;; 0d:412b $f9 $10
-            sUNK_E0                                    ;; 0d:412d $e0
+            sOPEN_NORTH_DOOR                           ;; 0d:412d $e0
           sELSE                                        ;; 0d:412e $01 $07
             sIF_FLAG wScriptFlags.4                    ;; 0d:4130 $08 $04 $00 $03
               sSFX 16                                  ;; 0d:4134 $f9 $10
-              sUNK_E2                                  ;; 0d:4136 $e2
+              sOPEN_SOUTH_DOOR                         ;; 0d:4136 $e2
             sENDIF                                     ;; 0d:4137
           sENDIF                                       ;; 0d:4137
         sENDIF                                         ;; 0d:4137
@@ -333,7 +333,7 @@ script_000c:
 script_000d:
     sIF_FLAG wScriptFlags05.5, wScriptFlags.3          ;; 0d:4384 $08 $2d $03 $00 $05
       sSFX 16                                          ;; 0d:4389 $f9 $10
-      sUNK_E0                                          ;; 0d:438b $e0
+      sOPEN_NORTH_DOOR                                 ;; 0d:438b $e0
     sELSE                                              ;; 0d:438c $01 $1c
       sMSG                                             ;; 0d:438e $04
         db "<10>_ _", $00                              ;; 0d:438f
@@ -985,7 +985,7 @@ script_00ae:
     sEND                                               ;; 0d:45b7 $00
 
 script_00af:
-    sUNK_E7                                            ;; 0d:45b8 $e7
+    sCLOSE_WEST_DOOR                                   ;; 0d:45b8 $e7
     sSET_NPC_TYPES 5                                   ;; 0d:45b9 $fc $05
     sSPAWN_NPC 0                                       ;; 0d:45bb $fd $00
     sSPAWN_NPC 0                                       ;; 0d:45bd $fd $00
@@ -1001,7 +1001,7 @@ script_00b1:
       sSPAWN_NPC 2                                     ;; 0d:45c9 $fd $02
       sUNK_CA $04, $5e                                 ;; 0d:45cb $ca $04 $5e
     sENDIF                                             ;; 0d:45ce
-    sUNK_E6                                            ;; 0d:45ce $e6
+    sOPEN_WEST_DOOR                                    ;; 0d:45ce $e6
     sEND                                               ;; 0d:45cf $00
 
 script_00b2:
@@ -1198,7 +1198,7 @@ script_00d8:
     sEND                                               ;; 0d:468f $00
 
 script_00d9:
-    sUNK_E1                                            ;; 0d:4690 $e1
+    sCLOSE_NORTH_DOOR                                  ;; 0d:4690 $e1
     sSET_NPC_TYPES 14                                  ;; 0d:4691 $fc $0e
     sSPAWN_NPC 2                                       ;; 0d:4693 $fd $02
     sSPAWN_NPC 2                                       ;; 0d:4695 $fd $02
@@ -1213,11 +1213,11 @@ script_00db:
       sSPAWN_NPC 0                                     ;; 0d:469f $fd $00
       sUNK_C9 $04, $5f                                 ;; 0d:46a1 $c9 $04 $5f
     sENDIF                                             ;; 0d:46a4
-    sUNK_E0                                            ;; 0d:46a4 $e0
+    sOPEN_NORTH_DOOR                                   ;; 0d:46a4 $e0
     sEND                                               ;; 0d:46a5 $00
 
 script_00dc:
-    sUNK_E7                                            ;; 0d:46a6 $e7
+    sCLOSE_WEST_DOOR                                   ;; 0d:46a6 $e7
     sSET_NPC_TYPES 10                                  ;; 0d:46a7 $fc $0a
     sSPAWN_NPC 1                                       ;; 0d:46a9 $fd $01
     sSPAWN_NPC 1                                       ;; 0d:46ab $fd $01
@@ -1232,7 +1232,7 @@ script_00de:
       sSPAWN_NPC 0                                     ;; 0d:46b5 $fd $00
       sUNK_C9 $04, $60                                 ;; 0d:46b7 $c9 $04 $60
     sENDIF                                             ;; 0d:46ba
-    sUNK_E6                                            ;; 0d:46ba $e6
+    sOPEN_WEST_DOOR                                    ;; 0d:46ba $e6
     sEND                                               ;; 0d:46bb $00
 
 script_00e0:
@@ -1360,7 +1360,7 @@ script_00f1:
     sEND                                               ;; 0d:477f $00
 
 script_00f2:
-    sUNK_E7                                            ;; 0d:4780 $e7
+    sCLOSE_WEST_DOOR                                   ;; 0d:4780 $e7
     sSET_NPC_TYPES 22                                  ;; 0d:4781 $fc $16
     sSPAWN_NPC 2                                       ;; 0d:4783 $fd $02
     sSPAWN_NPC 2                                       ;; 0d:4785 $fd $02
@@ -1375,7 +1375,7 @@ script_00f4:
       sSPAWN_NPC 0                                     ;; 0d:478f $fd $00
       sUNK_C9 $04, $63                                 ;; 0d:4791 $c9 $04 $63
     sENDIF                                             ;; 0d:4794
-    sUNK_E6                                            ;; 0d:4794 $e6
+    sOPEN_WEST_DOOR                                    ;; 0d:4794 $e6
     sEND                                               ;; 0d:4795 $00
 
 script_00f5:
@@ -2442,7 +2442,7 @@ script_01a6:
       sSPAWN_NPC 1                                     ;; 0d:4e60 $fd $01
     sENDIF                                             ;; 0d:4e62
     sIF_FLAG wScriptFlags04.4                          ;; 0d:4e62 $08 $24 $00 $01
-      sUNK_E4                                          ;; 0d:4e66 $e4
+      sOPEN_EAST_DOOR                                  ;; 0d:4e66 $e4
     sENDIF                                             ;; 0d:4e67
     sIF_FLAG wScriptFlags08.0, !wScriptFlags04.5       ;; 0d:4e67 $08 $40 $a5 $00 $31
       sSET_ROOM_TILE $42, 4, 7                         ;; 0d:4e6c $b0 $42 $04 $07
@@ -2475,7 +2475,7 @@ script_01a8:
         sTAKE_EQUIPED_ITEM                             ;; 0d:4eab $de
       sENDIF                                           ;; 0d:4eac
       sSFX 16                                          ;; 0d:4eac $f9 $10
-      sUNK_E4                                          ;; 0d:4eae $e4
+      sOPEN_EAST_DOOR                                  ;; 0d:4eae $e4
       sSET_FLAG wScriptFlags04.4                       ;; 0d:4eaf $da $24
       sDELAY 60                                        ;; 0d:4eb1 $f0 $3c
       sSET_MUSIC 7                                     ;; 0d:4eb3 $f8 $07
@@ -2756,7 +2756,7 @@ script_01b8:
       sSPAWN_BOSS 5                                    ;; 0d:52b2 $fe $05
       sSET_MUSIC 15                                    ;; 0d:52b4 $f8 $0f
     sELSE                                              ;; 0d:52b6 $01 $01
-      sUNK_E0                                          ;; 0d:52b8 $e0
+      sOPEN_NORTH_DOOR                                 ;; 0d:52b8 $e0
     sENDIF                                             ;; 0d:52b9
     sEND                                               ;; 0d:52b9 $00
 
@@ -2776,7 +2776,7 @@ script_01ba:
       db "<1b>Received the Magic\nBook of Lightning.\nLearned Lit.<12>"
       db "<11>", $00 ;; 0d:52d5
     sSET_FLAG wScriptFlags05.3                         ;; 0d:52fc $da $2b
-    sUNK_E0                                            ;; 0d:52fe $e0
+    sOPEN_NORTH_DOOR                                   ;; 0d:52fe $e0
     sDELAY 30                                          ;; 0d:52ff $f0 $1e
     sSET_MUSIC 7                                       ;; 0d:5301 $f8 $07
     sEND                                               ;; 0d:5303 $00
@@ -3314,7 +3314,7 @@ script_01fa:
       sDEL_NPC_1                                       ;; 0d:5d41 $18
     sELSE                                              ;; 0d:5d42 $01 $05
       sCREATE_EFFECT $10, $09, $01                     ;; 0d:5d44 $ba $10 $09 $01
-      sUNK_E0                                          ;; 0d:5d48 $e0
+      sOPEN_NORTH_DOOR                                 ;; 0d:5d48 $e0
     sENDIF                                             ;; 0d:5d49
     sEND                                               ;; 0d:5d49 $00
 
@@ -3323,7 +3323,7 @@ script_01fb:
       sDEL_NPC_1                                       ;; 0d:5d4e $18
     sELSE                                              ;; 0d:5d4f $01 $05
       sCREATE_EFFECT $10, $09, $0d                     ;; 0d:5d51 $ba $10 $09 $0d
-      sUNK_E2                                          ;; 0d:5d55 $e2
+      sOPEN_SOUTH_DOOR                                 ;; 0d:5d55 $e2
     sENDIF                                             ;; 0d:5d56
     sEND                                               ;; 0d:5d56 $00
 
@@ -3332,7 +3332,7 @@ script_01fc:
       sDEL_NPC_1                                       ;; 0d:5d5b $18
     sELSE                                              ;; 0d:5d5c $01 $05
       sCREATE_EFFECT $10, $11, $07                     ;; 0d:5d5e $ba $10 $11 $07
-      sUNK_E4                                          ;; 0d:5d62 $e4
+      sOPEN_EAST_DOOR                                  ;; 0d:5d62 $e4
     sENDIF                                             ;; 0d:5d63
     sEND                                               ;; 0d:5d63 $00
 
@@ -3341,7 +3341,7 @@ script_01fd:
       sDEL_NPC_1                                       ;; 0d:5d68 $18
     sELSE                                              ;; 0d:5d69 $01 $05
       sCREATE_EFFECT $10, $01, $07                     ;; 0d:5d6b $ba $10 $01 $07
-      sUNK_E6                                          ;; 0d:5d6f $e6
+      sOPEN_WEST_DOOR                                  ;; 0d:5d6f $e6
     sENDIF                                             ;; 0d:5d70
     sEND                                               ;; 0d:5d70 $00
 
@@ -3997,7 +3997,7 @@ script_022a:
       db "<11>", $00 ;; 0d:6acd
     sCALL script_022b                                  ;; 0d:6c0d $02 $2c $14
     sSFX 16                                            ;; 0d:6c10 $f9 $10
-    sUNK_E0                                            ;; 0d:6c12 $e0
+    sOPEN_NORTH_DOOR                                   ;; 0d:6c12 $e0
     sEND                                               ;; 0d:6c13 $00
 
 script_022b:
@@ -4756,7 +4756,7 @@ script_0272:
       sENDIF                                           ;; 0d:7be8
       sIF_FLAG wScriptFlags01.4                        ;; 0d:7be8 $08 $0c $00 $03
         sSFX 16                                        ;; 0d:7bec $f9 $10
-        sUNK_E0                                        ;; 0d:7bee $e0
+        sOPEN_NORTH_DOOR                               ;; 0d:7bee $e0
       sENDIF                                           ;; 0d:7bef
       sRUN_ROOM_SCRIPT                                 ;; 0d:7bef $ec
     sENDIF                                             ;; 0d:7bf0

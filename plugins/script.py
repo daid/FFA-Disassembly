@@ -19,6 +19,7 @@ def dual_char_map(memory, addr):
     charmap[0x14] = "<BOY>"
     charmap[0x15] = "<GIRL>"
     charmap[0x1A] = "\\n"
+    charmap[0xAB] = "<CANDY>"
     charmap[0xEE] = "'"
     charmap[0xEF] = ","
     charmap[0xF0] = "."
@@ -29,6 +30,7 @@ def dual_char_map(memory, addr):
     charmap[0xF5] = ":"
     charmap[0xF6] = "/"
     charmap[0xFF] = " "
+    RomInfo.charmap["BASIC"] = charmap.copy()
     for n in range(0x70):
         d0 = memory.byte(addr + n * 2)
         d1 = memory.byte(addr + n * 2 + 1)
@@ -38,8 +40,41 @@ def dual_char_map(memory, addr):
             charmap[0x20 + n] = charmap[d0] + charmap[d1]
 
     RomInfo.charmap["SCRIPT"] = charmap
+    RomInfo.macros["TXT"] = "SETCHARMAP BASIC\ndb \#"
     global CHARMAP
     CHARMAP = charmap
+
+@annotation
+def ffa_text(memory, addr, *, size=None, amount=1):
+    FFATextBlock(memory, addr, int(size) if size is not None else None, int(amount))
+
+class FFATextBlock(Block):
+    def __init__(self, memory, addr, size, amount):
+        super().__init__(memory, addr, size=size*amount if size is not None else 0)
+        self.__size = size
+        self.__amount = amount
+        
+        if size is None:
+            size = 0
+            for n in range(amount):
+                while memory.byte(addr + size) != 0x00:
+                    size += 1
+                size += 1
+            self.resize(size)
+    
+    def export(self, file):
+        for i in range(self.__amount):
+            text = ""
+            if self.__size is not None:
+                size = self.__size
+            else:
+                size = 0
+                while self.memory.byte(file.addr + size) != 0x00:
+                    size += 1
+                size += 1
+            for n in range(size):
+                text += CHARMAP[self.memory.byte(file.addr + n)]
+            file.asmLine(size, "TXT", "\"%s\"" % (text), is_data=True)
 
 @annotation(priority=1)
 def script_pointers(memory, addr, *, amount):
@@ -359,14 +394,14 @@ OPCODES = {
     0xDE: ("sTAKE_EQUIPED_ITEM",), # Take 1 of your currently equiped item
     0xDF: ("sNOP_DF",),
 
-    0xE0: ("sUNK_E0",),
-    0xE1: ("sUNK_E1",),
-    0xE2: ("sUNK_E2",),
-    0xE3: ("sUNK_E3",),
-    0xE4: ("sUNK_E4",),
-    0xE5: ("sUNK_E5",),
-    0xE6: ("sUNK_E6",),
-    0xE7: ("sUNK_E7",),
+    0xE0: ("sOPEN_NORTH_DOOR",),
+    0xE1: ("sCLOSE_NORTH_DOOR",),
+    0xE2: ("sOPEN_SOUTH_DOOR",),
+    0xE3: ("sCLOSE_SOUTH_DOOR",),
+    0xE4: ("sOPEN_EAST_DOOR",),
+    0xE5: ("sCLOSE_EAST_DOOR",),
+    0xE6: ("sOPEN_WEST_DOOR",),
+    0xE7: ("sCLOSE_WEST_DOOR",),
     0xE8: ("sSCROLL_ROOM_DOWN",),
     0xE9: ("sSCROLL_ROOM_UP",),
     0xEA: ("sSCROLL_ROOM_LEFT",),

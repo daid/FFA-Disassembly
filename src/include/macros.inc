@@ -67,6 +67,10 @@ SCRIPT_POINTER: MACRO
 __script_pointer_\1::
   dw ((\1 - $4000) + ((BANK(\1) - $0D) * $4000))
 ENDM
+TXT: MACRO
+SETCHARMAP BASIC
+db \#
+ENDM
 call_to_bank_target: MACRO
 _call_to_bank_target_\1::
 dw \1
@@ -95,8 +99,20 @@ sCLEAR_FLAG: MACRO
 db $db
  FLAG_TO_IDX \1
 ENDM
+sCLOSE_EAST_DOOR: MACRO
+db $e5
+ENDM
 sCLOSE_MAP: MACRO
 db $ae
+ENDM
+sCLOSE_NORTH_DOOR: MACRO
+db $e1
+ENDM
+sCLOSE_SOUTH_DOOR: MACRO
+db $e3
+ENDM
+sCLOSE_WEST_DOOR: MACRO
+db $e7
 ENDM
 sCREATE_EFFECT: MACRO
 db $ba
@@ -548,12 +564,24 @@ ENDM
 sNPC_7_STEP_FORWARD: MACRO
 db $70
 ENDM
+sOPEN_EAST_DOOR: MACRO
+db $e4
+ENDM
 sOPEN_MAP: MACRO
 db $ac
+ENDM
+sOPEN_NORTH_DOOR: MACRO
+db $e0
 ENDM
 sOPEN_SHOP: MACRO
 db $f6
 db \1
+ENDM
+sOPEN_SOUTH_DOOR: MACRO
+db $e2
+ENDM
+sOPEN_WEST_DOOR: MACRO
+db $e6
 ENDM
 sPLAYER_GIVE_STATUS: MACRO
 db $c4
@@ -880,30 +908,6 @@ db $dc
 ENDM
 sUNK_DD: MACRO
 db $dd
-ENDM
-sUNK_E0: MACRO
-db $e0
-ENDM
-sUNK_E1: MACRO
-db $e1
-ENDM
-sUNK_E2: MACRO
-db $e2
-ENDM
-sUNK_E3: MACRO
-db $e3
-ENDM
-sUNK_E4: MACRO
-db $e4
-ENDM
-sUNK_E5: MACRO
-db $e5
-ENDM
-sUNK_E6: MACRO
-db $e6
-ENDM
-sUNK_E7: MACRO
-db $e7
 ENDM
 sUNK_EE: MACRO
 db $ee
