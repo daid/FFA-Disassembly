@@ -63,7 +63,7 @@ bossDataTable:
       BOSS_HEADER_GFX $38, $1c, bossGfxDragon, data_04_7ae1, data_04_7e20 ;; 04:4879 ????????
       dw data_04_4bf1, data_04_5165, data_04_5165, data_04_56ab ;; 04:4881 ????????
     BOSS_HEADER $05, $da, $00, $a0, $0b, $24, $0246    ;; 04:4889 ????????
-      BOSS_HEADER_GFX $40, $12, data_09_4900, data_04_7a13, data_04_7c9a ;; 04:4891 ????????
+      BOSS_HEADER_GFX $40, $12, bossGfxJulius, data_04_7a13, data_04_7c9a ;; 04:4891 ????????
       dw data_04_4a71, data_04_4f77, data_04_4f77, data_04_55f1 ;; 04:4899 ????????
     BOSS_HEADER $08, $ce, $00, $fa, $07, $27, $0247    ;; 04:48a1 ????????
       BOSS_HEADER_GFX $40, $18, bossGfxDragonZombie, data_04_7957, data_04_7bd1 ;; 04:48a9 ????????
@@ -72,7 +72,7 @@ bossDataTable:
       BOSS_HEADER_GFX $40, $10, bossGfxJackal, data_04_7987, data_04_7c70 ;; 04:48c1 ........
       dw data_04_4d19, data_04_4f4d, data_04_4e15, data_04_5473 ;; 04:48c9 ........
     BOSS_HEADER $04, $ff, $00, $a0, $08, $25, $0246    ;; 04:48d1 ????????
-      BOSS_HEADER_GFX $40, $10, data_0b_7300, data_04_7b87, data_04_7f4f ;; 04:48d9 ????????
+      BOSS_HEADER_GFX $40, $10, bossGfxJulius2, data_04_7b87, data_04_7f4f ;; 04:48d9 ????????
       dw data_04_4d49, data_04_531b, data_04_531b, data_04_562f ;; 04:48e1 ????????
     BOSS_HEADER $0a, $51, $64, $64, $07, $16, $0247    ;; 04:48e9 ????????
       BOSS_HEADER_GFX $40, $18, bossGfxMetalCrab, data_04_79c7, data_04_7d78 ;; 04:48f1 ????????
