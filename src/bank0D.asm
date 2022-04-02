@@ -3184,7 +3184,7 @@ script_01ef:
           db "<10>", $00                               ;; 0d:593a
         sSFX 15                                        ;; 0d:593c $f9 $0f
         sMSG                                           ;; 0d:593e $04
-          db "Received <aa>Bone.<12>"
+          db "Received <KEY>Bone.<12>"
           db "<1b>Cibba:Go up the\n wide river by the\n Ammonite Coast.<12>"
           db "<1b> Go beyond the\n Ammonite Coast\n to Floatrocks.<12>"
           db "<1b> Use this key at\n the cave in the\n Floatrocks!<12>"
@@ -3414,7 +3414,7 @@ script_0202:
 
 script_0203:
     sMSG                                               ;; 0d:5e6c $04
-      db "<10>Some walls may be\nbroken with <a7>Star\nor <ac>Mattock.<12>"
+      db "<10>Some walls may be\nbroken with <MSTAR>Star\nor <ac>Mattock.<12>"
       db "<1b>Those walls sound\ndifferent when you\nhit them.<12>"
       db "<11>", $00 ;; 0d:5e6d
     sEND                                               ;; 0d:5eb1 $00
@@ -3750,7 +3750,7 @@ script_0219:
     sIF_EQUIPED $2a                                    ;; 0d:65ed $09 $2a $00 $53
       sSET_MUSIC 0                                     ;; 0d:65f1 $f8 $00
       sMSG                                             ;; 0d:65f3 $04
-        db "<10><BOY> used <a9>Amanda,\nthe tears of\nAmanda__", $00 ;; 0d:65f4
+        db "<10><BOY> used <POT>Amanda,\nthe tears of\nAmanda__", $00 ;; 0d:65f4
       sDELAY 120                                       ;; 0d:660e $f0 $78
       sTAKE_EQUIPED_ITEM                               ;; 0d:6610 $de
       sMSG                                             ;; 0d:6611 $04
