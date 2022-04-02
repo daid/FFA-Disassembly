@@ -2833,7 +2833,7 @@ call_02_5475:
 call_02_547e:
     ld   A, [wD84A]                                    ;; 02:547e $fa $4a $d8
     call call_02_7693                                  ;; 02:5481 $cd $93 $76
-    ld   HL, $3f10                                     ;; 02:5484 $21 $10 $3f
+    ld   HL, cantCarryTextLabel                        ;; 02:5484 $21 $10 $3f
     call call_00_3777                                  ;; 02:5487 $cd $77 $37
     ld   A, $29                                        ;; 02:548a $3e $29
     ld   [wD853], A                                    ;; 02:548c $ea $53 $d8
@@ -4076,7 +4076,7 @@ data_02_5d0e:
     dw   data_02_61ea                                  ;; 02:5d16 ..
     dw   $0000                                         ;; 02:5d18 ??
     dw   $0000                                         ;; 02:5d1a ..
-    dw   $3f0a                                         ;; 02:5d1c ..
+    dw   yesNoTextLabels                               ;; 02:5d1c ..
     dw   $0000                                         ;; 02:5d1e ??
     dw   statusEffectLabels                            ;; 02:5d20 ..
     dw   data_02_5dda                                  ;; 02:5d22 ..
@@ -4150,7 +4150,7 @@ data_02_5d96:
     dw   wEquipmentInventory                           ;; 02:5d9e ..
     dw   $0000                                         ;; 02:5da0 ??
     dw   $0000                                         ;; 02:5da2 ..
-    dw   $3f0a                                         ;; 02:5da4 ..
+    dw   yesNoTextLabels                               ;; 02:5da4 ..
     dw   $0000                                         ;; 02:5da6 ??
     dw   $d7dc                                         ;; 02:5da8 ..
     dw   wD6F1                                         ;; 02:5daa ..
