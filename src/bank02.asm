@@ -21,7 +21,7 @@ SECTION "bank02", ROMX[$4000], BANK[$02]
     call_to_bank_target call_02_6d5b                   ;; 02:4018 ??
     call_to_bank_target call_02_6da7                   ;; 02:401a pP
     call_to_bank_target call_02_7693                   ;; 02:401c pP
-    call_to_bank_target call_02_7682                   ;; 02:401e ??
+    call_to_bank_target indexIntoTable                 ;; 02:401e ??
     call_to_bank_target call_02_6d34                   ;; 02:4020 ??
     call_to_bank_target call_02_6d80                   ;; 02:4022 pP
     call_to_bank_target call_02_4860                   ;; 02:4024 pP
@@ -2394,7 +2394,7 @@ call_02_5182:
     pop  DE                                            ;; 02:51ae $d1
     pop  AF                                            ;; 02:51af $f1
     pop  HL                                            ;; 02:51b0 $e1
-    call call_02_7682                                  ;; 02:51b1 $cd $82 $76
+    call indexIntoTable                                ;; 02:51b1 $cd $82 $76
     ld   A, $07                                        ;; 02:51b4 $3e $07
     add  A, E                                          ;; 02:51b6 $83
     ld   E, A                                          ;; 02:51b7 $5f
@@ -2525,7 +2525,7 @@ call_02_527b:
     jr   Z, .jr_02_5286                                ;; 02:5281 $28 $03
     ld   HL, data_02_61f2                              ;; 02:5283 $21 $f2 $61
 .jr_02_5286:
-    call call_02_7682                                  ;; 02:5286 $cd $82 $76
+    call indexIntoTable                                ;; 02:5286 $cd $82 $76
     ld   A, [HL]                                       ;; 02:5289 $7e
     pop  HL                                            ;; 02:528a $e1
     ret                                                ;; 02:528b $c9
@@ -2746,7 +2746,7 @@ call_02_53f0:
     ld   A, [HL+]                                      ;; 02:5400 $2a
     push HL                                            ;; 02:5401 $e5
     ld   HL, data_02_61f6                              ;; 02:5402 $21 $f6 $61
-    call call_02_7682                                  ;; 02:5405 $cd $82 $76
+    call indexIntoTable                                ;; 02:5405 $cd $82 $76
     ld   A, [HL]                                       ;; 02:5408 $7e
     pop  HL                                            ;; 02:5409 $e1
     ld   [DE], A                                       ;; 02:540a $12
@@ -2798,7 +2798,7 @@ jr_02_5435:
     push HL                                            ;; 02:544a $e5
     push BC                                            ;; 02:544b $c5
     pop  HL                                            ;; 02:544c $e1
-    call call_02_7682                                  ;; 02:544d $cd $82 $76
+    call indexIntoTable                                ;; 02:544d $cd $82 $76
     ld   A, [HL+]                                      ;; 02:5450 $2a
     ld   B, [HL]                                       ;; 02:5451 $46
     pop  HL                                            ;; 02:5452 $e1
@@ -3207,7 +3207,7 @@ call_02_569c:
 
 jr_02_56a3:
     and  A, $7f                                        ;; 02:56a3 $e6 $7f
-    call call_02_7682                                  ;; 02:56a5 $cd $82 $76
+    call indexIntoTable                                ;; 02:56a5 $cd $82 $76
     ld   A, [HL+]                                      ;; 02:56a8 $2a
     ld   C, A                                          ;; 02:56a9 $4f
     ld   B, [HL]                                       ;; 02:56aa $46
@@ -3224,7 +3224,7 @@ call_02_56b1:
     and  A, $7f                                        ;; 02:56b4 $e6 $7f
     ret  Z                                             ;; 02:56b6 $c8
     ld   HL, data_02_5e67                              ;; 02:56b7 $21 $67 $5e
-    call call_02_7682                                  ;; 02:56ba $cd $82 $76
+    call indexIntoTable                                ;; 02:56ba $cd $82 $76
     ld   A, [HL+]                                      ;; 02:56bd $2a
     ld   H, [HL]                                       ;; 02:56be $66
     ld   L, A                                          ;; 02:56bf $6f
@@ -3472,7 +3472,7 @@ call_02_583c:
     add  HL, BC                                        ;; 02:5846 $09
     ld   A, [HL]                                       ;; 02:5847 $7e
     ld   HL, data_02_61f3                              ;; 02:5848 $21 $f3 $61
-    call call_02_7682                                  ;; 02:584b $cd $82 $76
+    call indexIntoTable                                ;; 02:584b $cd $82 $76
     ld   A, [HL]                                       ;; 02:584e $7e
     and  A, $0f                                        ;; 02:584f $e6 $0f
     ld   HL, .data_02_5863                             ;; 02:5851 $21 $63 $58
@@ -3996,7 +3996,7 @@ call_02_5b9d:
     push HL                                            ;; 02:5b9d $e5
     ld   A, [wEquipedWeapon]                           ;; 02:5b9e $fa $e9 $d6
     ld   HL, data_02_61f6                              ;; 02:5ba1 $21 $f6 $61
-    call call_02_7682                                  ;; 02:5ba4 $cd $82 $76
+    call indexIntoTable                                ;; 02:5ba4 $cd $82 $76
     ld   A, [HL]                                       ;; 02:5ba7 $7e
     pop  HL                                            ;; 02:5ba8 $e1
     ret                                                ;; 02:5ba9 $c9
@@ -4463,7 +4463,7 @@ call_02_6656:
     cp   A, $09                                        ;; 02:665d $fe $09
     jr   NC, .jr_02_666f                               ;; 02:665f $30 $0e
     ld   HL, data_02_5de2                              ;; 02:6661 $21 $e2 $5d
-    call call_02_7682                                  ;; 02:6664 $cd $82 $76
+    call indexIntoTable                                ;; 02:6664 $cd $82 $76
     ld   A, [HL]                                       ;; 02:6667 $7e
     and  A, $1f                                        ;; 02:6668 $e6 $1f
     ld   B, A                                          ;; 02:666a $47
@@ -5689,14 +5689,14 @@ call_02_6dde:
     push HL                                            ;; 02:6dde $e5
     ld   A, [wEquipedShield]                           ;; 02:6ddf $fa $ee $d6
     ld   HL, data_02_61f4                              ;; 02:6de2 $21 $f4 $61
-    call call_02_7682                                  ;; 02:6de5 $cd $82 $76
+    call indexIntoTable                                ;; 02:6de5 $cd $82 $76
     ld   A, [HL]                                       ;; 02:6de8 $7e
     pop  HL                                            ;; 02:6de9 $e1
     ret                                                ;; 02:6dea $c9
 
 jr_02_6deb:
     ld   HL, data_02_61f5                              ;; 02:6deb $21 $f5 $61
-    call call_02_7682                                  ;; 02:6dee $cd $82 $76
+    call indexIntoTable                                ;; 02:6dee $cd $82 $76
     ld   A, [HL]                                       ;; 02:6df1 $7e
     pop  HL                                            ;; 02:6df2 $e1
     ret                                                ;; 02:6df3 $c9
@@ -5723,7 +5723,7 @@ call_02_6df4:
 .jr_02_6e10:
     push HL                                            ;; 02:6e10 $e5
     ld   HL, data_02_5de6                              ;; 02:6e11 $21 $e6 $5d
-    call call_02_7682                                  ;; 02:6e14 $cd $82 $76
+    call indexIntoTable                                ;; 02:6e14 $cd $82 $76
     ld   A, [HL]                                       ;; 02:6e17 $7e
     pop  HL                                            ;; 02:6e18 $e1
     ret                                                ;; 02:6e19 $c9
@@ -5766,7 +5766,7 @@ call_02_6e25:
     and  A, $7f                                        ;; 02:6e4f $e6 $7f
     push HL                                            ;; 02:6e51 $e5
     ld   HL, data_02_61f6                              ;; 02:6e52 $21 $f6 $61
-    call call_02_7682                                  ;; 02:6e55 $cd $82 $76
+    call indexIntoTable                                ;; 02:6e55 $cd $82 $76
     ld   A, [HL]                                       ;; 02:6e58 $7e
     pop  HL                                            ;; 02:6e59 $e1
     ld   [DE], A                                       ;; 02:6e5a $12
@@ -6250,13 +6250,13 @@ call_02_7165:
 
 call_02_7174:
     and  A, $7f                                        ;; 02:7174 $e6 $7f
-    call call_02_7682                                  ;; 02:7176 $cd $82 $76
+    call indexIntoTable                                ;; 02:7176 $cd $82 $76
     ld   A, [HL+]                                      ;; 02:7179 $2a
     ret                                                ;; 02:717a $c9
 
 call_02_717b:
     ld   HL, data_02_5de4                              ;; 02:717b $21 $e4 $5d
-    call call_02_7682                                  ;; 02:717e $cd $82 $76
+    call indexIntoTable                                ;; 02:717e $cd $82 $76
     ld   A, [HL+]                                      ;; 02:7181 $2a
     ld   L, [HL]                                       ;; 02:7182 $6e
     ld   H, A                                          ;; 02:7183 $67
@@ -6265,7 +6265,7 @@ call_02_717b:
 call_02_7185:
     push AF                                            ;; 02:7185 $f5
     ld   HL, data_02_5de2                              ;; 02:7186 $21 $e2 $5d
-    call call_02_7682                                  ;; 02:7189 $cd $82 $76
+    call indexIntoTable                                ;; 02:7189 $cd $82 $76
     ld   A, [HL]                                       ;; 02:718c $7e
     and  A, $1f                                        ;; 02:718d $e6 $1f
     ld   B, A                                          ;; 02:718f $47
@@ -6289,7 +6289,7 @@ call_02_71a2:
     cp   A, $09                                        ;; 02:71aa $fe $09
     ret  C                                             ;; 02:71ac $d8
     ld   HL, data_02_5de3                              ;; 02:71ad $21 $e3 $5d
-    call call_02_7682                                  ;; 02:71b0 $cd $82 $76
+    call indexIntoTable                                ;; 02:71b0 $cd $82 $76
     ld   A, [HL]                                       ;; 02:71b3 $7e
     and  A, $80                                        ;; 02:71b4 $e6 $80
     ret  Z                                             ;; 02:71b6 $c8
@@ -6535,7 +6535,7 @@ call_02_7322:
     and  A, $7f                                        ;; 02:7367 $e6 $7f
     push HL                                            ;; 02:7369 $e5
     ld   HL, data_02_61f6                              ;; 02:736a $21 $f6 $61
-    call call_02_7682                                  ;; 02:736d $cd $82 $76
+    call indexIntoTable                                ;; 02:736d $cd $82 $76
     ld   A, B                                          ;; 02:7370 $78
     cp   A, $11                                        ;; 02:7371 $fe $11
     jr   NZ, .jr_02_7379                               ;; 02:7373 $20 $04
@@ -6945,7 +6945,7 @@ call_02_75c5:
     ld   L, A                                          ;; 02:75eb $6f
     pop  AF                                            ;; 02:75ec $f1
     push AF                                            ;; 02:75ed $f5
-    call call_02_7682                                  ;; 02:75ee $cd $82 $76
+    call indexIntoTable                                ;; 02:75ee $cd $82 $76
     pop  AF                                            ;; 02:75f1 $f1
     ret                                                ;; 02:75f2 $c9
 .data_02_75f3:
@@ -7051,7 +7051,8 @@ call_02_765c:
     pop  AF                                            ;; 02:7680 $f1
     ret                                                ;; 02:7681 $c9
 
-call_02_7682:
+; HL = HL + 1 + ((A & $7F) - 1) * 16
+indexIntoTable:
     inc  HL                                            ;; 02:7682 $23
     push DE                                            ;; 02:7683 $d5
     and  A, $7f                                        ;; 02:7684 $e6 $7f
