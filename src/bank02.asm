@@ -4067,39 +4067,119 @@ data_02_5cfe:
     db   $01, $02, $00, $01, $01, $00, $02, $01        ;; 02:5cfe ........
     db   $02, $01, $00, $01, $01, $00, $01, $02        ;; 02:5d06 ........
 
+;@data format=p amount=34
 data_02_5d0e:
-    db   $f6, $7c, $5a, $5e, $da, $5d, $ea, $61        ;; 02:5d0e ........
-    db   $ea, $61, $00, $00, $00, $00, $0a, $3f        ;; 02:5d16 ..??....
-    db   $00, $00, $e5, $7d, $da, $5d, $8e, $7d        ;; 02:5d1e ??......
-    db   $00, $00, $5a, $5e, $5a, $5e, $00, $00        ;; 02:5d26 ........
-    db   $87, $7d, $09, $7d, $9c, $7d, $00, $00        ;; 02:5d2e ........
-    db   $b3, $7d, $00, $00, $e5, $7d, $c2, $7d        ;; 02:5d36 ....??..
-    db   $18, $7d, $31, $7d, $ca, $64, $00, $00        ;; 02:5d3e ........
-    db   $00, $00, $f9, $7d, $01, $7e, $52, $7e        ;; 02:5d46 ........
-    db   $e5, $7d, $38, $7d                            ;; 02:5d4e ??..
+    dw   data_02_7cf6                                  ;; 02:5d0e ..
+    dw   data_02_5e5a                                  ;; 02:5d10 ..
+    dw   data_02_5dda                                  ;; 02:5d12 ..
+    dw   data_02_61ea                                  ;; 02:5d14 ..
+    dw   data_02_61ea                                  ;; 02:5d16 ..
+    dw   $0000                                         ;; 02:5d18 ??
+    dw   $0000                                         ;; 02:5d1a ..
+    dw   $3f0a                                         ;; 02:5d1c ..
+    dw   $0000                                         ;; 02:5d1e ??
+    dw   statusEffectLabels                            ;; 02:5d20 ..
+    dw   data_02_5dda                                  ;; 02:5d22 ..
+    dw   data_02_7d8e                                  ;; 02:5d24 ..
+    dw   $0000                                         ;; 02:5d26 ..
+    dw   data_02_5e5a                                  ;; 02:5d28 ..
+    dw   data_02_5e5a                                  ;; 02:5d2a ..
+    dw   $0000                                         ;; 02:5d2c ..
+    dw   data_02_7d87                                  ;; 02:5d2e ..
+    dw   data_02_7d09                                  ;; 02:5d30 ..
+    dw   data_02_7d9c                                  ;; 02:5d32 ..
+    dw   $0000                                         ;; 02:5d34 ..
+    dw   data_02_7db3                                  ;; 02:5d36 ..
+    dw   $0000                                         ;; 02:5d38 ..
+    dw   statusEffectLabels                            ;; 02:5d3a ??
+    dw   data_02_7dc2                                  ;; 02:5d3c ..
+    dw   data_02_7d18                                  ;; 02:5d3e ..
+    dw   data_02_7d31                                  ;; 02:5d40 ..
+    dw   data_02_64ca                                  ;; 02:5d42 ..
+    dw   $0000                                         ;; 02:5d44 ..
+    dw   $0000                                         ;; 02:5d46 ..
+    dw   data_02_7df9                                  ;; 02:5d48 ..
+    dw   nameEntryInputOptions                         ;; 02:5d4a ..
+    dw   data_02_7e52                                  ;; 02:5d4c ..
+    dw   statusEffectLabels                            ;; 02:5d4e ??
+    dw   data_02_7d38                                  ;; 02:5d50 ..
 
+;@data format=p amount=34
 data_02_5d52:
-    db   $00, $00, $9b, $d6, $ab, $d6, $bf, $d6        ;; 02:5d52 ........
-    db   $b3, $d6, $00, $00, $00, $00, $00, $00        ;; 02:5d5a ..??....
-    db   $00, $00, $00, $00, $f0, $d6, $00, $00        ;; 02:5d62 ??......
-    db   $00, $00, $2f, $d7, $fa, $d6, $00, $00        ;; 02:5d6a ........
-    db   $00, $00, $00, $00, $8f, $d7, $00, $00        ;; 02:5d72 ........
-    db   $93, $d7, $41, $d8, $00, $00, $00, $00        ;; 02:5d7a ....??..
-    db   $00, $00, $00, $00, $df, $d7, $00, $00        ;; 02:5d82 ........
-    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 02:5d8a ........
-    db   $00, $00, $00, $00                            ;; 02:5d92 ??..
+    dw   $0000                                         ;; 02:5d52 ..
+    dw   wItemInventoryAmount                          ;; 02:5d54 ..
+    dw   wD6AB                                         ;; 02:5d56 ..
+    dw   wD6BF                                         ;; 02:5d58 ..
+    dw   wD6B3                                         ;; 02:5d5a ..
+    dw   $0000                                         ;; 02:5d5c ??
+    dw   $0000                                         ;; 02:5d5e ..
+    dw   $0000                                         ;; 02:5d60 ..
+    dw   $0000                                         ;; 02:5d62 ??
+    dw   $0000                                         ;; 02:5d64 ..
+    dw   wEquipedItemAmount                            ;; 02:5d66 ..
+    dw   $0000                                         ;; 02:5d68 ..
+    dw   $0000                                         ;; 02:5d6a ..
+    dw   wD72F                                         ;; 02:5d6c ..
+    dw   wD6FA                                         ;; 02:5d6e ..
+    dw   $0000                                         ;; 02:5d70 ..
+    dw   $0000                                         ;; 02:5d72 ..
+    dw   $0000                                         ;; 02:5d74 ..
+    dw   wD78F                                         ;; 02:5d76 ..
+    dw   $0000                                         ;; 02:5d78 ..
+    dw   wD793                                         ;; 02:5d7a ..
+    dw   $d841                                         ;; 02:5d7c ..
+    dw   $0000                                         ;; 02:5d7e ??
+    dw   $0000                                         ;; 02:5d80 ..
+    dw   $0000                                         ;; 02:5d82 ..
+    dw   $0000                                         ;; 02:5d84 ..
+    dw   wD7DF                                         ;; 02:5d86 ..
+    dw   $0000                                         ;; 02:5d88 ..
+    dw   $0000                                         ;; 02:5d8a ..
+    dw   $0000                                         ;; 02:5d8c ..
+    dw   $0000                                         ;; 02:5d8e ..
+    dw   $0000                                         ;; 02:5d90 ..
+    dw   $0000                                         ;; 02:5d92 ??
+    dw   $0000                                         ;; 02:5d94 ..
 
+;@data format=p amount=34
 data_02_5d96:
-    db   $f6, $7c, $c5, $d6, $d5, $d6, $e9, $d6        ;; 02:5d96 ........
-    db   $dd, $d6, $00, $00, $00, $00, $0a, $3f        ;; 02:5d9e ..??....
-    db   $00, $00, $dc, $d7, $f1, $d6, $8e, $7d        ;; 02:5da6 ??......
-    db   $00, $00, $0f, $d7, $f3, $d6, $5d, $7d        ;; 02:5dae ........
-    db   $87, $7d, $09, $7d, $9c, $7d, $00, $00        ;; 02:5db6 ........
-    db   $b3, $7d, $00, $00, $00, $00, $c2, $7d        ;; 02:5dbe ....??..
-    db   $18, $7d, $31, $7d, $dd, $d7, $00, $00        ;; 02:5dc6 ........
-    db   $00, $00, $f9, $7d, $01, $7e, $52, $7e        ;; 02:5dce ........
-    db   $dc, $d7, $38, $7d, $00, $bc, $e8, $e5        ;; 02:5dd6 ??..????
-    db   $d8, $00, $00, $00                            ;; 02:5dde ????
+    dw   data_02_7cf6                                  ;; 02:5d96 ..
+    dw   wItemInventory                                ;; 02:5d98 ..
+    dw   wMagicInventory                               ;; 02:5d9a ..
+    dw   wEquipedWeapon                                ;; 02:5d9c ..
+    dw   wEquipmentInventory                           ;; 02:5d9e ..
+    dw   $0000                                         ;; 02:5da0 ??
+    dw   $0000                                         ;; 02:5da2 ..
+    dw   $3f0a                                         ;; 02:5da4 ..
+    dw   $0000                                         ;; 02:5da6 ??
+    dw   $d7dc                                         ;; 02:5da8 ..
+    dw   wD6F1                                         ;; 02:5daa ..
+    dw   data_02_7d8e                                  ;; 02:5dac ..
+    dw   $0000                                         ;; 02:5dae ..
+    dw   wD70F                                         ;; 02:5db0 ..
+    dw   wD6F3                                         ;; 02:5db2 ..
+    dw   data_02_7d5d                                  ;; 02:5db4 ..
+    dw   data_02_7d87                                  ;; 02:5db6 ..
+    dw   data_02_7d09                                  ;; 02:5db8 ..
+    dw   data_02_7d9c                                  ;; 02:5dba ..
+    dw   $0000                                         ;; 02:5dbc ..
+    dw   data_02_7db3                                  ;; 02:5dbe ..
+    dw   $0000                                         ;; 02:5dc0 ..
+    dw   $0000                                         ;; 02:5dc2 ??
+    dw   data_02_7dc2                                  ;; 02:5dc4 ..
+    dw   data_02_7d18                                  ;; 02:5dc6 ..
+    dw   data_02_7d31                                  ;; 02:5dc8 ..
+    dw   wD7DD                                         ;; 02:5dca ..
+    dw   $0000                                         ;; 02:5dcc ..
+    dw   $0000                                         ;; 02:5dce ..
+    dw   data_02_7df9                                  ;; 02:5dd0 ..
+    dw   nameEntryInputOptions                         ;; 02:5dd2 ..
+    dw   data_02_7e52                                  ;; 02:5dd4 ..
+    dw   $d7dc                                         ;; 02:5dd6 ??
+    dw   data_02_7d38                                  ;; 02:5dd8 ..
+
+data_02_5dda:
+    db   $00, $bc, $e8, $e5, $d8, $00, $00, $00        ;; 02:5dda ????????
 
 data_02_5de2:
     db   $00                                           ;; 02:5de2 ?
@@ -4259,11 +4339,14 @@ data_02_61f6:
     db   $e1, $64, $83, $00, $00, $00, $14, $03        ;; 02:64ae ????????
     db   $00, $00, $ff, $ff, $2d, $8f, $51, $9d        ;; 02:64b6 ????????
     db   $e1, $64, $84, $00, $00, $00, $14, $03        ;; 02:64be ????????
-    db   $00, $00, $ff, $ff, $00, $ba, $c9, $ff        ;; 02:64c6 ?????...
-    db   $ff, $00, $00, $00, $00, $40, $00, $00        ;; 02:64ce ..??????
-    db   $00, $00, $00, $00, $00, $bd, $c9, $ff        ;; 02:64d6 ?.???...
-    db   $ff, $00, $00, $00, $00, $40, $00, $00        ;; 02:64de ..??????
-    db   $00, $00, $00, $00, $00, $00                  ;; 02:64e6 ?.????
+    db   $00, $00, $ff, $ff                            ;; 02:64c6 ????
+
+data_02_64ca:
+    db   $00, $ba, $c9, $ff, $ff, $00, $00, $00        ;; 02:64ca ?.....??
+    db   $00, $40, $00, $00, $00, $00, $00, $00        ;; 02:64d2 ?????.??
+    db   $00, $bd, $c9, $ff, $ff, $00, $00, $00        ;; 02:64da ?.....??
+    db   $00, $40, $00, $00, $00, $00, $00, $00        ;; 02:64e2 ?????.??
+    db   $00, $00                                      ;; 02:64ea ??
 
 data_02_64ec:
     db   $00, $0a, $05, $0a, $06, $0a, $16, $0a        ;; 02:64ec ........
@@ -5357,7 +5440,8 @@ call_02_6c5d:
     pop  HL                                            ;; 02:6c7b $e1
     ret                                                ;; 02:6c7c $c9
 
-call_02_6c7d:
+; HL = HL[A*2]
+indexPointerTable:
     push BC                                            ;; 02:6c7d $c5
     ld   B, $00                                        ;; 02:6c7e $06 $00
     ld   C, A                                          ;; 02:6c80 $4f
@@ -6977,7 +7061,7 @@ indexIntoTable:
 call_02_7693:
     push AF                                            ;; 02:7693 $f5
     ld   HL, data_02_5d0e                              ;; 02:7694 $21 $0e $5d
-    call call_02_6c7d                                  ;; 02:7697 $cd $7d $6c
+    call indexPointerTable                             ;; 02:7697 $cd $7d $6c
     xor  A, A                                          ;; 02:769a $af
     ld   [wD848], A                                    ;; 02:769b $ea $48 $d8
     ld   A, H                                          ;; 02:769e $7c
@@ -6988,7 +7072,7 @@ call_02_7693:
     pop  AF                                            ;; 02:76a9 $f1
     push AF                                            ;; 02:76aa $f5
     ld   HL, data_02_5d96                              ;; 02:76ab $21 $96 $5d
-    call call_02_6c7d                                  ;; 02:76ae $cd $7d $6c
+    call indexPointerTable                             ;; 02:76ae $cd $7d $6c
     ld   A, H                                          ;; 02:76b1 $7c
     ld   [wD895], A                                    ;; 02:76b2 $ea $95 $d8
     ld   A, L                                          ;; 02:76b5 $7d
@@ -6996,7 +7080,7 @@ call_02_7693:
     pop  AF                                            ;; 02:76b9 $f1
     push AF                                            ;; 02:76ba $f5
     ld   HL, data_02_5d52                              ;; 02:76bb $21 $52 $5d
-    call call_02_6c7d                                  ;; 02:76be $cd $7d $6c
+    call indexPointerTable                             ;; 02:76be $cd $7d $6c
     ld   A, H                                          ;; 02:76c1 $7c
     ld   [wD893], A                                    ;; 02:76c2 $ea $93 $d8
     ld   A, L                                          ;; 02:76c5 $7d
@@ -7938,38 +8022,64 @@ call_02_7bdd:
     ld   A, $08                                        ;; 02:7cf0 $3e $08
     call call_00_31ad                                  ;; 02:7cf2 $cd $ad $31
     ret                                                ;; 02:7cf5 $c9
+
 ;@ffa_text size=5 amount=3
+data_02_7cf6:
     TXT  "ITEM<00>"                                    ;; 02:7cf6 .....
     TXT  "MAGIC"                                       ;; 02:7cfb .....
     TXT  "EQUIP"                                       ;; 02:7d00 .....
 ;@ffa_text
     TXT  "ASK<00>"                                     ;; 02:7d05 ....
 
-;@ffa_text amount=6
+;@ffa_text size=15
 data_02_7d09:
-    TXT  "Save\nMap\nStatusPower<00>"                  ;; 02:7d09 .....................
+    TXT  "Save\nMap\nStatus"                           ;; 02:7d09 ...............
+
+;@ffa_text amount=6
+data_02_7d18:
+    TXT  "Power<00>"                                   ;; 02:7d18 ......
     TXT  "Wisdom<00>"                                  ;; 02:7d1e .......
     TXT  "StaminaWill<00>"                             ;; 02:7d25 ............
+
+data_02_7d31:
     TXT  "Yes<00>"                                     ;; 02:7d31 ....
     TXT  "No<00>"                                      ;; 02:7d35 ...
+
+data_02_7d38:
     TXT  "   Level up!\nHP/MP recovered!<00>"          ;; 02:7d38 ..............................
 
-;@ffa_text amount=2
+;@ffa_text size=7
 data_02_7d56:
-    TXT  "Bought Hello!<00>"                           ;; 02:7d56 ..............
+    TXT  "Bought "                                     ;; 02:7d56 .......
+
+;@ffa_text amount=2
+data_02_7d5d:
+    TXT  "Hello!<00>"                                  ;; 02:7d5d .......
     TXT  "May I help you?<00>"                         ;; 02:7d64 ................
     db   $00, $00                                      ;; 02:7d74 ..
 
-;@ffa_text size=9 amount=4
+;@ffa_text amount=2
 data_02_7d76:
-    TXT  "Not enoug"                                   ;; 02:7d76 ?????????
-    TXT  "h GP!<00>?<00>S"                             ;; 02:7d7f ????????.
-    TXT  "ellNo<00>Buy"                                ;; 02:7d88 .........
-    TXT  "<00>SellExit"                                ;; 02:7d91 .........
+    TXT  "Not enough GP!<00>"                          ;; 02:7d76 ???????????????
+    TXT  "?<00>"                                       ;; 02:7d85 ??
+
+;@ffa_text
+data_02_7d87:
+    TXT  "SellNo<00>"                                  ;; 02:7d87 .......
+
+;@ffa_text size=4 amount=3
+data_02_7d8e:
+    TXT  "Buy<00>"                                     ;; 02:7d8e ....
+    TXT  "Sell"                                        ;; 02:7d92 ....
+    TXT  "Exit"                                        ;; 02:7d96 ....
+
+;@ffa_text size=2
+data_02_7d9a:
+    TXT  "GP"                                          ;; 02:7d9a ..
 
 ;@ffa_text amount=4
-data_02_7d9a:
-    TXT  "GPStamn<00>"                                 ;; 02:7d9a ........
+data_02_7d9c:
+    TXT  "Stamn<00>"                                   ;; 02:7d9c ......
     TXT  "Power<00>"                                   ;; 02:7da2 ......
     TXT  "Wisdm<00>"                                   ;; 02:7da8 ......
     TXT  "Will<00>"                                    ;; 02:7dae .....
@@ -7978,9 +8088,13 @@ data_02_7d9a:
 data_02_7db3:
     TXT  "HP   /   "                                   ;; 02:7db3 .........
 
-;@ffa_text
+;@ffa_text size=6
 data_02_7dbc:
-    TXT  "MP   / Level up! Selectyour growth type.<00>" ;; 02:7dbc ........................................?
+    TXT  "MP   /"                                      ;; 02:7dbc ......
+
+;@ffa_text
+data_02_7dc2:
+    TXT  " Level up! Selectyour growth type.<00>"      ;; 02:7dc2 ..................................?
 
 ;@ffa_text size=4 amount=5
 statusEffectLabels:
@@ -7989,7 +8103,9 @@ statusEffectLabels:
     TXT  "Ston"                                        ;; 02:7ded ????
     TXT  "Moog"                                        ;; 02:7df1 ????
     TXT  "Good"                                        ;; 02:7df5 ....
+
 ;@ffa_text size=4 amount=1
+data_02_7df9:
     TXT  "Boy<00>"                                     ;; 02:7df9 ....
 
 ;@ffa_text size=4 amount=1
@@ -8007,7 +8123,9 @@ nameEntryInputOptions:
     TXT  "',._-!?:/"                                   ;; 02:7e37 .........
     TXT  "01234    "                                   ;; 02:7e40 .........
     TXT  "56789   <af>"                                ;; 02:7e49 .........
+
 ;@ffa_text size=8 amount=2
+data_02_7e52:
     TXT  "New Game"                                    ;; 02:7e52 ........
     TXT  "Continue"                                    ;; 02:7e5a ........
 
