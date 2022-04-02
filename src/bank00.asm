@@ -936,9 +936,9 @@ call_00_05bb:
     add  HL, HL                                        ;; 00:05c0 $29
     add  HL, DE                                        ;; 00:05c1 $19
     add  HL, HL                                        ;; 00:05c2 $29
-    ld   A, [wTileDataTablePointerHigh]                ;; 00:05c3 $fa $93 $d3
+    ld   A, [wTileDataTablePointer.High]               ;; 00:05c3 $fa $93 $d3
     ld   D, A                                          ;; 00:05c6 $57
-    ld   A, [wTileDataTablePointerLow]                 ;; 00:05c7 $fa $92 $d3
+    ld   A, [wTileDataTablePointer]                    ;; 00:05c7 $fa $92 $d3
     ld   E, A                                          ;; 00:05ca $5f
     add  HL, DE                                        ;; 00:05cb $19
     ret                                                ;; 00:05cc $c9
@@ -3850,9 +3850,9 @@ call_00_16af:
     add  HL, HL                                        ;; 00:16e0 $29
     add  HL, DE                                        ;; 00:16e1 $19
     add  HL, HL                                        ;; 00:16e2 $29
-    ld   A, [wTileDataTablePointerHigh]                ;; 00:16e3 $fa $93 $d3
+    ld   A, [wTileDataTablePointer.High]               ;; 00:16e3 $fa $93 $d3
     ld   D, A                                          ;; 00:16e6 $57
-    ld   A, [wTileDataTablePointerLow]                 ;; 00:16e7 $fa $92 $d3
+    ld   A, [wTileDataTablePointer]                    ;; 00:16e7 $fa $92 $d3
     ld   E, A                                          ;; 00:16ea $5f
     add  HL, DE                                        ;; 00:16eb $19
     ld   DE, $04                                       ;; 00:16ec $11 $04 $00
@@ -4542,13 +4542,13 @@ call_00_1acd:
 
 call_00_1af3:
     ld   A, H                                          ;; 00:1af3 $7c
-    ld   [wD391], A                                    ;; 00:1af4 $ea $91 $d3
+    ld   [wMapHeaderPointer.High], A                   ;; 00:1af4 $ea $91 $d3
     ld   A, L                                          ;; 00:1af7 $7d
-    ld   [wD390], A                                    ;; 00:1af8 $ea $90 $d3
+    ld   [wMapHeaderPointer], A                        ;; 00:1af8 $ea $90 $d3
     ld   A, D                                          ;; 00:1afb $7a
-    ld   [wTileDataTablePointerHigh], A                ;; 00:1afc $ea $93 $d3
+    ld   [wTileDataTablePointer.High], A               ;; 00:1afc $ea $93 $d3
     ld   A, E                                          ;; 00:1aff $7b
-    ld   [wTileDataTablePointerLow], A                 ;; 00:1b00 $ea $92 $d3
+    ld   [wTileDataTablePointer], A                    ;; 00:1b00 $ea $92 $d3
     ld   A, $00                                        ;; 00:1b03 $3e $00
     ld   B, $ff                                        ;; 00:1b05 $06 $ff
     ld   HL, wBackgroundGraphicsTileMapping            ;; 00:1b07 $21 $70 $d1
@@ -4570,9 +4570,9 @@ getTileInfoPointer:
     add  HL, HL                                        ;; 00:1b1e $29
     add  HL, DE                                        ;; 00:1b1f $19
     add  HL, HL                                        ;; 00:1b20 $29
-    ld   A, [wTileDataTablePointerHigh]                ;; 00:1b21 $fa $93 $d3
+    ld   A, [wTileDataTablePointer.High]               ;; 00:1b21 $fa $93 $d3
     ld   D, A                                          ;; 00:1b24 $57
-    ld   A, [wTileDataTablePointerLow]                 ;; 00:1b25 $fa $92 $d3
+    ld   A, [wTileDataTablePointer]                    ;; 00:1b25 $fa $92 $d3
     ld   E, A                                          ;; 00:1b28 $5f
     add  HL, DE                                        ;; 00:1b29 $19
     ret                                                ;; 00:1b2a $c9
@@ -4709,15 +4709,15 @@ call_00_1ba1:
     pop  DE                                            ;; 00:1be0 $d1
     push DE                                            ;; 00:1be1 $d5
     push HL                                            ;; 00:1be2 $e5
-    ld   HL, $2e90                                     ;; 00:1be3 $21 $90 $2e
+    ld   HL, unlabeled_2e90                            ;; 00:1be3 $21 $90 $2e
     add  HL, DE                                        ;; 00:1be6 $19
     add  HL, HL                                        ;; 00:1be7 $29
     add  HL, HL                                        ;; 00:1be8 $29
     add  HL, HL                                        ;; 00:1be9 $29
     add  HL, HL                                        ;; 00:1bea $29
-    ld   A, [wD391]                                    ;; 00:1beb $fa $91 $d3
+    ld   A, [wMapHeaderPointer.High]                   ;; 00:1beb $fa $91 $d3
     ld   D, A                                          ;; 00:1bee $57
-    ld   A, [wD390]                                    ;; 00:1bef $fa $90 $d3
+    ld   A, [wMapHeaderPointer]                        ;; 00:1bef $fa $90 $d3
     ld   E, A                                          ;; 00:1bf2 $5f
     add  HL, DE                                        ;; 00:1bf3 $19
     pop  DE                                            ;; 00:1bf4 $d1
@@ -4734,9 +4734,9 @@ call_00_1ba1:
     push HL                                            ;; 00:1c05 $e5
     ld   DE, hOAM_DMA_Routine                          ;; 00:1c06 $11 $80 $ff
     add  HL, DE                                        ;; 00:1c09 $19
-    ld   A, [wD391]                                    ;; 00:1c0a $fa $91 $d3
+    ld   A, [wMapHeaderPointer.High]                   ;; 00:1c0a $fa $91 $d3
     ld   D, A                                          ;; 00:1c0d $57
-    ld   A, [wD390]                                    ;; 00:1c0e $fa $90 $d3
+    ld   A, [wMapHeaderPointer]                        ;; 00:1c0e $fa $90 $d3
     ld   E, A                                          ;; 00:1c11 $5f
     call sub_HL_DE                                     ;; 00:1c12 $cd $ab $2b
     pop  BC                                            ;; 00:1c15 $c1
@@ -7535,14 +7535,17 @@ addTileGraphicCopyRequest:
     db   $cd, $32, $2e, $21, $e0, $c5, $f1, $22        ;; 00:2e72 ????????
     db   $22, $d1, $73, $23, $72, $23, $d1, $73        ;; 00:2e7a ????????
     db   $23, $72, $21, $e0, $c8, $34, $21, $e1        ;; 00:2e82 ????????
-    db   $c8, $35, $c9, $20, $02, $00, $00, $00        ;; 00:2e8a ????????
-    db   $02, $00, $00, $02, $00, $00, $02, $20        ;; 00:2e92 ????....
-    db   $0a, $08, $00, $08, $0a, $40, $08, $0a        ;; 00:2e9a ........
-    db   $00, $08, $0a, $20, $0a, $08, $40, $08        ;; 00:2ea2 ........
-    db   $0a, $00, $08, $0a, $60, $0a, $08, $20        ;; 00:2eaa .......?
-    db   $0e, $0c, $00, $0c, $0e, $40, $0c, $0e        ;; 00:2eb2 ??...???
-    db   $00, $0c, $0e, $20, $0e, $0c, $40, $0c        ;; 00:2eba ......??
-    db   $0e, $00, $0c, $0e, $60, $0e, $0c             ;; 00:2ec2 ?......
+    db   $c8, $35, $c9, $20, $02, $00                  ;; 00:2e8a ??????
+
+unlabeled_2e90:
+    db   $00, $00, $02, $00, $00, $02, $00, $00        ;; 00:2e90 ??????..
+    db   $02, $20, $0a, $08, $00, $08, $0a, $40        ;; 00:2e98 ........
+    db   $08, $0a, $00, $08, $0a, $20, $0a, $08        ;; 00:2ea0 ........
+    db   $40, $08, $0a, $00, $08, $0a, $60, $0a        ;; 00:2ea8 ........
+    db   $08, $20, $0e, $0c, $00, $0c, $0e, $40        ;; 00:2eb0 .???...?
+    db   $0c, $0e, $00, $0c, $0e, $20, $0e, $0c        ;; 00:2eb8 ??......
+    db   $40, $0c, $0e, $00, $0c, $0e, $60, $0e        ;; 00:2ec0 ???.....
+    db   $0c                                           ;; 00:2ec8 .
 
 call_00_2ec9:
     ld   HL, $1e0                                      ;; 00:2ec9 $21 $e0 $01

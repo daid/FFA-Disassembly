@@ -630,16 +630,14 @@ wD38E:
 wD38F:
     ds 1                                               ;; d38f
 
-wD390:
+wMapHeaderPointer:
     ds 1                                               ;; d390
-
-wD391:
+.High:
     ds 1                                               ;; d391
 
-wTileDataTablePointerLow:
+wTileDataTablePointer:
     ds 1                                               ;; d392
-
-wTileDataTablePointerHigh:
+.High:
     ds 1                                               ;; d393
 
 wD394:
