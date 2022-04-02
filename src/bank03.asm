@@ -4084,6 +4084,12 @@ data_03_563e:
     db   $0a, $0a, $0a, $0a, $0a, $0a, $0a, $0a, $0a, $0a, $0a, $0a, $0a, $0a, $0a, $0a, $10, $10, $10, $10, $10, $10, $10, $10, $10, $10, $10, $10, $10, $10, $10, $10 ;; 03:59de ????????????????????????????????
 
 ;Monster stat table
+;offset0: Speed
+;offset1: HP
+;offset6: Touch damage
+;offset7: Defense
+;offset12: XP on kill
+;offset13: Gold on kill
 ;@data format=bbbbbbbbbbbbbb amount=98
 data_03_59fe:
     db   $10, $01, $01, $00, $10, $00, $00, $00, $00, $00, $00, $00, $00, $00 ;; 03:59fe ..?...?.??????
@@ -4188,9 +4194,11 @@ data_03_59fe:
 ;@npc_data amount=191
 ;NPC related data, format unknown, source of the index unknown.
 ; Offset $00: Collision flags, see wObjectRuntimeData
+; Offset $01: index into the monster stat table
 ; Offset $02: Tile index to load
 ; Offset $03: Amount of tiles to load
 ; Offset $04: Pointer to graphics (bank 8 and up)
+; Offset $10: Movement pattern, one selected at random (4 bytes)
 ; Offset $14: script index value (2 bytes)
 data_03_5f5a:
     NPC_DATA $a9, $00, $74, $02, gfxSnowman, data_03_7b5a, unlabeled_2c93, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, script_003d, $00, $00 ;; 03:5f5a ????????????????????????
