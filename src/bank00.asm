@@ -3912,7 +3912,7 @@ call_00_1700:
     ld   H, [HL]                                       ;; 00:173c $66
     ld   L, A                                          ;; 00:173d $6f
     ld   A, B                                          ;; 00:173e $78
-    call call_00_31ad                                  ;; 00:173f $cd $ad $31
+    call runScriptByIndex                              ;; 00:173f $cd $ad $31
 .jr_00_1742:
     call popBankNrAndSwitch                            ;; 00:1742 $cd $0a $2a
     ret                                                ;; 00:1745 $c9
@@ -5448,7 +5448,7 @@ call_00_21b0:
     ret                                                ;; 00:21b3 $c9
 
 call_00_21b4:
-    ld   HL, wC400                                     ;; 00:21b4 $21 $00 $c4
+    ld   HL, wRoomClearedStatus                        ;; 00:21b4 $21 $00 $c4
     ld   B, $80                                        ;; 00:21b7 $06 $80
     ld   A, $ff                                        ;; 00:21b9 $3e $ff
     call fillMemory                                    ;; 00:21bb $cd $5d $2b
@@ -5457,7 +5457,7 @@ call_00_21b4:
 call_00_21bf:
     ld   C, A                                          ;; 00:21bf $4f
     ld   E, A                                          ;; 00:21c0 $5f
-    ld   HL, wC400                                     ;; 00:21c1 $21 $00 $c4
+    ld   HL, wRoomClearedStatus                        ;; 00:21c1 $21 $00 $c4
     ld   B, $40                                        ;; 00:21c4 $06 $40
     ld   A, [wMapNumber]                               ;; 00:21c6 $fa $f5 $c3
     ld   D, A                                          ;; 00:21c9 $57
@@ -5481,13 +5481,13 @@ call_00_21bf:
     ret                                                ;; 00:21df $c9
 .jr_00_21e0:
     ld   A, D                                          ;; 00:21e0 $7a
-    ld   [wC400], A                                    ;; 00:21e1 $ea $00 $c4
+    ld   [wRoomClearedStatus], A                       ;; 00:21e1 $ea $00 $c4
     bit  7, A                                          ;; 00:21e4 $cb $7f
     ret  Z                                             ;; 00:21e6 $c8
     ld   A, B                                          ;; 00:21e7 $78
     cp   A, $3d                                        ;; 00:21e8 $fe $3d
     jr   NC, .jr_00_21f3                               ;; 00:21ea $30 $07
-    ld   HL, wC400                                     ;; 00:21ec $21 $00 $c4
+    ld   HL, wRoomClearedStatus                        ;; 00:21ec $21 $00 $c4
     res  7, [HL]                                       ;; 00:21ef $cb $be
     xor  A, A                                          ;; 00:21f1 $af
     ret                                                ;; 00:21f2 $c9
@@ -5498,7 +5498,7 @@ call_00_21bf:
 
 call_00_21f6:
     ld   B, $40                                        ;; 00:21f6 $06 $40
-    ld   HL, wC400                                     ;; 00:21f8 $21 $00 $c4
+    ld   HL, wRoomClearedStatus                        ;; 00:21f8 $21 $00 $c4
 .jr_00_21fb:
     ld   A, [HL+]                                      ;; 00:21fb $2a
     and  A, $7f                                        ;; 00:21fc $e6 $7f
@@ -5915,7 +5915,7 @@ loadRoomTiles:
     ld   HL, wRoomTiles                                ;; 00:245c $21 $50 $c3
     ret                                                ;; 00:245f $c9
 
-call_00_2460:
+runRoomScriptOnRoomEnter:
     ld   A, [wMapTableBankNr]                          ;; 00:2460 $fa $f0 $c3
     call pushBankNrAndSwitch                           ;; 00:2463 $cd $fb $29
     ld   A, [wRoomScriptTableHigh]                     ;; 00:2466 $fa $ff $c3
@@ -5931,11 +5931,11 @@ call_00_2460:
     or   A, $00                                        ;; 00:2477 $f6 $00
     ld   C, $c9                                        ;; 00:2479 $0e $c9
     pop  HL                                            ;; 00:247b $e1
-    call call_00_31ad                                  ;; 00:247c $cd $ad $31
+    call runScriptByIndex                              ;; 00:247c $cd $ad $31
     call popBankNrAndSwitch                            ;; 00:247f $cd $0a $2a
     ret                                                ;; 00:2482 $c9
 
-call_00_2483:
+runRoomScriptOnRoomExit:
     ld   A, [wMapTableBankNr]                          ;; 00:2483 $fa $f0 $c3
     call pushBankNrAndSwitch                           ;; 00:2486 $cd $fb $29
     ld   A, [wRoomScriptTableHigh]                     ;; 00:2489 $fa $ff $c3
@@ -5952,14 +5952,14 @@ call_00_2483:
     or   A, $00                                        ;; 00:249b $f6 $00
     ld   C, $c9                                        ;; 00:249d $0e $c9
     pop  HL                                            ;; 00:249f $e1
-    call call_00_31ad                                  ;; 00:24a0 $cd $ad $31
+    call runScriptByIndex                              ;; 00:24a0 $cd $ad $31
     call popBankNrAndSwitch                            ;; 00:24a3 $cd $0a $2a
     ret                                                ;; 00:24a6 $c9
 
-call_00_24a7:
-    ld   A, [wC400]                                    ;; 00:24a7 $fa $00 $c4
+runRoomScriptOnAllEnemiesDefeat:
+    ld   A, [wRoomClearedStatus]                       ;; 00:24a7 $fa $00 $c4
     set  7, A                                          ;; 00:24aa $cb $ff
-    ld   [wC400], A                                    ;; 00:24ac $ea $00 $c4
+    ld   [wRoomClearedStatus], A                       ;; 00:24ac $ea $00 $c4
     ld   A, [wMapTableBankNr]                          ;; 00:24af $fa $f0 $c3
     call pushBankNrAndSwitch                           ;; 00:24b2 $cd $fb $29
     ld   A, [wRoomScriptTableHigh]                     ;; 00:24b5 $fa $ff $c3
@@ -5977,7 +5977,7 @@ call_00_24a7:
     or   A, $00                                        ;; 00:24c8 $f6 $00
     ld   C, $c9                                        ;; 00:24ca $0e $c9
     pop  HL                                            ;; 00:24cc $e1
-    call call_00_31ad                                  ;; 00:24cd $cd $ad $31
+    call runScriptByIndex                              ;; 00:24cd $cd $ad $31
     call popBankNrAndSwitch                            ;; 00:24d0 $cd $0a $2a
     ret                                                ;; 00:24d3 $c9
 
@@ -8054,7 +8054,8 @@ call_00_318f:
     set  3, [HL]                                       ;; 00:31aa $cb $de
     ret                                                ;; 00:31ac $c9
 
-call_00_31ad:
+; HL=Script index
+runScriptByIndex:
     push HL                                            ;; 00:31ad $e5
     ld   HL, wC0A1                                     ;; 00:31ae $21 $a1 $c0
     bit  1, [HL]                                       ;; 00:31b1 $cb $4e
@@ -10153,7 +10154,7 @@ call_00_3e46:
     ld   A, $20                                        ;; 00:3e5f $3e $20
     call playSFX                                       ;; 00:3e61 $cd $7d $29
     ld   HL, $07                                       ;; 00:3e64 $21 $07 $00
-    call call_00_31ad                                  ;; 00:3e67 $cd $ad $31
+    call runScriptByIndex                              ;; 00:3e67 $cd $ad $31
     ret                                                ;; 00:3e6a $c9
 
 startLevelUp:

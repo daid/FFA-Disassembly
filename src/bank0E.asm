@@ -17,7 +17,7 @@ script_0294:
       sENDIF                                           ;; 0e:402e
       sLOAD_ROOM 0, $e8, 10, 3                         ;; 0e:402e $f4 $00 $e8 $0a $03
       sSET_MUSIC 20                                    ;; 0e:4033 $f8 $14
-      sUNK_AB                                          ;; 0e:4035 $ab
+      sCLEAR_ROOM_HISTORY                              ;; 0e:4035 $ab
       sRUN_ROOM_SCRIPT                                 ;; 0e:4036 $ec
     sENDIF                                             ;; 0e:4037
     sEND                                               ;; 0e:4037 $00
@@ -41,7 +41,7 @@ script_0297:
     sIF_0B $c9                                         ;; 0e:4051 $0b $c9 $00 $09
       sLOAD_ROOM 0, $9e, 16, 4                         ;; 0e:4055 $f4 $00 $9e $10 $04
       sSET_MUSIC 20                                    ;; 0e:405a $f8 $14
-      sUNK_AB                                          ;; 0e:405c $ab
+      sCLEAR_ROOM_HISTORY                              ;; 0e:405c $ab
       sRUN_ROOM_SCRIPT                                 ;; 0e:405d $ec
     sENDIF                                             ;; 0e:405e
     sEND                                               ;; 0e:405e $00
@@ -50,7 +50,7 @@ script_0298:
     sIF_0B $c9                                         ;; 0e:405f $0b $c9 $00 $09
       sLOAD_ROOM 0, $9b, 4, 6                          ;; 0e:4063 $f4 $00 $9b $04 $06
       sSET_MUSIC 20                                    ;; 0e:4068 $f8 $14
-      sUNK_AB                                          ;; 0e:406a $ab
+      sCLEAR_ROOM_HISTORY                              ;; 0e:406a $ab
       sRUN_ROOM_SCRIPT                                 ;; 0e:406b $ec
     sENDIF                                             ;; 0e:406c
     sEND                                               ;; 0e:406c $00
@@ -59,7 +59,7 @@ script_0299:
     sIF_0B $c9                                         ;; 0e:406d $0b $c9 $00 $09
       sLOAD_ROOM 0, $8b, 12, 4                         ;; 0e:4071 $f4 $00 $8b $0c $04
       sSET_MUSIC 20                                    ;; 0e:4076 $f8 $14
-      sUNK_AB                                          ;; 0e:4078 $ab
+      sCLEAR_ROOM_HISTORY                              ;; 0e:4078 $ab
       sRUN_ROOM_SCRIPT                                 ;; 0e:4079 $ec
     sENDIF                                             ;; 0e:407a
     sEND                                               ;; 0e:407a $00
@@ -92,7 +92,7 @@ script_029a:
           db "<11>", $00           ;; 0e:40b0
         sSET_FLAG wScriptFlags0A.4                     ;; 0e:40b3 $da $54
       sENDIF                                           ;; 0e:40b5
-      sUNK_AB                                          ;; 0e:40b5 $ab
+      sCLEAR_ROOM_HISTORY                              ;; 0e:40b5 $ab
     sENDIF                                             ;; 0e:40b6
     sEND                                               ;; 0e:40b6 $00
 
@@ -140,7 +140,7 @@ script_029f:
       sENDIF                                           ;; 0e:41b1
       sLOAD_ROOM 0, $2c, 14, 4                         ;; 0e:41b1 $f4 $00 $2c $0e $04
       sSET_MUSIC 20                                    ;; 0e:41b6 $f8 $14
-      sUNK_AB                                          ;; 0e:41b8 $ab
+      sCLEAR_ROOM_HISTORY                              ;; 0e:41b8 $ab
       sRUN_ROOM_SCRIPT                                 ;; 0e:41b9 $ec
     sENDIF                                             ;; 0e:41ba
     sEND                                               ;; 0e:41ba $00
@@ -179,7 +179,7 @@ script_02a4:
     sIF_0B $c9                                         ;; 0e:41f2 $0b $c9 $00 $09
       sLOAD_ROOM 0, $0e, 12, 12                        ;; 0e:41f6 $f4 $00 $0e $0c $0c
       sSET_MUSIC 25                                    ;; 0e:41fb $f8 $19
-      sUNK_AB                                          ;; 0e:41fd $ab
+      sCLEAR_ROOM_HISTORY                              ;; 0e:41fd $ab
       sRUN_ROOM_SCRIPT                                 ;; 0e:41fe $ec
     sENDIF                                             ;; 0e:41ff
     sEND                                               ;; 0e:41ff $00
@@ -187,7 +187,7 @@ script_02a4:
 script_02a5:
     sIF_0B $c9                                         ;; 0e:4200 $0b $c9 $00 $07
       sLOAD_ROOM 1, $52, 9, 4                          ;; 0e:4204 $f4 $01 $52 $09 $04
-      sUNK_AB                                          ;; 0e:4209 $ab
+      sCLEAR_ROOM_HISTORY                              ;; 0e:4209 $ab
       sRUN_ROOM_SCRIPT                                 ;; 0e:420a $ec
     sENDIF                                             ;; 0e:420b
     sEND                                               ;; 0e:420b $00
@@ -1347,7 +1347,7 @@ script_0356:
     sIF_0B $c9                                         ;; 0e:4996 $0b $c9 $00 $09
       sLOAD_ROOM 0, $51, 14, 8                         ;; 0e:499a $f4 $00 $51 $0e $08
       sSET_MUSIC 20                                    ;; 0e:499f $f8 $14
-      sUNK_AB                                          ;; 0e:49a1 $ab
+      sCLEAR_ROOM_HISTORY                              ;; 0e:49a1 $ab
       sRUN_ROOM_SCRIPT                                 ;; 0e:49a2 $ec
     sENDIF                                             ;; 0e:49a3
     sEND                                               ;; 0e:49a3 $00
@@ -1466,7 +1466,7 @@ script_0368:
 script_0369:
     sIF_0B $c9                                         ;; 0e:4a5d $0b $c9 $00 $09
       sLOAD_ROOM 0, $12, 12, 6                         ;; 0e:4a61 $f4 $00 $12 $0c $06
-      sUNK_AB                                          ;; 0e:4a66 $ab
+      sCLEAR_ROOM_HISTORY                              ;; 0e:4a66 $ab
       sSET_MUSIC 20                                    ;; 0e:4a67 $f8 $14
       sRUN_ROOM_SCRIPT                                 ;; 0e:4a69 $ec
     sENDIF                                             ;; 0e:4a6a
@@ -1763,7 +1763,7 @@ script_0397:
 script_0398:
     sIF_0B $c9                                         ;; 0e:4c2f $0b $c9 $00 $09
       sLOAD_ROOM 0, $43, 16, 8                         ;; 0e:4c33 $f4 $00 $43 $10 $08
-      sUNK_AB                                          ;; 0e:4c38 $ab
+      sCLEAR_ROOM_HISTORY                              ;; 0e:4c38 $ab
       sSET_MUSIC 20                                    ;; 0e:4c39 $f8 $14
       sRUN_ROOM_SCRIPT                                 ;; 0e:4c3b $ec
     sENDIF                                             ;; 0e:4c3c
@@ -1797,14 +1797,14 @@ script_039c:
 script_039d:
     sIF_0B $c9                                         ;; 0e:4c66 $0b $c9 $00 $06
       sLOAD_ROOM 0, $95, 12, 8                         ;; 0e:4c6a $f4 $00 $95 $0c $08
-      sUNK_AB                                          ;; 0e:4c6f $ab
+      sCLEAR_ROOM_HISTORY                              ;; 0e:4c6f $ab
     sENDIF                                             ;; 0e:4c70
     sEND                                               ;; 0e:4c70 $00
 
 script_039e:
     sIF_0B $c9                                         ;; 0e:4c71 $0b $c9 $00 $06
       sLOAD_ROOM 0, $96, 12, 2                         ;; 0e:4c75 $f4 $00 $96 $0c $02
-      sUNK_AB                                          ;; 0e:4c7a $ab
+      sCLEAR_ROOM_HISTORY                              ;; 0e:4c7a $ab
     sENDIF                                             ;; 0e:4c7b
     sEND                                               ;; 0e:4c7b $00
 
@@ -1824,7 +1824,7 @@ script_03a0:
     sIF_0B $c9                                         ;; 0e:4c92 $0b $c9 $00 $09
       sLOAD_ROOM 0, $3e, 12, 6                         ;; 0e:4c96 $f4 $00 $3e $0c $06
       sSET_MUSIC 25                                    ;; 0e:4c9b $f8 $19
-      sUNK_AB                                          ;; 0e:4c9d $ab
+      sCLEAR_ROOM_HISTORY                              ;; 0e:4c9d $ab
       sRUN_ROOM_SCRIPT                                 ;; 0e:4c9e $ec
     sENDIF                                             ;; 0e:4c9f
     sEND                                               ;; 0e:4c9f $00
@@ -1874,7 +1874,7 @@ script_03a7:
     sIF_0B $c9                                         ;; 0e:4ce4 $0b $c9 $00 $09
       sLOAD_ROOM 0, $d3, 12, 5                         ;; 0e:4ce8 $f4 $00 $d3 $0c $05
       sSET_MUSIC 25                                    ;; 0e:4ced $f8 $19
-      sUNK_AB                                          ;; 0e:4cef $ab
+      sCLEAR_ROOM_HISTORY                              ;; 0e:4cef $ab
       sRUN_ROOM_SCRIPT                                 ;; 0e:4cf0 $ec
     sENDIF                                             ;; 0e:4cf1
     sEND                                               ;; 0e:4cf1 $00
@@ -2051,7 +2051,7 @@ script_03c3:
 script_03c4:
     sIF_0B $c9                                         ;; 0e:4e0a $0b $c9 $00 $09
       sLOAD_ROOM 0, $0e, 14, 4                         ;; 0e:4e0e $f4 $00 $0e $0e $04
-      sUNK_AB                                          ;; 0e:4e13 $ab
+      sCLEAR_ROOM_HISTORY                              ;; 0e:4e13 $ab
       sSET_MUSIC 25                                    ;; 0e:4e14 $f8 $19
       sRUN_ROOM_SCRIPT                                 ;; 0e:4e16 $ec
     sENDIF                                             ;; 0e:4e17
@@ -2085,7 +2085,7 @@ script_03c6:
           db "<1b>Where is he___?\n  !!  Must be at\nthe Waterfalls!!<12>"
           db "<11>", $00 ;; 0e:4e5f
         sLOAD_ROOM 1, $46, 7, 9                        ;; 0e:4e8d $f4 $01 $46 $07 $09
-        sUNK_AB                                        ;; 0e:4e92 $ab
+        sCLEAR_ROOM_HISTORY                            ;; 0e:4e92 $ab
         sSET_NPC_TYPES 40                              ;; 0e:4e93 $fc $28
         sSPAWN_NPC 0                                   ;; 0e:4e95 $fd $00
         sSET_NPC_1_DIRECTION_LEFT                      ;; 0e:4e97 $17
@@ -2612,7 +2612,7 @@ script_040a:
           db "<10>Tower of Dime will\n appear somewhere\n in this desert!!<12>"
           db "<11>", $00 ;; 0e:5273
         sSET_MUSIC 25                                  ;; 0e:529a $f8 $19
-        sUNK_AB                                        ;; 0e:529c $ab
+        sCLEAR_ROOM_HISTORY                            ;; 0e:529c $ab
         sRUN_ROOM_SCRIPT                               ;; 0e:529d $ec
       sENDIF                                           ;; 0e:529e
     sENDIF                                             ;; 0e:529e
@@ -2914,7 +2914,7 @@ script_0435:
     sFOLLOWER_DELETE                                   ;; 0e:54b2 $98
     sCLEAR_FLAG wScriptFlags0A.3                       ;; 0e:54b3 $db $53
     sSET_MUSIC 20                                      ;; 0e:54b5 $f8 $14
-    sUNK_AB                                            ;; 0e:54b7 $ab
+    sCLEAR_ROOM_HISTORY                                ;; 0e:54b7 $ab
     sEND                                               ;; 0e:54b8 $00
 
 script_0436:
@@ -2932,7 +2932,7 @@ script_0437:
       sSET_FLAG wScriptFlags07.3                       ;; 0e:54f3 $da $3b
       sLOAD_ROOM 0, $f0, 8, 9                          ;; 0e:54f5 $f4 $00 $f0 $08 $09
       sSET_MUSIC 25                                    ;; 0e:54fa $f8 $19
-      sUNK_AB                                          ;; 0e:54fc $ab
+      sCLEAR_ROOM_HISTORY                              ;; 0e:54fc $ab
       sRUN_ROOM_SCRIPT                                 ;; 0e:54fd $ec
     sENDIF                                             ;; 0e:54fe
     sEND                                               ;; 0e:54fe $00
@@ -3275,7 +3275,7 @@ script_0451:
       sENDIF                                           ;; 0e:582d
       sDELAY 60                                        ;; 0e:582d $f0 $3c
       sLOAD_ROOM 0, $e8, 10, 2                         ;; 0e:582f $f4 $00 $e8 $0a $02
-      sUNK_AB                                          ;; 0e:5834 $ab
+      sCLEAR_ROOM_HISTORY                              ;; 0e:5834 $ab
       sSET_MUSIC 20                                    ;; 0e:5835 $f8 $14
     sENDIF                                             ;; 0e:5837
     sEND                                               ;; 0e:5837 $00
@@ -3489,7 +3489,7 @@ script_0464:
       sDELAY 40                                        ;; 0e:59f3 $f0 $28
       sLOAD_ROOM 0, $d3, 12, 6                         ;; 0e:59f5 $f4 $00 $d3 $0c $06
       sSET_MUSIC 25                                    ;; 0e:59fa $f8 $19
-      sUNK_AB                                          ;; 0e:59fc $ab
+      sCLEAR_ROOM_HISTORY                              ;; 0e:59fc $ab
       sRUN_ROOM_SCRIPT                                 ;; 0e:59fd $ec
     sENDIF                                             ;; 0e:59fe
     sEND                                               ;; 0e:59fe $00
@@ -5877,7 +5877,7 @@ script_0542:
     sPLAYER_JUMP 104                                   ;; 0e:7746 $8b $68
     sDELAY 60                                          ;; 0e:7748 $f0 $3c
     sSET_MUSIC 22                                      ;; 0e:774a $f8 $16
-    sUNK_AB                                            ;; 0e:774c $ab
+    sCLEAR_ROOM_HISTORY                                ;; 0e:774c $ab
     sEND                                               ;; 0e:774d $00
 
 script_0543:

@@ -405,7 +405,12 @@ wRoomScriptTableLow:
 wRoomScriptTableHigh:
     ds 1                                               ;; c3ff
 
-wC400:
+; Two bytes per room are stored here. First byte is $80 if the room is cleared, 2nd byte is XY position of the room.
+; Any room entered will add an entry to this table.
+; This is used to set/clear wScriptFlags.7 when entering a room to indicate if all enemies have been defeated.
+; First byte of this list is alway "current room status"
+; List is cleared when warping?
+wRoomClearedStatus:
     ds 128                                             ;; c400
 
 wC480:
@@ -991,6 +996,7 @@ wStatWill:
 ; Script flags bits are numbered from high to low. So Bit0 = $80, Bit7 = $01
 ; Bit5: Set by sGIVE_ITEM, sGIVE_EQUIPMENT and sGIVE_MAGIC when there is not enough room in your inventory
 ; Bit6: Set by money script code when you do not have enough money
+; Bit7: Set when all enemies in the room haven't been defeated yet.
 wScriptFlags:
     ds 1                                               ;; d7c6
 
@@ -1036,6 +1042,7 @@ wScriptFlags0D:
 wScriptFlags0E:
     ds 1                                               ;; d7d4
 
+;.7 set when awnsered NO on a YES/NO question dialog
 wScriptFlags0F:
     ds 1                                               ;; d7d5
 

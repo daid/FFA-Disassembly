@@ -661,7 +661,7 @@ call_03_435f:
     and  A, $0f                                        ;; 03:439f $e6 $0f
     or   A, $80                                        ;; 03:43a1 $f6 $80
     ld   C, B                                          ;; 03:43a3 $48
-    call call_00_31ad                                  ;; 03:43a4 $cd $ad $31
+    call runScriptByIndex                              ;; 03:43a4 $cd $ad $31
     pop  BC                                            ;; 03:43a7 $c1
 .jr_03_43a8:
     call call_00_0ae3                                  ;; 03:43a8 $cd $e3 $0a
@@ -1089,7 +1089,7 @@ call_03_4561:
     or   A, $00                                        ;; 03:45ee $f6 $00
     ld   C, $81                                        ;; 03:45f0 $0e $81
     pop  HL                                            ;; 03:45f2 $e1
-    call call_00_31ad                                  ;; 03:45f3 $cd $ad $31
+    call runScriptByIndex                              ;; 03:45f3 $cd $ad $31
     ld   A, $c9                                        ;; 03:45f6 $3e $c9
     ret                                                ;; 03:45f8 $c9
 .jr_03_45f9:
@@ -2192,7 +2192,7 @@ call_03_4be0:
 call_03_4c30:
     call call_03_4be0                                  ;; 03:4c30 $cd $e0 $4b
     ret  NZ                                            ;; 03:4c33 $c0
-    call call_00_24a7                                  ;; 03:4c34 $cd $a7 $24
+    call runRoomScriptOnAllEnemiesDefeat               ;; 03:4c34 $cd $a7 $24
     ret                                                ;; 03:4c37 $c9
 
 call_03_4c38:

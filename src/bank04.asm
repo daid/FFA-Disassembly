@@ -365,7 +365,7 @@ call_04_41e7:
     ld   A, C                                          ;; 04:41f7 $79
     call call_00_299a                                  ;; 04:41f8 $cd $9a $29
     ld   C, $20                                        ;; 04:41fb $0e $20
-    call call_00_31ad                                  ;; 04:41fd $cd $ad $31
+    call runScriptByIndex                              ;; 04:41fd $cd $ad $31
     pop  DE                                            ;; 04:4200 $d1
     call call_04_4156                                  ;; 04:4201 $cd $56 $41
     ret                                                ;; 04:4204 $c9

@@ -1489,7 +1489,7 @@ call_01_4b24:
     call call_00_2926                                  ;; 01:4b2e $cd $26 $29
 .jr_01_4b31:
     call call_00_2ef7                                  ;; 01:4b31 $cd $f7 $2e
-    call call_00_2483                                  ;; 01:4b34 $cd $83 $24
+    call runRoomScriptOnRoomExit                       ;; 01:4b34 $cd $83 $24
     ret                                                ;; 01:4b37 $c9
 
 call_01_4b38:
@@ -2066,7 +2066,7 @@ call_01_4ee2:
     cp   A, $00                                        ;; 01:4ef1 $fe $00
     ret  NZ                                            ;; 01:4ef3 $c0
     call call_01_4f48                                  ;; 01:4ef4 $cd $48 $4f
-    call call_00_2460                                  ;; 01:4ef7 $cd $60 $24
+    call runRoomScriptOnRoomEnter                      ;; 01:4ef7 $cd $60 $24
     ret                                                ;; 01:4efa $c9
 
 call_01_4efb:
@@ -2079,7 +2079,7 @@ call_01_4efb:
     cp   A, $00                                        ;; 01:4f0a $fe $00
     ret  NZ                                            ;; 01:4f0c $c0
     call call_01_4f48                                  ;; 01:4f0d $cd $48 $4f
-    call call_00_2460                                  ;; 01:4f10 $cd $60 $24
+    call runRoomScriptOnRoomEnter                      ;; 01:4f10 $cd $60 $24
     ret                                                ;; 01:4f13 $c9
 
 call_01_4f14:
@@ -2094,7 +2094,7 @@ call_01_4f14:
     cp   A, $00                                        ;; 01:4f25 $fe $00
     ret  NZ                                            ;; 01:4f27 $c0
     call call_01_4f48                                  ;; 01:4f28 $cd $48 $4f
-    call call_00_2460                                  ;; 01:4f2b $cd $60 $24
+    call runRoomScriptOnRoomEnter                      ;; 01:4f2b $cd $60 $24
     ret                                                ;; 01:4f2e $c9
 
 call_01_4f2f:
@@ -2107,7 +2107,7 @@ call_01_4f2f:
     cp   A, $00                                        ;; 01:4f3e $fe $00
     ret  NZ                                            ;; 01:4f40 $c0
     call call_01_4f48                                  ;; 01:4f41 $cd $48 $4f
-    call call_00_2460                                  ;; 01:4f44 $cd $60 $24
+    call runRoomScriptOnRoomEnter                      ;; 01:4f44 $cd $60 $24
     ret                                                ;; 01:4f47 $c9
 
 call_01_4f48:
@@ -2478,7 +2478,7 @@ call_01_51bb:
     ld   A, C                                          ;; 01:51bf $79
     or   A, $00                                        ;; 01:51c0 $f6 $00
     ld   C, $c9                                        ;; 01:51c2 $0e $c9
-    call call_00_31ad                                  ;; 01:51c4 $cd $ad $31
+    call runScriptByIndex                              ;; 01:51c4 $cd $ad $31
     ld   A, [wC4D2]                                    ;; 01:51c7 $fa $d2 $c4
     cp   A, $34                                        ;; 01:51ca $fe $34
     jr   C, .jr_01_51d3                                ;; 01:51cc $38 $05
@@ -2529,7 +2529,7 @@ call_01_5203:
     ld   A, $08                                        ;; 01:5209 $3e $08
     ld   C, $48                                        ;; 01:520b $0e $48
     ld   HL, $0b                                       ;; 01:520d $21 $0b $00
-    call call_00_31ad                                  ;; 01:5210 $cd $ad $31
+    call runScriptByIndex                              ;; 01:5210 $cd $ad $31
     ret                                                ;; 01:5213 $c9
 
 call_01_5214:

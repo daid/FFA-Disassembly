@@ -1372,7 +1372,7 @@ call_02_4a14:
     cp   A, $1f                                        ;; 02:4a67 $fe $1f
     ret  NZ                                            ;; 02:4a69 $c0
     ld   HL, $0b                                       ;; 02:4a6a $21 $0b $00
-    call call_00_31ad                                  ;; 02:4a6d $cd $ad $31
+    call runScriptByIndex                              ;; 02:4a6d $cd $ad $31
     ret                                                ;; 02:4a70 $c9
 .jr_02_4a71:
     ld   HL, wD87F                                     ;; 02:4a71 $21 $7f $d8
@@ -1979,7 +1979,7 @@ call_02_4ec3:
     ld   B, $00                                        ;; 02:4ed5 $06 $00
     call call_02_6c98                                  ;; 02:4ed7 $cd $98 $6c
     ld   HL, $1f                                       ;; 02:4eda $21 $1f $00
-    call call_00_31ad                                  ;; 02:4edd $cd $ad $31
+    call runScriptByIndex                              ;; 02:4edd $cd $ad $31
     ret                                                ;; 02:4ee0 $c9
 
 call_02_4ee1:
@@ -3291,7 +3291,7 @@ call_02_5709:
     jr   NZ, .jr_02_5730                               ;; 02:572c $20 $02
     ld   L, $20                                        ;; 02:572e $2e $20
 .jr_02_5730:
-    call call_00_31ad                                  ;; 02:5730 $cd $ad $31
+    call runScriptByIndex                              ;; 02:5730 $cd $ad $31
     ret                                                ;; 02:5733 $c9
 .jr_02_5734:
     ld   A, C                                          ;; 02:5734 $79
@@ -6620,7 +6620,7 @@ call_02_7322:
     xor  A, A                                          ;; 02:73fd $af
     ld   [HL], A                                       ;; 02:73fe $77
     ld   HL, $0b                                       ;; 02:73ff $21 $0b $00
-    call call_00_31ad                                  ;; 02:7402 $cd $ad $31
+    call runScriptByIndex                              ;; 02:7402 $cd $ad $31
     ret                                                ;; 02:7405 $c9
 .data_02_7406:
     db   $32, $01, $01, $4d, $00, $02, $4e, $02        ;; 02:7406 ????????
@@ -8019,7 +8019,7 @@ call_02_7bdd:
     ld   HL, $03                                       ;; 02:7ceb $21 $03 $00
     ld   C, $c9                                        ;; 02:7cee $0e $c9
     ld   A, $08                                        ;; 02:7cf0 $3e $08
-    call call_00_31ad                                  ;; 02:7cf2 $cd $ad $31
+    call runScriptByIndex                              ;; 02:7cf2 $cd $ad $31
     ret                                                ;; 02:7cf5 $c9
 
 ;@ffa_text size=5 amount=3

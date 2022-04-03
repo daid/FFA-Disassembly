@@ -358,7 +358,7 @@ OPCODES = {
     0xA7: ("sNOP_A7",),
     0xA8: ("sNOP_A8",),
     0xA9: ("sUNK_A9",),
-    0xAB: ("sUNK_AB",),
+    0xAB: ("sCLEAR_ROOM_HISTORY",), # Clear history of which rooms are all monsters killed.
     0xAC: ("sOPEN_MAP",),
     0xAD: ("sWAIT_MAP_CLOSE",),
     0xAE: ("sCLOSE_MAP",),
