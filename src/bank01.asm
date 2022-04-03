@@ -4003,7 +4003,7 @@ call_01_59ea:
     push DE                                            ;; 01:5a33 $d5
     ld   E, A                                          ;; 01:5a34 $5f
     ld   D, $00                                        ;; 01:5a35 $16 $00
-    ld   HL, $2e99                                     ;; 01:5a37 $21 $99 $2e
+    ld   HL, unlabeled_2e99                            ;; 01:5a37 $21 $99 $2e
     add  HL, DE                                        ;; 01:5a3a $19
     pop  DE                                            ;; 01:5a3b $d1
     push DE                                            ;; 01:5a3c $d5
@@ -4264,10 +4264,10 @@ call_01_5b6d:
     call setObjectCollisionFlags                       ;; 01:5bbc $cd $86 $0c
     pop  HL                                            ;; 01:5bbf $e1
     ld   A, [HL]                                       ;; 01:5bc0 $7e
-    ld   HL, $2e99                                     ;; 01:5bc1 $21 $99 $2e
+    ld   HL, unlabeled_2e99                            ;; 01:5bc1 $21 $99 $2e
     cp   A, $02                                        ;; 01:5bc4 $fe $02
     jr   Z, .jr_01_5bcb                                ;; 01:5bc6 $28 $03
-    ld   HL, $2eb1                                     ;; 01:5bc8 $21 $b1 $2e
+    ld   HL, unlabeled_2eb1                            ;; 01:5bc8 $21 $b1 $2e
 .jr_01_5bcb:
     pop  BC                                            ;; 01:5bcb $c1
     call call_00_0cba                                  ;; 01:5bcc $cd $ba $0c

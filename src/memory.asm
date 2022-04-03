@@ -316,7 +316,7 @@ wC1CA:
 ; 03: Unknown
 ; 04: Y position
 ; 05: X position
-; 06-07: Something sprite related
+; 06-07: Something sprite related (meta sprite pointer?)
 ; 08-09: Shadow OAM memory location
 ; 09-15: Unknown
 ; (wC270 seems just more of this data)
