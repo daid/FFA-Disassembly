@@ -348,9 +348,9 @@ OPCODES = {
     0x9E: ("sNOP_9E",),
     0x9F: ("sNOP_9F",),
 
-    0xA0: ("sUNK_A0",),
-    0xA2: ("sUNK_A2",),
+    0xA0: ("sUNK_A0",), # Something with water walking?
     0xA1: ("sUNK_A1",),
+    0xA2: ("sUNK_A2",),
     0xA3: ("sUNK_A3",),
     0xA4: ("sSET_PLAYER_NORMAL_SPRITE",),
     0xA5: ("sSET_PLAYER_HURT_SPRITE",),
@@ -362,7 +362,7 @@ OPCODES = {
     0xAC: ("sOPEN_MAP",),
     0xAD: ("sWAIT_MAP_CLOSE",),
     0xAE: ("sCLOSE_MAP",),
-    0xAF: ("sUNK_AF",),
+    0xAF: ("sCHANGE_INTO_EMPTY_CHEST",), # Change the current opening chest into an empty one
 
     0xB0: ("sSET_ROOM_TILE", r"db \1, \2, \3", "HEX", "BYTE", "BYTE"), # tile, x, y
     0xB1: ("sNOP_B1",),

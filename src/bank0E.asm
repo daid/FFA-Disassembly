@@ -2811,7 +2811,7 @@ script_042e:
     sGIVE_EQUIPMENT 2                                  ;; 0e:5389 $d8 $02
     sIF_FLAG !wScriptFlags.5                           ;; 0e:538b $08 $85 $00 $13
       sSFX 15                                          ;; 0e:538f $f9 $0f
-      sUNK_AF                                          ;; 0e:5391 $af
+      sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:5391 $af
       sMSG                                             ;; 0e:5392 $04
         db "<10>Found <SICKLE>Sickle!<12>"
         db "<11>", $00 ;; 0e:5393
@@ -2823,7 +2823,7 @@ script_042f:
     sGIVE_EQUIPMENT 3                                  ;; 0e:53a3 $d8 $03
     sIF_FLAG !wScriptFlags.5                           ;; 0e:53a5 $08 $85 $00 $12
       sSFX 15                                          ;; 0e:53a9 $f9 $0f
-      sUNK_AF                                          ;; 0e:53ab $af
+      sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:53ab $af
       sMSG                                             ;; 0e:53ac $04
         db "<10>Found <WHIP>Chain!<12>"
         db "<11>", $00 ;; 0e:53ad
@@ -2835,7 +2835,7 @@ script_0430:
     sGIVE_EQUIPMENT 9                                  ;; 0e:53bc $d8 $09
     sIF_FLAG !wScriptFlags.5                           ;; 0e:53be $08 $85 $00 $14
       sSFX 15                                          ;; 0e:53c2 $f9 $0f
-      sUNK_AF                                          ;; 0e:53c4 $af
+      sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:53c4 $af
       sMSG                                             ;; 0e:53c5 $04
         db "<10>Found <SWORD>Dragon!<12>"
         db "<11>", $00 ;; 0e:53c6
@@ -2847,7 +2847,7 @@ script_0431:
     sGIVE_EQUIPMENT 32                                 ;; 0e:53d7 $d8 $20
     sIF_FLAG !wScriptFlags.5                           ;; 0e:53d9 $08 $85 $00 $14
       sSFX 15                                          ;; 0e:53dd $f9 $0f
-      sUNK_AF                                          ;; 0e:53df $af
+      sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:53df $af
       sMSG                                             ;; 0e:53e0 $04
         db "<10>Found <SHIELD>Dragon!<12>"
         db "<11>", $00 ;; 0e:53e1
@@ -2859,7 +2859,7 @@ script_0432:
     sGIVE_EQUIPMENT 22                                 ;; 0e:53f2 $d8 $16
     sIF_FLAG !wScriptFlags.5                           ;; 0e:53f4 $08 $85 $00 $14
       sSFX 15                                          ;; 0e:53f8 $f9 $0f
-      sUNK_AF                                          ;; 0e:53fa $af
+      sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:53fa $af
       sMSG                                             ;; 0e:53fb $04
         db "<10>Found <ARMOR>Dragon!<12>"
         db "<11>", $00 ;; 0e:53fc
@@ -2874,7 +2874,7 @@ script_0434:
     sGIVE_EQUIPMENT 15                                 ;; 0e:540e $d8 $0f
     sIF_FLAG !wScriptFlags.5                           ;; 0e:5410 $08 $85 $00 $13
       sSFX 15                                          ;; 0e:5414 $f9 $0f
-      sUNK_AF                                          ;; 0e:5416 $af
+      sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:5416 $af
       sMSG                                             ;; 0e:5417 $04
         db "<10>Found <SWORD>????!<12>"
         db "<11>", $00 ;; 0e:5418
@@ -2884,7 +2884,7 @@ script_0434:
 
 script_0435:
     sSFX 15                                            ;; 0e:5428 $f9 $0f
-    sUNK_AF                                            ;; 0e:542a $af
+    sCHANGE_INTO_EMPTY_CHEST                           ;; 0e:542a $af
     sMSG                                               ;; 0e:542b $04
       db "<10>Found Silver!<12>"
       db "<11>", $00  ;; 0e:542c
@@ -2924,7 +2924,7 @@ script_0437:
     sGIVE_EQUIPMENT 13                                 ;; 0e:54ba $d8 $0d
     sIF_FLAG !wScriptFlags.5                           ;; 0e:54bc $08 $85 $00 $3e
       sSFX 15                                          ;; 0e:54c0 $f9 $0f
-      sUNK_AF                                          ;; 0e:54c2 $af
+      sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:54c2 $af
       sMSG                                             ;; 0e:54c3 $04
         db "<10>Received <SWORD>Rusty!<12>"
         db "<1b><BOY>:Rusty sword?\n Is this the\n Excalibur_?<12>"
@@ -2941,7 +2941,7 @@ script_0438:
     sGIVE_ITEM 20                                      ;; 0e:54ff $d4 $14
     sIF_FLAG !wScriptFlags.5                           ;; 0e:5501 $08 $85 $00 $11
       sSFX 15                                          ;; 0e:5505 $f9 $0f
-      sUNK_AF                                          ;; 0e:5507 $af
+      sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:5507 $af
       sMSG                                             ;; 0e:5508 $04
         db "<10>Found <CANDY>Candy.<12>"
         db "<11>", $00 ;; 0e:5509
@@ -2954,7 +2954,7 @@ script_0439:
       sGIVE_ITEM 45                                    ;; 0e:551d $d4 $2d
       sIF_FLAG !wScriptFlags.5                         ;; 0e:551f $08 $85 $00 $11
         sSFX 15                                        ;; 0e:5523 $f9 $0f
-        sUNK_AF                                        ;; 0e:5525 $af
+        sCHANGE_INTO_EMPTY_CHEST                       ;; 0e:5525 $af
         sMSG                                           ;; 0e:5526 $04
           db "<10>Found <GEM>Wisdom.<12>"
           db "<11>", $00 ;; 0e:5527
@@ -2968,7 +2968,7 @@ script_043a:
     sGIVE_ITEM 0                                       ;; 0e:553a $d4 $00
     sIF_FLAG !wScriptFlags.5                           ;; 0e:553c $08 $85 $00 $0f
       sSFX 15                                          ;; 0e:5540 $f9 $0f
-      sUNK_AF                                          ;; 0e:5542 $af
+      sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:5542 $af
       sMSG                                             ;; 0e:5543 $04
         db "<10>Found <POT>Cure.<12>"
         db "<11>", $00 ;; 0e:5544
@@ -2979,7 +2979,7 @@ script_043b:
     sGIVE_ITEM 6                                       ;; 0e:5550 $d4 $06
     sIF_FLAG !wScriptFlags.5                           ;; 0e:5552 $08 $85 $00 $12
       sSFX 15                                          ;; 0e:5556 $f9 $0f
-      sUNK_AF                                          ;; 0e:5558 $af
+      sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:5558 $af
       sMSG                                             ;; 0e:5559 $04
         db "<10>Found <POT>Eyedrop.<12>"
         db "<11>", $00 ;; 0e:555a
@@ -2990,7 +2990,7 @@ script_043c:
     sGIVE_ITEM 5                                       ;; 0e:5569 $d4 $05
     sIF_FLAG !wScriptFlags.5                           ;; 0e:556b $08 $85 $00 $0f
       sSFX 15                                          ;; 0e:556f $f9 $0f
-      sUNK_AF                                          ;; 0e:5571 $af
+      sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:5571 $af
       sMSG                                             ;; 0e:5572 $04
         db "<10>Found <POT>Pure.<12>"
         db "<11>", $00 ;; 0e:5573
@@ -3001,7 +3001,7 @@ script_043d:
     sGIVE_ITEM 7                                       ;; 0e:557f $d4 $07
     sIF_FLAG !wScriptFlags.5                           ;; 0e:5581 $08 $85 $00 $10
       sSFX 15                                          ;; 0e:5585 $f9 $0f
-      sUNK_AF                                          ;; 0e:5587 $af
+      sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:5587 $af
       sMSG                                             ;; 0e:5588 $04
         db "<10>Found <POT>Soft.<12>"
         db "<11>", $00 ;; 0e:5589
@@ -3012,7 +3012,7 @@ script_043e:
     sGIVE_ITEM 1                                       ;; 0e:5596 $d4 $01
     sIF_FLAG !wScriptFlags.5                           ;; 0e:5598 $08 $85 $00 $11
       sSFX 15                                          ;; 0e:559c $f9 $0f
-      sUNK_AF                                          ;; 0e:559e $af
+      sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:559e $af
       sMSG                                             ;; 0e:559f $04
         db "<10>Found <POT>X-Cure.<12>"
         db "<11>", $00 ;; 0e:55a0
@@ -3026,7 +3026,7 @@ script_0440:
     sGIVE_ITEM 2                                       ;; 0e:55af $d4 $02
     sIF_FLAG !wScriptFlags.5                           ;; 0e:55b1 $08 $85 $00 $10
       sSFX 15                                          ;; 0e:55b5 $f9 $0f
-      sUNK_AF                                          ;; 0e:55b7 $af
+      sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:55b7 $af
       sMSG                                             ;; 0e:55b8 $04
         db "<10>Found <POT>Ether.<12>"
         db "<11>", $00 ;; 0e:55b9
@@ -3037,7 +3037,7 @@ script_0441:
     sGIVE_ITEM 24                                      ;; 0e:55c6 $d4 $18
     sIF_FLAG !wScriptFlags.5                           ;; 0e:55c8 $08 $85 $00 $11
       sSFX 15                                          ;; 0e:55cc $f9 $0f
-      sUNK_AF                                          ;; 0e:55ce $af
+      sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:55ce $af
       sMSG                                             ;; 0e:55cf $04
         db "<10>Found <KEY>Bronze!<12>"
         db "<11>", $00 ;; 0e:55d0
@@ -3048,7 +3048,7 @@ script_0442:
     sGIVE_ITEM 22                                      ;; 0e:55de $d4 $16
     sIF_FLAG !wScriptFlags.5                           ;; 0e:55e0 $08 $85 $00 $10
       sSFX 15                                          ;; 0e:55e4 $f9 $0f
-      sUNK_AF                                          ;; 0e:55e6 $af
+      sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:55e6 $af
       sMSG                                             ;; 0e:55e7 $04
         db "<10>Found <KEY>Key.<12>"
         db "<11>", $00 ;; 0e:55e8
@@ -3059,7 +3059,7 @@ script_0443:
     sGIVE_ITEM 53                                      ;; 0e:55f5 $d4 $35
     sIF_FLAG !wScriptFlags.5                           ;; 0e:55f7 $08 $85 $00 $13
       sSFX 15                                          ;; 0e:55fb $f9 $0f
-      sUNK_AF                                          ;; 0e:55fd $af
+      sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:55fd $af
       sMSG                                             ;; 0e:55fe $04
         db "<10>Found <MATT>Mattock.<12>"
         db "<11>", $00 ;; 0e:55ff
@@ -3073,14 +3073,14 @@ script_0444:
       sGIVE_ITEM 50                                    ;; 0e:5614 $d4 $32
       sIF_FLAG !wScriptFlags.5                         ;; 0e:5616 $08 $85 $00 $10
         sSFX 15                                        ;; 0e:561a $f9 $0f
-        sUNK_AF                                        ;; 0e:561c $af
+        sCHANGE_INTO_EMPTY_CHEST                       ;; 0e:561c $af
         sMSG                                           ;; 0e:561d $04
           db "<10>Found <BAG>Fang!<12>"
           db "<11>", $00 ;; 0e:561e
       sENDIF                                           ;; 0e:562a
     sELSE                                              ;; 0e:562a $01 $0e
       sSFX 15                                          ;; 0e:562c $f9 $0f
-      sUNK_AF                                          ;; 0e:562e $af
+      sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:562e $af
       sMSG                                             ;; 0e:562f $04
         db "<10>Empty.<12>"
         db "<11>", $00     ;; 0e:5630
@@ -3093,7 +3093,7 @@ script_0445:
       sGIVE_ITEM 49                                    ;; 0e:5640 $d4 $31
       sIF_FLAG !wScriptFlags.5                         ;; 0e:5642 $08 $85 $00 $11
         sSFX 15                                        ;; 0e:5646 $f9 $0f
-        sUNK_AF                                        ;; 0e:5648 $af
+        sCHANGE_INTO_EMPTY_CHEST                       ;; 0e:5648 $af
         sMSG                                           ;; 0e:5649 $04
           db "<10>Found <BAG>Gold.<12>"
           db "<11>", $00 ;; 0e:564a
@@ -3107,7 +3107,7 @@ script_0446:
     sGIVE_ITEM 4                                       ;; 0e:565d $d4 $04
     sIF_FLAG !wScriptFlags.5                           ;; 0e:565f $08 $85 $00 $11
       sSFX 15                                          ;; 0e:5663 $f9 $0f
-      sUNK_AF                                          ;; 0e:5665 $af
+      sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:5665 $af
       sMSG                                             ;; 0e:5666 $04
         db "<10>Found <POT>Elixir.<12>"
         db "<11>", $00 ;; 0e:5667
@@ -3118,7 +3118,7 @@ script_0447:
     sGIVE_ITEM 41                                      ;; 0e:5675 $d4 $29
     sIF_FLAG !wScriptFlags.5                           ;; 0e:5677 $08 $85 $00 $12
       sSFX 15                                          ;; 0e:567b $f9 $0f
-      sUNK_AF                                          ;; 0e:567d $af
+      sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:567d $af
       sMSG                                             ;; 0e:567e $04
         db "<10>Found <GEM>Crystal.<12>"
         db "<11>", $00 ;; 0e:567f
@@ -3129,7 +3129,7 @@ script_0448:
     sGIVE_ITEM 8                                       ;; 0e:568e $d4 $08
     sIF_FLAG !wScriptFlags.5                           ;; 0e:5690 $08 $85 $00 $11
       sSFX 15                                          ;; 0e:5694 $f9 $0f
-      sUNK_AF                                          ;; 0e:5696 $af
+      sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:5696 $af
       sMSG                                             ;; 0e:5697 $04
         db "<10>Found <POT>Moogle.<12>"
         db "<11>", $00 ;; 0e:5698
@@ -3140,7 +3140,7 @@ script_0449:
     sGIVE_ITEM 3                                       ;; 0e:56a6 $d4 $03
     sIF_FLAG !wScriptFlags.5                           ;; 0e:56a8 $08 $85 $00 $12
       sSFX 15                                          ;; 0e:56ac $f9 $0f
-      sUNK_AF                                          ;; 0e:56ae $af
+      sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:56ae $af
       sMSG                                             ;; 0e:56af $04
         db "<10>Found <POT>X-Ether.<12>"
         db "<11>", $00 ;; 0e:56b0
@@ -3151,7 +3151,7 @@ script_044a:
     sGIVE_ITEM 9                                       ;; 0e:56bf $d4 $09
     sIF_FLAG !wScriptFlags.5                           ;; 0e:56c1 $08 $85 $00 $13
       sSFX 15                                          ;; 0e:56c5 $f9 $0f
-      sUNK_AF                                          ;; 0e:56c7 $af
+      sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:56c7 $af
       sMSG                                             ;; 0e:56c8 $04
         db "<10>Found <POT>Unicorn.<12>"
         db "<11>", $00 ;; 0e:56c9
@@ -3164,7 +3164,7 @@ script_044b:
       sGIVE_ITEM 46                                    ;; 0e:56df $d4 $2e
       sIF_FLAG !wScriptFlags.5                         ;; 0e:56e1 $08 $85 $00 $10
         sSFX 15                                        ;; 0e:56e5 $f9 $0f
-        sUNK_AF                                        ;; 0e:56e7 $af
+        sCHANGE_INTO_EMPTY_CHEST                       ;; 0e:56e7 $af
         sMSG                                           ;; 0e:56e8 $04
           db "<10>Found <GEM>Will.<12>"
           db "<11>", $00 ;; 0e:56e9
@@ -3184,7 +3184,7 @@ script_044d:
       sGIVE_EQUIPMENT 33                               ;; 0e:5705 $d8 $21
       sIF_FLAG !wScriptFlags.5                         ;; 0e:5707 $08 $85 $00 $11
         sSFX 15                                        ;; 0e:570b $f9 $0f
-        sUNK_AF                                        ;; 0e:570d $af
+        sCHANGE_INTO_EMPTY_CHEST                       ;; 0e:570d $af
         sMSG                                           ;; 0e:570e $04
           db "<10>Found <SHIELD>Aegis!<12>"
           db "<11>", $00 ;; 0e:570f
@@ -3193,7 +3193,7 @@ script_044d:
       sGIVE_ITEM 9                                     ;; 0e:571e $d4 $09
       sIF_FLAG !wScriptFlags.5                         ;; 0e:5720 $08 $85 $00 $13
         sSFX 15                                        ;; 0e:5724 $f9 $0f
-        sUNK_AF                                        ;; 0e:5726 $af
+        sCHANGE_INTO_EMPTY_CHEST                       ;; 0e:5726 $af
         sMSG                                           ;; 0e:5727 $04
           db "<10>Found <POT>Unicorn.<12>"
           db "<11>", $00 ;; 0e:5728
@@ -3207,7 +3207,7 @@ script_044e:
       sGIVE_EQUIPMENT 23                               ;; 0e:573e $d8 $17
       sIF_FLAG !wScriptFlags.5                         ;; 0e:5740 $08 $85 $00 $12
         sSFX 15                                        ;; 0e:5744 $f9 $0f
-        sUNK_AF                                        ;; 0e:5746 $af
+        sCHANGE_INTO_EMPTY_CHEST                       ;; 0e:5746 $af
         sMSG                                           ;; 0e:5747 $04
           db "<10>Found <ARMOR>Samurai!<12>"
           db "<11>", $00 ;; 0e:5748
@@ -3216,7 +3216,7 @@ script_044e:
       sGIVE_ITEM 4                                     ;; 0e:5758 $d4 $04
       sIF_FLAG !wScriptFlags.5                         ;; 0e:575a $08 $85 $00 $11
         sSFX 15                                        ;; 0e:575e $f9 $0f
-        sUNK_AF                                        ;; 0e:5760 $af
+        sCHANGE_INTO_EMPTY_CHEST                       ;; 0e:5760 $af
         sMSG                                           ;; 0e:5761 $04
           db "<10>Found <POT>Elixir.<12>"
           db "<11>", $00 ;; 0e:5762
@@ -3230,7 +3230,7 @@ script_044f:
       sGIVE_EQUIPMENT 43                               ;; 0e:5776 $d8 $2b
       sIF_FLAG !wScriptFlags.5                         ;; 0e:5778 $08 $85 $00 $12
         sSFX 15                                        ;; 0e:577c $f9 $0f
-        sUNK_AF                                        ;; 0e:577e $af
+        sCHANGE_INTO_EMPTY_CHEST                       ;; 0e:577e $af
         sMSG                                           ;; 0e:577f $04
           db "<10>Found <HELM>Samurai!<12>"
           db "<11>", $00 ;; 0e:5780
@@ -3239,7 +3239,7 @@ script_044f:
       sGIVE_ITEM 3                                     ;; 0e:5790 $d4 $03
       sIF_FLAG !wScriptFlags.5                         ;; 0e:5792 $08 $85 $00 $12
         sSFX 15                                        ;; 0e:5796 $f9 $0f
-        sUNK_AF                                        ;; 0e:5798 $af
+        sCHANGE_INTO_EMPTY_CHEST                       ;; 0e:5798 $af
         sMSG                                           ;; 0e:5799 $04
           db "<10>Found <POT>X-Ether.<12>"
           db "<11>", $00 ;; 0e:579a
@@ -3249,7 +3249,7 @@ script_044f:
 
 script_0450:
     sGIVE_MAGIC 4                                      ;; 0e:57a9 $d6 $04
-    sUNK_AF                                            ;; 0e:57ab $af
+    sCHANGE_INTO_EMPTY_CHEST                           ;; 0e:57ab $af
     sMSG                                               ;; 0e:57ac $04
       db "<10>Found the Magic\nBook of Fire.\nLearned Fire!<12>"
       db "<11>", $00 ;; 0e:57ad
@@ -3259,7 +3259,7 @@ script_0450:
 script_0451:
     sGIVE_ITEM 30                                      ;; 0e:57cf $d4 $1e
     sIF_FLAG !wScriptFlags.5                           ;; 0e:57d1 $08 $85 $00 $62
-      sUNK_AF                                          ;; 0e:57d5 $af
+      sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:57d5 $af
       sMSG                                             ;; 0e:57d6 $04
         db "<10>Found the Mirror!<12>"
         db "<11>", $00 ;; 0e:57d7
@@ -3284,7 +3284,7 @@ script_0452:
     sGIVE_ITEM 19                                      ;; 0e:5838 $d4 $13
     sIF_FLAG !wScriptFlags.5                           ;; 0e:583a $08 $85 $00 $11
       sSFX 15                                          ;; 0e:583e $f9 $0f
-      sUNK_AF                                          ;; 0e:5840 $af
+      sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:5840 $af
       sMSG                                             ;; 0e:5841 $04
         db "<10>Found <SPEL>Thunder.<12>"
         db "<11>", $00 ;; 0e:5842
@@ -3295,7 +3295,7 @@ script_0453:
     sGIVE_ITEM 11                                      ;; 0e:5850 $d4 $0b
     sIF_FLAG !wScriptFlags.5                           ;; 0e:5852 $08 $85 $00 $11
       sSFX 15                                          ;; 0e:5856 $f9 $0f
-      sUNK_AF                                          ;; 0e:5858 $af
+      sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:5858 $af
       sMSG                                             ;; 0e:5859 $04
         db "<10>Found <SPEL>Pillow.<12>"
         db "<11>", $00 ;; 0e:585a
@@ -3309,7 +3309,7 @@ script_0455:
     sGIVE_ITEM 54                                      ;; 0e:5869 $d4 $36
     sIF_FLAG !wScriptFlags.5                           ;; 0e:586b $08 $85 $00 $11
       sSFX 15                                          ;; 0e:586f $f9 $0f
-      sUNK_AF                                          ;; 0e:5871 $af
+      sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:5871 $af
       sMSG                                             ;; 0e:5872 $04
         db "<10>Found <BAG>Ruby.<12>"
         db "<11>", $00 ;; 0e:5873
@@ -3320,7 +3320,7 @@ script_0456:
     sGIVE_ITEM 55                                      ;; 0e:5881 $d4 $37
     sIF_FLAG !wScriptFlags.5                           ;; 0e:5883 $08 $85 $00 $10
       sSFX 15                                          ;; 0e:5887 $f9 $0f
-      sUNK_AF                                          ;; 0e:5889 $af
+      sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:5889 $af
       sMSG                                             ;; 0e:588a $04
         db "<10>Found <BAG>Opal.<12>"
         db "<11>", $00 ;; 0e:588b
@@ -3331,7 +3331,7 @@ script_0457:
     sGIVE_ITEM 14                                      ;; 0e:5898 $d4 $0e
     sIF_FLAG !wScriptFlags.5                           ;; 0e:589a $08 $85 $00 $11
       sSFX 15                                          ;; 0e:589e $f9 $0f
-      sUNK_AF                                          ;; 0e:58a0 $af
+      sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:58a0 $af
       sMSG                                             ;; 0e:58a1 $04
         db "<10>Found <SPEL>Flame.<12>"
         db "<11>", $00 ;; 0e:58a2
@@ -3342,7 +3342,7 @@ script_0458:
     sGIVE_ITEM 16                                      ;; 0e:58b0 $d4 $10
     sIF_FLAG !wScriptFlags.5                           ;; 0e:58b2 $08 $85 $00 $13
       sSFX 15                                          ;; 0e:58b6 $f9 $0f
-      sUNK_AF                                          ;; 0e:58b8 $af
+      sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:58b8 $af
       sMSG                                             ;; 0e:58b9 $04
         db "<10>Found <SPEL>Blizzard.<12>"
         db "<11>", $00 ;; 0e:58ba
@@ -3353,7 +3353,7 @@ script_0459:
     sGIVE_ITEM 43                                      ;; 0e:58ca $d4 $2b
     sIF_FLAG !wScriptFlags.5                           ;; 0e:58cc $08 $85 $00 $12
       sSFX 15                                          ;; 0e:58d0 $f9 $0f
-      sUNK_AF                                          ;; 0e:58d2 $af
+      sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:58d2 $af
       sMSG                                             ;; 0e:58d3 $04
         db "<10>Found <GEM>Nectar.<12>"
         db "<11>", $00 ;; 0e:58d4
@@ -3364,7 +3364,7 @@ script_045a:
     sGIVE_ITEM 44                                      ;; 0e:58e3 $d4 $2c
     sIF_FLAG !wScriptFlags.5                           ;; 0e:58e5 $08 $85 $00 $12
       sSFX 15                                          ;; 0e:58e9 $f9 $0f
-      sUNK_AF                                          ;; 0e:58eb $af
+      sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:58eb $af
       sMSG                                             ;; 0e:58ec $04
         db "<10>Found <GEM>Stamina.<12>"
         db "<11>", $00 ;; 0e:58ed
@@ -3375,7 +3375,7 @@ script_045b:
     sGIVE_ITEM 45                                      ;; 0e:58fc $d4 $2d
     sIF_FLAG !wScriptFlags.5                           ;; 0e:58fe $08 $85 $00 $11
       sSFX 15                                          ;; 0e:5902 $f9 $0f
-      sUNK_AF                                          ;; 0e:5904 $af
+      sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:5904 $af
       sMSG                                             ;; 0e:5905 $04
         db "<10>Found <GEM>Wisdom.<12>"
         db "<11>", $00 ;; 0e:5906
@@ -3386,7 +3386,7 @@ script_045c:
     sGIVE_ITEM 46                                      ;; 0e:5914 $d4 $2e
     sIF_FLAG !wScriptFlags.5                           ;; 0e:5916 $08 $85 $00 $10
       sSFX 15                                          ;; 0e:591a $f9 $0f
-      sUNK_AF                                          ;; 0e:591c $af
+      sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:591c $af
       sMSG                                             ;; 0e:591d $04
         db "<10>Found <GEM>Will.<12>"
         db "<11>", $00 ;; 0e:591e
@@ -3397,7 +3397,7 @@ script_045d:
     sGIVE_EQUIPMENT 7                                  ;; 0e:592b $d8 $07
     sIF_FLAG !wScriptFlags.5                           ;; 0e:592d $08 $85 $00 $12
       sSFX 15                                          ;; 0e:5931 $f9 $0f
-      sUNK_AF                                          ;; 0e:5933 $af
+      sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:5933 $af
       sMSG                                             ;; 0e:5934 $04
         db "<10>Found <MSTAR>Star!<12>"
         db "<11>", $00 ;; 0e:5935
@@ -3409,7 +3409,7 @@ script_045e:
     sGIVE_EQUIPMENT 28                                 ;; 0e:5944 $d8 $1c
     sIF_FLAG !wScriptFlags.5                           ;; 0e:5946 $08 $85 $00 $12
       sSFX 15                                          ;; 0e:594a $f9 $0f
-      sUNK_AF                                          ;; 0e:594c $af
+      sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:594c $af
       sMSG                                             ;; 0e:594d $04
         db "<10>Found <SHIELD>Iron.<12>"
         db "<11>", $00 ;; 0e:594e
@@ -3421,7 +3421,7 @@ script_045f:
     sGIVE_EQUIPMENT 19                                 ;; 0e:595d $d8 $13
     sIF_FLAG !wScriptFlags.5                           ;; 0e:595f $08 $85 $00 $13
       sSFX 15                                          ;; 0e:5963 $f9 $0f
-      sUNK_AF                                          ;; 0e:5965 $af
+      sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:5965 $af
       sMSG                                             ;; 0e:5966 $04
         db "<10>Found <ARMOR>Gold.<12>"
         db "<11>", $00 ;; 0e:5967
@@ -3433,7 +3433,7 @@ script_0460:
     sGIVE_EQUIPMENT 6                                  ;; 0e:5977 $d8 $06
     sIF_FLAG !wScriptFlags.5                           ;; 0e:5979 $08 $85 $00 $11
       sSFX 15                                          ;; 0e:597d $f9 $0f
-      sUNK_AF                                          ;; 0e:597f $af
+      sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:597f $af
       sMSG                                             ;; 0e:5980 $04
         db "<10>Found <AXE>Were.<12>"
         db "<11>", $00 ;; 0e:5981
@@ -3445,7 +3445,7 @@ script_0461:
     sGIVE_EQUIPMENT 12                                 ;; 0e:598f $d8 $0c
     sIF_FLAG !wScriptFlags.5                           ;; 0e:5991 $08 $85 $00 $12
       sSFX 15                                          ;; 0e:5995 $f9 $0f
-      sUNK_AF                                          ;; 0e:5997 $af
+      sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:5997 $af
       sMSG                                             ;; 0e:5998 $04
         db "<10>Found <AXE>Zeus.<12>"
         db "<11>", $00 ;; 0e:5999
@@ -3457,7 +3457,7 @@ script_0462:
     sGIVE_EQUIPMENT 33                                 ;; 0e:59a8 $d8 $21
     sIF_FLAG !wScriptFlags.5                           ;; 0e:59aa $08 $85 $00 $13
       sSFX 15                                          ;; 0e:59ae $f9 $0f
-      sUNK_AF                                          ;; 0e:59b0 $af
+      sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:59b0 $af
       sMSG                                             ;; 0e:59b1 $04
         db "<10>Found <SHIELD>Aegis!<12>"
         db "<11>", $00 ;; 0e:59b2
@@ -3469,7 +3469,7 @@ script_0463:
     sGIVE_EQUIPMENT 8                                  ;; 0e:59c2 $d8 $08
     sIF_FLAG !wScriptFlags.5                           ;; 0e:59c4 $08 $85 $00 $13
       sSFX 15                                          ;; 0e:59c8 $f9 $0f
-      sUNK_AF                                          ;; 0e:59ca $af
+      sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:59ca $af
       sMSG                                             ;; 0e:59cb $04
         db "<10>Found <SWORD>Blood.<12>"
         db "<11>", $00 ;; 0e:59cc
@@ -3481,7 +3481,7 @@ script_0464:
     sGIVE_EQUIPMENT 11                                 ;; 0e:59dc $d8 $0b
     sIF_FLAG !wScriptFlags.5                           ;; 0e:59de $08 $85 $00 $1c
       sSFX 15                                          ;; 0e:59e2 $f9 $0f
-      sUNK_AF                                          ;; 0e:59e4 $af
+      sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:59e4 $af
       sMSG                                             ;; 0e:59e5 $04
         db "<10>Found <SWORD>Ice.<12>"
         db "<11>", $00 ;; 0e:59e6
@@ -3500,7 +3500,7 @@ script_0465:
 script_0466:
     sGIVE_MAGIC 5                                      ;; 0e:5a00 $d6 $05
     sSFX 15                                            ;; 0e:5a02 $f9 $0f
-    sUNK_AF                                            ;; 0e:5a04 $af
+    sCHANGE_INTO_EMPTY_CHEST                           ;; 0e:5a04 $af
     sMSG                                               ;; 0e:5a05 $04
       db "<10>Found the Magic\nBook of Ice.\nLearned Ice!<12>"
       db "<11>", $00 ;; 0e:5a06
@@ -3511,7 +3511,7 @@ script_0467:
     sGIVE_ITEM 10                                      ;; 0e:5a27 $d4 $0a
     sIF_FLAG !wScriptFlags.5                           ;; 0e:5a29 $08 $85 $00 $11
       sSFX 15                                          ;; 0e:5a2d $f9 $0f
-      sUNK_AF                                          ;; 0e:5a2f $af
+      sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:5a2f $af
       sMSG                                             ;; 0e:5a30 $04
         db "<10>Found <SPEL>Silence.<12>"
         db "<11>", $00 ;; 0e:5a31

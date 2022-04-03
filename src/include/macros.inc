@@ -130,6 +130,9 @@ sCALL: MACRO
 db $02
 db ((BANK(\1) - $0D) << 6) | (HIGH(\1) & $3F), LOW(\1)
 ENDM
+sCHANGE_INTO_EMPTY_CHEST: MACRO
+db $af
+ENDM
 sCLEAR_FAST_MOVEMENT: MACRO
 db $89
 ENDM
@@ -908,9 +911,6 @@ db $a3
 ENDM
 sUNK_A9: MACRO
 db $a9
-ENDM
-sUNK_AF: MACRO
-db $af
 ENDM
 sUNK_B6: MACRO
 db $b6
