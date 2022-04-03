@@ -2172,7 +2172,8 @@ setObjectDirection:
     ld   [HL], $ff                                     ;; 00:0cb7 $36 $ff
     ret                                                ;; 00:0cb9 $c9
 
-call_00_0cba:
+; For object C set the metasprite pointer to DE
+setObjectMetaspritePointer:
     push HL                                            ;; 00:0cba $e5
     ld   L, C                                          ;; 00:0cbb $69
     ld   H, $00                                        ;; 00:0cbc $26 $00

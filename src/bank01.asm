@@ -408,7 +408,7 @@ call_01_42d1:
     push AF                                            ;; 01:42d1 $f5
     ld   HL, .data_01_4325                             ;; 01:42d2 $21 $25 $43
     ld   C, $00                                        ;; 01:42d5 $0e $00
-    call call_00_0cba                                  ;; 01:42d7 $cd $ba $0c
+    call setObjectMetaspritePointer                    ;; 01:42d7 $cd $ba $0c
     pop  AF                                            ;; 01:42da $f1
     ld   C, A                                          ;; 01:42db $4f
     and  A, $0f                                        ;; 01:42dc $e6 $0f
@@ -4270,7 +4270,7 @@ call_01_5b6d:
     ld   HL, unlabeled_2eb1                            ;; 01:5bc8 $21 $b1 $2e
 .jr_01_5bcb:
     pop  BC                                            ;; 01:5bcb $c1
-    call call_00_0cba                                  ;; 01:5bcc $cd $ba $0c
+    call setObjectMetaspritePointer                    ;; 01:5bcc $cd $ba $0c
     pop  HL                                            ;; 01:5bcf $e1
     ld   A, [wCF5C]                                    ;; 01:5bd0 $fa $5c $cf
     ld   C, A                                          ;; 01:5bd3 $4f

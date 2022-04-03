@@ -2468,7 +2468,7 @@ call_03_4e4a:
     push BC                                            ;; 03:4e4a $c5
     push DE                                            ;; 03:4e4b $d5
     ld   HL, data_03_4e32                              ;; 03:4e4c $21 $32 $4e
-    call call_00_0cba                                  ;; 03:4e4f $cd $ba $0c
+    call setObjectMetaspritePointer                    ;; 03:4e4f $cd $ba $0c
     ld   A, $0b                                        ;; 03:4e52 $3e $0b
     call playSFX                                       ;; 03:4e54 $cd $7d $29
     pop  DE                                            ;; 03:4e57 $d1
