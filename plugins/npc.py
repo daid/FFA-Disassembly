@@ -36,7 +36,11 @@ class NpcDataBlock(Block):
     db \1, \2, \3, \4, \5, \6, \7, \8
     SCRIPT_IDX \9
     SHIFT 9
-    db \1, \2
+    IF ISCONST(\1)
+      dw \1
+    ELSE
+      SCRIPT_IDX \1
+    ENDC
 """
 
     def export(self, file):
@@ -47,6 +51,14 @@ class NpcDataBlock(Block):
         script_pointer = RomInfo.romBank(0x08).word(0x4f05 + script_index * 2)
         script_bank = RomInfo.romBank(0x0D + (script_pointer >> 14))
         script_label = script_bank.getLabel((script_pointer & 0x3FFF) | 0x4000)
+
+        chest_script_index = self.memory.word(file.addr + 22) # script index
+        if chest_script_index == 0x0000:
+            chest_script_label = "$0000"
+        else:
+            chest_script_pointer = RomInfo.romBank(0x08).word(0x4f05 + chest_script_index * 2)
+            chest_script_bank = RomInfo.romBank(0x0D + (chest_script_pointer >> 14))
+            chest_script_label = chest_script_bank.getLabel((chest_script_pointer & 0x3FFF) | 0x4000)
         
         # bbbbw p p bbbbbbbbbbwbb
         file.asmLine(24, "NPC_DATA",
@@ -68,7 +80,6 @@ class NpcDataBlock(Block):
             "$%02x" % (self.memory.byte(file.addr + 18)),
             "$%02x" % (self.memory.byte(file.addr + 19)),
             script_label,
-            "$%02x" % (self.memory.byte(file.addr + 22)),
-            "$%02x" % (self.memory.byte(file.addr + 23)),
+            chest_script_label,
             is_data=True
         )

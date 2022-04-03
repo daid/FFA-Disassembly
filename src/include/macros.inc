@@ -59,7 +59,11 @@ NPC_DATA: MACRO
     db \1, \2, \3, \4, \5, \6, \7, \8
     SCRIPT_IDX \9
     SHIFT 9
-    db \1, \2
+    IF ISCONST(\1)
+      dw \1
+    ELSE
+      SCRIPT_IDX \1
+    ENDC
 ENDM
 SCRIPT_AT_POS: MACRO
 
