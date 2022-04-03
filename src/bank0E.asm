@@ -2949,7 +2949,7 @@ script_0438:
     sEND                                               ;; 0e:5516 $00
 
 script_0439:
-    sUNK_C7                                            ;; 0e:5517 $c7
+    sRNG                                               ;; 0e:5517 $c7
     sIF_FLAG !wScriptFlags0F.6, !wScriptFlags0F.7      ;; 0e:5518 $08 $fe $ff $00 $19
       sGIVE_ITEM 45                                    ;; 0e:551d $d4 $2d
       sIF_FLAG !wScriptFlags.5                         ;; 0e:551f $08 $85 $00 $11
@@ -3068,7 +3068,7 @@ script_0443:
     sEND                                               ;; 0e:560e $00
 
 script_0444:
-    sUNK_C7                                            ;; 0e:560f $c7
+    sRNG                                               ;; 0e:560f $c7
     sIF_FLAG !wScriptFlags0F.6                         ;; 0e:5610 $08 $fe $00 $18
       sGIVE_ITEM 50                                    ;; 0e:5614 $d4 $32
       sIF_FLAG !wScriptFlags.5                         ;; 0e:5616 $08 $85 $00 $10
@@ -3088,7 +3088,7 @@ script_0444:
     sEND                                               ;; 0e:563a $00
 
 script_0445:
-    sUNK_C7                                            ;; 0e:563b $c7
+    sRNG                                               ;; 0e:563b $c7
     sIF_FLAG !wScriptFlags0F.6                         ;; 0e:563c $08 $fe $00 $19
       sGIVE_ITEM 49                                    ;; 0e:5640 $d4 $31
       sIF_FLAG !wScriptFlags.5                         ;; 0e:5642 $08 $85 $00 $11
@@ -3159,7 +3159,7 @@ script_044a:
     sEND                                               ;; 0e:56d8 $00
 
 script_044b:
-    sUNK_C7                                            ;; 0e:56d9 $c7
+    sRNG                                               ;; 0e:56d9 $c7
     sIF_FLAG !wScriptFlags0F.6, !wScriptFlags0F.7      ;; 0e:56da $08 $fe $ff $00 $18
       sGIVE_ITEM 46                                    ;; 0e:56df $d4 $2e
       sIF_FLAG !wScriptFlags.5                         ;; 0e:56e1 $08 $85 $00 $10
@@ -3179,7 +3179,7 @@ script_044c:
     sEND                                               ;; 0e:56fe $00
 
 script_044d:
-    sUNK_C7                                            ;; 0e:56ff $c7
+    sRNG                                               ;; 0e:56ff $c7
     sIF_FLAG !wScriptFlags0F.6, wScriptFlags0F.7       ;; 0e:5700 $08 $fe $7f $00 $19
       sGIVE_EQUIPMENT 33                               ;; 0e:5705 $d8 $21
       sIF_FLAG !wScriptFlags.5                         ;; 0e:5707 $08 $85 $00 $11
@@ -3202,7 +3202,7 @@ script_044d:
     sEND                                               ;; 0e:5737 $00
 
 script_044e:
-    sUNK_C7                                            ;; 0e:5738 $c7
+    sRNG                                               ;; 0e:5738 $c7
     sIF_FLAG !wScriptFlags0F.6, wScriptFlags0F.7       ;; 0e:5739 $08 $fe $7f $00 $1a
       sGIVE_EQUIPMENT 23                               ;; 0e:573e $d8 $17
       sIF_FLAG !wScriptFlags.5                         ;; 0e:5740 $08 $85 $00 $12
@@ -3225,7 +3225,7 @@ script_044e:
     sEND                                               ;; 0e:576f $00
 
 script_044f:
-    sUNK_C7                                            ;; 0e:5770 $c7
+    sRNG                                               ;; 0e:5770 $c7
     sIF_FLAG !wScriptFlags0F.6, wScriptFlags0F.7       ;; 0e:5771 $08 $fe $7f $00 $1a
       sGIVE_EQUIPMENT 43                               ;; 0e:5776 $d8 $2b
       sIF_FLAG !wScriptFlags.5                         ;; 0e:5778 $08 $85 $00 $12

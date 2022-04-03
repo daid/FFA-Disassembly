@@ -3377,7 +3377,7 @@ script_01ff:
       sMSG                                             ;; 0d:5e09 $04
         db "<10> Change music?<12>"
         db "<11>", $00 ;; 0d:5e0a
-      sUNK_C7                                          ;; 0d:5e18 $c7
+      sRNG                                             ;; 0d:5e18 $c7
       sIF_FLAG wScriptFlags0F.7, !wScriptFlags0F.6     ;; 0d:5e19 $08 $7f $fe $00 $02
         sSET_MUSIC 20                                  ;; 0d:5e1e $f8 $14
       sENDIF                                           ;; 0d:5e20

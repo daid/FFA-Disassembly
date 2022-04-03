@@ -644,6 +644,9 @@ ENDM
 sRESET_GAME: MACRO
 db $c8
 ENDM
+sRNG: MACRO
+db $c7
+ENDM
 sRUN_ROOM_SCRIPT: MACRO
 db $ec
 ENDM
@@ -925,9 +928,6 @@ db \1
 ENDM
 sUNK_C6: MACRO
 db $c6
-ENDM
-sUNK_C7: MACRO
-db $c7
 ENDM
 sUNK_D5: MACRO
 db $d5

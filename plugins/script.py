@@ -384,7 +384,7 @@ OPCODES = {
     0xC4: ("sPLAYER_GIVE_STATUS", r"db \1", "BYTE"),
     0xC5: ("sUNK_C5", r"db \1", "BYTE"), # This sets up to 6 script flags in flags0E in a single go. (flags .3 to .7)
     0xC6: ("sUNK_C6",),
-    0xC7: ("sUNK_C7",),
+    0xC7: ("sRNG",), # Set flags0F.6 and flags0F.7 to a random set/cleared value
     0xC8: ("sRESET_GAME",),
     0xC9: ("sSET_CHEST_OPEN_SCRIPT1", r" db HIGH((__script_pointer_\1 - __script_pointer_script_0000) / 2), LOW((__script_pointer_\1 - __script_pointer_script_0000) / 2)", "SCRIPT_IDX"),
     0xCA: ("sSET_CHEST_OPEN_SCRIPT2", r" db HIGH((__script_pointer_\1 - __script_pointer_script_0000) / 2), LOW((__script_pointer_\1 - __script_pointer_script_0000) / 2)", "SCRIPT_IDX"),
