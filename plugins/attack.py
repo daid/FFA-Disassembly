@@ -33,6 +33,11 @@ class AttackInfo(Block):
             "$%02x" % self.memory.byte(file.addr+2), "$%02x" % self.memory.byte(file.addr+3),
             "$%02x" % self.memory.byte(file.addr+4), "$%02x" % self.memory.byte(file.addr+5), is_data=True)
         file.asmLine(4, "dw", str(RomInfo.romBank(0x08).getLabel(self.memory.word(file.addr))), str(self.memory.getLabel(self.memory.word(file.addr+2))), is_data=True)
+        # List of pointers per type of attack
+        # 0) attack while holding direction
+        # 1) attack while standing
+        # 2) attack while holding direction and full will bar
+        # 3) attack while standing and full will bar
         for n in range(4):
             file.asmLine(8, "dw",
                 str(self.memory.getLabel(self.memory.word(file.addr+0))), str(self.memory.getLabel(self.memory.word(file.addr+2))),
