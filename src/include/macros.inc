@@ -31,6 +31,12 @@ IDX = STRSUB("\1", STRLEN("\1")) - "0"
   db (LBL - wScriptFlags) * 8 + (IDX)
 PURGE LBL
 ENDM
+ITEM_DATA: MACRO
+
+        db \1
+        TXT \2
+        db \3, \4, \5, \6, \7, \8, \9
+ENDM
 MAP_HEADER: MACRO
 
 assert BANK(\1) == $0B || BANK(\1) == $0C
