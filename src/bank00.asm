@@ -320,9 +320,9 @@ call_00_024a:
     push AF                                            ;; 00:024a $f5
     jp_to_bank 01, call_01_4d0b                        ;; 00:024b $3e $06 $c3 $d7 $1e
 
-call_00_0250:
+createPlayerObject_trampoline:
     push AF                                            ;; 00:0250 $f5
-    jp_to_bank 01, call_01_5090                        ;; 00:0251 $3e $04 $c3 $d7 $1e
+    jp_to_bank 01, createPlayerObject                  ;; 00:0251 $3e $04 $c3 $d7 $1e
 
 call_00_0256:
     push AF                                            ;; 00:0256 $f5
@@ -1755,7 +1755,9 @@ call_00_0a33:
     call call_00_2c02                                  ;; 00:0a70 $cd $02 $2c
     ret                                                ;; 00:0a73 $c9
 
-; DE=position in tiles
+; C  = object type?
+; DE = position in tiles
+; HL = metatile pointer
 createObject:
     push DE                                            ;; 00:0a74 $d5
     push HL                                            ;; 00:0a75 $e5
@@ -5314,7 +5316,7 @@ call_00_2092:
     call call_00_04fa                                  ;; 00:20bb $cd $fa $04
     call call_00_21b4                                  ;; 00:20be $cd $b4 $21
     ld   DE, $fefe                                     ;; 00:20c1 $11 $fe $fe
-    call call_00_0250                                  ;; 00:20c4 $cd $50 $02
+    call createPlayerObject_trampoline                 ;; 00:20c4 $cd $50 $02
     ld   A, $00                                        ;; 00:20c7 $3e $00
     call call_00_2ed9                                  ;; 00:20c9 $cd $d9 $2e
     call call_00_30bd                                  ;; 00:20cc $cd $bd $30

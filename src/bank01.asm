@@ -12,7 +12,7 @@ data_01_4000:
     call_to_bank_target call_01_48be                   ;; 01:4002 pP
     call_to_bank_target call_01_4996                   ;; 01:4004 pP
     call_to_bank_target call_01_498e                   ;; 01:4006 pP
-    call_to_bank_target call_01_5090                   ;; 01:4008 pP
+    call_to_bank_target createPlayerObject             ;; 01:4008 pP
     call_to_bank_target call_01_4f7b                   ;; 01:400a pP
     call_to_bank_target call_01_4d0b                   ;; 01:400c ??
     call_to_bank_target call_01_50ac                   ;; 01:400e pP
@@ -1065,7 +1065,7 @@ call_01_471d:
     call call_00_2926                                  ;; 01:474e $cd $26 $29
     ret                                                ;; 01:4751 $c9
 
-data_01_4752:
+metaSpritesPlayer:
     db   $20, $02, $00, $00, $00, $02, $00, $00        ;; 01:4752 ........
     db   $02, $00, $00, $02                            ;; 01:475a ....
 
@@ -2304,12 +2304,12 @@ call_01_5088:
     add  A, $04                                        ;; 01:508d $c6 $04
     ret                                                ;; 01:508f $c9
 
-call_01_5090:
+createPlayerObject:
     push DE                                            ;; 01:5090 $d5
     ld   C, $04                                        ;; 01:5091 $0e $04
     call call_00_0ae3                                  ;; 01:5093 $cd $e3 $0a
     pop  DE                                            ;; 01:5096 $d1
-    ld   HL, data_01_4752                              ;; 01:5097 $21 $52 $47
+    ld   HL, metaSpritesPlayer                         ;; 01:5097 $21 $52 $47
     ld   A, $01                                        ;; 01:509a $3e $01
     ld   C, $c9                                        ;; 01:509c $0e $c9
     call createObject                                  ;; 01:509e $cd $74 $0a
