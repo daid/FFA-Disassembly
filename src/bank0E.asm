@@ -2173,7 +2173,7 @@ script_03d0:
 
 script_03d1:
     sIF_FLAG wScriptFlags.2                            ;; 0e:4f25 $08 $02 $00 $03
-      sUNK_EF $00, $03                                 ;; 0e:4f29 $ef $00 $03
+      sSET_NEXT_ROOM $00, $03                          ;; 0e:4f29 $ef $00 $03
     sENDIF                                             ;; 0e:4f2c
     sEND                                               ;; 0e:4f2c $00
 
@@ -2396,10 +2396,10 @@ script_03ee:
 
 script_03ef:
     sIF_FLAG wScriptFlags.1                            ;; 0e:50c5 $08 $01 $00 $03
-      sUNK_EF $00, $03                                 ;; 0e:50c9 $ef $00 $03
+      sSET_NEXT_ROOM $00, $03                          ;; 0e:50c9 $ef $00 $03
     sENDIF                                             ;; 0e:50cc
     sIF_FLAG wScriptFlags.2                            ;; 0e:50cc $08 $02 $00 $03
-      sUNK_EF $00, $03                                 ;; 0e:50d0 $ef $00 $03
+      sSET_NEXT_ROOM $00, $03                          ;; 0e:50d0 $ef $00 $03
     sENDIF                                             ;; 0e:50d3
     sEND                                               ;; 0e:50d3 $00
 
@@ -4845,7 +4845,7 @@ script_0536:
       sPLAYER_STEP_FORWARD                             ;; 0e:648d $80
     sEND                                               ;; 0e:648e $00
     sLOOP 3, 10                                        ;; 0e:648f $03 $03 $0a
-      sUNK_EF $07, $02                                 ;; 0e:6492 $ef $07 $02
+      sSET_NEXT_ROOM $07, $02                          ;; 0e:6492 $ef $07 $02
       sSCROLL_ROOM_DOWN                                ;; 0e:6495 $e8
       sLOOP 16, 2                                      ;; 0e:6496 $03 $10 $02
         sPLAYER_STEP_FORWARD                           ;; 0e:6499 $80
@@ -5865,7 +5865,7 @@ script_0542:
     sDELAY 20                                          ;; 0e:772d $f0 $14
     sSFX 9                                             ;; 0e:772f $f9 $09
     sLOOP 10, 8                                        ;; 0e:7731 $03 $0a $08
-      sUNK_EF $06, $04                                 ;; 0e:7734 $ef $06 $04
+      sSET_NEXT_ROOM $06, $04                          ;; 0e:7734 $ef $06 $04
       sSCROLL_ROOM_UP                                  ;; 0e:7737 $e9
       sSET_PLAYER_POSITION 20, 0                       ;; 0e:7738 $8a $14 $00
     sEND                                               ;; 0e:773b $00

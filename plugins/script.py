@@ -423,7 +423,7 @@ OPCODES = {
     0xEB: ("sSCROLL_ROOM_RIGHT",),
     0xEC: ("sRUN_ROOM_SCRIPT",),
     0xEE: ("sUNK_EE",),
-    0xEF: ("sUNK_EF", r"db \1, \2", "HEX", "HEX"),
+    0xEF: ("sSET_NEXT_ROOM", r"db \1, \2", "HEX", "HEX"), # Forces then next room scroll from the side to end up in this specific room number.
 
     0xF0: ("sDELAY", r"db \1", "BYTE"),
     0xF1: ("sFULL_HP_DUMMY_F1",),

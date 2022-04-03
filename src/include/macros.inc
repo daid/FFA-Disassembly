@@ -681,6 +681,10 @@ sSET_MUSIC: MACRO
 db $f8
 db \1
 ENDM
+sSET_NEXT_ROOM: MACRO
+db $ef
+db \1, \2
+ENDM
 sSET_NPC_1_DIRECTION_DOWN: MACRO
 db $15
 ENDM
@@ -949,10 +953,6 @@ db $dd
 ENDM
 sUNK_EE: MACRO
 db $ee
-ENDM
-sUNK_EF: MACRO
-db $ef
-db \1, \2
 ENDM
 sWAIT_MAP_CLOSE: MACRO
 db $ad
