@@ -4,8 +4,8 @@
 ; Boss data table. Data is loaded from here on a boss spawn, but not on an NPC spawn.
 ; speed (delay between actions, low=fast)
 ; HP
-; ?
-; ?
+; XP on defeated
+; Money on defeated
 ; ?
 ; ?
 ; index to script when defeated (usually just some simple screen flash or nothing)

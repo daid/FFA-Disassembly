@@ -308,7 +308,7 @@ call_04_419e:
     srl  A                                             ;; 04:41a1 $cb $3f
     srl  A                                             ;; 04:41a3 $cb $3f
     ld   B, A                                          ;; 04:41a5 $47
-    ld   A, [wD3EB]                                    ;; 04:41a6 $fa $eb $d3
+    ld   A, [wBossIframes]                             ;; 04:41a6 $fa $eb $d3
     cp   A, $00                                        ;; 04:41a9 $fe $00
     jr   Z, .jr_04_41ad                                ;; 04:41ab $28 $00
 .jr_04_41ad:
@@ -784,7 +784,7 @@ call_04_4446:
     ld   A, $00                                        ;; 04:445b $3e $00
     ret                                                ;; 04:445d $c9
 .jr_04_445e:
-    ld   A, [wD3EB]                                    ;; 04:445e $fa $eb $d3
+    ld   A, [wBossIframes]                             ;; 04:445e $fa $eb $d3
     cp   A, $00                                        ;; 04:4461 $fe $00
     jr   NZ, .jp_04_445b                               ;; 04:4463 $20 $f6
     ld   A, C                                          ;; 04:4465 $79
@@ -1036,7 +1036,7 @@ call_04_45fa:
     ret                                                ;; 04:461b $c9
 
 call_04_461c:
-    ld   A, [wD3EB]                                    ;; 04:461c $fa $eb $d3
+    ld   A, [wBossIframes]                             ;; 04:461c $fa $eb $d3
     cp   A, $00                                        ;; 04:461f $fe $00
     jr   NZ, .jr_04_4633                               ;; 04:4621 $20 $10
     ld   A, [wCF5B]                                    ;; 04:4623 $fa $5b $cf
@@ -1055,7 +1055,7 @@ call_04_461c:
     ret                                                ;; 04:4635 $c9
 
 call_04_4636:
-    ld   A, [wD3EB]                                    ;; 04:4636 $fa $eb $d3
+    ld   A, [wBossIframes]                             ;; 04:4636 $fa $eb $d3
     cp   A, $00                                        ;; 04:4639 $fe $00
     jr   NZ, .jr_04_4652                               ;; 04:463b $20 $15
     push DE                                            ;; 04:463d $d5
@@ -1231,7 +1231,7 @@ call_04_470b:
 
 call_04_4728:
     ld   A, $18                                        ;; 04:4728 $3e $18
-    ld   [wD3EB], A                                    ;; 04:472a $ea $eb $d3
+    ld   [wBossIframes], A                             ;; 04:472a $ea $eb $d3
     ld   A, $0d                                        ;; 04:472d $3e $0d
     call playSFX                                       ;; 04:472f $cd $7d $29
     ld   A, $40                                        ;; 04:4732 $3e $40

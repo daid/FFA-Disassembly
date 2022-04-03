@@ -672,7 +672,7 @@ wD3E8:
 wD3E9:
     ds 2                                               ;; d3e9
 
-wD3EB:
+wBossIframes:
     ds 1                                               ;; d3eb
 
 wD3EC:

@@ -748,7 +748,7 @@ call_00_04aa:
     ld   A, [wD3E8]                                    ;; 00:04aa $fa $e8 $d3
     cp   A, $ff                                        ;; 00:04ad $fe $ff
     ret  Z                                             ;; 00:04af $c8
-    ld   A, [wD3EB]                                    ;; 00:04b0 $fa $eb $d3
+    ld   A, [wBossIframes]                             ;; 00:04b0 $fa $eb $d3
     cp   A, $00                                        ;; 00:04b3 $fe $00
     jr   Z, .jr_00_04d7                                ;; 00:04b5 $28 $20
     ld   C, A                                          ;; 00:04b7 $4f
@@ -760,7 +760,7 @@ call_00_04aa:
     ld   [wVideoOBP1], A                               ;; 00:04c0 $ea $ac $c0
     ld   A, C                                          ;; 00:04c3 $79
     dec  A                                             ;; 00:04c4 $3d
-    ld   [wD3EB], A                                    ;; 00:04c5 $ea $eb $d3
+    ld   [wBossIframes], A                             ;; 00:04c5 $ea $eb $d3
     jr   NZ, .jr_00_04d7                               ;; 00:04c8 $20 $0d
     ld   A, [wD3F3]                                    ;; 00:04ca $fa $f3 $d3
     ld   H, A                                          ;; 00:04cd $67
