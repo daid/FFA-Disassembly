@@ -4088,6 +4088,7 @@ data_03_563e:
 ;offset1: HP
 ;offset6: Touch damage
 ;offset7: Defense
+;offset9: Projectile type
 ;offset12: XP on kill
 ;offset13: Gold on kill
 ;@data format=bbbbbbbbbbbbbb amount=98

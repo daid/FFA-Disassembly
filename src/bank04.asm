@@ -346,7 +346,7 @@ call_04_41d1:
     add  HL, BC                                        ;; 04:41dc $09
     ld   A, [HL]                                       ;; 04:41dd $7e
     push DE                                            ;; 04:41de $d5
-    call call_00_2bec                                  ;; 04:41df $cd $ec $2b
+    call spawnProjectile_trampoline                    ;; 04:41df $cd $ec $2b
     pop  DE                                            ;; 04:41e2 $d1
     call call_04_4156                                  ;; 04:41e3 $cd $56 $41
     ret                                                ;; 04:41e6 $c9

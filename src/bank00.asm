@@ -6480,7 +6480,7 @@ call_00_27ba:
     jr   Z, .jr_00_27cb                                ;; 00:27c1 $28 $08
     push DE                                            ;; 00:27c3 $d5
     call call_00_2782                                  ;; 00:27c4 $cd $82 $27
-    call call_00_2bec                                  ;; 00:27c7 $cd $ec $2b
+    call spawnProjectile_trampoline                    ;; 00:27c7 $cd $ec $2b
     pop  DE                                            ;; 00:27ca $d1
 .jr_00_27cb:
     ld   A, $00                                        ;; 00:27cb $3e $00
@@ -7145,9 +7145,9 @@ call_00_2be6:
     push AF                                            ;; 00:2be6 $f5
     jp_to_bank 09, call_09_438a                        ;; 00:2be7 $3e $03 $c3 $93 $1f
 
-call_00_2bec:
+spawnProjectile_trampoline:
     push AF                                            ;; 00:2bec $f5
-    jp_to_bank 09, call_09_4239                        ;; 00:2bed $3e $04 $c3 $93 $1f
+    jp_to_bank 09, spawnProjectile                     ;; 00:2bed $3e $04 $c3 $93 $1f
 
 call_00_2bf2:
     ld   HL, wC5C0                                     ;; 00:2bf2 $21 $c0 $c5
