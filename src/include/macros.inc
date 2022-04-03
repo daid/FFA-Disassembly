@@ -656,6 +656,14 @@ ENDM
 sSCROLL_ROOM_UP: MACRO
 db $e9
 ENDM
+sSET_CHEST_OPEN_SCRIPT1: MACRO
+db $c9
+ db HIGH((__script_pointer_\1 - __script_pointer_script_0000) / 2), LOW((__script_pointer_\1 - __script_pointer_script_0000) / 2)
+ENDM
+sSET_CHEST_OPEN_SCRIPT2: MACRO
+db $ca
+ db HIGH((__script_pointer_\1 - __script_pointer_script_0000) / 2), LOW((__script_pointer_\1 - __script_pointer_script_0000) / 2)
+ENDM
 sSET_FAST_MOVEMENT: MACRO
 db $88
 ENDM
@@ -920,14 +928,6 @@ db $c6
 ENDM
 sUNK_C7: MACRO
 db $c7
-ENDM
-sUNK_C9: MACRO
-db $c9
-db \1, \2
-ENDM
-sUNK_CA: MACRO
-db $ca
-db \1, \2
 ENDM
 sUNK_D5: MACRO
 db $d5

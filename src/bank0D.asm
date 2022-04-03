@@ -999,7 +999,7 @@ script_00b1:
     sIF_FLAG !wScriptFlags09.7                         ;; 0d:45c3 $08 $cf $00 $07
       sSET_NPC_TYPES 89                                ;; 0d:45c7 $fc $59
       sSPAWN_NPC 2                                     ;; 0d:45c9 $fd $02
-      sUNK_CA $04, $5e                                 ;; 0d:45cb $ca $04 $5e
+      sSET_CHEST_OPEN_SCRIPT2 script_045e              ;; 0d:45cb $ca $04 $5e
     sENDIF                                             ;; 0d:45ce
     sOPEN_WEST_DOOR                                    ;; 0d:45ce $e6
     sEND                                               ;; 0d:45cf $00
@@ -1191,7 +1191,7 @@ script_00d8:
       sIF_FLAG !wScriptFlags0F.0                       ;; 0d:4682 $08 $f8 $00 $07
         sSET_NPC_TYPES 89                              ;; 0d:4686 $fc $59
         sSPAWN_NPC 0                                   ;; 0d:4688 $fd $00
-        sUNK_C9 $04, $41                               ;; 0d:468a $c9 $04 $41
+        sSET_CHEST_OPEN_SCRIPT1 script_0441            ;; 0d:468a $c9 $04 $41
       sENDIF                                           ;; 0d:468d
     sENDIF                                             ;; 0d:468d
     sSET_FLAG wScriptFlags0F.0                         ;; 0d:468d $da $78
@@ -1211,7 +1211,7 @@ script_00db:
     sIF_FLAG !wScriptFlags07.1                         ;; 0d:4699 $08 $b9 $00 $07
       sSET_NPC_TYPES 89                                ;; 0d:469d $fc $59
       sSPAWN_NPC 0                                     ;; 0d:469f $fd $00
-      sUNK_C9 $04, $5f                                 ;; 0d:46a1 $c9 $04 $5f
+      sSET_CHEST_OPEN_SCRIPT1 script_045f              ;; 0d:46a1 $c9 $04 $5f
     sENDIF                                             ;; 0d:46a4
     sOPEN_NORTH_DOOR                                   ;; 0d:46a4 $e0
     sEND                                               ;; 0d:46a5 $00
@@ -1230,7 +1230,7 @@ script_00de:
     sIF_FLAG !wScriptFlags07.7                         ;; 0d:46af $08 $bf $00 $07
       sSET_NPC_TYPES 89                                ;; 0d:46b3 $fc $59
       sSPAWN_NPC 0                                     ;; 0d:46b5 $fd $00
-      sUNK_C9 $04, $60                                 ;; 0d:46b7 $c9 $04 $60
+      sSET_CHEST_OPEN_SCRIPT1 script_0460              ;; 0d:46b7 $c9 $04 $60
     sENDIF                                             ;; 0d:46ba
     sOPEN_WEST_DOOR                                    ;; 0d:46ba $e6
     sEND                                               ;; 0d:46bb $00
@@ -1266,7 +1266,7 @@ script_00e6:
       sPLAYER_STEP_FORWARD                             ;; 0d:46d5 $80
     sEND                                               ;; 0d:46d6 $00
     sSFX 16                                            ;; 0d:46d7 $f9 $10
-    sSET_ROOM_TILE $6c, 9, 5                           ;; 0d:46d9 $b0 $6c $09 $05
+    sSET_ROOM_TILE $6c, 9, 5 ;sSET_ROOM_TILE $6c, 9, 5 ;; 0d:46d9 $b0 $6c $09 $05
     sDELAY 30                                          ;; 0d:46dd $f0 $1e
     sSET_PLAYER_DIRECTION_UP                           ;; 0d:46df $84
     sDELAY 20                                          ;; 0d:46e0 $f0 $14
@@ -1373,7 +1373,7 @@ script_00f4:
     sIF_FLAG !wScriptFlags07.4                         ;; 0d:4789 $08 $bc $00 $07
       sSET_NPC_TYPES 89                                ;; 0d:478d $fc $59
       sSPAWN_NPC 0                                     ;; 0d:478f $fd $00
-      sUNK_C9 $04, $63                                 ;; 0d:4791 $c9 $04 $63
+      sSET_CHEST_OPEN_SCRIPT1 script_0463              ;; 0d:4791 $c9 $04 $63
     sENDIF                                             ;; 0d:4794
     sOPEN_WEST_DOOR                                    ;; 0d:4794 $e6
     sEND                                               ;; 0d:4795 $00
@@ -1457,7 +1457,7 @@ script_0103:
     sIF_FLAG !wScriptFlags07.6                         ;; 0d:47f4 $08 $be $00 $07
       sSET_NPC_TYPES 89                                ;; 0d:47f8 $fc $59
       sSPAWN_NPC 0                                     ;; 0d:47fa $fd $00
-      sUNK_C9 $04, $61                                 ;; 0d:47fc $c9 $04 $61
+      sSET_CHEST_OPEN_SCRIPT1 script_0461              ;; 0d:47fc $c9 $04 $61
     sENDIF                                             ;; 0d:47ff
     sEND                                               ;; 0d:47ff $00
 
@@ -1785,7 +1785,7 @@ script_0127:
     sSET_NPC_TYPES 89                                  ;; 0d:4a93 $fc $59
     sIF_FLAG !wScriptFlags09.5                         ;; 0d:4a95 $08 $cd $00 $05
       sSPAWN_NPC 1                                     ;; 0d:4a99 $fd $01
-      sUNK_C9 $04, $43                                 ;; 0d:4a9b $c9 $04 $43
+      sSET_CHEST_OPEN_SCRIPT1 script_0443              ;; 0d:4a9b $c9 $04 $43
     sENDIF                                             ;; 0d:4a9e
     sEND                                               ;; 0d:4a9e $00
 
@@ -2356,11 +2356,11 @@ script_01a2:
     sSET_FLAG wScriptFlags04.3                         ;; 0d:4d6e $da $23
     sIF_FLAG !wScriptFlags09.1                         ;; 0d:4d70 $08 $c9 $00 $05
       sSPAWN_NPC 1                                     ;; 0d:4d74 $fd $01
-      sUNK_C9 $04, $50                                 ;; 0d:4d76 $c9 $04 $50
+      sSET_CHEST_OPEN_SCRIPT1 script_0450              ;; 0d:4d76 $c9 $04 $50
     sENDIF                                             ;; 0d:4d79
     sIF_FLAG !wScriptFlags09.0                         ;; 0d:4d79 $08 $c8 $00 $05
       sSPAWN_NPC 2                                     ;; 0d:4d7d $fd $02
-      sUNK_CA $04, $51                                 ;; 0d:4d7f $ca $04 $51
+      sSET_CHEST_OPEN_SCRIPT2 script_0451              ;; 0d:4d7f $ca $04 $51
     sENDIF                                             ;; 0d:4d82
     sEND                                               ;; 0d:4d82 $00
 
@@ -2517,7 +2517,7 @@ script_01a9:
       sIF_FLAG !wScriptFlags02.4                       ;; 0d:4f52 $08 $94 $00 $09
         sSET_NPC_TYPES 89                              ;; 0d:4f56 $fc $59
         sSPAWN_NPC 0                                   ;; 0d:4f58 $fd $00
-        sUNK_C9 $04, $35                               ;; 0d:4f5a $c9 $04 $35
+        sSET_CHEST_OPEN_SCRIPT1 script_0435            ;; 0d:4f5a $c9 $04 $35
       sELSE                                            ;; 0d:4f5d $01 $04
         sSET_ROOM_TILE $59, 2, 1                       ;; 0d:4f5f $b0 $59 $02 $01
       sENDIF                                           ;; 0d:4f63
@@ -2692,7 +2692,7 @@ script_01b2:
       sIF_FLAG !wScriptFlags09.6                       ;; 0d:5211 $08 $ce $00 $07
         sSET_NPC_TYPES 89                              ;; 0d:5215 $fc $59
         sSPAWN_NPC 1                                   ;; 0d:5217 $fd $01
-        sUNK_C9 $04, $5d                               ;; 0d:5219 $c9 $04 $5d
+        sSET_CHEST_OPEN_SCRIPT1 script_045d            ;; 0d:5219 $c9 $04 $5d
       sENDIF                                           ;; 0d:521c
     sENDIF                                             ;; 0d:521c
     sEND                                               ;; 0d:521c $00
@@ -2859,7 +2859,7 @@ script_01be:
       sIF_FLAG !wScriptFlags07.2                       ;; 0d:5439 $08 $ba $00 $07
         sSET_NPC_TYPES 89                              ;; 0d:543d $fc $59
         sSPAWN_NPC 0                                   ;; 0d:543f $fd $00
-        sUNK_C9 $04, $64                               ;; 0d:5441 $c9 $04 $64
+        sSET_CHEST_OPEN_SCRIPT1 script_0464            ;; 0d:5441 $c9 $04 $64
       sENDIF                                           ;; 0d:5444
     sENDIF                                             ;; 0d:5444
     sEND                                               ;; 0d:5444 $00
@@ -2890,7 +2890,7 @@ script_01c1:
       sIF_FLAG !wScriptFlags07.3                       ;; 0d:546f $08 $bb $00 $07
         sSET_NPC_TYPES 89                              ;; 0d:5473 $fc $59
         sSPAWN_NPC 0                                   ;; 0d:5475 $fd $00
-        sUNK_C9 $04, $37                               ;; 0d:5477 $c9 $04 $37
+        sSET_CHEST_OPEN_SCRIPT1 script_0437            ;; 0d:5477 $c9 $04 $37
       sENDIF                                           ;; 0d:547a
     sENDIF                                             ;; 0d:547a
     sEND                                               ;; 0d:547a $00

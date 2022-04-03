@@ -386,8 +386,8 @@ OPCODES = {
     0xC6: ("sUNK_C6",),
     0xC7: ("sUNK_C7",),
     0xC8: ("sRESET_GAME",),
-    0xC9: ("sUNK_C9", r"db \1, \2", "HEX", "HEX"),
-    0xCA: ("sUNK_CA", r"db \1, \2", "HEX", "HEX"),
+    0xC9: ("sSET_CHEST_OPEN_SCRIPT1", r" db HIGH((__script_pointer_\1 - __script_pointer_script_0000) / 2), LOW((__script_pointer_\1 - __script_pointer_script_0000) / 2)", "SCRIPT_IDX"),
+    0xCA: ("sSET_CHEST_OPEN_SCRIPT2", r" db HIGH((__script_pointer_\1 - __script_pointer_script_0000) / 2), LOW((__script_pointer_\1 - __script_pointer_script_0000) / 2)", "SCRIPT_IDX"),
     0xCC: ("sHALT_GAME",), # Stop the game, blocking in the script forever. Used at the end of the credits
     0xCD: ("sNOP_CD",),
     0xCE: ("sNOP_CE",),
@@ -457,7 +457,7 @@ class ScriptBlock(Block):
             size = 1
             if len(opcode) > 2:
                 for t in opcode[2:]:
-                    if t == "WORD":
+                    if t == "WORD" or t == "SCRIPT_IDX":
                         size += 2
                     elif t == "LABEL":
                         target = memory.wordBE(addr + len(self) + size)
@@ -528,6 +528,15 @@ class ScriptBlock(Block):
             for t in opcode[2:]:
                 if t == "WORD":
                     args.append("%d" % (self.memory.word(file.addr + size)))
+                    size += 2
+                elif t == "SCRIPT_IDX":
+                    idx = self.memory.wordBE(file.addr + size)
+                    target = RomInfo.romBank(0x08).word(0x4f05 + idx * 2)
+                    target_bank = 0x0D + (target >> 14)
+                    target = (target & 0x3FFF) | 0x4000
+                    target_bank = RomInfo.romBank(target_bank)
+                    args.append(str(target_bank.getLabel(target)))
+
                     size += 2
                 elif t == "LABEL":
                     target = self.memory.wordBE(file.addr + size)
