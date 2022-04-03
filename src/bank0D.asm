@@ -2338,7 +2338,7 @@ script_01a0:
       sSET_MUSIC 15                                    ;; 0d:4d4f $f8 $0f
       sSPAWN_BOSS 1                                    ;; 0d:4d51 $fe $01
     sELSE                                              ;; 0d:4d53 $01 $01
-      sUNK_EE                                          ;; 0d:4d55 $ee
+      sRUN_ROOM_ALL_KILLED_SCRIPT                      ;; 0d:4d55 $ee
     sENDIF                                             ;; 0d:4d56
     sEND                                               ;; 0d:4d56 $00
 
