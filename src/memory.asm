@@ -858,6 +858,7 @@ wD6C2:
 wD6C3:
     ds 2                                               ;; d6c3
 
+; List if item IDs in your current inventory. ItemID has $80 added to it if it has a usage counter.
 wItemInventory:
     ds 16                                              ;; d6c5
 

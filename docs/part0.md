@@ -44,8 +44,11 @@ This is where the fun starts, it's also where a lot of complexities are hidden. 
 * Support reading back in the disassembly to read annotations and labels.
 * Also read back in where to split files into include files.
 * Support custom annotations for custom data blocks.
+* Almost no assumptions, if it doesn't know, it doesn't assume there is code. It just exports data.
 
 If you read this disassembly, you'll encounter `;@` style comments, these are the annotations. They exists for the disassembler to re-generate the same disassembly again.
+
+During the project I actually completely rewrote the disassembler, that's how important it is for the project.
 
 ## The other emulator?...
 
@@ -53,4 +56,12 @@ While BadBoy was great to get some initial good data, it's not great for anythin
 
 ## More tools?....
 
-WIP.
+One surprisingly useful small tool is a [simple script](https://github.com/daid/BadBoy/blob/master/tools/rom2png.py) that converts a whole rom into graphics. For FFA this image looks like:
+![FFA Rom Image](img/romgfxFFA.png)
+Some things are really easy to identify in this image. Graphics are obviously in bank 08 to 0C. Less obvious things are blocks of data. Code generally looks like just noise. But some other banks, like the 2nd half of Bank01 and most of Bank03 have some clear structure to it. It also shows the rom is very tightly packed.
+
+Compare it with the [image of LADX](img/romgfxLADX.png), which clearly contains sections of nothing. And also data clearly in specific banks.
+
+# Closing word
+
+So, that's it for main tools. Next up, starting the work...
