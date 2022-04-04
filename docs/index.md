@@ -2,5 +2,5 @@
 
 # Blog
 
-[Part0 - Humble beginnings](part0)
-[Part1 - Adventures of code](part1)
+* [Part0 - Humble beginnings](part0)
+* [Part1 - Adventures of code](part1)
