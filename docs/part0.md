@@ -65,3 +65,5 @@ Compare it with the [image of LADX](img/romgfxLADX.png), which clearly contains 
 # Closing word
 
 So, that's it for main tools. Next up, starting the work...
+
+* Next: [Part1 - Adventures of code](part1)
