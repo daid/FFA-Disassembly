@@ -96,3 +96,5 @@ the sound registers. Bank0D and Bank0E are "odd", they have patterns like code, 
 
 Banks 05, 06 and 07 are just all data. With 08, 09, 0A, 0B and 0C all being mostly graphics, it gives a pretty overal picture.
 The big blocks of data are quite certainly part of map data. So let us look into that next.
+
+* Previous: [Part0 - Humble beginnings](part0)
