@@ -1258,7 +1258,7 @@ wD884:
 wD885:
     ds 1                                               ;; d885
 
-wD886:
+wIntroScrollState:
     ds 1                                               ;; d886
 
 wD887:
@@ -1276,7 +1276,8 @@ wD88A:
 wD88B:
     ds 1                                               ;; d88b
 
-wD88C:
+; On the title screen, wait a number of frames before the new game and continue options are shown.
+wTitleScreenDelay:
     ds 1                                               ;; d88c
 
 wD88D:

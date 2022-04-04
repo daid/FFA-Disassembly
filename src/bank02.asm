@@ -55,7 +55,7 @@ SECTION "bank02", ROMX[$4000], BANK[$02]
     call_to_bank_target call_02_6623                   ;; 02:405c pP
     call_to_bank_target call_02_65fa                   ;; 02:405e pP
     call_to_bank_target call_02_7b3c                   ;; 02:4060 pP
-    call_to_bank_target call_02_7bdd                   ;; 02:4062 pP
+    call_to_bank_target introScrollHandler             ;; 02:4062 pP
     call_to_bank_target call_02_6656                   ;; 02:4064 pP
     call_to_bank_target getScriptOpcodeFunction        ;; 02:4066 pP
     call_to_bank_target call_02_7990                   ;; 02:4068 ??
@@ -2414,7 +2414,7 @@ call_02_5182:
     db   $f0, $00                                      ;; 02:51d3 ..
 
 call_02_51d5:
-    call trampolineUpdateJoypadInput                   ;; 02:51d5 $cd $d1 $1e
+    call updateJoypadInput_trampoline                  ;; 02:51d5 $cd $d1 $1e
     ld   A, E                                          ;; 02:51d8 $7b
     and  A, D                                          ;; 02:51d9 $a2
     ret  Z                                             ;; 02:51da $c8
@@ -2839,7 +2839,7 @@ call_02_547e:
     ret                                                ;; 02:548f $c9
 
 call_02_5490:
-    call trampolineUpdateJoypadInput                   ;; 02:5490 $cd $d1 $1e
+    call updateJoypadInput_trampoline                  ;; 02:5490 $cd $d1 $1e
     ld   A, D                                          ;; 02:5493 $7a
     and  A, A                                          ;; 02:5494 $a7
     ret  Z                                             ;; 02:5495 $c8
@@ -3248,7 +3248,7 @@ call_02_56c9:
     cp   A, D                                          ;; 02:56df $ba
 .jr_02_56e0:
     call NZ, call_02_6b20                              ;; 02:56e0 $c4 $20 $6b
-    call trampolineUpdateJoypadInput                   ;; 02:56e3 $cd $d1 $1e
+    call updateJoypadInput_trampoline                  ;; 02:56e3 $cd $d1 $1e
     bit  4, C                                          ;; 02:56e6 $cb $61
     ret  NZ                                            ;; 02:56e8 $c0
     call call_02_6bbe                                  ;; 02:56e9 $cd $be $6b
@@ -4546,7 +4546,7 @@ data_02_680e:
     ld   [wD849], A                                    ;; 02:681a $ea $49 $d8
     push HL                                            ;; 02:681d $e5
     push DE                                            ;; 02:681e $d5
-    call trampolineUpdateJoypadInput                   ;; 02:681f $cd $d1 $1e
+    call updateJoypadInput_trampoline                  ;; 02:681f $cd $d1 $1e
     pop  DE                                            ;; 02:6822 $d1
     pop  HL                                            ;; 02:6823 $e1
     push BC                                            ;; 02:6824 $c5
@@ -7639,7 +7639,7 @@ call_02_7b3c:
     ld   A, $11                                        ;; 02:7b3c $3e $11
     ld   [wC0A0], A                                    ;; 02:7b3e $ea $a0 $c0
     ld   A, $3c                                        ;; 02:7b41 $3e $3c
-    ld   [wD88C], A                                    ;; 02:7b43 $ea $8c $d8
+    ld   [wTitleScreenDelay], A                        ;; 02:7b43 $ea $8c $d8
     ld   HL, $a000                                     ;; 02:7b46 $21 $00 $a0
     ld   A, $08                                        ;; 02:7b49 $3e $08
     call call_02_747c                                  ;; 02:7b4b $cd $7c $74
@@ -7658,6 +7658,7 @@ call_02_7b3c:
     inc  DE                                            ;; 02:7b66 $13
     and  A, A                                          ;; 02:7b67 $a7
     jr   NZ, .jr_02_7b64                               ;; 02:7b68 $20 $fa
+; Load the title screen "map"
     ld   A, $07                                        ;; 02:7b6a $3e $07
     ld   DE, $101                                      ;; 02:7b6c $11 $01 $01
     call loadMap                                       ;; 02:7b6f $cd $dc $26
@@ -7668,11 +7669,11 @@ call_02_7b3c:
     ld   A, $ff                                        ;; 02:7b7c $3e $ff
     ld   [HL], A                                       ;; 02:7b7e $77
     ld   A, $04                                        ;; 02:7b7f $3e $04
-    ld   [wD886], A                                    ;; 02:7b81 $ea $86 $d8
+    ld   [wIntroScrollState], A                        ;; 02:7b81 $ea $86 $d8
     ret                                                ;; 02:7b84 $c9
 
-data_02_7b85:
-    ld   HL, wD88C                                     ;; 02:7b85 $21 $8c $d8
+call_02_7b85:
+    ld   HL, wTitleScreenDelay                         ;; 02:7b85 $21 $8c $d8
     dec  [HL]                                          ;; 02:7b88 $35
     ret  NZ                                            ;; 02:7b89 $c0
     ld   A, $0f                                        ;; 02:7b8a $3e $0f
@@ -7681,7 +7682,7 @@ data_02_7b85:
     ld   [wD84A], A                                    ;; 02:7b91 $ea $4a $d8
     call call_02_4860                                  ;; 02:7b94 $cd $60 $48
     xor  A, A                                          ;; 02:7b97 $af
-    ld   [wD886], A                                    ;; 02:7b98 $ea $86 $d8
+    ld   [wIntroScrollState], A                        ;; 02:7b98 $ea $86 $d8
     ret                                                ;; 02:7b9b $c9
 
 data_02_7b9c:
@@ -7719,8 +7720,8 @@ jp_02_7b9f:
     call call_02_6c98                                  ;; 02:7bd7 $cd $98 $6c
     jp   call_02_71dd                                  ;; 02:7bda $c3 $dd $71
 
-call_02_7bdd:
-    ld   A, [wD886]                                    ;; 02:7bdd $fa $86 $d8
+introScrollHandler:
+    ld   A, [wIntroScrollState]                        ;; 02:7bdd $fa $86 $d8
     add  A, A                                          ;; 02:7be0 $87
     ld   HL, .data_02_7bec                             ;; 02:7be1 $21 $ec $7b
     ld   B, $00                                        ;; 02:7be4 $06 $00
@@ -7730,13 +7731,15 @@ call_02_7bdd:
     ld   H, [HL]                                       ;; 02:7be9 $66
     ld   L, A                                          ;; 02:7bea $6f
     jp   HL                                            ;; 02:7beb $e9
+;@jumptable
 .data_02_7bec:
-    dw   .data_02_7bf6                                 ;; 02:7bec pP
-    dw   .data_02_7c3f                                 ;; 02:7bee pP
-    dw   .data_02_7c8f                                 ;; 02:7bf0 pP
-    dw   .data_02_7cc9                                 ;; 02:7bf2 pP
-    dw   data_02_7b85                                  ;; 02:7bf4 pP
-.data_02_7bf6:
+    dw   call_02_7bf6                                  ;; 02:7bec pP
+    dw   call_02_7c3f                                  ;; 02:7bee pP
+    dw   call_02_7c8f                                  ;; 02:7bf0 pP
+    dw   call_02_7cc9                                  ;; 02:7bf2 pP
+    dw   call_02_7b85                                  ;; 02:7bf4 pP
+
+call_02_7bf6:
     ld   HL, wVideoSCY                                 ;; 02:7bf6 $21 $a7 $c0
     ld   A, [HL]                                       ;; 02:7bf9 $7e
     ld   [wD888], A                                    ;; 02:7bfa $ea $88 $d8
@@ -7762,21 +7765,22 @@ call_02_7bdd:
     ld   A, L                                          ;; 02:7c28 $7d
     ld   [wD88E], A                                    ;; 02:7c29 $ea $8e $d8
     ld   A, $01                                        ;; 02:7c2c $3e $01
-    ld   [wD886], A                                    ;; 02:7c2e $ea $86 $d8
+    ld   [wIntroScrollState], A                        ;; 02:7c2e $ea $86 $d8
     ld   A, $0f                                        ;; 02:7c31 $3e $0f
     ld   [wD887], A                                    ;; 02:7c33 $ea $87 $d8
     ld   A, $05                                        ;; 02:7c36 $3e $05
     ld   [wD889], A                                    ;; 02:7c38 $ea $89 $d8
     call call_00_0daa                                  ;; 02:7c3b $cd $aa $0d
     ret                                                ;; 02:7c3e $c9
-.data_02_7c3f:
+
+call_02_7c3f:
     ld   A, [wD88F]                                    ;; 02:7c3f $fa $8f $d8
     ld   H, A                                          ;; 02:7c42 $67
     ld   A, [wD88E]                                    ;; 02:7c43 $fa $8e $d8
     ld   L, A                                          ;; 02:7c46 $6f
     ld   A, [HL]                                       ;; 02:7c47 $7e
     cp   A, $01                                        ;; 02:7c48 $fe $01
-    jp   Z, .jp_02_7cd8                                ;; 02:7c4a $ca $d8 $7c
+    jp   Z, jp_02_7cd8                                 ;; 02:7c4a $ca $d8 $7c
     ld   BC, $1301                                     ;; 02:7c4d $01 $01 $13
     ld   A, [wD8AD]                                    ;; 02:7c50 $fa $ad $d8
     ld   D, A                                          ;; 02:7c53 $57
@@ -7809,10 +7813,11 @@ call_02_7bdd:
     ld   A, E                                          ;; 02:7c85 $7b
     ld   [wD8AC], A                                    ;; 02:7c86 $ea $ac $d8
     ld   A, $02                                        ;; 02:7c89 $3e $02
-    ld   [wD886], A                                    ;; 02:7c8b $ea $86 $d8
+    ld   [wIntroScrollState], A                        ;; 02:7c8b $ea $86 $d8
     ret                                                ;; 02:7c8e $c9
-.data_02_7c8f:
-    call trampolineUpdateJoypadInput                   ;; 02:7c8f $cd $d1 $1e
+
+call_02_7c8f:
+    call updateJoypadInput_trampoline                  ;; 02:7c8f $cd $d1 $1e
     bit  4, C                                          ;; 02:7c92 $cb $61
     jr   NZ, .jr_02_7cbb                               ;; 02:7c94 $20 $25
     ld   HL, wD889                                     ;; 02:7c96 $21 $89 $d8
@@ -7831,25 +7836,27 @@ call_02_7bdd:
     ld   A, $0f                                        ;; 02:7cb0 $3e $0f
     ld   [wD887], A                                    ;; 02:7cb2 $ea $87 $d8
     ld   A, $01                                        ;; 02:7cb5 $3e $01
-    ld   [wD886], A                                    ;; 02:7cb7 $ea $86 $d8
+    ld   [wIntroScrollState], A                        ;; 02:7cb7 $ea $86 $d8
     ret                                                ;; 02:7cba $c9
 .jr_02_7cbb:
     ld   B, $24                                        ;; 02:7cbb $06 $24
     ld   DE, $9800                                     ;; 02:7cbd $11 $00 $98
     call call_02_566a                                  ;; 02:7cc0 $cd $6a $56
     ld   A, $03                                        ;; 02:7cc3 $3e $03
-    ld   [wD886], A                                    ;; 02:7cc5 $ea $86 $d8
+    ld   [wIntroScrollState], A                        ;; 02:7cc5 $ea $86 $d8
     ret                                                ;; 02:7cc8 $c9
-.data_02_7cc9:
+
+call_02_7cc9:
     ld   A, [wD888]                                    ;; 02:7cc9 $fa $88 $d8
     ld   [wVideoSCY], A                                ;; 02:7ccc $ea $a7 $c0
     call call_02_667a                                  ;; 02:7ccf $cd $7a $66
     ld   A, [wD853]                                    ;; 02:7cd2 $fa $53 $d8
     and  A, $80                                        ;; 02:7cd5 $e6 $80
     ret  NZ                                            ;; 02:7cd7 $c0
-.jp_02_7cd8:
+
+jp_02_7cd8:
     xor  A, A                                          ;; 02:7cd8 $af
-    ld   [wD886], A                                    ;; 02:7cd9 $ea $86 $d8
+    ld   [wIntroScrollState], A                        ;; 02:7cd9 $ea $86 $d8
     ld   A, [wD884]                                    ;; 02:7cdc $fa $84 $d8
     ld   [wVideoWY], A                                 ;; 02:7cdf $ea $a9 $c0
     ld   A, [wD862]                                    ;; 02:7ce2 $fa $62 $d8

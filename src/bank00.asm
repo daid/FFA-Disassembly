@@ -296,9 +296,9 @@ call_00_0226:
     res  3, [HL]                                       ;; 00:0229 $cb $9e
     ret                                                ;; 00:022b $c9
 
-call_00_022c:
+runMainInputHandler_trampoline:
     push AF                                            ;; 00:022c $f5
-    jp_to_bank 01, call_01_499e                        ;; 00:022d $3e $00 $c3 $d7 $1e
+    jp_to_bank 01, runMainInputHandler                 ;; 00:022d $3e $00 $c3 $d7 $1e
 
 call_00_0232:
     push AF                                            ;; 00:0232 $f5
@@ -2349,7 +2349,7 @@ call_00_0db6:
 
 scriptOpCodeWaitMapClose:
     push HL                                            ;; 00:0dbc $e5
-    call trampolineUpdateJoypadInput                   ;; 00:0dbd $cd $d1 $1e
+    call updateJoypadInput_trampoline                  ;; 00:0dbd $cd $d1 $1e
     cp   A, $00                                        ;; 00:0dc0 $fe $00
     jr   NZ, .jr_00_0de1                               ;; 00:0dc2 $20 $1d
     ld   A, [wD49A]                                    ;; 00:0dc4 $fa $9a $d4
@@ -5056,7 +5056,7 @@ call_00_1e9f:
     db   $c9                                           ;; 00:1ed0 ?
 
 ; This returns the currently hold joypad inputs in A and the newly pressed inputs in B
-trampolineUpdateJoypadInput:
+updateJoypadInput_trampoline:
     push AF                                            ;; 00:1ed1 $f5
     jp_to_bank 02, updateJoypadInput                   ;; 00:1ed2 $3e $01 $c3 $06 $1f
 
@@ -5215,19 +5215,19 @@ Init:
     ei                                                 ;; 00:1fd1 $fb
     call call_00_3153                                  ;; 00:1fd2 $cd $53 $31
 
-jp_00_1fd5:
+MainLoop:
     halt                                               ;; 00:1fd5 $76 $00
     ld   A, [wVBlankDone]                              ;; 00:1fd7 $fa $ad $c0
     cp   A, $01                                        ;; 00:1fda $fe $01
-    jr   C, jp_00_1fd5                                 ;; 00:1fdc $38 $f7
-.jr_00_1fde:
+    jr   C, MainLoop                                   ;; 00:1fdc $38 $f7
+.skipVBlankWait:
     call call_00_217b                                  ;; 00:1fde $cd $7b $21
-    call call_00_022c                                  ;; 00:1fe1 $cd $2c $02
+    call runMainInputHandler_trampoline                ;; 00:1fe1 $cd $2c $02
     call call_00_2190                                  ;; 00:1fe4 $cd $90 $21
     ld   HL, wVBlankDone                               ;; 00:1fe7 $21 $ad $c0
     dec  [HL]                                          ;; 00:1fea $35
-    jr   NZ, .jr_00_1fde                               ;; 00:1feb $20 $f1
-    jp   jp_00_1fd5                                    ;; 00:1fed $c3 $d5 $1f
+    jr   NZ, MainLoop.skipVBlankWait                   ;; 00:1feb $20 $f1
+    jp   MainLoop                                      ;; 00:1fed $c3 $d5 $1f
 
 InitPreIntEnable:
     ld   A, $00                                        ;; 00:1ff0 $3e $00
@@ -8003,9 +8003,9 @@ call_00_3153:
     push AF                                            ;; 00:3153 $f5
     jp_to_bank 02, call_02_7b3c                        ;; 00:3154 $3e $30 $c3 $06 $1f
 
-call_00_3159:
+introScrollHandler_trampoline:
     push AF                                            ;; 00:3159 $f5
-    jp_to_bank 02, call_02_7bdd                        ;; 00:315a $3e $31 $c3 $06 $1f
+    jp_to_bank 02, introScrollHandler                  ;; 00:315a $3e $31 $c3 $06 $1f
 
 call_00_315f:
     push AF                                            ;; 00:315f $f5
@@ -8603,7 +8603,7 @@ call_00_34f4:
     ret                                                ;; 00:3501 $c9
 
 call_00_3502:
-    call trampolineUpdateJoypadInput                   ;; 00:3502 $cd $d1 $1e
+    call updateJoypadInput_trampoline                  ;; 00:3502 $cd $d1 $1e
     pop  HL                                            ;; 00:3505 $e1
     ld   A, C                                          ;; 00:3506 $79
     or   A, A                                          ;; 00:3507 $b7
@@ -8613,7 +8613,7 @@ call_00_3502:
     ret                                                ;; 00:350e $c9
 
 call_00_350f:
-    call trampolineUpdateJoypadInput                   ;; 00:350f $cd $d1 $1e
+    call updateJoypadInput_trampoline                  ;; 00:350f $cd $d1 $1e
     pop  HL                                            ;; 00:3512 $e1
     ld   A, C                                          ;; 00:3513 $79
     and  A, A                                          ;; 00:3514 $a7
@@ -9035,7 +9035,7 @@ call_00_3777:
     push HL                                            ;; 00:37ab $e5
     push DE                                            ;; 00:37ac $d5
     push BC                                            ;; 00:37ad $c5
-    call trampolineUpdateJoypadInput                   ;; 00:37ae $cd $d1 $1e
+    call updateJoypadInput_trampoline                  ;; 00:37ae $cd $d1 $1e
     ld   A, B                                          ;; 00:37b1 $78
     or   A, C                                          ;; 00:37b2 $b1
     pop  BC                                            ;; 00:37b3 $c1
@@ -9593,7 +9593,7 @@ call_00_3aee:
     ret                                                ;; 00:3b0c $c9
 
 call_00_3b0d:
-    call trampolineUpdateJoypadInput                   ;; 00:3b0d $cd $d1 $1e
+    call updateJoypadInput_trampoline                  ;; 00:3b0d $cd $d1 $1e
     pop  HL                                            ;; 00:3b10 $e1
     ld   A, D                                          ;; 00:3b11 $7a
     and  A, E                                          ;; 00:3b12 $a3

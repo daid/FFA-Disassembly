@@ -8,7 +8,7 @@ SECTION "bank01", ROMX[$4000], BANK[$01]
 
 ;@call_to_bank_jumptable amount=40
 data_01_4000:
-    call_to_bank_target call_01_499e                   ;; 01:4000 pP
+    call_to_bank_target runMainInputHandler            ;; 01:4000 pP
     call_to_bank_target call_01_48be                   ;; 01:4002 pP
     call_to_bank_target call_01_4996                   ;; 01:4004 pP
     call_to_bank_target call_01_498e                   ;; 01:4006 pP
@@ -1262,8 +1262,8 @@ call_01_4996:
     call call_00_0695                                  ;; 01:499a $cd $95 $06
     ret                                                ;; 01:499d $c9
 
-call_01_499e:
-    call trampolineUpdateJoypadInput                   ;; 01:499e $cd $d1 $1e
+runMainInputHandler:
+    call updateJoypadInput_trampoline                  ;; 01:499e $cd $d1 $1e
     ld   D, A                                          ;; 01:49a1 $57
     ld   E, B                                          ;; 01:49a2 $58
     ld   HL, .data_01_49ad                             ;; 01:49a3 $21 $ad $49
@@ -1289,7 +1289,7 @@ call_01_499e:
     dw   call_01_4c09                                  ;; 01:49c9 ??
     dw   call_00_309f                                  ;; 01:49cb pP
     dw   call_00_3254                                  ;; 01:49cd pP
-    dw   call_00_3159                                  ;; 01:49cf pP
+    dw   introScrollHandler_trampoline                 ;; 01:49cf pP
 
 call_01_49d1:
     push DE                                            ;; 01:49d1 $d5
