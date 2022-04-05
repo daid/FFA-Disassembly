@@ -151,4 +151,9 @@ Byte 5: Still needs more investigation, general guess:
 
 So that's it for maps. Well, mostly. There is one pointer we skipped. The `mapXX_roomXX_XX_script` style pointers. Those are for another day.
 
+With all this, we can make a [script](https://github.com/daid/FFA-Disassembly/blob/master/tools/mapExport.py) that decodes the maps, and it produces nice results:
+![map00](img/map00.png)
+
+And then we discover that [map07](img/map07.png) isn't an actual playable map, but contains the title screen, ending screen and ingame map.
+
 * Previous: [Part1 - Adventures of code](part1)
