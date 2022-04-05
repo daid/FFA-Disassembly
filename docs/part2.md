@@ -139,8 +139,16 @@ Byte 4: not entirely sure, but collision related, should test with enemies to se
 * $80: blocks player
 * $C0: blocks player
 * $F0: player can walk on it
+
 Byte 5: Still needs more investigation, general guess:
 * $04: Weapon interaction, byte4 lower nibble indicates which method (1=attach chain, 4=chop by axe, 6=destroy with sickle), but also sometimes is $00 for things like palmtrees and mountains?
 * $07: Water
 * $45 $55 $65 $75: Ice slide tiles or mine cart tiles
 * $0D: climbing tiles (player faces up always)
+* $21: Damage spikes
+
+# Wrapping up...
+
+So that's it for maps. Well, mostly. There is one pointer we skipped. The `mapXX_roomXX_XX_script` style pointers. Those are for another day.
+
+* Previous: [Part1 - Adventures of code](part1)
