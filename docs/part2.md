@@ -61,7 +61,42 @@ $11, $11, $11, $02, $50
 $11, $11, $11, $02, $50, $64, $64, $64
 ```
 And finally two $64 bytes are added:
-```
+```asm
 $11, $11, $11, $02, $50, $64, $64, $64, $64, $64
 ```
 Making this the complete row.
+
+This is just repeated until the whole room is decoded and the screen is filled. *It's a relatively simple encoding scheme compared to some other games. And I do not think it is a very optimal solution. I am quite sure that an RLE length per room would have been more efficient.*
+
+### Template encoding
+
+If byte 1 of the header is not $00, then the data is encoded differently. And the header is actually expanded:
+```asm
+mapRoomPointers_02:
+    db   $01, $04, $08, $08
+    dw   map02_room_tile_template
+    ;;Door tile info
+    db   $25, $35, $20, $30, $14, $03, $52, $53
+    db   $24, $34, $21, $31, $12, $13, $42, $43
+    db   $15, $45, $10, $40, $28, $04, $51, $54
+    ;;Room data pointers
+    dw   map02_room00_00_script, map02_room00_00_tiles
+    dw   map02_room01_00_script, map02_room01_00_tiles
+```
+The first 4 bytes mean exactly the same. But after that a pointer to a room template follows. The pointer points to data in the RLE format and is applied first to the room, before anything else.
+
+Next 24 bytes follow. These are tiles for the right/left/up/down opening/doors/walls. Just remember these as "door tiles" for now.
+
+After this, the actual list of pointers follows, just like in RLE mode. But, the actual mapXX_roomXX_XX_tiles data differs from RLE mode.
+
+The first 4 bytes are "doors", in the order of right/left/up/down this indicate how a wall on that direction should be. If it should be a door or not, and if the door is open.
+
+* Bits0-1: Indicate the type. 0=open, 1=closed, 2=wall
+* Bits2-7: Unknown, bits 2 and 3 have been seen.
+
+The first 2 bits are used to select a row from the "door tiles", two tiles are used from this and placed on the wall. So in the example, if the up byte was $01, it would place tile `$12` and `$13` at the top row tiles to draw an closed door.
+
+After the 4 door bytes, you get a list of 2 bytes per item. It's a simple scheme, of `tile` followed by `position`, the position is encoded as YX in a single byte. The list is ended by an entry of `$FF $FF` (but only the first $FF is actually needed)
+
+## The map tiles
+
