@@ -3533,10 +3533,10 @@ script_0470:
       sDELAY 7                                         ;; 0e:5a69 $f0 $07
       sSFX 7                                           ;; 0e:5a6b $f9 $07
       sIF_FLAG !wScriptFlags04.1                       ;; 0e:5a6d $08 $a1 $00 $01
-        sUNK_A0                                        ;; 0e:5a71 $a0
+        sPLAYER_ON_CHOCOBO                             ;; 0e:5a71 $a0
       sENDIF                                           ;; 0e:5a72
       sIF_FLAG wScriptFlags04.1                        ;; 0e:5a72 $08 $21 $00 $01
-        sUNK_A1                                        ;; 0e:5a76 $a1
+        sPLAYER_ON_CHOCOBOT                            ;; 0e:5a76 $a1
       sENDIF                                           ;; 0e:5a77
       sSET_MUSIC 6                                     ;; 0e:5a77 $f8 $06
       sSET_FLAG wScriptFlags0D.7                       ;; 0e:5a79 $da $6f
@@ -3601,11 +3601,11 @@ script_0473:
 
 script_0474:
     sIF_0B $f1                                         ;; 0e:5af2 $0b $f1 $00 $03
-      sUNK_A2                                          ;; 0e:5af6 $a2
+      sPLAYER_ON_CHOCOBOT_WATER                        ;; 0e:5af6 $a2
       sSET_FLAG wScriptFlags0E.0                       ;; 0e:5af7 $da $70
     sENDIF                                             ;; 0e:5af9
     sIF_0B $f5                                         ;; 0e:5af9 $0b $f5 $00 $03
-      sUNK_A1                                          ;; 0e:5afd $a1
+      sPLAYER_ON_CHOCOBOT                              ;; 0e:5afd $a1
       sCLEAR_FLAG wScriptFlags0E.0                     ;; 0e:5afe $db $70
     sENDIF                                             ;; 0e:5b00
     sEND                                               ;; 0e:5b00 $00
@@ -5666,7 +5666,7 @@ script_0541:
     sDELAY 70                                          ;; 0e:7530 $f0 $46
     sFADE_TO_BLACK                                     ;; 0e:7532 $bd
     sLOAD_ROOM_INSTANT 10, $26, 20, 0                  ;; 0e:7533 $f3 $0a $26 $14 $00
-    sUNK_A3                                            ;; 0e:7538 $a3
+    sPLAYER_IN_MINECART                                ;; 0e:7538 $a3
     sSET_PLAYER_DIRECTION_RIGHT                        ;; 0e:7539 $86
     sSET_NPC_TYPES 102                                 ;; 0e:753a $fc $66
     sSPAWN_NPC 0                                       ;; 0e:753c $fd $00

@@ -348,10 +348,10 @@ OPCODES = {
     0x9E: ("sNOP_9E",),
     0x9F: ("sNOP_9F",),
 
-    0xA0: ("sUNK_A0",), # Something with water walking?
-    0xA1: ("sUNK_A1",),
-    0xA2: ("sUNK_A2",),
-    0xA3: ("sUNK_A3",),
+    0xA0: ("sPLAYER_ON_CHOCOBO",),
+    0xA1: ("sPLAYER_ON_CHOCOBOT",),
+    0xA2: ("sPLAYER_ON_CHOCOBOT_WATER",),
+    0xA3: ("sPLAYER_IN_MINECART",),
     0xA4: ("sSET_PLAYER_NORMAL_SPRITE",),
     0xA5: ("sSET_PLAYER_HURT_SPRITE",),
     0xA6: ("sSET_PLAYER_LAYDOWN_SPRITE",),
@@ -383,7 +383,7 @@ OPCODES = {
     0xC2: ("sUNK_C2", r"db \1", "BYTE"),
     0xC4: ("sPLAYER_GIVE_STATUS", r"db \1", "BYTE"),
     0xC5: ("sUNK_C5", r"db \1", "BYTE"), # This sets up to 6 script flags in flags0E in a single go. (flags .3 to .7)
-    0xC6: ("sUNK_C6",),
+    0xC6: ("sENTER_PLAYER_AND_GIRL_NAME",),
     0xC7: ("sRNG",), # Set flags0F.6 and flags0F.7 to a random set/cleared value
     0xC8: ("sRESET_GAME",),
     0xC9: ("sSET_CHEST_OPEN_SCRIPT1", r" db HIGH((__script_pointer_\1 - scriptPointersTable) / 2), LOW((__script_pointer_\1 - scriptPointersTable) / 2)", "SCRIPT_IDX"),

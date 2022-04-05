@@ -36,7 +36,7 @@ script_0002:
 
 script_0003:
     sSET_MUSIC 1                                       ;; 0d:4025 $f8 $01
-    sUNK_C6                                            ;; 0d:4027 $c6
+    sENTER_PLAYER_AND_GIRL_NAME                        ;; 0d:4027 $c6
     sLOAD_ROOM 1, $47, 18, 10                          ;; 0d:4028 $f4 $01 $47 $12 $0a
     sCALL script_00e6                                  ;; 0d:402d $02 $06 $cc
     sEND                                               ;; 0d:4030 $00
@@ -3301,7 +3301,7 @@ script_01f9:
       sPLAYER_STEP_FORWARD                             ;; 0d:5d25 $80
       sDEL_NPC_1                                       ;; 0d:5d26 $18
       sTAKE_EQUIPED_ITEM                               ;; 0d:5d27 $de
-      sUNK_A3                                          ;; 0d:5d28 $a3
+      sPLAYER_IN_MINECART                              ;; 0d:5d28 $a3
     sELSE                                              ;; 0d:5d29 $01 $11
       sMSG                                             ;; 0d:5d2b $04
         db "<10>\nNeeds to be oiled.<12>"
