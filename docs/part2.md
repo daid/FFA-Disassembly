@@ -1,8 +1,8 @@
 ---
-title: Part1 - Adventures of code
+title: Part2 - The quest for maps
 ---
 
-# Part1 - The quest for maps
+# Part2 - The quest for maps
 
 Ah, maps. Always a highly visible part of a game. It has to be somewhere, and there has to be a lot of it. I forgot how I discovered the first bit.
 So lets just explain how it all works. Or at least, how part of it works, as there is a part of it we will cover later.
