@@ -136,5 +136,8 @@ These have no direct reference in the code, they are implicit. How implicit? Wel
 
 So that is a bit annoying for clearity.
 
-# What about enemies?
+# And so?
 
+There is a lot more to say about scripts. The scripts really tie a lot of things together. That's why we encounter them so early.
+
+* Previous: [Part2 - The quest for maps](part2)
