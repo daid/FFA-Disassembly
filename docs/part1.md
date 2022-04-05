@@ -104,3 +104,4 @@ While trying to find more pointers to data hiding in data. We find something tha
 Whenever I referrer to a bank encoded pointer, it's this style of pointer.
 
 * Previous: [Part0 - Humble beginnings](part0)
+* Next: [Part2 - The quest for maps](part2)
