@@ -71,7 +71,7 @@ SCRIPT_AT_POS: MACRO
             SCRIPT_IDX \3
 ENDM
 SCRIPT_IDX: MACRO
-dw (__script_pointer_\1 - __script_pointer_script_0000) / 2
+dw (__script_pointer_\1 - scriptPointersTable) / 2
 ENDM
 SCRIPT_POINTER: MACRO
 __script_pointer_\1::
@@ -677,11 +677,11 @@ db $e9
 ENDM
 sSET_CHEST_OPEN_SCRIPT1: MACRO
 db $c9
- db HIGH((__script_pointer_\1 - __script_pointer_script_0000) / 2), LOW((__script_pointer_\1 - __script_pointer_script_0000) / 2)
+ db HIGH((__script_pointer_\1 - scriptPointersTable) / 2), LOW((__script_pointer_\1 - scriptPointersTable) / 2)
 ENDM
 sSET_CHEST_OPEN_SCRIPT2: MACRO
 db $ca
- db HIGH((__script_pointer_\1 - __script_pointer_script_0000) / 2), LOW((__script_pointer_\1 - __script_pointer_script_0000) / 2)
+ db HIGH((__script_pointer_\1 - scriptPointersTable) / 2), LOW((__script_pointer_\1 - scriptPointersTable) / 2)
 ENDM
 sSET_FAST_MOVEMENT: MACRO
 db $88

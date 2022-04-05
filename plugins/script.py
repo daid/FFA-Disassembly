@@ -386,8 +386,8 @@ OPCODES = {
     0xC6: ("sUNK_C6",),
     0xC7: ("sRNG",), # Set flags0F.6 and flags0F.7 to a random set/cleared value
     0xC8: ("sRESET_GAME",),
-    0xC9: ("sSET_CHEST_OPEN_SCRIPT1", r" db HIGH((__script_pointer_\1 - __script_pointer_script_0000) / 2), LOW((__script_pointer_\1 - __script_pointer_script_0000) / 2)", "SCRIPT_IDX"),
-    0xCA: ("sSET_CHEST_OPEN_SCRIPT2", r" db HIGH((__script_pointer_\1 - __script_pointer_script_0000) / 2), LOW((__script_pointer_\1 - __script_pointer_script_0000) / 2)", "SCRIPT_IDX"),
+    0xC9: ("sSET_CHEST_OPEN_SCRIPT1", r" db HIGH((__script_pointer_\1 - scriptPointersTable) / 2), LOW((__script_pointer_\1 - scriptPointersTable) / 2)", "SCRIPT_IDX"),
+    0xCA: ("sSET_CHEST_OPEN_SCRIPT2", r" db HIGH((__script_pointer_\1 - scriptPointersTable) / 2), LOW((__script_pointer_\1 - scriptPointersTable) / 2)", "SCRIPT_IDX"),
     0xCC: ("sHALT_GAME",), # Stop the game, blocking in the script forever. Used at the end of the credits
     0xCD: ("sNOP_CD",),
     0xCE: ("sNOP_CE",),

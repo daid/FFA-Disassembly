@@ -110,7 +110,7 @@ class ScriptInfoBlock(Block):
             self.resize(len(self) + 3)
         self.resize(len(self) + 1)
         
-        RomInfo.macros["SCRIPT_IDX"] = r"dw (__script_pointer_\1 - __script_pointer_script_0000) / 2"
+        RomInfo.macros["SCRIPT_IDX"] = r"dw (__script_pointer_\1 - scriptPointersTable) / 2"
         RomInfo.macros["SCRIPT_AT_POS"] = r"""
             db ((\1) << 4) | (\2)
             SCRIPT_IDX \3
