@@ -20,67 +20,67 @@
 ; death animation related?
 ;@boss_data amount=21
 bossDataTable:
-    BOSS_HEADER $08, $19, $14, $0a, $08, $1e, $0246    ;; 04:4739 ????????
+    BOSS_HEADER $08, $19, $14, $0a, $08, $1e, script_0246 ;; 04:4739 ????????
       BOSS_HEADER_GFX $40, $0d, bossGfxVampire, data_04_793d, data_04_7ba7 ;; 04:4741 ????????
       dw data_04_4931, data_04_4e21, data_04_4df1, data_04_5435 ;; 04:4749 ????????
-    BOSS_HEADER $0a, $14, $0a, $5a, $07, $1f, $0246    ;; 04:4751 ????????
+    BOSS_HEADER $0a, $14, $0a, $5a, $07, $1f, script_0246 ;; 04:4751 ????????
       BOSS_HEADER_GFX $40, $18, data_09_4cd0, data_04_7957, data_04_7bd1 ;; 04:4759 ????????
       dw data_04_4971, data_04_4e37, data_04_4e37, data_04_54bb ;; 04:4761 ????????
-    BOSS_HEADER $06, $3b, $55, $46, $04, $20, $0246    ;; 04:4769 ????????
+    BOSS_HEADER $06, $3b, $55, $46, $04, $20, script_0246 ;; 04:4769 ????????
       BOSS_HEADER_GFX $40, $18, bossGfxMedusa, data_04_7987, data_04_7bfe ;; 04:4771 ????????
       dw data_04_49e1, data_04_4e75, data_04_4e75, data_04_5503 ;; 04:4779 ????????
-    BOSS_HEADER $0a, $1c, $2c, $96, $0b, $16, $0246    ;; 04:4781 ????????
+    BOSS_HEADER $0a, $1c, $2c, $96, $0b, $16, script_0246 ;; 04:4781 ????????
       BOSS_HEADER_GFX $40, $10, bossGfxMegapepe, data_04_7987, data_04_7f25 ;; 04:4789 ????????
       dw data_04_4cc1, data_04_525b, data_04_4e09, data_04_5541 ;; 04:4791 ????????
-    BOSS_HEADER $08, $4b, $5a, $64, $08, $26, $0246    ;; 04:4799 ????????
+    BOSS_HEADER $08, $4b, $5a, $64, $08, $26, script_0246 ;; 04:4799 ????????
       BOSS_HEADER_GFX $40, $14, bossGfxDavias, data_04_79f3, data_04_7c3a ;; 04:47a1 ????????
       dw data_04_4a01, data_04_4edb, data_04_4edb, data_04_5575 ;; 04:47a9 ????????
-    BOSS_HEADER $04, $8f, $60, $a0, $06, $16, $0246    ;; 04:47b1 ????????
+    BOSS_HEADER $04, $8f, $60, $a0, $06, $16, script_0246 ;; 04:47b1 ????????
       BOSS_HEADER_GFX $40, $10, bossGfxGolem, data_04_7987, data_04_7c70 ;; 04:47b9 ????????
       dw data_04_4a41, data_04_4ee7, data_04_4ee7, data_04_5473 ;; 04:47c1 ????????
-    BOSS_HEADER $06, $6f, $46, $3c, $07, $ff, $0247    ;; 04:47c9 ????????
+    BOSS_HEADER $06, $6f, $46, $3c, $07, $ff, script_0247 ;; 04:47c9 ????????
       BOSS_HEADER_GFX $30, $1d, bossGfxCyclops, data_04_7a37, data_04_7cd6 ;; 04:47d1 ????????
       dw data_04_4ac9, data_04_4fdd, data_04_4fdd, data_04_5435 ;; 04:47d9 ????????
-    BOSS_HEADER $04, $70, $14, $58, $06, $23, $0246    ;; 04:47e1 ????????
+    BOSS_HEADER $04, $70, $14, $58, $06, $23, script_0246 ;; 04:47e1 ????????
       BOSS_HEADER_GFX $40, $18, bossGfxChimera, data_04_7987, data_04_7d06 ;; 04:47e9 ????????
       dw data_04_4b01, data_04_504d, data_04_504d, data_04_55b3 ;; 04:47f1 ????????
-    BOSS_HEADER $08, $79, $a6, $78, $09, $0d, $024f    ;; 04:47f9 ????????
+    BOSS_HEADER $08, $79, $a6, $78, $09, $0d, script_024f ;; 04:47f9 ????????
       BOSS_HEADER_GFX $3c, $1a, bossGfxKary, data_04_7a71, data_04_7d36 ;; 04:4801 ????????
       dw data_04_4b31, data_04_509f, data_04_509f, data_04_56b2 ;; 04:4809 ????????
-    BOSS_HEADER $0c, $7d, $be, $78, $0a, $14, $0247    ;; 04:4811 ????????
+    BOSS_HEADER $0c, $7d, $be, $78, $0a, $14, script_0247 ;; 04:4811 ????????
       BOSS_HEADER_GFX $3a, $1b, bossGfxKraken, data_04_7b51, data_04_7ec8 ;; 04:4819 ????????
       dw data_04_4c71, data_04_5231, data_04_4dfd, data_04_56b9 ;; 04:4821 ????????
-    BOSS_HEADER $06, $92, $c8, $fa, $07, $16, $0247    ;; 04:4829 ????????
+    BOSS_HEADER $06, $92, $c8, $fa, $07, $16, script_0247 ;; 04:4829 ????????
       BOSS_HEADER_GFX $40, $18, bossGfxIflyte, data_04_79c7, data_04_7d78 ;; 04:4831 ????????
       dw data_04_4b79, data_04_50f1, data_04_50f1, data_04_566d ;; 04:4839 ????????
-    BOSS_HEADER $0a, $76, $b2, $c8, $07, $22, $0247    ;; 04:4841 ????????
+    BOSS_HEADER $0a, $76, $b2, $c8, $07, $22, script_0247 ;; 04:4841 ????????
       BOSS_HEADER_GFX $38, $1c, bossGfxLich, data_04_7b19, data_04_7e74 ;; 04:4849 ????????
       dw data_04_4c39, data_04_5171, data_04_5171, data_04_5435 ;; 04:4851 ????????
-    BOSS_HEADER $04, $bb, $d2, $fa, $08, $21, $0247    ;; 04:4859 ????????
+    BOSS_HEADER $04, $bb, $d2, $fa, $08, $21, script_0247 ;; 04:4859 ????????
       BOSS_HEADER_GFX $34, $1e, bossGfxGaruda, data_04_7aa5, data_04_7dc6 ;; 04:4861 ????????
       dw data_04_4bb1, data_04_5127, data_04_5127, data_04_5435 ;; 04:4869 ????????
-    BOSS_HEADER $08, $6a, $00, $fa, $09, $14, $024f    ;; 04:4871 ????????
+    BOSS_HEADER $08, $6a, $00, $fa, $09, $14, script_024f ;; 04:4871 ????????
       BOSS_HEADER_GFX $38, $1c, bossGfxDragon, data_04_7ae1, data_04_7e20 ;; 04:4879 ????????
       dw data_04_4bf1, data_04_5165, data_04_5165, data_04_56ab ;; 04:4881 ????????
-    BOSS_HEADER $05, $da, $00, $a0, $0b, $24, $0246    ;; 04:4889 ????????
+    BOSS_HEADER $05, $da, $00, $a0, $0b, $24, script_0246 ;; 04:4889 ????????
       BOSS_HEADER_GFX $40, $12, bossGfxJulius, data_04_7a13, data_04_7c9a ;; 04:4891 ????????
       dw data_04_4a71, data_04_4f77, data_04_4f77, data_04_55f1 ;; 04:4899 ????????
-    BOSS_HEADER $08, $ce, $00, $fa, $07, $27, $0247    ;; 04:48a1 ????????
+    BOSS_HEADER $08, $ce, $00, $fa, $07, $27, script_0247 ;; 04:48a1 ????????
       BOSS_HEADER_GFX $40, $18, bossGfxDragonZombie, data_04_7957, data_04_7bd1 ;; 04:48a9 ????????
       dw data_04_49a9, data_04_4e37, data_04_4e37, data_04_54bb ;; 04:48b1 ????????
-    BOSS_HEADER $05, $02, $00, $00, $06, $16, $0246    ;; 04:48b9 ........
+    BOSS_HEADER $05, $02, $00, $00, $06, $16, script_0246 ;; 04:48b9 ........
       BOSS_HEADER_GFX $40, $10, bossGfxJackal, data_04_7987, data_04_7c70 ;; 04:48c1 ........
       dw data_04_4d19, data_04_4f4d, data_04_4e15, data_04_5473 ;; 04:48c9 ........
-    BOSS_HEADER $04, $ff, $00, $a0, $08, $25, $0246    ;; 04:48d1 ????????
+    BOSS_HEADER $04, $ff, $00, $a0, $08, $25, script_0246 ;; 04:48d1 ????????
       BOSS_HEADER_GFX $40, $10, bossGfxJulius2, data_04_7b87, data_04_7f4f ;; 04:48d9 ????????
       dw data_04_4d49, data_04_531b, data_04_531b, data_04_562f ;; 04:48e1 ????????
-    BOSS_HEADER $0a, $51, $64, $64, $07, $16, $0247    ;; 04:48e9 ????????
+    BOSS_HEADER $0a, $51, $64, $64, $07, $16, script_0247 ;; 04:48e9 ????????
       BOSS_HEADER_GFX $40, $18, bossGfxMetalCrab, data_04_79c7, data_04_7d78 ;; 04:48f1 ????????
       dw data_04_4d89, data_04_50fd, data_04_50fd, data_04_566d ;; 04:48f9 ????????
-    BOSS_HEADER $08, $af, $c7, $dc, $06, $ff, $0246    ;; 04:4901 ????????
+    BOSS_HEADER $08, $af, $c7, $dc, $06, $ff, script_0246 ;; 04:4901 ????????
       BOSS_HEADER_GFX $40, $18, bossGfxMantisAnt, data_04_7987, data_04_7d06 ;; 04:4909 ????????
       dw data_04_4dc1, data_04_504d, data_04_504d, data_04_55b3 ;; 04:4911 ????????
-    BOSS_HEADER $08, $bb, $00, $fa, $09, $14, $024f    ;; 04:4919 ????????
+    BOSS_HEADER $08, $bb, $00, $fa, $09, $14, script_024f ;; 04:4919 ????????
       BOSS_HEADER_GFX $38, $1c, bossGfxDragon, data_04_7ae1, data_04_7e20 ;; 04:4921 ????????
       dw data_04_4bf1, data_04_5165, data_04_5165, data_04_56ab ;; 04:4929 ????????
 

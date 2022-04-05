@@ -45,7 +45,7 @@ class BossDataBlock(Block):
         
         RomInfo.macros["BOSS_HEADER"] = r"""
     db \1, \2, \3, \4, \5, \6
-    dw \7
+    SCRIPT_IDX \7
 """
         RomInfo.macros["BOSS_HEADER_GFX"] = r"""
     db \1, \2
@@ -53,7 +53,11 @@ class BossDataBlock(Block):
 """
 
     def export(self, file):
-        death_script_index = self.memory.word(file.addr + 6) # script index
+        script_index = self.memory.word(file.addr + 6)
+        script_pointer = RomInfo.romBank(0x08).word(0x4f05 + script_index * 2)
+        script_bank = RomInfo.romBank(0x0D + (script_pointer >> 14))
+        script_label = script_bank.getLabel((script_pointer & 0x3FFF) | 0x4000)
+        
         file.asmLine(8, "BOSS_HEADER",
             "$%02x" % (self.memory.byte(file.addr + 0)),
             "$%02x" % (self.memory.byte(file.addr + 1)),
@@ -61,7 +65,7 @@ class BossDataBlock(Block):
             "$%02x" % (self.memory.byte(file.addr + 3)),
             "$%02x" % (self.memory.byte(file.addr + 4)),
             "$%02x" % (self.memory.byte(file.addr + 5)),
-            "$%04x" % (death_script_index),
+            script_label,
             is_data=True
         )
         file.asmLine(8, "  BOSS_HEADER_GFX",

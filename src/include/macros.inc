@@ -1,7 +1,7 @@
 BOSS_HEADER: MACRO
 
     db \1, \2, \3, \4, \5, \6
-    dw \7
+    SCRIPT_IDX \7
 ENDM
 BOSS_HEADER_GFX: MACRO
 
