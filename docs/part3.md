@@ -57,3 +57,48 @@ And the text becomes pretty obvious in bank $0D and $0E now:
 
 ### There is trouble in the lands...
 
+Great we got strings. But, it looks off. There isn't a pointer pointing to the start of a string, and the strings aren't nicely lined up with each other. There are some pointers in bank `$08` pointing near the strings, but the offsets aren't the same.
+
+There is also the pattern of each piece of text starting with `$04 $10` and ending with `$00` before we see junk data again.
+
+Could it be... in a game this old?
+
+## Let there be light!
+
+And then an angel came down from the heavens and said "scripts". And it was glorious. It is the single most important discovery I made in the rom.
+There are scripts, and in these scripts there is text. And so, the long and complex task of decoding scripts began.
+
+Script opcode `$04` for example, is display message. And that's where all the text was comming from. Opcode '$00' was pretty clearly "end of script".
+
+Some opcodes where easy to find out what they did by just testing, like `$80` which makes the player step forwards. For every unknown opcode, I hacked it in the initial chase sequence script (using BGB's ability to edit the rom on the fly), and see how many opcodes after it are skipped.
+
+I also set out to write a [custom plugin](https://github.com/daid/FFA-Disassembly/blob/master/plugins/script.py) for the disassembler to decode these scripts.
+It evolved over time from something that decodes a few opcodes to a full decode, including IF statements and loops.
+
+# Let there be scripts!
+
+Ok. So there are scripts. There are a lot of scripts, 1283 to be exact. Some of them are empty, but that's a lot of scripts.
+
+And there is a good reason for so many scripts. Let's just see, what's all controlled by scripts?
+* Talking to NPCs (including shops, story NPCs and random NPCs)
+* Spawning of monsters
+* Spawning of bosses
+* Handling of special events when all monsters/boss is killed.
+* Story related events
+* Transitions from maps (doors/entrances)
+* Spawning of random chests from monsters
+* Opening of chests and giving items
+* Talking to your follower ("ask" option in the menu)
+* Death of the player
+* Ending credits
+
+## Triggers
+
+There are a few ways that a script can be triggered:
+* Entering a room
+* Exiting a room
+* Last enemy in a room is killed (not triggered if there are no enemies)
+* Opening a chest
+* Talking to an NPC
+* Killing an enemy
+* Killing a boss
