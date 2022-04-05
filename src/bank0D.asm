@@ -1266,7 +1266,7 @@ script_00e6:
       sPLAYER_STEP_FORWARD                             ;; 0d:46d5 $80
     sEND                                               ;; 0d:46d6 $00
     sSFX 16                                            ;; 0d:46d7 $f9 $10
-    sSET_ROOM_TILE $6c, 9, 5 ;sSET_ROOM_TILE $6c, 9, 5 ;; 0d:46d9 $b0 $6c $09 $05
+    sSET_ROOM_TILE $6c, 9, 5                           ;; 0d:46d9 $b0 $6c $09 $05
     sDELAY 30                                          ;; 0d:46dd $f0 $1e
     sSET_PLAYER_DIRECTION_UP                           ;; 0d:46df $84
     sDELAY 20                                          ;; 0d:46e0 $f0 $14

@@ -52,8 +52,8 @@ def drawMetaTile(img, x, y, metatile_data_addr, gfx_offset, meta_tile):
     metatile_type_info1 = rom.getByte(0x08, metatile_data_addr + meta_tile * 6 + 4)
     metatile_type_info2 = rom.getByte(0x08, metatile_data_addr + meta_tile * 6 + 5)
     # Draw metatile type info
-    if metatile_type_info2 not in {0x04, 0x05}:
-        drawText(img, x * 32, y * 32 + 8, "%02x %02x" % (metatile_type_info1, metatile_type_info2))
+    #if metatile_type_info2 not in {0x04, 0x05}:
+    #    drawText(img, x * 32, y * 32 + 8, "%02x %02x" % (metatile_type_info1, metatile_type_info2))
 
 for map_nr in range(16):
     addr = map_nr * 11
