@@ -122,3 +122,25 @@ metatilesOutdoor:
     db   $27, $10, $10, $10, $c0, $07
     ...124 more entries
 ```
+
+The first 4 bytes are a 8x8 tile index into the graphics. Which graphics? Well. The graphics pointed at by the pointer in the general header:
+```asm
+MAP_HEADER tilesetGfxOutdoor, $00, metatilesOutdoor, $80, mapRoomPointers_00, $d7, $3c
+```
+The `tilesetGfxOutdoor` pointer in this case, which is a bank-encoded pointer, starting from bank `$0B`. And this points to a 256 tile large graphics block. Any tile from that graphics block can be used for a metatile.
+
+Byte 4: not entirely sure, but collision related, should test with enemies to see if certain options are related to NPCs?
+* $00-$07: blocks player
+* $08: player can walk on it
+* $10: player can walk on bottom left and bottom right corners
+* $20: player can walk on top left and top right corners
+* $30: player can walk on it
+* $40: blocks player
+* $80: blocks player
+* $C0: blocks player
+* $F0: player can walk on it
+Byte 5: Still needs more investigation, general guess:
+* $04: Weapon interaction, byte4 lower nibble indicates which method (1=attach chain, 4=chop by axe, 6=destroy with sickle), but also sometimes is $00 for things like palmtrees and mountains?
+* $07: Water
+* $45 $55 $65 $75: Ice slide tiles or mine cart tiles
+* $0D: climbing tiles (player faces up always)
