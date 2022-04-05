@@ -6,7 +6,7 @@ title: Part3 - Where are the string tables?... OMG...
 
 Prepare for a wild ride!
 
-String tables. FFA contains a lot of text, many dialogs with NPCs, story related text. A lot of text. Comming from LADX, I expected a stringtable.
+String tables. FFA contains a lot of text, many dialogs with NPCs, story related text. A lot of text. Coming from LADX, I expected a stringtable.
 After all [LADX has multiple stringtables](https://github.com/zladx/LADX-Disassembly/tree/main/src/text).
 
 But, looking at the rom with a hex editor, no [ascii](https://en.wikipedia.org/wiki/ASCII) to be found. Must be some custom encoding.
@@ -138,9 +138,10 @@ endm
 Except. When it isn't. Remember the triggers? Two of them are special, the others have direct index numbers in the code. But these two:
 * Exiting a room
 * Last enemy in a room is killed (not triggered if there are no enemies)
+* 
 These have no direct reference in the code, they are implicit. How implicit? Well, if the room enter script has script index `$01a6` then the exit script has index `$01a7` and the kill last monster script has index `$01a8`.
 
-So that is a bit annoying for clearity.
+So that is a bit annoying for clarity.
 
 # And so?
 
