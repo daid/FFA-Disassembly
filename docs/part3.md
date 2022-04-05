@@ -92,7 +92,9 @@ And there is a good reason for so many scripts. Let's just see, what's all contr
 * Death of the player
 * Ending credits
 
-## Triggers
+Now, the rules behind scripts are reasonably easy. Only one runs at the same time, and while one is running player input is blocked.
+
+## Triggering a script.
 
 There are a few ways that a script can be triggered:
 * Entering a room
@@ -102,3 +104,37 @@ There are a few ways that a script can be triggered:
 * Talking to an NPC
 * Killing an enemy
 * Killing a boss
+
+Next, scripts aren't triggered directly by a pointer to the script. But by an index in the script function table.
+This table is located at `src/data/scriptPointers.asm` in the disassembly.
+
+Now, dealing with these index numbers directly in the assembly is annoying. So. I added a bunch of macro magic to the disassembly.
+It's a pretty simple trick. We add labels to each of the entries in the scriptpointers table:
+```asm
+SCRIPT_POINTER: macro
+  __script_pointer_\\1::\n  dw ((\\1 - $4000) + ((BANK(\\1) - $0D) * $4000))
+endm
+
+scriptPointersTable:
+  SCRIPT_POINTER script_0000
+  SCRIPT_POINTER script_0001
+```
+This will create a `__script_pointer_script_XXXX` label at the each of the entries in the table.
+And then the following macro can then insert an index to a script from a script label:
+```asm
+SCRIPT_IDX: macro
+  dw (__script_pointer_\1 - scriptPointersTable) / 2
+endm
+```
+
+## And all is well....
+
+Except. When it isn't. Remember the triggers? Two of them are special, the others have direct index numbers in the code. But these two:
+* Exiting a room
+* Last enemy in a room is killed (not triggered if there are no enemies)
+These have no direct reference in the code, they are implicit. How implicit? Well, if the room enter script has script index `$01a6` then the exit script has index `$01a7` and the kill last monster script has index `$01a8`.
+
+So that is a bit annoying for clearity.
+
+# What about enemies?
+
