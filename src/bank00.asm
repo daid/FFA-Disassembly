@@ -434,7 +434,7 @@ call_00_02eb:
     call call_00_0313                                  ;; 00:02ef $cd $13 $03
     ret                                                ;; 00:02f2 $c9
 
-call_00_02f3:
+loadLCDCEffectBuffer:
     ld   E, B                                          ;; 00:02f3 $58
     ld   D, $00                                        ;; 00:02f4 $16 $00
     add  HL, DE                                        ;; 00:02f6 $19

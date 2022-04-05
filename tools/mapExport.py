@@ -49,9 +49,11 @@ def drawMetaTile(img, x, y, metatile_data_addr, gfx_offset, meta_tile):
             tile_nr = rom.getByte(0x08, metatile_data_addr + meta_tile * 6 + tx + ty * 2)
             drawTile(img, x * 32 + tx * 16, y * 32 + ty * 16, 0x0C, gfx_offset + tile_nr * 16)
 
-    metatile_type_info = rom.getWord(0x08, metatile_data_addr + meta_tile * 6 + 4)
+    metatile_type_info1 = rom.getByte(0x08, metatile_data_addr + meta_tile * 6 + 4)
+    metatile_type_info2 = rom.getByte(0x08, metatile_data_addr + meta_tile * 6 + 5)
     # Draw metatile type info
-    # drawText(img, x * 32, y * 32, "%04x" % (unknown))
+    if metatile_type_info2 not in {0x04, 0x05}:
+        drawText(img, x * 32, y * 32 + 8, "%02x %02x" % (metatile_type_info1, metatile_type_info2))
 
 for map_nr in range(16):
     addr = map_nr * 11
@@ -59,6 +61,15 @@ for map_nr in range(16):
     if gfx_offset >= 0x4000:
         gfx_offset -= 0x8000
     metatile_data_addr = rom.getWord(0x08, addr + 3) - 0x4000
+    
+    print("Map %02x" % (map_nr))
+    r = {}
+    for n in range(256):
+        d = rom.getByte(0x08, metatile_data_addr + n * 6 + 5)
+        r[d] = r.get(d, 0) + 1
+    for k, v in sorted(r.items()):
+        print("%02x: %d" % (k, v))
+
     map_bank = rom.getByte(0x08, addr + 6)
     map_data_addr = rom.getWord(0x08, addr + 7) - 0x4000
     
@@ -78,7 +89,7 @@ for map_nr in range(16):
     img.draw = PIL.ImageDraw.Draw(img)
     
     for ry in range(h):
-        print(map_nr, ry, h)
+        #print(map_nr, ry, h)
         for rx in range(w):
             map_script_addr = rom.getWord(map_bank, map_data_addr + 0) - 0x4000
             map_tiledata_addr = rom.getWord(map_bank, map_data_addr + 2) - 0x4000

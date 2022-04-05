@@ -62,7 +62,7 @@ call_01_4059:
     ld   [wVideoLCDC], A                               ;; 01:4065 $ea $a5 $c0
     ld   HL, data_01_4050                              ;; 01:4068 $21 $50 $40
     ld   B, $09                                        ;; 01:406b $06 $09
-    call call_00_02f3                                  ;; 01:406d $cd $f3 $02
+    call loadLCDCEffectBuffer                          ;; 01:406d $cd $f3 $02
     ld   HL, $4260                                     ;; 01:4070 $21 $60 $42
     ld   DE, $8f00                                     ;; 01:4073 $11 $00 $8f
     ld   A, $0c                                        ;; 01:4076 $3e $0c
@@ -112,7 +112,7 @@ data_01_40b1:
 call_01_40ca:
     ld   HL, data_01_40b1                              ;; 01:40ca $21 $b1 $40
     ld   B, $19                                        ;; 01:40cd $06 $19
-    call call_00_02f3                                  ;; 01:40cf $cd $f3 $02
+    call loadLCDCEffectBuffer                          ;; 01:40cf $cd $f3 $02
     ld   A, $00                                        ;; 01:40d2 $3e $00
     ld   [wVideoBGP], A                                ;; 01:40d4 $ea $aa $c0
     ret                                                ;; 01:40d7 $c9
@@ -235,7 +235,7 @@ data_01_419c:
     ld   HL, data_01_4116                              ;; 01:41b0 $21 $16 $41
 .jr_01_41b3:
     ld   B, $0d                                        ;; 01:41b3 $06 $0d
-    call call_00_02f3                                  ;; 01:41b5 $cd $f3 $02
+    call loadLCDCEffectBuffer                          ;; 01:41b5 $cd $f3 $02
     ld   A, [wVideoLCDC]                               ;; 01:41b8 $fa $a5 $c0
     ld   [wD49C], A                                    ;; 01:41bb $ea $9c $d4
     and  A, $fc                                        ;; 01:41be $e6 $fc
@@ -549,7 +549,7 @@ data_01_43a3:
     ld   HL, data_01_4116                              ;; 01:43d6 $21 $16 $41
 .jr_01_43d9:
     ld   B, $0d                                        ;; 01:43d9 $06 $0d
-    call call_00_02f3                                  ;; 01:43db $cd $f3 $02
+    call loadLCDCEffectBuffer                          ;; 01:43db $cd $f3 $02
     ld   HL, wScriptOpCounter                          ;; 01:43de $21 $99 $d4
     inc  [HL]                                          ;; 01:43e1 $34
     ld   A, $23                                        ;; 01:43e2 $3e $23
@@ -612,7 +612,7 @@ data_01_4422:
     ld   HL, data_01_4116                              ;; 01:4437 $21 $16 $41
 .jr_01_443a:
     ld   B, $0d                                        ;; 01:443a $06 $0d
-    call call_00_02f3                                  ;; 01:443c $cd $f3 $02
+    call loadLCDCEffectBuffer                          ;; 01:443c $cd $f3 $02
     ld   HL, wScriptOpCounter                          ;; 01:443f $21 $99 $d4
     inc  [HL]                                          ;; 01:4442 $34
     ld   A, $23                                        ;; 01:4443 $3e $23
@@ -633,7 +633,7 @@ data_01_4456:
     ld   HL, data_01_4116                              ;; 01:4461 $21 $16 $41
 .jr_01_4464:
     ld   B, $0d                                        ;; 01:4464 $06 $0d
-    call call_00_02f3                                  ;; 01:4466 $cd $f3 $02
+    call loadLCDCEffectBuffer                          ;; 01:4466 $cd $f3 $02
     ld   HL, wScriptOpCounter                          ;; 01:4469 $21 $99 $d4
     inc  [HL]                                          ;; 01:446c $34
     ld   A, $23                                        ;; 01:446d $3e $23
