@@ -73,10 +73,12 @@ There are scripts, and in these scripts there is text. And so, the long and comp
 
 Script opcode `$04` for example, is display message. And that's where all the text was comming from. Opcode '$00' was pretty clearly "end of script".
 
-Some opcodes where easy to find out what they did by just testing, like `$80` which makes the player step forwards. For every unknown opcode, I hacked it in the initial chase sequence script (using BGB's ability to edit the rom on the fly), and see how many opcodes after it are skipped.
+Some opcodes where easy to find out what they did by just testing, like `$80` which makes the player step forwards. For every unknown opcode, I hacked it in the initial chase sequence script (using BGB's ability to edit the rom on the fly), and see how many opcodes after it are skipped. This gave me enough info to at least decode an unknown upcode with parameters.
 
-I also set out to write a [custom plugin](https://github.com/daid/FFA-Disassembly/blob/master/plugins/script.py) for the disassembler to decode these scripts.
+So I set out to write a [custom plugin](https://github.com/daid/FFA-Disassembly/blob/master/plugins/script.py) for the disassembler to decode these scripts.
 It evolved over time from something that decodes a few opcodes to a full decode, including IF statements and loops.
+
+Special thanks to marijnvdwerf, who noticed that all jumps in the code where always forward, and seemed to follow a strict IF/ELSE/ENDIF structure. Which is now what the actual disassembly contains, as it was a perfect fit.
 
 # Let there be scripts!
 
