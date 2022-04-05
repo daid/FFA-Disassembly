@@ -92,3 +92,13 @@ And there is a good reason for so many scripts. Let's just see, what's all contr
 * Death of the player
 * Ending credits
 
+## Triggers
+
+There are a few ways that a script can be triggered:
+* Entering a room
+* Exiting a room
+* Last enemy in a room is killed (not triggered if there are no enemies)
+* Opening a chest
+* Talking to an NPC
+* Killing an enemy
+* Killing a boss
