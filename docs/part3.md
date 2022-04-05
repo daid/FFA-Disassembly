@@ -14,11 +14,14 @@ But, looking at the rom with a hex editor, no [ascii](https://en.wikipedia.org/w
 ## Text encoding...
 
 ![image](https://user-images.githubusercontent.com/964186/161773944-930d9ea0-3f56-4166-9c88-dbddbca7d22f.png)
+
 Looking at the BGB VRAM viewer (note: I love the BGB VRAM viewer. You should as well, it's great for understanding what games are doing under the hood)
 We can see that there is some font loaded, and that it doesn't follow ascii ordering. What would be the odds of those tile numbers directly being
 related to how the text is encoded....
 
-Well, the odds are bad. But, not horrible, debugging the code that draws a single character, we spot an `add $80`.
+Well, the odds are bad. Decoding it with that encoding yields only random noise, nothing that resembles ingame text could be spotted.
+
+But, not horrible, debugging the code that draws a single character, we spot an `add $80` somewhere in the code before it's written out to VRAM.
 So, trying an `$80` offset to the tile numbering in VRAM gives us... something. But not a lot.
 
 We find a few bits and pieces in bank `$0D` and `$0E`, but it's pretty corrupt, best piece would be:
