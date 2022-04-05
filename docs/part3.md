@@ -105,6 +105,7 @@ There are a few ways that a script can be triggered:
 * Entering a room
 * Exiting a room
 * Last enemy in a room is killed (not triggered if there are no enemies)
+* Walking on a specific tile in a room
 * Opening a chest
 * Talking to an NPC
 * Killing an enemy
