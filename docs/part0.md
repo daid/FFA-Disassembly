@@ -62,6 +62,12 @@ Some things are really easy to identify in this image. Graphics are obviously in
 
 Compare it with the [image of LADX](img/romgfxLADX.png), which clearly contains sections of nothing. And also data clearly in specific banks.
 
+Also, the following resources are pretty much required to have partially fixed in your mind:
+* [pandocs](https://gbdev.io/pandocs/) reference manual on anything gameboy hardware related. How rendering works, audio works, interrupts, anything.
+* [gbz80 instrution reference](https://rgbds.gbdev.io/docs/gbz80.7) details on all the possible assembly instructions
+* [rgbds manual](https://rgbds.gbdev.io/docs/rgbasm.5) details on the assembly language I use
+* [opcode table](https://gbdev.io/gb-opcodes/optables/) table of all possible opcodes and which byte value belongs to them
+
 # Closing word
 
 So, that's it for main tools. Next up, starting the work...
