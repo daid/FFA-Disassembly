@@ -99,7 +99,7 @@ map02_room03_00_tiles:
 The first 4 bytes are "doors", in the order of right/left/up/down this indicate how a wall on that direction should be. If it should be a door or not, and if the door is open.
 
 * Bits0-1: Indicate the type. 0=open, 1=closed, 2=wall
-* Bits2-7: Unknown, bits 2 and 3 have been seen as 1.
+* Bits2-7: If non-zero, then this doorway is an exit out of the map.
 
 The first 2 bits are used to select a row from the "door tiles", two tiles are used from this and placed on the wall. So in the example, if the up byte was $01, it would place tile `$12` and `$13` at the top row tiles to draw an closed door.
 
