@@ -118,28 +118,14 @@ entry:
     jp   FullReset                                     ;; 00:0101 $c3 $50 $01
 
 Header:
-    NINTENDO_LOGO                                      ;; 00:0104 ????????????????????????????????????????????????
-
-HeaderTitle:
-    db   $53, $45, $49, $4b, $45, $4e, $20, $44, $45, $4e, $53, $45, $54, $53, $55 ;; 00:0134 ???????????????
-
-HeaderGBCFlag:
-    db   $00                                           ;; 00:0143 ?
-
-HeaderNewLicenseCode:
+    ds   $30                                           ;; 00:0104
+    db   "SEIKEN DENSETSU"                             ;; 00:0134
+    db   CART_COMPATIBLE_DMG                           ;; 00:0143
     db   $00, $00                                      ;; 00:0144 ??
-
-HeaderSGBFlag:
-    db   $00                                           ;; 00:0146 ?
-
-HeaderCardType:
-    db   $06, $03, $00                                 ;; 00:0147 ???
-
-HeaderWorldOrJapanFlag:
-    db   $01, $c3, $00                                 ;; 00:014a ???
-
-HeaderChecksum:
-    ds   3                                             ;; 00:014d ???
+    db   CART_INDICATOR_GB                             ;; 00:0146
+    db   CART_ROM_MBC2_BAT, CART_ROM_256KB, CART_SRAM_NONE ;; 00:0147
+    db   CART_DEST_NON_JAPANESE, $c3, $00              ;; 00:014a $01 $c3 $00
+    ds   3                                             ;; 00:014d
 
 SECTION "bank00_0150", ROM0[$0150]
 
