@@ -132,9 +132,9 @@ call_02_40c9:
     and  A, $01                                        ;; 02:40d1 $e6 $01
     jr   NZ, .jr_02_40ed                               ;; 02:40d3 $20 $18
     ld   DE, wD170                                     ;; 02:40d5 $11 $70 $d1
-    ld   A, [wMapHeaderPointer.High]                   ;; 02:40d8 $fa $91 $d3
+    ld   A, [wMapGraphicsPointer.High]                 ;; 02:40d8 $fa $91 $d3
     ld   H, A                                          ;; 02:40db $67
-    ld   A, [wMapHeaderPointer]                        ;; 02:40dc $fa $90 $d3
+    ld   A, [wMapGraphicsPointer]                      ;; 02:40dc $fa $90 $d3
     ld   L, A                                          ;; 02:40df $6f
     ld   A, C                                          ;; 02:40e0 $79
     and  A, $40                                        ;; 02:40e1 $e6 $40
@@ -146,9 +146,9 @@ call_02_40c9:
     ret                                                ;; 02:40ec $c9
 .jr_02_40ed:
     ld   DE, wD174                                     ;; 02:40ed $11 $74 $d1
-    ld   A, [wMapHeaderPointer.High]                   ;; 02:40f0 $fa $91 $d3
+    ld   A, [wMapGraphicsPointer.High]                 ;; 02:40f0 $fa $91 $d3
     ld   H, A                                          ;; 02:40f3 $67
-    ld   A, [wMapHeaderPointer]                        ;; 02:40f4 $fa $90 $d3
+    ld   A, [wMapGraphicsPointer]                      ;; 02:40f4 $fa $90 $d3
     ld   L, A                                          ;; 02:40f7 $6f
     ld   A, C                                          ;; 02:40f8 $79
     and  A, $40                                        ;; 02:40f9 $e6 $40

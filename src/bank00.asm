@@ -4531,9 +4531,9 @@ call_00_1acd:
 
 call_00_1af3:
     ld   A, H                                          ;; 00:1af3 $7c
-    ld   [wMapHeaderPointer.High], A                   ;; 00:1af4 $ea $91 $d3
+    ld   [wMapGraphicsPointer.High], A                 ;; 00:1af4 $ea $91 $d3
     ld   A, L                                          ;; 00:1af7 $7d
-    ld   [wMapHeaderPointer], A                        ;; 00:1af8 $ea $90 $d3
+    ld   [wMapGraphicsPointer], A                      ;; 00:1af8 $ea $90 $d3
     ld   A, D                                          ;; 00:1afb $7a
     ld   [wTileDataTablePointer.High], A               ;; 00:1afc $ea $93 $d3
     ld   A, E                                          ;; 00:1aff $7b
@@ -4698,15 +4698,16 @@ call_00_1ba1:
     pop  DE                                            ;; 00:1be0 $d1
     push DE                                            ;; 00:1be1 $d5
     push HL                                            ;; 00:1be2 $e5
-    ld   HL, unlabeled_2e90                            ;; 00:1be3 $21 $90 $2e
+; Not a pointer, not sure what the constant is used for. But this code has to do something with loading graphics for the background map.
+    ld   HL, $2e90                                     ;; 00:1be3 $21 $90 $2e
     add  HL, DE                                        ;; 00:1be6 $19
     add  HL, HL                                        ;; 00:1be7 $29
     add  HL, HL                                        ;; 00:1be8 $29
     add  HL, HL                                        ;; 00:1be9 $29
     add  HL, HL                                        ;; 00:1bea $29
-    ld   A, [wMapHeaderPointer.High]                   ;; 00:1beb $fa $91 $d3
+    ld   A, [wMapGraphicsPointer.High]                 ;; 00:1beb $fa $91 $d3
     ld   D, A                                          ;; 00:1bee $57
-    ld   A, [wMapHeaderPointer]                        ;; 00:1bef $fa $90 $d3
+    ld   A, [wMapGraphicsPointer]                      ;; 00:1bef $fa $90 $d3
     ld   E, A                                          ;; 00:1bf2 $5f
     add  HL, DE                                        ;; 00:1bf3 $19
     pop  DE                                            ;; 00:1bf4 $d1
@@ -4723,9 +4724,9 @@ call_00_1ba1:
     push HL                                            ;; 00:1c05 $e5
     ld   DE, hOAM_DMA_Routine                          ;; 00:1c06 $11 $80 $ff
     add  HL, DE                                        ;; 00:1c09 $19
-    ld   A, [wMapHeaderPointer.High]                   ;; 00:1c0a $fa $91 $d3
+    ld   A, [wMapGraphicsPointer.High]                 ;; 00:1c0a $fa $91 $d3
     ld   D, A                                          ;; 00:1c0d $57
-    ld   A, [wMapHeaderPointer]                        ;; 00:1c0e $fa $90 $d3
+    ld   A, [wMapGraphicsPointer]                      ;; 00:1c0e $fa $90 $d3
     ld   E, A                                          ;; 00:1c11 $5f
     call sub_HL_DE                                     ;; 00:1c12 $cd $ab $2b
     pop  BC                                            ;; 00:1c15 $c1
@@ -7524,11 +7525,8 @@ addTileGraphicCopyRequest:
     db   $cd, $32, $2e, $21, $e0, $c5, $f1, $22        ;; 00:2e72 ????????
     db   $22, $d1, $73, $23, $72, $23, $d1, $73        ;; 00:2e7a ????????
     db   $23, $72, $21, $e0, $c8, $34, $21, $e1        ;; 00:2e82 ????????
-    db   $c8, $35, $c9, $20, $02, $00                  ;; 00:2e8a ??????
-
-unlabeled_2e90:
-    db   $00, $00, $02, $00, $00, $02, $00, $00        ;; 00:2e90 ??????..
-    db   $02                                           ;; 00:2e98 .
+    db   $c8, $35, $c9, $20, $02, $00, $00, $00        ;; 00:2e8a ????????
+    db   $02, $00, $00, $02, $00, $00, $02             ;; 00:2e92 ????...
 
 unlabeled_2e99:
     db   $20, $0a, $08, $00, $08, $0a, $40, $08        ;; 00:2e99 ........

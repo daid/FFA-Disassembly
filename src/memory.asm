@@ -638,7 +638,8 @@ wD38E:
 wD38F:
     ds 1                                               ;; d38f
 
-wMapHeaderPointer:
+; Points to graphics in bank $0B or $0C as a packed pointer from the map header.
+wMapGraphicsPointer:
     ds 1                                               ;; d390
 .High:
     ds 1                                               ;; d391
