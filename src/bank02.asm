@@ -1268,26 +1268,26 @@ call_02_498c:
     ld   A, $2c                                        ;; 02:498c $3e $2c
     jp   jp_02_5877                                    ;; 02:498e $c3 $77 $58
 
-;@data format=bbbbp amount=1
+;@data format=pbbp amount=1
 data_02_4991:
-    data_bbbbp $f9, $7d, $1e, $ff, nameEntryInputOptions ;; 02:4991 ......
+    data_pbbp boyLabel, $1e, $ff, nameEntryInputOptions ;; 02:4991 ......
 
-;@data format=bbbbp amount=2
+;@data format=pbbp amount=2
 data_02_4997:
-    data_bbbbp $e5, $7d, $0a, $54, $d558               ;; 02:4997 ....pP
-    data_bbbbp $f1, $d6, $00, $ff, data_02_7cf6        ;; 02:499d ......
+    data_pbbp statusEffectLabels, $0a, $54, $d558      ;; 02:4997 ....pP
+    data_pbbp wD6F1, $00, $ff, data_02_7cf6            ;; 02:499d ......
 
-;@data format=bbbbp amount=2
+;@data format=pbbp amount=2
 data_02_49a3:
-    data_bbbbp $5d, $7d, $0c, $01, $d612               ;; 02:49a3 ....pP
-    data_bbbbp $00, $00, $0b, $ff, data_02_7d8e        ;; 02:49a9 ......
+    data_pbbp data_02_7d5d, $0c, $01, $d612            ;; 02:49a3 ....pP
+    data_pbbp $0000, $0b, $ff, data_02_7d8e            ;; 02:49a9 ......
 
-;@data format=bbbbp amount=4
+;@data format=pbbp amount=4
 data_02_49af:
-    data_bbbbp $9c, $7d, $13, $01, $d612               ;; 02:49af ....pP
-    data_bbbbp $00, $00, $14, $01, $d612               ;; 02:49b5 ....pP
-    data_bbbbp $b3, $7d, $1a, $01, $d612               ;; 02:49bb ....pP
-    data_bbbbp $dd, $d7, $15, $ff, $0000               ;; 02:49c1 ......
+    data_pbbp data_02_7d9c, $13, $01, $d612            ;; 02:49af ....pP
+    data_pbbp $0000, $14, $01, $d612                   ;; 02:49b5 ....pP
+    data_pbbp data_02_7db3, $1a, $01, $d612            ;; 02:49bb ....pP
+    data_pbbp wD7DD, $15, $ff, $0000                   ;; 02:49c1 ......
 
 call_02_49c7:
     ld   A, [wD84A]                                    ;; 02:49c7 $fa $4a $d8
@@ -4097,7 +4097,7 @@ data_02_5d0e:
     dw   data_02_64ca                                  ;; 02:5d42 ..
     dw   $0000                                         ;; 02:5d44 ..
     dw   $0000                                         ;; 02:5d46 ..
-    dw   data_02_7df9                                  ;; 02:5d48 ..
+    dw   boyLabel                                      ;; 02:5d48 ..
     dw   nameEntryInputOptions                         ;; 02:5d4a ..
     dw   data_02_7e52                                  ;; 02:5d4c ..
     dw   statusEffectLabels                            ;; 02:5d4e ??
@@ -4171,7 +4171,7 @@ data_02_5d96:
     dw   wD7DD                                         ;; 02:5dca ..
     dw   $0000                                         ;; 02:5dcc ..
     dw   $0000                                         ;; 02:5dce ..
-    dw   data_02_7df9                                  ;; 02:5dd0 ..
+    dw   boyLabel                                      ;; 02:5dd0 ..
     dw   nameEntryInputOptions                         ;; 02:5dd2 ..
     dw   data_02_7e52                                  ;; 02:5dd4 ..
     dw   $d7dc                                         ;; 02:5dd6 ??
@@ -7950,7 +7950,7 @@ statusEffectLabels:
     TXT  "Good"                                        ;; 02:7df5 ....
 
 ;@ffa_text size=4 amount=1
-data_02_7df9:
+boyLabel:
     TXT  "Boy<00>"                                     ;; 02:7df9 ....
 
 ;@ffa_text size=4 amount=1

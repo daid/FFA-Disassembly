@@ -111,10 +111,8 @@ shift
 dw \1
 shift
 ENDM
-data_bbbbp: MACRO
-db \1
-shift
-db \1
+data_pbbp: MACRO
+dw \1
 shift
 db \1
 shift
