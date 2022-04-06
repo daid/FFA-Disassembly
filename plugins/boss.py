@@ -42,6 +42,8 @@ class BossDataBlock(Block):
             BossPatternBlock(memory, attack_pattern_ptr)
         if memory[initial_pattern_ptr] is None:
             BossPatternBlock(memory, initial_pattern_ptr)
+        if memory[death_animation_ptr] is None:
+            BossDeathBlock(memory, death_animation_ptr)
         
         RomInfo.macros["BOSS_HEADER"] = r"""
     db \1, \2, \3, \4, \5, \6
@@ -121,6 +123,27 @@ class BossPatternBlock2(Block):
 
         if memory.byte(addr + 5) != 0xFF:
             BossPatternBlock2(memory, addr + 5)
+
+    def export(self, file):
+        file.asmLine(1, "db",
+            "$%02x" % (self.memory.byte(file.addr + 0)),
+            is_data=True
+        )
+        file.asmLine(4, "dw",
+            str(self.memory.getLabel(self.memory.word(file.addr + 0))),
+            str(self.memory.getLabel(self.memory.word(file.addr + 2))),
+            is_data=True
+        )
+
+class BossDeathBlock(Block):
+    def __init__(self, memory, addr):
+        super().__init__(memory, addr, size=5)
+        
+        for n in range(2):
+            memory.addAutoLabel(memory.word(addr + 1 + n * 2), None, "data")
+
+        if memory.byte(addr + 5) != 0xFF:
+            BossDeathBlock(memory, addr + 5)
 
     def export(self, file):
         file.asmLine(1, "db",
