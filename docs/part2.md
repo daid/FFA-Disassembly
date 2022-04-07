@@ -156,5 +156,26 @@ With all this, we can make a [script](https://github.com/daid/FFA-Disassembly/bl
 
 And then we discover that [map07](img/map07.png) isn't an actual playable map, but contains the title screen, ending screen and ingame map.
 
+Also, we can make this nice chart to illustate the structure:
+
+<div class="mermaid">
+graph LR
+    MapHeaders -->|pointer| TileGraphics
+    MapHeaders -->|pointer| MetaTiles
+    MapHeaders -->|pointer| RoomPointers
+    RoomPointers --> PerMapHeader
+    RoomPointers -->|pointer list| RoomTiles
+    RoomPointers -->|pointer list| RoomScriptData
+    RoomTiles -->|or| RLE[RLE Encoded]
+    RoomTiles -->|or| Templated
+    PerMapHeader --> RLESize[RLE Size]
+    PerMapHeader --> MapSize[Map Size: height,width]
+    PerMapHeader -->|optional| DoorTiles
+    PerMapHeader -->|optional pointer| RoomTemplate
+
+    RLE -->|List of| RLEEncoded[RLE Encoded rows]
+    Templated -->|List of| Tiles[Tile X,Y]
+</div>    
+    
 * Previous: [Part1 - Adventures of code](part1)
 * Next: [Part3 - Where are the string tables?... OMG...](part3)
