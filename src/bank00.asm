@@ -4955,7 +4955,8 @@ processBackgroundRenderRequests:
     call CopyHL_to_DE_size_BC                          ;; 00:1e6b $cd $40 $2b
     ret                                                ;; 00:1e6e $c9
 
-call_00_1e6f:
+; Request to copy B bytes from bank A address HL to DE
+requestCopyToVRAM:
     push DE                                            ;; 00:1e6f $d5
     push HL                                            ;; 00:1e70 $e5
     ld   C, A                                          ;; 00:1e71 $4f
@@ -4980,7 +4981,8 @@ call_00_1e6f:
     db   $3e, $01, $22, $78, $22, $78, $22, $d1        ;; 00:1e8f ????????
     db   $7b, $22, $72, $21, $e8, $ce, $34, $c9        ;; 00:1e97 ????????
 
-call_00_1e9f:
+; Put in a request to copy 2 bytes from DE to HL
+requestCopyTwoByteToVRAM:
     push HL                                            ;; 00:1e9f $e5
     push DE                                            ;; 00:1ea0 $d5
     call getNextBackgroundRequestSlot                  ;; 00:1ea1 $cd $ca $1d

@@ -339,10 +339,11 @@ wBackgroundDrawPositionX:
 wBackgroundDrawPositionY:
     ds 1                                               ;; c343
 
-wC344:
+;Sets the next room to be loaded on a screen transition.
+wNextRoomOverride:
     ds 1                                               ;; c344
 
-wC345:
+.x:
     ds 3                                               ;; c345
 
 wC348:
@@ -480,9 +481,15 @@ wStackPointerBackupLow:
 wStackPointerBackupHigh:
     ds 5                                               ;; c8e3
 
+; Blocks of 6 bytes:
+;0) Bank number to load from (change is skipped if >= $10)
+;1) Amount of bytes to copy (must be multiple of 2)
+;2-3) Source address
+;4-5) Destination address
 wBackgroundRenderRequests:
     ds 1536                                            ;; c8e8
 
+; Amount of entries in wBackgroundRenderRequests
 wBackgroundRenderRequestCount:
     ds 8                                               ;; cee8
 
