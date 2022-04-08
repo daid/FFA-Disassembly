@@ -188,8 +188,7 @@ scriptOpCodeA0:
     ret                                                ;; 00:019c $c9
 
 call_00_019d:
-    push AF                                            ;; 00:019d $f5
-    jp_to_bank 01, call_01_5136                        ;; 00:019e $3e $09 $c3 $d7 $1e
+    jp_to_bank 01, call_01_5136                        ;; 00:019d $f5 $3e $09 $c3 $d7 $1e
 
 scriptOpCodeA1:
     push HL                                            ;; 00:01a3 $e5
@@ -199,8 +198,7 @@ scriptOpCodeA1:
     ret                                                ;; 00:01ab $c9
 
 call_00_01ac:
-    push AF                                            ;; 00:01ac $f5
-    jp_to_bank 01, call_01_5156                        ;; 00:01ad $3e $0a $c3 $d7 $1e
+    jp_to_bank 01, call_01_5156                        ;; 00:01ac $f5 $3e $0a $c3 $d7 $1e
 
 scriptOpCodeA2:
     push HL                                            ;; 00:01b2 $e5
@@ -210,8 +208,7 @@ scriptOpCodeA2:
     ret                                                ;; 00:01ba $c9
 
 call_00_01bb:
-    push AF                                            ;; 00:01bb $f5
-    jp_to_bank 01, call_01_5176                        ;; 00:01bc $3e $0b $c3 $d7 $1e
+    jp_to_bank 01, call_01_5176                        ;; 00:01bb $f5 $3e $0b $c3 $d7 $1e
 
 scriptOpCodeSetPlayerNormalSprite:
     push HL                                            ;; 00:01c1 $e5
@@ -221,8 +218,7 @@ scriptOpCodeSetPlayerNormalSprite:
     ret                                                ;; 00:01c9 $c9
 
 call_00_01ca:
-    push AF                                            ;; 00:01ca $f5
-    jp_to_bank 01, call_01_50f9                        ;; 00:01cb $3e $08 $c3 $d7 $1e
+    jp_to_bank 01, call_01_50f9                        ;; 00:01ca $f5 $3e $08 $c3 $d7 $1e
 
 scriptOpCodeA3:
     ld   A, [wC4D4]                                    ;; 00:01d0 $fa $d4 $c4
@@ -284,36 +280,28 @@ call_00_0226:
     ret                                                ;; 00:022b $c9
 
 runMainInputHandler_trampoline:
-    push AF                                            ;; 00:022c $f5
-    jp_to_bank 01, runMainInputHandler                 ;; 00:022d $3e $00 $c3 $d7 $1e
+    jp_to_bank 01, runMainInputHandler                 ;; 00:022c $f5 $3e $00 $c3 $d7 $1e
 
 call_00_0232:
-    push AF                                            ;; 00:0232 $f5
-    jp_to_bank 01, call_01_48be                        ;; 00:0233 $3e $01 $c3 $d7 $1e
+    jp_to_bank 01, call_01_48be                        ;; 00:0232 $f5 $3e $01 $c3 $d7 $1e
 
 call_00_0238:
-    push AF                                            ;; 00:0238 $f5
-    jp_to_bank 01, call_01_4996                        ;; 00:0239 $3e $02 $c3 $d7 $1e
+    jp_to_bank 01, call_01_4996                        ;; 00:0238 $f5 $3e $02 $c3 $d7 $1e
 
 call_00_023e:
-    push AF                                            ;; 00:023e $f5
-    jp_to_bank 01, call_01_498e                        ;; 00:023f $3e $03 $c3 $d7 $1e
+    jp_to_bank 01, call_01_498e                        ;; 00:023e $f5 $3e $03 $c3 $d7 $1e
 
 call_00_0244:
-    push AF                                            ;; 00:0244 $f5
-    jp_to_bank 01, call_01_4f7b                        ;; 00:0245 $3e $05 $c3 $d7 $1e
+    jp_to_bank 01, call_01_4f7b                        ;; 00:0244 $f5 $3e $05 $c3 $d7 $1e
 
 call_00_024a:
-    push AF                                            ;; 00:024a $f5
-    jp_to_bank 01, call_01_4d0b                        ;; 00:024b $3e $06 $c3 $d7 $1e
+    jp_to_bank 01, call_01_4d0b                        ;; 00:024a $f5 $3e $06 $c3 $d7 $1e
 
 createPlayerObject_trampoline:
-    push AF                                            ;; 00:0250 $f5
-    jp_to_bank 01, createPlayerObject                  ;; 00:0251 $3e $04 $c3 $d7 $1e
+    jp_to_bank 01, createPlayerObject                  ;; 00:0250 $f5 $3e $04 $c3 $d7 $1e
 
 call_00_0256:
-    push AF                                            ;; 00:0256 $f5
-    jp_to_bank 01, call_01_50ac                        ;; 00:0257 $3e $07 $c3 $d7 $1e
+    jp_to_bank 01, call_01_50ac                        ;; 00:0256 $f5 $3e $07 $c3 $d7 $1e
 
 call_00_025c:
     ld   A, $06                                        ;; 00:025c $3e $06
@@ -387,12 +375,10 @@ call_00_02bd:
     ret                                                ;; 00:02c2 $c9
 
 call_00_02c3:
-    push AF                                            ;; 00:02c3 $f5
-    jp_to_bank 01, call_01_5196                        ;; 00:02c4 $3e $0c $c3 $d7 $1e
+    jp_to_bank 01, call_01_5196                        ;; 00:02c3 $f5 $3e $0c $c3 $d7 $1e
 
 call_00_02c9:
-    push AF                                            ;; 00:02c9 $f5
-    jp_to_bank 01, call_01_51bb                        ;; 00:02ca $3e $0d $c3 $d7 $1e
+    jp_to_bank 01, call_01_51bb                        ;; 00:02c9 $f5 $3e $0d $c3 $d7 $1e
 
 call_00_02cf:
     call call_00_02b7                                  ;; 00:02cf $cd $b7 $02
@@ -510,8 +496,7 @@ LCDCInterrupt:
     ret                                                ;; 00:036e $c9
 
 call_00_036f:
-    push AF                                            ;; 00:036f $f5
-    jp_to_bank 04, call_04_400e                        ;; 00:0370 $3e $06 $c3 $64 $1f
+    jp_to_bank 04, call_04_400e                        ;; 00:036f $f5 $3e $06 $c3 $64 $1f
 
 call_00_0375:
     ld   C, $00                                        ;; 00:0375 $0e $00
@@ -638,31 +623,25 @@ call_00_041c:
     ld   A, $00                                        ;; 00:041f $3e $00
     ret  Z                                             ;; 00:0421 $c8
     ld   A, L                                          ;; 00:0422 $7d
-    push AF                                            ;; 00:0423 $f5
-    jp_to_bank 02, call_02_4244                        ;; 00:0424 $3e $07 $c3 $06 $1f
+    jp_to_bank 02, call_02_4244                        ;; 00:0423 $f5 $3e $07 $c3 $06 $1f
 
 call_00_0429:
-    push AF                                            ;; 00:0429 $f5
-    jp_to_bank 02, call_02_43dd                        ;; 00:042a $3e $06 $c3 $06 $1f
+    jp_to_bank 02, call_02_43dd                        ;; 00:0429 $f5 $3e $06 $c3 $06 $1f
 
 call_00_042f:
-    push AF                                            ;; 00:042f $f5
-    jp_to_bank 02, call_02_442b                        ;; 00:0430 $3e $04 $c3 $06 $1f
+    jp_to_bank 02, call_02_442b                        ;; 00:042f $f5 $3e $04 $c3 $06 $1f
 
 call_00_0435:
-    push AF                                            ;; 00:0435 $f5
-    jp_to_bank 02, call_02_4469                        ;; 00:0436 $3e $05 $c3 $06 $1f
+    jp_to_bank 02, call_02_4469                        ;; 00:0435 $f5 $3e $05 $c3 $06 $1f
 
 call_00_043b:
     ld   A, [wD3E8]                                    ;; 00:043b $fa $e8 $d3
     cp   A, $ff                                        ;; 00:043e $fe $ff
     ret  NZ                                            ;; 00:0440 $c0
-    push AF                                            ;; 00:0441 $f5
-    jp_to_bank 02, call_02_44fa                        ;; 00:0442 $3e $02 $c3 $06 $1f
+    jp_to_bank 02, call_02_44fa                        ;; 00:0441 $f5 $3e $02 $c3 $06 $1f
 
 call_00_0447:
-    push AF                                            ;; 00:0447 $f5
-    jp_to_bank 02, call_02_44c4                        ;; 00:0448 $3e $03 $c3 $06 $1f
+    jp_to_bank 02, call_02_44c4                        ;; 00:0447 $f5 $3e $03 $c3 $06 $1f
 
 call_00_044d:
     ld   HL, wC4A1                                     ;; 00:044d $21 $a1 $c4
@@ -724,12 +703,10 @@ storeDEatBackgroundDrawPosition:
     ret                                                ;; 00:049d $c9
 
 call_00_049e:
-    push AF                                            ;; 00:049e $f5
-    jp_to_bank 01, call_01_44d8                        ;; 00:049f $3e $18 $c3 $d7 $1e
+    jp_to_bank 01, call_01_44d8                        ;; 00:049e $f5 $3e $18 $c3 $d7 $1e
 
 call_00_04a4:
-    push AF                                            ;; 00:04a4 $f5
-    jp_to_bank 01, call_01_471d                        ;; 00:04a5 $3e $19 $c3 $d7 $1e
+    jp_to_bank 01, call_01_471d                        ;; 00:04a4 $f5 $3e $19 $c3 $d7 $1e
 
 call_00_04aa:
     ld   A, [wD3E8]                                    ;; 00:04aa $fa $e8 $d3
@@ -759,23 +736,19 @@ call_00_04aa:
     ld   HL, wD3E9                                     ;; 00:04d7 $21 $e9 $d3
     dec  [HL]                                          ;; 00:04da $35
     ret  NZ                                            ;; 00:04db $c0
-    push AF                                            ;; 00:04dc $f5
-    jp_to_bank 04, call_04_4090                        ;; 00:04dd $3e $00 $c3 $64 $1f
+    jp_to_bank 04, call_04_4090                        ;; 00:04dc $f5 $3e $00 $c3 $64 $1f
 
 call_00_04e2:
-    push AF                                            ;; 00:04e2 $f5
-    jp_to_bank 04, call_04_42f7                        ;; 00:04e3 $3e $01 $c3 $64 $1f
+    jp_to_bank 04, call_04_42f7                        ;; 00:04e2 $f5 $3e $01 $c3 $64 $1f
 
 call_00_04e8:
     ld   A, [wD3E8]                                    ;; 00:04e8 $fa $e8 $d3
     cp   A, $ff                                        ;; 00:04eb $fe $ff
     ret  Z                                             ;; 00:04ed $c8
-    push AF                                            ;; 00:04ee $f5
-    jp_to_bank 04, call_04_4425                        ;; 00:04ef $3e $02 $c3 $64 $1f
+    jp_to_bank 04, call_04_4425                        ;; 00:04ee $f5 $3e $02 $c3 $64 $1f
 
 call_00_04f4:
-    push AF                                            ;; 00:04f4 $f5
-    jp_to_bank 04, call_04_45fa                        ;; 00:04f5 $3e $03 $c3 $64 $1f
+    jp_to_bank 04, call_04_45fa                        ;; 00:04f4 $f5 $3e $03 $c3 $64 $1f
 
 call_00_04fa:
     ld   A, $ff                                        ;; 00:04fa $3e $ff
@@ -792,12 +765,10 @@ call_00_04fa:
     db   $21, $00, $00, $c9                            ;; 00:050d ????
 
 call_00_0511:
-    push AF                                            ;; 00:0511 $f5
-    jp_to_bank 04, call_04_4446                        ;; 00:0512 $3e $05 $c3 $64 $1f
+    jp_to_bank 04, call_04_4446                        ;; 00:0511 $f5 $3e $05 $c3 $64 $1f
 
 call_00_0517:
-    push AF                                            ;; 00:0517 $f5
-    jp_to_bank 04, call_04_4735                        ;; 00:0518 $3e $04 $c3 $64 $1f
+    jp_to_bank 04, call_04_4735                        ;; 00:0517 $f5 $3e $04 $c3 $64 $1f
 
 call_00_051d:
     push DE                                            ;; 00:051d $d5
@@ -2308,8 +2279,7 @@ scriptOpCodeB6:
     ret                                                ;; 00:0d94 $c9
 
 call_00_0d95:
-    push AF                                            ;; 00:0d95 $f5
-    jp_to_bank 01, call_01_4059                        ;; 00:0d96 $3e $16 $c3 $d7 $1e
+    jp_to_bank 01, call_01_4059                        ;; 00:0d95 $f5 $3e $16 $c3 $d7 $1e
 
 scriptOpCodeB7:
     push HL                                            ;; 00:0d9b $e5
@@ -2319,20 +2289,16 @@ scriptOpCodeB7:
     ret                                                ;; 00:0da3 $c9
 
 call_00_0da4:
-    push AF                                            ;; 00:0da4 $f5
-    jp_to_bank 01, call_01_40a0                        ;; 00:0da5 $3e $17 $c3 $d7 $1e
+    jp_to_bank 01, call_01_40a0                        ;; 00:0da4 $f5 $3e $17 $c3 $d7 $1e
 
 call_00_0daa:
-    push AF                                            ;; 00:0daa $f5
-    jp_to_bank 01, call_01_40ca                        ;; 00:0dab $3e $13 $c3 $d7 $1e
+    jp_to_bank 01, call_01_40ca                        ;; 00:0daa $f5 $3e $13 $c3 $d7 $1e
 
 call_00_0db0:
-    push AF                                            ;; 00:0db0 $f5
-    jp_to_bank 01, call_01_40d8                        ;; 00:0db1 $3e $14 $c3 $d7 $1e
+    jp_to_bank 01, call_01_40d8                        ;; 00:0db0 $f5 $3e $14 $c3 $d7 $1e
 
 call_00_0db6:
-    push AF                                            ;; 00:0db6 $f5
-    jp_to_bank 01, call_01_40f3                        ;; 00:0db7 $3e $15 $c3 $d7 $1e
+    jp_to_bank 01, call_01_40f3                        ;; 00:0db6 $f5 $3e $15 $c3 $d7 $1e
 
 scriptOpCodeWaitMapClose:
     push HL                                            ;; 00:0dbc $e5
@@ -2968,8 +2934,7 @@ scriptOpCodeLoadRoom:
     ret                                                ;; 00:11c7 $c9
 
 call_00_11c8:
-    push AF                                            ;; 00:11c8 $f5
-    jp_to_bank 01, call_01_4130                        ;; 00:11c9 $3e $0f $c3 $d7 $1e
+    jp_to_bank 01, call_01_4130                        ;; 00:11c8 $f5 $3e $0f $c3 $d7 $1e
 
 scriptOpCodeLoadRoomInstant:
     ld   A, [HL+]                                      ;; 00:11ce $2a
@@ -2984,8 +2949,7 @@ scriptOpCodeLoadRoomInstant:
     ret                                                ;; 00:11de $c9
 
 call_00_11df:
-    push AF                                            ;; 00:11df $f5
-    jp_to_bank 01, call_01_414c                        ;; 00:11e0 $3e $10 $c3 $d7 $1e
+    jp_to_bank 01, call_01_414c                        ;; 00:11df $f5 $3e $10 $c3 $d7 $1e
 
 scriptOpCodeOpenMap:
     call call_00_11f2                                  ;; 00:11e5 $cd $f2 $11
@@ -2996,8 +2960,7 @@ scriptOpCodeOpenMap:
     ret                                                ;; 00:11f1 $c9
 
 call_00_11f2:
-    push AF                                            ;; 00:11f2 $f5
-    jp_to_bank 01, call_01_4164                        ;; 00:11f3 $3e $11 $c3 $d7 $1e
+    jp_to_bank 01, call_01_4164                        ;; 00:11f2 $f5 $3e $11 $c3 $d7 $1e
 
 scriptOpCodeCloseMap:
     call call_00_1205                                  ;; 00:11f8 $cd $05 $12
@@ -3008,8 +2971,7 @@ scriptOpCodeCloseMap:
     ret                                                ;; 00:1204 $c9
 
 call_00_1205:
-    push AF                                            ;; 00:1205 $f5
-    jp_to_bank 01, call_01_4180                        ;; 00:1206 $3e $12 $c3 $d7 $1e
+    jp_to_bank 01, call_01_4180                        ;; 00:1205 $f5 $3e $12 $c3 $d7 $1e
 
 call_00_120b:
     ld   A, [HL+]                                      ;; 00:120b $2a
@@ -4435,8 +4397,7 @@ call_00_1a44:
     ret                                                ;; 00:1a6f $c9
 
 call_00_1a70:
-    push AF                                            ;; 00:1a70 $f5
-    jp_to_bank 02, call_02_4074                        ;; 00:1a71 $3e $00 $c3 $06 $1f
+    jp_to_bank 02, call_02_4074                        ;; 00:1a70 $f5 $3e $00 $c3 $06 $1f
 
 call_00_1a76:
     push HL                                            ;; 00:1a76 $e5
@@ -5045,8 +5006,7 @@ call_00_1e9f:
 
 ; This returns the currently hold joypad inputs in A and the newly pressed inputs in B
 updateJoypadInput_trampoline:
-    push AF                                            ;; 00:1ed1 $f5
-    jp_to_bank 02, updateJoypadInput                   ;; 00:1ed2 $3e $01 $c3 $06 $1f
+    jp_to_bank 02, updateJoypadInput                   ;; 00:1ed1 $f5 $3e $01 $c3 $06 $1f
 
 ;@call_to_bank bank=01
 callFunctionInBank01:
@@ -5307,7 +5267,7 @@ call_00_2092:
     call createPlayerObject_trampoline                 ;; 00:20c4 $cd $50 $02
     ld   A, $00                                        ;; 00:20c7 $3e $00
     call call_00_2ed9                                  ;; 00:20c9 $cd $d9 $2e
-    call call_00_30bd                                  ;; 00:20cc $cd $bd $30
+    call setStartingStats_trampoline                   ;; 00:20cc $cd $bd $30
     ret                                                ;; 00:20cf $c9
 
 ;@bank 8 size=112
@@ -6453,20 +6413,16 @@ call_00_27ba:
 
 call_00_27ce:
     call call_00_04aa                                  ;; 00:27ce $cd $aa $04
-    push AF                                            ;; 00:27d1 $f5
-    jp_to_bank 03, call_03_402c                        ;; 00:27d2 $3e $00 $c3 $35 $1f
+    jp_to_bank 03, call_03_402c                        ;; 00:27d1 $f5 $3e $00 $c3 $35 $1f
 
 call_00_27d7:
-    push AF                                            ;; 00:27d7 $f5
-    jp_to_bank 03, call_03_4af5                        ;; 00:27d8 $3e $01 $c3 $35 $1f
+    jp_to_bank 03, call_03_4af5                        ;; 00:27d7 $f5 $3e $01 $c3 $35 $1f
 
 spawnNPC_trampoline:
-    push AF                                            ;; 00:27dd $f5
-    jp_to_bank 03, spawnNPC                            ;; 00:27de $3e $02 $c3 $35 $1f
+    jp_to_bank 03, spawnNPC                            ;; 00:27dd $f5 $3e $02 $c3 $35 $1f
 
 call_00_27e3:
-    push AF                                            ;; 00:27e3 $f5
-    jp_to_bank 03, call_03_435f                        ;; 00:27e4 $3e $03 $c3 $35 $1f
+    jp_to_bank 03, call_03_435f                        ;; 00:27e3 $f5 $3e $03 $c3 $35 $1f
 
 call_00_27e9:
     ld   HL, wC4E0                                     ;; 00:27e9 $21 $e0 $c4
@@ -6498,8 +6454,7 @@ scriptOpCodeFC:
 
 call_00_2819:
     ld   A, [HL+]                                      ;; 00:2819 $2a
-    push AF                                            ;; 00:281a $f5
-    jp_to_bank 03, call_03_444a                        ;; 00:281b $3e $05 $c3 $35 $1f
+    jp_to_bank 03, call_03_444a                        ;; 00:281a $f5 $3e $05 $c3 $35 $1f
 
 scriptOpCodeFD:
     ld   A, [wScriptOpCounter]                         ;; 00:2820 $fa $99 $d4
@@ -6519,20 +6474,16 @@ scriptOpCodeFD:
 
 call_00_2840:
     ld   A, [HL+]                                      ;; 00:2840 $2a
-    push AF                                            ;; 00:2841 $f5
-    jp_to_bank 03, call_03_44ed                        ;; 00:2842 $3e $04 $c3 $35 $1f
+    jp_to_bank 03, call_03_44ed                        ;; 00:2841 $f5 $3e $04 $c3 $35 $1f
 
 call_00_2847:
-    push AF                                            ;; 00:2847 $f5
-    jp_to_bank 03, call_03_455d                        ;; 00:2848 $3e $06 $c3 $35 $1f
+    jp_to_bank 03, call_03_455d                        ;; 00:2847 $f5 $3e $06 $c3 $35 $1f
 
 call_00_284d:
-    push AF                                            ;; 00:284d $f5
-    jp_to_bank 03, call_03_4561                        ;; 00:284e $3e $08 $c3 $35 $1f
+    jp_to_bank 03, call_03_4561                        ;; 00:284d $f5 $3e $08 $c3 $35 $1f
 
 call_00_2853:
-    push AF                                            ;; 00:2853 $f5
-    jp_to_bank 03, call_03_48d7                        ;; 00:2854 $3e $09 $c3 $35 $1f
+    jp_to_bank 03, call_03_48d7                        ;; 00:2853 $f5 $3e $09 $c3 $35 $1f
 
 call_00_2859:
     push BC                                            ;; 00:2859 $c5
@@ -6568,20 +6519,16 @@ call_00_2879:
     ret                                                ;; 00:2882 $c9
 
 call_00_2883:
-    push AF                                            ;; 00:2883 $f5
-    jp_to_bank 03, call_03_4b70                        ;; 00:2884 $3e $0a $c3 $35 $1f
+    jp_to_bank 03, call_03_4b70                        ;; 00:2883 $f5 $3e $0a $c3 $35 $1f
 
 call_00_2889:
-    push AF                                            ;; 00:2889 $f5
-    jp_to_bank 03, call_03_4aed                        ;; 00:288a $3e $0b $c3 $35 $1f
+    jp_to_bank 03, call_03_4aed                        ;; 00:2889 $f5 $3e $0b $c3 $35 $1f
 
 call_00_288f:
-    push AF                                            ;; 00:288f $f5
-    jp_to_bank 03, call_03_4af1                        ;; 00:2890 $3e $0c $c3 $35 $1f
+    jp_to_bank 03, call_03_4af1                        ;; 00:288f $f5 $3e $0c $c3 $35 $1f
 
 call_00_2895:
-    push AF                                            ;; 00:2895 $f5
-    jp_to_bank 03, call_03_43c5                        ;; 00:2896 $3e $0f $c3 $35 $1f
+    jp_to_bank 03, call_03_43c5                        ;; 00:2895 $f5 $3e $0f $c3 $35 $1f
 
 call_00_289b:
     ld   HL, wC5A0                                     ;; 00:289b $21 $a0 $c5
@@ -6597,16 +6544,13 @@ call_00_289b:
     ret                                                ;; 00:28a9 $c9
 
 call_00_28aa:
-    push AF                                            ;; 00:28aa $f5
-    jp_to_bank 03, call_03_4af9                        ;; 00:28ab $3e $0d $c3 $35 $1f
+    jp_to_bank 03, call_03_4af9                        ;; 00:28aa $f5 $3e $0d $c3 $35 $1f
 
 call_00_28b0:
-    push AF                                            ;; 00:28b0 $f5
-    jp_to_bank 03, call_03_4b4f                        ;; 00:28b1 $3e $0e $c3 $35 $1f
+    jp_to_bank 03, call_03_4b4f                        ;; 00:28b0 $f5 $3e $0e $c3 $35 $1f
 
 call_00_28b6:
-    push AF                                            ;; 00:28b6 $f5
-    jp_to_bank 03, call_03_4641                        ;; 00:28b7 $3e $07 $c3 $35 $1f
+    jp_to_bank 03, call_03_4641                        ;; 00:28b6 $f5 $3e $07 $c3 $35 $1f
 
 call_00_28bc:
     ld   HL, $03                                       ;; 00:28bc $21 $03 $00
@@ -6675,31 +6619,25 @@ call_00_290d:
     ld   HL, $00                                       ;; 00:290d $21 $00 $00
     call call_00_28c2                                  ;; 00:2910 $cd $c2 $28
     ret  NZ                                            ;; 00:2913 $c0
-    push AF                                            ;; 00:2914 $f5
-    jp_to_bank 03, call_03_4a81                        ;; 00:2915 $3e $15 $c3 $35 $1f
+    jp_to_bank 03, call_03_4a81                        ;; 00:2914 $f5 $3e $15 $c3 $35 $1f
 
 call_00_291a:
     ld   A, [wC0A1]                                    ;; 00:291a $fa $a1 $c0
     bit  1, A                                          ;; 00:291d $cb $4f
     ret  NZ                                            ;; 00:291f $c0
-    push AF                                            ;; 00:2920 $f5
-    jp_to_bank 03, call_03_4c30                        ;; 00:2921 $3e $13 $c3 $35 $1f
+    jp_to_bank 03, call_03_4c30                        ;; 00:2920 $f5 $3e $13 $c3 $35 $1f
 
 call_00_2926:
-    push AF                                            ;; 00:2926 $f5
-    jp_to_bank 03, call_03_4c38                        ;; 00:2927 $3e $14 $c3 $35 $1f
+    jp_to_bank 03, call_03_4c38                        ;; 00:2926 $f5 $3e $14 $c3 $35 $1f
 
 call_00_292c:
-    push AF                                            ;; 00:292c $f5
-    jp_to_bank 03, call_03_4a9f                        ;; 00:292d $3e $10 $c3 $35 $1f
+    jp_to_bank 03, call_03_4a9f                        ;; 00:292c $f5 $3e $10 $c3 $35 $1f
 
 call_00_2932:
-    push AF                                            ;; 00:2932 $f5
-    jp_to_bank 03, call_03_4ac1                        ;; 00:2933 $3e $11 $c3 $35 $1f
+    jp_to_bank 03, call_03_4ac1                        ;; 00:2932 $f5 $3e $11 $c3 $35 $1f
 
 call_00_2938:
-    push AF                                            ;; 00:2938 $f5
-    jp_to_bank 03, call_03_4b62                        ;; 00:2939 $3e $12 $c3 $35 $1f
+    jp_to_bank 03, call_03_4b62                        ;; 00:2938 $f5 $3e $12 $c3 $35 $1f
 
 call_00_293e:
     push HL                                            ;; 00:293e $e5
@@ -7093,26 +7031,21 @@ sub_HL_DE:
     db   $3d, $20, $fa, $3d, $c9                       ;; 00:2bcc ?????
 
 call_00_2bd1:
-    push AF                                            ;; 00:2bd1 $f5
-    jp_to_bank 09, call_09_4016                        ;; 00:2bd2 $3e $00 $c3 $93 $1f
+    jp_to_bank 09, call_09_4016                        ;; 00:2bd1 $f5 $3e $00 $c3 $93 $1f
 
 call_00_2bd7:
-    push AF                                            ;; 00:2bd7 $f5
-    jp_to_bank 09, call_09_4012                        ;; 00:2bd8 $3e $01 $c3 $93 $1f
+    jp_to_bank 09, call_09_4012                        ;; 00:2bd7 $f5 $3e $01 $c3 $93 $1f
 
 call_00_2bdd:
     cp   A, $ff                                        ;; 00:2bdd $fe $ff
     ret  Z                                             ;; 00:2bdf $c8
-    push AF                                            ;; 00:2be0 $f5
-    jp_to_bank 09, call_09_41e9                        ;; 00:2be1 $3e $02 $c3 $93 $1f
+    jp_to_bank 09, call_09_41e9                        ;; 00:2be0 $f5 $3e $02 $c3 $93 $1f
 
 call_00_2be6:
-    push AF                                            ;; 00:2be6 $f5
-    jp_to_bank 09, call_09_438a                        ;; 00:2be7 $3e $03 $c3 $93 $1f
+    jp_to_bank 09, call_09_438a                        ;; 00:2be6 $f5 $3e $03 $c3 $93 $1f
 
 spawnProjectile_trampoline:
-    push AF                                            ;; 00:2bec $f5
-    jp_to_bank 09, spawnProjectile                     ;; 00:2bed $3e $04 $c3 $93 $1f
+    jp_to_bank 09, spawnProjectile                     ;; 00:2bec $f5 $3e $04 $c3 $93 $1f
 
 call_00_2bf2:
     ld   HL, wC5C0                                     ;; 00:2bf2 $21 $c0 $c5
@@ -7130,32 +7063,25 @@ call_00_2c02:
     ret                                                ;; 00:2c02 $c9
 
 call_00_2c03:
-    push AF                                            ;; 00:2c03 $f5
-    jp_to_bank 09, call_09_4399                        ;; 00:2c04 $3e $08 $c3 $93 $1f
+    jp_to_bank 09, call_09_4399                        ;; 00:2c03 $f5 $3e $08 $c3 $93 $1f
 
 call_00_2c09:
-    push AF                                            ;; 00:2c09 $f5
-    jp_to_bank 09, call_09_445e                        ;; 00:2c0a $3e $05 $c3 $93 $1f
+    jp_to_bank 09, call_09_445e                        ;; 00:2c09 $f5 $3e $05 $c3 $93 $1f
 
 call_00_2c0f:
-    push AF                                            ;; 00:2c0f $f5
-    jp_to_bank 09, call_09_4467                        ;; 00:2c10 $3e $06 $c3 $93 $1f
+    jp_to_bank 09, call_09_4467                        ;; 00:2c0f $f5 $3e $06 $c3 $93 $1f
 
 call_00_2c15:
-    push AF                                            ;; 00:2c15 $f5
-    jp_to_bank 09, call_09_4470                        ;; 00:2c16 $3e $07 $c3 $93 $1f
+    jp_to_bank 09, call_09_4470                        ;; 00:2c15 $f5 $3e $07 $c3 $93 $1f
 
 call_00_2c1b:
-    push AF                                            ;; 00:2c1b $f5
-    jp_to_bank 01, call_01_7639                        ;; 00:2c1c $3e $1b $c3 $d7 $1e
+    jp_to_bank 01, call_01_7639                        ;; 00:2c1b $f5 $3e $1b $c3 $d7 $1e
 
 call_00_2c21:
-    push AF                                            ;; 00:2c21 $f5
-    jp_to_bank 01, call_01_7647                        ;; 00:2c22 $3e $1a $c3 $d7 $1e
+    jp_to_bank 01, call_01_7647                        ;; 00:2c21 $f5 $3e $1a $c3 $d7 $1e
 
 call_00_2c27:
-    push AF                                            ;; 00:2c27 $f5
-    jp_to_bank 01, call_01_76ab                        ;; 00:2c28 $3e $1c $c3 $d7 $1e
+    jp_to_bank 01, call_01_76ab                        ;; 00:2c27 $f5 $3e $1c $c3 $d7 $1e
 
 call_00_2c2d:
     bit  0, A                                          ;; 00:2c2d $cb $47
@@ -7523,40 +7449,31 @@ call_00_2ec9:
     ret                                                ;; 00:2ed2 $c9
 
 call_00_2ed3:
-    push AF                                            ;; 00:2ed3 $f5
-    jp_to_bank 01, call_01_52b3                        ;; 00:2ed4 $3e $1d $c3 $d7 $1e
+    jp_to_bank 01, call_01_52b3                        ;; 00:2ed3 $f5 $3e $1d $c3 $d7 $1e
 
 call_00_2ed9:
-    push AF                                            ;; 00:2ed9 $f5
-    jp_to_bank 01, call_01_5a6b                        ;; 00:2eda $3e $20 $c3 $d7 $1e
+    jp_to_bank 01, call_01_5a6b                        ;; 00:2ed9 $f5 $3e $20 $c3 $d7 $1e
 
 call_00_2edf:
-    push AF                                            ;; 00:2edf $f5
-    jp_to_bank 01, call_01_5a77                        ;; 00:2ee0 $3e $21 $c3 $d7 $1e
+    jp_to_bank 01, call_01_5a77                        ;; 00:2edf $f5 $3e $21 $c3 $d7 $1e
 
 call_00_2ee5:
-    push AF                                            ;; 00:2ee5 $f5
-    jp_to_bank 01, call_01_5a83                        ;; 00:2ee6 $3e $22 $c3 $d7 $1e
+    jp_to_bank 01, call_01_5a83                        ;; 00:2ee5 $f5 $3e $22 $c3 $d7 $1e
 
 call_00_2eeb:
-    push AF                                            ;; 00:2eeb $f5
-    jp_to_bank 01, call_01_5a8c                        ;; 00:2eec $3e $23 $c3 $d7 $1e
+    jp_to_bank 01, call_01_5a8c                        ;; 00:2eeb $f5 $3e $23 $c3 $d7 $1e
 
 call_00_2ef1:
-    push AF                                            ;; 00:2ef1 $f5
-    jp_to_bank 01, call_01_5d64                        ;; 00:2ef2 $3e $1e $c3 $d7 $1e
+    jp_to_bank 01, call_01_5d64                        ;; 00:2ef1 $f5 $3e $1e $c3 $d7 $1e
 
 call_00_2ef7:
-    push AF                                            ;; 00:2ef7 $f5
-    jp_to_bank 01, call_01_5d82                        ;; 00:2ef8 $3e $1f $c3 $d7 $1e
+    jp_to_bank 01, call_01_5d82                        ;; 00:2ef7 $f5 $3e $1f $c3 $d7 $1e
 
 call_00_2efd:
-    push AF                                            ;; 00:2efd $f5
-    jp_to_bank 01, call_01_5cc6                        ;; 00:2efe $3e $25 $c3 $d7 $1e
+    jp_to_bank 01, call_01_5cc6                        ;; 00:2efd $f5 $3e $25 $c3 $d7 $1e
 
 call_00_2f03:
-    push AF                                            ;; 00:2f03 $f5
-    jp_to_bank 01, call_01_5db6                        ;; 00:2f04 $3e $26 $c3 $d7 $1e
+    jp_to_bank 01, call_01_5db6                        ;; 00:2f03 $f5 $3e $26 $c3 $d7 $1e
 
 call_00_2f09:
     ld   A, $00                                        ;; 00:2f09 $3e $00
@@ -7585,8 +7502,7 @@ call_00_2f2c:
     db   $0c, $c9                                      ;; 00:2f3c ??
 
 call_00_2f3e:
-    push AF                                            ;; 00:2f3e $f5
-    jp_to_bank 01, call_01_5d98                        ;; 00:2f3f $3e $24 $c3 $d7 $1e
+    jp_to_bank 01, call_01_5d98                        ;; 00:2f3e $f5 $3e $24 $c3 $d7 $1e
 
 call_00_2f44:
     ld   A, [wCF60]                                    ;; 00:2f44 $fa $60 $cf
@@ -7619,8 +7535,7 @@ call_00_2f5d:
 call_00_2f76:
     cp   A, $00                                        ;; 00:2f76 $fe $00
     ret  Z                                             ;; 00:2f78 $c8
-    push AF                                            ;; 00:2f79 $f5
-    jp_to_bank 01, call_01_51e1                        ;; 00:2f7a $3e $27 $c3 $d7 $1e
+    jp_to_bank 01, call_01_51e1                        ;; 00:2f79 $f5 $3e $27 $c3 $d7 $1e
 
 scriptOpCodeAA:
     push HL                                            ;; 00:2f7f $e5
@@ -7830,176 +7745,135 @@ call_00_3057:
     ret                                                ;; 00:3062 $c9
 
 call_00_3063:
-    push AF                                            ;; 00:3063 $f5
-    jp_to_bank 02, call_02_6b51                        ;; 00:3064 $3e $08 $c3 $06 $1f
+    jp_to_bank 02, call_02_6b51                        ;; 00:3063 $f5 $3e $08 $c3 $06 $1f
     db   $f5, $3e, $09, $c3, $06, $1f, $f5, $3e        ;; 00:3069 ????????
     db   $0a, $c3, $06, $1f, $f5, $3e, $0b, $c3        ;; 00:3071 ????????
     db   $06, $1f, $f5, $3e, $0c, $c3, $06, $1f        ;; 00:3079 ????????
 
 call_00_3081:
-    push AF                                            ;; 00:3081 $f5
-    jp_to_bank 02, call_02_6da7                        ;; 00:3082 $3e $0d $c3 $06 $1f
+    jp_to_bank 02, call_02_6da7                        ;; 00:3081 $f5 $3e $0d $c3 $06 $1f
 
 call_00_3087:
-    push AF                                            ;; 00:3087 $f5
-    jp_to_bank 02, call_02_7693                        ;; 00:3088 $3e $0e $c3 $06 $1f
+    jp_to_bank 02, call_02_7693                        ;; 00:3087 $f5 $3e $0e $c3 $06 $1f
     db   $f5, $3e, $0f, $c3, $06, $1f, $f5, $3e        ;; 00:308d ????????
     db   $10, $c3, $06, $1f                            ;; 00:3095 ????
 
 call_00_3099:
-    push AF                                            ;; 00:3099 $f5
-    jp_to_bank 02, call_02_6d80                        ;; 00:309a $3e $11 $c3 $06 $1f
+    jp_to_bank 02, call_02_6d80                        ;; 00:3099 $f5 $3e $11 $c3 $06 $1f
 
 call_00_309f:
-    push AF                                            ;; 00:309f $f5
-    jp_to_bank 02, call_02_4860                        ;; 00:30a0 $3e $12 $c3 $06 $1f
+    jp_to_bank 02, call_02_4860                        ;; 00:309f $f5 $3e $12 $c3 $06 $1f
 
 call_00_30a5:
-    push AF                                            ;; 00:30a5 $f5
-    jp_to_bank 02, call_02_667a                        ;; 00:30a6 $3e $13 $c3 $06 $1f
+    jp_to_bank 02, call_02_667a                        ;; 00:30a5 $f5 $3e $13 $c3 $06 $1f
 
 call_00_30ab:
-    push AF                                            ;; 00:30ab $f5
-    jp_to_bank 02, call_02_6700                        ;; 00:30ac $3e $14 $c3 $06 $1f
+    jp_to_bank 02, call_02_6700                        ;; 00:30ab $f5 $3e $14 $c3 $06 $1f
 
 call_00_30b1:
-    push AF                                            ;; 00:30b1 $f5
-    jp_to_bank 02, call_02_483e                        ;; 00:30b2 $3e $15 $c3 $06 $1f
+    jp_to_bank 02, call_02_483e                        ;; 00:30b1 $f5 $3e $15 $c3 $06 $1f
 
 call_00_30b7:
-    push AF                                            ;; 00:30b7 $f5
-    jp_to_bank 02, call_02_5b68                        ;; 00:30b8 $3e $16 $c3 $06 $1f
+    jp_to_bank 02, call_02_5b68                        ;; 00:30b7 $f5 $3e $16 $c3 $06 $1f
 
-call_00_30bd:
-    push AF                                            ;; 00:30bd $f5
-    jp_to_bank 02, call_02_6e25                        ;; 00:30be $3e $17 $c3 $06 $1f
+setStartingStats_trampoline:
+    jp_to_bank 02, setStartingStats                    ;; 00:30bd $f5 $3e $17 $c3 $06 $1f
 
 call_00_30c3:
-    push AF                                            ;; 00:30c3 $f5
-    jp_to_bank 02, call_02_5419                        ;; 00:30c4 $3e $18 $c3 $06 $1f
+    jp_to_bank 02, call_02_5419                        ;; 00:30c3 $f5 $3e $18 $c3 $06 $1f
 
 call_00_30c9:
-    push AF                                            ;; 00:30c9 $f5
-    jp_to_bank 02, call_02_5428                        ;; 00:30ca $3e $19 $c3 $06 $1f
+    jp_to_bank 02, call_02_5428                        ;; 00:30c9 $f5 $3e $19 $c3 $06 $1f
 
 call_00_30cf:
-    push AF                                            ;; 00:30cf $f5
-    jp_to_bank 02, call_02_53f0                        ;; 00:30d0 $3e $1a $c3 $06 $1f
+    jp_to_bank 02, call_02_53f0                        ;; 00:30cf $f5 $3e $1a $c3 $06 $1f
 
 call_00_30d5:
-    push AF                                            ;; 00:30d5 $f5
-    jp_to_bank 02, call_02_53bb                        ;; 00:30d6 $3e $1b $c3 $06 $1f
+    jp_to_bank 02, call_02_53bb                        ;; 00:30d5 $f5 $3e $1b $c3 $06 $1f
 
 call_00_30db:
-    push AF                                            ;; 00:30db $f5
-    jp_to_bank 02, call_02_53c8                        ;; 00:30dc $3e $1c $c3 $06 $1f
+    jp_to_bank 02, call_02_53c8                        ;; 00:30db $f5 $3e $1c $c3 $06 $1f
 
 call_00_30e1:
-    push AF                                            ;; 00:30e1 $f5
-    jp_to_bank 02, call_02_53d5                        ;; 00:30e2 $3e $1d $c3 $06 $1f
+    jp_to_bank 02, call_02_53d5                        ;; 00:30e1 $f5 $3e $1d $c3 $06 $1f
 
 call_00_30e7:
-    push AF                                            ;; 00:30e7 $f5
-    jp_to_bank 02, call_02_6dd8                        ;; 00:30e8 $3e $1e $c3 $06 $1f
+    jp_to_bank 02, call_02_6dd8                        ;; 00:30e7 $f5 $3e $1e $c3 $06 $1f
 
 call_00_30ed:
-    push AF                                            ;; 00:30ed $f5
-    jp_to_bank 02, call_02_6dde                        ;; 00:30ee $3e $1f $c3 $06 $1f
+    jp_to_bank 02, call_02_6dde                        ;; 00:30ed $f5 $3e $1f $c3 $06 $1f
 
 call_00_30f3:
-    push AF                                            ;; 00:30f3 $f5
-    jp_to_bank 02, call_02_6dcc                        ;; 00:30f4 $3e $20 $c3 $06 $1f
+    jp_to_bank 02, call_02_6dcc                        ;; 00:30f3 $f5 $3e $20 $c3 $06 $1f
     db   $f5, $3e, $21, $c3, $06, $1f                  ;; 00:30f9 ??????
 
 clearStatusBarTrampoline:
-    push AF                                            ;; 00:30ff $f5
-    jp_to_bank 02, clearStatusBar                      ;; 00:3100 $3e $22 $c3 $06 $1f
+    jp_to_bank 02, clearStatusBar                      ;; 00:30ff $f5 $3e $22 $c3 $06 $1f
     db   $f5, $3e, $23, $c3, $06, $1f                  ;; 00:3105 ??????
 
 drawHPOnStatuBarTrampoline:
-    push AF                                            ;; 00:310b $f5
-    jp_to_bank 02, drawHPOnStatuBar                    ;; 00:310c $3e $24 $c3 $06 $1f
+    jp_to_bank 02, drawHPOnStatuBar                    ;; 00:310b $f5 $3e $24 $c3 $06 $1f
 
 drawManaOnStatusBarTrampoline:
-    push AF                                            ;; 00:3111 $f5
-    jp_to_bank 02, drawManaOnStatusBar                 ;; 00:3112 $3e $25 $c3 $06 $1f
+    jp_to_bank 02, drawManaOnStatusBar                 ;; 00:3111 $f5 $3e $25 $c3 $06 $1f
 
 drawMoneyOnStatusBarTrampoline:
-    push AF                                            ;; 00:3117 $f5
-    jp_to_bank 02, drawMoneyOnStatusBar                ;; 00:3118 $3e $26 $c3 $06 $1f
+    jp_to_bank 02, drawMoneyOnStatusBar                ;; 00:3117 $f5 $3e $26 $c3 $06 $1f
 
 call_00_311d:
-    push AF                                            ;; 00:311d $f5
-    jp_to_bank 02, call_02_6fb4                        ;; 00:311e $3e $27 $c3 $06 $1f
+    jp_to_bank 02, call_02_6fb4                        ;; 00:311d $f5 $3e $27 $c3 $06 $1f
 
 call_00_3123:
-    push AF                                            ;; 00:3123 $f5
-    jp_to_bank 02, call_02_6d26                        ;; 00:3124 $3e $28 $c3 $06 $1f
+    jp_to_bank 02, call_02_6d26                        ;; 00:3123 $f5 $3e $28 $c3 $06 $1f
 
 call_00_3129:
-    push AF                                            ;; 00:3129 $f5
-    jp_to_bank 02, call_02_6fab                        ;; 00:312a $3e $29 $c3 $06 $1f
+    jp_to_bank 02, call_02_6fab                        ;; 00:3129 $f5 $3e $29 $c3 $06 $1f
 
 call_00_312f:
-    push AF                                            ;; 00:312f $f5
-    jp_to_bank 02, call_02_77af                        ;; 00:3130 $3e $2a $c3 $06 $1f
+    jp_to_bank 02, call_02_77af                        ;; 00:312f $f5 $3e $2a $c3 $06 $1f
 
 call_00_3135:
-    push AF                                            ;; 00:3135 $f5
-    jp_to_bank 02, call_02_71db                        ;; 00:3136 $3e $2b $c3 $06 $1f
+    jp_to_bank 02, call_02_71db                        ;; 00:3135 $f5 $3e $2b $c3 $06 $1f
 
 call_00_313b:
-    push AF                                            ;; 00:313b $f5
-    jp_to_bank 02, call_02_78c6                        ;; 00:313c $3e $2c $c3 $06 $1f
+    jp_to_bank 02, call_02_78c6                        ;; 00:313b $f5 $3e $2c $c3 $06 $1f
     db   $f5, $3e, $2d, $c3, $06, $1f                  ;; 00:3141 ??????
 
 call_00_3147:
-    push AF                                            ;; 00:3147 $f5
-    jp_to_bank 02, call_02_6623                        ;; 00:3148 $3e $2e $c3 $06 $1f
+    jp_to_bank 02, call_02_6623                        ;; 00:3147 $f5 $3e $2e $c3 $06 $1f
 
 call_00_314d:
-    push AF                                            ;; 00:314d $f5
-    jp_to_bank 02, call_02_65fa                        ;; 00:314e $3e $2f $c3 $06 $1f
+    jp_to_bank 02, call_02_65fa                        ;; 00:314d $f5 $3e $2f $c3 $06 $1f
 
 call_00_3153:
-    push AF                                            ;; 00:3153 $f5
-    jp_to_bank 02, call_02_7b3c                        ;; 00:3154 $3e $30 $c3 $06 $1f
+    jp_to_bank 02, call_02_7b3c                        ;; 00:3153 $f5 $3e $30 $c3 $06 $1f
 
 introScrollHandler_trampoline:
-    push AF                                            ;; 00:3159 $f5
-    jp_to_bank 02, introScrollHandler                  ;; 00:315a $3e $31 $c3 $06 $1f
+    jp_to_bank 02, introScrollHandler                  ;; 00:3159 $f5 $3e $31 $c3 $06 $1f
 
 call_00_315f:
-    push AF                                            ;; 00:315f $f5
-    jp_to_bank 02, call_02_6656                        ;; 00:3160 $3e $32 $c3 $06 $1f
+    jp_to_bank 02, call_02_6656                        ;; 00:315f $f5 $3e $32 $c3 $06 $1f
 
 getScriptOpcodeFunctionTrampoline:
-    push AF                                            ;; 00:3165 $f5
-    jp_to_bank 02, getScriptOpcodeFunction             ;; 00:3166 $3e $33 $c3 $06 $1f
+    jp_to_bank 02, getScriptOpcodeFunction             ;; 00:3165 $f5 $3e $33 $c3 $06 $1f
 
 call_00_316b:
-    push AF                                            ;; 00:316b $f5
-    jp_to_bank 02, call_02_7990                        ;; 00:316c $3e $34 $c3 $06 $1f
+    jp_to_bank 02, call_02_7990                        ;; 00:316b $f5 $3e $34 $c3 $06 $1f
 
 call_00_3171:
-    push AF                                            ;; 00:3171 $f5
-    jp_to_bank 02, call_02_799c                        ;; 00:3172 $3e $35 $c3 $06 $1f
+    jp_to_bank 02, call_02_799c                        ;; 00:3171 $f5 $3e $35 $c3 $06 $1f
 
 call_00_3177:
-    push AF                                            ;; 00:3177 $f5
-    jp_to_bank 02, call_02_79ab                        ;; 00:3178 $3e $36 $c3 $06 $1f
+    jp_to_bank 02, call_02_79ab                        ;; 00:3177 $f5 $3e $36 $c3 $06 $1f
 
 call_00_317d:
-    push AF                                            ;; 00:317d $f5
-    jp_to_bank 02, call_02_79ba                        ;; 00:317e $3e $37 $c3 $06 $1f
+    jp_to_bank 02, call_02_79ba                        ;; 00:317d $f5 $3e $37 $c3 $06 $1f
 
 call_00_3183:
-    push AF                                            ;; 00:3183 $f5
-    jp_to_bank 02, call_02_7987                        ;; 00:3184 $3e $38 $c3 $06 $1f
+    jp_to_bank 02, call_02_7987                        ;; 00:3183 $f5 $3e $38 $c3 $06 $1f
 
 call_00_3189:
-    push AF                                            ;; 00:3189 $f5
-    jp_to_bank 02, call_02_6dd2                        ;; 00:318a $3e $39 $c3 $06 $1f
+    jp_to_bank 02, call_02_6dd2                        ;; 00:3189 $f5 $3e $39 $c3 $06 $1f
 
 call_00_318f:
     ld   HL, wD874                                     ;; 00:318f $21 $74 $d8

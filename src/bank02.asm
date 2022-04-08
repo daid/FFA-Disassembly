@@ -30,7 +30,7 @@ SECTION "bank02", ROMX[$4000], BANK[$02]
     call_to_bank_target call_02_6700                   ;; 02:4028 pP
     call_to_bank_target call_02_483e                   ;; 02:402a pP
     call_to_bank_target call_02_5b68                   ;; 02:402c ??
-    call_to_bank_target call_02_6e25                   ;; 02:402e pP
+    call_to_bank_target setStartingStats               ;; 02:402e pP
     call_to_bank_target call_02_5419                   ;; 02:4030 pP
     call_to_bank_target call_02_5428                   ;; 02:4032 ??
     call_to_bank_target call_02_53f0                   ;; 02:4034 ??
@@ -5563,7 +5563,7 @@ call_02_6df4:
 .data_02_6e1e:
     db   $17, $18, $19, $1a, $1b, $1c, $00             ;; 02:6e1e ???????
 
-call_02_6e25:
+setStartingStats:
     ld   B, $2e                                        ;; 02:6e25 $06 $2e
     xor  A, A                                          ;; 02:6e27 $af
     ld   HL, wItemInventoryAmount                      ;; 02:6e28 $21 $9b $d6

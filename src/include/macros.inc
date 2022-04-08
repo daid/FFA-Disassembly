@@ -150,6 +150,7 @@ shift
 ENDM
 jp_to_bank: MACRO
 
+            push af
             ld   a, (_call_to_bank_target_\2 - $4000) / 2
             jp callFunctionInBank\1
 ENDM

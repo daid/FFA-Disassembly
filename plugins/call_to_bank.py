@@ -15,15 +15,16 @@ class CallToBankCodeBlock(CodeBlock):
         print("call", from_memory, from_address, next_addr, self.target_bank)
 
     def onJump(self, from_memory, from_address, next_addr):
+        assert from_memory.byte(from_address-3) == 0xf5 # PUSH AF
         assert from_memory.byte(from_address-2) == 0x3e # LD A, $xx
         index = from_memory.byte(from_address-1)
         block = from_memory[from_address]
-        block.resize(len(block) - (next_addr - from_address) - 2, allow_shrink=True)
-        JumpToBankBlock(from_memory, from_address - 2, target_bank=self.target_bank, function_index=index)
+        block.resize(len(block) - (next_addr - from_address) - 3, allow_shrink=True)
+        JumpToBankBlock(from_memory, from_address - 3, target_bank=self.target_bank, function_index=index)
 
 class JumpToBankBlock(Block):
     def __init__(self, memory, addr, *, target_bank, function_index):
-        super().__init__(memory, addr, size=5)
+        super().__init__(memory, addr, size=6)
         self.target_bank = target_bank
         self.function_index = function_index
 
@@ -31,13 +32,14 @@ class JumpToBankBlock(Block):
         mem = RomInfo.romBank(self.target_bank)
         addr = mem.word(0x4000 + self.function_index * 2)
         label = mem.getLabel(addr)
-        file.asmLine(5, "jp_to_bank %02x, %s" % (self.target_bank, label));
+        file.asmLine(6, "jp_to_bank %02x, %s" % (self.target_bank, label));
 
 @annotation(priority=0)
 def call_to_bank(memory, addr, *, bank):
     CallToBankCodeBlock(memory, addr, bank=int(bank, 16))
     if "jp_to_bank" not in RomInfo.macros:
         RomInfo.macros["jp_to_bank"] = """
+            push af
             ld   a, (_call_to_bank_target_\\2 - $4000) / 2
             jp callFunctionInBank\\1
         """
