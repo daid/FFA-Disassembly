@@ -342,7 +342,6 @@ wBackgroundDrawPositionY:
 ;Sets the next room to be loaded on a screen transition.
 wNextRoomOverride:
     ds 1                                               ;; c344
-
 .x:
     ds 3                                               ;; c345
 

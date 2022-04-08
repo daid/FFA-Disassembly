@@ -763,9 +763,9 @@ call_01_44d8:
     jr   NZ, .jr_01_4569                               ;; 01:4546 $20 $21
     ld   A, D                                          ;; 01:4548 $7a
     call call_00_044d                                  ;; 01:4549 $cd $4d $04
-    ld   A, [wC344]                                    ;; 01:454c $fa $44 $c3
+    ld   A, [wNextRoomOverride]                        ;; 01:454c $fa $44 $c3
     ld   E, A                                          ;; 01:454f $5f
-    ld   A, [wC345]                                    ;; 01:4550 $fa $45 $c3
+    ld   A, [wNextRoomOverride.x]                      ;; 01:4550 $fa $45 $c3
     ld   D, A                                          ;; 01:4553 $57
     and  A, E                                          ;; 01:4554 $a3
     inc  A                                             ;; 01:4555 $3c
@@ -775,8 +775,8 @@ call_01_44d8:
 .jr_01_455c:
     call call_00_2617                                  ;; 01:455c $cd $17 $26
     ld   A, $ff                                        ;; 01:455f $3e $ff
-    ld   [wC344], A                                    ;; 01:4561 $ea $44 $c3
-    ld   [wC345], A                                    ;; 01:4564 $ea $45 $c3
+    ld   [wNextRoomOverride], A                        ;; 01:4561 $ea $44 $c3
+    ld   [wNextRoomOverride.x], A                      ;; 01:4564 $ea $45 $c3
     ld   A, $00                                        ;; 01:4567 $3e $00
 .jr_01_4569:
     and  A, $0f                                        ;; 01:4569 $e6 $0f
@@ -811,9 +811,9 @@ call_01_44d8:
     jr   NZ, .jr_01_45bf                               ;; 01:459c $20 $21
     ld   A, D                                          ;; 01:459e $7a
     call call_00_044d                                  ;; 01:459f $cd $4d $04
-    ld   A, [wC344]                                    ;; 01:45a2 $fa $44 $c3
+    ld   A, [wNextRoomOverride]                        ;; 01:45a2 $fa $44 $c3
     ld   E, A                                          ;; 01:45a5 $5f
-    ld   A, [wC345]                                    ;; 01:45a6 $fa $45 $c3
+    ld   A, [wNextRoomOverride.x]                      ;; 01:45a6 $fa $45 $c3
     ld   D, A                                          ;; 01:45a9 $57
     and  A, E                                          ;; 01:45aa $a3
     inc  A                                             ;; 01:45ab $3c
@@ -823,8 +823,8 @@ call_01_44d8:
 .jr_01_45b2:
     call call_00_2617                                  ;; 01:45b2 $cd $17 $26
     ld   A, $ff                                        ;; 01:45b5 $3e $ff
-    ld   [wC344], A                                    ;; 01:45b7 $ea $44 $c3
-    ld   [wC345], A                                    ;; 01:45ba $ea $45 $c3
+    ld   [wNextRoomOverride], A                        ;; 01:45b7 $ea $44 $c3
+    ld   [wNextRoomOverride.x], A                      ;; 01:45ba $ea $45 $c3
     ld   A, $00                                        ;; 01:45bd $3e $00
 .jr_01_45bf:
     and  A, $0f                                        ;; 01:45bf $e6 $0f
@@ -854,9 +854,9 @@ call_01_44d8:
     jr   NZ, .jr_01_460f                               ;; 01:45ec $20 $21
     ld   A, D                                          ;; 01:45ee $7a
     call call_00_044d                                  ;; 01:45ef $cd $4d $04
-    ld   A, [wC344]                                    ;; 01:45f2 $fa $44 $c3
+    ld   A, [wNextRoomOverride]                        ;; 01:45f2 $fa $44 $c3
     ld   E, A                                          ;; 01:45f5 $5f
-    ld   A, [wC345]                                    ;; 01:45f6 $fa $45 $c3
+    ld   A, [wNextRoomOverride.x]                      ;; 01:45f6 $fa $45 $c3
     ld   D, A                                          ;; 01:45f9 $57
     and  A, E                                          ;; 01:45fa $a3
     inc  A                                             ;; 01:45fb $3c
@@ -866,8 +866,8 @@ call_01_44d8:
 .jr_01_4602:
     call call_00_2617                                  ;; 01:4602 $cd $17 $26
     ld   A, $ff                                        ;; 01:4605 $3e $ff
-    ld   [wC344], A                                    ;; 01:4607 $ea $44 $c3
-    ld   [wC345], A                                    ;; 01:460a $ea $45 $c3
+    ld   [wNextRoomOverride], A                        ;; 01:4607 $ea $44 $c3
+    ld   [wNextRoomOverride.x], A                      ;; 01:460a $ea $45 $c3
     ld   A, $00                                        ;; 01:460d $3e $00
 .jr_01_460f:
     and  A, $0f                                        ;; 01:460f $e6 $0f
@@ -898,9 +898,9 @@ call_01_44d8:
     jr   NZ, .jr_01_4662                               ;; 01:463f $20 $21
     ld   A, D                                          ;; 01:4641 $7a
     call call_00_044d                                  ;; 01:4642 $cd $4d $04
-    ld   A, [wC344]                                    ;; 01:4645 $fa $44 $c3
+    ld   A, [wNextRoomOverride]                        ;; 01:4645 $fa $44 $c3
     ld   E, A                                          ;; 01:4648 $5f
-    ld   A, [wC345]                                    ;; 01:4649 $fa $45 $c3
+    ld   A, [wNextRoomOverride.x]                      ;; 01:4649 $fa $45 $c3
     ld   D, A                                          ;; 01:464c $57
     and  A, E                                          ;; 01:464d $a3
     inc  A                                             ;; 01:464e $3c
@@ -910,8 +910,8 @@ call_01_44d8:
 .jr_01_4655:
     call call_00_2617                                  ;; 01:4655 $cd $17 $26
     ld   A, $ff                                        ;; 01:4658 $3e $ff
-    ld   [wC344], A                                    ;; 01:465a $ea $44 $c3
-    ld   [wC345], A                                    ;; 01:465d $ea $45 $c3
+    ld   [wNextRoomOverride], A                        ;; 01:465a $ea $44 $c3
+    ld   [wNextRoomOverride.x], A                      ;; 01:465d $ea $45 $c3
     ld   A, $00                                        ;; 01:4660 $3e $00
 .jr_01_4662:
     and  A, $0f                                        ;; 01:4662 $e6 $0f
@@ -1041,8 +1041,8 @@ call_01_471d:
     ld   [wBackgroundDrawPositionX], A                 ;; 01:4725 $ea $42 $c3
     ld   [wBackgroundDrawPositionY], A                 ;; 01:4728 $ea $43 $c3
     dec  A                                             ;; 01:472b $3d
-    ld   [wC344], A                                    ;; 01:472c $ea $44 $c3
-    ld   [wC345], A                                    ;; 01:472f $ea $45 $c3
+    ld   [wNextRoomOverride], A                        ;; 01:472c $ea $44 $c3
+    ld   [wNextRoomOverride.x], A                      ;; 01:472f $ea $45 $c3
     ld   D, $00                                        ;; 01:4732 $16 $00
     ld   C, $08                                        ;; 01:4734 $0e $08
 .jr_01_4736:

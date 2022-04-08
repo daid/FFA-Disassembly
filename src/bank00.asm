@@ -652,9 +652,9 @@ call_00_044d:
 
 call_00_0454:
     ld   A, D                                          ;; 00:0454 $7a
-    ld   [wC345], A                                    ;; 00:0455 $ea $45 $c3
+    ld   [wNextRoomOverride.x], A                      ;; 00:0455 $ea $45 $c3
     ld   A, E                                          ;; 00:0458 $7b
-    ld   [wC344], A                                    ;; 00:0459 $ea $44 $c3
+    ld   [wNextRoomOverride], A                        ;; 00:0459 $ea $44 $c3
     ret                                                ;; 00:045c $c9
 
 getBackgroundDrawAddress:
@@ -692,7 +692,7 @@ call_00_048c:
     push HL                                            ;; 00:048c $e5
     call getBackgroundDrawAddress                      ;; 00:048d $cd $5d $04
     pop  DE                                            ;; 00:0490 $d1
-    call call_00_1e9f                                  ;; 00:0491 $cd $9f $1e
+    call requestCopyTwoByteToVRAM                      ;; 00:0491 $cd $9f $1e
     ret                                                ;; 00:0494 $c9
 
 storeDEatBackgroundDrawPosition:
@@ -4446,7 +4446,7 @@ call_00_1a8c:
     cp   A, $10                                        ;; 00:1ab0 $fe $10
     jr   Z, .jr_00_1abb                                ;; 00:1ab2 $28 $07
     ld   A, $08                                        ;; 00:1ab4 $3e $08
-    call call_00_1e6f                                  ;; 00:1ab6 $cd $6f $1e
+    call requestCopyToVRAM                             ;; 00:1ab6 $cd $6f $1e
     jr   .jr_00_1ac0                                   ;; 00:1ab9 $18 $05
 .jr_00_1abb:
     ld   A, $08                                        ;; 00:1abb $3e $08
@@ -4481,7 +4481,7 @@ call_00_1acd:
     cp   A, $10                                        ;; 00:1adf $fe $10
     jr   Z, .jr_00_1aea                                ;; 00:1ae1 $28 $07
     ld   A, $08                                        ;; 00:1ae3 $3e $08
-    call call_00_1e6f                                  ;; 00:1ae5 $cd $6f $1e
+    call requestCopyToVRAM                             ;; 00:1ae5 $cd $6f $1e
     jr   .jr_00_1aef                                   ;; 00:1ae8 $18 $05
 .jr_00_1aea:
     ld   A, $08                                        ;; 00:1aea $3e $08
