@@ -5309,66 +5309,43 @@ call_00_2092:
     call call_00_30bd                                  ;; 00:20cc $cd $bd $30
     ret                                                ;; 00:20cf $c9
 
-something_20d0:
-    dw   $8040                                         ;; 00:20d0 pP
-    db   $00, $5a                                      ;; 00:20d2 ..
-    dw   $8050                                         ;; 00:20d4 pP
-    db   $00, $5a                                      ;; 00:20d6 ..
-    dw   $8060                                         ;; 00:20d8 pP
-    db   $00, $5a                                      ;; 00:20da ..
-    dw   $8070                                         ;; 00:20dc pP
-    db   $00, $5a                                      ;; 00:20de ..
-    dw   $8100                                         ;; 00:20e0 pP
-    db   $00, $5a                                      ;; 00:20e2 ..
-    dw   $8110                                         ;; 00:20e4 pP
-    db   $00, $5a                                      ;; 00:20e6 ..
-    dw   $8120                                         ;; 00:20e8 pP
-    db   $60, $5f                                      ;; 00:20ea ..
-    dw   $8130                                         ;; 00:20ec pP
-    db   $80, $5f                                      ;; 00:20ee ..
-    dw   $8140                                         ;; 00:20f0 pP
-    db   $70, $5f                                      ;; 00:20f2 ..
-    dw   $8150                                         ;; 00:20f4 pP
-    db   $90, $5f                                      ;; 00:20f6 ..
-    dw   $8160                                         ;; 00:20f8 pP
-    db   $a0, $5f                                      ;; 00:20fa ..
-    dw   $8170                                         ;; 00:20fc pP
-    db   $90, $5f, $00, $87, $b0, $5f                  ;; 00:20fe ...P..
-    dw   $8710                                         ;; 00:2104 pP
-    db   $d0, $5f                                      ;; 00:2106 ..
-    dw   $8720                                         ;; 00:2108 pP
-    db   $c0, $5f                                      ;; 00:210a ..
-    dw   $8730                                         ;; 00:210c pP
-    db   $e0, $5f                                      ;; 00:210e ..
-    dw   $8740                                         ;; 00:2110 pP
-    db   $00, $76                                      ;; 00:2112 ..
-    dw   $8750                                         ;; 00:2114 pP
-    db   $20, $76                                      ;; 00:2116 ..
-    dw   $8760                                         ;; 00:2118 pP
-    db   $10, $76                                      ;; 00:211a ..
-    dw   $8770                                         ;; 00:211c pP
-    db   $30, $76                                      ;; 00:211e ..
-    dw   $8780                                         ;; 00:2120 pP
-    db   $00, $5f                                      ;; 00:2122 ..
-    dw   $8790                                         ;; 00:2124 pP
-    db   $20, $5f                                      ;; 00:2126 ..
-    dw   $87a0                                         ;; 00:2128 pP
-    db   $10, $5f                                      ;; 00:212a ..
-    dw   $87b0                                         ;; 00:212c pP
-    db   $30, $5f                                      ;; 00:212e ..
-    dw   $87c0                                         ;; 00:2130 pP
-    db   $40, $5f                                      ;; 00:2132 ..
-    dw   $87d0                                         ;; 00:2134 pP
-    db   $20, $5f                                      ;; 00:2136 ..
-    dw   $87e0                                         ;; 00:2138 pP
-    db   $50, $5f                                      ;; 00:213a ..
-    dw   $87f0                                         ;; 00:213c pP
-    db   $30, $5f                                      ;; 00:213e ..
+;@bank 8 size=112
+;@data format=pp amount=28
+; List graphics to load into VRAM at startup. Copies 1 tile from 2nd pointer in bank8 to VRAM first pointer
+initialVRAMLoad:
+    dw   $8040, gfxBlankTile                           ;; 00:20d0 pP..
+    dw   $8050, gfxBlankTile                           ;; 00:20d4 pP..
+    dw   $8060, gfxBlankTile                           ;; 00:20d8 pP..
+    dw   $8070, gfxBlankTile                           ;; 00:20dc pP..
+    dw   $8100, gfxBlankTile                           ;; 00:20e0 pP..
+    dw   $8110, gfxBlankTile                           ;; 00:20e4 pP..
+    dw   $8120, gfxHand                                ;; 00:20e8 pP..
+    dw   $8130, gfxHand + $20                          ;; 00:20ec pP..
+    dw   $8140, gfxHand + $10                          ;; 00:20f0 pP..
+    dw   $8150, gfxHand + $30                          ;; 00:20f4 pP..
+    dw   $8160, gfxHand + $40                          ;; 00:20f8 pP..
+    dw   $8170, gfxHand + $30                          ;; 00:20fc pP..
+    dw   $8700, gfxHand + $50                          ;; 00:2100 .P..
+    dw   $8710, gfxHand + $70                          ;; 00:2104 pP..
+    dw   $8720, gfxHand + $60                          ;; 00:2108 pP..
+    dw   $8730, gfxHand + $80                          ;; 00:210c pP..
+    dw   $8740, gfxSnowman                             ;; 00:2110 pP..
+    dw   $8750, gfxSnowman + $20                       ;; 00:2114 pP..
+    dw   $8760, gfxSnowman + $10                       ;; 00:2118 pP..
+    dw   $8770, gfxSnowman + $30                       ;; 00:211c pP..
+    dw   $8780, gfxChest                               ;; 00:2120 pP..
+    dw   $8790, gfxChest + $20                         ;; 00:2124 pP..
+    dw   $87a0, gfxChest + $10                         ;; 00:2128 pP..
+    dw   $87b0, gfxChest + $30                         ;; 00:212c pP..
+    dw   $87c0, gfxChest + $40                         ;; 00:2130 pP..
+    dw   $87d0, gfxChest + $20                         ;; 00:2134 pP..
+    dw   $87e0, gfxChest + $50                         ;; 00:2138 pP..
+    dw   $87f0, gfxChest + $30                         ;; 00:213c pP..
 
 call_00_2140:
     ld   A, $08                                        ;; 00:2140 $3e $08
     ld   [$2100], A                                    ;; 00:2142 $ea $00 $21
-    ld   HL, something_20d0                            ;; 00:2145 $21 $d0 $20
+    ld   HL, initialVRAMLoad                           ;; 00:2145 $21 $d0 $20
     ld   B, $1c                                        ;; 00:2148 $06 $1c
 .jr_00_214a:
     push BC                                            ;; 00:214a $c5

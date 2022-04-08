@@ -26,6 +26,8 @@ INCLUDE "data/scriptPointers.asm"
     db   $0e, $6c, $b4, $4c, $0d, $2c, $b0, $4d        ;; 08:59e9 ????????
     db   $31, $0e, $6c, $b1, $4c, $0d, $2c, $ad        ;; 08:59f1 ????????
     db   $4d, $2e, $0e, $6c, $ae, $4c, $0d             ;; 08:59f9 ???????
+
+gfxBlankTile:
     dw   `00000000                                     ;; 08:5a00 $00 $00
     dw   `00000000                                     ;; 08:5a02 $00 $00
     dw   `00000000                                     ;; 08:5a04 $00 $00
@@ -49,15 +51,23 @@ data_08_5a40:
 ;@gfximg name=chest width=2 height=3
 gfxChest:
     INCBIN "chest.bin"                                 ;; 08:5f00
+
 ;@gfximg name=hand_spark width=2 height=5
+gfxHand:
     INCBIN "hand_spark.bin"                            ;; 08:5f60
+
 ;@gfximg name=chocobo width=2 height=24
+gfxChocobo:
     INCBIN "chocobo.bin"                               ;; 08:6000
+
 ;@gfximg name=minecart width=2 height=6
+gfxMinecart:
     INCBIN "minecart.bin"                              ;; 08:6300
 ;@gfximg name=cloud width=2 height=2
     INCBIN "cloud.bin"                                 ;; 08:63c0
+
 ;@gfximg name=moogle width=2 height=12
+gfxMoogle:
     INCBIN "moogle.bin"                                ;; 08:6400
 ;@gfximg name=chocobo2 width=2 height=12
     INCBIN "chocobo2.bin"                              ;; 08:6580

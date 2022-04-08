@@ -2519,10 +2519,10 @@ call_02_525c:
 
 call_02_527b:
     push HL                                            ;; 02:527b $e5
-    ld   HL, itemDataTable + 8                         ;; 02:527c $21 $62 $5e
+    ld   HL, itemDataTable + $08                       ;; 02:527c $21 $62 $5e
     bit  7, C                                          ;; 02:527f $cb $79
     jr   Z, .jr_02_5286                                ;; 02:5281 $28 $03
-    ld   HL, equipmentDataTable + 8                    ;; 02:5283 $21 $f2 $61
+    ld   HL, equipmentDataTable + $08                  ;; 02:5283 $21 $f2 $61
 .jr_02_5286:
     call indexIntoTable                                ;; 02:5286 $cd $82 $76
     ld   A, [HL]                                       ;; 02:5289 $7e
@@ -2744,7 +2744,7 @@ call_02_53f0:
 .jr_02_5400:
     ld   A, [HL+]                                      ;; 02:5400 $2a
     push HL                                            ;; 02:5401 $e5
-    ld   HL, equipmentDataTable + 12                   ;; 02:5402 $21 $f6 $61
+    ld   HL, equipmentDataTable + $0c                  ;; 02:5402 $21 $f6 $61
     call indexIntoTable                                ;; 02:5405 $cd $82 $76
     ld   A, [HL]                                       ;; 02:5408 $7e
     pop  HL                                            ;; 02:5409 $e1
@@ -2755,7 +2755,7 @@ call_02_53f0:
     ret                                                ;; 02:540f $c9
 
 call_02_5410:
-    ld   DE, equipmentDataTable + 8                    ;; 02:5410 $11 $f2 $61
+    ld   DE, equipmentDataTable + $08                  ;; 02:5410 $11 $f2 $61
     push DE                                            ;; 02:5413 $d5
     ld   DE, wD6B3                                     ;; 02:5414 $11 $b3 $d6
     jr   jr_02_5435                                    ;; 02:5417 $18 $1c
@@ -2764,7 +2764,7 @@ call_02_5419:
     ld   B, $10                                        ;; 02:5419 $06 $10
     ld   C, A                                          ;; 02:541b $4f
     ld   HL, wItemInventory                            ;; 02:541c $21 $c5 $d6
-    ld   DE, itemDataTable + 8                         ;; 02:541f $11 $62 $5e
+    ld   DE, itemDataTable + $08                       ;; 02:541f $11 $62 $5e
     push DE                                            ;; 02:5422 $d5
     ld   DE, wItemInventoryAmount                      ;; 02:5423 $11 $9b $d6
     jr   jr_02_5435                                    ;; 02:5426 $18 $0d
@@ -2773,7 +2773,7 @@ call_02_5428:
     ld   B, $08                                        ;; 02:5428 $06 $08
     ld   C, A                                          ;; 02:542a $4f
     ld   HL, wMagicInventory                           ;; 02:542b $21 $d5 $d6
-    ld   DE, spellDataTable + 8                        ;; 02:542e $11 $e2 $5d
+    ld   DE, spellDataTable + $08                      ;; 02:542e $11 $e2 $5d
     push DE                                            ;; 02:5431 $d5
     ld   DE, wD6AB                                     ;; 02:5432 $11 $ab $d6
 
@@ -3195,14 +3195,14 @@ call_02_568a:
     ld   A, B                                          ;; 02:5693 $78
     jr   Z, call_02_569c                               ;; 02:5694 $28 $06
     push HL                                            ;; 02:5696 $e5
-    ld   HL, equipmentDataTable + 8                    ;; 02:5697 $21 $f2 $61
+    ld   HL, equipmentDataTable + $08                  ;; 02:5697 $21 $f2 $61
     jr   jr_02_56a3                                    ;; 02:569a $18 $07
 
 call_02_569c:
     or   A, A                                          ;; 02:569c $b7
     jr   Z, jr_02_56ad                                 ;; 02:569d $28 $0e
     push HL                                            ;; 02:569f $e5
-    ld   HL, itemDataTable + 8                         ;; 02:56a0 $21 $62 $5e
+    ld   HL, itemDataTable + $08                       ;; 02:56a0 $21 $62 $5e
 
 jr_02_56a3:
     and  A, $7f                                        ;; 02:56a3 $e6 $7f
@@ -3222,7 +3222,7 @@ call_02_56b1:
     ld   HL, $00                                       ;; 02:56b1 $21 $00 $00
     and  A, $7f                                        ;; 02:56b4 $e6 $7f
     ret  Z                                             ;; 02:56b6 $c8
-    ld   HL, itemDataTable + 13                        ;; 02:56b7 $21 $67 $5e
+    ld   HL, itemDataTable + $0d                       ;; 02:56b7 $21 $67 $5e
     call indexIntoTable                                ;; 02:56ba $cd $82 $76
     ld   A, [HL+]                                      ;; 02:56bd $2a
     ld   H, [HL]                                       ;; 02:56be $66
@@ -3470,7 +3470,7 @@ call_02_583c:
     ld   B, $00                                        ;; 02:5844 $06 $00
     add  HL, BC                                        ;; 02:5846 $09
     ld   A, [HL]                                       ;; 02:5847 $7e
-    ld   HL, equipmentDataTable + 9                    ;; 02:5848 $21 $f3 $61
+    ld   HL, equipmentDataTable + $09                  ;; 02:5848 $21 $f3 $61
     call indexIntoTable                                ;; 02:584b $cd $82 $76
     ld   A, [HL]                                       ;; 02:584e $7e
     and  A, $0f                                        ;; 02:584f $e6 $0f
@@ -3994,7 +3994,7 @@ call_02_5b8e:
 call_02_5b9d:
     push HL                                            ;; 02:5b9d $e5
     ld   A, [wEquipedWeapon]                           ;; 02:5b9e $fa $e9 $d6
-    ld   HL, equipmentDataTable + 12                   ;; 02:5ba1 $21 $f6 $61
+    ld   HL, equipmentDataTable + $0c                  ;; 02:5ba1 $21 $f6 $61
     call indexIntoTable                                ;; 02:5ba4 $cd $82 $76
     ld   A, [HL]                                       ;; 02:5ba7 $7e
     pop  HL                                            ;; 02:5ba8 $e1
@@ -4288,7 +4288,7 @@ call_02_6656:
     jr   Z, .jr_02_6675                                ;; 02:665b $28 $18
     cp   A, $09                                        ;; 02:665d $fe $09
     jr   NC, .jr_02_666f                               ;; 02:665f $30 $0e
-    ld   HL, spellDataTable + 8                        ;; 02:6661 $21 $e2 $5d
+    ld   HL, spellDataTable + $08                      ;; 02:6661 $21 $e2 $5d
     call indexIntoTable                                ;; 02:6664 $cd $82 $76
     ld   A, [HL]                                       ;; 02:6667 $7e
     and  A, $1f                                        ;; 02:6668 $e6 $1f
@@ -5515,14 +5515,14 @@ call_02_6dd8:
 call_02_6dde:
     push HL                                            ;; 02:6dde $e5
     ld   A, [wEquipedShield]                           ;; 02:6ddf $fa $ee $d6
-    ld   HL, equipmentDataTable + 10                   ;; 02:6de2 $21 $f4 $61
+    ld   HL, equipmentDataTable + $0a                  ;; 02:6de2 $21 $f4 $61
     call indexIntoTable                                ;; 02:6de5 $cd $82 $76
     ld   A, [HL]                                       ;; 02:6de8 $7e
     pop  HL                                            ;; 02:6de9 $e1
     ret                                                ;; 02:6dea $c9
 
 jr_02_6deb:
-    ld   HL, equipmentDataTable + 11                   ;; 02:6deb $21 $f5 $61
+    ld   HL, equipmentDataTable + $0b                  ;; 02:6deb $21 $f5 $61
     call indexIntoTable                                ;; 02:6dee $cd $82 $76
     ld   A, [HL]                                       ;; 02:6df1 $7e
     pop  HL                                            ;; 02:6df2 $e1
@@ -5549,7 +5549,7 @@ call_02_6df4:
     pop  HL                                            ;; 02:6e0f $e1
 .jr_02_6e10:
     push HL                                            ;; 02:6e10 $e5
-    ld   HL, spellDataTable + 12                       ;; 02:6e11 $21 $e6 $5d
+    ld   HL, spellDataTable + $0c                      ;; 02:6e11 $21 $e6 $5d
     call indexIntoTable                                ;; 02:6e14 $cd $82 $76
     ld   A, [HL]                                       ;; 02:6e17 $7e
     pop  HL                                            ;; 02:6e18 $e1
@@ -5592,7 +5592,7 @@ call_02_6e25:
     ld   A, [HL+]                                      ;; 02:6e4e $2a
     and  A, $7f                                        ;; 02:6e4f $e6 $7f
     push HL                                            ;; 02:6e51 $e5
-    ld   HL, equipmentDataTable + 12                   ;; 02:6e52 $21 $f6 $61
+    ld   HL, equipmentDataTable + $0c                  ;; 02:6e52 $21 $f6 $61
     call indexIntoTable                                ;; 02:6e55 $cd $82 $76
     ld   A, [HL]                                       ;; 02:6e58 $7e
     pop  HL                                            ;; 02:6e59 $e1
@@ -6060,7 +6060,7 @@ call_02_714b:
 call_02_7156:
     push HL                                            ;; 02:7156 $e5
     ld   A, [wEquipedWeapon]                           ;; 02:7157 $fa $e9 $d6
-    ld   HL, equipmentDataTable + 10                   ;; 02:715a $21 $f4 $61
+    ld   HL, equipmentDataTable + $0a                  ;; 02:715a $21 $f4 $61
     call call_02_7174                                  ;; 02:715d $cd $74 $71
     ld   [wD7D7], A                                    ;; 02:7160 $ea $d7 $d7
     pop  HL                                            ;; 02:7163 $e1
@@ -6069,7 +6069,7 @@ call_02_7156:
 call_02_7165:
     push HL                                            ;; 02:7165 $e5
     ld   A, [wEquipedItem]                             ;; 02:7166 $fa $ef $d6
-    ld   HL, spellDataTable + 10                       ;; 02:7169 $21 $e4 $5d
+    ld   HL, spellDataTable + $0a                      ;; 02:7169 $21 $e4 $5d
     call call_02_7174                                  ;; 02:716c $cd $74 $71
     pop  HL                                            ;; 02:716f $e1
     ld   [wD851], A                                    ;; 02:7170 $ea $51 $d8
@@ -6082,7 +6082,7 @@ call_02_7174:
     ret                                                ;; 02:717a $c9
 
 call_02_717b:
-    ld   HL, spellDataTable + 10                       ;; 02:717b $21 $e4 $5d
+    ld   HL, spellDataTable + $0a                      ;; 02:717b $21 $e4 $5d
     call indexIntoTable                                ;; 02:717e $cd $82 $76
     ld   A, [HL+]                                      ;; 02:7181 $2a
     ld   L, [HL]                                       ;; 02:7182 $6e
@@ -6091,7 +6091,7 @@ call_02_717b:
 
 call_02_7185:
     push AF                                            ;; 02:7185 $f5
-    ld   HL, spellDataTable + 8                        ;; 02:7186 $21 $e2 $5d
+    ld   HL, spellDataTable + $08                      ;; 02:7186 $21 $e2 $5d
     call indexIntoTable                                ;; 02:7189 $cd $82 $76
     ld   A, [HL]                                       ;; 02:718c $7e
     and  A, $1f                                        ;; 02:718d $e6 $1f
@@ -6115,7 +6115,7 @@ call_02_71a2:
     and  A, $7f                                        ;; 02:71a8 $e6 $7f
     cp   A, $09                                        ;; 02:71aa $fe $09
     ret  C                                             ;; 02:71ac $d8
-    ld   HL, spellDataTable + 9                        ;; 02:71ad $21 $e3 $5d
+    ld   HL, spellDataTable + $09                      ;; 02:71ad $21 $e3 $5d
     call indexIntoTable                                ;; 02:71b0 $cd $82 $76
     ld   A, [HL]                                       ;; 02:71b3 $7e
     and  A, $80                                        ;; 02:71b4 $e6 $80
@@ -6361,7 +6361,7 @@ call_02_7322:
     ld   A, [HL+]                                      ;; 02:7366 $2a
     and  A, $7f                                        ;; 02:7367 $e6 $7f
     push HL                                            ;; 02:7369 $e5
-    ld   HL, equipmentDataTable + 12                   ;; 02:736a $21 $f6 $61
+    ld   HL, equipmentDataTable + $0c                  ;; 02:736a $21 $f6 $61
     call indexIntoTable                                ;; 02:736d $cd $82 $76
     ld   A, B                                          ;; 02:7370 $78
     cp   A, $11                                        ;; 02:7371 $fe $11
