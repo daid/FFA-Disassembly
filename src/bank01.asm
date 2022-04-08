@@ -4544,7 +4544,7 @@ call_01_5d64:
     push BC                                            ;; 01:5d68 $c5
     ld   A, $01                                        ;; 01:5d69 $3e $01
     ld   DE, $fefe                                     ;; 01:5d6b $11 $fe $fe
-    ld   HL, $2e8d                                     ;; 01:5d6e $21 $8d $2e
+    ld   HL, unlabeled_2e8d                            ;; 01:5d6e $21 $8d $2e
     call createObject                                  ;; 01:5d71 $cd $74 $0a
     pop  BC                                            ;; 01:5d74 $c1
     cp   A, $07                                        ;; 01:5d75 $fe $07
