@@ -180,7 +180,7 @@ call_00_016f:
     ld   A, $04                                        ;; 00:0191 $3e $04
     ret                                                ;; 00:0193 $c9
 
-scriptOpCodeA0:
+scriptOpCodePlayerOnChocobo:
     push HL                                            ;; 00:0194 $e5
     call call_00_019d                                  ;; 00:0195 $cd $9d $01
     pop  HL                                            ;; 00:0198 $e1
@@ -190,7 +190,7 @@ scriptOpCodeA0:
 call_00_019d:
     jp_to_bank 01, call_01_5136                        ;; 00:019d $f5 $3e $09 $c3 $d7 $1e
 
-scriptOpCodeA1:
+scriptOpCodePlayerOnChocobot:
     push HL                                            ;; 00:01a3 $e5
     call call_00_01ac                                  ;; 00:01a4 $cd $ac $01
     pop  HL                                            ;; 00:01a7 $e1
@@ -200,7 +200,7 @@ scriptOpCodeA1:
 call_00_01ac:
     jp_to_bank 01, call_01_5156                        ;; 00:01ac $f5 $3e $0a $c3 $d7 $1e
 
-scriptOpCodeA2:
+scriptOpCodePlayerOnChocobotWater:
     push HL                                            ;; 00:01b2 $e5
     call call_00_01bb                                  ;; 00:01b3 $cd $bb $01
     pop  HL                                            ;; 00:01b6 $e1
@@ -220,7 +220,7 @@ scriptOpCodeSetPlayerNormalSprite:
 call_00_01ca:
     jp_to_bank 01, call_01_50f9                        ;; 00:01ca $f5 $3e $08 $c3 $d7 $1e
 
-scriptOpCodeA3:
+scriptOpCodePlayerInMinecart:
     ld   A, [wC4D4]                                    ;; 00:01d0 $fa $d4 $c4
     set  4, A                                          ;; 00:01d3 $cb $e7
     ld   [wC4D4], A                                    ;; 00:01d5 $ea $d4 $c4
@@ -2264,7 +2264,7 @@ scriptOpCodeA9:
     call getNextScriptInstruction                      ;; 00:0d7f $cd $27 $37
     ret                                                ;; 00:0d82 $c9
 
-scriptOpCodeAB:
+scriptOpCodeClearRoomHistory:
     push HL                                            ;; 00:0d83 $e5
     call call_00_21b4                                  ;; 00:0d84 $cd $b4 $21
     pop  HL                                            ;; 00:0d87 $e1
@@ -2433,11 +2433,11 @@ scriptOpCodeED:
     call call_00_24f9                                  ;; 00:0e77 $cd $f9 $24
     ret                                                ;; 00:0e7a $c9
 
-scriptOpCodeEE:
+scriptOpCodeRunroomAllKilledScript:
     call call_00_251f                                  ;; 00:0e7b $cd $1f $25
     ret                                                ;; 00:0e7e $c9
 
-scriptOpCodeEF:
+scriptOpCodeSetNextRoom:
     ld   A, [HL+]                                      ;; 00:0e7f $2a
     ld   E, A                                          ;; 00:0e80 $5f
     ld   A, [HL+]                                      ;; 00:0e81 $2a
@@ -2472,7 +2472,7 @@ scriptOpCodeShakeScreen:
     call Z, getNextScriptInstruction                   ;; 00:0eae $cc $27 $37
     ret                                                ;; 00:0eb1 $c9
 
-scriptOpCodeBA:
+scriptOpCodeCreateEffect:
     ld   D, H                                          ;; 00:0eb2 $54
     ld   E, L                                          ;; 00:0eb3 $5d
     ld   A, [wScriptOpCounter]                         ;; 00:0eb4 $fa $99 $d4
@@ -2610,7 +2610,7 @@ scriptOpCodeScrollRoomUp:
     call getNextScriptInstruction                      ;; 00:0f84 $cd $27 $37
     ret                                                ;; 00:0f87 $c9
 
-scriptOpCodeE4:
+scriptOpCodeOpenEastDoor:
     push HL                                            ;; 00:0f88 $e5
     ld   A, $01                                        ;; 00:0f89 $3e $01
     call call_00_235b                                  ;; 00:0f8b $cd $5b $23
@@ -2618,7 +2618,7 @@ scriptOpCodeE4:
     call getNextScriptInstruction                      ;; 00:0f8f $cd $27 $37
     ret                                                ;; 00:0f92 $c9
 
-scriptOpCodeE5:
+scriptOpCodeCloseEastDoor:
     push HL                                            ;; 00:0f93 $e5
     ld   A, $01                                        ;; 00:0f94 $3e $01
     call call_00_22fe                                  ;; 00:0f96 $cd $fe $22
@@ -2626,7 +2626,7 @@ scriptOpCodeE5:
     call getNextScriptInstruction                      ;; 00:0f9a $cd $27 $37
     ret                                                ;; 00:0f9d $c9
 
-scriptOpCodeE6:
+scriptOpCodeOpenWestDoor:
     push HL                                            ;; 00:0f9e $e5
     ld   A, $02                                        ;; 00:0f9f $3e $02
     call call_00_235b                                  ;; 00:0fa1 $cd $5b $23
@@ -2634,7 +2634,7 @@ scriptOpCodeE6:
     call getNextScriptInstruction                      ;; 00:0fa5 $cd $27 $37
     ret                                                ;; 00:0fa8 $c9
 
-scriptOpCodeE7:
+scriptOpCodeCloseWestDoor:
     push HL                                            ;; 00:0fa9 $e5
     ld   A, $02                                        ;; 00:0faa $3e $02
     call call_00_22fe                                  ;; 00:0fac $cd $fe $22
@@ -2642,7 +2642,7 @@ scriptOpCodeE7:
     call getNextScriptInstruction                      ;; 00:0fb0 $cd $27 $37
     ret                                                ;; 00:0fb3 $c9
 
-scriptOpCodeE0:
+scriptOpCodeOpenNorthDoor:
     push HL                                            ;; 00:0fb4 $e5
     ld   A, $04                                        ;; 00:0fb5 $3e $04
     call call_00_235b                                  ;; 00:0fb7 $cd $5b $23
@@ -2650,7 +2650,7 @@ scriptOpCodeE0:
     call getNextScriptInstruction                      ;; 00:0fbb $cd $27 $37
     ret                                                ;; 00:0fbe $c9
 
-scriptOpCodeE1:
+scriptOpCodeCloseNorthDoor:
     push HL                                            ;; 00:0fbf $e5
     ld   A, $04                                        ;; 00:0fc0 $3e $04
     call call_00_22fe                                  ;; 00:0fc2 $cd $fe $22
@@ -2658,7 +2658,7 @@ scriptOpCodeE1:
     call getNextScriptInstruction                      ;; 00:0fc6 $cd $27 $37
     ret                                                ;; 00:0fc9 $c9
 
-scriptOpCodeE2:
+scriptOpCodeOpenSouthDoor:
     push HL                                            ;; 00:0fca $e5
     ld   A, $08                                        ;; 00:0fcb $3e $08
     call call_00_235b                                  ;; 00:0fcd $cd $5b $23
@@ -2666,7 +2666,7 @@ scriptOpCodeE2:
     call getNextScriptInstruction                      ;; 00:0fd1 $cd $27 $37
     ret                                                ;; 00:0fd4 $c9
 
-scriptOpCodeE3:
+scriptOpCodeCloseSouthDoor:
     push HL                                            ;; 00:0fd5 $e5
     ld   A, $08                                        ;; 00:0fd6 $3e $08
     call call_00_22fe                                  ;; 00:0fd8 $cd $fe $22
@@ -3111,7 +3111,7 @@ scriptOpCode1B:
     call call_00_2879                                  ;; 00:12cc $cd $79 $28
     ret                                                ;; 00:12cf $c9
 
-scriptOpCode20:
+scriptOpCodeNpc2StepForward:
     call call_00_28c2                                  ;; 00:12d0 $cd $c2 $28
     add  A, $01                                        ;; 00:12d3 $c6 $01
     ld   C, A                                          ;; 00:12d5 $4f
@@ -3119,7 +3119,7 @@ scriptOpCode20:
     call call_00_2879                                  ;; 00:12d8 $cd $79 $28
     ret                                                ;; 00:12db $c9
 
-scriptOpCode21:
+scriptOpCodeNpc2StepBackwards:
     call call_00_28c2                                  ;; 00:12dc $cd $c2 $28
     add  A, $01                                        ;; 00:12df $c6 $01
     ld   C, A                                          ;; 00:12e1 $4f
@@ -3127,7 +3127,7 @@ scriptOpCode21:
     call call_00_2879                                  ;; 00:12e4 $cd $79 $28
     ret                                                ;; 00:12e7 $c9
 
-scriptOpCode26:
+scriptOpCodeNpc2DirectionRight:
     call call_00_28c2                                  ;; 00:12e8 $cd $c2 $28
     add  A, $01                                        ;; 00:12eb $c6 $01
     ld   C, A                                          ;; 00:12ed $4f
@@ -3135,7 +3135,7 @@ scriptOpCode26:
     call call_00_2879                                  ;; 00:12f0 $cd $79 $28
     ret                                                ;; 00:12f3 $c9
 
-scriptOpCode27:
+scriptOpCodeNpc2DirectionLeft:
     call call_00_28c2                                  ;; 00:12f4 $cd $c2 $28
     add  A, $01                                        ;; 00:12f7 $c6 $01
     ld   C, A                                          ;; 00:12f9 $4f
@@ -3143,7 +3143,7 @@ scriptOpCode27:
     call call_00_2879                                  ;; 00:12fc $cd $79 $28
     ret                                                ;; 00:12ff $c9
 
-scriptOpCode24:
+scriptOpCodeNpc2DirectionUp:
     call call_00_28c2                                  ;; 00:1300 $cd $c2 $28
     add  A, $01                                        ;; 00:1303 $c6 $01
     ld   C, A                                          ;; 00:1305 $4f
@@ -3151,7 +3151,7 @@ scriptOpCode24:
     call call_00_2879                                  ;; 00:1308 $cd $79 $28
     ret                                                ;; 00:130b $c9
 
-scriptOpCode25:
+scriptOpCodeNpc2DirectionDown:
     call call_00_28c2                                  ;; 00:130c $cd $c2 $28
     add  A, $01                                        ;; 00:130f $c6 $01
     ld   C, A                                          ;; 00:1311 $4f
@@ -3159,14 +3159,14 @@ scriptOpCode25:
     call call_00_2879                                  ;; 00:1314 $cd $79 $28
     ret                                                ;; 00:1317 $c9
 
-scriptOpCode28:
+scriptOpCodeNpc2Delete:
     call call_00_28c2                                  ;; 00:1318 $cd $c2 $28
     add  A, $01                                        ;; 00:131b $c6 $01
     ld   C, A                                          ;; 00:131d $4f
     call call_00_2859                                  ;; 00:131e $cd $59 $28
     ret                                                ;; 00:1321 $c9
 
-scriptOpCode29:
+scriptOpCodeNpc2SetPosition:
     call call_00_28c2                                  ;; 00:1322 $cd $c2 $28
     add  A, $01                                        ;; 00:1325 $c6 $01
     ld   C, A                                          ;; 00:1327 $4f
@@ -3189,7 +3189,7 @@ scriptOpCode2B:
     call call_00_2879                                  ;; 00:1340 $cd $79 $28
     ret                                                ;; 00:1343 $c9
 
-scriptOpCode30:
+scriptOpCodeNpc3StepForward:
     call call_00_28c2                                  ;; 00:1344 $cd $c2 $28
     add  A, $02                                        ;; 00:1347 $c6 $02
     ld   C, A                                          ;; 00:1349 $4f
@@ -3197,7 +3197,7 @@ scriptOpCode30:
     call call_00_2879                                  ;; 00:134c $cd $79 $28
     ret                                                ;; 00:134f $c9
 
-scriptOpCode31:
+scriptOpCodeNpc3StepBackwards:
     call call_00_28c2                                  ;; 00:1350 $cd $c2 $28
     add  A, $02                                        ;; 00:1353 $c6 $02
     ld   C, A                                          ;; 00:1355 $4f
@@ -3205,7 +3205,7 @@ scriptOpCode31:
     call call_00_2879                                  ;; 00:1358 $cd $79 $28
     ret                                                ;; 00:135b $c9
 
-scriptOpCode36:
+scriptOpCodeNpc3DirectionRight:
     call call_00_28c2                                  ;; 00:135c $cd $c2 $28
     add  A, $02                                        ;; 00:135f $c6 $02
     ld   C, A                                          ;; 00:1361 $4f
@@ -3213,7 +3213,7 @@ scriptOpCode36:
     call call_00_2879                                  ;; 00:1364 $cd $79 $28
     ret                                                ;; 00:1367 $c9
 
-scriptOpCode37:
+scriptOpCodeNpc3DirectionLeft:
     call call_00_28c2                                  ;; 00:1368 $cd $c2 $28
     add  A, $02                                        ;; 00:136b $c6 $02
     ld   C, A                                          ;; 00:136d $4f
@@ -3221,7 +3221,7 @@ scriptOpCode37:
     call call_00_2879                                  ;; 00:1370 $cd $79 $28
     ret                                                ;; 00:1373 $c9
 
-scriptOpCode34:
+scriptOpCodeNpc3DirectionUp:
     call call_00_28c2                                  ;; 00:1374 $cd $c2 $28
     add  A, $02                                        ;; 00:1377 $c6 $02
     ld   C, A                                          ;; 00:1379 $4f
@@ -3229,7 +3229,7 @@ scriptOpCode34:
     call call_00_2879                                  ;; 00:137c $cd $79 $28
     ret                                                ;; 00:137f $c9
 
-scriptOpCode35:
+scriptOpCodeNpc3DirectionDown:
     call call_00_28c2                                  ;; 00:1380 $cd $c2 $28
     add  A, $02                                        ;; 00:1383 $c6 $02
     ld   C, A                                          ;; 00:1385 $4f
@@ -3237,14 +3237,14 @@ scriptOpCode35:
     call call_00_2879                                  ;; 00:1388 $cd $79 $28
     ret                                                ;; 00:138b $c9
 
-scriptOpCode38:
+scriptOpCodeNpc3Delete:
     call call_00_28c2                                  ;; 00:138c $cd $c2 $28
     add  A, $02                                        ;; 00:138f $c6 $02
     ld   C, A                                          ;; 00:1391 $4f
     call call_00_2859                                  ;; 00:1392 $cd $59 $28
     ret                                                ;; 00:1395 $c9
 
-scriptOpCode39:
+scriptOpCodeNpc3SetPosition:
     call call_00_28c2                                  ;; 00:1396 $cd $c2 $28
     add  A, $02                                        ;; 00:1399 $c6 $02
     ld   C, A                                          ;; 00:139b $4f
@@ -3267,7 +3267,7 @@ scriptOpCode3B:
     call call_00_2879                                  ;; 00:13b4 $cd $79 $28
     ret                                                ;; 00:13b7 $c9
 
-scriptOpCode40:
+scriptOpCodeNpc4StepForward:
     call call_00_28c2                                  ;; 00:13b8 $cd $c2 $28
     add  A, $03                                        ;; 00:13bb $c6 $03
     ld   C, A                                          ;; 00:13bd $4f
@@ -3275,7 +3275,7 @@ scriptOpCode40:
     call call_00_2879                                  ;; 00:13c0 $cd $79 $28
     ret                                                ;; 00:13c3 $c9
 
-scriptOpCode41:
+scriptOpCodeNpc4StepBackwards:
     call call_00_28c2                                  ;; 00:13c4 $cd $c2 $28
     add  A, $03                                        ;; 00:13c7 $c6 $03
     ld   C, A                                          ;; 00:13c9 $4f
@@ -3283,7 +3283,7 @@ scriptOpCode41:
     call call_00_2879                                  ;; 00:13cc $cd $79 $28
     ret                                                ;; 00:13cf $c9
 
-scriptOpCode46:
+scriptOpCodeNpc4DirectionRight:
     call call_00_28c2                                  ;; 00:13d0 $cd $c2 $28
     add  A, $03                                        ;; 00:13d3 $c6 $03
     ld   C, A                                          ;; 00:13d5 $4f
@@ -3291,7 +3291,7 @@ scriptOpCode46:
     call call_00_2879                                  ;; 00:13d8 $cd $79 $28
     ret                                                ;; 00:13db $c9
 
-scriptOpCode47:
+scriptOpCodeNpc4DirectionLeft:
     call call_00_28c2                                  ;; 00:13dc $cd $c2 $28
     add  A, $03                                        ;; 00:13df $c6 $03
     ld   C, A                                          ;; 00:13e1 $4f
@@ -3299,7 +3299,7 @@ scriptOpCode47:
     call call_00_2879                                  ;; 00:13e4 $cd $79 $28
     ret                                                ;; 00:13e7 $c9
 
-scriptOpCode44:
+scriptOpCodeNpc4DirectionUp:
     call call_00_28c2                                  ;; 00:13e8 $cd $c2 $28
     add  A, $03                                        ;; 00:13eb $c6 $03
     ld   C, A                                          ;; 00:13ed $4f
@@ -3307,7 +3307,7 @@ scriptOpCode44:
     call call_00_2879                                  ;; 00:13f0 $cd $79 $28
     ret                                                ;; 00:13f3 $c9
 
-scriptOpCode45:
+scriptOpCodeNpc4DirectionDown:
     call call_00_28c2                                  ;; 00:13f4 $cd $c2 $28
     add  A, $03                                        ;; 00:13f7 $c6 $03
     ld   C, A                                          ;; 00:13f9 $4f
@@ -3315,14 +3315,14 @@ scriptOpCode45:
     call call_00_2879                                  ;; 00:13fc $cd $79 $28
     ret                                                ;; 00:13ff $c9
 
-scriptOpCode48:
+scriptOpCodeNpc4Delete:
     call call_00_28c2                                  ;; 00:1400 $cd $c2 $28
     add  A, $03                                        ;; 00:1403 $c6 $03
     ld   C, A                                          ;; 00:1405 $4f
     call call_00_2859                                  ;; 00:1406 $cd $59 $28
     ret                                                ;; 00:1409 $c9
 
-scriptOpCode49:
+scriptOpCodeNpc4SetPosition:
     call call_00_28c2                                  ;; 00:140a $cd $c2 $28
     add  A, $03                                        ;; 00:140d $c6 $03
     ld   C, A                                          ;; 00:140f $4f
@@ -3345,7 +3345,7 @@ scriptOpCode4B:
     call call_00_2879                                  ;; 00:1428 $cd $79 $28
     ret                                                ;; 00:142b $c9
 
-scriptOpCode50:
+scriptOpCodeNpc5StepForward:
     call call_00_28c2                                  ;; 00:142c $cd $c2 $28
     add  A, $04                                        ;; 00:142f $c6 $04
     ld   C, A                                          ;; 00:1431 $4f
@@ -3353,7 +3353,7 @@ scriptOpCode50:
     call call_00_2879                                  ;; 00:1434 $cd $79 $28
     ret                                                ;; 00:1437 $c9
 
-scriptOpCode51:
+scriptOpCodeNpc5StepBackwards:
     call call_00_28c2                                  ;; 00:1438 $cd $c2 $28
     add  A, $04                                        ;; 00:143b $c6 $04
     ld   C, A                                          ;; 00:143d $4f
@@ -3361,7 +3361,7 @@ scriptOpCode51:
     call call_00_2879                                  ;; 00:1440 $cd $79 $28
     ret                                                ;; 00:1443 $c9
 
-scriptOpCode56:
+scriptOpCodeNpc5DirectionRight:
     call call_00_28c2                                  ;; 00:1444 $cd $c2 $28
     add  A, $04                                        ;; 00:1447 $c6 $04
     ld   C, A                                          ;; 00:1449 $4f
@@ -3369,7 +3369,7 @@ scriptOpCode56:
     call call_00_2879                                  ;; 00:144c $cd $79 $28
     ret                                                ;; 00:144f $c9
 
-scriptOpCode57:
+scriptOpCodeNpc5DirectionLeft:
     call call_00_28c2                                  ;; 00:1450 $cd $c2 $28
     add  A, $04                                        ;; 00:1453 $c6 $04
     ld   C, A                                          ;; 00:1455 $4f
@@ -3377,7 +3377,7 @@ scriptOpCode57:
     call call_00_2879                                  ;; 00:1458 $cd $79 $28
     ret                                                ;; 00:145b $c9
 
-scriptOpCode54:
+scriptOpCodeNpc5DirectionUp:
     call call_00_28c2                                  ;; 00:145c $cd $c2 $28
     add  A, $04                                        ;; 00:145f $c6 $04
     ld   C, A                                          ;; 00:1461 $4f
@@ -3385,7 +3385,7 @@ scriptOpCode54:
     call call_00_2879                                  ;; 00:1464 $cd $79 $28
     ret                                                ;; 00:1467 $c9
 
-scriptOpCode55:
+scriptOpCodeNpc5DirectionDown:
     call call_00_28c2                                  ;; 00:1468 $cd $c2 $28
     add  A, $04                                        ;; 00:146b $c6 $04
     ld   C, A                                          ;; 00:146d $4f
@@ -3393,14 +3393,14 @@ scriptOpCode55:
     call call_00_2879                                  ;; 00:1470 $cd $79 $28
     ret                                                ;; 00:1473 $c9
 
-scriptOpCode58:
+scriptOpCodeNpc5Delete:
     call call_00_28c2                                  ;; 00:1474 $cd $c2 $28
     add  A, $04                                        ;; 00:1477 $c6 $04
     ld   C, A                                          ;; 00:1479 $4f
     call call_00_2859                                  ;; 00:147a $cd $59 $28
     ret                                                ;; 00:147d $c9
 
-scriptOpCode59:
+scriptOpCodeNpc5SetPosition:
     call call_00_28c2                                  ;; 00:147e $cd $c2 $28
     add  A, $04                                        ;; 00:1481 $c6 $04
     ld   C, A                                          ;; 00:1483 $4f
@@ -3423,7 +3423,7 @@ scriptOpCode5B:
     call call_00_2879                                  ;; 00:149c $cd $79 $28
     ret                                                ;; 00:149f $c9
 
-scriptOpCode60:
+scriptOpCodeNpc6StepForward:
     call call_00_28c2                                  ;; 00:14a0 $cd $c2 $28
     add  A, $05                                        ;; 00:14a3 $c6 $05
     ld   C, A                                          ;; 00:14a5 $4f
@@ -3431,7 +3431,7 @@ scriptOpCode60:
     call call_00_2879                                  ;; 00:14a8 $cd $79 $28
     ret                                                ;; 00:14ab $c9
 
-scriptOpCode61:
+scriptOpCodeNpc6StepBackwards:
     call call_00_28c2                                  ;; 00:14ac $cd $c2 $28
     add  A, $05                                        ;; 00:14af $c6 $05
     ld   C, A                                          ;; 00:14b1 $4f
@@ -3439,7 +3439,7 @@ scriptOpCode61:
     call call_00_2879                                  ;; 00:14b4 $cd $79 $28
     ret                                                ;; 00:14b7 $c9
 
-scriptOpCode66:
+scriptOpCodeNpc6DirectionRight:
     call call_00_28c2                                  ;; 00:14b8 $cd $c2 $28
     add  A, $05                                        ;; 00:14bb $c6 $05
     ld   C, A                                          ;; 00:14bd $4f
@@ -3447,7 +3447,7 @@ scriptOpCode66:
     call call_00_2879                                  ;; 00:14c0 $cd $79 $28
     ret                                                ;; 00:14c3 $c9
 
-scriptOpCode67:
+scriptOpCodeNpc6DirectionLeft:
     call call_00_28c2                                  ;; 00:14c4 $cd $c2 $28
     add  A, $05                                        ;; 00:14c7 $c6 $05
     ld   C, A                                          ;; 00:14c9 $4f
@@ -3455,7 +3455,7 @@ scriptOpCode67:
     call call_00_2879                                  ;; 00:14cc $cd $79 $28
     ret                                                ;; 00:14cf $c9
 
-scriptOpCode64:
+scriptOpCodeNpc6DirectionUp:
     call call_00_28c2                                  ;; 00:14d0 $cd $c2 $28
     add  A, $05                                        ;; 00:14d3 $c6 $05
     ld   C, A                                          ;; 00:14d5 $4f
@@ -3463,7 +3463,7 @@ scriptOpCode64:
     call call_00_2879                                  ;; 00:14d8 $cd $79 $28
     ret                                                ;; 00:14db $c9
 
-scriptOpCode65:
+scriptOpCodeNpc6DirectionDown:
     call call_00_28c2                                  ;; 00:14dc $cd $c2 $28
     add  A, $05                                        ;; 00:14df $c6 $05
     ld   C, A                                          ;; 00:14e1 $4f
@@ -3471,14 +3471,14 @@ scriptOpCode65:
     call call_00_2879                                  ;; 00:14e4 $cd $79 $28
     ret                                                ;; 00:14e7 $c9
 
-scriptOpCode68:
+scriptOpCodeNpc6Delete:
     call call_00_28c2                                  ;; 00:14e8 $cd $c2 $28
     add  A, $05                                        ;; 00:14eb $c6 $05
     ld   C, A                                          ;; 00:14ed $4f
     call call_00_2859                                  ;; 00:14ee $cd $59 $28
     ret                                                ;; 00:14f1 $c9
 
-scriptOpCode69:
+scriptOpCodeNpc6SetPosition:
     call call_00_28c2                                  ;; 00:14f2 $cd $c2 $28
     add  A, $05                                        ;; 00:14f5 $c6 $05
     ld   C, A                                          ;; 00:14f7 $4f
@@ -3501,7 +3501,7 @@ scriptOpCode6B:
     call call_00_2879                                  ;; 00:1510 $cd $79 $28
     ret                                                ;; 00:1513 $c9
 
-scriptOpCode70:
+scriptOpCodeNpc7StepForward:
     call call_00_28c2                                  ;; 00:1514 $cd $c2 $28
     add  A, $06                                        ;; 00:1517 $c6 $06
     ld   C, A                                          ;; 00:1519 $4f
@@ -3509,7 +3509,7 @@ scriptOpCode70:
     call call_00_2879                                  ;; 00:151c $cd $79 $28
     ret                                                ;; 00:151f $c9
 
-scriptOpCode71:
+scriptOpCodeNpc7StepBackwards:
     call call_00_28c2                                  ;; 00:1520 $cd $c2 $28
     add  A, $06                                        ;; 00:1523 $c6 $06
     ld   C, A                                          ;; 00:1525 $4f
@@ -3517,7 +3517,7 @@ scriptOpCode71:
     call call_00_2879                                  ;; 00:1528 $cd $79 $28
     ret                                                ;; 00:152b $c9
 
-scriptOpCode76:
+scriptOpCodeNpc7DirectionRight:
     call call_00_28c2                                  ;; 00:152c $cd $c2 $28
     add  A, $06                                        ;; 00:152f $c6 $06
     ld   C, A                                          ;; 00:1531 $4f
@@ -3525,7 +3525,7 @@ scriptOpCode76:
     call call_00_2879                                  ;; 00:1534 $cd $79 $28
     ret                                                ;; 00:1537 $c9
 
-scriptOpCode77:
+scriptOpCodeNpc7DirectionLeft:
     call call_00_28c2                                  ;; 00:1538 $cd $c2 $28
     add  A, $06                                        ;; 00:153b $c6 $06
     ld   C, A                                          ;; 00:153d $4f
@@ -3533,7 +3533,7 @@ scriptOpCode77:
     call call_00_2879                                  ;; 00:1540 $cd $79 $28
     ret                                                ;; 00:1543 $c9
 
-scriptOpCode74:
+scriptOpCodeNpc7DirectionUp:
     call call_00_28c2                                  ;; 00:1544 $cd $c2 $28
     add  A, $06                                        ;; 00:1547 $c6 $06
     ld   C, A                                          ;; 00:1549 $4f
@@ -3541,7 +3541,7 @@ scriptOpCode74:
     call call_00_2879                                  ;; 00:154c $cd $79 $28
     ret                                                ;; 00:154f $c9
 
-scriptOpCode75:
+scriptOpCodeNpc7DirectionDown:
     call call_00_28c2                                  ;; 00:1550 $cd $c2 $28
     add  A, $06                                        ;; 00:1553 $c6 $06
     ld   C, A                                          ;; 00:1555 $4f
@@ -3549,14 +3549,14 @@ scriptOpCode75:
     call call_00_2879                                  ;; 00:1558 $cd $79 $28
     ret                                                ;; 00:155b $c9
 
-scriptOpCode78:
+scriptOpCodeNpc7Delete:
     call call_00_28c2                                  ;; 00:155c $cd $c2 $28
     add  A, $06                                        ;; 00:155f $c6 $06
     ld   C, A                                          ;; 00:1561 $4f
     call call_00_2859                                  ;; 00:1562 $cd $59 $28
     ret                                                ;; 00:1565 $c9
 
-scriptOpCode79:
+scriptOpCodeNpc7SetPosition:
     call call_00_28c2                                  ;; 00:1566 $cd $c2 $28
     add  A, $06                                        ;; 00:1569 $c6 $06
     ld   C, A                                          ;; 00:156b $4f
@@ -3598,7 +3598,7 @@ call_00_1588:
     dec  A                                             ;; 00:15a2 $3d
     ret                                                ;; 00:15a3 $c9
 
-scriptOpCode80:
+scriptOpCodePlayerStepForward:
     call call_00_1588                                  ;; 00:15a4 $cd $88 $15
     ret  NZ                                            ;; 00:15a7 $c0
     push HL                                            ;; 00:15a8 $e5
@@ -3610,7 +3610,7 @@ scriptOpCode80:
     call call_00_2879                                  ;; 00:15b3 $cd $79 $28
     ret                                                ;; 00:15b6 $c9
 
-scriptOpCode81:
+scriptOpCodePlayerStepBackwards:
     call call_00_1588                                  ;; 00:15b7 $cd $88 $15
     ret  NZ                                            ;; 00:15ba $c0
     push HL                                            ;; 00:15bb $e5
@@ -3622,7 +3622,7 @@ scriptOpCode81:
     call call_00_2879                                  ;; 00:15c7 $cd $79 $28
     ret                                                ;; 00:15ca $c9
 
-scriptOpCode86:
+scriptOpCodePlayerDirectionRight:
     call call_00_1588                                  ;; 00:15cb $cd $88 $15
     ret  NZ                                            ;; 00:15ce $c0
     ld   A, $01                                        ;; 00:15cf $3e $01
@@ -3630,7 +3630,7 @@ scriptOpCode86:
     call call_00_2879                                  ;; 00:15d3 $cd $79 $28
     ret                                                ;; 00:15d6 $c9
 
-scriptOpCode87:
+scriptOpCodePlayerDirectionLeft:
     call call_00_1588                                  ;; 00:15d7 $cd $88 $15
     ret  NZ                                            ;; 00:15da $c0
     ld   A, $02                                        ;; 00:15db $3e $02
@@ -3638,7 +3638,7 @@ scriptOpCode87:
     call call_00_2879                                  ;; 00:15df $cd $79 $28
     ret                                                ;; 00:15e2 $c9
 
-scriptOpCode84:
+scriptOpCodePlayerDirectionUp:
     call call_00_1588                                  ;; 00:15e3 $cd $88 $15
     ret  NZ                                            ;; 00:15e6 $c0
     ld   A, $04                                        ;; 00:15e7 $3e $04
@@ -3646,7 +3646,7 @@ scriptOpCode84:
     call call_00_2879                                  ;; 00:15eb $cd $79 $28
     ret                                                ;; 00:15ee $c9
 
-scriptOpCode85:
+scriptOpCodePlayerDirectionDown:
     call call_00_1588                                  ;; 00:15ef $cd $88 $15
     ret  NZ                                            ;; 00:15f2 $c0
     ld   A, $08                                        ;; 00:15f3 $3e $08
@@ -3654,14 +3654,14 @@ scriptOpCode85:
     call call_00_2879                                  ;; 00:15f7 $cd $79 $28
     ret                                                ;; 00:15fa $c9
 
-scriptOpCode8A:
+scriptOpCodePlayerSetPosition:
     call call_00_1588                                  ;; 00:15fb $cd $88 $15
     ret  NZ                                            ;; 00:15fe $c0
     call call_00_120b                                  ;; 00:15ff $cd $0b $12
     call getNextScriptInstruction                      ;; 00:1602 $cd $27 $37
     ret                                                ;; 00:1605 $c9
 
-scriptOpCode90:
+scriptOpCodeFollowerStepForward:
     call call_00_28c2                                  ;; 00:1606 $cd $c2 $28
     jr   NZ, jr_00_165f                                ;; 00:1609 $20 $54
     ld   A, $04                                        ;; 00:160b $3e $04
@@ -3669,7 +3669,7 @@ scriptOpCode90:
     call call_00_2879                                  ;; 00:160f $cd $79 $28
     ret                                                ;; 00:1612 $c9
 
-scriptOpCode91:
+scriptOpCodeFollowerStepBackwards:
     call call_00_28c2                                  ;; 00:1613 $cd $c2 $28
     jr   NZ, jr_00_165f                                ;; 00:1616 $20 $47
     ld   A, $05                                        ;; 00:1618 $3e $05
@@ -3677,7 +3677,7 @@ scriptOpCode91:
     call call_00_2879                                  ;; 00:161c $cd $79 $28
     ret                                                ;; 00:161f $c9
 
-scriptOpCode96:
+scriptOpCodeFollowerDirectionRight:
     call call_00_28c2                                  ;; 00:1620 $cd $c2 $28
     jr   NZ, jr_00_165f                                ;; 00:1623 $20 $3a
     ld   A, $1c                                        ;; 00:1625 $3e $1c
@@ -3685,7 +3685,7 @@ scriptOpCode96:
     call call_00_2879                                  ;; 00:1629 $cd $79 $28
     ret                                                ;; 00:162c $c9
 
-scriptOpCode97:
+scriptOpCodeFollowerDirectionLeft:
     call call_00_28c2                                  ;; 00:162d $cd $c2 $28
     jr   NZ, jr_00_165f                                ;; 00:1630 $20 $2d
     ld   A, $1d                                        ;; 00:1632 $3e $1d
@@ -3693,7 +3693,7 @@ scriptOpCode97:
     call call_00_2879                                  ;; 00:1636 $cd $79 $28
     ret                                                ;; 00:1639 $c9
 
-scriptOpCode94:
+scriptOpCodeFollowerDirectionUp:
     call call_00_28c2                                  ;; 00:163a $cd $c2 $28
     jr   NZ, jr_00_165f                                ;; 00:163d $20 $20
     ld   A, $1e                                        ;; 00:163f $3e $1e
@@ -3701,7 +3701,7 @@ scriptOpCode94:
     call call_00_2879                                  ;; 00:1643 $cd $79 $28
     ret                                                ;; 00:1646 $c9
 
-scriptOpCode95:
+scriptOpCodeFollowerDirectionDown:
     call call_00_28c2                                  ;; 00:1647 $cd $c2 $28
     jr   NZ, jr_00_165f                                ;; 00:164a $20 $13
     ld   A, $1f                                        ;; 00:164c $3e $1f
@@ -3709,7 +3709,7 @@ scriptOpCode95:
     call call_00_2879                                  ;; 00:1650 $cd $79 $28
     ret                                                ;; 00:1653 $c9
 
-scriptOpCode98:
+scriptOpCodeFollowerDelete:
     call call_00_28c2                                  ;; 00:1654 $cd $c2 $28
     jr   NZ, jr_00_165f                                ;; 00:1657 $20 $06
     ld   C, $00                                        ;; 00:1659 $0e $00
@@ -3720,7 +3720,7 @@ jr_00_165f:
     call getNextScriptInstruction                      ;; 00:165f $cd $27 $37
     ret                                                ;; 00:1662 $c9
 
-scriptOpCode99:
+scriptOpCodeFollowerSetPosition:
     call call_00_28c2                                  ;; 00:1663 $cd $c2 $28
     jr   NZ, .jr_00_166e                               ;; 00:1666 $20 $06
     ld   C, $00                                        ;; 00:1668 $0e $00
@@ -6436,7 +6436,7 @@ call_00_27e9:
     jr   NZ, .jr_00_27f3                               ;; 00:27f6 $20 $fb
     ret                                                ;; 00:27f8 $c9
 
-scriptOpCodeFC:
+scriptOpCodeSetNPCTypes:
     ld   A, [wScriptOpCounter]                         ;; 00:27f9 $fa $99 $d4
     cp   A, $00                                        ;; 00:27fc $fe $00
     call Z, call_00_2819                               ;; 00:27fe $cc $19 $28
@@ -6456,7 +6456,7 @@ call_00_2819:
     ld   A, [HL+]                                      ;; 00:2819 $2a
     jp_to_bank 03, call_03_444a                        ;; 00:281a $f5 $3e $05 $c3 $35 $1f
 
-scriptOpCodeFD:
+scriptOpCodeSpawnNPC:
     ld   A, [wScriptOpCounter]                         ;; 00:2820 $fa $99 $d4
     cp   A, $00                                        ;; 00:2823 $fe $00
     call Z, call_00_2840                               ;; 00:2825 $cc $40 $28
@@ -7169,7 +7169,7 @@ spawnEmptyChest:
     call spawnNPC_trampoline                           ;; 00:2ce3 $cd $dd $27
     ret                                                ;; 00:2ce6 $c9
 
-scriptOpCodeAF:
+scriptOpCodeChangeIntoEmptyChest:
     push HL                                            ;; 00:2ce7 $e5
     ld   A, [wC5B0]                                    ;; 00:2ce8 $fa $b0 $c5
     ld   C, A                                          ;; 00:2ceb $4f
@@ -8087,7 +8087,7 @@ scriptOpCodeEND:
     call getNextScriptInstruction                      ;; 00:32ef $cd $27 $37
     ret                                                ;; 00:32f2 $c9
 
-scriptOpCode01:
+scriptOpCodeJR:
     push DE                                            ;; 00:32f3 $d5
     ld   A, [HL+]                                      ;; 00:32f4 $2a
     ld   E, A                                          ;; 00:32f5 $5f
@@ -8097,7 +8097,7 @@ scriptOpCode01:
     call getNextScriptInstruction                      ;; 00:32fa $cd $27 $37
     ret                                                ;; 00:32fd $c9
 
-scriptOpCode02:
+scriptOpCodeCall:
     ld   B, $02                                        ;; 00:32fe $06 $02
     ld   A, [HL+]                                      ;; 00:3300 $2a
     ld   D, A                                          ;; 00:3301 $57
@@ -8128,7 +8128,7 @@ call_00_3304:
     call getNextScriptInstruction                      ;; 00:332b $cd $27 $37
     ret                                                ;; 00:332e $c9
 
-scriptOpCode03:
+scriptOpCodeLoop:
     call getNextScriptInstruction                      ;; 00:332f $cd $27 $37
     ld   B, $03                                        ;; 00:3332 $06 $03
     ld   C, A                                          ;; 00:3334 $4f
@@ -8137,7 +8137,7 @@ scriptOpCode03:
     call getNextScriptInstruction                      ;; 00:3339 $cd $27 $37
     ret                                                ;; 00:333c $c9
 
-scriptOpCode04:
+scriptOpCodeMsg:
     ld   A, [HL]                                       ;; 00:333d $7e
     cp   A, $a0                                        ;; 00:333e $fe $a0
     jp   NC, jp_00_3480                                ;; 00:3340 $d2 $80 $34
@@ -8169,14 +8169,14 @@ scriptOpCode04:
     call call_00_374d                                  ;; 00:336c $cd $4d $37
     jp   HL                                            ;; 00:336f $e9
 
-scriptOpCode08:
+scriptOpCodeIfFlags:
     call getNextScriptInstruction                      ;; 00:3370 $cd $27 $37
     and  A, A                                          ;; 00:3373 $a7
     jr   Z, .jr_00_338b                                ;; 00:3374 $28 $15
     push BC                                            ;; 00:3376 $c5
     call call_00_35ef                                  ;; 00:3377 $cd $ef $35
     pop  BC                                            ;; 00:337a $c1
-    jr   Z, scriptOpCode08                             ;; 00:337b $28 $f3
+    jr   Z, scriptOpCodeIfFlags                        ;; 00:337b $28 $f3
 .jr_00_337d:
     ld   A, [HL+]                                      ;; 00:337d $2a
     and  A, A                                          ;; 00:337e $a7
@@ -8191,7 +8191,7 @@ scriptOpCode08:
     call getNextScriptInstruction                      ;; 00:338c $cd $27 $37
     ret                                                ;; 00:338f $c9
 
-scriptOpCode09:
+scriptOpCodeIfEquiped:
     ld   DE, wEquipedWeapon                            ;; 00:3390 $11 $e9 $d6
     ld   A, D                                          ;; 00:3393 $7a
     ld   [wD891], A                                    ;; 00:3394 $ea $91 $d8
@@ -8210,7 +8210,7 @@ jr_00_33aa:
     ld   [wScriptCommand], A                           ;; 00:33ac $ea $5a $d8
     ret                                                ;; 00:33af $c9
 
-scriptOpCode0A:
+scriptOpCodeIfInventory:
     ld   DE, wItemInventory                            ;; 00:33b0 $11 $c5 $d6
     ld   A, D                                          ;; 00:33b3 $7a
     ld   [wD891], A                                    ;; 00:33b4 $ea $91 $d8
@@ -9092,7 +9092,7 @@ jumptable_38ee:
     dw   call_00_35d4                                  ;; 00:390a ??
     dw   call_00_35dd                                  ;; 00:390c ??
 
-scriptOpCodeC9:
+scriptOpCodeSetChestOpenScript1:
     ld   A, [HL+]                                      ;; 00:390e $2a
     ld   D, A                                          ;; 00:390f $57
     ld   A, [HL+]                                      ;; 00:3910 $2a
@@ -9101,7 +9101,7 @@ scriptOpCodeC9:
     call call_00_392f                                  ;; 00:3915 $cd $2f $39
     ret                                                ;; 00:3918 $c9
 
-scriptOpCodeCA:
+scriptOpCodeSetChestOpenScript2:
     ld   A, [HL+]                                      ;; 00:3919 $2a
     ld   D, A                                          ;; 00:391a $57
     ld   A, [HL+]                                      ;; 00:391b $2a
@@ -9139,7 +9139,7 @@ call_00_392f:
     call getNextScriptInstruction                      ;; 00:3943 $cd $27 $37
     ret                                                ;; 00:3946 $c9
 
-scriptOpCodeFA:
+scriptOpCodeFullHealDummyFA:
     ld   A, [wMaxHPHigh]                               ;; 00:3947 $fa $b5 $d7
     ld   D, A                                          ;; 00:394a $57
     ld   A, [wMaxHPLow]                                ;; 00:394b $fa $b4 $d7
@@ -9154,7 +9154,7 @@ scriptOpCodeFA:
     call getNextScriptInstruction                      ;; 00:395c $cd $27 $37
     ret                                                ;; 00:395f $c9
 
-scriptOpCodeC1:
+scriptOpCodeFullMana:
     ld   A, [wMaxManaHigh]                             ;; 00:3960 $fa $b9 $d7
     ld   D, A                                          ;; 00:3963 $57
     ld   A, [wMaxManaLow]                              ;; 00:3964 $fa $b8 $d7
@@ -9188,7 +9188,7 @@ scriptOpCodeC2:
     call getNextScriptInstruction                      ;; 00:3997 $cd $27 $37
     ret                                                ;; 00:399a $c9
 
-scriptOpCodeC4:
+scriptOpCodeGiveStatus:
     ld   A, [HL+]                                      ;; 00:399b $2a
     push HL                                            ;; 00:399c $e5
     call call_00_312f                                  ;; 00:399d $cd $2f $31
@@ -9204,7 +9204,7 @@ call_00_39a7:
     call getNextScriptInstruction                      ;; 00:39ae $cd $27 $37
     ret                                                ;; 00:39b1 $c9
 
-scriptOpCodeC7:
+scriptOpCodeRNG:
     push HL                                            ;; 00:39b2 $e5
     call getRandomByte                                 ;; 00:39b3 $cd $1e $2b
     and  A, $03                                        ;; 00:39b6 $e6 $03
@@ -9217,7 +9217,7 @@ scriptOpCodeC7:
     call getNextScriptInstruction                      ;; 00:39c3 $cd $27 $37
     ret                                                ;; 00:39c6 $c9
 
-scriptOpCodeC6:
+scriptOpCodeStartNameEntry:
     push HL                                            ;; 00:39c7 $e5
     xor  A, A                                          ;; 00:39c8 $af
     ld   [wD86E], A                                    ;; 00:39c9 $ea $6e $d8
@@ -9251,7 +9251,7 @@ scriptOpCodeC3:
     call getNextScriptInstruction                      ;; 00:3a01 $cd $27 $37
     ret                                                ;; 00:3a04 $c9
 
-scriptOpCodeD2:
+scriptOpCodeGiveXP:
     ld   E, [HL]                                       ;; 00:3a05 $5e
     inc  HL                                            ;; 00:3a06 $23
     ld   D, [HL]                                       ;; 00:3a07 $56
@@ -9264,7 +9264,7 @@ scriptOpCodeD2:
     call getNextScriptInstruction                      ;; 00:3a10 $cd $27 $37
     ret                                                ;; 00:3a13 $c9
 
-scriptOpCodeD3:
+scriptOpCodeTakeXP:
     ld   E, [HL]                                       ;; 00:3a14 $5e
     inc  HL                                            ;; 00:3a15 $23
     ld   D, [HL]                                       ;; 00:3a16 $56
@@ -9322,7 +9322,7 @@ scriptOpCodeD0:
     call getNextScriptInstruction                      ;; 00:3a66 $cd $27 $37
     ret                                                ;; 00:3a69 $c9
 
-scriptOpCodeD1:
+scriptOpCodeTakeMoney:
     ld   E, [HL]                                       ;; 00:3a6a $5e
     inc  HL                                            ;; 00:3a6b $23
     ld   D, [HL]                                       ;; 00:3a6c $56
@@ -9355,12 +9355,12 @@ scriptOpCodeD1:
     call getNextScriptInstruction                      ;; 00:3a97 $cd $27 $37
     ret                                                ;; 00:3a9a $c9
 
-scriptOpCodeCC:
+scriptOpCodeHalt:
     dec  HL                                            ;; 00:3a9b $2b
     call getNextScriptInstruction                      ;; 00:3a9c $cd $27 $37
     ret                                                ;; 00:3a9f $c9
 
-scriptOpCodeD4:
+scriptOpCodeGiveItem:
     ld   A, [HL+]                                      ;; 00:3aa0 $2a
     inc  A                                             ;; 00:3aa1 $3c
     push HL                                            ;; 00:3aa2 $e5
@@ -9372,7 +9372,7 @@ scriptOpCodeD4:
     call getNextScriptInstruction                      ;; 00:3aae $cd $27 $37
     ret                                                ;; 00:3ab1 $c9
 
-scriptOpCodeD6:
+scriptOpCodeGiveMagic:
     ld   A, [HL+]                                      ;; 00:3ab2 $2a
     inc  A                                             ;; 00:3ab3 $3c
     push HL                                            ;; 00:3ab4 $e5
@@ -9384,7 +9384,7 @@ scriptOpCodeD6:
     call getNextScriptInstruction                      ;; 00:3ac0 $cd $27 $37
     ret                                                ;; 00:3ac3 $c9
 
-scriptOpCodeD8:
+scriptOpCodeGiveEquipment:
     ld   A, [HL+]                                      ;; 00:3ac4 $2a
     inc  A                                             ;; 00:3ac5 $3c
     push HL                                            ;; 00:3ac6 $e5
@@ -9506,7 +9506,7 @@ scriptOpCodeC5:
     call getNextScriptInstruction                      ;; 00:3b72 $cd $27 $37
     ret                                                ;; 00:3b75 $c9
 
-scriptOpCodeDE:
+scriptOpCodeTakeEquipedItem:
     push HL                                            ;; 00:3b76 $e5
     ld   HL, wEquipedItemAmount                        ;; 00:3b77 $21 $f0 $d6
     ld   A, [HL]                                       ;; 00:3b7a $7e
@@ -9535,7 +9535,7 @@ scriptOpCodeDE:
     call getNextScriptInstruction                      ;; 00:3b9a $cd $27 $37
     ret                                                ;; 00:3b9d $c9
 
-scriptOpCodeC8:
+scriptOpCodeResetGame:
     jp   FullReset                                     ;; 00:3b9e $c3 $50 $01
 
 ;@jumptable amount=11
@@ -9574,13 +9574,13 @@ call_00_3bcb:
     call call_00_30b7                                  ;; 00:3bcc $cd $b7 $30
     ret                                                ;; 00:3bcf $c9
 
-scriptOpCodeDA:
+scriptOpCodeSetFlag:
     call getNextScriptInstruction                      ;; 00:3bd0 $cd $27 $37
     call setScriptFlag                                 ;; 00:3bd3 $cd $e4 $3b
     call getNextScriptInstruction                      ;; 00:3bd6 $cd $27 $37
     ret                                                ;; 00:3bd9 $c9
 
-scriptOpCodeDB:
+scriptOpCodeClearFlag:
     call getNextScriptInstruction                      ;; 00:3bda $cd $27 $37
     call clearScriptFlag                               ;; 00:3bdd $cd $ee $3b
     call getNextScriptInstruction                      ;; 00:3be0 $cd $27 $37
@@ -9609,7 +9609,7 @@ clearScriptFlag:
     pop  HL                                            ;; 00:3bf7 $e1
     ret                                                ;; 00:3bf8 $c9
 
-scriptOpCodeF0:
+scriptOpCodeDelay:
     call getNextScriptInstruction                      ;; 00:3bf9 $cd $27 $37
     push HL                                            ;; 00:3bfc $e5
     ld   H, $00                                        ;; 00:3bfd $26 $00
@@ -9716,7 +9716,7 @@ call_00_3c87:
     pop  BC                                            ;; 00:3c95 $c1
     ret                                                ;; 00:3c96 $c9
 
-scriptOpCodeF6:
+scriptOpCodeOpenShop:
     push HL                                            ;; 00:3c97 $e5
     ld   A, [wC0A0]                                    ;; 00:3c98 $fa $a0 $c0
     ld   [wD862], A                                    ;; 00:3c9b $ea $62 $d8
@@ -10089,7 +10089,7 @@ call_00_3efb:
     cp   A, $40                                        ;; 00:3efe $fe $40
     ret                                                ;; 00:3f00 $c9
 
-scriptOpCodeDF:
+scriptOpCodeNOP:
     call getNextScriptInstruction                      ;; 00:3f01 $cd $27 $37
     ret                                                ;; 00:3f04 $c9
 
