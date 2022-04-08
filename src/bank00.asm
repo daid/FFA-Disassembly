@@ -716,12 +716,15 @@ call_00_04aa:
     cp   A, $00                                        ;; 00:04b3 $fe $00
     jr   Z, .jr_00_04d7                                ;; 00:04b5 $28 $20
     ld   C, A                                          ;; 00:04b7 $4f
-    ld   A, $d0                                        ;; 00:04b8 $3e $d0
+    ld   A, $80 + 64 - 2
+    ldh  [rOCPS], A
+    ld   A, $00                                        ;; 00:04b8 $3e $d0
     bit  3, C                                          ;; 00:04ba $cb $59
     jr   Z, .jr_00_04c0                                ;; 00:04bc $28 $02
     ld   A, $bf                                        ;; 00:04be $3e $bf
 .jr_00_04c0:
-    ld   [wVideoOBP1], A                               ;; 00:04c0 $ea $ac $c0
+    ld   [rOCPD], A                               ;; 00:04c0 $ea $ac $c0
+    ld   [rOCPD], A                               ;; 00:04c0 $ea $ac $c0
     ld   A, C                                          ;; 00:04c3 $79
     dec  A                                             ;; 00:04c4 $3d
     ld   [wBossIframes], A                             ;; 00:04c5 $ea $eb $d3
