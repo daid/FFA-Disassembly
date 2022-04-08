@@ -1400,7 +1400,8 @@ call_00_088a:
     db   $11, $02, $00, $19, $5e, $23, $23, $23        ;; 00:08b6 ????????
     db   $23, $56, $e1, $23, $23, $c9                  ;; 00:08be ??????
 
-call_00_08c4:
+; Convert a position of a sprite X/Y into a tile position X/Y
+pixelToTilePosition:
     srl  D                                             ;; 00:08c4 $cb $3a
     srl  D                                             ;; 00:08c6 $cb $3a
     srl  D                                             ;; 00:08c8 $cb $3a
@@ -1485,7 +1486,7 @@ call_00_08d4:
     ld   A, $08                                        ;; 00:0930 $3e $08
     add  A, E                                          ;; 00:0932 $83
     ld   E, A                                          ;; 00:0933 $5f
-    call call_00_08c4                                  ;; 00:0934 $cd $c4 $08
+    call pixelToTilePosition                           ;; 00:0934 $cd $c4 $08
     ld   A, B                                          ;; 00:0937 $78
     call call_00_18dd                                  ;; 00:0938 $cd $dd $18
     jr   Z, .jr_00_095c                                ;; 00:093b $28 $1f
@@ -6748,7 +6749,7 @@ HLandDE:
     or   A, H                                          ;; 00:29b8 $b4
     ret                                                ;; 00:29b9 $c9
 
-call_00_29ba:
+snapObjectToNearestTile8:
     push BC                                            ;; 00:29ba $c5
     call GetObjectY                                    ;; 00:29bb $cd $3e $0c
     call snapPositionToNearestTile8                    ;; 00:29be $cd $dc $29

@@ -78,7 +78,7 @@ call_03_404a:
     ld   C, A                                          ;; 03:4069 $4f
     push BC                                            ;; 03:406a $c5
     push DE                                            ;; 03:406b $d5
-    call call_00_29ba                                  ;; 03:406c $cd $ba $29
+    call snapObjectToNearestTile8                      ;; 03:406c $cd $ba $29
     pop  DE                                            ;; 03:406f $d1
     pop  BC                                            ;; 03:4070 $c1
     ld   HL, $0c                                       ;; 03:4071 $21 $0c $00
@@ -1835,7 +1835,7 @@ call_03_4a26:
     jr   NC, .jr_03_4a73                               ;; 03:4a41 $30 $30
     push BC                                            ;; 03:4a43 $c5
     push DE                                            ;; 03:4a44 $d5
-    call call_00_29ba                                  ;; 03:4a45 $cd $ba $29
+    call snapObjectToNearestTile8                      ;; 03:4a45 $cd $ba $29
     pop  DE                                            ;; 03:4a48 $d1
     ld   HL, $04                                       ;; 03:4a49 $21 $04 $00
     add  HL, DE                                        ;; 03:4a4c $19

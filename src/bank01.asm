@@ -1519,7 +1519,7 @@ call_01_4b38:
     push DE                                            ;; 01:4b5a $d5
     push BC                                            ;; 01:4b5b $c5
     ld   C, $04                                        ;; 01:4b5c $0e $04
-    call call_00_29ba                                  ;; 01:4b5e $cd $ba $29
+    call snapObjectToNearestTile8                      ;; 01:4b5e $cd $ba $29
     ld   A, $01                                        ;; 01:4b61 $3e $01
     ld   C, $04                                        ;; 01:4b63 $0e $04
     call setObjectSpeed                                ;; 01:4b65 $cd $5d $0c
@@ -1541,7 +1541,7 @@ call_01_4b38:
     ld   C, $04                                        ;; 01:4b83 $0e $04
     call setObjectDirection                            ;; 01:4b85 $cd $a6 $0c
     ld   C, $04                                        ;; 01:4b88 $0e $04
-    call call_00_29ba                                  ;; 01:4b8a $cd $ba $29
+    call snapObjectToNearestTile8                      ;; 01:4b8a $cd $ba $29
     pop  BC                                            ;; 01:4b8d $c1
     pop  DE                                            ;; 01:4b8e $d1
     ld   HL, wC4D2                                     ;; 01:4b8f $21 $d2 $c4
@@ -2113,7 +2113,7 @@ call_01_4f2f:
 
 call_01_4f48:
     ld   C, $04                                        ;; 01:4f48 $0e $04
-    call call_00_29ba                                  ;; 01:4f4a $cd $ba $29
+    call snapObjectToNearestTile8                      ;; 01:4f4a $cd $ba $29
     call call_00_0299                                  ;; 01:4f4d $cd $99 $02
     ld   D, A                                          ;; 01:4f50 $57
     push DE                                            ;; 01:4f51 $d5
@@ -2180,7 +2180,7 @@ call_01_4f7b:
     call call_00_29e4                                  ;; 01:4fbc $cd $e4 $29
     call call_00_02b1                                  ;; 01:4fbf $cd $b1 $02
     ld   C, $04                                        ;; 01:4fc2 $0e $04
-    call call_00_29ba                                  ;; 01:4fc4 $cd $ba $29
+    call snapObjectToNearestTile8                      ;; 01:4fc4 $cd $ba $29
     pop  AF                                            ;; 01:4fc7 $f1
     bit  0, A                                          ;; 01:4fc8 $cb $47
     jr   NZ, .jr_01_4fee                               ;; 01:4fca $20 $22
@@ -2224,7 +2224,7 @@ call_01_4f7b:
 .jr_01_5010:
     push BC                                            ;; 01:5010 $c5
     ld   C, $04                                        ;; 01:5011 $0e $04
-    call call_00_29ba                                  ;; 01:5013 $cd $ba $29
+    call snapObjectToNearestTile8                      ;; 01:5013 $cd $ba $29
     pop  BC                                            ;; 01:5016 $c1
     push BC                                            ;; 01:5017 $c5
     ld   B, C                                          ;; 01:5018 $41
@@ -2378,7 +2378,7 @@ call_01_50f9:
     ld   A, $00                                        ;; 01:5101 $3e $00
     call call_00_3e8f                                  ;; 01:5103 $cd $8f $3e
     ld   C, $04                                        ;; 01:5106 $0e $04
-    call call_00_29ba                                  ;; 01:5108 $cd $ba $29
+    call snapObjectToNearestTile8                      ;; 01:5108 $cd $ba $29
     ld   C, $04                                        ;; 01:510b $0e $04
     ld   A, $01                                        ;; 01:510d $3e $01
     call setObjectSpeed                                ;; 01:510f $cd $5d $0c
@@ -2406,7 +2406,7 @@ call_01_5136:
     ld   A, $0c                                        ;; 01:5136 $3e $0c
     call call_00_3e8f                                  ;; 01:5138 $cd $8f $3e
     ld   C, $04                                        ;; 01:513b $0e $04
-    call call_00_29ba                                  ;; 01:513d $cd $ba $29
+    call snapObjectToNearestTile8                      ;; 01:513d $cd $ba $29
     ld   C, $04                                        ;; 01:5140 $0e $04
     ld   A, $02                                        ;; 01:5142 $3e $02
     call setObjectSpeed                                ;; 01:5144 $cd $5d $0c
@@ -2422,7 +2422,7 @@ call_01_5156:
     ld   A, $0d                                        ;; 01:5156 $3e $0d
     call call_00_3e8f                                  ;; 01:5158 $cd $8f $3e
     ld   C, $04                                        ;; 01:515b $0e $04
-    call call_00_29ba                                  ;; 01:515d $cd $ba $29
+    call snapObjectToNearestTile8                      ;; 01:515d $cd $ba $29
     ld   C, $04                                        ;; 01:5160 $0e $04
     ld   A, $02                                        ;; 01:5162 $3e $02
     call setObjectSpeed                                ;; 01:5164 $cd $5d $0c
@@ -2438,7 +2438,7 @@ call_01_5176:
     ld   A, $0e                                        ;; 01:5176 $3e $0e
     call call_00_3e8f                                  ;; 01:5178 $cd $8f $3e
     ld   C, $04                                        ;; 01:517b $0e $04
-    call call_00_29ba                                  ;; 01:517d $cd $ba $29
+    call snapObjectToNearestTile8                      ;; 01:517d $cd $ba $29
     ld   C, $04                                        ;; 01:5180 $0e $04
     ld   A, $02                                        ;; 01:5182 $3e $02
     call setObjectSpeed                                ;; 01:5184 $cd $5d $0c
@@ -2571,7 +2571,7 @@ call_01_5214:
     ld   B, $00                                        ;; 01:5253 $06 $00
     call call_00_0695                                  ;; 01:5255 $cd $95 $06
     ld   C, $04                                        ;; 01:5258 $0e $04
-    call call_00_29ba                                  ;; 01:525a $cd $ba $29
+    call snapObjectToNearestTile8                      ;; 01:525a $cd $ba $29
     pop  AF                                            ;; 01:525d $f1
     ld   [wC0A1], A                                    ;; 01:525e $ea $a1 $c0
     pop  AF                                            ;; 01:5261 $f1
