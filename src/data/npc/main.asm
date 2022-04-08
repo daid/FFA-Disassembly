@@ -14,7 +14,7 @@
 ; Offset $10: Movement pattern, one selected at random (4 bytes)
 ; Offset $14: script index value (2 bytes)
 ; Offset $16: chest script index value, or zero if never drops a chest (2 bytes)
-data_03_5f5a:
+npcDataTable:
     NPC_DATA $a9, $00, $74, $02, gfxSnowman, data_03_7b5a, unlabeled_2c93, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, script_003d, $0000 ;; 03:5f5a ????????????????????????
     NPC_DATA $d9, $01, $20, $08, gfxNpcGirl, data_03_7b5a, data_03_7f62, $00, $01, $01, $01, $00, $00, $05, $05, $05, $05, script_0202, $0000 ;; 03:5f72 ..??????....?????.....??
     NPC_DATA $d9, $02, $20, $08, data_09_5b00, data_03_7b5a, data_03_7f62, $00, $01, $01, $01, $00, $00, $06, $06, $06, $06, script_0203, $0000 ;; 03:5f8a ????????????????????????

@@ -495,7 +495,7 @@ call_03_42ac:
     add  HL, HL                                        ;; 03:42b4 $29
     add  HL, DE                                        ;; 03:42b5 $19
     add  HL, HL                                        ;; 03:42b6 $29
-    ld   DE, data_03_59fe                              ;; 03:42b7 $11 $fe $59
+    ld   DE, npcStatsTable                             ;; 03:42b7 $11 $fe $59
     add  HL, DE                                        ;; 03:42ba $19
     pop  DE                                            ;; 03:42bb $d1
     ret                                                ;; 03:42bc $c9
@@ -514,7 +514,7 @@ spawnNPC:
     add  HL, HL                                        ;; 03:42c6 $29
     add  HL, HL                                        ;; 03:42c7 $29
     add  HL, HL                                        ;; 03:42c8 $29
-    ld   DE, data_03_5f5a                              ;; 03:42c9 $11 $5a $5f
+    ld   DE, npcDataTable                              ;; 03:42c9 $11 $5a $5f
     add  HL, DE                                        ;; 03:42cc $19
     pop  DE                                            ;; 03:42cd $d1
     push HL                                            ;; 03:42ce $e5
@@ -700,7 +700,7 @@ call_03_43dc:
     add  HL, HL                                        ;; 03:43e3 $29
     add  HL, HL                                        ;; 03:43e4 $29
     add  HL, HL                                        ;; 03:43e5 $29
-    ld   DE, data_03_5f5a                              ;; 03:43e6 $11 $5a $5f
+    ld   DE, npcDataTable                              ;; 03:43e6 $11 $5a $5f
     add  HL, DE                                        ;; 03:43e9 $19
     push HL                                            ;; 03:43ea $e5
     ld   DE, $01                                       ;; 03:43eb $11 $01 $00
@@ -833,7 +833,7 @@ call_03_4488:
     add  HL, HL                                        ;; 03:4493 $29
     add  HL, HL                                        ;; 03:4494 $29
     add  HL, HL                                        ;; 03:4495 $29
-    ld   DE, data_03_5f5a                              ;; 03:4496 $11 $5a $5f
+    ld   DE, npcDataTable                              ;; 03:4496 $11 $5a $5f
     add  HL, DE                                        ;; 03:4499 $19
     ld   A, [HL]                                       ;; 03:449a $7e
     pop  DE                                            ;; 03:449b $d1
@@ -1454,7 +1454,7 @@ call_03_480a:
     ld   A, [HL+]                                      ;; 03:4844 $2a
     ld   H, [HL]                                       ;; 03:4845 $66
     ld   L, A                                          ;; 03:4846 $6f
-    ld   DE, data_03_5f5a                              ;; 03:4847 $11 $5a $5f
+    ld   DE, npcDataTable                              ;; 03:4847 $11 $5a $5f
     call sub_HL_DE                                     ;; 03:484a $cd $ab $2b
     ld   A, $18                                        ;; 03:484d $3e $18
     call divMod                                        ;; 03:484f $cd $8b $2b
