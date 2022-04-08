@@ -2,6 +2,7 @@ ROM = rom.gb
 
 SRCS = $(wildcard src/*.asm)
 GFXS = $(shell find gfx/ -type f -name '*.png')
+FIXFLAGS = -p 0xff
 
 all: $(ROM)
 

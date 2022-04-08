@@ -121,10 +121,10 @@ entry:
 Header:
     ds   $30                                           ;; 00:0104
     db   "SEIKEN DENSETSU"                             ;; 00:0134
-    db   CART_COMPATIBLE_DMG                           ;; 00:0143
+    db   CART_COMPATIBLE_GBC                           ;; 00:0143
     db   $00, $00                                      ;; 00:0144 ??
     db   CART_INDICATOR_GB                             ;; 00:0146
-    db   CART_ROM_MBC2_BAT, CART_ROM_256KB, CART_SRAM_NONE ;; 00:0147
+    db   CART_ROM_MBC5_BAT, CART_ROM_256KB, CART_SRAM_8KB ;; 00:0147
     db   CART_DEST_NON_JAPANESE, $c3, $00              ;; 00:014a $01 $c3 $00
     ds   3                                             ;; 00:014d
 
@@ -442,7 +442,7 @@ call_00_0313:
     ld   A, $00                                        ;; 00:0317 $3e $00
     ld   [wLCDCEffectIndex], A                         ;; 00:0319 $ea $e2 $d3
     ld   DE, wLCDCEffectBuffer                         ;; 00:031c $11 $a0 $d3
-    ld   HL, $328                                      ;; 00:031f $21 $28 $03
+    ld   HL, label_0328                                ;; 00:031f $21 $28 $03
     ld   B, $05                                        ;; 00:0322 $06 $05
     call copyHLtoDE                                    ;; 00:0324 $cd $49 $2b
     ret                                                ;; 00:0327 $c9
@@ -2428,15 +2428,15 @@ scriptOpCodeSpawnBoss:
 
 scriptOpCodeRunRoomScript:
     call call_00_24d4                                  ;; 00:0e73 $cd $d4 $24
-    ret                                                ;; 00:0e76 $c9
+    ret
 
 scriptOpCodeED:
     call call_00_24f9                                  ;; 00:0e77 $cd $f9 $24
-    ret                                                ;; 00:0e7a $c9
+    ret
 
 scriptOpCodeRunroomAllKilledScript:
     call call_00_251f                                  ;; 00:0e7b $cd $1f $25
-    ret                                                ;; 00:0e7e $c9
+    ret
 
 scriptOpCodeSetNextRoom:
     ld   A, [HL+]                                      ;; 00:0e7f $2a
@@ -5163,6 +5163,13 @@ Init:
     di                                                 ;; 00:1fca $f3
     ld   SP, hFFFE                                     ;; 00:1fcb $31 $fe $ff
     call InitPreIntEnable                              ;; 00:1fce $cd $f0 $1f
+    ld   a, $10
+    ld   [$2100], a
+    call setDoubleSpeed
+    call loadBGPalette
+    call loadOBJPalette
+    ld   a, 1
+    ld   [$2100], a
     ei                                                 ;; 00:1fd1 $fb
     call call_00_3153                                  ;; 00:1fd2 $cd $53 $31
 
@@ -5459,6 +5466,7 @@ LoadRoomXY_to_A:
 label_unknown_221d:
     dw   $c39b                                         ;; 00:221d pP
     dw   $c39a                                         ;; 00:221f pP
+label_unknown_2221:
     db   $05, $07, $04, $07                            ;; 00:2221 ....
 
 label_unknown_2225:
@@ -5474,7 +5482,8 @@ label_unknown_222d:
 label_unknown_2235:
     dw   $c381                                         ;; 00:2235 pP
     dw   $c377                                         ;; 00:2237 pP
-    db   $09, $04, $09, $03, $9b, $c3, $9a, $c3        ;; 00:2239 ....????
+    db   $09, $04, $09, $03   ;; 00:2239 ....????
+    db   $9b, $c3, $9a, $c3        
     db   $05, $08, $04, $08, $55, $c3, $54, $c3        ;; 00:2241 ....????
     db   $05, $ff, $04, $ff, $78, $c3, $6e, $c3        ;; 00:2249 ....????
     db   $ff, $04, $ff, $03, $81, $c3, $77, $c3        ;; 00:2251 .?.?????
@@ -5684,7 +5693,7 @@ call_00_235b:
 call_00_2385:
     ld   C, $08                                        ;; 00:2385 $0e $08
     ld   B, $08                                        ;; 00:2387 $06 $08
-    ld   HL, $2221                                     ;; 00:2389 $21 $21 $22
+    ld   HL, label_unknown_2221                        ;; 00:2389 $21 $21 $22
 .jr_00_238c:
     ld   A, [HL+]                                      ;; 00:238c $2a
     cp   A, E                                          ;; 00:238d $bb
@@ -9866,11 +9875,6 @@ addMoney:
     ld   [wMoneyLow], A                                ;; 00:3d87 $ea $be $d7
     call drawMoneyOnStatusBarTrampoline                ;; 00:3d8a $cd $17 $31
     ret                                                ;; 00:3d8d $c9
-    db   $d5, $fa, $bf, $d7, $57, $fa, $be, $d7        ;; 00:3d8e ????????
-    db   $5f, $7b, $95, $6f, $7a, $9c, $67, $30        ;; 00:3d96 ????????
-    db   $03, $21, $00, $00, $7c, $ea, $bf, $d7        ;; 00:3d9e ????????
-    db   $7d, $ea, $be, $d7, $cd, $17, $31, $d1        ;; 00:3da6 ????????
-    db   $c9                                           ;; 00:3dae ?
 
 call_00_3daf:
     call call_00_3123                                  ;; 00:3daf $cd $23 $31
