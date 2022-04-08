@@ -3,6 +3,7 @@
 INCLUDE "include/hardware.inc"
 INCLUDE "include/macros.inc"
 INCLUDE "include/charmaps.inc"
+INCLUDE "include/constants.inc"
 
 SECTION "bank0d", ROMX[$4000], BANK[$0d]
 
@@ -117,7 +118,7 @@ script_0004:
     sEND                                               ;; 0d:4110 $00
 
 script_0005:
-    sIF_EQUIPED $1f                                    ;; 0d:4111 $09 $1f $00 $25
+    sIF_EQUIPED INV_ITEM_KEY                           ;; 0d:4111 $09 $1f $00 $25
       sIF_FLAG wScriptFlags.1                          ;; 0d:4115 $08 $01 $00 $05
         sSFX 16                                        ;; 0d:4119 $f9 $10
         sOPEN_EAST_DOOR                                ;; 0d:411b $e4
@@ -2471,7 +2472,7 @@ script_01a7:
 script_01a8:
     sIF_FLAG !wScriptFlags01.6                         ;; 0d:4ea1 $08 $8e $00 $12
       sUNK_D5 30                                       ;; 0d:4ea5 $d5 $1e
-      sIF_EQUIPED $27                                  ;; 0d:4ea7 $09 $27 $00 $01
+      sIF_EQUIPED INV_ITEM_MIRROR                      ;; 0d:4ea7 $09 $27 $00 $01
         sTAKE_EQUIPED_ITEM                             ;; 0d:4eab $de
       sENDIF                                           ;; 0d:4eac
       sSFX 16                                          ;; 0d:4eac $f9 $10
@@ -2488,7 +2489,7 @@ script_01a8:
       sSFX 15                                          ;; 0d:4ecc $f9 $0f
       sMSG                                             ;; 0d:4ece $04
         db "<1b>Received the Magic\nBook of Sleep.\nLearned Slep.", $00 ;; 0d:4ecf
-      sGIVE_MAGIC 3                                    ;; 0d:4ef2 $d6 $03
+      sGIVE_MAGIC INV_MAGIC_SLEP                       ;; 0d:4ef2 $d6 $03
       sMSG                                             ;; 0d:4ef4 $04
         db "<12>"
         db "<1b><BOY>:Are you\n alright, <GIRL>?\n<GIRL>:_ Yeah.<12>"
@@ -2672,7 +2673,7 @@ script_01b1:
     sMSG                                               ;; 0d:51d3 $04
       db "Received the Magic\nBook of Mute.\nLearned Mute.<12>"
       db "<11>", $00 ;; 0d:51d4
-    sGIVE_MAGIC 2                                      ;; 0d:51f5 $d6 $02
+    sGIVE_MAGIC INV_MAGIC_MUTE                         ;; 0d:51f5 $d6 $02
     sDELAY 60                                          ;; 0d:51f7 $f0 $3c
     sCLEAR_FLAG wScriptFlags0A.6                       ;; 0d:51f9 $db $56
     sSET_FLAG wScriptFlags05.0                         ;; 0d:51fb $da $28
@@ -2770,7 +2771,7 @@ script_01ba:
     sMSG                                               ;; 0d:52c1 $04
       db "<10>Defeated Golem!<12>"
       db "", $00    ;; 0d:52c2
-    sGIVE_MAGIC 6                                      ;; 0d:52d0 $d6 $06
+    sGIVE_MAGIC INV_MAGIC_LIT                          ;; 0d:52d0 $d6 $06
     sSFX 15                                            ;; 0d:52d2 $f9 $0f
     sMSG                                               ;; 0d:52d4 $04
       db "<1b>Received the Magic\nBook of Lightning.\nLearned Lit.<12>"
@@ -2990,7 +2991,7 @@ script_01cc:
       db "<10>Defeated Lich!<12>"
       db "<1b>", $00 ;; 0d:5522
     sSFX 15                                            ;; 0d:5531 $f9 $0f
-    sGIVE_MAGIC 7                                      ;; 0d:5533 $d6 $07
+    sGIVE_MAGIC INV_MAGIC_NUKE                         ;; 0d:5533 $d6 $07
     sMSG                                               ;; 0d:5535 $04
       db "Received the Magic\nBook of Nuke.\nLearned Nuke!<12>"
       db "<11>", $00 ;; 0d:5536
@@ -3022,7 +3023,7 @@ script_01e0:
       sMSG                                             ;; 0d:55d2 $04
         db "<12>"
         db "<1b>", $00               ;; 0d:55d3
-      sIF_EQUIPED $27                                  ;; 0d:55d6 $09 $27 $00 $3c
+      sIF_EQUIPED INV_ITEM_MIRROR                      ;; 0d:55d6 $09 $27 $00 $3c
         sSET_MUSIC 0                                   ;; 0d:55da $f8 $00
         sMSG                                           ;; 0d:55dc $04
           db "T_that Mirror_!", $00                    ;; 0d:55dd
@@ -3175,10 +3176,10 @@ script_01ee:
     sEND                                               ;; 0d:5929 $00
 
 script_01ef:
-    sIF_INVENTORY $4f                                  ;; 0d:592a $0a $4f $00 $05
+    sIF_INVENTORY INV_SWORD_RUSTY                      ;; 0d:592a $0a $4f $00 $05
       sCALL script_01f0                                ;; 0d:592e $02 $19 $f5
     sELSE                                              ;; 0d:5931 $01 $c1
-      sGIVE_ITEM 23                                    ;; 0d:5933 $d4 $17
+      sGIVE_ITEM INV_ITEM_BONE_KEY                     ;; 0d:5933 $d4 $17
       sIF_FLAG !wScriptFlags.5                         ;; 0d:5935 $08 $85 $00 $bb
         sMSG                                           ;; 0d:5939 $04
           db "<10>", $00                               ;; 0d:593a
@@ -3296,7 +3297,7 @@ script_01f8:
     sEND                                               ;; 0d:5d1f $00
 
 script_01f9:
-    sIF_EQUIPED $2d                                    ;; 0d:5d20 $09 $2d $00 $07
+    sIF_EQUIPED INV_ITEM_POTION_OIL                    ;; 0d:5d20 $09 $2d $00 $07
       sPLAYER_STEP_FORWARD                             ;; 0d:5d24 $80
       sPLAYER_STEP_FORWARD                             ;; 0d:5d25 $80
       sDEL_NPC_1                                       ;; 0d:5d26 $18
@@ -3348,7 +3349,7 @@ script_01fd:
 script_01fe:
     sMSG                                               ;; 0d:5d71 $04
       db "<10>", $00                                   ;; 0d:5d72
-    sIF_EQUIPED $4f                                    ;; 0d:5d74 $09 $4f $00 $21
+    sIF_EQUIPED INV_SWORD_RUSTY                        ;; 0d:5d74 $09 $4f $00 $21
       sMSG                                             ;; 0d:5d78 $04
         db "Release that\nsword from your\nequipment, <BOY>.", $00 ;; 0d:5d79
     sELSE                                              ;; 0d:5d97 $01 $67
@@ -3362,7 +3363,7 @@ script_01fe:
       sEND                                             ;; 0d:5de3 $00
       sDEL_NPC_1                                       ;; 0d:5de4 $18
       sUNK_D9 13                                       ;; 0d:5de5 $d9 $0d
-      sGIVE_EQUIPMENT 15                               ;; 0d:5de7 $d8 $0f
+      sGIVE_EQUIPMENT INV_SWORD_XCALIBR                ;; 0d:5de7 $d8 $0f
       sMSG                                             ;; 0d:5de9 $04
         db "<10>Received\n     Excalibur!", $00        ;; 0d:5dea
       sSET_FLAG wScriptFlags07.0                       ;; 0d:5dfe $da $38
@@ -3747,7 +3748,7 @@ script_0218:
     sEND                                               ;; 0d:65ec $00
 
 script_0219:
-    sIF_EQUIPED $2a                                    ;; 0d:65ed $09 $2a $00 $53
+    sIF_EQUIPED INV_ITEM_POTION_AMANDA                 ;; 0d:65ed $09 $2a $00 $53
       sSET_MUSIC 0                                     ;; 0d:65f1 $f8 $00
       sMSG                                             ;; 0d:65f3 $04
         db "<10><BOY> used <POT>Amanda,\nthe tears of\nAmanda__", $00 ;; 0d:65f4
@@ -3835,11 +3836,11 @@ script_0221:
       db "<10>Cave of Oasis?\nI'll tell you for\na bag of Fang!<12>"
       db "<13><1b>", $00 ;; 0d:67ed
     sIF_FLAG !wScriptFlags0F.7                         ;; 0d:6810 $08 $ff $00 $28
-      sIF_EQUIPED $3b                                  ;; 0d:6814 $09 $3b $00 $06
+      sIF_EQUIPED INV_ITEM_BAG_FANG                    ;; 0d:6814 $09 $3b $00 $06
         sTAKE_EQUIPED_ITEM                             ;; 0d:6818 $de
         sCALL script_022e                              ;; 0d:6819 $02 $2d $01
       sELSE                                            ;; 0d:681c $01 $1c
-        sIF_INVENTORY $3b                              ;; 0d:681e $0a $3b $00 $07
+        sIF_INVENTORY INV_ITEM_BAG_FANG                ;; 0d:681e $0a $3b $00 $07
           sUNK_D5 50                                   ;; 0d:6822 $d5 $32
           sCALL script_022e                            ;; 0d:6824 $02 $2d $01
         sELSE                                          ;; 0d:6827 $01 $11
@@ -3921,7 +3922,7 @@ script_0227:
     sEND                                               ;; 0d:69fe $00
 
 script_0228:
-    sGIVE_ITEM 33                                      ;; 0d:69ff $d4 $21
+    sGIVE_ITEM INV_ITEM_POTION_AMANDA                  ;; 0d:69ff $d4 $21
     sIF_FLAG !wScriptFlags.5                           ;; 0d:6a01 $08 $85 $00 $42
       sFADE_TO_BLACK                                   ;; 0d:6a05 $bd
       sLOAD_ROOM_INSTANT 15, $55, 20, 0                ;; 0d:6a06 $f3 $0f $55 $14 $00
@@ -4058,7 +4059,7 @@ script_022f:
     sELSE                                              ;; 0d:6d71 $01 $a5
       sMSG                                             ;; 0d:6d73 $04
         db "Finally!\n", $00                           ;; 0d:6d74
-      sIF_INVENTORY $08                                ;; 0d:6d7c $0a $08 $00 $3c
+      sIF_INVENTORY INV_MAGIC_NUKE                     ;; 0d:6d7c $0a $08 $00 $3c
         sMSG                                           ;; 0d:6d80 $04
           db "There is a piece\nof crystal you can<12>"
           db "<1b>blow with Nuke in\nCrystal Desert.\n__ Find it!", $00 ;; 0d:6d81
@@ -4578,7 +4579,7 @@ script_0260:
           sENDIF                                       ;; 0d:7845
         sENDIF                                         ;; 0d:7845
         sIF_FLAG !wScriptFlags0E.6, wScriptFlags0E.7   ;; 0d:7845 $08 $f6 $77 $00 $25
-          sIF_INVENTORY $43                            ;; 0d:784a $0a $43 $00 $02
+          sIF_INVENTORY INV_AXE_BATTLE                 ;; 0d:784a $0a $43 $00 $02
           sELSE                                        ;; 0d:784e $01 $03
             sCALL script_0549                          ;; 0d:7850 $02 $7a $c2
           sENDIF                                       ;; 0d:7853
@@ -4716,7 +4717,7 @@ script_026d:
 
 script_0270:
     sIF_0B $c9                                         ;; 0d:7b93 $0b $c9 $00 $21
-      sIF_EQUIPED $20                                  ;; 0d:7b97 $09 $20 $00 $12
+      sIF_EQUIPED INV_ITEM_BONE_KEY                    ;; 0d:7b97 $09 $20 $00 $12
         sIF_FLAG wScriptFlags0B.0                      ;; 0d:7b9b $08 $58 $00 $05
           sCALL script_0473                            ;; 0d:7b9f $02 $5a $e2
           sSET_FLAG wScriptFlags0D.2                   ;; 0d:7ba2 $da $6a
@@ -4784,7 +4785,7 @@ script_0274:
 
 script_0275:
     sIF_0B $c9                                         ;; 0d:7c17 $0b $c9 $00 $29
-      sIF_EQUIPED $21                                  ;; 0d:7c1b $09 $21 $00 $1a
+      sIF_EQUIPED INV_ITEM_BRONZE_KEY                  ;; 0d:7c1b $09 $21 $00 $1a
         sIF_FLAG wScriptFlags0B.0                      ;; 0d:7c1f $08 $58 $00 $05
           sCALL script_0473                            ;; 0d:7c23 $02 $5a $e2
           sSET_FLAG wScriptFlags0C.2                   ;; 0d:7c26 $da $62
@@ -4860,19 +4861,19 @@ script_0279:
 
 script_027a:
     sIF_0B $c9                                         ;; 0d:7cc7 $0b $c9 $00 $7c
-      sIF_EQUIPED $46                                  ;; 0d:7ccb $09 $46 $00 $09
+      sIF_EQUIPED INV_SWORD_SILVER                     ;; 0d:7ccb $09 $46 $00 $09
         sLOAD_ROOM 10, $13, 16, 12                     ;; 0d:7ccf $f4 $0a $13 $10 $0c
         sSET_MUSIC 7                                   ;; 0d:7cd4 $f8 $07
       sELSE                                            ;; 0d:7cd6 $01 $6f
-        sIF_EQUIPED $54                                ;; 0d:7cd8 $09 $54 $00 $09
+        sIF_EQUIPED INV_ARMOR_SILVER                   ;; 0d:7cd8 $09 $54 $00 $09
           sLOAD_ROOM 10, $13, 16, 12                   ;; 0d:7cdc $f4 $0a $13 $10 $0c
           sSET_MUSIC 7                                 ;; 0d:7ce1 $f8 $07
         sELSE                                          ;; 0d:7ce3 $01 $62
-          sIF_EQUIPED $5f                              ;; 0d:7ce5 $09 $5f $00 $09
+          sIF_EQUIPED INV_SHIELD_SILVER                ;; 0d:7ce5 $09 $5f $00 $09
             sLOAD_ROOM 10, $13, 16, 12                 ;; 0d:7ce9 $f4 $0a $13 $10 $0c
             sSET_MUSIC 7                               ;; 0d:7cee $f8 $07
           sELSE                                        ;; 0d:7cf0 $01 $55
-            sIF_EQUIPED $6a                            ;; 0d:7cf2 $09 $6a $00 $09
+            sIF_EQUIPED INV_HELM_SILVER                ;; 0d:7cf2 $09 $6a $00 $09
               sLOAD_ROOM 10, $13, 16, 12               ;; 0d:7cf6 $f4 $0a $13 $10 $0c
               sSET_MUSIC 7                             ;; 0d:7cfb $f8 $07
             sELSE                                      ;; 0d:7cfd $01 $48

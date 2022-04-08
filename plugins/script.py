@@ -7,6 +7,93 @@ from romInfo import RomInfo
 
 
 CHARMAP = None
+INV_CONSTS = {
+    0x01: "INV_MAGIC_CURE",
+    0x02: "INV_MAGIC_HEAL",
+    0x03: "INV_MAGIC_MUTE",
+    0x04: "INV_MAGIC_SLEP",
+    0x05: "INV_MAGIC_FIRE",
+    0x06: "INV_MAGIC_ICE",
+    0x07: "INV_MAGIC_LIT",
+    0x08: "INV_MAGIC_NUKE",
+
+    0x09: "INV_ITEM_POTION_CURE",
+    0x0A: "INV_ITEM_POTION_XCURE",
+    0x0B: "INV_ITEM_POTION_ETHER",
+    0x0C: "INV_ITEM_POTION_XETHER",
+    0x0D: "INV_ITEM_POTION_ELIXIR",
+    0x0E: "INV_ITEM_POTION_PURE",
+    0x0F: "INV_ITEM_POTION_EYEDRP",
+    0x10: "INV_ITEM_POTION_SOFT",
+    0x11: "INV_ITEM_POTION_MOOGLE",
+    0x12: "INV_ITEM_POTION_UNICORN",
+    0x13: "INV_ITEM_SPELL_SILENCE",
+    0x14: "INV_ITEM_SPELL_PILLOW",
+    0x17: "INV_ITEM_SPELL_FLAME",
+    0x18: "INV_ITEM_SPELL_BLAZE",
+    0x19: "INV_ITEM_SPELL_BLIZRD",
+    0x1A: "INV_ITEM_SPELL_FROST",
+    0x1B: "INV_ITEM_SPELL_LITBLT",
+    0x1C: "INV_ITEM_SPELL_THUNDR",
+    0x1D: "INV_ITEM_CANDY",
+    0x1F: "INV_ITEM_KEY",
+    0x20: "INV_ITEM_BONE_KEY",
+    0x21: "INV_ITEM_BRONZE_KEY",
+    0x27: "INV_ITEM_MIRROR",
+    0x2A: "INV_ITEM_POTION_AMANDA",
+    0x2D: "INV_ITEM_POTION_OIL",
+    0x32: "INV_ITEM_GEM_CRYSTAL",
+    0x34: "INV_ITEM_GEM_NECTAR",
+    0x35: "INV_ITEM_GEM_STAMINA",
+    0x36: "INV_ITEM_GEM_WISDOM",
+    0x37: "INV_ITEM_GEM_WILL",
+    0x3A: "INV_ITEM_BAG_GOLD",
+    0x3B: "INV_ITEM_BAG_FANG",
+    0x3E: "INV_ITEM_MATTOK",
+    0x3F: "INV_ITEM_RUBY",
+    0x40: "INV_ITEM_OPAL",
+
+    0x42: "INV_SWORD_BROAD",
+    0x43: "INV_AXE_BATTLE",
+    0x44: "INV_SICKLE_SICKLE",
+    0x45: "INV_WHIP_CHAIN",
+    0x46: "INV_SWORD_SILVER",
+    0x47: "INV_SPEAR_WIND",
+    0x48: "INV_AXE_WERE",
+    0x49: "INV_MORNING_STAR",
+    0x4A: "INV_SWORD_BLOOD",
+    0x4B: "INV_SWORD_DRAGON",
+    0x4C: "INV_WHIP_FLAME",
+    0x4D: "INV_SWORD_ICE",
+    0x4E: "INV_AXE_ZEUS",
+    0x4F: "INV_SWORD_RUSTY",
+    0x50: "INV_SPEAR_THUNDER",
+    0x51: "INV_SWORD_XCALIBR",
+    0x52: "INV_ARMOR_BRONZE",
+    0x53: "INV_ARMOR_IRON",
+    0x54: "INV_ARMOR_SILVER",
+    0x55: "INV_ARMOR_GOLD",
+    0x56: "INV_ARMOR_FLAME",
+    0x57: "INV_ARMOR_ICE",
+    0x58: "INV_ARMOR_DRAGON",
+    0x59: "INV_ARMOR_SAMURAI",
+    0x5A: "INV_ARMOR_OPAL",
+    0x5D: "INV_SHIELD_BRONZE",
+    0x5E: "INV_SHIELD_IRON",
+    0x5F: "INV_SHIELD_SILVER",
+    0x60: "INV_SHIELD_GOLD",
+    0x61: "INV_SHIELD_FLAME",
+    0x62: "INV_SHIELD_DRAGON",
+    0x63: "INV_SHIELD_AEGIS",
+    0x64: "INV_SHIELD_OPAL",
+    0x65: "INV_SHIELD_ICE",
+    0x68: "INV_HELM_BRONZE",
+    0x69: "INV_HELM_IRON",
+    0x6A: "INV_HELM_SILVER",
+    0x6B: "INV_HELM_GOLD",
+    0x6C: "INV_HELM_OPAL",
+    0x6D: "INV_HELM_SAMURAI",
+}
 
 @annotation(priority=0)
 def dual_char_map(memory, addr):
@@ -136,6 +223,8 @@ ENDC
             else:
                 RomInfo.macros[data[0]] = "db $%02x" % (index)
 
+        RomInfo.constants["INVENTORY"] = {v: k for k, v in INV_CONSTS.items()}
+
     ScriptPointerBlock(memory, addr, amount=int(amount))
 
 
@@ -188,8 +277,8 @@ OPCODES = {
     0x07: ("sNOP_07",),
 
     0x08: ("sIF_FLAG", "REPT _NARG\n FLAG_CONDITION_TO_IDX \\1\n SHIFT\nENDR\n db $00\n sIF_JMP", "FLAG_LIST", "REL_LABEL"),
-    0x09: ("sIF_EQUIPED", IF_MACRO, "LIST", "REL_LABEL"),
-    0x0A: ("sIF_INVENTORY", IF_MACRO, "LIST", "REL_LABEL"),
+    0x09: ("sIF_EQUIPED", IF_MACRO, "INV_LIST", "REL_LABEL"),
+    0x0A: ("sIF_INVENTORY", IF_MACRO, "INV_LIST", "REL_LABEL"),
     0x0B: ("sIF_0B", IF_MACRO, "LIST", "REL_LABEL"),
     0x0C: ("sIF_0C", IF_MACRO, "LIST", "REL_LABEL"),
 
@@ -396,11 +485,11 @@ OPCODES = {
     0xD1: ("sTAKE_MONEY", r"dw \1", "WORD"), # Take a certain amount of money or set a flag if it failed
     0xD2: ("sGIVE_XP", r"dw \1", "WORD"), # Add XP points (unused)
     0xD3: ("sTAKE_XP", r"dw \1", "WORD"), # Remove XP points (unused)
-    0xD4: ("sGIVE_ITEM", r"db \1", "BYTE"),
+    0xD4: ("sGIVE_ITEM", r"db \1 - $09", "INV_ITEM"),
     0xD5: ("sUNK_D5", r"db \1", "BYTE"),
-    0xD6: ("sGIVE_MAGIC", r"db \1", "BYTE"),
+    0xD6: ("sGIVE_MAGIC", r"db \1 - $01", "INV_MAGIC"),
     0xD7: ("sUNK_D7", r"db \1", "BYTE"),
-    0xD8: ("sGIVE_EQUIPMENT", r"db \1", "BYTE"),
+    0xD8: ("sGIVE_EQUIPMENT", r"db \1 - $42", "INV_EQUIP"),
     0xD9: ("sUNK_D9", r"db \1", "BYTE"),
     0xDA: ("sSET_FLAG", r" FLAG_TO_IDX \1", "FLAG"),
     0xDB: ("sCLEAR_FLAG", r" FLAG_TO_IDX \1", "FLAG"),
@@ -467,7 +556,7 @@ class ScriptBlock(Block):
                         target_bank.addAutoLabel(target, None, "call")
                         ScriptBlock(target_bank, target)
                         size += 2
-                    elif t in ("LIST", "MSG"):
+                    elif t in ("LIST", "MSG", "INV_LIST"):
                         while memory.byte(addr + len(self) + size) != 0:
                             size += 1
                         size += 1
@@ -484,7 +573,7 @@ class ScriptBlock(Block):
                         #ScriptBlock(memory, target)
                         self.__endif[target] = self.__endif.get(target, 0) + 1
                         size += 1
-                    elif t in ("BYTE", "HEX"):
+                    elif t in ("BYTE", "HEX", "INV_MAGIC", "INV_ITEM", "INV_EQUIP"):
                         size += 1
                     elif t == "FLAG":
                         flag = memory.byte(addr + len(self) + size)
@@ -551,6 +640,12 @@ class ScriptBlock(Block):
                         args.append("$%02x" % (self.memory.byte(file.addr + size)))
                         size += 1
                     size += 1
+                elif t == "INV_LIST":
+                    while self.memory.byte(file.addr + size) != 0:
+                        index = self.memory.byte(file.addr + size)
+                        args.append(INV_CONSTS.get(index, "$%02x" % (index)))
+                        size += 1
+                    size += 1
                 elif t == "FLAG_LIST":
                     while self.memory.byte(file.addr + size) != 0:
                         flag = self.memory.byte(file.addr + size)
@@ -576,6 +671,11 @@ class ScriptBlock(Block):
                     size += 1
                 elif t == "HEX":
                     args.append("$%02x" % (self.memory.byte(file.addr + size)))
+                    size += 1
+                elif t in {"INV_MAGIC", "INV_ITEM", "INV_EQUIP"}:
+                    index = self.memory.byte(file.addr + size)
+                    index += {"INV_MAGIC": 1, "INV_ITEM": 9, "INV_EQUIP": 0x42}[t]
+                    args.append(INV_CONSTS.get(index, "$%02x" % (index)))
                     size += 1
                 elif t == "FLAG":
                     flag = self.memory.byte(file.addr + size)

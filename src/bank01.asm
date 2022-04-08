@@ -3,6 +3,7 @@
 INCLUDE "include/hardware.inc"
 INCLUDE "include/macros.inc"
 INCLUDE "include/charmaps.inc"
+INCLUDE "include/constants.inc"
 
 SECTION "bank01", ROMX[$4000], BANK[$01]
 

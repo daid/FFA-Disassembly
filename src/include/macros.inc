@@ -339,7 +339,7 @@ db $c1
 ENDM
 sGIVE_EQUIPMENT: MACRO
 db $d8
-db \1
+db \1 - $42
 ENDM
 sGIVE_FOLLOWER: MACRO
 db $9c
@@ -347,11 +347,11 @@ db \1
 ENDM
 sGIVE_ITEM: MACRO
 db $d4
-db \1
+db \1 - $09
 ENDM
 sGIVE_MAGIC: MACRO
 db $d6
-db \1
+db \1 - $01
 ENDM
 sGIVE_XP: MACRO
 db $d2

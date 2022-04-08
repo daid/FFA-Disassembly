@@ -3,6 +3,7 @@
 INCLUDE "include/hardware.inc"
 INCLUDE "include/macros.inc"
 INCLUDE "include/charmaps.inc"
+INCLUDE "include/constants.inc"
 
 SECTION "bank0e", ROMX[$4000], BANK[$0e]
 
@@ -2594,7 +2595,7 @@ script_0409:
 
 script_040a:
     sIF_0B $c9                                         ;; 0e:5232 $0b $c9 $00 $68
-      sIF_EQUIPED $4f                                  ;; 0e:5236 $09 $4f $00 $64
+      sIF_EQUIPED INV_SWORD_RUSTY                      ;; 0e:5236 $09 $4f $00 $64
         sSET_MUSIC 0                                   ;; 0e:523a $f8 $00
         sMSG                                           ;; 0e:523c $04
           db "<10>   Rusty sword\n  released it's\n  mystic power__<12>"
@@ -2808,7 +2809,7 @@ script_042d:
     sEND                                               ;; 0e:5388 $00
 
 script_042e:
-    sGIVE_EQUIPMENT 2                                  ;; 0e:5389 $d8 $02
+    sGIVE_EQUIPMENT INV_SICKLE_SICKLE                  ;; 0e:5389 $d8 $02
     sIF_FLAG !wScriptFlags.5                           ;; 0e:538b $08 $85 $00 $13
       sSFX 15                                          ;; 0e:538f $f9 $0f
       sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:5391 $af
@@ -2820,7 +2821,7 @@ script_042e:
     sEND                                               ;; 0e:53a2 $00
 
 script_042f:
-    sGIVE_EQUIPMENT 3                                  ;; 0e:53a3 $d8 $03
+    sGIVE_EQUIPMENT INV_WHIP_CHAIN                     ;; 0e:53a3 $d8 $03
     sIF_FLAG !wScriptFlags.5                           ;; 0e:53a5 $08 $85 $00 $12
       sSFX 15                                          ;; 0e:53a9 $f9 $0f
       sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:53ab $af
@@ -2832,7 +2833,7 @@ script_042f:
     sEND                                               ;; 0e:53bb $00
 
 script_0430:
-    sGIVE_EQUIPMENT 9                                  ;; 0e:53bc $d8 $09
+    sGIVE_EQUIPMENT INV_SWORD_DRAGON                   ;; 0e:53bc $d8 $09
     sIF_FLAG !wScriptFlags.5                           ;; 0e:53be $08 $85 $00 $14
       sSFX 15                                          ;; 0e:53c2 $f9 $0f
       sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:53c4 $af
@@ -2844,7 +2845,7 @@ script_0430:
     sEND                                               ;; 0e:53d6 $00
 
 script_0431:
-    sGIVE_EQUIPMENT 32                                 ;; 0e:53d7 $d8 $20
+    sGIVE_EQUIPMENT INV_SHIELD_DRAGON                  ;; 0e:53d7 $d8 $20
     sIF_FLAG !wScriptFlags.5                           ;; 0e:53d9 $08 $85 $00 $14
       sSFX 15                                          ;; 0e:53dd $f9 $0f
       sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:53df $af
@@ -2856,7 +2857,7 @@ script_0431:
     sEND                                               ;; 0e:53f1 $00
 
 script_0432:
-    sGIVE_EQUIPMENT 22                                 ;; 0e:53f2 $d8 $16
+    sGIVE_EQUIPMENT INV_ARMOR_DRAGON                   ;; 0e:53f2 $d8 $16
     sIF_FLAG !wScriptFlags.5                           ;; 0e:53f4 $08 $85 $00 $14
       sSFX 15                                          ;; 0e:53f8 $f9 $0f
       sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:53fa $af
@@ -2871,7 +2872,7 @@ script_0433:
     sEND                                               ;; 0e:540d $00
 
 script_0434:
-    sGIVE_EQUIPMENT 15                                 ;; 0e:540e $d8 $0f
+    sGIVE_EQUIPMENT INV_SWORD_XCALIBR                  ;; 0e:540e $d8 $0f
     sIF_FLAG !wScriptFlags.5                           ;; 0e:5410 $08 $85 $00 $13
       sSFX 15                                          ;; 0e:5414 $f9 $0f
       sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:5416 $af
@@ -2921,7 +2922,7 @@ script_0436:
     sEND                                               ;; 0e:54b9 $00
 
 script_0437:
-    sGIVE_EQUIPMENT 13                                 ;; 0e:54ba $d8 $0d
+    sGIVE_EQUIPMENT INV_SWORD_RUSTY                    ;; 0e:54ba $d8 $0d
     sIF_FLAG !wScriptFlags.5                           ;; 0e:54bc $08 $85 $00 $3e
       sSFX 15                                          ;; 0e:54c0 $f9 $0f
       sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:54c2 $af
@@ -2938,7 +2939,7 @@ script_0437:
     sEND                                               ;; 0e:54fe $00
 
 script_0438:
-    sGIVE_ITEM 20                                      ;; 0e:54ff $d4 $14
+    sGIVE_ITEM INV_ITEM_CANDY                          ;; 0e:54ff $d4 $14
     sIF_FLAG !wScriptFlags.5                           ;; 0e:5501 $08 $85 $00 $11
       sSFX 15                                          ;; 0e:5505 $f9 $0f
       sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:5507 $af
@@ -2951,7 +2952,7 @@ script_0438:
 script_0439:
     sRNG                                               ;; 0e:5517 $c7
     sIF_FLAG !wScriptFlags0F.6, !wScriptFlags0F.7      ;; 0e:5518 $08 $fe $ff $00 $19
-      sGIVE_ITEM 45                                    ;; 0e:551d $d4 $2d
+      sGIVE_ITEM INV_ITEM_GEM_WISDOM                   ;; 0e:551d $d4 $2d
       sIF_FLAG !wScriptFlags.5                         ;; 0e:551f $08 $85 $00 $11
         sSFX 15                                        ;; 0e:5523 $f9 $0f
         sCHANGE_INTO_EMPTY_CHEST                       ;; 0e:5525 $af
@@ -2965,7 +2966,7 @@ script_0439:
     sEND                                               ;; 0e:5539 $00
 
 script_043a:
-    sGIVE_ITEM 0                                       ;; 0e:553a $d4 $00
+    sGIVE_ITEM INV_ITEM_POTION_CURE                    ;; 0e:553a $d4 $00
     sIF_FLAG !wScriptFlags.5                           ;; 0e:553c $08 $85 $00 $0f
       sSFX 15                                          ;; 0e:5540 $f9 $0f
       sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:5542 $af
@@ -2976,7 +2977,7 @@ script_043a:
     sEND                                               ;; 0e:554f $00
 
 script_043b:
-    sGIVE_ITEM 6                                       ;; 0e:5550 $d4 $06
+    sGIVE_ITEM INV_ITEM_POTION_EYEDRP                  ;; 0e:5550 $d4 $06
     sIF_FLAG !wScriptFlags.5                           ;; 0e:5552 $08 $85 $00 $12
       sSFX 15                                          ;; 0e:5556 $f9 $0f
       sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:5558 $af
@@ -2987,7 +2988,7 @@ script_043b:
     sEND                                               ;; 0e:5568 $00
 
 script_043c:
-    sGIVE_ITEM 5                                       ;; 0e:5569 $d4 $05
+    sGIVE_ITEM INV_ITEM_POTION_PURE                    ;; 0e:5569 $d4 $05
     sIF_FLAG !wScriptFlags.5                           ;; 0e:556b $08 $85 $00 $0f
       sSFX 15                                          ;; 0e:556f $f9 $0f
       sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:5571 $af
@@ -2998,7 +2999,7 @@ script_043c:
     sEND                                               ;; 0e:557e $00
 
 script_043d:
-    sGIVE_ITEM 7                                       ;; 0e:557f $d4 $07
+    sGIVE_ITEM INV_ITEM_POTION_SOFT                    ;; 0e:557f $d4 $07
     sIF_FLAG !wScriptFlags.5                           ;; 0e:5581 $08 $85 $00 $10
       sSFX 15                                          ;; 0e:5585 $f9 $0f
       sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:5587 $af
@@ -3009,7 +3010,7 @@ script_043d:
     sEND                                               ;; 0e:5595 $00
 
 script_043e:
-    sGIVE_ITEM 1                                       ;; 0e:5596 $d4 $01
+    sGIVE_ITEM INV_ITEM_POTION_XCURE                   ;; 0e:5596 $d4 $01
     sIF_FLAG !wScriptFlags.5                           ;; 0e:5598 $08 $85 $00 $11
       sSFX 15                                          ;; 0e:559c $f9 $0f
       sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:559e $af
@@ -3023,7 +3024,7 @@ script_043f:
     sEND                                               ;; 0e:55ae $00
 
 script_0440:
-    sGIVE_ITEM 2                                       ;; 0e:55af $d4 $02
+    sGIVE_ITEM INV_ITEM_POTION_ETHER                   ;; 0e:55af $d4 $02
     sIF_FLAG !wScriptFlags.5                           ;; 0e:55b1 $08 $85 $00 $10
       sSFX 15                                          ;; 0e:55b5 $f9 $0f
       sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:55b7 $af
@@ -3034,7 +3035,7 @@ script_0440:
     sEND                                               ;; 0e:55c5 $00
 
 script_0441:
-    sGIVE_ITEM 24                                      ;; 0e:55c6 $d4 $18
+    sGIVE_ITEM INV_ITEM_BRONZE_KEY                     ;; 0e:55c6 $d4 $18
     sIF_FLAG !wScriptFlags.5                           ;; 0e:55c8 $08 $85 $00 $11
       sSFX 15                                          ;; 0e:55cc $f9 $0f
       sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:55ce $af
@@ -3045,7 +3046,7 @@ script_0441:
     sEND                                               ;; 0e:55dd $00
 
 script_0442:
-    sGIVE_ITEM 22                                      ;; 0e:55de $d4 $16
+    sGIVE_ITEM INV_ITEM_KEY                            ;; 0e:55de $d4 $16
     sIF_FLAG !wScriptFlags.5                           ;; 0e:55e0 $08 $85 $00 $10
       sSFX 15                                          ;; 0e:55e4 $f9 $0f
       sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:55e6 $af
@@ -3056,7 +3057,7 @@ script_0442:
     sEND                                               ;; 0e:55f4 $00
 
 script_0443:
-    sGIVE_ITEM 53                                      ;; 0e:55f5 $d4 $35
+    sGIVE_ITEM INV_ITEM_MATTOK                         ;; 0e:55f5 $d4 $35
     sIF_FLAG !wScriptFlags.5                           ;; 0e:55f7 $08 $85 $00 $13
       sSFX 15                                          ;; 0e:55fb $f9 $0f
       sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:55fd $af
@@ -3070,7 +3071,7 @@ script_0443:
 script_0444:
     sRNG                                               ;; 0e:560f $c7
     sIF_FLAG !wScriptFlags0F.6                         ;; 0e:5610 $08 $fe $00 $18
-      sGIVE_ITEM 50                                    ;; 0e:5614 $d4 $32
+      sGIVE_ITEM INV_ITEM_BAG_FANG                     ;; 0e:5614 $d4 $32
       sIF_FLAG !wScriptFlags.5                         ;; 0e:5616 $08 $85 $00 $10
         sSFX 15                                        ;; 0e:561a $f9 $0f
         sCHANGE_INTO_EMPTY_CHEST                       ;; 0e:561c $af
@@ -3090,7 +3091,7 @@ script_0444:
 script_0445:
     sRNG                                               ;; 0e:563b $c7
     sIF_FLAG !wScriptFlags0F.6                         ;; 0e:563c $08 $fe $00 $19
-      sGIVE_ITEM 49                                    ;; 0e:5640 $d4 $31
+      sGIVE_ITEM INV_ITEM_BAG_GOLD                     ;; 0e:5640 $d4 $31
       sIF_FLAG !wScriptFlags.5                         ;; 0e:5642 $08 $85 $00 $11
         sSFX 15                                        ;; 0e:5646 $f9 $0f
         sCHANGE_INTO_EMPTY_CHEST                       ;; 0e:5648 $af
@@ -3104,7 +3105,7 @@ script_0445:
     sEND                                               ;; 0e:565c $00
 
 script_0446:
-    sGIVE_ITEM 4                                       ;; 0e:565d $d4 $04
+    sGIVE_ITEM INV_ITEM_POTION_ELIXIR                  ;; 0e:565d $d4 $04
     sIF_FLAG !wScriptFlags.5                           ;; 0e:565f $08 $85 $00 $11
       sSFX 15                                          ;; 0e:5663 $f9 $0f
       sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:5665 $af
@@ -3115,7 +3116,7 @@ script_0446:
     sEND                                               ;; 0e:5674 $00
 
 script_0447:
-    sGIVE_ITEM 41                                      ;; 0e:5675 $d4 $29
+    sGIVE_ITEM INV_ITEM_GEM_CRYSTAL                    ;; 0e:5675 $d4 $29
     sIF_FLAG !wScriptFlags.5                           ;; 0e:5677 $08 $85 $00 $12
       sSFX 15                                          ;; 0e:567b $f9 $0f
       sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:567d $af
@@ -3126,7 +3127,7 @@ script_0447:
     sEND                                               ;; 0e:568d $00
 
 script_0448:
-    sGIVE_ITEM 8                                       ;; 0e:568e $d4 $08
+    sGIVE_ITEM INV_ITEM_POTION_MOOGLE                  ;; 0e:568e $d4 $08
     sIF_FLAG !wScriptFlags.5                           ;; 0e:5690 $08 $85 $00 $11
       sSFX 15                                          ;; 0e:5694 $f9 $0f
       sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:5696 $af
@@ -3137,7 +3138,7 @@ script_0448:
     sEND                                               ;; 0e:56a5 $00
 
 script_0449:
-    sGIVE_ITEM 3                                       ;; 0e:56a6 $d4 $03
+    sGIVE_ITEM INV_ITEM_POTION_XETHER                  ;; 0e:56a6 $d4 $03
     sIF_FLAG !wScriptFlags.5                           ;; 0e:56a8 $08 $85 $00 $12
       sSFX 15                                          ;; 0e:56ac $f9 $0f
       sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:56ae $af
@@ -3148,7 +3149,7 @@ script_0449:
     sEND                                               ;; 0e:56be $00
 
 script_044a:
-    sGIVE_ITEM 9                                       ;; 0e:56bf $d4 $09
+    sGIVE_ITEM INV_ITEM_POTION_UNICORN                 ;; 0e:56bf $d4 $09
     sIF_FLAG !wScriptFlags.5                           ;; 0e:56c1 $08 $85 $00 $13
       sSFX 15                                          ;; 0e:56c5 $f9 $0f
       sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:56c7 $af
@@ -3161,7 +3162,7 @@ script_044a:
 script_044b:
     sRNG                                               ;; 0e:56d9 $c7
     sIF_FLAG !wScriptFlags0F.6, !wScriptFlags0F.7      ;; 0e:56da $08 $fe $ff $00 $18
-      sGIVE_ITEM 46                                    ;; 0e:56df $d4 $2e
+      sGIVE_ITEM INV_ITEM_GEM_WILL                     ;; 0e:56df $d4 $2e
       sIF_FLAG !wScriptFlags.5                         ;; 0e:56e1 $08 $85 $00 $10
         sSFX 15                                        ;; 0e:56e5 $f9 $0f
         sCHANGE_INTO_EMPTY_CHEST                       ;; 0e:56e7 $af
@@ -3181,7 +3182,7 @@ script_044c:
 script_044d:
     sRNG                                               ;; 0e:56ff $c7
     sIF_FLAG !wScriptFlags0F.6, wScriptFlags0F.7       ;; 0e:5700 $08 $fe $7f $00 $19
-      sGIVE_EQUIPMENT 33                               ;; 0e:5705 $d8 $21
+      sGIVE_EQUIPMENT INV_SHIELD_AEGIS                 ;; 0e:5705 $d8 $21
       sIF_FLAG !wScriptFlags.5                         ;; 0e:5707 $08 $85 $00 $11
         sSFX 15                                        ;; 0e:570b $f9 $0f
         sCHANGE_INTO_EMPTY_CHEST                       ;; 0e:570d $af
@@ -3190,7 +3191,7 @@ script_044d:
           db "<11>", $00 ;; 0e:570f
       sENDIF                                           ;; 0e:571c
     sELSE                                              ;; 0e:571c $01 $19
-      sGIVE_ITEM 9                                     ;; 0e:571e $d4 $09
+      sGIVE_ITEM INV_ITEM_POTION_UNICORN               ;; 0e:571e $d4 $09
       sIF_FLAG !wScriptFlags.5                         ;; 0e:5720 $08 $85 $00 $13
         sSFX 15                                        ;; 0e:5724 $f9 $0f
         sCHANGE_INTO_EMPTY_CHEST                       ;; 0e:5726 $af
@@ -3204,7 +3205,7 @@ script_044d:
 script_044e:
     sRNG                                               ;; 0e:5738 $c7
     sIF_FLAG !wScriptFlags0F.6, wScriptFlags0F.7       ;; 0e:5739 $08 $fe $7f $00 $1a
-      sGIVE_EQUIPMENT 23                               ;; 0e:573e $d8 $17
+      sGIVE_EQUIPMENT INV_ARMOR_SAMURAI                ;; 0e:573e $d8 $17
       sIF_FLAG !wScriptFlags.5                         ;; 0e:5740 $08 $85 $00 $12
         sSFX 15                                        ;; 0e:5744 $f9 $0f
         sCHANGE_INTO_EMPTY_CHEST                       ;; 0e:5746 $af
@@ -3213,7 +3214,7 @@ script_044e:
           db "<11>", $00 ;; 0e:5748
       sENDIF                                           ;; 0e:5756
     sELSE                                              ;; 0e:5756 $01 $17
-      sGIVE_ITEM 4                                     ;; 0e:5758 $d4 $04
+      sGIVE_ITEM INV_ITEM_POTION_ELIXIR                ;; 0e:5758 $d4 $04
       sIF_FLAG !wScriptFlags.5                         ;; 0e:575a $08 $85 $00 $11
         sSFX 15                                        ;; 0e:575e $f9 $0f
         sCHANGE_INTO_EMPTY_CHEST                       ;; 0e:5760 $af
@@ -3227,7 +3228,7 @@ script_044e:
 script_044f:
     sRNG                                               ;; 0e:5770 $c7
     sIF_FLAG !wScriptFlags0F.6, wScriptFlags0F.7       ;; 0e:5771 $08 $fe $7f $00 $1a
-      sGIVE_EQUIPMENT 43                               ;; 0e:5776 $d8 $2b
+      sGIVE_EQUIPMENT INV_HELM_SAMURAI                 ;; 0e:5776 $d8 $2b
       sIF_FLAG !wScriptFlags.5                         ;; 0e:5778 $08 $85 $00 $12
         sSFX 15                                        ;; 0e:577c $f9 $0f
         sCHANGE_INTO_EMPTY_CHEST                       ;; 0e:577e $af
@@ -3236,7 +3237,7 @@ script_044f:
           db "<11>", $00 ;; 0e:5780
       sENDIF                                           ;; 0e:578e
     sELSE                                              ;; 0e:578e $01 $18
-      sGIVE_ITEM 3                                     ;; 0e:5790 $d4 $03
+      sGIVE_ITEM INV_ITEM_POTION_XETHER                ;; 0e:5790 $d4 $03
       sIF_FLAG !wScriptFlags.5                         ;; 0e:5792 $08 $85 $00 $12
         sSFX 15                                        ;; 0e:5796 $f9 $0f
         sCHANGE_INTO_EMPTY_CHEST                       ;; 0e:5798 $af
@@ -3248,7 +3249,7 @@ script_044f:
     sEND                                               ;; 0e:57a8 $00
 
 script_0450:
-    sGIVE_MAGIC 4                                      ;; 0e:57a9 $d6 $04
+    sGIVE_MAGIC INV_MAGIC_FIRE                         ;; 0e:57a9 $d6 $04
     sCHANGE_INTO_EMPTY_CHEST                           ;; 0e:57ab $af
     sMSG                                               ;; 0e:57ac $04
       db "<10>Found the Magic\nBook of Fire.\nLearned Fire!<12>"
@@ -3257,7 +3258,7 @@ script_0450:
     sEND                                               ;; 0e:57ce $00
 
 script_0451:
-    sGIVE_ITEM 30                                      ;; 0e:57cf $d4 $1e
+    sGIVE_ITEM INV_ITEM_MIRROR                         ;; 0e:57cf $d4 $1e
     sIF_FLAG !wScriptFlags.5                           ;; 0e:57d1 $08 $85 $00 $62
       sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:57d5 $af
       sMSG                                             ;; 0e:57d6 $04
@@ -3281,7 +3282,7 @@ script_0451:
     sEND                                               ;; 0e:5837 $00
 
 script_0452:
-    sGIVE_ITEM 19                                      ;; 0e:5838 $d4 $13
+    sGIVE_ITEM INV_ITEM_SPELL_THUNDR                   ;; 0e:5838 $d4 $13
     sIF_FLAG !wScriptFlags.5                           ;; 0e:583a $08 $85 $00 $11
       sSFX 15                                          ;; 0e:583e $f9 $0f
       sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:5840 $af
@@ -3292,7 +3293,7 @@ script_0452:
     sEND                                               ;; 0e:584f $00
 
 script_0453:
-    sGIVE_ITEM 11                                      ;; 0e:5850 $d4 $0b
+    sGIVE_ITEM INV_ITEM_SPELL_PILLOW                   ;; 0e:5850 $d4 $0b
     sIF_FLAG !wScriptFlags.5                           ;; 0e:5852 $08 $85 $00 $11
       sSFX 15                                          ;; 0e:5856 $f9 $0f
       sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:5858 $af
@@ -3306,7 +3307,7 @@ script_0454:
     sEND                                               ;; 0e:5868 $00
 
 script_0455:
-    sGIVE_ITEM 54                                      ;; 0e:5869 $d4 $36
+    sGIVE_ITEM INV_ITEM_RUBY                           ;; 0e:5869 $d4 $36
     sIF_FLAG !wScriptFlags.5                           ;; 0e:586b $08 $85 $00 $11
       sSFX 15                                          ;; 0e:586f $f9 $0f
       sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:5871 $af
@@ -3317,7 +3318,7 @@ script_0455:
     sEND                                               ;; 0e:5880 $00
 
 script_0456:
-    sGIVE_ITEM 55                                      ;; 0e:5881 $d4 $37
+    sGIVE_ITEM INV_ITEM_OPAL                           ;; 0e:5881 $d4 $37
     sIF_FLAG !wScriptFlags.5                           ;; 0e:5883 $08 $85 $00 $10
       sSFX 15                                          ;; 0e:5887 $f9 $0f
       sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:5889 $af
@@ -3328,7 +3329,7 @@ script_0456:
     sEND                                               ;; 0e:5897 $00
 
 script_0457:
-    sGIVE_ITEM 14                                      ;; 0e:5898 $d4 $0e
+    sGIVE_ITEM INV_ITEM_SPELL_FLAME                    ;; 0e:5898 $d4 $0e
     sIF_FLAG !wScriptFlags.5                           ;; 0e:589a $08 $85 $00 $11
       sSFX 15                                          ;; 0e:589e $f9 $0f
       sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:58a0 $af
@@ -3339,7 +3340,7 @@ script_0457:
     sEND                                               ;; 0e:58af $00
 
 script_0458:
-    sGIVE_ITEM 16                                      ;; 0e:58b0 $d4 $10
+    sGIVE_ITEM INV_ITEM_SPELL_BLIZRD                   ;; 0e:58b0 $d4 $10
     sIF_FLAG !wScriptFlags.5                           ;; 0e:58b2 $08 $85 $00 $13
       sSFX 15                                          ;; 0e:58b6 $f9 $0f
       sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:58b8 $af
@@ -3350,7 +3351,7 @@ script_0458:
     sEND                                               ;; 0e:58c9 $00
 
 script_0459:
-    sGIVE_ITEM 43                                      ;; 0e:58ca $d4 $2b
+    sGIVE_ITEM INV_ITEM_GEM_NECTAR                     ;; 0e:58ca $d4 $2b
     sIF_FLAG !wScriptFlags.5                           ;; 0e:58cc $08 $85 $00 $12
       sSFX 15                                          ;; 0e:58d0 $f9 $0f
       sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:58d2 $af
@@ -3361,7 +3362,7 @@ script_0459:
     sEND                                               ;; 0e:58e2 $00
 
 script_045a:
-    sGIVE_ITEM 44                                      ;; 0e:58e3 $d4 $2c
+    sGIVE_ITEM INV_ITEM_GEM_STAMINA                    ;; 0e:58e3 $d4 $2c
     sIF_FLAG !wScriptFlags.5                           ;; 0e:58e5 $08 $85 $00 $12
       sSFX 15                                          ;; 0e:58e9 $f9 $0f
       sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:58eb $af
@@ -3372,7 +3373,7 @@ script_045a:
     sEND                                               ;; 0e:58fb $00
 
 script_045b:
-    sGIVE_ITEM 45                                      ;; 0e:58fc $d4 $2d
+    sGIVE_ITEM INV_ITEM_GEM_WISDOM                     ;; 0e:58fc $d4 $2d
     sIF_FLAG !wScriptFlags.5                           ;; 0e:58fe $08 $85 $00 $11
       sSFX 15                                          ;; 0e:5902 $f9 $0f
       sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:5904 $af
@@ -3383,7 +3384,7 @@ script_045b:
     sEND                                               ;; 0e:5913 $00
 
 script_045c:
-    sGIVE_ITEM 46                                      ;; 0e:5914 $d4 $2e
+    sGIVE_ITEM INV_ITEM_GEM_WILL                       ;; 0e:5914 $d4 $2e
     sIF_FLAG !wScriptFlags.5                           ;; 0e:5916 $08 $85 $00 $10
       sSFX 15                                          ;; 0e:591a $f9 $0f
       sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:591c $af
@@ -3394,7 +3395,7 @@ script_045c:
     sEND                                               ;; 0e:592a $00
 
 script_045d:
-    sGIVE_EQUIPMENT 7                                  ;; 0e:592b $d8 $07
+    sGIVE_EQUIPMENT INV_MORNING_STAR                   ;; 0e:592b $d8 $07
     sIF_FLAG !wScriptFlags.5                           ;; 0e:592d $08 $85 $00 $12
       sSFX 15                                          ;; 0e:5931 $f9 $0f
       sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:5933 $af
@@ -3406,7 +3407,7 @@ script_045d:
     sEND                                               ;; 0e:5943 $00
 
 script_045e:
-    sGIVE_EQUIPMENT 28                                 ;; 0e:5944 $d8 $1c
+    sGIVE_EQUIPMENT INV_SHIELD_IRON                    ;; 0e:5944 $d8 $1c
     sIF_FLAG !wScriptFlags.5                           ;; 0e:5946 $08 $85 $00 $12
       sSFX 15                                          ;; 0e:594a $f9 $0f
       sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:594c $af
@@ -3418,7 +3419,7 @@ script_045e:
     sEND                                               ;; 0e:595c $00
 
 script_045f:
-    sGIVE_EQUIPMENT 19                                 ;; 0e:595d $d8 $13
+    sGIVE_EQUIPMENT INV_ARMOR_GOLD                     ;; 0e:595d $d8 $13
     sIF_FLAG !wScriptFlags.5                           ;; 0e:595f $08 $85 $00 $13
       sSFX 15                                          ;; 0e:5963 $f9 $0f
       sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:5965 $af
@@ -3430,7 +3431,7 @@ script_045f:
     sEND                                               ;; 0e:5976 $00
 
 script_0460:
-    sGIVE_EQUIPMENT 6                                  ;; 0e:5977 $d8 $06
+    sGIVE_EQUIPMENT INV_AXE_WERE                       ;; 0e:5977 $d8 $06
     sIF_FLAG !wScriptFlags.5                           ;; 0e:5979 $08 $85 $00 $11
       sSFX 15                                          ;; 0e:597d $f9 $0f
       sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:597f $af
@@ -3442,7 +3443,7 @@ script_0460:
     sEND                                               ;; 0e:598e $00
 
 script_0461:
-    sGIVE_EQUIPMENT 12                                 ;; 0e:598f $d8 $0c
+    sGIVE_EQUIPMENT INV_AXE_ZEUS                       ;; 0e:598f $d8 $0c
     sIF_FLAG !wScriptFlags.5                           ;; 0e:5991 $08 $85 $00 $12
       sSFX 15                                          ;; 0e:5995 $f9 $0f
       sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:5997 $af
@@ -3454,7 +3455,7 @@ script_0461:
     sEND                                               ;; 0e:59a7 $00
 
 script_0462:
-    sGIVE_EQUIPMENT 33                                 ;; 0e:59a8 $d8 $21
+    sGIVE_EQUIPMENT INV_SHIELD_AEGIS                   ;; 0e:59a8 $d8 $21
     sIF_FLAG !wScriptFlags.5                           ;; 0e:59aa $08 $85 $00 $13
       sSFX 15                                          ;; 0e:59ae $f9 $0f
       sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:59b0 $af
@@ -3466,7 +3467,7 @@ script_0462:
     sEND                                               ;; 0e:59c1 $00
 
 script_0463:
-    sGIVE_EQUIPMENT 8                                  ;; 0e:59c2 $d8 $08
+    sGIVE_EQUIPMENT INV_SWORD_BLOOD                    ;; 0e:59c2 $d8 $08
     sIF_FLAG !wScriptFlags.5                           ;; 0e:59c4 $08 $85 $00 $13
       sSFX 15                                          ;; 0e:59c8 $f9 $0f
       sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:59ca $af
@@ -3478,7 +3479,7 @@ script_0463:
     sEND                                               ;; 0e:59db $00
 
 script_0464:
-    sGIVE_EQUIPMENT 11                                 ;; 0e:59dc $d8 $0b
+    sGIVE_EQUIPMENT INV_SWORD_ICE                      ;; 0e:59dc $d8 $0b
     sIF_FLAG !wScriptFlags.5                           ;; 0e:59de $08 $85 $00 $1c
       sSFX 15                                          ;; 0e:59e2 $f9 $0f
       sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:59e4 $af
@@ -3498,7 +3499,7 @@ script_0465:
     sEND                                               ;; 0e:59ff $00
 
 script_0466:
-    sGIVE_MAGIC 5                                      ;; 0e:5a00 $d6 $05
+    sGIVE_MAGIC INV_MAGIC_ICE                          ;; 0e:5a00 $d6 $05
     sSFX 15                                            ;; 0e:5a02 $f9 $0f
     sCHANGE_INTO_EMPTY_CHEST                           ;; 0e:5a04 $af
     sMSG                                               ;; 0e:5a05 $04
@@ -3508,7 +3509,7 @@ script_0466:
     sEND                                               ;; 0e:5a26 $00
 
 script_0467:
-    sGIVE_ITEM 10                                      ;; 0e:5a27 $d4 $0a
+    sGIVE_ITEM INV_ITEM_SPELL_SILENCE                  ;; 0e:5a27 $d4 $0a
     sIF_FLAG !wScriptFlags.5                           ;; 0e:5a29 $08 $85 $00 $11
       sSFX 15                                          ;; 0e:5a2d $f9 $0f
       sCHANGE_INTO_EMPTY_CHEST                         ;; 0e:5a2f $af
@@ -5306,7 +5307,7 @@ script_053b:
     sSFX 15                                            ;; 0e:6ce6 $f9 $0f
     sMSG                                               ;; 0e:6ce8 $04
       db "Received the Magic\nBook of Heal.\nLearned Heal!", $00 ;; 0e:6ce9
-    sGIVE_MAGIC 1                                      ;; 0e:6d0a $d6 $01
+    sGIVE_MAGIC INV_MAGIC_HEAL                         ;; 0e:6d0a $d6 $01
     sMSG                                               ;; 0e:6d0c $04
       db "<12>"
       db "<1b> This magic will\n help you recover.\n<BOY>:Thanks.<12>"
@@ -6092,7 +6093,7 @@ script_0548:
       db "<1b><GIRL>:I think you\n should be able to\n use Cure Magic.<12>"
       db "<1b><BOY>:Yeah.\n It should help.\n<GIRL>:_ Read this!<12>"
       db "<1b>", $00 ;; 0e:79de
-    sGIVE_MAGIC 0                                      ;; 0e:7a29 $d6 $00
+    sGIVE_MAGIC INV_MAGIC_CURE                         ;; 0e:7a29 $d6 $00
     sSFX 15                                            ;; 0e:7a2b $f9 $0f
     sMSG                                               ;; 0e:7a2d $04
       db "Received the Magic\nBook of Cure.\nLearned Cure!<12>"
@@ -6145,7 +6146,7 @@ script_0549:
         sMSG                                           ;; 0e:7b1a $04
           db " Great!", $00                            ;; 0e:7b1b
         sSFX 15                                        ;; 0e:7b20 $f9 $0f
-        sGIVE_EQUIPMENT 1                              ;; 0e:7b22 $d8 $01
+        sGIVE_EQUIPMENT INV_AXE_BATTLE                 ;; 0e:7b22 $d8 $01
       sENDIF                                           ;; 0e:7b24
       sMSG                                             ;; 0e:7b24 $04
         db "<12>"
