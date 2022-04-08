@@ -65,6 +65,33 @@ NPC_DATA: MACRO
       SCRIPT_IDX \1
     ENDC
 ENDM
+RLE: MACRO
+
+  REPT _NARG
+    IF _NARG > 0
+      REDEF N = \1
+      REDEF DO_RLE = 1
+      IF _NARG < RLE_SIZE
+        REDEF DO_RLE = 0
+      ELSE
+        REPT RLE_SIZE - 1
+          IF N != \2
+            REDEF DO_RLE = 0
+          ENDC
+          SHIFT 1
+        ENDR
+        SHIFT 1-RLE_SIZE
+      ENDC
+      IF DO_RLE
+        SHIFT RLE_SIZE
+        db N | $80
+      ELSE
+        SHIFT 1
+        db N
+      ENDC
+    ENDC
+  ENDR
+ENDM
 SCRIPT_AT_POS: MACRO
 
             db ((\1) << 4) | (\2)

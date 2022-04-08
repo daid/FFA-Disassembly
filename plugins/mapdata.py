@@ -42,12 +42,36 @@ dw \5
 db \6
 db \7
 """
-        
+        RomInfo.macros["RLE"] = r"""
+  REPT _NARG
+    IF _NARG > 0
+      REDEF N = \1
+      REDEF DO_RLE = 1
+      IF _NARG < RLE_SIZE
+        REDEF DO_RLE = 0
+      ELSE
+        REPT RLE_SIZE - 1
+          IF N != \2
+            REDEF DO_RLE = 0
+          ENDC
+          SHIFT 1
+        ENDR
+        SHIFT 1-RLE_SIZE
+      ENDC
+      IF DO_RLE
+        SHIFT RLE_SIZE
+        db N | $80
+      ELSE
+        SHIFT 1
+        db N
+      ENDC
+    ENDC
+  ENDR
+"""
+
         RomInfo.romBank(self.graphics_bank).addAutoLabel(self.graphics_addr, None, "data")
         memory.addAutoLabel(self.metatiles_addr, None, "data")
         MapRoomPrefixBlock(RomInfo.romBank(self.room_data_bank), self.room_data_addr).addAutoLabel(self.room_data_addr, None, "data")
-        
-        # GfxBlock(RomInfo.romBank(self.graphics_bank), self.graphics_addr, bpp=2, size=0x0800)
 
     def export(self, file):
         file.asmLine(11, "MAP_HEADER",
@@ -93,6 +117,7 @@ class MapRoomPrefixBlock(Block):
 
     def export(self, file):
         file.dataLine(4)
+        file.asmLine(0, "DEF", "RLE_SIZE = %d" % (self.rle))
         if self.indoor_flag:
             file.asmLine(2, "dw", self.memory.getLabel(self.room_template_addr))
             file.comment("Door tile info")
@@ -159,17 +184,16 @@ class RLERoomDataBlock(Block):
 
     def export(self, file):
         for y in range(8):
-            x = 0
             args = []
-            while x < 10:
-                data = self.memory.byte(file.addr + len(args))
-                args.append("$%02x" % (data))
+            offset = 0
+            while len(args) < 10:
+                data = self.memory.byte(file.addr + offset)
+                offset += 1
+                args.append("$%02x" % (data & 0x7F))
                 if data & 0x80:
-                    x += self.rle
-                    args[-1] = ("     " * (self.rle - 1)) + args[-1]
-                else:
-                    x += 1
-            file.asmLine(len(args), "db", *args, is_data=True)
+                    for n in range(self.rle - 1):
+                        args.append(args[-1])
+            file.asmLine(offset, "RLE", *args, is_data=True)
 
 class IndoorTileRoomDataBlock(Block):
     def __init__(self, memory, addr, size=4):
