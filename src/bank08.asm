@@ -46,7 +46,7 @@ gfxBlankTile:
     db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 08:5a38 ????????
 
 ;@gfximg name=player width=2 height=38
-data_08_5a40:
+gfxPlayer:
     INCBIN "player.bin"                                ;; 08:5a40
 
 ;@gfximg name=chest width=2 height=3
@@ -72,7 +72,9 @@ gfxMoogle:
     INCBIN "moogle.bin"                                ;; 08:6400
 ;@gfximg name=chocobo2 width=2 height=12
     INCBIN "chocobo2.bin"                              ;; 08:6580
+
 ;@gfximg name=statusbar width=16 height=3
+gfxStatusBar:
     INCBIN "statusbar.bin"                             ;; 08:6700
 ;@gfximg name=font width=16 height=6
     INCBIN "font.bin"                                  ;; 08:6a00

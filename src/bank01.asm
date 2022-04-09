@@ -1198,11 +1198,13 @@ call_01_48be:
     ld   L, A                                          ;; 01:4939 $6f
     ld   DE, data_01_475e                              ;; 01:493a $11 $5e $47
     add  HL, DE                                        ;; 01:493d $19
+;TODO: 5a40 is a pointer to gfxPlayer in bank 8, but badboy cannot handle this right now
     ld   DE, $5a40                                     ;; 01:493e $11 $40 $5a
     ld   C, $04                                        ;; 01:4941 $0e $04
     ld   B, $00                                        ;; 01:4943 $06 $00
     xor  A, A                                          ;; 01:4945 $af
     call call_00_1a76                                  ;; 01:4946 $cd $76 $1a
+;TODO: 5a40 is a pointer to gfxPlayer in bank 8, but badboy cannot handle this right now
     ld   DE, $5a40                                     ;; 01:4949 $11 $40 $5a
     ld   C, $04                                        ;; 01:494c $0e $04
     ld   B, $20                                        ;; 01:494e $06 $20
@@ -5000,7 +5002,7 @@ data_01_63f3:
 
 data_01_641d:
     db   $04, $48, $00, $04, $ff, $00                  ;; 01:641d ??????
-    dw   data_08_5a40, data_01_6957                    ;; 01:6423 ????
+    dw   gfxPlayer, data_01_6957                       ;; 01:6423 ????
     dw   data_01_69a1, data_01_69b0, data_01_69bf, data_01_69ce ;; 01:6427 ????????
     dw   data_01_69dd, data_01_69f0, data_01_6a03, data_01_6a16 ;; 01:642f ????????
     dw   data_01_6a29, data_01_6a30, data_01_6a37, data_01_6a3e ;; 01:6437 ????????

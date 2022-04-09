@@ -5201,7 +5201,7 @@ InitPreIntEnable:
     ldh  [hBankStackPointer], A                        ;; 00:2017 $e0 $8a
     ld   A, $08                                        ;; 00:2019 $3e $08
     ld   [$2100], A                                    ;; 00:201b $ea $00 $21
-    ld   HL, $6700                                     ;; 00:201e $21 $00 $67
+    ld   HL, gfxStatusBar                              ;; 00:201e $21 $00 $67
     ld   DE, $8f00                                     ;; 00:2021 $11 $00 $8f
     ld   BC, $900                                      ;; 00:2024 $01 $00 $09
     call CopyHL_to_DE_size_BC                          ;; 00:2027 $cd $40 $2b
