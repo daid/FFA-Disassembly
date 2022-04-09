@@ -775,7 +775,7 @@ call_00_0517:
 
 call_00_051d:
     push DE                                            ;; 00:051d $d5
-    call call_00_05bb                                  ;; 00:051e $cd $bb $05
+    call getTileInfoPointer                            ;; 00:051e $cd $bb $05
     push HL                                            ;; 00:0521 $e5
     ld   A, BANK(metatilesOutdoor)                                        ;; 00:0522 $3e $08
     call pushBankNrAndSwitch                           ;; 00:0524 $cd $fb $29
@@ -787,6 +787,7 @@ call_00_051d:
     ld   A, D                                          ;; 00:052c $7a
     add  A, A                                          ;; 00:052d $87
     ld   D, A                                          ;; 00:052e $57
+    push DE
     ld   A, [HL+]                                      ;; 00:052f $2a
     push HL                                            ;; 00:0530 $e5
     ld   HL, wD070                                     ;; 00:0531 $21 $70 $d0
@@ -818,6 +819,7 @@ call_00_051d:
     add  HL, BC                                        ;; 00:0556 $09
     ld   C, [HL]                                       ;; 00:0557 $4e
     pop  HL                                            ;; 00:0558 $e1
+    push HL
     push BC                                            ;; 00:0559 $c5
     ld   A, [HL+]                                      ;; 00:055a $2a
     ld   HL, wD070                                     ;; 00:055b $21 $70 $d0
@@ -828,12 +830,17 @@ call_00_051d:
     pop  BC                                            ;; 00:0563 $c1
     ld   H, C                                          ;; 00:0564 $61
     call call_00_048c                                  ;; 00:0565 $cd $8c $04
+    
+    pop  HL
+    pop  DE
+    call drawMetaTileAttrs
+    
     call popBankNrAndSwitch                            ;; 00:0568 $cd $0a $2a
     ret                                                ;; 00:056b $c9
 
 call_00_056c:
     push DE                                            ;; 00:056c $d5
-    call call_00_05bb                                  ;; 00:056d $cd $bb $05
+    call getTileInfoPointer                            ;; 00:056d $cd $bb $05
     push HL                                            ;; 00:0570 $e5
     ld   A, BANK(metatilesOutdoor)                                        ;; 00:0571 $3e $08
     call pushBankNrAndSwitch                           ;; 00:0573 $cd $fb $29
@@ -888,21 +895,6 @@ call_00_056c:
     call storeDEatBackgroundDrawPosition               ;; 00:05b4 $cd $95 $04
     call popBankNrAndSwitch                            ;; 00:05b7 $cd $0a $2a
     ret                                                ;; 00:05ba $c9
-
-call_00_05bb:
-    ld   L, A                                          ;; 00:05bb $6f
-    ld   H, $00                                        ;; 00:05bc $26 $00
-    ld   D, H                                          ;; 00:05be $54
-    ld   E, L                                          ;; 00:05bf $5d
-    add  HL, HL                                        ;; 00:05c0 $29
-    add  HL, DE                                        ;; 00:05c1 $19
-    add  HL, HL                                        ;; 00:05c2 $29
-    ld   A, [wTileDataTablePointer.High]               ;; 00:05c3 $fa $93 $d3
-    ld   D, A                                          ;; 00:05c6 $57
-    ld   A, [wTileDataTablePointer]                    ;; 00:05c7 $fa $92 $d3
-    ld   E, A                                          ;; 00:05ca $5f
-    add  HL, DE                                        ;; 00:05cb $19
-    ret                                                ;; 00:05cc $c9
 
 call_00_05cd:
     ld   L, C                                          ;; 00:05cd $69
@@ -3801,11 +3793,12 @@ call_00_16af:
     call call_00_2426                                  ;; 00:16d8 $cd $26 $24
     ld   L, A                                          ;; 00:16db $6f
     ld   H, $00                                        ;; 00:16dc $26 $00
+    add  HL, HL                                        ;; 00:16e0 $29
     ld   D, H                                          ;; 00:16de $54
     ld   E, L                                          ;; 00:16df $5d
-    add  HL, HL                                        ;; 00:16e0 $29
-    add  HL, DE                                        ;; 00:16e1 $19
     add  HL, HL                                        ;; 00:16e2 $29
+    add  HL, HL
+    add  HL, DE                                        ;; 00:16e1 $19
     ld   A, [wTileDataTablePointer.High]               ;; 00:16e3 $fa $93 $d3
     ld   D, A                                          ;; 00:16e6 $57
     ld   A, [wTileDataTablePointer]                    ;; 00:16e7 $fa $92 $d3
@@ -4520,11 +4513,12 @@ call_00_1af3:
 getTileInfoPointer:
     ld   L, A                                          ;; 00:1b19 $6f
     ld   H, $00                                        ;; 00:1b1a $26 $00
+    add  HL, HL                                        ;; 00:1b1e $29
     ld   D, H                                          ;; 00:1b1c $54
     ld   E, L                                          ;; 00:1b1d $5d
-    add  HL, HL                                        ;; 00:1b1e $29
-    add  HL, DE                                        ;; 00:1b1f $19
     add  HL, HL                                        ;; 00:1b20 $29
+    add  HL, HL
+    add  HL, DE                                        ;; 00:1b1f $19
     ld   A, [wTileDataTablePointer.High]               ;; 00:1b21 $fa $93 $d3
     ld   D, A                                          ;; 00:1b24 $57
     ld   A, [wTileDataTablePointer]                    ;; 00:1b25 $fa $92 $d3
