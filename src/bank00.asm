@@ -777,7 +777,7 @@ call_00_051d:
     push DE                                            ;; 00:051d $d5
     call call_00_05bb                                  ;; 00:051e $cd $bb $05
     push HL                                            ;; 00:0521 $e5
-    ld   A, $08                                        ;; 00:0522 $3e $08
+    ld   A, BANK(metatilesOutdoor)                                        ;; 00:0522 $3e $08
     call pushBankNrAndSwitch                           ;; 00:0524 $cd $fb $29
     pop  HL                                            ;; 00:0527 $e1
     pop  DE                                            ;; 00:0528 $d1
@@ -835,7 +835,7 @@ call_00_056c:
     push DE                                            ;; 00:056c $d5
     call call_00_05bb                                  ;; 00:056d $cd $bb $05
     push HL                                            ;; 00:0570 $e5
-    ld   A, $08                                        ;; 00:0571 $3e $08
+    ld   A, BANK(metatilesOutdoor)                                        ;; 00:0571 $3e $08
     call pushBankNrAndSwitch                           ;; 00:0573 $cd $fb $29
     pop  HL                                            ;; 00:0576 $e1
     pop  DE                                            ;; 00:0577 $d1
@@ -3773,7 +3773,7 @@ scriptOpCode8F:
 
 call_00_16af:
     push DE                                            ;; 00:16af $d5
-    ld   A, $08                                        ;; 00:16b0 $3e $08
+    ld   A, BANK(metatilesOutdoor)                     ;; 00:16b0 $3e $08
     call pushBankNrAndSwitch                           ;; 00:16b2 $cd $fb $29
     pop  DE                                            ;; 00:16b5 $d1
     ld   A, E                                          ;; 00:16b6 $7b
@@ -4371,7 +4371,7 @@ call_00_1a3b:
 
 call_00_1a44:
     push AF                                            ;; 00:1a44 $f5
-    ld   A, $08                                        ;; 00:1a45 $3e $08
+    ld   A, BANK(metatilesOutdoor)                                        ;; 00:1a45 $3e $08
     call pushBankNrAndSwitch                           ;; 00:1a47 $cd $fb $29
     pop  AF                                            ;; 00:1a4a $f1
     call getTileInfoPointer                            ;; 00:1a4b $cd $19 $1b
@@ -4589,7 +4589,7 @@ call_00_1b4e:
 
 call_00_1b74:
     push HL                                            ;; 00:1b74 $e5
-    ld   A, $08                                        ;; 00:1b75 $3e $08
+    ld   A, BANK(metatilesOutdoor)                     ;; 00:1b75 $3e $08
     call pushBankNrAndSwitch                           ;; 00:1b77 $cd $fb $29
     pop  HL                                            ;; 00:1b7a $e1
     push HL                                            ;; 00:1b7b $e5

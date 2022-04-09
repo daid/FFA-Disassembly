@@ -9,8 +9,6 @@ SECTION "bank08", ROMX[$4000], BANK[$08]
 
 INCLUDE "data/map/headers.asm"
 
-INCLUDE "data/metatiles.asm"
-
 INCLUDE "data/xptable.asm"
 
 INCLUDE "data/scriptPointers.asm"

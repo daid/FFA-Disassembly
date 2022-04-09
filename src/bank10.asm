@@ -54,3 +54,7 @@ objectPaletteTable:
     dw $7FFF, $46FF, $22A2, $0000
     dw $7FFF, $46FF, $05FF, $0000
     dw $7FFF, $46FF, $22A2, $0000
+
+
+SECTION "bank11", ROMX, BANK[$11]
+INCLUDE "data/metatiles.asm"
