@@ -852,6 +852,7 @@ call_00_056c:
     ld   A, D                                          ;; 00:057b $7a
     add  A, A                                          ;; 00:057c $87
     ld   D, A                                          ;; 00:057d $57
+    push DE
     ld   A, [HL+]                                      ;; 00:057e $2a
     push HL                                            ;; 00:057f $e5
     ld   HL, wD070                                     ;; 00:0580 $21 $70 $d0
@@ -883,6 +884,7 @@ call_00_056c:
     add  HL, BC                                        ;; 00:05a5 $09
     ld   C, [HL]                                       ;; 00:05a6 $4e
     pop  HL                                            ;; 00:05a7 $e1
+    push HL
     push BC                                            ;; 00:05a8 $c5
     ld   A, [HL+]                                      ;; 00:05a9 $2a
     ld   HL, wD070                                     ;; 00:05aa $21 $70 $d0
@@ -893,6 +895,10 @@ call_00_056c:
     pop  BC                                            ;; 00:05b2 $c1
     ld   H, C                                          ;; 00:05b3 $61
     call storeDEatBackgroundDrawPosition               ;; 00:05b4 $cd $95 $04
+    
+    pop  HL
+    pop  DE
+    call drawMetaTileAttrs
     call popBankNrAndSwitch                            ;; 00:05b7 $cd $0a $2a
     ret                                                ;; 00:05ba $c9
 
