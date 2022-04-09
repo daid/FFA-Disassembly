@@ -4472,7 +4472,7 @@ call_00_1acd:
     add  HL, BC                                        ;; 00:1ad4 $09
     ld   D, H                                          ;; 00:1ad5 $54
     ld   E, L                                          ;; 00:1ad6 $5d
-    ld   HL, $5a00                                     ;; 00:1ad7 $21 $00 $5a
+    ld   HL, gfxBlankTile ;@bank 8 size=3              ;; 00:1ad7 $21 $00 $5a
     cpl                                                ;; 00:1ada $2f
     inc  A                                             ;; 00:1adb $3c
     add  A, A                                          ;; 00:1adc $87
