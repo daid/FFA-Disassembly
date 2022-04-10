@@ -688,7 +688,7 @@ storeBatBackgroundDrawPosition:
     ret                                                ;; 00:0484 $c9
     db   $cd, $5d, $04, $cd, $8a, $1d, $c9             ;; 00:0485 ???????
 
-call_00_048c:
+requestCopyTwoBytesToDrawAddress:
     push HL                                            ;; 00:048c $e5
     call getBackgroundDrawAddress                      ;; 00:048d $cd $5d $04
     pop  DE                                            ;; 00:0490 $d1
@@ -770,9 +770,10 @@ call_00_0511:
 call_00_0517:
     jp_to_bank 04, call_04_4735                        ;; 00:0517 $f5 $3e $04 $c3 $64 $1f
 
-call_00_051d:
+; Draw the meta tile A (metatile index) at DE (YX tile number)
+drawMetaTile:
     push DE                                            ;; 00:051d $d5
-    call call_00_05bb                                  ;; 00:051e $cd $bb $05
+    call getTileInfoPointer2                           ;; 00:051e $cd $bb $05
     push HL                                            ;; 00:0521 $e5
     ld   A, $08                                        ;; 00:0522 $3e $08
     call pushBankNrAndSwitch                           ;; 00:0524 $cd $fb $29
@@ -803,7 +804,7 @@ call_00_051d:
     ld   L, [HL]                                       ;; 00:0545 $6e
     pop  BC                                            ;; 00:0546 $c1
     ld   H, C                                          ;; 00:0547 $61
-    call call_00_048c                                  ;; 00:0548 $cd $8c $04
+    call requestCopyTwoBytesToDrawAddress              ;; 00:0548 $cd $8c $04
     pop  DE                                            ;; 00:054b $d1
     pop  HL                                            ;; 00:054c $e1
     inc  D                                             ;; 00:054d $14
@@ -824,13 +825,13 @@ call_00_051d:
     ld   L, [HL]                                       ;; 00:0562 $6e
     pop  BC                                            ;; 00:0563 $c1
     ld   H, C                                          ;; 00:0564 $61
-    call call_00_048c                                  ;; 00:0565 $cd $8c $04
+    call requestCopyTwoBytesToDrawAddress              ;; 00:0565 $cd $8c $04
     call popBankNrAndSwitch                            ;; 00:0568 $cd $0a $2a
     ret                                                ;; 00:056b $c9
 
 call_00_056c:
     push DE                                            ;; 00:056c $d5
-    call call_00_05bb                                  ;; 00:056d $cd $bb $05
+    call getTileInfoPointer2                           ;; 00:056d $cd $bb $05
     push HL                                            ;; 00:0570 $e5
     ld   A, $08                                        ;; 00:0571 $3e $08
     call pushBankNrAndSwitch                           ;; 00:0573 $cd $fb $29
@@ -886,7 +887,8 @@ call_00_056c:
     call popBankNrAndSwitch                            ;; 00:05b7 $cd $0a $2a
     ret                                                ;; 00:05ba $c9
 
-call_00_05bb:
+; Exactly the same as getTileInfoPointer
+getTileInfoPointer2:
     ld   L, A                                          ;; 00:05bb $6f
     ld   H, $00                                        ;; 00:05bc $26 $00
     ld   D, H                                          ;; 00:05be $54
@@ -9023,7 +9025,7 @@ call_00_3891:
     push DE                                            ;; 00:3892 $d5
     push HL                                            ;; 00:3893 $e5
     ld   B, A                                          ;; 00:3894 $47
-    call call_00_38bb                                  ;; 00:3895 $cd $bb $38
+    call tilePositionToVRAMaddress                     ;; 00:3895 $cd $bb $38
     ld   A, B                                          ;; 00:3898 $78
     jr   C, .jr_00_38a0                                ;; 00:3899 $38 $05
     call storeBatBackgroundDrawPosition                ;; 00:389b $cd $7c $04
@@ -9039,7 +9041,9 @@ call_00_3891:
     db   $cd, $85, $04, $18, $03, $cd, $8a, $1d        ;; 00:38af ????????
     db   $e1, $d1, $c1, $c9                            ;; 00:38b7 ????
 
-call_00_38bb:
+; Convert DE (Y,X) tile position int VRAM memory location
+; Carry flag is cleared if the address is on the window
+tilePositionToVRAMaddress:
     ld   A, [wVideoWY]                                 ;; 00:38bb $fa $a9 $c0
     srl  A                                             ;; 00:38be $cb $3f
     srl  A                                             ;; 00:38c0 $cb $3f
