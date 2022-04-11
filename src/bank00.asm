@@ -2727,9 +2727,20 @@ scriptOpCodeFlashScreen:
     ret                                                ;; 00:1019 $c9
 
 fadeToBlackBGP:
-    db   $e4, $e5, $e5, $e5, $e5, $f5, $f5, $f5        ;; 00:101a ........
-    db   $f5, $f9, $f9, $f9, $f9, $fa, $fa, $fa        ;; 00:1022 ........
-    db   $fa, $fe, $fe, $fe, $fe, $ff                  ;; 00:102a ......
+MACRO GRAY
+    dw   (\1) | ((\1) << 5) | ((\1) << 10)
+ENDM
+    GRAY 31 ; 0
+    GRAY 28 ; 1
+    GRAY 24 ; 2
+    GRAY 21 ; 3
+    GRAY 18 ; 4
+    GRAY 15 ; 5
+    GRAY 12 ; 6
+    GRAY 9 ; 7
+    GRAY 6 ; 8
+    GRAY 3 ; 9
+    GRAY 0 ; 10
 
 fadeToBlackOBP:
     db   $d3, $d7, $d7, $d7, $d7, $d7, $d7, $e7        ;; 00:1030 ........
@@ -2738,40 +2749,42 @@ fadeToBlackOBP:
 
 scriptOpCodeFadeToBlack:
     push HL                                            ;; 00:1046 $e5
+
+    xor  a ; load BGP to have fade to normal make the right decision
+    ld   [wVideoBGP], a
+
+    ld   a, BANK(cgbPalFadeToBlank)
+    call pushBankNrAndSwitch
+
     ld   A, [wScriptOpCounter]                         ;; 00:1047 $fa $99 $d4
     add  A, A                                          ;; 00:104a $87
     ld   E, A                                          ;; 00:104b $5f
-    ld   A, [wD49A]                                    ;; 00:104c $fa $9a $d4
-    and  A, $01                                        ;; 00:104f $e6 $01
-    add  A, E                                          ;; 00:1051 $83
-    ld   E, A                                          ;; 00:1052 $5f
     ld   D, $00                                        ;; 00:1053 $16 $00
-    ld   HL, fadeToBlackBGP                            ;; 00:1055 $21 $1a $10
-    add  HL, DE                                        ;; 00:1058 $19
-    ld   C, [HL]                                       ;; 00:1059 $4e
-    ld   A, [wLCDCEffectBuffer]                        ;; 00:105a $fa $a0 $d3
-    cp   A, $7e                                        ;; 00:105d $fe $7e
-    jr   Z, .jr_00_1067                                ;; 00:105f $28 $06
-    ld   A, C                                          ;; 00:1061 $79
-    ld   [wLCDCEffectBuffer._03], A                    ;; 00:1062 $ea $a3 $d3
-    jr   .jr_00_106b                                   ;; 00:1065 $18 $04
-.jr_00_1067:
-    ld   A, C                                          ;; 00:1067 $79
-    ld   [wVideoBGP], A                                ;; 00:1068 $ea $aa $c0
-.jr_00_106b:
-    ld   HL, fadeToBlackOBP                            ;; 00:106b $21 $30 $10
-    add  HL, DE                                        ;; 00:106e $19
-    ld   A, [HL]                                       ;; 00:106f $7e
-    ld   [wVideoOBP0], A                               ;; 00:1070 $ea $ab $c0
-    ld   [wVideoOBP1], A                               ;; 00:1073 $ea $ac $c0
+    ld   HL, fadeToBlackBGP
+    add  HL, DE
+    ld   A, [HL+]
+    ld   D, [HL]
+    ld   E, A
+
+    call cgbPalFadeToBlank
+    call popBankNrAndSwitch
+    
     pop  HL                                            ;; 00:1076 $e1
     call call_00_1142                                  ;; 00:1077 $cd $42 $11
     ret                                                ;; 00:107a $c9
 
 fadeToWhiteBGP:
-    db   $e4, $a4, $a4, $a4, $a4, $a0, $a0, $a0        ;; 00:107b ????????
-    db   $a0, $90, $90, $90, $90, $50, $50, $50        ;; 00:1083 ????????
-    db   $50, $40, $40, $40, $40, $00                  ;; 00:108b ??????
+    GRAY 0 ; 10
+    GRAY 3 ; 9
+    GRAY 6 ; 8
+    GRAY 9 ; 7
+    GRAY 12 ; 6
+    GRAY 15 ; 5
+    GRAY 18 ; 4
+    GRAY 21 ; 3
+    GRAY 24 ; 2
+    GRAY 28 ; 1
+    GRAY 31 ; 0
 
 fadeToWhiteOBP:
     db   $d0, $90, $90, $90, $90, $90, $50, $50        ;; 00:1091 ????????
@@ -2780,92 +2793,70 @@ fadeToWhiteOBP:
 
 scriptOpCodeFadeToWhite:
     push HL                                            ;; 00:10a7 $e5
+    ld   a, $FF ; set wVideoBGP to make fade to normal work
+    ld   [wVideoBGP], a
+
+    ld   a, BANK(cgbPalFadeToBlank)
+    call pushBankNrAndSwitch
+
     ld   A, [wScriptOpCounter]                         ;; 00:10a8 $fa $99 $d4
     add  A, A                                          ;; 00:10ab $87
     ld   E, A                                          ;; 00:10ac $5f
-    ld   A, [wD49A]                                    ;; 00:10ad $fa $9a $d4
-    and  A, $01                                        ;; 00:10b0 $e6 $01
-    add  A, E                                          ;; 00:10b2 $83
-    ld   E, A                                          ;; 00:10b3 $5f
-    ld   D, $00                                        ;; 00:10b4 $16 $00
-    ld   HL, fadeToWhiteBGP                            ;; 00:10b6 $21 $7b $10
-    add  HL, DE                                        ;; 00:10b9 $19
-    ld   C, [HL]                                       ;; 00:10ba $4e
-    ld   A, [wLCDCEffectBuffer]                        ;; 00:10bb $fa $a0 $d3
-    cp   A, $7e                                        ;; 00:10be $fe $7e
-    jr   Z, .jr_00_10c8                                ;; 00:10c0 $28 $06
-    ld   A, C                                          ;; 00:10c2 $79
-    ld   [wLCDCEffectBuffer._03], A                    ;; 00:10c3 $ea $a3 $d3
-    jr   .jr_00_10cc                                   ;; 00:10c6 $18 $04
-.jr_00_10c8:
-    ld   A, C                                          ;; 00:10c8 $79
-    ld   [wVideoBGP], A                                ;; 00:10c9 $ea $aa $c0
-.jr_00_10cc:
-    ld   HL, fadeToWhiteOBP                            ;; 00:10cc $21 $91 $10
-    add  HL, DE                                        ;; 00:10cf $19
-    ld   A, [HL]                                       ;; 00:10d0 $7e
-    ld   [wVideoOBP0], A                               ;; 00:10d1 $ea $ab $c0
-    ld   [wVideoOBP1], A                               ;; 00:10d4 $ea $ac $c0
+
+    ld   HL, fadeToWhiteBGP
+    add  HL, DE
+    ld   A, [HL+]
+    ld   D, [HL]
+    ld   E, A
+
+    call cgbPalFadeToWhite
+    call popBankNrAndSwitch
+
     pop  HL                                            ;; 00:10d7 $e1
     call call_00_1142                                  ;; 00:10d8 $cd $42 $11
     ret                                                ;; 00:10db $c9
 
 scriptOpCodeFadeToNormal:
     push HL                                            ;; 00:10dc $e5
+
+    ld   a, BANK(cgbPalFadeToBlank)
+    call pushBankNrAndSwitch
+
     ld   A, [wScriptOpCounter]                         ;; 00:10dd $fa $99 $d4
     add  A, A                                          ;; 00:10e0 $87
     ld   E, A                                          ;; 00:10e1 $5f
-    ld   A, [wD49A]                                    ;; 00:10e2 $fa $9a $d4
-    and  A, $01                                        ;; 00:10e5 $e6 $01
-    add  A, E                                          ;; 00:10e7 $83
-    ld   E, A                                          ;; 00:10e8 $5f
-    ld   A, $15                                        ;; 00:10e9 $3e $15
+    ld   A, $14                                        ;; 00:10e9 $3e $15
     sub  A, E                                          ;; 00:10eb $93
     ld   E, A                                          ;; 00:10ec $5f
     ld   D, $00                                        ;; 00:10ed $16 $00
-    ld   A, [wVideoOBP0]                               ;; 00:10ef $fa $ab $c0
-    bit  0, A                                          ;; 00:10f2 $cb $47
-    jr   Z, .jr_00_111c                                ;; 00:10f4 $28 $26
-    ld   HL, fadeToBlackBGP                            ;; 00:10f6 $21 $1a $10
-    add  HL, DE                                        ;; 00:10f9 $19
-    ld   C, [HL]                                       ;; 00:10fa $4e
-    ld   A, [wLCDCEffectBuffer]                        ;; 00:10fb $fa $a0 $d3
-    cp   A, $7e                                        ;; 00:10fe $fe $7e
-    jr   Z, .jr_00_1108                                ;; 00:1100 $28 $06
-    ld   A, C                                          ;; 00:1102 $79
-    ld   [wLCDCEffectBuffer._03], A                    ;; 00:1103 $ea $a3 $d3
-    jr   .jr_00_110c                                   ;; 00:1106 $18 $04
-.jr_00_1108:
-    ld   A, C                                          ;; 00:1108 $79
-    ld   [wVideoBGP], A                                ;; 00:1109 $ea $aa $c0
-.jr_00_110c:
-    ld   HL, fadeToBlackOBP                            ;; 00:110c $21 $30 $10
-    add  HL, DE                                        ;; 00:110f $19
-    ld   A, [HL]                                       ;; 00:1110 $7e
-    ld   [wVideoOBP0], A                               ;; 00:1111 $ea $ab $c0
-    ld   [wVideoOBP1], A                               ;; 00:1114 $ea $ac $c0
+    
+    ld   A, [wVideoBGP]
+    and  A
+    jr   NZ, .jr_00_111c
+    
+    ld   HL, fadeToBlackBGP
+    add  HL, DE
+    ld   A, [HL+]
+    ld   D, [HL]
+    ld   E, A
+
+    call cgbPalFadeToBlank
+    call popBankNrAndSwitch
+
     pop  HL                                            ;; 00:1117 $e1
     call call_00_1142                                  ;; 00:1118 $cd $42 $11
     ret                                                ;; 00:111b $c9
+
 .jr_00_111c:
-    ld   HL, fadeToWhiteBGP                            ;; 00:111c $21 $7b $10
-    add  HL, DE                                        ;; 00:111f $19
-    ld   C, [HL]                                       ;; 00:1120 $4e
-    ld   A, [wLCDCEffectBuffer]                        ;; 00:1121 $fa $a0 $d3
-    cp   A, $7e                                        ;; 00:1124 $fe $7e
-    jr   Z, .jr_00_112e                                ;; 00:1126 $28 $06
-    ld   A, C                                          ;; 00:1128 $79
-    ld   [wLCDCEffectBuffer._03], A                    ;; 00:1129 $ea $a3 $d3
-    jr   .jr_00_1132                                   ;; 00:112c $18 $04
-.jr_00_112e:
-    ld   A, C                                          ;; 00:112e $79
-    ld   [wVideoBGP], A                                ;; 00:112f $ea $aa $c0
-.jr_00_1132:
-    ld   HL, fadeToWhiteOBP                            ;; 00:1132 $21 $91 $10
-    add  HL, DE                                        ;; 00:1135 $19
-    ld   A, [HL]                                       ;; 00:1136 $7e
-    ld   [wVideoOBP0], A                               ;; 00:1137 $ea $ab $c0
-    ld   [wVideoOBP1], A                               ;; 00:113a $ea $ac $c0
+    ld   HL, fadeToWhiteBGP
+    add  HL, DE
+    ld   A, [HL+]
+    ld   D, [HL]
+    ld   E, A
+
+    call cgbPalFadeToWhite
+    call popBankNrAndSwitch
+
     pop  HL                                            ;; 00:113d $e1
     call call_00_1142                                  ;; 00:113e $cd $42 $11
     ret                                                ;; 00:1141 $c9

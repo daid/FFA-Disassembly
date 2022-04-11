@@ -1519,7 +1519,12 @@ hFF9C:
     ds 1                                               ;; ff9c
 
 hFF9D:
-    ds 93                                              ;; ff9d
+    ds 10                                               ;; ff9d
+
+hCurBGPal:
+    ds 1
+hCurObjPal:
+    ds 82
 
 hFFFA:
     ds 2                                               ;; fffa

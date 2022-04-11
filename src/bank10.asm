@@ -23,6 +23,8 @@ loadCGBPalette:
     jp  nz, .loadObjPal
 
 .loadBGPal:
+    ld  a, b
+    ldh [hCurBGPal], a
     ld  a, $80
     ldh [rBCPS], a
     ld  c, LOW(rBCPD)
@@ -36,6 +38,9 @@ loadCGBPalette:
     ret
 
 .loadObjPal:
+    ld  a, b
+    and $7F
+    ldh [hCurObjPal], a
     ld  a, $80
     ldh [rOCPS], a
     ld  c, LOW(rOCPD)
@@ -46,6 +51,138 @@ loadCGBPalette:
       ld  a, [hl+]
       ldh [c], a
     ENDR
+    ret
+    
+; de = fade mask
+cgbPalFadeToBlank:
+    ldh a, [hCurBGPal]
+    add a, a
+    ld  l, a
+    ld  h, $00
+    add hl, hl
+    add hl, hl
+    add hl, hl
+    add hl, hl
+    add hl, hl
+    ld  bc, cgbPaletteTable
+    add hl, bc
+    
+    ld  a, $80
+    ldh [rBCPS], a
+    ld  c, LOW(rBCPD)
+    REPT 4 * 8
+:     ld  a, [rSTAT]
+      and $02
+      jr  nz, :-
+      ld  a, [hl+]
+      and a, e
+      ldh [c], a
+
+:     ld  a, [rSTAT]
+      and $02
+      jr  nz, :-
+      ld  a, [hl+]
+      and a, d
+      ldh [c], a
+    ENDR
+
+    ldh a, [hCurObjPal]
+    add a, a
+    ld  l, a
+    ld  h, $00
+    add hl, hl
+    add hl, hl
+    add hl, hl
+    add hl, hl
+    add hl, hl
+    ld  bc, cgbPaletteTable
+    add hl, bc
+    
+    ld  a, $80
+    ldh [rOCPS], a
+    ld  c, LOW(rOCPD)
+    REPT 4 * 8
+:     ld  a, [rSTAT]
+      and $02
+      jr  nz, :-
+      ld  a, [hl+]
+      and a, e
+      ldh [c], a
+
+:     ld  a, [rSTAT]
+      and $02
+      jr  nz, :-
+      ld  a, [hl+]
+      and a, d
+      ldh [c], a
+    ENDR
+
+    ret
+
+; de = fade mask
+cgbPalFadeToWhite:
+    ldh a, [hCurBGPal]
+    add a, a
+    ld  l, a
+    ld  h, $00
+    add hl, hl
+    add hl, hl
+    add hl, hl
+    add hl, hl
+    add hl, hl
+    ld  bc, cgbPaletteTable
+    add hl, bc
+    
+    ld  a, $80
+    ldh [rBCPS], a
+    ld  c, LOW(rBCPD)
+    REPT 4 * 8
+:     ld  a, [rSTAT]
+      and $02
+      jr  nz, :-
+      ld  a, [hl+]
+      or  a, e
+      ldh [c], a
+
+:     ld  a, [rSTAT]
+      and $02
+      jr  nz, :-
+      ld  a, [hl+]
+      or  a, d
+      ldh [c], a
+    ENDR
+
+    ldh a, [hCurObjPal]
+    add a, a
+    ld  l, a
+    ld  h, $00
+    add hl, hl
+    add hl, hl
+    add hl, hl
+    add hl, hl
+    add hl, hl
+    ld  bc, cgbPaletteTable
+    add hl, bc
+    
+    ld  a, $80
+    ldh [rOCPS], a
+    ld  c, LOW(rOCPD)
+    REPT 4 * 8
+:     ld  a, [rSTAT]
+      and $02
+      jr  nz, :-
+      ld  a, [hl+]
+      or  a, e
+      ldh [c], a
+
+:     ld  a, [rSTAT]
+      and $02
+      jr  nz, :-
+      ld  a, [hl+]
+      or  a, d
+      ldh [c], a
+    ENDR
+
     ret
     
 cgbPaletteTable:
