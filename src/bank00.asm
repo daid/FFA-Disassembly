@@ -131,6 +131,12 @@ updateVideoRegisters:
     ldh  [rWX], A                                      ;; 00:00cb $e0 $4b
     ld   A, [wVideoWY]                                 ;; 00:00cd $fa $a9 $c0
     ldh  [rWY], A                                      ;; 00:00d0 $e0 $4a
+
+    ld   A, [rLCDC]
+    bit  3, A
+    ret  Z
+    ld   A, 32
+    ldh  [rSCY], A
     ret                                                ;; 00:00d2 $c9
 
 SECTION "entry", ROM0[$0100]
@@ -514,6 +520,8 @@ LCDCInterrupt:
     ld   [HL], D                                       ;; 00:036a $72
     ld   A, E                                          ;; 00:036b $7b
     ldh  [rBGP], A                                     ;; 00:036c $e0 $47
+    ld   A, [wVideoSCY]
+    ldh  [rSCY], A
     ret                                                ;; 00:036e $c9
 
 call_00_036f:
