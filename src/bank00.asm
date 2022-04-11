@@ -10,6 +10,27 @@ SECTION "bank00", ROM0[$0000]
 call_00_0000:
     jp   FullReset                                     ;; 00:0000 $c3 $50 $01
 
+scriptOpCodePal:
+    ld   a, [hl+]
+    ld   b, a
+    push hl
+    ld   A, BANK(loadCGBPalette)
+    call pushBankNrAndSwitch
+    call loadCGBPalette
+    call popBankNrAndSwitch
+    pop  hl
+    call getNextScriptInstruction
+    ret
+
+setDoubleSpeed:
+    ldh a, [rKEY1]
+    and $80
+    ret nz
+    ld  a, $01
+    ldh [rKEY1], a
+    stop
+    ret
+
 SECTION "isrVBlank", ROM0[$0040]
 
 isrVBlank:
@@ -5167,13 +5188,7 @@ Init:
     di                                                 ;; 00:1fca $f3
     ld   SP, hFFFE                                     ;; 00:1fcb $31 $fe $ff
     call InitPreIntEnable                              ;; 00:1fce $cd $f0 $1f
-    ld   a, $10
-    ld   [$2100], a
     call setDoubleSpeed
-    call loadBGPalette
-    call loadOBJPalette
-    ld   a, 1
-    ld   [$2100], a
     ei                                                 ;; 00:1fd1 $fb
     call call_00_3153                                  ;; 00:1fd2 $cd $53 $31
 

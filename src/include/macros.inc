@@ -999,3 +999,6 @@ ENDM
 short_stop: MACRO
 db $10
 ENDM
+sPAL: MACRO
+    db $05, \1
+ENDM

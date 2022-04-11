@@ -54,9 +54,9 @@ scriptPointersTable:
     SCRIPT_POINTER script_002e                         ;; 08:4f61 $d3 $03
     SCRIPT_POINTER script_002f                         ;; 08:4f63 $d4 $03
     SCRIPT_POINTER script_0030                         ;; 08:4f65 $d5 $03
-    dw   $0000                                         ;; 08:4f67 $00 $00
-    dw   $0000                                         ;; 08:4f69 $00 $00
-    dw   $0000                                         ;; 08:4f6b $00 $00
+    SCRIPT_POINTER script_Init
+    SCRIPT_POINTER script_InitNop1
+    SCRIPT_POINTER script_InitNop2
     dw   $0000                                         ;; 08:4f6d $00 $00
     dw   $0000                                         ;; 08:4f6f $00 $00
     dw   $0000                                         ;; 08:4f71 $00 $00

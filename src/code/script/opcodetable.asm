@@ -8,7 +8,7 @@ scriptOpcodeTable:
     dw   scriptOpCodeCall                              ;; 02:457a pP
     dw   scriptOpCodeLoop                              ;; 02:457c pP
     dw   scriptOpCodeMsg                               ;; 02:457e pP
-    dw   scriptOpCodeNOP                               ;; 02:4580 ??
+    dw   scriptOpCodePal                               ;; 02:4580 ??
     dw   scriptOpCodeNOP                               ;; 02:4582 ??
     dw   scriptOpCodeNOP                               ;; 02:4584 ??
     dw   scriptOpCodeIfFlags                           ;; 02:4586 pP

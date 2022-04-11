@@ -8,7 +8,15 @@ INCLUDE "include/constants.inc"
 SECTION "bank0d", ROMX[$4000], BANK[$0d]
 
 script_0000:
+script_InitNop1:
+script_InitNop2:
     sEND                                               ;; 0d:4000 $00
+
+script_Init:
+    sSET_MUSIC $01
+    sPAL $00
+    sPAL $81
+    sEND
 
 script_0001:
     sIF_FLAG wScriptFlags.1                            ;; 0d:4001 $08 $01 $00 $05

@@ -277,7 +277,7 @@ map07_room00_01_tiles:
     RLE  $11, $11, $11, $11, $11, $11, $11, $11, $11, $11 ;; 07:7ede ????
 
 map07_room01_01_script:
-    SCRIPT_IDX script_003d                             ;; 07:7ee2 $3d $00
+    SCRIPT_IDX script_Init                             ;; 07:7ee2 $3d $00
     db   $ff                                           ;; 07:7ee4 $ff
 
 map07_room01_01_tiles:
