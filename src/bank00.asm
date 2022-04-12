@@ -2248,7 +2248,7 @@ call_00_0d51:
 
 scriptOpCodeA9:
     push HL                                            ;; 00:0d5f $e5
-    call call_00_220a                                  ;; 00:0d60 $cd $0a $22
+    call getMapNumber                                  ;; 00:0d60 $cd $0a $22
     cp   A, $01                                        ;; 00:0d63 $fe $01
     jr   Z, .jr_00_0d79                                ;; 00:0d65 $28 $12
     cp   A, $0e                                        ;; 00:0d67 $fe $0e
@@ -2269,7 +2269,7 @@ scriptOpCodeA9:
 
 scriptOpCodeClearRoomHistory:
     push HL                                            ;; 00:0d83 $e5
-    call call_00_21b4                                  ;; 00:0d84 $cd $b4 $21
+    call clearRoomStatusHistory                        ;; 00:0d84 $cd $b4 $21
     pop  HL                                            ;; 00:0d87 $e1
     call getNextScriptInstruction                      ;; 00:0d88 $cd $27 $37
     ret                                                ;; 00:0d8b $c9
@@ -5267,7 +5267,7 @@ call_00_2092:
     call call_00_27e9                                  ;; 00:20b5 $cd $e9 $27
     call call_00_2bf2                                  ;; 00:20b8 $cd $f2 $2b
     call call_00_04fa                                  ;; 00:20bb $cd $fa $04
-    call call_00_21b4                                  ;; 00:20be $cd $b4 $21
+    call clearRoomStatusHistory                        ;; 00:20be $cd $b4 $21
     ld   DE, $fefe                                     ;; 00:20c1 $11 $fe $fe
     call createPlayerObject_trampoline                 ;; 00:20c4 $cd $50 $02
     ld   A, $00                                        ;; 00:20c7 $3e $00
@@ -5377,7 +5377,7 @@ call_00_21b0:
     ld   A, [wC3F8]                                    ;; 00:21b0 $fa $f8 $c3
     ret                                                ;; 00:21b3 $c9
 
-call_00_21b4:
+clearRoomStatusHistory:
     ld   HL, wRoomClearedStatus                        ;; 00:21b4 $21 $00 $c4
     ld   B, $80                                        ;; 00:21b7 $06 $80
     ld   A, $ff                                        ;; 00:21b9 $3e $ff
@@ -5444,7 +5444,7 @@ call_00_21f6:
     dec  B                                             ;; 00:2208 $05
     ret                                                ;; 00:2209 $c9
 
-call_00_220a:
+getMapNumber:
     ld   A, [wMapNumber]                               ;; 00:220a $fa $f5 $c3
     ret                                                ;; 00:220d $c9
 

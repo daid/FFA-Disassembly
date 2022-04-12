@@ -166,10 +166,10 @@ call_01_4130:
     ret                                                ;; 01:413b $c9
 .data_01_413c:
     dw   data_01_419c                                  ;; 01:413c pP
-    dw   data_01_4477                                  ;; 01:413e pP
+    dw   advanceScriptOpWhenVRAMCopiesDone             ;; 01:413e pP
     dw   data_01_41d6                                  ;; 01:4140 pP
     dw   data_01_4387                                  ;; 01:4142 pP
-    dw   data_01_4477                                  ;; 01:4144 pP
+    dw   advanceScriptOpWhenVRAMCopiesDone             ;; 01:4144 pP
     dw   data_01_43a3                                  ;; 01:4146 pP
     dw   data_01_4205                                  ;; 01:4148 pP
     dw   data_01_448c                                  ;; 01:414a pP
@@ -183,9 +183,9 @@ call_01_414c:
     ret                                                ;; 01:4157 $c9
 .data_01_4158:
     dw   data_01_41ca                                  ;; 01:4158 pP
-    dw   data_01_4477                                  ;; 01:415a pP
+    dw   advanceScriptOpWhenVRAMCopiesDone             ;; 01:415a pP
     dw   data_01_4387                                  ;; 01:415c pP
-    dw   data_01_4477                                  ;; 01:415e pP
+    dw   advanceScriptOpWhenVRAMCopiesDone             ;; 01:415e pP
     dw   data_01_43ee                                  ;; 01:4160 pP
     dw   data_01_448c                                  ;; 01:4162 pP
 
@@ -198,10 +198,10 @@ call_01_4164:
     ret                                                ;; 01:416f $c9
 .data_01_4170:
     dw   data_01_419c                                  ;; 01:4170 pP
-    dw   data_01_4477                                  ;; 01:4172 pP
+    dw   advanceScriptOpWhenVRAMCopiesDone             ;; 01:4172 pP
     dw   data_01_41d6                                  ;; 01:4174 pP
     dw   data_01_422b                                  ;; 01:4176 pP
-    dw   data_01_4477                                  ;; 01:4178 pP
+    dw   advanceScriptOpWhenVRAMCopiesDone             ;; 01:4178 pP
     dw   data_01_4422                                  ;; 01:417a pP
     dw   data_01_4205                                  ;; 01:417c pP
     dw   data_01_448c                                  ;; 01:417e pP
@@ -215,10 +215,10 @@ call_01_4180:
     ret                                                ;; 01:418b $c9
 .data_01_418c:
     dw   data_01_419c                                  ;; 01:418c pP
-    dw   data_01_4477                                  ;; 01:418e pP
+    dw   advanceScriptOpWhenVRAMCopiesDone             ;; 01:418e pP
     dw   data_01_41d6                                  ;; 01:4190 pP
     dw   data_01_433e                                  ;; 01:4192 pP
-    dw   data_01_4477                                  ;; 01:4194 pP
+    dw   advanceScriptOpWhenVRAMCopiesDone             ;; 01:4194 pP
     dw   data_01_4456                                  ;; 01:4196 pP
     dw   data_01_4205                                  ;; 01:4198 pP
     dw   data_01_448c                                  ;; 01:419a pP
@@ -452,7 +452,7 @@ call_01_42d1:
     db   $0a, $00, $08, $0a                            ;; 01:432d ?...
 
 call_01_4331:
-    call call_00_220a                                  ;; 01:4331 $cd $0a $22
+    call getMapNumber                                  ;; 01:4331 $cd $0a $22
     ld   [wD49D], A                                    ;; 01:4334 $ea $9d $d4
     call LoadRoomXY_to_A                               ;; 01:4337 $cd $0e $22
     ld   [wD49E], A                                    ;; 01:433a $ea $9e $d4
@@ -643,17 +643,17 @@ data_01_4456:
     pop  HL                                            ;; 01:4475 $e1
     ret                                                ;; 01:4476 $c9
 
-data_01_4477:
+advanceScriptOpWhenVRAMCopiesDone:
     push DE                                            ;; 01:4477 $d5
     ld   A, [wTileCopyRequestCount]                    ;; 01:4478 $fa $e0 $c8
     cp   A, $00                                        ;; 01:447b $fe $00
-    jr   NZ, .jr_01_448a                               ;; 01:447d $20 $0b
+    jr   NZ, .notDone                                  ;; 01:447d $20 $0b
     ld   A, [wBackgroundRenderRequestCount]            ;; 01:447f $fa $e8 $ce
     cp   A, $00                                        ;; 01:4482 $fe $00
-    jr   NZ, .jr_01_448a                               ;; 01:4484 $20 $04
+    jr   NZ, .notDone                                  ;; 01:4484 $20 $04
     ld   HL, wScriptOpCounter                          ;; 01:4486 $21 $99 $d4
     inc  [HL]                                          ;; 01:4489 $34
-.jr_01_448a:
+.notDone:
     pop  HL                                            ;; 01:448a $e1
     ret                                                ;; 01:448b $c9
 
