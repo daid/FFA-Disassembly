@@ -21,10 +21,10 @@
 ;@boss_data amount=21
 bossDataTable:
     BOSS_HEADER $08, $19, $14, $0a, $08, $1e, script_0246 ;; 04:4739 ????????
-      BOSS_HEADER_GFX $40, $0d, bossGfxVampire, data_04_793d, data_04_7ba7 ;; 04:4741 ????????
+      BOSS_HEADER_GFX $40, $0d, bossGfxVampire, tileorderVampire, metaspritesVampire ;; 04:4741 ????????
       dw data_04_4931, data_04_4e21, data_04_4df1, data_04_5435 ;; 04:4749 ????????
     BOSS_HEADER $0a, $14, $0a, $5a, $07, $1f, script_0246 ;; 04:4751 ????????
-      BOSS_HEADER_GFX $40, $18, data_09_4cd0, data_04_7957, data_04_7bd1 ;; 04:4759 ????????
+      BOSS_HEADER_GFX $40, $18, gfxBossHydra, tileorderHydraDragonZombie, metaspritesHydraDragonZombie ;; 04:4759 ????????
       dw data_04_4971, data_04_4e37, data_04_4e37, data_04_54bb ;; 04:4761 ????????
     BOSS_HEADER $06, $3b, $55, $46, $04, $20, script_0246 ;; 04:4769 ????????
       BOSS_HEADER_GFX $40, $18, bossGfxMedusa, data_04_7987, data_04_7bfe ;; 04:4771 ????????
@@ -66,7 +66,7 @@ bossDataTable:
       BOSS_HEADER_GFX $40, $12, bossGfxJulius, data_04_7a13, data_04_7c9a ;; 04:4891 ????????
       dw data_04_4a71, data_04_4f77, data_04_4f77, data_04_55f1 ;; 04:4899 ????????
     BOSS_HEADER $08, $ce, $00, $fa, $07, $27, script_0247 ;; 04:48a1 ????????
-      BOSS_HEADER_GFX $40, $18, bossGfxDragonZombie, data_04_7957, data_04_7bd1 ;; 04:48a9 ????????
+      BOSS_HEADER_GFX $40, $18, bossGfxDragonZombie, tileorderHydraDragonZombie, metaspritesHydraDragonZombie ;; 04:48a9 ????????
       dw data_04_49a9, data_04_4e37, data_04_4e37, data_04_54bb ;; 04:48b1 ????????
     BOSS_HEADER $05, $02, $00, $00, $06, $16, script_0246 ;; 04:48b9 ........
       BOSS_HEADER_GFX $40, $10, bossGfxJackal, data_04_7987, data_04_7c70 ;; 04:48c1 ........
@@ -4408,13 +4408,13 @@ data_04_791e:
     db   $ed, $0b, $0d, $05, $e9, $0c, $10, $ef        ;; 04:792e ????????
     db   $0d, $f6, $e2, $0c, $d5, $ef, $ff             ;; 04:7936 ???????
 
-data_04_793d:
+tileorderVampire:
     db   $00, $02, $01, $03, $04, $06, $05, $07        ;; 04:793d ????????
     db   $08, $0a, $09, $0b, $0c, $0e, $0d, $0f        ;; 04:7945 ????????
     db   $10, $12, $11, $13, $14, $16, $15, $17        ;; 04:794d ????????
     db   $ff, $ff                                      ;; 04:7955 ??
 
-data_04_7957:
+tileorderHydraDragonZombie:
     db   $00, $02, $01, $03, $04, $06, $05, $07        ;; 04:7957 ????????
     db   $08, $0a, $09, $0b, $0c, $0e, $0d, $0f        ;; 04:795f ????????
     db   $10, $12, $11, $13, $14, $16, $15, $17        ;; 04:7967 ????????
@@ -4515,7 +4515,7 @@ data_04_7b87:
     db   $10, $14, $11, $15, $12, $16, $13, $17        ;; 04:7b97 ????????
     db   $18, $1a, $19, $1b, $1c, $1e, $1d, $1f        ;; 04:7b9f ????????
 
-data_04_7ba7:
+metaspritesVampire:
     db   $10, $40, $42, $30, $42, $40, $10, $44        ;; 04:7ba7 ????????
     db   $46, $30, $4e, $4c, $30, $4a, $48, $10        ;; 04:7baf ????????
     db   $48, $4a, $30, $46, $44, $10, $4c, $4e        ;; 04:7bb7 ????????
@@ -4523,7 +4523,7 @@ data_04_7ba7:
     db   $54, $10, $54, $56, $10, $38, $3a, $10        ;; 04:7bc7 ????????
     db   $3c, $3e                                      ;; 04:7bcf ??
 
-data_04_7bd1:
+metaspritesHydraDragonZombie:
     db   $17, $58, $5a, $17, $48, $4a, $17, $40        ;; 04:7bd1 ????????
     db   $42, $17, $44, $46, $17, $4c, $4e, $17        ;; 04:7bd9 ????????
     db   $60, $62, $17, $50, $52, $17, $6c, $6e        ;; 04:7be1 ????????
