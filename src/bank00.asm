@@ -2707,31 +2707,36 @@ scriptOpCodeCloseSouthDoor:
     ret                                                ;; 00:0fdf $c9
 
 scriptOpCodeFlashScreen:
+    push HL
+    ld   a, BANK(cgbPalFadeToBlank)
+    call pushBankNrAndSwitch
+
     ld   A, [wScriptOpCounter]                         ;; 00:0fe0 $fa $99 $d4
     cp   A, $05                                        ;; 00:0fe3 $fe $05
     jr   C, .jr_00_1007                                ;; 00:0fe5 $38 $20
-    ld   A, $e4                                        ;; 00:0fe7 $3e $e4
-    ld   [wVideoBGP], A                                ;; 00:0fe9 $ea $aa $c0
-    ld   A, $d0                                        ;; 00:0fec $3e $d0
-    ld   [wVideoOBP0], A                               ;; 00:0fee $ea $ab $c0
-    ld   [wVideoOBP1], A                               ;; 00:0ff1 $ea $ac $c0
+    ld   de, $7FFF
+    call cgbPalFadeToBlank
     ld   A, [wScriptOpCounter]                         ;; 00:0ff4 $fa $99 $d4
     inc  A                                             ;; 00:0ff7 $3c
     ld   [wScriptOpCounter], A                         ;; 00:0ff8 $ea $99 $d4
     cp   A, $0a                                        ;; 00:0ffb $fe $0a
-    ret  C                                             ;; 00:0ffd $d8
+    jr   C, .done                                      ;; 00:0ffd $d8
     ld   A, $00                                        ;; 00:0ffe $3e $00
     ld   [wScriptOpCounter], A                         ;; 00:1000 $ea $99 $d4
+
+    call popBankNrAndSwitch
+    pop  HL
     call getNextScriptInstruction                      ;; 00:1003 $cd $27 $37
     ret                                                ;; 00:1006 $c9
 .jr_00_1007:
-    ld   A, $3f                                        ;; 00:1007 $3e $3f
-    ld   [wVideoBGP], A                                ;; 00:1009 $ea $aa $c0
-    ld   [wVideoOBP0], A                               ;; 00:100c $ea $ab $c0
-    ld   [wVideoOBP1], A                               ;; 00:100f $ea $ac $c0
+    ld   de, $0000
+    call cgbPalFadeToBlank
     ld   A, [wScriptOpCounter]                         ;; 00:1012 $fa $99 $d4
     inc  A                                             ;; 00:1015 $3c
     ld   [wScriptOpCounter], A                         ;; 00:1016 $ea $99 $d4
+.done:
+    call popBankNrAndSwitch
+    pop  HL
     ret                                                ;; 00:1019 $c9
 
 fadeToBlackBGP:
