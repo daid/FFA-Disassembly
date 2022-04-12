@@ -446,7 +446,7 @@ OPCODES = {
     0xA6: ("sSET_PLAYER_LAYDOWN_SPRITE",),
     0xA7: ("sNOP_A7",),
     0xA8: ("sNOP_A8",),
-    0xA9: ("sUNK_A9",),
+    0xA9: ("sCHECK_ALLOWED_TO_OPEN_MAP",),
     0xAB: ("sCLEAR_ROOM_HISTORY",), # Clear history of which rooms are all monsters killed.
     0xAC: ("sOPEN_MAP",),
     0xAD: ("sWAIT_MAP_CLOSE",),
@@ -486,11 +486,11 @@ OPCODES = {
     0xD2: ("sGIVE_XP", r"dw \1", "WORD"), # Add XP points (unused)
     0xD3: ("sTAKE_XP", r"dw \1", "WORD"), # Remove XP points (unused)
     0xD4: ("sGIVE_ITEM", r"db \1 - $09", "INV_ITEM"),
-    0xD5: ("sUNK_D5", r"db \1", "BYTE"),
+    0xD5: ("sTAKE_ITEM", r"db \1 - $09", "INV_ITEM"),
     0xD6: ("sGIVE_MAGIC", r"db \1 - $01", "INV_MAGIC"),
-    0xD7: ("sUNK_D7", r"db \1", "BYTE"),
+    0xD7: ("sTAKE_MAGIC", r"db \1 - $01", "INV_MAGIC"),
     0xD8: ("sGIVE_EQUIPMENT", r"db \1 - $42", "INV_EQUIP"),
-    0xD9: ("sUNK_D9", r"db \1", "BYTE"),
+    0xD9: ("sTAKE_EQUIPMENT", r"db \1 - $42", "INV_EQUIP"),
     0xDA: ("sSET_FLAG", r" FLAG_TO_IDX \1", "FLAG"),
     0xDB: ("sCLEAR_FLAG", r" FLAG_TO_IDX \1", "FLAG"),
     0xDC: ("sUNK_DC",),

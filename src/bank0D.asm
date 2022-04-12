@@ -400,7 +400,7 @@ script_001e:
     sEND                                               ;; 0d:43bb $00
 
 script_001f:
-    sUNK_A9                                            ;; 0d:43bc $a9
+    sCHECK_ALLOWED_TO_OPEN_MAP                         ;; 0d:43bc $a9
     sIF_FLAG wScriptFlags0F.7                          ;; 0d:43bd $08 $7f $00 $03
       sOPEN_MAP                                        ;; 0d:43c1 $ac
       sWAIT_MAP_CLOSE                                  ;; 0d:43c2 $ad
@@ -2471,7 +2471,7 @@ script_01a7:
 
 script_01a8:
     sIF_FLAG !wScriptFlags01.6                         ;; 0d:4ea1 $08 $8e $00 $12
-      sUNK_D5 30                                       ;; 0d:4ea5 $d5 $1e
+      sTAKE_ITEM INV_ITEM_MIRROR                       ;; 0d:4ea5 $d5 $1e
       sIF_EQUIPED INV_ITEM_MIRROR                      ;; 0d:4ea7 $09 $27 $00 $01
         sTAKE_EQUIPED_ITEM                             ;; 0d:4eab $de
       sENDIF                                           ;; 0d:4eac
@@ -3362,7 +3362,7 @@ script_01fe:
         sSFX 20                                        ;; 0d:5de1 $f9 $14
       sEND                                             ;; 0d:5de3 $00
       sDEL_NPC_1                                       ;; 0d:5de4 $18
-      sUNK_D9 13                                       ;; 0d:5de5 $d9 $0d
+      sTAKE_EQUIPMENT INV_SWORD_RUSTY                  ;; 0d:5de5 $d9 $0d
       sGIVE_EQUIPMENT INV_SWORD_XCALIBR                ;; 0d:5de7 $d8 $0f
       sMSG                                             ;; 0d:5de9 $04
         db "<10>Received\n     Excalibur!", $00        ;; 0d:5dea
@@ -3841,7 +3841,7 @@ script_0221:
         sCALL script_022e                              ;; 0d:6819 $02 $2d $01
       sELSE                                            ;; 0d:681c $01 $1c
         sIF_INVENTORY INV_ITEM_BAG_FANG                ;; 0d:681e $0a $3b $00 $07
-          sUNK_D5 50                                   ;; 0d:6822 $d5 $32
+          sTAKE_ITEM INV_ITEM_BAG_FANG                 ;; 0d:6822 $d5 $32
           sCALL script_022e                            ;; 0d:6824 $02 $2d $01
         sELSE                                          ;; 0d:6827 $01 $11
           sMSG                                         ;; 0d:6829 $04

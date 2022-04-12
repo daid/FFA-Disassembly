@@ -2246,7 +2246,7 @@ call_00_0d51:
     ld   A, $00                                        ;; 00:0d5c $3e $00
     ret                                                ;; 00:0d5e $c9
 
-scriptOpCodeA9:
+scriptOpCodeCheckIfCanOpenMap:
     push HL                                            ;; 00:0d5f $e5
     call getMapNumber                                  ;; 00:0d60 $cd $0a $22
     cp   A, $01                                        ;; 00:0d63 $fe $01
