@@ -368,7 +368,7 @@ call_03_41fc:
     pop  BC                                            ;; 03:4202 $c1
     ld   B, A                                          ;; 03:4203 $47
     push BC                                            ;; 03:4204 $c5
-    call call_00_0293                                  ;; 03:4205 $cd $93 $02
+    call getPlayerX                                    ;; 03:4205 $cd $93 $02
     pop  BC                                            ;; 03:4208 $c1
     sub  A, B                                          ;; 03:4209 $90
     jr   Z, .jr_03_423d                                ;; 03:420a $28 $31
@@ -382,7 +382,7 @@ call_03_41fc:
     call GetObjectY                                    ;; 03:4216 $cd $3e $0c
     ld   B, A                                          ;; 03:4219 $47
     push BC                                            ;; 03:421a $c5
-    call call_00_0299                                  ;; 03:421b $cd $99 $02
+    call getPlayerY                                    ;; 03:421b $cd $99 $02
     pop  BC                                            ;; 03:421e $c1
     sub  A, B                                          ;; 03:421f $90
     jr   Z, .jr_03_4242                                ;; 03:4220 $28 $20
@@ -1028,7 +1028,7 @@ call_03_4561:
     ld   B, A                                          ;; 03:458e $47
     push BC                                            ;; 03:458f $c5
     push DE                                            ;; 03:4590 $d5
-    call call_00_02ab                                  ;; 03:4591 $cd $ab $02
+    call getPlayerDirection                            ;; 03:4591 $cd $ab $02
     ld   L, A                                          ;; 03:4594 $6f
     pop  DE                                            ;; 03:4595 $d1
     pop  BC                                            ;; 03:4596 $c1
@@ -1164,7 +1164,7 @@ call_03_4641:
     call call_00_039a                                  ;; 03:4661 $cd $9a $03
     call call_00_29e4                                  ;; 03:4664 $cd $e4 $29
     push AF                                            ;; 03:4667 $f5
-    call call_00_02ab                                  ;; 03:4668 $cd $ab $02
+    call getPlayerDirection                            ;; 03:4668 $cd $ab $02
     and  A, $0f                                        ;; 03:466b $e6 $0f
     ld   B, A                                          ;; 03:466d $47
     pop  AF                                            ;; 03:466e $f1
@@ -2109,7 +2109,7 @@ call_03_4b70:
     ld   [HL], C                                       ;; 03:4bb3 $71
     ret                                                ;; 03:4bb4 $c9
 .jr_03_4bb5:
-    call call_00_02ab                                  ;; 03:4bb5 $cd $ab $02
+    call getPlayerDirection                            ;; 03:4bb5 $cd $ab $02
     bit  7, A                                          ;; 03:4bb8 $cb $7f
     jr   Z, .jr_03_4bce                                ;; 03:4bba $28 $12
     pop  AF                                            ;; 03:4bbc $f1
@@ -2203,10 +2203,10 @@ call_03_4c38:
     and  A, $f0                                        ;; 03:4c40 $e6 $f0
     cp   A, $d0                                        ;; 03:4c42 $fe $d0
     ret  NZ                                            ;; 03:4c44 $c0
-    call call_00_0299                                  ;; 03:4c45 $cd $99 $02
+    call getPlayerY                                    ;; 03:4c45 $cd $99 $02
     ld   D, A                                          ;; 03:4c48 $57
     push DE                                            ;; 03:4c49 $d5
-    call call_00_0293                                  ;; 03:4c4a $cd $93 $02
+    call getPlayerX                                    ;; 03:4c4a $cd $93 $02
     pop  DE                                            ;; 03:4c4d $d1
     ld   E, A                                          ;; 03:4c4e $5f
     ld   C, $00                                        ;; 03:4c4f $0e $00
@@ -2696,7 +2696,7 @@ call_03_4f88:
     push BC                                            ;; 03:4f8a $c5
     call GetObjectX                                    ;; 03:4f8b $cd $2d $0c
     push AF                                            ;; 03:4f8e $f5
-    call call_00_0293                                  ;; 03:4f8f $cd $93 $02
+    call getPlayerX                                    ;; 03:4f8f $cd $93 $02
     ld   C, A                                          ;; 03:4f92 $4f
     ld   B, $01                                        ;; 03:4f93 $06 $01
     pop  AF                                            ;; 03:4f95 $f1
@@ -2716,7 +2716,7 @@ call_03_4fa3:
     push BC                                            ;; 03:4fa5 $c5
     call GetObjectY                                    ;; 03:4fa6 $cd $3e $0c
     push AF                                            ;; 03:4fa9 $f5
-    call call_00_0299                                  ;; 03:4faa $cd $99 $02
+    call getPlayerY                                    ;; 03:4faa $cd $99 $02
     ld   C, A                                          ;; 03:4fad $4f
     ld   B, $08                                        ;; 03:4fae $06 $08
     pop  AF                                            ;; 03:4fb0 $f1
@@ -2736,7 +2736,7 @@ call_03_4fbe:
     push BC                                            ;; 03:4fc0 $c5
     call GetObjectX                                    ;; 03:4fc1 $cd $2d $0c
     push AF                                            ;; 03:4fc4 $f5
-    call call_00_0293                                  ;; 03:4fc5 $cd $93 $02
+    call getPlayerX                                    ;; 03:4fc5 $cd $93 $02
     ld   C, A                                          ;; 03:4fc8 $4f
     ld   B, $02                                        ;; 03:4fc9 $06 $02
     pop  AF                                            ;; 03:4fcb $f1
@@ -2756,7 +2756,7 @@ call_03_4fd9:
     push BC                                            ;; 03:4fdb $c5
     call GetObjectY                                    ;; 03:4fdc $cd $3e $0c
     push AF                                            ;; 03:4fdf $f5
-    call call_00_0299                                  ;; 03:4fe0 $cd $99 $02
+    call getPlayerY                                    ;; 03:4fe0 $cd $99 $02
     ld   C, A                                          ;; 03:4fe3 $4f
     ld   B, $04                                        ;; 03:4fe4 $06 $04
     pop  AF                                            ;; 03:4fe6 $f1

@@ -136,7 +136,7 @@ FullReset:
 scriptOpCodeSetFastMovement:
     push HL                                            ;; 00:0153 $e5
     ld   A, $02                                        ;; 00:0154 $3e $02
-    call call_00_02a5                                  ;; 00:0156 $cd $a5 $02
+    call setPlayerSpeed                                ;; 00:0156 $cd $a5 $02
     pop  HL                                            ;; 00:0159 $e1
     call getNextScriptInstruction                      ;; 00:015a $cd $27 $37
     ret                                                ;; 00:015d $c9
@@ -144,7 +144,7 @@ scriptOpCodeSetFastMovement:
 scriptOpCodeClearFastMovement:
     push HL                                            ;; 00:015e $e5
     ld   A, $01                                        ;; 00:015f $3e $01
-    call call_00_02a5                                  ;; 00:0161 $cd $a5 $02
+    call setPlayerSpeed                                ;; 00:0161 $cd $a5 $02
     pop  HL                                            ;; 00:0164 $e1
     call getNextScriptInstruction                      ;; 00:0165 $cd $27 $37
     ret                                                ;; 00:0168 $c9
@@ -155,7 +155,7 @@ call_00_0169:
     ret                                                ;; 00:016e $c9
 
 call_00_016f:
-    call call_00_02b7                                  ;; 00:016f $cd $b7 $02
+    call getPlayerCollisionFlags                       ;; 00:016f $cd $b7 $02
     cp   A, $e1                                        ;; 00:0172 $fe $e1
     jr   Z, .jr_00_0188                                ;; 00:0174 $28 $12
     cp   A, $f1                                        ;; 00:0176 $fe $f1
@@ -338,38 +338,38 @@ call_00_028b:
     ld   A, $00                                        ;; 00:0290 $3e $00
     ret                                                ;; 00:0292 $c9
 
-call_00_0293:
+getPlayerX:
     ld   C, $04                                        ;; 00:0293 $0e $04
     call GetObjectX                                    ;; 00:0295 $cd $2d $0c
     ret                                                ;; 00:0298 $c9
 
-call_00_0299:
+getPlayerY:
     ld   C, $04                                        ;; 00:0299 $0e $04
     call GetObjectY                                    ;; 00:029b $cd $3e $0c
     ret                                                ;; 00:029e $c9
     db   $0e, $04, $cd, $4f, $0c, $c9                  ;; 00:029f ??????
 
-call_00_02a5:
+setPlayerSpeed:
     ld   C, $04                                        ;; 00:02a5 $0e $04
     call setObjectSpeed                                ;; 00:02a7 $cd $5d $0c
     ret                                                ;; 00:02aa $c9
 
-call_00_02ab:
+getPlayerDirection:
     ld   C, $04                                        ;; 00:02ab $0e $04
     call getObjectDirection                            ;; 00:02ad $cd $99 $0c
     ret                                                ;; 00:02b0 $c9
 
-call_00_02b1:
+setPlayerDirection:
     ld   C, $04                                        ;; 00:02b1 $0e $04
     call setObjectDirection                            ;; 00:02b3 $cd $a6 $0c
     ret                                                ;; 00:02b6 $c9
 
-call_00_02b7:
+getPlayerCollisionFlags:
     ld   C, $04                                        ;; 00:02b7 $0e $04
     call getObjectCollisionFlags                       ;; 00:02b9 $cd $6d $0c
     ret                                                ;; 00:02bc $c9
 
-call_00_02bd:
+setPlayerCollisionFlags:
     ld   C, $04                                        ;; 00:02bd $0e $04
     call setObjectCollisionFlags                       ;; 00:02bf $cd $86 $0c
     ret                                                ;; 00:02c2 $c9
@@ -381,7 +381,7 @@ call_00_02c9:
     jp_to_bank 01, call_01_51bb                        ;; 00:02c9 $f5 $3e $0d $c3 $d7 $1e
 
 call_00_02cf:
-    call call_00_02b7                                  ;; 00:02cf $cd $b7 $02
+    call getPlayerCollisionFlags                       ;; 00:02cf $cd $b7 $02
     cp   A, $e1                                        ;; 00:02d2 $fe $e1
     jr   Z, .jr_00_02e1                                ;; 00:02d4 $28 $0b
     cp   A, $f1                                        ;; 00:02d6 $fe $f1
@@ -2995,7 +2995,7 @@ call_00_120b:
     set  3, A                                          ;; 00:121e $cb $df
     ld   [wC0A1], A                                    ;; 00:1220 $ea $a1 $c0
     push DE                                            ;; 00:1223 $d5
-    call call_00_02ab                                  ;; 00:1224 $cd $ab $02
+    call getPlayerDirection                            ;; 00:1224 $cd $ab $02
     ld   B, $00                                        ;; 00:1227 $06 $00
     and  A, $0f                                        ;; 00:1229 $e6 $0f
     push AF                                            ;; 00:122b $f5
@@ -3584,7 +3584,7 @@ scriptOpCode7B:
 
 call_00_1588:
     push HL                                            ;; 00:1588 $e5
-    call call_00_02ab                                  ;; 00:1589 $cd $ab $02
+    call getPlayerDirection                            ;; 00:1589 $cd $ab $02
     pop  HL                                            ;; 00:158c $e1
     bit  7, A                                          ;; 00:158d $cb $7f
     ret  Z                                             ;; 00:158f $c8
@@ -3592,7 +3592,7 @@ call_00_1588:
     ld   A, $ff                                        ;; 00:1591 $3e $ff
     call call_00_2938                                  ;; 00:1593 $cd $38 $29
     jr   Z, .jr_00_15a0                                ;; 00:1596 $28 $08
-    call call_00_02ab                                  ;; 00:1598 $cd $ab $02
+    call getPlayerDirection                            ;; 00:1598 $cd $ab $02
     ld   C, $ff                                        ;; 00:159b $0e $ff
     call call_00_2879                                  ;; 00:159d $cd $79 $28
 .jr_00_15a0:
@@ -3605,7 +3605,7 @@ scriptOpCodePlayerStepForward:
     call call_00_1588                                  ;; 00:15a4 $cd $88 $15
     ret  NZ                                            ;; 00:15a7 $c0
     push HL                                            ;; 00:15a8 $e5
-    call call_00_02ab                                  ;; 00:15a9 $cd $ab $02
+    call getPlayerDirection                            ;; 00:15a9 $cd $ab $02
     pop  HL                                            ;; 00:15ac $e1
     and  A, $0f                                        ;; 00:15ad $e6 $0f
     add  A, $90                                        ;; 00:15af $c6 $90
@@ -3617,7 +3617,7 @@ scriptOpCodePlayerStepBackwards:
     call call_00_1588                                  ;; 00:15b7 $cd $88 $15
     ret  NZ                                            ;; 00:15ba $c0
     push HL                                            ;; 00:15bb $e5
-    call call_00_02ab                                  ;; 00:15bc $cd $ab $02
+    call getPlayerDirection                            ;; 00:15bc $cd $ab $02
     call call_00_29e4                                  ;; 00:15bf $cd $e4 $29
     pop  HL                                            ;; 00:15c2 $e1
     or   A, $b0                                        ;; 00:15c3 $f6 $b0
@@ -5858,7 +5858,7 @@ runRoomScriptOnRoomEnter:
     ld   H, [HL]                                       ;; 00:246f $66
     ld   L, A                                          ;; 00:2470 $6f
     push HL                                            ;; 00:2471 $e5
-    call call_00_02ab                                  ;; 00:2472 $cd $ab $02
+    call getPlayerDirection                            ;; 00:2472 $cd $ab $02
     and  A, $0f                                        ;; 00:2475 $e6 $0f
     or   A, $00                                        ;; 00:2477 $f6 $00
     ld   C, $c9                                        ;; 00:2479 $0e $c9
@@ -5879,7 +5879,7 @@ runRoomScriptOnRoomExit:
     ld   L, A                                          ;; 00:2493 $6f
     inc  HL                                            ;; 00:2494 $23
     push HL                                            ;; 00:2495 $e5
-    call call_00_02ab                                  ;; 00:2496 $cd $ab $02
+    call getPlayerDirection                            ;; 00:2496 $cd $ab $02
     and  A, $0f                                        ;; 00:2499 $e6 $0f
     or   A, $00                                        ;; 00:249b $f6 $00
     ld   C, $c9                                        ;; 00:249d $0e $c9
@@ -5904,7 +5904,7 @@ runRoomScriptOnAllEnemiesDefeat:
     inc  HL                                            ;; 00:24c0 $23
     inc  HL                                            ;; 00:24c1 $23
     push HL                                            ;; 00:24c2 $e5
-    call call_00_02ab                                  ;; 00:24c3 $cd $ab $02
+    call getPlayerDirection                            ;; 00:24c3 $cd $ab $02
     and  A, $0f                                        ;; 00:24c6 $e6 $0f
     or   A, $00                                        ;; 00:24c8 $f6 $00
     ld   C, $c9                                        ;; 00:24ca $0e $c9
@@ -5924,7 +5924,7 @@ call_00_24d4:
     ld   H, [HL]                                       ;; 00:24e3 $66
     ld   L, A                                          ;; 00:24e4 $6f
     push HL                                            ;; 00:24e5 $e5
-    call call_00_02ab                                  ;; 00:24e6 $cd $ab $02
+    call getPlayerDirection                            ;; 00:24e6 $cd $ab $02
     and  A, $0f                                        ;; 00:24e9 $e6 $0f
     or   A, $00                                        ;; 00:24eb $f6 $00
     ld   C, $c9                                        ;; 00:24ed $0e $c9
@@ -5947,7 +5947,7 @@ call_00_24f9:
     ld   L, A                                          ;; 00:2509 $6f
     inc  HL                                            ;; 00:250a $23
     push HL                                            ;; 00:250b $e5
-    call call_00_02ab                                  ;; 00:250c $cd $ab $02
+    call getPlayerDirection                            ;; 00:250c $cd $ab $02
     and  A, $0f                                        ;; 00:250f $e6 $0f
     or   A, $00                                        ;; 00:2511 $f6 $00
     ld   C, $c9                                        ;; 00:2513 $0e $c9
@@ -5971,7 +5971,7 @@ call_00_251f:
     inc  HL                                            ;; 00:2530 $23
     inc  HL                                            ;; 00:2531 $23
     push HL                                            ;; 00:2532 $e5
-    call call_00_02ab                                  ;; 00:2533 $cd $ab $02
+    call getPlayerDirection                            ;; 00:2533 $cd $ab $02
     and  A, $0f                                        ;; 00:2536 $e6 $0f
     or   A, $00                                        ;; 00:2538 $f6 $00
     ld   C, $c9                                        ;; 00:253a $0e $c9

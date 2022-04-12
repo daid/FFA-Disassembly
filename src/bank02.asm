@@ -621,10 +621,10 @@ call_02_435e:
     pop  AF                                            ;; 02:43c7 $f1
     ret                                                ;; 02:43c8 $c9
 .jr_02_43c9:
-    call call_00_0299                                  ;; 02:43c9 $cd $99 $02
+    call getPlayerY                                    ;; 02:43c9 $cd $99 $02
     ld   D, A                                          ;; 02:43cc $57
     push DE                                            ;; 02:43cd $d5
-    call call_00_0293                                  ;; 02:43ce $cd $93 $02
+    call getPlayerX                                    ;; 02:43ce $cd $93 $02
     pop  DE                                            ;; 02:43d1 $d1
     ld   E, A                                          ;; 02:43d2 $5f
     pop  BC                                            ;; 02:43d3 $c1
@@ -4408,7 +4408,7 @@ data_02_670a:
 .jr_02_6728:
     push DE                                            ;; 02:6728 $d5
     push HL                                            ;; 02:6729 $e5
-    call call_00_0299                                  ;; 02:672a $cd $99 $02
+    call getPlayerY                                    ;; 02:672a $cd $99 $02
     rrca                                               ;; 02:672d $0f
     rrca                                               ;; 02:672e $0f
     rrca                                               ;; 02:672f $0f
