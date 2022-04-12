@@ -7798,14 +7798,14 @@ call_00_30c9:
 call_00_30cf:
     jp_to_bank 02, call_02_53f0                        ;; 00:30cf $f5 $3e $1a $c3 $06 $1f
 
-call_00_30d5:
-    jp_to_bank 02, call_02_53bb                        ;; 00:30d5 $f5 $3e $1b $c3 $06 $1f
+removeItemFromInventory_trampoline:
+    jp_to_bank 02, removeItemFromInventory             ;; 00:30d5 $f5 $3e $1b $c3 $06 $1f
 
-call_00_30db:
-    jp_to_bank 02, call_02_53c8                        ;; 00:30db $f5 $3e $1c $c3 $06 $1f
+removeEquipmentFromInventory_trampoline:
+    jp_to_bank 02, removeEquipmentFromInventory        ;; 00:30db $f5 $3e $1c $c3 $06 $1f
 
-call_00_30e1:
-    jp_to_bank 02, call_02_53d5                        ;; 00:30e1 $f5 $3e $1d $c3 $06 $1f
+removeMagicFromInventory_trampoline:
+    jp_to_bank 02, removeMagicFromInventory            ;; 00:30e1 $f5 $3e $1d $c3 $06 $1f
 
 call_00_30e7:
     jp_to_bank 02, call_02_6dd8                        ;; 00:30e7 $f5 $3e $1e $c3 $06 $1f
@@ -9467,7 +9467,7 @@ scriptOpCodeD5:
     ld   A, [HL+]                                      ;; 00:3b2f $2a
     inc  A                                             ;; 00:3b30 $3c
     push HL                                            ;; 00:3b31 $e5
-    call call_00_30d5                                  ;; 00:3b32 $cd $d5 $30
+    call removeItemFromInventory_trampoline            ;; 00:3b32 $cd $d5 $30
     pop  HL                                            ;; 00:3b35 $e1
     call getNextScriptInstruction                      ;; 00:3b36 $cd $27 $37
     ret                                                ;; 00:3b39 $c9
@@ -9476,7 +9476,7 @@ scriptOpCodeD7:
     ld   A, [HL+]                                      ;; 00:3b3a $2a
     inc  A                                             ;; 00:3b3b $3c
     push HL                                            ;; 00:3b3c $e5
-    call call_00_30e1                                  ;; 00:3b3d $cd $e1 $30
+    call removeMagicFromInventory_trampoline           ;; 00:3b3d $cd $e1 $30
     pop  HL                                            ;; 00:3b40 $e1
     call getNextScriptInstruction                      ;; 00:3b41 $cd $27 $37
     ret                                                ;; 00:3b44 $c9
@@ -9485,7 +9485,7 @@ scriptOpCodeD9:
     ld   A, [HL+]                                      ;; 00:3b45 $2a
     inc  A                                             ;; 00:3b46 $3c
     push HL                                            ;; 00:3b47 $e5
-    call call_00_30db                                  ;; 00:3b48 $cd $db $30
+    call removeEquipmentFromInventory_trampoline       ;; 00:3b48 $cd $db $30
     pop  HL                                            ;; 00:3b4b $e1
     call getNextScriptInstruction                      ;; 00:3b4c $cd $27 $37
     ret                                                ;; 00:3b4f $c9

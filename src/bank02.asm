@@ -34,9 +34,9 @@ SECTION "bank02", ROMX[$4000], BANK[$02]
     call_to_bank_target call_02_5419                   ;; 02:4030 pP
     call_to_bank_target call_02_5428                   ;; 02:4032 ??
     call_to_bank_target call_02_53f0                   ;; 02:4034 ??
-    call_to_bank_target call_02_53bb                   ;; 02:4036 ??
-    call_to_bank_target call_02_53c8                   ;; 02:4038 ??
-    call_to_bank_target call_02_53d5                   ;; 02:403a ??
+    call_to_bank_target removeItemFromInventory        ;; 02:4036 ??
+    call_to_bank_target removeEquipmentFromInventory   ;; 02:4038 ??
+    call_to_bank_target removeMagicFromInventory       ;; 02:403a ??
     call_to_bank_target call_02_6dd8                   ;; 02:403c pP
     call_to_bank_target call_02_6dde                   ;; 02:403e pP
     call_to_bank_target call_02_6dcc                   ;; 02:4040 pP
@@ -2695,39 +2695,39 @@ capAtLevel100:
     inc  A                                             ;; 02:53b9 $3c
     ret                                                ;; 02:53ba $c9
 
-call_02_53bb:
+removeItemFromInventory:
     ld   HL, wItemInventory                            ;; 02:53bb $21 $c5 $d6
     ld   DE, wItemInventoryAmount                      ;; 02:53be $11 $9b $d6
     ld   B, $10                                        ;; 02:53c1 $06 $10
     ld   C, A                                          ;; 02:53c3 $4f
-    call call_02_53e2                                  ;; 02:53c4 $cd $e2 $53
+    call removeItemFromList                            ;; 02:53c4 $cd $e2 $53
     ret                                                ;; 02:53c7 $c9
 
-call_02_53c8:
+removeEquipmentFromInventory:
     ld   HL, wEquipmentInventory                       ;; 02:53c8 $21 $dd $d6
     ld   DE, wD6B3                                     ;; 02:53cb $11 $b3 $d6
     ld   B, $0c                                        ;; 02:53ce $06 $0c
     ld   C, A                                          ;; 02:53d0 $4f
-    call call_02_53e2                                  ;; 02:53d1 $cd $e2 $53
+    call removeItemFromList                            ;; 02:53d1 $cd $e2 $53
     ret                                                ;; 02:53d4 $c9
 
-call_02_53d5:
+removeMagicFromInventory:
     ld   HL, wMagicInventory                           ;; 02:53d5 $21 $d5 $d6
     ld   DE, wD6BF                                     ;; 02:53d8 $11 $bf $d6
     ld   B, $08                                        ;; 02:53db $06 $08
     ld   C, A                                          ;; 02:53dd $4f
-    call call_02_53e2                                  ;; 02:53de $cd $e2 $53
+    call removeItemFromList                            ;; 02:53de $cd $e2 $53
     ret                                                ;; 02:53e1 $c9
 
-call_02_53e2:
+removeItemFromList:
     ld   A, [HL+]                                      ;; 02:53e2 $2a
     and  A, $7f                                        ;; 02:53e3 $e6 $7f
     cp   A, C                                          ;; 02:53e5 $b9
-    jr   Z, .jr_02_53ec                                ;; 02:53e6 $28 $04
+    jr   Z, .found                                     ;; 02:53e6 $28 $04
     dec  B                                             ;; 02:53e8 $05
-    jr   NZ, call_02_53e2                              ;; 02:53e9 $20 $f7
+    jr   NZ, removeItemFromList                        ;; 02:53e9 $20 $f7
     ret                                                ;; 02:53eb $c9
-.jr_02_53ec:
+.found:
     dec  HL                                            ;; 02:53ec $2b
     xor  A, A                                          ;; 02:53ed $af
     ld   [HL], A                                       ;; 02:53ee $77
