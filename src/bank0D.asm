@@ -14,7 +14,7 @@ script_InitNop2:
 
 script_Init:
     sSET_MUSIC $01
-    sPAL $00
+    sPAL $02
     sPAL $81
     sEND
 
@@ -45,6 +45,7 @@ script_0002:
 
 script_0003:
     sSET_MUSIC 1                                       ;; 0d:4025 $f8 $01
+    sPAL $00
     sENTER_PLAYER_AND_GIRL_NAME                        ;; 0d:4027 $c6
     sLOAD_ROOM 1, $47, 18, 10                          ;; 0d:4028 $f4 $01 $47 $12 $0a
     sCALL script_00e6                                  ;; 0d:402d $02 $06 $cc

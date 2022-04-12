@@ -184,27 +184,8 @@ cgbPalFadeToWhite:
     ENDR
 
     ret
-    
-cgbPaletteTable:
-    ; $00 Overworld background palette
-    dw $47FF, $51F3, $2867, $0000
-    dw $47FF, $26C4, $1521, $0000
-    dw $47FF, $11D9, $10CE, $0000
-    dw $47FF, $1419, $100A, $0000
-    dw $47FF, $12EC, $15A6, $0000
-    dw $47FF, $7CC3, $2C00, $0000
-    dw $0000, $0000, $0000, $0000
-    dw $0000, $0000, $0000, $0000
 
-    ; $01 Main object palette
-    dw $7FFF, $46FF, $05FF, $0000
-    dw $7FFF, $46FF, $22A2, $0000
-    dw $0000, $0000, $0000, $0000
-    dw $0000, $0000, $0000, $0000
-    dw $0000, $0000, $0000, $0000
-    dw $0000, $0000, $0000, $0000
-    dw $0000, $0000, $0000, $0000
-    dw $7FFF, $46FF, $22A2, $0000
+include "data/cgbPalettes.asm"    
 
 
 SECTION "bank11", ROMX, BANK[$11]
