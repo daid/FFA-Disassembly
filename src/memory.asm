@@ -817,7 +817,9 @@ wD56E:
 wD5AC:
     ds 103                                             ;; d5ac
 
-wD613:
+; Script that is run when you open a chest. Actual script code is stored in here,
+; but with only 3 bytes storage, it just calls an actual script in one of the script banks.
+wOpenChestScript1:
     ds 3                                               ;; d613
 
 wD616:
@@ -826,7 +828,9 @@ wD616:
 wD617:
     ds 12                                              ;; d617
 
-wD623:
+; Script that is run when you open a chest. Actual script code is stored in here,
+; it just calls an actual script in one of the script banks.
+wOpenChestScript2:
     ds 16                                              ;; d623
 
 wD633:
@@ -1163,7 +1167,8 @@ wD860:
 wD862:
     ds 1                                               ;; d862
 
-wD863:
+; Dialog border tile, depending on it if it drawing the top or bottom row, different tile numbers are stored here
+wDialogBorderTile:
     ds 1                                               ;; d863
 
 wD864:

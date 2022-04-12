@@ -7922,10 +7922,10 @@ call_00_31c7:
     and  A, A                                          ;; 00:31cd $a7
     jr   NZ, .jr_00_31ea                               ;; 00:31ce $20 $1a
     ld   A, L                                          ;; 00:31d0 $7d
-    ld   DE, wD613                                     ;; 00:31d1 $11 $13 $d6
+    ld   DE, wOpenChestScript1                         ;; 00:31d1 $11 $13 $d6
     sub  A, $0b                                        ;; 00:31d4 $d6 $0b
     jr   Z, .jr_00_31e6                                ;; 00:31d6 $28 $0e
-    ld   DE, wD623                                     ;; 00:31d8 $11 $23 $d6
+    ld   DE, wOpenChestScript2                         ;; 00:31d8 $11 $23 $d6
     sub  A, $04                                        ;; 00:31db $d6 $04
     jr   Z, .jr_00_31e6                                ;; 00:31dd $28 $07
     ld   DE, wD633                                     ;; 00:31df $11 $33 $d6
@@ -8384,7 +8384,7 @@ jp_00_3480:
     ld   [wScriptPointerHigh], A                       ;; 00:3499 $ea $b7 $d8
     ld   A, L                                          ;; 00:349c $7d
     ld   [wScriptPointerLow], A                        ;; 00:349d $ea $b6 $d8
-    call call_00_36d0                                  ;; 00:34a0 $cd $d0 $36
+    call startDialog                                   ;; 00:34a0 $cd $d0 $36
     ret                                                ;; 00:34a3 $c9
 
 jp_00_34a4:
@@ -8428,7 +8428,7 @@ jp_00_34a4:
     jr   Z, .jr_00_34e3                                ;; 00:34e0 $28 $01
     dec  HL                                            ;; 00:34e2 $2b
 .jr_00_34e3:
-    call call_00_36d0                                  ;; 00:34e3 $cd $d0 $36
+    call startDialog                                   ;; 00:34e3 $cd $d0 $36
     ret                                                ;; 00:34e6 $c9
 
 call_00_34e7:
@@ -8436,7 +8436,7 @@ call_00_34e7:
     ld   [wD84A], A                                    ;; 00:34e9 $ea $4a $d8
     call call_00_3627                                  ;; 00:34ec $cd $27 $36
     pop  HL                                            ;; 00:34ef $e1
-    call Z, call_00_36d0                               ;; 00:34f0 $cc $d0 $36
+    call Z, startDialog                                ;; 00:34f0 $cc $d0 $36
     ret                                                ;; 00:34f3 $c9
 
 call_00_34f4:
@@ -8445,7 +8445,7 @@ call_00_34f4:
     and  A, $80                                        ;; 00:34fa $e6 $80
     pop  HL                                            ;; 00:34fc $e1
     ret  NZ                                            ;; 00:34fd $c0
-    call call_00_36d0                                  ;; 00:34fe $cd $d0 $36
+    call startDialog                                   ;; 00:34fe $cd $d0 $36
     ret                                                ;; 00:3501 $c9
 
 call_00_3502:
@@ -8464,7 +8464,7 @@ call_00_350f:
     ld   A, C                                          ;; 00:3513 $79
     and  A, A                                          ;; 00:3514 $a7
     ret  Z                                             ;; 00:3515 $c8
-    call call_00_36d0                                  ;; 00:3516 $cd $d0 $36
+    call startDialog                                   ;; 00:3516 $cd $d0 $36
     ret                                                ;; 00:3519 $c9
 
 call_00_351a:
@@ -8514,7 +8514,7 @@ call_00_3547:
     call call_00_3736                                  ;; 00:3572 $cd $36 $37
     call call_00_3c73                                  ;; 00:3575 $cd $73 $3c
     pop  HL                                            ;; 00:3578 $e1
-    call call_00_36d0                                  ;; 00:3579 $cd $d0 $36
+    call startDialog                                   ;; 00:3579 $cd $d0 $36
     ret                                                ;; 00:357c $c9
 
 call_00_357d:
@@ -8555,7 +8555,7 @@ call_00_35b0:
     call call_00_3c73                                  ;; 00:35b6 $cd $73 $3c
     call call_00_3736                                  ;; 00:35b9 $cd $36 $37
     pop  HL                                            ;; 00:35bc $e1
-    call call_00_36d0                                  ;; 00:35bd $cd $d0 $36
+    call startDialog                                   ;; 00:35bd $cd $d0 $36
     ret                                                ;; 00:35c0 $c9
 
 call_00_35c1:
@@ -8594,7 +8594,7 @@ jr_00_35e4:
     call call_00_3736                                  ;; 00:35e4 $cd $36 $37
     call call_00_3c73                                  ;; 00:35e7 $cd $73 $3c
     pop  HL                                            ;; 00:35ea $e1
-    call call_00_36d0                                  ;; 00:35eb $cd $d0 $36
+    call startDialog                                   ;; 00:35eb $cd $d0 $36
     ret                                                ;; 00:35ee $c9
 
 call_00_35ef:
@@ -8729,7 +8729,7 @@ call_00_3675:
 jr_00_36a8:
     ld   A, $1f                                        ;; 00:36a8 $3e $1f
     ld   [wD853], A                                    ;; 00:36aa $ea $53 $d8
-    call call_00_36d0                                  ;; 00:36ad $cd $d0 $36
+    call startDialog                                   ;; 00:36ad $cd $d0 $36
     ld   A, [wD89B]                                    ;; 00:36b0 $fa $9b $d8
     ld   B, A                                          ;; 00:36b3 $47
     ld   A, [wD89A]                                    ;; 00:36b4 $fa $9a $d8
@@ -8748,7 +8748,8 @@ call_00_36c2:
     ld   [wD864], A                                    ;; 00:36cc $ea $64 $d8
     ret                                                ;; 00:36cf $c9
 
-call_00_36d0:
+; Start a dialog, which runs an sTXT opcode internally.
+startDialog:
     inc  HL                                            ;; 00:36d0 $23
     ld   A, H                                          ;; 00:36d1 $7c
     ld   [wScriptPointerHigh], A                       ;; 00:36d2 $ea $b7 $d8
@@ -8988,7 +8989,7 @@ call_00_3844:
     add  A, D                                          ;; 00:384e $82
     ld   D, A                                          ;; 00:384f $57
     pop  AF                                            ;; 00:3850 $f1
-    call call_00_3891                                  ;; 00:3851 $cd $91 $38
+    call storeTileAatScreenPositionDE                  ;; 00:3851 $cd $91 $38
     pop  DE                                            ;; 00:3854 $d1
     ret                                                ;; 00:3855 $c9
     db   $d5, $fa, $a7, $d4, $83, $5f, $fa, $a8        ;; 00:3856 ????????
@@ -8999,7 +9000,7 @@ call_00_3866:
     push AF                                            ;; 00:3867 $f5
     call call_00_387a                                  ;; 00:3868 $cd $7a $38
     pop  AF                                            ;; 00:386b $f1
-    call call_00_3891                                  ;; 00:386c $cd $91 $38
+    call storeTileAatScreenPositionDE                  ;; 00:386c $cd $91 $38
     pop  BC                                            ;; 00:386f $c1
     ret                                                ;; 00:3870 $c9
     db   $c5, $cd, $7a, $38, $cd, $a7, $38, $c1        ;; 00:3871 ????????
@@ -9020,12 +9021,13 @@ call_00_387a:
     ld   E, A                                          ;; 00:388f $5f
     ret                                                ;; 00:3890 $c9
 
-call_00_3891:
+; Note that this returns the old tile in A
+storeTileAatScreenPositionDE:
     push BC                                            ;; 00:3891 $c5
     push DE                                            ;; 00:3892 $d5
     push HL                                            ;; 00:3893 $e5
     ld   B, A                                          ;; 00:3894 $47
-    call tilePositionToVRAMaddress                     ;; 00:3895 $cd $bb $38
+    call tilePositionToWindowVRAMaddress               ;; 00:3895 $cd $bb $38
     ld   A, B                                          ;; 00:3898 $78
     jr   C, .jr_00_38a0                                ;; 00:3899 $38 $05
     call storeBatBackgroundDrawPosition                ;; 00:389b $cd $7c $04
@@ -9041,9 +9043,9 @@ call_00_3891:
     db   $cd, $85, $04, $18, $03, $cd, $8a, $1d        ;; 00:38af ????????
     db   $e1, $d1, $c1, $c9                            ;; 00:38b7 ????
 
-; Convert DE (Y,X) tile position int VRAM memory location
-; Carry flag is cleared if the address is on the window
-tilePositionToVRAMaddress:
+; Convert DE (Y,X) tile position int VRAM memory location if it is on the window.
+; Carry flag is cleared if the address is on the window, else the carry flag is set.
+tilePositionToWindowVRAMaddress:
     ld   A, [wVideoWY]                                 ;; 00:38bb $fa $a9 $c0
     srl  A                                             ;; 00:38be $cb $3f
     srl  A                                             ;; 00:38c0 $cb $3f
@@ -9109,7 +9111,7 @@ scriptOpCodeSetChestOpenScript1:
     ld   D, A                                          ;; 00:390f $57
     ld   A, [HL+]                                      ;; 00:3910 $2a
     ld   E, A                                          ;; 00:3911 $5f
-    ld   BC, wD613                                     ;; 00:3912 $01 $13 $d6
+    ld   BC, wOpenChestScript1                         ;; 00:3912 $01 $13 $d6
     call call_00_392f                                  ;; 00:3915 $cd $2f $39
     ret                                                ;; 00:3918 $c9
 
@@ -9118,7 +9120,7 @@ scriptOpCodeSetChestOpenScript2:
     ld   D, A                                          ;; 00:391a $57
     ld   A, [HL+]                                      ;; 00:391b $2a
     ld   E, A                                          ;; 00:391c $5f
-    ld   BC, wD623                                     ;; 00:391d $01 $23 $d6
+    ld   BC, wOpenChestScript2                         ;; 00:391d $01 $23 $d6
     call call_00_392f                                  ;; 00:3920 $cd $2f $39
     ret                                                ;; 00:3923 $c9
 

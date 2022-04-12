@@ -1480,10 +1480,10 @@ call_03_480a:
     ld   HL, wD633                                     ;; 03:486e $21 $33 $d6
     jr   .jr_03_487b                                   ;; 03:4871 $18 $08
 .jr_03_4873:
-    ld   HL, wD623                                     ;; 03:4873 $21 $23 $d6
+    ld   HL, wOpenChestScript2                         ;; 03:4873 $21 $23 $d6
     jr   .jr_03_487b                                   ;; 03:4876 $18 $03
 .jr_03_4878:
-    ld   HL, wD613                                     ;; 03:4878 $21 $13 $d6
+    ld   HL, wOpenChestScript1                         ;; 03:4878 $21 $13 $d6
 .jr_03_487b:
     add  A, $0c                                        ;; 03:487b $c6 $0c
     pop  DE                                            ;; 03:487d $d1
