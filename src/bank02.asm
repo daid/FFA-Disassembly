@@ -34,9 +34,9 @@ SECTION "bank02", ROMX[$4000], BANK[$02]
     call_to_bank_target call_02_5419                   ;; 02:4030 pP
     call_to_bank_target call_02_5428                   ;; 02:4032 ??
     call_to_bank_target call_02_53f0                   ;; 02:4034 ??
-    call_to_bank_target call_02_53bb                   ;; 02:4036 ??
-    call_to_bank_target call_02_53c8                   ;; 02:4038 ??
-    call_to_bank_target call_02_53d5                   ;; 02:403a ??
+    call_to_bank_target removeItemFromInventory        ;; 02:4036 ??
+    call_to_bank_target removeEquipmentFromInventory   ;; 02:4038 ??
+    call_to_bank_target removeMagicFromInventory       ;; 02:403a ??
     call_to_bank_target call_02_6dd8                   ;; 02:403c pP
     call_to_bank_target call_02_6dde                   ;; 02:403e pP
     call_to_bank_target call_02_6dcc                   ;; 02:4040 pP
@@ -621,10 +621,10 @@ call_02_435e:
     pop  AF                                            ;; 02:43c7 $f1
     ret                                                ;; 02:43c8 $c9
 .jr_02_43c9:
-    call call_00_0299                                  ;; 02:43c9 $cd $99 $02
+    call getPlayerY                                    ;; 02:43c9 $cd $99 $02
     ld   D, A                                          ;; 02:43cc $57
     push DE                                            ;; 02:43cd $d5
-    call call_00_0293                                  ;; 02:43ce $cd $93 $02
+    call getPlayerX                                    ;; 02:43ce $cd $93 $02
     pop  DE                                            ;; 02:43d1 $d1
     ld   E, A                                          ;; 02:43d2 $5f
     pop  BC                                            ;; 02:43d3 $c1
@@ -1093,13 +1093,13 @@ call_02_4860:
     ld   A, [HL+]                                      ;; 02:486d $2a
     ld   H, [HL]                                       ;; 02:486e $66
     ld   L, A                                          ;; 02:486f $6f
-    call call_02_4874                                  ;; 02:4870 $cd $74 $48
+    call callHL                                        ;; 02:4870 $cd $74 $48
     ret                                                ;; 02:4873 $c9
 
-call_02_4874:
+callHL:
     jp   HL                                            ;; 02:4874 $e9
 
-call_02_4875:
+callJumptable_02:
     ld   B, $00                                        ;; 02:4875 $06 $00
     ld   C, A                                          ;; 02:4877 $4f
     add  HL, BC                                        ;; 02:4878 $09
@@ -2695,39 +2695,39 @@ capAtLevel100:
     inc  A                                             ;; 02:53b9 $3c
     ret                                                ;; 02:53ba $c9
 
-call_02_53bb:
+removeItemFromInventory:
     ld   HL, wItemInventory                            ;; 02:53bb $21 $c5 $d6
     ld   DE, wItemInventoryAmount                      ;; 02:53be $11 $9b $d6
     ld   B, $10                                        ;; 02:53c1 $06 $10
     ld   C, A                                          ;; 02:53c3 $4f
-    call call_02_53e2                                  ;; 02:53c4 $cd $e2 $53
+    call removeItemFromList                            ;; 02:53c4 $cd $e2 $53
     ret                                                ;; 02:53c7 $c9
 
-call_02_53c8:
+removeEquipmentFromInventory:
     ld   HL, wEquipmentInventory                       ;; 02:53c8 $21 $dd $d6
     ld   DE, wD6B3                                     ;; 02:53cb $11 $b3 $d6
     ld   B, $0c                                        ;; 02:53ce $06 $0c
     ld   C, A                                          ;; 02:53d0 $4f
-    call call_02_53e2                                  ;; 02:53d1 $cd $e2 $53
+    call removeItemFromList                            ;; 02:53d1 $cd $e2 $53
     ret                                                ;; 02:53d4 $c9
 
-call_02_53d5:
+removeMagicFromInventory:
     ld   HL, wMagicInventory                           ;; 02:53d5 $21 $d5 $d6
     ld   DE, wD6BF                                     ;; 02:53d8 $11 $bf $d6
     ld   B, $08                                        ;; 02:53db $06 $08
     ld   C, A                                          ;; 02:53dd $4f
-    call call_02_53e2                                  ;; 02:53de $cd $e2 $53
+    call removeItemFromList                            ;; 02:53de $cd $e2 $53
     ret                                                ;; 02:53e1 $c9
 
-call_02_53e2:
+removeItemFromList:
     ld   A, [HL+]                                      ;; 02:53e2 $2a
     and  A, $7f                                        ;; 02:53e3 $e6 $7f
     cp   A, C                                          ;; 02:53e5 $b9
-    jr   Z, .jr_02_53ec                                ;; 02:53e6 $28 $04
+    jr   Z, .found                                     ;; 02:53e6 $28 $04
     dec  B                                             ;; 02:53e8 $05
-    jr   NZ, call_02_53e2                              ;; 02:53e9 $20 $f7
+    jr   NZ, removeItemFromList                        ;; 02:53e9 $20 $f7
     ret                                                ;; 02:53eb $c9
-.jr_02_53ec:
+.found:
     dec  HL                                            ;; 02:53ec $2b
     xor  A, A                                          ;; 02:53ed $af
     ld   [HL], A                                       ;; 02:53ee $77
@@ -4309,7 +4309,7 @@ call_02_6656:
 call_02_667a:
     ld   HL, .data_02_6684                             ;; 02:667a $21 $84 $66
     ld   A, [wD859]                                    ;; 02:667d $fa $59 $d8
-    call call_02_4875                                  ;; 02:6680 $cd $75 $48
+    call callJumptable_02                              ;; 02:6680 $cd $75 $48
     ret                                                ;; 02:6683 $c9
 .data_02_6684:
     dw   .data_02_6688                                 ;; 02:6684 pP
@@ -4337,7 +4337,7 @@ call_02_667a:
     push BC                                            ;; 02:66af $c5
 .jr_02_66b0:
     ld   A, [HL+]                                      ;; 02:66b0 $2a
-    call call_00_3891                                  ;; 02:66b1 $cd $91 $38
+    call storeTileAatScreenPositionDE                  ;; 02:66b1 $cd $91 $38
     inc  E                                             ;; 02:66b4 $1c
     dec  C                                             ;; 02:66b5 $0d
     jr   NZ, .jr_02_66b0                               ;; 02:66b6 $20 $f8
@@ -4386,7 +4386,7 @@ data_02_66f8:
 call_02_6700:
     ld   HL, data_02_66f8                              ;; 02:6700 $21 $f8 $66
     ld   A, [wD854]                                    ;; 02:6703 $fa $54 $d8
-    call call_02_4875                                  ;; 02:6706 $cd $75 $48
+    call callJumptable_02                              ;; 02:6706 $cd $75 $48
     ret                                                ;; 02:6709 $c9
 
 data_02_670a:
@@ -4408,7 +4408,7 @@ data_02_670a:
 .jr_02_6728:
     push DE                                            ;; 02:6728 $d5
     push HL                                            ;; 02:6729 $e5
-    call call_00_0299                                  ;; 02:672a $cd $99 $02
+    call getPlayerY                                    ;; 02:672a $cd $99 $02
     rrca                                               ;; 02:672d $0f
     rrca                                               ;; 02:672e $0f
     rrca                                               ;; 02:672f $0f
@@ -4449,7 +4449,7 @@ data_02_670a:
     or   A, $80                                        ;; 02:6768 $f6 $80
     ld   [wD853], A                                    ;; 02:676a $ea $53 $d8
     ld   A, $77                                        ;; 02:676d $3e $77
-    ld   [wD863], A                                    ;; 02:676f $ea $63 $d8
+    ld   [wDialogBorderTile], A                        ;; 02:676f $ea $63 $d8
     ld   A, [wD84A]                                    ;; 02:6772 $fa $4a $d8
     cp   A, $1a                                        ;; 02:6775 $fe $1a
     jr   Z, jr_02_67b7                                 ;; 02:6777 $28 $3e
@@ -4463,7 +4463,7 @@ call_02_6783:
     call call_02_6da7                                  ;; 02:6783 $cd $a7 $6d
     push DE                                            ;; 02:6786 $d5
     push BC                                            ;; 02:6787 $c5
-    call call_02_686e                                  ;; 02:6788 $cd $6e $68
+    call drawDialogTopOrBottomLine                     ;; 02:6788 $cd $6e $68
     pop  BC                                            ;; 02:678b $c1
     pop  DE                                            ;; 02:678c $d1
     dec  B                                             ;; 02:678d $05
@@ -4477,7 +4477,7 @@ data_02_6798:
     call call_02_6da7                                  ;; 02:6798 $cd $a7 $6d
     push DE                                            ;; 02:679b $d5
     push BC                                            ;; 02:679c $c5
-    call call_02_6855                                  ;; 02:679d $cd $55 $68
+    call drawDialogCenterLine                          ;; 02:679d $cd $55 $68
     pop  BC                                            ;; 02:67a0 $c1
     pop  DE                                            ;; 02:67a1 $d1
     inc  D                                             ;; 02:67a2 $14
@@ -4485,7 +4485,7 @@ data_02_6798:
     call call_02_6d80                                  ;; 02:67a4 $cd $80 $6d
     ret  NZ                                            ;; 02:67a7 $c0
     ld   A, $7c                                        ;; 02:67a8 $3e $7c
-    ld   [wD863], A                                    ;; 02:67aa $ea $63 $d8
+    ld   [wDialogBorderTile], A                        ;; 02:67aa $ea $63 $d8
     ld   A, E                                          ;; 02:67ad $7b
     ld   A, $03                                        ;; 02:67ae $3e $03
     ld   [wD854], A                                    ;; 02:67b0 $ea $54 $d8
@@ -4535,7 +4535,7 @@ call_02_67f9:
     ld   A, [wD856]                                    ;; 02:6801 $fa $56 $d8
     call call_02_6d80                                  ;; 02:6804 $cd $80 $6d
     ld   HL, data_02_67f5                              ;; 02:6807 $21 $f5 $67
-    call call_02_4875                                  ;; 02:680a $cd $75 $48
+    call callJumptable_02                              ;; 02:680a $cd $75 $48
     ret                                                ;; 02:680d $c9
 
 data_02_680e:
@@ -4578,46 +4578,50 @@ data_02_6840:
     ld   [wD856], A                                    ;; 02:6851 $ea $56 $d8
     ret                                                ;; 02:6854 $c9
 
-call_02_6855:
+; DE=position on the screen
+; C=width of line
+drawDialogCenterLine:
     ld   A, $7a                                        ;; 02:6855 $3e $7a
-    call call_00_3891                                  ;; 02:6857 $cd $91 $38
+    call storeTileAatScreenPositionDE                  ;; 02:6857 $cd $91 $38
     ld   [HL+], A                                      ;; 02:685a $22
     dec  C                                             ;; 02:685b $0d
     inc  E                                             ;; 02:685c $1c
 .jr_02_685d:
     ld   A, $7f                                        ;; 02:685d $3e $7f
-    call call_00_3891                                  ;; 02:685f $cd $91 $38
+    call storeTileAatScreenPositionDE                  ;; 02:685f $cd $91 $38
     ld   [HL+], A                                      ;; 02:6862 $22
     inc  E                                             ;; 02:6863 $1c
     dec  C                                             ;; 02:6864 $0d
     jr   NZ, .jr_02_685d                               ;; 02:6865 $20 $f6
     ld   A, $7b                                        ;; 02:6867 $3e $7b
-    call call_00_3891                                  ;; 02:6869 $cd $91 $38
+    call storeTileAatScreenPositionDE                  ;; 02:6869 $cd $91 $38
     ld   [HL+], A                                      ;; 02:686c $22
     ret                                                ;; 02:686d $c9
 
-call_02_686e:
-    ld   A, [wD863]                                    ;; 02:686e $fa $63 $d8
+; DE=position on the screen
+; C=width of line
+drawDialogTopOrBottomLine:
+    ld   A, [wDialogBorderTile]                        ;; 02:686e $fa $63 $d8
     push AF                                            ;; 02:6871 $f5
-    call call_00_3891                                  ;; 02:6872 $cd $91 $38
+    call storeTileAatScreenPositionDE                  ;; 02:6872 $cd $91 $38
     ld   [HL+], A                                      ;; 02:6875 $22
     pop  AF                                            ;; 02:6876 $f1
     inc  A                                             ;; 02:6877 $3c
-    ld   [wD863], A                                    ;; 02:6878 $ea $63 $d8
+    ld   [wDialogBorderTile], A                        ;; 02:6878 $ea $63 $d8
     inc  E                                             ;; 02:687b $1c
     dec  C                                             ;; 02:687c $0d
 .jr_02_687d:
-    ld   A, [wD863]                                    ;; 02:687d $fa $63 $d8
+    ld   A, [wDialogBorderTile]                        ;; 02:687d $fa $63 $d8
     push AF                                            ;; 02:6880 $f5
-    call call_00_3891                                  ;; 02:6881 $cd $91 $38
+    call storeTileAatScreenPositionDE                  ;; 02:6881 $cd $91 $38
     ld   [HL+], A                                      ;; 02:6884 $22
     pop  AF                                            ;; 02:6885 $f1
     inc  E                                             ;; 02:6886 $1c
     dec  C                                             ;; 02:6887 $0d
     jr   NZ, .jr_02_687d                               ;; 02:6888 $20 $f3
-    ld   A, [wD863]                                    ;; 02:688a $fa $63 $d8
+    ld   A, [wDialogBorderTile]                        ;; 02:688a $fa $63 $d8
     inc  A                                             ;; 02:688d $3c
-    call call_00_3891                                  ;; 02:688e $cd $91 $38
+    call storeTileAatScreenPositionDE                  ;; 02:688e $cd $91 $38
     ld   [HL+], A                                      ;; 02:6891 $22
     ret                                                ;; 02:6892 $c9
 
@@ -6319,7 +6323,7 @@ jp_02_72be:
     ret                                                ;; 02:7321 $c9
 
 call_02_7322:
-    ld   HL, wD613                                     ;; 02:7322 $21 $13 $d6
+    ld   HL, wOpenChestScript1                         ;; 02:7322 $21 $13 $d6
     push HL                                            ;; 02:7325 $e5
     ld   HL, wD7AA                                     ;; 02:7326 $21 $aa $d7
     ld   DE, wBoyName                                  ;; 02:7329 $11 $9d $d7
@@ -6987,7 +6991,7 @@ call_02_7693:
 call_02_7735:
     ld   HL, wD4A7                                     ;; 02:7735 $21 $a7 $d4
     push HL                                            ;; 02:7738 $e5
-    call call_00_220a                                  ;; 02:7739 $cd $0a $22
+    call getMapNumber                                  ;; 02:7739 $cd $0a $22
     pop  HL                                            ;; 02:773c $e1
     ld   [HL+], A                                      ;; 02:773d $22
     push HL                                            ;; 02:773e $e5
@@ -7651,7 +7655,7 @@ call_02_7b3c:
     call call_02_747c                                  ;; 02:7b57 $cd $7c $74
     ld   A, E                                          ;; 02:7b5a $7b
     ld   [wRndState1], A                               ;; 02:7b5b $ea $b1 $c0
-    ld   HL, wD613                                     ;; 02:7b5e $21 $13 $d6
+    ld   HL, wOpenChestScript1                         ;; 02:7b5e $21 $13 $d6
     ld   DE, data_02_7b9c                              ;; 02:7b61 $11 $9c $7b
 .jr_02_7b64:
     ld   A, [DE]                                       ;; 02:7b64 $1a

@@ -552,13 +552,13 @@ call_09_42aa:
     pop  AF                                            ;; 09:42da $f1
     ld   D, A                                          ;; 09:42db $57
     push DE                                            ;; 09:42dc $d5
-    call call_00_0299                                  ;; 09:42dd $cd $99 $02
+    call getPlayerY                                    ;; 09:42dd $cd $99 $02
     srl  A                                             ;; 09:42e0 $cb $3f
     pop  DE                                            ;; 09:42e2 $d1
     sub  A, D                                          ;; 09:42e3 $92
     ld   D, A                                          ;; 09:42e4 $57
     push DE                                            ;; 09:42e5 $d5
-    call call_00_0293                                  ;; 09:42e6 $cd $93 $02
+    call getPlayerX                                    ;; 09:42e6 $cd $93 $02
     srl  A                                             ;; 09:42e9 $cb $3f
     pop  DE                                            ;; 09:42eb $d1
     sub  A, E                                          ;; 09:42ec $93
@@ -729,7 +729,7 @@ call_09_4399:
     call call_00_039a                                  ;; 09:43d4 $cd $9a $03
     call call_00_29e4                                  ;; 09:43d7 $cd $e4 $29
     push AF                                            ;; 09:43da $f5
-    call call_00_02ab                                  ;; 09:43db $cd $ab $02
+    call getPlayerDirection                            ;; 09:43db $cd $ab $02
     and  A, $0f                                        ;; 09:43de $e6 $0f
     ld   B, A                                          ;; 09:43e0 $47
     pop  AF                                            ;; 09:43e1 $f1
