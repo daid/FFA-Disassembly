@@ -404,7 +404,7 @@ call_00_02cf:
 call_00_02eb:
     ld   A, $40                                        ;; 00:02eb $3e $40
     ldh  [rSTAT], A                                    ;; 00:02ed $e0 $41
-    call call_00_0313                                  ;; 00:02ef $cd $13 $03
+    call setDefaultLCDCEffect                          ;; 00:02ef $cd $13 $03
     ret                                                ;; 00:02f2 $c9
 
 loadLCDCEffectBuffer:
@@ -436,7 +436,9 @@ loadLCDCEffectBuffer:
     ld   [DE], A                                       ;; 00:0311 $12
     ret                                                ;; 00:0312 $c9
 
-call_00_0313:
+; Load the default LCDC effect buffer, which handles the status bar not having sprites
+; on top and the forces the color palette of the status bar.
+setDefaultLCDCEffect:
     ld   A, $7e                                        ;; 00:0313 $3e $7e
     ldh  [rLYC], A                                     ;; 00:0315 $e0 $45
     ld   A, $00                                        ;; 00:0317 $3e $00
@@ -2211,9 +2213,9 @@ scriptOpCodePlayerJump:
     cp   A, $00                                        ;; 00:0d1e $fe $00
     call Z, call_00_0d51                               ;; 00:0d20 $cc $51 $0d
     ld   B, A                                          ;; 00:0d23 $47
-    ld   A, [wD49A]                                    ;; 00:0d24 $fa $9a $d4
+    ld   A, [wScriptOpCounter2]                        ;; 00:0d24 $fa $9a $d4
     dec  A                                             ;; 00:0d27 $3d
-    ld   [wD49A], A                                    ;; 00:0d28 $ea $9a $d4
+    ld   [wScriptOpCounter2], A                        ;; 00:0d28 $ea $9a $d4
     ret  NZ                                            ;; 00:0d2b $c0
     push HL                                            ;; 00:0d2c $e5
     ld   C, $04                                        ;; 00:0d2d $0e $04
@@ -2231,7 +2233,7 @@ scriptOpCodePlayerJump:
     cp   A, $00                                        ;; 00:0d43 $fe $00
     jr   Z, .jr_00_0d4d                                ;; 00:0d45 $28 $06
     ld   A, $08                                        ;; 00:0d47 $3e $08
-    ld   [wD49A], A                                    ;; 00:0d49 $ea $9a $d4
+    ld   [wScriptOpCounter2], A                        ;; 00:0d49 $ea $9a $d4
     ret                                                ;; 00:0d4c $c9
 .jr_00_0d4d:
     call getNextScriptInstruction                      ;; 00:0d4d $cd $27 $37
@@ -2242,7 +2244,7 @@ call_00_0d51:
     sub  A, $20                                        ;; 00:0d52 $d6 $20
     ld   [wD498], A                                    ;; 00:0d54 $ea $98 $d4
     ld   A, $01                                        ;; 00:0d57 $3e $01
-    ld   [wD49A], A                                    ;; 00:0d59 $ea $9a $d4
+    ld   [wScriptOpCounter2], A                        ;; 00:0d59 $ea $9a $d4
     ld   A, $00                                        ;; 00:0d5c $3e $00
     ret                                                ;; 00:0d5e $c9
 
@@ -2308,9 +2310,9 @@ scriptOpCodeWaitMapClose:
     call updateJoypadInput_trampoline                  ;; 00:0dbd $cd $d1 $1e
     cp   A, $00                                        ;; 00:0dc0 $fe $00
     jr   NZ, .jr_00_0de1                               ;; 00:0dc2 $20 $1d
-    ld   A, [wD49A]                                    ;; 00:0dc4 $fa $9a $d4
+    ld   A, [wScriptOpCounter2]                        ;; 00:0dc4 $fa $9a $d4
     inc  A                                             ;; 00:0dc7 $3c
-    ld   [wD49A], A                                    ;; 00:0dc8 $ea $9a $d4
+    ld   [wScriptOpCounter2], A                        ;; 00:0dc8 $ea $9a $d4
     bit  5, A                                          ;; 00:0dcb $cb $6f
     jr   NZ, .jr_00_0dda                               ;; 00:0dcd $20 $0b
     ld   C, $00                                        ;; 00:0dcf $0e $00
@@ -2504,7 +2506,7 @@ call_00_0ece:
     ld   C, $07                                        ;; 00:0eda $0e $07
     ld   A, $00                                        ;; 00:0edc $3e $00
     call createObject                                  ;; 00:0ede $cd $74 $0a
-    ld   [wD49A], A                                    ;; 00:0ee1 $ea $9a $d4
+    ld   [wScriptOpCounter2], A                        ;; 00:0ee1 $ea $9a $d4
     ld   C, A                                          ;; 00:0ee4 $4f
     pop  AF                                            ;; 00:0ee5 $f1
     call call_00_2f03                                  ;; 00:0ee6 $cd $03 $2f
@@ -2519,12 +2521,12 @@ call_00_0eef:
     pop  HL                                            ;; 00:0ef3 $e1
     ret  NZ                                            ;; 00:0ef4 $c0
     push HL                                            ;; 00:0ef5 $e5
-    ld   A, [wD49A]                                    ;; 00:0ef6 $fa $9a $d4
+    ld   A, [wScriptOpCounter2]                        ;; 00:0ef6 $fa $9a $d4
     ld   C, A                                          ;; 00:0ef9 $4f
     call call_00_0ae3                                  ;; 00:0efa $cd $e3 $0a
     ld   A, $00                                        ;; 00:0efd $3e $00
     ld   [wScriptOpCounter], A                         ;; 00:0eff $ea $99 $d4
-    ld   [wD49A], A                                    ;; 00:0f02 $ea $9a $d4
+    ld   [wScriptOpCounter2], A                        ;; 00:0f02 $ea $9a $d4
     pop  HL                                            ;; 00:0f05 $e1
     call getNextScriptInstruction                      ;; 00:0f06 $cd $27 $37
     ret                                                ;; 00:0f09 $c9
@@ -2720,7 +2722,7 @@ scriptOpCodeFadeToBlack:
     ld   A, [wScriptOpCounter]                         ;; 00:1047 $fa $99 $d4
     add  A, A                                          ;; 00:104a $87
     ld   E, A                                          ;; 00:104b $5f
-    ld   A, [wD49A]                                    ;; 00:104c $fa $9a $d4
+    ld   A, [wScriptOpCounter2]                        ;; 00:104c $fa $9a $d4
     and  A, $01                                        ;; 00:104f $e6 $01
     add  A, E                                          ;; 00:1051 $83
     ld   E, A                                          ;; 00:1052 $5f
@@ -2762,7 +2764,7 @@ scriptOpCodeFadeToWhite:
     ld   A, [wScriptOpCounter]                         ;; 00:10a8 $fa $99 $d4
     add  A, A                                          ;; 00:10ab $87
     ld   E, A                                          ;; 00:10ac $5f
-    ld   A, [wD49A]                                    ;; 00:10ad $fa $9a $d4
+    ld   A, [wScriptOpCounter2]                        ;; 00:10ad $fa $9a $d4
     and  A, $01                                        ;; 00:10b0 $e6 $01
     add  A, E                                          ;; 00:10b2 $83
     ld   E, A                                          ;; 00:10b3 $5f
@@ -2794,7 +2796,7 @@ scriptOpCodeFadeToNormal:
     ld   A, [wScriptOpCounter]                         ;; 00:10dd $fa $99 $d4
     add  A, A                                          ;; 00:10e0 $87
     ld   E, A                                          ;; 00:10e1 $5f
-    ld   A, [wD49A]                                    ;; 00:10e2 $fa $9a $d4
+    ld   A, [wScriptOpCounter2]                        ;; 00:10e2 $fa $9a $d4
     and  A, $01                                        ;; 00:10e5 $e6 $01
     add  A, E                                          ;; 00:10e7 $83
     ld   E, A                                          ;; 00:10e8 $5f
@@ -2850,13 +2852,13 @@ scriptOpCodeFadeToNormal:
     ret                                                ;; 00:1141 $c9
 
 call_00_1142:
-    ld   A, [wD49A]                                    ;; 00:1142 $fa $9a $d4
+    ld   A, [wScriptOpCounter2]                        ;; 00:1142 $fa $9a $d4
     inc  A                                             ;; 00:1145 $3c
-    ld   [wD49A], A                                    ;; 00:1146 $ea $9a $d4
+    ld   [wScriptOpCounter2], A                        ;; 00:1146 $ea $9a $d4
     cp   A, $06                                        ;; 00:1149 $fe $06
     ret  C                                             ;; 00:114b $d8
     ld   A, $00                                        ;; 00:114c $3e $00
-    ld   [wD49A], A                                    ;; 00:114e $ea $9a $d4
+    ld   [wScriptOpCounter2], A                        ;; 00:114e $ea $9a $d4
     ld   A, [wScriptOpCounter]                         ;; 00:1151 $fa $99 $d4
     inc  A                                             ;; 00:1154 $3c
     ld   [wScriptOpCounter], A                         ;; 00:1155 $ea $99 $d4
@@ -2929,30 +2931,30 @@ scriptOpCodeLoadRoom:
     ld   B, A                                          ;; 00:11b8 $47
     ld   A, [HL-]                                      ;; 00:11b9 $3a
     ld   C, A                                          ;; 00:11ba $4f
-    call call_00_11c8                                  ;; 00:11bb $cd $c8 $11
+    call loadMapWithShutterEffectSequence_trampoline   ;; 00:11bb $cd $c8 $11
     ld   A, [wScriptOpCounter]                         ;; 00:11be $fa $99 $d4
     cp   A, $00                                        ;; 00:11c1 $fe $00
     ret  NZ                                            ;; 00:11c3 $c0
     call getNextScriptInstruction                      ;; 00:11c4 $cd $27 $37
     ret                                                ;; 00:11c7 $c9
 
-call_00_11c8:
-    jp_to_bank 01, call_01_4130                        ;; 00:11c8 $f5 $3e $0f $c3 $d7 $1e
+loadMapWithShutterEffectSequence_trampoline:
+    jp_to_bank 01, loadMapWithShutterEffectSequence    ;; 00:11c8 $f5 $3e $0f $c3 $d7 $1e
 
 scriptOpCodeLoadRoomInstant:
     ld   A, [HL+]                                      ;; 00:11ce $2a
     ld   B, A                                          ;; 00:11cf $47
     ld   A, [HL-]                                      ;; 00:11d0 $3a
     ld   C, A                                          ;; 00:11d1 $4f
-    call call_00_11df                                  ;; 00:11d2 $cd $df $11
+    call loadMapInstantSequence_trampoline             ;; 00:11d2 $cd $df $11
     ld   A, [wScriptOpCounter]                         ;; 00:11d5 $fa $99 $d4
     cp   A, $00                                        ;; 00:11d8 $fe $00
     ret  NZ                                            ;; 00:11da $c0
     call getNextScriptInstruction                      ;; 00:11db $cd $27 $37
     ret                                                ;; 00:11de $c9
 
-call_00_11df:
-    jp_to_bank 01, call_01_414c                        ;; 00:11df $f5 $3e $10 $c3 $d7 $1e
+loadMapInstantSequence_trampoline:
+    jp_to_bank 01, loadMapInstantSequence              ;; 00:11df $f5 $3e $10 $c3 $d7 $1e
 
 scriptOpCodeOpenMap:
     call call_00_11f2                                  ;; 00:11e5 $cd $f2 $11

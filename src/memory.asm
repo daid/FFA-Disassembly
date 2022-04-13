@@ -760,7 +760,7 @@ wD498:
 wScriptOpCounter:
     ds 1                                               ;; d499
 
-wD49A:
+wScriptOpCounter2:
     ds 1                                               ;; d49a
 
 wD49B:

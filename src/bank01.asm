@@ -24,8 +24,8 @@ data_01_4000:
     call_to_bank_target call_01_5196                   ;; 01:4018 pP
     call_to_bank_target call_01_51bb                   ;; 01:401a pP
     call_to_bank_target call_01_51d5                   ;; 01:401c ??
-    call_to_bank_target call_01_4130                   ;; 01:401e pP
-    call_to_bank_target call_01_414c                   ;; 01:4020 pP
+    call_to_bank_target loadMapWithShutterEffectSequence ;; 01:401e pP
+    call_to_bank_target loadMapInstantSequence         ;; 01:4020 pP
     call_to_bank_target call_01_4164                   ;; 01:4022 pP
     call_to_bank_target call_01_4180                   ;; 01:4024 pP
     call_to_bank_target call_01_40ca                   ;; 01:4026 pP
@@ -101,7 +101,7 @@ call_01_40a0:
     ld   A, [wVideoLCDC]                               ;; 01:40a5 $fa $a5 $c0
     or   A, $03                                        ;; 01:40a8 $f6 $03
     ld   [wVideoLCDC], A                               ;; 01:40aa $ea $a5 $c0
-    call call_00_0313                                  ;; 01:40ad $cd $13 $03
+    call setDefaultLCDCEffect                          ;; 01:40ad $cd $13 $03
     ret                                                ;; 01:40b0 $c9
 
 data_01_40b1:
@@ -138,16 +138,16 @@ call_01_40d8:
     ret                                                ;; 01:40f2 $c9
 
 call_01_40f3:
-    call call_00_0313                                  ;; 01:40f3 $cd $13 $03
+    call setDefaultLCDCEffect                          ;; 01:40f3 $cd $13 $03
     ld   A, $e4                                        ;; 01:40f6 $3e $e4
     ld   [wVideoBGP], A                                ;; 01:40f8 $ea $aa $c0
     ret                                                ;; 01:40fb $c9
 
-data_01_40fc:
+lcdcShutterEffectClose:
     db   $00, $fc, $03, $e4, $7c, $fc, $00, $e4        ;; 01:40fc ........
     db   $7e, $fc, $01, $e4, $ff                       ;; 01:4104 .....
 
-data_01_4109:
+lcdcShutterEffectOpen:
     db   $3c, $fc, $03, $e4, $40, $fc, $00, $e4        ;; 01:4109 ........
     db   $7e, $fc, $01, $e4, $ff                       ;; 01:4111 .....
 
@@ -157,7 +157,7 @@ data_01_4116:
     db   $3f, $40, $fc, $00, $3f, $7e, $fc, $01        ;; 01:4126 ????????
     db   $3f, $ff                                      ;; 01:412e ??
 
-call_01_4130:
+loadMapWithShutterEffectSequence:
     ld   D, H                                          ;; 01:4130 $54
     ld   E, L                                          ;; 01:4131 $5d
     ld   A, [wScriptOpCounter]                         ;; 01:4132 $fa $99 $d4
@@ -165,16 +165,16 @@ call_01_4130:
     call callJumptable                                 ;; 01:4138 $cd $70 $2b
     ret                                                ;; 01:413b $c9
 .data_01_413c:
-    dw   data_01_419c                                  ;; 01:413c pP
+    dw   prepareShutterEffect                          ;; 01:413c pP
     dw   advanceScriptOpWhenVRAMCopiesDone             ;; 01:413e pP
-    dw   data_01_41d6                                  ;; 01:4140 pP
+    dw   shutterEffectClose                            ;; 01:4140 pP
     dw   data_01_4387                                  ;; 01:4142 pP
     dw   advanceScriptOpWhenVRAMCopiesDone             ;; 01:4144 pP
     dw   data_01_43a3                                  ;; 01:4146 pP
-    dw   data_01_4205                                  ;; 01:4148 pP
+    dw   shutterEffectOpen                             ;; 01:4148 pP
     dw   data_01_448c                                  ;; 01:414a pP
 
-call_01_414c:
+loadMapInstantSequence:
     ld   D, H                                          ;; 01:414c $54
     ld   E, L                                          ;; 01:414d $5d
     ld   A, [wScriptOpCounter]                         ;; 01:414e $fa $99 $d4
@@ -197,13 +197,13 @@ call_01_4164:
     call callJumptable                                 ;; 01:416c $cd $70 $2b
     ret                                                ;; 01:416f $c9
 .data_01_4170:
-    dw   data_01_419c                                  ;; 01:4170 pP
+    dw   prepareShutterEffect                          ;; 01:4170 pP
     dw   advanceScriptOpWhenVRAMCopiesDone             ;; 01:4172 pP
-    dw   data_01_41d6                                  ;; 01:4174 pP
+    dw   shutterEffectClose                            ;; 01:4174 pP
     dw   data_01_422b                                  ;; 01:4176 pP
     dw   advanceScriptOpWhenVRAMCopiesDone             ;; 01:4178 pP
     dw   data_01_4422                                  ;; 01:417a pP
-    dw   data_01_4205                                  ;; 01:417c pP
+    dw   shutterEffectOpen                             ;; 01:417c pP
     dw   data_01_448c                                  ;; 01:417e pP
 
 call_01_4180:
@@ -214,22 +214,22 @@ call_01_4180:
     call callJumptable                                 ;; 01:4188 $cd $70 $2b
     ret                                                ;; 01:418b $c9
 .data_01_418c:
-    dw   data_01_419c                                  ;; 01:418c pP
+    dw   prepareShutterEffect                          ;; 01:418c pP
     dw   advanceScriptOpWhenVRAMCopiesDone             ;; 01:418e pP
-    dw   data_01_41d6                                  ;; 01:4190 pP
+    dw   shutterEffectClose                            ;; 01:4190 pP
     dw   data_01_433e                                  ;; 01:4192 pP
     dw   advanceScriptOpWhenVRAMCopiesDone             ;; 01:4194 pP
     dw   data_01_4456                                  ;; 01:4196 pP
-    dw   data_01_4205                                  ;; 01:4198 pP
+    dw   shutterEffectOpen                             ;; 01:4198 pP
     dw   data_01_448c                                  ;; 01:419a pP
 
-data_01_419c:
+prepareShutterEffect:
     push DE                                            ;; 01:419c $d5
     ld   A, $00                                        ;; 01:419d $3e $00
-    ld   [wD49A], A                                    ;; 01:419f $ea $9a $d4
+    ld   [wScriptOpCounter2], A                        ;; 01:419f $ea $9a $d4
     ld   HL, wScriptOpCounter                          ;; 01:41a2 $21 $99 $d4
     inc  [HL]                                          ;; 01:41a5 $34
-    ld   HL, data_01_40fc                              ;; 01:41a6 $21 $fc $40
+    ld   HL, lcdcShutterEffectClose                    ;; 01:41a6 $21 $fc $40
     ld   A, [wC4D4]                                    ;; 01:41a9 $fa $d4 $c4
     bit  1, A                                          ;; 01:41ac $cb $4f
     jr   Z, .jr_01_41b3                                ;; 01:41ae $28 $03
@@ -249,13 +249,13 @@ data_01_419c:
 data_01_41ca:
     push DE                                            ;; 01:41ca $d5
     ld   A, $00                                        ;; 01:41cb $3e $00
-    ld   [wD49A], A                                    ;; 01:41cd $ea $9a $d4
+    ld   [wScriptOpCounter2], A                        ;; 01:41cd $ea $9a $d4
     ld   HL, wScriptOpCounter                          ;; 01:41d0 $21 $99 $d4
     inc  [HL]                                          ;; 01:41d3 $34
     pop  HL                                            ;; 01:41d4 $e1
     ret                                                ;; 01:41d5 $c9
 
-data_01_41d6:
+shutterEffectClose:
     push DE                                            ;; 01:41d6 $d5
     ld   HL, wLCDCEffectBuffer                         ;; 01:41d7 $21 $a0 $d3
     ld   A, [HL]                                       ;; 01:41da $7e
@@ -271,12 +271,12 @@ data_01_41d6:
     jr   C, .jr_01_41f1                                ;; 01:41e6 $38 $09
     jr   Z, .jr_01_41f1                                ;; 01:41e8 $28 $07
     ld   [HL], A                                       ;; 01:41ea $77
-    ld   HL, wD49A                                     ;; 01:41eb $21 $9a $d4
+    ld   HL, wScriptOpCounter2                         ;; 01:41eb $21 $9a $d4
     inc  [HL]                                          ;; 01:41ee $34
     pop  HL                                            ;; 01:41ef $e1
     ret                                                ;; 01:41f0 $c9
 .jr_01_41f1:
-    call call_00_0313                                  ;; 01:41f1 $cd $13 $03
+    call setDefaultLCDCEffect                          ;; 01:41f1 $cd $13 $03
     ld   A, [wVideoLCDC]                               ;; 01:41f4 $fa $a5 $c0
     and  A, $fc                                        ;; 01:41f7 $e6 $fc
     ld   HL, rLCDC                                     ;; 01:41f9 $21 $40 $ff
@@ -286,9 +286,9 @@ data_01_41d6:
     pop  HL                                            ;; 01:4203 $e1
     ret                                                ;; 01:4204 $c9
 
-data_01_4205:
+shutterEffectOpen:
     push DE                                            ;; 01:4205 $d5
-    ld   HL, wD49A                                     ;; 01:4206 $21 $9a $d4
+    ld   HL, wScriptOpCounter2                         ;; 01:4206 $21 $9a $d4
     dec  [HL]                                          ;; 01:4209 $35
     jr   Z, .jr_01_421c                                ;; 01:420a $28 $10
     ld   HL, wLCDCEffectBuffer                         ;; 01:420c $21 $a0 $d3
@@ -304,7 +304,7 @@ data_01_4205:
     pop  HL                                            ;; 01:421a $e1
     ret                                                ;; 01:421b $c9
 .jr_01_421c:
-    call call_00_0313                                  ;; 01:421c $cd $13 $03
+    call setDefaultLCDCEffect                          ;; 01:421c $cd $13 $03
     ld   A, [wD49C]                                    ;; 01:421f $fa $9c $d4
     ld   [wVideoLCDC], A                               ;; 01:4222 $ea $a5 $c0
     ld   HL, wScriptOpCounter                          ;; 01:4225 $21 $99 $d4
@@ -543,7 +543,7 @@ data_01_43a3:
     ld   D, A                                          ;; 01:43c8 $57
     call call_00_28aa                                  ;; 01:43c9 $cd $aa $28
 .jr_01_43cc:
-    ld   HL, data_01_4109                              ;; 01:43cc $21 $09 $41
+    ld   HL, lcdcShutterEffectOpen                     ;; 01:43cc $21 $09 $41
     ld   A, [wC4D4]                                    ;; 01:43cf $fa $d4 $c4
     bit  1, A                                          ;; 01:43d2 $cb $4f
     jr   Z, .jr_01_43d9                                ;; 01:43d4 $28 $03
@@ -606,7 +606,7 @@ data_01_4422:
     jr   Z, .jr_01_442d                                ;; 01:4428 $28 $03
     call call_00_0de6                                  ;; 01:442a $cd $e6 $0d
 .jr_01_442d:
-    ld   HL, data_01_4109                              ;; 01:442d $21 $09 $41
+    ld   HL, lcdcShutterEffectOpen                     ;; 01:442d $21 $09 $41
     ld   A, [wC4D4]                                    ;; 01:4430 $fa $d4 $c4
     bit  1, A                                          ;; 01:4433 $cb $4f
     jr   Z, .jr_01_443a                                ;; 01:4435 $28 $03
@@ -627,7 +627,7 @@ data_01_4422:
 
 data_01_4456:
     push DE                                            ;; 01:4456 $d5
-    ld   HL, data_01_4109                              ;; 01:4457 $21 $09 $41
+    ld   HL, lcdcShutterEffectOpen                     ;; 01:4457 $21 $09 $41
     ld   A, [wC4D4]                                    ;; 01:445a $fa $d4 $c4
     bit  1, A                                          ;; 01:445d $cb $4f
     jr   Z, .jr_01_4464                                ;; 01:445f $28 $03
