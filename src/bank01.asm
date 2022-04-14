@@ -75,7 +75,7 @@ call_01_4059:
     push BC                                            ;; 01:4082 $c5
     push DE                                            ;; 01:4083 $d5
     ld   A, C                                          ;; 01:4084 $79
-    call call_00_3866                                  ;; 01:4085 $cd $66 $38
+    call storeTileAatWindowPositionDE                  ;; 01:4085 $cd $66 $38
     pop  DE                                            ;; 01:4088 $d1
     pop  BC                                            ;; 01:4089 $c1
     inc  E                                             ;; 01:408a $1c
@@ -87,7 +87,7 @@ call_01_4059:
     push BC                                            ;; 01:4093 $c5
     push DE                                            ;; 01:4094 $d5
     ld   A, C                                          ;; 01:4095 $79
-    call call_00_3866                                  ;; 01:4096 $cd $66 $38
+    call storeTileAatWindowPositionDE                  ;; 01:4096 $cd $66 $38
     pop  DE                                            ;; 01:4099 $d1
     pop  BC                                            ;; 01:409a $c1
     inc  E                                             ;; 01:409b $1c
