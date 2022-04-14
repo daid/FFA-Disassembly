@@ -6,9 +6,7 @@ INCLUDE "include/charmaps.inc"
 INCLUDE "include/constants.inc"
 
 SECTION "bank00", ROM0[$0000]
-
-call_00_0000:
-    jp   FullReset                                     ;; 00:0000 $c3 $50 $01
+    db   $c3, $50, $01                                 ;; 00:0000 ???
 
 SECTION "isrVBlank", ROM0[$0040]
 
@@ -401,7 +399,7 @@ call_00_02cf:
     ret                                                ;; 00:02e9 $c9
     db   $c9                                           ;; 00:02ea ?
 
-call_00_02eb:
+initLCDCEffect:
     ld   A, $40                                        ;; 00:02eb $3e $40
     ldh  [rSTAT], A                                    ;; 00:02ed $e0 $41
     call setDefaultLCDCEffect                          ;; 00:02ef $cd $13 $03
@@ -4766,7 +4764,7 @@ call_00_1d1b:
     jr   C, .jr_00_1d39                                ;; 00:1d31 $38 $06
     sub  A, $96                                        ;; 00:1d33 $d6 $96
     ld   [HL], A                                       ;; 00:1d35 $77
-    call call_00_3ee0                                  ;; 00:1d36 $cd $e0 $3e
+    call increaseWillCharge                            ;; 00:1d36 $cd $e0 $3e
 .jr_00_1d39:
     pop  HL                                            ;; 00:1d39 $e1
     ld   A, [wD87E]                                    ;; 00:1d3a $fa $7e $d8
@@ -5256,7 +5254,7 @@ call_00_2092:
     ld   A, [wVideoLCDC]                               ;; 00:2092 $fa $a5 $c0
     or   A, $60                                        ;; 00:2095 $f6 $60
     ld   [wVideoLCDC], A                               ;; 00:2097 $ea $a5 $c0
-    call call_00_02eb                                  ;; 00:209a $cd $eb $02
+    call initLCDCEffect                                ;; 00:209a $cd $eb $02
     ld   A, $07                                        ;; 00:209d $3e $07
     ld   [wVideoWX], A                                 ;; 00:209f $ea $a8 $c0
     ld   A, $80                                        ;; 00:20a2 $3e $80
@@ -8997,10 +8995,10 @@ call_00_3844:
     db   $d5, $fa, $a7, $d4, $83, $5f, $fa, $a8        ;; 00:3856 ????????
     db   $d4, $82, $57, $cd, $a7, $38, $d1, $c9        ;; 00:385e ????????
 
-call_00_3866:
+storeTileAatWindowPositionDE:
     push BC                                            ;; 00:3866 $c5
     push AF                                            ;; 00:3867 $f5
-    call call_00_387a                                  ;; 00:3868 $cd $7a $38
+    call windowTilePositionToScreenTilePosition        ;; 00:3868 $cd $7a $38
     pop  AF                                            ;; 00:386b $f1
     call storeTileAatScreenPositionDE                  ;; 00:386c $cd $91 $38
     pop  BC                                            ;; 00:386f $c1
@@ -9008,7 +9006,7 @@ call_00_3866:
     db   $c5, $cd, $7a, $38, $cd, $a7, $38, $c1        ;; 00:3871 ????????
     db   $c9                                           ;; 00:3879 ?
 
-call_00_387a:
+windowTilePositionToScreenTilePosition:
     ld   A, [wVideoWY]                                 ;; 00:387a $fa $a9 $c0
     srl  A                                             ;; 00:387d $cb $3f
     srl  A                                             ;; 00:387f $cb $3f
@@ -9097,10 +9095,10 @@ jumptable_38ee:
     dw   call_00_351a                                  ;; 00:38f4 pP
     dw   call_00_357d                                  ;; 00:38f6 pP
     dw   call_00_3582                                  ;; 00:38f8 pP
-    dw   call_00_0000                                  ;; 00:38fa ??
-    dw   call_00_0000                                  ;; 00:38fc ??
-    dw   call_00_0000                                  ;; 00:38fe ??
-    dw   call_00_0000                                  ;; 00:3900 ??
+    dw   $0000                                         ;; 00:38fa ??
+    dw   $0000                                         ;; 00:38fc ??
+    dw   $0000                                         ;; 00:38fe ??
+    dw   $0000                                         ;; 00:3900 ??
     dw   call_00_35b0                                  ;; 00:3902 pP
     dw   call_00_35c1                                  ;; 00:3904 pP
     dw   call_00_35c6                                  ;; 00:3906 ??
@@ -10033,7 +10031,7 @@ call_00_3e8f:
 
 call_00_3e97:
     ld   A, $40                                        ;; 00:3e97 $3e $40
-    ld   [wD858], A                                    ;; 00:3e99 $ea $58 $d8
+    ld   [wWillCharge], A                              ;; 00:3e99 $ea $58 $d8
     call call_00_314d                                  ;; 00:3e9c $cd $4d $31
     call call_00_3147                                  ;; 00:3e9f $cd $47 $31
     ret                                                ;; 00:3ea2 $c9
@@ -10072,17 +10070,17 @@ setNextXPLevel:
     ret                                                ;; 00:3ecf $c9
 
 call_00_3ed0:
-    ld   A, [wD858]                                    ;; 00:3ed0 $fa $58 $d8
+    ld   A, [wWillCharge]                              ;; 00:3ed0 $fa $58 $d8
     push AF                                            ;; 00:3ed3 $f5
     xor  A, A                                          ;; 00:3ed4 $af
-    ld   [wD858], A                                    ;; 00:3ed5 $ea $58 $d8
+    ld   [wWillCharge], A                              ;; 00:3ed5 $ea $58 $d8
     call call_00_314d                                  ;; 00:3ed8 $cd $4d $31
     call call_00_3147                                  ;; 00:3edb $cd $47 $31
     pop  AF                                            ;; 00:3ede $f1
     ret                                                ;; 00:3edf $c9
 
-call_00_3ee0:
-    ld   A, [wD858]                                    ;; 00:3ee0 $fa $58 $d8
+increaseWillCharge:
+    ld   A, [wWillCharge]                              ;; 00:3ee0 $fa $58 $d8
     ld   B, A                                          ;; 00:3ee3 $47
     inc  B                                             ;; 00:3ee4 $04
     ld   A, $10                                        ;; 00:3ee5 $3e $10
@@ -10096,12 +10094,12 @@ call_00_3ee0:
     ld   A, $40                                        ;; 00:3ef1 $3e $40
 .jr_00_3ef3:
     ld   A, B                                          ;; 00:3ef3 $78
-    ld   [wD858], A                                    ;; 00:3ef4 $ea $58 $d8
+    ld   [wWillCharge], A                              ;; 00:3ef4 $ea $58 $d8
     call call_00_3147                                  ;; 00:3ef7 $cd $47 $31
     ret                                                ;; 00:3efa $c9
 
 call_00_3efb:
-    ld   A, [wD858]                                    ;; 00:3efb $fa $58 $d8
+    ld   A, [wWillCharge]                              ;; 00:3efb $fa $58 $d8
     cp   A, $40                                        ;; 00:3efe $fe $40
     ret                                                ;; 00:3f00 $c9
 

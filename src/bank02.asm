@@ -4231,7 +4231,7 @@ call_02_65fa:
     ld   A, [HL+]                                      ;; 02:6602 $2a
     push HL                                            ;; 02:6603 $e5
     push DE                                            ;; 02:6604 $d5
-    call call_00_3866                                  ;; 02:6605 $cd $66 $38
+    call storeTileAatWindowPositionDE                  ;; 02:6605 $cd $66 $38
     pop  DE                                            ;; 02:6608 $d1
     pop  HL                                            ;; 02:6609 $e1
     inc  DE                                            ;; 02:660a $13
@@ -4244,7 +4244,7 @@ call_02_65fa:
     db   $fa, $fa, $fe, $7f                            ;; 02:661f ....
 
 call_02_6623:
-    ld   A, [wD858]                                    ;; 02:6623 $fa $58 $d8
+    ld   A, [wWillCharge]                              ;; 02:6623 $fa $58 $d8
     and  A, A                                          ;; 02:6626 $a7
     ret  Z                                             ;; 02:6627 $c8
     push AF                                            ;; 02:6628 $f5
@@ -4261,7 +4261,7 @@ call_02_6623:
     ret  Z                                             ;; 02:6639 $c8
     ld   C, $fa                                        ;; 02:663a $0e $fa
     add  A, C                                          ;; 02:663c $81
-    call call_00_3866                                  ;; 02:663d $cd $66 $38
+    call storeTileAatWindowPositionDE                  ;; 02:663d $cd $66 $38
     ret                                                ;; 02:6640 $c9
 
 call_02_6641:
@@ -4275,7 +4275,7 @@ call_02_6641:
 call_02_664a:
     ld   C, A                                          ;; 02:664a $4f
     push DE                                            ;; 02:664b $d5
-    call call_00_3866                                  ;; 02:664c $cd $66 $38
+    call storeTileAatWindowPositionDE                  ;; 02:664c $cd $66 $38
     pop  DE                                            ;; 02:664f $d1
     inc  DE                                            ;; 02:6650 $13
     ld   A, C                                          ;; 02:6651 $79
@@ -5660,7 +5660,7 @@ setStartingStats:
     ld   A, L                                          ;; 02:6ec1 $7d
     ld   [wScriptStackPointer], A                      ;; 02:6ec2 $ea $bc $d8
     ld   A, $01                                        ;; 02:6ec5 $3e $01
-    ld   [wD858], A                                    ;; 02:6ec7 $ea $58 $d8
+    ld   [wWillCharge], A                              ;; 02:6ec7 $ea $58 $d8
     ld   HL, $32                                       ;; 02:6eca $21 $32 $00
     ld   A, H                                          ;; 02:6ecd $7c
     ld   [wMoneyHigh], A                               ;; 02:6ece $ea $bf $d7
@@ -5706,7 +5706,7 @@ drawDefaultStatusBar:
 .jr_02_6f1e:
     ld   A, [HL+]                                      ;; 02:6f1e $2a
     push DE                                            ;; 02:6f1f $d5
-    call call_00_3866                                  ;; 02:6f20 $cd $66 $38
+    call storeTileAatWindowPositionDE                  ;; 02:6f20 $cd $66 $38
     pop  DE                                            ;; 02:6f23 $d1
     inc  E                                             ;; 02:6f24 $1c
     dec  B                                             ;; 02:6f25 $05
@@ -5755,7 +5755,7 @@ drawMoneyOnStatusBar:
 clearStatusBarSection:
     ld   A, $7f                                        ;; 02:6f6b $3e $7f
     push DE                                            ;; 02:6f6d $d5
-    call call_00_3866                                  ;; 02:6f6e $cd $66 $38
+    call storeTileAatWindowPositionDE                  ;; 02:6f6e $cd $66 $38
     pop  DE                                            ;; 02:6f71 $d1
     dec  DE                                            ;; 02:6f72 $1b
     dec  B                                             ;; 02:6f73 $05
@@ -5774,7 +5774,7 @@ drawNumberOnStatusBar:
     push HL                                            ;; 02:6f82 $e5
     push DE                                            ;; 02:6f83 $d5
     add  A, $30                                        ;; 02:6f84 $c6 $30
-    call call_00_3866                                  ;; 02:6f86 $cd $66 $38
+    call storeTileAatWindowPositionDE                  ;; 02:6f86 $cd $66 $38
     pop  DE                                            ;; 02:6f89 $d1
     dec  DE                                            ;; 02:6f8a $1b
     pop  HL                                            ;; 02:6f8b $e1
@@ -5784,7 +5784,7 @@ drawNumberOnStatusBar:
     ret                                                ;; 02:6f90 $c9
 .jr_02_6f91:
     ld   A, $30                                        ;; 02:6f91 $3e $30
-    call call_00_3866                                  ;; 02:6f93 $cd $66 $38
+    call storeTileAatWindowPositionDE                  ;; 02:6f93 $cd $66 $38
     ret                                                ;; 02:6f96 $c9
 
 ; Graphic tile numbers that are shown on the status bar top row.
@@ -5836,7 +5836,7 @@ call_02_6fb4:
     ld   H, $00                                        ;; 02:6feb $26 $00
     call divMod                                        ;; 02:6fed $cd $8b $2b
     ld   B, A                                          ;; 02:6ff0 $47
-    ld   A, [wD858]                                    ;; 02:6ff1 $fa $58 $d8
+    ld   A, [wWillCharge]                              ;; 02:6ff1 $fa $58 $d8
     add  A, $40                                        ;; 02:6ff4 $c6 $40
     swap A                                             ;; 02:6ff6 $cb $37
     rrca                                               ;; 02:6ff8 $0f
@@ -5955,7 +5955,7 @@ call_02_6fb4:
     pop  HL                                            ;; 02:70a9 $e1
     ld   A, L                                          ;; 02:70aa $7d
     call call_02_70c8                                  ;; 02:70ab $cd $c8 $70
-    ld   A, [wD858]                                    ;; 02:70ae $fa $58 $d8
+    ld   A, [wWillCharge]                              ;; 02:70ae $fa $58 $d8
     ld   L, A                                          ;; 02:70b1 $6f
     ld   H, $00                                        ;; 02:70b2 $26 $00
     add  HL, HL                                        ;; 02:70b4 $29
@@ -6038,7 +6038,7 @@ jr_02_70e3:
 
 call_02_7139:
     ld   B, A                                          ;; 02:7139 $47
-    ld   A, [wD858]                                    ;; 02:713a $fa $58 $d8
+    ld   A, [wWillCharge]                              ;; 02:713a $fa $58 $d8
     ld   H, $00                                        ;; 02:713d $26 $00
     ld   L, A                                          ;; 02:713f $6f
     add  HL, HL                                        ;; 02:7140 $29
@@ -6337,7 +6337,7 @@ call_02_7322:
     xor  A, A                                          ;; 02:7339 $af
     ld   [DE], A                                       ;; 02:733a $12
     ld   A, $01                                        ;; 02:733b $3e $01
-    ld   [wD858], A                                    ;; 02:733d $ea $58 $d8
+    ld   [wWillCharge], A                              ;; 02:733d $ea $58 $d8
     ld   HL, wMagicInventory                           ;; 02:7340 $21 $d5 $d6
     ld   DE, wD6AB                                     ;; 02:7343 $11 $ab $d6
     ld   B, $08                                        ;; 02:7346 $06 $08

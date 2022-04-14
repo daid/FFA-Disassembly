@@ -1140,7 +1140,8 @@ wD856:
 wD857:
     ds 1                                               ;; d857
 
-wD858:
+; Amount of special attack charge, from $00 to $40.
+wWillCharge:
     ds 1                                               ;; d858
 
 wD859:
