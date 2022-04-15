@@ -8471,7 +8471,7 @@ call_00_351a:
     push HL                                            ;; 00:351a $e5
     ld   B, $a4                                        ;; 00:351b $06 $a4
     ld   DE, wD56E                                     ;; 00:351d $11 $6e $d5
-    ld   HL, wD4A7                                     ;; 00:3520 $21 $a7 $d4
+    ld   HL, wDialogX                                  ;; 00:3520 $21 $a7 $d4
     call copyHLtoDE                                    ;; 00:3523 $cd $49 $2b
     ld   A, [wC0A0]                                    ;; 00:3526 $fa $a0 $c0
     ld   [wD862], A                                    ;; 00:3529 $ea $62 $d8
@@ -8491,7 +8491,7 @@ call_00_351a:
 
 call_00_3547:
     ld   B, $a4                                        ;; 00:3547 $06 $a4
-    ld   DE, wD4A7                                     ;; 00:3549 $11 $a7 $d4
+    ld   DE, wDialogX                                  ;; 00:3549 $11 $a7 $d4
     ld   HL, wD56E                                     ;; 00:354c $21 $6e $d5
     call copyHLtoDE                                    ;; 00:354f $cd $49 $2b
     ld   A, [wScriptFlags0F]                           ;; 00:3552 $fa $d5 $d7
@@ -8705,7 +8705,7 @@ call_00_3675:
     push DE                                            ;; 00:3686 $d5
 .jr_00_3687:
     ld   A, $7f                                        ;; 00:3687 $3e $7f
-    call call_00_3844                                  ;; 00:3689 $cd $44 $38
+    call storeTileAatDialogPositionDE                  ;; 00:3689 $cd $44 $38
     inc  E                                             ;; 00:368c $1c
     dec  C                                             ;; 00:368d $0d
     jr   NZ, .jr_00_3687                               ;; 00:368e $20 $f7
@@ -8867,12 +8867,12 @@ drawText:
     jr   NZ, .jr_00_3793                               ;; 00:378a $20 $07
     dec  D                                             ;; 00:378c $15
     ld   A, $7f                                        ;; 00:378d $3e $7f
-    call call_00_3844                                  ;; 00:378f $cd $44 $38
+    call storeTileAatDialogPositionDE                  ;; 00:378f $cd $44 $38
     inc  D                                             ;; 00:3792 $14
 .jr_00_3793:
     pop  AF                                            ;; 00:3793 $f1
     xor  A, $80                                        ;; 00:3794 $ee $80
-    call call_00_3844                                  ;; 00:3796 $cd $44 $38
+    call storeTileAatDialogPositionDE                  ;; 00:3796 $cd $44 $38
     ld   A, [wD84A]                                    ;; 00:3799 $fa $4a $d8
     cp   A, $1e                                        ;; 00:379c $fe $1e
     jr   NZ, .jr_00_37a1                               ;; 00:379e $20 $01
@@ -8928,10 +8928,10 @@ drawText:
 .jr_00_37f0:
     dec  D                                             ;; 00:37f0 $15
     ld   A, $7f                                        ;; 00:37f1 $3e $7f
-    call call_00_3844                                  ;; 00:37f3 $cd $44 $38
+    call storeTileAatDialogPositionDE                  ;; 00:37f3 $cd $44 $38
     inc  D                                             ;; 00:37f6 $14
     ld   A, $7f                                        ;; 00:37f7 $3e $7f
-    call call_00_3844                                  ;; 00:37f9 $cd $44 $38
+    call storeTileAatDialogPositionDE                  ;; 00:37f9 $cd $44 $38
     inc  E                                             ;; 00:37fc $1c
     dec  B                                             ;; 00:37fd $05
     jr   NZ, .jr_00_37f0                               ;; 00:37fe $20 $f0
@@ -8983,13 +8983,13 @@ call_00_380b:
     pop  AF                                            ;; 00:3842 $f1
     ret                                                ;; 00:3843 $c9
 
-call_00_3844:
+storeTileAatDialogPositionDE:
     push DE                                            ;; 00:3844 $d5
     push AF                                            ;; 00:3845 $f5
-    ld   A, [wD4A7]                                    ;; 00:3846 $fa $a7 $d4
+    ld   A, [wDialogX]                                 ;; 00:3846 $fa $a7 $d4
     add  A, E                                          ;; 00:3849 $83
     ld   E, A                                          ;; 00:384a $5f
-    ld   A, [wD4A8]                                    ;; 00:384b $fa $a8 $d4
+    ld   A, [wDialogY]                                 ;; 00:384b $fa $a8 $d4
     add  A, D                                          ;; 00:384e $82
     ld   D, A                                          ;; 00:384f $57
     pop  AF                                            ;; 00:3850 $f1

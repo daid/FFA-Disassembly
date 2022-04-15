@@ -793,10 +793,10 @@ wD4A3:
 wD4A4:
     ds 3                                               ;; d4a4
 
-wD4A7:
+wDialogX:
     ds 1                                               ;; d4a7
 
-wD4A8:
+wDialogY:
     ds 1                                               ;; d4a8
 
 wD4A9:
