@@ -7849,11 +7849,11 @@ call_00_313b:
     jp_to_bank 02, call_02_78c6                        ;; 00:313b $f5 $3e $2c $c3 $06 $1f
     db   $f5, $3e, $2d, $c3, $06, $1f                  ;; 00:3141 ??????
 
-call_00_3147:
-    jp_to_bank 02, call_02_6623                        ;; 00:3147 $f5 $3e $2e $c3 $06 $1f
+drawWillBarCharge_trampoline:
+    jp_to_bank 02, drawWillBarCharge                   ;; 00:3147 $f5 $3e $2e $c3 $06 $1f
 
-call_00_314d:
-    jp_to_bank 02, call_02_65fa                        ;; 00:314d $f5 $3e $2f $c3 $06 $1f
+drawEmptyWillBar_trampoline:
+    jp_to_bank 02, drawEmptyWillBar                    ;; 00:314d $f5 $3e $2f $c3 $06 $1f
 
 call_00_3153:
     jp_to_bank 02, call_02_7b3c                        ;; 00:3153 $f5 $3e $30 $c3 $06 $1f
@@ -10032,8 +10032,8 @@ call_00_3e8f:
 call_00_3e97:
     ld   A, $40                                        ;; 00:3e97 $3e $40
     ld   [wWillCharge], A                              ;; 00:3e99 $ea $58 $d8
-    call call_00_314d                                  ;; 00:3e9c $cd $4d $31
-    call call_00_3147                                  ;; 00:3e9f $cd $47 $31
+    call drawEmptyWillBar_trampoline                   ;; 00:3e9c $cd $4d $31
+    call drawWillBarCharge_trampoline                  ;; 00:3e9f $cd $47 $31
     ret                                                ;; 00:3ea2 $c9
 
 ; A=next level
@@ -10074,8 +10074,8 @@ call_00_3ed0:
     push AF                                            ;; 00:3ed3 $f5
     xor  A, A                                          ;; 00:3ed4 $af
     ld   [wWillCharge], A                              ;; 00:3ed5 $ea $58 $d8
-    call call_00_314d                                  ;; 00:3ed8 $cd $4d $31
-    call call_00_3147                                  ;; 00:3edb $cd $47 $31
+    call drawEmptyWillBar_trampoline                   ;; 00:3ed8 $cd $4d $31
+    call drawWillBarCharge_trampoline                  ;; 00:3edb $cd $47 $31
     pop  AF                                            ;; 00:3ede $f1
     ret                                                ;; 00:3edf $c9
 
@@ -10095,7 +10095,7 @@ increaseWillCharge:
 .jr_00_3ef3:
     ld   A, B                                          ;; 00:3ef3 $78
     ld   [wWillCharge], A                              ;; 00:3ef4 $ea $58 $d8
-    call call_00_3147                                  ;; 00:3ef7 $cd $47 $31
+    call drawWillBarCharge_trampoline                  ;; 00:3ef7 $cd $47 $31
     ret                                                ;; 00:3efa $c9
 
 call_00_3efb:

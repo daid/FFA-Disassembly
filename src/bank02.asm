@@ -53,8 +53,8 @@ SECTION "bank02", ROMX[$4000], BANK[$02]
     call_to_bank_target call_02_71db                   ;; 02:4056 pP
     call_to_bank_target call_02_78c6                   ;; 02:4058 pP
     call_to_bank_target call_02_717b                   ;; 02:405a ??
-    call_to_bank_target call_02_6623                   ;; 02:405c pP
-    call_to_bank_target call_02_65fa                   ;; 02:405e pP
+    call_to_bank_target drawWillBarCharge              ;; 02:405c pP
+    call_to_bank_target drawEmptyWillBar               ;; 02:405e pP
     call_to_bank_target call_02_7b3c                   ;; 02:4060 pP
     call_to_bank_target introScrollHandler             ;; 02:4062 pP
     call_to_bank_target call_02_6656                   ;; 02:4064 pP
@@ -3157,8 +3157,8 @@ call_02_564c:
     ld   DE, $9c40                                     ;; 02:565b $11 $40 $9c
     ld   B, $20                                        ;; 02:565e $06 $20
     call call_02_566a                                  ;; 02:5660 $cd $6a $56
-    call call_02_65fa                                  ;; 02:5663 $cd $fa $65
-    call call_02_6623                                  ;; 02:5666 $cd $23 $66
+    call drawEmptyWillBar                              ;; 02:5663 $cd $fa $65
+    call drawWillBarCharge                             ;; 02:5666 $cd $23 $66
     ret                                                ;; 02:5669 $c9
 
 call_02_566a:
@@ -4223,8 +4223,8 @@ data_02_64ec:
     db   $03, $0a, $0e, $0a, $0f, $0a, $11, $0a        ;; 02:65ec ????????
     db   $12, $0a, $13, $0a, $ff, $00                  ;; 02:65f4 ??????
 
-call_02_65fa:
-    ld   HL, .data_02_660f                             ;; 02:65fa $21 $0f $66
+drawEmptyWillBar:
+    ld   HL, .emptyWillBarTiles                        ;; 02:65fa $21 $0f $66
     ld   DE, $100                                      ;; 02:65fd $11 $00 $01
     ld   B, $14                                        ;; 02:6600 $06 $14
 .jr_02_6602:
@@ -4238,12 +4238,12 @@ call_02_65fa:
     dec  B                                             ;; 02:660b $05
     jr   NZ, .jr_02_6602                               ;; 02:660c $20 $f4
     ret                                                ;; 02:660e $c9
-.data_02_660f:
+.emptyWillBarTiles:
     db   $7f, $f8, $fa, $fa, $fa, $fa, $fa, $fa        ;; 02:660f ........
     db   $fa, $fa, $fa, $fa, $fa, $fa, $fa, $fa        ;; 02:6617 ........
     db   $fa, $fa, $fe, $7f                            ;; 02:661f ....
 
-call_02_6623:
+drawWillBarCharge:
     ld   A, [wWillCharge]                              ;; 02:6623 $fa $58 $d8
     and  A, A                                          ;; 02:6626 $a7
     ret  Z                                             ;; 02:6627 $c8
@@ -4255,7 +4255,7 @@ call_02_6623:
     rrca                                               ;; 02:662e $0f
     and  A, $3f                                        ;; 02:662f $e6 $3f
     ld   DE, $102                                      ;; 02:6631 $11 $02 $01
-    call NZ, call_02_6641                              ;; 02:6634 $c4 $41 $66
+    call NZ, .drawFullTiles                            ;; 02:6634 $c4 $41 $66
     ld   A, C                                          ;; 02:6637 $79
     or   A, A                                          ;; 02:6638 $b7
     ret  Z                                             ;; 02:6639 $c8
@@ -4263,16 +4263,14 @@ call_02_6623:
     add  A, C                                          ;; 02:663c $81
     call storeTileAatWindowPositionDE                  ;; 02:663d $cd $66 $38
     ret                                                ;; 02:6640 $c9
-
-call_02_6641:
+.drawFullTiles:
     push BC                                            ;; 02:6641 $c5
     ld   B, A                                          ;; 02:6642 $47
     ld   A, $f9                                        ;; 02:6643 $3e $f9
-    call call_02_664a                                  ;; 02:6645 $cd $4a $66
+    call drawWillBarCharge.drawFullTilesLoop           ;; 02:6645 $cd $4a $66
     pop  BC                                            ;; 02:6648 $c1
     ret                                                ;; 02:6649 $c9
-
-call_02_664a:
+.drawFullTilesLoop:
     ld   C, A                                          ;; 02:664a $4f
     push DE                                            ;; 02:664b $d5
     call storeTileAatWindowPositionDE                  ;; 02:664c $cd $66 $38
@@ -4280,7 +4278,7 @@ call_02_664a:
     inc  DE                                            ;; 02:6650 $13
     ld   A, C                                          ;; 02:6651 $79
     dec  B                                             ;; 02:6652 $05
-    jr   NZ, call_02_664a                              ;; 02:6653 $20 $f5
+    jr   NZ, drawWillBarCharge.drawFullTilesLoop       ;; 02:6653 $20 $f5
     ret                                                ;; 02:6655 $c9
 
 call_02_6656:
