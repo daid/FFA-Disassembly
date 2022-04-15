@@ -8373,7 +8373,7 @@ jp_00_3480:
     push HL                                            ;; 00:3484 $e5
     call call_00_3c87                                  ;; 00:3485 $cd $87 $3c
     pop  HL                                            ;; 00:3488 $e1
-    call call_00_3777                                  ;; 00:3489 $cd $77 $37
+    call drawText                                      ;; 00:3489 $cd $77 $37
     ld   A, [wD89B]                                    ;; 00:348c $fa $9b $d8
     ld   B, A                                          ;; 00:348f $47
     ld   A, [wD89A]                                    ;; 00:3490 $fa $9a $d8
@@ -8420,7 +8420,7 @@ jp_00_34a4:
     add  HL, BC                                        ;; 00:34d0 $09
     inc  A                                             ;; 00:34d1 $3c
     ld   [wD883], A                                    ;; 00:34d2 $ea $83 $d8
-    call call_00_3777                                  ;; 00:34d5 $cd $77 $37
+    call drawText                                      ;; 00:34d5 $cd $77 $37
     call call_00_3c73                                  ;; 00:34d8 $cd $73 $3c
     pop  HL                                            ;; 00:34db $e1
     ld   A, [wD883]                                    ;; 00:34dc $fa $83 $d8
@@ -8539,7 +8539,7 @@ call_00_3597:
     call call_00_36c2                                  ;; 00:3597 $cd $c2 $36
     jr   NZ, .jr_00_35ae                               ;; 00:359a $20 $12
     call call_00_3c87                                  ;; 00:359c $cd $87 $3c
-    call call_00_3777                                  ;; 00:359f $cd $77 $37
+    call drawText                                      ;; 00:359f $cd $77 $37
     call call_00_3c73                                  ;; 00:35a2 $cd $73 $3c
     jr   NZ, .jr_00_35ae                               ;; 00:35a5 $20 $07
     ld   A, $01                                        ;; 00:35a7 $3e $01
@@ -8847,7 +8847,11 @@ call_00_374d:
     db   $3e, $7f, $cd, $44, $38, $1c, $05, $20        ;; 00:376c ????????
     db   $f0, $d1, $c9                                 ;; 00:3774 ???
 
-call_00_3777:
+; Draw text
+; HL = pointer to text
+; DE = position on the open dialog
+; B = size of text to draw (but not always?, whole interaction is more complex)
+drawText:
     call call_00_374d                                  ;; 00:3777 $cd $4d $37
 .jr_00_377a:
     push AF                                            ;; 00:377a $f5
@@ -9436,7 +9440,7 @@ call_00_3aee:
     dec  B                                             ;; 00:3afe $05
     dec  B                                             ;; 00:3aff $05
     ld   DE, $202                                      ;; 00:3b00 $11 $02 $02
-    call call_00_3777                                  ;; 00:3b03 $cd $77 $37
+    call drawText                                      ;; 00:3b03 $cd $77 $37
     pop  HL                                            ;; 00:3b06 $e1
     ld   B, $07                                        ;; 00:3b07 $06 $07
     call call_00_3c69                                  ;; 00:3b09 $cd $69 $3c

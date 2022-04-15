@@ -2390,7 +2390,7 @@ call_02_5182:
     ld   HL, data_02_7d56                              ;; 02:51a5 $21 $56 $7d
     push DE                                            ;; 02:51a8 $d5
     ld   B, $07                                        ;; 02:51a9 $06 $07
-    call call_00_3777                                  ;; 02:51ab $cd $77 $37
+    call drawText                                      ;; 02:51ab $cd $77 $37
     pop  DE                                            ;; 02:51ae $d1
     pop  AF                                            ;; 02:51af $f1
     pop  HL                                            ;; 02:51b0 $e1
@@ -2399,7 +2399,7 @@ call_02_5182:
     add  A, E                                          ;; 02:51b6 $83
     ld   E, A                                          ;; 02:51b7 $5f
     ld   B, $08                                        ;; 02:51b8 $06 $08
-    call call_00_3777                                  ;; 02:51ba $cd $77 $37
+    call drawText                                      ;; 02:51ba $cd $77 $37
     ld   A, [wD8C6]                                    ;; 02:51bd $fa $c6 $d8
     ld   D, A                                          ;; 02:51c0 $57
     ld   A, [wD8C5]                                    ;; 02:51c1 $fa $c5 $d8
@@ -2407,7 +2407,7 @@ call_02_5182:
     ld   HL, .data_02_51d3                             ;; 02:51c5 $21 $d3 $51
     ld   B, $02                                        ;; 02:51c8 $06 $02
 .jr_02_51ca:
-    call call_00_3777                                  ;; 02:51ca $cd $77 $37
+    call drawText                                      ;; 02:51ca $cd $77 $37
     ld   B, $26                                        ;; 02:51cd $06 $26
     call call_02_6c98                                  ;; 02:51cf $cd $98 $6c
     ret                                                ;; 02:51d2 $c9
@@ -2591,7 +2591,7 @@ jp_02_52c6:
     ld   C, $01                                        ;; 02:52fb $0e $01
     ld   HL, wD7A7                                     ;; 02:52fd $21 $a7 $d7
     ld   DE, $208                                      ;; 02:5300 $11 $08 $02
-    call call_00_3777                                  ;; 02:5303 $cd $77 $37
+    call drawText                                      ;; 02:5303 $cd $77 $37
 .jr_02_5306:
     ld   A, $1e                                        ;; 02:5306 $3e $1e
     ld   HL, data_02_5cd6                              ;; 02:5308 $21 $d6 $5c
@@ -2834,7 +2834,7 @@ call_02_547e:
     ld   A, [wD84A]                                    ;; 02:547e $fa $4a $d8
     call call_02_7693                                  ;; 02:5481 $cd $93 $76
     ld   HL, cantCarryTextLabel                        ;; 02:5484 $21 $10 $3f
-    call call_00_3777                                  ;; 02:5487 $cd $77 $37
+    call drawText                                      ;; 02:5487 $cd $77 $37
     ld   A, $29                                        ;; 02:548a $3e $29
     ld   [wD853], A                                    ;; 02:548c $ea $53 $d8
     ret                                                ;; 02:548f $c9
@@ -3566,7 +3566,7 @@ call_02_5895:
     push DE                                            ;; 02:58ee $d5
     push BC                                            ;; 02:58ef $c5
     call call_02_75c5                                  ;; 02:58f0 $cd $c5 $75
-    call call_00_3777                                  ;; 02:58f3 $cd $77 $37
+    call drawText                                      ;; 02:58f3 $cd $77 $37
     call call_02_59fe                                  ;; 02:58f6 $cd $fe $59
     push AF                                            ;; 02:58f9 $f5
     ld   A, [wD84A]                                    ;; 02:58fa $fa $4a $d8
@@ -3604,11 +3604,11 @@ jp_02_5922:
     ld   A, [wD84A]                                    ;; 02:5932 $fa $4a $d8
     cp   A, $1f                                        ;; 02:5935 $fe $1f
     push AF                                            ;; 02:5937 $f5
-    call Z, call_00_3777                               ;; 02:5938 $cc $77 $37
+    call Z, drawText                                   ;; 02:5938 $cc $77 $37
     ld   DE, $61c                                      ;; 02:593b $11 $1c $06
     ld   BC, $1f01                                     ;; 02:593e $01 $01 $1f
     pop  AF                                            ;; 02:5941 $f1
-    call Z, call_00_3777                               ;; 02:5942 $cc $77 $37
+    call Z, drawText                                   ;; 02:5942 $cc $77 $37
     ld   A, [wD850]                                    ;; 02:5945 $fa $50 $d8
     ld   [wD853], A                                    ;; 02:5948 $ea $53 $d8
     ld   B, A                                          ;; 02:594b $47
@@ -3622,7 +3622,7 @@ jp_02_5922:
 jp_02_5959:
     call call_02_6da7                                  ;; 02:5959 $cd $a7 $6d
     ld   HL, wBoyName                                  ;; 02:595c $21 $9d $d7
-    call call_00_3777                                  ;; 02:595f $cd $77 $37
+    call drawText                                      ;; 02:595f $cd $77 $37
     dec  E                                             ;; 02:5962 $1d
     dec  E                                             ;; 02:5963 $1d
     ld   A, $45                                        ;; 02:5964 $3e $45
@@ -3771,7 +3771,7 @@ call_02_5a18:
     inc  DE                                            ;; 02:5a46 $13
     ld   B, $02                                        ;; 02:5a47 $06 $02
     ld   HL, data_02_7d9a                              ;; 02:5a49 $21 $9a $7d
-    call call_00_3777                                  ;; 02:5a4c $cd $77 $37
+    call drawText                                      ;; 02:5a4c $cd $77 $37
     ret                                                ;; 02:5a4f $c9
 .jr_02_5a50:
     ld   B, $06                                        ;; 02:5a50 $06 $06
@@ -3790,12 +3790,12 @@ call_02_5a18:
     ret                                                ;; 02:5a61 $c9
 
 jp_02_5a62:
-    ld   HL, $a006                                     ;; 02:5a62 $21 $06 $a0
+    ld   HL, sA006                                     ;; 02:5a62 $21 $06 $a0
     ld   B, $08                                        ;; 02:5a65 $06 $08
     jr   jr_02_5a6e                                    ;; 02:5a67 $18 $05
 
 jp_02_5a69:
-    ld   HL, $a106                                     ;; 02:5a69 $21 $06 $a1
+    ld   HL, sA106                                     ;; 02:5a69 $21 $06 $a1
     ld   B, $10                                        ;; 02:5a6c $06 $10
 
 jr_02_5a6e:
@@ -3803,13 +3803,13 @@ jr_02_5a6e:
     and  A, B                                          ;; 02:5a71 $a0
     jr   Z, .jr_02_5a8d                                ;; 02:5a72 $28 $19
     call enableSRAM                                    ;; 02:5a74 $cd $58 $74
-    call call_02_74d5                                  ;; 02:5a77 $cd $d5 $74
+    call drawSaveNameFromSRAM                          ;; 02:5a77 $cd $d5 $74
     ld   DE, $08                                       ;; 02:5a7a $11 $08 $00
     add  HL, DE                                        ;; 02:5a7d $19
-    call call_02_74f4                                  ;; 02:5a7e $cd $f4 $74
-    call call_02_752e                                  ;; 02:5a81 $cd $2e $75
-    call call_02_7566                                  ;; 02:5a84 $cd $66 $75
-    call call_02_7589                                  ;; 02:5a87 $cd $89 $75
+    call drawSaveHPFromSRAM                            ;; 02:5a7e $cd $f4 $74
+    call drawSaveMPFromSRAM                            ;; 02:5a81 $cd $2e $75
+    call drawLevelFromSRAM                             ;; 02:5a84 $cd $66 $75
+    call drawExperienceFromSRAM                        ;; 02:5a87 $cd $89 $75
     call disableSRAM                                   ;; 02:5a8a $cd $5e $74
 .jr_02_5a8d:
     ld   A, [wD850]                                    ;; 02:5a8d $fa $50 $d8
@@ -3854,7 +3854,7 @@ call_02_5aaf:
     add  HL, BC                                        ;; 02:5ac6 $09
     pop  BC                                            ;; 02:5ac7 $c1
     dec  E                                             ;; 02:5ac8 $1d
-    call call_00_3777                                  ;; 02:5ac9 $cd $77 $37
+    call drawText                                      ;; 02:5ac9 $cd $77 $37
     jp   jp_02_5922                                    ;; 02:5acc $c3 $22 $59
 
 call_02_5acf:
@@ -3960,7 +3960,7 @@ call_02_5b68:
     push HL                                            ;; 02:5b68 $e5
     call call_02_6da7                                  ;; 02:5b69 $cd $a7 $6d
     push BC                                            ;; 02:5b6c $c5
-    call call_00_3777                                  ;; 02:5b6d $cd $77 $37
+    call drawText                                      ;; 02:5b6d $cd $77 $37
     push HL                                            ;; 02:5b70 $e5
     ld   A, [wD84A]                                    ;; 02:5b71 $fa $4a $d8
     cp   A, $14                                        ;; 02:5b74 $fe $14
@@ -6177,14 +6177,14 @@ jp_02_71fb:
     jp   NZ, jp_02_72be                                ;; 02:7200 $c2 $be $72
     ld   HL, wD872                                     ;; 02:7203 $21 $72 $d8
     res  5, [HL]                                       ;; 02:7206 $cb $ae
-    ld   HL, $a000                                     ;; 02:7208 $21 $00 $a0
+    ld   HL, sA000                                     ;; 02:7208 $21 $00 $a0
     ld   A, [wD84B]                                    ;; 02:720b $fa $4b $d8
     and  A, A                                          ;; 02:720e $a7
     ld   B, $08                                        ;; 02:720f $06 $08
     jr   Z, .jr_02_721d                                ;; 02:7211 $28 $0a
     ld   HL, wD872                                     ;; 02:7213 $21 $72 $d8
     set  5, [HL]                                       ;; 02:7216 $cb $ee
-    ld   HL, $a100                                     ;; 02:7218 $21 $00 $a1
+    ld   HL, sA100                                     ;; 02:7218 $21 $00 $a1
     ld   B, $10                                        ;; 02:721b $06 $10
 .jr_02_721d:
     ld   A, [wD87E]                                    ;; 02:721d $fa $7e $d8
@@ -6278,7 +6278,7 @@ jp_02_72be:
     ld   A, [DE]                                       ;; 02:72c1 $1a
     res  5, A                                          ;; 02:72c2 $cb $af
     ld   [DE], A                                       ;; 02:72c4 $12
-    ld   HL, $a000                                     ;; 02:72c5 $21 $00 $a0
+    ld   HL, sA000                                     ;; 02:72c5 $21 $00 $a0
     ld   A, [wD84B]                                    ;; 02:72c8 $fa $4b $d8
     and  A, A                                          ;; 02:72cb $a7
     ld   A, [wD874]                                    ;; 02:72cc $fa $74 $d8
@@ -6296,7 +6296,7 @@ jp_02_72be:
     ld   A, [DE]                                       ;; 02:72e2 $1a
     set  5, A                                          ;; 02:72e3 $cb $ef
     ld   [DE], A                                       ;; 02:72e5 $12
-    ld   HL, $a100                                     ;; 02:72e6 $21 $00 $a1
+    ld   HL, sA100                                     ;; 02:72e6 $21 $00 $a1
 .jr_02_72e9:
     ld   A, [wD84A]                                    ;; 02:72e9 $fa $4a $d8
     ld   [wD84B], A                                    ;; 02:72ec $ea $4b $d8
@@ -6608,7 +6608,7 @@ getSRAMChecksum:
     ld   A, C                                          ;; 02:74d3 $79
     ret                                                ;; 02:74d4 $c9
 
-call_02_74d5:
+drawSaveNameFromSRAM:
     ld   B, $04                                        ;; 02:74d5 $06 $04
     ld   DE, wD7AA                                     ;; 02:74d7 $11 $aa $d7
     push DE                                            ;; 02:74da $d5
@@ -6626,16 +6626,16 @@ call_02_74d5:
     pop  HL                                            ;; 02:74e8 $e1
     ld   DE, $202                                      ;; 02:74e9 $11 $02 $02
     ld   BC, $404                                      ;; 02:74ec $01 $04 $04
-    call call_00_3777                                  ;; 02:74ef $cd $77 $37
+    call drawText                                      ;; 02:74ef $cd $77 $37
     pop  HL                                            ;; 02:74f2 $e1
     ret                                                ;; 02:74f3 $c9
 
-call_02_74f4:
+drawSaveHPFromSRAM:
     push HL                                            ;; 02:74f4 $e5
     ld   DE, $207                                      ;; 02:74f5 $11 $07 $02
     ld   B, $03                                        ;; 02:74f8 $06 $03
     ld   HL, data_02_7db3                              ;; 02:74fa $21 $b3 $7d
-    call call_00_3777                                  ;; 02:74fd $cd $77 $37
+    call drawText                                      ;; 02:74fd $cd $77 $37
     pop  HL                                            ;; 02:7500 $e1
     call readSRAMByte                                  ;; 02:7501 $cd $6f $74
     ld   E, A                                          ;; 02:7504 $5f
@@ -6664,12 +6664,12 @@ call_02_74f4:
     pop  HL                                            ;; 02:752c $e1
     ret                                                ;; 02:752d $c9
 
-call_02_752e:
+drawSaveMPFromSRAM:
     push HL                                            ;; 02:752e $e5
     ld   DE, $307                                      ;; 02:752f $11 $07 $03
     ld   B, $03                                        ;; 02:7532 $06 $03
     ld   HL, data_02_7dbc                              ;; 02:7534 $21 $bc $7d
-    call call_00_3777                                  ;; 02:7537 $cd $77 $37
+    call drawText                                      ;; 02:7537 $cd $77 $37
     pop  HL                                            ;; 02:753a $e1
     call readSRAMByte                                  ;; 02:753b $cd $6f $74
     ld   C, A                                          ;; 02:753e $4f
@@ -6696,7 +6696,8 @@ call_02_752e:
     pop  HL                                            ;; 02:7564 $e1
     ret                                                ;; 02:7565 $c9
 
-call_02_7566:
+; Draw the level of the save as well as the E after it for the exp, but not the actual experience numbers
+drawLevelFromSRAM:
     ld   DE, $402                                      ;; 02:7566 $11 $02 $04
     ld   A, $45                                        ;; 02:7569 $3e $45
     call call_00_3844                                  ;; 02:756b $cd $44 $38
@@ -6718,7 +6719,7 @@ call_02_7566:
     pop  HL                                            ;; 02:7587 $e1
     ret                                                ;; 02:7588 $c9
 
-call_02_7589:
+drawExperienceFromSRAM:
     call readSRAMByte                                  ;; 02:7589 $cd $6f $74
     ld   E, A                                          ;; 02:758c $5f
     call readSRAMByte                                  ;; 02:758d $cd $6f $74
@@ -6815,7 +6816,7 @@ call_02_75f4:
     inc  E                                             ;; 02:7623 $1c
     ld   B, $02                                        ;; 02:7624 $06 $02
     ld   HL, data_02_7d9a                              ;; 02:7626 $21 $9a $7d
-    call call_00_3777                                  ;; 02:7629 $cd $77 $37
+    call drawText                                      ;; 02:7629 $cd $77 $37
     ret                                                ;; 02:762c $c9
 
 call_02_762d:
@@ -7126,7 +7127,7 @@ call_02_77f1:
     add  HL, DE                                        ;; 02:780e $19
     ld   DE, $202                                      ;; 02:780f $11 $02 $02
     ld   BC, $401                                      ;; 02:7812 $01 $01 $04
-    call call_00_3777                                  ;; 02:7815 $cd $77 $37
+    call drawText                                      ;; 02:7815 $cd $77 $37
     ld   A, $26                                        ;; 02:7818 $3e $26
     ld   [wD853], A                                    ;; 02:781a $ea $53 $d8
     ret                                                ;; 02:781d $c9
@@ -7643,12 +7644,12 @@ call_02_7b3c:
     ld   [wC0A0], A                                    ;; 02:7b3e $ea $a0 $c0
     ld   A, $3c                                        ;; 02:7b41 $3e $3c
     ld   [wTitleScreenDelay], A                        ;; 02:7b43 $ea $8c $d8
-    ld   HL, $a000                                     ;; 02:7b46 $21 $00 $a0
+    ld   HL, sA000                                     ;; 02:7b46 $21 $00 $a0
     ld   A, $08                                        ;; 02:7b49 $3e $08
     call call_02_747c                                  ;; 02:7b4b $cd $7c $74
     ld   A, E                                          ;; 02:7b4e $7b
     ld   [wRndState0], A                               ;; 02:7b4f $ea $b0 $c0
-    ld   HL, $a100                                     ;; 02:7b52 $21 $00 $a1
+    ld   HL, sA100                                     ;; 02:7b52 $21 $00 $a1
     ld   A, $10                                        ;; 02:7b55 $3e $10
     call call_02_747c                                  ;; 02:7b57 $cd $7c $74
     ld   A, E                                          ;; 02:7b5a $7b
@@ -7794,7 +7795,7 @@ call_02_7c3f:
     ld   A, $7f                                        ;; 02:7c5a $3e $7f
     call call_00_3844                                  ;; 02:7c5c $cd $44 $38
     inc  E                                             ;; 02:7c5f $1c
-    call call_00_3777                                  ;; 02:7c60 $cd $77 $37
+    call drawText                                      ;; 02:7c60 $cd $77 $37
     ld   A, H                                          ;; 02:7c63 $7c
     ld   [wD88F], A                                    ;; 02:7c64 $ea $8f $d8
     ld   A, L                                          ;; 02:7c67 $7d
