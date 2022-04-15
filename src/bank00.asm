@@ -9709,7 +9709,7 @@ call_00_3c69:
 call_00_3c73:
     push AF                                            ;; 00:3c73 $f5
     push AF                                            ;; 00:3c74 $f5
-    call call_00_3099                                  ;; 00:3c75 $cd $99 $30
+    call saveRegisterState2_trampoline                 ;; 00:3c75 $cd $99 $30
     pop  AF                                            ;; 00:3c78 $f1
     push BC                                            ;; 00:3c79 $c5
     push AF                                            ;; 00:3c7a $f5
@@ -9723,7 +9723,7 @@ call_00_3c73:
     ret                                                ;; 00:3c86 $c9
 
 call_00_3c87:
-    call call_00_3081                                  ;; 00:3c87 $cd $81 $30
+    call loadRegisterState2_trampoline                 ;; 00:3c87 $cd $81 $30
     push BC                                            ;; 00:3c8a $c5
     ld   A, [wD8B1]                                    ;; 00:3c8b $fa $b1 $d8
     ld   B, A                                          ;; 00:3c8e $47
