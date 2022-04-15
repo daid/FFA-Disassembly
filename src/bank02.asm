@@ -19,12 +19,12 @@ SECTION "bank02", ROMX[$4000], BANK[$02]
     call_to_bank_target call_02_6bbe                   ;; 02:4012 ??
     call_to_bank_target call_02_4776                   ;; 02:4014 ??
     call_to_bank_target call_02_67f9                   ;; 02:4016 ??
-    call_to_bank_target loadRegisterState              ;; 02:4018 ??
-    call_to_bank_target call_02_6da7                   ;; 02:401a pP
+    call_to_bank_target loadRegisterState1             ;; 02:4018 ??
+    call_to_bank_target loadRegisterState2             ;; 02:401a pP
     call_to_bank_target call_02_7693                   ;; 02:401c pP
     call_to_bank_target indexIntoTable                 ;; 02:401e ??
-    call_to_bank_target call_02_6d34                   ;; 02:4020 ??
-    call_to_bank_target saveRegisterState              ;; 02:4022 pP
+    call_to_bank_target saveRegisterState1             ;; 02:4020 ??
+    call_to_bank_target saveRegisterState2             ;; 02:4022 pP
     call_to_bank_target call_02_4860                   ;; 02:4024 pP
     call_to_bank_target call_02_667a                   ;; 02:4026 pP
     call_to_bank_target call_02_6700                   ;; 02:4028 pP
@@ -1208,13 +1208,13 @@ call_02_48f0:
     ret                                                ;; 02:492a $c9
 
 call_02_492b:
-    call loadRegisterState                             ;; 02:492b $cd $5b $6d
+    call loadRegisterState1                            ;; 02:492b $cd $5b $6d
     ld   A, [HL]                                       ;; 02:492e $7e
     ld   [wDialogType], A                              ;; 02:492f $ea $4a $d8
     push HL                                            ;; 02:4932 $e5
     call call_02_6700                                  ;; 02:4933 $cd $00 $67
     pop  HL                                            ;; 02:4936 $e1
-    call call_02_6d34                                  ;; 02:4937 $cd $34 $6d
+    call saveRegisterState1                            ;; 02:4937 $cd $34 $6d
     ld   A, [wD853]                                    ;; 02:493a $fa $53 $d8
     bit  7, A                                          ;; 02:493d $cb $7f
     ret  NZ                                            ;; 02:493f $c0
@@ -1234,7 +1234,7 @@ call_02_492b:
     ld   A, [wDialogType]                              ;; 02:4953 $fa $4a $d8
     call call_02_7693                                  ;; 02:4956 $cd $93 $76
     pop  HL                                            ;; 02:4959 $e1
-    call call_02_6d34                                  ;; 02:495a $cd $34 $6d
+    call saveRegisterState1                            ;; 02:495a $cd $34 $6d
     ld   A, H                                          ;; 02:495d $7c
     ld   [wD895], A                                    ;; 02:495e $ea $95 $d8
     ld   A, L                                          ;; 02:4961 $7d
@@ -1256,7 +1256,7 @@ call_02_492b:
     inc  HL                                            ;; 02:4978 $23
     ld   D, [HL]                                       ;; 02:4979 $56
     inc  HL                                            ;; 02:497a $23
-    call call_02_6d34                                  ;; 02:497b $cd $34 $6d
+    call saveRegisterState1                            ;; 02:497b $cd $34 $6d
     ld   A, D                                          ;; 02:497e $7a
     ld   [wD895], A                                    ;; 02:497f $ea $95 $d8
     ld   A, E                                          ;; 02:4982 $7b
@@ -1296,7 +1296,7 @@ call_02_49c7:
     cp   A, $04                                        ;; 02:49cb $fe $04
     call Z, call_02_57b9                               ;; 02:49cd $cc $b9 $57
     call call_02_7693                                  ;; 02:49d0 $cd $93 $76
-    call saveRegisterState                             ;; 02:49d3 $cd $80 $6d
+    call saveRegisterState2                            ;; 02:49d3 $cd $80 $6d
     pop  AF                                            ;; 02:49d6 $f1
     cp   A, $11                                        ;; 02:49d7 $fe $11
     jr   NZ, .jr_02_49e8                               ;; 02:49d9 $20 $0d
@@ -1365,7 +1365,7 @@ call_02_4a14:
     ld   DE, $200                                      ;; 02:4a55 $11 $00 $02
 .jr_02_4a58:
     call call_02_6bbe                                  ;; 02:4a58 $cd $be $6b
-    call call_02_6d34                                  ;; 02:4a5b $cd $34 $6d
+    call saveRegisterState1                            ;; 02:4a5b $cd $34 $6d
     ld   B, $03                                        ;; 02:4a5e $06 $03
     ld   A, B                                          ;; 02:4a60 $78
     call call_02_6c98                                  ;; 02:4a61 $cd $98 $6c
@@ -1391,10 +1391,10 @@ call_02_4a79:
     ld   A, [wDialogType]                              ;; 02:4a85 $fa $4a $d8
     cp   A, $19                                        ;; 02:4a88 $fe $19
     jp   Z, call_02_4c53                               ;; 02:4a8a $ca $53 $4c
-    call loadRegisterState                             ;; 02:4a8d $cd $5b $6d
+    call loadRegisterState1                            ;; 02:4a8d $cd $5b $6d
     ld   B, $19                                        ;; 02:4a90 $06 $19
     call call_02_67f9                                  ;; 02:4a92 $cd $f9 $67
-    call call_02_6d34                                  ;; 02:4a95 $cd $34 $6d
+    call saveRegisterState1                            ;; 02:4a95 $cd $34 $6d
     ld   A, [wD849]                                    ;; 02:4a98 $fa $49 $d8
     and  A, $30                                        ;; 02:4a9b $e6 $30
     ld   A, $03                                        ;; 02:4a9d $3e $03
@@ -1412,7 +1412,7 @@ call_02_4aa2:
     ld   [wD853], A                                    ;; 02:4ab5 $ea $53 $d8
     ret                                                ;; 02:4ab8 $c9
 .jr_02_4ab9:
-    call loadRegisterState                             ;; 02:4ab9 $cd $5b $6d
+    call loadRegisterState1                            ;; 02:4ab9 $cd $5b $6d
     ld   A, H                                          ;; 02:4abc $7c
     inc  A                                             ;; 02:4abd $3c
     push BC                                            ;; 02:4abe $c5
@@ -1425,7 +1425,7 @@ call_02_4aa2:
     ld   A, B                                          ;; 02:4acb $78
     ld   [wD84B], A                                    ;; 02:4acc $ea $4b $d8
     ld   [wD84C], A                                    ;; 02:4acf $ea $4c $d8
-    call call_02_6d34                                  ;; 02:4ad2 $cd $34 $6d
+    call saveRegisterState1                            ;; 02:4ad2 $cd $34 $6d
     jr   Z, .jr_02_4ade                                ;; 02:4ad5 $28 $07
     inc  A                                             ;; 02:4ad7 $3c
     ld   B, $04                                        ;; 02:4ad8 $06 $04
@@ -1615,7 +1615,7 @@ call_02_4c0e:
     ld   A, [wD849]                                    ;; 02:4c17 $fa $49 $d8
     bit  1, A                                          ;; 02:4c1a $cb $4f
     ret  Z                                             ;; 02:4c1c $c8
-    call loadRegisterState                             ;; 02:4c1d $cd $5b $6d
+    call loadRegisterState1                            ;; 02:4c1d $cd $5b $6d
     call call_02_6be8                                  ;; 02:4c20 $cd $e8 $6b
     ld   A, D                                          ;; 02:4c23 $7a
     ld   [wD89D], A                                    ;; 02:4c24 $ea $9d $d8
@@ -1625,7 +1625,7 @@ call_02_4c0e:
     ld   [wD843], A                                    ;; 02:4c2e $ea $43 $d8
     ld   A, [wD868]                                    ;; 02:4c31 $fa $68 $d8
     ld   [wD869], A                                    ;; 02:4c34 $ea $69 $d8
-    call call_02_6d34                                  ;; 02:4c37 $cd $34 $6d
+    call saveRegisterState1                            ;; 02:4c37 $cd $34 $6d
     ld   A, [wDialogType]                              ;; 02:4c3a $fa $4a $d8
     cp   A, $18                                        ;; 02:4c3d $fe $18
     jp   Z, jp_02_4f19                                 ;; 02:4c3f $ca $19 $4f
@@ -1639,27 +1639,27 @@ call_02_4c0e:
     ret                                                ;; 02:4c52 $c9
 
 call_02_4c53:
-    call loadRegisterState                             ;; 02:4c53 $cd $5b $6d
+    call loadRegisterState1                            ;; 02:4c53 $cd $5b $6d
     ld   A, [wD84B]                                    ;; 02:4c56 $fa $4b $d8
     ld   H, A                                          ;; 02:4c59 $67
-    call call_02_6d34                                  ;; 02:4c5a $cd $34 $6d
+    call saveRegisterState1                            ;; 02:4c5a $cd $34 $6d
     ld   B, $07                                        ;; 02:4c5d $06 $07
     ld   A, B                                          ;; 02:4c5f $78
     call call_02_6c98                                  ;; 02:4c60 $cd $98 $6c
     ret                                                ;; 02:4c63 $c9
 
 call_02_4c64:
-    call loadRegisterState                             ;; 02:4c64 $cd $5b $6d
+    call loadRegisterState1                            ;; 02:4c64 $cd $5b $6d
     ld   B, $1a                                        ;; 02:4c67 $06 $1a
     call call_02_67f9                                  ;; 02:4c69 $cd $f9 $67
-    call call_02_6d34                                  ;; 02:4c6c $cd $34 $6d
+    call saveRegisterState1                            ;; 02:4c6c $cd $34 $6d
     ld   A, [wD849]                                    ;; 02:4c6f $fa $49 $d8
     and  A, $30                                        ;; 02:4c72 $e6 $30
     ld   A, $07                                        ;; 02:4c74 $3e $07
     jp   NZ, jp_02_5877                                ;; 02:4c76 $c2 $77 $58
 
 call_02_4c79:
-    call loadRegisterState                             ;; 02:4c79 $cd $5b $6d
+    call loadRegisterState1                            ;; 02:4c79 $cd $5b $6d
     ld   A, H                                          ;; 02:4c7c $7c
     inc  A                                             ;; 02:4c7d $3c
     push BC                                            ;; 02:4c7e $c5
@@ -1669,7 +1669,7 @@ call_02_4c79:
     ret  NZ                                            ;; 02:4c85 $c0
     ld   A, B                                          ;; 02:4c86 $78
     ld   [wD84C], A                                    ;; 02:4c87 $ea $4c $d8
-    call call_02_6d34                                  ;; 02:4c8a $cd $34 $6d
+    call saveRegisterState1                            ;; 02:4c8a $cd $34 $6d
     inc  A                                             ;; 02:4c8d $3c
     ld   B, $08                                        ;; 02:4c8e $06 $08
     call call_02_6c98                                  ;; 02:4c90 $cd $98 $6c
@@ -1689,7 +1689,7 @@ call_02_4c9a:
     ld   E, A                                          ;; 02:4cab $5f
     call call_02_6bbe                                  ;; 02:4cac $cd $be $6b
     call call_02_57fe                                  ;; 02:4caf $cd $fe $57
-    call saveRegisterState                             ;; 02:4cb2 $cd $80 $6d
+    call saveRegisterState2                            ;; 02:4cb2 $cd $80 $6d
     ld   A, $0a                                        ;; 02:4cb5 $3e $0a
     jp   jp_02_5877                                    ;; 02:4cb7 $c3 $77 $58
 
@@ -1718,7 +1718,7 @@ call_02_4cc7:
     ld   E, A                                          ;; 02:4ce9 $5f
     ld   A, [wD84B]                                    ;; 02:4cea $fa $4b $d8
     ld   H, A                                          ;; 02:4ced $67
-    call call_02_6d34                                  ;; 02:4cee $cd $34 $6d
+    call saveRegisterState1                            ;; 02:4cee $cd $34 $6d
     ld   B, $03                                        ;; 02:4cf1 $06 $03
     call call_02_6c98                                  ;; 02:4cf3 $cd $98 $6c
     ret                                                ;; 02:4cf6 $c9
@@ -1741,9 +1741,9 @@ call_02_4cf7:
     jp   Z, jp_02_52c6                                 ;; 02:4d19 $ca $c6 $52
     cp   A, $1f                                        ;; 02:4d1c $fe $1f
     jp   Z, jp_02_7b9f                                 ;; 02:4d1e $ca $9f $7b
-    call loadRegisterState                             ;; 02:4d21 $cd $5b $6d
+    call loadRegisterState1                            ;; 02:4d21 $cd $5b $6d
     call call_02_4fc8                                  ;; 02:4d24 $cd $c8 $4f
-    call call_02_6d34                                  ;; 02:4d27 $cd $34 $6d
+    call saveRegisterState1                            ;; 02:4d27 $cd $34 $6d
     ld   B, $06                                        ;; 02:4d2a $06 $06
     call call_02_6c98                                  ;; 02:4d2c $cd $98 $6c
     ret  Z                                             ;; 02:4d2f $c8
@@ -1752,7 +1752,7 @@ call_02_4cf7:
     ret                                                ;; 02:4d35 $c9
 
 call_02_4d36:
-    call loadRegisterState                             ;; 02:4d36 $cd $5b $6d
+    call loadRegisterState1                            ;; 02:4d36 $cd $5b $6d
     call call_02_57b0                                  ;; 02:4d39 $cd $b0 $57
     ld   A, $fe                                        ;; 02:4d3c $3e $fe
     cp   A, B                                          ;; 02:4d3e $b8
@@ -1795,7 +1795,7 @@ call_02_4d36:
 
 call_02_4d77:
     call call_02_4fe8                                  ;; 02:4d77 $cd $e8 $4f
-    call call_02_6d34                                  ;; 02:4d7a $cd $34 $6d
+    call saveRegisterState1                            ;; 02:4d7a $cd $34 $6d
     ld   B, $03                                        ;; 02:4d7d $06 $03
     call call_02_6c98                                  ;; 02:4d7f $cd $98 $6c
     ret                                                ;; 02:4d82 $c9
@@ -1806,7 +1806,7 @@ jr_02_4d83:
     ret                                                ;; 02:4d88 $c9
 
 call_02_4d89:
-    call loadRegisterState                             ;; 02:4d89 $cd $5b $6d
+    call loadRegisterState1                            ;; 02:4d89 $cd $5b $6d
     call call_02_57b0                                  ;; 02:4d8c $cd $b0 $57
     cp   A, B                                          ;; 02:4d8f $b8
     jr   NZ, .jr_02_4d99                               ;; 02:4d90 $20 $07
@@ -1822,17 +1822,17 @@ call_02_4d89:
 
 call_02_4da4:
     call call_02_4fe8                                  ;; 02:4da4 $cd $e8 $4f
-    call call_02_6d34                                  ;; 02:4da7 $cd $34 $6d
+    call saveRegisterState1                            ;; 02:4da7 $cd $34 $6d
     ld   B, $03                                        ;; 02:4daa $06 $03
     call call_02_6c98                                  ;; 02:4dac $cd $98 $6c
     ret                                                ;; 02:4daf $c9
 
 call_02_4db0:
-    call loadRegisterState                             ;; 02:4db0 $cd $5b $6d
+    call loadRegisterState1                            ;; 02:4db0 $cd $5b $6d
     ld   A, [wDialogType]                              ;; 02:4db3 $fa $4a $d8
     cp   A, $04                                        ;; 02:4db6 $fe $04
     jp   NZ, jp_02_4e4c                                ;; 02:4db8 $c2 $4c $4e
-    call call_02_6d34                                  ;; 02:4dbb $cd $34 $6d
+    call saveRegisterState1                            ;; 02:4dbb $cd $34 $6d
     call call_02_57b0                                  ;; 02:4dbe $cd $b0 $57
     ld   A, [wD893]                                    ;; 02:4dc1 $fa $93 $d8
     ld   H, A                                          ;; 02:4dc4 $67
@@ -1877,7 +1877,7 @@ call_02_4db0:
     ld   HL, data_02_5bc8                              ;; 02:4e03 $21 $c8 $5b
     call call_02_57c4                                  ;; 02:4e06 $cd $c4 $57
     call call_02_7693                                  ;; 02:4e09 $cd $93 $76
-    call saveRegisterState                             ;; 02:4e0c $cd $80 $6d
+    call saveRegisterState2                            ;; 02:4e0c $cd $80 $6d
     ld   A, $14                                        ;; 02:4e0f $3e $14
     jp   jp_02_5877                                    ;; 02:4e11 $c3 $77 $58
 
@@ -1892,7 +1892,7 @@ call_02_4e14:
     call Z, call_02_7693                               ;; 02:4e26 $cc $93 $76
     ld   A, [wD869]                                    ;; 02:4e29 $fa $69 $d8
     ld   [wD868], A                                    ;; 02:4e2c $ea $68 $d8
-    call saveRegisterState                             ;; 02:4e2f $cd $80 $6d
+    call saveRegisterState2                            ;; 02:4e2f $cd $80 $6d
     ld   A, $16                                        ;; 02:4e32 $3e $16
     jp   jp_02_5877                                    ;; 02:4e34 $c3 $77 $58
 
@@ -1902,13 +1902,13 @@ call_02_4e37:
     rlca                                               ;; 02:4e3d $07
     call C, call_02_6c0b                               ;; 02:4e3e $dc $0b $6c
     call call_02_6b84                                  ;; 02:4e41 $cd $84 $6b
-    call loadRegisterState                             ;; 02:4e44 $cd $5b $6d
+    call loadRegisterState1                            ;; 02:4e44 $cd $5b $6d
     ld   A, [wD84C]                                    ;; 02:4e47 $fa $4c $d8
     ld   H, A                                          ;; 02:4e4a $67
     xor  A, A                                          ;; 02:4e4b $af
 
 jp_02_4e4c:
-    call call_02_6d34                                  ;; 02:4e4c $cd $34 $6d
+    call saveRegisterState1                            ;; 02:4e4c $cd $34 $6d
     ld   B, $03                                        ;; 02:4e4f $06 $03
     call call_02_6c98                                  ;; 02:4e51 $cd $98 $6c
     ret  Z                                             ;; 02:4e54 $c8
@@ -1917,9 +1917,9 @@ jp_02_4e4c:
     ret                                                ;; 02:4e5a $c9
 
 call_02_4e5b:
-    call loadRegisterState                             ;; 02:4e5b $cd $5b $6d
+    call loadRegisterState1                            ;; 02:4e5b $cd $5b $6d
     call call_02_4fff                                  ;; 02:4e5e $cd $ff $4f
-    call call_02_6d34                                  ;; 02:4e61 $cd $34 $6d
+    call saveRegisterState1                            ;; 02:4e61 $cd $34 $6d
     ld   B, $0f                                        ;; 02:4e64 $06 $0f
     call call_02_6c98                                  ;; 02:4e66 $cd $98 $6c
     ret  NZ                                            ;; 02:4e69 $c0
@@ -2126,7 +2126,7 @@ call_02_4fd3:
     ld   A, [wD848]                                    ;; 02:4fdb $fa $48 $d8
     ld   [wD843], A                                    ;; 02:4fde $ea $43 $d8
     call call_02_57fe                                  ;; 02:4fe1 $cd $fe $57
-    call saveRegisterState                             ;; 02:4fe4 $cd $80 $6d
+    call saveRegisterState2                            ;; 02:4fe4 $cd $80 $6d
     ret                                                ;; 02:4fe7 $c9
 
 call_02_4fe8:
@@ -3237,7 +3237,7 @@ jp_02_56c1:
     ret                                                ;; 02:56c8 $c9
 
 call_02_56c9:
-    call loadRegisterState                             ;; 02:56c9 $cd $5b $6d
+    call loadRegisterState1                            ;; 02:56c9 $cd $5b $6d
     ld   A, [wD860]                                    ;; 02:56cc $fa $60 $d8
     and  A, $80                                        ;; 02:56cf $e6 $80
     jr   NZ, .jr_02_56f5                               ;; 02:56d1 $20 $22
@@ -3357,7 +3357,7 @@ call_02_5709:
     ld   [HL], A                                       ;; 02:5796 $77
     ld   B, $12                                        ;; 02:5797 $06 $12
     call call_02_6c98                                  ;; 02:5799 $cd $98 $6c
-    call call_02_6d34                                  ;; 02:579c $cd $34 $6d
+    call saveRegisterState1                            ;; 02:579c $cd $34 $6d
     ret                                                ;; 02:579f $c9
 
 call_02_57a0:
@@ -3552,7 +3552,7 @@ call_02_5895:
     call call_02_75f4                                  ;; 02:58d6 $cd $f4 $75
     jr   jp_02_5922                                    ;; 02:58d9 $18 $47
 .jp_02_58db:
-    call call_02_6da7                                  ;; 02:58db $cd $a7 $6d
+    call loadRegisterState2                            ;; 02:58db $cd $a7 $6d
     ld   A, C                                          ;; 02:58de $79
     and  A, A                                          ;; 02:58df $a7
     jr   Z, jp_02_5922                                 ;; 02:58e0 $28 $40
@@ -3596,7 +3596,7 @@ call_02_5895:
 
 jp_02_5922:
     push HL                                            ;; 02:5922 $e5
-    call saveRegisterState                             ;; 02:5923 $cd $80 $6d
+    call saveRegisterState2                            ;; 02:5923 $cd $80 $6d
     call NC, call_02_6c0b                              ;; 02:5926 $d4 $0b $6c
     ld   HL, titleScreenLicenseText                    ;; 02:5929 $21 $62 $7e
     ld   DE, $71b                                      ;; 02:592c $11 $1b $07
@@ -3620,7 +3620,7 @@ jp_02_5922:
     ret                                                ;; 02:5958 $c9
 
 jp_02_5959:
-    call call_02_6da7                                  ;; 02:5959 $cd $a7 $6d
+    call loadRegisterState2                            ;; 02:5959 $cd $a7 $6d
     ld   HL, wBoyName                                  ;; 02:595c $21 $9d $d7
     call drawText                                      ;; 02:595f $cd $77 $37
     dec  E                                             ;; 02:5962 $1d
@@ -3833,7 +3833,7 @@ jr_02_5a6e:
     ret                                                ;; 02:5aab $c9
 
 jp_02_5aac:
-    call call_02_6da7                                  ;; 02:5aac $cd $a7 $6d
+    call loadRegisterState2                            ;; 02:5aac $cd $a7 $6d
 
 call_02_5aaf:
     push BC                                            ;; 02:5aaf $c5
@@ -3929,7 +3929,7 @@ drawNumberAtDialogPositionDE:
     jr   drawNumberAtDialogPositionDE                  ;; 02:5b2a $18 $ec
 
 jp_02_5b2c:
-    call call_02_6da7                                  ;; 02:5b2c $cd $a7 $6d
+    call loadRegisterState2                            ;; 02:5b2c $cd $a7 $6d
     ld   A, [wD895]                                    ;; 02:5b2f $fa $95 $d8
     ld   H, A                                          ;; 02:5b32 $67
     ld   A, [wD894]                                    ;; 02:5b33 $fa $94 $d8
@@ -3950,7 +3950,7 @@ jp_02_5b2c:
     ld   B, A                                          ;; 02:5b52 $47
     ld   A, [wD89A]                                    ;; 02:5b53 $fa $9a $d8
     ld   C, A                                          ;; 02:5b56 $4f
-    call saveRegisterState                             ;; 02:5b57 $cd $80 $6d
+    call saveRegisterState2                            ;; 02:5b57 $cd $80 $6d
     call call_02_762d                                  ;; 02:5b5a $cd $2d $76
     ld   A, $98                                        ;; 02:5b5d $3e $98
     ld   [wD853], A                                    ;; 02:5b5f $ea $53 $d8
@@ -3960,7 +3960,7 @@ jp_02_5b2c:
 
 call_02_5b68:
     push HL                                            ;; 02:5b68 $e5
-    call call_02_6da7                                  ;; 02:5b69 $cd $a7 $6d
+    call loadRegisterState2                            ;; 02:5b69 $cd $a7 $6d
     push BC                                            ;; 02:5b6c $c5
     call drawText                                      ;; 02:5b6d $cd $77 $37
     push HL                                            ;; 02:5b70 $e5
@@ -3974,7 +3974,7 @@ call_02_5b68:
     pop  HL                                            ;; 02:5b82 $e1
     pop  BC                                            ;; 02:5b83 $c1
     dec  C                                             ;; 02:5b84 $0d
-    call saveRegisterState                             ;; 02:5b85 $cd $80 $6d
+    call saveRegisterState2                            ;; 02:5b85 $cd $80 $6d
     pop  HL                                            ;; 02:5b88 $e1
     ret  NZ                                            ;; 02:5b89 $c0
     scf                                                ;; 02:5b8a $37
@@ -4327,12 +4327,12 @@ call_02_667a:
 .jr_02_66a0:
     inc  B                                             ;; 02:66a0 $04
     inc  C                                             ;; 02:66a1 $0c
-    call saveRegisterState                             ;; 02:66a2 $cd $80 $6d
+    call saveRegisterState2                            ;; 02:66a2 $cd $80 $6d
     ld   A, $01                                        ;; 02:66a5 $3e $01
     ld   [wD859], A                                    ;; 02:66a7 $ea $59 $d8
     ret                                                ;; 02:66aa $c9
 .data_02_66ab:
-    call call_02_6da7                                  ;; 02:66ab $cd $a7 $6d
+    call loadRegisterState2                            ;; 02:66ab $cd $a7 $6d
     push DE                                            ;; 02:66ae $d5
     push BC                                            ;; 02:66af $c5
 .jr_02_66b0:
@@ -4345,7 +4345,7 @@ call_02_667a:
     pop  DE                                            ;; 02:66b9 $d1
     inc  D                                             ;; 02:66ba $14
     dec  B                                             ;; 02:66bb $05
-    call saveRegisterState                             ;; 02:66bc $cd $80 $6d
+    call saveRegisterState2                            ;; 02:66bc $cd $80 $6d
     ret  NZ                                            ;; 02:66bf $c0
     ld   A, D                                          ;; 02:66c0 $7a
     cp   A, $0f                                        ;; 02:66c1 $fe $0f
@@ -4424,7 +4424,7 @@ data_02_670a:
     inc  HL                                            ;; 02:673b $23
     ld   B, [HL]                                       ;; 02:673c $46
     call call_02_7a73                                  ;; 02:673d $cd $73 $7a
-    call saveRegisterState                             ;; 02:6740 $cd $80 $6d
+    call saveRegisterState2                            ;; 02:6740 $cd $80 $6d
     inc  B                                             ;; 02:6743 $04
     inc  C                                             ;; 02:6744 $0c
     push BC                                            ;; 02:6745 $c5
@@ -4460,7 +4460,7 @@ data_02_670a:
     ret                                                ;; 02:6782 $c9
 
 call_02_6783:
-    call call_02_6da7                                  ;; 02:6783 $cd $a7 $6d
+    call loadRegisterState2                            ;; 02:6783 $cd $a7 $6d
     push DE                                            ;; 02:6786 $d5
     push BC                                            ;; 02:6787 $c5
     call drawDialogTopOrBottomLine                     ;; 02:6788 $cd $6e $68
@@ -4468,13 +4468,13 @@ call_02_6783:
     pop  DE                                            ;; 02:678c $d1
     dec  B                                             ;; 02:678d $05
     inc  D                                             ;; 02:678e $14
-    call saveRegisterState                             ;; 02:678f $cd $80 $6d
+    call saveRegisterState2                            ;; 02:678f $cd $80 $6d
     ld   A, $02                                        ;; 02:6792 $3e $02
     ld   [wD854], A                                    ;; 02:6794 $ea $54 $d8
     ret                                                ;; 02:6797 $c9
 
 data_02_6798:
-    call call_02_6da7                                  ;; 02:6798 $cd $a7 $6d
+    call loadRegisterState2                            ;; 02:6798 $cd $a7 $6d
     push DE                                            ;; 02:679b $d5
     push BC                                            ;; 02:679c $c5
     call drawDialogCenterLine                          ;; 02:679d $cd $55 $68
@@ -4482,7 +4482,7 @@ data_02_6798:
     pop  DE                                            ;; 02:67a1 $d1
     inc  D                                             ;; 02:67a2 $14
     dec  B                                             ;; 02:67a3 $05
-    call saveRegisterState                             ;; 02:67a4 $cd $80 $6d
+    call saveRegisterState2                            ;; 02:67a4 $cd $80 $6d
     ret  NZ                                            ;; 02:67a7 $c0
     ld   A, $7c                                        ;; 02:67a8 $3e $7c
     ld   [wDialogBorderTile], A                        ;; 02:67aa $ea $63 $d8
@@ -4502,7 +4502,7 @@ jr_02_67b7:
     ld   [wD854], A                                    ;; 02:67bf $ea $54 $d8
     ld   DE, $800                                      ;; 02:67c2 $11 $00 $08
     ld   BC, $913                                      ;; 02:67c5 $01 $13 $09
-    call saveRegisterState                             ;; 02:67c8 $cd $80 $6d
+    call saveRegisterState2                            ;; 02:67c8 $cd $80 $6d
     ld   A, [wDialogType]                              ;; 02:67cb $fa $4a $d8
     cp   A, $03                                        ;; 02:67ce $fe $03
     jr   Z, .jr_02_67ea                                ;; 02:67d0 $28 $18
@@ -4533,7 +4533,7 @@ call_02_67f9:
     or   A, $80                                        ;; 02:67fc $f6 $80
     ld   [wD853], A                                    ;; 02:67fe $ea $53 $d8
     ld   A, [wD856]                                    ;; 02:6801 $fa $56 $d8
-    call saveRegisterState                             ;; 02:6804 $cd $80 $6d
+    call saveRegisterState2                            ;; 02:6804 $cd $80 $6d
     ld   HL, data_02_67f5                              ;; 02:6807 $21 $f5 $67
     call callJumptable_02                              ;; 02:680a $cd $75 $48
     ret                                                ;; 02:680d $c9
@@ -4541,7 +4541,7 @@ call_02_67f9:
 data_02_680e:
     ld   A, B                                          ;; 02:680e $78
     ld   [wD850], A                                    ;; 02:680f $ea $50 $d8
-    call call_02_6da7                                  ;; 02:6812 $cd $a7 $6d
+    call loadRegisterState2                            ;; 02:6812 $cd $a7 $6d
     ld   A, [wD849]                                    ;; 02:6815 $fa $49 $d8
     and  A, $cf                                        ;; 02:6818 $e6 $cf
     ld   [wD849], A                                    ;; 02:681a $ea $49 $d8
@@ -4558,7 +4558,7 @@ data_02_680e:
     ret  Z                                             ;; 02:682b $c8
     call call_02_6893                                  ;; 02:682c $cd $93 $68
     call call_02_6bbe                                  ;; 02:682f $cd $be $6b
-    call call_02_6d34                                  ;; 02:6832 $cd $34 $6d
+    call saveRegisterState1                            ;; 02:6832 $cd $34 $6d
     ld   A, $01                                        ;; 02:6835 $3e $01
     ld   [wD856], A                                    ;; 02:6837 $ea $56 $d8
     ld   A, [wD849]                                    ;; 02:683a $fa $49 $d8
@@ -4566,7 +4566,7 @@ data_02_680e:
     ret                                                ;; 02:683f $c9
 
 data_02_6840:
-    call call_02_6da7                                  ;; 02:6840 $cd $a7 $6d
+    call loadRegisterState2                            ;; 02:6840 $cd $a7 $6d
     push HL                                            ;; 02:6843 $e5
     ld   HL, wD857                                     ;; 02:6844 $21 $57 $d8
     dec  [HL]                                          ;; 02:6847 $35
@@ -4903,7 +4903,7 @@ jr_02_6a47:
     ld   A, [wD89A]                                    ;; 02:6a4e $fa $9a $d8
     ld   C, A                                          ;; 02:6a51 $4f
     ld   DE, $202                                      ;; 02:6a52 $11 $02 $02
-    call saveRegisterState                             ;; 02:6a55 $cd $80 $6d
+    call saveRegisterState2                            ;; 02:6a55 $cd $80 $6d
     ret                                                ;; 02:6a58 $c9
 
 call_02_6a59:
@@ -5406,7 +5406,8 @@ call_02_6d26:
     ld   [wD7D6], A                                    ;; 02:6d30 $ea $d6 $d7
     ret                                                ;; 02:6d33 $c9
 
-call_02_6d34:
+; save all registers to a backup state (dialog related?)
+saveRegisterState1:
     push AF                                            ;; 02:6d34 $f5
     push BC                                            ;; 02:6d35 $c5
     push AF                                            ;; 02:6d36 $f5
@@ -5432,7 +5433,7 @@ call_02_6d34:
     ret                                                ;; 02:6d5a $c9
 
 ; Load all registers from a backup state (dialog related?)
-loadRegisterState:
+loadRegisterState1:
     ld   A, [wD8A3]                                    ;; 02:6d5b $fa $a3 $d8
     ld   H, A                                          ;; 02:6d5e $67
     ld   A, [wD8A2]                                    ;; 02:6d5f $fa $a2 $d8
@@ -5456,7 +5457,7 @@ loadRegisterState:
     ret                                                ;; 02:6d7f $c9
 
 ; save all registers to a backup state (dialog related?)
-saveRegisterState:
+saveRegisterState2:
     push AF                                            ;; 02:6d80 $f5
     push BC                                            ;; 02:6d81 $c5
     push AF                                            ;; 02:6d82 $f5
@@ -5481,7 +5482,8 @@ saveRegisterState:
     pop  AF                                            ;; 02:6da5 $f1
     ret                                                ;; 02:6da6 $c9
 
-call_02_6da7:
+; Load all registers from a backup state (dialog related?)
+loadRegisterState2:
     ld   A, [wD8AB]                                    ;; 02:6da7 $fa $ab $d8
     ld   H, A                                          ;; 02:6daa $67
     ld   A, [wD8AA]                                    ;; 02:6dab $fa $aa $d8
@@ -6987,7 +6989,7 @@ call_02_7693:
     ld   [wD8BB], A                                    ;; 02:7729 $ea $bb $d8
     ld   A, C                                          ;; 02:772c $79
     ld   [wD8BA], A                                    ;; 02:772d $ea $ba $d8
-    call saveRegisterState                             ;; 02:7730 $cd $80 $6d
+    call saveRegisterState2                            ;; 02:7730 $cd $80 $6d
     xor  A, A                                          ;; 02:7733 $af
     ret                                                ;; 02:7734 $c9
 

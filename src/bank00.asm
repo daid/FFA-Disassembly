@@ -7760,16 +7760,16 @@ call_00_3063:
     db   $0a, $c3, $06, $1f, $f5, $3e, $0b, $c3        ;; 00:3071 ????????
     db   $06, $1f, $f5, $3e, $0c, $c3, $06, $1f        ;; 00:3079 ????????
 
-call_00_3081:
-    jp_to_bank 02, call_02_6da7                        ;; 00:3081 $f5 $3e $0d $c3 $06 $1f
+loadRegisterState2_trampoline:
+    jp_to_bank 02, loadRegisterState2                  ;; 00:3081 $f5 $3e $0d $c3 $06 $1f
 
 call_00_3087:
     jp_to_bank 02, call_02_7693                        ;; 00:3087 $f5 $3e $0e $c3 $06 $1f
     db   $f5, $3e, $0f, $c3, $06, $1f, $f5, $3e        ;; 00:308d ????????
     db   $10, $c3, $06, $1f                            ;; 00:3095 ????
 
-call_00_3099:
-    jp_to_bank 02, saveRegisterState                   ;; 00:3099 $f5 $3e $11 $c3 $06 $1f
+saveRegisterState2_trampoline:
+    jp_to_bank 02, saveRegisterState2                  ;; 00:3099 $f5 $3e $11 $c3 $06 $1f
 
 call_00_309f:
     jp_to_bank 02, call_02_4860                        ;; 00:309f $f5 $3e $12 $c3 $06 $1f
