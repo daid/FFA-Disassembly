@@ -7769,7 +7769,7 @@ call_00_3087:
     db   $10, $c3, $06, $1f                            ;; 00:3095 ????
 
 call_00_3099:
-    jp_to_bank 02, call_02_6d80                        ;; 00:3099 $f5 $3e $11 $c3 $06 $1f
+    jp_to_bank 02, saveRegisterState                   ;; 00:3099 $f5 $3e $11 $c3 $06 $1f
 
 call_00_309f:
     jp_to_bank 02, call_02_4860                        ;; 00:309f $f5 $3e $12 $c3 $06 $1f
@@ -8433,7 +8433,7 @@ jp_00_34a4:
 
 call_00_34e7:
     ld   A, $06                                        ;; 00:34e7 $3e $06
-    ld   [wD84A], A                                    ;; 00:34e9 $ea $4a $d8
+    ld   [wDialogType], A                              ;; 00:34e9 $ea $4a $d8
     call call_00_3627                                  ;; 00:34ec $cd $27 $36
     pop  HL                                            ;; 00:34ef $e1
     call Z, startDialog                                ;; 00:34f0 $cc $d0 $36
@@ -8481,7 +8481,7 @@ call_00_351a:
     ld   A, $00                                        ;; 00:3531 $3e $00
     ld   [wD853], A                                    ;; 00:3533 $ea $53 $d8
     ld   A, $07                                        ;; 00:3536 $3e $07
-    ld   [wD84A], A                                    ;; 00:3538 $ea $4a $d8
+    ld   [wDialogType], A                              ;; 00:3538 $ea $4a $d8
     ld   A, $0f                                        ;; 00:353b $3e $0f
     ld   [wC0A0], A                                    ;; 00:353d $ea $a0 $c0
     ld   B, $00                                        ;; 00:3540 $06 $00
@@ -8502,7 +8502,7 @@ call_00_3547:
     or   A, B                                          ;; 00:355d $b0
     ld   [wScriptFlags0F], A                           ;; 00:355e $ea $d5 $d7
     ld   A, $06                                        ;; 00:3561 $3e $06
-    ld   [wD84A], A                                    ;; 00:3563 $ea $4a $d8
+    ld   [wDialogType], A                              ;; 00:3563 $ea $4a $d8
     push AF                                            ;; 00:3566 $f5
     call call_00_374d                                  ;; 00:3567 $cd $4d $37
     pop  AF                                            ;; 00:356a $f1
@@ -8654,7 +8654,7 @@ call_00_3627:
     ld   A, [wD853]                                    ;; 00:362a $fa $53 $d8
     and  A, $80                                        ;; 00:362d $e6 $80
     ret  NZ                                            ;; 00:362f $c0
-    ld   A, [wD84A]                                    ;; 00:3630 $fa $4a $d8
+    ld   A, [wDialogType]                              ;; 00:3630 $fa $4a $d8
     call call_00_3087                                  ;; 00:3633 $cd $87 $30
     ld   A, B                                          ;; 00:3636 $78
     ld   [wD89B], A                                    ;; 00:3637 $ea $9b $d8
@@ -8687,7 +8687,7 @@ call_00_3648:
     ld   [wD853], A                                    ;; 00:3665 $ea $53 $d8
     ld   B, $02                                        ;; 00:3668 $06 $02
     call call_00_3c69                                  ;; 00:366a $cd $69 $3c
-    ld   A, [wD84A]                                    ;; 00:366d $fa $4a $d8
+    ld   A, [wDialogType]                              ;; 00:366d $fa $4a $d8
     cp   A, $00                                        ;; 00:3670 $fe $00
     jr   Z, jr_00_36a8                                 ;; 00:3672 $28 $34
     ret                                                ;; 00:3674 $c9
@@ -8817,7 +8817,7 @@ getNextScriptInstruction:
     ret                                                ;; 00:3735 $c9
 
 call_00_3736:
-    ld   A, [wD84A]                                    ;; 00:3736 $fa $4a $d8
+    ld   A, [wDialogType]                              ;; 00:3736 $fa $4a $d8
     cp   A, $06                                        ;; 00:3739 $fe $06
     ret  NZ                                            ;; 00:373b $c0
     ld   A, D                                          ;; 00:373c $7a
@@ -8831,7 +8831,7 @@ call_00_3736:
     ret                                                ;; 00:374c $c9
 
 call_00_374d:
-    ld   A, [wD84A]                                    ;; 00:374d $fa $4a $d8
+    ld   A, [wDialogType]                              ;; 00:374d $fa $4a $d8
     cp   A, $06                                        ;; 00:3750 $fe $06
     ret  NZ                                            ;; 00:3752 $c0
     ld   A, [wD8B9]                                    ;; 00:3753 $fa $b9 $d8
@@ -8862,7 +8862,7 @@ drawText:
     jp   C, .jp_00_37dc                                ;; 00:3782 $da $dc $37
 .jr_00_3785:
     push AF                                            ;; 00:3785 $f5
-    ld   A, [wD84A]                                    ;; 00:3786 $fa $4a $d8
+    ld   A, [wDialogType]                              ;; 00:3786 $fa $4a $d8
     inc  A                                             ;; 00:3789 $3c
     jr   NZ, .jr_00_3793                               ;; 00:378a $20 $07
     dec  D                                             ;; 00:378c $15
@@ -8873,7 +8873,7 @@ drawText:
     pop  AF                                            ;; 00:3793 $f1
     xor  A, $80                                        ;; 00:3794 $ee $80
     call storeTileAatDialogPositionDE                  ;; 00:3796 $cd $44 $38
-    ld   A, [wD84A]                                    ;; 00:3799 $fa $4a $d8
+    ld   A, [wDialogType]                              ;; 00:3799 $fa $4a $d8
     cp   A, $1e                                        ;; 00:379c $fe $1e
     jr   NZ, .jr_00_37a1                               ;; 00:379e $20 $01
     inc  E                                             ;; 00:37a0 $1c
@@ -8901,7 +8901,7 @@ drawText:
     ld   [wD8C6], A                                    ;; 00:37bd $ea $c6 $d8
     ld   A, E                                          ;; 00:37c0 $7b
     ld   [wD8C5], A                                    ;; 00:37c1 $ea $c5 $d8
-    ld   A, [wD84A]                                    ;; 00:37c4 $fa $4a $d8
+    ld   A, [wDialogType]                              ;; 00:37c4 $fa $4a $d8
     cp   A, $06                                        ;; 00:37c7 $fe $06
     call NZ, call_00_380b                              ;; 00:37c9 $c4 $0b $38
     xor  A, A                                          ;; 00:37cc $af
@@ -8922,7 +8922,7 @@ drawText:
     ld   [wD8C5], A                                    ;; 00:37e1 $ea $c5 $d8
     call call_00_3736                                  ;; 00:37e4 $cd $36 $37
     jr   Z, .jr_00_3804                                ;; 00:37e7 $28 $1b
-    ld   A, [wD84A]                                    ;; 00:37e9 $fa $4a $d8
+    ld   A, [wDialogType]                              ;; 00:37e9 $fa $4a $d8
     cp   A, $11                                        ;; 00:37ec $fe $11
     jr   Z, .jr_00_3800                                ;; 00:37ee $28 $10
 .jr_00_37f0:
@@ -8951,7 +8951,7 @@ call_00_380b:
     ld   A, [wD849]                                    ;; 00:380f $fa $49 $d8
     rrca                                               ;; 00:3812 $0f
     jr   NC, .jr_00_382c                               ;; 00:3813 $30 $17
-    ld   A, [wD84A]                                    ;; 00:3815 $fa $4a $d8
+    ld   A, [wDialogType]                              ;; 00:3815 $fa $4a $d8
     cp   A, $11                                        ;; 00:3818 $fe $11
     jr   Z, .jr_00_3827                                ;; 00:381a $28 $0b
     ld   A, [wD4A9]                                    ;; 00:381c $fa $a9 $d4
@@ -8967,7 +8967,7 @@ call_00_380b:
     ret                                                ;; 00:382b $c9
 .jr_00_382c:
     ld   E, $02                                        ;; 00:382c $1e $02
-    ld   A, [wD84A]                                    ;; 00:382e $fa $4a $d8
+    ld   A, [wDialogType]                              ;; 00:382e $fa $4a $d8
     cp   A, $ff                                        ;; 00:3831 $fe $ff
     jr   Z, .jr_00_3839                                ;; 00:3833 $28 $04
     cp   A, $06                                        ;; 00:3835 $fe $06
@@ -9247,7 +9247,7 @@ scriptOpCodeStartNameEntry:
     ld   A, $01                                        ;; 00:39d9 $3e $01
     ld   [wD853], A                                    ;; 00:39db $ea $53 $d8
     ld   A, $1d                                        ;; 00:39de $3e $1d
-    ld   [wD84A], A                                    ;; 00:39e0 $ea $4a $d8
+    ld   [wDialogType], A                              ;; 00:39e0 $ea $4a $d8
     ld   A, $0f                                        ;; 00:39e3 $3e $0f
     ld   [wC0A0], A                                    ;; 00:39e5 $ea $a0 $c0
     ld   HL, wD874                                     ;; 00:39e8 $21 $74 $d8
@@ -9419,7 +9419,7 @@ jr_00_3ad6:
     call setScriptFlag                                 ;; 00:3ad8 $cd $e4 $3b
     push HL                                            ;; 00:3adb $e5
     ld   A, $06                                        ;; 00:3adc $3e $06
-    ld   [wD84A], A                                    ;; 00:3ade $ea $4a $d8
+    ld   [wDialogType], A                              ;; 00:3ade $ea $4a $d8
     call call_00_3627                                  ;; 00:3ae1 $cd $27 $36
     pop  HL                                            ;; 00:3ae4 $e1
     dec  HL                                            ;; 00:3ae5 $2b
@@ -9431,7 +9431,7 @@ jr_00_3ad6:
 
 call_00_3aee:
     ld   A, $0f                                        ;; 00:3aee $3e $0f
-    ld   [wD84A], A                                    ;; 00:3af0 $ea $4a $d8
+    ld   [wDialogType], A                              ;; 00:3af0 $ea $4a $d8
     ld   HL, cantCarryTextLabel                        ;; 00:3af3 $21 $10 $3f
     ld   A, [wD89B]                                    ;; 00:3af6 $fa $9b $d8
     ld   B, A                                          ;; 00:3af9 $47
@@ -9756,7 +9756,7 @@ scriptOpCodeOpenShop:
     ld   A, $01                                        ;; 00:3cbb $3e $01
     ld   [wD853], A                                    ;; 00:3cbd $ea $53 $d8
     ld   A, $0f                                        ;; 00:3cc0 $3e $0f
-    ld   [wD84A], A                                    ;; 00:3cc2 $ea $4a $d8
+    ld   [wDialogType], A                              ;; 00:3cc2 $ea $4a $d8
     ld   A, $0f                                        ;; 00:3cc5 $3e $0f
     ld   [wC0A0], A                                    ;; 00:3cc7 $ea $a0 $c0
     ld   B, $05                                        ;; 00:3cca $06 $05
@@ -9781,7 +9781,7 @@ call_00_3cd1:
     ld   [wScriptPointerHigh], A                       ;; 00:3cf0 $ea $b7 $d8
     ld   A, L                                          ;; 00:3cf3 $7d
     ld   [wScriptPointerLow], A                        ;; 00:3cf4 $ea $b6 $d8
-    ld   A, [wD84A]                                    ;; 00:3cf7 $fa $4a $d8
+    ld   A, [wDialogType]                              ;; 00:3cf7 $fa $4a $d8
     cp   A, $1e                                        ;; 00:3cfa $fe $1e
     call Z, getNextScriptInstruction                   ;; 00:3cfc $cc $27 $37
     jr   Z, .jr_00_3d01                                ;; 00:3cff $28 $00
@@ -10020,7 +10020,7 @@ startLevelUp:
     ld   A, $1c                                        ;; 00:3e79 $3e $1c
     ldh  [hCurrentMusic], A                            ;; 00:3e7b $e0 $90
     ld   A, $21                                        ;; 00:3e7d $3e $21
-    ld   [wD84A], A                                    ;; 00:3e7f $ea $4a $d8
+    ld   [wDialogType], A                              ;; 00:3e7f $ea $4a $d8
     call call_00_30b1                                  ;; 00:3e82 $cd $b1 $30
     ld   HL, wD872                                     ;; 00:3e85 $21 $72 $d8
     set  1, [HL]                                       ;; 00:3e88 $cb $ce
