@@ -7878,11 +7878,11 @@ call_00_313b:
     jp_to_bank 02, call_02_78c6                        ;; 00:313b $f5 $3e $2c $c3 $06 $1f
     db   $f5, $3e, $2d, $c3, $06, $1f                  ;; 00:3141 ??????
 
-call_00_3147:
-    jp_to_bank 02, call_02_6623                        ;; 00:3147 $f5 $3e $2e $c3 $06 $1f
+drawWillBarCharge_trampoline:
+    jp_to_bank 02, drawWillBarCharge                   ;; 00:3147 $f5 $3e $2e $c3 $06 $1f
 
-call_00_314d:
-    jp_to_bank 02, call_02_65fa                        ;; 00:314d $f5 $3e $2f $c3 $06 $1f
+drawEmptyWillBar_trampoline:
+    jp_to_bank 02, drawEmptyWillBar                    ;; 00:314d $f5 $3e $2f $c3 $06 $1f
 
 call_00_3153:
     jp_to_bank 02, call_02_7b3c                        ;; 00:3153 $f5 $3e $30 $c3 $06 $1f
@@ -8402,7 +8402,7 @@ jp_00_3480:
     push HL                                            ;; 00:3484 $e5
     call call_00_3c87                                  ;; 00:3485 $cd $87 $3c
     pop  HL                                            ;; 00:3488 $e1
-    call call_00_3777                                  ;; 00:3489 $cd $77 $37
+    call drawText                                      ;; 00:3489 $cd $77 $37
     ld   A, [wD89B]                                    ;; 00:348c $fa $9b $d8
     ld   B, A                                          ;; 00:348f $47
     ld   A, [wD89A]                                    ;; 00:3490 $fa $9a $d8
@@ -8449,7 +8449,7 @@ jp_00_34a4:
     add  HL, BC                                        ;; 00:34d0 $09
     inc  A                                             ;; 00:34d1 $3c
     ld   [wD883], A                                    ;; 00:34d2 $ea $83 $d8
-    call call_00_3777                                  ;; 00:34d5 $cd $77 $37
+    call drawText                                      ;; 00:34d5 $cd $77 $37
     call call_00_3c73                                  ;; 00:34d8 $cd $73 $3c
     pop  HL                                            ;; 00:34db $e1
     ld   A, [wD883]                                    ;; 00:34dc $fa $83 $d8
@@ -8500,7 +8500,7 @@ call_00_351a:
     push HL                                            ;; 00:351a $e5
     ld   B, $a4                                        ;; 00:351b $06 $a4
     ld   DE, wD56E                                     ;; 00:351d $11 $6e $d5
-    ld   HL, wD4A7                                     ;; 00:3520 $21 $a7 $d4
+    ld   HL, wDialogX                                  ;; 00:3520 $21 $a7 $d4
     call copyHLtoDE                                    ;; 00:3523 $cd $49 $2b
     ld   A, [wC0A0]                                    ;; 00:3526 $fa $a0 $c0
     ld   [wD862], A                                    ;; 00:3529 $ea $62 $d8
@@ -8520,7 +8520,7 @@ call_00_351a:
 
 call_00_3547:
     ld   B, $a4                                        ;; 00:3547 $06 $a4
-    ld   DE, wD4A7                                     ;; 00:3549 $11 $a7 $d4
+    ld   DE, wDialogX                                  ;; 00:3549 $11 $a7 $d4
     ld   HL, wD56E                                     ;; 00:354c $21 $6e $d5
     call copyHLtoDE                                    ;; 00:354f $cd $49 $2b
     ld   A, [wScriptFlags0F]                           ;; 00:3552 $fa $d5 $d7
@@ -8568,7 +8568,7 @@ call_00_3597:
     call call_00_36c2                                  ;; 00:3597 $cd $c2 $36
     jr   NZ, .jr_00_35ae                               ;; 00:359a $20 $12
     call call_00_3c87                                  ;; 00:359c $cd $87 $3c
-    call call_00_3777                                  ;; 00:359f $cd $77 $37
+    call drawText                                      ;; 00:359f $cd $77 $37
     call call_00_3c73                                  ;; 00:35a2 $cd $73 $3c
     jr   NZ, .jr_00_35ae                               ;; 00:35a5 $20 $07
     ld   A, $01                                        ;; 00:35a7 $3e $01
@@ -8734,7 +8734,7 @@ call_00_3675:
     push DE                                            ;; 00:3686 $d5
 .jr_00_3687:
     ld   A, $7f                                        ;; 00:3687 $3e $7f
-    call call_00_3844                                  ;; 00:3689 $cd $44 $38
+    call storeTileAatDialogPositionDE                  ;; 00:3689 $cd $44 $38
     inc  E                                             ;; 00:368c $1c
     dec  C                                             ;; 00:368d $0d
     jr   NZ, .jr_00_3687                               ;; 00:368e $20 $f7
@@ -8876,7 +8876,11 @@ call_00_374d:
     db   $3e, $7f, $cd, $44, $38, $1c, $05, $20        ;; 00:376c ????????
     db   $f0, $d1, $c9                                 ;; 00:3774 ???
 
-call_00_3777:
+; Draw text
+; HL = pointer to text
+; DE = position on the open dialog
+; B = size of text to draw (but not always?, whole interaction is more complex)
+drawText:
     call call_00_374d                                  ;; 00:3777 $cd $4d $37
 .jr_00_377a:
     push AF                                            ;; 00:377a $f5
@@ -8892,12 +8896,12 @@ call_00_3777:
     jr   NZ, .jr_00_3793                               ;; 00:378a $20 $07
     dec  D                                             ;; 00:378c $15
     ld   A, $7f                                        ;; 00:378d $3e $7f
-    call call_00_3844                                  ;; 00:378f $cd $44 $38
+    call storeTileAatDialogPositionDE                  ;; 00:378f $cd $44 $38
     inc  D                                             ;; 00:3792 $14
 .jr_00_3793:
     pop  AF                                            ;; 00:3793 $f1
     xor  A, $80                                        ;; 00:3794 $ee $80
-    call call_00_3844                                  ;; 00:3796 $cd $44 $38
+    call storeTileAatDialogPositionDE                  ;; 00:3796 $cd $44 $38
     ld   A, [wD84A]                                    ;; 00:3799 $fa $4a $d8
     cp   A, $1e                                        ;; 00:379c $fe $1e
     jr   NZ, .jr_00_37a1                               ;; 00:379e $20 $01
@@ -8953,10 +8957,10 @@ call_00_3777:
 .jr_00_37f0:
     dec  D                                             ;; 00:37f0 $15
     ld   A, $7f                                        ;; 00:37f1 $3e $7f
-    call call_00_3844                                  ;; 00:37f3 $cd $44 $38
+    call storeTileAatDialogPositionDE                  ;; 00:37f3 $cd $44 $38
     inc  D                                             ;; 00:37f6 $14
     ld   A, $7f                                        ;; 00:37f7 $3e $7f
-    call call_00_3844                                  ;; 00:37f9 $cd $44 $38
+    call storeTileAatDialogPositionDE                  ;; 00:37f9 $cd $44 $38
     inc  E                                             ;; 00:37fc $1c
     dec  B                                             ;; 00:37fd $05
     jr   NZ, .jr_00_37f0                               ;; 00:37fe $20 $f0
@@ -9008,13 +9012,13 @@ call_00_380b:
     pop  AF                                            ;; 00:3842 $f1
     ret                                                ;; 00:3843 $c9
 
-call_00_3844:
+storeTileAatDialogPositionDE:
     push DE                                            ;; 00:3844 $d5
     push AF                                            ;; 00:3845 $f5
-    ld   A, [wD4A7]                                    ;; 00:3846 $fa $a7 $d4
+    ld   A, [wDialogX]                                 ;; 00:3846 $fa $a7 $d4
     add  A, E                                          ;; 00:3849 $83
     ld   E, A                                          ;; 00:384a $5f
-    ld   A, [wD4A8]                                    ;; 00:384b $fa $a8 $d4
+    ld   A, [wDialogY]                                 ;; 00:384b $fa $a8 $d4
     add  A, D                                          ;; 00:384e $82
     ld   D, A                                          ;; 00:384f $57
     pop  AF                                            ;; 00:3850 $f1
@@ -9465,7 +9469,7 @@ call_00_3aee:
     dec  B                                             ;; 00:3afe $05
     dec  B                                             ;; 00:3aff $05
     ld   DE, $202                                      ;; 00:3b00 $11 $02 $02
-    call call_00_3777                                  ;; 00:3b03 $cd $77 $37
+    call drawText                                      ;; 00:3b03 $cd $77 $37
     pop  HL                                            ;; 00:3b06 $e1
     ld   B, $07                                        ;; 00:3b07 $06 $07
     call call_00_3c69                                  ;; 00:3b09 $cd $69 $3c
@@ -10056,8 +10060,8 @@ call_00_3e8f:
 call_00_3e97:
     ld   A, $40                                        ;; 00:3e97 $3e $40
     ld   [wWillCharge], A                              ;; 00:3e99 $ea $58 $d8
-    call call_00_314d                                  ;; 00:3e9c $cd $4d $31
-    call call_00_3147                                  ;; 00:3e9f $cd $47 $31
+    call drawEmptyWillBar_trampoline                   ;; 00:3e9c $cd $4d $31
+    call drawWillBarCharge_trampoline                  ;; 00:3e9f $cd $47 $31
     ret                                                ;; 00:3ea2 $c9
 
 ; A=next level
@@ -10098,8 +10102,8 @@ call_00_3ed0:
     push AF                                            ;; 00:3ed3 $f5
     xor  A, A                                          ;; 00:3ed4 $af
     ld   [wWillCharge], A                              ;; 00:3ed5 $ea $58 $d8
-    call call_00_314d                                  ;; 00:3ed8 $cd $4d $31
-    call call_00_3147                                  ;; 00:3edb $cd $47 $31
+    call drawEmptyWillBar_trampoline                   ;; 00:3ed8 $cd $4d $31
+    call drawWillBarCharge_trampoline                  ;; 00:3edb $cd $47 $31
     pop  AF                                            ;; 00:3ede $f1
     ret                                                ;; 00:3edf $c9
 
@@ -10119,7 +10123,7 @@ increaseWillCharge:
 .jr_00_3ef3:
     ld   A, B                                          ;; 00:3ef3 $78
     ld   [wWillCharge], A                              ;; 00:3ef4 $ea $58 $d8
-    call call_00_3147                                  ;; 00:3ef7 $cd $47 $31
+    call drawWillBarCharge_trampoline                  ;; 00:3ef7 $cd $47 $31
     ret                                                ;; 00:3efa $c9
 
 call_00_3efb:

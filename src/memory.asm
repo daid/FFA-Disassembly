@@ -793,10 +793,10 @@ wD4A3:
 wD4A4:
     ds 3                                               ;; d4a4
 
-wD4A7:
+wDialogX:
     ds 1                                               ;; d4a7
 
-wD4A8:
+wDialogY:
     ds 1                                               ;; d4a8
 
 wD4A9:
@@ -1543,3 +1543,17 @@ hFFFD:
 
 hFFFE:
     ds 1                                               ;; fffe
+
+SECTION "sram", SRAM[$a000]
+
+sA000:
+    ds 6                                               ;; a000
+
+sA006:
+    ds 250                                             ;; a006
+
+sA100:
+    ds 6                                               ;; a100
+
+sA106:
+    ds 7930                                            ;; a106

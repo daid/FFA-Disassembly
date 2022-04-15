@@ -53,8 +53,8 @@ SECTION "bank02", ROMX[$4000], BANK[$02]
     call_to_bank_target call_02_71db                   ;; 02:4056 pP
     call_to_bank_target call_02_78c6                   ;; 02:4058 pP
     call_to_bank_target call_02_717b                   ;; 02:405a ??
-    call_to_bank_target call_02_6623                   ;; 02:405c pP
-    call_to_bank_target call_02_65fa                   ;; 02:405e pP
+    call_to_bank_target drawWillBarCharge              ;; 02:405c pP
+    call_to_bank_target drawEmptyWillBar               ;; 02:405e pP
     call_to_bank_target call_02_7b3c                   ;; 02:4060 pP
     call_to_bank_target introScrollHandler             ;; 02:4062 pP
     call_to_bank_target call_02_6656                   ;; 02:4064 pP
@@ -1169,7 +1169,7 @@ jr_02_48df:
     ld   DE, wD546                                     ;; 02:48e1 $11 $46 $d5
 
 jr_02_48e4:
-    ld   HL, wD4A7                                     ;; 02:48e4 $21 $a7 $d4
+    ld   HL, wDialogX                                  ;; 02:48e4 $21 $a7 $d4
     call copyHLtoDE                                    ;; 02:48e7 $cd $49 $2b
     ld   B, $2a                                        ;; 02:48ea $06 $2a
     call call_02_6c98                                  ;; 02:48ec $cd $98 $6c
@@ -1249,7 +1249,7 @@ call_02_492b:
     ld   D, [HL]                                       ;; 02:496d $56
     inc  HL                                            ;; 02:496e $23
     push HL                                            ;; 02:496f $e5
-    ld   HL, wD4A7                                     ;; 02:4970 $21 $a7 $d4
+    ld   HL, wDialogX                                  ;; 02:4970 $21 $a7 $d4
     call copyHLtoDE                                    ;; 02:4973 $cd $49 $2b
     pop  HL                                            ;; 02:4976 $e1
     ld   E, [HL]                                       ;; 02:4977 $5e
@@ -1514,7 +1514,7 @@ call_02_4b4b:
     ld   B, [HL]                                       ;; 02:4b5d $46
     push DE                                            ;; 02:4b5e $d5
     pop  HL                                            ;; 02:4b5f $e1
-    ld   DE, wD4A7                                     ;; 02:4b60 $11 $a7 $d4
+    ld   DE, wDialogX                                  ;; 02:4b60 $11 $a7 $d4
     call copyHLtoDE                                    ;; 02:4b63 $cd $49 $2b
     ld   B, $21                                        ;; 02:4b66 $06 $21
     call call_02_6c98                                  ;; 02:4b68 $cd $98 $6c
@@ -1575,10 +1575,10 @@ jp_02_4ba1:
     add  A, E                                          ;; 02:4bca $83
     ld   E, A                                          ;; 02:4bcb $5f
     ld   A, $7f                                        ;; 02:4bcc $3e $7f
-    call call_00_3844                                  ;; 02:4bce $cd $44 $38
+    call storeTileAatDialogPositionDE                  ;; 02:4bce $cd $44 $38
     inc  D                                             ;; 02:4bd1 $14
     ld   A, $7f                                        ;; 02:4bd2 $3e $7f
-    call call_00_3844                                  ;; 02:4bd4 $cd $44 $38
+    call storeTileAatDialogPositionDE                  ;; 02:4bd4 $cd $44 $38
     ld   HL, data_02_5cd6                              ;; 02:4bd7 $21 $d6 $5c
     ld   A, $1e                                        ;; 02:4bda $3e $1e
     call call_02_57c4                                  ;; 02:4bdc $cd $c4 $57
@@ -2280,15 +2280,15 @@ call_02_50b5:
     ld   H, [HL]                                       ;; 02:50ed $66
     ld   L, A                                          ;; 02:50ee $6f
     ld   A, H                                          ;; 02:50ef $7c
-    ld   [wD4A8], A                                    ;; 02:50f0 $ea $a8 $d4
+    ld   [wDialogY], A                                 ;; 02:50f0 $ea $a8 $d4
     ld   A, L                                          ;; 02:50f3 $7d
-    ld   [wD4A7], A                                    ;; 02:50f4 $ea $a7 $d4
+    ld   [wDialogX], A                                 ;; 02:50f4 $ea $a7 $d4
     push HL                                            ;; 02:50f7 $e5
     pop  DE                                            ;; 02:50f8 $d1
     ld   B, $05                                        ;; 02:50f9 $06 $05
 .jr_02_50fb:
     ld   A, $7f                                        ;; 02:50fb $3e $7f
-    call call_00_3844                                  ;; 02:50fd $cd $44 $38
+    call storeTileAatDialogPositionDE                  ;; 02:50fd $cd $44 $38
     dec  E                                             ;; 02:5100 $1d
     dec  B                                             ;; 02:5101 $05
     jr   NZ, .jr_02_50fb                               ;; 02:5102 $20 $f7
@@ -2320,7 +2320,7 @@ call_02_50b5:
     ld   A, $7f                                        ;; 02:512c $3e $7f
     push DE                                            ;; 02:512e $d5
     push BC                                            ;; 02:512f $c5
-    call call_00_3844                                  ;; 02:5130 $cd $44 $38
+    call storeTileAatDialogPositionDE                  ;; 02:5130 $cd $44 $38
     pop  BC                                            ;; 02:5133 $c1
     pop  DE                                            ;; 02:5134 $d1
     dec  E                                             ;; 02:5135 $1d
@@ -2390,7 +2390,7 @@ call_02_5182:
     ld   HL, data_02_7d56                              ;; 02:51a5 $21 $56 $7d
     push DE                                            ;; 02:51a8 $d5
     ld   B, $07                                        ;; 02:51a9 $06 $07
-    call call_00_3777                                  ;; 02:51ab $cd $77 $37
+    call drawText                                      ;; 02:51ab $cd $77 $37
     pop  DE                                            ;; 02:51ae $d1
     pop  AF                                            ;; 02:51af $f1
     pop  HL                                            ;; 02:51b0 $e1
@@ -2399,7 +2399,7 @@ call_02_5182:
     add  A, E                                          ;; 02:51b6 $83
     ld   E, A                                          ;; 02:51b7 $5f
     ld   B, $08                                        ;; 02:51b8 $06 $08
-    call call_00_3777                                  ;; 02:51ba $cd $77 $37
+    call drawText                                      ;; 02:51ba $cd $77 $37
     ld   A, [wD8C6]                                    ;; 02:51bd $fa $c6 $d8
     ld   D, A                                          ;; 02:51c0 $57
     ld   A, [wD8C5]                                    ;; 02:51c1 $fa $c5 $d8
@@ -2407,7 +2407,7 @@ call_02_5182:
     ld   HL, .data_02_51d3                             ;; 02:51c5 $21 $d3 $51
     ld   B, $02                                        ;; 02:51c8 $06 $02
 .jr_02_51ca:
-    call call_00_3777                                  ;; 02:51ca $cd $77 $37
+    call drawText                                      ;; 02:51ca $cd $77 $37
     ld   B, $26                                        ;; 02:51cd $06 $26
     call call_02_6c98                                  ;; 02:51cf $cd $98 $6c
     ret                                                ;; 02:51d2 $c9
@@ -2591,7 +2591,7 @@ jp_02_52c6:
     ld   C, $01                                        ;; 02:52fb $0e $01
     ld   HL, wD7A7                                     ;; 02:52fd $21 $a7 $d7
     ld   DE, $208                                      ;; 02:5300 $11 $08 $02
-    call call_00_3777                                  ;; 02:5303 $cd $77 $37
+    call drawText                                      ;; 02:5303 $cd $77 $37
 .jr_02_5306:
     ld   A, $1e                                        ;; 02:5306 $3e $1e
     ld   HL, data_02_5cd6                              ;; 02:5308 $21 $d6 $5c
@@ -2834,7 +2834,7 @@ call_02_547e:
     ld   A, [wD84A]                                    ;; 02:547e $fa $4a $d8
     call call_02_7693                                  ;; 02:5481 $cd $93 $76
     ld   HL, cantCarryTextLabel                        ;; 02:5484 $21 $10 $3f
-    call call_00_3777                                  ;; 02:5487 $cd $77 $37
+    call drawText                                      ;; 02:5487 $cd $77 $37
     ld   A, $29                                        ;; 02:548a $3e $29
     ld   [wD853], A                                    ;; 02:548c $ea $53 $d8
     ret                                                ;; 02:548f $c9
@@ -3157,8 +3157,8 @@ call_02_564c:
     ld   DE, $9c40                                     ;; 02:565b $11 $40 $9c
     ld   B, $20                                        ;; 02:565e $06 $20
     call call_02_566a                                  ;; 02:5660 $cd $6a $56
-    call call_02_65fa                                  ;; 02:5663 $cd $fa $65
-    call call_02_6623                                  ;; 02:5666 $cd $23 $66
+    call drawEmptyWillBar                              ;; 02:5663 $cd $fa $65
+    call drawWillBarCharge                             ;; 02:5666 $cd $23 $66
     ret                                                ;; 02:5669 $c9
 
 call_02_566a:
@@ -3566,7 +3566,7 @@ call_02_5895:
     push DE                                            ;; 02:58ee $d5
     push BC                                            ;; 02:58ef $c5
     call call_02_75c5                                  ;; 02:58f0 $cd $c5 $75
-    call call_00_3777                                  ;; 02:58f3 $cd $77 $37
+    call drawText                                      ;; 02:58f3 $cd $77 $37
     call call_02_59fe                                  ;; 02:58f6 $cd $fe $59
     push AF                                            ;; 02:58f9 $f5
     ld   A, [wD84A]                                    ;; 02:58fa $fa $4a $d8
@@ -3604,11 +3604,11 @@ jp_02_5922:
     ld   A, [wD84A]                                    ;; 02:5932 $fa $4a $d8
     cp   A, $1f                                        ;; 02:5935 $fe $1f
     push AF                                            ;; 02:5937 $f5
-    call Z, call_00_3777                               ;; 02:5938 $cc $77 $37
+    call Z, drawText                                   ;; 02:5938 $cc $77 $37
     ld   DE, $61c                                      ;; 02:593b $11 $1c $06
     ld   BC, $1f01                                     ;; 02:593e $01 $01 $1f
     pop  AF                                            ;; 02:5941 $f1
-    call Z, call_00_3777                               ;; 02:5942 $cc $77 $37
+    call Z, drawText                                   ;; 02:5942 $cc $77 $37
     ld   A, [wD850]                                    ;; 02:5945 $fa $50 $d8
     ld   [wD853], A                                    ;; 02:5948 $ea $53 $d8
     ld   B, A                                          ;; 02:594b $47
@@ -3622,18 +3622,18 @@ jp_02_5922:
 jp_02_5959:
     call call_02_6da7                                  ;; 02:5959 $cd $a7 $6d
     ld   HL, wBoyName                                  ;; 02:595c $21 $9d $d7
-    call call_00_3777                                  ;; 02:595f $cd $77 $37
+    call drawText                                      ;; 02:595f $cd $77 $37
     dec  E                                             ;; 02:5962 $1d
     dec  E                                             ;; 02:5963 $1d
     ld   A, $45                                        ;; 02:5964 $3e $45
-    call call_00_3844                                  ;; 02:5966 $cd $44 $38
+    call storeTileAatDialogPositionDE                  ;; 02:5966 $cd $44 $38
     inc  E                                             ;; 02:5969 $1c
     inc  E                                             ;; 02:596a $1c
     ld   A, [wLevel]                                   ;; 02:596b $fa $ba $d7
     ld   H, $00                                        ;; 02:596e $26 $00
     ld   L, A                                          ;; 02:5970 $6f
     push DE                                            ;; 02:5971 $d5
-    call call_02_5b18                                  ;; 02:5972 $cd $18 $5b
+    call drawNumberAtDialogPositionDE                  ;; 02:5972 $cd $18 $5b
     pop  DE                                            ;; 02:5975 $d1
     inc  E                                             ;; 02:5976 $1c
     inc  E                                             ;; 02:5977 $1c
@@ -3643,7 +3643,7 @@ jp_02_5959:
     pop  DE                                            ;; 02:597d $d1
     call call_00_380b                                  ;; 02:597e $cd $0b $38
     ld   A, $3e                                        ;; 02:5981 $3e $3e
-    call call_00_3844                                  ;; 02:5983 $cd $44 $38
+    call storeTileAatDialogPositionDE                  ;; 02:5983 $cd $44 $38
     inc  E                                             ;; 02:5986 $1c
     ld   A, [wXPHigh]                                  ;; 02:5987 $fa $bc $d7
     ld   H, A                                          ;; 02:598a $67
@@ -3651,9 +3651,9 @@ jp_02_5959:
     ld   L, A                                          ;; 02:598e $6f
     ld   A, [wXPHighExt]                               ;; 02:598f $fa $bd $d7
     ld   C, A                                          ;; 02:5992 $4f
-    call call_02_59ae                                  ;; 02:5993 $cd $ae $59
+    call drawNumber24bitOnDialog                       ;; 02:5993 $cd $ae $59
     ld   A, $76                                        ;; 02:5996 $3e $76
-    call call_00_3844                                  ;; 02:5998 $cd $44 $38
+    call storeTileAatDialogPositionDE                  ;; 02:5998 $cd $44 $38
     inc  E                                             ;; 02:599b $1c
     ld   A, [wNextXPLevelHigh]                         ;; 02:599c $fa $c1 $d8
     ld   H, A                                          ;; 02:599f $67
@@ -3661,10 +3661,11 @@ jp_02_5959:
     ld   L, A                                          ;; 02:59a3 $6f
     ld   A, [wNextXPLevelHighExt]                      ;; 02:59a4 $fa $c2 $d8
     ld   C, A                                          ;; 02:59a7 $4f
-    call call_02_59ae                                  ;; 02:59a8 $cd $ae $59
+    call drawNumber24bitOnDialog                       ;; 02:59a8 $cd $ae $59
     jp   jp_02_5922                                    ;; 02:59ab $c3 $22 $59
 
-call_02_59ae:
+; Draws the 24bit number CHL to dialog position DE
+drawNumber24bitOnDialog:
     push BC                                            ;; 02:59ae $c5
     push DE                                            ;; 02:59af $d5
     push HL                                            ;; 02:59b0 $e5
@@ -3680,7 +3681,7 @@ call_02_59ae:
     ld   E, A                                          ;; 02:59bd $5f
     xor  A, A                                          ;; 02:59be $af
     add  A, $30                                        ;; 02:59bf $c6 $30
-    call call_00_3844                                  ;; 02:59c1 $cd $44 $38
+    call storeTileAatDialogPositionDE                  ;; 02:59c1 $cd $44 $38
     pop  BC                                            ;; 02:59c4 $c1
     inc  E                                             ;; 02:59c5 $1c
     ret                                                ;; 02:59c6 $c9
@@ -3698,14 +3699,14 @@ call_02_59ae:
     jr   Z, .jr_02_59e2                                ;; 02:59d8 $28 $08
     ld   A, [HL+]                                      ;; 02:59da $2a
     add  A, $30                                        ;; 02:59db $c6 $30
-    call call_00_3844                                  ;; 02:59dd $cd $44 $38
+    call storeTileAatDialogPositionDE                  ;; 02:59dd $cd $44 $38
     jr   .jr_02_59f3                                   ;; 02:59e0 $18 $11
 .jr_02_59e2:
     ld   A, [HL+]                                      ;; 02:59e2 $2a
     and  A, A                                          ;; 02:59e3 $a7
     jr   Z, .jr_02_59f3                                ;; 02:59e4 $28 $0d
     add  A, $30                                        ;; 02:59e6 $c6 $30
-    call call_00_3844                                  ;; 02:59e8 $cd $44 $38
+    call storeTileAatDialogPositionDE                  ;; 02:59e8 $cd $44 $38
     ld   A, [wD86F]                                    ;; 02:59eb $fa $6f $d8
     set  7, A                                          ;; 02:59ee $cb $ff
     ld   [wD86F], A                                    ;; 02:59f0 $ea $6f $d8
@@ -3744,7 +3745,7 @@ call_02_5a18:
     ld   B, $09                                        ;; 02:5a1b $06 $09
 .jr_02_5a1d:
     ld   A, $7f                                        ;; 02:5a1d $3e $7f
-    call call_00_3844                                  ;; 02:5a1f $cd $44 $38
+    call storeTileAatDialogPositionDE                  ;; 02:5a1f $cd $44 $38
     inc  E                                             ;; 02:5a22 $1c
     dec  B                                             ;; 02:5a23 $05
     jr   NZ, .jr_02_5a1d                               ;; 02:5a24 $20 $f7
@@ -3766,12 +3767,12 @@ call_02_5a18:
     or   A, L                                          ;; 02:5a3d $b5
     jr   Z, .jr_02_5a50                                ;; 02:5a3e $28 $10
     ld   B, $06                                        ;; 02:5a40 $06 $06
-    call call_02_5b18                                  ;; 02:5a42 $cd $18 $5b
+    call drawNumberAtDialogPositionDE                  ;; 02:5a42 $cd $18 $5b
     pop  DE                                            ;; 02:5a45 $d1
     inc  DE                                            ;; 02:5a46 $13
     ld   B, $02                                        ;; 02:5a47 $06 $02
     ld   HL, data_02_7d9a                              ;; 02:5a49 $21 $9a $7d
-    call call_00_3777                                  ;; 02:5a4c $cd $77 $37
+    call drawText                                      ;; 02:5a4c $cd $77 $37
     ret                                                ;; 02:5a4f $c9
 .jr_02_5a50:
     ld   B, $06                                        ;; 02:5a50 $06 $06
@@ -3780,7 +3781,7 @@ call_02_5a18:
     push DE                                            ;; 02:5a53 $d5
     push BC                                            ;; 02:5a54 $c5
     ld   A, $7f                                        ;; 02:5a55 $3e $7f
-    call call_00_3844                                  ;; 02:5a57 $cd $44 $38
+    call storeTileAatDialogPositionDE                  ;; 02:5a57 $cd $44 $38
     pop  BC                                            ;; 02:5a5a $c1
     pop  DE                                            ;; 02:5a5b $d1
     dec  DE                                            ;; 02:5a5c $1b
@@ -3790,12 +3791,12 @@ call_02_5a18:
     ret                                                ;; 02:5a61 $c9
 
 jp_02_5a62:
-    ld   HL, $a006                                     ;; 02:5a62 $21 $06 $a0
+    ld   HL, sA006                                     ;; 02:5a62 $21 $06 $a0
     ld   B, $08                                        ;; 02:5a65 $06 $08
     jr   jr_02_5a6e                                    ;; 02:5a67 $18 $05
 
 jp_02_5a69:
-    ld   HL, $a106                                     ;; 02:5a69 $21 $06 $a1
+    ld   HL, sA106                                     ;; 02:5a69 $21 $06 $a1
     ld   B, $10                                        ;; 02:5a6c $06 $10
 
 jr_02_5a6e:
@@ -3803,13 +3804,13 @@ jr_02_5a6e:
     and  A, B                                          ;; 02:5a71 $a0
     jr   Z, .jr_02_5a8d                                ;; 02:5a72 $28 $19
     call enableSRAM                                    ;; 02:5a74 $cd $58 $74
-    call call_02_74d5                                  ;; 02:5a77 $cd $d5 $74
+    call drawSaveNameFromSRAM                          ;; 02:5a77 $cd $d5 $74
     ld   DE, $08                                       ;; 02:5a7a $11 $08 $00
     add  HL, DE                                        ;; 02:5a7d $19
-    call call_02_74f4                                  ;; 02:5a7e $cd $f4 $74
-    call call_02_752e                                  ;; 02:5a81 $cd $2e $75
-    call call_02_7566                                  ;; 02:5a84 $cd $66 $75
-    call call_02_7589                                  ;; 02:5a87 $cd $89 $75
+    call drawSaveHPFromSRAM                            ;; 02:5a7e $cd $f4 $74
+    call drawSaveMPFromSRAM                            ;; 02:5a81 $cd $2e $75
+    call drawLevelFromSRAM                             ;; 02:5a84 $cd $66 $75
+    call drawExperienceFromSRAM                        ;; 02:5a87 $cd $89 $75
     call disableSRAM                                   ;; 02:5a8a $cd $5e $74
 .jr_02_5a8d:
     ld   A, [wD850]                                    ;; 02:5a8d $fa $50 $d8
@@ -3854,7 +3855,7 @@ call_02_5aaf:
     add  HL, BC                                        ;; 02:5ac6 $09
     pop  BC                                            ;; 02:5ac7 $c1
     dec  E                                             ;; 02:5ac8 $1d
-    call call_00_3777                                  ;; 02:5ac9 $cd $77 $37
+    call drawText                                      ;; 02:5ac9 $cd $77 $37
     jp   jp_02_5922                                    ;; 02:5acc $c3 $22 $59
 
 call_02_5acf:
@@ -3911,7 +3912,8 @@ jr_02_5b0b:
     ld   H, $00                                        ;; 02:5b15 $26 $00
     ld   L, A                                          ;; 02:5b17 $6f
 
-call_02_5b18:
+; Draws a number stored in HL to the dialog position, drawing to the left
+drawNumberAtDialogPositionDE:
     ld   A, $0a                                        ;; 02:5b18 $3e $0a
     push BC                                            ;; 02:5b1a $c5
     push DE                                            ;; 02:5b1b $d5
@@ -3919,12 +3921,12 @@ call_02_5b18:
     pop  DE                                            ;; 02:5b1f $d1
     pop  BC                                            ;; 02:5b20 $c1
     add  A, $30                                        ;; 02:5b21 $c6 $30
-    call call_00_3844                                  ;; 02:5b23 $cd $44 $38
+    call storeTileAatDialogPositionDE                  ;; 02:5b23 $cd $44 $38
     dec  E                                             ;; 02:5b26 $1d
     ld   A, H                                          ;; 02:5b27 $7c
     or   A, L                                          ;; 02:5b28 $b5
     ret  Z                                             ;; 02:5b29 $c8
-    jr   call_02_5b18                                  ;; 02:5b2a $18 $ec
+    jr   drawNumberAtDialogPositionDE                  ;; 02:5b2a $18 $ec
 
 jp_02_5b2c:
     call call_02_6da7                                  ;; 02:5b2c $cd $a7 $6d
@@ -3960,7 +3962,7 @@ call_02_5b68:
     push HL                                            ;; 02:5b68 $e5
     call call_02_6da7                                  ;; 02:5b69 $cd $a7 $6d
     push BC                                            ;; 02:5b6c $c5
-    call call_00_3777                                  ;; 02:5b6d $cd $77 $37
+    call drawText                                      ;; 02:5b6d $cd $77 $37
     push HL                                            ;; 02:5b70 $e5
     ld   A, [wD84A]                                    ;; 02:5b71 $fa $4a $d8
     cp   A, $14                                        ;; 02:5b74 $fe $14
@@ -4223,8 +4225,8 @@ data_02_64ec:
     db   $03, $0a, $0e, $0a, $0f, $0a, $11, $0a        ;; 02:65ec ????????
     db   $12, $0a, $13, $0a, $ff, $00                  ;; 02:65f4 ??????
 
-call_02_65fa:
-    ld   HL, .data_02_660f                             ;; 02:65fa $21 $0f $66
+drawEmptyWillBar:
+    ld   HL, .emptyWillBarTiles                        ;; 02:65fa $21 $0f $66
     ld   DE, $100                                      ;; 02:65fd $11 $00 $01
     ld   B, $14                                        ;; 02:6600 $06 $14
 .jr_02_6602:
@@ -4238,12 +4240,12 @@ call_02_65fa:
     dec  B                                             ;; 02:660b $05
     jr   NZ, .jr_02_6602                               ;; 02:660c $20 $f4
     ret                                                ;; 02:660e $c9
-.data_02_660f:
+.emptyWillBarTiles:
     db   $7f, $f8, $fa, $fa, $fa, $fa, $fa, $fa        ;; 02:660f ........
     db   $fa, $fa, $fa, $fa, $fa, $fa, $fa, $fa        ;; 02:6617 ........
     db   $fa, $fa, $fe, $7f                            ;; 02:661f ....
 
-call_02_6623:
+drawWillBarCharge:
     ld   A, [wWillCharge]                              ;; 02:6623 $fa $58 $d8
     and  A, A                                          ;; 02:6626 $a7
     ret  Z                                             ;; 02:6627 $c8
@@ -4255,7 +4257,7 @@ call_02_6623:
     rrca                                               ;; 02:662e $0f
     and  A, $3f                                        ;; 02:662f $e6 $3f
     ld   DE, $102                                      ;; 02:6631 $11 $02 $01
-    call NZ, call_02_6641                              ;; 02:6634 $c4 $41 $66
+    call NZ, .drawFullTiles                            ;; 02:6634 $c4 $41 $66
     ld   A, C                                          ;; 02:6637 $79
     or   A, A                                          ;; 02:6638 $b7
     ret  Z                                             ;; 02:6639 $c8
@@ -4263,16 +4265,14 @@ call_02_6623:
     add  A, C                                          ;; 02:663c $81
     call storeTileAatWindowPositionDE                  ;; 02:663d $cd $66 $38
     ret                                                ;; 02:6640 $c9
-
-call_02_6641:
+.drawFullTiles:
     push BC                                            ;; 02:6641 $c5
     ld   B, A                                          ;; 02:6642 $47
     ld   A, $f9                                        ;; 02:6643 $3e $f9
-    call call_02_664a                                  ;; 02:6645 $cd $4a $66
+    call drawWillBarCharge.drawFullTilesLoop           ;; 02:6645 $cd $4a $66
     pop  BC                                            ;; 02:6648 $c1
     ret                                                ;; 02:6649 $c9
-
-call_02_664a:
+.drawFullTilesLoop:
     ld   C, A                                          ;; 02:664a $4f
     push DE                                            ;; 02:664b $d5
     call storeTileAatWindowPositionDE                  ;; 02:664c $cd $66 $38
@@ -4280,7 +4280,7 @@ call_02_664a:
     inc  DE                                            ;; 02:6650 $13
     ld   A, C                                          ;; 02:6651 $79
     dec  B                                             ;; 02:6652 $05
-    jr   NZ, call_02_664a                              ;; 02:6653 $20 $f5
+    jr   NZ, drawWillBarCharge.drawFullTilesLoop       ;; 02:6653 $20 $f5
     ret                                                ;; 02:6655 $c9
 
 call_02_6656:
@@ -5251,7 +5251,7 @@ call_02_6c4b:
 .jr_02_6c51:
     ld   A, $7f                                        ;; 02:6c51 $3e $7f
     push BC                                            ;; 02:6c53 $c5
-    call call_00_3844                                  ;; 02:6c54 $cd $44 $38
+    call storeTileAatDialogPositionDE                  ;; 02:6c54 $cd $44 $38
     pop  BC                                            ;; 02:6c57 $c1
     inc  E                                             ;; 02:6c58 $1c
     dec  B                                             ;; 02:6c59 $05
@@ -5260,7 +5260,7 @@ call_02_6c4b:
 
 call_02_6c5d:
     push HL                                            ;; 02:6c5d $e5
-    ld   HL, wD4A8                                     ;; 02:6c5e $21 $a8 $d4
+    ld   HL, wDialogY                                  ;; 02:6c5e $21 $a8 $d4
     ld   A, [wD872]                                    ;; 02:6c61 $fa $72 $d8
     bit  7, A                                          ;; 02:6c64 $cb $7f
     jr   Z, .jr_02_6c6b                                ;; 02:6c66 $28 $03
@@ -6179,14 +6179,14 @@ jp_02_71fb:
     jp   NZ, jp_02_72be                                ;; 02:7200 $c2 $be $72
     ld   HL, wD872                                     ;; 02:7203 $21 $72 $d8
     res  5, [HL]                                       ;; 02:7206 $cb $ae
-    ld   HL, $a000                                     ;; 02:7208 $21 $00 $a0
+    ld   HL, sA000                                     ;; 02:7208 $21 $00 $a0
     ld   A, [wD84B]                                    ;; 02:720b $fa $4b $d8
     and  A, A                                          ;; 02:720e $a7
     ld   B, $08                                        ;; 02:720f $06 $08
     jr   Z, .jr_02_721d                                ;; 02:7211 $28 $0a
     ld   HL, wD872                                     ;; 02:7213 $21 $72 $d8
     set  5, [HL]                                       ;; 02:7216 $cb $ee
-    ld   HL, $a100                                     ;; 02:7218 $21 $00 $a1
+    ld   HL, sA100                                     ;; 02:7218 $21 $00 $a1
     ld   B, $10                                        ;; 02:721b $06 $10
 .jr_02_721d:
     ld   A, [wD87E]                                    ;; 02:721d $fa $7e $d8
@@ -6233,7 +6233,7 @@ jp_02_71fb:
     ld   DE, wItemInventoryAmount                      ;; 02:7276 $11 $9b $d6
     ld   B, $10                                        ;; 02:7279 $06 $10
     call writeDEtimesBtoSRAM                           ;; 02:727b $cd $48 $74
-    ld   DE, wD4A7                                     ;; 02:727e $11 $a7 $d4
+    ld   DE, wDialogX                                  ;; 02:727e $11 $a7 $d4
     ld   B, $08                                        ;; 02:7281 $06 $08
     call writeDEtimesBtoSRAM                           ;; 02:7283 $cd $48 $74
     ld   A, $c6                                        ;; 02:7286 $3e $c6
@@ -6280,7 +6280,7 @@ jp_02_72be:
     ld   A, [DE]                                       ;; 02:72c1 $1a
     res  5, A                                          ;; 02:72c2 $cb $af
     ld   [DE], A                                       ;; 02:72c4 $12
-    ld   HL, $a000                                     ;; 02:72c5 $21 $00 $a0
+    ld   HL, sA000                                     ;; 02:72c5 $21 $00 $a0
     ld   A, [wD84B]                                    ;; 02:72c8 $fa $4b $d8
     and  A, A                                          ;; 02:72cb $a7
     ld   A, [wD874]                                    ;; 02:72cc $fa $74 $d8
@@ -6298,7 +6298,7 @@ jp_02_72be:
     ld   A, [DE]                                       ;; 02:72e2 $1a
     set  5, A                                          ;; 02:72e3 $cb $ef
     ld   [DE], A                                       ;; 02:72e5 $12
-    ld   HL, $a100                                     ;; 02:72e6 $21 $00 $a1
+    ld   HL, sA100                                     ;; 02:72e6 $21 $00 $a1
 .jr_02_72e9:
     ld   A, [wD84A]                                    ;; 02:72e9 $fa $4a $d8
     ld   [wD84B], A                                    ;; 02:72ec $ea $4b $d8
@@ -6610,7 +6610,7 @@ getSRAMChecksum:
     ld   A, C                                          ;; 02:74d3 $79
     ret                                                ;; 02:74d4 $c9
 
-call_02_74d5:
+drawSaveNameFromSRAM:
     ld   B, $04                                        ;; 02:74d5 $06 $04
     ld   DE, wD7AA                                     ;; 02:74d7 $11 $aa $d7
     push DE                                            ;; 02:74da $d5
@@ -6628,16 +6628,16 @@ call_02_74d5:
     pop  HL                                            ;; 02:74e8 $e1
     ld   DE, $202                                      ;; 02:74e9 $11 $02 $02
     ld   BC, $404                                      ;; 02:74ec $01 $04 $04
-    call call_00_3777                                  ;; 02:74ef $cd $77 $37
+    call drawText                                      ;; 02:74ef $cd $77 $37
     pop  HL                                            ;; 02:74f2 $e1
     ret                                                ;; 02:74f3 $c9
 
-call_02_74f4:
+drawSaveHPFromSRAM:
     push HL                                            ;; 02:74f4 $e5
     ld   DE, $207                                      ;; 02:74f5 $11 $07 $02
     ld   B, $03                                        ;; 02:74f8 $06 $03
     ld   HL, data_02_7db3                              ;; 02:74fa $21 $b3 $7d
-    call call_00_3777                                  ;; 02:74fd $cd $77 $37
+    call drawText                                      ;; 02:74fd $cd $77 $37
     pop  HL                                            ;; 02:7500 $e1
     call readSRAMByte                                  ;; 02:7501 $cd $6f $74
     ld   E, A                                          ;; 02:7504 $5f
@@ -6648,11 +6648,11 @@ call_02_74f4:
     pop  HL                                            ;; 02:750b $e1
     ld   DE, $20c                                      ;; 02:750c $11 $0c $02
     push DE                                            ;; 02:750f $d5
-    call call_02_5b18                                  ;; 02:7510 $cd $18 $5b
+    call drawNumberAtDialogPositionDE                  ;; 02:7510 $cd $18 $5b
     pop  DE                                            ;; 02:7513 $d1
     inc  E                                             ;; 02:7514 $1c
     ld   A, $f7                                        ;; 02:7515 $3e $f7
-    call call_00_3844                                  ;; 02:7517 $cd $44 $38
+    call storeTileAatDialogPositionDE                  ;; 02:7517 $cd $44 $38
     pop  HL                                            ;; 02:751a $e1
     call readSRAMByte                                  ;; 02:751b $cd $6f $74
     ld   E, A                                          ;; 02:751e $5f
@@ -6662,16 +6662,16 @@ call_02_74f4:
     push DE                                            ;; 02:7524 $d5
     pop  HL                                            ;; 02:7525 $e1
     ld   DE, $211                                      ;; 02:7526 $11 $11 $02
-    call call_02_5b18                                  ;; 02:7529 $cd $18 $5b
+    call drawNumberAtDialogPositionDE                  ;; 02:7529 $cd $18 $5b
     pop  HL                                            ;; 02:752c $e1
     ret                                                ;; 02:752d $c9
 
-call_02_752e:
+drawSaveMPFromSRAM:
     push HL                                            ;; 02:752e $e5
     ld   DE, $307                                      ;; 02:752f $11 $07 $03
     ld   B, $03                                        ;; 02:7532 $06 $03
     ld   HL, data_02_7dbc                              ;; 02:7534 $21 $bc $7d
-    call call_00_3777                                  ;; 02:7537 $cd $77 $37
+    call drawText                                      ;; 02:7537 $cd $77 $37
     pop  HL                                            ;; 02:753a $e1
     call readSRAMByte                                  ;; 02:753b $cd $6f $74
     ld   C, A                                          ;; 02:753e $4f
@@ -6681,11 +6681,11 @@ call_02_752e:
     ld   L, C                                          ;; 02:7544 $69
     ld   DE, $30c                                      ;; 02:7545 $11 $0c $03
     push DE                                            ;; 02:7548 $d5
-    call call_02_5b18                                  ;; 02:7549 $cd $18 $5b
+    call drawNumberAtDialogPositionDE                  ;; 02:7549 $cd $18 $5b
     pop  DE                                            ;; 02:754c $d1
     inc  E                                             ;; 02:754d $1c
     ld   A, $f7                                        ;; 02:754e $3e $f7
-    call call_00_3844                                  ;; 02:7550 $cd $44 $38
+    call storeTileAatDialogPositionDE                  ;; 02:7550 $cd $44 $38
     pop  HL                                            ;; 02:7553 $e1
     call readSRAMByte                                  ;; 02:7554 $cd $6f $74
     ld   C, A                                          ;; 02:7557 $4f
@@ -6694,14 +6694,15 @@ call_02_752e:
     ld   L, C                                          ;; 02:755c $69
     ld   H, A                                          ;; 02:755d $67
     ld   DE, $311                                      ;; 02:755e $11 $11 $03
-    call call_02_5b18                                  ;; 02:7561 $cd $18 $5b
+    call drawNumberAtDialogPositionDE                  ;; 02:7561 $cd $18 $5b
     pop  HL                                            ;; 02:7564 $e1
     ret                                                ;; 02:7565 $c9
 
-call_02_7566:
+; Draw the level of the save as well as the E after it for the exp, but not the actual experience numbers
+drawLevelFromSRAM:
     ld   DE, $402                                      ;; 02:7566 $11 $02 $04
     ld   A, $45                                        ;; 02:7569 $3e $45
-    call call_00_3844                                  ;; 02:756b $cd $44 $38
+    call storeTileAatDialogPositionDE                  ;; 02:756b $cd $44 $38
     inc  E                                             ;; 02:756e $1c
     inc  E                                             ;; 02:756f $1c
     inc  E                                             ;; 02:7570 $1c
@@ -6711,16 +6712,16 @@ call_02_7566:
     ld   [wD7A7], A                                    ;; 02:7576 $ea $a7 $d7
     ld   H, $00                                        ;; 02:7579 $26 $00
     push DE                                            ;; 02:757b $d5
-    call call_02_5b18                                  ;; 02:757c $cd $18 $5b
+    call drawNumberAtDialogPositionDE                  ;; 02:757c $cd $18 $5b
     pop  DE                                            ;; 02:757f $d1
     inc  E                                             ;; 02:7580 $1c
     inc  E                                             ;; 02:7581 $1c
     ld   A, $3e                                        ;; 02:7582 $3e $3e
-    call call_00_3844                                  ;; 02:7584 $cd $44 $38
+    call storeTileAatDialogPositionDE                  ;; 02:7584 $cd $44 $38
     pop  HL                                            ;; 02:7587 $e1
     ret                                                ;; 02:7588 $c9
 
-call_02_7589:
+drawExperienceFromSRAM:
     call readSRAMByte                                  ;; 02:7589 $cd $6f $74
     ld   E, A                                          ;; 02:758c $5f
     call readSRAMByte                                  ;; 02:758d $cd $6f $74
@@ -6730,11 +6731,11 @@ call_02_7589:
     push DE                                            ;; 02:7595 $d5
     pop  HL                                            ;; 02:7596 $e1
     ld   DE, $40b                                      ;; 02:7597 $11 $0b $04
-    call call_02_59ae                                  ;; 02:759a $cd $ae $59
+    call drawNumber24bitOnDialog                       ;; 02:759a $cd $ae $59
     ld   DE, $509                                      ;; 02:759d $11 $09 $05
     ld   A, $f7                                        ;; 02:75a0 $3e $f7
     push DE                                            ;; 02:75a2 $d5
-    call call_00_3844                                  ;; 02:75a3 $cd $44 $38
+    call storeTileAatDialogPositionDE                  ;; 02:75a3 $cd $44 $38
     ld   A, [wD7A7]                                    ;; 02:75a6 $fa $a7 $d7
     call setNextXPLevel                                ;; 02:75a9 $cd $a3 $3e
     ld   A, [wNextXPLevelHigh]                         ;; 02:75ac $fa $c1 $d8
@@ -6746,7 +6747,7 @@ call_02_7589:
     pop  DE                                            ;; 02:75b8 $d1
     inc  E                                             ;; 02:75b9 $1c
     inc  E                                             ;; 02:75ba $1c
-    call call_02_59ae                                  ;; 02:75bb $cd $ae $59
+    call drawNumber24bitOnDialog                       ;; 02:75bb $cd $ae $59
     ld   A, [wLevel]                                   ;; 02:75be $fa $ba $d7
     call setNextXPLevel                                ;; 02:75c1 $cd $a3 $3e
     ret                                                ;; 02:75c4 $c9
@@ -6806,18 +6807,18 @@ call_02_75f4:
     or   A, L                                          ;; 02:7613 $b5
     jr   NZ, .jr_02_761c                               ;; 02:7614 $20 $06
     add  A, $30                                        ;; 02:7616 $c6 $30
-    call call_00_3844                                  ;; 02:7618 $cd $44 $38
+    call storeTileAatDialogPositionDE                  ;; 02:7618 $cd $44 $38
     xor  A, A                                          ;; 02:761b $af
 .jr_02_761c:
     push DE                                            ;; 02:761c $d5
     push BC                                            ;; 02:761d $c5
-    call call_02_5b18                                  ;; 02:761e $cd $18 $5b
+    call drawNumberAtDialogPositionDE                  ;; 02:761e $cd $18 $5b
     pop  BC                                            ;; 02:7621 $c1
     pop  DE                                            ;; 02:7622 $d1
     inc  E                                             ;; 02:7623 $1c
     ld   B, $02                                        ;; 02:7624 $06 $02
     ld   HL, data_02_7d9a                              ;; 02:7626 $21 $9a $7d
-    call call_00_3777                                  ;; 02:7629 $cd $77 $37
+    call drawText                                      ;; 02:7629 $cd $77 $37
     ret                                                ;; 02:762c $c9
 
 call_02_762d:
@@ -6875,7 +6876,7 @@ call_02_765c:
     ld   E, A                                          ;; 02:7673 $5f
     pop  AF                                            ;; 02:7674 $f1
     cp   A, $02                                        ;; 02:7675 $fe $02
-    call NZ, call_02_5b18                              ;; 02:7677 $c4 $18 $5b
+    call NZ, drawNumberAtDialogPositionDE              ;; 02:7677 $c4 $18 $5b
     call call_00_380b                                  ;; 02:767a $cd $0b $38
     dec  D                                             ;; 02:767d $15
     pop  BC                                            ;; 02:767e $c1
@@ -6950,7 +6951,7 @@ call_02_7693:
     ld   [wD868], A                                    ;; 02:76eb $ea $68 $d8
     ld   A, [HL]                                       ;; 02:76ee $7e
     ld   [wD867], A                                    ;; 02:76ef $ea $67 $d8
-    ld   A, [wD4A7]                                    ;; 02:76f2 $fa $a7 $d4
+    ld   A, [wDialogX]                                 ;; 02:76f2 $fa $a7 $d4
     ld   H, A                                          ;; 02:76f5 $67
     ld   A, [wD4A9]                                    ;; 02:76f6 $fa $a9 $d4
     add  A, H                                          ;; 02:76f9 $84
@@ -6989,7 +6990,7 @@ call_02_7693:
     ret                                                ;; 02:7734 $c9
 
 call_02_7735:
-    ld   HL, wD4A7                                     ;; 02:7735 $21 $a7 $d4
+    ld   HL, wDialogX                                  ;; 02:7735 $21 $a7 $d4
     push HL                                            ;; 02:7738 $e5
     call getMapNumber                                  ;; 02:7739 $cd $0a $22
     pop  HL                                            ;; 02:773c $e1
@@ -7053,7 +7054,7 @@ call_02_777d:
     ld   HL, wItemInventoryAmount                      ;; 02:7791 $21 $9b $d6
     ld   B, $10                                        ;; 02:7794 $06 $10
     call call_02_77a3                                  ;; 02:7796 $cd $a3 $77
-    ld   HL, wD4A7                                     ;; 02:7799 $21 $a7 $d4
+    ld   HL, wDialogX                                  ;; 02:7799 $21 $a7 $d4
     ld   B, $08                                        ;; 02:779c $06 $08
     call call_02_77a3                                  ;; 02:779e $cd $a3 $77
     pop  HL                                            ;; 02:77a1 $e1
@@ -7128,7 +7129,7 @@ call_02_77f1:
     add  HL, DE                                        ;; 02:780e $19
     ld   DE, $202                                      ;; 02:780f $11 $02 $02
     ld   BC, $401                                      ;; 02:7812 $01 $01 $04
-    call call_00_3777                                  ;; 02:7815 $cd $77 $37
+    call drawText                                      ;; 02:7815 $cd $77 $37
     ld   A, $26                                        ;; 02:7818 $3e $26
     ld   [wD853], A                                    ;; 02:781a $ea $53 $d8
     ret                                                ;; 02:781d $c9
@@ -7494,7 +7495,7 @@ call_02_7a4e:
     ret                                                ;; 02:7a66 $c9
 
 call_02_7a67:
-    ld   HL, wD4A7                                     ;; 02:7a67 $21 $a7 $d4
+    ld   HL, wDialogX                                  ;; 02:7a67 $21 $a7 $d4
     ld   E, [HL]                                       ;; 02:7a6a $5e
     inc  HL                                            ;; 02:7a6b $23
     ld   D, [HL]                                       ;; 02:7a6c $56
@@ -7506,7 +7507,7 @@ call_02_7a67:
     ret                                                ;; 02:7a72 $c9
 
 call_02_7a73:
-    ld   HL, wD4A7                                     ;; 02:7a73 $21 $a7 $d4
+    ld   HL, wDialogX                                  ;; 02:7a73 $21 $a7 $d4
     ld   [HL], E                                       ;; 02:7a76 $73
     inc  HL                                            ;; 02:7a77 $23
     ld   [HL], D                                       ;; 02:7a78 $72
@@ -7645,12 +7646,12 @@ call_02_7b3c:
     ld   [wC0A0], A                                    ;; 02:7b3e $ea $a0 $c0
     ld   A, $3c                                        ;; 02:7b41 $3e $3c
     ld   [wTitleScreenDelay], A                        ;; 02:7b43 $ea $8c $d8
-    ld   HL, $a000                                     ;; 02:7b46 $21 $00 $a0
+    ld   HL, sA000                                     ;; 02:7b46 $21 $00 $a0
     ld   A, $08                                        ;; 02:7b49 $3e $08
     call call_02_747c                                  ;; 02:7b4b $cd $7c $74
     ld   A, E                                          ;; 02:7b4e $7b
     ld   [wRndState0], A                               ;; 02:7b4f $ea $b0 $c0
-    ld   HL, $a100                                     ;; 02:7b52 $21 $00 $a1
+    ld   HL, sA100                                     ;; 02:7b52 $21 $00 $a1
     ld   A, $10                                        ;; 02:7b55 $3e $10
     call call_02_747c                                  ;; 02:7b57 $cd $7c $74
     ld   A, E                                          ;; 02:7b5a $7b
@@ -7794,9 +7795,9 @@ call_02_7c3f:
     dec  E                                             ;; 02:7c58 $1d
     dec  E                                             ;; 02:7c59 $1d
     ld   A, $7f                                        ;; 02:7c5a $3e $7f
-    call call_00_3844                                  ;; 02:7c5c $cd $44 $38
+    call storeTileAatDialogPositionDE                  ;; 02:7c5c $cd $44 $38
     inc  E                                             ;; 02:7c5f $1c
-    call call_00_3777                                  ;; 02:7c60 $cd $77 $37
+    call drawText                                      ;; 02:7c60 $cd $77 $37
     ld   A, H                                          ;; 02:7c63 $7c
     ld   [wD88F], A                                    ;; 02:7c64 $ea $8f $d8
     ld   A, L                                          ;; 02:7c67 $7d
