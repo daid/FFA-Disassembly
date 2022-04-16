@@ -80,19 +80,19 @@ gfxStatusBar:
     INCBIN "font.bin"                                  ;; 08:6a00
 
 ;@gfximg name=attack/sword width=2 height=6
-data_08_7000:
+gfxAttackSword:
     INCBIN "attack/sword.bin"                          ;; 08:7000
 
 ;@gfximg name=attack/axe width=2 height=6
-data_08_70c0:
+gfxAttackAxe:
     INCBIN "attack/axe.bin"                            ;; 08:70c0
 
 ;@gfximg name=attack/morning_star width=2 height=6
-data_08_7180:
+gfxAttackMorningStar:
     INCBIN "attack/morning_star.bin"                   ;; 08:7180
 
 ;@gfximg name=attack/sickle width=2 height=6
-data_08_7240:
+gfxAttackSickle:
     INCBIN "attack/sickle.bin"                         ;; 08:7240
 
 ;@gfximg name=attacks1 width=6 height=1
@@ -104,7 +104,7 @@ data_08_7360:
     INCBIN "attacks2.bin"                              ;; 08:7360
 
 ;@gfximg name=attack/mattok width=2 height=6
-data_08_7440:
+gfxAttackMattok:
     INCBIN "attack/mattok.bin"                         ;; 08:7440
 
 ;@gfximg name=attacks3 width=2 height=4
@@ -134,11 +134,11 @@ gfxSnowman:
     INCBIN "effect/snowman.bin"                        ;; 08:7600
 
 ;@gfximg name=attack/ice width=2 height=10
-data_08_7640:
+gfxAttackIce:
     INCBIN "attack/ice.bin"                            ;; 08:7640
 
 ;@gfximg name=attack/fire width=2 height=6
-data_08_7780:
+gfxAttackFire:
     INCBIN "attack/fire.bin"                           ;; 08:7780
 
 ;@gfximg name=attacks4 width=2 height=8
