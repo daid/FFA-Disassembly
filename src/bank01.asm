@@ -484,13 +484,6 @@ data_01_4387:
     ld   E, A                                          ;; 01:4393 $5f
     ld   A, C                                          ;; 01:4394 $79
     call loadMap                                       ;; 01:4395 $cd $dc $26
-    ld   A, [wMapNumber]
-    ld   HL, mapToBGPalTable
-    ld   D, $00
-    ld   E, A
-    add  HL, DE
-    ld   A, [HL]
-    ldh  [hCurBGPal], A
     call call_00_04a4                                  ;; 01:4398 $cd $a4 $04
     ld   HL, wScriptOpCounter                          ;; 01:439b $21 $99 $d4
     inc  [HL]                                          ;; 01:439e $34
@@ -534,6 +527,13 @@ data_01_43a3:
     ld   A, $23                                        ;; 01:43e2 $3e $23
     call playSFX                                       ;; 01:43e4 $cd $7d $29
     call call_00_2ef7                                  ;; 01:43e7 $cd $f7 $2e
+    ld   A, [wMapNumber]
+    ld   HL, mapToBGPalTable
+    ld   D, $00
+    ld   E, A
+    add  HL, DE
+    ld   A, [HL]
+    ldh  [hCurBGPal], A
     pop  HL                                            ;; 01:43ea $e1
     inc  HL                                            ;; 01:43eb $23
     inc  HL                                            ;; 01:43ec $23
