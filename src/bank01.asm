@@ -143,10 +143,6 @@ call_01_40f3:
     ld   [wVideoBGP], A                                ;; 01:40f8 $ea $aa $c0
     ret                                                ;; 01:40fb $c9
 
-lcdcShutterEffectClose:
-    db   $00, $f4, $03, $e4, $7c, $f4, $08, $e4        ;; 01:40fc ........
-    db   $7e, $f4, $01, $e4, $ff                       ;; 01:4104 .....
-
 lcdcShutterEffectOpen:
     db   $3c, $f4, $03, $e4, $40, $f4, $08, $e4        ;; 01:4109 ........
     db   $7e, $f4, $01, $e4, $ff                       ;; 01:4111 .....
@@ -229,18 +225,7 @@ prepareShutterEffect:
     ld   [wScriptOpCounter2], A                        ;; 01:419f $ea $9a $d4
     ld   HL, wScriptOpCounter                          ;; 01:41a2 $21 $99 $d4
     inc  [HL]                                          ;; 01:41a5 $34
-    ld   HL, lcdcShutterEffectClose                    ;; 01:41a6 $21 $fc $40
-    ld   A, [wC4D4]                                    ;; 01:41a9 $fa $d4 $c4
-    bit  1, A                                          ;; 01:41ac $cb $4f
-    jr   Z, .jr_01_41b3                                ;; 01:41ae $28 $03
-    ld   HL, data_01_4116                              ;; 01:41b0 $21 $16 $41
-.jr_01_41b3:
-    ld   B, $0d                                        ;; 01:41b3 $06 $0d
-    call loadLCDCEffectBuffer                          ;; 01:41b5 $cd $f3 $02
-    ld   A, [wVideoLCDC]                               ;; 01:41b8 $fa $a5 $c0
-    ld   [wD49C], A                                    ;; 01:41bb $ea $9c $d4
-    ld   A, $ED                                        ;; 01:41be $e6 $fc
-    ld   [wVideoLCDC], A                               ;; 01:41c0 $ea $a5 $c0
+
     ld   A, $24                                        ;; 01:41c3 $3e $24
     call playSFX                                       ;; 01:41c5 $cd $7d $29
     pop  HL                                            ;; 01:41c8 $e1
@@ -256,31 +241,17 @@ data_01_41ca:
     ret                                                ;; 01:41d5 $c9
 
 shutterEffectClose:
-    push DE                                            ;; 01:41d6 $d5
-    ld   HL, wLCDCEffectBuffer                         ;; 01:41d7 $21 $a0 $d3
-    ld   A, [HL]                                       ;; 01:41da $7e
-    add  A, $02                                        ;; 01:41db $c6 $02
-    ld   C, A                                          ;; 01:41dd $4f
-    ld   [HL+], A                                      ;; 01:41de $22
-    inc  HL                                            ;; 01:41df $23
-    inc  HL                                            ;; 01:41e0 $23
-    inc  HL                                            ;; 01:41e1 $23
-    ld   A, [HL]                                       ;; 01:41e2 $7e
-    sub  A, $02                                        ;; 01:41e3 $d6 $02
-    cp   A, C                                          ;; 01:41e5 $b9
-    jr   C, .jr_01_41f1                                ;; 01:41e6 $38 $09
-    jr   Z, .jr_01_41f1                                ;; 01:41e8 $28 $07
-    ld   [HL], A                                       ;; 01:41ea $77
+    push DE
     ld   HL, wScriptOpCounter2                         ;; 01:41eb $21 $9a $d4
     inc  [HL]                                          ;; 01:41ee $34
+    ld   A, [HL]
+    cp   11
+    jr   Z, .jr_01_41f1
+    ld   B, A
+    call cgbPalFadeToWhite_trampoline
     pop  HL                                            ;; 01:41ef $e1
     ret                                                ;; 01:41f0 $c9
 .jr_01_41f1:
-    call setDefaultLCDCEffect                          ;; 01:41f1 $cd $13 $03
-    ld   A, [wVideoLCDC]                               ;; 01:41f4 $fa $a5 $c0
-    and  A, $fc                                        ;; 01:41f7 $e6 $fc
-    ld   HL, rLCDC                                     ;; 01:41f9 $21 $40 $ff
-    call storeBatHLinVRAM                              ;; 01:41fc $cd $5e $1d
     ld   HL, wScriptOpCounter                          ;; 01:41ff $21 $99 $d4
     inc  [HL]                                          ;; 01:4202 $34
     pop  HL                                            ;; 01:4203 $e1
@@ -290,23 +261,13 @@ shutterEffectOpen:
     push DE                                            ;; 01:4205 $d5
     ld   HL, wScriptOpCounter2                         ;; 01:4206 $21 $9a $d4
     dec  [HL]                                          ;; 01:4209 $35
+    ld   B, [HL]
     jr   Z, .jr_01_421c                                ;; 01:420a $28 $10
-    ld   HL, wLCDCEffectBuffer                         ;; 01:420c $21 $a0 $d3
-    ld   A, [HL]                                       ;; 01:420f $7e
-    sub  A, $02                                        ;; 01:4210 $d6 $02
-    ld   [HL+], A                                      ;; 01:4212 $22
-    inc  HL                                            ;; 01:4213 $23
-    inc  HL                                            ;; 01:4214 $23
-    inc  HL                                            ;; 01:4215 $23
-    ld   A, [HL]                                       ;; 01:4216 $7e
-    add  A, $02                                        ;; 01:4217 $c6 $02
-    ld   [HL], A                                       ;; 01:4219 $77
+    call cgbPalFadeToWhite_trampoline
     pop  HL                                            ;; 01:421a $e1
     ret                                                ;; 01:421b $c9
 .jr_01_421c:
-    call setDefaultLCDCEffect                          ;; 01:421c $cd $13 $03
-    ld   A, [wD49C]                                    ;; 01:421f $fa $9c $d4
-    ld   [wVideoLCDC], A                               ;; 01:4222 $ea $a5 $c0
+    call cgbPalFadeToWhite_trampoline
     ld   HL, wScriptOpCounter                          ;; 01:4225 $21 $99 $d4
     inc  [HL]                                          ;; 01:4228 $34
     pop  HL                                            ;; 01:4229 $e1
@@ -492,6 +453,24 @@ data_01_433e:
     pop  HL                                            ;; 01:4385 $e1
     ret                                                ;; 01:4386 $c9
 
+mapToBGPalTable:
+    db $00 ; 0) Overworld
+    db $00 ; 1) Mountain/castle areas
+    db $00 ; 2) Indoor
+    db $00 ; 3) Indoor
+    db $00 ; 4) Indoor
+    db $00 ; 5) Indoor
+    db $00 ; 6) Indoor
+    db $02 ; 7) Title/End
+    db $03 ; 8) Caves
+    db $03 ; 9) Caves
+    db $03 ; A) Caves
+    db $03 ; B) Caves
+    db $03 ; C) Caves
+    db $03 ; D) Caves
+    db $00 ; E) Towns, Airship, mountains
+    db $00 ; F) Castles, town, mountains, trees
+
 data_01_4387:
     push DE                                            ;; 01:4387 $d5
     ld   A, C                                          ;; 01:4388 $79
@@ -505,6 +484,13 @@ data_01_4387:
     ld   E, A                                          ;; 01:4393 $5f
     ld   A, C                                          ;; 01:4394 $79
     call loadMap                                       ;; 01:4395 $cd $dc $26
+    ld   A, [wMapNumber]
+    ld   HL, mapToBGPalTable
+    ld   D, $00
+    ld   E, A
+    add  HL, DE
+    ld   A, [HL]
+    ldh  [hCurBGPal], A
     call call_00_04a4                                  ;; 01:4398 $cd $a4 $04
     ld   HL, wScriptOpCounter                          ;; 01:439b $21 $99 $d4
     inc  [HL]                                          ;; 01:439e $34
@@ -543,14 +529,6 @@ data_01_43a3:
     ld   D, A                                          ;; 01:43c8 $57
     call call_00_28aa                                  ;; 01:43c9 $cd $aa $28
 .jr_01_43cc:
-    ld   HL, lcdcShutterEffectOpen                     ;; 01:43cc $21 $09 $41
-    ld   A, [wC4D4]                                    ;; 01:43cf $fa $d4 $c4
-    bit  1, A                                          ;; 01:43d2 $cb $4f
-    jr   Z, .jr_01_43d9                                ;; 01:43d4 $28 $03
-    ld   HL, data_01_4116                              ;; 01:43d6 $21 $16 $41
-.jr_01_43d9:
-    ld   B, $0d                                        ;; 01:43d9 $06 $0d
-    call loadLCDCEffectBuffer                          ;; 01:43db $cd $f3 $02
     ld   HL, wScriptOpCounter                          ;; 01:43de $21 $99 $d4
     inc  [HL]                                          ;; 01:43e1 $34
     ld   A, $23                                        ;; 01:43e2 $3e $23
@@ -606,14 +584,7 @@ data_01_4422:
     jr   Z, .jr_01_442d                                ;; 01:4428 $28 $03
     call call_00_0de6                                  ;; 01:442a $cd $e6 $0d
 .jr_01_442d:
-    ld   HL, lcdcShutterEffectOpen                     ;; 01:442d $21 $09 $41
-    ld   A, [wC4D4]                                    ;; 01:4430 $fa $d4 $c4
-    bit  1, A                                          ;; 01:4433 $cb $4f
-    jr   Z, .jr_01_443a                                ;; 01:4435 $28 $03
-    ld   HL, data_01_4116                              ;; 01:4437 $21 $16 $41
-.jr_01_443a:
-    ld   B, $0d                                        ;; 01:443a $06 $0d
-    call loadLCDCEffectBuffer                          ;; 01:443c $cd $f3 $02
+
     ld   HL, wScriptOpCounter                          ;; 01:443f $21 $99 $d4
     inc  [HL]                                          ;; 01:4442 $34
     ld   A, $23                                        ;; 01:4443 $3e $23
@@ -627,14 +598,7 @@ data_01_4422:
 
 data_01_4456:
     push DE                                            ;; 01:4456 $d5
-    ld   HL, lcdcShutterEffectOpen                     ;; 01:4457 $21 $09 $41
-    ld   A, [wC4D4]                                    ;; 01:445a $fa $d4 $c4
-    bit  1, A                                          ;; 01:445d $cb $4f
-    jr   Z, .jr_01_4464                                ;; 01:445f $28 $03
-    ld   HL, data_01_4116                              ;; 01:4461 $21 $16 $41
-.jr_01_4464:
-    ld   B, $0d                                        ;; 01:4464 $06 $0d
-    call loadLCDCEffectBuffer                          ;; 01:4466 $cd $f3 $02
+
     ld   HL, wScriptOpCounter                          ;; 01:4469 $21 $99 $d4
     inc  [HL]                                          ;; 01:446c $34
     ld   A, $23                                        ;; 01:446d $3e $23

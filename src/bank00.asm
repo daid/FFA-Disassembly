@@ -29,6 +29,25 @@ setDoubleSpeed:
     stop
     ret
 
+; Fade to white, with register B as index into the fadeToWhiteBGP table (size 11)
+cgbPalFadeToWhite_trampoline:
+    ld   a, BANK(cgbPalFadeToWhite)
+    call pushBankNrAndSwitch
+
+    ld   A, B
+    add  A, A
+    ld   D, $00
+    ld   E, A
+
+    ld   HL, fadeToWhiteBGP
+    add  HL, DE
+    ld   A, [HL+]
+    ld   D, [HL]
+    ld   E, A
+
+    call cgbPalFadeToWhite
+    jp   popBankNrAndSwitch
+
 SECTION "isrVBlank", ROM0[$0040]
 
 isrVBlank:
@@ -2798,11 +2817,6 @@ fadeToWhiteBGP:
     GRAY 24 ; 2
     GRAY 28 ; 1
     GRAY 31 ; 0
-
-fadeToWhiteOBP:
-    db   $d0, $90, $90, $90, $90, $90, $50, $50        ;; 00:1091 ????????
-    db   $50, $50, $50, $40, $50, $40, $40, $40        ;; 00:1099 ????????
-    db   $40, $40, $40, $00, $40, $00                  ;; 00:10a1 ??????
 
 scriptOpCodeFadeToWhite:
     push HL                                            ;; 00:10a7 $e5
