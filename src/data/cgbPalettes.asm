@@ -30,11 +30,11 @@ cgbPaletteTable:
     dw $0000, $0000, $0000, $0000
 
     ; $03 Cave background palette
-    dw $47FF, $51F3, $2867, $0000 ; greys
-    dw $47FF, $26C4, $1521, $0000 ; green / plants
-    dw $47FF, $11D9, $10CE, $0000 ; browns
-    dw $47FF, $1419, $100A, $0000 ; red/lava
-    dw $47FF, $7dc9, $7CC3, $0000 ; ice
-    dw $47FF, $7CC3, $2C00, $0000 ; dark blue water
+    dw $2F3D, $51F3, $2867, $0000 ; greys
+    dw $2F3D, $26C4, $1521, $0000 ; green / plants
+    dw $2F3D, $11D9, $10CE, $0000 ; browns
+    dw $2F3D, $1419, $100A, $0000 ; red/lava
+    dw $2F3D, $7dc9, $7CC3, $0000 ; ice
+    dw $2F3D, $7CC3, $2C00, $0000 ; dark blue water
     dw $0000, $0000, $0000, $0000
     dw $0000, $0000, $0000, $0000
