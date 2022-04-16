@@ -1104,7 +1104,8 @@ wD848:
 wD849:
     ds 1                                               ;; d849
 
-wD84A:
+; Indicates which dialog is being opened. For example $11 = select menu (save/map/status)
+wDialogType:
     ds 1                                               ;; d84a
 
 wD84B:

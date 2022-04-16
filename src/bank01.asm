@@ -4850,7 +4850,7 @@ data_01_60c1:
 
 data_01_60ff:
     db   $04, $48, $02, $05, $0a, $00                  ;; 01:60ff .....?
-    dw   data_08_7000, data_01_68df                    ;; 01:6105 ....
+    dw   gfxAttackSword, data_01_68df                  ;; 01:6105 ....
     dw   data_01_69a1, data_01_69b0, data_01_69bf, data_01_69ce ;; 01:6109 .P.P.P.P
     dw   data_01_69dd, data_01_69f0, data_01_6a03, data_01_6a16 ;; 01:6111 .P.P.P.P
     dw   data_01_6a29, data_01_6a30, data_01_6a37, data_01_6a3e ;; 01:6119 ????????
@@ -4866,7 +4866,7 @@ data_01_6129:
 
 data_01_6153:
     db   $06, $58, $02, $05, $0c, $00                  ;; 01:6153 ??????
-    dw   data_08_7780, data_01_690f                    ;; 01:6159 ????
+    dw   gfxAttackFire, data_01_690f                   ;; 01:6159 ????
     dw   data_01_6b2d, data_01_6b34, data_01_6b3b, data_01_6b42 ;; 01:615d ????????
     dw   data_01_6b2d, data_01_6b34, data_01_6b3b, data_01_6b42 ;; 01:6165 ????????
     dw   data_01_6b2d, data_01_6b34, data_01_6b3b, data_01_6b42 ;; 01:616d ????????
@@ -4874,7 +4874,7 @@ data_01_6153:
 
 data_01_617d:
     db   $03, $5a, $02, $05, $0c, $00                  ;; 01:617d ??????
-    dw   data_08_7640, data_01_68df                    ;; 01:6183 ????
+    dw   gfxAttackIce, data_01_68df                    ;; 01:6183 ????
     dw   data_01_6b7f, data_01_6b86, data_01_6b8d, data_01_6b94 ;; 01:6187 ????????
     dw   data_01_6b7f, data_01_6b86, data_01_6b8d, data_01_6b94 ;; 01:618f ????????
     dw   data_01_6b7f, data_01_6b86, data_01_6b8d, data_01_6b94 ;; 01:6197 ????????
@@ -4882,7 +4882,7 @@ data_01_617d:
 
 data_01_61a7:
     db   $06, $50, $02, $06, $00, $00                  ;; 01:61a7 ??????
-    dw   data_08_7780, data_01_691b                    ;; 01:61ad ????
+    dw   gfxAttackFire, data_01_691b                   ;; 01:61ad ????
     dw   data_01_6b49, data_01_6b49, data_01_6b49, data_01_6b49 ;; 01:61b1 ????????
     dw   data_01_6b49, data_01_6b49, data_01_6b49, data_01_6b49 ;; 01:61b9 ????????
     dw   data_01_6b49, data_01_6b49, data_01_6b49, data_01_6b49 ;; 01:61c1 ????????
@@ -4890,7 +4890,7 @@ data_01_61a7:
 
 data_01_61d1:
     db   $06, $50, $03, $05, $00, $00                  ;; 01:61d1 ??????
-    dw   data_08_7780, data_01_6927                    ;; 01:61d7 ????
+    dw   gfxAttackFire, data_01_6927                   ;; 01:61d7 ????
     dw   data_01_6b6c, data_01_6b6c, data_01_6b6c, data_01_6b6c ;; 01:61db ????????
     dw   data_01_6b6c, data_01_6b6c, data_01_6b6c, data_01_6b6c ;; 01:61e3 ????????
     dw   data_01_6b6c, data_01_6b6c, data_01_6b6c, data_01_6b6c ;; 01:61eb ????????
@@ -4898,7 +4898,7 @@ data_01_61d1:
 
 data_01_61fb:
     db   $04, $40, $02, $03, $00, $00                  ;; 01:61fb ??????
-    dw   data_08_7640, data_01_6933                    ;; 01:6201 ????
+    dw   gfxAttackIce, data_01_6933                    ;; 01:6201 ????
     dw   data_01_731f, data_01_731f, data_01_731f, data_01_731f ;; 01:6205 ????????
     dw   data_01_731f, data_01_731f, data_01_731f, data_01_731f ;; 01:620d ????????
     dw   data_01_731f, data_01_731f, data_01_731f, data_01_731f ;; 01:6215 ????????
@@ -4906,7 +4906,7 @@ data_01_61fb:
 
 data_01_6225:
     db   $04, $40, $02, $02, $00, $00                  ;; 01:6225 ??????
-    dw   data_08_7640, data_01_6933                    ;; 01:622b ????
+    dw   gfxAttackIce, data_01_6933                    ;; 01:622b ????
     dw   data_01_73a0, data_01_73a0, data_01_73a0, data_01_73a0 ;; 01:622f ????????
     dw   data_01_73a0, data_01_73a0, data_01_73a0, data_01_73a0 ;; 01:6237 ????????
     dw   data_01_73a0, data_01_73a0, data_01_73a0, data_01_73a0 ;; 01:623f ????????
@@ -4914,7 +4914,7 @@ data_01_6225:
 
 data_01_624f:
     db   $04, $40, $02, $01, $00, $00                  ;; 01:624f ??????
-    dw   data_08_7640, data_01_6933                    ;; 01:6255 ????
+    dw   gfxAttackIce, data_01_6933                    ;; 01:6255 ????
     dw   data_01_734a, data_01_734a, data_01_734a, data_01_734a ;; 01:6259 ????????
     dw   data_01_734a, data_01_734a, data_01_734a, data_01_734a ;; 01:6261 ????????
     dw   data_01_734a, data_01_734a, data_01_734a, data_01_734a ;; 01:6269 ????????
@@ -4922,7 +4922,7 @@ data_01_624f:
 
 data_01_6279:
     db   $04, $40, $02, $00, $00, $00                  ;; 01:6279 ??????
-    dw   data_08_7640, data_01_6933                    ;; 01:627f ????
+    dw   gfxAttackIce, data_01_6933                    ;; 01:627f ????
     dw   data_01_7375, data_01_7375, data_01_7375, data_01_7375 ;; 01:6283 ????????
     dw   data_01_7375, data_01_7375, data_01_7375, data_01_7375 ;; 01:628b ????????
     dw   data_01_7375, data_01_7375, data_01_7375, data_01_7375 ;; 01:6293 ????????
@@ -5114,7 +5114,7 @@ data_01_663f:
 
 data_01_6669:
     db   $06, $48, $02, $06, $0c, $00                  ;; 01:6669 ??????
-    dw   data_08_70c0, data_01_68df                    ;; 01:666f ????
+    dw   gfxAttackAxe, data_01_68df                    ;; 01:666f ????
     dw   data_01_69dd, data_01_69f0, data_01_6bb6, data_01_6bcd ;; 01:6673 ????????
     dw   data_01_69dd, data_01_69f0, data_01_6bb6, data_01_6bcd ;; 01:667b ????????
     dw   data_01_6be4, data_01_6c24, data_01_6c64, data_01_6ca4 ;; 01:6683 ????????
@@ -5130,7 +5130,7 @@ data_01_6693:
 
 data_01_66bd:
     db   $04, $40, $03, $05, $ff, $00                  ;; 01:66bd ??????
-    dw   data_08_7240, data_01_6987                    ;; 01:66c3 ????
+    dw   gfxAttackSickle, data_01_6987                 ;; 01:66c3 ????
     dw   data_01_7160, data_01_7167, data_01_716e, data_01_7175 ;; 01:66c7 ????????
     dw   data_01_7160, data_01_7167, data_01_716e, data_01_7175 ;; 01:66cf ????????
     dw   data_01_7160, data_01_7167, data_01_716e, data_01_7175 ;; 01:66d7 ????????
@@ -5138,7 +5138,7 @@ data_01_66bd:
 
 data_01_66e7:
     db   $04, $40, $03, $03, $ff, $00                  ;; 01:66e7 ??????
-    dw   data_08_7240, data_01_6987                    ;; 01:66ed ????
+    dw   gfxAttackSickle, data_01_6987                 ;; 01:66ed ????
     dw   data_01_7198, data_01_71a7, data_01_71b6, data_01_71c5 ;; 01:66f1 ????????
     dw   data_01_7198, data_01_71a7, data_01_71b6, data_01_71c5 ;; 01:66f9 ????????
     dw   data_01_71d4, data_01_71eb, data_01_7202, data_01_7219 ;; 01:6701 ????????
@@ -5146,7 +5146,7 @@ data_01_66e7:
 
 data_01_6711:
     db   $04, $40, $03, $02, $ff, $00                  ;; 01:6711 ??????
-    dw   data_08_7240, data_01_6987                    ;; 01:6717 ????
+    dw   gfxAttackSickle, data_01_6987                 ;; 01:6717 ????
     dw   data_01_717c, data_01_7183, data_01_718a, data_01_7191 ;; 01:671b ????????
     dw   data_01_717c, data_01_7183, data_01_718a, data_01_7191 ;; 01:6723 ????????
     dw   data_01_7198, data_01_71a7, data_01_71b6, data_01_71c5 ;; 01:672b ????????
@@ -5154,7 +5154,7 @@ data_01_6711:
 
 data_01_673b:
     db   $04, $40, $03, $01, $ff, $00                  ;; 01:673b ??????
-    dw   data_08_7240, data_01_6987                    ;; 01:6741 ????
+    dw   gfxAttackSickle, data_01_6987                 ;; 01:6741 ????
     dw   data_01_717c, data_01_7183, data_01_718a, data_01_7191 ;; 01:6745 ????????
     dw   data_01_717c, data_01_7183, data_01_718a, data_01_7191 ;; 01:674d ????????
     dw   data_01_717c, data_01_7183, data_01_718a, data_01_7191 ;; 01:6755 ????????
@@ -5162,7 +5162,7 @@ data_01_673b:
 
 data_01_6765:
     db   $03, $48, $02, $06, $0c, $00                  ;; 01:6765 ??????
-    dw   data_08_7240, data_01_68df                    ;; 01:676b ????
+    dw   gfxAttackSickle, data_01_68df                 ;; 01:676b ????
     dw   data_01_6ce4, data_01_6d13, data_01_6d42, data_01_6d71 ;; 01:676f ????????
     dw   data_01_6ce4, data_01_6d13, data_01_6d42, data_01_6d71 ;; 01:6777 ????????
     dw   data_01_6da0, data_01_6dcf, data_01_6dfe, data_01_6e2d ;; 01:677f ????????
@@ -5170,7 +5170,7 @@ data_01_6765:
 
 data_01_678f:
     db   $03, $40, $03, $05, $ff, $00                  ;; 01:678f ??????
-    dw   data_08_7240, data_01_697b                    ;; 01:6795 ????
+    dw   gfxAttackSickle, data_01_697b                 ;; 01:6795 ????
     dw   data_01_6ce4, data_01_6d13, data_01_6d42, data_01_6d71 ;; 01:6799 ????????
     dw   data_01_6ce4, data_01_6d13, data_01_6d42, data_01_6d71 ;; 01:67a1 ????????
     dw   data_01_6ce4, data_01_6d13, data_01_6d42, data_01_6d71 ;; 01:67a9 ????????
@@ -5194,7 +5194,7 @@ data_01_67e3:
 
 data_01_680d:
     db   $05, $48, $02, $06, $10, $00                  ;; 01:680d ??????
-    dw   data_08_7180, data_01_68df                    ;; 01:6813 ????
+    dw   gfxAttackMorningStar, data_01_68df            ;; 01:6813 ????
     dw   data_01_7028, data_01_704b, data_01_706e, data_01_7091 ;; 01:6817 ????????
     dw   data_01_7028, data_01_704b, data_01_706e, data_01_7091 ;; 01:681f ????????
     dw   data_01_70b4, data_01_70df, data_01_710a, data_01_7135 ;; 01:6827 ????????
@@ -5202,7 +5202,7 @@ data_01_680d:
 
 data_01_6837:
     db   $06, $48, $02, $05, $0c, $00                  ;; 01:6837 .....?
-    dw   data_08_7440, data_01_68df                    ;; 01:683d ....
+    dw   gfxAttackMattok, data_01_68df                 ;; 01:683d ....
     dw   data_01_69dd, data_01_69f0, data_01_6a03, data_01_6a16 ;; 01:6841 ????????
     dw   data_01_69dd, data_01_69f0, data_01_6a03, data_01_6a16 ;; 01:6849 ??????.P
     dw   data_01_69dd, data_01_69f0, data_01_6a03, data_01_6a16 ;; 01:6851 ????????
