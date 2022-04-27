@@ -2061,7 +2061,7 @@ call_02_4f5f:
     ld   [wDialogType], A                              ;; 02:4f61 $ea $4a $d8
     call call_02_6700                                  ;; 02:4f64 $cd $00 $67
     call call_02_7693                                  ;; 02:4f67 $cd $93 $76
-    ld   HL, wD7DF                                     ;; 02:4f6a $21 $df $d7
+    ld   HL, wTotalAP                                  ;; 02:4f6a $21 $df $d7
     ld   A, [wD790]                                    ;; 02:4f6d $fa $90 $d7
     ld   B, A                                          ;; 02:4f70 $47
     call call_02_5b9d                                  ;; 02:4f71 $cd $9d $5b
@@ -2077,7 +2077,7 @@ call_02_4f5f:
     add  A, B                                          ;; 02:4f85 $80
     ld   [HL], A                                       ;; 02:4f86 $77
     ld   [wD6C3], A                                    ;; 02:4f87 $ea $c3 $d6
-    ld   A, [wD7C0]                                    ;; 02:4f8a $fa $c0 $d7
+    ld   A, [wStatusEffect]                            ;; 02:4f8a $fa $c0 $d7
     bit  3, A                                          ;; 02:4f8d $cb $5f
     call NZ, call_02_78b8                              ;; 02:4f8f $c4 $b8 $78
     ld   A, $30                                        ;; 02:4f92 $3e $30
@@ -3401,7 +3401,7 @@ call_02_57c4:
     ret                                                ;; 02:57d5 $c9
 
 call_02_57d6:
-    ld   A, [wD7C0]                                    ;; 02:57d6 $fa $c0 $d7
+    ld   A, [wStatusEffect]                            ;; 02:57d6 $fa $c0 $d7
     bit  3, A                                          ;; 02:57d9 $cb $5f
     ret  NZ                                            ;; 02:57db $c0
     call call_02_5b9d                                  ;; 02:57dc $cd $9d $5b
@@ -3409,7 +3409,7 @@ call_02_57d6:
     ld   A, [wStatPower]                               ;; 02:57e0 $fa $c2 $d7
     add  A, B                                          ;; 02:57e3 $80
     ld   [wD6C1], A                                    ;; 02:57e4 $ea $c1 $d6
-    ld   [wD7DF], A                                    ;; 02:57e7 $ea $df $d7
+    ld   [wTotalAP], A                                 ;; 02:57e7 $ea $df $d7
     ld   A, [wD6C0]                                    ;; 02:57ea $fa $c0 $d6
     ld   B, A                                          ;; 02:57ed $47
     ld   A, [wD6C2]                                    ;; 02:57ee $fa $c2 $d6
@@ -3418,7 +3418,7 @@ call_02_57d6:
     add  A, B                                          ;; 02:57f5 $80
     add  A, C                                          ;; 02:57f6 $81
     ld   [wD6C3], A                                    ;; 02:57f7 $ea $c3 $d6
-    ld   [wD7E0], A                                    ;; 02:57fa $ea $e0 $d7
+    ld   [wTotalDP], A                                 ;; 02:57fa $ea $e0 $d7
     ret                                                ;; 02:57fd $c9
 
 call_02_57fe:
@@ -3839,7 +3839,7 @@ call_02_5aaf:
     push BC                                            ;; 02:5aaf $c5
     ld   B, $04                                        ;; 02:5ab0 $06 $04
     ld   C, $00                                        ;; 02:5ab2 $0e $00
-    ld   A, [wD7C0]                                    ;; 02:5ab4 $fa $c0 $d7
+    ld   A, [wStatusEffect]                            ;; 02:5ab4 $fa $c0 $d7
 .jr_02_5ab7:
     rrca                                               ;; 02:5ab7 $0f
     jr   C, .jr_02_5abe                                ;; 02:5ab8 $38 $04
@@ -4132,7 +4132,7 @@ data_02_5d52:
     dw   $0000                                         ;; 02:5d80 ..
     dw   $0000                                         ;; 02:5d82 ..
     dw   $0000                                         ;; 02:5d84 ..
-    dw   wD7DF                                         ;; 02:5d86 ..
+    dw   wTotalAP                                      ;; 02:5d86 ..
     dw   $0000                                         ;; 02:5d88 ..
     dw   $0000                                         ;; 02:5d8a ..
     dw   $0000                                         ;; 02:5d8c ..
@@ -5671,7 +5671,7 @@ setStartingStats:
     ld   A, $ff                                        ;; 02:6ed5 $3e $ff
     ld   [wD87E], A                                    ;; 02:6ed7 $ea $7e $d8
     xor  A, A                                          ;; 02:6eda $af
-    ld   [wD7C0], A                                    ;; 02:6edb $ea $c0 $d7
+    ld   [wStatusEffect], A                            ;; 02:6edb $ea $c0 $d7
     call call_02_6ee2                                  ;; 02:6ede $cd $e2 $6e
     ret                                                ;; 02:6ee1 $c9
 
@@ -6390,12 +6390,12 @@ call_02_7322:
     ld   [HL+], A                                      ;; 02:7386 $22
     inc  A                                             ;; 02:7387 $3c
     ld   [HL], A                                       ;; 02:7388 $77
-    ld   HL, wD7DF                                     ;; 02:7389 $21 $df $d7
+    ld   HL, wTotalAP                                  ;; 02:7389 $21 $df $d7
     ld   A, [wD6C1]                                    ;; 02:738c $fa $c1 $d6
     ld   [HL+], A                                      ;; 02:738f $22
     ld   A, [wD6C3]                                    ;; 02:7390 $fa $c3 $d6
     ld   [HL], A                                       ;; 02:7393 $77
-    ld   A, [wD7C0]                                    ;; 02:7394 $fa $c0 $d7
+    ld   A, [wStatusEffect]                            ;; 02:7394 $fa $c0 $d7
     ld   C, A                                          ;; 02:7397 $4f
     ld   B, $00                                        ;; 02:7398 $06 $00
     call call_02_7859                                  ;; 02:739a $cd $59 $78
@@ -7157,7 +7157,7 @@ jr_02_7827:
 .jr_02_783b:
     pop  AF                                            ;; 02:783b $f1
     ld   C, A                                          ;; 02:783c $4f
-    ld   A, [wD7C0]                                    ;; 02:783d $fa $c0 $d7
+    ld   A, [wStatusEffect]                            ;; 02:783d $fa $c0 $d7
     ld   B, A                                          ;; 02:7840 $47
     and  A, C                                          ;; 02:7841 $a1
     jr   Z, call_02_7859                               ;; 02:7842 $28 $15
@@ -7177,7 +7177,7 @@ jr_02_7827:
 call_02_7859:
     ld   A, B                                          ;; 02:7859 $78
     or   A, C                                          ;; 02:785a $b1
-    ld   [wD7C0], A                                    ;; 02:785b $ea $c0 $d7
+    ld   [wStatusEffect], A                            ;; 02:785b $ea $c0 $d7
     ld   A, C                                          ;; 02:785e $79
     rrca                                               ;; 02:785f $0f
     call C, call_02_78a1                               ;; 02:7860 $dc $a1 $78
@@ -7242,7 +7242,7 @@ call_02_78b8:
     ld   [wD882], A                                    ;; 02:78bb $ea $82 $d8
     xor  A, A                                          ;; 02:78be $af
     ld   [wD6C3], A                                    ;; 02:78bf $ea $c3 $d6
-    ld   [wD7E0], A                                    ;; 02:78c2 $ea $e0 $d7
+    ld   [wTotalDP], A                                 ;; 02:78c2 $ea $e0 $d7
     ret                                                ;; 02:78c5 $c9
 
 call_02_78c6:
@@ -7255,7 +7255,7 @@ call_02_78c6:
     ld   C, A                                          ;; 02:78d3 $4f
     or   A, B                                          ;; 02:78d4 $b0
     ret  Z                                             ;; 02:78d5 $c8
-    ld   A, [wD7C0]                                    ;; 02:78d6 $fa $c0 $d7
+    ld   A, [wStatusEffect]                            ;; 02:78d6 $fa $c0 $d7
     and  A, A                                          ;; 02:78d9 $a7
     ret  Z                                             ;; 02:78da $c8
     bit  0, A                                          ;; 02:78db $cb $47
@@ -7386,7 +7386,7 @@ call_02_79ba:
     call call_00_0226                                  ;; 02:79ba $cd $26 $02
     ld   A, [wD882]                                    ;; 02:79bd $fa $82 $d8
     ld   [wD6C3], A                                    ;; 02:79c0 $ea $c3 $d6
-    ld   [wD7E0], A                                    ;; 02:79c3 $ea $e0 $d7
+    ld   [wTotalDP], A                                 ;; 02:79c3 $ea $e0 $d7
     ld   A, [wD87C]                                    ;; 02:79c6 $fa $7c $d8
     ld   B, $f7                                        ;; 02:79c9 $06 $f7
     call call_02_79dd                                  ;; 02:79cb $cd $dd $79
@@ -7395,7 +7395,7 @@ call_02_79ba:
 
 call_02_79d2:
     push BC                                            ;; 02:79d2 $c5
-    ld   A, [wD7C0]                                    ;; 02:79d3 $fa $c0 $d7
+    ld   A, [wStatusEffect]                            ;; 02:79d3 $fa $c0 $d7
     and  A, $0f                                        ;; 02:79d6 $e6 $0f
     call Z, call_00_11b1                               ;; 02:79d8 $cc $b1 $11
     pop  BC                                            ;; 02:79db $c1
@@ -7403,7 +7403,7 @@ call_02_79d2:
 
 call_02_79dd:
     call call_00_2fea                                  ;; 02:79dd $cd $ea $2f
-    ld   HL, wD7C0                                     ;; 02:79e0 $21 $c0 $d7
+    ld   HL, wStatusEffect                             ;; 02:79e0 $21 $c0 $d7
     ld   A, B                                          ;; 02:79e3 $78
     and  A, [HL]                                       ;; 02:79e4 $a6
     ld   [HL], A                                       ;; 02:79e5 $77
@@ -7424,7 +7424,7 @@ call_02_79e7:
     ret                                                ;; 02:79ff $c9
 
 call_02_7a00:
-    ld   A, [wD7C0]                                    ;; 02:7a00 $fa $c0 $d7
+    ld   A, [wStatusEffect]                            ;; 02:7a00 $fa $c0 $d7
     ld   C, A                                          ;; 02:7a03 $4f
     ld   B, $05                                        ;; 02:7a04 $06 $05
     ld   HL, wD879                                     ;; 02:7a06 $21 $79 $d8

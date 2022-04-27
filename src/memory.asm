@@ -861,12 +861,14 @@ wD6BF:
 wD6C0:
     ds 1                                               ;; d6c0
 
+;Alternative totalAP location?
 wD6C1:
     ds 1                                               ;; d6c1
 
 wD6C2:
     ds 1                                               ;; d6c2
 
+;Alternative totalDP location?
 wD6C3:
     ds 2                                               ;; d6c3
 
@@ -991,7 +993,8 @@ wMoneyLow:
 wMoneyHigh:
     ds 1                                               ;; d7bf
 
-wD7C0:
+;TODO document bits
+wStatusEffect:
     ds 1                                               ;; d7c0
 
 wStatStamina:
@@ -1071,10 +1074,12 @@ wD7D8:
 wD7DD:
     ds 2                                               ;; d7dd
 
-wD7DF:
+;Attack power, depending on stats and equiped weapon
+wTotalAP:
     ds 1                                               ;; d7df
 
-wD7E0:
+;Defence, depending on stats and equiped armor
+wTotalDP:
     ds 1                                               ;; d7e0
 
 wD7E1:
