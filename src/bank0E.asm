@@ -5579,7 +5579,7 @@ script_0540:
     sEND                                               ;; 0e:73d7 $00
     sFADE_TO_BLACK                                     ;; 0e:73d8 $bd
     sLOAD_ROOM_INSTANT 15, $55, 20, 0                  ;; 0e:73d9 $f3 $0f $55 $14 $00
-    sUNK_B6                                            ;; 0e:73de $b6
+    sLETTER_BOX_EFFECT                                 ;; 0e:73de $b6
     sFADE_TO_NORMAL                                    ;; 0e:73df $bc
     sDELAY 60                                          ;; 0e:73e0 $f0 $3c
     sSET_MUSIC 0                                       ;; 0e:73e2 $f8 $00

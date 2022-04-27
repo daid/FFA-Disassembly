@@ -459,7 +459,7 @@ OPCODES = {
     0xB3: ("sNOP_B3",),
     0xB4: ("sNOP_B4",),
     0xB5: ("sNOP_B5",),
-    0xB6: ("sUNK_B6",), # messes up a lot of things ingame? credits or title screen related?
+    0xB6: ("sLETTER_BOX_EFFECT",), # messes up a lot of things ingame? credits or title screen related
     0xBA: ("sCREATE_EFFECT", r"db \1, \2, \3", "HEX", "HEX", "HEX"), # Create various visual effects at a position.
     0xBB: ("sNOP_BB",),
     0xBC: ("sFADE_TO_NORMAL",),

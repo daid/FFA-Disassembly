@@ -448,6 +448,9 @@ sIF_JMP: MACRO
   REDEF IF_LABELS equs STRCAT("{IF_LABELS}", "X", "\@")
   db .{IF_LABELS} - @ - 1
 ENDM
+sLETTER_BOX_EFFECT: MACRO
+db $b6
+ENDM
 sLOAD_ROOM: MACRO
 db $f4
 db \1, \2, \3, \4
@@ -979,9 +982,6 @@ db $9a
 ENDM
 sUNK_9B: MACRO
 db $9b
-ENDM
-sUNK_B6: MACRO
-db $b6
 ENDM
 sUNK_C5: MACRO
 db $c5
