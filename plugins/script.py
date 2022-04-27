@@ -469,7 +469,7 @@ OPCODES = {
 
     0xC0: ("sFULL_HP",),
     0xC1: ("sFULL_MANA",),
-    0xC2: ("sUNK_C2", r"db \1", "BYTE"),
+    0xC2: ("sPLAYER_CURE_STATUS", r"db \1", "BYTE"),
     0xC4: ("sPLAYER_GIVE_STATUS", r"db \1", "BYTE"),
     0xC5: ("sUNK_C5", r"db \1", "BYTE"), # This sets up to 6 script flags in flags0E in a single go. (flags .3 to .7)
     0xC6: ("sENTER_PLAYER_AND_GIRL_NAME",),

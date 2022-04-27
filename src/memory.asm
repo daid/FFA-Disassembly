@@ -993,7 +993,15 @@ wMoneyLow:
 wMoneyHigh:
     ds 1                                               ;; d7bf
 
-;TODO document bits
+; Status that the player currently has
+;Bit0: ?
+;Bit1: Dark
+;Bit2: ?
+;Bit3: ?
+;Bit4: ?
+;Bit5: ?
+;Bit6: ?
+;Bit7: ?
 wStatusEffect:
     ds 1                                               ;; d7c0
 
@@ -1113,10 +1121,13 @@ wD849:
 wDialogType:
     ds 1                                               ;; d84a
 
-wD84B:
+; Selection index in menus, after selection.
+; Or $FF when pressing B to exit a menu
+wSelectedMenuIndex:
     ds 1                                               ;; d84b
 
-wD84C:
+; Second selection, when swapping items in the inventory menu.
+wSelectedMenuIndex2:
     ds 1                                               ;; d84c
 
 wD84D:

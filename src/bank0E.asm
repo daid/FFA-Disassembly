@@ -3529,7 +3529,7 @@ script_0470:
           db "<11>", $00 ;; 0e:5a4d
       sENDIF                                           ;; 0e:5a63
     sELSE                                              ;; 0e:5a63 $01 $16
-      sUNK_C2 8                                        ;; 0e:5a65 $c2 $08
+      sPLAYER_CURE_STATUS 8                            ;; 0e:5a65 $c2 $08
       sSFX 7                                           ;; 0e:5a67 $f9 $07
       sDELAY 7                                         ;; 0e:5a69 $f0 $07
       sSFX 7                                           ;; 0e:5a6b $f9 $07
