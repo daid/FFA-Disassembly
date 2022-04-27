@@ -493,8 +493,8 @@ OPCODES = {
     0xD9: ("sTAKE_EQUIPMENT", r"db \1 - $42", "INV_EQUIP"),
     0xDA: ("sSET_FLAG", r" FLAG_TO_IDX \1", "FLAG"),
     0xDB: ("sCLEAR_FLAG", r" FLAG_TO_IDX \1", "FLAG"),
-    0xDC: ("sUNK_DC",),
-    0xDD: ("sUNK_DD",),
+    0xDC: ("sLOCK_TEXT_SPEED",),
+    0xDD: ("sUNLOCK_TEXT_SPEED",),
     0xDE: ("sTAKE_EQUIPED_ITEM",), # Take 1 of your currently equiped item
     0xDF: ("sNOP_DF",),
 
