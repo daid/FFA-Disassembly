@@ -5,42 +5,42 @@
 ; Projectile data.
 projectileDataTable:
     data_bbbbbbbbpppp $62, $08, $08, $01, $0a, $00, $30, $04, gfxProjectileKnife, data_09_46f9, data_09_4771, data_09_48c3 ;; 09:4479 ................
-    data_bbbbbbbbpppp $72, $08, $08, $04, $20, $00, $30, $04, data_09_7080, data_09_46f9, data_09_47b9, data_09_48c3 ;; 09:4489 ????????????????
-    data_bbbbbbbbpppp $62, $08, $08, $04, $1e, $00, $38, $04, data_09_70c0, data_09_46f9, data_09_4789, data_09_48c3 ;; 09:4499 ????????????????
-    data_bbbbbbbbpppp $62, $08, $08, $04, $1e, $00, $30, $04, data_09_7140, data_09_46f9, data_09_4771, data_09_48c3 ;; 09:44a9 ..????..........
-    data_bbbbbbbbpppp $72, $08, $08, $40, $50, $00, $38, $04, data_09_71c0, data_09_46f9, data_09_47d1, data_09_48c3 ;; 09:44b9 ????????????????
-    data_bbbbbbbbpppp $62, $08, $08, $40, $64, $00, $68, $04, data_09_7200, data_09_46f9, data_09_47a1, data_09_48c3 ;; 09:44c9 ????????????????
-    data_bbbbbbbbpppp $72, $08, $08, $08, $46, $00, $38, $04, data_09_7280, data_09_46f9, data_09_4801, data_09_48c3 ;; 09:44d9 ????????????????
-    data_bbbbbbbbpppp $72, $0a, $08, $04, $1c, $00, $38, $04, data_09_72c0, data_09_46f9, data_09_4801, data_09_48c3 ;; 09:44e9 ????????????????
-    data_bbbbbbbbpppp $72, $08, $08, $08, $32, $08, $30, $04, data_09_7300, data_09_46f9, data_09_47b9, data_09_48c3 ;; 09:44f9 ????????????????
-    data_bbbbbbbbpppp $62, $08, $08, $08, $46, $00, $30, $04, data_09_7340, data_09_46f9, data_09_47e9, data_09_48c3 ;; 09:4509 ????????????????
-    data_bbbbbbbbpppp $72, $08, $08, $40, $89, $00, $38, $04, data_09_7380, data_09_46f9, data_09_4831, data_09_48c3 ;; 09:4519 ????????????????
-    data_bbbbbbbbpppp $72, $08, $08, $40, $3e, $04, $30, $04, data_09_7400, data_09_46f9, data_09_4819, data_09_48c3 ;; 09:4529 ????????????????
-    data_bbbbbbbbpppp $72, $08, $08, $10, $50, $00, $38, $04, data_09_7480, data_09_46f9, data_09_4789, data_09_48c3 ;; 09:4539 ????????????????
-    data_bbbbbbbbpppp $62, $08, $08, $20, $5f, $00, $30, $04, data_09_7500, data_09_46f9, data_09_4771, data_09_48c3 ;; 09:4549 ????????????????
-    data_bbbbbbbbpppp $62, $08, $08, $40, $30, $00, $38, $04, data_09_7580, data_09_46f9, data_09_4789, data_09_48c3 ;; 09:4559 ????????????????
-    data_bbbbbbbbpppp $62, $08, $08, $04, $21, $01, $30, $04, data_09_7600, data_09_46f9, data_09_4771, data_09_48c3 ;; 09:4569 ????????????????
-    data_bbbbbbbbpppp $60, $08, $08, $01, $0f, $00, $30, $04, data_09_7680, data_09_46f9, data_09_4771, data_09_48a9 ;; 09:4579 ??????......????
-    data_bbbbbbbbpppp $60, $08, $08, $08, $46, $00, $38, $04, data_09_7700, data_09_46f9, data_09_4789, data_09_48a9 ;; 09:4589 ??????......????
+    data_bbbbbbbbpppp $72, $08, $08, $04, $20, $00, $30, $04, gfxProjectileSun, data_09_46f9, data_09_47b9, data_09_48c3 ;; 09:4489 ????????????????
+    data_bbbbbbbbpppp $62, $08, $08, $04, $1e, $00, $38, $04, gfxProjectileNeedles, data_09_46f9, data_09_4789, data_09_48c3 ;; 09:4499 ????????????????
+    data_bbbbbbbbpppp $62, $08, $08, $04, $1e, $00, $30, $04, gfxProjectilePitchfork, data_09_46f9, data_09_4771, data_09_48c3 ;; 09:44a9 ..????..........
+    data_bbbbbbbbpppp $72, $08, $08, $40, $50, $00, $38, $04, gfxProjectileMirrorImage, data_09_46f9, data_09_47d1, data_09_48c3 ;; 09:44b9 ????????????????
+    data_bbbbbbbbpppp $62, $08, $08, $40, $64, $00, $68, $04, gfxProjectileLaser, data_09_46f9, data_09_47a1, data_09_48c3 ;; 09:44c9 ????????????????
+    data_bbbbbbbbpppp $72, $08, $08, $08, $46, $00, $38, $04, gfxProjectileAxe, data_09_46f9, data_09_4801, data_09_48c3 ;; 09:44d9 ????????????????
+    data_bbbbbbbbpppp $72, $0a, $08, $04, $1c, $00, $38, $04, gfxProjectileClaw, data_09_46f9, data_09_4801, data_09_48c3 ;; 09:44e9 ????????????????
+    data_bbbbbbbbpppp $72, $08, $08, $08, $32, $08, $30, $04, gfxProjectileRing, data_09_46f9, data_09_47b9, data_09_48c3 ;; 09:44f9 ????????????????
+    data_bbbbbbbbpppp $62, $08, $08, $08, $46, $00, $30, $04, gfxProjectileRock, data_09_46f9, data_09_47e9, data_09_48c3 ;; 09:4509 ????????????????
+    data_bbbbbbbbpppp $72, $08, $08, $40, $89, $00, $38, $04, gfxProjectileNinjaStar, data_09_46f9, data_09_4831, data_09_48c3 ;; 09:4519 ????????????????
+    data_bbbbbbbbpppp $72, $08, $08, $40, $3e, $04, $30, $04, gfxProjectileOrb, data_09_46f9, data_09_4819, data_09_48c3 ;; 09:4529 ????????????????
+    data_bbbbbbbbpppp $72, $08, $08, $10, $50, $00, $38, $04, gfxProjectileFire, data_09_46f9, data_09_4789, data_09_48c3 ;; 09:4539 ????????????????
+    data_bbbbbbbbpppp $62, $08, $08, $20, $5f, $00, $30, $04, gfxProjectileIce, data_09_46f9, data_09_4771, data_09_48c3 ;; 09:4549 ????????????????
+    data_bbbbbbbbpppp $62, $08, $08, $40, $30, $00, $38, $04, gfxProjectileLightning, data_09_46f9, data_09_4789, data_09_48c3 ;; 09:4559 ????????????????
+    data_bbbbbbbbpppp $62, $08, $08, $04, $21, $01, $30, $04, gfxProjectileWind, data_09_46f9, data_09_4771, data_09_48c3 ;; 09:4569 ????????????????
+    data_bbbbbbbbpppp $60, $08, $08, $01, $0f, $00, $30, $04, gfxProjectileArrow, data_09_46f9, data_09_4771, data_09_48a9 ;; 09:4579 ??????......????
+    data_bbbbbbbbpppp $60, $08, $08, $08, $46, $00, $38, $04, gfxProjectileSword, data_09_46f9, data_09_4789, data_09_48a9 ;; 09:4589 ??????......????
     data_bbbbbbbbpppp $60, $0a, $08, $02, $14, $00, $38, $04, data_09_7780, data_09_46f9, data_09_4789, data_09_48a9 ;; 09:4599 ????????????????
     data_bbbbbbbbpppp $60, $0a, $08, $04, $2d, $01, $38, $04, data_09_7800, data_09_46f9, data_09_4849, data_09_48b6 ;; 09:45a9 ????????????????
     data_bbbbbbbbpppp $72, $0a, $08, $40, $5f, $00, $30, $04, data_09_7b00, data_09_46f9, data_09_47e9, data_09_48c3 ;; 09:45b9 ????????????????
     data_bbbbbbbbpppp $60, $08, $08, $04, $26, $02, $38, $04, data_09_78c0, data_09_46f9, data_09_4861, data_09_48a9 ;; 09:45c9 ????????????????
     data_bbbbbbbbpppp $72, $08, $08, $40, $63, $00, $38, $04, data_09_7900, data_09_46f9, data_09_4831, data_09_48c3 ;; 09:45d9 ??????......????
     data_bbbbbbbbpppp $60, $08, $08, $01, $1e, $00, $38, $04, data_09_7b80, data_09_46f9, data_09_4849, data_09_48c7 ;; 09:45e9 ????????????????
-    data_bbbbbbbbpppp $38, $08, $0c, $01, $27, $00, $18, $04, data_09_7700, data_09_46f9, data_09_4879, data_09_48a9 ;; 09:45f9 ????????????????
-    data_bbbbbbbbpppp $3a, $0a, $0c, $01, $19, $00, $18, $04, data_09_7280, data_09_46f9, data_09_4891, data_09_48c3 ;; 09:4609 ????????????????
+    data_bbbbbbbbpppp $38, $08, $0c, $01, $27, $00, $18, $04, gfxProjectileSword, data_09_46f9, data_09_4879, data_09_48a9 ;; 09:45f9 ????????????????
+    data_bbbbbbbbpppp $3a, $0a, $0c, $01, $19, $00, $18, $04, gfxProjectileAxe, data_09_46f9, data_09_4891, data_09_48c3 ;; 09:4609 ????????????????
     data_bbbbbbbbpppp $3a, $08, $0c, $01, $2b, $00, $18, $04, gfxProjectileKnife, data_09_46f9, data_09_4879, data_09_48c3 ;; 09:4619 ????????????????
-    data_bbbbbbbbpppp $3a, $08, $0c, $01, $2c, $00, $18, $04, data_09_7680, data_09_46f9, data_09_4879, data_09_48c3 ;; 09:4629 ????????????????
-    data_bbbbbbbbpppp $3a, $08, $0c, $01, $5f, $00, $18, $04, data_09_7200, data_09_46f9, data_09_4879, data_09_48c3 ;; 09:4639 ????????????????
-    data_bbbbbbbbpppp $3a, $06, $08, $08, $0d, $00, $18, $04, data_09_7480, data_09_46f9, data_09_4879, data_09_48c3 ;; 09:4649 ????????????????
+    data_bbbbbbbbpppp $3a, $08, $0c, $01, $2c, $00, $18, $04, gfxProjectileArrow, data_09_46f9, data_09_4879, data_09_48c3 ;; 09:4629 ????????????????
+    data_bbbbbbbbpppp $3a, $08, $0c, $01, $5f, $00, $18, $04, gfxProjectileLaser, data_09_46f9, data_09_4879, data_09_48c3 ;; 09:4639 ????????????????
+    data_bbbbbbbbpppp $3a, $06, $08, $08, $0d, $00, $18, $04, gfxProjectileFire, data_09_46f9, data_09_4879, data_09_48c3 ;; 09:4649 ????????????????
     data_bbbbbbbbpppp $72, $08, $08, $02, $1e, $00, $30, $08, data_09_7900, data_09_4701, data_09_4819, data_09_48c3 ;; 09:4659 ????????????????
     data_bbbbbbbbpppp $62, $0c, $08, $80, $17, $00, $30, $08, data_09_7900, data_09_4711, data_09_4771, data_09_48c3 ;; 09:4669 ????????????????
     data_bbbbbbbbpppp $72, $0a, $08, $04, $40, $04, $30, $08, data_09_7900, data_09_4721, data_09_4819, data_09_48c3 ;; 09:4679 ????????????????
     data_bbbbbbbbpppp $72, $0a, $08, $40, $a0, $00, $30, $02, data_09_7ac0, data_09_46f9, data_09_47b9, data_09_48c3 ;; 09:4689 ????????????????
     data_bbbbbbbbpppp $72, $0a, $08, $40, $a6, $00, $30, $02, data_09_7cc0, data_09_46f9, data_09_47b9, data_09_48c3 ;; 09:4699 ????????????????
     data_bbbbbbbbpppp $62, $08, $08, $40, $50, $00, $30, $08, data_09_7900, data_09_4731, data_09_4771, data_09_48c3 ;; 09:46a9 ????????????????
-    data_bbbbbbbbpppp $62, $08, $08, $40, $a8, $00, $30, $08, data_09_7580, data_09_4741, data_09_4771, data_09_48c3 ;; 09:46b9 ????????????????
+    data_bbbbbbbbpppp $62, $08, $08, $40, $a8, $00, $30, $08, gfxProjectileLightning, data_09_4741, data_09_4771, data_09_48c3 ;; 09:46b9 ????????????????
     data_bbbbbbbbpppp $72, $08, $0a, $40, $a3, $00, $30, $08, data_09_7900, data_09_4751, data_09_4819, data_09_48c3 ;; 09:46c9 ????????????????
     data_bbbbbbbbpppp $72, $0a, $08, $40, $4f, $00, $30, $08, data_09_7900, data_09_4761, data_09_47b9, data_09_48c3 ;; 09:46d9 ????????????????
     data_bbbbbbbbpppp $72, $0a, $08, $40, $88, $00, $30, $08, data_09_7900, data_09_4761, data_09_47b9, data_09_48c3 ;; 09:46e9 ????????????????
