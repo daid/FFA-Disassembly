@@ -1291,6 +1291,7 @@ script_00e6:
     sSET_ROOM_TILE $6a, 5, 1                           ;; 0d:46f8 $b0 $6a $05 $01
     sSET_ROOM_TILE $6a, 4, 0                           ;; 0d:46fc $b0 $6a $04 $00
     sSET_ROOM_TILE $6a, 5, 0                           ;; 0d:4700 $b0 $6a $05 $00
+    sPAL $84 ; load Jackal palette
     sSFX 16                                            ;; 0d:4704 $f9 $10
     sSPAWN_BOSS 16                                     ;; 0d:4706 $fe $10
     sDELAY 60                                          ;; 0d:4708 $f0 $3c

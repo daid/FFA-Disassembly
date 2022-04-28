@@ -10,11 +10,11 @@ cgbPaletteTable:
     dw $0000, $0000, $0000, $0000
 
     ; $01 Main object palette
-    dw $7FFF, $46FF, $05FF, $0000
-    dw $7FFF, $46FF, $22A2, $0000
+    dw $7FFF, $46FF, $05FF, $0000 ; yellow NPCs
+    dw $7FFF, $46FF, $22A2, $0000 ; green NPCs
     dw $0000, $0000, $0000, $0000
-    dw $0000, $0000, $0000, $0000
-    dw $0000, $0000, $0000, $0000
+    dw $7FFF, $175F, $1417, $0000 ; Fire effect
+    dw $7FFF, $7CC3, $2C00, $0000 ; Ice effect
     dw $0000, $0000, $0000, $0000
     dw $7FFF, $6f9b, $251f, $0000 ; hand cursor
     dw $7FFF, $46FF, $22A2, $0000 ; boss
@@ -38,3 +38,13 @@ cgbPaletteTable:
     dw $2F3D, $7CC3, $2C00, $0000 ; dark blue water
     dw $0000, $0000, $0000, $0000
     dw $0000, $0000, $0000, $0000
+
+    ; $04 Object palette with Jackal boss
+    dw $7FFF, $46FF, $05FF, $0000 ; yellow NPCs
+    dw $7FFF, $46FF, $22A2, $0000 ; green NPCs
+    dw $0000, $0000, $0000, $0000
+    dw $7FFF, $175F, $1417, $0000 ; Fire effect
+    dw $7FFF, $7CC3, $2C00, $0000 ; Ice effect
+    dw $0000, $0000, $0000, $0000
+    dw $7FFF, $6f9b, $251f, $0000 ; hand cursor
+    dw $7FFF, $46FF, $0F1F, $0000 ; boss
