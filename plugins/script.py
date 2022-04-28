@@ -459,7 +459,7 @@ OPCODES = {
     0xB3: ("sNOP_B3",),
     0xB4: ("sNOP_B4",),
     0xB5: ("sNOP_B5",),
-    0xB6: ("sUNK_B6",), # messes up a lot of things ingame? credits or title screen related?
+    0xB6: ("sLETTER_BOX_EFFECT",), # messes up a lot of things ingame? credits or title screen related
     0xBA: ("sCREATE_EFFECT", r"db \1, \2, \3", "HEX", "HEX", "HEX"), # Create various visual effects at a position.
     0xBB: ("sNOP_BB",),
     0xBC: ("sFADE_TO_NORMAL",),
@@ -469,7 +469,7 @@ OPCODES = {
 
     0xC0: ("sFULL_HP",),
     0xC1: ("sFULL_MANA",),
-    0xC2: ("sUNK_C2", r"db \1", "BYTE"),
+    0xC2: ("sPLAYER_CURE_STATUS", r"db \1", "BYTE"),
     0xC4: ("sPLAYER_GIVE_STATUS", r"db \1", "BYTE"),
     0xC5: ("sUNK_C5", r"db \1", "BYTE"), # This sets up to 6 script flags in flags0E in a single go. (flags .3 to .7)
     0xC6: ("sENTER_PLAYER_AND_GIRL_NAME",),
@@ -493,8 +493,8 @@ OPCODES = {
     0xD9: ("sTAKE_EQUIPMENT", r"db \1 - $42", "INV_EQUIP"),
     0xDA: ("sSET_FLAG", r" FLAG_TO_IDX \1", "FLAG"),
     0xDB: ("sCLEAR_FLAG", r" FLAG_TO_IDX \1", "FLAG"),
-    0xDC: ("sUNK_DC",),
-    0xDD: ("sUNK_DD",),
+    0xDC: ("sLOCK_TEXT_SPEED",),
+    0xDD: ("sUNLOCK_TEXT_SPEED",),
     0xDE: ("sTAKE_EQUIPED_ITEM",), # Take 1 of your currently equiped item
     0xDF: ("sNOP_DF",),
 

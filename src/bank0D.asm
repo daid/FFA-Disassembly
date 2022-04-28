@@ -3448,7 +3448,7 @@ script_0206:
       db "<10> I'll heal you\n from Stone.<12>"
       db "<11>", $00 ;; 0d:5f13
     sSFX 5                                             ;; 0d:5f27 $f9 $05
-    sUNK_C2 4                                          ;; 0d:5f29 $c2 $04
+    sPLAYER_CURE_STATUS 4                              ;; 0d:5f29 $c2 $04
     sEND                                               ;; 0d:5f2b $00
 
 script_0207:

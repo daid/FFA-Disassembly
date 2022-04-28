@@ -1423,8 +1423,8 @@ call_02_4aa2:
     ld   A, [wDialogType]                              ;; 02:4ac6 $fa $4a $d8
     cp   A, $15                                        ;; 02:4ac9 $fe $15
     ld   A, B                                          ;; 02:4acb $78
-    ld   [wD84B], A                                    ;; 02:4acc $ea $4b $d8
-    ld   [wD84C], A                                    ;; 02:4acf $ea $4c $d8
+    ld   [wSelectedMenuIndex], A                       ;; 02:4acc $ea $4b $d8
+    ld   [wSelectedMenuIndex2], A                      ;; 02:4acf $ea $4c $d8
     call saveRegisterState1                            ;; 02:4ad2 $cd $34 $6d
     jr   Z, .jr_02_4ade                                ;; 02:4ad5 $28 $07
     inc  A                                             ;; 02:4ad7 $3c
@@ -1553,7 +1553,7 @@ call_02_4b93:
 
 jp_02_4ba1:
     ld   A, [wD7B1]                                    ;; 02:4ba1 $fa $b1 $d7
-    ld   [wD84C], A                                    ;; 02:4ba4 $ea $4c $d8
+    ld   [wSelectedMenuIndex2], A                      ;; 02:4ba4 $ea $4c $d8
     ld   A, [wD885]                                    ;; 02:4ba7 $fa $85 $d8
     and  A, A                                          ;; 02:4baa $a7
     jr   Z, .jr_02_4bdf                                ;; 02:4bab $28 $32
@@ -1583,7 +1583,7 @@ jp_02_4ba1:
     ld   A, $1e                                        ;; 02:4bda $3e $1e
     call call_02_57c4                                  ;; 02:4bdc $cd $c4 $57
 .jr_02_4bdf:
-    ld   A, [wD84C]                                    ;; 02:4bdf $fa $4c $d8
+    ld   A, [wSelectedMenuIndex2]                      ;; 02:4bdf $fa $4c $d8
     ld   [wD8A3], A                                    ;; 02:4be2 $ea $a3 $d8
     ld   A, $03                                        ;; 02:4be5 $3e $03
     ld   [wD853], A                                    ;; 02:4be7 $ea $53 $d8
@@ -1640,7 +1640,7 @@ call_02_4c0e:
 
 call_02_4c53:
     call loadRegisterState1                            ;; 02:4c53 $cd $5b $6d
-    ld   A, [wD84B]                                    ;; 02:4c56 $fa $4b $d8
+    ld   A, [wSelectedMenuIndex]                       ;; 02:4c56 $fa $4b $d8
     ld   H, A                                          ;; 02:4c59 $67
     call saveRegisterState1                            ;; 02:4c5a $cd $34 $6d
     ld   B, $07                                        ;; 02:4c5d $06 $07
@@ -1668,7 +1668,7 @@ call_02_4c79:
     pop  BC                                            ;; 02:4c84 $c1
     ret  NZ                                            ;; 02:4c85 $c0
     ld   A, B                                          ;; 02:4c86 $78
-    ld   [wD84C], A                                    ;; 02:4c87 $ea $4c $d8
+    ld   [wSelectedMenuIndex2], A                      ;; 02:4c87 $ea $4c $d8
     call saveRegisterState1                            ;; 02:4c8a $cd $34 $6d
     inc  A                                             ;; 02:4c8d $3c
     ld   B, $08                                        ;; 02:4c8e $06 $08
@@ -1716,7 +1716,7 @@ call_02_4cc7:
     ld   D, A                                          ;; 02:4ce5 $57
     ld   A, [wD89C]                                    ;; 02:4ce6 $fa $9c $d8
     ld   E, A                                          ;; 02:4ce9 $5f
-    ld   A, [wD84B]                                    ;; 02:4cea $fa $4b $d8
+    ld   A, [wSelectedMenuIndex]                       ;; 02:4cea $fa $4b $d8
     ld   H, A                                          ;; 02:4ced $67
     call saveRegisterState1                            ;; 02:4cee $cd $34 $6d
     ld   B, $03                                        ;; 02:4cf1 $06 $03
@@ -1903,7 +1903,7 @@ call_02_4e37:
     call C, call_02_6c0b                               ;; 02:4e3e $dc $0b $6c
     call call_02_6b84                                  ;; 02:4e41 $cd $84 $6b
     call loadRegisterState1                            ;; 02:4e44 $cd $5b $6d
-    ld   A, [wD84C]                                    ;; 02:4e47 $fa $4c $d8
+    ld   A, [wSelectedMenuIndex2]                      ;; 02:4e47 $fa $4c $d8
     ld   H, A                                          ;; 02:4e4a $67
     xor  A, A                                          ;; 02:4e4b $af
 
@@ -1957,8 +1957,8 @@ jp_02_4e9b:
 
 jp_02_4ea7:
     ld   A, [wDialogType]                              ;; 02:4ea7 $fa $4a $d8
-    ld   [wD84B], A                                    ;; 02:4eaa $ea $4b $d8
-    ld   A, [wD84C]                                    ;; 02:4ead $fa $4c $d8
+    ld   [wSelectedMenuIndex], A                       ;; 02:4eaa $ea $4b $d8
+    ld   A, [wSelectedMenuIndex2]                      ;; 02:4ead $fa $4c $d8
     ld   B, $34                                        ;; 02:4eb0 $06 $34
     call call_02_6c98                                  ;; 02:4eb2 $cd $98 $6c
     and  A, A                                          ;; 02:4eb5 $a7
@@ -2027,7 +2027,7 @@ jp_02_4f19:
     ld   A, [wD872]                                    ;; 02:4f2e $fa $72 $d8
     bit  6, A                                          ;; 02:4f31 $cb $77
     jr   NZ, .jr_02_4f5a                               ;; 02:4f33 $20 $25
-    ld   A, [wD84B]                                    ;; 02:4f35 $fa $4b $d8
+    ld   A, [wSelectedMenuIndex]                       ;; 02:4f35 $fa $4b $d8
     ld   HL, wD831                                     ;; 02:4f38 $21 $31 $d8
     add  A, A                                          ;; 02:4f3b $87
     add  A, A                                          ;; 02:4f3c $87
@@ -2061,7 +2061,7 @@ call_02_4f5f:
     ld   [wDialogType], A                              ;; 02:4f61 $ea $4a $d8
     call call_02_6700                                  ;; 02:4f64 $cd $00 $67
     call call_02_7693                                  ;; 02:4f67 $cd $93 $76
-    ld   HL, wD7DF                                     ;; 02:4f6a $21 $df $d7
+    ld   HL, wTotalAP                                  ;; 02:4f6a $21 $df $d7
     ld   A, [wD790]                                    ;; 02:4f6d $fa $90 $d7
     ld   B, A                                          ;; 02:4f70 $47
     call call_02_5b9d                                  ;; 02:4f71 $cd $9d $5b
@@ -2077,7 +2077,7 @@ call_02_4f5f:
     add  A, B                                          ;; 02:4f85 $80
     ld   [HL], A                                       ;; 02:4f86 $77
     ld   [wD6C3], A                                    ;; 02:4f87 $ea $c3 $d6
-    ld   A, [wD7C0]                                    ;; 02:4f8a $fa $c0 $d7
+    ld   A, [wStatusEffect]                            ;; 02:4f8a $fa $c0 $d7
     bit  3, A                                          ;; 02:4f8d $cb $5f
     call NZ, call_02_78b8                              ;; 02:4f8f $c4 $b8 $78
     ld   A, $30                                        ;; 02:4f92 $3e $30
@@ -2093,7 +2093,7 @@ call_02_4f97:
     ld   A, L                                          ;; 02:4fa3 $7d
     ld   [wD8C3], A                                    ;; 02:4fa4 $ea $c3 $d8
     xor  A, A                                          ;; 02:4fa7 $af
-    ld   [wD84B], A                                    ;; 02:4fa8 $ea $4b $d8
+    ld   [wSelectedMenuIndex], A                       ;; 02:4fa8 $ea $4b $d8
     ld   HL, wD872                                     ;; 02:4fab $21 $72 $d8
     bit  6, [HL]                                       ;; 02:4fae $cb $76
     jr   NZ, .jr_02_4fbc                               ;; 02:4fb0 $20 $0a
@@ -2134,7 +2134,7 @@ call_02_4fe8:
     ld   A, [wD849]                                    ;; 02:4feb $fa $49 $d8
     rlca                                               ;; 02:4fee $07
     call C, call_02_6c0b                               ;; 02:4fef $dc $0b $6c
-    ld   A, [wD84C]                                    ;; 02:4ff2 $fa $4c $d8
+    ld   A, [wSelectedMenuIndex2]                      ;; 02:4ff2 $fa $4c $d8
     ld   H, A                                          ;; 02:4ff5 $67
     ld   A, [wD89F]                                    ;; 02:4ff6 $fa $9f $d8
     ld   D, A                                          ;; 02:4ff9 $57
@@ -2544,7 +2544,7 @@ call_02_5292:
     ld   A, [wD868]                                    ;; 02:52a7 $fa $68 $d8
     ld   [wD8D9], A                                    ;; 02:52aa $ea $d9 $d8
 .jr_02_52ad:
-    ld   A, [wD84B]                                    ;; 02:52ad $fa $4b $d8
+    ld   A, [wSelectedMenuIndex]                       ;; 02:52ad $fa $4b $d8
     ld   [wD876], A                                    ;; 02:52b0 $ea $76 $d8
     ld   A, $b2                                        ;; 02:52b3 $3e $b2
     ld   [wD853], A                                    ;; 02:52b5 $ea $53 $d8
@@ -2598,7 +2598,7 @@ jp_02_52c6:
     call call_02_57c4                                  ;; 02:530b $cd $c4 $57
     pop  HL                                            ;; 02:530e $e1
     pop  DE                                            ;; 02:530f $d1
-    ld   A, [wD84C]                                    ;; 02:5310 $fa $4c $d8
+    ld   A, [wSelectedMenuIndex2]                      ;; 02:5310 $fa $4c $d8
     ld   [wD8A3], A                                    ;; 02:5313 $ea $a3 $d8
     ld   A, $03                                        ;; 02:5316 $3e $03
     ld   [wD853], A                                    ;; 02:5318 $ea $53 $d8
@@ -3232,7 +3232,7 @@ call_02_56b1:
 
 jp_02_56c1:
     call call_02_7a1f                                  ;; 02:56c1 $cd $1f $7a
-    ld   A, [wD84B]                                    ;; 02:56c4 $fa $4b $d8
+    ld   A, [wSelectedMenuIndex]                       ;; 02:56c4 $fa $4b $d8
     ld   H, A                                          ;; 02:56c7 $67
     ret                                                ;; 02:56c8 $c9
 
@@ -3273,7 +3273,7 @@ call_02_56c9:
 call_02_5709:
     ld   B, $01                                        ;; 02:5709 $06 $01
     call call_02_6c98                                  ;; 02:570b $cd $98 $6c
-    ld   A, [wD84B]                                    ;; 02:570e $fa $4b $d8
+    ld   A, [wSelectedMenuIndex]                       ;; 02:570e $fa $4b $d8
     inc  A                                             ;; 02:5711 $3c
     ld   B, A                                          ;; 02:5712 $47
     ld   A, [wDialogType]                              ;; 02:5713 $fa $4a $d8
@@ -3296,8 +3296,8 @@ call_02_5709:
     ret                                                ;; 02:5733 $c9
 .jr_02_5734:
     ld   A, C                                          ;; 02:5734 $79
-    ld   [wD84B], A                                    ;; 02:5735 $ea $4b $d8
-    ld   A, [wD84C]                                    ;; 02:5738 $fa $4c $d8
+    ld   [wSelectedMenuIndex], A                       ;; 02:5735 $ea $4b $d8
+    ld   A, [wSelectedMenuIndex2]                      ;; 02:5738 $fa $4c $d8
     ld   C, A                                          ;; 02:573b $4f
     ld   B, $00                                        ;; 02:573c $06 $00
     ld   A, [wD895]                                    ;; 02:573e $fa $95 $d8
@@ -3306,7 +3306,7 @@ call_02_5709:
     ld   L, A                                          ;; 02:5745 $6f
     add  HL, BC                                        ;; 02:5746 $09
     ld   A, [HL]                                       ;; 02:5747 $7e
-    ld   [wD84C], A                                    ;; 02:5748 $ea $4c $d8
+    ld   [wSelectedMenuIndex2], A                      ;; 02:5748 $ea $4c $d8
     push HL                                            ;; 02:574b $e5
     ld   A, [wD893]                                    ;; 02:574c $fa $93 $d8
     ld   H, A                                          ;; 02:574f $67
@@ -3370,9 +3370,9 @@ call_02_57a0:
     ret                                                ;; 02:57af $c9
 
 call_02_57b0:
-    ld   A, [wD84B]                                    ;; 02:57b0 $fa $4b $d8
+    ld   A, [wSelectedMenuIndex]                       ;; 02:57b0 $fa $4b $d8
     ld   B, A                                          ;; 02:57b3 $47
-    ld   A, [wD84C]                                    ;; 02:57b4 $fa $4c $d8
+    ld   A, [wSelectedMenuIndex2]                      ;; 02:57b4 $fa $4c $d8
     ld   C, A                                          ;; 02:57b7 $4f
     ret                                                ;; 02:57b8 $c9
 
@@ -3401,7 +3401,7 @@ call_02_57c4:
     ret                                                ;; 02:57d5 $c9
 
 call_02_57d6:
-    ld   A, [wD7C0]                                    ;; 02:57d6 $fa $c0 $d7
+    ld   A, [wStatusEffect]                            ;; 02:57d6 $fa $c0 $d7
     bit  3, A                                          ;; 02:57d9 $cb $5f
     ret  NZ                                            ;; 02:57db $c0
     call call_02_5b9d                                  ;; 02:57dc $cd $9d $5b
@@ -3409,7 +3409,7 @@ call_02_57d6:
     ld   A, [wStatPower]                               ;; 02:57e0 $fa $c2 $d7
     add  A, B                                          ;; 02:57e3 $80
     ld   [wD6C1], A                                    ;; 02:57e4 $ea $c1 $d6
-    ld   [wD7DF], A                                    ;; 02:57e7 $ea $df $d7
+    ld   [wTotalAP], A                                 ;; 02:57e7 $ea $df $d7
     ld   A, [wD6C0]                                    ;; 02:57ea $fa $c0 $d6
     ld   B, A                                          ;; 02:57ed $47
     ld   A, [wD6C2]                                    ;; 02:57ee $fa $c2 $d6
@@ -3418,7 +3418,7 @@ call_02_57d6:
     add  A, B                                          ;; 02:57f5 $80
     add  A, C                                          ;; 02:57f6 $81
     ld   [wD6C3], A                                    ;; 02:57f7 $ea $c3 $d6
-    ld   [wD7E0], A                                    ;; 02:57fa $ea $e0 $d7
+    ld   [wTotalDP], A                                 ;; 02:57fa $ea $e0 $d7
     ret                                                ;; 02:57fd $c9
 
 call_02_57fe:
@@ -3444,14 +3444,14 @@ call_02_580b:
 call_02_5822:
     push DE                                            ;; 02:5822 $d5
     push HL                                            ;; 02:5823 $e5
-    ld   A, [wD84B]                                    ;; 02:5824 $fa $4b $d8
+    ld   A, [wSelectedMenuIndex]                       ;; 02:5824 $fa $4b $d8
     ld   C, A                                          ;; 02:5827 $4f
     ld   B, $00                                        ;; 02:5828 $06 $00
     add  HL, BC                                        ;; 02:582a $09
     ld   D, H                                          ;; 02:582b $54
     ld   E, L                                          ;; 02:582c $5d
     pop  HL                                            ;; 02:582d $e1
-    ld   A, [wD84C]                                    ;; 02:582e $fa $4c $d8
+    ld   A, [wSelectedMenuIndex2]                      ;; 02:582e $fa $4c $d8
     ld   C, A                                          ;; 02:5831 $4f
     ld   B, $00                                        ;; 02:5832 $06 $00
     add  HL, BC                                        ;; 02:5834 $09
@@ -3466,7 +3466,7 @@ call_02_5822:
 call_02_583c:
     push BC                                            ;; 02:583c $c5
     ld   HL, wEquipmentInventory                       ;; 02:583d $21 $dd $d6
-    ld   A, [wD84C]                                    ;; 02:5840 $fa $4c $d8
+    ld   A, [wSelectedMenuIndex2]                      ;; 02:5840 $fa $4c $d8
     ld   C, A                                          ;; 02:5843 $4f
     ld   B, $00                                        ;; 02:5844 $06 $00
     add  HL, BC                                        ;; 02:5846 $09
@@ -3839,7 +3839,7 @@ call_02_5aaf:
     push BC                                            ;; 02:5aaf $c5
     ld   B, $04                                        ;; 02:5ab0 $06 $04
     ld   C, $00                                        ;; 02:5ab2 $0e $00
-    ld   A, [wD7C0]                                    ;; 02:5ab4 $fa $c0 $d7
+    ld   A, [wStatusEffect]                            ;; 02:5ab4 $fa $c0 $d7
 .jr_02_5ab7:
     rrca                                               ;; 02:5ab7 $0f
     jr   C, .jr_02_5abe                                ;; 02:5ab8 $38 $04
@@ -4003,67 +4003,65 @@ call_02_5b9d:
     pop  HL                                            ;; 02:5ba8 $e1
     ret                                                ;; 02:5ba9 $c9
 
+;@data amount=24 format=bbbbbbbbbb
+; Dialog data for size/height/cursor.
+;0-3: x, y, w, h
+;4: Amount of rows to draw with text
+;5: Length of each text to draw
+;6: Amount of cursor positions
+;7: Not sure, something with cursor behaviour
+;8: Amount of corsor columns
+;9: Horizontal cursor shift for columns
 data_02_5baa:
-    db   $01, $01, $07, $09, $04, $05, $04, $00        ;; 02:5baa ........
-    db   $01, $00, $00, $00, $13, $11, $08, $08        ;; 02:5bb2 ........
-    db   $10, $03, $02, $09, $05, $01, $0d, $09        ;; 02:5bba ........
-    db   $04, $04, $08, $01, $02, $06                  ;; 02:5bc2 ......
+    db   $01, $01, $07, $09, $04, $05, $04, $00, $01, $00 ;; 02:5baa ..........
+    db   $00, $00, $13, $11, $08, $08, $10, $03, $02, $09 ;; 02:5bb4 ..........
+    db   $05, $01, $0d, $09, $04, $04, $08, $01, $02, $06 ;; 02:5bbe ..........
 
 data_02_5bc8:
-    db   $00, $00, $13, $07, $03, $08, $0e, $01        ;; 02:5bc8 ........
-    db   $00, $00                                      ;; 02:5bd0 ..
+    db   $00, $00, $13, $07, $03, $08, $0e, $01, $00, $00 ;; 02:5bc8 ..........
 
 data_02_5bd2:
-    db   $00, $08, $13, $09, $04, $08, $0c, $03        ;; 02:5bd2 ........
-    db   $02, $09, $00, $00, $13, $08, $03, $08        ;; 02:5bda ..??????
-    db   $00, $00, $00, $00, $00, $0a, $13, $07        ;; 02:5be2 ????....
-    db   $04, $12, $04, $00, $00, $00, $00, $00        ;; 02:5bea ........
-    db   $05, $05, $02, $03, $02, $00, $01, $00        ;; 02:5bf2 ........
-    db   $09, $00, $0a, $05, $02, $08, $02, $00        ;; 02:5bfa ????????
-    db   $00, $00, $0c, $08, $06, $03, $01, $04        ;; 02:5c02 ??......
-    db   $01, $00, $00, $00, $00, $0c, $13, $03        ;; 02:5c0a ........
-    db   $01, $08, $02, $01, $00, $00, $00, $0a        ;; 02:5c12 ........
-    db   $06, $07, $03, $04, $03, $00, $01, $00        ;; 02:5c1a ........
+    db   $00, $08, $13, $09, $04, $08, $0c, $03, $02, $09 ;; 02:5bd2 ..........
+    db   $00, $00, $13, $08, $03, $08, $00, $00, $00, $00 ;; 02:5bdc ??????????
+    db   $00, $0a, $13, $07, $04, $12, $04, $00, $00, $00 ;; 02:5be6 ..........
+    db   $00, $00, $05, $05, $02, $03, $02, $00, $01, $00 ;; 02:5bf0 ..........
+    db   $09, $00, $0a, $05, $02, $08, $02, $00, $00, $00 ;; 02:5bfa ??????????
+    db   $0c, $08, $06, $03, $01, $04, $01, $00, $00, $00 ;; 02:5c04 ..........
+    db   $00, $0c, $13, $03, $01, $08, $02, $01, $00, $00 ;; 02:5c0e ..........
+    db   $00, $0a, $06, $07, $03, $04, $03, $00, $01, $00 ;; 02:5c18 ..........
 
 data_02_5c22:
-    db   $0a, $0a, $09, $03, $01, $02, $01, $00        ;; 02:5c22 ........
-    db   $00, $00, $00, $00, $13, $09, $04, $08        ;; 02:5c2a ........
-    db   $1c, $00, $01, $00, $00, $00, $13, $09        ;; 02:5c32 ........
-    db   $04, $08, $07, $00, $01, $00, $00, $00        ;; 02:5c3a ........
-    db   $13, $09, $04, $11, $02, $00, $00, $00        ;; 02:5c42 ........
-    db   $08, $0e, $0b, $03, $02, $04, $02, $01        ;; 02:5c4a ........
-    db   $02, $05, $01, $0d, $11, $04, $03, $06        ;; 02:5c52 ........
-    db   $03, $01, $03, $05                            ;; 02:5c5a ....
+    db   $0a, $0a, $09, $03, $01, $02, $01, $00, $00, $00 ;; 02:5c22 ..........
+    db   $00, $00, $13, $09, $04, $08, $1c, $00, $01, $00 ;; 02:5c2c ..........
+    db   $00, $00, $13, $09, $04, $08, $07, $00, $01, $00 ;; 02:5c36 ..........
+    db   $00, $00, $13, $09, $04, $11, $02, $00, $00, $00 ;; 02:5c40 ..........
+    db   $08, $0e, $0b, $03, $02, $04, $02, $01, $02, $05 ;; 02:5c4a ..........
+    db   $01, $0d, $11, $04, $03, $06, $03, $01, $03, $05 ;; 02:5c54 ..........
 
 data_02_5c5e:
-    db   $09, $04, $0a, $0b, $04, $07, $04, $00        ;; 02:5c5e ........
-    db   $00, $00, $0a, $0f, $09, $02, $01, $02        ;; 02:5c66 ........
-    db   $01, $00, $00, $00, $00, $04, $09, $0d        ;; 02:5c6e ........
-    db   $05, $03, $05, $00, $00, $00, $00, $00        ;; 02:5c76 ........
-    db   $13, $05, $02, $04, $02, $01, $00, $00        ;; 02:5c7e ........
-    db   $0e, $00, $05, $03, $01, $04, $01, $00        ;; 02:5c86 ????????
-    db   $00, $00, $00, $00, $13, $05, $02, $11        ;; 02:5c8e ??......
-    db   $02, $00, $00, $00, $00                       ;; 02:5c96 .....
+    db   $09, $04, $0a, $0b, $04, $07, $04, $00, $00, $00 ;; 02:5c5e ..........
+    db   $0a, $0f, $09, $02, $01, $02, $01, $00, $00, $00 ;; 02:5c68 ..........
+    db   $00, $04, $09, $0d, $05, $03, $05, $00, $00, $00 ;; 02:5c72 ..........
+    db   $00, $00, $13, $05, $02, $04, $02, $01, $00, $00 ;; 02:5c7c ..........
+    db   $0e, $00, $05, $03, $01, $04, $01, $00, $00, $00 ;; 02:5c86 ??????????
+    db   $00, $00, $13, $05, $02, $11, $02, $00, $00, $00 ;; 02:5c90 ..........
 
-data_02_5c9b:
-    db   $00, $13, $05, $04, $07, $04, $03, $02        ;; 02:5c9b ........
-    db   $09, $00, $06, $09, $05, $02, $05, $02        ;; 02:5ca3 ........
-    db   $02, $01, $00, $00, $0b, $06, $09, $02        ;; 02:5cab ........
-    db   $05, $02, $00, $01, $00, $00, $02, $13        ;; 02:5cb3 ........
-    db   $06, $01, $0f, $02, $00, $02, $00, $00        ;; 02:5cbb ........
-    db   $0a, $13, $06, $01, $0f, $02, $00, $02        ;; 02:5cc3 ........
-    db   $00                                           ;; 02:5ccb .
+;@data amount=10 format=bbbbbbbbbb
+unlabeled_02_5c9a:
+    db   $00, $00, $13, $05, $04, $07, $04, $03, $02, $09 ;; 02:5c9a ..........
+    db   $00, $06, $09, $05, $02, $05, $02, $02, $01, $00 ;; 02:5ca4 ..........
+    db   $00, $0b, $06, $09, $02, $05, $02, $00, $01, $00 ;; 02:5cae ..........
+    db   $00, $02, $13, $06, $01, $0f, $02, $00, $02, $00 ;; 02:5cb8 ..........
+    db   $00, $0a, $13, $06, $01, $0f, $02, $00, $02, $00 ;; 02:5cc2 ..........
 
 data_02_5ccc:
-    db   $00, $00, $0e, $03, $01, $04, $01, $00        ;; 02:5ccc ........
-    db   $00, $00                                      ;; 02:5cd4 ..
+    db   $00, $00, $0e, $03, $01, $04, $01, $00, $00, $00 ;; 02:5ccc ..........
 
 data_02_5cd6:
-    db   $00, $04, $13, $0d, $06, $09, $51, $01        ;; 02:5cd6 ........
-    db   $09, $02, $05, $09, $09, $05, $02, $08        ;; 02:5cde ........
-    db   $02, $00, $01, $00, $0b, $01, $07, $03        ;; 02:5ce6 ....????
-    db   $01, $04, $01, $00, $00, $00, $00, $0a        ;; 02:5cee ??????..
-    db   $13, $07, $03, $10, $04, $00, $00, $00        ;; 02:5cf6 ........
+    db   $00, $04, $13, $0d, $06, $09, $51, $01, $09, $02 ;; 02:5cd6 ..........
+    db   $05, $09, $09, $05, $02, $08, $02, $00, $01, $00 ;; 02:5ce0 ..........
+    db   $0b, $01, $07, $03, $01, $04, $01, $00, $00, $00 ;; 02:5cea ??????????
+    db   $00, $0a, $13, $07, $03, $10, $04, $00, $00, $00 ;; 02:5cf4 ..........
 
 data_02_5cfe:
     db   $01, $02, $00, $01, $01, $00, $02, $01        ;; 02:5cfe ........
@@ -4134,7 +4132,7 @@ data_02_5d52:
     dw   $0000                                         ;; 02:5d80 ..
     dw   $0000                                         ;; 02:5d82 ..
     dw   $0000                                         ;; 02:5d84 ..
-    dw   wD7DF                                         ;; 02:5d86 ..
+    dw   wTotalAP                                      ;; 02:5d86 ..
     dw   $0000                                         ;; 02:5d88 ..
     dw   $0000                                         ;; 02:5d8a ..
     dw   $0000                                         ;; 02:5d8c ..
@@ -5061,7 +5059,7 @@ call_02_6b3a:
     ld   A, [wDialogType]                              ;; 02:6b3a $fa $4a $d8
     cp   A, $19                                        ;; 02:6b3d $fe $19
     jr   Z, .jr_02_6b48                                ;; 02:6b3f $28 $07
-    ld   A, [wD84B]                                    ;; 02:6b41 $fa $4b $d8
+    ld   A, [wSelectedMenuIndex]                       ;; 02:6b41 $fa $4b $d8
     cp   A, H                                          ;; 02:6b44 $bc
     call Z, call_02_6b8c                               ;; 02:6b45 $cc $8c $6b
 .jr_02_6b48:
@@ -5264,7 +5262,7 @@ call_02_6c5d:
     ld   A, [wD872]                                    ;; 02:6c61 $fa $72 $d8
     bit  7, A                                          ;; 02:6c64 $cb $7f
     jr   Z, .jr_02_6c6b                                ;; 02:6c66 $28 $03
-    ld   HL, data_02_5c9b                              ;; 02:6c68 $21 $9b $5c
+    ld   HL, unlabeled_02_5c9a + $01                   ;; 02:6c68 $21 $9b $5c
 .jr_02_6c6b:
     ld   A, [HL-]                                      ;; 02:6c6b $3a
     add  A, D                                          ;; 02:6c6c $82
@@ -5344,7 +5342,7 @@ call_02_6cbb:
     jr   NZ, .jr_02_6cd3                               ;; 02:6ccf $20 $02
     ld   B, $08                                        ;; 02:6cd1 $06 $08
 .jr_02_6cd3:
-    ld   A, [wD84C]                                    ;; 02:6cd3 $fa $4c $d8
+    ld   A, [wSelectedMenuIndex2]                      ;; 02:6cd3 $fa $4c $d8
     inc  A                                             ;; 02:6cd6 $3c
     ret  Z                                             ;; 02:6cd7 $c8
     dec  A                                             ;; 02:6cd8 $3d
@@ -5673,7 +5671,7 @@ setStartingStats:
     ld   A, $ff                                        ;; 02:6ed5 $3e $ff
     ld   [wD87E], A                                    ;; 02:6ed7 $ea $7e $d8
     xor  A, A                                          ;; 02:6eda $af
-    ld   [wD7C0], A                                    ;; 02:6edb $ea $c0 $d7
+    ld   [wStatusEffect], A                            ;; 02:6edb $ea $c0 $d7
     call call_02_6ee2                                  ;; 02:6ede $cd $e2 $6e
     ret                                                ;; 02:6ee1 $c9
 
@@ -6184,7 +6182,7 @@ jp_02_71fb:
     ld   HL, wD872                                     ;; 02:7203 $21 $72 $d8
     res  5, [HL]                                       ;; 02:7206 $cb $ae
     ld   HL, sA000                                     ;; 02:7208 $21 $00 $a0
-    ld   A, [wD84B]                                    ;; 02:720b $fa $4b $d8
+    ld   A, [wSelectedMenuIndex]                       ;; 02:720b $fa $4b $d8
     and  A, A                                          ;; 02:720e $a7
     ld   B, $08                                        ;; 02:720f $06 $08
     jr   Z, .jr_02_721d                                ;; 02:7211 $28 $0a
@@ -6212,7 +6210,7 @@ jp_02_71fb:
     or   A, B                                          ;; 02:7239 $b0
     ld   [wD874], A                                    ;; 02:723a $ea $74 $d8
     ld   A, [wDialogType]                              ;; 02:723d $fa $4a $d8
-    ld   [wD84B], A                                    ;; 02:7240 $ea $4b $d8
+    ld   [wSelectedMenuIndex], A                       ;; 02:7240 $ea $4b $d8
     push HL                                            ;; 02:7243 $e5
     ld   DE, wD7AA                                     ;; 02:7244 $11 $aa $d7
     ld   HL, wBoyName                                  ;; 02:7247 $21 $9d $d7
@@ -6285,7 +6283,7 @@ jp_02_72be:
     res  5, A                                          ;; 02:72c2 $cb $af
     ld   [DE], A                                       ;; 02:72c4 $12
     ld   HL, sA000                                     ;; 02:72c5 $21 $00 $a0
-    ld   A, [wD84B]                                    ;; 02:72c8 $fa $4b $d8
+    ld   A, [wSelectedMenuIndex]                       ;; 02:72c8 $fa $4b $d8
     and  A, A                                          ;; 02:72cb $a7
     ld   A, [wD874]                                    ;; 02:72cc $fa $74 $d8
     jr   NZ, .jr_02_72de                               ;; 02:72cf $20 $0d
@@ -6305,7 +6303,7 @@ jp_02_72be:
     ld   HL, sA100                                     ;; 02:72e6 $21 $00 $a1
 .jr_02_72e9:
     ld   A, [wDialogType]                              ;; 02:72e9 $fa $4a $d8
-    ld   [wD84B], A                                    ;; 02:72ec $ea $4b $d8
+    ld   [wSelectedMenuIndex], A                       ;; 02:72ec $ea $4b $d8
     call enableSRAM                                    ;; 02:72ef $cd $58 $74
     ld   DE, wD7A7                                     ;; 02:72f2 $11 $a7 $d7
     ld   B, $31                                        ;; 02:72f5 $06 $31
@@ -6392,12 +6390,12 @@ call_02_7322:
     ld   [HL+], A                                      ;; 02:7386 $22
     inc  A                                             ;; 02:7387 $3c
     ld   [HL], A                                       ;; 02:7388 $77
-    ld   HL, wD7DF                                     ;; 02:7389 $21 $df $d7
+    ld   HL, wTotalAP                                  ;; 02:7389 $21 $df $d7
     ld   A, [wD6C1]                                    ;; 02:738c $fa $c1 $d6
     ld   [HL+], A                                      ;; 02:738f $22
     ld   A, [wD6C3]                                    ;; 02:7390 $fa $c3 $d6
     ld   [HL], A                                       ;; 02:7393 $77
-    ld   A, [wD7C0]                                    ;; 02:7394 $fa $c0 $d7
+    ld   A, [wStatusEffect]                            ;; 02:7394 $fa $c0 $d7
     ld   C, A                                          ;; 02:7397 $4f
     ld   B, $00                                        ;; 02:7398 $06 $00
     call call_02_7859                                  ;; 02:739a $cd $59 $78
@@ -7159,7 +7157,7 @@ jr_02_7827:
 .jr_02_783b:
     pop  AF                                            ;; 02:783b $f1
     ld   C, A                                          ;; 02:783c $4f
-    ld   A, [wD7C0]                                    ;; 02:783d $fa $c0 $d7
+    ld   A, [wStatusEffect]                            ;; 02:783d $fa $c0 $d7
     ld   B, A                                          ;; 02:7840 $47
     and  A, C                                          ;; 02:7841 $a1
     jr   Z, call_02_7859                               ;; 02:7842 $28 $15
@@ -7179,7 +7177,7 @@ jr_02_7827:
 call_02_7859:
     ld   A, B                                          ;; 02:7859 $78
     or   A, C                                          ;; 02:785a $b1
-    ld   [wD7C0], A                                    ;; 02:785b $ea $c0 $d7
+    ld   [wStatusEffect], A                            ;; 02:785b $ea $c0 $d7
     ld   A, C                                          ;; 02:785e $79
     rrca                                               ;; 02:785f $0f
     call C, call_02_78a1                               ;; 02:7860 $dc $a1 $78
@@ -7244,7 +7242,7 @@ call_02_78b8:
     ld   [wD882], A                                    ;; 02:78bb $ea $82 $d8
     xor  A, A                                          ;; 02:78be $af
     ld   [wD6C3], A                                    ;; 02:78bf $ea $c3 $d6
-    ld   [wD7E0], A                                    ;; 02:78c2 $ea $e0 $d7
+    ld   [wTotalDP], A                                 ;; 02:78c2 $ea $e0 $d7
     ret                                                ;; 02:78c5 $c9
 
 call_02_78c6:
@@ -7257,7 +7255,7 @@ call_02_78c6:
     ld   C, A                                          ;; 02:78d3 $4f
     or   A, B                                          ;; 02:78d4 $b0
     ret  Z                                             ;; 02:78d5 $c8
-    ld   A, [wD7C0]                                    ;; 02:78d6 $fa $c0 $d7
+    ld   A, [wStatusEffect]                            ;; 02:78d6 $fa $c0 $d7
     and  A, A                                          ;; 02:78d9 $a7
     ret  Z                                             ;; 02:78da $c8
     bit  0, A                                          ;; 02:78db $cb $47
@@ -7388,7 +7386,7 @@ call_02_79ba:
     call call_00_0226                                  ;; 02:79ba $cd $26 $02
     ld   A, [wD882]                                    ;; 02:79bd $fa $82 $d8
     ld   [wD6C3], A                                    ;; 02:79c0 $ea $c3 $d6
-    ld   [wD7E0], A                                    ;; 02:79c3 $ea $e0 $d7
+    ld   [wTotalDP], A                                 ;; 02:79c3 $ea $e0 $d7
     ld   A, [wD87C]                                    ;; 02:79c6 $fa $7c $d8
     ld   B, $f7                                        ;; 02:79c9 $06 $f7
     call call_02_79dd                                  ;; 02:79cb $cd $dd $79
@@ -7397,7 +7395,7 @@ call_02_79ba:
 
 call_02_79d2:
     push BC                                            ;; 02:79d2 $c5
-    ld   A, [wD7C0]                                    ;; 02:79d3 $fa $c0 $d7
+    ld   A, [wStatusEffect]                            ;; 02:79d3 $fa $c0 $d7
     and  A, $0f                                        ;; 02:79d6 $e6 $0f
     call Z, call_00_11b1                               ;; 02:79d8 $cc $b1 $11
     pop  BC                                            ;; 02:79db $c1
@@ -7405,7 +7403,7 @@ call_02_79d2:
 
 call_02_79dd:
     call call_00_2fea                                  ;; 02:79dd $cd $ea $2f
-    ld   HL, wD7C0                                     ;; 02:79e0 $21 $c0 $d7
+    ld   HL, wStatusEffect                             ;; 02:79e0 $21 $c0 $d7
     ld   A, B                                          ;; 02:79e3 $78
     and  A, [HL]                                       ;; 02:79e4 $a6
     ld   [HL], A                                       ;; 02:79e5 $77
@@ -7426,7 +7424,7 @@ call_02_79e7:
     ret                                                ;; 02:79ff $c9
 
 call_02_7a00:
-    ld   A, [wD7C0]                                    ;; 02:7a00 $fa $c0 $d7
+    ld   A, [wStatusEffect]                            ;; 02:7a00 $fa $c0 $d7
     ld   C, A                                          ;; 02:7a03 $4f
     ld   B, $05                                        ;; 02:7a04 $06 $05
     ld   HL, wD879                                     ;; 02:7a06 $21 $79 $d8
@@ -7707,7 +7705,7 @@ jp_02_7b9f:
     ld   [HL+], A                                      ;; 02:7ba9 $22
     dec  B                                             ;; 02:7baa $05
     jr   NZ, .jr_02_7ba9                               ;; 02:7bab $20 $fc
-    ld   A, [wD84B]                                    ;; 02:7bad $fa $4b $d8
+    ld   A, [wSelectedMenuIndex]                       ;; 02:7bad $fa $4b $d8
     and  A, A                                          ;; 02:7bb0 $a7
     jr   NZ, .jr_02_7bc3                               ;; 02:7bb1 $20 $10
 .jr_02_7bb3:

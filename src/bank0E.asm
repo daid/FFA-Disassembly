@@ -3529,7 +3529,7 @@ script_0470:
           db "<11>", $00 ;; 0e:5a4d
       sENDIF                                           ;; 0e:5a63
     sELSE                                              ;; 0e:5a63 $01 $16
-      sUNK_C2 8                                        ;; 0e:5a65 $c2 $08
+      sPLAYER_CURE_STATUS 8                            ;; 0e:5a65 $c2 $08
       sSFX 7                                           ;; 0e:5a67 $f9 $07
       sDELAY 7                                         ;; 0e:5a69 $f0 $07
       sSFX 7                                           ;; 0e:5a6b $f9 $07
@@ -4657,7 +4657,7 @@ script_0530:
 script_0531:
     sIF_FLAG !wScriptFlags01.0                         ;; 0e:6129 $08 $88 $00 $71
       sSET_MUSIC 0                                     ;; 0e:612d $f8 $00
-      sUNK_DC                                          ;; 0e:612f $dc
+      sLOCK_TEXT_SPEED                                 ;; 0e:612f $dc
       sDELAY 90                                        ;; 0e:6130 $f0 $5a
       sMSG                                             ;; 0e:6132 $04
         db "<10><BOY> was a fighter\nof Empire Glaive.", $00 ;; 0e:6133
@@ -4669,7 +4669,7 @@ script_0531:
       sLOAD_ROOM_INSTANT 15, $55, 20, 0                ;; 0e:6151 $f3 $0f $55 $14 $00
       sFADE_TO_NORMAL                                  ;; 0e:6156 $bc
       sDELAY 50                                        ;; 0e:6157 $f0 $32
-      sUNK_DD                                          ;; 0e:6159 $dd
+      sUNLOCK_TEXT_SPEED                               ;; 0e:6159 $dd
       sMSG                                             ;; 0e:615a $04
         db "<10><BOY> and friends\nwere forced to\nfight everyday<12>"
         db "<1b>just for the\nentertainment of\nDark Lord.<12>"
@@ -5412,7 +5412,7 @@ script_053f:
     sFOLLOWER_DELETE                                   ;; 0e:6fd4 $98
     sLOAD_ROOM_INSTANT 15, $05, 8, 9                   ;; 0e:6fd5 $f3 $0f $05 $08 $09
     sDELAY 255                                         ;; 0e:6fda $f0 $ff
-    sUNK_DC                                            ;; 0e:6fdc $dc
+    sLOCK_TEXT_SPEED                                   ;; 0e:6fdc $dc
     sSET_PLAYER_POSITION 8, 9                          ;; 0e:6fdd $8a $08 $09
     sSET_PLAYER_DIRECTION_RIGHT                        ;; 0e:6fe0 $86
     sSET_NPC_TYPES 98                                  ;; 0e:6fe1 $fc $62
@@ -5579,7 +5579,7 @@ script_0540:
     sEND                                               ;; 0e:73d7 $00
     sFADE_TO_BLACK                                     ;; 0e:73d8 $bd
     sLOAD_ROOM_INSTANT 15, $55, 20, 0                  ;; 0e:73d9 $f3 $0f $55 $14 $00
-    sUNK_B6                                            ;; 0e:73de $b6
+    sLETTER_BOX_EFFECT                                 ;; 0e:73de $b6
     sFADE_TO_NORMAL                                    ;; 0e:73df $bc
     sDELAY 60                                          ;; 0e:73e0 $f0 $3c
     sSET_MUSIC 0                                       ;; 0e:73e2 $f8 $00

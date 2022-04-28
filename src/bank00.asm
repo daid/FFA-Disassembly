@@ -4514,7 +4514,7 @@ call_00_1acd:
     add  HL, BC                                        ;; 00:1ad4 $09
     ld   D, H                                          ;; 00:1ad5 $54
     ld   E, L                                          ;; 00:1ad6 $5d
-    ld   HL, gfxBlankTile ;@bank 8 size=3              ;; 00:1ad7 $21 $00 $5a
+    ld   HL, gfxBlankTiles08 ;@bank 8 size=3           ;; 00:1ad7 $21 $00 $5a
     cpl                                                ;; 00:1ada $2f
     inc  A                                             ;; 00:1adb $3c
     add  A, A                                          ;; 00:1adc $87
@@ -5321,12 +5321,12 @@ call_00_2092:
 ;@data format=pp amount=28
 ; List graphics to load into VRAM at startup. Copies 1 tile from 2nd pointer in bank8 to VRAM first pointer
 initialVRAMLoad:
-    dw   $8040, gfxBlankTile                           ;; 00:20d0 pP..
-    dw   $8050, gfxBlankTile                           ;; 00:20d4 pP..
-    dw   $8060, gfxBlankTile                           ;; 00:20d8 pP..
-    dw   $8070, gfxBlankTile                           ;; 00:20dc pP..
-    dw   $8100, gfxBlankTile                           ;; 00:20e0 pP..
-    dw   $8110, gfxBlankTile                           ;; 00:20e4 pP..
+    dw   $8040, gfxBlankTiles08                        ;; 00:20d0 pP..
+    dw   $8050, gfxBlankTiles08                        ;; 00:20d4 pP..
+    dw   $8060, gfxBlankTiles08                        ;; 00:20d8 pP..
+    dw   $8070, gfxBlankTiles08                        ;; 00:20dc pP..
+    dw   $8100, gfxBlankTiles08                        ;; 00:20e0 pP..
+    dw   $8110, gfxBlankTiles08                        ;; 00:20e4 pP..
     dw   $8120, gfxHand                                ;; 00:20e8 pP..
     dw   $8130, gfxHand + $20                          ;; 00:20ec pP..
     dw   $8140, gfxHand + $10                          ;; 00:20f0 pP..
@@ -8540,7 +8540,7 @@ call_00_3547:
     ld   A, [wScriptFlags0F]                           ;; 00:3552 $fa $d5 $d7
     and  A, $fe                                        ;; 00:3555 $e6 $fe
     ld   B, A                                          ;; 00:3557 $47
-    ld   A, [wD84B]                                    ;; 00:3558 $fa $4b $d8
+    ld   A, [wSelectedMenuIndex]                       ;; 00:3558 $fa $4b $d8
     and  A, $01                                        ;; 00:355b $e6 $01
     or   A, B                                          ;; 00:355d $b0
     ld   [wScriptFlags0F], A                           ;; 00:355e $ea $d5 $d7

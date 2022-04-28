@@ -26,7 +26,7 @@ INCLUDE "data/scriptPointers.asm"
     db   $31, $0e, $6c, $b1, $4c, $0d, $2c, $ad        ;; 08:59f1 ????????
     db   $4d, $2e, $0e, $6c, $ae, $4c, $0d             ;; 08:59f9 ???????
 
-gfxBlankTile:
+gfxBlankTiles08:
     dw   `00000000                                     ;; 08:5a00 $00 $00
     dw   `00000000                                     ;; 08:5a02 $00 $00
     dw   `00000000                                     ;; 08:5a04 $00 $00
