@@ -204,7 +204,7 @@ NPC_NAMES = {
 @annotation
 def npc_data(memory, addr, *, amount):
     for n in range(int(amount)):
-        NpcDataBlock(memory, addr + n * 24)
+        NpcDataBlock(memory, addr + n * 24, n)
 
 @annotation
 def npc_spawn_data(memory, addr, *, amount):
@@ -213,8 +213,9 @@ def npc_spawn_data(memory, addr, *, amount):
         NpcSpawnDataPointers(memory, addr + n * 6)
 
 class NpcDataBlock(Block):
-    def __init__(self, memory, addr):
+    def __init__(self, memory, addr, index):
         super().__init__(memory, addr, size=24)
+        self.index = index
         
         script_index = memory.word(addr + 20)
         gfx_ptr = memory.word(addr + 4)
@@ -281,7 +282,9 @@ class NpcDataBlock(Block):
             "$%02x" % (self.memory.byte(file.addr + 19)),
             script_label,
             chest_script_label,
-            is_data=True
+            is_data=True,
+            add_data_comment=False,
+            comment=NPC_NAMES.get(self.index)
         )
 
 class NpcSpawnDataPointers(Block):
