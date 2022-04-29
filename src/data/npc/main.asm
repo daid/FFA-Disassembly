@@ -23,8 +23,8 @@ npcDataTable:
     NPC_DATA $d9, $05, $20, $08, data_09_5500, data_03_7b5a, data_03_7f62, $00, $01, $01, $01, $01, $00, $06, $06, $06, $06, script_0206, $0000 ;; 03:5fd2 NPC_AMANDA_FOLLOWING
     NPC_DATA $d9, $06, $20, $08, data_09_5600, data_03_7b5a, data_03_7f62, $00, $01, $01, $01, $01, $00, $06, $06, $06, $06, script_01ff, $0000 ;; 03:5fea NPC_LESTER_FOLLOWING
     NPC_DATA $d9, $07, $20, $08, data_09_5700, data_03_7b5a, data_03_7f62, $00, $01, $01, $01, $01, $00, $06, $06, $06, $06, script_0200, $0000 ;; 03:6002 NPC_MARCIE_FOLLOWING
-    NPC_DATA $d9, $08, $20, $08, data_09_5900, data_03_7b5a, data_03_7f62, $00, $01, $01, $01, $00, $00, $05, $05, $05, $05, script_0470, $0000 ;; 03:601a NPC_CHOCOBO_FOLLOWING
-    NPC_DATA $d9, $09, $20, $08, data_09_5800, data_03_7b5a, data_03_7f62, $00, $01, $01, $01, $00, $00, $05, $05, $05, $05, script_0470, $0000 ;; 03:6032 NPC_CHOCOBOT_FOLLOWING
+    NPC_DATA $d9, $08, $20, $08, gfxNpcChocobot, data_03_7b5a, data_03_7f62, $00, $01, $01, $01, $00, $00, $05, $05, $05, $05, script_0470, $0000 ;; 03:601a NPC_CHOCOBO_FOLLOWING
+    NPC_DATA $d9, $09, $20, $08, gfxNpcChocobo, data_03_7b5a, data_03_7f62, $00, $01, $01, $01, $00, $00, $05, $05, $05, $05, script_0470, $0000 ;; 03:6032 NPC_CHOCOBOT_FOLLOWING
     NPC_DATA $91, $25, $50, $08, gfxEnemyWerewolf, data_03_7b5a, data_03_7cfe, $00, $01, $00, $00, $01, $00, $0f, $05, $05, $05, script_003d, $0000 ;; 03:604a NPC_WEREWOLF_1
     NPC_DATA $81, $5e, $6e, $01, gfxBlankTiles09, data_03_7b5a, data_03_7f3e, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, script_01f1, $0000 ;; 03:6062 NPC_INV_CURE
     NPC_DATA $87, $0c, $78, $02, gfxChest, data_03_7b5a, unlabeled_2cab, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, script_000b, $0000 ;; 03:607a NPC_CHEST_1
@@ -199,9 +199,9 @@ npcDataTable:
     NPC_DATA $81, $05, $20, $08, data_09_5500, data_03_7b5a, data_03_7f62, $00, $01, $01, $01, $01, $00, $02, $02, $02, $02, script_003d, $0000 ;; 03:7052 NPC_AMANDA_2
     NPC_DATA $81, $06, $20, $08, data_09_5600, data_03_7b5a, data_03_7f62, $00, $01, $01, $01, $01, $00, $02, $02, $02, $02, script_003d, $0000 ;; 03:706a NPC_LESTER_2
     NPC_DATA $81, $07, $20, $08, data_09_5700, data_03_7b5a, data_03_7f62, $00, $01, $01, $01, $01, $00, $02, $02, $02, $02, script_003d, $0000 ;; 03:7082 NPC_MARCIE_2
-    NPC_DATA $81, $08, $20, $08, data_09_5900, data_03_7b5a, data_03_7f62, $00, $01, $01, $01, $00, $00, $02, $02, $02, $02, script_0472, $0000 ;; 03:709a NPC_CHOCOBOT
-    NPC_DATA $81, $09, $50, $08, data_09_5800, data_03_7b5a, data_03_7cfe, $00, $01, $00, $01, $00, $00, $00, $00, $00, $00, script_0472, $0000 ;; 03:70b2 NPC_CHOCOBO_1
-    NPC_DATA $81, $09, $20, $08, data_09_5800, data_03_7b5a, data_03_7f62, $00, $01, $01, $01, $00, $00, $02, $02, $02, $02, script_0472, $0000 ;; 03:70ca NPC_CHOCOBO_2
+    NPC_DATA $81, $08, $20, $08, gfxNpcChocobot, data_03_7b5a, data_03_7f62, $00, $01, $01, $01, $00, $00, $02, $02, $02, $02, script_0472, $0000 ;; 03:709a NPC_CHOCOBOT
+    NPC_DATA $81, $09, $50, $08, gfxNpcChocobo, data_03_7b5a, data_03_7cfe, $00, $01, $00, $01, $00, $00, $00, $00, $00, $00, script_0472, $0000 ;; 03:70b2 NPC_CHOCOBO_1
+    NPC_DATA $81, $09, $20, $08, gfxNpcChocobo, data_03_7b5a, data_03_7f62, $00, $01, $01, $01, $00, $00, $02, $02, $02, $02, script_0472, $0000 ;; 03:70ca NPC_CHOCOBO_2
     NPC_DATA $81, $5e, $50, $02, data_09_6b40, data_03_7b5a, data_03_7b96, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, script_0258, $0000 ;; 03:70e2 NPC_PRISION_BARS
     NPC_DATA $81, $5f, $40, $04, data_09_6f40, data_03_7b5a, data_03_7d46, $00, $01, $00, $00, $00, $00, $00, $00, $00, $00, script_003d, $0000 ;; 03:70fa NPC_MUSIC_NOTES
     NPC_DATA $81, $5e, $40, $08, data_09_6a00, data_03_7b5a, data_03_7cb6, $00, $01, $01, $00, $00, $00, $04, $04, $04, $04, script_025d, $0000 ;; 03:7112 NPC_MAGIC_SALESMAN
