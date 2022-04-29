@@ -4628,121 +4628,121 @@ data_01_5ddd:
 
 ;@attack_info amount=96
 data_01_5e1d:
-    dw   $0000                                         ;; 01:5e1d ??
-    dw   data_01_60ff                                  ;; 01:5e1f pP
-    dw   data_01_6669                                  ;; 01:5e21 ??
-    dw   data_01_6693                                  ;; 01:5e23 ??
-    dw   data_01_6765                                  ;; 01:5e25 ??
-    dw   data_01_67b9                                  ;; 01:5e27 ??
-    dw   data_01_680d                                  ;; 01:5e29 ??
-    dw   $0000                                         ;; 01:5e2b ??
-    dw   data_01_62a3                                  ;; 01:5e2d pP
-    dw   data_01_634b                                  ;; 01:5e2f ??
-    dw   data_01_64ef                                  ;; 01:5e31 ??
-    dw   data_01_6447                                  ;; 01:5e33 ??
-    dw   data_01_6129                                  ;; 01:5e35 ??
-    dw   data_01_6129                                  ;; 01:5e37 ??
-    dw   data_01_6129                                  ;; 01:5e39 ??
-    dw   data_01_6129                                  ;; 01:5e3b ??
-    dw   data_01_6861                                  ;; 01:5e3d ??
-    dw   data_01_641d                                  ;; 01:5e3f ??
-    dw   $0000                                         ;; 01:5e41 ??
-    dw   data_01_66bd                                  ;; 01:5e43 ??
-    dw   data_01_678f                                  ;; 01:5e45 ??
-    dw   data_01_67e3                                  ;; 01:5e47 ??
-    dw   data_01_6711                                  ;; 01:5e49 ??
-    dw   $0000                                         ;; 01:5e4b ??
-    dw   data_01_62cd                                  ;; 01:5e4d pP
-    dw   data_01_6375                                  ;; 01:5e4f ??
-    dw   data_01_6519                                  ;; 01:5e51 ??
-    dw   data_01_6471                                  ;; 01:5e53 ??
-    dw   data_01_6153                                  ;; 01:5e55 ??
-    dw   data_01_617d                                  ;; 01:5e57 ??
-    dw   data_01_65eb                                  ;; 01:5e59 ??
-    dw   data_01_6597                                  ;; 01:5e5b ??
-    dw   data_01_688b                                  ;; 01:5e5d ??
-    dw   $0000                                         ;; 01:5e5f ??
-    dw   $0000                                         ;; 01:5e61 ??
-    dw   data_01_66e7                                  ;; 01:5e63 ??
-    dw   $0000                                         ;; 01:5e65 ??
-    dw   $0000                                         ;; 01:5e67 ??
-    dw   data_01_673b                                  ;; 01:5e69 ??
-    dw   $0000                                         ;; 01:5e6b ??
-    dw   data_01_62f7                                  ;; 01:5e6d pP
-    dw   data_01_639f                                  ;; 01:5e6f ??
-    dw   data_01_6543                                  ;; 01:5e71 ??
-    dw   data_01_649b                                  ;; 01:5e73 ??
-    dw   data_01_61a7                                  ;; 01:5e75 ??
-    dw   data_01_61fb                                  ;; 01:5e77 ??
-    dw   data_01_6615                                  ;; 01:5e79 ??
-    dw   data_01_65c1                                  ;; 01:5e7b ??
-    dw   data_01_68b5                                  ;; 01:5e7d ??
-    dw   $0000                                         ;; 01:5e7f ??
-    dw   $0000                                         ;; 01:5e81 ??
-    dw   data_01_6711                                  ;; 01:5e83 ??
-    dw   $0000                                         ;; 01:5e85 ??
-    dw   $0000                                         ;; 01:5e87 ??
-    dw   $0000                                         ;; 01:5e89 ??
-    dw   $0000                                         ;; 01:5e8b ??
-    dw   data_01_6321                                  ;; 01:5e8d pP
-    dw   data_01_63c9                                  ;; 01:5e8f ??
-    dw   data_01_656d                                  ;; 01:5e91 ??
-    dw   data_01_64c5                                  ;; 01:5e93 ??
-    dw   data_01_61d1                                  ;; 01:5e95 ??
-    dw   data_01_6225                                  ;; 01:5e97 ??
-    dw   data_01_663f                                  ;; 01:5e99 ??
-    dw   $0000                                         ;; 01:5e9b ??
-    dw   $0000                                         ;; 01:5e9d ??
-    dw   $0000                                         ;; 01:5e9f ??
-    dw   $0000                                         ;; 01:5ea1 ??
-    dw   data_01_673b                                  ;; 01:5ea3 ??
-    dw   $0000                                         ;; 01:5ea5 ??
-    dw   $0000                                         ;; 01:5ea7 ??
-    dw   data_01_6837                                  ;; 01:5ea9 pP
-    dw   $0000                                         ;; 01:5eab ??
-    dw   $0000                                         ;; 01:5ead ??
-    dw   data_01_63f3                                  ;; 01:5eaf ??
-    dw   $0000                                         ;; 01:5eb1 ??
-    dw   $0000                                         ;; 01:5eb3 ??
-    dw   $0000                                         ;; 01:5eb5 ??
-    dw   data_01_624f                                  ;; 01:5eb7 ??
-    dw   $0000                                         ;; 01:5eb9 ??
-    dw   $0000                                         ;; 01:5ebb ??
-    dw   $0000                                         ;; 01:5ebd ??
-    dw   $0000                                         ;; 01:5ebf ??
-    dw   $0000                                         ;; 01:5ec1 ??
-    dw   $0000                                         ;; 01:5ec3 ??
-    dw   $0000                                         ;; 01:5ec5 ??
-    dw   $0000                                         ;; 01:5ec7 ??
-    dw   $0000                                         ;; 01:5ec9 ??
-    dw   $0000                                         ;; 01:5ecb ??
-    dw   $0000                                         ;; 01:5ecd ??
-    dw   $0000                                         ;; 01:5ecf ??
-    dw   $0000                                         ;; 01:5ed1 ??
-    dw   $0000                                         ;; 01:5ed3 ??
-    dw   $0000                                         ;; 01:5ed5 ??
-    dw   data_01_6279                                  ;; 01:5ed7 ??
-    dw   $0000                                         ;; 01:5ed9 ??
-    dw   $0000                                         ;; 01:5edb ??
+    dw   $0000                                         ;; 01:5e1d ?? $00
+    dw   data_01_60ff                                  ;; 01:5e1f pP $01
+    dw   data_01_6669                                  ;; 01:5e21 ?? $02
+    dw   data_01_6693                                  ;; 01:5e23 ?? $03
+    dw   data_01_6765                                  ;; 01:5e25 ?? $04
+    dw   data_01_67b9                                  ;; 01:5e27 ?? $05
+    dw   data_01_680d                                  ;; 01:5e29 ?? $06
+    dw   $0000                                         ;; 01:5e2b ?? $07
+    dw   data_01_62a3                                  ;; 01:5e2d pP $08
+    dw   data_01_634b                                  ;; 01:5e2f ?? $09
+    dw   data_01_64ef                                  ;; 01:5e31 ?? $0a
+    dw   data_01_6447                                  ;; 01:5e33 ?? $0b
+    dw   data_01_6129                                  ;; 01:5e35 ?? $0c
+    dw   data_01_6129                                  ;; 01:5e37 ?? $0d
+    dw   data_01_6129                                  ;; 01:5e39 ?? $0e
+    dw   data_01_6129                                  ;; 01:5e3b ?? $0f
+    dw   data_01_6861                                  ;; 01:5e3d ?? $10
+    dw   data_01_641d                                  ;; 01:5e3f ?? $11
+    dw   $0000                                         ;; 01:5e41 ?? $12
+    dw   data_01_66bd                                  ;; 01:5e43 ?? $13
+    dw   data_01_678f                                  ;; 01:5e45 ?? $14
+    dw   data_01_67e3                                  ;; 01:5e47 ?? $15
+    dw   data_01_6711                                  ;; 01:5e49 ?? $16
+    dw   $0000                                         ;; 01:5e4b ?? $17
+    dw   data_01_62cd                                  ;; 01:5e4d pP $18
+    dw   data_01_6375                                  ;; 01:5e4f ?? $19
+    dw   data_01_6519                                  ;; 01:5e51 ?? $1a
+    dw   data_01_6471                                  ;; 01:5e53 ?? $1b
+    dw   data_01_6153                                  ;; 01:5e55 ?? $1c
+    dw   data_01_617d                                  ;; 01:5e57 ?? $1d
+    dw   data_01_65eb                                  ;; 01:5e59 ?? $1e
+    dw   data_01_6597                                  ;; 01:5e5b ?? $1f
+    dw   data_01_688b                                  ;; 01:5e5d ?? $20
+    dw   $0000                                         ;; 01:5e5f ?? $21
+    dw   $0000                                         ;; 01:5e61 ?? $22
+    dw   data_01_66e7                                  ;; 01:5e63 ?? $23
+    dw   $0000                                         ;; 01:5e65 ?? $24
+    dw   $0000                                         ;; 01:5e67 ?? $25
+    dw   data_01_673b                                  ;; 01:5e69 ?? $26
+    dw   $0000                                         ;; 01:5e6b ?? $27
+    dw   data_01_62f7                                  ;; 01:5e6d pP $28
+    dw   data_01_639f                                  ;; 01:5e6f ?? $29
+    dw   data_01_6543                                  ;; 01:5e71 ?? $2a
+    dw   data_01_649b                                  ;; 01:5e73 ?? $2b
+    dw   data_01_61a7                                  ;; 01:5e75 ?? $2c
+    dw   data_01_61fb                                  ;; 01:5e77 ?? $2d
+    dw   data_01_6615                                  ;; 01:5e79 ?? $2e
+    dw   data_01_65c1                                  ;; 01:5e7b ?? $2f
+    dw   data_01_68b5                                  ;; 01:5e7d ?? $30
+    dw   $0000                                         ;; 01:5e7f ?? $31
+    dw   $0000                                         ;; 01:5e81 ?? $32
+    dw   data_01_6711                                  ;; 01:5e83 ?? $33
+    dw   $0000                                         ;; 01:5e85 ?? $34
+    dw   $0000                                         ;; 01:5e87 ?? $35
+    dw   $0000                                         ;; 01:5e89 ?? $36
+    dw   $0000                                         ;; 01:5e8b ?? $37
+    dw   data_01_6321                                  ;; 01:5e8d pP $38
+    dw   data_01_63c9                                  ;; 01:5e8f ?? $39
+    dw   data_01_656d                                  ;; 01:5e91 ?? $3a
+    dw   data_01_64c5                                  ;; 01:5e93 ?? $3b
+    dw   data_01_61d1                                  ;; 01:5e95 ?? $3c
+    dw   data_01_6225                                  ;; 01:5e97 ?? $3d
+    dw   data_01_663f                                  ;; 01:5e99 ?? $3e
+    dw   $0000                                         ;; 01:5e9b ?? $3f
+    dw   $0000                                         ;; 01:5e9d ?? $40
+    dw   $0000                                         ;; 01:5e9f ?? $41
+    dw   $0000                                         ;; 01:5ea1 ?? $42
+    dw   data_01_673b                                  ;; 01:5ea3 ?? $43
+    dw   $0000                                         ;; 01:5ea5 ?? $44
+    dw   $0000                                         ;; 01:5ea7 ?? $45
+    dw   data_01_6837                                  ;; 01:5ea9 pP $46
+    dw   $0000                                         ;; 01:5eab ?? $47
+    dw   $0000                                         ;; 01:5ead ?? $48
+    dw   data_01_63f3                                  ;; 01:5eaf ?? $49
+    dw   $0000                                         ;; 01:5eb1 ?? $4a
+    dw   $0000                                         ;; 01:5eb3 ?? $4b
+    dw   $0000                                         ;; 01:5eb5 ?? $4c
+    dw   data_01_624f                                  ;; 01:5eb7 ?? $4d
+    dw   $0000                                         ;; 01:5eb9 ?? $4e
+    dw   $0000                                         ;; 01:5ebb ?? $4f
+    dw   $0000                                         ;; 01:5ebd ?? $50
+    dw   $0000                                         ;; 01:5ebf ?? $51
+    dw   $0000                                         ;; 01:5ec1 ?? $52
+    dw   $0000                                         ;; 01:5ec3 ?? $53
+    dw   $0000                                         ;; 01:5ec5 ?? $54
+    dw   $0000                                         ;; 01:5ec7 ?? $55
+    dw   $0000                                         ;; 01:5ec9 ?? $56
+    dw   $0000                                         ;; 01:5ecb ?? $57
+    dw   $0000                                         ;; 01:5ecd ?? $58
+    dw   $0000                                         ;; 01:5ecf ?? $59
+    dw   $0000                                         ;; 01:5ed1 ?? $5a
+    dw   $0000                                         ;; 01:5ed3 ?? $5b
+    dw   $0000                                         ;; 01:5ed5 ?? $5c
+    dw   data_01_6279                                  ;; 01:5ed7 ?? $5d
+    dw   $0000                                         ;; 01:5ed9 ?? $5e
+    dw   $0000                                         ;; 01:5edb ?? $5f
 
 ;@data format=p amount=16
 data_01_5edd:
-    dw   data_01_5efd                                  ;; 01:5edd ??
-    dw   data_01_5f01                                  ;; 01:5edf ??
-    dw   data_01_5f07                                  ;; 01:5ee1 ??
-    dw   data_01_5f11                                  ;; 01:5ee3 ??
-    dw   data_01_5f1f                                  ;; 01:5ee5 ??
-    dw   data_01_5f31                                  ;; 01:5ee7 ??
-    dw   data_01_5f47                                  ;; 01:5ee9 ??
-    dw   data_01_5f61                                  ;; 01:5eeb ??
-    dw   data_01_5f7f                                  ;; 01:5eed ??
-    dw   data_01_5fa1                                  ;; 01:5eef ??
-    dw   data_01_5fc7                                  ;; 01:5ef1 ??
-    dw   data_01_5ff1                                  ;; 01:5ef3 ??
-    dw   data_01_601f                                  ;; 01:5ef5 ??
-    dw   data_01_6051                                  ;; 01:5ef7 ??
-    dw   data_01_6087                                  ;; 01:5ef9 ??
-    dw   data_01_60c1                                  ;; 01:5efb ??
+    dw   data_01_5efd                                  ;; 01:5edd ?? $00
+    dw   data_01_5f01                                  ;; 01:5edf ?? $01
+    dw   data_01_5f07                                  ;; 01:5ee1 ?? $02
+    dw   data_01_5f11                                  ;; 01:5ee3 ?? $03
+    dw   data_01_5f1f                                  ;; 01:5ee5 ?? $04
+    dw   data_01_5f31                                  ;; 01:5ee7 ?? $05
+    dw   data_01_5f47                                  ;; 01:5ee9 ?? $06
+    dw   data_01_5f61                                  ;; 01:5eeb ?? $07
+    dw   data_01_5f7f                                  ;; 01:5eed ?? $08
+    dw   data_01_5fa1                                  ;; 01:5eef ?? $09
+    dw   data_01_5fc7                                  ;; 01:5ef1 ?? $0a
+    dw   data_01_5ff1                                  ;; 01:5ef3 ?? $0b
+    dw   data_01_601f                                  ;; 01:5ef5 ?? $0c
+    dw   data_01_6051                                  ;; 01:5ef7 ?? $0d
+    dw   data_01_6087                                  ;; 01:5ef9 ?? $0e
+    dw   data_01_60c1                                  ;; 01:5efb ?? $0f
 
 data_01_5efd:
     db   $06, $00, $00, $00                            ;; 01:5efd ????
@@ -6176,65 +6176,65 @@ data_01_772f:
 
 ;@data format=pppp amount=48
 data_01_776f:
-    dw   data_01_797d, data_01_799a, data_01_79c5, data_01_79e2 ;; 01:776f ..??..??
-    dw   data_01_7a0d, data_01_7a30, data_01_7a53, data_01_7a76 ;; 01:7777 ..??????
-    dw   data_01_7a99, data_01_7aca, data_01_7afb, data_01_7b2c ;; 01:777f ..??????
-    dw   data_01_7b5d, data_01_7b8e, data_01_7bbf, data_01_7bf0 ;; 01:7787 ????????
-    dw   data_01_7c21, data_01_799a, data_01_7c66, data_01_7cab ;; 01:778f ????????
-    dw   data_01_7cf0, data_01_7d35, data_01_79c5, data_01_79e2 ;; 01:7797 ????????
-    dw   data_01_7d7a, data_01_7dbf, data_01_7e04, data_01_7e49 ;; 01:779f ????????
-    dw   data_01_797d, data_01_799a, data_01_79c5, data_01_79e2 ;; 01:77a7 ????????
-    dw   data_01_797d, data_01_799a, data_01_79c5, data_01_79e2 ;; 01:77af ????????
-    dw   data_01_797d, data_01_799a, data_01_79c5, data_01_79e2 ;; 01:77b7 ????????
-    dw   data_01_7e8e, data_01_7ea3, data_01_7eba, data_01_7ecf ;; 01:77bf ........
-    dw   data_01_7ee4, data_01_7ef9, data_01_7f0e, data_01_7f23 ;; 01:77c7 ........
-    dw   data_01_797d, data_01_799a, data_01_79c5, data_01_79e2 ;; 01:77cf ????????
-    dw   data_01_7f38, data_01_7f55, data_01_79c5, data_01_79e2 ;; 01:77d7 ....????
-    dw   data_01_7f72, data_01_7f8f, data_01_79c5, data_01_79e2 ;; 01:77df ????????
-    dw   data_01_797d, data_01_799a, data_01_79c5, data_01_79e2 ;; 01:77e7 ????????
-    dw   data_01_797d, data_01_799a, data_01_79c5, data_01_79e2 ;; 01:77ef ????????
-    dw   data_01_7a0d, data_01_7a30, data_01_7a53, data_01_7a76 ;; 01:77f7 ????????
-    dw   data_01_7a99, data_01_7aca, data_01_7afb, data_01_7b2c ;; 01:77ff ????????
-    dw   data_01_7b5d, data_01_7b8e, data_01_7bbf, data_01_7bf0 ;; 01:7807 ........
-    dw   data_01_7c21, data_01_799a, data_01_7c66, data_01_7cab ;; 01:780f ????????
-    dw   data_01_7cf0, data_01_7d35, data_01_79c5, data_01_79e2 ;; 01:7817 ....????
-    dw   data_01_7d7a, data_01_7dbf, data_01_7e04, data_01_7e49 ;; 01:781f ........
-    dw   data_01_797d, data_01_799a, data_01_79c5, data_01_79e2 ;; 01:7827 ????????
-    dw   data_01_797d, data_01_799a, data_01_79c5, data_01_79e2 ;; 01:782f ????????
-    dw   data_01_797d, data_01_799a, data_01_79c5, data_01_79e2 ;; 01:7837 ????????
-    dw   data_01_797d, data_01_799a, data_01_79c5, data_01_79e2 ;; 01:783f ????????
-    dw   data_01_797d, data_01_799a, data_01_79c5, data_01_79e2 ;; 01:7847 ????????
-    dw   data_01_7c21, data_01_799a, data_01_7c66, data_01_7cab ;; 01:784f ????????
-    dw   data_01_7cf0, data_01_7d35, data_01_79c5, data_01_79e2 ;; 01:7857 ??..????
-    dw   data_01_7d7a, data_01_7dbf, data_01_7e04, data_01_7e49 ;; 01:785f ??????..
-    dw   data_01_797d, data_01_799a, data_01_79c5, data_01_79e2 ;; 01:7867 ????????
-    dw   data_01_797d, data_01_799a, data_01_79c5, data_01_79e2 ;; 01:786f ????????
-    dw   data_01_797d, data_01_799a, data_01_79c5, data_01_79e2 ;; 01:7877 ????????
-    dw   data_01_797d, data_01_799a, data_01_79c5, data_01_79e2 ;; 01:787f ????????
-    dw   data_01_797d, data_01_799a, data_01_79c5, data_01_79e2 ;; 01:7887 ????????
-    dw   data_01_7c21, data_01_799a, data_01_7c66, data_01_7cab ;; 01:788f ????????
-    dw   data_01_7cf0, data_01_7d35, data_01_79c5, data_01_79e2 ;; 01:7897 ..??????
-    dw   data_01_7d7a, data_01_7dbf, data_01_7e04, data_01_7e49 ;; 01:789f ????????
-    dw   data_01_797d, data_01_799a, data_01_79c5, data_01_79e2 ;; 01:78a7 ????????
-    dw   data_01_797d, data_01_799a, data_01_79c5, data_01_79e2 ;; 01:78af ????????
-    dw   data_01_7fac, data_01_7faf, data_01_7fb2, data_01_7fb5 ;; 01:78b7 ????????
-    dw   data_01_7fb8, data_01_7fbb, data_01_7fbe, data_01_7fc1 ;; 01:78bf ????????
-    dw   data_01_7fc4, data_01_7fc7, data_01_7fca, data_01_7fcd ;; 01:78c7 ????????
-    dw   data_01_7fd0, data_01_7fd3, data_01_7fd6, data_01_7fd9 ;; 01:78cf ????????
-    dw   data_01_7fdc, data_01_7fdf, data_01_7fe2, data_01_7fe5 ;; 01:78d7 ????????
-    dw   data_01_7fe8, data_01_7feb, data_01_7fee, data_01_7ff1 ;; 01:78df ????????
-    dw   data_01_7ff4, data_01_7ff7, data_01_7ffa, data_01_7ffd ;; 01:78e7 ????????
+    dw   data_01_797d, data_01_799a, data_01_79c5, data_01_79e2 ;; 01:776f ..??..?? $00
+    dw   data_01_7a0d, data_01_7a30, data_01_7a53, data_01_7a76 ;; 01:7777 ..?????? $01
+    dw   data_01_7a99, data_01_7aca, data_01_7afb, data_01_7b2c ;; 01:777f ..?????? $02
+    dw   data_01_7b5d, data_01_7b8e, data_01_7bbf, data_01_7bf0 ;; 01:7787 ???????? $03
+    dw   data_01_7c21, data_01_799a, data_01_7c66, data_01_7cab ;; 01:778f ???????? $04
+    dw   data_01_7cf0, data_01_7d35, data_01_79c5, data_01_79e2 ;; 01:7797 ???????? $05
+    dw   data_01_7d7a, data_01_7dbf, data_01_7e04, data_01_7e49 ;; 01:779f ???????? $06
+    dw   data_01_797d, data_01_799a, data_01_79c5, data_01_79e2 ;; 01:77a7 ???????? $07
+    dw   data_01_797d, data_01_799a, data_01_79c5, data_01_79e2 ;; 01:77af ???????? $08
+    dw   data_01_797d, data_01_799a, data_01_79c5, data_01_79e2 ;; 01:77b7 ???????? $09
+    dw   data_01_7e8e, data_01_7ea3, data_01_7eba, data_01_7ecf ;; 01:77bf ........ $0a
+    dw   data_01_7ee4, data_01_7ef9, data_01_7f0e, data_01_7f23 ;; 01:77c7 ........ $0b
+    dw   data_01_797d, data_01_799a, data_01_79c5, data_01_79e2 ;; 01:77cf ???????? $0c
+    dw   data_01_7f38, data_01_7f55, data_01_79c5, data_01_79e2 ;; 01:77d7 ....???? $0d
+    dw   data_01_7f72, data_01_7f8f, data_01_79c5, data_01_79e2 ;; 01:77df ???????? $0e
+    dw   data_01_797d, data_01_799a, data_01_79c5, data_01_79e2 ;; 01:77e7 ???????? $0f
+    dw   data_01_797d, data_01_799a, data_01_79c5, data_01_79e2 ;; 01:77ef ???????? $10
+    dw   data_01_7a0d, data_01_7a30, data_01_7a53, data_01_7a76 ;; 01:77f7 ???????? $11
+    dw   data_01_7a99, data_01_7aca, data_01_7afb, data_01_7b2c ;; 01:77ff ???????? $12
+    dw   data_01_7b5d, data_01_7b8e, data_01_7bbf, data_01_7bf0 ;; 01:7807 ........ $13
+    dw   data_01_7c21, data_01_799a, data_01_7c66, data_01_7cab ;; 01:780f ???????? $14
+    dw   data_01_7cf0, data_01_7d35, data_01_79c5, data_01_79e2 ;; 01:7817 ....???? $15
+    dw   data_01_7d7a, data_01_7dbf, data_01_7e04, data_01_7e49 ;; 01:781f ........ $16
+    dw   data_01_797d, data_01_799a, data_01_79c5, data_01_79e2 ;; 01:7827 ???????? $17
+    dw   data_01_797d, data_01_799a, data_01_79c5, data_01_79e2 ;; 01:782f ???????? $18
+    dw   data_01_797d, data_01_799a, data_01_79c5, data_01_79e2 ;; 01:7837 ???????? $19
+    dw   data_01_797d, data_01_799a, data_01_79c5, data_01_79e2 ;; 01:783f ???????? $1a
+    dw   data_01_797d, data_01_799a, data_01_79c5, data_01_79e2 ;; 01:7847 ???????? $1b
+    dw   data_01_7c21, data_01_799a, data_01_7c66, data_01_7cab ;; 01:784f ???????? $1c
+    dw   data_01_7cf0, data_01_7d35, data_01_79c5, data_01_79e2 ;; 01:7857 ??..???? $1d
+    dw   data_01_7d7a, data_01_7dbf, data_01_7e04, data_01_7e49 ;; 01:785f ??????.. $1e
+    dw   data_01_797d, data_01_799a, data_01_79c5, data_01_79e2 ;; 01:7867 ???????? $1f
+    dw   data_01_797d, data_01_799a, data_01_79c5, data_01_79e2 ;; 01:786f ???????? $20
+    dw   data_01_797d, data_01_799a, data_01_79c5, data_01_79e2 ;; 01:7877 ???????? $21
+    dw   data_01_797d, data_01_799a, data_01_79c5, data_01_79e2 ;; 01:787f ???????? $22
+    dw   data_01_797d, data_01_799a, data_01_79c5, data_01_79e2 ;; 01:7887 ???????? $23
+    dw   data_01_7c21, data_01_799a, data_01_7c66, data_01_7cab ;; 01:788f ???????? $24
+    dw   data_01_7cf0, data_01_7d35, data_01_79c5, data_01_79e2 ;; 01:7897 ..?????? $25
+    dw   data_01_7d7a, data_01_7dbf, data_01_7e04, data_01_7e49 ;; 01:789f ???????? $26
+    dw   data_01_797d, data_01_799a, data_01_79c5, data_01_79e2 ;; 01:78a7 ???????? $27
+    dw   data_01_797d, data_01_799a, data_01_79c5, data_01_79e2 ;; 01:78af ???????? $28
+    dw   data_01_7fac, data_01_7faf, data_01_7fb2, data_01_7fb5 ;; 01:78b7 ???????? $29
+    dw   data_01_7fb8, data_01_7fbb, data_01_7fbe, data_01_7fc1 ;; 01:78bf ???????? $2a
+    dw   data_01_7fc4, data_01_7fc7, data_01_7fca, data_01_7fcd ;; 01:78c7 ???????? $2b
+    dw   data_01_7fd0, data_01_7fd3, data_01_7fd6, data_01_7fd9 ;; 01:78cf ???????? $2c
+    dw   data_01_7fdc, data_01_7fdf, data_01_7fe2, data_01_7fe5 ;; 01:78d7 ???????? $2d
+    dw   data_01_7fe8, data_01_7feb, data_01_7fee, data_01_7ff1 ;; 01:78df ???????? $2e
+    dw   data_01_7ff4, data_01_7ff7, data_01_7ffa, data_01_7ffd ;; 01:78e7 ???????? $2f
 
 ;@data format=pppp amount=8
 data_01_78ef:
-    dw   data_01_792f, data_01_792f, data_01_792f, data_01_792f ;; 01:78ef ????????
-    dw   data_01_792f, data_01_792f, data_01_792f, data_01_792f ;; 01:78f7 ????????
-    dw   data_01_7941, data_01_7941, data_01_7941, data_01_7941 ;; 01:78ff ????????
-    dw   data_01_7941, data_01_7941, data_01_7941, data_01_7941 ;; 01:7907 ........
-    dw   data_01_795a, data_01_795a, data_01_795a, data_01_795a ;; 01:790f ????????
-    dw   data_01_795a, data_01_795a, data_01_795a, data_01_795a ;; 01:7917 ....????
-    dw   data_01_795a, data_01_795a, data_01_795a, data_01_795a ;; 01:791f ........
-    dw   data_01_795a, data_01_795a, data_01_795a, data_01_795a ;; 01:7927 ????????
+    dw   data_01_792f, data_01_792f, data_01_792f, data_01_792f ;; 01:78ef ???????? $00
+    dw   data_01_792f, data_01_792f, data_01_792f, data_01_792f ;; 01:78f7 ???????? $01
+    dw   data_01_7941, data_01_7941, data_01_7941, data_01_7941 ;; 01:78ff ???????? $02
+    dw   data_01_7941, data_01_7941, data_01_7941, data_01_7941 ;; 01:7907 ........ $03
+    dw   data_01_795a, data_01_795a, data_01_795a, data_01_795a ;; 01:790f ???????? $04
+    dw   data_01_795a, data_01_795a, data_01_795a, data_01_795a ;; 01:7917 ....???? $05
+    dw   data_01_795a, data_01_795a, data_01_795a, data_01_795a ;; 01:791f ........ $06
+    dw   data_01_795a, data_01_795a, data_01_795a, data_01_795a ;; 01:7927 ???????? $07
 
 data_01_792f:
     db   $04, $03, $02, $03, $01, $02, $01, $00        ;; 01:792f ????????
