@@ -5321,34 +5321,34 @@ call_00_2092:
 ;@data format=pp amount=28
 ; List graphics to load into VRAM at startup. Copies 1 tile from 2nd pointer in bank8 to VRAM first pointer
 initialVRAMLoad:
-    dw   $8040, gfxBlankTiles08                        ;; 00:20d0 pP..
-    dw   $8050, gfxBlankTiles08                        ;; 00:20d4 pP..
-    dw   $8060, gfxBlankTiles08                        ;; 00:20d8 pP..
-    dw   $8070, gfxBlankTiles08                        ;; 00:20dc pP..
-    dw   $8100, gfxBlankTiles08                        ;; 00:20e0 pP..
-    dw   $8110, gfxBlankTiles08                        ;; 00:20e4 pP..
-    dw   $8120, gfxHand                                ;; 00:20e8 pP..
-    dw   $8130, gfxHand + $20                          ;; 00:20ec pP..
-    dw   $8140, gfxHand + $10                          ;; 00:20f0 pP..
-    dw   $8150, gfxHand + $30                          ;; 00:20f4 pP..
-    dw   $8160, gfxHand + $40                          ;; 00:20f8 pP..
-    dw   $8170, gfxHand + $30                          ;; 00:20fc pP..
-    dw   $8700, gfxHand + $50                          ;; 00:2100 .P..
-    dw   $8710, gfxHand + $70                          ;; 00:2104 pP..
-    dw   $8720, gfxHand + $60                          ;; 00:2108 pP..
-    dw   $8730, gfxHand + $80                          ;; 00:210c pP..
-    dw   $8740, gfxSnowman                             ;; 00:2110 pP..
-    dw   $8750, gfxSnowman + $20                       ;; 00:2114 pP..
-    dw   $8760, gfxSnowman + $10                       ;; 00:2118 pP..
-    dw   $8770, gfxSnowman + $30                       ;; 00:211c pP..
-    dw   $8780, gfxChest                               ;; 00:2120 pP..
-    dw   $8790, gfxChest + $20                         ;; 00:2124 pP..
-    dw   $87a0, gfxChest + $10                         ;; 00:2128 pP..
-    dw   $87b0, gfxChest + $30                         ;; 00:212c pP..
-    dw   $87c0, gfxChest + $40                         ;; 00:2130 pP..
-    dw   $87d0, gfxChest + $20                         ;; 00:2134 pP..
-    dw   $87e0, gfxChest + $50                         ;; 00:2138 pP..
-    dw   $87f0, gfxChest + $30                         ;; 00:213c pP..
+    dw   $8040, gfxBlankTiles08                        ;; 00:20d0 pP.. $00
+    dw   $8050, gfxBlankTiles08                        ;; 00:20d4 pP.. $01
+    dw   $8060, gfxBlankTiles08                        ;; 00:20d8 pP.. $02
+    dw   $8070, gfxBlankTiles08                        ;; 00:20dc pP.. $03
+    dw   $8100, gfxBlankTiles08                        ;; 00:20e0 pP.. $04
+    dw   $8110, gfxBlankTiles08                        ;; 00:20e4 pP.. $05
+    dw   $8120, gfxHand                                ;; 00:20e8 pP.. $06
+    dw   $8130, gfxHand + $20                          ;; 00:20ec pP.. $07
+    dw   $8140, gfxHand + $10                          ;; 00:20f0 pP.. $08
+    dw   $8150, gfxHand + $30                          ;; 00:20f4 pP.. $09
+    dw   $8160, gfxHand + $40                          ;; 00:20f8 pP.. $0a
+    dw   $8170, gfxHand + $30                          ;; 00:20fc pP.. $0b
+    dw   $8700, gfxHand + $50                          ;; 00:2100 .P.. $0c
+    dw   $8710, gfxHand + $70                          ;; 00:2104 pP.. $0d
+    dw   $8720, gfxHand + $60                          ;; 00:2108 pP.. $0e
+    dw   $8730, gfxHand + $80                          ;; 00:210c pP.. $0f
+    dw   $8740, gfxSnowman                             ;; 00:2110 pP.. $10
+    dw   $8750, gfxSnowman + $20                       ;; 00:2114 pP.. $11
+    dw   $8760, gfxSnowman + $10                       ;; 00:2118 pP.. $12
+    dw   $8770, gfxSnowman + $30                       ;; 00:211c pP.. $13
+    dw   $8780, gfxChest                               ;; 00:2120 pP.. $14
+    dw   $8790, gfxChest + $20                         ;; 00:2124 pP.. $15
+    dw   $87a0, gfxChest + $10                         ;; 00:2128 pP.. $16
+    dw   $87b0, gfxChest + $30                         ;; 00:212c pP.. $17
+    dw   $87c0, gfxChest + $40                         ;; 00:2130 pP.. $18
+    dw   $87d0, gfxChest + $20                         ;; 00:2134 pP.. $19
+    dw   $87e0, gfxChest + $50                         ;; 00:2138 pP.. $1a
+    dw   $87f0, gfxChest + $30                         ;; 00:213c pP.. $1b
 
 call_00_2140:
     ld   A, $08                                        ;; 00:2140 $3e $08

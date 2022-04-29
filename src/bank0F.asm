@@ -1523,36 +1523,36 @@ call_0f_4965:
 ;@data amount=30 format=ppp
 ; Music data table, 3 pointers per music. Details unknown.
 data_0f_4a12:
-    dw   data_0f_4ac9, data_0f_4b0a, data_0f_4b7e      ;; 0f:4a12 pPpPpP
-    dw   data_0f_4bb9, data_0f_4c0f, data_0f_4c92      ;; 0f:4a18 ??????
-    dw   data_0f_4cc1, data_0f_4d0d, data_0f_4d83      ;; 0f:4a1e ??????
-    dw   data_0f_4daf, data_0f_4deb, data_0f_4e33      ;; 0f:4a24 pPpPpP
-    dw   data_0f_4e5e, data_0f_4e9e, data_0f_4eb0      ;; 0f:4a2a ??????
-    dw   data_0f_4edc, data_0f_4fb7, data_0f_503d      ;; 0f:4a30 ??????
-    dw   data_0f_50c9, data_0f_515b, data_0f_51d2      ;; 0f:4a36 ??????
-    dw   data_0f_523d, data_0f_52a6, data_0f_5344      ;; 0f:4a3c ??????
-    dw   data_0f_5388, data_0f_53bf, data_0f_53ef      ;; 0f:4a42 pPpPpP
-    dw   data_0f_5442, data_0f_5460, data_0f_54e5      ;; 0f:4a48 pPpPpP
-    dw   data_0f_556f, data_0f_55be, data_0f_5627      ;; 0f:4a4e ??????
-    dw   data_0f_5661, data_0f_56ad, data_0f_5751      ;; 0f:4a54 ??????
-    dw   data_0f_57f5, data_0f_5897, data_0f_5910      ;; 0f:4a5a ??????
-    dw   data_0f_5937, data_0f_5a3a, data_0f_5ac6      ;; 0f:4a60 pPpPpP
-    dw   data_0f_5b3c, data_0f_5bc8, data_0f_5daa      ;; 0f:4a66 ??????
-    dw   data_0f_5e69, data_0f_5faa, data_0f_61c2      ;; 0f:4a6c ??????
-    dw   data_0f_6397, data_0f_63b2, data_0f_63be      ;; 0f:4a72 pPpPpP
-    dw   data_0f_62e9, data_0f_632e, data_0f_6371      ;; 0f:4a78 ??????
-    dw   data_0f_63d0, data_0f_64a3, data_0f_6667      ;; 0f:4a7e ??????
-    dw   data_0f_6819, data_0f_68bd, data_0f_69ff      ;; 0f:4a84 pPpPpP
-    dw   data_0f_6b57, data_0f_6c83, data_0f_6da9      ;; 0f:4a8a ??????
-    dw   data_0f_6e8a, data_0f_6f5e, data_0f_7031      ;; 0f:4a90 ??????
-    dw   data_0f_7070, data_0f_709f, data_0f_70f9      ;; 0f:4a96 pPpPpP
-    dw   data_0f_7118, data_0f_71aa, data_0f_7263      ;; 0f:4a9c ??????
-    dw   data_0f_7349, data_0f_741c, data_0f_756f      ;; 0f:4aa2 ??????
-    dw   data_0f_76d3, data_0f_771c, data_0f_7762      ;; 0f:4aa8 pPpPpP
-    dw   data_0f_77a8, data_0f_7811, data_0f_78a3      ;; 0f:4aae ??????
-    dw   data_0f_78fa, data_0f_7924, data_0f_7948      ;; 0f:4ab4 pPpPpP
-    dw   data_0f_796b, data_0f_7984, data_0f_799a      ;; 0f:4aba ??????
-    dw   data_0f_79b6, data_0f_79ea, data_0f_7a1d      ;; 0f:4ac0 ??????
+    dw   data_0f_4ac9, data_0f_4b0a, data_0f_4b7e      ;; 0f:4a12 pPpPpP $00
+    dw   data_0f_4bb9, data_0f_4c0f, data_0f_4c92      ;; 0f:4a18 ?????? $01
+    dw   data_0f_4cc1, data_0f_4d0d, data_0f_4d83      ;; 0f:4a1e ?????? $02
+    dw   data_0f_4daf, data_0f_4deb, data_0f_4e33      ;; 0f:4a24 pPpPpP $03
+    dw   data_0f_4e5e, data_0f_4e9e, data_0f_4eb0      ;; 0f:4a2a ?????? $04
+    dw   data_0f_4edc, data_0f_4fb7, data_0f_503d      ;; 0f:4a30 ?????? $05
+    dw   data_0f_50c9, data_0f_515b, data_0f_51d2      ;; 0f:4a36 ?????? $06
+    dw   data_0f_523d, data_0f_52a6, data_0f_5344      ;; 0f:4a3c ?????? $07
+    dw   data_0f_5388, data_0f_53bf, data_0f_53ef      ;; 0f:4a42 pPpPpP $08
+    dw   data_0f_5442, data_0f_5460, data_0f_54e5      ;; 0f:4a48 pPpPpP $09
+    dw   data_0f_556f, data_0f_55be, data_0f_5627      ;; 0f:4a4e ?????? $0a
+    dw   data_0f_5661, data_0f_56ad, data_0f_5751      ;; 0f:4a54 ?????? $0b
+    dw   data_0f_57f5, data_0f_5897, data_0f_5910      ;; 0f:4a5a ?????? $0c
+    dw   data_0f_5937, data_0f_5a3a, data_0f_5ac6      ;; 0f:4a60 pPpPpP $0d
+    dw   data_0f_5b3c, data_0f_5bc8, data_0f_5daa      ;; 0f:4a66 ?????? $0e
+    dw   data_0f_5e69, data_0f_5faa, data_0f_61c2      ;; 0f:4a6c ?????? $0f
+    dw   data_0f_6397, data_0f_63b2, data_0f_63be      ;; 0f:4a72 pPpPpP $10
+    dw   data_0f_62e9, data_0f_632e, data_0f_6371      ;; 0f:4a78 ?????? $11
+    dw   data_0f_63d0, data_0f_64a3, data_0f_6667      ;; 0f:4a7e ?????? $12
+    dw   data_0f_6819, data_0f_68bd, data_0f_69ff      ;; 0f:4a84 pPpPpP $13
+    dw   data_0f_6b57, data_0f_6c83, data_0f_6da9      ;; 0f:4a8a ?????? $14
+    dw   data_0f_6e8a, data_0f_6f5e, data_0f_7031      ;; 0f:4a90 ?????? $15
+    dw   data_0f_7070, data_0f_709f, data_0f_70f9      ;; 0f:4a96 pPpPpP $16
+    dw   data_0f_7118, data_0f_71aa, data_0f_7263      ;; 0f:4a9c ?????? $17
+    dw   data_0f_7349, data_0f_741c, data_0f_756f      ;; 0f:4aa2 ?????? $18
+    dw   data_0f_76d3, data_0f_771c, data_0f_7762      ;; 0f:4aa8 pPpPpP $19
+    dw   data_0f_77a8, data_0f_7811, data_0f_78a3      ;; 0f:4aae ?????? $1a
+    dw   data_0f_78fa, data_0f_7924, data_0f_7948      ;; 0f:4ab4 pPpPpP $1b
+    dw   data_0f_796b, data_0f_7984, data_0f_799a      ;; 0f:4aba ?????? $1c
+    dw   data_0f_79b6, data_0f_79ea, data_0f_7a1d      ;; 0f:4ac0 ?????? $1d
     db   $ff, $e7, $14                                 ;; 0f:4ac6 ???
 
 data_0f_4ac9:

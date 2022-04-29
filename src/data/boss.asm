@@ -6,8 +6,8 @@
 ; HP
 ; XP on defeated
 ; Money on defeated
-; ?
-; ?
+; Amount of 16x16 "objects" used for this boss
+; Projectile attack from the projectiles dataset (also causes the graphics to be loaded for this projectile)
 ; index to script when defeated (usually just some simple screen flash or nothing)
 ; graphics related, sets the VRAM start tile number to load graphics data into
 ; graphics related, sets how many tiles need to be loaded into VRAM
