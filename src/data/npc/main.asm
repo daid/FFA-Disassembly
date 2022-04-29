@@ -17,14 +17,14 @@
 npcDataTable:
     NPC_DATA $a9, $00, $74, $02, gfxSnowman, data_03_7b5a, unlabeled_2c93, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, script_003d, $0000 ;; 03:5f5a NPC_SNOWMAN_STILL
     NPC_DATA $d9, $01, $20, $08, gfxNpcGirl, data_03_7b5a, data_03_7f62, $00, $01, $01, $01, $00, $00, $05, $05, $05, $05, script_0202, $0000 ;; 03:5f72 NPC_FUJI_FOLLOWING
-    NPC_DATA $d9, $02, $20, $08, data_09_5b00, data_03_7b5a, data_03_7f62, $00, $01, $01, $01, $00, $00, $06, $06, $06, $06, script_0203, $0000 ;; 03:5f8a NPC_MYSTERYMAN_FOLLOWING
-    NPC_DATA $d9, $03, $20, $08, data_09_5400, data_03_7b5a, data_03_7f62, $00, $01, $01, $01, $01, $00, $06, $06, $06, $06, script_0204, $0000 ;; 03:5fa2 NPC_WATTS_FOLLOWING
-    NPC_DATA $d9, $04, $20, $08, data_09_5200, data_03_7b5a, data_03_7f62, $00, $01, $01, $01, $01, $00, $06, $06, $06, $06, script_0205, $0000 ;; 03:5fba NPC_BOGARD_FOLLOWING
-    NPC_DATA $d9, $05, $20, $08, data_09_5500, data_03_7b5a, data_03_7f62, $00, $01, $01, $01, $01, $00, $06, $06, $06, $06, script_0206, $0000 ;; 03:5fd2 NPC_AMANDA_FOLLOWING
-    NPC_DATA $d9, $06, $20, $08, data_09_5600, data_03_7b5a, data_03_7f62, $00, $01, $01, $01, $01, $00, $06, $06, $06, $06, script_01ff, $0000 ;; 03:5fea NPC_LESTER_FOLLOWING
-    NPC_DATA $d9, $07, $20, $08, data_09_5700, data_03_7b5a, data_03_7f62, $00, $01, $01, $01, $01, $00, $06, $06, $06, $06, script_0200, $0000 ;; 03:6002 NPC_MARCIE_FOLLOWING
-    NPC_DATA $d9, $08, $20, $08, gfxNpcChocobot, data_03_7b5a, data_03_7f62, $00, $01, $01, $01, $00, $00, $05, $05, $05, $05, script_0470, $0000 ;; 03:601a NPC_CHOCOBO_FOLLOWING
-    NPC_DATA $d9, $09, $20, $08, gfxNpcChocobo, data_03_7b5a, data_03_7f62, $00, $01, $01, $01, $00, $00, $05, $05, $05, $05, script_0470, $0000 ;; 03:6032 NPC_CHOCOBOT_FOLLOWING
+    NPC_DATA $d9, $02, $20, $08, gfxNpcMysteryMan, data_03_7b5a, data_03_7f62, $00, $01, $01, $01, $00, $00, $06, $06, $06, $06, script_0203, $0000 ;; 03:5f8a NPC_MYSTERYMAN_FOLLOWING
+    NPC_DATA $d9, $03, $20, $08, gfxNpcWatts, data_03_7b5a, data_03_7f62, $00, $01, $01, $01, $01, $00, $06, $06, $06, $06, script_0204, $0000 ;; 03:5fa2 NPC_WATTS_FOLLOWING
+    NPC_DATA $d9, $04, $20, $08, gfxNpcBogard, data_03_7b5a, data_03_7f62, $00, $01, $01, $01, $01, $00, $06, $06, $06, $06, script_0205, $0000 ;; 03:5fba NPC_BOGARD_FOLLOWING
+    NPC_DATA $d9, $05, $20, $08, gfxNpcAmanda, data_03_7b5a, data_03_7f62, $00, $01, $01, $01, $01, $00, $06, $06, $06, $06, script_0206, $0000 ;; 03:5fd2 NPC_AMANDA_FOLLOWING
+    NPC_DATA $d9, $06, $20, $08, gfxNpcLester, data_03_7b5a, data_03_7f62, $00, $01, $01, $01, $01, $00, $06, $06, $06, $06, script_01ff, $0000 ;; 03:5fea NPC_LESTER_FOLLOWING
+    NPC_DATA $d9, $07, $20, $08, gfxNpcMarcie, data_03_7b5a, data_03_7f62, $00, $01, $01, $01, $01, $00, $06, $06, $06, $06, script_0200, $0000 ;; 03:6002 NPC_MARCIE_FOLLOWING
+    NPC_DATA $d9, $08, $20, $08, gfxNpcChocobot, data_03_7b5a, data_03_7f62, $00, $01, $01, $01, $00, $00, $05, $05, $05, $05, script_0470, $0000 ;; 03:601a NPC_CHOCOBOT_FOLLOWING
+    NPC_DATA $d9, $09, $20, $08, gfxNpcChocobo, data_03_7b5a, data_03_7f62, $00, $01, $01, $01, $00, $00, $05, $05, $05, $05, script_0470, $0000 ;; 03:6032 NPC_CHOCOBO_FOLLOWING
     NPC_DATA $91, $25, $50, $08, gfxEnemyWerewolf, data_03_7b5a, data_03_7cfe, $00, $01, $00, $00, $01, $00, $0f, $05, $05, $05, script_003d, $0000 ;; 03:604a NPC_WEREWOLF_1
     NPC_DATA $81, $5e, $6e, $01, gfxBlankTiles09, data_03_7b5a, data_03_7f3e, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, script_01f1, $0000 ;; 03:6062 NPC_INV_CURE
     NPC_DATA $87, $0c, $78, $02, gfxChest, data_03_7b5a, unlabeled_2cab, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, script_000b, $0000 ;; 03:607a NPC_CHEST_1
@@ -113,30 +113,30 @@ npcDataTable:
     NPC_DATA $95, $5c, $60, $06, gfxEnemySeaDragon, data_03_7b5a, data_03_7bba, $00, $01, $01, $02, $02, $02, $01, $16, $17, $17, script_003d, $0000 ;; 03:6842 NPC_SEA_DRAGON
     NPC_DATA $93, $5d, $60, $08, gfxEnemyGalFish, data_03_7b5a, data_03_7cda, $00, $01, $00, $00, $00, $00, $05, $05, $07, $08, script_003d, $0000 ;; 03:685a NPC_GALL_FISH
     NPC_DATA $81, $5e, $60, $02, data_09_6d80, data_03_7b5a, data_03_7f86, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, script_0256, $0000 ;; 03:6872 NPC_WILLY
-    NPC_DATA $81, $5e, $40, $08, data_09_5b00, data_03_7b5a, data_03_7cb6, $00, $01, $01, $00, $02, $00, $04, $04, $04, $04, script_0259, $0000 ;; 03:688a NPC_MYSTERYMAN_1
-    NPC_DATA $81, $5f, $60, $08, data_09_5500, data_03_7b5a, data_03_7cda, $00, $01, $01, $00, $00, $00, $04, $04, $04, $04, script_0261, $0000 ;; 03:68a2 NPC_AMANDA_1
+    NPC_DATA $81, $5e, $40, $08, gfxNpcMysteryMan, data_03_7b5a, data_03_7cb6, $00, $01, $01, $00, $02, $00, $04, $04, $04, $04, script_0259, $0000 ;; 03:688a NPC_MYSTERYMAN_1
+    NPC_DATA $81, $5f, $60, $08, gfxNpcAmanda, data_03_7b5a, data_03_7cda, $00, $01, $01, $00, $00, $00, $04, $04, $04, $04, script_0261, $0000 ;; 03:68a2 NPC_AMANDA_1
     NPC_DATA $91, $60, $40, $02, data_09_6ec0, data_03_7b5a, data_03_7b72, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, script_0226, $0000 ;; 03:68ba NPC_AMANDA_ILL
     NPC_DATA $81, $5e, $5c, $02, data_09_6d40, data_03_7b5a, data_03_7ed2, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, script_0228, $0000 ;; 03:68d2 NPC_AMANDA_DEAD
     NPC_DATA $81, $01, $20, $08, gfxNpcGirl, data_03_7b5a, data_03_7f62, $00, $01, $01, $00, $00, $00, $00, $00, $00, $00, script_0258, $0000 ;; 03:68ea NPC_FUJI_1
     NPC_DATA $81, $5e, $40, $02, data_09_6e40, data_03_7b5a, data_03_7ef6, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, script_0207, $0000 ;; 03:6902 NPC_FUJI_WINDOW
     NPC_DATA $81, $5e, $5c, $02, data_09_6e80, data_03_7b5a, data_03_7ed2, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, script_01fe, $0000 ;; 03:691a NPC_MOTHER
-    NPC_DATA $81, $5f, $60, $08, data_09_5200, data_03_7b5a, data_03_7cda, $00, $01, $01, $00, $00, $00, $04, $04, $04, $04, script_0257, $0000 ;; 03:6932 NPC_BOGARD_1
-    NPC_DATA $81, $5e, $40, $08, data_09_5200, data_03_7b5a, data_03_7ef6, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, script_0257, $0000 ;; 03:694a NPC_BOGARD_2
+    NPC_DATA $81, $5f, $60, $08, gfxNpcBogard, data_03_7b5a, data_03_7cda, $00, $01, $01, $00, $00, $00, $04, $04, $04, $04, script_0257, $0000 ;; 03:6932 NPC_BOGARD_1
+    NPC_DATA $81, $5e, $40, $08, gfxNpcBogard, data_03_7b5a, data_03_7ef6, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, script_0257, $0000 ;; 03:694a NPC_BOGARD_2
     NPC_DATA $81, $5f, $40, $08, data_09_6900, data_03_7b5a, data_03_7cb6, $00, $01, $01, $00, $00, $00, $00, $00, $00, $00, script_01e0, $0000 ;; 03:6962 NPC_KETTS_WEREWOLF
     NPC_DATA $81, $5e, $6e, $01, gfxBlankTiles09, data_03_7b5a, data_03_7f3e, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, script_01e3, $0000 ;; 03:697a NPC_INV_FUJI_COFFIN
-    NPC_DATA $81, $5f, $60, $08, data_09_5a00, data_03_7b5a, data_03_7cda, $00, $01, $01, $00, $00, $00, $04, $04, $04, $04, script_025a, $0000 ;; 03:6992 NPC_CIBBA
+    NPC_DATA $81, $5f, $60, $08, gfxNpcCibba, data_03_7b5a, data_03_7cda, $00, $01, $01, $00, $00, $00, $04, $04, $04, $04, script_025a, $0000 ;; 03:6992 NPC_CIBBA
     NPC_DATA $81, $5e, $40, $08, data_09_5f00, data_03_7b5a, data_03_7cb6, $00, $01, $01, $00, $00, $00, $04, $04, $04, $04, script_01e6, $0000 ;; 03:69aa NPC_GUY_WENDEL
-    NPC_DATA $81, $5e, $40, $08, data_09_5400, data_03_7b5a, data_03_7cb6, $00, $01, $01, $00, $00, $00, $00, $00, $00, $00, script_01f8, $0000 ;; 03:69c2 NPC_WATTS
+    NPC_DATA $81, $5e, $40, $08, gfxNpcWatts, data_03_7b5a, data_03_7cb6, $00, $01, $01, $00, $00, $00, $00, $00, $00, $00, script_01f8, $0000 ;; 03:69c2 NPC_WATTS
     NPC_DATA $81, $5e, $5c, $02, data_09_6c80, data_03_7b5a, data_03_7ed2, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, script_01f9, $0000 ;; 03:69da NPC_MINECART
     NPC_DATA $81, $5e, $40, $04, data_09_6dc0, data_03_7b5a, data_03_7d46, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, script_0217, $0000 ;; 03:69f2 NPC_CHOCOBO_EGG
-    NPC_DATA $81, $5f, $40, $08, data_09_5d00, data_03_7b5a, data_03_7cb6, $00, $01, $01, $00, $00, $00, $00, $00, $00, $00, script_0218, $0000 ;; 03:6a0a NPC_DAVIAS
+    NPC_DATA $81, $5f, $40, $08, gfxNpcDavias, data_03_7b5a, data_03_7cb6, $00, $01, $01, $00, $00, $00, $00, $00, $00, $00, script_0218, $0000 ;; 03:6a0a NPC_DAVIAS
     NPC_DATA $81, $5e, $5c, $02, data_09_6f00, data_03_7b5a, data_03_7ed2, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, script_0222, $0000 ;; 03:6a22 NPC_LESTER_1
     NPC_DATA $81, $5f, $50, $04, data_09_6b80, data_03_7b5a, data_03_7b96, $00, $01, $01, $00, $00, $00, $00, $00, $00, $00, script_0219, $0000 ;; 03:6a3a NPC_LESTER_PARROT
-    NPC_DATA $81, $5e, $40, $08, data_09_5c00, data_03_7b5a, data_03_7cb6, $00, $01, $01, $00, $00, $00, $04, $04, $04, $04, script_022f, $0000 ;; 03:6a52 NPC_BOWOW
+    NPC_DATA $81, $5e, $40, $08, gfxNpcBowow, data_03_7b5a, data_03_7cb6, $00, $01, $01, $00, $00, $00, $04, $04, $04, $04, script_022f, $0000 ;; 03:6a52 NPC_BOWOW
     NPC_DATA $81, $5f, $50, $08, data_09_6000, data_03_7b5a, data_03_7cfe, $00, $01, $01, $00, $00, $00, $00, $00, $00, $00, script_0231, $0000 ;; 03:6a6a NPC_SARAH
-    NPC_DATA $81, $5e, $40, $08, data_09_5700, data_03_7b5a, data_03_7cb6, $00, $01, $01, $00, $00, $00, $04, $04, $04, $04, script_023d, $0000 ;; 03:6a82 NPC_MARCIE_1
+    NPC_DATA $81, $5e, $40, $08, gfxNpcMarcie, data_03_7b5a, data_03_7cb6, $00, $01, $01, $00, $00, $00, $04, $04, $04, $04, script_023d, $0000 ;; 03:6a82 NPC_MARCIE_1
     NPC_DATA $81, $5f, $60, $08, data_09_6500, data_03_7b5a, data_03_7cda, $00, $01, $01, $00, $00, $00, $00, $00, $00, $00, script_0250, $0000 ;; 03:6a9a NPC_KING_OF_LORIM
-    NPC_DATA $81, $5e, $40, $08, data_09_5100, data_03_7b5a, data_03_7cb6, $00, $01, $01, $00, $00, $00, $04, $04, $04, $04, script_0265, $0000 ;; 03:6ab2 NPC_GLADIATOR_FRIEND
+    NPC_DATA $81, $5e, $40, $08, gfxGladiatorFriend, data_03_7b5a, data_03_7cb6, $00, $01, $01, $00, $00, $00, $04, $04, $04, $04, script_0265, $0000 ;; 03:6ab2 NPC_GLADIATOR_FRIEND
     NPC_DATA $81, $5e, $6e, $01, gfxBlankTiles09, data_03_7b5a, data_03_7f3e, $00, $01, $01, $00, $00, $00, $00, $00, $00, $00, script_025f, $0000 ;; 03:6aca NPC_INV_INN
     NPC_DATA $81, $61, $50, $08, data_09_6000, data_03_7b5a, data_03_7cfe, $00, $01, $01, $00, $00, $00, $04, $04, $04, $04, script_0266, $0000 ;; 03:6ae2 NPC_GIRL_TOPPLE
     NPC_DATA $81, $0b, $40, $08, data_09_5f00, data_03_7b5a, data_03_7cb6, $00, $01, $01, $00, $00, $00, $04, $04, $04, $04, script_0267, $0000 ;; 03:6afa NPC_GUY_TOPPLE
@@ -194,15 +194,15 @@ npcDataTable:
     NPC_DATA $81, $5e, $6e, $01, gfxBlankTiles09, data_03_7b5a, data_03_7f3e, $00, $01, $01, $00, $00, $00, $00, $00, $00, $00, script_0260, $0000 ;; 03:6fda NPC_INV_SALESMAN_1
     NPC_DATA $81, $5f, $40, $08, gfxNpcGirl, data_03_7b5a, data_03_7cb6, $00, $01, $01, $00, $00, $00, $00, $00, $00, $00, script_0258, $0000 ;; 03:6ff2 NPC_FUJI_2
     NPC_DATA $81, $5e, $6e, $01, gfxBlankTiles09, data_03_7b5a, data_03_7f3e, $00, $01, $01, $00, $00, $00, $00, $00, $00, $00, script_025e, $0000 ;; 03:700a NPC_INV_SALESMAN_2
-    NPC_DATA $81, $02, $20, $08, data_09_5b00, data_03_7b5a, data_03_7f62, $00, $01, $01, $01, $00, $00, $02, $02, $02, $02, script_0259, $0000 ;; 03:7022 NPC_MYSTERYMAN_2
-    NPC_DATA $81, $04, $20, $08, data_09_5200, data_03_7b5a, data_03_7f62, $00, $01, $01, $01, $01, $00, $02, $02, $02, $02, script_0257, $0000 ;; 03:703a NPC_BOGARD_3
-    NPC_DATA $81, $05, $20, $08, data_09_5500, data_03_7b5a, data_03_7f62, $00, $01, $01, $01, $01, $00, $02, $02, $02, $02, script_003d, $0000 ;; 03:7052 NPC_AMANDA_2
-    NPC_DATA $81, $06, $20, $08, data_09_5600, data_03_7b5a, data_03_7f62, $00, $01, $01, $01, $01, $00, $02, $02, $02, $02, script_003d, $0000 ;; 03:706a NPC_LESTER_2
-    NPC_DATA $81, $07, $20, $08, data_09_5700, data_03_7b5a, data_03_7f62, $00, $01, $01, $01, $01, $00, $02, $02, $02, $02, script_003d, $0000 ;; 03:7082 NPC_MARCIE_2
+    NPC_DATA $81, $02, $20, $08, gfxNpcMysteryMan, data_03_7b5a, data_03_7f62, $00, $01, $01, $01, $00, $00, $02, $02, $02, $02, script_0259, $0000 ;; 03:7022 NPC_MYSTERYMAN_2
+    NPC_DATA $81, $04, $20, $08, gfxNpcBogard, data_03_7b5a, data_03_7f62, $00, $01, $01, $01, $01, $00, $02, $02, $02, $02, script_0257, $0000 ;; 03:703a NPC_BOGARD_3
+    NPC_DATA $81, $05, $20, $08, gfxNpcAmanda, data_03_7b5a, data_03_7f62, $00, $01, $01, $01, $01, $00, $02, $02, $02, $02, script_003d, $0000 ;; 03:7052 NPC_AMANDA_2
+    NPC_DATA $81, $06, $20, $08, gfxNpcLester, data_03_7b5a, data_03_7f62, $00, $01, $01, $01, $01, $00, $02, $02, $02, $02, script_003d, $0000 ;; 03:706a NPC_LESTER_2
+    NPC_DATA $81, $07, $20, $08, gfxNpcMarcie, data_03_7b5a, data_03_7f62, $00, $01, $01, $01, $01, $00, $02, $02, $02, $02, script_003d, $0000 ;; 03:7082 NPC_MARCIE_2
     NPC_DATA $81, $08, $20, $08, gfxNpcChocobot, data_03_7b5a, data_03_7f62, $00, $01, $01, $01, $00, $00, $02, $02, $02, $02, script_0472, $0000 ;; 03:709a NPC_CHOCOBOT
     NPC_DATA $81, $09, $50, $08, gfxNpcChocobo, data_03_7b5a, data_03_7cfe, $00, $01, $00, $01, $00, $00, $00, $00, $00, $00, script_0472, $0000 ;; 03:70b2 NPC_CHOCOBO_1
     NPC_DATA $81, $09, $20, $08, gfxNpcChocobo, data_03_7b5a, data_03_7f62, $00, $01, $01, $01, $00, $00, $02, $02, $02, $02, script_0472, $0000 ;; 03:70ca NPC_CHOCOBO_2
     NPC_DATA $81, $5e, $50, $02, data_09_6b40, data_03_7b5a, data_03_7b96, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, script_0258, $0000 ;; 03:70e2 NPC_PRISION_BARS
     NPC_DATA $81, $5f, $40, $04, data_09_6f40, data_03_7b5a, data_03_7d46, $00, $01, $00, $00, $00, $00, $00, $00, $00, $00, script_003d, $0000 ;; 03:70fa NPC_MUSIC_NOTES
     NPC_DATA $81, $5e, $40, $08, data_09_6a00, data_03_7b5a, data_03_7cb6, $00, $01, $01, $00, $00, $00, $04, $04, $04, $04, script_025d, $0000 ;; 03:7112 NPC_MAGIC_SALESMAN
-    NPC_DATA $91, $3f, $60, $08, data_09_5300, data_03_7b5a, data_03_7cda, $00, $01, $01, $00, $00, $00, $06, $03, $07, $08, script_003d, $0000 ;; 03:712a NPC_LAST_GUY
+    NPC_DATA $91, $3f, $60, $08, gfxNpcLastGuy, data_03_7b5a, data_03_7cda, $00, $01, $01, $00, $00, $00, $06, $03, $07, $08, script_003d, $0000 ;; 03:712a NPC_LAST_GUY
