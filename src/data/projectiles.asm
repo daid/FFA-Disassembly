@@ -3,6 +3,18 @@
 
 ;@data format=bbbbbbbbpppp amount=40
 ; Projectile data.
+; 0) Something with behavour of the projectile
+; 1) Speed, lower = faster.
+; 2) ?
+; 3) ?
+; 4) Damage
+; 5) ?
+; 6) Graphics Tile Load Index
+; 7) Graphics Tile Load Count
+; 8-9) Graphics pointer
+; 10-11) Tile indexes
+; 12-13) Metatiles
+; 14-15) ?
 projectileDataTable:
     data_bbbbbbbbpppp $62, $08, $08, $01, $0a, $00, $30, $04, gfxProjectileKnife, data_09_46f9, data_09_4771, data_09_48c3 ;; 09:4479 ................ $00
     data_bbbbbbbbpppp $72, $08, $08, $04, $20, $00, $30, $04, gfxProjectileSun, data_09_46f9, data_09_47b9, data_09_48c3 ;; 09:4489 ???????????????? $01
