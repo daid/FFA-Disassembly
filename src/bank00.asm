@@ -5373,8 +5373,8 @@ call_00_2190:
     call processBackgroundRenderRequests               ;; 00:21ac $cd $da $1d
     ret                                                ;; 00:21af $c9
 
-call_00_21b0:
-    ld   A, [wC3F8]                                    ;; 00:21b0 $fa $f8 $c3
+getMapEncodingType:
+    ld   A, [wMapEncodingType]                         ;; 00:21b0 $fa $f8 $c3
     ret                                                ;; 00:21b3 $c9
 
 clearRoomStatusHistory:
@@ -5605,7 +5605,7 @@ call_00_22bb:
 
 call_00_22fe:
     push AF                                            ;; 00:22fe $f5
-    ld   A, [wC3F8]                                    ;; 00:22ff $fa $f8 $c3
+    ld   A, [wMapEncodingType]                         ;; 00:22ff $fa $f8 $c3
     cp   A, $00                                        ;; 00:2302 $fe $00
     jr   Z, .jr_00_2359                                ;; 00:2304 $28 $53
     ld   A, [wMapTableBankNr]                          ;; 00:2306 $fa $f0 $c3
@@ -5661,7 +5661,7 @@ call_00_22fe:
 
 call_00_235b:
     push AF                                            ;; 00:235b $f5
-    ld   A, [wC3F8]                                    ;; 00:235c $fa $f8 $c3
+    ld   A, [wMapEncodingType]                         ;; 00:235c $fa $f8 $c3
     cp   A, $00                                        ;; 00:235f $fe $00
     jr   Z, .jr_00_2383                                ;; 00:2361 $28 $20
     ld   A, [wMapTableBankNr]                          ;; 00:2363 $fa $f0 $c3
@@ -5729,7 +5729,7 @@ call_00_2385:
     ret                                                ;; 00:23b8 $c9
 
 call_00_23b9:
-    ld   A, [wC3F8]                                    ;; 00:23b9 $fa $f8 $c3
+    ld   A, [wMapEncodingType]                         ;; 00:23b9 $fa $f8 $c3
     cp   A, $00                                        ;; 00:23bc $fe $00
     ld   B, $00                                        ;; 00:23be $06 $00
     ret  Z                                             ;; 00:23c0 $c8
@@ -6217,7 +6217,7 @@ call_00_2617:
     ld   [wRoomY], A                                   ;; 00:2677 $ea $f7 $c3
     ld   A, E                                          ;; 00:267a $7b
     ld   [wRoomX], A                                   ;; 00:267b $ea $f6 $c3
-    ld   A, [wC3F8]                                    ;; 00:267e $fa $f8 $c3
+    ld   A, [wMapEncodingType]                         ;; 00:267e $fa $f8 $c3
     cp   A, $00                                        ;; 00:2681 $fe $00
     jr   NZ, .jr_00_2697                               ;; 00:2683 $20 $12
     call getRoomPointer                                ;; 00:2685 $cd $f6 $25
@@ -6258,7 +6258,7 @@ call_00_2617:
     pop  HL                                            ;; 00:26c3 $e1
     ret                                                ;; 00:26c4 $c9
 .jr_00_26c5:
-    ld   A, [wC3F8]                                    ;; 00:26c5 $fa $f8 $c3
+    ld   A, [wMapEncodingType]                         ;; 00:26c5 $fa $f8 $c3
     cp   A, $00                                        ;; 00:26c8 $fe $00
     jr   NZ, .jr_00_26d1                               ;; 00:26ca $20 $05
     call getRoomPointer                                ;; 00:26cc $cd $f6 $25
@@ -6315,7 +6315,7 @@ loadMap:
     ld   A, [wMapTablePointerLow]                      ;; 00:271f $fa $f2 $c3
     ld   L, A                                          ;; 00:2722 $6f
     ld   A, [HL+]                                      ;; 00:2723 $2a
-    ld   [wC3F8], A                                    ;; 00:2724 $ea $f8 $c3
+    ld   [wMapEncodingType], A                         ;; 00:2724 $ea $f8 $c3
     ld   A, [HL+]                                      ;; 00:2727 $2a
     ld   [wMapTileRLECount], A                         ;; 00:2728 $ea $f9 $c3
     ld   A, [HL+]                                      ;; 00:272b $2a
@@ -6330,7 +6330,7 @@ loadMap:
     ld   [wRoomY], A                                   ;; 00:273c $ea $f7 $c3
     ld   A, E                                          ;; 00:273f $7b
     ld   [wRoomX], A                                   ;; 00:2740 $ea $f6 $c3
-    ld   A, [wC3F8]                                    ;; 00:2743 $fa $f8 $c3
+    ld   A, [wMapEncodingType]                         ;; 00:2743 $fa $f8 $c3
     cp   A, $00                                        ;; 00:2746 $fe $00
     jr   NZ, .jr_00_275f                               ;; 00:2748 $20 $15
     call getRoomPointer                                ;; 00:274a $cd $f6 $25

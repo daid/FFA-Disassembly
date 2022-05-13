@@ -381,7 +381,9 @@ wRoomX:
 wRoomY:
     ds 1                                               ;; c3f7
 
-wC3F8:
+; 00 = RLE encoded map
+; 01 = Template encoded map
+wMapEncodingType:
     ds 1                                               ;; c3f8
 
 wMapTileRLECount:
