@@ -354,7 +354,8 @@ wC349:
 wRoomTiles:
     ds 80                                              ;; c350
 
-wC3A0:
+; wRoomTiles is copied to the backup when the minimap is opened
+wRoomTilesBackup:
     ds 80                                              ;; c3a0
 
 wMapTableBankNr:
@@ -771,10 +772,12 @@ wD49B:
 wD49C:
     ds 1                                               ;; d49c
 
-wD49D:
+; Current map number, copied from wMapNumber, used during minimap drawing
+wMapNumberTmp:
     ds 1                                               ;; d49d
 
-wD49E:
+; Room XY number, copied from wRoomX and wRoomY, used during minimap drawing
+wRoomXYTmp:
     ds 1                                               ;; d49e
 
 wD49F:

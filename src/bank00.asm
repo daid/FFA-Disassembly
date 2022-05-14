@@ -2332,7 +2332,7 @@ scriptOpCodeWaitMapClose:
 call_00_0de6:
     ld   A, [wD4A0]                                    ;; 00:0de6 $fa $a0 $d4
     call pushBankNrAndSwitch                           ;; 00:0de9 $cd $fb $29
-    ld   A, [wD49D]                                    ;; 00:0dec $fa $9d $d4
+    ld   A, [wMapNumberTmp]                            ;; 00:0dec $fa $9d $d4
     ld   D, A                                          ;; 00:0def $57
     ld   E, $00                                        ;; 00:0df0 $1e $00
     ld   B, $08                                        ;; 00:0df2 $06 $08
@@ -2355,7 +2355,7 @@ call_00_0de6:
     call popBankNrAndSwitch                            ;; 00:0e0b $cd $0a $2a
     ret                                                ;; 00:0e0e $c9
 
-call_00_0e0f:
+drawMinimapRoomTile:
     push DE                                            ;; 00:0e0f $d5
     ld   A, E                                          ;; 00:0e10 $7b
     and  A, $0f                                        ;; 00:0e11 $e6 $0f

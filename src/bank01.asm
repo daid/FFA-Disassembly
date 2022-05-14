@@ -200,7 +200,7 @@ call_01_4164:
     dw   prepareShutterEffect                          ;; 01:4170 pP
     dw   advanceScriptOpWhenVRAMCopiesDone             ;; 01:4172 pP
     dw   shutterEffectClose                            ;; 01:4174 pP
-    dw   data_01_422b                                  ;; 01:4176 pP
+    dw   loadMinimapToBackground                       ;; 01:4176 pP
     dw   advanceScriptOpWhenVRAMCopiesDone             ;; 01:4178 pP
     dw   data_01_4422                                  ;; 01:417a pP
     dw   shutterEffectOpen                             ;; 01:417c pP
@@ -312,22 +312,22 @@ shutterEffectOpen:
     pop  HL                                            ;; 01:4229 $e1
     ret                                                ;; 01:422a $c9
 
-data_01_422b:
+loadMinimapToBackground:
     push DE                                            ;; 01:422b $d5
     ld   HL, wRoomTiles                                ;; 01:422c $21 $50 $c3
-    ld   DE, wC3A0                                     ;; 01:422f $11 $a0 $c3
+    ld   DE, wRoomTilesBackup                          ;; 01:422f $11 $a0 $c3
     ld   B, $50                                        ;; 01:4232 $06 $50
     call copyHLtoDE                                    ;; 01:4234 $cd $49 $2b
     ld   A, [wC3F4]                                    ;; 01:4237 $fa $f4 $c3
     ld   [wD4A4], A                                    ;; 01:423a $ea $a4 $d4
     call getMapEncodingType                            ;; 01:423d $cd $b0 $21
     cp   A, $00                                        ;; 01:4240 $fe $00
-    jr   Z, .jr_01_4249                                ;; 01:4242 $28 $05
-    call call_01_4279                                  ;; 01:4244 $cd $79 $42
-    jr   .jr_01_424c                                   ;; 01:4247 $18 $03
-.jr_01_4249:
-    call call_01_4252                                  ;; 01:4249 $cd $52 $42
-.jr_01_424c:
+    jr   Z, .drawFixedMinimap                          ;; 01:4242 $28 $05
+    call drawDynamicMinimapBackground                  ;; 01:4244 $cd $79 $42
+    jr   .drawDone                                     ;; 01:4247 $18 $03
+.drawFixedMinimap:
+    call loadFixedMinimap                              ;; 01:4249 $cd $52 $42
+.drawDone:
     ld   HL, wScriptOpCounter                          ;; 01:424c $21 $99 $d4
     inc  [HL]                                          ;; 01:424f $34
 
@@ -335,9 +335,10 @@ data_01_4250:
     pop  HL                                            ;; 01:4250 $e1
     ret                                                ;; 01:4251 $c9
 
-call_01_4252:
+; Load a minimap from a room in map7, current map defines which room to load
+loadFixedMinimap:
     call call_01_4331                                  ;; 01:4252 $cd $31 $43
-    ld   A, [wD49D]                                    ;; 01:4255 $fa $9d $d4
+    ld   A, [wMapNumberTmp]                            ;; 01:4255 $fa $9d $d4
     ld   E, A                                          ;; 01:4258 $5f
     ld   A, $00                                        ;; 01:4259 $3e $00
     ld   [wD49F], A                                    ;; 01:425b $ea $9f $d4
@@ -345,9 +346,9 @@ call_01_4252:
     ld   A, $07                                        ;; 01:425f $3e $07
     call loadMap                                       ;; 01:4261 $cd $dc $26
     call call_00_04a4                                  ;; 01:4264 $cd $a4 $04
-    ld   A, [wD49E]                                    ;; 01:4267 $fa $9e $d4
+    ld   A, [wRoomXYTmp]                               ;; 01:4267 $fa $9e $d4
     ld   C, A                                          ;; 01:426a $4f
-    ld   A, [wD49D]                                    ;; 01:426b $fa $9d $d4
+    ld   A, [wMapNumberTmp]                            ;; 01:426b $fa $9d $d4
     cp   A, $00                                        ;; 01:426e $fe $00
     jr   Z, .jr_01_4274                                ;; 01:4270 $28 $02
     ld   A, $44                                        ;; 01:4272 $3e $44
@@ -356,7 +357,8 @@ call_01_4252:
     call call_01_42d1                                  ;; 01:4275 $cd $d1 $42
     ret                                                ;; 01:4278 $c9
 
-call_01_4279:
+; This only loads the empty minimap background and sets up graphic tiles
+drawDynamicMinimapBackground:
     call call_01_4331                                  ;; 01:4279 $cd $31 $43
     ld   A, [wMapTablePointerHigh]                     ;; 01:427c $fa $f3 $c3
     ld   H, A                                          ;; 01:427f $67
@@ -370,18 +372,20 @@ call_01_4279:
     ld   [wD49F], A                                    ;; 01:428f $ea $9f $d4
     ld   A, [wMapTableBankNr]                          ;; 01:4292 $fa $f0 $c3
     ld   [wD4A0], A                                    ;; 01:4295 $ea $a0 $d4
-    ld   A, [wD49D]                                    ;; 01:4298 $fa $9d $d4
+    ld   A, [wMapNumberTmp]                            ;; 01:4298 $fa $9d $d4
     ld   E, A                                          ;; 01:429b $5f
     ld   D, $00                                        ;; 01:429c $16 $00
     ld   A, $07                                        ;; 01:429e $3e $07
     call loadMap                                       ;; 01:42a0 $cd $dc $26
     call call_00_04a4                                  ;; 01:42a3 $cd $a4 $04
-    ld   A, [wD49E]                                    ;; 01:42a6 $fa $9e $d4
+    ld   A, [wRoomXYTmp]                               ;; 01:42a6 $fa $9e $d4
     add  A, $44                                        ;; 01:42a9 $c6 $44
     call call_01_42d1                                  ;; 01:42ab $cd $d1 $42
     call call_01_42b2                                  ;; 01:42ae $cd $b2 $42
     ret                                                ;; 01:42b1 $c9
 
+; Copy the first 16 tiles from the title_end.png graphics to $8900
+; But these tiles are all empty...
 call_01_42b2:
     ld   HL, data_01_4000                              ;; 01:42b2 $21 $00 $40
     ld   DE, $8900                                     ;; 01:42b5 $11 $00 $89
@@ -453,14 +457,14 @@ call_01_42d1:
 
 call_01_4331:
     call getMapNumber                                  ;; 01:4331 $cd $0a $22
-    ld   [wD49D], A                                    ;; 01:4334 $ea $9d $d4
+    ld   [wMapNumberTmp], A                            ;; 01:4334 $ea $9d $d4
     call LoadRoomXY_to_A                               ;; 01:4337 $cd $0e $22
-    ld   [wD49E], A                                    ;; 01:433a $ea $9e $d4
+    ld   [wRoomXYTmp], A                               ;; 01:433a $ea $9e $d4
     ret                                                ;; 01:433d $c9
 
 data_01_433e:
     push DE                                            ;; 01:433e $d5
-    ld   A, [wD49E]                                    ;; 01:433f $fa $9e $d4
+    ld   A, [wRoomXYTmp]                               ;; 01:433f $fa $9e $d4
     ld   E, A                                          ;; 01:4342 $5f
     and  A, $0f                                        ;; 01:4343 $e6 $0f
     ld   D, A                                          ;; 01:4345 $57
@@ -468,9 +472,9 @@ data_01_433e:
     swap A                                             ;; 01:4347 $cb $37
     and  A, $0f                                        ;; 01:4349 $e6 $0f
     ld   E, A                                          ;; 01:434b $5f
-    ld   A, [wD49D]                                    ;; 01:434c $fa $9d $d4
+    ld   A, [wMapNumberTmp]                            ;; 01:434c $fa $9d $d4
     call loadMap                                       ;; 01:434f $cd $dc $26
-    ld   HL, wC3A0                                     ;; 01:4352 $21 $a0 $c3
+    ld   HL, wRoomTilesBackup                          ;; 01:4352 $21 $a0 $c3
     ld   DE, wRoomTiles                                ;; 01:4355 $11 $50 $c3
     ld   B, $50                                        ;; 01:4358 $06 $50
     call copyHLtoDE                                    ;; 01:435a $cd $49 $2b
