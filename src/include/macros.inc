@@ -391,26 +391,6 @@ ENDM
 sHALT_GAME: MACRO
 db $cc
 ENDM
-sIF_0B: MACRO
-db $0b
-
-REPT _NARG
-    db \1
-    SHIFT
-ENDR
-    db $00
-    sIF_JMP
-ENDM
-sIF_0C: MACRO
-db $0c
-
-REPT _NARG
-    db \1
-    SHIFT
-ENDR
-    db $00
-    sIF_JMP
-ENDM
 sIF_EQUIPED: MACRO
 db $09
 
@@ -447,6 +427,26 @@ sIF_JMP: MACRO
   ENDC
   REDEF IF_LABELS equs STRCAT("{IF_LABELS}", "X", "\@")
   db .{IF_LABELS} - @ - 1
+ENDM
+sIF_TRIGGERED_OFF_BY: MACRO
+db $0c
+
+REPT _NARG
+    db \1
+    SHIFT
+ENDR
+    db $00
+    sIF_JMP
+ENDM
+sIF_TRIGGERED_ON_BY: MACRO
+db $0b
+
+REPT _NARG
+    db \1
+    SHIFT
+ENDR
+    db $00
+    sIF_JMP
 ENDM
 sLETTER_BOX_EFFECT: MACRO
 db $b6

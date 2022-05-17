@@ -3311,7 +3311,7 @@ script_01f9:
     sEND                                               ;; 0d:5d3c $00
 
 script_01fa:
-    sIF_0B $81                                         ;; 0d:5d3d $0b $81 $00 $03
+    sIF_TRIGGERED_ON_BY $81                            ;; 0d:5d3d $0b $81 $00 $03
       sDEL_NPC_1                                       ;; 0d:5d41 $18
     sELSE                                              ;; 0d:5d42 $01 $05
       sCREATE_EFFECT $10, $09, $01                     ;; 0d:5d44 $ba $10 $09 $01
@@ -3320,7 +3320,7 @@ script_01fa:
     sEND                                               ;; 0d:5d49 $00
 
 script_01fb:
-    sIF_0B $81                                         ;; 0d:5d4a $0b $81 $00 $03
+    sIF_TRIGGERED_ON_BY $81                            ;; 0d:5d4a $0b $81 $00 $03
       sDEL_NPC_1                                       ;; 0d:5d4e $18
     sELSE                                              ;; 0d:5d4f $01 $05
       sCREATE_EFFECT $10, $09, $0d                     ;; 0d:5d51 $ba $10 $09 $0d
@@ -3329,7 +3329,7 @@ script_01fb:
     sEND                                               ;; 0d:5d56 $00
 
 script_01fc:
-    sIF_0B $81                                         ;; 0d:5d57 $0b $81 $00 $03
+    sIF_TRIGGERED_ON_BY $81                            ;; 0d:5d57 $0b $81 $00 $03
       sDEL_NPC_1                                       ;; 0d:5d5b $18
     sELSE                                              ;; 0d:5d5c $01 $05
       sCREATE_EFFECT $10, $11, $07                     ;; 0d:5d5e $ba $10 $11 $07
@@ -3338,7 +3338,7 @@ script_01fc:
     sEND                                               ;; 0d:5d63 $00
 
 script_01fd:
-    sIF_0B $81                                         ;; 0d:5d64 $0b $81 $00 $03
+    sIF_TRIGGERED_ON_BY $81                            ;; 0d:5d64 $0b $81 $00 $03
       sDEL_NPC_1                                       ;; 0d:5d68 $18
     sELSE                                              ;; 0d:5d69 $01 $05
       sCREATE_EFFECT $10, $01, $07                     ;; 0d:5d6b $ba $10 $01 $07
@@ -4716,7 +4716,7 @@ script_026d:
     sEND                                               ;; 0d:7b92 $00
 
 script_0270:
-    sIF_0B $c9                                         ;; 0d:7b93 $0b $c9 $00 $21
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0d:7b93 $0b $c9 $00 $21
       sIF_EQUIPED INV_ITEM_BONE_KEY                    ;; 0d:7b97 $09 $20 $00 $12
         sIF_FLAG wScriptFlags0B.0                      ;; 0d:7b9b $08 $58 $00 $05
           sCALL script_0473                            ;; 0d:7b9f $02 $5a $e2
@@ -4733,7 +4733,7 @@ script_0270:
     sEND                                               ;; 0d:7bb8 $00
 
 script_0271:
-    sIF_0B $c9                                         ;; 0d:7bb9 $0b $c9 $00 $13
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0d:7bb9 $0b $c9 $00 $13
       sIF_FLAG wScriptFlags0B.0                        ;; 0d:7bbd $08 $58 $00 $05
         sCALL script_0473                              ;; 0d:7bc1 $02 $5a $e2
         sSET_FLAG wScriptFlags0C.0                     ;; 0d:7bc4 $da $60
@@ -4746,7 +4746,7 @@ script_0271:
     sEND                                               ;; 0d:7bd0 $00
 
 script_0272:
-    sIF_0B $c9                                         ;; 0d:7bd1 $0b $c9 $00 $1b
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0d:7bd1 $0b $c9 $00 $1b
       sLOAD_ROOM 6, $32, 9, 12                         ;; 0d:7bd5 $f4 $06 $32 $09 $0c
       sSET_MUSIC 4                                     ;; 0d:7bda $f8 $04
       sUNK_C5 2                                        ;; 0d:7bdc $c5 $02
@@ -4764,7 +4764,7 @@ script_0272:
     sEND                                               ;; 0d:7bf0 $00
 
 script_0273:
-    sIF_0B $c9, $c1                                    ;; 0d:7bf1 $0b $c9 $c1 $00 $0d
+    sIF_TRIGGERED_ON_BY $c9, $c1                       ;; 0d:7bf1 $0b $c9 $c1 $00 $0d
       sSFX 12                                          ;; 0d:7bf6 $f9 $0c
       sSET_PLAYER_POSITION 20, 0                       ;; 0d:7bf8 $8a $14 $00
       sDELAY 60                                        ;; 0d:7bfb $f0 $3c
@@ -4774,7 +4774,7 @@ script_0273:
     sEND                                               ;; 0d:7c03 $00
 
 script_0274:
-    sIF_0B $c9, $c1                                    ;; 0d:7c04 $0b $c9 $c1 $00 $0d
+    sIF_TRIGGERED_ON_BY $c9, $c1                       ;; 0d:7c04 $0b $c9 $c1 $00 $0d
       sSFX 12                                          ;; 0d:7c09 $f9 $0c
       sSET_PLAYER_POSITION 20, 0                       ;; 0d:7c0b $8a $14 $00
       sDELAY 60                                        ;; 0d:7c0e $f0 $3c
@@ -4784,7 +4784,7 @@ script_0274:
     sEND                                               ;; 0d:7c16 $00
 
 script_0275:
-    sIF_0B $c9                                         ;; 0d:7c17 $0b $c9 $00 $29
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0d:7c17 $0b $c9 $00 $29
       sIF_EQUIPED INV_ITEM_BRONZE_KEY                  ;; 0d:7c1b $09 $21 $00 $1a
         sIF_FLAG wScriptFlags0B.0                      ;; 0d:7c1f $08 $58 $00 $05
           sCALL script_0473                            ;; 0d:7c23 $02 $5a $e2
@@ -4805,7 +4805,7 @@ script_0275:
     sEND                                               ;; 0d:7c44 $00
 
 script_0276:
-    sIF_0B $c9                                         ;; 0d:7c45 $0b $c9 $00 $13
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0d:7c45 $0b $c9 $00 $13
       sIF_FLAG wScriptFlags0B.0                        ;; 0d:7c49 $08 $58 $00 $05
         sCALL script_0473                              ;; 0d:7c4d $02 $5a $e2
         sSET_FLAG wScriptFlags0C.1                     ;; 0d:7c50 $da $61
@@ -4818,7 +4818,7 @@ script_0276:
     sEND                                               ;; 0d:7c5c $00
 
 script_0277:
-    sIF_0B $c9                                         ;; 0d:7c5d $0b $c9 $00 $11
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0d:7c5d $0b $c9 $00 $11
       sIF_FLAG wScriptFlags0B.0                        ;; 0d:7c61 $08 $58 $00 $05
         sCALL script_0473                              ;; 0d:7c65 $02 $5a $e2
         sSET_FLAG wScriptFlags0C.3                     ;; 0d:7c68 $da $63
@@ -4830,7 +4830,7 @@ script_0277:
     sEND                                               ;; 0d:7c72 $00
 
 script_0278:
-    sIF_0B $c9                                         ;; 0d:7c73 $0b $c9 $00 $11
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0d:7c73 $0b $c9 $00 $11
       sIF_FLAG wScriptFlags0B.0                        ;; 0d:7c77 $08 $58 $00 $05
         sCALL script_0473                              ;; 0d:7c7b $02 $5a $e2
         sSET_FLAG wScriptFlags0C.5                     ;; 0d:7c7e $da $65
@@ -4842,7 +4842,7 @@ script_0278:
     sEND                                               ;; 0d:7c88 $00
 
 script_0279:
-    sIF_0B $c9                                         ;; 0d:7c89 $0b $c9 $00 $39
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0d:7c89 $0b $c9 $00 $39
       sIF_FLAG wScriptFlags0B.0                        ;; 0d:7c8d $08 $58 $00 $05
         sCALL script_0473                              ;; 0d:7c91 $02 $5a $e2
         sSET_FLAG wScriptFlags0C.4                     ;; 0d:7c94 $da $64
@@ -4860,7 +4860,7 @@ script_0279:
     sEND                                               ;; 0d:7cc6 $00
 
 script_027a:
-    sIF_0B $c9                                         ;; 0d:7cc7 $0b $c9 $00 $7c
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0d:7cc7 $0b $c9 $00 $7c
       sIF_EQUIPED INV_SWORD_SILVER                     ;; 0d:7ccb $09 $46 $00 $09
         sLOAD_ROOM 10, $13, 16, 12                     ;; 0d:7ccf $f4 $0a $13 $10 $0c
         sSET_MUSIC 7                                   ;; 0d:7cd4 $f8 $07
@@ -4902,7 +4902,7 @@ script_027a:
     sEND                                               ;; 0d:7d47 $00
 
 script_027b:
-    sIF_0B $c9                                         ;; 0d:7d48 $0b $c9 $00 $08
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0d:7d48 $0b $c9 $00 $08
       sLOAD_ROOM 10, $05, 16, 12                       ;; 0d:7d4c $f4 $0a $05 $10 $0c
       sSET_MUSIC 7                                     ;; 0d:7d51 $f8 $07
       sRUN_ROOM_SCRIPT                                 ;; 0d:7d53 $ec
@@ -4910,7 +4910,7 @@ script_027b:
     sEND                                               ;; 0d:7d54 $00
 
 script_027c:
-    sIF_0B $c9                                         ;; 0d:7d55 $0b $c9 $00 $0c
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0d:7d55 $0b $c9 $00 $0c
       sIF_FLAG !wScriptFlags02.6                       ;; 0d:7d59 $08 $96 $00 $08
         sLOAD_ROOM 14, $62, 12, 12                     ;; 0d:7d5d $f4 $0e $62 $0c $0c
         sSET_MUSIC 14                                  ;; 0d:7d62 $f8 $0e
@@ -4920,25 +4920,25 @@ script_027c:
     sEND                                               ;; 0d:7d65 $00
 
 script_027d:
-    sIF_0B $c9                                         ;; 0d:7d66 $0b $c9 $00 $06
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0d:7d66 $0b $c9 $00 $06
       sSFX 24                                          ;; 0d:7d6a $f9 $18
       sSET_ROOM_TILE $02, 1, 1                         ;; 0d:7d6c $b0 $02 $01 $01
     sENDIF                                             ;; 0d:7d70
     sEND                                               ;; 0d:7d70 $00
 
 script_027e:
-    sIF_0B $c9, $a9                                    ;; 0d:7d71 $0b $c9 $a9 $00 $06
+    sIF_TRIGGERED_ON_BY $c9, $a9                       ;; 0d:7d71 $0b $c9 $a9 $00 $06
       sSFX 24                                          ;; 0d:7d76 $f9 $18
       sSET_ROOM_TILE $02, 8, 1                         ;; 0d:7d78 $b0 $02 $08 $01
     sENDIF                                             ;; 0d:7d7c
-    sIF_0C $c9                                         ;; 0d:7d7c $0c $c9 $00 $06
+    sIF_TRIGGERED_OFF_BY $c9                           ;; 0d:7d7c $0c $c9 $00 $06
       sSFX 24                                          ;; 0d:7d80 $f9 $18
       sSET_ROOM_TILE $00, 8, 1                         ;; 0d:7d82 $b0 $00 $08 $01
     sENDIF                                             ;; 0d:7d86
     sEND                                               ;; 0d:7d86 $00
 
 script_027f:
-    sIF_0B $c9                                         ;; 0d:7d87 $0b $c9 $00 $11
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0d:7d87 $0b $c9 $00 $11
       sIF_FLAG wScriptFlags0B.0                        ;; 0d:7d8b $08 $58 $00 $05
         sCALL script_0473                              ;; 0d:7d8f $02 $5a $e2
         sSET_FLAG wScriptFlags0B.7                     ;; 0d:7d92 $da $5f
@@ -4950,7 +4950,7 @@ script_027f:
     sEND                                               ;; 0d:7d9c $00
 
 script_0280:
-    sIF_0B $c9                                         ;; 0d:7d9d $0b $c9 $00 $1b
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0d:7d9d $0b $c9 $00 $1b
       sIF_FLAG wScriptFlags0B.0                        ;; 0d:7da1 $08 $58 $00 $05
         sCALL script_0473                              ;; 0d:7da5 $02 $5a $e2
         sSET_FLAG wScriptFlags0B.3                     ;; 0d:7da8 $da $5b
@@ -4967,7 +4967,7 @@ script_0280:
     sEND                                               ;; 0d:7dbc $00
 
 script_0281:
-    sIF_0B $c9                                         ;; 0d:7dbd $0b $c9 $00 $53
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0d:7dbd $0b $c9 $00 $53
       sIF_FLAG wScriptFlags0B.0                        ;; 0d:7dc1 $08 $58 $00 $05
         sCALL script_0473                              ;; 0d:7dc5 $02 $5a $e2
         sSET_FLAG wScriptFlags0B.4                     ;; 0d:7dc8 $da $5c
@@ -5005,7 +5005,7 @@ script_0281:
     sEND                                               ;; 0d:7e14 $00
 
 script_0282:
-    sIF_0B $c9                                         ;; 0d:7e15 $0b $c9 $00 $98
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0d:7e15 $0b $c9 $00 $98
       sIF_FLAG wScriptFlags0B.0                        ;; 0d:7e19 $08 $58 $00 $05
         sCALL script_0473                              ;; 0d:7e1d $02 $5a $e2
         sSET_FLAG wScriptFlags0B.5                     ;; 0d:7e20 $da $5d
@@ -5033,7 +5033,7 @@ script_0283:
     sEND                                               ;; 0d:7eb2 $00
 
 script_0284:
-    sIF_0B $c9                                         ;; 0d:7eb3 $0b $c9 $00 $11
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0d:7eb3 $0b $c9 $00 $11
       sIF_FLAG wScriptFlags0B.0                        ;; 0d:7eb7 $08 $58 $00 $05
         sCALL script_0473                              ;; 0d:7ebb $02 $5a $e2
         sSET_FLAG wScriptFlags0D.4                     ;; 0d:7ebe $da $6c
@@ -5045,7 +5045,7 @@ script_0284:
     sEND                                               ;; 0d:7ec8 $00
 
 script_0285:
-    sIF_0B $c9                                         ;; 0d:7ec9 $0b $c9 $00 $11
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0d:7ec9 $0b $c9 $00 $11
       sIF_FLAG wScriptFlags0B.0                        ;; 0d:7ecd $08 $58 $00 $05
         sCALL script_0473                              ;; 0d:7ed1 $02 $5a $e2
         sSET_FLAG wScriptFlags0D.3                     ;; 0d:7ed4 $da $6b
@@ -5057,7 +5057,7 @@ script_0285:
     sEND                                               ;; 0d:7ede $00
 
 script_0286:
-    sIF_0B $c9                                         ;; 0d:7edf $0b $c9 $00 $10
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0d:7edf $0b $c9 $00 $10
       sIF_FLAG wScriptFlags0B.0                        ;; 0d:7ee3 $08 $58 $00 $05
         sCALL script_0473                              ;; 0d:7ee7 $02 $5a $e2
         sSET_FLAG wScriptFlags0D.5                     ;; 0d:7eea $da $6d
@@ -5068,14 +5068,14 @@ script_0286:
     sEND                                               ;; 0d:7ef3 $00
 
 script_0287:
-    sIF_0B $c9                                         ;; 0d:7ef4 $0b $c9 $00 $07
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0d:7ef4 $0b $c9 $00 $07
       sLOAD_ROOM 15, $10, 16, 2                        ;; 0d:7ef8 $f4 $0f $10 $10 $02
       sSET_MUSIC 7                                     ;; 0d:7efd $f8 $07
     sENDIF                                             ;; 0d:7eff
     sEND                                               ;; 0d:7eff $00
 
 script_0288:
-    sIF_0B $c9                                         ;; 0d:7f00 $0b $c9 $00 $19
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0d:7f00 $0b $c9 $00 $19
       sIF_FLAG wScriptFlags0B.0                        ;; 0d:7f04 $08 $58 $00 $05
         sCALL script_0473                              ;; 0d:7f08 $02 $5a $e2
         sSET_FLAG wScriptFlags0C.6                     ;; 0d:7f0b $da $66
@@ -5091,7 +5091,7 @@ script_0288:
     sEND                                               ;; 0d:7f1d $00
 
 script_0289:
-    sIF_0B $c9                                         ;; 0d:7f1e $0b $c9 $00 $08
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0d:7f1e $0b $c9 $00 $08
       sLOAD_ROOM 13, $17, 16, 12                       ;; 0d:7f22 $f4 $0d $17 $10 $0c
       sSET_MUSIC 12                                    ;; 0d:7f27 $f8 $0c
       sRUN_ROOM_SCRIPT                                 ;; 0d:7f29 $ec
@@ -5099,7 +5099,7 @@ script_0289:
     sEND                                               ;; 0d:7f2a $00
 
 script_028a:
-    sIF_0B $c9                                         ;; 0d:7f2b $0b $c9 $00 $1b
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0d:7f2b $0b $c9 $00 $1b
       sIF_FLAG wScriptFlags0B.0                        ;; 0d:7f2f $08 $58 $00 $05
         sCALL script_0473                              ;; 0d:7f33 $02 $5a $e2
         sSET_FLAG wScriptFlags0D.0                     ;; 0d:7f36 $da $68
@@ -5116,7 +5116,7 @@ script_028a:
     sEND                                               ;; 0d:7f4a $00
 
 script_028b:
-    sIF_0B $c9                                         ;; 0d:7f4b $0b $c9 $00 $13
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0d:7f4b $0b $c9 $00 $13
       sIF_FLAG wScriptFlags0B.0                        ;; 0d:7f4f $08 $58 $00 $05
         sCALL script_0473                              ;; 0d:7f53 $02 $5a $e2
         sSET_FLAG wScriptFlags0C.7                     ;; 0d:7f56 $da $67
@@ -5129,7 +5129,7 @@ script_028b:
     sEND                                               ;; 0d:7f62 $00
 
 script_028c:
-    sIF_0B $c9                                         ;; 0d:7f63 $0b $c9 $00 $0a
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0d:7f63 $0b $c9 $00 $0a
       sLOAD_ROOM 1, $17, 16, 5                         ;; 0d:7f67 $f4 $01 $17 $10 $05
       sSET_MUSIC 7                                     ;; 0d:7f6c $f8 $07
       sCALL script_01c7                                ;; 0d:7f6e $02 $14 $cf
@@ -5137,7 +5137,7 @@ script_028c:
     sEND                                               ;; 0d:7f71 $00
 
 script_028d:
-    sIF_0B $c9                                         ;; 0d:7f72 $0b $c9 $00 $08
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0d:7f72 $0b $c9 $00 $08
       sLOAD_ROOM 11, $76, 16, 2                        ;; 0d:7f76 $f4 $0b $76 $10 $02
       sSET_MUSIC 7                                     ;; 0d:7f7b $f8 $07
       sRUN_ROOM_SCRIPT                                 ;; 0d:7f7d $ec
@@ -5151,7 +5151,7 @@ script_028f:
     sEND                                               ;; 0d:7f80 $00
 
 script_0290:
-    sIF_0B $c9                                         ;; 0d:7f81 $0b $c9 $00 $09
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0d:7f81 $0b $c9 $00 $09
       sLOAD_ROOM 0, $f0, 8, 8                          ;; 0d:7f85 $f4 $00 $f0 $08 $08
       sSET_MUSIC 25                                    ;; 0d:7f8a $f8 $19
       sCLEAR_ROOM_HISTORY                              ;; 0d:7f8c $ab
@@ -5160,7 +5160,7 @@ script_0290:
     sEND                                               ;; 0d:7f8e $00
 
 script_0291:
-    sIF_0B $c9, $c1                                    ;; 0d:7f8f $0b $c9 $c1 $00 $0a
+    sIF_TRIGGERED_ON_BY $c9, $c1                       ;; 0d:7f8f $0b $c9 $c1 $00 $0a
       sLOAD_ROOM 0, $87, 8, 2                          ;; 0d:7f94 $f4 $00 $87 $08 $02
       sDELAY 20                                        ;; 0d:7f99 $f0 $14
       sSET_MUSIC 20                                    ;; 0d:7f9b $f8 $14
@@ -5169,7 +5169,7 @@ script_0291:
     sEND                                               ;; 0d:7f9e $00
 
 script_0292:
-    sIF_0B $c9, $c1                                    ;; 0d:7f9f $0b $c9 $c1 $00 $0d
+    sIF_TRIGGERED_ON_BY $c9, $c1                       ;; 0d:7f9f $0b $c9 $c1 $00 $0d
       sSFX 12                                          ;; 0d:7fa4 $f9 $0c
       sSET_PLAYER_POSITION 20, 0                       ;; 0d:7fa6 $8a $14 $00
       sDELAY 60                                        ;; 0d:7fa9 $f0 $3c
