@@ -396,10 +396,10 @@ wMapHeight:
 wMapWidth:
     ds 1                                               ;; c3fb
 
-wC3FC:
+; The wRoomTileDataPointer is only used for templated rooms, and stores a pointer to the per room door data/tile overrides
+wRoomTileDataPointer:
     ds 1                                               ;; c3fc
-
-wC3FD:
+.high:
     ds 1                                               ;; c3fd
 
 ; Points at the mapXX_roomXX_XX_script label of the current room

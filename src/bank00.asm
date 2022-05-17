@@ -2341,7 +2341,7 @@ call_00_0de6:
 .jr_00_0df6:
     push BC                                            ;; 00:0df6 $c5
     call call_00_21f6                                  ;; 00:0df7 $cd $f6 $21
-    call Z, call_00_0e0f                               ;; 00:0dfa $cc $0f $0e
+    call Z, drawMinimapRoomTile                        ;; 00:0dfa $cc $0f $0e
     inc  E                                             ;; 00:0dfd $1c
     pop  BC                                            ;; 00:0dfe $c1
     dec  C                                             ;; 00:0dff $0d
@@ -5621,9 +5621,9 @@ call_00_22fe:
     cpl                                                ;; 00:2318 $2f
     call call_00_225d                                  ;; 00:2319 $cd $5d $22
     push HL                                            ;; 00:231c $e5
-    ld   A, [wC3FD]                                    ;; 00:231d $fa $fd $c3
+    ld   A, [wRoomTileDataPointer.high]                ;; 00:231d $fa $fd $c3
     ld   H, A                                          ;; 00:2320 $67
-    ld   A, [wC3FC]                                    ;; 00:2321 $fa $fc $c3
+    ld   A, [wRoomTileDataPointer]                     ;; 00:2321 $fa $fc $c3
     ld   L, A                                          ;; 00:2324 $6f
     ld   B, $00                                        ;; 00:2325 $06 $00
     add  HL, BC                                        ;; 00:2327 $09
@@ -5745,9 +5745,9 @@ call_00_23b9:
     ld   A, [wC3F4]                                    ;; 00:23d3 $fa $f4 $c3
     and  A, C                                          ;; 00:23d6 $a1
     jr   NZ, .jr_00_23e3                               ;; 00:23d7 $20 $0a
-    ld   A, [wC3FD]                                    ;; 00:23d9 $fa $fd $c3
+    ld   A, [wRoomTileDataPointer.high]                ;; 00:23d9 $fa $fd $c3
     ld   H, A                                          ;; 00:23dc $67
-    ld   A, [wC3FC]                                    ;; 00:23dd $fa $fc $c3
+    ld   A, [wRoomTileDataPointer]                     ;; 00:23dd $fa $fc $c3
     ld   L, A                                          ;; 00:23e0 $6f
     add  HL, DE                                        ;; 00:23e1 $19
     ld   B, [HL]                                       ;; 00:23e2 $46
@@ -5812,7 +5812,8 @@ call_00_2426:
     ld   A, [HL]                                       ;; 00:2429 $7e
     ret                                                ;; 00:242a $c9
 
-loadRoomTiles:
+; Load the metatiles from RLE data at HL into wRoomTiles
+loadRoomTilesRLE:
     push HL                                            ;; 00:242b $e5
     ld   A, $07                                        ;; 00:242c $3e $07
     call clearScriptFlag                               ;; 00:242e $cd $ee $3b
@@ -6001,7 +6002,7 @@ call_00_2546:
     add  HL, DE                                        ;; 00:255b $19
     ret                                                ;; 00:255c $c9
 
-call_00_255d:
+loadRoomTilesTemplated:
     push DE                                            ;; 00:255d $d5
     push HL                                            ;; 00:255e $e5
     call call_00_29e4                                  ;; 00:255f $cd $e4 $29
@@ -6009,7 +6010,7 @@ call_00_255d:
     ld   A, [HL+]                                      ;; 00:2563 $2a
     ld   H, [HL]                                       ;; 00:2564 $66
     ld   L, A                                          ;; 00:2565 $6f
-    call loadRoomTiles                                 ;; 00:2566 $cd $2b $24
+    call loadRoomTilesRLE                              ;; 00:2566 $cd $2b $24
     pop  AF                                            ;; 00:2569 $f1
     ld   C, A                                          ;; 00:256a $4f
     pop  DE                                            ;; 00:256b $d1
@@ -6019,7 +6020,7 @@ call_00_255d:
     ld   B, $04                                        ;; 00:256f $06 $04
     ld   A, $00                                        ;; 00:2571 $3e $00
     ld   [wC3F4], A                                    ;; 00:2573 $ea $f4 $c3
-.jr_00_2576:
+.loadDoorTilesLoop:
     ld   A, [HL+]                                      ;; 00:2576 $2a
     bit  7, A                                          ;; 00:2577 $cb $7f
     jr   NZ, .jr_00_25a9                               ;; 00:2579 $20 $2e
@@ -6074,27 +6075,28 @@ call_00_255d:
     pop  DE                                            ;; 00:25ba $d1
 .jr_00_25bb:
     dec  B                                             ;; 00:25bb $05
-    jr   NZ, .jr_00_2576                               ;; 00:25bc $20 $b8
-.jr_00_25be:
+    jr   NZ, loadRoomTilesTemplated.loadDoorTilesLoop  ;; 00:25bc $20 $b8
+; Load the remaining tile overrides
+.tileOverrideLoop:
     ld   A, [HL+]                                      ;; 00:25be $2a
     cp   A, $ff                                        ;; 00:25bf $fe $ff
-    jr   Z, .jr_00_25cd                                ;; 00:25c1 $28 $0a
+    jr   Z, loadRoomTilesTemplated.tileOverrideFinished ;; 00:25c1 $28 $0a
     ld   C, A                                          ;; 00:25c3 $4f
     ld   A, [HL+]                                      ;; 00:25c4 $2a
     push HL                                            ;; 00:25c5 $e5
     call call_00_2546                                  ;; 00:25c6 $cd $46 $25
     ld   [HL], C                                       ;; 00:25c9 $71
     pop  HL                                            ;; 00:25ca $e1
-    jr   .jr_00_25be                                   ;; 00:25cb $18 $f1
-.jr_00_25cd:
+    jr   loadRoomTilesTemplated.tileOverrideLoop       ;; 00:25cb $18 $f1
+.tileOverrideFinished:
     ld   HL, wRoomTiles                                ;; 00:25cd $21 $50 $c3
     ret                                                ;; 00:25d0 $c9
 
-; Get the pointer to the map data. Difference with getRoomPointer is that this adds a 0x001A offset for some reason.
+; Get the pointer to the map data. Difference with getRoomPointerRLE is that this adds a 0x001A offset to skip the template pointer and door data
 ; Input: D, E = x,y position on the map
-; Output: DE = pointer to object/enemy table?
+; Output: DE = pointer to script table
 ; Output: HL = pointer to map tile data
-getRoomPointerV2:
+getRoomPointerTemplatedRoom:
     push DE                                            ;; 00:25d1 $d5
     ld   L, D                                          ;; 00:25d2 $6a
     ld   H, $00                                        ;; 00:25d3 $26 $00
@@ -6123,9 +6125,9 @@ getRoomPointerV2:
 
 ; Get the pointer to the map data in bank 05
 ; Input: D, E = x,y position on the map
-; Output: DE = pointer to object/enemy table?
+; Output: DE = pointer to script table
 ; Output: HL = pointer to map tile data
-getRoomPointer:
+getRoomPointerRLERoom:
     push DE                                            ;; 00:25f6 $d5
     ld   L, D                                          ;; 00:25f7 $6a
     ld   H, $00                                        ;; 00:25f8 $26 $00
@@ -6220,26 +6222,26 @@ call_00_2617:
     ld   A, [wMapEncodingType]                         ;; 00:267e $fa $f8 $c3
     cp   A, $00                                        ;; 00:2681 $fe $00
     jr   NZ, .jr_00_2697                               ;; 00:2683 $20 $12
-    call getRoomPointer                                ;; 00:2685 $cd $f6 $25
+    call getRoomPointerRLERoom                         ;; 00:2685 $cd $f6 $25
     ld   A, D                                          ;; 00:2688 $7a
     ld   [wRoomScriptTableHigh], A                     ;; 00:2689 $ea $ff $c3
     ld   A, E                                          ;; 00:268c $7b
     ld   [wRoomScriptTableLow], A                      ;; 00:268d $ea $fe $c3
     push HL                                            ;; 00:2690 $e5
     push DE                                            ;; 00:2691 $d5
-    call loadRoomTiles                                 ;; 00:2692 $cd $2b $24
+    call loadRoomTilesRLE                              ;; 00:2692 $cd $2b $24
     jr   .jr_00_26bc                                   ;; 00:2695 $18 $25
 .jr_00_2697:
     push BC                                            ;; 00:2697 $c5
-    call getRoomPointerV2                              ;; 00:2698 $cd $d1 $25
+    call getRoomPointerTemplatedRoom                   ;; 00:2698 $cd $d1 $25
     ld   A, D                                          ;; 00:269b $7a
     ld   [wRoomScriptTableHigh], A                     ;; 00:269c $ea $ff $c3
     ld   A, E                                          ;; 00:269f $7b
     ld   [wRoomScriptTableLow], A                      ;; 00:26a0 $ea $fe $c3
     ld   A, H                                          ;; 00:26a3 $7c
-    ld   [wC3FD], A                                    ;; 00:26a4 $ea $fd $c3
+    ld   [wRoomTileDataPointer.high], A                ;; 00:26a4 $ea $fd $c3
     ld   A, L                                          ;; 00:26a7 $7d
-    ld   [wC3FC], A                                    ;; 00:26a8 $ea $fc $c3
+    ld   [wRoomTileDataPointer], A                     ;; 00:26a8 $ea $fc $c3
     pop  BC                                            ;; 00:26ab $c1
     push HL                                            ;; 00:26ac $e5
     push DE                                            ;; 00:26ad $d5
@@ -6250,7 +6252,7 @@ call_00_2617:
     ld   A, [wMapTablePointerLow]                      ;; 00:26b4 $fa $f2 $c3
     ld   L, A                                          ;; 00:26b7 $6f
     ld   A, C                                          ;; 00:26b8 $79
-    call call_00_255d                                  ;; 00:26b9 $cd $5d $25
+    call loadRoomTilesTemplated                        ;; 00:26b9 $cd $5d $25
 .jr_00_26bc:
     call call_00_1b74                                  ;; 00:26bc $cd $74 $1b
     call popBankNrAndSwitch                            ;; 00:26bf $cd $0a $2a
@@ -6261,10 +6263,10 @@ call_00_2617:
     ld   A, [wMapEncodingType]                         ;; 00:26c5 $fa $f8 $c3
     cp   A, $00                                        ;; 00:26c8 $fe $00
     jr   NZ, .jr_00_26d1                               ;; 00:26ca $20 $05
-    call getRoomPointer                                ;; 00:26cc $cd $f6 $25
+    call getRoomPointerRLERoom                         ;; 00:26cc $cd $f6 $25
     jr   .jr_00_26d4                                   ;; 00:26cf $18 $03
 .jr_00_26d1:
-    call getRoomPointerV2                              ;; 00:26d1 $cd $d1 $25
+    call getRoomPointerTemplatedRoom                   ;; 00:26d1 $cd $d1 $25
 .jr_00_26d4:
     push HL                                            ;; 00:26d4 $e5
     push DE                                            ;; 00:26d5 $d5
@@ -6273,6 +6275,8 @@ call_00_2617:
     pop  HL                                            ;; 00:26da $e1
     ret                                                ;; 00:26db $c9
 
+; A=Map number
+; DE=room XY
 loadMap:
     ld   [wMapNumber], A                               ;; 00:26dc $ea $f5 $c3
     push DE                                            ;; 00:26df $d5
@@ -6332,32 +6336,32 @@ loadMap:
     ld   [wRoomX], A                                   ;; 00:2740 $ea $f6 $c3
     ld   A, [wMapEncodingType]                         ;; 00:2743 $fa $f8 $c3
     cp   A, $00                                        ;; 00:2746 $fe $00
-    jr   NZ, .jr_00_275f                               ;; 00:2748 $20 $15
-    call getRoomPointer                                ;; 00:274a $cd $f6 $25
+    jr   NZ, .templatedRoom                            ;; 00:2748 $20 $15
+    call getRoomPointerRLERoom                         ;; 00:274a $cd $f6 $25
     ld   A, D                                          ;; 00:274d $7a
     ld   [wRoomScriptTableHigh], A                     ;; 00:274e $ea $ff $c3
     ld   A, E                                          ;; 00:2751 $7b
     ld   [wRoomScriptTableLow], A                      ;; 00:2752 $ea $fe $c3
-    call loadRoomTiles                                 ;; 00:2755 $cd $2b $24
+    call loadRoomTilesRLE                              ;; 00:2755 $cd $2b $24
     call call_00_1b74                                  ;; 00:2758 $cd $74 $1b
     call popBankNrAndSwitch                            ;; 00:275b $cd $0a $2a
     ret                                                ;; 00:275e $c9
-.jr_00_275f:
+.templatedRoom:
     push HL                                            ;; 00:275f $e5
-    call getRoomPointerV2                              ;; 00:2760 $cd $d1 $25
+    call getRoomPointerTemplatedRoom                   ;; 00:2760 $cd $d1 $25
     ld   A, D                                          ;; 00:2763 $7a
     ld   [wRoomScriptTableHigh], A                     ;; 00:2764 $ea $ff $c3
     ld   A, E                                          ;; 00:2767 $7b
     ld   [wRoomScriptTableLow], A                      ;; 00:2768 $ea $fe $c3
     ld   A, H                                          ;; 00:276b $7c
-    ld   [wC3FD], A                                    ;; 00:276c $ea $fd $c3
+    ld   [wRoomTileDataPointer.high], A                ;; 00:276c $ea $fd $c3
     ld   A, L                                          ;; 00:276f $7d
-    ld   [wC3FC], A                                    ;; 00:2770 $ea $fc $c3
+    ld   [wRoomTileDataPointer], A                     ;; 00:2770 $ea $fc $c3
     ld   D, H                                          ;; 00:2773 $54
     ld   E, L                                          ;; 00:2774 $5d
     pop  HL                                            ;; 00:2775 $e1
     ld   A, $00                                        ;; 00:2776 $3e $00
-    call call_00_255d                                  ;; 00:2778 $cd $5d $25
+    call loadRoomTilesTemplated                        ;; 00:2778 $cd $5d $25
     call call_00_1b74                                  ;; 00:277b $cd $74 $1b
     call popBankNrAndSwitch                            ;; 00:277e $cd $0a $2a
     ret                                                ;; 00:2781 $c9
