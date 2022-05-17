@@ -5458,6 +5458,7 @@ LoadRoomXY_to_A:
     or   A, C                                          ;; 00:221b $b1
     ret                                                ;; 00:221c $c9
 
+; Offsets into wRoomTiles for door tiles
 label_unknown_221d:
     dw   $c39b                                         ;; 00:221d pP
     dw   $c39a                                         ;; 00:221f pP
@@ -5465,16 +5466,19 @@ label_unknown_221d:
 label_unknown_2221:
     db   $05, $07, $04, $07                            ;; 00:2221 ....
 
+; Offsets into wRoomTiles for door tiles
 label_unknown_2225:
     dw   $c355                                         ;; 00:2225 pP
     dw   $c354                                         ;; 00:2227 pP
     db   $05, $00, $04, $00                            ;; 00:2229 ....
 
+; Offsets into wRoomTiles for door tiles
 label_unknown_222d:
     dw   $c378                                         ;; 00:222d pP
     dw   $c36e                                         ;; 00:222f pP
     db   $00, $04, $00, $03                            ;; 00:2231 ....
 
+; Offsets into wRoomTiles for door tiles
 label_unknown_2235:
     dw   $c381                                         ;; 00:2235 pP
     dw   $c377                                         ;; 00:2237 pP
