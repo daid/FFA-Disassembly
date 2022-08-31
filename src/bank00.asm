@@ -303,7 +303,7 @@ call_00_0256:
 
 call_00_025c:
     ld   A, $06                                        ;; 00:025c $3e $06
-    ld   [wC0A0], A                                    ;; 00:025e $ea $a0 $c0
+    ld   [wMainGameState], A                           ;; 00:025e $ea $a0 $c0
     ret                                                ;; 00:0261 $c9
 
 call_00_0262:
@@ -320,7 +320,7 @@ call_00_0262:
 call_00_0276:
     call call_00_0262                                  ;; 00:0276 $cd $62 $02
     ld   A, $05                                        ;; 00:0279 $3e $05
-    ld   [wC0A0], A                                    ;; 00:027b $ea $a0 $c0
+    ld   [wMainGameState], A                           ;; 00:027b $ea $a0 $c0
     ret                                                ;; 00:027e $c9
     db   $f5, $3e, $0e, $c3, $d7, $1e                  ;; 00:027f ??????
 
@@ -4752,7 +4752,7 @@ call_00_1d1b:
     push HL                                            ;; 00:1d1b $e5
     call call_00_3e46                                  ;; 00:1d1c $cd $46 $3e
     pop  HL                                            ;; 00:1d1f $e1
-    ld   A, [wC0A0]                                    ;; 00:1d20 $fa $a0 $c0
+    ld   A, [wMainGameState]                           ;; 00:1d20 $fa $a0 $c0
     cp   A, $00                                        ;; 00:1d23 $fe $00
     ret  NZ                                            ;; 00:1d25 $c0
     push HL                                            ;; 00:1d26 $e5
@@ -7779,8 +7779,8 @@ call_00_3087:
 saveRegisterState2_trampoline:
     jp_to_bank 02, saveRegisterState2                  ;; 00:3099 $f5 $3e $11 $c3 $06 $1f
 
-call_00_309f:
-    jp_to_bank 02, call_02_4860                        ;; 00:309f $f5 $3e $12 $c3 $06 $1f
+gameStateMenu_trampoline:
+    jp_to_bank 02, gameStateMenu                       ;; 00:309f $f5 $3e $12 $c3 $06 $1f
 
 call_00_30a5:
     jp_to_bank 02, call_02_667a                        ;; 00:30a5 $f5 $3e $13 $c3 $06 $1f
@@ -7897,10 +7897,10 @@ call_00_318f:
     ld   HL, wD874                                     ;; 00:318f $21 $74 $d8
     bit  7, [HL]                                       ;; 00:3192 $cb $7e
     ret  Z                                             ;; 00:3194 $c8
-    ld   A, [wC0A0]                                    ;; 00:3195 $fa $a0 $c0
+    ld   A, [wMainGameState]                           ;; 00:3195 $fa $a0 $c0
     ld   [wD86E], A                                    ;; 00:3198 $ea $6e $d8
     ld   A, $10                                        ;; 00:319b $3e $10
-    ld   [wC0A0], A                                    ;; 00:319d $ea $a0 $c0
+    ld   [wMainGameState], A                           ;; 00:319d $ea $a0 $c0
     res  7, [HL]                                       ;; 00:31a0 $cb $be
     ld   HL, wC0A1                                     ;; 00:31a2 $21 $a1 $c0
     set  3, [HL]                                       ;; 00:31a5 $cb $de
@@ -8007,7 +8007,7 @@ call_00_3213:
     ld   A, B                                          ;; 00:3250 $78
     ld   [wScriptBank], A                              ;; 00:3251 $ea $6a $d8
 
-call_00_3254:
+gameStateScript:
     call call_00_28b0                                  ;; 00:3254 $cd $b0 $28
     ld   HL, wD874                                     ;; 00:3257 $21 $74 $d8
     res  0, [HL]                                       ;; 00:325a $cb $86
@@ -8015,7 +8015,7 @@ call_00_3254:
     set  0, [HL]                                       ;; 00:325e $cb $c6
 .jr_00_3260:
     call call_00_3c60                                  ;; 00:3260 $cd $60 $3c
-    ld   HL, call_00_3254.ret_by_push                  ;; 00:3263 $21 $74 $32
+    ld   HL, gameStateScript.ret_by_push               ;; 00:3263 $21 $74 $32
     push HL                                            ;; 00:3266 $e5
     call getScriptOpcodeFunctionTrampoline             ;; 00:3267 $cd $65 $31
     push HL                                            ;; 00:326a $e5
@@ -8062,7 +8062,7 @@ scriptOpCodeEND:
     xor  A, A                                          ;; 00:32a3 $af
     ld   [wScriptCommand], A                           ;; 00:32a4 $ea $5a $d8
     ld   A, [wD86E]                                    ;; 00:32a7 $fa $6e $d8
-    ld   [wC0A0], A                                    ;; 00:32aa $ea $a0 $c0
+    ld   [wMainGameState], A                           ;; 00:32aa $ea $a0 $c0
     ld   HL, wC0A1                                     ;; 00:32ad $21 $a1 $c0
     res  1, [HL]                                       ;; 00:32b0 $cb $8e
     res  3, [HL]                                       ;; 00:32b2 $cb $9e
@@ -8481,7 +8481,7 @@ call_00_351a:
     ld   DE, wD56E                                     ;; 00:351d $11 $6e $d5
     ld   HL, wDialogX                                  ;; 00:3520 $21 $a7 $d4
     call copyHLtoDE                                    ;; 00:3523 $cd $49 $2b
-    ld   A, [wC0A0]                                    ;; 00:3526 $fa $a0 $c0
+    ld   A, [wMainGameState]                           ;; 00:3526 $fa $a0 $c0
     ld   [wD862], A                                    ;; 00:3529 $ea $62 $d8
     pop  HL                                            ;; 00:352c $e1
     ld   A, [HL+]                                      ;; 00:352d $2a
@@ -8491,7 +8491,7 @@ call_00_351a:
     ld   A, $07                                        ;; 00:3536 $3e $07
     ld   [wDialogType], A                              ;; 00:3538 $ea $4a $d8
     ld   A, $0f                                        ;; 00:353b $3e $0f
-    ld   [wC0A0], A                                    ;; 00:353d $ea $a0 $c0
+    ld   [wMainGameState], A                           ;; 00:353d $ea $a0 $c0
     ld   B, $00                                        ;; 00:3540 $06 $00
     call call_00_3d05                                  ;; 00:3542 $cd $05 $3d
     pop  HL                                            ;; 00:3545 $e1
@@ -9247,7 +9247,7 @@ scriptOpCodeStartNameEntry:
     push HL                                            ;; 00:39c7 $e5
     xor  A, A                                          ;; 00:39c8 $af
     ld   [wD86E], A                                    ;; 00:39c9 $ea $6e $d8
-    ld   A, [wC0A0]                                    ;; 00:39cc $fa $a0 $c0
+    ld   A, [wMainGameState]                           ;; 00:39cc $fa $a0 $c0
     ld   [wD862], A                                    ;; 00:39cf $ea $62 $d8
     ld   A, [HL+]                                      ;; 00:39d2 $2a
     ld   [wD86C], A                                    ;; 00:39d3 $ea $6c $d8
@@ -9257,7 +9257,7 @@ scriptOpCodeStartNameEntry:
     ld   A, $1d                                        ;; 00:39de $3e $1d
     ld   [wDialogType], A                              ;; 00:39e0 $ea $4a $d8
     ld   A, $0f                                        ;; 00:39e3 $3e $0f
-    ld   [wC0A0], A                                    ;; 00:39e5 $ea $a0 $c0
+    ld   [wMainGameState], A                           ;; 00:39e5 $ea $a0 $c0
     ld   HL, wD874                                     ;; 00:39e8 $21 $74 $d8
     res  5, [HL]                                       ;; 00:39eb $cb $ae
     xor  A, A                                          ;; 00:39ed $af
@@ -9744,7 +9744,7 @@ call_00_3c87:
 
 scriptOpCodeOpenShop:
     push HL                                            ;; 00:3c97 $e5
-    ld   A, [wC0A0]                                    ;; 00:3c98 $fa $a0 $c0
+    ld   A, [wMainGameState]                           ;; 00:3c98 $fa $a0 $c0
     ld   [wD862], A                                    ;; 00:3c9b $ea $62 $d8
     ld   A, [HL+]                                      ;; 00:3c9e $2a
     ld   [wD86D], A                                    ;; 00:3c9f $ea $6d $d8
@@ -9766,7 +9766,7 @@ scriptOpCodeOpenShop:
     ld   A, $0f                                        ;; 00:3cc0 $3e $0f
     ld   [wDialogType], A                              ;; 00:3cc2 $ea $4a $d8
     ld   A, $0f                                        ;; 00:3cc5 $3e $0f
-    ld   [wC0A0], A                                    ;; 00:3cc7 $ea $a0 $c0
+    ld   [wMainGameState], A                           ;; 00:3cc7 $ea $a0 $c0
     ld   B, $05                                        ;; 00:3cca $06 $05
     call call_00_3d05                                  ;; 00:3ccc $cd $05 $3d
     pop  HL                                            ;; 00:3ccf $e1
@@ -9847,7 +9847,7 @@ addXP:
     ret                                                ;; 00:3d4a $c9
 
 checkForLevelUp:
-    ld   A, [wC0A0]                                    ;; 00:3d4b $fa $a0 $c0
+    ld   A, [wMainGameState]                           ;; 00:3d4b $fa $a0 $c0
     and  A, A                                          ;; 00:3d4e $a7
     ret  NZ                                            ;; 00:3d4f $c0
     ld   A, [wXPHigh]                                  ;; 00:3d50 $fa $bc $d7
@@ -10009,7 +10009,7 @@ call_00_3e46:
     ld   A, [wC0A1]                                    ;; 00:3e50 $fa $a1 $c0
     bit  1, A                                          ;; 00:3e53 $cb $4f
     ret  NZ                                            ;; 00:3e55 $c0
-    ld   A, [wC0A0]                                    ;; 00:3e56 $fa $a0 $c0
+    ld   A, [wMainGameState]                           ;; 00:3e56 $fa $a0 $c0
     cp   A, $0f                                        ;; 00:3e59 $fe $0f
     ret  Z                                             ;; 00:3e5b $c8
     call call_00_2ef7                                  ;; 00:3e5c $cd $f7 $2e

@@ -16,7 +16,7 @@ wOAMBuffer:
 ._10:
     ds 144                                             ;; c010
 
-wC0A0:
+wMainGameState:
     ds 1                                               ;; c0a0
 
 wC0A1:
@@ -1560,6 +1560,9 @@ hFFFD:
 
 hFFFE:
     ds 1                                               ;; fffe
+
+SECTION "vram", VRAM[$8000]
+    ds 8192                                            ;; 8000
 
 SECTION "sram", SRAM[$a000]
 

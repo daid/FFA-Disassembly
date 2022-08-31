@@ -25,7 +25,7 @@ SECTION "bank02", ROMX[$4000], BANK[$02]
     call_to_bank_target indexIntoTable                 ;; 02:401e ??
     call_to_bank_target saveRegisterState1             ;; 02:4020 ??
     call_to_bank_target saveRegisterState2             ;; 02:4022 pP
-    call_to_bank_target call_02_4860                   ;; 02:4024 pP
+    call_to_bank_target gameStateMenu                  ;; 02:4024 pP
     call_to_bank_target call_02_667a                   ;; 02:4026 pP
     call_to_bank_target call_02_6700                   ;; 02:4028 pP
     call_to_bank_target call_02_483e                   ;; 02:402a pP
@@ -1074,15 +1074,15 @@ call_02_483e:
     ld   [wDialogType], A                              ;; 02:4846 $ea $4a $d8
     call call_02_6d0b                                  ;; 02:4849 $cd $0b $6d
     call call_02_79e7                                  ;; 02:484c $cd $e7 $79
-    ld   A, [wC0A0]                                    ;; 02:484f $fa $a0 $c0
+    ld   A, [wMainGameState]                           ;; 02:484f $fa $a0 $c0
     ld   [wD862], A                                    ;; 02:4852 $ea $62 $d8
     ld   A, $00                                        ;; 02:4855 $3e $00
     ld   [wD853], A                                    ;; 02:4857 $ea $53 $d8
     ld   A, $0f                                        ;; 02:485a $3e $0f
-    ld   [wC0A0], A                                    ;; 02:485c $ea $a0 $c0
+    ld   [wMainGameState], A                           ;; 02:485c $ea $a0 $c0
     ret                                                ;; 02:485f $c9
 
-call_02_4860:
+gameStateMenu:
     ld   HL, data_02_47c8                              ;; 02:4860 $21 $c8 $47
     ld   A, [wD853]                                    ;; 02:4863 $fa $53 $d8
     and  A, $7f                                        ;; 02:4866 $e6 $7f
@@ -1950,7 +1950,7 @@ call_02_4e7b:
 
 jp_02_4e9b:
     ld   A, [wD862]                                    ;; 02:4e9b $fa $62 $d8
-    ld   [wC0A0], A                                    ;; 02:4e9e $ea $a0 $c0
+    ld   [wMainGameState], A                           ;; 02:4e9e $ea $a0 $c0
     ld   B, $00                                        ;; 02:4ea1 $06 $00
     call call_00_3c69                                  ;; 02:4ea3 $cd $69 $3c
     ret                                                ;; 02:4ea6 $c9
@@ -1976,7 +1976,7 @@ call_02_4ec3:
     ret  NZ                                            ;; 02:4ecb $c0
     call call_02_6b51                                  ;; 02:4ecc $cd $51 $6b
     ld   A, [wD862]                                    ;; 02:4ecf $fa $62 $d8
-    ld   [wC0A0], A                                    ;; 02:4ed2 $ea $a0 $c0
+    ld   [wMainGameState], A                           ;; 02:4ed2 $ea $a0 $c0
     ld   B, $00                                        ;; 02:4ed5 $06 $00
     call call_02_6c98                                  ;; 02:4ed7 $cd $98 $6c
     ld   HL, $1f                                       ;; 02:4eda $21 $1f $00
@@ -3140,7 +3140,7 @@ call_02_55c6:
 
 jp_02_5638:
     ld   A, [wD862]                                    ;; 02:5638 $fa $62 $d8
-    ld   [wC0A0], A                                    ;; 02:563b $ea $a0 $c0
+    ld   [wMainGameState], A                           ;; 02:563b $ea $a0 $c0
     ld   A, $05                                        ;; 02:563e $3e $05
     ld   [wD86B], A                                    ;; 02:5640 $ea $6b $d8
     ld   A, $ff                                        ;; 02:5643 $3e $ff
@@ -5323,7 +5323,7 @@ call_02_6c98:
     call call_02_7165                                  ;; 02:6cad $cd $65 $71
     call call_02_7a00                                  ;; 02:6cb0 $cd $00 $7a
     ld   A, [wD862]                                    ;; 02:6cb3 $fa $62 $d8
-    ld   [wC0A0], A                                    ;; 02:6cb6 $ea $a0 $c0
+    ld   [wMainGameState], A                           ;; 02:6cb6 $ea $a0 $c0
 .jr_02_6cb9:
     pop  AF                                            ;; 02:6cb9 $f1
     ret                                                ;; 02:6cba $c9
@@ -7078,10 +7078,10 @@ call_02_77ae:
 
 call_02_77af:
     push AF                                            ;; 02:77af $f5
-    ld   A, [wC0A0]                                    ;; 02:77b0 $fa $a0 $c0
+    ld   A, [wMainGameState]                           ;; 02:77b0 $fa $a0 $c0
     ld   [wD862], A                                    ;; 02:77b3 $ea $62 $d8
     ld   A, $0f                                        ;; 02:77b6 $3e $0f
-    ld   [wC0A0], A                                    ;; 02:77b8 $ea $a0 $c0
+    ld   [wMainGameState], A                           ;; 02:77b8 $ea $a0 $c0
     pop  AF                                            ;; 02:77bb $f1
     ld   [wD85F], A                                    ;; 02:77bc $ea $5f $d8
     bit  4, A                                          ;; 02:77bf $cb $67
@@ -7246,7 +7246,7 @@ call_02_78b8:
     ret                                                ;; 02:78c5 $c9
 
 call_02_78c6:
-    ld   A, [wC0A0]                                    ;; 02:78c6 $fa $a0 $c0
+    ld   A, [wMainGameState]                           ;; 02:78c6 $fa $a0 $c0
     cp   A, $00                                        ;; 02:78c9 $fe $00
     ret  NZ                                            ;; 02:78cb $c0
     ld   A, [wHPHigh]                                  ;; 02:78cc $fa $b3 $d7
@@ -7645,7 +7645,7 @@ data_02_7b36:
 
 call_02_7b3c:
     ld   A, $11                                        ;; 02:7b3c $3e $11
-    ld   [wC0A0], A                                    ;; 02:7b3e $ea $a0 $c0
+    ld   [wMainGameState], A                           ;; 02:7b3e $ea $a0 $c0
     ld   A, $3c                                        ;; 02:7b41 $3e $3c
     ld   [wTitleScreenDelay], A                        ;; 02:7b43 $ea $8c $d8
     ld   HL, sA000                                     ;; 02:7b46 $21 $00 $a0
@@ -7685,10 +7685,10 @@ call_02_7b85:
     dec  [HL]                                          ;; 02:7b88 $35
     ret  NZ                                            ;; 02:7b89 $c0
     ld   A, $0f                                        ;; 02:7b8a $3e $0f
-    ld   [wC0A0], A                                    ;; 02:7b8c $ea $a0 $c0
+    ld   [wMainGameState], A                           ;; 02:7b8c $ea $a0 $c0
     ld   A, $1f                                        ;; 02:7b8f $3e $1f
     ld   [wDialogType], A                              ;; 02:7b91 $ea $4a $d8
-    call call_02_4860                                  ;; 02:7b94 $cd $60 $48
+    call gameStateMenu                                 ;; 02:7b94 $cd $60 $48
     xor  A, A                                          ;; 02:7b97 $af
     ld   [wIntroScrollState], A                        ;; 02:7b98 $ea $86 $d8
     ret                                                ;; 02:7b9b $c9
@@ -7711,10 +7711,10 @@ jp_02_7b9f:
 .jr_02_7bb3:
     xor  A, A                                          ;; 02:7bb3 $af
     ld   [wD853], A                                    ;; 02:7bb4 $ea $53 $d8
-    ld   A, [wC0A0]                                    ;; 02:7bb7 $fa $a0 $c0
+    ld   A, [wMainGameState]                           ;; 02:7bb7 $fa $a0 $c0
     ld   [wD862], A                                    ;; 02:7bba $ea $62 $d8
     ld   A, $11                                        ;; 02:7bbd $3e $11
-    ld   [wC0A0], A                                    ;; 02:7bbf $ea $a0 $c0
+    ld   [wMainGameState], A                           ;; 02:7bbf $ea $a0 $c0
     ret                                                ;; 02:7bc2 $c9
 .jr_02_7bc3:
     ld   A, [wD874]                                    ;; 02:7bc3 $fa $74 $d8
@@ -7723,7 +7723,7 @@ jp_02_7b9f:
     ld   A, [wD884]                                    ;; 02:7bca $fa $84 $d8
     ld   [wVideoWY], A                                 ;; 02:7bcd $ea $a9 $c0
     ld   A, $0f                                        ;; 02:7bd0 $3e $0f
-    ld   [wC0A0], A                                    ;; 02:7bd2 $ea $a0 $c0
+    ld   [wMainGameState], A                           ;; 02:7bd2 $ea $a0 $c0
     ld   B, $35                                        ;; 02:7bd5 $06 $35
     call call_02_6c98                                  ;; 02:7bd7 $cd $98 $6c
     jp   call_02_71dd                                  ;; 02:7bda $c3 $dd $71
@@ -7868,7 +7868,7 @@ jp_02_7cd8:
     ld   A, [wD884]                                    ;; 02:7cdc $fa $84 $d8
     ld   [wVideoWY], A                                 ;; 02:7cdf $ea $a9 $c0
     ld   A, [wD862]                                    ;; 02:7ce2 $fa $62 $d8
-    ld   [wC0A0], A                                    ;; 02:7ce5 $ea $a0 $c0
+    ld   [wMainGameState], A                           ;; 02:7ce5 $ea $a0 $c0
     call call_00_0db6                                  ;; 02:7ce8 $cd $b6 $0d
     ld   HL, $03                                       ;; 02:7ceb $21 $03 $00
     ld   C, $c9                                        ;; 02:7cee $0e $c9

@@ -722,7 +722,7 @@ call_09_4399:
     cp   A, E                                          ;; 09:43c8 $bb
     jr   C, .jp_09_43aa                                ;; 09:43c9 $38 $df
     push BC                                            ;; 09:43cb $c5
-    ld   A, [wC0A0]                                    ;; 09:43cc $fa $a0 $c0
+    ld   A, [wMainGameState]                           ;; 09:43cc $fa $a0 $c0
     cp   A, $02                                        ;; 09:43cf $fe $02
     jr   NC, .jr_09_440a                               ;; 09:43d1 $30 $37
     push HL                                            ;; 09:43d3 $e5

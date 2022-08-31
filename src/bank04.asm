@@ -1124,7 +1124,7 @@ call_04_466e:
 call_04_4685:
     ld   L, A                                          ;; 04:4685 $6f
     ld   H, $00                                        ;; 04:4686 $26 $00
-    ld   A, [wC0A0]                                    ;; 04:4688 $fa $a0 $c0
+    ld   A, [wMainGameState]                           ;; 04:4688 $fa $a0 $c0
     cp   A, $05                                        ;; 04:468b $fe $05
     ret  NZ                                            ;; 04:468d $c0
     ld   D, H                                          ;; 04:468e $54

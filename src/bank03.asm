@@ -1158,7 +1158,7 @@ call_03_4641:
     ret                                                ;; 03:4658 $c9
 .jr_03_4659:
     push BC                                            ;; 03:4659 $c5
-    ld   A, [wC0A0]                                    ;; 03:465a $fa $a0 $c0
+    ld   A, [wMainGameState]                           ;; 03:465a $fa $a0 $c0
     cp   A, $02                                        ;; 03:465d $fe $02
     jr   NC, .jr_03_46d4                               ;; 03:465f $30 $73
     call call_00_039a                                  ;; 03:4661 $cd $9a $03
@@ -1704,7 +1704,7 @@ call_03_496e:
 call_03_4985:
     ld   L, A                                          ;; 03:4985 $6f
     ld   H, $00                                        ;; 03:4986 $26 $00
-    ld   A, [wC0A0]                                    ;; 03:4988 $fa $a0 $c0
+    ld   A, [wMainGameState]                           ;; 03:4988 $fa $a0 $c0
     cp   A, $05                                        ;; 03:498b $fe $05
     ret  NZ                                            ;; 03:498d $c0
     ld   D, H                                          ;; 03:498e $54
