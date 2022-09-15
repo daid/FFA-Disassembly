@@ -28,11 +28,11 @@ data_01_4000:
     call_to_bank_target loadMapInstantSequence         ;; 01:4020 pP
     call_to_bank_target call_01_4164                   ;; 01:4022 pP
     call_to_bank_target call_01_4180                   ;; 01:4024 pP
-    call_to_bank_target call_01_40ca                   ;; 01:4026 pP
+    call_to_bank_target prepareIntroScrollEffect       ;; 01:4026 pP
     call_to_bank_target call_01_40d8                   ;; 01:4028 pP
     call_to_bank_target call_01_40f3                   ;; 01:402a pP
-    call_to_bank_target call_01_4059                   ;; 01:402c ??
-    call_to_bank_target call_01_40a0                   ;; 01:402e ??
+    call_to_bank_target prepareLetterboxEffect         ;; 01:402c ??
+    call_to_bank_target prepareDefaultEffect           ;; 01:402e ??
     call_to_bank_target call_01_44d8                   ;; 01:4030 pP
     call_to_bank_target call_01_471d                   ;; 01:4032 pP
     call_to_bank_target call_01_7647                   ;; 01:4034 pP
@@ -50,18 +50,18 @@ data_01_4000:
     call_to_bank_target call_01_5db6                   ;; 01:404c ??
     call_to_bank_target call_01_51e1                   ;; 01:404e pP
 
-data_01_4050:
+lcdcLetterboxEffect:
     db   $0e, $fc, $03, $e4, $7e, $fc, $01, $e4        ;; 01:4050 ????????
     db   $ff                                           ;; 01:4058 ?
 
-call_01_4059:
+prepareLetterboxEffect:
     ld   A, $ff                                        ;; 01:4059 $3e $ff
     ld   [wVideoBGP], A                                ;; 01:405b $ea $aa $c0
     ld   A, [wVideoLCDC]                               ;; 01:405e $fa $a5 $c0
     and  A, $fc                                        ;; 01:4061 $e6 $fc
     xor  A, $01                                        ;; 01:4063 $ee $01
     ld   [wVideoLCDC], A                               ;; 01:4065 $ea $a5 $c0
-    ld   HL, data_01_4050                              ;; 01:4068 $21 $50 $40
+    ld   HL, lcdcLetterboxEffect                       ;; 01:4068 $21 $50 $40
     ld   B, $09                                        ;; 01:406b $06 $09
     call loadLCDCEffectBuffer                          ;; 01:406d $cd $f3 $02
     ld   HL, $4260                                     ;; 01:4070 $21 $60 $42
@@ -95,7 +95,7 @@ call_01_4059:
     jr   NZ, .jr_01_4093                               ;; 01:409d $20 $f4
     ret                                                ;; 01:409f $c9
 
-call_01_40a0:
+prepareDefaultEffect:
     ld   A, $e4                                        ;; 01:40a0 $3e $e4
     ld   [wVideoBGP], A                                ;; 01:40a2 $ea $aa $c0
     ld   A, [wVideoLCDC]                               ;; 01:40a5 $fa $a5 $c0
@@ -104,14 +104,14 @@ call_01_40a0:
     call setDefaultLCDCEffect                          ;; 01:40ad $cd $13 $03
     ret                                                ;; 01:40b0 $c9
 
-data_01_40b1:
+lcdcIntroScrollEffect:
     db   $00, $fc, $03, $40, $10, $fc, $03, $90        ;; 01:40b1 ........
     db   $20, $fc, $03, $e4, $60, $fc, $03, $90        ;; 01:40b9 ........
     db   $70, $fc, $03, $40, $80, $fc, $03, $00        ;; 01:40c1 ........
     db   $ff                                           ;; 01:40c9 .
 
-call_01_40ca:
-    ld   HL, data_01_40b1                              ;; 01:40ca $21 $b1 $40
+prepareIntroScrollEffect:
+    ld   HL, lcdcIntroScrollEffect                     ;; 01:40ca $21 $b1 $40
     ld   B, $19                                        ;; 01:40cd $06 $19
     call loadLCDCEffectBuffer                          ;; 01:40cf $cd $f3 $02
     ld   A, $00                                        ;; 01:40d2 $3e $00
@@ -151,11 +151,13 @@ lcdcShutterEffectOpen:
     db   $3c, $fc, $03, $e4, $40, $fc, $00, $e4        ;; 01:4109 ........
     db   $7e, $fc, $01, $e4, $ff                       ;; 01:4111 .....
 
-data_01_4116:
+lcdcShutterEffectDarkClose:
     db   $00, $fc, $03, $3f, $7c, $fc, $00, $3f        ;; 01:4116 ????????
-    db   $7e, $fc, $01, $3f, $ff, $3c, $fc, $03        ;; 01:411e ????????
-    db   $3f, $40, $fc, $00, $3f, $7e, $fc, $01        ;; 01:4126 ????????
-    db   $3f, $ff                                      ;; 01:412e ??
+    db   $7e, $fc, $01, $3f, $ff                       ;; 01:411e ?????
+
+lcdcShutterEffectDarkOpen:
+    db   $3c, $fc, $03, $3f, $40, $fc, $00, $3f        ;; 01:4123 ????????
+    db   $7e, $fc, $01, $3f, $ff                       ;; 01:412b ?????
 
 loadMapWithShutterEffectSequence:
     ld   D, H                                          ;; 01:4130 $54
@@ -172,7 +174,7 @@ loadMapWithShutterEffectSequence:
     dw   advanceScriptOpWhenVRAMCopiesDone             ;; 01:4144 pP
     dw   data_01_43a3                                  ;; 01:4146 pP
     dw   shutterEffectOpen                             ;; 01:4148 pP
-    dw   data_01_448c                                  ;; 01:414a pP
+    dw   LoadMapEnd                                    ;; 01:414a pP
 
 loadMapInstantSequence:
     ld   D, H                                          ;; 01:414c $54
@@ -187,7 +189,7 @@ loadMapInstantSequence:
     dw   data_01_4387                                  ;; 01:415c pP
     dw   advanceScriptOpWhenVRAMCopiesDone             ;; 01:415e pP
     dw   data_01_43ee                                  ;; 01:4160 pP
-    dw   data_01_448c                                  ;; 01:4162 pP
+    dw   LoadMapEnd                                    ;; 01:4162 pP
 
 call_01_4164:
     ld   D, H                                          ;; 01:4164 $54
@@ -204,7 +206,7 @@ call_01_4164:
     dw   advanceScriptOpWhenVRAMCopiesDone             ;; 01:4178 pP
     dw   data_01_4422                                  ;; 01:417a pP
     dw   shutterEffectOpen                             ;; 01:417c pP
-    dw   data_01_448c                                  ;; 01:417e pP
+    dw   LoadMapEnd                                    ;; 01:417e pP
 
 call_01_4180:
     ld   D, H                                          ;; 01:4180 $54
@@ -221,7 +223,7 @@ call_01_4180:
     dw   advanceScriptOpWhenVRAMCopiesDone             ;; 01:4194 pP
     dw   data_01_4456                                  ;; 01:4196 pP
     dw   shutterEffectOpen                             ;; 01:4198 pP
-    dw   data_01_448c                                  ;; 01:419a pP
+    dw   LoadMapEnd                                    ;; 01:419a pP
 
 prepareShutterEffect:
     push DE                                            ;; 01:419c $d5
@@ -233,7 +235,7 @@ prepareShutterEffect:
     ld   A, [wC4D4]                                    ;; 01:41a9 $fa $d4 $c4
     bit  1, A                                          ;; 01:41ac $cb $4f
     jr   Z, .jr_01_41b3                                ;; 01:41ae $28 $03
-    ld   HL, data_01_4116                              ;; 01:41b0 $21 $16 $41
+    ld   HL, lcdcShutterEffectDarkClose                ;; 01:41b0 $21 $16 $41
 .jr_01_41b3:
     ld   B, $0d                                        ;; 01:41b3 $06 $0d
     call loadLCDCEffectBuffer                          ;; 01:41b5 $cd $f3 $02
@@ -551,7 +553,7 @@ data_01_43a3:
     ld   A, [wC4D4]                                    ;; 01:43cf $fa $d4 $c4
     bit  1, A                                          ;; 01:43d2 $cb $4f
     jr   Z, .jr_01_43d9                                ;; 01:43d4 $28 $03
-    ld   HL, data_01_4116                              ;; 01:43d6 $21 $16 $41
+    ld   HL, lcdcShutterEffectDarkClose                ;; 01:43d6 $21 $16 $41
 .jr_01_43d9:
     ld   B, $0d                                        ;; 01:43d9 $06 $0d
     call loadLCDCEffectBuffer                          ;; 01:43db $cd $f3 $02
@@ -614,7 +616,7 @@ data_01_4422:
     ld   A, [wC4D4]                                    ;; 01:4430 $fa $d4 $c4
     bit  1, A                                          ;; 01:4433 $cb $4f
     jr   Z, .jr_01_443a                                ;; 01:4435 $28 $03
-    ld   HL, data_01_4116                              ;; 01:4437 $21 $16 $41
+    ld   HL, lcdcShutterEffectDarkClose                ;; 01:4437 $21 $16 $41
 .jr_01_443a:
     ld   B, $0d                                        ;; 01:443a $06 $0d
     call loadLCDCEffectBuffer                          ;; 01:443c $cd $f3 $02
@@ -635,7 +637,7 @@ data_01_4456:
     ld   A, [wC4D4]                                    ;; 01:445a $fa $d4 $c4
     bit  1, A                                          ;; 01:445d $cb $4f
     jr   Z, .jr_01_4464                                ;; 01:445f $28 $03
-    ld   HL, data_01_4116                              ;; 01:4461 $21 $16 $41
+    ld   HL, lcdcShutterEffectDarkClose                ;; 01:4461 $21 $16 $41
 .jr_01_4464:
     ld   B, $0d                                        ;; 01:4464 $06 $0d
     call loadLCDCEffectBuffer                          ;; 01:4466 $cd $f3 $02
@@ -661,7 +663,7 @@ advanceScriptOpWhenVRAMCopiesDone:
     pop  HL                                            ;; 01:448a $e1
     ret                                                ;; 01:448b $c9
 
-data_01_448c:
+LoadMapEnd:
     push DE                                            ;; 01:448c $d5
     call call_00_02cf                                  ;; 01:448d $cd $cf $02
     cp   A, $00                                        ;; 01:4490 $fe $00
@@ -1328,13 +1330,13 @@ gameStateNormal:
     jr   Z, .jr_01_49ff                                ;; 01:49fb $28 $02
     ld   B, $10                                        ;; 01:49fd $06 $10
 .jr_01_49ff:
-    ld   A, [wC4D2]                                    ;; 01:49ff $fa $d2 $c4
+    ld   A, [wPlayerDamagedTimer]                      ;; 01:49ff $fa $d2 $c4
     cp   A, $00                                        ;; 01:4a02 $fe $00
     call NZ, call_01_4b38                              ;; 01:4a04 $c4 $38 $4b
     jr   .jr_01_4a16                                   ;; 01:4a07 $18 $0d
 .jr_01_4a09:
     push AF                                            ;; 01:4a09 $f5
-    ld   A, [wC4D2]                                    ;; 01:4a0a $fa $d2 $c4
+    ld   A, [wPlayerDamagedTimer]                      ;; 01:4a0a $fa $d2 $c4
     cp   A, $00                                        ;; 01:4a0d $fe $00
     call NZ, call_01_4b38                              ;; 01:4a0f $c4 $38 $4b
     pop  AF                                            ;; 01:4a12 $f1
@@ -1398,7 +1400,7 @@ jr_01_4a6c:
     jp   NZ, jp_01_4b18                                ;; 01:4a74 $c2 $18 $4b
     bit  0, A                                          ;; 01:4a77 $cb $47
     jp   Z, jp_01_4b18                                 ;; 01:4a79 $ca $18 $4b
-    ld   A, [wC4D2]                                    ;; 01:4a7c $fa $d2 $c4
+    ld   A, [wPlayerDamagedTimer]                      ;; 01:4a7c $fa $d2 $c4
     cp   A, $34                                        ;; 01:4a7f $fe $34
     jp   NC, jp_01_4b1d                                ;; 01:4a81 $d2 $1d $4b
     ld   A, [wC0A1]                                    ;; 01:4a84 $fa $a1 $c0
@@ -1420,7 +1422,7 @@ jr_01_4a9a:
     jr   NZ, jp_01_4b18                                ;; 01:4aa2 $20 $74
     bit  1, A                                          ;; 01:4aa4 $cb $4f
     jr   Z, jp_01_4b18                                 ;; 01:4aa6 $28 $70
-    ld   A, [wC4D2]                                    ;; 01:4aa8 $fa $d2 $c4
+    ld   A, [wPlayerDamagedTimer]                      ;; 01:4aa8 $fa $d2 $c4
     cp   A, $34                                        ;; 01:4aab $fe $34
     jr   NC, jp_01_4b1d                                ;; 01:4aad $30 $6e
     ld   A, [wC0A1]                                    ;; 01:4aaf $fa $a1 $c0
@@ -1442,7 +1444,7 @@ jp_01_4ac4:
     jr   NZ, jp_01_4b18                                ;; 01:4acc $20 $4a
     bit  2, A                                          ;; 01:4ace $cb $57
     jr   Z, jp_01_4b18                                 ;; 01:4ad0 $28 $46
-    ld   A, [wC4D2]                                    ;; 01:4ad2 $fa $d2 $c4
+    ld   A, [wPlayerDamagedTimer]                      ;; 01:4ad2 $fa $d2 $c4
     cp   A, $34                                        ;; 01:4ad5 $fe $34
     jr   NC, jp_01_4b1d                                ;; 01:4ad7 $30 $44
     ld   A, [wC0A1]                                    ;; 01:4ad9 $fa $a1 $c0
@@ -1464,7 +1466,7 @@ jp_01_4aee:
     jr   NZ, jp_01_4b18                                ;; 01:4af6 $20 $20
     bit  3, A                                          ;; 01:4af8 $cb $5f
     jr   Z, jp_01_4b18                                 ;; 01:4afa $28 $1c
-    ld   A, [wC4D2]                                    ;; 01:4afc $fa $d2 $c4
+    ld   A, [wPlayerDamagedTimer]                      ;; 01:4afc $fa $d2 $c4
     cp   A, $34                                        ;; 01:4aff $fe $34
     jr   NC, jp_01_4b1d                                ;; 01:4b01 $30 $1a
     ld   A, [wC0A1]                                    ;; 01:4b03 $fa $a1 $c0
@@ -1519,7 +1521,7 @@ call_01_4b38:
     jr   Z, .jr_01_4b55                                ;; 01:4b51 $28 $02
     ld   B, $30                                        ;; 01:4b53 $06 $30
 .jr_01_4b55:
-    ld   HL, wC4D2                                     ;; 01:4b55 $21 $d2 $c4
+    ld   HL, wPlayerDamagedTimer                       ;; 01:4b55 $21 $d2 $c4
     dec  [HL]                                          ;; 01:4b58 $35
     ret  NZ                                            ;; 01:4b59 $c0
     push DE                                            ;; 01:4b5a $d5
@@ -1550,7 +1552,7 @@ call_01_4b38:
     call snapObjectToNearestTile8                      ;; 01:4b8a $cd $ba $29
     pop  BC                                            ;; 01:4b8d $c1
     pop  DE                                            ;; 01:4b8e $d1
-    ld   HL, wC4D2                                     ;; 01:4b8f $21 $d2 $c4
+    ld   HL, wPlayerDamagedTimer                       ;; 01:4b8f $21 $d2 $c4
     dec  [HL]                                          ;; 01:4b92 $35
     ret                                                ;; 01:4b93 $c9
 
@@ -1918,7 +1920,7 @@ gameStateSpecialAttack2:
     call call_00_300a                                  ;; 01:4ddf $cd $0a $30
     pop  DE                                            ;; 01:4de2 $d1
     jp   Z, .jp_01_4e8d                                ;; 01:4de3 $ca $8d $4e
-    ld   A, [wC4D2]                                    ;; 01:4de6 $fa $d2 $c4
+    ld   A, [wPlayerDamagedTimer]                      ;; 01:4de6 $fa $d2 $c4
     cp   A, $00                                        ;; 01:4de9 $fe $00
     call NZ, call_01_4b38                              ;; 01:4deb $c4 $38 $4b
     ld   A, D                                          ;; 01:4dee $7a
@@ -2176,7 +2178,7 @@ call_01_4f7b:
     ld   C, $04                                        ;; 01:4fa7 $0e $04
     call setObjectSpeed                                ;; 01:4fa9 $cd $5d $0c
     ld   A, $3c                                        ;; 01:4fac $3e $3c
-    ld   [wC4D2], A                                    ;; 01:4fae $ea $d2 $c4
+    ld   [wPlayerDamagedTimer], A                      ;; 01:4fae $ea $d2 $c4
     call getPlayerDirection                            ;; 01:4fb1 $cd $ab $02
     pop  BC                                            ;; 01:4fb4 $c1
     push AF                                            ;; 01:4fb5 $f5
@@ -2356,10 +2358,10 @@ call_01_50ac:
     or   A, L                                          ;; 01:50d5 $b5
     ret  Z                                             ;; 01:50d6 $c8
     push BC                                            ;; 01:50d7 $c5
-    call call_00_3e25                                  ;; 01:50d8 $cd $25 $3e
+    call subHP                                         ;; 01:50d8 $cd $25 $3e
     ld   A, $0d                                        ;; 01:50db $3e $0d
     call playSFX                                       ;; 01:50dd $cd $7d $29
-    call call_00_3135                                  ;; 01:50e0 $cd $35 $31
+    call setAToZero_trampoline                         ;; 01:50e0 $cd $35 $31
     pop  BC                                            ;; 01:50e3 $c1
     cpl                                                ;; 01:50e4 $2f
     and  A, C                                          ;; 01:50e5 $a1
@@ -2420,7 +2422,7 @@ call_01_5136:
     ld   A, $e1                                        ;; 01:5149 $3e $e1
     call setObjectCollisionFlags                       ;; 01:514b $cd $86 $0c
     xor  A, A                                          ;; 01:514e $af
-    ld   [wC4D2], A                                    ;; 01:514f $ea $d2 $c4
+    ld   [wPlayerDamagedTimer], A                      ;; 01:514f $ea $d2 $c4
     call call_00_28d5                                  ;; 01:5152 $cd $d5 $28
     ret                                                ;; 01:5155 $c9
 
@@ -2436,7 +2438,7 @@ call_01_5156:
     ld   A, $f1                                        ;; 01:5169 $3e $f1
     call setObjectCollisionFlags                       ;; 01:516b $cd $86 $0c
     xor  A, A                                          ;; 01:516e $af
-    ld   [wC4D2], A                                    ;; 01:516f $ea $d2 $c4
+    ld   [wPlayerDamagedTimer], A                      ;; 01:516f $ea $d2 $c4
     call call_00_28d5                                  ;; 01:5172 $cd $d5 $28
     ret                                                ;; 01:5175 $c9
 
@@ -2452,7 +2454,7 @@ call_01_5176:
     ld   A, $f5                                        ;; 01:5189 $3e $f5
     call setObjectCollisionFlags                       ;; 01:518b $cd $86 $0c
     xor  A, A                                          ;; 01:518e $af
-    ld   [wC4D2], A                                    ;; 01:518f $ea $d2 $c4
+    ld   [wPlayerDamagedTimer], A                      ;; 01:518f $ea $d2 $c4
     call call_00_28d5                                  ;; 01:5192 $cd $d5 $28
     ret                                                ;; 01:5195 $c9
 
@@ -2486,11 +2488,11 @@ call_01_51bb:
     or   A, $00                                        ;; 01:51c0 $f6 $00
     ld   C, $c9                                        ;; 01:51c2 $0e $c9
     call runScriptByIndex                              ;; 01:51c4 $cd $ad $31
-    ld   A, [wC4D2]                                    ;; 01:51c7 $fa $d2 $c4
+    ld   A, [wPlayerDamagedTimer]                      ;; 01:51c7 $fa $d2 $c4
     cp   A, $34                                        ;; 01:51ca $fe $34
     jr   C, .jr_01_51d3                                ;; 01:51cc $38 $05
     ld   A, $34                                        ;; 01:51ce $3e $34
-    ld   [wC4D2], A                                    ;; 01:51d0 $ea $d2 $c4
+    ld   [wPlayerDamagedTimer], A                      ;; 01:51d0 $ea $d2 $c4
 .jr_01_51d3:
     pop  HL                                            ;; 01:51d3 $e1
     ret                                                ;; 01:51d4 $c9
@@ -4071,7 +4073,7 @@ call_01_5a77:
 call_01_5a83:
     res  7, E                                          ;; 01:5a83 $cb $bb
     push DE                                            ;; 01:5a85 $d5
-    call call_00_3efb                                  ;; 01:5a86 $cd $fb $3e
+    call isWillBarFull                                 ;; 01:5a86 $cd $fb $3e
     jr   NZ, jr_01_5a95                                ;; 01:5a89 $20 $0a
     pop  DE                                            ;; 01:5a8b $d1
 

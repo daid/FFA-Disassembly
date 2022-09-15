@@ -435,7 +435,7 @@ wC4D0:
 wC4D1:
     ds 1                                               ;; c4d1
 
-wC4D2:
+wPlayerDamagedTimer:
     ds 2                                               ;; c4d2
 
 wC4D4:
@@ -612,31 +612,31 @@ wBackgroundGraphicsTileState:
 wBackgroundGraphicsTileUsed:
     ds 128                                             ;; d270
 
-wD2F0:
+wAnimatedTileWaterfall1:
     ds 16                                              ;; d2f0
 
-wD300:
+wAnimatedTileWaterfall2:
     ds 16                                              ;; d300
 
-wD310:
+wAnimatedTileWaterfallReversed1:
     ds 16                                              ;; d310
 
-wD320:
+wAnimatedTileWaterfallReversed2:
     ds 16                                              ;; d320
 
-wD330:
+AnimatedTileOcean1:
     ds 16                                              ;; d330
 
-wD340:
+AnimatedTileOcean2:
     ds 16                                              ;; d340
 
-wD350:
+AnimatedTileOcean3:
     ds 16                                              ;; d350
 
-wD360:
+AnimatedTileOcean4:
     ds 16                                              ;; d360
 
-wD370:
+AnimatedTileRiver:
     ds 16                                              ;; d370
 
 wD380:
@@ -838,7 +838,7 @@ wD617:
 wOpenChestScript2:
     ds 16                                              ;; d623
 
-wD633:
+wOpenChestScript3:
     ds 4                                               ;; d633
 
 wD637:
@@ -857,24 +857,24 @@ wItemInventoryAmount:
 wD6AB:
     ds 8                                               ;; d6ab
 
-wD6B3:
+wEquipmentInventoryPowers:
     ds 12                                              ;; d6b3
 
 wD6BF:
     ds 1                                               ;; d6bf
 
-wD6C0:
+wEquippedHelmetDefense:
     ds 1                                               ;; d6c0
 
 ;Alternative totalAP location?
-wD6C1:
+wDupTotalAP:
     ds 1                                               ;; d6c1
 
-wD6C2:
+wEquippedArmorDefense:
     ds 1                                               ;; d6c2
 
 ;Alternative totalDP location?
-wD6C3:
+wDupTotalDP:
     ds 2                                               ;; d6c3
 
 ; List if item IDs in your current inventory. ItemID has $80 added to it if it has a usage counter.
@@ -1194,7 +1194,7 @@ wD862:
 wDialogBorderTile:
     ds 1                                               ;; d863
 
-wD864:
+wTextSpeedTimer:
     ds 1                                               ;; d864
 
 ; Amount of pushes done on the script stack
@@ -1270,7 +1270,7 @@ wD87C:
 wD87D:
     ds 1                                               ;; d87d
 
-wD87E:
+wItemBuffActive:
     ds 1                                               ;; d87e
 
 wD87F:
@@ -1282,7 +1282,7 @@ wD880:
 wD881:
     ds 1                                               ;; d881
 
-wD882:
+wMoogleSavedDp:
     ds 1                                               ;; d882
 
 wD883:

@@ -838,7 +838,7 @@ call_04_4446:
     rr   L                                             ;; 04:44b9 $cb $1d
     srl  H                                             ;; 04:44bb $cb $3c
     rr   L                                             ;; 04:44bd $cb $1d
-    call call_00_3df6                                  ;; 04:44bf $cd $f6 $3d
+    call addHP                                         ;; 04:44bf $cd $f6 $3d
 .jr_04_44c2:
     pop  HL                                            ;; 04:44c2 $e1
     pop  DE                                            ;; 04:44c3 $d1

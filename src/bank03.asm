@@ -393,7 +393,7 @@ call_03_41fc:
     cp   A, $08                                        ;; 03:4226 $fe $08
     jr   C, .jr_03_4242                                ;; 03:4228 $38 $18
     jr   Z, .jr_03_4242                                ;; 03:422a $28 $16
-    call call_00_3ded                                  ;; 03:422c $cd $ed $3d
+    call getHP                                         ;; 03:422c $cd $ed $3d
     pop  DE                                            ;; 03:422f $d1
     call sub_HL_DE                                     ;; 03:4230 $cd $ab $2b
     jr   C, .jr_03_4239                                ;; 03:4233 $38 $04
@@ -1285,7 +1285,7 @@ call_03_4641:
     rr   L                                             ;; 03:472f $cb $1d
     srl  H                                             ;; 03:4731 $cb $3c
     rr   L                                             ;; 03:4733 $cb $1d
-    call call_00_3df6                                  ;; 03:4735 $cd $f6 $3d
+    call addHP                                         ;; 03:4735 $cd $f6 $3d
 .jr_03_4738:
     pop  HL                                            ;; 03:4738 $e1
     pop  DE                                            ;; 03:4739 $d1
@@ -1477,7 +1477,7 @@ call_03_480a:
     jr   Z, .jr_03_4878                                ;; 03:4868 $28 $0e
     cp   A, $01                                        ;; 03:486a $fe $01
     jr   Z, .jr_03_4873                                ;; 03:486c $28 $05
-    ld   HL, wD633                                     ;; 03:486e $21 $33 $d6
+    ld   HL, wOpenChestScript3                         ;; 03:486e $21 $33 $d6
     jr   .jr_03_487b                                   ;; 03:4871 $18 $08
 .jr_03_4873:
     ld   HL, wOpenChestScript2                         ;; 03:4873 $21 $23 $d6

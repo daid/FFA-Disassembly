@@ -27,7 +27,7 @@ SECTION "bank02", ROMX[$4000], BANK[$02]
     call_to_bank_target saveRegisterState2             ;; 02:4022 pP
     call_to_bank_target gameStateMenu                  ;; 02:4024 pP
     call_to_bank_target call_02_667a                   ;; 02:4026 pP
-    call_to_bank_target call_02_6700                   ;; 02:4028 pP
+    call_to_bank_target drawWindow                     ;; 02:4028 pP
     call_to_bank_target call_02_483e                   ;; 02:402a pP
     call_to_bank_target call_02_5b68                   ;; 02:402c ??
     call_to_bank_target setStartingStats               ;; 02:402e pP
@@ -50,7 +50,7 @@ SECTION "bank02", ROMX[$4000], BANK[$02]
     call_to_bank_target call_02_6d26                   ;; 02:4050 ??
     call_to_bank_target call_02_6fab                   ;; 02:4052 pP
     call_to_bank_target call_02_77af                   ;; 02:4054 pP
-    call_to_bank_target call_02_71db                   ;; 02:4056 pP
+    call_to_bank_target setAToZero_2                   ;; 02:4056 pP
     call_to_bank_target call_02_78c6                   ;; 02:4058 pP
     call_to_bank_target call_02_717b                   ;; 02:405a ??
     call_to_bank_target drawWillBarCharge              ;; 02:405c pP
@@ -165,10 +165,10 @@ call_02_4105:
     cp   A, $00                                        ;; 02:4108 $fe $00
     ret  Z                                             ;; 02:410a $c8
     ld   A, [wD078]                                    ;; 02:410b $fa $78 $d0
-    ld   HL, wD2F0                                     ;; 02:410e $21 $f0 $d2
+    ld   HL, wAnimatedTileWaterfall1                   ;; 02:410e $21 $f0 $d2
     call call_02_411e                                  ;; 02:4111 $cd $1e $41
     ld   A, [wD079]                                    ;; 02:4114 $fa $79 $d0
-    ld   HL, wD300                                     ;; 02:4117 $21 $00 $d3
+    ld   HL, wAnimatedTileWaterfall2                   ;; 02:4117 $21 $00 $d3
     call call_02_411e                                  ;; 02:411a $cd $1e $41
     ret                                                ;; 02:411d $c9
 
@@ -204,10 +204,10 @@ call_02_4147:
     cp   A, $00                                        ;; 02:414a $fe $00
     ret  Z                                             ;; 02:414c $c8
     ld   A, [wD07A]                                    ;; 02:414d $fa $7a $d0
-    ld   HL, wD310                                     ;; 02:4150 $21 $10 $d3
+    ld   HL, wAnimatedTileWaterfallReversed1           ;; 02:4150 $21 $10 $d3
     call call_02_4160                                  ;; 02:4153 $cd $60 $41
     ld   A, [wD07B]                                    ;; 02:4156 $fa $7b $d0
-    ld   HL, wD320                                     ;; 02:4159 $21 $20 $d3
+    ld   HL, wAnimatedTileWaterfallReversed2           ;; 02:4159 $21 $20 $d3
     call call_02_4160                                  ;; 02:415c $cd $60 $41
     ret                                                ;; 02:415f $c9
 
@@ -245,26 +245,26 @@ call_02_4189:
     ld   A, [wD17C]                                    ;; 02:4190 $fa $7c $d1
     cp   A, $00                                        ;; 02:4193 $fe $00
     ret  Z                                             ;; 02:4195 $c8
-    ld   HL, wD330                                     ;; 02:4196 $21 $30 $d3
+    ld   HL, AnimatedTileOcean1                        ;; 02:4196 $21 $30 $d3
     call call_02_41e9                                  ;; 02:4199 $cd $e9 $41
     ld   A, [wD07C]                                    ;; 02:419c $fa $7c $d0
-    ld   BC, wD330                                     ;; 02:419f $01 $30 $d3
+    ld   BC, AnimatedTileOcean1                        ;; 02:419f $01 $30 $d3
     call requestBackgroundTileCopy                     ;; 02:41a2 $cd $fe $41
     ld   A, [wD07D]                                    ;; 02:41a5 $fa $7d $d0
-    ld   BC, wD340                                     ;; 02:41a8 $01 $40 $d3
+    ld   BC, AnimatedTileOcean2                        ;; 02:41a8 $01 $40 $d3
     call requestBackgroundTileCopy                     ;; 02:41ab $cd $fe $41
     ret                                                ;; 02:41ae $c9
 .jr_02_41af:
     ld   A, [wD17E]                                    ;; 02:41af $fa $7e $d1
     cp   A, $00                                        ;; 02:41b2 $fe $00
     ret  Z                                             ;; 02:41b4 $c8
-    ld   HL, wD350                                     ;; 02:41b5 $21 $50 $d3
+    ld   HL, AnimatedTileOcean3                        ;; 02:41b5 $21 $50 $d3
     call call_02_41e9                                  ;; 02:41b8 $cd $e9 $41
     ld   A, [wD07E]                                    ;; 02:41bb $fa $7e $d0
-    ld   BC, wD350                                     ;; 02:41be $01 $50 $d3
+    ld   BC, AnimatedTileOcean3                        ;; 02:41be $01 $50 $d3
     call requestBackgroundTileCopy                     ;; 02:41c1 $cd $fe $41
     ld   A, [wD07F]                                    ;; 02:41c4 $fa $7f $d0
-    ld   BC, wD360                                     ;; 02:41c7 $01 $60 $d3
+    ld   BC, AnimatedTileOcean4                        ;; 02:41c7 $01 $60 $d3
     call requestBackgroundTileCopy                     ;; 02:41ca $cd $fe $41
     ret                                                ;; 02:41cd $c9
 
@@ -273,7 +273,7 @@ horizontalScrollTile:
     ld   A, [wBackgroundGraphicsTileState]             ;; 02:41ce $fa $80 $d1
     cp   A, $00                                        ;; 02:41d1 $fe $00
     ret  Z                                             ;; 02:41d3 $c8
-    ld   HL, wD370                                     ;; 02:41d4 $21 $70 $d3
+    ld   HL, AnimatedTileRiver                         ;; 02:41d4 $21 $70 $d3
     ld   B, $10                                        ;; 02:41d7 $06 $10
 .jr_02_41d9:
     rrc  [HL]                                          ;; 02:41d9 $cb $0e
@@ -281,7 +281,7 @@ horizontalScrollTile:
     dec  B                                             ;; 02:41dc $05
     jr   NZ, .jr_02_41d9                               ;; 02:41dd $20 $fa
     ld   A, [wBackgroundGraphicsTileMapping]           ;; 02:41df $fa $80 $d0
-    ld   BC, wD370                                     ;; 02:41e2 $01 $70 $d3
+    ld   BC, AnimatedTileRiver                         ;; 02:41e2 $01 $70 $d3
     call requestBackgroundTileCopy                     ;; 02:41e5 $cd $fe $41
     ret                                                ;; 02:41e8 $c9
 
@@ -472,7 +472,7 @@ call_02_42a5:
     ret                                                ;; 02:42e3 $c9
 .jr_02_42e4:
     pop  AF                                            ;; 02:42e4 $f1
-    call call_00_2f09                                  ;; 02:42e5 $cd $09 $2f
+    call setAToZero                                    ;; 02:42e5 $cd $09 $2f
     ret                                                ;; 02:42e8 $c9
 .jr_02_42e9:
     pop  AF                                            ;; 02:42e9 $f1
@@ -1125,7 +1125,7 @@ call_02_4889:
     add  A, $41                                        ;; 02:4895 $c6 $41
     ld   [HL], A                                       ;; 02:4897 $77
     ld   A, [wDialogType]                              ;; 02:4898 $fa $4a $d8
-    call call_02_6700                                  ;; 02:489b $cd $00 $67
+    call drawWindow                                    ;; 02:489b $cd $00 $67
     ld   B, $13                                        ;; 02:489e $06 $13
     call call_02_6c98                                  ;; 02:48a0 $cd $98 $6c
     ld   A, [wD853]                                    ;; 02:48a3 $fa $53 $d8
@@ -1212,7 +1212,7 @@ call_02_492b:
     ld   A, [HL]                                       ;; 02:492e $7e
     ld   [wDialogType], A                              ;; 02:492f $ea $4a $d8
     push HL                                            ;; 02:4932 $e5
-    call call_02_6700                                  ;; 02:4933 $cd $00 $67
+    call drawWindow                                    ;; 02:4933 $cd $00 $67
     pop  HL                                            ;; 02:4936 $e1
     call saveRegisterState1                            ;; 02:4937 $cd $34 $6d
     ld   A, [wD853]                                    ;; 02:493a $fa $53 $d8
@@ -2059,7 +2059,7 @@ jp_02_4f19:
 call_02_4f5f:
     ld   A, $1a                                        ;; 02:4f5f $3e $1a
     ld   [wDialogType], A                              ;; 02:4f61 $ea $4a $d8
-    call call_02_6700                                  ;; 02:4f64 $cd $00 $67
+    call drawWindow                                    ;; 02:4f64 $cd $00 $67
     call call_02_7693                                  ;; 02:4f67 $cd $93 $76
     ld   HL, wTotalAP                                  ;; 02:4f6a $21 $df $d7
     ld   A, [wD790]                                    ;; 02:4f6d $fa $90 $d7
@@ -2067,19 +2067,19 @@ call_02_4f5f:
     call call_02_5b9d                                  ;; 02:4f71 $cd $9d $5b
     add  A, B                                          ;; 02:4f74 $80
     ld   [HL+], A                                      ;; 02:4f75 $22
-    ld   [wD6C1], A                                    ;; 02:4f76 $ea $c1 $d6
+    ld   [wDupTotalAP], A                              ;; 02:4f76 $ea $c1 $d6
     ld   A, [wD78F]                                    ;; 02:4f79 $fa $8f $d7
     ld   B, A                                          ;; 02:4f7c $47
-    ld   A, [wD6C2]                                    ;; 02:4f7d $fa $c2 $d6
+    ld   A, [wEquippedArmorDefense]                    ;; 02:4f7d $fa $c2 $d6
     add  A, B                                          ;; 02:4f80 $80
     ld   B, A                                          ;; 02:4f81 $47
-    ld   A, [wD6C0]                                    ;; 02:4f82 $fa $c0 $d6
+    ld   A, [wEquippedHelmetDefense]                   ;; 02:4f82 $fa $c0 $d6
     add  A, B                                          ;; 02:4f85 $80
     ld   [HL], A                                       ;; 02:4f86 $77
-    ld   [wD6C3], A                                    ;; 02:4f87 $ea $c3 $d6
+    ld   [wDupTotalDP], A                              ;; 02:4f87 $ea $c3 $d6
     ld   A, [wStatusEffect]                            ;; 02:4f8a $fa $c0 $d7
     bit  3, A                                          ;; 02:4f8d $cb $5f
-    call NZ, call_02_78b8                              ;; 02:4f8f $c4 $b8 $78
+    call NZ, moogleTempZeroDP                          ;; 02:4f8f $c4 $b8 $78
     ld   A, $30                                        ;; 02:4f92 $3e $30
     jp   jp_02_5877                                    ;; 02:4f94 $c3 $77 $58
 
@@ -2186,7 +2186,7 @@ jp_02_503a:
     ret                                                ;; 02:504e $c9
 
 call_02_504f:
-    call call_02_6700                                  ;; 02:504f $cd $00 $67
+    call drawWindow                                    ;; 02:504f $cd $00 $67
     ld   A, [wD853]                                    ;; 02:5052 $fa $53 $d8
     rlca                                               ;; 02:5055 $07
     ret  C                                             ;; 02:5056 $d8
@@ -2365,7 +2365,7 @@ clearStatusBar:
 call_02_5174:
     ld   A, $0f                                        ;; 02:5174 $3e $0f
     ld   [wDialogType], A                              ;; 02:5176 $ea $4a $d8
-    call call_02_6700                                  ;; 02:5179 $cd $00 $67
+    call drawWindow                                    ;; 02:5179 $cd $00 $67
     ld   B, $25                                        ;; 02:517c $06 $25
     call call_02_6c98                                  ;; 02:517e $cd $98 $6c
     ret                                                ;; 02:5181 $c9
@@ -2488,7 +2488,7 @@ call_02_523c:
     and  A, A                                          ;; 02:524c $a7
     ret  Z                                             ;; 02:524d $c8
     ld   HL, wEquipmentInventory                       ;; 02:524e $21 $dd $d6
-    ld   DE, wD6B3                                     ;; 02:5251 $11 $b3 $d6
+    ld   DE, wEquipmentInventoryPowers                 ;; 02:5251 $11 $b3 $d6
     ld   B, $0d                                        ;; 02:5254 $06 $0d
     set  7, C                                          ;; 02:5256 $cb $f9
     call call_02_525c                                  ;; 02:5258 $cd $5c $52
@@ -2550,7 +2550,7 @@ call_02_5292:
     ld   [wD853], A                                    ;; 02:52b5 $ea $53 $d8
     ld   A, $10                                        ;; 02:52b8 $3e $10
     ld   [wDialogType], A                              ;; 02:52ba $ea $4a $d8
-    call call_02_6700                                  ;; 02:52bd $cd $00 $67
+    call drawWindow                                    ;; 02:52bd $cd $00 $67
     ld   B, $93                                        ;; 02:52c0 $06 $93
     call call_02_6c98                                  ;; 02:52c2 $cd $98 $6c
     ret                                                ;; 02:52c5 $c9
@@ -2705,7 +2705,7 @@ removeItemFromInventory:
 
 removeEquipmentFromInventory:
     ld   HL, wEquipmentInventory                       ;; 02:53c8 $21 $dd $d6
-    ld   DE, wD6B3                                     ;; 02:53cb $11 $b3 $d6
+    ld   DE, wEquipmentInventoryPowers                 ;; 02:53cb $11 $b3 $d6
     ld   B, $0c                                        ;; 02:53ce $06 $0c
     ld   C, A                                          ;; 02:53d0 $4f
     call removeItemFromList                            ;; 02:53d1 $cd $e2 $53
@@ -2740,7 +2740,7 @@ call_02_53f0:
     push HL                                            ;; 02:53f6 $e5
     call call_02_5410                                  ;; 02:53f7 $cd $10 $54
     pop  HL                                            ;; 02:53fa $e1
-    ld   DE, wD6B3                                     ;; 02:53fb $11 $b3 $d6
+    ld   DE, wEquipmentInventoryPowers                 ;; 02:53fb $11 $b3 $d6
     ld   B, $0c                                        ;; 02:53fe $06 $0c
 .jr_02_5400:
     ld   A, [HL+]                                      ;; 02:5400 $2a
@@ -2758,7 +2758,7 @@ call_02_53f0:
 call_02_5410:
     ld   DE, equipmentDataTable + $08                  ;; 02:5410 $11 $f2 $61
     push DE                                            ;; 02:5413 $d5
-    ld   DE, wD6B3                                     ;; 02:5414 $11 $b3 $d6
+    ld   DE, wEquipmentInventoryPowers                 ;; 02:5414 $11 $b3 $d6
     jr   jr_02_5435                                    ;; 02:5417 $18 $1c
 
 call_02_5419:
@@ -2825,7 +2825,7 @@ jr_02_5435:
     ret                                                ;; 02:5474 $c9
 
 call_02_5475:
-    call call_02_6700                                  ;; 02:5475 $cd $00 $67
+    call drawWindow                                    ;; 02:5475 $cd $00 $67
     ld   B, $28                                        ;; 02:5478 $06 $28
     call call_02_6c98                                  ;; 02:547a $cd $98 $6c
     ret                                                ;; 02:547d $c9
@@ -3400,7 +3400,7 @@ call_02_57c4:
     pop  DE                                            ;; 02:57d4 $d1
     ret                                                ;; 02:57d5 $c9
 
-call_02_57d6:
+moogleEnd:
     ld   A, [wStatusEffect]                            ;; 02:57d6 $fa $c0 $d7
     bit  3, A                                          ;; 02:57d9 $cb $5f
     ret  NZ                                            ;; 02:57db $c0
@@ -3408,16 +3408,16 @@ call_02_57d6:
     ld   B, A                                          ;; 02:57df $47
     ld   A, [wStatPower]                               ;; 02:57e0 $fa $c2 $d7
     add  A, B                                          ;; 02:57e3 $80
-    ld   [wD6C1], A                                    ;; 02:57e4 $ea $c1 $d6
+    ld   [wDupTotalAP], A                              ;; 02:57e4 $ea $c1 $d6
     ld   [wTotalAP], A                                 ;; 02:57e7 $ea $df $d7
-    ld   A, [wD6C0]                                    ;; 02:57ea $fa $c0 $d6
+    ld   A, [wEquippedHelmetDefense]                   ;; 02:57ea $fa $c0 $d6
     ld   B, A                                          ;; 02:57ed $47
-    ld   A, [wD6C2]                                    ;; 02:57ee $fa $c2 $d6
+    ld   A, [wEquippedArmorDefense]                    ;; 02:57ee $fa $c2 $d6
     ld   C, A                                          ;; 02:57f1 $4f
     ld   A, [wStatStamina]                             ;; 02:57f2 $fa $c1 $d7
     add  A, B                                          ;; 02:57f5 $80
     add  A, C                                          ;; 02:57f6 $81
-    ld   [wD6C3], A                                    ;; 02:57f7 $ea $c3 $d6
+    ld   [wDupTotalDP], A                              ;; 02:57f7 $ea $c3 $d6
     ld   [wTotalDP], A                                 ;; 02:57fa $ea $e0 $d7
     ret                                                ;; 02:57fd $c9
 
@@ -3505,7 +3505,7 @@ data_02_586f:
 jp_02_5877:
     ld   [wD850], A                                    ;; 02:5877 $ea $50 $d8
     ld   A, [wDialogType]                              ;; 02:587a $fa $4a $d8
-    call call_02_57d6                                  ;; 02:587d $cd $d6 $57
+    call moogleEnd                                     ;; 02:587d $cd $d6 $57
 
 call_02_5880:
     ld   A, [wD89B]                                    ;; 02:5880 $fa $9b $d8
@@ -4110,7 +4110,7 @@ data_02_5d52:
     dw   wItemInventoryAmount                          ;; 02:5d54 .. $01
     dw   wD6AB                                         ;; 02:5d56 .. $02
     dw   wD6BF                                         ;; 02:5d58 .. $03
-    dw   wD6B3                                         ;; 02:5d5a .. $04
+    dw   wEquipmentInventoryPowers                     ;; 02:5d5a .. $04
     dw   $0000                                         ;; 02:5d5c ?? $05
     dw   $0000                                         ;; 02:5d5e .. $06
     dw   $0000                                         ;; 02:5d60 .. $07
@@ -4296,11 +4296,11 @@ call_02_6656:
     sub  A, B                                          ;; 02:666e $90
 .jr_02_666f:
     push AF                                            ;; 02:666f $f5
-    call call_02_71a2                                  ;; 02:6670 $cd $a2 $71
+    call useItemOrSpell                                ;; 02:6670 $cd $a2 $71
     pop  AF                                            ;; 02:6673 $f1
     ret                                                ;; 02:6674 $c9
 .jr_02_6675:
-    call call_02_71a2                                  ;; 02:6675 $cd $a2 $71
+    call useItemOrSpell                                ;; 02:6675 $cd $a2 $71
     scf                                                ;; 02:6678 $37
     ret                                                ;; 02:6679 $c9
 
@@ -4376,18 +4376,18 @@ call_02_667a:
     ret                                                ;; 02:66f7 $c9
 
 data_02_66f8:
-    dw   data_02_670a                                  ;; 02:66f8 pP
-    dw   call_02_6783                                  ;; 02:66fa pP
-    dw   data_02_6798                                  ;; 02:66fc pP
-    dw   data_02_67b4                                  ;; 02:66fe pP
+    dw   drawWindowStart                               ;; 02:66f8 pP
+    dw   drawWindowTopOrBottom                         ;; 02:66fa pP
+    dw   windowDrawMiddle                              ;; 02:66fc pP
+    dw   windowDrawBottom                              ;; 02:66fe pP
 
-call_02_6700:
+drawWindow:
     ld   HL, data_02_66f8                              ;; 02:6700 $21 $f8 $66
     ld   A, [wD854]                                    ;; 02:6703 $fa $54 $d8
     call callJumptable_02                              ;; 02:6706 $cd $75 $48
     ret                                                ;; 02:6709 $c9
 
-data_02_670a:
+drawWindowStart:
     ld   HL, wOAMBuffer                                ;; 02:670a $21 $00 $c0
     ld   DE, wScriptStackTop                           ;; 02:670d $11 $83 $d6
     ld   B, $18                                        ;; 02:6710 $06 $18
@@ -4457,7 +4457,7 @@ data_02_670a:
     ld   [wD854], A                                    ;; 02:677f $ea $54 $d8
     ret                                                ;; 02:6782 $c9
 
-call_02_6783:
+drawWindowTopOrBottom:
     call loadRegisterState2                            ;; 02:6783 $cd $a7 $6d
     push DE                                            ;; 02:6786 $d5
     push BC                                            ;; 02:6787 $c5
@@ -4471,7 +4471,7 @@ call_02_6783:
     ld   [wD854], A                                    ;; 02:6794 $ea $54 $d8
     ret                                                ;; 02:6797 $c9
 
-data_02_6798:
+windowDrawMiddle:
     call loadRegisterState2                            ;; 02:6798 $cd $a7 $6d
     push DE                                            ;; 02:679b $d5
     push BC                                            ;; 02:679c $c5
@@ -4489,8 +4489,8 @@ data_02_6798:
     ld   [wD854], A                                    ;; 02:67b0 $ea $54 $d8
     ret                                                ;; 02:67b3 $c9
 
-data_02_67b4:
-    call call_02_6783                                  ;; 02:67b4 $cd $83 $67
+windowDrawBottom:
+    call drawWindowTopOrBottom                         ;; 02:67b4 $cd $83 $67
 
 jr_02_67b7:
     ld   A, D                                          ;; 02:67b7 $7a
@@ -5645,7 +5645,7 @@ setStartingStats:
     ld   [wD790], A                                    ;; 02:6e98 $ea $90 $d7
     ld   A, [wStatStamina]                             ;; 02:6e9b $fa $c1 $d7
     ld   [wD78F], A                                    ;; 02:6e9e $ea $8f $d7
-    call call_02_57d6                                  ;; 02:6ea1 $cd $d6 $57
+    call moogleEnd                                     ;; 02:6ea1 $cd $d6 $57
     ld   HL, $00                                       ;; 02:6ea4 $21 $00 $00
     ld   A, H                                          ;; 02:6ea7 $7c
     ld   [wXPHigh], A                                  ;; 02:6ea8 $ea $bc $d7
@@ -5669,7 +5669,7 @@ setStartingStats:
     ld   A, L                                          ;; 02:6ed1 $7d
     ld   [wMoneyLow], A                                ;; 02:6ed2 $ea $be $d7
     ld   A, $ff                                        ;; 02:6ed5 $3e $ff
-    ld   [wD87E], A                                    ;; 02:6ed7 $ea $7e $d8
+    ld   [wItemBuffActive], A                          ;; 02:6ed7 $ea $7e $d8
     xor  A, A                                          ;; 02:6eda $af
     ld   [wStatusEffect], A                            ;; 02:6edb $ea $c0 $d7
     call call_02_6ee2                                  ;; 02:6ede $cd $e2 $6e
@@ -5798,7 +5798,7 @@ statusBarTopRowDefault:
 call_02_6fab:
     ld   HL, wD86F                                     ;; 02:6fab $21 $6f $d8
     res  6, [HL]                                       ;; 02:6fae $cb $b6
-    call call_00_3ed0                                  ;; 02:6fb0 $cd $d0 $3e
+    call useWillCharge                                 ;; 02:6fb0 $cd $d0 $3e
     ret                                                ;; 02:6fb3 $c9
 
 call_02_6fb4:
@@ -5853,7 +5853,7 @@ call_02_6fb4:
     ld   B, $00                                        ;; 02:7007 $06 $00
     add  HL, BC                                        ;; 02:7009 $09
     push HL                                            ;; 02:700a $e5
-    call call_00_3ed0                                  ;; 02:700b $cd $d0 $3e
+    call useWillCharge                                 ;; 02:700b $cd $d0 $3e
     pop  HL                                            ;; 02:700e $e1
     pop  BC                                            ;; 02:700f $c1
     jr   .jr_02_7015                                   ;; 02:7010 $18 $03
@@ -5929,13 +5929,13 @@ call_02_6fb4:
     call C, call_02_79ba                               ;; 02:707a $dc $ba $79
     pop  AF                                            ;; 02:707d $f1
     cp   A, $02                                        ;; 02:707e $fe $02
-    call NZ, call_00_3ed0                              ;; 02:7080 $c4 $d0 $3e
+    call NZ, useWillCharge                             ;; 02:7080 $c4 $d0 $3e
     ret                                                ;; 02:7083 $c9
 .jr_02_7084:
     ld   HL, data_02_7b26                              ;; 02:7084 $21 $26 $7b
     call call_02_714b                                  ;; 02:7087 $cd $4b $71
     jr   NC, jr_02_70e3                                ;; 02:708a $30 $57
-    ld   A, [wD87E]                                    ;; 02:708c $fa $7e $d8
+    ld   A, [wItemBuffActive]                          ;; 02:708c $fa $7e $d8
     cp   A, $ff                                        ;; 02:708f $fe $ff
     ret  NZ                                            ;; 02:7091 $c0
     push HL                                            ;; 02:7092 $e5
@@ -5953,10 +5953,10 @@ call_02_6fb4:
     pop  HL                                            ;; 02:70a3 $e1
     ld   A, H                                          ;; 02:70a4 $7c
     push HL                                            ;; 02:70a5 $e5
-    call call_02_70c8                                  ;; 02:70a6 $cd $c8 $70
+    call useNectarOrStamina                            ;; 02:70a6 $cd $c8 $70
     pop  HL                                            ;; 02:70a9 $e1
     ld   A, L                                          ;; 02:70aa $7d
-    call call_02_70c8                                  ;; 02:70ab $cd $c8 $70
+    call useNectarOrStamina                            ;; 02:70ab $cd $c8 $70
     ld   A, [wWillCharge]                              ;; 02:70ae $fa $58 $d8
     ld   L, A                                          ;; 02:70b1 $6f
     ld   H, $00                                        ;; 02:70b2 $26 $00
@@ -5969,11 +5969,11 @@ call_02_6fb4:
     ld   BC, $258                                      ;; 02:70ba $01 $58 $02
     add  HL, BC                                        ;; 02:70bd $09
     call call_00_2f9e                                  ;; 02:70be $cd $9e $2f
-    ld   [wD87E], A                                    ;; 02:70c1 $ea $7e $d8
+    ld   [wItemBuffActive], A                          ;; 02:70c1 $ea $7e $d8
     call call_00_2fd4                                  ;; 02:70c4 $cd $d4 $2f
     ret                                                ;; 02:70c7 $c9
 
-call_02_70c8:
+useNectarOrStamina:
     push AF                                            ;; 02:70c8 $f5
     swap A                                             ;; 02:70c9 $cb $37
     and  A, $0f                                        ;; 02:70cb $e6 $0f
@@ -6000,7 +6000,7 @@ jr_02_70e3:
     call call_02_714b                                  ;; 02:70e6 $cd $4b $71
     jr   NC, .jr_02_70f0                               ;; 02:70e9 $30 $05
     ld   A, H                                          ;; 02:70eb $7c
-    call call_00_3e97                                  ;; 02:70ec $cd $97 $3e
+    call setWillBarMax                                 ;; 02:70ec $cd $97 $3e
     ret                                                ;; 02:70ef $c9
 .jr_02_70f0:
     ld   HL, data_02_7b2b                              ;; 02:70f0 $21 $2b $7b
@@ -6008,7 +6008,7 @@ jr_02_70e3:
     jr   NC, .jr_02_7102                               ;; 02:70f6 $30 $0a
     call call_02_7139                                  ;; 02:70f8 $cd $39 $71
     call call_00_2f44                                  ;; 02:70fb $cd $44 $2f
-    call call_00_3ed0                                  ;; 02:70fe $cd $d0 $3e
+    call useWillCharge                                 ;; 02:70fe $cd $d0 $3e
     ret                                                ;; 02:7101 $c9
 .jr_02_7102:
     ld   HL, data_02_7b2e                              ;; 02:7102 $21 $2e $7b
@@ -6016,7 +6016,7 @@ jr_02_70e3:
     jr   NC, .jr_02_7114                               ;; 02:7108 $30 $0a
     call call_02_7139                                  ;; 02:710a $cd $39 $71
     call call_00_2f5d                                  ;; 02:710d $cd $5d $2f
-    call call_00_3ed0                                  ;; 02:7110 $cd $d0 $3e
+    call useWillCharge                                 ;; 02:7110 $cd $d0 $3e
     ret                                                ;; 02:7113 $c9
 .jr_02_7114:
     ld   HL, data_02_7b31                              ;; 02:7114 $21 $31 $7b
@@ -6029,13 +6029,13 @@ jr_02_70e3:
     call call_00_2f9e                                  ;; 02:7121 $cd $9e $2f
     ld   [wD881], A                                    ;; 02:7124 $ea $81 $d8
     call call_00_2fd4                                  ;; 02:7127 $cd $d4 $2f
-    call call_00_1164                                  ;; 02:712a $cd $64 $11
+    call conditionallyClearDarkGraphicEffect           ;; 02:712a $cd $64 $11
     ret                                                ;; 02:712d $c9
 .jr_02_712e:
     ld   HL, data_02_7b36                              ;; 02:712e $21 $36 $7b
     call call_02_714b                                  ;; 02:7131 $cd $4b $71
     ret  NC                                            ;; 02:7134 $d0
-    call call_00_3ed0                                  ;; 02:7135 $cd $d0 $3e
+    call useWillCharge                                 ;; 02:7135 $cd $d0 $3e
     ret                                                ;; 02:7138 $c9
 
 call_02_7139:
@@ -6116,7 +6116,7 @@ call_02_7185:
     scf                                                ;; 02:71a0 $37
     ret                                                ;; 02:71a1 $c9
 
-call_02_71a2:
+useItemOrSpell:
     ld   A, [wEquipedItem]                             ;; 02:71a2 $fa $ef $d6
     ld   [wD88B], A                                    ;; 02:71a5 $ea $8b $d8
     and  A, $7f                                        ;; 02:71a8 $e6 $7f
@@ -6152,7 +6152,7 @@ call_02_71a2:
     pop  AF                                            ;; 02:71d9 $f1
     ret                                                ;; 02:71da $c9
 
-call_02_71db:
+setAToZero_2:
     xor  A, A                                          ;; 02:71db $af
     ret                                                ;; 02:71dc $c9
 
@@ -6191,7 +6191,7 @@ jp_02_71fb:
     ld   HL, sA100                                     ;; 02:7218 $21 $00 $a1
     ld   B, $10                                        ;; 02:721b $06 $10
 .jr_02_721d:
-    ld   A, [wD87E]                                    ;; 02:721d $fa $7e $d8
+    ld   A, [wItemBuffActive]                          ;; 02:721d $fa $7e $d8
     cp   A, $ff                                        ;; 02:7220 $fe $ff
     push AF                                            ;; 02:7222 $f5
     jr   Z, .jr_02_7236                                ;; 02:7223 $28 $11
@@ -6221,7 +6221,7 @@ jp_02_71fb:
     call copyHLtoDEtimesB                              ;; 02:7254 $cd $51 $74
     call call_02_7735                                  ;; 02:7257 $cd $35 $77
     ld   HL, wD7A7                                     ;; 02:725a $21 $a7 $d7
-    call call_02_7772                                  ;; 02:725d $cd $72 $77
+    call formatSaveHeader                              ;; 02:725d $cd $72 $77
     push HL                                            ;; 02:7260 $e5
     pop  DE                                            ;; 02:7261 $d1
     pop  HL                                            ;; 02:7262 $e1
@@ -6314,7 +6314,7 @@ jp_02_72be:
     ld   DE, wItemInventoryAmount                      ;; 02:7302 $11 $9b $d6
     ld   B, $10                                        ;; 02:7305 $06 $10
     call readDEtimesBtoSRAM                            ;; 02:7307 $cd $3f $74
-    ld   DE, wD633                                     ;; 02:730a $11 $33 $d6
+    ld   DE, wOpenChestScript3                         ;; 02:730a $11 $33 $d6
     ld   B, $08                                        ;; 02:730d $06 $08
     call readDEtimesBtoSRAM                            ;; 02:730f $cd $3f $74
     call disableSRAM                                   ;; 02:7312 $cd $5e $74
@@ -6356,7 +6356,7 @@ call_02_7322:
     dec  B                                             ;; 02:7352 $05
     jr   NZ, .jr_02_7348                               ;; 02:7353 $20 $f3
     ld   HL, wEquipmentInventory                       ;; 02:7355 $21 $dd $d6
-    ld   DE, wD6B3                                     ;; 02:7358 $11 $b3 $d6
+    ld   DE, wEquipmentInventoryPowers                 ;; 02:7358 $11 $b3 $d6
     ld   B, $0c                                        ;; 02:735b $06 $0c
 .jr_02_735d:
     push BC                                            ;; 02:735d $c5
@@ -6391,9 +6391,9 @@ call_02_7322:
     inc  A                                             ;; 02:7387 $3c
     ld   [HL], A                                       ;; 02:7388 $77
     ld   HL, wTotalAP                                  ;; 02:7389 $21 $df $d7
-    ld   A, [wD6C1]                                    ;; 02:738c $fa $c1 $d6
+    ld   A, [wDupTotalAP]                              ;; 02:738c $fa $c1 $d6
     ld   [HL+], A                                      ;; 02:738f $22
-    ld   A, [wD6C3]                                    ;; 02:7390 $fa $c3 $d6
+    ld   A, [wDupTotalDP]                              ;; 02:7390 $fa $c3 $d6
     ld   [HL], A                                       ;; 02:7393 $77
     ld   A, [wStatusEffect]                            ;; 02:7394 $fa $c0 $d7
     ld   C, A                                          ;; 02:7397 $4f
@@ -7034,17 +7034,17 @@ call_02_7735:
     ld   [HL], A                                       ;; 02:7770 $77
     ret                                                ;; 02:7771 $c9
 
-call_02_7772:
+formatSaveHeader:
     ld   A, $6c                                        ;; 02:7772 $3e $6c
     ld   [HL+], A                                      ;; 02:7774 $22
-    call call_02_777d                                  ;; 02:7775 $cd $7d $77
+    call calculateChecksum                             ;; 02:7775 $cd $7d $77
     ld   [HL], E                                       ;; 02:7778 $73
     inc  HL                                            ;; 02:7779 $23
     ld   [HL], D                                       ;; 02:777a $72
     inc  HL                                            ;; 02:777b $23
     ret                                                ;; 02:777c $c9
 
-call_02_777d:
+calculateChecksum:
     ld   DE, $00                                       ;; 02:777d $11 $00 $00
     push HL                                            ;; 02:7780 $e5
     ld   HL, wD7AA                                     ;; 02:7781 $21 $aa $d7
@@ -7097,7 +7097,7 @@ call_02_77af:
     ret                                                ;; 02:77d7 $c9
 
 call_02_77d8:
-    call call_02_6700                                  ;; 02:77d8 $cd $00 $67
+    call drawWindow                                    ;; 02:77d8 $cd $00 $67
     ld   A, [wD853]                                    ;; 02:77db $fa $53 $d8
     rlca                                               ;; 02:77de $07
     ret  C                                             ;; 02:77df $d8
@@ -7214,7 +7214,7 @@ call_02_7889:
 
 call_02_7895:
     push AF                                            ;; 02:7895 $f5
-    call C, call_00_01f4                               ;; 02:7896 $dc $f4 $01
+    call C, setDarkGraphicEffect                       ;; 02:7896 $dc $f4 $01
     ld   A, [wD87A]                                    ;; 02:7899 $fa $7a $d8
     call call_00_2fd4                                  ;; 02:789c $cd $d4 $2f
     pop  AF                                            ;; 02:789f $f1
@@ -7237,11 +7237,11 @@ jr_02_78af:
 call_02_78b5:
     call call_00_0220                                  ;; 02:78b5 $cd $20 $02
 
-call_02_78b8:
-    ld   A, [wD6C3]                                    ;; 02:78b8 $fa $c3 $d6
-    ld   [wD882], A                                    ;; 02:78bb $ea $82 $d8
+moogleTempZeroDP:
+    ld   A, [wDupTotalDP]                              ;; 02:78b8 $fa $c3 $d6
+    ld   [wMoogleSavedDp], A                           ;; 02:78bb $ea $82 $d8
     xor  A, A                                          ;; 02:78be $af
-    ld   [wD6C3], A                                    ;; 02:78bf $ea $c3 $d6
+    ld   [wDupTotalDP], A                              ;; 02:78bf $ea $c3 $d6
     ld   [wTotalDP], A                                 ;; 02:78c2 $ea $e0 $d7
     ret                                                ;; 02:78c5 $c9
 
@@ -7291,7 +7291,7 @@ call_02_78c6:
 call_02_7926:
     ld   A, [wD881]                                    ;; 02:7926 $fa $81 $d8
     call call_00_2fea                                  ;; 02:7929 $cd $ea $2f
-    call call_00_116e                                  ;; 02:792c $cd $6e $11
+    call conditionallySetDarkGraphicEffect             ;; 02:792c $cd $6e $11
     ret                                                ;; 02:792f $c9
 
 call_02_7930:
@@ -7356,21 +7356,21 @@ call_02_7970:
 call_02_7987:
     ld   A, [wD87D]                                    ;; 02:7987 $fa $7d $d8
     ld   B, $ef                                        ;; 02:798a $06 $ef
-    call call_02_79dd                                  ;; 02:798c $cd $dd $79
+    call clearStatusEffects                            ;; 02:798c $cd $dd $79
     ret                                                ;; 02:798f $c9
 
 call_02_7990:
     ld   A, [wD879]                                    ;; 02:7990 $fa $79 $d8
     ld   B, $fe                                        ;; 02:7993 $06 $fe
-    call call_02_79dd                                  ;; 02:7995 $cd $dd $79
+    call clearStatusEffects                            ;; 02:7995 $cd $dd $79
     call call_02_79d2                                  ;; 02:7998 $cd $d2 $79
     ret                                                ;; 02:799b $c9
 
 call_02_799c:
-    call call_00_0204                                  ;; 02:799c $cd $04 $02
+    call removeDarkGraphicEffect                       ;; 02:799c $cd $04 $02
     ld   A, [wD87A]                                    ;; 02:799f $fa $7a $d8
     ld   B, $fd                                        ;; 02:79a2 $06 $fd
-    call call_02_79dd                                  ;; 02:79a4 $cd $dd $79
+    call clearStatusEffects                            ;; 02:79a4 $cd $dd $79
     call call_02_79d2                                  ;; 02:79a7 $cd $d2 $79
     ret                                                ;; 02:79aa $c9
 
@@ -7378,18 +7378,18 @@ call_02_79ab:
     call call_00_021a                                  ;; 02:79ab $cd $1a $02
     ld   A, [wD87B]                                    ;; 02:79ae $fa $7b $d8
     ld   B, $fb                                        ;; 02:79b1 $06 $fb
-    call call_02_79dd                                  ;; 02:79b3 $cd $dd $79
+    call clearStatusEffects                            ;; 02:79b3 $cd $dd $79
     call call_02_79d2                                  ;; 02:79b6 $cd $d2 $79
     ret                                                ;; 02:79b9 $c9
 
 call_02_79ba:
     call call_00_0226                                  ;; 02:79ba $cd $26 $02
-    ld   A, [wD882]                                    ;; 02:79bd $fa $82 $d8
-    ld   [wD6C3], A                                    ;; 02:79c0 $ea $c3 $d6
+    ld   A, [wMoogleSavedDp]                           ;; 02:79bd $fa $82 $d8
+    ld   [wDupTotalDP], A                              ;; 02:79c0 $ea $c3 $d6
     ld   [wTotalDP], A                                 ;; 02:79c3 $ea $e0 $d7
     ld   A, [wD87C]                                    ;; 02:79c6 $fa $7c $d8
     ld   B, $f7                                        ;; 02:79c9 $06 $f7
-    call call_02_79dd                                  ;; 02:79cb $cd $dd $79
+    call clearStatusEffects                            ;; 02:79cb $cd $dd $79
     call call_02_79d2                                  ;; 02:79ce $cd $d2 $79
     ret                                                ;; 02:79d1 $c9
 
@@ -7401,7 +7401,7 @@ call_02_79d2:
     pop  BC                                            ;; 02:79db $c1
     ret                                                ;; 02:79dc $c9
 
-call_02_79dd:
+clearStatusEffects:
     call call_00_2fea                                  ;; 02:79dd $cd $ea $2f
     ld   HL, wStatusEffect                             ;; 02:79e0 $21 $c0 $d7
     ld   A, B                                          ;; 02:79e3 $78
@@ -7521,7 +7521,7 @@ call_02_7a73:
     ret                                                ;; 02:7a7e $c9
 
 call_02_7a7f:
-    ld   DE, wD633                                     ;; 02:7a7f $11 $33 $d6
+    ld   DE, wOpenChestScript3                         ;; 02:7a7f $11 $33 $d6
     ld   A, $f4                                        ;; 02:7a82 $3e $f4
     ld   [HL+], A                                      ;; 02:7a84 $22
     ld   B, $04                                        ;; 02:7a85 $06 $04
@@ -7778,7 +7778,7 @@ call_02_7bf6:
     ld   [wD887], A                                    ;; 02:7c33 $ea $87 $d8
     ld   A, $05                                        ;; 02:7c36 $3e $05
     ld   [wD889], A                                    ;; 02:7c38 $ea $89 $d8
-    call call_00_0daa                                  ;; 02:7c3b $cd $aa $0d
+    call prepareIntroScrollEffect_trampoline           ;; 02:7c3b $cd $aa $0d
     ret                                                ;; 02:7c3e $c9
 
 call_02_7c3f:

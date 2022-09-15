@@ -185,10 +185,10 @@ scriptOpcodeTable:
     dw   scriptOpCodeNOP                               ;; 02:46dc ??
     dw   scriptOpCodeNOP                               ;; 02:46de ??
     dw   scriptOpCodeNOP                               ;; 02:46e0 ??
-    dw   scriptOpCodeB6                                ;; 02:46e2 ??
-    dw   scriptOpCodeB7                                ;; 02:46e4 ??
-    dw   scriptOpCodeB8                                ;; 02:46e6 ??
-    dw   scriptOpCodeB9                                ;; 02:46e8 ??
+    dw   scriptOpCodeSetLetterboxGraphicEffect         ;; 02:46e2 ??
+    dw   scriptOpCodeSetNormalGraphicEffect            ;; 02:46e4 ??
+    dw   scriptOpCodeSetDarkGraphicEffect              ;; 02:46e6 ??
+    dw   scriptOpCodeClearDarkGraphicEffect            ;; 02:46e8 ??
     dw   scriptOpCodeCreateEffect                      ;; 02:46ea ??
     dw   scriptOpCodeNOP                               ;; 02:46ec ??
     dw   scriptOpCodeFadeToNormal                      ;; 02:46ee pP
@@ -197,8 +197,8 @@ scriptOpcodeTable:
     dw   scriptOpCodeFlashScreen                       ;; 02:46f4 pP
     dw   scriptOpCodeFullHealDummyFA                   ;; 02:46f6 pP
     dw   scriptOpCodeFullMana                          ;; 02:46f8 pP
-    dw   scriptOpCodeC2                                ;; 02:46fa ??
-    dw   scriptOpCodeC3                                ;; 02:46fc ??
+    dw   scriptOpCodeClearStatus                       ;; 02:46fa ??
+    dw   scriptOpCodeAltNOP                            ;; 02:46fc ??
     dw   scriptOpCodeGiveStatus                        ;; 02:46fe pP
     dw   scriptOpCodeC5                                ;; 02:4700 pP
     dw   scriptOpCodeStartNameEntry                    ;; 02:4702 pP
@@ -206,12 +206,12 @@ scriptOpcodeTable:
     dw   scriptOpCodeResetGame                         ;; 02:4706 pP
     dw   scriptOpCodeSetChestOpenScript1               ;; 02:4708 pP
     dw   scriptOpCodeSetChestOpenScript2               ;; 02:470a ??
-    dw   scriptOpCodeCB                                ;; 02:470c ??
+    dw   scriptOpCodeSetChestOpenScript3               ;; 02:470c ??
     dw   scriptOpCodeHalt                              ;; 02:470e ??
     dw   scriptOpCodeNOP                               ;; 02:4710 ??
     dw   scriptOpCodeNOP                               ;; 02:4712 ??
     dw   scriptOpCodeNOP                               ;; 02:4714 ??
-    dw   scriptOpCodeD0                                ;; 02:4716 ??
+    dw   scriptOpCodeGiveMoney                         ;; 02:4716 ??
     dw   scriptOpCodeTakeMoney                         ;; 02:4718 pP
     dw   scriptOpCodeGiveXP                            ;; 02:471a ??
     dw   scriptOpCodeTakeXP                            ;; 02:471c ??
