@@ -675,7 +675,7 @@ call_03_435f:
     db   $21, $e0, $c4, $06, $0d, $11, $18, $00        ;; 03:43b5 ????????
     db   $3e, $ff, $77, $19, $05, $20, $fb, $c9        ;; 03:43bd ????????
 
-call_03_43c5:
+giveFollower:
     ld   C, A                                          ;; 03:43c5 $4f
     push BC                                            ;; 03:43c6 $c5
     ld   A, [wC4E0]                                    ;; 03:43c7 $fa $e0 $c4
@@ -1417,7 +1417,7 @@ call_03_4641:
     ld   A, $00                                        ;; 03:4807 $3e $00
     ret                                                ;; 03:4809 $c9
 
-call_03_480a:
+processNpcDeath:
     push BC                                            ;; 03:480a $c5
     push DE                                            ;; 03:480b $d5
     call getObjectCollisionFlags                       ;; 03:480c $cd $6d $0c

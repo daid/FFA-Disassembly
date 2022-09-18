@@ -191,7 +191,7 @@ loadMapInstantSequence:
     dw   data_01_43ee                                  ;; 01:4160 pP
     dw   LoadMapEnd                                    ;; 01:4162 pP
 
-call_01_4164:
+openMap:
     ld   D, H                                          ;; 01:4164 $54
     ld   E, L                                          ;; 01:4165 $5d
     ld   A, [wScriptOpCounter]                         ;; 01:4166 $fa $99 $d4
@@ -208,7 +208,7 @@ call_01_4164:
     dw   shutterEffectOpen                             ;; 01:417c pP
     dw   LoadMapEnd                                    ;; 01:417e pP
 
-call_01_4180:
+closeMap:
     ld   D, H                                          ;; 01:4180 $54
     ld   E, L                                          ;; 01:4181 $5d
     ld   A, [wScriptOpCounter]                         ;; 01:4182 $fa $99 $d4
@@ -2328,7 +2328,7 @@ createPlayerObject:
     ld   [wD394], A                                    ;; 01:50a8 $ea $94 $d3
     ret                                                ;; 01:50ab $c9
 
-call_01_50ac:
+playerHit:
     push BC                                            ;; 01:50ac $c5
     call call_00_3d12                                  ;; 01:50ad $cd $12 $3d
     ld   E, A                                          ;; 01:50b0 $5f
@@ -2379,7 +2379,7 @@ call_01_50ac:
     call call_00_312f                                  ;; 01:50f5 $cd $2f $31
     ret                                                ;; 01:50f8 $c9
 
-call_01_50f9:
+setPlayerNormalSprite:
     ld   A, [wC4D4]                                    ;; 01:50f9 $fa $d4 $c4
     and  A, $0f                                        ;; 01:50fc $e6 $0f
     ld   [wC4D4], A                                    ;; 01:50fe $ea $d4 $c4
@@ -2410,7 +2410,7 @@ call_01_50f9:
     call call_00_288f                                  ;; 01:5132 $cd $8f $28
     ret                                                ;; 01:5135 $c9
 
-call_01_5136:
+setPlayerOnChocobo:
     ld   A, $0c                                        ;; 01:5136 $3e $0c
     call call_00_3e8f                                  ;; 01:5138 $cd $8f $3e
     ld   C, $04                                        ;; 01:513b $0e $04
@@ -2426,7 +2426,7 @@ call_01_5136:
     call call_00_28d5                                  ;; 01:5152 $cd $d5 $28
     ret                                                ;; 01:5155 $c9
 
-call_01_5156:
+setPlayerOnChocobot:
     ld   A, $0d                                        ;; 01:5156 $3e $0d
     call call_00_3e8f                                  ;; 01:5158 $cd $8f $3e
     ld   C, $04                                        ;; 01:515b $0e $04
@@ -2442,7 +2442,7 @@ call_01_5156:
     call call_00_28d5                                  ;; 01:5172 $cd $d5 $28
     ret                                                ;; 01:5175 $c9
 
-call_01_5176:
+setPlayerOnChocoboat:
     ld   A, $0e                                        ;; 01:5176 $3e $0e
     call call_00_3e8f                                  ;; 01:5178 $cd $8f $3e
     ld   C, $04                                        ;; 01:517b $0e $04
@@ -2507,7 +2507,10 @@ jp_01_51db:
     call call_00_30b1                                  ;; 01:51dd $cd $b1 $30
     ret                                                ;; 01:51e0 $c9
 
-call_01_51e1:
+; Tests special tiles that can be attacked
+; A = metatile collision byte
+; DE = XY position
+attackTile:
     ld   C, A                                          ;; 01:51e1 $4f
     ld   A, [wCF5F]                                    ;; 01:51e2 $fa $5f $cf
     and  A, $0f                                        ;; 01:51e5 $e6 $0f
@@ -2528,10 +2531,10 @@ call_01_51e1:
     dw   call_01_52a5                                  ;; 01:51fe pP
     dw   call_01_5203                                  ;; 01:5200 ??
 
-call_01_5202:
+attackTileNop:
     ret                                                ;; 01:5202 $c9
 
-call_01_5203:
+attackTileRunScript:
     ld   A, [wC0A1]                                    ;; 01:5203 $fa $a1 $c0
     bit  1, A                                          ;; 01:5206 $cb $4f
     ret  NZ                                            ;; 01:5208 $c0
@@ -2541,7 +2544,7 @@ call_01_5203:
     call runScriptByIndex                              ;; 01:5210 $cd $ad $31
     ret                                                ;; 01:5213 $c9
 
-call_01_5214:
+attackTileChain:
     ld   A, B                                          ;; 01:5214 $78
     cp   A, $03                                        ;; 01:5215 $fe $03
     ret  NZ                                            ;; 01:5217 $c0
@@ -2589,7 +2592,7 @@ call_01_5214:
     call call_00_0ce4                                  ;; 01:5269 $cd $e4 $0c
     ret                                                ;; 01:526c $c9
 
-call_01_526d:
+attackTileMattok:
     ld   A, B                                          ;; 01:526d $78
     cp   A, $06                                        ;; 01:526e $fe $06
     ret  NZ                                            ;; 01:5270 $c0
@@ -2599,7 +2602,7 @@ call_01_526d:
     call setRoomTile                                   ;; 01:5277 $cd $00 $24
     ret                                                ;; 01:527a $c9
 
-call_01_527b:
+attackTileMattokWithStairs:
     ld   A, B                                          ;; 01:527b $78
     cp   A, $06                                        ;; 01:527c $fe $06
     ret  NZ                                            ;; 01:527e $c0
@@ -2609,7 +2612,7 @@ call_01_527b:
     call setRoomTile                                   ;; 01:5285 $cd $00 $24
     ret                                                ;; 01:5288 $c9
 
-call_01_5289:
+attackTileAxeWithStump:
     ld   A, B                                          ;; 01:5289 $78
     cp   A, $02                                        ;; 01:528a $fe $02
     ret  NZ                                            ;; 01:528c $c0
@@ -2619,7 +2622,7 @@ call_01_5289:
     call setRoomTile                                   ;; 01:5293 $cd $00 $24
     ret                                                ;; 01:5296 $c9
 
-call_01_5297:
+attackTileAxe:
     ld   A, B                                          ;; 01:5297 $78
     cp   A, $02                                        ;; 01:5298 $fe $02
     ret  NZ                                            ;; 01:529a $c0
@@ -2629,7 +2632,7 @@ call_01_5297:
     call setRoomTile                                   ;; 01:52a1 $cd $00 $24
     ret                                                ;; 01:52a4 $c9
 
-call_01_52a5:
+attackTileSickle:
     ld   A, B                                          ;; 01:52a5 $78
     cp   A, $04                                        ;; 01:52a6 $fe $04
     ret  NZ                                            ;; 01:52a8 $c0
@@ -4052,7 +4055,7 @@ call_01_59ea:
     pop  DE                                            ;; 01:5a69 $d1
     ret                                                ;; 01:5a6a $c9
 
-call_01_5a6b:
+getEquippedWeaponAnimationType:
     ld   E, A                                          ;; 01:5a6b $5f
     ld   D, $00                                        ;; 01:5a6c $16 $00
     ld   HL, data_01_5dcd                              ;; 01:5a6e $21 $cd $5d
@@ -4061,7 +4064,7 @@ call_01_5a6b:
     ld   [wCF58], A                                    ;; 01:5a73 $ea $58 $cf
     ret                                                ;; 01:5a76 $c9
 
-call_01_5a77:
+getEquippedItemAnimationType:
     ld   E, A                                          ;; 01:5a77 $5f
     ld   D, $00                                        ;; 01:5a78 $16 $00
     ld   HL, data_01_5ddd                              ;; 01:5a7a $21 $dd $5d
@@ -4213,7 +4216,7 @@ call_01_5b46:
     ld   [wCF5A], A                                    ;; 01:5b69 $ea $5a $cf
     ret                                                ;; 01:5b6c $c9
 
-call_01_5b6d:
+playerUseWeaponOrItem:
     ld   [wCF5F], A                                    ;; 01:5b6d $ea $5f $cf
     add  A, A                                          ;; 01:5b70 $87
     ld   E, A                                          ;; 01:5b71 $5f
@@ -4618,11 +4621,11 @@ call_01_5db6:
     call call_01_5c9f                                  ;; 01:5dc9 $cd $9f $5c
     ret                                                ;; 01:5dcc $c9
 
-data_01_5dcd:
+weaponAnimations:
     db   $01, $02, $04, $03, $01, $05, $02, $06        ;; 01:5dcd .???????
     db   $01, $01, $03, $01, $02, $01, $05, $01        ;; 01:5dd5 ????????
 
-data_01_5ddd:
+itemAnimations:
     db   $08, $09, $0a, $0b, $0c, $0d, $0e, $0f        ;; 01:5ddd ????????
     db   $08, $08, $08, $08, $08, $09, $09, $09        ;; 01:5de5 ????????
     db   $09, $09, $0a, $0b, $0f, $0f, $0c, $0c        ;; 01:5ded ????????
@@ -4633,7 +4636,7 @@ data_01_5ddd:
     db   $00, $00, $00, $00, $00, $46, $00, $00        ;; 01:5e15 ?????.??
 
 ;@attack_info amount=96
-data_01_5e1d:
+attackFrames:
     dw   $0000                                         ;; 01:5e1d ?? $00
     dw   data_01_60ff                                  ;; 01:5e1f pP $01
     dw   data_01_6669                                  ;; 01:5e21 ?? $02
@@ -4854,7 +4857,7 @@ data_01_60c1:
     db   $02, $06, $01, $06, $02, $06, $00, $06        ;; 01:60f1 ????????
     db   $01, $07, $00, $06, $00, $00                  ;; 01:60f9 ??????
 
-data_01_60ff:
+attackSwordFrame1:
     db   $04, $48, $02, $05, $0a, $00                  ;; 01:60ff .....?
     dw   gfxAttackSword, data_01_68df                  ;; 01:6105 ....
     dw   data_01_69a1, data_01_69b0, data_01_69bf, data_01_69ce ;; 01:6109 .P.P.P.P
@@ -4862,7 +4865,7 @@ data_01_60ff:
     dw   data_01_6a29, data_01_6a30, data_01_6a37, data_01_6a3e ;; 01:6119 ????????
     dw   data_01_6a45, data_01_6a68, data_01_6a8b, data_01_6aae ;; 01:6121 ????????
 
-data_01_6129:
+attackFireIceThnderNukeFrame1:
     db   $06, $50, $03, $06, $00, $00                  ;; 01:6129 ??????
     dw   data_08_7580, data_01_6903                    ;; 01:612f ????
     dw   data_01_6ad1, data_01_6ae8, data_01_6aff, data_01_6b16 ;; 01:6133 ????????
@@ -4934,7 +4937,7 @@ data_01_6279:
     dw   data_01_7375, data_01_7375, data_01_7375, data_01_7375 ;; 01:6293 ????????
     dw   data_01_7375, data_01_7375, data_01_7375, data_01_7375 ;; 01:629b ????????
 
-data_01_62a3:
+attackCureFrame1:
     db   $04, $50, $02, $03, $00, $00                  ;; 01:62a3 .....?
     dw   data_08_7500, data_01_693f                    ;; 01:62a9 ....
     dw   data_01_7230, data_01_7230, data_01_7230, data_01_7230 ;; 01:62ad ????????
@@ -4966,7 +4969,7 @@ data_01_6321:
     dw   data_01_728e, data_01_728e, data_01_728e, data_01_728e ;; 01:633b ????????
     dw   data_01_728e, data_01_728e, data_01_728e, data_01_728e ;; 01:6343 ????????
 
-data_01_634b:
+attackHealFrame1:
     db   $04, $50, $03, $05, $00, $00                  ;; 01:634b ??????
     dw   data_08_7500, data_01_693f                    ;; 01:6351 ????
     dw   data_01_72ec, data_01_72ec, data_01_72ec, data_01_72ec ;; 01:6355 ????????
@@ -5014,7 +5017,7 @@ data_01_641d:
     dw   data_01_6a29, data_01_6a30, data_01_6a37, data_01_6a3e ;; 01:6437 ????????
     dw   data_01_6a45, data_01_6a68, data_01_6a8b, data_01_6aae ;; 01:643f ????????
 
-data_01_6447:
+attackSleepFrame1:
     db   $04, $50, $02, $03, $00, $00                  ;; 01:6447 ??????
     dw   data_08_7990, data_01_6903                    ;; 01:644d ????
     dw   data_01_73cb, data_01_73cb, data_01_73cb, data_01_73cb ;; 01:6451 ????????
@@ -5046,7 +5049,7 @@ data_01_64c5:
     dw   data_01_7439, data_01_7439, data_01_7439, data_01_7439 ;; 01:64df ????????
     dw   data_01_7439, data_01_7439, data_01_7439, data_01_7439 ;; 01:64e7 ????????
 
-data_01_64ef:
+attackMuteFrame1:
     db   $04, $50, $02, $03, $00, $00                  ;; 01:64ef ??????
     dw   data_08_7950, data_01_6903                    ;; 01:64f5 ????
     dw   data_01_74df, data_01_74df, data_01_74df, data_01_74df ;; 01:64f9 ????????
@@ -5118,7 +5121,7 @@ data_01_663f:
     dw   data_01_75bb, data_01_75bb, data_01_75bb, data_01_75bb ;; 01:6659 ????????
     dw   data_01_75bb, data_01_75bb, data_01_75bb, data_01_75bb ;; 01:6661 ????????
 
-data_01_6669:
+attackAxeFrame1:
     db   $06, $48, $02, $06, $0c, $00                  ;; 01:6669 ??????
     dw   gfxAttackAxe, data_01_68df                    ;; 01:666f ????
     dw   data_01_69dd, data_01_69f0, data_01_6bb6, data_01_6bcd ;; 01:6673 ????????
@@ -5126,7 +5129,7 @@ data_01_6669:
     dw   data_01_6be4, data_01_6c24, data_01_6c64, data_01_6ca4 ;; 01:6683 ????????
     dw   data_01_6be4, data_01_6c24, data_01_6c64, data_01_6ca4 ;; 01:668b ????????
 
-data_01_6693:
+attackChainFrame1:
     db   $04, $48, $02, $06, $0a, $00                  ;; 01:6693 ??????
     dw   data_08_7300, data_01_6963                    ;; 01:6699 ????
     dw   data_01_6f30, data_01_6f4b, data_01_6f66, data_01_6f81 ;; 01:669d ????????
@@ -5166,7 +5169,7 @@ data_01_673b:
     dw   data_01_717c, data_01_7183, data_01_718a, data_01_7191 ;; 01:6755 ????????
     dw   data_01_717c, data_01_7183, data_01_718a, data_01_7191 ;; 01:675d ????????
 
-data_01_6765:
+attackSickleFrame1:
     db   $03, $48, $02, $06, $0c, $00                  ;; 01:6765 ??????
     dw   gfxAttackSickle, data_01_68df                 ;; 01:676b ????
     dw   data_01_6ce4, data_01_6d13, data_01_6d42, data_01_6d71 ;; 01:676f ????????
@@ -5182,7 +5185,7 @@ data_01_678f:
     dw   data_01_6ce4, data_01_6d13, data_01_6d42, data_01_6d71 ;; 01:67a9 ????????
     dw   data_01_6ce4, data_01_6d13, data_01_6d42, data_01_6d71 ;; 01:67b1 ????????
 
-data_01_67b9:
+attackSpearFrame1:
     db   $04, $48, $02, $06, $09, $00                  ;; 01:67b9 ??????
     dw   data_08_7360, data_01_696f                    ;; 01:67bf ????
     dw   data_01_6e5c, data_01_6e7b, data_01_6e9a, data_01_6eb9 ;; 01:67c3 ????????
@@ -5198,7 +5201,7 @@ data_01_67e3:
     dw   data_01_6f14, data_01_6f1b, data_01_6f22, data_01_6f29 ;; 01:67fd ????????
     dw   data_01_6f14, data_01_6f1b, data_01_6f22, data_01_6f29 ;; 01:6805 ????????
 
-data_01_680d:
+attackMorningstarFrame1:
     db   $05, $48, $02, $06, $10, $00                  ;; 01:680d ??????
     dw   gfxAttackMorningStar, data_01_68df            ;; 01:6813 ????
     dw   data_01_7028, data_01_704b, data_01_706e, data_01_7091 ;; 01:6817 ????????
@@ -6059,7 +6062,7 @@ call_01_7647:
     ld   A, $00                                        ;; 01:76a8 $3e $00
     ret                                                ;; 01:76aa $c9
 
-call_01_76ab:
+objectJumpHandler:
     push AF                                            ;; 01:76ab $f5
     push BC                                            ;; 01:76ac $c5
     push AF                                            ;; 01:76ad $f5

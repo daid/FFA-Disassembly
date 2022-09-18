@@ -538,7 +538,7 @@ call_04_42e6:
     inc  A                                             ;; 04:42f5 $3c
     ret                                                ;; 04:42f6 $c9
 
-call_04_42f7:
+spawnBoss:
     ld   L, A                                          ;; 04:42f7 $6f
     ld   H, $00                                        ;; 04:42f8 $26 $00
     ld   E, L                                          ;; 04:42fa $5d
@@ -573,7 +573,7 @@ call_04_42f7:
     call call_04_4209                                  ;; 04:4330 $cd $09 $42
     ret                                                ;; 04:4333 $c9
 
-call_04_4334:
+rollBossHP:
     push DE                                            ;; 04:4334 $d5
     call getRandomByte                                 ;; 04:4335 $cd $1e $2b
     pop  DE                                            ;; 04:4338 $d1
@@ -942,7 +942,7 @@ call_04_4446:
     ld   A, $00                                        ;; 04:4572 $3e $00
     ret                                                ;; 04:4574 $c9
 
-call_04_4575:
+processBossDeath:
     ld   A, [wCurrentBossDataPointer.high]             ;; 04:4575 $fa $39 $d4
     ld   D, A                                          ;; 04:4578 $57
     ld   A, [wCurrentBossDataPointer]                  ;; 04:4579 $fa $38 $d4

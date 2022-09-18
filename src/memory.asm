@@ -438,7 +438,15 @@ wC4D1:
 wPlayerDamagedTimer:
     ds 2                                               ;; c4d2
 
-wC4D4:
+;Bit0: ?
+;Bit1: Dark
+;Bit2: Ston
+;Bit3: Moog
+;Bit4: Player Minecart Sprite
+;Bit5: Player Hurt Sprite
+;Bit6: Player Down Sprite
+;Bit7: ?
+wPlayerSpecialFlags:
     ds 12                                              ;; c4d4
 
 ; 8 records of $18 size, related to NPCs
@@ -519,10 +527,10 @@ wCF48:
 wCF50:
     ds 8                                               ;; cf50
 
-wCF58:
+wEquippedWeaponAnimationType:
     ds 1                                               ;; cf58
 
-wCF59:
+wEquippedItemAnimationType:
     ds 1                                               ;; cf59
 
 wCF5A:
@@ -540,7 +548,7 @@ wCF5D:
 wCF5E:
     ds 1                                               ;; cf5e
 
-wCF5F:
+wPlayerAttackAnimationFrame:
     ds 1                                               ;; cf5f
 
 wCF60:
@@ -624,29 +632,23 @@ wAnimatedTileWaterfallReversed1:
 wAnimatedTileWaterfallReversed2:
     ds 16                                              ;; d320
 
-AnimatedTileOcean1:
+wAnimatedTileOcean1:
     ds 16                                              ;; d330
 
-AnimatedTileOcean2:
+wAnimatedTileOcean2:
     ds 16                                              ;; d340
 
-AnimatedTileOcean3:
+wAnimatedTileOcean3:
     ds 16                                              ;; d350
 
-AnimatedTileOcean4:
+wAnimatedTileOcean4:
     ds 16                                              ;; d360
 
-AnimatedTileRiver:
+wAnimatedTileRiver:
     ds 16                                              ;; d370
 
-wD380:
-    ds 14                                              ;; d380
-
-wD38E:
-    ds 1                                               ;; d38e
-
-wD38F:
-    ds 1                                               ;; d38f
+wAnimatedTileScratchpad:
+    ds 16                                              ;; d380
 
 ; Points to graphics in bank $0B or $0C as a packed pointer from the map header.
 wMapGraphicsPointer:
@@ -712,10 +714,10 @@ wD3F2:
 wD3F3:
     ds 1                                               ;; d3f3
 
-wD3F4:
+wCurrentBossHP:
     ds 1                                               ;; d3f4
 
-wD3F5:
+.high:
     ds 1                                               ;; d3f5
 
 wD3F6:
@@ -756,7 +758,7 @@ wD442:
 wD446:
     ds 82                                              ;; d446
 
-wD498:
+wPlayerJumpArg:
     ds 1                                               ;; d498
 
 ; Counter used in various script opcodes, left at 0 after opcode is done.
@@ -766,7 +768,8 @@ wScriptOpCounter:
 wScriptOpCounter2:
     ds 1                                               ;; d49a
 
-wD49B:
+; This is the track that will play if not prempted by level up fanfare or status effect
+wMusic:
     ds 1                                               ;; d49b
 
 wD49C:
@@ -792,7 +795,8 @@ wD4A1:
 wD4A2:
     ds 1                                               ;; d4a2
 
-wD4A3:
+; Used while afflicted with Pois, Dark, Ston, or Moog
+wCurrentMusicStatusEffectBackup:
     ds 1                                               ;; d4a3
 
 wD4A4:
@@ -804,10 +808,10 @@ wDialogX:
 wDialogY:
     ds 1                                               ;; d4a8
 
-wD4A9:
+wDialogW:
     ds 1                                               ;; d4a9
 
-wD4AA:
+wDialogH:
     ds 1                                               ;; d4aa
 
 wD4AB:
@@ -887,22 +891,22 @@ wMagicInventory:
 wEquipmentInventory:
     ds 12                                              ;; d6dd
 
-wEquipedWeapon:
+wEquippedWeapon:
     ds 1                                               ;; d6e9
 
-wEquipedHelm:
+wEquippedHelm:
     ds 2                                               ;; d6ea
 
-wEquipedArmor:
+wEquippedArmor:
     ds 2                                               ;; d6ec
 
-wEquipedShield:
+wEquippedShield:
     ds 1                                               ;; d6ee
 
-wEquipedItem:
+wEquippedItem:
     ds 1                                               ;; d6ef
 
-wEquipedItemAmount:
+wEquippedItemAmount:
     ds 1                                               ;; d6f0
 
 wD6F1:
@@ -999,11 +1003,11 @@ wMoneyHigh:
     ds 1                                               ;; d7bf
 
 ; Status that the player currently has
-;Bit0: ?
+;Bit0: Pois
 ;Bit1: Dark
-;Bit2: ?
-;Bit3: ?
-;Bit4: ?
+;Bit2: Ston
+;Bit3: Moog
+;Bit4: Fuji's ASK
 ;Bit5: ?
 ;Bit6: ?
 ;Bit7: ?
@@ -1078,7 +1082,7 @@ wScriptFlags0F:
 wD7D6:
     ds 1                                               ;; d7d6
 
-wD7D7:
+wEquippedWeaponElements:
     ds 1                                               ;; d7d7
 
 wD7D8:
@@ -1101,7 +1105,8 @@ wD7E1:
 wD831:
     ds 17                                              ;; d831
 
-wD842:
+; Used during the level up fanfare
+wCurrentMusicLevelUpBackup:
     ds 1                                               ;; d842
 
 wD843:
@@ -1147,7 +1152,7 @@ wD84F:
 wD850:
     ds 1                                               ;; d850
 
-wD851:
+wEquippedItemElements:
     ds 2                                               ;; d851
 
 wD853:
@@ -1216,7 +1221,7 @@ wD869:
 wScriptBank:
     ds 1                                               ;; d86a
 
-wD86B:
+wVirtualScriptOpCodeFFArgument:
     ds 1                                               ;; d86b
 
 wD86C:
@@ -1484,7 +1489,7 @@ wD8C5:
 wD8C6:
     ds 1                                               ;; d8c6
 
-wD8C7:
+wVRAMClearFakeTile:
     ds 16                                              ;; d8c7
 
 wD8D7:

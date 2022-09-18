@@ -160,7 +160,7 @@ call_02_40c9:
     call call_02_40a9                                  ;; 02:4101 $cd $a9 $40
     ret                                                ;; 02:4104 $c9
 
-call_02_4105:
+animateTilesWaterfall:
     ld   A, [wD178]                                    ;; 02:4105 $fa $78 $d1
     cp   A, $00                                        ;; 02:4108 $fe $00
     ret  Z                                             ;; 02:410a $c8
@@ -172,7 +172,7 @@ call_02_4105:
     call call_02_411e                                  ;; 02:411a $cd $1e $41
     ret                                                ;; 02:411d $c9
 
-call_02_411e:
+animateTileDown:
     push AF                                            ;; 02:411e $f5
     push HL                                            ;; 02:411f $e5
     ld   DE, wD380                                     ;; 02:4120 $11 $80 $d3
@@ -199,7 +199,7 @@ call_02_411e:
     call requestBackgroundTileCopy                     ;; 02:4143 $cd $fe $41
     ret                                                ;; 02:4146 $c9
 
-call_02_4147:
+animateTilesReverseWaterfall:
     ld   A, [wD17A]                                    ;; 02:4147 $fa $7a $d1
     cp   A, $00                                        ;; 02:414a $fe $00
     ret  Z                                             ;; 02:414c $c8
@@ -211,7 +211,7 @@ call_02_4147:
     call call_02_4160                                  ;; 02:415c $cd $60 $41
     ret                                                ;; 02:415f $c9
 
-call_02_4160:
+animateTileUp:
     push AF                                            ;; 02:4160 $f5
     push HL                                            ;; 02:4161 $e5
     inc  HL                                            ;; 02:4162 $23
@@ -238,7 +238,7 @@ call_02_4160:
     call requestBackgroundTileCopy                     ;; 02:4185 $cd $fe $41
     ret                                                ;; 02:4188 $c9
 
-call_02_4189:
+animateTilesOcean:
     ld   A, [wD399]                                    ;; 02:4189 $fa $99 $d3
     and  A, $01                                        ;; 02:418c $e6 $01
     jr   NZ, .jr_02_41af                               ;; 02:418e $20 $1f
@@ -285,7 +285,7 @@ horizontalScrollTile:
     call requestBackgroundTileCopy                     ;; 02:41e5 $cd $fe $41
     ret                                                ;; 02:41e8 $c9
 
-call_02_41e9:
+animateTilesRight:
     ld   D, H                                          ;; 02:41e9 $54
     ld   E, L                                          ;; 02:41ea $5d
     ld   B, $10                                        ;; 02:41eb $06 $10
@@ -1152,7 +1152,7 @@ call_02_48a9:
     ld   A, $33                                        ;; 02:48c8 $3e $33
     jp   jp_02_5877                                    ;; 02:48ca $c3 $77 $58
 
-call_02_48cd:
+openLoadSaveBottomWindow:
     ld   A, $1c                                        ;; 02:48cd $3e $1c
     ld   [wDialogType], A                              ;; 02:48cf $ea $4a $d8
     ld   B, $01                                        ;; 02:48d2 $06 $01
@@ -1589,7 +1589,7 @@ jp_02_4ba1:
     ld   [wD853], A                                    ;; 02:4be7 $ea $53 $d8
     ret                                                ;; 02:4bea $c9
 
-call_02_4beb:
+reopenSelectWindowAfterSaveScreen:
     ld   A, $03                                        ;; 02:4beb $3e $03
     ld   [wD853], A                                    ;; 02:4bed $ea $53 $d8
     ld   HL, wD874                                     ;; 02:4bf0 $21 $74 $d8
@@ -1983,7 +1983,7 @@ call_02_4ec3:
     call runScriptByIndex                              ;; 02:4edd $cd $ad $31
     ret                                                ;; 02:4ee0 $c9
 
-call_02_4ee1:
+openLevelUpStatusScreen:
     ld   A, $37                                        ;; 02:4ee1 $3e $37
     ld   [wD853], A                                    ;; 02:4ee3 $ea $53 $d8
     call call_02_667a                                  ;; 02:4ee6 $cd $7a $66
@@ -1997,7 +1997,7 @@ call_02_4ee1:
     ldh  [hCurrentMusic], A                            ;; 02:4efa $e0 $90
     ret                                                ;; 02:4efc $c9
 
-call_02_4efd:
+openStatusScreen:
     call call_02_667a                                  ;; 02:4efd $cd $7a $66
     ret  NZ                                            ;; 02:4f00 $c0
     call clearStatusBar                                ;; 02:4f01 $cd $57 $51
@@ -2733,7 +2733,7 @@ removeItemFromList:
     ld   [HL], A                                       ;; 02:53ee $77
     ret                                                ;; 02:53ef $c9
 
-call_02_53f0:
+giveEquipment:
     ld   B, $0c                                        ;; 02:53f0 $06 $0c
     ld   C, A                                          ;; 02:53f2 $4f
     ld   HL, wEquipmentInventory                       ;; 02:53f3 $21 $dd $d6
@@ -2761,7 +2761,7 @@ call_02_5410:
     ld   DE, wEquipmentInventoryPowers                 ;; 02:5414 $11 $b3 $d6
     jr   jr_02_5435                                    ;; 02:5417 $18 $1c
 
-call_02_5419:
+giveItem:
     ld   B, $10                                        ;; 02:5419 $06 $10
     ld   C, A                                          ;; 02:541b $4f
     ld   HL, wItemInventory                            ;; 02:541c $21 $c5 $d6
@@ -2770,7 +2770,7 @@ call_02_5419:
     ld   DE, wItemInventoryAmount                      ;; 02:5423 $11 $9b $d6
     jr   jr_02_5435                                    ;; 02:5426 $18 $0d
 
-call_02_5428:
+giveMagic:
     ld   B, $08                                        ;; 02:5428 $06 $08
     ld   C, A                                          ;; 02:542a $4f
     ld   HL, wMagicInventory                           ;; 02:542b $21 $d5 $d6
@@ -3148,7 +3148,7 @@ jp_02_5638:
     call call_02_564c                                  ;; 02:5648 $cd $4c $56
     ret                                                ;; 02:564b $c9
 
-call_02_564c:
+clearLoadScreen:
     call drawDefaultStatusBar                          ;; 02:564c $cd $16 $6f
     call drawHPOnStatuBar                              ;; 02:564f $cd $29 $6f
     call drawManaOnStatusBar                           ;; 02:5652 $cd $3f $6f
@@ -3161,7 +3161,16 @@ call_02_564c:
     call drawWillBarCharge                             ;; 02:5666 $cd $23 $66
     ret                                                ;; 02:5669 $c9
 
-call_02_566a:
+; This clears a section of VRAM by using the VBlank tile copy function.
+; It has two issues:
+; 1) It schedules so many copies at once that the VBlank function
+;    takes extra time. This shows after loading a game when the shutter effect bounces
+;    around at the top of the screen for several frames.
+; 2) A problem if you try to convert this routine to CGB HDMA is that the fake tile
+;    it uses is not aligned properly.
+; B = (clear length) / 16
+; DE = clear location 
+clearVRAMArea:
     ld   A, $7f                                        ;; 02:566a $3e $7f
     ld   HL, wD8C7                                     ;; 02:566c $21 $c7 $d8
     push HL                                            ;; 02:566f $e5
@@ -3498,6 +3507,7 @@ data_02_5867:
     dw   wD6BF                                         ;; 02:5867 pP
     db   $c2, $d6, $c0, $d6, $c4, $d6                  ;; 02:5869 ??????
 
+;@data format=p amount=4
 data_02_586f:
     dw   wEquipedWeapon                                ;; 02:586f pP
     db   $ec, $d6, $ea, $d6, $ee, $d6                  ;; 02:5871 ??????
@@ -4623,7 +4633,7 @@ drawDialogTopOrBottomLine:
     ld   [HL+], A                                      ;; 02:6891 $22
     ret                                                ;; 02:6892 $c9
 
-call_02_6893:
+processWindowInput:
     ld   A, [wDialogType]                              ;; 02:6893 $fa $4a $d8
     cp   A, $15                                        ;; 02:6896 $fe $15
     jr   Z, .jr_02_68ac                                ;; 02:6898 $28 $12
@@ -5504,22 +5514,22 @@ loadRegisterState2:
     pop  BC                                            ;; 02:6dca $c1
     ret                                                ;; 02:6dcb $c9
 
-call_02_6dcc:
+getEquippedWeaponAP:
     push HL                                            ;; 02:6dcc $e5
     ld   A, [wEquipedWeapon]                           ;; 02:6dcd $fa $e9 $d6
     jr   jr_02_6deb                                    ;; 02:6dd0 $18 $19
 
-call_02_6dd2:
+getEquippedArmorDP:
     push HL                                            ;; 02:6dd2 $e5
     ld   A, [wEquipedArmor]                            ;; 02:6dd3 $fa $ec $d6
     jr   jr_02_6deb                                    ;; 02:6dd6 $18 $13
 
-call_02_6dd8:
+getEquippedArmorDP_Dup:
     push HL                                            ;; 02:6dd8 $e5
     ld   A, [wEquipedArmor]                            ;; 02:6dd9 $fa $ec $d6
     jr   jr_02_6deb                                    ;; 02:6ddc $18 $0d
 
-call_02_6dde:
+getEquippedShieldBlockElements:
     push HL                                            ;; 02:6dde $e5
     ld   A, [wEquipedShield]                           ;; 02:6ddf $fa $ee $d6
     ld   HL, equipmentDataTable + $0a                  ;; 02:6de2 $21 $f4 $61
@@ -6064,7 +6074,7 @@ call_02_714b:
     scf                                                ;; 02:7154 $37
     ret                                                ;; 02:7155 $c9
 
-call_02_7156:
+getEquippedWeaponElements:
     push HL                                            ;; 02:7156 $e5
     ld   A, [wEquipedWeapon]                           ;; 02:7157 $fa $e9 $d6
     ld   HL, equipmentDataTable + $0a                  ;; 02:715a $21 $f4 $61
@@ -6073,7 +6083,7 @@ call_02_7156:
     pop  HL                                            ;; 02:7163 $e1
     ret                                                ;; 02:7164 $c9
 
-call_02_7165:
+getEquippedItemElements:
     push HL                                            ;; 02:7165 $e5
     ld   A, [wEquipedItem]                             ;; 02:7166 $fa $ef $d6
     ld   HL, spellDataTable + $0a                      ;; 02:7169 $21 $e4 $5d
@@ -6082,7 +6092,7 @@ call_02_7165:
     ld   [wD851], A                                    ;; 02:7170 $ea $51 $d8
     ret                                                ;; 02:7173 $c9
 
-call_02_7174:
+getTableEntryAtIndexA:
     and  A, $7f                                        ;; 02:7174 $e6 $7f
     call indexIntoTable                                ;; 02:7176 $cd $82 $76
     ld   A, [HL+]                                      ;; 02:7179 $2a
@@ -6096,7 +6106,7 @@ call_02_717b:
     ld   H, A                                          ;; 02:7183 $67
     ret                                                ;; 02:7184 $c9
 
-call_02_7185:
+castSpellIfSufficientMana:
     push AF                                            ;; 02:7185 $f5
     ld   HL, spellDataTable + $08                      ;; 02:7186 $21 $e2 $5d
     call indexIntoTable                                ;; 02:7189 $cd $82 $76
@@ -6156,12 +6166,12 @@ setAToZero_2:
     xor  A, A                                          ;; 02:71db $af
     ret                                                ;; 02:71dc $c9
 
-call_02_71dd:
+openLoadScreen:
     ld   HL, wD874                                     ;; 02:71dd $21 $74 $d8
     set  2, [HL]                                       ;; 02:71e0 $cb $d6
     jr   jr_02_71e9                                    ;; 02:71e2 $18 $05
 
-call_02_71e4:
+openSaveScreen:
     ld   HL, wD874                                     ;; 02:71e4 $21 $74 $d8
     res  2, [HL]                                       ;; 02:71e7 $cb $96
 
@@ -7198,13 +7208,13 @@ jr_02_7870:
     pop  AF                                            ;; 02:787c $f1
     jr   jr_02_78af                                    ;; 02:787d $18 $30
 
-call_02_787f:
+startMoogStatusEffect:
     call C, call_02_78b5                               ;; 02:787f $dc $b5 $78
     ld   A, [wD87C]                                    ;; 02:7882 $fa $7c $d8
     call call_00_2fd4                                  ;; 02:7885 $cd $d4 $2f
     ret                                                ;; 02:7888 $c9
 
-call_02_7889:
+startStonStatusEffect:
     push AF                                            ;; 02:7889 $f5
     call C, call_00_0214                               ;; 02:788a $dc $14 $02
     ld   A, [wD87B]                                    ;; 02:788d $fa $7b $d8
@@ -7212,7 +7222,7 @@ call_02_7889:
     pop  AF                                            ;; 02:7893 $f1
     ret                                                ;; 02:7894 $c9
 
-call_02_7895:
+startDarkStatusEffect:
     push AF                                            ;; 02:7895 $f5
     call C, setDarkGraphicEffect                       ;; 02:7896 $dc $f4 $01
     ld   A, [wD87A]                                    ;; 02:7899 $fa $7a $d8
@@ -7220,7 +7230,7 @@ call_02_7895:
     pop  AF                                            ;; 02:789f $f1
     ret                                                ;; 02:78a0 $c9
 
-call_02_78a1:
+startPoisStatusEffect:
     push AF                                            ;; 02:78a1 $f5
     ld   A, $01                                        ;; 02:78a2 $3e $01
     ld   [wD877], A                                    ;; 02:78a4 $ea $77 $d8
@@ -7234,7 +7244,7 @@ jr_02_78af:
     call call_02_6c98                                  ;; 02:78b1 $cd $98 $6c
     ret                                                ;; 02:78b4 $c9
 
-call_02_78b5:
+setupMoogStatusEffect:
     call call_00_0220                                  ;; 02:78b5 $cd $20 $02
 
 moogleTempZeroDP:
@@ -7353,20 +7363,20 @@ call_02_7970:
     ld   E, A                                          ;; 02:7985 $5f
     ret                                                ;; 02:7986 $c9
 
-call_02_7987:
+endFujiStatusEffect:
     ld   A, [wD87D]                                    ;; 02:7987 $fa $7d $d8
     ld   B, $ef                                        ;; 02:798a $06 $ef
     call clearStatusEffects                            ;; 02:798c $cd $dd $79
     ret                                                ;; 02:798f $c9
 
-call_02_7990:
+endPoisStatusEffect:
     ld   A, [wD879]                                    ;; 02:7990 $fa $79 $d8
     ld   B, $fe                                        ;; 02:7993 $06 $fe
     call clearStatusEffects                            ;; 02:7995 $cd $dd $79
     call call_02_79d2                                  ;; 02:7998 $cd $d2 $79
     ret                                                ;; 02:799b $c9
 
-call_02_799c:
+endDarkStatusEffect:
     call removeDarkGraphicEffect                       ;; 02:799c $cd $04 $02
     ld   A, [wD87A]                                    ;; 02:799f $fa $7a $d8
     ld   B, $fd                                        ;; 02:79a2 $06 $fd
@@ -7374,7 +7384,7 @@ call_02_799c:
     call call_02_79d2                                  ;; 02:79a7 $cd $d2 $79
     ret                                                ;; 02:79aa $c9
 
-call_02_79ab:
+endStonStatusEffect:
     call call_00_021a                                  ;; 02:79ab $cd $1a $02
     ld   A, [wD87B]                                    ;; 02:79ae $fa $7b $d8
     ld   B, $fb                                        ;; 02:79b1 $06 $fb
@@ -7382,7 +7392,7 @@ call_02_79ab:
     call call_02_79d2                                  ;; 02:79b6 $cd $d2 $79
     ret                                                ;; 02:79b9 $c9
 
-call_02_79ba:
+endMoogStatusEffect:
     call call_00_0226                                  ;; 02:79ba $cd $26 $02
     ld   A, [wMoogleSavedDp]                           ;; 02:79bd $fa $82 $d8
     ld   [wDupTotalDP], A                              ;; 02:79c0 $ea $c3 $d6
@@ -7440,7 +7450,8 @@ call_02_7a00:
     call call_00_3000                                  ;; 02:7a1b $cd $00 $30
     ret                                                ;; 02:7a1e $c9
 
-call_02_7a1f:
+; Used by ITEMS and MAGIC windows if you try to select an empty slot
+playWindowErrorSound:
     push AF                                            ;; 02:7a1f $f5
     ld   A, $0e                                        ;; 02:7a20 $3e $0e
     call playSFX                                       ;; 02:7a22 $cd $7d $29
@@ -7496,7 +7507,8 @@ call_02_7a4e:
     pop  HL                                            ;; 02:7a65 $e1
     ret                                                ;; 02:7a66 $c9
 
-call_02_7a67:
+; e=x, d=y, c=width, b=height
+getWindowDimensions:
     ld   HL, wDialogX                                  ;; 02:7a67 $21 $a7 $d4
     ld   E, [HL]                                       ;; 02:7a6a $5e
     inc  HL                                            ;; 02:7a6b $23
@@ -7508,7 +7520,8 @@ call_02_7a67:
     inc  HL                                            ;; 02:7a71 $23
     ret                                                ;; 02:7a72 $c9
 
-call_02_7a73:
+; x=e, y=d, width=c, height=b
+setWindowDimensions:
     ld   HL, wDialogX                                  ;; 02:7a73 $21 $a7 $d4
     ld   [HL], E                                       ;; 02:7a76 $73
     inc  HL                                            ;; 02:7a77 $23
@@ -7619,28 +7632,30 @@ call_02_7abf:
     db   $01, $06, $ff, $07, $00, $07, $01, $07        ;; 02:7b0d ????????
     db   $00, $00                                      ;; 02:7b15 ??
 
-data_02_7b17:
+itemsListCure:
     db   $01, $09, $0a, $0b, $0c, $0d, $1d, $00        ;; 02:7b17 ........
 
-data_02_7b1f:
+itemsListHealStatus:
     db   $02, $0e, $0f, $10, $11, $12, $00             ;; 02:7b1f .......
 
-data_02_7b26:
+itemsListBuff:
     db   $34, $35, $36, $37, $00                       ;; 02:7b26 .....
 
-data_02_7b2b:
+itemsListSleep:
     db   $04, $14, $00                                 ;; 02:7b2b ...
 
-data_02_7b2e:
+itemsListMute:
     db   $03, $13, $00                                 ;; 02:7b2e ...
 
-data_02_7b31:
+; Unused items "Torch" and "Dwarf Lamp"
+; Seem to be unusable despite some code checking for them
+itemsListLights:
     db   $38, $39, $00                                 ;; 02:7b31 ...
 
-data_02_7b34:
+itemsListCrystal:
     db   $32, $00                                      ;; 02:7b34 ..
 
-data_02_7b36:
+itemsListDamage:
     db   $05, $07, $08, $17, $18, $00                  ;; 02:7b36 ......
 
 call_02_7b3c:
@@ -7680,7 +7695,7 @@ call_02_7b3c:
     ld   [wIntroScrollState], A                        ;; 02:7b81 $ea $86 $d8
     ret                                                ;; 02:7b84 $c9
 
-call_02_7b85:
+showTitleScreenMenu:
     ld   HL, wTitleScreenDelay                         ;; 02:7b85 $21 $8c $d8
     dec  [HL]                                          ;; 02:7b88 $35
     ret  NZ                                            ;; 02:7b89 $c0
@@ -7824,7 +7839,7 @@ call_02_7c3f:
     ld   [wIntroScrollState], A                        ;; 02:7c8b $ea $86 $d8
     ret                                                ;; 02:7c8e $c9
 
-call_02_7c8f:
+introScrollLoop:
     call updateJoypadInput_trampoline                  ;; 02:7c8f $cd $d1 $1e
     bit  4, C                                          ;; 02:7c92 $cb $61
     jr   NZ, .jr_02_7cbb                               ;; 02:7c94 $20 $25
@@ -7877,7 +7892,7 @@ jp_02_7cd8:
     ret                                                ;; 02:7cf5 $c9
 
 ;@ffa_text size=5 amount=3
-data_02_7cf6:
+startMenuOptions:
     TXT  "ITEM<00>"                                    ;; 02:7cf6 .....
     TXT  "MAGIC"                                       ;; 02:7cfb .....
     TXT  "EQUIP"                                       ;; 02:7d00 .....
@@ -7885,20 +7900,20 @@ data_02_7cf6:
     TXT  "ASK<00>"                                     ;; 02:7d05 ....
 
 ;@ffa_text size=15
-data_02_7d09:
+selectMenuOptions:
     TXT  "Save\nMap\nStatus"                           ;; 02:7d09 ...............
 
 ;@ffa_text amount=6
-data_02_7d18:
+levelUpStatOptions:
     TXT  "Power<00>"                                   ;; 02:7d18 ......
     TXT  "Wisdom<00>"                                  ;; 02:7d1e .......
     TXT  "StaminaWill<00>"                             ;; 02:7d25 ............
 
-data_02_7d31:
+yesNoOptions:
     TXT  "Yes<00>"                                     ;; 02:7d31 ....
     TXT  "No<00>"                                      ;; 02:7d35 ...
 
-data_02_7d38:
+levelUpText1:
     TXT  "   Level up!\nHP/MP recovered!<00>"          ;; 02:7d38 ..............................
 
 ;@ffa_text size=7
@@ -7906,7 +7921,7 @@ data_02_7d56:
     TXT  "Bought "                                     ;; 02:7d56 .......
 
 ;@ffa_text amount=2
-data_02_7d5d:
+venderGreetingText:
     TXT  "Hello!<00>"                                  ;; 02:7d5d .......
     TXT  "May I help you?<00>"                         ;; 02:7d64 ................
     db   $00, $00                                      ;; 02:7d74 ..
@@ -7917,36 +7932,36 @@ data_02_7d76:
     TXT  "?<00>"                                       ;; 02:7d85 ??
 
 ;@ffa_text
-data_02_7d87:
+venderConfirmSell:
     TXT  "SellNo<00>"                                  ;; 02:7d87 .......
 
 ;@ffa_text size=4 amount=3
-data_02_7d8e:
+vendorOptions:
     TXT  "Buy<00>"                                     ;; 02:7d8e ....
     TXT  "Sell"                                        ;; 02:7d92 ....
     TXT  "Exit"                                        ;; 02:7d96 ....
 
 ;@ffa_text size=2
-data_02_7d9a:
+statusScreenGoldLabel:
     TXT  "GP"                                          ;; 02:7d9a ..
 
 ;@ffa_text amount=4
-data_02_7d9c:
+statusScreenStatLabels:
     TXT  "Stamn<00>"                                   ;; 02:7d9c ......
     TXT  "Power<00>"                                   ;; 02:7da2 ......
     TXT  "Wisdm<00>"                                   ;; 02:7da8 ......
     TXT  "Will<00>"                                    ;; 02:7dae .....
 
 ;@ffa_text size=9
-data_02_7db3:
+statusScreenHPLabel:
     TXT  "HP   /   "                                   ;; 02:7db3 .........
 
 ;@ffa_text size=6
-data_02_7dbc:
+statusScreenMPLabel:
     TXT  "MP   /"                                      ;; 02:7dbc ......
 
 ;@ffa_text
-data_02_7dc2:
+levelUpText2:
     TXT  " Level up! Selectyour growth type.<00>"      ;; 02:7dc2 ..................................?
 
 ;@ffa_text size=4 amount=5
@@ -7978,7 +7993,7 @@ nameEntryInputOptions:
     TXT  "56789   <SPEL>"                              ;; 02:7e49 .........
 
 ;@ffa_text size=8 amount=2
-data_02_7e52:
+titleScreenOptions:
     TXT  "New Game"                                    ;; 02:7e52 ........
     TXT  "Continue"                                    ;; 02:7e5a ........
 
