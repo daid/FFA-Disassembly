@@ -737,7 +737,7 @@ call_09_4399:
     pop  DE                                            ;; 09:43e3 $d1
     jr   Z, .jr_09_440a                                ;; 09:43e4 $28 $24
     push DE                                            ;; 09:43e6 $d5
-    call call_00_3dcd                                  ;; 09:43e7 $cd $cd $3d
+    call getEquippedShieldBlockElements_SaveBC         ;; 09:43e7 $cd $cd $3d
     pop  DE                                            ;; 09:43ea $d1
     or   A, A                                          ;; 09:43eb $b7
     jr   Z, .jr_09_440a                                ;; 09:43ec $28 $1c

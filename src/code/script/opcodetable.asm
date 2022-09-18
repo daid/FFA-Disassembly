@@ -14,8 +14,8 @@ scriptOpcodeTable:
     dw   scriptOpCodeIfFlags                           ;; 02:4586 pP
     dw   scriptOpCodeIfEquiped                         ;; 02:4588 pP
     dw   scriptOpCodeIfInventory                       ;; 02:458a pP
-    dw   scriptOpCode0B                                ;; 02:458c pP
-    dw   scriptOpCode0C                                ;; 02:458e ??
+    dw   scriptOpCodeIfTriggeredOnBy                   ;; 02:458c pP
+    dw   scriptOpCodeIfTriggeredOffBy                  ;; 02:458e ??
     dw   scriptOpCodeNOP                               ;; 02:4590 ??
     dw   scriptOpCodeNOP                               ;; 02:4592 ??
     dw   scriptOpCodeNOP                               ;; 02:4594 ??
@@ -29,8 +29,8 @@ scriptOpcodeTable:
     dw   scriptOpCodeNpc1DirectionLeft                 ;; 02:45a4 pP
     dw   scriptOpCodeNpc1Delete                        ;; 02:45a6 ??
     dw   scriptOpCodeNpc1SetPosition                   ;; 02:45a8 ??
-    dw   scriptOpCode1A                                ;; 02:45aa ??
-    dw   scriptOpCode1B                                ;; 02:45ac ??
+    dw   scriptOpCodeNpc1WalkSpeed4                    ;; 02:45aa ??
+    dw   scriptOpCodeNpc1WalkSpeedDefault              ;; 02:45ac ??
     dw   scriptOpCodeNOP                               ;; 02:45ae ??
     dw   scriptOpCodeNOP                               ;; 02:45b0 ??
     dw   scriptOpCodeNOP                               ;; 02:45b2 ??
@@ -45,8 +45,8 @@ scriptOpcodeTable:
     dw   scriptOpCodeNpc2DirectionLeft                 ;; 02:45c4 pP
     dw   scriptOpCodeNpc2Delete                        ;; 02:45c6 pP
     dw   scriptOpCodeNpc2SetPosition                   ;; 02:45c8 ??
-    dw   scriptOpCode2A                                ;; 02:45ca ??
-    dw   scriptOpCode2B                                ;; 02:45cc ??
+    dw   scriptOpCodeNpc2WalkSpeed4                    ;; 02:45ca ??
+    dw   scriptOpCodeNpc2WalkSpeedDefault              ;; 02:45cc ??
     dw   scriptOpCodeNOP                               ;; 02:45ce ??
     dw   scriptOpCodeNOP                               ;; 02:45d0 ??
     dw   scriptOpCodeNOP                               ;; 02:45d2 ??
@@ -61,8 +61,8 @@ scriptOpcodeTable:
     dw   scriptOpCodeNpc3DirectionLeft                 ;; 02:45e4 ??
     dw   scriptOpCodeNpc3Delete                        ;; 02:45e6 ??
     dw   scriptOpCodeNpc3SetPosition                   ;; 02:45e8 ??
-    dw   scriptOpCode3A                                ;; 02:45ea ??
-    dw   scriptOpCode3B                                ;; 02:45ec ??
+    dw   scriptOpCodeNpc3WalkSpeed4                    ;; 02:45ea ??
+    dw   scriptOpCodeNpc3WalkSpeedDefault              ;; 02:45ec ??
     dw   scriptOpCodeNOP                               ;; 02:45ee ??
     dw   scriptOpCodeNOP                               ;; 02:45f0 ??
     dw   scriptOpCodeNOP                               ;; 02:45f2 ??
@@ -77,8 +77,8 @@ scriptOpcodeTable:
     dw   scriptOpCodeNpc4DirectionLeft                 ;; 02:4604 ??
     dw   scriptOpCodeNpc4Delete                        ;; 02:4606 ??
     dw   scriptOpCodeNpc4SetPosition                   ;; 02:4608 ??
-    dw   scriptOpCode4A                                ;; 02:460a ??
-    dw   scriptOpCode4B                                ;; 02:460c ??
+    dw   scriptOpCodeNpc4WalkSpeed4                    ;; 02:460a ??
+    dw   scriptOpCodeNpc4WalkSpeedDefault              ;; 02:460c ??
     dw   scriptOpCodeNOP                               ;; 02:460e ??
     dw   scriptOpCodeNOP                               ;; 02:4610 ??
     dw   scriptOpCodeNOP                               ;; 02:4612 ??
@@ -93,8 +93,8 @@ scriptOpcodeTable:
     dw   scriptOpCodeNpc5DirectionLeft                 ;; 02:4624 ??
     dw   scriptOpCodeNpc5Delete                        ;; 02:4626 ??
     dw   scriptOpCodeNpc5SetPosition                   ;; 02:4628 ??
-    dw   scriptOpCode5A                                ;; 02:462a ??
-    dw   scriptOpCode5B                                ;; 02:462c ??
+    dw   scriptOpCodeNpc5WalkSpeed4                    ;; 02:462a ??
+    dw   scriptOpCodeNpc5WalkSpeedDefault              ;; 02:462c ??
     dw   scriptOpCodeNOP                               ;; 02:462e ??
     dw   scriptOpCodeNOP                               ;; 02:4630 ??
     dw   scriptOpCodeNOP                               ;; 02:4632 ??
@@ -109,8 +109,8 @@ scriptOpcodeTable:
     dw   scriptOpCodeNpc6DirectionLeft                 ;; 02:4644 ??
     dw   scriptOpCodeNpc6Delete                        ;; 02:4646 ??
     dw   scriptOpCodeNpc6SetPosition                   ;; 02:4648 ??
-    dw   scriptOpCode6A                                ;; 02:464a ??
-    dw   scriptOpCode6B                                ;; 02:464c ??
+    dw   scriptOpCodeNpc6WalkSpeed4                    ;; 02:464a ??
+    dw   scriptOpCodeNpc6WalkSpeedDefault              ;; 02:464c ??
     dw   scriptOpCodeNOP                               ;; 02:464e ??
     dw   scriptOpCodeNOP                               ;; 02:4650 ??
     dw   scriptOpCodeNOP                               ;; 02:4652 ??
@@ -125,8 +125,8 @@ scriptOpcodeTable:
     dw   scriptOpCodeNpc7DirectionLeft                 ;; 02:4664 ??
     dw   scriptOpCodeNpc7Delete                        ;; 02:4666 ??
     dw   scriptOpCodeNpc7SetPosition                   ;; 02:4668 ??
-    dw   scriptOpCode7A                                ;; 02:466a ??
-    dw   scriptOpCode7B                                ;; 02:466c ??
+    dw   scriptOpCodeNpc7WalkSpeed4                    ;; 02:466a ??
+    dw   scriptOpCodeNpc7WalkSpeedDefault              ;; 02:466c ??
     dw   scriptOpCodeNOP                               ;; 02:466e ??
     dw   scriptOpCodeNOP                               ;; 02:4670 ??
     dw   scriptOpCodeNOP                               ;; 02:4672 ??
@@ -157,10 +157,10 @@ scriptOpcodeTable:
     dw   scriptOpCodeFollowerDirectionLeft             ;; 02:46a4 ??
     dw   scriptOpCodeFollowerDelete                    ;; 02:46a6 ??
     dw   scriptOpCodeFollowerSetPosition               ;; 02:46a8 ??
-    dw   scriptOpCode9A                                ;; 02:46aa ??
-    dw   scriptOpCode9B                                ;; 02:46ac ??
+    dw   scriptOpCodeFollowerWalkSpeed4                ;; 02:46aa ??
+    dw   scriptOpCodeFollowerWalkSpeedDefault          ;; 02:46ac ??
     dw   scriptOpCodeGiveFollower                      ;; 02:46ae pP
-    dw   scriptOpCode9D                                ;; 02:46b0 ??
+    dw   scriptOpCodeGiveFollower_Dup                  ;; 02:46b0 ??
     dw   scriptOpCodeNOP                               ;; 02:46b2 ??
     dw   scriptOpCodeNOP                               ;; 02:46b4 ??
     dw   scriptOpCodePlayerOnChocobo                   ;; 02:46b6 ??
@@ -200,7 +200,7 @@ scriptOpcodeTable:
     dw   scriptOpCodeClearStatus                       ;; 02:46fa ??
     dw   scriptOpCodeAltNOP                            ;; 02:46fc ??
     dw   scriptOpCodeGiveStatus                        ;; 02:46fe pP
-    dw   scriptOpCodeC5                                ;; 02:4700 pP
+    dw   scriptOpCodeSetLocationFlags                  ;; 02:4700 pP
     dw   scriptOpCodeStartNameEntry                    ;; 02:4702 pP
     dw   scriptOpCodeRNG                               ;; 02:4704 ??
     dw   scriptOpCodeResetGame                         ;; 02:4706 pP
@@ -216,15 +216,15 @@ scriptOpcodeTable:
     dw   scriptOpCodeGiveXP                            ;; 02:471a ??
     dw   scriptOpCodeTakeXP                            ;; 02:471c ??
     dw   scriptOpCodeGiveItem                          ;; 02:471e pP
-    dw   scriptOpCodeD5                                ;; 02:4720 ??
+    dw   scriptOpCodeRemoveItemFromInventory           ;; 02:4720 ??
     dw   scriptOpCodeGiveMagic                         ;; 02:4722 ??
-    dw   scriptOpCodeD7                                ;; 02:4724 ??
+    dw   scriptOpCodeRemoveMagicFromInventory          ;; 02:4724 ??
     dw   scriptOpCodeGiveEquipment                     ;; 02:4726 ??
-    dw   scriptOpCodeD9                                ;; 02:4728 ??
+    dw   scriptOpCodeRemoveEquipmentFromInventory      ;; 02:4728 ??
     dw   scriptOpCodeSetFlag                           ;; 02:472a pP
     dw   scriptOpCodeClearFlag                         ;; 02:472c pP
-    dw   scriptOpCodeDC                                ;; 02:472e pP
-    dw   scriptOpCodeDD                                ;; 02:4730 pP
+    dw   scriptOpCodeTextSpeedLockOn                   ;; 02:472e pP
+    dw   scriptOpCodeTextSpeedLockOff                  ;; 02:4730 pP
     dw   scriptOpCodeTakeEquipedItem                   ;; 02:4732 ??
     dw   scriptOpCodeNOP                               ;; 02:4734 ??
     dw   scriptOpCodeOpenNorthDoor                     ;; 02:4736 pP
@@ -240,8 +240,8 @@ scriptOpcodeTable:
     dw   scriptOpCodeScrollRoomLeft                    ;; 02:474a pP
     dw   scriptOpCodeScrollRoomRight                   ;; 02:474c pP
     dw   scriptOpCodeRunRoomScript                     ;; 02:474e pP
-    dw   scriptOpCodeED                                ;; 02:4750 ??
-    dw   scriptOpCodeRunroomAllKilledScript            ;; 02:4752 ??
+    dw   scriptOpCodeRunRoomExitScript                 ;; 02:4750 ??
+    dw   scriptOpCodeRunRoomAllKilledScript            ;; 02:4752 ??
     dw   scriptOpCodeSetNextRoom                       ;; 02:4754 pP
     dw   scriptOpCodeDelay                             ;; 02:4756 pP
     dw   scriptOpCodeFullHealDummyFA                   ;; 02:4758 ??

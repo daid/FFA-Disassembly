@@ -160,7 +160,7 @@ call_00_016f:
     jr   Z, .jr_00_018b                                ;; 00:0178 $28 $11
     cp   A, $f5                                        ;; 00:017a $fe $f5
     jr   Z, .jr_00_018e                                ;; 00:017c $28 $10
-    ld   A, [wC4D4]                                    ;; 00:017e $fa $d4 $c4
+    ld   A, [wPlayerSpecialFlags]                      ;; 00:017e $fa $d4 $c4
     bit  4, A                                          ;; 00:0181 $cb $67
     jr   NZ, .jr_00_0191                               ;; 00:0183 $20 $0c
     ld   A, $00                                        ;; 00:0185 $3e $00
@@ -180,62 +180,62 @@ call_00_016f:
 
 scriptOpCodePlayerOnChocobo:
     push HL                                            ;; 00:0194 $e5
-    call call_00_019d                                  ;; 00:0195 $cd $9d $01
+    call setPlayerOnChocobo_trampoline                 ;; 00:0195 $cd $9d $01
     pop  HL                                            ;; 00:0198 $e1
     call getNextScriptInstruction                      ;; 00:0199 $cd $27 $37
     ret                                                ;; 00:019c $c9
 
 setPlayerOnChocobo_trampoline:
-    jp_to_bank 01, call_01_5136                        ;; 00:019d $f5 $3e $09 $c3 $d7 $1e
+    jp_to_bank 01, setPlayerOnChocobo                  ;; 00:019d $f5 $3e $09 $c3 $d7 $1e
 
 scriptOpCodePlayerOnChocobot:
     push HL                                            ;; 00:01a3 $e5
-    call call_00_01ac                                  ;; 00:01a4 $cd $ac $01
+    call setPlayerOnChocobot_trampoline                ;; 00:01a4 $cd $ac $01
     pop  HL                                            ;; 00:01a7 $e1
     call getNextScriptInstruction                      ;; 00:01a8 $cd $27 $37
     ret                                                ;; 00:01ab $c9
 
 setPlayerOnChocobot_trampoline:
-    jp_to_bank 01, call_01_5156                        ;; 00:01ac $f5 $3e $0a $c3 $d7 $1e
+    jp_to_bank 01, setPlayerOnChocobot                 ;; 00:01ac $f5 $3e $0a $c3 $d7 $1e
 
 scriptOpCodePlayerOnChocobotWater:
     push HL                                            ;; 00:01b2 $e5
-    call call_00_01bb                                  ;; 00:01b3 $cd $bb $01
+    call setPlayerOnChocoboat_trampoline               ;; 00:01b3 $cd $bb $01
     pop  HL                                            ;; 00:01b6 $e1
     call getNextScriptInstruction                      ;; 00:01b7 $cd $27 $37
     ret                                                ;; 00:01ba $c9
 
 setPlayerOnChocoboat_trampoline:
-    jp_to_bank 01, call_01_5176                        ;; 00:01bb $f5 $3e $0b $c3 $d7 $1e
+    jp_to_bank 01, setPlayerOnChocoboat                ;; 00:01bb $f5 $3e $0b $c3 $d7 $1e
 
 scriptOpCodeSetPlayerNormalSprite:
     push HL                                            ;; 00:01c1 $e5
-    call call_00_01ca                                  ;; 00:01c2 $cd $ca $01
+    call setPlayerNormalSprite_trampoline              ;; 00:01c2 $cd $ca $01
     pop  HL                                            ;; 00:01c5 $e1
     call getNextScriptInstruction                      ;; 00:01c6 $cd $27 $37
     ret                                                ;; 00:01c9 $c9
 
 setPlayerNormalSprite_trampoline:
-    jp_to_bank 01, call_01_50f9                        ;; 00:01ca $f5 $3e $08 $c3 $d7 $1e
+    jp_to_bank 01, setPlayerNormalSprite               ;; 00:01ca $f5 $3e $08 $c3 $d7 $1e
 
 scriptOpCodePlayerInMinecart:
-    ld   A, [wC4D4]                                    ;; 00:01d0 $fa $d4 $c4
+    ld   A, [wPlayerSpecialFlags]                      ;; 00:01d0 $fa $d4 $c4
     set  4, A                                          ;; 00:01d3 $cb $e7
-    ld   [wC4D4], A                                    ;; 00:01d5 $ea $d4 $c4
+    ld   [wPlayerSpecialFlags], A                      ;; 00:01d5 $ea $d4 $c4
     call getNextScriptInstruction                      ;; 00:01d8 $cd $27 $37
     ret                                                ;; 00:01db $c9
 
 scriptOpCodeSetPlayerHurtSprite:
-    ld   A, [wC4D4]                                    ;; 00:01dc $fa $d4 $c4
+    ld   A, [wPlayerSpecialFlags]                      ;; 00:01dc $fa $d4 $c4
     set  5, A                                          ;; 00:01df $cb $ef
-    ld   [wC4D4], A                                    ;; 00:01e1 $ea $d4 $c4
+    ld   [wPlayerSpecialFlags], A                      ;; 00:01e1 $ea $d4 $c4
     call getNextScriptInstruction                      ;; 00:01e4 $cd $27 $37
     ret                                                ;; 00:01e7 $c9
 
 scriptOpCodeSetPlayerLaydownSprite:
-    ld   A, [wC4D4]                                    ;; 00:01e8 $fa $d4 $c4
+    ld   A, [wPlayerSpecialFlags]                      ;; 00:01e8 $fa $d4 $c4
     set  6, A                                          ;; 00:01eb $cb $f7
-    ld   [wC4D4], A                                    ;; 00:01ed $ea $d4 $c4
+    ld   [wPlayerSpecialFlags], A                      ;; 00:01ed $ea $d4 $c4
     call getNextScriptInstruction                      ;; 00:01f0 $cd $27 $37
     ret                                                ;; 00:01f3 $c9
 
@@ -244,7 +244,7 @@ setDarkGraphicEffect:
     ld   [wVideoBGP], A                                ;; 00:01f6 $ea $aa $c0
     ld   A, $bf                                        ;; 00:01f9 $3e $bf
     ld   [wVideoOBP1], A                               ;; 00:01fb $ea $ac $c0
-    ld   HL, wC4D4                                     ;; 00:01fe $21 $d4 $c4
+    ld   HL, wPlayerSpecialFlags                       ;; 00:01fe $21 $d4 $c4
     set  1, [HL]                                       ;; 00:0201 $cb $ce
     ret                                                ;; 00:0203 $c9
 
@@ -253,27 +253,27 @@ removeDarkGraphicEffect:
     ld   [wVideoBGP], A                                ;; 00:0206 $ea $aa $c0
     ld   A, $d0                                        ;; 00:0209 $3e $d0
     ld   [wVideoOBP1], A                               ;; 00:020b $ea $ac $c0
-    ld   HL, wC4D4                                     ;; 00:020e $21 $d4 $c4
+    ld   HL, wPlayerSpecialFlags                       ;; 00:020e $21 $d4 $c4
     res  1, [HL]                                       ;; 00:0211 $cb $8e
     ret                                                ;; 00:0213 $c9
 
 setStonEffectFlag:
-    ld   HL, wC4D4                                     ;; 00:0214 $21 $d4 $c4
+    ld   HL, wPlayerSpecialFlags                       ;; 00:0214 $21 $d4 $c4
     set  2, [HL]                                       ;; 00:0217 $cb $d6
     ret                                                ;; 00:0219 $c9
 
 removeStonEffectFlag:
-    ld   HL, wC4D4                                     ;; 00:021a $21 $d4 $c4
+    ld   HL, wPlayerSpecialFlags                       ;; 00:021a $21 $d4 $c4
     res  2, [HL]                                       ;; 00:021d $cb $96
     ret                                                ;; 00:021f $c9
 
 setMoogEffectFlag:
-    ld   HL, wC4D4                                     ;; 00:0220 $21 $d4 $c4
+    ld   HL, wPlayerSpecialFlags                       ;; 00:0220 $21 $d4 $c4
     set  3, [HL]                                       ;; 00:0223 $cb $de
     ret                                                ;; 00:0225 $c9
 
 removeMoogEffectFlag:
-    ld   HL, wC4D4                                     ;; 00:0226 $21 $d4 $c4
+    ld   HL, wPlayerSpecialFlags                       ;; 00:0226 $21 $d4 $c4
     res  3, [HL]                                       ;; 00:0229 $cb $9e
     ret                                                ;; 00:022b $c9
 
@@ -299,7 +299,7 @@ createPlayerObject_trampoline:
     jp_to_bank 01, createPlayerObject                  ;; 00:0250 $f5 $3e $04 $c3 $d7 $1e
 
 call_00_0256:
-    jp_to_bank 01, call_01_50ac                        ;; 00:0256 $f5 $3e $07 $c3 $d7 $1e
+    jp_to_bank 01, playerHit                           ;; 00:0256 $f5 $3e $07 $c3 $d7 $1e
 
 call_00_025c:
     ld   A, $06                                        ;; 00:025c $3e $06
@@ -739,7 +739,7 @@ call_00_04aa:
     jp_to_bank 04, call_04_4090                        ;; 00:04dc $f5 $3e $00 $c3 $64 $1f
 
 spawnBoss_trampoline:
-    jp_to_bank 04, call_04_42f7                        ;; 00:04e2 $f5 $3e $01 $c3 $64 $1f
+    jp_to_bank 04, spawnBoss                           ;; 00:04e2 $f5 $3e $01 $c3 $64 $1f
 
 call_00_04e8:
     ld   A, [wD3E8]                                    ;; 00:04e8 $fa $e8 $d3
@@ -1492,7 +1492,7 @@ call_00_08d4:
     ld   A, B                                          ;; 00:0937 $78
     call call_00_18dd                                  ;; 00:0938 $cd $dd $18
     jr   Z, .jr_00_095c                                ;; 00:093b $28 $1f
-    call call_00_2f76                                  ;; 00:093d $cd $76 $2f
+    call tileAttack_trampoline                         ;; 00:093d $cd $76 $2f
     pop  BC                                            ;; 00:0940 $c1
     pop  DE                                            ;; 00:0941 $d1
     pop  HL                                            ;; 00:0942 $e1
@@ -2209,7 +2209,7 @@ call_00_0d08:
 scriptOpCodePlayerJump:
     ld   A, [wScriptOpCounter]                         ;; 00:0d1b $fa $99 $d4
     cp   A, $00                                        ;; 00:0d1e $fe $00
-    call Z, call_00_0d51                               ;; 00:0d20 $cc $51 $0d
+    call Z, playerJumpInit                             ;; 00:0d20 $cc $51 $0d
     ld   B, A                                          ;; 00:0d23 $47
     ld   A, [wScriptOpCounter2]                        ;; 00:0d24 $fa $9a $d4
     dec  A                                             ;; 00:0d27 $3d
@@ -2221,11 +2221,11 @@ scriptOpCodePlayerJump:
     call getObjectDirection                            ;; 00:0d30 $cd $99 $0c
     ld   D, A                                          ;; 00:0d33 $57
     pop  BC                                            ;; 00:0d34 $c1
-    ld   A, [wD498]                                    ;; 00:0d35 $fa $98 $d4
+    ld   A, [wPlayerJumpArg]                           ;; 00:0d35 $fa $98 $d4
     ld   E, A                                          ;; 00:0d38 $5f
     ld   A, B                                          ;; 00:0d39 $78
     ld   B, $00                                        ;; 00:0d3a $06 $00
-    call call_00_2c27                                  ;; 00:0d3c $cd $27 $2c
+    call objectJumpHandler_trampoline                  ;; 00:0d3c $cd $27 $2c
     pop  HL                                            ;; 00:0d3f $e1
     ld   [wScriptOpCounter], A                         ;; 00:0d40 $ea $99 $d4
     cp   A, $00                                        ;; 00:0d43 $fe $00
@@ -2240,7 +2240,7 @@ scriptOpCodePlayerJump:
 playerJumpInit:
     ld   A, [HL+]                                      ;; 00:0d51 $2a
     sub  A, $20                                        ;; 00:0d52 $d6 $20
-    ld   [wD498], A                                    ;; 00:0d54 $ea $98 $d4
+    ld   [wPlayerJumpArg], A                           ;; 00:0d54 $ea $98 $d4
     ld   A, $01                                        ;; 00:0d57 $3e $01
     ld   [wScriptOpCounter2], A                        ;; 00:0d59 $ea $9a $d4
     ld   A, $00                                        ;; 00:0d5c $3e $00
@@ -2423,21 +2423,21 @@ call_00_0e44:
 scriptOpCodeSpawnBoss:
     ld   A, [HL+]                                      ;; 00:0e69 $2a
     push HL                                            ;; 00:0e6a $e5
-    call call_00_04e2                                  ;; 00:0e6b $cd $e2 $04
+    call spawnBoss_trampoline                          ;; 00:0e6b $cd $e2 $04
     pop  HL                                            ;; 00:0e6e $e1
     call getNextScriptInstruction                      ;; 00:0e6f $cd $27 $37
     ret                                                ;; 00:0e72 $c9
 
 scriptOpCodeRunRoomScript:
-    call call_00_24d4                                  ;; 00:0e73 $cd $d4 $24
+    call runRoomScript                                 ;; 00:0e73 $cd $d4 $24
     ret                                                ;; 00:0e76 $c9
 
 scriptOpCodeRunRoomExitScript:
-    call call_00_24f9                                  ;; 00:0e77 $cd $f9 $24
+    call runRoomExitScript                             ;; 00:0e77 $cd $f9 $24
     ret                                                ;; 00:0e7a $c9
 
 scriptOpCodeRunRoomAllKilledScript:
-    call call_00_251f                                  ;; 00:0e7b $cd $1f $25
+    call runRoomAllKilledScript                        ;; 00:0e7b $cd $1f $25
     ret                                                ;; 00:0e7e $c9
 
 scriptOpCodeSetNextRoom:
@@ -2446,7 +2446,7 @@ scriptOpCodeSetNextRoom:
     ld   A, [HL+]                                      ;; 00:0e81 $2a
     ld   D, A                                          ;; 00:0e82 $57
     push HL                                            ;; 00:0e83 $e5
-    call call_00_0454                                  ;; 00:0e84 $cd $54 $04
+    call overrideNextRoom                              ;; 00:0e84 $cd $54 $04
     pop  HL                                            ;; 00:0e87 $e1
     call getNextScriptInstruction                      ;; 00:0e88 $cd $27 $37
     ret                                                ;; 00:0e8b $c9
@@ -2532,7 +2532,7 @@ call_00_0eef:
 scriptOpCodeGiveFollower:
     ld   A, [HL+]                                      ;; 00:0f0a $2a
     push HL                                            ;; 00:0f0b $e5
-    call call_00_2895                                  ;; 00:0f0c $cd $95 $28
+    call giveFollower_trampoline                       ;; 00:0f0c $cd $95 $28
     pop  HL                                            ;; 00:0f0f $e1
     call getNextScriptInstruction                      ;; 00:0f10 $cd $27 $37
     ret                                                ;; 00:0f13 $c9
@@ -2540,7 +2540,7 @@ scriptOpCodeGiveFollower:
 scriptOpCodeGiveFollower_Dup:
     ld   A, [HL+]                                      ;; 00:0f14 $2a
     push HL                                            ;; 00:0f15 $e5
-    call call_00_2895                                  ;; 00:0f16 $cd $95 $28
+    call giveFollower_trampoline                       ;; 00:0f16 $cd $95 $28
     pop  HL                                            ;; 00:0f19 $e1
     call getNextScriptInstruction                      ;; 00:0f1a $cd $27 $37
     ret                                                ;; 00:0f1d $c9
@@ -2616,7 +2616,7 @@ scriptOpCodeScrollRoomUp:
 scriptOpCodeOpenEastDoor:
     push HL                                            ;; 00:0f88 $e5
     ld   A, $01                                        ;; 00:0f89 $3e $01
-    call call_00_235b                                  ;; 00:0f8b $cd $5b $23
+    call openDoor                                      ;; 00:0f8b $cd $5b $23
     pop  HL                                            ;; 00:0f8e $e1
     call getNextScriptInstruction                      ;; 00:0f8f $cd $27 $37
     ret                                                ;; 00:0f92 $c9
@@ -2624,7 +2624,7 @@ scriptOpCodeOpenEastDoor:
 scriptOpCodeCloseEastDoor:
     push HL                                            ;; 00:0f93 $e5
     ld   A, $01                                        ;; 00:0f94 $3e $01
-    call call_00_22fe                                  ;; 00:0f96 $cd $fe $22
+    call closeDoor                                     ;; 00:0f96 $cd $fe $22
     pop  HL                                            ;; 00:0f99 $e1
     call getNextScriptInstruction                      ;; 00:0f9a $cd $27 $37
     ret                                                ;; 00:0f9d $c9
@@ -2632,7 +2632,7 @@ scriptOpCodeCloseEastDoor:
 scriptOpCodeOpenWestDoor:
     push HL                                            ;; 00:0f9e $e5
     ld   A, $02                                        ;; 00:0f9f $3e $02
-    call call_00_235b                                  ;; 00:0fa1 $cd $5b $23
+    call openDoor                                      ;; 00:0fa1 $cd $5b $23
     pop  HL                                            ;; 00:0fa4 $e1
     call getNextScriptInstruction                      ;; 00:0fa5 $cd $27 $37
     ret                                                ;; 00:0fa8 $c9
@@ -2640,7 +2640,7 @@ scriptOpCodeOpenWestDoor:
 scriptOpCodeCloseWestDoor:
     push HL                                            ;; 00:0fa9 $e5
     ld   A, $02                                        ;; 00:0faa $3e $02
-    call call_00_22fe                                  ;; 00:0fac $cd $fe $22
+    call closeDoor                                     ;; 00:0fac $cd $fe $22
     pop  HL                                            ;; 00:0faf $e1
     call getNextScriptInstruction                      ;; 00:0fb0 $cd $27 $37
     ret                                                ;; 00:0fb3 $c9
@@ -2648,7 +2648,7 @@ scriptOpCodeCloseWestDoor:
 scriptOpCodeOpenNorthDoor:
     push HL                                            ;; 00:0fb4 $e5
     ld   A, $04                                        ;; 00:0fb5 $3e $04
-    call call_00_235b                                  ;; 00:0fb7 $cd $5b $23
+    call openDoor                                      ;; 00:0fb7 $cd $5b $23
     pop  HL                                            ;; 00:0fba $e1
     call getNextScriptInstruction                      ;; 00:0fbb $cd $27 $37
     ret                                                ;; 00:0fbe $c9
@@ -2656,7 +2656,7 @@ scriptOpCodeOpenNorthDoor:
 scriptOpCodeCloseNorthDoor:
     push HL                                            ;; 00:0fbf $e5
     ld   A, $04                                        ;; 00:0fc0 $3e $04
-    call call_00_22fe                                  ;; 00:0fc2 $cd $fe $22
+    call closeDoor                                     ;; 00:0fc2 $cd $fe $22
     pop  HL                                            ;; 00:0fc5 $e1
     call getNextScriptInstruction                      ;; 00:0fc6 $cd $27 $37
     ret                                                ;; 00:0fc9 $c9
@@ -2664,7 +2664,7 @@ scriptOpCodeCloseNorthDoor:
 scriptOpCodeOpenSouthDoor:
     push HL                                            ;; 00:0fca $e5
     ld   A, $08                                        ;; 00:0fcb $3e $08
-    call call_00_235b                                  ;; 00:0fcd $cd $5b $23
+    call openDoor                                      ;; 00:0fcd $cd $5b $23
     pop  HL                                            ;; 00:0fd0 $e1
     call getNextScriptInstruction                      ;; 00:0fd1 $cd $27 $37
     ret                                                ;; 00:0fd4 $c9
@@ -2672,7 +2672,7 @@ scriptOpCodeOpenSouthDoor:
 scriptOpCodeCloseSouthDoor:
     push HL                                            ;; 00:0fd5 $e5
     ld   A, $08                                        ;; 00:0fd6 $3e $08
-    call call_00_22fe                                  ;; 00:0fd8 $cd $fe $22
+    call closeDoor                                     ;; 00:0fd8 $cd $fe $22
     pop  HL                                            ;; 00:0fdb $e1
     call getNextScriptInstruction                      ;; 00:0fdc $cd $27 $37
     ret                                                ;; 00:0fdf $c9
@@ -2908,19 +2908,19 @@ scriptOpCodeSFX:
 scriptOpCodeSetMusic:
     ld   A, [HL+]                                      ;; 00:119b $2a
     ldh  [hCurrentMusic], A                            ;; 00:119c $e0 $90
-    ld   [wD49B], A                                    ;; 00:119e $ea $9b $d4
-    ld   [wD4A3], A                                    ;; 00:11a1 $ea $a3 $d4
+    ld   [wMusic], A                                   ;; 00:119e $ea $9b $d4
+    ld   [wCurrentMusicStatusEffectBackup], A          ;; 00:11a1 $ea $a3 $d4
     call getNextScriptInstruction                      ;; 00:11a4 $cd $27 $37
     ret                                                ;; 00:11a7 $c9
 
 setTemporaryMusic:
     ldh  [hCurrentMusic], A                            ;; 00:11a8 $e0 $90
-    ld   A, [wD49B]                                    ;; 00:11aa $fa $9b $d4
-    ld   [wD4A3], A                                    ;; 00:11ad $ea $a3 $d4
+    ld   A, [wMusic]                                   ;; 00:11aa $fa $9b $d4
+    ld   [wCurrentMusicStatusEffectBackup], A          ;; 00:11ad $ea $a3 $d4
     ret                                                ;; 00:11b0 $c9
 
 clearTemporaryMusic:
-    ld   A, [wD4A3]                                    ;; 00:11b1 $fa $a3 $d4
+    ld   A, [wCurrentMusicStatusEffectBackup]          ;; 00:11b1 $fa $a3 $d4
     ldh  [hCurrentMusic], A                            ;; 00:11b4 $e0 $90
     ret                                                ;; 00:11b6 $c9
 
@@ -2955,7 +2955,7 @@ loadMapInstantSequence_trampoline:
     jp_to_bank 01, loadMapInstantSequence              ;; 00:11df $f5 $3e $10 $c3 $d7 $1e
 
 scriptOpCodeOpenMap:
-    call call_00_11f2                                  ;; 00:11e5 $cd $f2 $11
+    call openMap_trampoline                            ;; 00:11e5 $cd $f2 $11
     ld   A, [wScriptOpCounter]                         ;; 00:11e8 $fa $99 $d4
     cp   A, $00                                        ;; 00:11eb $fe $00
     ret  NZ                                            ;; 00:11ed $c0
@@ -2963,10 +2963,10 @@ scriptOpCodeOpenMap:
     ret                                                ;; 00:11f1 $c9
 
 openMap_trampoline:
-    jp_to_bank 01, call_01_4164                        ;; 00:11f2 $f5 $3e $11 $c3 $d7 $1e
+    jp_to_bank 01, openMap                             ;; 00:11f2 $f5 $3e $11 $c3 $d7 $1e
 
 scriptOpCodeCloseMap:
-    call call_00_1205                                  ;; 00:11f8 $cd $05 $12
+    call closeMap_trampoline                           ;; 00:11f8 $cd $05 $12
     ld   A, [wScriptOpCounter]                         ;; 00:11fb $fa $99 $d4
     cp   A, $00                                        ;; 00:11fe $fe $00
     ret  NZ                                            ;; 00:1200 $c0
@@ -2974,7 +2974,7 @@ scriptOpCodeCloseMap:
     ret                                                ;; 00:1204 $c9
 
 closeMap_trampoline:
-    jp_to_bank 01, call_01_4180                        ;; 00:1205 $f5 $3e $12 $c3 $d7 $1e
+    jp_to_bank 01, closeMap                            ;; 00:1205 $f5 $3e $12 $c3 $d7 $1e
 
 call_00_120b:
     ld   A, [HL+]                                      ;; 00:120b $2a
@@ -3799,7 +3799,7 @@ call_00_16af:
 .jr_00_16d4:
     srl  D                                             ;; 00:16d4 $cb $3a
     srl  E                                             ;; 00:16d6 $cb $3b
-    call call_00_2426                                  ;; 00:16d8 $cd $26 $24
+    call getRoomMetaTile                               ;; 00:16d8 $cd $26 $24
     ld   L, A                                          ;; 00:16db $6f
     ld   H, $00                                        ;; 00:16dc $26 $00
     ld   D, H                                          ;; 00:16de $54
@@ -5273,7 +5273,7 @@ call_00_2092:
     ld   DE, $fefe                                     ;; 00:20c1 $11 $fe $fe
     call createPlayerObject_trampoline                 ;; 00:20c4 $cd $50 $02
     ld   A, $00                                        ;; 00:20c7 $3e $00
-    call call_00_2ed9                                  ;; 00:20c9 $cd $d9 $2e
+    call getEquippedWeaponAnimationType_trampoline     ;; 00:20c9 $cd $d9 $2e
     call setStartingStats_trampoline                   ;; 00:20cc $cd $bd $30
     ret                                                ;; 00:20cf $c9
 
@@ -6549,7 +6549,7 @@ call_00_288f:
     jp_to_bank 03, call_03_4af1                        ;; 00:288f $f5 $3e $0c $c3 $35 $1f
 
 giveFollower_trampoline:
-    jp_to_bank 03, call_03_43c5                        ;; 00:2895 $f5 $3e $0f $c3 $35 $1f
+    jp_to_bank 03, giveFollower                        ;; 00:2895 $f5 $3e $0f $c3 $35 $1f
 
 call_00_289b:
     ld   HL, wC5A0                                     ;; 00:289b $21 $a0 $c5
@@ -7102,7 +7102,7 @@ call_00_2c21:
     jp_to_bank 01, call_01_7647                        ;; 00:2c21 $f5 $3e $1a $c3 $d7 $1e
 
 objectJumpHandler_trampoline:
-    jp_to_bank 01, call_01_76ab                        ;; 00:2c27 $f5 $3e $1c $c3 $d7 $1e
+    jp_to_bank 01, objectJumpHandler                   ;; 00:2c27 $f5 $3e $1c $c3 $d7 $1e
 
 call_00_2c2d:
     bit  0, A                                          ;; 00:2c2d $cb $47
@@ -7476,10 +7476,10 @@ call_00_2ed3:
     jp_to_bank 01, call_01_52b3                        ;; 00:2ed3 $f5 $3e $1d $c3 $d7 $1e
 
 getEquippedWeaponAnimationType_trampoline:
-    jp_to_bank 01, call_01_5a6b                        ;; 00:2ed9 $f5 $3e $20 $c3 $d7 $1e
+    jp_to_bank 01, getEquippedWeaponAnimationType      ;; 00:2ed9 $f5 $3e $20 $c3 $d7 $1e
 
 getEquippedItemAnimationType_trampoline:
-    jp_to_bank 01, call_01_5a77                        ;; 00:2edf $f5 $3e $21 $c3 $d7 $1e
+    jp_to_bank 01, getEquippedItemAnimationType        ;; 00:2edf $f5 $3e $21 $c3 $d7 $1e
 
 call_00_2ee5:
     jp_to_bank 01, call_01_5a83                        ;; 00:2ee5 $f5 $3e $22 $c3 $d7 $1e
@@ -7559,7 +7559,7 @@ call_00_2f5d:
 tileAttack_trampoline:
     cp   A, $00                                        ;; 00:2f76 $fe $00
     ret  Z                                             ;; 00:2f78 $c8
-    jp_to_bank 01, call_01_51e1                        ;; 00:2f79 $f5 $3e $27 $c3 $d7 $1e
+    jp_to_bank 01, attackTile                          ;; 00:2f79 $f5 $3e $27 $c3 $d7 $1e
 
 ; Unknown (and unused) script opcode.
 scriptOpCodeAA:
@@ -7805,13 +7805,13 @@ setStartingStats_trampoline:
     jp_to_bank 02, setStartingStats                    ;; 00:30bd $f5 $3e $17 $c3 $06 $1f
 
 giveItem_trampoline:
-    jp_to_bank 02, call_02_5419                        ;; 00:30c3 $f5 $3e $18 $c3 $06 $1f
+    jp_to_bank 02, giveItem                            ;; 00:30c3 $f5 $3e $18 $c3 $06 $1f
 
 giveMagic_trampoline:
-    jp_to_bank 02, call_02_5428                        ;; 00:30c9 $f5 $3e $19 $c3 $06 $1f
+    jp_to_bank 02, giveMagic                           ;; 00:30c9 $f5 $3e $19 $c3 $06 $1f
 
 giveEquipment_trampoline:
-    jp_to_bank 02, call_02_53f0                        ;; 00:30cf $f5 $3e $1a $c3 $06 $1f
+    jp_to_bank 02, giveEquipment                       ;; 00:30cf $f5 $3e $1a $c3 $06 $1f
 
 removeItemFromInventory_trampoline:
     jp_to_bank 02, removeItemFromInventory             ;; 00:30d5 $f5 $3e $1b $c3 $06 $1f
@@ -7823,13 +7823,13 @@ removeMagicFromInventory_trampoline:
     jp_to_bank 02, removeMagicFromInventory            ;; 00:30e1 $f5 $3e $1d $c3 $06 $1f
 
 getEquippedArmorDP_Dup_trampoline:
-    jp_to_bank 02, call_02_6dd8                        ;; 00:30e7 $f5 $3e $1e $c3 $06 $1f
+    jp_to_bank 02, getEquippedArmorDP_Dup              ;; 00:30e7 $f5 $3e $1e $c3 $06 $1f
 
 getEquippedShieldBlockElements_trampoline:
-    jp_to_bank 02, call_02_6dde                        ;; 00:30ed $f5 $3e $1f $c3 $06 $1f
+    jp_to_bank 02, getEquippedShieldBlockElements      ;; 00:30ed $f5 $3e $1f $c3 $06 $1f
 
 getEquippedWeaponAP_trampoline:
-    jp_to_bank 02, call_02_6dcc                        ;; 00:30f3 $f5 $3e $20 $c3 $06 $1f
+    jp_to_bank 02, getEquippedWeaponAP                 ;; 00:30f3 $f5 $3e $20 $c3 $06 $1f
     db   $f5, $3e, $21, $c3, $06, $1f                  ;; 00:30f9 ??????
 
 clearStatusBarTrampoline:
@@ -7883,22 +7883,22 @@ getScriptOpcodeFunctionTrampoline:
     jp_to_bank 02, getScriptOpcodeFunction             ;; 00:3165 $f5 $3e $33 $c3 $06 $1f
 
 clearPoisStatusEffect_trampoline:
-    jp_to_bank 02, call_02_7990                        ;; 00:316b $f5 $3e $34 $c3 $06 $1f
+    jp_to_bank 02, endPoisStatusEffect                 ;; 00:316b $f5 $3e $34 $c3 $06 $1f
 
 clearDarkStatusEffect_trampoline:
-    jp_to_bank 02, call_02_799c                        ;; 00:3171 $f5 $3e $35 $c3 $06 $1f
+    jp_to_bank 02, endDarkStatusEffect                 ;; 00:3171 $f5 $3e $35 $c3 $06 $1f
 
 clearStonStatusEffect_trampoline:
-    jp_to_bank 02, call_02_79ab                        ;; 00:3177 $f5 $3e $36 $c3 $06 $1f
+    jp_to_bank 02, endStonStatusEffect                 ;; 00:3177 $f5 $3e $36 $c3 $06 $1f
 
 clearMoogStatusEffect_trampoline:
-    jp_to_bank 02, call_02_79ba                        ;; 00:317d $f5 $3e $37 $c3 $06 $1f
+    jp_to_bank 02, endMoogStatusEffect                 ;; 00:317d $f5 $3e $37 $c3 $06 $1f
 
 clearFujiStatusEffect_trampoline:
-    jp_to_bank 02, call_02_7987                        ;; 00:3183 $f5 $3e $38 $c3 $06 $1f
+    jp_to_bank 02, endFujiStatusEffect                 ;; 00:3183 $f5 $3e $38 $c3 $06 $1f
 
 getEquippedArmorDP_trampoline:
-    jp_to_bank 02, call_02_6dd2                        ;; 00:3189 $f5 $3e $39 $c3 $06 $1f
+    jp_to_bank 02, getEquippedArmorDP                  ;; 00:3189 $f5 $3e $39 $c3 $06 $1f
 
 call_00_318f:
     ld   HL, wD874                                     ;; 00:318f $21 $74 $d8
@@ -8165,15 +8165,15 @@ scriptOpCodeLoop:
 scriptOpCodeMsg:
     ld   A, [HL]                                       ;; 00:333d $7e
     cp   A, $a0                                        ;; 00:333e $fe $a0
-    jp   NC, jp_00_3480                                ;; 00:3340 $d2 $80 $34
+    jp   NC, scriptOpCodeMsg_HandleSimpleCharacters    ;; 00:3340 $d2 $80 $34
     cp   A, $20                                        ;; 00:3343 $fe $20
     jr   C, .jr_00_3356                                ;; 00:3345 $38 $0f
     cp   A, $70                                        ;; 00:3347 $fe $70
-    jp   C, jp_00_34a4                                 ;; 00:3349 $da $a4 $34
+    jp   C, scriptOpCodeMsg_HandleDualCharacters       ;; 00:3349 $da $a4 $34
     cp   A, $80                                        ;; 00:334c $fe $80
-    jp   C, jp_00_3480                                 ;; 00:334e $da $80 $34
+    jp   C, scriptOpCodeMsg_HandleSimpleCharacters     ;; 00:334e $da $80 $34
     sub  A, $10                                        ;; 00:3351 $d6 $10
-    jp   jp_00_34a4                                    ;; 00:3353 $c3 $a4 $34
+    jp   scriptOpCodeMsg_HandleDualCharacters          ;; 00:3353 $c3 $a4 $34
 .jr_00_3356:
     and  A, A                                          ;; 00:3356 $a7
     jr   NZ, .jr_00_335e                               ;; 00:3357 $20 $05
@@ -8185,7 +8185,7 @@ scriptOpCodeMsg:
     sub  A, $10                                        ;; 00:335f $d6 $10
     ld   B, $00                                        ;; 00:3361 $06 $00
     ld   C, A                                          ;; 00:3363 $4f
-    ld   HL, jumptable_38ee                            ;; 00:3364 $21 $ee $38
+    ld   HL, textCtrlCodes                             ;; 00:3364 $21 $ee $38
     add  HL, BC                                        ;; 00:3367 $09
     add  HL, BC                                        ;; 00:3368 $09
     ld   A, [HL+]                                      ;; 00:3369 $2a
@@ -8217,7 +8217,7 @@ scriptOpCodeIfFlags:
     ret                                                ;; 00:338f $c9
 
 scriptOpCodeIfEquiped:
-    ld   DE, wEquipedWeapon                            ;; 00:3390 $11 $e9 $d6
+    ld   DE, wEquippedWeapon                           ;; 00:3390 $11 $e9 $d6
     ld   A, D                                          ;; 00:3393 $7a
     ld   [wD891], A                                    ;; 00:3394 $ea $91 $d8
     ld   A, E                                          ;; 00:3397 $7b
@@ -8256,7 +8256,7 @@ jr_00_33ca:
 
 call_00_33cf:
     push HL                                            ;; 00:33cf $e5
-    ld   HL, wEquipedWeapon                            ;; 00:33d0 $21 $e9 $d6
+    ld   HL, wEquippedWeapon                           ;; 00:33d0 $21 $e9 $d6
     ld   B, $06                                        ;; 00:33d3 $06 $06
     ld   C, $41                                        ;; 00:33d5 $0e $41
     call call_00_343f                                  ;; 00:33d7 $cd $3f $34
@@ -8301,7 +8301,7 @@ jr_00_33ed:
 
 call_00_3411:
     push HL                                            ;; 00:3411 $e5
-    ld   HL, wEquipedWeapon                            ;; 00:3412 $21 $e9 $d6
+    ld   HL, wEquippedWeapon                           ;; 00:3412 $21 $e9 $d6
     ld   B, $06                                        ;; 00:3415 $06 $06
     ld   C, $41                                        ;; 00:3417 $0e $41
     call call_00_3430                                  ;; 00:3419 $cd $30 $34
@@ -8470,7 +8470,7 @@ textCtrlCodeWaitInput:
     or   A, A                                          ;; 00:3507 $b7
     ret  NZ                                            ;; 00:3508 $c0
     ld   B, $04                                        ;; 00:3509 $06 $04
-    call call_00_3c69                                  ;; 00:350b $cd $69 $3c
+    call runVirtualScriptOpCodeFF                      ;; 00:350b $cd $69 $3c
     ret                                                ;; 00:350e $c9
 
 call_00_350f:
@@ -8546,7 +8546,7 @@ jr_00_3585:
     ld   [wD8AA], A                                    ;; 00:358a $ea $aa $d8
     push BC                                            ;; 00:358d $c5
     ld   B, $01                                        ;; 00:358e $06 $01
-    call call_00_3c69                                  ;; 00:3590 $cd $69 $3c
+    call runVirtualScriptOpCodeFF                      ;; 00:3590 $cd $69 $3c
     pop  BC                                            ;; 00:3593 $c1
     call call_00_3c73                                  ;; 00:3594 $cd $73 $3c
 
@@ -8683,7 +8683,7 @@ call_00_3627:
     ret                                                ;; 00:3647 $c9
 
 clearWindow:
-    ld   HL, wD4A9                                     ;; 00:3648 $21 $a9 $d4
+    ld   HL, wDialogW                                  ;; 00:3648 $21 $a9 $d4
     ld   C, [HL]                                       ;; 00:364b $4e
     inc  HL                                            ;; 00:364c $23
     ld   B, [HL]                                       ;; 00:364d $46
@@ -8701,7 +8701,7 @@ clearWindow:
     ld   A, $1e                                        ;; 00:3663 $3e $1e
     ld   [wD853], A                                    ;; 00:3665 $ea $53 $d8
     ld   B, $02                                        ;; 00:3668 $06 $02
-    call call_00_3c69                                  ;; 00:366a $cd $69 $3c
+    call runVirtualScriptOpCodeFF                      ;; 00:366a $cd $69 $3c
     ld   A, [wDialogType]                              ;; 00:366d $fa $4a $d8
     cp   A, $00                                        ;; 00:3670 $fe $00
     jr   Z, jr_00_36a8                                 ;; 00:3672 $28 $34
@@ -8969,7 +8969,7 @@ call_00_380b:
     ld   A, [wDialogType]                              ;; 00:3815 $fa $4a $d8
     cp   A, $11                                        ;; 00:3818 $fe $11
     jr   Z, .jr_00_3827                                ;; 00:381a $28 $0b
-    ld   A, [wD4A9]                                    ;; 00:381c $fa $a9 $d4
+    ld   A, [wDialogW]                                 ;; 00:381c $fa $a9 $d4
     inc  A                                             ;; 00:381f $3c
     inc  A                                             ;; 00:3820 $3c
     srl  A                                             ;; 00:3821 $cb $3f
@@ -9098,7 +9098,7 @@ tilePositionToWindowVRAMaddress:
 ; Sort of a virtual script opcode.
 scriptOpCodeFF:
     push HL                                            ;; 00:38de $e5
-    ld   A, [wD86B]                                    ;; 00:38df $fa $6b $d8
+    ld   A, [wVirtualScriptOpCodeFFArgument]           ;; 00:38df $fa $6b $d8
     ld   HL, jumptable_3ba1                            ;; 00:38e2 $21 $a1 $3b
     ld   B, $00                                        ;; 00:38e5 $06 $00
     ld   C, A                                          ;; 00:38e7 $4f
@@ -9211,15 +9211,15 @@ scriptOpCodeClearStatus:
     ld   C, A                                          ;; 00:397b $4f
     push HL                                            ;; 00:397c $e5
     bit  0, C                                          ;; 00:397d $cb $41
-    call Z, call_00_316b                               ;; 00:397f $cc $6b $31
+    call Z, clearPoisStatusEffect_trampoline           ;; 00:397f $cc $6b $31
     bit  1, C                                          ;; 00:3982 $cb $49
-    call Z, call_00_3171                               ;; 00:3984 $cc $71 $31
+    call Z, clearDarkStatusEffect_trampoline           ;; 00:3984 $cc $71 $31
     bit  2, C                                          ;; 00:3987 $cb $51
-    call Z, call_00_3177                               ;; 00:3989 $cc $77 $31
+    call Z, clearStonStatusEffect_trampoline           ;; 00:3989 $cc $77 $31
     bit  3, C                                          ;; 00:398c $cb $59
-    call Z, call_00_317d                               ;; 00:398e $cc $7d $31
+    call Z, clearMoogStatusEffect_trampoline           ;; 00:398e $cc $7d $31
     bit  4, C                                          ;; 00:3991 $cb $61
-    call Z, call_00_3183                               ;; 00:3993 $cc $83 $31
+    call Z, clearFujiStatusEffect_trampoline           ;; 00:3993 $cc $83 $31
     pop  HL                                            ;; 00:3996 $e1
     call getNextScriptInstruction                      ;; 00:3997 $cd $27 $37
     ret                                                ;; 00:399a $c9
@@ -9400,7 +9400,7 @@ scriptOpCodeGiveItem:
     ld   A, [HL+]                                      ;; 00:3aa0 $2a
     inc  A                                             ;; 00:3aa1 $3c
     push HL                                            ;; 00:3aa2 $e5
-    call call_00_30c3                                  ;; 00:3aa3 $cd $c3 $30
+    call giveItem_trampoline                           ;; 00:3aa3 $cd $c3 $30
     pop  HL                                            ;; 00:3aa6 $e1
     ld   A, [wD86F]                                    ;; 00:3aa7 $fa $6f $d8
     bit  1, A                                          ;; 00:3aaa $cb $4f
@@ -9412,7 +9412,7 @@ scriptOpCodeGiveMagic:
     ld   A, [HL+]                                      ;; 00:3ab2 $2a
     inc  A                                             ;; 00:3ab3 $3c
     push HL                                            ;; 00:3ab4 $e5
-    call call_00_30c9                                  ;; 00:3ab5 $cd $c9 $30
+    call giveMagic_trampoline                          ;; 00:3ab5 $cd $c9 $30
     pop  HL                                            ;; 00:3ab8 $e1
     ld   A, [wD86F]                                    ;; 00:3ab9 $fa $6f $d8
     bit  1, A                                          ;; 00:3abc $cb $4f
@@ -9424,7 +9424,7 @@ scriptOpCodeGiveEquipment:
     ld   A, [HL+]                                      ;; 00:3ac4 $2a
     inc  A                                             ;; 00:3ac5 $3c
     push HL                                            ;; 00:3ac6 $e5
-    call call_00_30cf                                  ;; 00:3ac7 $cd $cf $30
+    call giveEquipment_trampoline                      ;; 00:3ac7 $cd $cf $30
     pop  HL                                            ;; 00:3aca $e1
     ld   A, [wD86F]                                    ;; 00:3acb $fa $6f $d8
     bit  1, A                                          ;; 00:3ace $cb $4f
@@ -9444,7 +9444,7 @@ jr_00_3ad6:
     ret  NZ                                            ;; 00:3ae6 $c0
     inc  HL                                            ;; 00:3ae7 $23
     ld   B, $06                                        ;; 00:3ae8 $06 $06
-    call call_00_3c69                                  ;; 00:3aea $cd $69 $3c
+    call runVirtualScriptOpCodeFF                      ;; 00:3aea $cd $69 $3c
     ret                                                ;; 00:3aed $c9
 
 vendorCantCarry:
@@ -9461,7 +9461,7 @@ vendorCantCarry:
     call drawText                                      ;; 00:3b03 $cd $77 $37
     pop  HL                                            ;; 00:3b06 $e1
     ld   B, $07                                        ;; 00:3b07 $06 $07
-    call call_00_3c69                                  ;; 00:3b09 $cd $69 $3c
+    call runVirtualScriptOpCodeFF                      ;; 00:3b09 $cd $69 $3c
     ret                                                ;; 00:3b0c $c9
 
 call_00_3b0d:
@@ -9475,7 +9475,7 @@ call_00_3b0d:
     res  1, [HL]                                       ;; 00:3b18 $cb $8e
     pop  HL                                            ;; 00:3b1a $e1
     ld   B, $08                                        ;; 00:3b1b $06 $08
-    call call_00_3c69                                  ;; 00:3b1d $cd $69 $3c
+    call runVirtualScriptOpCodeFF                      ;; 00:3b1d $cd $69 $3c
     ret                                                ;; 00:3b20 $c9
 
 call_00_3b21:
@@ -9544,7 +9544,7 @@ scriptOpCodeSetLocationFlags:
 
 scriptOpCodeTakeEquipedItem:
     push HL                                            ;; 00:3b76 $e5
-    ld   HL, wEquipedItemAmount                        ;; 00:3b77 $21 $f0 $d6
+    ld   HL, wEquippedItemAmount                       ;; 00:3b77 $21 $f0 $d6
     ld   A, [HL]                                       ;; 00:3b7a $7e
     and  A, A                                          ;; 00:3b7b $a7
     jr   Z, .jr_00_3b81                                ;; 00:3b7c $28 $03
@@ -9552,7 +9552,7 @@ scriptOpCodeTakeEquipedItem:
     jr   NZ, .jr_00_3b99                               ;; 00:3b7f $20 $18
 .jr_00_3b81:
     ld   A, $80                                        ;; 00:3b81 $3e $80
-    ld   [wEquipedItem], A                             ;; 00:3b83 $ea $ef $d6
+    ld   [wEquippedItem], A                            ;; 00:3b83 $ea $ef $d6
     ld   [wD6F1], A                                    ;; 00:3b86 $ea $f1 $d6
     ld   HL, wItemInventory                            ;; 00:3b89 $21 $c5 $d6
     ld   B, $18                                        ;; 00:3b8c $06 $18
@@ -9582,7 +9582,7 @@ jumptable_3ba1:
     dw   call_00_3c10                                  ;; 00:3ba7 pP
     dw   call_00_350f                                  ;; 00:3ba9 pP
     dw   call_00_3cd1                                  ;; 00:3bab pP
-    dw   call_00_3aee                                  ;; 00:3bad ??
+    dw   vendorCantCarry                               ;; 00:3bad ??
     dw   call_00_3b0d                                  ;; 00:3baf ??
     dw   call_00_3b21                                  ;; 00:3bb1 ??
     dw   call_00_39a7                                  ;; 00:3bb3 pP
@@ -9654,7 +9654,7 @@ scriptOpCodeDelay:
     ld   [wD84D], A                                    ;; 00:3c03 $ea $4d $d8
     call call_00_2fd4                                  ;; 00:3c06 $cd $d4 $2f
     ld   B, $03                                        ;; 00:3c09 $06 $03
-    call call_00_3c69                                  ;; 00:3c0b $cd $69 $3c
+    call runVirtualScriptOpCodeFF                      ;; 00:3c0b $cd $69 $3c
     pop  HL                                            ;; 00:3c0e $e1
     ret                                                ;; 00:3c0f $c9
 
@@ -9719,7 +9719,7 @@ switchToScriptBank:
 
 runVirtualScriptOpCodeFF:
     ld   A, B                                          ;; 00:3c69 $78
-    ld   [wD86B], A                                    ;; 00:3c6a $ea $6b $d8
+    ld   [wVirtualScriptOpCodeFFArgument], A           ;; 00:3c6a $ea $6b $d8
     ld   A, $ff                                        ;; 00:3c6d $3e $ff
     ld   [wScriptCommand], A                           ;; 00:3c6f $ea $5a $d8
     ret                                                ;; 00:3c72 $c9
@@ -9811,7 +9811,7 @@ call_00_3d05:
     ld   A, [wD853]                                    ;; 00:3d05 $fa $53 $d8
     rlca                                               ;; 00:3d08 $07
     ret  C                                             ;; 00:3d09 $d8
-    call call_00_3c69                                  ;; 00:3d0a $cd $69 $3c
+    call runVirtualScriptOpCodeFF                      ;; 00:3d0a $cd $69 $3c
     ret                                                ;; 00:3d0d $c9
 
 getTotalAP:
@@ -9922,22 +9922,22 @@ call_00_3daf:
 call_00_3dc0:
     ld   A, [wD86F]                                    ;; 00:3dc0 $fa $6f $d8
     bit  6, A                                          ;; 00:3dc3 $cb $77
-    ld   A, [wD7D7]                                    ;; 00:3dc5 $fa $d7 $d7
+    ld   A, [wEquippedWeaponElements]                  ;; 00:3dc5 $fa $d7 $d7
     ret  Z                                             ;; 00:3dc8 $c8
-    ld   A, [wD851]                                    ;; 00:3dc9 $fa $51 $d8
+    ld   A, [wEquippedItemElements]                    ;; 00:3dc9 $fa $51 $d8
     ret                                                ;; 00:3dcc $c9
 
 getEquippedShieldBlockElements_SaveBC:
     push BC                                            ;; 00:3dcd $c5
-    call call_00_30ed                                  ;; 00:3dce $cd $ed $30
+    call getEquippedShieldBlockElements_trampoline     ;; 00:3dce $cd $ed $30
     pop  BC                                            ;; 00:3dd1 $c1
     ret                                                ;; 00:3dd2 $c9
 
 call_00_3dd3:
     push BC                                            ;; 00:3dd3 $c5
-    call call_00_30e7                                  ;; 00:3dd4 $cd $e7 $30
+    call getEquippedArmorDP_Dup_trampoline             ;; 00:3dd4 $cd $e7 $30
     ld   B, A                                          ;; 00:3dd7 $47
-    call call_00_3189                                  ;; 00:3dd8 $cd $89 $31
+    call getEquippedArmorDP_trampoline                 ;; 00:3dd8 $cd $89 $31
     or   A, B                                          ;; 00:3ddb $b0
     pop  BC                                            ;; 00:3ddc $c1
     ret                                                ;; 00:3ddd $c9
@@ -9945,7 +9945,7 @@ call_00_3dd3:
     db   $80, $c1, $c9                                 ;; 00:3de6 ???
 
 call_00_3de9:
-    call call_00_30f3                                  ;; 00:3de9 $cd $f3 $30
+    call getEquippedWeaponAP_trampoline                ;; 00:3de9 $cd $f3 $30
     ret                                                ;; 00:3dec $c9
 
 getHP:
@@ -10033,8 +10033,8 @@ startLevelUp:
     ld   A, [wItemBuffActive]                          ;; 00:3e6b $fa $7e $d8
     cp   A, $ff                                        ;; 00:3e6e $fe $ff
     call NZ, call_00_1d44                              ;; 00:3e70 $c4 $44 $1d
-    ld   A, [wD49B]                                    ;; 00:3e73 $fa $9b $d4
-    ld   [wD842], A                                    ;; 00:3e76 $ea $42 $d8
+    ld   A, [wMusic]                                   ;; 00:3e73 $fa $9b $d4
+    ld   [wCurrentMusicLevelUpBackup], A               ;; 00:3e76 $ea $42 $d8
     ld   A, $1c                                        ;; 00:3e79 $3e $1c
     ldh  [hCurrentMusic], A                            ;; 00:3e7b $e0 $90
     ld   A, $21                                        ;; 00:3e7d $3e $21
@@ -10130,7 +10130,7 @@ scriptOpCodeNOP:
     ret                                                ;; 00:3f04 $c9
 
 getEquippedWeaponMinusOne:
-    ld   A, [wEquipedWeapon]                           ;; 00:3f05 $fa $e9 $d6
+    ld   A, [wEquippedWeapon]                          ;; 00:3f05 $fa $e9 $d6
     dec  A                                             ;; 00:3f08 $3d
     ret                                                ;; 00:3f09 $c9
 

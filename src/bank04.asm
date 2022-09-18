@@ -8,7 +8,7 @@ INCLUDE "include/constants.inc"
 SECTION "bank04", ROMX[$4000], BANK[$04]
 ;@call_to_bank_jumptable amount=7
     call_to_bank_target call_04_4090                   ;; 04:4000 pP
-    call_to_bank_target call_04_42f7                   ;; 04:4002 pP
+    call_to_bank_target spawnBoss                      ;; 04:4002 pP
     call_to_bank_target call_04_4425                   ;; 04:4004 ??
     call_to_bank_target call_04_45fa                   ;; 04:4006 pP
     call_to_bank_target call_04_4735                   ;; 04:4008 ??
@@ -431,7 +431,7 @@ call_04_4240:
     ret                                                ;; 04:425e $c9
 
 call_04_425f:
-    ld   A, [wD3F5]                                    ;; 04:425f $fa $f5 $d3
+    ld   A, [wCurrentBossHP.high]                      ;; 04:425f $fa $f5 $d3
     bit  7, A                                          ;; 04:4262 $cb $7f
     jr   NZ, .jr_04_42ac                               ;; 04:4264 $20 $46
     ld   A, [wD3EC]                                    ;; 04:4266 $fa $ec $d3
@@ -485,7 +485,7 @@ call_04_425f:
     call call_04_42b0                                  ;; 04:42a8 $cd $b0 $42
     ret                                                ;; 04:42ab $c9
 .jr_04_42ac:
-    call call_04_4575                                  ;; 04:42ac $cd $75 $45
+    call processBossDeath                              ;; 04:42ac $cd $75 $45
     ret                                                ;; 04:42af $c9
 
 call_04_42b0:
@@ -559,7 +559,7 @@ spawnBoss:
     call call_04_4373                                  ;; 04:430f $cd $73 $43
     call call_04_43cd                                  ;; 04:4312 $cd $cd $43
     call call_04_43ff                                  ;; 04:4315 $cd $ff $43
-    call call_04_4334                                  ;; 04:4318 $cd $34 $43
+    call rollBossHP                                    ;; 04:4318 $cd $34 $43
     ld   HL, $14                                       ;; 04:431b $21 $14 $00
     add  HL, DE                                        ;; 04:431e $19
     ld   A, [HL+]                                      ;; 04:431f $2a
@@ -608,9 +608,9 @@ rollBossHP:
     rl   C                                             ;; 04:4365 $cb $11
     rl   B                                             ;; 04:4367 $cb $10
     ld   A, B                                          ;; 04:4369 $78
-    ld   [wD3F5], A                                    ;; 04:436a $ea $f5 $d3
+    ld   [wCurrentBossHP.high], A                      ;; 04:436a $ea $f5 $d3
     ld   A, C                                          ;; 04:436d $79
-    ld   [wD3F4], A                                    ;; 04:436e $ea $f4 $d3
+    ld   [wCurrentBossHP], A                           ;; 04:436e $ea $f4 $d3
     pop  DE                                            ;; 04:4371 $d1
     ret                                                ;; 04:4372 $c9
 
@@ -819,7 +819,7 @@ call_04_4446:
     ld   BC, $04                                       ;; 04:4495 $01 $04 $00
     call call_04_466e                                  ;; 04:4498 $cd $6e $46
     push DE                                            ;; 04:449b $d5
-    call call_00_3d0e                                  ;; 04:449c $cd $0e $3d
+    call getTotalAP                                    ;; 04:449c $cd $0e $3d
     call call_04_4685                                  ;; 04:449f $cd $85 $46
     pop  DE                                            ;; 04:44a2 $d1
     call call_04_469b                                  ;; 04:44a3 $cd $9b $46
@@ -829,7 +829,7 @@ call_04_4446:
     push BC                                            ;; 04:44ab $c5
     push DE                                            ;; 04:44ac $d5
     push HL                                            ;; 04:44ad $e5
-    call call_00_3f05                                  ;; 04:44ae $cd $05 $3f
+    call getEquippedWeaponMinusOne                     ;; 04:44ae $cd $05 $3f
     cp   A, $08                                        ;; 04:44b1 $fe $08
     jr   NZ, .jr_04_44c2                               ;; 04:44b3 $20 $0d
     pop  HL                                            ;; 04:44b5 $e1
@@ -1214,9 +1214,9 @@ call_04_46f6:
 call_04_470b:
     ld   D, H                                          ;; 04:470b $54
     ld   E, L                                          ;; 04:470c $5d
-    ld   A, [wD3F5]                                    ;; 04:470d $fa $f5 $d3
+    ld   A, [wCurrentBossHP.high]                      ;; 04:470d $fa $f5 $d3
     ld   H, A                                          ;; 04:4710 $67
-    ld   A, [wD3F4]                                    ;; 04:4711 $fa $f4 $d3
+    ld   A, [wCurrentBossHP]                           ;; 04:4711 $fa $f4 $d3
     ld   L, A                                          ;; 04:4714 $6f
     call sub_HL_DE                                     ;; 04:4715 $cd $ab $2b
     jr   Z, .jr_04_471c                                ;; 04:4718 $28 $02
@@ -1225,9 +1225,9 @@ call_04_470b:
     ld   HL, rIE                                       ;; 04:471c $21 $ff $ff
 .jr_04_471f:
     ld   A, H                                          ;; 04:471f $7c
-    ld   [wD3F5], A                                    ;; 04:4720 $ea $f5 $d3
+    ld   [wCurrentBossHP.high], A                      ;; 04:4720 $ea $f5 $d3
     ld   A, L                                          ;; 04:4723 $7d
-    ld   [wD3F4], A                                    ;; 04:4724 $ea $f4 $d3
+    ld   [wCurrentBossHP], A                           ;; 04:4724 $ea $f4 $d3
     ret                                                ;; 04:4727 $c9
 
 call_04_4728:

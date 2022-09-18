@@ -648,7 +648,13 @@ wAnimatedTileRiver:
     ds 16                                              ;; d370
 
 wAnimatedTileScratchpad:
-    ds 16                                              ;; d380
+    ds 14                                              ;; d380
+
+wD38E:
+    ds 1                                               ;; d38e
+
+wD38F:
+    ds 1                                               ;; d38f
 
 ; Points to graphics in bank $0B or $0C as a packed pointer from the map header.
 wMapGraphicsPointer:
@@ -716,7 +722,6 @@ wD3F3:
 
 wCurrentBossHP:
     ds 1                                               ;; d3f4
-
 .high:
     ds 1                                               ;; d3f5
 

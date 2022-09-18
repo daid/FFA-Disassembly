@@ -22,7 +22,7 @@ SECTION "bank03", ROMX[$4000], BANK[$03]
     call_to_bank_target call_03_4af1                   ;; 03:4018 pP
     call_to_bank_target call_03_4af9                   ;; 03:401a pP
     call_to_bank_target call_03_4b4f                   ;; 03:401c pP
-    call_to_bank_target call_03_43c5                   ;; 03:401e pP
+    call_to_bank_target giveFollower                   ;; 03:401e pP
     call_to_bank_target call_03_4a9f                   ;; 03:4020 ??
     call_to_bank_target call_03_4ac1                   ;; 03:4022 ??
     call_to_bank_target call_03_4b62                   ;; 03:4024 pP
@@ -1182,7 +1182,7 @@ call_03_4641:
     cp   A, $20                                        ;; 03:467f $fe $20
     jr   NC, .jr_03_46d4                               ;; 03:4681 $30 $51
     push DE                                            ;; 03:4683 $d5
-    call call_00_3dcd                                  ;; 03:4684 $cd $cd $3d
+    call getEquippedShieldBlockElements_SaveBC         ;; 03:4684 $cd $cd $3d
     pop  DE                                            ;; 03:4687 $d1
     push AF                                            ;; 03:4688 $f5
     ld   HL, $10                                       ;; 03:4689 $21 $10 $00
@@ -1266,7 +1266,7 @@ call_03_4641:
     ld   BC, $07                                       ;; 03:470b $01 $07 $00
     call call_03_496e                                  ;; 03:470e $cd $6e $49
     push DE                                            ;; 03:4711 $d5
-    call call_00_3d0e                                  ;; 03:4712 $cd $0e $3d
+    call getTotalAP                                    ;; 03:4712 $cd $0e $3d
     call call_03_4985                                  ;; 03:4715 $cd $85 $49
     pop  DE                                            ;; 03:4718 $d1
     call call_03_499b                                  ;; 03:4719 $cd $9b $49
@@ -1276,7 +1276,7 @@ call_03_4641:
     push BC                                            ;; 03:4721 $c5
     push DE                                            ;; 03:4722 $d5
     push HL                                            ;; 03:4723 $e5
-    call call_00_3f05                                  ;; 03:4724 $cd $05 $3f
+    call getEquippedWeaponMinusOne                     ;; 03:4724 $cd $05 $3f
     cp   A, $08                                        ;; 03:4727 $fe $08
     jr   NZ, .jr_03_4738                               ;; 03:4729 $20 $0d
     pop  HL                                            ;; 03:472b $e1
@@ -2495,7 +2495,7 @@ call_03_4e5a:
     inc  A                                             ;; 03:4e74 $3c
     ret                                                ;; 03:4e75 $c9
 .jr_03_4e76:
-    call call_03_480a                                  ;; 03:4e76 $cd $0a $48
+    call processNpcDeath                               ;; 03:4e76 $cd $0a $48
     ld   A, $00                                        ;; 03:4e79 $3e $00
     ret                                                ;; 03:4e7b $c9
 
@@ -2530,7 +2530,7 @@ call_03_4e7c:
     ld   A, $00                                        ;; 03:4eaa $3e $00
     ret                                                ;; 03:4eac $c9
 .jr_03_4ead:
-    call call_03_480a                                  ;; 03:4ead $cd $0a $48
+    call processNpcDeath                               ;; 03:4ead $cd $0a $48
     ld   A, $00                                        ;; 03:4eb0 $3e $00
     ret                                                ;; 03:4eb2 $c9
 
@@ -3309,7 +3309,7 @@ jr_03_5241:
     ld   L, A                                          ;; 03:5257 $6f
     ld   A, C                                          ;; 03:5258 $79
     ld   C, L                                          ;; 03:5259 $4d
-    call call_00_2c27                                  ;; 03:525a $cd $27 $2c
+    call objectJumpHandler_trampoline                  ;; 03:525a $cd $27 $2c
     pop  DE                                            ;; 03:525d $d1
     cp   A, $00                                        ;; 03:525e $fe $00
     call Z, call_03_554c                               ;; 03:5260 $cc $4c $55
