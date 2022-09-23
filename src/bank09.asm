@@ -12,9 +12,9 @@ SECTION "bank09", ROMX[$4000], BANK[$09]
     call_to_bank_target call_09_41e9                   ;; 09:4004 pP
     call_to_bank_target call_09_438a                   ;; 09:4006 pP
     call_to_bank_target spawnProjectile                ;; 09:4008 pP
-    call_to_bank_target call_09_445e                   ;; 09:400a ??
-    call_to_bank_target call_09_4467                   ;; 09:400c ??
-    call_to_bank_target call_09_4470                   ;; 09:400e ??
+    call_to_bank_target getProjectileOffset02          ;; 09:400a ??
+    call_to_bank_target getProjectileElement           ;; 09:400c ??
+    call_to_bank_target getProjectilePower             ;; 09:400e ??
     call_to_bank_target call_09_4399                   ;; 09:4010 pP
 
 call_09_4012:
@@ -457,7 +457,7 @@ spawnProjectile:
     pop  BC                                            ;; 09:425d $c1
     ld   B, A                                          ;; 09:425e $47
     push BC                                            ;; 09:425f $c5
-    call call_00_05ef                                  ;; 09:4260 $cd $ef $05
+    call getObjectNearestTilePosition                  ;; 09:4260 $cd $ef $05
     pop  BC                                            ;; 09:4263 $c1
     ld   A, B                                          ;; 09:4264 $78
     and  A, $0f                                        ;; 09:4265 $e6 $0f
@@ -724,7 +724,7 @@ call_09_4399:
     push BC                                            ;; 09:43cb $c5
     ld   A, [wMainGameState]                           ;; 09:43cc $fa $a0 $c0
     cp   A, $02                                        ;; 09:43cf $fe $02
-    jr   NC, .jr_09_440a                               ;; 09:43d1 $30 $37
+    jr   NC, call_09_4399.not_immune                   ;; 09:43d1 $30 $37
     push HL                                            ;; 09:43d3 $e5
     call call_00_039a                                  ;; 09:43d4 $cd $9a $03
     call call_00_29e4                                  ;; 09:43d7 $cd $e4 $29
@@ -735,12 +735,12 @@ call_09_4399:
     pop  AF                                            ;; 09:43e1 $f1
     and  A, B                                          ;; 09:43e2 $a0
     pop  DE                                            ;; 09:43e3 $d1
-    jr   Z, .jr_09_440a                                ;; 09:43e4 $28 $24
+    jr   Z, call_09_4399.not_immune                    ;; 09:43e4 $28 $24
     push DE                                            ;; 09:43e6 $d5
     call getEquippedShieldBlockElements_SaveBC         ;; 09:43e7 $cd $cd $3d
     pop  DE                                            ;; 09:43ea $d1
     or   A, A                                          ;; 09:43eb $b7
-    jr   Z, .jr_09_440a                                ;; 09:43ec $28 $1c
+    jr   Z, call_09_4399.not_immune                    ;; 09:43ec $28 $1c
     push AF                                            ;; 09:43ee $f5
     ld   HL, $08                                       ;; 09:43ef $21 $08 $00
     add  HL, DE                                        ;; 09:43f2 $19
@@ -752,15 +752,15 @@ call_09_4399:
     ld   B, [HL]                                       ;; 09:43fa $46
     pop  AF                                            ;; 09:43fb $f1
     and  A, B                                          ;; 09:43fc $a0
-    jr   Z, .jr_09_440a                                ;; 09:43fd $28 $0b
+    jr   Z, call_09_4399.not_immune                    ;; 09:43fd $28 $0b
     pop  BC                                            ;; 09:43ff $c1
     call call_00_0ae3                                  ;; 09:4400 $cd $e3 $0a
     ld   A, $15                                        ;; 09:4403 $3e $15
     call playSFX                                       ;; 09:4405 $cd $7d $29
     xor  A, A                                          ;; 09:4408 $af
     ret                                                ;; 09:4409 $c9
-.jr_09_440a:
-    call call_00_3dd3                                  ;; 09:440a $cd $d3 $3d
+.not_immune:
+    call getEquippedElementalResistances               ;; 09:440a $cd $d3 $3d
     pop  BC                                            ;; 09:440d $c1
     push AF                                            ;; 09:440e $f5
     ld   A, C                                          ;; 09:440f $79
@@ -790,7 +790,7 @@ call_09_4399:
     ld   HL, $05                                       ;; 09:4431 $21 $05 $00
     add  HL, DE                                        ;; 09:4434 $19
     ld   C, [HL]                                       ;; 09:4435 $4e
-    call call_00_0256                                  ;; 09:4436 $cd $56 $02
+    call playerHit_trampoline                          ;; 09:4436 $cd $56 $02
     ld   A, $c9                                        ;; 09:4439 $3e $c9
     ret                                                ;; 09:443b $c9
 .jp_09_443c:
@@ -817,21 +817,21 @@ call_09_4451:
     ld   D, [HL]                                       ;; 09:445c $56
     ret                                                ;; 09:445d $c9
 
-call_09_445e:
+getProjectileOffset02:
     call call_09_4451                                  ;; 09:445e $cd $51 $44
     ld   HL, $02                                       ;; 09:4461 $21 $02 $00
     add  HL, DE                                        ;; 09:4464 $19
     ld   A, [HL]                                       ;; 09:4465 $7e
     ret                                                ;; 09:4466 $c9
 
-call_09_4467:
+getProjectileElement:
     call call_09_4451                                  ;; 09:4467 $cd $51 $44
     ld   HL, $03                                       ;; 09:446a $21 $03 $00
     add  HL, DE                                        ;; 09:446d $19
     ld   A, [HL]                                       ;; 09:446e $7e
     ret                                                ;; 09:446f $c9
 
-call_09_4470:
+getProjectilePower:
     call call_09_4451                                  ;; 09:4470 $cd $51 $44
     ld   HL, $04                                       ;; 09:4473 $21 $04 $00
     add  HL, DE                                        ;; 09:4476 $19

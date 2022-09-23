@@ -4,6 +4,17 @@
 ;Monster stat table
 ;offset0: Speed
 ;offset1: HP
+;offset3: Enemy weaknesses
+; bit 0: mana
+; bit 1: dragon
+; bit 2: axe
+; bit 3: mithril/star
+; bit 4: magic
+; bit 5: electric
+; bit 6: ice
+; bit 7: fire
+;offset4: Element immunities
+;offset5: Touch damage elements
 ;offset6: Touch damage
 ;offset7: Defense
 ;offset9: Projectile type

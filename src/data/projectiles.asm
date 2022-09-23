@@ -6,7 +6,7 @@
 ; 0) Something with behavour of the projectile
 ; 1) Speed, lower = faster.
 ; 2) ?
-; 3) ?
+; 3) Element
 ; 4) Damage
 ; 5) ?
 ; 6) Graphics Tile Load Index

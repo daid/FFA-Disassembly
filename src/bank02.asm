@@ -33,38 +33,38 @@ SECTION "bank02", ROMX[$4000], BANK[$02]
     call_to_bank_target setStartingStats               ;; 02:402e pP
     call_to_bank_target giveItem                       ;; 02:4030 pP
     call_to_bank_target giveMagic                      ;; 02:4032 ??
-    call_to_bank_target giveEquipment                  ;; 02:4034 ??
+    call_to_bank_target giveEquipmentAndStorePowers    ;; 02:4034 ??
     call_to_bank_target removeItemFromInventory        ;; 02:4036 ??
     call_to_bank_target removeEquipmentFromInventory   ;; 02:4038 ??
     call_to_bank_target removeMagicFromInventory       ;; 02:403a ??
-    call_to_bank_target getEquippedArmorDP_Dup         ;; 02:403c pP
+    call_to_bank_target getEquippedArmorElementalResistances_Dup ;; 02:403c pP
     call_to_bank_target getEquippedShieldBlockElements ;; 02:403e pP
-    call_to_bank_target getEquippedWeaponAP            ;; 02:4040 pP
-    call_to_bank_target call_02_6df4                   ;; 02:4042 ??
+    call_to_bank_target getEquippedWeaponBonusTypes    ;; 02:4040 pP
+    call_to_bank_target getSpellOrBookPower            ;; 02:4042 ??
     call_to_bank_target clearStatusBar                 ;; 02:4044 pP
     call_to_bank_target drawDefaultStatusBar           ;; 02:4046 ??
     call_to_bank_target drawHPOnStatuBar               ;; 02:4048 pP
     call_to_bank_target drawManaOnStatusBar            ;; 02:404a pP
     call_to_bank_target drawMoneyOnStatusBar           ;; 02:404c pP
     call_to_bank_target call_02_6fb4                   ;; 02:404e pP
-    call_to_bank_target call_02_6d26                   ;; 02:4050 ??
-    call_to_bank_target call_02_6fab                   ;; 02:4052 pP
-    call_to_bank_target call_02_77af                   ;; 02:4054 pP
+    call_to_bank_target getCurrentMagicPower           ;; 02:4050 ??
+    call_to_bank_target attackWithWeaponUseWill        ;; 02:4052 pP
+    call_to_bank_target giveStatusEffect               ;; 02:4054 pP
     call_to_bank_target setAToZero_2                   ;; 02:4056 pP
     call_to_bank_target call_02_78c6                   ;; 02:4058 pP
-    call_to_bank_target call_02_717b                   ;; 02:405a ??
+    call_to_bank_target getSpellOffset0band0cinHL      ;; 02:405a ??
     call_to_bank_target drawWillBarCharge              ;; 02:405c pP
     call_to_bank_target drawEmptyWillBar               ;; 02:405e pP
     call_to_bank_target call_02_7b3c                   ;; 02:4060 pP
     call_to_bank_target introScrollHandler             ;; 02:4062 pP
-    call_to_bank_target call_02_6656                   ;; 02:4064 pP
+    call_to_bank_target castEquippedSpellIfSufficientMana ;; 02:4064 pP
     call_to_bank_target getScriptOpcodeFunction        ;; 02:4066 pP
     call_to_bank_target endPoisStatusEffect            ;; 02:4068 ??
     call_to_bank_target endDarkStatusEffect            ;; 02:406a ??
     call_to_bank_target endStonStatusEffect            ;; 02:406c ??
     call_to_bank_target endMoogStatusEffect            ;; 02:406e ??
     call_to_bank_target endFujiStatusEffect            ;; 02:4070 ??
-    call_to_bank_target getEquippedArmorDP             ;; 02:4072 pP
+    call_to_bank_target getEquippedArmorElementalResistances ;; 02:4072 pP
 
 call_02_4074:
     ld   A, [wD399]                                    ;; 02:4074 $fa $99 $d3
@@ -1052,14 +1052,14 @@ data_02_47c8:
     dw   call_02_492b                                  ;; 02:4820 pP
     dw   openStatusScreen                              ;; 02:4822 pP
     dw   call_02_504f                                  ;; 02:4824 pP
-    dw   call_02_4f5f                                  ;; 02:4826 pP
+    dw   openLoadSaveScreen                            ;; 02:4826 pP
     dw   call_02_4f97                                  ;; 02:4828 pP
     dw   call_02_4cba                                  ;; 02:482a ??
     dw   call_02_5292                                  ;; 02:482c pP
     dw   openLoadSaveBottomWindow                      ;; 02:482e pP
     dw   openSaveScreen                                ;; 02:4830 pP
     dw   openLoadScreen                                ;; 02:4832 ??
-    dw   call_02_4ec3                                  ;; 02:4834 pP
+    dw   runMinimapScript                              ;; 02:4834 pP
     dw   openLevelUpStatusScreen                       ;; 02:4836 pP
     dw   call_02_77d8                                  ;; 02:4838 ??
     dw   call_02_77f1                                  ;; 02:483a ??
@@ -1075,7 +1075,7 @@ call_02_483e:
     call call_02_6d0b                                  ;; 02:4849 $cd $0b $6d
     call call_02_79e7                                  ;; 02:484c $cd $e7 $79
     ld   A, [wMainGameState]                           ;; 02:484f $fa $a0 $c0
-    ld   [wD862], A                                    ;; 02:4852 $ea $62 $d8
+    ld   [wMainGameStateBackup], A                     ;; 02:4852 $ea $62 $d8
     ld   A, $00                                        ;; 02:4855 $3e $00
     ld   [wD853], A                                    ;; 02:4857 $ea $53 $d8
     ld   A, $0f                                        ;; 02:485a $3e $0f
@@ -1386,7 +1386,7 @@ call_02_4a79:
     cp   A, $1f                                        ;; 02:4a7c $fe $1f
     jr   NZ, .jr_02_4a85                               ;; 02:4a7e $20 $05
     ld   A, $00                                        ;; 02:4a80 $3e $00
-    ld   [wD862], A                                    ;; 02:4a82 $ea $62 $d8
+    ld   [wMainGameStateBackup], A                     ;; 02:4a82 $ea $62 $d8
 .jr_02_4a85:
     ld   A, [wDialogType]                              ;; 02:4a85 $fa $4a $d8
     cp   A, $19                                        ;; 02:4a88 $fe $19
@@ -1769,7 +1769,7 @@ call_02_4d36:
     add  HL, BC                                        ;; 02:4d4f $09
     ld   A, [HL]                                       ;; 02:4d50 $7e
     push BC                                            ;; 02:4d51 $c5
-    call call_02_568a                                  ;; 02:4d52 $cd $8a $56
+    call getEquipmentFlags1And2                        ;; 02:4d52 $cd $8a $56
     ld   A, C                                          ;; 02:4d55 $79
     bit  6, A                                          ;; 02:4d56 $cb $77
     pop  BC                                            ;; 02:4d58 $c1
@@ -1843,7 +1843,7 @@ call_02_4db0:
     push BC                                            ;; 02:4dcc $c5
     push HL                                            ;; 02:4dcd $e5
     ld   BC, data_02_5867                              ;; 02:4dce $01 $67 $58
-    call call_02_583c                                  ;; 02:4dd1 $cd $3c $58
+    call findSlotForEquipmentType                      ;; 02:4dd1 $cd $3c $58
     pop  HL                                            ;; 02:4dd4 $e1
     ld   A, [DE]                                       ;; 02:4dd5 $1a
     ld   B, [HL]                                       ;; 02:4dd6 $46
@@ -1860,8 +1860,8 @@ call_02_4db0:
     and  A, A                                          ;; 02:4de5 $a7
     jr   Z, .jr_02_4df5                                ;; 02:4de6 $28 $0d
     push HL                                            ;; 02:4de8 $e5
-    ld   BC, data_02_586f                              ;; 02:4de9 $01 $6f $58
-    call call_02_583c                                  ;; 02:4dec $cd $3c $58
+    ld   BC, currentlyEquippedEquipmentList            ;; 02:4de9 $01 $6f $58
+    call findSlotForEquipmentType                      ;; 02:4dec $cd $3c $58
     pop  HL                                            ;; 02:4def $e1
     ld   A, [DE]                                       ;; 02:4df0 $1a
     ld   B, [HL]                                       ;; 02:4df1 $46
@@ -1949,7 +1949,7 @@ call_02_4e7b:
     ret  NZ                                            ;; 02:4e9a $c0
 
 jp_02_4e9b:
-    ld   A, [wD862]                                    ;; 02:4e9b $fa $62 $d8
+    ld   A, [wMainGameStateBackup]                     ;; 02:4e9b $fa $62 $d8
     ld   [wMainGameState], A                           ;; 02:4e9e $ea $a0 $c0
     ld   B, $00                                        ;; 02:4ea1 $06 $00
     call runVirtualScriptOpCodeFF                      ;; 02:4ea3 $cd $69 $3c
@@ -1964,18 +1964,18 @@ jp_02_4ea7:
     and  A, A                                          ;; 02:4eb5 $a7
     jp   Z, openSaveScreen                             ;; 02:4eb6 $ca $e4 $71
     dec  A                                             ;; 02:4eb9 $3d
-    jr   Z, call_02_4ec3                               ;; 02:4eba $28 $07
+    jr   Z, runMinimapScript                           ;; 02:4eba $28 $07
     ld   B, $2d                                        ;; 02:4ebc $06 $2d
     call call_02_6c98                                  ;; 02:4ebe $cd $98 $6c
     jr   openStatusScreen                              ;; 02:4ec1 $18 $3a
 
-call_02_4ec3:
+runMinimapScript:
     ld   A, $36                                        ;; 02:4ec3 $3e $36
     ld   [wD853], A                                    ;; 02:4ec5 $ea $53 $d8
     call call_02_667a                                  ;; 02:4ec8 $cd $7a $66
     ret  NZ                                            ;; 02:4ecb $c0
     call call_02_6b51                                  ;; 02:4ecc $cd $51 $6b
-    ld   A, [wD862]                                    ;; 02:4ecf $fa $62 $d8
+    ld   A, [wMainGameStateBackup]                     ;; 02:4ecf $fa $62 $d8
     ld   [wMainGameState], A                           ;; 02:4ed2 $ea $a0 $c0
     ld   B, $00                                        ;; 02:4ed5 $06 $00
     call call_02_6c98                                  ;; 02:4ed7 $cd $98 $6c
@@ -2035,7 +2035,7 @@ jp_02_4f19:
     ld   C, A                                          ;; 02:4f3f $4f
     add  HL, BC                                        ;; 02:4f40 $09
     ld   A, $04                                        ;; 02:4f41 $3e $04
-    ld   DE, wD78F                                     ;; 02:4f43 $11 $8f $d7
+    ld   DE, wStatStaminaLevelUpTmp                    ;; 02:4f43 $11 $8f $d7
     ld   BC, wStatStamina                              ;; 02:4f46 $01 $c1 $d7
 .jr_02_4f49:
     push AF                                            ;; 02:4f49 $f5
@@ -2056,19 +2056,19 @@ jp_02_4f19:
     ld   A, $2f                                        ;; 02:4f5a $3e $2f
     jp   jp_02_5877                                    ;; 02:4f5c $c3 $77 $58
 
-call_02_4f5f:
+openLoadSaveScreen:
     ld   A, $1a                                        ;; 02:4f5f $3e $1a
     ld   [wDialogType], A                              ;; 02:4f61 $ea $4a $d8
     call drawWindow                                    ;; 02:4f64 $cd $00 $67
     call call_02_7693                                  ;; 02:4f67 $cd $93 $76
     ld   HL, wTotalAP                                  ;; 02:4f6a $21 $df $d7
-    ld   A, [wD790]                                    ;; 02:4f6d $fa $90 $d7
+    ld   A, [wStatPowerLevelUpTmp]                     ;; 02:4f6d $fa $90 $d7
     ld   B, A                                          ;; 02:4f70 $47
-    call call_02_5b9d                                  ;; 02:4f71 $cd $9d $5b
+    call getEquippedWeaponAP                           ;; 02:4f71 $cd $9d $5b
     add  A, B                                          ;; 02:4f74 $80
     ld   [HL+], A                                      ;; 02:4f75 $22
     ld   [wDupTotalAP], A                              ;; 02:4f76 $ea $c1 $d6
-    ld   A, [wD78F]                                    ;; 02:4f79 $fa $8f $d7
+    ld   A, [wStatStaminaLevelUpTmp]                   ;; 02:4f79 $fa $8f $d7
     ld   B, A                                          ;; 02:4f7c $47
     ld   A, [wEquippedArmorDefense]                    ;; 02:4f7d $fa $c2 $d6
     add  A, B                                          ;; 02:4f80 $80
@@ -2241,14 +2241,14 @@ jr_02_5086:
     xor  A, A                                          ;; 02:50a8 $af
     ret                                                ;; 02:50a9 $c9
 .jp_02_50aa:
-    ld   HL, wD86F                                     ;; 02:50aa $21 $6f $d8
+    ld   HL, wMiscFlags                                ;; 02:50aa $21 $6f $d8
     set  0, [HL]                                       ;; 02:50ad $cb $c6
     ld   B, $a4                                        ;; 02:50af $06 $a4
     call call_02_6c98                                  ;; 02:50b1 $cd $98 $6c
     ret                                                ;; 02:50b4 $c9
 
 call_02_50b5:
-    ld   HL, wD86F                                     ;; 02:50b5 $21 $6f $d8
+    ld   HL, wMiscFlags                                ;; 02:50b5 $21 $6f $d8
     res  0, [HL]                                       ;; 02:50b8 $cb $86
     ld   C, A                                          ;; 02:50ba $4f
     ld   B, $00                                        ;; 02:50bb $06 $00
@@ -2262,7 +2262,7 @@ call_02_50b5:
     ld   A, [HL]                                       ;; 02:50cc $7e
     push AF                                            ;; 02:50cd $f5
     call C, giveItem                                   ;; 02:50ce $dc $19 $54
-    ld   A, [wD86F]                                    ;; 02:50d1 $fa $6f $d8
+    ld   A, [wMiscFlags]                               ;; 02:50d1 $fa $6f $d8
     bit  1, A                                          ;; 02:50d4 $cb $4f
     jr   NZ, .jr_02_5147                               ;; 02:50d6 $20 $6f
     pop  AF                                            ;; 02:50d8 $f1
@@ -2271,8 +2271,8 @@ call_02_50b5:
     ld   C, A                                          ;; 02:50dc $4f
     pop  AF                                            ;; 02:50dd $f1
     ld   A, C                                          ;; 02:50de $79
-    call NC, giveEquipment                             ;; 02:50df $d4 $f0 $53
-    ld   A, [wD86F]                                    ;; 02:50e2 $fa $6f $d8
+    call NC, giveEquipmentAndStorePowers               ;; 02:50df $d4 $f0 $53
+    ld   A, [wMiscFlags]                               ;; 02:50e2 $fa $6f $d8
     bit  1, A                                          ;; 02:50e5 $cb $4f
     jr   NZ, .jr_02_5147                               ;; 02:50e7 $20 $5e
     ld   HL, data_02_5c22                              ;; 02:50e9 $21 $22 $5c
@@ -2373,11 +2373,11 @@ call_02_5174:
 call_02_5182:
     ld   A, [wDialogType]                              ;; 02:5182 $fa $4a $d8
     call call_02_7693                                  ;; 02:5185 $cd $93 $76
-    ld   A, [wD86F]                                    ;; 02:5188 $fa $6f $d8
+    ld   A, [wMiscFlags]                               ;; 02:5188 $fa $6f $d8
     and  A, $01                                        ;; 02:518b $e6 $01
-    ld   HL, data_02_7d76                              ;; 02:518d $21 $76 $7d
+    ld   HL, venderNotEnoughMoneyText                  ;; 02:518d $21 $76 $7d
     ld   B, $10                                        ;; 02:5190 $06 $10
-    jr   NZ, .jr_02_51ca                               ;; 02:5192 $20 $36
+    jr   NZ, .vendorCannotAfford                       ;; 02:5192 $20 $36
     ld   A, [wD85D]                                    ;; 02:5194 $fa $5d $d8
     ld   HL, itemDataTable                             ;; 02:5197 $21 $5a $5e
     cp   A, $3a                                        ;; 02:519a $fe $3a
@@ -2387,7 +2387,7 @@ call_02_5182:
 .jr_02_51a3:
     push HL                                            ;; 02:51a3 $e5
     push AF                                            ;; 02:51a4 $f5
-    ld   HL, data_02_7d56                              ;; 02:51a5 $21 $56 $7d
+    ld   HL, vendorBoughtText                          ;; 02:51a5 $21 $56 $7d
     push DE                                            ;; 02:51a8 $d5
     ld   B, $07                                        ;; 02:51a9 $06 $07
     call drawText                                      ;; 02:51ab $cd $77 $37
@@ -2406,7 +2406,7 @@ call_02_5182:
     ld   E, A                                          ;; 02:51c4 $5f
     ld   HL, .data_02_51d3                             ;; 02:51c5 $21 $d3 $51
     ld   B, $02                                        ;; 02:51c8 $06 $02
-.jr_02_51ca:
+.vendorCannotAfford:
     call drawText                                      ;; 02:51ca $cd $77 $37
     ld   B, $26                                        ;; 02:51cd $06 $26
     call call_02_6c98                                  ;; 02:51cf $cd $98 $6c
@@ -2501,7 +2501,7 @@ call_02_525c:
     jr   Z, .jr_02_5278                                ;; 02:525f $28 $17
     and  A, $7f                                        ;; 02:5261 $e6 $7f
     jr   Z, call_02_525c                               ;; 02:5263 $28 $f7
-    call call_02_527b                                  ;; 02:5265 $cd $7b $52
+    call getItemOrEquipmentFlags1                      ;; 02:5265 $cd $7b $52
     bit  6, A                                          ;; 02:5268 $cb $77
     jr   NZ, call_02_525c                              ;; 02:526a $20 $f0
     dec  C                                             ;; 02:526c $0d
@@ -2518,7 +2518,7 @@ call_02_525c:
     ld   A, $01                                        ;; 02:5278 $3e $01
     ret                                                ;; 02:527a $c9
 
-call_02_527b:
+getItemOrEquipmentFlags1:
     push HL                                            ;; 02:527b $e5
     ld   HL, itemDataTable + $08                       ;; 02:527c $21 $62 $5e
     bit  7, C                                          ;; 02:527f $cb $79
@@ -2612,7 +2612,7 @@ jp_02_531c:
     ret  Z                                             ;; 02:5325 $c8
     ld   B, $04                                        ;; 02:5326 $06 $04
     ld   DE, wStatStamina                              ;; 02:5328 $11 $c1 $d7
-    ld   HL, wD78F                                     ;; 02:532b $21 $8f $d7
+    ld   HL, wStatStaminaLevelUpTmp                    ;; 02:532b $21 $8f $d7
 .jr_02_532e:
     ld   A, [HL+]                                      ;; 02:532e $2a
     ld   [DE], A                                       ;; 02:532f $12
@@ -2659,7 +2659,7 @@ jp_02_531c:
 .jr_02_537b:
     ld   [wMaxManaLow], A                              ;; 02:537b $ea $b8 $d7
     ld   [wManaLow], A                                 ;; 02:537e $ea $b6 $d7
-    call call_02_77ae                                  ;; 02:5381 $cd $ae $77
+    call NOOP_2                                        ;; 02:5381 $cd $ae $77
     call call_02_6b51                                  ;; 02:5384 $cd $51 $6b
     ld   HL, wD872                                     ;; 02:5387 $21 $72 $d8
     set  0, [HL]                                       ;; 02:538a $cb $c6
@@ -2733,16 +2733,16 @@ removeItemFromList:
     ld   [HL], A                                       ;; 02:53ee $77
     ret                                                ;; 02:53ef $c9
 
-giveEquipment:
+giveEquipmentAndStorePowers:
     ld   B, $0c                                        ;; 02:53f0 $06 $0c
     ld   C, A                                          ;; 02:53f2 $4f
     ld   HL, wEquipmentInventory                       ;; 02:53f3 $21 $dd $d6
     push HL                                            ;; 02:53f6 $e5
-    call call_02_5410                                  ;; 02:53f7 $cd $10 $54
+    call giveEquipment                                 ;; 02:53f7 $cd $10 $54
     pop  HL                                            ;; 02:53fa $e1
     ld   DE, wEquipmentInventoryPowers                 ;; 02:53fb $11 $b3 $d6
     ld   B, $0c                                        ;; 02:53fe $06 $0c
-.jr_02_5400:
+.loop:
     ld   A, [HL+]                                      ;; 02:5400 $2a
     push HL                                            ;; 02:5401 $e5
     ld   HL, equipmentDataTable + $0c                  ;; 02:5402 $21 $f6 $61
@@ -2752,14 +2752,14 @@ giveEquipment:
     ld   [DE], A                                       ;; 02:540a $12
     inc  DE                                            ;; 02:540b $13
     dec  B                                             ;; 02:540c $05
-    jr   NZ, .jr_02_5400                               ;; 02:540d $20 $f1
+    jr   NZ, giveEquipmentAndStorePowers.loop          ;; 02:540d $20 $f1
     ret                                                ;; 02:540f $c9
 
-call_02_5410:
+giveEquipment:
     ld   DE, equipmentDataTable + $08                  ;; 02:5410 $11 $f2 $61
     push DE                                            ;; 02:5413 $d5
     ld   DE, wEquipmentInventoryPowers                 ;; 02:5414 $11 $b3 $d6
-    jr   jr_02_5435                                    ;; 02:5417 $18 $1c
+    jr   giveEquipmentItemMagic                        ;; 02:5417 $18 $1c
 
 giveItem:
     ld   B, $10                                        ;; 02:5419 $06 $10
@@ -2768,7 +2768,7 @@ giveItem:
     ld   DE, itemDataTable + $08                       ;; 02:541f $11 $62 $5e
     push DE                                            ;; 02:5422 $d5
     ld   DE, wItemInventoryAmount                      ;; 02:5423 $11 $9b $d6
-    jr   jr_02_5435                                    ;; 02:5426 $18 $0d
+    jr   giveEquipmentItemMagic                        ;; 02:5426 $18 $0d
 
 giveMagic:
     ld   B, $08                                        ;; 02:5428 $06 $08
@@ -2776,9 +2776,9 @@ giveMagic:
     ld   HL, wMagicInventory                           ;; 02:542b $21 $d5 $d6
     ld   DE, spellDataTable + $08                      ;; 02:542e $11 $e2 $5d
     push DE                                            ;; 02:5431 $d5
-    ld   DE, wD6AB                                     ;; 02:5432 $11 $ab $d6
+    ld   DE, wKnownMagicSpells                         ;; 02:5432 $11 $ab $d6
 
-jr_02_5435:
+giveEquipmentItemMagic:
     ld   A, $05                                        ;; 02:5435 $3e $05
     call clearScriptFlag                               ;; 02:5437 $cd $ee $3b
     ld   A, [HL+]                                      ;; 02:543a $2a
@@ -2786,7 +2786,7 @@ jr_02_5435:
     or   A, A                                          ;; 02:543c $b7
     jr   Z, .jr_02_5444                                ;; 02:543d $28 $05
     dec  B                                             ;; 02:543f $05
-    jr   NZ, jr_02_5435                                ;; 02:5440 $20 $f3
+    jr   NZ, giveEquipmentItemMagic                    ;; 02:5440 $20 $f3
     jr   .jr_02_5464                                   ;; 02:5442 $18 $20
 .jr_02_5444:
     ld   A, C                                          ;; 02:5444 $79
@@ -2816,7 +2816,7 @@ jr_02_5435:
     ret                                                ;; 02:5463 $c9
 .jr_02_5464:
     pop  DE                                            ;; 02:5464 $d1
-    ld   HL, wD86F                                     ;; 02:5465 $21 $6f $d8
+    ld   HL, wMiscFlags                                ;; 02:5465 $21 $6f $d8
     set  1, [HL]                                       ;; 02:5468 $cb $ce
     ld   A, $0f                                        ;; 02:546a $3e $0f
     ld   [wDialogType], A                              ;; 02:546c $ea $4a $d8
@@ -2844,7 +2844,7 @@ call_02_5490:
     ld   A, D                                          ;; 02:5493 $7a
     and  A, A                                          ;; 02:5494 $a7
     ret  Z                                             ;; 02:5495 $c8
-    ld   HL, wD86F                                     ;; 02:5496 $21 $6f $d8
+    ld   HL, wMiscFlags                                ;; 02:5496 $21 $6f $d8
     res  1, [HL]                                       ;; 02:5499 $cb $8e
     ld   A, $0f                                        ;; 02:549b $3e $0f
     ld   [wDialogType], A                              ;; 02:549d $ea $4a $d8
@@ -2881,7 +2881,7 @@ jp_02_54a6:
     and  A, $7f                                        ;; 02:54cd $e6 $7f
     jr   Z, .jr_02_54f2                                ;; 02:54cf $28 $21
     push BC                                            ;; 02:54d1 $c5
-    call call_02_569c                                  ;; 02:54d2 $cd $9c $56
+    call getItemFlags1And2                             ;; 02:54d2 $cd $9c $56
     pop  BC                                            ;; 02:54d5 $c1
     bit  6, A                                          ;; 02:54d6 $cb $77
     ld   A, [HL]                                       ;; 02:54d8 $7e
@@ -2924,7 +2924,7 @@ jp_02_54a6:
     jr   Z, .jr_02_5523                                ;; 02:5507 $28 $1a
     add  A, $39                                        ;; 02:5509 $c6 $39
     push BC                                            ;; 02:550b $c5
-    call call_02_569c                                  ;; 02:550c $cd $9c $56
+    call getItemFlags1And2                             ;; 02:550c $cd $9c $56
     pop  BC                                            ;; 02:550f $c1
     bit  6, A                                          ;; 02:5510 $cb $77
     ld   A, [HL]                                       ;; 02:5512 $7e
@@ -2982,7 +2982,7 @@ jp_02_54a6:
     dec  B                                             ;; 02:555b $05
     jr   NZ, .jr_02_5557                               ;; 02:555c $20 $f9
     ld   A, C                                          ;; 02:555e $79
-    call call_02_56b1                                  ;; 02:555f $cd $b1 $56
+    call getBuyFromVendorPrice                         ;; 02:555f $cd $b1 $56
     jr   .jr_02_5572                                   ;; 02:5562 $18 $0e
 .jr_02_5564:
     ld   A, $07                                        ;; 02:5564 $3e $07
@@ -3000,7 +3000,7 @@ jp_02_54a6:
     rr   L                                             ;; 02:5574 $cb $1d
     push HL                                            ;; 02:5576 $e5
     ld   A, C                                          ;; 02:5577 $79
-    call call_02_569c                                  ;; 02:5578 $cd $9c $56
+    call getItemFlags1And2                             ;; 02:5578 $cd $9c $56
     ld   A, B                                          ;; 02:557b $78
     and  A, $70                                        ;; 02:557c $e6 $70
     swap A                                             ;; 02:557e $cb $37
@@ -3057,7 +3057,7 @@ jp_02_54a6:
     ret                                                ;; 02:55c5 $c9
 
 call_02_55c6:
-    ld   A, [wD86D]                                    ;; 02:55c6 $fa $6d $d8
+    ld   A, [wVendorNumber]                            ;; 02:55c6 $fa $6d $d8
     ld   L, A                                          ;; 02:55c9 $6f
     ld   H, $00                                        ;; 02:55ca $26 $00
     add  HL, HL                                        ;; 02:55cc $29
@@ -3066,7 +3066,7 @@ call_02_55c6:
     add  HL, HL                                        ;; 02:55cf $29
     push HL                                            ;; 02:55d0 $e5
     pop  BC                                            ;; 02:55d1 $c1
-    ld   HL, data_02_64ec                              ;; 02:55d2 $21 $ec $64
+    ld   HL, vendorInventories                         ;; 02:55d2 $21 $ec $64
     add  HL, BC                                        ;; 02:55d5 $09
     ld   B, $07                                        ;; 02:55d6 $06 $07
     ld   DE, $00                                       ;; 02:55d8 $11 $00 $00
@@ -3098,7 +3098,7 @@ call_02_55c6:
     ld   HL, wD6F3                                     ;; 02:55fb $21 $f3 $d6
     add  HL, BC                                        ;; 02:55fe $09
     ld   A, [HL]                                       ;; 02:55ff $7e
-    call call_02_56b1                                  ;; 02:5600 $cd $b1 $56
+    call getBuyFromVendorPrice                         ;; 02:5600 $cd $b1 $56
     push HL                                            ;; 02:5603 $e5
     pop  DE                                            ;; 02:5604 $d1
     ld   HL, wD701                                     ;; 02:5605 $21 $01 $d7
@@ -3120,7 +3120,7 @@ call_02_55c6:
     add  HL, BC                                        ;; 02:561c $09
     ld   A, [HL]                                       ;; 02:561d $7e
     push BC                                            ;; 02:561e $c5
-    call call_02_569c                                  ;; 02:561f $cd $9c $56
+    call getItemFlags1And2                             ;; 02:561f $cd $9c $56
     ld   A, C                                          ;; 02:5622 $79
     and  A, $80                                        ;; 02:5623 $e6 $80
     or   A, [HL]                                       ;; 02:5625 $b6
@@ -3139,7 +3139,7 @@ call_02_55c6:
     ret                                                ;; 02:5637 $c9
 
 jp_02_5638:
-    ld   A, [wD862]                                    ;; 02:5638 $fa $62 $d8
+    ld   A, [wMainGameStateBackup]                     ;; 02:5638 $fa $62 $d8
     ld   [wMainGameState], A                           ;; 02:563b $ea $a0 $c0
     ld   A, $05                                        ;; 02:563e $3e $05
     ld   [wVirtualScriptOpCodeFFArgument], A           ;; 02:5640 $ea $6b $d8
@@ -3196,19 +3196,19 @@ clearVRAMArea:
     jr   NZ, .jr_02_5677                               ;; 02:5687 $20 $ee
     ret                                                ;; 02:5689 $c9
 
-call_02_568a:
+getEquipmentFlags1And2:
     or   A, A                                          ;; 02:568a $b7
     jr   Z, jr_02_56ad                                 ;; 02:568b $28 $20
     ld   B, A                                          ;; 02:568d $47
     ld   A, [wDialogType]                              ;; 02:568e $fa $4a $d8
     cp   A, $01                                        ;; 02:5691 $fe $01
     ld   A, B                                          ;; 02:5693 $78
-    jr   Z, call_02_569c                               ;; 02:5694 $28 $06
+    jr   Z, getItemFlags1And2                          ;; 02:5694 $28 $06
     push HL                                            ;; 02:5696 $e5
     ld   HL, equipmentDataTable + $08                  ;; 02:5697 $21 $f2 $61
     jr   jr_02_56a3                                    ;; 02:569a $18 $07
 
-call_02_569c:
+getItemFlags1And2:
     or   A, A                                          ;; 02:569c $b7
     jr   Z, jr_02_56ad                                 ;; 02:569d $28 $0e
     push HL                                            ;; 02:569f $e5
@@ -3228,7 +3228,7 @@ jr_02_56ad:
     ld   C, A                                          ;; 02:56af $4f
     ret                                                ;; 02:56b0 $c9
 
-call_02_56b1:
+getBuyFromVendorPrice:
     ld   HL, $00                                       ;; 02:56b1 $21 $00 $00
     and  A, $7f                                        ;; 02:56b4 $e6 $7f
     ret  Z                                             ;; 02:56b6 $c8
@@ -3413,7 +3413,7 @@ moogleEnd:
     ld   A, [wStatusEffect]                            ;; 02:57d6 $fa $c0 $d7
     bit  3, A                                          ;; 02:57d9 $cb $5f
     ret  NZ                                            ;; 02:57db $c0
-    call call_02_5b9d                                  ;; 02:57dc $cd $9d $5b
+    call getEquippedWeaponAP                           ;; 02:57dc $cd $9d $5b
     ld   B, A                                          ;; 02:57df $47
     ld   A, [wStatPower]                               ;; 02:57e0 $fa $c2 $d7
     add  A, B                                          ;; 02:57e3 $80
@@ -3472,7 +3472,7 @@ call_02_5822:
     pop  DE                                            ;; 02:583a $d1
     ret                                                ;; 02:583b $c9
 
-call_02_583c:
+findSlotForEquipmentType:
     push BC                                            ;; 02:583c $c5
     ld   HL, wEquipmentInventory                       ;; 02:583d $21 $dd $d6
     ld   A, [wSelectedMenuIndex2]                      ;; 02:5840 $fa $4c $d8
@@ -3484,31 +3484,35 @@ call_02_583c:
     call indexIntoTable                                ;; 02:584b $cd $82 $76
     ld   A, [HL]                                       ;; 02:584e $7e
     and  A, $0f                                        ;; 02:584f $e6 $0f
-    ld   HL, .data_02_5863                             ;; 02:5851 $21 $63 $58
+    ld   HL, .equipmentTypeFlags                       ;; 02:5851 $21 $63 $58
     pop  BC                                            ;; 02:5854 $c1
-.jr_02_5855:
+.loop:
     cp   A, [HL]                                       ;; 02:5855 $be
-    jr   Z, .jr_02_585d                                ;; 02:5856 $28 $05
+    jr   Z, findSlotForEquipmentType.found             ;; 02:5856 $28 $05
     inc  HL                                            ;; 02:5858 $23
     inc  BC                                            ;; 02:5859 $03
     inc  BC                                            ;; 02:585a $03
-    jr   .jr_02_5855                                   ;; 02:585b $18 $f8
-.jr_02_585d:
+    jr   findSlotForEquipmentType.loop                 ;; 02:585b $18 $f8
+.found:
     ld   A, [BC]                                       ;; 02:585d $0a
     ld   E, A                                          ;; 02:585e $5f
     inc  BC                                            ;; 02:585f $03
     ld   A, [BC]                                       ;; 02:5860 $0a
     ld   D, A                                          ;; 02:5861 $57
     ret                                                ;; 02:5862 $c9
-.data_02_5863:
+; 1=weapon, 2=armor, 4=helm, 5=shield
+.equipmentTypeFlags:
     db   $01, $02, $04, $08                            ;; 02:5863 ????
 
+;@data format=p amount=4
 data_02_5867:
-    dw   wD6BF                                         ;; 02:5867 pP
-    db   $c2, $d6, $c0, $d6, $c4, $d6                  ;; 02:5869 ??????
+    dw   wD6BF                                         ;; 02:5867 pP $00
+    dw   wEquippedArmorDefense                         ;; 02:5869 ?? $01
+    dw   wEquippedHelmetDefense                        ;; 02:586b ?? $02
+    dw   $d6c4                                         ;; 02:586d ?? $03
 
 ;@data format=p amount=4
-data_02_586f:
+currentlyEquippedEquipmentList:
     dw   wEquippedWeapon                               ;; 02:586f pP $00
     dw   wEquippedArmor                                ;; 02:5871 ?? $01
     dw   wEquippedHelm                                 ;; 02:5873 ?? $02
@@ -3706,7 +3710,7 @@ drawNumber24bitOnDialog:
     ld   B, $07                                        ;; 02:59d0 $06 $07
     pop  DE                                            ;; 02:59d2 $d1
 .jr_02_59d3:
-    ld   A, [wD86F]                                    ;; 02:59d3 $fa $6f $d8
+    ld   A, [wMiscFlags]                               ;; 02:59d3 $fa $6f $d8
     bit  7, A                                          ;; 02:59d6 $cb $7f
     jr   Z, .jr_02_59e2                                ;; 02:59d8 $28 $08
     ld   A, [HL+]                                      ;; 02:59da $2a
@@ -3719,14 +3723,14 @@ drawNumber24bitOnDialog:
     jr   Z, .jr_02_59f3                                ;; 02:59e4 $28 $0d
     add  A, $30                                        ;; 02:59e6 $c6 $30
     call storeTileAatDialogPositionDE                  ;; 02:59e8 $cd $44 $38
-    ld   A, [wD86F]                                    ;; 02:59eb $fa $6f $d8
+    ld   A, [wMiscFlags]                               ;; 02:59eb $fa $6f $d8
     set  7, A                                          ;; 02:59ee $cb $ff
-    ld   [wD86F], A                                    ;; 02:59f0 $ea $6f $d8
+    ld   [wMiscFlags], A                               ;; 02:59f0 $ea $6f $d8
 .jr_02_59f3:
     inc  E                                             ;; 02:59f3 $1c
     dec  B                                             ;; 02:59f4 $05
     jr   NZ, .jr_02_59d3                               ;; 02:59f5 $20 $dc
-    ld   HL, wD86F                                     ;; 02:59f7 $21 $6f $d8
+    ld   HL, wMiscFlags                                ;; 02:59f7 $21 $6f $d8
     res  7, [HL]                                       ;; 02:59fa $cb $be
     pop  BC                                            ;; 02:59fc $c1
     ret                                                ;; 02:59fd $c9
@@ -4006,7 +4010,7 @@ call_02_5b8e:
     pop  BC                                            ;; 02:5b9b $c1
     ret                                                ;; 02:5b9c $c9
 
-call_02_5b9d:
+getEquippedWeaponAP:
     push HL                                            ;; 02:5b9d $e5
     ld   A, [wEquippedWeapon]                          ;; 02:5b9e $fa $e9 $d6
     ld   HL, equipmentDataTable + $0c                  ;; 02:5ba1 $21 $f6 $61
@@ -4107,7 +4111,7 @@ data_02_5d0e:
     dw   levelUpText2                                  ;; 02:5d3c .. $17
     dw   levelUpStatOptions                            ;; 02:5d3e .. $18
     dw   yesNoOptions                                  ;; 02:5d40 .. $19
-    dw   data_02_64ca                                  ;; 02:5d42 .. $1a
+    dw   itemAPDPLabelsDataTable                       ;; 02:5d42 .. $1a
     dw   $0000                                         ;; 02:5d44 .. $1b
     dw   $0000                                         ;; 02:5d46 .. $1c
     dw   boyLabel                                      ;; 02:5d48 .. $1d
@@ -4120,7 +4124,7 @@ data_02_5d0e:
 data_02_5d52:
     dw   $0000                                         ;; 02:5d52 .. $00
     dw   wItemInventoryAmount                          ;; 02:5d54 .. $01
-    dw   wD6AB                                         ;; 02:5d56 .. $02
+    dw   wKnownMagicSpells                             ;; 02:5d56 .. $02
     dw   wD6BF                                         ;; 02:5d58 .. $03
     dw   wEquipmentInventoryPowers                     ;; 02:5d5a .. $04
     dw   $0000                                         ;; 02:5d5c ?? $05
@@ -4136,7 +4140,7 @@ data_02_5d52:
     dw   $0000                                         ;; 02:5d70 .. $0f
     dw   $0000                                         ;; 02:5d72 .. $10
     dw   $0000                                         ;; 02:5d74 .. $11
-    dw   wD78F                                         ;; 02:5d76 .. $12
+    dw   wStatStaminaLevelUpTmp                        ;; 02:5d76 .. $12
     dw   $0000                                         ;; 02:5d78 .. $13
     dw   wD793                                         ;; 02:5d7a .. $14
     dw   $d841                                         ;; 02:5d7c .. $15
@@ -4154,7 +4158,7 @@ data_02_5d52:
     dw   $0000                                         ;; 02:5d94 .. $21
 
 ;@data format=p amount=34
-data_02_5d96:
+windowTextStrings:
     dw   startMenuOptions                              ;; 02:5d96 .. $00
     dw   wItemInventory                                ;; 02:5d98 .. $01
     dw   wMagicInventory                               ;; 02:5d9a .. $02
@@ -4192,14 +4196,14 @@ data_02_5d96:
 
 INCLUDE "data/items.asm"
 
-data_02_64ca:
-    db   $00, $ba, $c9, $ff, $ff, $00, $00, $00        ;; 02:64ca ?.....??
-    db   $00, $40, $00, $00, $00, $00, $00, $00        ;; 02:64d2 ?????.??
-    db   $00, $bd, $c9, $ff, $ff, $00, $00, $00        ;; 02:64da ?.....??
-    db   $00, $40, $00, $00, $00, $00, $00, $00        ;; 02:64e2 ?????.??
+; Psuedo items used for labels in the EQUIP screen
+;@item_data amount=2
+itemAPDPLabelsDataTable:
+    ITEM_DATA $00, "AP  <00><00><00><00>"                  , $40, $00, $00, $00, $00, $00, $00 ;; 02:64ca ?.....???????.??
+    ITEM_DATA $00, "DP  <00><00><00><00>"                  , $40, $00, $00, $00, $00, $00, $00 ;; 02:64da ?.....???????.??
     db   $00, $00                                      ;; 02:64ea ??
 
-data_02_64ec:
+vendorInventories:
     db   $00, $0a, $05, $0a, $06, $0a, $16, $0a        ;; 02:64ec ........
     db   $ff, $00, $ff, $00, $ff, $00, $01, $01        ;; 02:64f4 ......??
     db   $00, $0a, $05, $0a, $06, $0a, $16, $0a        ;; 02:64fc ........
@@ -4293,7 +4297,7 @@ drawWillBarCharge:
     jr   NZ, drawWillBarCharge.drawFullTilesLoop       ;; 02:6653 $20 $f5
     ret                                                ;; 02:6655 $c9
 
-call_02_6656:
+castEquippedSpellIfSufficientMana:
     ld   A, [wEquippedItem]                            ;; 02:6656 $fa $ef $d6
     and  A, $7f                                        ;; 02:6659 $e6 $7f
     jr   Z, .jr_02_6675                                ;; 02:665b $28 $18
@@ -5056,7 +5060,7 @@ call_02_6b20:
     and  A, A                                          ;; 02:6b23 $a7
     ret  Z                                             ;; 02:6b24 $c8
     ld   A, [wD844]                                    ;; 02:6b25 $fa $44 $d8
-    call call_00_300a                                  ;; 02:6b28 $cd $0a $30
+    call timerCheckExpiredOrTickAllTimers              ;; 02:6b28 $cd $0a $30
     ret  NZ                                            ;; 02:6b2b $c0
     ld   A, [wOAMBuffer]                               ;; 02:6b2c $fa $00 $c0
     dec  A                                             ;; 02:6b2f $3d
@@ -5334,7 +5338,7 @@ call_02_6c98:
     call getEquippedWeaponElements                     ;; 02:6caa $cd $56 $71
     call getEquippedItemElements                       ;; 02:6cad $cd $65 $71
     call call_02_7a00                                  ;; 02:6cb0 $cd $00 $7a
-    ld   A, [wD862]                                    ;; 02:6cb3 $fa $62 $d8
+    ld   A, [wMainGameStateBackup]                     ;; 02:6cb3 $fa $62 $d8
     ld   [wMainGameState], A                           ;; 02:6cb6 $ea $a0 $c0
 .jr_02_6cb9:
     pop  AF                                            ;; 02:6cb9 $f1
@@ -5392,7 +5396,7 @@ call_02_6ce4:
 
 call_02_6d0b:
     ld   HL, wStatStamina                              ;; 02:6d0b $21 $c1 $d7
-    ld   DE, wD78F                                     ;; 02:6d0e $11 $8f $d7
+    ld   DE, wStatStaminaLevelUpTmp                    ;; 02:6d0e $11 $8f $d7
     ld   B, $04                                        ;; 02:6d11 $06 $04
 .jr_02_6d13:
     ld   A, [HL+]                                      ;; 02:6d13 $2a
@@ -5401,19 +5405,19 @@ call_02_6d0b:
     dec  B                                             ;; 02:6d16 $05
     jr   NZ, .jr_02_6d13                               ;; 02:6d17 $20 $fa
     ld   A, [wStatPower]                               ;; 02:6d19 $fa $c2 $d7
-    ld   [wD790], A                                    ;; 02:6d1c $ea $90 $d7
+    ld   [wStatPowerLevelUpTmp], A                     ;; 02:6d1c $ea $90 $d7
     ld   A, [wStatStamina]                             ;; 02:6d1f $fa $c1 $d7
-    ld   [wD78F], A                                    ;; 02:6d22 $ea $8f $d7
+    ld   [wStatStaminaLevelUpTmp], A                   ;; 02:6d22 $ea $8f $d7
     ret                                                ;; 02:6d25 $c9
 
-call_02_6d26:
-    call call_02_6df4                                  ;; 02:6d26 $cd $f4 $6d
+getCurrentMagicPower:
+    call getSpellOrBookPower                           ;; 02:6d26 $cd $f4 $6d
     and  A, A                                          ;; 02:6d29 $a7
     ret  Z                                             ;; 02:6d2a $c8
     ld   B, A                                          ;; 02:6d2b $47
-    ld   A, [wD791]                                    ;; 02:6d2c $fa $91 $d7
+    ld   A, [wStatWisdomLevelUpTmp]                    ;; 02:6d2c $fa $91 $d7
     add  A, B                                          ;; 02:6d2f $80
-    ld   [wD7D6], A                                    ;; 02:6d30 $ea $d6 $d7
+    ld   [wCurrentMagicPower], A                       ;; 02:6d30 $ea $d6 $d7
     ret                                                ;; 02:6d33 $c9
 
 ; save all registers to a backup state (dialog related?)
@@ -5516,20 +5520,21 @@ loadRegisterState2:
     pop  BC                                            ;; 02:6dca $c1
     ret                                                ;; 02:6dcb $c9
 
-getEquippedWeaponAP:
+getEquippedWeaponBonusTypes:
     push HL                                            ;; 02:6dcc $e5
     ld   A, [wEquippedWeapon]                          ;; 02:6dcd $fa $e9 $d6
-    jr   jr_02_6deb                                    ;; 02:6dd0 $18 $19
+    jr   getEquipmentAOffset0c                         ;; 02:6dd0 $18 $19
 
-getEquippedArmorDP:
+getEquippedArmorElementalResistances:
     push HL                                            ;; 02:6dd2 $e5
     ld   A, [wEquippedArmor]                           ;; 02:6dd3 $fa $ec $d6
-    jr   jr_02_6deb                                    ;; 02:6dd6 $18 $13
+    jr   getEquipmentAOffset0c                         ;; 02:6dd6 $18 $13
 
-getEquippedArmorDP_Dup:
+; Probably intended to fetch for helmets
+getEquippedArmorElementalResistances_Dup:
     push HL                                            ;; 02:6dd8 $e5
     ld   A, [wEquippedArmor]                           ;; 02:6dd9 $fa $ec $d6
-    jr   jr_02_6deb                                    ;; 02:6ddc $18 $0d
+    jr   getEquipmentAOffset0c                         ;; 02:6ddc $18 $0d
 
 getEquippedShieldBlockElements:
     push HL                                            ;; 02:6dde $e5
@@ -5540,20 +5545,20 @@ getEquippedShieldBlockElements:
     pop  HL                                            ;; 02:6de9 $e1
     ret                                                ;; 02:6dea $c9
 
-jr_02_6deb:
+getEquipmentAOffset0c:
     ld   HL, equipmentDataTable + $0b                  ;; 02:6deb $21 $f5 $61
     call indexIntoTable                                ;; 02:6dee $cd $82 $76
     ld   A, [HL]                                       ;; 02:6df1 $7e
     pop  HL                                            ;; 02:6df2 $e1
     ret                                                ;; 02:6df3 $c9
 
-call_02_6df4:
+getSpellOrBookPower:
     ld   A, [wEquippedItem]                            ;; 02:6df4 $fa $ef $d6
     cp   A, $09                                        ;; 02:6df7 $fe $09
     jr   C, .jr_02_6e10                                ;; 02:6df9 $38 $15
     push HL                                            ;; 02:6dfb $e5
     push BC                                            ;; 02:6dfc $c5
-    ld   HL, .data_02_6e1e                             ;; 02:6dfd $21 $1e $6e
+    ld   HL, .itemsListSpellBooksDamage                ;; 02:6dfd $21 $1e $6e
     ld   A, [wD88B]                                    ;; 02:6e00 $fa $8b $d8
     and  A, $7f                                        ;; 02:6e03 $e6 $7f
     ld   B, A                                          ;; 02:6e05 $47
@@ -5578,7 +5583,7 @@ call_02_6df4:
     pop  HL                                            ;; 02:6e1b $e1
     xor  A, A                                          ;; 02:6e1c $af
     ret                                                ;; 02:6e1d $c9
-.data_02_6e1e:
+.itemsListSpellBooksDamage:
     db   $17, $18, $19, $1a, $1b, $1c, $00             ;; 02:6e1e ???????
 
 setStartingStats:
@@ -5654,9 +5659,9 @@ setStartingStats:
     inc  A                                             ;; 02:6e93 $3c
     ld   [HL+], A                                      ;; 02:6e94 $22
     ld   A, [wStatPower]                               ;; 02:6e95 $fa $c2 $d7
-    ld   [wD790], A                                    ;; 02:6e98 $ea $90 $d7
+    ld   [wStatPowerLevelUpTmp], A                     ;; 02:6e98 $ea $90 $d7
     ld   A, [wStatStamina]                             ;; 02:6e9b $fa $c1 $d7
-    ld   [wD78F], A                                    ;; 02:6e9e $ea $8f $d7
+    ld   [wStatStaminaLevelUpTmp], A                   ;; 02:6e9e $ea $8f $d7
     call moogleEnd                                     ;; 02:6ea1 $cd $d6 $57
     ld   HL, $00                                       ;; 02:6ea4 $21 $00 $00
     ld   A, H                                          ;; 02:6ea7 $7c
@@ -5689,7 +5694,7 @@ setStartingStats:
 
 call_02_6ee2:
     ld   HL, $1e0                                      ;; 02:6ee2 $21 $e0 $01
-    ld   DE, wD879                                     ;; 02:6ee5 $11 $79 $d8
+    ld   DE, wPoisStatusEffectTimerNumber              ;; 02:6ee5 $11 $79 $d8
     ld   B, $05                                        ;; 02:6ee8 $06 $05
 .jr_02_6eea:
     call call_00_2f9e                                  ;; 02:6eea $cd $9e $2f
@@ -5807,14 +5812,14 @@ statusBarTopRowDefault:
     db   $46, $49, $7f, $7f, $7f, $7f, $40, $7f        ;; 02:6f9f ........
     db   $7f, $7f, $7f, $7f                            ;; 02:6fa7 ....
 
-call_02_6fab:
-    ld   HL, wD86F                                     ;; 02:6fab $21 $6f $d8
+attackWithWeaponUseWill:
+    ld   HL, wMiscFlags                                ;; 02:6fab $21 $6f $d8
     res  6, [HL]                                       ;; 02:6fae $cb $b6
     call useWillCharge                                 ;; 02:6fb0 $cd $d0 $3e
     ret                                                ;; 02:6fb3 $c9
 
 call_02_6fb4:
-    ld   HL, wD86F                                     ;; 02:6fb4 $21 $6f $d8
+    ld   HL, wMiscFlags                                ;; 02:6fb4 $21 $6f $d8
     set  6, [HL]                                       ;; 02:6fb7 $cb $f6
     ld   A, [wD88B]                                    ;; 02:6fb9 $fa $8b $d8
     and  A, $7f                                        ;; 02:6fbc $e6 $7f
@@ -5835,7 +5840,7 @@ call_02_6fb4:
     pop  BC                                            ;; 02:6fd3 $c1
     ret  C                                             ;; 02:6fd4 $d8
     ld   HL, itemsListCure                             ;; 02:6fd5 $21 $17 $7b
-    call call_02_714b                                  ;; 02:6fd8 $cd $4b $71
+    call getItemOffsetBandCifInList                    ;; 02:6fd8 $cd $4b $71
     jr   NC, .jr_02_7056                               ;; 02:6fdb $30 $79
     push HL                                            ;; 02:6fdd $e5
     ld   A, C                                          ;; 02:6fde $79
@@ -5916,7 +5921,7 @@ call_02_6fb4:
     ret                                                ;; 02:7055 $c9
 .jr_02_7056:
     ld   HL, itemsListHealStatus                       ;; 02:7056 $21 $1f $7b
-    call call_02_714b                                  ;; 02:7059 $cd $4b $71
+    call getItemOffsetBandCifInList                    ;; 02:7059 $cd $4b $71
     jr   NC, .jr_02_7084                               ;; 02:705c $30 $26
     ld   A, C                                          ;; 02:705e $79
     cp   A, $02                                        ;; 02:705f $fe $02
@@ -5945,7 +5950,7 @@ call_02_6fb4:
     ret                                                ;; 02:7083 $c9
 .jr_02_7084:
     ld   HL, itemsListBuff                             ;; 02:7084 $21 $26 $7b
-    call call_02_714b                                  ;; 02:7087 $cd $4b $71
+    call getItemOffsetBandCifInList                    ;; 02:7087 $cd $4b $71
     jr   NC, jr_02_70e3                                ;; 02:708a $30 $57
     ld   A, [wItemBuffActive]                          ;; 02:708c $fa $7e $d8
     cp   A, $ff                                        ;; 02:708f $fe $ff
@@ -6009,14 +6014,14 @@ call_02_70d7:
 
 jr_02_70e3:
     ld   HL, itemsListCrystal                          ;; 02:70e3 $21 $34 $7b
-    call call_02_714b                                  ;; 02:70e6 $cd $4b $71
+    call getItemOffsetBandCifInList                    ;; 02:70e6 $cd $4b $71
     jr   NC, .jr_02_70f0                               ;; 02:70e9 $30 $05
     ld   A, H                                          ;; 02:70eb $7c
     call setWillBarMax                                 ;; 02:70ec $cd $97 $3e
     ret                                                ;; 02:70ef $c9
 .jr_02_70f0:
     ld   HL, itemsListSleep                            ;; 02:70f0 $21 $2b $7b
-    call call_02_714b                                  ;; 02:70f3 $cd $4b $71
+    call getItemOffsetBandCifInList                    ;; 02:70f3 $cd $4b $71
     jr   NC, .jr_02_7102                               ;; 02:70f6 $30 $0a
     call call_02_7139                                  ;; 02:70f8 $cd $39 $71
     call call_00_2f44                                  ;; 02:70fb $cd $44 $2f
@@ -6024,7 +6029,7 @@ jr_02_70e3:
     ret                                                ;; 02:7101 $c9
 .jr_02_7102:
     ld   HL, itemsListMute                             ;; 02:7102 $21 $2e $7b
-    call call_02_714b                                  ;; 02:7105 $cd $4b $71
+    call getItemOffsetBandCifInList                    ;; 02:7105 $cd $4b $71
     jr   NC, .jr_02_7114                               ;; 02:7108 $30 $0a
     call call_02_7139                                  ;; 02:710a $cd $39 $71
     call call_00_2f5d                                  ;; 02:710d $cd $5d $2f
@@ -6032,7 +6037,7 @@ jr_02_70e3:
     ret                                                ;; 02:7113 $c9
 .jr_02_7114:
     ld   HL, itemsListLights                           ;; 02:7114 $21 $31 $7b
-    call call_02_714b                                  ;; 02:7117 $cd $4b $71
+    call getItemOffsetBandCifInList                    ;; 02:7117 $cd $4b $71
     jr   NC, .jr_02_712e                               ;; 02:711a $30 $12
     ld   L, A                                          ;; 02:711c $6f
     ld   H, $00                                        ;; 02:711d $26 $00
@@ -6045,7 +6050,7 @@ jr_02_70e3:
     ret                                                ;; 02:712d $c9
 .jr_02_712e:
     ld   HL, itemsListDamage                           ;; 02:712e $21 $36 $7b
-    call call_02_714b                                  ;; 02:7131 $cd $4b $71
+    call getItemOffsetBandCifInList                    ;; 02:7131 $cd $4b $71
     ret  NC                                            ;; 02:7134 $d0
     call useWillCharge                                 ;; 02:7135 $cd $d0 $3e
     ret                                                ;; 02:7138 $c9
@@ -6066,13 +6071,17 @@ call_02_7139:
     add  HL, DE                                        ;; 02:7149 $19
     ret                                                ;; 02:714a $c9
 
-call_02_714b:
+; HL = pointer to a list of item/spell IDs
+; C = id of a item/spell
+; Return: H and A = offset $b, L = offset $c, and carry flag set (if found)
+; Return: carry flag clear (if not found)
+getItemOffsetBandCifInList:
     ld   A, [HL+]                                      ;; 02:714b $2a
     or   A, A                                          ;; 02:714c $b7
     ret  Z                                             ;; 02:714d $c8
     cp   A, C                                          ;; 02:714e $b9
-    jr   NZ, call_02_714b                              ;; 02:714f $20 $fa
-    call call_02_717b                                  ;; 02:7151 $cd $7b $71
+    jr   NZ, getItemOffsetBandCifInList                ;; 02:714f $20 $fa
+    call getSpellOffset0band0cinHL                     ;; 02:7151 $cd $7b $71
     scf                                                ;; 02:7154 $37
     ret                                                ;; 02:7155 $c9
 
@@ -6100,7 +6109,7 @@ getTableEntryAtIndexA:
     ld   A, [HL+]                                      ;; 02:7179 $2a
     ret                                                ;; 02:717a $c9
 
-call_02_717b:
+getSpellOffset0band0cinHL:
     ld   HL, spellDataTable + $0a                      ;; 02:717b $21 $e4 $5d
     call indexIntoTable                                ;; 02:717e $cd $82 $76
     ld   A, [HL+]                                      ;; 02:7181 $2a
@@ -6353,17 +6362,17 @@ call_02_7322:
     ld   A, $01                                        ;; 02:733b $3e $01
     ld   [wWillCharge], A                              ;; 02:733d $ea $58 $d8
     ld   HL, wMagicInventory                           ;; 02:7340 $21 $d5 $d6
-    ld   DE, wD6AB                                     ;; 02:7343 $11 $ab $d6
+    ld   DE, wKnownMagicSpells                         ;; 02:7343 $11 $ab $d6
     ld   B, $08                                        ;; 02:7346 $06 $08
 .jr_02_7348:
     xor  A, A                                          ;; 02:7348 $af
     ld   [DE], A                                       ;; 02:7349 $12
     ld   A, [HL+]                                      ;; 02:734a $2a
     and  A, A                                          ;; 02:734b $a7
-    jr   Z, .jr_02_7351                                ;; 02:734c $28 $03
+    jr   Z, call_02_7322.initEquipmentInventoryPowers  ;; 02:734c $28 $03
     ld   A, $01                                        ;; 02:734e $3e $01
     ld   [DE], A                                       ;; 02:7350 $12
-.jr_02_7351:
+.initEquipmentInventoryPowers:
     inc  DE                                            ;; 02:7351 $13
     dec  B                                             ;; 02:7352 $05
     jr   NZ, .jr_02_7348                               ;; 02:7353 $20 $f3
@@ -6373,7 +6382,7 @@ call_02_7322:
 .jr_02_735d:
     push BC                                            ;; 02:735d $c5
     ld   A, [HL]                                       ;; 02:735e $7e
-    call call_02_569c                                  ;; 02:735f $cd $9c $56
+    call getItemFlags1And2                             ;; 02:735f $cd $9c $56
     ld   A, B                                          ;; 02:7362 $78
     inc  C                                             ;; 02:7363 $0c
     jr   Z, .jr_02_737b                                ;; 02:7364 $28 $15
@@ -6487,7 +6496,7 @@ call_02_7322:
     db   $50, $01, $09                                 ;; 02:741e ???
 
 call_02_7421:
-    call call_02_77ae                                  ;; 02:7421 $cd $ae $77
+    call NOOP_2                                        ;; 02:7421 $cd $ae $77
     ld   A, [wEquippedItem]                            ;; 02:7424 $fa $ef $d6
     ld   [wD6F1], A                                    ;; 02:7427 $ea $f1 $d6
     and  A, $7f                                        ;; 02:742a $e6 $7f
@@ -6929,7 +6938,7 @@ call_02_7693:
     ld   DE, $202                                      ;; 02:76a6 $11 $02 $02
     pop  AF                                            ;; 02:76a9 $f1
     push AF                                            ;; 02:76aa $f5
-    ld   HL, data_02_5d96                              ;; 02:76ab $21 $96 $5d
+    ld   HL, windowTextStrings                         ;; 02:76ab $21 $96 $5d
     call indexPointerTable                             ;; 02:76ae $cd $7d $6c
     ld   A, H                                          ;; 02:76b1 $7c
     ld   [wD895], A                                    ;; 02:76b2 $ea $95 $d8
@@ -7014,7 +7023,7 @@ call_02_7735:
     pop  HL                                            ;; 02:7742 $e1
     ld   [HL+], A                                      ;; 02:7743 $22
     push HL                                            ;; 02:7744 $e5
-    call call_00_0169                                  ;; 02:7745 $cd $69 $01
+    call getPlayerNearestTilePostion                   ;; 02:7745 $cd $69 $01
     pop  HL                                            ;; 02:7748 $e1
     ld   [HL], E                                       ;; 02:7749 $73
     inc  HL                                            ;; 02:774a $23
@@ -7085,13 +7094,13 @@ call_02_77a3:
     jr   NZ, call_02_77a3                              ;; 02:77ab $20 $f6
     ret                                                ;; 02:77ad $c9
 
-call_02_77ae:
+NOOP_2:
     ret                                                ;; 02:77ae $c9
 
-call_02_77af:
+giveStatusEffect:
     push AF                                            ;; 02:77af $f5
     ld   A, [wMainGameState]                           ;; 02:77b0 $fa $a0 $c0
-    ld   [wD862], A                                    ;; 02:77b3 $ea $62 $d8
+    ld   [wMainGameStateBackup], A                     ;; 02:77b3 $ea $62 $d8
     ld   A, $0f                                        ;; 02:77b6 $3e $0f
     ld   [wMainGameState], A                           ;; 02:77b8 $ea $a0 $c0
     pop  AF                                            ;; 02:77bb $f1
@@ -7184,7 +7193,7 @@ jr_02_7827:
     rrca                                               ;; 02:7852 $0f
     call NC, startMoogStatusEffect                     ;; 02:7853 $d4 $7f $78
     rrca                                               ;; 02:7856 $0f
-    jr   jr_02_7870                                    ;; 02:7857 $18 $17
+    jr   startFujiStatusEffect                         ;; 02:7857 $18 $17
 
 call_02_7859:
     ld   A, B                                          ;; 02:7859 $78
@@ -7201,25 +7210,25 @@ call_02_7859:
     call C, startMoogStatusEffect                      ;; 02:786c $dc $7f $78
     rrca                                               ;; 02:786f $0f
 
-jr_02_7870:
+startFujiStatusEffect:
     push AF                                            ;; 02:7870 $f5
     ld   A, $01                                        ;; 02:7871 $3e $01
-    ld   [wD878], A                                    ;; 02:7873 $ea $78 $d8
-    ld   A, [wD87D]                                    ;; 02:7876 $fa $7d $d8
+    ld   [wFujiStatusEffectTimeBeforeNextTick], A      ;; 02:7873 $ea $78 $d8
+    ld   A, [wFujiStatusEffectTimerNumber]             ;; 02:7876 $fa $7d $d8
     call call_00_2fd4                                  ;; 02:7879 $cd $d4 $2f
     pop  AF                                            ;; 02:787c $f1
-    jr   jr_02_78af                                    ;; 02:787d $18 $30
+    jr   startFujiStatusEffectContinued                ;; 02:787d $18 $30
 
 startMoogStatusEffect:
     call C, setupMoogStatusEffect                      ;; 02:787f $dc $b5 $78
-    ld   A, [wD87C]                                    ;; 02:7882 $fa $7c $d8
+    ld   A, [wMoogStatusEffectTimerNumber]             ;; 02:7882 $fa $7c $d8
     call call_00_2fd4                                  ;; 02:7885 $cd $d4 $2f
     ret                                                ;; 02:7888 $c9
 
 startStonStatusEffect:
     push AF                                            ;; 02:7889 $f5
     call C, setStonEffectFlag                          ;; 02:788a $dc $14 $02
-    ld   A, [wD87B]                                    ;; 02:788d $fa $7b $d8
+    ld   A, [wStonStatusEffectTimerNumber]             ;; 02:788d $fa $7b $d8
     call call_00_2fd4                                  ;; 02:7890 $cd $d4 $2f
     pop  AF                                            ;; 02:7893 $f1
     ret                                                ;; 02:7894 $c9
@@ -7227,7 +7236,7 @@ startStonStatusEffect:
 startDarkStatusEffect:
     push AF                                            ;; 02:7895 $f5
     call C, setDarkGraphicEffect                       ;; 02:7896 $dc $f4 $01
-    ld   A, [wD87A]                                    ;; 02:7899 $fa $7a $d8
+    ld   A, [wDarkStatusEffectTimerNumber]             ;; 02:7899 $fa $7a $d8
     call call_00_2fd4                                  ;; 02:789c $cd $d4 $2f
     pop  AF                                            ;; 02:789f $f1
     ret                                                ;; 02:78a0 $c9
@@ -7235,13 +7244,13 @@ startDarkStatusEffect:
 startPoisStatusEffect:
     push AF                                            ;; 02:78a1 $f5
     ld   A, $01                                        ;; 02:78a2 $3e $01
-    ld   [wD877], A                                    ;; 02:78a4 $ea $77 $d8
-    ld   A, [wD879]                                    ;; 02:78a7 $fa $79 $d8
+    ld   [wPoisStatusEffectTimeBeforeNextTick], A      ;; 02:78a4 $ea $77 $d8
+    ld   A, [wPoisStatusEffectTimerNumber]             ;; 02:78a7 $fa $79 $d8
     call call_00_2fd4                                  ;; 02:78aa $cd $d4 $2f
     pop  AF                                            ;; 02:78ad $f1
     ret                                                ;; 02:78ae $c9
 
-jr_02_78af:
+startFujiStatusEffectContinued:
     ld   B, $00                                        ;; 02:78af $06 $00
     call call_02_6c98                                  ;; 02:78b1 $cd $98 $6c
     ret                                                ;; 02:78b4 $c9
@@ -7272,47 +7281,47 @@ call_02_78c6:
     ret  Z                                             ;; 02:78da $c8
     bit  0, A                                          ;; 02:78db $cb $47
     push AF                                            ;; 02:78dd $f5
-    call NZ, call_02_794e                              ;; 02:78de $c4 $4e $79
+    call NZ, tickPoisStatusEffect                      ;; 02:78de $c4 $4e $79
     pop  AF                                            ;; 02:78e1 $f1
     bit  4, A                                          ;; 02:78e2 $cb $67
-    call NZ, call_02_7930                              ;; 02:78e4 $c4 $30 $79
-    ld   A, [wD87D]                                    ;; 02:78e7 $fa $7d $d8
-    call call_00_300a                                  ;; 02:78ea $cd $0a $30
+    call NZ, tickFujiStatusEffect                      ;; 02:78e4 $c4 $30 $79
+    ld   A, [wFujiStatusEffectTimerNumber]             ;; 02:78e7 $fa $7d $d8
+    call timerCheckExpiredOrTickAllTimers              ;; 02:78ea $cd $0a $30
     call Z, endFujiStatusEffect                        ;; 02:78ed $cc $87 $79
-    ld   A, [wD879]                                    ;; 02:78f0 $fa $79 $d8
-    call call_00_300a                                  ;; 02:78f3 $cd $0a $30
+    ld   A, [wPoisStatusEffectTimerNumber]             ;; 02:78f0 $fa $79 $d8
+    call timerCheckExpiredOrTickAllTimers              ;; 02:78f3 $cd $0a $30
     call Z, endPoisStatusEffect                        ;; 02:78f6 $cc $90 $79
-    ld   A, [wD87A]                                    ;; 02:78f9 $fa $7a $d8
-    call call_00_300a                                  ;; 02:78fc $cd $0a $30
+    ld   A, [wDarkStatusEffectTimerNumber]             ;; 02:78f9 $fa $7a $d8
+    call timerCheckExpiredOrTickAllTimers              ;; 02:78fc $cd $0a $30
     call Z, endDarkStatusEffect                        ;; 02:78ff $cc $9c $79
-    ld   A, [wD87B]                                    ;; 02:7902 $fa $7b $d8
-    call call_00_300a                                  ;; 02:7905 $cd $0a $30
+    ld   A, [wStonStatusEffectTimerNumber]             ;; 02:7902 $fa $7b $d8
+    call timerCheckExpiredOrTickAllTimers              ;; 02:7905 $cd $0a $30
     call Z, endStonStatusEffect                        ;; 02:7908 $cc $ab $79
-    ld   A, [wD87C]                                    ;; 02:790b $fa $7c $d8
-    call call_00_300a                                  ;; 02:790e $cd $0a $30
+    ld   A, [wMoogStatusEffectTimerNumber]             ;; 02:790b $fa $7c $d8
+    call timerCheckExpiredOrTickAllTimers              ;; 02:790e $cd $0a $30
     call Z, endMoogStatusEffect                        ;; 02:7911 $cc $ba $79
     ld   A, [wHPHigh]                                  ;; 02:7914 $fa $b3 $d7
     ld   D, A                                          ;; 02:7917 $57
     ld   A, [wHPLow]                                   ;; 02:7918 $fa $b2 $d7
     ld   E, A                                          ;; 02:791b $5f
     ld   A, [wD881]                                    ;; 02:791c $fa $81 $d8
-    call call_00_300a                                  ;; 02:791f $cd $0a $30
+    call timerCheckExpiredOrTickAllTimers              ;; 02:791f $cd $0a $30
     call Z, call_02_7926                               ;; 02:7922 $cc $26 $79
     ret                                                ;; 02:7925 $c9
 
 call_02_7926:
     ld   A, [wD881]                                    ;; 02:7926 $fa $81 $d8
-    call call_00_2fea                                  ;; 02:7929 $cd $ea $2f
+    call timerReset                                    ;; 02:7929 $cd $ea $2f
     call conditionallySetDarkGraphicEffect             ;; 02:792c $cd $6e $11
     ret                                                ;; 02:792f $c9
 
-call_02_7930:
-    ld   HL, wD878                                     ;; 02:7930 $21 $78 $d8
+tickFujiStatusEffect:
+    ld   HL, wFujiStatusEffectTimeBeforeNextTick       ;; 02:7930 $21 $78 $d8
     dec  [HL]                                          ;; 02:7933 $35
     ret  NZ                                            ;; 02:7934 $c0
     ld   A, $3c                                        ;; 02:7935 $3e $3c
     ld   [HL], A                                       ;; 02:7937 $77
-    call call_02_7970                                  ;; 02:7938 $cd $70 $79
+    call getMaxHPdiv20AndCurrentHP                     ;; 02:7938 $cd $70 $79
     add  HL, DE                                        ;; 02:793b $19
     ld   A, [wMaxHPHigh]                               ;; 02:793c $fa $b5 $d7
     ld   D, A                                          ;; 02:793f $57
@@ -7322,28 +7331,28 @@ call_02_7930:
     sub  A, L                                          ;; 02:7945 $95
     ld   A, D                                          ;; 02:7946 $7a
     sbc  A, H                                          ;; 02:7947 $9c
-    jr   C, jr_02_7964                                 ;; 02:7948 $38 $1a
+    jr   C, tickFujiPoisStatusEffectUpdateHP           ;; 02:7948 $38 $1a
     push HL                                            ;; 02:794a $e5
     pop  DE                                            ;; 02:794b $d1
-    jr   jr_02_7964                                    ;; 02:794c $18 $16
+    jr   tickFujiPoisStatusEffectUpdateHP              ;; 02:794c $18 $16
 
-call_02_794e:
-    ld   HL, wD877                                     ;; 02:794e $21 $77 $d8
+tickPoisStatusEffect:
+    ld   HL, wPoisStatusEffectTimeBeforeNextTick       ;; 02:794e $21 $77 $d8
     dec  [HL]                                          ;; 02:7951 $35
     ret  NZ                                            ;; 02:7952 $c0
     ld   A, $3c                                        ;; 02:7953 $3e $3c
     ld   [HL], A                                       ;; 02:7955 $77
-    call call_02_7970                                  ;; 02:7956 $cd $70 $79
+    call getMaxHPdiv20AndCurrentHP                     ;; 02:7956 $cd $70 $79
     ld   A, E                                          ;; 02:7959 $7b
     sub  A, L                                          ;; 02:795a $95
     ld   E, A                                          ;; 02:795b $5f
     ld   A, D                                          ;; 02:795c $7a
     sbc  A, H                                          ;; 02:795d $9c
     ld   D, A                                          ;; 02:795e $57
-    jr   NC, jr_02_7964                                ;; 02:795f $30 $03
+    jr   NC, tickFujiPoisStatusEffectUpdateHP          ;; 02:795f $30 $03
     ld   DE, $00                                       ;; 02:7961 $11 $00 $00
 
-jr_02_7964:
+tickFujiPoisStatusEffectUpdateHP:
     ld   A, D                                          ;; 02:7964 $7a
     ld   [wHPHigh], A                                  ;; 02:7965 $ea $b3 $d7
     ld   A, E                                          ;; 02:7968 $7b
@@ -7351,7 +7360,8 @@ jr_02_7964:
     call drawHPOnStatuBar                              ;; 02:796c $cd $29 $6f
     ret                                                ;; 02:796f $c9
 
-call_02_7970:
+; return: HL = Max HP/20, DE = Current HP
+getMaxHPdiv20AndCurrentHP:
     ld   A, [wMaxHPHigh]                               ;; 02:7970 $fa $b5 $d7
     ld   H, A                                          ;; 02:7973 $67
     ld   A, [wMaxHPLow]                                ;; 02:7974 $fa $b4 $d7
@@ -7366,32 +7376,32 @@ call_02_7970:
     ret                                                ;; 02:7986 $c9
 
 endFujiStatusEffect:
-    ld   A, [wD87D]                                    ;; 02:7987 $fa $7d $d8
+    ld   A, [wFujiStatusEffectTimerNumber]             ;; 02:7987 $fa $7d $d8
     ld   B, $ef                                        ;; 02:798a $06 $ef
     call clearStatusEffects                            ;; 02:798c $cd $dd $79
     ret                                                ;; 02:798f $c9
 
 endPoisStatusEffect:
-    ld   A, [wD879]                                    ;; 02:7990 $fa $79 $d8
+    ld   A, [wPoisStatusEffectTimerNumber]             ;; 02:7990 $fa $79 $d8
     ld   B, $fe                                        ;; 02:7993 $06 $fe
     call clearStatusEffects                            ;; 02:7995 $cd $dd $79
-    call call_02_79d2                                  ;; 02:7998 $cd $d2 $79
+    call endStatusEffectMusicIfGood                    ;; 02:7998 $cd $d2 $79
     ret                                                ;; 02:799b $c9
 
 endDarkStatusEffect:
     call removeDarkGraphicEffect                       ;; 02:799c $cd $04 $02
-    ld   A, [wD87A]                                    ;; 02:799f $fa $7a $d8
+    ld   A, [wDarkStatusEffectTimerNumber]             ;; 02:799f $fa $7a $d8
     ld   B, $fd                                        ;; 02:79a2 $06 $fd
     call clearStatusEffects                            ;; 02:79a4 $cd $dd $79
-    call call_02_79d2                                  ;; 02:79a7 $cd $d2 $79
+    call endStatusEffectMusicIfGood                    ;; 02:79a7 $cd $d2 $79
     ret                                                ;; 02:79aa $c9
 
 endStonStatusEffect:
     call removeStonEffectFlag                          ;; 02:79ab $cd $1a $02
-    ld   A, [wD87B]                                    ;; 02:79ae $fa $7b $d8
+    ld   A, [wStonStatusEffectTimerNumber]             ;; 02:79ae $fa $7b $d8
     ld   B, $fb                                        ;; 02:79b1 $06 $fb
     call clearStatusEffects                            ;; 02:79b3 $cd $dd $79
-    call call_02_79d2                                  ;; 02:79b6 $cd $d2 $79
+    call endStatusEffectMusicIfGood                    ;; 02:79b6 $cd $d2 $79
     ret                                                ;; 02:79b9 $c9
 
 endMoogStatusEffect:
@@ -7399,13 +7409,13 @@ endMoogStatusEffect:
     ld   A, [wMoogleSavedDp]                           ;; 02:79bd $fa $82 $d8
     ld   [wDupTotalDP], A                              ;; 02:79c0 $ea $c3 $d6
     ld   [wTotalDP], A                                 ;; 02:79c3 $ea $e0 $d7
-    ld   A, [wD87C]                                    ;; 02:79c6 $fa $7c $d8
+    ld   A, [wMoogStatusEffectTimerNumber]             ;; 02:79c6 $fa $7c $d8
     ld   B, $f7                                        ;; 02:79c9 $06 $f7
     call clearStatusEffects                            ;; 02:79cb $cd $dd $79
-    call call_02_79d2                                  ;; 02:79ce $cd $d2 $79
+    call endStatusEffectMusicIfGood                    ;; 02:79ce $cd $d2 $79
     ret                                                ;; 02:79d1 $c9
 
-call_02_79d2:
+endStatusEffectMusicIfGood:
     push BC                                            ;; 02:79d2 $c5
     ld   A, [wStatusEffect]                            ;; 02:79d3 $fa $c0 $d7
     and  A, $0f                                        ;; 02:79d6 $e6 $0f
@@ -7414,7 +7424,7 @@ call_02_79d2:
     ret                                                ;; 02:79dc $c9
 
 clearStatusEffects:
-    call call_00_2fea                                  ;; 02:79dd $cd $ea $2f
+    call timerReset                                    ;; 02:79dd $cd $ea $2f
     ld   HL, wStatusEffect                             ;; 02:79e0 $21 $c0 $d7
     ld   A, B                                          ;; 02:79e3 $78
     and  A, [HL]                                       ;; 02:79e4 $a6
@@ -7422,34 +7432,34 @@ clearStatusEffects:
     ret                                                ;; 02:79e6 $c9
 
 call_02_79e7:
-    ld   HL, wD879                                     ;; 02:79e7 $21 $79 $d8
+    ld   HL, wPoisStatusEffectTimerNumber              ;; 02:79e7 $21 $79 $d8
     ld   B, $05                                        ;; 02:79ea $06 $05
 .jr_02_79ec:
     ld   A, [HL+]                                      ;; 02:79ec $2a
-    call call_00_2ff6                                  ;; 02:79ed $cd $f6 $2f
+    call timerDeactivate                               ;; 02:79ed $cd $f6 $2f
     dec  B                                             ;; 02:79f0 $05
     jr   NZ, .jr_02_79ec                               ;; 02:79f1 $20 $f9
     ld   A, [wCF60]                                    ;; 02:79f3 $fa $60 $cf
-    call call_00_2ff6                                  ;; 02:79f6 $cd $f6 $2f
+    call timerDeactivate                               ;; 02:79f6 $cd $f6 $2f
     ld   A, [wCF61]                                    ;; 02:79f9 $fa $61 $cf
-    call call_00_2ff6                                  ;; 02:79fc $cd $f6 $2f
+    call timerDeactivate                               ;; 02:79fc $cd $f6 $2f
     ret                                                ;; 02:79ff $c9
 
 call_02_7a00:
     ld   A, [wStatusEffect]                            ;; 02:7a00 $fa $c0 $d7
     ld   C, A                                          ;; 02:7a03 $4f
     ld   B, $05                                        ;; 02:7a04 $06 $05
-    ld   HL, wD879                                     ;; 02:7a06 $21 $79 $d8
+    ld   HL, wPoisStatusEffectTimerNumber              ;; 02:7a06 $21 $79 $d8
 .jr_02_7a09:
     ld   A, [HL+]                                      ;; 02:7a09 $2a
     rrc  C                                             ;; 02:7a0a $cb $09
-    call C, call_00_3000                               ;; 02:7a0c $dc $00 $30
+    call C, timerActivate                              ;; 02:7a0c $dc $00 $30
     dec  B                                             ;; 02:7a0f $05
     jr   NZ, .jr_02_7a09                               ;; 02:7a10 $20 $f7
     ld   A, [wCF61]                                    ;; 02:7a12 $fa $61 $cf
-    call call_00_3000                                  ;; 02:7a15 $cd $00 $30
+    call timerActivate                                 ;; 02:7a15 $cd $00 $30
     ld   A, [wCF60]                                    ;; 02:7a18 $fa $60 $cf
-    call call_00_3000                                  ;; 02:7a1b $cd $00 $30
+    call timerActivate                                 ;; 02:7a1b $cd $00 $30
     ret                                                ;; 02:7a1e $c9
 
 ; Used by ITEMS and MAGIC windows if you try to select an empty slot
@@ -7729,7 +7739,7 @@ jp_02_7b9f:
     xor  A, A                                          ;; 02:7bb3 $af
     ld   [wD853], A                                    ;; 02:7bb4 $ea $53 $d8
     ld   A, [wMainGameState]                           ;; 02:7bb7 $fa $a0 $c0
-    ld   [wD862], A                                    ;; 02:7bba $ea $62 $d8
+    ld   [wMainGameStateBackup], A                     ;; 02:7bba $ea $62 $d8
     ld   A, $11                                        ;; 02:7bbd $3e $11
     ld   [wMainGameState], A                           ;; 02:7bbf $ea $a0 $c0
     ret                                                ;; 02:7bc2 $c9
@@ -7884,7 +7894,7 @@ jp_02_7cd8:
     ld   [wIntroScrollState], A                        ;; 02:7cd9 $ea $86 $d8
     ld   A, [wD884]                                    ;; 02:7cdc $fa $84 $d8
     ld   [wVideoWY], A                                 ;; 02:7cdf $ea $a9 $c0
-    ld   A, [wD862]                                    ;; 02:7ce2 $fa $62 $d8
+    ld   A, [wMainGameStateBackup]                     ;; 02:7ce2 $fa $62 $d8
     ld   [wMainGameState], A                           ;; 02:7ce5 $ea $a0 $c0
     call call_00_0db6                                  ;; 02:7ce8 $cd $b6 $0d
     ld   HL, $03                                       ;; 02:7ceb $21 $03 $00
@@ -7919,7 +7929,7 @@ levelUpText1:
     TXT  "   Level up!\nHP/MP recovered!<00>"          ;; 02:7d38 ..............................
 
 ;@ffa_text size=7
-data_02_7d56:
+vendorBoughtText:
     TXT  "Bought "                                     ;; 02:7d56 .......
 
 ;@ffa_text amount=2
@@ -7929,7 +7939,7 @@ venderGreetingText:
     db   $00, $00                                      ;; 02:7d74 ..
 
 ;@ffa_text amount=2
-data_02_7d76:
+venderNotEnoughMoneyText:
     TXT  "Not enough GP!<00>"                          ;; 02:7d76 ???????????????
     TXT  "?<00>"                                       ;; 02:7d85 ??
 

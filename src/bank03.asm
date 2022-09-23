@@ -16,7 +16,7 @@ SECTION "bank03", ROMX[$4000], BANK[$03]
     call_to_bank_target call_03_455d                   ;; 03:400c ??
     call_to_bank_target call_03_4641                   ;; 03:400e pP
     call_to_bank_target call_03_4561                   ;; 03:4010 pP
-    call_to_bank_target call_03_48d7                   ;; 03:4012 ??
+    call_to_bank_target damageNpc                      ;; 03:4012 ??
     call_to_bank_target call_03_4b70                   ;; 03:4014 pP
     call_to_bank_target call_03_4aed                   ;; 03:4016 pP
     call_to_bank_target call_03_4af1                   ;; 03:4018 pP
@@ -245,7 +245,7 @@ call_03_4107:
     ld   L, A                                          ;; 03:414a $6f
     bit  7, H                                          ;; 03:414b $cb $7c
     ld   A, [DE]                                       ;; 03:414d $1a
-    call NZ, call_03_48d7                              ;; 03:414e $c4 $d7 $48
+    call NZ, damageNpc                                 ;; 03:414e $c4 $d7 $48
     pop  DE                                            ;; 03:4151 $d1
     ret                                                ;; 03:4152 $c9
 .jr_03_4153:
@@ -283,7 +283,7 @@ call_03_4107:
     ld   L, A                                          ;; 03:4182 $6f
     bit  7, H                                          ;; 03:4183 $cb $7c
     ld   A, [DE]                                       ;; 03:4185 $1a
-    call NZ, call_03_48d7                              ;; 03:4186 $c4 $d7 $48
+    call NZ, damageNpc                                 ;; 03:4186 $c4 $d7 $48
     pop  DE                                            ;; 03:4189 $d1
     ret                                                ;; 03:418a $c9
 
@@ -300,7 +300,7 @@ call_03_418b:
     ld   A, [wCF60]                                    ;; 03:4199 $fa $60 $cf
     cp   A, $00                                        ;; 03:419c $fe $00
     jr   Z, .jr_03_41c5                                ;; 03:419e $28 $25
-    call call_00_300a                                  ;; 03:41a0 $cd $0a $30
+    call timerCheckExpiredOrTickAllTimers              ;; 03:41a0 $cd $0a $30
     jr   NZ, .jr_03_41b2                               ;; 03:41a3 $20 $0d
     ld   A, [wCF60]                                    ;; 03:41a5 $fa $60 $cf
     call call_00_2fca                                  ;; 03:41a8 $cd $ca $2f
@@ -325,7 +325,7 @@ call_03_418b:
     ld   A, [wCF61]                                    ;; 03:41c5 $fa $61 $cf
     cp   A, $00                                        ;; 03:41c8 $fe $00
     jr   Z, .jr_03_41f1                                ;; 03:41ca $28 $25
-    call call_00_300a                                  ;; 03:41cc $cd $0a $30
+    call timerCheckExpiredOrTickAllTimers              ;; 03:41cc $cd $0a $30
     jr   NZ, .jr_03_41de                               ;; 03:41cf $20 $0d
     ld   A, [wCF61]                                    ;; 03:41d1 $fa $61 $cf
     call call_00_2fca                                  ;; 03:41d4 $cd $ca $2f
@@ -680,7 +680,7 @@ giveFollower:
     push BC                                            ;; 03:43c6 $c5
     ld   A, [wC4E0]                                    ;; 03:43c7 $fa $e0 $c4
     ld   C, A                                          ;; 03:43ca $4f
-    call call_00_05ef                                  ;; 03:43cb $cd $ef $05
+    call getObjectNearestTilePosition                  ;; 03:43cb $cd $ef $05
     push DE                                            ;; 03:43ce $d5
     ld   A, [wC4E0]                                    ;; 03:43cf $fa $e0 $c4
     ld   C, A                                          ;; 03:43d2 $4f
@@ -847,7 +847,7 @@ call_03_4488:
     push BC                                            ;; 03:44a5 $c5
     push DE                                            ;; 03:44a6 $d5
     ld   C, $04                                        ;; 03:44a7 $0e $04
-    call call_00_05ef                                  ;; 03:44a9 $cd $ef $05
+    call getObjectNearestTilePosition                  ;; 03:44a9 $cd $ef $05
     pop  HL                                            ;; 03:44ac $e1
     push HL                                            ;; 03:44ad $e5
     ld   A, D                                          ;; 03:44ae $7a
@@ -1246,39 +1246,39 @@ call_03_4641:
     ld   HL, $0b                                       ;; 03:46e5 $21 $0b $00
     add  HL, DE                                        ;; 03:46e8 $19
     ld   C, [HL]                                       ;; 03:46e9 $4e
-    call call_00_0256                                  ;; 03:46ea $cd $56 $02
+    call playerHit_trampoline                          ;; 03:46ea $cd $56 $02
     ld   A, $c9                                        ;; 03:46ed $3e $c9
     ret                                                ;; 03:46ef $c9
 .jp_03_46f0:
     call call_03_4906                                  ;; 03:46f0 $cd $06 $49
     jp   NZ, .jp_03_4656                               ;; 03:46f3 $c2 $56 $46
     call call_03_4931                                  ;; 03:46f6 $cd $31 $49
-    jp   NZ, .jp_03_47eb                               ;; 03:46f9 $c2 $eb $47
+    jp   NZ, call_03_4641.immune                       ;; 03:46f9 $c2 $eb $47
     push BC                                            ;; 03:46fc $c5
     push DE                                            ;; 03:46fd $d5
-    call call_00_3dc0                                  ;; 03:46fe $cd $c0 $3d
+    call getPlayerAttackElements                       ;; 03:46fe $cd $c0 $3d
     pop  DE                                            ;; 03:4701 $d1
-    call call_03_4955                                  ;; 03:4702 $cd $55 $49
+    call testNpcElementalImmunity                      ;; 03:4702 $cd $55 $49
     pop  BC                                            ;; 03:4705 $c1
-    jp   NZ, .jp_03_47eb                               ;; 03:4706 $c2 $eb $47
+    jp   NZ, call_03_4641.immune                       ;; 03:4706 $c2 $eb $47
     push BC                                            ;; 03:4709 $c5
     push DE                                            ;; 03:470a $d5
     ld   BC, $07                                       ;; 03:470b $01 $07 $00
-    call call_03_496e                                  ;; 03:470e $cd $6e $49
+    call bonusDamageIfVulnerableNpc                    ;; 03:470e $cd $6e $49
     push DE                                            ;; 03:4711 $d5
     call getTotalAP                                    ;; 03:4712 $cd $0e $3d
-    call call_03_4985                                  ;; 03:4715 $cd $85 $49
+    call specialAttack2Power75inHLNpc                  ;; 03:4715 $cd $85 $49
     pop  DE                                            ;; 03:4718 $d1
     call call_03_499b                                  ;; 03:4719 $cd $9b $49
     pop  DE                                            ;; 03:471c $d1
     pop  BC                                            ;; 03:471d $c1
-    jp   Z, .jp_03_47eb                                ;; 03:471e $ca $eb $47
+    jp   Z, call_03_4641.immune                        ;; 03:471e $ca $eb $47
     push BC                                            ;; 03:4721 $c5
     push DE                                            ;; 03:4722 $d5
     push HL                                            ;; 03:4723 $e5
     call getEquippedWeaponMinusOne                     ;; 03:4724 $cd $05 $3f
     cp   A, $08                                        ;; 03:4727 $fe $08
-    jr   NZ, .jr_03_4738                               ;; 03:4729 $20 $0d
+    jr   NZ, call_03_4641.finishedBloodSwordHeal       ;; 03:4729 $20 $0d
     pop  HL                                            ;; 03:472b $e1
     push HL                                            ;; 03:472c $e5
     srl  H                                             ;; 03:472d $cb $3c
@@ -1286,7 +1286,7 @@ call_03_4641:
     srl  H                                             ;; 03:4731 $cb $3c
     rr   L                                             ;; 03:4733 $cb $1d
     call addHP                                         ;; 03:4735 $cd $f6 $3d
-.jr_03_4738:
+.finishedBloodSwordHeal:
     pop  HL                                            ;; 03:4738 $e1
     pop  DE                                            ;; 03:4739 $d1
     set  7, H                                          ;; 03:473a $cb $fc
@@ -1298,7 +1298,7 @@ call_03_4641:
     inc  HL                                            ;; 03:4743 $23
     ld   [HL], B                                       ;; 03:4744 $70
     pop  BC                                            ;; 03:4745 $c1
-    call call_03_4a26                                  ;; 03:4746 $cd $26 $4a
+    call processHitNpc                                 ;; 03:4746 $cd $26 $4a
     ret                                                ;; 03:4749 $c9
 .jp_03_474a:
     call call_03_4906                                  ;; 03:474a $cd $06 $49
@@ -1307,36 +1307,36 @@ call_03_4641:
     jr   NZ, .jr_03_4769                               ;; 03:4753 $20 $14
     push BC                                            ;; 03:4755 $c5
     push DE                                            ;; 03:4756 $d5
-    call call_00_3dc0                                  ;; 03:4757 $cd $c0 $3d
+    call getPlayerAttackElements                       ;; 03:4757 $cd $c0 $3d
     pop  DE                                            ;; 03:475a $d1
-    call call_03_4955                                  ;; 03:475b $cd $55 $49
+    call testNpcElementalImmunity                      ;; 03:475b $cd $55 $49
     pop  BC                                            ;; 03:475e $c1
     jr   Z, .jr_03_4777                                ;; 03:475f $28 $16
     cp   A, $12                                        ;; 03:4761 $fe $12
     jp   Z, .jp_03_47fd                                ;; 03:4763 $ca $fd $47
-    jp   .jp_03_47eb                                   ;; 03:4766 $c3 $eb $47
+    jp   call_03_4641.immune                           ;; 03:4766 $c3 $eb $47
 .jr_03_4769:
     push BC                                            ;; 03:4769 $c5
     push DE                                            ;; 03:476a $d5
-    call call_00_3dc0                                  ;; 03:476b $cd $c0 $3d
+    call getPlayerAttackElements                       ;; 03:476b $cd $c0 $3d
     pop  DE                                            ;; 03:476e $d1
     pop  BC                                            ;; 03:476f $c1
     cp   A, $12                                        ;; 03:4770 $fe $12
     jp   Z, .jp_03_47fd                                ;; 03:4772 $ca $fd $47
-    jr   .jp_03_47eb                                   ;; 03:4775 $18 $74
+    jr   call_03_4641.immune                           ;; 03:4775 $18 $74
 .jr_03_4777:
     push BC                                            ;; 03:4777 $c5
     push DE                                            ;; 03:4778 $d5
     ld   BC, $08                                       ;; 03:4779 $01 $08 $00
-    call call_03_496e                                  ;; 03:477c $cd $6e $49
+    call bonusDamageIfVulnerableNpc                    ;; 03:477c $cd $6e $49
     push DE                                            ;; 03:477f $d5
     call call_00_3daf                                  ;; 03:4780 $cd $af $3d
-    call call_03_4985                                  ;; 03:4783 $cd $85 $49
+    call specialAttack2Power75inHLNpc                  ;; 03:4783 $cd $85 $49
     pop  DE                                            ;; 03:4786 $d1
     call call_03_49c6                                  ;; 03:4787 $cd $c6 $49
     pop  DE                                            ;; 03:478a $d1
     pop  BC                                            ;; 03:478b $c1
-    jr   Z, .jp_03_47eb                                ;; 03:478c $28 $5d
+    jr   Z, call_03_4641.immune                        ;; 03:478c $28 $5d
     push BC                                            ;; 03:478e $c5
     ld   B, H                                          ;; 03:478f $44
     ld   C, L                                          ;; 03:4790 $4d
@@ -1346,21 +1346,21 @@ call_03_4641:
     inc  HL                                            ;; 03:4796 $23
     ld   [HL], B                                       ;; 03:4797 $70
     pop  BC                                            ;; 03:4798 $c1
-    call call_03_4a26                                  ;; 03:4799 $cd $26 $4a
+    call processHitNpc                                 ;; 03:4799 $cd $26 $4a
     ret                                                ;; 03:479c $c9
 .jp_03_479d:
     call call_03_4919                                  ;; 03:479d $cd $19 $49
     jp   NZ, .jp_03_4656                               ;; 03:47a0 $c2 $56 $46
     call call_03_4931                                  ;; 03:47a3 $cd $31 $49
-    jp   NZ, .jp_03_47eb                               ;; 03:47a6 $c2 $eb $47
+    jp   NZ, call_03_4641.immune                       ;; 03:47a6 $c2 $eb $47
     push BC                                            ;; 03:47a9 $c5
     push DE                                            ;; 03:47aa $d5
     ld   A, B                                          ;; 03:47ab $78
     call call_00_2c0f                                  ;; 03:47ac $cd $0f $2c
     pop  DE                                            ;; 03:47af $d1
-    call call_03_4955                                  ;; 03:47b0 $cd $55 $49
+    call testNpcElementalImmunity                      ;; 03:47b0 $cd $55 $49
     pop  BC                                            ;; 03:47b3 $c1
-    jr   NZ, .jp_03_47eb                               ;; 03:47b4 $20 $35
+    jr   NZ, call_03_4641.immune                       ;; 03:47b4 $20 $35
     push BC                                            ;; 03:47b6 $c5
     push DE                                            ;; 03:47b7 $d5
     ld   A, B                                          ;; 03:47b8 $78
@@ -1369,21 +1369,21 @@ call_03_4641:
     pop  AF                                            ;; 03:47bd $f1
     push DE                                            ;; 03:47be $d5
     call call_00_2c15                                  ;; 03:47bf $cd $15 $2c
-    call call_03_4985                                  ;; 03:47c2 $cd $85 $49
+    call specialAttack2Power75inHLNpc                  ;; 03:47c2 $cd $85 $49
     pop  DE                                            ;; 03:47c5 $d1
     ld   D, $00                                        ;; 03:47c6 $16 $00
     call sub_HL_DE                                     ;; 03:47c8 $cd $ab $2b
     pop  DE                                            ;; 03:47cb $d1
     pop  BC                                            ;; 03:47cc $c1
-    jr   C, .jp_03_47eb                                ;; 03:47cd $38 $1c
+    jr   C, call_03_4641.immune                        ;; 03:47cd $38 $1c
     push BC                                            ;; 03:47cf $c5
     push DE                                            ;; 03:47d0 $d5
     ld   D, H                                          ;; 03:47d1 $54
     ld   E, L                                          ;; 03:47d2 $5d
-    call call_03_49f6                                  ;; 03:47d3 $cd $f6 $49
+    call add25rndHLtoDE_3                              ;; 03:47d3 $cd $f6 $49
     pop  DE                                            ;; 03:47d6 $d1
     pop  BC                                            ;; 03:47d7 $c1
-    jr   Z, .jp_03_47eb                                ;; 03:47d8 $28 $11
+    jr   Z, call_03_4641.immune                        ;; 03:47d8 $28 $11
     push BC                                            ;; 03:47da $c5
     set  7, H                                          ;; 03:47db $cb $fc
     ld   B, H                                          ;; 03:47dd $44
@@ -1394,9 +1394,9 @@ call_03_4641:
     inc  HL                                            ;; 03:47e4 $23
     ld   [HL], B                                       ;; 03:47e5 $70
     pop  BC                                            ;; 03:47e6 $c1
-    call call_03_4a26                                  ;; 03:47e7 $cd $26 $4a
+    call processHitNpc                                 ;; 03:47e7 $cd $26 $4a
     ret                                                ;; 03:47ea $c9
-.jp_03_47eb:
+.immune:
     ld   HL, $0e                                       ;; 03:47eb $21 $0e $00
     add  HL, DE                                        ;; 03:47ee $19
     ld   BC, $00                                       ;; 03:47ef $01 $00 $00
@@ -1518,7 +1518,7 @@ processNpcDeath:
     pop  BC                                            ;; 03:48a3 $c1
     push AF                                            ;; 03:48a4 $f5
     push BC                                            ;; 03:48a5 $c5
-    call call_00_05ef                                  ;; 03:48a6 $cd $ef $05
+    call getObjectNearestTilePosition                  ;; 03:48a6 $cd $ef $05
     pop  BC                                            ;; 03:48a9 $c1
     push DE                                            ;; 03:48aa $d5
     call call_03_435f                                  ;; 03:48ab $cd $5f $43
@@ -1556,7 +1556,7 @@ add12_5rnd_bank3:
     add  HL, DE                                        ;; 03:48d5 $19
     ret                                                ;; 03:48d6 $c9
 
-call_03_48d7:
+damageNpc:
     call call_03_429b                                  ;; 03:48d7 $cd $9b $42
     ret  NZ                                            ;; 03:48da $c0
     push HL                                            ;; 03:48db $e5
@@ -1577,19 +1577,19 @@ call_03_48d7:
     push DE                                            ;; 03:48ef $d5
     ld   A, H                                          ;; 03:48f0 $7c
     or   A, L                                          ;; 03:48f1 $b5
-    jr   Z, .jr_03_4904                                ;; 03:48f2 $28 $10
-    call call_03_4a0b                                  ;; 03:48f4 $cd $0b $4a
+    jr   Z, .zeroDamage                                ;; 03:48f2 $28 $10
+    call subHPNpc                                      ;; 03:48f4 $cd $0b $4a
     pop  HL                                            ;; 03:48f7 $e1
-    jr   Z, .jr_03_48fb                                ;; 03:48f8 $28 $01
+    jr   Z, .killed                                    ;; 03:48f8 $28 $01
     ret  NC                                            ;; 03:48fa $d0
-.jr_03_48fb:
+.killed:
     ld   DE, $04                                       ;; 03:48fb $11 $04 $00
     add  HL, DE                                        ;; 03:48fe $19
     ld   A, $00                                        ;; 03:48ff $3e $00
     ld   [HL+], A                                      ;; 03:4901 $22
     ld   [HL+], A                                      ;; 03:4902 $22
     ret                                                ;; 03:4903 $c9
-.jr_03_4904:
+.zeroDamage:
     pop  HL                                            ;; 03:4904 $e1
     ret                                                ;; 03:4905 $c9
 
@@ -1659,7 +1659,7 @@ call_03_4931:
     and  A, L                                          ;; 03:4953 $a5
     ret                                                ;; 03:4954 $c9
 
-call_03_4955:
+testNpcElementalImmunity:
     ld   HL, $10                                       ;; 03:4955 $21 $10 $00
     add  HL, DE                                        ;; 03:4958 $19
     ld   C, [HL]                                       ;; 03:4959 $4e
@@ -1682,12 +1682,13 @@ call_03_4968:
     ld   E, [HL]                                       ;; 03:496c $5e
     ret                                                ;; 03:496d $c9
 
-call_03_496e:
+; If the enemy type is vulnerable to the weapon type then E=A*4
+bonusDamageIfVulnerableNpc:
     push HL                                            ;; 03:496e $e5
     add  HL, BC                                        ;; 03:496f $09
     ld   A, [HL]                                       ;; 03:4970 $7e
     push AF                                            ;; 03:4971 $f5
-    call call_00_3de9                                  ;; 03:4972 $cd $e9 $3d
+    call getEquippedWeaponBonusTypes_wrapped           ;; 03:4972 $cd $e9 $3d
     ld   D, A                                          ;; 03:4975 $57
     pop  AF                                            ;; 03:4976 $f1
     ld   E, A                                          ;; 03:4977 $5f
@@ -1701,7 +1702,7 @@ call_03_496e:
     srl  E                                             ;; 03:4982 $cb $3b
     ret                                                ;; 03:4984 $c9
 
-call_03_4985:
+specialAttack2Power75inHLNpc:
     ld   L, A                                          ;; 03:4985 $6f
     ld   H, $00                                        ;; 03:4986 $26 $00
     ld   A, [wMainGameState]                           ;; 03:4988 $fa $a0 $c0
@@ -1737,7 +1738,7 @@ call_03_499b:
     pop  HL                                            ;; 03:49ba $e1
     add  HL, DE                                        ;; 03:49bb $19
     pop  DE                                            ;; 03:49bc $d1
-    call call_03_49f6                                  ;; 03:49bd $cd $f6 $49
+    call add25rndHLtoDE_3                              ;; 03:49bd $cd $f6 $49
     ret                                                ;; 03:49c0 $c9
 .jr_03_49c1:
     ld   HL, $00                                       ;; 03:49c1 $21 $00 $00
@@ -1768,14 +1769,14 @@ call_03_49c6:
     pop  HL                                            ;; 03:49ea $e1
     add  HL, DE                                        ;; 03:49eb $19
     pop  DE                                            ;; 03:49ec $d1
-    call call_03_49f6                                  ;; 03:49ed $cd $f6 $49
+    call add25rndHLtoDE_3                              ;; 03:49ed $cd $f6 $49
     ret                                                ;; 03:49f0 $c9
 .jr_03_49f1:
     ld   HL, $00                                       ;; 03:49f1 $21 $00 $00
     xor  A, A                                          ;; 03:49f4 $af
     ret                                                ;; 03:49f5 $c9
 
-call_03_49f6:
+add25rndHLtoDE_3:
     push HL                                            ;; 03:49f6 $e5
     push DE                                            ;; 03:49f7 $d5
     call getRandomByte                                 ;; 03:49f8 $cd $1e $2b
@@ -1791,7 +1792,7 @@ call_03_49f6:
     or   A, L                                          ;; 03:4a09 $b5
     ret                                                ;; 03:4a0a $c9
 
-call_03_4a0b:
+subHPNpc:
     ld   B, D                                          ;; 03:4a0b $42
     ld   C, E                                          ;; 03:4a0c $4b
     ld   D, H                                          ;; 03:4a0d $54
@@ -1814,7 +1815,7 @@ call_03_4a0b:
     ld   [HL], B                                       ;; 03:4a24 $70
     ret                                                ;; 03:4a25 $c9
 
-call_03_4a26:
+processHitNpc:
     push DE                                            ;; 03:4a26 $d5
     push BC                                            ;; 03:4a27 $c5
     call getObjectCollisionFlags                       ;; 03:4a28 $cd $6d $0c
@@ -1896,7 +1897,7 @@ call_03_4a81:
     ret                                                ;; 03:4a9e $c9
 
 call_03_4a9f:
-    call call_00_3dc0                                  ;; 03:4a9f $cd $c0 $3d
+    call getPlayerAttackElements                       ;; 03:4a9f $cd $c0 $3d
     ld   C, A                                          ;; 03:4aa2 $4f
     ld   HL, wC4E0._10                                 ;; 03:4aa3 $21 $f0 $c4
     ld   B, $08                                        ;; 03:4aa6 $06 $08
@@ -1920,7 +1921,7 @@ call_03_4a9f:
     ret                                                ;; 03:4ac0 $c9
 
 call_03_4ac1:
-    call call_00_3dc0                                  ;; 03:4ac1 $cd $c0 $3d
+    call getPlayerAttackElements                       ;; 03:4ac1 $cd $c0 $3d
     ld   C, A                                          ;; 03:4ac4 $4f
     ld   HL, wC4E0._10                                 ;; 03:4ac5 $21 $f0 $c4
     ld   B, $08                                        ;; 03:4ac8 $06 $08
@@ -2460,15 +2461,15 @@ call_03_4e15:
     call setObjectCollisionFlags                       ;; 03:4e2e $cd $86 $0c
     ret                                                ;; 03:4e31 $c9
 
-data_03_4e32:
+npcKillExplosionMetaspriteTable:
     db   $20, $72, $70, $00, $70, $72, $00, $70        ;; 03:4e32 ......??
     db   $72, $00, $70, $72, $20, $72, $70, $00        ;; 03:4e3a ????????
     db   $70, $72, $00, $70, $72, $00, $70, $72        ;; 03:4e42 ????????
 
-call_03_4e4a:
+npcKilledExplosion:
     push BC                                            ;; 03:4e4a $c5
     push DE                                            ;; 03:4e4b $d5
-    ld   HL, data_03_4e32                              ;; 03:4e4c $21 $32 $4e
+    ld   HL, npcKillExplosionMetaspriteTable           ;; 03:4e4c $21 $32 $4e
     call setObjectMetaspritePointer                    ;; 03:4e4f $cd $ba $0c
     ld   A, $0b                                        ;; 03:4e52 $3e $0b
     call playSFX                                       ;; 03:4e54 $cd $7d $29
@@ -2479,7 +2480,7 @@ call_03_4e4a:
 call_03_4e5a:
     ld   A, B                                          ;; 03:4e5a $78
     cp   A, $00                                        ;; 03:4e5b $fe $00
-    call Z, call_03_4e4a                               ;; 03:4e5d $cc $4a $4e
+    call Z, npcKilledExplosion                         ;; 03:4e5d $cc $4a $4e
     ld   A, B                                          ;; 03:4e60 $78
     cp   A, $02                                        ;; 03:4e61 $fe $02
     jr   Z, .jr_03_4e76                                ;; 03:4e63 $28 $11
@@ -3752,7 +3753,7 @@ call_03_5499:
     pop  BC                                            ;; 03:54a3 $c1
     push DE                                            ;; 03:54a4 $d5
     push BC                                            ;; 03:54a5 $c5
-    call call_00_05ef                                  ;; 03:54a6 $cd $ef $05
+    call getObjectNearestTilePosition                  ;; 03:54a6 $cd $ef $05
     pop  BC                                            ;; 03:54a9 $c1
     push BC                                            ;; 03:54aa $c5
     push DE                                            ;; 03:54ab $d5

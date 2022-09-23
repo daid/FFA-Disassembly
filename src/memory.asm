@@ -693,7 +693,7 @@ wLCDCEffectIndex:
 wD3E8:
     ds 1                                               ;; d3e8
 
-wD3E9:
+wbossSpeedTimer:
     ds 2                                               ;; d3e9
 
 wBossIframes:
@@ -863,7 +863,8 @@ wScriptStackTop:
 wItemInventoryAmount:
     ds 16                                              ;; d69b
 
-wD6AB:
+; Technically these are quantities, but since you can only ever have one of any spell, it's just whether you have it
+wKnownMagicSpells:
     ds 8                                               ;; d6ab
 
 wEquipmentInventoryPowers:
@@ -935,13 +936,13 @@ wD72F:
 wD74F:
     ds 64                                              ;; d74f
 
-wD78F:
+wStatStaminaLevelUpTmp:
     ds 1                                               ;; d78f
 
-wD790:
+wStatPowerLevelUpTmp:
     ds 1                                               ;; d790
 
-wD791:
+wStatWisdomLevelUpTmp:
     ds 2                                               ;; d791
 
 wD793:
@@ -1084,7 +1085,7 @@ wScriptFlags0E:
 wScriptFlags0F:
     ds 1                                               ;; d7d5
 
-wD7D6:
+wCurrentMagicPower:
     ds 1                                               ;; d7d6
 
 wEquippedWeaponElements:
@@ -1104,7 +1105,14 @@ wTotalAP:
 wTotalDP:
     ds 1                                               ;; d7e0
 
-wD7E1:
+;Each timer is five bytes
+; offset 0:
+; bit 0: unknown
+; bit 1: expired
+; bit 7: active
+; offset 1-2: time remaining
+; offset 3-4: unknown
+wTimers:
     ds 80                                              ;; d7e1
 
 wD831:
@@ -1197,7 +1205,7 @@ wD85F:
 wD860:
     ds 2                                               ;; d860
 
-wD862:
+wMainGameStateBackup:
     ds 1                                               ;; d862
 
 ; Dialog border tile, depending on it if it drawing the top or bottom row, different tile numbers are stored here
@@ -1229,16 +1237,20 @@ wScriptBank:
 wVirtualScriptOpCodeFFArgument:
     ds 1                                               ;; d86b
 
-wD86C:
+wScriptSavedNextOpcode:
     ds 1                                               ;; d86c
 
-wD86D:
+wVendorNumber:
     ds 1                                               ;; d86d
 
 wD86E:
     ds 1                                               ;; d86e
 
-wD86F:
+; bit 0: unknown
+; bit 1: cant carry (and maybe not enough money)
+; bit 6: attacking with spell/item (not weapon)
+; bit 7: used as a temporary in drawNumber24bitOnDialog
+wMiscFlags:
     ds 1                                               ;; d86f
 
 wD870:
@@ -1259,25 +1271,25 @@ wD874:
 wD876:
     ds 1                                               ;; d876
 
-wD877:
+wPoisStatusEffectTimeBeforeNextTick:
     ds 1                                               ;; d877
 
-wD878:
+wFujiStatusEffectTimeBeforeNextTick:
     ds 1                                               ;; d878
 
-wD879:
+wPoisStatusEffectTimerNumber:
     ds 1                                               ;; d879
 
-wD87A:
+wDarkStatusEffectTimerNumber:
     ds 1                                               ;; d87a
 
-wD87B:
+wStonStatusEffectTimerNumber:
     ds 1                                               ;; d87b
 
-wD87C:
+wMoogStatusEffectTimerNumber:
     ds 1                                               ;; d87c
 
-wD87D:
+wFujiStatusEffectTimerNumber:
     ds 1                                               ;; d87d
 
 wItemBuffActive:

@@ -15,6 +15,7 @@
 ; graphics related, points to data of which tile offsets to load from the previous pointer into VRAM
 ; metatile info (list of [attr, tile1, tile2])
 ; damage related? Not sure (influences amount of damage done by boss and taken from boss, maybe hit areas as well?)
+; offset 2: weaknesses (see npc/stats.asm)
 ; attack movement pattern
 ; spawn movement pattern
 ; death animation related?
