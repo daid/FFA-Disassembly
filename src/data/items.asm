@@ -156,3 +156,10 @@ equipmentDataTable:
     ITEM_DATA $2b, "<HELM>Samurai"                         , $00, $14, $19, $00, $19, $68, $10 ;; 02:649a ????????????????
     ITEM_DATA $2c, "<8f><51><9d>n<64><83><00><00>"         , $00, $14, $03, $00, $00, $ff, $ff ;; 02:64aa ????????????????
     ITEM_DATA $2d, "<8f><51><9d>n<64><84><00><00>"         , $00, $14, $03, $00, $00, $ff, $ff ;; 02:64ba ????????????????
+
+; Psuedo items used for labels in the EQUIP screen
+;@item_data amount=2
+itemAPDPLabelsDataTable:
+    ITEM_DATA $00, "AP  <00><00><00><00>"                  , $40, $00, $00, $00, $00, $00, $00 ;; 02:64ca ?.....???????.??
+    ITEM_DATA $00, "DP  <00><00><00><00>"                  , $40, $00, $00, $00, $00, $00, $00 ;; 02:64da ?.....???????.??
+    db   $00, $00                                      ;; 02:64ea ??

@@ -33,7 +33,7 @@ data_01_4000:
     call_to_bank_target call_01_40f3                   ;; 01:402a pP
     call_to_bank_target prepareLetterboxEffect         ;; 01:402c ??
     call_to_bank_target prepareDefaultEffect           ;; 01:402e ??
-    call_to_bank_target call_01_44d8                   ;; 01:4030 pP
+    call_to_bank_target scrollRoom                     ;; 01:4030 pP
     call_to_bank_target call_01_471d                   ;; 01:4032 pP
     call_to_bank_target call_01_7647                   ;; 01:4034 pP
     call_to_bank_target call_01_7639                   ;; 01:4036 pP
@@ -712,7 +712,8 @@ call_01_44a5:
     pop  HL                                            ;; 01:44d6 $e1
     ret                                                ;; 01:44d7 $c9
 
-call_01_44d8:
+; A = direction: 1=west, 2=east, 4=south, 8=north
+scrollRoom:
     ld   E, A                                          ;; 01:44d8 $5f
     ld   A, [wTileCopyRequestCount]                    ;; 01:44d9 $fa $e0 $c8
     cp   A, $00                                        ;; 01:44dc $fe $00
@@ -720,13 +721,13 @@ call_01_44d8:
     ld   A, [wBackgroundRenderRequestCount]            ;; 01:44df $fa $e8 $ce
     cp   A, $00                                        ;; 01:44e2 $fe $00
     ret  NZ                                            ;; 01:44e4 $c0
-    ld   A, [wC341]                                    ;; 01:44e5 $fa $41 $c3
+    ld   A, [wScrollDirection]                         ;; 01:44e5 $fa $41 $c3
     cp   A, $00                                        ;; 01:44e8 $fe $00
     jr   NZ, .jr_01_450a                               ;; 01:44ea $20 $1e
     ld   A, E                                          ;; 01:44ec $7b
     cp   A, $00                                        ;; 01:44ed $fe $00
     ret  Z                                             ;; 01:44ef $c8
-    ld   [wC341], A                                    ;; 01:44f0 $ea $41 $c3
+    ld   [wScrollDirection], A                         ;; 01:44f0 $ea $41 $c3
     xor  A, A                                          ;; 01:44f3 $af
     ld   [wC348], A                                    ;; 01:44f4 $ea $48 $c3
     ld   A, [wC0A2]                                    ;; 01:44f7 $fa $a2 $c0
@@ -741,13 +742,13 @@ call_01_44d8:
     ld   A, E                                          ;; 01:450a $7b
     push DE                                            ;; 01:450b $d5
     bit  0, A                                          ;; 01:450c $cb $47
-    jr   NZ, .jr_01_4541                               ;; 01:450e $20 $31
+    jr   NZ, scrollRoom.west                           ;; 01:450e $20 $31
     bit  1, A                                          ;; 01:4510 $cb $4f
-    jp   NZ, .jp_01_4597                               ;; 01:4512 $c2 $97 $45
+    jp   NZ, scrollRoom.east                           ;; 01:4512 $c2 $97 $45
     bit  2, A                                          ;; 01:4515 $cb $57
-    jp   NZ, .jp_01_45e7                               ;; 01:4517 $c2 $e7 $45
+    jp   NZ, scrollRoom.south                          ;; 01:4517 $c2 $e7 $45
     bit  3, A                                          ;; 01:451a $cb $5f
-    jp   NZ, .jp_01_463a                               ;; 01:451c $c2 $3a $46
+    jp   NZ, scrollRoom.north                          ;; 01:451c $c2 $3a $46
     pop  DE                                            ;; 01:451f $d1
     ld   A, [wC0A2]                                    ;; 01:4520 $fa $a2 $c0
     res  0, A                                          ;; 01:4523 $cb $87
@@ -761,9 +762,9 @@ call_01_44d8:
     ld   A, $ff                                        ;; 01:4536 $3e $ff
     ld   [wD394], A                                    ;; 01:4538 $ea $94 $d3
     ld   A, $00                                        ;; 01:453b $3e $00
-    ld   [wC341], A                                    ;; 01:453d $ea $41 $c3
+    ld   [wScrollDirection], A                         ;; 01:453d $ea $41 $c3
     ret                                                ;; 01:4540 $c9
-.jr_01_4541:
+.west:
     ld   A, [wC348]                                    ;; 01:4541 $fa $48 $c3
     cp   A, $00                                        ;; 01:4544 $fe $00
     jr   NZ, .jr_01_4569                               ;; 01:4546 $20 $21
@@ -794,7 +795,7 @@ call_01_44d8:
     cpl                                                ;; 01:4576 $2f
     ld   E, A                                          ;; 01:4577 $5f
     ld   D, $ff                                        ;; 01:4578 $16 $ff
-    call call_01_4690                                  ;; 01:457a $cd $90 $46
+    call drawRoomMetaTilesColumn                       ;; 01:457a $cd $90 $46
     ld   A, [wBackgroundDrawPositionX]                 ;; 01:457d $fa $42 $c3
     dec  A                                             ;; 01:4580 $3d
     dec  A                                             ;; 01:4581 $3d
@@ -811,7 +812,7 @@ call_01_44d8:
     ld   D, $00                                        ;; 01:4591 $16 $00
     call call_01_46c4                                  ;; 01:4593 $cd $c4 $46
     ret                                                ;; 01:4596 $c9
-.jp_01_4597:
+.east:
     ld   A, [wC348]                                    ;; 01:4597 $fa $48 $c3
     cp   A, $00                                        ;; 01:459a $fe $00
     jr   NZ, .jr_01_45bf                               ;; 01:459c $20 $21
@@ -840,7 +841,7 @@ call_01_44d8:
     and  A, $0f                                        ;; 01:45c8 $e6 $0f
     ld   E, A                                          ;; 01:45ca $5f
     ld   D, $0a                                        ;; 01:45cb $16 $0a
-    call call_01_4690                                  ;; 01:45cd $cd $90 $46
+    call drawRoomMetaTilesColumn                       ;; 01:45cd $cd $90 $46
     ld   A, [wBackgroundDrawPositionX]                 ;; 01:45d0 $fa $42 $c3
     inc  A                                             ;; 01:45d3 $3c
     inc  A                                             ;; 01:45d4 $3c
@@ -854,7 +855,7 @@ call_01_44d8:
     ld   D, $00                                        ;; 01:45e1 $16 $00
     call call_01_46c4                                  ;; 01:45e3 $cd $c4 $46
     ret                                                ;; 01:45e6 $c9
-.jp_01_45e7:
+.south:
     ld   A, [wC348]                                    ;; 01:45e7 $fa $48 $c3
     cp   A, $00                                        ;; 01:45ea $fe $00
     jr   NZ, .jr_01_460f                               ;; 01:45ec $20 $21
@@ -885,7 +886,7 @@ call_01_44d8:
     ld   A, [wC340]                                    ;; 01:461b $fa $40 $c3
     srl  A                                             ;; 01:461e $cb $3f
     ld   D, A                                          ;; 01:4620 $57
-    call call_01_46aa                                  ;; 01:4621 $cd $aa $46
+    call drawRoomMetatilesRow                          ;; 01:4621 $cd $aa $46
     ld   A, [wBackgroundDrawPositionY]                 ;; 01:4624 $fa $43 $c3
     inc  A                                             ;; 01:4627 $3c
     inc  A                                             ;; 01:4628 $3c
@@ -898,7 +899,7 @@ call_01_44d8:
     ld   E, $00                                        ;; 01:4634 $1e $00
     call call_01_46c4                                  ;; 01:4636 $cd $c4 $46
     ret                                                ;; 01:4639 $c9
-.jp_01_463a:
+.north:
     ld   A, [wC348]                                    ;; 01:463a $fa $48 $c3
     cp   A, $00                                        ;; 01:463d $fe $00
     jr   NZ, .jr_01_4662                               ;; 01:463f $20 $21
@@ -929,7 +930,7 @@ call_01_44d8:
     cpl                                                ;; 01:466f $2f
     ld   E, A                                          ;; 01:4670 $5f
     ld   D, $ff                                        ;; 01:4671 $16 $ff
-    call call_01_46aa                                  ;; 01:4673 $cd $aa $46
+    call drawRoomMetatilesRow                          ;; 01:4673 $cd $aa $46
     ld   A, [wBackgroundDrawPositionY]                 ;; 01:4676 $fa $43 $c3
     dec  A                                             ;; 01:4679 $3d
     dec  A                                             ;; 01:467a $3d
@@ -947,7 +948,7 @@ call_01_44d8:
     call call_01_46c4                                  ;; 01:468c $cd $c4 $46
     ret                                                ;; 01:468f $c9
 
-call_01_4690:
+drawRoomMetaTilesColumn:
     ld   B, $00                                        ;; 01:4690 $06 $00
 .jr_01_4692:
     push BC                                            ;; 01:4692 $c5
@@ -969,7 +970,7 @@ call_01_4690:
     jr   C, .jr_01_4692                                ;; 01:46a7 $38 $e9
     ret                                                ;; 01:46a9 $c9
 
-call_01_46aa:
+drawRoomMetatilesRow:
     ld   B, $00                                        ;; 01:46aa $06 $00
 .jr_01_46ac:
     push BC                                            ;; 01:46ac $c5
@@ -1037,7 +1038,7 @@ call_01_46c4:
     ld   A, $ff                                        ;; 01:4712 $3e $ff
     ld   [wD394], A                                    ;; 01:4714 $ea $94 $d3
     ld   A, $00                                        ;; 01:4717 $3e $00
-    ld   [wC341], A                                    ;; 01:4719 $ea $41 $c3
+    ld   [wScrollDirection], A                         ;; 01:4719 $ea $41 $c3
     ret                                                ;; 01:471c $c9
 
 call_01_471d:
@@ -1126,7 +1127,7 @@ call_01_48be:
     ld   C, A                                          ;; 01:48be $4f
     ld   A, [wPlayerSpecialFlags]                      ;; 01:48bf $fa $d4 $c4
     and  A, $fc                                        ;; 01:48c2 $e6 $fc
-    call NZ, call_01_495d                              ;; 01:48c4 $c4 $5d $49
+    call NZ, getModifiedPlayerState                    ;; 01:48c4 $c4 $5d $49
     ld   A, C                                          ;; 01:48c7 $79
     push AF                                            ;; 01:48c8 $f5
     push BC                                            ;; 01:48c9 $c5
@@ -1223,14 +1224,14 @@ call_01_48be:
     call call_00_0695                                  ;; 01:4959 $cd $95 $06
     ret                                                ;; 01:495c $c9
 
-call_01_495d:
+getModifiedPlayerState:
     ld   L, A                                          ;; 01:495d $6f
     bit  4, L                                          ;; 01:495e $cb $65
-    call NZ, call_01_4985                              ;; 01:4960 $c4 $85 $49
+    call NZ, getPlayerStateOffsetMinecart              ;; 01:4960 $c4 $85 $49
     bit  5, L                                          ;; 01:4963 $cb $6d
-    call NZ, call_01_4988                              ;; 01:4965 $c4 $88 $49
+    call NZ, getPlayerStateOffsetHurt                  ;; 01:4965 $c4 $88 $49
     bit  6, L                                          ;; 01:4968 $cb $75
-    call NZ, call_01_498b                              ;; 01:496a $c4 $8b $49
+    call NZ, getPlayerStateOffsetDown                  ;; 01:496a $c4 $8b $49
     bit  3, L                                          ;; 01:496d $cb $5d
     jr   Z, .jr_01_4979                                ;; 01:496f $28 $08
     ld   A, B                                          ;; 01:4971 $78
@@ -1247,15 +1248,15 @@ call_01_495d:
     res  4, C                                          ;; 01:4982 $cb $a1
     ret                                                ;; 01:4984 $c9
 
-call_01_4985:
+getPlayerStateOffsetMinecart:
     ld   B, $a0                                        ;; 01:4985 $06 $a0
     ret                                                ;; 01:4987 $c9
 
-call_01_4988:
+getPlayerStateOffsetHurt:
     ld   B, $20                                        ;; 01:4988 $06 $20
     ret                                                ;; 01:498a $c9
 
-call_01_498b:
+getPlayerStateOffsetDown:
     ld   B, $b0                                        ;; 01:498b $06 $b0
     ret                                                ;; 01:498d $c9
 
@@ -2063,7 +2064,7 @@ gameStateScrollLeft:
     call call_01_48be                                  ;; 01:4ee7 $cd $be $48
     ld   D, $04                                        ;; 01:4eea $16 $04
     ld   A, $01                                        ;; 01:4eec $3e $01
-    call call_01_44d8                                  ;; 01:4eee $cd $d8 $44
+    call scrollRoom                                    ;; 01:4eee $cd $d8 $44
     cp   A, $00                                        ;; 01:4ef1 $fe $00
     ret  NZ                                            ;; 01:4ef3 $c0
     call call_01_4f48                                  ;; 01:4ef4 $cd $48 $4f
@@ -2076,7 +2077,7 @@ gameStateScrollRight:
     call call_01_48be                                  ;; 01:4f00 $cd $be $48
     ld   D, $04                                        ;; 01:4f03 $16 $04
     ld   A, $02                                        ;; 01:4f05 $3e $02
-    call call_01_44d8                                  ;; 01:4f07 $cd $d8 $44
+    call scrollRoom                                    ;; 01:4f07 $cd $d8 $44
     cp   A, $00                                        ;; 01:4f0a $fe $00
     ret  NZ                                            ;; 01:4f0c $c0
     call call_01_4f48                                  ;; 01:4f0d $cd $48 $4f
@@ -2086,7 +2087,7 @@ gameStateScrollRight:
 gameStateScrollDown:
     ld   D, $04                                        ;; 01:4f14 $16 $04
     ld   A, $04                                        ;; 01:4f16 $3e $04
-    call call_01_44d8                                  ;; 01:4f18 $cd $d8 $44
+    call scrollRoom                                    ;; 01:4f18 $cd $d8 $44
     push AF                                            ;; 01:4f1b $f5
     call call_01_4f65                                  ;; 01:4f1c $cd $65 $4f
     ld   A, $88                                        ;; 01:4f1f $3e $88
@@ -2104,7 +2105,7 @@ gameStateScrollUp:
     call call_01_48be                                  ;; 01:4f34 $cd $be $48
     ld   D, $04                                        ;; 01:4f37 $16 $04
     ld   A, $08                                        ;; 01:4f39 $3e $08
-    call call_01_44d8                                  ;; 01:4f3b $cd $d8 $44
+    call scrollRoom                                    ;; 01:4f3b $cd $d8 $44
     cp   A, $00                                        ;; 01:4f3e $fe $00
     ret  NZ                                            ;; 01:4f40 $c0
     call call_01_4f48                                  ;; 01:4f41 $cd $48 $4f
@@ -2147,21 +2148,21 @@ call_01_4f7b:
     ld   A, B                                          ;; 01:4f7b $78
     and  A, $f0                                        ;; 01:4f7c $e6 $f0
     cp   A, $90                                        ;; 01:4f7e $fe $90
-    jr   Z, .jr_01_4f9d                                ;; 01:4f80 $28 $1b
+    jr   Z, .playerHit                                 ;; 01:4f80 $28 $1b
     cp   A, $20                                        ;; 01:4f82 $fe $20
-    jr   Z, .jr_01_4f9d                                ;; 01:4f84 $28 $17
+    jr   Z, .playerHit                                 ;; 01:4f84 $28 $17
     cp   A, $a0                                        ;; 01:4f86 $fe $a0
     jp   Z, .jp_01_5084                                ;; 01:4f88 $ca $84 $50
     cp   A, $b0                                        ;; 01:4f8b $fe $b0
     jp   Z, .jp_01_5084                                ;; 01:4f8d $ca $84 $50
     cp   A, $60                                        ;; 01:4f90 $fe $60
-    jr   Z, .jr_01_4f9d                                ;; 01:4f92 $28 $09
+    jr   Z, .playerHit                                 ;; 01:4f92 $28 $09
     cp   A, $70                                        ;; 01:4f94 $fe $70
-    jr   Z, .jr_01_4f9d                                ;; 01:4f96 $28 $05
+    jr   Z, .playerHit                                 ;; 01:4f96 $28 $05
     cp   A, $80                                        ;; 01:4f98 $fe $80
     jr   Z, .jr_01_5010                                ;; 01:4f9a $28 $74
     ret                                                ;; 01:4f9c $c9
-.jr_01_4f9d:
+.playerHit:
     push BC                                            ;; 01:4f9d $c5
     ld   A, $c1                                        ;; 01:4f9e $3e $c1
     ld   C, $04                                        ;; 01:4fa0 $0e $04
@@ -4157,14 +4158,14 @@ jr_01_5a95:
     push BC                                            ;; 01:5b11 $c5
     bit  4, E                                          ;; 01:5b12 $cb $63
     jr   NZ, .jr_01_5b26                               ;; 01:5b14 $20 $10
-    call call_00_315f                                  ;; 01:5b16 $cd $5f $31
+    call castEquippedSpellIfSufficientMana_trampoline  ;; 01:5b16 $cd $5f $31
     jr   C, .jr_01_5b43                                ;; 01:5b19 $38 $28
     call call_00_311d                                  ;; 01:5b1b $cd $1d $31
     ld   [wCF63], A                                    ;; 01:5b1e $ea $63 $cf
     ld   A, [wEquippedItemAnimationType]               ;; 01:5b21 $fa $59 $cf
     jr   .jr_01_5b2f                                   ;; 01:5b24 $18 $09
 .jr_01_5b26:
-    call call_00_3129                                  ;; 01:5b26 $cd $29 $31
+    call attackWithWeaponUseWill_trampoline            ;; 01:5b26 $cd $29 $31
     ld   [wCF63], A                                    ;; 01:5b29 $ea $63 $cf
     ld   A, [wEquippedWeaponAnimationType]             ;; 01:5b2c $fa $58 $cf
 .jr_01_5b2f:
@@ -4404,7 +4405,7 @@ call_01_5bf1:
     cp   A, $50                                        ;; 01:5c80 $fe $50
     jr   NZ, .jr_01_5c8d                               ;; 01:5c82 $20 $09
     ld   A, [wCF5D]                                    ;; 01:5c84 $fa $5d $cf
-    call call_00_2853                                  ;; 01:5c87 $cd $53 $28
+    call damageNpc_trampoline                          ;; 01:5c87 $cd $53 $28
     call call_00_04f4                                  ;; 01:5c8a $cd $f4 $04
 .jr_01_5c8d:
     call call_01_5d82                                  ;; 01:5c8d $cd $82 $5d

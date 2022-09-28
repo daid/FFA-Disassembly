@@ -94,10 +94,9 @@ wC102:
 wC103:
     ds 1                                               ;; c103
 
-wMusicInstructionPointerLow:
+wMusicInstructionPointerChannel2:
     ds 1                                               ;; c104
-
-wMusicInstructionPointerHigh:
+.high:
     ds 1                                               ;; c105
 
 wC106:
@@ -163,10 +162,9 @@ wC11A:
 wC11B:
     ds 1                                               ;; c11b
 
-wC11C:
+wMusicInstructionPointerChannel1:
     ds 1                                               ;; c11c
-
-wC11D:
+.high:
     ds 1                                               ;; c11d
 
 wC11E:
@@ -235,10 +233,9 @@ wC132:
 wC133:
     ds 1                                               ;; c133
 
-wC134:
+wMusicInstructionPointerChannel3:
     ds 1                                               ;; c134
-
-wC135:
+.high:
     ds 1                                               ;; c135
 
 wC136:
@@ -330,7 +327,8 @@ wC270:
 wC340:
     ds 1                                               ;; c340
 
-wC341:
+; 1=west, 2=east, 4=south, 8=north
+wScrollDirection:
     ds 1                                               ;; c341
 
 wBackgroundDrawPositionX:
@@ -450,8 +448,11 @@ wPlayerSpecialFlags:
     ds 12                                              ;; c4d4
 
 ; 8 records of $18 size, related to NPCs
+; 0: wObjectRuntimeData entry index
 ; 12-13: HP
-wC4E0:
+; 16-17: npcStatsTable entry pointer
+; 18-19: npcDataTable entry pointer
+wNpcRuntimeData:
     ds 16                                              ;; c4e0
 ._10:
     ds 176                                             ;; c4f0
@@ -563,57 +564,43 @@ wCF62:
 wCF63:
     ds 269                                             ;; cf63
 
-wD070:
-    ds 8                                               ;; d070
-
-wD078:
-    ds 1                                               ;; d078
-
-wD079:
-    ds 1                                               ;; d079
-
-wD07A:
-    ds 1                                               ;; d07a
-
-wD07B:
-    ds 1                                               ;; d07b
-
-wD07C:
-    ds 1                                               ;; d07c
-
-wD07D:
-    ds 1                                               ;; d07d
-
-wD07E:
-    ds 1                                               ;; d07e
-
-wD07F:
-    ds 1                                               ;; d07f
-
 ; Loopup of graphics tile number -> VRAM tile number
 wBackgroundGraphicsTileMapping:
+    ds 8                                               ;; d070
+._08:
+    ds 1                                               ;; d078
+._09:
+    ds 1                                               ;; d079
+._0A:
+    ds 1                                               ;; d07a
+._0B:
+    ds 1                                               ;; d07b
+._0C:
+    ds 1                                               ;; d07c
+._0D:
+    ds 1                                               ;; d07d
+._0E:
+    ds 1                                               ;; d07e
+._0F:
+    ds 1                                               ;; d07f
+._10:
     ds 240                                             ;; d080
 
-wD170:
-    ds 4                                               ;; d170
-
-wD174:
-    ds 4                                               ;; d174
-
-wD178:
-    ds 2                                               ;; d178
-
-wD17A:
-    ds 2                                               ;; d17a
-
-wD17C:
-    ds 2                                               ;; d17c
-
-wD17E:
-    ds 2                                               ;; d17e
-
 ; Written to $0F when this graphic tile index is loaded into VRAM
+; Decreases by one every screen scroll if unused resulting in the tile eventually "aging out"
 wBackgroundGraphicsTileState:
+    ds 4                                               ;; d170
+._04:
+    ds 4                                               ;; d174
+._08:
+    ds 2                                               ;; d178
+._0A:
+    ds 2                                               ;; d17a
+._0C:
+    ds 2                                               ;; d17c
+._0E:
+    ds 2                                               ;; d17e
+._10:
     ds 240                                             ;; d180
 
 ; Written to $01 when a VRAM tile is used, starting from tile $80
@@ -649,11 +636,9 @@ wAnimatedTileRiver:
 
 wAnimatedTileScratchpad:
     ds 14                                              ;; d380
-
-wD38E:
+._0E:
     ds 1                                               ;; d38e
-
-wD38F:
+._0F:
     ds 1                                               ;; d38f
 
 ; Points to graphics in bank $0B or $0C as a packed pointer from the map header.
@@ -670,10 +655,10 @@ wTileDataTablePointer:
 wD394:
     ds 4                                               ;; d394
 
-wD398:
+wTileAnimationCounter_Unused:
     ds 1                                               ;; d398
 
-wD399:
+wTileAnimationCounter:
     ds 7                                               ;; d399
 
 ; Buffer containing LCDC effects. 4 bytes per entry:
@@ -1115,7 +1100,7 @@ wTotalDP:
 wTimers:
     ds 80                                              ;; d7e1
 
-wD831:
+wLevelUpStatChoicesCopy:
     ds 17                                              ;; d831
 
 ; Used during the level up fanfare
@@ -1256,16 +1241,20 @@ wMiscFlags:
 wD870:
     ds 1                                               ;; d870
 
-wD871:
+wScriptTriggerCollisionFlags:
     ds 1                                               ;; d871
 
 wD872:
     ds 1                                               ;; d872
 
-wD873:
+wScriptPlayerFacingDirection:
     ds 1                                               ;; d873
 
-wD874:
+; bit 7: running script
+; bit 5: naming screen Girl (instead of Boy)
+; bit 2: Load screen (instead of Save)
+; bit 1: text speed lock
+wWindowFlags:
     ds 2                                               ;; d874
 
 wD876:
@@ -1461,16 +1450,16 @@ wScriptPointerLow:
 wScriptPointerHigh:
     ds 1                                               ;; d8b7
 
-wD8B8:
+wWindowTextInsertionPointX:
     ds 1                                               ;; d8b8
 
-wD8B9:
+wWindowTextInsertionPointY:
     ds 1                                               ;; d8b9
 
-wD8BA:
+wWindowTextSpaceLeftOnLine:
     ds 1                                               ;; d8ba
 
-wD8BB:
+wWindowTextLinesLeft:
     ds 1                                               ;; d8bb
 
 ; Pointer to the script stack.
@@ -1541,7 +1530,7 @@ hFF91:
 hSFX:
     ds 1                                               ;; ff92
 
-hFF93:
+hPlayingMusic:
     ds 1                                               ;; ff93
 
 hFF94:
@@ -1588,14 +1577,14 @@ SECTION "vram", VRAM[$8000]
 
 SECTION "sram", SRAM[$a000]
 
-sA000:
+sSave1Header:
     ds 6                                               ;; a000
 
-sA006:
+sSave1Body:
     ds 250                                             ;; a006
 
-sA100:
+sSave2Header:
     ds 6                                               ;; a100
 
-sA106:
+sSave2Body:
     ds 7930                                            ;; a106

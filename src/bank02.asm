@@ -7,7 +7,7 @@ INCLUDE "include/constants.inc"
 
 SECTION "bank02", ROMX[$4000], BANK[$02]
 ;@call_to_bank_jumptable amount=58
-    call_to_bank_target call_02_4074                   ;; 02:4000 pP
+    call_to_bank_target animateTiles                   ;; 02:4000 pP
     call_to_bank_target updateJoypadInput              ;; 02:4002 pP
     call_to_bank_target call_02_44fa                   ;; 02:4004 pP
     call_to_bank_target call_02_44c4                   ;; 02:4006 pP
@@ -66,39 +66,40 @@ SECTION "bank02", ROMX[$4000], BANK[$02]
     call_to_bank_target endFujiStatusEffect            ;; 02:4070 ??
     call_to_bank_target getEquippedArmorElementalResistances ;; 02:4072 pP
 
-call_02_4074:
-    ld   A, [wD399]                                    ;; 02:4074 $fa $99 $d3
+; Each frame this animates one of the tile animation types
+animateTiles:
+    ld   A, [wTileAnimationCounter]                    ;; 02:4074 $fa $99 $d3
     and  A, $0f                                        ;; 02:4077 $e6 $0f
-    ld   HL, .data_02_4084                             ;; 02:4079 $21 $84 $40
+    ld   HL, .tileAnimationJumptable                   ;; 02:4079 $21 $84 $40
     call callJumptable                                 ;; 02:407c $cd $70 $2b
-    ld   HL, wD399                                     ;; 02:407f $21 $99 $d3
+    ld   HL, wTileAnimationCounter                     ;; 02:407f $21 $99 $d3
     inc  [HL]                                          ;; 02:4082 $34
     ret                                                ;; 02:4083 $c9
 ;@jumptable amount=16
-.data_02_4084:
-    dw   call_02_40c9                                  ;; 02:4084 pP
-    dw   call_02_40c9                                  ;; 02:4086 pP
+.tileAnimationJumptable:
+    dw   animateTilesTwoframe                          ;; 02:4084 pP
+    dw   animateTilesTwoframe                          ;; 02:4086 pP
     dw   animateTilesWaterfall                         ;; 02:4088 pP
     dw   animateTilesReverseWaterfall                  ;; 02:408a pP
     dw   animateTilesOcean                             ;; 02:408c pP
     dw   animateTilesOcean                             ;; 02:408e pP
-    dw   horizontalScrollTile                          ;; 02:4090 pP
-    dw   call_02_40a4                                  ;; 02:4092 pP
-    dw   call_02_4213                                  ;; 02:4094 pP
-    dw   call_02_4213                                  ;; 02:4096 ??
+    dw   animateTileRiver                              ;; 02:4090 pP
+    dw   animateTilesIncrementUnusedCounter            ;; 02:4092 pP
+    dw   animateTilesIncrementCounter                  ;; 02:4094 pP
+    dw   animateTilesIncrementCounter                  ;; 02:4096 ??
     dw   animateTilesWaterfall                         ;; 02:4098 pP
     dw   animateTilesReverseWaterfall                  ;; 02:409a pP
     dw   animateTilesOcean                             ;; 02:409c pP
     dw   animateTilesOcean                             ;; 02:409e pP
-    dw   horizontalScrollTile                          ;; 02:40a0 pP
-    dw   call_02_40a4                                  ;; 02:40a2 pP
+    dw   animateTileRiver                              ;; 02:40a0 pP
+    dw   animateTilesIncrementUnusedCounter            ;; 02:40a2 pP
 
-call_02_40a4:
-    ld   HL, wD398                                     ;; 02:40a4 $21 $98 $d3
+animateTilesIncrementUnusedCounter:
+    ld   HL, wTileAnimationCounter_Unused              ;; 02:40a4 $21 $98 $d3
     inc  [HL]                                          ;; 02:40a7 $34
     ret                                                ;; 02:40a8 $c9
 
-call_02_40a9:
+animateTilesTwoframe_TileCopy:
     ld   B, $04                                        ;; 02:40a9 $06 $04
 .jr_02_40ab:
     push DE                                            ;; 02:40ab $d5
@@ -124,15 +125,16 @@ call_02_40a9:
     jr   NZ, .jr_02_40ab                               ;; 02:40c6 $20 $e3
     ret                                                ;; 02:40c8 $c9
 
-call_02_40c9:
-    ld   A, [wD399]                                    ;; 02:40c9 $fa $99 $d3
+; Used for the lava and the sparkly damage tiles
+animateTilesTwoframe:
+    ld   A, [wTileAnimationCounter]                    ;; 02:40c9 $fa $99 $d3
     ld   C, A                                          ;; 02:40cc $4f
     and  A, $30                                        ;; 02:40cd $e6 $30
     ret  NZ                                            ;; 02:40cf $c0
     ld   A, C                                          ;; 02:40d0 $79
     and  A, $01                                        ;; 02:40d1 $e6 $01
-    jr   NZ, .jr_02_40ed                               ;; 02:40d3 $20 $18
-    ld   DE, wD170                                     ;; 02:40d5 $11 $70 $d1
+    jr   NZ, .secondFrame                              ;; 02:40d3 $20 $18
+    ld   DE, wBackgroundGraphicsTileState              ;; 02:40d5 $11 $70 $d1
     ld   A, [wMapGraphicsPointer.High]                 ;; 02:40d8 $fa $91 $d3
     ld   H, A                                          ;; 02:40db $67
     ld   A, [wMapGraphicsPointer]                      ;; 02:40dc $fa $90 $d3
@@ -143,10 +145,10 @@ call_02_40c9:
     ld   BC, $40                                       ;; 02:40e5 $01 $40 $00
     add  HL, BC                                        ;; 02:40e8 $09
 .jr_02_40e9:
-    call call_02_40a9                                  ;; 02:40e9 $cd $a9 $40
+    call animateTilesTwoframe_TileCopy                 ;; 02:40e9 $cd $a9 $40
     ret                                                ;; 02:40ec $c9
-.jr_02_40ed:
-    ld   DE, wD174                                     ;; 02:40ed $11 $74 $d1
+.secondFrame:
+    ld   DE, wBackgroundGraphicsTileState._04          ;; 02:40ed $11 $74 $d1
     ld   A, [wMapGraphicsPointer.High]                 ;; 02:40f0 $fa $91 $d3
     ld   H, A                                          ;; 02:40f3 $67
     ld   A, [wMapGraphicsPointer]                      ;; 02:40f4 $fa $90 $d3
@@ -157,17 +159,17 @@ call_02_40c9:
     ld   BC, $40                                       ;; 02:40fd $01 $40 $00
     add  HL, BC                                        ;; 02:4100 $09
 .jr_02_4101:
-    call call_02_40a9                                  ;; 02:4101 $cd $a9 $40
+    call animateTilesTwoframe_TileCopy                 ;; 02:4101 $cd $a9 $40
     ret                                                ;; 02:4104 $c9
 
 animateTilesWaterfall:
-    ld   A, [wD178]                                    ;; 02:4105 $fa $78 $d1
+    ld   A, [wBackgroundGraphicsTileState._08]         ;; 02:4105 $fa $78 $d1
     cp   A, $00                                        ;; 02:4108 $fe $00
     ret  Z                                             ;; 02:410a $c8
-    ld   A, [wD078]                                    ;; 02:410b $fa $78 $d0
+    ld   A, [wBackgroundGraphicsTileMapping._08]       ;; 02:410b $fa $78 $d0
     ld   HL, wAnimatedTileWaterfall1                   ;; 02:410e $21 $f0 $d2
     call animateTileDown                               ;; 02:4111 $cd $1e $41
-    ld   A, [wD079]                                    ;; 02:4114 $fa $79 $d0
+    ld   A, [wBackgroundGraphicsTileMapping._09]       ;; 02:4114 $fa $79 $d0
     ld   HL, wAnimatedTileWaterfall2                   ;; 02:4117 $21 $00 $d3
     call animateTileDown                               ;; 02:411a $cd $1e $41
     ret                                                ;; 02:411d $c9
@@ -187,9 +189,9 @@ animateTileDown:
     call copyHLtoDE                                    ;; 02:4131 $cd $49 $2b
     pop  HL                                            ;; 02:4134 $e1
     push HL                                            ;; 02:4135 $e5
-    ld   A, [wD38F]                                    ;; 02:4136 $fa $8f $d3
+    ld   A, [wAnimatedTileScratchpad._0F]              ;; 02:4136 $fa $8f $d3
     ld   D, A                                          ;; 02:4139 $57
-    ld   A, [wD38E]                                    ;; 02:413a $fa $8e $d3
+    ld   A, [wAnimatedTileScratchpad._0E]              ;; 02:413a $fa $8e $d3
     ld   E, A                                          ;; 02:413d $5f
     ld   [HL], E                                       ;; 02:413e $73
     inc  HL                                            ;; 02:413f $23
@@ -200,13 +202,13 @@ animateTileDown:
     ret                                                ;; 02:4146 $c9
 
 animateTilesReverseWaterfall:
-    ld   A, [wD17A]                                    ;; 02:4147 $fa $7a $d1
+    ld   A, [wBackgroundGraphicsTileState._0A]         ;; 02:4147 $fa $7a $d1
     cp   A, $00                                        ;; 02:414a $fe $00
     ret  Z                                             ;; 02:414c $c8
-    ld   A, [wD07A]                                    ;; 02:414d $fa $7a $d0
+    ld   A, [wBackgroundGraphicsTileMapping._0A]       ;; 02:414d $fa $7a $d0
     ld   HL, wAnimatedTileWaterfallReversed1           ;; 02:4150 $21 $10 $d3
     call animateTileUp                                 ;; 02:4153 $cd $60 $41
-    ld   A, [wD07B]                                    ;; 02:4156 $fa $7b $d0
+    ld   A, [wBackgroundGraphicsTileMapping._0B]       ;; 02:4156 $fa $7b $d0
     ld   HL, wAnimatedTileWaterfallReversed2           ;; 02:4159 $21 $20 $d3
     call animateTileUp                                 ;; 02:415c $cd $60 $41
     ret                                                ;; 02:415f $c9
@@ -225,9 +227,9 @@ animateTileUp:
     inc  HL                                            ;; 02:416f $23
     ld   D, [HL]                                       ;; 02:4170 $56
     ld   A, D                                          ;; 02:4171 $7a
-    ld   [wD38F], A                                    ;; 02:4172 $ea $8f $d3
+    ld   [wAnimatedTileScratchpad._0F], A              ;; 02:4172 $ea $8f $d3
     ld   A, E                                          ;; 02:4175 $7b
-    ld   [wD38E], A                                    ;; 02:4176 $ea $8e $d3
+    ld   [wAnimatedTileScratchpad._0E], A              ;; 02:4176 $ea $8e $d3
     pop  DE                                            ;; 02:4179 $d1
     push DE                                            ;; 02:417a $d5
     ld   HL, wAnimatedTileScratchpad                   ;; 02:417b $21 $80 $d3
@@ -239,38 +241,38 @@ animateTileUp:
     ret                                                ;; 02:4188 $c9
 
 animateTilesOcean:
-    ld   A, [wD399]                                    ;; 02:4189 $fa $99 $d3
+    ld   A, [wTileAnimationCounter]                    ;; 02:4189 $fa $99 $d3
     and  A, $01                                        ;; 02:418c $e6 $01
-    jr   NZ, .jr_02_41af                               ;; 02:418e $20 $1f
-    ld   A, [wD17C]                                    ;; 02:4190 $fa $7c $d1
+    jr   NZ, .bottomTiles                              ;; 02:418e $20 $1f
+    ld   A, [wBackgroundGraphicsTileState._0C]         ;; 02:4190 $fa $7c $d1
     cp   A, $00                                        ;; 02:4193 $fe $00
     ret  Z                                             ;; 02:4195 $c8
     ld   HL, wAnimatedTileOcean1                       ;; 02:4196 $21 $30 $d3
     call animateTilesRight                             ;; 02:4199 $cd $e9 $41
-    ld   A, [wD07C]                                    ;; 02:419c $fa $7c $d0
+    ld   A, [wBackgroundGraphicsTileMapping._0C]       ;; 02:419c $fa $7c $d0
     ld   BC, wAnimatedTileOcean1                       ;; 02:419f $01 $30 $d3
     call requestBackgroundTileCopy                     ;; 02:41a2 $cd $fe $41
-    ld   A, [wD07D]                                    ;; 02:41a5 $fa $7d $d0
+    ld   A, [wBackgroundGraphicsTileMapping._0D]       ;; 02:41a5 $fa $7d $d0
     ld   BC, wAnimatedTileOcean2                       ;; 02:41a8 $01 $40 $d3
     call requestBackgroundTileCopy                     ;; 02:41ab $cd $fe $41
     ret                                                ;; 02:41ae $c9
-.jr_02_41af:
-    ld   A, [wD17E]                                    ;; 02:41af $fa $7e $d1
+.bottomTiles:
+    ld   A, [wBackgroundGraphicsTileState._0E]         ;; 02:41af $fa $7e $d1
     cp   A, $00                                        ;; 02:41b2 $fe $00
     ret  Z                                             ;; 02:41b4 $c8
     ld   HL, wAnimatedTileOcean3                       ;; 02:41b5 $21 $50 $d3
     call animateTilesRight                             ;; 02:41b8 $cd $e9 $41
-    ld   A, [wD07E]                                    ;; 02:41bb $fa $7e $d0
+    ld   A, [wBackgroundGraphicsTileMapping._0E]       ;; 02:41bb $fa $7e $d0
     ld   BC, wAnimatedTileOcean3                       ;; 02:41be $01 $50 $d3
     call requestBackgroundTileCopy                     ;; 02:41c1 $cd $fe $41
-    ld   A, [wD07F]                                    ;; 02:41c4 $fa $7f $d0
+    ld   A, [wBackgroundGraphicsTileMapping._0F]       ;; 02:41c4 $fa $7f $d0
     ld   BC, wAnimatedTileOcean4                       ;; 02:41c7 $01 $60 $d3
     call requestBackgroundTileCopy                     ;; 02:41ca $cd $fe $41
     ret                                                ;; 02:41cd $c9
 
-; Check if we need to horizontally scroll a graphics tile, and scroll it 1 pixel.
-horizontalScrollTile:
-    ld   A, [wBackgroundGraphicsTileState]             ;; 02:41ce $fa $80 $d1
+; Check if we need to animate the river  tile, and scroll it 1 pixel.
+animateTileRiver:
+    ld   A, [wBackgroundGraphicsTileState._10]         ;; 02:41ce $fa $80 $d1
     cp   A, $00                                        ;; 02:41d1 $fe $00
     ret  Z                                             ;; 02:41d3 $c8
     ld   HL, wAnimatedTileRiver                        ;; 02:41d4 $21 $70 $d3
@@ -280,7 +282,7 @@ horizontalScrollTile:
     inc  HL                                            ;; 02:41db $23
     dec  B                                             ;; 02:41dc $05
     jr   NZ, .jr_02_41d9                               ;; 02:41dd $20 $fa
-    ld   A, [wBackgroundGraphicsTileMapping]           ;; 02:41df $fa $80 $d0
+    ld   A, [wBackgroundGraphicsTileMapping._10]       ;; 02:41df $fa $80 $d0
     ld   BC, wAnimatedTileRiver                        ;; 02:41e2 $01 $70 $d3
     call requestBackgroundTileCopy                     ;; 02:41e5 $cd $fe $41
     ret                                                ;; 02:41e8 $c9
@@ -323,8 +325,8 @@ requestBackgroundTileCopy:
     call addTileGraphicCopyRequest                     ;; 02:420f $cd $f5 $2d
     ret                                                ;; 02:4212 $c9
 
-call_02_4213:
-    ld   HL, wD399                                     ;; 02:4213 $21 $99 $d3
+animateTilesIncrementCounter:
+    ld   HL, wTileAnimationCounter                     ;; 02:4213 $21 $99 $d3
     inc  [HL]                                          ;; 02:4216 $34
     ret                                                ;; 02:4217 $c9
 
@@ -442,7 +444,7 @@ call_02_42a5:
     pop  BC                                            ;; 02:42ac $c1
     and  A, $f0                                        ;; 02:42ad $e6 $f0
     cp   A, $c0                                        ;; 02:42af $fe $c0
-    jr   Z, .jr_02_42df                                ;; 02:42b1 $28 $2c
+    jr   Z, .player                                    ;; 02:42b1 $28 $2c
     cp   A, $40                                        ;; 02:42b3 $fe $40
     jr   Z, .jr_02_42e4                                ;; 02:42b5 $28 $2d
     cp   A, $50                                        ;; 02:42b7 $fe $50
@@ -462,11 +464,11 @@ call_02_42a5:
     cp   A, $70                                        ;; 02:42d3 $fe $70
     jr   Z, .jr_02_42f8                                ;; 02:42d5 $28 $21
     cp   A, $20                                        ;; 02:42d7 $fe $20
-    jr   Z, .jr_02_42fd                                ;; 02:42d9 $28 $22
+    jr   Z, .boss                                      ;; 02:42d9 $28 $22
     pop  AF                                            ;; 02:42db $f1
     ld   A, $00                                        ;; 02:42dc $3e $00
     ret                                                ;; 02:42de $c9
-.jr_02_42df:
+.player:
     pop  AF                                            ;; 02:42df $f1
     call call_00_028b                                  ;; 02:42e0 $cd $8b $02
     ret                                                ;; 02:42e3 $c9
@@ -480,7 +482,7 @@ call_02_42a5:
     ret                                                ;; 02:42ed $c9
 .jr_02_42ee:
     pop  AF                                            ;; 02:42ee $f1
-    call call_00_28b6                                  ;; 02:42ef $cd $b6 $28
+    call enemyCollisionHandling_trampoline             ;; 02:42ef $cd $b6 $28
     ret                                                ;; 02:42f2 $c9
 .jr_02_42f3:
     pop  AF                                            ;; 02:42f3 $f1
@@ -490,7 +492,7 @@ call_02_42a5:
     pop  AF                                            ;; 02:42f8 $f1
     call call_00_2c03                                  ;; 02:42f9 $cd $03 $2c
     ret                                                ;; 02:42fc $c9
-.jr_02_42fd:
+.boss:
     pop  AF                                            ;; 02:42fd $f1
     call call_00_0511                                  ;; 02:42fe $cd $11 $05
     ret                                                ;; 02:4301 $c9
@@ -987,10 +989,10 @@ call_02_478e:
 data_02_47b2:
     db   $0c, $0e                                      ;; 02:47b2 ..
 
-data_02_47b4:
+menuFingerPointingTiles:
     db   $12, $14                                      ;; 02:47b4 ..
 
-data_02_47b6:
+menuFingerCurledTiles:
     db   $12, $16                                      ;; 02:47b6 ..
 
 data_02_47b8:
@@ -1073,7 +1075,7 @@ call_02_483e:
     ld   A, B                                          ;; 02:4845 $78
     ld   [wDialogType], A                              ;; 02:4846 $ea $4a $d8
     call call_02_6d0b                                  ;; 02:4849 $cd $0b $6d
-    call call_02_79e7                                  ;; 02:484c $cd $e7 $79
+    call pauseStatusEffectTimers                       ;; 02:484c $cd $e7 $79
     ld   A, [wMainGameState]                           ;; 02:484f $fa $a0 $c0
     ld   [wMainGameStateBackup], A                     ;; 02:4852 $ea $62 $d8
     ld   A, $00                                        ;; 02:4855 $3e $00
@@ -1357,7 +1359,7 @@ call_02_4a14:
     ld   E, A                                          ;; 02:4a49 $5f
     jr   .jr_02_4a58                                   ;; 02:4a4a $18 $0c
 .jr_02_4a4c:
-    ld   A, [wD874]                                    ;; 02:4a4c $fa $74 $d8
+    ld   A, [wWindowFlags]                             ;; 02:4a4c $fa $74 $d8
     and  A, $18                                        ;; 02:4a4f $e6 $18
     jr   NZ, .jr_02_4a58                               ;; 02:4a51 $20 $05
 .jr_02_4a53:
@@ -1401,11 +1403,11 @@ call_02_4a79:
     jp   NZ, jp_02_5877                                ;; 02:4a9f $c2 $77 $58
 
 call_02_4aa2:
-    ld   A, [wD874]                                    ;; 02:4aa2 $fa $74 $d8
+    ld   A, [wWindowFlags]                             ;; 02:4aa2 $fa $74 $d8
     bit  6, A                                          ;; 02:4aa5 $cb $77
     jr   Z, .jr_02_4ab9                                ;; 02:4aa7 $28 $10
     res  6, A                                          ;; 02:4aa9 $cb $b7
-    ld   [wD874], A                                    ;; 02:4aab $ea $74 $d8
+    ld   [wWindowFlags], A                             ;; 02:4aab $ea $74 $d8
     ld   A, $1d                                        ;; 02:4aae $3e $1d
     ld   [wDialogType], A                              ;; 02:4ab0 $ea $4a $d8
     ld   A, $01                                        ;; 02:4ab3 $3e $01
@@ -1592,7 +1594,7 @@ jp_02_4ba1:
 reopenSelectWindowAfterSaveScreen:
     ld   A, $03                                        ;; 02:4beb $3e $03
     ld   [wD853], A                                    ;; 02:4bed $ea $53 $d8
-    ld   HL, wD874                                     ;; 02:4bf0 $21 $74 $d8
+    ld   HL, wWindowFlags                              ;; 02:4bf0 $21 $74 $d8
     bit  2, [HL]                                       ;; 02:4bf3 $cb $56
     jr   NZ, .jr_02_4c08                               ;; 02:4bf5 $20 $11
     call call_02_72ac                                  ;; 02:4bf7 $cd $ac $72
@@ -1753,7 +1755,7 @@ call_02_4cf7:
 
 call_02_4d36:
     call loadRegisterState1                            ;; 02:4d36 $cd $5b $6d
-    call call_02_57b0                                  ;; 02:4d39 $cd $b0 $57
+    call getSelectedMenuIndexes                        ;; 02:4d39 $cd $b0 $57
     ld   A, $fe                                        ;; 02:4d3c $3e $fe
     cp   A, B                                          ;; 02:4d3e $b8
     jr   Z, .jr_02_4d45                                ;; 02:4d3f $28 $04
@@ -1807,7 +1809,7 @@ jr_02_4d83:
 
 call_02_4d89:
     call loadRegisterState1                            ;; 02:4d89 $cd $5b $6d
-    call call_02_57b0                                  ;; 02:4d8c $cd $b0 $57
+    call getSelectedMenuIndexes                        ;; 02:4d8c $cd $b0 $57
     cp   A, B                                          ;; 02:4d8f $b8
     jr   NZ, .jr_02_4d99                               ;; 02:4d90 $20 $07
     rrca                                               ;; 02:4d92 $0f
@@ -1833,7 +1835,7 @@ call_02_4db0:
     cp   A, $04                                        ;; 02:4db6 $fe $04
     jp   NZ, jp_02_4e4c                                ;; 02:4db8 $c2 $4c $4e
     call saveRegisterState1                            ;; 02:4dbb $cd $34 $6d
-    call call_02_57b0                                  ;; 02:4dbe $cd $b0 $57
+    call getSelectedMenuIndexes                        ;; 02:4dbe $cd $b0 $57
     ld   A, [wD893]                                    ;; 02:4dc1 $fa $93 $d8
     ld   H, A                                          ;; 02:4dc4 $67
     ld   A, [wD892]                                    ;; 02:4dc5 $fa $92 $d8
@@ -2028,7 +2030,7 @@ jp_02_4f19:
     bit  6, A                                          ;; 02:4f31 $cb $77
     jr   NZ, .jr_02_4f5a                               ;; 02:4f33 $20 $25
     ld   A, [wSelectedMenuIndex]                       ;; 02:4f35 $fa $4b $d8
-    ld   HL, wD831                                     ;; 02:4f38 $21 $31 $d8
+    ld   HL, wLevelUpStatChoicesCopy                   ;; 02:4f38 $21 $31 $d8
     add  A, A                                          ;; 02:4f3b $87
     add  A, A                                          ;; 02:4f3c $87
     ld   B, $00                                        ;; 02:4f3d $06 $00
@@ -2109,7 +2111,7 @@ call_02_4f97:
     jp   call_02_4889                                  ;; 02:4fc5 $c3 $89 $48
 
 call_02_4fc8:
-    call call_02_57b0                                  ;; 02:4fc8 $cd $b0 $57
+    call getSelectedMenuIndexes                        ;; 02:4fc8 $cd $b0 $57
     cp   A, B                                          ;; 02:4fcb $b8
     ret  NZ                                            ;; 02:4fcc $c0
     ld   A, $fe                                        ;; 02:4fcd $3e $fe
@@ -2143,7 +2145,7 @@ call_02_4fe8:
     ret                                                ;; 02:4ffe $c9
 
 call_02_4fff:
-    call call_02_57b0                                  ;; 02:4fff $cd $b0 $57
+    call getSelectedMenuIndexes                        ;; 02:4fff $cd $b0 $57
     inc  A                                             ;; 02:5002 $3c
     jr   Z, .jr_02_5038                                ;; 02:5003 $28 $33
     ld   A, [wDialogType]                              ;; 02:5005 $fa $4a $d8
@@ -2207,7 +2209,7 @@ call_02_5062:
     ld   B, A                                          ;; 02:5077 $47
     call call_02_6c98                                  ;; 02:5078 $cd $98 $6c
 .jr_02_507b:
-    ld   HL, wD831                                     ;; 02:507b $21 $31 $d8
+    ld   HL, wLevelUpStatChoicesCopy                   ;; 02:507b $21 $31 $d8
     ld   B, $10                                        ;; 02:507e $06 $10
     xor  A, A                                          ;; 02:5080 $af
 .jr_02_5081:
@@ -2292,7 +2294,7 @@ call_02_50b5:
     dec  E                                             ;; 02:5100 $1d
     dec  B                                             ;; 02:5101 $05
     jr   NZ, .jr_02_50fb                               ;; 02:5102 $20 $f7
-    call call_02_57b0                                  ;; 02:5104 $cd $b0 $57
+    call getSelectedMenuIndexes                        ;; 02:5104 $cd $b0 $57
     ld   B, $00                                        ;; 02:5107 $06 $00
     ld   HL, wD701                                     ;; 02:5109 $21 $01 $d7
     add  HL, BC                                        ;; 02:510c $09
@@ -2438,7 +2440,7 @@ call_02_51d5:
     ret                                                ;; 02:51fa $c9
 
 jp_02_51fb:
-    call call_02_57b0                                  ;; 02:51fb $cd $b0 $57
+    call getSelectedMenuIndexes                        ;; 02:51fb $cd $b0 $57
     cp   A, $00                                        ;; 02:51fe $fe $00
     jr   NZ, call_02_522d                              ;; 02:5200 $20 $2b
     ld   A, [wD876]                                    ;; 02:5202 $fa $76 $d8
@@ -2556,7 +2558,7 @@ call_02_5292:
     ret                                                ;; 02:52c5 $c9
 
 jp_02_52c6:
-    call call_02_57b0                                  ;; 02:52c6 $cd $b0 $57
+    call getSelectedMenuIndexes                        ;; 02:52c6 $cd $b0 $57
     push DE                                            ;; 02:52c9 $d5
     push HL                                            ;; 02:52ca $e5
     ld   E, A                                          ;; 02:52cb $5f
@@ -2605,7 +2607,7 @@ jp_02_52c6:
     ret                                                ;; 02:531b $c9
 
 jp_02_531c:
-    call call_02_57b0                                  ;; 02:531c $cd $b0 $57
+    call getSelectedMenuIndexes                        ;; 02:531c $cd $b0 $57
     dec  A                                             ;; 02:531f $3d
     ld   B, $31                                        ;; 02:5320 $06 $31
     call call_02_6c98                                  ;; 02:5322 $cd $98 $6c
@@ -2678,8 +2680,8 @@ increaseLevel:
     cp   A, $64                                        ;; 02:539f $fe $64
     call NC, capAtLevel100                             ;; 02:53a1 $d4 $b6 $53
     call setNextXPLevel                                ;; 02:53a4 $cd $a3 $3e
-    ld   HL, data_02_5cfe                              ;; 02:53a7 $21 $fe $5c
-    ld   DE, wD831                                     ;; 02:53aa $11 $31 $d8
+    ld   HL, levelUpStatChoices                        ;; 02:53a7 $21 $fe $5c
+    ld   DE, wLevelUpStatChoicesCopy                   ;; 02:53aa $11 $31 $d8
     ld   B, $10                                        ;; 02:53ad $06 $10
 .jr_02_53af:
     ld   A, [HL+]                                      ;; 02:53af $2a
@@ -3378,7 +3380,7 @@ call_02_57a0:
     call call_02_6c98                                  ;; 02:57ac $cd $98 $6c
     ret                                                ;; 02:57af $c9
 
-call_02_57b0:
+getSelectedMenuIndexes:
     ld   A, [wSelectedMenuIndex]                       ;; 02:57b0 $fa $4b $d8
     ld   B, A                                          ;; 02:57b3 $47
     ld   A, [wSelectedMenuIndex2]                      ;; 02:57b4 $fa $4c $d8
@@ -3807,16 +3809,16 @@ call_02_5a18:
     ret                                                ;; 02:5a61 $c9
 
 jp_02_5a62:
-    ld   HL, sA006                                     ;; 02:5a62 $21 $06 $a0
+    ld   HL, sSave1Body                                ;; 02:5a62 $21 $06 $a0
     ld   B, $08                                        ;; 02:5a65 $06 $08
     jr   jr_02_5a6e                                    ;; 02:5a67 $18 $05
 
 jp_02_5a69:
-    ld   HL, sA106                                     ;; 02:5a69 $21 $06 $a1
+    ld   HL, sSave2Body                                ;; 02:5a69 $21 $06 $a1
     ld   B, $10                                        ;; 02:5a6c $06 $10
 
 jr_02_5a6e:
-    ld   A, [wD874]                                    ;; 02:5a6e $fa $74 $d8
+    ld   A, [wWindowFlags]                             ;; 02:5a6e $fa $74 $d8
     and  A, B                                          ;; 02:5a71 $a0
     jr   Z, .jr_02_5a8d                                ;; 02:5a72 $28 $19
     call enableSRAM                                    ;; 02:5a74 $cd $58 $74
@@ -3954,7 +3956,7 @@ jp_02_5b2c:
     push AF                                            ;; 02:5b3a $f5
     cp   A, $1d                                        ;; 02:5b3b $fe $1d
     jr   NZ, .jr_02_5b49                               ;; 02:5b3d $20 $0a
-    ld   A, [wD874]                                    ;; 02:5b3f $fa $74 $d8
+    ld   A, [wWindowFlags]                             ;; 02:5b3f $fa $74 $d8
     bit  5, A                                          ;; 02:5b42 $cb $6f
     jr   Z, .jr_02_5b49                                ;; 02:5b44 $28 $03
     ld   HL, girlLabel                                 ;; 02:5b46 $21 $fd $7d
@@ -4079,9 +4081,12 @@ data_02_5cd6:
     db   $0b, $01, $07, $03, $01, $04, $01, $00, $00, $00 ;; 02:5cea ?????????? $08
     db   $00, $0a, $13, $07, $03, $10, $04, $00, $00, $00 ;; 02:5cf4 .......... $09
 
-data_02_5cfe:
-    db   $01, $02, $00, $01, $01, $00, $02, $01        ;; 02:5cfe ........
-    db   $02, $01, $00, $01, $01, $00, $01, $02        ;; 02:5d06 ........
+;@data amount=4 format=bbbb
+levelUpStatChoices:
+    db   $01, $02, $00, $01                            ;; 02:5cfe .... $00
+    db   $01, $00, $02, $01                            ;; 02:5d02 .... $01
+    db   $02, $01, $00, $01                            ;; 02:5d06 .... $02
+    db   $01, $00, $01, $02                            ;; 02:5d0a .... $03
 
 ;@data format=p amount=34
 data_02_5d0e:
@@ -4195,13 +4200,6 @@ windowTextStrings:
     dw   levelUpText1                                  ;; 02:5dd8 .. $21
 
 INCLUDE "data/items.asm"
-
-; Psuedo items used for labels in the EQUIP screen
-;@item_data amount=2
-itemAPDPLabelsDataTable:
-    ITEM_DATA $00, "AP  <00><00><00><00>"                  , $40, $00, $00, $00, $00, $00, $00 ;; 02:64ca ?.....???????.??
-    ITEM_DATA $00, "DP  <00><00><00><00>"                  , $40, $00, $00, $00, $00, $00, $00 ;; 02:64da ?.....???????.??
-    db   $00, $00                                      ;; 02:64ea ??
 
 vendorInventories:
     db   $00, $0a, $05, $0a, $06, $0a, $16, $0a        ;; 02:64ec ........
@@ -4764,7 +4762,7 @@ jp_02_6943:
     ld   HL, wD7A7                                     ;; 02:6951 $21 $a7 $d7
     ld   DE, wBoyName                                  ;; 02:6954 $11 $9d $d7
     ld   B, $04                                        ;; 02:6957 $06 $04
-    ld   A, [wD874]                                    ;; 02:6959 $fa $74 $d8
+    ld   A, [wWindowFlags]                             ;; 02:6959 $fa $74 $d8
     bit  5, A                                          ;; 02:695c $cb $6f
     push AF                                            ;; 02:695e $f5
     jr   Z, .jr_02_6964                                ;; 02:695f $28 $03
@@ -4791,7 +4789,7 @@ jp_02_6943:
     jr   NZ, .jr_02_698e                               ;; 02:697b $20 $11
     set  5, A                                          ;; 02:697d $cb $ef
     set  6, A                                          ;; 02:697f $cb $f7
-    ld   [wD874], A                                    ;; 02:6981 $ea $74 $d8
+    ld   [wWindowFlags], A                             ;; 02:6981 $ea $74 $d8
     xor  A, A                                          ;; 02:6984 $af
     ld   [wD854], A                                    ;; 02:6985 $ea $54 $d8
     ld   [wD885], A                                    ;; 02:6988 $ea $85 $d8
@@ -5158,7 +5156,7 @@ call_02_6bad:
     push DE                                            ;; 02:6bb4 $d5
     push BC                                            ;; 02:6bb5 $c5
     ld   HL, wOAMBuffer._08                            ;; 02:6bb6 $21 $08 $c0
-    ld   BC, data_02_47b6                              ;; 02:6bb9 $01 $b6 $47
+    ld   BC, menuFingerCurledTiles                     ;; 02:6bb9 $01 $b6 $47
     jr   jr_02_6bcd                                    ;; 02:6bbc $18 $0f
 
 call_02_6bbe:
@@ -5171,7 +5169,7 @@ call_02_6bbe:
     ld   HL, wOAMBuffer._08                            ;; 02:6bc7 $21 $08 $c0
 
 jr_02_6bca:
-    ld   BC, data_02_47b4                              ;; 02:6bca $01 $b4 $47
+    ld   BC, menuFingerPointingTiles                   ;; 02:6bca $01 $b4 $47
 
 jr_02_6bcd:
     call call_02_6bd8                                  ;; 02:6bcd $cd $d8 $6b
@@ -5337,7 +5335,7 @@ call_02_6c98:
     call call_02_6cbb                                  ;; 02:6ca7 $cd $bb $6c
     call getEquippedWeaponElements                     ;; 02:6caa $cd $56 $71
     call getEquippedItemElements                       ;; 02:6cad $cd $65 $71
-    call call_02_7a00                                  ;; 02:6cb0 $cd $00 $7a
+    call unpauseStatusEffectTImers                     ;; 02:6cb0 $cd $00 $7a
     ld   A, [wMainGameStateBackup]                     ;; 02:6cb3 $fa $62 $d8
     ld   [wMainGameState], A                           ;; 02:6cb6 $ea $a0 $c0
 .jr_02_6cb9:
@@ -5710,7 +5708,7 @@ call_02_6ee2:
     ld   A, $06                                        ;; 02:6f00 $3e $06
     ld   [wD857], A                                    ;; 02:6f02 $ea $57 $d8
     xor  A, A                                          ;; 02:6f05 $af
-    ld   [wD874], A                                    ;; 02:6f06 $ea $74 $d8
+    ld   [wWindowFlags], A                             ;; 02:6f06 $ea $74 $d8
     call getEquippedItemElements                       ;; 02:6f09 $cd $65 $71
     call getEquippedWeaponElements                     ;; 02:6f0c $cd $56 $71
     ret                                                ;; 02:6f0f $c9
@@ -6178,12 +6176,12 @@ setAToZero_2:
     ret                                                ;; 02:71dc $c9
 
 openLoadScreen:
-    ld   HL, wD874                                     ;; 02:71dd $21 $74 $d8
+    ld   HL, wWindowFlags                              ;; 02:71dd $21 $74 $d8
     set  2, [HL]                                       ;; 02:71e0 $cb $d6
     jr   jr_02_71e9                                    ;; 02:71e2 $18 $05
 
 openSaveScreen:
-    ld   HL, wD874                                     ;; 02:71e4 $21 $74 $d8
+    ld   HL, wWindowFlags                              ;; 02:71e4 $21 $74 $d8
     res  2, [HL]                                       ;; 02:71e7 $cb $96
 
 jr_02_71e9:
@@ -6197,19 +6195,19 @@ jr_02_71e9:
     ret                                                ;; 02:71fa $c9
 
 jp_02_71fb:
-    ld   HL, wD874                                     ;; 02:71fb $21 $74 $d8
+    ld   HL, wWindowFlags                              ;; 02:71fb $21 $74 $d8
     bit  2, [HL]                                       ;; 02:71fe $cb $56
     jp   NZ, jp_02_72be                                ;; 02:7200 $c2 $be $72
     ld   HL, wD872                                     ;; 02:7203 $21 $72 $d8
     res  5, [HL]                                       ;; 02:7206 $cb $ae
-    ld   HL, sA000                                     ;; 02:7208 $21 $00 $a0
+    ld   HL, sSave1Header                              ;; 02:7208 $21 $00 $a0
     ld   A, [wSelectedMenuIndex]                       ;; 02:720b $fa $4b $d8
     and  A, A                                          ;; 02:720e $a7
     ld   B, $08                                        ;; 02:720f $06 $08
     jr   Z, .jr_02_721d                                ;; 02:7211 $28 $0a
     ld   HL, wD872                                     ;; 02:7213 $21 $72 $d8
     set  5, [HL]                                       ;; 02:7216 $cb $ee
-    ld   HL, sA100                                     ;; 02:7218 $21 $00 $a1
+    ld   HL, sSave2Header                              ;; 02:7218 $21 $00 $a1
     ld   B, $10                                        ;; 02:721b $06 $10
 .jr_02_721d:
     ld   A, [wItemBuffActive]                          ;; 02:721d $fa $7e $d8
@@ -6227,9 +6225,9 @@ jp_02_71fb:
     pop  DE                                            ;; 02:7234 $d1
     pop  BC                                            ;; 02:7235 $c1
 .jr_02_7236:
-    ld   A, [wD874]                                    ;; 02:7236 $fa $74 $d8
+    ld   A, [wWindowFlags]                             ;; 02:7236 $fa $74 $d8
     or   A, B                                          ;; 02:7239 $b0
-    ld   [wD874], A                                    ;; 02:723a $ea $74 $d8
+    ld   [wWindowFlags], A                             ;; 02:723a $ea $74 $d8
     ld   A, [wDialogType]                              ;; 02:723d $fa $4a $d8
     ld   [wSelectedMenuIndex], A                       ;; 02:7240 $ea $4b $d8
     push HL                                            ;; 02:7243 $e5
@@ -6303,10 +6301,10 @@ jp_02_72be:
     ld   A, [DE]                                       ;; 02:72c1 $1a
     res  5, A                                          ;; 02:72c2 $cb $af
     ld   [DE], A                                       ;; 02:72c4 $12
-    ld   HL, sA000                                     ;; 02:72c5 $21 $00 $a0
+    ld   HL, sSave1Header                              ;; 02:72c5 $21 $00 $a0
     ld   A, [wSelectedMenuIndex]                       ;; 02:72c8 $fa $4b $d8
     and  A, A                                          ;; 02:72cb $a7
-    ld   A, [wD874]                                    ;; 02:72cc $fa $74 $d8
+    ld   A, [wWindowFlags]                             ;; 02:72cc $fa $74 $d8
     jr   NZ, .jr_02_72de                               ;; 02:72cf $20 $0d
     bit  3, A                                          ;; 02:72d1 $cb $5f
     jr   NZ, .jr_02_72e9                               ;; 02:72d3 $20 $14
@@ -6321,7 +6319,7 @@ jp_02_72be:
     ld   A, [DE]                                       ;; 02:72e2 $1a
     set  5, A                                          ;; 02:72e3 $cb $ef
     ld   [DE], A                                       ;; 02:72e5 $12
-    ld   HL, sA100                                     ;; 02:72e6 $21 $00 $a1
+    ld   HL, sSave2Header                              ;; 02:72e6 $21 $00 $a1
 .jr_02_72e9:
     ld   A, [wDialogType]                              ;; 02:72e9 $fa $4a $d8
     ld   [wSelectedMenuIndex], A                       ;; 02:72ec $ea $4b $d8
@@ -6602,9 +6600,9 @@ call_02_747c:
     pop  AF                                            ;; 02:74aa $f1
     cpl                                                ;; 02:74ab $2f
     ld   B, A                                          ;; 02:74ac $47
-    ld   A, [wD874]                                    ;; 02:74ad $fa $74 $d8
+    ld   A, [wWindowFlags]                             ;; 02:74ad $fa $74 $d8
     and  A, B                                          ;; 02:74b0 $a0
-    ld   [wD874], A                                    ;; 02:74b1 $ea $74 $d8
+    ld   [wWindowFlags], A                             ;; 02:74b1 $ea $74 $d8
     scf                                                ;; 02:74b4 $37
     ret                                                ;; 02:74b5 $c9
 .jr_02_74b6:
@@ -6612,9 +6610,9 @@ call_02_747c:
     pop  HL                                            ;; 02:74b9 $e1
     pop  AF                                            ;; 02:74ba $f1
     ld   B, A                                          ;; 02:74bb $47
-    ld   A, [wD874]                                    ;; 02:74bc $fa $74 $d8
+    ld   A, [wWindowFlags]                             ;; 02:74bc $fa $74 $d8
     or   A, B                                          ;; 02:74bf $b0
-    ld   [wD874], A                                    ;; 02:74c0 $ea $74 $d8
+    ld   [wWindowFlags], A                             ;; 02:74c0 $ea $74 $d8
     ret                                                ;; 02:74c3 $c9
 
 ; Get SRAM checksum, read B bytes from SRAM and accumulates them into HL, with DE as start value.
@@ -7001,13 +6999,13 @@ call_02_7693:
     inc  D                                             ;; 02:771f $14
 .jr_02_7720:
     ld   A, D                                          ;; 02:7720 $7a
-    ld   [wD8B9], A                                    ;; 02:7721 $ea $b9 $d8
+    ld   [wWindowTextInsertionPointY], A               ;; 02:7721 $ea $b9 $d8
     ld   A, E                                          ;; 02:7724 $7b
-    ld   [wD8B8], A                                    ;; 02:7725 $ea $b8 $d8
+    ld   [wWindowTextInsertionPointX], A               ;; 02:7725 $ea $b8 $d8
     ld   A, B                                          ;; 02:7728 $78
-    ld   [wD8BB], A                                    ;; 02:7729 $ea $bb $d8
+    ld   [wWindowTextLinesLeft], A                     ;; 02:7729 $ea $bb $d8
     ld   A, C                                          ;; 02:772c $79
-    ld   [wD8BA], A                                    ;; 02:772d $ea $ba $d8
+    ld   [wWindowTextSpaceLeftOnLine], A               ;; 02:772d $ea $ba $d8
     call saveRegisterState2                            ;; 02:7730 $cd $80 $6d
     xor  A, A                                          ;; 02:7733 $af
     ret                                                ;; 02:7734 $c9
@@ -7031,7 +7029,7 @@ call_02_7735:
     inc  HL                                            ;; 02:774c $23
     push DE                                            ;; 02:774d $d5
     push HL                                            ;; 02:774e $e5
-    call call_00_016f                                  ;; 02:774f $cd $6f $01
+    call getPlayerForm                                 ;; 02:774f $cd $6f $01
     pop  HL                                            ;; 02:7752 $e1
     ld   [HL+], A                                      ;; 02:7753 $22
     ld   A, [wMusic]                                   ;; 02:7754 $fa $9b $d4
@@ -7431,7 +7429,7 @@ clearStatusEffects:
     ld   [HL], A                                       ;; 02:79e5 $77
     ret                                                ;; 02:79e6 $c9
 
-call_02_79e7:
+pauseStatusEffectTimers:
     ld   HL, wPoisStatusEffectTimerNumber              ;; 02:79e7 $21 $79 $d8
     ld   B, $05                                        ;; 02:79ea $06 $05
 .jr_02_79ec:
@@ -7445,7 +7443,7 @@ call_02_79e7:
     call timerDeactivate                               ;; 02:79fc $cd $f6 $2f
     ret                                                ;; 02:79ff $c9
 
-call_02_7a00:
+unpauseStatusEffectTImers:
     ld   A, [wStatusEffect]                            ;; 02:7a00 $fa $c0 $d7
     ld   C, A                                          ;; 02:7a03 $4f
     ld   B, $05                                        ;; 02:7a04 $06 $05
@@ -7675,12 +7673,12 @@ call_02_7b3c:
     ld   [wMainGameState], A                           ;; 02:7b3e $ea $a0 $c0
     ld   A, $3c                                        ;; 02:7b41 $3e $3c
     ld   [wTitleScreenDelay], A                        ;; 02:7b43 $ea $8c $d8
-    ld   HL, sA000                                     ;; 02:7b46 $21 $00 $a0
+    ld   HL, sSave1Header                              ;; 02:7b46 $21 $00 $a0
     ld   A, $08                                        ;; 02:7b49 $3e $08
     call call_02_747c                                  ;; 02:7b4b $cd $7c $74
     ld   A, E                                          ;; 02:7b4e $7b
     ld   [wRndState0], A                               ;; 02:7b4f $ea $b0 $c0
-    ld   HL, sA100                                     ;; 02:7b52 $21 $00 $a1
+    ld   HL, sSave2Header                              ;; 02:7b52 $21 $00 $a1
     ld   A, $10                                        ;; 02:7b55 $3e $10
     call call_02_747c                                  ;; 02:7b57 $cd $7c $74
     ld   A, E                                          ;; 02:7b5a $7b
@@ -7744,7 +7742,7 @@ jp_02_7b9f:
     ld   [wMainGameState], A                           ;; 02:7bbf $ea $a0 $c0
     ret                                                ;; 02:7bc2 $c9
 .jr_02_7bc3:
-    ld   A, [wD874]                                    ;; 02:7bc3 $fa $74 $d8
+    ld   A, [wWindowFlags]                             ;; 02:7bc3 $fa $74 $d8
     and  A, $18                                        ;; 02:7bc6 $e6 $18
     jr   Z, .jr_02_7bb3                                ;; 02:7bc8 $28 $e9
     ld   A, [wD884]                                    ;; 02:7bca $fa $84 $d8

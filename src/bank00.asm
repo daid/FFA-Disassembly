@@ -152,29 +152,29 @@ getPlayerNearestTilePostion:
     call getObjectNearestTilePosition                  ;; 00:016b $cd $ef $05
     ret                                                ;; 00:016e $c9
 
-call_00_016f:
+getPlayerForm:
     call getPlayerCollisionFlags                       ;; 00:016f $cd $b7 $02
     cp   A, $e1                                        ;; 00:0172 $fe $e1
-    jr   Z, .jr_00_0188                                ;; 00:0174 $28 $12
+    jr   Z, .chocobo                                   ;; 00:0174 $28 $12
     cp   A, $f1                                        ;; 00:0176 $fe $f1
-    jr   Z, .jr_00_018b                                ;; 00:0178 $28 $11
+    jr   Z, .chocobot                                  ;; 00:0178 $28 $11
     cp   A, $f5                                        ;; 00:017a $fe $f5
-    jr   Z, .jr_00_018e                                ;; 00:017c $28 $10
+    jr   Z, .chocoboat                                 ;; 00:017c $28 $10
     ld   A, [wPlayerSpecialFlags]                      ;; 00:017e $fa $d4 $c4
     bit  4, A                                          ;; 00:0181 $cb $67
-    jr   NZ, .jr_00_0191                               ;; 00:0183 $20 $0c
+    jr   NZ, .minecart                                 ;; 00:0183 $20 $0c
     ld   A, $00                                        ;; 00:0185 $3e $00
     ret                                                ;; 00:0187 $c9
-.jr_00_0188:
+.chocobo:
     ld   A, $01                                        ;; 00:0188 $3e $01
     ret                                                ;; 00:018a $c9
-.jr_00_018b:
+.chocobot:
     ld   A, $02                                        ;; 00:018b $3e $02
     ret                                                ;; 00:018d $c9
-.jr_00_018e:
+.chocoboat:
     ld   A, $03                                        ;; 00:018e $3e $03
     ret                                                ;; 00:0190 $c9
-.jr_00_0191:
+.minecart:
     ld   A, $04                                        ;; 00:0191 $3e $04
     ret                                                ;; 00:0193 $c9
 
@@ -381,20 +381,20 @@ call_00_02c9:
 call_00_02cf:
     call getPlayerCollisionFlags                       ;; 00:02cf $cd $b7 $02
     cp   A, $e1                                        ;; 00:02d2 $fe $e1
-    jr   Z, .jr_00_02e1                                ;; 00:02d4 $28 $0b
+    jr   Z, .chocobo                                   ;; 00:02d4 $28 $0b
     cp   A, $f1                                        ;; 00:02d6 $fe $f1
-    jr   Z, .jr_00_02e4                                ;; 00:02d8 $28 $0a
+    jr   Z, .chocobot                                  ;; 00:02d8 $28 $0a
     cp   A, $f5                                        ;; 00:02da $fe $f5
-    jr   Z, .jr_00_02e7                                ;; 00:02dc $28 $09
+    jr   Z, .chocoboat                                 ;; 00:02dc $28 $09
     ld   A, $00                                        ;; 00:02de $3e $00
     ret                                                ;; 00:02e0 $c9
-.jr_00_02e1:
+.chocobo:
     ld   A, $0c                                        ;; 00:02e1 $3e $0c
     ret                                                ;; 00:02e3 $c9
-.jr_00_02e4:
+.chocobot:
     ld   A, $0d                                        ;; 00:02e4 $3e $0d
     ret                                                ;; 00:02e6 $c9
-.jr_00_02e7:
+.chocoboat:
     ld   A, $0e                                        ;; 00:02e7 $3e $0e
     ret                                                ;; 00:02e9 $c9
     db   $c9                                           ;; 00:02ea ?
@@ -703,7 +703,7 @@ storeDEatBackgroundDrawPosition:
     ret                                                ;; 00:049d $c9
 
 call_00_049e:
-    jp_to_bank 01, call_01_44d8                        ;; 00:049e $f5 $3e $18 $c3 $d7 $1e
+    jp_to_bank 01, scrollRoom                          ;; 00:049e $f5 $3e $18 $c3 $d7 $1e
 
 call_00_04a4:
     jp_to_bank 01, call_01_471d                        ;; 00:04a4 $f5 $3e $19 $c3 $d7 $1e
@@ -771,6 +771,7 @@ call_00_0517:
     jp_to_bank 04, call_04_4735                        ;; 00:0517 $f5 $3e $04 $c3 $64 $1f
 
 ; Draw the meta tile A (metatile index) at DE (YX tile number)
+; Uses background requests to copy the bytes into VRAM
 drawMetaTile:
     push DE                                            ;; 00:051d $d5
     call getTileInfoPointer2                           ;; 00:051e $cd $bb $05
@@ -787,7 +788,7 @@ drawMetaTile:
     ld   D, A                                          ;; 00:052e $57
     ld   A, [HL+]                                      ;; 00:052f $2a
     push HL                                            ;; 00:0530 $e5
-    ld   HL, wD070                                     ;; 00:0531 $21 $70 $d0
+    ld   HL, wBackgroundGraphicsTileMapping            ;; 00:0531 $21 $70 $d0
     ld   C, A                                          ;; 00:0534 $4f
     ld   B, $00                                        ;; 00:0535 $06 $00
     add  HL, BC                                        ;; 00:0537 $09
@@ -797,7 +798,7 @@ drawMetaTile:
     push HL                                            ;; 00:053b $e5
     push DE                                            ;; 00:053c $d5
     push BC                                            ;; 00:053d $c5
-    ld   HL, wD070                                     ;; 00:053e $21 $70 $d0
+    ld   HL, wBackgroundGraphicsTileMapping            ;; 00:053e $21 $70 $d0
     ld   C, A                                          ;; 00:0541 $4f
     ld   B, $00                                        ;; 00:0542 $06 $00
     add  HL, BC                                        ;; 00:0544 $09
@@ -810,7 +811,7 @@ drawMetaTile:
     inc  D                                             ;; 00:054d $14
     ld   A, [HL+]                                      ;; 00:054e $2a
     push HL                                            ;; 00:054f $e5
-    ld   HL, wD070                                     ;; 00:0550 $21 $70 $d0
+    ld   HL, wBackgroundGraphicsTileMapping            ;; 00:0550 $21 $70 $d0
     ld   C, A                                          ;; 00:0553 $4f
     ld   B, $00                                        ;; 00:0554 $06 $00
     add  HL, BC                                        ;; 00:0556 $09
@@ -818,7 +819,7 @@ drawMetaTile:
     pop  HL                                            ;; 00:0558 $e1
     push BC                                            ;; 00:0559 $c5
     ld   A, [HL+]                                      ;; 00:055a $2a
-    ld   HL, wD070                                     ;; 00:055b $21 $70 $d0
+    ld   HL, wBackgroundGraphicsTileMapping            ;; 00:055b $21 $70 $d0
     ld   C, A                                          ;; 00:055e $4f
     ld   B, $00                                        ;; 00:055f $06 $00
     add  HL, BC                                        ;; 00:0561 $09
@@ -829,7 +830,9 @@ drawMetaTile:
     call popBankNrAndSwitch                            ;; 00:0568 $cd $0a $2a
     ret                                                ;; 00:056b $c9
 
-call_00_056c:
+; Draw the meta tile A (metatile index) at DE (YX tile number)
+; Transfers the bytes during HBlank
+drawMetaTile_immediate:
     push DE                                            ;; 00:056c $d5
     call getTileInfoPointer2                           ;; 00:056d $cd $bb $05
     push HL                                            ;; 00:0570 $e5
@@ -845,7 +848,7 @@ call_00_056c:
     ld   D, A                                          ;; 00:057d $57
     ld   A, [HL+]                                      ;; 00:057e $2a
     push HL                                            ;; 00:057f $e5
-    ld   HL, wD070                                     ;; 00:0580 $21 $70 $d0
+    ld   HL, wBackgroundGraphicsTileMapping            ;; 00:0580 $21 $70 $d0
     ld   C, A                                          ;; 00:0583 $4f
     ld   B, $00                                        ;; 00:0584 $06 $00
     add  HL, BC                                        ;; 00:0586 $09
@@ -855,7 +858,7 @@ call_00_056c:
     push HL                                            ;; 00:058a $e5
     push DE                                            ;; 00:058b $d5
     push BC                                            ;; 00:058c $c5
-    ld   HL, wD070                                     ;; 00:058d $21 $70 $d0
+    ld   HL, wBackgroundGraphicsTileMapping            ;; 00:058d $21 $70 $d0
     ld   C, A                                          ;; 00:0590 $4f
     ld   B, $00                                        ;; 00:0591 $06 $00
     add  HL, BC                                        ;; 00:0593 $09
@@ -868,7 +871,7 @@ call_00_056c:
     inc  D                                             ;; 00:059c $14
     ld   A, [HL+]                                      ;; 00:059d $2a
     push HL                                            ;; 00:059e $e5
-    ld   HL, wD070                                     ;; 00:059f $21 $70 $d0
+    ld   HL, wBackgroundGraphicsTileMapping            ;; 00:059f $21 $70 $d0
     ld   C, A                                          ;; 00:05a2 $4f
     ld   B, $00                                        ;; 00:05a3 $06 $00
     add  HL, BC                                        ;; 00:05a5 $09
@@ -876,7 +879,7 @@ call_00_056c:
     pop  HL                                            ;; 00:05a7 $e1
     push BC                                            ;; 00:05a8 $c5
     ld   A, [HL+]                                      ;; 00:05a9 $2a
-    ld   HL, wD070                                     ;; 00:05aa $21 $70 $d0
+    ld   HL, wBackgroundGraphicsTileMapping            ;; 00:05aa $21 $70 $d0
     ld   C, A                                          ;; 00:05ad $4f
     ld   B, $00                                        ;; 00:05ae $06 $00
     add  HL, BC                                        ;; 00:05b0 $09
@@ -1677,37 +1680,37 @@ call_00_0a33:
     push AF                                            ;; 00:0a33 $f5
     and  A, $f0                                        ;; 00:0a34 $e6 $f0
     cp   A, $c0                                        ;; 00:0a36 $fe $c0
-    jr   Z, .jr_00_0a5b                                ;; 00:0a38 $28 $21
+    jr   Z, .player                                    ;; 00:0a38 $28 $21
     cp   A, $40                                        ;; 00:0a3a $fe $40
-    jr   Z, .jr_00_0a60                                ;; 00:0a3c $28 $22
+    jr   Z, .playerAttack                              ;; 00:0a3c $28 $22
     cp   A, $30                                        ;; 00:0a3e $fe $30
-    jr   Z, .jr_00_0a60                                ;; 00:0a40 $28 $1e
+    jr   Z, .playerAttack                              ;; 00:0a40 $28 $1e
     cp   A, $50                                        ;; 00:0a42 $fe $50
-    jr   Z, .jr_00_0a60                                ;; 00:0a44 $28 $1a
+    jr   Z, .playerAttack                              ;; 00:0a44 $28 $1a
     cp   A, $90                                        ;; 00:0a46 $fe $90
-    jr   Z, .jr_00_0a65                                ;; 00:0a48 $28 $1b
+    jr   Z, .enemy                                     ;; 00:0a48 $28 $1b
     cp   A, $a0                                        ;; 00:0a4a $fe $a0
-    jr   Z, .jr_00_0a6a                                ;; 00:0a4c $28 $1c
+    jr   Z, .friendly                                  ;; 00:0a4c $28 $1c
     cp   A, $b0                                        ;; 00:0a4e $fe $b0
-    jr   Z, .jr_00_0a6a                                ;; 00:0a50 $28 $18
+    jr   Z, .friendly                                  ;; 00:0a50 $28 $18
     cp   A, $60                                        ;; 00:0a52 $fe $60
     jr   Z, .jr_00_0a6f                                ;; 00:0a54 $28 $19
     cp   A, $70                                        ;; 00:0a56 $fe $70
     jr   Z, .jr_00_0a6f                                ;; 00:0a58 $28 $15
     ret                                                ;; 00:0a5a $c9
-.jr_00_0a5b:
+.player:
     pop  AF                                            ;; 00:0a5b $f1
     call call_00_0244                                  ;; 00:0a5c $cd $44 $02
     ret                                                ;; 00:0a5f $c9
-.jr_00_0a60:
+.playerAttack:
     pop  AF                                            ;; 00:0a60 $f1
     call call_00_2efd                                  ;; 00:0a61 $cd $fd $2e
     ret                                                ;; 00:0a64 $c9
-.jr_00_0a65:
+.enemy:
     pop  AF                                            ;; 00:0a65 $f1
     call call_00_2847                                  ;; 00:0a66 $cd $47 $28
     ret                                                ;; 00:0a69 $c9
-.jr_00_0a6a:
+.friendly:
     pop  AF                                            ;; 00:0a6a $f1
     call setHLToZero                                   ;; 00:0a6b $cd $1e $2d
     ret                                                ;; 00:0a6e $c9
@@ -1716,7 +1719,7 @@ call_00_0a33:
     call NOOP                                          ;; 00:0a70 $cd $02 $2c
     ret                                                ;; 00:0a73 $c9
 
-; C  = object type?
+; C  = object type ("collision flags")
 ; DE = position in tiles
 ; HL = metatile pointer
 createObject:
@@ -2092,6 +2095,8 @@ getObjectCollisionFlags:
     ld   A, $00                                        ;; 00:0c83 $3e $00
     ret                                                ;; 00:0c85 $c9
 
+; A = flags
+; C = object number
 setObjectCollisionFlags:
     ld   L, C                                          ;; 00:0c86 $69
     ld   H, $00                                        ;; 00:0c87 $26 $00
@@ -4385,7 +4390,7 @@ call_00_1a44:
     push HL                                            ;; 00:1a53 $e5
     ld   E, A                                          ;; 00:1a54 $5f
     ld   D, $00                                        ;; 00:1a55 $16 $00
-    ld   HL, wD170                                     ;; 00:1a57 $21 $70 $d1
+    ld   HL, wBackgroundGraphicsTileState              ;; 00:1a57 $21 $70 $d1
     add  HL, DE                                        ;; 00:1a5a $19
     ld   A, [HL]                                       ;; 00:1a5b $7e
     cp   A, $00                                        ;; 00:1a5c $fe $00
@@ -4403,8 +4408,8 @@ call_00_1a44:
     pop  AF                                            ;; 00:1a6e $f1
     ret                                                ;; 00:1a6f $c9
 
-call_00_1a70:
-    jp_to_bank 02, call_02_4074                        ;; 00:1a70 $f5 $3e $00 $c3 $06 $1f
+animateTiles_trampoline:
+    jp_to_bank 02, animateTiles                        ;; 00:1a70 $f5 $3e $00 $c3 $06 $1f
 
 call_00_1a76:
     push HL                                            ;; 00:1a76 $e5
@@ -4509,7 +4514,7 @@ call_00_1af3:
     ld   [wTileDataTablePointer], A                    ;; 00:1b00 $ea $92 $d3
     ld   A, $00                                        ;; 00:1b03 $3e $00
     ld   B, $ff                                        ;; 00:1b05 $06 $ff
-    ld   HL, wD170                                     ;; 00:1b07 $21 $70 $d1
+    ld   HL, wBackgroundGraphicsTileState              ;; 00:1b07 $21 $70 $d1
     ld   [HL+], A                                      ;; 00:1b0a $22
     call fillMemory                                    ;; 00:1b0b $cd $5d $2b
     ld   A, $00                                        ;; 00:1b0e $3e $00
@@ -4547,7 +4552,7 @@ call_00_1b2b:
     push HL                                            ;; 00:1b35 $e5
     ld   E, A                                          ;; 00:1b36 $5f
     ld   D, $00                                        ;; 00:1b37 $16 $00
-    ld   HL, wD170                                     ;; 00:1b39 $21 $70 $d1
+    ld   HL, wBackgroundGraphicsTileState              ;; 00:1b39 $21 $70 $d1
     add  HL, DE                                        ;; 00:1b3c $19
     ld   A, [HL]                                       ;; 00:1b3d $7e
     cp   A, $00                                        ;; 00:1b3e $fe $00
@@ -4564,7 +4569,7 @@ call_00_1b2b:
     ret                                                ;; 00:1b4d $c9
 
 call_00_1b4e:
-    ld   HL, wD170                                     ;; 00:1b4e $21 $70 $d1
+    ld   HL, wBackgroundGraphicsTileState              ;; 00:1b4e $21 $70 $d1
     ld   B, $00                                        ;; 00:1b51 $06 $00
 .jr_00_1b53:
     ld   A, [HL]                                       ;; 00:1b53 $7e
@@ -4623,7 +4628,7 @@ call_00_1b74:
 call_00_1ba1:
     ld   E, A                                          ;; 00:1ba1 $5f
     ld   D, $00                                        ;; 00:1ba2 $16 $00
-    ld   HL, wD170                                     ;; 00:1ba4 $21 $70 $d1
+    ld   HL, wBackgroundGraphicsTileState              ;; 00:1ba4 $21 $70 $d1
     add  HL, DE                                        ;; 00:1ba7 $19
     ld   A, [HL]                                       ;; 00:1ba8 $7e
     cp   A, $00                                        ;; 00:1ba9 $fe $00
@@ -5366,7 +5371,7 @@ call_00_217b:
 call_00_2190:
     ld   A, $00                                        ;; 00:2190 $3e $00
     call call_00_043b                                  ;; 00:2192 $cd $3b $04
-    call call_00_1a70                                  ;; 00:2195 $cd $70 $1a
+    call animateTiles_trampoline                       ;; 00:2195 $cd $70 $1a
     call call_00_291a                                  ;; 00:2198 $cd $1a $29
     call call_00_318f                                  ;; 00:219b $cd $8f $31
     call call_00_1d1b                                  ;; 00:219e $cd $1b $1d
@@ -5553,14 +5558,14 @@ call_00_2281:
     ld   A, C                                          ;; 00:22ab $79
     push HL                                            ;; 00:22ac $e5
     push BC                                            ;; 00:22ad $c5
-    call call_00_056c                                  ;; 00:22ae $cd $6c $05
+    call drawMetaTile_immediate                        ;; 00:22ae $cd $6c $05
     pop  BC                                            ;; 00:22b1 $c1
     pop  HL                                            ;; 00:22b2 $e1
     ld   E, [HL]                                       ;; 00:22b3 $5e
     inc  HL                                            ;; 00:22b4 $23
     ld   D, [HL]                                       ;; 00:22b5 $56
     ld   A, B                                          ;; 00:22b6 $78
-    call call_00_056c                                  ;; 00:22b7 $cd $6c $05
+    call drawMetaTile_immediate                        ;; 00:22b7 $cd $6c $05
     ret                                                ;; 00:22ba $c9
 
 call_00_22bb:
@@ -5813,7 +5818,7 @@ setRoomTile:
 .jr_00_241d:
     pop  DE                                            ;; 00:241d $d1
     pop  AF                                            ;; 00:241e $f1
-    call call_00_056c                                  ;; 00:241f $cd $6c $05
+    call drawMetaTile_immediate                        ;; 00:241f $cd $6c $05
     call popBankNrAndSwitch                            ;; 00:2422 $cd $0a $2a
     ret                                                ;; 00:2425 $c9
 
@@ -5942,7 +5947,7 @@ runRoomScript:
     or   A, $00                                        ;; 00:24eb $f6 $00
     ld   C, $c9                                        ;; 00:24ed $0e $c9
     pop  HL                                            ;; 00:24ef $e1
-    call call_00_3213                                  ;; 00:24f0 $cd $13 $32
+    call runScriptByAddress                            ;; 00:24f0 $cd $13 $32
     push HL                                            ;; 00:24f3 $e5
     call popBankNrAndSwitch                            ;; 00:24f4 $cd $0a $2a
     pop  HL                                            ;; 00:24f7 $e1
@@ -5965,7 +5970,7 @@ runRoomExitScript:
     or   A, $00                                        ;; 00:2511 $f6 $00
     ld   C, $c9                                        ;; 00:2513 $0e $c9
     pop  HL                                            ;; 00:2515 $e1
-    call call_00_3213                                  ;; 00:2516 $cd $13 $32
+    call runScriptByAddress                            ;; 00:2516 $cd $13 $32
     push HL                                            ;; 00:2519 $e5
     call popBankNrAndSwitch                            ;; 00:251a $cd $0a $2a
     pop  HL                                            ;; 00:251d $e1
@@ -5989,7 +5994,7 @@ runRoomAllKilledScript:
     or   A, $00                                        ;; 00:2538 $f6 $00
     ld   C, $c9                                        ;; 00:253a $0e $c9
     pop  HL                                            ;; 00:253c $e1
-    call call_00_3213                                  ;; 00:253d $cd $13 $32
+    call runScriptByAddress                            ;; 00:253d $cd $13 $32
     push HL                                            ;; 00:2540 $e5
     call popBankNrAndSwitch                            ;; 00:2541 $cd $0a $2a
     pop  HL                                            ;; 00:2544 $e1
@@ -6378,7 +6383,8 @@ loadMap:
     call popBankNrAndSwitch                            ;; 00:277e $cd $0a $2a
     ret                                                ;; 00:2781 $c9
 
-call_00_2782:
+; DE=pointer to the NPC runtime data
+getNpcProjectileType:
     ld   HL, $10                                       ;; 00:2782 $21 $10 $00
     add  HL, DE                                        ;; 00:2785 $19
     ld   A, [HL+]                                      ;; 00:2786 $2a
@@ -6390,7 +6396,7 @@ call_00_2782:
     ret                                                ;; 00:278e $c9
 
 call_00_278f:
-    ld   HL, wC4E0                                     ;; 00:278f $21 $e0 $c4
+    ld   HL, wNpcRuntimeData                           ;; 00:278f $21 $e0 $c4
     ld   B, $08                                        ;; 00:2792 $06 $08
     ld   C, $00                                        ;; 00:2794 $0e $00
 .jr_00_2796:
@@ -6427,7 +6433,7 @@ call_00_27ba:
     cp   A, $00                                        ;; 00:27bf $fe $00
     jr   Z, .jr_00_27cb                                ;; 00:27c1 $28 $08
     push DE                                            ;; 00:27c3 $d5
-    call call_00_2782                                  ;; 00:27c4 $cd $82 $27
+    call getNpcProjectileType                          ;; 00:27c4 $cd $82 $27
     call spawnProjectile_trampoline                    ;; 00:27c7 $cd $ec $2b
     pop  DE                                            ;; 00:27ca $d1
 .jr_00_27cb:
@@ -6448,7 +6454,7 @@ call_00_27e3:
     jp_to_bank 03, call_03_435f                        ;; 00:27e3 $f5 $3e $03 $c3 $35 $1f
 
 call_00_27e9:
-    ld   HL, wC4E0                                     ;; 00:27e9 $21 $e0 $c4
+    ld   HL, wNpcRuntimeData                           ;; 00:27e9 $21 $e0 $c4
     ld   B, $08                                        ;; 00:27ec $06 $08
     ld   DE, $18                                       ;; 00:27ee $11 $18 $00
     ld   A, $ff                                        ;; 00:27f1 $3e $ff
@@ -6505,7 +6511,7 @@ call_00_2847:
 call_00_284d:
     jp_to_bank 03, call_03_4561                        ;; 00:284d $f5 $3e $08 $c3 $35 $1f
 
-call_00_2853:
+damageNpc_trampoline:
     jp_to_bank 03, damageNpc                           ;; 00:2853 $f5 $3e $09 $c3 $35 $1f
 
 call_00_2859:
@@ -6525,7 +6531,7 @@ call_00_2859:
     add  A, A                                          ;; 00:2868 $87
     ld   L, A                                          ;; 00:2869 $6f
     ld   H, $00                                        ;; 00:286a $26 $00
-    ld   DE, wC4E0                                     ;; 00:286c $11 $e0 $c4
+    ld   DE, wNpcRuntimeData                           ;; 00:286c $11 $e0 $c4
     add  HL, DE                                        ;; 00:286f $19
     ld   C, [HL]                                       ;; 00:2870 $4e
     call call_00_27e3                                  ;; 00:2871 $cd $e3 $27
@@ -6548,7 +6554,7 @@ call_00_2889:
     jp_to_bank 03, call_03_4aed                        ;; 00:2889 $f5 $3e $0b $c3 $35 $1f
 
 call_00_288f:
-    jp_to_bank 03, call_03_4af1                        ;; 00:288f $f5 $3e $0c $c3 $35 $1f
+    jp_to_bank 03, updateObjectPosition_3              ;; 00:288f $f5 $3e $0c $c3 $35 $1f
 
 giveFollower_trampoline:
     jp_to_bank 03, giveFollower                        ;; 00:2895 $f5 $3e $0f $c3 $35 $1f
@@ -6572,8 +6578,8 @@ call_00_28aa:
 call_00_28b0:
     jp_to_bank 03, call_03_4b4f                        ;; 00:28b0 $f5 $3e $0e $c3 $35 $1f
 
-call_00_28b6:
-    jp_to_bank 03, call_03_4641                        ;; 00:28b6 $f5 $3e $07 $c3 $35 $1f
+enemyCollisionHandling_trampoline:
+    jp_to_bank 03, enemyCollisionHandling              ;; 00:28b6 $f5 $3e $07 $c3 $35 $1f
 
 call_00_28bc:
     ld   HL, $03                                       ;; 00:28bc $21 $03 $00
@@ -6607,7 +6613,7 @@ call_00_28d5:
     add  A, A                                          ;; 00:28e0 $87
     ld   L, A                                          ;; 00:28e1 $6f
     ld   H, $00                                        ;; 00:28e2 $26 $00
-    ld   DE, wC4E0                                     ;; 00:28e4 $11 $e0 $c4
+    ld   DE, wNpcRuntimeData                           ;; 00:28e4 $11 $e0 $c4
     add  HL, DE                                        ;; 00:28e7 $19
     ld   DE, $0c                                       ;; 00:28e8 $11 $0c $00
     add  HL, DE                                        ;; 00:28eb $19
@@ -6628,7 +6634,7 @@ call_00_28f0:
     add  A, A                                          ;; 00:28fb $87
     ld   L, A                                          ;; 00:28fc $6f
     ld   H, $00                                        ;; 00:28fd $26 $00
-    ld   DE, wC4E0                                     ;; 00:28ff $11 $e0 $c4
+    ld   DE, wNpcRuntimeData                           ;; 00:28ff $11 $e0 $c4
     add  HL, DE                                        ;; 00:2902 $19
     ld   DE, $0c                                       ;; 00:2903 $11 $0c $00
     add  HL, DE                                        ;; 00:2906 $19
@@ -6642,7 +6648,7 @@ call_00_290d:
     ld   HL, $00                                       ;; 00:290d $21 $00 $00
     call call_00_28c2                                  ;; 00:2910 $cd $c2 $28
     ret  NZ                                            ;; 00:2913 $c0
-    jp_to_bank 03, call_03_4a81                        ;; 00:2914 $f5 $3e $15 $c3 $35 $1f
+    jp_to_bank 03, getNpcScriptIndex                   ;; 00:2914 $f5 $3e $15 $c3 $35 $1f
 
 call_00_291a:
     ld   A, [wC0A1]                                    ;; 00:291a $fa $a1 $c0
@@ -7245,7 +7251,7 @@ call_00_2d22:
     ret  Z                                             ;; 00:2d2e $c8
     cp   A, $b0                                        ;; 00:2d2f $fe $b0
     ret  Z                                             ;; 00:2d31 $c8
-    call call_00_28b6                                  ;; 00:2d32 $cd $b6 $28
+    call enemyCollisionHandling_trampoline             ;; 00:2d32 $cd $b6 $28
     ret                                                ;; 00:2d35 $c9
 .jr_00_2d36:
     ld   A, $00                                        ;; 00:2d36 $3e $00
@@ -7858,7 +7864,7 @@ call_00_311d:
 getCurrentMagicPower_trampoline:
     jp_to_bank 02, getCurrentMagicPower                ;; 00:3123 $f5 $3e $28 $c3 $06 $1f
 
-call_00_3129:
+attackWithWeaponUseWill_trampoline:
     jp_to_bank 02, attackWithWeaponUseWill             ;; 00:3129 $f5 $3e $29 $c3 $06 $1f
 
 giveStatusEffect_trampoline:
@@ -7883,7 +7889,7 @@ call_00_3153:
 introScrollHandler_trampoline:
     jp_to_bank 02, introScrollHandler                  ;; 00:3159 $f5 $3e $31 $c3 $06 $1f
 
-call_00_315f:
+castEquippedSpellIfSufficientMana_trampoline:
     jp_to_bank 02, castEquippedSpellIfSufficientMana   ;; 00:315f $f5 $3e $32 $c3 $06 $1f
 
 getScriptOpcodeFunctionTrampoline:
@@ -7908,7 +7914,7 @@ getEquippedArmorElementalResistances_trampoline:
     jp_to_bank 02, getEquippedArmorElementalResistances ;; 00:3189 $f5 $3e $39 $c3 $06 $1f
 
 call_00_318f:
-    ld   HL, wD874                                     ;; 00:318f $21 $74 $d8
+    ld   HL, wWindowFlags                              ;; 00:318f $21 $74 $d8
     bit  7, [HL]                                       ;; 00:3192 $cb $7e
     ret  Z                                             ;; 00:3194 $c8
     ld   A, [wMainGameState]                           ;; 00:3195 $fa $a0 $c0
@@ -7922,6 +7928,8 @@ call_00_318f:
     set  3, [HL]                                       ;; 00:31aa $cb $de
     ret                                                ;; 00:31ac $c9
 
+; A=Player facing direction
+; C=Player collision flags
 ; HL=Script index
 runScriptByIndex:
     push HL                                            ;; 00:31ad $e5
@@ -7929,13 +7937,13 @@ runScriptByIndex:
     bit  1, [HL]                                       ;; 00:31b1 $cb $4e
     pop  HL                                            ;; 00:31b3 $e1
     ret  NZ                                            ;; 00:31b4 $c0
-    ld   [wD873], A                                    ;; 00:31b5 $ea $73 $d8
+    ld   [wScriptPlayerFacingDirection], A             ;; 00:31b5 $ea $73 $d8
     call setDirectionScriptFlags                       ;; 00:31b8 $cd $24 $3c
     ld   A, C                                          ;; 00:31bb $79
-    ld   [wD871], A                                    ;; 00:31bc $ea $71 $d8
-    ld   A, [wD874]                                    ;; 00:31bf $fa $74 $d8
+    ld   [wScriptTriggerCollisionFlags], A             ;; 00:31bc $ea $71 $d8
+    ld   A, [wWindowFlags]                             ;; 00:31bf $fa $74 $d8
     or   A, $80                                        ;; 00:31c2 $f6 $80
-    ld   [wD874], A                                    ;; 00:31c4 $ea $74 $d8
+    ld   [wWindowFlags], A                             ;; 00:31c4 $ea $74 $d8
 
 call_00_31c7:
     ld   A, $05                                        ;; 00:31c7 $3e $05
@@ -7979,7 +7987,7 @@ call_00_31c7:
     pop  HL                                            ;; 00:3211 $e1
     ret                                                ;; 00:3212 $c9
 
-call_00_3213:
+runScriptByAddress:
     ld   A, [wScriptBank]                              ;; 00:3213 $fa $6a $d8
     push AF                                            ;; 00:3216 $f5
     ld   A, [wScriptPointerHigh]                       ;; 00:3217 $fa $b7 $d8
@@ -8023,7 +8031,7 @@ call_00_3213:
 
 gameStateScript:
     call call_00_28b0                                  ;; 00:3254 $cd $b0 $28
-    ld   HL, wD874                                     ;; 00:3257 $21 $74 $d8
+    ld   HL, wWindowFlags                              ;; 00:3257 $21 $74 $d8
     res  0, [HL]                                       ;; 00:325a $cb $86
     jr   Z, .jr_00_3260                                ;; 00:325c $28 $02
     set  0, [HL]                                       ;; 00:325e $cb $c6
@@ -8067,7 +8075,7 @@ getScriptPointerFromScriptPointerTable:
     ret                                                ;; 00:3296 $c9
 
 scriptOpCodeEND:
-    ld   A, [wD874]                                    ;; 00:3297 $fa $74 $d8
+    ld   A, [wWindowFlags]                             ;; 00:3297 $fa $74 $d8
     bit  0, A                                          ;; 00:329a $cb $47
     ret  NZ                                            ;; 00:329c $c0
     ld   A, [wScriptStackCount]                        ;; 00:329d $fa $65 $d8
@@ -8198,7 +8206,7 @@ scriptOpCodeMsg:
     ld   A, [HL+]                                      ;; 00:3369 $2a
     ld   H, [HL]                                       ;; 00:336a $66
     ld   L, A                                          ;; 00:336b $6f
-    call call_00_374d                                  ;; 00:336c $cd $4d $37
+    call getDialogTextInsertionPoint                   ;; 00:336c $cd $4d $37
     jp   HL                                            ;; 00:336f $e9
 
 scriptOpCodeIfFlags:
@@ -8351,17 +8359,17 @@ call_00_343f:
     ret                                                ;; 00:344d $c9
 
 scriptOpCodeIfTriggeredOnBy:
-    ld   A, [wD871]                                    ;; 00:344e $fa $71 $d8
+    ld   A, [wScriptTriggerCollisionFlags]             ;; 00:344e $fa $71 $d8
     ld   C, A                                          ;; 00:3451 $4f
-    ld   A, [wD873]                                    ;; 00:3452 $fa $73 $d8
+    ld   A, [wScriptPlayerFacingDirection]             ;; 00:3452 $fa $73 $d8
     bit  7, A                                          ;; 00:3455 $cb $7f
     jr   NZ, jr_00_3476                                ;; 00:3457 $20 $1d
     jr   jr_00_3466                                    ;; 00:3459 $18 $0b
 
 scriptOpCodeIfTriggeredOffBy:
-    ld   A, [wD871]                                    ;; 00:345b $fa $71 $d8
+    ld   A, [wScriptTriggerCollisionFlags]             ;; 00:345b $fa $71 $d8
     ld   C, A                                          ;; 00:345e $4f
-    ld   A, [wD873]                                    ;; 00:345f $fa $73 $d8
+    ld   A, [wScriptPlayerFacingDirection]             ;; 00:345f $fa $73 $d8
     bit  7, A                                          ;; 00:3462 $cb $7f
     jr   Z, jr_00_3476                                 ;; 00:3464 $28 $10
 
@@ -8526,14 +8534,14 @@ call_00_3547:
     ld   A, $06                                        ;; 00:3561 $3e $06
     ld   [wDialogType], A                              ;; 00:3563 $ea $4a $d8
     push AF                                            ;; 00:3566 $f5
-    call call_00_374d                                  ;; 00:3567 $cd $4d $37
+    call getDialogTextInsertionPoint                   ;; 00:3567 $cd $4d $37
     pop  AF                                            ;; 00:356a $f1
     push BC                                            ;; 00:356b $c5
     push DE                                            ;; 00:356c $d5
     call call_00_3087                                  ;; 00:356d $cd $87 $30
     pop  DE                                            ;; 00:3570 $d1
     pop  BC                                            ;; 00:3571 $c1
-    call call_00_3736                                  ;; 00:3572 $cd $36 $37
+    call setDialogTextInsertionPoint                   ;; 00:3572 $cd $36 $37
     call call_00_3c73                                  ;; 00:3575 $cd $73 $3c
     pop  HL                                            ;; 00:3578 $e1
     call startDialog                                   ;; 00:3579 $cd $d0 $36
@@ -8575,7 +8583,7 @@ textCtrlCodeNewline:
     call call_00_3c87                                  ;; 00:35b0 $cd $87 $3c
     call call_00_380b                                  ;; 00:35b3 $cd $0b $38
     call call_00_3c73                                  ;; 00:35b6 $cd $73 $3c
-    call call_00_3736                                  ;; 00:35b9 $cd $36 $37
+    call setDialogTextInsertionPoint                   ;; 00:35b9 $cd $36 $37
     pop  HL                                            ;; 00:35bc $e1
     call startDialog                                   ;; 00:35bd $cd $d0 $36
     ret                                                ;; 00:35c0 $c9
@@ -8613,7 +8621,7 @@ textCtrlCodeMoveInsertionPointDown:
     dec  B                                             ;; 00:35e3 $05
 
 jr_00_35e4:
-    call call_00_3736                                  ;; 00:35e4 $cd $36 $37
+    call setDialogTextInsertionPoint                   ;; 00:35e4 $cd $36 $37
     call call_00_3c73                                  ;; 00:35e7 $cd $73 $3c
     pop  HL                                            ;; 00:35ea $e1
     call startDialog                                   ;; 00:35eb $cd $d0 $36
@@ -8757,7 +8765,7 @@ jr_00_36a8:
     ld   A, [wD89A]                                    ;; 00:36b4 $fa $9a $d8
     ld   C, A                                          ;; 00:36b7 $4f
     ld   DE, $201                                      ;; 00:36b8 $11 $01 $02
-    call call_00_3736                                  ;; 00:36bb $cd $36 $37
+    call setDialogTextInsertionPoint                   ;; 00:36bb $cd $36 $37
     call call_00_3c73                                  ;; 00:36be $cd $73 $3c
     ret                                                ;; 00:36c1 $c9
 
@@ -8838,31 +8846,31 @@ getNextScriptInstruction:
     pop  AF                                            ;; 00:3734 $f1
     ret                                                ;; 00:3735 $c9
 
-call_00_3736:
+setDialogTextInsertionPoint:
     ld   A, [wDialogType]                              ;; 00:3736 $fa $4a $d8
     cp   A, $06                                        ;; 00:3739 $fe $06
     ret  NZ                                            ;; 00:373b $c0
     ld   A, D                                          ;; 00:373c $7a
-    ld   [wD8B9], A                                    ;; 00:373d $ea $b9 $d8
+    ld   [wWindowTextInsertionPointY], A               ;; 00:373d $ea $b9 $d8
     ld   A, E                                          ;; 00:3740 $7b
-    ld   [wD8B8], A                                    ;; 00:3741 $ea $b8 $d8
+    ld   [wWindowTextInsertionPointX], A               ;; 00:3741 $ea $b8 $d8
     ld   A, B                                          ;; 00:3744 $78
-    ld   [wD8BB], A                                    ;; 00:3745 $ea $bb $d8
+    ld   [wWindowTextLinesLeft], A                     ;; 00:3745 $ea $bb $d8
     ld   A, C                                          ;; 00:3748 $79
-    ld   [wD8BA], A                                    ;; 00:3749 $ea $ba $d8
+    ld   [wWindowTextSpaceLeftOnLine], A               ;; 00:3749 $ea $ba $d8
     ret                                                ;; 00:374c $c9
 
-call_00_374d:
+getDialogTextInsertionPoint:
     ld   A, [wDialogType]                              ;; 00:374d $fa $4a $d8
     cp   A, $06                                        ;; 00:3750 $fe $06
     ret  NZ                                            ;; 00:3752 $c0
-    ld   A, [wD8B9]                                    ;; 00:3753 $fa $b9 $d8
+    ld   A, [wWindowTextInsertionPointY]               ;; 00:3753 $fa $b9 $d8
     ld   D, A                                          ;; 00:3756 $57
-    ld   A, [wD8B8]                                    ;; 00:3757 $fa $b8 $d8
+    ld   A, [wWindowTextInsertionPointX]               ;; 00:3757 $fa $b8 $d8
     ld   E, A                                          ;; 00:375a $5f
-    ld   A, [wD8BB]                                    ;; 00:375b $fa $bb $d8
+    ld   A, [wWindowTextLinesLeft]                     ;; 00:375b $fa $bb $d8
     ld   B, A                                          ;; 00:375e $47
-    ld   A, [wD8BA]                                    ;; 00:375f $fa $ba $d8
+    ld   A, [wWindowTextSpaceLeftOnLine]               ;; 00:375f $fa $ba $d8
     ld   C, A                                          ;; 00:3762 $4f
     ret                                                ;; 00:3763 $c9
     db   $d5, $3e, $7f, $15, $cd, $44, $38, $14        ;; 00:3764 ????????
@@ -8871,10 +8879,10 @@ call_00_374d:
 
 ; Draw text
 ; HL = pointer to text
-; DE = position on the open dialog
+; DE = position on the open window (overridden for the dialog window)
 ; B = size of text to draw (but not always?, whole interaction is more complex)
 drawText:
-    call call_00_374d                                  ;; 00:3777 $cd $4d $37
+    call getDialogTextInsertionPoint                   ;; 00:3777 $cd $4d $37
 .jr_00_377a:
     push AF                                            ;; 00:377a $f5
     ld   A, [HL+]                                      ;; 00:377b $2a
@@ -8902,7 +8910,7 @@ drawText:
 .jr_00_37a1:
     pop  AF                                            ;; 00:37a1 $f1
     jr   NZ, .jr_00_37b8                               ;; 00:37a2 $20 $14
-    ld   A, [wD874]                                    ;; 00:37a4 $fa $74 $d8
+    ld   A, [wWindowFlags]                             ;; 00:37a4 $fa $74 $d8
     bit  1, A                                          ;; 00:37a7 $cb $4f
     jr   NZ, .jr_00_37d4                               ;; 00:37a9 $20 $29
     push HL                                            ;; 00:37ab $e5
@@ -8928,13 +8936,13 @@ drawText:
     call NZ, call_00_380b                              ;; 00:37c9 $c4 $0b $38
     xor  A, A                                          ;; 00:37cc $af
     ld   [wD883], A                                    ;; 00:37cd $ea $83 $d8
-    call call_00_3736                                  ;; 00:37d0 $cd $36 $37
+    call setDialogTextInsertionPoint                   ;; 00:37d0 $cd $36 $37
     ret                                                ;; 00:37d3 $c9
 .jr_00_37d4:
     inc  E                                             ;; 00:37d4 $1c
     dec  B                                             ;; 00:37d5 $05
     push AF                                            ;; 00:37d6 $f5
-    call call_00_3736                                  ;; 00:37d7 $cd $36 $37
+    call setDialogTextInsertionPoint                   ;; 00:37d7 $cd $36 $37
     pop  AF                                            ;; 00:37da $f1
     ret                                                ;; 00:37db $c9
 .jp_00_37dc:
@@ -8942,7 +8950,7 @@ drawText:
     ld   [wD8C6], A                                    ;; 00:37dd $ea $c6 $d8
     ld   A, E                                          ;; 00:37e0 $7b
     ld   [wD8C5], A                                    ;; 00:37e1 $ea $c5 $d8
-    call call_00_3736                                  ;; 00:37e4 $cd $36 $37
+    call setDialogTextInsertionPoint                   ;; 00:37e4 $cd $36 $37
     jr   Z, .jr_00_3804                                ;; 00:37e7 $28 $1b
     ld   A, [wDialogType]                              ;; 00:37e9 $fa $4a $d8
     cp   A, $11                                        ;; 00:37ec $fe $11
@@ -9275,7 +9283,7 @@ scriptOpCodeStartNameEntry:
     ld   [wDialogType], A                              ;; 00:39e0 $ea $4a $d8
     ld   A, $0f                                        ;; 00:39e3 $3e $0f
     ld   [wMainGameState], A                           ;; 00:39e5 $ea $a0 $c0
-    ld   HL, wD874                                     ;; 00:39e8 $21 $74 $d8
+    ld   HL, wWindowFlags                              ;; 00:39e8 $21 $74 $d8
     res  5, [HL]                                       ;; 00:39eb $cb $ae
     xor  A, A                                          ;; 00:39ed $af
     ld   [wD885], A                                    ;; 00:39ee $ea $85 $d8
@@ -9523,7 +9531,7 @@ scriptOpCodeRemoveEquipmentFromInventory:
 
 scriptOpCodeTextSpeedLockOn:
     push HL                                            ;; 00:3b50 $e5
-    ld   HL, wD874                                     ;; 00:3b51 $21 $74 $d8
+    ld   HL, wWindowFlags                              ;; 00:3b51 $21 $74 $d8
     set  1, [HL]                                       ;; 00:3b54 $cb $ce
     pop  HL                                            ;; 00:3b56 $e1
     call getNextScriptInstruction                      ;; 00:3b57 $cd $27 $37
@@ -9531,7 +9539,7 @@ scriptOpCodeTextSpeedLockOn:
 
 scriptOpCodeTextSpeedLockOff:
     push HL                                            ;; 00:3b5b $e5
-    ld   HL, wD874                                     ;; 00:3b5c $21 $74 $d8
+    ld   HL, wWindowFlags                              ;; 00:3b5c $21 $74 $d8
     res  1, [HL]                                       ;; 00:3b5f $cb $8e
     pop  HL                                            ;; 00:3b61 $e1
     call getNextScriptInstruction                      ;; 00:3b62 $cd $27 $37

@@ -14,12 +14,12 @@ SECTION "bank03", ROMX[$4000], BANK[$03]
     call_to_bank_target call_03_44ed                   ;; 03:4008 pP
     call_to_bank_target call_03_444a                   ;; 03:400a pP
     call_to_bank_target call_03_455d                   ;; 03:400c ??
-    call_to_bank_target call_03_4641                   ;; 03:400e pP
+    call_to_bank_target enemyCollisionHandling         ;; 03:400e pP
     call_to_bank_target call_03_4561                   ;; 03:4010 pP
     call_to_bank_target damageNpc                      ;; 03:4012 ??
     call_to_bank_target call_03_4b70                   ;; 03:4014 pP
     call_to_bank_target call_03_4aed                   ;; 03:4016 pP
-    call_to_bank_target call_03_4af1                   ;; 03:4018 pP
+    call_to_bank_target updateObjectPosition_3         ;; 03:4018 pP
     call_to_bank_target call_03_4af9                   ;; 03:401a pP
     call_to_bank_target call_03_4b4f                   ;; 03:401c pP
     call_to_bank_target giveFollower                   ;; 03:401e pP
@@ -28,10 +28,10 @@ SECTION "bank03", ROMX[$4000], BANK[$03]
     call_to_bank_target call_03_4b62                   ;; 03:4024 pP
     call_to_bank_target call_03_4c30                   ;; 03:4026 pP
     call_to_bank_target call_03_4c38                   ;; 03:4028 pP
-    call_to_bank_target call_03_4a81                   ;; 03:402a pP
+    call_to_bank_target getNpcScriptIndex              ;; 03:402a pP
 
 call_03_402c:
-    ld   HL, wC4E0                                     ;; 03:402c $21 $e0 $c4
+    ld   HL, wNpcRuntimeData                           ;; 03:402c $21 $e0 $c4
     ld   B, $08                                        ;; 03:402f $06 $08
     ld   C, $18                                        ;; 03:4031 $0e $18
     push BC                                            ;; 03:4033 $c5
@@ -472,7 +472,7 @@ call_03_425b:
 
 call_03_429b:
     ld   B, $08                                        ;; 03:429b $06 $08
-    ld   HL, wC4E0                                     ;; 03:429d $21 $e0 $c4
+    ld   HL, wNpcRuntimeData                           ;; 03:429d $21 $e0 $c4
     ld   DE, $18                                       ;; 03:42a0 $11 $18 $00
 .jr_03_42a3:
     cp   A, [HL]                                       ;; 03:42a3 $be
@@ -678,11 +678,11 @@ call_03_435f:
 giveFollower:
     ld   C, A                                          ;; 03:43c5 $4f
     push BC                                            ;; 03:43c6 $c5
-    ld   A, [wC4E0]                                    ;; 03:43c7 $fa $e0 $c4
+    ld   A, [wNpcRuntimeData]                          ;; 03:43c7 $fa $e0 $c4
     ld   C, A                                          ;; 03:43ca $4f
     call getObjectNearestTilePosition                  ;; 03:43cb $cd $ef $05
     push DE                                            ;; 03:43ce $d5
-    ld   A, [wC4E0]                                    ;; 03:43cf $fa $e0 $c4
+    ld   A, [wNpcRuntimeData]                          ;; 03:43cf $fa $e0 $c4
     ld   C, A                                          ;; 03:43d2 $4f
     call call_03_435f                                  ;; 03:43d3 $cd $5f $43
     pop  DE                                            ;; 03:43d6 $d1
@@ -1001,7 +1001,7 @@ call_03_4561:
     cp   A, $50                                        ;; 03:4568 $fe $50
     jr   Z, .jr_03_4571                                ;; 03:456a $28 $05
     ld   A, L                                          ;; 03:456c $7d
-    call call_03_4641                                  ;; 03:456d $cd $41 $46
+    call enemyCollisionHandling                        ;; 03:456d $cd $41 $46
     ret                                                ;; 03:4570 $c9
 .jr_03_4571:
     ld   A, $00                                        ;; 03:4571 $3e $00
@@ -1143,20 +1143,20 @@ call_03_4637:
     or   A, $f8                                        ;; 03:463e $f6 $f8
     ret                                                ;; 03:4640 $c9
 
-call_03_4641:
+enemyCollisionHandling:
     cp   A, $c9                                        ;; 03:4641 $fe $c9
-    jr   Z, .jr_03_4659                                ;; 03:4643 $28 $14
+    jr   Z, .player                                    ;; 03:4643 $28 $14
     and  A, $f0                                        ;; 03:4645 $e6 $f0
     cp   A, $40                                        ;; 03:4647 $fe $40
-    jp   Z, .jp_03_46f0                                ;; 03:4649 $ca $f0 $46
+    jp   Z, .weapon                                    ;; 03:4649 $ca $f0 $46
     cp   A, $30                                        ;; 03:464c $fe $30
     jp   Z, .jp_03_479d                                ;; 03:464e $ca $9d $47
     cp   A, $50                                        ;; 03:4651 $fe $50
-    jp   Z, .jp_03_474a                                ;; 03:4653 $ca $4a $47
+    jp   Z, .spell                                     ;; 03:4653 $ca $4a $47
 .jp_03_4656:
     ld   A, $00                                        ;; 03:4656 $3e $00
     ret                                                ;; 03:4658 $c9
-.jr_03_4659:
+.player:
     push BC                                            ;; 03:4659 $c5
     ld   A, [wMainGameState]                           ;; 03:465a $fa $a0 $c0
     cp   A, $02                                        ;; 03:465d $fe $02
@@ -1249,18 +1249,18 @@ call_03_4641:
     call playerHit_trampoline                          ;; 03:46ea $cd $56 $02
     ld   A, $c9                                        ;; 03:46ed $3e $c9
     ret                                                ;; 03:46ef $c9
-.jp_03_46f0:
+.weapon:
     call call_03_4906                                  ;; 03:46f0 $cd $06 $49
     jp   NZ, .jp_03_4656                               ;; 03:46f3 $c2 $56 $46
     call call_03_4931                                  ;; 03:46f6 $cd $31 $49
-    jp   NZ, call_03_4641.immune                       ;; 03:46f9 $c2 $eb $47
+    jp   NZ, enemyCollisionHandling.immune             ;; 03:46f9 $c2 $eb $47
     push BC                                            ;; 03:46fc $c5
     push DE                                            ;; 03:46fd $d5
     call getPlayerAttackElements                       ;; 03:46fe $cd $c0 $3d
     pop  DE                                            ;; 03:4701 $d1
     call testNpcElementalImmunity                      ;; 03:4702 $cd $55 $49
     pop  BC                                            ;; 03:4705 $c1
-    jp   NZ, call_03_4641.immune                       ;; 03:4706 $c2 $eb $47
+    jp   NZ, enemyCollisionHandling.immune             ;; 03:4706 $c2 $eb $47
     push BC                                            ;; 03:4709 $c5
     push DE                                            ;; 03:470a $d5
     ld   BC, $07                                       ;; 03:470b $01 $07 $00
@@ -1272,13 +1272,13 @@ call_03_4641:
     call call_03_499b                                  ;; 03:4719 $cd $9b $49
     pop  DE                                            ;; 03:471c $d1
     pop  BC                                            ;; 03:471d $c1
-    jp   Z, call_03_4641.immune                        ;; 03:471e $ca $eb $47
+    jp   Z, enemyCollisionHandling.immune              ;; 03:471e $ca $eb $47
     push BC                                            ;; 03:4721 $c5
     push DE                                            ;; 03:4722 $d5
     push HL                                            ;; 03:4723 $e5
     call getEquippedWeaponMinusOne                     ;; 03:4724 $cd $05 $3f
     cp   A, $08                                        ;; 03:4727 $fe $08
-    jr   NZ, call_03_4641.finishedBloodSwordHeal       ;; 03:4729 $20 $0d
+    jr   NZ, enemyCollisionHandling.finishedBloodSwordHeal ;; 03:4729 $20 $0d
     pop  HL                                            ;; 03:472b $e1
     push HL                                            ;; 03:472c $e5
     srl  H                                             ;; 03:472d $cb $3c
@@ -1300,7 +1300,7 @@ call_03_4641:
     pop  BC                                            ;; 03:4745 $c1
     call processHitNpc                                 ;; 03:4746 $cd $26 $4a
     ret                                                ;; 03:4749 $c9
-.jp_03_474a:
+.spell:
     call call_03_4906                                  ;; 03:474a $cd $06 $49
     jp   NZ, .jp_03_4656                               ;; 03:474d $c2 $56 $46
     call call_03_4931                                  ;; 03:4750 $cd $31 $49
@@ -1314,7 +1314,7 @@ call_03_4641:
     jr   Z, .jr_03_4777                                ;; 03:475f $28 $16
     cp   A, $12                                        ;; 03:4761 $fe $12
     jp   Z, .jp_03_47fd                                ;; 03:4763 $ca $fd $47
-    jp   call_03_4641.immune                           ;; 03:4766 $c3 $eb $47
+    jp   enemyCollisionHandling.immune                 ;; 03:4766 $c3 $eb $47
 .jr_03_4769:
     push BC                                            ;; 03:4769 $c5
     push DE                                            ;; 03:476a $d5
@@ -1323,7 +1323,7 @@ call_03_4641:
     pop  BC                                            ;; 03:476f $c1
     cp   A, $12                                        ;; 03:4770 $fe $12
     jp   Z, .jp_03_47fd                                ;; 03:4772 $ca $fd $47
-    jr   call_03_4641.immune                           ;; 03:4775 $18 $74
+    jr   enemyCollisionHandling.immune                 ;; 03:4775 $18 $74
 .jr_03_4777:
     push BC                                            ;; 03:4777 $c5
     push DE                                            ;; 03:4778 $d5
@@ -1336,7 +1336,7 @@ call_03_4641:
     call call_03_49c6                                  ;; 03:4787 $cd $c6 $49
     pop  DE                                            ;; 03:478a $d1
     pop  BC                                            ;; 03:478b $c1
-    jr   Z, call_03_4641.immune                        ;; 03:478c $28 $5d
+    jr   Z, enemyCollisionHandling.immune              ;; 03:478c $28 $5d
     push BC                                            ;; 03:478e $c5
     ld   B, H                                          ;; 03:478f $44
     ld   C, L                                          ;; 03:4790 $4d
@@ -1352,7 +1352,7 @@ call_03_4641:
     call call_03_4919                                  ;; 03:479d $cd $19 $49
     jp   NZ, .jp_03_4656                               ;; 03:47a0 $c2 $56 $46
     call call_03_4931                                  ;; 03:47a3 $cd $31 $49
-    jp   NZ, call_03_4641.immune                       ;; 03:47a6 $c2 $eb $47
+    jp   NZ, enemyCollisionHandling.immune             ;; 03:47a6 $c2 $eb $47
     push BC                                            ;; 03:47a9 $c5
     push DE                                            ;; 03:47aa $d5
     ld   A, B                                          ;; 03:47ab $78
@@ -1360,7 +1360,7 @@ call_03_4641:
     pop  DE                                            ;; 03:47af $d1
     call testNpcElementalImmunity                      ;; 03:47b0 $cd $55 $49
     pop  BC                                            ;; 03:47b3 $c1
-    jr   NZ, call_03_4641.immune                       ;; 03:47b4 $20 $35
+    jr   NZ, enemyCollisionHandling.immune             ;; 03:47b4 $20 $35
     push BC                                            ;; 03:47b6 $c5
     push DE                                            ;; 03:47b7 $d5
     ld   A, B                                          ;; 03:47b8 $78
@@ -1375,7 +1375,7 @@ call_03_4641:
     call sub_HL_DE                                     ;; 03:47c8 $cd $ab $2b
     pop  DE                                            ;; 03:47cb $d1
     pop  BC                                            ;; 03:47cc $c1
-    jr   C, call_03_4641.immune                        ;; 03:47cd $38 $1c
+    jr   C, enemyCollisionHandling.immune              ;; 03:47cd $38 $1c
     push BC                                            ;; 03:47cf $c5
     push DE                                            ;; 03:47d0 $d5
     ld   D, H                                          ;; 03:47d1 $54
@@ -1383,7 +1383,7 @@ call_03_4641:
     call add25rndHLtoDE_3                              ;; 03:47d3 $cd $f6 $49
     pop  DE                                            ;; 03:47d6 $d1
     pop  BC                                            ;; 03:47d7 $c1
-    jr   Z, call_03_4641.immune                        ;; 03:47d8 $28 $11
+    jr   Z, enemyCollisionHandling.immune              ;; 03:47d8 $28 $11
     push BC                                            ;; 03:47da $c5
     set  7, H                                          ;; 03:47db $cb $fc
     ld   B, H                                          ;; 03:47dd $44
@@ -1872,7 +1872,7 @@ processHitNpc:
     ld   A, $40                                        ;; 03:4a7e $3e $40
     ret                                                ;; 03:4a80 $c9
 
-call_03_4a81:
+getNpcScriptIndex:
     ld   A, $00                                        ;; 03:4a81 $3e $00
     ld   L, A                                          ;; 03:4a83 $6f
     add  A, L                                          ;; 03:4a84 $85
@@ -1882,7 +1882,7 @@ call_03_4a81:
     add  A, A                                          ;; 03:4a88 $87
     ld   L, A                                          ;; 03:4a89 $6f
     ld   H, $00                                        ;; 03:4a8a $26 $00
-    ld   DE, wC4E0                                     ;; 03:4a8c $11 $e0 $c4
+    ld   DE, wNpcRuntimeData                           ;; 03:4a8c $11 $e0 $c4
     add  HL, DE                                        ;; 03:4a8f $19
     ld   DE, $12                                       ;; 03:4a90 $11 $12 $00
     add  HL, DE                                        ;; 03:4a93 $19
@@ -1899,7 +1899,7 @@ call_03_4a81:
 call_03_4a9f:
     call getPlayerAttackElements                       ;; 03:4a9f $cd $c0 $3d
     ld   C, A                                          ;; 03:4aa2 $4f
-    ld   HL, wC4E0._10                                 ;; 03:4aa3 $21 $f0 $c4
+    ld   HL, wNpcRuntimeData._10                       ;; 03:4aa3 $21 $f0 $c4
     ld   B, $08                                        ;; 03:4aa6 $06 $08
 .jr_03_4aa8:
     push BC                                            ;; 03:4aa8 $c5
@@ -1923,7 +1923,7 @@ call_03_4a9f:
 call_03_4ac1:
     call getPlayerAttackElements                       ;; 03:4ac1 $cd $c0 $3d
     ld   C, A                                          ;; 03:4ac4 $4f
-    ld   HL, wC4E0._10                                 ;; 03:4ac5 $21 $f0 $c4
+    ld   HL, wNpcRuntimeData._10                       ;; 03:4ac5 $21 $f0 $c4
     ld   B, $08                                        ;; 03:4ac8 $06 $08
 .jr_03_4aca:
     push BC                                            ;; 03:4aca $c5
@@ -1958,7 +1958,7 @@ call_03_4aed:
     call call_00_08d4                                  ;; 03:4aed $cd $d4 $08
     ret                                                ;; 03:4af0 $c9
 
-call_03_4af1:
+updateObjectPosition_3:
     call updateObjectPosition                          ;; 03:4af1 $cd $11 $06
     ret                                                ;; 03:4af4 $c9
 
@@ -1977,7 +1977,7 @@ call_03_4af9:
     add  A, A                                          ;; 03:4b00 $87
     ld   L, A                                          ;; 03:4b01 $6f
     ld   H, $00                                        ;; 03:4b02 $26 $00
-    ld   DE, wC4E0                                     ;; 03:4b04 $11 $e0 $c4
+    ld   DE, wNpcRuntimeData                           ;; 03:4b04 $11 $e0 $c4
     add  HL, DE                                        ;; 03:4b07 $19
     ld   C, [HL]                                       ;; 03:4b08 $4e
     pop  DE                                            ;; 03:4b09 $d1
@@ -2072,7 +2072,7 @@ call_03_4b70:
     add  A, A                                          ;; 03:4b7b $87
     ld   L, A                                          ;; 03:4b7c $6f
     ld   H, $00                                        ;; 03:4b7d $26 $00
-    ld   DE, wC4E0                                     ;; 03:4b7f $11 $e0 $c4
+    ld   DE, wNpcRuntimeData                           ;; 03:4b7f $11 $e0 $c4
     add  HL, DE                                        ;; 03:4b82 $19
     ld   D, H                                          ;; 03:4b83 $54
     ld   E, L                                          ;; 03:4b84 $5d
@@ -2137,7 +2137,7 @@ call_03_4b70:
     ret                                                ;; 03:4bdf $c9
 
 call_03_4be0:
-    ld   HL, wC4E0                                     ;; 03:4be0 $21 $e0 $c4
+    ld   HL, wNpcRuntimeData                           ;; 03:4be0 $21 $e0 $c4
     ld   DE, $18                                       ;; 03:4be3 $11 $18 $00
     ld   B, $08                                        ;; 03:4be6 $06 $08
     ld   C, $00                                        ;; 03:4be8 $0e $00
