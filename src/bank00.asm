@@ -318,7 +318,7 @@ clearPlayerDamaged:
     ret                                                ;; 00:0275 $c9
 
 setGameStateSpecialAttack:
-    call call_00_0262                                  ;; 00:0276 $cd $62 $02
+    call clearPlayerDamaged                            ;; 00:0276 $cd $62 $02
     ld   A, $05                                        ;; 00:0279 $3e $05
     ld   [wMainGameState], A                           ;; 00:027b $ea $a0 $c0
     ret                                                ;; 00:027e $c9
@@ -632,10 +632,10 @@ call_00_0429:
     jp_to_bank 02, call_02_43dd                        ;; 00:0429 $f5 $3e $06 $c3 $06 $1f
 
 hideSpritesBehindWindow_trampoline:
-    jp_to_bank 02, call_02_442b                        ;; 00:042f $f5 $3e $04 $c3 $06 $1f
+    jp_to_bank 02, hideSpritesBehindWindow             ;; 00:042f $f5 $3e $04 $c3 $06 $1f
 
 showSpritesBehindWindow_trampoline:
-    jp_to_bank 02, call_02_4469                        ;; 00:0435 $f5 $3e $05 $c3 $06 $1f
+    jp_to_bank 02, showSpritesBehindWindow             ;; 00:0435 $f5 $3e $05 $c3 $06 $1f
 
 call_00_043b:
     ld   A, [wD3E8]                                    ;; 00:043b $fa $e8 $d3
@@ -709,7 +709,7 @@ scrollRoom_trampoline:
     jp_to_bank 01, scrollRoom                          ;; 00:049e $f5 $3e $18 $c3 $d7 $1e
 
 drawRoom_trampoline:
-    jp_to_bank 01, call_01_471d                        ;; 00:04a4 $f5 $3e $19 $c3 $d7 $1e
+    jp_to_bank 01, drawRoom                            ;; 00:04a4 $f5 $3e $19 $c3 $d7 $1e
 
 call_00_04aa:
     ld   A, [wD3E8]                                    ;; 00:04aa $fa $e8 $d3
@@ -756,7 +756,7 @@ call_00_04f4:
 call_00_04fa:
     ld   A, $ff                                        ;; 00:04fa $3e $ff
     ld   [wD3E8], A                                    ;; 00:04fc $ea $e8 $d3
-    ld   HL, wD442                                     ;; 00:04ff $21 $42 $d4
+    ld   HL, wbossObjectsRuntimeData                   ;; 00:04ff $21 $42 $d4
     ld   DE, $06                                       ;; 00:0502 $11 $06 $00
     ld   B, $0e                                        ;; 00:0505 $06 $0e
 .jr_00_0507:
@@ -768,7 +768,7 @@ call_00_04fa:
     db   $21, $00, $00, $c9                            ;; 00:050d ????
 
 bossCollisionHandling_trampoline:
-    jp_to_bank 04, call_04_4446                        ;; 00:0511 $f5 $3e $05 $c3 $64 $1f
+    jp_to_bank 04, bossCollisionHandling               ;; 00:0511 $f5 $3e $05 $c3 $64 $1f
 
 call_00_0517:
     jp_to_bank 04, call_04_4735                        ;; 00:0517 $f5 $3e $04 $c3 $64 $1f
@@ -1012,7 +1012,7 @@ updateObjectPosition:
     pop  HL                                            ;; 00:064d $e1
     ld   A, B                                          ;; 00:064e $78
     cp   A, $ff                                        ;; 00:064f $fe $ff
-    call NZ, call_00_088a                              ;; 00:0651 $c4 $8a $08
+    call NZ, setMetaspriteForObject                    ;; 00:0651 $c4 $8a $08
     pop  DE                                            ;; 00:0654 $d1
     ld   BC, $04                                       ;; 00:0655 $01 $04 $00
     add  HL, BC                                        ;; 00:0658 $09
@@ -1084,7 +1084,7 @@ call_00_0695:
     bit  7, A                                          ;; 00:06ad $cb $7f
     jr   NZ, .jr_00_06df                               ;; 00:06af $20 $2e
     push HL                                            ;; 00:06b1 $e5
-    ld   A, [wC0A1]                                    ;; 00:06b2 $fa $a1 $c0
+    ld   A, [wMainGameStateFlags]                      ;; 00:06b2 $fa $a1 $c0
     bit  3, A                                          ;; 00:06b5 $cb $5f
     jr   NZ, .jr_00_06d8                               ;; 00:06b7 $20 $1f
     ld   BC, $0a                                       ;; 00:06b9 $01 $0a $00
@@ -1117,7 +1117,7 @@ call_00_0695:
 .jr_00_06df:
     ld   C, A                                          ;; 00:06df $4f
     ld   B, [HL]                                       ;; 00:06e0 $46
-    ld   A, [wC0A1]                                    ;; 00:06e1 $fa $a1 $c0
+    ld   A, [wMainGameStateFlags]                      ;; 00:06e1 $fa $a1 $c0
     bit  0, A                                          ;; 00:06e4 $cb $47
     jr   NZ, .jr_00_06ef                               ;; 00:06e6 $20 $07
     ld   [HL], C                                       ;; 00:06e8 $71
@@ -1143,7 +1143,7 @@ call_00_0695:
     jp   NZ, .jp_00_07ab                               ;; 00:0706 $c2 $ab $07
     ld   D, B                                          ;; 00:0709 $50
     ld   E, $00                                        ;; 00:070a $1e $00
-    ld   A, [wC0A1]                                    ;; 00:070c $fa $a1 $c0
+    ld   A, [wMainGameStateFlags]                      ;; 00:070c $fa $a1 $c0
     bit  3, A                                          ;; 00:070f $cb $5f
     jp   NZ, .jp_00_073b                               ;; 00:0711 $c2 $3b $07
     push HL                                            ;; 00:0714 $e5
@@ -1172,7 +1172,7 @@ call_00_0695:
 .jr_00_073f:
     ld   E, B                                          ;; 00:073f $58
     ld   D, $00                                        ;; 00:0740 $16 $00
-    ld   A, [wC0A1]                                    ;; 00:0742 $fa $a1 $c0
+    ld   A, [wMainGameStateFlags]                      ;; 00:0742 $fa $a1 $c0
     bit  3, A                                          ;; 00:0745 $cb $5f
     jr   NZ, .jr_00_0770                               ;; 00:0747 $20 $27
     push HL                                            ;; 00:0749 $e5
@@ -1204,7 +1204,7 @@ call_00_0695:
     inc  A                                             ;; 00:0776 $3c
     ld   E, A                                          ;; 00:0777 $5f
     ld   D, $00                                        ;; 00:0778 $16 $00
-    ld   A, [wC0A1]                                    ;; 00:077a $fa $a1 $c0
+    ld   A, [wMainGameStateFlags]                      ;; 00:077a $fa $a1 $c0
     bit  3, A                                          ;; 00:077d $cb $5f
     jr   NZ, .jr_00_07a7                               ;; 00:077f $20 $26
     push HL                                            ;; 00:0781 $e5
@@ -1236,7 +1236,7 @@ call_00_0695:
     inc  A                                             ;; 00:07ad $3c
     ld   D, A                                          ;; 00:07ae $57
     ld   E, $00                                        ;; 00:07af $1e $00
-    ld   A, [wC0A1]                                    ;; 00:07b1 $fa $a1 $c0
+    ld   A, [wMainGameStateFlags]                      ;; 00:07b1 $fa $a1 $c0
     bit  3, A                                          ;; 00:07b4 $cb $5f
     jr   NZ, .jr_00_07dc                               ;; 00:07b6 $20 $24
     push HL                                            ;; 00:07b8 $e5
@@ -1271,7 +1271,7 @@ call_00_0695:
     ld   [HL], $00                                     ;; 00:07e7 $36 $00
     pop  HL                                            ;; 00:07e9 $e1
     res  7, [HL]                                       ;; 00:07ea $cb $be
-    ld   A, [wC0A1]                                    ;; 00:07ec $fa $a1 $c0
+    ld   A, [wMainGameStateFlags]                      ;; 00:07ec $fa $a1 $c0
     bit  1, A                                          ;; 00:07ef $cb $4f
     jr   NZ, .jp_00_0803                               ;; 00:07f1 $20 $10
     ld   A, B                                          ;; 00:07f3 $78
@@ -1286,16 +1286,16 @@ call_00_0695:
     call Z, call_00_02c9                               ;; 00:0800 $cc $c9 $02
 .jp_00_0803:
     ld   DE, $00                                       ;; 00:0803 $11 $00 $00
-    ld   A, [wC0A1]                                    ;; 00:0806 $fa $a1 $c0
+    ld   A, [wMainGameStateFlags]                      ;; 00:0806 $fa $a1 $c0
     push AF                                            ;; 00:0809 $f5
     set  1, A                                          ;; 00:080a $cb $cf
-    ld   [wC0A1], A                                    ;; 00:080c $ea $a1 $c0
+    ld   [wMainGameStateFlags], A                      ;; 00:080c $ea $a1 $c0
     call call_00_0961                                  ;; 00:080f $cd $61 $09
-    ld   A, [wC0A2]                                    ;; 00:0812 $fa $a2 $c0
+    ld   A, [wMainGameStateFlags.nextFrame]            ;; 00:0812 $fa $a2 $c0
     ld   C, A                                          ;; 00:0815 $4f
     pop  AF                                            ;; 00:0816 $f1
     or   A, C                                          ;; 00:0817 $b1
-    ld   [wC0A1], A                                    ;; 00:0818 $ea $a1 $c0
+    ld   [wMainGameStateFlags], A                      ;; 00:0818 $ea $a1 $c0
     xor  A, A                                          ;; 00:081b $af
     ret                                                ;; 00:081c $c9
 
@@ -1315,7 +1315,7 @@ call_00_0828:
     call NZ, call_00_29e4                              ;; 00:082c $c4 $e4 $29
     and  A, $0f                                        ;; 00:082f $e6 $0f
     ld   D, A                                          ;; 00:0831 $57
-    ld   A, [wC0A1]                                    ;; 00:0832 $fa $a1 $c0
+    ld   A, [wMainGameStateFlags]                      ;; 00:0832 $fa $a1 $c0
     bit  3, A                                          ;; 00:0835 $cb $5f
     jr   NZ, .jr_00_085d                               ;; 00:0837 $20 $24
     push DE                                            ;; 00:0839 $d5
@@ -1332,7 +1332,7 @@ call_00_0828:
     srl  A                                             ;; 00:084a $cb $3f
     srl  A                                             ;; 00:084c $cb $3f
     ld   E, A                                          ;; 00:084e $5f
-    call call_00_16af                                  ;; 00:084f $cd $af $16
+    call getRoomMetaTileAttributes                     ;; 00:084f $cd $af $16
     ld   DE, $800                                      ;; 00:0852 $11 $00 $08
     call HLandDE                                       ;; 00:0855 $cd $b2 $29
     pop  DE                                            ;; 00:0858 $d1
@@ -1368,7 +1368,7 @@ call_00_0828:
     ld   E, L                                          ;; 00:0883 $5d
     ld   D, H                                          ;; 00:0884 $54
     pop  HL                                            ;; 00:0885 $e1
-    call call_00_088a                                  ;; 00:0886 $cd $8a $08
+    call setMetaspriteForObject                        ;; 00:0886 $cd $8a $08
     ret                                                ;; 00:0889 $c9
 
 ; HL = object base address (c2X0)
@@ -1470,10 +1470,10 @@ call_00_08d4:
     pop  BC                                            ;; 00:090e $c1
     pop  HL                                            ;; 00:090f $e1
     push BC                                            ;; 00:0910 $c5
-    call call_00_088a                                  ;; 00:0911 $cd $8a $08
+    call setMetaspriteForObject                        ;; 00:0911 $cd $8a $08
     pop  BC                                            ;; 00:0914 $c1
     pop  DE                                            ;; 00:0915 $d1
-    ld   A, [wC0A1]                                    ;; 00:0916 $fa $a1 $c0
+    ld   A, [wMainGameStateFlags]                      ;; 00:0916 $fa $a1 $c0
     bit  3, A                                          ;; 00:0919 $cb $5f
     jr   NZ, .jr_00_0944                               ;; 00:091b $20 $27
     push DE                                            ;; 00:091d $d5
@@ -1501,22 +1501,22 @@ call_00_08d4:
     ld   A, B                                          ;; 00:0937 $78
     call call_00_18dd                                  ;; 00:0938 $cd $dd $18
     jr   Z, .jr_00_095c                                ;; 00:093b $28 $1f
-    call tileAttack_trampoline                         ;; 00:093d $cd $76 $2f
+    call attackTile_trampoline                         ;; 00:093d $cd $76 $2f
     pop  BC                                            ;; 00:0940 $c1
     pop  DE                                            ;; 00:0941 $d1
     pop  HL                                            ;; 00:0942 $e1
     pop  DE                                            ;; 00:0943 $d1
 .jr_00_0944:
-    ld   A, [wC0A1]                                    ;; 00:0944 $fa $a1 $c0
+    ld   A, [wMainGameStateFlags]                      ;; 00:0944 $fa $a1 $c0
     push AF                                            ;; 00:0947 $f5
     set  1, A                                          ;; 00:0948 $cb $cf
-    ld   [wC0A1], A                                    ;; 00:094a $ea $a1 $c0
+    ld   [wMainGameStateFlags], A                      ;; 00:094a $ea $a1 $c0
     call call_00_0961                                  ;; 00:094d $cd $61 $09
-    ld   A, [wC0A2]                                    ;; 00:0950 $fa $a2 $c0
+    ld   A, [wMainGameStateFlags.nextFrame]            ;; 00:0950 $fa $a2 $c0
     ld   C, A                                          ;; 00:0953 $4f
     pop  AF                                            ;; 00:0954 $f1
     or   A, C                                          ;; 00:0955 $b1
-    ld   [wC0A1], A                                    ;; 00:0956 $ea $a1 $c0
+    ld   [wMainGameStateFlags], A                      ;; 00:0956 $ea $a1 $c0
     xor  A, A                                          ;; 00:0959 $af
     inc  A                                             ;; 00:095a $3c
     ret                                                ;; 00:095b $c9
@@ -1539,7 +1539,7 @@ call_00_0961:
     add  A, E                                          ;; 00:096b $83
     ld   E, A                                          ;; 00:096c $5f
     pop  BC                                            ;; 00:096d $c1
-    ld   A, [wC0A1]                                    ;; 00:096e $fa $a1 $c0
+    ld   A, [wMainGameStateFlags]                      ;; 00:096e $fa $a1 $c0
     bit  2, A                                          ;; 00:0971 $cb $57
     jr   NZ, .jr_00_099f                               ;; 00:0973 $20 $2a
     push BC                                            ;; 00:0975 $c5
@@ -1665,7 +1665,7 @@ call_00_0961:
 .jr_00_0a19:
     ld   A, $01                                        ;; 00:0a19 $3e $01
 .jr_00_0a1b:
-    ld   HL, wC0A1                                     ;; 00:0a1b $21 $a1 $c0
+    ld   HL, wMainGameStateFlags                       ;; 00:0a1b $21 $a1 $c0
     bit  1, [HL]                                       ;; 00:0a1e $cb $4e
     jr   NZ, .jr_00_0a25                               ;; 00:0a20 $20 $03
     call call_00_1815                                  ;; 00:0a22 $cd $15 $18
@@ -1688,11 +1688,11 @@ call_00_0a33:
     cp   A, $c0                                        ;; 00:0a36 $fe $c0
     jr   Z, .player                                    ;; 00:0a38 $28 $21
     cp   A, $40                                        ;; 00:0a3a $fe $40
-    jr   Z, .playerAttack                              ;; 00:0a3c $28 $22
+    jr   Z, .playerOrFollowerAttack                    ;; 00:0a3c $28 $22
     cp   A, $30                                        ;; 00:0a3e $fe $30
-    jr   Z, .playerAttack                              ;; 00:0a40 $28 $1e
+    jr   Z, .playerOrFollowerAttack                    ;; 00:0a40 $28 $1e
     cp   A, $50                                        ;; 00:0a42 $fe $50
-    jr   Z, .playerAttack                              ;; 00:0a44 $28 $1a
+    jr   Z, .playerOrFollowerAttack                    ;; 00:0a44 $28 $1a
     cp   A, $90                                        ;; 00:0a46 $fe $90
     jr   Z, .enemy                                     ;; 00:0a48 $28 $1b
     cp   A, $a0                                        ;; 00:0a4a $fe $a0
@@ -1769,7 +1769,7 @@ createObject:
     pop  HL                                            ;; 00:0aa4 $e1
     push BC                                            ;; 00:0aa5 $c5
     ld   DE, $09                                       ;; 00:0aa6 $11 $09 $00
-    call call_00_088a                                  ;; 00:0aa9 $cd $8a $08
+    call setMetaspriteForObject                        ;; 00:0aa9 $cd $8a $08
     pop  BC                                            ;; 00:0aac $c1
     pop  DE                                            ;; 00:0aad $d1
     ld   A, D                                          ;; 00:0aae $7a
@@ -1784,10 +1784,10 @@ createObject:
     add  A, A                                          ;; 00:0ab9 $87
     add  A, A                                          ;; 00:0aba $87
     ld   E, A                                          ;; 00:0abb $5f
-    ld   A, [wC0A1]                                    ;; 00:0abc $fa $a1 $c0
+    ld   A, [wMainGameStateFlags]                      ;; 00:0abc $fa $a1 $c0
     push AF                                            ;; 00:0abf $f5
     set  1, A                                          ;; 00:0ac0 $cb $cf
-    ld   [wC0A1], A                                    ;; 00:0ac2 $ea $a1 $c0
+    ld   [wMainGameStateFlags], A                      ;; 00:0ac2 $ea $a1 $c0
     push BC                                            ;; 00:0ac5 $c5
     call call_00_0961                                  ;; 00:0ac6 $cd $61 $09
     pop  BC                                            ;; 00:0ac9 $c1
@@ -1796,7 +1796,7 @@ createObject:
     sub  A, B                                          ;; 00:0ace $90
     ld   C, A                                          ;; 00:0acf $4f
     pop  AF                                            ;; 00:0ad0 $f1
-    ld   [wC0A1], A                                    ;; 00:0ad1 $ea $a1 $c0
+    ld   [wMainGameStateFlags], A                      ;; 00:0ad1 $ea $a1 $c0
     ld   A, C                                          ;; 00:0ad4 $79
     ret                                                ;; 00:0ad5 $c9
 .jr_00_0ad6:
@@ -1804,7 +1804,7 @@ createObject:
     ld   C, A                                          ;; 00:0ad7 $4f
     call call_00_0ae3                                  ;; 00:0ad8 $cd $e3 $0a
     pop  AF                                            ;; 00:0adb $f1
-    ld   [wC0A1], A                                    ;; 00:0adc $ea $a1 $c0
+    ld   [wMainGameStateFlags], A                      ;; 00:0adc $ea $a1 $c0
     ld   A, $ff                                        ;; 00:0adf $3e $ff
     ld   C, A                                          ;; 00:0ae1 $4f
     ret                                                ;; 00:0ae2 $c9
@@ -2029,7 +2029,7 @@ call_00_0c0c:
     add  A, A                                          ;; 00:0c1e $87
     xor  A, C                                          ;; 00:0c1f $a9
     ld   C, A                                          ;; 00:0c20 $4f
-    ld   A, [wC0A1]                                    ;; 00:0c21 $fa $a1 $c0
+    ld   A, [wMainGameStateFlags]                      ;; 00:0c21 $fa $a1 $c0
     bit  0, A                                          ;; 00:0c24 $cb $47
     jr   Z, .jr_00_0c2a                                ;; 00:0c26 $28 $02
     ld   C, $00                                        ;; 00:0c28 $0e $00
@@ -2344,7 +2344,7 @@ scriptOpCodeWaitMapClose:
     ret                                                ;; 00:0de5 $c9
 
 call_00_0de6:
-    ld   A, [wD4A0]                                    ;; 00:0de6 $fa $a0 $d4
+    ld   A, [wMapTableBankNrTmp]                       ;; 00:0de6 $fa $a0 $d4
     call pushBankNrAndSwitch                           ;; 00:0de9 $cd $fb $29
     ld   A, [wMapNumberTmp]                            ;; 00:0dec $fa $9d $d4
     ld   D, A                                          ;; 00:0def $57
@@ -2354,7 +2354,7 @@ call_00_0de6:
     ld   C, $08                                        ;; 00:0df4 $0e $08
 .jr_00_0df6:
     push BC                                            ;; 00:0df6 $c5
-    call call_00_21f6                                  ;; 00:0df7 $cd $f6 $21
+    call checkRoomVisited                              ;; 00:0df7 $cd $f6 $21
     call Z, drawMinimapRoomTile                        ;; 00:0dfa $cc $0f $0e
     inc  E                                             ;; 00:0dfd $1c
     pop  BC                                            ;; 00:0dfe $c1
@@ -2411,7 +2411,7 @@ call_00_0e44:
     push DE                                            ;; 00:0e44 $d5
     ld   L, D                                          ;; 00:0e45 $6a
     ld   H, $00                                        ;; 00:0e46 $26 $00
-    ld   A, [wD49F]                                    ;; 00:0e48 $fa $9f $d4
+    ld   A, [wMapWidthTmp]                             ;; 00:0e48 $fa $9f $d4
     call MultiplyHL_by_A                               ;; 00:0e4b $cd $7b $2b
     pop  DE                                            ;; 00:0e4e $d1
     ld   D, $00                                        ;; 00:0e4f $16 $00
@@ -2507,8 +2507,8 @@ specialEffectMetatileTable:
 
 ;@jumptable amount=2
 specialEffectJumptable:
-    dw   call_00_0ece                                  ;; 00:0eca ??
-    dw   call_00_0eef                                  ;; 00:0ecc ??
+    dw   specialEffectInit                             ;; 00:0eca ??
+    dw   specialEffectAnimate                          ;; 00:0ecc ??
 
 specialEffectInit:
     ld   H, D                                          ;; 00:0ece $62
@@ -2585,7 +2585,7 @@ scriptOpCodeScrollRoomLeft:
     call call_00_0232                                  ;; 00:0f31 $cd $32 $02
     ld   D, $04                                        ;; 00:0f34 $16 $04
     ld   A, $01                                        ;; 00:0f36 $3e $01
-    call call_00_049e                                  ;; 00:0f38 $cd $9e $04
+    call scrollRoom_trampoline                         ;; 00:0f38 $cd $9e $04
     pop  HL                                            ;; 00:0f3b $e1
     cp   A, $00                                        ;; 00:0f3c $fe $00
     ret  NZ                                            ;; 00:0f3e $c0
@@ -2599,7 +2599,7 @@ scriptOpCodeScrollRoomRight:
     call call_00_0232                                  ;; 00:0f48 $cd $32 $02
     ld   D, $04                                        ;; 00:0f4b $16 $04
     ld   A, $02                                        ;; 00:0f4d $3e $02
-    call call_00_049e                                  ;; 00:0f4f $cd $9e $04
+    call scrollRoom_trampoline                         ;; 00:0f4f $cd $9e $04
     pop  HL                                            ;; 00:0f52 $e1
     cp   A, $00                                        ;; 00:0f53 $fe $00
     ret  NZ                                            ;; 00:0f55 $c0
@@ -2613,7 +2613,7 @@ scriptOpCodeScrollRoomDown:
     call call_00_0232                                  ;; 00:0f5f $cd $32 $02
     ld   D, $04                                        ;; 00:0f62 $16 $04
     ld   A, $04                                        ;; 00:0f64 $3e $04
-    call call_00_049e                                  ;; 00:0f66 $cd $9e $04
+    call scrollRoom_trampoline                         ;; 00:0f66 $cd $9e $04
     pop  HL                                            ;; 00:0f69 $e1
     cp   A, $00                                        ;; 00:0f6a $fe $00
     ret  NZ                                            ;; 00:0f6c $c0
@@ -2627,7 +2627,7 @@ scriptOpCodeScrollRoomUp:
     call call_00_0232                                  ;; 00:0f76 $cd $32 $02
     ld   D, $04                                        ;; 00:0f79 $16 $04
     ld   A, $08                                        ;; 00:0f7b $3e $08
-    call call_00_049e                                  ;; 00:0f7d $cd $9e $04
+    call scrollRoom_trampoline                         ;; 00:0f7d $cd $9e $04
     pop  HL                                            ;; 00:0f80 $e1
     cp   A, $00                                        ;; 00:0f81 $fe $00
     ret  NZ                                            ;; 00:0f83 $c0
@@ -2765,7 +2765,7 @@ scriptOpCodeFadeToBlack:
     ld   [wVideoOBP0], A                               ;; 00:1070 $ea $ab $c0
     ld   [wVideoOBP1], A                               ;; 00:1073 $ea $ac $c0
     pop  HL                                            ;; 00:1076 $e1
-    call call_00_1142                                  ;; 00:1077 $cd $42 $11
+    call fadeEffectAdjustCounters                      ;; 00:1077 $cd $42 $11
     ret                                                ;; 00:107a $c9
 
 fadeToWhiteBGP:
@@ -2807,7 +2807,7 @@ scriptOpCodeFadeToWhite:
     ld   [wVideoOBP0], A                               ;; 00:10d1 $ea $ab $c0
     ld   [wVideoOBP1], A                               ;; 00:10d4 $ea $ac $c0
     pop  HL                                            ;; 00:10d7 $e1
-    call call_00_1142                                  ;; 00:10d8 $cd $42 $11
+    call fadeEffectAdjustCounters                      ;; 00:10d8 $cd $42 $11
     ret                                                ;; 00:10db $c9
 
 scriptOpCodeFadeToNormal:
@@ -2845,7 +2845,7 @@ scriptOpCodeFadeToNormal:
     ld   [wVideoOBP0], A                               ;; 00:1111 $ea $ab $c0
     ld   [wVideoOBP1], A                               ;; 00:1114 $ea $ac $c0
     pop  HL                                            ;; 00:1117 $e1
-    call call_00_1142                                  ;; 00:1118 $cd $42 $11
+    call fadeEffectAdjustCounters                      ;; 00:1118 $cd $42 $11
     ret                                                ;; 00:111b $c9
 .jr_00_111c:
     ld   HL, fadeToWhiteBGP                            ;; 00:111c $21 $7b $10
@@ -2867,7 +2867,7 @@ scriptOpCodeFadeToNormal:
     ld   [wVideoOBP0], A                               ;; 00:1137 $ea $ab $c0
     ld   [wVideoOBP1], A                               ;; 00:113a $ea $ac $c0
     pop  HL                                            ;; 00:113d $e1
-    call call_00_1142                                  ;; 00:113e $cd $42 $11
+    call fadeEffectAdjustCounters                      ;; 00:113e $cd $42 $11
     ret                                                ;; 00:1141 $c9
 
 fadeEffectAdjustCounters:
@@ -2889,14 +2889,14 @@ fadeEffectAdjustCounters:
     ret                                                ;; 00:1163 $c9
 
 conditionallyClearDarkGraphicEffect:
-    ld   HL, wC3F1                                     ;; 00:1164 $21 $f1 $c3
+    ld   HL, wScriptDarknessEffect                     ;; 00:1164 $21 $f1 $c3
     bit  0, [HL]                                       ;; 00:1167 $cb $46
     ret  Z                                             ;; 00:1169 $c8
     call removeDarkGraphicEffect                       ;; 00:116a $cd $04 $02
     ret                                                ;; 00:116d $c9
 
 conditionallySetDarkGraphicEffect:
-    ld   HL, wC3F1                                     ;; 00:116e $21 $f1 $c3
+    ld   HL, wScriptDarknessEffect                     ;; 00:116e $21 $f1 $c3
     bit  0, [HL]                                       ;; 00:1171 $cb $46
     ret  Z                                             ;; 00:1173 $c8
     call setDarkGraphicEffect                          ;; 00:1174 $cd $f4 $01
@@ -2904,7 +2904,7 @@ conditionallySetDarkGraphicEffect:
 
 scriptOpCodeSetDarkGraphicEffect:
     push HL                                            ;; 00:1178 $e5
-    ld   HL, wC3F1                                     ;; 00:1179 $21 $f1 $c3
+    ld   HL, wScriptDarknessEffect                     ;; 00:1179 $21 $f1 $c3
     set  0, [HL]                                       ;; 00:117c $cb $c6
     call setDarkGraphicEffect                          ;; 00:117e $cd $f4 $01
     pop  HL                                            ;; 00:1181 $e1
@@ -2913,7 +2913,7 @@ scriptOpCodeSetDarkGraphicEffect:
 
 scriptOpCodeClearDarkGraphicEffect:
     push HL                                            ;; 00:1186 $e5
-    ld   HL, wC3F1                                     ;; 00:1187 $21 $f1 $c3
+    ld   HL, wScriptDarknessEffect                     ;; 00:1187 $21 $f1 $c3
     res  0, [HL]                                       ;; 00:118a $cb $86
     call removeDarkGraphicEffect                       ;; 00:118c $cd $04 $02
     pop  HL                                            ;; 00:118f $e1
@@ -3011,10 +3011,10 @@ call_00_120b:
     add  A, A                                          ;; 00:1216 $87
     add  A, $10                                        ;; 00:1217 $c6 $10
     ld   D, A                                          ;; 00:1219 $57
-    ld   A, [wC0A1]                                    ;; 00:121a $fa $a1 $c0
+    ld   A, [wMainGameStateFlags]                      ;; 00:121a $fa $a1 $c0
     push AF                                            ;; 00:121d $f5
     set  3, A                                          ;; 00:121e $cb $df
-    ld   [wC0A1], A                                    ;; 00:1220 $ea $a1 $c0
+    ld   [wMainGameStateFlags], A                      ;; 00:1220 $ea $a1 $c0
     push DE                                            ;; 00:1223 $d5
     call getPlayerDirection                            ;; 00:1224 $cd $ab $02
     ld   B, $00                                        ;; 00:1227 $06 $00
@@ -3027,7 +3027,7 @@ call_00_120b:
     or   A, $10                                        ;; 00:1233 $f6 $10
     call call_00_023e                                  ;; 00:1235 $cd $3e $02
     pop  AF                                            ;; 00:1238 $f1
-    ld   [wC0A1], A                                    ;; 00:1239 $ea $a1 $c0
+    ld   [wMainGameStateFlags], A                      ;; 00:1239 $ea $a1 $c0
     pop  HL                                            ;; 00:123c $e1
     ret                                                ;; 00:123d $c9
 
@@ -3058,7 +3058,7 @@ call_00_123e:
     ret                                                ;; 00:125b $c9
 
 scriptOpCodeNpc1StepForward:
-    call call_00_28c2                                  ;; 00:125c $cd $c2 $28
+    call checkForFollower                              ;; 00:125c $cd $c2 $28
     add  A, $00                                        ;; 00:125f $c6 $00
     ld   C, A                                          ;; 00:1261 $4f
     ld   A, $04                                        ;; 00:1262 $3e $04
@@ -3066,7 +3066,7 @@ scriptOpCodeNpc1StepForward:
     ret                                                ;; 00:1267 $c9
 
 scriptOpCodeNpc1StepBackwards:
-    call call_00_28c2                                  ;; 00:1268 $cd $c2 $28
+    call checkForFollower                              ;; 00:1268 $cd $c2 $28
     add  A, $00                                        ;; 00:126b $c6 $00
     ld   C, A                                          ;; 00:126d $4f
     ld   A, $05                                        ;; 00:126e $3e $05
@@ -3074,7 +3074,7 @@ scriptOpCodeNpc1StepBackwards:
     ret                                                ;; 00:1273 $c9
 
 scriptOpCodeNpc1DirectionRight:
-    call call_00_28c2                                  ;; 00:1274 $cd $c2 $28
+    call checkForFollower                              ;; 00:1274 $cd $c2 $28
     add  A, $00                                        ;; 00:1277 $c6 $00
     ld   C, A                                          ;; 00:1279 $4f
     ld   A, $1c                                        ;; 00:127a $3e $1c
@@ -3082,7 +3082,7 @@ scriptOpCodeNpc1DirectionRight:
     ret                                                ;; 00:127f $c9
 
 scriptOpCodeNpc1DirectionLeft:
-    call call_00_28c2                                  ;; 00:1280 $cd $c2 $28
+    call checkForFollower                              ;; 00:1280 $cd $c2 $28
     add  A, $00                                        ;; 00:1283 $c6 $00
     ld   C, A                                          ;; 00:1285 $4f
     ld   A, $1d                                        ;; 00:1286 $3e $1d
@@ -3090,7 +3090,7 @@ scriptOpCodeNpc1DirectionLeft:
     ret                                                ;; 00:128b $c9
 
 scriptOpCodeNpc1DirectionUp:
-    call call_00_28c2                                  ;; 00:128c $cd $c2 $28
+    call checkForFollower                              ;; 00:128c $cd $c2 $28
     add  A, $00                                        ;; 00:128f $c6 $00
     ld   C, A                                          ;; 00:1291 $4f
     ld   A, $1e                                        ;; 00:1292 $3e $1e
@@ -3098,7 +3098,7 @@ scriptOpCodeNpc1DirectionUp:
     ret                                                ;; 00:1297 $c9
 
 scriptOpCodeNpc1DirectionDown:
-    call call_00_28c2                                  ;; 00:1298 $cd $c2 $28
+    call checkForFollower                              ;; 00:1298 $cd $c2 $28
     add  A, $00                                        ;; 00:129b $c6 $00
     ld   C, A                                          ;; 00:129d $4f
     ld   A, $1f                                        ;; 00:129e $3e $1f
@@ -3106,21 +3106,21 @@ scriptOpCodeNpc1DirectionDown:
     ret                                                ;; 00:12a3 $c9
 
 scriptOpCodeNpc1Delete:
-    call call_00_28c2                                  ;; 00:12a4 $cd $c2 $28
+    call checkForFollower                              ;; 00:12a4 $cd $c2 $28
     add  A, $00                                        ;; 00:12a7 $c6 $00
     ld   C, A                                          ;; 00:12a9 $4f
-    call call_00_2859                                  ;; 00:12aa $cd $59 $28
+    call scriptNpcDelete                               ;; 00:12aa $cd $59 $28
     ret                                                ;; 00:12ad $c9
 
 scriptOpCodeNpc1SetPosition:
-    call call_00_28c2                                  ;; 00:12ae $cd $c2 $28
+    call checkForFollower                              ;; 00:12ae $cd $c2 $28
     add  A, $00                                        ;; 00:12b1 $c6 $00
     ld   C, A                                          ;; 00:12b3 $4f
     call call_00_123e                                  ;; 00:12b4 $cd $3e $12
     ret                                                ;; 00:12b7 $c9
 
 scriptOpCodeNpc1WalkSpeed4:
-    call call_00_28c2                                  ;; 00:12b8 $cd $c2 $28
+    call checkForFollower                              ;; 00:12b8 $cd $c2 $28
     add  A, $00                                        ;; 00:12bb $c6 $00
     ld   C, A                                          ;; 00:12bd $4f
     ld   A, $0e                                        ;; 00:12be $3e $0e
@@ -3128,7 +3128,7 @@ scriptOpCodeNpc1WalkSpeed4:
     ret                                                ;; 00:12c3 $c9
 
 scriptOpCodeNpc1WalkSpeedDefault:
-    call call_00_28c2                                  ;; 00:12c4 $cd $c2 $28
+    call checkForFollower                              ;; 00:12c4 $cd $c2 $28
     add  A, $00                                        ;; 00:12c7 $c6 $00
     ld   C, A                                          ;; 00:12c9 $4f
     ld   A, $0f                                        ;; 00:12ca $3e $0f
@@ -3136,7 +3136,7 @@ scriptOpCodeNpc1WalkSpeedDefault:
     ret                                                ;; 00:12cf $c9
 
 scriptOpCodeNpc2StepForward:
-    call call_00_28c2                                  ;; 00:12d0 $cd $c2 $28
+    call checkForFollower                              ;; 00:12d0 $cd $c2 $28
     add  A, $01                                        ;; 00:12d3 $c6 $01
     ld   C, A                                          ;; 00:12d5 $4f
     ld   A, $04                                        ;; 00:12d6 $3e $04
@@ -3144,7 +3144,7 @@ scriptOpCodeNpc2StepForward:
     ret                                                ;; 00:12db $c9
 
 scriptOpCodeNpc2StepBackwards:
-    call call_00_28c2                                  ;; 00:12dc $cd $c2 $28
+    call checkForFollower                              ;; 00:12dc $cd $c2 $28
     add  A, $01                                        ;; 00:12df $c6 $01
     ld   C, A                                          ;; 00:12e1 $4f
     ld   A, $05                                        ;; 00:12e2 $3e $05
@@ -3152,7 +3152,7 @@ scriptOpCodeNpc2StepBackwards:
     ret                                                ;; 00:12e7 $c9
 
 scriptOpCodeNpc2DirectionRight:
-    call call_00_28c2                                  ;; 00:12e8 $cd $c2 $28
+    call checkForFollower                              ;; 00:12e8 $cd $c2 $28
     add  A, $01                                        ;; 00:12eb $c6 $01
     ld   C, A                                          ;; 00:12ed $4f
     ld   A, $1c                                        ;; 00:12ee $3e $1c
@@ -3160,7 +3160,7 @@ scriptOpCodeNpc2DirectionRight:
     ret                                                ;; 00:12f3 $c9
 
 scriptOpCodeNpc2DirectionLeft:
-    call call_00_28c2                                  ;; 00:12f4 $cd $c2 $28
+    call checkForFollower                              ;; 00:12f4 $cd $c2 $28
     add  A, $01                                        ;; 00:12f7 $c6 $01
     ld   C, A                                          ;; 00:12f9 $4f
     ld   A, $1d                                        ;; 00:12fa $3e $1d
@@ -3168,7 +3168,7 @@ scriptOpCodeNpc2DirectionLeft:
     ret                                                ;; 00:12ff $c9
 
 scriptOpCodeNpc2DirectionUp:
-    call call_00_28c2                                  ;; 00:1300 $cd $c2 $28
+    call checkForFollower                              ;; 00:1300 $cd $c2 $28
     add  A, $01                                        ;; 00:1303 $c6 $01
     ld   C, A                                          ;; 00:1305 $4f
     ld   A, $1e                                        ;; 00:1306 $3e $1e
@@ -3176,7 +3176,7 @@ scriptOpCodeNpc2DirectionUp:
     ret                                                ;; 00:130b $c9
 
 scriptOpCodeNpc2DirectionDown:
-    call call_00_28c2                                  ;; 00:130c $cd $c2 $28
+    call checkForFollower                              ;; 00:130c $cd $c2 $28
     add  A, $01                                        ;; 00:130f $c6 $01
     ld   C, A                                          ;; 00:1311 $4f
     ld   A, $1f                                        ;; 00:1312 $3e $1f
@@ -3184,21 +3184,21 @@ scriptOpCodeNpc2DirectionDown:
     ret                                                ;; 00:1317 $c9
 
 scriptOpCodeNpc2Delete:
-    call call_00_28c2                                  ;; 00:1318 $cd $c2 $28
+    call checkForFollower                              ;; 00:1318 $cd $c2 $28
     add  A, $01                                        ;; 00:131b $c6 $01
     ld   C, A                                          ;; 00:131d $4f
-    call call_00_2859                                  ;; 00:131e $cd $59 $28
+    call scriptNpcDelete                               ;; 00:131e $cd $59 $28
     ret                                                ;; 00:1321 $c9
 
 scriptOpCodeNpc2SetPosition:
-    call call_00_28c2                                  ;; 00:1322 $cd $c2 $28
+    call checkForFollower                              ;; 00:1322 $cd $c2 $28
     add  A, $01                                        ;; 00:1325 $c6 $01
     ld   C, A                                          ;; 00:1327 $4f
     call call_00_123e                                  ;; 00:1328 $cd $3e $12
     ret                                                ;; 00:132b $c9
 
 scriptOpCodeNpc2WalkSpeed4:
-    call call_00_28c2                                  ;; 00:132c $cd $c2 $28
+    call checkForFollower                              ;; 00:132c $cd $c2 $28
     add  A, $01                                        ;; 00:132f $c6 $01
     ld   C, A                                          ;; 00:1331 $4f
     ld   A, $0e                                        ;; 00:1332 $3e $0e
@@ -3206,7 +3206,7 @@ scriptOpCodeNpc2WalkSpeed4:
     ret                                                ;; 00:1337 $c9
 
 scriptOpCodeNpc2WalkSpeedDefault:
-    call call_00_28c2                                  ;; 00:1338 $cd $c2 $28
+    call checkForFollower                              ;; 00:1338 $cd $c2 $28
     add  A, $01                                        ;; 00:133b $c6 $01
     ld   C, A                                          ;; 00:133d $4f
     ld   A, $0f                                        ;; 00:133e $3e $0f
@@ -3214,7 +3214,7 @@ scriptOpCodeNpc2WalkSpeedDefault:
     ret                                                ;; 00:1343 $c9
 
 scriptOpCodeNpc3StepForward:
-    call call_00_28c2                                  ;; 00:1344 $cd $c2 $28
+    call checkForFollower                              ;; 00:1344 $cd $c2 $28
     add  A, $02                                        ;; 00:1347 $c6 $02
     ld   C, A                                          ;; 00:1349 $4f
     ld   A, $04                                        ;; 00:134a $3e $04
@@ -3222,7 +3222,7 @@ scriptOpCodeNpc3StepForward:
     ret                                                ;; 00:134f $c9
 
 scriptOpCodeNpc3StepBackwards:
-    call call_00_28c2                                  ;; 00:1350 $cd $c2 $28
+    call checkForFollower                              ;; 00:1350 $cd $c2 $28
     add  A, $02                                        ;; 00:1353 $c6 $02
     ld   C, A                                          ;; 00:1355 $4f
     ld   A, $05                                        ;; 00:1356 $3e $05
@@ -3230,7 +3230,7 @@ scriptOpCodeNpc3StepBackwards:
     ret                                                ;; 00:135b $c9
 
 scriptOpCodeNpc3DirectionRight:
-    call call_00_28c2                                  ;; 00:135c $cd $c2 $28
+    call checkForFollower                              ;; 00:135c $cd $c2 $28
     add  A, $02                                        ;; 00:135f $c6 $02
     ld   C, A                                          ;; 00:1361 $4f
     ld   A, $1c                                        ;; 00:1362 $3e $1c
@@ -3238,7 +3238,7 @@ scriptOpCodeNpc3DirectionRight:
     ret                                                ;; 00:1367 $c9
 
 scriptOpCodeNpc3DirectionLeft:
-    call call_00_28c2                                  ;; 00:1368 $cd $c2 $28
+    call checkForFollower                              ;; 00:1368 $cd $c2 $28
     add  A, $02                                        ;; 00:136b $c6 $02
     ld   C, A                                          ;; 00:136d $4f
     ld   A, $1d                                        ;; 00:136e $3e $1d
@@ -3246,7 +3246,7 @@ scriptOpCodeNpc3DirectionLeft:
     ret                                                ;; 00:1373 $c9
 
 scriptOpCodeNpc3DirectionUp:
-    call call_00_28c2                                  ;; 00:1374 $cd $c2 $28
+    call checkForFollower                              ;; 00:1374 $cd $c2 $28
     add  A, $02                                        ;; 00:1377 $c6 $02
     ld   C, A                                          ;; 00:1379 $4f
     ld   A, $1e                                        ;; 00:137a $3e $1e
@@ -3254,7 +3254,7 @@ scriptOpCodeNpc3DirectionUp:
     ret                                                ;; 00:137f $c9
 
 scriptOpCodeNpc3DirectionDown:
-    call call_00_28c2                                  ;; 00:1380 $cd $c2 $28
+    call checkForFollower                              ;; 00:1380 $cd $c2 $28
     add  A, $02                                        ;; 00:1383 $c6 $02
     ld   C, A                                          ;; 00:1385 $4f
     ld   A, $1f                                        ;; 00:1386 $3e $1f
@@ -3262,21 +3262,21 @@ scriptOpCodeNpc3DirectionDown:
     ret                                                ;; 00:138b $c9
 
 scriptOpCodeNpc3Delete:
-    call call_00_28c2                                  ;; 00:138c $cd $c2 $28
+    call checkForFollower                              ;; 00:138c $cd $c2 $28
     add  A, $02                                        ;; 00:138f $c6 $02
     ld   C, A                                          ;; 00:1391 $4f
-    call call_00_2859                                  ;; 00:1392 $cd $59 $28
+    call scriptNpcDelete                               ;; 00:1392 $cd $59 $28
     ret                                                ;; 00:1395 $c9
 
 scriptOpCodeNpc3SetPosition:
-    call call_00_28c2                                  ;; 00:1396 $cd $c2 $28
+    call checkForFollower                              ;; 00:1396 $cd $c2 $28
     add  A, $02                                        ;; 00:1399 $c6 $02
     ld   C, A                                          ;; 00:139b $4f
     call call_00_123e                                  ;; 00:139c $cd $3e $12
     ret                                                ;; 00:139f $c9
 
 scriptOpCodeNpc3WalkSpeed4:
-    call call_00_28c2                                  ;; 00:13a0 $cd $c2 $28
+    call checkForFollower                              ;; 00:13a0 $cd $c2 $28
     add  A, $02                                        ;; 00:13a3 $c6 $02
     ld   C, A                                          ;; 00:13a5 $4f
     ld   A, $0e                                        ;; 00:13a6 $3e $0e
@@ -3284,7 +3284,7 @@ scriptOpCodeNpc3WalkSpeed4:
     ret                                                ;; 00:13ab $c9
 
 scriptOpCodeNpc3WalkSpeedDefault:
-    call call_00_28c2                                  ;; 00:13ac $cd $c2 $28
+    call checkForFollower                              ;; 00:13ac $cd $c2 $28
     add  A, $02                                        ;; 00:13af $c6 $02
     ld   C, A                                          ;; 00:13b1 $4f
     ld   A, $0f                                        ;; 00:13b2 $3e $0f
@@ -3292,7 +3292,7 @@ scriptOpCodeNpc3WalkSpeedDefault:
     ret                                                ;; 00:13b7 $c9
 
 scriptOpCodeNpc4StepForward:
-    call call_00_28c2                                  ;; 00:13b8 $cd $c2 $28
+    call checkForFollower                              ;; 00:13b8 $cd $c2 $28
     add  A, $03                                        ;; 00:13bb $c6 $03
     ld   C, A                                          ;; 00:13bd $4f
     ld   A, $04                                        ;; 00:13be $3e $04
@@ -3300,7 +3300,7 @@ scriptOpCodeNpc4StepForward:
     ret                                                ;; 00:13c3 $c9
 
 scriptOpCodeNpc4StepBackwards:
-    call call_00_28c2                                  ;; 00:13c4 $cd $c2 $28
+    call checkForFollower                              ;; 00:13c4 $cd $c2 $28
     add  A, $03                                        ;; 00:13c7 $c6 $03
     ld   C, A                                          ;; 00:13c9 $4f
     ld   A, $05                                        ;; 00:13ca $3e $05
@@ -3308,7 +3308,7 @@ scriptOpCodeNpc4StepBackwards:
     ret                                                ;; 00:13cf $c9
 
 scriptOpCodeNpc4DirectionRight:
-    call call_00_28c2                                  ;; 00:13d0 $cd $c2 $28
+    call checkForFollower                              ;; 00:13d0 $cd $c2 $28
     add  A, $03                                        ;; 00:13d3 $c6 $03
     ld   C, A                                          ;; 00:13d5 $4f
     ld   A, $1c                                        ;; 00:13d6 $3e $1c
@@ -3316,7 +3316,7 @@ scriptOpCodeNpc4DirectionRight:
     ret                                                ;; 00:13db $c9
 
 scriptOpCodeNpc4DirectionLeft:
-    call call_00_28c2                                  ;; 00:13dc $cd $c2 $28
+    call checkForFollower                              ;; 00:13dc $cd $c2 $28
     add  A, $03                                        ;; 00:13df $c6 $03
     ld   C, A                                          ;; 00:13e1 $4f
     ld   A, $1d                                        ;; 00:13e2 $3e $1d
@@ -3324,7 +3324,7 @@ scriptOpCodeNpc4DirectionLeft:
     ret                                                ;; 00:13e7 $c9
 
 scriptOpCodeNpc4DirectionUp:
-    call call_00_28c2                                  ;; 00:13e8 $cd $c2 $28
+    call checkForFollower                              ;; 00:13e8 $cd $c2 $28
     add  A, $03                                        ;; 00:13eb $c6 $03
     ld   C, A                                          ;; 00:13ed $4f
     ld   A, $1e                                        ;; 00:13ee $3e $1e
@@ -3332,7 +3332,7 @@ scriptOpCodeNpc4DirectionUp:
     ret                                                ;; 00:13f3 $c9
 
 scriptOpCodeNpc4DirectionDown:
-    call call_00_28c2                                  ;; 00:13f4 $cd $c2 $28
+    call checkForFollower                              ;; 00:13f4 $cd $c2 $28
     add  A, $03                                        ;; 00:13f7 $c6 $03
     ld   C, A                                          ;; 00:13f9 $4f
     ld   A, $1f                                        ;; 00:13fa $3e $1f
@@ -3340,21 +3340,21 @@ scriptOpCodeNpc4DirectionDown:
     ret                                                ;; 00:13ff $c9
 
 scriptOpCodeNpc4Delete:
-    call call_00_28c2                                  ;; 00:1400 $cd $c2 $28
+    call checkForFollower                              ;; 00:1400 $cd $c2 $28
     add  A, $03                                        ;; 00:1403 $c6 $03
     ld   C, A                                          ;; 00:1405 $4f
-    call call_00_2859                                  ;; 00:1406 $cd $59 $28
+    call scriptNpcDelete                               ;; 00:1406 $cd $59 $28
     ret                                                ;; 00:1409 $c9
 
 scriptOpCodeNpc4SetPosition:
-    call call_00_28c2                                  ;; 00:140a $cd $c2 $28
+    call checkForFollower                              ;; 00:140a $cd $c2 $28
     add  A, $03                                        ;; 00:140d $c6 $03
     ld   C, A                                          ;; 00:140f $4f
     call call_00_123e                                  ;; 00:1410 $cd $3e $12
     ret                                                ;; 00:1413 $c9
 
 scriptOpCodeNpc4WalkSpeed4:
-    call call_00_28c2                                  ;; 00:1414 $cd $c2 $28
+    call checkForFollower                              ;; 00:1414 $cd $c2 $28
     add  A, $03                                        ;; 00:1417 $c6 $03
     ld   C, A                                          ;; 00:1419 $4f
     ld   A, $0e                                        ;; 00:141a $3e $0e
@@ -3362,7 +3362,7 @@ scriptOpCodeNpc4WalkSpeed4:
     ret                                                ;; 00:141f $c9
 
 scriptOpCodeNpc4WalkSpeedDefault:
-    call call_00_28c2                                  ;; 00:1420 $cd $c2 $28
+    call checkForFollower                              ;; 00:1420 $cd $c2 $28
     add  A, $03                                        ;; 00:1423 $c6 $03
     ld   C, A                                          ;; 00:1425 $4f
     ld   A, $0f                                        ;; 00:1426 $3e $0f
@@ -3370,7 +3370,7 @@ scriptOpCodeNpc4WalkSpeedDefault:
     ret                                                ;; 00:142b $c9
 
 scriptOpCodeNpc5StepForward:
-    call call_00_28c2                                  ;; 00:142c $cd $c2 $28
+    call checkForFollower                              ;; 00:142c $cd $c2 $28
     add  A, $04                                        ;; 00:142f $c6 $04
     ld   C, A                                          ;; 00:1431 $4f
     ld   A, $04                                        ;; 00:1432 $3e $04
@@ -3378,7 +3378,7 @@ scriptOpCodeNpc5StepForward:
     ret                                                ;; 00:1437 $c9
 
 scriptOpCodeNpc5StepBackwards:
-    call call_00_28c2                                  ;; 00:1438 $cd $c2 $28
+    call checkForFollower                              ;; 00:1438 $cd $c2 $28
     add  A, $04                                        ;; 00:143b $c6 $04
     ld   C, A                                          ;; 00:143d $4f
     ld   A, $05                                        ;; 00:143e $3e $05
@@ -3386,7 +3386,7 @@ scriptOpCodeNpc5StepBackwards:
     ret                                                ;; 00:1443 $c9
 
 scriptOpCodeNpc5DirectionRight:
-    call call_00_28c2                                  ;; 00:1444 $cd $c2 $28
+    call checkForFollower                              ;; 00:1444 $cd $c2 $28
     add  A, $04                                        ;; 00:1447 $c6 $04
     ld   C, A                                          ;; 00:1449 $4f
     ld   A, $1c                                        ;; 00:144a $3e $1c
@@ -3394,7 +3394,7 @@ scriptOpCodeNpc5DirectionRight:
     ret                                                ;; 00:144f $c9
 
 scriptOpCodeNpc5DirectionLeft:
-    call call_00_28c2                                  ;; 00:1450 $cd $c2 $28
+    call checkForFollower                              ;; 00:1450 $cd $c2 $28
     add  A, $04                                        ;; 00:1453 $c6 $04
     ld   C, A                                          ;; 00:1455 $4f
     ld   A, $1d                                        ;; 00:1456 $3e $1d
@@ -3402,7 +3402,7 @@ scriptOpCodeNpc5DirectionLeft:
     ret                                                ;; 00:145b $c9
 
 scriptOpCodeNpc5DirectionUp:
-    call call_00_28c2                                  ;; 00:145c $cd $c2 $28
+    call checkForFollower                              ;; 00:145c $cd $c2 $28
     add  A, $04                                        ;; 00:145f $c6 $04
     ld   C, A                                          ;; 00:1461 $4f
     ld   A, $1e                                        ;; 00:1462 $3e $1e
@@ -3410,7 +3410,7 @@ scriptOpCodeNpc5DirectionUp:
     ret                                                ;; 00:1467 $c9
 
 scriptOpCodeNpc5DirectionDown:
-    call call_00_28c2                                  ;; 00:1468 $cd $c2 $28
+    call checkForFollower                              ;; 00:1468 $cd $c2 $28
     add  A, $04                                        ;; 00:146b $c6 $04
     ld   C, A                                          ;; 00:146d $4f
     ld   A, $1f                                        ;; 00:146e $3e $1f
@@ -3418,21 +3418,21 @@ scriptOpCodeNpc5DirectionDown:
     ret                                                ;; 00:1473 $c9
 
 scriptOpCodeNpc5Delete:
-    call call_00_28c2                                  ;; 00:1474 $cd $c2 $28
+    call checkForFollower                              ;; 00:1474 $cd $c2 $28
     add  A, $04                                        ;; 00:1477 $c6 $04
     ld   C, A                                          ;; 00:1479 $4f
-    call call_00_2859                                  ;; 00:147a $cd $59 $28
+    call scriptNpcDelete                               ;; 00:147a $cd $59 $28
     ret                                                ;; 00:147d $c9
 
 scriptOpCodeNpc5SetPosition:
-    call call_00_28c2                                  ;; 00:147e $cd $c2 $28
+    call checkForFollower                              ;; 00:147e $cd $c2 $28
     add  A, $04                                        ;; 00:1481 $c6 $04
     ld   C, A                                          ;; 00:1483 $4f
     call call_00_123e                                  ;; 00:1484 $cd $3e $12
     ret                                                ;; 00:1487 $c9
 
 scriptOpCodeNpc5WalkSpeed4:
-    call call_00_28c2                                  ;; 00:1488 $cd $c2 $28
+    call checkForFollower                              ;; 00:1488 $cd $c2 $28
     add  A, $04                                        ;; 00:148b $c6 $04
     ld   C, A                                          ;; 00:148d $4f
     ld   A, $0e                                        ;; 00:148e $3e $0e
@@ -3440,7 +3440,7 @@ scriptOpCodeNpc5WalkSpeed4:
     ret                                                ;; 00:1493 $c9
 
 scriptOpCodeNpc5WalkSpeedDefault:
-    call call_00_28c2                                  ;; 00:1494 $cd $c2 $28
+    call checkForFollower                              ;; 00:1494 $cd $c2 $28
     add  A, $04                                        ;; 00:1497 $c6 $04
     ld   C, A                                          ;; 00:1499 $4f
     ld   A, $0f                                        ;; 00:149a $3e $0f
@@ -3448,7 +3448,7 @@ scriptOpCodeNpc5WalkSpeedDefault:
     ret                                                ;; 00:149f $c9
 
 scriptOpCodeNpc6StepForward:
-    call call_00_28c2                                  ;; 00:14a0 $cd $c2 $28
+    call checkForFollower                              ;; 00:14a0 $cd $c2 $28
     add  A, $05                                        ;; 00:14a3 $c6 $05
     ld   C, A                                          ;; 00:14a5 $4f
     ld   A, $04                                        ;; 00:14a6 $3e $04
@@ -3456,7 +3456,7 @@ scriptOpCodeNpc6StepForward:
     ret                                                ;; 00:14ab $c9
 
 scriptOpCodeNpc6StepBackwards:
-    call call_00_28c2                                  ;; 00:14ac $cd $c2 $28
+    call checkForFollower                              ;; 00:14ac $cd $c2 $28
     add  A, $05                                        ;; 00:14af $c6 $05
     ld   C, A                                          ;; 00:14b1 $4f
     ld   A, $05                                        ;; 00:14b2 $3e $05
@@ -3464,7 +3464,7 @@ scriptOpCodeNpc6StepBackwards:
     ret                                                ;; 00:14b7 $c9
 
 scriptOpCodeNpc6DirectionRight:
-    call call_00_28c2                                  ;; 00:14b8 $cd $c2 $28
+    call checkForFollower                              ;; 00:14b8 $cd $c2 $28
     add  A, $05                                        ;; 00:14bb $c6 $05
     ld   C, A                                          ;; 00:14bd $4f
     ld   A, $1c                                        ;; 00:14be $3e $1c
@@ -3472,7 +3472,7 @@ scriptOpCodeNpc6DirectionRight:
     ret                                                ;; 00:14c3 $c9
 
 scriptOpCodeNpc6DirectionLeft:
-    call call_00_28c2                                  ;; 00:14c4 $cd $c2 $28
+    call checkForFollower                              ;; 00:14c4 $cd $c2 $28
     add  A, $05                                        ;; 00:14c7 $c6 $05
     ld   C, A                                          ;; 00:14c9 $4f
     ld   A, $1d                                        ;; 00:14ca $3e $1d
@@ -3480,7 +3480,7 @@ scriptOpCodeNpc6DirectionLeft:
     ret                                                ;; 00:14cf $c9
 
 scriptOpCodeNpc6DirectionUp:
-    call call_00_28c2                                  ;; 00:14d0 $cd $c2 $28
+    call checkForFollower                              ;; 00:14d0 $cd $c2 $28
     add  A, $05                                        ;; 00:14d3 $c6 $05
     ld   C, A                                          ;; 00:14d5 $4f
     ld   A, $1e                                        ;; 00:14d6 $3e $1e
@@ -3488,7 +3488,7 @@ scriptOpCodeNpc6DirectionUp:
     ret                                                ;; 00:14db $c9
 
 scriptOpCodeNpc6DirectionDown:
-    call call_00_28c2                                  ;; 00:14dc $cd $c2 $28
+    call checkForFollower                              ;; 00:14dc $cd $c2 $28
     add  A, $05                                        ;; 00:14df $c6 $05
     ld   C, A                                          ;; 00:14e1 $4f
     ld   A, $1f                                        ;; 00:14e2 $3e $1f
@@ -3496,21 +3496,21 @@ scriptOpCodeNpc6DirectionDown:
     ret                                                ;; 00:14e7 $c9
 
 scriptOpCodeNpc6Delete:
-    call call_00_28c2                                  ;; 00:14e8 $cd $c2 $28
+    call checkForFollower                              ;; 00:14e8 $cd $c2 $28
     add  A, $05                                        ;; 00:14eb $c6 $05
     ld   C, A                                          ;; 00:14ed $4f
-    call call_00_2859                                  ;; 00:14ee $cd $59 $28
+    call scriptNpcDelete                               ;; 00:14ee $cd $59 $28
     ret                                                ;; 00:14f1 $c9
 
 scriptOpCodeNpc6SetPosition:
-    call call_00_28c2                                  ;; 00:14f2 $cd $c2 $28
+    call checkForFollower                              ;; 00:14f2 $cd $c2 $28
     add  A, $05                                        ;; 00:14f5 $c6 $05
     ld   C, A                                          ;; 00:14f7 $4f
     call call_00_123e                                  ;; 00:14f8 $cd $3e $12
     ret                                                ;; 00:14fb $c9
 
 scriptOpCodeNpc6WalkSpeed4:
-    call call_00_28c2                                  ;; 00:14fc $cd $c2 $28
+    call checkForFollower                              ;; 00:14fc $cd $c2 $28
     add  A, $05                                        ;; 00:14ff $c6 $05
     ld   C, A                                          ;; 00:1501 $4f
     ld   A, $0e                                        ;; 00:1502 $3e $0e
@@ -3518,7 +3518,7 @@ scriptOpCodeNpc6WalkSpeed4:
     ret                                                ;; 00:1507 $c9
 
 scriptOpCodeNpc6WalkSpeedDefault:
-    call call_00_28c2                                  ;; 00:1508 $cd $c2 $28
+    call checkForFollower                              ;; 00:1508 $cd $c2 $28
     add  A, $05                                        ;; 00:150b $c6 $05
     ld   C, A                                          ;; 00:150d $4f
     ld   A, $0f                                        ;; 00:150e $3e $0f
@@ -3526,7 +3526,7 @@ scriptOpCodeNpc6WalkSpeedDefault:
     ret                                                ;; 00:1513 $c9
 
 scriptOpCodeNpc7StepForward:
-    call call_00_28c2                                  ;; 00:1514 $cd $c2 $28
+    call checkForFollower                              ;; 00:1514 $cd $c2 $28
     add  A, $06                                        ;; 00:1517 $c6 $06
     ld   C, A                                          ;; 00:1519 $4f
     ld   A, $04                                        ;; 00:151a $3e $04
@@ -3534,7 +3534,7 @@ scriptOpCodeNpc7StepForward:
     ret                                                ;; 00:151f $c9
 
 scriptOpCodeNpc7StepBackwards:
-    call call_00_28c2                                  ;; 00:1520 $cd $c2 $28
+    call checkForFollower                              ;; 00:1520 $cd $c2 $28
     add  A, $06                                        ;; 00:1523 $c6 $06
     ld   C, A                                          ;; 00:1525 $4f
     ld   A, $05                                        ;; 00:1526 $3e $05
@@ -3542,7 +3542,7 @@ scriptOpCodeNpc7StepBackwards:
     ret                                                ;; 00:152b $c9
 
 scriptOpCodeNpc7DirectionRight:
-    call call_00_28c2                                  ;; 00:152c $cd $c2 $28
+    call checkForFollower                              ;; 00:152c $cd $c2 $28
     add  A, $06                                        ;; 00:152f $c6 $06
     ld   C, A                                          ;; 00:1531 $4f
     ld   A, $1c                                        ;; 00:1532 $3e $1c
@@ -3550,7 +3550,7 @@ scriptOpCodeNpc7DirectionRight:
     ret                                                ;; 00:1537 $c9
 
 scriptOpCodeNpc7DirectionLeft:
-    call call_00_28c2                                  ;; 00:1538 $cd $c2 $28
+    call checkForFollower                              ;; 00:1538 $cd $c2 $28
     add  A, $06                                        ;; 00:153b $c6 $06
     ld   C, A                                          ;; 00:153d $4f
     ld   A, $1d                                        ;; 00:153e $3e $1d
@@ -3558,7 +3558,7 @@ scriptOpCodeNpc7DirectionLeft:
     ret                                                ;; 00:1543 $c9
 
 scriptOpCodeNpc7DirectionUp:
-    call call_00_28c2                                  ;; 00:1544 $cd $c2 $28
+    call checkForFollower                              ;; 00:1544 $cd $c2 $28
     add  A, $06                                        ;; 00:1547 $c6 $06
     ld   C, A                                          ;; 00:1549 $4f
     ld   A, $1e                                        ;; 00:154a $3e $1e
@@ -3566,7 +3566,7 @@ scriptOpCodeNpc7DirectionUp:
     ret                                                ;; 00:154f $c9
 
 scriptOpCodeNpc7DirectionDown:
-    call call_00_28c2                                  ;; 00:1550 $cd $c2 $28
+    call checkForFollower                              ;; 00:1550 $cd $c2 $28
     add  A, $06                                        ;; 00:1553 $c6 $06
     ld   C, A                                          ;; 00:1555 $4f
     ld   A, $1f                                        ;; 00:1556 $3e $1f
@@ -3574,21 +3574,21 @@ scriptOpCodeNpc7DirectionDown:
     ret                                                ;; 00:155b $c9
 
 scriptOpCodeNpc7Delete:
-    call call_00_28c2                                  ;; 00:155c $cd $c2 $28
+    call checkForFollower                              ;; 00:155c $cd $c2 $28
     add  A, $06                                        ;; 00:155f $c6 $06
     ld   C, A                                          ;; 00:1561 $4f
-    call call_00_2859                                  ;; 00:1562 $cd $59 $28
+    call scriptNpcDelete                               ;; 00:1562 $cd $59 $28
     ret                                                ;; 00:1565 $c9
 
 scriptOpCodeNpc7SetPosition:
-    call call_00_28c2                                  ;; 00:1566 $cd $c2 $28
+    call checkForFollower                              ;; 00:1566 $cd $c2 $28
     add  A, $06                                        ;; 00:1569 $c6 $06
     ld   C, A                                          ;; 00:156b $4f
     call call_00_123e                                  ;; 00:156c $cd $3e $12
     ret                                                ;; 00:156f $c9
 
 scriptOpCodeNpc7WalkSpeed4:
-    call call_00_28c2                                  ;; 00:1570 $cd $c2 $28
+    call checkForFollower                              ;; 00:1570 $cd $c2 $28
     add  A, $06                                        ;; 00:1573 $c6 $06
     ld   C, A                                          ;; 00:1575 $4f
     ld   A, $0e                                        ;; 00:1576 $3e $0e
@@ -3596,7 +3596,7 @@ scriptOpCodeNpc7WalkSpeed4:
     ret                                                ;; 00:157b $c9
 
 scriptOpCodeNpc7WalkSpeedDefault:
-    call call_00_28c2                                  ;; 00:157c $cd $c2 $28
+    call checkForFollower                              ;; 00:157c $cd $c2 $28
     add  A, $06                                        ;; 00:157f $c6 $06
     ld   C, A                                          ;; 00:1581 $4f
     ld   A, $0f                                        ;; 00:1582 $3e $0f
@@ -3686,7 +3686,7 @@ scriptOpCodePlayerSetPosition:
     ret                                                ;; 00:1605 $c9
 
 scriptOpCodeFollowerStepForward:
-    call call_00_28c2                                  ;; 00:1606 $cd $c2 $28
+    call checkForFollower                              ;; 00:1606 $cd $c2 $28
     jr   NZ, jr_00_165f                                ;; 00:1609 $20 $54
     ld   A, $04                                        ;; 00:160b $3e $04
     ld   C, $00                                        ;; 00:160d $0e $00
@@ -3694,7 +3694,7 @@ scriptOpCodeFollowerStepForward:
     ret                                                ;; 00:1612 $c9
 
 scriptOpCodeFollowerStepBackwards:
-    call call_00_28c2                                  ;; 00:1613 $cd $c2 $28
+    call checkForFollower                              ;; 00:1613 $cd $c2 $28
     jr   NZ, jr_00_165f                                ;; 00:1616 $20 $47
     ld   A, $05                                        ;; 00:1618 $3e $05
     ld   C, $00                                        ;; 00:161a $0e $00
@@ -3702,7 +3702,7 @@ scriptOpCodeFollowerStepBackwards:
     ret                                                ;; 00:161f $c9
 
 scriptOpCodeFollowerDirectionRight:
-    call call_00_28c2                                  ;; 00:1620 $cd $c2 $28
+    call checkForFollower                              ;; 00:1620 $cd $c2 $28
     jr   NZ, jr_00_165f                                ;; 00:1623 $20 $3a
     ld   A, $1c                                        ;; 00:1625 $3e $1c
     ld   C, $00                                        ;; 00:1627 $0e $00
@@ -3710,7 +3710,7 @@ scriptOpCodeFollowerDirectionRight:
     ret                                                ;; 00:162c $c9
 
 scriptOpCodeFollowerDirectionLeft:
-    call call_00_28c2                                  ;; 00:162d $cd $c2 $28
+    call checkForFollower                              ;; 00:162d $cd $c2 $28
     jr   NZ, jr_00_165f                                ;; 00:1630 $20 $2d
     ld   A, $1d                                        ;; 00:1632 $3e $1d
     ld   C, $00                                        ;; 00:1634 $0e $00
@@ -3718,7 +3718,7 @@ scriptOpCodeFollowerDirectionLeft:
     ret                                                ;; 00:1639 $c9
 
 scriptOpCodeFollowerDirectionUp:
-    call call_00_28c2                                  ;; 00:163a $cd $c2 $28
+    call checkForFollower                              ;; 00:163a $cd $c2 $28
     jr   NZ, jr_00_165f                                ;; 00:163d $20 $20
     ld   A, $1e                                        ;; 00:163f $3e $1e
     ld   C, $00                                        ;; 00:1641 $0e $00
@@ -3726,7 +3726,7 @@ scriptOpCodeFollowerDirectionUp:
     ret                                                ;; 00:1646 $c9
 
 scriptOpCodeFollowerDirectionDown:
-    call call_00_28c2                                  ;; 00:1647 $cd $c2 $28
+    call checkForFollower                              ;; 00:1647 $cd $c2 $28
     jr   NZ, jr_00_165f                                ;; 00:164a $20 $13
     ld   A, $1f                                        ;; 00:164c $3e $1f
     ld   C, $00                                        ;; 00:164e $0e $00
@@ -3734,10 +3734,10 @@ scriptOpCodeFollowerDirectionDown:
     ret                                                ;; 00:1653 $c9
 
 scriptOpCodeFollowerDelete:
-    call call_00_28c2                                  ;; 00:1654 $cd $c2 $28
+    call checkForFollower                              ;; 00:1654 $cd $c2 $28
     jr   NZ, jr_00_165f                                ;; 00:1657 $20 $06
     ld   C, $00                                        ;; 00:1659 $0e $00
-    call call_00_2859                                  ;; 00:165b $cd $59 $28
+    call scriptNpcDelete                               ;; 00:165b $cd $59 $28
     ret                                                ;; 00:165e $c9
 
 jr_00_165f:
@@ -3745,7 +3745,7 @@ jr_00_165f:
     ret                                                ;; 00:1662 $c9
 
 scriptOpCodeFollowerSetPosition:
-    call call_00_28c2                                  ;; 00:1663 $cd $c2 $28
+    call checkForFollower                              ;; 00:1663 $cd $c2 $28
     jr   NZ, .jr_00_166e                               ;; 00:1666 $20 $06
     ld   C, $00                                        ;; 00:1668 $0e $00
     call call_00_123e                                  ;; 00:166a $cd $3e $12
@@ -3757,7 +3757,7 @@ scriptOpCodeFollowerSetPosition:
     ret                                                ;; 00:1673 $c9
 
 scriptOpCodeFollowerWalkSpeed4:
-    call call_00_28c2                                  ;; 00:1674 $cd $c2 $28
+    call checkForFollower                              ;; 00:1674 $cd $c2 $28
     jr   NZ, jr_00_165f                                ;; 00:1677 $20 $e6
     ld   A, $0e                                        ;; 00:1679 $3e $0e
     ld   C, $00                                        ;; 00:167b $0e $00
@@ -3765,7 +3765,7 @@ scriptOpCodeFollowerWalkSpeed4:
     ret                                                ;; 00:1680 $c9
 
 scriptOpCodeFollowerWalkSpeedDefault:
-    call call_00_28c2                                  ;; 00:1681 $cd $c2 $28
+    call checkForFollower                              ;; 00:1681 $cd $c2 $28
     jr   NZ, jr_00_165f                                ;; 00:1684 $20 $d9
     ld   A, $0f                                        ;; 00:1686 $3e $0f
     ld   C, $00                                        ;; 00:1688 $0e $00
@@ -3847,12 +3847,12 @@ getRoomMetaTileAttributes:
 call_00_1700:
     push BC                                            ;; 00:1700 $c5
     push DE                                            ;; 00:1701 $d5
-    call call_00_16af                                  ;; 00:1702 $cd $af $16
+    call getRoomMetaTileAttributes                     ;; 00:1702 $cd $af $16
     pop  DE                                            ;; 00:1705 $d1
     pop  BC                                            ;; 00:1706 $c1
     bit  7, H                                          ;; 00:1707 $cb $7c
     jr   Z, .jr_00_1746                                ;; 00:1709 $28 $3b
-    ld   A, [wC0A1]                                    ;; 00:170b $fa $a1 $c0
+    ld   A, [wMainGameStateFlags]                      ;; 00:170b $fa $a1 $c0
     bit  1, A                                          ;; 00:170e $cb $4f
     ret  NZ                                            ;; 00:1710 $c0
     srl  D                                             ;; 00:1711 $cb $3a
@@ -3892,7 +3892,7 @@ call_00_1700:
     call popBankNrAndSwitch                            ;; 00:1742 $cd $0a $2a
     ret                                                ;; 00:1745 $c9
 .jr_00_1746:
-    ld   A, [wC0A1]                                    ;; 00:1746 $fa $a1 $c0
+    ld   A, [wMainGameStateFlags]                      ;; 00:1746 $fa $a1 $c0
     bit  3, A                                          ;; 00:1749 $cb $5f
     ret  NZ                                            ;; 00:174b $c0
     ld   A, [wPlayerDamagedTimer]                      ;; 00:174c $fa $d2 $c4
@@ -3940,11 +3940,11 @@ call_00_177e:
     push BC                                            ;; 00:1794 $c5
     ld   A, $00                                        ;; 00:1795 $3e $00
     ld   C, B                                          ;; 00:1797 $48
-    call call_00_0ce4                                  ;; 00:1798 $cd $e4 $0c
+    call setObjectOffset0a                             ;; 00:1798 $cd $e4 $0c
     ld   L, A                                          ;; 00:179b $6f
     pop  BC                                            ;; 00:179c $c1
     pop  DE                                            ;; 00:179d $d1
-    ld   A, [wC0A1]                                    ;; 00:179e $fa $a1 $c0
+    ld   A, [wMainGameStateFlags]                      ;; 00:179e $fa $a1 $c0
     bit  3, A                                          ;; 00:17a1 $cb $5f
     jr   NZ, jr_00_1802                                ;; 00:17a3 $20 $5d
     ld   A, C                                          ;; 00:17a5 $79
@@ -3960,7 +3960,7 @@ call_00_177e:
     ld   B, L                                          ;; 00:17b5 $45
     push BC                                            ;; 00:17b6 $c5
     push DE                                            ;; 00:17b7 $d5
-    call call_00_16af                                  ;; 00:17b8 $cd $af $16
+    call getRoomMetaTileAttributes                     ;; 00:17b8 $cd $af $16
     pop  DE                                            ;; 00:17bb $d1
     pop  BC                                            ;; 00:17bc $c1
     bit  6, H                                          ;; 00:17bd $cb $74
@@ -3968,7 +3968,7 @@ call_00_177e:
     inc  E                                             ;; 00:17c1 $1c
     push BC                                            ;; 00:17c2 $c5
     push HL                                            ;; 00:17c3 $e5
-    call call_00_16af                                  ;; 00:17c4 $cd $af $16
+    call getRoomMetaTileAttributes                     ;; 00:17c4 $cd $af $16
     pop  DE                                            ;; 00:17c7 $d1
     pop  BC                                            ;; 00:17c8 $c1
     bit  6, H                                          ;; 00:17c9 $cb $74
@@ -4003,10 +4003,10 @@ jr_00_17f5:
     ld   A, $90                                        ;; 00:17f5 $3e $90
     or   A, B                                          ;; 00:17f7 $b0
     push BC                                            ;; 00:17f8 $c5
-    call call_00_0ce4                                  ;; 00:17f9 $cd $e4 $0c
+    call setObjectOffset0a                             ;; 00:17f9 $cd $e4 $0c
     pop  BC                                            ;; 00:17fc $c1
     ld   A, $02                                        ;; 00:17fd $3e $02
-    call call_00_0d08                                  ;; 00:17ff $cd $08 $0d
+    call setObjectOffset0b                             ;; 00:17ff $cd $08 $0d
 
 jr_00_1802:
     call popBankNrAndSwitch                            ;; 00:1802 $cd $0a $2a
@@ -4137,14 +4137,14 @@ call_00_18c0:
     and  A, $07                                        ;; 00:18c2 $e6 $07
     jr   Z, jr_00_1909                                 ;; 00:18c4 $28 $43
     push DE                                            ;; 00:18c6 $d5
-    call call_00_16af                                  ;; 00:18c7 $cd $af $16
+    call getRoomMetaTileAttributes                     ;; 00:18c7 $cd $af $16
     pop  DE                                            ;; 00:18ca $d1
     pop  AF                                            ;; 00:18cb $f1
     push DE                                            ;; 00:18cc $d5
     push AF                                            ;; 00:18cd $f5
     push HL                                            ;; 00:18ce $e5
     inc  E                                             ;; 00:18cf $1c
-    call call_00_16af                                  ;; 00:18d0 $cd $af $16
+    call getRoomMetaTileAttributes                     ;; 00:18d0 $cd $af $16
     pop  DE                                            ;; 00:18d3 $d1
     call HLandDE                                       ;; 00:18d4 $cd $b2 $29
     pop  AF                                            ;; 00:18d7 $f1
@@ -4162,7 +4162,7 @@ call_00_18dd:
     and  A, $07                                        ;; 00:18e6 $e6 $07
     jr   Z, jr_00_1909                                 ;; 00:18e8 $28 $1f
     push DE                                            ;; 00:18ea $d5
-    call call_00_16af                                  ;; 00:18eb $cd $af $16
+    call getRoomMetaTileAttributes                     ;; 00:18eb $cd $af $16
     pop  DE                                            ;; 00:18ee $d1
     pop  AF                                            ;; 00:18ef $f1
     call call_00_190f                                  ;; 00:18f0 $cd $0f $19
@@ -4170,7 +4170,7 @@ call_00_18dd:
     ret                                                ;; 00:18f5 $c9
 .jr_00_18f6:
     push DE                                            ;; 00:18f6 $d5
-    call call_00_16af                                  ;; 00:18f7 $cd $af $16
+    call getRoomMetaTileAttributes                     ;; 00:18f7 $cd $af $16
     pop  DE                                            ;; 00:18fa $d1
     ld   A, L                                          ;; 00:18fb $7d
     and  A, $07                                        ;; 00:18fc $e6 $07
@@ -4282,7 +4282,7 @@ call_00_190f:
     pop  DE                                            ;; 00:1999 $d1
     jr   Z, .jr_00_19d8                                ;; 00:199a $28 $3c
     push DE                                            ;; 00:199c $d5
-    call call_00_16af                                  ;; 00:199d $cd $af $16
+    call getRoomMetaTileAttributes                     ;; 00:199d $cd $af $16
     pop  DE                                            ;; 00:19a0 $d1
     push DE                                            ;; 00:19a1 $d5
     call call_00_1a0b                                  ;; 00:19a2 $cd $0b $1a
@@ -4313,7 +4313,7 @@ call_00_190f:
     dec  E                                             ;; 00:19cb $1d
     dec  E                                             ;; 00:19cc $1d
 .jr_00_19cd:
-    call call_00_16af                                  ;; 00:19cd $cd $af $16
+    call getRoomMetaTileAttributes                     ;; 00:19cd $cd $af $16
     ld   DE, $08                                       ;; 00:19d0 $11 $08 $00
     call HLandDE                                       ;; 00:19d3 $cd $b2 $29
     pop  BC                                            ;; 00:19d6 $c1
@@ -4345,7 +4345,7 @@ call_00_190f:
     jr   NZ, .jr_00_19ee                               ;; 00:19fb $20 $f1
     res  7, C                                          ;; 00:19fd $cb $b9
     push BC                                            ;; 00:19ff $c5
-    call call_00_16af                                  ;; 00:1a00 $cd $af $16
+    call getRoomMetaTileAttributes                     ;; 00:1a00 $cd $af $16
     ld   DE, $08                                       ;; 00:1a03 $11 $08 $00
     call HLandDE                                       ;; 00:1a06 $cd $b2 $29
     pop  BC                                            ;; 00:1a09 $c1
@@ -4782,7 +4782,7 @@ playerHousekeeping:
     cp   A, $00                                        ;; 00:1d23 $fe $00
     ret  NZ                                            ;; 00:1d25 $c0
     push HL                                            ;; 00:1d26 $e5
-    ld   HL, wD880                                     ;; 00:1d27 $21 $80 $d8
+    ld   HL, wWillChargeAlternate                      ;; 00:1d27 $21 $80 $d8
     ld   A, [wStatWill]                                ;; 00:1d2a $fa $c4 $d7
     add  A, [HL]                                       ;; 00:1d2d $86
     ld   [HL], A                                       ;; 00:1d2e $77
@@ -4793,14 +4793,14 @@ playerHousekeeping:
     call increaseWillCharge                            ;; 00:1d36 $cd $e0 $3e
 .jr_00_1d39:
     pop  HL                                            ;; 00:1d39 $e1
-    ld   A, [wItemBuffActive]                          ;; 00:1d3a $fa $7e $d8
+    ld   A, [wNectarStaminaTimerNumber]                ;; 00:1d3a $fa $7e $d8
     cp   A, $ff                                        ;; 00:1d3d $fe $ff
     ret  Z                                             ;; 00:1d3f $c8
     call timerCheckExpiredOrTickAllTimers              ;; 00:1d40 $cd $0a $30
     ret  NZ                                            ;; 00:1d43 $c0
 
 clearItemBuff:
-    ld   HL, wD7D8                                     ;; 00:1d44 $21 $d8 $d7
+    ld   HL, wStatStaminaBuffBackup                    ;; 00:1d44 $21 $d8 $d7
     ld   DE, wStatStamina                              ;; 00:1d47 $11 $c1 $d7
     ld   B, $04                                        ;; 00:1d4a $06 $04
 .jr_00_1d4c:
@@ -4809,10 +4809,10 @@ clearItemBuff:
     inc  DE                                            ;; 00:1d4e $13
     dec  B                                             ;; 00:1d4f $05
     jr   NZ, .jr_00_1d4c                               ;; 00:1d50 $20 $fa
-    ld   A, [wItemBuffActive]                          ;; 00:1d52 $fa $7e $d8
-    call call_00_2fca                                  ;; 00:1d55 $cd $ca $2f
+    ld   A, [wNectarStaminaTimerNumber]                ;; 00:1d52 $fa $7e $d8
+    call timerFree                                     ;; 00:1d55 $cd $ca $2f
     ld   A, $ff                                        ;; 00:1d58 $3e $ff
-    ld   [wItemBuffActive], A                          ;; 00:1d5a $ea $7e $d8
+    ld   [wNectarStaminaTimerNumber], A                ;; 00:1d5a $ea $7e $d8
     ret                                                ;; 00:1d5d $c9
 
 ; Store B in the VRAM address HL and return the overridden value in A
@@ -5233,7 +5233,7 @@ InitPreIntEnable:
     ld   DE, $8f00                                     ;; 00:2021 $11 $00 $8f
     ld   BC, $900                                      ;; 00:2024 $01 $00 $09
     call CopyHL_to_DE_size_BC                          ;; 00:2027 $cd $40 $2b
-    call call_00_2140                                  ;; 00:202a $cd $40 $21
+    call copyInitialVRAMTiles                          ;; 00:202a $cd $40 $21
     ld   A, $7f                                        ;; 00:202d $3e $7f
     ld   HL, $9800                                     ;; 00:202f $21 $00 $98
     ld   BC, $800                                      ;; 00:2032 $01 $00 $08
@@ -5286,9 +5286,9 @@ call_00_2092:
     ld   A, $80                                        ;; 00:20a2 $3e $80
     ld   [wVideoWY], A                                 ;; 00:20a4 $ea $a9 $c0
     ld   A, $10                                        ;; 00:20a7 $3e $10
-    ld   [wC340], A                                    ;; 00:20a9 $ea $40 $c3
-    call call_00_2f88                                  ;; 00:20ac $cd $88 $2f
-    call call_00_0bd1                                  ;; 00:20af $cd $d1 $0b
+    ld   [wRoomHeightInTiles], A                       ;; 00:20a9 $ea $40 $c3
+    call initTimersNamesAndScriptFlags                 ;; 00:20ac $cd $88 $2f
+    call initObjects                                   ;; 00:20af $cd $d1 $0b
     call call_00_2ec9                                  ;; 00:20b2 $cd $c9 $2e
     call call_00_27e9                                  ;; 00:20b5 $cd $e9 $27
     call call_00_2bf2                                  ;; 00:20b8 $cd $f2 $2b
@@ -5381,8 +5381,8 @@ call_00_217b:
     call runSoundEngine                                ;; 00:2180 $cd $00 $40
     call popBankNrAndSwitch                            ;; 00:2183 $cd $0a $2a
     call call_00_0447                                  ;; 00:2186 $cd $47 $04
-    ld   A, [wC0A2]                                    ;; 00:2189 $fa $a2 $c0
-    ld   [wC0A1], A                                    ;; 00:218c $ea $a1 $c0
+    ld   A, [wMainGameStateFlags.nextFrame]            ;; 00:2189 $fa $a2 $c0
+    ld   [wMainGameStateFlags], A                      ;; 00:218c $ea $a1 $c0
     ret                                                ;; 00:218f $c9
 
 call_00_2190:
@@ -5390,10 +5390,10 @@ call_00_2190:
     call call_00_043b                                  ;; 00:2192 $cd $3b $04
     call animateTiles_trampoline                       ;; 00:2195 $cd $70 $1a
     call call_00_291a                                  ;; 00:2198 $cd $1a $29
-    call call_00_318f                                  ;; 00:219b $cd $8f $31
-    call call_00_1d1b                                  ;; 00:219e $cd $1b $1d
+    call startScriptIfRequested                        ;; 00:219b $cd $8f $31
+    call playerHousekeeping                            ;; 00:219e $cd $1b $1d
     call checkForLevelUp                               ;; 00:21a1 $cd $4b $3d
-    call call_00_313b                                  ;; 00:21a4 $cd $3b $31
+    call updateStatusEffects_trampoline                ;; 00:21a4 $cd $3b $31
     ld   A, $ff                                        ;; 00:21a7 $3e $ff
     call timerCheckExpiredOrTickAllTimers              ;; 00:21a9 $cd $0a $30
     call processBackgroundRenderRequests               ;; 00:21ac $cd $da $1d
@@ -5645,9 +5645,9 @@ closeDoor:
     push AF                                            ;; 00:230d $f5
     cpl                                                ;; 00:230e $2f
     ld   C, A                                          ;; 00:230f $4f
-    ld   A, [wC3F4]                                    ;; 00:2310 $fa $f4 $c3
+    ld   A, [wDoorStates]                              ;; 00:2310 $fa $f4 $c3
     and  A, C                                          ;; 00:2313 $a1
-    ld   [wC3F4], A                                    ;; 00:2314 $ea $f4 $c3
+    ld   [wDoorStates], A                              ;; 00:2314 $ea $f4 $c3
     ld   A, C                                          ;; 00:2317 $79
     cpl                                                ;; 00:2318 $2f
     call call_00_225d                                  ;; 00:2319 $cd $5d $22
@@ -5677,13 +5677,13 @@ closeDoor:
     ld   A, B                                          ;; 00:2341 $78
     push BC                                            ;; 00:2342 $c5
     call Z, call_00_023e                               ;; 00:2343 $cc $3e $02
-    call call_00_28c2                                  ;; 00:2346 $cd $c2 $28
+    call checkForFollower                              ;; 00:2346 $cd $c2 $28
     pop  BC                                            ;; 00:2349 $c1
     ld   C, $07                                        ;; 00:234a $0e $07
     call Z, call_00_22bb                               ;; 00:234c $cc $bb $22
     ld   A, B                                          ;; 00:234f $78
     ld   B, $00                                        ;; 00:2350 $06 $00
-    call Z, call_00_288f                               ;; 00:2352 $cc $8f $28
+    call Z, updateObjectPosition_3_trampoline          ;; 00:2352 $cc $8f $28
     call popBankNrAndSwitch                            ;; 00:2355 $cd $0a $2a
     ret                                                ;; 00:2358 $c9
 .jr_00_2359:
@@ -5700,9 +5700,9 @@ openDoor:
     call pushBankNrAndSwitch                           ;; 00:2366 $cd $fb $29
     pop  AF                                            ;; 00:2369 $f1
     ld   C, A                                          ;; 00:236a $4f
-    ld   A, [wC3F4]                                    ;; 00:236b $fa $f4 $c3
+    ld   A, [wDoorStates]                              ;; 00:236b $fa $f4 $c3
     or   A, C                                          ;; 00:236e $b1
-    ld   [wC3F4], A                                    ;; 00:236f $ea $f4 $c3
+    ld   [wDoorStates], A                              ;; 00:236f $ea $f4 $c3
     ld   A, C                                          ;; 00:2372 $79
     call call_00_225d                                  ;; 00:2373 $cd $5d $22
     ld   E, L                                          ;; 00:2376 $5d
@@ -5774,7 +5774,7 @@ call_00_23b9:
     ld   E, A                                          ;; 00:23ce $5f
     ld   D, $00                                        ;; 00:23cf $16 $00
     ld   B, $00                                        ;; 00:23d1 $06 $00
-    ld   A, [wC3F4]                                    ;; 00:23d3 $fa $f4 $c3
+    ld   A, [wDoorStates]                              ;; 00:23d3 $fa $f4 $c3
     and  A, C                                          ;; 00:23d6 $a1
     jr   NZ, .jr_00_23e3                               ;; 00:23d7 $20 $0a
     ld   A, [wRoomTileDataPointer.high]                ;; 00:23d9 $fa $fd $c3
@@ -5852,7 +5852,7 @@ loadRoomTilesRLE:
     ld   A, $07                                        ;; 00:242c $3e $07
     call clearScriptFlag                               ;; 00:242e $cd $ee $3b
     call LoadRoomXY_to_A                               ;; 00:2431 $cd $0e $22
-    call call_00_21bf                                  ;; 00:2434 $cd $bf $21
+    call getRoomClearedStatusAndUpdateList             ;; 00:2434 $cd $bf $21
     ld   A, $07                                        ;; 00:2437 $3e $07
     call NZ, setScriptFlag                             ;; 00:2439 $c4 $e4 $3b
     pop  DE                                            ;; 00:243c $d1
@@ -5964,7 +5964,7 @@ runRoomScript:
     or   A, $00                                        ;; 00:24eb $f6 $00
     ld   C, $c9                                        ;; 00:24ed $0e $c9
     pop  HL                                            ;; 00:24ef $e1
-    call runScriptByAddress                            ;; 00:24f0 $cd $13 $32
+    call runSubScriptFromScriptByIndex                 ;; 00:24f0 $cd $13 $32
     push HL                                            ;; 00:24f3 $e5
     call popBankNrAndSwitch                            ;; 00:24f4 $cd $0a $2a
     pop  HL                                            ;; 00:24f7 $e1
@@ -5987,7 +5987,7 @@ runRoomExitScript:
     or   A, $00                                        ;; 00:2511 $f6 $00
     ld   C, $c9                                        ;; 00:2513 $0e $c9
     pop  HL                                            ;; 00:2515 $e1
-    call runScriptByAddress                            ;; 00:2516 $cd $13 $32
+    call runSubScriptFromScriptByIndex                 ;; 00:2516 $cd $13 $32
     push HL                                            ;; 00:2519 $e5
     call popBankNrAndSwitch                            ;; 00:251a $cd $0a $2a
     pop  HL                                            ;; 00:251d $e1
@@ -6011,7 +6011,7 @@ runRoomAllKilledScript:
     or   A, $00                                        ;; 00:2538 $f6 $00
     ld   C, $c9                                        ;; 00:253a $0e $c9
     pop  HL                                            ;; 00:253c $e1
-    call runScriptByAddress                            ;; 00:253d $cd $13 $32
+    call runSubScriptFromScriptByIndex                 ;; 00:253d $cd $13 $32
     push HL                                            ;; 00:2540 $e5
     call popBankNrAndSwitch                            ;; 00:2541 $cd $0a $2a
     pop  HL                                            ;; 00:2544 $e1
@@ -6053,7 +6053,7 @@ loadRoomTilesTemplated:
     pop  HL                                            ;; 00:256e $e1
     ld   B, $04                                        ;; 00:256f $06 $04
     ld   A, $00                                        ;; 00:2571 $3e $00
-    ld   [wC3F4], A                                    ;; 00:2573 $ea $f4 $c3
+    ld   [wDoorStates], A                              ;; 00:2573 $ea $f4 $c3
 .loadDoorTilesLoop:
     ld   A, [HL+]                                      ;; 00:2576 $2a
     bit  7, A                                          ;; 00:2577 $cb $7f
@@ -6100,12 +6100,12 @@ loadRoomTilesTemplated:
 .jr_00_25ab:
     ld   A, $04                                        ;; 00:25ab $3e $04
     sub  A, B                                          ;; 00:25ad $90
-    call call_00_299a                                  ;; 00:25ae $cd $9a $29
+    call getA_And3Power2                               ;; 00:25ae $cd $9a $29
     push DE                                            ;; 00:25b1 $d5
     ld   E, A                                          ;; 00:25b2 $5f
-    ld   A, [wC3F4]                                    ;; 00:25b3 $fa $f4 $c3
+    ld   A, [wDoorStates]                              ;; 00:25b3 $fa $f4 $c3
     or   A, E                                          ;; 00:25b6 $b3
-    ld   [wC3F4], A                                    ;; 00:25b7 $ea $f4 $c3
+    ld   [wDoorStates], A                              ;; 00:25b7 $ea $f4 $c3
     pop  DE                                            ;; 00:25ba $d1
 .jr_00_25bb:
     dec  B                                             ;; 00:25bb $05
@@ -6459,7 +6459,7 @@ call_00_27ba:
 
 checkObjectCollisions_trampoline:
     call call_00_04aa                                  ;; 00:27ce $cd $aa $04
-    jp_to_bank 03, call_03_402c                        ;; 00:27d1 $f5 $3e $00 $c3 $35 $1f
+    jp_to_bank 03, checkObjectCollisions               ;; 00:27d1 $f5 $3e $00 $c3 $35 $1f
 
 call_00_27d7:
     jp_to_bank 03, call_03_4af5                        ;; 00:27d7 $f5 $3e $01 $c3 $35 $1f
@@ -6485,7 +6485,7 @@ call_00_27e9:
 scriptOpCodeSetNPCTypes:
     ld   A, [wScriptOpCounter]                         ;; 00:27f9 $fa $99 $d4
     cp   A, $00                                        ;; 00:27fc $fe $00
-    call Z, call_00_2819                               ;; 00:27fe $cc $19 $28
+    call Z, setNpcSpawnTable_trampoline                ;; 00:27fe $cc $19 $28
     ld   A, $01                                        ;; 00:2801 $3e $01
     ld   [wScriptOpCounter], A                         ;; 00:2803 $ea $99 $d4
     ld   A, [wTileCopyRequestCount]                    ;; 00:2806 $fa $e0 $c8
@@ -6500,12 +6500,12 @@ scriptOpCodeSetNPCTypes:
 
 setNpcSpawnTable_trampoline:
     ld   A, [HL+]                                      ;; 00:2819 $2a
-    jp_to_bank 03, call_03_444a                        ;; 00:281a $f5 $3e $05 $c3 $35 $1f
+    jp_to_bank 03, setNpcSpawnTable                    ;; 00:281a $f5 $3e $05 $c3 $35 $1f
 
 scriptOpCodeSpawnNPC:
     ld   A, [wScriptOpCounter]                         ;; 00:2820 $fa $99 $d4
     cp   A, $00                                        ;; 00:2823 $fe $00
-    call Z, call_00_2840                               ;; 00:2825 $cc $40 $28
+    call Z, spawnNpcsFromTable_trampoline              ;; 00:2825 $cc $40 $28
     ld   A, $01                                        ;; 00:2828 $3e $01
     ld   [wScriptOpCounter], A                         ;; 00:282a $ea $99 $d4
     ld   A, [wTileCopyRequestCount]                    ;; 00:282d $fa $e0 $c8
@@ -6520,10 +6520,10 @@ scriptOpCodeSpawnNPC:
 
 spawnNpcsFromTable_trampoline:
     ld   A, [HL+]                                      ;; 00:2840 $2a
-    jp_to_bank 03, call_03_44ed                        ;; 00:2841 $f5 $3e $04 $c3 $35 $1f
+    jp_to_bank 03, spawnNpcsFromTable                  ;; 00:2841 $f5 $3e $04 $c3 $35 $1f
 
 call_00_2847:
-    jp_to_bank 03, call_03_455d                        ;; 00:2847 $f5 $3e $06 $c3 $35 $1f
+    jp_to_bank 03, setHLToZero_3                       ;; 00:2847 $f5 $3e $06 $c3 $35 $1f
 
 call_00_284d:
     jp_to_bank 03, call_03_4561                        ;; 00:284d $f5 $3e $08 $c3 $35 $1f
@@ -6622,7 +6622,7 @@ checkForFollower:
     ret                                                ;; 00:28d4 $c9
 
 call_00_28d5:
-    call call_00_28c2                                  ;; 00:28d5 $cd $c2 $28
+    call checkForFollower                              ;; 00:28d5 $cd $c2 $28
     ret  NZ                                            ;; 00:28d8 $c0
     ld   A, $00                                        ;; 00:28d9 $3e $00
     ld   L, A                                          ;; 00:28db $6f
@@ -6643,7 +6643,7 @@ call_00_28d5:
     ret                                                ;; 00:28ef $c9
 
 call_00_28f0:
-    call call_00_28c2                                  ;; 00:28f0 $cd $c2 $28
+    call checkForFollower                              ;; 00:28f0 $cd $c2 $28
     ret  NZ                                            ;; 00:28f3 $c0
     ld   A, $00                                        ;; 00:28f4 $3e $00
     ld   L, A                                          ;; 00:28f6 $6f
@@ -6666,12 +6666,12 @@ call_00_28f0:
 
 call_00_290d:
     ld   HL, $00                                       ;; 00:290d $21 $00 $00
-    call call_00_28c2                                  ;; 00:2910 $cd $c2 $28
+    call checkForFollower                              ;; 00:2910 $cd $c2 $28
     ret  NZ                                            ;; 00:2913 $c0
     jp_to_bank 03, getNpcScriptIndex                   ;; 00:2914 $f5 $3e $15 $c3 $35 $1f
 
 call_00_291a:
-    ld   A, [wC0A1]                                    ;; 00:291a $fa $a1 $c0
+    ld   A, [wMainGameStateFlags]                      ;; 00:291a $fa $a1 $c0
     bit  1, A                                          ;; 00:291d $cb $4f
     ret  NZ                                            ;; 00:291f $c0
     jp_to_bank 03, call_03_4c30                        ;; 00:2920 $f5 $3e $13 $c3 $35 $1f
@@ -7097,7 +7097,7 @@ sub_HL_DE:
     db   $3d, $20, $fa, $3d, $c9                       ;; 00:2bcc ?????
 
 checkProjectileCollisions_trampoline:
-    jp_to_bank 09, call_09_4016                        ;; 00:2bd1 $f5 $3e $00 $c3 $93 $1f
+    jp_to_bank 09, checkProjectileCollisions           ;; 00:2bd1 $f5 $3e $00 $c3 $93 $1f
 
 call_00_2bd7:
     jp_to_bank 09, call_09_4012                        ;; 00:2bd7 $f5 $3e $01 $c3 $93 $1f
@@ -7114,7 +7114,7 @@ spawnProjectile_trampoline:
     jp_to_bank 09, spawnProjectile                     ;; 00:2bec $f5 $3e $04 $c3 $93 $1f
 
 call_00_2bf2:
-    ld   HL, wC5C0                                     ;; 00:2bf2 $21 $c0 $c5
+    ld   HL, wProjectileRuntimeData                    ;; 00:2bf2 $21 $c0 $c5
     ld   B, $03                                        ;; 00:2bf5 $06 $03
     ld   DE, $0a                                       ;; 00:2bf7 $11 $0a $00
     ld   A, $ff                                        ;; 00:2bfa $3e $ff
@@ -7129,7 +7129,7 @@ NOOP:
     ret                                                ;; 00:2c02 $c9
 
 projectileCollisionHandling_trampoline:
-    jp_to_bank 09, call_09_4399                        ;; 00:2c03 $f5 $3e $08 $c3 $93 $1f
+    jp_to_bank 09, projectileCollisionHandling         ;; 00:2c03 $f5 $3e $08 $c3 $93 $1f
 
 call_00_2c09:
     jp_to_bank 09, getProjectileOffset02               ;; 00:2c09 $f5 $3e $05 $c3 $93 $1f
@@ -7577,30 +7577,30 @@ call_00_2f3e:
     jp_to_bank 01, call_01_5d98                        ;; 00:2f3e $f5 $3e $24 $c3 $d7 $1e
 
 useSlep:
-    ld   A, [wCF60]                                    ;; 00:2f44 $fa $60 $cf
+    ld   A, [wSlepTimerNumber]                         ;; 00:2f44 $fa $60 $cf
     cp   A, $00                                        ;; 00:2f47 $fe $00
     jr   Z, .jr_00_2f50                                ;; 00:2f49 $28 $05
     push HL                                            ;; 00:2f4b $e5
-    call call_00_2fca                                  ;; 00:2f4c $cd $ca $2f
+    call timerFree                                     ;; 00:2f4c $cd $ca $2f
     pop  HL                                            ;; 00:2f4f $e1
 .jr_00_2f50:
     call call_00_2f9e                                  ;; 00:2f50 $cd $9e $2f
-    ld   [wCF60], A                                    ;; 00:2f53 $ea $60 $cf
-    call call_00_2fd4                                  ;; 00:2f56 $cd $d4 $2f
+    ld   [wSlepTimerNumber], A                         ;; 00:2f53 $ea $60 $cf
+    call timerStart                                    ;; 00:2f56 $cd $d4 $2f
     call call_00_292c                                  ;; 00:2f59 $cd $2c $29
     ret                                                ;; 00:2f5c $c9
 
 useMute:
-    ld   A, [wCF61]                                    ;; 00:2f5d $fa $61 $cf
+    ld   A, [wMuteTimerNumber]                         ;; 00:2f5d $fa $61 $cf
     cp   A, $00                                        ;; 00:2f60 $fe $00
     jr   Z, .jr_00_2f69                                ;; 00:2f62 $28 $05
     push HL                                            ;; 00:2f64 $e5
-    call call_00_2fca                                  ;; 00:2f65 $cd $ca $2f
+    call timerFree                                     ;; 00:2f65 $cd $ca $2f
     pop  HL                                            ;; 00:2f68 $e1
 .jr_00_2f69:
     call call_00_2f9e                                  ;; 00:2f69 $cd $9e $2f
-    ld   [wCF61], A                                    ;; 00:2f6c $ea $61 $cf
-    call call_00_2fd4                                  ;; 00:2f6f $cd $d4 $2f
+    ld   [wMuteTimerNumber], A                         ;; 00:2f6c $ea $61 $cf
+    call timerStart                                    ;; 00:2f6f $cd $d4 $2f
     call call_00_2932                                  ;; 00:2f72 $cd $32 $29
     ret                                                ;; 00:2f75 $c9
 
@@ -7775,7 +7775,7 @@ timerCheckExpiredOrTickAllTimers:
     ld   A, D                                          ;; 00:3033 $7a
     and  A, E                                          ;; 00:3034 $a3
     inc  A                                             ;; 00:3035 $3c
-    call Z, call_00_304c                               ;; 00:3036 $cc $4c $30
+    call Z, timerReset                                 ;; 00:3036 $cc $4c $30
     dec  HL                                            ;; 00:3039 $2b
 .jr_00_303a:
     ld   DE, $04                                       ;; 00:303a $11 $04 $00
@@ -7911,7 +7911,7 @@ setAToZero_trampoline:
     jp_to_bank 02, setAToZero_2                        ;; 00:3135 $f5 $3e $2b $c3 $06 $1f
 
 updateStatusEffects_trampoline:
-    jp_to_bank 02, call_02_78c6                        ;; 00:313b $f5 $3e $2c $c3 $06 $1f
+    jp_to_bank 02, updateStatusEffects                 ;; 00:313b $f5 $3e $2c $c3 $06 $1f
     db   $f5, $3e, $2d, $c3, $06, $1f                  ;; 00:3141 ??????
 
 drawWillBarCharge_trampoline:
@@ -7955,13 +7955,13 @@ startScriptIfRequested:
     bit  7, [HL]                                       ;; 00:3192 $cb $7e
     ret  Z                                             ;; 00:3194 $c8
     ld   A, [wMainGameState]                           ;; 00:3195 $fa $a0 $c0
-    ld   [wD86E], A                                    ;; 00:3198 $ea $6e $d8
+    ld   [wScriptMainGameStateBackup], A               ;; 00:3198 $ea $6e $d8
     ld   A, $10                                        ;; 00:319b $3e $10
     ld   [wMainGameState], A                           ;; 00:319d $ea $a0 $c0
     res  7, [HL]                                       ;; 00:31a0 $cb $be
-    ld   HL, wC0A1                                     ;; 00:31a2 $21 $a1 $c0
+    ld   HL, wMainGameStateFlags                       ;; 00:31a2 $21 $a1 $c0
     set  3, [HL]                                       ;; 00:31a5 $cb $de
-    ld   HL, wC0A2                                     ;; 00:31a7 $21 $a2 $c0
+    ld   HL, wMainGameStateFlags.nextFrame             ;; 00:31a7 $21 $a2 $c0
     set  3, [HL]                                       ;; 00:31aa $cb $de
     ret                                                ;; 00:31ac $c9
 
@@ -7970,7 +7970,7 @@ startScriptIfRequested:
 ; HL=Script index
 runScriptByIndex:
     push HL                                            ;; 00:31ad $e5
-    ld   HL, wC0A1                                     ;; 00:31ae $21 $a1 $c0
+    ld   HL, wMainGameStateFlags                       ;; 00:31ae $21 $a1 $c0
     bit  1, [HL]                                       ;; 00:31b1 $cb $4e
     pop  HL                                            ;; 00:31b3 $e1
     ret  NZ                                            ;; 00:31b4 $c0
@@ -8015,10 +8015,10 @@ runScriptFromScriptByIndex:
     call getNextScriptInstruction                      ;; 00:31fc $cd $27 $37
     push HL                                            ;; 00:31ff $e5
     call popBankNrAndSwitch                            ;; 00:3200 $cd $0a $2a
-    ld   HL, wC0A1                                     ;; 00:3203 $21 $a1 $c0
+    ld   HL, wMainGameStateFlags                       ;; 00:3203 $21 $a1 $c0
     set  2, [HL]                                       ;; 00:3206 $cb $d6
     set  1, [HL]                                       ;; 00:3208 $cb $ce
-    ld   HL, wC0A2                                     ;; 00:320a $21 $a2 $c0
+    ld   HL, wMainGameStateFlags.nextFrame             ;; 00:320a $21 $a2 $c0
     set  2, [HL]                                       ;; 00:320d $cb $d6
     set  1, [HL]                                       ;; 00:320f $cb $ce
     pop  HL                                            ;; 00:3211 $e1
@@ -8046,7 +8046,7 @@ runSubScriptFromScriptByIndex:
     ld   D, A                                          ;; 00:322d $57
 .jr_00_322e:
     push DE                                            ;; 00:322e $d5
-    call call_00_31c7                                  ;; 00:322f $cd $c7 $31
+    call runScriptFromScriptByIndex                    ;; 00:322f $cd $c7 $31
     push HL                                            ;; 00:3232 $e5
     pop  DE                                            ;; 00:3233 $d1
     pop  HL                                            ;; 00:3234 $e1
@@ -8064,7 +8064,7 @@ runSubScriptFromScriptByIndex:
     pop  AF                                            ;; 00:3247 $f1
     ld   [wScriptBank], A                              ;; 00:3248 $ea $6a $d8
     push BC                                            ;; 00:324b $c5
-    call call_00_3304                                  ;; 00:324c $cd $04 $33
+    call jumpToScriptAtAddressDE                       ;; 00:324c $cd $04 $33
     pop  BC                                            ;; 00:324f $c1
     ld   A, B                                          ;; 00:3250 $78
     ld   [wScriptBank], A                              ;; 00:3251 $ea $6a $d8
@@ -8123,13 +8123,13 @@ scriptOpCodeEND:
     jr   NZ, .jr_00_32c0                               ;; 00:32a1 $20 $1d
     xor  A, A                                          ;; 00:32a3 $af
     ld   [wScriptCommand], A                           ;; 00:32a4 $ea $5a $d8
-    ld   A, [wD86E]                                    ;; 00:32a7 $fa $6e $d8
+    ld   A, [wScriptMainGameStateBackup]               ;; 00:32a7 $fa $6e $d8
     ld   [wMainGameState], A                           ;; 00:32aa $ea $a0 $c0
-    ld   HL, wC0A1                                     ;; 00:32ad $21 $a1 $c0
+    ld   HL, wMainGameStateFlags                       ;; 00:32ad $21 $a1 $c0
     res  1, [HL]                                       ;; 00:32b0 $cb $8e
     res  3, [HL]                                       ;; 00:32b2 $cb $9e
     res  2, [HL]                                       ;; 00:32b4 $cb $96
-    ld   HL, wC0A2                                     ;; 00:32b6 $21 $a2 $c0
+    ld   HL, wMainGameStateFlags.nextFrame             ;; 00:32b6 $21 $a2 $c0
     res  1, [HL]                                       ;; 00:32b9 $cb $8e
     res  3, [HL]                                       ;; 00:32bb $cb $9e
     res  2, [HL]                                       ;; 00:32bd $cb $96
@@ -8233,7 +8233,7 @@ scriptOpCodeMsg:
     jp   scriptOpCodeMsg_HandleDualCharacters          ;; 00:3353 $c3 $a4 $34
 .jr_00_3356:
     and  A, A                                          ;; 00:3356 $a7
-    jr   NZ, .jr_00_335e                               ;; 00:3357 $20 $05
+    jr   NZ, scriptOpCodeMsg.handleCtrlCodes           ;; 00:3357 $20 $05
     inc  HL                                            ;; 00:3359 $23
     call getNextScriptInstruction                      ;; 00:335a $cd $27 $37
     ret                                                ;; 00:335d $c9
@@ -8446,9 +8446,9 @@ scriptOpCodeMsg_HandleSimpleCharacters:
     call call_00_3c87                                  ;; 00:3485 $cd $87 $3c
     pop  HL                                            ;; 00:3488 $e1
     call drawText                                      ;; 00:3489 $cd $77 $37
-    ld   A, [wD89B]                                    ;; 00:348c $fa $9b $d8
+    ld   A, [wWindowTextLength]                        ;; 00:348c $fa $9b $d8
     ld   B, A                                          ;; 00:348f $47
-    ld   A, [wD89A]                                    ;; 00:3490 $fa $9a $d8
+    ld   A, [wWindowTextRows]                          ;; 00:3490 $fa $9a $d8
     ld   C, A                                          ;; 00:3493 $4f
     call call_00_3c73                                  ;; 00:3494 $cd $73 $3c
     dec  HL                                            ;; 00:3497 $2b
@@ -8546,7 +8546,7 @@ textCtrlCodeYesNo:
     ld   HL, wDialogX                                  ;; 00:3520 $21 $a7 $d4
     call copyHLtoDE                                    ;; 00:3523 $cd $49 $2b
     ld   A, [wMainGameState]                           ;; 00:3526 $fa $a0 $c0
-    ld   [wMainGameStateBackup], A                     ;; 00:3529 $ea $62 $d8
+    ld   [wWindowMainGameStateBackup], A               ;; 00:3529 $ea $62 $d8
     pop  HL                                            ;; 00:352c $e1
     ld   A, [HL+]                                      ;; 00:352d $2a
     ld   [wScriptSavedNextOpcode], A                   ;; 00:352e $ea $6c $d8
@@ -8729,9 +8729,9 @@ call_00_3627:
     ld   A, [wDialogType]                              ;; 00:3630 $fa $4a $d8
     call call_00_3087                                  ;; 00:3633 $cd $87 $30
     ld   A, B                                          ;; 00:3636 $78
-    ld   [wD89B], A                                    ;; 00:3637 $ea $9b $d8
+    ld   [wWindowTextLength], A                        ;; 00:3637 $ea $9b $d8
     ld   A, C                                          ;; 00:363a $79
-    ld   [wD89A], A                                    ;; 00:363b $ea $9a $d8
+    ld   [wWindowTextRows], A                          ;; 00:363b $ea $9a $d8
     ld   A, B                                          ;; 00:363e $78
     ld   [wD8AF], A                                    ;; 00:363f $ea $af $d8
     ld   A, C                                          ;; 00:3642 $79
@@ -8802,9 +8802,9 @@ jr_00_36a8:
     ld   A, $1f                                        ;; 00:36a8 $3e $1f
     ld   [wD853], A                                    ;; 00:36aa $ea $53 $d8
     call startDialog                                   ;; 00:36ad $cd $d0 $36
-    ld   A, [wD89B]                                    ;; 00:36b0 $fa $9b $d8
+    ld   A, [wWindowTextLength]                        ;; 00:36b0 $fa $9b $d8
     ld   B, A                                          ;; 00:36b3 $47
-    ld   A, [wD89A]                                    ;; 00:36b4 $fa $9a $d8
+    ld   A, [wWindowTextRows]                          ;; 00:36b4 $fa $9a $d8
     ld   C, A                                          ;; 00:36b7 $4f
     ld   DE, $201                                      ;; 00:36b8 $11 $01 $02
     call setDialogTextInsertionPoint                   ;; 00:36bb $cd $36 $37
@@ -9018,7 +9018,7 @@ drawText:
     ret                                                ;; 00:380a $c9
 
 call_00_380b:
-    ld   A, [wD89B]                                    ;; 00:380b $fa $9b $d8
+    ld   A, [wWindowTextLength]                        ;; 00:380b $fa $9b $d8
     ld   B, A                                          ;; 00:380e $47
     ld   A, [wD849]                                    ;; 00:380f $fa $49 $d8
     rrca                                               ;; 00:3812 $0f
@@ -9291,8 +9291,8 @@ scriptOpCodeGiveStatus:
     ret                                                ;; 00:39a6 $c9
 
 call_00_39a7:
-    ld   A, [wD86E]                                    ;; 00:39a7 $fa $6e $d8
-    ld   [wMainGameStateBackup], A                     ;; 00:39aa $ea $62 $d8
+    ld   A, [wScriptMainGameStateBackup]               ;; 00:39a7 $fa $6e $d8
+    ld   [wWindowMainGameStateBackup], A               ;; 00:39aa $ea $62 $d8
     pop  HL                                            ;; 00:39ad $e1
     call getNextScriptInstruction                      ;; 00:39ae $cd $27 $37
     ret                                                ;; 00:39b1 $c9
@@ -9313,9 +9313,9 @@ scriptOpCodeRNG:
 scriptOpCodeStartNameEntry:
     push HL                                            ;; 00:39c7 $e5
     xor  A, A                                          ;; 00:39c8 $af
-    ld   [wD86E], A                                    ;; 00:39c9 $ea $6e $d8
+    ld   [wScriptMainGameStateBackup], A               ;; 00:39c9 $ea $6e $d8
     ld   A, [wMainGameState]                           ;; 00:39cc $fa $a0 $c0
-    ld   [wMainGameStateBackup], A                     ;; 00:39cf $ea $62 $d8
+    ld   [wWindowMainGameStateBackup], A               ;; 00:39cf $ea $62 $d8
     ld   A, [HL+]                                      ;; 00:39d2 $2a
     ld   [wScriptSavedNextOpcode], A                   ;; 00:39d3 $ea $6c $d8
     call clearStatusBarTrampoline                      ;; 00:39d6 $cd $ff $30
@@ -9508,9 +9508,9 @@ vendorCantCarry:
     ld   A, $0f                                        ;; 00:3aee $3e $0f
     ld   [wDialogType], A                              ;; 00:3af0 $ea $4a $d8
     ld   HL, cantCarryTextLabel                        ;; 00:3af3 $21 $10 $3f
-    ld   A, [wD89B]                                    ;; 00:3af6 $fa $9b $d8
+    ld   A, [wWindowTextLength]                        ;; 00:3af6 $fa $9b $d8
     ld   B, A                                          ;; 00:3af9 $47
-    ld   A, [wD89A]                                    ;; 00:3afa $fa $9a $d8
+    ld   A, [wWindowTextRows]                          ;; 00:3afa $fa $9a $d8
     ld   C, A                                          ;; 00:3afd $4f
     dec  B                                             ;; 00:3afe $05
     dec  B                                             ;; 00:3aff $05
@@ -9610,7 +9610,7 @@ scriptOpCodeTakeEquipedItem:
 .jr_00_3b81:
     ld   A, $80                                        ;; 00:3b81 $3e $80
     ld   [wEquippedItem], A                            ;; 00:3b83 $ea $ef $d6
-    ld   [wD6F1], A                                    ;; 00:3b86 $ea $f1 $d6
+    ld   [wEquippedItemAndWeaponCopy], A               ;; 00:3b86 $ea $f1 $d6
     ld   HL, wItemInventory                            ;; 00:3b89 $21 $c5 $d6
     ld   B, $18                                        ;; 00:3b8c $06 $18
 .jr_00_3b8e:
@@ -9708,21 +9708,21 @@ scriptOpCodeDelay:
     ld   H, $00                                        ;; 00:3bfd $26 $00
     ld   L, A                                          ;; 00:3bff $6f
     call call_00_2f9e                                  ;; 00:3c00 $cd $9e $2f
-    ld   [wD84D], A                                    ;; 00:3c03 $ea $4d $d8
-    call call_00_2fd4                                  ;; 00:3c06 $cd $d4 $2f
+    ld   [wScriptDelayOpCodeTimerNumber], A            ;; 00:3c03 $ea $4d $d8
+    call timerStart                                    ;; 00:3c06 $cd $d4 $2f
     ld   B, $03                                        ;; 00:3c09 $06 $03
     call runVirtualScriptOpCodeFF                      ;; 00:3c0b $cd $69 $3c
     pop  HL                                            ;; 00:3c0e $e1
     ret                                                ;; 00:3c0f $c9
 
 call_00_3c10:
-    ld   A, [wD84D]                                    ;; 00:3c10 $fa $4d $d8
+    ld   A, [wScriptDelayOpCodeTimerNumber]            ;; 00:3c10 $fa $4d $d8
     call timerCheckExpiredOrTickAllTimers              ;; 00:3c13 $cd $0a $30
     pop  HL                                            ;; 00:3c16 $e1
     ret  NZ                                            ;; 00:3c17 $c0
     push HL                                            ;; 00:3c18 $e5
-    ld   A, [wD84D]                                    ;; 00:3c19 $fa $4d $d8
-    call call_00_2fca                                  ;; 00:3c1c $cd $ca $2f
+    ld   A, [wScriptDelayOpCodeTimerNumber]            ;; 00:3c19 $fa $4d $d8
+    call timerFree                                     ;; 00:3c1c $cd $ca $2f
     pop  HL                                            ;; 00:3c1f $e1
     call getNextScriptInstruction                      ;; 00:3c20 $cd $27 $37
     ret                                                ;; 00:3c23 $c9
@@ -9812,7 +9812,7 @@ call_00_3c87:
 scriptOpCodeOpenShop:
     push HL                                            ;; 00:3c97 $e5
     ld   A, [wMainGameState]                           ;; 00:3c98 $fa $a0 $c0
-    ld   [wMainGameStateBackup], A                     ;; 00:3c9b $ea $62 $d8
+    ld   [wWindowMainGameStateBackup], A               ;; 00:3c9b $ea $62 $d8
     ld   A, [HL+]                                      ;; 00:3c9e $2a
     ld   [wVendorNumber], A                            ;; 00:3c9f $ea $6d $d8
     ld   A, [HL+]                                      ;; 00:3ca2 $2a
@@ -9846,9 +9846,9 @@ scriptResumeAfterWindow:
     ld   [wScriptCommand], A                           ;; 00:3cda $ea $5a $d8
     ld   DE, $00                                       ;; 00:3cdd $11 $00 $00
     ld   HL, $1214                                     ;; 00:3ce0 $21 $14 $12
-    call call_00_0435                                  ;; 00:3ce3 $cd $35 $04
-    ld   A, [wD86E]                                    ;; 00:3ce6 $fa $6e $d8
-    ld   [wMainGameStateBackup], A                     ;; 00:3ce9 $ea $62 $d8
+    call showSpritesBehindWindow_trampoline            ;; 00:3ce3 $cd $35 $04
+    ld   A, [wScriptMainGameStateBackup]               ;; 00:3ce6 $fa $6e $d8
+    ld   [wWindowMainGameStateBackup], A               ;; 00:3ce9 $ea $62 $d8
     pop  HL                                            ;; 00:3cec $e1
     inc  HL                                            ;; 00:3ced $23
     inc  HL                                            ;; 00:3cee $23
@@ -10074,7 +10074,7 @@ checkForPlayerDeath:
     ld   E, A                                          ;; 00:3e4d $5f
     or   A, D                                          ;; 00:3e4e $b2
     ret  NZ                                            ;; 00:3e4f $c0
-    ld   A, [wC0A1]                                    ;; 00:3e50 $fa $a1 $c0
+    ld   A, [wMainGameStateFlags]                      ;; 00:3e50 $fa $a1 $c0
     bit  1, A                                          ;; 00:3e53 $cb $4f
     ret  NZ                                            ;; 00:3e55 $c0
     ld   A, [wMainGameState]                           ;; 00:3e56 $fa $a0 $c0
@@ -10088,9 +10088,9 @@ checkForPlayerDeath:
     ret                                                ;; 00:3e6a $c9
 
 startLevelUp:
-    ld   A, [wItemBuffActive]                          ;; 00:3e6b $fa $7e $d8
+    ld   A, [wNectarStaminaTimerNumber]                ;; 00:3e6b $fa $7e $d8
     cp   A, $ff                                        ;; 00:3e6e $fe $ff
-    call NZ, call_00_1d44                              ;; 00:3e70 $c4 $44 $1d
+    call NZ, clearItemBuff                             ;; 00:3e70 $c4 $44 $1d
     ld   A, [wMusic]                                   ;; 00:3e73 $fa $9b $d4
     ld   [wCurrentMusicLevelUpBackup], A               ;; 00:3e76 $ea $42 $d8
     ld   A, $1c                                        ;; 00:3e79 $3e $1c
@@ -10105,7 +10105,7 @@ startLevelUp:
     ret                                                ;; 00:3e8e $c9
 
 setScriptMainGameStateBackup:
-    ld   [wD86E], A                                    ;; 00:3e8f $ea $6e $d8
+    ld   [wScriptMainGameStateBackup], A               ;; 00:3e8f $ea $6e $d8
     ret                                                ;; 00:3e92 $c9
     db   $fa, $58, $d8, $c9                            ;; 00:3e93 ????
 

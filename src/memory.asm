@@ -24,7 +24,6 @@ wMainGameState:
 ; bit 4-7: scrolling direction (nibbles are swapped for this)
 wMainGameStateFlags:
     ds 1                                               ;; c0a1
-
 .nextFrame:
     ds 2                                               ;; c0a2
 
@@ -291,13 +290,11 @@ wC162:
 
 wSoundEffectInstructionPointerChannel1:
     ds 1                                               ;; c1c4
-
 .high:
     ds 1                                               ;; c1c5
 
 wSoundEffectInstructionPointerChannel4:
     ds 1                                               ;; c1c6
-
 .high:
     ds 1                                               ;; c1c7
 
@@ -323,7 +320,6 @@ wC1CA:
 ; The seventh entry is either the first Npc or your follower, if present.
 wObjectRuntimeData:
     ds 112                                             ;; c200
-
 .npc1:
     ds 208                                             ;; c270
 
@@ -731,7 +727,6 @@ wCurrentBossDataPointer:
 
 wCurrentBossPatternPointer:
     ds 1                                               ;; d43a
-
 .high:
     ds 1                                               ;; d43b
 
@@ -756,7 +751,6 @@ wD441:
 ; Six bytes each, 14 total, but the largest boss only uses 11.
 wbossObjectsRuntimeData:
     ds 4                                               ;; d442
-
 ._04:
     ds 82                                              ;; d446
 

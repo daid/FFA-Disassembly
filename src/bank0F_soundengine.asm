@@ -45,14 +45,14 @@ runSoundEngineReal:
     ld   B, A                                          ;; 0f:4030 $47
     ldh  A, [hCurrentMusic]                            ;; 0f:4031 $f0 $90
     cp   A, B                                          ;; 0f:4033 $b8
-    call NZ, MusicSongInit                             ;; 0f:4034 $c4 $9e $40
+    call NZ, musicSongInit                             ;; 0f:4034 $c4 $9e $40
 .jr_0f_4037:
     ldh  A, [hSFX]                                     ;; 0f:4037 $f0 $92
     or   A, A                                          ;; 0f:4039 $b7
     call NZ, soundEffectPlay                           ;; 0f:403a $c4 $3c $49
 .jr_0f_403d:
-    call call_0f_4257                                  ;; 0f:403d $cd $57 $42
-    call call_0f_4965                                  ;; 0f:4040 $cd $65 $49
+    call musicPlayStep                                 ;; 0f:403d $cd $57 $42
+    call soundEffectPlayStep                           ;; 0f:4040 $cd $65 $49
     pop  HL                                            ;; 0f:4043 $e1
     pop  DE                                            ;; 0f:4044 $d1
     pop  BC                                            ;; 0f:4045 $c1
@@ -113,7 +113,7 @@ call_0f_4084:
 musicSongInit:
     ldh  [hPlayingMusic], A                            ;; 0f:409e $e0 $93
     or   A, A                                          ;; 0f:40a0 $b7
-    jr   NZ, MusicSongPlay                             ;; 0f:40a1 $20 $04
+    jr   NZ, musicSongPlay                             ;; 0f:40a1 $20 $04
     call initSoundEngineReal                           ;; 0f:40a3 $cd $48 $40
     ret                                                ;; 0f:40a6 $c9
 
@@ -177,7 +177,7 @@ call_0f_40ee:
     dec  C                                             ;; 0f:4103 $0d
     jr   NZ, .jr_0f_4100                               ;; 0f:4104 $20 $fa
     ldh  A, [hFF91]                                    ;; 0f:4106 $f0 $91
-    call MusicSongPlay                                 ;; 0f:4108 $cd $a7 $40
+    call musicSongPlay                                 ;; 0f:4108 $cd $a7 $40
     ld   A, $01                                        ;; 0f:410b $3e $01
     ldh  [hFF99], A                                    ;; 0f:410d $e0 $99
     ret                                                ;; 0f:410f $c9
@@ -930,12 +930,12 @@ data_0f_4664:
 jp_0f_4668:
     ld   A, [wC143]                                    ;; 0f:4668 $fa $43 $c1
     cp   A, $ff                                        ;; 0f:466b $fe $ff
-    jp   Z, jp_0f_47c7                                 ;; 0f:466d $ca $c7 $47
+    jp   Z, return                                     ;; 0f:466d $ca $c7 $47
     ld   A, [wC133]                                    ;; 0f:4670 $fa $33 $c1
     dec  A                                             ;; 0f:4673 $3d
     ld   [wC133], A                                    ;; 0f:4674 $ea $33 $c1
     ldh  [hFF97], A                                    ;; 0f:4677 $e0 $97
-    jp   NZ, jp_0f_47c7                                ;; 0f:4679 $c2 $c7 $47
+    jp   NZ, return                                    ;; 0f:4679 $c2 $c7 $47
 
 jp_0f_467c:
     call getNextMusicInstructionChannel3               ;; 0f:467c $cd $ea $47
@@ -954,12 +954,12 @@ jp_0f_467c:
     and  A, $0f                                        ;; 0f:4694 $e6 $0f
     ld   [wC141], A                                    ;; 0f:4696 $ea $41 $c1
     cp   A, $0e                                        ;; 0f:4699 $fe $0e
-    jp   Z, jp_0f_47c7                                 ;; 0f:469b $ca $c7 $47
+    jp   Z, return                                     ;; 0f:469b $ca $c7 $47
     cp   A, $0f                                        ;; 0f:469e $fe $0f
     jr   NZ, .jr_0f_46a9                               ;; 0f:46a0 $20 $07
     ld   A, $00                                        ;; 0f:46a2 $3e $00
     ldh  [rNR32], A                                    ;; 0f:46a4 $e0 $1c
-    jp   jp_0f_47c7                                    ;; 0f:46a6 $c3 $c7 $47
+    jp   return                                        ;; 0f:46a6 $c3 $c7 $47
 .jr_0f_46a9:
     add  A, A                                          ;; 0f:46a9 $87
     ld   E, A                                          ;; 0f:46aa $5f
@@ -980,7 +980,7 @@ jp_0f_467c:
     ld   [wC13E], A                                    ;; 0f:46c6 $ea $3e $c1
     ld   HL, wC136                                     ;; 0f:46c9 $21 $36 $c1
     call call_0f_47c8                                  ;; 0f:46cc $cd $c8 $47
-    jp   jp_0f_47c7                                    ;; 0f:46cf $c3 $c7 $47
+    jp   return                                        ;; 0f:46cf $c3 $c7 $47
 .jr_0f_46d2:
     cp   A, $ff                                        ;; 0f:46d2 $fe $ff
     jr   NZ, .jr_0f_46e2                               ;; 0f:46d4 $20 $0c
@@ -988,7 +988,7 @@ jp_0f_467c:
     ldh  [rNR33], A                                    ;; 0f:46d9 $e0 $1d
     ld   A, $07                                        ;; 0f:46db $3e $07
     ldh  [rNR34], A                                    ;; 0f:46dd $e0 $1e
-    jp   jp_0f_47c7                                    ;; 0f:46df $c3 $c7 $47
+    jp   return                                        ;; 0f:46df $c3 $c7 $47
 .jr_0f_46e2:
     cp   A, $e0                                        ;; 0f:46e2 $fe $e0
     jr   NC, .jr_0f_470c                               ;; 0f:46e4 $30 $26
@@ -1394,15 +1394,15 @@ soundEffectPlay:
     ld   HL, soundEffectDataChannel1                   ;; 0f:4941 $21 $3c $7b
     add  HL, DE                                        ;; 0f:4944 $19
     ld   A, [HL+]                                      ;; 0f:4945 $2a
-    ld   [wC1C4], A                                    ;; 0f:4946 $ea $c4 $c1
+    ld   [wSoundEffectInstructionPointerChannel1], A   ;; 0f:4946 $ea $c4 $c1
     ld   A, [HL]                                       ;; 0f:4949 $7e
-    ld   [wC1C5], A                                    ;; 0f:494a $ea $c5 $c1
+    ld   [wSoundEffectInstructionPointerChannel1.high], A ;; 0f:494a $ea $c5 $c1
     ld   HL, soundEffectDataChannel4                   ;; 0f:494d $21 $86 $7b
     add  HL, DE                                        ;; 0f:4950 $19
     ld   A, [HL+]                                      ;; 0f:4951 $2a
-    ld   [wC1C6], A                                    ;; 0f:4952 $ea $c6 $c1
+    ld   [wSoundEffectInstructionPointerChannel4], A   ;; 0f:4952 $ea $c6 $c1
     ld   A, [HL+]                                      ;; 0f:4955 $2a
-    ld   [wC1C7], A                                    ;; 0f:4956 $ea $c7 $c1
+    ld   [wSoundEffectInstructionPointerChannel4.high], A ;; 0f:4956 $ea $c7 $c1
     ld   A, $01                                        ;; 0f:4959 $3e $01
     ld   [wC11A], A                                    ;; 0f:495b $ea $1a $c1
     ld   [wC14A], A                                    ;; 0f:495e $ea $4a $c1
@@ -1418,9 +1418,9 @@ soundEffectPlayStep:
     ld   [wC11A], A                                    ;; 0f:496d $ea $1a $c1
     or   A, A                                          ;; 0f:4970 $b7
     jr   NZ, .jp_0f_49bc                               ;; 0f:4971 $20 $49
-    ld   A, [wC1C4]                                    ;; 0f:4973 $fa $c4 $c1
+    ld   A, [wSoundEffectInstructionPointerChannel1]   ;; 0f:4973 $fa $c4 $c1
     ld   L, A                                          ;; 0f:4976 $6f
-    ld   A, [wC1C5]                                    ;; 0f:4977 $fa $c5 $c1
+    ld   A, [wSoundEffectInstructionPointerChannel1.high] ;; 0f:4977 $fa $c5 $c1
     ld   H, A                                          ;; 0f:497a $67
 .jr_0f_497b:
     ld   A, [HL+]                                      ;; 0f:497b $2a
@@ -1436,9 +1436,9 @@ soundEffectPlayStep:
     ld   C, A                                          ;; 0f:498c $4f
     ld   A, [HL+]                                      ;; 0f:498d $2a
     ld   B, A                                          ;; 0f:498e $47
-    ldh  A, [hFF9C]                                    ;; 0f:498f $f0 $9c
+    ldh  A, [hSoundEffectLoopCounterChannel1]          ;; 0f:498f $f0 $9c
     dec  A                                             ;; 0f:4991 $3d
-    ldh  [hFF9C], A                                    ;; 0f:4992 $e0 $9c
+    ldh  [hSoundEffectLoopCounterChannel1], A          ;; 0f:4992 $e0 $9c
     jr   Z, .jr_0f_497b                                ;; 0f:4994 $28 $e5
     ld   L, C                                          ;; 0f:4996 $69
     ld   H, B                                          ;; 0f:4997 $60
@@ -1447,7 +1447,7 @@ soundEffectPlayStep:
     cp   A, $f0                                        ;; 0f:499a $fe $f0
     jr   C, .jr_0f_49a4                                ;; 0f:499c $38 $06
     and  A, $0f                                        ;; 0f:499e $e6 $0f
-    ldh  [hFF9C], A                                    ;; 0f:49a0 $e0 $9c
+    ldh  [hSoundEffectLoopCounterChannel1], A          ;; 0f:49a0 $e0 $9c
     jr   .jr_0f_497b                                   ;; 0f:49a2 $18 $d7
 .jr_0f_49a4:
     ld   C, $10                                        ;; 0f:49a4 $0e $10
@@ -1462,9 +1462,9 @@ soundEffectPlayStep:
     or   A, $11                                        ;; 0f:49b0 $f6 $11
     ldh  [rNR51], A                                    ;; 0f:49b2 $e0 $25
     ld   A, L                                          ;; 0f:49b4 $7d
-    ld   [wC1C4], A                                    ;; 0f:49b5 $ea $c4 $c1
+    ld   [wSoundEffectInstructionPointerChannel1], A   ;; 0f:49b5 $ea $c4 $c1
     ld   A, H                                          ;; 0f:49b8 $7c
-    ld   [wC1C5], A                                    ;; 0f:49b9 $ea $c5 $c1
+    ld   [wSoundEffectInstructionPointerChannel1.high], A ;; 0f:49b9 $ea $c5 $c1
 .jp_0f_49bc:
     ld   A, [wC14A]                                    ;; 0f:49bc $fa $4a $c1
     or   A, A                                          ;; 0f:49bf $b7
@@ -1472,9 +1472,9 @@ soundEffectPlayStep:
     dec  A                                             ;; 0f:49c2 $3d
     ld   [wC14A], A                                    ;; 0f:49c3 $ea $4a $c1
     jr   NZ, .jr_0f_4a11                               ;; 0f:49c6 $20 $49
-    ld   A, [wC1C6]                                    ;; 0f:49c8 $fa $c6 $c1
+    ld   A, [wSoundEffectInstructionPointerChannel4]   ;; 0f:49c8 $fa $c6 $c1
     ld   L, A                                          ;; 0f:49cb $6f
-    ld   A, [wC1C7]                                    ;; 0f:49cc $fa $c7 $c1
+    ld   A, [wSoundEffectInstructionPointerChannel4.high] ;; 0f:49cc $fa $c7 $c1
     ld   H, A                                          ;; 0f:49cf $67
 .jr_0f_49d0:
     ld   A, [HL+]                                      ;; 0f:49d0 $2a
@@ -1490,9 +1490,9 @@ soundEffectPlayStep:
     ld   C, A                                          ;; 0f:49e1 $4f
     ld   A, [HL+]                                      ;; 0f:49e2 $2a
     ld   B, A                                          ;; 0f:49e3 $47
-    ldh  A, [hFF9D]                                    ;; 0f:49e4 $f0 $9d
+    ldh  A, [hSoundEffectLoopCounterChannel4]          ;; 0f:49e4 $f0 $9d
     dec  A                                             ;; 0f:49e6 $3d
-    ldh  [hFF9D], A                                    ;; 0f:49e7 $e0 $9d
+    ldh  [hSoundEffectLoopCounterChannel4], A          ;; 0f:49e7 $e0 $9d
     jr   Z, .jr_0f_49d0                                ;; 0f:49e9 $28 $e5
     ld   L, C                                          ;; 0f:49eb $69
     ld   H, B                                          ;; 0f:49ec $60
@@ -1501,7 +1501,7 @@ soundEffectPlayStep:
     cp   A, $f0                                        ;; 0f:49ef $fe $f0
     jr   C, .jr_0f_49f9                                ;; 0f:49f1 $38 $06
     and  A, $0f                                        ;; 0f:49f3 $e6 $0f
-    ldh  [hFF9D], A                                    ;; 0f:49f5 $e0 $9d
+    ldh  [hSoundEffectLoopCounterChannel4], A          ;; 0f:49f5 $e0 $9d
     jr   .jr_0f_49d0                                   ;; 0f:49f7 $18 $d7
 .jr_0f_49f9:
     ld   A, [HL+]                                      ;; 0f:49f9 $2a
@@ -1514,9 +1514,9 @@ soundEffectPlayStep:
     or   A, $88                                        ;; 0f:4a05 $f6 $88
     ldh  [rNR51], A                                    ;; 0f:4a07 $e0 $25
     ld   A, L                                          ;; 0f:4a09 $7d
-    ld   [wC1C6], A                                    ;; 0f:4a0a $ea $c6 $c1
+    ld   [wSoundEffectInstructionPointerChannel4], A   ;; 0f:4a0a $ea $c6 $c1
     ld   A, H                                          ;; 0f:4a0d $7c
-    ld   [wC1C7], A                                    ;; 0f:4a0e $ea $c7 $c1
+    ld   [wSoundEffectInstructionPointerChannel4.high], A ;; 0f:4a0e $ea $c7 $c1
 .jr_0f_4a11:
     ret                                                ;; 0f:4a11 $c9
 
