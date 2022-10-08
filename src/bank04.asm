@@ -352,7 +352,7 @@ spawProjectileBoss:
     call call_04_4156                                  ;; 04:41e3 $cd $56 $41
     ret                                                ;; 04:41e6 $c9
 
-call_04_41e7:
+runBossDeathScript:
     push DE                                            ;; 04:41e7 $d5
     ld   A, [wCurrentBossDataPointer.high]             ;; 04:41e8 $fa $39 $d4
     ld   H, A                                          ;; 04:41eb $67
@@ -484,7 +484,7 @@ call_04_425f:
     ld   L, A                                          ;; 04:42a7 $6f
     call call_04_42b0                                  ;; 04:42a8 $cd $b0 $42
     ret                                                ;; 04:42ab $c9
-.jr_04_42ac:
+.dead:
     call processBossDeath                              ;; 04:42ac $cd $75 $45
     ret                                                ;; 04:42af $c9
 
@@ -502,7 +502,7 @@ call_04_42b0:
     ld   A, [HL+]                                      ;; 04:42c3 $2a
     ret                                                ;; 04:42c4 $c9
 
-call_04_42c5:
+initBossMovement:
     ld   A, [wCurrentBossDataPointer.high]             ;; 04:42c5 $fa $39 $d4
     ld   D, A                                          ;; 04:42c8 $57
     ld   A, [wCurrentBossDataPointer]                  ;; 04:42c9 $fa $38 $d4
@@ -515,7 +515,7 @@ call_04_42c5:
     call call_04_42d8                                  ;; 04:42d4 $cd $d8 $42
     ret                                                ;; 04:42d7 $c9
 
-call_04_42d8:
+setBossMovement:
     ld   A, H                                          ;; 04:42d8 $7c
     ld   [wD43B], A                                    ;; 04:42d9 $ea $3b $d4
     ld   A, L                                          ;; 04:42dc $7d
@@ -614,7 +614,7 @@ rollBossHP:
     pop  DE                                            ;; 04:4371 $d1
     ret                                                ;; 04:4372 $c9
 
-call_04_4373:
+bossLoadProjectile:
     ld   HL, $05                                       ;; 04:4373 $21 $05 $00
     add  HL, DE                                        ;; 04:4376 $19
     ld   A, [HL]                                       ;; 04:4377 $7e
@@ -682,7 +682,7 @@ call_04_4373:
     pop  DE                                            ;; 04:43cb $d1
     ret                                                ;; 04:43cc $c9
 
-call_04_43cd:
+bossCreateObjects:
     push DE                                            ;; 04:43cd $d5
     ld   HL, $04                                       ;; 04:43ce $21 $04 $00
     add  HL, DE                                        ;; 04:43d1 $19
@@ -771,7 +771,7 @@ call_04_4425:
     jr   NZ, .jr_04_442f                               ;; 04:4443 $20 $ea
     ret                                                ;; 04:4445 $c9
 
-call_04_4446:
+bossCollisionHandling:
     cp   A, $c9                                        ;; 04:4446 $fe $c9
     jr   Z, .jr_04_445e                                ;; 04:4448 $28 $14
     and  A, $f0                                        ;; 04:444a $e6 $f0
@@ -784,7 +784,7 @@ call_04_4446:
 .jp_04_445b:
     ld   A, $00                                        ;; 04:445b $3e $00
     ret                                                ;; 04:445d $c9
-.jr_04_445e:
+.player:
     ld   A, [wBossIframes]                             ;; 04:445e $fa $eb $d3
     cp   A, $00                                        ;; 04:4461 $fe $00
     jr   NZ, .jp_04_445b                               ;; 04:4463 $20 $f6
@@ -804,7 +804,7 @@ call_04_4446:
     call playerHit_trampoline                          ;; 04:447a $cd $56 $02
     ld   A, $c9                                        ;; 04:447d $3e $c9
     ret                                                ;; 04:447f $c9
-.jp_04_4480:
+.weapon:
     call call_04_461c                                  ;; 04:4480 $cd $1c $46
     jp   NZ, .jp_04_445b                               ;; 04:4483 $c2 $5b $44
     push BC                                            ;; 04:4486 $c5
@@ -850,7 +850,7 @@ call_04_4446:
     ld   [wD3F2], A                                    ;; 04:44cc $ea $f2 $d3
     call processHitBoss                                ;; 04:44cf $cd $28 $47
     ret                                                ;; 04:44d2 $c9
-.jp_04_44d3:
+.spell:
     call call_04_461c                                  ;; 04:44d3 $cd $1c $46
     jp   NZ, .jp_04_445b                               ;; 04:44d6 $c2 $5b $44
     push BC                                            ;; 04:44d9 $c5
@@ -882,7 +882,7 @@ call_04_4446:
     ld   [wD3F2], A                                    ;; 04:4507 $ea $f2 $d3
     call processHitBoss                                ;; 04:450a $cd $28 $47
     ret                                                ;; 04:450d $c9
-.jp_04_450e:
+.followerAttack:
     call call_04_4636                                  ;; 04:450e $cd $36 $46
     jp   NZ, .jp_04_445b                               ;; 04:4511 $c2 $5b $44
     push BC                                            ;; 04:4514 $c5

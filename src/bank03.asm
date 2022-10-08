@@ -30,7 +30,7 @@ SECTION "bank03", ROMX[$4000], BANK[$03]
     call_to_bank_target call_03_4c38                   ;; 03:4028 pP
     call_to_bank_target getNpcScriptIndex              ;; 03:402a pP
 
-call_03_402c:
+checkObjectCollisions:
     ld   HL, wNpcRuntimeData                           ;; 03:402c $21 $e0 $c4
     ld   B, $08                                        ;; 03:402f $06 $08
     ld   C, $18                                        ;; 03:4031 $0e $18
@@ -470,7 +470,7 @@ call_03_425b:
     ld   A, $04                                        ;; 03:4298 $3e $04
     ret                                                ;; 03:429a $c9
 
-call_03_429b:
+getNpcRuntimeDataByID:
     ld   B, $08                                        ;; 03:429b $06 $08
     ld   HL, wNpcRuntimeData                           ;; 03:429d $21 $e0 $c4
     ld   DE, $18                                       ;; 03:42a0 $11 $18 $00
@@ -771,7 +771,7 @@ call_03_43dc:
     jr   NZ, .jr_03_441a                               ;; 03:4447 $20 $d1
     ret                                                ;; 03:4449 $c9
 
-call_03_444a:
+setNpcSpawnTable:
     push HL                                            ;; 03:444a $e5
     ld   [wNPCSpawnTableIndex], A                      ;; 03:444b $ea $ae $c5
     ld   L, A                                          ;; 03:444e $6f
@@ -784,7 +784,7 @@ call_03_444a:
     ld   DE, NPCSpawnPointers                          ;; 03:4456 $11 $42 $71
     add  HL, DE                                        ;; 03:4459 $19
     ld   B, $03                                        ;; 03:445a $06 $03
-.jr_03_445c:
+.loop:
     push HL                                            ;; 03:445c $e5
     ld   A, [HL+]                                      ;; 03:445d $2a
     ld   H, [HL]                                       ;; 03:445e $66
@@ -903,7 +903,7 @@ call_03_44cd:
     inc  A                                             ;; 03:44eb $3c
     ret                                                ;; 03:44ec $c9
 
-call_03_44ed:
+spawnNpcsFromTable:
     push HL                                            ;; 03:44ed $e5
     push AF                                            ;; 03:44ee $f5
     add  A, A                                          ;; 03:44ef $87
@@ -989,7 +989,7 @@ call_03_44ed:
     pop  HL                                            ;; 03:455b $e1
     ret                                                ;; 03:455c $c9
 
-call_03_455d:
+setHLToZero_3:
     ld   HL, $00                                       ;; 03:455d $21 $00 $00
     ret                                                ;; 03:4560 $c9
 
@@ -1003,10 +1003,10 @@ call_03_4561:
     ld   A, L                                          ;; 03:456c $7d
     call enemyCollisionHandling                        ;; 03:456d $cd $41 $46
     ret                                                ;; 03:4570 $c9
-.jr_03_4571:
+.spell:
     ld   A, $00                                        ;; 03:4571 $3e $00
     ret                                                ;; 03:4573 $c9
-.jr_03_4574:
+.player:
     push BC                                            ;; 03:4574 $c5
     ld   A, C                                          ;; 03:4575 $79
     call call_03_429b                                  ;; 03:4576 $cd $9b $42
@@ -1348,7 +1348,7 @@ enemyCollisionHandling:
     pop  BC                                            ;; 03:4798 $c1
     call processHitNpc                                 ;; 03:4799 $cd $26 $4a
     ret                                                ;; 03:479c $c9
-.jp_03_479d:
+.followerAttack:
     call call_03_4919                                  ;; 03:479d $cd $19 $49
     jp   NZ, .jp_03_4656                               ;; 03:47a0 $c2 $56 $46
     call call_03_4931                                  ;; 03:47a3 $cd $31 $49
@@ -2466,7 +2466,7 @@ npcKillExplosionMetaspriteTable:
     db   $72, $00, $70, $72, $20, $72, $70, $00        ;; 03:4e3a ????????
     db   $70, $72, $00, $70, $72, $00, $70, $72        ;; 03:4e42 ????????
 
-npcKilledExplosion:
+npcKilledExplosionInit:
     push BC                                            ;; 03:4e4a $c5
     push DE                                            ;; 03:4e4b $d5
     ld   HL, npcKillExplosionMetaspriteTable           ;; 03:4e4c $21 $32 $4e
@@ -2477,7 +2477,7 @@ npcKilledExplosion:
     pop  BC                                            ;; 03:4e58 $c1
     ret                                                ;; 03:4e59 $c9
 
-call_03_4e5a:
+npcKilledExplosion:
     ld   A, B                                          ;; 03:4e5a $78
     cp   A, $00                                        ;; 03:4e5b $fe $00
     call Z, npcKilledExplosion                         ;; 03:4e5d $cc $4a $4e

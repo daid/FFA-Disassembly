@@ -166,7 +166,8 @@ loadMapWithShutterEffectSequence:
     ld   HL, .data_01_413c                             ;; 01:4135 $21 $3c $41
     call callJumptable                                 ;; 01:4138 $cd $70 $2b
     ret                                                ;; 01:413b $c9
-.data_01_413c:
+;@jumptable amount=8
+.loadMapWithShutterEffectJumptable:
     dw   prepareShutterEffect                          ;; 01:413c pP
     dw   advanceScriptOpWhenVRAMCopiesDone             ;; 01:413e pP
     dw   shutterEffectClose                            ;; 01:4140 pP
@@ -183,7 +184,8 @@ loadMapInstantSequence:
     ld   HL, .data_01_4158                             ;; 01:4151 $21 $58 $41
     call callJumptable                                 ;; 01:4154 $cd $70 $2b
     ret                                                ;; 01:4157 $c9
-.data_01_4158:
+;@jumptable amount=6
+.loadMapInstantJumptable:
     dw   data_01_41ca                                  ;; 01:4158 pP
     dw   advanceScriptOpWhenVRAMCopiesDone             ;; 01:415a pP
     dw   data_01_4387                                  ;; 01:415c pP
@@ -198,7 +200,8 @@ openMinimap:
     ld   HL, .data_01_4170                             ;; 01:4169 $21 $70 $41
     call callJumptable                                 ;; 01:416c $cd $70 $2b
     ret                                                ;; 01:416f $c9
-.data_01_4170:
+;@jumptable amount=8
+.openMinimapJumptable:
     dw   prepareShutterEffect                          ;; 01:4170 pP
     dw   advanceScriptOpWhenVRAMCopiesDone             ;; 01:4172 pP
     dw   shutterEffectClose                            ;; 01:4174 pP
@@ -215,7 +218,8 @@ closeMinimap:
     ld   HL, .data_01_418c                             ;; 01:4185 $21 $8c $41
     call callJumptable                                 ;; 01:4188 $cd $70 $2b
     ret                                                ;; 01:418b $c9
-.data_01_418c:
+;@jumptable amount=8
+.closeMinimapJumptable:
     dw   prepareShutterEffect                          ;; 01:418c pP
     dw   advanceScriptOpWhenVRAMCopiesDone             ;; 01:418e pP
     dw   shutterEffectClose                            ;; 01:4190 pP
@@ -457,7 +461,7 @@ call_01_42d1:
     db   $00, $08, $0a, $00, $08, $0a, $00, $08        ;; 01:4325 ????????
     db   $0a, $00, $08, $0a                            ;; 01:432d ?...
 
-call_01_4331:
+minimapCopyMapNumberAndXY:
     call getMapNumber                                  ;; 01:4331 $cd $0a $22
     ld   [wMapNumberTmp], A                            ;; 01:4334 $ea $9d $d4
     call LoadRoomXY_to_A                               ;; 01:4337 $cd $0e $22
@@ -498,7 +502,7 @@ data_01_433e:
     pop  HL                                            ;; 01:4385 $e1
     ret                                                ;; 01:4386 $c9
 
-data_01_4387:
+drawRoomFromMap:
     push DE                                            ;; 01:4387 $d5
     ld   A, C                                          ;; 01:4388 $79
     ld   C, B                                          ;; 01:4389 $48
@@ -1041,7 +1045,7 @@ call_01_46c4:
     ld   [wScrollDirection], A                         ;; 01:4719 $ea $41 $c3
     ret                                                ;; 01:471c $c9
 
-call_01_471d:
+drawRoom:
     ld   A, $00                                        ;; 01:471d $3e $00
     ld   [wVideoSCX], A                                ;; 01:471f $ea $a6 $c0
     ld   [wVideoSCY], A                                ;; 01:4722 $ea $a7 $c0
@@ -1281,7 +1285,7 @@ runMainInputHandler:
     call callJumptable                                 ;; 01:49a9 $cd $70 $2b
     ret                                                ;; 01:49ac $c9
 ;@jumptable amount=18
-.data_01_49ad:
+.gameStatesJumptable:
     dw   gameStateNormal                               ;; 01:49ad pP
     dw   gameStateNormal                               ;; 01:49af ??
     dw   gameStateAttack                               ;; 01:49b1 pP
@@ -1361,7 +1365,7 @@ gameStateNormal:
     jr   NZ, .jr_01_4a4f                               ;; 01:4a32 $20 $1b
     bit  5, E                                          ;; 01:4a34 $cb $6b
     jr   NZ, .jr_01_4a4f                               ;; 01:4a36 $20 $17
-.moogled:
+.jr_01_4a38:
     bit  0, D                                          ;; 01:4a38 $cb $42
     jr   NZ, .jr_01_4a6c                               ;; 01:4a3a $20 $30
     bit  1, D                                          ;; 01:4a3c $cb $4a
@@ -1494,7 +1498,7 @@ call_01_4b24:
     call runRoomScriptOnRoomExit                       ;; 01:4b34 $cd $83 $24
     ret                                                ;; 01:4b37 $c9
 
-call_01_4b38:
+playerDamagedEffect:
     cp   A, $34                                        ;; 01:4b38 $fe $34
     jr   C, .jr_01_4b4f                                ;; 01:4b3a $38 $13
     jr   Z, .jr_01_4b72                                ;; 01:4b3c $28 $34
@@ -1530,7 +1534,7 @@ call_01_4b38:
     pop  BC                                            ;; 01:4b6f $c1
     pop  DE                                            ;; 01:4b70 $d1
     ret                                                ;; 01:4b71 $c9
-.jr_01_4b72:
+.stopMotion:
     push DE                                            ;; 01:4b72 $d5
     push BC                                            ;; 01:4b73 $c5
     ld   A, $01                                        ;; 01:4b74 $3e $01
@@ -1660,7 +1664,7 @@ gameStateChocoboat:
     ld   D, A                                          ;; 01:4c3b $57
     jr   jr_01_4bc7                                    ;; 01:4c3c $18 $89
 
-call_01_4c3e:
+gameStateFireAutoTarget:
     push DE                                            ;; 01:4c3e $d5
     call call_00_27ce                                  ;; 01:4c3f $cd $ce $27
     pop  DE                                            ;; 01:4c42 $d1
@@ -1677,7 +1681,7 @@ call_01_4c3e:
     call call_01_48be                                  ;; 01:4c59 $cd $be $48
     ret                                                ;; 01:4c5c $c9
 
-call_01_4c5d:
+gameStateSpecialAttackFlyingSwordReturn:
     call call_00_27ce                                  ;; 01:4c5d $cd $ce $27
     ld   A, [wMainGameState]                           ;; 01:4c60 $fa $a0 $c0
     cp   A, $04                                        ;; 01:4c63 $fe $04
@@ -1866,7 +1870,7 @@ call_01_4d35:
     call call_01_48be                                  ;; 01:4d8b $cd $be $48
     ret                                                ;; 01:4d8e $c9
 
-gameStateSpecialAttack1:
+gameStateSpecialAttackFlyingSword:
     call call_00_27ce                                  ;; 01:4d8f $cd $ce $27
     ld   A, [wMainGameState]                           ;; 01:4d92 $fa $a0 $c0
     cp   A, $03                                        ;; 01:4d95 $fe $03
@@ -1899,7 +1903,7 @@ gameStateSpecialAttack1:
     ld   [wMainGameState], A                           ;; 01:4dc7 $ea $a0 $c0
     ret                                                ;; 01:4dca $c9
 
-gameStateSpecialAttack2:
+gameStateSpecialAttack:
     push DE                                            ;; 01:4dcb $d5
     call call_00_27ce                                  ;; 01:4dcc $cd $ce $27
     pop  DE                                            ;; 01:4dcf $d1
@@ -2321,6 +2325,8 @@ createPlayerObject:
     ld   [wD394], A                                    ;; 01:50a8 $ea $94 $d3
     ret                                                ;; 01:50ab $c9
 
+; B = power
+; C = status effect
 playerHit:
     push BC                                            ;; 01:50ac $c5
     call getTotalDP                                    ;; 01:50ad $cd $12 $3d
@@ -3577,7 +3583,7 @@ call_01_579c:
     call call_01_571c                                  ;; 01:57da $cd $1c $57
     ret                                                ;; 01:57dd $c9
 
-call_01_57de:
+notEnemyPushableOrBoss:
     call getObjectCollisionFlags                       ;; 01:57de $cd $6d $0c
     and  A, $f0                                        ;; 01:57e1 $e6 $f0
     cp   A, $90                                        ;; 01:57e3 $fe $90
@@ -4091,7 +4097,7 @@ jr_01_5a95:
     jp   NZ, .jp_01_5af9                               ;; 01:5aa6 $c2 $f9 $5a
     pop  DE                                            ;; 01:5aa9 $d1
     ret                                                ;; 01:5aaa $c9
-.jr_01_5aab:
+.playerFacingWest:
     pop  DE                                            ;; 01:5aab $d1
     ld   A, D                                          ;; 01:5aac $7a
     bit  7, E                                          ;; 01:5aad $cb $7b
@@ -4107,7 +4113,7 @@ jr_01_5a95:
     jr   NZ, .jr_01_5b11                               ;; 01:5abf $20 $50
     ld   C, $22                                        ;; 01:5ac1 $0e $22
     jr   .jr_01_5b11                                   ;; 01:5ac3 $18 $4c
-.jr_01_5ac5:
+.playerFacingEast:
     pop  DE                                            ;; 01:5ac5 $d1
     ld   A, D                                          ;; 01:5ac6 $7a
     bit  7, E                                          ;; 01:5ac7 $cb $7b
@@ -4123,7 +4129,7 @@ jr_01_5a95:
     jr   NZ, .jr_01_5b11                               ;; 01:5ad9 $20 $36
     ld   C, $24                                        ;; 01:5adb $0e $24
     jr   .jr_01_5b11                                   ;; 01:5add $18 $32
-.jr_01_5adf:
+.playerFacingSouth:
     pop  DE                                            ;; 01:5adf $d1
     ld   A, D                                          ;; 01:5ae0 $7a
     bit  7, E                                          ;; 01:5ae1 $cb $7b
@@ -4139,7 +4145,7 @@ jr_01_5a95:
     jr   NZ, .jr_01_5b11                               ;; 01:5af3 $20 $1c
     ld   C, $26                                        ;; 01:5af5 $0e $26
     jr   .jr_01_5b11                                   ;; 01:5af7 $18 $18
-.jp_01_5af9:
+.playerFacingNorth:
     pop  DE                                            ;; 01:5af9 $d1
     ld   A, D                                          ;; 01:5afa $7a
     bit  7, E                                          ;; 01:5afb $cb $7b
@@ -4483,7 +4489,7 @@ call_01_5cc6:
     call call_01_5c9f                                  ;; 01:5d01 $cd $9f $5c
     pop  HL                                            ;; 01:5d04 $e1
     ret                                                ;; 01:5d05 $c9
-.jr_01_5d06:
+.ice:
     push HL                                            ;; 01:5d06 $e5
     push BC                                            ;; 01:5d07 $c5
     call GetObjectY                                    ;; 01:5d08 $cd $3e $0c
@@ -4866,7 +4872,7 @@ attackFireIceThnderNukeFrame1:
     dw   data_01_6ad1, data_01_6ae8, data_01_6aff, data_01_6b16 ;; 01:6143 ????????
     dw   data_01_6ad1, data_01_6ae8, data_01_6aff, data_01_6b16 ;; 01:614b ????????
 
-data_01_6153:
+attackFireAutoTarget:
     db   $06, $58, $02, $05, $0c, $00                  ;; 01:6153 ??????
     dw   gfxAttackFire, data_01_690f                   ;; 01:6159 ????
     dw   data_01_6b2d, data_01_6b34, data_01_6b3b, data_01_6b42 ;; 01:615d ????????

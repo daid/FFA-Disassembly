@@ -18,6 +18,7 @@
 ;offset6: Touch damage
 ;offset7: Defense
 ;offset9: Projectile type
+;offset11: Touch Status Effect inflicted
 ;offset12: XP on kill
 ;offset13: Gold on kill
 ;@data format=bbbbbbbbbbbbbb amount=98

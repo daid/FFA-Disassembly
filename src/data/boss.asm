@@ -1,24 +1,26 @@
 ;; Disassembled with BadBoy Disassembler: https://github.com/daid/BadBoy
 
 
-; Boss data table. Data is loaded from here on a boss spawn, but not on an NPC spawn.
-; speed (delay between actions, low=fast)
-; HP
-; XP on defeated
-; Money on defeated
-; Amount of 16x16 "objects" used for this boss
-; Projectile attack from the projectiles dataset (also causes the graphics to be loaded for this projectile)
-; index to script when defeated (usually just some simple screen flash or nothing)
-; graphics related, sets the VRAM start tile number to load graphics data into
-; graphics related, sets how many tiles need to be loaded into VRAM
-; graphics related, pointer including bank, allowing everything from bank $08 to $0B to be selected for graphics.
-; graphics related, points to data of which tile offsets to load from the previous pointer into VRAM
-; metatile info (list of [attr, tile1, tile2])
-; damage related? Not sure (influences amount of damage done by boss and taken from boss, maybe hit areas as well?)
-; offset 2: weaknesses (see npc/stats.asm)
-; attack movement pattern
-; spawn movement pattern
-; death animation related?
+; Boss data table, 24 bytes per entry. Data is loaded from here on a boss spawn, but not on an NPC spawn.
+; offset 0: speed (delay between actions, low=fast)
+; offset 1: HP
+; offset 2: XP on defeated
+; offset 3: Money on defeated
+; offset 4: Amount of 16x16 "objects" used for this boss
+; offset 5: Projectile attack from the projectiles dataset (also causes the graphics to be loaded for this projectile)
+; offset 6-7: index to script when defeated (usually just some simple screen flash or nothing)
+; offset 8: graphics related, sets the VRAM start tile number to load graphics data into
+; offset 9: graphics related, sets how many tiles need to be loaded into VRAM
+; offset a-b: graphics related, pointer including bank, allowing everything from bank $08 to $0B to be selected for graphics.
+; offset c-d: graphics related, points to data of which tile offsets to load from the previous pointer into VRAM
+; offset e-f: metatile info (list of [attr, tile1, tile2])
+; offset 10-11: stats for each of the 16x16 "objects" used for this boss. Eight bytes per object:
+  ; offset 1: DP or something similar (ff for immune to damage, like Megapede body, Davias orbs, and  Cyclops Morning Star)
+  ; offset 2: weaknesses (see npc/stats.asm)
+  ; offset 6: Status Effect on touch
+; offset 12-13: attack movement pattern
+; offset 14-15: spawn movement pattern
+; offset 16-17: death animation pattern
 ;@boss_data amount=21
 bossDataTable:
     BOSS_HEADER $08, $19, $14, $0a, $08, $1e, script_0246 ;; 04:4739 ????????
