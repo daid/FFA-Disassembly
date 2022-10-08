@@ -19,10 +19,13 @@ wOAMBuffer:
 wMainGameState:
     ds 1                                               ;; c0a0
 
-wC0A1:
+; bit 0: unknown
+; bit 1-3: certain script types running
+; bit 4-7: scrolling direction (nibbles are swapped for this)
+wMainGameStateFlags:
     ds 1                                               ;; c0a1
 
-wC0A2:
+.nextFrame:
     ds 2                                               ;; c0a2
 
 wOAM_MemoryHighAddress:
@@ -286,16 +289,16 @@ wC15B:
 wC162:
     ds 98                                              ;; c162
 
-wC1C4:
+wSoundEffectInstructionPointerChannel1:
     ds 1                                               ;; c1c4
 
-wC1C5:
+.high:
     ds 1                                               ;; c1c5
 
-wC1C6:
+wSoundEffectInstructionPointerChannel4:
     ds 1                                               ;; c1c6
 
-wC1C7:
+.high:
     ds 1                                               ;; c1c7
 
 wC1C8:
@@ -310,21 +313,23 @@ wC1CA:
 ; 16 bytes per object, or potentially 16x16 sprite?
 ; 00: Lower nibble, orientation. $80=walking, other bits unknown ($ff indicates unused)
 ; 01: Movement speed
-; 02: Something collision related ($01: blocked by walls, $80 blocks player, $10 can be pushed by player or take damage on touch?)
+; 02: Collision flags ($01: blocked by walls, $80 blocks player, $10 can be pushed by player or take damage on touch?)
 ; 03: Unknown
 ; 04: Y position
 ; 05: X position
-; 06-07: Something sprite related (meta sprite pointer?)
+; 06-07: Meta sprite pointer
 ; 08-09: Shadow OAM memory location
-; 09-15: Unknown
-; (wC270 seems just more of this data)
+; 0a-15: Unknown
+; The seventh entry is either the first Npc or your follower, if present.
 wObjectRuntimeData:
     ds 112                                             ;; c200
 
-wC270:
+.npc1:
     ds 208                                             ;; c270
 
-wC340:
+; This is set to 16 and never changed.
+; Room width is hardcoded as 0xa1 for boundary checks, but height is checked as [$c340] * 8 + 1
+wRoomHeightInTiles:
     ds 1                                               ;; c340
 
 ; 1=west, 2=east, 4=south, 8=north
@@ -343,7 +348,7 @@ wNextRoomOverride:
 .x:
     ds 3                                               ;; c345
 
-wC348:
+wScrollPixelCounter:
     ds 1                                               ;; c348
 
 wC349:
@@ -359,7 +364,9 @@ wRoomTilesBackup:
 wMapTableBankNr:
     ds 1                                               ;; c3f0
 
-wC3F1:
+; There is an unused system for turning on/off the darkness effect via script.
+; This can be overridden with two unused items: Torch and Dwarf Lamp.
+wScriptDarknessEffect:
     ds 1                                               ;; c3f1
 
 wMapTablePointerLow:
@@ -368,7 +375,9 @@ wMapTablePointerLow:
 wMapTablePointerHigh:
     ds 1                                               ;; c3f3
 
-wC3F4:
+; bit 0 east, bit 1 west, bit 2 north, bit 3 south.
+; bits are set for open doors, cleared for closed.
+wDoorStates:
     ds 1                                               ;; c3f4
 
 wMapNumber:
@@ -424,7 +433,8 @@ wC4A0:
 wC4A1:
     ds 1                                               ;; c4a1
 
-wC4A2:
+; Sprites are hidden by moving them offscreen vertically.
+hiddenSpritesYPositions:
     ds 46                                              ;; c4a2
 
 wC4D0:
@@ -474,7 +484,8 @@ wC5AF:
 wC5B0:
     ds 16                                              ;; c5b0
 
-wC5C0:
+; 3 records of $0a size, related to projectiles
+wProjectileRuntimeData:
     ds 32                                              ;; c5c0
 
 wTileCopyRequestData:
@@ -552,10 +563,10 @@ wCF5E:
 wPlayerAttackAnimationFrame:
     ds 1                                               ;; cf5f
 
-wCF60:
+wSlepTimerNumber:
     ds 1                                               ;; cf60
 
-wCF61:
+wMuteTimerNumber:
     ds 1                                               ;; cf61
 
 wCF62:
@@ -718,10 +729,10 @@ wCurrentBossDataPointer:
 .high:
     ds 1                                               ;; d439
 
-wD43A:
+wCurrentBossPatternPointer:
     ds 1                                               ;; d43a
 
-wD43B:
+.high:
     ds 1                                               ;; d43b
 
 wD43C:
@@ -742,10 +753,11 @@ wD440:
 wD441:
     ds 1                                               ;; d441
 
-wD442:
+; Six bytes each, 14 total, but the largest boss only uses 11.
+wbossObjectsRuntimeData:
     ds 4                                               ;; d442
 
-wD446:
+._04:
     ds 82                                              ;; d446
 
 wPlayerJumpArg:
@@ -773,10 +785,12 @@ wMapNumberTmp:
 wRoomXYTmp:
     ds 1                                               ;; d49e
 
-wD49F:
+; Current map width, copied from wMapWidth, used during minimap drawing
+wMapWidthTmp:
     ds 1                                               ;; d49f
 
-wD4A0:
+; Current map bank number, copied from wMapBankNr, used during minimap drawing
+wMapTableBankNrTmp:
     ds 1                                               ;; d4a0
 
 wD4A1:
@@ -789,7 +803,7 @@ wD4A2:
 wCurrentMusicStatusEffectBackup:
     ds 1                                               ;; d4a3
 
-wD4A4:
+wDoorStatesMinimapBackup:
     ds 3                                               ;; d4a4
 
 wDialogX:
@@ -855,7 +869,7 @@ wKnownMagicSpells:
 wEquipmentInventoryPowers:
     ds 12                                              ;; d6b3
 
-wD6BF:
+wEquippedWeaponPower:
     ds 1                                               ;; d6bf
 
 wEquippedHelmetDefense:
@@ -900,7 +914,7 @@ wEquippedItem:
 wEquippedItemAmount:
     ds 1                                               ;; d6f0
 
-wD6F1:
+wEquippedItemAndWeaponCopy:
     ds 2                                               ;; d6f1
 
 wD6F3:
@@ -1076,7 +1090,7 @@ wCurrentMagicPower:
 wEquippedWeaponElements:
     ds 1                                               ;; d7d7
 
-wD7D8:
+wStatStaminaBuffBackup:
     ds 5                                               ;; d7d8
 
 wD7DD:
@@ -1096,7 +1110,7 @@ wTotalDP:
 ; bit 1: expired
 ; bit 7: active
 ; offset 1-2: time remaining
-; offset 3-4: unknown
+; offset 3-4: starting time
 wTimers:
     ds 80                                              ;; d7e1
 
@@ -1113,7 +1127,7 @@ wD843:
 wD844:
     ds 1                                               ;; d844
 
-wD845:
+wWindowNumberOfSelections:
     ds 1                                               ;; d845
 
 wD846:
@@ -1138,7 +1152,7 @@ wSelectedMenuIndex:
 wSelectedMenuIndex2:
     ds 1                                               ;; d84c
 
-wD84D:
+wScriptDelayOpCodeTimerNumber:
     ds 1                                               ;; d84d
 
 wD84E:
@@ -1190,7 +1204,7 @@ wD85F:
 wD860:
     ds 2                                               ;; d860
 
-wMainGameStateBackup:
+wWindowMainGameStateBackup:
     ds 1                                               ;; d862
 
 ; Dialog border tile, depending on it if it drawing the top or bottom row, different tile numbers are stored here
@@ -1204,10 +1218,10 @@ wTextSpeedTimer:
 wScriptStackCount:
     ds 1                                               ;; d865
 
-wD866:
+wCursorColumns:
     ds 1                                               ;; d866
 
-wD867:
+wCursorColumnWidth:
     ds 1                                               ;; d867
 
 wD868:
@@ -1228,7 +1242,7 @@ wScriptSavedNextOpcode:
 wVendorNumber:
     ds 1                                               ;; d86d
 
-wD86E:
+wScriptMainGameStateBackup:
     ds 1                                               ;; d86e
 
 ; bit 0: unknown
@@ -1281,16 +1295,17 @@ wMoogStatusEffectTimerNumber:
 wFujiStatusEffectTimerNumber:
     ds 1                                               ;; d87d
 
-wItemBuffActive:
+wNectarStaminaTimerNumber:
     ds 1                                               ;; d87e
 
 wD87F:
     ds 1                                               ;; d87f
 
-wD880:
+; probably unused. whenever it hits 150 or above it has 150 subtracted from it
+wWillChargeAlternate:
     ds 1                                               ;; d880
 
-wD881:
+wLightStatusEffectTimerNumber:
     ds 1                                               ;; d881
 
 wMoogleSavedDp:
@@ -1366,10 +1381,10 @@ wD898:
 wD899:
     ds 1                                               ;; d899
 
-wD89A:
+wWindowTextRows:
     ds 1                                               ;; d89a
 
-wD89B:
+wWindowTextLength:
     ds 1                                               ;; d89b
 
 wD89C:
@@ -1554,10 +1569,10 @@ hFF9A:
 hFF9B:
     ds 1                                               ;; ff9b
 
-hFF9C:
+hSoundEffectLoopCounterChannel1:
     ds 1                                               ;; ff9c
 
-hFF9D:
+hSoundEffectLoopCounterChannel4:
     ds 93                                              ;; ff9d
 
 hFFFA:

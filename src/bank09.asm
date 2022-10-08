@@ -21,7 +21,7 @@ call_09_4012:
     call call_00_0695                                  ;; 09:4012 $cd $95 $06
     ret                                                ;; 09:4015 $c9
 
-call_09_4016:
+checkProjectileCollisions:
     ld   HL, wC5C0                                     ;; 09:4016 $21 $c0 $c5
     ld   B, $03                                        ;; 09:4019 $06 $03
     ld   C, $0a                                        ;; 09:401b $0e $0a
@@ -661,7 +661,7 @@ call_09_42aa:
 .data_09_4376:
     db   $40, $31, $24, $19                            ;; 09:4376 ????
 
-call_09_437a:
+getProjectileRuntimeEntryByIndexA:
     ld   B, $03                                        ;; 09:437a $06 $03
     ld   HL, wC5C0                                     ;; 09:437c $21 $c0 $c5
     ld   DE, $0a                                       ;; 09:437f $11 $0a $00
@@ -685,7 +685,7 @@ call_09_438a:
     call call_00_0ae3                                  ;; 09:4395 $cd $e3 $0a
     ret                                                ;; 09:4398 $c9
 
-call_09_4399:
+projectileCollisionHandling:
     cp   A, $c9                                        ;; 09:4399 $fe $c9
     jr   Z, .jr_09_43ac                                ;; 09:439b $28 $0f
     ld   B, A                                          ;; 09:439d $47
@@ -697,7 +697,7 @@ call_09_4399:
 .jp_09_43aa:
     xor  A, A                                          ;; 09:43aa $af
     ret                                                ;; 09:43ab $c9
-.jr_09_43ac:
+.player:
     push BC                                            ;; 09:43ac $c5
     push DE                                            ;; 09:43ad $d5
     ld   A, C                                          ;; 09:43ae $79

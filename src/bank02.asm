@@ -330,6 +330,8 @@ animateTilesIncrementCounter:
     inc  [HL]                                          ;; 02:4216 $34
     ret                                                ;; 02:4217 $c9
 
+; Return: A = pressed buttons
+; Return: B = newly pressed buttons
 updateJoypadInput:
     ld   HL, $ff00                                     ;; 02:4218 $21 $00 $ff
     ld   [HL], $10                                     ;; 02:421b $36 $10
@@ -472,15 +474,15 @@ call_02_42a5:
     pop  AF                                            ;; 02:42df $f1
     call call_00_028b                                  ;; 02:42e0 $cd $8b $02
     ret                                                ;; 02:42e3 $c9
-.jr_02_42e4:
+.playerOrFollowerAttack:
     pop  AF                                            ;; 02:42e4 $f1
     call setAToZero                                    ;; 02:42e5 $cd $09 $2f
     ret                                                ;; 02:42e8 $c9
-.jr_02_42e9:
+.npcScriptOnTouch:
     pop  AF                                            ;; 02:42e9 $f1
     call call_00_284d                                  ;; 02:42ea $cd $4d $28
     ret                                                ;; 02:42ed $c9
-.jr_02_42ee:
+.npcDamageOnTouch:
     pop  AF                                            ;; 02:42ee $f1
     call enemyCollisionHandling_trampoline             ;; 02:42ef $cd $b6 $28
     ret                                                ;; 02:42f2 $c9
@@ -488,7 +490,7 @@ call_02_42a5:
     pop  AF                                            ;; 02:42f3 $f1
     call call_00_2d22                                  ;; 02:42f4 $cd $22 $2d
     ret                                                ;; 02:42f7 $c9
-.jr_02_42f8:
+.enemyProjectile:
     pop  AF                                            ;; 02:42f8 $f1
     call call_00_2c03                                  ;; 02:42f9 $cd $03 $2c
     ret                                                ;; 02:42fc $c9
@@ -546,7 +548,7 @@ call_02_4302:
     ld   B, $00                                        ;; 02:4351 $06 $00
     call call_00_2bd7                                  ;; 02:4353 $cd $d7 $2b
     ret                                                ;; 02:4356 $c9
-.jr_02_4357:
+.boss:
     ld   A, B                                          ;; 02:4357 $78
     ld   B, $00                                        ;; 02:4358 $06 $00
     call call_00_0517                                  ;; 02:435a $cd $17 $05
@@ -698,7 +700,7 @@ call_02_441f:
     xor  A, A                                          ;; 02:4429 $af
     ret                                                ;; 02:442a $c9
 
-call_02_442b:
+hideSpritesBehindWindow:
     ld   A, D                                          ;; 02:442b $7a
     cp   A, $12                                        ;; 02:442c $fe $12
     ret  NC                                            ;; 02:442e $d0
@@ -745,7 +747,7 @@ call_02_442b:
     pop  BC                                            ;; 02:4467 $c1
     ret                                                ;; 02:4468 $c9
 
-call_02_4469:
+showSpritesBehindWindow:
     ld   A, D                                          ;; 02:4469 $7a
     cp   A, $12                                        ;; 02:446a $fe $12
     ret  NC                                            ;; 02:446c $d0
@@ -3507,7 +3509,7 @@ findSlotForEquipmentType:
     db   $01, $02, $04, $08                            ;; 02:5863 ????
 
 ;@data format=p amount=4
-data_02_5867:
+currentlyEquippedEquipmentPowerList:
     dw   wD6BF                                         ;; 02:5867 pP $00
     dw   wEquippedArmorDefense                         ;; 02:5869 ?? $01
     dw   wEquippedHelmetDefense                        ;; 02:586b ?? $02
@@ -4021,8 +4023,8 @@ getEquippedWeaponAP:
     pop  HL                                            ;; 02:5ba8 $e1
     ret                                                ;; 02:5ba9 $c9
 
-;@data amount=24 format=bbbbbbbbbb
-; Dialog data for size/height/cursor.
+;@data amount=34 format=bbbbbbbbbb
+; Window data for size/height/cursor.
 ;0-3: x, y, w, h
 ;4: Amount of rows to draw with text
 ;5: Length of each text to draw
@@ -4030,55 +4032,81 @@ getEquippedWeaponAP:
 ;7: Not sure, something with cursor behaviour
 ;8: Amount of corsor columns
 ;9: Horizontal cursor shift for columns
-data_02_5baa:
+windowData:
+; Start menu (ITEM MAGIC EQUIP ASK):
     db   $01, $01, $07, $09, $04, $05, $04, $00, $01, $00 ;; 02:5baa .......... $00
+; Items menu:
     db   $00, $00, $13, $11, $08, $08, $10, $03, $02, $09 ;; 02:5bb4 .......... $01
+; Magic menu:
     db   $05, $01, $0d, $09, $04, $04, $08, $01, $02, $06 ;; 02:5bbe .......... $02
 
-data_02_5bc8:
+.equipmentScreenTop:
     db   $00, $00, $13, $07, $03, $08, $0e, $01, $00, $00 ;; 02:5bc8 .......... $03
 
-data_02_5bd2:
+.euipmentScreenBottom:
     db   $00, $08, $13, $09, $04, $08, $0c, $03, $02, $09 ;; 02:5bd2 .......... $04
+; Unused:
     db   $00, $00, $13, $08, $03, $08, $00, $00, $00, $00 ;; 02:5bdc ?????????? $05
+; Dialog window:
     db   $00, $0a, $13, $07, $04, $12, $04, $00, $00, $00 ;; 02:5be6 .......... $06
+; Dialog Yes, No menu:
     db   $00, $00, $05, $05, $02, $03, $02, $00, $01, $00 ;; 02:5bf0 .......... $07
+: Unused:
     db   $09, $00, $0a, $05, $02, $08, $02, $00, $00, $00 ;; 02:5bfa ?????????? $08
+; Start menu status effect window (Good, Pois, Ston, Moog, Dark):
     db   $0c, $08, $06, $03, $01, $04, $01, $00, $00, $00 ;; 02:5c04 .......... $09
+; Start menu equiped window:
     db   $00, $0c, $13, $03, $01, $08, $02, $01, $00, $00 ;; 02:5c0e .......... $0a
+; Vendor Buy, Sell, Exit
     db   $00, $0a, $06, $07, $03, $04, $03, $00, $01, $00 ;; 02:5c18 .......... $0b
 
-data_02_5c22:
+.vendorScreenGold:
     db   $0a, $0a, $09, $03, $01, $02, $01, $00, $00, $00 ;; 02:5c22 .......... $0c
+; Vendor sell menu (top):
     db   $00, $00, $13, $09, $04, $08, $1c, $00, $01, $00 ;; 02:5c2c .......... $0d
+; Vendor buy menu (top):
     db   $00, $00, $13, $09, $04, $08, $07, $00, $01, $00 ;; 02:5c36 .......... $0e
+; Vendor text window (top):
     db   $00, $00, $13, $09, $04, $11, $02, $00, $00, $00 ;; 02:5c40 .......... $0f
+; Vendor Sell, No:
     db   $08, $0e, $0b, $03, $02, $04, $02, $01, $02, $05 ;; 02:5c4a .......... $10
+; Select menu (Save Map Status):
     db   $01, $0d, $11, $04, $03, $06, $03, $01, $03, $05 ;; 02:5c54 .......... $11
 
-data_02_5c5e:
+.statusScreenRight:
     db   $09, $04, $0a, $0b, $04, $07, $04, $00, $00, $00 ;; 02:5c5e .......... $12
+; Status screen gold:
     db   $0a, $0f, $09, $02, $01, $02, $01, $00, $00, $00 ;; 02:5c68 .......... $13
+; Status screen HP/MP:
     db   $00, $04, $09, $0d, $05, $03, $05, $00, $00, $00 ;; 02:5c72 .......... $14
+; Status screen top window (name, level, status effect, experience):
     db   $00, $00, $13, $05, $02, $04, $02, $01, $00, $00 ;; 02:5c7c .......... $15
+; Unused:
     db   $0e, $00, $05, $03, $01, $04, $01, $00, $00, $00 ;; 02:5c86 ?????????? $16
+; Levelup message ("Level up! Select your growth type."):
     db   $00, $00, $13, $05, $02, $11, $02, $00, $00, $00 ;; 02:5c90 .......... $17
 
-;@data amount=10 format=bbbbbbbbbb
-unlabeled_02_5c9a:
+.selectLevelupStats:
     db   $00, $00, $13, $05, $04, $07, $04, $03, $02, $09 ;; 02:5c9a .......... $00
+; Levelup Yes, No:
     db   $00, $06, $09, $05, $02, $05, $02, $02, $01, $00 ;; 02:5ca4 .......... $01
+; Status screen AP, DP (this has an invisible border, but is a different window):
     db   $00, $0b, $06, $09, $02, $05, $02, $00, $01, $00 ;; 02:5cae .......... $02
+; Save/Load top window:
     db   $00, $02, $13, $06, $01, $0f, $02, $00, $02, $00 ;; 02:5cb8 .......... $03
+; Save/Load bottom window:
     db   $00, $0a, $13, $06, $01, $0f, $02, $00, $02, $00 ;; 02:5cc2 .......... $04
 
-data_02_5ccc:
+.namingScreenTop:
     db   $00, $00, $0e, $03, $01, $04, $01, $00, $00, $00 ;; 02:5ccc .......... $05
 
-data_02_5cd6:
+.namingScreenBottom:
     db   $00, $04, $13, $0d, $06, $09, $51, $01, $09, $02 ;; 02:5cd6 .......... $06
+; Title screen menu (New Game, Continue):
     db   $05, $09, $09, $05, $02, $08, $02, $00, $01, $00 ;; 02:5ce0 .......... $07
+; Status effect inflicted message (Pois, Ston, Moog, Dark):
     db   $0b, $01, $07, $03, $01, $04, $01, $00, $00, $00 ;; 02:5cea ?????????? $08
+; Levelup HP/MP recovered message:
     db   $00, $0a, $13, $07, $03, $10, $04, $00, $00, $00 ;; 02:5cf4 .......... $09
 
 ;@data amount=4 format=bbbb
@@ -4389,7 +4417,8 @@ call_02_667a:
     call call_00_0435                                  ;; 02:66f4 $cd $35 $04
     ret                                                ;; 02:66f7 $c9
 
-data_02_66f8:
+;@jumptable amount=4
+drawWindowJumptable:
     dw   drawWindowStart                               ;; 02:66f8 pP
     dw   drawWindowTopOrBottom                         ;; 02:66fa pP
     dw   windowDrawMiddle                              ;; 02:66fc pP
@@ -5308,7 +5337,7 @@ indexPointerTable:
     pop  BC                                            ;; 02:6c86 $c1
     ret                                                ;; 02:6c87 $c9
 
-call_02_6c88:
+getWindowData:
     push DE                                            ;; 02:6c88 $d5
     ld   H, $00                                        ;; 02:6c89 $26 $00
     ld   L, A                                          ;; 02:6c8b $6f
@@ -5392,7 +5421,7 @@ call_02_6ce4:
     db   $f5, $21, $a7, $d4, $11, $a6, $d5, $06        ;; 02:6cfd ????????
     db   $6c, $cd, $49, $2b, $f1, $c9                  ;; 02:6d05 ??????
 
-call_02_6d0b:
+copyStatsToLevelUpTmp:
     ld   HL, wStatStamina                              ;; 02:6d0b $21 $c1 $d7
     ld   DE, wStatStaminaLevelUpTmp                    ;; 02:6d0e $11 $8f $d7
     ld   B, $04                                        ;; 02:6d11 $06 $04
@@ -6053,7 +6082,7 @@ jr_02_70e3:
     call useWillCharge                                 ;; 02:7135 $cd $d0 $3e
     ret                                                ;; 02:7138 $c9
 
-call_02_7139:
+getWillTimes16PlusB:
     ld   B, A                                          ;; 02:7139 $47
     ld   A, [wWillCharge]                              ;; 02:713a $fa $58 $d8
     ld   H, $00                                        ;; 02:713d $26 $00
@@ -7264,7 +7293,7 @@ moogleTempZeroDP:
     ld   [wTotalDP], A                                 ;; 02:78c2 $ea $e0 $d7
     ret                                                ;; 02:78c5 $c9
 
-call_02_78c6:
+updateStatusEffects:
     ld   A, [wMainGameState]                           ;; 02:78c6 $fa $a0 $c0
     cp   A, $00                                        ;; 02:78c9 $fe $00
     ret  NZ                                            ;; 02:78cb $c0
@@ -7307,7 +7336,7 @@ call_02_78c6:
     call Z, call_02_7926                               ;; 02:7922 $cc $26 $79
     ret                                                ;; 02:7925 $c9
 
-call_02_7926:
+endLightStatusEffect:
     ld   A, [wD881]                                    ;; 02:7926 $fa $81 $d8
     call timerReset                                    ;; 02:7929 $cd $ea $2f
     call conditionallySetDarkGraphicEffect             ;; 02:792c $cd $6e $11
@@ -7429,7 +7458,7 @@ clearStatusEffects:
     ld   [HL], A                                       ;; 02:79e5 $77
     ret                                                ;; 02:79e6 $c9
 
-pauseStatusEffectTimers:
+pauseTimers:
     ld   HL, wPoisStatusEffectTimerNumber              ;; 02:79e7 $21 $79 $d8
     ld   B, $05                                        ;; 02:79ea $06 $05
 .jr_02_79ec:
@@ -7443,7 +7472,7 @@ pauseStatusEffectTimers:
     call timerDeactivate                               ;; 02:79fc $cd $f6 $2f
     ret                                                ;; 02:79ff $c9
 
-unpauseStatusEffectTImers:
+unpauseTimers:
     ld   A, [wStatusEffect]                            ;; 02:7a00 $fa $c0 $d7
     ld   C, A                                          ;; 02:7a03 $4f
     ld   B, $05                                        ;; 02:7a04 $06 $05

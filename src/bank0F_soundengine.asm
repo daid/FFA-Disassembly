@@ -110,14 +110,14 @@ call_0f_4084:
     jr   NZ, .jr_0f_408f                               ;; 0f:409b $20 $f2
     ret                                                ;; 0f:409d $c9
 
-MusicSongInit:
+musicSongInit:
     ldh  [hPlayingMusic], A                            ;; 0f:409e $e0 $93
     or   A, A                                          ;; 0f:40a0 $b7
     jr   NZ, MusicSongPlay                             ;; 0f:40a1 $20 $04
     call initSoundEngineReal                           ;; 0f:40a3 $cd $48 $40
     ret                                                ;; 0f:40a6 $c9
 
-MusicSongPlay:
+musicSongPlay:
     push AF                                            ;; 0f:40a7 $f5
     call call_0f_4084                                  ;; 0f:40a8 $cd $84 $40
     pop  AF                                            ;; 0f:40ab $f1
@@ -281,7 +281,7 @@ data_0f_424a:
     db   $60, $48, $30, $20, $24, $18, $10, $12        ;; 0f:424a ...?....
     db   $0c, $08, $06, $04, $03                       ;; 0f:4252 .?...
 
-call_0f_4257:
+musicPlayStep:
     ld   A, [wC100]                                    ;; 0f:4257 $fa $00 $c1
     ld   B, A                                          ;; 0f:425a $47
     ld   A, [wC101]                                    ;; 0f:425b $fa $01 $c1
@@ -1148,7 +1148,7 @@ call_0f_47ad:
     ldh  [rNR34], A                                    ;; 0f:47c4 $e0 $1e
     ret                                                ;; 0f:47c6 $c9
 
-jp_0f_47c7:
+return:
     ret                                                ;; 0f:47c7 $c9
 
 call_0f_47c8:
@@ -1410,7 +1410,7 @@ soundEffectPlay:
     ldh  [hSFX], A                                     ;; 0f:4962 $e0 $92
     ret                                                ;; 0f:4964 $c9
 
-call_0f_4965:
+soundEffectPlayStep:
     ld   A, [wC11A]                                    ;; 0f:4965 $fa $1a $c1
     or   A, A                                          ;; 0f:4968 $b7
     jp   Z, .jp_0f_49bc                                ;; 0f:4969 $ca $bc $49

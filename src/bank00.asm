@@ -301,12 +301,12 @@ createPlayerObject_trampoline:
 playerHit_trampoline:
     jp_to_bank 01, playerHit                           ;; 00:0256 $f5 $3e $07 $c3 $d7 $1e
 
-call_00_025c:
+setGameStateFireAutoTarget:
     ld   A, $06                                        ;; 00:025c $3e $06
     ld   [wMainGameState], A                           ;; 00:025e $ea $a0 $c0
     ret                                                ;; 00:0261 $c9
 
-call_00_0262:
+clearPlayerDamaged:
     ld   A, $00                                        ;; 00:0262 $3e $00
     ld   [wPlayerDamagedTimer], A                      ;; 00:0264 $ea $d2 $c4
     ld   A, $c9                                        ;; 00:0267 $3e $c9
@@ -317,7 +317,7 @@ call_00_0262:
     call setObjectSpeed                                ;; 00:0272 $cd $5d $0c
     ret                                                ;; 00:0275 $c9
 
-call_00_0276:
+setGameStateSpecialAttack:
     call call_00_0262                                  ;; 00:0276 $cd $62 $02
     ld   A, $05                                        ;; 00:0279 $3e $05
     ld   [wMainGameState], A                           ;; 00:027b $ea $a0 $c0
@@ -405,6 +405,8 @@ initLCDCEffect:
     call setDefaultLCDCEffect                          ;; 00:02ef $cd $13 $03
     ret                                                ;; 00:02f2 $c9
 
+; HL = buffer address
+; B = buffer length
 loadLCDCEffectBuffer:
     ld   E, B                                          ;; 00:02f3 $58
     ld   D, $00                                        ;; 00:02f4 $16 $00
@@ -442,6 +444,7 @@ setDefaultLCDCEffect:
     ld   A, $00                                        ;; 00:0317 $3e $00
     ld   [wLCDCEffectIndex], A                         ;; 00:0319 $ea $e2 $d3
     ld   DE, wLCDCEffectBuffer                         ;; 00:031c $11 $a0 $d3
+; Relocation issue: lcdcDefaultEffect
     ld   HL, $328                                      ;; 00:031f $21 $28 $03
     ld   B, $05                                        ;; 00:0322 $06 $05
     call copyHLtoDE                                    ;; 00:0324 $cd $49 $2b
@@ -628,10 +631,10 @@ call_00_041c:
 call_00_0429:
     jp_to_bank 02, call_02_43dd                        ;; 00:0429 $f5 $3e $06 $c3 $06 $1f
 
-call_00_042f:
+hideSpritesBehindWindow_trampoline:
     jp_to_bank 02, call_02_442b                        ;; 00:042f $f5 $3e $04 $c3 $06 $1f
 
-call_00_0435:
+showSpritesBehindWindow_trampoline:
     jp_to_bank 02, call_02_4469                        ;; 00:0435 $f5 $3e $05 $c3 $06 $1f
 
 call_00_043b:
@@ -702,10 +705,10 @@ storeDEatBackgroundDrawPosition:
     call storeDEinVRAM                                 ;; 00:049a $cd $74 $1d
     ret                                                ;; 00:049d $c9
 
-call_00_049e:
+scrollRoom_trampoline:
     jp_to_bank 01, scrollRoom                          ;; 00:049e $f5 $3e $18 $c3 $d7 $1e
 
-call_00_04a4:
+drawRoom_trampoline:
     jp_to_bank 01, call_01_471d                        ;; 00:04a4 $f5 $3e $19 $c3 $d7 $1e
 
 call_00_04aa:
@@ -764,7 +767,7 @@ call_00_04fa:
     ret                                                ;; 00:050c $c9
     db   $21, $00, $00, $c9                            ;; 00:050d ????
 
-call_00_0511:
+bossCollisionHandling_trampoline:
     jp_to_bank 04, call_04_4446                        ;; 00:0511 $f5 $3e $05 $c3 $64 $1f
 
 call_00_0517:
@@ -960,6 +963,7 @@ getObjectNearestTilePosition:
     ret                                                ;; 00:0610 $c9
 
 ; Update the object at index C to the position at D,E
+; Also does something with B
 updateObjectPosition:
     ld   L, A                                          ;; 00:0611 $6f
     ld   A, C                                          ;; 00:0612 $79
@@ -1367,7 +1371,9 @@ call_00_0828:
     call call_00_088a                                  ;; 00:0886 $cd $8a $08
     ret                                                ;; 00:0889 $c9
 
-call_00_088a:
+; HL = object base address (c2X0)
+; DE = offset from the object's base metasprite tile address (should be a multiple of three)
+setMetaspriteForObject:
     push HL                                            ;; 00:088a $e5
     ld   BC, $06                                       ;; 00:088b $01 $06 $00
     add  HL, BC                                        ;; 00:088e $09
@@ -1702,7 +1708,7 @@ call_00_0a33:
     pop  AF                                            ;; 00:0a5b $f1
     call call_00_0244                                  ;; 00:0a5c $cd $44 $02
     ret                                                ;; 00:0a5f $c9
-.playerAttack:
+.playerOrFollowerAttack:
     pop  AF                                            ;; 00:0a60 $f1
     call call_00_2efd                                  ;; 00:0a61 $cd $fd $2e
     ret                                                ;; 00:0a64 $c9
@@ -1964,7 +1970,7 @@ playerMetaspriteTable_bank0:
     db   $20, $02, $00, $00, $00, $02, $00, $00        ;; 00:0bc5 ????????
     db   $02, $00, $00, $02                            ;; 00:0bcd ?...
 
-call_00_0bd1:
+initObjects:
     ld   HL, wObjectRuntimeData                        ;; 00:0bd1 $21 $00 $c2
     ld   DE, wOAMBuffer                                ;; 00:0bd4 $11 $00 $c0
     ld   A, $ff                                        ;; 00:0bd7 $3e $ff
@@ -1998,6 +2004,7 @@ call_00_0bd1:
     push BC                                            ;; 00:0bfb $c5
     ld   A, $01                                        ;; 00:0bfc $3e $01
     ld   DE, $fefe                                     ;; 00:0bfe $11 $fe $fe
+; Relocation issue: playerMetaspriteTable_bank0
     ld   HL, $bc5                                      ;; 00:0c01 $21 $c5 $0b
     call createObject                                  ;; 00:0c04 $cd $74 $0a
     pop  BC                                            ;; 00:0c07 $c1
@@ -2164,7 +2171,7 @@ setObjectMetaspritePointer:
     ld   [HL], D                                       ;; 00:0cd1 $72
     ret                                                ;; 00:0cd2 $c9
 
-call_00_0cd3:
+getObjectOffset0a:
     ld   L, C                                          ;; 00:0cd3 $69
     ld   H, $00                                        ;; 00:0cd4 $26 $00
     add  HL, HL                                        ;; 00:0cd6 $29
@@ -2178,7 +2185,7 @@ call_00_0cd3:
     ld   A, [HL-]                                      ;; 00:0ce2 $3a
     ret                                                ;; 00:0ce3 $c9
 
-call_00_0ce4:
+setObjectOffset0a:
     ld   L, C                                          ;; 00:0ce4 $69
     ld   H, $00                                        ;; 00:0ce5 $26 $00
     add  HL, HL                                        ;; 00:0ce7 $29
@@ -2197,7 +2204,7 @@ call_00_0ce4:
     db   $00, $c2, $09, $11, $0b, $00, $19, $3a        ;; 00:0cff ????????
     db   $c9                                           ;; 00:0d07 ?
 
-call_00_0d08:
+setObjectOffset0b:
     ld   L, C                                          ;; 00:0d08 $69
     ld   H, $00                                        ;; 00:0d09 $26 $00
     add  HL, HL                                        ;; 00:0d0b $29
@@ -2482,22 +2489,28 @@ scriptOpCodeShakeScreen:
     call Z, getNextScriptInstruction                   ;; 00:0eae $cc $27 $37
     ret                                                ;; 00:0eb1 $c9
 
+; 08 = Recovery effect used at the ponds
+; 10 = Explosion effect
+; 2c = Fire effect used by Julius at the airship
 scriptOpCodeCreateEffect:
     ld   D, H                                          ;; 00:0eb2 $54
     ld   E, L                                          ;; 00:0eb3 $5d
     ld   A, [wScriptOpCounter]                         ;; 00:0eb4 $fa $99 $d4
+; Relocation issue: specialEffectJumptable
     ld   HL, $eca                                      ;; 00:0eb7 $21 $ca $0e
     call callJumptable                                 ;; 00:0eba $cd $70 $2b
     ret                                                ;; 00:0ebd $c9
+
+specialEffectMetatileTable:
     db   $00, $10, $10, $00, $10, $10, $00, $10        ;; 00:0ebe ????????
     db   $10, $00, $10, $10                            ;; 00:0ec6 ????
 
 ;@jumptable amount=2
-jumptable_0eca:
+specialEffectJumptable:
     dw   call_00_0ece                                  ;; 00:0eca ??
     dw   call_00_0eef                                  ;; 00:0ecc ??
 
-call_00_0ece:
+specialEffectInit:
     ld   H, D                                          ;; 00:0ece $62
     ld   L, E                                          ;; 00:0ecf $6b
     ld   A, [HL+]                                      ;; 00:0ed0 $2a
@@ -2507,6 +2520,7 @@ call_00_0ece:
     inc  HL                                            ;; 00:0ed4 $23
     push HL                                            ;; 00:0ed5 $e5
     push AF                                            ;; 00:0ed6 $f5
+; Relocation issue: specialEffectMetatileTable
     ld   HL, $ebe                                      ;; 00:0ed7 $21 $be $0e
     ld   C, $07                                        ;; 00:0eda $0e $07
     ld   A, $00                                        ;; 00:0edc $3e $00
@@ -2520,7 +2534,7 @@ call_00_0ece:
     pop  HL                                            ;; 00:0eed $e1
     ret                                                ;; 00:0eee $c9
 
-call_00_0eef:
+specialEffectAnimate:
     push DE                                            ;; 00:0eef $d5
     call call_00_2ed3                                  ;; 00:0ef0 $cd $d3 $2e
     pop  HL                                            ;; 00:0ef3 $e1
@@ -2856,7 +2870,7 @@ scriptOpCodeFadeToNormal:
     call call_00_1142                                  ;; 00:113e $cd $42 $11
     ret                                                ;; 00:1141 $c9
 
-call_00_1142:
+fadeEffectAdjustCounters:
     ld   A, [wScriptOpCounter2]                        ;; 00:1142 $fa $9a $d4
     inc  A                                             ;; 00:1145 $3c
     ld   [wScriptOpCounter2], A                        ;; 00:1146 $ea $9a $d4
@@ -3779,7 +3793,7 @@ scriptOpCode8F:
     db   $4f, $2a, $b9, $c8, $fe, $ff, $20, $f9        ;; 00:16a3 ????????
     db   $79, $fe, $ff, $c9                            ;; 00:16ab ????
 
-call_00_16af:
+getRoomMetaTileAttributes:
     push DE                                            ;; 00:16af $d5
     ld   A, $08                                        ;; 00:16b0 $3e $08
     call pushBankNrAndSwitch                           ;; 00:16b2 $cd $fb $29
@@ -4757,7 +4771,10 @@ call_00_1ba1:
     db   $00, $09, $29, $01, $00, $80, $09, $c9        ;; 00:1d0c ????????
     db   $cd, $04, $1d, $cd, $b4, $1d, $c9             ;; 00:1d14 ???????
 
-call_00_1d1b:
+; checks for death
+; increments the charge bar, and another strange (unused?) alternative charge counter
+; and handles expiring Nectar/Stamina buffs
+playerHousekeeping:
     push HL                                            ;; 00:1d1b $e5
     call checkForPlayerDeath                           ;; 00:1d1c $cd $46 $3e
     pop  HL                                            ;; 00:1d1f $e1
@@ -4782,7 +4799,7 @@ call_00_1d1b:
     call timerCheckExpiredOrTickAllTimers              ;; 00:1d40 $cd $0a $30
     ret  NZ                                            ;; 00:1d43 $c0
 
-call_00_1d44:
+clearItemBuff:
     ld   HL, wD7D8                                     ;; 00:1d44 $21 $d8 $d7
     ld   DE, wStatStamina                              ;; 00:1d47 $11 $c1 $d7
     ld   B, $04                                        ;; 00:1d4a $06 $04
@@ -5317,7 +5334,7 @@ initialVRAMLoad:
     dw   $87e0, gfxChest + $50                         ;; 00:2138 pP.. $1a
     dw   $87f0, gfxChest + $30                         ;; 00:213c pP.. $1b
 
-call_00_2140:
+copyInitialVRAMTiles:
     ld   A, $08                                        ;; 00:2140 $3e $08
     ld   [$2100], A                                    ;; 00:2142 $ea $00 $21
     ld   HL, initialVRAMLoad                           ;; 00:2145 $21 $d0 $20
@@ -5393,7 +5410,7 @@ clearRoomStatusHistory:
     call fillMemory                                    ;; 00:21bb $cd $5d $2b
     ret                                                ;; 00:21be $c9
 
-call_00_21bf:
+getRoomClearedStatusAndUpdateList:
     ld   C, A                                          ;; 00:21bf $4f
     ld   E, A                                          ;; 00:21c0 $5f
     ld   HL, wRoomClearedStatus                        ;; 00:21c1 $21 $00 $c4
@@ -5435,7 +5452,7 @@ call_00_21bf:
     dec  A                                             ;; 00:21f4 $3d
     ret                                                ;; 00:21f5 $c9
 
-call_00_21f6:
+checkRoomVisited:
     ld   B, $40                                        ;; 00:21f6 $06 $40
     ld   HL, wRoomClearedStatus                        ;; 00:21f8 $21 $00 $c4
 .jr_00_21fb:
@@ -6440,7 +6457,7 @@ call_00_27ba:
     ld   A, $00                                        ;; 00:27cb $3e $00
     ret                                                ;; 00:27cd $c9
 
-call_00_27ce:
+checkObjectCollisions_trampoline:
     call call_00_04aa                                  ;; 00:27ce $cd $aa $04
     jp_to_bank 03, call_03_402c                        ;; 00:27d1 $f5 $3e $00 $c3 $35 $1f
 
@@ -6481,7 +6498,7 @@ scriptOpCodeSetNPCTypes:
     call getNextScriptInstruction                      ;; 00:2815 $cd $27 $37
     ret                                                ;; 00:2818 $c9
 
-call_00_2819:
+setNpcSpawnTable_trampoline:
     ld   A, [HL+]                                      ;; 00:2819 $2a
     jp_to_bank 03, call_03_444a                        ;; 00:281a $f5 $3e $05 $c3 $35 $1f
 
@@ -6501,7 +6518,7 @@ scriptOpCodeSpawnNPC:
     call getNextScriptInstruction                      ;; 00:283c $cd $27 $37
     ret                                                ;; 00:283f $c9
 
-call_00_2840:
+spawnNpcsFromTable_trampoline:
     ld   A, [HL+]                                      ;; 00:2840 $2a
     jp_to_bank 03, call_03_44ed                        ;; 00:2841 $f5 $3e $04 $c3 $35 $1f
 
@@ -6514,7 +6531,7 @@ call_00_284d:
 damageNpc_trampoline:
     jp_to_bank 03, damageNpc                           ;; 00:2853 $f5 $3e $09 $c3 $35 $1f
 
-call_00_2859:
+scriptNpcDelete:
     push BC                                            ;; 00:2859 $c5
     push HL                                            ;; 00:285a $e5
     call call_00_289b                                  ;; 00:285b $cd $9b $28
@@ -6553,7 +6570,7 @@ call_00_2883:
 call_00_2889:
     jp_to_bank 03, call_03_4aed                        ;; 00:2889 $f5 $3e $0b $c3 $35 $1f
 
-call_00_288f:
+updateObjectPosition_3_trampoline:
     jp_to_bank 03, updateObjectPosition_3              ;; 00:288f $f5 $3e $0c $c3 $35 $1f
 
 giveFollower_trampoline:
@@ -6587,7 +6604,10 @@ call_00_28bc:
     ld   [HL], A                                       ;; 00:28c0 $77
     ret                                                ;; 00:28c1 $c9
 
-call_00_28c2:
+; Npcs start at object 7, unless you have a follower.
+; Return: 0 if no follower, 1 if follower
+;         Z flag set if follower
+checkForFollower:
     push HL                                            ;; 00:28c2 $e5
     ld   C, $07                                        ;; 00:28c3 $0e $07
     call getObjectCollisionFlags                       ;; 00:28c5 $cd $6d $0c
@@ -6729,6 +6749,17 @@ playSFX:
     ldh  [hSFX], A                                     ;; 00:297f $e0 $92
     ret                                                ;; 00:2981 $c9
 
+; 0 -> 3
+; 1 -> 0
+; 2 -> 1
+; 3 -> 0
+; 4 -> 2
+; 5 -> 0
+; 6 -> 1
+; 7 -> 0
+; ... etc
+; All in all it returns 50% 0, 25% 1, 12.5% 2, and 12.5% 3
+; Gets the lowest set bit number of the first three bits, with 0 treated as 8.
 call_00_2982:
     bit  0, A                                          ;; 00:2982 $cb $47
     jr   NZ, .jr_00_2991                               ;; 00:2984 $20 $0b
@@ -6748,7 +6779,13 @@ call_00_2982:
     ld   A, $02                                        ;; 00:2997 $3e $02
     ret                                                ;; 00:2999 $c9
 
-call_00_299a:
+; A & 3:
+; 0 -> 1
+; 1 -> 2
+; 2 -> 4
+; 3 -> 8
+; Probably considered the inverse of the above function
+getA_And3Power2:
     and  A, $03                                        ;; 00:299a $e6 $03
     jr   Z, .jr_00_29a9                                ;; 00:299c $28 $0b
     cp   A, $01                                        ;; 00:299e $fe $01
@@ -7059,7 +7096,7 @@ sub_HL_DE:
     db   $20, $fc, $c9, $3e, $10, $29, $38, $03        ;; 00:2bc4 ????????
     db   $3d, $20, $fa, $3d, $c9                       ;; 00:2bcc ?????
 
-call_00_2bd1:
+checkProjectileCollisions_trampoline:
     jp_to_bank 09, call_09_4016                        ;; 00:2bd1 $f5 $3e $00 $c3 $93 $1f
 
 call_00_2bd7:
@@ -7091,7 +7128,7 @@ call_00_2bf2:
 NOOP:
     ret                                                ;; 00:2c02 $c9
 
-call_00_2c03:
+projectileCollisionHandling_trampoline:
     jp_to_bank 09, call_09_4399                        ;; 00:2c03 $f5 $3e $08 $c3 $93 $1f
 
 call_00_2c09:
@@ -7539,7 +7576,7 @@ call_00_2f2c:
 call_00_2f3e:
     jp_to_bank 01, call_01_5d98                        ;; 00:2f3e $f5 $3e $24 $c3 $d7 $1e
 
-call_00_2f44:
+useSlep:
     ld   A, [wCF60]                                    ;; 00:2f44 $fa $60 $cf
     cp   A, $00                                        ;; 00:2f47 $fe $00
     jr   Z, .jr_00_2f50                                ;; 00:2f49 $28 $05
@@ -7553,7 +7590,7 @@ call_00_2f44:
     call call_00_292c                                  ;; 00:2f59 $cd $2c $29
     ret                                                ;; 00:2f5c $c9
 
-call_00_2f5d:
+useMute:
     ld   A, [wCF61]                                    ;; 00:2f5d $fa $61 $cf
     cp   A, $00                                        ;; 00:2f60 $fe $00
     jr   Z, .jr_00_2f69                                ;; 00:2f62 $28 $05
@@ -7567,7 +7604,7 @@ call_00_2f5d:
     call call_00_2932                                  ;; 00:2f72 $cd $32 $29
     ret                                                ;; 00:2f75 $c9
 
-tileAttack_trampoline:
+attackTile_trampoline:
     cp   A, $00                                        ;; 00:2f76 $fe $00
     ret  Z                                             ;; 00:2f78 $c8
     jp_to_bank 01, attackTile                          ;; 00:2f79 $f5 $3e $27 $c3 $d7 $1e
@@ -7580,7 +7617,7 @@ scriptOpCodeAA:
     call getNextScriptInstruction                      ;; 00:2f84 $cd $27 $37
     ret                                                ;; 00:2f87 $c9
 
-call_00_2f88:
+initTimersNamesAndScriptFlags:
     push HL                                            ;; 00:2f88 $e5
     push BC                                            ;; 00:2f89 $c5
     ld   HL, wTimers                                   ;; 00:2f8a $21 $e1 $d7
@@ -7640,7 +7677,7 @@ call_00_2f9e:
     or   A, A                                          ;; 00:2fc8 $b7
     ret                                                ;; 00:2fc9 $c9
 
-call_00_2fca:
+timerFree:
     push HL                                            ;; 00:2fca $e5
     push BC                                            ;; 00:2fcb $c5
     call timerGetIndex                                 ;; 00:2fcc $cd $57 $30
@@ -7650,7 +7687,7 @@ call_00_2fca:
     pop  HL                                            ;; 00:2fd2 $e1
     ret                                                ;; 00:2fd3 $c9
 
-call_00_2fd4:
+timerStart:
     push HL                                            ;; 00:2fd4 $e5
     push BC                                            ;; 00:2fd5 $c5
     call timerGetIndex                                 ;; 00:2fd6 $cd $57 $30
@@ -7671,7 +7708,7 @@ call_00_2fd4:
     pop  HL                                            ;; 00:2fe8 $e1
     ret                                                ;; 00:2fe9 $c9
 
-timerReset:
+timerStop:
     push HL                                            ;; 00:2fea $e5
     push BC                                            ;; 00:2feb $c5
     call timerGetIndex                                 ;; 00:2fec $cd $57 $30
@@ -7758,7 +7795,7 @@ timerSetExpired:
     inc  HL                                            ;; 00:304a $23
     ret                                                ;; 00:304b $c9
 
-call_00_304c:
+timerReset:
     inc  HL                                            ;; 00:304c $23
     ld   E, [HL]                                       ;; 00:304d $5e
     inc  HL                                            ;; 00:304e $23
@@ -7873,7 +7910,7 @@ giveStatusEffect_trampoline:
 setAToZero_trampoline:
     jp_to_bank 02, setAToZero_2                        ;; 00:3135 $f5 $3e $2b $c3 $06 $1f
 
-call_00_313b:
+updateStatusEffects_trampoline:
     jp_to_bank 02, call_02_78c6                        ;; 00:313b $f5 $3e $2c $c3 $06 $1f
     db   $f5, $3e, $2d, $c3, $06, $1f                  ;; 00:3141 ??????
 
@@ -7913,7 +7950,7 @@ clearFujiStatusEffect_trampoline:
 getEquippedArmorElementalResistances_trampoline:
     jp_to_bank 02, getEquippedArmorElementalResistances ;; 00:3189 $f5 $3e $39 $c3 $06 $1f
 
-call_00_318f:
+startScriptIfRequested:
     ld   HL, wWindowFlags                              ;; 00:318f $21 $74 $d8
     bit  7, [HL]                                       ;; 00:3192 $cb $7e
     ret  Z                                             ;; 00:3194 $c8
@@ -7945,7 +7982,7 @@ runScriptByIndex:
     or   A, $80                                        ;; 00:31c2 $f6 $80
     ld   [wWindowFlags], A                             ;; 00:31c4 $ea $74 $d8
 
-call_00_31c7:
+runScriptFromScriptByIndex:
     ld   A, $05                                        ;; 00:31c7 $3e $05
     ld   [wTextSpeedTimer], A                          ;; 00:31c9 $ea $64 $d8
     ld   A, H                                          ;; 00:31cc $7c
@@ -7987,7 +8024,10 @@ call_00_31c7:
     pop  HL                                            ;; 00:3211 $e1
     ret                                                ;; 00:3212 $c9
 
-runScriptByAddress:
+; A=Player facing direction?
+; C=Player collision flags
+; HL=Script index
+runSubScriptFromScriptByIndex:
     ld   A, [wScriptBank]                              ;; 00:3213 $fa $6a $d8
     push AF                                            ;; 00:3216 $f5
     ld   A, [wScriptPointerHigh]                       ;; 00:3217 $fa $b7 $d8
@@ -8144,7 +8184,9 @@ scriptOpCodeCall:
     ld   A, [HL+]                                      ;; 00:3302 $2a
     ld   E, A                                          ;; 00:3303 $5f
 
-call_00_3304:
+; DE = Script address (not index number)
+; This assumes we have already have a running script
+jumpToScriptAtAddressDE:
     push DE                                            ;; 00:3304 $d5
     ld   A, H                                          ;; 00:3305 $7c
     cp   A, $80                                        ;; 00:3306 $fe $80
@@ -8195,7 +8237,7 @@ scriptOpCodeMsg:
     inc  HL                                            ;; 00:3359 $23
     call getNextScriptInstruction                      ;; 00:335a $cd $27 $37
     ret                                                ;; 00:335d $c9
-.jr_00_335e:
+.handleCtrlCodes:
     push HL                                            ;; 00:335e $e5
     sub  A, $10                                        ;; 00:335f $d6 $10
     ld   B, $00                                        ;; 00:3361 $06 $00
@@ -9920,7 +9962,7 @@ addMoney:
     db   $7d, $ea, $be, $d7, $cd, $17, $31, $d1        ;; 00:3da6 ????????
     db   $c9                                           ;; 00:3dae ?
 
-call_00_3daf:
+getTotalMagicPower:
     call getCurrentMagicPower_trampoline               ;; 00:3daf $cd $23 $31
     and  A, A                                          ;; 00:3db2 $a7
     ret  Z                                             ;; 00:3db3 $c8
@@ -10062,7 +10104,7 @@ startLevelUp:
     res  6, [HL]                                       ;; 00:3e8c $cb $b6
     ret                                                ;; 00:3e8e $c9
 
-call_00_3e8f:
+setScriptMainGameStateBackup:
     ld   [wD86E], A                                    ;; 00:3e8f $ea $6e $d8
     ret                                                ;; 00:3e92 $c9
     db   $fa, $58, $d8, $c9                            ;; 00:3e93 ????

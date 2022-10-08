@@ -3,12 +3,12 @@
 
 ;@data format=bbbbbbbbpppp amount=40
 ; Projectile data.
-; 0) Something with behavour of the projectile
+; 0) Collision flags
 ; 1) Speed, lower = faster.
 ; 2) ?
 ; 3) Element
 ; 4) Damage
-; 5) ?
+; 5) Status Effect inflicted
 ; 6) Graphics Tile Load Index
 ; 7) Graphics Tile Load Count
 ; 8-9) Graphics pointer
