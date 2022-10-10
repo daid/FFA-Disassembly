@@ -14,10 +14,10 @@
 ; offset a-b: graphics related, pointer including bank, allowing everything from bank $08 to $0B to be selected for graphics.
 ; offset c-d: graphics related, points to data of which tile offsets to load from the previous pointer into VRAM
 ; offset e-f: metatile info (list of [attr, tile1, tile2])
-; offset 10-11: stats for each of the 16x16 "objects" used for this boss. Eight bytes per object:
-; offset 1: DP or something similar (ff for immune to damage, like Megapede body, Davias orbs, and  Cyclops Morning Star)
-; offset 2: weaknesses (see npc/stats.asm)
-; offset 6: Status Effect on touch
+; offset 10-11: pointer to stats for each of the 16x16 "objects" used for this boss. Eight bytes per object:
+; * offset 1: DP or something similar (ff for immune to damage, like Megapede body, Davias orbs, and  Cyclops Morning Star)
+; * offset 2: weaknesses (see npc/stats.asm)
+; * offset 6: Status Effect on touch
 ; offset 12-13: attack movement pattern
 ; offset 14-15: spawn movement pattern
 ; offset 16-17: death animation pattern

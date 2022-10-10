@@ -329,7 +329,8 @@ call_00_0285:
     call call_00_0ae3                                  ;; 00:0287 $cd $e3 $0a
     ret                                                ;; 00:028a $c9
 
-call_00_028b:
+; The only place this appears to be used it's always checking the player
+checkCollisionFlagsFollower:
     and  A, $f0                                        ;; 00:028b $e6 $f0
     cp   A, $d0                                        ;; 00:028d $fe $d0
     ret  Z                                             ;; 00:028f $c8
@@ -378,7 +379,7 @@ call_00_02c3:
 call_00_02c9:
     jp_to_bank 01, call_01_51bb                        ;; 00:02c9 $f5 $3e $0d $c3 $d7 $1e
 
-call_00_02cf:
+getMainGameStateForPlayerForm:
     call getPlayerCollisionFlags                       ;; 00:02cf $cd $b7 $02
     cp   A, $e1                                        ;; 00:02d2 $fe $e1
     jr   Z, .chocobo                                   ;; 00:02d4 $28 $0b
@@ -753,13 +754,13 @@ call_00_04e8:
 call_00_04f4:
     jp_to_bank 04, call_04_45fa                        ;; 00:04f4 $f5 $3e $03 $c3 $64 $1f
 
-call_00_04fa:
+bossClearObjectsTracking:
     ld   A, $ff                                        ;; 00:04fa $3e $ff
     ld   [wD3E8], A                                    ;; 00:04fc $ea $e8 $d3
     ld   HL, wbossObjectsRuntimeData                   ;; 00:04ff $21 $42 $d4
     ld   DE, $06                                       ;; 00:0502 $11 $06 $00
     ld   B, $0e                                        ;; 00:0505 $06 $0e
-.jr_00_0507:
+.loop:
     ld   [HL], A                                       ;; 00:0507 $77
     add  HL, DE                                        ;; 00:0508 $19
     dec  B                                             ;; 00:0509 $05
@@ -909,7 +910,7 @@ getTileInfoPointer2:
     add  HL, DE                                        ;; 00:05cb $19
     ret                                                ;; 00:05cc $c9
 
-call_00_05cd:
+hideMinimapFlashingMarker:
     ld   L, C                                          ;; 00:05cd $69
     ld   H, $00                                        ;; 00:05ce $26 $00
     add  HL, HL                                        ;; 00:05d0 $29
@@ -1720,7 +1721,7 @@ call_00_0a33:
     pop  AF                                            ;; 00:0a6a $f1
     call setHLToZero                                   ;; 00:0a6b $cd $1e $2d
     ret                                                ;; 00:0a6e $c9
-.jr_00_0a6f:
+.enemyProjectile:
     pop  AF                                            ;; 00:0a6f $f1
     call NOOP                                          ;; 00:0a70 $cd $02 $2c
     ret                                                ;; 00:0a73 $c9
@@ -2716,7 +2717,7 @@ scriptOpCodeFlashScreen:
     ld   [wScriptOpCounter], A                         ;; 00:1000 $ea $99 $d4
     call getNextScriptInstruction                      ;; 00:1003 $cd $27 $37
     ret                                                ;; 00:1006 $c9
-.jr_00_1007:
+.dark:
     ld   A, $3f                                        ;; 00:1007 $3e $3f
     ld   [wVideoBGP], A                                ;; 00:1009 $ea $aa $c0
     ld   [wVideoOBP0], A                               ;; 00:100c $ea $ab $c0
@@ -3740,7 +3741,7 @@ scriptOpCodeFollowerDelete:
     call scriptNpcDelete                               ;; 00:165b $cd $59 $28
     ret                                                ;; 00:165e $c9
 
-jr_00_165f:
+noFollower:
     call getNextScriptInstruction                      ;; 00:165f $cd $27 $37
     ret                                                ;; 00:1662 $c9
 
@@ -4517,7 +4518,7 @@ call_00_1acd:
     pop  DE                                            ;; 00:1af1 $d1
     ret                                                ;; 00:1af2 $c9
 
-call_00_1af3:
+initMapGraphicsState:
     ld   A, H                                          ;; 00:1af3 $7c
     ld   [wMapGraphicsPointer.High], A                 ;; 00:1af4 $ea $91 $d3
     ld   A, L                                          ;; 00:1af7 $7d
@@ -5524,15 +5525,15 @@ call_00_225d:
     jr   NZ, .jr_00_227b                               ;; 00:226a $20 $0f
     ld   C, $03                                        ;; 00:226c $0e $03
     ret                                                ;; 00:226e $c9
-.jr_00_226f:
+.east:
     ld   HL, label_unknown_2235                        ;; 00:226f $21 $35 $22
     ld   C, $00                                        ;; 00:2272 $0e $00
     ret                                                ;; 00:2274 $c9
-.jr_00_2275:
+.west:
     ld   HL, label_unknown_222d                        ;; 00:2275 $21 $2d $22
     ld   C, $01                                        ;; 00:2278 $0e $01
     ret                                                ;; 00:227a $c9
-.jr_00_227b:
+.north:
     ld   HL, label_unknown_2225                        ;; 00:227b $21 $25 $22
     ld   C, $02                                        ;; 00:227e $0e $02
     ret                                                ;; 00:2280 $c9
@@ -6470,7 +6471,7 @@ spawnNPC_trampoline:
 call_00_27e3:
     jp_to_bank 03, call_03_435f                        ;; 00:27e3 $f5 $3e $03 $c3 $35 $1f
 
-call_00_27e9:
+initNpcRuntimeData:
     ld   HL, wNpcRuntimeData                           ;; 00:27e9 $21 $e0 $c4
     ld   B, $08                                        ;; 00:27ec $06 $08
     ld   DE, $18                                       ;; 00:27ee $11 $18 $00
@@ -6522,7 +6523,7 @@ spawnNpcsFromTable_trampoline:
     ld   A, [HL+]                                      ;; 00:2840 $2a
     jp_to_bank 03, spawnNpcsFromTable                  ;; 00:2841 $f5 $3e $04 $c3 $35 $1f
 
-call_00_2847:
+setHLToZero_3_trampoline:
     jp_to_bank 03, setHLToZero_3                       ;; 00:2847 $f5 $3e $06 $c3 $35 $1f
 
 call_00_284d:
@@ -6617,7 +6618,7 @@ checkForFollower:
     jr   Z, .jr_00_28d2                                ;; 00:28cd $28 $03
     ld   A, $00                                        ;; 00:28cf $3e $00
     ret                                                ;; 00:28d1 $c9
-.jr_00_28d2:
+.haveFollower:
     ld   A, $01                                        ;; 00:28d2 $3e $01
     ret                                                ;; 00:28d4 $c9
 
@@ -6664,7 +6665,8 @@ call_00_28f0:
     xor  A, A                                          ;; 00:290b $af
     ret                                                ;; 00:290c $c9
 
-call_00_290d:
+; Used for the ASK command
+getFollowerScript:
     ld   HL, $00                                       ;; 00:290d $21 $00 $00
     call checkForFollower                              ;; 00:2910 $cd $c2 $28
     ret  NZ                                            ;; 00:2913 $c0
@@ -6679,10 +6681,10 @@ call_00_291a:
 call_00_2926:
     jp_to_bank 03, call_03_4c38                        ;; 00:2926 $f5 $3e $14 $c3 $35 $1f
 
-call_00_292c:
+inflictVulnerableNpcsSlep_trampoline:
     jp_to_bank 03, call_03_4a9f                        ;; 00:292c $f5 $3e $10 $c3 $35 $1f
 
-call_00_2932:
+inflictVulnerableNpcsMute_trampoline:
     jp_to_bank 03, call_03_4ac1                        ;; 00:2932 $f5 $3e $11 $c3 $35 $1f
 
 call_00_2938:
@@ -7113,7 +7115,7 @@ call_00_2be6:
 spawnProjectile_trampoline:
     jp_to_bank 09, spawnProjectile                     ;; 00:2bec $f5 $3e $04 $c3 $93 $1f
 
-call_00_2bf2:
+initProjectileRuntimeData:
     ld   HL, wProjectileRuntimeData                    ;; 00:2bf2 $21 $c0 $c5
     ld   B, $03                                        ;; 00:2bf5 $06 $03
     ld   DE, $0a                                       ;; 00:2bf7 $11 $0a $00
@@ -7131,13 +7133,13 @@ NOOP:
 projectileCollisionHandling_trampoline:
     jp_to_bank 09, projectileCollisionHandling         ;; 00:2c03 $f5 $3e $08 $c3 $93 $1f
 
-call_00_2c09:
+getProjectileOffset02_trampoline:
     jp_to_bank 09, getProjectileOffset02               ;; 00:2c09 $f5 $3e $05 $c3 $93 $1f
 
-call_00_2c0f:
+getProjectileElement_trampoline:
     jp_to_bank 09, getProjectileElement                ;; 00:2c0f $f5 $3e $06 $c3 $93 $1f
 
-call_00_2c15:
+getProjectilePower_trampoline:
     jp_to_bank 09, getProjectilePower                  ;; 00:2c15 $f5 $3e $07 $c3 $93 $1f
 
 call_00_2c1b:
@@ -7293,7 +7295,7 @@ call_00_2d22:
 .jr_00_2d36:
     ld   A, $00                                        ;; 00:2d36 $3e $00
     ret                                                ;; 00:2d38 $c9
-.jr_00_2d39:
+.player:
     push BC                                            ;; 00:2d39 $c5
     ld   A, B                                          ;; 00:2d3a $78
     ld   B, C                                          ;; 00:2d3b $41
@@ -7541,7 +7543,7 @@ call_00_2ef1:
 call_00_2ef7:
     jp_to_bank 01, call_01_5d82                        ;; 00:2ef7 $f5 $3e $1f $c3 $d7 $1e
 
-call_00_2efd:
+playerOrFriendlyAttackCollisionHandling_trampoline:
     jp_to_bank 01, call_01_5cc6                        ;; 00:2efd $f5 $3e $25 $c3 $d7 $1e
 
 call_00_2f03:
@@ -7636,7 +7638,7 @@ initTimersNamesAndScriptFlags:
     call clearNamesAndScriptFlags                      ;; 00:2f9a $cd $b7 $3b
     ret                                                ;; 00:2f9d $c9
 
-call_00_2f9e:
+timerNew:
     push BC                                            ;; 00:2f9e $c5
     push HL                                            ;; 00:2f9f $e5
     ld   B, $10                                        ;; 00:2fa0 $06 $10
@@ -7920,7 +7922,7 @@ drawWillBarCharge_trampoline:
 drawEmptyWillBar_trampoline:
     jp_to_bank 02, drawEmptyWillBar                    ;; 00:314d $f5 $3e $2f $c3 $06 $1f
 
-call_00_3153:
+InitPostIntEnable_trampoline:
     jp_to_bank 02, call_02_7b3c                        ;; 00:3153 $f5 $3e $30 $c3 $06 $1f
 
 introScrollHandler_trampoline:
@@ -8764,7 +8766,7 @@ clearWindow:
     jr   Z, jr_00_36a8                                 ;; 00:3672 $28 $34
     ret                                                ;; 00:3674 $c9
 
-call_00_3675:
+windowClearRectangle:
     ld   A, [wD8B3]                                    ;; 00:3675 $fa $b3 $d8
     ld   D, A                                          ;; 00:3678 $57
     ld   A, [wD8B2]                                    ;; 00:3679 $fa $b2 $d8
@@ -9290,7 +9292,7 @@ scriptOpCodeGiveStatus:
     pop  HL                                            ;; 00:39a5 $e1
     ret                                                ;; 00:39a6 $c9
 
-call_00_39a7:
+copyMainGameStateBackupFromScriptToWindow:
     ld   A, [wScriptMainGameStateBackup]               ;; 00:39a7 $fa $6e $d8
     ld   [wWindowMainGameStateBackup], A               ;; 00:39aa $ea $62 $d8
     pop  HL                                            ;; 00:39ad $e1
@@ -9715,7 +9717,7 @@ scriptOpCodeDelay:
     pop  HL                                            ;; 00:3c0e $e1
     ret                                                ;; 00:3c0f $c9
 
-call_00_3c10:
+checkScriptDelayTimer:
     ld   A, [wScriptDelayOpCodeTimerNumber]            ;; 00:3c10 $fa $4d $d8
     call timerCheckExpiredOrTickAllTimers              ;; 00:3c13 $cd $0a $30
     pop  HL                                            ;; 00:3c16 $e1
@@ -9962,6 +9964,7 @@ addMoney:
     db   $7d, $ea, $be, $d7, $cd, $17, $31, $d1        ;; 00:3da6 ????????
     db   $c9                                           ;; 00:3dae ?
 
+; The Japanese version did not have the overflow check resulting in high level Flare doing little or no damage
 getTotalMagicPower:
     call getCurrentMagicPower_trampoline               ;; 00:3daf $cd $23 $31
     and  A, A                                          ;; 00:3db2 $a7

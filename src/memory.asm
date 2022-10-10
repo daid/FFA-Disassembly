@@ -84,16 +84,17 @@ wScratchBankCallH:
 wBankStack:
     ds 64                                              ;; c0c0
 
-wC100:
+wMusicTempoTimeCounter:
     ds 1                                               ;; c100
 
-wC101:
+wMusicTempo:
     ds 1                                               ;; c101
 
-wC102:
+; Sound effects do not use channel
+wSoundEffectDurationChannel2:
     ds 1                                               ;; c102
 
-wC103:
+wMusicNoteDurationChannel2:
     ds 1                                               ;; c103
 
 wMusicInstructionPointerChannel2:
@@ -116,7 +117,7 @@ wC109:
 wC10A:
     ds 1                                               ;; c10a
 
-wC10B:
+wMusicOctiveChannel2:
     ds 1                                               ;; c10b
 
 wC10C:
@@ -134,10 +135,10 @@ wC10F:
 wC110:
     ds 1                                               ;; c110
 
-wC111:
+wMusicNotePitchChannel2:
     ds 2                                               ;; c111
 
-wC113:
+wMusicEndedOnChannel2:
     ds 1                                               ;; c113
 
 wC114:
@@ -158,10 +159,10 @@ wC118:
 wC119:
     ds 1                                               ;; c119
 
-wC11A:
+wSoundEffectDurrationChannel1:
     ds 1                                               ;; c11a
 
-wC11B:
+wMusicNoteDurationChannel1:
     ds 1                                               ;; c11b
 
 wMusicInstructionPointerChannel1:
@@ -184,7 +185,7 @@ wC121:
 wC122:
     ds 1                                               ;; c122
 
-wC123:
+wMusicOctiveChannel1:
     ds 1                                               ;; c123
 
 wC124:
@@ -202,13 +203,13 @@ wC127:
 wC128:
     ds 1                                               ;; c128
 
-wC129:
+wMusicNotePitchChannel1:
     ds 1                                               ;; c129
 
 wC12A:
     ds 1                                               ;; c12a
 
-wC12B:
+wMusicEndedOnChannel1:
     ds 1                                               ;; c12b
 
 wC12C:
@@ -229,10 +230,11 @@ wC130:
 wC131:
     ds 1                                               ;; c131
 
-wC132:
+; Sound effects do not use channel 3
+wSoundEffectDurationChannel3:
     ds 1                                               ;; c132
 
-wC133:
+wMusicNoteDurationChannel3:
     ds 1                                               ;; c133
 
 wMusicInstructionPointerChannel3:
@@ -255,7 +257,7 @@ wC139:
 wC13A:
     ds 1                                               ;; c13a
 
-wC13B:
+wMusicOctiveChannel3:
     ds 2                                               ;; c13b
 
 wC13D:
@@ -270,19 +272,20 @@ wC13F:
 wC140:
     ds 1                                               ;; c140
 
-wC141:
+wMusicNotePitchChannel3:
     ds 2                                               ;; c141
 
-wC143:
+wMusicEndedOnChannel3:
     ds 6                                               ;; c143
 
 wC149:
     ds 1                                               ;; c149
 
-wC14A:
+wSoundEffectDurationChannel4:
     ds 17                                              ;; c14a
 
-wC15B:
+; Channel 4 is not used for music, only sound effects
+wMusicEndedOnChannel4:
     ds 7                                               ;; c15b
 
 wC162:
@@ -308,7 +311,8 @@ wC1CA:
     ds 54                                              ;; c1ca
 
 ; 16 bytes per object, or potentially 16x16 sprite?
-; 00: Lower nibble, orientation. $80=walking, other bits unknown ($ff indicates unused)
+; 00: Lower nibble, orientation. bit7=not aligned to 8x8 grid, other bits unknown ($ff indicates unused)
+;  *  bit0: East, bit1: West, bit2: North, bit3: South
 ; 01: Movement speed
 ; 02: Collision flags ($01: blocked by walls, $80 blocks player, $10 can be pushed by player or take damage on touch?)
 ; 03: Unknown
@@ -455,12 +459,14 @@ wPlayerSpecialFlags:
 
 ; 8 records of $18 size, related to NPCs
 ; 0: wObjectRuntimeData entry index
+; 2: Movement speed
+; 10: Status (bit7: Slep, bit6: Mute)
 ; 12-13: HP
 ; 16-17: npcStatsTable entry pointer
 ; 18-19: npcDataTable entry pointer
 wNpcRuntimeData:
     ds 16                                              ;; c4e0
-._10:
+.statsTablePointer:
     ds 176                                             ;; c4f0
 
 wC5A0:
@@ -481,6 +487,7 @@ wC5B0:
     ds 16                                              ;; c5b0
 
 ; 3 records of $0a size, related to projectiles
+; 08-09: Projectile data table entry pointer
 wProjectileRuntimeData:
     ds 32                                              ;; c5c0
 
@@ -565,7 +572,7 @@ wSlepTimerNumber:
 wMuteTimerNumber:
     ds 1                                               ;; cf61
 
-wCF62:
+wSpecialAttackTimerNumber:
     ds 1                                               ;; cf62
 
 wCF63:
@@ -682,10 +689,10 @@ wLCDCEffectBuffer:
 wLCDCEffectIndex:
     ds 6                                               ;; d3e2
 
-wD3E8:
+wBossFirstObjectID:
     ds 1                                               ;; d3e8
 
-wbossSpeedTimer:
+wBossSpeedTimer:
     ds 2                                               ;; d3e9
 
 wBossIframes:
@@ -812,7 +819,8 @@ wDialogW:
 wDialogH:
     ds 1                                               ;; d4aa
 
-wD4AB:
+; At least 60 bytes long, probably more than 155
+wWindowBackgroundSaveBuffer:
     ds 155                                             ;; d4ab
 
 wD546:
@@ -1118,7 +1126,7 @@ wCurrentMusicLevelUpBackup:
 wD843:
     ds 1                                               ;; d843
 
-wD844:
+wWindowFingerBlinkTimerNumber:
     ds 1                                               ;; d844
 
 wWindowNumberOfSelections:
@@ -1164,7 +1172,7 @@ wEquippedItemElements:
 wD853:
     ds 1                                               ;; d853
 
-wD854:
+wDrawWindowStep:
     ds 2                                               ;; d854
 
 wD856:
@@ -1308,7 +1316,7 @@ wMoogleSavedDp:
 wD883:
     ds 1                                               ;; d883
 
-wD884:
+wVideoWYBackup:
     ds 1                                               ;; d884
 
 wD885:
@@ -1441,16 +1449,16 @@ wD8B0:
 wD8B1:
     ds 1                                               ;; d8b1
 
-wD8B2:
+wWindowClearX:
     ds 1                                               ;; d8b2
 
-wD8B3:
+wWindowClearY:
     ds 1                                               ;; d8b3
 
-wD8B4:
+wWindowClearW:
     ds 1                                               ;; d8b4
 
-wD8B5:
+wWindowClearH:
     ds 1                                               ;; d8b5
 
 wScriptPointerLow:

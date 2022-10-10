@@ -620,11 +620,11 @@ call_02_435e:
     pop  BC                                            ;; 02:43c1 $c1
     push BC                                            ;; 02:43c2 $c5
     call call_00_0ae3                                  ;; 02:43c3 $cd $e3 $0a
-.jr_02_43c6:
+.playerOrChocobo:
     pop  BC                                            ;; 02:43c6 $c1
     pop  AF                                            ;; 02:43c7 $f1
     ret                                                ;; 02:43c8 $c9
-.jr_02_43c9:
+.follower:
     call getPlayerY                                    ;; 02:43c9 $cd $99 $02
     ld   D, A                                          ;; 02:43cc $57
     push DE                                            ;; 02:43cd $d5
@@ -4438,7 +4438,7 @@ drawWindowStart:
     jr   Z, .jr_02_6728                                ;; 02:6722 $28 $04
     cp   A, $06                                        ;; 02:6724 $fe $06
     jr   NZ, .jr_02_6739                               ;; 02:6726 $20 $11
-.jr_02_6728:
+.moveWindowIfOverlapsPlayer:
     push DE                                            ;; 02:6728 $d5
     push HL                                            ;; 02:6729 $e5
     call getPlayerY                                    ;; 02:672a $cd $99 $02
@@ -6588,7 +6588,7 @@ readSRAMByte:
     pop  BC                                            ;; 02:747a $c1
     ret                                                ;; 02:747b $c9
 
-call_02_747c:
+checkSaveGameIntegrity:
     push AF                                            ;; 02:747c $f5
     call enableSRAM                                    ;; 02:747d $cd $58 $74
     call readSRAMByte                                  ;; 02:7480 $cd $6f $74
@@ -7539,6 +7539,7 @@ call_02_7a4e:
     ret                                                ;; 02:7a66 $c9
 
 ; e=x, d=y, c=width, b=height
+; Also, the final value of HL may be used afterwards
 getWindowDimensions:
     ld   HL, wDialogX                                  ;; 02:7a67 $21 $a7 $d4
     ld   E, [HL]                                       ;; 02:7a6a $5e
@@ -7552,6 +7553,7 @@ getWindowDimensions:
     ret                                                ;; 02:7a72 $c9
 
 ; x=e, y=d, width=c, height=b
+; Also, the final value of HL is used as a pointer to a buffer to back up the background
 setWindowDimensions:
     ld   HL, wDialogX                                  ;; 02:7a73 $21 $a7 $d4
     ld   [HL], E                                       ;; 02:7a76 $73
@@ -7689,7 +7691,7 @@ itemsListCrystal:
 itemsListDamage:
     db   $05, $07, $08, $17, $18, $00                  ;; 02:7b36 ......
 
-call_02_7b3c:
+InitPostIntEnable:
     ld   A, $11                                        ;; 02:7b3c $3e $11
     ld   [wMainGameState], A                           ;; 02:7b3e $ea $a0 $c0
     ld   A, $3c                                        ;; 02:7b41 $3e $3c
@@ -7739,8 +7741,10 @@ showTitleScreenMenu:
     ld   [wIntroScrollState], A                        ;; 02:7b98 $ea $86 $d8
     ret                                                ;; 02:7b9b $c9
 
-data_02_7b9c:
+startTitleScreenMusicScript:
     db   $f8, $01, $00                                 ;; 02:7b9c ...
+;    sSET_MUSIC 1
+;    sEND
 
 jp_02_7b9f:
     call call_02_6b51                                  ;; 02:7b9f $cd $51 $6b
