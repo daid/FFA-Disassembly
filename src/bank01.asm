@@ -1366,7 +1366,7 @@ gameStateNormal:
     bit  5, E                                          ;; 01:4a34 $cb $6b
     jr   NZ, jr_01_4a4f                                ;; 01:4a36 $20 $17
 
-jp_01_4a38:
+.dpad:
     bit  0, D                                          ;; 01:4a38 $cb $42
     jr   NZ, jr_01_4a6c                                ;; 01:4a3a $20 $30
     bit  1, D                                          ;; 01:4a3c $cb $4a
@@ -1379,7 +1379,7 @@ jp_01_4a38:
     call call_01_48be                                  ;; 01:4a4b $cd $be $48
     ret                                                ;; 01:4a4e $c9
 
-jr_01_4a4f:
+.a_or_b_button:
     push DE                                            ;; 01:4a4f $d5
     ld   A, C                                          ;; 01:4a50 $79
     and  A, $0f                                        ;; 01:4a51 $e6 $0f
@@ -2504,12 +2504,12 @@ call_01_51bb:
     pop  HL                                            ;; 01:51d3 $e1
     ret                                                ;; 01:51d4 $c9
 
-call_01_51d5:
+openWindowsStartButton:
     ld   A, $09                                        ;; 01:51d5 $3e $09
     call call_00_30b1                                  ;; 01:51d7 $cd $b1 $30
     ret                                                ;; 01:51da $c9
 
-jp_01_51db:
+openWindowsSelectButton:
     ld   A, $11                                        ;; 01:51db $3e $11
     call call_00_30b1                                  ;; 01:51dd $cd $b1 $30
     ret                                                ;; 01:51e0 $c9
@@ -4458,7 +4458,7 @@ call_01_5c9f:
     ld   [wCF5A], A                                    ;; 01:5cc2 $ea $5a $cf
     ret                                                ;; 01:5cc5 $c9
 
-call_01_5cc6:
+playerOrFriendlyAttackCollisionHandling:
     push AF                                            ;; 01:5cc6 $f5
     ld   A, B                                          ;; 01:5cc7 $78
     and  A, $f0                                        ;; 01:5cc8 $e6 $f0

@@ -806,7 +806,7 @@ projectileCollisionHandling:
     ld   A, B                                          ;; 09:444f $78
     ret                                                ;; 09:4450 $c9
 
-call_09_4451:
+getProjectileDataTableEntry:
     call getProjectileRuntimeEntryByIndexA             ;; 09:4451 $cd $7a $43
     ld   D, H                                          ;; 09:4454 $54
     ld   E, L                                          ;; 09:4455 $5d

@@ -1896,7 +1896,7 @@ getNpcScriptIndex:
     ld   L, A                                          ;; 03:4a9d $6f
     ret                                                ;; 03:4a9e $c9
 
-call_03_4a9f:
+inflictVulnerableNpcsSlep:
     call getPlayerAttackElements                       ;; 03:4a9f $cd $c0 $3d
     ld   C, A                                          ;; 03:4aa2 $4f
     ld   HL, wNpcRuntimeData._10                       ;; 03:4aa3 $21 $f0 $c4
@@ -1920,7 +1920,7 @@ call_03_4a9f:
     jr   NZ, .jr_03_4aa8                               ;; 03:4abe $20 $e8
     ret                                                ;; 03:4ac0 $c9
 
-call_03_4ac1:
+inflictVulnerableNpcsMute:
     call getPlayerAttackElements                       ;; 03:4ac1 $cd $c0 $3d
     ld   C, A                                          ;; 03:4ac4 $4f
     ld   HL, wNpcRuntimeData._10                       ;; 03:4ac5 $21 $f0 $c4
@@ -1944,7 +1944,9 @@ call_03_4ac1:
     jr   NZ, .jr_03_4aca                               ;; 03:4ae0 $20 $e8
     ret                                                ;; 03:4ae2 $c9
 
-call_03_4ae3:
+; C = player attack elements
+; HL = a pointer to to a pointer to the Npc's stat table
+getNpcElementalImmunities:
     ld   A, [HL+]                                      ;; 03:4ae3 $2a
     ld   H, [HL]                                       ;; 03:4ae4 $66
     ld   L, A                                          ;; 03:4ae5 $6f
@@ -2522,7 +2524,7 @@ call_03_4e7c:
     jr   Z, .jr_03_4ead                                ;; 03:4e9a $28 $11
     call npcKilledExplosion                            ;; 03:4e9c $cd $5a $4e
     ret                                                ;; 03:4e9f $c9
-.jr_03_4ea0:
+.follower:
     ld   DE, $f8                                       ;; 03:4ea0 $11 $f8 $00
     ld   B, $00                                        ;; 03:4ea3 $06 $00
     ld   A, $00                                        ;; 03:4ea5 $3e $00
