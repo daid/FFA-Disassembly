@@ -55,7 +55,7 @@ SECTION "bank02", ROMX[$4000], BANK[$02]
     call_to_bank_target getSpellOffset0band0cinHL      ;; 02:405a ??
     call_to_bank_target drawWillBarCharge              ;; 02:405c pP
     call_to_bank_target drawEmptyWillBar               ;; 02:405e pP
-    call_to_bank_target call_02_7b3c                   ;; 02:4060 pP
+    call_to_bank_target InitPostIntEnable              ;; 02:4060 pP
     call_to_bank_target introScrollHandler             ;; 02:4062 pP
     call_to_bank_target castEquippedSpellIfSufficientMana ;; 02:4064 pP
     call_to_bank_target getScriptOpcodeFunction        ;; 02:4066 pP
@@ -472,7 +472,7 @@ call_02_42a5:
     ret                                                ;; 02:42de $c9
 .player:
     pop  AF                                            ;; 02:42df $f1
-    call call_00_028b                                  ;; 02:42e0 $cd $8b $02
+    call checkCollisionFlagsFollower                   ;; 02:42e0 $cd $8b $02
     ret                                                ;; 02:42e3 $c9
 .playerOrFollowerAttack:
     pop  AF                                            ;; 02:42e4 $f1
@@ -559,7 +559,7 @@ call_02_435e:
     push BC                                            ;; 02:435f $c5
     call getObjectDirection                            ;; 02:4360 $cd $99 $0c
     cp   A, $ff                                        ;; 02:4363 $fe $ff
-    jr   Z, .jr_02_43c6                                ;; 02:4365 $28 $5f
+    jr   Z, .playerOrChocobo                           ;; 02:4365 $28 $5f
     pop  BC                                            ;; 02:4367 $c1
     push BC                                            ;; 02:4368 $c5
     and  A, $7f                                        ;; 02:4369 $e6 $7f
@@ -603,20 +603,20 @@ call_02_435e:
     add  A, A                                          ;; 02:43a5 $87
     inc  A                                             ;; 02:43a6 $3c
     cp   A, D                                          ;; 02:43a7 $ba
-    jr   NC, .jr_02_43c6                               ;; 02:43a8 $30 $1c
+    jr   NC, call_02_435e.playerOrChocobo              ;; 02:43a8 $30 $1c
 .jr_02_43aa:
     pop  BC                                            ;; 02:43aa $c1
     push BC                                            ;; 02:43ab $c5
     call getObjectCollisionFlags                       ;; 02:43ac $cd $6d $0c
     and  A, $f0                                        ;; 02:43af $e6 $f0
     cp   A, $c0                                        ;; 02:43b1 $fe $c0
-    jr   Z, .jr_02_43c6                                ;; 02:43b3 $28 $11
+    jr   Z, call_02_435e.playerOrChocobo               ;; 02:43b3 $28 $11
     cp   A, $e0                                        ;; 02:43b5 $fe $e0
-    jr   Z, .jr_02_43c6                                ;; 02:43b7 $28 $0d
+    jr   Z, call_02_435e.playerOrChocobo               ;; 02:43b7 $28 $0d
     cp   A, $f0                                        ;; 02:43b9 $fe $f0
-    jr   Z, .jr_02_43c6                                ;; 02:43bb $28 $09
+    jr   Z, call_02_435e.playerOrChocobo               ;; 02:43bb $28 $09
     cp   A, $d0                                        ;; 02:43bd $fe $d0
-    jr   Z, .jr_02_43c9                                ;; 02:43bf $28 $08
+    jr   Z, call_02_435e.follower                      ;; 02:43bf $28 $08
     pop  BC                                            ;; 02:43c1 $c1
     push BC                                            ;; 02:43c2 $c5
     call call_00_0ae3                                  ;; 02:43c3 $cd $e3 $0a
@@ -1039,7 +1039,7 @@ data_02_47c8:
     dw   call_02_4a14                                  ;; 02:47fe pP
     dw   call_02_4da4                                  ;; 02:4800 pP
     dw   call_02_4d77                                  ;; 02:4802 ??
-    dw   call_00_3675                                  ;; 02:4804 ??
+    dw   windowClearRectangle                          ;; 02:4804 ??
     dw   call_02_5880                                  ;; 02:4806 ??
     dw   call_02_4b4b                                  ;; 02:4808 pP
     dw   call_02_4b72                                  ;; 02:480a pP
@@ -2349,7 +2349,7 @@ call_02_50b5:
 
 clearStatusBar:
     ld   A, [wVideoWY]                                 ;; 02:5157 $fa $a9 $c0
-    ld   [wD884], A                                    ;; 02:515a $ea $84 $d8
+    ld   [wVideoWYBackup], A                           ;; 02:515a $ea $84 $d8
     ld   B, $40                                        ;; 02:515d $06 $40
     ld   HL, $9c00                                     ;; 02:515f $21 $00 $9c
 .jr_02_5162:
@@ -2474,7 +2474,7 @@ jp_02_51fb:
 
 call_02_522d:
     xor  A, A                                          ;; 02:522d $af
-    ld   [wD854], A                                    ;; 02:522e $ea $54 $d8
+    ld   [wDrawWindowStep], A                          ;; 02:522e $ea $54 $d8
     ld   A, $0f                                        ;; 02:5231 $3e $0f
     ld   [wDialogType], A                              ;; 02:5233 $ea $4a $d8
     ld   A, $81                                        ;; 02:5236 $3e $81
@@ -3299,7 +3299,7 @@ call_02_5709:
     ret  NZ                                            ;; 02:5721 $c0
     ld   B, $00                                        ;; 02:5722 $06 $00
     call call_02_6c98                                  ;; 02:5724 $cd $98 $6c
-    call call_00_290d                                  ;; 02:5727 $cd $0d $29
+    call getFollowerScript                             ;; 02:5727 $cd $0d $29
     ld   A, L                                          ;; 02:572a $7d
     or   A, H                                          ;; 02:572b $b4
     jr   NZ, .jr_02_5730                               ;; 02:572c $20 $02
@@ -4418,7 +4418,7 @@ drawWindowJumptable:
 
 drawWindow:
     ld   HL, drawWindowJumptable                       ;; 02:6700 $21 $f8 $66
-    ld   A, [wD854]                                    ;; 02:6703 $fa $54 $d8
+    ld   A, [wDrawWindowStep]                          ;; 02:6703 $fa $54 $d8
     call callJumptable_02                              ;; 02:6706 $cd $75 $48
     ret                                                ;; 02:6709 $c9
 
@@ -4435,7 +4435,7 @@ drawWindowStart:
     ld   D, [HL]                                       ;; 02:671e $56
     pop  AF                                            ;; 02:671f $f1
     cp   A, $21                                        ;; 02:6720 $fe $21
-    jr   Z, .jr_02_6728                                ;; 02:6722 $28 $04
+    jr   Z, .moveWindowIfOverlapsPlayer                ;; 02:6722 $28 $04
     cp   A, $06                                        ;; 02:6724 $fe $06
     jr   NZ, .jr_02_6739                               ;; 02:6726 $20 $11
 .moveWindowIfOverlapsPlayer:
@@ -4489,7 +4489,7 @@ drawWindowStart:
     cp   A, $1f                                        ;; 02:6779 $fe $1f
     jr   Z, jr_02_67b7                                 ;; 02:677b $28 $3a
     ld   A, $01                                        ;; 02:677d $3e $01
-    ld   [wD854], A                                    ;; 02:677f $ea $54 $d8
+    ld   [wDrawWindowStep], A                          ;; 02:677f $ea $54 $d8
     ret                                                ;; 02:6782 $c9
 
 drawWindowTopOrBottom:
@@ -4503,7 +4503,7 @@ drawWindowTopOrBottom:
     inc  D                                             ;; 02:678e $14
     call saveRegisterState2                            ;; 02:678f $cd $80 $6d
     ld   A, $02                                        ;; 02:6792 $3e $02
-    ld   [wD854], A                                    ;; 02:6794 $ea $54 $d8
+    ld   [wDrawWindowStep], A                          ;; 02:6794 $ea $54 $d8
     ret                                                ;; 02:6797 $c9
 
 windowDrawMiddle:
@@ -4521,7 +4521,7 @@ windowDrawMiddle:
     ld   [wDialogBorderTile], A                        ;; 02:67aa $ea $63 $d8
     ld   A, E                                          ;; 02:67ad $7b
     ld   A, $03                                        ;; 02:67ae $3e $03
-    ld   [wD854], A                                    ;; 02:67b0 $ea $54 $d8
+    ld   [wDrawWindowStep], A                          ;; 02:67b0 $ea $54 $d8
     ret                                                ;; 02:67b3 $c9
 
 windowDrawBottom:
@@ -4532,7 +4532,7 @@ jr_02_67b7:
     cp   A, $0f                                        ;; 02:67b8 $fe $0f
     call NC, call_02_7a44                              ;; 02:67ba $d4 $44 $7a
     ld   A, $03                                        ;; 02:67bd $3e $03
-    ld   [wD854], A                                    ;; 02:67bf $ea $54 $d8
+    ld   [wDrawWindowStep], A                          ;; 02:67bf $ea $54 $d8
     ld   DE, $800                                      ;; 02:67c2 $11 $00 $08
     ld   BC, $913                                      ;; 02:67c5 $01 $13 $09
     call saveRegisterState2                            ;; 02:67c8 $cd $80 $6d
@@ -4543,7 +4543,7 @@ jr_02_67b7:
     and  A, $7f                                        ;; 02:67d5 $e6 $7f
     ld   [wD853], A                                    ;; 02:67d7 $ea $53 $d8
     xor  A, A                                          ;; 02:67da $af
-    ld   [wD854], A                                    ;; 02:67db $ea $54 $d8
+    ld   [wDrawWindowStep], A                          ;; 02:67db $ea $54 $d8
     ld   A, [wDialogType]                              ;; 02:67de $fa $4a $d8
     cp   A, $04                                        ;; 02:67e1 $fe $04
     ret  NZ                                            ;; 02:67e3 $c0
@@ -4554,7 +4554,7 @@ jr_02_67b7:
     ld   A, $04                                        ;; 02:67ea $3e $04
     ld   [wDialogType], A                              ;; 02:67ec $ea $4a $d8
     ld   A, $02                                        ;; 02:67ef $3e $02
-    ld   [wD854], A                                    ;; 02:67f1 $ea $54 $d8
+    ld   [wDrawWindowStep], A                          ;; 02:67f1 $ea $54 $d8
     ret                                                ;; 02:67f4 $c9
 
 data_02_67f5:
@@ -4812,12 +4812,12 @@ jp_02_6943:
     set  6, A                                          ;; 02:697f $cb $f7
     ld   [wWindowFlags], A                             ;; 02:6981 $ea $74 $d8
     xor  A, A                                          ;; 02:6984 $af
-    ld   [wD854], A                                    ;; 02:6985 $ea $54 $d8
+    ld   [wDrawWindowStep], A                          ;; 02:6985 $ea $54 $d8
     ld   [wD885], A                                    ;; 02:6988 $ea $85 $d8
     jp   jp_02_68c4                                    ;; 02:698b $c3 $c4 $68
 .jr_02_698e:
     xor  A, A                                          ;; 02:698e $af
-    ld   [wD854], A                                    ;; 02:698f $ea $54 $d8
+    ld   [wDrawWindowStep], A                          ;; 02:698f $ea $54 $d8
     ld   [wD853], A                                    ;; 02:6992 $ea $53 $d8
     ld   A, [wScriptPointerHigh]                       ;; 02:6995 $fa $b7 $d8
     ld   H, A                                          ;; 02:6998 $67
@@ -5078,7 +5078,7 @@ call_02_6b20:
     ld   A, [wOAMBuffer]                               ;; 02:6b20 $fa $00 $c0
     and  A, A                                          ;; 02:6b23 $a7
     ret  Z                                             ;; 02:6b24 $c8
-    ld   A, [wD844]                                    ;; 02:6b25 $fa $44 $d8
+    ld   A, [wWindowFingerBlinkTimerNumber]            ;; 02:6b25 $fa $44 $d8
     call timerCheckExpiredOrTickAllTimers              ;; 02:6b28 $cd $0a $30
     ret  NZ                                            ;; 02:6b2b $c0
     ld   A, [wOAMBuffer]                               ;; 02:6b2c $fa $00 $c0
@@ -5217,7 +5217,7 @@ call_02_6bd8:
     ret                                                ;; 02:6be7 $c9
 
 call_02_6be8:
-    ld   A, [wD844]                                    ;; 02:6be8 $fa $44 $d8
+    ld   A, [wWindowFingerBlinkTimerNumber]            ;; 02:6be8 $fa $44 $d8
     call timerStart                                    ;; 02:6beb $cd $d4 $2f
     ld   A, D                                          ;; 02:6bee $7a
     ld   [wD899], A                                    ;; 02:6bef $ea $99 $d8
@@ -5716,14 +5716,14 @@ call_02_6ee2:
     ld   DE, wPoisStatusEffectTimerNumber              ;; 02:6ee5 $11 $79 $d8
     ld   B, $05                                        ;; 02:6ee8 $06 $05
 .jr_02_6eea:
-    call call_00_2f9e                                  ;; 02:6eea $cd $9e $2f
+    call timerNew                                      ;; 02:6eea $cd $9e $2f
     ld   [DE], A                                       ;; 02:6eed $12
     inc  DE                                            ;; 02:6eee $13
     dec  B                                             ;; 02:6eef $05
     jr   NZ, .jr_02_6eea                               ;; 02:6ef0 $20 $f8
     ld   HL, $10                                       ;; 02:6ef2 $21 $10 $00
-    call call_00_2f9e                                  ;; 02:6ef5 $cd $9e $2f
-    ld   [wD844], A                                    ;; 02:6ef8 $ea $44 $d8
+    call timerNew                                      ;; 02:6ef5 $cd $9e $2f
+    ld   [wWindowFingerBlinkTimerNumber], A            ;; 02:6ef8 $ea $44 $d8
     ld   A, $01                                        ;; 02:6efb $3e $01
     ld   [wD860], A                                    ;; 02:6efd $ea $60 $d8
     ld   A, $06                                        ;; 02:6f00 $3e $06
@@ -6004,7 +6004,7 @@ call_02_6fb4:
     add  HL, BC                                        ;; 02:70b9 $09
     ld   BC, $258                                      ;; 02:70ba $01 $58 $02
     add  HL, BC                                        ;; 02:70bd $09
-    call call_00_2f9e                                  ;; 02:70be $cd $9e $2f
+    call timerNew                                      ;; 02:70be $cd $9e $2f
     ld   [wNectarStaminaTimerNumber], A                ;; 02:70c1 $ea $7e $d8
     call timerStart                                    ;; 02:70c4 $cd $d4 $2f
     ret                                                ;; 02:70c7 $c9
@@ -6062,7 +6062,7 @@ jr_02_70e3:
     ld   H, $00                                        ;; 02:711d $26 $00
     add  HL, HL                                        ;; 02:711f $29
     add  HL, HL                                        ;; 02:7120 $29
-    call call_00_2f9e                                  ;; 02:7121 $cd $9e $2f
+    call timerNew                                      ;; 02:7121 $cd $9e $2f
     ld   [wLightStatusEffectTimerNumber], A            ;; 02:7124 $ea $81 $d8
     call timerStart                                    ;; 02:7127 $cd $d4 $2f
     call conditionallyClearDarkGraphicEffect           ;; 02:712a $cd $64 $11
@@ -7491,7 +7491,7 @@ playWindowErrorSound:
 
 call_02_7a27:
     call call_02_7a3a                                  ;; 02:7a27 $cd $3a $7a
-    ld   A, [wD884]                                    ;; 02:7a2a $fa $84 $d8
+    ld   A, [wVideoWYBackup]                           ;; 02:7a2a $fa $84 $d8
     ld   [wVideoWY], A                                 ;; 02:7a2d $ea $a9 $c0
     ld   DE, $00                                       ;; 02:7a30 $11 $00 $00
     ld   HL, $1214                                     ;; 02:7a33 $21 $14 $12
@@ -7698,16 +7698,16 @@ InitPostIntEnable:
     ld   [wTitleScreenDelay], A                        ;; 02:7b43 $ea $8c $d8
     ld   HL, sSave1Header                              ;; 02:7b46 $21 $00 $a0
     ld   A, $08                                        ;; 02:7b49 $3e $08
-    call call_02_747c                                  ;; 02:7b4b $cd $7c $74
+    call checkSaveGameIntegrity                        ;; 02:7b4b $cd $7c $74
     ld   A, E                                          ;; 02:7b4e $7b
     ld   [wRndState0], A                               ;; 02:7b4f $ea $b0 $c0
     ld   HL, sSave2Header                              ;; 02:7b52 $21 $00 $a1
     ld   A, $10                                        ;; 02:7b55 $3e $10
-    call call_02_747c                                  ;; 02:7b57 $cd $7c $74
+    call checkSaveGameIntegrity                        ;; 02:7b57 $cd $7c $74
     ld   A, E                                          ;; 02:7b5a $7b
     ld   [wRndState1], A                               ;; 02:7b5b $ea $b1 $c0
     ld   HL, wOpenChestScript1                         ;; 02:7b5e $21 $13 $d6
-    ld   DE, data_02_7b9c                              ;; 02:7b61 $11 $9c $7b
+    ld   DE, startTitleScreenMusicScript               ;; 02:7b61 $11 $9c $7b
 .jr_02_7b64:
     ld   A, [DE]                                       ;; 02:7b64 $1a
     ld   [HL+], A                                      ;; 02:7b65 $22
@@ -7721,7 +7721,7 @@ InitPostIntEnable:
     call drawRoom_trampoline                           ;; 02:7b72 $cd $a4 $04
     ld   HL, wVideoWY                                  ;; 02:7b75 $21 $a9 $c0
     ld   A, [HL]                                       ;; 02:7b78 $7e
-    ld   [wD884], A                                    ;; 02:7b79 $ea $84 $d8
+    ld   [wVideoWYBackup], A                           ;; 02:7b79 $ea $84 $d8
     ld   A, $ff                                        ;; 02:7b7c $3e $ff
     ld   [HL], A                                       ;; 02:7b7e $77
     ld   A, $04                                        ;; 02:7b7f $3e $04
@@ -7743,14 +7743,14 @@ showTitleScreenMenu:
 
 startTitleScreenMusicScript:
     db   $f8, $01, $00                                 ;; 02:7b9c ...
+
 ;    sSET_MUSIC 1
 ;    sEND
-
 jp_02_7b9f:
     call call_02_6b51                                  ;; 02:7b9f $cd $51 $6b
     ld   A, $7f                                        ;; 02:7ba2 $3e $7f
     ld   B, $3c                                        ;; 02:7ba4 $06 $3c
-    ld   HL, wD4AB                                     ;; 02:7ba6 $21 $ab $d4
+    ld   HL, wWindowBackgroundSaveBuffer               ;; 02:7ba6 $21 $ab $d4
 .jr_02_7ba9:
     ld   [HL+], A                                      ;; 02:7ba9 $22
     dec  B                                             ;; 02:7baa $05
@@ -7770,7 +7770,7 @@ jp_02_7b9f:
     ld   A, [wWindowFlags]                             ;; 02:7bc3 $fa $74 $d8
     and  A, $18                                        ;; 02:7bc6 $e6 $18
     jr   Z, .jr_02_7bb3                                ;; 02:7bc8 $28 $e9
-    ld   A, [wD884]                                    ;; 02:7bca $fa $84 $d8
+    ld   A, [wVideoWYBackup]                           ;; 02:7bca $fa $84 $d8
     ld   [wVideoWY], A                                 ;; 02:7bcd $ea $a9 $c0
     ld   A, $0f                                        ;; 02:7bd0 $3e $0f
     ld   [wMainGameState], A                           ;; 02:7bd2 $ea $a0 $c0
@@ -7915,7 +7915,7 @@ call_02_7cc9:
 jp_02_7cd8:
     xor  A, A                                          ;; 02:7cd8 $af
     ld   [wIntroScrollState], A                        ;; 02:7cd9 $ea $86 $d8
-    ld   A, [wD884]                                    ;; 02:7cdc $fa $84 $d8
+    ld   A, [wVideoWYBackup]                           ;; 02:7cdc $fa $84 $d8
     ld   [wVideoWY], A                                 ;; 02:7cdf $ea $a9 $c0
     ld   A, [wWindowMainGameStateBackup]               ;; 02:7ce2 $fa $62 $d8
     ld   [wMainGameState], A                           ;; 02:7ce5 $ea $a0 $c0

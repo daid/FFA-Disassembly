@@ -818,21 +818,21 @@ getProjectileDataTableEntry:
     ret                                                ;; 09:445d $c9
 
 getProjectileOffset02:
-    call call_09_4451                                  ;; 09:445e $cd $51 $44
+    call getProjectileDataTableEntry                   ;; 09:445e $cd $51 $44
     ld   HL, $02                                       ;; 09:4461 $21 $02 $00
     add  HL, DE                                        ;; 09:4464 $19
     ld   A, [HL]                                       ;; 09:4465 $7e
     ret                                                ;; 09:4466 $c9
 
 getProjectileElement:
-    call call_09_4451                                  ;; 09:4467 $cd $51 $44
+    call getProjectileDataTableEntry                   ;; 09:4467 $cd $51 $44
     ld   HL, $03                                       ;; 09:446a $21 $03 $00
     add  HL, DE                                        ;; 09:446d $19
     ld   A, [HL]                                       ;; 09:446e $7e
     ret                                                ;; 09:446f $c9
 
 getProjectilePower:
-    call call_09_4451                                  ;; 09:4470 $cd $51 $44
+    call getProjectileDataTableEntry                   ;; 09:4470 $cd $51 $44
     ld   HL, $04                                       ;; 09:4473 $21 $04 $00
     add  HL, DE                                        ;; 09:4476 $19
     ld   A, [HL]                                       ;; 09:4477 $7e

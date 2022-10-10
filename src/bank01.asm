@@ -23,7 +23,7 @@ data_01_4000:
     call_to_bank_target setPlayerOnChocoboat           ;; 01:4016 ??
     call_to_bank_target call_01_5196                   ;; 01:4018 pP
     call_to_bank_target call_01_51bb                   ;; 01:401a pP
-    call_to_bank_target call_01_51d5                   ;; 01:401c ??
+    call_to_bank_target openWindowsStartButton         ;; 01:401c ??
     call_to_bank_target loadMapWithShutterEffectSequence ;; 01:401e pP
     call_to_bank_target loadMapInstantSequence         ;; 01:4020 pP
     call_to_bank_target openMinimap                    ;; 01:4022 pP
@@ -46,7 +46,7 @@ data_01_4000:
     call_to_bank_target call_01_5a83                   ;; 01:4044 pP
     call_to_bank_target call_01_5a8c                   ;; 01:4046 ??
     call_to_bank_target call_01_5d98                   ;; 01:4048 pP
-    call_to_bank_target call_01_5cc6                   ;; 01:404a pP
+    call_to_bank_target playerOrFriendlyAttackCollisionHandling ;; 01:404a pP
     call_to_bank_target call_01_5db6                   ;; 01:404c ??
     call_to_bank_target attackTile                     ;; 01:404e pP
 
@@ -669,7 +669,7 @@ advanceScriptOpWhenVRAMCopiesDone:
 
 LoadMapEnd:
     push DE                                            ;; 01:448c $d5
-    call call_00_02cf                                  ;; 01:448d $cd $cf $02
+    call getMainGameStateForPlayerForm                 ;; 01:448d $cd $cf $02
     cp   A, $00                                        ;; 01:4490 $fe $00
     jr   NZ, .jr_01_449b                               ;; 01:4492 $20 $07
     ld   A, $c9                                        ;; 01:4494 $3e $c9
@@ -1353,32 +1353,30 @@ gameStateNormal:
     call call_00_2ed3                                  ;; 01:4a18 $cd $d3 $2e
     pop  BC                                            ;; 01:4a1b $c1
     pop  DE                                            ;; 01:4a1c $d1
-    jr   NZ, jp_01_4a38                                ;; 01:4a1d $20 $19
+    jr   NZ, gameStateNormal.dpad                      ;; 01:4a1d $20 $19
     bit  7, E                                          ;; 01:4a1f $cb $7b
-    jp   NZ, call_01_51d5                              ;; 01:4a21 $c2 $d5 $51
+    jp   NZ, openWindowsStartButton                    ;; 01:4a21 $c2 $d5 $51
     bit  6, E                                          ;; 01:4a24 $cb $73
-    jp   NZ, jp_01_51db                                ;; 01:4a26 $c2 $db $51
+    jp   NZ, openWindowsSelectButton                   ;; 01:4a26 $c2 $db $51
     ld   A, [wPlayerSpecialFlags]                      ;; 01:4a29 $fa $d4 $c4
     bit  3, A                                          ;; 01:4a2c $cb $5f
-    jr   NZ, jp_01_4a38                                ;; 01:4a2e $20 $08
+    jr   NZ, gameStateNormal.dpad                      ;; 01:4a2e $20 $08
     bit  4, E                                          ;; 01:4a30 $cb $63
-    jr   NZ, jr_01_4a4f                                ;; 01:4a32 $20 $1b
+    jr   NZ, gameStateNormal.a_or_b_button             ;; 01:4a32 $20 $1b
     bit  5, E                                          ;; 01:4a34 $cb $6b
-    jr   NZ, jr_01_4a4f                                ;; 01:4a36 $20 $17
-
+    jr   NZ, gameStateNormal.a_or_b_button             ;; 01:4a36 $20 $17
 .dpad:
     bit  0, D                                          ;; 01:4a38 $cb $42
-    jr   NZ, jr_01_4a6c                                ;; 01:4a3a $20 $30
+    jr   NZ, .jr_01_4a6c                               ;; 01:4a3a $20 $30
     bit  1, D                                          ;; 01:4a3c $cb $4a
-    jr   NZ, jr_01_4a9a                                ;; 01:4a3e $20 $5a
+    jr   NZ, .jr_01_4a9a                               ;; 01:4a3e $20 $5a
     bit  2, D                                          ;; 01:4a40 $cb $52
-    jp   NZ, jp_01_4ac4                                ;; 01:4a42 $c2 $c4 $4a
+    jp   NZ, .jp_01_4ac4                               ;; 01:4a42 $c2 $c4 $4a
     bit  3, D                                          ;; 01:4a45 $cb $5a
-    jp   NZ, jp_01_4aee                                ;; 01:4a47 $c2 $ee $4a
+    jp   NZ, .jp_01_4aee                               ;; 01:4a47 $c2 $ee $4a
     xor  A, A                                          ;; 01:4a4a $af
     call call_01_48be                                  ;; 01:4a4b $cd $be $48
     ret                                                ;; 01:4a4e $c9
-
 .a_or_b_button:
     push DE                                            ;; 01:4a4f $d5
     ld   A, C                                          ;; 01:4a50 $79
@@ -1395,108 +1393,102 @@ gameStateNormal:
     ld   A, $00                                        ;; 01:4a66 $3e $00
     ld   [wMainGameState], A                           ;; 01:4a68 $ea $a0 $c0
     ret                                                ;; 01:4a6b $c9
-
-jr_01_4a6c:
+.jr_01_4a6c:
     push BC                                            ;; 01:4a6c $c5
     ld   C, $04                                        ;; 01:4a6d $0e $04
     call call_00_036f                                  ;; 01:4a6f $cd $6f $03
     ld   A, B                                          ;; 01:4a72 $78
     pop  BC                                            ;; 01:4a73 $c1
-    jp   NZ, jp_01_4b18                                ;; 01:4a74 $c2 $18 $4b
+    jp   NZ, .jp_01_4b18                               ;; 01:4a74 $c2 $18 $4b
     bit  0, A                                          ;; 01:4a77 $cb $47
-    jp   Z, jp_01_4b18                                 ;; 01:4a79 $ca $18 $4b
+    jp   Z, .jp_01_4b18                                ;; 01:4a79 $ca $18 $4b
     ld   A, [wPlayerDamagedTimer]                      ;; 01:4a7c $fa $d2 $c4
     cp   A, $34                                        ;; 01:4a7f $fe $34
-    jp   NC, jp_01_4b1d                                ;; 01:4a81 $d2 $1d $4b
+    jp   NC, .jp_01_4b1d                               ;; 01:4a81 $d2 $1d $4b
     ld   A, [wMainGameStateFlags]                      ;; 01:4a84 $fa $a1 $c0
     bit  1, A                                          ;; 01:4a87 $cb $4f
-    jp   NZ, jp_01_4b1d                                ;; 01:4a89 $c2 $1d $4b
+    jp   NZ, .jp_01_4b1d                               ;; 01:4a89 $c2 $1d $4b
     ld   A, $01                                        ;; 01:4a8c $3e $01
     call setPlayerDirection                            ;; 01:4a8e $cd $b1 $02
     ld   A, $09                                        ;; 01:4a91 $3e $09
     ld   [wMainGameState], A                           ;; 01:4a93 $ea $a0 $c0
     call call_01_4b24                                  ;; 01:4a96 $cd $24 $4b
     ret                                                ;; 01:4a99 $c9
-
-jr_01_4a9a:
+.jr_01_4a9a:
     push BC                                            ;; 01:4a9a $c5
     ld   C, $04                                        ;; 01:4a9b $0e $04
     call call_00_036f                                  ;; 01:4a9d $cd $6f $03
     ld   A, B                                          ;; 01:4aa0 $78
     pop  BC                                            ;; 01:4aa1 $c1
-    jr   NZ, jp_01_4b18                                ;; 01:4aa2 $20 $74
+    jr   NZ, .jp_01_4b18                               ;; 01:4aa2 $20 $74
     bit  1, A                                          ;; 01:4aa4 $cb $4f
-    jr   Z, jp_01_4b18                                 ;; 01:4aa6 $28 $70
+    jr   Z, .jp_01_4b18                                ;; 01:4aa6 $28 $70
     ld   A, [wPlayerDamagedTimer]                      ;; 01:4aa8 $fa $d2 $c4
     cp   A, $34                                        ;; 01:4aab $fe $34
-    jr   NC, jp_01_4b1d                                ;; 01:4aad $30 $6e
+    jr   NC, .jp_01_4b1d                               ;; 01:4aad $30 $6e
     ld   A, [wMainGameStateFlags]                      ;; 01:4aaf $fa $a1 $c0
     bit  1, A                                          ;; 01:4ab2 $cb $4f
-    jr   NZ, jp_01_4b1d                                ;; 01:4ab4 $20 $67
+    jr   NZ, .jp_01_4b1d                               ;; 01:4ab4 $20 $67
     ld   A, $02                                        ;; 01:4ab6 $3e $02
     call setPlayerDirection                            ;; 01:4ab8 $cd $b1 $02
     ld   A, $08                                        ;; 01:4abb $3e $08
     ld   [wMainGameState], A                           ;; 01:4abd $ea $a0 $c0
     call call_01_4b24                                  ;; 01:4ac0 $cd $24 $4b
     ret                                                ;; 01:4ac3 $c9
-
-jp_01_4ac4:
+.jp_01_4ac4:
     push BC                                            ;; 01:4ac4 $c5
     ld   C, $04                                        ;; 01:4ac5 $0e $04
     call call_00_036f                                  ;; 01:4ac7 $cd $6f $03
     ld   A, B                                          ;; 01:4aca $78
     pop  BC                                            ;; 01:4acb $c1
-    jr   NZ, jp_01_4b18                                ;; 01:4acc $20 $4a
+    jr   NZ, .jp_01_4b18                               ;; 01:4acc $20 $4a
     bit  2, A                                          ;; 01:4ace $cb $57
-    jr   Z, jp_01_4b18                                 ;; 01:4ad0 $28 $46
+    jr   Z, .jp_01_4b18                                ;; 01:4ad0 $28 $46
     ld   A, [wPlayerDamagedTimer]                      ;; 01:4ad2 $fa $d2 $c4
     cp   A, $34                                        ;; 01:4ad5 $fe $34
-    jr   NC, jp_01_4b1d                                ;; 01:4ad7 $30 $44
+    jr   NC, .jp_01_4b1d                               ;; 01:4ad7 $30 $44
     ld   A, [wMainGameStateFlags]                      ;; 01:4ad9 $fa $a1 $c0
     bit  1, A                                          ;; 01:4adc $cb $4f
-    jr   NZ, jp_01_4b1d                                ;; 01:4ade $20 $3d
+    jr   NZ, .jp_01_4b1d                               ;; 01:4ade $20 $3d
     ld   A, $04                                        ;; 01:4ae0 $3e $04
     call setPlayerDirection                            ;; 01:4ae2 $cd $b1 $02
     ld   A, $0b                                        ;; 01:4ae5 $3e $0b
     ld   [wMainGameState], A                           ;; 01:4ae7 $ea $a0 $c0
     call call_01_4b24                                  ;; 01:4aea $cd $24 $4b
     ret                                                ;; 01:4aed $c9
-
-jp_01_4aee:
+.jp_01_4aee:
     push BC                                            ;; 01:4aee $c5
     ld   C, $04                                        ;; 01:4aef $0e $04
     call call_00_036f                                  ;; 01:4af1 $cd $6f $03
     ld   A, B                                          ;; 01:4af4 $78
     pop  BC                                            ;; 01:4af5 $c1
-    jr   NZ, jp_01_4b18                                ;; 01:4af6 $20 $20
+    jr   NZ, .jp_01_4b18                               ;; 01:4af6 $20 $20
     bit  3, A                                          ;; 01:4af8 $cb $5f
-    jr   Z, jp_01_4b18                                 ;; 01:4afa $28 $1c
+    jr   Z, .jp_01_4b18                                ;; 01:4afa $28 $1c
     ld   A, [wPlayerDamagedTimer]                      ;; 01:4afc $fa $d2 $c4
     cp   A, $34                                        ;; 01:4aff $fe $34
-    jr   NC, jp_01_4b1d                                ;; 01:4b01 $30 $1a
+    jr   NC, .jp_01_4b1d                               ;; 01:4b01 $30 $1a
     ld   A, [wMainGameStateFlags]                      ;; 01:4b03 $fa $a1 $c0
     bit  1, A                                          ;; 01:4b06 $cb $4f
-    jr   NZ, jp_01_4b1d                                ;; 01:4b08 $20 $13
+    jr   NZ, .jp_01_4b1d                               ;; 01:4b08 $20 $13
     ld   A, $08                                        ;; 01:4b0a $3e $08
     call setPlayerDirection                            ;; 01:4b0c $cd $b1 $02
     ld   A, $0a                                        ;; 01:4b0f $3e $0a
     ld   [wMainGameState], A                           ;; 01:4b11 $ea $a0 $c0
     call call_01_4b24                                  ;; 01:4b14 $cd $24 $4b
     ret                                                ;; 01:4b17 $c9
-
-jp_01_4b18:
+.jp_01_4b18:
     ld   A, C                                          ;; 01:4b18 $79
     call call_01_48be                                  ;; 01:4b19 $cd $be $48
     ret                                                ;; 01:4b1c $c9
-
-jp_01_4b1d:
+.jp_01_4b1d:
     ld   A, C                                          ;; 01:4b1d $79
     and  A, $0f                                        ;; 01:4b1e $e6 $0f
     call call_01_48be                                  ;; 01:4b20 $cd $be $48
     ret                                                ;; 01:4b23 $c9
 
 call_01_4b24:
-    ld   A, [wD3E8]                                    ;; 01:4b24 $fa $e8 $d3
+    ld   A, [wBossFirstObjectID]                       ;; 01:4b24 $fa $e8 $d3
     cp   A, $ff                                        ;; 01:4b27 $fe $ff
     jr   Z, .jr_01_4b31                                ;; 01:4b29 $28 $06
     call call_00_04e8                                  ;; 01:4b2b $cd $e8 $04
@@ -1597,10 +1589,10 @@ gameStateChocobo:
 
 jr_01_4bc7:
     bit  7, E                                          ;; 01:4bc7 $cb $7b
-    jp   NZ, call_01_51d5                              ;; 01:4bc9 $c2 $d5 $51
+    jp   NZ, openWindowsStartButton                    ;; 01:4bc9 $c2 $d5 $51
     bit  6, E                                          ;; 01:4bcc $cb $73
-    jp   NZ, jp_01_51db                                ;; 01:4bce $c2 $db $51
-    jp   jp_01_4a38                                    ;; 01:4bd1 $c3 $38 $4a
+    jp   NZ, openWindowsSelectButton                   ;; 01:4bce $c2 $db $51
+    jp   gameStateNormal.dpad                          ;; 01:4bd1 $c3 $38 $4a
 
 gameStateChocobot:
     push DE                                            ;; 01:4bd4 $d5
@@ -1921,7 +1913,7 @@ gameStateSpecialAttack:
     bit  4, D                                          ;; 01:4dd6 $cb $62
     jp   Z, .jp_01_4e8d                                ;; 01:4dd8 $ca $8d $4e
     push DE                                            ;; 01:4ddb $d5
-    ld   A, [wCF62]                                    ;; 01:4ddc $fa $62 $cf
+    ld   A, [wSpecialAttackTimerNumber]                ;; 01:4ddc $fa $62 $cf
     call timerCheckExpiredOrTickAllTimers              ;; 01:4ddf $cd $0a $30
     pop  DE                                            ;; 01:4de2 $d1
     jp   Z, .jp_01_4e8d                                ;; 01:4de3 $ca $8d $4e
@@ -2136,7 +2128,7 @@ call_01_4f48:
     ld   C, $c9                                        ;; 01:4f57 $0e $c9
     ld   B, $04                                        ;; 01:4f59 $06 $04
     call call_00_177e                                  ;; 01:4f5b $cd $7e $17
-    call call_00_02cf                                  ;; 01:4f5e $cd $cf $02
+    call getMainGameStateForPlayerForm                 ;; 01:4f5e $cd $cf $02
     ld   [wMainGameState], A                           ;; 01:4f61 $ea $a0 $c0
     ret                                                ;; 01:4f64 $c9
 
@@ -4090,7 +4082,7 @@ call_01_5a83:
 call_01_5a8c:
     set  7, E                                          ;; 01:5a8c $cb $fb
     push DE                                            ;; 01:5a8e $d5
-    ld   A, [wCF62]                                    ;; 01:5a8f $fa $62 $cf
+    ld   A, [wSpecialAttackTimerNumber]                ;; 01:5a8f $fa $62 $cf
     call timerStart                                    ;; 01:5a92 $cd $d4 $2f
 
 jr_01_5a95:
@@ -4484,7 +4476,7 @@ playerOrFriendlyAttackCollisionHandling:
     jr   C, .jr_01_5d62                                ;; 01:5ceb $38 $75
     pop  AF                                            ;; 01:5ced $f1
     cp   A, $5a                                        ;; 01:5cee $fe $5a
-    jr   Z, call_01_5cc6.ice                           ;; 01:5cf0 $28 $14
+    jr   Z, playerOrFriendlyAttackCollisionHandling.ice ;; 01:5cf0 $28 $14
     and  A, $f0                                        ;; 01:5cf2 $e6 $f0
     cp   A, $50                                        ;; 01:5cf4 $fe $50
     jr   Z, .jr_01_5cf9                                ;; 01:5cf6 $28 $01

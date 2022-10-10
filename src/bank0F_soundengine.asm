@@ -38,7 +38,7 @@ runSoundEngineReal:
     call call_0f_4120                                  ;; 0f:4023 $cd $20 $41
     jr   .jr_0f_403d                                   ;; 0f:4026 $18 $15
 .jr_0f_4028:
-    ld   A, [wC11A]                                    ;; 0f:4028 $fa $1a $c1
+    ld   A, [wSoundEffectDurrationChannel1]            ;; 0f:4028 $fa $1a $c1
     or   A, A                                          ;; 0f:402b $b7
     jr   NZ, .jr_0f_4037                               ;; 0f:402c $20 $09
     ldh  A, [hPlayingMusic]                            ;; 0f:402e $f0 $93
@@ -62,12 +62,12 @@ runSoundEngineReal:
 initSoundEngineReal:
     ld   A, $ff                                        ;; 0f:4048 $3e $ff
     ldh  [rNR52], A                                    ;; 0f:404a $e0 $26
-    call call_0f_4084                                  ;; 0f:404c $cd $84 $40
+    call musicInitChannels                             ;; 0f:404c $cd $84 $40
     ld   A, $ff                                        ;; 0f:404f $3e $ff
-    ld   [wC113], A                                    ;; 0f:4051 $ea $13 $c1
-    ld   [wC12B], A                                    ;; 0f:4054 $ea $2b $c1
-    ld   [wC143], A                                    ;; 0f:4057 $ea $43 $c1
-    ld   [wC15B], A                                    ;; 0f:405a $ea $5b $c1
+    ld   [wMusicEndedOnChannel2], A                    ;; 0f:4051 $ea $13 $c1
+    ld   [wMusicEndedOnChannel1], A                    ;; 0f:4054 $ea $2b $c1
+    ld   [wMusicEndedOnChannel3], A                    ;; 0f:4057 $ea $43 $c1
+    ld   [wMusicEndedOnChannel4], A                    ;; 0f:405a $ea $5b $c1
     ld   A, $10                                        ;; 0f:405d $3e $10
     ldh  [rNR12], A                                    ;; 0f:405f $e0 $12
     ldh  [rNR22], A                                    ;; 0f:4061 $e0 $17
@@ -75,7 +75,7 @@ initSoundEngineReal:
     ldh  [rNR42], A                                    ;; 0f:4065 $e0 $21
     call muteSoundEngine                               ;; 0f:4067 $cd $d1 $40
     xor  A, A                                          ;; 0f:406a $af
-    ld   [wC11A], A                                    ;; 0f:406b $ea $1a $c1
+    ld   [wSoundEffectDurrationChannel1], A            ;; 0f:406b $ea $1a $c1
     ld   A, $77                                        ;; 0f:406e $3e $77
     ldh  [rNR50], A                                    ;; 0f:4070 $e0 $24
     ld   A, $ff                                        ;; 0f:4072 $3e $ff
@@ -90,16 +90,16 @@ initSoundEngineReal:
     ld   [wC1C8], A                                    ;; 0f:4080 $ea $c8 $c1
     ret                                                ;; 0f:4083 $c9
 
-; 
+;
 musicInitChannels:
-    ld   HL, wC100                                     ;; 0f:4084 $21 $00 $c1
+    ld   HL, wMusicTempoTimeCounter                    ;; 0f:4084 $21 $00 $c1
     ld   A, $ff                                        ;; 0f:4087 $3e $ff
     ld   [HL+], A                                      ;; 0f:4089 $22
     ld   A, $3c                                        ;; 0f:408a $3e $3c
     ld   [HL+], A                                      ;; 0f:408c $22
     ld   B, $03                                        ;; 0f:408d $06 $03
 .jr_0f_408f:
-    ld   DE, data_0f_417a                              ;; 0f:408f $11 $7a $41
+    ld   DE, musicChannelInitData                      ;; 0f:408f $11 $7a $41
     ld   C, $18                                        ;; 0f:4092 $0e $18
 .jr_0f_4094:
     ld   A, [DE]                                       ;; 0f:4094 $1a
@@ -120,14 +120,14 @@ musicSongInit:
 
 musicSongPlay:
     push AF                                            ;; 0f:40a7 $f5
-    call call_0f_4084                                  ;; 0f:40a8 $cd $84 $40
+    call musicInitChannels                             ;; 0f:40a8 $cd $84 $40
     pop  AF                                            ;; 0f:40ab $f1
     dec  A                                             ;; 0f:40ac $3d
     ld   E, A                                          ;; 0f:40ad $5f
     add  A, A                                          ;; 0f:40ae $87
     add  A, E                                          ;; 0f:40af $83
     add  A, A                                          ;; 0f:40b0 $87
-    ld   HL, data_0f_4a12                              ;; 0f:40b1 $21 $12 $4a
+    ld   HL, musicSongChannelPointers                  ;; 0f:40b1 $21 $12 $4a
     ld   E, A                                          ;; 0f:40b4 $5f
     ld   D, $00                                        ;; 0f:40b5 $16 $00
     add  HL, DE                                        ;; 0f:40b7 $19
@@ -166,10 +166,10 @@ muteSoundEngine:
 call_0f_40ee:
     call muteSoundEngine                               ;; 0f:40ee $cd $d1 $40
     xor  A, A                                          ;; 0f:40f1 $af
-    ld   [wC11A], A                                    ;; 0f:40f2 $ea $1a $c1
-    ld   [wC14A], A                                    ;; 0f:40f5 $ea $4a $c1
+    ld   [wSoundEffectDurrationChannel1], A            ;; 0f:40f2 $ea $1a $c1
+    ld   [wSoundEffectDurationChannel4], A             ;; 0f:40f5 $ea $4a $c1
     ld   C, $62                                        ;; 0f:40f8 $0e $62
-    ld   HL, wC100                                     ;; 0f:40fa $21 $00 $c1
+    ld   HL, wMusicTempoTimeCounter                    ;; 0f:40fa $21 $00 $c1
     ld   DE, wC162                                     ;; 0f:40fd $11 $62 $c1
 .jr_0f_4100:
     ld   A, [HL+]                                      ;; 0f:4100 $2a
@@ -184,11 +184,11 @@ call_0f_40ee:
     ret                                                ;; 0f:410f $c9
 
 call_0f_4110:
-    ld   A, [wC113]                                    ;; 0f:4110 $fa $13 $c1
+    ld   A, [wMusicEndedOnChannel2]                    ;; 0f:4110 $fa $13 $c1
     ld   E, A                                          ;; 0f:4113 $5f
-    ld   A, [wC12B]                                    ;; 0f:4114 $fa $2b $c1
+    ld   A, [wMusicEndedOnChannel1]                    ;; 0f:4114 $fa $2b $c1
     ld   D, A                                          ;; 0f:4117 $57
-    ld   A, [wC143]                                    ;; 0f:4118 $fa $43 $c1
+    ld   A, [wMusicEndedOnChannel3]                    ;; 0f:4118 $fa $43 $c1
     and  A, D                                          ;; 0f:411b $a2
     and  A, E                                          ;; 0f:411c $a3
     cp   A, $ff                                        ;; 0f:411d $fe $ff
@@ -197,7 +197,7 @@ call_0f_4110:
 call_0f_4120:
     call muteSoundEngine                               ;; 0f:4120 $cd $d1 $40
     ld   C, $62                                        ;; 0f:4123 $0e $62
-    ld   HL, wC100                                     ;; 0f:4125 $21 $00 $c1
+    ld   HL, wMusicTempoTimeCounter                    ;; 0f:4125 $21 $00 $c1
     ld   DE, wC162                                     ;; 0f:4128 $11 $62 $c1
 .jr_0f_412b:
     ld   A, [DE]                                       ;; 0f:412b $1a
@@ -250,9 +250,30 @@ soundEffectMuteChannel4:
 ; Gets loaded into the runtime for each of channel 1, 2, and 3.
 ;@data format=b amount=24
 musicChannelInitData:
-    db   $00, $01, $00, $00, $14, $92, $41, $92        ;; 0f:417a ........
-    db   $41, $60, $00, $00, $00, $00, $10, $0f        ;; 0f:4182 ........
-    db   $00, $00, $01, $9b, $41, $9b, $41, $00        ;; 0f:418a ........
+    db   $00                                           ;; 0f:417a . $00
+    db   $01                                           ;; 0f:417b . $01
+    db   $00                                           ;; 0f:417c . $02
+    db   $00                                           ;; 0f:417d . $03
+    db   $14                                           ;; 0f:417e . $04
+    db   $92                                           ;; 0f:417f . $05
+    db   $41                                           ;; 0f:4180 . $06
+    db   $92                                           ;; 0f:4181 . $07
+    db   $41                                           ;; 0f:4182 . $08
+    db   $60                                           ;; 0f:4183 . $09
+    db   $00                                           ;; 0f:4184 . $0a
+    db   $00                                           ;; 0f:4185 . $0b
+    db   $00                                           ;; 0f:4186 . $0c
+    db   $00                                           ;; 0f:4187 . $0d
+    db   $10                                           ;; 0f:4188 . $0e
+    db   $0f                                           ;; 0f:4189 . $0f
+    db   $00                                           ;; 0f:418a . $10
+    db   $00                                           ;; 0f:418b . $11
+    db   $01                                           ;; 0f:418c . $12
+    db   $9b                                           ;; 0f:418d . $13
+    db   $41                                           ;; 0f:418e . $14
+    db   $9b                                           ;; 0f:418f . $15
+    db   $41                                           ;; 0f:4190 . $16
+    db   $00                                           ;; 0f:4191 . $17
     db   $0a, $00, $02, $01, $02, $00, $00, $94        ;; 0f:4192 ????????
     db   $41, $ff, $f0, $00, $9b, $41                  ;; 0f:419a ??????
 
@@ -285,11 +306,11 @@ musicNoteDurations:
     db   $0c, $08, $06, $04, $03                       ;; 0f:4252 .?...
 
 musicPlayStep:
-    ld   A, [wC100]                                    ;; 0f:4257 $fa $00 $c1
+    ld   A, [wMusicTempoTimeCounter]                   ;; 0f:4257 $fa $00 $c1
     ld   B, A                                          ;; 0f:425a $47
-    ld   A, [wC101]                                    ;; 0f:425b $fa $01 $c1
+    ld   A, [wMusicTempo]                              ;; 0f:425b $fa $01 $c1
     add  A, B                                          ;; 0f:425e $80
-    ld   [wC100], A                                    ;; 0f:425f $ea $00 $c1
+    ld   [wMusicTempoTimeCounter], A                   ;; 0f:425f $ea $00 $c1
     jr   NC, .jr_0f_426e                               ;; 0f:4262 $30 $0a
     call call_0f_428b                                  ;; 0f:4264 $cd $8b $42
     ld   A, [wC1C8]                                    ;; 0f:4267 $fa $c8 $c1
@@ -314,12 +335,12 @@ musicPlayStep:
     ret                                                ;; 0f:428a $c9
 
 call_0f_428b:
-    ld   A, [wC113]                                    ;; 0f:428b $fa $13 $c1
+    ld   A, [wMusicEndedOnChannel2]                    ;; 0f:428b $fa $13 $c1
     cp   A, $ff                                        ;; 0f:428e $fe $ff
     jp   Z, jp_0f_44e2                                 ;; 0f:4290 $ca $e2 $44
-    ld   A, [wC103]                                    ;; 0f:4293 $fa $03 $c1
+    ld   A, [wMusicNoteDurationChannel2]               ;; 0f:4293 $fa $03 $c1
     dec  A                                             ;; 0f:4296 $3d
-    ld   [wC103], A                                    ;; 0f:4297 $ea $03 $c1
+    ld   [wMusicNoteDurationChannel2], A               ;; 0f:4297 $ea $03 $c1
     ldh  [hFF95], A                                    ;; 0f:429a $e0 $95
     jp   NZ, jp_0f_44e2                                ;; 0f:429c $c2 $e2 $44
 
@@ -327,18 +348,18 @@ jp_0f_429f:
     call getNextMusicInstructionChannel2               ;; 0f:429f $cd $d9 $47
     ld   E, A                                          ;; 0f:42a2 $5f
     cp   A, $d0                                        ;; 0f:42a3 $fe $d0
-    jr   NC, .jr_0f_4311                               ;; 0f:42a5 $30 $6a
+    jr   NC, .notNote                                  ;; 0f:42a5 $30 $6a
     and  A, $f0                                        ;; 0f:42a7 $e6 $f0
     swap A                                             ;; 0f:42a9 $cb $37
     ld   C, A                                          ;; 0f:42ab $4f
-    ld   HL, data_0f_424a                              ;; 0f:42ac $21 $4a $42
+    ld   HL, musicNoteDurations                        ;; 0f:42ac $21 $4a $42
     ld   B, $00                                        ;; 0f:42af $06 $00
     add  HL, BC                                        ;; 0f:42b1 $09
     ld   A, [HL]                                       ;; 0f:42b2 $7e
-    ld   [wC103], A                                    ;; 0f:42b3 $ea $03 $c1
+    ld   [wMusicNoteDurationChannel2], A               ;; 0f:42b3 $ea $03 $c1
     ld   A, E                                          ;; 0f:42b6 $7b
     and  A, $0f                                        ;; 0f:42b7 $e6 $0f
-    ld   [wC111], A                                    ;; 0f:42b9 $ea $11 $c1
+    ld   [wMusicNotePitchChannel2], A                  ;; 0f:42b9 $ea $11 $c1
     cp   A, $0e                                        ;; 0f:42bc $fe $0e
     jp   Z, jp_0f_44e2                                 ;; 0f:42be $ca $e2 $44
     cp   A, $0f                                        ;; 0f:42c1 $fe $0f
@@ -352,7 +373,7 @@ jp_0f_429f:
 .jr_0f_42d0:
     add  A, A                                          ;; 0f:42d0 $87
     ld   E, A                                          ;; 0f:42d1 $5f
-    ld   A, [wC10B]                                    ;; 0f:42d2 $fa $0b $c1
+    ld   A, [wMusicOctiveChannel2]                     ;; 0f:42d2 $fa $0b $c1
     add  A, E                                          ;; 0f:42d5 $83
     ld   E, A                                          ;; 0f:42d6 $5f
     ld   D, $00                                        ;; 0f:42d7 $16 $00
@@ -385,18 +406,18 @@ jp_0f_429f:
     jp   jp_0f_44e2                                    ;; 0f:430e $c3 $e2 $44
 .notNote:
     cp   A, $ff                                        ;; 0f:4311 $fe $ff
-    jr   NZ, .jr_0f_4321                               ;; 0f:4313 $20 $0c
-    ld   [wC113], A                                    ;; 0f:4315 $ea $13 $c1
+    jr   NZ, jp_0f_429f.notTerminator                  ;; 0f:4313 $20 $0c
+    ld   [wMusicEndedOnChannel2], A                    ;; 0f:4315 $ea $13 $c1
     ldh  [rNR23], A                                    ;; 0f:4318 $e0 $18
     ld   A, $07                                        ;; 0f:431a $3e $07
     ldh  [rNR24], A                                    ;; 0f:431c $e0 $19
     jp   jp_0f_44e2                                    ;; 0f:431e $c3 $e2 $44
 .notTerminator:
     cp   A, $e0                                        ;; 0f:4321 $fe $e0
-    jr   NC, .jr_0f_434b                               ;; 0f:4323 $30 $26
+    jr   NC, jp_0f_429f.opCode                         ;; 0f:4323 $30 $26
 ; Octive change
     bit  3, A                                          ;; 0f:4325 $cb $5f
-    jr   NZ, .jr_0f_4337                               ;; 0f:4327 $20 $0e
+    jr   NZ, jp_0f_429f.relativeOctive                 ;; 0f:4327 $20 $0e
     and  A, $07                                        ;; 0f:4329 $e6 $07
     add  A, A                                          ;; 0f:432b $87
     add  A, A                                          ;; 0f:432c $87
@@ -404,7 +425,7 @@ jp_0f_429f:
     ld   E, A                                          ;; 0f:432e $5f
     add  A, A                                          ;; 0f:432f $87
     add  A, E                                          ;; 0f:4330 $83
-    ld   [wC10B], A                                    ;; 0f:4331 $ea $0b $c1
+    ld   [wMusicOctiveChannel2], A                     ;; 0f:4331 $ea $0b $c1
     jp   jp_0f_429f                                    ;; 0f:4334 $c3 $9f $42
 .relativeOctive:
     and  A, $07                                        ;; 0f:4337 $e6 $07
@@ -413,18 +434,18 @@ jp_0f_429f:
     ld   HL, data_0f_47d1                              ;; 0f:433c $21 $d1 $47
     add  HL, DE                                        ;; 0f:433f $19
     ld   E, [HL]                                       ;; 0f:4340 $5e
-    ld   A, [wC10B]                                    ;; 0f:4341 $fa $0b $c1
+    ld   A, [wMusicOctiveChannel2]                     ;; 0f:4341 $fa $0b $c1
     add  A, E                                          ;; 0f:4344 $83
-    ld   [wC10B], A                                    ;; 0f:4345 $ea $0b $c1
+    ld   [wMusicOctiveChannel2], A                     ;; 0f:4345 $ea $0b $c1
     jp   jp_0f_429f                                    ;; 0f:4348 $c3 $9f $42
 .opCode:
     and  A, $0f                                        ;; 0f:434b $e6 $0f
     add  A, A                                          ;; 0f:434d $87
-    ld   HL, data_0f_4365                              ;; 0f:434e $21 $65 $43
+    ld   HL, musicOpCodeTableChannel2                  ;; 0f:434e $21 $65 $43
     ld   E, A                                          ;; 0f:4351 $5f
     ld   D, $00                                        ;; 0f:4352 $16 $00
     add  HL, DE                                        ;; 0f:4354 $19
-    call call_0f_435b                                  ;; 0f:4355 $cd $5b $43
+    call musicCallOpCode                               ;; 0f:4355 $cd $5b $43
     jp   jp_0f_429f                                    ;; 0f:4358 $c3 $9f $42
 
 musicCallOpCode:
@@ -436,24 +457,24 @@ musicCallOpCode:
     jp   HL                                            ;; 0f:4360 $e9
 
 musicOpCodeHalt:
-    jp   call_0f_4361                                  ;; 0f:4361 $c3 $61 $43
+    jp   musicOpCodeHalt                               ;; 0f:4361 $c3 $61 $43
     db   $c9                                           ;; 0f:4364 ?
 
 ;@jumptable amount=13
 ; Jump table for $E0-$ED music "opcodes", guess is that these are flow control codes.
 musicOpCodeTableChannel2:
     dw   call_0f_4386                                  ;; 0f:4365 pP
-    dw   call_0f_43a7                                  ;; 0f:4367 pP
-    dw   call_0f_43b7                                  ;; 0f:4369 pP
-    dw   call_0f_448d                                  ;; 0f:436b pP
+    dw   musicOpCodeChannel2Jump                       ;; 0f:4367 pP
+    dw   musicOpCodeChannel2LoopCounter1               ;; 0f:4369 pP
+    dw   musicOpCodeSetChannel2LoopCounter1            ;; 0f:436b pP
     dw   call_0f_449b                                  ;; 0f:436d pP
     dw   call_0f_44bc                                  ;; 0f:436f pP
     dw   call_0f_44c5                                  ;; 0f:4371 pP
-    dw   call_0f_44db                                  ;; 0f:4373 pP
-    dw   call_0f_4361                                  ;; 0f:4375 ??
-    dw   call_0f_43e7                                  ;; 0f:4377 ??
-    dw   call_0f_4494                                  ;; 0f:4379 ??
-    dw   call_0f_442a                                  ;; 0f:437b pP
+    dw   musicOpCodeChannel2Tempo                      ;; 0f:4373 pP
+    dw   musicOpCodeHalt                               ;; 0f:4375 ??
+    dw   musicOpCodeChannel2LoopCounter2               ;; 0f:4377 ??
+    dw   musicOpCodeSetChannel2LoopCounter2            ;; 0f:4379 ??
+    dw   musicOpCodeIfChannel2LoopCounter1Equal        ;; 0f:437b pP
     dw   call_0f_437f                                  ;; 0f:437d ??
 
 call_0f_437f:
@@ -496,7 +517,7 @@ musicOpCodeChannel2Jump:
 
 musicOpCodeChannel2LoopCounter1:
     ld   HL, wMusicInstructionPointerChannel2          ;; 0f:43b7 $21 $04 $c1
-    call call_0f_4417                                  ;; 0f:43ba $cd $17 $44
+    call musicGetLoopTarget                            ;; 0f:43ba $cd $17 $44
     ld   B, A                                          ;; 0f:43bd $47
     ld   A, [wC10F]                                    ;; 0f:43be $fa $0f $c1
     dec  A                                             ;; 0f:43c1 $3d
@@ -505,7 +526,7 @@ musicOpCodeChannel2LoopCounter1:
 
 musicOpCodeChannel1LoopCounter1:
     ld   HL, wMusicInstructionPointerChannel1          ;; 0f:43c7 $21 $1c $c1
-    call call_0f_4417                                  ;; 0f:43ca $cd $17 $44
+    call musicGetLoopTarget                            ;; 0f:43ca $cd $17 $44
     ld   B, A                                          ;; 0f:43cd $47
     ld   A, [wC127]                                    ;; 0f:43ce $fa $27 $c1
     dec  A                                             ;; 0f:43d1 $3d
@@ -514,7 +535,7 @@ musicOpCodeChannel1LoopCounter1:
 
 musicOpCodeChannel3LoopCounter1:
     ld   HL, wMusicInstructionPointerChannel3          ;; 0f:43d7 $21 $34 $c1
-    call call_0f_4417                                  ;; 0f:43da $cd $17 $44
+    call musicGetLoopTarget                            ;; 0f:43da $cd $17 $44
     ld   B, A                                          ;; 0f:43dd $47
     ld   A, [wC13F]                                    ;; 0f:43de $fa $3f $c1
     dec  A                                             ;; 0f:43e1 $3d
@@ -523,7 +544,7 @@ musicOpCodeChannel3LoopCounter1:
 
 musicOpCodeChannel2LoopCounter2:
     ld   HL, wMusicInstructionPointerChannel2          ;; 0f:43e7 $21 $04 $c1
-    call call_0f_4417                                  ;; 0f:43ea $cd $17 $44
+    call musicGetLoopTarget                            ;; 0f:43ea $cd $17 $44
     ld   B, A                                          ;; 0f:43ed $47
     ld   A, [wC119]                                    ;; 0f:43ee $fa $19 $c1
     dec  A                                             ;; 0f:43f1 $3d
@@ -532,7 +553,7 @@ musicOpCodeChannel2LoopCounter2:
 
 musicOpCodeChannel1LoopCounter2:
     ld   HL, wMusicInstructionPointerChannel1          ;; 0f:43f7 $21 $1c $c1
-    call call_0f_4417                                  ;; 0f:43fa $cd $17 $44
+    call musicGetLoopTarget                            ;; 0f:43fa $cd $17 $44
     ld   B, A                                          ;; 0f:43fd $47
     ld   A, [wC131]                                    ;; 0f:43fe $fa $31 $c1
     dec  A                                             ;; 0f:4401 $3d
@@ -541,7 +562,7 @@ musicOpCodeChannel1LoopCounter2:
 
 musicOpCodeChannel3LoopCounter2:
     ld   HL, wMusicInstructionPointerChannel3          ;; 0f:4407 $21 $34 $c1
-    call call_0f_4417                                  ;; 0f:440a $cd $17 $44
+    call musicGetLoopTarget                            ;; 0f:440a $cd $17 $44
     ld   B, A                                          ;; 0f:440d $47
     ld   A, [wC149]                                    ;; 0f:440e $fa $49 $c1
     dec  A                                             ;; 0f:4411 $3d
@@ -694,16 +715,16 @@ data_0f_44d7:
 
 musicOpCodeChannel2Tempo:
     call getNextMusicInstructionChannel2               ;; 0f:44db $cd $d9 $47
-    ld   [wC101], A                                    ;; 0f:44de $ea $01 $c1
+    ld   [wMusicTempo], A                              ;; 0f:44de $ea $01 $c1
     ret                                                ;; 0f:44e1 $c9
 
 jp_0f_44e2:
-    ld   A, [wC12B]                                    ;; 0f:44e2 $fa $2b $c1
+    ld   A, [wMusicEndedOnChannel1]                    ;; 0f:44e2 $fa $2b $c1
     cp   A, $ff                                        ;; 0f:44e5 $fe $ff
     jp   Z, jp_0f_4668                                 ;; 0f:44e7 $ca $68 $46
-    ld   A, [wC11B]                                    ;; 0f:44ea $fa $1b $c1
+    ld   A, [wMusicNoteDurationChannel1]               ;; 0f:44ea $fa $1b $c1
     dec  A                                             ;; 0f:44ed $3d
-    ld   [wC11B], A                                    ;; 0f:44ee $ea $1b $c1
+    ld   [wMusicNoteDurationChannel1], A               ;; 0f:44ee $ea $1b $c1
     ldh  [hFF96], A                                    ;; 0f:44f1 $e0 $96
     jp   NZ, jp_0f_4668                                ;; 0f:44f3 $c2 $68 $46
 
@@ -711,22 +732,22 @@ jp_0f_44f6:
     call getNextMusicInstructionChannel1               ;; 0f:44f6 $cd $e5 $47
     ld   E, A                                          ;; 0f:44f9 $5f
     cp   A, $d0                                        ;; 0f:44fa $fe $d0
-    jr   NC, .jr_0f_4577                               ;; 0f:44fc $30 $79
+    jr   NC, .notNote                                  ;; 0f:44fc $30 $79
     and  A, $f0                                        ;; 0f:44fe $e6 $f0
     swap A                                             ;; 0f:4500 $cb $37
     ld   C, A                                          ;; 0f:4502 $4f
-    ld   HL, data_0f_424a                              ;; 0f:4503 $21 $4a $42
+    ld   HL, musicNoteDurations                        ;; 0f:4503 $21 $4a $42
     ld   B, $00                                        ;; 0f:4506 $06 $00
     add  HL, BC                                        ;; 0f:4508 $09
     ld   A, [HL]                                       ;; 0f:4509 $7e
-    ld   [wC11B], A                                    ;; 0f:450a $ea $1b $c1
+    ld   [wMusicNoteDurationChannel1], A               ;; 0f:450a $ea $1b $c1
     ld   A, E                                          ;; 0f:450d $7b
     and  A, $0f                                        ;; 0f:450e $e6 $0f
-    ld   [wC129], A                                    ;; 0f:4510 $ea $29 $c1
+    ld   [wMusicNotePitchChannel1], A                  ;; 0f:4510 $ea $29 $c1
     cp   A, $0e                                        ;; 0f:4513 $fe $0e
     jp   Z, jp_0f_4668                                 ;; 0f:4515 $ca $68 $46
     ld   C, A                                          ;; 0f:4518 $4f
-    ld   A, [wC11A]                                    ;; 0f:4519 $fa $1a $c1
+    ld   A, [wSoundEffectDurrationChannel1]            ;; 0f:4519 $fa $1a $c1
     or   A, A                                          ;; 0f:451c $b7
     jp   NZ, jp_0f_4668                                ;; 0f:451d $c2 $68 $46
     ld   A, C                                          ;; 0f:4520 $79
@@ -743,7 +764,7 @@ jp_0f_44f6:
 .jr_0f_4536:
     add  A, A                                          ;; 0f:4536 $87
     ld   E, A                                          ;; 0f:4537 $5f
-    ld   A, [wC123]                                    ;; 0f:4538 $fa $23 $c1
+    ld   A, [wMusicOctiveChannel1]                     ;; 0f:4538 $fa $23 $c1
     add  A, E                                          ;; 0f:453b $83
     ld   E, A                                          ;; 0f:453c $5f
     ld   D, $00                                        ;; 0f:453d $16 $00
@@ -776,18 +797,18 @@ jp_0f_44f6:
     jp   jp_0f_4668                                    ;; 0f:4574 $c3 $68 $46
 .notNote:
     cp   A, $ff                                        ;; 0f:4577 $fe $ff
-    jr   NZ, .jr_0f_4587                               ;; 0f:4579 $20 $0c
-    ld   [wC12B], A                                    ;; 0f:457b $ea $2b $c1
+    jr   NZ, jp_0f_44f6.notTerminator                  ;; 0f:4579 $20 $0c
+    ld   [wMusicEndedOnChannel1], A                    ;; 0f:457b $ea $2b $c1
     ldh  [rNR23], A                                    ;; 0f:457e $e0 $18
     ld   A, $07                                        ;; 0f:4580 $3e $07
     ldh  [rNR24], A                                    ;; 0f:4582 $e0 $19
     jp   jp_0f_4668                                    ;; 0f:4584 $c3 $68 $46
 .notTerminator:
     cp   A, $e0                                        ;; 0f:4587 $fe $e0
-    jr   NC, .jr_0f_45b1                               ;; 0f:4589 $30 $26
+    jr   NC, jp_0f_44f6.opCode                         ;; 0f:4589 $30 $26
 ; Octive change
     bit  3, A                                          ;; 0f:458b $cb $5f
-    jr   NZ, .jr_0f_459d                               ;; 0f:458d $20 $0e
+    jr   NZ, jp_0f_44f6.relativeOctive                 ;; 0f:458d $20 $0e
     and  A, $07                                        ;; 0f:458f $e6 $07
     add  A, A                                          ;; 0f:4591 $87
     add  A, A                                          ;; 0f:4592 $87
@@ -795,7 +816,7 @@ jp_0f_44f6:
     ld   E, A                                          ;; 0f:4594 $5f
     add  A, A                                          ;; 0f:4595 $87
     add  A, E                                          ;; 0f:4596 $83
-    ld   [wC123], A                                    ;; 0f:4597 $ea $23 $c1
+    ld   [wMusicOctiveChannel1], A                     ;; 0f:4597 $ea $23 $c1
     jp   jp_0f_44f6                                    ;; 0f:459a $c3 $f6 $44
 .relativeOctive:
     and  A, $07                                        ;; 0f:459d $e6 $07
@@ -804,18 +825,18 @@ jp_0f_44f6:
     ld   HL, data_0f_47d1                              ;; 0f:45a2 $21 $d1 $47
     add  HL, DE                                        ;; 0f:45a5 $19
     ld   E, [HL]                                       ;; 0f:45a6 $5e
-    ld   A, [wC123]                                    ;; 0f:45a7 $fa $23 $c1
+    ld   A, [wMusicOctiveChannel1]                     ;; 0f:45a7 $fa $23 $c1
     add  A, E                                          ;; 0f:45aa $83
-    ld   [wC123], A                                    ;; 0f:45ab $ea $23 $c1
+    ld   [wMusicOctiveChannel1], A                     ;; 0f:45ab $ea $23 $c1
     jp   jp_0f_44f6                                    ;; 0f:45ae $c3 $f6 $44
 .opCode:
     and  A, $0f                                        ;; 0f:45b1 $e6 $0f
     add  A, A                                          ;; 0f:45b3 $87
-    ld   HL, data_0f_45c7                              ;; 0f:45b4 $21 $c7 $45
+    ld   HL, musicOpCodeTableChannel1                  ;; 0f:45b4 $21 $c7 $45
     ld   E, A                                          ;; 0f:45b7 $5f
     ld   D, $00                                        ;; 0f:45b8 $16 $00
     add  HL, DE                                        ;; 0f:45ba $19
-    call call_0f_45c1                                  ;; 0f:45bb $cd $c1 $45
+    call musicCallOpCode_DupChannel1                   ;; 0f:45bb $cd $c1 $45
     jp   jp_0f_44f6                                    ;; 0f:45be $c3 $f6 $44
 
 musicCallOpCode_DupChannel1:
@@ -829,17 +850,17 @@ musicCallOpCode_DupChannel1:
 ;@jumptable amount=12
 musicOpCodeTableChannel1:
     dw   call_0f_45df                                  ;; 0f:45c7 pP
-    dw   call_0f_45fa                                  ;; 0f:45c9 pP
-    dw   call_0f_43c7                                  ;; 0f:45cb pP
-    dw   call_0f_460a                                  ;; 0f:45cd pP
+    dw   musicOpCodeChannel1Jump                       ;; 0f:45c9 pP
+    dw   musicOpCodeChannel1LoopCounter1               ;; 0f:45cb pP
+    dw   musicOpCodeSetChannel1LoopCounter1            ;; 0f:45cd pP
     dw   call_0f_4618                                  ;; 0f:45cf pP
     dw   call_0f_4639                                  ;; 0f:45d1 pP
     dw   call_0f_4649                                  ;; 0f:45d3 pP
-    dw   call_0f_4361                                  ;; 0f:45d5 ??
-    dw   call_0f_4361                                  ;; 0f:45d7 ??
-    dw   call_0f_43f7                                  ;; 0f:45d9 ??
-    dw   call_0f_4611                                  ;; 0f:45db ??
-    dw   call_0f_444b                                  ;; 0f:45dd pP
+    dw   musicOpCodeHalt                               ;; 0f:45d5 ??
+    dw   musicOpCodeHalt                               ;; 0f:45d7 ??
+    dw   musicOpCodeChannel1LoopCounter2               ;; 0f:45d9 ??
+    dw   musicOpCodeSetChannel1LoopCounter2            ;; 0f:45db ??
+    dw   musicOpCodeIfChannel1LoopCounter1Equal        ;; 0f:45dd pP
 
 call_0f_45df:
     ld   HL, wMusicInstructionPointerChannel1          ;; 0f:45df $21 $1c $c1
@@ -907,7 +928,7 @@ call_0f_4639:
     call getNextMusicInstructionChannel1               ;; 0f:4639 $cd $e5 $47
     ld   [wC124], A                                    ;; 0f:463c $ea $24 $c1
     ld   B, A                                          ;; 0f:463f $47
-    ld   A, [wC11A]                                    ;; 0f:4640 $fa $1a $c1
+    ld   A, [wSoundEffectDurrationChannel1]            ;; 0f:4640 $fa $1a $c1
     or   A, A                                          ;; 0f:4643 $b7
     ret  NZ                                            ;; 0f:4644 $c0
     ld   A, B                                          ;; 0f:4645 $78
@@ -922,7 +943,7 @@ call_0f_4649:
     add  HL, DE                                        ;; 0f:4652 $19
     ld   A, [HL]                                       ;; 0f:4653 $7e
     ld   [wC12A], A                                    ;; 0f:4654 $ea $2a $c1
-    ld   A, [wC11A]                                    ;; 0f:4657 $fa $1a $c1
+    ld   A, [wSoundEffectDurrationChannel1]            ;; 0f:4657 $fa $1a $c1
     or   A, A                                          ;; 0f:465a $b7
     ret  NZ                                            ;; 0f:465b $c0
     ldh  A, [rNR51]                                    ;; 0f:465c $f0 $25
@@ -935,12 +956,12 @@ data_0f_4664:
     db   $00, $02, $20, $22                            ;; 0f:4664 ????
 
 jp_0f_4668:
-    ld   A, [wC143]                                    ;; 0f:4668 $fa $43 $c1
+    ld   A, [wMusicEndedOnChannel3]                    ;; 0f:4668 $fa $43 $c1
     cp   A, $ff                                        ;; 0f:466b $fe $ff
     jp   Z, return                                     ;; 0f:466d $ca $c7 $47
-    ld   A, [wC133]                                    ;; 0f:4670 $fa $33 $c1
+    ld   A, [wMusicNoteDurationChannel3]               ;; 0f:4670 $fa $33 $c1
     dec  A                                             ;; 0f:4673 $3d
-    ld   [wC133], A                                    ;; 0f:4674 $ea $33 $c1
+    ld   [wMusicNoteDurationChannel3], A               ;; 0f:4674 $ea $33 $c1
     ldh  [hFF97], A                                    ;; 0f:4677 $e0 $97
     jp   NZ, return                                    ;; 0f:4679 $c2 $c7 $47
 
@@ -948,18 +969,18 @@ jp_0f_467c:
     call getNextMusicInstructionChannel3               ;; 0f:467c $cd $ea $47
     ld   E, A                                          ;; 0f:467f $5f
     cp   A, $d0                                        ;; 0f:4680 $fe $d0
-    jr   NC, .jr_0f_46d2                               ;; 0f:4682 $30 $4e
+    jr   NC, .notNote                                  ;; 0f:4682 $30 $4e
     and  A, $f0                                        ;; 0f:4684 $e6 $f0
     swap A                                             ;; 0f:4686 $cb $37
     ld   C, A                                          ;; 0f:4688 $4f
-    ld   HL, data_0f_424a                              ;; 0f:4689 $21 $4a $42
+    ld   HL, musicNoteDurations                        ;; 0f:4689 $21 $4a $42
     ld   B, $00                                        ;; 0f:468c $06 $00
     add  HL, BC                                        ;; 0f:468e $09
     ld   A, [HL]                                       ;; 0f:468f $7e
-    ld   [wC133], A                                    ;; 0f:4690 $ea $33 $c1
+    ld   [wMusicNoteDurationChannel3], A               ;; 0f:4690 $ea $33 $c1
     ld   A, E                                          ;; 0f:4693 $7b
     and  A, $0f                                        ;; 0f:4694 $e6 $0f
-    ld   [wC141], A                                    ;; 0f:4696 $ea $41 $c1
+    ld   [wMusicNotePitchChannel3], A                  ;; 0f:4696 $ea $41 $c1
     cp   A, $0e                                        ;; 0f:4699 $fe $0e
     jp   Z, return                                     ;; 0f:469b $ca $c7 $47
     cp   A, $0f                                        ;; 0f:469e $fe $0f
@@ -971,7 +992,7 @@ jp_0f_467c:
 .jr_0f_46a9:
     add  A, A                                          ;; 0f:46a9 $87
     ld   E, A                                          ;; 0f:46aa $5f
-    ld   A, [wC13B]                                    ;; 0f:46ab $fa $3b $c1
+    ld   A, [wMusicOctiveChannel3]                     ;; 0f:46ab $fa $3b $c1
     add  A, E                                          ;; 0f:46ae $83
     ld   E, A                                          ;; 0f:46af $5f
     ld   D, $00                                        ;; 0f:46b0 $16 $00
@@ -991,18 +1012,18 @@ jp_0f_467c:
     jp   return                                        ;; 0f:46cf $c3 $c7 $47
 .notNote:
     cp   A, $ff                                        ;; 0f:46d2 $fe $ff
-    jr   NZ, .jr_0f_46e2                               ;; 0f:46d4 $20 $0c
-    ld   [wC143], A                                    ;; 0f:46d6 $ea $43 $c1
+    jr   NZ, jp_0f_467c.notTerminator                  ;; 0f:46d4 $20 $0c
+    ld   [wMusicEndedOnChannel3], A                    ;; 0f:46d6 $ea $43 $c1
     ldh  [rNR33], A                                    ;; 0f:46d9 $e0 $1d
     ld   A, $07                                        ;; 0f:46db $3e $07
     ldh  [rNR34], A                                    ;; 0f:46dd $e0 $1e
     jp   return                                        ;; 0f:46df $c3 $c7 $47
 .notTerminator:
     cp   A, $e0                                        ;; 0f:46e2 $fe $e0
-    jr   NC, .jr_0f_470c                               ;; 0f:46e4 $30 $26
+    jr   NC, jp_0f_467c.opCode                         ;; 0f:46e4 $30 $26
 ; Octive change
     bit  3, A                                          ;; 0f:46e6 $cb $5f
-    jr   NZ, .jr_0f_46f8                               ;; 0f:46e8 $20 $0e
+    jr   NZ, jp_0f_467c.relativeOctive                 ;; 0f:46e8 $20 $0e
     and  A, $07                                        ;; 0f:46ea $e6 $07
     add  A, A                                          ;; 0f:46ec $87
     add  A, A                                          ;; 0f:46ed $87
@@ -1010,7 +1031,7 @@ jp_0f_467c:
     ld   E, A                                          ;; 0f:46ef $5f
     add  A, A                                          ;; 0f:46f0 $87
     add  A, E                                          ;; 0f:46f1 $83
-    ld   [wC13B], A                                    ;; 0f:46f2 $ea $3b $c1
+    ld   [wMusicOctiveChannel3], A                     ;; 0f:46f2 $ea $3b $c1
     jp   jp_0f_467c                                    ;; 0f:46f5 $c3 $7c $46
 .relativeOctive:
     and  A, $07                                        ;; 0f:46f8 $e6 $07
@@ -1019,18 +1040,18 @@ jp_0f_467c:
     ld   HL, data_0f_47d1                              ;; 0f:46fd $21 $d1 $47
     add  HL, DE                                        ;; 0f:4700 $19
     ld   E, [HL]                                       ;; 0f:4701 $5e
-    ld   A, [wC13B]                                    ;; 0f:4702 $fa $3b $c1
+    ld   A, [wMusicOctiveChannel3]                     ;; 0f:4702 $fa $3b $c1
     add  A, E                                          ;; 0f:4705 $83
-    ld   [wC13B], A                                    ;; 0f:4706 $ea $3b $c1
+    ld   [wMusicOctiveChannel3], A                     ;; 0f:4706 $ea $3b $c1
     jp   jp_0f_467c                                    ;; 0f:4709 $c3 $7c $46
 .opCode:
     and  A, $0f                                        ;; 0f:470c $e6 $0f
     add  A, A                                          ;; 0f:470e $87
-    ld   HL, data_0f_4722                              ;; 0f:470f $21 $22 $47
+    ld   HL, musicOpCodeTableChannel3                  ;; 0f:470f $21 $22 $47
     ld   E, A                                          ;; 0f:4712 $5f
     ld   D, $00                                        ;; 0f:4713 $16 $00
     add  HL, DE                                        ;; 0f:4715 $19
-    call call_0f_471c                                  ;; 0f:4716 $cd $1c $47
+    call musicCallOpCode_DupChannel3                   ;; 0f:4716 $cd $1c $47
     jp   jp_0f_467c                                    ;; 0f:4719 $c3 $7c $46
 
 musicCallOpCode_DupChannel3:
@@ -1044,17 +1065,17 @@ musicCallOpCode_DupChannel3:
 ;@jumptable amount=12
 musicOpCodeTableChannel3:
     dw   call_0f_473a                                  ;; 0f:4722 pP
-    dw   call_0f_4743                                  ;; 0f:4724 pP
-    dw   call_0f_43d7                                  ;; 0f:4726 pP
-    dw   call_0f_4753                                  ;; 0f:4728 pP
+    dw   musicOpCodeChannel3Jump                       ;; 0f:4724 pP
+    dw   musicOpCodeChannel3LoopCounter1               ;; 0f:4726 pP
+    dw   musicOpCodeSetChannel3LoopCounter1            ;; 0f:4728 pP
     dw   call_0f_4761                                  ;; 0f:472a pP
-    dw   call_0f_4361                                  ;; 0f:472c ??
+    dw   musicOpCodeHalt                               ;; 0f:472c ??
     dw   call_0f_4782                                  ;; 0f:472e pP
-    dw   call_0f_4361                                  ;; 0f:4730 ??
+    dw   musicOpCodeHalt                               ;; 0f:4730 ??
     dw   call_0f_4798                                  ;; 0f:4732 pP
-    dw   call_0f_4407                                  ;; 0f:4734 ??
-    dw   call_0f_475a                                  ;; 0f:4736 ??
-    dw   call_0f_446c                                  ;; 0f:4738 ??
+    dw   musicOpCodeChannel3LoopCounter2               ;; 0f:4734 ??
+    dw   musicOpCodeSetChannel3LoopCounter2            ;; 0f:4736 ??
+    dw   musicOpCodeIfChannel3LoopCounter1Equal        ;; 0f:4738 ??
 
 call_0f_473a:
     call getNextMusicInstructionChannel3               ;; 0f:473a $cd $ea $47
@@ -1079,7 +1100,7 @@ musicOpCodeSetChannel3LoopCounter1:
     ld   [wC13F], A                                    ;; 0f:4756 $ea $3f $c1
     ret                                                ;; 0f:4759 $c9
 
-musicOpCodeSetChannel3LoopCounter1:
+musicOpCodeSetChannel3LoopCounter2:
     call getNextMusicInstructionChannel3               ;; 0f:475a $cd $ea $47
     ld   [wC149], A                                    ;; 0f:475d $ea $49 $c1
     ret                                                ;; 0f:4760 $c9
@@ -1196,15 +1217,15 @@ getNextMusicInstructionChannel3:
     jr   jr_0f_47dc                                    ;; 0f:47ed $18 $ed
 
 call_0f_47ef:
-    ld   A, [wC102]                                    ;; 0f:47ef $fa $02 $c1
+    ld   A, [wSoundEffectDurationChannel2]             ;; 0f:47ef $fa $02 $c1
     ld   E, A                                          ;; 0f:47f2 $5f
-    ld   A, [wC113]                                    ;; 0f:47f3 $fa $13 $c1
+    ld   A, [wMusicEndedOnChannel2]                    ;; 0f:47f3 $fa $13 $c1
     or   A, E                                          ;; 0f:47f6 $b3
     ret  NZ                                            ;; 0f:47f7 $c0
     ldh  A, [hFF95]                                    ;; 0f:47f8 $f0 $95
     or   A, A                                          ;; 0f:47fa $b7
     ret  Z                                             ;; 0f:47fb $c8
-    ld   A, [wC111]                                    ;; 0f:47fc $fa $11 $c1
+    ld   A, [wMusicNotePitchChannel2]                  ;; 0f:47fc $fa $11 $c1
     cp   A, $0f                                        ;; 0f:47ff $fe $0f
     ret  Z                                             ;; 0f:4801 $c8
     ld   A, [wC106]                                    ;; 0f:4802 $fa $06 $c1
@@ -1266,15 +1287,15 @@ call_0f_47ef:
     ret                                                ;; 0f:4868 $c9
 
 call_0f_4869:
-    ld   A, [wC11A]                                    ;; 0f:4869 $fa $1a $c1
+    ld   A, [wSoundEffectDurrationChannel1]            ;; 0f:4869 $fa $1a $c1
     ld   E, A                                          ;; 0f:486c $5f
-    ld   A, [wC12B]                                    ;; 0f:486d $fa $2b $c1
+    ld   A, [wMusicEndedOnChannel1]                    ;; 0f:486d $fa $2b $c1
     or   A, E                                          ;; 0f:4870 $b3
     ret  NZ                                            ;; 0f:4871 $c0
     ldh  A, [hFF96]                                    ;; 0f:4872 $f0 $96
     or   A, A                                          ;; 0f:4874 $b7
     ret  Z                                             ;; 0f:4875 $c8
-    ld   A, [wC129]                                    ;; 0f:4876 $fa $29 $c1
+    ld   A, [wMusicNotePitchChannel1]                  ;; 0f:4876 $fa $29 $c1
     cp   A, $0f                                        ;; 0f:4879 $fe $0f
     ret  Z                                             ;; 0f:487b $c8
     ld   A, [wC11E]                                    ;; 0f:487c $fa $1e $c1
@@ -1336,15 +1357,15 @@ call_0f_4869:
     ret                                                ;; 0f:48e2 $c9
 
 call_0f_48e3:
-    ld   A, [wC132]                                    ;; 0f:48e3 $fa $32 $c1
+    ld   A, [wSoundEffectDurationChannel3]             ;; 0f:48e3 $fa $32 $c1
     ld   E, A                                          ;; 0f:48e6 $5f
-    ld   A, [wC143]                                    ;; 0f:48e7 $fa $43 $c1
+    ld   A, [wMusicEndedOnChannel3]                    ;; 0f:48e7 $fa $43 $c1
     or   A, E                                          ;; 0f:48ea $b3
     ret  NZ                                            ;; 0f:48eb $c0
     ldh  A, [hFF97]                                    ;; 0f:48ec $f0 $97
     or   A, A                                          ;; 0f:48ee $b7
     ret  Z                                             ;; 0f:48ef $c8
-    ld   A, [wC141]                                    ;; 0f:48f0 $fa $41 $c1
+    ld   A, [wMusicNotePitchChannel3]                  ;; 0f:48f0 $fa $41 $c1
     cp   A, $0f                                        ;; 0f:48f3 $fe $0f
     ret  Z                                             ;; 0f:48f5 $c8
     ld   A, [wC136]                                    ;; 0f:48f6 $fa $36 $c1
@@ -1413,18 +1434,18 @@ soundEffectPlay:
     ld   A, [HL+]                                      ;; 0f:4955 $2a
     ld   [wSoundEffectInstructionPointerChannel4.high], A ;; 0f:4956 $ea $c7 $c1
     ld   A, $01                                        ;; 0f:4959 $3e $01
-    ld   [wC11A], A                                    ;; 0f:495b $ea $1a $c1
-    ld   [wC14A], A                                    ;; 0f:495e $ea $4a $c1
+    ld   [wSoundEffectDurrationChannel1], A            ;; 0f:495b $ea $1a $c1
+    ld   [wSoundEffectDurationChannel4], A             ;; 0f:495e $ea $4a $c1
     xor  A, A                                          ;; 0f:4961 $af
     ldh  [hSFX], A                                     ;; 0f:4962 $e0 $92
     ret                                                ;; 0f:4964 $c9
 
 soundEffectPlayStep:
-    ld   A, [wC11A]                                    ;; 0f:4965 $fa $1a $c1
+    ld   A, [wSoundEffectDurrationChannel1]            ;; 0f:4965 $fa $1a $c1
     or   A, A                                          ;; 0f:4968 $b7
     jp   Z, .jp_0f_49bc                                ;; 0f:4969 $ca $bc $49
     dec  A                                             ;; 0f:496c $3d
-    ld   [wC11A], A                                    ;; 0f:496d $ea $1a $c1
+    ld   [wSoundEffectDurrationChannel1], A            ;; 0f:496d $ea $1a $c1
     or   A, A                                          ;; 0f:4970 $b7
     jr   NZ, .jp_0f_49bc                               ;; 0f:4971 $20 $49
     ld   A, [wSoundEffectInstructionPointerChannel1]   ;; 0f:4973 $fa $c4 $c1
@@ -1433,10 +1454,10 @@ soundEffectPlayStep:
     ld   H, A                                          ;; 0f:497a $67
 .jr_0f_497b:
     ld   A, [HL+]                                      ;; 0f:497b $2a
-    ld   [wC11A], A                                    ;; 0f:497c $ea $1a $c1
+    ld   [wSoundEffectDurrationChannel1], A            ;; 0f:497c $ea $1a $c1
     or   A, A                                          ;; 0f:497f $b7
     jr   NZ, .jr_0f_4987                               ;; 0f:4980 $20 $05
-    call call_0f_414d                                  ;; 0f:4982 $cd $4d $41
+    call soundEffectRestoreChannel1                    ;; 0f:4982 $cd $4d $41
     jr   .jp_0f_49bc                                   ;; 0f:4985 $18 $35
 .jr_0f_4987:
     cp   A, $ef                                        ;; 0f:4987 $fe $ef
@@ -1475,11 +1496,11 @@ soundEffectPlayStep:
     ld   A, H                                          ;; 0f:49b8 $7c
     ld   [wSoundEffectInstructionPointerChannel1.high], A ;; 0f:49b9 $ea $c5 $c1
 .jp_0f_49bc:
-    ld   A, [wC14A]                                    ;; 0f:49bc $fa $4a $c1
+    ld   A, [wSoundEffectDurationChannel4]             ;; 0f:49bc $fa $4a $c1
     or   A, A                                          ;; 0f:49bf $b7
     jr   Z, .jr_0f_4a11                                ;; 0f:49c0 $28 $4f
     dec  A                                             ;; 0f:49c2 $3d
-    ld   [wC14A], A                                    ;; 0f:49c3 $ea $4a $c1
+    ld   [wSoundEffectDurationChannel4], A             ;; 0f:49c3 $ea $4a $c1
     jr   NZ, .jr_0f_4a11                               ;; 0f:49c6 $20 $49
     ld   A, [wSoundEffectInstructionPointerChannel4]   ;; 0f:49c8 $fa $c6 $c1
     ld   L, A                                          ;; 0f:49cb $6f
@@ -1487,10 +1508,10 @@ soundEffectPlayStep:
     ld   H, A                                          ;; 0f:49cf $67
 .jr_0f_49d0:
     ld   A, [HL+]                                      ;; 0f:49d0 $2a
-    ld   [wC14A], A                                    ;; 0f:49d1 $ea $4a $c1
+    ld   [wSoundEffectDurationChannel4], A             ;; 0f:49d1 $ea $4a $c1
     or   A, A                                          ;; 0f:49d4 $b7
     jr   NZ, .jr_0f_49dc                               ;; 0f:49d5 $20 $05
-    call call_0f_4170                                  ;; 0f:49d7 $cd $70 $41
+    call soundEffectMuteChannel4                       ;; 0f:49d7 $cd $70 $41
     jr   .jr_0f_4a11                                   ;; 0f:49da $18 $35
 .jr_0f_49dc:
     cp   A, $ef                                        ;; 0f:49dc $fe $ef
@@ -1534,7 +1555,7 @@ soundEffectPlayStep:
 ; Channel 2, Channel 1, Channel 3
 ; These start at zero, one off of their script numbering
 musicSongChannelPointers:
-    dw   data_0f_4ac9, data_0f_4b0a, data_0f_4b7e      ;; 0f:4a12 pPpPpP $00
+    dw   song00_Channel2, song00_Channel1, song00_Channel3 ;; 0f:4a12 pPpPpP $00
     dw   data_0f_4bb9, data_0f_4c0f, data_0f_4c92      ;; 0f:4a18 ?????? $01
     dw   data_0f_4cc1, data_0f_4d0d, data_0f_4d83      ;; 0f:4a1e ?????? $02
     dw   data_0f_4daf, data_0f_4deb, data_0f_4e33      ;; 0f:4a24 pPpPpP $03
@@ -3447,8 +3468,8 @@ data_0f_7a1d:
 soundEffectDataChannel1:
     dw   data_0f_7bd1                                  ;; 0f:7b3c .. $00
     dw   data_0f_7be5                                  ;; 0f:7b3e .. $01
-    dw   data_0f_7bd0                                  ;; 0f:7b40 ?? $02
-    dw   data_0f_7bd0                                  ;; 0f:7b42 ?? $03
+    dw   soundEffectChannelUnused                      ;; 0f:7b40 ?? $02
+    dw   soundEffectChannelUnused                      ;; 0f:7b42 ?? $03
     dw   data_0f_7c10                                  ;; 0f:7b44 .. $04
     dw   data_0f_7c1d                                  ;; 0f:7b46 ?? $05
     dw   data_0f_7c4c                                  ;; 0f:7b48 ?? $06
@@ -3457,20 +3478,20 @@ soundEffectDataChannel1:
     dw   data_0f_7c93                                  ;; 0f:7b4e ?? $09
     dw   data_0f_7cb4                                  ;; 0f:7b50 .. $0a
     dw   data_0f_7cd1                                  ;; 0f:7b52 .. $0b
-    dw   data_0f_7bd0                                  ;; 0f:7b54 .. $0c
+    dw   soundEffectChannelUnused                      ;; 0f:7b54 .. $0c
     dw   data_0f_7ce2                                  ;; 0f:7b56 .. $0d
     dw   data_0f_7cf3                                  ;; 0f:7b58 .. $0e
-    dw   data_0f_7bd0                                  ;; 0f:7b5a .. $0f
-    dw   data_0f_7bd0                                  ;; 0f:7b5c .. $10
+    dw   soundEffectChannelUnused                      ;; 0f:7b5a .. $0f
+    dw   soundEffectChannelUnused                      ;; 0f:7b5c .. $10
     dw   data_0f_7d21                                  ;; 0f:7b5e .. $11
     dw   data_0f_7d2e                                  ;; 0f:7b60 ?? $12
-    dw   data_0f_7bd0                                  ;; 0f:7b62 .. $13
+    dw   soundEffectChannelUnused                      ;; 0f:7b62 .. $13
     dw   data_0f_7d3f                                  ;; 0f:7b64 .. $14
     dw   data_0f_7d4c                                  ;; 0f:7b66 ?? $15
-    dw   data_0f_7bd0                                  ;; 0f:7b68 ?? $16
+    dw   soundEffectChannelUnused                      ;; 0f:7b68 ?? $16
     dw   data_0f_7d9e                                  ;; 0f:7b6a ?? $17
-    dw   data_0f_7bd0                                  ;; 0f:7b6c ?? $18
-    dw   data_0f_7bd0                                  ;; 0f:7b6e ?? $19
+    dw   soundEffectChannelUnused                      ;; 0f:7b6c ?? $18
+    dw   soundEffectChannelUnused                      ;; 0f:7b6e ?? $19
     dw   data_0f_7dbf                                  ;; 0f:7b70 ?? $1a
     dw   data_0f_7de1                                  ;; 0f:7b72 ?? $1b
     dw   data_0f_7df5                                  ;; 0f:7b74 ?? $1c
@@ -3481,7 +3502,7 @@ soundEffectDataChannel1:
     dw   data_0f_7e97                                  ;; 0f:7b7e ?? $21
     dw   data_0f_7ea2                                  ;; 0f:7b80 .. $22
     dw   data_0f_7ea9                                  ;; 0f:7b82 .. $23
-    dw   data_0f_7bd0                                  ;; 0f:7b84 ?? $24
+    dw   soundEffectChannelUnused                      ;; 0f:7b84 ?? $24
 
 ;@data format=p amount=37
 soundEffectDataChannel4:
@@ -3489,26 +3510,26 @@ soundEffectDataChannel4:
     dw   data_0f_7bf2                                  ;; 0f:7b88 .. $01
     dw   data_0f_7bf9                                  ;; 0f:7b8a ?? $02
     dw   data_0f_7bfd                                  ;; 0f:7b8c ?? $03
-    dw   data_0f_7bd0                                  ;; 0f:7b8e .. $04
+    dw   soundEffectChannelUnused                      ;; 0f:7b8e .. $04
     dw   data_0f_7c3c                                  ;; 0f:7b90 ?? $05
-    dw   data_0f_7bd0                                  ;; 0f:7b92 ?? $06
+    dw   soundEffectChannelUnused                      ;; 0f:7b92 ?? $06
     dw   data_0f_7c64                                  ;; 0f:7b94 ?? $07
-    dw   data_0f_7bd0                                  ;; 0f:7b96 ?? $08
+    dw   soundEffectChannelUnused                      ;; 0f:7b96 ?? $08
     dw   data_0f_7cac                                  ;; 0f:7b98 ?? $09
     dw   data_0f_7cc7                                  ;; 0f:7b9a .. $0a
-    dw   data_0f_7bd0                                  ;; 0f:7b9c .. $0b
+    dw   soundEffectChannelUnused                      ;; 0f:7b9c .. $0b
     dw   data_0f_7cd8                                  ;; 0f:7b9e .. $0c
-    dw   data_0f_7bd0                                  ;; 0f:7ba0 .. $0d
-    dw   data_0f_7bd0                                  ;; 0f:7ba2 .. $0e
+    dw   soundEffectChannelUnused                      ;; 0f:7ba0 .. $0d
+    dw   soundEffectChannelUnused                      ;; 0f:7ba2 .. $0e
     dw   data_0f_7d00                                  ;; 0f:7ba4 .. $0f
     dw   data_0f_7d04                                  ;; 0f:7ba6 .. $10
-    dw   data_0f_7bd0                                  ;; 0f:7ba8 .. $11
-    dw   data_0f_7bd0                                  ;; 0f:7baa ?? $12
+    dw   soundEffectChannelUnused                      ;; 0f:7ba8 .. $11
+    dw   soundEffectChannelUnused                      ;; 0f:7baa ?? $12
     dw   data_0f_7d35                                  ;; 0f:7bac .. $13
-    dw   data_0f_7bd0                                  ;; 0f:7bae .. $14
+    dw   soundEffectChannelUnused                      ;; 0f:7bae .. $14
     dw   data_0f_7d7d                                  ;; 0f:7bb0 ?? $15
     dw   data_0f_7d8d                                  ;; 0f:7bb2 ?? $16
-    dw   data_0f_7bd0                                  ;; 0f:7bb4 ?? $17
+    dw   soundEffectChannelUnused                      ;; 0f:7bb4 ?? $17
     dw   data_0f_7dab                                  ;; 0f:7bb6 ?? $18
     dw   data_0f_7db5                                  ;; 0f:7bb8 ?? $19
     dw   data_0f_7dd0                                  ;; 0f:7bba ?? $1a
@@ -3517,10 +3538,10 @@ soundEffectDataChannel4:
     dw   data_0f_7e22                                  ;; 0f:7bc0 ?? $1d
     dw   data_0f_7e42                                  ;; 0f:7bc2 ?? $1e
     dw   data_0f_7e5f                                  ;; 0f:7bc4 .. $1f
-    dw   data_0f_7bd0                                  ;; 0f:7bc6 ?? $20
+    dw   soundEffectChannelUnused                      ;; 0f:7bc6 ?? $20
     dw   data_0f_7e9e                                  ;; 0f:7bc8 ?? $21
-    dw   data_0f_7bd0                                  ;; 0f:7bca .. $22
-    dw   data_0f_7bd0                                  ;; 0f:7bcc .. $23
+    dw   soundEffectChannelUnused                      ;; 0f:7bca .. $22
+    dw   soundEffectChannelUnused                      ;; 0f:7bcc .. $23
     dw   data_0f_7eb0                                  ;; 0f:7bce ?? $24
 
 soundEffectChannelUnused:

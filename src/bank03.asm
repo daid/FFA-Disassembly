@@ -23,8 +23,8 @@ SECTION "bank03", ROMX[$4000], BANK[$03]
     call_to_bank_target call_03_4af9                   ;; 03:401a pP
     call_to_bank_target call_03_4b4f                   ;; 03:401c pP
     call_to_bank_target giveFollower                   ;; 03:401e pP
-    call_to_bank_target call_03_4a9f                   ;; 03:4020 ??
-    call_to_bank_target call_03_4ac1                   ;; 03:4022 ??
+    call_to_bank_target inflictVulnerableNpcsSlep      ;; 03:4020 ??
+    call_to_bank_target inflictVulnerableNpcsMute      ;; 03:4022 ??
     call_to_bank_target call_03_4b62                   ;; 03:4024 pP
     call_to_bank_target call_03_4c30                   ;; 03:4026 pP
     call_to_bank_target call_03_4c38                   ;; 03:4028 pP
@@ -1356,7 +1356,7 @@ enemyCollisionHandling:
     push BC                                            ;; 03:47a9 $c5
     push DE                                            ;; 03:47aa $d5
     ld   A, B                                          ;; 03:47ab $78
-    call call_00_2c0f                                  ;; 03:47ac $cd $0f $2c
+    call getProjectileElement_trampoline               ;; 03:47ac $cd $0f $2c
     pop  DE                                            ;; 03:47af $d1
     call testNpcElementalImmunity                      ;; 03:47b0 $cd $55 $49
     pop  BC                                            ;; 03:47b3 $c1
@@ -1368,7 +1368,7 @@ enemyCollisionHandling:
     call call_03_4968                                  ;; 03:47ba $cd $68 $49
     pop  AF                                            ;; 03:47bd $f1
     push DE                                            ;; 03:47be $d5
-    call call_00_2c15                                  ;; 03:47bf $cd $15 $2c
+    call getProjectilePower_trampoline                 ;; 03:47bf $cd $15 $2c
     call specialAttack2Power75inHLNpc                  ;; 03:47c2 $cd $85 $49
     pop  DE                                            ;; 03:47c5 $d1
     ld   D, $00                                        ;; 03:47c6 $16 $00
@@ -1613,7 +1613,7 @@ call_03_4919:
     push DE                                            ;; 03:4919 $d5
     push BC                                            ;; 03:491a $c5
     ld   A, B                                          ;; 03:491b $78
-    call call_00_2c09                                  ;; 03:491c $cd $09 $2c
+    call getProjectileOffset02_trampoline              ;; 03:491c $cd $09 $2c
     pop  BC                                            ;; 03:491f $c1
     pop  DE                                            ;; 03:4920 $d1
     cp   A, D                                          ;; 03:4921 $ba
@@ -1899,12 +1899,12 @@ getNpcScriptIndex:
 inflictVulnerableNpcsSlep:
     call getPlayerAttackElements                       ;; 03:4a9f $cd $c0 $3d
     ld   C, A                                          ;; 03:4aa2 $4f
-    ld   HL, wNpcRuntimeData._10                       ;; 03:4aa3 $21 $f0 $c4
+    ld   HL, wNpcRuntimeData.statsTablePointer         ;; 03:4aa3 $21 $f0 $c4
     ld   B, $08                                        ;; 03:4aa6 $06 $08
 .jr_03_4aa8:
     push BC                                            ;; 03:4aa8 $c5
     push HL                                            ;; 03:4aa9 $e5
-    call call_03_4ae3                                  ;; 03:4aaa $cd $e3 $4a
+    call getNpcElementalImmunities                     ;; 03:4aaa $cd $e3 $4a
     jr   NZ, .jr_03_4ab7                               ;; 03:4aad $20 $08
     pop  DE                                            ;; 03:4aaf $d1
     push DE                                            ;; 03:4ab0 $d5
@@ -1923,12 +1923,12 @@ inflictVulnerableNpcsSlep:
 inflictVulnerableNpcsMute:
     call getPlayerAttackElements                       ;; 03:4ac1 $cd $c0 $3d
     ld   C, A                                          ;; 03:4ac4 $4f
-    ld   HL, wNpcRuntimeData._10                       ;; 03:4ac5 $21 $f0 $c4
+    ld   HL, wNpcRuntimeData.statsTablePointer         ;; 03:4ac5 $21 $f0 $c4
     ld   B, $08                                        ;; 03:4ac8 $06 $08
 .jr_03_4aca:
     push BC                                            ;; 03:4aca $c5
     push HL                                            ;; 03:4acb $e5
-    call call_03_4ae3                                  ;; 03:4acc $cd $e3 $4a
+    call getNpcElementalImmunities                     ;; 03:4acc $cd $e3 $4a
     jr   NZ, .jr_03_4ad9                               ;; 03:4acf $20 $08
     pop  DE                                            ;; 03:4ad1 $d1
     push DE                                            ;; 03:4ad2 $d5
@@ -2143,7 +2143,7 @@ call_03_4be0:
     ld   DE, $18                                       ;; 03:4be3 $11 $18 $00
     ld   B, $08                                        ;; 03:4be6 $06 $08
     ld   C, $00                                        ;; 03:4be8 $0e $00
-    ld   A, [wD3E8]                                    ;; 03:4bea $fa $e8 $d3
+    ld   A, [wBossFirstObjectID]                       ;; 03:4bea $fa $e8 $d3
     cp   A, $ff                                        ;; 03:4bed $fe $ff
     jr   Z, .jr_03_4bf2                                ;; 03:4bef $28 $01
     inc  C                                             ;; 03:4bf1 $0c
@@ -2515,7 +2515,7 @@ call_03_4e7c:
     pop  DE                                            ;; 03:4e89 $d1
     and  A, $f0                                        ;; 03:4e8a $e6 $f0
     cp   A, $d0                                        ;; 03:4e8c $fe $d0
-    jr   Z, .jr_03_4ea0                                ;; 03:4e8e $28 $10
+    jr   Z, .follower                                  ;; 03:4e8e $28 $10
     cp   A, $a0                                        ;; 03:4e90 $fe $a0
     jr   Z, .jr_03_4ead                                ;; 03:4e92 $28 $19
     cp   A, $b0                                        ;; 03:4e94 $fe $b0

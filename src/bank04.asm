@@ -118,7 +118,7 @@ call_04_4090:
     ld   HL, $00                                       ;; 04:4098 $21 $00 $00
     add  HL, DE                                        ;; 04:409b $19
     ld   A, [HL]                                       ;; 04:409c $7e
-    ld   [wbossSpeedTimer], A                          ;; 04:409d $ea $e9 $d3
+    ld   [wBossSpeedTimer], A                          ;; 04:409d $ea $e9 $d3
     call call_04_40a4                                  ;; 04:40a0 $cd $a4 $40
     ret                                                ;; 04:40a3 $c9
 
@@ -157,7 +157,7 @@ call_04_40a4:
     add  A, D                                          ;; 04:40db $82
     ld   D, A                                          ;; 04:40dc $57
     call call_04_4188                                  ;; 04:40dd $cd $88 $41
-    ld   A, [wD3E8]                                    ;; 04:40e0 $fa $e8 $d3
+    ld   A, [wBossFirstObjectID]                       ;; 04:40e0 $fa $e8 $d3
     ld   C, A                                          ;; 04:40e3 $4f
     pop  AF                                            ;; 04:40e4 $f1
     call updateObjectPosition                          ;; 04:40e5 $cd $11 $06
@@ -567,7 +567,7 @@ spawnBoss:
     ld   L, A                                          ;; 04:4321 $6f
     ld   A, $01                                        ;; 04:4322 $3e $01
     ld   [wD3F0], A                                    ;; 04:4324 $ea $f0 $d3
-    ld   [wbossSpeedTimer], A                          ;; 04:4327 $ea $e9 $d3
+    ld   [wBossSpeedTimer], A                          ;; 04:4327 $ea $e9 $d3
     call setBossMovement                               ;; 04:432a $cd $d8 $42
     call call_04_425f                                  ;; 04:432d $cd $5f $42
     call call_04_4209                                  ;; 04:4330 $cd $09 $42
@@ -713,7 +713,7 @@ bossCreateObjects:
     jr   NZ, .jr_04_43df                               ;; 04:43f5 $20 $e8
     pop  DE                                            ;; 04:43f7 $d1
     ld   A, [wbossObjectsRuntimeData]                  ;; 04:43f8 $fa $42 $d4
-    ld   [wD3E8], A                                    ;; 04:43fb $ea $e8 $d3
+    ld   [wBossFirstObjectID], A                       ;; 04:43fb $ea $e8 $d3
     ret                                                ;; 04:43fe $c9
 
 call_04_43ff:
@@ -750,7 +750,7 @@ call_04_43ff:
 
 call_04_4425:
     ld   A, $ff                                        ;; 04:4425 $3e $ff
-    ld   [wD3E8], A                                    ;; 04:4427 $ea $e8 $d3
+    ld   [wBossFirstObjectID], A                       ;; 04:4427 $ea $e8 $d3
     ld   HL, wbossObjectsRuntimeData                   ;; 04:442a $21 $42 $d4
     ld   B, $0e                                        ;; 04:442d $06 $0e
 .jr_04_442f:
@@ -888,7 +888,7 @@ bossCollisionHandling:
     push BC                                            ;; 04:4514 $c5
     push HL                                            ;; 04:4515 $e5
     ld   A, B                                          ;; 04:4516 $78
-    call call_00_2c0f                                  ;; 04:4517 $cd $0f $2c
+    call getProjectileElement_trampoline               ;; 04:4517 $cd $0f $2c
     pop  DE                                            ;; 04:451a $d1
     call call_04_4655                                  ;; 04:451b $cd $55 $46
     pop  BC                                            ;; 04:451e $c1
@@ -900,7 +900,7 @@ bossCollisionHandling:
     call call_04_4668                                  ;; 04:4525 $cd $68 $46
     pop  AF                                            ;; 04:4528 $f1
     push DE                                            ;; 04:4529 $d5
-    call call_00_2c15                                  ;; 04:452a $cd $15 $2c
+    call getProjectilePower_trampoline                 ;; 04:452a $cd $15 $2c
     call specialAttack2Power75inHLBoss                 ;; 04:452d $cd $85 $46
     pop  DE                                            ;; 04:4530 $d1
     ld   D, $00                                        ;; 04:4531 $16 $00
@@ -988,7 +988,7 @@ add12_5rnd_bank4:
     ret                                                ;; 04:45c8 $c9
 
 call_04_45c9:
-    ld   A, [wD3E8]                                    ;; 04:45c9 $fa $e8 $d3
+    ld   A, [wBossFirstObjectID]                       ;; 04:45c9 $fa $e8 $d3
     ld   C, A                                          ;; 04:45cc $4f
     push BC                                            ;; 04:45cd $c5
     call GetObjectY                                    ;; 04:45ce $cd $3e $0c
@@ -1010,7 +1010,7 @@ call_04_45c9:
     ld   L, A                                          ;; 04:45ea $6f
     ld   A, $01                                        ;; 04:45eb $3e $01
     ld   [wD3F0], A                                    ;; 04:45ed $ea $f0 $d3
-    ld   [wbossSpeedTimer], A                          ;; 04:45f0 $ea $e9 $d3
+    ld   [wBossSpeedTimer], A                          ;; 04:45f0 $ea $e9 $d3
     call call_04_42b0                                  ;; 04:45f3 $cd $b0 $42
     call call_04_4209                                  ;; 04:45f6 $cd $09 $42
     ret                                                ;; 04:45f9 $c9
@@ -1062,7 +1062,7 @@ call_04_4636:
     push DE                                            ;; 04:463d $d5
     push BC                                            ;; 04:463e $c5
     ld   A, B                                          ;; 04:463f $78
-    call call_00_2c09                                  ;; 04:4640 $cd $09 $2c
+    call getProjectileOffset02_trampoline              ;; 04:4640 $cd $09 $2c
     pop  BC                                            ;; 04:4643 $c1
     pop  DE                                            ;; 04:4644 $d1
     cp   A, D                                          ;; 04:4645 $ba
