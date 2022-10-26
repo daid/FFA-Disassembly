@@ -988,7 +988,7 @@ call_02_478e:
     jr   NZ, .jr_02_4799                               ;; 02:47af $20 $e8
     ret                                                ;; 02:47b1 $c9
 
-data_02_47b2:
+menuTrashCanTiles:
     db   $0c, $0e                                      ;; 02:47b2 ..
 
 menuFingerPointingTiles:
@@ -1008,7 +1008,7 @@ data_02_47b8:
     db   $30, $4c                                      ;; 02:47c6 ..
 
 ;@jumptable amount=59
-data_02_47c8:
+gameStateMenuJumptable:
     dw   call_02_487e                                  ;; 02:47c8 pP
     dw   call_02_4889                                  ;; 02:47ca pP
     dw   call_02_49c7                                  ;; 02:47cc pP
@@ -1069,7 +1069,9 @@ data_02_47c8:
     dw   call_02_77f1                                  ;; 02:483a ??
     dw   call_02_781e                                  ;; 02:483c ??
 
-call_02_483e:
+; Used by START, SELECT, and leveling up
+; a = window number
+windowMenuStartSpecial:
     ld   B, A                                          ;; 02:483e $47
     ld   A, [wMainGameStateFlags]                      ;; 02:483f $fa $a1 $c0
     bit  1, A                                          ;; 02:4842 $cb $4f
@@ -3413,7 +3415,7 @@ call_02_57c4:
     pop  DE                                            ;; 02:57d4 $d1
     ret                                                ;; 02:57d5 $c9
 
-moogleEnd:
+calulateAPDP:
     ld   A, [wStatusEffect]                            ;; 02:57d6 $fa $c0 $d7
     bit  3, A                                          ;; 02:57d9 $cb $5f
     ret  NZ                                            ;; 02:57db $c0
@@ -4083,7 +4085,7 @@ windowData:
     db   $00, $00, $13, $05, $02, $11, $02, $00, $00, $00 ;; 02:5c90 .......... $17
 .selectLevelupStats:
     db   $00                                           ;; 02:5c9a .
-.selectLevelupStats1:
+.selectLevelupStatsY:
     db   $00, $13, $05, $04, $07, $04, $03, $02        ;; 02:5c9b ........
     db   $09, $00, $06, $09, $05, $02, $05, $02        ;; 02:5ca3 ........
     db   $02, $01, $00, $00, $0b, $06, $09, $02        ;; 02:5cab ........
@@ -5201,7 +5203,11 @@ jr_02_6bcd:
     pop  HL                                            ;; 02:6bd6 $e1
     ret                                                ;; 02:6bd7 $c9
 
-call_02_6bd8:
+; bc = pointer to tile number
+; de = y and x positions in tiles relative to the window's top left corner
+; hl = address of sprite in wOAMBuffer
+; This is the only place I know of that does not use the normal metasprite abstraction
+windowShowSprite:
     push DE                                            ;; 02:6bd8 $d5
     call call_02_6c5d                                  ;; 02:6bd9 $cd $5d $6c
     ld   [HL], D                                       ;; 02:6bdc $72
@@ -5276,12 +5282,13 @@ call_02_6c0b:
     pop  HL                                            ;; 02:6c49 $e1
     ret                                                ;; 02:6c4a $c9
 
-call_02_6c4b:
+; de = y and x left coordinate in tiles
+windowClearLine:
     ld   A, [wDialogW]                                 ;; 02:6c4b $fa $a9 $d4
     ld   B, A                                          ;; 02:6c4e $47
     dec  B                                             ;; 02:6c4f $05
     dec  B                                             ;; 02:6c50 $05
-.jr_02_6c51:
+.loop:
     ld   A, $7f                                        ;; 02:6c51 $3e $7f
     push BC                                            ;; 02:6c53 $c5
     call storeTileAatDialogPositionDE                  ;; 02:6c54 $cd $44 $38
@@ -5291,7 +5298,9 @@ call_02_6c4b:
     jr   NZ, .jr_02_6c51                               ;; 02:6c5a $20 $f5
     ret                                                ;; 02:6c5c $c9
 
-call_02_6c5d:
+; de = y and x offsets in tiles from a window's upper left corner
+; Return: de = y and x locations in pixels
+windowGetOffsetXYPosition:
     push HL                                            ;; 02:6c5d $e5
     ld   HL, wDialogY                                  ;; 02:6c5e $21 $a8 $d4
     ld   A, [wD872]                                    ;; 02:6c61 $fa $72 $d8
@@ -5837,7 +5846,7 @@ attackWithWeaponUseWill:
     call useWillCharge                                 ;; 02:6fb0 $cd $d0 $3e
     ret                                                ;; 02:6fb3 $c9
 
-call_02_6fb4:
+doSpellOrItemEffect:
     ld   HL, wMiscFlags                                ;; 02:6fb4 $21 $6f $d8
     set  6, [HL]                                       ;; 02:6fb7 $cb $f6
     ld   A, [wD88B]                                    ;; 02:6fb9 $fa $8b $d8
@@ -5938,7 +5947,7 @@ call_02_6fb4:
     call drawHPOnStatuBar                              ;; 02:704f $cd $29 $6f
     call drawManaOnStatusBar                           ;; 02:7052 $cd $3f $6f
     ret                                                ;; 02:7055 $c9
-.jr_02_7056:
+.notCure:
     ld   HL, itemsListHealStatus                       ;; 02:7056 $21 $1f $7b
     call getItemOffsetBandCifInList                    ;; 02:7059 $cd $4b $71
     jr   NC, .jr_02_7084                               ;; 02:705c $30 $26
@@ -5967,7 +5976,7 @@ call_02_6fb4:
     cp   A, $02                                        ;; 02:707e $fe $02
     call NZ, useWillCharge                             ;; 02:7080 $c4 $d0 $3e
     ret                                                ;; 02:7083 $c9
-.jr_02_7084:
+.notHeal:
     ld   HL, itemsListBuff                             ;; 02:7084 $21 $26 $7b
     call getItemOffsetBandCifInList                    ;; 02:7087 $cd $4b $71
     jr   NC, jr_02_70e3                                ;; 02:708a $30 $57
@@ -6031,14 +6040,14 @@ call_02_70d7:
     inc  DE                                            ;; 02:70e1 $13
     ret                                                ;; 02:70e2 $c9
 
-jr_02_70e3:
+notBuff:
     ld   HL, itemsListCrystal                          ;; 02:70e3 $21 $34 $7b
     call getItemOffsetBandCifInList                    ;; 02:70e6 $cd $4b $71
     jr   NC, .jr_02_70f0                               ;; 02:70e9 $30 $05
     ld   A, H                                          ;; 02:70eb $7c
     call setWillBarMax                                 ;; 02:70ec $cd $97 $3e
     ret                                                ;; 02:70ef $c9
-.jr_02_70f0:
+.notCrystal:
     ld   HL, itemsListSleep                            ;; 02:70f0 $21 $2b $7b
     call getItemOffsetBandCifInList                    ;; 02:70f3 $cd $4b $71
     jr   NC, .jr_02_7102                               ;; 02:70f6 $30 $0a
@@ -6046,7 +6055,7 @@ jr_02_70e3:
     call useSlep                                       ;; 02:70fb $cd $44 $2f
     call useWillCharge                                 ;; 02:70fe $cd $d0 $3e
     ret                                                ;; 02:7101 $c9
-.jr_02_7102:
+.notSleep:
     ld   HL, itemsListMute                             ;; 02:7102 $21 $2e $7b
     call getItemOffsetBandCifInList                    ;; 02:7105 $cd $4b $71
     jr   NC, .jr_02_7114                               ;; 02:7108 $30 $0a
@@ -6054,7 +6063,7 @@ jr_02_70e3:
     call useMute                                       ;; 02:710d $cd $5d $2f
     call useWillCharge                                 ;; 02:7110 $cd $d0 $3e
     ret                                                ;; 02:7113 $c9
-.jr_02_7114:
+.notMute:
     ld   HL, itemsListLights                           ;; 02:7114 $21 $31 $7b
     call getItemOffsetBandCifInList                    ;; 02:7117 $cd $4b $71
     jr   NC, .jr_02_712e                               ;; 02:711a $30 $12
@@ -6067,7 +6076,7 @@ jr_02_70e3:
     call timerStart                                    ;; 02:7127 $cd $d4 $2f
     call conditionallyClearDarkGraphicEffect           ;; 02:712a $cd $64 $11
     ret                                                ;; 02:712d $c9
-.jr_02_712e:
+.notLight:
     ld   HL, itemsListDamage                           ;; 02:712e $21 $36 $7b
     call getItemOffsetBandCifInList                    ;; 02:7131 $cd $4b $71
     ret  NC                                            ;; 02:7134 $d0

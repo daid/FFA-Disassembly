@@ -1393,7 +1393,7 @@ gameStateNormal:
     ld   A, $00                                        ;; 01:4a66 $3e $00
     ld   [wMainGameState], A                           ;; 01:4a68 $ea $a0 $c0
     ret                                                ;; 01:4a6b $c9
-.jr_01_4a6c:
+.right:
     push BC                                            ;; 01:4a6c $c5
     ld   C, $04                                        ;; 01:4a6d $0e $04
     call call_00_036f                                  ;; 01:4a6f $cd $6f $03
@@ -1414,7 +1414,7 @@ gameStateNormal:
     ld   [wMainGameState], A                           ;; 01:4a93 $ea $a0 $c0
     call call_01_4b24                                  ;; 01:4a96 $cd $24 $4b
     ret                                                ;; 01:4a99 $c9
-.jr_01_4a9a:
+.left:
     push BC                                            ;; 01:4a9a $c5
     ld   C, $04                                        ;; 01:4a9b $0e $04
     call call_00_036f                                  ;; 01:4a9d $cd $6f $03
@@ -1435,7 +1435,7 @@ gameStateNormal:
     ld   [wMainGameState], A                           ;; 01:4abd $ea $a0 $c0
     call call_01_4b24                                  ;; 01:4ac0 $cd $24 $4b
     ret                                                ;; 01:4ac3 $c9
-.jp_01_4ac4:
+.up:
     push BC                                            ;; 01:4ac4 $c5
     ld   C, $04                                        ;; 01:4ac5 $0e $04
     call call_00_036f                                  ;; 01:4ac7 $cd $6f $03
@@ -1456,7 +1456,7 @@ gameStateNormal:
     ld   [wMainGameState], A                           ;; 01:4ae7 $ea $a0 $c0
     call call_01_4b24                                  ;; 01:4aea $cd $24 $4b
     ret                                                ;; 01:4aed $c9
-.jp_01_4aee:
+.down:
     push BC                                            ;; 01:4aee $c5
     ld   C, $04                                        ;; 01:4aef $0e $04
     call call_00_036f                                  ;; 01:4af1 $cd $6f $03
@@ -1787,7 +1787,7 @@ gameStateSpecialAttackFlyingSwordReturn:
     call call_01_48be                                  ;; 01:4d07 $cd $be $48
     ret                                                ;; 01:4d0a $c9
 
-call_01_4d0b:
+doSwordFlyingAttack:
     call clearPlayerDamaged                            ;; 01:4d0b $cd $62 $02
     ld   A, $40                                        ;; 01:4d0e $3e $40
     call setPlayerCollisionFlags                       ;; 01:4d10 $cd $bd $02
@@ -3062,7 +3062,7 @@ call_01_54d5:
     cp   A, $03                                        ;; 01:5515 $fe $03
     jp   Z, jp_01_5619                                 ;; 01:5517 $ca $19 $56
     jr   jp_01_5530                                    ;; 01:551a $18 $14
-.jr_01_551c:
+.attackSwordSpecialFlying:
     call call_00_024a                                  ;; 01:551c $cd $4a $02
     jr   jp_01_5530                                    ;; 01:551f $18 $0f
 .jr_01_5521:
@@ -3222,7 +3222,7 @@ jr_01_55a9:
     pop  BC                                            ;; 01:5607 $c1
     ret                                                ;; 01:5608 $c9
 
-jp_01_5609:
+attackFireAutoTarget:
     call setGameStateFireAutoTarget                    ;; 01:5609 $cd $5c $02
     pop  DE                                            ;; 01:560c $d1
     pop  BC                                            ;; 01:560d $c1
@@ -4072,20 +4072,20 @@ getEquippedItemAnimationType:
     ld   [wEquippedItemAnimationType], A               ;; 01:5a7f $ea $59 $cf
     ret                                                ;; 01:5a82 $c9
 
-call_01_5a83:
+useEquippedWeaponOrItem:
     res  7, E                                          ;; 01:5a83 $cb $bb
     push DE                                            ;; 01:5a85 $d5
     call isWillBarFull                                 ;; 01:5a86 $cd $fb $3e
     jr   NZ, jr_01_5a95                                ;; 01:5a89 $20 $0a
     pop  DE                                            ;; 01:5a8b $d1
 
-call_01_5a8c:
+useSpecialAttack:
     set  7, E                                          ;; 01:5a8c $cb $fb
     push DE                                            ;; 01:5a8e $d5
     ld   A, [wSpecialAttackTimerNumber]                ;; 01:5a8f $fa $62 $cf
     call timerStart                                    ;; 01:5a92 $cd $d4 $2f
 
-jr_01_5a95:
+useWeaponItemOrSpecial:
     call getPlayerDirection                            ;; 01:5a95 $cd $ab $02
     bit  0, A                                          ;; 01:5a98 $cb $47
     jr   NZ, .playerFacingWest                         ;; 01:5a9a $20 $0f
@@ -4107,7 +4107,7 @@ jr_01_5a95:
     jr   NZ, .jr_01_5b11                               ;; 01:5ab5 $20 $5a
     ld   C, $12                                        ;; 01:5ab7 $0e $12
     jr   .jr_01_5b11                                   ;; 01:5ab9 $18 $56
-.jr_01_5abb:
+.specialAttackWest:
     ld   C, $1a                                        ;; 01:5abb $0e $1a
     and  A, $0f                                        ;; 01:5abd $e6 $0f
     jr   NZ, .jr_01_5b11                               ;; 01:5abf $20 $50
@@ -4123,7 +4123,7 @@ jr_01_5a95:
     jr   NZ, .jr_01_5b11                               ;; 01:5acf $20 $40
     ld   C, $14                                        ;; 01:5ad1 $0e $14
     jr   .jr_01_5b11                                   ;; 01:5ad3 $18 $3c
-.jr_01_5ad5:
+.specialAttackEast:
     ld   C, $1c                                        ;; 01:5ad5 $0e $1c
     and  A, $0f                                        ;; 01:5ad7 $e6 $0f
     jr   NZ, .jr_01_5b11                               ;; 01:5ad9 $20 $36
@@ -4139,7 +4139,7 @@ jr_01_5a95:
     jr   NZ, .jr_01_5b11                               ;; 01:5ae9 $20 $26
     ld   C, $16                                        ;; 01:5aeb $0e $16
     jr   .jr_01_5b11                                   ;; 01:5aed $18 $22
-.jr_01_5aef:
+.specialAttackSouth:
     ld   C, $1e                                        ;; 01:5aef $0e $1e
     and  A, $0f                                        ;; 01:5af1 $e6 $0f
     jr   NZ, .jr_01_5b11                               ;; 01:5af3 $20 $1c
@@ -4155,7 +4155,7 @@ jr_01_5a95:
     jr   NZ, .jr_01_5b11                               ;; 01:5b03 $20 $0c
     ld   C, $18                                        ;; 01:5b05 $0e $18
     jr   .jr_01_5b11                                   ;; 01:5b07 $18 $08
-.jr_01_5b09:
+.specialAttackNorth:
     ld   C, $20                                        ;; 01:5b09 $0e $20
     and  A, $0f                                        ;; 01:5b0b $e6 $0f
     jr   NZ, .jr_01_5b11                               ;; 01:5b0d $20 $02
@@ -4170,7 +4170,7 @@ jr_01_5a95:
     ld   [wCF63], A                                    ;; 01:5b1e $ea $63 $cf
     ld   A, [wEquippedItemAnimationType]               ;; 01:5b21 $fa $59 $cf
     jr   .jr_01_5b2f                                   ;; 01:5b24 $18 $09
-.jr_01_5b26:
+.weapon:
     call attackWithWeaponUseWill_trampoline            ;; 01:5b26 $cd $29 $31
     ld   [wCF63], A                                    ;; 01:5b29 $ea $63 $cf
     ld   A, [wEquippedWeaponAnimationType]             ;; 01:5b2c $fa $58 $cf
@@ -4186,7 +4186,7 @@ jr_01_5a95:
     ld   A, C                                          ;; 01:5b3f $79
     or   A, $00                                        ;; 01:5b40 $f6 $00
     ret                                                ;; 01:5b42 $c9
-.jr_01_5b43:
+.insuficientMana:
     pop  BC                                            ;; 01:5b43 $c1
     xor  A, A                                          ;; 01:5b44 $af
     ret                                                ;; 01:5b45 $c9
@@ -4567,7 +4567,7 @@ call_01_5d64:
     call call_00_0ae3                                  ;; 01:5d7e $cd $e3 $0a
     ret                                                ;; 01:5d81 $c9
 
-call_01_5d82:
+playerAttackDestroy:
     ld   HL, wCEF0                                     ;; 01:5d82 $21 $f0 $ce
     ld   C, $00                                        ;; 01:5d85 $0e $00
     ld   B, $07                                        ;; 01:5d87 $06 $07

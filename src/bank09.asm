@@ -674,7 +674,7 @@ getProjectileRuntimeEntryByIndexA:
     dec  B                                             ;; 09:4388 $05
     ret                                                ;; 09:4389 $c9
 
-call_09_438a:
+projectileDestroy:
     ld   A, C                                          ;; 09:438a $79
     cp   A, $ff                                        ;; 09:438b $fe $ff
     ret  Z                                             ;; 09:438d $c8
