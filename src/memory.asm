@@ -437,10 +437,10 @@ wC4A1:
 hiddenSpritesYPositions:
     ds 46                                              ;; c4a2
 
-wC4D0:
+wFlyingSwordSpecialOriginalLocationX:
     ds 1                                               ;; c4d0
 
-wC4D1:
+wFlyingSwordSpecialOriginalLocationY:
     ds 1                                               ;; c4d1
 
 wPlayerDamagedTimer:
