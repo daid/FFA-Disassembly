@@ -10,7 +10,7 @@ SECTION "bank09", ROMX[$4000], BANK[$09]
     call_to_bank_target checkProjectileCollisions      ;; 09:4000 pP
     call_to_bank_target call_09_4012                   ;; 09:4002 pP
     call_to_bank_target call_09_41e9                   ;; 09:4004 pP
-    call_to_bank_target call_09_438a                   ;; 09:4006 pP
+    call_to_bank_target projectileDestroy              ;; 09:4006 pP
     call_to_bank_target spawnProjectile                ;; 09:4008 pP
     call_to_bank_target getProjectileOffset02          ;; 09:400a ??
     call_to_bank_target getProjectileElement           ;; 09:400c ??
@@ -229,12 +229,12 @@ call_09_4031:
 .jp_09_4136:
     ld   A, [DE]                                       ;; 09:4136 $1a
     ld   C, A                                          ;; 09:4137 $4f
-    call call_00_0ae3                                  ;; 09:4138 $cd $e3 $0a
+    call destroyObject                                 ;; 09:4138 $cd $e3 $0a
     ret                                                ;; 09:413b $c9
 .jr_09_413c:
     ld   A, [BC]                                       ;; 09:413c $0a
     ld   C, A                                          ;; 09:413d $4f
-    call call_00_0ae3                                  ;; 09:413e $cd $e3 $0a
+    call destroyObject                                 ;; 09:413e $cd $e3 $0a
     ret                                                ;; 09:4141 $c9
 .jp_09_4142:
     ld   HL, $03                                       ;; 09:4142 $21 $03 $00
@@ -289,7 +289,7 @@ call_09_4031:
     jr   C, .jr_09_4193                                ;; 09:4190 $38 $01
     ret                                                ;; 09:4192 $c9
 .jr_09_4193:
-    call call_00_0ae3                                  ;; 09:4193 $cd $e3 $0a
+    call destroyObject                                 ;; 09:4193 $cd $e3 $0a
     ret                                                ;; 09:4196 $c9
 
 call_09_4197:
@@ -507,7 +507,7 @@ spawnProjectile:
     ret                                                ;; 09:42a0 $c9
 .jr_09_42a1:
     pop  BC                                            ;; 09:42a1 $c1
-    call call_00_0ae3                                  ;; 09:42a2 $cd $e3 $0a
+    call destroyObject                                 ;; 09:42a2 $cd $e3 $0a
     pop  DE                                            ;; 09:42a5 $d1
     pop  DE                                            ;; 09:42a6 $d1
     pop  DE                                            ;; 09:42a7 $d1
@@ -682,7 +682,7 @@ projectileDestroy:
     ret  NZ                                            ;; 09:4391 $c0
     ld   C, [HL]                                       ;; 09:4392 $4e
     ld   [HL], $ff                                     ;; 09:4393 $36 $ff
-    call call_00_0ae3                                  ;; 09:4395 $cd $e3 $0a
+    call destroyObject                                 ;; 09:4395 $cd $e3 $0a
     ret                                                ;; 09:4398 $c9
 
 projectileCollisionHandling:
@@ -754,7 +754,7 @@ projectileCollisionHandling:
     and  A, B                                          ;; 09:43fc $a0
     jr   Z, projectileCollisionHandling.not_immune     ;; 09:43fd $28 $0b
     pop  BC                                            ;; 09:43ff $c1
-    call call_00_0ae3                                  ;; 09:4400 $cd $e3 $0a
+    call destroyObject                                 ;; 09:4400 $cd $e3 $0a
     ld   A, $15                                        ;; 09:4403 $3e $15
     call playSFX                                       ;; 09:4405 $cd $7d $29
     xor  A, A                                          ;; 09:4408 $af
@@ -801,7 +801,7 @@ projectileCollisionHandling:
     cp   A, E                                          ;; 09:4446 $bb
     jp   C, .jp_09_43aa                                ;; 09:4447 $da $aa $43
     push BC                                            ;; 09:444a $c5
-    call call_00_0ae3                                  ;; 09:444b $cd $e3 $0a
+    call destroyObject                                 ;; 09:444b $cd $e3 $0a
     pop  BC                                            ;; 09:444e $c1
     ld   A, B                                          ;; 09:444f $78
     ret                                                ;; 09:4450 $c9

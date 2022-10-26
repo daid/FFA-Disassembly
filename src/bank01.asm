@@ -15,7 +15,7 @@ data_01_4000:
     call_to_bank_target call_01_498e                   ;; 01:4006 pP
     call_to_bank_target createPlayerObject             ;; 01:4008 pP
     call_to_bank_target call_01_4f7b                   ;; 01:400a pP
-    call_to_bank_target call_01_4d0b                   ;; 01:400c ??
+    call_to_bank_target doSwordFlyingAttack            ;; 01:400c ??
     call_to_bank_target playerHit                      ;; 01:400e pP
     call_to_bank_target setPlayerNormalSprite          ;; 01:4010 pP
     call_to_bank_target setPlayerOnChocobo             ;; 01:4012 ??
@@ -40,11 +40,11 @@ data_01_4000:
     call_to_bank_target objectJumpHandler              ;; 01:4038 pP
     call_to_bank_target call_01_52b3                   ;; 01:403a pP
     call_to_bank_target call_01_5d64                   ;; 01:403c pP
-    call_to_bank_target call_01_5d82                   ;; 01:403e pP
+    call_to_bank_target playerAttackDestroy            ;; 01:403e pP
     call_to_bank_target getEquippedWeaponAnimationType ;; 01:4040 pP
     call_to_bank_target getEquippedItemAnimationType   ;; 01:4042 pP
-    call_to_bank_target call_01_5a83                   ;; 01:4044 pP
-    call_to_bank_target call_01_5a8c                   ;; 01:4046 ??
+    call_to_bank_target useEquippedWeaponOrItem        ;; 01:4044 pP
+    call_to_bank_target useSpecialAttack               ;; 01:4046 ??
     call_to_bank_target call_01_5d98                   ;; 01:4048 pP
     call_to_bank_target playerOrFriendlyAttackCollisionHandling ;; 01:404a pP
     call_to_bank_target call_01_5db6                   ;; 01:404c ??
@@ -244,7 +244,7 @@ prepareShutterEffect:
     ld   B, $0d                                        ;; 01:41b3 $06 $0d
     call loadLCDCEffectBuffer                          ;; 01:41b5 $cd $f3 $02
     ld   A, [wVideoLCDC]                               ;; 01:41b8 $fa $a5 $c0
-    ld   [wD49C], A                                    ;; 01:41bb $ea $9c $d4
+    ld   [wVideoLCDCBackup], A                         ;; 01:41bb $ea $9c $d4
     and  A, $fc                                        ;; 01:41be $e6 $fc
     ld   [wVideoLCDC], A                               ;; 01:41c0 $ea $a5 $c0
     ld   A, $24                                        ;; 01:41c3 $3e $24
@@ -311,7 +311,7 @@ shutterEffectOpen:
     ret                                                ;; 01:421b $c9
 .jr_01_421c:
     call setDefaultLCDCEffect                          ;; 01:421c $cd $13 $03
-    ld   A, [wD49C]                                    ;; 01:421f $fa $9c $d4
+    ld   A, [wVideoLCDCBackup]                         ;; 01:421f $fa $9c $d4
     ld   [wVideoLCDC], A                               ;; 01:4222 $ea $a5 $c0
     ld   HL, wScriptOpCounter                          ;; 01:4225 $21 $99 $d4
     inc  [HL]                                          ;; 01:4228 $34
@@ -366,14 +366,14 @@ loadFixedMinimap:
 ; This only loads the empty minimap background and sets up graphic tiles
 drawDynamicMinimapBackground:
     call minimapCopyMapNumberAndXY                     ;; 01:4279 $cd $31 $43
-    ld   A, [wMapTablePointerHigh]                     ;; 01:427c $fa $f3 $c3
+    ld   A, [wMapTablePointer.high]                    ;; 01:427c $fa $f3 $c3
     ld   H, A                                          ;; 01:427f $67
-    ld   A, [wMapTablePointerLow]                      ;; 01:4280 $fa $f2 $c3
+    ld   A, [wMapTablePointer]                         ;; 01:4280 $fa $f2 $c3
     ld   L, A                                          ;; 01:4283 $6f
     ld   A, H                                          ;; 01:4284 $7c
-    ld   [wD4A2], A                                    ;; 01:4285 $ea $a2 $d4
+    ld   [wDynamicMinimapMapTablePointer.high], A      ;; 01:4285 $ea $a2 $d4
     ld   A, L                                          ;; 01:4288 $7d
-    ld   [wD4A1], A                                    ;; 01:4289 $ea $a1 $d4
+    ld   [wDynamicMinimapMapTablePointer], A           ;; 01:4289 $ea $a1 $d4
     ld   A, [wMapWidth]                                ;; 01:428c $fa $fb $c3
     ld   [wMapWidthTmp], A                             ;; 01:428f $ea $9f $d4
     ld   A, [wMapTableBankNr]                          ;; 01:4292 $fa $f0 $c3
@@ -565,7 +565,7 @@ call_01_43a3:
     inc  [HL]                                          ;; 01:43e1 $34
     ld   A, $23                                        ;; 01:43e2 $3e $23
     call playSFX                                       ;; 01:43e4 $cd $7d $29
-    call call_00_2ef7                                  ;; 01:43e7 $cd $f7 $2e
+    call playerAttackDestroy_trampoline                ;; 01:43e7 $cd $f7 $2e
     pop  HL                                            ;; 01:43ea $e1
     inc  HL                                            ;; 01:43eb $23
     inc  HL                                            ;; 01:43ec $23
@@ -601,7 +601,7 @@ call_01_43ee:
     ld   D, A                                          ;; 01:4413 $57
     call call_00_28aa                                  ;; 01:4414 $cd $aa $28
 .jr_01_4417:
-    call call_00_2ef7                                  ;; 01:4417 $cd $f7 $2e
+    call playerAttackDestroy_trampoline                ;; 01:4417 $cd $f7 $2e
     ld   HL, wScriptOpCounter                          ;; 01:441a $21 $99 $d4
     inc  [HL]                                          ;; 01:441d $34
     pop  HL                                            ;; 01:441e $e1
@@ -631,7 +631,7 @@ call_01_4422:
     ld   DE, $00                                       ;; 01:4448 $11 $00 $00
     ld   HL, $1014                                     ;; 01:444b $21 $14 $10
     call hideSpritesBehindWindow_trampoline            ;; 01:444e $cd $2f $04
-    call call_00_2ef7                                  ;; 01:4451 $cd $f7 $2e
+    call playerAttackDestroy_trampoline                ;; 01:4451 $cd $f7 $2e
     pop  HL                                            ;; 01:4454 $e1
     ret                                                ;; 01:4455 $c9
 
@@ -649,7 +649,7 @@ call_01_4456:
     inc  [HL]                                          ;; 01:446c $34
     ld   A, $23                                        ;; 01:446d $3e $23
     call playSFX                                       ;; 01:446f $cd $7d $29
-    call call_00_2ef7                                  ;; 01:4472 $cd $f7 $2e
+    call playerAttackDestroy_trampoline                ;; 01:4472 $cd $f7 $2e
     pop  HL                                            ;; 01:4475 $e1
     ret                                                ;; 01:4476 $c9
 
@@ -1367,13 +1367,13 @@ gameStateNormal:
     jr   NZ, gameStateNormal.a_or_b_button             ;; 01:4a36 $20 $17
 .dpad:
     bit  0, D                                          ;; 01:4a38 $cb $42
-    jr   NZ, .jr_01_4a6c                               ;; 01:4a3a $20 $30
+    jr   NZ, gameStateNormal.right                     ;; 01:4a3a $20 $30
     bit  1, D                                          ;; 01:4a3c $cb $4a
-    jr   NZ, .jr_01_4a9a                               ;; 01:4a3e $20 $5a
+    jr   NZ, gameStateNormal.left                      ;; 01:4a3e $20 $5a
     bit  2, D                                          ;; 01:4a40 $cb $52
-    jp   NZ, .jp_01_4ac4                               ;; 01:4a42 $c2 $c4 $4a
+    jp   NZ, gameStateNormal.up                        ;; 01:4a42 $c2 $c4 $4a
     bit  3, D                                          ;; 01:4a45 $cb $5a
-    jp   NZ, .jp_01_4aee                               ;; 01:4a47 $c2 $ee $4a
+    jp   NZ, gameStateNormal.down                      ;; 01:4a47 $c2 $ee $4a
     xor  A, A                                          ;; 01:4a4a $af
     call call_01_48be                                  ;; 01:4a4b $cd $be $48
     ret                                                ;; 01:4a4e $c9
@@ -1385,7 +1385,7 @@ gameStateNormal:
     pop  DE                                            ;; 01:4a56 $d1
     ld   A, $02                                        ;; 01:4a57 $3e $02
     ld   [wMainGameState], A                           ;; 01:4a59 $ea $a0 $c0
-    call call_00_2ee5                                  ;; 01:4a5c $cd $e5 $2e
+    call useEquippedWeaponOrItem_trampoline            ;; 01:4a5c $cd $e5 $2e
     ret  NZ                                            ;; 01:4a5f $c0
     ld   A, [wMainGameState]                           ;; 01:4a60 $fa $a0 $c0
     cp   A, $02                                        ;; 01:4a63 $fe $02
@@ -1491,10 +1491,10 @@ call_01_4b24:
     ld   A, [wBossFirstObjectID]                       ;; 01:4b24 $fa $e8 $d3
     cp   A, $ff                                        ;; 01:4b27 $fe $ff
     jr   Z, .jr_01_4b31                                ;; 01:4b29 $28 $06
-    call call_00_04e8                                  ;; 01:4b2b $cd $e8 $04
+    call bossClearStatsObjects_trampoline              ;; 01:4b2b $cd $e8 $04
     call call_00_2926                                  ;; 01:4b2e $cd $26 $29
 .jr_01_4b31:
-    call call_00_2ef7                                  ;; 01:4b31 $cd $f7 $2e
+    call playerAttackDestroy_trampoline                ;; 01:4b31 $cd $f7 $2e
     call runRoomScriptOnRoomExit                       ;; 01:4b34 $cd $83 $24
     ret                                                ;; 01:4b37 $c9
 
@@ -1697,9 +1697,9 @@ gameStateSpecialAttackFlyingSwordReturn:
     add  A, $0a                                        ;; 01:4c77 $c6 $0a
     ld   E, A                                          ;; 01:4c79 $5f
     push DE                                            ;; 01:4c7a $d5
-    ld   A, [wC4D1]                                    ;; 01:4c7b $fa $d1 $c4
+    ld   A, [wFlyingSwordSpecialOriginalLocationY]     ;; 01:4c7b $fa $d1 $c4
     ld   H, A                                          ;; 01:4c7e $67
-    ld   A, [wC4D0]                                    ;; 01:4c7f $fa $d0 $c4
+    ld   A, [wFlyingSwordSpecialOriginalLocationX]     ;; 01:4c7f $fa $d0 $c4
     ld   L, A                                          ;; 01:4c82 $6f
     ld   A, $0a                                        ;; 01:4c83 $3e $0a
     add  A, L                                          ;; 01:4c85 $85
@@ -1744,9 +1744,9 @@ gameStateSpecialAttackFlyingSwordReturn:
     call getPlayerX                                    ;; 01:4cb6 $cd $93 $02
     pop  DE                                            ;; 01:4cb9 $d1
     ld   E, A                                          ;; 01:4cba $5f
-    ld   A, [wC4D1]                                    ;; 01:4cbb $fa $d1 $c4
+    ld   A, [wFlyingSwordSpecialOriginalLocationY]     ;; 01:4cbb $fa $d1 $c4
     ld   H, A                                          ;; 01:4cbe $67
-    ld   A, [wC4D0]                                    ;; 01:4cbf $fa $d0 $c4
+    ld   A, [wFlyingSwordSpecialOriginalLocationX]     ;; 01:4cbf $fa $d0 $c4
     ld   L, A                                          ;; 01:4cc2 $6f
     ld   A, H                                          ;; 01:4cc3 $7c
     sub  A, D                                          ;; 01:4cc4 $92
@@ -1761,22 +1761,22 @@ gameStateSpecialAttackFlyingSwordReturn:
     ld   C, $04                                        ;; 01:4cd0 $0e $04
     ld   B, $00                                        ;; 01:4cd2 $06 $00
     call call_00_08d4                                  ;; 01:4cd4 $cd $d4 $08
-    ld   A, [wC4D1]                                    ;; 01:4cd7 $fa $d1 $c4
+    ld   A, [wFlyingSwordSpecialOriginalLocationY]     ;; 01:4cd7 $fa $d1 $c4
     ld   H, A                                          ;; 01:4cda $67
-    ld   A, [wC4D0]                                    ;; 01:4cdb $fa $d0 $c4
+    ld   A, [wFlyingSwordSpecialOriginalLocationX]     ;; 01:4cdb $fa $d0 $c4
     ld   L, A                                          ;; 01:4cde $6f
     ld   A, H                                          ;; 01:4cdf $7c
     or   A, L                                          ;; 01:4ce0 $b5
     and  A, $07                                        ;; 01:4ce1 $e6 $07
     jr   NZ, .jr_01_4cf3                               ;; 01:4ce3 $20 $0e
-    call call_00_2ef7                                  ;; 01:4ce5 $cd $f7 $2e
+    call playerAttackDestroy_trampoline                ;; 01:4ce5 $cd $f7 $2e
     ld   A, $00                                        ;; 01:4ce8 $3e $00
     ld   [wMainGameState], A                           ;; 01:4cea $ea $a0 $c0
     ld   A, $c9                                        ;; 01:4ced $3e $c9
     call setPlayerCollisionFlags                       ;; 01:4cef $cd $bd $02
     ret                                                ;; 01:4cf2 $c9
 .jr_01_4cf3:
-    call call_00_2ef7                                  ;; 01:4cf3 $cd $f7 $2e
+    call playerAttackDestroy_trampoline                ;; 01:4cf3 $cd $f7 $2e
     ld   A, $00                                        ;; 01:4cf6 $3e $00
     ld   [wMainGameState], A                           ;; 01:4cf8 $ea $a0 $c0
     ld   A, $c9                                        ;; 01:4cfb $3e $c9
@@ -1798,9 +1798,9 @@ doSwordFlyingAttack:
     pop  DE                                            ;; 01:4d1b $d1
     ld   E, A                                          ;; 01:4d1c $5f
     ld   A, D                                          ;; 01:4d1d $7a
-    ld   [wC4D1], A                                    ;; 01:4d1e $ea $d1 $c4
+    ld   [wFlyingSwordSpecialOriginalLocationY], A     ;; 01:4d1e $ea $d1 $c4
     ld   A, E                                          ;; 01:4d21 $7b
-    ld   [wC4D0], A                                    ;; 01:4d22 $ea $d0 $c4
+    ld   [wFlyingSwordSpecialOriginalLocationX], A     ;; 01:4d22 $ea $d0 $c4
     ld   A, $03                                        ;; 01:4d25 $3e $03
     ld   [wMainGameState], A                           ;; 01:4d27 $ea $a0 $c0
     call getPlayerDirection                            ;; 01:4d2a $cd $ab $02
@@ -1888,17 +1888,17 @@ gameStateSpecialAttackFlyingSword:
     set  4, A                                          ;; 01:4dac $cb $e7
     ld   D, A                                          ;; 01:4dae $57
     ld   E, A                                          ;; 01:4daf $5f
-    ld   A, [wC4D1]                                    ;; 01:4db0 $fa $d1 $c4
+    ld   A, [wFlyingSwordSpecialOriginalLocationY]     ;; 01:4db0 $fa $d1 $c4
     ld   H, A                                          ;; 01:4db3 $67
-    ld   A, [wC4D0]                                    ;; 01:4db4 $fa $d0 $c4
+    ld   A, [wFlyingSwordSpecialOriginalLocationX]     ;; 01:4db4 $fa $d0 $c4
     ld   L, A                                          ;; 01:4db7 $6f
     push HL                                            ;; 01:4db8 $e5
-    call call_00_2eeb                                  ;; 01:4db9 $cd $eb $2e
+    call flyingSwordAttackBeginReturn_trampoline       ;; 01:4db9 $cd $eb $2e
     pop  HL                                            ;; 01:4dbc $e1
     ld   A, H                                          ;; 01:4dbd $7c
-    ld   [wC4D1], A                                    ;; 01:4dbe $ea $d1 $c4
+    ld   [wFlyingSwordSpecialOriginalLocationY], A     ;; 01:4dbe $ea $d1 $c4
     ld   A, L                                          ;; 01:4dc1 $7d
-    ld   [wC4D0], A                                    ;; 01:4dc2 $ea $d0 $c4
+    ld   [wFlyingSwordSpecialOriginalLocationX], A     ;; 01:4dc2 $ea $d0 $c4
     ld   A, $04                                        ;; 01:4dc5 $3e $04
     ld   [wMainGameState], A                           ;; 01:4dc7 $ea $a0 $c0
     ret                                                ;; 01:4dca $c9
@@ -2024,7 +2024,7 @@ gameStateSpecialAttack:
     call call_01_48be                                  ;; 01:4e98 $cd $be $48
     ld   A, $00                                        ;; 01:4e9b $3e $00
     ld   [wMainGameState], A                           ;; 01:4e9d $ea $a0 $c0
-    call call_00_2ef7                                  ;; 01:4ea0 $cd $f7 $2e
+    call playerAttackDestroy_trampoline                ;; 01:4ea0 $cd $f7 $2e
     ld   A, $22                                        ;; 01:4ea3 $3e $22
     call playSFX                                       ;; 01:4ea5 $cd $7d $29
     ret                                                ;; 01:4ea8 $c9
@@ -2313,7 +2313,7 @@ call_01_5088:
 createPlayerObject:
     push DE                                            ;; 01:5090 $d5
     ld   C, $04                                        ;; 01:5091 $0e $04
-    call call_00_0ae3                                  ;; 01:5093 $cd $e3 $0a
+    call destroyObject                                 ;; 01:5093 $cd $e3 $0a
     pop  DE                                            ;; 01:5096 $d1
     ld   HL, playerMetaspriteTable                     ;; 01:5097 $21 $52 $47
     ld   A, $01                                        ;; 01:509a $3e $01
@@ -3054,16 +3054,16 @@ call_01_54d5:
     push DE                                            ;; 01:5505 $d5
     and  A, $07                                        ;; 01:5506 $e6 $07
     cp   A, $05                                        ;; 01:5508 $fe $05
-    jr   Z, .jr_01_551c                                ;; 01:550a $28 $10
+    jr   Z, call_01_54d5.attackSwordSpecialFlying      ;; 01:550a $28 $10
     cp   A, $01                                        ;; 01:550c $fe $01
     jr   Z, .jr_01_5521                                ;; 01:550e $28 $11
     cp   A, $02                                        ;; 01:5510 $fe $02
-    jp   Z, jp_01_5609                                 ;; 01:5512 $ca $09 $56
+    jp   Z, attackFireAutoTarget                       ;; 01:5512 $ca $09 $56
     cp   A, $03                                        ;; 01:5515 $fe $03
     jp   Z, jp_01_5619                                 ;; 01:5517 $ca $19 $56
     jr   jp_01_5530                                    ;; 01:551a $18 $14
 .attackSwordSpecialFlying:
-    call call_00_024a                                  ;; 01:551c $cd $4a $02
+    call doSwordFlyingAttack_trampoline                ;; 01:551c $cd $4a $02
     jr   jp_01_5530                                    ;; 01:551f $18 $0f
 .jr_01_5521:
     call setGameStateSpecialAttack                     ;; 01:5521 $cd $76 $02
@@ -4076,7 +4076,7 @@ useEquippedWeaponOrItem:
     res  7, E                                          ;; 01:5a83 $cb $bb
     push DE                                            ;; 01:5a85 $d5
     call isWillBarFull                                 ;; 01:5a86 $cd $fb $3e
-    jr   NZ, jr_01_5a95                                ;; 01:5a89 $20 $0a
+    jr   NZ, useWeaponItemOrSpecial                    ;; 01:5a89 $20 $0a
     pop  DE                                            ;; 01:5a8b $d1
 
 useSpecialAttack:
@@ -4101,7 +4101,7 @@ useWeaponItemOrSpecial:
     pop  DE                                            ;; 01:5aab $d1
     ld   A, D                                          ;; 01:5aac $7a
     bit  7, E                                          ;; 01:5aad $cb $7b
-    jr   NZ, .jr_01_5abb                               ;; 01:5aaf $20 $0a
+    jr   NZ, useWeaponItemOrSpecial.specialAttackWest  ;; 01:5aaf $20 $0a
     ld   C, $0a                                        ;; 01:5ab1 $0e $0a
     and  A, $0f                                        ;; 01:5ab3 $e6 $0f
     jr   NZ, .jr_01_5b11                               ;; 01:5ab5 $20 $5a
@@ -4117,7 +4117,7 @@ useWeaponItemOrSpecial:
     pop  DE                                            ;; 01:5ac5 $d1
     ld   A, D                                          ;; 01:5ac6 $7a
     bit  7, E                                          ;; 01:5ac7 $cb $7b
-    jr   NZ, .jr_01_5ad5                               ;; 01:5ac9 $20 $0a
+    jr   NZ, useWeaponItemOrSpecial.specialAttackEast  ;; 01:5ac9 $20 $0a
     ld   C, $0c                                        ;; 01:5acb $0e $0c
     and  A, $0f                                        ;; 01:5acd $e6 $0f
     jr   NZ, .jr_01_5b11                               ;; 01:5acf $20 $40
@@ -4133,7 +4133,7 @@ useWeaponItemOrSpecial:
     pop  DE                                            ;; 01:5adf $d1
     ld   A, D                                          ;; 01:5ae0 $7a
     bit  7, E                                          ;; 01:5ae1 $cb $7b
-    jr   NZ, .jr_01_5aef                               ;; 01:5ae3 $20 $0a
+    jr   NZ, useWeaponItemOrSpecial.specialAttackSouth ;; 01:5ae3 $20 $0a
     ld   C, $0e                                        ;; 01:5ae5 $0e $0e
     and  A, $0f                                        ;; 01:5ae7 $e6 $0f
     jr   NZ, .jr_01_5b11                               ;; 01:5ae9 $20 $26
@@ -4149,7 +4149,7 @@ useWeaponItemOrSpecial:
     pop  DE                                            ;; 01:5af9 $d1
     ld   A, D                                          ;; 01:5afa $7a
     bit  7, E                                          ;; 01:5afb $cb $7b
-    jr   NZ, .jr_01_5b09                               ;; 01:5afd $20 $0a
+    jr   NZ, useWeaponItemOrSpecial.specialAttackNorth ;; 01:5afd $20 $0a
     ld   C, $10                                        ;; 01:5aff $0e $10
     and  A, $0f                                        ;; 01:5b01 $e6 $0f
     jr   NZ, .jr_01_5b11                               ;; 01:5b03 $20 $0c
@@ -4163,16 +4163,16 @@ useWeaponItemOrSpecial:
 .jr_01_5b11:
     push BC                                            ;; 01:5b11 $c5
     bit  4, E                                          ;; 01:5b12 $cb $63
-    jr   NZ, .jr_01_5b26                               ;; 01:5b14 $20 $10
+    jr   NZ, useWeaponItemOrSpecial.weapon             ;; 01:5b14 $20 $10
     call castEquippedSpellIfSufficientMana_trampoline  ;; 01:5b16 $cd $5f $31
-    jr   C, .jr_01_5b43                                ;; 01:5b19 $38 $28
-    call call_00_311d                                  ;; 01:5b1b $cd $1d $31
-    ld   [wCF63], A                                    ;; 01:5b1e $ea $63 $cf
+    jr   C, useWeaponItemOrSpecial.insuficientMana     ;; 01:5b19 $38 $28
+    call doSpellOrItemEffect_trampoline                ;; 01:5b1b $cd $1d $31
+    ld   [wCurrentPlayerAttackWillCharge], A           ;; 01:5b1e $ea $63 $cf
     ld   A, [wEquippedItemAnimationType]               ;; 01:5b21 $fa $59 $cf
     jr   .jr_01_5b2f                                   ;; 01:5b24 $18 $09
 .weapon:
     call attackWithWeaponUseWill_trampoline            ;; 01:5b26 $cd $29 $31
-    ld   [wCF63], A                                    ;; 01:5b29 $ea $63 $cf
+    ld   [wCurrentPlayerAttackWillCharge], A           ;; 01:5b29 $ea $63 $cf
     ld   A, [wEquippedWeaponAnimationType]             ;; 01:5b2c $fa $58 $cf
 .jr_01_5b2f:
     pop  BC                                            ;; 01:5b2f $c1
@@ -4414,7 +4414,7 @@ call_01_5bf1:
     call damageNpc_trampoline                          ;; 01:5c87 $cd $53 $28
     call call_00_04f4                                  ;; 01:5c8a $cd $f4 $04
 .jr_01_5c8d:
-    call call_01_5d82                                  ;; 01:5c8d $cd $82 $5d
+    call playerAttackDestroy                           ;; 01:5c8d $cd $82 $5d
     pop  BC                                            ;; 01:5c90 $c1
     ld   A, $07                                        ;; 01:5c91 $3e $07
     sub  A, B                                          ;; 01:5c93 $90
@@ -4485,7 +4485,7 @@ playerOrFriendlyAttackCollisionHandling:
     push HL                                            ;; 01:5cf9 $e5
     ld   A, C                                          ;; 01:5cfa $79
     ld   [wCF5D], A                                    ;; 01:5cfb $ea $5d $cf
-    call call_01_5d82                                  ;; 01:5cfe $cd $82 $5d
+    call playerAttackDestroy                           ;; 01:5cfe $cd $82 $5d
     call call_01_5c9f                                  ;; 01:5d01 $cd $9f $5c
     pop  HL                                            ;; 01:5d04 $e1
     ret                                                ;; 01:5d05 $c9
@@ -4510,12 +4510,12 @@ playerOrFriendlyAttackCollisionHandling:
     ld   E, A                                          ;; 01:5d23 $5f
     pop  BC                                            ;; 01:5d24 $c1
     push DE                                            ;; 01:5d25 $d5
-    call call_00_0ae3                                  ;; 01:5d26 $cd $e3 $0a
+    call destroyObject                                 ;; 01:5d26 $cd $e3 $0a
     pop  DE                                            ;; 01:5d29 $d1
     push DE                                            ;; 01:5d2a $d5
     call spawnSnowman                                  ;; 01:5d2b $cd $03 $2d
     ld   [wCF5D], A                                    ;; 01:5d2e $ea $5d $cf
-    call call_01_5d82                                  ;; 01:5d31 $cd $82 $5d
+    call playerAttackDestroy                           ;; 01:5d31 $cd $82 $5d
     pop  DE                                            ;; 01:5d34 $d1
     ld   A, [wCF5D]                                    ;; 01:5d35 $fa $5d $cf
     cp   A, $ff                                        ;; 01:5d38 $fe $ff
@@ -4564,7 +4564,7 @@ call_01_5d64:
     ret                                                ;; 01:5d7c $c9
 .jr_01_5d7d:
     ld   C, A                                          ;; 01:5d7d $4f
-    call call_00_0ae3                                  ;; 01:5d7e $cd $e3 $0a
+    call destroyObject                                 ;; 01:5d7e $cd $e3 $0a
     ret                                                ;; 01:5d81 $c9
 
 playerAttackDestroy:
@@ -4611,7 +4611,7 @@ call_01_5db6:
     push AF                                            ;; 01:5db6 $f5
     ld   A, C                                          ;; 01:5db7 $79
     ld   [wCF5D], A                                    ;; 01:5db8 $ea $5d $cf
-    call call_01_5d82                                  ;; 01:5dbb $cd $82 $5d
+    call playerAttackDestroy                           ;; 01:5dbb $cd $82 $5d
     ld   A, $0a                                        ;; 01:5dbe $3e $0a
     ld   [wCF5C], A                                    ;; 01:5dc0 $ea $5c $cf
     pop  AF                                            ;; 01:5dc3 $f1
@@ -4664,7 +4664,7 @@ attackFrames:
     dw   data_01_6375                                  ;; 01:5e4f ?? $19
     dw   data_01_6519                                  ;; 01:5e51 ?? $1a
     dw   data_01_6471                                  ;; 01:5e53 ?? $1b
-    dw   attackFireAutoTarget                          ;; 01:5e55 ?? $1c
+    dw   attackFireAutoTargetFrame                     ;; 01:5e55 ?? $1c
     dw   data_01_617d                                  ;; 01:5e57 ?? $1d
     dw   data_01_65eb                                  ;; 01:5e59 ?? $1e
     dw   data_01_6597                                  ;; 01:5e5b ?? $1f
@@ -4872,7 +4872,7 @@ attackFireIceThnderNukeFrame1:
     dw   data_01_6ad1, data_01_6ae8, data_01_6aff, data_01_6b16 ;; 01:6143 ????????
     dw   data_01_6ad1, data_01_6ae8, data_01_6aff, data_01_6b16 ;; 01:614b ????????
 
-attackFireAutoTarget:
+attackFireAutoTargetFrame:
     db   $06, $58, $02, $05, $0c, $00                  ;; 01:6153 ??????
     dw   gfxAttackFire, data_01_690f                   ;; 01:6159 ????
     dw   data_01_6b2d, data_01_6b34, data_01_6b3b, data_01_6b42 ;; 01:615d ????????

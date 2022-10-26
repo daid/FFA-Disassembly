@@ -28,7 +28,7 @@ SECTION "bank02", ROMX[$4000], BANK[$02]
     call_to_bank_target gameStateMenu                  ;; 02:4024 pP
     call_to_bank_target call_02_667a                   ;; 02:4026 pP
     call_to_bank_target drawWindow                     ;; 02:4028 pP
-    call_to_bank_target call_02_483e                   ;; 02:402a pP
+    call_to_bank_target windowMenuStartSpecial         ;; 02:402a pP
     call_to_bank_target call_02_5b68                   ;; 02:402c ??
     call_to_bank_target setStartingStats               ;; 02:402e pP
     call_to_bank_target giveItem                       ;; 02:4030 pP
@@ -46,7 +46,7 @@ SECTION "bank02", ROMX[$4000], BANK[$02]
     call_to_bank_target drawHPOnStatuBar               ;; 02:4048 pP
     call_to_bank_target drawManaOnStatusBar            ;; 02:404a pP
     call_to_bank_target drawMoneyOnStatusBar           ;; 02:404c pP
-    call_to_bank_target call_02_6fb4                   ;; 02:404e pP
+    call_to_bank_target doSpellOrItemEffect            ;; 02:404e pP
     call_to_bank_target getCurrentMagicPower           ;; 02:4050 ??
     call_to_bank_target attackWithWeaponUseWill        ;; 02:4052 pP
     call_to_bank_target giveStatusEffect               ;; 02:4054 pP
@@ -619,7 +619,7 @@ call_02_435e:
     jr   Z, call_02_435e.follower                      ;; 02:43bf $28 $08
     pop  BC                                            ;; 02:43c1 $c1
     push BC                                            ;; 02:43c2 $c5
-    call call_00_0ae3                                  ;; 02:43c3 $cd $e3 $0a
+    call destroyObject                                 ;; 02:43c3 $cd $e3 $0a
 .playerOrChocobo:
     pop  BC                                            ;; 02:43c6 $c1
     pop  AF                                            ;; 02:43c7 $f1
@@ -1089,7 +1089,7 @@ windowMenuStartSpecial:
     ret                                                ;; 02:485f $c9
 
 gameStateMenu:
-    ld   HL, data_02_47c8                              ;; 02:4860 $21 $c8 $47
+    ld   HL, gameStateMenuJumptable                    ;; 02:4860 $21 $c8 $47
     ld   A, [wD853]                                    ;; 02:4863 $fa $53 $d8
     and  A, $7f                                        ;; 02:4866 $e6 $7f
     ld   B, $00                                        ;; 02:4868 $06 $00
@@ -1323,7 +1323,7 @@ call_02_49c7:
 
 jp_02_49f7:
     ld   A, $96                                        ;; 02:49f7 $3e $96
-    ld   [wD87F], A                                    ;; 02:49f9 $ea $7f $d8
+    ld   [wLevelUpFanfareDelay], A                     ;; 02:49f9 $ea $7f $d8
     ld   A, [wDialogType]                              ;; 02:49fc $fa $4a $d8
     cp   A, $0d                                        ;; 02:49ff $fe $0d
     ld   A, $1b                                        ;; 02:4a01 $3e $1b
@@ -1382,7 +1382,7 @@ call_02_4a14:
     call runScriptByIndex                              ;; 02:4a6d $cd $ad $31
     ret                                                ;; 02:4a70 $c9
 .jr_02_4a71:
-    ld   HL, wD87F                                     ;; 02:4a71 $21 $7f $d8
+    ld   HL, wLevelUpFanfareDelay                      ;; 02:4a71 $21 $7f $d8
     dec  [HL]                                          ;; 02:4a74 $35
     ret  NZ                                            ;; 02:4a75 $c0
     jp   openLevelUpStatusScreen                       ;; 02:4a76 $c3 $e1 $4e
@@ -3527,7 +3527,7 @@ currentlyEquippedEquipmentList:
 jp_02_5877:
     ld   [wD850], A                                    ;; 02:5877 $ea $50 $d8
     ld   A, [wDialogType]                              ;; 02:587a $fa $4a $d8
-    call moogleEnd                                     ;; 02:587d $cd $d6 $57
+    call calulateAPDP                                  ;; 02:587d $cd $d6 $57
 
 call_02_5880:
     ld   A, [wWindowTextLength]                        ;; 02:5880 $fa $9b $d8
@@ -5195,9 +5195,9 @@ jr_02_6bca:
     ld   BC, menuFingerPointingTiles                   ;; 02:6bca $01 $b4 $47
 
 jr_02_6bcd:
-    call call_02_6bd8                                  ;; 02:6bcd $cd $d8 $6b
+    call windowShowSprite                              ;; 02:6bcd $cd $d8 $6b
     inc  E                                             ;; 02:6bd0 $1c
-    call call_02_6bd8                                  ;; 02:6bd1 $cd $d8 $6b
+    call windowShowSprite                              ;; 02:6bd1 $cd $d8 $6b
     pop  BC                                            ;; 02:6bd4 $c1
     pop  DE                                            ;; 02:6bd5 $d1
     pop  HL                                            ;; 02:6bd6 $e1
@@ -5209,7 +5209,7 @@ jr_02_6bcd:
 ; This is the only place I know of that does not use the normal metasprite abstraction
 windowShowSprite:
     push DE                                            ;; 02:6bd8 $d5
-    call call_02_6c5d                                  ;; 02:6bd9 $cd $5d $6c
+    call windowGetOffsetXYPosition                     ;; 02:6bd9 $cd $5d $6c
     ld   [HL], D                                       ;; 02:6bdc $72
     inc  HL                                            ;; 02:6bdd $23
     ld   [HL], E                                       ;; 02:6bde $73
@@ -5262,18 +5262,18 @@ call_02_6c0b:
 .jr_02_6c23:
     push DE                                            ;; 02:6c23 $d5
     ld   E, $02                                        ;; 02:6c24 $1e $02
-    call call_02_6c4b                                  ;; 02:6c26 $cd $4b $6c
+    call windowClearLine                               ;; 02:6c26 $cd $4b $6c
     pop  DE                                            ;; 02:6c29 $d1
     push DE                                            ;; 02:6c2a $d5
     inc  D                                             ;; 02:6c2b $14
     ld   E, $02                                        ;; 02:6c2c $1e $02
-    call call_02_6c4b                                  ;; 02:6c2e $cd $4b $6c
+    call windowClearLine                               ;; 02:6c2e $cd $4b $6c
     pop  DE                                            ;; 02:6c31 $d1
     ld   HL, wOAMBuffer._10                            ;; 02:6c32 $21 $10 $c0
-    ld   BC, data_02_47b2                              ;; 02:6c35 $01 $b2 $47
-    call call_02_6bd8                                  ;; 02:6c38 $cd $d8 $6b
+    ld   BC, menuTrashCanTiles                         ;; 02:6c35 $01 $b2 $47
+    call windowShowSprite                              ;; 02:6c38 $cd $d8 $6b
     inc  E                                             ;; 02:6c3b $1c
-    call call_02_6bd8                                  ;; 02:6c3c $cd $d8 $6b
+    call windowShowSprite                              ;; 02:6c3c $cd $d8 $6b
     ld   A, [wD849]                                    ;; 02:6c3f $fa $49 $d8
     or   A, $80                                        ;; 02:6c42 $f6 $80
     ld   [wD849], A                                    ;; 02:6c44 $ea $49 $d8
@@ -5295,7 +5295,7 @@ windowClearLine:
     pop  BC                                            ;; 02:6c57 $c1
     inc  E                                             ;; 02:6c58 $1c
     dec  B                                             ;; 02:6c59 $05
-    jr   NZ, .jr_02_6c51                               ;; 02:6c5a $20 $f5
+    jr   NZ, windowClearLine.loop                      ;; 02:6c5a $20 $f5
     ret                                                ;; 02:6c5c $c9
 
 ; de = y and x offsets in tiles from a window's upper left corner
@@ -5306,7 +5306,7 @@ windowGetOffsetXYPosition:
     ld   A, [wD872]                                    ;; 02:6c61 $fa $72 $d8
     bit  7, A                                          ;; 02:6c64 $cb $7f
     jr   Z, .jr_02_6c6b                                ;; 02:6c66 $28 $03
-    ld   HL, windowData.selectLevelupStats1            ;; 02:6c68 $21 $9b $5c
+    ld   HL, windowData.selectLevelupStatsY            ;; 02:6c68 $21 $9b $5c
 .jr_02_6c6b:
     ld   A, [HL-]                                      ;; 02:6c6b $3a
     add  A, D                                          ;; 02:6c6c $82
@@ -5587,7 +5587,7 @@ getSpellOrBookPower:
     push HL                                            ;; 02:6dfb $e5
     push BC                                            ;; 02:6dfc $c5
     ld   HL, .itemsListSpellBooksDamage                ;; 02:6dfd $21 $1e $6e
-    ld   A, [wD88B]                                    ;; 02:6e00 $fa $8b $d8
+    ld   A, [wCurrentItemOrSpellInUse]                 ;; 02:6e00 $fa $8b $d8
     and  A, $7f                                        ;; 02:6e03 $e6 $7f
     ld   B, A                                          ;; 02:6e05 $47
 .jr_02_6e06:
@@ -5690,7 +5690,7 @@ setStartingStats:
     ld   [wStatPowerLevelUpTmp], A                     ;; 02:6e98 $ea $90 $d7
     ld   A, [wStatStamina]                             ;; 02:6e9b $fa $c1 $d7
     ld   [wStatStaminaLevelUpTmp], A                   ;; 02:6e9e $ea $8f $d7
-    call moogleEnd                                     ;; 02:6ea1 $cd $d6 $57
+    call calulateAPDP                                  ;; 02:6ea1 $cd $d6 $57
     ld   HL, $00                                       ;; 02:6ea4 $21 $00 $00
     ld   A, H                                          ;; 02:6ea7 $7c
     ld   [wXPHigh], A                                  ;; 02:6ea8 $ea $bc $d7
@@ -5849,7 +5849,7 @@ attackWithWeaponUseWill:
 doSpellOrItemEffect:
     ld   HL, wMiscFlags                                ;; 02:6fb4 $21 $6f $d8
     set  6, [HL]                                       ;; 02:6fb7 $cb $f6
-    ld   A, [wD88B]                                    ;; 02:6fb9 $fa $8b $d8
+    ld   A, [wCurrentItemOrSpellInUse]                 ;; 02:6fb9 $fa $8b $d8
     and  A, $7f                                        ;; 02:6fbc $e6 $7f
     ld   C, A                                          ;; 02:6fbe $4f
     ret  Z                                             ;; 02:6fbf $c8
@@ -5869,7 +5869,7 @@ doSpellOrItemEffect:
     ret  C                                             ;; 02:6fd4 $d8
     ld   HL, itemsListCure                             ;; 02:6fd5 $21 $17 $7b
     call getItemOffsetBandCifInList                    ;; 02:6fd8 $cd $4b $71
-    jr   NC, .jr_02_7056                               ;; 02:6fdb $30 $79
+    jr   NC, .notCure                                  ;; 02:6fdb $30 $79
     push HL                                            ;; 02:6fdd $e5
     ld   A, C                                          ;; 02:6fde $79
     cp   A, $01                                        ;; 02:6fdf $fe $01
@@ -5950,7 +5950,7 @@ doSpellOrItemEffect:
 .notCure:
     ld   HL, itemsListHealStatus                       ;; 02:7056 $21 $1f $7b
     call getItemOffsetBandCifInList                    ;; 02:7059 $cd $4b $71
-    jr   NC, .jr_02_7084                               ;; 02:705c $30 $26
+    jr   NC, doSpellOrItemEffect.notHeal               ;; 02:705c $30 $26
     ld   A, C                                          ;; 02:705e $79
     cp   A, $02                                        ;; 02:705f $fe $02
     jr   NZ, .jr_02_7065                               ;; 02:7061 $20 $02
@@ -5979,7 +5979,7 @@ doSpellOrItemEffect:
 .notHeal:
     ld   HL, itemsListBuff                             ;; 02:7084 $21 $26 $7b
     call getItemOffsetBandCifInList                    ;; 02:7087 $cd $4b $71
-    jr   NC, jr_02_70e3                                ;; 02:708a $30 $57
+    jr   NC, notBuff                                   ;; 02:708a $30 $57
     ld   A, [wNectarStaminaTimerNumber]                ;; 02:708c $fa $7e $d8
     cp   A, $ff                                        ;; 02:708f $fe $ff
     ret  NZ                                            ;; 02:7091 $c0
@@ -6043,14 +6043,14 @@ call_02_70d7:
 notBuff:
     ld   HL, itemsListCrystal                          ;; 02:70e3 $21 $34 $7b
     call getItemOffsetBandCifInList                    ;; 02:70e6 $cd $4b $71
-    jr   NC, .jr_02_70f0                               ;; 02:70e9 $30 $05
+    jr   NC, .notCrystal                               ;; 02:70e9 $30 $05
     ld   A, H                                          ;; 02:70eb $7c
     call setWillBarMax                                 ;; 02:70ec $cd $97 $3e
     ret                                                ;; 02:70ef $c9
 .notCrystal:
     ld   HL, itemsListSleep                            ;; 02:70f0 $21 $2b $7b
     call getItemOffsetBandCifInList                    ;; 02:70f3 $cd $4b $71
-    jr   NC, .jr_02_7102                               ;; 02:70f6 $30 $0a
+    jr   NC, notBuff.notSleep                          ;; 02:70f6 $30 $0a
     call getWillTimes16PlusB                           ;; 02:70f8 $cd $39 $71
     call useSlep                                       ;; 02:70fb $cd $44 $2f
     call useWillCharge                                 ;; 02:70fe $cd $d0 $3e
@@ -6058,7 +6058,7 @@ notBuff:
 .notSleep:
     ld   HL, itemsListMute                             ;; 02:7102 $21 $2e $7b
     call getItemOffsetBandCifInList                    ;; 02:7105 $cd $4b $71
-    jr   NC, .jr_02_7114                               ;; 02:7108 $30 $0a
+    jr   NC, notBuff.notMute                           ;; 02:7108 $30 $0a
     call getWillTimes16PlusB                           ;; 02:710a $cd $39 $71
     call useMute                                       ;; 02:710d $cd $5d $2f
     call useWillCharge                                 ;; 02:7110 $cd $d0 $3e
@@ -6066,7 +6066,7 @@ notBuff:
 .notMute:
     ld   HL, itemsListLights                           ;; 02:7114 $21 $31 $7b
     call getItemOffsetBandCifInList                    ;; 02:7117 $cd $4b $71
-    jr   NC, .jr_02_712e                               ;; 02:711a $30 $12
+    jr   NC, notBuff.notLight                          ;; 02:711a $30 $12
     ld   L, A                                          ;; 02:711c $6f
     ld   H, $00                                        ;; 02:711d $26 $00
     add  HL, HL                                        ;; 02:711f $29
@@ -6167,7 +6167,7 @@ castSpellIfSufficientMana:
 
 useItemOrSpell:
     ld   A, [wEquippedItem]                            ;; 02:71a2 $fa $ef $d6
-    ld   [wD88B], A                                    ;; 02:71a5 $ea $8b $d8
+    ld   [wCurrentItemOrSpellInUse], A                 ;; 02:71a5 $ea $8b $d8
     and  A, $7f                                        ;; 02:71a8 $e6 $7f
     cp   A, $09                                        ;; 02:71aa $fe $09
     ret  C                                             ;; 02:71ac $d8

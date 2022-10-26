@@ -9,8 +9,8 @@ SECTION "bank04", ROMX[$4000], BANK[$04]
 ;@call_to_bank_jumptable amount=7
     call_to_bank_target call_04_4090                   ;; 04:4000 pP
     call_to_bank_target spawnBoss                      ;; 04:4002 pP
-    call_to_bank_target call_04_4425                   ;; 04:4004 ??
-    call_to_bank_target call_04_45fa                   ;; 04:4006 pP
+    call_to_bank_target bossClearStatsObjects          ;; 04:4004 ??
+    call_to_bank_target bossTakeDamage                 ;; 04:4006 pP
     call_to_bank_target call_04_4735                   ;; 04:4008 ??
     call_to_bank_target bossCollisionHandling          ;; 04:400a pP
     call_to_bank_target call_04_400e                   ;; 04:400c pP
@@ -137,7 +137,7 @@ call_04_40a4:
     cp   A, $ff                                        ;; 04:40b6 $fe $ff
     call Z, call_04_4209                               ;; 04:40b8 $cc $09 $42
     jr   Z, .jr_04_40f1                                ;; 04:40bb $28 $34
-    ld   DE, wbossObjectsRuntimeData                   ;; 04:40bd $11 $42 $d4
+    ld   DE, wBossObjectsStatsRuntimeData              ;; 04:40bd $11 $42 $d4
     call call_04_419e                                  ;; 04:40c0 $cd $9e $41
     push AF                                            ;; 04:40c3 $f5
     ld   A, [HL+]                                      ;; 04:40c4 $2a
@@ -194,7 +194,7 @@ call_04_40f3:
     call Z, call_04_4148                               ;; 04:4113 $cc $48 $41
     pop  AF                                            ;; 04:4116 $f1
     ld   B, A                                          ;; 04:4117 $47
-    ld   DE, wbossObjectsRuntimeData                   ;; 04:4118 $11 $42 $d4
+    ld   DE, wBossObjectsStatsRuntimeData              ;; 04:4118 $11 $42 $d4
 .jr_04_411b:
     push BC                                            ;; 04:411b $c5
     ld   B, [HL]                                       ;; 04:411c $46
@@ -288,7 +288,7 @@ call_04_4188:
     push HL                                            ;; 04:4188 $e5
     push AF                                            ;; 04:4189 $f5
     push DE                                            ;; 04:418a $d5
-    ld   HL, wbossObjectsRuntimeData._04               ;; 04:418b $21 $46 $d4
+    ld   HL, wBossObjectsStatsRuntimeData._04          ;; 04:418b $21 $46 $d4
     ld   A, [HL]                                       ;; 04:418e $7e
     add  A, A                                          ;; 04:418f $87
     ld   E, A                                          ;; 04:4190 $5f
@@ -311,7 +311,7 @@ call_04_419e:
     ld   B, A                                          ;; 04:41a5 $47
     ld   A, [wBossIframes]                             ;; 04:41a6 $fa $eb $d3
     cp   A, $00                                        ;; 04:41a9 $fe $00
-    jr   Z, .jr_04_41ad                                ;; 04:41ab $28 $00
+    jr   Z, .nojump                                    ;; 04:41ab $28 $00
 .nojump:
     ld   A, C                                          ;; 04:41ad $79
     and  A, $c0                                        ;; 04:41ae $e6 $c0
@@ -330,7 +330,7 @@ call_04_419e:
 ;@jumptable amount=4
 .data_04_41c5:
     dw   call_04_41cd                                  ;; 04:41c5 pP
-    dw   spawProjectileBoss                            ;; 04:41c7 ??
+    dw   spawnProjectileBoss                           ;; 04:41c7 ??
     dw   runBossDeathScript                            ;; 04:41c9 pP
     dw   call_04_4205                                  ;; 04:41cb ??
 
@@ -526,14 +526,14 @@ setBossMovement:
 
 call_04_42e6:
     ld   B, $0e                                        ;; 04:42e6 $06 $0e
-    ld   HL, wbossObjectsRuntimeData                   ;; 04:42e8 $21 $42 $d4
+    ld   HL, wBossObjectsStatsRuntimeData              ;; 04:42e8 $21 $42 $d4
     ld   DE, $06                                       ;; 04:42eb $11 $06 $00
 .loop:
     cp   A, [HL]                                       ;; 04:42ee $be
     ret  Z                                             ;; 04:42ef $c8
     add  HL, DE                                        ;; 04:42f0 $19
     dec  B                                             ;; 04:42f1 $05
-    jr   NZ, .jr_04_42ee                               ;; 04:42f2 $20 $fa
+    jr   NZ, call_04_42e6.loop                         ;; 04:42f2 $20 $fa
     xor  A, A                                          ;; 04:42f4 $af
     inc  A                                             ;; 04:42f5 $3c
     ret                                                ;; 04:42f6 $c9
@@ -558,7 +558,7 @@ spawnBoss:
     ld   E, L                                          ;; 04:430e $5d
     call bossLoadProjectile                            ;; 04:430f $cd $73 $43
     call bossCreateObjects                             ;; 04:4312 $cd $cd $43
-    call call_04_43ff                                  ;; 04:4315 $cd $ff $43
+    call bossInitStatsObjectsRuntimeData               ;; 04:4315 $cd $ff $43
     call rollBossHP                                    ;; 04:4318 $cd $34 $43
     ld   HL, $14                                       ;; 04:431b $21 $14 $00
     add  HL, DE                                        ;; 04:431e $19
@@ -694,7 +694,7 @@ bossCreateObjects:
     inc  HL                                            ;; 04:43d8 $23
     ld   D, [HL]                                       ;; 04:43d9 $56
     ld   C, $20                                        ;; 04:43da $0e $20
-    ld   HL, wbossObjectsRuntimeData                   ;; 04:43dc $21 $42 $d4
+    ld   HL, wBossObjectsStatsRuntimeData              ;; 04:43dc $21 $42 $d4
 .loop:
     push BC                                            ;; 04:43df $c5
     push DE                                            ;; 04:43e0 $d5
@@ -711,9 +711,9 @@ bossCreateObjects:
     pop  DE                                            ;; 04:43f2 $d1
     pop  BC                                            ;; 04:43f3 $c1
     dec  B                                             ;; 04:43f4 $05
-    jr   NZ, .jr_04_43df                               ;; 04:43f5 $20 $e8
+    jr   NZ, bossCreateObjects.loop                    ;; 04:43f5 $20 $e8
     pop  DE                                            ;; 04:43f7 $d1
-    ld   A, [wbossObjectsRuntimeData]                  ;; 04:43f8 $fa $42 $d4
+    ld   A, [wBossObjectsStatsRuntimeData]             ;; 04:43f8 $fa $42 $d4
     ld   [wBossFirstObjectID], A                       ;; 04:43fb $ea $e8 $d3
     ret                                                ;; 04:43fe $c9
 
@@ -727,7 +727,7 @@ bossInitStatsObjectsRuntimeData:
     ld   E, [HL]                                       ;; 04:4409 $5e
     inc  HL                                            ;; 04:440a $23
     ld   D, [HL]                                       ;; 04:440b $56
-    ld   HL, wbossObjectsRuntimeData                   ;; 04:440c $21 $42 $d4
+    ld   HL, wBossObjectsStatsRuntimeData              ;; 04:440c $21 $42 $d4
 .loop:
     inc  HL                                            ;; 04:440f $23
     ld   [HL], E                                       ;; 04:4410 $73
@@ -745,14 +745,14 @@ bossInitStatsObjectsRuntimeData:
     ld   E, L                                          ;; 04:441e $5d
     pop  HL                                            ;; 04:441f $e1
     dec  B                                             ;; 04:4420 $05
-    jr   NZ, .jr_04_440f                               ;; 04:4421 $20 $ec
+    jr   NZ, bossInitStatsObjectsRuntimeData.loop      ;; 04:4421 $20 $ec
     pop  DE                                            ;; 04:4423 $d1
     ret                                                ;; 04:4424 $c9
 
 bossClearStatsObjects:
     ld   A, $ff                                        ;; 04:4425 $3e $ff
     ld   [wBossFirstObjectID], A                       ;; 04:4427 $ea $e8 $d3
-    ld   HL, wbossObjectsRuntimeData                   ;; 04:442a $21 $42 $d4
+    ld   HL, wBossObjectsStatsRuntimeData              ;; 04:442a $21 $42 $d4
     ld   B, $0e                                        ;; 04:442d $06 $0e
 .loop:
     ld   A, [HL]                                       ;; 04:442f $7e
@@ -761,7 +761,7 @@ bossClearStatsObjects:
     push HL                                            ;; 04:4434 $e5
     push BC                                            ;; 04:4435 $c5
     ld   C, A                                          ;; 04:4436 $4f
-    call call_00_0ae3                                  ;; 04:4437 $cd $e3 $0a
+    call destroyObject                                 ;; 04:4437 $cd $e3 $0a
     pop  BC                                            ;; 04:443a $c1
     pop  HL                                            ;; 04:443b $e1
     ld   [HL], $ff                                     ;; 04:443c $36 $ff
@@ -769,7 +769,7 @@ bossClearStatsObjects:
     ld   DE, $06                                       ;; 04:443e $11 $06 $00
     add  HL, DE                                        ;; 04:4441 $19
     dec  B                                             ;; 04:4442 $05
-    jr   NZ, .jr_04_442f                               ;; 04:4443 $20 $ea
+    jr   NZ, bossClearStatsObjects.loop                ;; 04:4443 $20 $ea
     ret                                                ;; 04:4445 $c9
 
 bossCollisionHandling:
@@ -846,9 +846,9 @@ bossCollisionHandling:
     pop  BC                                            ;; 04:44c4 $c1
     set  7, H                                          ;; 04:44c5 $cb $fc
     ld   A, H                                          ;; 04:44c7 $7c
-    ld   [wD3F3], A                                    ;; 04:44c8 $ea $f3 $d3
+    ld   [wDamageDoneToBoss.high], A                   ;; 04:44c8 $ea $f3 $d3
     ld   A, L                                          ;; 04:44cb $7d
-    ld   [wD3F2], A                                    ;; 04:44cc $ea $f2 $d3
+    ld   [wDamageDoneToBoss], A                        ;; 04:44cc $ea $f2 $d3
     call processHitBoss                                ;; 04:44cf $cd $28 $47
     ret                                                ;; 04:44d2 $c9
 .spell:
@@ -878,9 +878,9 @@ bossCollisionHandling:
     pop  BC                                            ;; 04:44ff $c1
     jr   Z, bossCollisionHandling.immune               ;; 04:4500 $28 $52
     ld   A, H                                          ;; 04:4502 $7c
-    ld   [wD3F3], A                                    ;; 04:4503 $ea $f3 $d3
+    ld   [wDamageDoneToBoss.high], A                   ;; 04:4503 $ea $f3 $d3
     ld   A, L                                          ;; 04:4506 $7d
-    ld   [wD3F2], A                                    ;; 04:4507 $ea $f2 $d3
+    ld   [wDamageDoneToBoss], A                        ;; 04:4507 $ea $f2 $d3
     call processHitBoss                                ;; 04:450a $cd $28 $47
     ret                                                ;; 04:450d $c9
 .followerAttack:
@@ -919,17 +919,17 @@ bossCollisionHandling:
     jp   Z, bossCollisionHandling.immune               ;; 04:4543 $ca $54 $45
     set  7, H                                          ;; 04:4546 $cb $fc
     ld   A, H                                          ;; 04:4548 $7c
-    ld   [wD3F3], A                                    ;; 04:4549 $ea $f3 $d3
+    ld   [wDamageDoneToBoss.high], A                   ;; 04:4549 $ea $f3 $d3
     ld   A, L                                          ;; 04:454c $7d
-    ld   [wD3F2], A                                    ;; 04:454d $ea $f2 $d3
+    ld   [wDamageDoneToBoss], A                        ;; 04:454d $ea $f2 $d3
     call processHitBoss                                ;; 04:4550 $cd $28 $47
     ret                                                ;; 04:4553 $c9
 .immune:
     ld   HL, $00                                       ;; 04:4554 $21 $00 $00
     ld   A, H                                          ;; 04:4557 $7c
-    ld   [wD3F3], A                                    ;; 04:4558 $ea $f3 $d3
+    ld   [wDamageDoneToBoss.high], A                   ;; 04:4558 $ea $f3 $d3
     ld   A, L                                          ;; 04:455b $7d
-    ld   [wD3F2], A                                    ;; 04:455c $ea $f2 $d3
+    ld   [wDamageDoneToBoss], A                        ;; 04:455c $ea $f2 $d3
     ld   A, $15                                        ;; 04:455f $3e $15
     call playSFX                                       ;; 04:4561 $cd $7d $29
     ld   A, $40                                        ;; 04:4564 $3e $40
@@ -937,9 +937,9 @@ bossCollisionHandling:
 .jr_04_4567:
     ld   HL, $00                                       ;; 04:4567 $21 $00 $00
     ld   A, H                                          ;; 04:456a $7c
-    ld   [wD3F3], A                                    ;; 04:456b $ea $f3 $d3
+    ld   [wDamageDoneToBoss.high], A                   ;; 04:456b $ea $f3 $d3
     ld   A, L                                          ;; 04:456e $7d
-    ld   [wD3F2], A                                    ;; 04:456f $ea $f2 $d3
+    ld   [wDamageDoneToBoss], A                        ;; 04:456f $ea $f2 $d3
     ld   A, $00                                        ;; 04:4572 $3e $00
     ret                                                ;; 04:4574 $c9
 
@@ -958,7 +958,7 @@ processBossDeath:
     ld   A, [HL]                                       ;; 04:458a $7e
     call add12_5rnd_bank4                              ;; 04:458b $cd $ae $45
     call addMoney                                      ;; 04:458e $cd $72 $3d
-    call call_04_4425                                  ;; 04:4591 $cd $25 $44
+    call bossClearStatsObjects                         ;; 04:4591 $cd $25 $44
     ld   A, $d0                                        ;; 04:4594 $3e $d0
     ld   [wVideoOBP1], A                               ;; 04:4596 $ea $ac $c0
     xor  A, A                                          ;; 04:4599 $af
@@ -1017,16 +1017,16 @@ call_04_45c9:
     ret                                                ;; 04:45f9 $c9
 
 bossTakeDamage:
-    ld   A, [wD3F3]                                    ;; 04:45fa $fa $f3 $d3
+    ld   A, [wDamageDoneToBoss.high]                   ;; 04:45fa $fa $f3 $d3
     ld   H, A                                          ;; 04:45fd $67
-    ld   A, [wD3F2]                                    ;; 04:45fe $fa $f2 $d3
+    ld   A, [wDamageDoneToBoss]                        ;; 04:45fe $fa $f2 $d3
     ld   L, A                                          ;; 04:4601 $6f
     res  7, H                                          ;; 04:4602 $cb $bc
     ld   BC, $00                                       ;; 04:4604 $01 $00 $00
     ld   A, B                                          ;; 04:4607 $78
-    ld   [wD3F3], A                                    ;; 04:4608 $ea $f3 $d3
+    ld   [wDamageDoneToBoss.high], A                   ;; 04:4608 $ea $f3 $d3
     ld   A, C                                          ;; 04:460b $79
-    ld   [wD3F2], A                                    ;; 04:460c $ea $f2 $d3
+    ld   [wDamageDoneToBoss], A                        ;; 04:460c $ea $f2 $d3
     ld   A, H                                          ;; 04:460f $7c
     or   A, L                                          ;; 04:4610 $b5
     ret  Z                                             ;; 04:4611 $c8
@@ -1144,7 +1144,7 @@ call_04_469b:
     jr   C, .jr_04_46c1                                ;; 04:46a0 $38 $1f
     ret  Z                                             ;; 04:46a2 $c8
     push HL                                            ;; 04:46a3 $e5
-    ld   A, [wCF63]                                    ;; 04:46a4 $fa $63 $cf
+    ld   A, [wCurrentPlayerAttackWillCharge]           ;; 04:46a4 $fa $63 $cf
     push HL                                            ;; 04:46a7 $e5
     call MultiplyHL_by_A                               ;; 04:46a8 $cd $7b $2b
     ld   D, $00                                        ;; 04:46ab $16 $00
@@ -1171,7 +1171,7 @@ call_04_46c6:
     jr   C, .jr_04_46f1                                ;; 04:46cb $38 $24
     ret  Z                                             ;; 04:46cd $c8
     push HL                                            ;; 04:46ce $e5
-    ld   A, [wCF63]                                    ;; 04:46cf $fa $63 $cf
+    ld   A, [wCurrentPlayerAttackWillCharge]           ;; 04:46cf $fa $63 $cf
     cp   A, $40                                        ;; 04:46d2 $fe $40
     jr   NZ, .jr_04_46d7                               ;; 04:46d4 $20 $01
     add  HL, HL                                        ;; 04:46d6 $29

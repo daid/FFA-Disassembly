@@ -7,17 +7,17 @@ INCLUDE "include/constants.inc"
 
 SECTION "bank03", ROMX[$4000], BANK[$03]
 ;@call_to_bank_jumptable
-    call_to_bank_target checkObjectCollisions          ;; 03:4000 pP
+    call_to_bank_target npcRunBehaviorForAll           ;; 03:4000 pP
     call_to_bank_target call_03_4af5                   ;; 03:4002 pP
     call_to_bank_target spawnNPC                       ;; 03:4004 pP
-    call_to_bank_target call_03_435f                   ;; 03:4006 pP
+    call_to_bank_target destroyNPC                     ;; 03:4006 pP
     call_to_bank_target spawnNpcsFromTable             ;; 03:4008 pP
     call_to_bank_target setNpcSpawnTable               ;; 03:400a pP
     call_to_bank_target setHLToZero_3                  ;; 03:400c ??
     call_to_bank_target enemyCollisionHandling         ;; 03:400e pP
     call_to_bank_target call_03_4561                   ;; 03:4010 pP
     call_to_bank_target damageNpc                      ;; 03:4012 ??
-    call_to_bank_target call_03_4b70                   ;; 03:4014 pP
+    call_to_bank_target objectBehaviorMove             ;; 03:4014 pP
     call_to_bank_target call_03_4aed                   ;; 03:4016 pP
     call_to_bank_target updateObjectPosition_3         ;; 03:4018 pP
     call_to_bank_target call_03_4af9                   ;; 03:401a pP
@@ -26,7 +26,7 @@ SECTION "bank03", ROMX[$4000], BANK[$03]
     call_to_bank_target inflictVulnerableNpcsSlep      ;; 03:4020 ??
     call_to_bank_target inflictVulnerableNpcsMute      ;; 03:4022 ??
     call_to_bank_target call_03_4b62                   ;; 03:4024 pP
-    call_to_bank_target call_03_4c30                   ;; 03:4026 pP
+    call_to_bank_target runRoomScriptIfAllEnemiesDefeated ;; 03:4026 pP
     call_to_bank_target call_03_4c38                   ;; 03:4028 pP
     call_to_bank_target getNpcScriptIndex              ;; 03:402a pP
 
@@ -44,7 +44,7 @@ npcRunBehaviorForAll:
     push HL                                            ;; 03:403a $e5
     ld   A, [HL]                                       ;; 03:403b $7e
     cp   A, $ff                                        ;; 03:403c $fe $ff
-    call NZ, call_03_404a                              ;; 03:403e $c4 $4a $40
+    call NZ, npcRunBehavior                            ;; 03:403e $c4 $4a $40
     pop  HL                                            ;; 03:4041 $e1
     pop  BC                                            ;; 03:4042 $c1
     dec  B                                             ;; 03:4043 $05
@@ -154,7 +154,7 @@ jr_03_40c7:
     pop  AF                                            ;; 03:40d0 $f1
     pop  DE                                            ;; 03:40d1 $d1
     push DE                                            ;; 03:40d2 $d5
-    ld   HL, data_03_4c55                              ;; 03:40d3 $21 $55 $4c
+    ld   HL, npcBehaviorJumptable                      ;; 03:40d3 $21 $55 $4c
     call callJumptable                                 ;; 03:40d6 $cd $70 $2b
     pop  DE                                            ;; 03:40d9 $d1
     push DE                                            ;; 03:40da $d5
@@ -665,7 +665,7 @@ destroyNPC:
     call runScriptByIndex                              ;; 03:43a4 $cd $ad $31
     pop  BC                                            ;; 03:43a7 $c1
 .jr_03_43a8:
-    call call_00_0ae3                                  ;; 03:43a8 $cd $e3 $0a
+    call destroyObject                                 ;; 03:43a8 $cd $e3 $0a
     pop  HL                                            ;; 03:43ab $e1
     inc  HL                                            ;; 03:43ac $23
     ld   A, $00                                        ;; 03:43ad $3e $00
@@ -684,7 +684,7 @@ giveFollower:
     push DE                                            ;; 03:43ce $d5
     ld   A, [wNpcRuntimeData]                          ;; 03:43cf $fa $e0 $c4
     ld   C, A                                          ;; 03:43d2 $4f
-    call call_03_435f                                  ;; 03:43d3 $cd $5f $43
+    call destroyNPC                                    ;; 03:43d3 $cd $5f $43
     pop  DE                                            ;; 03:43d6 $d1
     pop  BC                                            ;; 03:43d7 $c1
     call spawnNPC                                      ;; 03:43d8 $cd $bd $42
@@ -1521,7 +1521,7 @@ processNpcDeath:
     call getObjectNearestTilePosition                  ;; 03:48a6 $cd $ef $05
     pop  BC                                            ;; 03:48a9 $c1
     push DE                                            ;; 03:48aa $d5
-    call call_03_435f                                  ;; 03:48ab $cd $5f $43
+    call destroyNPC                                    ;; 03:48ab $cd $5f $43
     pop  DE                                            ;; 03:48ae $d1
     pop  AF                                            ;; 03:48af $f1
     ld   C, A                                          ;; 03:48b0 $4f
@@ -1532,7 +1532,7 @@ processNpcDeath:
 .jp_03_48b6:
     pop  DE                                            ;; 03:48b6 $d1
     pop  BC                                            ;; 03:48b7 $c1
-    call call_03_435f                                  ;; 03:48b8 $cd $5f $43
+    call destroyNPC                                    ;; 03:48b8 $cd $5f $43
     ret                                                ;; 03:48bb $c9
 
 ; HL = A + ((A * RND()) >> 11)
@@ -1724,7 +1724,7 @@ call_03_499b:
     jr   C, .jr_03_49c1                                ;; 03:49a0 $38 $1f
     ret  Z                                             ;; 03:49a2 $c8
     push HL                                            ;; 03:49a3 $e5
-    ld   A, [wCF63]                                    ;; 03:49a4 $fa $63 $cf
+    ld   A, [wCurrentPlayerAttackWillCharge]           ;; 03:49a4 $fa $63 $cf
     push HL                                            ;; 03:49a7 $e5
     call MultiplyHL_by_A                               ;; 03:49a8 $cd $7b $2b
     ld   D, $00                                        ;; 03:49ab $16 $00
@@ -1751,7 +1751,7 @@ call_03_49c6:
     jr   C, .jr_03_49f1                                ;; 03:49cb $38 $24
     ret  Z                                             ;; 03:49cd $c8
     push HL                                            ;; 03:49ce $e5
-    ld   A, [wCF63]                                    ;; 03:49cf $fa $63 $cf
+    ld   A, [wCurrentPlayerAttackWillCharge]           ;; 03:49cf $fa $63 $cf
     cp   A, $40                                        ;; 03:49d2 $fe $40
     jr   NZ, .jr_03_49d7                               ;; 03:49d4 $20 $01
     add  HL, HL                                        ;; 03:49d6 $29
@@ -2013,7 +2013,7 @@ call_03_4b19:
     push HL                                            ;; 03:4b33 $e5
     ld   H, D                                          ;; 03:4b34 $62
     ld   L, E                                          ;; 03:4b35 $6b
-    call call_03_404a                                  ;; 03:4b36 $cd $4a $40
+    call npcRunBehavior                                ;; 03:4b36 $cd $4a $40
     pop  HL                                            ;; 03:4b39 $e1
     ld   A, [HL]                                       ;; 03:4b3a $7e
     cp   A, $00                                        ;; 03:4b3b $fe $00
@@ -2065,7 +2065,7 @@ objectBehaviorMove:
     push AF                                            ;; 03:4b70 $f5
     ld   A, C                                          ;; 03:4b71 $79
     cp   A, $ff                                        ;; 03:4b72 $fe $ff
-    jr   Z, .jr_03_4bb5                                ;; 03:4b74 $28 $3f
+    jr   Z, .player                                    ;; 03:4b74 $28 $3f
     ld   L, A                                          ;; 03:4b76 $6f
     add  A, L                                          ;; 03:4b77 $85
     add  A, L                                          ;; 03:4b78 $85
@@ -2196,7 +2196,7 @@ call_03_4be0:
 runRoomScriptIfAllEnemiesDefeated:
     call call_03_4be0                                  ;; 03:4c30 $cd $e0 $4b
     ret  NZ                                            ;; 03:4c33 $c0
-    call runRoomScriptOnAllEnemiesDefeat               ;; 03:4c34 $cd $a7 $24
+    call runRoomScriptOnAllEnemiesDefeated             ;; 03:4c34 $cd $a7 $24
     ret                                                ;; 03:4c37 $c9
 
 call_03_4c38:
@@ -2222,8 +2222,8 @@ npcBehaviorJumptable:
     dw   call_03_4e7c                                  ;; 03:4c57 pP
     dw   call_03_4ec9                                  ;; 03:4c59 pP
     dw   call_03_4ef0                                  ;; 03:4c5b pP
-    dw   call_03_4f07                                  ;; 03:4c5d pP
-    dw   call_03_4f1d                                  ;; 03:4c5f pP
+    dw   npcStepForward                                ;; 03:4c5d pP
+    dw   npcStepBackward                               ;; 03:4c5f pP
     dw   call_03_4f4d                                  ;; 03:4c61 pP
     dw   call_03_4f5a                                  ;; 03:4c63 pP
     dw   call_03_4f67                                  ;; 03:4c65 pP
@@ -2232,8 +2232,8 @@ npcBehaviorJumptable:
     dw   call_03_4fa3                                  ;; 03:4c6b pP
     dw   call_03_4fbe                                  ;; 03:4c6d ??
     dw   call_03_4fd9                                  ;; 03:4c6f ??
-    dw   call_03_4ff4                                  ;; 03:4c71 pP
-    dw   call_03_4ffd                                  ;; 03:4c73 pP
+    dw   npcWalkSpeed4                                 ;; 03:4c71 pP
+    dw   npcWalkSpeedDefault                           ;; 03:4c73 pP
     dw   call_03_500d                                  ;; 03:4c75 pP
     dw   call_03_5019                                  ;; 03:4c77 pP
     dw   call_03_5025                                  ;; 03:4c79 ??
@@ -2246,10 +2246,10 @@ npcBehaviorJumptable:
     dw   call_03_4eb3                                  ;; 03:4c87 ??
     dw   call_03_4eb3                                  ;; 03:4c89 ??
     dw   call_03_4eb5                                  ;; 03:4c8b ??
-    dw   call_03_5055                                  ;; 03:4c8d pP
-    dw   call_03_505f                                  ;; 03:4c8f pP
-    dw   call_03_5069                                  ;; 03:4c91 pP
-    dw   call_03_5073                                  ;; 03:4c93 pP
+    dw   npcFaceEast                                   ;; 03:4c8d pP
+    dw   npcFaceWest                                   ;; 03:4c8f pP
+    dw   npcFaceNorth                                  ;; 03:4c91 pP
+    dw   npcFaceSouth                                  ;; 03:4c93 pP
     dw   call_03_507d                                  ;; 03:4c95 pP
     dw   call_03_5092                                  ;; 03:4c97 ??
     dw   call_03_50a7                                  ;; 03:4c99 pP
@@ -2556,7 +2556,7 @@ call_03_4eb5:
     ret                                                ;; 03:4ec8 $c9
 
 call_03_4ec9:
-    call call_00_27ba                                  ;; 03:4ec9 $cd $ba $27
+    call npcSpawnProjectile                            ;; 03:4ec9 $cd $ba $27
     ret  Z                                             ;; 03:4ecc $c8
     ld   HL, $04                                       ;; 03:4ecd $21 $04 $00
     add  HL, DE                                        ;; 03:4ed0 $19

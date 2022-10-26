@@ -173,7 +173,7 @@ scriptOpcodeTable:
     dw   scriptOpCodeNOP                               ;; 02:46c4 ??
     dw   scriptOpCodeNOP                               ;; 02:46c6 ??
     dw   scriptOpCodeCheckIfCanOpenMap                 ;; 02:46c8 pP
-    dw   scriptOpCodeAA                                ;; 02:46ca ??
+    dw   scriptOpCodeClearPlayerAttack                 ;; 02:46ca ??
     dw   scriptOpCodeClearRoomHistory                  ;; 02:46cc pP
     dw   scriptOpCodeOpenMap                           ;; 02:46ce pP
     dw   scriptOpCodeWaitMapClose                      ;; 02:46d0 pP
