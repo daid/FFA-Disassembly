@@ -16,7 +16,7 @@ def music_pointers(memory, addr, *, amount):
                 params += f"\ndb \{idx+1}"
             elif PARAM_SIZE[param] == 2:
                 params += f"\ndw \{idx+1}"
-        RomInfo.macros[v[0]] = f"db ${k:02x}" + params
+        RomInfo.macros[v[0]] = f"db ${(k&0xFF):02x}" + params
 
 
 class MusicPointerBlock(Block):
@@ -28,7 +28,7 @@ class MusicPointerBlock(Block):
                 pointer = memory.word(addr + song_nr * 6 + channel_nr * 2)
                 if memory.getLabel(pointer) is None:
                     memory.addLabel(pointer, f"song{song_nr:02x}_channel{[2,1,3][channel_nr]}")
-                MusicBlock(memory, pointer)
+                MusicBlock(memory, pointer, channel_nr=channel_nr)
 
     def export(self, file):
         for n in range(len(self) // 6):
@@ -42,7 +42,8 @@ class MusicPointerBlock(Block):
             file.asmLine(6, "dw", str(label2), str(label1), str(label3))
 
 OPCODES = {
-    0xE0: ("mUNK_E0", "byte"),
+    0xE0: ("mUNK_E0", "ptr"),
+    0x3E0: ("mUNK3_E0", "byte"), # Special exception for channel 3 E0
     0xE1: ("mUNK_E1", "mptr"),
     0xE2: ("mUNK_E2", "mptr"),
     0xE3: ("mUNK_E3", "byte"),
@@ -57,21 +58,24 @@ OPCODES = {
 PARAM_SIZE = {"byte": 1, "ptr": 2, "mptr": 2}
 
 class MusicBlock(Block):
-    def __init__(self, memory, addr):
+    def __init__(self, memory, addr, *, channel_nr):
         super().__init__(memory, addr)
+        self.channel_nr = channel_nr
 
         while True:
             if memory[addr + len(self)] is not None:
                 break
             size = 1
             opcode = memory.byte(addr + len(self))
+            if opcode == 0xE0 and channel_nr == 2:
+                opcode = 0x3E0
             opcode_data = OPCODES.get(opcode)
             if opcode_data:
                 for param in opcode_data[1:]:
                     if param == "mptr":
                         target = memory.word(addr + len(self) + size)
                         memory.addAutoLabel(target, addr + len(self), "data")
-                        MusicBlock(memory, target)
+                        MusicBlock(memory, target, channel_nr=channel_nr)
                     if param == "ptr":
                         target = memory.word(addr + len(self) + size)
                         if 0x4000 <= target < 0x8000:
@@ -87,7 +91,10 @@ class MusicBlock(Block):
             self.outputOpcode(file)
 
     def outputOpcode(self, file):
-        opcode = OPCODES.get(self.memory.byte(file.addr))
+        opcode = self.memory.byte(file.addr)
+        if opcode == 0xE0 and self.channel_nr == 2:
+            opcode = 0x3E0
+        opcode = OPCODES.get(opcode)
         if opcode is None:
             file.asmLine(1, "db", f"${self.memory.byte(file.addr):02X}", comment="unknown music opcode")
             return
