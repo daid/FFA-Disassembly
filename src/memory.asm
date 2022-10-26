@@ -369,10 +369,9 @@ wMapTableBankNr:
 wScriptDarknessEffect:
     ds 1                                               ;; c3f1
 
-wMapTablePointerLow:
+wMapTablePointer:
     ds 1                                               ;; c3f2
-
-wMapTablePointerHigh:
+.high:
     ds 1                                               ;; c3f3
 
 ; bit 0 east, bit 1 west, bit 2 north, bit 3 south.
@@ -796,10 +795,9 @@ wMapWidthTmp:
 wMapTableBankNrTmp:
     ds 1                                               ;; d4a0
 
-wD4A1:
+wDynamicMinimapMapTablePointer:
     ds 1                                               ;; d4a1
-
-wD4A2:
+.high:
     ds 1                                               ;; d4a2
 
 ; Used while afflicted with Pois, Dark, Ston, or Moog
