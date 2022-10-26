@@ -1579,8 +1579,7 @@ musicSongChannelPointers:
 song00_Channel2:
     mUNK_E7 $41                                        ;; 0f:4ac9 $e7 $41
     mUNK_E4 frequencyDeltaData                         ;; 0f:4acb $e4 $4f $7a
-    mUNK_E0 $82                                        ;; 0f:4ace $e0 $82
-    db   $7A                                           ;; 0f:4ad0 $7a unknown music opcode
+    mUNK_E0 volumeEnvelopeData                         ;; 0f:4ace $e0 $82 $7a
     mUNK_E5 $80                                        ;; 0f:4ad1 $e5 $80
     mUNK_E6 $03                                        ;; 0f:4ad3 $e6 $03
 .data_0f_4ad5:
@@ -1634,8 +1633,7 @@ song00_Channel2:
 
 song00_Channel1:
     mUNK_E4 frequencyDeltaData.fifth                   ;; 0f:4b0a $e4 $75 $7a
-    mUNK_E0 $c8                                        ;; 0f:4b0d $e0 $c8
-    db   $7A                                           ;; 0f:4b0f $7a unknown music opcode
+    mUNK_E0 data_0f_7ac8                               ;; 0f:4b0d $e0 $c8 $7a
     mUNK_E5 $40                                        ;; 0f:4b10 $e5 $40
     mUNK_E6 $02                                        ;; 0f:4b12 $e6 $02
 .data_0f_4b14:
@@ -1737,7 +1735,7 @@ song00_Channel1:
 song00_Channel3:
     mUNK_E4 frequencyDeltaData.fifth                   ;; 0f:4b7e $e4 $75 $7a
     mUNK_E8 data_0f_7adc                               ;; 0f:4b81 $e8 $dc $7a
-    mUNK_E0 $40                                        ;; 0f:4b84 $e0 $40
+    mUNK3_E0 $40                                       ;; 0f:4b84 $e0 $40
     mUNK_E6 $03                                        ;; 0f:4b86 $e6 $03
 .data_0f_4b88:
     mUNK_E3 $02                                        ;; 0f:4b88 $e3 $02
@@ -1789,8 +1787,7 @@ song00_Channel3:
 song01_channel2:
     mUNK_E7 $4b                                        ;; 0f:4bb9 $e7 $4b
     mUNK_E4 frequencyDeltaData                         ;; 0f:4bbb $e4 $4f $7a
-    mUNK_E0 $82                                        ;; 0f:4bbe $e0 $82
-    db   $7A                                           ;; 0f:4bc0 $7a unknown music opcode
+    mUNK_E0 volumeEnvelopeData                         ;; 0f:4bbe $e0 $82 $7a
     mUNK_E5 $80                                        ;; 0f:4bc1 $e5 $80
     mUNK_E6 $03                                        ;; 0f:4bc3 $e6 $03
     db   $D2                                           ;; 0f:4bc5 $d2 unknown music opcode
@@ -1869,8 +1866,7 @@ song01_channel2:
 
 song01_channel1:
     mUNK_E4 frequencyDeltaData.fifth                   ;; 0f:4c0f $e4 $75 $7a
-    mUNK_E0 $c8                                        ;; 0f:4c12 $e0 $c8
-    db   $7A                                           ;; 0f:4c14 $7a unknown music opcode
+    mUNK_E0 data_0f_7ac8                               ;; 0f:4c12 $e0 $c8 $7a
     mUNK_E5 $00                                        ;; 0f:4c15 $e5 $00
     mUNK_E6 $03                                        ;; 0f:4c17 $e6 $03
     db   $2F                                           ;; 0f:4c19 $2f unknown music opcode
@@ -1997,7 +1993,7 @@ song01_channel1:
 song01_channel3:
     mUNK_E4 frequencyDeltaData                         ;; 0f:4c92 $e4 $4f $7a
     mUNK_E8 data_0f_7adc                               ;; 0f:4c95 $e8 $dc $7a
-    mUNK_E0 $40                                        ;; 0f:4c98 $e0 $40
+    mUNK3_E0 $40                                       ;; 0f:4c98 $e0 $40
     mUNK_E6 $03                                        ;; 0f:4c9a $e6 $03
     db   $2F                                           ;; 0f:4c9c $2f unknown music opcode
     db   $D2                                           ;; 0f:4c9d $d2 unknown music opcode
@@ -2038,8 +2034,7 @@ song01_channel3:
 song02_channel2:
     mUNK_E7 $39                                        ;; 0f:4cc1 $e7 $39
     mUNK_E4 frequencyDeltaData                         ;; 0f:4cc3 $e4 $4f $7a
-    mUNK_E0 $82                                        ;; 0f:4cc6 $e0 $82
-    db   $7A                                           ;; 0f:4cc8 $7a unknown music opcode
+    mUNK_E0 volumeEnvelopeData                         ;; 0f:4cc6 $e0 $82 $7a
     mUNK_E5 $80                                        ;; 0f:4cc9 $e5 $80
     mUNK_E6 $03                                        ;; 0f:4ccb $e6 $03
     db   $D2                                           ;; 0f:4ccd $d2 unknown music opcode
@@ -2106,8 +2101,7 @@ song02_channel2:
 
 song02_channel1:
     mUNK_E4 frequencyDeltaData                         ;; 0f:4d0d $e4 $4f $7a
-    mUNK_E0 $c4                                        ;; 0f:4d10 $e0 $c4
-    db   $7A                                           ;; 0f:4d12 $7a unknown music opcode
+    mUNK_E0 data_0f_7ac4                               ;; 0f:4d10 $e0 $c4 $7a
     mUNK_E5 $80                                        ;; 0f:4d13 $e5 $80
     mUNK_E6 $03                                        ;; 0f:4d15 $e6 $03
     db   $D3                                           ;; 0f:4d17 $d3 unknown music opcode
@@ -2131,8 +2125,7 @@ song02_channel1:
     db   $8D                                           ;; 0f:4d29 $8d unknown music opcode
     db   $DC                                           ;; 0f:4d2a $dc unknown music opcode
 .data_0f_4d2b:
-    mUNK_E0 $c8                                        ;; 0f:4d2b $e0 $c8
-    db   $7A                                           ;; 0f:4d2d $7a unknown music opcode
+    mUNK_E0 data_0f_7ac8                               ;; 0f:4d2b $e0 $c8 $7a
     mUNK_E5 $00                                        ;; 0f:4d2e $e5 $00
     mUNK_E6 $02                                        ;; 0f:4d30 $e6 $02
     db   $8F                                           ;; 0f:4d32 $8f unknown music opcode
@@ -2212,8 +2205,7 @@ song02_channel1:
 song02_channel3:
     mUNK_E4 frequencyDeltaData                         ;; 0f:4d83 $e4 $4f $7a
     mUNK_E8 data_0f_7adc                               ;; 0f:4d86 $e8 $dc $7a
-    mUNK_E0 $40                                        ;; 0f:4d89 $e0 $40
-    db   $D2                                           ;; 0f:4d8b $d2 unknown music opcode
+    mUNK_E0 $d240                                      ;; 0f:4d89 $e0 $40 $d2
     db   $0F                                           ;; 0f:4d8c $0f unknown music opcode
     db   $0F                                           ;; 0f:4d8d $0f unknown music opcode
 .data_0f_4d8e:
@@ -2248,8 +2240,7 @@ song03_channel2:
     mUNK_E7 $3e                                        ;; 0f:4daf $e7 $3e
     mUNK_E4 frequencyDeltaData                         ;; 0f:4db1 $e4 $4f $7a
 .data_0f_4db4:
-    mUNK_E0 $82                                        ;; 0f:4db4 $e0 $82
-    db   $7A                                           ;; 0f:4db6 $7a unknown music opcode
+    mUNK_E0 volumeEnvelopeData                         ;; 0f:4db4 $e0 $82 $7a
     mUNK_E5 $40                                        ;; 0f:4db7 $e5 $40
     mUNK_E6 $03                                        ;; 0f:4db9 $e6 $03
     db   $D3                                           ;; 0f:4dbb $d3 unknown music opcode
@@ -2302,8 +2293,7 @@ song03_channel2:
 song03_channel1:
     mUNK_E4 frequencyDeltaData                         ;; 0f:4deb $e4 $4f $7a
 .data_0f_4dee:
-    mUNK_E0 $b0                                        ;; 0f:4dee $e0 $b0
-    db   $7A                                           ;; 0f:4df0 $7a unknown music opcode
+    mUNK_E0 data_0f_7ab0                               ;; 0f:4dee $e0 $b0 $7a
     mUNK_E5 $40                                        ;; 0f:4df1 $e5 $40
     mUNK_E6 $02                                        ;; 0f:4df3 $e6 $02
     db   $8F                                           ;; 0f:4df5 $8f unknown music opcode
@@ -2368,7 +2358,7 @@ song03_channel1:
 song03_channel3:
     mUNK_E4 frequencyDeltaData                         ;; 0f:4e33 $e4 $4f $7a
     mUNK_E8 wavePatternsData                           ;; 0f:4e36 $e8 $cc $7a
-    mUNK_E0 $40                                        ;; 0f:4e39 $e0 $40
+    mUNK3_E0 $40                                       ;; 0f:4e39 $e0 $40
     mUNK_E6 $03                                        ;; 0f:4e3b $e6 $03
 .data_0f_4e3d:
     db   $D2                                           ;; 0f:4e3d $d2 unknown music opcode
@@ -2405,8 +2395,7 @@ song03_channel3:
 song04_channel2:
     mUNK_E7 $7c                                        ;; 0f:4e5e $e7 $7c
     mUNK_E4 frequencyDeltaData.third                   ;; 0f:4e60 $e4 $63 $7a
-    mUNK_E0 $8c                                        ;; 0f:4e63 $e0 $8c
-    db   $7A                                           ;; 0f:4e65 $7a unknown music opcode
+    mUNK_E0 data_0f_7a8c                               ;; 0f:4e63 $e0 $8c $7a
     mUNK_E5 $00                                        ;; 0f:4e66 $e5 $00
     mUNK_E6 $03                                        ;; 0f:4e68 $e6 $03
     db   $0F                                           ;; 0f:4e6a $0f unknown music opcode
@@ -2420,11 +2409,9 @@ song04_channel2:
     db   $AF                                           ;; 0f:4e71 $af unknown music opcode
     db   $A7                                           ;; 0f:4e72 $a7 unknown music opcode
     db   $AF                                           ;; 0f:4e73 $af unknown music opcode
-    mUNK_E0 $c2                                        ;; 0f:4e74 $e0 $c2
-    db   $7A                                           ;; 0f:4e76 $7a unknown music opcode
+    mUNK_E0 data_0f_7ac2                               ;; 0f:4e74 $e0 $c2 $7a
     db   $05                                           ;; 0f:4e77 $05 unknown music opcode
-    mUNK_E0 $94                                        ;; 0f:4e78 $e0 $94
-    db   $7A                                           ;; 0f:4e7a $7a unknown music opcode
+    mUNK_E0 data_0f_7a94                               ;; 0f:4e78 $e0 $94 $7a
     db   $8F                                           ;; 0f:4e7b $8f unknown music opcode
     db   $A2                                           ;; 0f:4e7c $a2 unknown music opcode
     db   $A4                                           ;; 0f:4e7d $a4 unknown music opcode
@@ -2441,11 +2428,9 @@ song04_channel2:
     db   $AF                                           ;; 0f:4e88 $af unknown music opcode
     db   $A7                                           ;; 0f:4e89 $a7 unknown music opcode
     db   $AF                                           ;; 0f:4e8a $af unknown music opcode
-    mUNK_E0 $c2                                        ;; 0f:4e8b $e0 $c2
-    db   $7A                                           ;; 0f:4e8d $7a unknown music opcode
+    mUNK_E0 data_0f_7ac2                               ;; 0f:4e8b $e0 $c2 $7a
     db   $05                                           ;; 0f:4e8e $05 unknown music opcode
-    mUNK_E0 $94                                        ;; 0f:4e8f $e0 $94
-    db   $7A                                           ;; 0f:4e91 $7a unknown music opcode
+    mUNK_E0 data_0f_7a94                               ;; 0f:4e8f $e0 $94 $7a
     db   $8F                                           ;; 0f:4e92 $8f unknown music opcode
     db   $A5                                           ;; 0f:4e93 $a5 unknown music opcode
     db   $A7                                           ;; 0f:4e94 $a7 unknown music opcode
@@ -2459,8 +2444,7 @@ song04_channel2:
 
 song04_channel1:
     mUNK_E4 frequencyDeltaData                         ;; 0f:4e9e $e4 $4f $7a
-    mUNK_E0 $a0                                        ;; 0f:4ea1 $e0 $a0
-    db   $7A                                           ;; 0f:4ea3 $7a unknown music opcode
+    mUNK_E0 data_0f_7aa0                               ;; 0f:4ea1 $e0 $a0 $7a
     mUNK_E5 $00                                        ;; 0f:4ea4 $e5 $00
     mUNK_E6 $03                                        ;; 0f:4ea6 $e6 $03
 .data_0f_4ea8:
@@ -2474,7 +2458,7 @@ song04_channel1:
 song04_channel3:
     mUNK_E4 frequencyDeltaData                         ;; 0f:4eb0 $e4 $4f $7a
     mUNK_E8 data_0f_7aec                               ;; 0f:4eb3 $e8 $ec $7a
-    mUNK_E0 $40                                        ;; 0f:4eb6 $e0 $40
+    mUNK3_E0 $40                                       ;; 0f:4eb6 $e0 $40
     mUNK_E6 $03                                        ;; 0f:4eb8 $e6 $03
 .data_0f_4eba:
     db   $D2                                           ;; 0f:4eba $d2 unknown music opcode
@@ -2511,8 +2495,7 @@ song04_channel3:
 
 song05_channel2:
     mUNK_E4 frequencyDeltaData                         ;; 0f:4edc $e4 $4f $7a
-    mUNK_E0 $82                                        ;; 0f:4edf $e0 $82
-    db   $7A                                           ;; 0f:4ee1 $7a unknown music opcode
+    mUNK_E0 volumeEnvelopeData                         ;; 0f:4edf $e0 $82 $7a
     mUNK_E5 $00                                        ;; 0f:4ee2 $e5 $00
     mUNK_E6 $03                                        ;; 0f:4ee4 $e6 $03
     mUNK_E7 $82                                        ;; 0f:4ee6 $e7 $82
@@ -2704,8 +2687,7 @@ song05_channel2:
 
 song05_channel1:
     mUNK_E4 frequencyDeltaData                         ;; 0f:4fb7 $e4 $4f $7a
-    mUNK_E0 $82                                        ;; 0f:4fba $e0 $82
-    db   $7A                                           ;; 0f:4fbc $7a unknown music opcode
+    mUNK_E0 volumeEnvelopeData                         ;; 0f:4fba $e0 $82 $7a
     mUNK_E5 $00                                        ;; 0f:4fbd $e5 $00
     mUNK_E6 $03                                        ;; 0f:4fbf $e6 $03
     db   $D3                                           ;; 0f:4fc1 $d3 unknown music opcode
@@ -2753,8 +2735,7 @@ song05_channel1:
 .data_0f_4feb:
     mUNK_E3 $08                                        ;; 0f:4feb $e3 $08
 .data_0f_4fed:
-    mUNK_E0 $c8                                        ;; 0f:4fed $e0 $c8
-    db   $7A                                           ;; 0f:4fef $7a unknown music opcode
+    mUNK_E0 data_0f_7ac8                               ;; 0f:4fed $e0 $c8 $7a
     mUNK_E6 $02                                        ;; 0f:4ff0 $e6 $02
     db   $8F                                           ;; 0f:4ff2 $8f unknown music opcode
     db   $A1                                           ;; 0f:4ff3 $a1 unknown music opcode
@@ -2827,7 +2808,7 @@ song05_channel1:
 song05_channel3:
     mUNK_E4 frequencyDeltaData                         ;; 0f:503d $e4 $4f $7a
     mUNK_E8 data_0f_7aec                               ;; 0f:5040 $e8 $ec $7a
-    mUNK_E0 $40                                        ;; 0f:5043 $e0 $40
+    mUNK3_E0 $40                                       ;; 0f:5043 $e0 $40
     mUNK_E6 $03                                        ;; 0f:5045 $e6 $03
     db   $D3                                           ;; 0f:5047 $d3 unknown music opcode
     db   $7B                                           ;; 0f:5048 $7b unknown music opcode
@@ -2945,8 +2926,7 @@ song05_channel3:
 song06_channel2:
     mUNK_E7 $60                                        ;; 0f:50c9 $e7 $60
     mUNK_E4 frequencyDeltaData.fifth                   ;; 0f:50cb $e4 $75 $7a
-    mUNK_E0 $82                                        ;; 0f:50ce $e0 $82
-    db   $7A                                           ;; 0f:50d0 $7a unknown music opcode
+    mUNK_E0 volumeEnvelopeData                         ;; 0f:50ce $e0 $82 $7a
     mUNK_E5 $80                                        ;; 0f:50d1 $e5 $80
     mUNK_E6 $03                                        ;; 0f:50d3 $e6 $03
     db   $D2                                           ;; 0f:50d5 $d2 unknown music opcode
@@ -3075,8 +3055,7 @@ song06_channel2:
 
 song06_channel1:
     mUNK_E4 frequencyDeltaData                         ;; 0f:515b $e4 $4f $7a
-    mUNK_E0 $82                                        ;; 0f:515e $e0 $82
-    db   $7A                                           ;; 0f:5160 $7a unknown music opcode
+    mUNK_E0 volumeEnvelopeData                         ;; 0f:515e $e0 $82 $7a
     mUNK_E5 $80                                        ;; 0f:5161 $e5 $80
     mUNK_E6 $03                                        ;; 0f:5163 $e6 $03
     db   $D1                                           ;; 0f:5165 $d1 unknown music opcode
@@ -3090,8 +3069,7 @@ song06_channel1:
 .data_0f_516d:
     mUNK_E3 $08                                        ;; 0f:516d $e3 $08
 .data_0f_516f:
-    mUNK_E0 $c6                                        ;; 0f:516f $e0 $c6
-    db   $7A                                           ;; 0f:5171 $7a unknown music opcode
+    mUNK_E0 data_0f_7ac6                               ;; 0f:516f $e0 $c6 $7a
     mUNK_E6 $02                                        ;; 0f:5172 $e6 $02
     mUNK_E5 $00                                        ;; 0f:5174 $e5 $00
     db   $A4                                           ;; 0f:5176 $a4 unknown music opcode
@@ -3154,8 +3132,7 @@ song06_channel1:
     db   $A8                                           ;; 0f:51b2 $a8 unknown music opcode
     db   $D8                                           ;; 0f:51b3 $d8 unknown music opcode
     mUNK_E2 .data_0f_516f                              ;; 0f:51b4 $e2 $6f $51
-    mUNK_E0 $82                                        ;; 0f:51b7 $e0 $82
-    db   $7A                                           ;; 0f:51b9 $7a unknown music opcode
+    mUNK_E0 volumeEnvelopeData                         ;; 0f:51b7 $e0 $82 $7a
     db   $5B                                           ;; 0f:51ba $5b unknown music opcode
     db   $5A                                           ;; 0f:51bb $5a unknown music opcode
     db   $59                                           ;; 0f:51bc $59 unknown music opcode
@@ -3182,7 +3159,7 @@ song06_channel1:
 song06_channel3:
     mUNK_E4 frequencyDeltaData                         ;; 0f:51d2 $e4 $4f $7a
     mUNK_E8 data_0f_7adc                               ;; 0f:51d5 $e8 $dc $7a
-    mUNK_E0 $40                                        ;; 0f:51d8 $e0 $40
+    mUNK3_E0 $40                                       ;; 0f:51d8 $e0 $40
     mUNK_E6 $03                                        ;; 0f:51da $e6 $03
     db   $5F                                           ;; 0f:51dc $5f unknown music opcode
 .data_0f_51dd:
@@ -3208,35 +3185,35 @@ song06_channel3:
     db   $8B                                           ;; 0f:51f6 $8b unknown music opcode
     db   $8A                                           ;; 0f:51f7 $8a unknown music opcode
     db   $8B                                           ;; 0f:51f8 $8b unknown music opcode
-    mUNK_E0 $20                                        ;; 0f:51f9 $e0 $20
+    mUNK3_E0 $20                                       ;; 0f:51f9 $e0 $20
     mUNK_E6 $02                                        ;; 0f:51fb $e6 $02
     db   $A0                                           ;; 0f:51fd $a0 unknown music opcode
     db   $AF                                           ;; 0f:51fe $af unknown music opcode
-    mUNK_E0 $40                                        ;; 0f:51ff $e0 $40
+    mUNK3_E0 $40                                       ;; 0f:51ff $e0 $40
     mUNK_E6 $03                                        ;; 0f:5201 $e6 $03
     db   $8C                                           ;; 0f:5203 $8c unknown music opcode
     db   $8B                                           ;; 0f:5204 $8b unknown music opcode
-    mUNK_E0 $20                                        ;; 0f:5205 $e0 $20
+    mUNK3_E0 $20                                       ;; 0f:5205 $e0 $20
     mUNK_E6 $01                                        ;; 0f:5207 $e6 $01
     db   $A0                                           ;; 0f:5209 $a0 unknown music opcode
     db   $AF                                           ;; 0f:520a $af unknown music opcode
-    mUNK_E0 $40                                        ;; 0f:520b $e0 $40
+    mUNK3_E0 $40                                       ;; 0f:520b $e0 $40
     mUNK_E6 $03                                        ;; 0f:520d $e6 $03
     db   $8A                                           ;; 0f:520f $8a unknown music opcode
     db   $8B                                           ;; 0f:5210 $8b unknown music opcode
-    mUNK_E0 $20                                        ;; 0f:5211 $e0 $20
+    mUNK3_E0 $20                                       ;; 0f:5211 $e0 $20
     mUNK_E6 $02                                        ;; 0f:5213 $e6 $02
     db   $A0                                           ;; 0f:5215 $a0 unknown music opcode
     db   $AF                                           ;; 0f:5216 $af unknown music opcode
-    mUNK_E0 $40                                        ;; 0f:5217 $e0 $40
+    mUNK3_E0 $40                                       ;; 0f:5217 $e0 $40
     mUNK_E6 $03                                        ;; 0f:5219 $e6 $03
     db   $8C                                           ;; 0f:521b $8c unknown music opcode
     db   $8B                                           ;; 0f:521c $8b unknown music opcode
-    mUNK_E0 $20                                        ;; 0f:521d $e0 $20
+    mUNK3_E0 $20                                       ;; 0f:521d $e0 $20
     mUNK_E6 $01                                        ;; 0f:521f $e6 $01
     db   $A0                                           ;; 0f:5221 $a0 unknown music opcode
     db   $AF                                           ;; 0f:5222 $af unknown music opcode
-    mUNK_E0 $40                                        ;; 0f:5223 $e0 $40
+    mUNK3_E0 $40                                       ;; 0f:5223 $e0 $40
     mUNK_E6 $03                                        ;; 0f:5225 $e6 $03
     db   $8C                                           ;; 0f:5227 $8c unknown music opcode
     db   $8D                                           ;; 0f:5228 $8d unknown music opcode
@@ -3258,8 +3235,7 @@ song06_channel3:
 song07_channel2:
     mUNK_E4 frequencyDeltaData.fifth                   ;; 0f:523d $e4 $75 $7a
 .data_0f_5240:
-    mUNK_E0 $82                                        ;; 0f:5240 $e0 $82
-    db   $7A                                           ;; 0f:5242 $7a unknown music opcode
+    mUNK_E0 volumeEnvelopeData                         ;; 0f:5240 $e0 $82 $7a
     mUNK_E5 $80                                        ;; 0f:5243 $e5 $80
     mUNK_E6 $03                                        ;; 0f:5245 $e6 $03
     mUNK_E7 $5a                                        ;; 0f:5247 $e7 $5a
@@ -3318,8 +3294,7 @@ song07_channel2:
     db   $DC                                           ;; 0f:5281 $dc unknown music opcode
     db   $AB                                           ;; 0f:5282 $ab unknown music opcode
     mUNK_E7 $6e                                        ;; 0f:5283 $e7 $6e
-    mUNK_E0 $be                                        ;; 0f:5285 $e0 $be
-    db   $7A                                           ;; 0f:5287 $7a unknown music opcode
+    mUNK_E0 data_0f_7abe                               ;; 0f:5285 $e0 $be $7a
     mUNK_E5 $40                                        ;; 0f:5288 $e5 $40
     db   $2A                                           ;; 0f:528a $2a unknown music opcode
     db   $8E                                           ;; 0f:528b $8e unknown music opcode
@@ -3349,8 +3324,7 @@ song07_channel2:
 song07_channel1:
     mUNK_E4 frequencyDeltaData                         ;; 0f:52a6 $e4 $4f $7a
 .data_0f_52a9:
-    mUNK_E0 $c2                                        ;; 0f:52a9 $e0 $c2
-    db   $7A                                           ;; 0f:52ab $7a unknown music opcode
+    mUNK_E0 data_0f_7ac2                               ;; 0f:52a9 $e0 $c2 $7a
     mUNK_E5 $80                                        ;; 0f:52ac $e5 $80
     mUNK_E6 $02                                        ;; 0f:52ae $e6 $02
     db   $D2                                           ;; 0f:52b0 $d2 unknown music opcode
@@ -3451,8 +3425,7 @@ song07_channel1:
     db   $89                                           ;; 0f:530f $89 unknown music opcode
     db   $88                                           ;; 0f:5310 $88 unknown music opcode
     db   $A5                                           ;; 0f:5311 $a5 unknown music opcode
-    mUNK_E0 $c0                                        ;; 0f:5312 $e0 $c0
-    db   $7A                                           ;; 0f:5314 $7a unknown music opcode
+    mUNK_E0 data_0f_7ac0                               ;; 0f:5312 $e0 $c0 $7a
     mUNK_E5 $40                                        ;; 0f:5315 $e5 $40
     mUNK_E6 $03                                        ;; 0f:5317 $e6 $03
     db   $A6                                           ;; 0f:5319 $a6 unknown music opcode
@@ -3500,7 +3473,7 @@ song07_channel3:
     mUNK_E4 frequencyDeltaData                         ;; 0f:5344 $e4 $4f $7a
 .data_0f_5347:
     mUNK_E8 data_0f_7afc                               ;; 0f:5347 $e8 $fc $7a
-    mUNK_E0 $20                                        ;; 0f:534a $e0 $20
+    mUNK3_E0 $20                                       ;; 0f:534a $e0 $20
     mUNK_E6 $01                                        ;; 0f:534c $e6 $01
     mUNK_E3 $10                                        ;; 0f:534e $e3 $10
 .data_0f_5350:
@@ -3513,7 +3486,7 @@ song07_channel3:
     db   $85                                           ;; 0f:5356 $85 unknown music opcode
     mUNK_E2 .data_0f_5350                              ;; 0f:5357 $e2 $50 $53
     mUNK_E8 data_0f_7adc                               ;; 0f:535a $e8 $dc $7a
-    mUNK_E0 $20                                        ;; 0f:535d $e0 $20
+    mUNK3_E0 $20                                       ;; 0f:535d $e0 $20
     mUNK_E6 $03                                        ;; 0f:535f $e6 $03
     db   $DC                                           ;; 0f:5361 $dc unknown music opcode
     db   $A0                                           ;; 0f:5362 $a0 unknown music opcode
@@ -3555,8 +3528,7 @@ song07_channel3:
 song08_channel2:
     mUNK_E7 $91                                        ;; 0f:5388 $e7 $91
     mUNK_E4 frequencyDeltaData.fifth                   ;; 0f:538a $e4 $75 $7a
-    mUNK_E0 $82                                        ;; 0f:538d $e0 $82
-    db   $7A                                           ;; 0f:538f $7a unknown music opcode
+    mUNK_E0 volumeEnvelopeData                         ;; 0f:538d $e0 $82 $7a
     mUNK_E5 $40                                        ;; 0f:5390 $e5 $40
 .data_0f_5392:
     mUNK_E6 $03                                        ;; 0f:5392 $e6 $03
@@ -3604,8 +3576,7 @@ song08_channel2:
 
 song08_channel1:
     mUNK_E4 frequencyDeltaData.fifth                   ;; 0f:53bf $e4 $75 $7a
-    mUNK_E0 $ae                                        ;; 0f:53c2 $e0 $ae
-    db   $7A                                           ;; 0f:53c4 $7a unknown music opcode
+    mUNK_E0 data_0f_7aae                               ;; 0f:53c2 $e0 $ae $7a
     mUNK_E5 $40                                        ;; 0f:53c5 $e5 $40
     mUNK_E6 $03                                        ;; 0f:53c7 $e6 $03
 .data_0f_53c9:
@@ -3641,7 +3612,7 @@ song08_channel1:
 song08_channel3:
     mUNK_E4 frequencyDeltaData                         ;; 0f:53ef $e4 $4f $7a
     mUNK_E8 data_0f_7adc                               ;; 0f:53f2 $e8 $dc $7a
-    mUNK_E0 $20                                        ;; 0f:53f5 $e0 $20
+    mUNK3_E0 $20                                       ;; 0f:53f5 $e0 $20
 .data_0f_53f7:
     mUNK_E6 $03                                        ;; 0f:53f7 $e6 $03
     db   $D2                                           ;; 0f:53f9 $d2 unknown music opcode
@@ -3711,8 +3682,7 @@ song08_channel3:
 song09_channel2:
     mUNK_E7 $7f                                        ;; 0f:5442 $e7 $7f
     mUNK_E4 frequencyDeltaData.third                   ;; 0f:5444 $e4 $63 $7a
-    mUNK_E0 $82                                        ;; 0f:5447 $e0 $82
-    db   $7A                                           ;; 0f:5449 $7a unknown music opcode
+    mUNK_E0 volumeEnvelopeData                         ;; 0f:5447 $e0 $82 $7a
     mUNK_E6 $03                                        ;; 0f:544a $e6 $03
 .data_0f_544c:
     mUNK_E5 $40                                        ;; 0f:544c $e5 $40
@@ -3735,14 +3705,12 @@ song09_channel2:
 
 song09_channel1:
     mUNK_E4 frequencyDeltaData                         ;; 0f:5460 $e4 $4f $7a
-    mUNK_E0 $c2                                        ;; 0f:5463 $e0 $c2
-    db   $7A                                           ;; 0f:5465 $7a unknown music opcode
+    mUNK_E0 data_0f_7ac2                               ;; 0f:5463 $e0 $c2 $7a
     mUNK_E6 $02                                        ;; 0f:5466 $e6 $02
     db   $D2                                           ;; 0f:5468 $d2 unknown music opcode
     db   $AF                                           ;; 0f:5469 $af unknown music opcode
 .data_0f_546a:
-    mUNK_E0 $c2                                        ;; 0f:546a $e0 $c2
-    db   $7A                                           ;; 0f:546c $7a unknown music opcode
+    mUNK_E0 data_0f_7ac2                               ;; 0f:546a $e0 $c2 $7a
     mUNK_E5 $80                                        ;; 0f:546d $e5 $80
     db   $88                                           ;; 0f:546f $88 unknown music opcode
     db   $84                                           ;; 0f:5470 $84 unknown music opcode
@@ -3752,8 +3720,7 @@ song09_channel1:
     db   $84                                           ;; 0f:5474 $84 unknown music opcode
     db   $80                                           ;; 0f:5475 $80 unknown music opcode
     db   $84                                           ;; 0f:5476 $84 unknown music opcode
-    mUNK_E0 $c8                                        ;; 0f:5477 $e0 $c8
-    db   $7A                                           ;; 0f:5479 $7a unknown music opcode
+    mUNK_E0 data_0f_7ac8                               ;; 0f:5477 $e0 $c8 $7a
     mUNK_E5 $40                                        ;; 0f:547a $e5 $40
     db   $88                                           ;; 0f:547c $88 unknown music opcode
     db   $84                                           ;; 0f:547d $84 unknown music opcode
@@ -3764,8 +3731,7 @@ song09_channel1:
     db   $84                                           ;; 0f:5483 $84 unknown music opcode
     db   $80                                           ;; 0f:5484 $80 unknown music opcode
     db   $84                                           ;; 0f:5485 $84 unknown music opcode
-    mUNK_E0 $c2                                        ;; 0f:5486 $e0 $c2
-    db   $7A                                           ;; 0f:5488 $7a unknown music opcode
+    mUNK_E0 data_0f_7ac2                               ;; 0f:5486 $e0 $c2 $7a
     mUNK_E5 $80                                        ;; 0f:5489 $e5 $80
     db   $87                                           ;; 0f:548b $87 unknown music opcode
     db   $83                                           ;; 0f:548c $83 unknown music opcode
@@ -3779,8 +3745,7 @@ song09_channel1:
     db   $8B                                           ;; 0f:5494 $8b unknown music opcode
     db   $D8                                           ;; 0f:5495 $d8 unknown music opcode
     db   $83                                           ;; 0f:5496 $83 unknown music opcode
-    mUNK_E0 $c8                                        ;; 0f:5497 $e0 $c8
-    db   $7A                                           ;; 0f:5499 $7a unknown music opcode
+    mUNK_E0 data_0f_7ac8                               ;; 0f:5497 $e0 $c8 $7a
     mUNK_E5 $40                                        ;; 0f:549a $e5 $40
     db   $87                                           ;; 0f:549c $87 unknown music opcode
     db   $83                                           ;; 0f:549d $83 unknown music opcode
@@ -3795,8 +3760,7 @@ song09_channel1:
     db   $8B                                           ;; 0f:54a7 $8b unknown music opcode
     db   $D8                                           ;; 0f:54a8 $d8 unknown music opcode
     db   $83                                           ;; 0f:54a9 $83 unknown music opcode
-    mUNK_E0 $c2                                        ;; 0f:54aa $e0 $c2
-    db   $7A                                           ;; 0f:54ac $7a unknown music opcode
+    mUNK_E0 data_0f_7ac2                               ;; 0f:54aa $e0 $c2 $7a
     mUNK_E5 $80                                        ;; 0f:54ad $e5 $80
     db   $88                                           ;; 0f:54af $88 unknown music opcode
     db   $84                                           ;; 0f:54b0 $84 unknown music opcode
@@ -3806,8 +3770,7 @@ song09_channel1:
     db   $84                                           ;; 0f:54b4 $84 unknown music opcode
     db   $80                                           ;; 0f:54b5 $80 unknown music opcode
     db   $84                                           ;; 0f:54b6 $84 unknown music opcode
-    mUNK_E0 $c8                                        ;; 0f:54b7 $e0 $c8
-    db   $7A                                           ;; 0f:54b9 $7a unknown music opcode
+    mUNK_E0 data_0f_7ac8                               ;; 0f:54b7 $e0 $c8 $7a
     mUNK_E5 $40                                        ;; 0f:54ba $e5 $40
     db   $88                                           ;; 0f:54bc $88 unknown music opcode
     db   $84                                           ;; 0f:54bd $84 unknown music opcode
@@ -3818,8 +3781,7 @@ song09_channel1:
     db   $84                                           ;; 0f:54c3 $84 unknown music opcode
     db   $80                                           ;; 0f:54c4 $80 unknown music opcode
     db   $84                                           ;; 0f:54c5 $84 unknown music opcode
-    mUNK_E0 $c2                                        ;; 0f:54c6 $e0 $c2
-    db   $7A                                           ;; 0f:54c8 $7a unknown music opcode
+    mUNK_E0 data_0f_7ac2                               ;; 0f:54c6 $e0 $c2 $7a
     mUNK_E5 $80                                        ;; 0f:54c9 $e5 $80
     db   $89                                           ;; 0f:54cb $89 unknown music opcode
     db   $85                                           ;; 0f:54cc $85 unknown music opcode
@@ -3829,8 +3791,7 @@ song09_channel1:
     db   $85                                           ;; 0f:54d0 $85 unknown music opcode
     db   $81                                           ;; 0f:54d1 $81 unknown music opcode
     db   $85                                           ;; 0f:54d2 $85 unknown music opcode
-    mUNK_E0 $c8                                        ;; 0f:54d3 $e0 $c8
-    db   $7A                                           ;; 0f:54d5 $7a unknown music opcode
+    mUNK_E0 data_0f_7ac8                               ;; 0f:54d3 $e0 $c8 $7a
     mUNK_E5 $40                                        ;; 0f:54d6 $e5 $40
     db   $89                                           ;; 0f:54d8 $89 unknown music opcode
     db   $85                                           ;; 0f:54d9 $85 unknown music opcode
@@ -3848,7 +3809,7 @@ song09_channel3:
     mUNK_E6 $01                                        ;; 0f:54e8 $e6 $01
 .data_0f_54ea:
     mUNK_E8 wavePatternsData                           ;; 0f:54ea $e8 $cc $7a
-    mUNK_E0 $20                                        ;; 0f:54ed $e0 $20
+    mUNK3_E0 $20                                       ;; 0f:54ed $e0 $20
     db   $D3                                           ;; 0f:54ef $d3 unknown music opcode
     db   $88                                           ;; 0f:54f0 $88 unknown music opcode
     db   $84                                           ;; 0f:54f1 $84 unknown music opcode
@@ -3860,7 +3821,7 @@ song09_channel3:
     db   $80                                           ;; 0f:54f7 $80 unknown music opcode
     db   $84                                           ;; 0f:54f8 $84 unknown music opcode
     mUNK_E8 data_0f_7adc                               ;; 0f:54f9 $e8 $dc $7a
-    mUNK_E0 $40                                        ;; 0f:54fc $e0 $40
+    mUNK3_E0 $40                                       ;; 0f:54fc $e0 $40
     db   $D3                                           ;; 0f:54fe $d3 unknown music opcode
     db   $88                                           ;; 0f:54ff $88 unknown music opcode
     db   $84                                           ;; 0f:5500 $84 unknown music opcode
@@ -3873,7 +3834,7 @@ song09_channel3:
     db   $80                                           ;; 0f:5509 $80 unknown music opcode
     db   $84                                           ;; 0f:550a $84 unknown music opcode
     mUNK_E8 wavePatternsData                           ;; 0f:550b $e8 $cc $7a
-    mUNK_E0 $20                                        ;; 0f:550e $e0 $20
+    mUNK3_E0 $20                                       ;; 0f:550e $e0 $20
     db   $87                                           ;; 0f:5510 $87 unknown music opcode
     db   $83                                           ;; 0f:5511 $83 unknown music opcode
     db   $DC                                           ;; 0f:5512 $dc unknown music opcode
@@ -3887,7 +3848,7 @@ song09_channel3:
     db   $D8                                           ;; 0f:551a $d8 unknown music opcode
     db   $83                                           ;; 0f:551b $83 unknown music opcode
     mUNK_E8 data_0f_7adc                               ;; 0f:551c $e8 $dc $7a
-    mUNK_E0 $40                                        ;; 0f:551f $e0 $40
+    mUNK3_E0 $40                                       ;; 0f:551f $e0 $40
     db   $87                                           ;; 0f:5521 $87 unknown music opcode
     db   $83                                           ;; 0f:5522 $83 unknown music opcode
     db   $DC                                           ;; 0f:5523 $dc unknown music opcode
@@ -3902,7 +3863,7 @@ song09_channel3:
     db   $D8                                           ;; 0f:552e $d8 unknown music opcode
     db   $83                                           ;; 0f:552f $83 unknown music opcode
     mUNK_E8 wavePatternsData                           ;; 0f:5530 $e8 $cc $7a
-    mUNK_E0 $20                                        ;; 0f:5533 $e0 $20
+    mUNK3_E0 $20                                       ;; 0f:5533 $e0 $20
     db   $88                                           ;; 0f:5535 $88 unknown music opcode
     db   $84                                           ;; 0f:5536 $84 unknown music opcode
     db   $80                                           ;; 0f:5537 $80 unknown music opcode
@@ -3912,7 +3873,7 @@ song09_channel3:
     db   $80                                           ;; 0f:553b $80 unknown music opcode
     db   $84                                           ;; 0f:553c $84 unknown music opcode
     mUNK_E8 data_0f_7adc                               ;; 0f:553d $e8 $dc $7a
-    mUNK_E0 $40                                        ;; 0f:5540 $e0 $40
+    mUNK3_E0 $40                                       ;; 0f:5540 $e0 $40
     db   $88                                           ;; 0f:5542 $88 unknown music opcode
     db   $84                                           ;; 0f:5543 $84 unknown music opcode
     db   $80                                           ;; 0f:5544 $80 unknown music opcode
@@ -3923,7 +3884,7 @@ song09_channel3:
     db   $80                                           ;; 0f:554b $80 unknown music opcode
     db   $84                                           ;; 0f:554c $84 unknown music opcode
     mUNK_E8 wavePatternsData                           ;; 0f:554d $e8 $cc $7a
-    mUNK_E0 $20                                        ;; 0f:5550 $e0 $20
+    mUNK3_E0 $20                                       ;; 0f:5550 $e0 $20
     db   $89                                           ;; 0f:5552 $89 unknown music opcode
     db   $85                                           ;; 0f:5553 $85 unknown music opcode
     db   $81                                           ;; 0f:5554 $81 unknown music opcode
@@ -3933,7 +3894,7 @@ song09_channel3:
     db   $81                                           ;; 0f:5558 $81 unknown music opcode
     db   $85                                           ;; 0f:5559 $85 unknown music opcode
     mUNK_E8 data_0f_7adc                               ;; 0f:555a $e8 $dc $7a
-    mUNK_E0 $40                                        ;; 0f:555d $e0 $40
+    mUNK3_E0 $40                                       ;; 0f:555d $e0 $40
     db   $89                                           ;; 0f:555f $89 unknown music opcode
     db   $85                                           ;; 0f:5560 $85 unknown music opcode
     db   $81                                           ;; 0f:5561 $81 unknown music opcode
@@ -3949,8 +3910,7 @@ song09_channel3:
 song0a_channel2:
     mUNK_E7 $3e                                        ;; 0f:556f $e7 $3e
     mUNK_E4 frequencyDeltaData                         ;; 0f:5571 $e4 $4f $7a
-    mUNK_E0 $82                                        ;; 0f:5574 $e0 $82
-    db   $7A                                           ;; 0f:5576 $7a unknown music opcode
+    mUNK_E0 volumeEnvelopeData                         ;; 0f:5574 $e0 $82 $7a
     mUNK_E5 $40                                        ;; 0f:5577 $e5 $40
     mUNK_E6 $03                                        ;; 0f:5579 $e6 $03
 .data_0f_557b:
@@ -4018,8 +3978,7 @@ song0a_channel2:
 
 song0a_channel1:
     mUNK_E4 frequencyDeltaData                         ;; 0f:55be $e4 $4f $7a
-    mUNK_E0 $c4                                        ;; 0f:55c1 $e0 $c4
-    db   $7A                                           ;; 0f:55c3 $7a unknown music opcode
+    mUNK_E0 data_0f_7ac4                               ;; 0f:55c1 $e0 $c4 $7a
     mUNK_E5 $00                                        ;; 0f:55c4 $e5 $00
 .data_0f_55c6:
     mUNK_E3 $02                                        ;; 0f:55c6 $e3 $02
@@ -4106,7 +4065,7 @@ song0a_channel1:
 song0a_channel3:
     mUNK_E4 frequencyDeltaData                         ;; 0f:5627 $e4 $4f $7a
     mUNK_E8 data_0f_7adc                               ;; 0f:562a $e8 $dc $7a
-    mUNK_E0 $40                                        ;; 0f:562d $e0 $40
+    mUNK3_E0 $40                                       ;; 0f:562d $e0 $40
     mUNK_E6 $03                                        ;; 0f:562f $e6 $03
 .data_0f_5631:
     mUNK_E3 $02                                        ;; 0f:5631 $e3 $02
@@ -4154,8 +4113,7 @@ song0a_channel3:
 song0b_channel2:
     mUNK_E7 $82                                        ;; 0f:5661 $e7 $82
     mUNK_E4 frequencyDeltaData.fifth                   ;; 0f:5663 $e4 $75 $7a
-    mUNK_E0 $82                                        ;; 0f:5666 $e0 $82
-    db   $7A                                           ;; 0f:5668 $7a unknown music opcode
+    mUNK_E0 volumeEnvelopeData                         ;; 0f:5666 $e0 $82 $7a
     mUNK_E5 $80                                        ;; 0f:5669 $e5 $80
     mUNK_E6 $03                                        ;; 0f:566b $e6 $03
     mUNK_E3 $02                                        ;; 0f:566d $e3 $02
@@ -4218,8 +4176,7 @@ song0b_channel2:
 
 song0b_channel1:
     mUNK_E4 frequencyDeltaData                         ;; 0f:56ad $e4 $4f $7a
-    mUNK_E0 $c0                                        ;; 0f:56b0 $e0 $c0
-    db   $7A                                           ;; 0f:56b2 $7a unknown music opcode
+    mUNK_E0 data_0f_7ac0                               ;; 0f:56b0 $e0 $c0 $7a
     mUNK_E5 $80                                        ;; 0f:56b3 $e5 $80
     mUNK_E6 $02                                        ;; 0f:56b5 $e6 $02
     db   $D3                                           ;; 0f:56b7 $d3 unknown music opcode
@@ -4363,7 +4320,7 @@ song0b_channel1:
 song0b_channel3:
     mUNK_E4 frequencyDeltaData                         ;; 0f:5751 $e4 $4f $7a
     mUNK_E8 wavePatternsData                           ;; 0f:5754 $e8 $cc $7a
-    mUNK_E0 $20                                        ;; 0f:5757 $e0 $20
+    mUNK3_E0 $20                                       ;; 0f:5757 $e0 $20
     mUNK_E6 $01                                        ;; 0f:5759 $e6 $01
 .data_0f_575b:
     mUNK_E3 $04                                        ;; 0f:575b $e3 $04
@@ -4504,8 +4461,7 @@ song0b_channel3:
 
 song0c_channel2:
     mUNK_E4 frequencyDeltaData                         ;; 0f:57f5 $e4 $4f $7a
-    mUNK_E0 $a8                                        ;; 0f:57f8 $e0 $a8
-    db   $7A                                           ;; 0f:57fa $7a unknown music opcode
+    mUNK_E0 data_0f_7aa8                               ;; 0f:57f8 $e0 $a8 $7a
     mUNK_E5 $80                                        ;; 0f:57fb $e5 $80
     mUNK_E6 $03                                        ;; 0f:57fd $e6 $03
 .data_0f_57ff:
@@ -4641,8 +4597,7 @@ song0c_channel2:
 
 song0c_channel1:
     mUNK_E4 frequencyDeltaData                         ;; 0f:5897 $e4 $4f $7a
-    mUNK_E0 $b0                                        ;; 0f:589a $e0 $b0
-    db   $7A                                           ;; 0f:589c $7a unknown music opcode
+    mUNK_E0 data_0f_7ab0                               ;; 0f:589a $e0 $b0 $7a
     mUNK_E5 $40                                        ;; 0f:589d $e5 $40
     mUNK_E6 $03                                        ;; 0f:589f $e6 $03
     db   $D3                                           ;; 0f:58a1 $d3 unknown music opcode
@@ -4759,7 +4714,7 @@ song0c_channel1:
 song0c_channel3:
     mUNK_E4 frequencyDeltaData                         ;; 0f:5910 $e4 $4f $7a
     mUNK_E8 wavePatternsData                           ;; 0f:5913 $e8 $cc $7a
-    mUNK_E0 $40                                        ;; 0f:5916 $e0 $40
+    mUNK3_E0 $40                                       ;; 0f:5916 $e0 $40
     mUNK_E6 $03                                        ;; 0f:5918 $e6 $03
 .data_0f_591a:
     db   $D2                                           ;; 0f:591a $d2 unknown music opcode
@@ -4793,13 +4748,11 @@ song0c_channel3:
 song0d_channel2:
     mUNK_E7 $5d                                        ;; 0f:5937 $e7 $5d
     mUNK_E4 frequencyDeltaData                         ;; 0f:5939 $e4 $4f $7a
-    mUNK_E0 $a8                                        ;; 0f:593c $e0 $a8
-    db   $7A                                           ;; 0f:593e $7a unknown music opcode
+    mUNK_E0 data_0f_7aa8                               ;; 0f:593c $e0 $a8 $7a
     mUNK_E5 $40                                        ;; 0f:593f $e5 $40
     mUNK_E3 $02                                        ;; 0f:5941 $e3 $02
 .data_0f_5943:
-    mUNK_E0 $b4                                        ;; 0f:5943 $e0 $b4
-    db   $7A                                           ;; 0f:5945 $7a unknown music opcode
+    mUNK_E0 data_0f_7ab4                               ;; 0f:5943 $e0 $b4 $7a
     mUNK_E6 $03                                        ;; 0f:5946 $e6 $03
     db   $D3                                           ;; 0f:5948 $d3 unknown music opcode
     db   $B6                                           ;; 0f:5949 $b6 unknown music opcode
@@ -4964,8 +4917,7 @@ song0d_channel2:
     db   $B6                                           ;; 0f:59f9 $b6 unknown music opcode
     db   $DC                                           ;; 0f:59fa $dc unknown music opcode
     mUNK_E7 $59                                        ;; 0f:59fb $e7 $59
-    mUNK_E0 $be                                        ;; 0f:59fd $e0 $be
-    db   $7A                                           ;; 0f:59ff $7a unknown music opcode
+    mUNK_E0 data_0f_7abe                               ;; 0f:59fd $e0 $be $7a
     mUNK_E6 $03                                        ;; 0f:5a00 $e6 $03
     db   $66                                           ;; 0f:5a02 $66 unknown music opcode
     db   $B7                                           ;; 0f:5a03 $b7 unknown music opcode
@@ -5010,8 +4962,7 @@ song0d_channel2:
     db   $15                                           ;; 0f:5a2a $15 unknown music opcode
     db   $58                                           ;; 0f:5a2b $58 unknown music opcode
     mUNK_E7 $55                                        ;; 0f:5a2c $e7 $55
-    mUNK_E0 $82                                        ;; 0f:5a2e $e0 $82
-    db   $7A                                           ;; 0f:5a30 $7a unknown music opcode
+    mUNK_E0 volumeEnvelopeData                         ;; 0f:5a2e $e0 $82 $7a
     db   $54                                           ;; 0f:5a31 $54 unknown music opcode
     db   $57                                           ;; 0f:5a32 $57 unknown music opcode
     mUNK_E7 $50                                        ;; 0f:5a33 $e7 $50
@@ -5021,8 +4972,7 @@ song0d_channel2:
 
 song0d_channel1:
     mUNK_E4 frequencyDeltaData                         ;; 0f:5a3a $e4 $4f $7a
-    mUNK_E0 $82                                        ;; 0f:5a3d $e0 $82
-    db   $7A                                           ;; 0f:5a3f $7a unknown music opcode
+    mUNK_E0 volumeEnvelopeData                         ;; 0f:5a3d $e0 $82 $7a
 .data_0f_5a40:
     mUNK_E6 $03                                        ;; 0f:5a40 $e6 $03
     mUNK_E5 $80                                        ;; 0f:5a42 $e5 $80
@@ -5081,8 +5031,7 @@ song0d_channel1:
     db   $89                                           ;; 0f:5a7a $89 unknown music opcode
     mUNK_E3 $02                                        ;; 0f:5a7b $e3 $02
 .data_0f_5a7d:
-    mUNK_E0 $c8                                        ;; 0f:5a7d $e0 $c8
-    db   $7A                                           ;; 0f:5a7f $7a unknown music opcode
+    mUNK_E0 data_0f_7ac8                               ;; 0f:5a7d $e0 $c8 $7a
     mUNK_E5 $40                                        ;; 0f:5a80 $e5 $40
     db   $82                                           ;; 0f:5a82 $82 unknown music opcode
     db   $81                                           ;; 0f:5a83 $81 unknown music opcode
@@ -5134,8 +5083,7 @@ song0d_channel1:
     db   $88                                           ;; 0f:5ab5 $88 unknown music opcode
     db   $89                                           ;; 0f:5ab6 $89 unknown music opcode
     db   $58                                           ;; 0f:5ab7 $58 unknown music opcode
-    mUNK_E0 $82                                        ;; 0f:5ab8 $e0 $82
-    db   $7A                                           ;; 0f:5aba $7a unknown music opcode
+    mUNK_E0 volumeEnvelopeData                         ;; 0f:5ab8 $e0 $82 $7a
     db   $5B                                           ;; 0f:5abb $5b unknown music opcode
     mUNK_E6 $02                                        ;; 0f:5abc $e6 $02
     db   $57                                           ;; 0f:5abe $57 unknown music opcode
@@ -5149,7 +5097,7 @@ song0d_channel3:
     mUNK_E4 frequencyDeltaData                         ;; 0f:5ac6 $e4 $4f $7a
 .data_0f_5ac9:
     mUNK_E8 wavePatternsData                           ;; 0f:5ac9 $e8 $cc $7a
-    mUNK_E0 $40                                        ;; 0f:5acc $e0 $40
+    mUNK3_E0 $40                                       ;; 0f:5acc $e0 $40
     mUNK_E6 $03                                        ;; 0f:5ace $e6 $03
     mUNK_E3 $04                                        ;; 0f:5ad0 $e3 $04
 .data_0f_5ad2:
@@ -5242,8 +5190,7 @@ song0d_channel3:
 
 song0e_channel2:
     mUNK_E4 frequencyDeltaData                         ;; 0f:5b3c $e4 $4f $7a
-    mUNK_E0 $c0                                        ;; 0f:5b3f $e0 $c0
-    db   $7A                                           ;; 0f:5b41 $7a unknown music opcode
+    mUNK_E0 data_0f_7ac0                               ;; 0f:5b3f $e0 $c0 $7a
     mUNK_E5 $40                                        ;; 0f:5b42 $e5 $40
     mUNK_E6 $03                                        ;; 0f:5b44 $e6 $03
     mUNK_E3 $02                                        ;; 0f:5b46 $e3 $02
@@ -5288,8 +5235,7 @@ song0e_channel2:
 .data_0f_5b71:
     mUNK_E7 $87                                        ;; 0f:5b71 $e7 $87
     mUNK_E4 frequencyDeltaData.third                   ;; 0f:5b73 $e4 $63 $7a
-    mUNK_E0 $82                                        ;; 0f:5b76 $e0 $82
-    db   $7A                                           ;; 0f:5b78 $7a unknown music opcode
+    mUNK_E0 volumeEnvelopeData                         ;; 0f:5b76 $e0 $82 $7a
     mUNK_E5 $80                                        ;; 0f:5b79 $e5 $80
     db   $4C                                           ;; 0f:5b7b $4c unknown music opcode
     db   $AB                                           ;; 0f:5b7c $ab unknown music opcode
@@ -5317,8 +5263,7 @@ song0e_channel2:
     mUNK_E2 .data_0f_5b71                              ;; 0f:5b93 $e2 $71 $5b
     mUNK_E7 $85                                        ;; 0f:5b96 $e7 $85
     mUNK_E4 frequencyDeltaData                         ;; 0f:5b98 $e4 $4f $7a
-    mUNK_E0 $be                                        ;; 0f:5b9b $e0 $be
-    db   $7A                                           ;; 0f:5b9d $7a unknown music opcode
+    mUNK_E0 data_0f_7abe                               ;; 0f:5b9b $e0 $be $7a
     db   $A4                                           ;; 0f:5b9e $a4 unknown music opcode
     db   $A8                                           ;; 0f:5b9f $a8 unknown music opcode
     db   $AB                                           ;; 0f:5ba0 $ab unknown music opcode
@@ -5361,8 +5306,7 @@ song0e_channel2:
 
 song0e_channel1:
     mUNK_E4 frequencyDeltaData                         ;; 0f:5bc8 $e4 $4f $7a
-    mUNK_E0 $ae                                        ;; 0f:5bcb $e0 $ae
-    db   $7A                                           ;; 0f:5bcd $7a unknown music opcode
+    mUNK_E0 data_0f_7aae                               ;; 0f:5bcb $e0 $ae $7a
     mUNK_E5 $00                                        ;; 0f:5bce $e5 $00
     mUNK_E6 $02                                        ;; 0f:5bd0 $e6 $02
     mUNK_E3 $02                                        ;; 0f:5bd2 $e3 $02
@@ -5564,8 +5508,7 @@ song0e_channel1:
     db   $D9                                           ;; 0f:5cae $d9 unknown music opcode
     mUNK_E3 $04                                        ;; 0f:5caf $e3 $04
 .data_0f_5cb1:
-    mUNK_E0 $a0                                        ;; 0f:5cb1 $e0 $a0
-    db   $7A                                           ;; 0f:5cb3 $7a unknown music opcode
+    mUNK_E0 data_0f_7aa0                               ;; 0f:5cb1 $e0 $a0 $7a
     mUNK_E5 $40                                        ;; 0f:5cb4 $e5 $40
     mUNK_E6 $02                                        ;; 0f:5cb6 $e6 $02
     db   $A9                                           ;; 0f:5cb8 $a9 unknown music opcode
@@ -5586,8 +5529,7 @@ song0e_channel1:
     mUNK_E2 .data_0f_5cb1                              ;; 0f:5cca $e2 $b1 $5c
     mUNK_E6 $03                                        ;; 0f:5ccd $e6 $03
     mUNK_E5 $00                                        ;; 0f:5ccf $e5 $00
-    mUNK_E0 $ae                                        ;; 0f:5cd1 $e0 $ae
-    db   $7A                                           ;; 0f:5cd3 $7a unknown music opcode
+    mUNK_E0 data_0f_7aae                               ;; 0f:5cd1 $e0 $ae $7a
     db   $DD                                           ;; 0f:5cd4 $dd unknown music opcode
     db   $AB                                           ;; 0f:5cd5 $ab unknown music opcode
     db   $AA                                           ;; 0f:5cd6 $aa unknown music opcode
@@ -5624,8 +5566,7 @@ song0e_channel1:
     db   $D9                                           ;; 0f:5cf5 $d9 unknown music opcode
     mUNK_E3 $04                                        ;; 0f:5cf6 $e3 $04
 .data_0f_5cf8:
-    mUNK_E0 $a0                                        ;; 0f:5cf8 $e0 $a0
-    db   $7A                                           ;; 0f:5cfa $7a unknown music opcode
+    mUNK_E0 data_0f_7aa0                               ;; 0f:5cf8 $e0 $a0 $7a
     mUNK_E5 $40                                        ;; 0f:5cfb $e5 $40
     mUNK_E6 $02                                        ;; 0f:5cfd $e6 $02
     db   $A9                                           ;; 0f:5cff $a9 unknown music opcode
@@ -5644,8 +5585,7 @@ song0e_channel1:
     db   $DC                                           ;; 0f:5d0f $dc unknown music opcode
     db   $A4                                           ;; 0f:5d10 $a4 unknown music opcode
     mUNK_E2 .data_0f_5cf8                              ;; 0f:5d11 $e2 $f8 $5c
-    mUNK_E0 $ae                                        ;; 0f:5d14 $e0 $ae
-    db   $7A                                           ;; 0f:5d16 $7a unknown music opcode
+    mUNK_E0 data_0f_7aae                               ;; 0f:5d14 $e0 $ae $7a
     mUNK_E6 $03                                        ;; 0f:5d17 $e6 $03
     mUNK_E5 $00                                        ;; 0f:5d19 $e5 $00
     db   $DD                                           ;; 0f:5d1b $dd unknown music opcode
@@ -5681,8 +5621,7 @@ song0e_channel1:
     db   $A8                                           ;; 0f:5d39 $a8 unknown music opcode
     db   $A9                                           ;; 0f:5d3a $a9 unknown music opcode
     db   $AA                                           ;; 0f:5d3b $aa unknown music opcode
-    mUNK_E0 $82                                        ;; 0f:5d3c $e0 $82
-    db   $7A                                           ;; 0f:5d3e $7a unknown music opcode
+    mUNK_E0 volumeEnvelopeData                         ;; 0f:5d3c $e0 $82 $7a
     mUNK_E6 $02                                        ;; 0f:5d3f $e6 $02
     db   $A8                                           ;; 0f:5d41 $a8 unknown music opcode
     db   $AB                                           ;; 0f:5d42 $ab unknown music opcode
@@ -5730,8 +5669,7 @@ song0e_channel1:
     db   $A9                                           ;; 0f:5d6f $a9 unknown music opcode
     db   $AC                                           ;; 0f:5d70 $ac unknown music opcode
     db   $D8                                           ;; 0f:5d71 $d8 unknown music opcode
-    mUNK_E0 $b0                                        ;; 0f:5d72 $e0 $b0
-    db   $7A                                           ;; 0f:5d74 $7a unknown music opcode
+    mUNK_E0 data_0f_7ab0                               ;; 0f:5d72 $e0 $b0 $7a
     db   $52                                           ;; 0f:5d75 $52 unknown music opcode
     mUNK_E6 $02                                        ;; 0f:5d76 $e6 $02
     db   $A7                                           ;; 0f:5d78 $a7 unknown music opcode
@@ -5748,8 +5686,7 @@ song0e_channel1:
     db   $DC                                           ;; 0f:5d85 $dc unknown music opcode
     db   $A9                                           ;; 0f:5d86 $a9 unknown music opcode
     db   $AC                                           ;; 0f:5d87 $ac unknown music opcode
-    mUNK_E0 $94                                        ;; 0f:5d88 $e0 $94
-    db   $7A                                           ;; 0f:5d8a $7a unknown music opcode
+    mUNK_E0 data_0f_7a94                               ;; 0f:5d88 $e0 $94 $7a
     mUNK_E6 $03                                        ;; 0f:5d8b $e6 $03
     db   $AB                                           ;; 0f:5d8d $ab unknown music opcode
     db   $A4                                           ;; 0f:5d8e $a4 unknown music opcode
@@ -5779,7 +5716,7 @@ song0e_channel1:
 song0e_channel3:
     mUNK_E4 frequencyDeltaData                         ;; 0f:5daa $e4 $4f $7a
     mUNK_E8 data_0f_7b0c                               ;; 0f:5dad $e8 $0c $7b
-    mUNK_E0 $20                                        ;; 0f:5db0 $e0 $20
+    mUNK3_E0 $20                                       ;; 0f:5db0 $e0 $20
     mUNK_E3 $02                                        ;; 0f:5db2 $e3 $02
 .data_0f_5db4:
     mUNK_E6 $03                                        ;; 0f:5db4 $e6 $03
@@ -5936,8 +5873,7 @@ song0e_channel3:
 song0f_channel2:
     mUNK_E7 $87                                        ;; 0f:5e69 $e7 $87
     mUNK_E4 frequencyDeltaData                         ;; 0f:5e6b $e4 $4f $7a
-    mUNK_E0 $82                                        ;; 0f:5e6e $e0 $82
-    db   $7A                                           ;; 0f:5e70 $7a unknown music opcode
+    mUNK_E0 volumeEnvelopeData                         ;; 0f:5e6e $e0 $82 $7a
     mUNK_E5 $40                                        ;; 0f:5e71 $e5 $40
     mUNK_E6 $03                                        ;; 0f:5e73 $e6 $03
     db   $D3                                           ;; 0f:5e75 $d3 unknown music opcode
@@ -5974,8 +5910,7 @@ song0f_channel2:
     db   $82                                           ;; 0f:5e95 $82 unknown music opcode
     db   $84                                           ;; 0f:5e96 $84 unknown music opcode
     db   $86                                           ;; 0f:5e97 $86 unknown music opcode
-    mUNK_E0 $be                                        ;; 0f:5e98 $e0 $be
-    db   $7A                                           ;; 0f:5e9a $7a unknown music opcode
+    mUNK_E0 data_0f_7abe                               ;; 0f:5e98 $e0 $be $7a
     db   $77                                           ;; 0f:5e9b $77 unknown music opcode
     db   $72                                           ;; 0f:5e9c $72 unknown music opcode
     db   $85                                           ;; 0f:5e9d $85 unknown music opcode
@@ -6001,8 +5936,7 @@ song0f_channel2:
     db   $72                                           ;; 0f:5eb1 $72 unknown music opcode
     db   $86                                           ;; 0f:5eb2 $86 unknown music opcode
     db   $DD                                           ;; 0f:5eb3 $dd unknown music opcode
-    mUNK_E0 $a8                                        ;; 0f:5eb4 $e0 $a8
-    db   $7A                                           ;; 0f:5eb6 $7a unknown music opcode
+    mUNK_E0 data_0f_7aa8                               ;; 0f:5eb4 $e0 $a8 $7a
     mUNK_E5 $80                                        ;; 0f:5eb7 $e5 $80
     db   $AB                                           ;; 0f:5eb9 $ab unknown music opcode
     db   $AC                                           ;; 0f:5eba $ac unknown music opcode
@@ -6025,8 +5959,7 @@ song0f_channel2:
     db   $D8                                           ;; 0f:5ecb $d8 unknown music opcode
     db   $B2                                           ;; 0f:5ecc $b2 unknown music opcode
     mUNK_E7 $8a                                        ;; 0f:5ecd $e7 $8a
-    mUNK_E0 $ac                                        ;; 0f:5ecf $e0 $ac
-    db   $7A                                           ;; 0f:5ed1 $7a unknown music opcode
+    mUNK_E0 data_0f_7aac                               ;; 0f:5ecf $e0 $ac $7a
     mUNK_E5 $00                                        ;; 0f:5ed2 $e5 $00
     db   $A3                                           ;; 0f:5ed4 $a3 unknown music opcode
     db   $DC                                           ;; 0f:5ed5 $dc unknown music opcode
@@ -6079,8 +6012,7 @@ song0f_channel2:
     mUNK_E3 $02                                        ;; 0f:5f04 $e3 $02
 .data_0f_5f06:
     mUNK_E7 $87                                        ;; 0f:5f06 $e7 $87
-    mUNK_E0 $be                                        ;; 0f:5f08 $e0 $be
-    db   $7A                                           ;; 0f:5f0a $7a unknown music opcode
+    mUNK_E0 data_0f_7abe                               ;; 0f:5f08 $e0 $be $7a
     mUNK_E5 $40                                        ;; 0f:5f0b $e5 $40
     db   $57                                           ;; 0f:5f0d $57 unknown music opcode
     db   $AE                                           ;; 0f:5f0e $ae unknown music opcode
@@ -6214,8 +6146,7 @@ song0f_channel2:
     db   $AF                                           ;; 0f:5f96 $af unknown music opcode
     db   $DD                                           ;; 0f:5f97 $dd unknown music opcode
     mUNK_E7 $82                                        ;; 0f:5f98 $e7 $82
-    mUNK_E0 $a8                                        ;; 0f:5f9a $e0 $a8
-    db   $7A                                           ;; 0f:5f9c $7a unknown music opcode
+    mUNK_E0 data_0f_7aa8                               ;; 0f:5f9a $e0 $a8 $7a
     mUNK_E5 $80                                        ;; 0f:5f9d $e5 $80
     db   $A7                                           ;; 0f:5f9f $a7 unknown music opcode
     db   $A9                                           ;; 0f:5fa0 $a9 unknown music opcode
@@ -6229,8 +6160,7 @@ song0f_channel2:
 
 song0f_channel1:
     mUNK_E4 frequencyDeltaData                         ;; 0f:5faa $e4 $4f $7a
-    mUNK_E0 $c0                                        ;; 0f:5fad $e0 $c0
-    db   $7A                                           ;; 0f:5faf $7a unknown music opcode
+    mUNK_E0 data_0f_7ac0                               ;; 0f:5fad $e0 $c0 $7a
     mUNK_E5 $00                                        ;; 0f:5fb0 $e5 $00
     mUNK_E6 $02                                        ;; 0f:5fb2 $e6 $02
     db   $AF                                           ;; 0f:5fb4 $af unknown music opcode
@@ -6314,8 +6244,7 @@ song0f_channel1:
     db   $A6                                           ;; 0f:6003 $a6 unknown music opcode
     db   $A2                                           ;; 0f:6004 $a2 unknown music opcode
     db   $DC                                           ;; 0f:6005 $dc unknown music opcode
-    mUNK_E0 $c4                                        ;; 0f:6006 $e0 $c4
-    db   $7A                                           ;; 0f:6008 $7a unknown music opcode
+    mUNK_E0 data_0f_7ac4                               ;; 0f:6006 $e0 $c4 $7a
     mUNK_E6 $02                                        ;; 0f:6009 $e6 $02
     db   $AB                                           ;; 0f:600b $ab unknown music opcode
     db   $D8                                           ;; 0f:600c $d8 unknown music opcode
@@ -6431,8 +6360,7 @@ song0f_channel1:
     db   $B9                                           ;; 0f:6080 $b9 unknown music opcode
     db   $BB                                           ;; 0f:6081 $bb unknown music opcode
     db   $D8                                           ;; 0f:6082 $d8 unknown music opcode
-    mUNK_E0 $ac                                        ;; 0f:6083 $e0 $ac
-    db   $7A                                           ;; 0f:6085 $7a unknown music opcode
+    mUNK_E0 data_0f_7aac                               ;; 0f:6083 $e0 $ac $7a
     mUNK_E5 $00                                        ;; 0f:6086 $e5 $00
     db   $AA                                           ;; 0f:6088 $aa unknown music opcode
     db   $A7                                           ;; 0f:6089 $a7 unknown music opcode
@@ -6565,8 +6493,7 @@ song0f_channel1:
     db   $8A                                           ;; 0f:611f $8a unknown music opcode
     db   $88                                           ;; 0f:6120 $88 unknown music opcode
     db   $D8                                           ;; 0f:6121 $d8 unknown music opcode
-    mUNK_E0 $a8                                        ;; 0f:6122 $e0 $a8
-    db   $7A                                           ;; 0f:6124 $7a unknown music opcode
+    mUNK_E0 data_0f_7aa8                               ;; 0f:6122 $e0 $a8 $7a
     mUNK_E6 $03                                        ;; 0f:6125 $e6 $03
     mUNK_E5 $40                                        ;; 0f:6127 $e5 $40
     db   $A5                                           ;; 0f:6129 $a5 unknown music opcode
@@ -6577,8 +6504,7 @@ song0f_channel1:
     db   $A5                                           ;; 0f:612e $a5 unknown music opcode
     db   $AA                                           ;; 0f:612f $aa unknown music opcode
     db   $A2                                           ;; 0f:6130 $a2 unknown music opcode
-    mUNK_E0 $ac                                        ;; 0f:6131 $e0 $ac
-    db   $7A                                           ;; 0f:6133 $7a unknown music opcode
+    mUNK_E0 data_0f_7aac                               ;; 0f:6131 $e0 $ac $7a
     mUNK_E5 $00                                        ;; 0f:6134 $e5 $00
     db   $A3                                           ;; 0f:6136 $a3 unknown music opcode
     db   $A5                                           ;; 0f:6137 $a5 unknown music opcode
@@ -6705,7 +6631,7 @@ song0f_channel1:
 song0f_channel3:
     mUNK_E4 frequencyDeltaData                         ;; 0f:61c2 $e4 $4f $7a
     mUNK_E8 data_0f_7b0c                               ;; 0f:61c5 $e8 $0c $7b
-    mUNK_E0 $20                                        ;; 0f:61c8 $e0 $20
+    mUNK3_E0 $20                                       ;; 0f:61c8 $e0 $20
     mUNK_E6 $03                                        ;; 0f:61ca $e6 $03
     db   $D2                                           ;; 0f:61cc $d2 unknown music opcode
     db   $20                                           ;; 0f:61cd $20 unknown music opcode
@@ -6959,8 +6885,7 @@ song0f_channel3:
 song11_channel2:
     mUNK_E7 $6c                                        ;; 0f:62e9 $e7 $6c
     mUNK_E4 frequencyDeltaData                         ;; 0f:62eb $e4 $4f $7a
-    mUNK_E0 $c0                                        ;; 0f:62ee $e0 $c0
-    db   $7A                                           ;; 0f:62f0 $7a unknown music opcode
+    mUNK_E0 data_0f_7ac0                               ;; 0f:62ee $e0 $c0 $7a
     mUNK_E5 $00                                        ;; 0f:62f1 $e5 $00
     mUNK_E6 $03                                        ;; 0f:62f3 $e6 $03
     db   $D2                                           ;; 0f:62f5 $d2 unknown music opcode
@@ -7023,8 +6948,7 @@ song11_channel2:
 
 song11_channel1:
     mUNK_E4 frequencyDeltaData                         ;; 0f:632e $e4 $4f $7a
-    mUNK_E0 $c6                                        ;; 0f:6331 $e0 $c6
-    db   $7A                                           ;; 0f:6333 $7a unknown music opcode
+    mUNK_E0 data_0f_7ac6                               ;; 0f:6331 $e0 $c6 $7a
     mUNK_E5 $00                                        ;; 0f:6334 $e5 $00
     mUNK_E6 $03                                        ;; 0f:6336 $e6 $03
     db   $D2                                           ;; 0f:6338 $d2 unknown music opcode
@@ -7088,8 +7012,7 @@ song11_channel1:
 song11_channel3:
     mUNK_E4 frequencyDeltaData                         ;; 0f:6371 $e4 $4f $7a
     mUNK_E8 wavePatternsData                           ;; 0f:6374 $e8 $cc $7a
-    mUNK_E0 $40                                        ;; 0f:6377 $e0 $40
-    db   $D1                                           ;; 0f:6379 $d1 unknown music opcode
+    mUNK_E0 $d140                                      ;; 0f:6377 $e0 $40 $d1
     db   $AB                                           ;; 0f:637a $ab unknown music opcode
     db   $7F                                           ;; 0f:637b $7f unknown music opcode
     db   $2F                                           ;; 0f:637c $2f unknown music opcode
@@ -7123,8 +7046,7 @@ song11_channel3:
 song10_channel2:
     mUNK_E7 $6b                                        ;; 0f:6397 $e7 $6b
     mUNK_E4 frequencyDeltaData                         ;; 0f:6399 $e4 $4f $7a
-    mUNK_E0 $82                                        ;; 0f:639c $e0 $82
-    db   $7A                                           ;; 0f:639e $7a unknown music opcode
+    mUNK_E0 volumeEnvelopeData                         ;; 0f:639c $e0 $82 $7a
     mUNK_E5 $80                                        ;; 0f:639f $e5 $80
     mUNK_E6 $03                                        ;; 0f:63a1 $e6 $03
     db   $D3                                           ;; 0f:63a3 $d3 unknown music opcode
@@ -7145,8 +7067,7 @@ song10_channel2:
 
 song10_channel1:
     mUNK_E4 frequencyDeltaData                         ;; 0f:63b2 $e4 $4f $7a
-    mUNK_E0 $82                                        ;; 0f:63b5 $e0 $82
-    db   $7A                                           ;; 0f:63b7 $7a unknown music opcode
+    mUNK_E0 volumeEnvelopeData                         ;; 0f:63b5 $e0 $82 $7a
     mUNK_E5 $80                                        ;; 0f:63b8 $e5 $80
     mUNK_E6 $03                                        ;; 0f:63ba $e6 $03
     db   $0F                                           ;; 0f:63bc $0f unknown music opcode
@@ -7155,8 +7076,8 @@ song10_channel1:
 song10_channel3:
     mUNK_E4 frequencyDeltaData                         ;; 0f:63be $e4 $4f $7a
     mUNK_E8 wavePatternsData                           ;; 0f:63c1 $e8 $cc $7a
-    mUNK_E0 $40                                        ;; 0f:63c4 $e0 $40
-    mUNK_E6 $03                                        ;; 0f:63c6 $e6 $03
+    mUNK_E0 $e640                                      ;; 0f:63c4 $e0 $40 $e6
+    db   $03                                           ;; 0f:63c7 $03 unknown music opcode
     db   $0F                                           ;; 0f:63c8 $0f unknown music opcode
     db   $FF                                           ;; 0f:63c9 $ff unknown music opcode
     db   $D0                                           ;; 0f:63ca $d0 unknown music opcode
@@ -7169,8 +7090,7 @@ song10_channel3:
 song12_channel2:
     mUNK_E7 $82                                        ;; 0f:63d0 $e7 $82
     mUNK_E4 frequencyDeltaData                         ;; 0f:63d2 $e4 $4f $7a
-    mUNK_E0 $c2                                        ;; 0f:63d5 $e0 $c2
-    db   $7A                                           ;; 0f:63d7 $7a unknown music opcode
+    mUNK_E0 data_0f_7ac2                               ;; 0f:63d5 $e0 $c2 $7a
     mUNK_E5 $40                                        ;; 0f:63d8 $e5 $40
     mUNK_E6 $03                                        ;; 0f:63da $e6 $03
     db   $DC                                           ;; 0f:63dc $dc unknown music opcode
@@ -7273,8 +7193,7 @@ song12_channel2:
     db   $59                                           ;; 0f:6440 $59 unknown music opcode
     db   $2B                                           ;; 0f:6441 $2b unknown music opcode
     db   $AE                                           ;; 0f:6442 $ae unknown music opcode
-    mUNK_E0 $c4                                        ;; 0f:6443 $e0 $c4
-    db   $7A                                           ;; 0f:6445 $7a unknown music opcode
+    mUNK_E0 data_0f_7ac4                               ;; 0f:6443 $e0 $c4 $7a
     mUNK_E5 $80                                        ;; 0f:6446 $e5 $80
     db   $A6                                           ;; 0f:6448 $a6 unknown music opcode
     db   $A7                                           ;; 0f:6449 $a7 unknown music opcode
@@ -7284,8 +7203,7 @@ song12_channel2:
     db   $A1                                           ;; 0f:644d $a1 unknown music opcode
     db   $A2                                           ;; 0f:644e $a2 unknown music opcode
     db   $A4                                           ;; 0f:644f $a4 unknown music opcode
-    mUNK_E0 $82                                        ;; 0f:6450 $e0 $82
-    db   $7A                                           ;; 0f:6452 $7a unknown music opcode
+    mUNK_E0 volumeEnvelopeData                         ;; 0f:6450 $e0 $82 $7a
     db   $46                                           ;; 0f:6453 $46 unknown music opcode
     db   $A4                                           ;; 0f:6454 $a4 unknown music opcode
     db   $A2                                           ;; 0f:6455 $a2 unknown music opcode
@@ -7354,8 +7272,7 @@ song12_channel2:
     db   $79                                           ;; 0f:6495 $79 unknown music opcode
     db   $D8                                           ;; 0f:6496 $d8 unknown music opcode
     db   $84                                           ;; 0f:6497 $84 unknown music opcode
-    mUNK_E0 $be                                        ;; 0f:6498 $e0 $be
-    db   $7A                                           ;; 0f:649a $7a unknown music opcode
+    mUNK_E0 data_0f_7abe                               ;; 0f:6498 $e0 $be $7a
     db   $46                                           ;; 0f:649b $46 unknown music opcode
     db   $DC                                           ;; 0f:649c $dc unknown music opcode
     db   $AB                                           ;; 0f:649d $ab unknown music opcode
@@ -7365,8 +7282,7 @@ song12_channel2:
 
 song12_channel1:
     mUNK_E4 frequencyDeltaData                         ;; 0f:64a3 $e4 $4f $7a
-    mUNK_E0 $a8                                        ;; 0f:64a6 $e0 $a8
-    db   $7A                                           ;; 0f:64a8 $7a unknown music opcode
+    mUNK_E0 data_0f_7aa8                               ;; 0f:64a6 $e0 $a8 $7a
     mUNK_E5 $40                                        ;; 0f:64a9 $e5 $40
     mUNK_E6 $03                                        ;; 0f:64ab $e6 $03
     db   $D2                                           ;; 0f:64ad $d2 unknown music opcode
@@ -7418,8 +7334,7 @@ song12_channel1:
 .data_0f_64dd:
     mUNK_E3 $02                                        ;; 0f:64dd $e3 $02
 .data_0f_64df:
-    mUNK_E0 $ac                                        ;; 0f:64df $e0 $ac
-    db   $7A                                           ;; 0f:64e1 $7a unknown music opcode
+    mUNK_E0 data_0f_7aac                               ;; 0f:64df $e0 $ac $7a
     mUNK_E5 $00                                        ;; 0f:64e2 $e5 $00
     mUNK_E6 $02                                        ;; 0f:64e4 $e6 $02
     db   $D2                                           ;; 0f:64e6 $d2 unknown music opcode
@@ -7559,8 +7474,7 @@ song12_channel1:
     db   $22                                           ;; 0f:657f $22 unknown music opcode
     db   $AE                                           ;; 0f:6580 $ae unknown music opcode
     db   $DC                                           ;; 0f:6581 $dc unknown music opcode
-    mUNK_E0 $c4                                        ;; 0f:6582 $e0 $c4
-    db   $7A                                           ;; 0f:6584 $7a unknown music opcode
+    mUNK_E0 data_0f_7ac4                               ;; 0f:6582 $e0 $c4 $7a
     mUNK_E5 $80                                        ;; 0f:6585 $e5 $80
     db   $A9                                           ;; 0f:6587 $a9 unknown music opcode
     db   $AB                                           ;; 0f:6588 $ab unknown music opcode
@@ -7623,8 +7537,7 @@ song12_channel1:
     mUNK_E6 $03                                        ;; 0f:65cf $e6 $03
     db   $A9                                           ;; 0f:65d1 $a9 unknown music opcode
     db   $AF                                           ;; 0f:65d2 $af unknown music opcode
-    mUNK_E0 $ac                                        ;; 0f:65d3 $e0 $ac
-    db   $7A                                           ;; 0f:65d5 $7a unknown music opcode
+    mUNK_E0 data_0f_7aac                               ;; 0f:65d3 $e0 $ac $7a
     db   $D8                                           ;; 0f:65d6 $d8 unknown music opcode
     db   $A9                                           ;; 0f:65d7 $a9 unknown music opcode
     db   $A6                                           ;; 0f:65d8 $a6 unknown music opcode
@@ -7758,7 +7671,7 @@ song12_channel1:
 song12_channel3:
     mUNK_E4 frequencyDeltaData                         ;; 0f:6667 $e4 $4f $7a
     mUNK_E8 data_0f_7afc                               ;; 0f:666a $e8 $fc $7a
-    mUNK_E0 $20                                        ;; 0f:666d $e0 $20
+    mUNK3_E0 $20                                       ;; 0f:666d $e0 $20
     mUNK_E6 $03                                        ;; 0f:666f $e6 $03
     db   $D1                                           ;; 0f:6671 $d1 unknown music opcode
     db   $1B                                           ;; 0f:6672 $1b unknown music opcode
@@ -8156,8 +8069,7 @@ song13_channel2:
     mUNK_E7 $78                                        ;; 0f:6819 $e7 $78
 .data_0f_681b:
     mUNK_E4 frequencyDeltaData                         ;; 0f:681b $e4 $4f $7a
-    mUNK_E0 $be                                        ;; 0f:681e $e0 $be
-    db   $7A                                           ;; 0f:6820 $7a unknown music opcode
+    mUNK_E0 data_0f_7abe                               ;; 0f:681e $e0 $be $7a
     mUNK_E5 $40                                        ;; 0f:6821 $e5 $40
     mUNK_E6 $03                                        ;; 0f:6823 $e6 $03
     db   $D2                                           ;; 0f:6825 $d2 unknown music opcode
@@ -8238,8 +8150,7 @@ song13_channel2:
     db   $09                                           ;; 0f:6870 $09 unknown music opcode
     db   $2E                                           ;; 0f:6871 $2e unknown music opcode
     db   $8E                                           ;; 0f:6872 $8e unknown music opcode
-    mUNK_E0 $82                                        ;; 0f:6873 $e0 $82
-    db   $7A                                           ;; 0f:6875 $7a unknown music opcode
+    mUNK_E0 volumeEnvelopeData                         ;; 0f:6873 $e0 $82 $7a
     mUNK_E5 $80                                        ;; 0f:6876 $e5 $80
     db   $8B                                           ;; 0f:6878 $8b unknown music opcode
     db   $D8                                           ;; 0f:6879 $d8 unknown music opcode
@@ -8261,8 +8172,7 @@ song13_channel2:
     db   $2E                                           ;; 0f:6889 $2e unknown music opcode
     db   $8F                                           ;; 0f:688a $8f unknown music opcode
     db   $DC                                           ;; 0f:688b $dc unknown music opcode
-    mUNK_E0 $a8                                        ;; 0f:688c $e0 $a8
-    db   $7A                                           ;; 0f:688e $7a unknown music opcode
+    mUNK_E0 data_0f_7aa8                               ;; 0f:688c $e0 $a8 $7a
     db   $AB                                           ;; 0f:688f $ab unknown music opcode
     db   $D8                                           ;; 0f:6890 $d8 unknown music opcode
     db   $A0                                           ;; 0f:6891 $a0 unknown music opcode
@@ -8271,8 +8181,7 @@ song13_channel2:
     db   $DC                                           ;; 0f:6894 $dc unknown music opcode
     db   $AB                                           ;; 0f:6895 $ab unknown music opcode
     db   $A7                                           ;; 0f:6896 $a7 unknown music opcode
-    mUNK_E0 $82                                        ;; 0f:6897 $e0 $82
-    db   $7A                                           ;; 0f:6899 $7a unknown music opcode
+    mUNK_E0 volumeEnvelopeData                         ;; 0f:6897 $e0 $82 $7a
     mUNK_E5 $40                                        ;; 0f:689a $e5 $40
     db   $79                                           ;; 0f:689c $79 unknown music opcode
     db   $7B                                           ;; 0f:689d $7b unknown music opcode
@@ -8291,8 +8200,7 @@ song13_channel2:
     db   $04                                           ;; 0f:68aa $04 unknown music opcode
     db   $2E                                           ;; 0f:68ab $2e unknown music opcode
     db   $AE                                           ;; 0f:68ac $ae unknown music opcode
-    mUNK_E0 $a8                                        ;; 0f:68ad $e0 $a8
-    db   $7A                                           ;; 0f:68af $7a unknown music opcode
+    mUNK_E0 data_0f_7aa8                               ;; 0f:68ad $e0 $a8 $7a
     db   $A2                                           ;; 0f:68b0 $a2 unknown music opcode
     db   $A0                                           ;; 0f:68b1 $a0 unknown music opcode
     db   $DC                                           ;; 0f:68b2 $dc unknown music opcode
@@ -8307,8 +8215,7 @@ song13_channel2:
 
 song13_channel1:
     mUNK_E4 frequencyDeltaData                         ;; 0f:68bd $e4 $4f $7a
-    mUNK_E0 $c0                                        ;; 0f:68c0 $e0 $c0
-    db   $7A                                           ;; 0f:68c2 $7a unknown music opcode
+    mUNK_E0 data_0f_7ac0                               ;; 0f:68c0 $e0 $c0 $7a
     mUNK_E5 $00                                        ;; 0f:68c3 $e5 $00
     mUNK_E6 $02                                        ;; 0f:68c5 $e6 $02
     db   $D2                                           ;; 0f:68c7 $d2 unknown music opcode
@@ -8327,8 +8234,7 @@ song13_channel1:
     db   $50                                           ;; 0f:68d4 $50 unknown music opcode
     db   $DC                                           ;; 0f:68d5 $dc unknown music opcode
     db   $5B                                           ;; 0f:68d6 $5b unknown music opcode
-    mUNK_E0 $82                                        ;; 0f:68d7 $e0 $82
-    db   $7A                                           ;; 0f:68d9 $7a unknown music opcode
+    mUNK_E0 volumeEnvelopeData                         ;; 0f:68d7 $e0 $82 $7a
     mUNK_E6 $03                                        ;; 0f:68da $e6 $03
     mUNK_E5 $40                                        ;; 0f:68dc $e5 $40
     db   $79                                           ;; 0f:68de $79 unknown music opcode
@@ -8340,8 +8246,7 @@ song13_channel1:
     db   $D8                                           ;; 0f:68e4 $d8 unknown music opcode
     db   $70                                           ;; 0f:68e5 $70 unknown music opcode
     db   $82                                           ;; 0f:68e6 $82 unknown music opcode
-    mUNK_E0 $c0                                        ;; 0f:68e7 $e0 $c0
-    db   $7A                                           ;; 0f:68e9 $7a unknown music opcode
+    mUNK_E0 data_0f_7ac0                               ;; 0f:68e7 $e0 $c0 $7a
     mUNK_E6 $01                                        ;; 0f:68ea $e6 $01
     mUNK_E5 $00                                        ;; 0f:68ec $e5 $00
     db   $40                                           ;; 0f:68ee $40 unknown music opcode
@@ -8362,8 +8267,7 @@ song13_channel1:
     db   $AB                                           ;; 0f:68fd $ab unknown music opcode
     db   $D8                                           ;; 0f:68fe $d8 unknown music opcode
     db   $50                                           ;; 0f:68ff $50 unknown music opcode
-    mUNK_E0 $82                                        ;; 0f:6900 $e0 $82
-    db   $7A                                           ;; 0f:6902 $7a unknown music opcode
+    mUNK_E0 volumeEnvelopeData                         ;; 0f:6900 $e0 $82 $7a
     mUNK_E6 $03                                        ;; 0f:6903 $e6 $03
     mUNK_E5 $40                                        ;; 0f:6905 $e5 $40
     db   $52                                           ;; 0f:6907 $52 unknown music opcode
@@ -8373,8 +8277,7 @@ song13_channel1:
     db   $D8                                           ;; 0f:690b $d8 unknown music opcode
     db   $70                                           ;; 0f:690c $70 unknown music opcode
     db   $82                                           ;; 0f:690d $82 unknown music opcode
-    mUNK_E0 $c0                                        ;; 0f:690e $e0 $c0
-    db   $7A                                           ;; 0f:6910 $7a unknown music opcode
+    mUNK_E0 data_0f_7ac0                               ;; 0f:690e $e0 $c0 $7a
     mUNK_E6 $02                                        ;; 0f:6911 $e6 $02
     mUNK_E5 $00                                        ;; 0f:6913 $e5 $00
     db   $50                                           ;; 0f:6915 $50 unknown music opcode
@@ -8436,8 +8339,7 @@ song13_channel1:
     db   $82                                           ;; 0f:6950 $82 unknown music opcode
     db   $84                                           ;; 0f:6951 $84 unknown music opcode
     db   $85                                           ;; 0f:6952 $85 unknown music opcode
-    mUNK_E0 $ae                                        ;; 0f:6953 $e0 $ae
-    db   $7A                                           ;; 0f:6955 $7a unknown music opcode
+    mUNK_E0 data_0f_7aae                               ;; 0f:6953 $e0 $ae $7a
     mUNK_E5 $40                                        ;; 0f:6956 $e5 $40
     db   $A0                                           ;; 0f:6958 $a0 unknown music opcode
     db   $A2                                           ;; 0f:6959 $a2 unknown music opcode
@@ -8538,8 +8440,7 @@ song13_channel1:
     db   $A9                                           ;; 0f:69c6 $a9 unknown music opcode
     db   $A7                                           ;; 0f:69c7 $a7 unknown music opcode
     db   $A2                                           ;; 0f:69c8 $a2 unknown music opcode
-    mUNK_E0 $c0                                        ;; 0f:69c9 $e0 $c0
-    db   $7A                                           ;; 0f:69cb $7a unknown music opcode
+    mUNK_E0 data_0f_7ac0                               ;; 0f:69c9 $e0 $c0 $7a
     mUNK_E6 $01                                        ;; 0f:69cc $e6 $01
     db   $40                                           ;; 0f:69ce $40 unknown music opcode
     db   $85                                           ;; 0f:69cf $85 unknown music opcode
@@ -8550,8 +8451,7 @@ song13_channel1:
     db   $76                                           ;; 0f:69d4 $76 unknown music opcode
     db   $78                                           ;; 0f:69d5 $78 unknown music opcode
     db   $89                                           ;; 0f:69d6 $89 unknown music opcode
-    mUNK_E0 $82                                        ;; 0f:69d7 $e0 $82
-    db   $7A                                           ;; 0f:69d9 $7a unknown music opcode
+    mUNK_E0 volumeEnvelopeData                         ;; 0f:69d7 $e0 $82 $7a
     mUNK_E5 $40                                        ;; 0f:69da $e5 $40
     mUNK_E6 $03                                        ;; 0f:69dc $e6 $03
     db   $78                                           ;; 0f:69de $78 unknown music opcode
@@ -8560,8 +8460,7 @@ song13_channel1:
     db   $79                                           ;; 0f:69e1 $79 unknown music opcode
     db   $78                                           ;; 0f:69e2 $78 unknown music opcode
     db   $86                                           ;; 0f:69e3 $86 unknown music opcode
-    mUNK_E0 $ae                                        ;; 0f:69e4 $e0 $ae
-    db   $7A                                           ;; 0f:69e6 $7a unknown music opcode
+    mUNK_E0 data_0f_7aae                               ;; 0f:69e4 $e0 $ae $7a
     db   $A4                                           ;; 0f:69e7 $a4 unknown music opcode
     db   $DC                                           ;; 0f:69e8 $dc unknown music opcode
     db   $A8                                           ;; 0f:69e9 $a8 unknown music opcode
@@ -8588,7 +8487,7 @@ song13_channel1:
 song13_channel3:
     mUNK_E4 frequencyDeltaData                         ;; 0f:69ff $e4 $4f $7a
     mUNK_E8 data_0f_7b0c                               ;; 0f:6a02 $e8 $0c $7b
-    mUNK_E0 $20                                        ;; 0f:6a05 $e0 $20
+    mUNK3_E0 $20                                       ;; 0f:6a05 $e0 $20
     mUNK_E6 $03                                        ;; 0f:6a07 $e6 $03
 .data_0f_6a09:
     mUNK_E3 $03                                        ;; 0f:6a09 $e3 $03
@@ -8910,8 +8809,7 @@ song13_channel3:
 song14_channel2:
     mUNK_E7 $3e                                        ;; 0f:6b57 $e7 $3e
     mUNK_E4 frequencyDeltaData                         ;; 0f:6b59 $e4 $4f $7a
-    mUNK_E0 $82                                        ;; 0f:6b5c $e0 $82
-    db   $7A                                           ;; 0f:6b5e $7a unknown music opcode
+    mUNK_E0 volumeEnvelopeData                         ;; 0f:6b5c $e0 $82 $7a
     mUNK_E5 $40                                        ;; 0f:6b5f $e5 $40
     db   $D2                                           ;; 0f:6b61 $d2 unknown music opcode
     db   $87                                           ;; 0f:6b62 $87 unknown music opcode
@@ -9180,8 +9078,7 @@ song14_channel2:
 
 song14_channel1:
     mUNK_E4 frequencyDeltaData                         ;; 0f:6c83 $e4 $4f $7a
-    mUNK_E0 $82                                        ;; 0f:6c86 $e0 $82
-    db   $7A                                           ;; 0f:6c88 $7a unknown music opcode
+    mUNK_E0 volumeEnvelopeData                         ;; 0f:6c86 $e0 $82 $7a
     mUNK_E5 $00                                        ;; 0f:6c89 $e5 $00
     mUNK_E6 $03                                        ;; 0f:6c8b $e6 $03
     db   $8F                                           ;; 0f:6c8d $8f unknown music opcode
@@ -9238,8 +9135,7 @@ song14_channel1:
     db   $D8                                           ;; 0f:6cc0 $d8 unknown music opcode
     mUNK_E3 $02                                        ;; 0f:6cc1 $e3 $02
 .data_0f_6cc3:
-    mUNK_E0 $c6                                        ;; 0f:6cc3 $e0 $c6
-    db   $7A                                           ;; 0f:6cc5 $7a unknown music opcode
+    mUNK_E0 data_0f_7ac6                               ;; 0f:6cc3 $e0 $c6 $7a
     mUNK_E5 $40                                        ;; 0f:6cc6 $e5 $40
     db   $25                                           ;; 0f:6cc8 $25 unknown music opcode
     db   $21                                           ;; 0f:6cc9 $21 unknown music opcode
@@ -9290,16 +9186,14 @@ song14_channel1:
     db   $29                                           ;; 0f:6cfa $29 unknown music opcode
     db   $8F                                           ;; 0f:6cfb $8f unknown music opcode
     db   $D8                                           ;; 0f:6cfc $d8 unknown music opcode
-    mUNK_E0 $82                                        ;; 0f:6cfd $e0 $82
-    db   $7A                                           ;; 0f:6cff $7a unknown music opcode
+    mUNK_E0 volumeEnvelopeData                         ;; 0f:6cfd $e0 $82 $7a
     mUNK_E5 $00                                        ;; 0f:6d00 $e5 $00
     db   $85                                           ;; 0f:6d02 $85 unknown music opcode
     db   $87                                           ;; 0f:6d03 $87 unknown music opcode
     db   $89                                           ;; 0f:6d04 $89 unknown music opcode
     mUNK_E3 $02                                        ;; 0f:6d05 $e3 $02
 .data_0f_6d07:
-    mUNK_E0 $c2                                        ;; 0f:6d07 $e0 $c2
-    db   $7A                                           ;; 0f:6d09 $7a unknown music opcode
+    mUNK_E0 data_0f_7ac2                               ;; 0f:6d07 $e0 $c2 $7a
     db   $8F                                           ;; 0f:6d0a $8f unknown music opcode
     db   $82                                           ;; 0f:6d0b $82 unknown music opcode
     db   $84                                           ;; 0f:6d0c $84 unknown music opcode
@@ -9321,14 +9215,12 @@ song14_channel1:
     db   $50                                           ;; 0f:6d1c $50 unknown music opcode
     db   $84                                           ;; 0f:6d1d $84 unknown music opcode
     db   $80                                           ;; 0f:6d1e $80 unknown music opcode
-    mUNK_E0 $82                                        ;; 0f:6d1f $e0 $82
-    db   $7A                                           ;; 0f:6d21 $7a unknown music opcode
+    mUNK_E0 volumeEnvelopeData                         ;; 0f:6d1f $e0 $82 $7a
     db   $52                                           ;; 0f:6d22 $52 unknown music opcode
     db   $50                                           ;; 0f:6d23 $50 unknown music opcode
     db   $57                                           ;; 0f:6d24 $57 unknown music opcode
     db   $59                                           ;; 0f:6d25 $59 unknown music opcode
-    mUNK_E0 $c2                                        ;; 0f:6d26 $e0 $c2
-    db   $7A                                           ;; 0f:6d28 $7a unknown music opcode
+    mUNK_E0 data_0f_7ac2                               ;; 0f:6d26 $e0 $c2 $7a
     db   $8F                                           ;; 0f:6d29 $8f unknown music opcode
     db   $82                                           ;; 0f:6d2a $82 unknown music opcode
     db   $84                                           ;; 0f:6d2b $84 unknown music opcode
@@ -9356,8 +9248,7 @@ song14_channel1:
     db   $47                                           ;; 0f:6d41 $47 unknown music opcode
     db   $8F                                           ;; 0f:6d42 $8f unknown music opcode
     mUNK_EB $01, .data_0f_6d7b                         ;; 0f:6d43 $eb $01 $7b $6d
-    mUNK_E0 $c4                                        ;; 0f:6d47 $e0 $c4
-    db   $7A                                           ;; 0f:6d49 $7a unknown music opcode
+    mUNK_E0 data_0f_7ac4                               ;; 0f:6d47 $e0 $c4 $7a
     mUNK_E5 $40                                        ;; 0f:6d4a $e5 $40
     db   $25                                           ;; 0f:6d4c $25 unknown music opcode
     db   $21                                           ;; 0f:6d4d $21 unknown music opcode
@@ -9395,8 +9286,7 @@ song14_channel1:
     db   $29                                           ;; 0f:6d6d $29 unknown music opcode
     db   $8F                                           ;; 0f:6d6e $8f unknown music opcode
     db   $D8                                           ;; 0f:6d6f $d8 unknown music opcode
-    mUNK_E0 $82                                        ;; 0f:6d70 $e0 $82
-    db   $7A                                           ;; 0f:6d72 $7a unknown music opcode
+    mUNK_E0 volumeEnvelopeData                         ;; 0f:6d70 $e0 $82 $7a
     mUNK_E5 $00                                        ;; 0f:6d73 $e5 $00
     db   $85                                           ;; 0f:6d75 $85 unknown music opcode
     db   $87                                           ;; 0f:6d76 $87 unknown music opcode
@@ -9409,8 +9299,7 @@ song14_channel1:
     db   $22                                           ;; 0f:6d7f $22 unknown music opcode
     db   $53                                           ;; 0f:6d80 $53 unknown music opcode
     db   $5F                                           ;; 0f:6d81 $5f unknown music opcode
-    mUNK_E0 $82                                        ;; 0f:6d82 $e0 $82
-    db   $7A                                           ;; 0f:6d84 $7a unknown music opcode
+    mUNK_E0 volumeEnvelopeData                         ;; 0f:6d82 $e0 $82 $7a
     db   $8F                                           ;; 0f:6d85 $8f unknown music opcode
     db   $82                                           ;; 0f:6d86 $82 unknown music opcode
     db   $84                                           ;; 0f:6d87 $84 unknown music opcode
@@ -9451,8 +9340,7 @@ song14_channel1:
 song14_channel3:
     mUNK_E4 frequencyDeltaData                         ;; 0f:6da9 $e4 $4f $7a
     mUNK_E8 data_0f_7adc                               ;; 0f:6dac $e8 $dc $7a
-    mUNK_E0 $40                                        ;; 0f:6daf $e0 $40
-    db   $D2                                           ;; 0f:6db1 $d2 unknown music opcode
+    mUNK_E0 $d240                                      ;; 0f:6daf $e0 $40 $d2
     db   $05                                           ;; 0f:6db2 $05 unknown music opcode
     db   $03                                           ;; 0f:6db3 $03 unknown music opcode
     db   $DC                                           ;; 0f:6db4 $dc unknown music opcode
@@ -9653,8 +9541,7 @@ song14_channel3:
 song15_channel2:
     mUNK_E7 $73                                        ;; 0f:6e8a $e7 $73
     mUNK_E4 frequencyDeltaData                         ;; 0f:6e8c $e4 $4f $7a
-    mUNK_E0 $82                                        ;; 0f:6e8f $e0 $82
-    db   $7A                                           ;; 0f:6e91 $7a unknown music opcode
+    mUNK_E0 volumeEnvelopeData                         ;; 0f:6e8f $e0 $82 $7a
     mUNK_E5 $80                                        ;; 0f:6e92 $e5 $80
     mUNK_E6 $01                                        ;; 0f:6e94 $e6 $01
 .data_0f_6e96:
@@ -9857,8 +9744,7 @@ song15_channel2:
 
 song15_channel1:
     mUNK_E4 frequencyDeltaData                         ;; 0f:6f5e $e4 $4f $7a
-    mUNK_E0 $c0                                        ;; 0f:6f61 $e0 $c0
-    db   $7A                                           ;; 0f:6f63 $7a unknown music opcode
+    mUNK_E0 data_0f_7ac0                               ;; 0f:6f61 $e0 $c0 $7a
     mUNK_E5 $80                                        ;; 0f:6f64 $e5 $80
     mUNK_E6 $02                                        ;; 0f:6f66 $e6 $02
     db   $AF                                           ;; 0f:6f68 $af unknown music opcode
@@ -10063,7 +9949,7 @@ song15_channel1:
 song15_channel3:
     mUNK_E4 frequencyDeltaData                         ;; 0f:7031 $e4 $4f $7a
     mUNK_E8 wavePatternsData                           ;; 0f:7034 $e8 $cc $7a
-    mUNK_E0 $40                                        ;; 0f:7037 $e0 $40
+    mUNK3_E0 $40                                       ;; 0f:7037 $e0 $40
     mUNK_E6 $03                                        ;; 0f:7039 $e6 $03
 .data_0f_703b:
     mUNK_E3 $02                                        ;; 0f:703b $e3 $02
@@ -10112,8 +9998,7 @@ song15_channel3:
 song16_channel2:
     mUNK_E7 $3c                                        ;; 0f:7070 $e7 $3c
     mUNK_E4 frequencyDeltaData                         ;; 0f:7072 $e4 $4f $7a
-    mUNK_E0 $82                                        ;; 0f:7075 $e0 $82
-    db   $7A                                           ;; 0f:7077 $7a unknown music opcode
+    mUNK_E0 volumeEnvelopeData                         ;; 0f:7075 $e0 $82 $7a
     mUNK_E5 $80                                        ;; 0f:7078 $e5 $80
 .data_0f_707a:
     db   $D3                                           ;; 0f:707a $d3 unknown music opcode
@@ -10154,8 +10039,7 @@ song16_channel2:
 
 song16_channel1:
     mUNK_E4 frequencyDeltaData                         ;; 0f:709f $e4 $4f $7a
-    mUNK_E0 $b2                                        ;; 0f:70a2 $e0 $b2
-    db   $7A                                           ;; 0f:70a4 $7a unknown music opcode
+    mUNK_E0 data_0f_7ab2                               ;; 0f:70a2 $e0 $b2 $7a
     mUNK_E5 $40                                        ;; 0f:70a5 $e5 $40
     mUNK_E6 $03                                        ;; 0f:70a7 $e6 $03
 .data_0f_70a9:
@@ -10241,7 +10125,7 @@ song16_channel1:
 song16_channel3:
     mUNK_E4 frequencyDeltaData                         ;; 0f:70f9 $e4 $4f $7a
     mUNK_E8 wavePatternsData                           ;; 0f:70fc $e8 $cc $7a
-    mUNK_E0 $40                                        ;; 0f:70ff $e0 $40
+    mUNK3_E0 $40                                       ;; 0f:70ff $e0 $40
     mUNK_E6 $03                                        ;; 0f:7101 $e6 $03
 .data_0f_7103:
     db   $D2                                           ;; 0f:7103 $d2 unknown music opcode
@@ -10262,8 +10146,7 @@ song16_channel3:
 song17_channel2:
     mUNK_E7 $5d                                        ;; 0f:7118 $e7 $5d
     mUNK_E4 frequencyDeltaData                         ;; 0f:711a $e4 $4f $7a
-    mUNK_E0 $aa                                        ;; 0f:711d $e0 $aa
-    db   $7A                                           ;; 0f:711f $7a unknown music opcode
+    mUNK_E0 data_0f_7aaa                               ;; 0f:711d $e0 $aa $7a
     mUNK_E5 $80                                        ;; 0f:7120 $e5 $80
     db   $0F                                           ;; 0f:7122 $0f unknown music opcode
 .data_0f_7123:
@@ -10403,8 +10286,7 @@ song17_channel2:
 
 song17_channel1:
     mUNK_E4 frequencyDeltaData                         ;; 0f:71aa $e4 $4f $7a
-    mUNK_E0 $b4                                        ;; 0f:71ad $e0 $b4
-    db   $7A                                           ;; 0f:71af $7a unknown music opcode
+    mUNK_E0 data_0f_7ab4                               ;; 0f:71ad $e0 $b4 $7a
     mUNK_E5 $40                                        ;; 0f:71b0 $e5 $40
     mUNK_E6 $03                                        ;; 0f:71b2 $e6 $03
     db   $0F                                           ;; 0f:71b4 $0f unknown music opcode
@@ -10565,7 +10447,7 @@ song17_channel1:
 song17_channel3:
     mUNK_E4 frequencyDeltaData                         ;; 0f:7263 $e4 $4f $7a
     mUNK_E8 wavePatternsData                           ;; 0f:7266 $e8 $cc $7a
-    mUNK_E0 $40                                        ;; 0f:7269 $e0 $40
+    mUNK3_E0 $40                                       ;; 0f:7269 $e0 $40
     db   $D1                                           ;; 0f:726b $d1 unknown music opcode
     db   $A7                                           ;; 0f:726c $a7 unknown music opcode
     db   $AF                                           ;; 0f:726d $af unknown music opcode
@@ -10768,8 +10650,7 @@ song17_channel3:
 song18_channel2:
     mUNK_E7 $7d                                        ;; 0f:7349 $e7 $7d
     mUNK_E4 frequencyDeltaData                         ;; 0f:734b $e4 $4f $7a
-    mUNK_E0 $c4                                        ;; 0f:734e $e0 $c4
-    db   $7A                                           ;; 0f:7350 $7a unknown music opcode
+    mUNK_E0 data_0f_7ac4                               ;; 0f:734e $e0 $c4 $7a
     mUNK_E5 $40                                        ;; 0f:7351 $e5 $40
     mUNK_E3 $03                                        ;; 0f:7353 $e3 $03
 .data_0f_7355:
@@ -10799,8 +10680,7 @@ song18_channel2:
     db   $DC                                           ;; 0f:736c $dc unknown music opcode
     db   $8B                                           ;; 0f:736d $8b unknown music opcode
     mUNK_E2 .data_0f_7355                              ;; 0f:736e $e2 $55 $73
-    mUNK_E0 $c0                                        ;; 0f:7371 $e0 $c0
-    db   $7A                                           ;; 0f:7373 $7a unknown music opcode
+    mUNK_E0 data_0f_7ac0                               ;; 0f:7371 $e0 $c0 $7a
     db   $2F                                           ;; 0f:7374 $2f unknown music opcode
     db   $AF                                           ;; 0f:7375 $af unknown music opcode
     db   $D2                                           ;; 0f:7376 $d2 unknown music opcode
@@ -10884,8 +10764,7 @@ song18_channel2:
 .data_0f_73c8:
     db   $26                                           ;; 0f:73c8 $26 unknown music opcode
     db   $8E                                           ;; 0f:73c9 $8e unknown music opcode
-    mUNK_E0 $82                                        ;; 0f:73ca $e0 $82
-    db   $7A                                           ;; 0f:73cc $7a unknown music opcode
+    mUNK_E0 volumeEnvelopeData                         ;; 0f:73ca $e0 $82 $7a
     mUNK_E5 $80                                        ;; 0f:73cd $e5 $80
     db   $89                                           ;; 0f:73cf $89 unknown music opcode
     db   $8B                                           ;; 0f:73d0 $8b unknown music opcode
@@ -10945,8 +10824,7 @@ song18_channel2:
     db   $86                                           ;; 0f:7406 $86 unknown music opcode
     db   $28                                           ;; 0f:7407 $28 unknown music opcode
     db   $AF                                           ;; 0f:7408 $af unknown music opcode
-    mUNK_E0 $c0                                        ;; 0f:7409 $e0 $c0
-    db   $7A                                           ;; 0f:740b $7a unknown music opcode
+    mUNK_E0 data_0f_7ac0                               ;; 0f:7409 $e0 $c0 $7a
     mUNK_E5 $40                                        ;; 0f:740c $e5 $40
     db   $A1                                           ;; 0f:740e $a1 unknown music opcode
     db   $DC                                           ;; 0f:740f $dc unknown music opcode
@@ -10963,8 +10841,7 @@ song18_channel2:
 
 song18_channel1:
     mUNK_E4 frequencyDeltaData                         ;; 0f:741c $e4 $4f $7a
-    mUNK_E0 $ca                                        ;; 0f:741f $e0 $ca
-    db   $7A                                           ;; 0f:7421 $7a unknown music opcode
+    mUNK_E0 data_0f_7aca                               ;; 0f:741f $e0 $ca $7a
     mUNK_E5 $40                                        ;; 0f:7422 $e5 $40
     mUNK_E6 $03                                        ;; 0f:7424 $e6 $03
     mUNK_E3 $03                                        ;; 0f:7426 $e3 $03
@@ -10995,8 +10872,7 @@ song18_channel1:
     db   $DC                                           ;; 0f:743f $dc unknown music opcode
     db   $8B                                           ;; 0f:7440 $8b unknown music opcode
     mUNK_E2 .data_0f_7428                              ;; 0f:7441 $e2 $28 $74
-    mUNK_E0 $c6                                        ;; 0f:7444 $e0 $c6
-    db   $7A                                           ;; 0f:7446 $7a unknown music opcode
+    mUNK_E0 data_0f_7ac6                               ;; 0f:7444 $e0 $c6 $7a
     db   $A6                                           ;; 0f:7447 $a6 unknown music opcode
     db   $A8                                           ;; 0f:7448 $a8 unknown music opcode
     db   $A9                                           ;; 0f:7449 $a9 unknown music opcode
@@ -11250,7 +11126,7 @@ song18_channel1:
 song18_channel3:
     mUNK_E4 frequencyDeltaData                         ;; 0f:756f $e4 $4f $7a
     mUNK_E8 data_0f_7afc                               ;; 0f:7572 $e8 $fc $7a
-    mUNK_E0 $20                                        ;; 0f:7575 $e0 $20
+    mUNK3_E0 $20                                       ;; 0f:7575 $e0 $20
     mUNK_E6 $03                                        ;; 0f:7577 $e6 $03
     db   $D1                                           ;; 0f:7579 $d1 unknown music opcode
     db   $A6                                           ;; 0f:757a $a6 unknown music opcode
@@ -11578,8 +11454,7 @@ song18_channel3:
 song19_channel2:
     mUNK_E7 $7b                                        ;; 0f:76d3 $e7 $7b
     mUNK_E4 frequencyDeltaData                         ;; 0f:76d5 $e4 $4f $7a
-    mUNK_E0 $b0                                        ;; 0f:76d8 $e0 $b0
-    db   $7A                                           ;; 0f:76da $7a unknown music opcode
+    mUNK_E0 data_0f_7ab0                               ;; 0f:76d8 $e0 $b0 $7a
     mUNK_E5 $00                                        ;; 0f:76db $e5 $00
     mUNK_E3 $04                                        ;; 0f:76dd $e3 $04
 .data_0f_76df:
@@ -11602,8 +11477,7 @@ song19_channel2:
     db   $A0                                           ;; 0f:76ef $a0 unknown music opcode
     mUNK_E2 .data_0f_76df                              ;; 0f:76f0 $e2 $df $76
     mUNK_E7 $82                                        ;; 0f:76f3 $e7 $82
-    mUNK_E0 $be                                        ;; 0f:76f5 $e0 $be
-    db   $7A                                           ;; 0f:76f7 $7a unknown music opcode
+    mUNK_E0 data_0f_7abe                               ;; 0f:76f5 $e0 $be $7a
     mUNK_E5 $40                                        ;; 0f:76f8 $e5 $40
     db   $D8                                           ;; 0f:76fa $d8 unknown music opcode
     db   $C3                                           ;; 0f:76fb $c3 unknown music opcode
@@ -11640,8 +11514,7 @@ song19_channel2:
 
 song19_channel1:
     mUNK_E4 frequencyDeltaData                         ;; 0f:771c $e4 $4f $7a
-    mUNK_E0 $b4                                        ;; 0f:771f $e0 $b4
-    db   $7A                                           ;; 0f:7721 $7a unknown music opcode
+    mUNK_E0 data_0f_7ab4                               ;; 0f:771f $e0 $b4 $7a
     mUNK_E5 $00                                        ;; 0f:7722 $e5 $00
     mUNK_E6 $03                                        ;; 0f:7724 $e6 $03
     mUNK_E3 $08                                        ;; 0f:7726 $e3 $08
@@ -11662,8 +11535,7 @@ song19_channel1:
     mUNK_E2 .data_0f_7728                              ;; 0f:7739 $e2 $28 $77
     mUNK_E3 $04                                        ;; 0f:773c $e3 $04
 .data_0f_773e:
-    mUNK_E0 $ae                                        ;; 0f:773e $e0 $ae
-    db   $7A                                           ;; 0f:7740 $7a unknown music opcode
+    mUNK_E0 data_0f_7aae                               ;; 0f:773e $e0 $ae $7a
     mUNK_E5 $40                                        ;; 0f:7741 $e5 $40
     mUNK_E6 $02                                        ;; 0f:7743 $e6 $02
     db   $D2                                           ;; 0f:7745 $d2 unknown music opcode
@@ -11693,7 +11565,7 @@ song19_channel3:
     mUNK_E4 frequencyDeltaData                         ;; 0f:7762 $e4 $4f $7a
 .data_0f_7765:
     mUNK_E8 data_0f_7afc                               ;; 0f:7765 $e8 $fc $7a
-    mUNK_E0 $20                                        ;; 0f:7768 $e0 $20
+    mUNK3_E0 $20                                       ;; 0f:7768 $e0 $20
     mUNK_E6 $03                                        ;; 0f:776a $e6 $03
     mUNK_E3 $02                                        ;; 0f:776c $e3 $02
 .data_0f_776e:
@@ -11746,8 +11618,7 @@ song19_channel3:
 song1a_channel2:
     mUNK_E7 $3c                                        ;; 0f:77a8 $e7 $3c
     mUNK_E4 frequencyDeltaData                         ;; 0f:77aa $e4 $4f $7a
-    mUNK_E0 $82                                        ;; 0f:77ad $e0 $82
-    db   $7A                                           ;; 0f:77af $7a unknown music opcode
+    mUNK_E0 volumeEnvelopeData                         ;; 0f:77ad $e0 $82 $7a
     mUNK_E5 $80                                        ;; 0f:77b0 $e5 $80
     db   $D3                                           ;; 0f:77b2 $d3 unknown music opcode
     db   $A2                                           ;; 0f:77b3 $a2 unknown music opcode
@@ -11846,8 +11717,7 @@ song1a_channel2:
 
 song1a_channel1:
     mUNK_E4 frequencyDeltaData                         ;; 0f:7811 $e4 $4f $7a
-    mUNK_E0 $b0                                        ;; 0f:7814 $e0 $b0
-    db   $7A                                           ;; 0f:7816 $7a unknown music opcode
+    mUNK_E0 data_0f_7ab0                               ;; 0f:7814 $e0 $b0 $7a
     mUNK_E5 $00                                        ;; 0f:7817 $e5 $00
     mUNK_E6 $03                                        ;; 0f:7819 $e6 $03
     db   $5F                                           ;; 0f:781b $5f unknown music opcode
@@ -11989,7 +11859,7 @@ song1a_channel1:
 song1a_channel3:
     mUNK_E4 frequencyDeltaData                         ;; 0f:78a3 $e4 $4f $7a
     mUNK_E8 data_0f_7adc                               ;; 0f:78a6 $e8 $dc $7a
-    mUNK_E0 $40                                        ;; 0f:78a9 $e0 $40
+    mUNK3_E0 $40                                       ;; 0f:78a9 $e0 $40
     mUNK_E6 $03                                        ;; 0f:78ab $e6 $03
     db   $5F                                           ;; 0f:78ad $5f unknown music opcode
 .data_0f_78ae:
@@ -12066,8 +11936,7 @@ song1a_channel3:
 song1b_channel2:
     mUNK_E7 $6f                                        ;; 0f:78fa $e7 $6f
     mUNK_E4 frequencyDeltaData                         ;; 0f:78fc $e4 $4f $7a
-    mUNK_E0 $82                                        ;; 0f:78ff $e0 $82
-    db   $7A                                           ;; 0f:7901 $7a unknown music opcode
+    mUNK_E0 volumeEnvelopeData                         ;; 0f:78ff $e0 $82 $7a
     mUNK_E5 $40                                        ;; 0f:7902 $e5 $40
     mUNK_E6 $03                                        ;; 0f:7904 $e6 $03
     db   $D3                                           ;; 0f:7906 $d3 unknown music opcode
@@ -12102,8 +11971,7 @@ song1b_channel2:
 
 song1b_channel1:
     mUNK_E4 frequencyDeltaData                         ;; 0f:7924 $e4 $4f $7a
-    mUNK_E0 $82                                        ;; 0f:7927 $e0 $82
-    db   $7A                                           ;; 0f:7929 $7a unknown music opcode
+    mUNK_E0 volumeEnvelopeData                         ;; 0f:7927 $e0 $82 $7a
     mUNK_E5 $00                                        ;; 0f:792a $e5 $00
     mUNK_E6 $03                                        ;; 0f:792c $e6 $03
     db   $D2                                           ;; 0f:792e $d2 unknown music opcode
@@ -12136,8 +12004,8 @@ song1b_channel1:
 song1b_channel3:
     mUNK_E4 frequencyDeltaData                         ;; 0f:7948 $e4 $4f $7a
     mUNK_E8 data_0f_7adc                               ;; 0f:794b $e8 $dc $7a
-    mUNK_E0 $40                                        ;; 0f:794e $e0 $40
-    mUNK_E6 $03                                        ;; 0f:7950 $e6 $03
+    mUNK_E0 $e640                                      ;; 0f:794e $e0 $40 $e6
+    db   $03                                           ;; 0f:7951 $03 unknown music opcode
     db   $D2                                           ;; 0f:7952 $d2 unknown music opcode
     db   $B8                                           ;; 0f:7953 $b8 unknown music opcode
     db   $BF                                           ;; 0f:7954 $bf unknown music opcode
@@ -12167,8 +12035,7 @@ song1b_channel3:
 song1c_channel2:
     mUNK_E7 $7d                                        ;; 0f:796b $e7 $7d
     mUNK_E4 frequencyDeltaData                         ;; 0f:796d $e4 $4f $7a
-    mUNK_E0 $82                                        ;; 0f:7970 $e0 $82
-    db   $7A                                           ;; 0f:7972 $7a unknown music opcode
+    mUNK_E0 volumeEnvelopeData                         ;; 0f:7970 $e0 $82 $7a
     mUNK_E5 $40                                        ;; 0f:7973 $e5 $40
     mUNK_E6 $03                                        ;; 0f:7975 $e6 $03
     db   $D2                                           ;; 0f:7977 $d2 unknown music opcode
@@ -12187,8 +12054,7 @@ song1c_channel2:
 
 song1c_channel1:
     mUNK_E4 frequencyDeltaData                         ;; 0f:7984 $e4 $4f $7a
-    mUNK_E0 $82                                        ;; 0f:7987 $e0 $82
-    db   $7A                                           ;; 0f:7989 $7a unknown music opcode
+    mUNK_E0 volumeEnvelopeData                         ;; 0f:7987 $e0 $82 $7a
     mUNK_E5 $00                                        ;; 0f:798a $e5 $00
     mUNK_E6 $03                                        ;; 0f:798c $e6 $03
     db   $D2                                           ;; 0f:798e $d2 unknown music opcode
@@ -12207,8 +12073,8 @@ song1c_channel1:
 song1c_channel3:
     mUNK_E4 frequencyDeltaData                         ;; 0f:799a $e4 $4f $7a
     mUNK_E8 data_0f_7aec                               ;; 0f:799d $e8 $ec $7a
-    mUNK_E0 $40                                        ;; 0f:79a0 $e0 $40
-    mUNK_E6 $03                                        ;; 0f:79a2 $e6 $03
+    mUNK_E0 $e640                                      ;; 0f:79a0 $e0 $40 $e6
+    db   $03                                           ;; 0f:79a3 $03 unknown music opcode
     db   $D1                                           ;; 0f:79a4 $d1 unknown music opcode
     db   $2B                                           ;; 0f:79a5 $2b unknown music opcode
     db   $D8                                           ;; 0f:79a6 $d8 unknown music opcode
@@ -12231,8 +12097,7 @@ song1c_channel3:
 song1d_Channel2:
     mUNK_E7 $4b                                        ;; 0f:79b6 $e7 $4b
     mUNK_E4 frequencyDeltaData                         ;; 0f:79b8 $e4 $4f $7a
-    mUNK_E0 $82                                        ;; 0f:79bb $e0 $82
-    db   $7A                                           ;; 0f:79bd $7a unknown music opcode
+    mUNK_E0 volumeEnvelopeData                         ;; 0f:79bb $e0 $82 $7a
     mUNK_E5 $80                                        ;; 0f:79be $e5 $80
     mUNK_E6 $01                                        ;; 0f:79c0 $e6 $01
 .data_0f_79c2:
@@ -12277,8 +12142,7 @@ song1d_Channel2:
 
 song1d_Channel1:
     mUNK_E4 frequencyDeltaData                         ;; 0f:79ea $e4 $4f $7a
-    mUNK_E0 $c0                                        ;; 0f:79ed $e0 $c0
-    db   $7A                                           ;; 0f:79ef $7a unknown music opcode
+    mUNK_E0 data_0f_7ac0                               ;; 0f:79ed $e0 $c0 $7a
     mUNK_E5 $80                                        ;; 0f:79f0 $e5 $80
     mUNK_E6 $02                                        ;; 0f:79f2 $e6 $02
     db   $BF                                           ;; 0f:79f4 $bf unknown music opcode
@@ -12325,7 +12189,7 @@ song1d_Channel1:
 song1d_Channel3:
     mUNK_E4 frequencyDeltaData                         ;; 0f:7a1d $e4 $4f $7a
     mUNK_E8 data_0f_7adc                               ;; 0f:7a20 $e8 $dc $7a
-    mUNK_E0 $60                                        ;; 0f:7a23 $e0 $60
+    mUNK3_E0 $60                                       ;; 0f:7a23 $e0 $60
     mUNK_E6 $03                                        ;; 0f:7a25 $e6 $03
 .data_0f_7a27:
     db   $D4                                           ;; 0f:7a27 $d4 unknown music opcode
@@ -12395,37 +12259,71 @@ volumeEnvelopeData:
     db   $ff, $0a                                      ;; 0f:7a86 ?? $02
     db   $6c, $63                                      ;; 0f:7a88 ?? $03
     db   $35, $ff                                      ;; 0f:7a8a ?? $04
+
+data_0f_7a8c:
     db   $63, $c2                                      ;; 0f:7a8c ?? $05
     db   $63, $10                                      ;; 0f:7a8e ?? $06
     db   $63, $b2                                      ;; 0f:7a90 ?? $07
     db   $63, $10                                      ;; 0f:7a92 ?? $08
+
+data_0f_7a94:
     db   $63, $a2                                      ;; 0f:7a94 ?? $09
     db   $63, $10                                      ;; 0f:7a96 ?? $0a
     db   $05, $92                                      ;; 0f:7a98 ?? $0b
     db   $63, $10                                      ;; 0f:7a9a ?? $0c
     db   $05, $82                                      ;; 0f:7a9c ?? $0d
     db   $63, $10                                      ;; 0f:7a9e ?? $0e
+
+data_0f_7aa0:
     db   $63, $72                                      ;; 0f:7aa0 ?? $0f
     db   $63, $10                                      ;; 0f:7aa2 ?? $10
     db   $63, $62                                      ;; 0f:7aa4 ?? $11
     db   $63, $10                                      ;; 0f:7aa6 ?? $12
+
+data_0f_7aa8:
     db   $63, $c4                                      ;; 0f:7aa8 .. $13
+
+data_0f_7aaa:
     db   $63, $b4                                      ;; 0f:7aaa ?? $14
+
+data_0f_7aac:
     db   $63, $a4                                      ;; 0f:7aac ?? $15
+
+data_0f_7aae:
     db   $63, $94                                      ;; 0f:7aae .. $16
+
+data_0f_7ab0:
     db   $63, $84                                      ;; 0f:7ab0 .. $17
+
+data_0f_7ab2:
     db   $63, $74                                      ;; 0f:7ab2 .. $18
+
+data_0f_7ab4:
     db   $63, $64                                      ;; 0f:7ab4 .. $19
     db   $63, $54                                      ;; 0f:7ab6 ?? $1a
     db   $63, $44                                      ;; 0f:7ab8 ?? $1b
     db   $63, $34                                      ;; 0f:7aba ?? $1c
     db   $63, $24                                      ;; 0f:7abc ?? $1d
+
+data_0f_7abe:
     db   $63, $c7                                      ;; 0f:7abe .. $1e
+
+data_0f_7ac0:
     db   $63, $b7                                      ;; 0f:7ac0 .. $1f
+
+data_0f_7ac2:
     db   $63, $a7                                      ;; 0f:7ac2 .. $20
+
+data_0f_7ac4:
     db   $63, $97                                      ;; 0f:7ac4 ?? $21
+
+data_0f_7ac6:
     db   $63, $87                                      ;; 0f:7ac6 ?? $22
+
+data_0f_7ac8:
     db   $63, $77                                      ;; 0f:7ac8 .. $23
+
+data_0f_7aca:
     db   $63, $67                                      ;; 0f:7aca ?? $24
 
 ; Wave table patterns. A lot can be done with the wave table, but FFA just makes it another square wave.

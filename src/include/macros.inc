@@ -162,9 +162,13 @@ ld_long_store: MACRO
 db $EA
 dw \1
 ENDM
-mUNK_E0: MACRO
+mUNK3_E0: MACRO
 db $e0
 db \1
+ENDM
+mUNK_E0: MACRO
+db $e0
+dw \1
 ENDM
 mUNK_E1: MACRO
 db $e1
