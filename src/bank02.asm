@@ -5979,7 +5979,7 @@ doSpellOrItemEffect:
 .notHeal:
     ld   HL, itemsListBuff                             ;; 02:7084 $21 $26 $7b
     call getItemOffsetBandCifInList                    ;; 02:7087 $cd $4b $71
-    jr   NC, notBuff                                   ;; 02:708a $30 $57
+    jr   NC, doSpellOrItemEffect_notBuff               ;; 02:708a $30 $57
     ld   A, [wNectarStaminaTimerNumber]                ;; 02:708c $fa $7e $d8
     cp   A, $ff                                        ;; 02:708f $fe $ff
     ret  NZ                                            ;; 02:7091 $c0
@@ -6050,7 +6050,7 @@ doSpellOrItemEffect_notBuff:
 .notCrystal:
     ld   HL, itemsListSleep                            ;; 02:70f0 $21 $2b $7b
     call getItemOffsetBandCifInList                    ;; 02:70f3 $cd $4b $71
-    jr   NC, notBuff.notSleep                          ;; 02:70f6 $30 $0a
+    jr   NC, doSpellOrItemEffect_notBuff.notSleep      ;; 02:70f6 $30 $0a
     call getWillTimes16PlusB                           ;; 02:70f8 $cd $39 $71
     call useSlep                                       ;; 02:70fb $cd $44 $2f
     call useWillCharge                                 ;; 02:70fe $cd $d0 $3e
@@ -6058,7 +6058,7 @@ doSpellOrItemEffect_notBuff:
 .notSleep:
     ld   HL, itemsListMute                             ;; 02:7102 $21 $2e $7b
     call getItemOffsetBandCifInList                    ;; 02:7105 $cd $4b $71
-    jr   NC, notBuff.notMute                           ;; 02:7108 $30 $0a
+    jr   NC, doSpellOrItemEffect_notBuff.notMute       ;; 02:7108 $30 $0a
     call getWillTimes16PlusB                           ;; 02:710a $cd $39 $71
     call useMute                                       ;; 02:710d $cd $5d $2f
     call useWillCharge                                 ;; 02:7110 $cd $d0 $3e
@@ -6066,7 +6066,7 @@ doSpellOrItemEffect_notBuff:
 .notMute:
     ld   HL, itemsListLights                           ;; 02:7114 $21 $31 $7b
     call getItemOffsetBandCifInList                    ;; 02:7117 $cd $4b $71
-    jr   NC, notBuff.notLight                          ;; 02:711a $30 $12
+    jr   NC, doSpellOrItemEffect_notBuff.notLight      ;; 02:711a $30 $12
     ld   L, A                                          ;; 02:711c $6f
     ld   H, $00                                        ;; 02:711d $26 $00
     add  HL, HL                                        ;; 02:711f $29

@@ -162,6 +162,51 @@ ld_long_store: MACRO
 db $EA
 dw \1
 ENDM
+mUNK_E0: MACRO
+db $e0
+db \1
+ENDM
+mUNK_E1: MACRO
+db $e1
+dw \1
+ENDM
+mUNK_E2: MACRO
+db $e2
+dw \1
+ENDM
+mUNK_E3: MACRO
+db $e3
+db \1
+ENDM
+mUNK_E4: MACRO
+db $e4
+dw \1
+ENDM
+mUNK_E5: MACRO
+db $e5
+db \1
+ENDM
+mUNK_E6: MACRO
+db $e6
+db \1
+ENDM
+mUNK_E7: MACRO
+db $e7
+db \1
+ENDM
+mUNK_E8: MACRO
+db $e8
+dw \1
+ENDM
+mUNK_EB: MACRO
+db $eb
+db \1
+dw \2
+ENDM
+mUNK_ED: MACRO
+db $ed
+db \1
+ENDM
 sCALL: MACRO
 db $02
 db ((BANK(\1) - $0D) << 6) | (HIGH(\1) & $3F), LOW(\1)

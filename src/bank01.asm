@@ -1307,7 +1307,7 @@ runMainInputHandler:
 
 gameStateNormal:
     push DE                                            ;; 01:49d1 $d5
-    call checkObjectCollisions_trampoline              ;; 01:49d2 $cd $ce $27
+    call npcRunBehaviorForAll_trampoline               ;; 01:49d2 $cd $ce $27
     pop  DE                                            ;; 01:49d5 $d1
     ld   A, D                                          ;; 01:49d6 $7a
     and  A, $0f                                        ;; 01:49d7 $e6 $0f
@@ -1555,7 +1555,7 @@ playerDamagedEffect:
 
 gameStateChocobo:
     push DE                                            ;; 01:4b94 $d5
-    call checkObjectCollisions_trampoline              ;; 01:4b95 $cd $ce $27
+    call npcRunBehaviorForAll_trampoline               ;; 01:4b95 $cd $ce $27
     pop  DE                                            ;; 01:4b98 $d1
     ld   A, D                                          ;; 01:4b99 $7a
     and  A, $0f                                        ;; 01:4b9a $e6 $0f
@@ -1596,7 +1596,7 @@ jr_01_4bc7:
 
 gameStateChocobot:
     push DE                                            ;; 01:4bd4 $d5
-    call checkObjectCollisions_trampoline              ;; 01:4bd5 $cd $ce $27
+    call npcRunBehaviorForAll_trampoline               ;; 01:4bd5 $cd $ce $27
     pop  DE                                            ;; 01:4bd8 $d1
     ld   A, D                                          ;; 01:4bd9 $7a
     and  A, $0f                                        ;; 01:4bda $e6 $0f
@@ -1631,7 +1631,7 @@ gameStateChocobot:
 
 gameStateChocoboat:
     push DE                                            ;; 01:4c09 $d5
-    call checkObjectCollisions_trampoline              ;; 01:4c0a $cd $ce $27
+    call npcRunBehaviorForAll_trampoline               ;; 01:4c0a $cd $ce $27
     pop  DE                                            ;; 01:4c0d $d1
     ld   A, D                                          ;; 01:4c0e $7a
     and  A, $0f                                        ;; 01:4c0f $e6 $0f
@@ -1666,7 +1666,7 @@ gameStateChocoboat:
 
 gameStateFireAutoTarget:
     push DE                                            ;; 01:4c3e $d5
-    call checkObjectCollisions_trampoline              ;; 01:4c3f $cd $ce $27
+    call npcRunBehaviorForAll_trampoline               ;; 01:4c3f $cd $ce $27
     pop  DE                                            ;; 01:4c42 $d1
     ld   A, [wMainGameState]                           ;; 01:4c43 $fa $a0 $c0
     cp   A, $06                                        ;; 01:4c46 $fe $06
@@ -1682,7 +1682,7 @@ gameStateFireAutoTarget:
     ret                                                ;; 01:4c5c $c9
 
 gameStateSpecialAttackFlyingSwordReturn:
-    call checkObjectCollisions_trampoline              ;; 01:4c5d $cd $ce $27
+    call npcRunBehaviorForAll_trampoline               ;; 01:4c5d $cd $ce $27
     ld   A, [wMainGameState]                           ;; 01:4c60 $fa $a0 $c0
     cp   A, $04                                        ;; 01:4c63 $fe $04
     ret  NZ                                            ;; 01:4c65 $c0
@@ -1871,7 +1871,7 @@ call_01_4d35:
     ret                                                ;; 01:4d8e $c9
 
 gameStateSpecialAttackFlyingSword:
-    call checkObjectCollisions_trampoline              ;; 01:4d8f $cd $ce $27
+    call npcRunBehaviorForAll_trampoline               ;; 01:4d8f $cd $ce $27
     ld   A, [wMainGameState]                           ;; 01:4d92 $fa $a0 $c0
     cp   A, $03                                        ;; 01:4d95 $fe $03
     ret  NZ                                            ;; 01:4d97 $c0
@@ -1893,7 +1893,7 @@ gameStateSpecialAttackFlyingSword:
     ld   A, [wFlyingSwordSpecialOriginalLocationX]     ;; 01:4db4 $fa $d0 $c4
     ld   L, A                                          ;; 01:4db7 $6f
     push HL                                            ;; 01:4db8 $e5
-    call flyingSwordAttackBeginReturn_trampoline       ;; 01:4db9 $cd $eb $2e
+    call useSpecialAttack_trampoline                   ;; 01:4db9 $cd $eb $2e
     pop  HL                                            ;; 01:4dbc $e1
     ld   A, H                                          ;; 01:4dbd $7c
     ld   [wFlyingSwordSpecialOriginalLocationY], A     ;; 01:4dbe $ea $d1 $c4
@@ -1905,7 +1905,7 @@ gameStateSpecialAttackFlyingSword:
 
 gameStateSpecialAttack:
     push DE                                            ;; 01:4dcb $d5
-    call checkObjectCollisions_trampoline              ;; 01:4dcc $cd $ce $27
+    call npcRunBehaviorForAll_trampoline               ;; 01:4dcc $cd $ce $27
     pop  DE                                            ;; 01:4dcf $d1
     ld   A, [wMainGameState]                           ;; 01:4dd0 $fa $a0 $c0
     cp   A, $05                                        ;; 01:4dd3 $fe $05
@@ -2031,7 +2031,7 @@ gameStateSpecialAttack:
 
 gameStateAttack:
     push DE                                            ;; 01:4ea9 $d5
-    call checkObjectCollisions_trampoline              ;; 01:4eaa $cd $ce $27
+    call npcRunBehaviorForAll_trampoline               ;; 01:4eaa $cd $ce $27
     pop  DE                                            ;; 01:4ead $d1
     ld   A, [wMainGameState]                           ;; 01:4eae $fa $a0 $c0
     cp   A, $02                                        ;; 01:4eb1 $fe $02
@@ -2498,12 +2498,12 @@ call_01_51bb:
 
 openWindowsStartButton:
     ld   A, $09                                        ;; 01:51d5 $3e $09
-    call call_00_30b1                                  ;; 01:51d7 $cd $b1 $30
+    call windowMenuStartSpecial_trampoline             ;; 01:51d7 $cd $b1 $30
     ret                                                ;; 01:51da $c9
 
 openWindowsSelectButton:
     ld   A, $11                                        ;; 01:51db $3e $11
-    call call_00_30b1                                  ;; 01:51dd $cd $b1 $30
+    call windowMenuStartSpecial_trampoline             ;; 01:51dd $cd $b1 $30
     ret                                                ;; 01:51e0 $c9
 
 ; Tests special tiles that can be attacked
@@ -4412,7 +4412,7 @@ call_01_5bf1:
     jr   NZ, .jr_01_5c8d                               ;; 01:5c82 $20 $09
     ld   A, [wCF5D]                                    ;; 01:5c84 $fa $5d $cf
     call damageNpc_trampoline                          ;; 01:5c87 $cd $53 $28
-    call call_00_04f4                                  ;; 01:5c8a $cd $f4 $04
+    call bossTakeDamage_trampoline                     ;; 01:5c8a $cd $f4 $04
 .jr_01_5c8d:
     call playerAttackDestroy                           ;; 01:5c8d $cd $82 $5d
     pop  BC                                            ;; 01:5c90 $c1

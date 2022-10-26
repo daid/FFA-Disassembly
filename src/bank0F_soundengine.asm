@@ -1539,1901 +1539,10845 @@ soundEffectPlayStep:
 .return:
     ret                                                ;; 0f:4a11 $c9
 
-;@data amount=30 format=ppp
+;@music_pointers amount=30
 ; Music data table, 3 pointers per music:
 ; Channel 2, Channel 1, Channel 3
 ; These start at zero, one off of their script numbering
 musicSongChannelPointers:
-    dw   song00_Channel2, song00_Channel1, song00_Channel3 ;; 0f:4a12 pPpPpP $00
-    dw   data_0f_4bb9, data_0f_4c0f, data_0f_4c92      ;; 0f:4a18 ?????? $01
-    dw   data_0f_4cc1, data_0f_4d0d, data_0f_4d83      ;; 0f:4a1e ?????? $02
-    dw   data_0f_4daf, data_0f_4deb, data_0f_4e33      ;; 0f:4a24 pPpPpP $03
-    dw   data_0f_4e5e, data_0f_4e9e, data_0f_4eb0      ;; 0f:4a2a ?????? $04
-    dw   data_0f_4edc, data_0f_4fb7, data_0f_503d      ;; 0f:4a30 ?????? $05
-    dw   data_0f_50c9, data_0f_515b, data_0f_51d2      ;; 0f:4a36 ?????? $06
-    dw   data_0f_523d, data_0f_52a6, data_0f_5344      ;; 0f:4a3c ?????? $07
-    dw   data_0f_5388, data_0f_53bf, data_0f_53ef      ;; 0f:4a42 pPpPpP $08
-    dw   data_0f_5442, data_0f_5460, data_0f_54e5      ;; 0f:4a48 pPpPpP $09
-    dw   data_0f_556f, data_0f_55be, data_0f_5627      ;; 0f:4a4e ?????? $0a
-    dw   data_0f_5661, data_0f_56ad, data_0f_5751      ;; 0f:4a54 ?????? $0b
-    dw   data_0f_57f5, data_0f_5897, data_0f_5910      ;; 0f:4a5a ?????? $0c
-    dw   data_0f_5937, data_0f_5a3a, data_0f_5ac6      ;; 0f:4a60 pPpPpP $0d
-    dw   data_0f_5b3c, data_0f_5bc8, data_0f_5daa      ;; 0f:4a66 ?????? $0e
-    dw   data_0f_5e69, data_0f_5faa, data_0f_61c2      ;; 0f:4a6c ?????? $0f
-    dw   data_0f_6397, data_0f_63b2, data_0f_63be      ;; 0f:4a72 pPpPpP $10
-    dw   data_0f_62e9, data_0f_632e, data_0f_6371      ;; 0f:4a78 ?????? $11
-    dw   data_0f_63d0, data_0f_64a3, data_0f_6667      ;; 0f:4a7e ?????? $12
-    dw   data_0f_6819, data_0f_68bd, data_0f_69ff      ;; 0f:4a84 pPpPpP $13
-    dw   data_0f_6b57, data_0f_6c83, data_0f_6da9      ;; 0f:4a8a ?????? $14
-    dw   data_0f_6e8a, data_0f_6f5e, data_0f_7031      ;; 0f:4a90 ?????? $15
-    dw   data_0f_7070, data_0f_709f, data_0f_70f9      ;; 0f:4a96 pPpPpP $16
-    dw   data_0f_7118, data_0f_71aa, data_0f_7263      ;; 0f:4a9c ?????? $17
-    dw   data_0f_7349, data_0f_741c, data_0f_756f      ;; 0f:4aa2 ?????? $18
-    dw   data_0f_76d3, data_0f_771c, data_0f_7762      ;; 0f:4aa8 pPpPpP $19
-    dw   data_0f_77a8, data_0f_7811, data_0f_78a3      ;; 0f:4aae ?????? $1a
-    dw   data_0f_78fa, data_0f_7924, data_0f_7948      ;; 0f:4ab4 pPpPpP $1b
-    dw   data_0f_796b, data_0f_7984, data_0f_799a      ;; 0f:4aba ?????? $1c
-    dw   song1d_Channel2, song1d_Channel1, song1d_Channel3 ;; 0f:4ac0 ?????? $1d
+    dw   song00_Channel2, song00_Channel1, song00_Channel3 ;; 0f:4a12 $c9 $4a $0a $4b $7e $4b
+    dw   song01_channel2, song01_channel1, song01_channel3 ;; 0f:4a18 $b9 $4b $0f $4c $92 $4c
+    dw   song02_channel2, song02_channel1, song02_channel3 ;; 0f:4a1e $c1 $4c $0d $4d $83 $4d
+    dw   song03_channel2, song03_channel1, song03_channel3 ;; 0f:4a24 $af $4d $eb $4d $33 $4e
+    dw   song04_channel2, song04_channel1, song04_channel3 ;; 0f:4a2a $5e $4e $9e $4e $b0 $4e
+    dw   song05_channel2, song05_channel1, song05_channel3 ;; 0f:4a30 $dc $4e $b7 $4f $3d $50
+    dw   song06_channel2, song06_channel1, song06_channel3 ;; 0f:4a36 $c9 $50 $5b $51 $d2 $51
+    dw   song07_channel2, song07_channel1, song07_channel3 ;; 0f:4a3c $3d $52 $a6 $52 $44 $53
+    dw   song08_channel2, song08_channel1, song08_channel3 ;; 0f:4a42 $88 $53 $bf $53 $ef $53
+    dw   song09_channel2, song09_channel1, song09_channel3 ;; 0f:4a48 $42 $54 $60 $54 $e5 $54
+    dw   song0a_channel2, song0a_channel1, song0a_channel3 ;; 0f:4a4e $6f $55 $be $55 $27 $56
+    dw   song0b_channel2, song0b_channel1, song0b_channel3 ;; 0f:4a54 $61 $56 $ad $56 $51 $57
+    dw   song0c_channel2, song0c_channel1, song0c_channel3 ;; 0f:4a5a $f5 $57 $97 $58 $10 $59
+    dw   song0d_channel2, song0d_channel1, song0d_channel3 ;; 0f:4a60 $37 $59 $3a $5a $c6 $5a
+    dw   song0e_channel2, song0e_channel1, song0e_channel3 ;; 0f:4a66 $3c $5b $c8 $5b $aa $5d
+    dw   song0f_channel2, song0f_channel1, song0f_channel3 ;; 0f:4a6c $69 $5e $aa $5f $c2 $61
+    dw   song10_channel2, song10_channel1, song10_channel3 ;; 0f:4a72 $97 $63 $b2 $63 $be $63
+    dw   song11_channel2, song11_channel1, song11_channel3 ;; 0f:4a78 $e9 $62 $2e $63 $71 $63
+    dw   song12_channel2, song12_channel1, song12_channel3 ;; 0f:4a7e $d0 $63 $a3 $64 $67 $66
+    dw   song13_channel2, song13_channel1, song13_channel3 ;; 0f:4a84 $19 $68 $bd $68 $ff $69
+    dw   song14_channel2, song14_channel1, song14_channel3 ;; 0f:4a8a $57 $6b $83 $6c $a9 $6d
+    dw   song15_channel2, song15_channel1, song15_channel3 ;; 0f:4a90 $8a $6e $5e $6f $31 $70
+    dw   song16_channel2, song16_channel1, song16_channel3 ;; 0f:4a96 $70 $70 $9f $70 $f9 $70
+    dw   song17_channel2, song17_channel1, song17_channel3 ;; 0f:4a9c $18 $71 $aa $71 $63 $72
+    dw   song18_channel2, song18_channel1, song18_channel3 ;; 0f:4aa2 $49 $73 $1c $74 $6f $75
+    dw   song19_channel2, song19_channel1, song19_channel3 ;; 0f:4aa8 $d3 $76 $1c $77 $62 $77
+    dw   song1a_channel2, song1a_channel1, song1a_channel3 ;; 0f:4aae $a8 $77 $11 $78 $a3 $78
+    dw   song1b_channel2, song1b_channel1, song1b_channel3 ;; 0f:4ab4 $fa $78 $24 $79 $48 $79
+    dw   song1c_channel2, song1c_channel1, song1c_channel3 ;; 0f:4aba $6b $79 $84 $79 $9a $79
+    dw   song1d_Channel2, song1d_Channel1, song1d_Channel3 ;; 0f:4ac0 $b6 $79 $ea $79 $1d $7a
     db   $ff, $e7, $14                                 ;; 0f:4ac6 ???
 
 song00_Channel2:
-    db   $e7, $41, $e4, $4f, $7a, $e0, $82, $7a        ;; 0f:4ac9 ........
-    db   $e5, $80, $e6, $03, $e3, $02                  ;; 0f:4ad1 ......
+    mUNK_E7 $41                                        ;; 0f:4ac9 $e7 $41
+    mUNK_E4 frequencyDeltaData                         ;; 0f:4acb $e4 $4f $7a
+    mUNK_E0 $82                                        ;; 0f:4ace $e0 $82
+    db   $7A ; unknown music opcode                    ;; 0f:4ad0 $7a
+    mUNK_E5 $80                                        ;; 0f:4ad1 $e5 $80
+    mUNK_E6 $03                                        ;; 0f:4ad3 $e6 $03
+.data_0f_4ad5:
+    mUNK_E3 $02                                        ;; 0f:4ad5 $e3 $02
 .data_0f_4ad7:
-    db   $d3, $82, $87, $04, $8f, $84, $85, $84        ;; 0f:4ad7 ........
-    db   $82, $80, $82, $87, $04, $8f, $80, $dc        ;; 0f:4adf ........
-    db   $8b, $8c, $8b, $87, $29, $8e, $89, $8b        ;; 0f:4ae7 ........
-    db   $8c, $d8, $eb, $01                            ;; 0f:4aef ....
-    dw   .data_0f_4b01                                 ;; 0f:4af3 pP
-    db   $52, $dc, $59, $4b, $8c, $d8, $22, $50        ;; 0f:4af5 ........
-    db   $52, $e2                                      ;; 0f:4afd ..
-    dw   .data_0f_4ad7                                 ;; 0f:4aff pP
+    db   $D3 ; unknown music opcode                    ;; 0f:4ad7 $d3
+    db   $82 ; unknown music opcode                    ;; 0f:4ad8 $82
+    db   $87 ; unknown music opcode                    ;; 0f:4ad9 $87
+    db   $04 ; unknown music opcode                    ;; 0f:4ada $04
+    db   $8F ; unknown music opcode                    ;; 0f:4adb $8f
+    db   $84 ; unknown music opcode                    ;; 0f:4adc $84
+    db   $85 ; unknown music opcode                    ;; 0f:4add $85
+    db   $84 ; unknown music opcode                    ;; 0f:4ade $84
+    db   $82 ; unknown music opcode                    ;; 0f:4adf $82
+    db   $80 ; unknown music opcode                    ;; 0f:4ae0 $80
+    db   $82 ; unknown music opcode                    ;; 0f:4ae1 $82
+    db   $87 ; unknown music opcode                    ;; 0f:4ae2 $87
+    db   $04 ; unknown music opcode                    ;; 0f:4ae3 $04
+    db   $8F ; unknown music opcode                    ;; 0f:4ae4 $8f
+    db   $80 ; unknown music opcode                    ;; 0f:4ae5 $80
+    db   $DC ; unknown music opcode                    ;; 0f:4ae6 $dc
+    db   $8B ; unknown music opcode                    ;; 0f:4ae7 $8b
+    db   $8C ; unknown music opcode                    ;; 0f:4ae8 $8c
+    db   $8B ; unknown music opcode                    ;; 0f:4ae9 $8b
+    db   $87 ; unknown music opcode                    ;; 0f:4aea $87
+    db   $29 ; unknown music opcode                    ;; 0f:4aeb $29
+    db   $8E ; unknown music opcode                    ;; 0f:4aec $8e
+    db   $89 ; unknown music opcode                    ;; 0f:4aed $89
+    db   $8B ; unknown music opcode                    ;; 0f:4aee $8b
+    db   $8C ; unknown music opcode                    ;; 0f:4aef $8c
+    db   $D8 ; unknown music opcode                    ;; 0f:4af0 $d8
+    mUNK_EB $01, .data_0f_4b01                         ;; 0f:4af1 $eb $01 $01 $4b
+    db   $52 ; unknown music opcode                    ;; 0f:4af5 $52
+    db   $DC ; unknown music opcode                    ;; 0f:4af6 $dc
+    db   $59 ; unknown music opcode                    ;; 0f:4af7 $59
+    db   $4B ; unknown music opcode                    ;; 0f:4af8 $4b
+    db   $8C ; unknown music opcode                    ;; 0f:4af9 $8c
+    db   $D8 ; unknown music opcode                    ;; 0f:4afa $d8
+    db   $22 ; unknown music opcode                    ;; 0f:4afb $22
+    db   $50 ; unknown music opcode                    ;; 0f:4afc $50
+    db   $52 ; unknown music opcode                    ;; 0f:4afd $52
+    mUNK_E2 .data_0f_4ad7                              ;; 0f:4afe $e2 $d7 $4a
 .data_0f_4b01:
-    db   $52, $54, $42, $80, $00, $0f, $e1, $d5        ;; 0f:4b01 ..??????
-    db   $4a                                           ;; 0f:4b09 ?
+    db   $52 ; unknown music opcode                    ;; 0f:4b01 $52
+    db   $54 ; unknown music opcode                    ;; 0f:4b02 $54
+    db   $42 ; unknown music opcode                    ;; 0f:4b03 $42
+    db   $80 ; unknown music opcode                    ;; 0f:4b04 $80
+    db   $00 ; unknown music opcode                    ;; 0f:4b05 $00
+    db   $0F ; unknown music opcode                    ;; 0f:4b06 $0f
+    mUNK_E1 .data_0f_4ad5                              ;; 0f:4b07 $e1 $d5 $4a
 
 song00_Channel1:
-    db   $e4, $75, $7a, $e0, $c8, $7a, $e5, $40        ;; 0f:4b0a ........
-    db   $e6, $02, $e3, $02                            ;; 0f:4b12 ....
+    mUNK_E4 frequencyDeltaData.fifth                   ;; 0f:4b0a $e4 $75 $7a
+    mUNK_E0 $c8                                        ;; 0f:4b0d $e0 $c8
+    db   $7A ; unknown music opcode                    ;; 0f:4b0f $7a
+    mUNK_E5 $40                                        ;; 0f:4b10 $e5 $40
+    mUNK_E6 $02                                        ;; 0f:4b12 $e6 $02
+.data_0f_4b14:
+    mUNK_E3 $02                                        ;; 0f:4b14 $e3 $02
 .data_0f_4b16:
-    db   $e6, $02, $d1, $8f, $87, $8c, $d8, $82        ;; 0f:4b16 ........
-    db   $84, $82, $80, $dc, $87, $8f, $87, $d8        ;; 0f:4b1e ........
-    db   $84, $80, $89, $87, $85, $84, $e6, $01        ;; 0f:4b26 ........
-    db   $8f, $dc, $89, $8c, $d8, $84, $89, $84        ;; 0f:4b2e ........
-    db   $82, $84, $50, $54, $57, $52, $e6, $02        ;; 0f:4b36 ........
-    db   $8f, $80, $85, $87, $55, $57, $eb, $01        ;; 0f:4b3e ........
-    dw   .data_0f_4b5c                                 ;; 0f:4b46 pP
-    db   $86, $84, $86, $87, $56, $59, $e6, $01        ;; 0f:4b48 ........
-    db   $8f, $82, $87, $82, $85, $80, $87, $82        ;; 0f:4b50 ........
-    db   $dc, $e2                                      ;; 0f:4b58 ..
-    dw   .data_0f_4b16                                 ;; 0f:4b5a pP
+    mUNK_E6 $02                                        ;; 0f:4b16 $e6 $02
+    db   $D1 ; unknown music opcode                    ;; 0f:4b18 $d1
+    db   $8F ; unknown music opcode                    ;; 0f:4b19 $8f
+    db   $87 ; unknown music opcode                    ;; 0f:4b1a $87
+    db   $8C ; unknown music opcode                    ;; 0f:4b1b $8c
+    db   $D8 ; unknown music opcode                    ;; 0f:4b1c $d8
+    db   $82 ; unknown music opcode                    ;; 0f:4b1d $82
+    db   $84 ; unknown music opcode                    ;; 0f:4b1e $84
+    db   $82 ; unknown music opcode                    ;; 0f:4b1f $82
+    db   $80 ; unknown music opcode                    ;; 0f:4b20 $80
+    db   $DC ; unknown music opcode                    ;; 0f:4b21 $dc
+    db   $87 ; unknown music opcode                    ;; 0f:4b22 $87
+    db   $8F ; unknown music opcode                    ;; 0f:4b23 $8f
+    db   $87 ; unknown music opcode                    ;; 0f:4b24 $87
+    db   $D8 ; unknown music opcode                    ;; 0f:4b25 $d8
+    db   $84 ; unknown music opcode                    ;; 0f:4b26 $84
+    db   $80 ; unknown music opcode                    ;; 0f:4b27 $80
+    db   $89 ; unknown music opcode                    ;; 0f:4b28 $89
+    db   $87 ; unknown music opcode                    ;; 0f:4b29 $87
+    db   $85 ; unknown music opcode                    ;; 0f:4b2a $85
+    db   $84 ; unknown music opcode                    ;; 0f:4b2b $84
+    mUNK_E6 $01                                        ;; 0f:4b2c $e6 $01
+    db   $8F ; unknown music opcode                    ;; 0f:4b2e $8f
+    db   $DC ; unknown music opcode                    ;; 0f:4b2f $dc
+    db   $89 ; unknown music opcode                    ;; 0f:4b30 $89
+    db   $8C ; unknown music opcode                    ;; 0f:4b31 $8c
+    db   $D8 ; unknown music opcode                    ;; 0f:4b32 $d8
+    db   $84 ; unknown music opcode                    ;; 0f:4b33 $84
+    db   $89 ; unknown music opcode                    ;; 0f:4b34 $89
+    db   $84 ; unknown music opcode                    ;; 0f:4b35 $84
+    db   $82 ; unknown music opcode                    ;; 0f:4b36 $82
+    db   $84 ; unknown music opcode                    ;; 0f:4b37 $84
+    db   $50 ; unknown music opcode                    ;; 0f:4b38 $50
+    db   $54 ; unknown music opcode                    ;; 0f:4b39 $54
+    db   $57 ; unknown music opcode                    ;; 0f:4b3a $57
+    db   $52 ; unknown music opcode                    ;; 0f:4b3b $52
+    mUNK_E6 $02                                        ;; 0f:4b3c $e6 $02
+    db   $8F ; unknown music opcode                    ;; 0f:4b3e $8f
+    db   $80 ; unknown music opcode                    ;; 0f:4b3f $80
+    db   $85 ; unknown music opcode                    ;; 0f:4b40 $85
+    db   $87 ; unknown music opcode                    ;; 0f:4b41 $87
+    db   $55 ; unknown music opcode                    ;; 0f:4b42 $55
+    db   $57 ; unknown music opcode                    ;; 0f:4b43 $57
+    mUNK_EB $01, .data_0f_4b5c                         ;; 0f:4b44 $eb $01 $5c $4b
+    db   $86 ; unknown music opcode                    ;; 0f:4b48 $86
+    db   $84 ; unknown music opcode                    ;; 0f:4b49 $84
+    db   $86 ; unknown music opcode                    ;; 0f:4b4a $86
+    db   $87 ; unknown music opcode                    ;; 0f:4b4b $87
+    db   $56 ; unknown music opcode                    ;; 0f:4b4c $56
+    db   $59 ; unknown music opcode                    ;; 0f:4b4d $59
+    mUNK_E6 $01                                        ;; 0f:4b4e $e6 $01
+    db   $8F ; unknown music opcode                    ;; 0f:4b50 $8f
+    db   $82 ; unknown music opcode                    ;; 0f:4b51 $82
+    db   $87 ; unknown music opcode                    ;; 0f:4b52 $87
+    db   $82 ; unknown music opcode                    ;; 0f:4b53 $82
+    db   $85 ; unknown music opcode                    ;; 0f:4b54 $85
+    db   $80 ; unknown music opcode                    ;; 0f:4b55 $80
+    db   $87 ; unknown music opcode                    ;; 0f:4b56 $87
+    db   $82 ; unknown music opcode                    ;; 0f:4b57 $82
+    db   $DC ; unknown music opcode                    ;; 0f:4b58 $dc
+    mUNK_E2 .data_0f_4b16                              ;; 0f:4b59 $e2 $16 $4b
 .data_0f_4b5c:
-    db   $e6, $02, $55, $59, $8b, $89, $87, $85        ;; 0f:4b5c ....????
-    db   $e6, $01, $8f, $dc, $87, $8c, $d8, $82        ;; 0f:4b64 ????????
-    db   $84, $82, $80, $dc, $87, $8f, $87, $8c        ;; 0f:4b6c ????????
-    db   $d8, $82, $84, $82, $84, $85, $dc, $e1        ;; 0f:4b74 ????????
-    db   $14, $4b                                      ;; 0f:4b7c ??
+    mUNK_E6 $02                                        ;; 0f:4b5c $e6 $02
+    db   $55 ; unknown music opcode                    ;; 0f:4b5e $55
+    db   $59 ; unknown music opcode                    ;; 0f:4b5f $59
+    db   $8B ; unknown music opcode                    ;; 0f:4b60 $8b
+    db   $89 ; unknown music opcode                    ;; 0f:4b61 $89
+    db   $87 ; unknown music opcode                    ;; 0f:4b62 $87
+    db   $85 ; unknown music opcode                    ;; 0f:4b63 $85
+    mUNK_E6 $01                                        ;; 0f:4b64 $e6 $01
+    db   $8F ; unknown music opcode                    ;; 0f:4b66 $8f
+    db   $DC ; unknown music opcode                    ;; 0f:4b67 $dc
+    db   $87 ; unknown music opcode                    ;; 0f:4b68 $87
+    db   $8C ; unknown music opcode                    ;; 0f:4b69 $8c
+    db   $D8 ; unknown music opcode                    ;; 0f:4b6a $d8
+    db   $82 ; unknown music opcode                    ;; 0f:4b6b $82
+    db   $84 ; unknown music opcode                    ;; 0f:4b6c $84
+    db   $82 ; unknown music opcode                    ;; 0f:4b6d $82
+    db   $80 ; unknown music opcode                    ;; 0f:4b6e $80
+    db   $DC ; unknown music opcode                    ;; 0f:4b6f $dc
+    db   $87 ; unknown music opcode                    ;; 0f:4b70 $87
+    db   $8F ; unknown music opcode                    ;; 0f:4b71 $8f
+    db   $87 ; unknown music opcode                    ;; 0f:4b72 $87
+    db   $8C ; unknown music opcode                    ;; 0f:4b73 $8c
+    db   $D8 ; unknown music opcode                    ;; 0f:4b74 $d8
+    db   $82 ; unknown music opcode                    ;; 0f:4b75 $82
+    db   $84 ; unknown music opcode                    ;; 0f:4b76 $84
+    db   $82 ; unknown music opcode                    ;; 0f:4b77 $82
+    db   $84 ; unknown music opcode                    ;; 0f:4b78 $84
+    db   $85 ; unknown music opcode                    ;; 0f:4b79 $85
+    db   $DC ; unknown music opcode                    ;; 0f:4b7a $dc
+    mUNK_E1 .data_0f_4b14                              ;; 0f:4b7b $e1 $14 $4b
 
 song00_Channel3:
-    db   $e4, $75, $7a, $e8, $dc, $7a, $e0, $40        ;; 0f:4b7e ........
-    db   $e6, $03, $e3, $02, $d1, $1c, $57, $1c        ;; 0f:4b86 ........
-    db   $5b, $19, $d8, $54, $dc, $29, $27, $d8        ;; 0f:4b8e ........
-    db   $15, $54, $12, $59, $57, $dc, $57, $59        ;; 0f:4b96 ........
-    db   $5b, $1c, $57, $1c, $5b, $19, $d8, $54        ;; 0f:4b9e ........
-    db   $dc, $29, $27, $d8, $15, $54, $22, $57        ;; 0f:4ba6 .......?
-    db   $dc, $57, $1c, $57, $2c, $27, $e1, $88        ;; 0f:4bae ????????
-    db   $4b, $e7, $14                                 ;; 0f:4bb6 ???
+    mUNK_E4 frequencyDeltaData.fifth                   ;; 0f:4b7e $e4 $75 $7a
+    mUNK_E8 data_0f_7adc                               ;; 0f:4b81 $e8 $dc $7a
+    mUNK_E0 $40                                        ;; 0f:4b84 $e0 $40
+    mUNK_E6 $03                                        ;; 0f:4b86 $e6 $03
+.data_0f_4b88:
+    mUNK_E3 $02                                        ;; 0f:4b88 $e3 $02
+    db   $D1 ; unknown music opcode                    ;; 0f:4b8a $d1
+    db   $1C ; unknown music opcode                    ;; 0f:4b8b $1c
+    db   $57 ; unknown music opcode                    ;; 0f:4b8c $57
+    db   $1C ; unknown music opcode                    ;; 0f:4b8d $1c
+    db   $5B ; unknown music opcode                    ;; 0f:4b8e $5b
+    db   $19 ; unknown music opcode                    ;; 0f:4b8f $19
+    db   $D8 ; unknown music opcode                    ;; 0f:4b90 $d8
+    db   $54 ; unknown music opcode                    ;; 0f:4b91 $54
+    db   $DC ; unknown music opcode                    ;; 0f:4b92 $dc
+    db   $29 ; unknown music opcode                    ;; 0f:4b93 $29
+    db   $27 ; unknown music opcode                    ;; 0f:4b94 $27
+    db   $D8 ; unknown music opcode                    ;; 0f:4b95 $d8
+    db   $15 ; unknown music opcode                    ;; 0f:4b96 $15
+    db   $54 ; unknown music opcode                    ;; 0f:4b97 $54
+    db   $12 ; unknown music opcode                    ;; 0f:4b98 $12
+    db   $59 ; unknown music opcode                    ;; 0f:4b99 $59
+    db   $57 ; unknown music opcode                    ;; 0f:4b9a $57
+    db   $DC ; unknown music opcode                    ;; 0f:4b9b $dc
+    db   $57 ; unknown music opcode                    ;; 0f:4b9c $57
+    db   $59 ; unknown music opcode                    ;; 0f:4b9d $59
+    db   $5B ; unknown music opcode                    ;; 0f:4b9e $5b
+    db   $1C ; unknown music opcode                    ;; 0f:4b9f $1c
+    db   $57 ; unknown music opcode                    ;; 0f:4ba0 $57
+    db   $1C ; unknown music opcode                    ;; 0f:4ba1 $1c
+    db   $5B ; unknown music opcode                    ;; 0f:4ba2 $5b
+    db   $19 ; unknown music opcode                    ;; 0f:4ba3 $19
+    db   $D8 ; unknown music opcode                    ;; 0f:4ba4 $d8
+    db   $54 ; unknown music opcode                    ;; 0f:4ba5 $54
+    db   $DC ; unknown music opcode                    ;; 0f:4ba6 $dc
+    db   $29 ; unknown music opcode                    ;; 0f:4ba7 $29
+    db   $27 ; unknown music opcode                    ;; 0f:4ba8 $27
+    db   $D8 ; unknown music opcode                    ;; 0f:4ba9 $d8
+    db   $15 ; unknown music opcode                    ;; 0f:4baa $15
+    db   $54 ; unknown music opcode                    ;; 0f:4bab $54
+    db   $22 ; unknown music opcode                    ;; 0f:4bac $22
+    db   $57 ; unknown music opcode                    ;; 0f:4bad $57
+    db   $DC ; unknown music opcode                    ;; 0f:4bae $dc
+    db   $57 ; unknown music opcode                    ;; 0f:4baf $57
+    db   $1C ; unknown music opcode                    ;; 0f:4bb0 $1c
+    db   $57 ; unknown music opcode                    ;; 0f:4bb1 $57
+    db   $2C ; unknown music opcode                    ;; 0f:4bb2 $2c
+    db   $27 ; unknown music opcode                    ;; 0f:4bb3 $27
+    mUNK_E1 .data_0f_4b88                              ;; 0f:4bb4 $e1 $88 $4b
+    db   $e7, $14                                      ;; 0f:4bb7 ??
 
-data_0f_4bb9:
-    db   $e7, $4b, $e4, $4f, $7a, $e0, $82, $7a        ;; 0f:4bb9 ????????
-    db   $e5, $80, $e6, $03, $d2, $57, $59, $4a        ;; 0f:4bc1 ????????
-    db   $83, $1a, $59, $5c, $5a, $49, $82, $29        ;; 0f:4bc9 ????????
-    db   $5a, $87, $89, $5a, $5c, $d8, $42, $83        ;; 0f:4bd1 ????????
-    db   $50, $dc, $5a, $59, $d8, $52, $50, $52        ;; 0f:4bd9 ????????
-    db   $dc, $2a, $2c, $d8, $22, $8e, $82, $83        ;; 0f:4be1 ????????
-    db   $85, $27, $8e, $85, $83, $82, $50, $59        ;; 0f:4be9 ????????
-    db   $57, $59, $25, $8e, $83, $82, $80, $dc        ;; 0f:4bf1 ????????
-    db   $2b, $5c, $d8, $52, $23, $8e, $82, $80        ;; 0f:4bf9 ????????
-    db   $82, $53, $55, $50, $53, $02, $5e, $5f        ;; 0f:4c01 ????????
-    db   $dc, $57, $59, $e1, $c8, $4b                  ;; 0f:4c09 ??????
+song01_channel2:
+    mUNK_E7 $4b                                        ;; 0f:4bb9 $e7 $4b
+    mUNK_E4 frequencyDeltaData                         ;; 0f:4bbb $e4 $4f $7a
+    mUNK_E0 $82                                        ;; 0f:4bbe $e0 $82
+    db   $7A ; unknown music opcode                    ;; 0f:4bc0 $7a
+    mUNK_E5 $80                                        ;; 0f:4bc1 $e5 $80
+    mUNK_E6 $03                                        ;; 0f:4bc3 $e6 $03
+    db   $D2 ; unknown music opcode                    ;; 0f:4bc5 $d2
+    db   $57 ; unknown music opcode                    ;; 0f:4bc6 $57
+    db   $59 ; unknown music opcode                    ;; 0f:4bc7 $59
+.data_0f_4bc8:
+    db   $4A ; unknown music opcode                    ;; 0f:4bc8 $4a
+    db   $83 ; unknown music opcode                    ;; 0f:4bc9 $83
+    db   $1A ; unknown music opcode                    ;; 0f:4bca $1a
+    db   $59 ; unknown music opcode                    ;; 0f:4bcb $59
+    db   $5C ; unknown music opcode                    ;; 0f:4bcc $5c
+    db   $5A ; unknown music opcode                    ;; 0f:4bcd $5a
+    db   $49 ; unknown music opcode                    ;; 0f:4bce $49
+    db   $82 ; unknown music opcode                    ;; 0f:4bcf $82
+    db   $29 ; unknown music opcode                    ;; 0f:4bd0 $29
+    db   $5A ; unknown music opcode                    ;; 0f:4bd1 $5a
+    db   $87 ; unknown music opcode                    ;; 0f:4bd2 $87
+    db   $89 ; unknown music opcode                    ;; 0f:4bd3 $89
+    db   $5A ; unknown music opcode                    ;; 0f:4bd4 $5a
+    db   $5C ; unknown music opcode                    ;; 0f:4bd5 $5c
+    db   $D8 ; unknown music opcode                    ;; 0f:4bd6 $d8
+    db   $42 ; unknown music opcode                    ;; 0f:4bd7 $42
+    db   $83 ; unknown music opcode                    ;; 0f:4bd8 $83
+    db   $50 ; unknown music opcode                    ;; 0f:4bd9 $50
+    db   $DC ; unknown music opcode                    ;; 0f:4bda $dc
+    db   $5A ; unknown music opcode                    ;; 0f:4bdb $5a
+    db   $59 ; unknown music opcode                    ;; 0f:4bdc $59
+    db   $D8 ; unknown music opcode                    ;; 0f:4bdd $d8
+    db   $52 ; unknown music opcode                    ;; 0f:4bde $52
+    db   $50 ; unknown music opcode                    ;; 0f:4bdf $50
+    db   $52 ; unknown music opcode                    ;; 0f:4be0 $52
+    db   $DC ; unknown music opcode                    ;; 0f:4be1 $dc
+    db   $2A ; unknown music opcode                    ;; 0f:4be2 $2a
+    db   $2C ; unknown music opcode                    ;; 0f:4be3 $2c
+    db   $D8 ; unknown music opcode                    ;; 0f:4be4 $d8
+    db   $22 ; unknown music opcode                    ;; 0f:4be5 $22
+    db   $8E ; unknown music opcode                    ;; 0f:4be6 $8e
+    db   $82 ; unknown music opcode                    ;; 0f:4be7 $82
+    db   $83 ; unknown music opcode                    ;; 0f:4be8 $83
+    db   $85 ; unknown music opcode                    ;; 0f:4be9 $85
+    db   $27 ; unknown music opcode                    ;; 0f:4bea $27
+    db   $8E ; unknown music opcode                    ;; 0f:4beb $8e
+    db   $85 ; unknown music opcode                    ;; 0f:4bec $85
+    db   $83 ; unknown music opcode                    ;; 0f:4bed $83
+    db   $82 ; unknown music opcode                    ;; 0f:4bee $82
+    db   $50 ; unknown music opcode                    ;; 0f:4bef $50
+    db   $59 ; unknown music opcode                    ;; 0f:4bf0 $59
+    db   $57 ; unknown music opcode                    ;; 0f:4bf1 $57
+    db   $59 ; unknown music opcode                    ;; 0f:4bf2 $59
+    db   $25 ; unknown music opcode                    ;; 0f:4bf3 $25
+    db   $8E ; unknown music opcode                    ;; 0f:4bf4 $8e
+    db   $83 ; unknown music opcode                    ;; 0f:4bf5 $83
+    db   $82 ; unknown music opcode                    ;; 0f:4bf6 $82
+    db   $80 ; unknown music opcode                    ;; 0f:4bf7 $80
+    db   $DC ; unknown music opcode                    ;; 0f:4bf8 $dc
+    db   $2B ; unknown music opcode                    ;; 0f:4bf9 $2b
+    db   $5C ; unknown music opcode                    ;; 0f:4bfa $5c
+    db   $D8 ; unknown music opcode                    ;; 0f:4bfb $d8
+    db   $52 ; unknown music opcode                    ;; 0f:4bfc $52
+    db   $23 ; unknown music opcode                    ;; 0f:4bfd $23
+    db   $8E ; unknown music opcode                    ;; 0f:4bfe $8e
+    db   $82 ; unknown music opcode                    ;; 0f:4bff $82
+    db   $80 ; unknown music opcode                    ;; 0f:4c00 $80
+    db   $82 ; unknown music opcode                    ;; 0f:4c01 $82
+    db   $53 ; unknown music opcode                    ;; 0f:4c02 $53
+    db   $55 ; unknown music opcode                    ;; 0f:4c03 $55
+    db   $50 ; unknown music opcode                    ;; 0f:4c04 $50
+    db   $53 ; unknown music opcode                    ;; 0f:4c05 $53
+    db   $02 ; unknown music opcode                    ;; 0f:4c06 $02
+    db   $5E ; unknown music opcode                    ;; 0f:4c07 $5e
+    db   $5F ; unknown music opcode                    ;; 0f:4c08 $5f
+    db   $DC ; unknown music opcode                    ;; 0f:4c09 $dc
+    db   $57 ; unknown music opcode                    ;; 0f:4c0a $57
+    db   $59 ; unknown music opcode                    ;; 0f:4c0b $59
+    mUNK_E1 .data_0f_4bc8                              ;; 0f:4c0c $e1 $c8 $4b
 
-data_0f_4c0f:
-    db   $e4, $75, $7a, $e0, $c8, $7a, $e5, $00        ;; 0f:4c0f ????????
-    db   $e6, $03, $2f, $8f, $d1, $87, $8c, $87        ;; 0f:4c17 ????????
-    db   $d8, $83, $dc, $87, $8c, $87, $8f, $8c        ;; 0f:4c1f ????????
-    db   $d8, $85, $80, $53, $50, $8f, $dc, $85        ;; 0f:4c27 ????????
-    db   $8a, $85, $d8, $82, $dc, $85, $8a, $85        ;; 0f:4c2f ????????
-    db   $8f, $8a, $d8, $83, $85, $57, $55, $8f        ;; 0f:4c37 ????????
-    db   $dc, $87, $8c, $87, $d8, $83, $dc, $87        ;; 0f:4c3f ????????
-    db   $8c, $87, $8f, $8c, $d8, $86, $80, $57        ;; 0f:4c47 ????????
-    db   $59, $82, $87, $85, $87, $85, $80, $82        ;; 0f:4c4f ????????
-    db   $83, $55, $57, $28, $8f, $dc, $8a, $d8        ;; 0f:4c57 ????????
-    db   $83, $dc, $8a, $d8, $27, $59, $d8, $55        ;; 0f:4c5f ????????
-    db   $53, $50, $8f, $dc, $80, $88, $87, $25        ;; 0f:4c67 ????????
-    db   $8f, $82, $87, $82, $55, $57, $8f, $80        ;; 0f:4c6f ????????
-    db   $83, $80, $27, $8f, $dc, $89, $8c, $89        ;; 0f:4c77 ????????
-    db   $d8, $53, $57, $8f, $dc, $89, $d8, $84        ;; 0f:4c7f ????????
-    db   $80, $87, $89, $84, $87, $26, $50, $52        ;; 0f:4c87 ????????
-    db   $e1, $1a, $4c                                 ;; 0f:4c8f ???
+song01_channel1:
+    mUNK_E4 frequencyDeltaData.fifth                   ;; 0f:4c0f $e4 $75 $7a
+    mUNK_E0 $c8                                        ;; 0f:4c12 $e0 $c8
+    db   $7A ; unknown music opcode                    ;; 0f:4c14 $7a
+    mUNK_E5 $00                                        ;; 0f:4c15 $e5 $00
+    mUNK_E6 $03                                        ;; 0f:4c17 $e6 $03
+    db   $2F ; unknown music opcode                    ;; 0f:4c19 $2f
+.data_0f_4c1a:
+    db   $8F ; unknown music opcode                    ;; 0f:4c1a $8f
+    db   $D1 ; unknown music opcode                    ;; 0f:4c1b $d1
+    db   $87 ; unknown music opcode                    ;; 0f:4c1c $87
+    db   $8C ; unknown music opcode                    ;; 0f:4c1d $8c
+    db   $87 ; unknown music opcode                    ;; 0f:4c1e $87
+    db   $D8 ; unknown music opcode                    ;; 0f:4c1f $d8
+    db   $83 ; unknown music opcode                    ;; 0f:4c20 $83
+    db   $DC ; unknown music opcode                    ;; 0f:4c21 $dc
+    db   $87 ; unknown music opcode                    ;; 0f:4c22 $87
+    db   $8C ; unknown music opcode                    ;; 0f:4c23 $8c
+    db   $87 ; unknown music opcode                    ;; 0f:4c24 $87
+    db   $8F ; unknown music opcode                    ;; 0f:4c25 $8f
+    db   $8C ; unknown music opcode                    ;; 0f:4c26 $8c
+    db   $D8 ; unknown music opcode                    ;; 0f:4c27 $d8
+    db   $85 ; unknown music opcode                    ;; 0f:4c28 $85
+    db   $80 ; unknown music opcode                    ;; 0f:4c29 $80
+    db   $53 ; unknown music opcode                    ;; 0f:4c2a $53
+    db   $50 ; unknown music opcode                    ;; 0f:4c2b $50
+    db   $8F ; unknown music opcode                    ;; 0f:4c2c $8f
+    db   $DC ; unknown music opcode                    ;; 0f:4c2d $dc
+    db   $85 ; unknown music opcode                    ;; 0f:4c2e $85
+    db   $8A ; unknown music opcode                    ;; 0f:4c2f $8a
+    db   $85 ; unknown music opcode                    ;; 0f:4c30 $85
+    db   $D8 ; unknown music opcode                    ;; 0f:4c31 $d8
+    db   $82 ; unknown music opcode                    ;; 0f:4c32 $82
+    db   $DC ; unknown music opcode                    ;; 0f:4c33 $dc
+    db   $85 ; unknown music opcode                    ;; 0f:4c34 $85
+    db   $8A ; unknown music opcode                    ;; 0f:4c35 $8a
+    db   $85 ; unknown music opcode                    ;; 0f:4c36 $85
+    db   $8F ; unknown music opcode                    ;; 0f:4c37 $8f
+    db   $8A ; unknown music opcode                    ;; 0f:4c38 $8a
+    db   $D8 ; unknown music opcode                    ;; 0f:4c39 $d8
+    db   $83 ; unknown music opcode                    ;; 0f:4c3a $83
+    db   $85 ; unknown music opcode                    ;; 0f:4c3b $85
+    db   $57 ; unknown music opcode                    ;; 0f:4c3c $57
+    db   $55 ; unknown music opcode                    ;; 0f:4c3d $55
+    db   $8F ; unknown music opcode                    ;; 0f:4c3e $8f
+    db   $DC ; unknown music opcode                    ;; 0f:4c3f $dc
+    db   $87 ; unknown music opcode                    ;; 0f:4c40 $87
+    db   $8C ; unknown music opcode                    ;; 0f:4c41 $8c
+    db   $87 ; unknown music opcode                    ;; 0f:4c42 $87
+    db   $D8 ; unknown music opcode                    ;; 0f:4c43 $d8
+    db   $83 ; unknown music opcode                    ;; 0f:4c44 $83
+    db   $DC ; unknown music opcode                    ;; 0f:4c45 $dc
+    db   $87 ; unknown music opcode                    ;; 0f:4c46 $87
+    db   $8C ; unknown music opcode                    ;; 0f:4c47 $8c
+    db   $87 ; unknown music opcode                    ;; 0f:4c48 $87
+    db   $8F ; unknown music opcode                    ;; 0f:4c49 $8f
+    db   $8C ; unknown music opcode                    ;; 0f:4c4a $8c
+    db   $D8 ; unknown music opcode                    ;; 0f:4c4b $d8
+    db   $86 ; unknown music opcode                    ;; 0f:4c4c $86
+    db   $80 ; unknown music opcode                    ;; 0f:4c4d $80
+    db   $57 ; unknown music opcode                    ;; 0f:4c4e $57
+    db   $59 ; unknown music opcode                    ;; 0f:4c4f $59
+    db   $82 ; unknown music opcode                    ;; 0f:4c50 $82
+    db   $87 ; unknown music opcode                    ;; 0f:4c51 $87
+    db   $85 ; unknown music opcode                    ;; 0f:4c52 $85
+    db   $87 ; unknown music opcode                    ;; 0f:4c53 $87
+    db   $85 ; unknown music opcode                    ;; 0f:4c54 $85
+    db   $80 ; unknown music opcode                    ;; 0f:4c55 $80
+    db   $82 ; unknown music opcode                    ;; 0f:4c56 $82
+    db   $83 ; unknown music opcode                    ;; 0f:4c57 $83
+    db   $55 ; unknown music opcode                    ;; 0f:4c58 $55
+    db   $57 ; unknown music opcode                    ;; 0f:4c59 $57
+    db   $28 ; unknown music opcode                    ;; 0f:4c5a $28
+    db   $8F ; unknown music opcode                    ;; 0f:4c5b $8f
+    db   $DC ; unknown music opcode                    ;; 0f:4c5c $dc
+    db   $8A ; unknown music opcode                    ;; 0f:4c5d $8a
+    db   $D8 ; unknown music opcode                    ;; 0f:4c5e $d8
+    db   $83 ; unknown music opcode                    ;; 0f:4c5f $83
+    db   $DC ; unknown music opcode                    ;; 0f:4c60 $dc
+    db   $8A ; unknown music opcode                    ;; 0f:4c61 $8a
+    db   $D8 ; unknown music opcode                    ;; 0f:4c62 $d8
+    db   $27 ; unknown music opcode                    ;; 0f:4c63 $27
+    db   $59 ; unknown music opcode                    ;; 0f:4c64 $59
+    db   $D8 ; unknown music opcode                    ;; 0f:4c65 $d8
+    db   $55 ; unknown music opcode                    ;; 0f:4c66 $55
+    db   $53 ; unknown music opcode                    ;; 0f:4c67 $53
+    db   $50 ; unknown music opcode                    ;; 0f:4c68 $50
+    db   $8F ; unknown music opcode                    ;; 0f:4c69 $8f
+    db   $DC ; unknown music opcode                    ;; 0f:4c6a $dc
+    db   $80 ; unknown music opcode                    ;; 0f:4c6b $80
+    db   $88 ; unknown music opcode                    ;; 0f:4c6c $88
+    db   $87 ; unknown music opcode                    ;; 0f:4c6d $87
+    db   $25 ; unknown music opcode                    ;; 0f:4c6e $25
+    db   $8F ; unknown music opcode                    ;; 0f:4c6f $8f
+    db   $82 ; unknown music opcode                    ;; 0f:4c70 $82
+    db   $87 ; unknown music opcode                    ;; 0f:4c71 $87
+    db   $82 ; unknown music opcode                    ;; 0f:4c72 $82
+    db   $55 ; unknown music opcode                    ;; 0f:4c73 $55
+    db   $57 ; unknown music opcode                    ;; 0f:4c74 $57
+    db   $8F ; unknown music opcode                    ;; 0f:4c75 $8f
+    db   $80 ; unknown music opcode                    ;; 0f:4c76 $80
+    db   $83 ; unknown music opcode                    ;; 0f:4c77 $83
+    db   $80 ; unknown music opcode                    ;; 0f:4c78 $80
+    db   $27 ; unknown music opcode                    ;; 0f:4c79 $27
+    db   $8F ; unknown music opcode                    ;; 0f:4c7a $8f
+    db   $DC ; unknown music opcode                    ;; 0f:4c7b $dc
+    db   $89 ; unknown music opcode                    ;; 0f:4c7c $89
+    db   $8C ; unknown music opcode                    ;; 0f:4c7d $8c
+    db   $89 ; unknown music opcode                    ;; 0f:4c7e $89
+    db   $D8 ; unknown music opcode                    ;; 0f:4c7f $d8
+    db   $53 ; unknown music opcode                    ;; 0f:4c80 $53
+    db   $57 ; unknown music opcode                    ;; 0f:4c81 $57
+    db   $8F ; unknown music opcode                    ;; 0f:4c82 $8f
+    db   $DC ; unknown music opcode                    ;; 0f:4c83 $dc
+    db   $89 ; unknown music opcode                    ;; 0f:4c84 $89
+    db   $D8 ; unknown music opcode                    ;; 0f:4c85 $d8
+    db   $84 ; unknown music opcode                    ;; 0f:4c86 $84
+    db   $80 ; unknown music opcode                    ;; 0f:4c87 $80
+    db   $87 ; unknown music opcode                    ;; 0f:4c88 $87
+    db   $89 ; unknown music opcode                    ;; 0f:4c89 $89
+    db   $84 ; unknown music opcode                    ;; 0f:4c8a $84
+    db   $87 ; unknown music opcode                    ;; 0f:4c8b $87
+    db   $26 ; unknown music opcode                    ;; 0f:4c8c $26
+    db   $50 ; unknown music opcode                    ;; 0f:4c8d $50
+    db   $52 ; unknown music opcode                    ;; 0f:4c8e $52
+    mUNK_E1 .data_0f_4c1a                              ;; 0f:4c8f $e1 $1a $4c
 
-data_0f_4c92:
-    db   $e4, $4f, $7a, $e8, $dc, $7a, $e0, $40        ;; 0f:4c92 ????????
-    db   $e6, $03, $2f, $d2, $00, $05, $dc, $0a        ;; 0f:4c9a ????????
-    db   $d8, $13, $52, $00, $22, $54, $56, $27        ;; 0f:4ca2 ????????
-    db   $29, $2a, $2b, $03, $05, $08, $57, $dc        ;; 0f:4caa ????????
-    db   $57, $59, $5b, $0c, $09, $d8, $02, $2e        ;; 0f:4cb2 ????????
-    db   $54, $56, $e1, $9e, $4c, $e7, $14             ;; 0f:4cba ???????
+song01_channel3:
+    mUNK_E4 frequencyDeltaData                         ;; 0f:4c92 $e4 $4f $7a
+    mUNK_E8 data_0f_7adc                               ;; 0f:4c95 $e8 $dc $7a
+    mUNK_E0 $40                                        ;; 0f:4c98 $e0 $40
+    mUNK_E6 $03                                        ;; 0f:4c9a $e6 $03
+    db   $2F ; unknown music opcode                    ;; 0f:4c9c $2f
+    db   $D2 ; unknown music opcode                    ;; 0f:4c9d $d2
+.data_0f_4c9e:
+    db   $00 ; unknown music opcode                    ;; 0f:4c9e $00
+    db   $05 ; unknown music opcode                    ;; 0f:4c9f $05
+    db   $DC ; unknown music opcode                    ;; 0f:4ca0 $dc
+    db   $0A ; unknown music opcode                    ;; 0f:4ca1 $0a
+    db   $D8 ; unknown music opcode                    ;; 0f:4ca2 $d8
+    db   $13 ; unknown music opcode                    ;; 0f:4ca3 $13
+    db   $52 ; unknown music opcode                    ;; 0f:4ca4 $52
+    db   $00 ; unknown music opcode                    ;; 0f:4ca5 $00
+    db   $22 ; unknown music opcode                    ;; 0f:4ca6 $22
+    db   $54 ; unknown music opcode                    ;; 0f:4ca7 $54
+    db   $56 ; unknown music opcode                    ;; 0f:4ca8 $56
+    db   $27 ; unknown music opcode                    ;; 0f:4ca9 $27
+    db   $29 ; unknown music opcode                    ;; 0f:4caa $29
+    db   $2A ; unknown music opcode                    ;; 0f:4cab $2a
+    db   $2B ; unknown music opcode                    ;; 0f:4cac $2b
+    db   $03 ; unknown music opcode                    ;; 0f:4cad $03
+    db   $05 ; unknown music opcode                    ;; 0f:4cae $05
+    db   $08 ; unknown music opcode                    ;; 0f:4caf $08
+    db   $57 ; unknown music opcode                    ;; 0f:4cb0 $57
+    db   $DC ; unknown music opcode                    ;; 0f:4cb1 $dc
+    db   $57 ; unknown music opcode                    ;; 0f:4cb2 $57
+    db   $59 ; unknown music opcode                    ;; 0f:4cb3 $59
+    db   $5B ; unknown music opcode                    ;; 0f:4cb4 $5b
+    db   $0C ; unknown music opcode                    ;; 0f:4cb5 $0c
+    db   $09 ; unknown music opcode                    ;; 0f:4cb6 $09
+    db   $D8 ; unknown music opcode                    ;; 0f:4cb7 $d8
+    db   $02 ; unknown music opcode                    ;; 0f:4cb8 $02
+    db   $2E ; unknown music opcode                    ;; 0f:4cb9 $2e
+    db   $54 ; unknown music opcode                    ;; 0f:4cba $54
+    db   $56 ; unknown music opcode                    ;; 0f:4cbb $56
+    mUNK_E1 .data_0f_4c9e                              ;; 0f:4cbc $e1 $9e $4c
+    db   $e7, $14                                      ;; 0f:4cbf ??
 
-data_0f_4cc1:
-    db   $e7, $39, $e4, $4f, $7a, $e0, $82, $7a        ;; 0f:4cc1 ????????
-    db   $e5, $80, $e6, $03, $d2, $0f, $0f, $e7        ;; 0f:4cc9 ????????
-    db   $39, $29, $8e, $a8, $a9, $ab, $a9, $a8        ;; 0f:4cd1 ????????
-    db   $a9, $21, $8e, $a8, $a9, $ab, $a9, $a8        ;; 0f:4cd9 ????????
-    db   $a9, $58, $26, $84, $82, $21, $8e, $8f        ;; 0f:4ce1 ????????
-    db   $a6, $a8, $a9, $a6, $d8, $42, $dc, $89        ;; 0f:4ce9 ????????
-    db   $58, $a8, $a9, $ab, $a8, $4d, $88, $56        ;; 0f:4cf1 ????????
-    db   $a6, $a8, $a9, $a6, $5b, $59, $88, $86        ;; 0f:4cf9 ????????
-    db   $85, $86, $28, $8f, $e7, $37, $85, $86        ;; 0f:4d01 ????????
-    db   $88, $e2, $d0, $4c                            ;; 0f:4d09 ????
+song02_channel2:
+    mUNK_E7 $39                                        ;; 0f:4cc1 $e7 $39
+    mUNK_E4 frequencyDeltaData                         ;; 0f:4cc3 $e4 $4f $7a
+    mUNK_E0 $82                                        ;; 0f:4cc6 $e0 $82
+    db   $7A ; unknown music opcode                    ;; 0f:4cc8 $7a
+    mUNK_E5 $80                                        ;; 0f:4cc9 $e5 $80
+    mUNK_E6 $03                                        ;; 0f:4ccb $e6 $03
+    db   $D2 ; unknown music opcode                    ;; 0f:4ccd $d2
+    db   $0F ; unknown music opcode                    ;; 0f:4cce $0f
+    db   $0F ; unknown music opcode                    ;; 0f:4ccf $0f
+.data_0f_4cd0:
+    mUNK_E7 $39                                        ;; 0f:4cd0 $e7 $39
+    db   $29 ; unknown music opcode                    ;; 0f:4cd2 $29
+    db   $8E ; unknown music opcode                    ;; 0f:4cd3 $8e
+    db   $A8 ; unknown music opcode                    ;; 0f:4cd4 $a8
+    db   $A9 ; unknown music opcode                    ;; 0f:4cd5 $a9
+    db   $AB ; unknown music opcode                    ;; 0f:4cd6 $ab
+    db   $A9 ; unknown music opcode                    ;; 0f:4cd7 $a9
+    db   $A8 ; unknown music opcode                    ;; 0f:4cd8 $a8
+    db   $A9 ; unknown music opcode                    ;; 0f:4cd9 $a9
+    db   $21 ; unknown music opcode                    ;; 0f:4cda $21
+    db   $8E ; unknown music opcode                    ;; 0f:4cdb $8e
+    db   $A8 ; unknown music opcode                    ;; 0f:4cdc $a8
+    db   $A9 ; unknown music opcode                    ;; 0f:4cdd $a9
+    db   $AB ; unknown music opcode                    ;; 0f:4cde $ab
+    db   $A9 ; unknown music opcode                    ;; 0f:4cdf $a9
+    db   $A8 ; unknown music opcode                    ;; 0f:4ce0 $a8
+    db   $A9 ; unknown music opcode                    ;; 0f:4ce1 $a9
+    db   $58 ; unknown music opcode                    ;; 0f:4ce2 $58
+    db   $26 ; unknown music opcode                    ;; 0f:4ce3 $26
+    db   $84 ; unknown music opcode                    ;; 0f:4ce4 $84
+    db   $82 ; unknown music opcode                    ;; 0f:4ce5 $82
+    db   $21 ; unknown music opcode                    ;; 0f:4ce6 $21
+    db   $8E ; unknown music opcode                    ;; 0f:4ce7 $8e
+    db   $8F ; unknown music opcode                    ;; 0f:4ce8 $8f
+    db   $A6 ; unknown music opcode                    ;; 0f:4ce9 $a6
+    db   $A8 ; unknown music opcode                    ;; 0f:4cea $a8
+    db   $A9 ; unknown music opcode                    ;; 0f:4ceb $a9
+    db   $A6 ; unknown music opcode                    ;; 0f:4cec $a6
+    db   $D8 ; unknown music opcode                    ;; 0f:4ced $d8
+    db   $42 ; unknown music opcode                    ;; 0f:4cee $42
+    db   $DC ; unknown music opcode                    ;; 0f:4cef $dc
+    db   $89 ; unknown music opcode                    ;; 0f:4cf0 $89
+    db   $58 ; unknown music opcode                    ;; 0f:4cf1 $58
+    db   $A8 ; unknown music opcode                    ;; 0f:4cf2 $a8
+    db   $A9 ; unknown music opcode                    ;; 0f:4cf3 $a9
+    db   $AB ; unknown music opcode                    ;; 0f:4cf4 $ab
+    db   $A8 ; unknown music opcode                    ;; 0f:4cf5 $a8
+    db   $4D ; unknown music opcode                    ;; 0f:4cf6 $4d
+    db   $88 ; unknown music opcode                    ;; 0f:4cf7 $88
+    db   $56 ; unknown music opcode                    ;; 0f:4cf8 $56
+    db   $A6 ; unknown music opcode                    ;; 0f:4cf9 $a6
+    db   $A8 ; unknown music opcode                    ;; 0f:4cfa $a8
+    db   $A9 ; unknown music opcode                    ;; 0f:4cfb $a9
+    db   $A6 ; unknown music opcode                    ;; 0f:4cfc $a6
+    db   $5B ; unknown music opcode                    ;; 0f:4cfd $5b
+    db   $59 ; unknown music opcode                    ;; 0f:4cfe $59
+    db   $88 ; unknown music opcode                    ;; 0f:4cff $88
+    db   $86 ; unknown music opcode                    ;; 0f:4d00 $86
+    db   $85 ; unknown music opcode                    ;; 0f:4d01 $85
+    db   $86 ; unknown music opcode                    ;; 0f:4d02 $86
+    db   $28 ; unknown music opcode                    ;; 0f:4d03 $28
+    db   $8F ; unknown music opcode                    ;; 0f:4d04 $8f
+    mUNK_E7 $37                                        ;; 0f:4d05 $e7 $37
+    db   $85 ; unknown music opcode                    ;; 0f:4d07 $85
+    db   $86 ; unknown music opcode                    ;; 0f:4d08 $86
+    db   $88 ; unknown music opcode                    ;; 0f:4d09 $88
+    mUNK_E2 .data_0f_4cd0                              ;; 0f:4d0a $e2 $d0 $4c
 
-data_0f_4d0d:
-    db   $e4, $4f, $7a, $e0, $c4, $7a, $e5, $80        ;; 0f:4d0d ????????
-    db   $e6, $03, $d3, $86, $d8, $81, $dc, $8b        ;; 0f:4d15 ????????
-    db   $8d, $89, $8d, $88, $8d, $86, $8d, $8b        ;; 0f:4d1d ????????
-    db   $8d, $89, $8d, $88, $8d, $dc, $e0, $c8        ;; 0f:4d25 ????????
-    db   $7a, $e5, $00, $e6, $02, $8f, $81, $dc        ;; 0f:4d2d ????????
-    db   $8b, $8d, $89, $8d, $88, $8d, $e6, $01        ;; 0f:4d35 ????????
-    db   $8f, $8b, $89, $8b, $88, $8b, $89, $8b        ;; 0f:4d3d ????????
-    db   $e6, $02, $8f, $89, $88, $89, $86, $89        ;; 0f:4d45 ????????
-    db   $88, $89, $e6, $01, $8f, $88, $86, $88        ;; 0f:4d4d ????????
-    db   $84, $88, $86, $88, $e6, $02, $8f, $89        ;; 0f:4d55 ????????
-    db   $86, $89, $8f, $8b, $88, $8b, $e6, $01        ;; 0f:4d5d ????????
-    db   $8f, $89, $84, $8b, $8f, $89, $86, $89        ;; 0f:4d65 ????????
-    db   $e6, $03, $8f, $86, $82, $86, $8f, $86        ;; 0f:4d6d ????????
-    db   $82, $86, $8f, $88, $86, $88, $85, $88        ;; 0f:4d75 ????????
-    db   $8b, $8d, $d8, $e2, $2b, $4d                  ;; 0f:4d7d ??????
+song02_channel1:
+    mUNK_E4 frequencyDeltaData                         ;; 0f:4d0d $e4 $4f $7a
+    mUNK_E0 $c4                                        ;; 0f:4d10 $e0 $c4
+    db   $7A ; unknown music opcode                    ;; 0f:4d12 $7a
+    mUNK_E5 $80                                        ;; 0f:4d13 $e5 $80
+    mUNK_E6 $03                                        ;; 0f:4d15 $e6 $03
+    db   $D3 ; unknown music opcode                    ;; 0f:4d17 $d3
+    db   $86 ; unknown music opcode                    ;; 0f:4d18 $86
+    db   $D8 ; unknown music opcode                    ;; 0f:4d19 $d8
+    db   $81 ; unknown music opcode                    ;; 0f:4d1a $81
+    db   $DC ; unknown music opcode                    ;; 0f:4d1b $dc
+    db   $8B ; unknown music opcode                    ;; 0f:4d1c $8b
+    db   $8D ; unknown music opcode                    ;; 0f:4d1d $8d
+    db   $89 ; unknown music opcode                    ;; 0f:4d1e $89
+    db   $8D ; unknown music opcode                    ;; 0f:4d1f $8d
+    db   $88 ; unknown music opcode                    ;; 0f:4d20 $88
+    db   $8D ; unknown music opcode                    ;; 0f:4d21 $8d
+    db   $86 ; unknown music opcode                    ;; 0f:4d22 $86
+    db   $8D ; unknown music opcode                    ;; 0f:4d23 $8d
+    db   $8B ; unknown music opcode                    ;; 0f:4d24 $8b
+    db   $8D ; unknown music opcode                    ;; 0f:4d25 $8d
+    db   $89 ; unknown music opcode                    ;; 0f:4d26 $89
+    db   $8D ; unknown music opcode                    ;; 0f:4d27 $8d
+    db   $88 ; unknown music opcode                    ;; 0f:4d28 $88
+    db   $8D ; unknown music opcode                    ;; 0f:4d29 $8d
+    db   $DC ; unknown music opcode                    ;; 0f:4d2a $dc
+.data_0f_4d2b:
+    mUNK_E0 $c8                                        ;; 0f:4d2b $e0 $c8
+    db   $7A ; unknown music opcode                    ;; 0f:4d2d $7a
+    mUNK_E5 $00                                        ;; 0f:4d2e $e5 $00
+    mUNK_E6 $02                                        ;; 0f:4d30 $e6 $02
+    db   $8F ; unknown music opcode                    ;; 0f:4d32 $8f
+    db   $81 ; unknown music opcode                    ;; 0f:4d33 $81
+    db   $DC ; unknown music opcode                    ;; 0f:4d34 $dc
+    db   $8B ; unknown music opcode                    ;; 0f:4d35 $8b
+    db   $8D ; unknown music opcode                    ;; 0f:4d36 $8d
+    db   $89 ; unknown music opcode                    ;; 0f:4d37 $89
+    db   $8D ; unknown music opcode                    ;; 0f:4d38 $8d
+    db   $88 ; unknown music opcode                    ;; 0f:4d39 $88
+    db   $8D ; unknown music opcode                    ;; 0f:4d3a $8d
+    mUNK_E6 $01                                        ;; 0f:4d3b $e6 $01
+    db   $8F ; unknown music opcode                    ;; 0f:4d3d $8f
+    db   $8B ; unknown music opcode                    ;; 0f:4d3e $8b
+    db   $89 ; unknown music opcode                    ;; 0f:4d3f $89
+    db   $8B ; unknown music opcode                    ;; 0f:4d40 $8b
+    db   $88 ; unknown music opcode                    ;; 0f:4d41 $88
+    db   $8B ; unknown music opcode                    ;; 0f:4d42 $8b
+    db   $89 ; unknown music opcode                    ;; 0f:4d43 $89
+    db   $8B ; unknown music opcode                    ;; 0f:4d44 $8b
+    mUNK_E6 $02                                        ;; 0f:4d45 $e6 $02
+    db   $8F ; unknown music opcode                    ;; 0f:4d47 $8f
+    db   $89 ; unknown music opcode                    ;; 0f:4d48 $89
+    db   $88 ; unknown music opcode                    ;; 0f:4d49 $88
+    db   $89 ; unknown music opcode                    ;; 0f:4d4a $89
+    db   $86 ; unknown music opcode                    ;; 0f:4d4b $86
+    db   $89 ; unknown music opcode                    ;; 0f:4d4c $89
+    db   $88 ; unknown music opcode                    ;; 0f:4d4d $88
+    db   $89 ; unknown music opcode                    ;; 0f:4d4e $89
+    mUNK_E6 $01                                        ;; 0f:4d4f $e6 $01
+    db   $8F ; unknown music opcode                    ;; 0f:4d51 $8f
+    db   $88 ; unknown music opcode                    ;; 0f:4d52 $88
+    db   $86 ; unknown music opcode                    ;; 0f:4d53 $86
+    db   $88 ; unknown music opcode                    ;; 0f:4d54 $88
+    db   $84 ; unknown music opcode                    ;; 0f:4d55 $84
+    db   $88 ; unknown music opcode                    ;; 0f:4d56 $88
+    db   $86 ; unknown music opcode                    ;; 0f:4d57 $86
+    db   $88 ; unknown music opcode                    ;; 0f:4d58 $88
+    mUNK_E6 $02                                        ;; 0f:4d59 $e6 $02
+    db   $8F ; unknown music opcode                    ;; 0f:4d5b $8f
+    db   $89 ; unknown music opcode                    ;; 0f:4d5c $89
+    db   $86 ; unknown music opcode                    ;; 0f:4d5d $86
+    db   $89 ; unknown music opcode                    ;; 0f:4d5e $89
+    db   $8F ; unknown music opcode                    ;; 0f:4d5f $8f
+    db   $8B ; unknown music opcode                    ;; 0f:4d60 $8b
+    db   $88 ; unknown music opcode                    ;; 0f:4d61 $88
+    db   $8B ; unknown music opcode                    ;; 0f:4d62 $8b
+    mUNK_E6 $01                                        ;; 0f:4d63 $e6 $01
+    db   $8F ; unknown music opcode                    ;; 0f:4d65 $8f
+    db   $89 ; unknown music opcode                    ;; 0f:4d66 $89
+    db   $84 ; unknown music opcode                    ;; 0f:4d67 $84
+    db   $8B ; unknown music opcode                    ;; 0f:4d68 $8b
+    db   $8F ; unknown music opcode                    ;; 0f:4d69 $8f
+    db   $89 ; unknown music opcode                    ;; 0f:4d6a $89
+    db   $86 ; unknown music opcode                    ;; 0f:4d6b $86
+    db   $89 ; unknown music opcode                    ;; 0f:4d6c $89
+    mUNK_E6 $03                                        ;; 0f:4d6d $e6 $03
+    db   $8F ; unknown music opcode                    ;; 0f:4d6f $8f
+    db   $86 ; unknown music opcode                    ;; 0f:4d70 $86
+    db   $82 ; unknown music opcode                    ;; 0f:4d71 $82
+    db   $86 ; unknown music opcode                    ;; 0f:4d72 $86
+    db   $8F ; unknown music opcode                    ;; 0f:4d73 $8f
+    db   $86 ; unknown music opcode                    ;; 0f:4d74 $86
+    db   $82 ; unknown music opcode                    ;; 0f:4d75 $82
+    db   $86 ; unknown music opcode                    ;; 0f:4d76 $86
+    db   $8F ; unknown music opcode                    ;; 0f:4d77 $8f
+    db   $88 ; unknown music opcode                    ;; 0f:4d78 $88
+    db   $86 ; unknown music opcode                    ;; 0f:4d79 $86
+    db   $88 ; unknown music opcode                    ;; 0f:4d7a $88
+    db   $85 ; unknown music opcode                    ;; 0f:4d7b $85
+    db   $88 ; unknown music opcode                    ;; 0f:4d7c $88
+    db   $8B ; unknown music opcode                    ;; 0f:4d7d $8b
+    db   $8D ; unknown music opcode                    ;; 0f:4d7e $8d
+    db   $D8 ; unknown music opcode                    ;; 0f:4d7f $d8
+    mUNK_E2 .data_0f_4d2b                              ;; 0f:4d80 $e2 $2b $4d
 
-data_0f_4d83:
-    db   $e4, $4f, $7a, $e8, $dc, $7a, $e0, $40        ;; 0f:4d83 ????????
-    db   $d2, $0f, $0f, $e6, $03, $06, $04, $02        ;; 0f:4d8b ????????
-    db   $01, $dc, $2b, $d8, $24, $dc, $29, $d8        ;; 0f:4d93 ????????
-    db   $22, $dc, $0b, $2d, $8f, $e6, $02, $8d        ;; 0f:4d9b ????????
-    db   $d8, $e6, $03, $83, $e6, $01, $85, $e2        ;; 0f:4da3 ????????
-    db   $8e, $4d, $e7, $14                            ;; 0f:4dab ????
+song02_channel3:
+    mUNK_E4 frequencyDeltaData                         ;; 0f:4d83 $e4 $4f $7a
+    mUNK_E8 data_0f_7adc                               ;; 0f:4d86 $e8 $dc $7a
+    mUNK_E0 $40                                        ;; 0f:4d89 $e0 $40
+    db   $D2 ; unknown music opcode                    ;; 0f:4d8b $d2
+    db   $0F ; unknown music opcode                    ;; 0f:4d8c $0f
+    db   $0F ; unknown music opcode                    ;; 0f:4d8d $0f
+.data_0f_4d8e:
+    mUNK_E6 $03                                        ;; 0f:4d8e $e6 $03
+    db   $06 ; unknown music opcode                    ;; 0f:4d90 $06
+    db   $04 ; unknown music opcode                    ;; 0f:4d91 $04
+    db   $02 ; unknown music opcode                    ;; 0f:4d92 $02
+    db   $01 ; unknown music opcode                    ;; 0f:4d93 $01
+    db   $DC ; unknown music opcode                    ;; 0f:4d94 $dc
+    db   $2B ; unknown music opcode                    ;; 0f:4d95 $2b
+    db   $D8 ; unknown music opcode                    ;; 0f:4d96 $d8
+    db   $24 ; unknown music opcode                    ;; 0f:4d97 $24
+    db   $DC ; unknown music opcode                    ;; 0f:4d98 $dc
+    db   $29 ; unknown music opcode                    ;; 0f:4d99 $29
+    db   $D8 ; unknown music opcode                    ;; 0f:4d9a $d8
+    db   $22 ; unknown music opcode                    ;; 0f:4d9b $22
+    db   $DC ; unknown music opcode                    ;; 0f:4d9c $dc
+    db   $0B ; unknown music opcode                    ;; 0f:4d9d $0b
+    db   $2D ; unknown music opcode                    ;; 0f:4d9e $2d
+    db   $8F ; unknown music opcode                    ;; 0f:4d9f $8f
+    mUNK_E6 $02                                        ;; 0f:4da0 $e6 $02
+    db   $8D ; unknown music opcode                    ;; 0f:4da2 $8d
+    db   $D8 ; unknown music opcode                    ;; 0f:4da3 $d8
+    mUNK_E6 $03                                        ;; 0f:4da4 $e6 $03
+    db   $83 ; unknown music opcode                    ;; 0f:4da6 $83
+    mUNK_E6 $01                                        ;; 0f:4da7 $e6 $01
+    db   $85 ; unknown music opcode                    ;; 0f:4da9 $85
+    mUNK_E2 .data_0f_4d8e                              ;; 0f:4daa $e2 $8e $4d
+    mUNK_E7 $14                                        ;; 0f:4dad $e7 $14
 
-data_0f_4daf:
-    db   $e7, $3e, $e4, $4f, $7a                       ;; 0f:4daf .....
+song03_channel2:
+    mUNK_E7 $3e                                        ;; 0f:4daf $e7 $3e
+    mUNK_E4 frequencyDeltaData                         ;; 0f:4db1 $e4 $4f $7a
 .data_0f_4db4:
-    db   $e0, $82, $7a, $e5, $40, $e6, $03, $d3        ;; 0f:4db4 ........
-    db   $54, $82, $84, $22, $50, $dc, $8b, $8c        ;; 0f:4dbc ........
-    db   $5b, $57, $89, $87, $89, $8b, $8c, $d8        ;; 0f:4dc4 ........
-    db   $82, $84, $86, $57, $85, $84, $22, $84        ;; 0f:4dcc ........
-    db   $dc, $8b, $8a, $8b, $d8, $54, $52, $80        ;; 0f:4dd4 ........
-    db   $82, $84, $80, $59, $87, $85, $54, $85        ;; 0f:4ddc ........
-    db   $84, $42, $80, $00, $e1                       ;; 0f:4de4 .....
-    dw   .data_0f_4db4                                 ;; 0f:4de9 pP
+    mUNK_E0 $82                                        ;; 0f:4db4 $e0 $82
+    db   $7A ; unknown music opcode                    ;; 0f:4db6 $7a
+    mUNK_E5 $40                                        ;; 0f:4db7 $e5 $40
+    mUNK_E6 $03                                        ;; 0f:4db9 $e6 $03
+    db   $D3 ; unknown music opcode                    ;; 0f:4dbb $d3
+    db   $54 ; unknown music opcode                    ;; 0f:4dbc $54
+    db   $82 ; unknown music opcode                    ;; 0f:4dbd $82
+    db   $84 ; unknown music opcode                    ;; 0f:4dbe $84
+    db   $22 ; unknown music opcode                    ;; 0f:4dbf $22
+    db   $50 ; unknown music opcode                    ;; 0f:4dc0 $50
+    db   $DC ; unknown music opcode                    ;; 0f:4dc1 $dc
+    db   $8B ; unknown music opcode                    ;; 0f:4dc2 $8b
+    db   $8C ; unknown music opcode                    ;; 0f:4dc3 $8c
+    db   $5B ; unknown music opcode                    ;; 0f:4dc4 $5b
+    db   $57 ; unknown music opcode                    ;; 0f:4dc5 $57
+    db   $89 ; unknown music opcode                    ;; 0f:4dc6 $89
+    db   $87 ; unknown music opcode                    ;; 0f:4dc7 $87
+    db   $89 ; unknown music opcode                    ;; 0f:4dc8 $89
+    db   $8B ; unknown music opcode                    ;; 0f:4dc9 $8b
+    db   $8C ; unknown music opcode                    ;; 0f:4dca $8c
+    db   $D8 ; unknown music opcode                    ;; 0f:4dcb $d8
+    db   $82 ; unknown music opcode                    ;; 0f:4dcc $82
+    db   $84 ; unknown music opcode                    ;; 0f:4dcd $84
+    db   $86 ; unknown music opcode                    ;; 0f:4dce $86
+    db   $57 ; unknown music opcode                    ;; 0f:4dcf $57
+    db   $85 ; unknown music opcode                    ;; 0f:4dd0 $85
+    db   $84 ; unknown music opcode                    ;; 0f:4dd1 $84
+    db   $22 ; unknown music opcode                    ;; 0f:4dd2 $22
+    db   $84 ; unknown music opcode                    ;; 0f:4dd3 $84
+    db   $DC ; unknown music opcode                    ;; 0f:4dd4 $dc
+    db   $8B ; unknown music opcode                    ;; 0f:4dd5 $8b
+    db   $8A ; unknown music opcode                    ;; 0f:4dd6 $8a
+    db   $8B ; unknown music opcode                    ;; 0f:4dd7 $8b
+    db   $D8 ; unknown music opcode                    ;; 0f:4dd8 $d8
+    db   $54 ; unknown music opcode                    ;; 0f:4dd9 $54
+    db   $52 ; unknown music opcode                    ;; 0f:4dda $52
+    db   $80 ; unknown music opcode                    ;; 0f:4ddb $80
+    db   $82 ; unknown music opcode                    ;; 0f:4ddc $82
+    db   $84 ; unknown music opcode                    ;; 0f:4ddd $84
+    db   $80 ; unknown music opcode                    ;; 0f:4dde $80
+    db   $59 ; unknown music opcode                    ;; 0f:4ddf $59
+    db   $87 ; unknown music opcode                    ;; 0f:4de0 $87
+    db   $85 ; unknown music opcode                    ;; 0f:4de1 $85
+    db   $54 ; unknown music opcode                    ;; 0f:4de2 $54
+    db   $85 ; unknown music opcode                    ;; 0f:4de3 $85
+    db   $84 ; unknown music opcode                    ;; 0f:4de4 $84
+    db   $42 ; unknown music opcode                    ;; 0f:4de5 $42
+    db   $80 ; unknown music opcode                    ;; 0f:4de6 $80
+    db   $00 ; unknown music opcode                    ;; 0f:4de7 $00
+    mUNK_E1 .data_0f_4db4                              ;; 0f:4de8 $e1 $b4 $4d
 
-data_0f_4deb:
-    db   $e4, $4f, $7a                                 ;; 0f:4deb ...
+song03_channel1:
+    mUNK_E4 frequencyDeltaData                         ;; 0f:4deb $e4 $4f $7a
 .data_0f_4dee:
-    db   $e0, $b0, $7a, $e5, $40, $e6, $02, $8f        ;; 0f:4dee ........
-    db   $d2, $84, $85, $87, $8f, $82, $84, $82        ;; 0f:4df6 ........
-    db   $8f, $84, $82, $84, $8f, $82, $dc, $8b        ;; 0f:4dfe ........
-    db   $d8, $82, $85, $84, $85, $87, $56, $87        ;; 0f:4e06 ........
-    db   $89, $5b, $89, $87, $85, $e6, $03, $87        ;; 0f:4e0e ........
-    db   $89, $8b, $e6, $01, $8f, $82, $84, $82        ;; 0f:4e16 ........
-    db   $59, $5b, $54, $89, $84, $25, $8f, $8c        ;; 0f:4e1e ........
-    db   $89, $87, $85, $89, $87, $85, $55, $84        ;; 0f:4e26 ........
-    db   $82, $24, $e1                                 ;; 0f:4e2e ...
-    dw   .data_0f_4dee                                 ;; 0f:4e31 pP
+    mUNK_E0 $b0                                        ;; 0f:4dee $e0 $b0
+    db   $7A ; unknown music opcode                    ;; 0f:4df0 $7a
+    mUNK_E5 $40                                        ;; 0f:4df1 $e5 $40
+    mUNK_E6 $02                                        ;; 0f:4df3 $e6 $02
+    db   $8F ; unknown music opcode                    ;; 0f:4df5 $8f
+    db   $D2 ; unknown music opcode                    ;; 0f:4df6 $d2
+    db   $84 ; unknown music opcode                    ;; 0f:4df7 $84
+    db   $85 ; unknown music opcode                    ;; 0f:4df8 $85
+    db   $87 ; unknown music opcode                    ;; 0f:4df9 $87
+    db   $8F ; unknown music opcode                    ;; 0f:4dfa $8f
+    db   $82 ; unknown music opcode                    ;; 0f:4dfb $82
+    db   $84 ; unknown music opcode                    ;; 0f:4dfc $84
+    db   $82 ; unknown music opcode                    ;; 0f:4dfd $82
+    db   $8F ; unknown music opcode                    ;; 0f:4dfe $8f
+    db   $84 ; unknown music opcode                    ;; 0f:4dff $84
+    db   $82 ; unknown music opcode                    ;; 0f:4e00 $82
+    db   $84 ; unknown music opcode                    ;; 0f:4e01 $84
+    db   $8F ; unknown music opcode                    ;; 0f:4e02 $8f
+    db   $82 ; unknown music opcode                    ;; 0f:4e03 $82
+    db   $DC ; unknown music opcode                    ;; 0f:4e04 $dc
+    db   $8B ; unknown music opcode                    ;; 0f:4e05 $8b
+    db   $D8 ; unknown music opcode                    ;; 0f:4e06 $d8
+    db   $82 ; unknown music opcode                    ;; 0f:4e07 $82
+    db   $85 ; unknown music opcode                    ;; 0f:4e08 $85
+    db   $84 ; unknown music opcode                    ;; 0f:4e09 $84
+    db   $85 ; unknown music opcode                    ;; 0f:4e0a $85
+    db   $87 ; unknown music opcode                    ;; 0f:4e0b $87
+    db   $56 ; unknown music opcode                    ;; 0f:4e0c $56
+    db   $87 ; unknown music opcode                    ;; 0f:4e0d $87
+    db   $89 ; unknown music opcode                    ;; 0f:4e0e $89
+    db   $5B ; unknown music opcode                    ;; 0f:4e0f $5b
+    db   $89 ; unknown music opcode                    ;; 0f:4e10 $89
+    db   $87 ; unknown music opcode                    ;; 0f:4e11 $87
+    db   $85 ; unknown music opcode                    ;; 0f:4e12 $85
+    mUNK_E6 $03                                        ;; 0f:4e13 $e6 $03
+    db   $87 ; unknown music opcode                    ;; 0f:4e15 $87
+    db   $89 ; unknown music opcode                    ;; 0f:4e16 $89
+    db   $8B ; unknown music opcode                    ;; 0f:4e17 $8b
+    mUNK_E6 $01                                        ;; 0f:4e18 $e6 $01
+    db   $8F ; unknown music opcode                    ;; 0f:4e1a $8f
+    db   $82 ; unknown music opcode                    ;; 0f:4e1b $82
+    db   $84 ; unknown music opcode                    ;; 0f:4e1c $84
+    db   $82 ; unknown music opcode                    ;; 0f:4e1d $82
+    db   $59 ; unknown music opcode                    ;; 0f:4e1e $59
+    db   $5B ; unknown music opcode                    ;; 0f:4e1f $5b
+    db   $54 ; unknown music opcode                    ;; 0f:4e20 $54
+    db   $89 ; unknown music opcode                    ;; 0f:4e21 $89
+    db   $84 ; unknown music opcode                    ;; 0f:4e22 $84
+    db   $25 ; unknown music opcode                    ;; 0f:4e23 $25
+    db   $8F ; unknown music opcode                    ;; 0f:4e24 $8f
+    db   $8C ; unknown music opcode                    ;; 0f:4e25 $8c
+    db   $89 ; unknown music opcode                    ;; 0f:4e26 $89
+    db   $87 ; unknown music opcode                    ;; 0f:4e27 $87
+    db   $85 ; unknown music opcode                    ;; 0f:4e28 $85
+    db   $89 ; unknown music opcode                    ;; 0f:4e29 $89
+    db   $87 ; unknown music opcode                    ;; 0f:4e2a $87
+    db   $85 ; unknown music opcode                    ;; 0f:4e2b $85
+    db   $55 ; unknown music opcode                    ;; 0f:4e2c $55
+    db   $84 ; unknown music opcode                    ;; 0f:4e2d $84
+    db   $82 ; unknown music opcode                    ;; 0f:4e2e $82
+    db   $24 ; unknown music opcode                    ;; 0f:4e2f $24
+    mUNK_E1 .data_0f_4dee                              ;; 0f:4e30 $e1 $ee $4d
 
-data_0f_4e33:
-    db   $e4, $4f, $7a, $e8, $cc, $7a, $e0, $40        ;; 0f:4e33 ........
-    db   $e6, $03                                      ;; 0f:4e3b ..
+song03_channel3:
+    mUNK_E4 frequencyDeltaData                         ;; 0f:4e33 $e4 $4f $7a
+    mUNK_E8 wavePatternsData                           ;; 0f:4e36 $e8 $cc $7a
+    mUNK_E0 $40                                        ;; 0f:4e39 $e0 $40
+    mUNK_E6 $03                                        ;; 0f:4e3b $e6 $03
 .data_0f_4e3d:
-    db   $d2, $20, $27, $29, $27, $45, $84, $22        ;; 0f:4e3d ........
-    db   $27, $8e, $8b, $8c, $d8, $82, $dc, $24        ;; 0f:4e45 ........
-    db   $56, $58, $59, $57, $25, $27, $27, $20        ;; 0f:4e4d ........
-    db   $8e, $87, $85, $82, $e1                       ;; 0f:4e55 .....
-    dw   .data_0f_4e3d                                 ;; 0f:4e5a pP
+    db   $D2 ; unknown music opcode                    ;; 0f:4e3d $d2
+    db   $20 ; unknown music opcode                    ;; 0f:4e3e $20
+    db   $27 ; unknown music opcode                    ;; 0f:4e3f $27
+    db   $29 ; unknown music opcode                    ;; 0f:4e40 $29
+    db   $27 ; unknown music opcode                    ;; 0f:4e41 $27
+    db   $45 ; unknown music opcode                    ;; 0f:4e42 $45
+    db   $84 ; unknown music opcode                    ;; 0f:4e43 $84
+    db   $22 ; unknown music opcode                    ;; 0f:4e44 $22
+    db   $27 ; unknown music opcode                    ;; 0f:4e45 $27
+    db   $8E ; unknown music opcode                    ;; 0f:4e46 $8e
+    db   $8B ; unknown music opcode                    ;; 0f:4e47 $8b
+    db   $8C ; unknown music opcode                    ;; 0f:4e48 $8c
+    db   $D8 ; unknown music opcode                    ;; 0f:4e49 $d8
+    db   $82 ; unknown music opcode                    ;; 0f:4e4a $82
+    db   $DC ; unknown music opcode                    ;; 0f:4e4b $dc
+    db   $24 ; unknown music opcode                    ;; 0f:4e4c $24
+    db   $56 ; unknown music opcode                    ;; 0f:4e4d $56
+    db   $58 ; unknown music opcode                    ;; 0f:4e4e $58
+    db   $59 ; unknown music opcode                    ;; 0f:4e4f $59
+    db   $57 ; unknown music opcode                    ;; 0f:4e50 $57
+    db   $25 ; unknown music opcode                    ;; 0f:4e51 $25
+    db   $27 ; unknown music opcode                    ;; 0f:4e52 $27
+    db   $27 ; unknown music opcode                    ;; 0f:4e53 $27
+    db   $20 ; unknown music opcode                    ;; 0f:4e54 $20
+    db   $8E ; unknown music opcode                    ;; 0f:4e55 $8e
+    db   $87 ; unknown music opcode                    ;; 0f:4e56 $87
+    db   $85 ; unknown music opcode                    ;; 0f:4e57 $85
+    db   $82 ; unknown music opcode                    ;; 0f:4e58 $82
+    mUNK_E1 .data_0f_4e3d                              ;; 0f:4e59 $e1 $3d $4e
     db   $e7, $14                                      ;; 0f:4e5c ??
 
-data_0f_4e5e:
-    db   $e7, $7c, $e4, $63, $7a, $e0, $8c, $7a        ;; 0f:4e5e ????????
-    db   $e5, $00, $e6, $03, $0f, $0f, $d3, $82        ;; 0f:4e66 ????????
-    db   $af, $a1, $a2, $af, $a7, $af, $e0, $c2        ;; 0f:4e6e ????????
-    db   $7a, $05, $e0, $94, $7a, $8f, $a2, $a4        ;; 0f:4e76 ????????
-    db   $a5, $a4, $a2, $dc, $ab, $d8, $82, $af        ;; 0f:4e7e ????????
-    db   $a1, $a2, $af, $a7, $af, $e0, $c2, $7a        ;; 0f:4e86 ????????
-    db   $05, $e0, $94, $7a, $8f, $a5, $a7, $a9        ;; 0f:4e8e ????????
-    db   $a5, $a2, $dc, $ab, $d8, $e1, $6d, $4e        ;; 0f:4e96 ????????
+song04_channel2:
+    mUNK_E7 $7c                                        ;; 0f:4e5e $e7 $7c
+    mUNK_E4 frequencyDeltaData.third                   ;; 0f:4e60 $e4 $63 $7a
+    mUNK_E0 $8c                                        ;; 0f:4e63 $e0 $8c
+    db   $7A ; unknown music opcode                    ;; 0f:4e65 $7a
+    mUNK_E5 $00                                        ;; 0f:4e66 $e5 $00
+    mUNK_E6 $03                                        ;; 0f:4e68 $e6 $03
+    db   $0F ; unknown music opcode                    ;; 0f:4e6a $0f
+    db   $0F ; unknown music opcode                    ;; 0f:4e6b $0f
+    db   $D3 ; unknown music opcode                    ;; 0f:4e6c $d3
+.data_0f_4e6d:
+    db   $82 ; unknown music opcode                    ;; 0f:4e6d $82
+    db   $AF ; unknown music opcode                    ;; 0f:4e6e $af
+    db   $A1 ; unknown music opcode                    ;; 0f:4e6f $a1
+    db   $A2 ; unknown music opcode                    ;; 0f:4e70 $a2
+    db   $AF ; unknown music opcode                    ;; 0f:4e71 $af
+    db   $A7 ; unknown music opcode                    ;; 0f:4e72 $a7
+    db   $AF ; unknown music opcode                    ;; 0f:4e73 $af
+    mUNK_E0 $c2                                        ;; 0f:4e74 $e0 $c2
+    db   $7A ; unknown music opcode                    ;; 0f:4e76 $7a
+    db   $05 ; unknown music opcode                    ;; 0f:4e77 $05
+    mUNK_E0 $94                                        ;; 0f:4e78 $e0 $94
+    db   $7A ; unknown music opcode                    ;; 0f:4e7a $7a
+    db   $8F ; unknown music opcode                    ;; 0f:4e7b $8f
+    db   $A2 ; unknown music opcode                    ;; 0f:4e7c $a2
+    db   $A4 ; unknown music opcode                    ;; 0f:4e7d $a4
+    db   $A5 ; unknown music opcode                    ;; 0f:4e7e $a5
+    db   $A4 ; unknown music opcode                    ;; 0f:4e7f $a4
+    db   $A2 ; unknown music opcode                    ;; 0f:4e80 $a2
+    db   $DC ; unknown music opcode                    ;; 0f:4e81 $dc
+    db   $AB ; unknown music opcode                    ;; 0f:4e82 $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:4e83 $d8
+    db   $82 ; unknown music opcode                    ;; 0f:4e84 $82
+    db   $AF ; unknown music opcode                    ;; 0f:4e85 $af
+    db   $A1 ; unknown music opcode                    ;; 0f:4e86 $a1
+    db   $A2 ; unknown music opcode                    ;; 0f:4e87 $a2
+    db   $AF ; unknown music opcode                    ;; 0f:4e88 $af
+    db   $A7 ; unknown music opcode                    ;; 0f:4e89 $a7
+    db   $AF ; unknown music opcode                    ;; 0f:4e8a $af
+    mUNK_E0 $c2                                        ;; 0f:4e8b $e0 $c2
+    db   $7A ; unknown music opcode                    ;; 0f:4e8d $7a
+    db   $05 ; unknown music opcode                    ;; 0f:4e8e $05
+    mUNK_E0 $94                                        ;; 0f:4e8f $e0 $94
+    db   $7A ; unknown music opcode                    ;; 0f:4e91 $7a
+    db   $8F ; unknown music opcode                    ;; 0f:4e92 $8f
+    db   $A5 ; unknown music opcode                    ;; 0f:4e93 $a5
+    db   $A7 ; unknown music opcode                    ;; 0f:4e94 $a7
+    db   $A9 ; unknown music opcode                    ;; 0f:4e95 $a9
+    db   $A5 ; unknown music opcode                    ;; 0f:4e96 $a5
+    db   $A2 ; unknown music opcode                    ;; 0f:4e97 $a2
+    db   $DC ; unknown music opcode                    ;; 0f:4e98 $dc
+    db   $AB ; unknown music opcode                    ;; 0f:4e99 $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:4e9a $d8
+    mUNK_E1 .data_0f_4e6d                              ;; 0f:4e9b $e1 $6d $4e
 
-data_0f_4e9e:
-    db   $e4, $4f, $7a, $e0, $a0, $7a, $e5, $00        ;; 0f:4e9e ????????
-    db   $e6, $03, $8f, $d3, $a1, $ce, $cf, $e1        ;; 0f:4ea6 ????????
-    db   $a8, $4e                                      ;; 0f:4eae ??
+song04_channel1:
+    mUNK_E4 frequencyDeltaData                         ;; 0f:4e9e $e4 $4f $7a
+    mUNK_E0 $a0                                        ;; 0f:4ea1 $e0 $a0
+    db   $7A ; unknown music opcode                    ;; 0f:4ea3 $7a
+    mUNK_E5 $00                                        ;; 0f:4ea4 $e5 $00
+    mUNK_E6 $03                                        ;; 0f:4ea6 $e6 $03
+.data_0f_4ea8:
+    db   $8F ; unknown music opcode                    ;; 0f:4ea8 $8f
+    db   $D3 ; unknown music opcode                    ;; 0f:4ea9 $d3
+    db   $A1 ; unknown music opcode                    ;; 0f:4eaa $a1
+    db   $CE ; unknown music opcode                    ;; 0f:4eab $ce
+    db   $CF ; unknown music opcode                    ;; 0f:4eac $cf
+    mUNK_E1 .data_0f_4ea8                              ;; 0f:4ead $e1 $a8 $4e
 
-data_0f_4eb0:
-    db   $e4, $4f, $7a, $e8, $ec, $7a, $e0, $40        ;; 0f:4eb0 ????????
-    db   $e6, $03, $d2, $a7, $af, $d8, $a2, $ce        ;; 0f:4eb8 ????????
-    db   $cf, $dc, $a7, $af, $d8, $a2, $ce, $cf        ;; 0f:4ec0 ????????
-    db   $dc, $a5, $af, $d8, $a2, $ce, $cf, $dc        ;; 0f:4ec8 ????????
-    db   $a5, $af, $d8, $a2, $ce, $cf, $dc, $e1        ;; 0f:4ed0 ????????
-    db   $ba, $4e, $e7, $14                            ;; 0f:4ed8 ????
+song04_channel3:
+    mUNK_E4 frequencyDeltaData                         ;; 0f:4eb0 $e4 $4f $7a
+    mUNK_E8 data_0f_7aec                               ;; 0f:4eb3 $e8 $ec $7a
+    mUNK_E0 $40                                        ;; 0f:4eb6 $e0 $40
+    mUNK_E6 $03                                        ;; 0f:4eb8 $e6 $03
+.data_0f_4eba:
+    db   $D2 ; unknown music opcode                    ;; 0f:4eba $d2
+    db   $A7 ; unknown music opcode                    ;; 0f:4ebb $a7
+    db   $AF ; unknown music opcode                    ;; 0f:4ebc $af
+    db   $D8 ; unknown music opcode                    ;; 0f:4ebd $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:4ebe $a2
+    db   $CE ; unknown music opcode                    ;; 0f:4ebf $ce
+    db   $CF ; unknown music opcode                    ;; 0f:4ec0 $cf
+    db   $DC ; unknown music opcode                    ;; 0f:4ec1 $dc
+    db   $A7 ; unknown music opcode                    ;; 0f:4ec2 $a7
+    db   $AF ; unknown music opcode                    ;; 0f:4ec3 $af
+    db   $D8 ; unknown music opcode                    ;; 0f:4ec4 $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:4ec5 $a2
+    db   $CE ; unknown music opcode                    ;; 0f:4ec6 $ce
+    db   $CF ; unknown music opcode                    ;; 0f:4ec7 $cf
+    db   $DC ; unknown music opcode                    ;; 0f:4ec8 $dc
+    db   $A5 ; unknown music opcode                    ;; 0f:4ec9 $a5
+    db   $AF ; unknown music opcode                    ;; 0f:4eca $af
+    db   $D8 ; unknown music opcode                    ;; 0f:4ecb $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:4ecc $a2
+    db   $CE ; unknown music opcode                    ;; 0f:4ecd $ce
+    db   $CF ; unknown music opcode                    ;; 0f:4ece $cf
+    db   $DC ; unknown music opcode                    ;; 0f:4ecf $dc
+    db   $A5 ; unknown music opcode                    ;; 0f:4ed0 $a5
+    db   $AF ; unknown music opcode                    ;; 0f:4ed1 $af
+    db   $D8 ; unknown music opcode                    ;; 0f:4ed2 $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:4ed3 $a2
+    db   $CE ; unknown music opcode                    ;; 0f:4ed4 $ce
+    db   $CF ; unknown music opcode                    ;; 0f:4ed5 $cf
+    db   $DC ; unknown music opcode                    ;; 0f:4ed6 $dc
+    mUNK_E1 .data_0f_4eba                              ;; 0f:4ed7 $e1 $ba $4e
+    db   $e7, $14                                      ;; 0f:4eda ??
 
-data_0f_4edc:
-    db   $e4, $4f, $7a, $e0, $82, $7a, $e5, $00        ;; 0f:4edc ????????
-    db   $e6, $03, $e7, $82, $d3, $72, $af, $72        ;; 0f:4ee4 ????????
-    db   $af, $e7, $84, $a2, $af, $72, $af, $a2        ;; 0f:4eec ????????
-    db   $af, $e7, $82, $a2, $af, $72, $af, $a2        ;; 0f:4ef4 ????????
-    db   $af, $e7, $80, $72, $af, $72, $af, $e7        ;; 0f:4efc ????????
-    db   $82, $72, $af, $72, $af, $a2, $af, $72        ;; 0f:4f04 ????????
-    db   $af, $a2, $af, $e7, $80, $a2, $af, $a2        ;; 0f:4f0c ????????
-    db   $a2, $a2, $af, $a2, $af, $42, $8f, $e6        ;; 0f:4f14 ????????
-    db   $03, $e3, $02, $e7, $82, $e5, $00, $a2        ;; 0f:4f1c ????????
-    db   $7f, $dc, $ab, $af, $a7, $af, $a4, $af        ;; 0f:4f24 ????????
-    db   $d8, $a2, $af, $dc, $ab, $af, $a7, $af        ;; 0f:4f2c ????????
-    db   $ab, $7f, $a7, $7f, $ab, $ac, $ab, $ac        ;; 0f:4f34 ????????
-    db   $e7, $7f, $ab, $af, $a9, $af, $e7, $82        ;; 0f:4f3c ????????
-    db   $a7, $af, $e7, $7f, $a7, $a9, $e7, $82        ;; 0f:4f44 ????????
-    db   $a7, $af, $a5, $af, $57, $8f, $a5, $af        ;; 0f:4f4c ????????
-    db   $eb, $01, $6a, $4f, $a7, $af, $a7, $ab        ;; 0f:4f54 ????????
-    db   $d8, $a2, $af, $a4, $af, $a5, $a7, $a5        ;; 0f:4f5c ????????
-    db   $a7, $a5, $7f, $e2, $1f, $4f, $a7, $af        ;; 0f:4f64 ????????
-    db   $a7, $ab, $d8, $a2, $af, $a4, $af, $a5        ;; 0f:4f6c ????????
-    db   $a7, $a5, $a7, $a5, $7f, $a4, $a2, $a0        ;; 0f:4f74 ????????
-    db   $a2, $e7, $7f, $a4, $af, $a7, $af, $e7        ;; 0f:4f7c ????????
-    db   $82, $76, $a4, $a6, $af, $a9, $af, $a7        ;; 0f:4f84 ????????
-    db   $a5, $a3, $a5, $e7, $7f, $a7, $af, $aa        ;; 0f:4f8c ????????
-    db   $af, $e7, $82, $79, $a7, $a5, $af, $a3        ;; 0f:4f94 ????????
-    db   $af, $e5, $40, $8f, $a2, $af, $a2, $af        ;; 0f:4f9c ????????
-    db   $8f, $a2, $af, $a2, $af, $8f, $a2, $af        ;; 0f:4fa4 ????????
-    db   $a2, $af, $2f, $a2, $a4, $a2, $af, $8f        ;; 0f:4fac ????????
-    db   $e1, $1b, $4f                                 ;; 0f:4fb4 ???
+song05_channel2:
+    mUNK_E4 frequencyDeltaData                         ;; 0f:4edc $e4 $4f $7a
+    mUNK_E0 $82                                        ;; 0f:4edf $e0 $82
+    db   $7A ; unknown music opcode                    ;; 0f:4ee1 $7a
+    mUNK_E5 $00                                        ;; 0f:4ee2 $e5 $00
+    mUNK_E6 $03                                        ;; 0f:4ee4 $e6 $03
+    mUNK_E7 $82                                        ;; 0f:4ee6 $e7 $82
+    db   $D3 ; unknown music opcode                    ;; 0f:4ee8 $d3
+    db   $72 ; unknown music opcode                    ;; 0f:4ee9 $72
+    db   $AF ; unknown music opcode                    ;; 0f:4eea $af
+    db   $72 ; unknown music opcode                    ;; 0f:4eeb $72
+    db   $AF ; unknown music opcode                    ;; 0f:4eec $af
+    mUNK_E7 $84                                        ;; 0f:4eed $e7 $84
+    db   $A2 ; unknown music opcode                    ;; 0f:4eef $a2
+    db   $AF ; unknown music opcode                    ;; 0f:4ef0 $af
+    db   $72 ; unknown music opcode                    ;; 0f:4ef1 $72
+    db   $AF ; unknown music opcode                    ;; 0f:4ef2 $af
+    db   $A2 ; unknown music opcode                    ;; 0f:4ef3 $a2
+    db   $AF ; unknown music opcode                    ;; 0f:4ef4 $af
+    mUNK_E7 $82                                        ;; 0f:4ef5 $e7 $82
+    db   $A2 ; unknown music opcode                    ;; 0f:4ef7 $a2
+    db   $AF ; unknown music opcode                    ;; 0f:4ef8 $af
+    db   $72 ; unknown music opcode                    ;; 0f:4ef9 $72
+    db   $AF ; unknown music opcode                    ;; 0f:4efa $af
+    db   $A2 ; unknown music opcode                    ;; 0f:4efb $a2
+    db   $AF ; unknown music opcode                    ;; 0f:4efc $af
+    mUNK_E7 $80                                        ;; 0f:4efd $e7 $80
+    db   $72 ; unknown music opcode                    ;; 0f:4eff $72
+    db   $AF ; unknown music opcode                    ;; 0f:4f00 $af
+    db   $72 ; unknown music opcode                    ;; 0f:4f01 $72
+    db   $AF ; unknown music opcode                    ;; 0f:4f02 $af
+    mUNK_E7 $82                                        ;; 0f:4f03 $e7 $82
+    db   $72 ; unknown music opcode                    ;; 0f:4f05 $72
+    db   $AF ; unknown music opcode                    ;; 0f:4f06 $af
+    db   $72 ; unknown music opcode                    ;; 0f:4f07 $72
+    db   $AF ; unknown music opcode                    ;; 0f:4f08 $af
+    db   $A2 ; unknown music opcode                    ;; 0f:4f09 $a2
+    db   $AF ; unknown music opcode                    ;; 0f:4f0a $af
+    db   $72 ; unknown music opcode                    ;; 0f:4f0b $72
+    db   $AF ; unknown music opcode                    ;; 0f:4f0c $af
+    db   $A2 ; unknown music opcode                    ;; 0f:4f0d $a2
+    db   $AF ; unknown music opcode                    ;; 0f:4f0e $af
+    mUNK_E7 $80                                        ;; 0f:4f0f $e7 $80
+    db   $A2 ; unknown music opcode                    ;; 0f:4f11 $a2
+    db   $AF ; unknown music opcode                    ;; 0f:4f12 $af
+    db   $A2 ; unknown music opcode                    ;; 0f:4f13 $a2
+    db   $A2 ; unknown music opcode                    ;; 0f:4f14 $a2
+    db   $A2 ; unknown music opcode                    ;; 0f:4f15 $a2
+    db   $AF ; unknown music opcode                    ;; 0f:4f16 $af
+    db   $A2 ; unknown music opcode                    ;; 0f:4f17 $a2
+    db   $AF ; unknown music opcode                    ;; 0f:4f18 $af
+    db   $42 ; unknown music opcode                    ;; 0f:4f19 $42
+    db   $8F ; unknown music opcode                    ;; 0f:4f1a $8f
+.data_0f_4f1b:
+    mUNK_E6 $03                                        ;; 0f:4f1b $e6 $03
+    mUNK_E3 $02                                        ;; 0f:4f1d $e3 $02
+.data_0f_4f1f:
+    mUNK_E7 $82                                        ;; 0f:4f1f $e7 $82
+    mUNK_E5 $00                                        ;; 0f:4f21 $e5 $00
+    db   $A2 ; unknown music opcode                    ;; 0f:4f23 $a2
+    db   $7F ; unknown music opcode                    ;; 0f:4f24 $7f
+    db   $DC ; unknown music opcode                    ;; 0f:4f25 $dc
+    db   $AB ; unknown music opcode                    ;; 0f:4f26 $ab
+    db   $AF ; unknown music opcode                    ;; 0f:4f27 $af
+    db   $A7 ; unknown music opcode                    ;; 0f:4f28 $a7
+    db   $AF ; unknown music opcode                    ;; 0f:4f29 $af
+    db   $A4 ; unknown music opcode                    ;; 0f:4f2a $a4
+    db   $AF ; unknown music opcode                    ;; 0f:4f2b $af
+    db   $D8 ; unknown music opcode                    ;; 0f:4f2c $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:4f2d $a2
+    db   $AF ; unknown music opcode                    ;; 0f:4f2e $af
+    db   $DC ; unknown music opcode                    ;; 0f:4f2f $dc
+    db   $AB ; unknown music opcode                    ;; 0f:4f30 $ab
+    db   $AF ; unknown music opcode                    ;; 0f:4f31 $af
+    db   $A7 ; unknown music opcode                    ;; 0f:4f32 $a7
+    db   $AF ; unknown music opcode                    ;; 0f:4f33 $af
+    db   $AB ; unknown music opcode                    ;; 0f:4f34 $ab
+    db   $7F ; unknown music opcode                    ;; 0f:4f35 $7f
+    db   $A7 ; unknown music opcode                    ;; 0f:4f36 $a7
+    db   $7F ; unknown music opcode                    ;; 0f:4f37 $7f
+    db   $AB ; unknown music opcode                    ;; 0f:4f38 $ab
+    db   $AC ; unknown music opcode                    ;; 0f:4f39 $ac
+    db   $AB ; unknown music opcode                    ;; 0f:4f3a $ab
+    db   $AC ; unknown music opcode                    ;; 0f:4f3b $ac
+    mUNK_E7 $7f                                        ;; 0f:4f3c $e7 $7f
+    db   $AB ; unknown music opcode                    ;; 0f:4f3e $ab
+    db   $AF ; unknown music opcode                    ;; 0f:4f3f $af
+    db   $A9 ; unknown music opcode                    ;; 0f:4f40 $a9
+    db   $AF ; unknown music opcode                    ;; 0f:4f41 $af
+    mUNK_E7 $82                                        ;; 0f:4f42 $e7 $82
+    db   $A7 ; unknown music opcode                    ;; 0f:4f44 $a7
+    db   $AF ; unknown music opcode                    ;; 0f:4f45 $af
+    mUNK_E7 $7f                                        ;; 0f:4f46 $e7 $7f
+    db   $A7 ; unknown music opcode                    ;; 0f:4f48 $a7
+    db   $A9 ; unknown music opcode                    ;; 0f:4f49 $a9
+    mUNK_E7 $82                                        ;; 0f:4f4a $e7 $82
+    db   $A7 ; unknown music opcode                    ;; 0f:4f4c $a7
+    db   $AF ; unknown music opcode                    ;; 0f:4f4d $af
+    db   $A5 ; unknown music opcode                    ;; 0f:4f4e $a5
+    db   $AF ; unknown music opcode                    ;; 0f:4f4f $af
+    db   $57 ; unknown music opcode                    ;; 0f:4f50 $57
+    db   $8F ; unknown music opcode                    ;; 0f:4f51 $8f
+    db   $A5 ; unknown music opcode                    ;; 0f:4f52 $a5
+    db   $AF ; unknown music opcode                    ;; 0f:4f53 $af
+    mUNK_EB $01, .data_0f_4f6a                         ;; 0f:4f54 $eb $01 $6a $4f
+    db   $A7 ; unknown music opcode                    ;; 0f:4f58 $a7
+    db   $AF ; unknown music opcode                    ;; 0f:4f59 $af
+    db   $A7 ; unknown music opcode                    ;; 0f:4f5a $a7
+    db   $AB ; unknown music opcode                    ;; 0f:4f5b $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:4f5c $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:4f5d $a2
+    db   $AF ; unknown music opcode                    ;; 0f:4f5e $af
+    db   $A4 ; unknown music opcode                    ;; 0f:4f5f $a4
+    db   $AF ; unknown music opcode                    ;; 0f:4f60 $af
+    db   $A5 ; unknown music opcode                    ;; 0f:4f61 $a5
+    db   $A7 ; unknown music opcode                    ;; 0f:4f62 $a7
+    db   $A5 ; unknown music opcode                    ;; 0f:4f63 $a5
+    db   $A7 ; unknown music opcode                    ;; 0f:4f64 $a7
+    db   $A5 ; unknown music opcode                    ;; 0f:4f65 $a5
+    db   $7F ; unknown music opcode                    ;; 0f:4f66 $7f
+    mUNK_E2 .data_0f_4f1f                              ;; 0f:4f67 $e2 $1f $4f
+.data_0f_4f6a:
+    db   $A7 ; unknown music opcode                    ;; 0f:4f6a $a7
+    db   $AF ; unknown music opcode                    ;; 0f:4f6b $af
+    db   $A7 ; unknown music opcode                    ;; 0f:4f6c $a7
+    db   $AB ; unknown music opcode                    ;; 0f:4f6d $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:4f6e $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:4f6f $a2
+    db   $AF ; unknown music opcode                    ;; 0f:4f70 $af
+    db   $A4 ; unknown music opcode                    ;; 0f:4f71 $a4
+    db   $AF ; unknown music opcode                    ;; 0f:4f72 $af
+    db   $A5 ; unknown music opcode                    ;; 0f:4f73 $a5
+    db   $A7 ; unknown music opcode                    ;; 0f:4f74 $a7
+    db   $A5 ; unknown music opcode                    ;; 0f:4f75 $a5
+    db   $A7 ; unknown music opcode                    ;; 0f:4f76 $a7
+    db   $A5 ; unknown music opcode                    ;; 0f:4f77 $a5
+    db   $7F ; unknown music opcode                    ;; 0f:4f78 $7f
+    db   $A4 ; unknown music opcode                    ;; 0f:4f79 $a4
+    db   $A2 ; unknown music opcode                    ;; 0f:4f7a $a2
+    db   $A0 ; unknown music opcode                    ;; 0f:4f7b $a0
+    db   $A2 ; unknown music opcode                    ;; 0f:4f7c $a2
+    mUNK_E7 $7f                                        ;; 0f:4f7d $e7 $7f
+    db   $A4 ; unknown music opcode                    ;; 0f:4f7f $a4
+    db   $AF ; unknown music opcode                    ;; 0f:4f80 $af
+    db   $A7 ; unknown music opcode                    ;; 0f:4f81 $a7
+    db   $AF ; unknown music opcode                    ;; 0f:4f82 $af
+    mUNK_E7 $82                                        ;; 0f:4f83 $e7 $82
+    db   $76 ; unknown music opcode                    ;; 0f:4f85 $76
+    db   $A4 ; unknown music opcode                    ;; 0f:4f86 $a4
+    db   $A6 ; unknown music opcode                    ;; 0f:4f87 $a6
+    db   $AF ; unknown music opcode                    ;; 0f:4f88 $af
+    db   $A9 ; unknown music opcode                    ;; 0f:4f89 $a9
+    db   $AF ; unknown music opcode                    ;; 0f:4f8a $af
+    db   $A7 ; unknown music opcode                    ;; 0f:4f8b $a7
+    db   $A5 ; unknown music opcode                    ;; 0f:4f8c $a5
+    db   $A3 ; unknown music opcode                    ;; 0f:4f8d $a3
+    db   $A5 ; unknown music opcode                    ;; 0f:4f8e $a5
+    mUNK_E7 $7f                                        ;; 0f:4f8f $e7 $7f
+    db   $A7 ; unknown music opcode                    ;; 0f:4f91 $a7
+    db   $AF ; unknown music opcode                    ;; 0f:4f92 $af
+    db   $AA ; unknown music opcode                    ;; 0f:4f93 $aa
+    db   $AF ; unknown music opcode                    ;; 0f:4f94 $af
+    mUNK_E7 $82                                        ;; 0f:4f95 $e7 $82
+    db   $79 ; unknown music opcode                    ;; 0f:4f97 $79
+    db   $A7 ; unknown music opcode                    ;; 0f:4f98 $a7
+    db   $A5 ; unknown music opcode                    ;; 0f:4f99 $a5
+    db   $AF ; unknown music opcode                    ;; 0f:4f9a $af
+    db   $A3 ; unknown music opcode                    ;; 0f:4f9b $a3
+    db   $AF ; unknown music opcode                    ;; 0f:4f9c $af
+    mUNK_E5 $40                                        ;; 0f:4f9d $e5 $40
+    db   $8F ; unknown music opcode                    ;; 0f:4f9f $8f
+    db   $A2 ; unknown music opcode                    ;; 0f:4fa0 $a2
+    db   $AF ; unknown music opcode                    ;; 0f:4fa1 $af
+    db   $A2 ; unknown music opcode                    ;; 0f:4fa2 $a2
+    db   $AF ; unknown music opcode                    ;; 0f:4fa3 $af
+    db   $8F ; unknown music opcode                    ;; 0f:4fa4 $8f
+    db   $A2 ; unknown music opcode                    ;; 0f:4fa5 $a2
+    db   $AF ; unknown music opcode                    ;; 0f:4fa6 $af
+    db   $A2 ; unknown music opcode                    ;; 0f:4fa7 $a2
+    db   $AF ; unknown music opcode                    ;; 0f:4fa8 $af
+    db   $8F ; unknown music opcode                    ;; 0f:4fa9 $8f
+    db   $A2 ; unknown music opcode                    ;; 0f:4faa $a2
+    db   $AF ; unknown music opcode                    ;; 0f:4fab $af
+    db   $A2 ; unknown music opcode                    ;; 0f:4fac $a2
+    db   $AF ; unknown music opcode                    ;; 0f:4fad $af
+    db   $2F ; unknown music opcode                    ;; 0f:4fae $2f
+    db   $A2 ; unknown music opcode                    ;; 0f:4faf $a2
+    db   $A4 ; unknown music opcode                    ;; 0f:4fb0 $a4
+    db   $A2 ; unknown music opcode                    ;; 0f:4fb1 $a2
+    db   $AF ; unknown music opcode                    ;; 0f:4fb2 $af
+    db   $8F ; unknown music opcode                    ;; 0f:4fb3 $8f
+    mUNK_E1 .data_0f_4f1b                              ;; 0f:4fb4 $e1 $1b $4f
 
-data_0f_4fb7:
-    db   $e4, $4f, $7a, $e0, $82, $7a, $e5, $00        ;; 0f:4fb7 ????????
-    db   $e6, $03, $d3, $71, $af, $71, $af, $a1        ;; 0f:4fbf ????????
-    db   $af, $71, $af, $a1, $af, $a1, $af, $71        ;; 0f:4fc7 ????????
-    db   $af, $a1, $af, $71, $af, $71, $af, $71        ;; 0f:4fcf ????????
-    db   $af, $71, $af, $a1, $af, $71, $af, $a1        ;; 0f:4fd7 ????????
-    db   $af, $a1, $af, $a1, $a1, $a1, $af, $a1        ;; 0f:4fdf ????????
-    db   $af, $41, $8f, $dc, $e3, $08, $e0, $c8        ;; 0f:4fe7 ????????
-    db   $7a, $e6, $02, $8f, $a1, $af, $e6, $02        ;; 0f:4fef ????????
-    db   $8f, $a1, $af, $e6, $01, $8f, $a1, $af        ;; 0f:4ff7 ????????
-    db   $e6, $01, $8f, $a1, $af, $e2, $ed, $4f        ;; 0f:4fff ????????
-    db   $e6, $03, $8f, $a4, $a6, $a7, $af, $a4        ;; 0f:5007 ????????
-    db   $af, $8f, $a6, $a7, $a9, $af, $a6, $af        ;; 0f:500f ????????
-    db   $8f, $a7, $a9, $aa, $af, $a7, $af, $8f        ;; 0f:5017 ????????
-    db   $a9, $aa, $a9, $a7, $a5, $a3, $8f, $ad        ;; 0f:501f ????????
-    db   $af, $ad, $af, $8f, $ad, $af, $ad, $af        ;; 0f:5027 ????????
-    db   $8f, $ad, $af, $ad, $af, $2f, $ac, $ab        ;; 0f:502f ????????
-    db   $a9, $af, $8f, $e1, $eb, $4f                  ;; 0f:5037 ??????
+song05_channel1:
+    mUNK_E4 frequencyDeltaData                         ;; 0f:4fb7 $e4 $4f $7a
+    mUNK_E0 $82                                        ;; 0f:4fba $e0 $82
+    db   $7A ; unknown music opcode                    ;; 0f:4fbc $7a
+    mUNK_E5 $00                                        ;; 0f:4fbd $e5 $00
+    mUNK_E6 $03                                        ;; 0f:4fbf $e6 $03
+    db   $D3 ; unknown music opcode                    ;; 0f:4fc1 $d3
+    db   $71 ; unknown music opcode                    ;; 0f:4fc2 $71
+    db   $AF ; unknown music opcode                    ;; 0f:4fc3 $af
+    db   $71 ; unknown music opcode                    ;; 0f:4fc4 $71
+    db   $AF ; unknown music opcode                    ;; 0f:4fc5 $af
+    db   $A1 ; unknown music opcode                    ;; 0f:4fc6 $a1
+    db   $AF ; unknown music opcode                    ;; 0f:4fc7 $af
+    db   $71 ; unknown music opcode                    ;; 0f:4fc8 $71
+    db   $AF ; unknown music opcode                    ;; 0f:4fc9 $af
+    db   $A1 ; unknown music opcode                    ;; 0f:4fca $a1
+    db   $AF ; unknown music opcode                    ;; 0f:4fcb $af
+    db   $A1 ; unknown music opcode                    ;; 0f:4fcc $a1
+    db   $AF ; unknown music opcode                    ;; 0f:4fcd $af
+    db   $71 ; unknown music opcode                    ;; 0f:4fce $71
+    db   $AF ; unknown music opcode                    ;; 0f:4fcf $af
+    db   $A1 ; unknown music opcode                    ;; 0f:4fd0 $a1
+    db   $AF ; unknown music opcode                    ;; 0f:4fd1 $af
+    db   $71 ; unknown music opcode                    ;; 0f:4fd2 $71
+    db   $AF ; unknown music opcode                    ;; 0f:4fd3 $af
+    db   $71 ; unknown music opcode                    ;; 0f:4fd4 $71
+    db   $AF ; unknown music opcode                    ;; 0f:4fd5 $af
+    db   $71 ; unknown music opcode                    ;; 0f:4fd6 $71
+    db   $AF ; unknown music opcode                    ;; 0f:4fd7 $af
+    db   $71 ; unknown music opcode                    ;; 0f:4fd8 $71
+    db   $AF ; unknown music opcode                    ;; 0f:4fd9 $af
+    db   $A1 ; unknown music opcode                    ;; 0f:4fda $a1
+    db   $AF ; unknown music opcode                    ;; 0f:4fdb $af
+    db   $71 ; unknown music opcode                    ;; 0f:4fdc $71
+    db   $AF ; unknown music opcode                    ;; 0f:4fdd $af
+    db   $A1 ; unknown music opcode                    ;; 0f:4fde $a1
+    db   $AF ; unknown music opcode                    ;; 0f:4fdf $af
+    db   $A1 ; unknown music opcode                    ;; 0f:4fe0 $a1
+    db   $AF ; unknown music opcode                    ;; 0f:4fe1 $af
+    db   $A1 ; unknown music opcode                    ;; 0f:4fe2 $a1
+    db   $A1 ; unknown music opcode                    ;; 0f:4fe3 $a1
+    db   $A1 ; unknown music opcode                    ;; 0f:4fe4 $a1
+    db   $AF ; unknown music opcode                    ;; 0f:4fe5 $af
+    db   $A1 ; unknown music opcode                    ;; 0f:4fe6 $a1
+    db   $AF ; unknown music opcode                    ;; 0f:4fe7 $af
+    db   $41 ; unknown music opcode                    ;; 0f:4fe8 $41
+    db   $8F ; unknown music opcode                    ;; 0f:4fe9 $8f
+    db   $DC ; unknown music opcode                    ;; 0f:4fea $dc
+.data_0f_4feb:
+    mUNK_E3 $08                                        ;; 0f:4feb $e3 $08
+.data_0f_4fed:
+    mUNK_E0 $c8                                        ;; 0f:4fed $e0 $c8
+    db   $7A ; unknown music opcode                    ;; 0f:4fef $7a
+    mUNK_E6 $02                                        ;; 0f:4ff0 $e6 $02
+    db   $8F ; unknown music opcode                    ;; 0f:4ff2 $8f
+    db   $A1 ; unknown music opcode                    ;; 0f:4ff3 $a1
+    db   $AF ; unknown music opcode                    ;; 0f:4ff4 $af
+    mUNK_E6 $02                                        ;; 0f:4ff5 $e6 $02
+    db   $8F ; unknown music opcode                    ;; 0f:4ff7 $8f
+    db   $A1 ; unknown music opcode                    ;; 0f:4ff8 $a1
+    db   $AF ; unknown music opcode                    ;; 0f:4ff9 $af
+    mUNK_E6 $01                                        ;; 0f:4ffa $e6 $01
+    db   $8F ; unknown music opcode                    ;; 0f:4ffc $8f
+    db   $A1 ; unknown music opcode                    ;; 0f:4ffd $a1
+    db   $AF ; unknown music opcode                    ;; 0f:4ffe $af
+    mUNK_E6 $01                                        ;; 0f:4fff $e6 $01
+    db   $8F ; unknown music opcode                    ;; 0f:5001 $8f
+    db   $A1 ; unknown music opcode                    ;; 0f:5002 $a1
+    db   $AF ; unknown music opcode                    ;; 0f:5003 $af
+    mUNK_E2 .data_0f_4fed                              ;; 0f:5004 $e2 $ed $4f
+    mUNK_E6 $03                                        ;; 0f:5007 $e6 $03
+    db   $8F ; unknown music opcode                    ;; 0f:5009 $8f
+    db   $A4 ; unknown music opcode                    ;; 0f:500a $a4
+    db   $A6 ; unknown music opcode                    ;; 0f:500b $a6
+    db   $A7 ; unknown music opcode                    ;; 0f:500c $a7
+    db   $AF ; unknown music opcode                    ;; 0f:500d $af
+    db   $A4 ; unknown music opcode                    ;; 0f:500e $a4
+    db   $AF ; unknown music opcode                    ;; 0f:500f $af
+    db   $8F ; unknown music opcode                    ;; 0f:5010 $8f
+    db   $A6 ; unknown music opcode                    ;; 0f:5011 $a6
+    db   $A7 ; unknown music opcode                    ;; 0f:5012 $a7
+    db   $A9 ; unknown music opcode                    ;; 0f:5013 $a9
+    db   $AF ; unknown music opcode                    ;; 0f:5014 $af
+    db   $A6 ; unknown music opcode                    ;; 0f:5015 $a6
+    db   $AF ; unknown music opcode                    ;; 0f:5016 $af
+    db   $8F ; unknown music opcode                    ;; 0f:5017 $8f
+    db   $A7 ; unknown music opcode                    ;; 0f:5018 $a7
+    db   $A9 ; unknown music opcode                    ;; 0f:5019 $a9
+    db   $AA ; unknown music opcode                    ;; 0f:501a $aa
+    db   $AF ; unknown music opcode                    ;; 0f:501b $af
+    db   $A7 ; unknown music opcode                    ;; 0f:501c $a7
+    db   $AF ; unknown music opcode                    ;; 0f:501d $af
+    db   $8F ; unknown music opcode                    ;; 0f:501e $8f
+    db   $A9 ; unknown music opcode                    ;; 0f:501f $a9
+    db   $AA ; unknown music opcode                    ;; 0f:5020 $aa
+    db   $A9 ; unknown music opcode                    ;; 0f:5021 $a9
+    db   $A7 ; unknown music opcode                    ;; 0f:5022 $a7
+    db   $A5 ; unknown music opcode                    ;; 0f:5023 $a5
+    db   $A3 ; unknown music opcode                    ;; 0f:5024 $a3
+    db   $8F ; unknown music opcode                    ;; 0f:5025 $8f
+    db   $AD ; unknown music opcode                    ;; 0f:5026 $ad
+    db   $AF ; unknown music opcode                    ;; 0f:5027 $af
+    db   $AD ; unknown music opcode                    ;; 0f:5028 $ad
+    db   $AF ; unknown music opcode                    ;; 0f:5029 $af
+    db   $8F ; unknown music opcode                    ;; 0f:502a $8f
+    db   $AD ; unknown music opcode                    ;; 0f:502b $ad
+    db   $AF ; unknown music opcode                    ;; 0f:502c $af
+    db   $AD ; unknown music opcode                    ;; 0f:502d $ad
+    db   $AF ; unknown music opcode                    ;; 0f:502e $af
+    db   $8F ; unknown music opcode                    ;; 0f:502f $8f
+    db   $AD ; unknown music opcode                    ;; 0f:5030 $ad
+    db   $AF ; unknown music opcode                    ;; 0f:5031 $af
+    db   $AD ; unknown music opcode                    ;; 0f:5032 $ad
+    db   $AF ; unknown music opcode                    ;; 0f:5033 $af
+    db   $2F ; unknown music opcode                    ;; 0f:5034 $2f
+    db   $AC ; unknown music opcode                    ;; 0f:5035 $ac
+    db   $AB ; unknown music opcode                    ;; 0f:5036 $ab
+    db   $A9 ; unknown music opcode                    ;; 0f:5037 $a9
+    db   $AF ; unknown music opcode                    ;; 0f:5038 $af
+    db   $8F ; unknown music opcode                    ;; 0f:5039 $8f
+    mUNK_E1 .data_0f_4feb                              ;; 0f:503a $e1 $eb $4f
 
-data_0f_503d:
-    db   $e4, $4f, $7a, $e8, $ec, $7a, $e0, $40        ;; 0f:503d ????????
-    db   $e6, $03, $d3, $7b, $af, $7b, $af, $a9        ;; 0f:5045 ????????
-    db   $af, $79, $af, $a9, $af, $ab, $af, $7b        ;; 0f:504d ????????
-    db   $af, $ab, $af, $79, $af, $79, $af, $7b        ;; 0f:5055 ????????
-    db   $af, $7b, $af, $a9, $af, $79, $af, $a9        ;; 0f:505d ????????
-    db   $af, $a7, $af, $a7, $a9, $ab, $af, $a7        ;; 0f:5065 ????????
-    db   $af, $89, $dc, $a2, $a0, $dc, $ab, $af        ;; 0f:506d ????????
-    db   $a9, $af, $e6, $03, $e3, $08, $e8, $dc        ;; 0f:5075 ????????
-    db   $7a, $87, $d9, $e6, $02, $a2, $af, $dd        ;; 0f:507d ????????
-    db   $e6, $03, $87, $d9, $e6, $02, $a2, $af        ;; 0f:5085 ????????
-    db   $dd, $e6, $03, $85, $d9, $e6, $01, $a2        ;; 0f:508d ????????
-    db   $af, $dd, $e6, $03, $85, $d9, $e6, $01        ;; 0f:5095 ????????
-    db   $a2, $af, $dd, $e2, $7b, $50, $e6, $03        ;; 0f:509d ????????
-    db   $d8, $20, $22, $23, $25, $e6, $02, $a2        ;; 0f:50a5 ????????
-    db   $af, $5f, $e6, $01, $a9, $af, $5f, $e6        ;; 0f:50ad ????????
-    db   $03, $a2, $af, $5f, $a6, $a7, $a9, $a7        ;; 0f:50b5 ????????
-    db   $a6, $a4, $a2, $af, $5f, $dc, $89, $e1        ;; 0f:50bd ????????
-    db   $77, $50, $e7, $14                            ;; 0f:50c5 ????
+song05_channel3:
+    mUNK_E4 frequencyDeltaData                         ;; 0f:503d $e4 $4f $7a
+    mUNK_E8 data_0f_7aec                               ;; 0f:5040 $e8 $ec $7a
+    mUNK_E0 $40                                        ;; 0f:5043 $e0 $40
+    mUNK_E6 $03                                        ;; 0f:5045 $e6 $03
+    db   $D3 ; unknown music opcode                    ;; 0f:5047 $d3
+    db   $7B ; unknown music opcode                    ;; 0f:5048 $7b
+    db   $AF ; unknown music opcode                    ;; 0f:5049 $af
+    db   $7B ; unknown music opcode                    ;; 0f:504a $7b
+    db   $AF ; unknown music opcode                    ;; 0f:504b $af
+    db   $A9 ; unknown music opcode                    ;; 0f:504c $a9
+    db   $AF ; unknown music opcode                    ;; 0f:504d $af
+    db   $79 ; unknown music opcode                    ;; 0f:504e $79
+    db   $AF ; unknown music opcode                    ;; 0f:504f $af
+    db   $A9 ; unknown music opcode                    ;; 0f:5050 $a9
+    db   $AF ; unknown music opcode                    ;; 0f:5051 $af
+    db   $AB ; unknown music opcode                    ;; 0f:5052 $ab
+    db   $AF ; unknown music opcode                    ;; 0f:5053 $af
+    db   $7B ; unknown music opcode                    ;; 0f:5054 $7b
+    db   $AF ; unknown music opcode                    ;; 0f:5055 $af
+    db   $AB ; unknown music opcode                    ;; 0f:5056 $ab
+    db   $AF ; unknown music opcode                    ;; 0f:5057 $af
+    db   $79 ; unknown music opcode                    ;; 0f:5058 $79
+    db   $AF ; unknown music opcode                    ;; 0f:5059 $af
+    db   $79 ; unknown music opcode                    ;; 0f:505a $79
+    db   $AF ; unknown music opcode                    ;; 0f:505b $af
+    db   $7B ; unknown music opcode                    ;; 0f:505c $7b
+    db   $AF ; unknown music opcode                    ;; 0f:505d $af
+    db   $7B ; unknown music opcode                    ;; 0f:505e $7b
+    db   $AF ; unknown music opcode                    ;; 0f:505f $af
+    db   $A9 ; unknown music opcode                    ;; 0f:5060 $a9
+    db   $AF ; unknown music opcode                    ;; 0f:5061 $af
+    db   $79 ; unknown music opcode                    ;; 0f:5062 $79
+    db   $AF ; unknown music opcode                    ;; 0f:5063 $af
+    db   $A9 ; unknown music opcode                    ;; 0f:5064 $a9
+    db   $AF ; unknown music opcode                    ;; 0f:5065 $af
+    db   $A7 ; unknown music opcode                    ;; 0f:5066 $a7
+    db   $AF ; unknown music opcode                    ;; 0f:5067 $af
+    db   $A7 ; unknown music opcode                    ;; 0f:5068 $a7
+    db   $A9 ; unknown music opcode                    ;; 0f:5069 $a9
+    db   $AB ; unknown music opcode                    ;; 0f:506a $ab
+    db   $AF ; unknown music opcode                    ;; 0f:506b $af
+    db   $A7 ; unknown music opcode                    ;; 0f:506c $a7
+    db   $AF ; unknown music opcode                    ;; 0f:506d $af
+    db   $89 ; unknown music opcode                    ;; 0f:506e $89
+    db   $DC ; unknown music opcode                    ;; 0f:506f $dc
+    db   $A2 ; unknown music opcode                    ;; 0f:5070 $a2
+    db   $A0 ; unknown music opcode                    ;; 0f:5071 $a0
+    db   $DC ; unknown music opcode                    ;; 0f:5072 $dc
+    db   $AB ; unknown music opcode                    ;; 0f:5073 $ab
+    db   $AF ; unknown music opcode                    ;; 0f:5074 $af
+    db   $A9 ; unknown music opcode                    ;; 0f:5075 $a9
+    db   $AF ; unknown music opcode                    ;; 0f:5076 $af
+.data_0f_5077:
+    mUNK_E6 $03                                        ;; 0f:5077 $e6 $03
+    mUNK_E3 $08                                        ;; 0f:5079 $e3 $08
+.data_0f_507b:
+    mUNK_E8 data_0f_7adc                               ;; 0f:507b $e8 $dc $7a
+    db   $87 ; unknown music opcode                    ;; 0f:507e $87
+    db   $D9 ; unknown music opcode                    ;; 0f:507f $d9
+    mUNK_E6 $02                                        ;; 0f:5080 $e6 $02
+    db   $A2 ; unknown music opcode                    ;; 0f:5082 $a2
+    db   $AF ; unknown music opcode                    ;; 0f:5083 $af
+    db   $DD ; unknown music opcode                    ;; 0f:5084 $dd
+    mUNK_E6 $03                                        ;; 0f:5085 $e6 $03
+    db   $87 ; unknown music opcode                    ;; 0f:5087 $87
+    db   $D9 ; unknown music opcode                    ;; 0f:5088 $d9
+    mUNK_E6 $02                                        ;; 0f:5089 $e6 $02
+    db   $A2 ; unknown music opcode                    ;; 0f:508b $a2
+    db   $AF ; unknown music opcode                    ;; 0f:508c $af
+    db   $DD ; unknown music opcode                    ;; 0f:508d $dd
+    mUNK_E6 $03                                        ;; 0f:508e $e6 $03
+    db   $85 ; unknown music opcode                    ;; 0f:5090 $85
+    db   $D9 ; unknown music opcode                    ;; 0f:5091 $d9
+    mUNK_E6 $01                                        ;; 0f:5092 $e6 $01
+    db   $A2 ; unknown music opcode                    ;; 0f:5094 $a2
+    db   $AF ; unknown music opcode                    ;; 0f:5095 $af
+    db   $DD ; unknown music opcode                    ;; 0f:5096 $dd
+    mUNK_E6 $03                                        ;; 0f:5097 $e6 $03
+    db   $85 ; unknown music opcode                    ;; 0f:5099 $85
+    db   $D9 ; unknown music opcode                    ;; 0f:509a $d9
+    mUNK_E6 $01                                        ;; 0f:509b $e6 $01
+    db   $A2 ; unknown music opcode                    ;; 0f:509d $a2
+    db   $AF ; unknown music opcode                    ;; 0f:509e $af
+    db   $DD ; unknown music opcode                    ;; 0f:509f $dd
+    mUNK_E2 .data_0f_507b                              ;; 0f:50a0 $e2 $7b $50
+    mUNK_E6 $03                                        ;; 0f:50a3 $e6 $03
+    db   $D8 ; unknown music opcode                    ;; 0f:50a5 $d8
+    db   $20 ; unknown music opcode                    ;; 0f:50a6 $20
+    db   $22 ; unknown music opcode                    ;; 0f:50a7 $22
+    db   $23 ; unknown music opcode                    ;; 0f:50a8 $23
+    db   $25 ; unknown music opcode                    ;; 0f:50a9 $25
+    mUNK_E6 $02                                        ;; 0f:50aa $e6 $02
+    db   $A2 ; unknown music opcode                    ;; 0f:50ac $a2
+    db   $AF ; unknown music opcode                    ;; 0f:50ad $af
+    db   $5F ; unknown music opcode                    ;; 0f:50ae $5f
+    mUNK_E6 $01                                        ;; 0f:50af $e6 $01
+    db   $A9 ; unknown music opcode                    ;; 0f:50b1 $a9
+    db   $AF ; unknown music opcode                    ;; 0f:50b2 $af
+    db   $5F ; unknown music opcode                    ;; 0f:50b3 $5f
+    mUNK_E6 $03                                        ;; 0f:50b4 $e6 $03
+    db   $A2 ; unknown music opcode                    ;; 0f:50b6 $a2
+    db   $AF ; unknown music opcode                    ;; 0f:50b7 $af
+    db   $5F ; unknown music opcode                    ;; 0f:50b8 $5f
+    db   $A6 ; unknown music opcode                    ;; 0f:50b9 $a6
+    db   $A7 ; unknown music opcode                    ;; 0f:50ba $a7
+    db   $A9 ; unknown music opcode                    ;; 0f:50bb $a9
+    db   $A7 ; unknown music opcode                    ;; 0f:50bc $a7
+    db   $A6 ; unknown music opcode                    ;; 0f:50bd $a6
+    db   $A4 ; unknown music opcode                    ;; 0f:50be $a4
+    db   $A2 ; unknown music opcode                    ;; 0f:50bf $a2
+    db   $AF ; unknown music opcode                    ;; 0f:50c0 $af
+    db   $5F ; unknown music opcode                    ;; 0f:50c1 $5f
+    db   $DC ; unknown music opcode                    ;; 0f:50c2 $dc
+    db   $89 ; unknown music opcode                    ;; 0f:50c3 $89
+    mUNK_E1 .data_0f_5077                              ;; 0f:50c4 $e1 $77 $50
+    db   $e7, $14                                      ;; 0f:50c7 ??
 
-data_0f_50c9:
-    db   $e7, $60, $e4, $75, $7a, $e0, $82, $7a        ;; 0f:50c9 ????????
-    db   $e5, $80, $e6, $03, $d2, $b5, $b6, $b7        ;; 0f:50d1 ????????
-    db   $b8, $b9, $ba, $e3, $02, $e5, $40, $ab        ;; 0f:50d9 ????????
-    db   $d8, $a4, $13, $8e, $5e, $8f, $dc, $8b        ;; 0f:50e1 ????????
-    db   $d8, $82, $81, $dc, $59, $4b, $bc, $bd        ;; 0f:50e9 ????????
-    db   $d8, $b2, $43, $b2, $b1, $b0, $dc, $eb        ;; 0f:50f1 ????????
-    db   $01, $07, $51, $8b, $bc, $bd, $d8, $b2        ;; 0f:50f9 ????????
-    db   $23, $50, $dc, $e2, $de, $50, $8b, $bc        ;; 0f:5101 ????????
-    db   $bd, $d8, $b2, $53, $56, $59, $e3, $02        ;; 0f:5109 ????????
-    db   $4b, $b9, $b8, $b7, $46, $b7, $b8, $b9        ;; 0f:5111 ????????
-    db   $8b, $b9, $b8, $b7, $26, $84, $86, $dc        ;; 0f:5119 ????????
-    db   $4b, $bc, $bd, $d8, $b2, $43, $b2, $b1        ;; 0f:5121 ????????
-    db   $b0, $dc, $eb, $01, $3a, $51, $8b, $bc        ;; 0f:5129 ????????
-    db   $bd, $d8, $b2, $53, $56, $59, $e2, $11        ;; 0f:5131 ????????
-    db   $51, $8b, $bc, $bd, $d8, $b2, $13, $e5        ;; 0f:5139 ????????
-    db   $00, $54, $53, $52, $53, $84, $83, $82        ;; 0f:5141 ????????
-    db   $83, $8f, $84, $83, $8f, $82, $83, $8f        ;; 0f:5149 ????????
-    db   $84, $83, $8f, $84, $05, $8e, $dc, $e1        ;; 0f:5151 ????????
-    db   $dc, $50                                      ;; 0f:5159 ??
+song06_channel2:
+    mUNK_E7 $60                                        ;; 0f:50c9 $e7 $60
+    mUNK_E4 frequencyDeltaData.fifth                   ;; 0f:50cb $e4 $75 $7a
+    mUNK_E0 $82                                        ;; 0f:50ce $e0 $82
+    db   $7A ; unknown music opcode                    ;; 0f:50d0 $7a
+    mUNK_E5 $80                                        ;; 0f:50d1 $e5 $80
+    mUNK_E6 $03                                        ;; 0f:50d3 $e6 $03
+    db   $D2 ; unknown music opcode                    ;; 0f:50d5 $d2
+    db   $B5 ; unknown music opcode                    ;; 0f:50d6 $b5
+    db   $B6 ; unknown music opcode                    ;; 0f:50d7 $b6
+    db   $B7 ; unknown music opcode                    ;; 0f:50d8 $b7
+    db   $B8 ; unknown music opcode                    ;; 0f:50d9 $b8
+    db   $B9 ; unknown music opcode                    ;; 0f:50da $b9
+    db   $BA ; unknown music opcode                    ;; 0f:50db $ba
+.data_0f_50dc:
+    mUNK_E3 $02                                        ;; 0f:50dc $e3 $02
+.data_0f_50de:
+    mUNK_E5 $40                                        ;; 0f:50de $e5 $40
+    db   $AB ; unknown music opcode                    ;; 0f:50e0 $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:50e1 $d8
+    db   $A4 ; unknown music opcode                    ;; 0f:50e2 $a4
+    db   $13 ; unknown music opcode                    ;; 0f:50e3 $13
+    db   $8E ; unknown music opcode                    ;; 0f:50e4 $8e
+    db   $5E ; unknown music opcode                    ;; 0f:50e5 $5e
+    db   $8F ; unknown music opcode                    ;; 0f:50e6 $8f
+    db   $DC ; unknown music opcode                    ;; 0f:50e7 $dc
+    db   $8B ; unknown music opcode                    ;; 0f:50e8 $8b
+    db   $D8 ; unknown music opcode                    ;; 0f:50e9 $d8
+    db   $82 ; unknown music opcode                    ;; 0f:50ea $82
+    db   $81 ; unknown music opcode                    ;; 0f:50eb $81
+    db   $DC ; unknown music opcode                    ;; 0f:50ec $dc
+    db   $59 ; unknown music opcode                    ;; 0f:50ed $59
+    db   $4B ; unknown music opcode                    ;; 0f:50ee $4b
+    db   $BC ; unknown music opcode                    ;; 0f:50ef $bc
+    db   $BD ; unknown music opcode                    ;; 0f:50f0 $bd
+    db   $D8 ; unknown music opcode                    ;; 0f:50f1 $d8
+    db   $B2 ; unknown music opcode                    ;; 0f:50f2 $b2
+    db   $43 ; unknown music opcode                    ;; 0f:50f3 $43
+    db   $B2 ; unknown music opcode                    ;; 0f:50f4 $b2
+    db   $B1 ; unknown music opcode                    ;; 0f:50f5 $b1
+    db   $B0 ; unknown music opcode                    ;; 0f:50f6 $b0
+    db   $DC ; unknown music opcode                    ;; 0f:50f7 $dc
+    mUNK_EB $01, .data_0f_5107                         ;; 0f:50f8 $eb $01 $07 $51
+    db   $8B ; unknown music opcode                    ;; 0f:50fc $8b
+    db   $BC ; unknown music opcode                    ;; 0f:50fd $bc
+    db   $BD ; unknown music opcode                    ;; 0f:50fe $bd
+    db   $D8 ; unknown music opcode                    ;; 0f:50ff $d8
+    db   $B2 ; unknown music opcode                    ;; 0f:5100 $b2
+    db   $23 ; unknown music opcode                    ;; 0f:5101 $23
+    db   $50 ; unknown music opcode                    ;; 0f:5102 $50
+    db   $DC ; unknown music opcode                    ;; 0f:5103 $dc
+    mUNK_E2 .data_0f_50de                              ;; 0f:5104 $e2 $de $50
+.data_0f_5107:
+    db   $8B ; unknown music opcode                    ;; 0f:5107 $8b
+    db   $BC ; unknown music opcode                    ;; 0f:5108 $bc
+    db   $BD ; unknown music opcode                    ;; 0f:5109 $bd
+    db   $D8 ; unknown music opcode                    ;; 0f:510a $d8
+    db   $B2 ; unknown music opcode                    ;; 0f:510b $b2
+    db   $53 ; unknown music opcode                    ;; 0f:510c $53
+    db   $56 ; unknown music opcode                    ;; 0f:510d $56
+    db   $59 ; unknown music opcode                    ;; 0f:510e $59
+    mUNK_E3 $02                                        ;; 0f:510f $e3 $02
+.data_0f_5111:
+    db   $4B ; unknown music opcode                    ;; 0f:5111 $4b
+    db   $B9 ; unknown music opcode                    ;; 0f:5112 $b9
+    db   $B8 ; unknown music opcode                    ;; 0f:5113 $b8
+    db   $B7 ; unknown music opcode                    ;; 0f:5114 $b7
+    db   $46 ; unknown music opcode                    ;; 0f:5115 $46
+    db   $B7 ; unknown music opcode                    ;; 0f:5116 $b7
+    db   $B8 ; unknown music opcode                    ;; 0f:5117 $b8
+    db   $B9 ; unknown music opcode                    ;; 0f:5118 $b9
+    db   $8B ; unknown music opcode                    ;; 0f:5119 $8b
+    db   $B9 ; unknown music opcode                    ;; 0f:511a $b9
+    db   $B8 ; unknown music opcode                    ;; 0f:511b $b8
+    db   $B7 ; unknown music opcode                    ;; 0f:511c $b7
+    db   $26 ; unknown music opcode                    ;; 0f:511d $26
+    db   $84 ; unknown music opcode                    ;; 0f:511e $84
+    db   $86 ; unknown music opcode                    ;; 0f:511f $86
+    db   $DC ; unknown music opcode                    ;; 0f:5120 $dc
+    db   $4B ; unknown music opcode                    ;; 0f:5121 $4b
+    db   $BC ; unknown music opcode                    ;; 0f:5122 $bc
+    db   $BD ; unknown music opcode                    ;; 0f:5123 $bd
+    db   $D8 ; unknown music opcode                    ;; 0f:5124 $d8
+    db   $B2 ; unknown music opcode                    ;; 0f:5125 $b2
+    db   $43 ; unknown music opcode                    ;; 0f:5126 $43
+    db   $B2 ; unknown music opcode                    ;; 0f:5127 $b2
+    db   $B1 ; unknown music opcode                    ;; 0f:5128 $b1
+    db   $B0 ; unknown music opcode                    ;; 0f:5129 $b0
+    db   $DC ; unknown music opcode                    ;; 0f:512a $dc
+    mUNK_EB $01, .data_0f_513a                         ;; 0f:512b $eb $01 $3a $51
+    db   $8B ; unknown music opcode                    ;; 0f:512f $8b
+    db   $BC ; unknown music opcode                    ;; 0f:5130 $bc
+    db   $BD ; unknown music opcode                    ;; 0f:5131 $bd
+    db   $D8 ; unknown music opcode                    ;; 0f:5132 $d8
+    db   $B2 ; unknown music opcode                    ;; 0f:5133 $b2
+    db   $53 ; unknown music opcode                    ;; 0f:5134 $53
+    db   $56 ; unknown music opcode                    ;; 0f:5135 $56
+    db   $59 ; unknown music opcode                    ;; 0f:5136 $59
+    mUNK_E2 .data_0f_5111                              ;; 0f:5137 $e2 $11 $51
+.data_0f_513a:
+    db   $8B ; unknown music opcode                    ;; 0f:513a $8b
+    db   $BC ; unknown music opcode                    ;; 0f:513b $bc
+    db   $BD ; unknown music opcode                    ;; 0f:513c $bd
+    db   $D8 ; unknown music opcode                    ;; 0f:513d $d8
+    db   $B2 ; unknown music opcode                    ;; 0f:513e $b2
+    db   $13 ; unknown music opcode                    ;; 0f:513f $13
+    mUNK_E5 $00                                        ;; 0f:5140 $e5 $00
+    db   $54 ; unknown music opcode                    ;; 0f:5142 $54
+    db   $53 ; unknown music opcode                    ;; 0f:5143 $53
+    db   $52 ; unknown music opcode                    ;; 0f:5144 $52
+    db   $53 ; unknown music opcode                    ;; 0f:5145 $53
+    db   $84 ; unknown music opcode                    ;; 0f:5146 $84
+    db   $83 ; unknown music opcode                    ;; 0f:5147 $83
+    db   $82 ; unknown music opcode                    ;; 0f:5148 $82
+    db   $83 ; unknown music opcode                    ;; 0f:5149 $83
+    db   $8F ; unknown music opcode                    ;; 0f:514a $8f
+    db   $84 ; unknown music opcode                    ;; 0f:514b $84
+    db   $83 ; unknown music opcode                    ;; 0f:514c $83
+    db   $8F ; unknown music opcode                    ;; 0f:514d $8f
+    db   $82 ; unknown music opcode                    ;; 0f:514e $82
+    db   $83 ; unknown music opcode                    ;; 0f:514f $83
+    db   $8F ; unknown music opcode                    ;; 0f:5150 $8f
+    db   $84 ; unknown music opcode                    ;; 0f:5151 $84
+    db   $83 ; unknown music opcode                    ;; 0f:5152 $83
+    db   $8F ; unknown music opcode                    ;; 0f:5153 $8f
+    db   $84 ; unknown music opcode                    ;; 0f:5154 $84
+    db   $05 ; unknown music opcode                    ;; 0f:5155 $05
+    db   $8E ; unknown music opcode                    ;; 0f:5156 $8e
+    db   $DC ; unknown music opcode                    ;; 0f:5157 $dc
+    mUNK_E1 .data_0f_50dc                              ;; 0f:5158 $e1 $dc $50
 
-data_0f_515b:
-    db   $e4, $4f, $7a, $e0, $82, $7a, $e5, $80        ;; 0f:515b ????????
-    db   $e6, $03, $d1, $ba, $bb, $bc, $bd, $d8        ;; 0f:5163 ????????
-    db   $b2, $b3, $e3, $08, $e0, $c6, $7a, $e6        ;; 0f:516b ????????
-    db   $02, $e5, $00, $a4, $dc, $ab, $d8, $a3        ;; 0f:5173 ????????
-    db   $dc, $aa, $d8, $a2, $dc, $a9, $ad, $a8        ;; 0f:517b ????????
-    db   $d8, $e6, $03, $a4, $dc, $ab, $d8, $a3        ;; 0f:5183 ????????
-    db   $dc, $aa, $d8, $a2, $dc, $a9, $ad, $a8        ;; 0f:518b ????????
-    db   $d8, $e6, $01, $a4, $dc, $ab, $d8, $a3        ;; 0f:5193 ????????
-    db   $dc, $aa, $d8, $a2, $dc, $a9, $ad, $a8        ;; 0f:519b ????????
-    db   $d8, $e6, $03, $a4, $dc, $ab, $d8, $a3        ;; 0f:51a3 ????????
-    db   $dc, $aa, $d8, $a2, $dc, $a9, $ad, $a8        ;; 0f:51ab ????????
-    db   $d8, $e2, $6f, $51, $e0, $82, $7a, $5b        ;; 0f:51b3 ????????
-    db   $5a, $59, $5a, $8b, $8a, $89, $8a, $8f        ;; 0f:51bb ????????
-    db   $8b, $8a, $8f, $89, $8a, $8f, $8b, $8a        ;; 0f:51c3 ????????
-    db   $8f, $8b, $0c, $8e, $e1, $6d, $51             ;; 0f:51cb ???????
+song06_channel1:
+    mUNK_E4 frequencyDeltaData                         ;; 0f:515b $e4 $4f $7a
+    mUNK_E0 $82                                        ;; 0f:515e $e0 $82
+    db   $7A ; unknown music opcode                    ;; 0f:5160 $7a
+    mUNK_E5 $80                                        ;; 0f:5161 $e5 $80
+    mUNK_E6 $03                                        ;; 0f:5163 $e6 $03
+    db   $D1 ; unknown music opcode                    ;; 0f:5165 $d1
+    db   $BA ; unknown music opcode                    ;; 0f:5166 $ba
+    db   $BB ; unknown music opcode                    ;; 0f:5167 $bb
+    db   $BC ; unknown music opcode                    ;; 0f:5168 $bc
+    db   $BD ; unknown music opcode                    ;; 0f:5169 $bd
+    db   $D8 ; unknown music opcode                    ;; 0f:516a $d8
+    db   $B2 ; unknown music opcode                    ;; 0f:516b $b2
+    db   $B3 ; unknown music opcode                    ;; 0f:516c $b3
+.data_0f_516d:
+    mUNK_E3 $08                                        ;; 0f:516d $e3 $08
+.data_0f_516f:
+    mUNK_E0 $c6                                        ;; 0f:516f $e0 $c6
+    db   $7A ; unknown music opcode                    ;; 0f:5171 $7a
+    mUNK_E6 $02                                        ;; 0f:5172 $e6 $02
+    mUNK_E5 $00                                        ;; 0f:5174 $e5 $00
+    db   $A4 ; unknown music opcode                    ;; 0f:5176 $a4
+    db   $DC ; unknown music opcode                    ;; 0f:5177 $dc
+    db   $AB ; unknown music opcode                    ;; 0f:5178 $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:5179 $d8
+    db   $A3 ; unknown music opcode                    ;; 0f:517a $a3
+    db   $DC ; unknown music opcode                    ;; 0f:517b $dc
+    db   $AA ; unknown music opcode                    ;; 0f:517c $aa
+    db   $D8 ; unknown music opcode                    ;; 0f:517d $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:517e $a2
+    db   $DC ; unknown music opcode                    ;; 0f:517f $dc
+    db   $A9 ; unknown music opcode                    ;; 0f:5180 $a9
+    db   $AD ; unknown music opcode                    ;; 0f:5181 $ad
+    db   $A8 ; unknown music opcode                    ;; 0f:5182 $a8
+    db   $D8 ; unknown music opcode                    ;; 0f:5183 $d8
+    mUNK_E6 $03                                        ;; 0f:5184 $e6 $03
+    db   $A4 ; unknown music opcode                    ;; 0f:5186 $a4
+    db   $DC ; unknown music opcode                    ;; 0f:5187 $dc
+    db   $AB ; unknown music opcode                    ;; 0f:5188 $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:5189 $d8
+    db   $A3 ; unknown music opcode                    ;; 0f:518a $a3
+    db   $DC ; unknown music opcode                    ;; 0f:518b $dc
+    db   $AA ; unknown music opcode                    ;; 0f:518c $aa
+    db   $D8 ; unknown music opcode                    ;; 0f:518d $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:518e $a2
+    db   $DC ; unknown music opcode                    ;; 0f:518f $dc
+    db   $A9 ; unknown music opcode                    ;; 0f:5190 $a9
+    db   $AD ; unknown music opcode                    ;; 0f:5191 $ad
+    db   $A8 ; unknown music opcode                    ;; 0f:5192 $a8
+    db   $D8 ; unknown music opcode                    ;; 0f:5193 $d8
+    mUNK_E6 $01                                        ;; 0f:5194 $e6 $01
+    db   $A4 ; unknown music opcode                    ;; 0f:5196 $a4
+    db   $DC ; unknown music opcode                    ;; 0f:5197 $dc
+    db   $AB ; unknown music opcode                    ;; 0f:5198 $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:5199 $d8
+    db   $A3 ; unknown music opcode                    ;; 0f:519a $a3
+    db   $DC ; unknown music opcode                    ;; 0f:519b $dc
+    db   $AA ; unknown music opcode                    ;; 0f:519c $aa
+    db   $D8 ; unknown music opcode                    ;; 0f:519d $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:519e $a2
+    db   $DC ; unknown music opcode                    ;; 0f:519f $dc
+    db   $A9 ; unknown music opcode                    ;; 0f:51a0 $a9
+    db   $AD ; unknown music opcode                    ;; 0f:51a1 $ad
+    db   $A8 ; unknown music opcode                    ;; 0f:51a2 $a8
+    db   $D8 ; unknown music opcode                    ;; 0f:51a3 $d8
+    mUNK_E6 $03                                        ;; 0f:51a4 $e6 $03
+    db   $A4 ; unknown music opcode                    ;; 0f:51a6 $a4
+    db   $DC ; unknown music opcode                    ;; 0f:51a7 $dc
+    db   $AB ; unknown music opcode                    ;; 0f:51a8 $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:51a9 $d8
+    db   $A3 ; unknown music opcode                    ;; 0f:51aa $a3
+    db   $DC ; unknown music opcode                    ;; 0f:51ab $dc
+    db   $AA ; unknown music opcode                    ;; 0f:51ac $aa
+    db   $D8 ; unknown music opcode                    ;; 0f:51ad $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:51ae $a2
+    db   $DC ; unknown music opcode                    ;; 0f:51af $dc
+    db   $A9 ; unknown music opcode                    ;; 0f:51b0 $a9
+    db   $AD ; unknown music opcode                    ;; 0f:51b1 $ad
+    db   $A8 ; unknown music opcode                    ;; 0f:51b2 $a8
+    db   $D8 ; unknown music opcode                    ;; 0f:51b3 $d8
+    mUNK_E2 .data_0f_516f                              ;; 0f:51b4 $e2 $6f $51
+    mUNK_E0 $82                                        ;; 0f:51b7 $e0 $82
+    db   $7A ; unknown music opcode                    ;; 0f:51b9 $7a
+    db   $5B ; unknown music opcode                    ;; 0f:51ba $5b
+    db   $5A ; unknown music opcode                    ;; 0f:51bb $5a
+    db   $59 ; unknown music opcode                    ;; 0f:51bc $59
+    db   $5A ; unknown music opcode                    ;; 0f:51bd $5a
+    db   $8B ; unknown music opcode                    ;; 0f:51be $8b
+    db   $8A ; unknown music opcode                    ;; 0f:51bf $8a
+    db   $89 ; unknown music opcode                    ;; 0f:51c0 $89
+    db   $8A ; unknown music opcode                    ;; 0f:51c1 $8a
+    db   $8F ; unknown music opcode                    ;; 0f:51c2 $8f
+    db   $8B ; unknown music opcode                    ;; 0f:51c3 $8b
+    db   $8A ; unknown music opcode                    ;; 0f:51c4 $8a
+    db   $8F ; unknown music opcode                    ;; 0f:51c5 $8f
+    db   $89 ; unknown music opcode                    ;; 0f:51c6 $89
+    db   $8A ; unknown music opcode                    ;; 0f:51c7 $8a
+    db   $8F ; unknown music opcode                    ;; 0f:51c8 $8f
+    db   $8B ; unknown music opcode                    ;; 0f:51c9 $8b
+    db   $8A ; unknown music opcode                    ;; 0f:51ca $8a
+    db   $8F ; unknown music opcode                    ;; 0f:51cb $8f
+    db   $8B ; unknown music opcode                    ;; 0f:51cc $8b
+    db   $0C ; unknown music opcode                    ;; 0f:51cd $0c
+    db   $8E ; unknown music opcode                    ;; 0f:51ce $8e
+    mUNK_E1 .data_0f_516d                              ;; 0f:51cf $e1 $6d $51
 
-data_0f_51d2:
-    db   $e4, $4f, $7a, $e8, $dc, $7a, $e0, $40        ;; 0f:51d2 ????????
-    db   $e6, $03, $5f, $e8, $dc, $7a, $e3, $08        ;; 0f:51da ????????
-    db   $d2, $24, $dc, $2b, $d8, $22, $dc, $29        ;; 0f:51e2 ????????
-    db   $d8, $e2, $e2, $51, $e8, $cc, $7a, $5c        ;; 0f:51ea ????????
-    db   $5b, $5a, $5b, $8c, $8b, $8a, $8b, $e0        ;; 0f:51f2 ????????
-    db   $20, $e6, $02, $a0, $af, $e0, $40, $e6        ;; 0f:51fa ????????
-    db   $03, $8c, $8b, $e0, $20, $e6, $01, $a0        ;; 0f:5202 ????????
-    db   $af, $e0, $40, $e6, $03, $8a, $8b, $e0        ;; 0f:520a ????????
-    db   $20, $e6, $02, $a0, $af, $e0, $40, $e6        ;; 0f:5212 ????????
-    db   $03, $8c, $8b, $e0, $20, $e6, $01, $a0        ;; 0f:521a ????????
-    db   $af, $e0, $40, $e6, $03, $8c, $8d, $7e        ;; 0f:5222 ????????
-    db   $af, $e6, $02, $7d, $af, $e6, $01, $7d        ;; 0f:522a ????????
-    db   $af, $e6, $03, $81, $a2, $a3, $e1, $dd        ;; 0f:5232 ????????
-    db   $51, $e7, $14                                 ;; 0f:523a ???
+song06_channel3:
+    mUNK_E4 frequencyDeltaData                         ;; 0f:51d2 $e4 $4f $7a
+    mUNK_E8 data_0f_7adc                               ;; 0f:51d5 $e8 $dc $7a
+    mUNK_E0 $40                                        ;; 0f:51d8 $e0 $40
+    mUNK_E6 $03                                        ;; 0f:51da $e6 $03
+    db   $5F ; unknown music opcode                    ;; 0f:51dc $5f
+.data_0f_51dd:
+    mUNK_E8 data_0f_7adc                               ;; 0f:51dd $e8 $dc $7a
+    mUNK_E3 $08                                        ;; 0f:51e0 $e3 $08
+.data_0f_51e2:
+    db   $D2 ; unknown music opcode                    ;; 0f:51e2 $d2
+    db   $24 ; unknown music opcode                    ;; 0f:51e3 $24
+    db   $DC ; unknown music opcode                    ;; 0f:51e4 $dc
+    db   $2B ; unknown music opcode                    ;; 0f:51e5 $2b
+    db   $D8 ; unknown music opcode                    ;; 0f:51e6 $d8
+    db   $22 ; unknown music opcode                    ;; 0f:51e7 $22
+    db   $DC ; unknown music opcode                    ;; 0f:51e8 $dc
+    db   $29 ; unknown music opcode                    ;; 0f:51e9 $29
+    db   $D8 ; unknown music opcode                    ;; 0f:51ea $d8
+    mUNK_E2 .data_0f_51e2                              ;; 0f:51eb $e2 $e2 $51
+    mUNK_E8 wavePatternsData                           ;; 0f:51ee $e8 $cc $7a
+    db   $5C ; unknown music opcode                    ;; 0f:51f1 $5c
+    db   $5B ; unknown music opcode                    ;; 0f:51f2 $5b
+    db   $5A ; unknown music opcode                    ;; 0f:51f3 $5a
+    db   $5B ; unknown music opcode                    ;; 0f:51f4 $5b
+    db   $8C ; unknown music opcode                    ;; 0f:51f5 $8c
+    db   $8B ; unknown music opcode                    ;; 0f:51f6 $8b
+    db   $8A ; unknown music opcode                    ;; 0f:51f7 $8a
+    db   $8B ; unknown music opcode                    ;; 0f:51f8 $8b
+    mUNK_E0 $20                                        ;; 0f:51f9 $e0 $20
+    mUNK_E6 $02                                        ;; 0f:51fb $e6 $02
+    db   $A0 ; unknown music opcode                    ;; 0f:51fd $a0
+    db   $AF ; unknown music opcode                    ;; 0f:51fe $af
+    mUNK_E0 $40                                        ;; 0f:51ff $e0 $40
+    mUNK_E6 $03                                        ;; 0f:5201 $e6 $03
+    db   $8C ; unknown music opcode                    ;; 0f:5203 $8c
+    db   $8B ; unknown music opcode                    ;; 0f:5204 $8b
+    mUNK_E0 $20                                        ;; 0f:5205 $e0 $20
+    mUNK_E6 $01                                        ;; 0f:5207 $e6 $01
+    db   $A0 ; unknown music opcode                    ;; 0f:5209 $a0
+    db   $AF ; unknown music opcode                    ;; 0f:520a $af
+    mUNK_E0 $40                                        ;; 0f:520b $e0 $40
+    mUNK_E6 $03                                        ;; 0f:520d $e6 $03
+    db   $8A ; unknown music opcode                    ;; 0f:520f $8a
+    db   $8B ; unknown music opcode                    ;; 0f:5210 $8b
+    mUNK_E0 $20                                        ;; 0f:5211 $e0 $20
+    mUNK_E6 $02                                        ;; 0f:5213 $e6 $02
+    db   $A0 ; unknown music opcode                    ;; 0f:5215 $a0
+    db   $AF ; unknown music opcode                    ;; 0f:5216 $af
+    mUNK_E0 $40                                        ;; 0f:5217 $e0 $40
+    mUNK_E6 $03                                        ;; 0f:5219 $e6 $03
+    db   $8C ; unknown music opcode                    ;; 0f:521b $8c
+    db   $8B ; unknown music opcode                    ;; 0f:521c $8b
+    mUNK_E0 $20                                        ;; 0f:521d $e0 $20
+    mUNK_E6 $01                                        ;; 0f:521f $e6 $01
+    db   $A0 ; unknown music opcode                    ;; 0f:5221 $a0
+    db   $AF ; unknown music opcode                    ;; 0f:5222 $af
+    mUNK_E0 $40                                        ;; 0f:5223 $e0 $40
+    mUNK_E6 $03                                        ;; 0f:5225 $e6 $03
+    db   $8C ; unknown music opcode                    ;; 0f:5227 $8c
+    db   $8D ; unknown music opcode                    ;; 0f:5228 $8d
+    db   $7E ; unknown music opcode                    ;; 0f:5229 $7e
+    db   $AF ; unknown music opcode                    ;; 0f:522a $af
+    mUNK_E6 $02                                        ;; 0f:522b $e6 $02
+    db   $7D ; unknown music opcode                    ;; 0f:522d $7d
+    db   $AF ; unknown music opcode                    ;; 0f:522e $af
+    mUNK_E6 $01                                        ;; 0f:522f $e6 $01
+    db   $7D ; unknown music opcode                    ;; 0f:5231 $7d
+    db   $AF ; unknown music opcode                    ;; 0f:5232 $af
+    mUNK_E6 $03                                        ;; 0f:5233 $e6 $03
+    db   $81 ; unknown music opcode                    ;; 0f:5235 $81
+    db   $A2 ; unknown music opcode                    ;; 0f:5236 $a2
+    db   $A3 ; unknown music opcode                    ;; 0f:5237 $a3
+    mUNK_E1 .data_0f_51dd                              ;; 0f:5238 $e1 $dd $51
+    db   $e7, $14                                      ;; 0f:523b ??
 
-data_0f_523d:
-    db   $e4, $75, $7a, $e0, $82, $7a, $e5, $80        ;; 0f:523d ????????
-    db   $e6, $03, $e7, $5a, $e3, $02, $d3, $1b        ;; 0f:5245 ????????
-    db   $28, $85, $a8, $a5, $14, $52, $54, $52        ;; 0f:524d ????????
-    db   $dc, $2b, $7e, $cc, $cd, $d8, $24, $7e        ;; 0f:5255 ????????
-    db   $c5, $c6, $18, $dc, $eb, $01, $75, $52        ;; 0f:525d ????????
-    db   $ab, $ac, $d8, $a3, $a4, $a3, $a0, $a3        ;; 0f:5265 ????????
-    db   $a4, $a5, $a8, $a9, $aa, $e2, $4b, $52        ;; 0f:526d ????????
-    db   $d8, $ab, $a9, $a8, $a9, $a8, $a5, $a4        ;; 0f:5275 ????????
-    db   $a5, $a4, $a3, $a0, $dc, $ab, $e7, $6e        ;; 0f:527d ????????
-    db   $e0, $be, $7a, $e5, $40, $2a, $8e, $a9        ;; 0f:5285 ????????
-    db   $aa, $2b, $8e, $aa, $ab, $2c, $ad, $d8        ;; 0f:528d ????????
-    db   $a2, $a3, $a4, $25, $be, $e7, $5a, $e5        ;; 0f:5295 ????????
-    db   $80, $b6, $b7, $b8, $b9, $ba, $e1, $40        ;; 0f:529d ????????
-    db   $52                                           ;; 0f:52a5 ?
+song07_channel2:
+    mUNK_E4 frequencyDeltaData.fifth                   ;; 0f:523d $e4 $75 $7a
+.data_0f_5240:
+    mUNK_E0 $82                                        ;; 0f:5240 $e0 $82
+    db   $7A ; unknown music opcode                    ;; 0f:5242 $7a
+    mUNK_E5 $80                                        ;; 0f:5243 $e5 $80
+    mUNK_E6 $03                                        ;; 0f:5245 $e6 $03
+    mUNK_E7 $5a                                        ;; 0f:5247 $e7 $5a
+    mUNK_E3 $02                                        ;; 0f:5249 $e3 $02
+.data_0f_524b:
+    db   $D3 ; unknown music opcode                    ;; 0f:524b $d3
+    db   $1B ; unknown music opcode                    ;; 0f:524c $1b
+    db   $28 ; unknown music opcode                    ;; 0f:524d $28
+    db   $85 ; unknown music opcode                    ;; 0f:524e $85
+    db   $A8 ; unknown music opcode                    ;; 0f:524f $a8
+    db   $A5 ; unknown music opcode                    ;; 0f:5250 $a5
+    db   $14 ; unknown music opcode                    ;; 0f:5251 $14
+    db   $52 ; unknown music opcode                    ;; 0f:5252 $52
+    db   $54 ; unknown music opcode                    ;; 0f:5253 $54
+    db   $52 ; unknown music opcode                    ;; 0f:5254 $52
+    db   $DC ; unknown music opcode                    ;; 0f:5255 $dc
+    db   $2B ; unknown music opcode                    ;; 0f:5256 $2b
+    db   $7E ; unknown music opcode                    ;; 0f:5257 $7e
+    db   $CC ; unknown music opcode                    ;; 0f:5258 $cc
+    db   $CD ; unknown music opcode                    ;; 0f:5259 $cd
+    db   $D8 ; unknown music opcode                    ;; 0f:525a $d8
+    db   $24 ; unknown music opcode                    ;; 0f:525b $24
+    db   $7E ; unknown music opcode                    ;; 0f:525c $7e
+    db   $C5 ; unknown music opcode                    ;; 0f:525d $c5
+    db   $C6 ; unknown music opcode                    ;; 0f:525e $c6
+    db   $18 ; unknown music opcode                    ;; 0f:525f $18
+    db   $DC ; unknown music opcode                    ;; 0f:5260 $dc
+    mUNK_EB $01, .data_0f_5275                         ;; 0f:5261 $eb $01 $75 $52
+    db   $AB ; unknown music opcode                    ;; 0f:5265 $ab
+    db   $AC ; unknown music opcode                    ;; 0f:5266 $ac
+    db   $D8 ; unknown music opcode                    ;; 0f:5267 $d8
+    db   $A3 ; unknown music opcode                    ;; 0f:5268 $a3
+    db   $A4 ; unknown music opcode                    ;; 0f:5269 $a4
+    db   $A3 ; unknown music opcode                    ;; 0f:526a $a3
+    db   $A0 ; unknown music opcode                    ;; 0f:526b $a0
+    db   $A3 ; unknown music opcode                    ;; 0f:526c $a3
+    db   $A4 ; unknown music opcode                    ;; 0f:526d $a4
+    db   $A5 ; unknown music opcode                    ;; 0f:526e $a5
+    db   $A8 ; unknown music opcode                    ;; 0f:526f $a8
+    db   $A9 ; unknown music opcode                    ;; 0f:5270 $a9
+    db   $AA ; unknown music opcode                    ;; 0f:5271 $aa
+    mUNK_E2 .data_0f_524b                              ;; 0f:5272 $e2 $4b $52
+.data_0f_5275:
+    db   $D8 ; unknown music opcode                    ;; 0f:5275 $d8
+    db   $AB ; unknown music opcode                    ;; 0f:5276 $ab
+    db   $A9 ; unknown music opcode                    ;; 0f:5277 $a9
+    db   $A8 ; unknown music opcode                    ;; 0f:5278 $a8
+    db   $A9 ; unknown music opcode                    ;; 0f:5279 $a9
+    db   $A8 ; unknown music opcode                    ;; 0f:527a $a8
+    db   $A5 ; unknown music opcode                    ;; 0f:527b $a5
+    db   $A4 ; unknown music opcode                    ;; 0f:527c $a4
+    db   $A5 ; unknown music opcode                    ;; 0f:527d $a5
+    db   $A4 ; unknown music opcode                    ;; 0f:527e $a4
+    db   $A3 ; unknown music opcode                    ;; 0f:527f $a3
+    db   $A0 ; unknown music opcode                    ;; 0f:5280 $a0
+    db   $DC ; unknown music opcode                    ;; 0f:5281 $dc
+    db   $AB ; unknown music opcode                    ;; 0f:5282 $ab
+    mUNK_E7 $6e                                        ;; 0f:5283 $e7 $6e
+    mUNK_E0 $be                                        ;; 0f:5285 $e0 $be
+    db   $7A ; unknown music opcode                    ;; 0f:5287 $7a
+    mUNK_E5 $40                                        ;; 0f:5288 $e5 $40
+    db   $2A ; unknown music opcode                    ;; 0f:528a $2a
+    db   $8E ; unknown music opcode                    ;; 0f:528b $8e
+    db   $A9 ; unknown music opcode                    ;; 0f:528c $a9
+    db   $AA ; unknown music opcode                    ;; 0f:528d $aa
+    db   $2B ; unknown music opcode                    ;; 0f:528e $2b
+    db   $8E ; unknown music opcode                    ;; 0f:528f $8e
+    db   $AA ; unknown music opcode                    ;; 0f:5290 $aa
+    db   $AB ; unknown music opcode                    ;; 0f:5291 $ab
+    db   $2C ; unknown music opcode                    ;; 0f:5292 $2c
+    db   $AD ; unknown music opcode                    ;; 0f:5293 $ad
+    db   $D8 ; unknown music opcode                    ;; 0f:5294 $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:5295 $a2
+    db   $A3 ; unknown music opcode                    ;; 0f:5296 $a3
+    db   $A4 ; unknown music opcode                    ;; 0f:5297 $a4
+    db   $25 ; unknown music opcode                    ;; 0f:5298 $25
+    db   $BE ; unknown music opcode                    ;; 0f:5299 $be
+    mUNK_E7 $5a                                        ;; 0f:529a $e7 $5a
+    mUNK_E5 $80                                        ;; 0f:529c $e5 $80
+    db   $B6 ; unknown music opcode                    ;; 0f:529e $b6
+    db   $B7 ; unknown music opcode                    ;; 0f:529f $b7
+    db   $B8 ; unknown music opcode                    ;; 0f:52a0 $b8
+    db   $B9 ; unknown music opcode                    ;; 0f:52a1 $b9
+    db   $BA ; unknown music opcode                    ;; 0f:52a2 $ba
+    mUNK_E1 .data_0f_5240                              ;; 0f:52a3 $e1 $40 $52
 
-data_0f_52a6:
-    db   $e4, $4f, $7a, $e0, $c2, $7a, $e5, $80        ;; 0f:52a6 ????????
-    db   $e6, $02, $d2, $af, $84, $85, $88, $89        ;; 0f:52ae ????????
-    db   $88, $85, $84, $85, $88, $89, $88, $85        ;; 0f:52b6 ????????
-    db   $84, $85, $88, $89, $88, $85, $84, $85        ;; 0f:52be ????????
-    db   $88, $89, $88, $85, $84, $85, $88, $89        ;; 0f:52c6 ????????
-    db   $88, $85, $84, $85, $88, $89, $88, $85        ;; 0f:52ce ????????
-    db   $84, $85, $88, $89, $88, $85, $84, $85        ;; 0f:52d6 ????????
-    db   $88, $89, $88, $85, $84, $85, $88, $89        ;; 0f:52de ????????
-    db   $88, $85, $84, $85, $88, $89, $88, $85        ;; 0f:52e6 ????????
-    db   $84, $85, $88, $89, $88, $85, $84, $85        ;; 0f:52ee ????????
-    db   $88, $89, $88, $85, $84, $85, $88, $89        ;; 0f:52f6 ????????
-    db   $88, $85, $84, $85, $88, $89, $88, $85        ;; 0f:52fe ????????
-    db   $84, $85, $88, $89, $88, $85, $84, $85        ;; 0f:5306 ????????
-    db   $88, $89, $88, $a5, $e0, $c0, $7a, $e5        ;; 0f:530e ????????
-    db   $40, $e6, $03, $a6, $af, $a6, $af, $8f        ;; 0f:5316 ????????
-    db   $a6, $af, $5f, $a7, $af, $a7, $af, $8f        ;; 0f:531e ????????
-    db   $a7, $af, $5f, $a8, $af, $a8, $af, $8f        ;; 0f:5326 ????????
-    db   $a8, $af, $5f, $a9, $af, $a9, $af, $8f        ;; 0f:532e ????????
-    db   $a9, $af, $e5, $80, $b9, $ba, $bb, $bc        ;; 0f:5336 ????????
-    db   $bd, $d8, $b2, $e1, $a9, $52                  ;; 0f:533e ??????
+song07_channel1:
+    mUNK_E4 frequencyDeltaData                         ;; 0f:52a6 $e4 $4f $7a
+.data_0f_52a9:
+    mUNK_E0 $c2                                        ;; 0f:52a9 $e0 $c2
+    db   $7A ; unknown music opcode                    ;; 0f:52ab $7a
+    mUNK_E5 $80                                        ;; 0f:52ac $e5 $80
+    mUNK_E6 $02                                        ;; 0f:52ae $e6 $02
+    db   $D2 ; unknown music opcode                    ;; 0f:52b0 $d2
+    db   $AF ; unknown music opcode                    ;; 0f:52b1 $af
+    db   $84 ; unknown music opcode                    ;; 0f:52b2 $84
+    db   $85 ; unknown music opcode                    ;; 0f:52b3 $85
+    db   $88 ; unknown music opcode                    ;; 0f:52b4 $88
+    db   $89 ; unknown music opcode                    ;; 0f:52b5 $89
+    db   $88 ; unknown music opcode                    ;; 0f:52b6 $88
+    db   $85 ; unknown music opcode                    ;; 0f:52b7 $85
+    db   $84 ; unknown music opcode                    ;; 0f:52b8 $84
+    db   $85 ; unknown music opcode                    ;; 0f:52b9 $85
+    db   $88 ; unknown music opcode                    ;; 0f:52ba $88
+    db   $89 ; unknown music opcode                    ;; 0f:52bb $89
+    db   $88 ; unknown music opcode                    ;; 0f:52bc $88
+    db   $85 ; unknown music opcode                    ;; 0f:52bd $85
+    db   $84 ; unknown music opcode                    ;; 0f:52be $84
+    db   $85 ; unknown music opcode                    ;; 0f:52bf $85
+    db   $88 ; unknown music opcode                    ;; 0f:52c0 $88
+    db   $89 ; unknown music opcode                    ;; 0f:52c1 $89
+    db   $88 ; unknown music opcode                    ;; 0f:52c2 $88
+    db   $85 ; unknown music opcode                    ;; 0f:52c3 $85
+    db   $84 ; unknown music opcode                    ;; 0f:52c4 $84
+    db   $85 ; unknown music opcode                    ;; 0f:52c5 $85
+    db   $88 ; unknown music opcode                    ;; 0f:52c6 $88
+    db   $89 ; unknown music opcode                    ;; 0f:52c7 $89
+    db   $88 ; unknown music opcode                    ;; 0f:52c8 $88
+    db   $85 ; unknown music opcode                    ;; 0f:52c9 $85
+    db   $84 ; unknown music opcode                    ;; 0f:52ca $84
+    db   $85 ; unknown music opcode                    ;; 0f:52cb $85
+    db   $88 ; unknown music opcode                    ;; 0f:52cc $88
+    db   $89 ; unknown music opcode                    ;; 0f:52cd $89
+    db   $88 ; unknown music opcode                    ;; 0f:52ce $88
+    db   $85 ; unknown music opcode                    ;; 0f:52cf $85
+    db   $84 ; unknown music opcode                    ;; 0f:52d0 $84
+    db   $85 ; unknown music opcode                    ;; 0f:52d1 $85
+    db   $88 ; unknown music opcode                    ;; 0f:52d2 $88
+    db   $89 ; unknown music opcode                    ;; 0f:52d3 $89
+    db   $88 ; unknown music opcode                    ;; 0f:52d4 $88
+    db   $85 ; unknown music opcode                    ;; 0f:52d5 $85
+    db   $84 ; unknown music opcode                    ;; 0f:52d6 $84
+    db   $85 ; unknown music opcode                    ;; 0f:52d7 $85
+    db   $88 ; unknown music opcode                    ;; 0f:52d8 $88
+    db   $89 ; unknown music opcode                    ;; 0f:52d9 $89
+    db   $88 ; unknown music opcode                    ;; 0f:52da $88
+    db   $85 ; unknown music opcode                    ;; 0f:52db $85
+    db   $84 ; unknown music opcode                    ;; 0f:52dc $84
+    db   $85 ; unknown music opcode                    ;; 0f:52dd $85
+    db   $88 ; unknown music opcode                    ;; 0f:52de $88
+    db   $89 ; unknown music opcode                    ;; 0f:52df $89
+    db   $88 ; unknown music opcode                    ;; 0f:52e0 $88
+    db   $85 ; unknown music opcode                    ;; 0f:52e1 $85
+    db   $84 ; unknown music opcode                    ;; 0f:52e2 $84
+    db   $85 ; unknown music opcode                    ;; 0f:52e3 $85
+    db   $88 ; unknown music opcode                    ;; 0f:52e4 $88
+    db   $89 ; unknown music opcode                    ;; 0f:52e5 $89
+    db   $88 ; unknown music opcode                    ;; 0f:52e6 $88
+    db   $85 ; unknown music opcode                    ;; 0f:52e7 $85
+    db   $84 ; unknown music opcode                    ;; 0f:52e8 $84
+    db   $85 ; unknown music opcode                    ;; 0f:52e9 $85
+    db   $88 ; unknown music opcode                    ;; 0f:52ea $88
+    db   $89 ; unknown music opcode                    ;; 0f:52eb $89
+    db   $88 ; unknown music opcode                    ;; 0f:52ec $88
+    db   $85 ; unknown music opcode                    ;; 0f:52ed $85
+    db   $84 ; unknown music opcode                    ;; 0f:52ee $84
+    db   $85 ; unknown music opcode                    ;; 0f:52ef $85
+    db   $88 ; unknown music opcode                    ;; 0f:52f0 $88
+    db   $89 ; unknown music opcode                    ;; 0f:52f1 $89
+    db   $88 ; unknown music opcode                    ;; 0f:52f2 $88
+    db   $85 ; unknown music opcode                    ;; 0f:52f3 $85
+    db   $84 ; unknown music opcode                    ;; 0f:52f4 $84
+    db   $85 ; unknown music opcode                    ;; 0f:52f5 $85
+    db   $88 ; unknown music opcode                    ;; 0f:52f6 $88
+    db   $89 ; unknown music opcode                    ;; 0f:52f7 $89
+    db   $88 ; unknown music opcode                    ;; 0f:52f8 $88
+    db   $85 ; unknown music opcode                    ;; 0f:52f9 $85
+    db   $84 ; unknown music opcode                    ;; 0f:52fa $84
+    db   $85 ; unknown music opcode                    ;; 0f:52fb $85
+    db   $88 ; unknown music opcode                    ;; 0f:52fc $88
+    db   $89 ; unknown music opcode                    ;; 0f:52fd $89
+    db   $88 ; unknown music opcode                    ;; 0f:52fe $88
+    db   $85 ; unknown music opcode                    ;; 0f:52ff $85
+    db   $84 ; unknown music opcode                    ;; 0f:5300 $84
+    db   $85 ; unknown music opcode                    ;; 0f:5301 $85
+    db   $88 ; unknown music opcode                    ;; 0f:5302 $88
+    db   $89 ; unknown music opcode                    ;; 0f:5303 $89
+    db   $88 ; unknown music opcode                    ;; 0f:5304 $88
+    db   $85 ; unknown music opcode                    ;; 0f:5305 $85
+    db   $84 ; unknown music opcode                    ;; 0f:5306 $84
+    db   $85 ; unknown music opcode                    ;; 0f:5307 $85
+    db   $88 ; unknown music opcode                    ;; 0f:5308 $88
+    db   $89 ; unknown music opcode                    ;; 0f:5309 $89
+    db   $88 ; unknown music opcode                    ;; 0f:530a $88
+    db   $85 ; unknown music opcode                    ;; 0f:530b $85
+    db   $84 ; unknown music opcode                    ;; 0f:530c $84
+    db   $85 ; unknown music opcode                    ;; 0f:530d $85
+    db   $88 ; unknown music opcode                    ;; 0f:530e $88
+    db   $89 ; unknown music opcode                    ;; 0f:530f $89
+    db   $88 ; unknown music opcode                    ;; 0f:5310 $88
+    db   $A5 ; unknown music opcode                    ;; 0f:5311 $a5
+    mUNK_E0 $c0                                        ;; 0f:5312 $e0 $c0
+    db   $7A ; unknown music opcode                    ;; 0f:5314 $7a
+    mUNK_E5 $40                                        ;; 0f:5315 $e5 $40
+    mUNK_E6 $03                                        ;; 0f:5317 $e6 $03
+    db   $A6 ; unknown music opcode                    ;; 0f:5319 $a6
+    db   $AF ; unknown music opcode                    ;; 0f:531a $af
+    db   $A6 ; unknown music opcode                    ;; 0f:531b $a6
+    db   $AF ; unknown music opcode                    ;; 0f:531c $af
+    db   $8F ; unknown music opcode                    ;; 0f:531d $8f
+    db   $A6 ; unknown music opcode                    ;; 0f:531e $a6
+    db   $AF ; unknown music opcode                    ;; 0f:531f $af
+    db   $5F ; unknown music opcode                    ;; 0f:5320 $5f
+    db   $A7 ; unknown music opcode                    ;; 0f:5321 $a7
+    db   $AF ; unknown music opcode                    ;; 0f:5322 $af
+    db   $A7 ; unknown music opcode                    ;; 0f:5323 $a7
+    db   $AF ; unknown music opcode                    ;; 0f:5324 $af
+    db   $8F ; unknown music opcode                    ;; 0f:5325 $8f
+    db   $A7 ; unknown music opcode                    ;; 0f:5326 $a7
+    db   $AF ; unknown music opcode                    ;; 0f:5327 $af
+    db   $5F ; unknown music opcode                    ;; 0f:5328 $5f
+    db   $A8 ; unknown music opcode                    ;; 0f:5329 $a8
+    db   $AF ; unknown music opcode                    ;; 0f:532a $af
+    db   $A8 ; unknown music opcode                    ;; 0f:532b $a8
+    db   $AF ; unknown music opcode                    ;; 0f:532c $af
+    db   $8F ; unknown music opcode                    ;; 0f:532d $8f
+    db   $A8 ; unknown music opcode                    ;; 0f:532e $a8
+    db   $AF ; unknown music opcode                    ;; 0f:532f $af
+    db   $5F ; unknown music opcode                    ;; 0f:5330 $5f
+    db   $A9 ; unknown music opcode                    ;; 0f:5331 $a9
+    db   $AF ; unknown music opcode                    ;; 0f:5332 $af
+    db   $A9 ; unknown music opcode                    ;; 0f:5333 $a9
+    db   $AF ; unknown music opcode                    ;; 0f:5334 $af
+    db   $8F ; unknown music opcode                    ;; 0f:5335 $8f
+    db   $A9 ; unknown music opcode                    ;; 0f:5336 $a9
+    db   $AF ; unknown music opcode                    ;; 0f:5337 $af
+    mUNK_E5 $80                                        ;; 0f:5338 $e5 $80
+    db   $B9 ; unknown music opcode                    ;; 0f:533a $b9
+    db   $BA ; unknown music opcode                    ;; 0f:533b $ba
+    db   $BB ; unknown music opcode                    ;; 0f:533c $bb
+    db   $BC ; unknown music opcode                    ;; 0f:533d $bc
+    db   $BD ; unknown music opcode                    ;; 0f:533e $bd
+    db   $D8 ; unknown music opcode                    ;; 0f:533f $d8
+    db   $B2 ; unknown music opcode                    ;; 0f:5340 $b2
+    mUNK_E1 .data_0f_52a9                              ;; 0f:5341 $e1 $a9 $52
 
-data_0f_5344:
-    db   $e4, $4f, $7a, $e8, $fc, $7a, $e0, $20        ;; 0f:5344 ????????
-    db   $e6, $01, $e3, $10, $d3, $84, $85, $88        ;; 0f:534c ????????
-    db   $89, $88, $85, $e2, $50, $53, $e8, $dc        ;; 0f:5354 ????????
-    db   $7a, $e0, $20, $e6, $03, $dc, $a0, $af        ;; 0f:535c ????????
-    db   $a0, $af, $8f, $a0, $af, $5f, $a1, $af        ;; 0f:5364 ????????
-    db   $a1, $af, $8f, $a1, $af, $5f, $a2, $af        ;; 0f:536c ????????
-    db   $a2, $af, $8f, $a2, $af, $5f, $a3, $af        ;; 0f:5374 ????????
-    db   $a3, $af, $8f, $a3, $af, $5f, $d8, $e1        ;; 0f:537c ????????
-    db   $47, $53, $e7, $14                            ;; 0f:5384 ????
+song07_channel3:
+    mUNK_E4 frequencyDeltaData                         ;; 0f:5344 $e4 $4f $7a
+.data_0f_5347:
+    mUNK_E8 data_0f_7afc                               ;; 0f:5347 $e8 $fc $7a
+    mUNK_E0 $20                                        ;; 0f:534a $e0 $20
+    mUNK_E6 $01                                        ;; 0f:534c $e6 $01
+    mUNK_E3 $10                                        ;; 0f:534e $e3 $10
+.data_0f_5350:
+    db   $D3 ; unknown music opcode                    ;; 0f:5350 $d3
+    db   $84 ; unknown music opcode                    ;; 0f:5351 $84
+    db   $85 ; unknown music opcode                    ;; 0f:5352 $85
+    db   $88 ; unknown music opcode                    ;; 0f:5353 $88
+    db   $89 ; unknown music opcode                    ;; 0f:5354 $89
+    db   $88 ; unknown music opcode                    ;; 0f:5355 $88
+    db   $85 ; unknown music opcode                    ;; 0f:5356 $85
+    mUNK_E2 .data_0f_5350                              ;; 0f:5357 $e2 $50 $53
+    mUNK_E8 data_0f_7adc                               ;; 0f:535a $e8 $dc $7a
+    mUNK_E0 $20                                        ;; 0f:535d $e0 $20
+    mUNK_E6 $03                                        ;; 0f:535f $e6 $03
+    db   $DC ; unknown music opcode                    ;; 0f:5361 $dc
+    db   $A0 ; unknown music opcode                    ;; 0f:5362 $a0
+    db   $AF ; unknown music opcode                    ;; 0f:5363 $af
+    db   $A0 ; unknown music opcode                    ;; 0f:5364 $a0
+    db   $AF ; unknown music opcode                    ;; 0f:5365 $af
+    db   $8F ; unknown music opcode                    ;; 0f:5366 $8f
+    db   $A0 ; unknown music opcode                    ;; 0f:5367 $a0
+    db   $AF ; unknown music opcode                    ;; 0f:5368 $af
+    db   $5F ; unknown music opcode                    ;; 0f:5369 $5f
+    db   $A1 ; unknown music opcode                    ;; 0f:536a $a1
+    db   $AF ; unknown music opcode                    ;; 0f:536b $af
+    db   $A1 ; unknown music opcode                    ;; 0f:536c $a1
+    db   $AF ; unknown music opcode                    ;; 0f:536d $af
+    db   $8F ; unknown music opcode                    ;; 0f:536e $8f
+    db   $A1 ; unknown music opcode                    ;; 0f:536f $a1
+    db   $AF ; unknown music opcode                    ;; 0f:5370 $af
+    db   $5F ; unknown music opcode                    ;; 0f:5371 $5f
+    db   $A2 ; unknown music opcode                    ;; 0f:5372 $a2
+    db   $AF ; unknown music opcode                    ;; 0f:5373 $af
+    db   $A2 ; unknown music opcode                    ;; 0f:5374 $a2
+    db   $AF ; unknown music opcode                    ;; 0f:5375 $af
+    db   $8F ; unknown music opcode                    ;; 0f:5376 $8f
+    db   $A2 ; unknown music opcode                    ;; 0f:5377 $a2
+    db   $AF ; unknown music opcode                    ;; 0f:5378 $af
+    db   $5F ; unknown music opcode                    ;; 0f:5379 $5f
+    db   $A3 ; unknown music opcode                    ;; 0f:537a $a3
+    db   $AF ; unknown music opcode                    ;; 0f:537b $af
+    db   $A3 ; unknown music opcode                    ;; 0f:537c $a3
+    db   $AF ; unknown music opcode                    ;; 0f:537d $af
+    db   $8F ; unknown music opcode                    ;; 0f:537e $8f
+    db   $A3 ; unknown music opcode                    ;; 0f:537f $a3
+    db   $AF ; unknown music opcode                    ;; 0f:5380 $af
+    db   $5F ; unknown music opcode                    ;; 0f:5381 $5f
+    db   $D8 ; unknown music opcode                    ;; 0f:5382 $d8
+    mUNK_E1 .data_0f_5347                              ;; 0f:5383 $e1 $47 $53
+    db   $e7, $14                                      ;; 0f:5386 ??
 
-data_0f_5388:
-    db   $e7, $91, $e4, $75, $7a, $e0, $82, $7a        ;; 0f:5388 ........
-    db   $e5, $40                                      ;; 0f:5390 ..
+song08_channel2:
+    mUNK_E7 $91                                        ;; 0f:5388 $e7 $91
+    mUNK_E4 frequencyDeltaData.fifth                   ;; 0f:538a $e4 $75 $7a
+    mUNK_E0 $82                                        ;; 0f:538d $e0 $82
+    db   $7A ; unknown music opcode                    ;; 0f:538f $7a
+    mUNK_E5 $40                                        ;; 0f:5390 $e5 $40
 .data_0f_5392:
-    db   $e6, $03, $d3, $16, $54, $59, $57, $56        ;; 0f:5392 ........
-    db   $54, $45, $a4, $a3, $02, $af, $dc, $ab        ;; 0f:539a ........
-    db   $ac, $ad, $d8, $a2, $a3, $a4, $a5, $16        ;; 0f:53a2 ........
-    db   $54, $59, $57, $56, $54, $45, $a8, $a9        ;; 0f:53aa ........
-    db   $0b, $ae, $a9, $a8, $a5, $a2, $a5, $a2        ;; 0f:53b2 ........
-    db   $dc, $ab, $e1                                 ;; 0f:53ba ...
-    dw   .data_0f_5392                                 ;; 0f:53bd pP
+    mUNK_E6 $03                                        ;; 0f:5392 $e6 $03
+    db   $D3 ; unknown music opcode                    ;; 0f:5394 $d3
+    db   $16 ; unknown music opcode                    ;; 0f:5395 $16
+    db   $54 ; unknown music opcode                    ;; 0f:5396 $54
+    db   $59 ; unknown music opcode                    ;; 0f:5397 $59
+    db   $57 ; unknown music opcode                    ;; 0f:5398 $57
+    db   $56 ; unknown music opcode                    ;; 0f:5399 $56
+    db   $54 ; unknown music opcode                    ;; 0f:539a $54
+    db   $45 ; unknown music opcode                    ;; 0f:539b $45
+    db   $A4 ; unknown music opcode                    ;; 0f:539c $a4
+    db   $A3 ; unknown music opcode                    ;; 0f:539d $a3
+    db   $02 ; unknown music opcode                    ;; 0f:539e $02
+    db   $AF ; unknown music opcode                    ;; 0f:539f $af
+    db   $DC ; unknown music opcode                    ;; 0f:53a0 $dc
+    db   $AB ; unknown music opcode                    ;; 0f:53a1 $ab
+    db   $AC ; unknown music opcode                    ;; 0f:53a2 $ac
+    db   $AD ; unknown music opcode                    ;; 0f:53a3 $ad
+    db   $D8 ; unknown music opcode                    ;; 0f:53a4 $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:53a5 $a2
+    db   $A3 ; unknown music opcode                    ;; 0f:53a6 $a3
+    db   $A4 ; unknown music opcode                    ;; 0f:53a7 $a4
+    db   $A5 ; unknown music opcode                    ;; 0f:53a8 $a5
+    db   $16 ; unknown music opcode                    ;; 0f:53a9 $16
+    db   $54 ; unknown music opcode                    ;; 0f:53aa $54
+    db   $59 ; unknown music opcode                    ;; 0f:53ab $59
+    db   $57 ; unknown music opcode                    ;; 0f:53ac $57
+    db   $56 ; unknown music opcode                    ;; 0f:53ad $56
+    db   $54 ; unknown music opcode                    ;; 0f:53ae $54
+    db   $45 ; unknown music opcode                    ;; 0f:53af $45
+    db   $A8 ; unknown music opcode                    ;; 0f:53b0 $a8
+    db   $A9 ; unknown music opcode                    ;; 0f:53b1 $a9
+    db   $0B ; unknown music opcode                    ;; 0f:53b2 $0b
+    db   $AE ; unknown music opcode                    ;; 0f:53b3 $ae
+    db   $A9 ; unknown music opcode                    ;; 0f:53b4 $a9
+    db   $A8 ; unknown music opcode                    ;; 0f:53b5 $a8
+    db   $A5 ; unknown music opcode                    ;; 0f:53b6 $a5
+    db   $A2 ; unknown music opcode                    ;; 0f:53b7 $a2
+    db   $A5 ; unknown music opcode                    ;; 0f:53b8 $a5
+    db   $A2 ; unknown music opcode                    ;; 0f:53b9 $a2
+    db   $DC ; unknown music opcode                    ;; 0f:53ba $dc
+    db   $AB ; unknown music opcode                    ;; 0f:53bb $ab
+    mUNK_E1 .data_0f_5392                              ;; 0f:53bc $e1 $92 $53
 
-data_0f_53bf:
-    db   $e4, $75, $7a, $e0, $ae, $7a, $e5, $40        ;; 0f:53bf ........
-    db   $e6, $03                                      ;; 0f:53c7 ..
+song08_channel1:
+    mUNK_E4 frequencyDeltaData.fifth                   ;; 0f:53bf $e4 $75 $7a
+    mUNK_E0 $ae                                        ;; 0f:53c2 $e0 $ae
+    db   $7A ; unknown music opcode                    ;; 0f:53c4 $7a
+    mUNK_E5 $40                                        ;; 0f:53c5 $e5 $40
+    mUNK_E6 $03                                        ;; 0f:53c7 $e6 $03
 .data_0f_53c9:
-    db   $e3, $04                                      ;; 0f:53c9 ..
+    mUNK_E3 $04                                        ;; 0f:53c9 $e3 $04
 .data_0f_53cb:
-    db   $e6, $03, $d2, $a9, $a6, $a9, $a6, $e6        ;; 0f:53cb ........
-    db   $02, $a9, $a6, $a9, $a6, $e2                  ;; 0f:53d3 ......
-    dw   .data_0f_53cb                                 ;; 0f:53d9 pP
-    db   $e3, $04                                      ;; 0f:53db ..
+    mUNK_E6 $03                                        ;; 0f:53cb $e6 $03
+    db   $D2 ; unknown music opcode                    ;; 0f:53cd $d2
+    db   $A9 ; unknown music opcode                    ;; 0f:53ce $a9
+    db   $A6 ; unknown music opcode                    ;; 0f:53cf $a6
+    db   $A9 ; unknown music opcode                    ;; 0f:53d0 $a9
+    db   $A6 ; unknown music opcode                    ;; 0f:53d1 $a6
+    mUNK_E6 $02                                        ;; 0f:53d2 $e6 $02
+    db   $A9 ; unknown music opcode                    ;; 0f:53d4 $a9
+    db   $A6 ; unknown music opcode                    ;; 0f:53d5 $a6
+    db   $A9 ; unknown music opcode                    ;; 0f:53d6 $a9
+    db   $A6 ; unknown music opcode                    ;; 0f:53d7 $a6
+    mUNK_E2 .data_0f_53cb                              ;; 0f:53d8 $e2 $cb $53
+    mUNK_E3 $04                                        ;; 0f:53db $e3 $04
 .data_0f_53dd:
-    db   $e6, $03, $a8, $a5, $a8, $a5, $e6, $01        ;; 0f:53dd ........
-    db   $a8, $a5, $a8, $a5, $e2                       ;; 0f:53e5 .....
-    dw   .data_0f_53dd                                 ;; 0f:53ea pP
-    db   $e1                                           ;; 0f:53ec .
-    dw   .data_0f_53c9                                 ;; 0f:53ed pP
+    mUNK_E6 $03                                        ;; 0f:53dd $e6 $03
+    db   $A8 ; unknown music opcode                    ;; 0f:53df $a8
+    db   $A5 ; unknown music opcode                    ;; 0f:53e0 $a5
+    db   $A8 ; unknown music opcode                    ;; 0f:53e1 $a8
+    db   $A5 ; unknown music opcode                    ;; 0f:53e2 $a5
+    mUNK_E6 $01                                        ;; 0f:53e3 $e6 $01
+    db   $A8 ; unknown music opcode                    ;; 0f:53e5 $a8
+    db   $A5 ; unknown music opcode                    ;; 0f:53e6 $a5
+    db   $A8 ; unknown music opcode                    ;; 0f:53e7 $a8
+    db   $A5 ; unknown music opcode                    ;; 0f:53e8 $a5
+    mUNK_E2 .data_0f_53dd                              ;; 0f:53e9 $e2 $dd $53
+    mUNK_E1 .data_0f_53c9                              ;; 0f:53ec $e1 $c9 $53
 
-data_0f_53ef:
-    db   $e4, $4f, $7a, $e8, $dc, $7a, $e0, $20        ;; 0f:53ef ........
+song08_channel3:
+    mUNK_E4 frequencyDeltaData                         ;; 0f:53ef $e4 $4f $7a
+    mUNK_E8 data_0f_7adc                               ;; 0f:53f2 $e8 $dc $7a
+    mUNK_E0 $20                                        ;; 0f:53f5 $e0 $20
 .data_0f_53f7:
-    db   $e6, $03, $d2, $a0, $af, $a0, $af, $8f        ;; 0f:53f7 ........
-    db   $a0, $af, $e6, $02, $8f, $a0, $af, $8f        ;; 0f:53ff ........
-    db   $a0, $af, $e6, $03, $a0, $af, $a0, $af        ;; 0f:5407 ........
-    db   $8f, $a0, $af, $e6, $02, $8f, $a0, $af        ;; 0f:540f ........
-    db   $8f, $a0, $af, $e6, $03, $dc, $ab, $af        ;; 0f:5417 ........
-    db   $ab, $af, $8f, $ab, $af, $e6, $01, $8f        ;; 0f:541f ........
-    db   $ab, $af, $8f, $ab, $af, $e6, $03, $ab        ;; 0f:5427 ........
-    db   $af, $ab, $af, $8f, $ab, $af, $e6, $01        ;; 0f:542f ........
-    db   $8f, $ab, $af, $8f, $ab, $af, $e1             ;; 0f:5437 .......
-    dw   .data_0f_53f7                                 ;; 0f:543e pP
+    mUNK_E6 $03                                        ;; 0f:53f7 $e6 $03
+    db   $D2 ; unknown music opcode                    ;; 0f:53f9 $d2
+    db   $A0 ; unknown music opcode                    ;; 0f:53fa $a0
+    db   $AF ; unknown music opcode                    ;; 0f:53fb $af
+    db   $A0 ; unknown music opcode                    ;; 0f:53fc $a0
+    db   $AF ; unknown music opcode                    ;; 0f:53fd $af
+    db   $8F ; unknown music opcode                    ;; 0f:53fe $8f
+    db   $A0 ; unknown music opcode                    ;; 0f:53ff $a0
+    db   $AF ; unknown music opcode                    ;; 0f:5400 $af
+    mUNK_E6 $02                                        ;; 0f:5401 $e6 $02
+    db   $8F ; unknown music opcode                    ;; 0f:5403 $8f
+    db   $A0 ; unknown music opcode                    ;; 0f:5404 $a0
+    db   $AF ; unknown music opcode                    ;; 0f:5405 $af
+    db   $8F ; unknown music opcode                    ;; 0f:5406 $8f
+    db   $A0 ; unknown music opcode                    ;; 0f:5407 $a0
+    db   $AF ; unknown music opcode                    ;; 0f:5408 $af
+    mUNK_E6 $03                                        ;; 0f:5409 $e6 $03
+    db   $A0 ; unknown music opcode                    ;; 0f:540b $a0
+    db   $AF ; unknown music opcode                    ;; 0f:540c $af
+    db   $A0 ; unknown music opcode                    ;; 0f:540d $a0
+    db   $AF ; unknown music opcode                    ;; 0f:540e $af
+    db   $8F ; unknown music opcode                    ;; 0f:540f $8f
+    db   $A0 ; unknown music opcode                    ;; 0f:5410 $a0
+    db   $AF ; unknown music opcode                    ;; 0f:5411 $af
+    mUNK_E6 $02                                        ;; 0f:5412 $e6 $02
+    db   $8F ; unknown music opcode                    ;; 0f:5414 $8f
+    db   $A0 ; unknown music opcode                    ;; 0f:5415 $a0
+    db   $AF ; unknown music opcode                    ;; 0f:5416 $af
+    db   $8F ; unknown music opcode                    ;; 0f:5417 $8f
+    db   $A0 ; unknown music opcode                    ;; 0f:5418 $a0
+    db   $AF ; unknown music opcode                    ;; 0f:5419 $af
+    mUNK_E6 $03                                        ;; 0f:541a $e6 $03
+    db   $DC ; unknown music opcode                    ;; 0f:541c $dc
+    db   $AB ; unknown music opcode                    ;; 0f:541d $ab
+    db   $AF ; unknown music opcode                    ;; 0f:541e $af
+    db   $AB ; unknown music opcode                    ;; 0f:541f $ab
+    db   $AF ; unknown music opcode                    ;; 0f:5420 $af
+    db   $8F ; unknown music opcode                    ;; 0f:5421 $8f
+    db   $AB ; unknown music opcode                    ;; 0f:5422 $ab
+    db   $AF ; unknown music opcode                    ;; 0f:5423 $af
+    mUNK_E6 $01                                        ;; 0f:5424 $e6 $01
+    db   $8F ; unknown music opcode                    ;; 0f:5426 $8f
+    db   $AB ; unknown music opcode                    ;; 0f:5427 $ab
+    db   $AF ; unknown music opcode                    ;; 0f:5428 $af
+    db   $8F ; unknown music opcode                    ;; 0f:5429 $8f
+    db   $AB ; unknown music opcode                    ;; 0f:542a $ab
+    db   $AF ; unknown music opcode                    ;; 0f:542b $af
+    mUNK_E6 $03                                        ;; 0f:542c $e6 $03
+    db   $AB ; unknown music opcode                    ;; 0f:542e $ab
+    db   $AF ; unknown music opcode                    ;; 0f:542f $af
+    db   $AB ; unknown music opcode                    ;; 0f:5430 $ab
+    db   $AF ; unknown music opcode                    ;; 0f:5431 $af
+    db   $8F ; unknown music opcode                    ;; 0f:5432 $8f
+    db   $AB ; unknown music opcode                    ;; 0f:5433 $ab
+    db   $AF ; unknown music opcode                    ;; 0f:5434 $af
+    mUNK_E6 $01                                        ;; 0f:5435 $e6 $01
+    db   $8F ; unknown music opcode                    ;; 0f:5437 $8f
+    db   $AB ; unknown music opcode                    ;; 0f:5438 $ab
+    db   $AF ; unknown music opcode                    ;; 0f:5439 $af
+    db   $8F ; unknown music opcode                    ;; 0f:543a $8f
+    db   $AB ; unknown music opcode                    ;; 0f:543b $ab
+    db   $AF ; unknown music opcode                    ;; 0f:543c $af
+    mUNK_E1 .data_0f_53f7                              ;; 0f:543d $e1 $f7 $53
     db   $e7, $14                                      ;; 0f:5440 ??
 
-data_0f_5442:
-    db   $e7, $7f, $e4, $63, $7a, $e0, $82, $7a        ;; 0f:5442 ........
-    db   $e6, $03                                      ;; 0f:544a ..
+song09_channel2:
+    mUNK_E7 $7f                                        ;; 0f:5442 $e7 $7f
+    mUNK_E4 frequencyDeltaData.third                   ;; 0f:5444 $e4 $63 $7a
+    mUNK_E0 $82                                        ;; 0f:5447 $e0 $82
+    db   $7A ; unknown music opcode                    ;; 0f:5449 $7a
+    mUNK_E6 $03                                        ;; 0f:544a $e6 $03
 .data_0f_544c:
-    db   $e5, $40, $d1, $00, $2e, $20, $dc, $0b        ;; 0f:544c ........
-    db   $2e, $2b, $d8, $00, $2e, $20, $01, $2e        ;; 0f:5454 ........
-    db   $21, $e1                                      ;; 0f:545c ..
-    dw   .data_0f_544c                                 ;; 0f:545e pP
+    mUNK_E5 $40                                        ;; 0f:544c $e5 $40
+    db   $D1 ; unknown music opcode                    ;; 0f:544e $d1
+    db   $00 ; unknown music opcode                    ;; 0f:544f $00
+    db   $2E ; unknown music opcode                    ;; 0f:5450 $2e
+    db   $20 ; unknown music opcode                    ;; 0f:5451 $20
+    db   $DC ; unknown music opcode                    ;; 0f:5452 $dc
+    db   $0B ; unknown music opcode                    ;; 0f:5453 $0b
+    db   $2E ; unknown music opcode                    ;; 0f:5454 $2e
+    db   $2B ; unknown music opcode                    ;; 0f:5455 $2b
+    db   $D8 ; unknown music opcode                    ;; 0f:5456 $d8
+    db   $00 ; unknown music opcode                    ;; 0f:5457 $00
+    db   $2E ; unknown music opcode                    ;; 0f:5458 $2e
+    db   $20 ; unknown music opcode                    ;; 0f:5459 $20
+    db   $01 ; unknown music opcode                    ;; 0f:545a $01
+    db   $2E ; unknown music opcode                    ;; 0f:545b $2e
+    db   $21 ; unknown music opcode                    ;; 0f:545c $21
+    mUNK_E1 .data_0f_544c                              ;; 0f:545d $e1 $4c $54
 
-data_0f_5460:
-    db   $e4, $4f, $7a, $e0, $c2, $7a, $e6, $02        ;; 0f:5460 ........
-    db   $d2, $af                                      ;; 0f:5468 ..
+song09_channel1:
+    mUNK_E4 frequencyDeltaData                         ;; 0f:5460 $e4 $4f $7a
+    mUNK_E0 $c2                                        ;; 0f:5463 $e0 $c2
+    db   $7A ; unknown music opcode                    ;; 0f:5465 $7a
+    mUNK_E6 $02                                        ;; 0f:5466 $e6 $02
+    db   $D2 ; unknown music opcode                    ;; 0f:5468 $d2
+    db   $AF ; unknown music opcode                    ;; 0f:5469 $af
 .data_0f_546a:
-    db   $e0, $c2, $7a, $e5, $80, $88, $84, $80        ;; 0f:546a ........
-    db   $84, $88, $84, $80, $84, $e0, $c8, $7a        ;; 0f:5472 ........
-    db   $e5, $40, $88, $84, $80, $84, $e5, $00        ;; 0f:547a ........
-    db   $88, $84, $80, $84, $e0, $c2, $7a, $e5        ;; 0f:5482 ........
-    db   $80, $87, $83, $dc, $8b, $d8, $83, $87        ;; 0f:548a ........
-    db   $83, $dc, $8b, $d8, $83, $e0, $c8, $7a        ;; 0f:5492 ........
-    db   $e5, $40, $87, $83, $dc, $8b, $d8, $83        ;; 0f:549a ........
-    db   $e5, $00, $87, $83, $dc, $8b, $d8, $83        ;; 0f:54a2 ........
-    db   $e0, $c2, $7a, $e5, $80, $88, $84, $80        ;; 0f:54aa ........
-    db   $84, $88, $84, $80, $84, $e0, $c8, $7a        ;; 0f:54b2 ........
-    db   $e5, $40, $88, $84, $80, $84, $e5, $00        ;; 0f:54ba ........
-    db   $88, $84, $80, $84, $e0, $c2, $7a, $e5        ;; 0f:54c2 ........
-    db   $80, $89, $85, $81, $85, $89, $85, $81        ;; 0f:54ca ........
-    db   $85, $e0, $c8, $7a, $e5, $40, $89, $85        ;; 0f:54d2 ........
-    db   $81, $85, $e5, $00, $89, $85, $81, $85        ;; 0f:54da ........
-    db   $e1                                           ;; 0f:54e2 .
-    dw   .data_0f_546a                                 ;; 0f:54e3 pP
+    mUNK_E0 $c2                                        ;; 0f:546a $e0 $c2
+    db   $7A ; unknown music opcode                    ;; 0f:546c $7a
+    mUNK_E5 $80                                        ;; 0f:546d $e5 $80
+    db   $88 ; unknown music opcode                    ;; 0f:546f $88
+    db   $84 ; unknown music opcode                    ;; 0f:5470 $84
+    db   $80 ; unknown music opcode                    ;; 0f:5471 $80
+    db   $84 ; unknown music opcode                    ;; 0f:5472 $84
+    db   $88 ; unknown music opcode                    ;; 0f:5473 $88
+    db   $84 ; unknown music opcode                    ;; 0f:5474 $84
+    db   $80 ; unknown music opcode                    ;; 0f:5475 $80
+    db   $84 ; unknown music opcode                    ;; 0f:5476 $84
+    mUNK_E0 $c8                                        ;; 0f:5477 $e0 $c8
+    db   $7A ; unknown music opcode                    ;; 0f:5479 $7a
+    mUNK_E5 $40                                        ;; 0f:547a $e5 $40
+    db   $88 ; unknown music opcode                    ;; 0f:547c $88
+    db   $84 ; unknown music opcode                    ;; 0f:547d $84
+    db   $80 ; unknown music opcode                    ;; 0f:547e $80
+    db   $84 ; unknown music opcode                    ;; 0f:547f $84
+    mUNK_E5 $00                                        ;; 0f:5480 $e5 $00
+    db   $88 ; unknown music opcode                    ;; 0f:5482 $88
+    db   $84 ; unknown music opcode                    ;; 0f:5483 $84
+    db   $80 ; unknown music opcode                    ;; 0f:5484 $80
+    db   $84 ; unknown music opcode                    ;; 0f:5485 $84
+    mUNK_E0 $c2                                        ;; 0f:5486 $e0 $c2
+    db   $7A ; unknown music opcode                    ;; 0f:5488 $7a
+    mUNK_E5 $80                                        ;; 0f:5489 $e5 $80
+    db   $87 ; unknown music opcode                    ;; 0f:548b $87
+    db   $83 ; unknown music opcode                    ;; 0f:548c $83
+    db   $DC ; unknown music opcode                    ;; 0f:548d $dc
+    db   $8B ; unknown music opcode                    ;; 0f:548e $8b
+    db   $D8 ; unknown music opcode                    ;; 0f:548f $d8
+    db   $83 ; unknown music opcode                    ;; 0f:5490 $83
+    db   $87 ; unknown music opcode                    ;; 0f:5491 $87
+    db   $83 ; unknown music opcode                    ;; 0f:5492 $83
+    db   $DC ; unknown music opcode                    ;; 0f:5493 $dc
+    db   $8B ; unknown music opcode                    ;; 0f:5494 $8b
+    db   $D8 ; unknown music opcode                    ;; 0f:5495 $d8
+    db   $83 ; unknown music opcode                    ;; 0f:5496 $83
+    mUNK_E0 $c8                                        ;; 0f:5497 $e0 $c8
+    db   $7A ; unknown music opcode                    ;; 0f:5499 $7a
+    mUNK_E5 $40                                        ;; 0f:549a $e5 $40
+    db   $87 ; unknown music opcode                    ;; 0f:549c $87
+    db   $83 ; unknown music opcode                    ;; 0f:549d $83
+    db   $DC ; unknown music opcode                    ;; 0f:549e $dc
+    db   $8B ; unknown music opcode                    ;; 0f:549f $8b
+    db   $D8 ; unknown music opcode                    ;; 0f:54a0 $d8
+    db   $83 ; unknown music opcode                    ;; 0f:54a1 $83
+    mUNK_E5 $00                                        ;; 0f:54a2 $e5 $00
+    db   $87 ; unknown music opcode                    ;; 0f:54a4 $87
+    db   $83 ; unknown music opcode                    ;; 0f:54a5 $83
+    db   $DC ; unknown music opcode                    ;; 0f:54a6 $dc
+    db   $8B ; unknown music opcode                    ;; 0f:54a7 $8b
+    db   $D8 ; unknown music opcode                    ;; 0f:54a8 $d8
+    db   $83 ; unknown music opcode                    ;; 0f:54a9 $83
+    mUNK_E0 $c2                                        ;; 0f:54aa $e0 $c2
+    db   $7A ; unknown music opcode                    ;; 0f:54ac $7a
+    mUNK_E5 $80                                        ;; 0f:54ad $e5 $80
+    db   $88 ; unknown music opcode                    ;; 0f:54af $88
+    db   $84 ; unknown music opcode                    ;; 0f:54b0 $84
+    db   $80 ; unknown music opcode                    ;; 0f:54b1 $80
+    db   $84 ; unknown music opcode                    ;; 0f:54b2 $84
+    db   $88 ; unknown music opcode                    ;; 0f:54b3 $88
+    db   $84 ; unknown music opcode                    ;; 0f:54b4 $84
+    db   $80 ; unknown music opcode                    ;; 0f:54b5 $80
+    db   $84 ; unknown music opcode                    ;; 0f:54b6 $84
+    mUNK_E0 $c8                                        ;; 0f:54b7 $e0 $c8
+    db   $7A ; unknown music opcode                    ;; 0f:54b9 $7a
+    mUNK_E5 $40                                        ;; 0f:54ba $e5 $40
+    db   $88 ; unknown music opcode                    ;; 0f:54bc $88
+    db   $84 ; unknown music opcode                    ;; 0f:54bd $84
+    db   $80 ; unknown music opcode                    ;; 0f:54be $80
+    db   $84 ; unknown music opcode                    ;; 0f:54bf $84
+    mUNK_E5 $00                                        ;; 0f:54c0 $e5 $00
+    db   $88 ; unknown music opcode                    ;; 0f:54c2 $88
+    db   $84 ; unknown music opcode                    ;; 0f:54c3 $84
+    db   $80 ; unknown music opcode                    ;; 0f:54c4 $80
+    db   $84 ; unknown music opcode                    ;; 0f:54c5 $84
+    mUNK_E0 $c2                                        ;; 0f:54c6 $e0 $c2
+    db   $7A ; unknown music opcode                    ;; 0f:54c8 $7a
+    mUNK_E5 $80                                        ;; 0f:54c9 $e5 $80
+    db   $89 ; unknown music opcode                    ;; 0f:54cb $89
+    db   $85 ; unknown music opcode                    ;; 0f:54cc $85
+    db   $81 ; unknown music opcode                    ;; 0f:54cd $81
+    db   $85 ; unknown music opcode                    ;; 0f:54ce $85
+    db   $89 ; unknown music opcode                    ;; 0f:54cf $89
+    db   $85 ; unknown music opcode                    ;; 0f:54d0 $85
+    db   $81 ; unknown music opcode                    ;; 0f:54d1 $81
+    db   $85 ; unknown music opcode                    ;; 0f:54d2 $85
+    mUNK_E0 $c8                                        ;; 0f:54d3 $e0 $c8
+    db   $7A ; unknown music opcode                    ;; 0f:54d5 $7a
+    mUNK_E5 $40                                        ;; 0f:54d6 $e5 $40
+    db   $89 ; unknown music opcode                    ;; 0f:54d8 $89
+    db   $85 ; unknown music opcode                    ;; 0f:54d9 $85
+    db   $81 ; unknown music opcode                    ;; 0f:54da $81
+    db   $85 ; unknown music opcode                    ;; 0f:54db $85
+    mUNK_E5 $00                                        ;; 0f:54dc $e5 $00
+    db   $89 ; unknown music opcode                    ;; 0f:54de $89
+    db   $85 ; unknown music opcode                    ;; 0f:54df $85
+    db   $81 ; unknown music opcode                    ;; 0f:54e0 $81
+    db   $85 ; unknown music opcode                    ;; 0f:54e1 $85
+    mUNK_E1 .data_0f_546a                              ;; 0f:54e2 $e1 $6a $54
 
-data_0f_54e5:
-    db   $e4, $4f, $7a, $e6, $01                       ;; 0f:54e5 .....
+song09_channel3:
+    mUNK_E4 frequencyDeltaData                         ;; 0f:54e5 $e4 $4f $7a
+    mUNK_E6 $01                                        ;; 0f:54e8 $e6 $01
 .data_0f_54ea:
-    db   $e8, $cc, $7a, $e0, $20, $d3, $88, $84        ;; 0f:54ea ........
-    db   $80, $84, $d3, $88, $84, $80, $84, $e8        ;; 0f:54f2 ........
-    db   $dc, $7a, $e0, $40, $d3, $88, $84, $80        ;; 0f:54fa ........
-    db   $84, $e8, $ec, $7a, $d3, $88, $84, $80        ;; 0f:5502 ........
-    db   $84, $e8, $cc, $7a, $e0, $20, $87, $83        ;; 0f:550a ........
-    db   $dc, $8b, $d8, $83, $87, $83, $dc, $8b        ;; 0f:5512 ........
-    db   $d8, $83, $e8, $dc, $7a, $e0, $40, $87        ;; 0f:551a ........
-    db   $83, $dc, $8b, $d8, $83, $e8, $ec, $7a        ;; 0f:5522 ........
-    db   $87, $83, $dc, $8b, $d8, $83, $e8, $cc        ;; 0f:552a ........
-    db   $7a, $e0, $20, $88, $84, $80, $84, $88        ;; 0f:5532 ........
-    db   $84, $80, $84, $e8, $dc, $7a, $e0, $40        ;; 0f:553a ........
-    db   $88, $84, $80, $84, $e8, $ec, $7a, $88        ;; 0f:5542 ........
-    db   $84, $80, $84, $e8, $cc, $7a, $e0, $20        ;; 0f:554a ........
-    db   $89, $85, $81, $85, $89, $85, $81, $85        ;; 0f:5552 ........
-    db   $e8, $dc, $7a, $e0, $40, $89, $85, $81        ;; 0f:555a ........
-    db   $85, $e8, $ec, $7a, $89, $85, $81, $85        ;; 0f:5562 ........
-    db   $e1                                           ;; 0f:556a .
-    dw   .data_0f_54ea                                 ;; 0f:556b pP
+    mUNK_E8 wavePatternsData                           ;; 0f:54ea $e8 $cc $7a
+    mUNK_E0 $20                                        ;; 0f:54ed $e0 $20
+    db   $D3 ; unknown music opcode                    ;; 0f:54ef $d3
+    db   $88 ; unknown music opcode                    ;; 0f:54f0 $88
+    db   $84 ; unknown music opcode                    ;; 0f:54f1 $84
+    db   $80 ; unknown music opcode                    ;; 0f:54f2 $80
+    db   $84 ; unknown music opcode                    ;; 0f:54f3 $84
+    db   $D3 ; unknown music opcode                    ;; 0f:54f4 $d3
+    db   $88 ; unknown music opcode                    ;; 0f:54f5 $88
+    db   $84 ; unknown music opcode                    ;; 0f:54f6 $84
+    db   $80 ; unknown music opcode                    ;; 0f:54f7 $80
+    db   $84 ; unknown music opcode                    ;; 0f:54f8 $84
+    mUNK_E8 data_0f_7adc                               ;; 0f:54f9 $e8 $dc $7a
+    mUNK_E0 $40                                        ;; 0f:54fc $e0 $40
+    db   $D3 ; unknown music opcode                    ;; 0f:54fe $d3
+    db   $88 ; unknown music opcode                    ;; 0f:54ff $88
+    db   $84 ; unknown music opcode                    ;; 0f:5500 $84
+    db   $80 ; unknown music opcode                    ;; 0f:5501 $80
+    db   $84 ; unknown music opcode                    ;; 0f:5502 $84
+    mUNK_E8 data_0f_7aec                               ;; 0f:5503 $e8 $ec $7a
+    db   $D3 ; unknown music opcode                    ;; 0f:5506 $d3
+    db   $88 ; unknown music opcode                    ;; 0f:5507 $88
+    db   $84 ; unknown music opcode                    ;; 0f:5508 $84
+    db   $80 ; unknown music opcode                    ;; 0f:5509 $80
+    db   $84 ; unknown music opcode                    ;; 0f:550a $84
+    mUNK_E8 wavePatternsData                           ;; 0f:550b $e8 $cc $7a
+    mUNK_E0 $20                                        ;; 0f:550e $e0 $20
+    db   $87 ; unknown music opcode                    ;; 0f:5510 $87
+    db   $83 ; unknown music opcode                    ;; 0f:5511 $83
+    db   $DC ; unknown music opcode                    ;; 0f:5512 $dc
+    db   $8B ; unknown music opcode                    ;; 0f:5513 $8b
+    db   $D8 ; unknown music opcode                    ;; 0f:5514 $d8
+    db   $83 ; unknown music opcode                    ;; 0f:5515 $83
+    db   $87 ; unknown music opcode                    ;; 0f:5516 $87
+    db   $83 ; unknown music opcode                    ;; 0f:5517 $83
+    db   $DC ; unknown music opcode                    ;; 0f:5518 $dc
+    db   $8B ; unknown music opcode                    ;; 0f:5519 $8b
+    db   $D8 ; unknown music opcode                    ;; 0f:551a $d8
+    db   $83 ; unknown music opcode                    ;; 0f:551b $83
+    mUNK_E8 data_0f_7adc                               ;; 0f:551c $e8 $dc $7a
+    mUNK_E0 $40                                        ;; 0f:551f $e0 $40
+    db   $87 ; unknown music opcode                    ;; 0f:5521 $87
+    db   $83 ; unknown music opcode                    ;; 0f:5522 $83
+    db   $DC ; unknown music opcode                    ;; 0f:5523 $dc
+    db   $8B ; unknown music opcode                    ;; 0f:5524 $8b
+    db   $D8 ; unknown music opcode                    ;; 0f:5525 $d8
+    db   $83 ; unknown music opcode                    ;; 0f:5526 $83
+    mUNK_E8 data_0f_7aec                               ;; 0f:5527 $e8 $ec $7a
+    db   $87 ; unknown music opcode                    ;; 0f:552a $87
+    db   $83 ; unknown music opcode                    ;; 0f:552b $83
+    db   $DC ; unknown music opcode                    ;; 0f:552c $dc
+    db   $8B ; unknown music opcode                    ;; 0f:552d $8b
+    db   $D8 ; unknown music opcode                    ;; 0f:552e $d8
+    db   $83 ; unknown music opcode                    ;; 0f:552f $83
+    mUNK_E8 wavePatternsData                           ;; 0f:5530 $e8 $cc $7a
+    mUNK_E0 $20                                        ;; 0f:5533 $e0 $20
+    db   $88 ; unknown music opcode                    ;; 0f:5535 $88
+    db   $84 ; unknown music opcode                    ;; 0f:5536 $84
+    db   $80 ; unknown music opcode                    ;; 0f:5537 $80
+    db   $84 ; unknown music opcode                    ;; 0f:5538 $84
+    db   $88 ; unknown music opcode                    ;; 0f:5539 $88
+    db   $84 ; unknown music opcode                    ;; 0f:553a $84
+    db   $80 ; unknown music opcode                    ;; 0f:553b $80
+    db   $84 ; unknown music opcode                    ;; 0f:553c $84
+    mUNK_E8 data_0f_7adc                               ;; 0f:553d $e8 $dc $7a
+    mUNK_E0 $40                                        ;; 0f:5540 $e0 $40
+    db   $88 ; unknown music opcode                    ;; 0f:5542 $88
+    db   $84 ; unknown music opcode                    ;; 0f:5543 $84
+    db   $80 ; unknown music opcode                    ;; 0f:5544 $80
+    db   $84 ; unknown music opcode                    ;; 0f:5545 $84
+    mUNK_E8 data_0f_7aec                               ;; 0f:5546 $e8 $ec $7a
+    db   $88 ; unknown music opcode                    ;; 0f:5549 $88
+    db   $84 ; unknown music opcode                    ;; 0f:554a $84
+    db   $80 ; unknown music opcode                    ;; 0f:554b $80
+    db   $84 ; unknown music opcode                    ;; 0f:554c $84
+    mUNK_E8 wavePatternsData                           ;; 0f:554d $e8 $cc $7a
+    mUNK_E0 $20                                        ;; 0f:5550 $e0 $20
+    db   $89 ; unknown music opcode                    ;; 0f:5552 $89
+    db   $85 ; unknown music opcode                    ;; 0f:5553 $85
+    db   $81 ; unknown music opcode                    ;; 0f:5554 $81
+    db   $85 ; unknown music opcode                    ;; 0f:5555 $85
+    db   $89 ; unknown music opcode                    ;; 0f:5556 $89
+    db   $85 ; unknown music opcode                    ;; 0f:5557 $85
+    db   $81 ; unknown music opcode                    ;; 0f:5558 $81
+    db   $85 ; unknown music opcode                    ;; 0f:5559 $85
+    mUNK_E8 data_0f_7adc                               ;; 0f:555a $e8 $dc $7a
+    mUNK_E0 $40                                        ;; 0f:555d $e0 $40
+    db   $89 ; unknown music opcode                    ;; 0f:555f $89
+    db   $85 ; unknown music opcode                    ;; 0f:5560 $85
+    db   $81 ; unknown music opcode                    ;; 0f:5561 $81
+    db   $85 ; unknown music opcode                    ;; 0f:5562 $85
+    mUNK_E8 data_0f_7aec                               ;; 0f:5563 $e8 $ec $7a
+    db   $89 ; unknown music opcode                    ;; 0f:5566 $89
+    db   $85 ; unknown music opcode                    ;; 0f:5567 $85
+    db   $81 ; unknown music opcode                    ;; 0f:5568 $81
+    db   $85 ; unknown music opcode                    ;; 0f:5569 $85
+    mUNK_E1 .data_0f_54ea                              ;; 0f:556a $e1 $ea $54
     db   $e7, $14                                      ;; 0f:556d ??
 
-data_0f_556f:
-    db   $e7, $3e, $e4, $4f, $7a, $e0, $82, $7a        ;; 0f:556f ????????
-    db   $e5, $40, $e6, $03, $e3, $02, $d2, $54        ;; 0f:5577 ????????
-    db   $5d, $5b, $59, $58, $56, $5b, $ae, $a9        ;; 0f:557f ????????
-    db   $a8, $a6, $58, $d8, $54, $52, $51, $dc        ;; 0f:5587 ????????
-    db   $4b, $a9, $a8, $29, $88, $86, $85, $86        ;; 0f:558f ????????
-    db   $5b, $8d, $d8, $82, $84, $81, $84, $88        ;; 0f:5597 ????????
-    db   $56, $54, $eb, $01, $b3, $55, $52, $dc        ;; 0f:559f ????????
-    db   $46, $88, $89, $8b, $49, $ab, $a9, $58        ;; 0f:55a7 ????????
-    db   $56, $e2, $7d, $55, $22, $81, $dc, $8b        ;; 0f:55af ????????
-    db   $89, $88, $2b, $29, $e1, $7b, $55             ;; 0f:55b7 ???????
+song0a_channel2:
+    mUNK_E7 $3e                                        ;; 0f:556f $e7 $3e
+    mUNK_E4 frequencyDeltaData                         ;; 0f:5571 $e4 $4f $7a
+    mUNK_E0 $82                                        ;; 0f:5574 $e0 $82
+    db   $7A ; unknown music opcode                    ;; 0f:5576 $7a
+    mUNK_E5 $40                                        ;; 0f:5577 $e5 $40
+    mUNK_E6 $03                                        ;; 0f:5579 $e6 $03
+.data_0f_557b:
+    mUNK_E3 $02                                        ;; 0f:557b $e3 $02
+.data_0f_557d:
+    db   $D2 ; unknown music opcode                    ;; 0f:557d $d2
+    db   $54 ; unknown music opcode                    ;; 0f:557e $54
+    db   $5D ; unknown music opcode                    ;; 0f:557f $5d
+    db   $5B ; unknown music opcode                    ;; 0f:5580 $5b
+    db   $59 ; unknown music opcode                    ;; 0f:5581 $59
+    db   $58 ; unknown music opcode                    ;; 0f:5582 $58
+    db   $56 ; unknown music opcode                    ;; 0f:5583 $56
+    db   $5B ; unknown music opcode                    ;; 0f:5584 $5b
+    db   $AE ; unknown music opcode                    ;; 0f:5585 $ae
+    db   $A9 ; unknown music opcode                    ;; 0f:5586 $a9
+    db   $A8 ; unknown music opcode                    ;; 0f:5587 $a8
+    db   $A6 ; unknown music opcode                    ;; 0f:5588 $a6
+    db   $58 ; unknown music opcode                    ;; 0f:5589 $58
+    db   $D8 ; unknown music opcode                    ;; 0f:558a $d8
+    db   $54 ; unknown music opcode                    ;; 0f:558b $54
+    db   $52 ; unknown music opcode                    ;; 0f:558c $52
+    db   $51 ; unknown music opcode                    ;; 0f:558d $51
+    db   $DC ; unknown music opcode                    ;; 0f:558e $dc
+    db   $4B ; unknown music opcode                    ;; 0f:558f $4b
+    db   $A9 ; unknown music opcode                    ;; 0f:5590 $a9
+    db   $A8 ; unknown music opcode                    ;; 0f:5591 $a8
+    db   $29 ; unknown music opcode                    ;; 0f:5592 $29
+    db   $88 ; unknown music opcode                    ;; 0f:5593 $88
+    db   $86 ; unknown music opcode                    ;; 0f:5594 $86
+    db   $85 ; unknown music opcode                    ;; 0f:5595 $85
+    db   $86 ; unknown music opcode                    ;; 0f:5596 $86
+    db   $5B ; unknown music opcode                    ;; 0f:5597 $5b
+    db   $8D ; unknown music opcode                    ;; 0f:5598 $8d
+    db   $D8 ; unknown music opcode                    ;; 0f:5599 $d8
+    db   $82 ; unknown music opcode                    ;; 0f:559a $82
+    db   $84 ; unknown music opcode                    ;; 0f:559b $84
+    db   $81 ; unknown music opcode                    ;; 0f:559c $81
+    db   $84 ; unknown music opcode                    ;; 0f:559d $84
+    db   $88 ; unknown music opcode                    ;; 0f:559e $88
+    db   $56 ; unknown music opcode                    ;; 0f:559f $56
+    db   $54 ; unknown music opcode                    ;; 0f:55a0 $54
+    mUNK_EB $01, .data_0f_55b3                         ;; 0f:55a1 $eb $01 $b3 $55
+    db   $52 ; unknown music opcode                    ;; 0f:55a5 $52
+    db   $DC ; unknown music opcode                    ;; 0f:55a6 $dc
+    db   $46 ; unknown music opcode                    ;; 0f:55a7 $46
+    db   $88 ; unknown music opcode                    ;; 0f:55a8 $88
+    db   $89 ; unknown music opcode                    ;; 0f:55a9 $89
+    db   $8B ; unknown music opcode                    ;; 0f:55aa $8b
+    db   $49 ; unknown music opcode                    ;; 0f:55ab $49
+    db   $AB ; unknown music opcode                    ;; 0f:55ac $ab
+    db   $A9 ; unknown music opcode                    ;; 0f:55ad $a9
+    db   $58 ; unknown music opcode                    ;; 0f:55ae $58
+    db   $56 ; unknown music opcode                    ;; 0f:55af $56
+    mUNK_E2 .data_0f_557d                              ;; 0f:55b0 $e2 $7d $55
+.data_0f_55b3:
+    db   $22 ; unknown music opcode                    ;; 0f:55b3 $22
+    db   $81 ; unknown music opcode                    ;; 0f:55b4 $81
+    db   $DC ; unknown music opcode                    ;; 0f:55b5 $dc
+    db   $8B ; unknown music opcode                    ;; 0f:55b6 $8b
+    db   $89 ; unknown music opcode                    ;; 0f:55b7 $89
+    db   $88 ; unknown music opcode                    ;; 0f:55b8 $88
+    db   $2B ; unknown music opcode                    ;; 0f:55b9 $2b
+    db   $29 ; unknown music opcode                    ;; 0f:55ba $29
+    mUNK_E1 .data_0f_557b                              ;; 0f:55bb $e1 $7b $55
 
-data_0f_55be:
-    db   $e4, $4f, $7a, $e0, $c4, $7a, $e5, $00        ;; 0f:55be ????????
-    db   $e3, $02, $e6, $02, $d2, $81, $dc, $89        ;; 0f:55c6 ????????
-    db   $d8, $84, $89, $58, $54, $e6, $03, $42        ;; 0f:55ce ????????
-    db   $81, $82, $84, $52, $e6, $01, $84, $81        ;; 0f:55d6 ????????
-    db   $88, $8b, $56, $54, $e6, $03, $46, $84        ;; 0f:55de ????????
-    db   $86, $81, $86, $84, $e6, $02, $52, $81        ;; 0f:55e6 ????????
-    db   $82, $84, $86, $e6, $03, $88, $86, $e6        ;; 0f:55ee ????????
-    db   $01, $58, $5b, $8d, $8b, $8a, $88, $eb        ;; 0f:55f6 ????????
-    db   $01, $17, $56, $e6, $03, $86, $84, $82        ;; 0f:55fe ????????
-    db   $81, $22, $e6, $02, $82, $dc, $8b, $8d        ;; 0f:5606 ????????
-    db   $d8, $82, $e6, $03, $54, $52, $e2, $c8        ;; 0f:560e ????????
-    db   $55, $e6, $03, $8f, $86, $88, $89, $88        ;; 0f:5616 ????????
-    db   $86, $54, $56, $84, $82, $21, $e1, $c6        ;; 0f:561e ????????
-    db   $55                                           ;; 0f:5626 ?
+song0a_channel1:
+    mUNK_E4 frequencyDeltaData                         ;; 0f:55be $e4 $4f $7a
+    mUNK_E0 $c4                                        ;; 0f:55c1 $e0 $c4
+    db   $7A ; unknown music opcode                    ;; 0f:55c3 $7a
+    mUNK_E5 $00                                        ;; 0f:55c4 $e5 $00
+.data_0f_55c6:
+    mUNK_E3 $02                                        ;; 0f:55c6 $e3 $02
+.data_0f_55c8:
+    mUNK_E6 $02                                        ;; 0f:55c8 $e6 $02
+    db   $D2 ; unknown music opcode                    ;; 0f:55ca $d2
+    db   $81 ; unknown music opcode                    ;; 0f:55cb $81
+    db   $DC ; unknown music opcode                    ;; 0f:55cc $dc
+    db   $89 ; unknown music opcode                    ;; 0f:55cd $89
+    db   $D8 ; unknown music opcode                    ;; 0f:55ce $d8
+    db   $84 ; unknown music opcode                    ;; 0f:55cf $84
+    db   $89 ; unknown music opcode                    ;; 0f:55d0 $89
+    db   $58 ; unknown music opcode                    ;; 0f:55d1 $58
+    db   $54 ; unknown music opcode                    ;; 0f:55d2 $54
+    mUNK_E6 $03                                        ;; 0f:55d3 $e6 $03
+    db   $42 ; unknown music opcode                    ;; 0f:55d5 $42
+    db   $81 ; unknown music opcode                    ;; 0f:55d6 $81
+    db   $82 ; unknown music opcode                    ;; 0f:55d7 $82
+    db   $84 ; unknown music opcode                    ;; 0f:55d8 $84
+    db   $52 ; unknown music opcode                    ;; 0f:55d9 $52
+    mUNK_E6 $01                                        ;; 0f:55da $e6 $01
+    db   $84 ; unknown music opcode                    ;; 0f:55dc $84
+    db   $81 ; unknown music opcode                    ;; 0f:55dd $81
+    db   $88 ; unknown music opcode                    ;; 0f:55de $88
+    db   $8B ; unknown music opcode                    ;; 0f:55df $8b
+    db   $56 ; unknown music opcode                    ;; 0f:55e0 $56
+    db   $54 ; unknown music opcode                    ;; 0f:55e1 $54
+    mUNK_E6 $03                                        ;; 0f:55e2 $e6 $03
+    db   $46 ; unknown music opcode                    ;; 0f:55e4 $46
+    db   $84 ; unknown music opcode                    ;; 0f:55e5 $84
+    db   $86 ; unknown music opcode                    ;; 0f:55e6 $86
+    db   $81 ; unknown music opcode                    ;; 0f:55e7 $81
+    db   $86 ; unknown music opcode                    ;; 0f:55e8 $86
+    db   $84 ; unknown music opcode                    ;; 0f:55e9 $84
+    mUNK_E6 $02                                        ;; 0f:55ea $e6 $02
+    db   $52 ; unknown music opcode                    ;; 0f:55ec $52
+    db   $81 ; unknown music opcode                    ;; 0f:55ed $81
+    db   $82 ; unknown music opcode                    ;; 0f:55ee $82
+    db   $84 ; unknown music opcode                    ;; 0f:55ef $84
+    db   $86 ; unknown music opcode                    ;; 0f:55f0 $86
+    mUNK_E6 $03                                        ;; 0f:55f1 $e6 $03
+    db   $88 ; unknown music opcode                    ;; 0f:55f3 $88
+    db   $86 ; unknown music opcode                    ;; 0f:55f4 $86
+    mUNK_E6 $01                                        ;; 0f:55f5 $e6 $01
+    db   $58 ; unknown music opcode                    ;; 0f:55f7 $58
+    db   $5B ; unknown music opcode                    ;; 0f:55f8 $5b
+    db   $8D ; unknown music opcode                    ;; 0f:55f9 $8d
+    db   $8B ; unknown music opcode                    ;; 0f:55fa $8b
+    db   $8A ; unknown music opcode                    ;; 0f:55fb $8a
+    db   $88 ; unknown music opcode                    ;; 0f:55fc $88
+    mUNK_EB $01, .data_0f_5617                         ;; 0f:55fd $eb $01 $17 $56
+    mUNK_E6 $03                                        ;; 0f:5601 $e6 $03
+    db   $86 ; unknown music opcode                    ;; 0f:5603 $86
+    db   $84 ; unknown music opcode                    ;; 0f:5604 $84
+    db   $82 ; unknown music opcode                    ;; 0f:5605 $82
+    db   $81 ; unknown music opcode                    ;; 0f:5606 $81
+    db   $22 ; unknown music opcode                    ;; 0f:5607 $22
+    mUNK_E6 $02                                        ;; 0f:5608 $e6 $02
+    db   $82 ; unknown music opcode                    ;; 0f:560a $82
+    db   $DC ; unknown music opcode                    ;; 0f:560b $dc
+    db   $8B ; unknown music opcode                    ;; 0f:560c $8b
+    db   $8D ; unknown music opcode                    ;; 0f:560d $8d
+    db   $D8 ; unknown music opcode                    ;; 0f:560e $d8
+    db   $82 ; unknown music opcode                    ;; 0f:560f $82
+    mUNK_E6 $03                                        ;; 0f:5610 $e6 $03
+    db   $54 ; unknown music opcode                    ;; 0f:5612 $54
+    db   $52 ; unknown music opcode                    ;; 0f:5613 $52
+    mUNK_E2 .data_0f_55c8                              ;; 0f:5614 $e2 $c8 $55
+.data_0f_5617:
+    mUNK_E6 $03                                        ;; 0f:5617 $e6 $03
+    db   $8F ; unknown music opcode                    ;; 0f:5619 $8f
+    db   $86 ; unknown music opcode                    ;; 0f:561a $86
+    db   $88 ; unknown music opcode                    ;; 0f:561b $88
+    db   $89 ; unknown music opcode                    ;; 0f:561c $89
+    db   $88 ; unknown music opcode                    ;; 0f:561d $88
+    db   $86 ; unknown music opcode                    ;; 0f:561e $86
+    db   $54 ; unknown music opcode                    ;; 0f:561f $54
+    db   $56 ; unknown music opcode                    ;; 0f:5620 $56
+    db   $84 ; unknown music opcode                    ;; 0f:5621 $84
+    db   $82 ; unknown music opcode                    ;; 0f:5622 $82
+    db   $21 ; unknown music opcode                    ;; 0f:5623 $21
+    mUNK_E1 .data_0f_55c6                              ;; 0f:5624 $e1 $c6 $55
 
-data_0f_5627:
-    db   $e4, $4f, $7a, $e8, $dc, $7a, $e0, $40        ;; 0f:5627 ????????
-    db   $e6, $03, $e3, $02, $d1, $19, $5d, $d8        ;; 0f:562f ????????
-    db   $02, $11, $58, $56, $51, $dc, $56, $5d        ;; 0f:5637 ????????
-    db   $2b, $d8, $54, $52, $21, $dc, $26, $eb        ;; 0f:563f ????????
-    db   $01, $52, $56, $0b, $d8, $14, $52, $dc        ;; 0f:5647 ????????
-    db   $e2, $33, $56, $2b, $d8, $24, $52, $81        ;; 0f:564f ????????
-    db   $dc, $8b, $59, $d8, $54, $e1, $31, $56        ;; 0f:5657 ????????
+song0a_channel3:
+    mUNK_E4 frequencyDeltaData                         ;; 0f:5627 $e4 $4f $7a
+    mUNK_E8 data_0f_7adc                               ;; 0f:562a $e8 $dc $7a
+    mUNK_E0 $40                                        ;; 0f:562d $e0 $40
+    mUNK_E6 $03                                        ;; 0f:562f $e6 $03
+.data_0f_5631:
+    mUNK_E3 $02                                        ;; 0f:5631 $e3 $02
+.data_0f_5633:
+    db   $D1 ; unknown music opcode                    ;; 0f:5633 $d1
+    db   $19 ; unknown music opcode                    ;; 0f:5634 $19
+    db   $5D ; unknown music opcode                    ;; 0f:5635 $5d
+    db   $D8 ; unknown music opcode                    ;; 0f:5636 $d8
+    db   $02 ; unknown music opcode                    ;; 0f:5637 $02
+    db   $11 ; unknown music opcode                    ;; 0f:5638 $11
+    db   $58 ; unknown music opcode                    ;; 0f:5639 $58
+    db   $56 ; unknown music opcode                    ;; 0f:563a $56
+    db   $51 ; unknown music opcode                    ;; 0f:563b $51
+    db   $DC ; unknown music opcode                    ;; 0f:563c $dc
+    db   $56 ; unknown music opcode                    ;; 0f:563d $56
+    db   $5D ; unknown music opcode                    ;; 0f:563e $5d
+    db   $2B ; unknown music opcode                    ;; 0f:563f $2b
+    db   $D8 ; unknown music opcode                    ;; 0f:5640 $d8
+    db   $54 ; unknown music opcode                    ;; 0f:5641 $54
+    db   $52 ; unknown music opcode                    ;; 0f:5642 $52
+    db   $21 ; unknown music opcode                    ;; 0f:5643 $21
+    db   $DC ; unknown music opcode                    ;; 0f:5644 $dc
+    db   $26 ; unknown music opcode                    ;; 0f:5645 $26
+    mUNK_EB $01, .data_0f_5652                         ;; 0f:5646 $eb $01 $52 $56
+    db   $0B ; unknown music opcode                    ;; 0f:564a $0b
+    db   $D8 ; unknown music opcode                    ;; 0f:564b $d8
+    db   $14 ; unknown music opcode                    ;; 0f:564c $14
+    db   $52 ; unknown music opcode                    ;; 0f:564d $52
+    db   $DC ; unknown music opcode                    ;; 0f:564e $dc
+    mUNK_E2 .data_0f_5633                              ;; 0f:564f $e2 $33 $56
+.data_0f_5652:
+    db   $2B ; unknown music opcode                    ;; 0f:5652 $2b
+    db   $D8 ; unknown music opcode                    ;; 0f:5653 $d8
+    db   $24 ; unknown music opcode                    ;; 0f:5654 $24
+    db   $52 ; unknown music opcode                    ;; 0f:5655 $52
+    db   $81 ; unknown music opcode                    ;; 0f:5656 $81
+    db   $DC ; unknown music opcode                    ;; 0f:5657 $dc
+    db   $8B ; unknown music opcode                    ;; 0f:5658 $8b
+    db   $59 ; unknown music opcode                    ;; 0f:5659 $59
+    db   $D8 ; unknown music opcode                    ;; 0f:565a $d8
+    db   $54 ; unknown music opcode                    ;; 0f:565b $54
+    mUNK_E1 .data_0f_5631                              ;; 0f:565c $e1 $31 $56
     db   $e7, $14                                      ;; 0f:565f ??
 
-data_0f_5661:
-    db   $e7, $82, $e4, $75, $7a, $e0, $82, $7a        ;; 0f:5661 ????????
-    db   $e5, $80, $e6, $03, $e3, $02, $d1, $dc        ;; 0f:5669 ????????
-    db   $06, $06, $26, $d8, $26, $21, $dc, $26        ;; 0f:5671 ????????
-    db   $05, $05, $25, $d8, $25, $20, $dc, $25        ;; 0f:5679 ????????
-    db   $e2, $6f, $56, $06, $06, $26, $d8, $26        ;; 0f:5681 ????????
-    db   $21, $dc, $26, $07, $07, $27, $d8, $22        ;; 0f:5689 ????????
-    db   $dc, $27, $25, $04, $04, $24, $d8, $24        ;; 0f:5691 ????????
-    db   $dc, $2b, $24, $05, $05, $25, $d8, $e7        ;; 0f:5699 ????????
-    db   $78, $25, $e7, $73, $20, $dc, $e7, $6c        ;; 0f:56a1 ????????
-    db   $25, $e1, $61, $56                            ;; 0f:56a9 ????
+song0b_channel2:
+    mUNK_E7 $82                                        ;; 0f:5661 $e7 $82
+    mUNK_E4 frequencyDeltaData.fifth                   ;; 0f:5663 $e4 $75 $7a
+    mUNK_E0 $82                                        ;; 0f:5666 $e0 $82
+    db   $7A ; unknown music opcode                    ;; 0f:5668 $7a
+    mUNK_E5 $80                                        ;; 0f:5669 $e5 $80
+    mUNK_E6 $03                                        ;; 0f:566b $e6 $03
+    mUNK_E3 $02                                        ;; 0f:566d $e3 $02
+.data_0f_566f:
+    db   $D1 ; unknown music opcode                    ;; 0f:566f $d1
+    db   $DC ; unknown music opcode                    ;; 0f:5670 $dc
+    db   $06 ; unknown music opcode                    ;; 0f:5671 $06
+    db   $06 ; unknown music opcode                    ;; 0f:5672 $06
+    db   $26 ; unknown music opcode                    ;; 0f:5673 $26
+    db   $D8 ; unknown music opcode                    ;; 0f:5674 $d8
+    db   $26 ; unknown music opcode                    ;; 0f:5675 $26
+    db   $21 ; unknown music opcode                    ;; 0f:5676 $21
+    db   $DC ; unknown music opcode                    ;; 0f:5677 $dc
+    db   $26 ; unknown music opcode                    ;; 0f:5678 $26
+    db   $05 ; unknown music opcode                    ;; 0f:5679 $05
+    db   $05 ; unknown music opcode                    ;; 0f:567a $05
+    db   $25 ; unknown music opcode                    ;; 0f:567b $25
+    db   $D8 ; unknown music opcode                    ;; 0f:567c $d8
+    db   $25 ; unknown music opcode                    ;; 0f:567d $25
+    db   $20 ; unknown music opcode                    ;; 0f:567e $20
+    db   $DC ; unknown music opcode                    ;; 0f:567f $dc
+    db   $25 ; unknown music opcode                    ;; 0f:5680 $25
+    mUNK_E2 .data_0f_566f                              ;; 0f:5681 $e2 $6f $56
+    db   $06 ; unknown music opcode                    ;; 0f:5684 $06
+    db   $06 ; unknown music opcode                    ;; 0f:5685 $06
+    db   $26 ; unknown music opcode                    ;; 0f:5686 $26
+    db   $D8 ; unknown music opcode                    ;; 0f:5687 $d8
+    db   $26 ; unknown music opcode                    ;; 0f:5688 $26
+    db   $21 ; unknown music opcode                    ;; 0f:5689 $21
+    db   $DC ; unknown music opcode                    ;; 0f:568a $dc
+    db   $26 ; unknown music opcode                    ;; 0f:568b $26
+    db   $07 ; unknown music opcode                    ;; 0f:568c $07
+    db   $07 ; unknown music opcode                    ;; 0f:568d $07
+    db   $27 ; unknown music opcode                    ;; 0f:568e $27
+    db   $D8 ; unknown music opcode                    ;; 0f:568f $d8
+    db   $22 ; unknown music opcode                    ;; 0f:5690 $22
+    db   $DC ; unknown music opcode                    ;; 0f:5691 $dc
+    db   $27 ; unknown music opcode                    ;; 0f:5692 $27
+    db   $25 ; unknown music opcode                    ;; 0f:5693 $25
+    db   $04 ; unknown music opcode                    ;; 0f:5694 $04
+    db   $04 ; unknown music opcode                    ;; 0f:5695 $04
+    db   $24 ; unknown music opcode                    ;; 0f:5696 $24
+    db   $D8 ; unknown music opcode                    ;; 0f:5697 $d8
+    db   $24 ; unknown music opcode                    ;; 0f:5698 $24
+    db   $DC ; unknown music opcode                    ;; 0f:5699 $dc
+    db   $2B ; unknown music opcode                    ;; 0f:569a $2b
+    db   $24 ; unknown music opcode                    ;; 0f:569b $24
+    db   $05 ; unknown music opcode                    ;; 0f:569c $05
+    db   $05 ; unknown music opcode                    ;; 0f:569d $05
+    db   $25 ; unknown music opcode                    ;; 0f:569e $25
+    db   $D8 ; unknown music opcode                    ;; 0f:569f $d8
+    mUNK_E7 $78                                        ;; 0f:56a0 $e7 $78
+    db   $25 ; unknown music opcode                    ;; 0f:56a2 $25
+    mUNK_E7 $73                                        ;; 0f:56a3 $e7 $73
+    db   $20 ; unknown music opcode                    ;; 0f:56a5 $20
+    db   $DC ; unknown music opcode                    ;; 0f:56a6 $dc
+    mUNK_E7 $6c                                        ;; 0f:56a7 $e7 $6c
+    db   $25 ; unknown music opcode                    ;; 0f:56a9 $25
+    mUNK_E1 song0b_channel2                            ;; 0f:56aa $e1 $61 $56
 
-data_0f_56ad:
-    db   $e4, $4f, $7a, $e0, $c0, $7a, $e5, $80        ;; 0f:56ad ????????
-    db   $e6, $02, $d3, $af, $e3, $04, $d3, $84        ;; 0f:56b5 ????????
-    db   $dc, $89, $8d, $d8, $84, $86, $dc, $89        ;; 0f:56bd ????????
-    db   $8d, $d8, $86, $e2, $bb, $56, $e3, $04        ;; 0f:56c5 ????????
-    db   $84, $dc, $89, $8c, $d8, $84, $85, $dc        ;; 0f:56cd ????????
-    db   $89, $8c, $d8, $85, $e2, $cd, $56, $e3        ;; 0f:56d5 ????????
-    db   $04, $84, $dc, $89, $8d, $d8, $84, $86        ;; 0f:56dd ????????
-    db   $dc, $89, $8d, $d8, $86, $e2, $de, $56        ;; 0f:56e5 ????????
-    db   $e3, $04, $84, $dc, $89, $8c, $d8, $84        ;; 0f:56ed ????????
-    db   $85, $dc, $89, $8c, $d8, $85, $e2, $ef        ;; 0f:56f5 ????????
-    db   $56, $e3, $04, $85, $dc, $8a, $8d, $d8        ;; 0f:56fd ????????
-    db   $85, $86, $dc, $8a, $8d, $d8, $86, $e2        ;; 0f:5705 ????????
-    db   $00, $57, $e3, $03, $87, $dc, $8a, $d8        ;; 0f:570d ????????
-    db   $82, $87, $89, $dc, $8a, $d8, $82, $89        ;; 0f:5715 ????????
-    db   $e2, $11, $57, $87, $dc, $8a, $d8, $82        ;; 0f:571d ????????
-    db   $87, $85, $dc, $89, $8c, $d8, $85, $e3        ;; 0f:5725 ????????
-    db   $04, $84, $dc, $87, $8b, $d8, $84, $86        ;; 0f:572d ????????
-    db   $dc, $87, $8b, $d8, $86, $e2, $2e, $57        ;; 0f:5735 ????????
-    db   $e3, $04, $84, $dc, $89, $8c, $d8, $84        ;; 0f:573d ????????
-    db   $85, $dc, $89, $8c, $d8, $85, $e2, $3f        ;; 0f:5745 ????????
-    db   $57, $e1, $b9, $56                            ;; 0f:574d ????
+song0b_channel1:
+    mUNK_E4 frequencyDeltaData                         ;; 0f:56ad $e4 $4f $7a
+    mUNK_E0 $c0                                        ;; 0f:56b0 $e0 $c0
+    db   $7A ; unknown music opcode                    ;; 0f:56b2 $7a
+    mUNK_E5 $80                                        ;; 0f:56b3 $e5 $80
+    mUNK_E6 $02                                        ;; 0f:56b5 $e6 $02
+    db   $D3 ; unknown music opcode                    ;; 0f:56b7 $d3
+    db   $AF ; unknown music opcode                    ;; 0f:56b8 $af
+.data_0f_56b9:
+    mUNK_E3 $04                                        ;; 0f:56b9 $e3 $04
+.data_0f_56bb:
+    db   $D3 ; unknown music opcode                    ;; 0f:56bb $d3
+    db   $84 ; unknown music opcode                    ;; 0f:56bc $84
+    db   $DC ; unknown music opcode                    ;; 0f:56bd $dc
+    db   $89 ; unknown music opcode                    ;; 0f:56be $89
+    db   $8D ; unknown music opcode                    ;; 0f:56bf $8d
+    db   $D8 ; unknown music opcode                    ;; 0f:56c0 $d8
+    db   $84 ; unknown music opcode                    ;; 0f:56c1 $84
+    db   $86 ; unknown music opcode                    ;; 0f:56c2 $86
+    db   $DC ; unknown music opcode                    ;; 0f:56c3 $dc
+    db   $89 ; unknown music opcode                    ;; 0f:56c4 $89
+    db   $8D ; unknown music opcode                    ;; 0f:56c5 $8d
+    db   $D8 ; unknown music opcode                    ;; 0f:56c6 $d8
+    db   $86 ; unknown music opcode                    ;; 0f:56c7 $86
+    mUNK_E2 .data_0f_56bb                              ;; 0f:56c8 $e2 $bb $56
+    mUNK_E3 $04                                        ;; 0f:56cb $e3 $04
+.data_0f_56cd:
+    db   $84 ; unknown music opcode                    ;; 0f:56cd $84
+    db   $DC ; unknown music opcode                    ;; 0f:56ce $dc
+    db   $89 ; unknown music opcode                    ;; 0f:56cf $89
+    db   $8C ; unknown music opcode                    ;; 0f:56d0 $8c
+    db   $D8 ; unknown music opcode                    ;; 0f:56d1 $d8
+    db   $84 ; unknown music opcode                    ;; 0f:56d2 $84
+    db   $85 ; unknown music opcode                    ;; 0f:56d3 $85
+    db   $DC ; unknown music opcode                    ;; 0f:56d4 $dc
+    db   $89 ; unknown music opcode                    ;; 0f:56d5 $89
+    db   $8C ; unknown music opcode                    ;; 0f:56d6 $8c
+    db   $D8 ; unknown music opcode                    ;; 0f:56d7 $d8
+    db   $85 ; unknown music opcode                    ;; 0f:56d8 $85
+    mUNK_E2 .data_0f_56cd                              ;; 0f:56d9 $e2 $cd $56
+    mUNK_E3 $04                                        ;; 0f:56dc $e3 $04
+.data_0f_56de:
+    db   $84 ; unknown music opcode                    ;; 0f:56de $84
+    db   $DC ; unknown music opcode                    ;; 0f:56df $dc
+    db   $89 ; unknown music opcode                    ;; 0f:56e0 $89
+    db   $8D ; unknown music opcode                    ;; 0f:56e1 $8d
+    db   $D8 ; unknown music opcode                    ;; 0f:56e2 $d8
+    db   $84 ; unknown music opcode                    ;; 0f:56e3 $84
+    db   $86 ; unknown music opcode                    ;; 0f:56e4 $86
+    db   $DC ; unknown music opcode                    ;; 0f:56e5 $dc
+    db   $89 ; unknown music opcode                    ;; 0f:56e6 $89
+    db   $8D ; unknown music opcode                    ;; 0f:56e7 $8d
+    db   $D8 ; unknown music opcode                    ;; 0f:56e8 $d8
+    db   $86 ; unknown music opcode                    ;; 0f:56e9 $86
+    mUNK_E2 .data_0f_56de                              ;; 0f:56ea $e2 $de $56
+    mUNK_E3 $04                                        ;; 0f:56ed $e3 $04
+.data_0f_56ef:
+    db   $84 ; unknown music opcode                    ;; 0f:56ef $84
+    db   $DC ; unknown music opcode                    ;; 0f:56f0 $dc
+    db   $89 ; unknown music opcode                    ;; 0f:56f1 $89
+    db   $8C ; unknown music opcode                    ;; 0f:56f2 $8c
+    db   $D8 ; unknown music opcode                    ;; 0f:56f3 $d8
+    db   $84 ; unknown music opcode                    ;; 0f:56f4 $84
+    db   $85 ; unknown music opcode                    ;; 0f:56f5 $85
+    db   $DC ; unknown music opcode                    ;; 0f:56f6 $dc
+    db   $89 ; unknown music opcode                    ;; 0f:56f7 $89
+    db   $8C ; unknown music opcode                    ;; 0f:56f8 $8c
+    db   $D8 ; unknown music opcode                    ;; 0f:56f9 $d8
+    db   $85 ; unknown music opcode                    ;; 0f:56fa $85
+    mUNK_E2 .data_0f_56ef                              ;; 0f:56fb $e2 $ef $56
+    mUNK_E3 $04                                        ;; 0f:56fe $e3 $04
+.data_0f_5700:
+    db   $85 ; unknown music opcode                    ;; 0f:5700 $85
+    db   $DC ; unknown music opcode                    ;; 0f:5701 $dc
+    db   $8A ; unknown music opcode                    ;; 0f:5702 $8a
+    db   $8D ; unknown music opcode                    ;; 0f:5703 $8d
+    db   $D8 ; unknown music opcode                    ;; 0f:5704 $d8
+    db   $85 ; unknown music opcode                    ;; 0f:5705 $85
+    db   $86 ; unknown music opcode                    ;; 0f:5706 $86
+    db   $DC ; unknown music opcode                    ;; 0f:5707 $dc
+    db   $8A ; unknown music opcode                    ;; 0f:5708 $8a
+    db   $8D ; unknown music opcode                    ;; 0f:5709 $8d
+    db   $D8 ; unknown music opcode                    ;; 0f:570a $d8
+    db   $86 ; unknown music opcode                    ;; 0f:570b $86
+    mUNK_E2 .data_0f_5700                              ;; 0f:570c $e2 $00 $57
+    mUNK_E3 $03                                        ;; 0f:570f $e3 $03
+.data_0f_5711:
+    db   $87 ; unknown music opcode                    ;; 0f:5711 $87
+    db   $DC ; unknown music opcode                    ;; 0f:5712 $dc
+    db   $8A ; unknown music opcode                    ;; 0f:5713 $8a
+    db   $D8 ; unknown music opcode                    ;; 0f:5714 $d8
+    db   $82 ; unknown music opcode                    ;; 0f:5715 $82
+    db   $87 ; unknown music opcode                    ;; 0f:5716 $87
+    db   $89 ; unknown music opcode                    ;; 0f:5717 $89
+    db   $DC ; unknown music opcode                    ;; 0f:5718 $dc
+    db   $8A ; unknown music opcode                    ;; 0f:5719 $8a
+    db   $D8 ; unknown music opcode                    ;; 0f:571a $d8
+    db   $82 ; unknown music opcode                    ;; 0f:571b $82
+    db   $89 ; unknown music opcode                    ;; 0f:571c $89
+    mUNK_E2 .data_0f_5711                              ;; 0f:571d $e2 $11 $57
+    db   $87 ; unknown music opcode                    ;; 0f:5720 $87
+    db   $DC ; unknown music opcode                    ;; 0f:5721 $dc
+    db   $8A ; unknown music opcode                    ;; 0f:5722 $8a
+    db   $D8 ; unknown music opcode                    ;; 0f:5723 $d8
+    db   $82 ; unknown music opcode                    ;; 0f:5724 $82
+    db   $87 ; unknown music opcode                    ;; 0f:5725 $87
+    db   $85 ; unknown music opcode                    ;; 0f:5726 $85
+    db   $DC ; unknown music opcode                    ;; 0f:5727 $dc
+    db   $89 ; unknown music opcode                    ;; 0f:5728 $89
+    db   $8C ; unknown music opcode                    ;; 0f:5729 $8c
+    db   $D8 ; unknown music opcode                    ;; 0f:572a $d8
+    db   $85 ; unknown music opcode                    ;; 0f:572b $85
+    mUNK_E3 $04                                        ;; 0f:572c $e3 $04
+.data_0f_572e:
+    db   $84 ; unknown music opcode                    ;; 0f:572e $84
+    db   $DC ; unknown music opcode                    ;; 0f:572f $dc
+    db   $87 ; unknown music opcode                    ;; 0f:5730 $87
+    db   $8B ; unknown music opcode                    ;; 0f:5731 $8b
+    db   $D8 ; unknown music opcode                    ;; 0f:5732 $d8
+    db   $84 ; unknown music opcode                    ;; 0f:5733 $84
+    db   $86 ; unknown music opcode                    ;; 0f:5734 $86
+    db   $DC ; unknown music opcode                    ;; 0f:5735 $dc
+    db   $87 ; unknown music opcode                    ;; 0f:5736 $87
+    db   $8B ; unknown music opcode                    ;; 0f:5737 $8b
+    db   $D8 ; unknown music opcode                    ;; 0f:5738 $d8
+    db   $86 ; unknown music opcode                    ;; 0f:5739 $86
+    mUNK_E2 .data_0f_572e                              ;; 0f:573a $e2 $2e $57
+    mUNK_E3 $04                                        ;; 0f:573d $e3 $04
+.data_0f_573f:
+    db   $84 ; unknown music opcode                    ;; 0f:573f $84
+    db   $DC ; unknown music opcode                    ;; 0f:5740 $dc
+    db   $89 ; unknown music opcode                    ;; 0f:5741 $89
+    db   $8C ; unknown music opcode                    ;; 0f:5742 $8c
+    db   $D8 ; unknown music opcode                    ;; 0f:5743 $d8
+    db   $84 ; unknown music opcode                    ;; 0f:5744 $84
+    db   $85 ; unknown music opcode                    ;; 0f:5745 $85
+    db   $DC ; unknown music opcode                    ;; 0f:5746 $dc
+    db   $89 ; unknown music opcode                    ;; 0f:5747 $89
+    db   $8C ; unknown music opcode                    ;; 0f:5748 $8c
+    db   $D8 ; unknown music opcode                    ;; 0f:5749 $d8
+    db   $85 ; unknown music opcode                    ;; 0f:574a $85
+    mUNK_E2 .data_0f_573f                              ;; 0f:574b $e2 $3f $57
+    mUNK_E1 .data_0f_56b9                              ;; 0f:574e $e1 $b9 $56
 
-data_0f_5751:
-    db   $e4, $4f, $7a, $e8, $cc, $7a, $e0, $20        ;; 0f:5751 ????????
-    db   $e6, $01, $e3, $04, $d4, $84, $dc, $89        ;; 0f:5759 ????????
-    db   $8d, $d8, $84, $86, $dc, $89, $8d, $d8        ;; 0f:5761 ????????
-    db   $86, $e2, $5d, $57, $e3, $04, $84, $dc        ;; 0f:5769 ????????
-    db   $89, $8c, $d8, $84, $85, $dc, $89, $8c        ;; 0f:5771 ????????
-    db   $d8, $85, $e2, $6f, $57, $e3, $04, $84        ;; 0f:5779 ????????
-    db   $dc, $89, $8d, $d8, $84, $86, $dc, $89        ;; 0f:5781 ????????
-    db   $8d, $d8, $86, $e2, $80, $57, $e3, $04        ;; 0f:5789 ????????
-    db   $84, $dc, $89, $8c, $d8, $84, $85, $dc        ;; 0f:5791 ????????
-    db   $89, $8c, $d8, $85, $e2, $91, $57, $e3        ;; 0f:5799 ????????
-    db   $04, $85, $dc, $8a, $8d, $d8, $85, $86        ;; 0f:57a1 ????????
-    db   $dc, $8a, $8d, $d8, $86, $e2, $a2, $57        ;; 0f:57a9 ????????
-    db   $e3, $03, $87, $dc, $8a, $d8, $82, $87        ;; 0f:57b1 ????????
-    db   $89, $dc, $8a, $d8, $82, $89, $e2, $b3        ;; 0f:57b9 ????????
-    db   $57, $87, $dc, $8a, $d8, $82, $87, $85        ;; 0f:57c1 ????????
-    db   $dc, $89, $8c, $d8, $85, $e3, $04, $84        ;; 0f:57c9 ????????
-    db   $dc, $87, $8b, $d8, $84, $86, $dc, $87        ;; 0f:57d1 ????????
-    db   $8b, $d8, $86, $e2, $d0, $57, $e3, $04        ;; 0f:57d9 ????????
-    db   $84, $dc, $89, $8c, $d8, $84, $85, $dc        ;; 0f:57e1 ????????
-    db   $89, $8c, $d8, $85, $e2, $e1, $57, $e1        ;; 0f:57e9 ????????
-    db   $5b, $57, $e7, $14                            ;; 0f:57f1 ????
+song0b_channel3:
+    mUNK_E4 frequencyDeltaData                         ;; 0f:5751 $e4 $4f $7a
+    mUNK_E8 wavePatternsData                           ;; 0f:5754 $e8 $cc $7a
+    mUNK_E0 $20                                        ;; 0f:5757 $e0 $20
+    mUNK_E6 $01                                        ;; 0f:5759 $e6 $01
+.data_0f_575b:
+    mUNK_E3 $04                                        ;; 0f:575b $e3 $04
+.data_0f_575d:
+    db   $D4 ; unknown music opcode                    ;; 0f:575d $d4
+    db   $84 ; unknown music opcode                    ;; 0f:575e $84
+    db   $DC ; unknown music opcode                    ;; 0f:575f $dc
+    db   $89 ; unknown music opcode                    ;; 0f:5760 $89
+    db   $8D ; unknown music opcode                    ;; 0f:5761 $8d
+    db   $D8 ; unknown music opcode                    ;; 0f:5762 $d8
+    db   $84 ; unknown music opcode                    ;; 0f:5763 $84
+    db   $86 ; unknown music opcode                    ;; 0f:5764 $86
+    db   $DC ; unknown music opcode                    ;; 0f:5765 $dc
+    db   $89 ; unknown music opcode                    ;; 0f:5766 $89
+    db   $8D ; unknown music opcode                    ;; 0f:5767 $8d
+    db   $D8 ; unknown music opcode                    ;; 0f:5768 $d8
+    db   $86 ; unknown music opcode                    ;; 0f:5769 $86
+    mUNK_E2 .data_0f_575d                              ;; 0f:576a $e2 $5d $57
+    mUNK_E3 $04                                        ;; 0f:576d $e3 $04
+.data_0f_576f:
+    db   $84 ; unknown music opcode                    ;; 0f:576f $84
+    db   $DC ; unknown music opcode                    ;; 0f:5770 $dc
+    db   $89 ; unknown music opcode                    ;; 0f:5771 $89
+    db   $8C ; unknown music opcode                    ;; 0f:5772 $8c
+    db   $D8 ; unknown music opcode                    ;; 0f:5773 $d8
+    db   $84 ; unknown music opcode                    ;; 0f:5774 $84
+    db   $85 ; unknown music opcode                    ;; 0f:5775 $85
+    db   $DC ; unknown music opcode                    ;; 0f:5776 $dc
+    db   $89 ; unknown music opcode                    ;; 0f:5777 $89
+    db   $8C ; unknown music opcode                    ;; 0f:5778 $8c
+    db   $D8 ; unknown music opcode                    ;; 0f:5779 $d8
+    db   $85 ; unknown music opcode                    ;; 0f:577a $85
+    mUNK_E2 .data_0f_576f                              ;; 0f:577b $e2 $6f $57
+    mUNK_E3 $04                                        ;; 0f:577e $e3 $04
+.data_0f_5780:
+    db   $84 ; unknown music opcode                    ;; 0f:5780 $84
+    db   $DC ; unknown music opcode                    ;; 0f:5781 $dc
+    db   $89 ; unknown music opcode                    ;; 0f:5782 $89
+    db   $8D ; unknown music opcode                    ;; 0f:5783 $8d
+    db   $D8 ; unknown music opcode                    ;; 0f:5784 $d8
+    db   $84 ; unknown music opcode                    ;; 0f:5785 $84
+    db   $86 ; unknown music opcode                    ;; 0f:5786 $86
+    db   $DC ; unknown music opcode                    ;; 0f:5787 $dc
+    db   $89 ; unknown music opcode                    ;; 0f:5788 $89
+    db   $8D ; unknown music opcode                    ;; 0f:5789 $8d
+    db   $D8 ; unknown music opcode                    ;; 0f:578a $d8
+    db   $86 ; unknown music opcode                    ;; 0f:578b $86
+    mUNK_E2 .data_0f_5780                              ;; 0f:578c $e2 $80 $57
+    mUNK_E3 $04                                        ;; 0f:578f $e3 $04
+.data_0f_5791:
+    db   $84 ; unknown music opcode                    ;; 0f:5791 $84
+    db   $DC ; unknown music opcode                    ;; 0f:5792 $dc
+    db   $89 ; unknown music opcode                    ;; 0f:5793 $89
+    db   $8C ; unknown music opcode                    ;; 0f:5794 $8c
+    db   $D8 ; unknown music opcode                    ;; 0f:5795 $d8
+    db   $84 ; unknown music opcode                    ;; 0f:5796 $84
+    db   $85 ; unknown music opcode                    ;; 0f:5797 $85
+    db   $DC ; unknown music opcode                    ;; 0f:5798 $dc
+    db   $89 ; unknown music opcode                    ;; 0f:5799 $89
+    db   $8C ; unknown music opcode                    ;; 0f:579a $8c
+    db   $D8 ; unknown music opcode                    ;; 0f:579b $d8
+    db   $85 ; unknown music opcode                    ;; 0f:579c $85
+    mUNK_E2 .data_0f_5791                              ;; 0f:579d $e2 $91 $57
+    mUNK_E3 $04                                        ;; 0f:57a0 $e3 $04
+.data_0f_57a2:
+    db   $85 ; unknown music opcode                    ;; 0f:57a2 $85
+    db   $DC ; unknown music opcode                    ;; 0f:57a3 $dc
+    db   $8A ; unknown music opcode                    ;; 0f:57a4 $8a
+    db   $8D ; unknown music opcode                    ;; 0f:57a5 $8d
+    db   $D8 ; unknown music opcode                    ;; 0f:57a6 $d8
+    db   $85 ; unknown music opcode                    ;; 0f:57a7 $85
+    db   $86 ; unknown music opcode                    ;; 0f:57a8 $86
+    db   $DC ; unknown music opcode                    ;; 0f:57a9 $dc
+    db   $8A ; unknown music opcode                    ;; 0f:57aa $8a
+    db   $8D ; unknown music opcode                    ;; 0f:57ab $8d
+    db   $D8 ; unknown music opcode                    ;; 0f:57ac $d8
+    db   $86 ; unknown music opcode                    ;; 0f:57ad $86
+    mUNK_E2 .data_0f_57a2                              ;; 0f:57ae $e2 $a2 $57
+    mUNK_E3 $03                                        ;; 0f:57b1 $e3 $03
+.data_0f_57b3:
+    db   $87 ; unknown music opcode                    ;; 0f:57b3 $87
+    db   $DC ; unknown music opcode                    ;; 0f:57b4 $dc
+    db   $8A ; unknown music opcode                    ;; 0f:57b5 $8a
+    db   $D8 ; unknown music opcode                    ;; 0f:57b6 $d8
+    db   $82 ; unknown music opcode                    ;; 0f:57b7 $82
+    db   $87 ; unknown music opcode                    ;; 0f:57b8 $87
+    db   $89 ; unknown music opcode                    ;; 0f:57b9 $89
+    db   $DC ; unknown music opcode                    ;; 0f:57ba $dc
+    db   $8A ; unknown music opcode                    ;; 0f:57bb $8a
+    db   $D8 ; unknown music opcode                    ;; 0f:57bc $d8
+    db   $82 ; unknown music opcode                    ;; 0f:57bd $82
+    db   $89 ; unknown music opcode                    ;; 0f:57be $89
+    mUNK_E2 .data_0f_57b3                              ;; 0f:57bf $e2 $b3 $57
+    db   $87 ; unknown music opcode                    ;; 0f:57c2 $87
+    db   $DC ; unknown music opcode                    ;; 0f:57c3 $dc
+    db   $8A ; unknown music opcode                    ;; 0f:57c4 $8a
+    db   $D8 ; unknown music opcode                    ;; 0f:57c5 $d8
+    db   $82 ; unknown music opcode                    ;; 0f:57c6 $82
+    db   $87 ; unknown music opcode                    ;; 0f:57c7 $87
+    db   $85 ; unknown music opcode                    ;; 0f:57c8 $85
+    db   $DC ; unknown music opcode                    ;; 0f:57c9 $dc
+    db   $89 ; unknown music opcode                    ;; 0f:57ca $89
+    db   $8C ; unknown music opcode                    ;; 0f:57cb $8c
+    db   $D8 ; unknown music opcode                    ;; 0f:57cc $d8
+    db   $85 ; unknown music opcode                    ;; 0f:57cd $85
+    mUNK_E3 $04                                        ;; 0f:57ce $e3 $04
+.data_0f_57d0:
+    db   $84 ; unknown music opcode                    ;; 0f:57d0 $84
+    db   $DC ; unknown music opcode                    ;; 0f:57d1 $dc
+    db   $87 ; unknown music opcode                    ;; 0f:57d2 $87
+    db   $8B ; unknown music opcode                    ;; 0f:57d3 $8b
+    db   $D8 ; unknown music opcode                    ;; 0f:57d4 $d8
+    db   $84 ; unknown music opcode                    ;; 0f:57d5 $84
+    db   $86 ; unknown music opcode                    ;; 0f:57d6 $86
+    db   $DC ; unknown music opcode                    ;; 0f:57d7 $dc
+    db   $87 ; unknown music opcode                    ;; 0f:57d8 $87
+    db   $8B ; unknown music opcode                    ;; 0f:57d9 $8b
+    db   $D8 ; unknown music opcode                    ;; 0f:57da $d8
+    db   $86 ; unknown music opcode                    ;; 0f:57db $86
+    mUNK_E2 .data_0f_57d0                              ;; 0f:57dc $e2 $d0 $57
+    mUNK_E3 $04                                        ;; 0f:57df $e3 $04
+.data_0f_57e1:
+    db   $84 ; unknown music opcode                    ;; 0f:57e1 $84
+    db   $DC ; unknown music opcode                    ;; 0f:57e2 $dc
+    db   $89 ; unknown music opcode                    ;; 0f:57e3 $89
+    db   $8C ; unknown music opcode                    ;; 0f:57e4 $8c
+    db   $D8 ; unknown music opcode                    ;; 0f:57e5 $d8
+    db   $84 ; unknown music opcode                    ;; 0f:57e6 $84
+    db   $85 ; unknown music opcode                    ;; 0f:57e7 $85
+    db   $DC ; unknown music opcode                    ;; 0f:57e8 $dc
+    db   $89 ; unknown music opcode                    ;; 0f:57e9 $89
+    db   $8C ; unknown music opcode                    ;; 0f:57ea $8c
+    db   $D8 ; unknown music opcode                    ;; 0f:57eb $d8
+    db   $85 ; unknown music opcode                    ;; 0f:57ec $85
+    mUNK_E2 .data_0f_57e1                              ;; 0f:57ed $e2 $e1 $57
+    mUNK_E1 .data_0f_575b                              ;; 0f:57f0 $e1 $5b $57
+    db   $e7, $14                                      ;; 0f:57f3 ??
 
-data_0f_57f5:
-    db   $e4, $4f, $7a, $e0, $a8, $7a, $e5, $80        ;; 0f:57f5 ????????
-    db   $e6, $03, $e7, $37, $d3, $98, $dc, $9b        ;; 0f:57fd ????????
-    db   $d8, $94, $9b, $dc, $e7, $3a, $9b, $d8        ;; 0f:5805 ????????
-    db   $94, $99, $dc, $9b, $d8, $e7, $3d, $93        ;; 0f:580d ????????
-    db   $98, $dc, $9b, $d8, $e7, $41, $93, $96        ;; 0f:5815 ????????
-    db   $dc, $99, $d8, $92, $e7, $3e, $96, $dc        ;; 0f:581d ????????
-    db   $99, $d8, $e7, $3a, $92, $95, $dc, $98        ;; 0f:5825 ????????
-    db   $9d, $d8, $e7, $37, $95, $96, $98, $99        ;; 0f:582d ????????
-    db   $91, $96, $9b, $91, $e7, $3a, $96, $9d        ;; 0f:5835 ????????
-    db   $91, $95, $e7, $3d, $9b, $91, $95, $e7        ;; 0f:583d ????????
-    db   $41, $99, $91, $94, $98, $e7, $3e, $91        ;; 0f:5845 ????????
-    db   $94, $e7, $3a, $96, $dc, $9b, $d8, $93        ;; 0f:584d ????????
-    db   $e7, $37, $96, $98, $99, $e7, $39, $9b        ;; 0f:5855 ????????
-    db   $93, $98, $d8, $93, $dc, $98, $e7, $3c        ;; 0f:585d ????????
-    db   $9b, $d8, $94, $dc, $98, $e7, $38, $9d        ;; 0f:5865 ????????
-    db   $d8, $93, $dc, $e7, $34, $96, $9b, $e7        ;; 0f:586d ????????
-    db   $3a, $9d, $94, $99, $9d, $94, $99, $e7        ;; 0f:5875 ????????
-    db   $37, $9b, $94, $98, $9b, $94, $98, $e7        ;; 0f:587d ????????
-    db   $35, $9a, $94, $97, $9a, $94, $97, $99        ;; 0f:5885 ????????
-    db   $91, $96, $e7, $2d, $93, $94, $96, $e1        ;; 0f:588d ????????
-    db   $ff, $57                                      ;; 0f:5895 ??
+song0c_channel2:
+    mUNK_E4 frequencyDeltaData                         ;; 0f:57f5 $e4 $4f $7a
+    mUNK_E0 $a8                                        ;; 0f:57f8 $e0 $a8
+    db   $7A ; unknown music opcode                    ;; 0f:57fa $7a
+    mUNK_E5 $80                                        ;; 0f:57fb $e5 $80
+    mUNK_E6 $03                                        ;; 0f:57fd $e6 $03
+.data_0f_57ff:
+    mUNK_E7 $37                                        ;; 0f:57ff $e7 $37
+    db   $D3 ; unknown music opcode                    ;; 0f:5801 $d3
+    db   $98 ; unknown music opcode                    ;; 0f:5802 $98
+    db   $DC ; unknown music opcode                    ;; 0f:5803 $dc
+    db   $9B ; unknown music opcode                    ;; 0f:5804 $9b
+    db   $D8 ; unknown music opcode                    ;; 0f:5805 $d8
+    db   $94 ; unknown music opcode                    ;; 0f:5806 $94
+    db   $9B ; unknown music opcode                    ;; 0f:5807 $9b
+    db   $DC ; unknown music opcode                    ;; 0f:5808 $dc
+    mUNK_E7 $3a                                        ;; 0f:5809 $e7 $3a
+    db   $9B ; unknown music opcode                    ;; 0f:580b $9b
+    db   $D8 ; unknown music opcode                    ;; 0f:580c $d8
+    db   $94 ; unknown music opcode                    ;; 0f:580d $94
+    db   $99 ; unknown music opcode                    ;; 0f:580e $99
+    db   $DC ; unknown music opcode                    ;; 0f:580f $dc
+    db   $9B ; unknown music opcode                    ;; 0f:5810 $9b
+    db   $D8 ; unknown music opcode                    ;; 0f:5811 $d8
+    mUNK_E7 $3d                                        ;; 0f:5812 $e7 $3d
+    db   $93 ; unknown music opcode                    ;; 0f:5814 $93
+    db   $98 ; unknown music opcode                    ;; 0f:5815 $98
+    db   $DC ; unknown music opcode                    ;; 0f:5816 $dc
+    db   $9B ; unknown music opcode                    ;; 0f:5817 $9b
+    db   $D8 ; unknown music opcode                    ;; 0f:5818 $d8
+    mUNK_E7 $41                                        ;; 0f:5819 $e7 $41
+    db   $93 ; unknown music opcode                    ;; 0f:581b $93
+    db   $96 ; unknown music opcode                    ;; 0f:581c $96
+    db   $DC ; unknown music opcode                    ;; 0f:581d $dc
+    db   $99 ; unknown music opcode                    ;; 0f:581e $99
+    db   $D8 ; unknown music opcode                    ;; 0f:581f $d8
+    db   $92 ; unknown music opcode                    ;; 0f:5820 $92
+    mUNK_E7 $3e                                        ;; 0f:5821 $e7 $3e
+    db   $96 ; unknown music opcode                    ;; 0f:5823 $96
+    db   $DC ; unknown music opcode                    ;; 0f:5824 $dc
+    db   $99 ; unknown music opcode                    ;; 0f:5825 $99
+    db   $D8 ; unknown music opcode                    ;; 0f:5826 $d8
+    mUNK_E7 $3a                                        ;; 0f:5827 $e7 $3a
+    db   $92 ; unknown music opcode                    ;; 0f:5829 $92
+    db   $95 ; unknown music opcode                    ;; 0f:582a $95
+    db   $DC ; unknown music opcode                    ;; 0f:582b $dc
+    db   $98 ; unknown music opcode                    ;; 0f:582c $98
+    db   $9D ; unknown music opcode                    ;; 0f:582d $9d
+    db   $D8 ; unknown music opcode                    ;; 0f:582e $d8
+    mUNK_E7 $37                                        ;; 0f:582f $e7 $37
+    db   $95 ; unknown music opcode                    ;; 0f:5831 $95
+    db   $96 ; unknown music opcode                    ;; 0f:5832 $96
+    db   $98 ; unknown music opcode                    ;; 0f:5833 $98
+    db   $99 ; unknown music opcode                    ;; 0f:5834 $99
+    db   $91 ; unknown music opcode                    ;; 0f:5835 $91
+    db   $96 ; unknown music opcode                    ;; 0f:5836 $96
+    db   $9B ; unknown music opcode                    ;; 0f:5837 $9b
+    db   $91 ; unknown music opcode                    ;; 0f:5838 $91
+    mUNK_E7 $3a                                        ;; 0f:5839 $e7 $3a
+    db   $96 ; unknown music opcode                    ;; 0f:583b $96
+    db   $9D ; unknown music opcode                    ;; 0f:583c $9d
+    db   $91 ; unknown music opcode                    ;; 0f:583d $91
+    db   $95 ; unknown music opcode                    ;; 0f:583e $95
+    mUNK_E7 $3d                                        ;; 0f:583f $e7 $3d
+    db   $9B ; unknown music opcode                    ;; 0f:5841 $9b
+    db   $91 ; unknown music opcode                    ;; 0f:5842 $91
+    db   $95 ; unknown music opcode                    ;; 0f:5843 $95
+    mUNK_E7 $41                                        ;; 0f:5844 $e7 $41
+    db   $99 ; unknown music opcode                    ;; 0f:5846 $99
+    db   $91 ; unknown music opcode                    ;; 0f:5847 $91
+    db   $94 ; unknown music opcode                    ;; 0f:5848 $94
+    db   $98 ; unknown music opcode                    ;; 0f:5849 $98
+    mUNK_E7 $3e                                        ;; 0f:584a $e7 $3e
+    db   $91 ; unknown music opcode                    ;; 0f:584c $91
+    db   $94 ; unknown music opcode                    ;; 0f:584d $94
+    mUNK_E7 $3a                                        ;; 0f:584e $e7 $3a
+    db   $96 ; unknown music opcode                    ;; 0f:5850 $96
+    db   $DC ; unknown music opcode                    ;; 0f:5851 $dc
+    db   $9B ; unknown music opcode                    ;; 0f:5852 $9b
+    db   $D8 ; unknown music opcode                    ;; 0f:5853 $d8
+    db   $93 ; unknown music opcode                    ;; 0f:5854 $93
+    mUNK_E7 $37                                        ;; 0f:5855 $e7 $37
+    db   $96 ; unknown music opcode                    ;; 0f:5857 $96
+    db   $98 ; unknown music opcode                    ;; 0f:5858 $98
+    db   $99 ; unknown music opcode                    ;; 0f:5859 $99
+    mUNK_E7 $39                                        ;; 0f:585a $e7 $39
+    db   $9B ; unknown music opcode                    ;; 0f:585c $9b
+    db   $93 ; unknown music opcode                    ;; 0f:585d $93
+    db   $98 ; unknown music opcode                    ;; 0f:585e $98
+    db   $D8 ; unknown music opcode                    ;; 0f:585f $d8
+    db   $93 ; unknown music opcode                    ;; 0f:5860 $93
+    db   $DC ; unknown music opcode                    ;; 0f:5861 $dc
+    db   $98 ; unknown music opcode                    ;; 0f:5862 $98
+    mUNK_E7 $3c                                        ;; 0f:5863 $e7 $3c
+    db   $9B ; unknown music opcode                    ;; 0f:5865 $9b
+    db   $D8 ; unknown music opcode                    ;; 0f:5866 $d8
+    db   $94 ; unknown music opcode                    ;; 0f:5867 $94
+    db   $DC ; unknown music opcode                    ;; 0f:5868 $dc
+    db   $98 ; unknown music opcode                    ;; 0f:5869 $98
+    mUNK_E7 $38                                        ;; 0f:586a $e7 $38
+    db   $9D ; unknown music opcode                    ;; 0f:586c $9d
+    db   $D8 ; unknown music opcode                    ;; 0f:586d $d8
+    db   $93 ; unknown music opcode                    ;; 0f:586e $93
+    db   $DC ; unknown music opcode                    ;; 0f:586f $dc
+    mUNK_E7 $34                                        ;; 0f:5870 $e7 $34
+    db   $96 ; unknown music opcode                    ;; 0f:5872 $96
+    db   $9B ; unknown music opcode                    ;; 0f:5873 $9b
+    mUNK_E7 $3a                                        ;; 0f:5874 $e7 $3a
+    db   $9D ; unknown music opcode                    ;; 0f:5876 $9d
+    db   $94 ; unknown music opcode                    ;; 0f:5877 $94
+    db   $99 ; unknown music opcode                    ;; 0f:5878 $99
+    db   $9D ; unknown music opcode                    ;; 0f:5879 $9d
+    db   $94 ; unknown music opcode                    ;; 0f:587a $94
+    db   $99 ; unknown music opcode                    ;; 0f:587b $99
+    mUNK_E7 $37                                        ;; 0f:587c $e7 $37
+    db   $9B ; unknown music opcode                    ;; 0f:587e $9b
+    db   $94 ; unknown music opcode                    ;; 0f:587f $94
+    db   $98 ; unknown music opcode                    ;; 0f:5880 $98
+    db   $9B ; unknown music opcode                    ;; 0f:5881 $9b
+    db   $94 ; unknown music opcode                    ;; 0f:5882 $94
+    db   $98 ; unknown music opcode                    ;; 0f:5883 $98
+    mUNK_E7 $35                                        ;; 0f:5884 $e7 $35
+    db   $9A ; unknown music opcode                    ;; 0f:5886 $9a
+    db   $94 ; unknown music opcode                    ;; 0f:5887 $94
+    db   $97 ; unknown music opcode                    ;; 0f:5888 $97
+    db   $9A ; unknown music opcode                    ;; 0f:5889 $9a
+    db   $94 ; unknown music opcode                    ;; 0f:588a $94
+    db   $97 ; unknown music opcode                    ;; 0f:588b $97
+    db   $99 ; unknown music opcode                    ;; 0f:588c $99
+    db   $91 ; unknown music opcode                    ;; 0f:588d $91
+    db   $96 ; unknown music opcode                    ;; 0f:588e $96
+    mUNK_E7 $2d                                        ;; 0f:588f $e7 $2d
+    db   $93 ; unknown music opcode                    ;; 0f:5891 $93
+    db   $94 ; unknown music opcode                    ;; 0f:5892 $94
+    db   $96 ; unknown music opcode                    ;; 0f:5893 $96
+    mUNK_E1 .data_0f_57ff                              ;; 0f:5894 $e1 $ff $57
 
-data_0f_5897:
-    db   $e4, $4f, $7a, $e0, $b0, $7a, $e5, $40        ;; 0f:5897 ????????
-    db   $e6, $03, $d3, $bf, $98, $dc, $9b, $d8        ;; 0f:589f ????????
-    db   $94, $9b, $dc, $9b, $d8, $94, $99, $dc        ;; 0f:58a7 ????????
-    db   $9b, $d8, $93, $98, $dc, $9b, $d8, $93        ;; 0f:58af ????????
-    db   $96, $dc, $99, $d8, $92, $96, $dc, $99        ;; 0f:58b7 ????????
-    db   $d8, $92, $95, $dc, $98, $9d, $d8, $95        ;; 0f:58bf ????????
-    db   $96, $98, $99, $91, $96, $9b, $91, $96        ;; 0f:58c7 ????????
-    db   $9d, $91, $95, $9b, $91, $95, $99, $91        ;; 0f:58cf ????????
-    db   $94, $98, $91, $94, $96, $dc, $9b, $d8        ;; 0f:58d7 ????????
-    db   $93, $96, $98, $99, $9b, $93, $98, $d8        ;; 0f:58df ????????
-    db   $93, $dc, $98, $9b, $d8, $94, $dc, $98        ;; 0f:58e7 ????????
-    db   $9d, $d8, $93, $dc, $96, $9b, $9d, $94        ;; 0f:58ef ????????
-    db   $99, $9d, $94, $99, $9b, $94, $98, $9b        ;; 0f:58f7 ????????
-    db   $94, $98, $9a, $94, $97, $9a, $94, $97        ;; 0f:58ff ????????
-    db   $99, $91, $96, $93, $94, $96, $e1, $a3        ;; 0f:5907 ????????
-    db   $58                                           ;; 0f:590f ?
+song0c_channel1:
+    mUNK_E4 frequencyDeltaData                         ;; 0f:5897 $e4 $4f $7a
+    mUNK_E0 $b0                                        ;; 0f:589a $e0 $b0
+    db   $7A ; unknown music opcode                    ;; 0f:589c $7a
+    mUNK_E5 $40                                        ;; 0f:589d $e5 $40
+    mUNK_E6 $03                                        ;; 0f:589f $e6 $03
+    db   $D3 ; unknown music opcode                    ;; 0f:58a1 $d3
+    db   $BF ; unknown music opcode                    ;; 0f:58a2 $bf
+.data_0f_58a3:
+    db   $98 ; unknown music opcode                    ;; 0f:58a3 $98
+    db   $DC ; unknown music opcode                    ;; 0f:58a4 $dc
+    db   $9B ; unknown music opcode                    ;; 0f:58a5 $9b
+    db   $D8 ; unknown music opcode                    ;; 0f:58a6 $d8
+    db   $94 ; unknown music opcode                    ;; 0f:58a7 $94
+    db   $9B ; unknown music opcode                    ;; 0f:58a8 $9b
+    db   $DC ; unknown music opcode                    ;; 0f:58a9 $dc
+    db   $9B ; unknown music opcode                    ;; 0f:58aa $9b
+    db   $D8 ; unknown music opcode                    ;; 0f:58ab $d8
+    db   $94 ; unknown music opcode                    ;; 0f:58ac $94
+    db   $99 ; unknown music opcode                    ;; 0f:58ad $99
+    db   $DC ; unknown music opcode                    ;; 0f:58ae $dc
+    db   $9B ; unknown music opcode                    ;; 0f:58af $9b
+    db   $D8 ; unknown music opcode                    ;; 0f:58b0 $d8
+    db   $93 ; unknown music opcode                    ;; 0f:58b1 $93
+    db   $98 ; unknown music opcode                    ;; 0f:58b2 $98
+    db   $DC ; unknown music opcode                    ;; 0f:58b3 $dc
+    db   $9B ; unknown music opcode                    ;; 0f:58b4 $9b
+    db   $D8 ; unknown music opcode                    ;; 0f:58b5 $d8
+    db   $93 ; unknown music opcode                    ;; 0f:58b6 $93
+    db   $96 ; unknown music opcode                    ;; 0f:58b7 $96
+    db   $DC ; unknown music opcode                    ;; 0f:58b8 $dc
+    db   $99 ; unknown music opcode                    ;; 0f:58b9 $99
+    db   $D8 ; unknown music opcode                    ;; 0f:58ba $d8
+    db   $92 ; unknown music opcode                    ;; 0f:58bb $92
+    db   $96 ; unknown music opcode                    ;; 0f:58bc $96
+    db   $DC ; unknown music opcode                    ;; 0f:58bd $dc
+    db   $99 ; unknown music opcode                    ;; 0f:58be $99
+    db   $D8 ; unknown music opcode                    ;; 0f:58bf $d8
+    db   $92 ; unknown music opcode                    ;; 0f:58c0 $92
+    db   $95 ; unknown music opcode                    ;; 0f:58c1 $95
+    db   $DC ; unknown music opcode                    ;; 0f:58c2 $dc
+    db   $98 ; unknown music opcode                    ;; 0f:58c3 $98
+    db   $9D ; unknown music opcode                    ;; 0f:58c4 $9d
+    db   $D8 ; unknown music opcode                    ;; 0f:58c5 $d8
+    db   $95 ; unknown music opcode                    ;; 0f:58c6 $95
+    db   $96 ; unknown music opcode                    ;; 0f:58c7 $96
+    db   $98 ; unknown music opcode                    ;; 0f:58c8 $98
+    db   $99 ; unknown music opcode                    ;; 0f:58c9 $99
+    db   $91 ; unknown music opcode                    ;; 0f:58ca $91
+    db   $96 ; unknown music opcode                    ;; 0f:58cb $96
+    db   $9B ; unknown music opcode                    ;; 0f:58cc $9b
+    db   $91 ; unknown music opcode                    ;; 0f:58cd $91
+    db   $96 ; unknown music opcode                    ;; 0f:58ce $96
+    db   $9D ; unknown music opcode                    ;; 0f:58cf $9d
+    db   $91 ; unknown music opcode                    ;; 0f:58d0 $91
+    db   $95 ; unknown music opcode                    ;; 0f:58d1 $95
+    db   $9B ; unknown music opcode                    ;; 0f:58d2 $9b
+    db   $91 ; unknown music opcode                    ;; 0f:58d3 $91
+    db   $95 ; unknown music opcode                    ;; 0f:58d4 $95
+    db   $99 ; unknown music opcode                    ;; 0f:58d5 $99
+    db   $91 ; unknown music opcode                    ;; 0f:58d6 $91
+    db   $94 ; unknown music opcode                    ;; 0f:58d7 $94
+    db   $98 ; unknown music opcode                    ;; 0f:58d8 $98
+    db   $91 ; unknown music opcode                    ;; 0f:58d9 $91
+    db   $94 ; unknown music opcode                    ;; 0f:58da $94
+    db   $96 ; unknown music opcode                    ;; 0f:58db $96
+    db   $DC ; unknown music opcode                    ;; 0f:58dc $dc
+    db   $9B ; unknown music opcode                    ;; 0f:58dd $9b
+    db   $D8 ; unknown music opcode                    ;; 0f:58de $d8
+    db   $93 ; unknown music opcode                    ;; 0f:58df $93
+    db   $96 ; unknown music opcode                    ;; 0f:58e0 $96
+    db   $98 ; unknown music opcode                    ;; 0f:58e1 $98
+    db   $99 ; unknown music opcode                    ;; 0f:58e2 $99
+    db   $9B ; unknown music opcode                    ;; 0f:58e3 $9b
+    db   $93 ; unknown music opcode                    ;; 0f:58e4 $93
+    db   $98 ; unknown music opcode                    ;; 0f:58e5 $98
+    db   $D8 ; unknown music opcode                    ;; 0f:58e6 $d8
+    db   $93 ; unknown music opcode                    ;; 0f:58e7 $93
+    db   $DC ; unknown music opcode                    ;; 0f:58e8 $dc
+    db   $98 ; unknown music opcode                    ;; 0f:58e9 $98
+    db   $9B ; unknown music opcode                    ;; 0f:58ea $9b
+    db   $D8 ; unknown music opcode                    ;; 0f:58eb $d8
+    db   $94 ; unknown music opcode                    ;; 0f:58ec $94
+    db   $DC ; unknown music opcode                    ;; 0f:58ed $dc
+    db   $98 ; unknown music opcode                    ;; 0f:58ee $98
+    db   $9D ; unknown music opcode                    ;; 0f:58ef $9d
+    db   $D8 ; unknown music opcode                    ;; 0f:58f0 $d8
+    db   $93 ; unknown music opcode                    ;; 0f:58f1 $93
+    db   $DC ; unknown music opcode                    ;; 0f:58f2 $dc
+    db   $96 ; unknown music opcode                    ;; 0f:58f3 $96
+    db   $9B ; unknown music opcode                    ;; 0f:58f4 $9b
+    db   $9D ; unknown music opcode                    ;; 0f:58f5 $9d
+    db   $94 ; unknown music opcode                    ;; 0f:58f6 $94
+    db   $99 ; unknown music opcode                    ;; 0f:58f7 $99
+    db   $9D ; unknown music opcode                    ;; 0f:58f8 $9d
+    db   $94 ; unknown music opcode                    ;; 0f:58f9 $94
+    db   $99 ; unknown music opcode                    ;; 0f:58fa $99
+    db   $9B ; unknown music opcode                    ;; 0f:58fb $9b
+    db   $94 ; unknown music opcode                    ;; 0f:58fc $94
+    db   $98 ; unknown music opcode                    ;; 0f:58fd $98
+    db   $9B ; unknown music opcode                    ;; 0f:58fe $9b
+    db   $94 ; unknown music opcode                    ;; 0f:58ff $94
+    db   $98 ; unknown music opcode                    ;; 0f:5900 $98
+    db   $9A ; unknown music opcode                    ;; 0f:5901 $9a
+    db   $94 ; unknown music opcode                    ;; 0f:5902 $94
+    db   $97 ; unknown music opcode                    ;; 0f:5903 $97
+    db   $9A ; unknown music opcode                    ;; 0f:5904 $9a
+    db   $94 ; unknown music opcode                    ;; 0f:5905 $94
+    db   $97 ; unknown music opcode                    ;; 0f:5906 $97
+    db   $99 ; unknown music opcode                    ;; 0f:5907 $99
+    db   $91 ; unknown music opcode                    ;; 0f:5908 $91
+    db   $96 ; unknown music opcode                    ;; 0f:5909 $96
+    db   $93 ; unknown music opcode                    ;; 0f:590a $93
+    db   $94 ; unknown music opcode                    ;; 0f:590b $94
+    db   $96 ; unknown music opcode                    ;; 0f:590c $96
+    mUNK_E1 .data_0f_58a3                              ;; 0f:590d $e1 $a3 $58
 
-data_0f_5910:
-    db   $e4, $4f, $7a, $e8, $cc, $7a, $e0, $40        ;; 0f:5910 ????????
-    db   $e6, $03, $d2, $24, $23, $22, $31, $93        ;; 0f:5918 ????????
-    db   $95, $26, $25, $24, $53, $9e, $94, $96        ;; 0f:5920 ????????
-    db   $28, $5d, $5b, $29, $28, $27, $56, $dc        ;; 0f:5928 ????????
-    db   $9b, $9d, $d8, $93, $e1, $1a, $59             ;; 0f:5930 ???????
+song0c_channel3:
+    mUNK_E4 frequencyDeltaData                         ;; 0f:5910 $e4 $4f $7a
+    mUNK_E8 wavePatternsData                           ;; 0f:5913 $e8 $cc $7a
+    mUNK_E0 $40                                        ;; 0f:5916 $e0 $40
+    mUNK_E6 $03                                        ;; 0f:5918 $e6 $03
+.data_0f_591a:
+    db   $D2 ; unknown music opcode                    ;; 0f:591a $d2
+    db   $24 ; unknown music opcode                    ;; 0f:591b $24
+    db   $23 ; unknown music opcode                    ;; 0f:591c $23
+    db   $22 ; unknown music opcode                    ;; 0f:591d $22
+    db   $31 ; unknown music opcode                    ;; 0f:591e $31
+    db   $93 ; unknown music opcode                    ;; 0f:591f $93
+    db   $95 ; unknown music opcode                    ;; 0f:5920 $95
+    db   $26 ; unknown music opcode                    ;; 0f:5921 $26
+    db   $25 ; unknown music opcode                    ;; 0f:5922 $25
+    db   $24 ; unknown music opcode                    ;; 0f:5923 $24
+    db   $53 ; unknown music opcode                    ;; 0f:5924 $53
+    db   $9E ; unknown music opcode                    ;; 0f:5925 $9e
+    db   $94 ; unknown music opcode                    ;; 0f:5926 $94
+    db   $96 ; unknown music opcode                    ;; 0f:5927 $96
+    db   $28 ; unknown music opcode                    ;; 0f:5928 $28
+    db   $5D ; unknown music opcode                    ;; 0f:5929 $5d
+    db   $5B ; unknown music opcode                    ;; 0f:592a $5b
+    db   $29 ; unknown music opcode                    ;; 0f:592b $29
+    db   $28 ; unknown music opcode                    ;; 0f:592c $28
+    db   $27 ; unknown music opcode                    ;; 0f:592d $27
+    db   $56 ; unknown music opcode                    ;; 0f:592e $56
+    db   $DC ; unknown music opcode                    ;; 0f:592f $dc
+    db   $9B ; unknown music opcode                    ;; 0f:5930 $9b
+    db   $9D ; unknown music opcode                    ;; 0f:5931 $9d
+    db   $D8 ; unknown music opcode                    ;; 0f:5932 $d8
+    db   $93 ; unknown music opcode                    ;; 0f:5933 $93
+    mUNK_E1 .data_0f_591a                              ;; 0f:5934 $e1 $1a $59
 
-data_0f_5937:
-    db   $e7, $5d, $e4, $4f, $7a, $e0, $a8, $7a        ;; 0f:5937 ........
-    db   $e5, $40, $e3, $02                            ;; 0f:593f ....
+song0d_channel2:
+    mUNK_E7 $5d                                        ;; 0f:5937 $e7 $5d
+    mUNK_E4 frequencyDeltaData                         ;; 0f:5939 $e4 $4f $7a
+    mUNK_E0 $a8                                        ;; 0f:593c $e0 $a8
+    db   $7A ; unknown music opcode                    ;; 0f:593e $7a
+    mUNK_E5 $40                                        ;; 0f:593f $e5 $40
+    mUNK_E3 $02                                        ;; 0f:5941 $e3 $02
 .data_0f_5943:
-    db   $e0, $b4, $7a, $e6, $03, $d3, $b6, $b3        ;; 0f:5943 ........
-    db   $b6, $b3, $b6, $b3, $b6, $b3, $b6, $b3        ;; 0f:594b ........
-    db   $b6, $b3, $e6, $02, $b9, $b3, $b9, $b3        ;; 0f:5953 ........
-    db   $b9, $b3, $b9, $b3, $b9, $b3, $b9, $b3        ;; 0f:595b ........
-    db   $e6, $03, $b8, $b3, $b8, $b3, $b8, $b3        ;; 0f:5963 ........
-    db   $b8, $b3, $b8, $b3, $b8, $b3, $e6, $01        ;; 0f:596b ........
-    db   $b7, $b3, $b7, $b3, $b7, $b3, $b7, $b3        ;; 0f:5973 ........
-    db   $b7, $b3, $b7, $b3, $e2                       ;; 0f:597b .....
-    dw   .data_0f_5943                                 ;; 0f:5980 pP
-    db   $e6, $03, $b8, $b5, $b8, $b5, $b8, $b5        ;; 0f:5982 ........
-    db   $b8, $b5, $b8, $b5, $b8, $b5, $e6, $02        ;; 0f:598a ........
-    db   $bb, $b5, $bb, $b5, $bb, $b5, $bb, $b5        ;; 0f:5992 ........
-    db   $bb, $b5, $bb, $b5, $e6, $03, $ba, $b5        ;; 0f:599a ........
-    db   $ba, $b5, $ba, $b5, $ba, $b5, $ba, $b5        ;; 0f:59a2 ........
-    db   $ba, $b5, $e6, $01, $b9, $b5, $b9, $b5        ;; 0f:59aa ........
-    db   $b9, $b5, $b9, $b5, $b9, $b5, $b9, $b5        ;; 0f:59b2 ........
-    db   $e6, $03, $b9, $b6, $b9, $b6, $b9, $b6        ;; 0f:59ba ........
-    db   $b9, $b6, $b9, $b6, $b9, $b6, $e6, $02        ;; 0f:59c2 ........
-    db   $bc, $b6, $bc, $b6, $bc, $b6, $bc, $b6        ;; 0f:59ca ........
-    db   $bc, $b6, $bc, $b6, $e7, $58, $e6, $03        ;; 0f:59d2 ........
-    db   $bb, $b6, $bb, $b6, $bb, $b6, $e7, $55        ;; 0f:59da ........
-    db   $bb, $b6, $bb, $b6, $bb, $b6, $e7, $53        ;; 0f:59e2 ........
-    db   $e6, $01, $ba, $b6, $ba, $b6, $ba, $b6        ;; 0f:59ea ........
-    db   $e7, $51, $ba, $b6, $ba, $b6, $ba, $b6        ;; 0f:59f2 ........
-    db   $dc, $e7, $59, $e0, $be, $7a, $e6, $03        ;; 0f:59fa ........
-    db   $66, $b7, $b8, $59, $18, $86, $89, $58        ;; 0f:5a02 ........
-    db   $86, $84, $66, $b7, $b8, $59, $18, $86        ;; 0f:5a0a ........
-    db   $89, $58, $86, $84, $68, $b9, $ba, $5b        ;; 0f:5a12 ........
-    db   $1a, $88, $8b, $5a, $88, $86, $68, $b9        ;; 0f:5a1a ........
-    db   $ba, $5b, $1a, $88, $8b, $5a, $88, $86        ;; 0f:5a22 ........
-    db   $15, $58, $e7, $55, $e0, $82, $7a, $54        ;; 0f:5a2a ........
-    db   $57, $e7, $50, $5a, $5d, $e1                  ;; 0f:5a32 ......
-    dw   data_0f_5937                                  ;; 0f:5a38 pP
+    mUNK_E0 $b4                                        ;; 0f:5943 $e0 $b4
+    db   $7A ; unknown music opcode                    ;; 0f:5945 $7a
+    mUNK_E6 $03                                        ;; 0f:5946 $e6 $03
+    db   $D3 ; unknown music opcode                    ;; 0f:5948 $d3
+    db   $B6 ; unknown music opcode                    ;; 0f:5949 $b6
+    db   $B3 ; unknown music opcode                    ;; 0f:594a $b3
+    db   $B6 ; unknown music opcode                    ;; 0f:594b $b6
+    db   $B3 ; unknown music opcode                    ;; 0f:594c $b3
+    db   $B6 ; unknown music opcode                    ;; 0f:594d $b6
+    db   $B3 ; unknown music opcode                    ;; 0f:594e $b3
+    db   $B6 ; unknown music opcode                    ;; 0f:594f $b6
+    db   $B3 ; unknown music opcode                    ;; 0f:5950 $b3
+    db   $B6 ; unknown music opcode                    ;; 0f:5951 $b6
+    db   $B3 ; unknown music opcode                    ;; 0f:5952 $b3
+    db   $B6 ; unknown music opcode                    ;; 0f:5953 $b6
+    db   $B3 ; unknown music opcode                    ;; 0f:5954 $b3
+    mUNK_E6 $02                                        ;; 0f:5955 $e6 $02
+    db   $B9 ; unknown music opcode                    ;; 0f:5957 $b9
+    db   $B3 ; unknown music opcode                    ;; 0f:5958 $b3
+    db   $B9 ; unknown music opcode                    ;; 0f:5959 $b9
+    db   $B3 ; unknown music opcode                    ;; 0f:595a $b3
+    db   $B9 ; unknown music opcode                    ;; 0f:595b $b9
+    db   $B3 ; unknown music opcode                    ;; 0f:595c $b3
+    db   $B9 ; unknown music opcode                    ;; 0f:595d $b9
+    db   $B3 ; unknown music opcode                    ;; 0f:595e $b3
+    db   $B9 ; unknown music opcode                    ;; 0f:595f $b9
+    db   $B3 ; unknown music opcode                    ;; 0f:5960 $b3
+    db   $B9 ; unknown music opcode                    ;; 0f:5961 $b9
+    db   $B3 ; unknown music opcode                    ;; 0f:5962 $b3
+    mUNK_E6 $03                                        ;; 0f:5963 $e6 $03
+    db   $B8 ; unknown music opcode                    ;; 0f:5965 $b8
+    db   $B3 ; unknown music opcode                    ;; 0f:5966 $b3
+    db   $B8 ; unknown music opcode                    ;; 0f:5967 $b8
+    db   $B3 ; unknown music opcode                    ;; 0f:5968 $b3
+    db   $B8 ; unknown music opcode                    ;; 0f:5969 $b8
+    db   $B3 ; unknown music opcode                    ;; 0f:596a $b3
+    db   $B8 ; unknown music opcode                    ;; 0f:596b $b8
+    db   $B3 ; unknown music opcode                    ;; 0f:596c $b3
+    db   $B8 ; unknown music opcode                    ;; 0f:596d $b8
+    db   $B3 ; unknown music opcode                    ;; 0f:596e $b3
+    db   $B8 ; unknown music opcode                    ;; 0f:596f $b8
+    db   $B3 ; unknown music opcode                    ;; 0f:5970 $b3
+    mUNK_E6 $01                                        ;; 0f:5971 $e6 $01
+    db   $B7 ; unknown music opcode                    ;; 0f:5973 $b7
+    db   $B3 ; unknown music opcode                    ;; 0f:5974 $b3
+    db   $B7 ; unknown music opcode                    ;; 0f:5975 $b7
+    db   $B3 ; unknown music opcode                    ;; 0f:5976 $b3
+    db   $B7 ; unknown music opcode                    ;; 0f:5977 $b7
+    db   $B3 ; unknown music opcode                    ;; 0f:5978 $b3
+    db   $B7 ; unknown music opcode                    ;; 0f:5979 $b7
+    db   $B3 ; unknown music opcode                    ;; 0f:597a $b3
+    db   $B7 ; unknown music opcode                    ;; 0f:597b $b7
+    db   $B3 ; unknown music opcode                    ;; 0f:597c $b3
+    db   $B7 ; unknown music opcode                    ;; 0f:597d $b7
+    db   $B3 ; unknown music opcode                    ;; 0f:597e $b3
+    mUNK_E2 .data_0f_5943                              ;; 0f:597f $e2 $43 $59
+    mUNK_E6 $03                                        ;; 0f:5982 $e6 $03
+    db   $B8 ; unknown music opcode                    ;; 0f:5984 $b8
+    db   $B5 ; unknown music opcode                    ;; 0f:5985 $b5
+    db   $B8 ; unknown music opcode                    ;; 0f:5986 $b8
+    db   $B5 ; unknown music opcode                    ;; 0f:5987 $b5
+    db   $B8 ; unknown music opcode                    ;; 0f:5988 $b8
+    db   $B5 ; unknown music opcode                    ;; 0f:5989 $b5
+    db   $B8 ; unknown music opcode                    ;; 0f:598a $b8
+    db   $B5 ; unknown music opcode                    ;; 0f:598b $b5
+    db   $B8 ; unknown music opcode                    ;; 0f:598c $b8
+    db   $B5 ; unknown music opcode                    ;; 0f:598d $b5
+    db   $B8 ; unknown music opcode                    ;; 0f:598e $b8
+    db   $B5 ; unknown music opcode                    ;; 0f:598f $b5
+    mUNK_E6 $02                                        ;; 0f:5990 $e6 $02
+    db   $BB ; unknown music opcode                    ;; 0f:5992 $bb
+    db   $B5 ; unknown music opcode                    ;; 0f:5993 $b5
+    db   $BB ; unknown music opcode                    ;; 0f:5994 $bb
+    db   $B5 ; unknown music opcode                    ;; 0f:5995 $b5
+    db   $BB ; unknown music opcode                    ;; 0f:5996 $bb
+    db   $B5 ; unknown music opcode                    ;; 0f:5997 $b5
+    db   $BB ; unknown music opcode                    ;; 0f:5998 $bb
+    db   $B5 ; unknown music opcode                    ;; 0f:5999 $b5
+    db   $BB ; unknown music opcode                    ;; 0f:599a $bb
+    db   $B5 ; unknown music opcode                    ;; 0f:599b $b5
+    db   $BB ; unknown music opcode                    ;; 0f:599c $bb
+    db   $B5 ; unknown music opcode                    ;; 0f:599d $b5
+    mUNK_E6 $03                                        ;; 0f:599e $e6 $03
+    db   $BA ; unknown music opcode                    ;; 0f:59a0 $ba
+    db   $B5 ; unknown music opcode                    ;; 0f:59a1 $b5
+    db   $BA ; unknown music opcode                    ;; 0f:59a2 $ba
+    db   $B5 ; unknown music opcode                    ;; 0f:59a3 $b5
+    db   $BA ; unknown music opcode                    ;; 0f:59a4 $ba
+    db   $B5 ; unknown music opcode                    ;; 0f:59a5 $b5
+    db   $BA ; unknown music opcode                    ;; 0f:59a6 $ba
+    db   $B5 ; unknown music opcode                    ;; 0f:59a7 $b5
+    db   $BA ; unknown music opcode                    ;; 0f:59a8 $ba
+    db   $B5 ; unknown music opcode                    ;; 0f:59a9 $b5
+    db   $BA ; unknown music opcode                    ;; 0f:59aa $ba
+    db   $B5 ; unknown music opcode                    ;; 0f:59ab $b5
+    mUNK_E6 $01                                        ;; 0f:59ac $e6 $01
+    db   $B9 ; unknown music opcode                    ;; 0f:59ae $b9
+    db   $B5 ; unknown music opcode                    ;; 0f:59af $b5
+    db   $B9 ; unknown music opcode                    ;; 0f:59b0 $b9
+    db   $B5 ; unknown music opcode                    ;; 0f:59b1 $b5
+    db   $B9 ; unknown music opcode                    ;; 0f:59b2 $b9
+    db   $B5 ; unknown music opcode                    ;; 0f:59b3 $b5
+    db   $B9 ; unknown music opcode                    ;; 0f:59b4 $b9
+    db   $B5 ; unknown music opcode                    ;; 0f:59b5 $b5
+    db   $B9 ; unknown music opcode                    ;; 0f:59b6 $b9
+    db   $B5 ; unknown music opcode                    ;; 0f:59b7 $b5
+    db   $B9 ; unknown music opcode                    ;; 0f:59b8 $b9
+    db   $B5 ; unknown music opcode                    ;; 0f:59b9 $b5
+    mUNK_E6 $03                                        ;; 0f:59ba $e6 $03
+    db   $B9 ; unknown music opcode                    ;; 0f:59bc $b9
+    db   $B6 ; unknown music opcode                    ;; 0f:59bd $b6
+    db   $B9 ; unknown music opcode                    ;; 0f:59be $b9
+    db   $B6 ; unknown music opcode                    ;; 0f:59bf $b6
+    db   $B9 ; unknown music opcode                    ;; 0f:59c0 $b9
+    db   $B6 ; unknown music opcode                    ;; 0f:59c1 $b6
+    db   $B9 ; unknown music opcode                    ;; 0f:59c2 $b9
+    db   $B6 ; unknown music opcode                    ;; 0f:59c3 $b6
+    db   $B9 ; unknown music opcode                    ;; 0f:59c4 $b9
+    db   $B6 ; unknown music opcode                    ;; 0f:59c5 $b6
+    db   $B9 ; unknown music opcode                    ;; 0f:59c6 $b9
+    db   $B6 ; unknown music opcode                    ;; 0f:59c7 $b6
+    mUNK_E6 $02                                        ;; 0f:59c8 $e6 $02
+    db   $BC ; unknown music opcode                    ;; 0f:59ca $bc
+    db   $B6 ; unknown music opcode                    ;; 0f:59cb $b6
+    db   $BC ; unknown music opcode                    ;; 0f:59cc $bc
+    db   $B6 ; unknown music opcode                    ;; 0f:59cd $b6
+    db   $BC ; unknown music opcode                    ;; 0f:59ce $bc
+    db   $B6 ; unknown music opcode                    ;; 0f:59cf $b6
+    db   $BC ; unknown music opcode                    ;; 0f:59d0 $bc
+    db   $B6 ; unknown music opcode                    ;; 0f:59d1 $b6
+    db   $BC ; unknown music opcode                    ;; 0f:59d2 $bc
+    db   $B6 ; unknown music opcode                    ;; 0f:59d3 $b6
+    db   $BC ; unknown music opcode                    ;; 0f:59d4 $bc
+    db   $B6 ; unknown music opcode                    ;; 0f:59d5 $b6
+    mUNK_E7 $58                                        ;; 0f:59d6 $e7 $58
+    mUNK_E6 $03                                        ;; 0f:59d8 $e6 $03
+    db   $BB ; unknown music opcode                    ;; 0f:59da $bb
+    db   $B6 ; unknown music opcode                    ;; 0f:59db $b6
+    db   $BB ; unknown music opcode                    ;; 0f:59dc $bb
+    db   $B6 ; unknown music opcode                    ;; 0f:59dd $b6
+    db   $BB ; unknown music opcode                    ;; 0f:59de $bb
+    db   $B6 ; unknown music opcode                    ;; 0f:59df $b6
+    mUNK_E7 $55                                        ;; 0f:59e0 $e7 $55
+    db   $BB ; unknown music opcode                    ;; 0f:59e2 $bb
+    db   $B6 ; unknown music opcode                    ;; 0f:59e3 $b6
+    db   $BB ; unknown music opcode                    ;; 0f:59e4 $bb
+    db   $B6 ; unknown music opcode                    ;; 0f:59e5 $b6
+    db   $BB ; unknown music opcode                    ;; 0f:59e6 $bb
+    db   $B6 ; unknown music opcode                    ;; 0f:59e7 $b6
+    mUNK_E7 $53                                        ;; 0f:59e8 $e7 $53
+    mUNK_E6 $01                                        ;; 0f:59ea $e6 $01
+    db   $BA ; unknown music opcode                    ;; 0f:59ec $ba
+    db   $B6 ; unknown music opcode                    ;; 0f:59ed $b6
+    db   $BA ; unknown music opcode                    ;; 0f:59ee $ba
+    db   $B6 ; unknown music opcode                    ;; 0f:59ef $b6
+    db   $BA ; unknown music opcode                    ;; 0f:59f0 $ba
+    db   $B6 ; unknown music opcode                    ;; 0f:59f1 $b6
+    mUNK_E7 $51                                        ;; 0f:59f2 $e7 $51
+    db   $BA ; unknown music opcode                    ;; 0f:59f4 $ba
+    db   $B6 ; unknown music opcode                    ;; 0f:59f5 $b6
+    db   $BA ; unknown music opcode                    ;; 0f:59f6 $ba
+    db   $B6 ; unknown music opcode                    ;; 0f:59f7 $b6
+    db   $BA ; unknown music opcode                    ;; 0f:59f8 $ba
+    db   $B6 ; unknown music opcode                    ;; 0f:59f9 $b6
+    db   $DC ; unknown music opcode                    ;; 0f:59fa $dc
+    mUNK_E7 $59                                        ;; 0f:59fb $e7 $59
+    mUNK_E0 $be                                        ;; 0f:59fd $e0 $be
+    db   $7A ; unknown music opcode                    ;; 0f:59ff $7a
+    mUNK_E6 $03                                        ;; 0f:5a00 $e6 $03
+    db   $66 ; unknown music opcode                    ;; 0f:5a02 $66
+    db   $B7 ; unknown music opcode                    ;; 0f:5a03 $b7
+    db   $B8 ; unknown music opcode                    ;; 0f:5a04 $b8
+    db   $59 ; unknown music opcode                    ;; 0f:5a05 $59
+    db   $18 ; unknown music opcode                    ;; 0f:5a06 $18
+    db   $86 ; unknown music opcode                    ;; 0f:5a07 $86
+    db   $89 ; unknown music opcode                    ;; 0f:5a08 $89
+    db   $58 ; unknown music opcode                    ;; 0f:5a09 $58
+    db   $86 ; unknown music opcode                    ;; 0f:5a0a $86
+    db   $84 ; unknown music opcode                    ;; 0f:5a0b $84
+    db   $66 ; unknown music opcode                    ;; 0f:5a0c $66
+    db   $B7 ; unknown music opcode                    ;; 0f:5a0d $b7
+    db   $B8 ; unknown music opcode                    ;; 0f:5a0e $b8
+    db   $59 ; unknown music opcode                    ;; 0f:5a0f $59
+    db   $18 ; unknown music opcode                    ;; 0f:5a10 $18
+    db   $86 ; unknown music opcode                    ;; 0f:5a11 $86
+    db   $89 ; unknown music opcode                    ;; 0f:5a12 $89
+    db   $58 ; unknown music opcode                    ;; 0f:5a13 $58
+    db   $86 ; unknown music opcode                    ;; 0f:5a14 $86
+    db   $84 ; unknown music opcode                    ;; 0f:5a15 $84
+    db   $68 ; unknown music opcode                    ;; 0f:5a16 $68
+    db   $B9 ; unknown music opcode                    ;; 0f:5a17 $b9
+    db   $BA ; unknown music opcode                    ;; 0f:5a18 $ba
+    db   $5B ; unknown music opcode                    ;; 0f:5a19 $5b
+    db   $1A ; unknown music opcode                    ;; 0f:5a1a $1a
+    db   $88 ; unknown music opcode                    ;; 0f:5a1b $88
+    db   $8B ; unknown music opcode                    ;; 0f:5a1c $8b
+    db   $5A ; unknown music opcode                    ;; 0f:5a1d $5a
+    db   $88 ; unknown music opcode                    ;; 0f:5a1e $88
+    db   $86 ; unknown music opcode                    ;; 0f:5a1f $86
+    db   $68 ; unknown music opcode                    ;; 0f:5a20 $68
+    db   $B9 ; unknown music opcode                    ;; 0f:5a21 $b9
+    db   $BA ; unknown music opcode                    ;; 0f:5a22 $ba
+    db   $5B ; unknown music opcode                    ;; 0f:5a23 $5b
+    db   $1A ; unknown music opcode                    ;; 0f:5a24 $1a
+    db   $88 ; unknown music opcode                    ;; 0f:5a25 $88
+    db   $8B ; unknown music opcode                    ;; 0f:5a26 $8b
+    db   $5A ; unknown music opcode                    ;; 0f:5a27 $5a
+    db   $88 ; unknown music opcode                    ;; 0f:5a28 $88
+    db   $86 ; unknown music opcode                    ;; 0f:5a29 $86
+    db   $15 ; unknown music opcode                    ;; 0f:5a2a $15
+    db   $58 ; unknown music opcode                    ;; 0f:5a2b $58
+    mUNK_E7 $55                                        ;; 0f:5a2c $e7 $55
+    mUNK_E0 $82                                        ;; 0f:5a2e $e0 $82
+    db   $7A ; unknown music opcode                    ;; 0f:5a30 $7a
+    db   $54 ; unknown music opcode                    ;; 0f:5a31 $54
+    db   $57 ; unknown music opcode                    ;; 0f:5a32 $57
+    mUNK_E7 $50                                        ;; 0f:5a33 $e7 $50
+    db   $5A ; unknown music opcode                    ;; 0f:5a35 $5a
+    db   $5D ; unknown music opcode                    ;; 0f:5a36 $5d
+    mUNK_E1 song0d_channel2                            ;; 0f:5a37 $e1 $37 $59
 
-data_0f_5a3a:
-    db   $e4, $4f, $7a, $e0, $82, $7a                  ;; 0f:5a3a ......
+song0d_channel1:
+    mUNK_E4 frequencyDeltaData                         ;; 0f:5a3a $e4 $4f $7a
+    mUNK_E0 $82                                        ;; 0f:5a3d $e0 $82
+    db   $7A ; unknown music opcode                    ;; 0f:5a3f $7a
 .data_0f_5a40:
-    db   $e6, $03, $e5, $80, $e3, $04                  ;; 0f:5a40 ......
+    mUNK_E6 $03                                        ;; 0f:5a40 $e6 $03
+    mUNK_E5 $80                                        ;; 0f:5a42 $e5 $80
+    mUNK_E3 $04                                        ;; 0f:5a44 $e3 $04
 .data_0f_5a46:
-    db   $d1, $8b, $d8, $8c, $8b, $8a, $89, $88        ;; 0f:5a46 ........
-    db   $87, $86, $e2                                 ;; 0f:5a4e ...
-    dw   .data_0f_5a46                                 ;; 0f:5a51 pP
-    db   $81, $d8, $82, $81, $80, $dc, $8b, $8a        ;; 0f:5a53 ........
-    db   $89, $88, $81, $d8, $82, $81, $80, $dc        ;; 0f:5a5b ........
-    db   $8b, $8a, $89, $88, $82, $d8, $83, $82        ;; 0f:5a63 ........
-    db   $81, $80, $dc, $8b, $8a, $89, $82, $d8        ;; 0f:5a6b ........
-    db   $83, $82, $81, $80, $dc, $8b, $8a, $89        ;; 0f:5a73 ........
-    db   $e3, $02                                      ;; 0f:5a7b ..
+    db   $D1 ; unknown music opcode                    ;; 0f:5a46 $d1
+    db   $8B ; unknown music opcode                    ;; 0f:5a47 $8b
+    db   $D8 ; unknown music opcode                    ;; 0f:5a48 $d8
+    db   $8C ; unknown music opcode                    ;; 0f:5a49 $8c
+    db   $8B ; unknown music opcode                    ;; 0f:5a4a $8b
+    db   $8A ; unknown music opcode                    ;; 0f:5a4b $8a
+    db   $89 ; unknown music opcode                    ;; 0f:5a4c $89
+    db   $88 ; unknown music opcode                    ;; 0f:5a4d $88
+    db   $87 ; unknown music opcode                    ;; 0f:5a4e $87
+    db   $86 ; unknown music opcode                    ;; 0f:5a4f $86
+    mUNK_E2 .data_0f_5a46                              ;; 0f:5a50 $e2 $46 $5a
+    db   $81 ; unknown music opcode                    ;; 0f:5a53 $81
+    db   $D8 ; unknown music opcode                    ;; 0f:5a54 $d8
+    db   $82 ; unknown music opcode                    ;; 0f:5a55 $82
+    db   $81 ; unknown music opcode                    ;; 0f:5a56 $81
+    db   $80 ; unknown music opcode                    ;; 0f:5a57 $80
+    db   $DC ; unknown music opcode                    ;; 0f:5a58 $dc
+    db   $8B ; unknown music opcode                    ;; 0f:5a59 $8b
+    db   $8A ; unknown music opcode                    ;; 0f:5a5a $8a
+    db   $89 ; unknown music opcode                    ;; 0f:5a5b $89
+    db   $88 ; unknown music opcode                    ;; 0f:5a5c $88
+    db   $81 ; unknown music opcode                    ;; 0f:5a5d $81
+    db   $D8 ; unknown music opcode                    ;; 0f:5a5e $d8
+    db   $82 ; unknown music opcode                    ;; 0f:5a5f $82
+    db   $81 ; unknown music opcode                    ;; 0f:5a60 $81
+    db   $80 ; unknown music opcode                    ;; 0f:5a61 $80
+    db   $DC ; unknown music opcode                    ;; 0f:5a62 $dc
+    db   $8B ; unknown music opcode                    ;; 0f:5a63 $8b
+    db   $8A ; unknown music opcode                    ;; 0f:5a64 $8a
+    db   $89 ; unknown music opcode                    ;; 0f:5a65 $89
+    db   $88 ; unknown music opcode                    ;; 0f:5a66 $88
+    db   $82 ; unknown music opcode                    ;; 0f:5a67 $82
+    db   $D8 ; unknown music opcode                    ;; 0f:5a68 $d8
+    db   $83 ; unknown music opcode                    ;; 0f:5a69 $83
+    db   $82 ; unknown music opcode                    ;; 0f:5a6a $82
+    db   $81 ; unknown music opcode                    ;; 0f:5a6b $81
+    db   $80 ; unknown music opcode                    ;; 0f:5a6c $80
+    db   $DC ; unknown music opcode                    ;; 0f:5a6d $dc
+    db   $8B ; unknown music opcode                    ;; 0f:5a6e $8b
+    db   $8A ; unknown music opcode                    ;; 0f:5a6f $8a
+    db   $89 ; unknown music opcode                    ;; 0f:5a70 $89
+    db   $82 ; unknown music opcode                    ;; 0f:5a71 $82
+    db   $D8 ; unknown music opcode                    ;; 0f:5a72 $d8
+    db   $83 ; unknown music opcode                    ;; 0f:5a73 $83
+    db   $82 ; unknown music opcode                    ;; 0f:5a74 $82
+    db   $81 ; unknown music opcode                    ;; 0f:5a75 $81
+    db   $80 ; unknown music opcode                    ;; 0f:5a76 $80
+    db   $DC ; unknown music opcode                    ;; 0f:5a77 $dc
+    db   $8B ; unknown music opcode                    ;; 0f:5a78 $8b
+    db   $8A ; unknown music opcode                    ;; 0f:5a79 $8a
+    db   $89 ; unknown music opcode                    ;; 0f:5a7a $89
+    mUNK_E3 $02                                        ;; 0f:5a7b $e3 $02
 .data_0f_5a7d:
-    db   $e0, $c8, $7a, $e5, $40, $82, $81, $80        ;; 0f:5a7d ........
-    db   $dc, $8b, $d8, $82, $81, $80, $dc, $8b        ;; 0f:5a85 ........
-    db   $d8, $82, $81, $80, $dc, $8b, $d8, $82        ;; 0f:5a8d ........
-    db   $81, $80, $dc, $8b, $d8, $e2                  ;; 0f:5a95 ......
-    dw   .data_0f_5a7d                                 ;; 0f:5a9b pP
-    db   $e3, $02                                      ;; 0f:5a9d ..
+    mUNK_E0 $c8                                        ;; 0f:5a7d $e0 $c8
+    db   $7A ; unknown music opcode                    ;; 0f:5a7f $7a
+    mUNK_E5 $40                                        ;; 0f:5a80 $e5 $40
+    db   $82 ; unknown music opcode                    ;; 0f:5a82 $82
+    db   $81 ; unknown music opcode                    ;; 0f:5a83 $81
+    db   $80 ; unknown music opcode                    ;; 0f:5a84 $80
+    db   $DC ; unknown music opcode                    ;; 0f:5a85 $dc
+    db   $8B ; unknown music opcode                    ;; 0f:5a86 $8b
+    db   $D8 ; unknown music opcode                    ;; 0f:5a87 $d8
+    db   $82 ; unknown music opcode                    ;; 0f:5a88 $82
+    db   $81 ; unknown music opcode                    ;; 0f:5a89 $81
+    db   $80 ; unknown music opcode                    ;; 0f:5a8a $80
+    db   $DC ; unknown music opcode                    ;; 0f:5a8b $dc
+    db   $8B ; unknown music opcode                    ;; 0f:5a8c $8b
+    db   $D8 ; unknown music opcode                    ;; 0f:5a8d $d8
+    db   $82 ; unknown music opcode                    ;; 0f:5a8e $82
+    db   $81 ; unknown music opcode                    ;; 0f:5a8f $81
+    db   $80 ; unknown music opcode                    ;; 0f:5a90 $80
+    db   $DC ; unknown music opcode                    ;; 0f:5a91 $dc
+    db   $8B ; unknown music opcode                    ;; 0f:5a92 $8b
+    db   $D8 ; unknown music opcode                    ;; 0f:5a93 $d8
+    db   $82 ; unknown music opcode                    ;; 0f:5a94 $82
+    db   $81 ; unknown music opcode                    ;; 0f:5a95 $81
+    db   $80 ; unknown music opcode                    ;; 0f:5a96 $80
+    db   $DC ; unknown music opcode                    ;; 0f:5a97 $dc
+    db   $8B ; unknown music opcode                    ;; 0f:5a98 $8b
+    db   $D8 ; unknown music opcode                    ;; 0f:5a99 $d8
+    mUNK_E2 .data_0f_5a7d                              ;; 0f:5a9a $e2 $7d $5a
+    mUNK_E3 $02                                        ;; 0f:5a9d $e3 $02
 .data_0f_5a9f:
-    db   $84, $83, $82, $81, $84, $83, $82, $81        ;; 0f:5a9f ........
-    db   $84, $83, $82, $81, $84, $83, $82, $81        ;; 0f:5aa7 ........
-    db   $e2                                           ;; 0f:5aaf .
-    dw   .data_0f_5a9f                                 ;; 0f:5ab0 pP
-    db   $dc, $88, $86, $88, $89, $58, $e0, $82        ;; 0f:5ab2 ........
-    db   $7a, $5b, $e6, $02, $57, $5a, $5d, $d8        ;; 0f:5aba ........
-    db   $54, $e1                                      ;; 0f:5ac2 ..
-    dw   .data_0f_5a40                                 ;; 0f:5ac4 pP
+    db   $84 ; unknown music opcode                    ;; 0f:5a9f $84
+    db   $83 ; unknown music opcode                    ;; 0f:5aa0 $83
+    db   $82 ; unknown music opcode                    ;; 0f:5aa1 $82
+    db   $81 ; unknown music opcode                    ;; 0f:5aa2 $81
+    db   $84 ; unknown music opcode                    ;; 0f:5aa3 $84
+    db   $83 ; unknown music opcode                    ;; 0f:5aa4 $83
+    db   $82 ; unknown music opcode                    ;; 0f:5aa5 $82
+    db   $81 ; unknown music opcode                    ;; 0f:5aa6 $81
+    db   $84 ; unknown music opcode                    ;; 0f:5aa7 $84
+    db   $83 ; unknown music opcode                    ;; 0f:5aa8 $83
+    db   $82 ; unknown music opcode                    ;; 0f:5aa9 $82
+    db   $81 ; unknown music opcode                    ;; 0f:5aaa $81
+    db   $84 ; unknown music opcode                    ;; 0f:5aab $84
+    db   $83 ; unknown music opcode                    ;; 0f:5aac $83
+    db   $82 ; unknown music opcode                    ;; 0f:5aad $82
+    db   $81 ; unknown music opcode                    ;; 0f:5aae $81
+    mUNK_E2 .data_0f_5a9f                              ;; 0f:5aaf $e2 $9f $5a
+    db   $DC ; unknown music opcode                    ;; 0f:5ab2 $dc
+    db   $88 ; unknown music opcode                    ;; 0f:5ab3 $88
+    db   $86 ; unknown music opcode                    ;; 0f:5ab4 $86
+    db   $88 ; unknown music opcode                    ;; 0f:5ab5 $88
+    db   $89 ; unknown music opcode                    ;; 0f:5ab6 $89
+    db   $58 ; unknown music opcode                    ;; 0f:5ab7 $58
+    mUNK_E0 $82                                        ;; 0f:5ab8 $e0 $82
+    db   $7A ; unknown music opcode                    ;; 0f:5aba $7a
+    db   $5B ; unknown music opcode                    ;; 0f:5abb $5b
+    mUNK_E6 $02                                        ;; 0f:5abc $e6 $02
+    db   $57 ; unknown music opcode                    ;; 0f:5abe $57
+    db   $5A ; unknown music opcode                    ;; 0f:5abf $5a
+    db   $5D ; unknown music opcode                    ;; 0f:5ac0 $5d
+    db   $D8 ; unknown music opcode                    ;; 0f:5ac1 $d8
+    db   $54 ; unknown music opcode                    ;; 0f:5ac2 $54
+    mUNK_E1 .data_0f_5a40                              ;; 0f:5ac3 $e1 $40 $5a
 
-data_0f_5ac6:
-    db   $e4, $4f, $7a                                 ;; 0f:5ac6 ...
+song0d_channel3:
+    mUNK_E4 frequencyDeltaData                         ;; 0f:5ac6 $e4 $4f $7a
 .data_0f_5ac9:
-    db   $e8, $cc, $7a, $e0, $40, $e6, $03, $e3        ;; 0f:5ac9 ........
-    db   $04                                           ;; 0f:5ad1 .
+    mUNK_E8 wavePatternsData                           ;; 0f:5ac9 $e8 $cc $7a
+    mUNK_E0 $40                                        ;; 0f:5acc $e0 $40
+    mUNK_E6 $03                                        ;; 0f:5ace $e6 $03
+    mUNK_E3 $04                                        ;; 0f:5ad0 $e3 $04
 .data_0f_5ad2:
-    db   $d1, $8b, $8f, $8b, $8f, $8b, $8f, $8b        ;; 0f:5ad2 ........
-    db   $8f, $e2                                      ;; 0f:5ada ..
-    dw   .data_0f_5ad2                                 ;; 0f:5adc pP
-    db   $8d, $8f, $8d, $8f, $8d, $8f, $8d, $8f        ;; 0f:5ade ........
-    db   $8d, $8f, $8d, $8f, $8d, $8f, $8d, $8f        ;; 0f:5ae6 ........
-    db   $d8, $82, $8f, $82, $8f, $82, $8f, $82        ;; 0f:5aee ........
-    db   $8f, $82, $8f, $82, $8f, $82, $8f, $82        ;; 0f:5af6 ........
-    db   $8f, $dc, $e3, $02                            ;; 0f:5afe ....
+    db   $D1 ; unknown music opcode                    ;; 0f:5ad2 $d1
+    db   $8B ; unknown music opcode                    ;; 0f:5ad3 $8b
+    db   $8F ; unknown music opcode                    ;; 0f:5ad4 $8f
+    db   $8B ; unknown music opcode                    ;; 0f:5ad5 $8b
+    db   $8F ; unknown music opcode                    ;; 0f:5ad6 $8f
+    db   $8B ; unknown music opcode                    ;; 0f:5ad7 $8b
+    db   $8F ; unknown music opcode                    ;; 0f:5ad8 $8f
+    db   $8B ; unknown music opcode                    ;; 0f:5ad9 $8b
+    db   $8F ; unknown music opcode                    ;; 0f:5ada $8f
+    mUNK_E2 .data_0f_5ad2                              ;; 0f:5adb $e2 $d2 $5a
+    db   $8D ; unknown music opcode                    ;; 0f:5ade $8d
+    db   $8F ; unknown music opcode                    ;; 0f:5adf $8f
+    db   $8D ; unknown music opcode                    ;; 0f:5ae0 $8d
+    db   $8F ; unknown music opcode                    ;; 0f:5ae1 $8f
+    db   $8D ; unknown music opcode                    ;; 0f:5ae2 $8d
+    db   $8F ; unknown music opcode                    ;; 0f:5ae3 $8f
+    db   $8D ; unknown music opcode                    ;; 0f:5ae4 $8d
+    db   $8F ; unknown music opcode                    ;; 0f:5ae5 $8f
+    db   $8D ; unknown music opcode                    ;; 0f:5ae6 $8d
+    db   $8F ; unknown music opcode                    ;; 0f:5ae7 $8f
+    db   $8D ; unknown music opcode                    ;; 0f:5ae8 $8d
+    db   $8F ; unknown music opcode                    ;; 0f:5ae9 $8f
+    db   $8D ; unknown music opcode                    ;; 0f:5aea $8d
+    db   $8F ; unknown music opcode                    ;; 0f:5aeb $8f
+    db   $8D ; unknown music opcode                    ;; 0f:5aec $8d
+    db   $8F ; unknown music opcode                    ;; 0f:5aed $8f
+    db   $D8 ; unknown music opcode                    ;; 0f:5aee $d8
+    db   $82 ; unknown music opcode                    ;; 0f:5aef $82
+    db   $8F ; unknown music opcode                    ;; 0f:5af0 $8f
+    db   $82 ; unknown music opcode                    ;; 0f:5af1 $82
+    db   $8F ; unknown music opcode                    ;; 0f:5af2 $8f
+    db   $82 ; unknown music opcode                    ;; 0f:5af3 $82
+    db   $8F ; unknown music opcode                    ;; 0f:5af4 $8f
+    db   $82 ; unknown music opcode                    ;; 0f:5af5 $82
+    db   $8F ; unknown music opcode                    ;; 0f:5af6 $8f
+    db   $82 ; unknown music opcode                    ;; 0f:5af7 $82
+    db   $8F ; unknown music opcode                    ;; 0f:5af8 $8f
+    db   $82 ; unknown music opcode                    ;; 0f:5af9 $82
+    db   $8F ; unknown music opcode                    ;; 0f:5afa $8f
+    db   $82 ; unknown music opcode                    ;; 0f:5afb $82
+    db   $8F ; unknown music opcode                    ;; 0f:5afc $8f
+    db   $82 ; unknown music opcode                    ;; 0f:5afd $82
+    db   $8F ; unknown music opcode                    ;; 0f:5afe $8f
+    db   $DC ; unknown music opcode                    ;; 0f:5aff $dc
+    mUNK_E3 $02                                        ;; 0f:5b00 $e3 $02
 .data_0f_5b02:
-    db   $e6, $02, $2b, $d8, $e6, $01, $26, $dc        ;; 0f:5b02 ........
-    db   $e6, $02, $2b, $d8, $e6, $01, $26, $dc        ;; 0f:5b0a ........
-    db   $e2                                           ;; 0f:5b12 .
-    dw   .data_0f_5b02                                 ;; 0f:5b13 pP
-    db   $e3, $02                                      ;; 0f:5b15 ..
+    mUNK_E6 $02                                        ;; 0f:5b02 $e6 $02
+    db   $2B ; unknown music opcode                    ;; 0f:5b04 $2b
+    db   $D8 ; unknown music opcode                    ;; 0f:5b05 $d8
+    mUNK_E6 $01                                        ;; 0f:5b06 $e6 $01
+    db   $26 ; unknown music opcode                    ;; 0f:5b08 $26
+    db   $DC ; unknown music opcode                    ;; 0f:5b09 $dc
+    mUNK_E6 $02                                        ;; 0f:5b0a $e6 $02
+    db   $2B ; unknown music opcode                    ;; 0f:5b0c $2b
+    db   $D8 ; unknown music opcode                    ;; 0f:5b0d $d8
+    mUNK_E6 $01                                        ;; 0f:5b0e $e6 $01
+    db   $26 ; unknown music opcode                    ;; 0f:5b10 $26
+    db   $DC ; unknown music opcode                    ;; 0f:5b11 $dc
+    mUNK_E2 .data_0f_5b02                              ;; 0f:5b12 $e2 $02 $5b
+    mUNK_E3 $02                                        ;; 0f:5b15 $e3 $02
 .data_0f_5b17:
-    db   $e6, $02, $d8, $21, $e6, $01, $28, $e6        ;; 0f:5b17 ........
-    db   $02, $21, $e6, $01, $28, $dc, $e2             ;; 0f:5b1f .......
-    dw   .data_0f_5b17                                 ;; 0f:5b26 pP
-    db   $e6, $02, $1b, $d8, $e6, $03, $52, $dc        ;; 0f:5b28 ........
-    db   $e6, $01, $5a, $5d, $d8, $54, $57, $e1        ;; 0f:5b30 ........
-    dw   .data_0f_5ac9                                 ;; 0f:5b38 pP
+    mUNK_E6 $02                                        ;; 0f:5b17 $e6 $02
+    db   $D8 ; unknown music opcode                    ;; 0f:5b19 $d8
+    db   $21 ; unknown music opcode                    ;; 0f:5b1a $21
+    mUNK_E6 $01                                        ;; 0f:5b1b $e6 $01
+    db   $28 ; unknown music opcode                    ;; 0f:5b1d $28
+    mUNK_E6 $02                                        ;; 0f:5b1e $e6 $02
+    db   $21 ; unknown music opcode                    ;; 0f:5b20 $21
+    mUNK_E6 $01                                        ;; 0f:5b21 $e6 $01
+    db   $28 ; unknown music opcode                    ;; 0f:5b23 $28
+    db   $DC ; unknown music opcode                    ;; 0f:5b24 $dc
+    mUNK_E2 .data_0f_5b17                              ;; 0f:5b25 $e2 $17 $5b
+    mUNK_E6 $02                                        ;; 0f:5b28 $e6 $02
+    db   $1B ; unknown music opcode                    ;; 0f:5b2a $1b
+    db   $D8 ; unknown music opcode                    ;; 0f:5b2b $d8
+    mUNK_E6 $03                                        ;; 0f:5b2c $e6 $03
+    db   $52 ; unknown music opcode                    ;; 0f:5b2e $52
+    db   $DC ; unknown music opcode                    ;; 0f:5b2f $dc
+    mUNK_E6 $01                                        ;; 0f:5b30 $e6 $01
+    db   $5A ; unknown music opcode                    ;; 0f:5b32 $5a
+    db   $5D ; unknown music opcode                    ;; 0f:5b33 $5d
+    db   $D8 ; unknown music opcode                    ;; 0f:5b34 $d8
+    db   $54 ; unknown music opcode                    ;; 0f:5b35 $54
+    db   $57 ; unknown music opcode                    ;; 0f:5b36 $57
+    mUNK_E1 .data_0f_5ac9                              ;; 0f:5b37 $e1 $c9 $5a
     db   $e7, $14                                      ;; 0f:5b3a ??
 
-data_0f_5b3c:
-    db   $e4, $4f, $7a, $e0, $c0, $7a, $e5, $40        ;; 0f:5b3c ????????
-    db   $e6, $03, $e3, $02, $e7, $85, $d2, $79        ;; 0f:5b44 ????????
-    db   $d8, $74, $80, $17, $8e, $a6, $a7, $76        ;; 0f:5b4c ????????
-    db   $74, $82, $74, $70, $84, $29, $7e, $77        ;; 0f:5b54 ????????
-    db   $89, $64, $b5, $b6, $57, $46, $42, $54        ;; 0f:5b5c ????????
-    db   $85, $84, $85, $54, $a2, $a0, $dc, $5b        ;; 0f:5b64 ????????
-    db   $e2, $48, $5b, $e3, $02, $e7, $87, $e4        ;; 0f:5b6c ????????
-    db   $63, $7a, $e0, $82, $7a, $e5, $80, $4c        ;; 0f:5b74 ????????
-    db   $ab, $aa, $49, $aa, $ab, $8c, $ab, $aa        ;; 0f:5b7c ????????
-    db   $29, $87, $89, $e5, $40, $44, $a5, $a6        ;; 0f:5b84 ????????
-    db   $47, $a6, $a5, $84, $a5, $a6, $17, $e2        ;; 0f:5b8c ????????
-    db   $71, $5b, $e7, $85, $e4, $4f, $7a, $e0        ;; 0f:5b94 ????????
-    db   $be, $7a, $a4, $a8, $ab, $a4, $a8, $ab        ;; 0f:5b9c ????????
-    db   $a8, $ab, $d8, $24, $dc, $a5, $a9, $ac        ;; 0f:5ba4 ????????
-    db   $a5, $a9, $ac, $a9, $ac, $d8, $25, $dc        ;; 0f:5bac ????????
-    db   $e7, $87, $ab, $ac, $d8, $a2, $a0, $dc        ;; 0f:5bb4 ????????
-    db   $5b, $a9, $ab, $ac, $ab, $59, $48, $49        ;; 0f:5bbc ????????
-    db   $5b, $e1, $3c, $5b                            ;; 0f:5bc4 ????
+song0e_channel2:
+    mUNK_E4 frequencyDeltaData                         ;; 0f:5b3c $e4 $4f $7a
+    mUNK_E0 $c0                                        ;; 0f:5b3f $e0 $c0
+    db   $7A ; unknown music opcode                    ;; 0f:5b41 $7a
+    mUNK_E5 $40                                        ;; 0f:5b42 $e5 $40
+    mUNK_E6 $03                                        ;; 0f:5b44 $e6 $03
+    mUNK_E3 $02                                        ;; 0f:5b46 $e3 $02
+.data_0f_5b48:
+    mUNK_E7 $85                                        ;; 0f:5b48 $e7 $85
+    db   $D2 ; unknown music opcode                    ;; 0f:5b4a $d2
+    db   $79 ; unknown music opcode                    ;; 0f:5b4b $79
+    db   $D8 ; unknown music opcode                    ;; 0f:5b4c $d8
+    db   $74 ; unknown music opcode                    ;; 0f:5b4d $74
+    db   $80 ; unknown music opcode                    ;; 0f:5b4e $80
+    db   $17 ; unknown music opcode                    ;; 0f:5b4f $17
+    db   $8E ; unknown music opcode                    ;; 0f:5b50 $8e
+    db   $A6 ; unknown music opcode                    ;; 0f:5b51 $a6
+    db   $A7 ; unknown music opcode                    ;; 0f:5b52 $a7
+    db   $76 ; unknown music opcode                    ;; 0f:5b53 $76
+    db   $74 ; unknown music opcode                    ;; 0f:5b54 $74
+    db   $82 ; unknown music opcode                    ;; 0f:5b55 $82
+    db   $74 ; unknown music opcode                    ;; 0f:5b56 $74
+    db   $70 ; unknown music opcode                    ;; 0f:5b57 $70
+    db   $84 ; unknown music opcode                    ;; 0f:5b58 $84
+    db   $29 ; unknown music opcode                    ;; 0f:5b59 $29
+    db   $7E ; unknown music opcode                    ;; 0f:5b5a $7e
+    db   $77 ; unknown music opcode                    ;; 0f:5b5b $77
+    db   $89 ; unknown music opcode                    ;; 0f:5b5c $89
+    db   $64 ; unknown music opcode                    ;; 0f:5b5d $64
+    db   $B5 ; unknown music opcode                    ;; 0f:5b5e $b5
+    db   $B6 ; unknown music opcode                    ;; 0f:5b5f $b6
+    db   $57 ; unknown music opcode                    ;; 0f:5b60 $57
+    db   $46 ; unknown music opcode                    ;; 0f:5b61 $46
+    db   $42 ; unknown music opcode                    ;; 0f:5b62 $42
+    db   $54 ; unknown music opcode                    ;; 0f:5b63 $54
+    db   $85 ; unknown music opcode                    ;; 0f:5b64 $85
+    db   $84 ; unknown music opcode                    ;; 0f:5b65 $84
+    db   $85 ; unknown music opcode                    ;; 0f:5b66 $85
+    db   $54 ; unknown music opcode                    ;; 0f:5b67 $54
+    db   $A2 ; unknown music opcode                    ;; 0f:5b68 $a2
+    db   $A0 ; unknown music opcode                    ;; 0f:5b69 $a0
+    db   $DC ; unknown music opcode                    ;; 0f:5b6a $dc
+    db   $5B ; unknown music opcode                    ;; 0f:5b6b $5b
+    mUNK_E2 .data_0f_5b48                              ;; 0f:5b6c $e2 $48 $5b
+    mUNK_E3 $02                                        ;; 0f:5b6f $e3 $02
+.data_0f_5b71:
+    mUNK_E7 $87                                        ;; 0f:5b71 $e7 $87
+    mUNK_E4 frequencyDeltaData.third                   ;; 0f:5b73 $e4 $63 $7a
+    mUNK_E0 $82                                        ;; 0f:5b76 $e0 $82
+    db   $7A ; unknown music opcode                    ;; 0f:5b78 $7a
+    mUNK_E5 $80                                        ;; 0f:5b79 $e5 $80
+    db   $4C ; unknown music opcode                    ;; 0f:5b7b $4c
+    db   $AB ; unknown music opcode                    ;; 0f:5b7c $ab
+    db   $AA ; unknown music opcode                    ;; 0f:5b7d $aa
+    db   $49 ; unknown music opcode                    ;; 0f:5b7e $49
+    db   $AA ; unknown music opcode                    ;; 0f:5b7f $aa
+    db   $AB ; unknown music opcode                    ;; 0f:5b80 $ab
+    db   $8C ; unknown music opcode                    ;; 0f:5b81 $8c
+    db   $AB ; unknown music opcode                    ;; 0f:5b82 $ab
+    db   $AA ; unknown music opcode                    ;; 0f:5b83 $aa
+    db   $29 ; unknown music opcode                    ;; 0f:5b84 $29
+    db   $87 ; unknown music opcode                    ;; 0f:5b85 $87
+    db   $89 ; unknown music opcode                    ;; 0f:5b86 $89
+    mUNK_E5 $40                                        ;; 0f:5b87 $e5 $40
+    db   $44 ; unknown music opcode                    ;; 0f:5b89 $44
+    db   $A5 ; unknown music opcode                    ;; 0f:5b8a $a5
+    db   $A6 ; unknown music opcode                    ;; 0f:5b8b $a6
+    db   $47 ; unknown music opcode                    ;; 0f:5b8c $47
+    db   $A6 ; unknown music opcode                    ;; 0f:5b8d $a6
+    db   $A5 ; unknown music opcode                    ;; 0f:5b8e $a5
+    db   $84 ; unknown music opcode                    ;; 0f:5b8f $84
+    db   $A5 ; unknown music opcode                    ;; 0f:5b90 $a5
+    db   $A6 ; unknown music opcode                    ;; 0f:5b91 $a6
+    db   $17 ; unknown music opcode                    ;; 0f:5b92 $17
+    mUNK_E2 .data_0f_5b71                              ;; 0f:5b93 $e2 $71 $5b
+    mUNK_E7 $85                                        ;; 0f:5b96 $e7 $85
+    mUNK_E4 frequencyDeltaData                         ;; 0f:5b98 $e4 $4f $7a
+    mUNK_E0 $be                                        ;; 0f:5b9b $e0 $be
+    db   $7A ; unknown music opcode                    ;; 0f:5b9d $7a
+    db   $A4 ; unknown music opcode                    ;; 0f:5b9e $a4
+    db   $A8 ; unknown music opcode                    ;; 0f:5b9f $a8
+    db   $AB ; unknown music opcode                    ;; 0f:5ba0 $ab
+    db   $A4 ; unknown music opcode                    ;; 0f:5ba1 $a4
+    db   $A8 ; unknown music opcode                    ;; 0f:5ba2 $a8
+    db   $AB ; unknown music opcode                    ;; 0f:5ba3 $ab
+    db   $A8 ; unknown music opcode                    ;; 0f:5ba4 $a8
+    db   $AB ; unknown music opcode                    ;; 0f:5ba5 $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:5ba6 $d8
+    db   $24 ; unknown music opcode                    ;; 0f:5ba7 $24
+    db   $DC ; unknown music opcode                    ;; 0f:5ba8 $dc
+    db   $A5 ; unknown music opcode                    ;; 0f:5ba9 $a5
+    db   $A9 ; unknown music opcode                    ;; 0f:5baa $a9
+    db   $AC ; unknown music opcode                    ;; 0f:5bab $ac
+    db   $A5 ; unknown music opcode                    ;; 0f:5bac $a5
+    db   $A9 ; unknown music opcode                    ;; 0f:5bad $a9
+    db   $AC ; unknown music opcode                    ;; 0f:5bae $ac
+    db   $A9 ; unknown music opcode                    ;; 0f:5baf $a9
+    db   $AC ; unknown music opcode                    ;; 0f:5bb0 $ac
+    db   $D8 ; unknown music opcode                    ;; 0f:5bb1 $d8
+    db   $25 ; unknown music opcode                    ;; 0f:5bb2 $25
+    db   $DC ; unknown music opcode                    ;; 0f:5bb3 $dc
+    mUNK_E7 $87                                        ;; 0f:5bb4 $e7 $87
+    db   $AB ; unknown music opcode                    ;; 0f:5bb6 $ab
+    db   $AC ; unknown music opcode                    ;; 0f:5bb7 $ac
+    db   $D8 ; unknown music opcode                    ;; 0f:5bb8 $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:5bb9 $a2
+    db   $A0 ; unknown music opcode                    ;; 0f:5bba $a0
+    db   $DC ; unknown music opcode                    ;; 0f:5bbb $dc
+    db   $5B ; unknown music opcode                    ;; 0f:5bbc $5b
+    db   $A9 ; unknown music opcode                    ;; 0f:5bbd $a9
+    db   $AB ; unknown music opcode                    ;; 0f:5bbe $ab
+    db   $AC ; unknown music opcode                    ;; 0f:5bbf $ac
+    db   $AB ; unknown music opcode                    ;; 0f:5bc0 $ab
+    db   $59 ; unknown music opcode                    ;; 0f:5bc1 $59
+    db   $48 ; unknown music opcode                    ;; 0f:5bc2 $48
+    db   $49 ; unknown music opcode                    ;; 0f:5bc3 $49
+    db   $5B ; unknown music opcode                    ;; 0f:5bc4 $5b
+    mUNK_E1 song0e_channel2                            ;; 0f:5bc5 $e1 $3c $5b
 
-data_0f_5bc8:
-    db   $e4, $4f, $7a, $e0, $ae, $7a, $e5, $00        ;; 0f:5bc8 ????????
-    db   $e6, $02, $e3, $02, $e6, $02, $d2, $a4        ;; 0f:5bd0 ????????
-    db   $a0, $dc, $ab, $ac, $d8, $e6, $01, $a4        ;; 0f:5bd8 ????????
-    db   $a0, $dc, $ab, $ac, $d8, $e6, $02, $a4        ;; 0f:5be0 ????????
-    db   $a0, $dc, $ab, $ac, $d8, $e6, $01, $a4        ;; 0f:5be8 ????????
-    db   $a0, $dc, $ab, $ac, $d8, $e6, $03, $a4        ;; 0f:5bf0 ????????
-    db   $a0, $dc, $ab, $ac, $d8, $a4, $a0, $dc        ;; 0f:5bf8 ????????
-    db   $ab, $ac, $d8, $a4, $a0, $dc, $ab, $ac        ;; 0f:5c00 ????????
-    db   $d8, $a4, $a0, $dc, $ab, $ac, $e2, $d4        ;; 0f:5c08 ????????
-    db   $5b, $d8, $e3, $02, $e6, $02, $a6, $a2        ;; 0f:5c10 ????????
-    db   $dc, $a9, $d8, $a2, $e6, $01, $a6, $a2        ;; 0f:5c18 ????????
-    db   $dc, $a9, $d8, $a2, $e2, $14, $5c, $e6        ;; 0f:5c20 ????????
-    db   $03, $a5, $a0, $dc, $a9, $ac, $d8, $a5        ;; 0f:5c28 ????????
-    db   $a0, $dc, $a9, $ac, $d8, $a5, $a0, $dc        ;; 0f:5c30 ????????
-    db   $a9, $ac, $d8, $a5, $a0, $dc, $a9, $ac        ;; 0f:5c38 ????????
-    db   $e3, $02, $e6, $02, $d2, $a4, $a0, $dc        ;; 0f:5c40 ????????
-    db   $ab, $ac, $d8, $e6, $01, $a4, $a0, $dc        ;; 0f:5c48 ????????
-    db   $ab, $ac, $d8, $e6, $02, $a4, $a0, $dc        ;; 0f:5c50 ????????
-    db   $ab, $ac, $d8, $e6, $01, $a4, $a0, $dc        ;; 0f:5c58 ????????
-    db   $ab, $ac, $d8, $e6, $03, $a4, $a0, $dc        ;; 0f:5c60 ????????
-    db   $ab, $ac, $d8, $a4, $a0, $dc, $ab, $ac        ;; 0f:5c68 ????????
-    db   $d8, $a4, $a0, $dc, $ab, $ac, $d8, $a4        ;; 0f:5c70 ????????
-    db   $a0, $dc, $ab, $ac, $e2, $42, $5c, $d8        ;; 0f:5c78 ????????
-    db   $e3, $02, $e6, $02, $a6, $a2, $dc, $a9        ;; 0f:5c80 ????????
-    db   $d8, $a2, $e6, $01, $a6, $a2, $dc, $a9        ;; 0f:5c88 ????????
-    db   $d8, $a2, $e2, $82, $5c, $e6, $03, $a5        ;; 0f:5c90 ????????
-    db   $a0, $dc, $a9, $ac, $d8, $a5, $a0, $dc        ;; 0f:5c98 ????????
-    db   $a9, $ac, $d8, $a5, $a0, $dc, $a9, $ac        ;; 0f:5ca0 ????????
-    db   $d8, $a5, $a0, $dc, $a9, $ac, $d9, $e3        ;; 0f:5ca8 ????????
-    db   $04, $e0, $a0, $7a, $e5, $40, $e6, $02        ;; 0f:5cb0 ????????
-    db   $a9, $a4, $d8, $e6, $03, $a4, $dc, $a4        ;; 0f:5cb8 ????????
-    db   $e6, $01, $a9, $a4, $d8, $e6, $03, $a4        ;; 0f:5cc0 ????????
-    db   $dc, $a4, $e2, $b1, $5c, $e6, $03, $e5        ;; 0f:5cc8 ????????
-    db   $00, $e0, $ae, $7a, $dd, $ab, $aa, $a9        ;; 0f:5cd0 ????????
-    db   $a8, $ab, $aa, $a9, $a8, $a7, $a8, $a9        ;; 0f:5cd8 ????????
-    db   $aa, $a7, $a8, $a9, $aa, $ab, $aa, $a9        ;; 0f:5ce0 ????????
-    db   $a8, $ab, $aa, $a9, $a8, $a7, $a8, $a9        ;; 0f:5ce8 ????????
-    db   $aa, $a7, $a8, $a9, $aa, $d9, $e3, $04        ;; 0f:5cf0 ????????
-    db   $e0, $a0, $7a, $e5, $40, $e6, $02, $a9        ;; 0f:5cf8 ????????
-    db   $a4, $d8, $e6, $03, $a4, $dc, $a4, $e6        ;; 0f:5d00 ????????
-    db   $01, $a9, $a4, $d8, $e6, $03, $a4, $dc        ;; 0f:5d08 ????????
-    db   $a4, $e2, $f8, $5c, $e0, $ae, $7a, $e6        ;; 0f:5d10 ????????
-    db   $03, $e5, $00, $dd, $ab, $aa, $a9, $a8        ;; 0f:5d18 ????????
-    db   $ab, $aa, $a9, $a8, $a7, $a8, $a9, $aa        ;; 0f:5d20 ????????
-    db   $a7, $a8, $a9, $aa, $ab, $aa, $a9, $a8        ;; 0f:5d28 ????????
-    db   $ab, $aa, $a9, $a8, $a7, $a8, $a9, $aa        ;; 0f:5d30 ????????
-    db   $a7, $a8, $a9, $aa, $e0, $82, $7a, $e6        ;; 0f:5d38 ????????
-    db   $02, $a8, $ab, $d8, $a4, $dc, $a8, $ab        ;; 0f:5d40 ????????
-    db   $d8, $a4, $dc, $ab, $d8, $a4, $e6, $03        ;; 0f:5d48 ????????
-    db   $8f, $dc, $ab, $ac, $ab, $a9, $a8, $ab        ;; 0f:5d50 ????????
-    db   $e6, $01, $a9, $ac, $d8, $a5, $dc, $a9        ;; 0f:5d58 ????????
-    db   $ac, $d8, $a5, $dc, $a9, $ac, $e6, $03        ;; 0f:5d60 ????????
-    db   $8f, $ac, $d8, $a2, $a0, $dc, $ab, $a9        ;; 0f:5d68 ????????
-    db   $ac, $d8, $e0, $b0, $7a, $52, $e6, $02        ;; 0f:5d70 ????????
-    db   $a7, $a2, $dc, $ab, $d8, $a2, $e6, $03        ;; 0f:5d78 ????????
-    db   $50, $e6, $01, $a5, $a0, $dc, $a9, $ac        ;; 0f:5d80 ????????
-    db   $e0, $94, $7a, $e6, $03, $ab, $a4, $ab        ;; 0f:5d88 ????????
-    db   $a4, $ab, $a4, $ac, $a4, $ac, $a4, $ac        ;; 0f:5d90 ????????
-    db   $a4, $d8, $e6, $02, $b2, $dc, $bb, $e6        ;; 0f:5d98 ????????
-    db   $03, $b8, $bb, $e6, $01, $b8, $b4, $e1        ;; 0f:5da0 ????????
-    db   $c8, $5b                                      ;; 0f:5da8 ??
+song0e_channel1:
+    mUNK_E4 frequencyDeltaData                         ;; 0f:5bc8 $e4 $4f $7a
+    mUNK_E0 $ae                                        ;; 0f:5bcb $e0 $ae
+    db   $7A ; unknown music opcode                    ;; 0f:5bcd $7a
+    mUNK_E5 $00                                        ;; 0f:5bce $e5 $00
+    mUNK_E6 $02                                        ;; 0f:5bd0 $e6 $02
+    mUNK_E3 $02                                        ;; 0f:5bd2 $e3 $02
+.data_0f_5bd4:
+    mUNK_E6 $02                                        ;; 0f:5bd4 $e6 $02
+    db   $D2 ; unknown music opcode                    ;; 0f:5bd6 $d2
+    db   $A4 ; unknown music opcode                    ;; 0f:5bd7 $a4
+    db   $A0 ; unknown music opcode                    ;; 0f:5bd8 $a0
+    db   $DC ; unknown music opcode                    ;; 0f:5bd9 $dc
+    db   $AB ; unknown music opcode                    ;; 0f:5bda $ab
+    db   $AC ; unknown music opcode                    ;; 0f:5bdb $ac
+    db   $D8 ; unknown music opcode                    ;; 0f:5bdc $d8
+    mUNK_E6 $01                                        ;; 0f:5bdd $e6 $01
+    db   $A4 ; unknown music opcode                    ;; 0f:5bdf $a4
+    db   $A0 ; unknown music opcode                    ;; 0f:5be0 $a0
+    db   $DC ; unknown music opcode                    ;; 0f:5be1 $dc
+    db   $AB ; unknown music opcode                    ;; 0f:5be2 $ab
+    db   $AC ; unknown music opcode                    ;; 0f:5be3 $ac
+    db   $D8 ; unknown music opcode                    ;; 0f:5be4 $d8
+    mUNK_E6 $02                                        ;; 0f:5be5 $e6 $02
+    db   $A4 ; unknown music opcode                    ;; 0f:5be7 $a4
+    db   $A0 ; unknown music opcode                    ;; 0f:5be8 $a0
+    db   $DC ; unknown music opcode                    ;; 0f:5be9 $dc
+    db   $AB ; unknown music opcode                    ;; 0f:5bea $ab
+    db   $AC ; unknown music opcode                    ;; 0f:5beb $ac
+    db   $D8 ; unknown music opcode                    ;; 0f:5bec $d8
+    mUNK_E6 $01                                        ;; 0f:5bed $e6 $01
+    db   $A4 ; unknown music opcode                    ;; 0f:5bef $a4
+    db   $A0 ; unknown music opcode                    ;; 0f:5bf0 $a0
+    db   $DC ; unknown music opcode                    ;; 0f:5bf1 $dc
+    db   $AB ; unknown music opcode                    ;; 0f:5bf2 $ab
+    db   $AC ; unknown music opcode                    ;; 0f:5bf3 $ac
+    db   $D8 ; unknown music opcode                    ;; 0f:5bf4 $d8
+    mUNK_E6 $03                                        ;; 0f:5bf5 $e6 $03
+    db   $A4 ; unknown music opcode                    ;; 0f:5bf7 $a4
+    db   $A0 ; unknown music opcode                    ;; 0f:5bf8 $a0
+    db   $DC ; unknown music opcode                    ;; 0f:5bf9 $dc
+    db   $AB ; unknown music opcode                    ;; 0f:5bfa $ab
+    db   $AC ; unknown music opcode                    ;; 0f:5bfb $ac
+    db   $D8 ; unknown music opcode                    ;; 0f:5bfc $d8
+    db   $A4 ; unknown music opcode                    ;; 0f:5bfd $a4
+    db   $A0 ; unknown music opcode                    ;; 0f:5bfe $a0
+    db   $DC ; unknown music opcode                    ;; 0f:5bff $dc
+    db   $AB ; unknown music opcode                    ;; 0f:5c00 $ab
+    db   $AC ; unknown music opcode                    ;; 0f:5c01 $ac
+    db   $D8 ; unknown music opcode                    ;; 0f:5c02 $d8
+    db   $A4 ; unknown music opcode                    ;; 0f:5c03 $a4
+    db   $A0 ; unknown music opcode                    ;; 0f:5c04 $a0
+    db   $DC ; unknown music opcode                    ;; 0f:5c05 $dc
+    db   $AB ; unknown music opcode                    ;; 0f:5c06 $ab
+    db   $AC ; unknown music opcode                    ;; 0f:5c07 $ac
+    db   $D8 ; unknown music opcode                    ;; 0f:5c08 $d8
+    db   $A4 ; unknown music opcode                    ;; 0f:5c09 $a4
+    db   $A0 ; unknown music opcode                    ;; 0f:5c0a $a0
+    db   $DC ; unknown music opcode                    ;; 0f:5c0b $dc
+    db   $AB ; unknown music opcode                    ;; 0f:5c0c $ab
+    db   $AC ; unknown music opcode                    ;; 0f:5c0d $ac
+    mUNK_E2 .data_0f_5bd4                              ;; 0f:5c0e $e2 $d4 $5b
+    db   $D8 ; unknown music opcode                    ;; 0f:5c11 $d8
+    mUNK_E3 $02                                        ;; 0f:5c12 $e3 $02
+.data_0f_5c14:
+    mUNK_E6 $02                                        ;; 0f:5c14 $e6 $02
+    db   $A6 ; unknown music opcode                    ;; 0f:5c16 $a6
+    db   $A2 ; unknown music opcode                    ;; 0f:5c17 $a2
+    db   $DC ; unknown music opcode                    ;; 0f:5c18 $dc
+    db   $A9 ; unknown music opcode                    ;; 0f:5c19 $a9
+    db   $D8 ; unknown music opcode                    ;; 0f:5c1a $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:5c1b $a2
+    mUNK_E6 $01                                        ;; 0f:5c1c $e6 $01
+    db   $A6 ; unknown music opcode                    ;; 0f:5c1e $a6
+    db   $A2 ; unknown music opcode                    ;; 0f:5c1f $a2
+    db   $DC ; unknown music opcode                    ;; 0f:5c20 $dc
+    db   $A9 ; unknown music opcode                    ;; 0f:5c21 $a9
+    db   $D8 ; unknown music opcode                    ;; 0f:5c22 $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:5c23 $a2
+    mUNK_E2 .data_0f_5c14                              ;; 0f:5c24 $e2 $14 $5c
+    mUNK_E6 $03                                        ;; 0f:5c27 $e6 $03
+    db   $A5 ; unknown music opcode                    ;; 0f:5c29 $a5
+    db   $A0 ; unknown music opcode                    ;; 0f:5c2a $a0
+    db   $DC ; unknown music opcode                    ;; 0f:5c2b $dc
+    db   $A9 ; unknown music opcode                    ;; 0f:5c2c $a9
+    db   $AC ; unknown music opcode                    ;; 0f:5c2d $ac
+    db   $D8 ; unknown music opcode                    ;; 0f:5c2e $d8
+    db   $A5 ; unknown music opcode                    ;; 0f:5c2f $a5
+    db   $A0 ; unknown music opcode                    ;; 0f:5c30 $a0
+    db   $DC ; unknown music opcode                    ;; 0f:5c31 $dc
+    db   $A9 ; unknown music opcode                    ;; 0f:5c32 $a9
+    db   $AC ; unknown music opcode                    ;; 0f:5c33 $ac
+    db   $D8 ; unknown music opcode                    ;; 0f:5c34 $d8
+    db   $A5 ; unknown music opcode                    ;; 0f:5c35 $a5
+    db   $A0 ; unknown music opcode                    ;; 0f:5c36 $a0
+    db   $DC ; unknown music opcode                    ;; 0f:5c37 $dc
+    db   $A9 ; unknown music opcode                    ;; 0f:5c38 $a9
+    db   $AC ; unknown music opcode                    ;; 0f:5c39 $ac
+    db   $D8 ; unknown music opcode                    ;; 0f:5c3a $d8
+    db   $A5 ; unknown music opcode                    ;; 0f:5c3b $a5
+    db   $A0 ; unknown music opcode                    ;; 0f:5c3c $a0
+    db   $DC ; unknown music opcode                    ;; 0f:5c3d $dc
+    db   $A9 ; unknown music opcode                    ;; 0f:5c3e $a9
+    db   $AC ; unknown music opcode                    ;; 0f:5c3f $ac
+    mUNK_E3 $02                                        ;; 0f:5c40 $e3 $02
+.data_0f_5c42:
+    mUNK_E6 $02                                        ;; 0f:5c42 $e6 $02
+    db   $D2 ; unknown music opcode                    ;; 0f:5c44 $d2
+    db   $A4 ; unknown music opcode                    ;; 0f:5c45 $a4
+    db   $A0 ; unknown music opcode                    ;; 0f:5c46 $a0
+    db   $DC ; unknown music opcode                    ;; 0f:5c47 $dc
+    db   $AB ; unknown music opcode                    ;; 0f:5c48 $ab
+    db   $AC ; unknown music opcode                    ;; 0f:5c49 $ac
+    db   $D8 ; unknown music opcode                    ;; 0f:5c4a $d8
+    mUNK_E6 $01                                        ;; 0f:5c4b $e6 $01
+    db   $A4 ; unknown music opcode                    ;; 0f:5c4d $a4
+    db   $A0 ; unknown music opcode                    ;; 0f:5c4e $a0
+    db   $DC ; unknown music opcode                    ;; 0f:5c4f $dc
+    db   $AB ; unknown music opcode                    ;; 0f:5c50 $ab
+    db   $AC ; unknown music opcode                    ;; 0f:5c51 $ac
+    db   $D8 ; unknown music opcode                    ;; 0f:5c52 $d8
+    mUNK_E6 $02                                        ;; 0f:5c53 $e6 $02
+    db   $A4 ; unknown music opcode                    ;; 0f:5c55 $a4
+    db   $A0 ; unknown music opcode                    ;; 0f:5c56 $a0
+    db   $DC ; unknown music opcode                    ;; 0f:5c57 $dc
+    db   $AB ; unknown music opcode                    ;; 0f:5c58 $ab
+    db   $AC ; unknown music opcode                    ;; 0f:5c59 $ac
+    db   $D8 ; unknown music opcode                    ;; 0f:5c5a $d8
+    mUNK_E6 $01                                        ;; 0f:5c5b $e6 $01
+    db   $A4 ; unknown music opcode                    ;; 0f:5c5d $a4
+    db   $A0 ; unknown music opcode                    ;; 0f:5c5e $a0
+    db   $DC ; unknown music opcode                    ;; 0f:5c5f $dc
+    db   $AB ; unknown music opcode                    ;; 0f:5c60 $ab
+    db   $AC ; unknown music opcode                    ;; 0f:5c61 $ac
+    db   $D8 ; unknown music opcode                    ;; 0f:5c62 $d8
+    mUNK_E6 $03                                        ;; 0f:5c63 $e6 $03
+    db   $A4 ; unknown music opcode                    ;; 0f:5c65 $a4
+    db   $A0 ; unknown music opcode                    ;; 0f:5c66 $a0
+    db   $DC ; unknown music opcode                    ;; 0f:5c67 $dc
+    db   $AB ; unknown music opcode                    ;; 0f:5c68 $ab
+    db   $AC ; unknown music opcode                    ;; 0f:5c69 $ac
+    db   $D8 ; unknown music opcode                    ;; 0f:5c6a $d8
+    db   $A4 ; unknown music opcode                    ;; 0f:5c6b $a4
+    db   $A0 ; unknown music opcode                    ;; 0f:5c6c $a0
+    db   $DC ; unknown music opcode                    ;; 0f:5c6d $dc
+    db   $AB ; unknown music opcode                    ;; 0f:5c6e $ab
+    db   $AC ; unknown music opcode                    ;; 0f:5c6f $ac
+    db   $D8 ; unknown music opcode                    ;; 0f:5c70 $d8
+    db   $A4 ; unknown music opcode                    ;; 0f:5c71 $a4
+    db   $A0 ; unknown music opcode                    ;; 0f:5c72 $a0
+    db   $DC ; unknown music opcode                    ;; 0f:5c73 $dc
+    db   $AB ; unknown music opcode                    ;; 0f:5c74 $ab
+    db   $AC ; unknown music opcode                    ;; 0f:5c75 $ac
+    db   $D8 ; unknown music opcode                    ;; 0f:5c76 $d8
+    db   $A4 ; unknown music opcode                    ;; 0f:5c77 $a4
+    db   $A0 ; unknown music opcode                    ;; 0f:5c78 $a0
+    db   $DC ; unknown music opcode                    ;; 0f:5c79 $dc
+    db   $AB ; unknown music opcode                    ;; 0f:5c7a $ab
+    db   $AC ; unknown music opcode                    ;; 0f:5c7b $ac
+    mUNK_E2 .data_0f_5c42                              ;; 0f:5c7c $e2 $42 $5c
+    db   $D8 ; unknown music opcode                    ;; 0f:5c7f $d8
+    mUNK_E3 $02                                        ;; 0f:5c80 $e3 $02
+.data_0f_5c82:
+    mUNK_E6 $02                                        ;; 0f:5c82 $e6 $02
+    db   $A6 ; unknown music opcode                    ;; 0f:5c84 $a6
+    db   $A2 ; unknown music opcode                    ;; 0f:5c85 $a2
+    db   $DC ; unknown music opcode                    ;; 0f:5c86 $dc
+    db   $A9 ; unknown music opcode                    ;; 0f:5c87 $a9
+    db   $D8 ; unknown music opcode                    ;; 0f:5c88 $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:5c89 $a2
+    mUNK_E6 $01                                        ;; 0f:5c8a $e6 $01
+    db   $A6 ; unknown music opcode                    ;; 0f:5c8c $a6
+    db   $A2 ; unknown music opcode                    ;; 0f:5c8d $a2
+    db   $DC ; unknown music opcode                    ;; 0f:5c8e $dc
+    db   $A9 ; unknown music opcode                    ;; 0f:5c8f $a9
+    db   $D8 ; unknown music opcode                    ;; 0f:5c90 $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:5c91 $a2
+    mUNK_E2 .data_0f_5c82                              ;; 0f:5c92 $e2 $82 $5c
+    mUNK_E6 $03                                        ;; 0f:5c95 $e6 $03
+    db   $A5 ; unknown music opcode                    ;; 0f:5c97 $a5
+    db   $A0 ; unknown music opcode                    ;; 0f:5c98 $a0
+    db   $DC ; unknown music opcode                    ;; 0f:5c99 $dc
+    db   $A9 ; unknown music opcode                    ;; 0f:5c9a $a9
+    db   $AC ; unknown music opcode                    ;; 0f:5c9b $ac
+    db   $D8 ; unknown music opcode                    ;; 0f:5c9c $d8
+    db   $A5 ; unknown music opcode                    ;; 0f:5c9d $a5
+    db   $A0 ; unknown music opcode                    ;; 0f:5c9e $a0
+    db   $DC ; unknown music opcode                    ;; 0f:5c9f $dc
+    db   $A9 ; unknown music opcode                    ;; 0f:5ca0 $a9
+    db   $AC ; unknown music opcode                    ;; 0f:5ca1 $ac
+    db   $D8 ; unknown music opcode                    ;; 0f:5ca2 $d8
+    db   $A5 ; unknown music opcode                    ;; 0f:5ca3 $a5
+    db   $A0 ; unknown music opcode                    ;; 0f:5ca4 $a0
+    db   $DC ; unknown music opcode                    ;; 0f:5ca5 $dc
+    db   $A9 ; unknown music opcode                    ;; 0f:5ca6 $a9
+    db   $AC ; unknown music opcode                    ;; 0f:5ca7 $ac
+    db   $D8 ; unknown music opcode                    ;; 0f:5ca8 $d8
+    db   $A5 ; unknown music opcode                    ;; 0f:5ca9 $a5
+    db   $A0 ; unknown music opcode                    ;; 0f:5caa $a0
+    db   $DC ; unknown music opcode                    ;; 0f:5cab $dc
+    db   $A9 ; unknown music opcode                    ;; 0f:5cac $a9
+    db   $AC ; unknown music opcode                    ;; 0f:5cad $ac
+    db   $D9 ; unknown music opcode                    ;; 0f:5cae $d9
+    mUNK_E3 $04                                        ;; 0f:5caf $e3 $04
+.data_0f_5cb1:
+    mUNK_E0 $a0                                        ;; 0f:5cb1 $e0 $a0
+    db   $7A ; unknown music opcode                    ;; 0f:5cb3 $7a
+    mUNK_E5 $40                                        ;; 0f:5cb4 $e5 $40
+    mUNK_E6 $02                                        ;; 0f:5cb6 $e6 $02
+    db   $A9 ; unknown music opcode                    ;; 0f:5cb8 $a9
+    db   $A4 ; unknown music opcode                    ;; 0f:5cb9 $a4
+    db   $D8 ; unknown music opcode                    ;; 0f:5cba $d8
+    mUNK_E6 $03                                        ;; 0f:5cbb $e6 $03
+    db   $A4 ; unknown music opcode                    ;; 0f:5cbd $a4
+    db   $DC ; unknown music opcode                    ;; 0f:5cbe $dc
+    db   $A4 ; unknown music opcode                    ;; 0f:5cbf $a4
+    mUNK_E6 $01                                        ;; 0f:5cc0 $e6 $01
+    db   $A9 ; unknown music opcode                    ;; 0f:5cc2 $a9
+    db   $A4 ; unknown music opcode                    ;; 0f:5cc3 $a4
+    db   $D8 ; unknown music opcode                    ;; 0f:5cc4 $d8
+    mUNK_E6 $03                                        ;; 0f:5cc5 $e6 $03
+    db   $A4 ; unknown music opcode                    ;; 0f:5cc7 $a4
+    db   $DC ; unknown music opcode                    ;; 0f:5cc8 $dc
+    db   $A4 ; unknown music opcode                    ;; 0f:5cc9 $a4
+    mUNK_E2 .data_0f_5cb1                              ;; 0f:5cca $e2 $b1 $5c
+    mUNK_E6 $03                                        ;; 0f:5ccd $e6 $03
+    mUNK_E5 $00                                        ;; 0f:5ccf $e5 $00
+    mUNK_E0 $ae                                        ;; 0f:5cd1 $e0 $ae
+    db   $7A ; unknown music opcode                    ;; 0f:5cd3 $7a
+    db   $DD ; unknown music opcode                    ;; 0f:5cd4 $dd
+    db   $AB ; unknown music opcode                    ;; 0f:5cd5 $ab
+    db   $AA ; unknown music opcode                    ;; 0f:5cd6 $aa
+    db   $A9 ; unknown music opcode                    ;; 0f:5cd7 $a9
+    db   $A8 ; unknown music opcode                    ;; 0f:5cd8 $a8
+    db   $AB ; unknown music opcode                    ;; 0f:5cd9 $ab
+    db   $AA ; unknown music opcode                    ;; 0f:5cda $aa
+    db   $A9 ; unknown music opcode                    ;; 0f:5cdb $a9
+    db   $A8 ; unknown music opcode                    ;; 0f:5cdc $a8
+    db   $A7 ; unknown music opcode                    ;; 0f:5cdd $a7
+    db   $A8 ; unknown music opcode                    ;; 0f:5cde $a8
+    db   $A9 ; unknown music opcode                    ;; 0f:5cdf $a9
+    db   $AA ; unknown music opcode                    ;; 0f:5ce0 $aa
+    db   $A7 ; unknown music opcode                    ;; 0f:5ce1 $a7
+    db   $A8 ; unknown music opcode                    ;; 0f:5ce2 $a8
+    db   $A9 ; unknown music opcode                    ;; 0f:5ce3 $a9
+    db   $AA ; unknown music opcode                    ;; 0f:5ce4 $aa
+    db   $AB ; unknown music opcode                    ;; 0f:5ce5 $ab
+    db   $AA ; unknown music opcode                    ;; 0f:5ce6 $aa
+    db   $A9 ; unknown music opcode                    ;; 0f:5ce7 $a9
+    db   $A8 ; unknown music opcode                    ;; 0f:5ce8 $a8
+    db   $AB ; unknown music opcode                    ;; 0f:5ce9 $ab
+    db   $AA ; unknown music opcode                    ;; 0f:5cea $aa
+    db   $A9 ; unknown music opcode                    ;; 0f:5ceb $a9
+    db   $A8 ; unknown music opcode                    ;; 0f:5cec $a8
+    db   $A7 ; unknown music opcode                    ;; 0f:5ced $a7
+    db   $A8 ; unknown music opcode                    ;; 0f:5cee $a8
+    db   $A9 ; unknown music opcode                    ;; 0f:5cef $a9
+    db   $AA ; unknown music opcode                    ;; 0f:5cf0 $aa
+    db   $A7 ; unknown music opcode                    ;; 0f:5cf1 $a7
+    db   $A8 ; unknown music opcode                    ;; 0f:5cf2 $a8
+    db   $A9 ; unknown music opcode                    ;; 0f:5cf3 $a9
+    db   $AA ; unknown music opcode                    ;; 0f:5cf4 $aa
+    db   $D9 ; unknown music opcode                    ;; 0f:5cf5 $d9
+    mUNK_E3 $04                                        ;; 0f:5cf6 $e3 $04
+.data_0f_5cf8:
+    mUNK_E0 $a0                                        ;; 0f:5cf8 $e0 $a0
+    db   $7A ; unknown music opcode                    ;; 0f:5cfa $7a
+    mUNK_E5 $40                                        ;; 0f:5cfb $e5 $40
+    mUNK_E6 $02                                        ;; 0f:5cfd $e6 $02
+    db   $A9 ; unknown music opcode                    ;; 0f:5cff $a9
+    db   $A4 ; unknown music opcode                    ;; 0f:5d00 $a4
+    db   $D8 ; unknown music opcode                    ;; 0f:5d01 $d8
+    mUNK_E6 $03                                        ;; 0f:5d02 $e6 $03
+    db   $A4 ; unknown music opcode                    ;; 0f:5d04 $a4
+    db   $DC ; unknown music opcode                    ;; 0f:5d05 $dc
+    db   $A4 ; unknown music opcode                    ;; 0f:5d06 $a4
+    mUNK_E6 $01                                        ;; 0f:5d07 $e6 $01
+    db   $A9 ; unknown music opcode                    ;; 0f:5d09 $a9
+    db   $A4 ; unknown music opcode                    ;; 0f:5d0a $a4
+    db   $D8 ; unknown music opcode                    ;; 0f:5d0b $d8
+    mUNK_E6 $03                                        ;; 0f:5d0c $e6 $03
+    db   $A4 ; unknown music opcode                    ;; 0f:5d0e $a4
+    db   $DC ; unknown music opcode                    ;; 0f:5d0f $dc
+    db   $A4 ; unknown music opcode                    ;; 0f:5d10 $a4
+    mUNK_E2 .data_0f_5cf8                              ;; 0f:5d11 $e2 $f8 $5c
+    mUNK_E0 $ae                                        ;; 0f:5d14 $e0 $ae
+    db   $7A ; unknown music opcode                    ;; 0f:5d16 $7a
+    mUNK_E6 $03                                        ;; 0f:5d17 $e6 $03
+    mUNK_E5 $00                                        ;; 0f:5d19 $e5 $00
+    db   $DD ; unknown music opcode                    ;; 0f:5d1b $dd
+    db   $AB ; unknown music opcode                    ;; 0f:5d1c $ab
+    db   $AA ; unknown music opcode                    ;; 0f:5d1d $aa
+    db   $A9 ; unknown music opcode                    ;; 0f:5d1e $a9
+    db   $A8 ; unknown music opcode                    ;; 0f:5d1f $a8
+    db   $AB ; unknown music opcode                    ;; 0f:5d20 $ab
+    db   $AA ; unknown music opcode                    ;; 0f:5d21 $aa
+    db   $A9 ; unknown music opcode                    ;; 0f:5d22 $a9
+    db   $A8 ; unknown music opcode                    ;; 0f:5d23 $a8
+    db   $A7 ; unknown music opcode                    ;; 0f:5d24 $a7
+    db   $A8 ; unknown music opcode                    ;; 0f:5d25 $a8
+    db   $A9 ; unknown music opcode                    ;; 0f:5d26 $a9
+    db   $AA ; unknown music opcode                    ;; 0f:5d27 $aa
+    db   $A7 ; unknown music opcode                    ;; 0f:5d28 $a7
+    db   $A8 ; unknown music opcode                    ;; 0f:5d29 $a8
+    db   $A9 ; unknown music opcode                    ;; 0f:5d2a $a9
+    db   $AA ; unknown music opcode                    ;; 0f:5d2b $aa
+    db   $AB ; unknown music opcode                    ;; 0f:5d2c $ab
+    db   $AA ; unknown music opcode                    ;; 0f:5d2d $aa
+    db   $A9 ; unknown music opcode                    ;; 0f:5d2e $a9
+    db   $A8 ; unknown music opcode                    ;; 0f:5d2f $a8
+    db   $AB ; unknown music opcode                    ;; 0f:5d30 $ab
+    db   $AA ; unknown music opcode                    ;; 0f:5d31 $aa
+    db   $A9 ; unknown music opcode                    ;; 0f:5d32 $a9
+    db   $A8 ; unknown music opcode                    ;; 0f:5d33 $a8
+    db   $A7 ; unknown music opcode                    ;; 0f:5d34 $a7
+    db   $A8 ; unknown music opcode                    ;; 0f:5d35 $a8
+    db   $A9 ; unknown music opcode                    ;; 0f:5d36 $a9
+    db   $AA ; unknown music opcode                    ;; 0f:5d37 $aa
+    db   $A7 ; unknown music opcode                    ;; 0f:5d38 $a7
+    db   $A8 ; unknown music opcode                    ;; 0f:5d39 $a8
+    db   $A9 ; unknown music opcode                    ;; 0f:5d3a $a9
+    db   $AA ; unknown music opcode                    ;; 0f:5d3b $aa
+    mUNK_E0 $82                                        ;; 0f:5d3c $e0 $82
+    db   $7A ; unknown music opcode                    ;; 0f:5d3e $7a
+    mUNK_E6 $02                                        ;; 0f:5d3f $e6 $02
+    db   $A8 ; unknown music opcode                    ;; 0f:5d41 $a8
+    db   $AB ; unknown music opcode                    ;; 0f:5d42 $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:5d43 $d8
+    db   $A4 ; unknown music opcode                    ;; 0f:5d44 $a4
+    db   $DC ; unknown music opcode                    ;; 0f:5d45 $dc
+    db   $A8 ; unknown music opcode                    ;; 0f:5d46 $a8
+    db   $AB ; unknown music opcode                    ;; 0f:5d47 $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:5d48 $d8
+    db   $A4 ; unknown music opcode                    ;; 0f:5d49 $a4
+    db   $DC ; unknown music opcode                    ;; 0f:5d4a $dc
+    db   $AB ; unknown music opcode                    ;; 0f:5d4b $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:5d4c $d8
+    db   $A4 ; unknown music opcode                    ;; 0f:5d4d $a4
+    mUNK_E6 $03                                        ;; 0f:5d4e $e6 $03
+    db   $8F ; unknown music opcode                    ;; 0f:5d50 $8f
+    db   $DC ; unknown music opcode                    ;; 0f:5d51 $dc
+    db   $AB ; unknown music opcode                    ;; 0f:5d52 $ab
+    db   $AC ; unknown music opcode                    ;; 0f:5d53 $ac
+    db   $AB ; unknown music opcode                    ;; 0f:5d54 $ab
+    db   $A9 ; unknown music opcode                    ;; 0f:5d55 $a9
+    db   $A8 ; unknown music opcode                    ;; 0f:5d56 $a8
+    db   $AB ; unknown music opcode                    ;; 0f:5d57 $ab
+    mUNK_E6 $01                                        ;; 0f:5d58 $e6 $01
+    db   $A9 ; unknown music opcode                    ;; 0f:5d5a $a9
+    db   $AC ; unknown music opcode                    ;; 0f:5d5b $ac
+    db   $D8 ; unknown music opcode                    ;; 0f:5d5c $d8
+    db   $A5 ; unknown music opcode                    ;; 0f:5d5d $a5
+    db   $DC ; unknown music opcode                    ;; 0f:5d5e $dc
+    db   $A9 ; unknown music opcode                    ;; 0f:5d5f $a9
+    db   $AC ; unknown music opcode                    ;; 0f:5d60 $ac
+    db   $D8 ; unknown music opcode                    ;; 0f:5d61 $d8
+    db   $A5 ; unknown music opcode                    ;; 0f:5d62 $a5
+    db   $DC ; unknown music opcode                    ;; 0f:5d63 $dc
+    db   $A9 ; unknown music opcode                    ;; 0f:5d64 $a9
+    db   $AC ; unknown music opcode                    ;; 0f:5d65 $ac
+    mUNK_E6 $03                                        ;; 0f:5d66 $e6 $03
+    db   $8F ; unknown music opcode                    ;; 0f:5d68 $8f
+    db   $AC ; unknown music opcode                    ;; 0f:5d69 $ac
+    db   $D8 ; unknown music opcode                    ;; 0f:5d6a $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:5d6b $a2
+    db   $A0 ; unknown music opcode                    ;; 0f:5d6c $a0
+    db   $DC ; unknown music opcode                    ;; 0f:5d6d $dc
+    db   $AB ; unknown music opcode                    ;; 0f:5d6e $ab
+    db   $A9 ; unknown music opcode                    ;; 0f:5d6f $a9
+    db   $AC ; unknown music opcode                    ;; 0f:5d70 $ac
+    db   $D8 ; unknown music opcode                    ;; 0f:5d71 $d8
+    mUNK_E0 $b0                                        ;; 0f:5d72 $e0 $b0
+    db   $7A ; unknown music opcode                    ;; 0f:5d74 $7a
+    db   $52 ; unknown music opcode                    ;; 0f:5d75 $52
+    mUNK_E6 $02                                        ;; 0f:5d76 $e6 $02
+    db   $A7 ; unknown music opcode                    ;; 0f:5d78 $a7
+    db   $A2 ; unknown music opcode                    ;; 0f:5d79 $a2
+    db   $DC ; unknown music opcode                    ;; 0f:5d7a $dc
+    db   $AB ; unknown music opcode                    ;; 0f:5d7b $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:5d7c $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:5d7d $a2
+    mUNK_E6 $03                                        ;; 0f:5d7e $e6 $03
+    db   $50 ; unknown music opcode                    ;; 0f:5d80 $50
+    mUNK_E6 $01                                        ;; 0f:5d81 $e6 $01
+    db   $A5 ; unknown music opcode                    ;; 0f:5d83 $a5
+    db   $A0 ; unknown music opcode                    ;; 0f:5d84 $a0
+    db   $DC ; unknown music opcode                    ;; 0f:5d85 $dc
+    db   $A9 ; unknown music opcode                    ;; 0f:5d86 $a9
+    db   $AC ; unknown music opcode                    ;; 0f:5d87 $ac
+    mUNK_E0 $94                                        ;; 0f:5d88 $e0 $94
+    db   $7A ; unknown music opcode                    ;; 0f:5d8a $7a
+    mUNK_E6 $03                                        ;; 0f:5d8b $e6 $03
+    db   $AB ; unknown music opcode                    ;; 0f:5d8d $ab
+    db   $A4 ; unknown music opcode                    ;; 0f:5d8e $a4
+    db   $AB ; unknown music opcode                    ;; 0f:5d8f $ab
+    db   $A4 ; unknown music opcode                    ;; 0f:5d90 $a4
+    db   $AB ; unknown music opcode                    ;; 0f:5d91 $ab
+    db   $A4 ; unknown music opcode                    ;; 0f:5d92 $a4
+    db   $AC ; unknown music opcode                    ;; 0f:5d93 $ac
+    db   $A4 ; unknown music opcode                    ;; 0f:5d94 $a4
+    db   $AC ; unknown music opcode                    ;; 0f:5d95 $ac
+    db   $A4 ; unknown music opcode                    ;; 0f:5d96 $a4
+    db   $AC ; unknown music opcode                    ;; 0f:5d97 $ac
+    db   $A4 ; unknown music opcode                    ;; 0f:5d98 $a4
+    db   $D8 ; unknown music opcode                    ;; 0f:5d99 $d8
+    mUNK_E6 $02                                        ;; 0f:5d9a $e6 $02
+    db   $B2 ; unknown music opcode                    ;; 0f:5d9c $b2
+    db   $DC ; unknown music opcode                    ;; 0f:5d9d $dc
+    db   $BB ; unknown music opcode                    ;; 0f:5d9e $bb
+    mUNK_E6 $03                                        ;; 0f:5d9f $e6 $03
+    db   $B8 ; unknown music opcode                    ;; 0f:5da1 $b8
+    db   $BB ; unknown music opcode                    ;; 0f:5da2 $bb
+    mUNK_E6 $01                                        ;; 0f:5da3 $e6 $01
+    db   $B8 ; unknown music opcode                    ;; 0f:5da5 $b8
+    db   $B4 ; unknown music opcode                    ;; 0f:5da6 $b4
+    mUNK_E1 song0e_channel1                            ;; 0f:5da7 $e1 $c8 $5b
 
-data_0f_5daa:
-    db   $e4, $4f, $7a, $e8, $0c, $7b, $e0, $20        ;; 0f:5daa ????????
-    db   $e3, $02, $e6, $03, $d1, $a9, $ce, $cf        ;; 0f:5db2 ????????
-    db   $a9, $ce, $cf, $4f, $d8, $74, $af, $a4        ;; 0f:5dba ????????
-    db   $ce, $cf, $dc, $e6, $02, $a9, $ce, $cf        ;; 0f:5dc2 ????????
-    db   $e6, $01, $a9, $ce, $cf, $1f, $e6, $03        ;; 0f:5dca ????????
-    db   $a9, $ce, $cf, $a9, $ce, $cf, $4f, $d8        ;; 0f:5dd2 ????????
-    db   $74, $af, $a4, $ce, $cf, $dc, $e6, $02        ;; 0f:5dda ????????
-    db   $a9, $ce, $cf, $e6, $01, $a9, $ce, $cf        ;; 0f:5de2 ????????
-    db   $1f, $d8, $e6, $03, $02, $e6, $02, $45        ;; 0f:5dea ????????
-    db   $e6, $03, $44, $e6, $01, $52, $e2, $b4        ;; 0f:5df2 ????????
-    db   $5d, $e3, $02, $e8, $1c, $7b, $e6, $03        ;; 0f:5dfa ????????
-    db   $dc, $a5, $af, $a5, $af, $5f, $a5, $af        ;; 0f:5e02 ????????
-    db   $a5, $af, $5f, $a5, $af, $a5, $af, $5f        ;; 0f:5e0a ????????
-    db   $a5, $af, $a5, $af, $5f, $d8, $e8, $fc        ;; 0f:5e12 ????????
-    db   $7a, $e6, $02, $25, $e6, $03, $20, $e6        ;; 0f:5e1a ????????
-    db   $01, $25, $e6, $03, $20, $e2, $fd, $5d        ;; 0f:5e22 ????????
-    db   $e8, $0c, $7b, $e6, $03, $dc, $a4, $af        ;; 0f:5e2a ????????
-    db   $a4, $af, $a4, $af, $a4, $af, $8f, $d8        ;; 0f:5e32 ????????
-    db   $74, $af, $dc, $ab, $ce, $cf, $a5, $af        ;; 0f:5e3a ????????
-    db   $a5, $af, $a5, $af, $a5, $af, $8f, $d8        ;; 0f:5e42 ????????
-    db   $75, $af, $a0, $ce, $cf, $dc, $57, $d8        ;; 0f:5e4a ????????
-    db   $57, $dc, $55, $d8, $55, $dc, $e6, $02        ;; 0f:5e52 ????????
-    db   $44, $e6, $01, $46, $e6, $03, $a8, $ce        ;; 0f:5e5a ????????
-    db   $cf, $a4, $ce, $cf, $e1, $aa, $5d             ;; 0f:5e62 ???????
+song0e_channel3:
+    mUNK_E4 frequencyDeltaData                         ;; 0f:5daa $e4 $4f $7a
+    mUNK_E8 data_0f_7b0c                               ;; 0f:5dad $e8 $0c $7b
+    mUNK_E0 $20                                        ;; 0f:5db0 $e0 $20
+    mUNK_E3 $02                                        ;; 0f:5db2 $e3 $02
+.data_0f_5db4:
+    mUNK_E6 $03                                        ;; 0f:5db4 $e6 $03
+    db   $D1 ; unknown music opcode                    ;; 0f:5db6 $d1
+    db   $A9 ; unknown music opcode                    ;; 0f:5db7 $a9
+    db   $CE ; unknown music opcode                    ;; 0f:5db8 $ce
+    db   $CF ; unknown music opcode                    ;; 0f:5db9 $cf
+    db   $A9 ; unknown music opcode                    ;; 0f:5dba $a9
+    db   $CE ; unknown music opcode                    ;; 0f:5dbb $ce
+    db   $CF ; unknown music opcode                    ;; 0f:5dbc $cf
+    db   $4F ; unknown music opcode                    ;; 0f:5dbd $4f
+    db   $D8 ; unknown music opcode                    ;; 0f:5dbe $d8
+    db   $74 ; unknown music opcode                    ;; 0f:5dbf $74
+    db   $AF ; unknown music opcode                    ;; 0f:5dc0 $af
+    db   $A4 ; unknown music opcode                    ;; 0f:5dc1 $a4
+    db   $CE ; unknown music opcode                    ;; 0f:5dc2 $ce
+    db   $CF ; unknown music opcode                    ;; 0f:5dc3 $cf
+    db   $DC ; unknown music opcode                    ;; 0f:5dc4 $dc
+    mUNK_E6 $02                                        ;; 0f:5dc5 $e6 $02
+    db   $A9 ; unknown music opcode                    ;; 0f:5dc7 $a9
+    db   $CE ; unknown music opcode                    ;; 0f:5dc8 $ce
+    db   $CF ; unknown music opcode                    ;; 0f:5dc9 $cf
+    mUNK_E6 $01                                        ;; 0f:5dca $e6 $01
+    db   $A9 ; unknown music opcode                    ;; 0f:5dcc $a9
+    db   $CE ; unknown music opcode                    ;; 0f:5dcd $ce
+    db   $CF ; unknown music opcode                    ;; 0f:5dce $cf
+    db   $1F ; unknown music opcode                    ;; 0f:5dcf $1f
+    mUNK_E6 $03                                        ;; 0f:5dd0 $e6 $03
+    db   $A9 ; unknown music opcode                    ;; 0f:5dd2 $a9
+    db   $CE ; unknown music opcode                    ;; 0f:5dd3 $ce
+    db   $CF ; unknown music opcode                    ;; 0f:5dd4 $cf
+    db   $A9 ; unknown music opcode                    ;; 0f:5dd5 $a9
+    db   $CE ; unknown music opcode                    ;; 0f:5dd6 $ce
+    db   $CF ; unknown music opcode                    ;; 0f:5dd7 $cf
+    db   $4F ; unknown music opcode                    ;; 0f:5dd8 $4f
+    db   $D8 ; unknown music opcode                    ;; 0f:5dd9 $d8
+    db   $74 ; unknown music opcode                    ;; 0f:5dda $74
+    db   $AF ; unknown music opcode                    ;; 0f:5ddb $af
+    db   $A4 ; unknown music opcode                    ;; 0f:5ddc $a4
+    db   $CE ; unknown music opcode                    ;; 0f:5ddd $ce
+    db   $CF ; unknown music opcode                    ;; 0f:5dde $cf
+    db   $DC ; unknown music opcode                    ;; 0f:5ddf $dc
+    mUNK_E6 $02                                        ;; 0f:5de0 $e6 $02
+    db   $A9 ; unknown music opcode                    ;; 0f:5de2 $a9
+    db   $CE ; unknown music opcode                    ;; 0f:5de3 $ce
+    db   $CF ; unknown music opcode                    ;; 0f:5de4 $cf
+    mUNK_E6 $01                                        ;; 0f:5de5 $e6 $01
+    db   $A9 ; unknown music opcode                    ;; 0f:5de7 $a9
+    db   $CE ; unknown music opcode                    ;; 0f:5de8 $ce
+    db   $CF ; unknown music opcode                    ;; 0f:5de9 $cf
+    db   $1F ; unknown music opcode                    ;; 0f:5dea $1f
+    db   $D8 ; unknown music opcode                    ;; 0f:5deb $d8
+    mUNK_E6 $03                                        ;; 0f:5dec $e6 $03
+    db   $02 ; unknown music opcode                    ;; 0f:5dee $02
+    mUNK_E6 $02                                        ;; 0f:5def $e6 $02
+    db   $45 ; unknown music opcode                    ;; 0f:5df1 $45
+    mUNK_E6 $03                                        ;; 0f:5df2 $e6 $03
+    db   $44 ; unknown music opcode                    ;; 0f:5df4 $44
+    mUNK_E6 $01                                        ;; 0f:5df5 $e6 $01
+    db   $52 ; unknown music opcode                    ;; 0f:5df7 $52
+    mUNK_E2 .data_0f_5db4                              ;; 0f:5df8 $e2 $b4 $5d
+    mUNK_E3 $02                                        ;; 0f:5dfb $e3 $02
+.data_0f_5dfd:
+    mUNK_E8 data_0f_7b1c                               ;; 0f:5dfd $e8 $1c $7b
+    mUNK_E6 $03                                        ;; 0f:5e00 $e6 $03
+    db   $DC ; unknown music opcode                    ;; 0f:5e02 $dc
+    db   $A5 ; unknown music opcode                    ;; 0f:5e03 $a5
+    db   $AF ; unknown music opcode                    ;; 0f:5e04 $af
+    db   $A5 ; unknown music opcode                    ;; 0f:5e05 $a5
+    db   $AF ; unknown music opcode                    ;; 0f:5e06 $af
+    db   $5F ; unknown music opcode                    ;; 0f:5e07 $5f
+    db   $A5 ; unknown music opcode                    ;; 0f:5e08 $a5
+    db   $AF ; unknown music opcode                    ;; 0f:5e09 $af
+    db   $A5 ; unknown music opcode                    ;; 0f:5e0a $a5
+    db   $AF ; unknown music opcode                    ;; 0f:5e0b $af
+    db   $5F ; unknown music opcode                    ;; 0f:5e0c $5f
+    db   $A5 ; unknown music opcode                    ;; 0f:5e0d $a5
+    db   $AF ; unknown music opcode                    ;; 0f:5e0e $af
+    db   $A5 ; unknown music opcode                    ;; 0f:5e0f $a5
+    db   $AF ; unknown music opcode                    ;; 0f:5e10 $af
+    db   $5F ; unknown music opcode                    ;; 0f:5e11 $5f
+    db   $A5 ; unknown music opcode                    ;; 0f:5e12 $a5
+    db   $AF ; unknown music opcode                    ;; 0f:5e13 $af
+    db   $A5 ; unknown music opcode                    ;; 0f:5e14 $a5
+    db   $AF ; unknown music opcode                    ;; 0f:5e15 $af
+    db   $5F ; unknown music opcode                    ;; 0f:5e16 $5f
+    db   $D8 ; unknown music opcode                    ;; 0f:5e17 $d8
+    mUNK_E8 data_0f_7afc                               ;; 0f:5e18 $e8 $fc $7a
+    mUNK_E6 $02                                        ;; 0f:5e1b $e6 $02
+    db   $25 ; unknown music opcode                    ;; 0f:5e1d $25
+    mUNK_E6 $03                                        ;; 0f:5e1e $e6 $03
+    db   $20 ; unknown music opcode                    ;; 0f:5e20 $20
+    mUNK_E6 $01                                        ;; 0f:5e21 $e6 $01
+    db   $25 ; unknown music opcode                    ;; 0f:5e23 $25
+    mUNK_E6 $03                                        ;; 0f:5e24 $e6 $03
+    db   $20 ; unknown music opcode                    ;; 0f:5e26 $20
+    mUNK_E2 .data_0f_5dfd                              ;; 0f:5e27 $e2 $fd $5d
+    mUNK_E8 data_0f_7b0c                               ;; 0f:5e2a $e8 $0c $7b
+    mUNK_E6 $03                                        ;; 0f:5e2d $e6 $03
+    db   $DC ; unknown music opcode                    ;; 0f:5e2f $dc
+    db   $A4 ; unknown music opcode                    ;; 0f:5e30 $a4
+    db   $AF ; unknown music opcode                    ;; 0f:5e31 $af
+    db   $A4 ; unknown music opcode                    ;; 0f:5e32 $a4
+    db   $AF ; unknown music opcode                    ;; 0f:5e33 $af
+    db   $A4 ; unknown music opcode                    ;; 0f:5e34 $a4
+    db   $AF ; unknown music opcode                    ;; 0f:5e35 $af
+    db   $A4 ; unknown music opcode                    ;; 0f:5e36 $a4
+    db   $AF ; unknown music opcode                    ;; 0f:5e37 $af
+    db   $8F ; unknown music opcode                    ;; 0f:5e38 $8f
+    db   $D8 ; unknown music opcode                    ;; 0f:5e39 $d8
+    db   $74 ; unknown music opcode                    ;; 0f:5e3a $74
+    db   $AF ; unknown music opcode                    ;; 0f:5e3b $af
+    db   $DC ; unknown music opcode                    ;; 0f:5e3c $dc
+    db   $AB ; unknown music opcode                    ;; 0f:5e3d $ab
+    db   $CE ; unknown music opcode                    ;; 0f:5e3e $ce
+    db   $CF ; unknown music opcode                    ;; 0f:5e3f $cf
+    db   $A5 ; unknown music opcode                    ;; 0f:5e40 $a5
+    db   $AF ; unknown music opcode                    ;; 0f:5e41 $af
+    db   $A5 ; unknown music opcode                    ;; 0f:5e42 $a5
+    db   $AF ; unknown music opcode                    ;; 0f:5e43 $af
+    db   $A5 ; unknown music opcode                    ;; 0f:5e44 $a5
+    db   $AF ; unknown music opcode                    ;; 0f:5e45 $af
+    db   $A5 ; unknown music opcode                    ;; 0f:5e46 $a5
+    db   $AF ; unknown music opcode                    ;; 0f:5e47 $af
+    db   $8F ; unknown music opcode                    ;; 0f:5e48 $8f
+    db   $D8 ; unknown music opcode                    ;; 0f:5e49 $d8
+    db   $75 ; unknown music opcode                    ;; 0f:5e4a $75
+    db   $AF ; unknown music opcode                    ;; 0f:5e4b $af
+    db   $A0 ; unknown music opcode                    ;; 0f:5e4c $a0
+    db   $CE ; unknown music opcode                    ;; 0f:5e4d $ce
+    db   $CF ; unknown music opcode                    ;; 0f:5e4e $cf
+    db   $DC ; unknown music opcode                    ;; 0f:5e4f $dc
+    db   $57 ; unknown music opcode                    ;; 0f:5e50 $57
+    db   $D8 ; unknown music opcode                    ;; 0f:5e51 $d8
+    db   $57 ; unknown music opcode                    ;; 0f:5e52 $57
+    db   $DC ; unknown music opcode                    ;; 0f:5e53 $dc
+    db   $55 ; unknown music opcode                    ;; 0f:5e54 $55
+    db   $D8 ; unknown music opcode                    ;; 0f:5e55 $d8
+    db   $55 ; unknown music opcode                    ;; 0f:5e56 $55
+    db   $DC ; unknown music opcode                    ;; 0f:5e57 $dc
+    mUNK_E6 $02                                        ;; 0f:5e58 $e6 $02
+    db   $44 ; unknown music opcode                    ;; 0f:5e5a $44
+    mUNK_E6 $01                                        ;; 0f:5e5b $e6 $01
+    db   $46 ; unknown music opcode                    ;; 0f:5e5d $46
+    mUNK_E6 $03                                        ;; 0f:5e5e $e6 $03
+    db   $A8 ; unknown music opcode                    ;; 0f:5e60 $a8
+    db   $CE ; unknown music opcode                    ;; 0f:5e61 $ce
+    db   $CF ; unknown music opcode                    ;; 0f:5e62 $cf
+    db   $A4 ; unknown music opcode                    ;; 0f:5e63 $a4
+    db   $CE ; unknown music opcode                    ;; 0f:5e64 $ce
+    db   $CF ; unknown music opcode                    ;; 0f:5e65 $cf
+    mUNK_E1 song0e_channel3                            ;; 0f:5e66 $e1 $aa $5d
 
-data_0f_5e69:
-    db   $e7, $87, $e4, $4f, $7a, $e0, $82, $7a        ;; 0f:5e69 ????????
-    db   $e5, $40, $e6, $03, $d3, $53, $ae, $a0        ;; 0f:5e71 ????????
-    db   $a2, $a3, $55, $ae, $a2, $a3, $a5, $57        ;; 0f:5e79 ????????
-    db   $ae, $a5, $a3, $a7, $55, $50, $e7, $8a        ;; 0f:5e81 ????????
-    db   $83, $80, $82, $83, $85, $82, $83, $85        ;; 0f:5e89 ????????
-    db   $47, $a9, $a7, $86, $82, $84, $86, $e0        ;; 0f:5e91 ????????
-    db   $be, $7a, $77, $72, $85, $24, $75, $70        ;; 0f:5e99 ????????
-    db   $83, $22, $72, $dc, $77, $d8, $82, $73        ;; 0f:5ea1 ????????
-    db   $dc, $77, $d8, $83, $75, $70, $85, $76        ;; 0f:5ea9 ????????
-    db   $72, $86, $dd, $e0, $a8, $7a, $e5, $80        ;; 0f:5eb1 ????????
-    db   $ab, $ac, $ab, $a9, $ab, $ac, $d8, $a2        ;; 0f:5eb9 ????????
-    db   $a3, $a5, $a7, $a5, $a3, $b5, $b7, $b9        ;; 0f:5ec1 ????????
-    db   $bb, $bc, $d8, $b2, $e7, $8a, $e0, $ac        ;; 0f:5ec9 ????????
-    db   $7a, $e5, $00, $a3, $dc, $aa, $a7, $aa        ;; 0f:5ed1 ????????
-    db   $d8, $a5, $a0, $dc, $a9, $ac, $d8, $a3        ;; 0f:5ed9 ????????
-    db   $dc, $aa, $a7, $aa, $d8, $a5, $a0, $dc        ;; 0f:5ee1 ????????
-    db   $a9, $ac, $d8, $a3, $dc, $aa, $a7, $aa        ;; 0f:5ee9 ????????
-    db   $d8, $a5, $a0, $dc, $a9, $ac, $d8, $a3        ;; 0f:5ef1 ????????
-    db   $dc, $aa, $a7, $aa, $d8, $a5, $a0, $dc        ;; 0f:5ef9 ????????
-    db   $a9, $ac, $d8, $e3, $02, $e7, $87, $e0        ;; 0f:5f01 ????????
-    db   $be, $7a, $e5, $40, $57, $ae, $a8, $a9        ;; 0f:5f09 ????????
-    db   $aa, $59, $ae, $a7, $a5, $a9, $57, $ae        ;; 0f:5f11 ????????
-    db   $a5, $a3, $a7, $55, $ae, $a3, $a2, $a5        ;; 0f:5f19 ????????
-    db   $43, $52, $80, $82, $83, $eb, $01, $3f        ;; 0f:5f21 ????????
-    db   $5f, $a5, $a7, $a5, $a3, $a2, $a3, $a2        ;; 0f:5f29 ????????
-    db   $a0, $dc, $aa, $ac, $d8, $a2, $a3, $a5        ;; 0f:5f31 ????????
-    db   $a7, $a8, $aa, $e2, $06, $5f, $a5, $a7        ;; 0f:5f39 ????????
-    db   $a5, $a3, $a2, $a3, $a2, $a0, $e7, $85        ;; 0f:5f41 ????????
-    db   $82, $83, $85, $87, $e7, $8a, $a0, $a2        ;; 0f:5f49 ????????
-    db   $a3, $a2, $50, $ae, $a0, $dc, $a8, $d8        ;; 0f:5f51 ????????
-    db   $a3, $a8, $a7, $a5, $a3, $a2, $a3, $a5        ;; 0f:5f59 ????????
-    db   $a3, $52, $ae, $a2, $dc, $aa, $d8, $a5        ;; 0f:5f61 ????????
-    db   $aa, $a8, $a7, $a5, $47, $a5, $a7, $48        ;; 0f:5f69 ????????
-    db   $a7, $a8, $aa, $ac, $aa, $a8, $a7, $a8        ;; 0f:5f71 ????????
-    db   $a7, $a5, $74, $75, $87, $48, $a7, $a8        ;; 0f:5f79 ????????
-    db   $4a, $a8, $aa, $e7, $88, $7c, $78, $85        ;; 0f:5f81 ????????
-    db   $72, $75, $88, $e7, $8a, $47, $a6, $a7        ;; 0f:5f89 ????????
-    db   $7b, $77, $8b, $d8, $22, $af, $dd, $e7        ;; 0f:5f91 ????????
-    db   $82, $e0, $a8, $7a, $e5, $80, $a7, $a9        ;; 0f:5f99 ????????
-    db   $ab, $ac, $d8, $a2, $a3, $a5, $e1, $69        ;; 0f:5fa1 ????????
-    db   $5e                                           ;; 0f:5fa9 ?
+song0f_channel2:
+    mUNK_E7 $87                                        ;; 0f:5e69 $e7 $87
+    mUNK_E4 frequencyDeltaData                         ;; 0f:5e6b $e4 $4f $7a
+    mUNK_E0 $82                                        ;; 0f:5e6e $e0 $82
+    db   $7A ; unknown music opcode                    ;; 0f:5e70 $7a
+    mUNK_E5 $40                                        ;; 0f:5e71 $e5 $40
+    mUNK_E6 $03                                        ;; 0f:5e73 $e6 $03
+    db   $D3 ; unknown music opcode                    ;; 0f:5e75 $d3
+    db   $53 ; unknown music opcode                    ;; 0f:5e76 $53
+    db   $AE ; unknown music opcode                    ;; 0f:5e77 $ae
+    db   $A0 ; unknown music opcode                    ;; 0f:5e78 $a0
+    db   $A2 ; unknown music opcode                    ;; 0f:5e79 $a2
+    db   $A3 ; unknown music opcode                    ;; 0f:5e7a $a3
+    db   $55 ; unknown music opcode                    ;; 0f:5e7b $55
+    db   $AE ; unknown music opcode                    ;; 0f:5e7c $ae
+    db   $A2 ; unknown music opcode                    ;; 0f:5e7d $a2
+    db   $A3 ; unknown music opcode                    ;; 0f:5e7e $a3
+    db   $A5 ; unknown music opcode                    ;; 0f:5e7f $a5
+    db   $57 ; unknown music opcode                    ;; 0f:5e80 $57
+    db   $AE ; unknown music opcode                    ;; 0f:5e81 $ae
+    db   $A5 ; unknown music opcode                    ;; 0f:5e82 $a5
+    db   $A3 ; unknown music opcode                    ;; 0f:5e83 $a3
+    db   $A7 ; unknown music opcode                    ;; 0f:5e84 $a7
+    db   $55 ; unknown music opcode                    ;; 0f:5e85 $55
+    db   $50 ; unknown music opcode                    ;; 0f:5e86 $50
+    mUNK_E7 $8a                                        ;; 0f:5e87 $e7 $8a
+    db   $83 ; unknown music opcode                    ;; 0f:5e89 $83
+    db   $80 ; unknown music opcode                    ;; 0f:5e8a $80
+    db   $82 ; unknown music opcode                    ;; 0f:5e8b $82
+    db   $83 ; unknown music opcode                    ;; 0f:5e8c $83
+    db   $85 ; unknown music opcode                    ;; 0f:5e8d $85
+    db   $82 ; unknown music opcode                    ;; 0f:5e8e $82
+    db   $83 ; unknown music opcode                    ;; 0f:5e8f $83
+    db   $85 ; unknown music opcode                    ;; 0f:5e90 $85
+    db   $47 ; unknown music opcode                    ;; 0f:5e91 $47
+    db   $A9 ; unknown music opcode                    ;; 0f:5e92 $a9
+    db   $A7 ; unknown music opcode                    ;; 0f:5e93 $a7
+    db   $86 ; unknown music opcode                    ;; 0f:5e94 $86
+    db   $82 ; unknown music opcode                    ;; 0f:5e95 $82
+    db   $84 ; unknown music opcode                    ;; 0f:5e96 $84
+    db   $86 ; unknown music opcode                    ;; 0f:5e97 $86
+    mUNK_E0 $be                                        ;; 0f:5e98 $e0 $be
+    db   $7A ; unknown music opcode                    ;; 0f:5e9a $7a
+    db   $77 ; unknown music opcode                    ;; 0f:5e9b $77
+    db   $72 ; unknown music opcode                    ;; 0f:5e9c $72
+    db   $85 ; unknown music opcode                    ;; 0f:5e9d $85
+    db   $24 ; unknown music opcode                    ;; 0f:5e9e $24
+    db   $75 ; unknown music opcode                    ;; 0f:5e9f $75
+    db   $70 ; unknown music opcode                    ;; 0f:5ea0 $70
+    db   $83 ; unknown music opcode                    ;; 0f:5ea1 $83
+    db   $22 ; unknown music opcode                    ;; 0f:5ea2 $22
+    db   $72 ; unknown music opcode                    ;; 0f:5ea3 $72
+    db   $DC ; unknown music opcode                    ;; 0f:5ea4 $dc
+    db   $77 ; unknown music opcode                    ;; 0f:5ea5 $77
+    db   $D8 ; unknown music opcode                    ;; 0f:5ea6 $d8
+    db   $82 ; unknown music opcode                    ;; 0f:5ea7 $82
+    db   $73 ; unknown music opcode                    ;; 0f:5ea8 $73
+    db   $DC ; unknown music opcode                    ;; 0f:5ea9 $dc
+    db   $77 ; unknown music opcode                    ;; 0f:5eaa $77
+    db   $D8 ; unknown music opcode                    ;; 0f:5eab $d8
+    db   $83 ; unknown music opcode                    ;; 0f:5eac $83
+    db   $75 ; unknown music opcode                    ;; 0f:5ead $75
+    db   $70 ; unknown music opcode                    ;; 0f:5eae $70
+    db   $85 ; unknown music opcode                    ;; 0f:5eaf $85
+    db   $76 ; unknown music opcode                    ;; 0f:5eb0 $76
+    db   $72 ; unknown music opcode                    ;; 0f:5eb1 $72
+    db   $86 ; unknown music opcode                    ;; 0f:5eb2 $86
+    db   $DD ; unknown music opcode                    ;; 0f:5eb3 $dd
+    mUNK_E0 $a8                                        ;; 0f:5eb4 $e0 $a8
+    db   $7A ; unknown music opcode                    ;; 0f:5eb6 $7a
+    mUNK_E5 $80                                        ;; 0f:5eb7 $e5 $80
+    db   $AB ; unknown music opcode                    ;; 0f:5eb9 $ab
+    db   $AC ; unknown music opcode                    ;; 0f:5eba $ac
+    db   $AB ; unknown music opcode                    ;; 0f:5ebb $ab
+    db   $A9 ; unknown music opcode                    ;; 0f:5ebc $a9
+    db   $AB ; unknown music opcode                    ;; 0f:5ebd $ab
+    db   $AC ; unknown music opcode                    ;; 0f:5ebe $ac
+    db   $D8 ; unknown music opcode                    ;; 0f:5ebf $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:5ec0 $a2
+    db   $A3 ; unknown music opcode                    ;; 0f:5ec1 $a3
+    db   $A5 ; unknown music opcode                    ;; 0f:5ec2 $a5
+    db   $A7 ; unknown music opcode                    ;; 0f:5ec3 $a7
+    db   $A5 ; unknown music opcode                    ;; 0f:5ec4 $a5
+    db   $A3 ; unknown music opcode                    ;; 0f:5ec5 $a3
+    db   $B5 ; unknown music opcode                    ;; 0f:5ec6 $b5
+    db   $B7 ; unknown music opcode                    ;; 0f:5ec7 $b7
+    db   $B9 ; unknown music opcode                    ;; 0f:5ec8 $b9
+    db   $BB ; unknown music opcode                    ;; 0f:5ec9 $bb
+    db   $BC ; unknown music opcode                    ;; 0f:5eca $bc
+    db   $D8 ; unknown music opcode                    ;; 0f:5ecb $d8
+    db   $B2 ; unknown music opcode                    ;; 0f:5ecc $b2
+    mUNK_E7 $8a                                        ;; 0f:5ecd $e7 $8a
+    mUNK_E0 $ac                                        ;; 0f:5ecf $e0 $ac
+    db   $7A ; unknown music opcode                    ;; 0f:5ed1 $7a
+    mUNK_E5 $00                                        ;; 0f:5ed2 $e5 $00
+    db   $A3 ; unknown music opcode                    ;; 0f:5ed4 $a3
+    db   $DC ; unknown music opcode                    ;; 0f:5ed5 $dc
+    db   $AA ; unknown music opcode                    ;; 0f:5ed6 $aa
+    db   $A7 ; unknown music opcode                    ;; 0f:5ed7 $a7
+    db   $AA ; unknown music opcode                    ;; 0f:5ed8 $aa
+    db   $D8 ; unknown music opcode                    ;; 0f:5ed9 $d8
+    db   $A5 ; unknown music opcode                    ;; 0f:5eda $a5
+    db   $A0 ; unknown music opcode                    ;; 0f:5edb $a0
+    db   $DC ; unknown music opcode                    ;; 0f:5edc $dc
+    db   $A9 ; unknown music opcode                    ;; 0f:5edd $a9
+    db   $AC ; unknown music opcode                    ;; 0f:5ede $ac
+    db   $D8 ; unknown music opcode                    ;; 0f:5edf $d8
+    db   $A3 ; unknown music opcode                    ;; 0f:5ee0 $a3
+    db   $DC ; unknown music opcode                    ;; 0f:5ee1 $dc
+    db   $AA ; unknown music opcode                    ;; 0f:5ee2 $aa
+    db   $A7 ; unknown music opcode                    ;; 0f:5ee3 $a7
+    db   $AA ; unknown music opcode                    ;; 0f:5ee4 $aa
+    db   $D8 ; unknown music opcode                    ;; 0f:5ee5 $d8
+    db   $A5 ; unknown music opcode                    ;; 0f:5ee6 $a5
+    db   $A0 ; unknown music opcode                    ;; 0f:5ee7 $a0
+    db   $DC ; unknown music opcode                    ;; 0f:5ee8 $dc
+    db   $A9 ; unknown music opcode                    ;; 0f:5ee9 $a9
+    db   $AC ; unknown music opcode                    ;; 0f:5eea $ac
+    db   $D8 ; unknown music opcode                    ;; 0f:5eeb $d8
+    db   $A3 ; unknown music opcode                    ;; 0f:5eec $a3
+    db   $DC ; unknown music opcode                    ;; 0f:5eed $dc
+    db   $AA ; unknown music opcode                    ;; 0f:5eee $aa
+    db   $A7 ; unknown music opcode                    ;; 0f:5eef $a7
+    db   $AA ; unknown music opcode                    ;; 0f:5ef0 $aa
+    db   $D8 ; unknown music opcode                    ;; 0f:5ef1 $d8
+    db   $A5 ; unknown music opcode                    ;; 0f:5ef2 $a5
+    db   $A0 ; unknown music opcode                    ;; 0f:5ef3 $a0
+    db   $DC ; unknown music opcode                    ;; 0f:5ef4 $dc
+    db   $A9 ; unknown music opcode                    ;; 0f:5ef5 $a9
+    db   $AC ; unknown music opcode                    ;; 0f:5ef6 $ac
+    db   $D8 ; unknown music opcode                    ;; 0f:5ef7 $d8
+    db   $A3 ; unknown music opcode                    ;; 0f:5ef8 $a3
+    db   $DC ; unknown music opcode                    ;; 0f:5ef9 $dc
+    db   $AA ; unknown music opcode                    ;; 0f:5efa $aa
+    db   $A7 ; unknown music opcode                    ;; 0f:5efb $a7
+    db   $AA ; unknown music opcode                    ;; 0f:5efc $aa
+    db   $D8 ; unknown music opcode                    ;; 0f:5efd $d8
+    db   $A5 ; unknown music opcode                    ;; 0f:5efe $a5
+    db   $A0 ; unknown music opcode                    ;; 0f:5eff $a0
+    db   $DC ; unknown music opcode                    ;; 0f:5f00 $dc
+    db   $A9 ; unknown music opcode                    ;; 0f:5f01 $a9
+    db   $AC ; unknown music opcode                    ;; 0f:5f02 $ac
+    db   $D8 ; unknown music opcode                    ;; 0f:5f03 $d8
+    mUNK_E3 $02                                        ;; 0f:5f04 $e3 $02
+.data_0f_5f06:
+    mUNK_E7 $87                                        ;; 0f:5f06 $e7 $87
+    mUNK_E0 $be                                        ;; 0f:5f08 $e0 $be
+    db   $7A ; unknown music opcode                    ;; 0f:5f0a $7a
+    mUNK_E5 $40                                        ;; 0f:5f0b $e5 $40
+    db   $57 ; unknown music opcode                    ;; 0f:5f0d $57
+    db   $AE ; unknown music opcode                    ;; 0f:5f0e $ae
+    db   $A8 ; unknown music opcode                    ;; 0f:5f0f $a8
+    db   $A9 ; unknown music opcode                    ;; 0f:5f10 $a9
+    db   $AA ; unknown music opcode                    ;; 0f:5f11 $aa
+    db   $59 ; unknown music opcode                    ;; 0f:5f12 $59
+    db   $AE ; unknown music opcode                    ;; 0f:5f13 $ae
+    db   $A7 ; unknown music opcode                    ;; 0f:5f14 $a7
+    db   $A5 ; unknown music opcode                    ;; 0f:5f15 $a5
+    db   $A9 ; unknown music opcode                    ;; 0f:5f16 $a9
+    db   $57 ; unknown music opcode                    ;; 0f:5f17 $57
+    db   $AE ; unknown music opcode                    ;; 0f:5f18 $ae
+    db   $A5 ; unknown music opcode                    ;; 0f:5f19 $a5
+    db   $A3 ; unknown music opcode                    ;; 0f:5f1a $a3
+    db   $A7 ; unknown music opcode                    ;; 0f:5f1b $a7
+    db   $55 ; unknown music opcode                    ;; 0f:5f1c $55
+    db   $AE ; unknown music opcode                    ;; 0f:5f1d $ae
+    db   $A3 ; unknown music opcode                    ;; 0f:5f1e $a3
+    db   $A2 ; unknown music opcode                    ;; 0f:5f1f $a2
+    db   $A5 ; unknown music opcode                    ;; 0f:5f20 $a5
+    db   $43 ; unknown music opcode                    ;; 0f:5f21 $43
+    db   $52 ; unknown music opcode                    ;; 0f:5f22 $52
+    db   $80 ; unknown music opcode                    ;; 0f:5f23 $80
+    db   $82 ; unknown music opcode                    ;; 0f:5f24 $82
+    db   $83 ; unknown music opcode                    ;; 0f:5f25 $83
+    mUNK_EB $01, .data_0f_5f3f                         ;; 0f:5f26 $eb $01 $3f $5f
+    db   $A5 ; unknown music opcode                    ;; 0f:5f2a $a5
+    db   $A7 ; unknown music opcode                    ;; 0f:5f2b $a7
+    db   $A5 ; unknown music opcode                    ;; 0f:5f2c $a5
+    db   $A3 ; unknown music opcode                    ;; 0f:5f2d $a3
+    db   $A2 ; unknown music opcode                    ;; 0f:5f2e $a2
+    db   $A3 ; unknown music opcode                    ;; 0f:5f2f $a3
+    db   $A2 ; unknown music opcode                    ;; 0f:5f30 $a2
+    db   $A0 ; unknown music opcode                    ;; 0f:5f31 $a0
+    db   $DC ; unknown music opcode                    ;; 0f:5f32 $dc
+    db   $AA ; unknown music opcode                    ;; 0f:5f33 $aa
+    db   $AC ; unknown music opcode                    ;; 0f:5f34 $ac
+    db   $D8 ; unknown music opcode                    ;; 0f:5f35 $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:5f36 $a2
+    db   $A3 ; unknown music opcode                    ;; 0f:5f37 $a3
+    db   $A5 ; unknown music opcode                    ;; 0f:5f38 $a5
+    db   $A7 ; unknown music opcode                    ;; 0f:5f39 $a7
+    db   $A8 ; unknown music opcode                    ;; 0f:5f3a $a8
+    db   $AA ; unknown music opcode                    ;; 0f:5f3b $aa
+    mUNK_E2 .data_0f_5f06                              ;; 0f:5f3c $e2 $06 $5f
+.data_0f_5f3f:
+    db   $A5 ; unknown music opcode                    ;; 0f:5f3f $a5
+    db   $A7 ; unknown music opcode                    ;; 0f:5f40 $a7
+    db   $A5 ; unknown music opcode                    ;; 0f:5f41 $a5
+    db   $A3 ; unknown music opcode                    ;; 0f:5f42 $a3
+    db   $A2 ; unknown music opcode                    ;; 0f:5f43 $a2
+    db   $A3 ; unknown music opcode                    ;; 0f:5f44 $a3
+    db   $A2 ; unknown music opcode                    ;; 0f:5f45 $a2
+    db   $A0 ; unknown music opcode                    ;; 0f:5f46 $a0
+    mUNK_E7 $85                                        ;; 0f:5f47 $e7 $85
+    db   $82 ; unknown music opcode                    ;; 0f:5f49 $82
+    db   $83 ; unknown music opcode                    ;; 0f:5f4a $83
+    db   $85 ; unknown music opcode                    ;; 0f:5f4b $85
+    db   $87 ; unknown music opcode                    ;; 0f:5f4c $87
+    mUNK_E7 $8a                                        ;; 0f:5f4d $e7 $8a
+    db   $A0 ; unknown music opcode                    ;; 0f:5f4f $a0
+    db   $A2 ; unknown music opcode                    ;; 0f:5f50 $a2
+    db   $A3 ; unknown music opcode                    ;; 0f:5f51 $a3
+    db   $A2 ; unknown music opcode                    ;; 0f:5f52 $a2
+    db   $50 ; unknown music opcode                    ;; 0f:5f53 $50
+    db   $AE ; unknown music opcode                    ;; 0f:5f54 $ae
+    db   $A0 ; unknown music opcode                    ;; 0f:5f55 $a0
+    db   $DC ; unknown music opcode                    ;; 0f:5f56 $dc
+    db   $A8 ; unknown music opcode                    ;; 0f:5f57 $a8
+    db   $D8 ; unknown music opcode                    ;; 0f:5f58 $d8
+    db   $A3 ; unknown music opcode                    ;; 0f:5f59 $a3
+    db   $A8 ; unknown music opcode                    ;; 0f:5f5a $a8
+    db   $A7 ; unknown music opcode                    ;; 0f:5f5b $a7
+    db   $A5 ; unknown music opcode                    ;; 0f:5f5c $a5
+    db   $A3 ; unknown music opcode                    ;; 0f:5f5d $a3
+    db   $A2 ; unknown music opcode                    ;; 0f:5f5e $a2
+    db   $A3 ; unknown music opcode                    ;; 0f:5f5f $a3
+    db   $A5 ; unknown music opcode                    ;; 0f:5f60 $a5
+    db   $A3 ; unknown music opcode                    ;; 0f:5f61 $a3
+    db   $52 ; unknown music opcode                    ;; 0f:5f62 $52
+    db   $AE ; unknown music opcode                    ;; 0f:5f63 $ae
+    db   $A2 ; unknown music opcode                    ;; 0f:5f64 $a2
+    db   $DC ; unknown music opcode                    ;; 0f:5f65 $dc
+    db   $AA ; unknown music opcode                    ;; 0f:5f66 $aa
+    db   $D8 ; unknown music opcode                    ;; 0f:5f67 $d8
+    db   $A5 ; unknown music opcode                    ;; 0f:5f68 $a5
+    db   $AA ; unknown music opcode                    ;; 0f:5f69 $aa
+    db   $A8 ; unknown music opcode                    ;; 0f:5f6a $a8
+    db   $A7 ; unknown music opcode                    ;; 0f:5f6b $a7
+    db   $A5 ; unknown music opcode                    ;; 0f:5f6c $a5
+    db   $47 ; unknown music opcode                    ;; 0f:5f6d $47
+    db   $A5 ; unknown music opcode                    ;; 0f:5f6e $a5
+    db   $A7 ; unknown music opcode                    ;; 0f:5f6f $a7
+    db   $48 ; unknown music opcode                    ;; 0f:5f70 $48
+    db   $A7 ; unknown music opcode                    ;; 0f:5f71 $a7
+    db   $A8 ; unknown music opcode                    ;; 0f:5f72 $a8
+    db   $AA ; unknown music opcode                    ;; 0f:5f73 $aa
+    db   $AC ; unknown music opcode                    ;; 0f:5f74 $ac
+    db   $AA ; unknown music opcode                    ;; 0f:5f75 $aa
+    db   $A8 ; unknown music opcode                    ;; 0f:5f76 $a8
+    db   $A7 ; unknown music opcode                    ;; 0f:5f77 $a7
+    db   $A8 ; unknown music opcode                    ;; 0f:5f78 $a8
+    db   $A7 ; unknown music opcode                    ;; 0f:5f79 $a7
+    db   $A5 ; unknown music opcode                    ;; 0f:5f7a $a5
+    db   $74 ; unknown music opcode                    ;; 0f:5f7b $74
+    db   $75 ; unknown music opcode                    ;; 0f:5f7c $75
+    db   $87 ; unknown music opcode                    ;; 0f:5f7d $87
+    db   $48 ; unknown music opcode                    ;; 0f:5f7e $48
+    db   $A7 ; unknown music opcode                    ;; 0f:5f7f $a7
+    db   $A8 ; unknown music opcode                    ;; 0f:5f80 $a8
+    db   $4A ; unknown music opcode                    ;; 0f:5f81 $4a
+    db   $A8 ; unknown music opcode                    ;; 0f:5f82 $a8
+    db   $AA ; unknown music opcode                    ;; 0f:5f83 $aa
+    mUNK_E7 $88                                        ;; 0f:5f84 $e7 $88
+    db   $7C ; unknown music opcode                    ;; 0f:5f86 $7c
+    db   $78 ; unknown music opcode                    ;; 0f:5f87 $78
+    db   $85 ; unknown music opcode                    ;; 0f:5f88 $85
+    db   $72 ; unknown music opcode                    ;; 0f:5f89 $72
+    db   $75 ; unknown music opcode                    ;; 0f:5f8a $75
+    db   $88 ; unknown music opcode                    ;; 0f:5f8b $88
+    mUNK_E7 $8a                                        ;; 0f:5f8c $e7 $8a
+    db   $47 ; unknown music opcode                    ;; 0f:5f8e $47
+    db   $A6 ; unknown music opcode                    ;; 0f:5f8f $a6
+    db   $A7 ; unknown music opcode                    ;; 0f:5f90 $a7
+    db   $7B ; unknown music opcode                    ;; 0f:5f91 $7b
+    db   $77 ; unknown music opcode                    ;; 0f:5f92 $77
+    db   $8B ; unknown music opcode                    ;; 0f:5f93 $8b
+    db   $D8 ; unknown music opcode                    ;; 0f:5f94 $d8
+    db   $22 ; unknown music opcode                    ;; 0f:5f95 $22
+    db   $AF ; unknown music opcode                    ;; 0f:5f96 $af
+    db   $DD ; unknown music opcode                    ;; 0f:5f97 $dd
+    mUNK_E7 $82                                        ;; 0f:5f98 $e7 $82
+    mUNK_E0 $a8                                        ;; 0f:5f9a $e0 $a8
+    db   $7A ; unknown music opcode                    ;; 0f:5f9c $7a
+    mUNK_E5 $80                                        ;; 0f:5f9d $e5 $80
+    db   $A7 ; unknown music opcode                    ;; 0f:5f9f $a7
+    db   $A9 ; unknown music opcode                    ;; 0f:5fa0 $a9
+    db   $AB ; unknown music opcode                    ;; 0f:5fa1 $ab
+    db   $AC ; unknown music opcode                    ;; 0f:5fa2 $ac
+    db   $D8 ; unknown music opcode                    ;; 0f:5fa3 $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:5fa4 $a2
+    db   $A3 ; unknown music opcode                    ;; 0f:5fa5 $a3
+    db   $A5 ; unknown music opcode                    ;; 0f:5fa6 $a5
+    mUNK_E1 song0f_channel2                            ;; 0f:5fa7 $e1 $69 $5e
 
-data_0f_5faa:
-    db   $e4, $4f, $7a, $e0, $c0, $7a, $e5, $00        ;; 0f:5faa ????????
-    db   $e6, $02, $af, $d2, $a0, $a3, $a0, $a2        ;; 0f:5fb2 ????????
-    db   $a0, $a3, $a0, $af, $dc, $ab, $d8, $a2        ;; 0f:5fba ????????
-    db   $dc, $ab, $ac, $ab, $d8, $a2, $dc, $ab        ;; 0f:5fc2 ????????
-    db   $af, $aa, $d8, $a2, $dc, $aa, $ac, $aa        ;; 0f:5fca ????????
-    db   $d8, $a2, $dc, $aa, $af, $a9, $ac, $a9        ;; 0f:5fd2 ????????
-    db   $ac, $a9, $ac, $a9, $e6, $01, $af, $a8        ;; 0f:5fda ????????
-    db   $ac, $a8, $aa, $a8, $ac, $a8, $af, $aa        ;; 0f:5fe2 ????????
-    db   $d8, $a2, $dc, $aa, $ac, $aa, $d8, $a2        ;; 0f:5fea ????????
-    db   $dc, $aa, $af, $d8, $a3, $a7, $a3, $a5        ;; 0f:5ff2 ????????
-    db   $a3, $a7, $a3, $af, $a2, $a6, $a2, $a4        ;; 0f:5ffa ????????
-    db   $a2, $a6, $a2, $dc, $e0, $c4, $7a, $e6        ;; 0f:6002 ????????
-    db   $02, $ab, $d8, $a2, $a0, $a2, $dc, $e6        ;; 0f:600a ????????
-    db   $01, $a7, $d8, $a2, $a0, $a2, $e6, $03        ;; 0f:6012 ????????
-    db   $a0, $a4, $a2, $a4, $a0, $a4, $a2, $a4        ;; 0f:601a ????????
-    db   $e6, $02, $a0, $a5, $a3, $a5, $e6, $01        ;; 0f:6022 ????????
-    db   $a0, $a5, $a3, $a5, $dc, $e6, $03, $aa        ;; 0f:602a ????????
-    db   $d8, $a2, $a0, $a2, $dc, $aa, $d8, $a2        ;; 0f:6032 ????????
-    db   $a0, $a2, $a2, $dc, $a7, $d8, $a2, $dc        ;; 0f:603a ????????
-    db   $a7, $d8, $a2, $dc, $a7, $d8, $a2, $dc        ;; 0f:6042 ????????
-    db   $a7, $d8, $a3, $dc, $a7, $d8, $a3, $dc        ;; 0f:604a ????????
-    db   $a7, $d8, $a3, $dc, $a7, $d8, $a3, $dc        ;; 0f:6052 ????????
-    db   $a7, $d8, $a5, $a0, $a5, $a0, $a5, $a0        ;; 0f:605a ????????
-    db   $a5, $a0, $a6, $a0, $a6, $a0, $a6, $a0        ;; 0f:6062 ????????
-    db   $a6, $a0, $dc, $e5, $80, $a7, $a8, $a7        ;; 0f:606a ????????
-    db   $a5, $a7, $a9, $ab, $ac, $d8, $a2, $a3        ;; 0f:6072 ????????
-    db   $a2, $a0, $b2, $b3, $b5, $b7, $b9, $bb        ;; 0f:607a ????????
-    db   $d8, $e0, $ac, $7a, $e5, $00, $aa, $a7        ;; 0f:6082 ????????
-    db   $e6, $02, $a3, $a7, $e6, $03, $ac, $a9        ;; 0f:608a ????????
-    db   $e6, $01, $a5, $a9, $e6, $03, $aa, $a7        ;; 0f:6092 ????????
-    db   $e6, $02, $a3, $a7, $e6, $03, $a9, $a5        ;; 0f:609a ????????
-    db   $e6, $01, $a0, $a5, $e6, $03, $aa, $a7        ;; 0f:60a2 ????????
-    db   $e6, $02, $a3, $a7, $e6, $03, $ac, $a9        ;; 0f:60aa ????????
-    db   $e6, $01, $a5, $a9, $e6, $03, $aa, $a7        ;; 0f:60b2 ????????
-    db   $a3, $a7, $a9, $a5, $a0, $a5, $dc, $e3        ;; 0f:60ba ????????
-    db   $02, $e6, $03, $a3, $a5, $a3, $a2, $e6        ;; 0f:60c2 ????????
-    db   $02, $a3, $a5, $a3, $a2, $a3, $a5, $a3        ;; 0f:60ca ????????
-    db   $a2, $e6, $03, $a3, $a5, $a3, $a2, $a3        ;; 0f:60d2 ????????
-    db   $a5, $a3, $a2, $e6, $01, $a3, $a5, $a3        ;; 0f:60da ????????
-    db   $a2, $a3, $a5, $a3, $a2, $e6, $03, $a0        ;; 0f:60e2 ????????
-    db   $a2, $a0, $dc, $aa, $ac, $d8, $a2, $a3        ;; 0f:60ea ????????
-    db   $a2, $a0, $af, $a0, $a2, $a3, $a2, $a0        ;; 0f:60f2 ????????
-    db   $af, $a0, $a2, $a3, $a0, $eb, $01, $1a        ;; 0f:60fa ????????
-    db   $61, $a2, $a3, $a5, $a3, $a2, $af, $a2        ;; 0f:6102 ????????
-    db   $a0, $a2, $a3, $a5, $a7, $e6, $01, $a8        ;; 0f:610a ????????
-    db   $aa, $ac, $d8, $a2, $dc, $e2, $c3, $60        ;; 0f:6112 ????????
-    db   $e6, $02, $82, $80, $dc, $8a, $88, $d8        ;; 0f:611a ????????
-    db   $e0, $a8, $7a, $e6, $03, $e5, $40, $a5        ;; 0f:6122 ????????
-    db   $a2, $a7, $a3, $a8, $a5, $aa, $a2, $e0        ;; 0f:612a ????????
-    db   $ac, $7a, $e5, $00, $a3, $a5, $a7, $a5        ;; 0f:6132 ????????
-    db   $83, $e6, $02, $85, $87, $e6, $03, $a0        ;; 0f:613a ????????
-    db   $a8, $ac, $aa, $a8, $a7, $a5, $a7, $a8        ;; 0f:6142 ????????
-    db   $a7, $85, $e6, $01, $87, $88, $e6, $03        ;; 0f:614a ????????
-    db   $a2, $aa, $d8, $a2, $a0, $dc, $aa, $a8        ;; 0f:6152 ????????
-    db   $e6, $02, $a7, $a3, $a7, $aa, $d8, $53        ;; 0f:615a ????????
-    db   $dc, $e6, $01, $a5, $a2, $a5, $aa, $d8        ;; 0f:6162 ????????
-    db   $52, $dc, $e6, $03, $a5, $a1, $a5, $a8        ;; 0f:616a ????????
-    db   $ad, $ac, $aa, $a8, $77, $78, $8a, $e6        ;; 0f:6172 ????????
-    db   $02, $a5, $a7, $a8, $a7, $55, $e6, $01        ;; 0f:617a ????????
-    db   $a7, $a8, $aa, $a8, $57, $e6, $03, $78        ;; 0f:6182 ????????
-    db   $75, $82, $dc, $78, $d8, $72, $85, $e6        ;; 0f:618a ????????
-    db   $02, $82, $dc, $e6, $03, $ab, $af, $ab        ;; 0f:6192 ????????
-    db   $af, $d8, $e6, $01, $82, $dc, $e6, $03        ;; 0f:619a ????????
-    db   $ab, $af, $ab, $af, $d8, $e6, $02, $82        ;; 0f:61a2 ????????
-    db   $dc, $e6, $03, $ab, $af, $8f, $d8, $82        ;; 0f:61aa ????????
-    db   $85, $87, $e5, $80, $a3, $a0, $a2, $dc        ;; 0f:61b2 ????????
-    db   $ab, $ac, $a8, $ab, $a7, $e1, $aa, $5f        ;; 0f:61ba ????????
+song0f_channel1:
+    mUNK_E4 frequencyDeltaData                         ;; 0f:5faa $e4 $4f $7a
+    mUNK_E0 $c0                                        ;; 0f:5fad $e0 $c0
+    db   $7A ; unknown music opcode                    ;; 0f:5faf $7a
+    mUNK_E5 $00                                        ;; 0f:5fb0 $e5 $00
+    mUNK_E6 $02                                        ;; 0f:5fb2 $e6 $02
+    db   $AF ; unknown music opcode                    ;; 0f:5fb4 $af
+    db   $D2 ; unknown music opcode                    ;; 0f:5fb5 $d2
+    db   $A0 ; unknown music opcode                    ;; 0f:5fb6 $a0
+    db   $A3 ; unknown music opcode                    ;; 0f:5fb7 $a3
+    db   $A0 ; unknown music opcode                    ;; 0f:5fb8 $a0
+    db   $A2 ; unknown music opcode                    ;; 0f:5fb9 $a2
+    db   $A0 ; unknown music opcode                    ;; 0f:5fba $a0
+    db   $A3 ; unknown music opcode                    ;; 0f:5fbb $a3
+    db   $A0 ; unknown music opcode                    ;; 0f:5fbc $a0
+    db   $AF ; unknown music opcode                    ;; 0f:5fbd $af
+    db   $DC ; unknown music opcode                    ;; 0f:5fbe $dc
+    db   $AB ; unknown music opcode                    ;; 0f:5fbf $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:5fc0 $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:5fc1 $a2
+    db   $DC ; unknown music opcode                    ;; 0f:5fc2 $dc
+    db   $AB ; unknown music opcode                    ;; 0f:5fc3 $ab
+    db   $AC ; unknown music opcode                    ;; 0f:5fc4 $ac
+    db   $AB ; unknown music opcode                    ;; 0f:5fc5 $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:5fc6 $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:5fc7 $a2
+    db   $DC ; unknown music opcode                    ;; 0f:5fc8 $dc
+    db   $AB ; unknown music opcode                    ;; 0f:5fc9 $ab
+    db   $AF ; unknown music opcode                    ;; 0f:5fca $af
+    db   $AA ; unknown music opcode                    ;; 0f:5fcb $aa
+    db   $D8 ; unknown music opcode                    ;; 0f:5fcc $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:5fcd $a2
+    db   $DC ; unknown music opcode                    ;; 0f:5fce $dc
+    db   $AA ; unknown music opcode                    ;; 0f:5fcf $aa
+    db   $AC ; unknown music opcode                    ;; 0f:5fd0 $ac
+    db   $AA ; unknown music opcode                    ;; 0f:5fd1 $aa
+    db   $D8 ; unknown music opcode                    ;; 0f:5fd2 $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:5fd3 $a2
+    db   $DC ; unknown music opcode                    ;; 0f:5fd4 $dc
+    db   $AA ; unknown music opcode                    ;; 0f:5fd5 $aa
+    db   $AF ; unknown music opcode                    ;; 0f:5fd6 $af
+    db   $A9 ; unknown music opcode                    ;; 0f:5fd7 $a9
+    db   $AC ; unknown music opcode                    ;; 0f:5fd8 $ac
+    db   $A9 ; unknown music opcode                    ;; 0f:5fd9 $a9
+    db   $AC ; unknown music opcode                    ;; 0f:5fda $ac
+    db   $A9 ; unknown music opcode                    ;; 0f:5fdb $a9
+    db   $AC ; unknown music opcode                    ;; 0f:5fdc $ac
+    db   $A9 ; unknown music opcode                    ;; 0f:5fdd $a9
+    mUNK_E6 $01                                        ;; 0f:5fde $e6 $01
+    db   $AF ; unknown music opcode                    ;; 0f:5fe0 $af
+    db   $A8 ; unknown music opcode                    ;; 0f:5fe1 $a8
+    db   $AC ; unknown music opcode                    ;; 0f:5fe2 $ac
+    db   $A8 ; unknown music opcode                    ;; 0f:5fe3 $a8
+    db   $AA ; unknown music opcode                    ;; 0f:5fe4 $aa
+    db   $A8 ; unknown music opcode                    ;; 0f:5fe5 $a8
+    db   $AC ; unknown music opcode                    ;; 0f:5fe6 $ac
+    db   $A8 ; unknown music opcode                    ;; 0f:5fe7 $a8
+    db   $AF ; unknown music opcode                    ;; 0f:5fe8 $af
+    db   $AA ; unknown music opcode                    ;; 0f:5fe9 $aa
+    db   $D8 ; unknown music opcode                    ;; 0f:5fea $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:5feb $a2
+    db   $DC ; unknown music opcode                    ;; 0f:5fec $dc
+    db   $AA ; unknown music opcode                    ;; 0f:5fed $aa
+    db   $AC ; unknown music opcode                    ;; 0f:5fee $ac
+    db   $AA ; unknown music opcode                    ;; 0f:5fef $aa
+    db   $D8 ; unknown music opcode                    ;; 0f:5ff0 $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:5ff1 $a2
+    db   $DC ; unknown music opcode                    ;; 0f:5ff2 $dc
+    db   $AA ; unknown music opcode                    ;; 0f:5ff3 $aa
+    db   $AF ; unknown music opcode                    ;; 0f:5ff4 $af
+    db   $D8 ; unknown music opcode                    ;; 0f:5ff5 $d8
+    db   $A3 ; unknown music opcode                    ;; 0f:5ff6 $a3
+    db   $A7 ; unknown music opcode                    ;; 0f:5ff7 $a7
+    db   $A3 ; unknown music opcode                    ;; 0f:5ff8 $a3
+    db   $A5 ; unknown music opcode                    ;; 0f:5ff9 $a5
+    db   $A3 ; unknown music opcode                    ;; 0f:5ffa $a3
+    db   $A7 ; unknown music opcode                    ;; 0f:5ffb $a7
+    db   $A3 ; unknown music opcode                    ;; 0f:5ffc $a3
+    db   $AF ; unknown music opcode                    ;; 0f:5ffd $af
+    db   $A2 ; unknown music opcode                    ;; 0f:5ffe $a2
+    db   $A6 ; unknown music opcode                    ;; 0f:5fff $a6
+    db   $A2 ; unknown music opcode                    ;; 0f:6000 $a2
+    db   $A4 ; unknown music opcode                    ;; 0f:6001 $a4
+    db   $A2 ; unknown music opcode                    ;; 0f:6002 $a2
+    db   $A6 ; unknown music opcode                    ;; 0f:6003 $a6
+    db   $A2 ; unknown music opcode                    ;; 0f:6004 $a2
+    db   $DC ; unknown music opcode                    ;; 0f:6005 $dc
+    mUNK_E0 $c4                                        ;; 0f:6006 $e0 $c4
+    db   $7A ; unknown music opcode                    ;; 0f:6008 $7a
+    mUNK_E6 $02                                        ;; 0f:6009 $e6 $02
+    db   $AB ; unknown music opcode                    ;; 0f:600b $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:600c $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:600d $a2
+    db   $A0 ; unknown music opcode                    ;; 0f:600e $a0
+    db   $A2 ; unknown music opcode                    ;; 0f:600f $a2
+    db   $DC ; unknown music opcode                    ;; 0f:6010 $dc
+    mUNK_E6 $01                                        ;; 0f:6011 $e6 $01
+    db   $A7 ; unknown music opcode                    ;; 0f:6013 $a7
+    db   $D8 ; unknown music opcode                    ;; 0f:6014 $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:6015 $a2
+    db   $A0 ; unknown music opcode                    ;; 0f:6016 $a0
+    db   $A2 ; unknown music opcode                    ;; 0f:6017 $a2
+    mUNK_E6 $03                                        ;; 0f:6018 $e6 $03
+    db   $A0 ; unknown music opcode                    ;; 0f:601a $a0
+    db   $A4 ; unknown music opcode                    ;; 0f:601b $a4
+    db   $A2 ; unknown music opcode                    ;; 0f:601c $a2
+    db   $A4 ; unknown music opcode                    ;; 0f:601d $a4
+    db   $A0 ; unknown music opcode                    ;; 0f:601e $a0
+    db   $A4 ; unknown music opcode                    ;; 0f:601f $a4
+    db   $A2 ; unknown music opcode                    ;; 0f:6020 $a2
+    db   $A4 ; unknown music opcode                    ;; 0f:6021 $a4
+    mUNK_E6 $02                                        ;; 0f:6022 $e6 $02
+    db   $A0 ; unknown music opcode                    ;; 0f:6024 $a0
+    db   $A5 ; unknown music opcode                    ;; 0f:6025 $a5
+    db   $A3 ; unknown music opcode                    ;; 0f:6026 $a3
+    db   $A5 ; unknown music opcode                    ;; 0f:6027 $a5
+    mUNK_E6 $01                                        ;; 0f:6028 $e6 $01
+    db   $A0 ; unknown music opcode                    ;; 0f:602a $a0
+    db   $A5 ; unknown music opcode                    ;; 0f:602b $a5
+    db   $A3 ; unknown music opcode                    ;; 0f:602c $a3
+    db   $A5 ; unknown music opcode                    ;; 0f:602d $a5
+    db   $DC ; unknown music opcode                    ;; 0f:602e $dc
+    mUNK_E6 $03                                        ;; 0f:602f $e6 $03
+    db   $AA ; unknown music opcode                    ;; 0f:6031 $aa
+    db   $D8 ; unknown music opcode                    ;; 0f:6032 $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:6033 $a2
+    db   $A0 ; unknown music opcode                    ;; 0f:6034 $a0
+    db   $A2 ; unknown music opcode                    ;; 0f:6035 $a2
+    db   $DC ; unknown music opcode                    ;; 0f:6036 $dc
+    db   $AA ; unknown music opcode                    ;; 0f:6037 $aa
+    db   $D8 ; unknown music opcode                    ;; 0f:6038 $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:6039 $a2
+    db   $A0 ; unknown music opcode                    ;; 0f:603a $a0
+    db   $A2 ; unknown music opcode                    ;; 0f:603b $a2
+    db   $A2 ; unknown music opcode                    ;; 0f:603c $a2
+    db   $DC ; unknown music opcode                    ;; 0f:603d $dc
+    db   $A7 ; unknown music opcode                    ;; 0f:603e $a7
+    db   $D8 ; unknown music opcode                    ;; 0f:603f $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:6040 $a2
+    db   $DC ; unknown music opcode                    ;; 0f:6041 $dc
+    db   $A7 ; unknown music opcode                    ;; 0f:6042 $a7
+    db   $D8 ; unknown music opcode                    ;; 0f:6043 $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:6044 $a2
+    db   $DC ; unknown music opcode                    ;; 0f:6045 $dc
+    db   $A7 ; unknown music opcode                    ;; 0f:6046 $a7
+    db   $D8 ; unknown music opcode                    ;; 0f:6047 $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:6048 $a2
+    db   $DC ; unknown music opcode                    ;; 0f:6049 $dc
+    db   $A7 ; unknown music opcode                    ;; 0f:604a $a7
+    db   $D8 ; unknown music opcode                    ;; 0f:604b $d8
+    db   $A3 ; unknown music opcode                    ;; 0f:604c $a3
+    db   $DC ; unknown music opcode                    ;; 0f:604d $dc
+    db   $A7 ; unknown music opcode                    ;; 0f:604e $a7
+    db   $D8 ; unknown music opcode                    ;; 0f:604f $d8
+    db   $A3 ; unknown music opcode                    ;; 0f:6050 $a3
+    db   $DC ; unknown music opcode                    ;; 0f:6051 $dc
+    db   $A7 ; unknown music opcode                    ;; 0f:6052 $a7
+    db   $D8 ; unknown music opcode                    ;; 0f:6053 $d8
+    db   $A3 ; unknown music opcode                    ;; 0f:6054 $a3
+    db   $DC ; unknown music opcode                    ;; 0f:6055 $dc
+    db   $A7 ; unknown music opcode                    ;; 0f:6056 $a7
+    db   $D8 ; unknown music opcode                    ;; 0f:6057 $d8
+    db   $A3 ; unknown music opcode                    ;; 0f:6058 $a3
+    db   $DC ; unknown music opcode                    ;; 0f:6059 $dc
+    db   $A7 ; unknown music opcode                    ;; 0f:605a $a7
+    db   $D8 ; unknown music opcode                    ;; 0f:605b $d8
+    db   $A5 ; unknown music opcode                    ;; 0f:605c $a5
+    db   $A0 ; unknown music opcode                    ;; 0f:605d $a0
+    db   $A5 ; unknown music opcode                    ;; 0f:605e $a5
+    db   $A0 ; unknown music opcode                    ;; 0f:605f $a0
+    db   $A5 ; unknown music opcode                    ;; 0f:6060 $a5
+    db   $A0 ; unknown music opcode                    ;; 0f:6061 $a0
+    db   $A5 ; unknown music opcode                    ;; 0f:6062 $a5
+    db   $A0 ; unknown music opcode                    ;; 0f:6063 $a0
+    db   $A6 ; unknown music opcode                    ;; 0f:6064 $a6
+    db   $A0 ; unknown music opcode                    ;; 0f:6065 $a0
+    db   $A6 ; unknown music opcode                    ;; 0f:6066 $a6
+    db   $A0 ; unknown music opcode                    ;; 0f:6067 $a0
+    db   $A6 ; unknown music opcode                    ;; 0f:6068 $a6
+    db   $A0 ; unknown music opcode                    ;; 0f:6069 $a0
+    db   $A6 ; unknown music opcode                    ;; 0f:606a $a6
+    db   $A0 ; unknown music opcode                    ;; 0f:606b $a0
+    db   $DC ; unknown music opcode                    ;; 0f:606c $dc
+    mUNK_E5 $80                                        ;; 0f:606d $e5 $80
+    db   $A7 ; unknown music opcode                    ;; 0f:606f $a7
+    db   $A8 ; unknown music opcode                    ;; 0f:6070 $a8
+    db   $A7 ; unknown music opcode                    ;; 0f:6071 $a7
+    db   $A5 ; unknown music opcode                    ;; 0f:6072 $a5
+    db   $A7 ; unknown music opcode                    ;; 0f:6073 $a7
+    db   $A9 ; unknown music opcode                    ;; 0f:6074 $a9
+    db   $AB ; unknown music opcode                    ;; 0f:6075 $ab
+    db   $AC ; unknown music opcode                    ;; 0f:6076 $ac
+    db   $D8 ; unknown music opcode                    ;; 0f:6077 $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:6078 $a2
+    db   $A3 ; unknown music opcode                    ;; 0f:6079 $a3
+    db   $A2 ; unknown music opcode                    ;; 0f:607a $a2
+    db   $A0 ; unknown music opcode                    ;; 0f:607b $a0
+    db   $B2 ; unknown music opcode                    ;; 0f:607c $b2
+    db   $B3 ; unknown music opcode                    ;; 0f:607d $b3
+    db   $B5 ; unknown music opcode                    ;; 0f:607e $b5
+    db   $B7 ; unknown music opcode                    ;; 0f:607f $b7
+    db   $B9 ; unknown music opcode                    ;; 0f:6080 $b9
+    db   $BB ; unknown music opcode                    ;; 0f:6081 $bb
+    db   $D8 ; unknown music opcode                    ;; 0f:6082 $d8
+    mUNK_E0 $ac                                        ;; 0f:6083 $e0 $ac
+    db   $7A ; unknown music opcode                    ;; 0f:6085 $7a
+    mUNK_E5 $00                                        ;; 0f:6086 $e5 $00
+    db   $AA ; unknown music opcode                    ;; 0f:6088 $aa
+    db   $A7 ; unknown music opcode                    ;; 0f:6089 $a7
+    mUNK_E6 $02                                        ;; 0f:608a $e6 $02
+    db   $A3 ; unknown music opcode                    ;; 0f:608c $a3
+    db   $A7 ; unknown music opcode                    ;; 0f:608d $a7
+    mUNK_E6 $03                                        ;; 0f:608e $e6 $03
+    db   $AC ; unknown music opcode                    ;; 0f:6090 $ac
+    db   $A9 ; unknown music opcode                    ;; 0f:6091 $a9
+    mUNK_E6 $01                                        ;; 0f:6092 $e6 $01
+    db   $A5 ; unknown music opcode                    ;; 0f:6094 $a5
+    db   $A9 ; unknown music opcode                    ;; 0f:6095 $a9
+    mUNK_E6 $03                                        ;; 0f:6096 $e6 $03
+    db   $AA ; unknown music opcode                    ;; 0f:6098 $aa
+    db   $A7 ; unknown music opcode                    ;; 0f:6099 $a7
+    mUNK_E6 $02                                        ;; 0f:609a $e6 $02
+    db   $A3 ; unknown music opcode                    ;; 0f:609c $a3
+    db   $A7 ; unknown music opcode                    ;; 0f:609d $a7
+    mUNK_E6 $03                                        ;; 0f:609e $e6 $03
+    db   $A9 ; unknown music opcode                    ;; 0f:60a0 $a9
+    db   $A5 ; unknown music opcode                    ;; 0f:60a1 $a5
+    mUNK_E6 $01                                        ;; 0f:60a2 $e6 $01
+    db   $A0 ; unknown music opcode                    ;; 0f:60a4 $a0
+    db   $A5 ; unknown music opcode                    ;; 0f:60a5 $a5
+    mUNK_E6 $03                                        ;; 0f:60a6 $e6 $03
+    db   $AA ; unknown music opcode                    ;; 0f:60a8 $aa
+    db   $A7 ; unknown music opcode                    ;; 0f:60a9 $a7
+    mUNK_E6 $02                                        ;; 0f:60aa $e6 $02
+    db   $A3 ; unknown music opcode                    ;; 0f:60ac $a3
+    db   $A7 ; unknown music opcode                    ;; 0f:60ad $a7
+    mUNK_E6 $03                                        ;; 0f:60ae $e6 $03
+    db   $AC ; unknown music opcode                    ;; 0f:60b0 $ac
+    db   $A9 ; unknown music opcode                    ;; 0f:60b1 $a9
+    mUNK_E6 $01                                        ;; 0f:60b2 $e6 $01
+    db   $A5 ; unknown music opcode                    ;; 0f:60b4 $a5
+    db   $A9 ; unknown music opcode                    ;; 0f:60b5 $a9
+    mUNK_E6 $03                                        ;; 0f:60b6 $e6 $03
+    db   $AA ; unknown music opcode                    ;; 0f:60b8 $aa
+    db   $A7 ; unknown music opcode                    ;; 0f:60b9 $a7
+    db   $A3 ; unknown music opcode                    ;; 0f:60ba $a3
+    db   $A7 ; unknown music opcode                    ;; 0f:60bb $a7
+    db   $A9 ; unknown music opcode                    ;; 0f:60bc $a9
+    db   $A5 ; unknown music opcode                    ;; 0f:60bd $a5
+    db   $A0 ; unknown music opcode                    ;; 0f:60be $a0
+    db   $A5 ; unknown music opcode                    ;; 0f:60bf $a5
+    db   $DC ; unknown music opcode                    ;; 0f:60c0 $dc
+    mUNK_E3 $02                                        ;; 0f:60c1 $e3 $02
+.data_0f_60c3:
+    mUNK_E6 $03                                        ;; 0f:60c3 $e6 $03
+    db   $A3 ; unknown music opcode                    ;; 0f:60c5 $a3
+    db   $A5 ; unknown music opcode                    ;; 0f:60c6 $a5
+    db   $A3 ; unknown music opcode                    ;; 0f:60c7 $a3
+    db   $A2 ; unknown music opcode                    ;; 0f:60c8 $a2
+    mUNK_E6 $02                                        ;; 0f:60c9 $e6 $02
+    db   $A3 ; unknown music opcode                    ;; 0f:60cb $a3
+    db   $A5 ; unknown music opcode                    ;; 0f:60cc $a5
+    db   $A3 ; unknown music opcode                    ;; 0f:60cd $a3
+    db   $A2 ; unknown music opcode                    ;; 0f:60ce $a2
+    db   $A3 ; unknown music opcode                    ;; 0f:60cf $a3
+    db   $A5 ; unknown music opcode                    ;; 0f:60d0 $a5
+    db   $A3 ; unknown music opcode                    ;; 0f:60d1 $a3
+    db   $A2 ; unknown music opcode                    ;; 0f:60d2 $a2
+    mUNK_E6 $03                                        ;; 0f:60d3 $e6 $03
+    db   $A3 ; unknown music opcode                    ;; 0f:60d5 $a3
+    db   $A5 ; unknown music opcode                    ;; 0f:60d6 $a5
+    db   $A3 ; unknown music opcode                    ;; 0f:60d7 $a3
+    db   $A2 ; unknown music opcode                    ;; 0f:60d8 $a2
+    db   $A3 ; unknown music opcode                    ;; 0f:60d9 $a3
+    db   $A5 ; unknown music opcode                    ;; 0f:60da $a5
+    db   $A3 ; unknown music opcode                    ;; 0f:60db $a3
+    db   $A2 ; unknown music opcode                    ;; 0f:60dc $a2
+    mUNK_E6 $01                                        ;; 0f:60dd $e6 $01
+    db   $A3 ; unknown music opcode                    ;; 0f:60df $a3
+    db   $A5 ; unknown music opcode                    ;; 0f:60e0 $a5
+    db   $A3 ; unknown music opcode                    ;; 0f:60e1 $a3
+    db   $A2 ; unknown music opcode                    ;; 0f:60e2 $a2
+    db   $A3 ; unknown music opcode                    ;; 0f:60e3 $a3
+    db   $A5 ; unknown music opcode                    ;; 0f:60e4 $a5
+    db   $A3 ; unknown music opcode                    ;; 0f:60e5 $a3
+    db   $A2 ; unknown music opcode                    ;; 0f:60e6 $a2
+    mUNK_E6 $03                                        ;; 0f:60e7 $e6 $03
+    db   $A0 ; unknown music opcode                    ;; 0f:60e9 $a0
+    db   $A2 ; unknown music opcode                    ;; 0f:60ea $a2
+    db   $A0 ; unknown music opcode                    ;; 0f:60eb $a0
+    db   $DC ; unknown music opcode                    ;; 0f:60ec $dc
+    db   $AA ; unknown music opcode                    ;; 0f:60ed $aa
+    db   $AC ; unknown music opcode                    ;; 0f:60ee $ac
+    db   $D8 ; unknown music opcode                    ;; 0f:60ef $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:60f0 $a2
+    db   $A3 ; unknown music opcode                    ;; 0f:60f1 $a3
+    db   $A2 ; unknown music opcode                    ;; 0f:60f2 $a2
+    db   $A0 ; unknown music opcode                    ;; 0f:60f3 $a0
+    db   $AF ; unknown music opcode                    ;; 0f:60f4 $af
+    db   $A0 ; unknown music opcode                    ;; 0f:60f5 $a0
+    db   $A2 ; unknown music opcode                    ;; 0f:60f6 $a2
+    db   $A3 ; unknown music opcode                    ;; 0f:60f7 $a3
+    db   $A2 ; unknown music opcode                    ;; 0f:60f8 $a2
+    db   $A0 ; unknown music opcode                    ;; 0f:60f9 $a0
+    db   $AF ; unknown music opcode                    ;; 0f:60fa $af
+    db   $A0 ; unknown music opcode                    ;; 0f:60fb $a0
+    db   $A2 ; unknown music opcode                    ;; 0f:60fc $a2
+    db   $A3 ; unknown music opcode                    ;; 0f:60fd $a3
+    db   $A0 ; unknown music opcode                    ;; 0f:60fe $a0
+    mUNK_EB $01, .data_0f_611a                         ;; 0f:60ff $eb $01 $1a $61
+    db   $A2 ; unknown music opcode                    ;; 0f:6103 $a2
+    db   $A3 ; unknown music opcode                    ;; 0f:6104 $a3
+    db   $A5 ; unknown music opcode                    ;; 0f:6105 $a5
+    db   $A3 ; unknown music opcode                    ;; 0f:6106 $a3
+    db   $A2 ; unknown music opcode                    ;; 0f:6107 $a2
+    db   $AF ; unknown music opcode                    ;; 0f:6108 $af
+    db   $A2 ; unknown music opcode                    ;; 0f:6109 $a2
+    db   $A0 ; unknown music opcode                    ;; 0f:610a $a0
+    db   $A2 ; unknown music opcode                    ;; 0f:610b $a2
+    db   $A3 ; unknown music opcode                    ;; 0f:610c $a3
+    db   $A5 ; unknown music opcode                    ;; 0f:610d $a5
+    db   $A7 ; unknown music opcode                    ;; 0f:610e $a7
+    mUNK_E6 $01                                        ;; 0f:610f $e6 $01
+    db   $A8 ; unknown music opcode                    ;; 0f:6111 $a8
+    db   $AA ; unknown music opcode                    ;; 0f:6112 $aa
+    db   $AC ; unknown music opcode                    ;; 0f:6113 $ac
+    db   $D8 ; unknown music opcode                    ;; 0f:6114 $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:6115 $a2
+    db   $DC ; unknown music opcode                    ;; 0f:6116 $dc
+    mUNK_E2 .data_0f_60c3                              ;; 0f:6117 $e2 $c3 $60
+.data_0f_611a:
+    mUNK_E6 $02                                        ;; 0f:611a $e6 $02
+    db   $82 ; unknown music opcode                    ;; 0f:611c $82
+    db   $80 ; unknown music opcode                    ;; 0f:611d $80
+    db   $DC ; unknown music opcode                    ;; 0f:611e $dc
+    db   $8A ; unknown music opcode                    ;; 0f:611f $8a
+    db   $88 ; unknown music opcode                    ;; 0f:6120 $88
+    db   $D8 ; unknown music opcode                    ;; 0f:6121 $d8
+    mUNK_E0 $a8                                        ;; 0f:6122 $e0 $a8
+    db   $7A ; unknown music opcode                    ;; 0f:6124 $7a
+    mUNK_E6 $03                                        ;; 0f:6125 $e6 $03
+    mUNK_E5 $40                                        ;; 0f:6127 $e5 $40
+    db   $A5 ; unknown music opcode                    ;; 0f:6129 $a5
+    db   $A2 ; unknown music opcode                    ;; 0f:612a $a2
+    db   $A7 ; unknown music opcode                    ;; 0f:612b $a7
+    db   $A3 ; unknown music opcode                    ;; 0f:612c $a3
+    db   $A8 ; unknown music opcode                    ;; 0f:612d $a8
+    db   $A5 ; unknown music opcode                    ;; 0f:612e $a5
+    db   $AA ; unknown music opcode                    ;; 0f:612f $aa
+    db   $A2 ; unknown music opcode                    ;; 0f:6130 $a2
+    mUNK_E0 $ac                                        ;; 0f:6131 $e0 $ac
+    db   $7A ; unknown music opcode                    ;; 0f:6133 $7a
+    mUNK_E5 $00                                        ;; 0f:6134 $e5 $00
+    db   $A3 ; unknown music opcode                    ;; 0f:6136 $a3
+    db   $A5 ; unknown music opcode                    ;; 0f:6137 $a5
+    db   $A7 ; unknown music opcode                    ;; 0f:6138 $a7
+    db   $A5 ; unknown music opcode                    ;; 0f:6139 $a5
+    db   $83 ; unknown music opcode                    ;; 0f:613a $83
+    mUNK_E6 $02                                        ;; 0f:613b $e6 $02
+    db   $85 ; unknown music opcode                    ;; 0f:613d $85
+    db   $87 ; unknown music opcode                    ;; 0f:613e $87
+    mUNK_E6 $03                                        ;; 0f:613f $e6 $03
+    db   $A0 ; unknown music opcode                    ;; 0f:6141 $a0
+    db   $A8 ; unknown music opcode                    ;; 0f:6142 $a8
+    db   $AC ; unknown music opcode                    ;; 0f:6143 $ac
+    db   $AA ; unknown music opcode                    ;; 0f:6144 $aa
+    db   $A8 ; unknown music opcode                    ;; 0f:6145 $a8
+    db   $A7 ; unknown music opcode                    ;; 0f:6146 $a7
+    db   $A5 ; unknown music opcode                    ;; 0f:6147 $a5
+    db   $A7 ; unknown music opcode                    ;; 0f:6148 $a7
+    db   $A8 ; unknown music opcode                    ;; 0f:6149 $a8
+    db   $A7 ; unknown music opcode                    ;; 0f:614a $a7
+    db   $85 ; unknown music opcode                    ;; 0f:614b $85
+    mUNK_E6 $01                                        ;; 0f:614c $e6 $01
+    db   $87 ; unknown music opcode                    ;; 0f:614e $87
+    db   $88 ; unknown music opcode                    ;; 0f:614f $88
+    mUNK_E6 $03                                        ;; 0f:6150 $e6 $03
+    db   $A2 ; unknown music opcode                    ;; 0f:6152 $a2
+    db   $AA ; unknown music opcode                    ;; 0f:6153 $aa
+    db   $D8 ; unknown music opcode                    ;; 0f:6154 $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:6155 $a2
+    db   $A0 ; unknown music opcode                    ;; 0f:6156 $a0
+    db   $DC ; unknown music opcode                    ;; 0f:6157 $dc
+    db   $AA ; unknown music opcode                    ;; 0f:6158 $aa
+    db   $A8 ; unknown music opcode                    ;; 0f:6159 $a8
+    mUNK_E6 $02                                        ;; 0f:615a $e6 $02
+    db   $A7 ; unknown music opcode                    ;; 0f:615c $a7
+    db   $A3 ; unknown music opcode                    ;; 0f:615d $a3
+    db   $A7 ; unknown music opcode                    ;; 0f:615e $a7
+    db   $AA ; unknown music opcode                    ;; 0f:615f $aa
+    db   $D8 ; unknown music opcode                    ;; 0f:6160 $d8
+    db   $53 ; unknown music opcode                    ;; 0f:6161 $53
+    db   $DC ; unknown music opcode                    ;; 0f:6162 $dc
+    mUNK_E6 $01                                        ;; 0f:6163 $e6 $01
+    db   $A5 ; unknown music opcode                    ;; 0f:6165 $a5
+    db   $A2 ; unknown music opcode                    ;; 0f:6166 $a2
+    db   $A5 ; unknown music opcode                    ;; 0f:6167 $a5
+    db   $AA ; unknown music opcode                    ;; 0f:6168 $aa
+    db   $D8 ; unknown music opcode                    ;; 0f:6169 $d8
+    db   $52 ; unknown music opcode                    ;; 0f:616a $52
+    db   $DC ; unknown music opcode                    ;; 0f:616b $dc
+    mUNK_E6 $03                                        ;; 0f:616c $e6 $03
+    db   $A5 ; unknown music opcode                    ;; 0f:616e $a5
+    db   $A1 ; unknown music opcode                    ;; 0f:616f $a1
+    db   $A5 ; unknown music opcode                    ;; 0f:6170 $a5
+    db   $A8 ; unknown music opcode                    ;; 0f:6171 $a8
+    db   $AD ; unknown music opcode                    ;; 0f:6172 $ad
+    db   $AC ; unknown music opcode                    ;; 0f:6173 $ac
+    db   $AA ; unknown music opcode                    ;; 0f:6174 $aa
+    db   $A8 ; unknown music opcode                    ;; 0f:6175 $a8
+    db   $77 ; unknown music opcode                    ;; 0f:6176 $77
+    db   $78 ; unknown music opcode                    ;; 0f:6177 $78
+    db   $8A ; unknown music opcode                    ;; 0f:6178 $8a
+    mUNK_E6 $02                                        ;; 0f:6179 $e6 $02
+    db   $A5 ; unknown music opcode                    ;; 0f:617b $a5
+    db   $A7 ; unknown music opcode                    ;; 0f:617c $a7
+    db   $A8 ; unknown music opcode                    ;; 0f:617d $a8
+    db   $A7 ; unknown music opcode                    ;; 0f:617e $a7
+    db   $55 ; unknown music opcode                    ;; 0f:617f $55
+    mUNK_E6 $01                                        ;; 0f:6180 $e6 $01
+    db   $A7 ; unknown music opcode                    ;; 0f:6182 $a7
+    db   $A8 ; unknown music opcode                    ;; 0f:6183 $a8
+    db   $AA ; unknown music opcode                    ;; 0f:6184 $aa
+    db   $A8 ; unknown music opcode                    ;; 0f:6185 $a8
+    db   $57 ; unknown music opcode                    ;; 0f:6186 $57
+    mUNK_E6 $03                                        ;; 0f:6187 $e6 $03
+    db   $78 ; unknown music opcode                    ;; 0f:6189 $78
+    db   $75 ; unknown music opcode                    ;; 0f:618a $75
+    db   $82 ; unknown music opcode                    ;; 0f:618b $82
+    db   $DC ; unknown music opcode                    ;; 0f:618c $dc
+    db   $78 ; unknown music opcode                    ;; 0f:618d $78
+    db   $D8 ; unknown music opcode                    ;; 0f:618e $d8
+    db   $72 ; unknown music opcode                    ;; 0f:618f $72
+    db   $85 ; unknown music opcode                    ;; 0f:6190 $85
+    mUNK_E6 $02                                        ;; 0f:6191 $e6 $02
+    db   $82 ; unknown music opcode                    ;; 0f:6193 $82
+    db   $DC ; unknown music opcode                    ;; 0f:6194 $dc
+    mUNK_E6 $03                                        ;; 0f:6195 $e6 $03
+    db   $AB ; unknown music opcode                    ;; 0f:6197 $ab
+    db   $AF ; unknown music opcode                    ;; 0f:6198 $af
+    db   $AB ; unknown music opcode                    ;; 0f:6199 $ab
+    db   $AF ; unknown music opcode                    ;; 0f:619a $af
+    db   $D8 ; unknown music opcode                    ;; 0f:619b $d8
+    mUNK_E6 $01                                        ;; 0f:619c $e6 $01
+    db   $82 ; unknown music opcode                    ;; 0f:619e $82
+    db   $DC ; unknown music opcode                    ;; 0f:619f $dc
+    mUNK_E6 $03                                        ;; 0f:61a0 $e6 $03
+    db   $AB ; unknown music opcode                    ;; 0f:61a2 $ab
+    db   $AF ; unknown music opcode                    ;; 0f:61a3 $af
+    db   $AB ; unknown music opcode                    ;; 0f:61a4 $ab
+    db   $AF ; unknown music opcode                    ;; 0f:61a5 $af
+    db   $D8 ; unknown music opcode                    ;; 0f:61a6 $d8
+    mUNK_E6 $02                                        ;; 0f:61a7 $e6 $02
+    db   $82 ; unknown music opcode                    ;; 0f:61a9 $82
+    db   $DC ; unknown music opcode                    ;; 0f:61aa $dc
+    mUNK_E6 $03                                        ;; 0f:61ab $e6 $03
+    db   $AB ; unknown music opcode                    ;; 0f:61ad $ab
+    db   $AF ; unknown music opcode                    ;; 0f:61ae $af
+    db   $8F ; unknown music opcode                    ;; 0f:61af $8f
+    db   $D8 ; unknown music opcode                    ;; 0f:61b0 $d8
+    db   $82 ; unknown music opcode                    ;; 0f:61b1 $82
+    db   $85 ; unknown music opcode                    ;; 0f:61b2 $85
+    db   $87 ; unknown music opcode                    ;; 0f:61b3 $87
+    mUNK_E5 $80                                        ;; 0f:61b4 $e5 $80
+    db   $A3 ; unknown music opcode                    ;; 0f:61b6 $a3
+    db   $A0 ; unknown music opcode                    ;; 0f:61b7 $a0
+    db   $A2 ; unknown music opcode                    ;; 0f:61b8 $a2
+    db   $DC ; unknown music opcode                    ;; 0f:61b9 $dc
+    db   $AB ; unknown music opcode                    ;; 0f:61ba $ab
+    db   $AC ; unknown music opcode                    ;; 0f:61bb $ac
+    db   $A8 ; unknown music opcode                    ;; 0f:61bc $a8
+    db   $AB ; unknown music opcode                    ;; 0f:61bd $ab
+    db   $A7 ; unknown music opcode                    ;; 0f:61be $a7
+    mUNK_E1 song0f_channel1                            ;; 0f:61bf $e1 $aa $5f
 
-data_0f_61c2:
-    db   $e4, $4f, $7a, $e8, $0c, $7b, $e0, $20        ;; 0f:61c2 ????????
-    db   $e6, $03, $d2, $20, $dc, $2b, $2a, $29        ;; 0f:61ca ????????
-    db   $28, $2a, $d8, $23, $22, $dc, $57, $5b        ;; 0f:61d2 ????????
-    db   $2c, $55, $59, $2a, $e6, $02, $7b, $af        ;; 0f:61da ????????
-    db   $e6, $01, $7b, $af, $e6, $02, $7c, $af        ;; 0f:61e2 ????????
-    db   $e6, $01, $7c, $af, $e6, $02, $78, $af        ;; 0f:61ea ????????
-    db   $e6, $01, $78, $af, $d8, $e6, $02, $72        ;; 0f:61f2 ????????
-    db   $af, $e6, $01, $72, $af, $dc, $e6, $03        ;; 0f:61fa ????????
-    db   $17, $5f, $0c, $2f, $d8, $e6, $02, $7c        ;; 0f:6202 ????????
-    db   $e6, $01, $75, $e6, $03, $87, $e3, $02        ;; 0f:620a ????????
-    db   $a0, $ce, $cf, $a0, $ce, $cf, $50, $8f        ;; 0f:6212 ????????
-    db   $a0, $ce, $cf, $50, $8f, $a0, $ce, $cf        ;; 0f:621a ????????
-    db   $70, $af, $50, $dc, $5a, $e6, $02, $88        ;; 0f:6222 ????????
-    db   $d8, $e6, $03, $a8, $af, $a8, $af, $dc        ;; 0f:622a ????????
-    db   $e6, $01, $88, $d8, $e6, $03, $a8, $af        ;; 0f:6232 ????????
-    db   $a8, $af, $e6, $02, $dc, $88, $d8, $e6        ;; 0f:623a ????????
-    db   $03, $a8, $af, $dc, $eb, $01, $5e, $62        ;; 0f:6242 ????????
-    db   $8a, $d8, $aa, $af, $dc, $8a, $d8, $aa        ;; 0f:624a ????????
-    db   $af, $dc, $e6, $02, $5a, $d8, $e6, $03        ;; 0f:6252 ????????
-    db   $52, $e2, $12, $62, $e6, $01, $2a, $8f        ;; 0f:625a ????????
-    db   $d8, $e6, $03, $8a, $e6, $02, $85, $dc        ;; 0f:6262 ????????
-    db   $e6, $01, $8a, $e6, $03, $88, $d8, $a8        ;; 0f:626a ????????
-    db   $af, $dc, $88, $d8, $a8, $af, $dc, $88        ;; 0f:6272 ????????
-    db   $d8, $a8, $af, $dc, $88, $d8, $a8, $af        ;; 0f:627a ????????
-    db   $dc, $8a, $d8, $aa, $af, $dc, $8a, $d8        ;; 0f:6282 ????????
-    db   $aa, $af, $80, $ac, $af, $82, $d8, $a2        ;; 0f:628a ????????
-    db   $af, $dc, $a3, $ce, $cf, $a3, $ce, $cf        ;; 0f:6292 ????????
-    db   $5a, $a2, $ce, $cf, $a2, $ce, $cf, $58        ;; 0f:629a ????????
-    db   $21, $8f, $a0, $ce, $cf, $50, $dc, $a5        ;; 0f:62a2 ????????
-    db   $ce, $cf, $a5, $ce, $cf, $d8, $55, $dc        ;; 0f:62aa ????????
-    db   $a3, $ce, $cf, $a3, $ce, $cf, $d8, $53        ;; 0f:62b2 ????????
-    db   $42, $dc, $48, $d8, $52, $dc, $e6, $02        ;; 0f:62ba ????????
-    db   $87, $d8, $e6, $03, $a7, $af, $a7, $af        ;; 0f:62c2 ????????
-    db   $dc, $e6, $01, $87, $d8, $e6, $03, $a7        ;; 0f:62ca ????????
-    db   $af, $a7, $af, $e6, $02, $dc, $87, $d8        ;; 0f:62d2 ????????
-    db   $e6, $03, $a7, $af, $dc, $57, $d8, $52        ;; 0f:62da ????????
-    db   $87, $85, $83, $82, $e1, $c2, $61             ;; 0f:62e2 ???????
+song0f_channel3:
+    mUNK_E4 frequencyDeltaData                         ;; 0f:61c2 $e4 $4f $7a
+    mUNK_E8 data_0f_7b0c                               ;; 0f:61c5 $e8 $0c $7b
+    mUNK_E0 $20                                        ;; 0f:61c8 $e0 $20
+    mUNK_E6 $03                                        ;; 0f:61ca $e6 $03
+    db   $D2 ; unknown music opcode                    ;; 0f:61cc $d2
+    db   $20 ; unknown music opcode                    ;; 0f:61cd $20
+    db   $DC ; unknown music opcode                    ;; 0f:61ce $dc
+    db   $2B ; unknown music opcode                    ;; 0f:61cf $2b
+    db   $2A ; unknown music opcode                    ;; 0f:61d0 $2a
+    db   $29 ; unknown music opcode                    ;; 0f:61d1 $29
+    db   $28 ; unknown music opcode                    ;; 0f:61d2 $28
+    db   $2A ; unknown music opcode                    ;; 0f:61d3 $2a
+    db   $D8 ; unknown music opcode                    ;; 0f:61d4 $d8
+    db   $23 ; unknown music opcode                    ;; 0f:61d5 $23
+    db   $22 ; unknown music opcode                    ;; 0f:61d6 $22
+    db   $DC ; unknown music opcode                    ;; 0f:61d7 $dc
+    db   $57 ; unknown music opcode                    ;; 0f:61d8 $57
+    db   $5B ; unknown music opcode                    ;; 0f:61d9 $5b
+    db   $2C ; unknown music opcode                    ;; 0f:61da $2c
+    db   $55 ; unknown music opcode                    ;; 0f:61db $55
+    db   $59 ; unknown music opcode                    ;; 0f:61dc $59
+    db   $2A ; unknown music opcode                    ;; 0f:61dd $2a
+    mUNK_E6 $02                                        ;; 0f:61de $e6 $02
+    db   $7B ; unknown music opcode                    ;; 0f:61e0 $7b
+    db   $AF ; unknown music opcode                    ;; 0f:61e1 $af
+    mUNK_E6 $01                                        ;; 0f:61e2 $e6 $01
+    db   $7B ; unknown music opcode                    ;; 0f:61e4 $7b
+    db   $AF ; unknown music opcode                    ;; 0f:61e5 $af
+    mUNK_E6 $02                                        ;; 0f:61e6 $e6 $02
+    db   $7C ; unknown music opcode                    ;; 0f:61e8 $7c
+    db   $AF ; unknown music opcode                    ;; 0f:61e9 $af
+    mUNK_E6 $01                                        ;; 0f:61ea $e6 $01
+    db   $7C ; unknown music opcode                    ;; 0f:61ec $7c
+    db   $AF ; unknown music opcode                    ;; 0f:61ed $af
+    mUNK_E6 $02                                        ;; 0f:61ee $e6 $02
+    db   $78 ; unknown music opcode                    ;; 0f:61f0 $78
+    db   $AF ; unknown music opcode                    ;; 0f:61f1 $af
+    mUNK_E6 $01                                        ;; 0f:61f2 $e6 $01
+    db   $78 ; unknown music opcode                    ;; 0f:61f4 $78
+    db   $AF ; unknown music opcode                    ;; 0f:61f5 $af
+    db   $D8 ; unknown music opcode                    ;; 0f:61f6 $d8
+    mUNK_E6 $02                                        ;; 0f:61f7 $e6 $02
+    db   $72 ; unknown music opcode                    ;; 0f:61f9 $72
+    db   $AF ; unknown music opcode                    ;; 0f:61fa $af
+    mUNK_E6 $01                                        ;; 0f:61fb $e6 $01
+    db   $72 ; unknown music opcode                    ;; 0f:61fd $72
+    db   $AF ; unknown music opcode                    ;; 0f:61fe $af
+    db   $DC ; unknown music opcode                    ;; 0f:61ff $dc
+    mUNK_E6 $03                                        ;; 0f:6200 $e6 $03
+    db   $17 ; unknown music opcode                    ;; 0f:6202 $17
+    db   $5F ; unknown music opcode                    ;; 0f:6203 $5f
+    db   $0C ; unknown music opcode                    ;; 0f:6204 $0c
+    db   $2F ; unknown music opcode                    ;; 0f:6205 $2f
+    db   $D8 ; unknown music opcode                    ;; 0f:6206 $d8
+    mUNK_E6 $02                                        ;; 0f:6207 $e6 $02
+    db   $7C ; unknown music opcode                    ;; 0f:6209 $7c
+    mUNK_E6 $01                                        ;; 0f:620a $e6 $01
+    db   $75 ; unknown music opcode                    ;; 0f:620c $75
+    mUNK_E6 $03                                        ;; 0f:620d $e6 $03
+    db   $87 ; unknown music opcode                    ;; 0f:620f $87
+    mUNK_E3 $02                                        ;; 0f:6210 $e3 $02
+.data_0f_6212:
+    db   $A0 ; unknown music opcode                    ;; 0f:6212 $a0
+    db   $CE ; unknown music opcode                    ;; 0f:6213 $ce
+    db   $CF ; unknown music opcode                    ;; 0f:6214 $cf
+    db   $A0 ; unknown music opcode                    ;; 0f:6215 $a0
+    db   $CE ; unknown music opcode                    ;; 0f:6216 $ce
+    db   $CF ; unknown music opcode                    ;; 0f:6217 $cf
+    db   $50 ; unknown music opcode                    ;; 0f:6218 $50
+    db   $8F ; unknown music opcode                    ;; 0f:6219 $8f
+    db   $A0 ; unknown music opcode                    ;; 0f:621a $a0
+    db   $CE ; unknown music opcode                    ;; 0f:621b $ce
+    db   $CF ; unknown music opcode                    ;; 0f:621c $cf
+    db   $50 ; unknown music opcode                    ;; 0f:621d $50
+    db   $8F ; unknown music opcode                    ;; 0f:621e $8f
+    db   $A0 ; unknown music opcode                    ;; 0f:621f $a0
+    db   $CE ; unknown music opcode                    ;; 0f:6220 $ce
+    db   $CF ; unknown music opcode                    ;; 0f:6221 $cf
+    db   $70 ; unknown music opcode                    ;; 0f:6222 $70
+    db   $AF ; unknown music opcode                    ;; 0f:6223 $af
+    db   $50 ; unknown music opcode                    ;; 0f:6224 $50
+    db   $DC ; unknown music opcode                    ;; 0f:6225 $dc
+    db   $5A ; unknown music opcode                    ;; 0f:6226 $5a
+    mUNK_E6 $02                                        ;; 0f:6227 $e6 $02
+    db   $88 ; unknown music opcode                    ;; 0f:6229 $88
+    db   $D8 ; unknown music opcode                    ;; 0f:622a $d8
+    mUNK_E6 $03                                        ;; 0f:622b $e6 $03
+    db   $A8 ; unknown music opcode                    ;; 0f:622d $a8
+    db   $AF ; unknown music opcode                    ;; 0f:622e $af
+    db   $A8 ; unknown music opcode                    ;; 0f:622f $a8
+    db   $AF ; unknown music opcode                    ;; 0f:6230 $af
+    db   $DC ; unknown music opcode                    ;; 0f:6231 $dc
+    mUNK_E6 $01                                        ;; 0f:6232 $e6 $01
+    db   $88 ; unknown music opcode                    ;; 0f:6234 $88
+    db   $D8 ; unknown music opcode                    ;; 0f:6235 $d8
+    mUNK_E6 $03                                        ;; 0f:6236 $e6 $03
+    db   $A8 ; unknown music opcode                    ;; 0f:6238 $a8
+    db   $AF ; unknown music opcode                    ;; 0f:6239 $af
+    db   $A8 ; unknown music opcode                    ;; 0f:623a $a8
+    db   $AF ; unknown music opcode                    ;; 0f:623b $af
+    mUNK_E6 $02                                        ;; 0f:623c $e6 $02
+    db   $DC ; unknown music opcode                    ;; 0f:623e $dc
+    db   $88 ; unknown music opcode                    ;; 0f:623f $88
+    db   $D8 ; unknown music opcode                    ;; 0f:6240 $d8
+    mUNK_E6 $03                                        ;; 0f:6241 $e6 $03
+    db   $A8 ; unknown music opcode                    ;; 0f:6243 $a8
+    db   $AF ; unknown music opcode                    ;; 0f:6244 $af
+    db   $DC ; unknown music opcode                    ;; 0f:6245 $dc
+    mUNK_EB $01, .data_0f_625e                         ;; 0f:6246 $eb $01 $5e $62
+    db   $8A ; unknown music opcode                    ;; 0f:624a $8a
+    db   $D8 ; unknown music opcode                    ;; 0f:624b $d8
+    db   $AA ; unknown music opcode                    ;; 0f:624c $aa
+    db   $AF ; unknown music opcode                    ;; 0f:624d $af
+    db   $DC ; unknown music opcode                    ;; 0f:624e $dc
+    db   $8A ; unknown music opcode                    ;; 0f:624f $8a
+    db   $D8 ; unknown music opcode                    ;; 0f:6250 $d8
+    db   $AA ; unknown music opcode                    ;; 0f:6251 $aa
+    db   $AF ; unknown music opcode                    ;; 0f:6252 $af
+    db   $DC ; unknown music opcode                    ;; 0f:6253 $dc
+    mUNK_E6 $02                                        ;; 0f:6254 $e6 $02
+    db   $5A ; unknown music opcode                    ;; 0f:6256 $5a
+    db   $D8 ; unknown music opcode                    ;; 0f:6257 $d8
+    mUNK_E6 $03                                        ;; 0f:6258 $e6 $03
+    db   $52 ; unknown music opcode                    ;; 0f:625a $52
+    mUNK_E2 .data_0f_6212                              ;; 0f:625b $e2 $12 $62
+.data_0f_625e:
+    mUNK_E6 $01                                        ;; 0f:625e $e6 $01
+    db   $2A ; unknown music opcode                    ;; 0f:6260 $2a
+    db   $8F ; unknown music opcode                    ;; 0f:6261 $8f
+    db   $D8 ; unknown music opcode                    ;; 0f:6262 $d8
+    mUNK_E6 $03                                        ;; 0f:6263 $e6 $03
+    db   $8A ; unknown music opcode                    ;; 0f:6265 $8a
+    mUNK_E6 $02                                        ;; 0f:6266 $e6 $02
+    db   $85 ; unknown music opcode                    ;; 0f:6268 $85
+    db   $DC ; unknown music opcode                    ;; 0f:6269 $dc
+    mUNK_E6 $01                                        ;; 0f:626a $e6 $01
+    db   $8A ; unknown music opcode                    ;; 0f:626c $8a
+    mUNK_E6 $03                                        ;; 0f:626d $e6 $03
+    db   $88 ; unknown music opcode                    ;; 0f:626f $88
+    db   $D8 ; unknown music opcode                    ;; 0f:6270 $d8
+    db   $A8 ; unknown music opcode                    ;; 0f:6271 $a8
+    db   $AF ; unknown music opcode                    ;; 0f:6272 $af
+    db   $DC ; unknown music opcode                    ;; 0f:6273 $dc
+    db   $88 ; unknown music opcode                    ;; 0f:6274 $88
+    db   $D8 ; unknown music opcode                    ;; 0f:6275 $d8
+    db   $A8 ; unknown music opcode                    ;; 0f:6276 $a8
+    db   $AF ; unknown music opcode                    ;; 0f:6277 $af
+    db   $DC ; unknown music opcode                    ;; 0f:6278 $dc
+    db   $88 ; unknown music opcode                    ;; 0f:6279 $88
+    db   $D8 ; unknown music opcode                    ;; 0f:627a $d8
+    db   $A8 ; unknown music opcode                    ;; 0f:627b $a8
+    db   $AF ; unknown music opcode                    ;; 0f:627c $af
+    db   $DC ; unknown music opcode                    ;; 0f:627d $dc
+    db   $88 ; unknown music opcode                    ;; 0f:627e $88
+    db   $D8 ; unknown music opcode                    ;; 0f:627f $d8
+    db   $A8 ; unknown music opcode                    ;; 0f:6280 $a8
+    db   $AF ; unknown music opcode                    ;; 0f:6281 $af
+    db   $DC ; unknown music opcode                    ;; 0f:6282 $dc
+    db   $8A ; unknown music opcode                    ;; 0f:6283 $8a
+    db   $D8 ; unknown music opcode                    ;; 0f:6284 $d8
+    db   $AA ; unknown music opcode                    ;; 0f:6285 $aa
+    db   $AF ; unknown music opcode                    ;; 0f:6286 $af
+    db   $DC ; unknown music opcode                    ;; 0f:6287 $dc
+    db   $8A ; unknown music opcode                    ;; 0f:6288 $8a
+    db   $D8 ; unknown music opcode                    ;; 0f:6289 $d8
+    db   $AA ; unknown music opcode                    ;; 0f:628a $aa
+    db   $AF ; unknown music opcode                    ;; 0f:628b $af
+    db   $80 ; unknown music opcode                    ;; 0f:628c $80
+    db   $AC ; unknown music opcode                    ;; 0f:628d $ac
+    db   $AF ; unknown music opcode                    ;; 0f:628e $af
+    db   $82 ; unknown music opcode                    ;; 0f:628f $82
+    db   $D8 ; unknown music opcode                    ;; 0f:6290 $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:6291 $a2
+    db   $AF ; unknown music opcode                    ;; 0f:6292 $af
+    db   $DC ; unknown music opcode                    ;; 0f:6293 $dc
+    db   $A3 ; unknown music opcode                    ;; 0f:6294 $a3
+    db   $CE ; unknown music opcode                    ;; 0f:6295 $ce
+    db   $CF ; unknown music opcode                    ;; 0f:6296 $cf
+    db   $A3 ; unknown music opcode                    ;; 0f:6297 $a3
+    db   $CE ; unknown music opcode                    ;; 0f:6298 $ce
+    db   $CF ; unknown music opcode                    ;; 0f:6299 $cf
+    db   $5A ; unknown music opcode                    ;; 0f:629a $5a
+    db   $A2 ; unknown music opcode                    ;; 0f:629b $a2
+    db   $CE ; unknown music opcode                    ;; 0f:629c $ce
+    db   $CF ; unknown music opcode                    ;; 0f:629d $cf
+    db   $A2 ; unknown music opcode                    ;; 0f:629e $a2
+    db   $CE ; unknown music opcode                    ;; 0f:629f $ce
+    db   $CF ; unknown music opcode                    ;; 0f:62a0 $cf
+    db   $58 ; unknown music opcode                    ;; 0f:62a1 $58
+    db   $21 ; unknown music opcode                    ;; 0f:62a2 $21
+    db   $8F ; unknown music opcode                    ;; 0f:62a3 $8f
+    db   $A0 ; unknown music opcode                    ;; 0f:62a4 $a0
+    db   $CE ; unknown music opcode                    ;; 0f:62a5 $ce
+    db   $CF ; unknown music opcode                    ;; 0f:62a6 $cf
+    db   $50 ; unknown music opcode                    ;; 0f:62a7 $50
+    db   $DC ; unknown music opcode                    ;; 0f:62a8 $dc
+    db   $A5 ; unknown music opcode                    ;; 0f:62a9 $a5
+    db   $CE ; unknown music opcode                    ;; 0f:62aa $ce
+    db   $CF ; unknown music opcode                    ;; 0f:62ab $cf
+    db   $A5 ; unknown music opcode                    ;; 0f:62ac $a5
+    db   $CE ; unknown music opcode                    ;; 0f:62ad $ce
+    db   $CF ; unknown music opcode                    ;; 0f:62ae $cf
+    db   $D8 ; unknown music opcode                    ;; 0f:62af $d8
+    db   $55 ; unknown music opcode                    ;; 0f:62b0 $55
+    db   $DC ; unknown music opcode                    ;; 0f:62b1 $dc
+    db   $A3 ; unknown music opcode                    ;; 0f:62b2 $a3
+    db   $CE ; unknown music opcode                    ;; 0f:62b3 $ce
+    db   $CF ; unknown music opcode                    ;; 0f:62b4 $cf
+    db   $A3 ; unknown music opcode                    ;; 0f:62b5 $a3
+    db   $CE ; unknown music opcode                    ;; 0f:62b6 $ce
+    db   $CF ; unknown music opcode                    ;; 0f:62b7 $cf
+    db   $D8 ; unknown music opcode                    ;; 0f:62b8 $d8
+    db   $53 ; unknown music opcode                    ;; 0f:62b9 $53
+    db   $42 ; unknown music opcode                    ;; 0f:62ba $42
+    db   $DC ; unknown music opcode                    ;; 0f:62bb $dc
+    db   $48 ; unknown music opcode                    ;; 0f:62bc $48
+    db   $D8 ; unknown music opcode                    ;; 0f:62bd $d8
+    db   $52 ; unknown music opcode                    ;; 0f:62be $52
+    db   $DC ; unknown music opcode                    ;; 0f:62bf $dc
+    mUNK_E6 $02                                        ;; 0f:62c0 $e6 $02
+    db   $87 ; unknown music opcode                    ;; 0f:62c2 $87
+    db   $D8 ; unknown music opcode                    ;; 0f:62c3 $d8
+    mUNK_E6 $03                                        ;; 0f:62c4 $e6 $03
+    db   $A7 ; unknown music opcode                    ;; 0f:62c6 $a7
+    db   $AF ; unknown music opcode                    ;; 0f:62c7 $af
+    db   $A7 ; unknown music opcode                    ;; 0f:62c8 $a7
+    db   $AF ; unknown music opcode                    ;; 0f:62c9 $af
+    db   $DC ; unknown music opcode                    ;; 0f:62ca $dc
+    mUNK_E6 $01                                        ;; 0f:62cb $e6 $01
+    db   $87 ; unknown music opcode                    ;; 0f:62cd $87
+    db   $D8 ; unknown music opcode                    ;; 0f:62ce $d8
+    mUNK_E6 $03                                        ;; 0f:62cf $e6 $03
+    db   $A7 ; unknown music opcode                    ;; 0f:62d1 $a7
+    db   $AF ; unknown music opcode                    ;; 0f:62d2 $af
+    db   $A7 ; unknown music opcode                    ;; 0f:62d3 $a7
+    db   $AF ; unknown music opcode                    ;; 0f:62d4 $af
+    mUNK_E6 $02                                        ;; 0f:62d5 $e6 $02
+    db   $DC ; unknown music opcode                    ;; 0f:62d7 $dc
+    db   $87 ; unknown music opcode                    ;; 0f:62d8 $87
+    db   $D8 ; unknown music opcode                    ;; 0f:62d9 $d8
+    mUNK_E6 $03                                        ;; 0f:62da $e6 $03
+    db   $A7 ; unknown music opcode                    ;; 0f:62dc $a7
+    db   $AF ; unknown music opcode                    ;; 0f:62dd $af
+    db   $DC ; unknown music opcode                    ;; 0f:62de $dc
+    db   $57 ; unknown music opcode                    ;; 0f:62df $57
+    db   $D8 ; unknown music opcode                    ;; 0f:62e0 $d8
+    db   $52 ; unknown music opcode                    ;; 0f:62e1 $52
+    db   $87 ; unknown music opcode                    ;; 0f:62e2 $87
+    db   $85 ; unknown music opcode                    ;; 0f:62e3 $85
+    db   $83 ; unknown music opcode                    ;; 0f:62e4 $83
+    db   $82 ; unknown music opcode                    ;; 0f:62e5 $82
+    mUNK_E1 song0f_channel3                            ;; 0f:62e6 $e1 $c2 $61
 
-data_0f_62e9:
-    db   $e7, $6c, $e4, $4f, $7a, $e0, $c0, $7a        ;; 0f:62e9 ????????
-    db   $e5, $00, $e6, $03, $d2, $ab, $7f, $d8        ;; 0f:62f1 ????????
-    db   $a6, $af, $a3, $af, $dc, $ab, $7f, $d8        ;; 0f:62f9 ????????
-    db   $a6, $af, $a3, $af, $dc, $ab, $7f, $d8        ;; 0f:6301 ????????
-    db   $a3, $7f, $dc, $46, $8f, $d8, $a6, $af        ;; 0f:6309 ????????
-    db   $a8, $af, $a6, $af, $a3, $af, $a6, $af        ;; 0f:6311 ????????
-    db   $a8, $af, $a6, $af, $a3, $af, $dc, $ab        ;; 0f:6319 ????????
-    db   $af, $ab, $d8, $a3, $dc, $ab, $af, $d8        ;; 0f:6321 ????????
-    db   $a3, $af, $46, $8f, $ff                       ;; 0f:6329 ?????
+song11_channel2:
+    mUNK_E7 $6c                                        ;; 0f:62e9 $e7 $6c
+    mUNK_E4 frequencyDeltaData                         ;; 0f:62eb $e4 $4f $7a
+    mUNK_E0 $c0                                        ;; 0f:62ee $e0 $c0
+    db   $7A ; unknown music opcode                    ;; 0f:62f0 $7a
+    mUNK_E5 $00                                        ;; 0f:62f1 $e5 $00
+    mUNK_E6 $03                                        ;; 0f:62f3 $e6 $03
+    db   $D2 ; unknown music opcode                    ;; 0f:62f5 $d2
+    db   $AB ; unknown music opcode                    ;; 0f:62f6 $ab
+    db   $7F ; unknown music opcode                    ;; 0f:62f7 $7f
+    db   $D8 ; unknown music opcode                    ;; 0f:62f8 $d8
+    db   $A6 ; unknown music opcode                    ;; 0f:62f9 $a6
+    db   $AF ; unknown music opcode                    ;; 0f:62fa $af
+    db   $A3 ; unknown music opcode                    ;; 0f:62fb $a3
+    db   $AF ; unknown music opcode                    ;; 0f:62fc $af
+    db   $DC ; unknown music opcode                    ;; 0f:62fd $dc
+    db   $AB ; unknown music opcode                    ;; 0f:62fe $ab
+    db   $7F ; unknown music opcode                    ;; 0f:62ff $7f
+    db   $D8 ; unknown music opcode                    ;; 0f:6300 $d8
+    db   $A6 ; unknown music opcode                    ;; 0f:6301 $a6
+    db   $AF ; unknown music opcode                    ;; 0f:6302 $af
+    db   $A3 ; unknown music opcode                    ;; 0f:6303 $a3
+    db   $AF ; unknown music opcode                    ;; 0f:6304 $af
+    db   $DC ; unknown music opcode                    ;; 0f:6305 $dc
+    db   $AB ; unknown music opcode                    ;; 0f:6306 $ab
+    db   $7F ; unknown music opcode                    ;; 0f:6307 $7f
+    db   $D8 ; unknown music opcode                    ;; 0f:6308 $d8
+    db   $A3 ; unknown music opcode                    ;; 0f:6309 $a3
+    db   $7F ; unknown music opcode                    ;; 0f:630a $7f
+    db   $DC ; unknown music opcode                    ;; 0f:630b $dc
+    db   $46 ; unknown music opcode                    ;; 0f:630c $46
+    db   $8F ; unknown music opcode                    ;; 0f:630d $8f
+    db   $D8 ; unknown music opcode                    ;; 0f:630e $d8
+    db   $A6 ; unknown music opcode                    ;; 0f:630f $a6
+    db   $AF ; unknown music opcode                    ;; 0f:6310 $af
+    db   $A8 ; unknown music opcode                    ;; 0f:6311 $a8
+    db   $AF ; unknown music opcode                    ;; 0f:6312 $af
+    db   $A6 ; unknown music opcode                    ;; 0f:6313 $a6
+    db   $AF ; unknown music opcode                    ;; 0f:6314 $af
+    db   $A3 ; unknown music opcode                    ;; 0f:6315 $a3
+    db   $AF ; unknown music opcode                    ;; 0f:6316 $af
+    db   $A6 ; unknown music opcode                    ;; 0f:6317 $a6
+    db   $AF ; unknown music opcode                    ;; 0f:6318 $af
+    db   $A8 ; unknown music opcode                    ;; 0f:6319 $a8
+    db   $AF ; unknown music opcode                    ;; 0f:631a $af
+    db   $A6 ; unknown music opcode                    ;; 0f:631b $a6
+    db   $AF ; unknown music opcode                    ;; 0f:631c $af
+    db   $A3 ; unknown music opcode                    ;; 0f:631d $a3
+    db   $AF ; unknown music opcode                    ;; 0f:631e $af
+    db   $DC ; unknown music opcode                    ;; 0f:631f $dc
+    db   $AB ; unknown music opcode                    ;; 0f:6320 $ab
+    db   $AF ; unknown music opcode                    ;; 0f:6321 $af
+    db   $AB ; unknown music opcode                    ;; 0f:6322 $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:6323 $d8
+    db   $A3 ; unknown music opcode                    ;; 0f:6324 $a3
+    db   $DC ; unknown music opcode                    ;; 0f:6325 $dc
+    db   $AB ; unknown music opcode                    ;; 0f:6326 $ab
+    db   $AF ; unknown music opcode                    ;; 0f:6327 $af
+    db   $D8 ; unknown music opcode                    ;; 0f:6328 $d8
+    db   $A3 ; unknown music opcode                    ;; 0f:6329 $a3
+    db   $AF ; unknown music opcode                    ;; 0f:632a $af
+    db   $46 ; unknown music opcode                    ;; 0f:632b $46
+    db   $8F ; unknown music opcode                    ;; 0f:632c $8f
+    db   $FF ; unknown music opcode                    ;; 0f:632d $ff
 
-data_0f_632e:
-    db   $e4, $4f, $7a, $e0, $c6, $7a, $e5, $00        ;; 0f:632e ????????
-    db   $e6, $03, $d2, $aa, $7f, $d8, $a5, $af        ;; 0f:6336 ????????
-    db   $a2, $af, $dc, $aa, $7f, $d8, $a5, $af        ;; 0f:633e ????????
-    db   $a2, $af, $dc, $aa, $7f, $d8, $a2, $7f        ;; 0f:6346 ????????
-    db   $dc, $45, $8f, $d8, $a5, $af, $a7, $af        ;; 0f:634e ????????
-    db   $a5, $af, $a2, $af, $a5, $af, $a7, $af        ;; 0f:6356 ????????
-    db   $a5, $af, $a2, $af, $dc, $aa, $af, $aa        ;; 0f:635e ????????
-    db   $d8, $a2, $dc, $aa, $af, $d8, $a2, $af        ;; 0f:6366 ????????
-    db   $45, $8f, $ff                                 ;; 0f:636e ???
+song11_channel1:
+    mUNK_E4 frequencyDeltaData                         ;; 0f:632e $e4 $4f $7a
+    mUNK_E0 $c6                                        ;; 0f:6331 $e0 $c6
+    db   $7A ; unknown music opcode                    ;; 0f:6333 $7a
+    mUNK_E5 $00                                        ;; 0f:6334 $e5 $00
+    mUNK_E6 $03                                        ;; 0f:6336 $e6 $03
+    db   $D2 ; unknown music opcode                    ;; 0f:6338 $d2
+    db   $AA ; unknown music opcode                    ;; 0f:6339 $aa
+    db   $7F ; unknown music opcode                    ;; 0f:633a $7f
+    db   $D8 ; unknown music opcode                    ;; 0f:633b $d8
+    db   $A5 ; unknown music opcode                    ;; 0f:633c $a5
+    db   $AF ; unknown music opcode                    ;; 0f:633d $af
+    db   $A2 ; unknown music opcode                    ;; 0f:633e $a2
+    db   $AF ; unknown music opcode                    ;; 0f:633f $af
+    db   $DC ; unknown music opcode                    ;; 0f:6340 $dc
+    db   $AA ; unknown music opcode                    ;; 0f:6341 $aa
+    db   $7F ; unknown music opcode                    ;; 0f:6342 $7f
+    db   $D8 ; unknown music opcode                    ;; 0f:6343 $d8
+    db   $A5 ; unknown music opcode                    ;; 0f:6344 $a5
+    db   $AF ; unknown music opcode                    ;; 0f:6345 $af
+    db   $A2 ; unknown music opcode                    ;; 0f:6346 $a2
+    db   $AF ; unknown music opcode                    ;; 0f:6347 $af
+    db   $DC ; unknown music opcode                    ;; 0f:6348 $dc
+    db   $AA ; unknown music opcode                    ;; 0f:6349 $aa
+    db   $7F ; unknown music opcode                    ;; 0f:634a $7f
+    db   $D8 ; unknown music opcode                    ;; 0f:634b $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:634c $a2
+    db   $7F ; unknown music opcode                    ;; 0f:634d $7f
+    db   $DC ; unknown music opcode                    ;; 0f:634e $dc
+    db   $45 ; unknown music opcode                    ;; 0f:634f $45
+    db   $8F ; unknown music opcode                    ;; 0f:6350 $8f
+    db   $D8 ; unknown music opcode                    ;; 0f:6351 $d8
+    db   $A5 ; unknown music opcode                    ;; 0f:6352 $a5
+    db   $AF ; unknown music opcode                    ;; 0f:6353 $af
+    db   $A7 ; unknown music opcode                    ;; 0f:6354 $a7
+    db   $AF ; unknown music opcode                    ;; 0f:6355 $af
+    db   $A5 ; unknown music opcode                    ;; 0f:6356 $a5
+    db   $AF ; unknown music opcode                    ;; 0f:6357 $af
+    db   $A2 ; unknown music opcode                    ;; 0f:6358 $a2
+    db   $AF ; unknown music opcode                    ;; 0f:6359 $af
+    db   $A5 ; unknown music opcode                    ;; 0f:635a $a5
+    db   $AF ; unknown music opcode                    ;; 0f:635b $af
+    db   $A7 ; unknown music opcode                    ;; 0f:635c $a7
+    db   $AF ; unknown music opcode                    ;; 0f:635d $af
+    db   $A5 ; unknown music opcode                    ;; 0f:635e $a5
+    db   $AF ; unknown music opcode                    ;; 0f:635f $af
+    db   $A2 ; unknown music opcode                    ;; 0f:6360 $a2
+    db   $AF ; unknown music opcode                    ;; 0f:6361 $af
+    db   $DC ; unknown music opcode                    ;; 0f:6362 $dc
+    db   $AA ; unknown music opcode                    ;; 0f:6363 $aa
+    db   $AF ; unknown music opcode                    ;; 0f:6364 $af
+    db   $AA ; unknown music opcode                    ;; 0f:6365 $aa
+    db   $D8 ; unknown music opcode                    ;; 0f:6366 $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:6367 $a2
+    db   $DC ; unknown music opcode                    ;; 0f:6368 $dc
+    db   $AA ; unknown music opcode                    ;; 0f:6369 $aa
+    db   $AF ; unknown music opcode                    ;; 0f:636a $af
+    db   $D8 ; unknown music opcode                    ;; 0f:636b $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:636c $a2
+    db   $AF ; unknown music opcode                    ;; 0f:636d $af
+    db   $45 ; unknown music opcode                    ;; 0f:636e $45
+    db   $8F ; unknown music opcode                    ;; 0f:636f $8f
+    db   $FF ; unknown music opcode                    ;; 0f:6370 $ff
 
-data_0f_6371:
-    db   $e4, $4f, $7a, $e8, $cc, $7a, $e0, $40        ;; 0f:6371 ????????
-    db   $d1, $ab, $7f, $2f, $56, $ab, $7f, $4f        ;; 0f:6379 ????????
-    db   $a6, $af, $a8, $af, $aa, $af, $d1, $ab        ;; 0f:6381 ????????
-    db   $7f, $2f, $56, $ab, $7f, $2f, $d8, $a6        ;; 0f:6389 ????????
-    db   $a4, $a3, $a1, $dc, $ab, $ff                  ;; 0f:6391 ??????
+song11_channel3:
+    mUNK_E4 frequencyDeltaData                         ;; 0f:6371 $e4 $4f $7a
+    mUNK_E8 wavePatternsData                           ;; 0f:6374 $e8 $cc $7a
+    mUNK_E0 $40                                        ;; 0f:6377 $e0 $40
+    db   $D1 ; unknown music opcode                    ;; 0f:6379 $d1
+    db   $AB ; unknown music opcode                    ;; 0f:637a $ab
+    db   $7F ; unknown music opcode                    ;; 0f:637b $7f
+    db   $2F ; unknown music opcode                    ;; 0f:637c $2f
+    db   $56 ; unknown music opcode                    ;; 0f:637d $56
+    db   $AB ; unknown music opcode                    ;; 0f:637e $ab
+    db   $7F ; unknown music opcode                    ;; 0f:637f $7f
+    db   $4F ; unknown music opcode                    ;; 0f:6380 $4f
+    db   $A6 ; unknown music opcode                    ;; 0f:6381 $a6
+    db   $AF ; unknown music opcode                    ;; 0f:6382 $af
+    db   $A8 ; unknown music opcode                    ;; 0f:6383 $a8
+    db   $AF ; unknown music opcode                    ;; 0f:6384 $af
+    db   $AA ; unknown music opcode                    ;; 0f:6385 $aa
+    db   $AF ; unknown music opcode                    ;; 0f:6386 $af
+    db   $D1 ; unknown music opcode                    ;; 0f:6387 $d1
+    db   $AB ; unknown music opcode                    ;; 0f:6388 $ab
+    db   $7F ; unknown music opcode                    ;; 0f:6389 $7f
+    db   $2F ; unknown music opcode                    ;; 0f:638a $2f
+    db   $56 ; unknown music opcode                    ;; 0f:638b $56
+    db   $AB ; unknown music opcode                    ;; 0f:638c $ab
+    db   $7F ; unknown music opcode                    ;; 0f:638d $7f
+    db   $2F ; unknown music opcode                    ;; 0f:638e $2f
+    db   $D8 ; unknown music opcode                    ;; 0f:638f $d8
+    db   $A6 ; unknown music opcode                    ;; 0f:6390 $a6
+    db   $A4 ; unknown music opcode                    ;; 0f:6391 $a4
+    db   $A3 ; unknown music opcode                    ;; 0f:6392 $a3
+    db   $A1 ; unknown music opcode                    ;; 0f:6393 $a1
+    db   $DC ; unknown music opcode                    ;; 0f:6394 $dc
+    db   $AB ; unknown music opcode                    ;; 0f:6395 $ab
+    db   $FF ; unknown music opcode                    ;; 0f:6396 $ff
 
-data_0f_6397:
-    db   $e7, $6b, $e4, $4f, $7a, $e0, $82, $7a        ;; 0f:6397 ........
-    db   $e5, $80, $e6, $03, $d3, $a9, $a7, $a6        ;; 0f:639f ........
-    db   $a9, $a7, $a6, $a4, $a2, $a1, $af, $a4        ;; 0f:63a7 ........
-    db   $af, $52, $ff                                 ;; 0f:63af ...
+song10_channel2:
+    mUNK_E7 $6b                                        ;; 0f:6397 $e7 $6b
+    mUNK_E4 frequencyDeltaData                         ;; 0f:6399 $e4 $4f $7a
+    mUNK_E0 $82                                        ;; 0f:639c $e0 $82
+    db   $7A ; unknown music opcode                    ;; 0f:639e $7a
+    mUNK_E5 $80                                        ;; 0f:639f $e5 $80
+    mUNK_E6 $03                                        ;; 0f:63a1 $e6 $03
+    db   $D3 ; unknown music opcode                    ;; 0f:63a3 $d3
+    db   $A9 ; unknown music opcode                    ;; 0f:63a4 $a9
+    db   $A7 ; unknown music opcode                    ;; 0f:63a5 $a7
+    db   $A6 ; unknown music opcode                    ;; 0f:63a6 $a6
+    db   $A9 ; unknown music opcode                    ;; 0f:63a7 $a9
+    db   $A7 ; unknown music opcode                    ;; 0f:63a8 $a7
+    db   $A6 ; unknown music opcode                    ;; 0f:63a9 $a6
+    db   $A4 ; unknown music opcode                    ;; 0f:63aa $a4
+    db   $A2 ; unknown music opcode                    ;; 0f:63ab $a2
+    db   $A1 ; unknown music opcode                    ;; 0f:63ac $a1
+    db   $AF ; unknown music opcode                    ;; 0f:63ad $af
+    db   $A4 ; unknown music opcode                    ;; 0f:63ae $a4
+    db   $AF ; unknown music opcode                    ;; 0f:63af $af
+    db   $52 ; unknown music opcode                    ;; 0f:63b0 $52
+    db   $FF ; unknown music opcode                    ;; 0f:63b1 $ff
 
-data_0f_63b2:
-    db   $e4, $4f, $7a, $e0, $82, $7a, $e5, $80        ;; 0f:63b2 ........
-    db   $e6, $03, $0f, $ff                            ;; 0f:63ba ....
+song10_channel1:
+    mUNK_E4 frequencyDeltaData                         ;; 0f:63b2 $e4 $4f $7a
+    mUNK_E0 $82                                        ;; 0f:63b5 $e0 $82
+    db   $7A ; unknown music opcode                    ;; 0f:63b7 $7a
+    mUNK_E5 $80                                        ;; 0f:63b8 $e5 $80
+    mUNK_E6 $03                                        ;; 0f:63ba $e6 $03
+    db   $0F ; unknown music opcode                    ;; 0f:63bc $0f
+    db   $FF ; unknown music opcode                    ;; 0f:63bd $ff
 
-data_0f_63be:
-    db   $e4, $4f, $7a, $e8, $cc, $7a, $e0, $40        ;; 0f:63be ........
-    db   $e6, $03, $0f, $ff, $d0, $63, $a3, $64        ;; 0f:63c6 ....????
-    db   $67, $66                                      ;; 0f:63ce ??
+song10_channel3:
+    mUNK_E4 frequencyDeltaData                         ;; 0f:63be $e4 $4f $7a
+    mUNK_E8 wavePatternsData                           ;; 0f:63c1 $e8 $cc $7a
+    mUNK_E0 $40                                        ;; 0f:63c4 $e0 $40
+    mUNK_E6 $03                                        ;; 0f:63c6 $e6 $03
+    db   $0F ; unknown music opcode                    ;; 0f:63c8 $0f
+    db   $FF ; unknown music opcode                    ;; 0f:63c9 $ff
+    db   $D0 ; unknown music opcode                    ;; 0f:63ca $d0
+    db   $63 ; unknown music opcode                    ;; 0f:63cb $63
+    db   $A3 ; unknown music opcode                    ;; 0f:63cc $a3
+    db   $64 ; unknown music opcode                    ;; 0f:63cd $64
+    db   $67 ; unknown music opcode                    ;; 0f:63ce $67
+    db   $66 ; unknown music opcode                    ;; 0f:63cf $66
 
-data_0f_63d0:
-    db   $e7, $82, $e4, $4f, $7a, $e0, $c2, $7a        ;; 0f:63d0 ????????
-    db   $e5, $40, $e6, $03, $dc, $0f, $1f, $8f        ;; 0f:63d8 ????????
-    db   $d2, $ab, $d8, $a1, $e3, $02, $22, $8e        ;; 0f:63e0 ????????
-    db   $82, $84, $86, $76, $74, $82, $41, $dc        ;; 0f:63e8 ????????
-    db   $ab, $d8, $a1, $22, $8e, $82, $84, $82        ;; 0f:63f0 ????????
-    db   $eb, $01, $28, $64, $71, $dc, $7b, $89        ;; 0f:63f8 ????????
-    db   $49, $ab, $d8, $a1, $72, $71, $dc, $8b        ;; 0f:6400 ????????
-    db   $4b, $d8, $a1, $a2, $74, $72, $81, $71        ;; 0f:6408 ????????
-    db   $72, $84, $46, $a4, $a6, $47, $a6, $a7        ;; 0f:6410 ????????
-    db   $49, $a7, $a9, $aa, $a6, $a1, $a6, $a1        ;; 0f:6418 ????????
-    db   $dc, $aa, $ab, $d8, $a1, $e2, $e6, $63        ;; 0f:6420 ????????
-    db   $71, $dc, $7b, $89, $d8, $49, $a6, $a7        ;; 0f:6428 ????????
-    db   $79, $77, $86, $27, $76, $71, $84, $52        ;; 0f:6430 ????????
-    db   $51, $dc, $4b, $d8, $a1, $a2, $51, $dc        ;; 0f:6438 ????????
-    db   $59, $2b, $ae, $e0, $c4, $7a, $e5, $80        ;; 0f:6440 ????????
-    db   $a6, $a7, $a9, $ab, $d8, $a1, $a2, $a4        ;; 0f:6448 ????????
-    db   $e0, $82, $7a, $46, $a4, $a2, $71, $dc        ;; 0f:6450 ????????
-    db   $7b, $d8, $81, $2e, $af, $dc, $ab, $d8        ;; 0f:6458 ????????
-    db   $a1, $a2, $a4, $a2, $a1, $dc, $ab, $49        ;; 0f:6460 ????????
-    db   $d8, $59, $54, $87, $16, $8f, $e5, $40        ;; 0f:6468 ????????
-    db   $a6, $a7, $89, $87, $86, $87, $79, $7b        ;; 0f:6470 ????????
-    db   $d8, $80, $dc, $5b, $86, $5b, $89, $87        ;; 0f:6478 ????????
-    db   $86, $17, $8f, $a4, $a6, $57, $56, $54        ;; 0f:6480 ????????
-    db   $52, $71, $dc, $76, $d8, $81, $72, $dc        ;; 0f:6488 ????????
-    db   $77, $d8, $82, $74, $dc, $79, $d8, $84        ;; 0f:6490 ????????
-    db   $e0, $be, $7a, $46, $dc, $ab, $d8, $a1        ;; 0f:6498 ????????
-    db   $e1, $e4, $63                                 ;; 0f:64a0 ???
+song12_channel2:
+    mUNK_E7 $82                                        ;; 0f:63d0 $e7 $82
+    mUNK_E4 frequencyDeltaData                         ;; 0f:63d2 $e4 $4f $7a
+    mUNK_E0 $c2                                        ;; 0f:63d5 $e0 $c2
+    db   $7A ; unknown music opcode                    ;; 0f:63d7 $7a
+    mUNK_E5 $40                                        ;; 0f:63d8 $e5 $40
+    mUNK_E6 $03                                        ;; 0f:63da $e6 $03
+    db   $DC ; unknown music opcode                    ;; 0f:63dc $dc
+    db   $0F ; unknown music opcode                    ;; 0f:63dd $0f
+    db   $1F ; unknown music opcode                    ;; 0f:63de $1f
+    db   $8F ; unknown music opcode                    ;; 0f:63df $8f
+    db   $D2 ; unknown music opcode                    ;; 0f:63e0 $d2
+    db   $AB ; unknown music opcode                    ;; 0f:63e1 $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:63e2 $d8
+    db   $A1 ; unknown music opcode                    ;; 0f:63e3 $a1
+.data_0f_63e4:
+    mUNK_E3 $02                                        ;; 0f:63e4 $e3 $02
+.data_0f_63e6:
+    db   $22 ; unknown music opcode                    ;; 0f:63e6 $22
+    db   $8E ; unknown music opcode                    ;; 0f:63e7 $8e
+    db   $82 ; unknown music opcode                    ;; 0f:63e8 $82
+    db   $84 ; unknown music opcode                    ;; 0f:63e9 $84
+    db   $86 ; unknown music opcode                    ;; 0f:63ea $86
+    db   $76 ; unknown music opcode                    ;; 0f:63eb $76
+    db   $74 ; unknown music opcode                    ;; 0f:63ec $74
+    db   $82 ; unknown music opcode                    ;; 0f:63ed $82
+    db   $41 ; unknown music opcode                    ;; 0f:63ee $41
+    db   $DC ; unknown music opcode                    ;; 0f:63ef $dc
+    db   $AB ; unknown music opcode                    ;; 0f:63f0 $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:63f1 $d8
+    db   $A1 ; unknown music opcode                    ;; 0f:63f2 $a1
+    db   $22 ; unknown music opcode                    ;; 0f:63f3 $22
+    db   $8E ; unknown music opcode                    ;; 0f:63f4 $8e
+    db   $82 ; unknown music opcode                    ;; 0f:63f5 $82
+    db   $84 ; unknown music opcode                    ;; 0f:63f6 $84
+    db   $82 ; unknown music opcode                    ;; 0f:63f7 $82
+    mUNK_EB $01, .data_0f_6428                         ;; 0f:63f8 $eb $01 $28 $64
+    db   $71 ; unknown music opcode                    ;; 0f:63fc $71
+    db   $DC ; unknown music opcode                    ;; 0f:63fd $dc
+    db   $7B ; unknown music opcode                    ;; 0f:63fe $7b
+    db   $89 ; unknown music opcode                    ;; 0f:63ff $89
+    db   $49 ; unknown music opcode                    ;; 0f:6400 $49
+    db   $AB ; unknown music opcode                    ;; 0f:6401 $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:6402 $d8
+    db   $A1 ; unknown music opcode                    ;; 0f:6403 $a1
+    db   $72 ; unknown music opcode                    ;; 0f:6404 $72
+    db   $71 ; unknown music opcode                    ;; 0f:6405 $71
+    db   $DC ; unknown music opcode                    ;; 0f:6406 $dc
+    db   $8B ; unknown music opcode                    ;; 0f:6407 $8b
+    db   $4B ; unknown music opcode                    ;; 0f:6408 $4b
+    db   $D8 ; unknown music opcode                    ;; 0f:6409 $d8
+    db   $A1 ; unknown music opcode                    ;; 0f:640a $a1
+    db   $A2 ; unknown music opcode                    ;; 0f:640b $a2
+    db   $74 ; unknown music opcode                    ;; 0f:640c $74
+    db   $72 ; unknown music opcode                    ;; 0f:640d $72
+    db   $81 ; unknown music opcode                    ;; 0f:640e $81
+    db   $71 ; unknown music opcode                    ;; 0f:640f $71
+    db   $72 ; unknown music opcode                    ;; 0f:6410 $72
+    db   $84 ; unknown music opcode                    ;; 0f:6411 $84
+    db   $46 ; unknown music opcode                    ;; 0f:6412 $46
+    db   $A4 ; unknown music opcode                    ;; 0f:6413 $a4
+    db   $A6 ; unknown music opcode                    ;; 0f:6414 $a6
+    db   $47 ; unknown music opcode                    ;; 0f:6415 $47
+    db   $A6 ; unknown music opcode                    ;; 0f:6416 $a6
+    db   $A7 ; unknown music opcode                    ;; 0f:6417 $a7
+    db   $49 ; unknown music opcode                    ;; 0f:6418 $49
+    db   $A7 ; unknown music opcode                    ;; 0f:6419 $a7
+    db   $A9 ; unknown music opcode                    ;; 0f:641a $a9
+    db   $AA ; unknown music opcode                    ;; 0f:641b $aa
+    db   $A6 ; unknown music opcode                    ;; 0f:641c $a6
+    db   $A1 ; unknown music opcode                    ;; 0f:641d $a1
+    db   $A6 ; unknown music opcode                    ;; 0f:641e $a6
+    db   $A1 ; unknown music opcode                    ;; 0f:641f $a1
+    db   $DC ; unknown music opcode                    ;; 0f:6420 $dc
+    db   $AA ; unknown music opcode                    ;; 0f:6421 $aa
+    db   $AB ; unknown music opcode                    ;; 0f:6422 $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:6423 $d8
+    db   $A1 ; unknown music opcode                    ;; 0f:6424 $a1
+    mUNK_E2 .data_0f_63e6                              ;; 0f:6425 $e2 $e6 $63
+.data_0f_6428:
+    db   $71 ; unknown music opcode                    ;; 0f:6428 $71
+    db   $DC ; unknown music opcode                    ;; 0f:6429 $dc
+    db   $7B ; unknown music opcode                    ;; 0f:642a $7b
+    db   $89 ; unknown music opcode                    ;; 0f:642b $89
+    db   $D8 ; unknown music opcode                    ;; 0f:642c $d8
+    db   $49 ; unknown music opcode                    ;; 0f:642d $49
+    db   $A6 ; unknown music opcode                    ;; 0f:642e $a6
+    db   $A7 ; unknown music opcode                    ;; 0f:642f $a7
+    db   $79 ; unknown music opcode                    ;; 0f:6430 $79
+    db   $77 ; unknown music opcode                    ;; 0f:6431 $77
+    db   $86 ; unknown music opcode                    ;; 0f:6432 $86
+    db   $27 ; unknown music opcode                    ;; 0f:6433 $27
+    db   $76 ; unknown music opcode                    ;; 0f:6434 $76
+    db   $71 ; unknown music opcode                    ;; 0f:6435 $71
+    db   $84 ; unknown music opcode                    ;; 0f:6436 $84
+    db   $52 ; unknown music opcode                    ;; 0f:6437 $52
+    db   $51 ; unknown music opcode                    ;; 0f:6438 $51
+    db   $DC ; unknown music opcode                    ;; 0f:6439 $dc
+    db   $4B ; unknown music opcode                    ;; 0f:643a $4b
+    db   $D8 ; unknown music opcode                    ;; 0f:643b $d8
+    db   $A1 ; unknown music opcode                    ;; 0f:643c $a1
+    db   $A2 ; unknown music opcode                    ;; 0f:643d $a2
+    db   $51 ; unknown music opcode                    ;; 0f:643e $51
+    db   $DC ; unknown music opcode                    ;; 0f:643f $dc
+    db   $59 ; unknown music opcode                    ;; 0f:6440 $59
+    db   $2B ; unknown music opcode                    ;; 0f:6441 $2b
+    db   $AE ; unknown music opcode                    ;; 0f:6442 $ae
+    mUNK_E0 $c4                                        ;; 0f:6443 $e0 $c4
+    db   $7A ; unknown music opcode                    ;; 0f:6445 $7a
+    mUNK_E5 $80                                        ;; 0f:6446 $e5 $80
+    db   $A6 ; unknown music opcode                    ;; 0f:6448 $a6
+    db   $A7 ; unknown music opcode                    ;; 0f:6449 $a7
+    db   $A9 ; unknown music opcode                    ;; 0f:644a $a9
+    db   $AB ; unknown music opcode                    ;; 0f:644b $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:644c $d8
+    db   $A1 ; unknown music opcode                    ;; 0f:644d $a1
+    db   $A2 ; unknown music opcode                    ;; 0f:644e $a2
+    db   $A4 ; unknown music opcode                    ;; 0f:644f $a4
+    mUNK_E0 $82                                        ;; 0f:6450 $e0 $82
+    db   $7A ; unknown music opcode                    ;; 0f:6452 $7a
+    db   $46 ; unknown music opcode                    ;; 0f:6453 $46
+    db   $A4 ; unknown music opcode                    ;; 0f:6454 $a4
+    db   $A2 ; unknown music opcode                    ;; 0f:6455 $a2
+    db   $71 ; unknown music opcode                    ;; 0f:6456 $71
+    db   $DC ; unknown music opcode                    ;; 0f:6457 $dc
+    db   $7B ; unknown music opcode                    ;; 0f:6458 $7b
+    db   $D8 ; unknown music opcode                    ;; 0f:6459 $d8
+    db   $81 ; unknown music opcode                    ;; 0f:645a $81
+    db   $2E ; unknown music opcode                    ;; 0f:645b $2e
+    db   $AF ; unknown music opcode                    ;; 0f:645c $af
+    db   $DC ; unknown music opcode                    ;; 0f:645d $dc
+    db   $AB ; unknown music opcode                    ;; 0f:645e $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:645f $d8
+    db   $A1 ; unknown music opcode                    ;; 0f:6460 $a1
+    db   $A2 ; unknown music opcode                    ;; 0f:6461 $a2
+    db   $A4 ; unknown music opcode                    ;; 0f:6462 $a4
+    db   $A2 ; unknown music opcode                    ;; 0f:6463 $a2
+    db   $A1 ; unknown music opcode                    ;; 0f:6464 $a1
+    db   $DC ; unknown music opcode                    ;; 0f:6465 $dc
+    db   $AB ; unknown music opcode                    ;; 0f:6466 $ab
+    db   $49 ; unknown music opcode                    ;; 0f:6467 $49
+    db   $D8 ; unknown music opcode                    ;; 0f:6468 $d8
+    db   $59 ; unknown music opcode                    ;; 0f:6469 $59
+    db   $54 ; unknown music opcode                    ;; 0f:646a $54
+    db   $87 ; unknown music opcode                    ;; 0f:646b $87
+    db   $16 ; unknown music opcode                    ;; 0f:646c $16
+    db   $8F ; unknown music opcode                    ;; 0f:646d $8f
+    mUNK_E5 $40                                        ;; 0f:646e $e5 $40
+    db   $A6 ; unknown music opcode                    ;; 0f:6470 $a6
+    db   $A7 ; unknown music opcode                    ;; 0f:6471 $a7
+    db   $89 ; unknown music opcode                    ;; 0f:6472 $89
+    db   $87 ; unknown music opcode                    ;; 0f:6473 $87
+    db   $86 ; unknown music opcode                    ;; 0f:6474 $86
+    db   $87 ; unknown music opcode                    ;; 0f:6475 $87
+    db   $79 ; unknown music opcode                    ;; 0f:6476 $79
+    db   $7B ; unknown music opcode                    ;; 0f:6477 $7b
+    db   $D8 ; unknown music opcode                    ;; 0f:6478 $d8
+    db   $80 ; unknown music opcode                    ;; 0f:6479 $80
+    db   $DC ; unknown music opcode                    ;; 0f:647a $dc
+    db   $5B ; unknown music opcode                    ;; 0f:647b $5b
+    db   $86 ; unknown music opcode                    ;; 0f:647c $86
+    db   $5B ; unknown music opcode                    ;; 0f:647d $5b
+    db   $89 ; unknown music opcode                    ;; 0f:647e $89
+    db   $87 ; unknown music opcode                    ;; 0f:647f $87
+    db   $86 ; unknown music opcode                    ;; 0f:6480 $86
+    db   $17 ; unknown music opcode                    ;; 0f:6481 $17
+    db   $8F ; unknown music opcode                    ;; 0f:6482 $8f
+    db   $A4 ; unknown music opcode                    ;; 0f:6483 $a4
+    db   $A6 ; unknown music opcode                    ;; 0f:6484 $a6
+    db   $57 ; unknown music opcode                    ;; 0f:6485 $57
+    db   $56 ; unknown music opcode                    ;; 0f:6486 $56
+    db   $54 ; unknown music opcode                    ;; 0f:6487 $54
+    db   $52 ; unknown music opcode                    ;; 0f:6488 $52
+    db   $71 ; unknown music opcode                    ;; 0f:6489 $71
+    db   $DC ; unknown music opcode                    ;; 0f:648a $dc
+    db   $76 ; unknown music opcode                    ;; 0f:648b $76
+    db   $D8 ; unknown music opcode                    ;; 0f:648c $d8
+    db   $81 ; unknown music opcode                    ;; 0f:648d $81
+    db   $72 ; unknown music opcode                    ;; 0f:648e $72
+    db   $DC ; unknown music opcode                    ;; 0f:648f $dc
+    db   $77 ; unknown music opcode                    ;; 0f:6490 $77
+    db   $D8 ; unknown music opcode                    ;; 0f:6491 $d8
+    db   $82 ; unknown music opcode                    ;; 0f:6492 $82
+    db   $74 ; unknown music opcode                    ;; 0f:6493 $74
+    db   $DC ; unknown music opcode                    ;; 0f:6494 $dc
+    db   $79 ; unknown music opcode                    ;; 0f:6495 $79
+    db   $D8 ; unknown music opcode                    ;; 0f:6496 $d8
+    db   $84 ; unknown music opcode                    ;; 0f:6497 $84
+    mUNK_E0 $be                                        ;; 0f:6498 $e0 $be
+    db   $7A ; unknown music opcode                    ;; 0f:649a $7a
+    db   $46 ; unknown music opcode                    ;; 0f:649b $46
+    db   $DC ; unknown music opcode                    ;; 0f:649c $dc
+    db   $AB ; unknown music opcode                    ;; 0f:649d $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:649e $d8
+    db   $A1 ; unknown music opcode                    ;; 0f:649f $a1
+    mUNK_E1 .data_0f_63e4                              ;; 0f:64a0 $e1 $e4 $63
 
-data_0f_64a3:
-    db   $e4, $4f, $7a, $e0, $a8, $7a, $e5, $40        ;; 0f:64a3 ????????
-    db   $e6, $03, $d2, $a2, $dc, $ab, $d8, $a4        ;; 0f:64ab ????????
-    db   $a1, $a6, $a2, $a7, $a4, $a6, $a2, $a4        ;; 0f:64b3 ????????
-    db   $a1, $a2, $dc, $ab, $d8, $a1, $dc, $a9        ;; 0f:64bb ????????
-    db   $d8, $a2, $dc, $ab, $d8, $a4, $a1, $a6        ;; 0f:64c3 ????????
-    db   $a2, $a7, $a4, $a6, $a2, $a4, $a1, $a2        ;; 0f:64cb ????????
-    db   $dc, $ab, $d8, $e6, $02, $e5, $00, $a1        ;; 0f:64d3 ????????
-    db   $dc, $a9, $e3, $02, $e0, $ac, $7a, $e5        ;; 0f:64db ????????
-    db   $00, $e6, $02, $d2, $86, $87, $86, $a4        ;; 0f:64e3 ????????
-    db   $76, $e6, $03, $86, $87, $89, $79, $77        ;; 0f:64eb ????????
-    db   $86, $84, $81, $84, $e6, $01, $a7, $a9        ;; 0f:64f3 ????????
-    db   $8b, $89, $87, $a9, $5b, $ae, $d8, $e6        ;; 0f:64fb ????????
-    db   $03, $81, $dc, $8b, $eb, $01, $5d, $65        ;; 0f:6503 ????????
-    db   $79, $76, $84, $84, $81, $84, $a6, $a9        ;; 0f:650b ????????
-    db   $e6, $02, $27, $7e, $76, $a4, $a6, $e6        ;; 0f:6513 ????????
-    db   $03, $77, $76, $84, $74, $76, $87, $e6        ;; 0f:651b ????????
-    db   $01, $a6, $a1, $dc, $aa, $d8, $a6, $e6        ;; 0f:6523 ????????
-    db   $03, $a1, $dc, $aa, $d8, $a6, $dc, $aa        ;; 0f:652b ????????
-    db   $d8, $e6, $02, $a7, $a2, $dc, $ab, $d8        ;; 0f:6533 ????????
-    db   $a7, $e6, $03, $a2, $dc, $ab, $d8, $a7        ;; 0f:653b ????????
-    db   $dc, $ab, $e6, $01, $d8, $a9, $a4, $a1        ;; 0f:6543 ????????
-    db   $a9, $e6, $03, $a4, $a1, $a9, $a1, $aa        ;; 0f:654b ????????
-    db   $a1, $a6, $a1, $a4, $a1, $a6, $a1, $e2        ;; 0f:6553 ????????
-    db   $df, $64, $79, $76, $84, $d8, $71, $dc        ;; 0f:655b ????????
-    db   $7b, $89, $e6, $01, $4b, $a9, $ab, $d8        ;; 0f:6563 ????????
-    db   $e6, $03, $51, $dc, $5b, $e6, $02, $4a        ;; 0f:656b ????????
-    db   $a8, $aa, $e6, $03, $56, $54, $77, $72        ;; 0f:6573 ????????
-    db   $a4, $a6, $54, $51, $22, $ae, $dc, $e0        ;; 0f:657b ????????
-    db   $c4, $7a, $e5, $80, $a9, $ab, $d8, $a1        ;; 0f:6583 ????????
-    db   $a2, $a4, $a6, $a7, $e3, $02, $e5, $00        ;; 0f:658b ????????
-    db   $e6, $01, $82, $dc, $e6, $03, $ab, $af        ;; 0f:6593 ????????
-    db   $ab, $af, $d8, $e6, $01, $82, $dc, $e6        ;; 0f:659b ????????
-    db   $03, $ab, $af, $ab, $af, $e6, $01, $d8        ;; 0f:65a3 ????????
-    db   $82, $dc, $e6, $03, $ab, $af, $d8, $e2        ;; 0f:65ab ????????
-    db   $91, $65, $e6, $01, $81, $dc, $e6, $03        ;; 0f:65b3 ????????
-    db   $a9, $af, $a9, $af, $d8, $e6, $01, $81        ;; 0f:65bb ????????
-    db   $dc, $e6, $03, $a9, $af, $a9, $af, $e6        ;; 0f:65c3 ????????
-    db   $01, $d8, $81, $dc, $e6, $03, $a9, $af        ;; 0f:65cb ????????
-    db   $e0, $ac, $7a, $d8, $a9, $a6, $a1, $a6        ;; 0f:65d3 ????????
-    db   $d8, $a1, $dc, $a6, $a1, $a6, $ab, $a6        ;; 0f:65db ????????
-    db   $a1, $a6, $a9, $a6, $a1, $a6, $e6, $01        ;; 0f:65e3 ????????
-    db   $d8, $80, $dc, $8b, $89, $8b, $d8, $40        ;; 0f:65eb ????????
-    db   $84, $53, $dc, $8b, $d8, $43, $dc, $59        ;; 0f:65f3 ????????
-    db   $e6, $02, $a4, $dc, $ab, $a7, $ab, $d8        ;; 0f:65fb ????????
-    db   $57, $e6, $01, $a2, $dc, $ab, $a7, $ab        ;; 0f:6603 ????????
-    db   $d8, $57, $e6, $03, $ab, $a7, $a4, $a7        ;; 0f:660b ????????
-    db   $ab, $a7, $a4, $a7, $d8, $a1, $dc, $a7        ;; 0f:6613 ????????
-    db   $a4, $a7, $ab, $a7, $a4, $a7, $e6, $02        ;; 0f:661b ????????
-    db   $a1, $dc, $aa, $a6, $d8, $e6, $03, $a1        ;; 0f:6623 ????????
-    db   $dc, $aa, $a6, $e6, $01, $d8, $a1, $dc        ;; 0f:662b ????????
-    db   $a6, $d8, $e6, $02, $a2, $dc, $ab, $a7        ;; 0f:6633 ????????
-    db   $e6, $03, $d8, $a2, $dc, $ab, $a7, $d8        ;; 0f:663b ????????
-    db   $e6, $01, $a2, $dc, $a7, $e6, $02, $d8        ;; 0f:6643 ????????
-    db   $a4, $a1, $dc, $a9, $d8, $e6, $03, $a4        ;; 0f:664b ????????
-    db   $a1, $dc, $a9, $d8, $e6, $01, $a4, $dc        ;; 0f:6653 ????????
-    db   $a9, $d8, $e6, $03, $56, $dc, $8a, $d8        ;; 0f:665b ????????
-    db   $84, $e1, $dd, $64                            ;; 0f:6663 ????
+song12_channel1:
+    mUNK_E4 frequencyDeltaData                         ;; 0f:64a3 $e4 $4f $7a
+    mUNK_E0 $a8                                        ;; 0f:64a6 $e0 $a8
+    db   $7A ; unknown music opcode                    ;; 0f:64a8 $7a
+    mUNK_E5 $40                                        ;; 0f:64a9 $e5 $40
+    mUNK_E6 $03                                        ;; 0f:64ab $e6 $03
+    db   $D2 ; unknown music opcode                    ;; 0f:64ad $d2
+    db   $A2 ; unknown music opcode                    ;; 0f:64ae $a2
+    db   $DC ; unknown music opcode                    ;; 0f:64af $dc
+    db   $AB ; unknown music opcode                    ;; 0f:64b0 $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:64b1 $d8
+    db   $A4 ; unknown music opcode                    ;; 0f:64b2 $a4
+    db   $A1 ; unknown music opcode                    ;; 0f:64b3 $a1
+    db   $A6 ; unknown music opcode                    ;; 0f:64b4 $a6
+    db   $A2 ; unknown music opcode                    ;; 0f:64b5 $a2
+    db   $A7 ; unknown music opcode                    ;; 0f:64b6 $a7
+    db   $A4 ; unknown music opcode                    ;; 0f:64b7 $a4
+    db   $A6 ; unknown music opcode                    ;; 0f:64b8 $a6
+    db   $A2 ; unknown music opcode                    ;; 0f:64b9 $a2
+    db   $A4 ; unknown music opcode                    ;; 0f:64ba $a4
+    db   $A1 ; unknown music opcode                    ;; 0f:64bb $a1
+    db   $A2 ; unknown music opcode                    ;; 0f:64bc $a2
+    db   $DC ; unknown music opcode                    ;; 0f:64bd $dc
+    db   $AB ; unknown music opcode                    ;; 0f:64be $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:64bf $d8
+    db   $A1 ; unknown music opcode                    ;; 0f:64c0 $a1
+    db   $DC ; unknown music opcode                    ;; 0f:64c1 $dc
+    db   $A9 ; unknown music opcode                    ;; 0f:64c2 $a9
+    db   $D8 ; unknown music opcode                    ;; 0f:64c3 $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:64c4 $a2
+    db   $DC ; unknown music opcode                    ;; 0f:64c5 $dc
+    db   $AB ; unknown music opcode                    ;; 0f:64c6 $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:64c7 $d8
+    db   $A4 ; unknown music opcode                    ;; 0f:64c8 $a4
+    db   $A1 ; unknown music opcode                    ;; 0f:64c9 $a1
+    db   $A6 ; unknown music opcode                    ;; 0f:64ca $a6
+    db   $A2 ; unknown music opcode                    ;; 0f:64cb $a2
+    db   $A7 ; unknown music opcode                    ;; 0f:64cc $a7
+    db   $A4 ; unknown music opcode                    ;; 0f:64cd $a4
+    db   $A6 ; unknown music opcode                    ;; 0f:64ce $a6
+    db   $A2 ; unknown music opcode                    ;; 0f:64cf $a2
+    db   $A4 ; unknown music opcode                    ;; 0f:64d0 $a4
+    db   $A1 ; unknown music opcode                    ;; 0f:64d1 $a1
+    db   $A2 ; unknown music opcode                    ;; 0f:64d2 $a2
+    db   $DC ; unknown music opcode                    ;; 0f:64d3 $dc
+    db   $AB ; unknown music opcode                    ;; 0f:64d4 $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:64d5 $d8
+    mUNK_E6 $02                                        ;; 0f:64d6 $e6 $02
+    mUNK_E5 $00                                        ;; 0f:64d8 $e5 $00
+    db   $A1 ; unknown music opcode                    ;; 0f:64da $a1
+    db   $DC ; unknown music opcode                    ;; 0f:64db $dc
+    db   $A9 ; unknown music opcode                    ;; 0f:64dc $a9
+.data_0f_64dd:
+    mUNK_E3 $02                                        ;; 0f:64dd $e3 $02
+.data_0f_64df:
+    mUNK_E0 $ac                                        ;; 0f:64df $e0 $ac
+    db   $7A ; unknown music opcode                    ;; 0f:64e1 $7a
+    mUNK_E5 $00                                        ;; 0f:64e2 $e5 $00
+    mUNK_E6 $02                                        ;; 0f:64e4 $e6 $02
+    db   $D2 ; unknown music opcode                    ;; 0f:64e6 $d2
+    db   $86 ; unknown music opcode                    ;; 0f:64e7 $86
+    db   $87 ; unknown music opcode                    ;; 0f:64e8 $87
+    db   $86 ; unknown music opcode                    ;; 0f:64e9 $86
+    db   $A4 ; unknown music opcode                    ;; 0f:64ea $a4
+    db   $76 ; unknown music opcode                    ;; 0f:64eb $76
+    mUNK_E6 $03                                        ;; 0f:64ec $e6 $03
+    db   $86 ; unknown music opcode                    ;; 0f:64ee $86
+    db   $87 ; unknown music opcode                    ;; 0f:64ef $87
+    db   $89 ; unknown music opcode                    ;; 0f:64f0 $89
+    db   $79 ; unknown music opcode                    ;; 0f:64f1 $79
+    db   $77 ; unknown music opcode                    ;; 0f:64f2 $77
+    db   $86 ; unknown music opcode                    ;; 0f:64f3 $86
+    db   $84 ; unknown music opcode                    ;; 0f:64f4 $84
+    db   $81 ; unknown music opcode                    ;; 0f:64f5 $81
+    db   $84 ; unknown music opcode                    ;; 0f:64f6 $84
+    mUNK_E6 $01                                        ;; 0f:64f7 $e6 $01
+    db   $A7 ; unknown music opcode                    ;; 0f:64f9 $a7
+    db   $A9 ; unknown music opcode                    ;; 0f:64fa $a9
+    db   $8B ; unknown music opcode                    ;; 0f:64fb $8b
+    db   $89 ; unknown music opcode                    ;; 0f:64fc $89
+    db   $87 ; unknown music opcode                    ;; 0f:64fd $87
+    db   $A9 ; unknown music opcode                    ;; 0f:64fe $a9
+    db   $5B ; unknown music opcode                    ;; 0f:64ff $5b
+    db   $AE ; unknown music opcode                    ;; 0f:6500 $ae
+    db   $D8 ; unknown music opcode                    ;; 0f:6501 $d8
+    mUNK_E6 $03                                        ;; 0f:6502 $e6 $03
+    db   $81 ; unknown music opcode                    ;; 0f:6504 $81
+    db   $DC ; unknown music opcode                    ;; 0f:6505 $dc
+    db   $8B ; unknown music opcode                    ;; 0f:6506 $8b
+    mUNK_EB $01, .data_0f_655d                         ;; 0f:6507 $eb $01 $5d $65
+    db   $79 ; unknown music opcode                    ;; 0f:650b $79
+    db   $76 ; unknown music opcode                    ;; 0f:650c $76
+    db   $84 ; unknown music opcode                    ;; 0f:650d $84
+    db   $84 ; unknown music opcode                    ;; 0f:650e $84
+    db   $81 ; unknown music opcode                    ;; 0f:650f $81
+    db   $84 ; unknown music opcode                    ;; 0f:6510 $84
+    db   $A6 ; unknown music opcode                    ;; 0f:6511 $a6
+    db   $A9 ; unknown music opcode                    ;; 0f:6512 $a9
+    mUNK_E6 $02                                        ;; 0f:6513 $e6 $02
+    db   $27 ; unknown music opcode                    ;; 0f:6515 $27
+    db   $7E ; unknown music opcode                    ;; 0f:6516 $7e
+    db   $76 ; unknown music opcode                    ;; 0f:6517 $76
+    db   $A4 ; unknown music opcode                    ;; 0f:6518 $a4
+    db   $A6 ; unknown music opcode                    ;; 0f:6519 $a6
+    mUNK_E6 $03                                        ;; 0f:651a $e6 $03
+    db   $77 ; unknown music opcode                    ;; 0f:651c $77
+    db   $76 ; unknown music opcode                    ;; 0f:651d $76
+    db   $84 ; unknown music opcode                    ;; 0f:651e $84
+    db   $74 ; unknown music opcode                    ;; 0f:651f $74
+    db   $76 ; unknown music opcode                    ;; 0f:6520 $76
+    db   $87 ; unknown music opcode                    ;; 0f:6521 $87
+    mUNK_E6 $01                                        ;; 0f:6522 $e6 $01
+    db   $A6 ; unknown music opcode                    ;; 0f:6524 $a6
+    db   $A1 ; unknown music opcode                    ;; 0f:6525 $a1
+    db   $DC ; unknown music opcode                    ;; 0f:6526 $dc
+    db   $AA ; unknown music opcode                    ;; 0f:6527 $aa
+    db   $D8 ; unknown music opcode                    ;; 0f:6528 $d8
+    db   $A6 ; unknown music opcode                    ;; 0f:6529 $a6
+    mUNK_E6 $03                                        ;; 0f:652a $e6 $03
+    db   $A1 ; unknown music opcode                    ;; 0f:652c $a1
+    db   $DC ; unknown music opcode                    ;; 0f:652d $dc
+    db   $AA ; unknown music opcode                    ;; 0f:652e $aa
+    db   $D8 ; unknown music opcode                    ;; 0f:652f $d8
+    db   $A6 ; unknown music opcode                    ;; 0f:6530 $a6
+    db   $DC ; unknown music opcode                    ;; 0f:6531 $dc
+    db   $AA ; unknown music opcode                    ;; 0f:6532 $aa
+    db   $D8 ; unknown music opcode                    ;; 0f:6533 $d8
+    mUNK_E6 $02                                        ;; 0f:6534 $e6 $02
+    db   $A7 ; unknown music opcode                    ;; 0f:6536 $a7
+    db   $A2 ; unknown music opcode                    ;; 0f:6537 $a2
+    db   $DC ; unknown music opcode                    ;; 0f:6538 $dc
+    db   $AB ; unknown music opcode                    ;; 0f:6539 $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:653a $d8
+    db   $A7 ; unknown music opcode                    ;; 0f:653b $a7
+    mUNK_E6 $03                                        ;; 0f:653c $e6 $03
+    db   $A2 ; unknown music opcode                    ;; 0f:653e $a2
+    db   $DC ; unknown music opcode                    ;; 0f:653f $dc
+    db   $AB ; unknown music opcode                    ;; 0f:6540 $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:6541 $d8
+    db   $A7 ; unknown music opcode                    ;; 0f:6542 $a7
+    db   $DC ; unknown music opcode                    ;; 0f:6543 $dc
+    db   $AB ; unknown music opcode                    ;; 0f:6544 $ab
+    mUNK_E6 $01                                        ;; 0f:6545 $e6 $01
+    db   $D8 ; unknown music opcode                    ;; 0f:6547 $d8
+    db   $A9 ; unknown music opcode                    ;; 0f:6548 $a9
+    db   $A4 ; unknown music opcode                    ;; 0f:6549 $a4
+    db   $A1 ; unknown music opcode                    ;; 0f:654a $a1
+    db   $A9 ; unknown music opcode                    ;; 0f:654b $a9
+    mUNK_E6 $03                                        ;; 0f:654c $e6 $03
+    db   $A4 ; unknown music opcode                    ;; 0f:654e $a4
+    db   $A1 ; unknown music opcode                    ;; 0f:654f $a1
+    db   $A9 ; unknown music opcode                    ;; 0f:6550 $a9
+    db   $A1 ; unknown music opcode                    ;; 0f:6551 $a1
+    db   $AA ; unknown music opcode                    ;; 0f:6552 $aa
+    db   $A1 ; unknown music opcode                    ;; 0f:6553 $a1
+    db   $A6 ; unknown music opcode                    ;; 0f:6554 $a6
+    db   $A1 ; unknown music opcode                    ;; 0f:6555 $a1
+    db   $A4 ; unknown music opcode                    ;; 0f:6556 $a4
+    db   $A1 ; unknown music opcode                    ;; 0f:6557 $a1
+    db   $A6 ; unknown music opcode                    ;; 0f:6558 $a6
+    db   $A1 ; unknown music opcode                    ;; 0f:6559 $a1
+    mUNK_E2 .data_0f_64df                              ;; 0f:655a $e2 $df $64
+.data_0f_655d:
+    db   $79 ; unknown music opcode                    ;; 0f:655d $79
+    db   $76 ; unknown music opcode                    ;; 0f:655e $76
+    db   $84 ; unknown music opcode                    ;; 0f:655f $84
+    db   $D8 ; unknown music opcode                    ;; 0f:6560 $d8
+    db   $71 ; unknown music opcode                    ;; 0f:6561 $71
+    db   $DC ; unknown music opcode                    ;; 0f:6562 $dc
+    db   $7B ; unknown music opcode                    ;; 0f:6563 $7b
+    db   $89 ; unknown music opcode                    ;; 0f:6564 $89
+    mUNK_E6 $01                                        ;; 0f:6565 $e6 $01
+    db   $4B ; unknown music opcode                    ;; 0f:6567 $4b
+    db   $A9 ; unknown music opcode                    ;; 0f:6568 $a9
+    db   $AB ; unknown music opcode                    ;; 0f:6569 $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:656a $d8
+    mUNK_E6 $03                                        ;; 0f:656b $e6 $03
+    db   $51 ; unknown music opcode                    ;; 0f:656d $51
+    db   $DC ; unknown music opcode                    ;; 0f:656e $dc
+    db   $5B ; unknown music opcode                    ;; 0f:656f $5b
+    mUNK_E6 $02                                        ;; 0f:6570 $e6 $02
+    db   $4A ; unknown music opcode                    ;; 0f:6572 $4a
+    db   $A8 ; unknown music opcode                    ;; 0f:6573 $a8
+    db   $AA ; unknown music opcode                    ;; 0f:6574 $aa
+    mUNK_E6 $03                                        ;; 0f:6575 $e6 $03
+    db   $56 ; unknown music opcode                    ;; 0f:6577 $56
+    db   $54 ; unknown music opcode                    ;; 0f:6578 $54
+    db   $77 ; unknown music opcode                    ;; 0f:6579 $77
+    db   $72 ; unknown music opcode                    ;; 0f:657a $72
+    db   $A4 ; unknown music opcode                    ;; 0f:657b $a4
+    db   $A6 ; unknown music opcode                    ;; 0f:657c $a6
+    db   $54 ; unknown music opcode                    ;; 0f:657d $54
+    db   $51 ; unknown music opcode                    ;; 0f:657e $51
+    db   $22 ; unknown music opcode                    ;; 0f:657f $22
+    db   $AE ; unknown music opcode                    ;; 0f:6580 $ae
+    db   $DC ; unknown music opcode                    ;; 0f:6581 $dc
+    mUNK_E0 $c4                                        ;; 0f:6582 $e0 $c4
+    db   $7A ; unknown music opcode                    ;; 0f:6584 $7a
+    mUNK_E5 $80                                        ;; 0f:6585 $e5 $80
+    db   $A9 ; unknown music opcode                    ;; 0f:6587 $a9
+    db   $AB ; unknown music opcode                    ;; 0f:6588 $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:6589 $d8
+    db   $A1 ; unknown music opcode                    ;; 0f:658a $a1
+    db   $A2 ; unknown music opcode                    ;; 0f:658b $a2
+    db   $A4 ; unknown music opcode                    ;; 0f:658c $a4
+    db   $A6 ; unknown music opcode                    ;; 0f:658d $a6
+    db   $A7 ; unknown music opcode                    ;; 0f:658e $a7
+    mUNK_E3 $02                                        ;; 0f:658f $e3 $02
+.data_0f_6591:
+    mUNK_E5 $00                                        ;; 0f:6591 $e5 $00
+    mUNK_E6 $01                                        ;; 0f:6593 $e6 $01
+    db   $82 ; unknown music opcode                    ;; 0f:6595 $82
+    db   $DC ; unknown music opcode                    ;; 0f:6596 $dc
+    mUNK_E6 $03                                        ;; 0f:6597 $e6 $03
+    db   $AB ; unknown music opcode                    ;; 0f:6599 $ab
+    db   $AF ; unknown music opcode                    ;; 0f:659a $af
+    db   $AB ; unknown music opcode                    ;; 0f:659b $ab
+    db   $AF ; unknown music opcode                    ;; 0f:659c $af
+    db   $D8 ; unknown music opcode                    ;; 0f:659d $d8
+    mUNK_E6 $01                                        ;; 0f:659e $e6 $01
+    db   $82 ; unknown music opcode                    ;; 0f:65a0 $82
+    db   $DC ; unknown music opcode                    ;; 0f:65a1 $dc
+    mUNK_E6 $03                                        ;; 0f:65a2 $e6 $03
+    db   $AB ; unknown music opcode                    ;; 0f:65a4 $ab
+    db   $AF ; unknown music opcode                    ;; 0f:65a5 $af
+    db   $AB ; unknown music opcode                    ;; 0f:65a6 $ab
+    db   $AF ; unknown music opcode                    ;; 0f:65a7 $af
+    mUNK_E6 $01                                        ;; 0f:65a8 $e6 $01
+    db   $D8 ; unknown music opcode                    ;; 0f:65aa $d8
+    db   $82 ; unknown music opcode                    ;; 0f:65ab $82
+    db   $DC ; unknown music opcode                    ;; 0f:65ac $dc
+    mUNK_E6 $03                                        ;; 0f:65ad $e6 $03
+    db   $AB ; unknown music opcode                    ;; 0f:65af $ab
+    db   $AF ; unknown music opcode                    ;; 0f:65b0 $af
+    db   $D8 ; unknown music opcode                    ;; 0f:65b1 $d8
+    mUNK_E2 .data_0f_6591                              ;; 0f:65b2 $e2 $91 $65
+    mUNK_E6 $01                                        ;; 0f:65b5 $e6 $01
+    db   $81 ; unknown music opcode                    ;; 0f:65b7 $81
+    db   $DC ; unknown music opcode                    ;; 0f:65b8 $dc
+    mUNK_E6 $03                                        ;; 0f:65b9 $e6 $03
+    db   $A9 ; unknown music opcode                    ;; 0f:65bb $a9
+    db   $AF ; unknown music opcode                    ;; 0f:65bc $af
+    db   $A9 ; unknown music opcode                    ;; 0f:65bd $a9
+    db   $AF ; unknown music opcode                    ;; 0f:65be $af
+    db   $D8 ; unknown music opcode                    ;; 0f:65bf $d8
+    mUNK_E6 $01                                        ;; 0f:65c0 $e6 $01
+    db   $81 ; unknown music opcode                    ;; 0f:65c2 $81
+    db   $DC ; unknown music opcode                    ;; 0f:65c3 $dc
+    mUNK_E6 $03                                        ;; 0f:65c4 $e6 $03
+    db   $A9 ; unknown music opcode                    ;; 0f:65c6 $a9
+    db   $AF ; unknown music opcode                    ;; 0f:65c7 $af
+    db   $A9 ; unknown music opcode                    ;; 0f:65c8 $a9
+    db   $AF ; unknown music opcode                    ;; 0f:65c9 $af
+    mUNK_E6 $01                                        ;; 0f:65ca $e6 $01
+    db   $D8 ; unknown music opcode                    ;; 0f:65cc $d8
+    db   $81 ; unknown music opcode                    ;; 0f:65cd $81
+    db   $DC ; unknown music opcode                    ;; 0f:65ce $dc
+    mUNK_E6 $03                                        ;; 0f:65cf $e6 $03
+    db   $A9 ; unknown music opcode                    ;; 0f:65d1 $a9
+    db   $AF ; unknown music opcode                    ;; 0f:65d2 $af
+    mUNK_E0 $ac                                        ;; 0f:65d3 $e0 $ac
+    db   $7A ; unknown music opcode                    ;; 0f:65d5 $7a
+    db   $D8 ; unknown music opcode                    ;; 0f:65d6 $d8
+    db   $A9 ; unknown music opcode                    ;; 0f:65d7 $a9
+    db   $A6 ; unknown music opcode                    ;; 0f:65d8 $a6
+    db   $A1 ; unknown music opcode                    ;; 0f:65d9 $a1
+    db   $A6 ; unknown music opcode                    ;; 0f:65da $a6
+    db   $D8 ; unknown music opcode                    ;; 0f:65db $d8
+    db   $A1 ; unknown music opcode                    ;; 0f:65dc $a1
+    db   $DC ; unknown music opcode                    ;; 0f:65dd $dc
+    db   $A6 ; unknown music opcode                    ;; 0f:65de $a6
+    db   $A1 ; unknown music opcode                    ;; 0f:65df $a1
+    db   $A6 ; unknown music opcode                    ;; 0f:65e0 $a6
+    db   $AB ; unknown music opcode                    ;; 0f:65e1 $ab
+    db   $A6 ; unknown music opcode                    ;; 0f:65e2 $a6
+    db   $A1 ; unknown music opcode                    ;; 0f:65e3 $a1
+    db   $A6 ; unknown music opcode                    ;; 0f:65e4 $a6
+    db   $A9 ; unknown music opcode                    ;; 0f:65e5 $a9
+    db   $A6 ; unknown music opcode                    ;; 0f:65e6 $a6
+    db   $A1 ; unknown music opcode                    ;; 0f:65e7 $a1
+    db   $A6 ; unknown music opcode                    ;; 0f:65e8 $a6
+    mUNK_E6 $01                                        ;; 0f:65e9 $e6 $01
+    db   $D8 ; unknown music opcode                    ;; 0f:65eb $d8
+    db   $80 ; unknown music opcode                    ;; 0f:65ec $80
+    db   $DC ; unknown music opcode                    ;; 0f:65ed $dc
+    db   $8B ; unknown music opcode                    ;; 0f:65ee $8b
+    db   $89 ; unknown music opcode                    ;; 0f:65ef $89
+    db   $8B ; unknown music opcode                    ;; 0f:65f0 $8b
+    db   $D8 ; unknown music opcode                    ;; 0f:65f1 $d8
+    db   $40 ; unknown music opcode                    ;; 0f:65f2 $40
+    db   $84 ; unknown music opcode                    ;; 0f:65f3 $84
+    db   $53 ; unknown music opcode                    ;; 0f:65f4 $53
+    db   $DC ; unknown music opcode                    ;; 0f:65f5 $dc
+    db   $8B ; unknown music opcode                    ;; 0f:65f6 $8b
+    db   $D8 ; unknown music opcode                    ;; 0f:65f7 $d8
+    db   $43 ; unknown music opcode                    ;; 0f:65f8 $43
+    db   $DC ; unknown music opcode                    ;; 0f:65f9 $dc
+    db   $59 ; unknown music opcode                    ;; 0f:65fa $59
+    mUNK_E6 $02                                        ;; 0f:65fb $e6 $02
+    db   $A4 ; unknown music opcode                    ;; 0f:65fd $a4
+    db   $DC ; unknown music opcode                    ;; 0f:65fe $dc
+    db   $AB ; unknown music opcode                    ;; 0f:65ff $ab
+    db   $A7 ; unknown music opcode                    ;; 0f:6600 $a7
+    db   $AB ; unknown music opcode                    ;; 0f:6601 $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:6602 $d8
+    db   $57 ; unknown music opcode                    ;; 0f:6603 $57
+    mUNK_E6 $01                                        ;; 0f:6604 $e6 $01
+    db   $A2 ; unknown music opcode                    ;; 0f:6606 $a2
+    db   $DC ; unknown music opcode                    ;; 0f:6607 $dc
+    db   $AB ; unknown music opcode                    ;; 0f:6608 $ab
+    db   $A7 ; unknown music opcode                    ;; 0f:6609 $a7
+    db   $AB ; unknown music opcode                    ;; 0f:660a $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:660b $d8
+    db   $57 ; unknown music opcode                    ;; 0f:660c $57
+    mUNK_E6 $03                                        ;; 0f:660d $e6 $03
+    db   $AB ; unknown music opcode                    ;; 0f:660f $ab
+    db   $A7 ; unknown music opcode                    ;; 0f:6610 $a7
+    db   $A4 ; unknown music opcode                    ;; 0f:6611 $a4
+    db   $A7 ; unknown music opcode                    ;; 0f:6612 $a7
+    db   $AB ; unknown music opcode                    ;; 0f:6613 $ab
+    db   $A7 ; unknown music opcode                    ;; 0f:6614 $a7
+    db   $A4 ; unknown music opcode                    ;; 0f:6615 $a4
+    db   $A7 ; unknown music opcode                    ;; 0f:6616 $a7
+    db   $D8 ; unknown music opcode                    ;; 0f:6617 $d8
+    db   $A1 ; unknown music opcode                    ;; 0f:6618 $a1
+    db   $DC ; unknown music opcode                    ;; 0f:6619 $dc
+    db   $A7 ; unknown music opcode                    ;; 0f:661a $a7
+    db   $A4 ; unknown music opcode                    ;; 0f:661b $a4
+    db   $A7 ; unknown music opcode                    ;; 0f:661c $a7
+    db   $AB ; unknown music opcode                    ;; 0f:661d $ab
+    db   $A7 ; unknown music opcode                    ;; 0f:661e $a7
+    db   $A4 ; unknown music opcode                    ;; 0f:661f $a4
+    db   $A7 ; unknown music opcode                    ;; 0f:6620 $a7
+    mUNK_E6 $02                                        ;; 0f:6621 $e6 $02
+    db   $A1 ; unknown music opcode                    ;; 0f:6623 $a1
+    db   $DC ; unknown music opcode                    ;; 0f:6624 $dc
+    db   $AA ; unknown music opcode                    ;; 0f:6625 $aa
+    db   $A6 ; unknown music opcode                    ;; 0f:6626 $a6
+    db   $D8 ; unknown music opcode                    ;; 0f:6627 $d8
+    mUNK_E6 $03                                        ;; 0f:6628 $e6 $03
+    db   $A1 ; unknown music opcode                    ;; 0f:662a $a1
+    db   $DC ; unknown music opcode                    ;; 0f:662b $dc
+    db   $AA ; unknown music opcode                    ;; 0f:662c $aa
+    db   $A6 ; unknown music opcode                    ;; 0f:662d $a6
+    mUNK_E6 $01                                        ;; 0f:662e $e6 $01
+    db   $D8 ; unknown music opcode                    ;; 0f:6630 $d8
+    db   $A1 ; unknown music opcode                    ;; 0f:6631 $a1
+    db   $DC ; unknown music opcode                    ;; 0f:6632 $dc
+    db   $A6 ; unknown music opcode                    ;; 0f:6633 $a6
+    db   $D8 ; unknown music opcode                    ;; 0f:6634 $d8
+    mUNK_E6 $02                                        ;; 0f:6635 $e6 $02
+    db   $A2 ; unknown music opcode                    ;; 0f:6637 $a2
+    db   $DC ; unknown music opcode                    ;; 0f:6638 $dc
+    db   $AB ; unknown music opcode                    ;; 0f:6639 $ab
+    db   $A7 ; unknown music opcode                    ;; 0f:663a $a7
+    mUNK_E6 $03                                        ;; 0f:663b $e6 $03
+    db   $D8 ; unknown music opcode                    ;; 0f:663d $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:663e $a2
+    db   $DC ; unknown music opcode                    ;; 0f:663f $dc
+    db   $AB ; unknown music opcode                    ;; 0f:6640 $ab
+    db   $A7 ; unknown music opcode                    ;; 0f:6641 $a7
+    db   $D8 ; unknown music opcode                    ;; 0f:6642 $d8
+    mUNK_E6 $01                                        ;; 0f:6643 $e6 $01
+    db   $A2 ; unknown music opcode                    ;; 0f:6645 $a2
+    db   $DC ; unknown music opcode                    ;; 0f:6646 $dc
+    db   $A7 ; unknown music opcode                    ;; 0f:6647 $a7
+    mUNK_E6 $02                                        ;; 0f:6648 $e6 $02
+    db   $D8 ; unknown music opcode                    ;; 0f:664a $d8
+    db   $A4 ; unknown music opcode                    ;; 0f:664b $a4
+    db   $A1 ; unknown music opcode                    ;; 0f:664c $a1
+    db   $DC ; unknown music opcode                    ;; 0f:664d $dc
+    db   $A9 ; unknown music opcode                    ;; 0f:664e $a9
+    db   $D8 ; unknown music opcode                    ;; 0f:664f $d8
+    mUNK_E6 $03                                        ;; 0f:6650 $e6 $03
+    db   $A4 ; unknown music opcode                    ;; 0f:6652 $a4
+    db   $A1 ; unknown music opcode                    ;; 0f:6653 $a1
+    db   $DC ; unknown music opcode                    ;; 0f:6654 $dc
+    db   $A9 ; unknown music opcode                    ;; 0f:6655 $a9
+    db   $D8 ; unknown music opcode                    ;; 0f:6656 $d8
+    mUNK_E6 $01                                        ;; 0f:6657 $e6 $01
+    db   $A4 ; unknown music opcode                    ;; 0f:6659 $a4
+    db   $DC ; unknown music opcode                    ;; 0f:665a $dc
+    db   $A9 ; unknown music opcode                    ;; 0f:665b $a9
+    db   $D8 ; unknown music opcode                    ;; 0f:665c $d8
+    mUNK_E6 $03                                        ;; 0f:665d $e6 $03
+    db   $56 ; unknown music opcode                    ;; 0f:665f $56
+    db   $DC ; unknown music opcode                    ;; 0f:6660 $dc
+    db   $8A ; unknown music opcode                    ;; 0f:6661 $8a
+    db   $D8 ; unknown music opcode                    ;; 0f:6662 $d8
+    db   $84 ; unknown music opcode                    ;; 0f:6663 $84
+    mUNK_E1 .data_0f_64dd                              ;; 0f:6664 $e1 $dd $64
 
-data_0f_6667:
-    db   $e4, $4f, $7a, $e8, $fc, $7a, $e0, $20        ;; 0f:6667 ????????
-    db   $e6, $03, $d1, $1b, $8f, $89, $8b, $2f        ;; 0f:666f ????????
-    db   $a9, $af, $a9, $af, $89, $e3, $02, $e6        ;; 0f:6677 ????????
-    db   $03, $e8, $0c, $7b, $8b, $d8, $ab, $af        ;; 0f:667f ????????
-    db   $dc, $8b, $d8, $ab, $af, $dc, $8b, $d8        ;; 0f:6687 ????????
-    db   $ab, $af, $dc, $8b, $d8, $ab, $af, $dc        ;; 0f:668f ????????
-    db   $89, $d8, $a9, $af, $dc, $89, $d8, $a9        ;; 0f:6697 ????????
-    db   $af, $dc, $89, $d8, $a9, $af, $dc, $89        ;; 0f:669f ????????
-    db   $d8, $a9, $af, $dc, $87, $d8, $a7, $af        ;; 0f:66a7 ????????
-    db   $dc, $87, $d8, $a7, $af, $dc, $87, $d8        ;; 0f:66af ????????
-    db   $a7, $af, $dc, $87, $d8, $a7, $af, $eb        ;; 0f:66b7 ????????
-    db   $01, $19, $67, $dc, $86, $d8, $a6, $af        ;; 0f:66bf ????????
-    db   $dc, $86, $d8, $a6, $af, $dc, $86, $d8        ;; 0f:66c7 ????????
-    db   $a6, $af, $dc, $86, $d8, $a6, $af, $dc        ;; 0f:66cf ????????
-    db   $84, $d8, $a4, $af, $dc, $84, $d8, $a4        ;; 0f:66d7 ????????
-    db   $af, $dc, $84, $d8, $a4, $af, $dc, $84        ;; 0f:66df ????????
-    db   $d8, $a4, $af, $dc, $81, $d8, $a1, $af        ;; 0f:66e7 ????????
-    db   $dc, $81, $d8, $a1, $af, $dc, $81, $d8        ;; 0f:66ef ????????
-    db   $a1, $af, $dc, $81, $d8, $a1, $af, $dc        ;; 0f:66f7 ????????
-    db   $56, $d8, $56, $dc, $57, $d8, $57, $dc        ;; 0f:66ff ????????
-    db   $59, $d8, $59, $dc, $e6, $01, $7a, $d8        ;; 0f:6707 ????????
-    db   $e6, $02, $76, $dc, $e6, $03, $86, $e2        ;; 0f:670f ????????
-    db   $7e, $66, $dc, $86, $d8, $a6, $af, $dc        ;; 0f:6717 ????????
-    db   $86, $d8, $a6, $af, $dc, $86, $d8, $a6        ;; 0f:671f ????????
-    db   $af, $dc, $86, $d8, $a6, $af, $dc, $77        ;; 0f:6727 ????????
-    db   $d8, $77, $82, $dc, $84, $d8, $a4, $af        ;; 0f:672f ????????
-    db   $dc, $84, $d8, $a4, $af, $dc, $76, $d8        ;; 0f:6737 ????????
-    db   $76, $81, $dc, $8b, $d8, $ab, $af, $dc        ;; 0f:673f ????????
-    db   $89, $d8, $a9, $af, $dc, $87, $d8, $a7        ;; 0f:6747 ????????
-    db   $af, $dc, $87, $d8, $a7, $af, $dc, $89        ;; 0f:674f ????????
-    db   $d8, $a9, $af, $dc, $89, $d8, $a9, $af        ;; 0f:6757 ????????
-    db   $dc, $8b, $d8, $ab, $af, $dc, $8b, $d8        ;; 0f:675f ????????
-    db   $ab, $af, $dc, $e6, $02, $5b, $e6, $01        ;; 0f:6767 ????????
-    db   $59, $e3, $02, $e6, $02, $87, $d8, $e6        ;; 0f:676f ????????
-    db   $03, $a7, $af, $a7, $af, $dc, $e6, $02        ;; 0f:6777 ????????
-    db   $87, $d8, $e6, $03, $a7, $af, $a7, $af        ;; 0f:677f ????????
-    db   $e6, $02, $dc, $87, $d8, $e6, $03, $a7        ;; 0f:6787 ????????
-    db   $af, $dc, $e2, $72, $67, $86, $d8, $a6        ;; 0f:678f ????????
-    db   $af, $a6, $af, $dc, $86, $d8, $a6, $af        ;; 0f:6797 ????????
-    db   $a6, $af, $dc, $86, $d8, $a6, $af, $e6        ;; 0f:679f ????????
-    db   $02, $dc, $56, $d8, $e6, $01, $56, $e6        ;; 0f:67a7 ????????
-    db   $02, $51, $dc, $e6, $01, $56, $e6, $03        ;; 0f:67af ????????
-    db   $89, $d8, $a9, $af, $dc, $89, $d8, $a9        ;; 0f:67b7 ????????
-    db   $af, $dc, $89, $d8, $a9, $af, $dc, $89        ;; 0f:67bf ????????
-    db   $d8, $a9, $af, $dc, $8b, $d8, $ab, $af        ;; 0f:67c7 ????????
-    db   $dc, $8b, $d8, $ab, $af, $81, $d8, $a1        ;; 0f:67cf ????????
-    db   $af, $dc, $83, $d8, $a3, $af, $dc, $a4        ;; 0f:67d7 ????????
-    db   $af, $a4, $af, $a4, $af, $a4, $af, $a2        ;; 0f:67df ????????
-    db   $af, $a2, $af, $a2, $af, $a2, $af, $01        ;; 0f:67e7 ????????
-    db   $dc, $a6, $af, $a6, $af, $a6, $af, $a6        ;; 0f:67ef ????????
-    db   $af, $a7, $af, $a7, $af, $a7, $af, $a7        ;; 0f:67f7 ????????
-    db   $af, $a9, $af, $a9, $af, $a9, $af, $a9        ;; 0f:67ff ????????
-    db   $af, $d8, $e6, $02, $56, $dc, $e6, $01        ;; 0f:6807 ????????
-    db   $56, $e1, $7c, $66, $19, $68, $bd, $68        ;; 0f:680f ????????
-    db   $ff, $69                                      ;; 0f:6817 ??
+song12_channel3:
+    mUNK_E4 frequencyDeltaData                         ;; 0f:6667 $e4 $4f $7a
+    mUNK_E8 data_0f_7afc                               ;; 0f:666a $e8 $fc $7a
+    mUNK_E0 $20                                        ;; 0f:666d $e0 $20
+    mUNK_E6 $03                                        ;; 0f:666f $e6 $03
+    db   $D1 ; unknown music opcode                    ;; 0f:6671 $d1
+    db   $1B ; unknown music opcode                    ;; 0f:6672 $1b
+    db   $8F ; unknown music opcode                    ;; 0f:6673 $8f
+    db   $89 ; unknown music opcode                    ;; 0f:6674 $89
+    db   $8B ; unknown music opcode                    ;; 0f:6675 $8b
+    db   $2F ; unknown music opcode                    ;; 0f:6676 $2f
+    db   $A9 ; unknown music opcode                    ;; 0f:6677 $a9
+    db   $AF ; unknown music opcode                    ;; 0f:6678 $af
+    db   $A9 ; unknown music opcode                    ;; 0f:6679 $a9
+    db   $AF ; unknown music opcode                    ;; 0f:667a $af
+    db   $89 ; unknown music opcode                    ;; 0f:667b $89
+.data_0f_667c:
+    mUNK_E3 $02                                        ;; 0f:667c $e3 $02
+.data_0f_667e:
+    mUNK_E6 $03                                        ;; 0f:667e $e6 $03
+    mUNK_E8 data_0f_7b0c                               ;; 0f:6680 $e8 $0c $7b
+    db   $8B ; unknown music opcode                    ;; 0f:6683 $8b
+    db   $D8 ; unknown music opcode                    ;; 0f:6684 $d8
+    db   $AB ; unknown music opcode                    ;; 0f:6685 $ab
+    db   $AF ; unknown music opcode                    ;; 0f:6686 $af
+    db   $DC ; unknown music opcode                    ;; 0f:6687 $dc
+    db   $8B ; unknown music opcode                    ;; 0f:6688 $8b
+    db   $D8 ; unknown music opcode                    ;; 0f:6689 $d8
+    db   $AB ; unknown music opcode                    ;; 0f:668a $ab
+    db   $AF ; unknown music opcode                    ;; 0f:668b $af
+    db   $DC ; unknown music opcode                    ;; 0f:668c $dc
+    db   $8B ; unknown music opcode                    ;; 0f:668d $8b
+    db   $D8 ; unknown music opcode                    ;; 0f:668e $d8
+    db   $AB ; unknown music opcode                    ;; 0f:668f $ab
+    db   $AF ; unknown music opcode                    ;; 0f:6690 $af
+    db   $DC ; unknown music opcode                    ;; 0f:6691 $dc
+    db   $8B ; unknown music opcode                    ;; 0f:6692 $8b
+    db   $D8 ; unknown music opcode                    ;; 0f:6693 $d8
+    db   $AB ; unknown music opcode                    ;; 0f:6694 $ab
+    db   $AF ; unknown music opcode                    ;; 0f:6695 $af
+    db   $DC ; unknown music opcode                    ;; 0f:6696 $dc
+    db   $89 ; unknown music opcode                    ;; 0f:6697 $89
+    db   $D8 ; unknown music opcode                    ;; 0f:6698 $d8
+    db   $A9 ; unknown music opcode                    ;; 0f:6699 $a9
+    db   $AF ; unknown music opcode                    ;; 0f:669a $af
+    db   $DC ; unknown music opcode                    ;; 0f:669b $dc
+    db   $89 ; unknown music opcode                    ;; 0f:669c $89
+    db   $D8 ; unknown music opcode                    ;; 0f:669d $d8
+    db   $A9 ; unknown music opcode                    ;; 0f:669e $a9
+    db   $AF ; unknown music opcode                    ;; 0f:669f $af
+    db   $DC ; unknown music opcode                    ;; 0f:66a0 $dc
+    db   $89 ; unknown music opcode                    ;; 0f:66a1 $89
+    db   $D8 ; unknown music opcode                    ;; 0f:66a2 $d8
+    db   $A9 ; unknown music opcode                    ;; 0f:66a3 $a9
+    db   $AF ; unknown music opcode                    ;; 0f:66a4 $af
+    db   $DC ; unknown music opcode                    ;; 0f:66a5 $dc
+    db   $89 ; unknown music opcode                    ;; 0f:66a6 $89
+    db   $D8 ; unknown music opcode                    ;; 0f:66a7 $d8
+    db   $A9 ; unknown music opcode                    ;; 0f:66a8 $a9
+    db   $AF ; unknown music opcode                    ;; 0f:66a9 $af
+    db   $DC ; unknown music opcode                    ;; 0f:66aa $dc
+    db   $87 ; unknown music opcode                    ;; 0f:66ab $87
+    db   $D8 ; unknown music opcode                    ;; 0f:66ac $d8
+    db   $A7 ; unknown music opcode                    ;; 0f:66ad $a7
+    db   $AF ; unknown music opcode                    ;; 0f:66ae $af
+    db   $DC ; unknown music opcode                    ;; 0f:66af $dc
+    db   $87 ; unknown music opcode                    ;; 0f:66b0 $87
+    db   $D8 ; unknown music opcode                    ;; 0f:66b1 $d8
+    db   $A7 ; unknown music opcode                    ;; 0f:66b2 $a7
+    db   $AF ; unknown music opcode                    ;; 0f:66b3 $af
+    db   $DC ; unknown music opcode                    ;; 0f:66b4 $dc
+    db   $87 ; unknown music opcode                    ;; 0f:66b5 $87
+    db   $D8 ; unknown music opcode                    ;; 0f:66b6 $d8
+    db   $A7 ; unknown music opcode                    ;; 0f:66b7 $a7
+    db   $AF ; unknown music opcode                    ;; 0f:66b8 $af
+    db   $DC ; unknown music opcode                    ;; 0f:66b9 $dc
+    db   $87 ; unknown music opcode                    ;; 0f:66ba $87
+    db   $D8 ; unknown music opcode                    ;; 0f:66bb $d8
+    db   $A7 ; unknown music opcode                    ;; 0f:66bc $a7
+    db   $AF ; unknown music opcode                    ;; 0f:66bd $af
+    mUNK_EB $01, .data_0f_6719                         ;; 0f:66be $eb $01 $19 $67
+    db   $DC ; unknown music opcode                    ;; 0f:66c2 $dc
+    db   $86 ; unknown music opcode                    ;; 0f:66c3 $86
+    db   $D8 ; unknown music opcode                    ;; 0f:66c4 $d8
+    db   $A6 ; unknown music opcode                    ;; 0f:66c5 $a6
+    db   $AF ; unknown music opcode                    ;; 0f:66c6 $af
+    db   $DC ; unknown music opcode                    ;; 0f:66c7 $dc
+    db   $86 ; unknown music opcode                    ;; 0f:66c8 $86
+    db   $D8 ; unknown music opcode                    ;; 0f:66c9 $d8
+    db   $A6 ; unknown music opcode                    ;; 0f:66ca $a6
+    db   $AF ; unknown music opcode                    ;; 0f:66cb $af
+    db   $DC ; unknown music opcode                    ;; 0f:66cc $dc
+    db   $86 ; unknown music opcode                    ;; 0f:66cd $86
+    db   $D8 ; unknown music opcode                    ;; 0f:66ce $d8
+    db   $A6 ; unknown music opcode                    ;; 0f:66cf $a6
+    db   $AF ; unknown music opcode                    ;; 0f:66d0 $af
+    db   $DC ; unknown music opcode                    ;; 0f:66d1 $dc
+    db   $86 ; unknown music opcode                    ;; 0f:66d2 $86
+    db   $D8 ; unknown music opcode                    ;; 0f:66d3 $d8
+    db   $A6 ; unknown music opcode                    ;; 0f:66d4 $a6
+    db   $AF ; unknown music opcode                    ;; 0f:66d5 $af
+    db   $DC ; unknown music opcode                    ;; 0f:66d6 $dc
+    db   $84 ; unknown music opcode                    ;; 0f:66d7 $84
+    db   $D8 ; unknown music opcode                    ;; 0f:66d8 $d8
+    db   $A4 ; unknown music opcode                    ;; 0f:66d9 $a4
+    db   $AF ; unknown music opcode                    ;; 0f:66da $af
+    db   $DC ; unknown music opcode                    ;; 0f:66db $dc
+    db   $84 ; unknown music opcode                    ;; 0f:66dc $84
+    db   $D8 ; unknown music opcode                    ;; 0f:66dd $d8
+    db   $A4 ; unknown music opcode                    ;; 0f:66de $a4
+    db   $AF ; unknown music opcode                    ;; 0f:66df $af
+    db   $DC ; unknown music opcode                    ;; 0f:66e0 $dc
+    db   $84 ; unknown music opcode                    ;; 0f:66e1 $84
+    db   $D8 ; unknown music opcode                    ;; 0f:66e2 $d8
+    db   $A4 ; unknown music opcode                    ;; 0f:66e3 $a4
+    db   $AF ; unknown music opcode                    ;; 0f:66e4 $af
+    db   $DC ; unknown music opcode                    ;; 0f:66e5 $dc
+    db   $84 ; unknown music opcode                    ;; 0f:66e6 $84
+    db   $D8 ; unknown music opcode                    ;; 0f:66e7 $d8
+    db   $A4 ; unknown music opcode                    ;; 0f:66e8 $a4
+    db   $AF ; unknown music opcode                    ;; 0f:66e9 $af
+    db   $DC ; unknown music opcode                    ;; 0f:66ea $dc
+    db   $81 ; unknown music opcode                    ;; 0f:66eb $81
+    db   $D8 ; unknown music opcode                    ;; 0f:66ec $d8
+    db   $A1 ; unknown music opcode                    ;; 0f:66ed $a1
+    db   $AF ; unknown music opcode                    ;; 0f:66ee $af
+    db   $DC ; unknown music opcode                    ;; 0f:66ef $dc
+    db   $81 ; unknown music opcode                    ;; 0f:66f0 $81
+    db   $D8 ; unknown music opcode                    ;; 0f:66f1 $d8
+    db   $A1 ; unknown music opcode                    ;; 0f:66f2 $a1
+    db   $AF ; unknown music opcode                    ;; 0f:66f3 $af
+    db   $DC ; unknown music opcode                    ;; 0f:66f4 $dc
+    db   $81 ; unknown music opcode                    ;; 0f:66f5 $81
+    db   $D8 ; unknown music opcode                    ;; 0f:66f6 $d8
+    db   $A1 ; unknown music opcode                    ;; 0f:66f7 $a1
+    db   $AF ; unknown music opcode                    ;; 0f:66f8 $af
+    db   $DC ; unknown music opcode                    ;; 0f:66f9 $dc
+    db   $81 ; unknown music opcode                    ;; 0f:66fa $81
+    db   $D8 ; unknown music opcode                    ;; 0f:66fb $d8
+    db   $A1 ; unknown music opcode                    ;; 0f:66fc $a1
+    db   $AF ; unknown music opcode                    ;; 0f:66fd $af
+    db   $DC ; unknown music opcode                    ;; 0f:66fe $dc
+    db   $56 ; unknown music opcode                    ;; 0f:66ff $56
+    db   $D8 ; unknown music opcode                    ;; 0f:6700 $d8
+    db   $56 ; unknown music opcode                    ;; 0f:6701 $56
+    db   $DC ; unknown music opcode                    ;; 0f:6702 $dc
+    db   $57 ; unknown music opcode                    ;; 0f:6703 $57
+    db   $D8 ; unknown music opcode                    ;; 0f:6704 $d8
+    db   $57 ; unknown music opcode                    ;; 0f:6705 $57
+    db   $DC ; unknown music opcode                    ;; 0f:6706 $dc
+    db   $59 ; unknown music opcode                    ;; 0f:6707 $59
+    db   $D8 ; unknown music opcode                    ;; 0f:6708 $d8
+    db   $59 ; unknown music opcode                    ;; 0f:6709 $59
+    db   $DC ; unknown music opcode                    ;; 0f:670a $dc
+    mUNK_E6 $01                                        ;; 0f:670b $e6 $01
+    db   $7A ; unknown music opcode                    ;; 0f:670d $7a
+    db   $D8 ; unknown music opcode                    ;; 0f:670e $d8
+    mUNK_E6 $02                                        ;; 0f:670f $e6 $02
+    db   $76 ; unknown music opcode                    ;; 0f:6711 $76
+    db   $DC ; unknown music opcode                    ;; 0f:6712 $dc
+    mUNK_E6 $03                                        ;; 0f:6713 $e6 $03
+    db   $86 ; unknown music opcode                    ;; 0f:6715 $86
+    mUNK_E2 .data_0f_667e                              ;; 0f:6716 $e2 $7e $66
+.data_0f_6719:
+    db   $DC ; unknown music opcode                    ;; 0f:6719 $dc
+    db   $86 ; unknown music opcode                    ;; 0f:671a $86
+    db   $D8 ; unknown music opcode                    ;; 0f:671b $d8
+    db   $A6 ; unknown music opcode                    ;; 0f:671c $a6
+    db   $AF ; unknown music opcode                    ;; 0f:671d $af
+    db   $DC ; unknown music opcode                    ;; 0f:671e $dc
+    db   $86 ; unknown music opcode                    ;; 0f:671f $86
+    db   $D8 ; unknown music opcode                    ;; 0f:6720 $d8
+    db   $A6 ; unknown music opcode                    ;; 0f:6721 $a6
+    db   $AF ; unknown music opcode                    ;; 0f:6722 $af
+    db   $DC ; unknown music opcode                    ;; 0f:6723 $dc
+    db   $86 ; unknown music opcode                    ;; 0f:6724 $86
+    db   $D8 ; unknown music opcode                    ;; 0f:6725 $d8
+    db   $A6 ; unknown music opcode                    ;; 0f:6726 $a6
+    db   $AF ; unknown music opcode                    ;; 0f:6727 $af
+    db   $DC ; unknown music opcode                    ;; 0f:6728 $dc
+    db   $86 ; unknown music opcode                    ;; 0f:6729 $86
+    db   $D8 ; unknown music opcode                    ;; 0f:672a $d8
+    db   $A6 ; unknown music opcode                    ;; 0f:672b $a6
+    db   $AF ; unknown music opcode                    ;; 0f:672c $af
+    db   $DC ; unknown music opcode                    ;; 0f:672d $dc
+    db   $77 ; unknown music opcode                    ;; 0f:672e $77
+    db   $D8 ; unknown music opcode                    ;; 0f:672f $d8
+    db   $77 ; unknown music opcode                    ;; 0f:6730 $77
+    db   $82 ; unknown music opcode                    ;; 0f:6731 $82
+    db   $DC ; unknown music opcode                    ;; 0f:6732 $dc
+    db   $84 ; unknown music opcode                    ;; 0f:6733 $84
+    db   $D8 ; unknown music opcode                    ;; 0f:6734 $d8
+    db   $A4 ; unknown music opcode                    ;; 0f:6735 $a4
+    db   $AF ; unknown music opcode                    ;; 0f:6736 $af
+    db   $DC ; unknown music opcode                    ;; 0f:6737 $dc
+    db   $84 ; unknown music opcode                    ;; 0f:6738 $84
+    db   $D8 ; unknown music opcode                    ;; 0f:6739 $d8
+    db   $A4 ; unknown music opcode                    ;; 0f:673a $a4
+    db   $AF ; unknown music opcode                    ;; 0f:673b $af
+    db   $DC ; unknown music opcode                    ;; 0f:673c $dc
+    db   $76 ; unknown music opcode                    ;; 0f:673d $76
+    db   $D8 ; unknown music opcode                    ;; 0f:673e $d8
+    db   $76 ; unknown music opcode                    ;; 0f:673f $76
+    db   $81 ; unknown music opcode                    ;; 0f:6740 $81
+    db   $DC ; unknown music opcode                    ;; 0f:6741 $dc
+    db   $8B ; unknown music opcode                    ;; 0f:6742 $8b
+    db   $D8 ; unknown music opcode                    ;; 0f:6743 $d8
+    db   $AB ; unknown music opcode                    ;; 0f:6744 $ab
+    db   $AF ; unknown music opcode                    ;; 0f:6745 $af
+    db   $DC ; unknown music opcode                    ;; 0f:6746 $dc
+    db   $89 ; unknown music opcode                    ;; 0f:6747 $89
+    db   $D8 ; unknown music opcode                    ;; 0f:6748 $d8
+    db   $A9 ; unknown music opcode                    ;; 0f:6749 $a9
+    db   $AF ; unknown music opcode                    ;; 0f:674a $af
+    db   $DC ; unknown music opcode                    ;; 0f:674b $dc
+    db   $87 ; unknown music opcode                    ;; 0f:674c $87
+    db   $D8 ; unknown music opcode                    ;; 0f:674d $d8
+    db   $A7 ; unknown music opcode                    ;; 0f:674e $a7
+    db   $AF ; unknown music opcode                    ;; 0f:674f $af
+    db   $DC ; unknown music opcode                    ;; 0f:6750 $dc
+    db   $87 ; unknown music opcode                    ;; 0f:6751 $87
+    db   $D8 ; unknown music opcode                    ;; 0f:6752 $d8
+    db   $A7 ; unknown music opcode                    ;; 0f:6753 $a7
+    db   $AF ; unknown music opcode                    ;; 0f:6754 $af
+    db   $DC ; unknown music opcode                    ;; 0f:6755 $dc
+    db   $89 ; unknown music opcode                    ;; 0f:6756 $89
+    db   $D8 ; unknown music opcode                    ;; 0f:6757 $d8
+    db   $A9 ; unknown music opcode                    ;; 0f:6758 $a9
+    db   $AF ; unknown music opcode                    ;; 0f:6759 $af
+    db   $DC ; unknown music opcode                    ;; 0f:675a $dc
+    db   $89 ; unknown music opcode                    ;; 0f:675b $89
+    db   $D8 ; unknown music opcode                    ;; 0f:675c $d8
+    db   $A9 ; unknown music opcode                    ;; 0f:675d $a9
+    db   $AF ; unknown music opcode                    ;; 0f:675e $af
+    db   $DC ; unknown music opcode                    ;; 0f:675f $dc
+    db   $8B ; unknown music opcode                    ;; 0f:6760 $8b
+    db   $D8 ; unknown music opcode                    ;; 0f:6761 $d8
+    db   $AB ; unknown music opcode                    ;; 0f:6762 $ab
+    db   $AF ; unknown music opcode                    ;; 0f:6763 $af
+    db   $DC ; unknown music opcode                    ;; 0f:6764 $dc
+    db   $8B ; unknown music opcode                    ;; 0f:6765 $8b
+    db   $D8 ; unknown music opcode                    ;; 0f:6766 $d8
+    db   $AB ; unknown music opcode                    ;; 0f:6767 $ab
+    db   $AF ; unknown music opcode                    ;; 0f:6768 $af
+    db   $DC ; unknown music opcode                    ;; 0f:6769 $dc
+    mUNK_E6 $02                                        ;; 0f:676a $e6 $02
+    db   $5B ; unknown music opcode                    ;; 0f:676c $5b
+    mUNK_E6 $01                                        ;; 0f:676d $e6 $01
+    db   $59 ; unknown music opcode                    ;; 0f:676f $59
+    mUNK_E3 $02                                        ;; 0f:6770 $e3 $02
+.data_0f_6772:
+    mUNK_E6 $02                                        ;; 0f:6772 $e6 $02
+    db   $87 ; unknown music opcode                    ;; 0f:6774 $87
+    db   $D8 ; unknown music opcode                    ;; 0f:6775 $d8
+    mUNK_E6 $03                                        ;; 0f:6776 $e6 $03
+    db   $A7 ; unknown music opcode                    ;; 0f:6778 $a7
+    db   $AF ; unknown music opcode                    ;; 0f:6779 $af
+    db   $A7 ; unknown music opcode                    ;; 0f:677a $a7
+    db   $AF ; unknown music opcode                    ;; 0f:677b $af
+    db   $DC ; unknown music opcode                    ;; 0f:677c $dc
+    mUNK_E6 $02                                        ;; 0f:677d $e6 $02
+    db   $87 ; unknown music opcode                    ;; 0f:677f $87
+    db   $D8 ; unknown music opcode                    ;; 0f:6780 $d8
+    mUNK_E6 $03                                        ;; 0f:6781 $e6 $03
+    db   $A7 ; unknown music opcode                    ;; 0f:6783 $a7
+    db   $AF ; unknown music opcode                    ;; 0f:6784 $af
+    db   $A7 ; unknown music opcode                    ;; 0f:6785 $a7
+    db   $AF ; unknown music opcode                    ;; 0f:6786 $af
+    mUNK_E6 $02                                        ;; 0f:6787 $e6 $02
+    db   $DC ; unknown music opcode                    ;; 0f:6789 $dc
+    db   $87 ; unknown music opcode                    ;; 0f:678a $87
+    db   $D8 ; unknown music opcode                    ;; 0f:678b $d8
+    mUNK_E6 $03                                        ;; 0f:678c $e6 $03
+    db   $A7 ; unknown music opcode                    ;; 0f:678e $a7
+    db   $AF ; unknown music opcode                    ;; 0f:678f $af
+    db   $DC ; unknown music opcode                    ;; 0f:6790 $dc
+    mUNK_E2 .data_0f_6772                              ;; 0f:6791 $e2 $72 $67
+    db   $86 ; unknown music opcode                    ;; 0f:6794 $86
+    db   $D8 ; unknown music opcode                    ;; 0f:6795 $d8
+    db   $A6 ; unknown music opcode                    ;; 0f:6796 $a6
+    db   $AF ; unknown music opcode                    ;; 0f:6797 $af
+    db   $A6 ; unknown music opcode                    ;; 0f:6798 $a6
+    db   $AF ; unknown music opcode                    ;; 0f:6799 $af
+    db   $DC ; unknown music opcode                    ;; 0f:679a $dc
+    db   $86 ; unknown music opcode                    ;; 0f:679b $86
+    db   $D8 ; unknown music opcode                    ;; 0f:679c $d8
+    db   $A6 ; unknown music opcode                    ;; 0f:679d $a6
+    db   $AF ; unknown music opcode                    ;; 0f:679e $af
+    db   $A6 ; unknown music opcode                    ;; 0f:679f $a6
+    db   $AF ; unknown music opcode                    ;; 0f:67a0 $af
+    db   $DC ; unknown music opcode                    ;; 0f:67a1 $dc
+    db   $86 ; unknown music opcode                    ;; 0f:67a2 $86
+    db   $D8 ; unknown music opcode                    ;; 0f:67a3 $d8
+    db   $A6 ; unknown music opcode                    ;; 0f:67a4 $a6
+    db   $AF ; unknown music opcode                    ;; 0f:67a5 $af
+    mUNK_E6 $02                                        ;; 0f:67a6 $e6 $02
+    db   $DC ; unknown music opcode                    ;; 0f:67a8 $dc
+    db   $56 ; unknown music opcode                    ;; 0f:67a9 $56
+    db   $D8 ; unknown music opcode                    ;; 0f:67aa $d8
+    mUNK_E6 $01                                        ;; 0f:67ab $e6 $01
+    db   $56 ; unknown music opcode                    ;; 0f:67ad $56
+    mUNK_E6 $02                                        ;; 0f:67ae $e6 $02
+    db   $51 ; unknown music opcode                    ;; 0f:67b0 $51
+    db   $DC ; unknown music opcode                    ;; 0f:67b1 $dc
+    mUNK_E6 $01                                        ;; 0f:67b2 $e6 $01
+    db   $56 ; unknown music opcode                    ;; 0f:67b4 $56
+    mUNK_E6 $03                                        ;; 0f:67b5 $e6 $03
+    db   $89 ; unknown music opcode                    ;; 0f:67b7 $89
+    db   $D8 ; unknown music opcode                    ;; 0f:67b8 $d8
+    db   $A9 ; unknown music opcode                    ;; 0f:67b9 $a9
+    db   $AF ; unknown music opcode                    ;; 0f:67ba $af
+    db   $DC ; unknown music opcode                    ;; 0f:67bb $dc
+    db   $89 ; unknown music opcode                    ;; 0f:67bc $89
+    db   $D8 ; unknown music opcode                    ;; 0f:67bd $d8
+    db   $A9 ; unknown music opcode                    ;; 0f:67be $a9
+    db   $AF ; unknown music opcode                    ;; 0f:67bf $af
+    db   $DC ; unknown music opcode                    ;; 0f:67c0 $dc
+    db   $89 ; unknown music opcode                    ;; 0f:67c1 $89
+    db   $D8 ; unknown music opcode                    ;; 0f:67c2 $d8
+    db   $A9 ; unknown music opcode                    ;; 0f:67c3 $a9
+    db   $AF ; unknown music opcode                    ;; 0f:67c4 $af
+    db   $DC ; unknown music opcode                    ;; 0f:67c5 $dc
+    db   $89 ; unknown music opcode                    ;; 0f:67c6 $89
+    db   $D8 ; unknown music opcode                    ;; 0f:67c7 $d8
+    db   $A9 ; unknown music opcode                    ;; 0f:67c8 $a9
+    db   $AF ; unknown music opcode                    ;; 0f:67c9 $af
+    db   $DC ; unknown music opcode                    ;; 0f:67ca $dc
+    db   $8B ; unknown music opcode                    ;; 0f:67cb $8b
+    db   $D8 ; unknown music opcode                    ;; 0f:67cc $d8
+    db   $AB ; unknown music opcode                    ;; 0f:67cd $ab
+    db   $AF ; unknown music opcode                    ;; 0f:67ce $af
+    db   $DC ; unknown music opcode                    ;; 0f:67cf $dc
+    db   $8B ; unknown music opcode                    ;; 0f:67d0 $8b
+    db   $D8 ; unknown music opcode                    ;; 0f:67d1 $d8
+    db   $AB ; unknown music opcode                    ;; 0f:67d2 $ab
+    db   $AF ; unknown music opcode                    ;; 0f:67d3 $af
+    db   $81 ; unknown music opcode                    ;; 0f:67d4 $81
+    db   $D8 ; unknown music opcode                    ;; 0f:67d5 $d8
+    db   $A1 ; unknown music opcode                    ;; 0f:67d6 $a1
+    db   $AF ; unknown music opcode                    ;; 0f:67d7 $af
+    db   $DC ; unknown music opcode                    ;; 0f:67d8 $dc
+    db   $83 ; unknown music opcode                    ;; 0f:67d9 $83
+    db   $D8 ; unknown music opcode                    ;; 0f:67da $d8
+    db   $A3 ; unknown music opcode                    ;; 0f:67db $a3
+    db   $AF ; unknown music opcode                    ;; 0f:67dc $af
+    db   $DC ; unknown music opcode                    ;; 0f:67dd $dc
+    db   $A4 ; unknown music opcode                    ;; 0f:67de $a4
+    db   $AF ; unknown music opcode                    ;; 0f:67df $af
+    db   $A4 ; unknown music opcode                    ;; 0f:67e0 $a4
+    db   $AF ; unknown music opcode                    ;; 0f:67e1 $af
+    db   $A4 ; unknown music opcode                    ;; 0f:67e2 $a4
+    db   $AF ; unknown music opcode                    ;; 0f:67e3 $af
+    db   $A4 ; unknown music opcode                    ;; 0f:67e4 $a4
+    db   $AF ; unknown music opcode                    ;; 0f:67e5 $af
+    db   $A2 ; unknown music opcode                    ;; 0f:67e6 $a2
+    db   $AF ; unknown music opcode                    ;; 0f:67e7 $af
+    db   $A2 ; unknown music opcode                    ;; 0f:67e8 $a2
+    db   $AF ; unknown music opcode                    ;; 0f:67e9 $af
+    db   $A2 ; unknown music opcode                    ;; 0f:67ea $a2
+    db   $AF ; unknown music opcode                    ;; 0f:67eb $af
+    db   $A2 ; unknown music opcode                    ;; 0f:67ec $a2
+    db   $AF ; unknown music opcode                    ;; 0f:67ed $af
+    db   $01 ; unknown music opcode                    ;; 0f:67ee $01
+    db   $DC ; unknown music opcode                    ;; 0f:67ef $dc
+    db   $A6 ; unknown music opcode                    ;; 0f:67f0 $a6
+    db   $AF ; unknown music opcode                    ;; 0f:67f1 $af
+    db   $A6 ; unknown music opcode                    ;; 0f:67f2 $a6
+    db   $AF ; unknown music opcode                    ;; 0f:67f3 $af
+    db   $A6 ; unknown music opcode                    ;; 0f:67f4 $a6
+    db   $AF ; unknown music opcode                    ;; 0f:67f5 $af
+    db   $A6 ; unknown music opcode                    ;; 0f:67f6 $a6
+    db   $AF ; unknown music opcode                    ;; 0f:67f7 $af
+    db   $A7 ; unknown music opcode                    ;; 0f:67f8 $a7
+    db   $AF ; unknown music opcode                    ;; 0f:67f9 $af
+    db   $A7 ; unknown music opcode                    ;; 0f:67fa $a7
+    db   $AF ; unknown music opcode                    ;; 0f:67fb $af
+    db   $A7 ; unknown music opcode                    ;; 0f:67fc $a7
+    db   $AF ; unknown music opcode                    ;; 0f:67fd $af
+    db   $A7 ; unknown music opcode                    ;; 0f:67fe $a7
+    db   $AF ; unknown music opcode                    ;; 0f:67ff $af
+    db   $A9 ; unknown music opcode                    ;; 0f:6800 $a9
+    db   $AF ; unknown music opcode                    ;; 0f:6801 $af
+    db   $A9 ; unknown music opcode                    ;; 0f:6802 $a9
+    db   $AF ; unknown music opcode                    ;; 0f:6803 $af
+    db   $A9 ; unknown music opcode                    ;; 0f:6804 $a9
+    db   $AF ; unknown music opcode                    ;; 0f:6805 $af
+    db   $A9 ; unknown music opcode                    ;; 0f:6806 $a9
+    db   $AF ; unknown music opcode                    ;; 0f:6807 $af
+    db   $D8 ; unknown music opcode                    ;; 0f:6808 $d8
+    mUNK_E6 $02                                        ;; 0f:6809 $e6 $02
+    db   $56 ; unknown music opcode                    ;; 0f:680b $56
+    db   $DC ; unknown music opcode                    ;; 0f:680c $dc
+    mUNK_E6 $01                                        ;; 0f:680d $e6 $01
+    db   $56 ; unknown music opcode                    ;; 0f:680f $56
+    mUNK_E1 .data_0f_667c                              ;; 0f:6810 $e1 $7c $66
+    db   $19, $68, $bd, $68, $ff, $69                  ;; 0f:6813 ??????
 
-data_0f_6819:
-    db   $e7, $78                                      ;; 0f:6819 ..
+song13_channel2:
+    mUNK_E7 $78                                        ;; 0f:6819 $e7 $78
 .data_0f_681b:
-    db   $e4, $4f, $7a, $e0, $be, $7a, $e5, $40        ;; 0f:681b ........
-    db   $e6, $03, $d2, $59, $ae, $a4, $a9, $d8        ;; 0f:6823 ........
-    db   $a0, $24, $7e, $72, $80, $dc, $5b, $57        ;; 0f:682b ........
-    db   $7b, $d8, $70, $dc, $8b, $24, $0e, $59        ;; 0f:6833 ........
-    db   $ae, $a4, $a9, $d8, $a0, $24, $7e, $72        ;; 0f:683b ........
-    db   $80, $dc, $7b, $d8, $70, $82, $44, $57        ;; 0f:6843 ........
-    db   $a6, $a5, $54, $08, $59, $ae, $a7, $a5        ;; 0f:684b ........
-    db   $a4, $22, $5e, $54, $55, $59, $47, $54        ;; 0f:6853 ........
-    db   $a5, $a6, $57, $20, $8e, $82, $a0, $dc        ;; 0f:685b ........
-    db   $7b, $29, $8e, $d8, $80, $dc, $8b, $89        ;; 0f:6863 ........
-    db   $47, $5b, $a9, $a8, $57, $09, $2e, $8e        ;; 0f:686b ........
-    db   $e0, $82, $7a, $e5, $80, $8b, $d8, $80        ;; 0f:6873 ........
-    db   $82, $44, $42, $57, $74, $72, $40, $a0        ;; 0f:687b ........
-    db   $72, $dc, $4b, $d8, $47, $52, $2e, $8f        ;; 0f:6883 ........
-    db   $dc, $e0, $a8, $7a, $ab, $d8, $a0, $a2        ;; 0f:688b ........
-    db   $a0, $dc, $ab, $a7, $e0, $82, $7a, $e5        ;; 0f:6893 ........
-    db   $40, $79, $7b, $d8, $80, $dc, $5b, $57        ;; 0f:689b ........
-    db   $d8, $70, $72, $84, $73, $74, $86, $04        ;; 0f:68a3 ........
-    db   $2e, $ae, $e0, $a8, $7a, $a2, $a0, $dc        ;; 0f:68ab ........
-    db   $ab, $d8, $a0, $dc, $ab, $a9, $a8, $e1        ;; 0f:68b3 ........
-    dw   .data_0f_681b                                 ;; 0f:68bb pP
+    mUNK_E4 frequencyDeltaData                         ;; 0f:681b $e4 $4f $7a
+    mUNK_E0 $be                                        ;; 0f:681e $e0 $be
+    db   $7A ; unknown music opcode                    ;; 0f:6820 $7a
+    mUNK_E5 $40                                        ;; 0f:6821 $e5 $40
+    mUNK_E6 $03                                        ;; 0f:6823 $e6 $03
+    db   $D2 ; unknown music opcode                    ;; 0f:6825 $d2
+    db   $59 ; unknown music opcode                    ;; 0f:6826 $59
+    db   $AE ; unknown music opcode                    ;; 0f:6827 $ae
+    db   $A4 ; unknown music opcode                    ;; 0f:6828 $a4
+    db   $A9 ; unknown music opcode                    ;; 0f:6829 $a9
+    db   $D8 ; unknown music opcode                    ;; 0f:682a $d8
+    db   $A0 ; unknown music opcode                    ;; 0f:682b $a0
+    db   $24 ; unknown music opcode                    ;; 0f:682c $24
+    db   $7E ; unknown music opcode                    ;; 0f:682d $7e
+    db   $72 ; unknown music opcode                    ;; 0f:682e $72
+    db   $80 ; unknown music opcode                    ;; 0f:682f $80
+    db   $DC ; unknown music opcode                    ;; 0f:6830 $dc
+    db   $5B ; unknown music opcode                    ;; 0f:6831 $5b
+    db   $57 ; unknown music opcode                    ;; 0f:6832 $57
+    db   $7B ; unknown music opcode                    ;; 0f:6833 $7b
+    db   $D8 ; unknown music opcode                    ;; 0f:6834 $d8
+    db   $70 ; unknown music opcode                    ;; 0f:6835 $70
+    db   $DC ; unknown music opcode                    ;; 0f:6836 $dc
+    db   $8B ; unknown music opcode                    ;; 0f:6837 $8b
+    db   $24 ; unknown music opcode                    ;; 0f:6838 $24
+    db   $0E ; unknown music opcode                    ;; 0f:6839 $0e
+    db   $59 ; unknown music opcode                    ;; 0f:683a $59
+    db   $AE ; unknown music opcode                    ;; 0f:683b $ae
+    db   $A4 ; unknown music opcode                    ;; 0f:683c $a4
+    db   $A9 ; unknown music opcode                    ;; 0f:683d $a9
+    db   $D8 ; unknown music opcode                    ;; 0f:683e $d8
+    db   $A0 ; unknown music opcode                    ;; 0f:683f $a0
+    db   $24 ; unknown music opcode                    ;; 0f:6840 $24
+    db   $7E ; unknown music opcode                    ;; 0f:6841 $7e
+    db   $72 ; unknown music opcode                    ;; 0f:6842 $72
+    db   $80 ; unknown music opcode                    ;; 0f:6843 $80
+    db   $DC ; unknown music opcode                    ;; 0f:6844 $dc
+    db   $7B ; unknown music opcode                    ;; 0f:6845 $7b
+    db   $D8 ; unknown music opcode                    ;; 0f:6846 $d8
+    db   $70 ; unknown music opcode                    ;; 0f:6847 $70
+    db   $82 ; unknown music opcode                    ;; 0f:6848 $82
+    db   $44 ; unknown music opcode                    ;; 0f:6849 $44
+    db   $57 ; unknown music opcode                    ;; 0f:684a $57
+    db   $A6 ; unknown music opcode                    ;; 0f:684b $a6
+    db   $A5 ; unknown music opcode                    ;; 0f:684c $a5
+    db   $54 ; unknown music opcode                    ;; 0f:684d $54
+    db   $08 ; unknown music opcode                    ;; 0f:684e $08
+    db   $59 ; unknown music opcode                    ;; 0f:684f $59
+    db   $AE ; unknown music opcode                    ;; 0f:6850 $ae
+    db   $A7 ; unknown music opcode                    ;; 0f:6851 $a7
+    db   $A5 ; unknown music opcode                    ;; 0f:6852 $a5
+    db   $A4 ; unknown music opcode                    ;; 0f:6853 $a4
+    db   $22 ; unknown music opcode                    ;; 0f:6854 $22
+    db   $5E ; unknown music opcode                    ;; 0f:6855 $5e
+    db   $54 ; unknown music opcode                    ;; 0f:6856 $54
+    db   $55 ; unknown music opcode                    ;; 0f:6857 $55
+    db   $59 ; unknown music opcode                    ;; 0f:6858 $59
+    db   $47 ; unknown music opcode                    ;; 0f:6859 $47
+    db   $54 ; unknown music opcode                    ;; 0f:685a $54
+    db   $A5 ; unknown music opcode                    ;; 0f:685b $a5
+    db   $A6 ; unknown music opcode                    ;; 0f:685c $a6
+    db   $57 ; unknown music opcode                    ;; 0f:685d $57
+    db   $20 ; unknown music opcode                    ;; 0f:685e $20
+    db   $8E ; unknown music opcode                    ;; 0f:685f $8e
+    db   $82 ; unknown music opcode                    ;; 0f:6860 $82
+    db   $A0 ; unknown music opcode                    ;; 0f:6861 $a0
+    db   $DC ; unknown music opcode                    ;; 0f:6862 $dc
+    db   $7B ; unknown music opcode                    ;; 0f:6863 $7b
+    db   $29 ; unknown music opcode                    ;; 0f:6864 $29
+    db   $8E ; unknown music opcode                    ;; 0f:6865 $8e
+    db   $D8 ; unknown music opcode                    ;; 0f:6866 $d8
+    db   $80 ; unknown music opcode                    ;; 0f:6867 $80
+    db   $DC ; unknown music opcode                    ;; 0f:6868 $dc
+    db   $8B ; unknown music opcode                    ;; 0f:6869 $8b
+    db   $89 ; unknown music opcode                    ;; 0f:686a $89
+    db   $47 ; unknown music opcode                    ;; 0f:686b $47
+    db   $5B ; unknown music opcode                    ;; 0f:686c $5b
+    db   $A9 ; unknown music opcode                    ;; 0f:686d $a9
+    db   $A8 ; unknown music opcode                    ;; 0f:686e $a8
+    db   $57 ; unknown music opcode                    ;; 0f:686f $57
+    db   $09 ; unknown music opcode                    ;; 0f:6870 $09
+    db   $2E ; unknown music opcode                    ;; 0f:6871 $2e
+    db   $8E ; unknown music opcode                    ;; 0f:6872 $8e
+    mUNK_E0 $82                                        ;; 0f:6873 $e0 $82
+    db   $7A ; unknown music opcode                    ;; 0f:6875 $7a
+    mUNK_E5 $80                                        ;; 0f:6876 $e5 $80
+    db   $8B ; unknown music opcode                    ;; 0f:6878 $8b
+    db   $D8 ; unknown music opcode                    ;; 0f:6879 $d8
+    db   $80 ; unknown music opcode                    ;; 0f:687a $80
+    db   $82 ; unknown music opcode                    ;; 0f:687b $82
+    db   $44 ; unknown music opcode                    ;; 0f:687c $44
+    db   $42 ; unknown music opcode                    ;; 0f:687d $42
+    db   $57 ; unknown music opcode                    ;; 0f:687e $57
+    db   $74 ; unknown music opcode                    ;; 0f:687f $74
+    db   $72 ; unknown music opcode                    ;; 0f:6880 $72
+    db   $40 ; unknown music opcode                    ;; 0f:6881 $40
+    db   $A0 ; unknown music opcode                    ;; 0f:6882 $a0
+    db   $72 ; unknown music opcode                    ;; 0f:6883 $72
+    db   $DC ; unknown music opcode                    ;; 0f:6884 $dc
+    db   $4B ; unknown music opcode                    ;; 0f:6885 $4b
+    db   $D8 ; unknown music opcode                    ;; 0f:6886 $d8
+    db   $47 ; unknown music opcode                    ;; 0f:6887 $47
+    db   $52 ; unknown music opcode                    ;; 0f:6888 $52
+    db   $2E ; unknown music opcode                    ;; 0f:6889 $2e
+    db   $8F ; unknown music opcode                    ;; 0f:688a $8f
+    db   $DC ; unknown music opcode                    ;; 0f:688b $dc
+    mUNK_E0 $a8                                        ;; 0f:688c $e0 $a8
+    db   $7A ; unknown music opcode                    ;; 0f:688e $7a
+    db   $AB ; unknown music opcode                    ;; 0f:688f $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:6890 $d8
+    db   $A0 ; unknown music opcode                    ;; 0f:6891 $a0
+    db   $A2 ; unknown music opcode                    ;; 0f:6892 $a2
+    db   $A0 ; unknown music opcode                    ;; 0f:6893 $a0
+    db   $DC ; unknown music opcode                    ;; 0f:6894 $dc
+    db   $AB ; unknown music opcode                    ;; 0f:6895 $ab
+    db   $A7 ; unknown music opcode                    ;; 0f:6896 $a7
+    mUNK_E0 $82                                        ;; 0f:6897 $e0 $82
+    db   $7A ; unknown music opcode                    ;; 0f:6899 $7a
+    mUNK_E5 $40                                        ;; 0f:689a $e5 $40
+    db   $79 ; unknown music opcode                    ;; 0f:689c $79
+    db   $7B ; unknown music opcode                    ;; 0f:689d $7b
+    db   $D8 ; unknown music opcode                    ;; 0f:689e $d8
+    db   $80 ; unknown music opcode                    ;; 0f:689f $80
+    db   $DC ; unknown music opcode                    ;; 0f:68a0 $dc
+    db   $5B ; unknown music opcode                    ;; 0f:68a1 $5b
+    db   $57 ; unknown music opcode                    ;; 0f:68a2 $57
+    db   $D8 ; unknown music opcode                    ;; 0f:68a3 $d8
+    db   $70 ; unknown music opcode                    ;; 0f:68a4 $70
+    db   $72 ; unknown music opcode                    ;; 0f:68a5 $72
+    db   $84 ; unknown music opcode                    ;; 0f:68a6 $84
+    db   $73 ; unknown music opcode                    ;; 0f:68a7 $73
+    db   $74 ; unknown music opcode                    ;; 0f:68a8 $74
+    db   $86 ; unknown music opcode                    ;; 0f:68a9 $86
+    db   $04 ; unknown music opcode                    ;; 0f:68aa $04
+    db   $2E ; unknown music opcode                    ;; 0f:68ab $2e
+    db   $AE ; unknown music opcode                    ;; 0f:68ac $ae
+    mUNK_E0 $a8                                        ;; 0f:68ad $e0 $a8
+    db   $7A ; unknown music opcode                    ;; 0f:68af $7a
+    db   $A2 ; unknown music opcode                    ;; 0f:68b0 $a2
+    db   $A0 ; unknown music opcode                    ;; 0f:68b1 $a0
+    db   $DC ; unknown music opcode                    ;; 0f:68b2 $dc
+    db   $AB ; unknown music opcode                    ;; 0f:68b3 $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:68b4 $d8
+    db   $A0 ; unknown music opcode                    ;; 0f:68b5 $a0
+    db   $DC ; unknown music opcode                    ;; 0f:68b6 $dc
+    db   $AB ; unknown music opcode                    ;; 0f:68b7 $ab
+    db   $A9 ; unknown music opcode                    ;; 0f:68b8 $a9
+    db   $A8 ; unknown music opcode                    ;; 0f:68b9 $a8
+    mUNK_E1 .data_0f_681b                              ;; 0f:68ba $e1 $1b $68
 
-data_0f_68bd:
-    db   $e4, $4f, $7a, $e0, $c0, $7a, $e5, $00        ;; 0f:68bd ........
-    db   $e6, $02, $d2, $40, $ae, $a4, $59, $57        ;; 0f:68c5 ........
-    db   $29, $52, $dc, $5b, $d8, $44, $82, $50        ;; 0f:68cd ........
-    db   $dc, $5b, $e0, $82, $7a, $e6, $03, $e5        ;; 0f:68d5 ........
-    db   $40, $79, $7b, $d8, $80, $dc, $7b, $d8        ;; 0f:68dd ........
-    db   $70, $82, $e0, $c0, $7a, $e6, $01, $e5        ;; 0f:68e5 ........
-    db   $00, $40, $ae, $a4, $59, $5b, $d8, $70        ;; 0f:68ed ........
-    db   $dc, $7b, $89, $47, $85, $27, $8e, $a9        ;; 0f:68f5 ........
-    db   $ab, $d8, $50, $e0, $82, $7a, $e6, $03        ;; 0f:68fd ........
-    db   $e5, $40, $52, $50, $dc, $7b, $d8, $70        ;; 0f:6905 ........
-    db   $82, $e0, $c0, $7a, $e6, $02, $e5, $00        ;; 0f:690d ........
-    db   $50, $dc, $59, $65, $b7, $b8, $59, $2b        ;; 0f:6915 ........
-    db   $59, $5b, $d8, $40, $dc, $57, $a9, $aa        ;; 0f:691d ........
-    db   $5b, $74, $70, $82, $54, $ae, $72, $e6        ;; 0f:6925 ........
-    db   $03, $70, $dc, $7b, $59, $d8, $85, $82        ;; 0f:692d ........
-    db   $80, $dc, $7b, $d8, $70, $42, $dc, $5b        ;; 0f:6935 ........
-    db   $e6, $01, $d8, $40, $42, $dc, $5b, $e6        ;; 0f:693d ........
-    db   $03, $d8, $a0, $a2, $a4, $a2, $a0, $a2        ;; 0f:6945 ........
-    db   $a4, $a2, $80, $82, $84, $85, $e0, $ae        ;; 0f:694d ........
-    db   $7a, $e5, $40, $a0, $a2, $a0, $dc, $ab        ;; 0f:6955 ........
-    db   $e6, $02, $a9, $ab, $d8, $a0, $a2, $e6        ;; 0f:695d ........
-    db   $03, $a0, $dc, $ab, $a9, $ab, $d8, $e6        ;; 0f:6965 ........
-    db   $01, $a0, $a2, $a0, $dc, $ab, $e6, $03        ;; 0f:696d ........
-    db   $d8, $a0, $a2, $a0, $dc, $ab, $e6, $02        ;; 0f:6975 ........
-    db   $a9, $ab, $d8, $a0, $a2, $e6, $03, $a0        ;; 0f:697d ........
-    db   $dc, $ab, $a9, $ab, $e6, $01, $d8, $a0        ;; 0f:6985 ........
-    db   $a2, $a0, $dc, $a9, $e6, $03, $ab, $d8        ;; 0f:698d ........
-    db   $a0, $dc, $ab, $a9, $e6, $02, $a7, $a9        ;; 0f:6995 ........
-    db   $ab, $d8, $a0, $e6, $03, $dc, $ab, $a9        ;; 0f:699d ........
-    db   $a7, $a9, $e6, $01, $ab, $d8, $a0, $dc        ;; 0f:69a5 ........
-    db   $ab, $a9, $e6, $03, $ab, $d8, $a0, $dc        ;; 0f:69ad ........
-    db   $ab, $a9, $e6, $02, $a7, $a9, $ab, $d8        ;; 0f:69b5 ........
-    db   $a0, $dc, $8b, $e6, $03, $d8, $a7, $a9        ;; 0f:69bd ........
-    db   $ab, $a9, $a7, $a2, $e0, $c0, $7a, $e6        ;; 0f:69c5 ........
-    db   $01, $40, $85, $22, $74, $75, $87, $76        ;; 0f:69cd ........
-    db   $78, $89, $e0, $82, $7a, $e5, $40, $e6        ;; 0f:69d5 ........
-    db   $03, $78, $79, $8b, $79, $78, $86, $e0        ;; 0f:69dd ........
-    db   $ae, $7a, $a4, $dc, $a8, $ab, $d8, $a4        ;; 0f:69e5 ........
-    db   $a6, $dc, $a9, $d8, $a2, $a6, $a8, $a6        ;; 0f:69ed ........
-    db   $a4, $a2, $a4, $a2, $a0, $dc, $ab, $e1        ;; 0f:69f5 ........
-    dw   data_0f_68bd                                  ;; 0f:69fd pP
+song13_channel1:
+    mUNK_E4 frequencyDeltaData                         ;; 0f:68bd $e4 $4f $7a
+    mUNK_E0 $c0                                        ;; 0f:68c0 $e0 $c0
+    db   $7A ; unknown music opcode                    ;; 0f:68c2 $7a
+    mUNK_E5 $00                                        ;; 0f:68c3 $e5 $00
+    mUNK_E6 $02                                        ;; 0f:68c5 $e6 $02
+    db   $D2 ; unknown music opcode                    ;; 0f:68c7 $d2
+    db   $40 ; unknown music opcode                    ;; 0f:68c8 $40
+    db   $AE ; unknown music opcode                    ;; 0f:68c9 $ae
+    db   $A4 ; unknown music opcode                    ;; 0f:68ca $a4
+    db   $59 ; unknown music opcode                    ;; 0f:68cb $59
+    db   $57 ; unknown music opcode                    ;; 0f:68cc $57
+    db   $29 ; unknown music opcode                    ;; 0f:68cd $29
+    db   $52 ; unknown music opcode                    ;; 0f:68ce $52
+    db   $DC ; unknown music opcode                    ;; 0f:68cf $dc
+    db   $5B ; unknown music opcode                    ;; 0f:68d0 $5b
+    db   $D8 ; unknown music opcode                    ;; 0f:68d1 $d8
+    db   $44 ; unknown music opcode                    ;; 0f:68d2 $44
+    db   $82 ; unknown music opcode                    ;; 0f:68d3 $82
+    db   $50 ; unknown music opcode                    ;; 0f:68d4 $50
+    db   $DC ; unknown music opcode                    ;; 0f:68d5 $dc
+    db   $5B ; unknown music opcode                    ;; 0f:68d6 $5b
+    mUNK_E0 $82                                        ;; 0f:68d7 $e0 $82
+    db   $7A ; unknown music opcode                    ;; 0f:68d9 $7a
+    mUNK_E6 $03                                        ;; 0f:68da $e6 $03
+    mUNK_E5 $40                                        ;; 0f:68dc $e5 $40
+    db   $79 ; unknown music opcode                    ;; 0f:68de $79
+    db   $7B ; unknown music opcode                    ;; 0f:68df $7b
+    db   $D8 ; unknown music opcode                    ;; 0f:68e0 $d8
+    db   $80 ; unknown music opcode                    ;; 0f:68e1 $80
+    db   $DC ; unknown music opcode                    ;; 0f:68e2 $dc
+    db   $7B ; unknown music opcode                    ;; 0f:68e3 $7b
+    db   $D8 ; unknown music opcode                    ;; 0f:68e4 $d8
+    db   $70 ; unknown music opcode                    ;; 0f:68e5 $70
+    db   $82 ; unknown music opcode                    ;; 0f:68e6 $82
+    mUNK_E0 $c0                                        ;; 0f:68e7 $e0 $c0
+    db   $7A ; unknown music opcode                    ;; 0f:68e9 $7a
+    mUNK_E6 $01                                        ;; 0f:68ea $e6 $01
+    mUNK_E5 $00                                        ;; 0f:68ec $e5 $00
+    db   $40 ; unknown music opcode                    ;; 0f:68ee $40
+    db   $AE ; unknown music opcode                    ;; 0f:68ef $ae
+    db   $A4 ; unknown music opcode                    ;; 0f:68f0 $a4
+    db   $59 ; unknown music opcode                    ;; 0f:68f1 $59
+    db   $5B ; unknown music opcode                    ;; 0f:68f2 $5b
+    db   $D8 ; unknown music opcode                    ;; 0f:68f3 $d8
+    db   $70 ; unknown music opcode                    ;; 0f:68f4 $70
+    db   $DC ; unknown music opcode                    ;; 0f:68f5 $dc
+    db   $7B ; unknown music opcode                    ;; 0f:68f6 $7b
+    db   $89 ; unknown music opcode                    ;; 0f:68f7 $89
+    db   $47 ; unknown music opcode                    ;; 0f:68f8 $47
+    db   $85 ; unknown music opcode                    ;; 0f:68f9 $85
+    db   $27 ; unknown music opcode                    ;; 0f:68fa $27
+    db   $8E ; unknown music opcode                    ;; 0f:68fb $8e
+    db   $A9 ; unknown music opcode                    ;; 0f:68fc $a9
+    db   $AB ; unknown music opcode                    ;; 0f:68fd $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:68fe $d8
+    db   $50 ; unknown music opcode                    ;; 0f:68ff $50
+    mUNK_E0 $82                                        ;; 0f:6900 $e0 $82
+    db   $7A ; unknown music opcode                    ;; 0f:6902 $7a
+    mUNK_E6 $03                                        ;; 0f:6903 $e6 $03
+    mUNK_E5 $40                                        ;; 0f:6905 $e5 $40
+    db   $52 ; unknown music opcode                    ;; 0f:6907 $52
+    db   $50 ; unknown music opcode                    ;; 0f:6908 $50
+    db   $DC ; unknown music opcode                    ;; 0f:6909 $dc
+    db   $7B ; unknown music opcode                    ;; 0f:690a $7b
+    db   $D8 ; unknown music opcode                    ;; 0f:690b $d8
+    db   $70 ; unknown music opcode                    ;; 0f:690c $70
+    db   $82 ; unknown music opcode                    ;; 0f:690d $82
+    mUNK_E0 $c0                                        ;; 0f:690e $e0 $c0
+    db   $7A ; unknown music opcode                    ;; 0f:6910 $7a
+    mUNK_E6 $02                                        ;; 0f:6911 $e6 $02
+    mUNK_E5 $00                                        ;; 0f:6913 $e5 $00
+    db   $50 ; unknown music opcode                    ;; 0f:6915 $50
+    db   $DC ; unknown music opcode                    ;; 0f:6916 $dc
+    db   $59 ; unknown music opcode                    ;; 0f:6917 $59
+    db   $65 ; unknown music opcode                    ;; 0f:6918 $65
+    db   $B7 ; unknown music opcode                    ;; 0f:6919 $b7
+    db   $B8 ; unknown music opcode                    ;; 0f:691a $b8
+    db   $59 ; unknown music opcode                    ;; 0f:691b $59
+    db   $2B ; unknown music opcode                    ;; 0f:691c $2b
+    db   $59 ; unknown music opcode                    ;; 0f:691d $59
+    db   $5B ; unknown music opcode                    ;; 0f:691e $5b
+    db   $D8 ; unknown music opcode                    ;; 0f:691f $d8
+    db   $40 ; unknown music opcode                    ;; 0f:6920 $40
+    db   $DC ; unknown music opcode                    ;; 0f:6921 $dc
+    db   $57 ; unknown music opcode                    ;; 0f:6922 $57
+    db   $A9 ; unknown music opcode                    ;; 0f:6923 $a9
+    db   $AA ; unknown music opcode                    ;; 0f:6924 $aa
+    db   $5B ; unknown music opcode                    ;; 0f:6925 $5b
+    db   $74 ; unknown music opcode                    ;; 0f:6926 $74
+    db   $70 ; unknown music opcode                    ;; 0f:6927 $70
+    db   $82 ; unknown music opcode                    ;; 0f:6928 $82
+    db   $54 ; unknown music opcode                    ;; 0f:6929 $54
+    db   $AE ; unknown music opcode                    ;; 0f:692a $ae
+    db   $72 ; unknown music opcode                    ;; 0f:692b $72
+    mUNK_E6 $03                                        ;; 0f:692c $e6 $03
+    db   $70 ; unknown music opcode                    ;; 0f:692e $70
+    db   $DC ; unknown music opcode                    ;; 0f:692f $dc
+    db   $7B ; unknown music opcode                    ;; 0f:6930 $7b
+    db   $59 ; unknown music opcode                    ;; 0f:6931 $59
+    db   $D8 ; unknown music opcode                    ;; 0f:6932 $d8
+    db   $85 ; unknown music opcode                    ;; 0f:6933 $85
+    db   $82 ; unknown music opcode                    ;; 0f:6934 $82
+    db   $80 ; unknown music opcode                    ;; 0f:6935 $80
+    db   $DC ; unknown music opcode                    ;; 0f:6936 $dc
+    db   $7B ; unknown music opcode                    ;; 0f:6937 $7b
+    db   $D8 ; unknown music opcode                    ;; 0f:6938 $d8
+    db   $70 ; unknown music opcode                    ;; 0f:6939 $70
+    db   $42 ; unknown music opcode                    ;; 0f:693a $42
+    db   $DC ; unknown music opcode                    ;; 0f:693b $dc
+    db   $5B ; unknown music opcode                    ;; 0f:693c $5b
+    mUNK_E6 $01                                        ;; 0f:693d $e6 $01
+    db   $D8 ; unknown music opcode                    ;; 0f:693f $d8
+    db   $40 ; unknown music opcode                    ;; 0f:6940 $40
+    db   $42 ; unknown music opcode                    ;; 0f:6941 $42
+    db   $DC ; unknown music opcode                    ;; 0f:6942 $dc
+    db   $5B ; unknown music opcode                    ;; 0f:6943 $5b
+    mUNK_E6 $03                                        ;; 0f:6944 $e6 $03
+    db   $D8 ; unknown music opcode                    ;; 0f:6946 $d8
+    db   $A0 ; unknown music opcode                    ;; 0f:6947 $a0
+    db   $A2 ; unknown music opcode                    ;; 0f:6948 $a2
+    db   $A4 ; unknown music opcode                    ;; 0f:6949 $a4
+    db   $A2 ; unknown music opcode                    ;; 0f:694a $a2
+    db   $A0 ; unknown music opcode                    ;; 0f:694b $a0
+    db   $A2 ; unknown music opcode                    ;; 0f:694c $a2
+    db   $A4 ; unknown music opcode                    ;; 0f:694d $a4
+    db   $A2 ; unknown music opcode                    ;; 0f:694e $a2
+    db   $80 ; unknown music opcode                    ;; 0f:694f $80
+    db   $82 ; unknown music opcode                    ;; 0f:6950 $82
+    db   $84 ; unknown music opcode                    ;; 0f:6951 $84
+    db   $85 ; unknown music opcode                    ;; 0f:6952 $85
+    mUNK_E0 $ae                                        ;; 0f:6953 $e0 $ae
+    db   $7A ; unknown music opcode                    ;; 0f:6955 $7a
+    mUNK_E5 $40                                        ;; 0f:6956 $e5 $40
+    db   $A0 ; unknown music opcode                    ;; 0f:6958 $a0
+    db   $A2 ; unknown music opcode                    ;; 0f:6959 $a2
+    db   $A0 ; unknown music opcode                    ;; 0f:695a $a0
+    db   $DC ; unknown music opcode                    ;; 0f:695b $dc
+    db   $AB ; unknown music opcode                    ;; 0f:695c $ab
+    mUNK_E6 $02                                        ;; 0f:695d $e6 $02
+    db   $A9 ; unknown music opcode                    ;; 0f:695f $a9
+    db   $AB ; unknown music opcode                    ;; 0f:6960 $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:6961 $d8
+    db   $A0 ; unknown music opcode                    ;; 0f:6962 $a0
+    db   $A2 ; unknown music opcode                    ;; 0f:6963 $a2
+    mUNK_E6 $03                                        ;; 0f:6964 $e6 $03
+    db   $A0 ; unknown music opcode                    ;; 0f:6966 $a0
+    db   $DC ; unknown music opcode                    ;; 0f:6967 $dc
+    db   $AB ; unknown music opcode                    ;; 0f:6968 $ab
+    db   $A9 ; unknown music opcode                    ;; 0f:6969 $a9
+    db   $AB ; unknown music opcode                    ;; 0f:696a $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:696b $d8
+    mUNK_E6 $01                                        ;; 0f:696c $e6 $01
+    db   $A0 ; unknown music opcode                    ;; 0f:696e $a0
+    db   $A2 ; unknown music opcode                    ;; 0f:696f $a2
+    db   $A0 ; unknown music opcode                    ;; 0f:6970 $a0
+    db   $DC ; unknown music opcode                    ;; 0f:6971 $dc
+    db   $AB ; unknown music opcode                    ;; 0f:6972 $ab
+    mUNK_E6 $03                                        ;; 0f:6973 $e6 $03
+    db   $D8 ; unknown music opcode                    ;; 0f:6975 $d8
+    db   $A0 ; unknown music opcode                    ;; 0f:6976 $a0
+    db   $A2 ; unknown music opcode                    ;; 0f:6977 $a2
+    db   $A0 ; unknown music opcode                    ;; 0f:6978 $a0
+    db   $DC ; unknown music opcode                    ;; 0f:6979 $dc
+    db   $AB ; unknown music opcode                    ;; 0f:697a $ab
+    mUNK_E6 $02                                        ;; 0f:697b $e6 $02
+    db   $A9 ; unknown music opcode                    ;; 0f:697d $a9
+    db   $AB ; unknown music opcode                    ;; 0f:697e $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:697f $d8
+    db   $A0 ; unknown music opcode                    ;; 0f:6980 $a0
+    db   $A2 ; unknown music opcode                    ;; 0f:6981 $a2
+    mUNK_E6 $03                                        ;; 0f:6982 $e6 $03
+    db   $A0 ; unknown music opcode                    ;; 0f:6984 $a0
+    db   $DC ; unknown music opcode                    ;; 0f:6985 $dc
+    db   $AB ; unknown music opcode                    ;; 0f:6986 $ab
+    db   $A9 ; unknown music opcode                    ;; 0f:6987 $a9
+    db   $AB ; unknown music opcode                    ;; 0f:6988 $ab
+    mUNK_E6 $01                                        ;; 0f:6989 $e6 $01
+    db   $D8 ; unknown music opcode                    ;; 0f:698b $d8
+    db   $A0 ; unknown music opcode                    ;; 0f:698c $a0
+    db   $A2 ; unknown music opcode                    ;; 0f:698d $a2
+    db   $A0 ; unknown music opcode                    ;; 0f:698e $a0
+    db   $DC ; unknown music opcode                    ;; 0f:698f $dc
+    db   $A9 ; unknown music opcode                    ;; 0f:6990 $a9
+    mUNK_E6 $03                                        ;; 0f:6991 $e6 $03
+    db   $AB ; unknown music opcode                    ;; 0f:6993 $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:6994 $d8
+    db   $A0 ; unknown music opcode                    ;; 0f:6995 $a0
+    db   $DC ; unknown music opcode                    ;; 0f:6996 $dc
+    db   $AB ; unknown music opcode                    ;; 0f:6997 $ab
+    db   $A9 ; unknown music opcode                    ;; 0f:6998 $a9
+    mUNK_E6 $02                                        ;; 0f:6999 $e6 $02
+    db   $A7 ; unknown music opcode                    ;; 0f:699b $a7
+    db   $A9 ; unknown music opcode                    ;; 0f:699c $a9
+    db   $AB ; unknown music opcode                    ;; 0f:699d $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:699e $d8
+    db   $A0 ; unknown music opcode                    ;; 0f:699f $a0
+    mUNK_E6 $03                                        ;; 0f:69a0 $e6 $03
+    db   $DC ; unknown music opcode                    ;; 0f:69a2 $dc
+    db   $AB ; unknown music opcode                    ;; 0f:69a3 $ab
+    db   $A9 ; unknown music opcode                    ;; 0f:69a4 $a9
+    db   $A7 ; unknown music opcode                    ;; 0f:69a5 $a7
+    db   $A9 ; unknown music opcode                    ;; 0f:69a6 $a9
+    mUNK_E6 $01                                        ;; 0f:69a7 $e6 $01
+    db   $AB ; unknown music opcode                    ;; 0f:69a9 $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:69aa $d8
+    db   $A0 ; unknown music opcode                    ;; 0f:69ab $a0
+    db   $DC ; unknown music opcode                    ;; 0f:69ac $dc
+    db   $AB ; unknown music opcode                    ;; 0f:69ad $ab
+    db   $A9 ; unknown music opcode                    ;; 0f:69ae $a9
+    mUNK_E6 $03                                        ;; 0f:69af $e6 $03
+    db   $AB ; unknown music opcode                    ;; 0f:69b1 $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:69b2 $d8
+    db   $A0 ; unknown music opcode                    ;; 0f:69b3 $a0
+    db   $DC ; unknown music opcode                    ;; 0f:69b4 $dc
+    db   $AB ; unknown music opcode                    ;; 0f:69b5 $ab
+    db   $A9 ; unknown music opcode                    ;; 0f:69b6 $a9
+    mUNK_E6 $02                                        ;; 0f:69b7 $e6 $02
+    db   $A7 ; unknown music opcode                    ;; 0f:69b9 $a7
+    db   $A9 ; unknown music opcode                    ;; 0f:69ba $a9
+    db   $AB ; unknown music opcode                    ;; 0f:69bb $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:69bc $d8
+    db   $A0 ; unknown music opcode                    ;; 0f:69bd $a0
+    db   $DC ; unknown music opcode                    ;; 0f:69be $dc
+    db   $8B ; unknown music opcode                    ;; 0f:69bf $8b
+    mUNK_E6 $03                                        ;; 0f:69c0 $e6 $03
+    db   $D8 ; unknown music opcode                    ;; 0f:69c2 $d8
+    db   $A7 ; unknown music opcode                    ;; 0f:69c3 $a7
+    db   $A9 ; unknown music opcode                    ;; 0f:69c4 $a9
+    db   $AB ; unknown music opcode                    ;; 0f:69c5 $ab
+    db   $A9 ; unknown music opcode                    ;; 0f:69c6 $a9
+    db   $A7 ; unknown music opcode                    ;; 0f:69c7 $a7
+    db   $A2 ; unknown music opcode                    ;; 0f:69c8 $a2
+    mUNK_E0 $c0                                        ;; 0f:69c9 $e0 $c0
+    db   $7A ; unknown music opcode                    ;; 0f:69cb $7a
+    mUNK_E6 $01                                        ;; 0f:69cc $e6 $01
+    db   $40 ; unknown music opcode                    ;; 0f:69ce $40
+    db   $85 ; unknown music opcode                    ;; 0f:69cf $85
+    db   $22 ; unknown music opcode                    ;; 0f:69d0 $22
+    db   $74 ; unknown music opcode                    ;; 0f:69d1 $74
+    db   $75 ; unknown music opcode                    ;; 0f:69d2 $75
+    db   $87 ; unknown music opcode                    ;; 0f:69d3 $87
+    db   $76 ; unknown music opcode                    ;; 0f:69d4 $76
+    db   $78 ; unknown music opcode                    ;; 0f:69d5 $78
+    db   $89 ; unknown music opcode                    ;; 0f:69d6 $89
+    mUNK_E0 $82                                        ;; 0f:69d7 $e0 $82
+    db   $7A ; unknown music opcode                    ;; 0f:69d9 $7a
+    mUNK_E5 $40                                        ;; 0f:69da $e5 $40
+    mUNK_E6 $03                                        ;; 0f:69dc $e6 $03
+    db   $78 ; unknown music opcode                    ;; 0f:69de $78
+    db   $79 ; unknown music opcode                    ;; 0f:69df $79
+    db   $8B ; unknown music opcode                    ;; 0f:69e0 $8b
+    db   $79 ; unknown music opcode                    ;; 0f:69e1 $79
+    db   $78 ; unknown music opcode                    ;; 0f:69e2 $78
+    db   $86 ; unknown music opcode                    ;; 0f:69e3 $86
+    mUNK_E0 $ae                                        ;; 0f:69e4 $e0 $ae
+    db   $7A ; unknown music opcode                    ;; 0f:69e6 $7a
+    db   $A4 ; unknown music opcode                    ;; 0f:69e7 $a4
+    db   $DC ; unknown music opcode                    ;; 0f:69e8 $dc
+    db   $A8 ; unknown music opcode                    ;; 0f:69e9 $a8
+    db   $AB ; unknown music opcode                    ;; 0f:69ea $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:69eb $d8
+    db   $A4 ; unknown music opcode                    ;; 0f:69ec $a4
+    db   $A6 ; unknown music opcode                    ;; 0f:69ed $a6
+    db   $DC ; unknown music opcode                    ;; 0f:69ee $dc
+    db   $A9 ; unknown music opcode                    ;; 0f:69ef $a9
+    db   $D8 ; unknown music opcode                    ;; 0f:69f0 $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:69f1 $a2
+    db   $A6 ; unknown music opcode                    ;; 0f:69f2 $a6
+    db   $A8 ; unknown music opcode                    ;; 0f:69f3 $a8
+    db   $A6 ; unknown music opcode                    ;; 0f:69f4 $a6
+    db   $A4 ; unknown music opcode                    ;; 0f:69f5 $a4
+    db   $A2 ; unknown music opcode                    ;; 0f:69f6 $a2
+    db   $A4 ; unknown music opcode                    ;; 0f:69f7 $a4
+    db   $A2 ; unknown music opcode                    ;; 0f:69f8 $a2
+    db   $A0 ; unknown music opcode                    ;; 0f:69f9 $a0
+    db   $DC ; unknown music opcode                    ;; 0f:69fa $dc
+    db   $AB ; unknown music opcode                    ;; 0f:69fb $ab
+    mUNK_E1 song13_channel1                            ;; 0f:69fc $e1 $bd $68
 
-data_0f_69ff:
-    db   $e4, $4f, $7a, $e8, $0c, $7b, $e0, $20        ;; 0f:69ff ........
-    db   $e6, $03                                      ;; 0f:6a07 ..
+song13_channel3:
+    mUNK_E4 frequencyDeltaData                         ;; 0f:69ff $e4 $4f $7a
+    mUNK_E8 data_0f_7b0c                               ;; 0f:6a02 $e8 $0c $7b
+    mUNK_E0 $20                                        ;; 0f:6a05 $e0 $20
+    mUNK_E6 $03                                        ;; 0f:6a07 $e6 $03
 .data_0f_6a09:
-    db   $e3, $03                                      ;; 0f:6a09 ..
+    mUNK_E3 $03                                        ;; 0f:6a09 $e3 $03
 .data_0f_6a0b:
-    db   $d1, $89, $d8, $a9, $af, $dc, $89, $d8        ;; 0f:6a0b ........
-    db   $a9, $af, $dc, $89, $d8, $a9, $af, $dc        ;; 0f:6a13 ........
-    db   $87, $d8, $a7, $af, $dc, $85, $d8, $a5        ;; 0f:6a1b ........
-    db   $af, $dc, $85, $d8, $a5, $af, $dc, $87        ;; 0f:6a23 ........
-    db   $d8, $a7, $af, $dc, $87, $d8, $a7, $af        ;; 0f:6a2b ........
-    db   $e2                                           ;; 0f:6a33 .
-    dw   .data_0f_6a0b                                 ;; 0f:6a34 pP
-    db   $80, $d8, $a0, $af, $dc, $80, $d8, $a0        ;; 0f:6a36 ........
-    db   $af, $dc, $80, $d8, $a0, $af, $dc, $80        ;; 0f:6a3e ........
-    db   $d8, $a0, $af, $dc, $a4, $af, $a4, $af        ;; 0f:6a46 ........
-    db   $a4, $af, $a4, $af, $74, $76, $88, $dc        ;; 0f:6a4e ........
-    db   $85, $d8, $a5, $af, $dc, $85, $d8, $a5        ;; 0f:6a56 ........
-    db   $af, $dc, $85, $d8, $a5, $af, $dc, $85        ;; 0f:6a5e ........
-    db   $d8, $a5, $af, $dc, $87, $d8, $a7, $af        ;; 0f:6a66 ........
-    db   $dc, $87, $d8, $a7, $af, $dc, $87, $d8        ;; 0f:6a6e ........
-    db   $a7, $af, $dc, $87, $d8, $a7, $af, $80        ;; 0f:6a76 ........
-    db   $d8, $a0, $af, $dc, $80, $d8, $a0, $af        ;; 0f:6a7e ........
-    db   $dc, $80, $d8, $a0, $af, $dd, $8b, $d8        ;; 0f:6a86 ........
-    db   $ab, $af, $dc, $89, $d8, $a9, $af, $dc        ;; 0f:6a8e ........
-    db   $89, $d8, $a9, $af, $dc, $e6, $02, $59        ;; 0f:6a96 ........
-    db   $e6, $01, $57, $e6, $03, $75, $d8, $75        ;; 0f:6a9e ........
-    db   $80, $8f, $dc, $a5, $af, $a5, $af, $a5        ;; 0f:6aa6 ........
-    db   $af, $77, $d8, $77, $82, $8f, $dc, $a7        ;; 0f:6aae ........
-    db   $af, $a7, $af, $a7, $af, $89, $d8, $a9        ;; 0f:6ab6 ........
-    db   $af, $dc, $89, $d8, $a9, $af, $dc, $89        ;; 0f:6abe ........
-    db   $d8, $a9, $af, $dc, $89, $d8, $a9, $af        ;; 0f:6ac6 ........
-    db   $dc, $89, $d8, $a9, $af, $dc, $89, $d8        ;; 0f:6ace ........
-    db   $a9, $af, $dc, $e6, $02, $59, $e6, $01        ;; 0f:6ad6 ........
-    db   $57, $e6, $03, $a5, $af, $a5, $af, $a5        ;; 0f:6ade ........
-    db   $af, $d8, $45, $50, $dc, $a5, $af, $a5        ;; 0f:6ae6 ........
-    db   $af, $a5, $af, $d8, $45, $50, $dc, $a4        ;; 0f:6aee ........
-    db   $af, $a4, $af, $a4, $af, $d8, $44, $dc        ;; 0f:6af6 ........
-    db   $5b, $a4, $af, $a4, $af, $a4, $af, $d8        ;; 0f:6afe ........
-    db   $44, $dc, $5b, $85, $d8, $a5, $af, $dc        ;; 0f:6b06 ........
-    db   $85, $d8, $a5, $af, $dc, $87, $d8, $a7        ;; 0f:6b0e ........
-    db   $af, $dc, $87, $d8, $a7, $af, $80, $d8        ;; 0f:6b16 ........
-    db   $a0, $af, $dc, $80, $d8, $a0, $af, $dd        ;; 0f:6b1e ........
-    db   $8b, $d8, $ab, $af, $dc, $8b, $d8, $ab        ;; 0f:6b26 ........
-    db   $af, $a4, $af, $a4, $af, $a4, $af, $a4        ;; 0f:6b2e ........
-    db   $af, $a2, $af, $a2, $af, $a2, $af, $a2        ;; 0f:6b36 ........
-    db   $af, $dc, $e6, $02, $54, $d8, $e6, $03        ;; 0f:6b3e ........
-    db   $54, $dc, $e6, $01, $5b, $e6, $03, $54        ;; 0f:6b46 ........
-    db   $e1                                           ;; 0f:6b4e .
-    dw   .data_0f_6a09                                 ;; 0f:6b4f pP
+    db   $D1 ; unknown music opcode                    ;; 0f:6a0b $d1
+    db   $89 ; unknown music opcode                    ;; 0f:6a0c $89
+    db   $D8 ; unknown music opcode                    ;; 0f:6a0d $d8
+    db   $A9 ; unknown music opcode                    ;; 0f:6a0e $a9
+    db   $AF ; unknown music opcode                    ;; 0f:6a0f $af
+    db   $DC ; unknown music opcode                    ;; 0f:6a10 $dc
+    db   $89 ; unknown music opcode                    ;; 0f:6a11 $89
+    db   $D8 ; unknown music opcode                    ;; 0f:6a12 $d8
+    db   $A9 ; unknown music opcode                    ;; 0f:6a13 $a9
+    db   $AF ; unknown music opcode                    ;; 0f:6a14 $af
+    db   $DC ; unknown music opcode                    ;; 0f:6a15 $dc
+    db   $89 ; unknown music opcode                    ;; 0f:6a16 $89
+    db   $D8 ; unknown music opcode                    ;; 0f:6a17 $d8
+    db   $A9 ; unknown music opcode                    ;; 0f:6a18 $a9
+    db   $AF ; unknown music opcode                    ;; 0f:6a19 $af
+    db   $DC ; unknown music opcode                    ;; 0f:6a1a $dc
+    db   $87 ; unknown music opcode                    ;; 0f:6a1b $87
+    db   $D8 ; unknown music opcode                    ;; 0f:6a1c $d8
+    db   $A7 ; unknown music opcode                    ;; 0f:6a1d $a7
+    db   $AF ; unknown music opcode                    ;; 0f:6a1e $af
+    db   $DC ; unknown music opcode                    ;; 0f:6a1f $dc
+    db   $85 ; unknown music opcode                    ;; 0f:6a20 $85
+    db   $D8 ; unknown music opcode                    ;; 0f:6a21 $d8
+    db   $A5 ; unknown music opcode                    ;; 0f:6a22 $a5
+    db   $AF ; unknown music opcode                    ;; 0f:6a23 $af
+    db   $DC ; unknown music opcode                    ;; 0f:6a24 $dc
+    db   $85 ; unknown music opcode                    ;; 0f:6a25 $85
+    db   $D8 ; unknown music opcode                    ;; 0f:6a26 $d8
+    db   $A5 ; unknown music opcode                    ;; 0f:6a27 $a5
+    db   $AF ; unknown music opcode                    ;; 0f:6a28 $af
+    db   $DC ; unknown music opcode                    ;; 0f:6a29 $dc
+    db   $87 ; unknown music opcode                    ;; 0f:6a2a $87
+    db   $D8 ; unknown music opcode                    ;; 0f:6a2b $d8
+    db   $A7 ; unknown music opcode                    ;; 0f:6a2c $a7
+    db   $AF ; unknown music opcode                    ;; 0f:6a2d $af
+    db   $DC ; unknown music opcode                    ;; 0f:6a2e $dc
+    db   $87 ; unknown music opcode                    ;; 0f:6a2f $87
+    db   $D8 ; unknown music opcode                    ;; 0f:6a30 $d8
+    db   $A7 ; unknown music opcode                    ;; 0f:6a31 $a7
+    db   $AF ; unknown music opcode                    ;; 0f:6a32 $af
+    mUNK_E2 .data_0f_6a0b                              ;; 0f:6a33 $e2 $0b $6a
+    db   $80 ; unknown music opcode                    ;; 0f:6a36 $80
+    db   $D8 ; unknown music opcode                    ;; 0f:6a37 $d8
+    db   $A0 ; unknown music opcode                    ;; 0f:6a38 $a0
+    db   $AF ; unknown music opcode                    ;; 0f:6a39 $af
+    db   $DC ; unknown music opcode                    ;; 0f:6a3a $dc
+    db   $80 ; unknown music opcode                    ;; 0f:6a3b $80
+    db   $D8 ; unknown music opcode                    ;; 0f:6a3c $d8
+    db   $A0 ; unknown music opcode                    ;; 0f:6a3d $a0
+    db   $AF ; unknown music opcode                    ;; 0f:6a3e $af
+    db   $DC ; unknown music opcode                    ;; 0f:6a3f $dc
+    db   $80 ; unknown music opcode                    ;; 0f:6a40 $80
+    db   $D8 ; unknown music opcode                    ;; 0f:6a41 $d8
+    db   $A0 ; unknown music opcode                    ;; 0f:6a42 $a0
+    db   $AF ; unknown music opcode                    ;; 0f:6a43 $af
+    db   $DC ; unknown music opcode                    ;; 0f:6a44 $dc
+    db   $80 ; unknown music opcode                    ;; 0f:6a45 $80
+    db   $D8 ; unknown music opcode                    ;; 0f:6a46 $d8
+    db   $A0 ; unknown music opcode                    ;; 0f:6a47 $a0
+    db   $AF ; unknown music opcode                    ;; 0f:6a48 $af
+    db   $DC ; unknown music opcode                    ;; 0f:6a49 $dc
+    db   $A4 ; unknown music opcode                    ;; 0f:6a4a $a4
+    db   $AF ; unknown music opcode                    ;; 0f:6a4b $af
+    db   $A4 ; unknown music opcode                    ;; 0f:6a4c $a4
+    db   $AF ; unknown music opcode                    ;; 0f:6a4d $af
+    db   $A4 ; unknown music opcode                    ;; 0f:6a4e $a4
+    db   $AF ; unknown music opcode                    ;; 0f:6a4f $af
+    db   $A4 ; unknown music opcode                    ;; 0f:6a50 $a4
+    db   $AF ; unknown music opcode                    ;; 0f:6a51 $af
+    db   $74 ; unknown music opcode                    ;; 0f:6a52 $74
+    db   $76 ; unknown music opcode                    ;; 0f:6a53 $76
+    db   $88 ; unknown music opcode                    ;; 0f:6a54 $88
+    db   $DC ; unknown music opcode                    ;; 0f:6a55 $dc
+    db   $85 ; unknown music opcode                    ;; 0f:6a56 $85
+    db   $D8 ; unknown music opcode                    ;; 0f:6a57 $d8
+    db   $A5 ; unknown music opcode                    ;; 0f:6a58 $a5
+    db   $AF ; unknown music opcode                    ;; 0f:6a59 $af
+    db   $DC ; unknown music opcode                    ;; 0f:6a5a $dc
+    db   $85 ; unknown music opcode                    ;; 0f:6a5b $85
+    db   $D8 ; unknown music opcode                    ;; 0f:6a5c $d8
+    db   $A5 ; unknown music opcode                    ;; 0f:6a5d $a5
+    db   $AF ; unknown music opcode                    ;; 0f:6a5e $af
+    db   $DC ; unknown music opcode                    ;; 0f:6a5f $dc
+    db   $85 ; unknown music opcode                    ;; 0f:6a60 $85
+    db   $D8 ; unknown music opcode                    ;; 0f:6a61 $d8
+    db   $A5 ; unknown music opcode                    ;; 0f:6a62 $a5
+    db   $AF ; unknown music opcode                    ;; 0f:6a63 $af
+    db   $DC ; unknown music opcode                    ;; 0f:6a64 $dc
+    db   $85 ; unknown music opcode                    ;; 0f:6a65 $85
+    db   $D8 ; unknown music opcode                    ;; 0f:6a66 $d8
+    db   $A5 ; unknown music opcode                    ;; 0f:6a67 $a5
+    db   $AF ; unknown music opcode                    ;; 0f:6a68 $af
+    db   $DC ; unknown music opcode                    ;; 0f:6a69 $dc
+    db   $87 ; unknown music opcode                    ;; 0f:6a6a $87
+    db   $D8 ; unknown music opcode                    ;; 0f:6a6b $d8
+    db   $A7 ; unknown music opcode                    ;; 0f:6a6c $a7
+    db   $AF ; unknown music opcode                    ;; 0f:6a6d $af
+    db   $DC ; unknown music opcode                    ;; 0f:6a6e $dc
+    db   $87 ; unknown music opcode                    ;; 0f:6a6f $87
+    db   $D8 ; unknown music opcode                    ;; 0f:6a70 $d8
+    db   $A7 ; unknown music opcode                    ;; 0f:6a71 $a7
+    db   $AF ; unknown music opcode                    ;; 0f:6a72 $af
+    db   $DC ; unknown music opcode                    ;; 0f:6a73 $dc
+    db   $87 ; unknown music opcode                    ;; 0f:6a74 $87
+    db   $D8 ; unknown music opcode                    ;; 0f:6a75 $d8
+    db   $A7 ; unknown music opcode                    ;; 0f:6a76 $a7
+    db   $AF ; unknown music opcode                    ;; 0f:6a77 $af
+    db   $DC ; unknown music opcode                    ;; 0f:6a78 $dc
+    db   $87 ; unknown music opcode                    ;; 0f:6a79 $87
+    db   $D8 ; unknown music opcode                    ;; 0f:6a7a $d8
+    db   $A7 ; unknown music opcode                    ;; 0f:6a7b $a7
+    db   $AF ; unknown music opcode                    ;; 0f:6a7c $af
+    db   $80 ; unknown music opcode                    ;; 0f:6a7d $80
+    db   $D8 ; unknown music opcode                    ;; 0f:6a7e $d8
+    db   $A0 ; unknown music opcode                    ;; 0f:6a7f $a0
+    db   $AF ; unknown music opcode                    ;; 0f:6a80 $af
+    db   $DC ; unknown music opcode                    ;; 0f:6a81 $dc
+    db   $80 ; unknown music opcode                    ;; 0f:6a82 $80
+    db   $D8 ; unknown music opcode                    ;; 0f:6a83 $d8
+    db   $A0 ; unknown music opcode                    ;; 0f:6a84 $a0
+    db   $AF ; unknown music opcode                    ;; 0f:6a85 $af
+    db   $DC ; unknown music opcode                    ;; 0f:6a86 $dc
+    db   $80 ; unknown music opcode                    ;; 0f:6a87 $80
+    db   $D8 ; unknown music opcode                    ;; 0f:6a88 $d8
+    db   $A0 ; unknown music opcode                    ;; 0f:6a89 $a0
+    db   $AF ; unknown music opcode                    ;; 0f:6a8a $af
+    db   $DD ; unknown music opcode                    ;; 0f:6a8b $dd
+    db   $8B ; unknown music opcode                    ;; 0f:6a8c $8b
+    db   $D8 ; unknown music opcode                    ;; 0f:6a8d $d8
+    db   $AB ; unknown music opcode                    ;; 0f:6a8e $ab
+    db   $AF ; unknown music opcode                    ;; 0f:6a8f $af
+    db   $DC ; unknown music opcode                    ;; 0f:6a90 $dc
+    db   $89 ; unknown music opcode                    ;; 0f:6a91 $89
+    db   $D8 ; unknown music opcode                    ;; 0f:6a92 $d8
+    db   $A9 ; unknown music opcode                    ;; 0f:6a93 $a9
+    db   $AF ; unknown music opcode                    ;; 0f:6a94 $af
+    db   $DC ; unknown music opcode                    ;; 0f:6a95 $dc
+    db   $89 ; unknown music opcode                    ;; 0f:6a96 $89
+    db   $D8 ; unknown music opcode                    ;; 0f:6a97 $d8
+    db   $A9 ; unknown music opcode                    ;; 0f:6a98 $a9
+    db   $AF ; unknown music opcode                    ;; 0f:6a99 $af
+    db   $DC ; unknown music opcode                    ;; 0f:6a9a $dc
+    mUNK_E6 $02                                        ;; 0f:6a9b $e6 $02
+    db   $59 ; unknown music opcode                    ;; 0f:6a9d $59
+    mUNK_E6 $01                                        ;; 0f:6a9e $e6 $01
+    db   $57 ; unknown music opcode                    ;; 0f:6aa0 $57
+    mUNK_E6 $03                                        ;; 0f:6aa1 $e6 $03
+    db   $75 ; unknown music opcode                    ;; 0f:6aa3 $75
+    db   $D8 ; unknown music opcode                    ;; 0f:6aa4 $d8
+    db   $75 ; unknown music opcode                    ;; 0f:6aa5 $75
+    db   $80 ; unknown music opcode                    ;; 0f:6aa6 $80
+    db   $8F ; unknown music opcode                    ;; 0f:6aa7 $8f
+    db   $DC ; unknown music opcode                    ;; 0f:6aa8 $dc
+    db   $A5 ; unknown music opcode                    ;; 0f:6aa9 $a5
+    db   $AF ; unknown music opcode                    ;; 0f:6aaa $af
+    db   $A5 ; unknown music opcode                    ;; 0f:6aab $a5
+    db   $AF ; unknown music opcode                    ;; 0f:6aac $af
+    db   $A5 ; unknown music opcode                    ;; 0f:6aad $a5
+    db   $AF ; unknown music opcode                    ;; 0f:6aae $af
+    db   $77 ; unknown music opcode                    ;; 0f:6aaf $77
+    db   $D8 ; unknown music opcode                    ;; 0f:6ab0 $d8
+    db   $77 ; unknown music opcode                    ;; 0f:6ab1 $77
+    db   $82 ; unknown music opcode                    ;; 0f:6ab2 $82
+    db   $8F ; unknown music opcode                    ;; 0f:6ab3 $8f
+    db   $DC ; unknown music opcode                    ;; 0f:6ab4 $dc
+    db   $A7 ; unknown music opcode                    ;; 0f:6ab5 $a7
+    db   $AF ; unknown music opcode                    ;; 0f:6ab6 $af
+    db   $A7 ; unknown music opcode                    ;; 0f:6ab7 $a7
+    db   $AF ; unknown music opcode                    ;; 0f:6ab8 $af
+    db   $A7 ; unknown music opcode                    ;; 0f:6ab9 $a7
+    db   $AF ; unknown music opcode                    ;; 0f:6aba $af
+    db   $89 ; unknown music opcode                    ;; 0f:6abb $89
+    db   $D8 ; unknown music opcode                    ;; 0f:6abc $d8
+    db   $A9 ; unknown music opcode                    ;; 0f:6abd $a9
+    db   $AF ; unknown music opcode                    ;; 0f:6abe $af
+    db   $DC ; unknown music opcode                    ;; 0f:6abf $dc
+    db   $89 ; unknown music opcode                    ;; 0f:6ac0 $89
+    db   $D8 ; unknown music opcode                    ;; 0f:6ac1 $d8
+    db   $A9 ; unknown music opcode                    ;; 0f:6ac2 $a9
+    db   $AF ; unknown music opcode                    ;; 0f:6ac3 $af
+    db   $DC ; unknown music opcode                    ;; 0f:6ac4 $dc
+    db   $89 ; unknown music opcode                    ;; 0f:6ac5 $89
+    db   $D8 ; unknown music opcode                    ;; 0f:6ac6 $d8
+    db   $A9 ; unknown music opcode                    ;; 0f:6ac7 $a9
+    db   $AF ; unknown music opcode                    ;; 0f:6ac8 $af
+    db   $DC ; unknown music opcode                    ;; 0f:6ac9 $dc
+    db   $89 ; unknown music opcode                    ;; 0f:6aca $89
+    db   $D8 ; unknown music opcode                    ;; 0f:6acb $d8
+    db   $A9 ; unknown music opcode                    ;; 0f:6acc $a9
+    db   $AF ; unknown music opcode                    ;; 0f:6acd $af
+    db   $DC ; unknown music opcode                    ;; 0f:6ace $dc
+    db   $89 ; unknown music opcode                    ;; 0f:6acf $89
+    db   $D8 ; unknown music opcode                    ;; 0f:6ad0 $d8
+    db   $A9 ; unknown music opcode                    ;; 0f:6ad1 $a9
+    db   $AF ; unknown music opcode                    ;; 0f:6ad2 $af
+    db   $DC ; unknown music opcode                    ;; 0f:6ad3 $dc
+    db   $89 ; unknown music opcode                    ;; 0f:6ad4 $89
+    db   $D8 ; unknown music opcode                    ;; 0f:6ad5 $d8
+    db   $A9 ; unknown music opcode                    ;; 0f:6ad6 $a9
+    db   $AF ; unknown music opcode                    ;; 0f:6ad7 $af
+    db   $DC ; unknown music opcode                    ;; 0f:6ad8 $dc
+    mUNK_E6 $02                                        ;; 0f:6ad9 $e6 $02
+    db   $59 ; unknown music opcode                    ;; 0f:6adb $59
+    mUNK_E6 $01                                        ;; 0f:6adc $e6 $01
+    db   $57 ; unknown music opcode                    ;; 0f:6ade $57
+    mUNK_E6 $03                                        ;; 0f:6adf $e6 $03
+    db   $A5 ; unknown music opcode                    ;; 0f:6ae1 $a5
+    db   $AF ; unknown music opcode                    ;; 0f:6ae2 $af
+    db   $A5 ; unknown music opcode                    ;; 0f:6ae3 $a5
+    db   $AF ; unknown music opcode                    ;; 0f:6ae4 $af
+    db   $A5 ; unknown music opcode                    ;; 0f:6ae5 $a5
+    db   $AF ; unknown music opcode                    ;; 0f:6ae6 $af
+    db   $D8 ; unknown music opcode                    ;; 0f:6ae7 $d8
+    db   $45 ; unknown music opcode                    ;; 0f:6ae8 $45
+    db   $50 ; unknown music opcode                    ;; 0f:6ae9 $50
+    db   $DC ; unknown music opcode                    ;; 0f:6aea $dc
+    db   $A5 ; unknown music opcode                    ;; 0f:6aeb $a5
+    db   $AF ; unknown music opcode                    ;; 0f:6aec $af
+    db   $A5 ; unknown music opcode                    ;; 0f:6aed $a5
+    db   $AF ; unknown music opcode                    ;; 0f:6aee $af
+    db   $A5 ; unknown music opcode                    ;; 0f:6aef $a5
+    db   $AF ; unknown music opcode                    ;; 0f:6af0 $af
+    db   $D8 ; unknown music opcode                    ;; 0f:6af1 $d8
+    db   $45 ; unknown music opcode                    ;; 0f:6af2 $45
+    db   $50 ; unknown music opcode                    ;; 0f:6af3 $50
+    db   $DC ; unknown music opcode                    ;; 0f:6af4 $dc
+    db   $A4 ; unknown music opcode                    ;; 0f:6af5 $a4
+    db   $AF ; unknown music opcode                    ;; 0f:6af6 $af
+    db   $A4 ; unknown music opcode                    ;; 0f:6af7 $a4
+    db   $AF ; unknown music opcode                    ;; 0f:6af8 $af
+    db   $A4 ; unknown music opcode                    ;; 0f:6af9 $a4
+    db   $AF ; unknown music opcode                    ;; 0f:6afa $af
+    db   $D8 ; unknown music opcode                    ;; 0f:6afb $d8
+    db   $44 ; unknown music opcode                    ;; 0f:6afc $44
+    db   $DC ; unknown music opcode                    ;; 0f:6afd $dc
+    db   $5B ; unknown music opcode                    ;; 0f:6afe $5b
+    db   $A4 ; unknown music opcode                    ;; 0f:6aff $a4
+    db   $AF ; unknown music opcode                    ;; 0f:6b00 $af
+    db   $A4 ; unknown music opcode                    ;; 0f:6b01 $a4
+    db   $AF ; unknown music opcode                    ;; 0f:6b02 $af
+    db   $A4 ; unknown music opcode                    ;; 0f:6b03 $a4
+    db   $AF ; unknown music opcode                    ;; 0f:6b04 $af
+    db   $D8 ; unknown music opcode                    ;; 0f:6b05 $d8
+    db   $44 ; unknown music opcode                    ;; 0f:6b06 $44
+    db   $DC ; unknown music opcode                    ;; 0f:6b07 $dc
+    db   $5B ; unknown music opcode                    ;; 0f:6b08 $5b
+    db   $85 ; unknown music opcode                    ;; 0f:6b09 $85
+    db   $D8 ; unknown music opcode                    ;; 0f:6b0a $d8
+    db   $A5 ; unknown music opcode                    ;; 0f:6b0b $a5
+    db   $AF ; unknown music opcode                    ;; 0f:6b0c $af
+    db   $DC ; unknown music opcode                    ;; 0f:6b0d $dc
+    db   $85 ; unknown music opcode                    ;; 0f:6b0e $85
+    db   $D8 ; unknown music opcode                    ;; 0f:6b0f $d8
+    db   $A5 ; unknown music opcode                    ;; 0f:6b10 $a5
+    db   $AF ; unknown music opcode                    ;; 0f:6b11 $af
+    db   $DC ; unknown music opcode                    ;; 0f:6b12 $dc
+    db   $87 ; unknown music opcode                    ;; 0f:6b13 $87
+    db   $D8 ; unknown music opcode                    ;; 0f:6b14 $d8
+    db   $A7 ; unknown music opcode                    ;; 0f:6b15 $a7
+    db   $AF ; unknown music opcode                    ;; 0f:6b16 $af
+    db   $DC ; unknown music opcode                    ;; 0f:6b17 $dc
+    db   $87 ; unknown music opcode                    ;; 0f:6b18 $87
+    db   $D8 ; unknown music opcode                    ;; 0f:6b19 $d8
+    db   $A7 ; unknown music opcode                    ;; 0f:6b1a $a7
+    db   $AF ; unknown music opcode                    ;; 0f:6b1b $af
+    db   $80 ; unknown music opcode                    ;; 0f:6b1c $80
+    db   $D8 ; unknown music opcode                    ;; 0f:6b1d $d8
+    db   $A0 ; unknown music opcode                    ;; 0f:6b1e $a0
+    db   $AF ; unknown music opcode                    ;; 0f:6b1f $af
+    db   $DC ; unknown music opcode                    ;; 0f:6b20 $dc
+    db   $80 ; unknown music opcode                    ;; 0f:6b21 $80
+    db   $D8 ; unknown music opcode                    ;; 0f:6b22 $d8
+    db   $A0 ; unknown music opcode                    ;; 0f:6b23 $a0
+    db   $AF ; unknown music opcode                    ;; 0f:6b24 $af
+    db   $DD ; unknown music opcode                    ;; 0f:6b25 $dd
+    db   $8B ; unknown music opcode                    ;; 0f:6b26 $8b
+    db   $D8 ; unknown music opcode                    ;; 0f:6b27 $d8
+    db   $AB ; unknown music opcode                    ;; 0f:6b28 $ab
+    db   $AF ; unknown music opcode                    ;; 0f:6b29 $af
+    db   $DC ; unknown music opcode                    ;; 0f:6b2a $dc
+    db   $8B ; unknown music opcode                    ;; 0f:6b2b $8b
+    db   $D8 ; unknown music opcode                    ;; 0f:6b2c $d8
+    db   $AB ; unknown music opcode                    ;; 0f:6b2d $ab
+    db   $AF ; unknown music opcode                    ;; 0f:6b2e $af
+    db   $A4 ; unknown music opcode                    ;; 0f:6b2f $a4
+    db   $AF ; unknown music opcode                    ;; 0f:6b30 $af
+    db   $A4 ; unknown music opcode                    ;; 0f:6b31 $a4
+    db   $AF ; unknown music opcode                    ;; 0f:6b32 $af
+    db   $A4 ; unknown music opcode                    ;; 0f:6b33 $a4
+    db   $AF ; unknown music opcode                    ;; 0f:6b34 $af
+    db   $A4 ; unknown music opcode                    ;; 0f:6b35 $a4
+    db   $AF ; unknown music opcode                    ;; 0f:6b36 $af
+    db   $A2 ; unknown music opcode                    ;; 0f:6b37 $a2
+    db   $AF ; unknown music opcode                    ;; 0f:6b38 $af
+    db   $A2 ; unknown music opcode                    ;; 0f:6b39 $a2
+    db   $AF ; unknown music opcode                    ;; 0f:6b3a $af
+    db   $A2 ; unknown music opcode                    ;; 0f:6b3b $a2
+    db   $AF ; unknown music opcode                    ;; 0f:6b3c $af
+    db   $A2 ; unknown music opcode                    ;; 0f:6b3d $a2
+    db   $AF ; unknown music opcode                    ;; 0f:6b3e $af
+    db   $DC ; unknown music opcode                    ;; 0f:6b3f $dc
+    mUNK_E6 $02                                        ;; 0f:6b40 $e6 $02
+    db   $54 ; unknown music opcode                    ;; 0f:6b42 $54
+    db   $D8 ; unknown music opcode                    ;; 0f:6b43 $d8
+    mUNK_E6 $03                                        ;; 0f:6b44 $e6 $03
+    db   $54 ; unknown music opcode                    ;; 0f:6b46 $54
+    db   $DC ; unknown music opcode                    ;; 0f:6b47 $dc
+    mUNK_E6 $01                                        ;; 0f:6b48 $e6 $01
+    db   $5B ; unknown music opcode                    ;; 0f:6b4a $5b
+    mUNK_E6 $03                                        ;; 0f:6b4b $e6 $03
+    db   $54 ; unknown music opcode                    ;; 0f:6b4d $54
+    mUNK_E1 .data_0f_6a09                              ;; 0f:6b4e $e1 $09 $6a
     db   $57, $6b, $83, $6c, $a9, $6d                  ;; 0f:6b51 ??????
 
-data_0f_6b57:
-    db   $e7, $3e, $e4, $4f, $7a, $e0, $82, $7a        ;; 0f:6b57 ????????
-    db   $e5, $40, $d2, $87, $d8, $80, $dc, $19        ;; 0f:6b5f ????????
-    db   $87, $d8, $80, $dc, $49, $89, $8a, $d8        ;; 0f:6b67 ????????
-    db   $80, $50, $dc, $5a, $55, $57, $29, $8f        ;; 0f:6b6f ????????
-    db   $85, $87, $89, $5a, $89, $8a, $d8, $50        ;; 0f:6b77 ????????
-    db   $dc, $59, $8f, $d8, $82, $84, $85, $84        ;; 0f:6b7f ????????
-    db   $82, $80, $dc, $8b, $d8, $20, $8e, $dc        ;; 0f:6b87 ????????
-    db   $89, $8a, $d8, $80, $80, $dc, $8a, $89        ;; 0f:6b8f ????????
-    db   $8a, $22, $24, $25, $2e, $2f, $e3, $02        ;; 0f:6b97 ????????
-    db   $e5, $80, $59, $d8, $50, $dc, $5a, $59        ;; 0f:6b9f ????????
-    db   $55, $57, $29, $d8, $22, $8f, $80, $dc        ;; 0f:6ba7 ????????
-    db   $8a, $89, $27, $8f, $87, $89, $8a, $d8        ;; 0f:6baf ????????
-    db   $50, $dc, $89, $8a, $d8, $50, $55, $54        ;; 0f:6bb7 ????????
-    db   $52, $50, $dc, $5a, $eb, $01, $d4, $6b        ;; 0f:6bbf ????????
-    db   $59, $d8, $50, $dc, $8a, $89, $87, $85        ;; 0f:6bc7 ????????
-    db   $29, $27, $e2, $9f, $6b, $59, $d8, $50        ;; 0f:6bcf ????????
-    db   $dc, $8a, $89, $82, $84, $25, $8f, $e5        ;; 0f:6bd7 ????????
-    db   $40, $89, $8a, $d8, $80, $e3, $02, $22        ;; 0f:6bdf ????????
-    db   $8e, $dc, $87, $89, $8a, $d8, $20, $8e        ;; 0f:6be7 ????????
-    db   $dc, $85, $87, $89, $2a, $8e, $87, $d8        ;; 0f:6bef ????????
-    db   $80, $dc, $87, $5a, $59, $5a, $d8, $50        ;; 0f:6bf7 ????????
-    db   $22, $8e, $84, $85, $87, $20, $8e, $82        ;; 0f:6bff ????????
-    db   $84, $85, $55, $52, $54, $55, $55, $e7        ;; 0f:6c07 ????????
-    db   $3a, $5e, $e7, $36, $54, $8e, $8f, $eb        ;; 0f:6c0f ????????
-    db   $01, $54, $6c, $e5, $80, $e7, $3e, $dc        ;; 0f:6c17 ????????
-    db   $59, $d8, $50, $dc, $5a, $59, $55, $57        ;; 0f:6c1f ????????
-    db   $29, $d8, $22, $8f, $80, $dc, $8a, $89        ;; 0f:6c27 ????????
-    db   $27, $8f, $87, $89, $8a, $d8, $50, $dc        ;; 0f:6c2f ????????
-    db   $89, $8a, $d8, $50, $55, $54, $52, $50        ;; 0f:6c37 ????????
-    db   $dc, $5a, $59, $d8, $50, $dc, $8a, $89        ;; 0f:6c3f ????????
-    db   $82, $84, $25, $8f, $e5, $40, $89, $8a        ;; 0f:6c47 ????????
-    db   $d8, $80, $e2, $e6, $6b, $e7, $3e, $e5        ;; 0f:6c4f ????????
-    db   $80, $dc, $59, $d8, $50, $dc, $5a, $59        ;; 0f:6c57 ????????
-    db   $55, $57, $e7, $36, $59, $87, $89, $e7        ;; 0f:6c5f ????????
-    db   $3e, $2a, $d8, $20, $22, $e7, $39, $54        ;; 0f:6c67 ????????
-    db   $e7, $36, $54, $e7, $3e, $05, $5f, $e7        ;; 0f:6c6f ????????
-    db   $38, $5f, $e7, $33, $5f, $e7, $2f, $5f        ;; 0f:6c77 ????????
-    db   $e7, $2a, $05, $ff                            ;; 0f:6c7f ????
+song14_channel2:
+    mUNK_E7 $3e                                        ;; 0f:6b57 $e7 $3e
+    mUNK_E4 frequencyDeltaData                         ;; 0f:6b59 $e4 $4f $7a
+    mUNK_E0 $82                                        ;; 0f:6b5c $e0 $82
+    db   $7A ; unknown music opcode                    ;; 0f:6b5e $7a
+    mUNK_E5 $40                                        ;; 0f:6b5f $e5 $40
+    db   $D2 ; unknown music opcode                    ;; 0f:6b61 $d2
+    db   $87 ; unknown music opcode                    ;; 0f:6b62 $87
+    db   $D8 ; unknown music opcode                    ;; 0f:6b63 $d8
+    db   $80 ; unknown music opcode                    ;; 0f:6b64 $80
+    db   $DC ; unknown music opcode                    ;; 0f:6b65 $dc
+    db   $19 ; unknown music opcode                    ;; 0f:6b66 $19
+    db   $87 ; unknown music opcode                    ;; 0f:6b67 $87
+    db   $D8 ; unknown music opcode                    ;; 0f:6b68 $d8
+    db   $80 ; unknown music opcode                    ;; 0f:6b69 $80
+    db   $DC ; unknown music opcode                    ;; 0f:6b6a $dc
+    db   $49 ; unknown music opcode                    ;; 0f:6b6b $49
+    db   $89 ; unknown music opcode                    ;; 0f:6b6c $89
+    db   $8A ; unknown music opcode                    ;; 0f:6b6d $8a
+    db   $D8 ; unknown music opcode                    ;; 0f:6b6e $d8
+    db   $80 ; unknown music opcode                    ;; 0f:6b6f $80
+    db   $50 ; unknown music opcode                    ;; 0f:6b70 $50
+    db   $DC ; unknown music opcode                    ;; 0f:6b71 $dc
+    db   $5A ; unknown music opcode                    ;; 0f:6b72 $5a
+    db   $55 ; unknown music opcode                    ;; 0f:6b73 $55
+    db   $57 ; unknown music opcode                    ;; 0f:6b74 $57
+    db   $29 ; unknown music opcode                    ;; 0f:6b75 $29
+    db   $8F ; unknown music opcode                    ;; 0f:6b76 $8f
+    db   $85 ; unknown music opcode                    ;; 0f:6b77 $85
+    db   $87 ; unknown music opcode                    ;; 0f:6b78 $87
+    db   $89 ; unknown music opcode                    ;; 0f:6b79 $89
+    db   $5A ; unknown music opcode                    ;; 0f:6b7a $5a
+    db   $89 ; unknown music opcode                    ;; 0f:6b7b $89
+    db   $8A ; unknown music opcode                    ;; 0f:6b7c $8a
+    db   $D8 ; unknown music opcode                    ;; 0f:6b7d $d8
+    db   $50 ; unknown music opcode                    ;; 0f:6b7e $50
+    db   $DC ; unknown music opcode                    ;; 0f:6b7f $dc
+    db   $59 ; unknown music opcode                    ;; 0f:6b80 $59
+    db   $8F ; unknown music opcode                    ;; 0f:6b81 $8f
+    db   $D8 ; unknown music opcode                    ;; 0f:6b82 $d8
+    db   $82 ; unknown music opcode                    ;; 0f:6b83 $82
+    db   $84 ; unknown music opcode                    ;; 0f:6b84 $84
+    db   $85 ; unknown music opcode                    ;; 0f:6b85 $85
+    db   $84 ; unknown music opcode                    ;; 0f:6b86 $84
+    db   $82 ; unknown music opcode                    ;; 0f:6b87 $82
+    db   $80 ; unknown music opcode                    ;; 0f:6b88 $80
+    db   $DC ; unknown music opcode                    ;; 0f:6b89 $dc
+    db   $8B ; unknown music opcode                    ;; 0f:6b8a $8b
+    db   $D8 ; unknown music opcode                    ;; 0f:6b8b $d8
+    db   $20 ; unknown music opcode                    ;; 0f:6b8c $20
+    db   $8E ; unknown music opcode                    ;; 0f:6b8d $8e
+    db   $DC ; unknown music opcode                    ;; 0f:6b8e $dc
+    db   $89 ; unknown music opcode                    ;; 0f:6b8f $89
+    db   $8A ; unknown music opcode                    ;; 0f:6b90 $8a
+    db   $D8 ; unknown music opcode                    ;; 0f:6b91 $d8
+    db   $80 ; unknown music opcode                    ;; 0f:6b92 $80
+    db   $80 ; unknown music opcode                    ;; 0f:6b93 $80
+    db   $DC ; unknown music opcode                    ;; 0f:6b94 $dc
+    db   $8A ; unknown music opcode                    ;; 0f:6b95 $8a
+    db   $89 ; unknown music opcode                    ;; 0f:6b96 $89
+    db   $8A ; unknown music opcode                    ;; 0f:6b97 $8a
+    db   $22 ; unknown music opcode                    ;; 0f:6b98 $22
+    db   $24 ; unknown music opcode                    ;; 0f:6b99 $24
+    db   $25 ; unknown music opcode                    ;; 0f:6b9a $25
+    db   $2E ; unknown music opcode                    ;; 0f:6b9b $2e
+    db   $2F ; unknown music opcode                    ;; 0f:6b9c $2f
+    mUNK_E3 $02                                        ;; 0f:6b9d $e3 $02
+.data_0f_6b9f:
+    mUNK_E5 $80                                        ;; 0f:6b9f $e5 $80
+    db   $59 ; unknown music opcode                    ;; 0f:6ba1 $59
+    db   $D8 ; unknown music opcode                    ;; 0f:6ba2 $d8
+    db   $50 ; unknown music opcode                    ;; 0f:6ba3 $50
+    db   $DC ; unknown music opcode                    ;; 0f:6ba4 $dc
+    db   $5A ; unknown music opcode                    ;; 0f:6ba5 $5a
+    db   $59 ; unknown music opcode                    ;; 0f:6ba6 $59
+    db   $55 ; unknown music opcode                    ;; 0f:6ba7 $55
+    db   $57 ; unknown music opcode                    ;; 0f:6ba8 $57
+    db   $29 ; unknown music opcode                    ;; 0f:6ba9 $29
+    db   $D8 ; unknown music opcode                    ;; 0f:6baa $d8
+    db   $22 ; unknown music opcode                    ;; 0f:6bab $22
+    db   $8F ; unknown music opcode                    ;; 0f:6bac $8f
+    db   $80 ; unknown music opcode                    ;; 0f:6bad $80
+    db   $DC ; unknown music opcode                    ;; 0f:6bae $dc
+    db   $8A ; unknown music opcode                    ;; 0f:6baf $8a
+    db   $89 ; unknown music opcode                    ;; 0f:6bb0 $89
+    db   $27 ; unknown music opcode                    ;; 0f:6bb1 $27
+    db   $8F ; unknown music opcode                    ;; 0f:6bb2 $8f
+    db   $87 ; unknown music opcode                    ;; 0f:6bb3 $87
+    db   $89 ; unknown music opcode                    ;; 0f:6bb4 $89
+    db   $8A ; unknown music opcode                    ;; 0f:6bb5 $8a
+    db   $D8 ; unknown music opcode                    ;; 0f:6bb6 $d8
+    db   $50 ; unknown music opcode                    ;; 0f:6bb7 $50
+    db   $DC ; unknown music opcode                    ;; 0f:6bb8 $dc
+    db   $89 ; unknown music opcode                    ;; 0f:6bb9 $89
+    db   $8A ; unknown music opcode                    ;; 0f:6bba $8a
+    db   $D8 ; unknown music opcode                    ;; 0f:6bbb $d8
+    db   $50 ; unknown music opcode                    ;; 0f:6bbc $50
+    db   $55 ; unknown music opcode                    ;; 0f:6bbd $55
+    db   $54 ; unknown music opcode                    ;; 0f:6bbe $54
+    db   $52 ; unknown music opcode                    ;; 0f:6bbf $52
+    db   $50 ; unknown music opcode                    ;; 0f:6bc0 $50
+    db   $DC ; unknown music opcode                    ;; 0f:6bc1 $dc
+    db   $5A ; unknown music opcode                    ;; 0f:6bc2 $5a
+    mUNK_EB $01, .data_0f_6bd4                         ;; 0f:6bc3 $eb $01 $d4 $6b
+    db   $59 ; unknown music opcode                    ;; 0f:6bc7 $59
+    db   $D8 ; unknown music opcode                    ;; 0f:6bc8 $d8
+    db   $50 ; unknown music opcode                    ;; 0f:6bc9 $50
+    db   $DC ; unknown music opcode                    ;; 0f:6bca $dc
+    db   $8A ; unknown music opcode                    ;; 0f:6bcb $8a
+    db   $89 ; unknown music opcode                    ;; 0f:6bcc $89
+    db   $87 ; unknown music opcode                    ;; 0f:6bcd $87
+    db   $85 ; unknown music opcode                    ;; 0f:6bce $85
+    db   $29 ; unknown music opcode                    ;; 0f:6bcf $29
+    db   $27 ; unknown music opcode                    ;; 0f:6bd0 $27
+    mUNK_E2 .data_0f_6b9f                              ;; 0f:6bd1 $e2 $9f $6b
+.data_0f_6bd4:
+    db   $59 ; unknown music opcode                    ;; 0f:6bd4 $59
+    db   $D8 ; unknown music opcode                    ;; 0f:6bd5 $d8
+    db   $50 ; unknown music opcode                    ;; 0f:6bd6 $50
+    db   $DC ; unknown music opcode                    ;; 0f:6bd7 $dc
+    db   $8A ; unknown music opcode                    ;; 0f:6bd8 $8a
+    db   $89 ; unknown music opcode                    ;; 0f:6bd9 $89
+    db   $82 ; unknown music opcode                    ;; 0f:6bda $82
+    db   $84 ; unknown music opcode                    ;; 0f:6bdb $84
+    db   $25 ; unknown music opcode                    ;; 0f:6bdc $25
+    db   $8F ; unknown music opcode                    ;; 0f:6bdd $8f
+    mUNK_E5 $40                                        ;; 0f:6bde $e5 $40
+    db   $89 ; unknown music opcode                    ;; 0f:6be0 $89
+    db   $8A ; unknown music opcode                    ;; 0f:6be1 $8a
+    db   $D8 ; unknown music opcode                    ;; 0f:6be2 $d8
+    db   $80 ; unknown music opcode                    ;; 0f:6be3 $80
+    mUNK_E3 $02                                        ;; 0f:6be4 $e3 $02
+.data_0f_6be6:
+    db   $22 ; unknown music opcode                    ;; 0f:6be6 $22
+    db   $8E ; unknown music opcode                    ;; 0f:6be7 $8e
+    db   $DC ; unknown music opcode                    ;; 0f:6be8 $dc
+    db   $87 ; unknown music opcode                    ;; 0f:6be9 $87
+    db   $89 ; unknown music opcode                    ;; 0f:6bea $89
+    db   $8A ; unknown music opcode                    ;; 0f:6beb $8a
+    db   $D8 ; unknown music opcode                    ;; 0f:6bec $d8
+    db   $20 ; unknown music opcode                    ;; 0f:6bed $20
+    db   $8E ; unknown music opcode                    ;; 0f:6bee $8e
+    db   $DC ; unknown music opcode                    ;; 0f:6bef $dc
+    db   $85 ; unknown music opcode                    ;; 0f:6bf0 $85
+    db   $87 ; unknown music opcode                    ;; 0f:6bf1 $87
+    db   $89 ; unknown music opcode                    ;; 0f:6bf2 $89
+    db   $2A ; unknown music opcode                    ;; 0f:6bf3 $2a
+    db   $8E ; unknown music opcode                    ;; 0f:6bf4 $8e
+    db   $87 ; unknown music opcode                    ;; 0f:6bf5 $87
+    db   $D8 ; unknown music opcode                    ;; 0f:6bf6 $d8
+    db   $80 ; unknown music opcode                    ;; 0f:6bf7 $80
+    db   $DC ; unknown music opcode                    ;; 0f:6bf8 $dc
+    db   $87 ; unknown music opcode                    ;; 0f:6bf9 $87
+    db   $5A ; unknown music opcode                    ;; 0f:6bfa $5a
+    db   $59 ; unknown music opcode                    ;; 0f:6bfb $59
+    db   $5A ; unknown music opcode                    ;; 0f:6bfc $5a
+    db   $D8 ; unknown music opcode                    ;; 0f:6bfd $d8
+    db   $50 ; unknown music opcode                    ;; 0f:6bfe $50
+    db   $22 ; unknown music opcode                    ;; 0f:6bff $22
+    db   $8E ; unknown music opcode                    ;; 0f:6c00 $8e
+    db   $84 ; unknown music opcode                    ;; 0f:6c01 $84
+    db   $85 ; unknown music opcode                    ;; 0f:6c02 $85
+    db   $87 ; unknown music opcode                    ;; 0f:6c03 $87
+    db   $20 ; unknown music opcode                    ;; 0f:6c04 $20
+    db   $8E ; unknown music opcode                    ;; 0f:6c05 $8e
+    db   $82 ; unknown music opcode                    ;; 0f:6c06 $82
+    db   $84 ; unknown music opcode                    ;; 0f:6c07 $84
+    db   $85 ; unknown music opcode                    ;; 0f:6c08 $85
+    db   $55 ; unknown music opcode                    ;; 0f:6c09 $55
+    db   $52 ; unknown music opcode                    ;; 0f:6c0a $52
+    db   $54 ; unknown music opcode                    ;; 0f:6c0b $54
+    db   $55 ; unknown music opcode                    ;; 0f:6c0c $55
+    db   $55 ; unknown music opcode                    ;; 0f:6c0d $55
+    mUNK_E7 $3a                                        ;; 0f:6c0e $e7 $3a
+    db   $5E ; unknown music opcode                    ;; 0f:6c10 $5e
+    mUNK_E7 $36                                        ;; 0f:6c11 $e7 $36
+    db   $54 ; unknown music opcode                    ;; 0f:6c13 $54
+    db   $8E ; unknown music opcode                    ;; 0f:6c14 $8e
+    db   $8F ; unknown music opcode                    ;; 0f:6c15 $8f
+    mUNK_EB $01, .data_0f_6c54                         ;; 0f:6c16 $eb $01 $54 $6c
+    mUNK_E5 $80                                        ;; 0f:6c1a $e5 $80
+    mUNK_E7 $3e                                        ;; 0f:6c1c $e7 $3e
+    db   $DC ; unknown music opcode                    ;; 0f:6c1e $dc
+    db   $59 ; unknown music opcode                    ;; 0f:6c1f $59
+    db   $D8 ; unknown music opcode                    ;; 0f:6c20 $d8
+    db   $50 ; unknown music opcode                    ;; 0f:6c21 $50
+    db   $DC ; unknown music opcode                    ;; 0f:6c22 $dc
+    db   $5A ; unknown music opcode                    ;; 0f:6c23 $5a
+    db   $59 ; unknown music opcode                    ;; 0f:6c24 $59
+    db   $55 ; unknown music opcode                    ;; 0f:6c25 $55
+    db   $57 ; unknown music opcode                    ;; 0f:6c26 $57
+    db   $29 ; unknown music opcode                    ;; 0f:6c27 $29
+    db   $D8 ; unknown music opcode                    ;; 0f:6c28 $d8
+    db   $22 ; unknown music opcode                    ;; 0f:6c29 $22
+    db   $8F ; unknown music opcode                    ;; 0f:6c2a $8f
+    db   $80 ; unknown music opcode                    ;; 0f:6c2b $80
+    db   $DC ; unknown music opcode                    ;; 0f:6c2c $dc
+    db   $8A ; unknown music opcode                    ;; 0f:6c2d $8a
+    db   $89 ; unknown music opcode                    ;; 0f:6c2e $89
+    db   $27 ; unknown music opcode                    ;; 0f:6c2f $27
+    db   $8F ; unknown music opcode                    ;; 0f:6c30 $8f
+    db   $87 ; unknown music opcode                    ;; 0f:6c31 $87
+    db   $89 ; unknown music opcode                    ;; 0f:6c32 $89
+    db   $8A ; unknown music opcode                    ;; 0f:6c33 $8a
+    db   $D8 ; unknown music opcode                    ;; 0f:6c34 $d8
+    db   $50 ; unknown music opcode                    ;; 0f:6c35 $50
+    db   $DC ; unknown music opcode                    ;; 0f:6c36 $dc
+    db   $89 ; unknown music opcode                    ;; 0f:6c37 $89
+    db   $8A ; unknown music opcode                    ;; 0f:6c38 $8a
+    db   $D8 ; unknown music opcode                    ;; 0f:6c39 $d8
+    db   $50 ; unknown music opcode                    ;; 0f:6c3a $50
+    db   $55 ; unknown music opcode                    ;; 0f:6c3b $55
+    db   $54 ; unknown music opcode                    ;; 0f:6c3c $54
+    db   $52 ; unknown music opcode                    ;; 0f:6c3d $52
+    db   $50 ; unknown music opcode                    ;; 0f:6c3e $50
+    db   $DC ; unknown music opcode                    ;; 0f:6c3f $dc
+    db   $5A ; unknown music opcode                    ;; 0f:6c40 $5a
+    db   $59 ; unknown music opcode                    ;; 0f:6c41 $59
+    db   $D8 ; unknown music opcode                    ;; 0f:6c42 $d8
+    db   $50 ; unknown music opcode                    ;; 0f:6c43 $50
+    db   $DC ; unknown music opcode                    ;; 0f:6c44 $dc
+    db   $8A ; unknown music opcode                    ;; 0f:6c45 $8a
+    db   $89 ; unknown music opcode                    ;; 0f:6c46 $89
+    db   $82 ; unknown music opcode                    ;; 0f:6c47 $82
+    db   $84 ; unknown music opcode                    ;; 0f:6c48 $84
+    db   $25 ; unknown music opcode                    ;; 0f:6c49 $25
+    db   $8F ; unknown music opcode                    ;; 0f:6c4a $8f
+    mUNK_E5 $40                                        ;; 0f:6c4b $e5 $40
+    db   $89 ; unknown music opcode                    ;; 0f:6c4d $89
+    db   $8A ; unknown music opcode                    ;; 0f:6c4e $8a
+    db   $D8 ; unknown music opcode                    ;; 0f:6c4f $d8
+    db   $80 ; unknown music opcode                    ;; 0f:6c50 $80
+    mUNK_E2 .data_0f_6be6                              ;; 0f:6c51 $e2 $e6 $6b
+.data_0f_6c54:
+    mUNK_E7 $3e                                        ;; 0f:6c54 $e7 $3e
+    mUNK_E5 $80                                        ;; 0f:6c56 $e5 $80
+    db   $DC ; unknown music opcode                    ;; 0f:6c58 $dc
+    db   $59 ; unknown music opcode                    ;; 0f:6c59 $59
+    db   $D8 ; unknown music opcode                    ;; 0f:6c5a $d8
+    db   $50 ; unknown music opcode                    ;; 0f:6c5b $50
+    db   $DC ; unknown music opcode                    ;; 0f:6c5c $dc
+    db   $5A ; unknown music opcode                    ;; 0f:6c5d $5a
+    db   $59 ; unknown music opcode                    ;; 0f:6c5e $59
+    db   $55 ; unknown music opcode                    ;; 0f:6c5f $55
+    db   $57 ; unknown music opcode                    ;; 0f:6c60 $57
+    mUNK_E7 $36                                        ;; 0f:6c61 $e7 $36
+    db   $59 ; unknown music opcode                    ;; 0f:6c63 $59
+    db   $87 ; unknown music opcode                    ;; 0f:6c64 $87
+    db   $89 ; unknown music opcode                    ;; 0f:6c65 $89
+    mUNK_E7 $3e                                        ;; 0f:6c66 $e7 $3e
+    db   $2A ; unknown music opcode                    ;; 0f:6c68 $2a
+    db   $D8 ; unknown music opcode                    ;; 0f:6c69 $d8
+    db   $20 ; unknown music opcode                    ;; 0f:6c6a $20
+    db   $22 ; unknown music opcode                    ;; 0f:6c6b $22
+    mUNK_E7 $39                                        ;; 0f:6c6c $e7 $39
+    db   $54 ; unknown music opcode                    ;; 0f:6c6e $54
+    mUNK_E7 $36                                        ;; 0f:6c6f $e7 $36
+    db   $54 ; unknown music opcode                    ;; 0f:6c71 $54
+    mUNK_E7 $3e                                        ;; 0f:6c72 $e7 $3e
+    db   $05 ; unknown music opcode                    ;; 0f:6c74 $05
+    db   $5F ; unknown music opcode                    ;; 0f:6c75 $5f
+    mUNK_E7 $38                                        ;; 0f:6c76 $e7 $38
+    db   $5F ; unknown music opcode                    ;; 0f:6c78 $5f
+    mUNK_E7 $33                                        ;; 0f:6c79 $e7 $33
+    db   $5F ; unknown music opcode                    ;; 0f:6c7b $5f
+    mUNK_E7 $2f                                        ;; 0f:6c7c $e7 $2f
+    db   $5F ; unknown music opcode                    ;; 0f:6c7e $5f
+    mUNK_E7 $2a                                        ;; 0f:6c7f $e7 $2a
+    db   $05 ; unknown music opcode                    ;; 0f:6c81 $05
+    db   $FF ; unknown music opcode                    ;; 0f:6c82 $ff
 
-data_0f_6c83:
-    db   $e4, $4f, $7a, $e0, $82, $7a, $e5, $00        ;; 0f:6c83 ????????
-    db   $e6, $03, $8f, $d1, $89, $d8, $80, $dc        ;; 0f:6c8b ????????
-    db   $89, $d8, $55, $54, $53, $50, $8e, $85        ;; 0f:6c93 ????????
-    db   $87, $89, $22, $dc, $2a, $d8, $20, $8f        ;; 0f:6c9b ????????
-    db   $dc, $49, $d8, $22, $54, $50, $8f, $45        ;; 0f:6ca3 ????????
-    db   $58, $89, $84, $8f, $84, $89, $87, $56        ;; 0f:6cab ????????
-    db   $87, $89, $52, $50, $dc, $2a, $d8, $50        ;; 0f:6cb3 ????????
-    db   $dc, $5a, $29, $2e, $2f, $d8, $e3, $02        ;; 0f:6cbb ????????
-    db   $e0, $c6, $7a, $e5, $40, $25, $21, $22        ;; 0f:6cc3 ????????
-    db   $83, $80, $82, $83, $55, $5a, $54, $82        ;; 0f:6ccb ????????
-    db   $80, $8f, $dc, $8a, $d8, $80, $82, $54        ;; 0f:6cd3 ????????
-    db   $85, $87, $89, $87, $55, $29, $05, $eb        ;; 0f:6cdb ????????
-    db   $01, $f3, $6c, $54, $57, $52, $84, $82        ;; 0f:6ce3 ????????
-    db   $8f, $80, $85, $80, $24, $e2, $c3, $6c        ;; 0f:6ceb ????????
-    db   $8f, $80, $84, $80, $52, $dc, $5a, $29        ;; 0f:6cf3 ????????
-    db   $8f, $d8, $e0, $82, $7a, $e5, $00, $85        ;; 0f:6cfb ????????
-    db   $87, $89, $e3, $02, $e0, $c2, $7a, $8f        ;; 0f:6d03 ????????
-    db   $82, $84, $85, $24, $8f, $80, $82, $84        ;; 0f:6d0b ????????
-    db   $52, $84, $85, $82, $dc, $8a, $d8, $80        ;; 0f:6d13 ????????
-    db   $82, $50, $84, $80, $e0, $82, $7a, $52        ;; 0f:6d1b ????????
-    db   $50, $57, $59, $e0, $c2, $7a, $8f, $82        ;; 0f:6d23 ????????
-    db   $84, $85, $84, $87, $89, $8a, $8f, $80        ;; 0f:6d2b ????????
-    db   $82, $84, $82, $85, $87, $89, $2a, $2b        ;; 0f:6d33 ????????
-    db   $8f, $8a, $d8, $80, $82, $dc, $47, $8f        ;; 0f:6d3b ????????
-    db   $eb, $01, $7b, $6d, $e0, $c4, $7a, $e5        ;; 0f:6d43 ????????
-    db   $40, $25, $21, $22, $83, $80, $82, $83        ;; 0f:6d4b ????????
-    db   $52, $5a, $54, $82, $80, $8f, $dc, $8a        ;; 0f:6d53 ????????
-    db   $d8, $80, $82, $54, $85, $87, $89, $87        ;; 0f:6d5b ????????
-    db   $55, $29, $05, $8f, $80, $84, $80, $52        ;; 0f:6d63 ????????
-    db   $dc, $5a, $29, $8f, $d8, $e0, $82, $7a        ;; 0f:6d6b ????????
-    db   $e5, $00, $85, $87, $89, $e2, $07, $6d        ;; 0f:6d73 ????????
-    db   $e5, $40, $25, $21, $22, $53, $5f, $e0        ;; 0f:6d7b ????????
-    db   $82, $7a, $8f, $82, $84, $85, $8f, $84        ;; 0f:6d83 ????????
-    db   $85, $87, $8f, $85, $87, $89, $87, $8a        ;; 0f:6d8b ????????
-    db   $89, $87, $8f, $89, $8a, $d8, $80, $51        ;; 0f:6d93 ????????
-    db   $80, $dc, $8a, $8f, $89, $8a, $d8, $80        ;; 0f:6d9b ????????
-    db   $51, $80, $dc, $8a, $09, $ff                  ;; 0f:6da3 ??????
+song14_channel1:
+    mUNK_E4 frequencyDeltaData                         ;; 0f:6c83 $e4 $4f $7a
+    mUNK_E0 $82                                        ;; 0f:6c86 $e0 $82
+    db   $7A ; unknown music opcode                    ;; 0f:6c88 $7a
+    mUNK_E5 $00                                        ;; 0f:6c89 $e5 $00
+    mUNK_E6 $03                                        ;; 0f:6c8b $e6 $03
+    db   $8F ; unknown music opcode                    ;; 0f:6c8d $8f
+    db   $D1 ; unknown music opcode                    ;; 0f:6c8e $d1
+    db   $89 ; unknown music opcode                    ;; 0f:6c8f $89
+    db   $D8 ; unknown music opcode                    ;; 0f:6c90 $d8
+    db   $80 ; unknown music opcode                    ;; 0f:6c91 $80
+    db   $DC ; unknown music opcode                    ;; 0f:6c92 $dc
+    db   $89 ; unknown music opcode                    ;; 0f:6c93 $89
+    db   $D8 ; unknown music opcode                    ;; 0f:6c94 $d8
+    db   $55 ; unknown music opcode                    ;; 0f:6c95 $55
+    db   $54 ; unknown music opcode                    ;; 0f:6c96 $54
+    db   $53 ; unknown music opcode                    ;; 0f:6c97 $53
+    db   $50 ; unknown music opcode                    ;; 0f:6c98 $50
+    db   $8E ; unknown music opcode                    ;; 0f:6c99 $8e
+    db   $85 ; unknown music opcode                    ;; 0f:6c9a $85
+    db   $87 ; unknown music opcode                    ;; 0f:6c9b $87
+    db   $89 ; unknown music opcode                    ;; 0f:6c9c $89
+    db   $22 ; unknown music opcode                    ;; 0f:6c9d $22
+    db   $DC ; unknown music opcode                    ;; 0f:6c9e $dc
+    db   $2A ; unknown music opcode                    ;; 0f:6c9f $2a
+    db   $D8 ; unknown music opcode                    ;; 0f:6ca0 $d8
+    db   $20 ; unknown music opcode                    ;; 0f:6ca1 $20
+    db   $8F ; unknown music opcode                    ;; 0f:6ca2 $8f
+    db   $DC ; unknown music opcode                    ;; 0f:6ca3 $dc
+    db   $49 ; unknown music opcode                    ;; 0f:6ca4 $49
+    db   $D8 ; unknown music opcode                    ;; 0f:6ca5 $d8
+    db   $22 ; unknown music opcode                    ;; 0f:6ca6 $22
+    db   $54 ; unknown music opcode                    ;; 0f:6ca7 $54
+    db   $50 ; unknown music opcode                    ;; 0f:6ca8 $50
+    db   $8F ; unknown music opcode                    ;; 0f:6ca9 $8f
+    db   $45 ; unknown music opcode                    ;; 0f:6caa $45
+    db   $58 ; unknown music opcode                    ;; 0f:6cab $58
+    db   $89 ; unknown music opcode                    ;; 0f:6cac $89
+    db   $84 ; unknown music opcode                    ;; 0f:6cad $84
+    db   $8F ; unknown music opcode                    ;; 0f:6cae $8f
+    db   $84 ; unknown music opcode                    ;; 0f:6caf $84
+    db   $89 ; unknown music opcode                    ;; 0f:6cb0 $89
+    db   $87 ; unknown music opcode                    ;; 0f:6cb1 $87
+    db   $56 ; unknown music opcode                    ;; 0f:6cb2 $56
+    db   $87 ; unknown music opcode                    ;; 0f:6cb3 $87
+    db   $89 ; unknown music opcode                    ;; 0f:6cb4 $89
+    db   $52 ; unknown music opcode                    ;; 0f:6cb5 $52
+    db   $50 ; unknown music opcode                    ;; 0f:6cb6 $50
+    db   $DC ; unknown music opcode                    ;; 0f:6cb7 $dc
+    db   $2A ; unknown music opcode                    ;; 0f:6cb8 $2a
+    db   $D8 ; unknown music opcode                    ;; 0f:6cb9 $d8
+    db   $50 ; unknown music opcode                    ;; 0f:6cba $50
+    db   $DC ; unknown music opcode                    ;; 0f:6cbb $dc
+    db   $5A ; unknown music opcode                    ;; 0f:6cbc $5a
+    db   $29 ; unknown music opcode                    ;; 0f:6cbd $29
+    db   $2E ; unknown music opcode                    ;; 0f:6cbe $2e
+    db   $2F ; unknown music opcode                    ;; 0f:6cbf $2f
+    db   $D8 ; unknown music opcode                    ;; 0f:6cc0 $d8
+    mUNK_E3 $02                                        ;; 0f:6cc1 $e3 $02
+.data_0f_6cc3:
+    mUNK_E0 $c6                                        ;; 0f:6cc3 $e0 $c6
+    db   $7A ; unknown music opcode                    ;; 0f:6cc5 $7a
+    mUNK_E5 $40                                        ;; 0f:6cc6 $e5 $40
+    db   $25 ; unknown music opcode                    ;; 0f:6cc8 $25
+    db   $21 ; unknown music opcode                    ;; 0f:6cc9 $21
+    db   $22 ; unknown music opcode                    ;; 0f:6cca $22
+    db   $83 ; unknown music opcode                    ;; 0f:6ccb $83
+    db   $80 ; unknown music opcode                    ;; 0f:6ccc $80
+    db   $82 ; unknown music opcode                    ;; 0f:6ccd $82
+    db   $83 ; unknown music opcode                    ;; 0f:6cce $83
+    db   $55 ; unknown music opcode                    ;; 0f:6ccf $55
+    db   $5A ; unknown music opcode                    ;; 0f:6cd0 $5a
+    db   $54 ; unknown music opcode                    ;; 0f:6cd1 $54
+    db   $82 ; unknown music opcode                    ;; 0f:6cd2 $82
+    db   $80 ; unknown music opcode                    ;; 0f:6cd3 $80
+    db   $8F ; unknown music opcode                    ;; 0f:6cd4 $8f
+    db   $DC ; unknown music opcode                    ;; 0f:6cd5 $dc
+    db   $8A ; unknown music opcode                    ;; 0f:6cd6 $8a
+    db   $D8 ; unknown music opcode                    ;; 0f:6cd7 $d8
+    db   $80 ; unknown music opcode                    ;; 0f:6cd8 $80
+    db   $82 ; unknown music opcode                    ;; 0f:6cd9 $82
+    db   $54 ; unknown music opcode                    ;; 0f:6cda $54
+    db   $85 ; unknown music opcode                    ;; 0f:6cdb $85
+    db   $87 ; unknown music opcode                    ;; 0f:6cdc $87
+    db   $89 ; unknown music opcode                    ;; 0f:6cdd $89
+    db   $87 ; unknown music opcode                    ;; 0f:6cde $87
+    db   $55 ; unknown music opcode                    ;; 0f:6cdf $55
+    db   $29 ; unknown music opcode                    ;; 0f:6ce0 $29
+    db   $05 ; unknown music opcode                    ;; 0f:6ce1 $05
+    mUNK_EB $01, .data_0f_6cf3                         ;; 0f:6ce2 $eb $01 $f3 $6c
+    db   $54 ; unknown music opcode                    ;; 0f:6ce6 $54
+    db   $57 ; unknown music opcode                    ;; 0f:6ce7 $57
+    db   $52 ; unknown music opcode                    ;; 0f:6ce8 $52
+    db   $84 ; unknown music opcode                    ;; 0f:6ce9 $84
+    db   $82 ; unknown music opcode                    ;; 0f:6cea $82
+    db   $8F ; unknown music opcode                    ;; 0f:6ceb $8f
+    db   $80 ; unknown music opcode                    ;; 0f:6cec $80
+    db   $85 ; unknown music opcode                    ;; 0f:6ced $85
+    db   $80 ; unknown music opcode                    ;; 0f:6cee $80
+    db   $24 ; unknown music opcode                    ;; 0f:6cef $24
+    mUNK_E2 .data_0f_6cc3                              ;; 0f:6cf0 $e2 $c3 $6c
+.data_0f_6cf3:
+    db   $8F ; unknown music opcode                    ;; 0f:6cf3 $8f
+    db   $80 ; unknown music opcode                    ;; 0f:6cf4 $80
+    db   $84 ; unknown music opcode                    ;; 0f:6cf5 $84
+    db   $80 ; unknown music opcode                    ;; 0f:6cf6 $80
+    db   $52 ; unknown music opcode                    ;; 0f:6cf7 $52
+    db   $DC ; unknown music opcode                    ;; 0f:6cf8 $dc
+    db   $5A ; unknown music opcode                    ;; 0f:6cf9 $5a
+    db   $29 ; unknown music opcode                    ;; 0f:6cfa $29
+    db   $8F ; unknown music opcode                    ;; 0f:6cfb $8f
+    db   $D8 ; unknown music opcode                    ;; 0f:6cfc $d8
+    mUNK_E0 $82                                        ;; 0f:6cfd $e0 $82
+    db   $7A ; unknown music opcode                    ;; 0f:6cff $7a
+    mUNK_E5 $00                                        ;; 0f:6d00 $e5 $00
+    db   $85 ; unknown music opcode                    ;; 0f:6d02 $85
+    db   $87 ; unknown music opcode                    ;; 0f:6d03 $87
+    db   $89 ; unknown music opcode                    ;; 0f:6d04 $89
+    mUNK_E3 $02                                        ;; 0f:6d05 $e3 $02
+.data_0f_6d07:
+    mUNK_E0 $c2                                        ;; 0f:6d07 $e0 $c2
+    db   $7A ; unknown music opcode                    ;; 0f:6d09 $7a
+    db   $8F ; unknown music opcode                    ;; 0f:6d0a $8f
+    db   $82 ; unknown music opcode                    ;; 0f:6d0b $82
+    db   $84 ; unknown music opcode                    ;; 0f:6d0c $84
+    db   $85 ; unknown music opcode                    ;; 0f:6d0d $85
+    db   $24 ; unknown music opcode                    ;; 0f:6d0e $24
+    db   $8F ; unknown music opcode                    ;; 0f:6d0f $8f
+    db   $80 ; unknown music opcode                    ;; 0f:6d10 $80
+    db   $82 ; unknown music opcode                    ;; 0f:6d11 $82
+    db   $84 ; unknown music opcode                    ;; 0f:6d12 $84
+    db   $52 ; unknown music opcode                    ;; 0f:6d13 $52
+    db   $84 ; unknown music opcode                    ;; 0f:6d14 $84
+    db   $85 ; unknown music opcode                    ;; 0f:6d15 $85
+    db   $82 ; unknown music opcode                    ;; 0f:6d16 $82
+    db   $DC ; unknown music opcode                    ;; 0f:6d17 $dc
+    db   $8A ; unknown music opcode                    ;; 0f:6d18 $8a
+    db   $D8 ; unknown music opcode                    ;; 0f:6d19 $d8
+    db   $80 ; unknown music opcode                    ;; 0f:6d1a $80
+    db   $82 ; unknown music opcode                    ;; 0f:6d1b $82
+    db   $50 ; unknown music opcode                    ;; 0f:6d1c $50
+    db   $84 ; unknown music opcode                    ;; 0f:6d1d $84
+    db   $80 ; unknown music opcode                    ;; 0f:6d1e $80
+    mUNK_E0 $82                                        ;; 0f:6d1f $e0 $82
+    db   $7A ; unknown music opcode                    ;; 0f:6d21 $7a
+    db   $52 ; unknown music opcode                    ;; 0f:6d22 $52
+    db   $50 ; unknown music opcode                    ;; 0f:6d23 $50
+    db   $57 ; unknown music opcode                    ;; 0f:6d24 $57
+    db   $59 ; unknown music opcode                    ;; 0f:6d25 $59
+    mUNK_E0 $c2                                        ;; 0f:6d26 $e0 $c2
+    db   $7A ; unknown music opcode                    ;; 0f:6d28 $7a
+    db   $8F ; unknown music opcode                    ;; 0f:6d29 $8f
+    db   $82 ; unknown music opcode                    ;; 0f:6d2a $82
+    db   $84 ; unknown music opcode                    ;; 0f:6d2b $84
+    db   $85 ; unknown music opcode                    ;; 0f:6d2c $85
+    db   $84 ; unknown music opcode                    ;; 0f:6d2d $84
+    db   $87 ; unknown music opcode                    ;; 0f:6d2e $87
+    db   $89 ; unknown music opcode                    ;; 0f:6d2f $89
+    db   $8A ; unknown music opcode                    ;; 0f:6d30 $8a
+    db   $8F ; unknown music opcode                    ;; 0f:6d31 $8f
+    db   $80 ; unknown music opcode                    ;; 0f:6d32 $80
+    db   $82 ; unknown music opcode                    ;; 0f:6d33 $82
+    db   $84 ; unknown music opcode                    ;; 0f:6d34 $84
+    db   $82 ; unknown music opcode                    ;; 0f:6d35 $82
+    db   $85 ; unknown music opcode                    ;; 0f:6d36 $85
+    db   $87 ; unknown music opcode                    ;; 0f:6d37 $87
+    db   $89 ; unknown music opcode                    ;; 0f:6d38 $89
+    db   $2A ; unknown music opcode                    ;; 0f:6d39 $2a
+    db   $2B ; unknown music opcode                    ;; 0f:6d3a $2b
+    db   $8F ; unknown music opcode                    ;; 0f:6d3b $8f
+    db   $8A ; unknown music opcode                    ;; 0f:6d3c $8a
+    db   $D8 ; unknown music opcode                    ;; 0f:6d3d $d8
+    db   $80 ; unknown music opcode                    ;; 0f:6d3e $80
+    db   $82 ; unknown music opcode                    ;; 0f:6d3f $82
+    db   $DC ; unknown music opcode                    ;; 0f:6d40 $dc
+    db   $47 ; unknown music opcode                    ;; 0f:6d41 $47
+    db   $8F ; unknown music opcode                    ;; 0f:6d42 $8f
+    mUNK_EB $01, .data_0f_6d7b                         ;; 0f:6d43 $eb $01 $7b $6d
+    mUNK_E0 $c4                                        ;; 0f:6d47 $e0 $c4
+    db   $7A ; unknown music opcode                    ;; 0f:6d49 $7a
+    mUNK_E5 $40                                        ;; 0f:6d4a $e5 $40
+    db   $25 ; unknown music opcode                    ;; 0f:6d4c $25
+    db   $21 ; unknown music opcode                    ;; 0f:6d4d $21
+    db   $22 ; unknown music opcode                    ;; 0f:6d4e $22
+    db   $83 ; unknown music opcode                    ;; 0f:6d4f $83
+    db   $80 ; unknown music opcode                    ;; 0f:6d50 $80
+    db   $82 ; unknown music opcode                    ;; 0f:6d51 $82
+    db   $83 ; unknown music opcode                    ;; 0f:6d52 $83
+    db   $52 ; unknown music opcode                    ;; 0f:6d53 $52
+    db   $5A ; unknown music opcode                    ;; 0f:6d54 $5a
+    db   $54 ; unknown music opcode                    ;; 0f:6d55 $54
+    db   $82 ; unknown music opcode                    ;; 0f:6d56 $82
+    db   $80 ; unknown music opcode                    ;; 0f:6d57 $80
+    db   $8F ; unknown music opcode                    ;; 0f:6d58 $8f
+    db   $DC ; unknown music opcode                    ;; 0f:6d59 $dc
+    db   $8A ; unknown music opcode                    ;; 0f:6d5a $8a
+    db   $D8 ; unknown music opcode                    ;; 0f:6d5b $d8
+    db   $80 ; unknown music opcode                    ;; 0f:6d5c $80
+    db   $82 ; unknown music opcode                    ;; 0f:6d5d $82
+    db   $54 ; unknown music opcode                    ;; 0f:6d5e $54
+    db   $85 ; unknown music opcode                    ;; 0f:6d5f $85
+    db   $87 ; unknown music opcode                    ;; 0f:6d60 $87
+    db   $89 ; unknown music opcode                    ;; 0f:6d61 $89
+    db   $87 ; unknown music opcode                    ;; 0f:6d62 $87
+    db   $55 ; unknown music opcode                    ;; 0f:6d63 $55
+    db   $29 ; unknown music opcode                    ;; 0f:6d64 $29
+    db   $05 ; unknown music opcode                    ;; 0f:6d65 $05
+    db   $8F ; unknown music opcode                    ;; 0f:6d66 $8f
+    db   $80 ; unknown music opcode                    ;; 0f:6d67 $80
+    db   $84 ; unknown music opcode                    ;; 0f:6d68 $84
+    db   $80 ; unknown music opcode                    ;; 0f:6d69 $80
+    db   $52 ; unknown music opcode                    ;; 0f:6d6a $52
+    db   $DC ; unknown music opcode                    ;; 0f:6d6b $dc
+    db   $5A ; unknown music opcode                    ;; 0f:6d6c $5a
+    db   $29 ; unknown music opcode                    ;; 0f:6d6d $29
+    db   $8F ; unknown music opcode                    ;; 0f:6d6e $8f
+    db   $D8 ; unknown music opcode                    ;; 0f:6d6f $d8
+    mUNK_E0 $82                                        ;; 0f:6d70 $e0 $82
+    db   $7A ; unknown music opcode                    ;; 0f:6d72 $7a
+    mUNK_E5 $00                                        ;; 0f:6d73 $e5 $00
+    db   $85 ; unknown music opcode                    ;; 0f:6d75 $85
+    db   $87 ; unknown music opcode                    ;; 0f:6d76 $87
+    db   $89 ; unknown music opcode                    ;; 0f:6d77 $89
+    mUNK_E2 .data_0f_6d07                              ;; 0f:6d78 $e2 $07 $6d
+.data_0f_6d7b:
+    mUNK_E5 $40                                        ;; 0f:6d7b $e5 $40
+    db   $25 ; unknown music opcode                    ;; 0f:6d7d $25
+    db   $21 ; unknown music opcode                    ;; 0f:6d7e $21
+    db   $22 ; unknown music opcode                    ;; 0f:6d7f $22
+    db   $53 ; unknown music opcode                    ;; 0f:6d80 $53
+    db   $5F ; unknown music opcode                    ;; 0f:6d81 $5f
+    mUNK_E0 $82                                        ;; 0f:6d82 $e0 $82
+    db   $7A ; unknown music opcode                    ;; 0f:6d84 $7a
+    db   $8F ; unknown music opcode                    ;; 0f:6d85 $8f
+    db   $82 ; unknown music opcode                    ;; 0f:6d86 $82
+    db   $84 ; unknown music opcode                    ;; 0f:6d87 $84
+    db   $85 ; unknown music opcode                    ;; 0f:6d88 $85
+    db   $8F ; unknown music opcode                    ;; 0f:6d89 $8f
+    db   $84 ; unknown music opcode                    ;; 0f:6d8a $84
+    db   $85 ; unknown music opcode                    ;; 0f:6d8b $85
+    db   $87 ; unknown music opcode                    ;; 0f:6d8c $87
+    db   $8F ; unknown music opcode                    ;; 0f:6d8d $8f
+    db   $85 ; unknown music opcode                    ;; 0f:6d8e $85
+    db   $87 ; unknown music opcode                    ;; 0f:6d8f $87
+    db   $89 ; unknown music opcode                    ;; 0f:6d90 $89
+    db   $87 ; unknown music opcode                    ;; 0f:6d91 $87
+    db   $8A ; unknown music opcode                    ;; 0f:6d92 $8a
+    db   $89 ; unknown music opcode                    ;; 0f:6d93 $89
+    db   $87 ; unknown music opcode                    ;; 0f:6d94 $87
+    db   $8F ; unknown music opcode                    ;; 0f:6d95 $8f
+    db   $89 ; unknown music opcode                    ;; 0f:6d96 $89
+    db   $8A ; unknown music opcode                    ;; 0f:6d97 $8a
+    db   $D8 ; unknown music opcode                    ;; 0f:6d98 $d8
+    db   $80 ; unknown music opcode                    ;; 0f:6d99 $80
+    db   $51 ; unknown music opcode                    ;; 0f:6d9a $51
+    db   $80 ; unknown music opcode                    ;; 0f:6d9b $80
+    db   $DC ; unknown music opcode                    ;; 0f:6d9c $dc
+    db   $8A ; unknown music opcode                    ;; 0f:6d9d $8a
+    db   $8F ; unknown music opcode                    ;; 0f:6d9e $8f
+    db   $89 ; unknown music opcode                    ;; 0f:6d9f $89
+    db   $8A ; unknown music opcode                    ;; 0f:6da0 $8a
+    db   $D8 ; unknown music opcode                    ;; 0f:6da1 $d8
+    db   $80 ; unknown music opcode                    ;; 0f:6da2 $80
+    db   $51 ; unknown music opcode                    ;; 0f:6da3 $51
+    db   $80 ; unknown music opcode                    ;; 0f:6da4 $80
+    db   $DC ; unknown music opcode                    ;; 0f:6da5 $dc
+    db   $8A ; unknown music opcode                    ;; 0f:6da6 $8a
+    db   $09 ; unknown music opcode                    ;; 0f:6da7 $09
+    db   $FF ; unknown music opcode                    ;; 0f:6da8 $ff
 
-data_0f_6da9:
-    db   $e4, $4f, $7a, $e8, $dc, $7a, $e0, $40        ;; 0f:6da9 ????????
-    db   $d2, $05, $03, $dc, $2a, $d8, $21, $dc        ;; 0f:6db1 ????????
-    db   $59, $d8, $54, $52, $50, $dc, $27, $59        ;; 0f:6db9 ????????
-    db   $d8, $54, $dc, $2a, $d8, $54, $86, $88        ;; 0f:6dc1 ????????
-    db   $5f, $59, $52, $84, $86, $dc, $57, $59        ;; 0f:6dc9 ????????
-    db   $2a, $d8, $20, $8f, $dc, $85, $d8, $80        ;; 0f:6dd1 ????????
-    db   $dc, $89, $d8, $55, $50, $dc, $45, $8f        ;; 0f:6dd9 ????????
-    db   $d8, $e3, $02, $e8, $cc, $7a, $25, $24        ;; 0f:6de1 ????????
-    db   $22, $20, $dc, $2a, $29, $57, $89, $8a        ;; 0f:6de9 ????????
-    db   $d8, $20, $25, $23, $0a, $eb, $01, $06        ;; 0f:6df1 ????????
-    db   $6e, $dc, $29, $27, $d8, $20, $8e, $8a        ;; 0f:6df9 ????????
-    db   $89, $87, $e2, $e4, $6d, $dc, $29, $57        ;; 0f:6e01 ????????
-    db   $d8, $50, $8f, $dc, $85, $d8, $80, $dc        ;; 0f:6e09 ????????
-    db   $89, $d8, $e8, $dc, $7a, $55, $53, $e3        ;; 0f:6e11 ????????
-    db   $02, $dc, $2a, $d8, $20, $dc, $29, $d8        ;; 0f:6e19 ????????
-    db   $22, $dc, $27, $d8, $20, $dc, $55, $d8        ;; 0f:6e21 ????????
-    db   $55, $53, $55, $dc, $2a, $d8, $20, $dc        ;; 0f:6e29 ????????
-    db   $29, $d8, $22, $47, $82, $dc, $27, $d8        ;; 0f:6e31 ????????
-    db   $20, $8e, $8a, $89, $87, $eb, $01, $69        ;; 0f:6e39 ????????
-    db   $6e, $e8, $cc, $7a, $25, $24, $22, $20        ;; 0f:6e41 ????????
-    db   $dc, $2a, $29, $57, $89, $8a, $d8, $20        ;; 0f:6e49 ????????
-    db   $25, $23, $0a, $dc, $29, $57, $d8, $50        ;; 0f:6e51 ????????
-    db   $8f, $dc, $85, $d8, $80, $dc, $89, $d8        ;; 0f:6e59 ????????
-    db   $e8, $dc, $7a, $55, $53, $e2, $1a, $6e        ;; 0f:6e61 ????????
-    db   $e8, $cc, $7a, $25, $24, $22, $50, $5f        ;; 0f:6e69 ????????
-    db   $e8, $dc, $7a, $dc, $2a, $29, $27, $d8        ;; 0f:6e71 ????????
-    db   $20, $dc, $25, $2a, $25, $5a, $89, $87        ;; 0f:6e79 ????????
-    db   $25, $2f, $ff, $8a, $6e, $5e, $6f, $31        ;; 0f:6e81 ????????
-    db   $70                                           ;; 0f:6e89 ?
+song14_channel3:
+    mUNK_E4 frequencyDeltaData                         ;; 0f:6da9 $e4 $4f $7a
+    mUNK_E8 data_0f_7adc                               ;; 0f:6dac $e8 $dc $7a
+    mUNK_E0 $40                                        ;; 0f:6daf $e0 $40
+    db   $D2 ; unknown music opcode                    ;; 0f:6db1 $d2
+    db   $05 ; unknown music opcode                    ;; 0f:6db2 $05
+    db   $03 ; unknown music opcode                    ;; 0f:6db3 $03
+    db   $DC ; unknown music opcode                    ;; 0f:6db4 $dc
+    db   $2A ; unknown music opcode                    ;; 0f:6db5 $2a
+    db   $D8 ; unknown music opcode                    ;; 0f:6db6 $d8
+    db   $21 ; unknown music opcode                    ;; 0f:6db7 $21
+    db   $DC ; unknown music opcode                    ;; 0f:6db8 $dc
+    db   $59 ; unknown music opcode                    ;; 0f:6db9 $59
+    db   $D8 ; unknown music opcode                    ;; 0f:6dba $d8
+    db   $54 ; unknown music opcode                    ;; 0f:6dbb $54
+    db   $52 ; unknown music opcode                    ;; 0f:6dbc $52
+    db   $50 ; unknown music opcode                    ;; 0f:6dbd $50
+    db   $DC ; unknown music opcode                    ;; 0f:6dbe $dc
+    db   $27 ; unknown music opcode                    ;; 0f:6dbf $27
+    db   $59 ; unknown music opcode                    ;; 0f:6dc0 $59
+    db   $D8 ; unknown music opcode                    ;; 0f:6dc1 $d8
+    db   $54 ; unknown music opcode                    ;; 0f:6dc2 $54
+    db   $DC ; unknown music opcode                    ;; 0f:6dc3 $dc
+    db   $2A ; unknown music opcode                    ;; 0f:6dc4 $2a
+    db   $D8 ; unknown music opcode                    ;; 0f:6dc5 $d8
+    db   $54 ; unknown music opcode                    ;; 0f:6dc6 $54
+    db   $86 ; unknown music opcode                    ;; 0f:6dc7 $86
+    db   $88 ; unknown music opcode                    ;; 0f:6dc8 $88
+    db   $5F ; unknown music opcode                    ;; 0f:6dc9 $5f
+    db   $59 ; unknown music opcode                    ;; 0f:6dca $59
+    db   $52 ; unknown music opcode                    ;; 0f:6dcb $52
+    db   $84 ; unknown music opcode                    ;; 0f:6dcc $84
+    db   $86 ; unknown music opcode                    ;; 0f:6dcd $86
+    db   $DC ; unknown music opcode                    ;; 0f:6dce $dc
+    db   $57 ; unknown music opcode                    ;; 0f:6dcf $57
+    db   $59 ; unknown music opcode                    ;; 0f:6dd0 $59
+    db   $2A ; unknown music opcode                    ;; 0f:6dd1 $2a
+    db   $D8 ; unknown music opcode                    ;; 0f:6dd2 $d8
+    db   $20 ; unknown music opcode                    ;; 0f:6dd3 $20
+    db   $8F ; unknown music opcode                    ;; 0f:6dd4 $8f
+    db   $DC ; unknown music opcode                    ;; 0f:6dd5 $dc
+    db   $85 ; unknown music opcode                    ;; 0f:6dd6 $85
+    db   $D8 ; unknown music opcode                    ;; 0f:6dd7 $d8
+    db   $80 ; unknown music opcode                    ;; 0f:6dd8 $80
+    db   $DC ; unknown music opcode                    ;; 0f:6dd9 $dc
+    db   $89 ; unknown music opcode                    ;; 0f:6dda $89
+    db   $D8 ; unknown music opcode                    ;; 0f:6ddb $d8
+    db   $55 ; unknown music opcode                    ;; 0f:6ddc $55
+    db   $50 ; unknown music opcode                    ;; 0f:6ddd $50
+    db   $DC ; unknown music opcode                    ;; 0f:6dde $dc
+    db   $45 ; unknown music opcode                    ;; 0f:6ddf $45
+    db   $8F ; unknown music opcode                    ;; 0f:6de0 $8f
+    db   $D8 ; unknown music opcode                    ;; 0f:6de1 $d8
+    mUNK_E3 $02                                        ;; 0f:6de2 $e3 $02
+.data_0f_6de4:
+    mUNK_E8 wavePatternsData                           ;; 0f:6de4 $e8 $cc $7a
+    db   $25 ; unknown music opcode                    ;; 0f:6de7 $25
+    db   $24 ; unknown music opcode                    ;; 0f:6de8 $24
+    db   $22 ; unknown music opcode                    ;; 0f:6de9 $22
+    db   $20 ; unknown music opcode                    ;; 0f:6dea $20
+    db   $DC ; unknown music opcode                    ;; 0f:6deb $dc
+    db   $2A ; unknown music opcode                    ;; 0f:6dec $2a
+    db   $29 ; unknown music opcode                    ;; 0f:6ded $29
+    db   $57 ; unknown music opcode                    ;; 0f:6dee $57
+    db   $89 ; unknown music opcode                    ;; 0f:6def $89
+    db   $8A ; unknown music opcode                    ;; 0f:6df0 $8a
+    db   $D8 ; unknown music opcode                    ;; 0f:6df1 $d8
+    db   $20 ; unknown music opcode                    ;; 0f:6df2 $20
+    db   $25 ; unknown music opcode                    ;; 0f:6df3 $25
+    db   $23 ; unknown music opcode                    ;; 0f:6df4 $23
+    db   $0A ; unknown music opcode                    ;; 0f:6df5 $0a
+    mUNK_EB $01, .data_0f_6e06                         ;; 0f:6df6 $eb $01 $06 $6e
+    db   $DC ; unknown music opcode                    ;; 0f:6dfa $dc
+    db   $29 ; unknown music opcode                    ;; 0f:6dfb $29
+    db   $27 ; unknown music opcode                    ;; 0f:6dfc $27
+    db   $D8 ; unknown music opcode                    ;; 0f:6dfd $d8
+    db   $20 ; unknown music opcode                    ;; 0f:6dfe $20
+    db   $8E ; unknown music opcode                    ;; 0f:6dff $8e
+    db   $8A ; unknown music opcode                    ;; 0f:6e00 $8a
+    db   $89 ; unknown music opcode                    ;; 0f:6e01 $89
+    db   $87 ; unknown music opcode                    ;; 0f:6e02 $87
+    mUNK_E2 .data_0f_6de4                              ;; 0f:6e03 $e2 $e4 $6d
+.data_0f_6e06:
+    db   $DC ; unknown music opcode                    ;; 0f:6e06 $dc
+    db   $29 ; unknown music opcode                    ;; 0f:6e07 $29
+    db   $57 ; unknown music opcode                    ;; 0f:6e08 $57
+    db   $D8 ; unknown music opcode                    ;; 0f:6e09 $d8
+    db   $50 ; unknown music opcode                    ;; 0f:6e0a $50
+    db   $8F ; unknown music opcode                    ;; 0f:6e0b $8f
+    db   $DC ; unknown music opcode                    ;; 0f:6e0c $dc
+    db   $85 ; unknown music opcode                    ;; 0f:6e0d $85
+    db   $D8 ; unknown music opcode                    ;; 0f:6e0e $d8
+    db   $80 ; unknown music opcode                    ;; 0f:6e0f $80
+    db   $DC ; unknown music opcode                    ;; 0f:6e10 $dc
+    db   $89 ; unknown music opcode                    ;; 0f:6e11 $89
+    db   $D8 ; unknown music opcode                    ;; 0f:6e12 $d8
+    mUNK_E8 data_0f_7adc                               ;; 0f:6e13 $e8 $dc $7a
+    db   $55 ; unknown music opcode                    ;; 0f:6e16 $55
+    db   $53 ; unknown music opcode                    ;; 0f:6e17 $53
+    mUNK_E3 $02                                        ;; 0f:6e18 $e3 $02
+.data_0f_6e1a:
+    db   $DC ; unknown music opcode                    ;; 0f:6e1a $dc
+    db   $2A ; unknown music opcode                    ;; 0f:6e1b $2a
+    db   $D8 ; unknown music opcode                    ;; 0f:6e1c $d8
+    db   $20 ; unknown music opcode                    ;; 0f:6e1d $20
+    db   $DC ; unknown music opcode                    ;; 0f:6e1e $dc
+    db   $29 ; unknown music opcode                    ;; 0f:6e1f $29
+    db   $D8 ; unknown music opcode                    ;; 0f:6e20 $d8
+    db   $22 ; unknown music opcode                    ;; 0f:6e21 $22
+    db   $DC ; unknown music opcode                    ;; 0f:6e22 $dc
+    db   $27 ; unknown music opcode                    ;; 0f:6e23 $27
+    db   $D8 ; unknown music opcode                    ;; 0f:6e24 $d8
+    db   $20 ; unknown music opcode                    ;; 0f:6e25 $20
+    db   $DC ; unknown music opcode                    ;; 0f:6e26 $dc
+    db   $55 ; unknown music opcode                    ;; 0f:6e27 $55
+    db   $D8 ; unknown music opcode                    ;; 0f:6e28 $d8
+    db   $55 ; unknown music opcode                    ;; 0f:6e29 $55
+    db   $53 ; unknown music opcode                    ;; 0f:6e2a $53
+    db   $55 ; unknown music opcode                    ;; 0f:6e2b $55
+    db   $DC ; unknown music opcode                    ;; 0f:6e2c $dc
+    db   $2A ; unknown music opcode                    ;; 0f:6e2d $2a
+    db   $D8 ; unknown music opcode                    ;; 0f:6e2e $d8
+    db   $20 ; unknown music opcode                    ;; 0f:6e2f $20
+    db   $DC ; unknown music opcode                    ;; 0f:6e30 $dc
+    db   $29 ; unknown music opcode                    ;; 0f:6e31 $29
+    db   $D8 ; unknown music opcode                    ;; 0f:6e32 $d8
+    db   $22 ; unknown music opcode                    ;; 0f:6e33 $22
+    db   $47 ; unknown music opcode                    ;; 0f:6e34 $47
+    db   $82 ; unknown music opcode                    ;; 0f:6e35 $82
+    db   $DC ; unknown music opcode                    ;; 0f:6e36 $dc
+    db   $27 ; unknown music opcode                    ;; 0f:6e37 $27
+    db   $D8 ; unknown music opcode                    ;; 0f:6e38 $d8
+    db   $20 ; unknown music opcode                    ;; 0f:6e39 $20
+    db   $8E ; unknown music opcode                    ;; 0f:6e3a $8e
+    db   $8A ; unknown music opcode                    ;; 0f:6e3b $8a
+    db   $89 ; unknown music opcode                    ;; 0f:6e3c $89
+    db   $87 ; unknown music opcode                    ;; 0f:6e3d $87
+    mUNK_EB $01, .data_0f_6e69                         ;; 0f:6e3e $eb $01 $69 $6e
+    mUNK_E8 wavePatternsData                           ;; 0f:6e42 $e8 $cc $7a
+    db   $25 ; unknown music opcode                    ;; 0f:6e45 $25
+    db   $24 ; unknown music opcode                    ;; 0f:6e46 $24
+    db   $22 ; unknown music opcode                    ;; 0f:6e47 $22
+    db   $20 ; unknown music opcode                    ;; 0f:6e48 $20
+    db   $DC ; unknown music opcode                    ;; 0f:6e49 $dc
+    db   $2A ; unknown music opcode                    ;; 0f:6e4a $2a
+    db   $29 ; unknown music opcode                    ;; 0f:6e4b $29
+    db   $57 ; unknown music opcode                    ;; 0f:6e4c $57
+    db   $89 ; unknown music opcode                    ;; 0f:6e4d $89
+    db   $8A ; unknown music opcode                    ;; 0f:6e4e $8a
+    db   $D8 ; unknown music opcode                    ;; 0f:6e4f $d8
+    db   $20 ; unknown music opcode                    ;; 0f:6e50 $20
+    db   $25 ; unknown music opcode                    ;; 0f:6e51 $25
+    db   $23 ; unknown music opcode                    ;; 0f:6e52 $23
+    db   $0A ; unknown music opcode                    ;; 0f:6e53 $0a
+    db   $DC ; unknown music opcode                    ;; 0f:6e54 $dc
+    db   $29 ; unknown music opcode                    ;; 0f:6e55 $29
+    db   $57 ; unknown music opcode                    ;; 0f:6e56 $57
+    db   $D8 ; unknown music opcode                    ;; 0f:6e57 $d8
+    db   $50 ; unknown music opcode                    ;; 0f:6e58 $50
+    db   $8F ; unknown music opcode                    ;; 0f:6e59 $8f
+    db   $DC ; unknown music opcode                    ;; 0f:6e5a $dc
+    db   $85 ; unknown music opcode                    ;; 0f:6e5b $85
+    db   $D8 ; unknown music opcode                    ;; 0f:6e5c $d8
+    db   $80 ; unknown music opcode                    ;; 0f:6e5d $80
+    db   $DC ; unknown music opcode                    ;; 0f:6e5e $dc
+    db   $89 ; unknown music opcode                    ;; 0f:6e5f $89
+    db   $D8 ; unknown music opcode                    ;; 0f:6e60 $d8
+    mUNK_E8 data_0f_7adc                               ;; 0f:6e61 $e8 $dc $7a
+    db   $55 ; unknown music opcode                    ;; 0f:6e64 $55
+    db   $53 ; unknown music opcode                    ;; 0f:6e65 $53
+    mUNK_E2 .data_0f_6e1a                              ;; 0f:6e66 $e2 $1a $6e
+.data_0f_6e69:
+    mUNK_E8 wavePatternsData                           ;; 0f:6e69 $e8 $cc $7a
+    db   $25 ; unknown music opcode                    ;; 0f:6e6c $25
+    db   $24 ; unknown music opcode                    ;; 0f:6e6d $24
+    db   $22 ; unknown music opcode                    ;; 0f:6e6e $22
+    db   $50 ; unknown music opcode                    ;; 0f:6e6f $50
+    db   $5F ; unknown music opcode                    ;; 0f:6e70 $5f
+    mUNK_E8 data_0f_7adc                               ;; 0f:6e71 $e8 $dc $7a
+    db   $DC ; unknown music opcode                    ;; 0f:6e74 $dc
+    db   $2A ; unknown music opcode                    ;; 0f:6e75 $2a
+    db   $29 ; unknown music opcode                    ;; 0f:6e76 $29
+    db   $27 ; unknown music opcode                    ;; 0f:6e77 $27
+    db   $D8 ; unknown music opcode                    ;; 0f:6e78 $d8
+    db   $20 ; unknown music opcode                    ;; 0f:6e79 $20
+    db   $DC ; unknown music opcode                    ;; 0f:6e7a $dc
+    db   $25 ; unknown music opcode                    ;; 0f:6e7b $25
+    db   $2A ; unknown music opcode                    ;; 0f:6e7c $2a
+    db   $25 ; unknown music opcode                    ;; 0f:6e7d $25
+    db   $5A ; unknown music opcode                    ;; 0f:6e7e $5a
+    db   $89 ; unknown music opcode                    ;; 0f:6e7f $89
+    db   $87 ; unknown music opcode                    ;; 0f:6e80 $87
+    db   $25 ; unknown music opcode                    ;; 0f:6e81 $25
+    db   $2F ; unknown music opcode                    ;; 0f:6e82 $2f
+    db   $FF ; unknown music opcode                    ;; 0f:6e83 $ff
+    db   $8A ; unknown music opcode                    ;; 0f:6e84 $8a
+    db   $6E ; unknown music opcode                    ;; 0f:6e85 $6e
+    db   $5E ; unknown music opcode                    ;; 0f:6e86 $5e
+    db   $6F ; unknown music opcode                    ;; 0f:6e87 $6f
+    db   $31 ; unknown music opcode                    ;; 0f:6e88 $31
+    db   $70 ; unknown music opcode                    ;; 0f:6e89 $70
 
-data_0f_6e8a:
-    db   $e7, $73, $e4, $4f, $7a, $e0, $82, $7a        ;; 0f:6e8a ????????
-    db   $e5, $80, $e6, $01, $e3, $02, $d4, $80        ;; 0f:6e92 ????????
-    db   $dc, $85, $88, $85, $d8, $81, $dc, $85        ;; 0f:6e9a ????????
-    db   $88, $85, $d8, $83, $dc, $85, $88, $85        ;; 0f:6ea2 ????????
-    db   $d8, $80, $dc, $85, $88, $85, $8a, $83        ;; 0f:6eaa ????????
-    db   $87, $83, $d8, $80, $dc, $85, $88, $85        ;; 0f:6eb2 ????????
-    db   $8a, $83, $87, $83, $d8, $80, $dc, $83        ;; 0f:6eba ????????
-    db   $87, $83, $d8, $82, $dc, $83, $87, $83        ;; 0f:6ec2 ????????
-    db   $d8, $83, $dc, $83, $87, $83, $d8, $82        ;; 0f:6eca ????????
-    db   $dc, $83, $87, $83, $d8, $80, $dc, $83        ;; 0f:6ed2 ????????
-    db   $87, $83, $e2, $98, $6e, $d8, $80, $dc        ;; 0f:6eda ????????
-    db   $81, $85, $81, $8a, $81, $85, $81, $88        ;; 0f:6ee2 ????????
-    db   $81, $85, $81, $87, $80, $84, $80, $88        ;; 0f:6eea ????????
-    db   $82, $85, $82, $8a, $84, $87, $84, $8a        ;; 0f:6ef2 ????????
-    db   $80, $85, $80, $88, $80, $85, $80, $8a        ;; 0f:6efa ????????
-    db   $83, $87, $83, $d8, $80, $dc, $83, $88        ;; 0f:6f02 ????????
-    db   $83, $d8, $81, $dc, $83, $88, $83, $d8        ;; 0f:6f0a ????????
-    db   $83, $dc, $89, $d8, $80, $dc, $89, $d8        ;; 0f:6f12 ????????
-    db   $81, $dc, $85, $8a, $85, $d8, $83, $dc        ;; 0f:6f1a ????????
-    db   $85, $8a, $85, $d8, $81, $dc, $85, $8a        ;; 0f:6f22 ????????
-    db   $85, $d8, $81, $dc, $86, $8a, $86, $d8        ;; 0f:6f2a ????????
-    db   $83, $dc, $86, $8a, $86, $d8, $81, $dc        ;; 0f:6f32 ????????
-    db   $86, $8a, $86, $d8, $80, $dc, $83, $88        ;; 0f:6f3a ????????
-    db   $83, $d8, $80, $dc, $83, $88, $83, $8a        ;; 0f:6f42 ????????
-    db   $81, $86, $81, $89, $80, $85, $80, $8a        ;; 0f:6f4a ????????
-    db   $80, $85, $80, $d8, $80, $dc, $80, $85        ;; 0f:6f52 ????????
-    db   $80, $e1, $96, $6e                            ;; 0f:6f5a ????
+song15_channel2:
+    mUNK_E7 $73                                        ;; 0f:6e8a $e7 $73
+    mUNK_E4 frequencyDeltaData                         ;; 0f:6e8c $e4 $4f $7a
+    mUNK_E0 $82                                        ;; 0f:6e8f $e0 $82
+    db   $7A ; unknown music opcode                    ;; 0f:6e91 $7a
+    mUNK_E5 $80                                        ;; 0f:6e92 $e5 $80
+    mUNK_E6 $01                                        ;; 0f:6e94 $e6 $01
+.data_0f_6e96:
+    mUNK_E3 $02                                        ;; 0f:6e96 $e3 $02
+.data_0f_6e98:
+    db   $D4 ; unknown music opcode                    ;; 0f:6e98 $d4
+    db   $80 ; unknown music opcode                    ;; 0f:6e99 $80
+    db   $DC ; unknown music opcode                    ;; 0f:6e9a $dc
+    db   $85 ; unknown music opcode                    ;; 0f:6e9b $85
+    db   $88 ; unknown music opcode                    ;; 0f:6e9c $88
+    db   $85 ; unknown music opcode                    ;; 0f:6e9d $85
+    db   $D8 ; unknown music opcode                    ;; 0f:6e9e $d8
+    db   $81 ; unknown music opcode                    ;; 0f:6e9f $81
+    db   $DC ; unknown music opcode                    ;; 0f:6ea0 $dc
+    db   $85 ; unknown music opcode                    ;; 0f:6ea1 $85
+    db   $88 ; unknown music opcode                    ;; 0f:6ea2 $88
+    db   $85 ; unknown music opcode                    ;; 0f:6ea3 $85
+    db   $D8 ; unknown music opcode                    ;; 0f:6ea4 $d8
+    db   $83 ; unknown music opcode                    ;; 0f:6ea5 $83
+    db   $DC ; unknown music opcode                    ;; 0f:6ea6 $dc
+    db   $85 ; unknown music opcode                    ;; 0f:6ea7 $85
+    db   $88 ; unknown music opcode                    ;; 0f:6ea8 $88
+    db   $85 ; unknown music opcode                    ;; 0f:6ea9 $85
+    db   $D8 ; unknown music opcode                    ;; 0f:6eaa $d8
+    db   $80 ; unknown music opcode                    ;; 0f:6eab $80
+    db   $DC ; unknown music opcode                    ;; 0f:6eac $dc
+    db   $85 ; unknown music opcode                    ;; 0f:6ead $85
+    db   $88 ; unknown music opcode                    ;; 0f:6eae $88
+    db   $85 ; unknown music opcode                    ;; 0f:6eaf $85
+    db   $8A ; unknown music opcode                    ;; 0f:6eb0 $8a
+    db   $83 ; unknown music opcode                    ;; 0f:6eb1 $83
+    db   $87 ; unknown music opcode                    ;; 0f:6eb2 $87
+    db   $83 ; unknown music opcode                    ;; 0f:6eb3 $83
+    db   $D8 ; unknown music opcode                    ;; 0f:6eb4 $d8
+    db   $80 ; unknown music opcode                    ;; 0f:6eb5 $80
+    db   $DC ; unknown music opcode                    ;; 0f:6eb6 $dc
+    db   $85 ; unknown music opcode                    ;; 0f:6eb7 $85
+    db   $88 ; unknown music opcode                    ;; 0f:6eb8 $88
+    db   $85 ; unknown music opcode                    ;; 0f:6eb9 $85
+    db   $8A ; unknown music opcode                    ;; 0f:6eba $8a
+    db   $83 ; unknown music opcode                    ;; 0f:6ebb $83
+    db   $87 ; unknown music opcode                    ;; 0f:6ebc $87
+    db   $83 ; unknown music opcode                    ;; 0f:6ebd $83
+    db   $D8 ; unknown music opcode                    ;; 0f:6ebe $d8
+    db   $80 ; unknown music opcode                    ;; 0f:6ebf $80
+    db   $DC ; unknown music opcode                    ;; 0f:6ec0 $dc
+    db   $83 ; unknown music opcode                    ;; 0f:6ec1 $83
+    db   $87 ; unknown music opcode                    ;; 0f:6ec2 $87
+    db   $83 ; unknown music opcode                    ;; 0f:6ec3 $83
+    db   $D8 ; unknown music opcode                    ;; 0f:6ec4 $d8
+    db   $82 ; unknown music opcode                    ;; 0f:6ec5 $82
+    db   $DC ; unknown music opcode                    ;; 0f:6ec6 $dc
+    db   $83 ; unknown music opcode                    ;; 0f:6ec7 $83
+    db   $87 ; unknown music opcode                    ;; 0f:6ec8 $87
+    db   $83 ; unknown music opcode                    ;; 0f:6ec9 $83
+    db   $D8 ; unknown music opcode                    ;; 0f:6eca $d8
+    db   $83 ; unknown music opcode                    ;; 0f:6ecb $83
+    db   $DC ; unknown music opcode                    ;; 0f:6ecc $dc
+    db   $83 ; unknown music opcode                    ;; 0f:6ecd $83
+    db   $87 ; unknown music opcode                    ;; 0f:6ece $87
+    db   $83 ; unknown music opcode                    ;; 0f:6ecf $83
+    db   $D8 ; unknown music opcode                    ;; 0f:6ed0 $d8
+    db   $82 ; unknown music opcode                    ;; 0f:6ed1 $82
+    db   $DC ; unknown music opcode                    ;; 0f:6ed2 $dc
+    db   $83 ; unknown music opcode                    ;; 0f:6ed3 $83
+    db   $87 ; unknown music opcode                    ;; 0f:6ed4 $87
+    db   $83 ; unknown music opcode                    ;; 0f:6ed5 $83
+    db   $D8 ; unknown music opcode                    ;; 0f:6ed6 $d8
+    db   $80 ; unknown music opcode                    ;; 0f:6ed7 $80
+    db   $DC ; unknown music opcode                    ;; 0f:6ed8 $dc
+    db   $83 ; unknown music opcode                    ;; 0f:6ed9 $83
+    db   $87 ; unknown music opcode                    ;; 0f:6eda $87
+    db   $83 ; unknown music opcode                    ;; 0f:6edb $83
+    mUNK_E2 .data_0f_6e98                              ;; 0f:6edc $e2 $98 $6e
+    db   $D8 ; unknown music opcode                    ;; 0f:6edf $d8
+    db   $80 ; unknown music opcode                    ;; 0f:6ee0 $80
+    db   $DC ; unknown music opcode                    ;; 0f:6ee1 $dc
+    db   $81 ; unknown music opcode                    ;; 0f:6ee2 $81
+    db   $85 ; unknown music opcode                    ;; 0f:6ee3 $85
+    db   $81 ; unknown music opcode                    ;; 0f:6ee4 $81
+    db   $8A ; unknown music opcode                    ;; 0f:6ee5 $8a
+    db   $81 ; unknown music opcode                    ;; 0f:6ee6 $81
+    db   $85 ; unknown music opcode                    ;; 0f:6ee7 $85
+    db   $81 ; unknown music opcode                    ;; 0f:6ee8 $81
+    db   $88 ; unknown music opcode                    ;; 0f:6ee9 $88
+    db   $81 ; unknown music opcode                    ;; 0f:6eea $81
+    db   $85 ; unknown music opcode                    ;; 0f:6eeb $85
+    db   $81 ; unknown music opcode                    ;; 0f:6eec $81
+    db   $87 ; unknown music opcode                    ;; 0f:6eed $87
+    db   $80 ; unknown music opcode                    ;; 0f:6eee $80
+    db   $84 ; unknown music opcode                    ;; 0f:6eef $84
+    db   $80 ; unknown music opcode                    ;; 0f:6ef0 $80
+    db   $88 ; unknown music opcode                    ;; 0f:6ef1 $88
+    db   $82 ; unknown music opcode                    ;; 0f:6ef2 $82
+    db   $85 ; unknown music opcode                    ;; 0f:6ef3 $85
+    db   $82 ; unknown music opcode                    ;; 0f:6ef4 $82
+    db   $8A ; unknown music opcode                    ;; 0f:6ef5 $8a
+    db   $84 ; unknown music opcode                    ;; 0f:6ef6 $84
+    db   $87 ; unknown music opcode                    ;; 0f:6ef7 $87
+    db   $84 ; unknown music opcode                    ;; 0f:6ef8 $84
+    db   $8A ; unknown music opcode                    ;; 0f:6ef9 $8a
+    db   $80 ; unknown music opcode                    ;; 0f:6efa $80
+    db   $85 ; unknown music opcode                    ;; 0f:6efb $85
+    db   $80 ; unknown music opcode                    ;; 0f:6efc $80
+    db   $88 ; unknown music opcode                    ;; 0f:6efd $88
+    db   $80 ; unknown music opcode                    ;; 0f:6efe $80
+    db   $85 ; unknown music opcode                    ;; 0f:6eff $85
+    db   $80 ; unknown music opcode                    ;; 0f:6f00 $80
+    db   $8A ; unknown music opcode                    ;; 0f:6f01 $8a
+    db   $83 ; unknown music opcode                    ;; 0f:6f02 $83
+    db   $87 ; unknown music opcode                    ;; 0f:6f03 $87
+    db   $83 ; unknown music opcode                    ;; 0f:6f04 $83
+    db   $D8 ; unknown music opcode                    ;; 0f:6f05 $d8
+    db   $80 ; unknown music opcode                    ;; 0f:6f06 $80
+    db   $DC ; unknown music opcode                    ;; 0f:6f07 $dc
+    db   $83 ; unknown music opcode                    ;; 0f:6f08 $83
+    db   $88 ; unknown music opcode                    ;; 0f:6f09 $88
+    db   $83 ; unknown music opcode                    ;; 0f:6f0a $83
+    db   $D8 ; unknown music opcode                    ;; 0f:6f0b $d8
+    db   $81 ; unknown music opcode                    ;; 0f:6f0c $81
+    db   $DC ; unknown music opcode                    ;; 0f:6f0d $dc
+    db   $83 ; unknown music opcode                    ;; 0f:6f0e $83
+    db   $88 ; unknown music opcode                    ;; 0f:6f0f $88
+    db   $83 ; unknown music opcode                    ;; 0f:6f10 $83
+    db   $D8 ; unknown music opcode                    ;; 0f:6f11 $d8
+    db   $83 ; unknown music opcode                    ;; 0f:6f12 $83
+    db   $DC ; unknown music opcode                    ;; 0f:6f13 $dc
+    db   $89 ; unknown music opcode                    ;; 0f:6f14 $89
+    db   $D8 ; unknown music opcode                    ;; 0f:6f15 $d8
+    db   $80 ; unknown music opcode                    ;; 0f:6f16 $80
+    db   $DC ; unknown music opcode                    ;; 0f:6f17 $dc
+    db   $89 ; unknown music opcode                    ;; 0f:6f18 $89
+    db   $D8 ; unknown music opcode                    ;; 0f:6f19 $d8
+    db   $81 ; unknown music opcode                    ;; 0f:6f1a $81
+    db   $DC ; unknown music opcode                    ;; 0f:6f1b $dc
+    db   $85 ; unknown music opcode                    ;; 0f:6f1c $85
+    db   $8A ; unknown music opcode                    ;; 0f:6f1d $8a
+    db   $85 ; unknown music opcode                    ;; 0f:6f1e $85
+    db   $D8 ; unknown music opcode                    ;; 0f:6f1f $d8
+    db   $83 ; unknown music opcode                    ;; 0f:6f20 $83
+    db   $DC ; unknown music opcode                    ;; 0f:6f21 $dc
+    db   $85 ; unknown music opcode                    ;; 0f:6f22 $85
+    db   $8A ; unknown music opcode                    ;; 0f:6f23 $8a
+    db   $85 ; unknown music opcode                    ;; 0f:6f24 $85
+    db   $D8 ; unknown music opcode                    ;; 0f:6f25 $d8
+    db   $81 ; unknown music opcode                    ;; 0f:6f26 $81
+    db   $DC ; unknown music opcode                    ;; 0f:6f27 $dc
+    db   $85 ; unknown music opcode                    ;; 0f:6f28 $85
+    db   $8A ; unknown music opcode                    ;; 0f:6f29 $8a
+    db   $85 ; unknown music opcode                    ;; 0f:6f2a $85
+    db   $D8 ; unknown music opcode                    ;; 0f:6f2b $d8
+    db   $81 ; unknown music opcode                    ;; 0f:6f2c $81
+    db   $DC ; unknown music opcode                    ;; 0f:6f2d $dc
+    db   $86 ; unknown music opcode                    ;; 0f:6f2e $86
+    db   $8A ; unknown music opcode                    ;; 0f:6f2f $8a
+    db   $86 ; unknown music opcode                    ;; 0f:6f30 $86
+    db   $D8 ; unknown music opcode                    ;; 0f:6f31 $d8
+    db   $83 ; unknown music opcode                    ;; 0f:6f32 $83
+    db   $DC ; unknown music opcode                    ;; 0f:6f33 $dc
+    db   $86 ; unknown music opcode                    ;; 0f:6f34 $86
+    db   $8A ; unknown music opcode                    ;; 0f:6f35 $8a
+    db   $86 ; unknown music opcode                    ;; 0f:6f36 $86
+    db   $D8 ; unknown music opcode                    ;; 0f:6f37 $d8
+    db   $81 ; unknown music opcode                    ;; 0f:6f38 $81
+    db   $DC ; unknown music opcode                    ;; 0f:6f39 $dc
+    db   $86 ; unknown music opcode                    ;; 0f:6f3a $86
+    db   $8A ; unknown music opcode                    ;; 0f:6f3b $8a
+    db   $86 ; unknown music opcode                    ;; 0f:6f3c $86
+    db   $D8 ; unknown music opcode                    ;; 0f:6f3d $d8
+    db   $80 ; unknown music opcode                    ;; 0f:6f3e $80
+    db   $DC ; unknown music opcode                    ;; 0f:6f3f $dc
+    db   $83 ; unknown music opcode                    ;; 0f:6f40 $83
+    db   $88 ; unknown music opcode                    ;; 0f:6f41 $88
+    db   $83 ; unknown music opcode                    ;; 0f:6f42 $83
+    db   $D8 ; unknown music opcode                    ;; 0f:6f43 $d8
+    db   $80 ; unknown music opcode                    ;; 0f:6f44 $80
+    db   $DC ; unknown music opcode                    ;; 0f:6f45 $dc
+    db   $83 ; unknown music opcode                    ;; 0f:6f46 $83
+    db   $88 ; unknown music opcode                    ;; 0f:6f47 $88
+    db   $83 ; unknown music opcode                    ;; 0f:6f48 $83
+    db   $8A ; unknown music opcode                    ;; 0f:6f49 $8a
+    db   $81 ; unknown music opcode                    ;; 0f:6f4a $81
+    db   $86 ; unknown music opcode                    ;; 0f:6f4b $86
+    db   $81 ; unknown music opcode                    ;; 0f:6f4c $81
+    db   $89 ; unknown music opcode                    ;; 0f:6f4d $89
+    db   $80 ; unknown music opcode                    ;; 0f:6f4e $80
+    db   $85 ; unknown music opcode                    ;; 0f:6f4f $85
+    db   $80 ; unknown music opcode                    ;; 0f:6f50 $80
+    db   $8A ; unknown music opcode                    ;; 0f:6f51 $8a
+    db   $80 ; unknown music opcode                    ;; 0f:6f52 $80
+    db   $85 ; unknown music opcode                    ;; 0f:6f53 $85
+    db   $80 ; unknown music opcode                    ;; 0f:6f54 $80
+    db   $D8 ; unknown music opcode                    ;; 0f:6f55 $d8
+    db   $80 ; unknown music opcode                    ;; 0f:6f56 $80
+    db   $DC ; unknown music opcode                    ;; 0f:6f57 $dc
+    db   $80 ; unknown music opcode                    ;; 0f:6f58 $80
+    db   $85 ; unknown music opcode                    ;; 0f:6f59 $85
+    db   $80 ; unknown music opcode                    ;; 0f:6f5a $80
+    mUNK_E1 .data_0f_6e96                              ;; 0f:6f5b $e1 $96 $6e
 
-data_0f_6f5e:
-    db   $e4, $4f, $7a, $e0, $c0, $7a, $e5, $80        ;; 0f:6f5e ????????
-    db   $e6, $02, $af, $e3, $02, $d4, $80, $dc        ;; 0f:6f66 ????????
-    db   $85, $88, $85, $d8, $81, $dc, $85, $88        ;; 0f:6f6e ????????
-    db   $85, $d8, $83, $dc, $85, $88, $85, $d8        ;; 0f:6f76 ????????
-    db   $80, $dc, $85, $88, $85, $8a, $83, $87        ;; 0f:6f7e ????????
-    db   $83, $d8, $80, $dc, $85, $88, $85, $8a        ;; 0f:6f86 ????????
-    db   $83, $87, $83, $d8, $80, $dc, $83, $87        ;; 0f:6f8e ????????
-    db   $83, $d8, $82, $dc, $83, $87, $83, $d8        ;; 0f:6f96 ????????
-    db   $83, $dc, $83, $87, $83, $d8, $82, $dc        ;; 0f:6f9e ????????
-    db   $83, $87, $83, $d8, $80, $dc, $83, $87        ;; 0f:6fa6 ????????
-    db   $83, $e2, $6b, $6f, $d8, $80, $dc, $81        ;; 0f:6fae ????????
-    db   $85, $81, $8a, $81, $85, $81, $88, $81        ;; 0f:6fb6 ????????
-    db   $85, $81, $87, $80, $84, $80, $88, $82        ;; 0f:6fbe ????????
-    db   $85, $82, $8a, $84, $87, $84, $8a, $80        ;; 0f:6fc6 ????????
-    db   $85, $80, $88, $80, $85, $80, $8a, $83        ;; 0f:6fce ????????
-    db   $87, $83, $d8, $80, $dc, $83, $88, $83        ;; 0f:6fd6 ????????
-    db   $d8, $81, $dc, $83, $88, $83, $d8, $83        ;; 0f:6fde ????????
-    db   $dc, $89, $d8, $80, $dc, $89, $d8, $81        ;; 0f:6fe6 ????????
-    db   $dc, $85, $8a, $85, $d8, $83, $dc, $85        ;; 0f:6fee ????????
-    db   $8a, $85, $d8, $81, $dc, $85, $8a, $85        ;; 0f:6ff6 ????????
-    db   $d8, $81, $dc, $86, $8a, $86, $d8, $83        ;; 0f:6ffe ????????
-    db   $dc, $86, $8a, $86, $d8, $81, $dc, $86        ;; 0f:7006 ????????
-    db   $8a, $86, $d8, $80, $dc, $83, $88, $83        ;; 0f:700e ????????
-    db   $d8, $80, $dc, $83, $88, $83, $8a, $81        ;; 0f:7016 ????????
-    db   $86, $81, $89, $80, $85, $80, $8a, $80        ;; 0f:701e ????????
-    db   $85, $80, $d8, $80, $dc, $80, $85, $80        ;; 0f:7026 ????????
-    db   $e1, $69, $6f                                 ;; 0f:702e ???
+song15_channel1:
+    mUNK_E4 frequencyDeltaData                         ;; 0f:6f5e $e4 $4f $7a
+    mUNK_E0 $c0                                        ;; 0f:6f61 $e0 $c0
+    db   $7A ; unknown music opcode                    ;; 0f:6f63 $7a
+    mUNK_E5 $80                                        ;; 0f:6f64 $e5 $80
+    mUNK_E6 $02                                        ;; 0f:6f66 $e6 $02
+    db   $AF ; unknown music opcode                    ;; 0f:6f68 $af
+.data_0f_6f69:
+    mUNK_E3 $02                                        ;; 0f:6f69 $e3 $02
+.data_0f_6f6b:
+    db   $D4 ; unknown music opcode                    ;; 0f:6f6b $d4
+    db   $80 ; unknown music opcode                    ;; 0f:6f6c $80
+    db   $DC ; unknown music opcode                    ;; 0f:6f6d $dc
+    db   $85 ; unknown music opcode                    ;; 0f:6f6e $85
+    db   $88 ; unknown music opcode                    ;; 0f:6f6f $88
+    db   $85 ; unknown music opcode                    ;; 0f:6f70 $85
+    db   $D8 ; unknown music opcode                    ;; 0f:6f71 $d8
+    db   $81 ; unknown music opcode                    ;; 0f:6f72 $81
+    db   $DC ; unknown music opcode                    ;; 0f:6f73 $dc
+    db   $85 ; unknown music opcode                    ;; 0f:6f74 $85
+    db   $88 ; unknown music opcode                    ;; 0f:6f75 $88
+    db   $85 ; unknown music opcode                    ;; 0f:6f76 $85
+    db   $D8 ; unknown music opcode                    ;; 0f:6f77 $d8
+    db   $83 ; unknown music opcode                    ;; 0f:6f78 $83
+    db   $DC ; unknown music opcode                    ;; 0f:6f79 $dc
+    db   $85 ; unknown music opcode                    ;; 0f:6f7a $85
+    db   $88 ; unknown music opcode                    ;; 0f:6f7b $88
+    db   $85 ; unknown music opcode                    ;; 0f:6f7c $85
+    db   $D8 ; unknown music opcode                    ;; 0f:6f7d $d8
+    db   $80 ; unknown music opcode                    ;; 0f:6f7e $80
+    db   $DC ; unknown music opcode                    ;; 0f:6f7f $dc
+    db   $85 ; unknown music opcode                    ;; 0f:6f80 $85
+    db   $88 ; unknown music opcode                    ;; 0f:6f81 $88
+    db   $85 ; unknown music opcode                    ;; 0f:6f82 $85
+    db   $8A ; unknown music opcode                    ;; 0f:6f83 $8a
+    db   $83 ; unknown music opcode                    ;; 0f:6f84 $83
+    db   $87 ; unknown music opcode                    ;; 0f:6f85 $87
+    db   $83 ; unknown music opcode                    ;; 0f:6f86 $83
+    db   $D8 ; unknown music opcode                    ;; 0f:6f87 $d8
+    db   $80 ; unknown music opcode                    ;; 0f:6f88 $80
+    db   $DC ; unknown music opcode                    ;; 0f:6f89 $dc
+    db   $85 ; unknown music opcode                    ;; 0f:6f8a $85
+    db   $88 ; unknown music opcode                    ;; 0f:6f8b $88
+    db   $85 ; unknown music opcode                    ;; 0f:6f8c $85
+    db   $8A ; unknown music opcode                    ;; 0f:6f8d $8a
+    db   $83 ; unknown music opcode                    ;; 0f:6f8e $83
+    db   $87 ; unknown music opcode                    ;; 0f:6f8f $87
+    db   $83 ; unknown music opcode                    ;; 0f:6f90 $83
+    db   $D8 ; unknown music opcode                    ;; 0f:6f91 $d8
+    db   $80 ; unknown music opcode                    ;; 0f:6f92 $80
+    db   $DC ; unknown music opcode                    ;; 0f:6f93 $dc
+    db   $83 ; unknown music opcode                    ;; 0f:6f94 $83
+    db   $87 ; unknown music opcode                    ;; 0f:6f95 $87
+    db   $83 ; unknown music opcode                    ;; 0f:6f96 $83
+    db   $D8 ; unknown music opcode                    ;; 0f:6f97 $d8
+    db   $82 ; unknown music opcode                    ;; 0f:6f98 $82
+    db   $DC ; unknown music opcode                    ;; 0f:6f99 $dc
+    db   $83 ; unknown music opcode                    ;; 0f:6f9a $83
+    db   $87 ; unknown music opcode                    ;; 0f:6f9b $87
+    db   $83 ; unknown music opcode                    ;; 0f:6f9c $83
+    db   $D8 ; unknown music opcode                    ;; 0f:6f9d $d8
+    db   $83 ; unknown music opcode                    ;; 0f:6f9e $83
+    db   $DC ; unknown music opcode                    ;; 0f:6f9f $dc
+    db   $83 ; unknown music opcode                    ;; 0f:6fa0 $83
+    db   $87 ; unknown music opcode                    ;; 0f:6fa1 $87
+    db   $83 ; unknown music opcode                    ;; 0f:6fa2 $83
+    db   $D8 ; unknown music opcode                    ;; 0f:6fa3 $d8
+    db   $82 ; unknown music opcode                    ;; 0f:6fa4 $82
+    db   $DC ; unknown music opcode                    ;; 0f:6fa5 $dc
+    db   $83 ; unknown music opcode                    ;; 0f:6fa6 $83
+    db   $87 ; unknown music opcode                    ;; 0f:6fa7 $87
+    db   $83 ; unknown music opcode                    ;; 0f:6fa8 $83
+    db   $D8 ; unknown music opcode                    ;; 0f:6fa9 $d8
+    db   $80 ; unknown music opcode                    ;; 0f:6faa $80
+    db   $DC ; unknown music opcode                    ;; 0f:6fab $dc
+    db   $83 ; unknown music opcode                    ;; 0f:6fac $83
+    db   $87 ; unknown music opcode                    ;; 0f:6fad $87
+    db   $83 ; unknown music opcode                    ;; 0f:6fae $83
+    mUNK_E2 .data_0f_6f6b                              ;; 0f:6faf $e2 $6b $6f
+    db   $D8 ; unknown music opcode                    ;; 0f:6fb2 $d8
+    db   $80 ; unknown music opcode                    ;; 0f:6fb3 $80
+    db   $DC ; unknown music opcode                    ;; 0f:6fb4 $dc
+    db   $81 ; unknown music opcode                    ;; 0f:6fb5 $81
+    db   $85 ; unknown music opcode                    ;; 0f:6fb6 $85
+    db   $81 ; unknown music opcode                    ;; 0f:6fb7 $81
+    db   $8A ; unknown music opcode                    ;; 0f:6fb8 $8a
+    db   $81 ; unknown music opcode                    ;; 0f:6fb9 $81
+    db   $85 ; unknown music opcode                    ;; 0f:6fba $85
+    db   $81 ; unknown music opcode                    ;; 0f:6fbb $81
+    db   $88 ; unknown music opcode                    ;; 0f:6fbc $88
+    db   $81 ; unknown music opcode                    ;; 0f:6fbd $81
+    db   $85 ; unknown music opcode                    ;; 0f:6fbe $85
+    db   $81 ; unknown music opcode                    ;; 0f:6fbf $81
+    db   $87 ; unknown music opcode                    ;; 0f:6fc0 $87
+    db   $80 ; unknown music opcode                    ;; 0f:6fc1 $80
+    db   $84 ; unknown music opcode                    ;; 0f:6fc2 $84
+    db   $80 ; unknown music opcode                    ;; 0f:6fc3 $80
+    db   $88 ; unknown music opcode                    ;; 0f:6fc4 $88
+    db   $82 ; unknown music opcode                    ;; 0f:6fc5 $82
+    db   $85 ; unknown music opcode                    ;; 0f:6fc6 $85
+    db   $82 ; unknown music opcode                    ;; 0f:6fc7 $82
+    db   $8A ; unknown music opcode                    ;; 0f:6fc8 $8a
+    db   $84 ; unknown music opcode                    ;; 0f:6fc9 $84
+    db   $87 ; unknown music opcode                    ;; 0f:6fca $87
+    db   $84 ; unknown music opcode                    ;; 0f:6fcb $84
+    db   $8A ; unknown music opcode                    ;; 0f:6fcc $8a
+    db   $80 ; unknown music opcode                    ;; 0f:6fcd $80
+    db   $85 ; unknown music opcode                    ;; 0f:6fce $85
+    db   $80 ; unknown music opcode                    ;; 0f:6fcf $80
+    db   $88 ; unknown music opcode                    ;; 0f:6fd0 $88
+    db   $80 ; unknown music opcode                    ;; 0f:6fd1 $80
+    db   $85 ; unknown music opcode                    ;; 0f:6fd2 $85
+    db   $80 ; unknown music opcode                    ;; 0f:6fd3 $80
+    db   $8A ; unknown music opcode                    ;; 0f:6fd4 $8a
+    db   $83 ; unknown music opcode                    ;; 0f:6fd5 $83
+    db   $87 ; unknown music opcode                    ;; 0f:6fd6 $87
+    db   $83 ; unknown music opcode                    ;; 0f:6fd7 $83
+    db   $D8 ; unknown music opcode                    ;; 0f:6fd8 $d8
+    db   $80 ; unknown music opcode                    ;; 0f:6fd9 $80
+    db   $DC ; unknown music opcode                    ;; 0f:6fda $dc
+    db   $83 ; unknown music opcode                    ;; 0f:6fdb $83
+    db   $88 ; unknown music opcode                    ;; 0f:6fdc $88
+    db   $83 ; unknown music opcode                    ;; 0f:6fdd $83
+    db   $D8 ; unknown music opcode                    ;; 0f:6fde $d8
+    db   $81 ; unknown music opcode                    ;; 0f:6fdf $81
+    db   $DC ; unknown music opcode                    ;; 0f:6fe0 $dc
+    db   $83 ; unknown music opcode                    ;; 0f:6fe1 $83
+    db   $88 ; unknown music opcode                    ;; 0f:6fe2 $88
+    db   $83 ; unknown music opcode                    ;; 0f:6fe3 $83
+    db   $D8 ; unknown music opcode                    ;; 0f:6fe4 $d8
+    db   $83 ; unknown music opcode                    ;; 0f:6fe5 $83
+    db   $DC ; unknown music opcode                    ;; 0f:6fe6 $dc
+    db   $89 ; unknown music opcode                    ;; 0f:6fe7 $89
+    db   $D8 ; unknown music opcode                    ;; 0f:6fe8 $d8
+    db   $80 ; unknown music opcode                    ;; 0f:6fe9 $80
+    db   $DC ; unknown music opcode                    ;; 0f:6fea $dc
+    db   $89 ; unknown music opcode                    ;; 0f:6feb $89
+    db   $D8 ; unknown music opcode                    ;; 0f:6fec $d8
+    db   $81 ; unknown music opcode                    ;; 0f:6fed $81
+    db   $DC ; unknown music opcode                    ;; 0f:6fee $dc
+    db   $85 ; unknown music opcode                    ;; 0f:6fef $85
+    db   $8A ; unknown music opcode                    ;; 0f:6ff0 $8a
+    db   $85 ; unknown music opcode                    ;; 0f:6ff1 $85
+    db   $D8 ; unknown music opcode                    ;; 0f:6ff2 $d8
+    db   $83 ; unknown music opcode                    ;; 0f:6ff3 $83
+    db   $DC ; unknown music opcode                    ;; 0f:6ff4 $dc
+    db   $85 ; unknown music opcode                    ;; 0f:6ff5 $85
+    db   $8A ; unknown music opcode                    ;; 0f:6ff6 $8a
+    db   $85 ; unknown music opcode                    ;; 0f:6ff7 $85
+    db   $D8 ; unknown music opcode                    ;; 0f:6ff8 $d8
+    db   $81 ; unknown music opcode                    ;; 0f:6ff9 $81
+    db   $DC ; unknown music opcode                    ;; 0f:6ffa $dc
+    db   $85 ; unknown music opcode                    ;; 0f:6ffb $85
+    db   $8A ; unknown music opcode                    ;; 0f:6ffc $8a
+    db   $85 ; unknown music opcode                    ;; 0f:6ffd $85
+    db   $D8 ; unknown music opcode                    ;; 0f:6ffe $d8
+    db   $81 ; unknown music opcode                    ;; 0f:6fff $81
+    db   $DC ; unknown music opcode                    ;; 0f:7000 $dc
+    db   $86 ; unknown music opcode                    ;; 0f:7001 $86
+    db   $8A ; unknown music opcode                    ;; 0f:7002 $8a
+    db   $86 ; unknown music opcode                    ;; 0f:7003 $86
+    db   $D8 ; unknown music opcode                    ;; 0f:7004 $d8
+    db   $83 ; unknown music opcode                    ;; 0f:7005 $83
+    db   $DC ; unknown music opcode                    ;; 0f:7006 $dc
+    db   $86 ; unknown music opcode                    ;; 0f:7007 $86
+    db   $8A ; unknown music opcode                    ;; 0f:7008 $8a
+    db   $86 ; unknown music opcode                    ;; 0f:7009 $86
+    db   $D8 ; unknown music opcode                    ;; 0f:700a $d8
+    db   $81 ; unknown music opcode                    ;; 0f:700b $81
+    db   $DC ; unknown music opcode                    ;; 0f:700c $dc
+    db   $86 ; unknown music opcode                    ;; 0f:700d $86
+    db   $8A ; unknown music opcode                    ;; 0f:700e $8a
+    db   $86 ; unknown music opcode                    ;; 0f:700f $86
+    db   $D8 ; unknown music opcode                    ;; 0f:7010 $d8
+    db   $80 ; unknown music opcode                    ;; 0f:7011 $80
+    db   $DC ; unknown music opcode                    ;; 0f:7012 $dc
+    db   $83 ; unknown music opcode                    ;; 0f:7013 $83
+    db   $88 ; unknown music opcode                    ;; 0f:7014 $88
+    db   $83 ; unknown music opcode                    ;; 0f:7015 $83
+    db   $D8 ; unknown music opcode                    ;; 0f:7016 $d8
+    db   $80 ; unknown music opcode                    ;; 0f:7017 $80
+    db   $DC ; unknown music opcode                    ;; 0f:7018 $dc
+    db   $83 ; unknown music opcode                    ;; 0f:7019 $83
+    db   $88 ; unknown music opcode                    ;; 0f:701a $88
+    db   $83 ; unknown music opcode                    ;; 0f:701b $83
+    db   $8A ; unknown music opcode                    ;; 0f:701c $8a
+    db   $81 ; unknown music opcode                    ;; 0f:701d $81
+    db   $86 ; unknown music opcode                    ;; 0f:701e $86
+    db   $81 ; unknown music opcode                    ;; 0f:701f $81
+    db   $89 ; unknown music opcode                    ;; 0f:7020 $89
+    db   $80 ; unknown music opcode                    ;; 0f:7021 $80
+    db   $85 ; unknown music opcode                    ;; 0f:7022 $85
+    db   $80 ; unknown music opcode                    ;; 0f:7023 $80
+    db   $8A ; unknown music opcode                    ;; 0f:7024 $8a
+    db   $80 ; unknown music opcode                    ;; 0f:7025 $80
+    db   $85 ; unknown music opcode                    ;; 0f:7026 $85
+    db   $80 ; unknown music opcode                    ;; 0f:7027 $80
+    db   $D8 ; unknown music opcode                    ;; 0f:7028 $d8
+    db   $80 ; unknown music opcode                    ;; 0f:7029 $80
+    db   $DC ; unknown music opcode                    ;; 0f:702a $dc
+    db   $80 ; unknown music opcode                    ;; 0f:702b $80
+    db   $85 ; unknown music opcode                    ;; 0f:702c $85
+    db   $80 ; unknown music opcode                    ;; 0f:702d $80
+    mUNK_E1 .data_0f_6f69                              ;; 0f:702e $e1 $69 $6f
 
-data_0f_7031:
-    db   $e4, $4f, $7a, $e8, $cc, $7a, $e0, $40        ;; 0f:7031 ????????
-    db   $e6, $03, $e3, $02, $d3, $01, $28, $01        ;; 0f:7039 ????????
-    db   $28, $00, $27, $eb, $01, $4d, $70, $00        ;; 0f:7041 ????????
-    db   $27, $e2, $3d, $70, $10, $d8, $50, $dc        ;; 0f:7049 ????????
-    db   $57, $50, $dc, $0a, $d8, $25, $20, $22        ;; 0f:7051 ????????
-    db   $24, $05, $27, $08, $29, $0a, $28, $06        ;; 0f:7059 ????????
-    db   $2a, $08, $26, $25, $27, $29, $e1, $3b        ;; 0f:7061 ????????
-    db   $70, $70, $70, $9f, $70, $f9, $70             ;; 0f:7069 ???????
+song15_channel3:
+    mUNK_E4 frequencyDeltaData                         ;; 0f:7031 $e4 $4f $7a
+    mUNK_E8 wavePatternsData                           ;; 0f:7034 $e8 $cc $7a
+    mUNK_E0 $40                                        ;; 0f:7037 $e0 $40
+    mUNK_E6 $03                                        ;; 0f:7039 $e6 $03
+.data_0f_703b:
+    mUNK_E3 $02                                        ;; 0f:703b $e3 $02
+.data_0f_703d:
+    db   $D3 ; unknown music opcode                    ;; 0f:703d $d3
+    db   $01 ; unknown music opcode                    ;; 0f:703e $01
+    db   $28 ; unknown music opcode                    ;; 0f:703f $28
+    db   $01 ; unknown music opcode                    ;; 0f:7040 $01
+    db   $28 ; unknown music opcode                    ;; 0f:7041 $28
+    db   $00 ; unknown music opcode                    ;; 0f:7042 $00
+    db   $27 ; unknown music opcode                    ;; 0f:7043 $27
+    mUNK_EB $01, .data_0f_704d                         ;; 0f:7044 $eb $01 $4d $70
+    db   $00 ; unknown music opcode                    ;; 0f:7048 $00
+    db   $27 ; unknown music opcode                    ;; 0f:7049 $27
+    mUNK_E2 .data_0f_703d                              ;; 0f:704a $e2 $3d $70
+.data_0f_704d:
+    db   $10 ; unknown music opcode                    ;; 0f:704d $10
+    db   $D8 ; unknown music opcode                    ;; 0f:704e $d8
+    db   $50 ; unknown music opcode                    ;; 0f:704f $50
+    db   $DC ; unknown music opcode                    ;; 0f:7050 $dc
+    db   $57 ; unknown music opcode                    ;; 0f:7051 $57
+    db   $50 ; unknown music opcode                    ;; 0f:7052 $50
+    db   $DC ; unknown music opcode                    ;; 0f:7053 $dc
+    db   $0A ; unknown music opcode                    ;; 0f:7054 $0a
+    db   $D8 ; unknown music opcode                    ;; 0f:7055 $d8
+    db   $25 ; unknown music opcode                    ;; 0f:7056 $25
+    db   $20 ; unknown music opcode                    ;; 0f:7057 $20
+    db   $22 ; unknown music opcode                    ;; 0f:7058 $22
+    db   $24 ; unknown music opcode                    ;; 0f:7059 $24
+    db   $05 ; unknown music opcode                    ;; 0f:705a $05
+    db   $27 ; unknown music opcode                    ;; 0f:705b $27
+    db   $08 ; unknown music opcode                    ;; 0f:705c $08
+    db   $29 ; unknown music opcode                    ;; 0f:705d $29
+    db   $0A ; unknown music opcode                    ;; 0f:705e $0a
+    db   $28 ; unknown music opcode                    ;; 0f:705f $28
+    db   $06 ; unknown music opcode                    ;; 0f:7060 $06
+    db   $2A ; unknown music opcode                    ;; 0f:7061 $2a
+    db   $08 ; unknown music opcode                    ;; 0f:7062 $08
+    db   $26 ; unknown music opcode                    ;; 0f:7063 $26
+    db   $25 ; unknown music opcode                    ;; 0f:7064 $25
+    db   $27 ; unknown music opcode                    ;; 0f:7065 $27
+    db   $29 ; unknown music opcode                    ;; 0f:7066 $29
+    mUNK_E1 .data_0f_703b                              ;; 0f:7067 $e1 $3b $70
+    db   $70, $70, $9f, $70, $f9, $70                  ;; 0f:706a ??????
 
-data_0f_7070:
-    db   $e7, $3c, $e4, $4f, $7a, $e0, $82, $7a        ;; 0f:7070 ........
-    db   $e5, $80                                      ;; 0f:7078 ..
+song16_channel2:
+    mUNK_E7 $3c                                        ;; 0f:7070 $e7 $3c
+    mUNK_E4 frequencyDeltaData                         ;; 0f:7072 $e4 $4f $7a
+    mUNK_E0 $82                                        ;; 0f:7075 $e0 $82
+    db   $7A ; unknown music opcode                    ;; 0f:7077 $7a
+    mUNK_E5 $80                                        ;; 0f:7078 $e5 $80
 .data_0f_707a:
-    db   $d3, $14, $59, $22, $8e, $dc, $8b, $d8        ;; 0f:707a ........
-    db   $80, $82, $24, $59, $d8, $50, $dc, $2b        ;; 0f:7082 ........
-    db   $27, $24, $8e, $84, $82, $80, $52, $dc        ;; 0f:708a ........
-    db   $5b, $57, $5b, $09, $2e, $8f, $8b, $d8        ;; 0f:7092 ........
-    db   $80, $82, $e1                                 ;; 0f:709a ...
-    dw   .data_0f_707a                                 ;; 0f:709d pP
+    db   $D3 ; unknown music opcode                    ;; 0f:707a $d3
+    db   $14 ; unknown music opcode                    ;; 0f:707b $14
+    db   $59 ; unknown music opcode                    ;; 0f:707c $59
+    db   $22 ; unknown music opcode                    ;; 0f:707d $22
+    db   $8E ; unknown music opcode                    ;; 0f:707e $8e
+    db   $DC ; unknown music opcode                    ;; 0f:707f $dc
+    db   $8B ; unknown music opcode                    ;; 0f:7080 $8b
+    db   $D8 ; unknown music opcode                    ;; 0f:7081 $d8
+    db   $80 ; unknown music opcode                    ;; 0f:7082 $80
+    db   $82 ; unknown music opcode                    ;; 0f:7083 $82
+    db   $24 ; unknown music opcode                    ;; 0f:7084 $24
+    db   $59 ; unknown music opcode                    ;; 0f:7085 $59
+    db   $D8 ; unknown music opcode                    ;; 0f:7086 $d8
+    db   $50 ; unknown music opcode                    ;; 0f:7087 $50
+    db   $DC ; unknown music opcode                    ;; 0f:7088 $dc
+    db   $2B ; unknown music opcode                    ;; 0f:7089 $2b
+    db   $27 ; unknown music opcode                    ;; 0f:708a $27
+    db   $24 ; unknown music opcode                    ;; 0f:708b $24
+    db   $8E ; unknown music opcode                    ;; 0f:708c $8e
+    db   $84 ; unknown music opcode                    ;; 0f:708d $84
+    db   $82 ; unknown music opcode                    ;; 0f:708e $82
+    db   $80 ; unknown music opcode                    ;; 0f:708f $80
+    db   $52 ; unknown music opcode                    ;; 0f:7090 $52
+    db   $DC ; unknown music opcode                    ;; 0f:7091 $dc
+    db   $5B ; unknown music opcode                    ;; 0f:7092 $5b
+    db   $57 ; unknown music opcode                    ;; 0f:7093 $57
+    db   $5B ; unknown music opcode                    ;; 0f:7094 $5b
+    db   $09 ; unknown music opcode                    ;; 0f:7095 $09
+    db   $2E ; unknown music opcode                    ;; 0f:7096 $2e
+    db   $8F ; unknown music opcode                    ;; 0f:7097 $8f
+    db   $8B ; unknown music opcode                    ;; 0f:7098 $8b
+    db   $D8 ; unknown music opcode                    ;; 0f:7099 $d8
+    db   $80 ; unknown music opcode                    ;; 0f:709a $80
+    db   $82 ; unknown music opcode                    ;; 0f:709b $82
+    mUNK_E1 .data_0f_707a                              ;; 0f:709c $e1 $7a $70
 
-data_0f_709f:
-    db   $e4, $4f, $7a, $e0, $b2, $7a, $e5, $40        ;; 0f:709f ........
-    db   $e6, $03                                      ;; 0f:70a7 ..
+song16_channel1:
+    mUNK_E4 frequencyDeltaData                         ;; 0f:709f $e4 $4f $7a
+    mUNK_E0 $b2                                        ;; 0f:70a2 $e0 $b2
+    db   $7A ; unknown music opcode                    ;; 0f:70a4 $7a
+    mUNK_E5 $40                                        ;; 0f:70a5 $e5 $40
+    mUNK_E6 $03                                        ;; 0f:70a7 $e6 $03
 .data_0f_70a9:
-    db   $8f, $d2, $80, $85, $80, $89, $80, $85        ;; 0f:70a9 ........
-    db   $80, $8f, $dc, $8b, $d8, $84, $dc, $8b        ;; 0f:70b1 ........
-    db   $d8, $87, $dc, $8b, $d8, $84, $87, $8f        ;; 0f:70b9 ........
-    db   $80, $85, $80, $d8, $80, $dc, $85, $89        ;; 0f:70c1 ........
-    db   $85, $8f, $dc, $8b, $d8, $84, $dc, $8b        ;; 0f:70c9 ........
-    db   $d8, $5b, $57, $8f, $80, $85, $80, $59        ;; 0f:70d1 ........
-    db   $8b, $89, $8f, $82, $87, $82, $8f, $dc        ;; 0f:70d9 ........
-    db   $8b, $d8, $82, $dc, $8b, $8f, $d8, $84        ;; 0f:70e1 ........
-    db   $85, $84, $8f, $84, $85, $84, $8f, $84        ;; 0f:70e9 ........
-    db   $85, $84, $5f, $89, $8b, $e1                  ;; 0f:70f1 ......
-    dw   .data_0f_70a9                                 ;; 0f:70f7 pP
+    db   $8F ; unknown music opcode                    ;; 0f:70a9 $8f
+    db   $D2 ; unknown music opcode                    ;; 0f:70aa $d2
+    db   $80 ; unknown music opcode                    ;; 0f:70ab $80
+    db   $85 ; unknown music opcode                    ;; 0f:70ac $85
+    db   $80 ; unknown music opcode                    ;; 0f:70ad $80
+    db   $89 ; unknown music opcode                    ;; 0f:70ae $89
+    db   $80 ; unknown music opcode                    ;; 0f:70af $80
+    db   $85 ; unknown music opcode                    ;; 0f:70b0 $85
+    db   $80 ; unknown music opcode                    ;; 0f:70b1 $80
+    db   $8F ; unknown music opcode                    ;; 0f:70b2 $8f
+    db   $DC ; unknown music opcode                    ;; 0f:70b3 $dc
+    db   $8B ; unknown music opcode                    ;; 0f:70b4 $8b
+    db   $D8 ; unknown music opcode                    ;; 0f:70b5 $d8
+    db   $84 ; unknown music opcode                    ;; 0f:70b6 $84
+    db   $DC ; unknown music opcode                    ;; 0f:70b7 $dc
+    db   $8B ; unknown music opcode                    ;; 0f:70b8 $8b
+    db   $D8 ; unknown music opcode                    ;; 0f:70b9 $d8
+    db   $87 ; unknown music opcode                    ;; 0f:70ba $87
+    db   $DC ; unknown music opcode                    ;; 0f:70bb $dc
+    db   $8B ; unknown music opcode                    ;; 0f:70bc $8b
+    db   $D8 ; unknown music opcode                    ;; 0f:70bd $d8
+    db   $84 ; unknown music opcode                    ;; 0f:70be $84
+    db   $87 ; unknown music opcode                    ;; 0f:70bf $87
+    db   $8F ; unknown music opcode                    ;; 0f:70c0 $8f
+    db   $80 ; unknown music opcode                    ;; 0f:70c1 $80
+    db   $85 ; unknown music opcode                    ;; 0f:70c2 $85
+    db   $80 ; unknown music opcode                    ;; 0f:70c3 $80
+    db   $D8 ; unknown music opcode                    ;; 0f:70c4 $d8
+    db   $80 ; unknown music opcode                    ;; 0f:70c5 $80
+    db   $DC ; unknown music opcode                    ;; 0f:70c6 $dc
+    db   $85 ; unknown music opcode                    ;; 0f:70c7 $85
+    db   $89 ; unknown music opcode                    ;; 0f:70c8 $89
+    db   $85 ; unknown music opcode                    ;; 0f:70c9 $85
+    db   $8F ; unknown music opcode                    ;; 0f:70ca $8f
+    db   $DC ; unknown music opcode                    ;; 0f:70cb $dc
+    db   $8B ; unknown music opcode                    ;; 0f:70cc $8b
+    db   $D8 ; unknown music opcode                    ;; 0f:70cd $d8
+    db   $84 ; unknown music opcode                    ;; 0f:70ce $84
+    db   $DC ; unknown music opcode                    ;; 0f:70cf $dc
+    db   $8B ; unknown music opcode                    ;; 0f:70d0 $8b
+    db   $D8 ; unknown music opcode                    ;; 0f:70d1 $d8
+    db   $5B ; unknown music opcode                    ;; 0f:70d2 $5b
+    db   $57 ; unknown music opcode                    ;; 0f:70d3 $57
+    db   $8F ; unknown music opcode                    ;; 0f:70d4 $8f
+    db   $80 ; unknown music opcode                    ;; 0f:70d5 $80
+    db   $85 ; unknown music opcode                    ;; 0f:70d6 $85
+    db   $80 ; unknown music opcode                    ;; 0f:70d7 $80
+    db   $59 ; unknown music opcode                    ;; 0f:70d8 $59
+    db   $8B ; unknown music opcode                    ;; 0f:70d9 $8b
+    db   $89 ; unknown music opcode                    ;; 0f:70da $89
+    db   $8F ; unknown music opcode                    ;; 0f:70db $8f
+    db   $82 ; unknown music opcode                    ;; 0f:70dc $82
+    db   $87 ; unknown music opcode                    ;; 0f:70dd $87
+    db   $82 ; unknown music opcode                    ;; 0f:70de $82
+    db   $8F ; unknown music opcode                    ;; 0f:70df $8f
+    db   $DC ; unknown music opcode                    ;; 0f:70e0 $dc
+    db   $8B ; unknown music opcode                    ;; 0f:70e1 $8b
+    db   $D8 ; unknown music opcode                    ;; 0f:70e2 $d8
+    db   $82 ; unknown music opcode                    ;; 0f:70e3 $82
+    db   $DC ; unknown music opcode                    ;; 0f:70e4 $dc
+    db   $8B ; unknown music opcode                    ;; 0f:70e5 $8b
+    db   $8F ; unknown music opcode                    ;; 0f:70e6 $8f
+    db   $D8 ; unknown music opcode                    ;; 0f:70e7 $d8
+    db   $84 ; unknown music opcode                    ;; 0f:70e8 $84
+    db   $85 ; unknown music opcode                    ;; 0f:70e9 $85
+    db   $84 ; unknown music opcode                    ;; 0f:70ea $84
+    db   $8F ; unknown music opcode                    ;; 0f:70eb $8f
+    db   $84 ; unknown music opcode                    ;; 0f:70ec $84
+    db   $85 ; unknown music opcode                    ;; 0f:70ed $85
+    db   $84 ; unknown music opcode                    ;; 0f:70ee $84
+    db   $8F ; unknown music opcode                    ;; 0f:70ef $8f
+    db   $84 ; unknown music opcode                    ;; 0f:70f0 $84
+    db   $85 ; unknown music opcode                    ;; 0f:70f1 $85
+    db   $84 ; unknown music opcode                    ;; 0f:70f2 $84
+    db   $5F ; unknown music opcode                    ;; 0f:70f3 $5f
+    db   $89 ; unknown music opcode                    ;; 0f:70f4 $89
+    db   $8B ; unknown music opcode                    ;; 0f:70f5 $8b
+    mUNK_E1 .data_0f_70a9                              ;; 0f:70f6 $e1 $a9 $70
 
-data_0f_70f9:
-    db   $e4, $4f, $7a, $e8, $cc, $7a, $e0, $40        ;; 0f:70f9 ........
-    db   $e6, $03                                      ;; 0f:7101 ..
+song16_channel3:
+    mUNK_E4 frequencyDeltaData                         ;; 0f:70f9 $e4 $4f $7a
+    mUNK_E8 wavePatternsData                           ;; 0f:70fc $e8 $cc $7a
+    mUNK_E0 $40                                        ;; 0f:70ff $e0 $40
+    mUNK_E6 $03                                        ;; 0f:7101 $e6 $03
 .data_0f_7103:
-    db   $d2, $05, $04, $05, $04, $05, $27, $24        ;; 0f:7103 ........
-    db   $29, $28, $27, $26, $e1                       ;; 0f:710b .....
-    dw   .data_0f_7103                                 ;; 0f:7110 pP
+    db   $D2 ; unknown music opcode                    ;; 0f:7103 $d2
+    db   $05 ; unknown music opcode                    ;; 0f:7104 $05
+    db   $04 ; unknown music opcode                    ;; 0f:7105 $04
+    db   $05 ; unknown music opcode                    ;; 0f:7106 $05
+    db   $04 ; unknown music opcode                    ;; 0f:7107 $04
+    db   $05 ; unknown music opcode                    ;; 0f:7108 $05
+    db   $27 ; unknown music opcode                    ;; 0f:7109 $27
+    db   $24 ; unknown music opcode                    ;; 0f:710a $24
+    db   $29 ; unknown music opcode                    ;; 0f:710b $29
+    db   $28 ; unknown music opcode                    ;; 0f:710c $28
+    db   $27 ; unknown music opcode                    ;; 0f:710d $27
+    db   $26 ; unknown music opcode                    ;; 0f:710e $26
+    mUNK_E1 .data_0f_7103                              ;; 0f:710f $e1 $03 $71
     db   $18, $71, $aa, $71, $63, $72                  ;; 0f:7112 ??????
 
-data_0f_7118:
-    db   $e7, $5d, $e4, $4f, $7a, $e0, $aa, $7a        ;; 0f:7118 ????????
-    db   $e5, $80, $0f, $8f, $d3, $ab, $d8, $a0        ;; 0f:7120 ????????
-    db   $a2, $af, $dc, $ab, $af, $d8, $a0, $af        ;; 0f:7128 ????????
-    db   $a0, $dc, $ab, $d8, $a0, $dc, $ab, $a9        ;; 0f:7130 ????????
-    db   $af, $0b, $8f, $d8, $a2, $a0, $a2, $af        ;; 0f:7138 ????????
-    db   $a7, $af, $a5, $af, $a5, $a7, $a4, $a2        ;; 0f:7140 ????????
-    db   $a0, $af, $22, $8e, $dc, $ab, $af, $d8        ;; 0f:7148 ????????
-    db   $a0, $af, $a2, $af, $a4, $af, $a4, $a3        ;; 0f:7150 ????????
-    db   $a4, $af, $a6, $af, $57, $8f, $a4, $af        ;; 0f:7158 ????????
-    db   $a2, $af, $a2, $a1, $a2, $af, $a6, $af        ;; 0f:7160 ????????
-    db   $57, $8f, $a2, $af, $a0, $dc, $ab, $d8        ;; 0f:7168 ????????
-    db   $a0, $a2, $84, $8f, $dc, $ab, $a9, $ab        ;; 0f:7170 ????????
-    db   $d8, $a0, $82, $8f, $dc, $a9, $af, $a9        ;; 0f:7178 ????????
-    db   $ab, $d8, $a0, $dc, $ab, $a9, $af, $ab        ;; 0f:7180 ????????
-    db   $af, $ab, $d8, $a0, $dc, $ab, $a9, $a7        ;; 0f:7188 ????????
-    db   $af, $86, $d8, $a2, $7f, $dc, $a6, $af        ;; 0f:7190 ????????
-    db   $84, $d8, $a0, $7f, $dc, $a4, $af, $76        ;; 0f:7198 ????????
-    db   $a4, $a6, $af, $a9, $af, $d8, $22, $e1        ;; 0f:71a0 ????????
-    db   $23, $71                                      ;; 0f:71a8 ??
+song17_channel2:
+    mUNK_E7 $5d                                        ;; 0f:7118 $e7 $5d
+    mUNK_E4 frequencyDeltaData                         ;; 0f:711a $e4 $4f $7a
+    mUNK_E0 $aa                                        ;; 0f:711d $e0 $aa
+    db   $7A ; unknown music opcode                    ;; 0f:711f $7a
+    mUNK_E5 $80                                        ;; 0f:7120 $e5 $80
+    db   $0F ; unknown music opcode                    ;; 0f:7122 $0f
+.data_0f_7123:
+    db   $8F ; unknown music opcode                    ;; 0f:7123 $8f
+    db   $D3 ; unknown music opcode                    ;; 0f:7124 $d3
+    db   $AB ; unknown music opcode                    ;; 0f:7125 $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:7126 $d8
+    db   $A0 ; unknown music opcode                    ;; 0f:7127 $a0
+    db   $A2 ; unknown music opcode                    ;; 0f:7128 $a2
+    db   $AF ; unknown music opcode                    ;; 0f:7129 $af
+    db   $DC ; unknown music opcode                    ;; 0f:712a $dc
+    db   $AB ; unknown music opcode                    ;; 0f:712b $ab
+    db   $AF ; unknown music opcode                    ;; 0f:712c $af
+    db   $D8 ; unknown music opcode                    ;; 0f:712d $d8
+    db   $A0 ; unknown music opcode                    ;; 0f:712e $a0
+    db   $AF ; unknown music opcode                    ;; 0f:712f $af
+    db   $A0 ; unknown music opcode                    ;; 0f:7130 $a0
+    db   $DC ; unknown music opcode                    ;; 0f:7131 $dc
+    db   $AB ; unknown music opcode                    ;; 0f:7132 $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:7133 $d8
+    db   $A0 ; unknown music opcode                    ;; 0f:7134 $a0
+    db   $DC ; unknown music opcode                    ;; 0f:7135 $dc
+    db   $AB ; unknown music opcode                    ;; 0f:7136 $ab
+    db   $A9 ; unknown music opcode                    ;; 0f:7137 $a9
+    db   $AF ; unknown music opcode                    ;; 0f:7138 $af
+    db   $0B ; unknown music opcode                    ;; 0f:7139 $0b
+    db   $8F ; unknown music opcode                    ;; 0f:713a $8f
+    db   $D8 ; unknown music opcode                    ;; 0f:713b $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:713c $a2
+    db   $A0 ; unknown music opcode                    ;; 0f:713d $a0
+    db   $A2 ; unknown music opcode                    ;; 0f:713e $a2
+    db   $AF ; unknown music opcode                    ;; 0f:713f $af
+    db   $A7 ; unknown music opcode                    ;; 0f:7140 $a7
+    db   $AF ; unknown music opcode                    ;; 0f:7141 $af
+    db   $A5 ; unknown music opcode                    ;; 0f:7142 $a5
+    db   $AF ; unknown music opcode                    ;; 0f:7143 $af
+    db   $A5 ; unknown music opcode                    ;; 0f:7144 $a5
+    db   $A7 ; unknown music opcode                    ;; 0f:7145 $a7
+    db   $A4 ; unknown music opcode                    ;; 0f:7146 $a4
+    db   $A2 ; unknown music opcode                    ;; 0f:7147 $a2
+    db   $A0 ; unknown music opcode                    ;; 0f:7148 $a0
+    db   $AF ; unknown music opcode                    ;; 0f:7149 $af
+    db   $22 ; unknown music opcode                    ;; 0f:714a $22
+    db   $8E ; unknown music opcode                    ;; 0f:714b $8e
+    db   $DC ; unknown music opcode                    ;; 0f:714c $dc
+    db   $AB ; unknown music opcode                    ;; 0f:714d $ab
+    db   $AF ; unknown music opcode                    ;; 0f:714e $af
+    db   $D8 ; unknown music opcode                    ;; 0f:714f $d8
+    db   $A0 ; unknown music opcode                    ;; 0f:7150 $a0
+    db   $AF ; unknown music opcode                    ;; 0f:7151 $af
+    db   $A2 ; unknown music opcode                    ;; 0f:7152 $a2
+    db   $AF ; unknown music opcode                    ;; 0f:7153 $af
+    db   $A4 ; unknown music opcode                    ;; 0f:7154 $a4
+    db   $AF ; unknown music opcode                    ;; 0f:7155 $af
+    db   $A4 ; unknown music opcode                    ;; 0f:7156 $a4
+    db   $A3 ; unknown music opcode                    ;; 0f:7157 $a3
+    db   $A4 ; unknown music opcode                    ;; 0f:7158 $a4
+    db   $AF ; unknown music opcode                    ;; 0f:7159 $af
+    db   $A6 ; unknown music opcode                    ;; 0f:715a $a6
+    db   $AF ; unknown music opcode                    ;; 0f:715b $af
+    db   $57 ; unknown music opcode                    ;; 0f:715c $57
+    db   $8F ; unknown music opcode                    ;; 0f:715d $8f
+    db   $A4 ; unknown music opcode                    ;; 0f:715e $a4
+    db   $AF ; unknown music opcode                    ;; 0f:715f $af
+    db   $A2 ; unknown music opcode                    ;; 0f:7160 $a2
+    db   $AF ; unknown music opcode                    ;; 0f:7161 $af
+    db   $A2 ; unknown music opcode                    ;; 0f:7162 $a2
+    db   $A1 ; unknown music opcode                    ;; 0f:7163 $a1
+    db   $A2 ; unknown music opcode                    ;; 0f:7164 $a2
+    db   $AF ; unknown music opcode                    ;; 0f:7165 $af
+    db   $A6 ; unknown music opcode                    ;; 0f:7166 $a6
+    db   $AF ; unknown music opcode                    ;; 0f:7167 $af
+    db   $57 ; unknown music opcode                    ;; 0f:7168 $57
+    db   $8F ; unknown music opcode                    ;; 0f:7169 $8f
+    db   $A2 ; unknown music opcode                    ;; 0f:716a $a2
+    db   $AF ; unknown music opcode                    ;; 0f:716b $af
+    db   $A0 ; unknown music opcode                    ;; 0f:716c $a0
+    db   $DC ; unknown music opcode                    ;; 0f:716d $dc
+    db   $AB ; unknown music opcode                    ;; 0f:716e $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:716f $d8
+    db   $A0 ; unknown music opcode                    ;; 0f:7170 $a0
+    db   $A2 ; unknown music opcode                    ;; 0f:7171 $a2
+    db   $84 ; unknown music opcode                    ;; 0f:7172 $84
+    db   $8F ; unknown music opcode                    ;; 0f:7173 $8f
+    db   $DC ; unknown music opcode                    ;; 0f:7174 $dc
+    db   $AB ; unknown music opcode                    ;; 0f:7175 $ab
+    db   $A9 ; unknown music opcode                    ;; 0f:7176 $a9
+    db   $AB ; unknown music opcode                    ;; 0f:7177 $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:7178 $d8
+    db   $A0 ; unknown music opcode                    ;; 0f:7179 $a0
+    db   $82 ; unknown music opcode                    ;; 0f:717a $82
+    db   $8F ; unknown music opcode                    ;; 0f:717b $8f
+    db   $DC ; unknown music opcode                    ;; 0f:717c $dc
+    db   $A9 ; unknown music opcode                    ;; 0f:717d $a9
+    db   $AF ; unknown music opcode                    ;; 0f:717e $af
+    db   $A9 ; unknown music opcode                    ;; 0f:717f $a9
+    db   $AB ; unknown music opcode                    ;; 0f:7180 $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:7181 $d8
+    db   $A0 ; unknown music opcode                    ;; 0f:7182 $a0
+    db   $DC ; unknown music opcode                    ;; 0f:7183 $dc
+    db   $AB ; unknown music opcode                    ;; 0f:7184 $ab
+    db   $A9 ; unknown music opcode                    ;; 0f:7185 $a9
+    db   $AF ; unknown music opcode                    ;; 0f:7186 $af
+    db   $AB ; unknown music opcode                    ;; 0f:7187 $ab
+    db   $AF ; unknown music opcode                    ;; 0f:7188 $af
+    db   $AB ; unknown music opcode                    ;; 0f:7189 $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:718a $d8
+    db   $A0 ; unknown music opcode                    ;; 0f:718b $a0
+    db   $DC ; unknown music opcode                    ;; 0f:718c $dc
+    db   $AB ; unknown music opcode                    ;; 0f:718d $ab
+    db   $A9 ; unknown music opcode                    ;; 0f:718e $a9
+    db   $A7 ; unknown music opcode                    ;; 0f:718f $a7
+    db   $AF ; unknown music opcode                    ;; 0f:7190 $af
+    db   $86 ; unknown music opcode                    ;; 0f:7191 $86
+    db   $D8 ; unknown music opcode                    ;; 0f:7192 $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:7193 $a2
+    db   $7F ; unknown music opcode                    ;; 0f:7194 $7f
+    db   $DC ; unknown music opcode                    ;; 0f:7195 $dc
+    db   $A6 ; unknown music opcode                    ;; 0f:7196 $a6
+    db   $AF ; unknown music opcode                    ;; 0f:7197 $af
+    db   $84 ; unknown music opcode                    ;; 0f:7198 $84
+    db   $D8 ; unknown music opcode                    ;; 0f:7199 $d8
+    db   $A0 ; unknown music opcode                    ;; 0f:719a $a0
+    db   $7F ; unknown music opcode                    ;; 0f:719b $7f
+    db   $DC ; unknown music opcode                    ;; 0f:719c $dc
+    db   $A4 ; unknown music opcode                    ;; 0f:719d $a4
+    db   $AF ; unknown music opcode                    ;; 0f:719e $af
+    db   $76 ; unknown music opcode                    ;; 0f:719f $76
+    db   $A4 ; unknown music opcode                    ;; 0f:71a0 $a4
+    db   $A6 ; unknown music opcode                    ;; 0f:71a1 $a6
+    db   $AF ; unknown music opcode                    ;; 0f:71a2 $af
+    db   $A9 ; unknown music opcode                    ;; 0f:71a3 $a9
+    db   $AF ; unknown music opcode                    ;; 0f:71a4 $af
+    db   $D8 ; unknown music opcode                    ;; 0f:71a5 $d8
+    db   $22 ; unknown music opcode                    ;; 0f:71a6 $22
+    mUNK_E1 .data_0f_7123                              ;; 0f:71a7 $e1 $23 $71
 
-data_0f_71aa:
-    db   $e4, $4f, $7a, $e0, $b4, $7a, $e5, $40        ;; 0f:71aa ????????
-    db   $e6, $03, $0f, $e6, $02, $8f, $d2, $ab        ;; 0f:71b2 ????????
-    db   $a9, $ab, $af, $a7, $af, $e6, $03, $79        ;; 0f:71ba ????????
-    db   $ab, $a9, $af, $a5, $af, $e6, $01, $8f        ;; 0f:71c2 ????????
-    db   $ab, $a9, $ab, $af, $a7, $af, $e6, $03        ;; 0f:71ca ????????
-    db   $79, $ab, $a9, $af, $a5, $af, $e6, $02        ;; 0f:71d2 ????????
-    db   $8f, $ab, $a9, $ab, $af, $a7, $af, $e6        ;; 0f:71da ????????
-    db   $03, $79, $ab, $a9, $af, $a5, $af, $e6        ;; 0f:71e2 ????????
-    db   $01, $8f, $ab, $a9, $ab, $af, $a7, $af        ;; 0f:71ea ????????
-    db   $e6, $03, $d8, $57, $a9, $af, $ab, $af        ;; 0f:71f2 ????????
-    db   $d8, $a0, $af, $a0, $dc, $ab, $d8, $a0        ;; 0f:71fa ????????
-    db   $af, $af, $7f, $dc, $e6, $02, $a4, $a6        ;; 0f:7202 ????????
-    db   $a4, $af, $a7, $af, $e6, $03, $ab, $af        ;; 0f:720a ????????
-    db   $ab, $aa, $ab, $af, $d8, $af, $7f, $dd        ;; 0f:7212 ????????
-    db   $e6, $01, $ab, $d8, $a0, $a2, $af, $dc        ;; 0f:721a ????????
-    db   $ab, $af, $e6, $03, $d8, $a4, $a2, $a4        ;; 0f:7222 ????????
-    db   $a6, $87, $8f, $a2, $a0, $a2, $a4, $86        ;; 0f:722a ????????
-    db   $8f, $e6, $01, $a5, $a4, $a5, $7f, $e6        ;; 0f:7232 ????????
-    db   $03, $a5, $af, $e6, $02, $a7, $a6, $a7        ;; 0f:723a ????????
-    db   $7f, $dc, $e6, $03, $ab, $af, $e6, $01        ;; 0f:7242 ????????
-    db   $89, $5f, $e6, $03, $a9, $af, $e6, $02        ;; 0f:724a ????????
-    db   $87, $5f, $e6, $03, $a7, $af, $29, $8f        ;; 0f:7252 ????????
-    db   $d8, $84, $a2, $af, $a0, $af, $e1, $b5        ;; 0f:725a ????????
-    db   $71                                           ;; 0f:7262 ?
+song17_channel1:
+    mUNK_E4 frequencyDeltaData                         ;; 0f:71aa $e4 $4f $7a
+    mUNK_E0 $b4                                        ;; 0f:71ad $e0 $b4
+    db   $7A ; unknown music opcode                    ;; 0f:71af $7a
+    mUNK_E5 $40                                        ;; 0f:71b0 $e5 $40
+    mUNK_E6 $03                                        ;; 0f:71b2 $e6 $03
+    db   $0F ; unknown music opcode                    ;; 0f:71b4 $0f
+.data_0f_71b5:
+    mUNK_E6 $02                                        ;; 0f:71b5 $e6 $02
+    db   $8F ; unknown music opcode                    ;; 0f:71b7 $8f
+    db   $D2 ; unknown music opcode                    ;; 0f:71b8 $d2
+    db   $AB ; unknown music opcode                    ;; 0f:71b9 $ab
+    db   $A9 ; unknown music opcode                    ;; 0f:71ba $a9
+    db   $AB ; unknown music opcode                    ;; 0f:71bb $ab
+    db   $AF ; unknown music opcode                    ;; 0f:71bc $af
+    db   $A7 ; unknown music opcode                    ;; 0f:71bd $a7
+    db   $AF ; unknown music opcode                    ;; 0f:71be $af
+    mUNK_E6 $03                                        ;; 0f:71bf $e6 $03
+    db   $79 ; unknown music opcode                    ;; 0f:71c1 $79
+    db   $AB ; unknown music opcode                    ;; 0f:71c2 $ab
+    db   $A9 ; unknown music opcode                    ;; 0f:71c3 $a9
+    db   $AF ; unknown music opcode                    ;; 0f:71c4 $af
+    db   $A5 ; unknown music opcode                    ;; 0f:71c5 $a5
+    db   $AF ; unknown music opcode                    ;; 0f:71c6 $af
+    mUNK_E6 $01                                        ;; 0f:71c7 $e6 $01
+    db   $8F ; unknown music opcode                    ;; 0f:71c9 $8f
+    db   $AB ; unknown music opcode                    ;; 0f:71ca $ab
+    db   $A9 ; unknown music opcode                    ;; 0f:71cb $a9
+    db   $AB ; unknown music opcode                    ;; 0f:71cc $ab
+    db   $AF ; unknown music opcode                    ;; 0f:71cd $af
+    db   $A7 ; unknown music opcode                    ;; 0f:71ce $a7
+    db   $AF ; unknown music opcode                    ;; 0f:71cf $af
+    mUNK_E6 $03                                        ;; 0f:71d0 $e6 $03
+    db   $79 ; unknown music opcode                    ;; 0f:71d2 $79
+    db   $AB ; unknown music opcode                    ;; 0f:71d3 $ab
+    db   $A9 ; unknown music opcode                    ;; 0f:71d4 $a9
+    db   $AF ; unknown music opcode                    ;; 0f:71d5 $af
+    db   $A5 ; unknown music opcode                    ;; 0f:71d6 $a5
+    db   $AF ; unknown music opcode                    ;; 0f:71d7 $af
+    mUNK_E6 $02                                        ;; 0f:71d8 $e6 $02
+    db   $8F ; unknown music opcode                    ;; 0f:71da $8f
+    db   $AB ; unknown music opcode                    ;; 0f:71db $ab
+    db   $A9 ; unknown music opcode                    ;; 0f:71dc $a9
+    db   $AB ; unknown music opcode                    ;; 0f:71dd $ab
+    db   $AF ; unknown music opcode                    ;; 0f:71de $af
+    db   $A7 ; unknown music opcode                    ;; 0f:71df $a7
+    db   $AF ; unknown music opcode                    ;; 0f:71e0 $af
+    mUNK_E6 $03                                        ;; 0f:71e1 $e6 $03
+    db   $79 ; unknown music opcode                    ;; 0f:71e3 $79
+    db   $AB ; unknown music opcode                    ;; 0f:71e4 $ab
+    db   $A9 ; unknown music opcode                    ;; 0f:71e5 $a9
+    db   $AF ; unknown music opcode                    ;; 0f:71e6 $af
+    db   $A5 ; unknown music opcode                    ;; 0f:71e7 $a5
+    db   $AF ; unknown music opcode                    ;; 0f:71e8 $af
+    mUNK_E6 $01                                        ;; 0f:71e9 $e6 $01
+    db   $8F ; unknown music opcode                    ;; 0f:71eb $8f
+    db   $AB ; unknown music opcode                    ;; 0f:71ec $ab
+    db   $A9 ; unknown music opcode                    ;; 0f:71ed $a9
+    db   $AB ; unknown music opcode                    ;; 0f:71ee $ab
+    db   $AF ; unknown music opcode                    ;; 0f:71ef $af
+    db   $A7 ; unknown music opcode                    ;; 0f:71f0 $a7
+    db   $AF ; unknown music opcode                    ;; 0f:71f1 $af
+    mUNK_E6 $03                                        ;; 0f:71f2 $e6 $03
+    db   $D8 ; unknown music opcode                    ;; 0f:71f4 $d8
+    db   $57 ; unknown music opcode                    ;; 0f:71f5 $57
+    db   $A9 ; unknown music opcode                    ;; 0f:71f6 $a9
+    db   $AF ; unknown music opcode                    ;; 0f:71f7 $af
+    db   $AB ; unknown music opcode                    ;; 0f:71f8 $ab
+    db   $AF ; unknown music opcode                    ;; 0f:71f9 $af
+    db   $D8 ; unknown music opcode                    ;; 0f:71fa $d8
+    db   $A0 ; unknown music opcode                    ;; 0f:71fb $a0
+    db   $AF ; unknown music opcode                    ;; 0f:71fc $af
+    db   $A0 ; unknown music opcode                    ;; 0f:71fd $a0
+    db   $DC ; unknown music opcode                    ;; 0f:71fe $dc
+    db   $AB ; unknown music opcode                    ;; 0f:71ff $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:7200 $d8
+    db   $A0 ; unknown music opcode                    ;; 0f:7201 $a0
+    db   $AF ; unknown music opcode                    ;; 0f:7202 $af
+    db   $AF ; unknown music opcode                    ;; 0f:7203 $af
+    db   $7F ; unknown music opcode                    ;; 0f:7204 $7f
+    db   $DC ; unknown music opcode                    ;; 0f:7205 $dc
+    mUNK_E6 $02                                        ;; 0f:7206 $e6 $02
+    db   $A4 ; unknown music opcode                    ;; 0f:7208 $a4
+    db   $A6 ; unknown music opcode                    ;; 0f:7209 $a6
+    db   $A4 ; unknown music opcode                    ;; 0f:720a $a4
+    db   $AF ; unknown music opcode                    ;; 0f:720b $af
+    db   $A7 ; unknown music opcode                    ;; 0f:720c $a7
+    db   $AF ; unknown music opcode                    ;; 0f:720d $af
+    mUNK_E6 $03                                        ;; 0f:720e $e6 $03
+    db   $AB ; unknown music opcode                    ;; 0f:7210 $ab
+    db   $AF ; unknown music opcode                    ;; 0f:7211 $af
+    db   $AB ; unknown music opcode                    ;; 0f:7212 $ab
+    db   $AA ; unknown music opcode                    ;; 0f:7213 $aa
+    db   $AB ; unknown music opcode                    ;; 0f:7214 $ab
+    db   $AF ; unknown music opcode                    ;; 0f:7215 $af
+    db   $D8 ; unknown music opcode                    ;; 0f:7216 $d8
+    db   $AF ; unknown music opcode                    ;; 0f:7217 $af
+    db   $7F ; unknown music opcode                    ;; 0f:7218 $7f
+    db   $DD ; unknown music opcode                    ;; 0f:7219 $dd
+    mUNK_E6 $01                                        ;; 0f:721a $e6 $01
+    db   $AB ; unknown music opcode                    ;; 0f:721c $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:721d $d8
+    db   $A0 ; unknown music opcode                    ;; 0f:721e $a0
+    db   $A2 ; unknown music opcode                    ;; 0f:721f $a2
+    db   $AF ; unknown music opcode                    ;; 0f:7220 $af
+    db   $DC ; unknown music opcode                    ;; 0f:7221 $dc
+    db   $AB ; unknown music opcode                    ;; 0f:7222 $ab
+    db   $AF ; unknown music opcode                    ;; 0f:7223 $af
+    mUNK_E6 $03                                        ;; 0f:7224 $e6 $03
+    db   $D8 ; unknown music opcode                    ;; 0f:7226 $d8
+    db   $A4 ; unknown music opcode                    ;; 0f:7227 $a4
+    db   $A2 ; unknown music opcode                    ;; 0f:7228 $a2
+    db   $A4 ; unknown music opcode                    ;; 0f:7229 $a4
+    db   $A6 ; unknown music opcode                    ;; 0f:722a $a6
+    db   $87 ; unknown music opcode                    ;; 0f:722b $87
+    db   $8F ; unknown music opcode                    ;; 0f:722c $8f
+    db   $A2 ; unknown music opcode                    ;; 0f:722d $a2
+    db   $A0 ; unknown music opcode                    ;; 0f:722e $a0
+    db   $A2 ; unknown music opcode                    ;; 0f:722f $a2
+    db   $A4 ; unknown music opcode                    ;; 0f:7230 $a4
+    db   $86 ; unknown music opcode                    ;; 0f:7231 $86
+    db   $8F ; unknown music opcode                    ;; 0f:7232 $8f
+    mUNK_E6 $01                                        ;; 0f:7233 $e6 $01
+    db   $A5 ; unknown music opcode                    ;; 0f:7235 $a5
+    db   $A4 ; unknown music opcode                    ;; 0f:7236 $a4
+    db   $A5 ; unknown music opcode                    ;; 0f:7237 $a5
+    db   $7F ; unknown music opcode                    ;; 0f:7238 $7f
+    mUNK_E6 $03                                        ;; 0f:7239 $e6 $03
+    db   $A5 ; unknown music opcode                    ;; 0f:723b $a5
+    db   $AF ; unknown music opcode                    ;; 0f:723c $af
+    mUNK_E6 $02                                        ;; 0f:723d $e6 $02
+    db   $A7 ; unknown music opcode                    ;; 0f:723f $a7
+    db   $A6 ; unknown music opcode                    ;; 0f:7240 $a6
+    db   $A7 ; unknown music opcode                    ;; 0f:7241 $a7
+    db   $7F ; unknown music opcode                    ;; 0f:7242 $7f
+    db   $DC ; unknown music opcode                    ;; 0f:7243 $dc
+    mUNK_E6 $03                                        ;; 0f:7244 $e6 $03
+    db   $AB ; unknown music opcode                    ;; 0f:7246 $ab
+    db   $AF ; unknown music opcode                    ;; 0f:7247 $af
+    mUNK_E6 $01                                        ;; 0f:7248 $e6 $01
+    db   $89 ; unknown music opcode                    ;; 0f:724a $89
+    db   $5F ; unknown music opcode                    ;; 0f:724b $5f
+    mUNK_E6 $03                                        ;; 0f:724c $e6 $03
+    db   $A9 ; unknown music opcode                    ;; 0f:724e $a9
+    db   $AF ; unknown music opcode                    ;; 0f:724f $af
+    mUNK_E6 $02                                        ;; 0f:7250 $e6 $02
+    db   $87 ; unknown music opcode                    ;; 0f:7252 $87
+    db   $5F ; unknown music opcode                    ;; 0f:7253 $5f
+    mUNK_E6 $03                                        ;; 0f:7254 $e6 $03
+    db   $A7 ; unknown music opcode                    ;; 0f:7256 $a7
+    db   $AF ; unknown music opcode                    ;; 0f:7257 $af
+    db   $29 ; unknown music opcode                    ;; 0f:7258 $29
+    db   $8F ; unknown music opcode                    ;; 0f:7259 $8f
+    db   $D8 ; unknown music opcode                    ;; 0f:725a $d8
+    db   $84 ; unknown music opcode                    ;; 0f:725b $84
+    db   $A2 ; unknown music opcode                    ;; 0f:725c $a2
+    db   $AF ; unknown music opcode                    ;; 0f:725d $af
+    db   $A0 ; unknown music opcode                    ;; 0f:725e $a0
+    db   $AF ; unknown music opcode                    ;; 0f:725f $af
+    mUNK_E1 .data_0f_71b5                              ;; 0f:7260 $e1 $b5 $71
 
-data_0f_7263:
-    db   $e4, $4f, $7a, $e8, $cc, $7a, $e0, $40        ;; 0f:7263 ????????
-    db   $d1, $a7, $af, $d8, $a2, $af, $dc, $a7        ;; 0f:726b ????????
-    db   $af, $d8, $a2, $af, $dc, $a7, $af, $d8        ;; 0f:7273 ????????
-    db   $a2, $af, $dc, $a7, $af, $d8, $a2, $af        ;; 0f:727b ????????
-    db   $dc, $e6, $03, $a7, $af, $d8, $a2, $af        ;; 0f:7283 ????????
-    db   $dc, $a7, $af, $d8, $a2, $af, $dc, $a5        ;; 0f:728b ????????
-    db   $af, $d8, $a0, $af, $dc, $a5, $af, $d8        ;; 0f:7293 ????????
-    db   $a0, $af, $dc, $a7, $af, $d8, $a2, $af        ;; 0f:729b ????????
-    db   $dc, $a7, $af, $d8, $a2, $af, $dc, $a5        ;; 0f:72a3 ????????
-    db   $af, $d8, $a0, $af, $dc, $a5, $af, $d8        ;; 0f:72ab ????????
-    db   $a0, $af, $dc, $a7, $af, $d8, $a2, $af        ;; 0f:72b3 ????????
-    db   $dc, $a7, $af, $d8, $a2, $af, $dc, $a5        ;; 0f:72bb ????????
-    db   $af, $d8, $a0, $af, $dc, $a5, $af, $d8        ;; 0f:72c3 ????????
-    db   $a0, $af, $dc, $a7, $af, $d8, $a2, $af        ;; 0f:72cb ????????
-    db   $dc, $a7, $af, $d8, $a2, $af, $57, $55        ;; 0f:72d3 ????????
-    db   $e6, $02, $a0, $af, $e6, $01, $a0, $4f        ;; 0f:72db ????????
-    db   $af, $e6, $03, $d8, $a0, $af, $dc, $a7        ;; 0f:72e3 ????????
-    db   $af, $d8, $a0, $af, $e6, $02, $dd, $ab        ;; 0f:72eb ????????
-    db   $af, $e6, $01, $ab, $4f, $af, $e6, $03        ;; 0f:72f3 ????????
-    db   $d8, $a7, $af, $a2, $af, $a7, $af, $49        ;; 0f:72fb ????????
-    db   $e6, $02, $a4, $af, $e6, $03, $47, $e6        ;; 0f:7303 ????????
-    db   $01, $a2, $af, $e6, $03, $a5, $af, $a5        ;; 0f:730b ????????
-    db   $af, $a5, $af, $a5, $af, $a4, $af, $a4        ;; 0f:7313 ????????
-    db   $af, $a4, $af, $a4, $af, $82, $5f, $e6        ;; 0f:731b ????????
-    db   $02, $a2, $af, $e6, $03, $80, $5f, $e6        ;; 0f:7323 ????????
-    db   $01, $a0, $af, $e6, $03, $22, $8f, $d8        ;; 0f:732b ????????
-    db   $e6, $02, $80, $dc, $e6, $03, $ab, $af        ;; 0f:7333 ????????
-    db   $e6, $01, $a9, $af, $dc, $e1, $84, $72        ;; 0f:733b ????????
+song17_channel3:
+    mUNK_E4 frequencyDeltaData                         ;; 0f:7263 $e4 $4f $7a
+    mUNK_E8 wavePatternsData                           ;; 0f:7266 $e8 $cc $7a
+    mUNK_E0 $40                                        ;; 0f:7269 $e0 $40
+    db   $D1 ; unknown music opcode                    ;; 0f:726b $d1
+    db   $A7 ; unknown music opcode                    ;; 0f:726c $a7
+    db   $AF ; unknown music opcode                    ;; 0f:726d $af
+    db   $D8 ; unknown music opcode                    ;; 0f:726e $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:726f $a2
+    db   $AF ; unknown music opcode                    ;; 0f:7270 $af
+    db   $DC ; unknown music opcode                    ;; 0f:7271 $dc
+    db   $A7 ; unknown music opcode                    ;; 0f:7272 $a7
+    db   $AF ; unknown music opcode                    ;; 0f:7273 $af
+    db   $D8 ; unknown music opcode                    ;; 0f:7274 $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:7275 $a2
+    db   $AF ; unknown music opcode                    ;; 0f:7276 $af
+    db   $DC ; unknown music opcode                    ;; 0f:7277 $dc
+    db   $A7 ; unknown music opcode                    ;; 0f:7278 $a7
+    db   $AF ; unknown music opcode                    ;; 0f:7279 $af
+    db   $D8 ; unknown music opcode                    ;; 0f:727a $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:727b $a2
+    db   $AF ; unknown music opcode                    ;; 0f:727c $af
+    db   $DC ; unknown music opcode                    ;; 0f:727d $dc
+    db   $A7 ; unknown music opcode                    ;; 0f:727e $a7
+    db   $AF ; unknown music opcode                    ;; 0f:727f $af
+    db   $D8 ; unknown music opcode                    ;; 0f:7280 $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:7281 $a2
+    db   $AF ; unknown music opcode                    ;; 0f:7282 $af
+    db   $DC ; unknown music opcode                    ;; 0f:7283 $dc
+.data_0f_7284:
+    mUNK_E6 $03                                        ;; 0f:7284 $e6 $03
+    db   $A7 ; unknown music opcode                    ;; 0f:7286 $a7
+    db   $AF ; unknown music opcode                    ;; 0f:7287 $af
+    db   $D8 ; unknown music opcode                    ;; 0f:7288 $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:7289 $a2
+    db   $AF ; unknown music opcode                    ;; 0f:728a $af
+    db   $DC ; unknown music opcode                    ;; 0f:728b $dc
+    db   $A7 ; unknown music opcode                    ;; 0f:728c $a7
+    db   $AF ; unknown music opcode                    ;; 0f:728d $af
+    db   $D8 ; unknown music opcode                    ;; 0f:728e $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:728f $a2
+    db   $AF ; unknown music opcode                    ;; 0f:7290 $af
+    db   $DC ; unknown music opcode                    ;; 0f:7291 $dc
+    db   $A5 ; unknown music opcode                    ;; 0f:7292 $a5
+    db   $AF ; unknown music opcode                    ;; 0f:7293 $af
+    db   $D8 ; unknown music opcode                    ;; 0f:7294 $d8
+    db   $A0 ; unknown music opcode                    ;; 0f:7295 $a0
+    db   $AF ; unknown music opcode                    ;; 0f:7296 $af
+    db   $DC ; unknown music opcode                    ;; 0f:7297 $dc
+    db   $A5 ; unknown music opcode                    ;; 0f:7298 $a5
+    db   $AF ; unknown music opcode                    ;; 0f:7299 $af
+    db   $D8 ; unknown music opcode                    ;; 0f:729a $d8
+    db   $A0 ; unknown music opcode                    ;; 0f:729b $a0
+    db   $AF ; unknown music opcode                    ;; 0f:729c $af
+    db   $DC ; unknown music opcode                    ;; 0f:729d $dc
+    db   $A7 ; unknown music opcode                    ;; 0f:729e $a7
+    db   $AF ; unknown music opcode                    ;; 0f:729f $af
+    db   $D8 ; unknown music opcode                    ;; 0f:72a0 $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:72a1 $a2
+    db   $AF ; unknown music opcode                    ;; 0f:72a2 $af
+    db   $DC ; unknown music opcode                    ;; 0f:72a3 $dc
+    db   $A7 ; unknown music opcode                    ;; 0f:72a4 $a7
+    db   $AF ; unknown music opcode                    ;; 0f:72a5 $af
+    db   $D8 ; unknown music opcode                    ;; 0f:72a6 $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:72a7 $a2
+    db   $AF ; unknown music opcode                    ;; 0f:72a8 $af
+    db   $DC ; unknown music opcode                    ;; 0f:72a9 $dc
+    db   $A5 ; unknown music opcode                    ;; 0f:72aa $a5
+    db   $AF ; unknown music opcode                    ;; 0f:72ab $af
+    db   $D8 ; unknown music opcode                    ;; 0f:72ac $d8
+    db   $A0 ; unknown music opcode                    ;; 0f:72ad $a0
+    db   $AF ; unknown music opcode                    ;; 0f:72ae $af
+    db   $DC ; unknown music opcode                    ;; 0f:72af $dc
+    db   $A5 ; unknown music opcode                    ;; 0f:72b0 $a5
+    db   $AF ; unknown music opcode                    ;; 0f:72b1 $af
+    db   $D8 ; unknown music opcode                    ;; 0f:72b2 $d8
+    db   $A0 ; unknown music opcode                    ;; 0f:72b3 $a0
+    db   $AF ; unknown music opcode                    ;; 0f:72b4 $af
+    db   $DC ; unknown music opcode                    ;; 0f:72b5 $dc
+    db   $A7 ; unknown music opcode                    ;; 0f:72b6 $a7
+    db   $AF ; unknown music opcode                    ;; 0f:72b7 $af
+    db   $D8 ; unknown music opcode                    ;; 0f:72b8 $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:72b9 $a2
+    db   $AF ; unknown music opcode                    ;; 0f:72ba $af
+    db   $DC ; unknown music opcode                    ;; 0f:72bb $dc
+    db   $A7 ; unknown music opcode                    ;; 0f:72bc $a7
+    db   $AF ; unknown music opcode                    ;; 0f:72bd $af
+    db   $D8 ; unknown music opcode                    ;; 0f:72be $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:72bf $a2
+    db   $AF ; unknown music opcode                    ;; 0f:72c0 $af
+    db   $DC ; unknown music opcode                    ;; 0f:72c1 $dc
+    db   $A5 ; unknown music opcode                    ;; 0f:72c2 $a5
+    db   $AF ; unknown music opcode                    ;; 0f:72c3 $af
+    db   $D8 ; unknown music opcode                    ;; 0f:72c4 $d8
+    db   $A0 ; unknown music opcode                    ;; 0f:72c5 $a0
+    db   $AF ; unknown music opcode                    ;; 0f:72c6 $af
+    db   $DC ; unknown music opcode                    ;; 0f:72c7 $dc
+    db   $A5 ; unknown music opcode                    ;; 0f:72c8 $a5
+    db   $AF ; unknown music opcode                    ;; 0f:72c9 $af
+    db   $D8 ; unknown music opcode                    ;; 0f:72ca $d8
+    db   $A0 ; unknown music opcode                    ;; 0f:72cb $a0
+    db   $AF ; unknown music opcode                    ;; 0f:72cc $af
+    db   $DC ; unknown music opcode                    ;; 0f:72cd $dc
+    db   $A7 ; unknown music opcode                    ;; 0f:72ce $a7
+    db   $AF ; unknown music opcode                    ;; 0f:72cf $af
+    db   $D8 ; unknown music opcode                    ;; 0f:72d0 $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:72d1 $a2
+    db   $AF ; unknown music opcode                    ;; 0f:72d2 $af
+    db   $DC ; unknown music opcode                    ;; 0f:72d3 $dc
+    db   $A7 ; unknown music opcode                    ;; 0f:72d4 $a7
+    db   $AF ; unknown music opcode                    ;; 0f:72d5 $af
+    db   $D8 ; unknown music opcode                    ;; 0f:72d6 $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:72d7 $a2
+    db   $AF ; unknown music opcode                    ;; 0f:72d8 $af
+    db   $57 ; unknown music opcode                    ;; 0f:72d9 $57
+    db   $55 ; unknown music opcode                    ;; 0f:72da $55
+    mUNK_E6 $02                                        ;; 0f:72db $e6 $02
+    db   $A0 ; unknown music opcode                    ;; 0f:72dd $a0
+    db   $AF ; unknown music opcode                    ;; 0f:72de $af
+    mUNK_E6 $01                                        ;; 0f:72df $e6 $01
+    db   $A0 ; unknown music opcode                    ;; 0f:72e1 $a0
+    db   $4F ; unknown music opcode                    ;; 0f:72e2 $4f
+    db   $AF ; unknown music opcode                    ;; 0f:72e3 $af
+    mUNK_E6 $03                                        ;; 0f:72e4 $e6 $03
+    db   $D8 ; unknown music opcode                    ;; 0f:72e6 $d8
+    db   $A0 ; unknown music opcode                    ;; 0f:72e7 $a0
+    db   $AF ; unknown music opcode                    ;; 0f:72e8 $af
+    db   $DC ; unknown music opcode                    ;; 0f:72e9 $dc
+    db   $A7 ; unknown music opcode                    ;; 0f:72ea $a7
+    db   $AF ; unknown music opcode                    ;; 0f:72eb $af
+    db   $D8 ; unknown music opcode                    ;; 0f:72ec $d8
+    db   $A0 ; unknown music opcode                    ;; 0f:72ed $a0
+    db   $AF ; unknown music opcode                    ;; 0f:72ee $af
+    mUNK_E6 $02                                        ;; 0f:72ef $e6 $02
+    db   $DD ; unknown music opcode                    ;; 0f:72f1 $dd
+    db   $AB ; unknown music opcode                    ;; 0f:72f2 $ab
+    db   $AF ; unknown music opcode                    ;; 0f:72f3 $af
+    mUNK_E6 $01                                        ;; 0f:72f4 $e6 $01
+    db   $AB ; unknown music opcode                    ;; 0f:72f6 $ab
+    db   $4F ; unknown music opcode                    ;; 0f:72f7 $4f
+    db   $AF ; unknown music opcode                    ;; 0f:72f8 $af
+    mUNK_E6 $03                                        ;; 0f:72f9 $e6 $03
+    db   $D8 ; unknown music opcode                    ;; 0f:72fb $d8
+    db   $A7 ; unknown music opcode                    ;; 0f:72fc $a7
+    db   $AF ; unknown music opcode                    ;; 0f:72fd $af
+    db   $A2 ; unknown music opcode                    ;; 0f:72fe $a2
+    db   $AF ; unknown music opcode                    ;; 0f:72ff $af
+    db   $A7 ; unknown music opcode                    ;; 0f:7300 $a7
+    db   $AF ; unknown music opcode                    ;; 0f:7301 $af
+    db   $49 ; unknown music opcode                    ;; 0f:7302 $49
+    mUNK_E6 $02                                        ;; 0f:7303 $e6 $02
+    db   $A4 ; unknown music opcode                    ;; 0f:7305 $a4
+    db   $AF ; unknown music opcode                    ;; 0f:7306 $af
+    mUNK_E6 $03                                        ;; 0f:7307 $e6 $03
+    db   $47 ; unknown music opcode                    ;; 0f:7309 $47
+    mUNK_E6 $01                                        ;; 0f:730a $e6 $01
+    db   $A2 ; unknown music opcode                    ;; 0f:730c $a2
+    db   $AF ; unknown music opcode                    ;; 0f:730d $af
+    mUNK_E6 $03                                        ;; 0f:730e $e6 $03
+    db   $A5 ; unknown music opcode                    ;; 0f:7310 $a5
+    db   $AF ; unknown music opcode                    ;; 0f:7311 $af
+    db   $A5 ; unknown music opcode                    ;; 0f:7312 $a5
+    db   $AF ; unknown music opcode                    ;; 0f:7313 $af
+    db   $A5 ; unknown music opcode                    ;; 0f:7314 $a5
+    db   $AF ; unknown music opcode                    ;; 0f:7315 $af
+    db   $A5 ; unknown music opcode                    ;; 0f:7316 $a5
+    db   $AF ; unknown music opcode                    ;; 0f:7317 $af
+    db   $A4 ; unknown music opcode                    ;; 0f:7318 $a4
+    db   $AF ; unknown music opcode                    ;; 0f:7319 $af
+    db   $A4 ; unknown music opcode                    ;; 0f:731a $a4
+    db   $AF ; unknown music opcode                    ;; 0f:731b $af
+    db   $A4 ; unknown music opcode                    ;; 0f:731c $a4
+    db   $AF ; unknown music opcode                    ;; 0f:731d $af
+    db   $A4 ; unknown music opcode                    ;; 0f:731e $a4
+    db   $AF ; unknown music opcode                    ;; 0f:731f $af
+    db   $82 ; unknown music opcode                    ;; 0f:7320 $82
+    db   $5F ; unknown music opcode                    ;; 0f:7321 $5f
+    mUNK_E6 $02                                        ;; 0f:7322 $e6 $02
+    db   $A2 ; unknown music opcode                    ;; 0f:7324 $a2
+    db   $AF ; unknown music opcode                    ;; 0f:7325 $af
+    mUNK_E6 $03                                        ;; 0f:7326 $e6 $03
+    db   $80 ; unknown music opcode                    ;; 0f:7328 $80
+    db   $5F ; unknown music opcode                    ;; 0f:7329 $5f
+    mUNK_E6 $01                                        ;; 0f:732a $e6 $01
+    db   $A0 ; unknown music opcode                    ;; 0f:732c $a0
+    db   $AF ; unknown music opcode                    ;; 0f:732d $af
+    mUNK_E6 $03                                        ;; 0f:732e $e6 $03
+    db   $22 ; unknown music opcode                    ;; 0f:7330 $22
+    db   $8F ; unknown music opcode                    ;; 0f:7331 $8f
+    db   $D8 ; unknown music opcode                    ;; 0f:7332 $d8
+    mUNK_E6 $02                                        ;; 0f:7333 $e6 $02
+    db   $80 ; unknown music opcode                    ;; 0f:7335 $80
+    db   $DC ; unknown music opcode                    ;; 0f:7336 $dc
+    mUNK_E6 $03                                        ;; 0f:7337 $e6 $03
+    db   $AB ; unknown music opcode                    ;; 0f:7339 $ab
+    db   $AF ; unknown music opcode                    ;; 0f:733a $af
+    mUNK_E6 $01                                        ;; 0f:733b $e6 $01
+    db   $A9 ; unknown music opcode                    ;; 0f:733d $a9
+    db   $AF ; unknown music opcode                    ;; 0f:733e $af
+    db   $DC ; unknown music opcode                    ;; 0f:733f $dc
+    mUNK_E1 .data_0f_7284                              ;; 0f:7340 $e1 $84 $72
     db   $49, $73, $1c, $74, $6f, $75                  ;; 0f:7343 ??????
 
-data_0f_7349:
-    db   $e7, $7d, $e4, $4f, $7a, $e0, $c4, $7a        ;; 0f:7349 ????????
-    db   $e5, $40, $e3, $03, $d2, $a4, $a1, $dc        ;; 0f:7351 ????????
-    db   $ab, $d8, $a4, $a1, $dc, $ab, $d8, $a4        ;; 0f:7359 ????????
-    db   $a1, $dc, $ab, $d8, $a4, $a1, $dc, $ab        ;; 0f:7361 ????????
-    db   $d8, $a4, $a1, $dc, $8b, $e2, $55, $73        ;; 0f:7369 ????????
-    db   $e0, $c0, $7a, $2f, $af, $d2, $a1, $dc        ;; 0f:7371 ????????
-    db   $ab, $d8, $a1, $a4, $a1, $dc, $ab, $d8        ;; 0f:7379 ????????
-    db   $a1, $e3, $02, $49, $a8, $a9, $8b, $89        ;; 0f:7381 ????????
-    db   $88, $89, $78, $56, $ae, $ae, $dc, $ab        ;; 0f:7389 ????????
-    db   $a9, $ab, $d8, $a2, $dc, $ab, $a9, $ab        ;; 0f:7391 ????????
-    db   $d8, $48, $a6, $a8, $89, $88, $86, $88        ;; 0f:7399 ????????
-    db   $76, $54, $ae, $8e, $81, $82, $84, $76        ;; 0f:73a1 ????????
-    db   $78, $86, $49, $a8, $a6, $74, $76, $84        ;; 0f:73a9 ????????
-    db   $7b, $79, $88, $eb, $01, $c8, $73, $26        ;; 0f:73b1 ????????
-    db   $af, $a1, $dc, $ab, $d8, $a1, $a4, $a1        ;; 0f:73b9 ????????
-    db   $dc, $ab, $d8, $a1, $e2, $84, $73, $26        ;; 0f:73c1 ????????
-    db   $8e, $e0, $82, $7a, $e5, $80, $89, $8b        ;; 0f:73c9 ????????
-    db   $d8, $81, $22, $8f, $82, $84, $86, $74        ;; 0f:73d1 ????????
-    db   $dc, $7b, $d8, $82, $21, $dc, $7b, $d8        ;; 0f:73d9 ????????
-    db   $71, $82, $51, $dc, $5b, $59, $5b, $d8        ;; 0f:73e1 ????????
-    db   $51, $54, $22, $8f, $82, $84, $86, $74        ;; 0f:73e9 ????????
-    db   $dc, $7b, $d8, $82, $21, $dc, $2b, $8e        ;; 0f:73f1 ????????
-    db   $8a, $8b, $d8, $81, $52, $51, $dc, $5b        ;; 0f:73f9 ????????
-    db   $59, $28, $8e, $86, $85, $86, $28, $af        ;; 0f:7401 ????????
-    db   $e0, $c0, $7a, $e5, $40, $a1, $dc, $ab        ;; 0f:7409 ????????
-    db   $d8, $a1, $a4, $a1, $dc, $ab, $d8, $a1        ;; 0f:7411 ????????
-    db   $e1, $82, $73                                 ;; 0f:7419 ???
+song18_channel2:
+    mUNK_E7 $7d                                        ;; 0f:7349 $e7 $7d
+    mUNK_E4 frequencyDeltaData                         ;; 0f:734b $e4 $4f $7a
+    mUNK_E0 $c4                                        ;; 0f:734e $e0 $c4
+    db   $7A ; unknown music opcode                    ;; 0f:7350 $7a
+    mUNK_E5 $40                                        ;; 0f:7351 $e5 $40
+    mUNK_E3 $03                                        ;; 0f:7353 $e3 $03
+.data_0f_7355:
+    db   $D2 ; unknown music opcode                    ;; 0f:7355 $d2
+    db   $A4 ; unknown music opcode                    ;; 0f:7356 $a4
+    db   $A1 ; unknown music opcode                    ;; 0f:7357 $a1
+    db   $DC ; unknown music opcode                    ;; 0f:7358 $dc
+    db   $AB ; unknown music opcode                    ;; 0f:7359 $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:735a $d8
+    db   $A4 ; unknown music opcode                    ;; 0f:735b $a4
+    db   $A1 ; unknown music opcode                    ;; 0f:735c $a1
+    db   $DC ; unknown music opcode                    ;; 0f:735d $dc
+    db   $AB ; unknown music opcode                    ;; 0f:735e $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:735f $d8
+    db   $A4 ; unknown music opcode                    ;; 0f:7360 $a4
+    db   $A1 ; unknown music opcode                    ;; 0f:7361 $a1
+    db   $DC ; unknown music opcode                    ;; 0f:7362 $dc
+    db   $AB ; unknown music opcode                    ;; 0f:7363 $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:7364 $d8
+    db   $A4 ; unknown music opcode                    ;; 0f:7365 $a4
+    db   $A1 ; unknown music opcode                    ;; 0f:7366 $a1
+    db   $DC ; unknown music opcode                    ;; 0f:7367 $dc
+    db   $AB ; unknown music opcode                    ;; 0f:7368 $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:7369 $d8
+    db   $A4 ; unknown music opcode                    ;; 0f:736a $a4
+    db   $A1 ; unknown music opcode                    ;; 0f:736b $a1
+    db   $DC ; unknown music opcode                    ;; 0f:736c $dc
+    db   $8B ; unknown music opcode                    ;; 0f:736d $8b
+    mUNK_E2 .data_0f_7355                              ;; 0f:736e $e2 $55 $73
+    mUNK_E0 $c0                                        ;; 0f:7371 $e0 $c0
+    db   $7A ; unknown music opcode                    ;; 0f:7373 $7a
+    db   $2F ; unknown music opcode                    ;; 0f:7374 $2f
+    db   $AF ; unknown music opcode                    ;; 0f:7375 $af
+    db   $D2 ; unknown music opcode                    ;; 0f:7376 $d2
+    db   $A1 ; unknown music opcode                    ;; 0f:7377 $a1
+    db   $DC ; unknown music opcode                    ;; 0f:7378 $dc
+    db   $AB ; unknown music opcode                    ;; 0f:7379 $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:737a $d8
+    db   $A1 ; unknown music opcode                    ;; 0f:737b $a1
+    db   $A4 ; unknown music opcode                    ;; 0f:737c $a4
+    db   $A1 ; unknown music opcode                    ;; 0f:737d $a1
+    db   $DC ; unknown music opcode                    ;; 0f:737e $dc
+    db   $AB ; unknown music opcode                    ;; 0f:737f $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:7380 $d8
+    db   $A1 ; unknown music opcode                    ;; 0f:7381 $a1
+.data_0f_7382:
+    mUNK_E3 $02                                        ;; 0f:7382 $e3 $02
+.data_0f_7384:
+    db   $49 ; unknown music opcode                    ;; 0f:7384 $49
+    db   $A8 ; unknown music opcode                    ;; 0f:7385 $a8
+    db   $A9 ; unknown music opcode                    ;; 0f:7386 $a9
+    db   $8B ; unknown music opcode                    ;; 0f:7387 $8b
+    db   $89 ; unknown music opcode                    ;; 0f:7388 $89
+    db   $88 ; unknown music opcode                    ;; 0f:7389 $88
+    db   $89 ; unknown music opcode                    ;; 0f:738a $89
+    db   $78 ; unknown music opcode                    ;; 0f:738b $78
+    db   $56 ; unknown music opcode                    ;; 0f:738c $56
+    db   $AE ; unknown music opcode                    ;; 0f:738d $ae
+    db   $AE ; unknown music opcode                    ;; 0f:738e $ae
+    db   $DC ; unknown music opcode                    ;; 0f:738f $dc
+    db   $AB ; unknown music opcode                    ;; 0f:7390 $ab
+    db   $A9 ; unknown music opcode                    ;; 0f:7391 $a9
+    db   $AB ; unknown music opcode                    ;; 0f:7392 $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:7393 $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:7394 $a2
+    db   $DC ; unknown music opcode                    ;; 0f:7395 $dc
+    db   $AB ; unknown music opcode                    ;; 0f:7396 $ab
+    db   $A9 ; unknown music opcode                    ;; 0f:7397 $a9
+    db   $AB ; unknown music opcode                    ;; 0f:7398 $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:7399 $d8
+    db   $48 ; unknown music opcode                    ;; 0f:739a $48
+    db   $A6 ; unknown music opcode                    ;; 0f:739b $a6
+    db   $A8 ; unknown music opcode                    ;; 0f:739c $a8
+    db   $89 ; unknown music opcode                    ;; 0f:739d $89
+    db   $88 ; unknown music opcode                    ;; 0f:739e $88
+    db   $86 ; unknown music opcode                    ;; 0f:739f $86
+    db   $88 ; unknown music opcode                    ;; 0f:73a0 $88
+    db   $76 ; unknown music opcode                    ;; 0f:73a1 $76
+    db   $54 ; unknown music opcode                    ;; 0f:73a2 $54
+    db   $AE ; unknown music opcode                    ;; 0f:73a3 $ae
+    db   $8E ; unknown music opcode                    ;; 0f:73a4 $8e
+    db   $81 ; unknown music opcode                    ;; 0f:73a5 $81
+    db   $82 ; unknown music opcode                    ;; 0f:73a6 $82
+    db   $84 ; unknown music opcode                    ;; 0f:73a7 $84
+    db   $76 ; unknown music opcode                    ;; 0f:73a8 $76
+    db   $78 ; unknown music opcode                    ;; 0f:73a9 $78
+    db   $86 ; unknown music opcode                    ;; 0f:73aa $86
+    db   $49 ; unknown music opcode                    ;; 0f:73ab $49
+    db   $A8 ; unknown music opcode                    ;; 0f:73ac $a8
+    db   $A6 ; unknown music opcode                    ;; 0f:73ad $a6
+    db   $74 ; unknown music opcode                    ;; 0f:73ae $74
+    db   $76 ; unknown music opcode                    ;; 0f:73af $76
+    db   $84 ; unknown music opcode                    ;; 0f:73b0 $84
+    db   $7B ; unknown music opcode                    ;; 0f:73b1 $7b
+    db   $79 ; unknown music opcode                    ;; 0f:73b2 $79
+    db   $88 ; unknown music opcode                    ;; 0f:73b3 $88
+    mUNK_EB $01, .data_0f_73c8                         ;; 0f:73b4 $eb $01 $c8 $73
+    db   $26 ; unknown music opcode                    ;; 0f:73b8 $26
+    db   $AF ; unknown music opcode                    ;; 0f:73b9 $af
+    db   $A1 ; unknown music opcode                    ;; 0f:73ba $a1
+    db   $DC ; unknown music opcode                    ;; 0f:73bb $dc
+    db   $AB ; unknown music opcode                    ;; 0f:73bc $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:73bd $d8
+    db   $A1 ; unknown music opcode                    ;; 0f:73be $a1
+    db   $A4 ; unknown music opcode                    ;; 0f:73bf $a4
+    db   $A1 ; unknown music opcode                    ;; 0f:73c0 $a1
+    db   $DC ; unknown music opcode                    ;; 0f:73c1 $dc
+    db   $AB ; unknown music opcode                    ;; 0f:73c2 $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:73c3 $d8
+    db   $A1 ; unknown music opcode                    ;; 0f:73c4 $a1
+    mUNK_E2 .data_0f_7384                              ;; 0f:73c5 $e2 $84 $73
+.data_0f_73c8:
+    db   $26 ; unknown music opcode                    ;; 0f:73c8 $26
+    db   $8E ; unknown music opcode                    ;; 0f:73c9 $8e
+    mUNK_E0 $82                                        ;; 0f:73ca $e0 $82
+    db   $7A ; unknown music opcode                    ;; 0f:73cc $7a
+    mUNK_E5 $80                                        ;; 0f:73cd $e5 $80
+    db   $89 ; unknown music opcode                    ;; 0f:73cf $89
+    db   $8B ; unknown music opcode                    ;; 0f:73d0 $8b
+    db   $D8 ; unknown music opcode                    ;; 0f:73d1 $d8
+    db   $81 ; unknown music opcode                    ;; 0f:73d2 $81
+    db   $22 ; unknown music opcode                    ;; 0f:73d3 $22
+    db   $8F ; unknown music opcode                    ;; 0f:73d4 $8f
+    db   $82 ; unknown music opcode                    ;; 0f:73d5 $82
+    db   $84 ; unknown music opcode                    ;; 0f:73d6 $84
+    db   $86 ; unknown music opcode                    ;; 0f:73d7 $86
+    db   $74 ; unknown music opcode                    ;; 0f:73d8 $74
+    db   $DC ; unknown music opcode                    ;; 0f:73d9 $dc
+    db   $7B ; unknown music opcode                    ;; 0f:73da $7b
+    db   $D8 ; unknown music opcode                    ;; 0f:73db $d8
+    db   $82 ; unknown music opcode                    ;; 0f:73dc $82
+    db   $21 ; unknown music opcode                    ;; 0f:73dd $21
+    db   $DC ; unknown music opcode                    ;; 0f:73de $dc
+    db   $7B ; unknown music opcode                    ;; 0f:73df $7b
+    db   $D8 ; unknown music opcode                    ;; 0f:73e0 $d8
+    db   $71 ; unknown music opcode                    ;; 0f:73e1 $71
+    db   $82 ; unknown music opcode                    ;; 0f:73e2 $82
+    db   $51 ; unknown music opcode                    ;; 0f:73e3 $51
+    db   $DC ; unknown music opcode                    ;; 0f:73e4 $dc
+    db   $5B ; unknown music opcode                    ;; 0f:73e5 $5b
+    db   $59 ; unknown music opcode                    ;; 0f:73e6 $59
+    db   $5B ; unknown music opcode                    ;; 0f:73e7 $5b
+    db   $D8 ; unknown music opcode                    ;; 0f:73e8 $d8
+    db   $51 ; unknown music opcode                    ;; 0f:73e9 $51
+    db   $54 ; unknown music opcode                    ;; 0f:73ea $54
+    db   $22 ; unknown music opcode                    ;; 0f:73eb $22
+    db   $8F ; unknown music opcode                    ;; 0f:73ec $8f
+    db   $82 ; unknown music opcode                    ;; 0f:73ed $82
+    db   $84 ; unknown music opcode                    ;; 0f:73ee $84
+    db   $86 ; unknown music opcode                    ;; 0f:73ef $86
+    db   $74 ; unknown music opcode                    ;; 0f:73f0 $74
+    db   $DC ; unknown music opcode                    ;; 0f:73f1 $dc
+    db   $7B ; unknown music opcode                    ;; 0f:73f2 $7b
+    db   $D8 ; unknown music opcode                    ;; 0f:73f3 $d8
+    db   $82 ; unknown music opcode                    ;; 0f:73f4 $82
+    db   $21 ; unknown music opcode                    ;; 0f:73f5 $21
+    db   $DC ; unknown music opcode                    ;; 0f:73f6 $dc
+    db   $2B ; unknown music opcode                    ;; 0f:73f7 $2b
+    db   $8E ; unknown music opcode                    ;; 0f:73f8 $8e
+    db   $8A ; unknown music opcode                    ;; 0f:73f9 $8a
+    db   $8B ; unknown music opcode                    ;; 0f:73fa $8b
+    db   $D8 ; unknown music opcode                    ;; 0f:73fb $d8
+    db   $81 ; unknown music opcode                    ;; 0f:73fc $81
+    db   $52 ; unknown music opcode                    ;; 0f:73fd $52
+    db   $51 ; unknown music opcode                    ;; 0f:73fe $51
+    db   $DC ; unknown music opcode                    ;; 0f:73ff $dc
+    db   $5B ; unknown music opcode                    ;; 0f:7400 $5b
+    db   $59 ; unknown music opcode                    ;; 0f:7401 $59
+    db   $28 ; unknown music opcode                    ;; 0f:7402 $28
+    db   $8E ; unknown music opcode                    ;; 0f:7403 $8e
+    db   $86 ; unknown music opcode                    ;; 0f:7404 $86
+    db   $85 ; unknown music opcode                    ;; 0f:7405 $85
+    db   $86 ; unknown music opcode                    ;; 0f:7406 $86
+    db   $28 ; unknown music opcode                    ;; 0f:7407 $28
+    db   $AF ; unknown music opcode                    ;; 0f:7408 $af
+    mUNK_E0 $c0                                        ;; 0f:7409 $e0 $c0
+    db   $7A ; unknown music opcode                    ;; 0f:740b $7a
+    mUNK_E5 $40                                        ;; 0f:740c $e5 $40
+    db   $A1 ; unknown music opcode                    ;; 0f:740e $a1
+    db   $DC ; unknown music opcode                    ;; 0f:740f $dc
+    db   $AB ; unknown music opcode                    ;; 0f:7410 $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:7411 $d8
+    db   $A1 ; unknown music opcode                    ;; 0f:7412 $a1
+    db   $A4 ; unknown music opcode                    ;; 0f:7413 $a4
+    db   $A1 ; unknown music opcode                    ;; 0f:7414 $a1
+    db   $DC ; unknown music opcode                    ;; 0f:7415 $dc
+    db   $AB ; unknown music opcode                    ;; 0f:7416 $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:7417 $d8
+    db   $A1 ; unknown music opcode                    ;; 0f:7418 $a1
+    mUNK_E1 .data_0f_7382                              ;; 0f:7419 $e1 $82 $73
 
-data_0f_741c:
-    db   $e4, $4f, $7a, $e0, $ca, $7a, $e5, $40        ;; 0f:741c ????????
-    db   $e6, $03, $e3, $03, $d2, $a4, $a1, $dc        ;; 0f:7424 ????????
-    db   $ab, $d8, $a4, $a1, $dc, $ab, $d8, $a4        ;; 0f:742c ????????
-    db   $a1, $dc, $ab, $d8, $a4, $a1, $dc, $ab        ;; 0f:7434 ????????
-    db   $d8, $a4, $a1, $dc, $8b, $e2, $28, $74        ;; 0f:743c ????????
-    db   $e0, $c6, $7a, $a6, $a8, $a9, $ab, $d8        ;; 0f:7444 ????????
-    db   $a1, $a2, $a4, $a6, $28, $e3, $02, $e6        ;; 0f:744c ????????
-    db   $02, $e5, $00, $46, $81, $88, $86, $84        ;; 0f:7454 ????????
-    db   $86, $22, $ae, $dc, $e6, $03, $a6, $a4        ;; 0f:745c ????????
-    db   $a6, $a9, $a6, $a4, $a6, $e6, $01, $d8        ;; 0f:7464 ????????
-    db   $44, $dc, $8b, $d8, $86, $84, $82, $84        ;; 0f:746c ????????
-    db   $21, $8e, $dc, $e6, $03, $89, $8b, $d8        ;; 0f:7474 ????????
-    db   $81, $72, $54, $ae, $22, $e6, $02, $dc        ;; 0f:747c ????????
-    db   $78, $79, $88, $d8, $e6, $01, $78, $76        ;; 0f:7484 ????????
-    db   $84, $eb, $01, $ad, $74, $e6, $03, $a2        ;; 0f:748c ????????
-    db   $a1, $dc, $ab, $d8, $e6, $02, $a1, $dc        ;; 0f:7494 ????????
-    db   $ab, $a9, $e6, $01, $ab, $a9, $58, $e6        ;; 0f:749c ????????
-    db   $03, $ab, $a8, $a4, $a8, $d8, $e2, $53        ;; 0f:74a4 ????????
-    db   $74, $e5, $40, $e6, $03, $dc, $a9, $a6        ;; 0f:74ac ????????
-    db   $a2, $e6, $02, $a9, $a6, $a9, $e6, $01        ;; 0f:74b4 ????????
-    db   $ab, $a8, $89, $d8, $e6, $03, $86, $88        ;; 0f:74bc ????????
-    db   $89, $e6, $02, $7b, $79, $88, $56, $88        ;; 0f:74c4 ????????
-    db   $89, $e6, $03, $48, $86, $24, $e6, $01        ;; 0f:74cc ????????
-    db   $72, $74, $86, $85, $81, $83, $85, $e6        ;; 0f:74d4 ????????
-    db   $03, $a1, $dc, $a9, $e6, $01, $a6, $a9        ;; 0f:74dc ????????
-    db   $d8, $e6, $03, $a2, $dc, $ab, $e6, $02        ;; 0f:74e4 ????????
-    db   $a8, $ab, $d8, $e6, $03, $a4, $a1, $dc        ;; 0f:74ec ????????
-    db   $e6, $01, $a9, $d8, $a1, $e6, $03, $a6        ;; 0f:74f4 ????????
-    db   $a1, $dc, $e6, $02, $aa, $d8, $a1, $e6        ;; 0f:74fc ????????
-    db   $01, $7b, $79, $88, $56, $88, $89, $e6        ;; 0f:7504 ????????
-    db   $03, $48, $86, $24, $e6, $02, $72, $76        ;; 0f:750c ????????
-    db   $84, $82, $81, $82, $84, $e6, $03, $a6        ;; 0f:7514 ????????
-    db   $a2, $dc, $ab, $d8, $a2, $e6, $01, $a4        ;; 0f:751c ????????
-    db   $a1, $dc, $a9, $d8, $a1, $e6, $03, $a2        ;; 0f:7524 ????????
-    db   $dc, $ab, $a8, $ab, $d8, $e6, $02, $a1        ;; 0f:752c ????????
-    db   $dc, $a9, $a6, $a9, $e6, $03, $d8, $a3        ;; 0f:7534 ????????
-    db   $a0, $dc, $a8, $d8, $e6, $01, $a3, $a0        ;; 0f:753c ????????
-    db   $dc, $a8, $d8, $e6, $02, $a3, $a0, $dc        ;; 0f:7544 ????????
-    db   $a8, $d8, $e6, $03, $a3, $a0, $dc, $a8        ;; 0f:754c ????????
-    db   $e6, $01, $d8, $a1, $dc, $aa, $a6, $aa        ;; 0f:7554 ????????
-    db   $e6, $02, $a8, $ab, $a9, $a8, $e6, $01        ;; 0f:755c ????????
-    db   $a6, $a9, $a8, $a6, $e6, $03, $28, $d8        ;; 0f:7564 ????????
-    db   $e1, $51, $74                                 ;; 0f:756c ???
+song18_channel1:
+    mUNK_E4 frequencyDeltaData                         ;; 0f:741c $e4 $4f $7a
+    mUNK_E0 $ca                                        ;; 0f:741f $e0 $ca
+    db   $7A ; unknown music opcode                    ;; 0f:7421 $7a
+    mUNK_E5 $40                                        ;; 0f:7422 $e5 $40
+    mUNK_E6 $03                                        ;; 0f:7424 $e6 $03
+    mUNK_E3 $03                                        ;; 0f:7426 $e3 $03
+.data_0f_7428:
+    db   $D2 ; unknown music opcode                    ;; 0f:7428 $d2
+    db   $A4 ; unknown music opcode                    ;; 0f:7429 $a4
+    db   $A1 ; unknown music opcode                    ;; 0f:742a $a1
+    db   $DC ; unknown music opcode                    ;; 0f:742b $dc
+    db   $AB ; unknown music opcode                    ;; 0f:742c $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:742d $d8
+    db   $A4 ; unknown music opcode                    ;; 0f:742e $a4
+    db   $A1 ; unknown music opcode                    ;; 0f:742f $a1
+    db   $DC ; unknown music opcode                    ;; 0f:7430 $dc
+    db   $AB ; unknown music opcode                    ;; 0f:7431 $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:7432 $d8
+    db   $A4 ; unknown music opcode                    ;; 0f:7433 $a4
+    db   $A1 ; unknown music opcode                    ;; 0f:7434 $a1
+    db   $DC ; unknown music opcode                    ;; 0f:7435 $dc
+    db   $AB ; unknown music opcode                    ;; 0f:7436 $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:7437 $d8
+    db   $A4 ; unknown music opcode                    ;; 0f:7438 $a4
+    db   $A1 ; unknown music opcode                    ;; 0f:7439 $a1
+    db   $DC ; unknown music opcode                    ;; 0f:743a $dc
+    db   $AB ; unknown music opcode                    ;; 0f:743b $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:743c $d8
+    db   $A4 ; unknown music opcode                    ;; 0f:743d $a4
+    db   $A1 ; unknown music opcode                    ;; 0f:743e $a1
+    db   $DC ; unknown music opcode                    ;; 0f:743f $dc
+    db   $8B ; unknown music opcode                    ;; 0f:7440 $8b
+    mUNK_E2 .data_0f_7428                              ;; 0f:7441 $e2 $28 $74
+    mUNK_E0 $c6                                        ;; 0f:7444 $e0 $c6
+    db   $7A ; unknown music opcode                    ;; 0f:7446 $7a
+    db   $A6 ; unknown music opcode                    ;; 0f:7447 $a6
+    db   $A8 ; unknown music opcode                    ;; 0f:7448 $a8
+    db   $A9 ; unknown music opcode                    ;; 0f:7449 $a9
+    db   $AB ; unknown music opcode                    ;; 0f:744a $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:744b $d8
+    db   $A1 ; unknown music opcode                    ;; 0f:744c $a1
+    db   $A2 ; unknown music opcode                    ;; 0f:744d $a2
+    db   $A4 ; unknown music opcode                    ;; 0f:744e $a4
+    db   $A6 ; unknown music opcode                    ;; 0f:744f $a6
+    db   $28 ; unknown music opcode                    ;; 0f:7450 $28
+.data_0f_7451:
+    mUNK_E3 $02                                        ;; 0f:7451 $e3 $02
+.data_0f_7453:
+    mUNK_E6 $02                                        ;; 0f:7453 $e6 $02
+    mUNK_E5 $00                                        ;; 0f:7455 $e5 $00
+    db   $46 ; unknown music opcode                    ;; 0f:7457 $46
+    db   $81 ; unknown music opcode                    ;; 0f:7458 $81
+    db   $88 ; unknown music opcode                    ;; 0f:7459 $88
+    db   $86 ; unknown music opcode                    ;; 0f:745a $86
+    db   $84 ; unknown music opcode                    ;; 0f:745b $84
+    db   $86 ; unknown music opcode                    ;; 0f:745c $86
+    db   $22 ; unknown music opcode                    ;; 0f:745d $22
+    db   $AE ; unknown music opcode                    ;; 0f:745e $ae
+    db   $DC ; unknown music opcode                    ;; 0f:745f $dc
+    mUNK_E6 $03                                        ;; 0f:7460 $e6 $03
+    db   $A6 ; unknown music opcode                    ;; 0f:7462 $a6
+    db   $A4 ; unknown music opcode                    ;; 0f:7463 $a4
+    db   $A6 ; unknown music opcode                    ;; 0f:7464 $a6
+    db   $A9 ; unknown music opcode                    ;; 0f:7465 $a9
+    db   $A6 ; unknown music opcode                    ;; 0f:7466 $a6
+    db   $A4 ; unknown music opcode                    ;; 0f:7467 $a4
+    db   $A6 ; unknown music opcode                    ;; 0f:7468 $a6
+    mUNK_E6 $01                                        ;; 0f:7469 $e6 $01
+    db   $D8 ; unknown music opcode                    ;; 0f:746b $d8
+    db   $44 ; unknown music opcode                    ;; 0f:746c $44
+    db   $DC ; unknown music opcode                    ;; 0f:746d $dc
+    db   $8B ; unknown music opcode                    ;; 0f:746e $8b
+    db   $D8 ; unknown music opcode                    ;; 0f:746f $d8
+    db   $86 ; unknown music opcode                    ;; 0f:7470 $86
+    db   $84 ; unknown music opcode                    ;; 0f:7471 $84
+    db   $82 ; unknown music opcode                    ;; 0f:7472 $82
+    db   $84 ; unknown music opcode                    ;; 0f:7473 $84
+    db   $21 ; unknown music opcode                    ;; 0f:7474 $21
+    db   $8E ; unknown music opcode                    ;; 0f:7475 $8e
+    db   $DC ; unknown music opcode                    ;; 0f:7476 $dc
+    mUNK_E6 $03                                        ;; 0f:7477 $e6 $03
+    db   $89 ; unknown music opcode                    ;; 0f:7479 $89
+    db   $8B ; unknown music opcode                    ;; 0f:747a $8b
+    db   $D8 ; unknown music opcode                    ;; 0f:747b $d8
+    db   $81 ; unknown music opcode                    ;; 0f:747c $81
+    db   $72 ; unknown music opcode                    ;; 0f:747d $72
+    db   $54 ; unknown music opcode                    ;; 0f:747e $54
+    db   $AE ; unknown music opcode                    ;; 0f:747f $ae
+    db   $22 ; unknown music opcode                    ;; 0f:7480 $22
+    mUNK_E6 $02                                        ;; 0f:7481 $e6 $02
+    db   $DC ; unknown music opcode                    ;; 0f:7483 $dc
+    db   $78 ; unknown music opcode                    ;; 0f:7484 $78
+    db   $79 ; unknown music opcode                    ;; 0f:7485 $79
+    db   $88 ; unknown music opcode                    ;; 0f:7486 $88
+    db   $D8 ; unknown music opcode                    ;; 0f:7487 $d8
+    mUNK_E6 $01                                        ;; 0f:7488 $e6 $01
+    db   $78 ; unknown music opcode                    ;; 0f:748a $78
+    db   $76 ; unknown music opcode                    ;; 0f:748b $76
+    db   $84 ; unknown music opcode                    ;; 0f:748c $84
+    mUNK_EB $01, .data_0f_74ad                         ;; 0f:748d $eb $01 $ad $74
+    mUNK_E6 $03                                        ;; 0f:7491 $e6 $03
+    db   $A2 ; unknown music opcode                    ;; 0f:7493 $a2
+    db   $A1 ; unknown music opcode                    ;; 0f:7494 $a1
+    db   $DC ; unknown music opcode                    ;; 0f:7495 $dc
+    db   $AB ; unknown music opcode                    ;; 0f:7496 $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:7497 $d8
+    mUNK_E6 $02                                        ;; 0f:7498 $e6 $02
+    db   $A1 ; unknown music opcode                    ;; 0f:749a $a1
+    db   $DC ; unknown music opcode                    ;; 0f:749b $dc
+    db   $AB ; unknown music opcode                    ;; 0f:749c $ab
+    db   $A9 ; unknown music opcode                    ;; 0f:749d $a9
+    mUNK_E6 $01                                        ;; 0f:749e $e6 $01
+    db   $AB ; unknown music opcode                    ;; 0f:74a0 $ab
+    db   $A9 ; unknown music opcode                    ;; 0f:74a1 $a9
+    db   $58 ; unknown music opcode                    ;; 0f:74a2 $58
+    mUNK_E6 $03                                        ;; 0f:74a3 $e6 $03
+    db   $AB ; unknown music opcode                    ;; 0f:74a5 $ab
+    db   $A8 ; unknown music opcode                    ;; 0f:74a6 $a8
+    db   $A4 ; unknown music opcode                    ;; 0f:74a7 $a4
+    db   $A8 ; unknown music opcode                    ;; 0f:74a8 $a8
+    db   $D8 ; unknown music opcode                    ;; 0f:74a9 $d8
+    mUNK_E2 .data_0f_7453                              ;; 0f:74aa $e2 $53 $74
+.data_0f_74ad:
+    mUNK_E5 $40                                        ;; 0f:74ad $e5 $40
+    mUNK_E6 $03                                        ;; 0f:74af $e6 $03
+    db   $DC ; unknown music opcode                    ;; 0f:74b1 $dc
+    db   $A9 ; unknown music opcode                    ;; 0f:74b2 $a9
+    db   $A6 ; unknown music opcode                    ;; 0f:74b3 $a6
+    db   $A2 ; unknown music opcode                    ;; 0f:74b4 $a2
+    mUNK_E6 $02                                        ;; 0f:74b5 $e6 $02
+    db   $A9 ; unknown music opcode                    ;; 0f:74b7 $a9
+    db   $A6 ; unknown music opcode                    ;; 0f:74b8 $a6
+    db   $A9 ; unknown music opcode                    ;; 0f:74b9 $a9
+    mUNK_E6 $01                                        ;; 0f:74ba $e6 $01
+    db   $AB ; unknown music opcode                    ;; 0f:74bc $ab
+    db   $A8 ; unknown music opcode                    ;; 0f:74bd $a8
+    db   $89 ; unknown music opcode                    ;; 0f:74be $89
+    db   $D8 ; unknown music opcode                    ;; 0f:74bf $d8
+    mUNK_E6 $03                                        ;; 0f:74c0 $e6 $03
+    db   $86 ; unknown music opcode                    ;; 0f:74c2 $86
+    db   $88 ; unknown music opcode                    ;; 0f:74c3 $88
+    db   $89 ; unknown music opcode                    ;; 0f:74c4 $89
+    mUNK_E6 $02                                        ;; 0f:74c5 $e6 $02
+    db   $7B ; unknown music opcode                    ;; 0f:74c7 $7b
+    db   $79 ; unknown music opcode                    ;; 0f:74c8 $79
+    db   $88 ; unknown music opcode                    ;; 0f:74c9 $88
+    db   $56 ; unknown music opcode                    ;; 0f:74ca $56
+    db   $88 ; unknown music opcode                    ;; 0f:74cb $88
+    db   $89 ; unknown music opcode                    ;; 0f:74cc $89
+    mUNK_E6 $03                                        ;; 0f:74cd $e6 $03
+    db   $48 ; unknown music opcode                    ;; 0f:74cf $48
+    db   $86 ; unknown music opcode                    ;; 0f:74d0 $86
+    db   $24 ; unknown music opcode                    ;; 0f:74d1 $24
+    mUNK_E6 $01                                        ;; 0f:74d2 $e6 $01
+    db   $72 ; unknown music opcode                    ;; 0f:74d4 $72
+    db   $74 ; unknown music opcode                    ;; 0f:74d5 $74
+    db   $86 ; unknown music opcode                    ;; 0f:74d6 $86
+    db   $85 ; unknown music opcode                    ;; 0f:74d7 $85
+    db   $81 ; unknown music opcode                    ;; 0f:74d8 $81
+    db   $83 ; unknown music opcode                    ;; 0f:74d9 $83
+    db   $85 ; unknown music opcode                    ;; 0f:74da $85
+    mUNK_E6 $03                                        ;; 0f:74db $e6 $03
+    db   $A1 ; unknown music opcode                    ;; 0f:74dd $a1
+    db   $DC ; unknown music opcode                    ;; 0f:74de $dc
+    db   $A9 ; unknown music opcode                    ;; 0f:74df $a9
+    mUNK_E6 $01                                        ;; 0f:74e0 $e6 $01
+    db   $A6 ; unknown music opcode                    ;; 0f:74e2 $a6
+    db   $A9 ; unknown music opcode                    ;; 0f:74e3 $a9
+    db   $D8 ; unknown music opcode                    ;; 0f:74e4 $d8
+    mUNK_E6 $03                                        ;; 0f:74e5 $e6 $03
+    db   $A2 ; unknown music opcode                    ;; 0f:74e7 $a2
+    db   $DC ; unknown music opcode                    ;; 0f:74e8 $dc
+    db   $AB ; unknown music opcode                    ;; 0f:74e9 $ab
+    mUNK_E6 $02                                        ;; 0f:74ea $e6 $02
+    db   $A8 ; unknown music opcode                    ;; 0f:74ec $a8
+    db   $AB ; unknown music opcode                    ;; 0f:74ed $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:74ee $d8
+    mUNK_E6 $03                                        ;; 0f:74ef $e6 $03
+    db   $A4 ; unknown music opcode                    ;; 0f:74f1 $a4
+    db   $A1 ; unknown music opcode                    ;; 0f:74f2 $a1
+    db   $DC ; unknown music opcode                    ;; 0f:74f3 $dc
+    mUNK_E6 $01                                        ;; 0f:74f4 $e6 $01
+    db   $A9 ; unknown music opcode                    ;; 0f:74f6 $a9
+    db   $D8 ; unknown music opcode                    ;; 0f:74f7 $d8
+    db   $A1 ; unknown music opcode                    ;; 0f:74f8 $a1
+    mUNK_E6 $03                                        ;; 0f:74f9 $e6 $03
+    db   $A6 ; unknown music opcode                    ;; 0f:74fb $a6
+    db   $A1 ; unknown music opcode                    ;; 0f:74fc $a1
+    db   $DC ; unknown music opcode                    ;; 0f:74fd $dc
+    mUNK_E6 $02                                        ;; 0f:74fe $e6 $02
+    db   $AA ; unknown music opcode                    ;; 0f:7500 $aa
+    db   $D8 ; unknown music opcode                    ;; 0f:7501 $d8
+    db   $A1 ; unknown music opcode                    ;; 0f:7502 $a1
+    mUNK_E6 $01                                        ;; 0f:7503 $e6 $01
+    db   $7B ; unknown music opcode                    ;; 0f:7505 $7b
+    db   $79 ; unknown music opcode                    ;; 0f:7506 $79
+    db   $88 ; unknown music opcode                    ;; 0f:7507 $88
+    db   $56 ; unknown music opcode                    ;; 0f:7508 $56
+    db   $88 ; unknown music opcode                    ;; 0f:7509 $88
+    db   $89 ; unknown music opcode                    ;; 0f:750a $89
+    mUNK_E6 $03                                        ;; 0f:750b $e6 $03
+    db   $48 ; unknown music opcode                    ;; 0f:750d $48
+    db   $86 ; unknown music opcode                    ;; 0f:750e $86
+    db   $24 ; unknown music opcode                    ;; 0f:750f $24
+    mUNK_E6 $02                                        ;; 0f:7510 $e6 $02
+    db   $72 ; unknown music opcode                    ;; 0f:7512 $72
+    db   $76 ; unknown music opcode                    ;; 0f:7513 $76
+    db   $84 ; unknown music opcode                    ;; 0f:7514 $84
+    db   $82 ; unknown music opcode                    ;; 0f:7515 $82
+    db   $81 ; unknown music opcode                    ;; 0f:7516 $81
+    db   $82 ; unknown music opcode                    ;; 0f:7517 $82
+    db   $84 ; unknown music opcode                    ;; 0f:7518 $84
+    mUNK_E6 $03                                        ;; 0f:7519 $e6 $03
+    db   $A6 ; unknown music opcode                    ;; 0f:751b $a6
+    db   $A2 ; unknown music opcode                    ;; 0f:751c $a2
+    db   $DC ; unknown music opcode                    ;; 0f:751d $dc
+    db   $AB ; unknown music opcode                    ;; 0f:751e $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:751f $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:7520 $a2
+    mUNK_E6 $01                                        ;; 0f:7521 $e6 $01
+    db   $A4 ; unknown music opcode                    ;; 0f:7523 $a4
+    db   $A1 ; unknown music opcode                    ;; 0f:7524 $a1
+    db   $DC ; unknown music opcode                    ;; 0f:7525 $dc
+    db   $A9 ; unknown music opcode                    ;; 0f:7526 $a9
+    db   $D8 ; unknown music opcode                    ;; 0f:7527 $d8
+    db   $A1 ; unknown music opcode                    ;; 0f:7528 $a1
+    mUNK_E6 $03                                        ;; 0f:7529 $e6 $03
+    db   $A2 ; unknown music opcode                    ;; 0f:752b $a2
+    db   $DC ; unknown music opcode                    ;; 0f:752c $dc
+    db   $AB ; unknown music opcode                    ;; 0f:752d $ab
+    db   $A8 ; unknown music opcode                    ;; 0f:752e $a8
+    db   $AB ; unknown music opcode                    ;; 0f:752f $ab
+    db   $D8 ; unknown music opcode                    ;; 0f:7530 $d8
+    mUNK_E6 $02                                        ;; 0f:7531 $e6 $02
+    db   $A1 ; unknown music opcode                    ;; 0f:7533 $a1
+    db   $DC ; unknown music opcode                    ;; 0f:7534 $dc
+    db   $A9 ; unknown music opcode                    ;; 0f:7535 $a9
+    db   $A6 ; unknown music opcode                    ;; 0f:7536 $a6
+    db   $A9 ; unknown music opcode                    ;; 0f:7537 $a9
+    mUNK_E6 $03                                        ;; 0f:7538 $e6 $03
+    db   $D8 ; unknown music opcode                    ;; 0f:753a $d8
+    db   $A3 ; unknown music opcode                    ;; 0f:753b $a3
+    db   $A0 ; unknown music opcode                    ;; 0f:753c $a0
+    db   $DC ; unknown music opcode                    ;; 0f:753d $dc
+    db   $A8 ; unknown music opcode                    ;; 0f:753e $a8
+    db   $D8 ; unknown music opcode                    ;; 0f:753f $d8
+    mUNK_E6 $01                                        ;; 0f:7540 $e6 $01
+    db   $A3 ; unknown music opcode                    ;; 0f:7542 $a3
+    db   $A0 ; unknown music opcode                    ;; 0f:7543 $a0
+    db   $DC ; unknown music opcode                    ;; 0f:7544 $dc
+    db   $A8 ; unknown music opcode                    ;; 0f:7545 $a8
+    db   $D8 ; unknown music opcode                    ;; 0f:7546 $d8
+    mUNK_E6 $02                                        ;; 0f:7547 $e6 $02
+    db   $A3 ; unknown music opcode                    ;; 0f:7549 $a3
+    db   $A0 ; unknown music opcode                    ;; 0f:754a $a0
+    db   $DC ; unknown music opcode                    ;; 0f:754b $dc
+    db   $A8 ; unknown music opcode                    ;; 0f:754c $a8
+    db   $D8 ; unknown music opcode                    ;; 0f:754d $d8
+    mUNK_E6 $03                                        ;; 0f:754e $e6 $03
+    db   $A3 ; unknown music opcode                    ;; 0f:7550 $a3
+    db   $A0 ; unknown music opcode                    ;; 0f:7551 $a0
+    db   $DC ; unknown music opcode                    ;; 0f:7552 $dc
+    db   $A8 ; unknown music opcode                    ;; 0f:7553 $a8
+    mUNK_E6 $01                                        ;; 0f:7554 $e6 $01
+    db   $D8 ; unknown music opcode                    ;; 0f:7556 $d8
+    db   $A1 ; unknown music opcode                    ;; 0f:7557 $a1
+    db   $DC ; unknown music opcode                    ;; 0f:7558 $dc
+    db   $AA ; unknown music opcode                    ;; 0f:7559 $aa
+    db   $A6 ; unknown music opcode                    ;; 0f:755a $a6
+    db   $AA ; unknown music opcode                    ;; 0f:755b $aa
+    mUNK_E6 $02                                        ;; 0f:755c $e6 $02
+    db   $A8 ; unknown music opcode                    ;; 0f:755e $a8
+    db   $AB ; unknown music opcode                    ;; 0f:755f $ab
+    db   $A9 ; unknown music opcode                    ;; 0f:7560 $a9
+    db   $A8 ; unknown music opcode                    ;; 0f:7561 $a8
+    mUNK_E6 $01                                        ;; 0f:7562 $e6 $01
+    db   $A6 ; unknown music opcode                    ;; 0f:7564 $a6
+    db   $A9 ; unknown music opcode                    ;; 0f:7565 $a9
+    db   $A8 ; unknown music opcode                    ;; 0f:7566 $a8
+    db   $A6 ; unknown music opcode                    ;; 0f:7567 $a6
+    mUNK_E6 $03                                        ;; 0f:7568 $e6 $03
+    db   $28 ; unknown music opcode                    ;; 0f:756a $28
+    db   $D8 ; unknown music opcode                    ;; 0f:756b $d8
+    mUNK_E1 .data_0f_7451                              ;; 0f:756c $e1 $51 $74
 
-data_0f_756f:
-    db   $e4, $4f, $7a, $e8, $fc, $7a, $e0, $20        ;; 0f:756f ????????
-    db   $e6, $03, $d1, $a6, $af, $a6, $af, $a6        ;; 0f:7577 ????????
-    db   $af, $a6, $af, $a6, $af, $a6, $af, $d8        ;; 0f:757f ????????
-    db   $e6, $02, $51, $e6, $03, $dc, $a6, $af        ;; 0f:7587 ????????
-    db   $a6, $af, $a6, $af, $a6, $af, $a6, $af        ;; 0f:758f ????????
-    db   $a6, $af, $d8, $e6, $01, $51, $e6, $03        ;; 0f:7597 ????????
-    db   $dc, $a2, $af, $a2, $af, $a2, $af, $a2        ;; 0f:759f ????????
-    db   $af, $a2, $af, $a2, $af, $e6, $02, $59        ;; 0f:75a7 ????????
-    db   $e6, $03, $54, $52, $41, $8f, $e3, $02        ;; 0f:75af ????????
-    db   $e8, $0c, $7b, $86, $d8, $a6, $af, $dc        ;; 0f:75b7 ????????
-    db   $86, $d8, $a6, $af, $dc, $86, $d8, $a6        ;; 0f:75bf ????????
-    db   $af, $dc, $86, $d8, $a6, $af, $dc, $8b        ;; 0f:75c7 ????????
-    db   $d8, $ab, $af, $dc, $8b, $d8, $ab, $af        ;; 0f:75cf ????????
-    db   $dc, $e6, $02, $5b, $e6, $01, $56, $e6        ;; 0f:75d7 ????????
-    db   $03, $84, $d8, $a4, $af, $dc, $84, $d8        ;; 0f:75df ????????
-    db   $a4, $af, $dc, $84, $d8, $a4, $af, $dc        ;; 0f:75e7 ????????
-    db   $84, $d8, $a4, $af, $dc, $89, $d8, $a9        ;; 0f:75ef ????????
-    db   $af, $dc, $89, $d8, $a9, $af, $dc, $e6        ;; 0f:75f7 ????????
-    db   $01, $59, $e6, $02, $57, $e6, $03, $82        ;; 0f:75ff ????????
-    db   $d8, $a2, $af, $dc, $82, $d8, $a2, $af        ;; 0f:7607 ????????
-    db   $dc, $82, $d8, $a2, $af, $dc, $82, $d8        ;; 0f:760f ????????
-    db   $a2, $af, $dc, $84, $d8, $a4, $af, $dc        ;; 0f:7617 ????????
-    db   $84, $d8, $a4, $af, $dc, $84, $d8, $a4        ;; 0f:761f ????????
-    db   $af, $dc, $84, $d8, $a4, $af, $eb, $01        ;; 0f:7627 ????????
-    db   $3e, $76, $dc, $72, $d8, $72, $dc, $89        ;; 0f:762f ????????
-    db   $d8, $41, $8f, $dc, $e2, $b7, $75, $dc        ;; 0f:7637 ????????
-    db   $a2, $af, $a2, $af, $af, $74, $46, $8f        ;; 0f:763f ????????
-    db   $8b, $d8, $ab, $af, $dc, $8b, $d8, $ab        ;; 0f:7647 ????????
-    db   $af, $dc, $8b, $d8, $ab, $af, $dc, $8b        ;; 0f:764f ????????
-    db   $d8, $ab, $af, $dc, $84, $d8, $a4, $af        ;; 0f:7657 ????????
-    db   $dc, $84, $d8, $a4, $af, $dc, $59, $57        ;; 0f:765f ????????
-    db   $82, $d8, $a2, $af, $dc, $82, $d8, $a2        ;; 0f:7667 ????????
-    db   $af, $dc, $81, $d8, $a1, $af, $dc, $81        ;; 0f:766f ????????
-    db   $d8, $a1, $af, $dc, $56, $58, $59, $5a        ;; 0f:7677 ????????
-    db   $8b, $d8, $ab, $af, $dc, $8b, $d8, $ab        ;; 0f:767f ????????
-    db   $af, $dc, $8b, $d8, $ab, $af, $dc, $8b        ;; 0f:7687 ????????
-    db   $d8, $ab, $af, $dc, $84, $d8, $a4, $af        ;; 0f:768f ????????
-    db   $dc, $84, $d8, $a4, $af, $dc, $59, $57        ;; 0f:7697 ????????
-    db   $82, $d8, $a2, $af, $dc, $82, $d8, $a2        ;; 0f:769f ????????
-    db   $af, $dc, $82, $d8, $86, $82, $81, $dc        ;; 0f:76a7 ????????
-    db   $5b, $59, $58, $56, $a8, $af, $a8, $af        ;; 0f:76af ????????
-    db   $a8, $af, $a8, $af, $a8, $af, $a8, $af        ;; 0f:76b7 ????????
-    db   $a8, $af, $a8, $af, $71, $d8, $71, $dc        ;; 0f:76bf ????????
-    db   $88, $41, $8f, $e1, $b5, $75, $d3, $76        ;; 0f:76c7 ????????
-    db   $1c, $77, $62, $77                            ;; 0f:76cf ????
+song18_channel3:
+    mUNK_E4 frequencyDeltaData                         ;; 0f:756f $e4 $4f $7a
+    mUNK_E8 data_0f_7afc                               ;; 0f:7572 $e8 $fc $7a
+    mUNK_E0 $20                                        ;; 0f:7575 $e0 $20
+    mUNK_E6 $03                                        ;; 0f:7577 $e6 $03
+    db   $D1 ; unknown music opcode                    ;; 0f:7579 $d1
+    db   $A6 ; unknown music opcode                    ;; 0f:757a $a6
+    db   $AF ; unknown music opcode                    ;; 0f:757b $af
+    db   $A6 ; unknown music opcode                    ;; 0f:757c $a6
+    db   $AF ; unknown music opcode                    ;; 0f:757d $af
+    db   $A6 ; unknown music opcode                    ;; 0f:757e $a6
+    db   $AF ; unknown music opcode                    ;; 0f:757f $af
+    db   $A6 ; unknown music opcode                    ;; 0f:7580 $a6
+    db   $AF ; unknown music opcode                    ;; 0f:7581 $af
+    db   $A6 ; unknown music opcode                    ;; 0f:7582 $a6
+    db   $AF ; unknown music opcode                    ;; 0f:7583 $af
+    db   $A6 ; unknown music opcode                    ;; 0f:7584 $a6
+    db   $AF ; unknown music opcode                    ;; 0f:7585 $af
+    db   $D8 ; unknown music opcode                    ;; 0f:7586 $d8
+    mUNK_E6 $02                                        ;; 0f:7587 $e6 $02
+    db   $51 ; unknown music opcode                    ;; 0f:7589 $51
+    mUNK_E6 $03                                        ;; 0f:758a $e6 $03
+    db   $DC ; unknown music opcode                    ;; 0f:758c $dc
+    db   $A6 ; unknown music opcode                    ;; 0f:758d $a6
+    db   $AF ; unknown music opcode                    ;; 0f:758e $af
+    db   $A6 ; unknown music opcode                    ;; 0f:758f $a6
+    db   $AF ; unknown music opcode                    ;; 0f:7590 $af
+    db   $A6 ; unknown music opcode                    ;; 0f:7591 $a6
+    db   $AF ; unknown music opcode                    ;; 0f:7592 $af
+    db   $A6 ; unknown music opcode                    ;; 0f:7593 $a6
+    db   $AF ; unknown music opcode                    ;; 0f:7594 $af
+    db   $A6 ; unknown music opcode                    ;; 0f:7595 $a6
+    db   $AF ; unknown music opcode                    ;; 0f:7596 $af
+    db   $A6 ; unknown music opcode                    ;; 0f:7597 $a6
+    db   $AF ; unknown music opcode                    ;; 0f:7598 $af
+    db   $D8 ; unknown music opcode                    ;; 0f:7599 $d8
+    mUNK_E6 $01                                        ;; 0f:759a $e6 $01
+    db   $51 ; unknown music opcode                    ;; 0f:759c $51
+    mUNK_E6 $03                                        ;; 0f:759d $e6 $03
+    db   $DC ; unknown music opcode                    ;; 0f:759f $dc
+    db   $A2 ; unknown music opcode                    ;; 0f:75a0 $a2
+    db   $AF ; unknown music opcode                    ;; 0f:75a1 $af
+    db   $A2 ; unknown music opcode                    ;; 0f:75a2 $a2
+    db   $AF ; unknown music opcode                    ;; 0f:75a3 $af
+    db   $A2 ; unknown music opcode                    ;; 0f:75a4 $a2
+    db   $AF ; unknown music opcode                    ;; 0f:75a5 $af
+    db   $A2 ; unknown music opcode                    ;; 0f:75a6 $a2
+    db   $AF ; unknown music opcode                    ;; 0f:75a7 $af
+    db   $A2 ; unknown music opcode                    ;; 0f:75a8 $a2
+    db   $AF ; unknown music opcode                    ;; 0f:75a9 $af
+    db   $A2 ; unknown music opcode                    ;; 0f:75aa $a2
+    db   $AF ; unknown music opcode                    ;; 0f:75ab $af
+    mUNK_E6 $02                                        ;; 0f:75ac $e6 $02
+    db   $59 ; unknown music opcode                    ;; 0f:75ae $59
+    mUNK_E6 $03                                        ;; 0f:75af $e6 $03
+    db   $54 ; unknown music opcode                    ;; 0f:75b1 $54
+    db   $52 ; unknown music opcode                    ;; 0f:75b2 $52
+    db   $41 ; unknown music opcode                    ;; 0f:75b3 $41
+    db   $8F ; unknown music opcode                    ;; 0f:75b4 $8f
+.data_0f_75b5:
+    mUNK_E3 $02                                        ;; 0f:75b5 $e3 $02
+.data_0f_75b7:
+    mUNK_E8 data_0f_7b0c                               ;; 0f:75b7 $e8 $0c $7b
+    db   $86 ; unknown music opcode                    ;; 0f:75ba $86
+    db   $D8 ; unknown music opcode                    ;; 0f:75bb $d8
+    db   $A6 ; unknown music opcode                    ;; 0f:75bc $a6
+    db   $AF ; unknown music opcode                    ;; 0f:75bd $af
+    db   $DC ; unknown music opcode                    ;; 0f:75be $dc
+    db   $86 ; unknown music opcode                    ;; 0f:75bf $86
+    db   $D8 ; unknown music opcode                    ;; 0f:75c0 $d8
+    db   $A6 ; unknown music opcode                    ;; 0f:75c1 $a6
+    db   $AF ; unknown music opcode                    ;; 0f:75c2 $af
+    db   $DC ; unknown music opcode                    ;; 0f:75c3 $dc
+    db   $86 ; unknown music opcode                    ;; 0f:75c4 $86
+    db   $D8 ; unknown music opcode                    ;; 0f:75c5 $d8
+    db   $A6 ; unknown music opcode                    ;; 0f:75c6 $a6
+    db   $AF ; unknown music opcode                    ;; 0f:75c7 $af
+    db   $DC ; unknown music opcode                    ;; 0f:75c8 $dc
+    db   $86 ; unknown music opcode                    ;; 0f:75c9 $86
+    db   $D8 ; unknown music opcode                    ;; 0f:75ca $d8
+    db   $A6 ; unknown music opcode                    ;; 0f:75cb $a6
+    db   $AF ; unknown music opcode                    ;; 0f:75cc $af
+    db   $DC ; unknown music opcode                    ;; 0f:75cd $dc
+    db   $8B ; unknown music opcode                    ;; 0f:75ce $8b
+    db   $D8 ; unknown music opcode                    ;; 0f:75cf $d8
+    db   $AB ; unknown music opcode                    ;; 0f:75d0 $ab
+    db   $AF ; unknown music opcode                    ;; 0f:75d1 $af
+    db   $DC ; unknown music opcode                    ;; 0f:75d2 $dc
+    db   $8B ; unknown music opcode                    ;; 0f:75d3 $8b
+    db   $D8 ; unknown music opcode                    ;; 0f:75d4 $d8
+    db   $AB ; unknown music opcode                    ;; 0f:75d5 $ab
+    db   $AF ; unknown music opcode                    ;; 0f:75d6 $af
+    db   $DC ; unknown music opcode                    ;; 0f:75d7 $dc
+    mUNK_E6 $02                                        ;; 0f:75d8 $e6 $02
+    db   $5B ; unknown music opcode                    ;; 0f:75da $5b
+    mUNK_E6 $01                                        ;; 0f:75db $e6 $01
+    db   $56 ; unknown music opcode                    ;; 0f:75dd $56
+    mUNK_E6 $03                                        ;; 0f:75de $e6 $03
+    db   $84 ; unknown music opcode                    ;; 0f:75e0 $84
+    db   $D8 ; unknown music opcode                    ;; 0f:75e1 $d8
+    db   $A4 ; unknown music opcode                    ;; 0f:75e2 $a4
+    db   $AF ; unknown music opcode                    ;; 0f:75e3 $af
+    db   $DC ; unknown music opcode                    ;; 0f:75e4 $dc
+    db   $84 ; unknown music opcode                    ;; 0f:75e5 $84
+    db   $D8 ; unknown music opcode                    ;; 0f:75e6 $d8
+    db   $A4 ; unknown music opcode                    ;; 0f:75e7 $a4
+    db   $AF ; unknown music opcode                    ;; 0f:75e8 $af
+    db   $DC ; unknown music opcode                    ;; 0f:75e9 $dc
+    db   $84 ; unknown music opcode                    ;; 0f:75ea $84
+    db   $D8 ; unknown music opcode                    ;; 0f:75eb $d8
+    db   $A4 ; unknown music opcode                    ;; 0f:75ec $a4
+    db   $AF ; unknown music opcode                    ;; 0f:75ed $af
+    db   $DC ; unknown music opcode                    ;; 0f:75ee $dc
+    db   $84 ; unknown music opcode                    ;; 0f:75ef $84
+    db   $D8 ; unknown music opcode                    ;; 0f:75f0 $d8
+    db   $A4 ; unknown music opcode                    ;; 0f:75f1 $a4
+    db   $AF ; unknown music opcode                    ;; 0f:75f2 $af
+    db   $DC ; unknown music opcode                    ;; 0f:75f3 $dc
+    db   $89 ; unknown music opcode                    ;; 0f:75f4 $89
+    db   $D8 ; unknown music opcode                    ;; 0f:75f5 $d8
+    db   $A9 ; unknown music opcode                    ;; 0f:75f6 $a9
+    db   $AF ; unknown music opcode                    ;; 0f:75f7 $af
+    db   $DC ; unknown music opcode                    ;; 0f:75f8 $dc
+    db   $89 ; unknown music opcode                    ;; 0f:75f9 $89
+    db   $D8 ; unknown music opcode                    ;; 0f:75fa $d8
+    db   $A9 ; unknown music opcode                    ;; 0f:75fb $a9
+    db   $AF ; unknown music opcode                    ;; 0f:75fc $af
+    db   $DC ; unknown music opcode                    ;; 0f:75fd $dc
+    mUNK_E6 $01                                        ;; 0f:75fe $e6 $01
+    db   $59 ; unknown music opcode                    ;; 0f:7600 $59
+    mUNK_E6 $02                                        ;; 0f:7601 $e6 $02
+    db   $57 ; unknown music opcode                    ;; 0f:7603 $57
+    mUNK_E6 $03                                        ;; 0f:7604 $e6 $03
+    db   $82 ; unknown music opcode                    ;; 0f:7606 $82
+    db   $D8 ; unknown music opcode                    ;; 0f:7607 $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:7608 $a2
+    db   $AF ; unknown music opcode                    ;; 0f:7609 $af
+    db   $DC ; unknown music opcode                    ;; 0f:760a $dc
+    db   $82 ; unknown music opcode                    ;; 0f:760b $82
+    db   $D8 ; unknown music opcode                    ;; 0f:760c $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:760d $a2
+    db   $AF ; unknown music opcode                    ;; 0f:760e $af
+    db   $DC ; unknown music opcode                    ;; 0f:760f $dc
+    db   $82 ; unknown music opcode                    ;; 0f:7610 $82
+    db   $D8 ; unknown music opcode                    ;; 0f:7611 $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:7612 $a2
+    db   $AF ; unknown music opcode                    ;; 0f:7613 $af
+    db   $DC ; unknown music opcode                    ;; 0f:7614 $dc
+    db   $82 ; unknown music opcode                    ;; 0f:7615 $82
+    db   $D8 ; unknown music opcode                    ;; 0f:7616 $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:7617 $a2
+    db   $AF ; unknown music opcode                    ;; 0f:7618 $af
+    db   $DC ; unknown music opcode                    ;; 0f:7619 $dc
+    db   $84 ; unknown music opcode                    ;; 0f:761a $84
+    db   $D8 ; unknown music opcode                    ;; 0f:761b $d8
+    db   $A4 ; unknown music opcode                    ;; 0f:761c $a4
+    db   $AF ; unknown music opcode                    ;; 0f:761d $af
+    db   $DC ; unknown music opcode                    ;; 0f:761e $dc
+    db   $84 ; unknown music opcode                    ;; 0f:761f $84
+    db   $D8 ; unknown music opcode                    ;; 0f:7620 $d8
+    db   $A4 ; unknown music opcode                    ;; 0f:7621 $a4
+    db   $AF ; unknown music opcode                    ;; 0f:7622 $af
+    db   $DC ; unknown music opcode                    ;; 0f:7623 $dc
+    db   $84 ; unknown music opcode                    ;; 0f:7624 $84
+    db   $D8 ; unknown music opcode                    ;; 0f:7625 $d8
+    db   $A4 ; unknown music opcode                    ;; 0f:7626 $a4
+    db   $AF ; unknown music opcode                    ;; 0f:7627 $af
+    db   $DC ; unknown music opcode                    ;; 0f:7628 $dc
+    db   $84 ; unknown music opcode                    ;; 0f:7629 $84
+    db   $D8 ; unknown music opcode                    ;; 0f:762a $d8
+    db   $A4 ; unknown music opcode                    ;; 0f:762b $a4
+    db   $AF ; unknown music opcode                    ;; 0f:762c $af
+    mUNK_EB $01, .data_0f_763e                         ;; 0f:762d $eb $01 $3e $76
+    db   $DC ; unknown music opcode                    ;; 0f:7631 $dc
+    db   $72 ; unknown music opcode                    ;; 0f:7632 $72
+    db   $D8 ; unknown music opcode                    ;; 0f:7633 $d8
+    db   $72 ; unknown music opcode                    ;; 0f:7634 $72
+    db   $DC ; unknown music opcode                    ;; 0f:7635 $dc
+    db   $89 ; unknown music opcode                    ;; 0f:7636 $89
+    db   $D8 ; unknown music opcode                    ;; 0f:7637 $d8
+    db   $41 ; unknown music opcode                    ;; 0f:7638 $41
+    db   $8F ; unknown music opcode                    ;; 0f:7639 $8f
+    db   $DC ; unknown music opcode                    ;; 0f:763a $dc
+    mUNK_E2 .data_0f_75b7                              ;; 0f:763b $e2 $b7 $75
+.data_0f_763e:
+    db   $DC ; unknown music opcode                    ;; 0f:763e $dc
+    db   $A2 ; unknown music opcode                    ;; 0f:763f $a2
+    db   $AF ; unknown music opcode                    ;; 0f:7640 $af
+    db   $A2 ; unknown music opcode                    ;; 0f:7641 $a2
+    db   $AF ; unknown music opcode                    ;; 0f:7642 $af
+    db   $AF ; unknown music opcode                    ;; 0f:7643 $af
+    db   $74 ; unknown music opcode                    ;; 0f:7644 $74
+    db   $46 ; unknown music opcode                    ;; 0f:7645 $46
+    db   $8F ; unknown music opcode                    ;; 0f:7646 $8f
+    db   $8B ; unknown music opcode                    ;; 0f:7647 $8b
+    db   $D8 ; unknown music opcode                    ;; 0f:7648 $d8
+    db   $AB ; unknown music opcode                    ;; 0f:7649 $ab
+    db   $AF ; unknown music opcode                    ;; 0f:764a $af
+    db   $DC ; unknown music opcode                    ;; 0f:764b $dc
+    db   $8B ; unknown music opcode                    ;; 0f:764c $8b
+    db   $D8 ; unknown music opcode                    ;; 0f:764d $d8
+    db   $AB ; unknown music opcode                    ;; 0f:764e $ab
+    db   $AF ; unknown music opcode                    ;; 0f:764f $af
+    db   $DC ; unknown music opcode                    ;; 0f:7650 $dc
+    db   $8B ; unknown music opcode                    ;; 0f:7651 $8b
+    db   $D8 ; unknown music opcode                    ;; 0f:7652 $d8
+    db   $AB ; unknown music opcode                    ;; 0f:7653 $ab
+    db   $AF ; unknown music opcode                    ;; 0f:7654 $af
+    db   $DC ; unknown music opcode                    ;; 0f:7655 $dc
+    db   $8B ; unknown music opcode                    ;; 0f:7656 $8b
+    db   $D8 ; unknown music opcode                    ;; 0f:7657 $d8
+    db   $AB ; unknown music opcode                    ;; 0f:7658 $ab
+    db   $AF ; unknown music opcode                    ;; 0f:7659 $af
+    db   $DC ; unknown music opcode                    ;; 0f:765a $dc
+    db   $84 ; unknown music opcode                    ;; 0f:765b $84
+    db   $D8 ; unknown music opcode                    ;; 0f:765c $d8
+    db   $A4 ; unknown music opcode                    ;; 0f:765d $a4
+    db   $AF ; unknown music opcode                    ;; 0f:765e $af
+    db   $DC ; unknown music opcode                    ;; 0f:765f $dc
+    db   $84 ; unknown music opcode                    ;; 0f:7660 $84
+    db   $D8 ; unknown music opcode                    ;; 0f:7661 $d8
+    db   $A4 ; unknown music opcode                    ;; 0f:7662 $a4
+    db   $AF ; unknown music opcode                    ;; 0f:7663 $af
+    db   $DC ; unknown music opcode                    ;; 0f:7664 $dc
+    db   $59 ; unknown music opcode                    ;; 0f:7665 $59
+    db   $57 ; unknown music opcode                    ;; 0f:7666 $57
+    db   $82 ; unknown music opcode                    ;; 0f:7667 $82
+    db   $D8 ; unknown music opcode                    ;; 0f:7668 $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:7669 $a2
+    db   $AF ; unknown music opcode                    ;; 0f:766a $af
+    db   $DC ; unknown music opcode                    ;; 0f:766b $dc
+    db   $82 ; unknown music opcode                    ;; 0f:766c $82
+    db   $D8 ; unknown music opcode                    ;; 0f:766d $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:766e $a2
+    db   $AF ; unknown music opcode                    ;; 0f:766f $af
+    db   $DC ; unknown music opcode                    ;; 0f:7670 $dc
+    db   $81 ; unknown music opcode                    ;; 0f:7671 $81
+    db   $D8 ; unknown music opcode                    ;; 0f:7672 $d8
+    db   $A1 ; unknown music opcode                    ;; 0f:7673 $a1
+    db   $AF ; unknown music opcode                    ;; 0f:7674 $af
+    db   $DC ; unknown music opcode                    ;; 0f:7675 $dc
+    db   $81 ; unknown music opcode                    ;; 0f:7676 $81
+    db   $D8 ; unknown music opcode                    ;; 0f:7677 $d8
+    db   $A1 ; unknown music opcode                    ;; 0f:7678 $a1
+    db   $AF ; unknown music opcode                    ;; 0f:7679 $af
+    db   $DC ; unknown music opcode                    ;; 0f:767a $dc
+    db   $56 ; unknown music opcode                    ;; 0f:767b $56
+    db   $58 ; unknown music opcode                    ;; 0f:767c $58
+    db   $59 ; unknown music opcode                    ;; 0f:767d $59
+    db   $5A ; unknown music opcode                    ;; 0f:767e $5a
+    db   $8B ; unknown music opcode                    ;; 0f:767f $8b
+    db   $D8 ; unknown music opcode                    ;; 0f:7680 $d8
+    db   $AB ; unknown music opcode                    ;; 0f:7681 $ab
+    db   $AF ; unknown music opcode                    ;; 0f:7682 $af
+    db   $DC ; unknown music opcode                    ;; 0f:7683 $dc
+    db   $8B ; unknown music opcode                    ;; 0f:7684 $8b
+    db   $D8 ; unknown music opcode                    ;; 0f:7685 $d8
+    db   $AB ; unknown music opcode                    ;; 0f:7686 $ab
+    db   $AF ; unknown music opcode                    ;; 0f:7687 $af
+    db   $DC ; unknown music opcode                    ;; 0f:7688 $dc
+    db   $8B ; unknown music opcode                    ;; 0f:7689 $8b
+    db   $D8 ; unknown music opcode                    ;; 0f:768a $d8
+    db   $AB ; unknown music opcode                    ;; 0f:768b $ab
+    db   $AF ; unknown music opcode                    ;; 0f:768c $af
+    db   $DC ; unknown music opcode                    ;; 0f:768d $dc
+    db   $8B ; unknown music opcode                    ;; 0f:768e $8b
+    db   $D8 ; unknown music opcode                    ;; 0f:768f $d8
+    db   $AB ; unknown music opcode                    ;; 0f:7690 $ab
+    db   $AF ; unknown music opcode                    ;; 0f:7691 $af
+    db   $DC ; unknown music opcode                    ;; 0f:7692 $dc
+    db   $84 ; unknown music opcode                    ;; 0f:7693 $84
+    db   $D8 ; unknown music opcode                    ;; 0f:7694 $d8
+    db   $A4 ; unknown music opcode                    ;; 0f:7695 $a4
+    db   $AF ; unknown music opcode                    ;; 0f:7696 $af
+    db   $DC ; unknown music opcode                    ;; 0f:7697 $dc
+    db   $84 ; unknown music opcode                    ;; 0f:7698 $84
+    db   $D8 ; unknown music opcode                    ;; 0f:7699 $d8
+    db   $A4 ; unknown music opcode                    ;; 0f:769a $a4
+    db   $AF ; unknown music opcode                    ;; 0f:769b $af
+    db   $DC ; unknown music opcode                    ;; 0f:769c $dc
+    db   $59 ; unknown music opcode                    ;; 0f:769d $59
+    db   $57 ; unknown music opcode                    ;; 0f:769e $57
+    db   $82 ; unknown music opcode                    ;; 0f:769f $82
+    db   $D8 ; unknown music opcode                    ;; 0f:76a0 $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:76a1 $a2
+    db   $AF ; unknown music opcode                    ;; 0f:76a2 $af
+    db   $DC ; unknown music opcode                    ;; 0f:76a3 $dc
+    db   $82 ; unknown music opcode                    ;; 0f:76a4 $82
+    db   $D8 ; unknown music opcode                    ;; 0f:76a5 $d8
+    db   $A2 ; unknown music opcode                    ;; 0f:76a6 $a2
+    db   $AF ; unknown music opcode                    ;; 0f:76a7 $af
+    db   $DC ; unknown music opcode                    ;; 0f:76a8 $dc
+    db   $82 ; unknown music opcode                    ;; 0f:76a9 $82
+    db   $D8 ; unknown music opcode                    ;; 0f:76aa $d8
+    db   $86 ; unknown music opcode                    ;; 0f:76ab $86
+    db   $82 ; unknown music opcode                    ;; 0f:76ac $82
+    db   $81 ; unknown music opcode                    ;; 0f:76ad $81
+    db   $DC ; unknown music opcode                    ;; 0f:76ae $dc
+    db   $5B ; unknown music opcode                    ;; 0f:76af $5b
+    db   $59 ; unknown music opcode                    ;; 0f:76b0 $59
+    db   $58 ; unknown music opcode                    ;; 0f:76b1 $58
+    db   $56 ; unknown music opcode                    ;; 0f:76b2 $56
+    db   $A8 ; unknown music opcode                    ;; 0f:76b3 $a8
+    db   $AF ; unknown music opcode                    ;; 0f:76b4 $af
+    db   $A8 ; unknown music opcode                    ;; 0f:76b5 $a8
+    db   $AF ; unknown music opcode                    ;; 0f:76b6 $af
+    db   $A8 ; unknown music opcode                    ;; 0f:76b7 $a8
+    db   $AF ; unknown music opcode                    ;; 0f:76b8 $af
+    db   $A8 ; unknown music opcode                    ;; 0f:76b9 $a8
+    db   $AF ; unknown music opcode                    ;; 0f:76ba $af
+    db   $A8 ; unknown music opcode                    ;; 0f:76bb $a8
+    db   $AF ; unknown music opcode                    ;; 0f:76bc $af
+    db   $A8 ; unknown music opcode                    ;; 0f:76bd $a8
+    db   $AF ; unknown music opcode                    ;; 0f:76be $af
+    db   $A8 ; unknown music opcode                    ;; 0f:76bf $a8
+    db   $AF ; unknown music opcode                    ;; 0f:76c0 $af
+    db   $A8 ; unknown music opcode                    ;; 0f:76c1 $a8
+    db   $AF ; unknown music opcode                    ;; 0f:76c2 $af
+    db   $71 ; unknown music opcode                    ;; 0f:76c3 $71
+    db   $D8 ; unknown music opcode                    ;; 0f:76c4 $d8
+    db   $71 ; unknown music opcode                    ;; 0f:76c5 $71
+    db   $DC ; unknown music opcode                    ;; 0f:76c6 $dc
+    db   $88 ; unknown music opcode                    ;; 0f:76c7 $88
+    db   $41 ; unknown music opcode                    ;; 0f:76c8 $41
+    db   $8F ; unknown music opcode                    ;; 0f:76c9 $8f
+    mUNK_E1 .data_0f_75b5                              ;; 0f:76ca $e1 $b5 $75
+    db   $d3, $76, $1c, $77, $62, $77                  ;; 0f:76cd ??????
 
-data_0f_76d3:
-    db   $e7, $7b, $e4, $4f, $7a, $e0, $b0, $7a        ;; 0f:76d3 ........
-    db   $e5, $00, $e3, $04                            ;; 0f:76db ....
+song19_channel2:
+    mUNK_E7 $7b                                        ;; 0f:76d3 $e7 $7b
+    mUNK_E4 frequencyDeltaData                         ;; 0f:76d5 $e4 $4f $7a
+    mUNK_E0 $b0                                        ;; 0f:76d8 $e0 $b0
+    db   $7A ; unknown music opcode                    ;; 0f:76da $7a
+    mUNK_E5 $00                                        ;; 0f:76db $e5 $00
+    mUNK_E3 $04                                        ;; 0f:76dd $e3 $04
 .data_0f_76df:
-    db   $d2, $a3, $a2, $a1, $a0, $a3, $a2, $a1        ;; 0f:76df ........
-    db   $a0, $a3, $a2, $a1, $a0, $a3, $a2, $a1        ;; 0f:76e7 ........
-    db   $a0, $e2                                      ;; 0f:76ef ..
-    dw   .data_0f_76df                                 ;; 0f:76f1 pP
-    db   $e7, $82, $e0, $be, $7a, $e5, $40, $d8        ;; 0f:76f3 ........
-    db   $c3, $cf, $c3, $cf, $c3, $cf, $2f, $af        ;; 0f:76fb ........
-    db   $53, $5f, $53, $8f, $83, $8f, $83, $c3        ;; 0f:7703 ........
-    db   $cf, $c3, $cf, $c3, $cf, $2f, $af, $53        ;; 0f:770b ........
-    db   $5f, $53, $8f, $83, $8f, $83, $e1             ;; 0f:7713 .......
-    dw   data_0f_76d3                                  ;; 0f:771a pP
+    db   $D2 ; unknown music opcode                    ;; 0f:76df $d2
+    db   $A3 ; unknown music opcode                    ;; 0f:76e0 $a3
+    db   $A2 ; unknown music opcode                    ;; 0f:76e1 $a2
+    db   $A1 ; unknown music opcode                    ;; 0f:76e2 $a1
+    db   $A0 ; unknown music opcode                    ;; 0f:76e3 $a0
+    db   $A3 ; unknown music opcode                    ;; 0f:76e4 $a3
+    db   $A2 ; unknown music opcode                    ;; 0f:76e5 $a2
+    db   $A1 ; unknown music opcode                    ;; 0f:76e6 $a1
+    db   $A0 ; unknown music opcode                    ;; 0f:76e7 $a0
+    db   $A3 ; unknown music opcode                    ;; 0f:76e8 $a3
+    db   $A2 ; unknown music opcode                    ;; 0f:76e9 $a2
+    db   $A1 ; unknown music opcode                    ;; 0f:76ea $a1
+    db   $A0 ; unknown music opcode                    ;; 0f:76eb $a0
+    db   $A3 ; unknown music opcode                    ;; 0f:76ec $a3
+    db   $A2 ; unknown music opcode                    ;; 0f:76ed $a2
+    db   $A1 ; unknown music opcode                    ;; 0f:76ee $a1
+    db   $A0 ; unknown music opcode                    ;; 0f:76ef $a0
+    mUNK_E2 .data_0f_76df                              ;; 0f:76f0 $e2 $df $76
+    mUNK_E7 $82                                        ;; 0f:76f3 $e7 $82
+    mUNK_E0 $be                                        ;; 0f:76f5 $e0 $be
+    db   $7A ; unknown music opcode                    ;; 0f:76f7 $7a
+    mUNK_E5 $40                                        ;; 0f:76f8 $e5 $40
+    db   $D8 ; unknown music opcode                    ;; 0f:76fa $d8
+    db   $C3 ; unknown music opcode                    ;; 0f:76fb $c3
+    db   $CF ; unknown music opcode                    ;; 0f:76fc $cf
+    db   $C3 ; unknown music opcode                    ;; 0f:76fd $c3
+    db   $CF ; unknown music opcode                    ;; 0f:76fe $cf
+    db   $C3 ; unknown music opcode                    ;; 0f:76ff $c3
+    db   $CF ; unknown music opcode                    ;; 0f:7700 $cf
+    db   $2F ; unknown music opcode                    ;; 0f:7701 $2f
+    db   $AF ; unknown music opcode                    ;; 0f:7702 $af
+    db   $53 ; unknown music opcode                    ;; 0f:7703 $53
+    db   $5F ; unknown music opcode                    ;; 0f:7704 $5f
+    db   $53 ; unknown music opcode                    ;; 0f:7705 $53
+    db   $8F ; unknown music opcode                    ;; 0f:7706 $8f
+    db   $83 ; unknown music opcode                    ;; 0f:7707 $83
+    db   $8F ; unknown music opcode                    ;; 0f:7708 $8f
+    db   $83 ; unknown music opcode                    ;; 0f:7709 $83
+    db   $C3 ; unknown music opcode                    ;; 0f:770a $c3
+    db   $CF ; unknown music opcode                    ;; 0f:770b $cf
+    db   $C3 ; unknown music opcode                    ;; 0f:770c $c3
+    db   $CF ; unknown music opcode                    ;; 0f:770d $cf
+    db   $C3 ; unknown music opcode                    ;; 0f:770e $c3
+    db   $CF ; unknown music opcode                    ;; 0f:770f $cf
+    db   $2F ; unknown music opcode                    ;; 0f:7710 $2f
+    db   $AF ; unknown music opcode                    ;; 0f:7711 $af
+    db   $53 ; unknown music opcode                    ;; 0f:7712 $53
+    db   $5F ; unknown music opcode                    ;; 0f:7713 $5f
+    db   $53 ; unknown music opcode                    ;; 0f:7714 $53
+    db   $8F ; unknown music opcode                    ;; 0f:7715 $8f
+    db   $83 ; unknown music opcode                    ;; 0f:7716 $83
+    db   $8F ; unknown music opcode                    ;; 0f:7717 $8f
+    db   $83 ; unknown music opcode                    ;; 0f:7718 $83
+    mUNK_E1 song19_channel2                            ;; 0f:7719 $e1 $d3 $76
 
-data_0f_771c:
-    db   $e4, $4f, $7a, $e0, $b4, $7a, $e5, $00        ;; 0f:771c ........
-    db   $e6, $03, $e3, $08                            ;; 0f:7724 ....
+song19_channel1:
+    mUNK_E4 frequencyDeltaData                         ;; 0f:771c $e4 $4f $7a
+    mUNK_E0 $b4                                        ;; 0f:771f $e0 $b4
+    db   $7A ; unknown music opcode                    ;; 0f:7721 $7a
+    mUNK_E5 $00                                        ;; 0f:7722 $e5 $00
+    mUNK_E6 $03                                        ;; 0f:7724 $e6 $03
+    mUNK_E3 $08                                        ;; 0f:7726 $e3 $08
 .data_0f_7728:
-    db   $e6, $03, $d2, $ab, $aa, $e6, $02, $a9        ;; 0f:7728 ........
-    db   $a8, $e6, $03, $ab, $aa, $e6, $01, $a9        ;; 0f:7730 ........
-    db   $a8, $e2                                      ;; 0f:7738 ..
-    dw   .data_0f_7728                                 ;; 0f:773a pP
-    db   $e3, $04                                      ;; 0f:773c ..
+    mUNK_E6 $03                                        ;; 0f:7728 $e6 $03
+    db   $D2 ; unknown music opcode                    ;; 0f:772a $d2
+    db   $AB ; unknown music opcode                    ;; 0f:772b $ab
+    db   $AA ; unknown music opcode                    ;; 0f:772c $aa
+    mUNK_E6 $02                                        ;; 0f:772d $e6 $02
+    db   $A9 ; unknown music opcode                    ;; 0f:772f $a9
+    db   $A8 ; unknown music opcode                    ;; 0f:7730 $a8
+    mUNK_E6 $03                                        ;; 0f:7731 $e6 $03
+    db   $AB ; unknown music opcode                    ;; 0f:7733 $ab
+    db   $AA ; unknown music opcode                    ;; 0f:7734 $aa
+    mUNK_E6 $01                                        ;; 0f:7735 $e6 $01
+    db   $A9 ; unknown music opcode                    ;; 0f:7737 $a9
+    db   $A8 ; unknown music opcode                    ;; 0f:7738 $a8
+    mUNK_E2 .data_0f_7728                              ;; 0f:7739 $e2 $28 $77
+    mUNK_E3 $04                                        ;; 0f:773c $e3 $04
 .data_0f_773e:
-    db   $e0, $ae, $7a, $e5, $40, $e6, $02, $d2        ;; 0f:773e ........
-    db   $ab, $aa, $a9, $a8, $e6, $01, $ab, $aa        ;; 0f:7746 ........
-    db   $a9, $a8, $e6, $02, $a7, $a8, $a9, $aa        ;; 0f:774e ........
-    db   $e6, $01, $a7, $a8, $a9, $aa, $e2             ;; 0f:7756 .......
-    dw   .data_0f_773e                                 ;; 0f:775d pP
-    db   $e1                                           ;; 0f:775f .
-    dw   data_0f_771c                                  ;; 0f:7760 pP
+    mUNK_E0 $ae                                        ;; 0f:773e $e0 $ae
+    db   $7A ; unknown music opcode                    ;; 0f:7740 $7a
+    mUNK_E5 $40                                        ;; 0f:7741 $e5 $40
+    mUNK_E6 $02                                        ;; 0f:7743 $e6 $02
+    db   $D2 ; unknown music opcode                    ;; 0f:7745 $d2
+    db   $AB ; unknown music opcode                    ;; 0f:7746 $ab
+    db   $AA ; unknown music opcode                    ;; 0f:7747 $aa
+    db   $A9 ; unknown music opcode                    ;; 0f:7748 $a9
+    db   $A8 ; unknown music opcode                    ;; 0f:7749 $a8
+    mUNK_E6 $01                                        ;; 0f:774a $e6 $01
+    db   $AB ; unknown music opcode                    ;; 0f:774c $ab
+    db   $AA ; unknown music opcode                    ;; 0f:774d $aa
+    db   $A9 ; unknown music opcode                    ;; 0f:774e $a9
+    db   $A8 ; unknown music opcode                    ;; 0f:774f $a8
+    mUNK_E6 $02                                        ;; 0f:7750 $e6 $02
+    db   $A7 ; unknown music opcode                    ;; 0f:7752 $a7
+    db   $A8 ; unknown music opcode                    ;; 0f:7753 $a8
+    db   $A9 ; unknown music opcode                    ;; 0f:7754 $a9
+    db   $AA ; unknown music opcode                    ;; 0f:7755 $aa
+    mUNK_E6 $01                                        ;; 0f:7756 $e6 $01
+    db   $A7 ; unknown music opcode                    ;; 0f:7758 $a7
+    db   $A8 ; unknown music opcode                    ;; 0f:7759 $a8
+    db   $A9 ; unknown music opcode                    ;; 0f:775a $a9
+    db   $AA ; unknown music opcode                    ;; 0f:775b $aa
+    mUNK_E2 .data_0f_773e                              ;; 0f:775c $e2 $3e $77
+    mUNK_E1 song19_channel1                            ;; 0f:775f $e1 $1c $77
 
-data_0f_7762:
-    db   $e4, $4f, $7a                                 ;; 0f:7762 ...
+song19_channel3:
+    mUNK_E4 frequencyDeltaData                         ;; 0f:7762 $e4 $4f $7a
 .data_0f_7765:
-    db   $e8, $fc, $7a, $e0, $20, $e6, $03, $e3        ;; 0f:7765 ........
-    db   $02                                           ;; 0f:776d .
+    mUNK_E8 data_0f_7afc                               ;; 0f:7765 $e8 $fc $7a
+    mUNK_E0 $20                                        ;; 0f:7768 $e0 $20
+    mUNK_E6 $03                                        ;; 0f:776a $e6 $03
+    mUNK_E3 $02                                        ;; 0f:776c $e3 $02
 .data_0f_776e:
-    db   $d1, $27, $26, $25, $24, $e2                  ;; 0f:776e ......
-    dw   .data_0f_776e                                 ;; 0f:7774 pP
-    db   $e3, $02                                      ;; 0f:7776 ..
+    db   $D1 ; unknown music opcode                    ;; 0f:776e $d1
+    db   $27 ; unknown music opcode                    ;; 0f:776f $27
+    db   $26 ; unknown music opcode                    ;; 0f:7770 $26
+    db   $25 ; unknown music opcode                    ;; 0f:7771 $25
+    db   $24 ; unknown music opcode                    ;; 0f:7772 $24
+    mUNK_E2 .data_0f_776e                              ;; 0f:7773 $e2 $6e $77
+    mUNK_E3 $02                                        ;; 0f:7776 $e3 $02
 .data_0f_7778:
-    db   $e8, $0c, $7b, $d1, $a7, $af, $a7, $af        ;; 0f:7778 ........
-    db   $a7, $af, $a7, $af, $a6, $af, $a6, $af        ;; 0f:7780 ........
-    db   $a6, $af, $a6, $af, $a5, $af, $a5, $af        ;; 0f:7788 ........
-    db   $a5, $af, $a5, $af, $a4, $af, $a4, $af        ;; 0f:7790 ........
-    db   $a4, $af, $a4, $af, $e2                       ;; 0f:7798 .....
-    dw   .data_0f_7778                                 ;; 0f:779d pP
-    db   $e1                                           ;; 0f:779f .
-    dw   .data_0f_7765                                 ;; 0f:77a0 pP
+    mUNK_E8 data_0f_7b0c                               ;; 0f:7778 $e8 $0c $7b
+    db   $D1 ; unknown music opcode                    ;; 0f:777b $d1
+    db   $A7 ; unknown music opcode                    ;; 0f:777c $a7
+    db   $AF ; unknown music opcode                    ;; 0f:777d $af
+    db   $A7 ; unknown music opcode                    ;; 0f:777e $a7
+    db   $AF ; unknown music opcode                    ;; 0f:777f $af
+    db   $A7 ; unknown music opcode                    ;; 0f:7780 $a7
+    db   $AF ; unknown music opcode                    ;; 0f:7781 $af
+    db   $A7 ; unknown music opcode                    ;; 0f:7782 $a7
+    db   $AF ; unknown music opcode                    ;; 0f:7783 $af
+    db   $A6 ; unknown music opcode                    ;; 0f:7784 $a6
+    db   $AF ; unknown music opcode                    ;; 0f:7785 $af
+    db   $A6 ; unknown music opcode                    ;; 0f:7786 $a6
+    db   $AF ; unknown music opcode                    ;; 0f:7787 $af
+    db   $A6 ; unknown music opcode                    ;; 0f:7788 $a6
+    db   $AF ; unknown music opcode                    ;; 0f:7789 $af
+    db   $A6 ; unknown music opcode                    ;; 0f:778a $a6
+    db   $AF ; unknown music opcode                    ;; 0f:778b $af
+    db   $A5 ; unknown music opcode                    ;; 0f:778c $a5
+    db   $AF ; unknown music opcode                    ;; 0f:778d $af
+    db   $A5 ; unknown music opcode                    ;; 0f:778e $a5
+    db   $AF ; unknown music opcode                    ;; 0f:778f $af
+    db   $A5 ; unknown music opcode                    ;; 0f:7790 $a5
+    db   $AF ; unknown music opcode                    ;; 0f:7791 $af
+    db   $A5 ; unknown music opcode                    ;; 0f:7792 $a5
+    db   $AF ; unknown music opcode                    ;; 0f:7793 $af
+    db   $A4 ; unknown music opcode                    ;; 0f:7794 $a4
+    db   $AF ; unknown music opcode                    ;; 0f:7795 $af
+    db   $A4 ; unknown music opcode                    ;; 0f:7796 $a4
+    db   $AF ; unknown music opcode                    ;; 0f:7797 $af
+    db   $A4 ; unknown music opcode                    ;; 0f:7798 $a4
+    db   $AF ; unknown music opcode                    ;; 0f:7799 $af
+    db   $A4 ; unknown music opcode                    ;; 0f:779a $a4
+    db   $AF ; unknown music opcode                    ;; 0f:779b $af
+    mUNK_E2 .data_0f_7778                              ;; 0f:779c $e2 $78 $77
+    mUNK_E1 .data_0f_7765                              ;; 0f:779f $e1 $65 $77
     db   $a8, $77, $11, $78, $a3, $78                  ;; 0f:77a2 ??????
 
-data_0f_77a8:
-    db   $e7, $3c, $e4, $4f, $7a, $e0, $82, $7a        ;; 0f:77a8 ????????
-    db   $e5, $80, $d3, $a2, $a4, $a5, $a7, $29        ;; 0f:77b0 ????????
-    db   $8e, $d8, $80, $dc, $7b, $a7, $29, $8e        ;; 0f:77b8 ????????
-    db   $d8, $80, $dc, $7b, $a7, $49, $a7, $a5        ;; 0f:77c0 ????????
-    db   $24, $2e, $82, $84, $85, $82, $24, $8e        ;; 0f:77c8 ????????
-    db   $87, $84, $80, $dc, $4a, $d8, $80, $82        ;; 0f:77d0 ????????
-    db   $84, $85, $87, $29, $8e, $87, $85, $89        ;; 0f:77d8 ????????
-    db   $14, $a2, $a4, $a5, $a7, $29, $8e, $d8        ;; 0f:77e0 ????????
-    db   $80, $dc, $7b, $a7, $29, $8e, $d8, $80        ;; 0f:77e8 ????????
-    db   $dc, $7b, $a7, $49, $a7, $a5, $24, $2e        ;; 0f:77f0 ????????
-    db   $82, $84, $85, $82, $24, $8e, $87, $84        ;; 0f:77f8 ????????
-    db   $80, $42, $82, $84, $82, $80, $84, $02        ;; 0f:7800 ????????
-    db   $2e, $5f, $a2, $a4, $a5, $a7, $e1, $b7        ;; 0f:7808 ????????
-    db   $77                                           ;; 0f:7810 ?
+song1a_channel2:
+    mUNK_E7 $3c                                        ;; 0f:77a8 $e7 $3c
+    mUNK_E4 frequencyDeltaData                         ;; 0f:77aa $e4 $4f $7a
+    mUNK_E0 $82                                        ;; 0f:77ad $e0 $82
+    db   $7A ; unknown music opcode                    ;; 0f:77af $7a
+    mUNK_E5 $80                                        ;; 0f:77b0 $e5 $80
+    db   $D3 ; unknown music opcode                    ;; 0f:77b2 $d3
+    db   $A2 ; unknown music opcode                    ;; 0f:77b3 $a2
+    db   $A4 ; unknown music opcode                    ;; 0f:77b4 $a4
+    db   $A5 ; unknown music opcode                    ;; 0f:77b5 $a5
+    db   $A7 ; unknown music opcode                    ;; 0f:77b6 $a7
+.data_0f_77b7:
+    db   $29 ; unknown music opcode                    ;; 0f:77b7 $29
+    db   $8E ; unknown music opcode                    ;; 0f:77b8 $8e
+    db   $D8 ; unknown music opcode                    ;; 0f:77b9 $d8
+    db   $80 ; unknown music opcode                    ;; 0f:77ba $80
+    db   $DC ; unknown music opcode                    ;; 0f:77bb $dc
+    db   $7B ; unknown music opcode                    ;; 0f:77bc $7b
+    db   $A7 ; unknown music opcode                    ;; 0f:77bd $a7
+    db   $29 ; unknown music opcode                    ;; 0f:77be $29
+    db   $8E ; unknown music opcode                    ;; 0f:77bf $8e
+    db   $D8 ; unknown music opcode                    ;; 0f:77c0 $d8
+    db   $80 ; unknown music opcode                    ;; 0f:77c1 $80
+    db   $DC ; unknown music opcode                    ;; 0f:77c2 $dc
+    db   $7B ; unknown music opcode                    ;; 0f:77c3 $7b
+    db   $A7 ; unknown music opcode                    ;; 0f:77c4 $a7
+    db   $49 ; unknown music opcode                    ;; 0f:77c5 $49
+    db   $A7 ; unknown music opcode                    ;; 0f:77c6 $a7
+    db   $A5 ; unknown music opcode                    ;; 0f:77c7 $a5
+    db   $24 ; unknown music opcode                    ;; 0f:77c8 $24
+    db   $2E ; unknown music opcode                    ;; 0f:77c9 $2e
+    db   $82 ; unknown music opcode                    ;; 0f:77ca $82
+    db   $84 ; unknown music opcode                    ;; 0f:77cb $84
+    db   $85 ; unknown music opcode                    ;; 0f:77cc $85
+    db   $82 ; unknown music opcode                    ;; 0f:77cd $82
+    db   $24 ; unknown music opcode                    ;; 0f:77ce $24
+    db   $8E ; unknown music opcode                    ;; 0f:77cf $8e
+    db   $87 ; unknown music opcode                    ;; 0f:77d0 $87
+    db   $84 ; unknown music opcode                    ;; 0f:77d1 $84
+    db   $80 ; unknown music opcode                    ;; 0f:77d2 $80
+    db   $DC ; unknown music opcode                    ;; 0f:77d3 $dc
+    db   $4A ; unknown music opcode                    ;; 0f:77d4 $4a
+    db   $D8 ; unknown music opcode                    ;; 0f:77d5 $d8
+    db   $80 ; unknown music opcode                    ;; 0f:77d6 $80
+    db   $82 ; unknown music opcode                    ;; 0f:77d7 $82
+    db   $84 ; unknown music opcode                    ;; 0f:77d8 $84
+    db   $85 ; unknown music opcode                    ;; 0f:77d9 $85
+    db   $87 ; unknown music opcode                    ;; 0f:77da $87
+    db   $29 ; unknown music opcode                    ;; 0f:77db $29
+    db   $8E ; unknown music opcode                    ;; 0f:77dc $8e
+    db   $87 ; unknown music opcode                    ;; 0f:77dd $87
+    db   $85 ; unknown music opcode                    ;; 0f:77de $85
+    db   $89 ; unknown music opcode                    ;; 0f:77df $89
+    db   $14 ; unknown music opcode                    ;; 0f:77e0 $14
+    db   $A2 ; unknown music opcode                    ;; 0f:77e1 $a2
+    db   $A4 ; unknown music opcode                    ;; 0f:77e2 $a4
+    db   $A5 ; unknown music opcode                    ;; 0f:77e3 $a5
+    db   $A7 ; unknown music opcode                    ;; 0f:77e4 $a7
+    db   $29 ; unknown music opcode                    ;; 0f:77e5 $29
+    db   $8E ; unknown music opcode                    ;; 0f:77e6 $8e
+    db   $D8 ; unknown music opcode                    ;; 0f:77e7 $d8
+    db   $80 ; unknown music opcode                    ;; 0f:77e8 $80
+    db   $DC ; unknown music opcode                    ;; 0f:77e9 $dc
+    db   $7B ; unknown music opcode                    ;; 0f:77ea $7b
+    db   $A7 ; unknown music opcode                    ;; 0f:77eb $a7
+    db   $29 ; unknown music opcode                    ;; 0f:77ec $29
+    db   $8E ; unknown music opcode                    ;; 0f:77ed $8e
+    db   $D8 ; unknown music opcode                    ;; 0f:77ee $d8
+    db   $80 ; unknown music opcode                    ;; 0f:77ef $80
+    db   $DC ; unknown music opcode                    ;; 0f:77f0 $dc
+    db   $7B ; unknown music opcode                    ;; 0f:77f1 $7b
+    db   $A7 ; unknown music opcode                    ;; 0f:77f2 $a7
+    db   $49 ; unknown music opcode                    ;; 0f:77f3 $49
+    db   $A7 ; unknown music opcode                    ;; 0f:77f4 $a7
+    db   $A5 ; unknown music opcode                    ;; 0f:77f5 $a5
+    db   $24 ; unknown music opcode                    ;; 0f:77f6 $24
+    db   $2E ; unknown music opcode                    ;; 0f:77f7 $2e
+    db   $82 ; unknown music opcode                    ;; 0f:77f8 $82
+    db   $84 ; unknown music opcode                    ;; 0f:77f9 $84
+    db   $85 ; unknown music opcode                    ;; 0f:77fa $85
+    db   $82 ; unknown music opcode                    ;; 0f:77fb $82
+    db   $24 ; unknown music opcode                    ;; 0f:77fc $24
+    db   $8E ; unknown music opcode                    ;; 0f:77fd $8e
+    db   $87 ; unknown music opcode                    ;; 0f:77fe $87
+    db   $84 ; unknown music opcode                    ;; 0f:77ff $84
+    db   $80 ; unknown music opcode                    ;; 0f:7800 $80
+    db   $42 ; unknown music opcode                    ;; 0f:7801 $42
+    db   $82 ; unknown music opcode                    ;; 0f:7802 $82
+    db   $84 ; unknown music opcode                    ;; 0f:7803 $84
+    db   $82 ; unknown music opcode                    ;; 0f:7804 $82
+    db   $80 ; unknown music opcode                    ;; 0f:7805 $80
+    db   $84 ; unknown music opcode                    ;; 0f:7806 $84
+    db   $02 ; unknown music opcode                    ;; 0f:7807 $02
+    db   $2E ; unknown music opcode                    ;; 0f:7808 $2e
+    db   $5F ; unknown music opcode                    ;; 0f:7809 $5f
+    db   $A2 ; unknown music opcode                    ;; 0f:780a $a2
+    db   $A4 ; unknown music opcode                    ;; 0f:780b $a4
+    db   $A5 ; unknown music opcode                    ;; 0f:780c $a5
+    db   $A7 ; unknown music opcode                    ;; 0f:780d $a7
+    mUNK_E1 .data_0f_77b7                              ;; 0f:780e $e1 $b7 $77
 
-data_0f_7811:
-    db   $e4, $4f, $7a, $e0, $b0, $7a, $e5, $00        ;; 0f:7811 ????????
-    db   $e6, $03, $5f, $8f, $d2, $85, $84, $85        ;; 0f:7819 ????????
-    db   $82, $85, $87, $82, $8f, $85, $84, $85        ;; 0f:7821 ????????
-    db   $82, $85, $87, $82, $8f, $82, $80, $82        ;; 0f:7829 ????????
-    db   $84, $82, $70, $a4, $8e, $82, $84, $82        ;; 0f:7831 ????????
-    db   $85, $87, $59, $8f, $dc, $89, $d8, $80        ;; 0f:7839 ????????
-    db   $dc, $89, $d8, $54, $59, $82, $80, $82        ;; 0f:7841 ????????
-    db   $84, $85, $87, $89, $8a, $8f, $80, $89        ;; 0f:7849 ????????
-    db   $85, $d8, $80, $dc, $8a, $59, $8f, $81        ;; 0f:7851 ????????
-    db   $84, $82, $21, $8f, $85, $84, $85, $82        ;; 0f:7859 ????????
-    db   $85, $87, $82, $8f, $85, $84, $85, $82        ;; 0f:7861 ????????
-    db   $85, $87, $82, $8f, $82, $80, $82, $84        ;; 0f:7869 ????????
-    db   $82, $70, $a4, $8e, $82, $84, $82, $85        ;; 0f:7871 ????????
-    db   $87, $59, $8f, $dc, $89, $d8, $80, $dc        ;; 0f:7879 ????????
-    db   $89, $d8, $54, $59, $8f, $dc, $8a, $d8        ;; 0f:7881 ????????
-    db   $80, $dc, $8a, $d8, $50, $dc, $59, $8f        ;; 0f:7889 ????????
-    db   $d8, $85, $84, $85, $82, $85, $84, $85        ;; 0f:7891 ????????
-    db   $8f, $82, $80, $82, $84, $85, $54, $e1        ;; 0f:7899 ????????
-    db   $1c, $78                                      ;; 0f:78a1 ??
+song1a_channel1:
+    mUNK_E4 frequencyDeltaData                         ;; 0f:7811 $e4 $4f $7a
+    mUNK_E0 $b0                                        ;; 0f:7814 $e0 $b0
+    db   $7A ; unknown music opcode                    ;; 0f:7816 $7a
+    mUNK_E5 $00                                        ;; 0f:7817 $e5 $00
+    mUNK_E6 $03                                        ;; 0f:7819 $e6 $03
+    db   $5F ; unknown music opcode                    ;; 0f:781b $5f
+.data_0f_781c:
+    db   $8F ; unknown music opcode                    ;; 0f:781c $8f
+    db   $D2 ; unknown music opcode                    ;; 0f:781d $d2
+    db   $85 ; unknown music opcode                    ;; 0f:781e $85
+    db   $84 ; unknown music opcode                    ;; 0f:781f $84
+    db   $85 ; unknown music opcode                    ;; 0f:7820 $85
+    db   $82 ; unknown music opcode                    ;; 0f:7821 $82
+    db   $85 ; unknown music opcode                    ;; 0f:7822 $85
+    db   $87 ; unknown music opcode                    ;; 0f:7823 $87
+    db   $82 ; unknown music opcode                    ;; 0f:7824 $82
+    db   $8F ; unknown music opcode                    ;; 0f:7825 $8f
+    db   $85 ; unknown music opcode                    ;; 0f:7826 $85
+    db   $84 ; unknown music opcode                    ;; 0f:7827 $84
+    db   $85 ; unknown music opcode                    ;; 0f:7828 $85
+    db   $82 ; unknown music opcode                    ;; 0f:7829 $82
+    db   $85 ; unknown music opcode                    ;; 0f:782a $85
+    db   $87 ; unknown music opcode                    ;; 0f:782b $87
+    db   $82 ; unknown music opcode                    ;; 0f:782c $82
+    db   $8F ; unknown music opcode                    ;; 0f:782d $8f
+    db   $82 ; unknown music opcode                    ;; 0f:782e $82
+    db   $80 ; unknown music opcode                    ;; 0f:782f $80
+    db   $82 ; unknown music opcode                    ;; 0f:7830 $82
+    db   $84 ; unknown music opcode                    ;; 0f:7831 $84
+    db   $82 ; unknown music opcode                    ;; 0f:7832 $82
+    db   $70 ; unknown music opcode                    ;; 0f:7833 $70
+    db   $A4 ; unknown music opcode                    ;; 0f:7834 $a4
+    db   $8E ; unknown music opcode                    ;; 0f:7835 $8e
+    db   $82 ; unknown music opcode                    ;; 0f:7836 $82
+    db   $84 ; unknown music opcode                    ;; 0f:7837 $84
+    db   $82 ; unknown music opcode                    ;; 0f:7838 $82
+    db   $85 ; unknown music opcode                    ;; 0f:7839 $85
+    db   $87 ; unknown music opcode                    ;; 0f:783a $87
+    db   $59 ; unknown music opcode                    ;; 0f:783b $59
+    db   $8F ; unknown music opcode                    ;; 0f:783c $8f
+    db   $DC ; unknown music opcode                    ;; 0f:783d $dc
+    db   $89 ; unknown music opcode                    ;; 0f:783e $89
+    db   $D8 ; unknown music opcode                    ;; 0f:783f $d8
+    db   $80 ; unknown music opcode                    ;; 0f:7840 $80
+    db   $DC ; unknown music opcode                    ;; 0f:7841 $dc
+    db   $89 ; unknown music opcode                    ;; 0f:7842 $89
+    db   $D8 ; unknown music opcode                    ;; 0f:7843 $d8
+    db   $54 ; unknown music opcode                    ;; 0f:7844 $54
+    db   $59 ; unknown music opcode                    ;; 0f:7845 $59
+    db   $82 ; unknown music opcode                    ;; 0f:7846 $82
+    db   $80 ; unknown music opcode                    ;; 0f:7847 $80
+    db   $82 ; unknown music opcode                    ;; 0f:7848 $82
+    db   $84 ; unknown music opcode                    ;; 0f:7849 $84
+    db   $85 ; unknown music opcode                    ;; 0f:784a $85
+    db   $87 ; unknown music opcode                    ;; 0f:784b $87
+    db   $89 ; unknown music opcode                    ;; 0f:784c $89
+    db   $8A ; unknown music opcode                    ;; 0f:784d $8a
+    db   $8F ; unknown music opcode                    ;; 0f:784e $8f
+    db   $80 ; unknown music opcode                    ;; 0f:784f $80
+    db   $89 ; unknown music opcode                    ;; 0f:7850 $89
+    db   $85 ; unknown music opcode                    ;; 0f:7851 $85
+    db   $D8 ; unknown music opcode                    ;; 0f:7852 $d8
+    db   $80 ; unknown music opcode                    ;; 0f:7853 $80
+    db   $DC ; unknown music opcode                    ;; 0f:7854 $dc
+    db   $8A ; unknown music opcode                    ;; 0f:7855 $8a
+    db   $59 ; unknown music opcode                    ;; 0f:7856 $59
+    db   $8F ; unknown music opcode                    ;; 0f:7857 $8f
+    db   $81 ; unknown music opcode                    ;; 0f:7858 $81
+    db   $84 ; unknown music opcode                    ;; 0f:7859 $84
+    db   $82 ; unknown music opcode                    ;; 0f:785a $82
+    db   $21 ; unknown music opcode                    ;; 0f:785b $21
+    db   $8F ; unknown music opcode                    ;; 0f:785c $8f
+    db   $85 ; unknown music opcode                    ;; 0f:785d $85
+    db   $84 ; unknown music opcode                    ;; 0f:785e $84
+    db   $85 ; unknown music opcode                    ;; 0f:785f $85
+    db   $82 ; unknown music opcode                    ;; 0f:7860 $82
+    db   $85 ; unknown music opcode                    ;; 0f:7861 $85
+    db   $87 ; unknown music opcode                    ;; 0f:7862 $87
+    db   $82 ; unknown music opcode                    ;; 0f:7863 $82
+    db   $8F ; unknown music opcode                    ;; 0f:7864 $8f
+    db   $85 ; unknown music opcode                    ;; 0f:7865 $85
+    db   $84 ; unknown music opcode                    ;; 0f:7866 $84
+    db   $85 ; unknown music opcode                    ;; 0f:7867 $85
+    db   $82 ; unknown music opcode                    ;; 0f:7868 $82
+    db   $85 ; unknown music opcode                    ;; 0f:7869 $85
+    db   $87 ; unknown music opcode                    ;; 0f:786a $87
+    db   $82 ; unknown music opcode                    ;; 0f:786b $82
+    db   $8F ; unknown music opcode                    ;; 0f:786c $8f
+    db   $82 ; unknown music opcode                    ;; 0f:786d $82
+    db   $80 ; unknown music opcode                    ;; 0f:786e $80
+    db   $82 ; unknown music opcode                    ;; 0f:786f $82
+    db   $84 ; unknown music opcode                    ;; 0f:7870 $84
+    db   $82 ; unknown music opcode                    ;; 0f:7871 $82
+    db   $70 ; unknown music opcode                    ;; 0f:7872 $70
+    db   $A4 ; unknown music opcode                    ;; 0f:7873 $a4
+    db   $8E ; unknown music opcode                    ;; 0f:7874 $8e
+    db   $82 ; unknown music opcode                    ;; 0f:7875 $82
+    db   $84 ; unknown music opcode                    ;; 0f:7876 $84
+    db   $82 ; unknown music opcode                    ;; 0f:7877 $82
+    db   $85 ; unknown music opcode                    ;; 0f:7878 $85
+    db   $87 ; unknown music opcode                    ;; 0f:7879 $87
+    db   $59 ; unknown music opcode                    ;; 0f:787a $59
+    db   $8F ; unknown music opcode                    ;; 0f:787b $8f
+    db   $DC ; unknown music opcode                    ;; 0f:787c $dc
+    db   $89 ; unknown music opcode                    ;; 0f:787d $89
+    db   $D8 ; unknown music opcode                    ;; 0f:787e $d8
+    db   $80 ; unknown music opcode                    ;; 0f:787f $80
+    db   $DC ; unknown music opcode                    ;; 0f:7880 $dc
+    db   $89 ; unknown music opcode                    ;; 0f:7881 $89
+    db   $D8 ; unknown music opcode                    ;; 0f:7882 $d8
+    db   $54 ; unknown music opcode                    ;; 0f:7883 $54
+    db   $59 ; unknown music opcode                    ;; 0f:7884 $59
+    db   $8F ; unknown music opcode                    ;; 0f:7885 $8f
+    db   $DC ; unknown music opcode                    ;; 0f:7886 $dc
+    db   $8A ; unknown music opcode                    ;; 0f:7887 $8a
+    db   $D8 ; unknown music opcode                    ;; 0f:7888 $d8
+    db   $80 ; unknown music opcode                    ;; 0f:7889 $80
+    db   $DC ; unknown music opcode                    ;; 0f:788a $dc
+    db   $8A ; unknown music opcode                    ;; 0f:788b $8a
+    db   $D8 ; unknown music opcode                    ;; 0f:788c $d8
+    db   $50 ; unknown music opcode                    ;; 0f:788d $50
+    db   $DC ; unknown music opcode                    ;; 0f:788e $dc
+    db   $59 ; unknown music opcode                    ;; 0f:788f $59
+    db   $8F ; unknown music opcode                    ;; 0f:7890 $8f
+    db   $D8 ; unknown music opcode                    ;; 0f:7891 $d8
+    db   $85 ; unknown music opcode                    ;; 0f:7892 $85
+    db   $84 ; unknown music opcode                    ;; 0f:7893 $84
+    db   $85 ; unknown music opcode                    ;; 0f:7894 $85
+    db   $82 ; unknown music opcode                    ;; 0f:7895 $82
+    db   $85 ; unknown music opcode                    ;; 0f:7896 $85
+    db   $84 ; unknown music opcode                    ;; 0f:7897 $84
+    db   $85 ; unknown music opcode                    ;; 0f:7898 $85
+    db   $8F ; unknown music opcode                    ;; 0f:7899 $8f
+    db   $82 ; unknown music opcode                    ;; 0f:789a $82
+    db   $80 ; unknown music opcode                    ;; 0f:789b $80
+    db   $82 ; unknown music opcode                    ;; 0f:789c $82
+    db   $84 ; unknown music opcode                    ;; 0f:789d $84
+    db   $85 ; unknown music opcode                    ;; 0f:789e $85
+    db   $54 ; unknown music opcode                    ;; 0f:789f $54
+    mUNK_E1 .data_0f_781c                              ;; 0f:78a0 $e1 $1c $78
 
-data_0f_78a3:
-    db   $e4, $4f, $7a, $e8, $dc, $7a, $e0, $40        ;; 0f:78a3 ????????
-    db   $e6, $03, $5f, $d2, $12, $8e, $dc, $89        ;; 0f:78ab ????????
-    db   $d8, $12, $8e, $80, $dc, $1a, $8e, $d8        ;; 0f:78b3 ????????
-    db   $85, $dc, $1a, $8e, $d8, $85, $dc, $19        ;; 0f:78bb ????????
-    db   $d8, $54, $dc, $27, $d8, $50, $82, $84        ;; 0f:78c3 ????????
-    db   $45, $80, $dc, $25, $09, $d8, $12, $8e        ;; 0f:78cb ????????
-    db   $dc, $89, $d8, $12, $8e, $80, $dc, $1a        ;; 0f:78d3 ????????
-    db   $8e, $d8, $85, $dc, $1a, $8e, $d8, $85        ;; 0f:78db ????????
-    db   $dc, $19, $d8, $54, $dc, $27, $29, $d8        ;; 0f:78e3 ????????
-    db   $12, $50, $dc, $2a, $d8, $20, $e1, $ae        ;; 0f:78eb ????????
-    db   $78, $fa, $78, $24, $79, $48, $79             ;; 0f:78f3 ???????
+song1a_channel3:
+    mUNK_E4 frequencyDeltaData                         ;; 0f:78a3 $e4 $4f $7a
+    mUNK_E8 data_0f_7adc                               ;; 0f:78a6 $e8 $dc $7a
+    mUNK_E0 $40                                        ;; 0f:78a9 $e0 $40
+    mUNK_E6 $03                                        ;; 0f:78ab $e6 $03
+    db   $5F ; unknown music opcode                    ;; 0f:78ad $5f
+.data_0f_78ae:
+    db   $D2 ; unknown music opcode                    ;; 0f:78ae $d2
+    db   $12 ; unknown music opcode                    ;; 0f:78af $12
+    db   $8E ; unknown music opcode                    ;; 0f:78b0 $8e
+    db   $DC ; unknown music opcode                    ;; 0f:78b1 $dc
+    db   $89 ; unknown music opcode                    ;; 0f:78b2 $89
+    db   $D8 ; unknown music opcode                    ;; 0f:78b3 $d8
+    db   $12 ; unknown music opcode                    ;; 0f:78b4 $12
+    db   $8E ; unknown music opcode                    ;; 0f:78b5 $8e
+    db   $80 ; unknown music opcode                    ;; 0f:78b6 $80
+    db   $DC ; unknown music opcode                    ;; 0f:78b7 $dc
+    db   $1A ; unknown music opcode                    ;; 0f:78b8 $1a
+    db   $8E ; unknown music opcode                    ;; 0f:78b9 $8e
+    db   $D8 ; unknown music opcode                    ;; 0f:78ba $d8
+    db   $85 ; unknown music opcode                    ;; 0f:78bb $85
+    db   $DC ; unknown music opcode                    ;; 0f:78bc $dc
+    db   $1A ; unknown music opcode                    ;; 0f:78bd $1a
+    db   $8E ; unknown music opcode                    ;; 0f:78be $8e
+    db   $D8 ; unknown music opcode                    ;; 0f:78bf $d8
+    db   $85 ; unknown music opcode                    ;; 0f:78c0 $85
+    db   $DC ; unknown music opcode                    ;; 0f:78c1 $dc
+    db   $19 ; unknown music opcode                    ;; 0f:78c2 $19
+    db   $D8 ; unknown music opcode                    ;; 0f:78c3 $d8
+    db   $54 ; unknown music opcode                    ;; 0f:78c4 $54
+    db   $DC ; unknown music opcode                    ;; 0f:78c5 $dc
+    db   $27 ; unknown music opcode                    ;; 0f:78c6 $27
+    db   $D8 ; unknown music opcode                    ;; 0f:78c7 $d8
+    db   $50 ; unknown music opcode                    ;; 0f:78c8 $50
+    db   $82 ; unknown music opcode                    ;; 0f:78c9 $82
+    db   $84 ; unknown music opcode                    ;; 0f:78ca $84
+    db   $45 ; unknown music opcode                    ;; 0f:78cb $45
+    db   $80 ; unknown music opcode                    ;; 0f:78cc $80
+    db   $DC ; unknown music opcode                    ;; 0f:78cd $dc
+    db   $25 ; unknown music opcode                    ;; 0f:78ce $25
+    db   $09 ; unknown music opcode                    ;; 0f:78cf $09
+    db   $D8 ; unknown music opcode                    ;; 0f:78d0 $d8
+    db   $12 ; unknown music opcode                    ;; 0f:78d1 $12
+    db   $8E ; unknown music opcode                    ;; 0f:78d2 $8e
+    db   $DC ; unknown music opcode                    ;; 0f:78d3 $dc
+    db   $89 ; unknown music opcode                    ;; 0f:78d4 $89
+    db   $D8 ; unknown music opcode                    ;; 0f:78d5 $d8
+    db   $12 ; unknown music opcode                    ;; 0f:78d6 $12
+    db   $8E ; unknown music opcode                    ;; 0f:78d7 $8e
+    db   $80 ; unknown music opcode                    ;; 0f:78d8 $80
+    db   $DC ; unknown music opcode                    ;; 0f:78d9 $dc
+    db   $1A ; unknown music opcode                    ;; 0f:78da $1a
+    db   $8E ; unknown music opcode                    ;; 0f:78db $8e
+    db   $D8 ; unknown music opcode                    ;; 0f:78dc $d8
+    db   $85 ; unknown music opcode                    ;; 0f:78dd $85
+    db   $DC ; unknown music opcode                    ;; 0f:78de $dc
+    db   $1A ; unknown music opcode                    ;; 0f:78df $1a
+    db   $8E ; unknown music opcode                    ;; 0f:78e0 $8e
+    db   $D8 ; unknown music opcode                    ;; 0f:78e1 $d8
+    db   $85 ; unknown music opcode                    ;; 0f:78e2 $85
+    db   $DC ; unknown music opcode                    ;; 0f:78e3 $dc
+    db   $19 ; unknown music opcode                    ;; 0f:78e4 $19
+    db   $D8 ; unknown music opcode                    ;; 0f:78e5 $d8
+    db   $54 ; unknown music opcode                    ;; 0f:78e6 $54
+    db   $DC ; unknown music opcode                    ;; 0f:78e7 $dc
+    db   $27 ; unknown music opcode                    ;; 0f:78e8 $27
+    db   $29 ; unknown music opcode                    ;; 0f:78e9 $29
+    db   $D8 ; unknown music opcode                    ;; 0f:78ea $d8
+    db   $12 ; unknown music opcode                    ;; 0f:78eb $12
+    db   $50 ; unknown music opcode                    ;; 0f:78ec $50
+    db   $DC ; unknown music opcode                    ;; 0f:78ed $dc
+    db   $2A ; unknown music opcode                    ;; 0f:78ee $2a
+    db   $D8 ; unknown music opcode                    ;; 0f:78ef $d8
+    db   $20 ; unknown music opcode                    ;; 0f:78f0 $20
+    mUNK_E1 .data_0f_78ae                              ;; 0f:78f1 $e1 $ae $78
+    db   $fa, $78, $24, $79, $48, $79                  ;; 0f:78f4 ??????
 
-data_0f_78fa:
-    db   $e7, $6f, $e4, $4f, $7a, $e0, $82, $7a        ;; 0f:78fa ........
-    db   $e5, $40, $e6, $03, $d3, $b0, $bf, $dc        ;; 0f:7902 ........
-    db   $ba, $bf, $d8, $b0, $bf, $b2, $bf, $b0        ;; 0f:790a ........
-    db   $bf, $b2, $bf, $e7, $6c, $83, $bf, $b3        ;; 0f:7912 ........
-    db   $bf, $b5, $bf, $b3, $bf, $b1, $bf, $43        ;; 0f:791a ........
-    db   $af, $ff                                      ;; 0f:7922 ??
+song1b_channel2:
+    mUNK_E7 $6f                                        ;; 0f:78fa $e7 $6f
+    mUNK_E4 frequencyDeltaData                         ;; 0f:78fc $e4 $4f $7a
+    mUNK_E0 $82                                        ;; 0f:78ff $e0 $82
+    db   $7A ; unknown music opcode                    ;; 0f:7901 $7a
+    mUNK_E5 $40                                        ;; 0f:7902 $e5 $40
+    mUNK_E6 $03                                        ;; 0f:7904 $e6 $03
+    db   $D3 ; unknown music opcode                    ;; 0f:7906 $d3
+    db   $B0 ; unknown music opcode                    ;; 0f:7907 $b0
+    db   $BF ; unknown music opcode                    ;; 0f:7908 $bf
+    db   $DC ; unknown music opcode                    ;; 0f:7909 $dc
+    db   $BA ; unknown music opcode                    ;; 0f:790a $ba
+    db   $BF ; unknown music opcode                    ;; 0f:790b $bf
+    db   $D8 ; unknown music opcode                    ;; 0f:790c $d8
+    db   $B0 ; unknown music opcode                    ;; 0f:790d $b0
+    db   $BF ; unknown music opcode                    ;; 0f:790e $bf
+    db   $B2 ; unknown music opcode                    ;; 0f:790f $b2
+    db   $BF ; unknown music opcode                    ;; 0f:7910 $bf
+    db   $B0 ; unknown music opcode                    ;; 0f:7911 $b0
+    db   $BF ; unknown music opcode                    ;; 0f:7912 $bf
+    db   $B2 ; unknown music opcode                    ;; 0f:7913 $b2
+    db   $BF ; unknown music opcode                    ;; 0f:7914 $bf
+    mUNK_E7 $6c                                        ;; 0f:7915 $e7 $6c
+    db   $83 ; unknown music opcode                    ;; 0f:7917 $83
+    db   $BF ; unknown music opcode                    ;; 0f:7918 $bf
+    db   $B3 ; unknown music opcode                    ;; 0f:7919 $b3
+    db   $BF ; unknown music opcode                    ;; 0f:791a $bf
+    db   $B5 ; unknown music opcode                    ;; 0f:791b $b5
+    db   $BF ; unknown music opcode                    ;; 0f:791c $bf
+    db   $B3 ; unknown music opcode                    ;; 0f:791d $b3
+    db   $BF ; unknown music opcode                    ;; 0f:791e $bf
+    db   $B1 ; unknown music opcode                    ;; 0f:791f $b1
+    db   $BF ; unknown music opcode                    ;; 0f:7920 $bf
+    db   $43 ; unknown music opcode                    ;; 0f:7921 $43
+    db   $AF ; unknown music opcode                    ;; 0f:7922 $af
+    db   $FF ; unknown music opcode                    ;; 0f:7923 $ff
 
-data_0f_7924:
-    db   $e4, $4f, $7a, $e0, $82, $7a, $e5, $00        ;; 0f:7924 ........
-    db   $e6, $03, $d2, $b3, $bf, $b2, $bf, $b3        ;; 0f:792c ........
-    db   $bf, $b5, $bf, $b3, $bf, $b5, $bf, $86        ;; 0f:7934 ........
-    db   $bf, $b6, $bf, $b8, $bf, $b6, $bf, $b5        ;; 0f:793c ........
-    db   $bf, $47, $af, $ff                            ;; 0f:7944 ..??
+song1b_channel1:
+    mUNK_E4 frequencyDeltaData                         ;; 0f:7924 $e4 $4f $7a
+    mUNK_E0 $82                                        ;; 0f:7927 $e0 $82
+    db   $7A ; unknown music opcode                    ;; 0f:7929 $7a
+    mUNK_E5 $00                                        ;; 0f:792a $e5 $00
+    mUNK_E6 $03                                        ;; 0f:792c $e6 $03
+    db   $D2 ; unknown music opcode                    ;; 0f:792e $d2
+    db   $B3 ; unknown music opcode                    ;; 0f:792f $b3
+    db   $BF ; unknown music opcode                    ;; 0f:7930 $bf
+    db   $B2 ; unknown music opcode                    ;; 0f:7931 $b2
+    db   $BF ; unknown music opcode                    ;; 0f:7932 $bf
+    db   $B3 ; unknown music opcode                    ;; 0f:7933 $b3
+    db   $BF ; unknown music opcode                    ;; 0f:7934 $bf
+    db   $B5 ; unknown music opcode                    ;; 0f:7935 $b5
+    db   $BF ; unknown music opcode                    ;; 0f:7936 $bf
+    db   $B3 ; unknown music opcode                    ;; 0f:7937 $b3
+    db   $BF ; unknown music opcode                    ;; 0f:7938 $bf
+    db   $B5 ; unknown music opcode                    ;; 0f:7939 $b5
+    db   $BF ; unknown music opcode                    ;; 0f:793a $bf
+    db   $86 ; unknown music opcode                    ;; 0f:793b $86
+    db   $BF ; unknown music opcode                    ;; 0f:793c $bf
+    db   $B6 ; unknown music opcode                    ;; 0f:793d $b6
+    db   $BF ; unknown music opcode                    ;; 0f:793e $bf
+    db   $B8 ; unknown music opcode                    ;; 0f:793f $b8
+    db   $BF ; unknown music opcode                    ;; 0f:7940 $bf
+    db   $B6 ; unknown music opcode                    ;; 0f:7941 $b6
+    db   $BF ; unknown music opcode                    ;; 0f:7942 $bf
+    db   $B5 ; unknown music opcode                    ;; 0f:7943 $b5
+    db   $BF ; unknown music opcode                    ;; 0f:7944 $bf
+    db   $47 ; unknown music opcode                    ;; 0f:7945 $47
+    db   $AF ; unknown music opcode                    ;; 0f:7946 $af
+    db   $FF ; unknown music opcode                    ;; 0f:7947 $ff
 
-data_0f_7948:
-    db   $e4, $4f, $7a, $e8, $dc, $7a, $e0, $40        ;; 0f:7948 ........
-    db   $e6, $03, $d2, $b8, $bf, $b7, $bf, $b8        ;; 0f:7950 ........
-    db   $bf, $ba, $bf, $b8, $bf, $ba, $bf, $5b        ;; 0f:7958 ........
-    db   $d8, $51, $43, $af, $ff, $6b, $79, $84        ;; 0f:7960 ...?????
-    db   $79, $9a, $79                                 ;; 0f:7968 ???
+song1b_channel3:
+    mUNK_E4 frequencyDeltaData                         ;; 0f:7948 $e4 $4f $7a
+    mUNK_E8 data_0f_7adc                               ;; 0f:794b $e8 $dc $7a
+    mUNK_E0 $40                                        ;; 0f:794e $e0 $40
+    mUNK_E6 $03                                        ;; 0f:7950 $e6 $03
+    db   $D2 ; unknown music opcode                    ;; 0f:7952 $d2
+    db   $B8 ; unknown music opcode                    ;; 0f:7953 $b8
+    db   $BF ; unknown music opcode                    ;; 0f:7954 $bf
+    db   $B7 ; unknown music opcode                    ;; 0f:7955 $b7
+    db   $BF ; unknown music opcode                    ;; 0f:7956 $bf
+    db   $B8 ; unknown music opcode                    ;; 0f:7957 $b8
+    db   $BF ; unknown music opcode                    ;; 0f:7958 $bf
+    db   $BA ; unknown music opcode                    ;; 0f:7959 $ba
+    db   $BF ; unknown music opcode                    ;; 0f:795a $bf
+    db   $B8 ; unknown music opcode                    ;; 0f:795b $b8
+    db   $BF ; unknown music opcode                    ;; 0f:795c $bf
+    db   $BA ; unknown music opcode                    ;; 0f:795d $ba
+    db   $BF ; unknown music opcode                    ;; 0f:795e $bf
+    db   $5B ; unknown music opcode                    ;; 0f:795f $5b
+    db   $D8 ; unknown music opcode                    ;; 0f:7960 $d8
+    db   $51 ; unknown music opcode                    ;; 0f:7961 $51
+    db   $43 ; unknown music opcode                    ;; 0f:7962 $43
+    db   $AF ; unknown music opcode                    ;; 0f:7963 $af
+    db   $FF ; unknown music opcode                    ;; 0f:7964 $ff
+    db   $6B ; unknown music opcode                    ;; 0f:7965 $6b
+    db   $79 ; unknown music opcode                    ;; 0f:7966 $79
+    db   $84 ; unknown music opcode                    ;; 0f:7967 $84
+    db   $79 ; unknown music opcode                    ;; 0f:7968 $79
+    db   $9A ; unknown music opcode                    ;; 0f:7969 $9a
+    db   $79 ; unknown music opcode                    ;; 0f:796a $79
 
-data_0f_796b:
-    db   $e7, $7d, $e4, $4f, $7a, $e0, $82, $7a        ;; 0f:796b ????????
-    db   $e5, $40, $e6, $03, $d2, $55, $84, $85        ;; 0f:7973 ????????
-    db   $56, $5b, $4a, $a9, $a8, $27, $2e, $2f        ;; 0f:797b ????????
-    db   $ff                                           ;; 0f:7983 ?
+song1c_channel2:
+    mUNK_E7 $7d                                        ;; 0f:796b $e7 $7d
+    mUNK_E4 frequencyDeltaData                         ;; 0f:796d $e4 $4f $7a
+    mUNK_E0 $82                                        ;; 0f:7970 $e0 $82
+    db   $7A ; unknown music opcode                    ;; 0f:7972 $7a
+    mUNK_E5 $40                                        ;; 0f:7973 $e5 $40
+    mUNK_E6 $03                                        ;; 0f:7975 $e6 $03
+    db   $D2 ; unknown music opcode                    ;; 0f:7977 $d2
+    db   $55 ; unknown music opcode                    ;; 0f:7978 $55
+    db   $84 ; unknown music opcode                    ;; 0f:7979 $84
+    db   $85 ; unknown music opcode                    ;; 0f:797a $85
+    db   $56 ; unknown music opcode                    ;; 0f:797b $56
+    db   $5B ; unknown music opcode                    ;; 0f:797c $5b
+    db   $4A ; unknown music opcode                    ;; 0f:797d $4a
+    db   $A9 ; unknown music opcode                    ;; 0f:797e $a9
+    db   $A8 ; unknown music opcode                    ;; 0f:797f $a8
+    db   $27 ; unknown music opcode                    ;; 0f:7980 $27
+    db   $2E ; unknown music opcode                    ;; 0f:7981 $2e
+    db   $2F ; unknown music opcode                    ;; 0f:7982 $2f
+    db   $FF ; unknown music opcode                    ;; 0f:7983 $ff
 
-data_0f_7984:
-    db   $e4, $4f, $7a, $e0, $82, $7a, $e5, $00        ;; 0f:7984 ????????
-    db   $e6, $03, $d2, $52, $81, $82, $23, $44        ;; 0f:798c ????????
-    db   $a3, $a2, $21, $2e, $2f, $ff                  ;; 0f:7994 ??????
+song1c_channel1:
+    mUNK_E4 frequencyDeltaData                         ;; 0f:7984 $e4 $4f $7a
+    mUNK_E0 $82                                        ;; 0f:7987 $e0 $82
+    db   $7A ; unknown music opcode                    ;; 0f:7989 $7a
+    mUNK_E5 $00                                        ;; 0f:798a $e5 $00
+    mUNK_E6 $03                                        ;; 0f:798c $e6 $03
+    db   $D2 ; unknown music opcode                    ;; 0f:798e $d2
+    db   $52 ; unknown music opcode                    ;; 0f:798f $52
+    db   $81 ; unknown music opcode                    ;; 0f:7990 $81
+    db   $82 ; unknown music opcode                    ;; 0f:7991 $82
+    db   $23 ; unknown music opcode                    ;; 0f:7992 $23
+    db   $44 ; unknown music opcode                    ;; 0f:7993 $44
+    db   $A3 ; unknown music opcode                    ;; 0f:7994 $a3
+    db   $A2 ; unknown music opcode                    ;; 0f:7995 $a2
+    db   $21 ; unknown music opcode                    ;; 0f:7996 $21
+    db   $2E ; unknown music opcode                    ;; 0f:7997 $2e
+    db   $2F ; unknown music opcode                    ;; 0f:7998 $2f
+    db   $FF ; unknown music opcode                    ;; 0f:7999 $ff
 
-data_0f_799a:
-    db   $e4, $4f, $7a, $e8, $ec, $7a, $e0, $40        ;; 0f:799a ????????
-    db   $e6, $03, $d1, $2b, $d8, $20, $41, $a0        ;; 0f:79a2 ????????
-    db   $dc, $ab, $2a, $2e, $2f, $ff, $b6, $79        ;; 0f:79aa ????????
-    db   $ea, $79, $1d, $7a                            ;; 0f:79b2 ????
+song1c_channel3:
+    mUNK_E4 frequencyDeltaData                         ;; 0f:799a $e4 $4f $7a
+    mUNK_E8 data_0f_7aec                               ;; 0f:799d $e8 $ec $7a
+    mUNK_E0 $40                                        ;; 0f:79a0 $e0 $40
+    mUNK_E6 $03                                        ;; 0f:79a2 $e6 $03
+    db   $D1 ; unknown music opcode                    ;; 0f:79a4 $d1
+    db   $2B ; unknown music opcode                    ;; 0f:79a5 $2b
+    db   $D8 ; unknown music opcode                    ;; 0f:79a6 $d8
+    db   $20 ; unknown music opcode                    ;; 0f:79a7 $20
+    db   $41 ; unknown music opcode                    ;; 0f:79a8 $41
+    db   $A0 ; unknown music opcode                    ;; 0f:79a9 $a0
+    db   $DC ; unknown music opcode                    ;; 0f:79aa $dc
+    db   $AB ; unknown music opcode                    ;; 0f:79ab $ab
+    db   $2A ; unknown music opcode                    ;; 0f:79ac $2a
+    db   $2E ; unknown music opcode                    ;; 0f:79ad $2e
+    db   $2F ; unknown music opcode                    ;; 0f:79ae $2f
+    db   $FF ; unknown music opcode                    ;; 0f:79af $ff
+    db   $B6 ; unknown music opcode                    ;; 0f:79b0 $b6
+    db   $79 ; unknown music opcode                    ;; 0f:79b1 $79
+    db   $EA ; unknown music opcode                    ;; 0f:79b2 $ea
+    db   $79 ; unknown music opcode                    ;; 0f:79b3 $79
+    db   $1D ; unknown music opcode                    ;; 0f:79b4 $1d
+    db   $7A ; unknown music opcode                    ;; 0f:79b5 $7a
 
 song1d_Channel2:
-    db   $e7, $4b, $e4, $4f, $7a, $e0, $82, $7a        ;; 0f:79b6 ????????
-    db   $e5, $80, $e6, $01, $d3, $9b, $93, $97        ;; 0f:79be ????????
-    db   $9b, $93, $97, $d8, $90, $dc, $94, $98        ;; 0f:79c6 ????????
-    db   $d8, $90, $dc, $94, $98, $d8, $91, $dc        ;; 0f:79ce ????????
-    db   $95, $99, $d8, $91, $dc, $95, $99, $d8        ;; 0f:79d6 ????????
-    db   $90, $dc, $94, $98, $d8, $90, $dc, $94        ;; 0f:79de ????????
-    db   $98, $e1, $c2, $79                            ;; 0f:79e6 ????
+    mUNK_E7 $4b                                        ;; 0f:79b6 $e7 $4b
+    mUNK_E4 frequencyDeltaData                         ;; 0f:79b8 $e4 $4f $7a
+    mUNK_E0 $82                                        ;; 0f:79bb $e0 $82
+    db   $7A ; unknown music opcode                    ;; 0f:79bd $7a
+    mUNK_E5 $80                                        ;; 0f:79be $e5 $80
+    mUNK_E6 $01                                        ;; 0f:79c0 $e6 $01
+.data_0f_79c2:
+    db   $D3 ; unknown music opcode                    ;; 0f:79c2 $d3
+    db   $9B ; unknown music opcode                    ;; 0f:79c3 $9b
+    db   $93 ; unknown music opcode                    ;; 0f:79c4 $93
+    db   $97 ; unknown music opcode                    ;; 0f:79c5 $97
+    db   $9B ; unknown music opcode                    ;; 0f:79c6 $9b
+    db   $93 ; unknown music opcode                    ;; 0f:79c7 $93
+    db   $97 ; unknown music opcode                    ;; 0f:79c8 $97
+    db   $D8 ; unknown music opcode                    ;; 0f:79c9 $d8
+    db   $90 ; unknown music opcode                    ;; 0f:79ca $90
+    db   $DC ; unknown music opcode                    ;; 0f:79cb $dc
+    db   $94 ; unknown music opcode                    ;; 0f:79cc $94
+    db   $98 ; unknown music opcode                    ;; 0f:79cd $98
+    db   $D8 ; unknown music opcode                    ;; 0f:79ce $d8
+    db   $90 ; unknown music opcode                    ;; 0f:79cf $90
+    db   $DC ; unknown music opcode                    ;; 0f:79d0 $dc
+    db   $94 ; unknown music opcode                    ;; 0f:79d1 $94
+    db   $98 ; unknown music opcode                    ;; 0f:79d2 $98
+    db   $D8 ; unknown music opcode                    ;; 0f:79d3 $d8
+    db   $91 ; unknown music opcode                    ;; 0f:79d4 $91
+    db   $DC ; unknown music opcode                    ;; 0f:79d5 $dc
+    db   $95 ; unknown music opcode                    ;; 0f:79d6 $95
+    db   $99 ; unknown music opcode                    ;; 0f:79d7 $99
+    db   $D8 ; unknown music opcode                    ;; 0f:79d8 $d8
+    db   $91 ; unknown music opcode                    ;; 0f:79d9 $91
+    db   $DC ; unknown music opcode                    ;; 0f:79da $dc
+    db   $95 ; unknown music opcode                    ;; 0f:79db $95
+    db   $99 ; unknown music opcode                    ;; 0f:79dc $99
+    db   $D8 ; unknown music opcode                    ;; 0f:79dd $d8
+    db   $90 ; unknown music opcode                    ;; 0f:79de $90
+    db   $DC ; unknown music opcode                    ;; 0f:79df $dc
+    db   $94 ; unknown music opcode                    ;; 0f:79e0 $94
+    db   $98 ; unknown music opcode                    ;; 0f:79e1 $98
+    db   $D8 ; unknown music opcode                    ;; 0f:79e2 $d8
+    db   $90 ; unknown music opcode                    ;; 0f:79e3 $90
+    db   $DC ; unknown music opcode                    ;; 0f:79e4 $dc
+    db   $94 ; unknown music opcode                    ;; 0f:79e5 $94
+    db   $98 ; unknown music opcode                    ;; 0f:79e6 $98
+    mUNK_E1 .data_0f_79c2                              ;; 0f:79e7 $e1 $c2 $79
 
 song1d_Channel1:
-    db   $e4, $4f, $7a, $e0, $c0, $7a, $e5, $80        ;; 0f:79ea ????????
-    db   $e6, $02, $bf, $d3, $9b, $93, $97, $9b        ;; 0f:79f2 ????????
-    db   $93, $97, $d8, $90, $dc, $94, $98, $d8        ;; 0f:79fa ????????
-    db   $90, $dc, $94, $98, $d8, $91, $dc, $95        ;; 0f:7a02 ????????
-    db   $99, $d8, $91, $dc, $95, $99, $d8, $90        ;; 0f:7a0a ????????
-    db   $dc, $94, $98, $d8, $90, $dc, $94, $98        ;; 0f:7a12 ????????
-    db   $e1, $f5, $79                                 ;; 0f:7a1a ???
+    mUNK_E4 frequencyDeltaData                         ;; 0f:79ea $e4 $4f $7a
+    mUNK_E0 $c0                                        ;; 0f:79ed $e0 $c0
+    db   $7A ; unknown music opcode                    ;; 0f:79ef $7a
+    mUNK_E5 $80                                        ;; 0f:79f0 $e5 $80
+    mUNK_E6 $02                                        ;; 0f:79f2 $e6 $02
+    db   $BF ; unknown music opcode                    ;; 0f:79f4 $bf
+.data_0f_79f5:
+    db   $D3 ; unknown music opcode                    ;; 0f:79f5 $d3
+    db   $9B ; unknown music opcode                    ;; 0f:79f6 $9b
+    db   $93 ; unknown music opcode                    ;; 0f:79f7 $93
+    db   $97 ; unknown music opcode                    ;; 0f:79f8 $97
+    db   $9B ; unknown music opcode                    ;; 0f:79f9 $9b
+    db   $93 ; unknown music opcode                    ;; 0f:79fa $93
+    db   $97 ; unknown music opcode                    ;; 0f:79fb $97
+    db   $D8 ; unknown music opcode                    ;; 0f:79fc $d8
+    db   $90 ; unknown music opcode                    ;; 0f:79fd $90
+    db   $DC ; unknown music opcode                    ;; 0f:79fe $dc
+    db   $94 ; unknown music opcode                    ;; 0f:79ff $94
+    db   $98 ; unknown music opcode                    ;; 0f:7a00 $98
+    db   $D8 ; unknown music opcode                    ;; 0f:7a01 $d8
+    db   $90 ; unknown music opcode                    ;; 0f:7a02 $90
+    db   $DC ; unknown music opcode                    ;; 0f:7a03 $dc
+    db   $94 ; unknown music opcode                    ;; 0f:7a04 $94
+    db   $98 ; unknown music opcode                    ;; 0f:7a05 $98
+    db   $D8 ; unknown music opcode                    ;; 0f:7a06 $d8
+    db   $91 ; unknown music opcode                    ;; 0f:7a07 $91
+    db   $DC ; unknown music opcode                    ;; 0f:7a08 $dc
+    db   $95 ; unknown music opcode                    ;; 0f:7a09 $95
+    db   $99 ; unknown music opcode                    ;; 0f:7a0a $99
+    db   $D8 ; unknown music opcode                    ;; 0f:7a0b $d8
+    db   $91 ; unknown music opcode                    ;; 0f:7a0c $91
+    db   $DC ; unknown music opcode                    ;; 0f:7a0d $dc
+    db   $95 ; unknown music opcode                    ;; 0f:7a0e $95
+    db   $99 ; unknown music opcode                    ;; 0f:7a0f $99
+    db   $D8 ; unknown music opcode                    ;; 0f:7a10 $d8
+    db   $90 ; unknown music opcode                    ;; 0f:7a11 $90
+    db   $DC ; unknown music opcode                    ;; 0f:7a12 $dc
+    db   $94 ; unknown music opcode                    ;; 0f:7a13 $94
+    db   $98 ; unknown music opcode                    ;; 0f:7a14 $98
+    db   $D8 ; unknown music opcode                    ;; 0f:7a15 $d8
+    db   $90 ; unknown music opcode                    ;; 0f:7a16 $90
+    db   $DC ; unknown music opcode                    ;; 0f:7a17 $dc
+    db   $94 ; unknown music opcode                    ;; 0f:7a18 $94
+    db   $98 ; unknown music opcode                    ;; 0f:7a19 $98
+    mUNK_E1 .data_0f_79f5                              ;; 0f:7a1a $e1 $f5 $79
 
 song1d_Channel3:
-    db   $e4, $4f, $7a, $e8, $dc, $7a, $e0, $60        ;; 0f:7a1d ????????
-    db   $e6, $03, $d4, $9b, $93, $97, $9b, $93        ;; 0f:7a25 ????????
-    db   $97, $d8, $90, $dc, $94, $98, $d8, $90        ;; 0f:7a2d ????????
-    db   $dc, $94, $98, $d8, $91, $dc, $95, $99        ;; 0f:7a35 ????????
-    db   $d8, $91, $dc, $95, $99, $d8, $90, $dc        ;; 0f:7a3d ????????
-    db   $94, $98, $d8, $90, $dc, $94, $98, $e1        ;; 0f:7a45 ????????
-    db   $27, $7a                                      ;; 0f:7a4d ??
+    mUNK_E4 frequencyDeltaData                         ;; 0f:7a1d $e4 $4f $7a
+    mUNK_E8 data_0f_7adc                               ;; 0f:7a20 $e8 $dc $7a
+    mUNK_E0 $60                                        ;; 0f:7a23 $e0 $60
+    mUNK_E6 $03                                        ;; 0f:7a25 $e6 $03
+.data_0f_7a27:
+    db   $D4 ; unknown music opcode                    ;; 0f:7a27 $d4
+    db   $9B ; unknown music opcode                    ;; 0f:7a28 $9b
+    db   $93 ; unknown music opcode                    ;; 0f:7a29 $93
+    db   $97 ; unknown music opcode                    ;; 0f:7a2a $97
+    db   $9B ; unknown music opcode                    ;; 0f:7a2b $9b
+    db   $93 ; unknown music opcode                    ;; 0f:7a2c $93
+    db   $97 ; unknown music opcode                    ;; 0f:7a2d $97
+    db   $D8 ; unknown music opcode                    ;; 0f:7a2e $d8
+    db   $90 ; unknown music opcode                    ;; 0f:7a2f $90
+    db   $DC ; unknown music opcode                    ;; 0f:7a30 $dc
+    db   $94 ; unknown music opcode                    ;; 0f:7a31 $94
+    db   $98 ; unknown music opcode                    ;; 0f:7a32 $98
+    db   $D8 ; unknown music opcode                    ;; 0f:7a33 $d8
+    db   $90 ; unknown music opcode                    ;; 0f:7a34 $90
+    db   $DC ; unknown music opcode                    ;; 0f:7a35 $dc
+    db   $94 ; unknown music opcode                    ;; 0f:7a36 $94
+    db   $98 ; unknown music opcode                    ;; 0f:7a37 $98
+    db   $D8 ; unknown music opcode                    ;; 0f:7a38 $d8
+    db   $91 ; unknown music opcode                    ;; 0f:7a39 $91
+    db   $DC ; unknown music opcode                    ;; 0f:7a3a $dc
+    db   $95 ; unknown music opcode                    ;; 0f:7a3b $95
+    db   $99 ; unknown music opcode                    ;; 0f:7a3c $99
+    db   $D8 ; unknown music opcode                    ;; 0f:7a3d $d8
+    db   $91 ; unknown music opcode                    ;; 0f:7a3e $91
+    db   $DC ; unknown music opcode                    ;; 0f:7a3f $dc
+    db   $95 ; unknown music opcode                    ;; 0f:7a40 $95
+    db   $99 ; unknown music opcode                    ;; 0f:7a41 $99
+    db   $D8 ; unknown music opcode                    ;; 0f:7a42 $d8
+    db   $90 ; unknown music opcode                    ;; 0f:7a43 $90
+    db   $DC ; unknown music opcode                    ;; 0f:7a44 $dc
+    db   $94 ; unknown music opcode                    ;; 0f:7a45 $94
+    db   $98 ; unknown music opcode                    ;; 0f:7a46 $98
+    db   $D8 ; unknown music opcode                    ;; 0f:7a47 $d8
+    db   $90 ; unknown music opcode                    ;; 0f:7a48 $90
+    db   $DC ; unknown music opcode                    ;; 0f:7a49 $dc
+    db   $94 ; unknown music opcode                    ;; 0f:7a4a $94
+    db   $98 ; unknown music opcode                    ;; 0f:7a4b $98
+    mUNK_E1 .data_0f_7a27                              ;; 0f:7a4c $e1 $27 $7a
 
 ; First byte is duration. If this is 00 then restart at the address in the next two bytes.
 ; Second byte is a signed offset applied to the frequency to create vibrato
 frequencyDeltaData:
-    db   $0a, $00, $01, $01, $01, $02                  ;; 0f:7a4f ......
+    db   $0a, $00, $01, $01, $01, $02, $01, $01        ;; 0f:7a4f ........
+    db   $01, $00, $00, $51, $7a                       ;; 0f:7a57 .....
 ; (Unused)
 .second:
-    db   $01, $01, $01, $00, $00, $51, $7a, $02        ;; 0f:7a5c .......?
+    db   $02, $00, $02, $0a, $00, $5c, $7a             ;; 0f:7a5c ???????
 .third:
-    db   $00, $02, $0a, $00, $5c, $7a, $04, $00        ;; 0f:7a63 ??????..
-    db   $01, $02, $01, $ff, $00, $65, $7a             
+    db   $04, $00, $01, $02, $01, $ff, $00, $65        ;; 0f:7a63 ........
+    db   $7a                                           ;; 0f:7a6b .
 ; (Unused)
 .fourth:
     db   $05, $00, $02, $01, $02, $00, $00, $6e        ;; 0f:7a6c ????????
@@ -3495,10 +12439,20 @@ volumeEnvelopeData:
 ;@data format=bbbbbbbbbbbbbbbb amount=7
 wavePatternsData:
     db   $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $00, $00, $00, $00, $00, $00, $00, $00 ;; 0f:7acc ................ $00
+
+data_0f_7adc:
     db   $ff, $ff, $ff, $ff, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00 ;; 0f:7adc ................ $01
+
+data_0f_7aec:
     db   $ff, $ff, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00 ;; 0f:7aec ................ $02
+
+data_0f_7afc:
     db   $bb, $bb, $bb, $bb, $bb, $bb, $bb, $bb, $00, $00, $00, $00, $00, $00, $00, $00 ;; 0f:7afc ................ $03
+
+data_0f_7b0c:
     db   $bb, $bb, $bb, $bb, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00 ;; 0f:7b0c ................ $04
+
+data_0f_7b1c:
     db   $bb, $bb, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00 ;; 0f:7b1c ???????????????? $05
     db   $ff, $cc, $99, $66, $99, $cc, $ff, $00, $00, $00, $00, $00, $00, $00, $00, $00 ;; 0f:7b2c ???????????????? $06
 

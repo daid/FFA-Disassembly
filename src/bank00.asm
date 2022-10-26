@@ -735,7 +735,7 @@ call_00_04aa:
     ld   A, [wDamageDoneToBoss]                        ;; 00:04ce $fa $f2 $d3
     ld   L, A                                          ;; 00:04d1 $6f
     bit  7, H                                          ;; 00:04d2 $cb $7c
-    call NZ, call_00_04f4                              ;; 00:04d4 $c4 $f4 $04
+    call NZ, bossTakeDamage_trampoline                 ;; 00:04d4 $c4 $f4 $04
 .jr_00_04d7:
     ld   HL, wBossSpeedTimer                           ;; 00:04d7 $21 $e9 $d3
     dec  [HL]                                          ;; 00:04da $35
@@ -1893,7 +1893,7 @@ destroyObject:
     call playerAttackDestroy_trampoline                ;; 00:0b5b $cd $f7 $2e
     ret                                                ;; 00:0b5e $c9
 .npc:
-    call npcDestroy_trampoline                         ;; 00:0b5f $cd $e3 $27
+    call destroyNPC_trampoline                         ;; 00:0b5f $cd $e3 $27
     ret                                                ;; 00:0b62 $c9
 .boss:
     call bossClearStatsObjects_trampoline              ;; 00:0b63 $cd $e8 $04
@@ -6552,7 +6552,7 @@ scriptNpcDelete:
     ld   DE, wNpcRuntimeData                           ;; 00:286c $11 $e0 $c4
     add  HL, DE                                        ;; 00:286f $19
     ld   C, [HL]                                       ;; 00:2870 $4e
-    call npcDestroy_trampoline                         ;; 00:2871 $cd $e3 $27
+    call destroyNPC_trampoline                         ;; 00:2871 $cd $e3 $27
     pop  HL                                            ;; 00:2874 $e1
     call getNextScriptInstruction                      ;; 00:2875 $cd $27 $37
     ret                                                ;; 00:2878 $c9
@@ -7273,7 +7273,7 @@ call_00_2d13:
     ld   B, $a9                                        ;; 00:2d14 $06 $a9
     call call_00_0b6f                                  ;; 00:2d16 $cd $6f $0b
     pop  BC                                            ;; 00:2d19 $c1
-    call npcDestroy_trampoline                         ;; 00:2d1a $cd $e3 $27
+    call destroyNPC_trampoline                         ;; 00:2d1a $cd $e3 $27
     ret                                                ;; 00:2d1d $c9
 
 setHLToZero:
@@ -10105,7 +10105,7 @@ startLevelUp:
     ldh  [hCurrentMusic], A                            ;; 00:3e7b $e0 $90
     ld   A, $21                                        ;; 00:3e7d $3e $21
     ld   [wDialogType], A                              ;; 00:3e7f $ea $4a $d8
-    call call_00_30b1                                  ;; 00:3e82 $cd $b1 $30
+    call windowMenuStartSpecial_trampoline             ;; 00:3e82 $cd $b1 $30
     ld   HL, wD872                                     ;; 00:3e85 $21 $72 $d8
     set  1, [HL]                                       ;; 00:3e88 $cb $ce
     res  0, [HL]                                       ;; 00:3e8a $cb $86
