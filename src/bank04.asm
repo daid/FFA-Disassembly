@@ -312,7 +312,7 @@ call_04_419e:
     ld   A, [wBossIframes]                             ;; 04:41a6 $fa $eb $d3
     cp   A, $00                                        ;; 04:41a9 $fe $00
     jr   Z, .jr_04_41ad                                ;; 04:41ab $28 $00
-.jr_04_41ad:
+.nojump:
     ld   A, C                                          ;; 04:41ad $79
     and  A, $c0                                        ;; 04:41ae $e6 $c0
     swap A                                             ;; 04:41b0 $cb $37
@@ -338,7 +338,7 @@ call_04_41cd:
     call call_04_4156                                  ;; 04:41cd $cd $56 $41
     ret                                                ;; 04:41d0 $c9
 
-spawProjectileBoss:
+spawnProjectileBoss:
     ld   A, [wCurrentBossDataPointer.high]             ;; 04:41d1 $fa $39 $d4
     ld   H, A                                          ;; 04:41d4 $67
     ld   A, [wCurrentBossDataPointer]                  ;; 04:41d5 $fa $38 $d4
@@ -528,7 +528,7 @@ call_04_42e6:
     ld   B, $0e                                        ;; 04:42e6 $06 $0e
     ld   HL, wbossObjectsRuntimeData                   ;; 04:42e8 $21 $42 $d4
     ld   DE, $06                                       ;; 04:42eb $11 $06 $00
-.jr_04_42ee:
+.loop:
     cp   A, [HL]                                       ;; 04:42ee $be
     ret  Z                                             ;; 04:42ef $c8
     add  HL, DE                                        ;; 04:42f0 $19
@@ -682,6 +682,7 @@ bossLoadProjectile:
     pop  DE                                            ;; 04:43cb $d1
     ret                                                ;; 04:43cc $c9
 
+; de = wCurrentBossDataPointer
 bossCreateObjects:
     push DE                                            ;; 04:43cd $d5
     ld   HL, $04                                       ;; 04:43ce $21 $04 $00
@@ -694,7 +695,7 @@ bossCreateObjects:
     ld   D, [HL]                                       ;; 04:43d9 $56
     ld   C, $20                                        ;; 04:43da $0e $20
     ld   HL, wbossObjectsRuntimeData                   ;; 04:43dc $21 $42 $d4
-.jr_04_43df:
+.loop:
     push BC                                            ;; 04:43df $c5
     push DE                                            ;; 04:43e0 $d5
     push HL                                            ;; 04:43e1 $e5
@@ -716,7 +717,7 @@ bossCreateObjects:
     ld   [wBossFirstObjectID], A                       ;; 04:43fb $ea $e8 $d3
     ret                                                ;; 04:43fe $c9
 
-call_04_43ff:
+bossInitStatsObjectsRuntimeData:
     push DE                                            ;; 04:43ff $d5
     ld   HL, $04                                       ;; 04:4400 $21 $04 $00
     add  HL, DE                                        ;; 04:4403 $19
@@ -727,7 +728,7 @@ call_04_43ff:
     inc  HL                                            ;; 04:440a $23
     ld   D, [HL]                                       ;; 04:440b $56
     ld   HL, wbossObjectsRuntimeData                   ;; 04:440c $21 $42 $d4
-.jr_04_440f:
+.loop:
     inc  HL                                            ;; 04:440f $23
     ld   [HL], E                                       ;; 04:4410 $73
     inc  HL                                            ;; 04:4411 $23
@@ -748,12 +749,12 @@ call_04_43ff:
     pop  DE                                            ;; 04:4423 $d1
     ret                                                ;; 04:4424 $c9
 
-call_04_4425:
+bossClearStatsObjects:
     ld   A, $ff                                        ;; 04:4425 $3e $ff
     ld   [wBossFirstObjectID], A                       ;; 04:4427 $ea $e8 $d3
     ld   HL, wbossObjectsRuntimeData                   ;; 04:442a $21 $42 $d4
     ld   B, $0e                                        ;; 04:442d $06 $0e
-.jr_04_442f:
+.loop:
     ld   A, [HL]                                       ;; 04:442f $7e
     cp   A, $ff                                        ;; 04:4430 $fe $ff
     jr   Z, .jr_04_443e                                ;; 04:4432 $28 $0a
@@ -1015,7 +1016,7 @@ call_04_45c9:
     call call_04_4209                                  ;; 04:45f6 $cd $09 $42
     ret                                                ;; 04:45f9 $c9
 
-call_04_45fa:
+bossTakeDamage:
     ld   A, [wD3F3]                                    ;; 04:45fa $fa $f3 $d3
     ld   H, A                                          ;; 04:45fd $67
     ld   A, [wD3F2]                                    ;; 04:45fe $fa $f2 $d3

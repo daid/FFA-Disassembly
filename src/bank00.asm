@@ -292,7 +292,7 @@ call_00_023e:
 call_00_0244:
     jp_to_bank 01, call_01_4f7b                        ;; 00:0244 $f5 $3e $05 $c3 $d7 $1e
 
-call_00_024a:
+doSwordFlyingAttack_trampoline:
     jp_to_bank 01, call_01_4d0b                        ;; 00:024a $f5 $3e $06 $c3 $d7 $1e
 
 createPlayerObject_trampoline:
@@ -324,7 +324,7 @@ setGameStateSpecialAttack:
     ret                                                ;; 00:027e $c9
     db   $f5, $3e, $0e, $c3, $d7, $1e                  ;; 00:027f ??????
 
-call_00_0285:
+playerObjectDestroy:
     ld   C, $04                                        ;; 00:0285 $0e $04
     call call_00_0ae3                                  ;; 00:0287 $cd $e3 $0a
     ret                                                ;; 00:028a $c9
@@ -745,7 +745,7 @@ call_00_04aa:
 spawnBoss_trampoline:
     jp_to_bank 04, spawnBoss                           ;; 00:04e2 $f5 $3e $01 $c3 $64 $1f
 
-call_00_04e8:
+bossClearStatsObjects_trampoline:
     ld   A, [wBossFirstObjectID]                       ;; 00:04e8 $fa $e8 $d3
     cp   A, $ff                                        ;; 00:04eb $fe $ff
     ret  Z                                             ;; 00:04ed $c8
@@ -1726,6 +1726,7 @@ call_00_0a33:
     call NOOP                                          ;; 00:0a70 $cd $02 $2c
     ret                                                ;; 00:0a73 $c9
 
+; A  = movement speed
 ; C  = object type ("collision flags")
 ; DE = position in tiles
 ; HL = metatile pointer
@@ -1810,7 +1811,8 @@ createObject:
     ld   C, A                                          ;; 00:0ae1 $4f
     ret                                                ;; 00:0ae2 $c9
 
-call_00_0ae3:
+; c = Object ID
+destroyObject:
     ld   A, C                                          ;; 00:0ae3 $79
     cp   A, $ff                                        ;; 00:0ae4 $fe $ff
     ret  Z                                             ;; 00:0ae6 $c8
@@ -1884,19 +1886,19 @@ call_00_0ae3:
     cp   A, $c0                                        ;; 00:0b52 $fe $c0
     jr   Z, .jr_00_0b57                                ;; 00:0b54 $28 $01
     ret                                                ;; 00:0b56 $c9
-.jr_00_0b57:
+.player:
     call call_00_0285                                  ;; 00:0b57 $cd $85 $02
     ret                                                ;; 00:0b5a $c9
-.jr_00_0b5b:
+.playerAttack:
     call call_00_2ef7                                  ;; 00:0b5b $cd $f7 $2e
     ret                                                ;; 00:0b5e $c9
-.jr_00_0b5f:
+.npc:
     call call_00_27e3                                  ;; 00:0b5f $cd $e3 $27
     ret                                                ;; 00:0b62 $c9
-.jr_00_0b63:
+.boss:
     call call_00_04e8                                  ;; 00:0b63 $cd $e8 $04
     ret                                                ;; 00:0b66 $c9
-.jr_00_0b67:
+.enemyProjectile:
     call call_00_2be6                                  ;; 00:0b67 $cd $e6 $2b
     ret                                                ;; 00:0b6a $c9
 .jr_00_0b6b:
@@ -4772,9 +4774,7 @@ call_00_1ba1:
     db   $00, $09, $29, $01, $00, $80, $09, $c9        ;; 00:1d0c ????????
     db   $cd, $04, $1d, $cd, $b4, $1d, $c9             ;; 00:1d14 ???????
 
-; checks for death
-; increments the charge bar, and another strange (unused?) alternative charge counter
-; and handles expiring Nectar/Stamina buffs
+; checks for death, increases charge bar, and handles expiring Nectar/Stamina buffs
 playerHousekeeping:
     push HL                                            ;; 00:1d1b $e5
     call checkForPlayerDeath                           ;; 00:1d1c $cd $46 $3e
@@ -5376,7 +5376,7 @@ DisableLCD:
     ldh  [rLCDC], A                                    ;; 00:2178 $e0 $40
     ret                                                ;; 00:217a $c9
 
-call_00_217b:
+mainLoopPreInput:
     ld   A, $0f                                        ;; 00:217b $3e $0f
     call pushBankNrAndSwitch                           ;; 00:217d $cd $fb $29
     call runSoundEngine                                ;; 00:2180 $cd $00 $40
@@ -5386,7 +5386,7 @@ call_00_217b:
     ld   [wMainGameStateFlags], A                      ;; 00:218c $ea $a1 $c0
     ret                                                ;; 00:218f $c9
 
-call_00_2190:
+mainLoopPostInput:
     ld   A, $00                                        ;; 00:2190 $3e $00
     call call_00_043b                                  ;; 00:2192 $cd $3b $04
     call animateTiles_trampoline                       ;; 00:2195 $cd $70 $1a
@@ -5924,7 +5924,7 @@ runRoomScriptOnRoomExit:
     call popBankNrAndSwitch                            ;; 00:24a3 $cd $0a $2a
     ret                                                ;; 00:24a6 $c9
 
-runRoomScriptOnAllEnemiesDefeat:
+runRoomScriptOnAllEnemiesDefeated:
     ld   A, [wRoomClearedStatus]                       ;; 00:24a7 $fa $00 $c4
     set  7, A                                          ;; 00:24aa $cb $ff
     ld   [wRoomClearedStatus], A                       ;; 00:24ac $ea $00 $c4
@@ -6444,7 +6444,7 @@ call_00_278f:
     ld   A, C                                          ;; 00:27b8 $79
     ret                                                ;; 00:27b9 $c9
 
-call_00_27ba:
+npcSpawnProjectile:
     push DE                                            ;; 00:27ba $d5
     call call_00_278f                                  ;; 00:27bb $cd $8f $27
     pop  DE                                            ;; 00:27be $d1
@@ -6468,7 +6468,7 @@ call_00_27d7:
 spawnNPC_trampoline:
     jp_to_bank 03, spawnNPC                            ;; 00:27dd $f5 $3e $02 $c3 $35 $1f
 
-call_00_27e3:
+npcDestroy_trampoline:
     jp_to_bank 03, call_03_435f                        ;; 00:27e3 $f5 $3e $03 $c3 $35 $1f
 
 initNpcRuntimeData:
@@ -6557,7 +6557,7 @@ scriptNpcDelete:
     call getNextScriptInstruction                      ;; 00:2875 $cd $27 $37
     ret                                                ;; 00:2878 $c9
 
-call_00_2879:
+scriptObjectBehaviorMove:
     push HL                                            ;; 00:2879 $e5
     call call_00_2883                                  ;; 00:287a $cd $83 $28
     pop  HL                                            ;; 00:287d $e1
@@ -6565,7 +6565,7 @@ call_00_2879:
     call getNextScriptInstruction                      ;; 00:287f $cd $27 $37
     ret                                                ;; 00:2882 $c9
 
-call_00_2883:
+objectBehaviorMove_trampoline:
     jp_to_bank 03, call_03_4b70                        ;; 00:2883 $f5 $3e $0a $c3 $35 $1f
 
 call_00_2889:
@@ -6672,7 +6672,7 @@ getFollowerScript:
     ret  NZ                                            ;; 00:2913 $c0
     jp_to_bank 03, getNpcScriptIndex                   ;; 00:2914 $f5 $3e $15 $c3 $35 $1f
 
-call_00_291a:
+runRoomScriptIfAllEnemiesDefeated_trampoline:
     ld   A, [wMainGameStateFlags]                      ;; 00:291a $fa $a1 $c0
     bit  1, A                                          ;; 00:291d $cb $4f
     ret  NZ                                            ;; 00:291f $c0
@@ -7109,7 +7109,7 @@ call_00_2bdd:
     ret  Z                                             ;; 00:2bdf $c8
     jp_to_bank 09, call_09_41e9                        ;; 00:2be0 $f5 $3e $02 $c3 $93 $1f
 
-call_00_2be6:
+projectileDestroy_trampoline:
     jp_to_bank 09, call_09_438a                        ;; 00:2be6 $f5 $3e $03 $c3 $93 $1f
 
 spawnProjectile_trampoline:
@@ -7531,16 +7531,16 @@ getEquippedWeaponAnimationType_trampoline:
 getEquippedItemAnimationType_trampoline:
     jp_to_bank 01, getEquippedItemAnimationType        ;; 00:2edf $f5 $3e $21 $c3 $d7 $1e
 
-call_00_2ee5:
+useEquippedWeaponOrItem_trampoline:
     jp_to_bank 01, call_01_5a83                        ;; 00:2ee5 $f5 $3e $22 $c3 $d7 $1e
 
-call_00_2eeb:
+flyingSwordAttackBeginReturn_trampoline:
     jp_to_bank 01, call_01_5a8c                        ;; 00:2eeb $f5 $3e $23 $c3 $d7 $1e
 
 call_00_2ef1:
     jp_to_bank 01, call_01_5d64                        ;; 00:2ef1 $f5 $3e $1e $c3 $d7 $1e
 
-call_00_2ef7:
+playerAttackDestroy:
     jp_to_bank 01, call_01_5d82                        ;; 00:2ef7 $f5 $3e $1f $c3 $d7 $1e
 
 playerOrFriendlyAttackCollisionHandling_trampoline:
@@ -7611,8 +7611,8 @@ attackTile_trampoline:
     ret  Z                                             ;; 00:2f78 $c8
     jp_to_bank 01, attackTile                          ;; 00:2f79 $f5 $3e $27 $c3 $d7 $1e
 
-; Unknown (and unused) script opcode.
-scriptOpCodeAA:
+; Unused script opcode.
+scriptOpCodeClearPlayerAttack:
     push HL                                            ;; 00:2f7f $e5
     call call_00_2ef7                                  ;; 00:2f80 $cd $f7 $2e
     pop  HL                                            ;; 00:2f83 $e1
@@ -7897,7 +7897,7 @@ drawManaOnStatusBarTrampoline:
 drawMoneyOnStatusBarTrampoline:
     jp_to_bank 02, drawMoneyOnStatusBar                ;; 00:3117 $f5 $3e $26 $c3 $06 $1f
 
-call_00_311d:
+doSpellOrItemEffect_trampoline:
     jp_to_bank 02, call_02_6fb4                        ;; 00:311d $f5 $3e $27 $c3 $06 $1f
 
 getCurrentMagicPower_trampoline:
@@ -8313,7 +8313,11 @@ jr_00_33ca:
     call getNextScriptInstruction                      ;; 00:33cb $cd $27 $37
     ret                                                ;; 00:33ce $c9
 
-call_00_33cf:
+; Spells, items, and equipment the player has are all stored with ID ranges starting at zero.
+; For instance, the Cure spell, Cure item, and Broad sword are all ID zero.
+; This changes the IDs into essentially indexes into one big items table, like scripts use.
+; Then it searches for items given in a zero terminated list.
+findSpellItemOrEquipment:
     push HL                                            ;; 00:33cf $e5
     ld   HL, wEquippedWeapon                           ;; 00:33d0 $21 $e9 $d6
     ld   B, $06                                        ;; 00:33d3 $06 $06
@@ -8328,7 +8332,7 @@ call_00_33cf:
     call call_00_343f                                  ;; 00:33e9 $cd $3f $34
     pop  HL                                            ;; 00:33ec $e1
 
-jr_00_33ed:
+.findItemsFromList:
     ld   A, [HL+]                                      ;; 00:33ed $2a
     and  A, A                                          ;; 00:33ee $a7
     ret  Z                                             ;; 00:33ef $c8
@@ -8388,7 +8392,9 @@ call_00_3430:
     jr   NZ, call_00_3430                              ;; 00:343c $20 $f2
     ret                                                ;; 00:343e $c9
 
-call_00_343f:
+; b = number of items in the specified inventory
+; c = offset to add
+addOffsetToItemIDs:
     ld   A, [HL]                                       ;; 00:343f $7e
     cp   A, $80                                        ;; 00:3440 $fe $80
     jr   Z, .jr_00_3449                                ;; 00:3442 $28 $05

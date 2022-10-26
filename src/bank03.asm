@@ -30,7 +30,7 @@ SECTION "bank03", ROMX[$4000], BANK[$03]
     call_to_bank_target call_03_4c38                   ;; 03:4028 pP
     call_to_bank_target getNpcScriptIndex              ;; 03:402a pP
 
-checkObjectCollisions:
+npcRunBehaviorForAll:
     ld   HL, wNpcRuntimeData                           ;; 03:402c $21 $e0 $c4
     ld   B, $08                                        ;; 03:402f $06 $08
     ld   C, $18                                        ;; 03:4031 $0e $18
@@ -52,7 +52,7 @@ checkObjectCollisions:
     call checkProjectileCollisions_trampoline          ;; 03:4046 $cd $d1 $2b
     ret                                                ;; 03:4049 $c9
 
-call_03_404a:
+npcRunBehavior:
     inc  HL                                            ;; 03:404a $23
     dec  [HL]                                          ;; 03:404b $35
     ret  NZ                                            ;; 03:404c $c0
@@ -616,7 +616,7 @@ spawnNPC:
     ld   C, $ff                                        ;; 03:435c $0e $ff
     ret                                                ;; 03:435e $c9
 
-call_03_435f:
+destroyNPC:
     ld   A, C                                          ;; 03:435f $79
     cp   A, $ff                                        ;; 03:4360 $fe $ff
     ret  Z                                             ;; 03:4362 $c8
@@ -2061,7 +2061,7 @@ call_03_4b62:
     inc  A                                             ;; 03:4b6e $3c
     ret                                                ;; 03:4b6f $c9
 
-call_03_4b70:
+objectBehaviorMove:
     push AF                                            ;; 03:4b70 $f5
     ld   A, C                                          ;; 03:4b71 $79
     cp   A, $ff                                        ;; 03:4b72 $fe $ff
@@ -2111,7 +2111,7 @@ call_03_4b70:
     ret  NZ                                            ;; 03:4bb2 $c0
     ld   [HL], C                                       ;; 03:4bb3 $71
     ret                                                ;; 03:4bb4 $c9
-.jr_03_4bb5:
+.player:
     call getPlayerDirection                            ;; 03:4bb5 $cd $ab $02
     bit  7, A                                          ;; 03:4bb8 $cb $7f
     jr   Z, .jr_03_4bce                                ;; 03:4bba $28 $12
@@ -2193,7 +2193,7 @@ call_03_4be0:
     inc  A                                             ;; 03:4c2e $3c
     ret                                                ;; 03:4c2f $c9
 
-call_03_4c30:
+runRoomScriptIfAllEnemiesDefeated:
     call call_03_4be0                                  ;; 03:4c30 $cd $e0 $4b
     ret  NZ                                            ;; 03:4c33 $c0
     call runRoomScriptOnAllEnemiesDefeat               ;; 03:4c34 $cd $a7 $24
@@ -2217,7 +2217,7 @@ call_03_4c38:
     ret                                                ;; 03:4c54 $c9
 
 ;@jumptable amount=224
-data_03_4c55:
+npcBehaviorJumptable:
     dw   call_03_4eb3                                  ;; 03:4c55 ??
     dw   call_03_4e7c                                  ;; 03:4c57 pP
     dw   call_03_4ec9                                  ;; 03:4c59 pP
@@ -2596,7 +2596,7 @@ call_03_4ef0:
     pop  AF                                            ;; 03:4f05 $f1
     ret                                                ;; 03:4f06 $c9
 
-call_03_4f07:
+npcStepForward:
     ld   A, C                                          ;; 03:4f07 $79
     sub  A, $02                                        ;; 03:4f08 $d6 $02
     ret  Z                                             ;; 03:4f0a $c8
@@ -2612,7 +2612,7 @@ call_03_4f07:
     ld   A, $02                                        ;; 03:4f1a $3e $02
     ret                                                ;; 03:4f1c $c9
 
-call_03_4f1d:
+npcStepBackward:
     ld   A, C                                          ;; 03:4f1d $79
     sub  A, $02                                        ;; 03:4f1e $d6 $02
     ret  Z                                             ;; 03:4f20 $c8
@@ -2773,14 +2773,14 @@ call_03_4fd9:
     ld   A, $00                                        ;; 03:4ff1 $3e $00
     ret                                                ;; 03:4ff3 $c9
 
-call_03_4ff4:
+npcWalkSpeed4:
     ld   HL, $02                                       ;; 03:4ff4 $21 $02 $00
     add  HL, DE                                        ;; 03:4ff7 $19
     ld   [HL], $04                                     ;; 03:4ff8 $36 $04
     ld   A, $00                                        ;; 03:4ffa $3e $00
     ret                                                ;; 03:4ffc $c9
 
-call_03_4ffd:
+npcWalkSpeedDefault:
     ld   HL, $10                                       ;; 03:4ffd $21 $10 $00
     add  HL, DE                                        ;; 03:5000 $19
     ld   A, [HL+]                                      ;; 03:5001 $2a
@@ -2841,7 +2841,7 @@ call_03_5049:
     call call_03_55df                                  ;; 03:5051 $cd $df $55
     ret                                                ;; 03:5054 $c9
 
-call_03_5055:
+npcFaceEast:
     ld   A, [DE]                                       ;; 03:5055 $1a
     ld   C, A                                          ;; 03:5056 $4f
     ld   A, $01                                        ;; 03:5057 $3e $01
@@ -2849,7 +2849,7 @@ call_03_5055:
     ld   A, $00                                        ;; 03:505c $3e $00
     ret                                                ;; 03:505e $c9
 
-call_03_505f:
+npcFaceWest:
     ld   A, [DE]                                       ;; 03:505f $1a
     ld   C, A                                          ;; 03:5060 $4f
     ld   A, $02                                        ;; 03:5061 $3e $02
@@ -2857,7 +2857,7 @@ call_03_505f:
     ld   A, $00                                        ;; 03:5066 $3e $00
     ret                                                ;; 03:5068 $c9
 
-call_03_5069:
+npcFaceNorth:
     ld   A, [DE]                                       ;; 03:5069 $1a
     ld   C, A                                          ;; 03:506a $4f
     ld   A, $04                                        ;; 03:506b $3e $04
@@ -2865,7 +2865,7 @@ call_03_5069:
     ld   A, $00                                        ;; 03:5070 $3e $00
     ret                                                ;; 03:5072 $c9
 
-call_03_5073:
+npcFaceSouth:
     ld   A, [DE]                                       ;; 03:5073 $1a
     ld   C, A                                          ;; 03:5074 $4f
     ld   A, $08                                        ;; 03:5075 $3e $08

@@ -117,16 +117,15 @@ wC109:
 wC10A:
     ds 1                                               ;; c10a
 
-wMusicOctiveChannel2:
+wMusicOctaveChannel2:
     ds 1                                               ;; c10b
 
-wC10C:
+wMusicNR21DutyCycleChannel2:
     ds 1                                               ;; c10c
 
-wC10D:
+wMusicCurrentPitchChannel2:
     ds 1                                               ;; c10d
-
-wC10E:
+.high:
     ds 1                                               ;; c10e
 
 wC10F:
@@ -159,7 +158,7 @@ wC118:
 wC119:
     ds 1                                               ;; c119
 
-wSoundEffectDurrationChannel1:
+wSoundEffectDurationChannel1:
     ds 1                                               ;; c11a
 
 wMusicNoteDurationChannel1:
@@ -185,10 +184,10 @@ wC121:
 wC122:
     ds 1                                               ;; c122
 
-wMusicOctiveChannel1:
+wMusicOctaveChannel1:
     ds 1                                               ;; c123
 
-wC124:
+wMusicNR11DutyCycleChannel1:
     ds 1                                               ;; c124
 
 wC125:
@@ -206,7 +205,7 @@ wC128:
 wMusicNotePitchChannel1:
     ds 1                                               ;; c129
 
-wC12A:
+wMusicStereoPanChannel1:
     ds 1                                               ;; c12a
 
 wMusicEndedOnChannel1:
@@ -257,7 +256,7 @@ wC139:
 wC13A:
     ds 1                                               ;; c13a
 
-wMusicOctiveChannel3:
+wMusicOctaveChannel3:
     ds 2                                               ;; c13b
 
 wC13D:
@@ -269,7 +268,7 @@ wC13E:
 wC13F:
     ds 1                                               ;; c13f
 
-wC140:
+wMusicVolumeChannel3:
     ds 1                                               ;; c140
 
 wMusicNotePitchChannel3:
@@ -288,7 +287,8 @@ wSoundEffectDurationChannel4:
 wMusicEndedOnChannel4:
     ds 7                                               ;; c15b
 
-wC162:
+; Used to back up everything from c100 to c161, or it would if the functions were ever called
+wMusicDataBackup:
     ds 98                                              ;; c162
 
 wSoundEffectInstructionPointerChannel1:
@@ -301,7 +301,7 @@ wSoundEffectInstructionPointerChannel4:
 .high:
     ds 1                                               ;; c1c7
 
-wC1C8:
+wMusicBrokenDoubleTimeMode:
     ds 1                                               ;; c1c8
 
 wC1C9:
@@ -369,10 +369,9 @@ wMapTableBankNr:
 wScriptDarknessEffect:
     ds 1                                               ;; c3f1
 
-wMapTablePointerLow:
+wMapTablePointer:
     ds 1                                               ;; c3f2
-
-wMapTablePointerHigh:
+.high:
     ds 1                                               ;; c3f3
 
 ; bit 0 east, bit 1 west, bit 2 north, bit 3 south.
@@ -437,10 +436,10 @@ wC4A1:
 hiddenSpritesYPositions:
     ds 46                                              ;; c4a2
 
-wC4D0:
+wFlyingSwordSpecialOriginalLocationX:
     ds 1                                               ;; c4d0
 
-wC4D1:
+wFlyingSwordSpecialOriginalLocationY:
     ds 1                                               ;; c4d1
 
 wPlayerDamagedTimer:
@@ -575,7 +574,7 @@ wMuteTimerNumber:
 wSpecialAttackTimerNumber:
     ds 1                                               ;; cf62
 
-wCF63:
+wCurrentPlayerAttackWillCharge:
     ds 269                                             ;; cf63
 
 ; Loopup of graphics tile number -> VRAM tile number
@@ -713,10 +712,9 @@ wD3EF:
 wD3F0:
     ds 2                                               ;; d3f0
 
-wD3F2:
+wDamageDoneToBoss:
     ds 1                                               ;; d3f2
-
-wD3F3:
+.high:
     ds 1                                               ;; d3f3
 
 wCurrentBossHP:
@@ -756,7 +754,10 @@ wD441:
     ds 1                                               ;; d441
 
 ; Six bytes each, 14 total, but the largest boss only uses 11.
-wbossObjectsRuntimeData:
+; 0: Object ID of the normal object
+; 1-2: Stats pointer
+; 3-5: Unknown
+wBossObjectsStatsRuntimeData:
     ds 4                                               ;; d442
 ._04:
     ds 82                                              ;; d446
@@ -775,7 +776,7 @@ wScriptOpCounter2:
 wMusic:
     ds 1                                               ;; d49b
 
-wD49C:
+wVideoLCDCBackup:
     ds 1                                               ;; d49c
 
 ; Current map number, copied from wMapNumber, used during minimap drawing
@@ -794,10 +795,9 @@ wMapWidthTmp:
 wMapTableBankNrTmp:
     ds 1                                               ;; d4a0
 
-wD4A1:
+wDynamicMinimapMapTablePointer:
     ds 1                                               ;; d4a1
-
-wD4A2:
+.high:
     ds 1                                               ;; d4a2
 
 ; Used while afflicted with Pois, Dark, Ston, or Moog
@@ -1254,7 +1254,8 @@ wScriptMainGameStateBackup:
 wMiscFlags:
     ds 1                                               ;; d86f
 
-wD870:
+; Used by the two script opcodes that search player posessions
+wSearchInventoryLength:
     ds 1                                               ;; d870
 
 wScriptTriggerCollisionFlags:
@@ -1300,11 +1301,12 @@ wFujiStatusEffectTimerNumber:
 wNectarStaminaTimerNumber:
     ds 1                                               ;; d87e
 
-wD87F:
+; On level up, wait a number of frames while the fanfare music plays.
+wLevelUpFanfareDelay:
     ds 1                                               ;; d87f
 
-; probably unused. whenever it hits 150 or above it has 150 subtracted from it
-wWillChargeAlternate:
+; Whenever this passes 150 wWillCharge is incremented.
+wWillChargeSubPoint:
     ds 1                                               ;; d880
 
 wLightStatusEffectTimerNumber:
@@ -1313,7 +1315,7 @@ wLightStatusEffectTimerNumber:
 wMoogleSavedDp:
     ds 1                                               ;; d882
 
-wD883:
+wDualCharacterPosition:
     ds 1                                               ;; d883
 
 wVideoWYBackup:
@@ -1337,7 +1339,7 @@ wD889:
 wD88A:
     ds 1                                               ;; d88a
 
-wD88B:
+wCurrentItemOrSpellInUse:
     ds 1                                               ;; d88b
 
 ; On the title screen, wait a number of frames before the new game and continue options are shown.
@@ -1353,10 +1355,10 @@ wD88E:
 wD88F:
     ds 1                                               ;; d88f
 
-wD890:
+; Used to point to inventory/equipment/equipped for the two script opcodes that search player posessions.
+wItemSearchList:
     ds 1                                               ;; d890
-
-wD891:
+.high:
     ds 1                                               ;; d891
 
 wD892:
@@ -1527,7 +1529,8 @@ wD8D9:
 wD8DA:
     ds 1                                               ;; d8da
 
-wD8DB:
+; Three bytes long
+wDualCharacterScratch:
     ds 1829                                            ;; d8db
 
 SECTION "hram", HRAM[$ff80]
@@ -1550,25 +1553,25 @@ hSFX:
 hPlayingMusic:
     ds 1                                               ;; ff93
 
-hFF94:
+; Only one of the three channels is checked for vibrato and volume updates each frame
+hVibratoVolumeChannelSelection:
     ds 1                                               ;; ff94
 
-hFF95:
+hMusicNoteDurationChannel2Copy:
     ds 1                                               ;; ff95
 
-hFF96:
+hMusicNoteDurationChannel1Copy:
     ds 1                                               ;; ff96
 
-hFF97:
+hMusicNoteDurationChannel3Copy:
     ds 2                                               ;; ff97
 
 hFF99:
     ds 1                                               ;; ff99
 
-hFF9A:
+hWaveTablePointer:
     ds 1                                               ;; ff9a
-
-hFF9B:
+.high:
     ds 1                                               ;; ff9b
 
 hSoundEffectLoopCounterChannel1:
