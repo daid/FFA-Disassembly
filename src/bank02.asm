@@ -6040,7 +6040,7 @@ call_02_70d7:
     inc  DE                                            ;; 02:70e1 $13
     ret                                                ;; 02:70e2 $c9
 
-notBuff:
+doSpellOrItemEffect_notBuff:
     ld   HL, itemsListCrystal                          ;; 02:70e3 $21 $34 $7b
     call getItemOffsetBandCifInList                    ;; 02:70e6 $cd $4b $71
     jr   NC, .notCrystal                               ;; 02:70e9 $30 $05

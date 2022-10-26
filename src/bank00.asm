@@ -751,7 +751,7 @@ bossClearStatsObjects_trampoline:
     ret  Z                                             ;; 00:04ed $c8
     jp_to_bank 04, bossClearStatsObjects               ;; 00:04ee $f5 $3e $02 $c3 $64 $1f
 
-call_00_04f4:
+bossTakeDamage_trampoline:
     jp_to_bank 04, bossTakeDamage                      ;; 00:04f4 $f5 $3e $03 $c3 $64 $1f
 
 bossClearObjectsTracking:
@@ -6458,7 +6458,7 @@ npcSpawnProjectile:
     ld   A, $00                                        ;; 00:27cb $3e $00
     ret                                                ;; 00:27cd $c9
 
-checkObjectCollisions_trampoline:
+npcRunBehaviorForAll_trampoline:
     call call_00_04aa                                  ;; 00:27ce $cd $aa $04
     jp_to_bank 03, npcRunBehaviorForAll                ;; 00:27d1 $f5 $3e $00 $c3 $35 $1f
 
@@ -6468,7 +6468,7 @@ call_00_27d7:
 spawnNPC_trampoline:
     jp_to_bank 03, spawnNPC                            ;; 00:27dd $f5 $3e $02 $c3 $35 $1f
 
-npcDestroy_trampoline:
+destroyNPC_trampoline:
     jp_to_bank 03, destroyNPC                          ;; 00:27e3 $f5 $3e $03 $c3 $35 $1f
 
 initNpcRuntimeData:
@@ -7534,7 +7534,7 @@ getEquippedItemAnimationType_trampoline:
 useEquippedWeaponOrItem_trampoline:
     jp_to_bank 01, useEquippedWeaponOrItem             ;; 00:2ee5 $f5 $3e $22 $c3 $d7 $1e
 
-flyingSwordAttackBeginReturn_trampoline:
+useSpecialAttack_trampoline:
     jp_to_bank 01, useSpecialAttack                    ;; 00:2eeb $f5 $3e $23 $c3 $d7 $1e
 
 call_00_2ef1:
@@ -7847,7 +7847,7 @@ call_00_30a5:
 drawWindow_trampoline:
     jp_to_bank 02, drawWindow                          ;; 00:30ab $f5 $3e $14 $c3 $06 $1f
 
-call_00_30b1:
+windowMenuStartSpecial_trampoline:
     jp_to_bank 02, windowMenuStartSpecial              ;; 00:30b1 $f5 $3e $15 $c3 $06 $1f
 
 call_00_30b7:
