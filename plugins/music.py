@@ -89,7 +89,7 @@ class MusicBlock(Block):
     def outputOpcode(self, file):
         opcode = OPCODES.get(self.memory.byte(file.addr))
         if opcode is None:
-            file.asmLine(1, "db", f"${self.memory.byte(file.addr):02X} ; unknown music opcode")
+            file.asmLine(1, "db", f"${self.memory.byte(file.addr):02X}", comment="unknown music opcode")
             return
         size = 1
         params = []
