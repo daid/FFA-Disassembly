@@ -17,6 +17,9 @@ def music_pointers(memory, addr, *, amount):
             elif PARAM_SIZE[param] == 2:
                 params += f"\ndw \{idx+1}"
         RomInfo.macros[v[0]] = f"db ${(k&0xFF):02x}" + params
+    for n in range(13):
+        for k, v in NOTES.items():
+            RomInfo.macros[f"{v}_{n}"] = f"db ${(n << 4) | k:02x}"
 
 
 class MusicPointerBlock(Block):
@@ -42,22 +45,22 @@ class MusicPointerBlock(Block):
             file.asmLine(6, "dw", str(label2), str(label1), str(label3))
 
 OPCODES = {
-    0xD0: ("mOCTAVE_0", "none"),
-    0xD1: ("mOCTAVE_1", "none"),
-    0xD2: ("mOCTAVE_2", "none"),
-    0xD3: ("mOCTAVE_3", "none"),
-    0xD4: ("mOCTAVE_4", "none"),
-    0xD5: ("mOCTAVE_5", "none"),
-    0xD6: ("mOCTAVE_6", "none"),
-    0xD7: ("mOCTAVE_7", "none"),
-    0xD8: ("mOCTAVE_PLUS_1", "none"),
-    0xD9: ("mOCTAVE_PLUS_2", "none"),
-    0xDA: ("mOCTAVE_PLUS_3", "none"),
-    0xDB: ("mOCTAVE_PLUS_4", "none"),
-    0xDC: ("mOCTAVE_MINUS_1", "none"),
-    0xDD: ("mOCTAVE_MINUS_2", "none"),
-    0xDE: ("mOCTAVE_MINUS_3", "none"),
-    0xDF: ("mOCTAVE_MINUS_4", "none"),
+    0xD0: ("mOCTAVE_0", ),
+    0xD1: ("mOCTAVE_1", ),
+    0xD2: ("mOCTAVE_2", ),
+    0xD3: ("mOCTAVE_3", ),
+    0xD4: ("mOCTAVE_4", ),
+    0xD5: ("mOCTAVE_5", ),
+    0xD6: ("mOCTAVE_6", ),
+    0xD7: ("mOCTAVE_7", ),
+    0xD8: ("mOCTAVE_PLUS_1", ),
+    0xD9: ("mOCTAVE_PLUS_2", ),
+    0xDA: ("mOCTAVE_PLUS_3", ),
+    0xDB: ("mOCTAVE_PLUS_4", ),
+    0xDC: ("mOCTAVE_MINUS_1", ),
+    0xDD: ("mOCTAVE_MINUS_2", ),
+    0xDE: ("mOCTAVE_MINUS_3", ),
+    0xDF: ("mOCTAVE_MINUS_4", ),
     0xE0: ("mVOLUME_ENVELOPE", "ptr"),
     0x3E0: ("mVOLUME", "byte"), # Special exception for channel 3 E0
     0xE1: ("mJUMP", "mptr"),
@@ -72,9 +75,9 @@ OPCODES = {
     0xEA: ("mCOUNTER_2", "byte"),
     0xEB: ("mJUMPIF", "byte", "mptr"),
     0xED: ("mUNK_ED", "byte"),
-    0xFF: ("mEND", "none")
+    0xFF: ("mEND", )
 }
-PARAM_SIZE = {"none": 0, "byte": 1, "ptr": 2, "mptr": 2}
+PARAM_SIZE = {"byte": 1, "ptr": 2, "mptr": 2}
 
 NOTES = {
     0x00: ("mC"),
@@ -112,7 +115,7 @@ class MusicBlock(Block):
             if instruction >= 0xD0:
                 opcode_data = OPCODES.get(instruction)
             else:
-                opcode_data = ("none", "none")
+                opcode_data = ("none",)
             for param in opcode_data[1:]:
                 if param == "mptr":
                     target = memory.word(addr + len(self) + size)
@@ -137,8 +140,8 @@ class MusicBlock(Block):
 
         if instruction < 0xD0:
             note = self.memory.byte(file.addr)
-            name = NOTES.get(note & 0x0f)
-            file.asmLine(1, name + '_' + str((note & 0xf0) // 16))
+            name = NOTES.get(note & 0x0F)
+            file.asmLine(1, name + '_' + str((note & 0xF0) >> 4))
             return
 
         if instruction == 0xE0 and self.channel_nr == 2:
@@ -158,7 +161,7 @@ class MusicBlock(Block):
                     params.append(str(label))
                 else:
                     params.append(f"${self.memory.word(file.addr+size):04x}")
-            elif param != "none":
+            else:
                 params.append("??")
             size += PARAM_SIZE[param]
         file.asmLine(size, opcode[0], *params)
