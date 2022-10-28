@@ -42,20 +42,58 @@ class MusicPointerBlock(Block):
             file.asmLine(6, "dw", str(label2), str(label1), str(label3))
 
 OPCODES = {
-    0xE0: ("mUNK_E0", "ptr"),
-    0x3E0: ("mUNK3_E0", "byte"), # Special exception for channel 3 E0
-    0xE1: ("mUNK_E1", "mptr"),
-    0xE2: ("mUNK_E2", "mptr"),
-    0xE3: ("mUNK_E3", "byte"),
-    0xE4: ("mUNK_E4", "ptr"),
-    0xE5: ("mUNK_E5", "byte"),
-    0xE6: ("mUNK_E6", "byte"),
-    0xE7: ("mUNK_E7", "byte"),
-    0xE8: ("mUNK_E8", "ptr"),
-    0xEB: ("mUNK_EB", "byte", "mptr"),
+    0xD0: ("mOCTAVE_0", "none"),
+    0xD1: ("mOCTAVE_1", "none"),
+    0xD2: ("mOCTAVE_2", "none"),
+    0xD3: ("mOCTAVE_3", "none"),
+    0xD4: ("mOCTAVE_4", "none"),
+    0xD5: ("mOCTAVE_5", "none"),
+    0xD6: ("mOCTAVE_6", "none"),
+    0xD7: ("mOCTAVE_7", "none"),
+    0xD8: ("mOCTAVE_PLUS_1", "none"),
+    0xD9: ("mOCTAVE_PLUS_2", "none"),
+    0xDA: ("mOCTAVE_PLUS_3", "none"),
+    0xDB: ("mOCTAVE_PLUS_4", "none"),
+    0xDC: ("mOCTAVE_MINUS_1", "none"),
+    0xDD: ("mOCTAVE_MINUS_2", "none"),
+    0xDE: ("mOCTAVE_MINUS_3", "none"),
+    0xDF: ("mOCTAVE_MINUS_4", "none"),
+    0xE0: ("mVOLUME_ENVELOPE", "ptr"),
+    0x3E0: ("mVOLUME", "byte"), # Special exception for channel 3 E0
+    0xE1: ("mJUMP", "mptr"),
+    0xE2: ("mREPEAT", "mptr"),
+    0xE3: ("mCOUNTER", "byte"),
+    0xE4: ("mVIBRATO", "ptr"),
+    0xE5: ("mDUTYCYCLE", "byte"),
+    0xE6: ("mSTEREOPAN", "byte"),
+    0xE7: ("mTEMPO", "byte"),
+    0xE8: ("mWAVETABLE", "ptr"),
+    0xE9: ("mREPEAT_2", "mptr"),
+    0xEA: ("mCOUNTER_2", "byte"),
+    0xEB: ("mJUMPIF", "byte", "mptr"),
     0xED: ("mUNK_ED", "byte"),
+    0xFF: ("mEND", "none")
 }
-PARAM_SIZE = {"byte": 1, "ptr": 2, "mptr": 2}
+PARAM_SIZE = {"none": 0, "byte": 1, "ptr": 2, "mptr": 2}
+
+NOTES = {
+    0x00: ("mC"),
+    0x01: ("mCis"),
+    0x02: ("mD"),
+    0x03: ("mDis"),
+    0x04: ("mE"),
+    0x05: ("mF"),
+    0x06: ("mFis"),
+    0x07: ("mG"),
+    0x08: ("mGis"),
+    0x09: ("mA"),
+    0x0A: ("mAis"),
+    0x0B: ("mB"),
+    0x0C: ("mCPlus"),
+    0x0D: ("mCisPlus"),
+    0x0E: ("mWait"),
+    0x0F: ("mRest"),
+}
 
 class MusicBlock(Block):
     def __init__(self, memory, addr, *, channel_nr):
@@ -66,35 +104,46 @@ class MusicBlock(Block):
             if memory[addr + len(self)] is not None:
                 break
             size = 1
-            opcode = memory.byte(addr + len(self))
-            if opcode == 0xE0 and channel_nr == 2:
-                opcode = 0x3E0
-            opcode_data = OPCODES.get(opcode)
-            if opcode_data:
-                for param in opcode_data[1:]:
-                    if param == "mptr":
-                        target = memory.word(addr + len(self) + size)
+            instruction = memory.byte(addr + len(self))
+
+            if instruction == 0xE0 and channel_nr == 2:
+                instruction = 0x3E0
+
+            if instruction >= 0xD0:
+                opcode_data = OPCODES.get(instruction)
+            else:
+                opcode_data = ("none", "none")
+            for param in opcode_data[1:]:
+                if param == "mptr":
+                    target = memory.word(addr + len(self) + size)
+                    memory.addAutoLabel(target, addr + len(self), "data")
+                    MusicBlock(memory, target, channel_nr=channel_nr)
+                if param == "ptr":
+                    target = memory.word(addr + len(self) + size)
+                    if 0x4000 <= target < 0x8000:
                         memory.addAutoLabel(target, addr + len(self), "data")
-                        MusicBlock(memory, target, channel_nr=channel_nr)
-                    if param == "ptr":
-                        target = memory.word(addr + len(self) + size)
-                        if 0x4000 <= target < 0x8000:
-                            memory.addAutoLabel(target, addr + len(self), "data")
-                    size += PARAM_SIZE[param]
+                size += PARAM_SIZE[param]
             self.resize(len(self) + size)
 
-            if opcode == 0xE1: # channels seem to loop on this jump.
+            if instruction == 0xFF or instruction == 0xE1: # channels seem to loop on this jump.
                 break
 
     def export(self, file):
         while file.addr < self.base_address + len(self):
-            self.outputOpcode(file)
+            self.outputInstruction(file)
 
-    def outputOpcode(self, file):
-        opcode = self.memory.byte(file.addr)
-        if opcode == 0xE0 and self.channel_nr == 2:
-            opcode = 0x3E0
-        opcode = OPCODES.get(opcode)
+    def outputInstruction(self, file):
+        instruction = self.memory.byte(file.addr)
+
+        if instruction < 0xD0:
+            note = self.memory.byte(file.addr)
+            name = NOTES.get(note & 0x0f)
+            file.asmLine(1, name + '_' + str((note & 0xf0) // 16))
+            return
+
+        if instruction == 0xE0 and self.channel_nr == 2:
+            instruction = 0x3E0
+        opcode = OPCODES.get(instruction)
         if opcode is None:
             file.asmLine(1, "db", f"${self.memory.byte(file.addr):02X}", comment="unknown music opcode")
             return
@@ -109,7 +158,7 @@ class MusicBlock(Block):
                     params.append(str(label))
                 else:
                     params.append(f"${self.memory.word(file.addr+size):04x}")
-            else:
+            elif param != "none":
                 params.append("??")
             size += PARAM_SIZE[param]
         file.asmLine(size, opcode[0], *params)
