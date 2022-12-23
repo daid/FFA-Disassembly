@@ -71,7 +71,7 @@ prepareLetterboxEffect:
     ld   C, $f0                                        ;; 01:407b $0e $f0
     ld   DE, $00                                       ;; 01:407d $11 $00 $00
     ld   B, $14                                        ;; 01:4080 $06 $14
-.jr_01_4082:
+.loop_1:
     push BC                                            ;; 01:4082 $c5
     push DE                                            ;; 01:4083 $d5
     ld   A, C                                          ;; 01:4084 $79
@@ -83,7 +83,7 @@ prepareLetterboxEffect:
     jr   NZ, .jr_01_4082                               ;; 01:408c $20 $f4
     ld   DE, $100                                      ;; 01:408e $11 $00 $01
     ld   B, $14                                        ;; 01:4091 $06 $14
-.jr_01_4093:
+.loop_2:
     push BC                                            ;; 01:4093 $c5
     push DE                                            ;; 01:4094 $d5
     ld   A, C                                          ;; 01:4095 $79
@@ -127,7 +127,7 @@ call_01_40d8:
     ld   HL, wLCDCEffectBuffer                         ;; 01:40e1 $21 $a0 $d3
     ld   B, $06                                        ;; 01:40e4 $06 $06
     ld   DE, $04                                       ;; 01:40e6 $11 $04 $00
-.jr_01_40e9:
+.loop:
     ld   A, [HL]                                       ;; 01:40e9 $7e
     and  A, $f0                                        ;; 01:40ea $e6 $f0
     or   A, C                                          ;; 01:40ec $b1
@@ -137,7 +137,7 @@ call_01_40d8:
     jr   NZ, .jr_01_40e9                               ;; 01:40f0 $20 $f7
     ret                                                ;; 01:40f2 $c9
 
-call_01_40f3:
+setDefaultLCDEffectAndBGP:
     call setDefaultLCDCEffect                          ;; 01:40f3 $cd $13 $03
     ld   A, $e4                                        ;; 01:40f6 $3e $e4
     ld   [wVideoBGP], A                                ;; 01:40f8 $ea $aa $c0
@@ -397,7 +397,7 @@ call_01_42b2:
     ld   DE, $8900                                     ;; 01:42b5 $11 $00 $89
     ld   C, $0b                                        ;; 01:42b8 $0e $0b
     ld   B, $10                                        ;; 01:42ba $06 $10
-.jr_01_42bc:
+.loop:
     push BC                                            ;; 01:42bc $c5
     push HL                                            ;; 01:42bd $e5
     push DE                                            ;; 01:42be $d5
@@ -1056,10 +1056,10 @@ drawRoom:
     ld   [wNextRoomOverride.x], A                      ;; 01:472f $ea $45 $c3
     ld   D, $00                                        ;; 01:4732 $16 $00
     ld   C, $08                                        ;; 01:4734 $0e $08
-.jr_01_4736:
+.loop_outer:
     ld   E, $00                                        ;; 01:4736 $1e $00
     ld   B, $0a                                        ;; 01:4738 $06 $0a
-.jr_01_473a:
+.loop_inner:
     push BC                                            ;; 01:473a $c5
     push DE                                            ;; 01:473b $d5
     call getRoomMetaTile                               ;; 01:473c $cd $26 $24
@@ -1264,7 +1264,7 @@ getPlayerStateOffsetDown:
     ld   B, $b0                                        ;; 01:498b $06 $b0
     ret                                                ;; 01:498d $c9
 
-call_01_498e:
+updatePlayerPostion:
     ld   B, $00                                        ;; 01:498e $06 $00
     ld   C, $04                                        ;; 01:4990 $0e $04
     call updateObjectPosition                          ;; 01:4992 $cd $11 $06
@@ -2141,10 +2141,10 @@ call_01_4f65:
     jr   Z, .jr_01_4f78                                ;; 01:4f70 $28 $06
     ld   B, $00                                        ;; 01:4f72 $06 $00
     ret                                                ;; 01:4f74 $c9
-.jr_01_4f75:
+.chocobo:
     ld   B, $01                                        ;; 01:4f75 $06 $01
     ret                                                ;; 01:4f77 $c9
-.jr_01_4f78:
+.chocobot:
     ld   B, $21                                        ;; 01:4f78 $06 $21
     ret                                                ;; 01:4f7a $c9
 
@@ -2645,7 +2645,7 @@ call_01_52b3:
     ld   C, $00                                        ;; 01:52b3 $0e $00
     ld   B, $07                                        ;; 01:52b5 $06 $07
     ld   HL, wCEF0                                     ;; 01:52b7 $21 $f0 $ce
-.jr_01_52ba:
+.loop:
     ld   A, [HL+]                                      ;; 01:52ba $2a
     push HL                                            ;; 01:52bb $e5
     or   A, A                                          ;; 01:52bc $b7
@@ -4215,6 +4215,8 @@ call_01_5b46:
     ld   [wCF5A], A                                    ;; 01:5b69 $ea $5a $cf
     ret                                                ;; 01:5b6c $c9
 
+; A = type
+; C = special or normal, type, and facing
 playerUseWeaponOrItem:
     ld   [wPlayerAttackAnimationFrame], A              ;; 01:5b6d $ea $5f $cf
     add  A, A                                          ;; 01:5b70 $87
@@ -4550,7 +4552,7 @@ playerOrFriendlyAttackCollisionHandling:
 call_01_5d64:
     ld   B, $06                                        ;; 01:5d64 $06 $06
     ld   C, $40                                        ;; 01:5d66 $0e $40
-.jr_01_5d68:
+.loop:
     push BC                                            ;; 01:5d68 $c5
     ld   A, $01                                        ;; 01:5d69 $3e $01
     ld   DE, $fefe                                     ;; 01:5d6b $11 $fe $fe
@@ -4562,7 +4564,7 @@ call_01_5d64:
     dec  B                                             ;; 01:5d79 $05
     jr   NZ, .jr_01_5d68                               ;; 01:5d7a $20 $ec
     ret                                                ;; 01:5d7c $c9
-.jr_01_5d7d:
+.jr_01_4d7d:
     ld   C, A                                          ;; 01:5d7d $4f
     call destroyObject                                 ;; 01:5d7e $cd $e3 $0a
     ret                                                ;; 01:5d81 $c9
@@ -4571,7 +4573,7 @@ playerAttackDestroy:
     ld   HL, wCEF0                                     ;; 01:5d82 $21 $f0 $ce
     ld   C, $00                                        ;; 01:5d85 $0e $00
     ld   B, $07                                        ;; 01:5d87 $06 $07
-.jr_01_5d89:
+.loop:
     push BC                                            ;; 01:5d89 $c5
     ld   A, [HL+]                                      ;; 01:5d8a $2a
     push HL                                            ;; 01:5d8b $e5

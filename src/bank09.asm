@@ -21,13 +21,13 @@ call_09_4012:
     call call_00_0695                                  ;; 09:4012 $cd $95 $06
     ret                                                ;; 09:4015 $c9
 
-checkProjectileCollisions:
+projectileRunLogicForAll:
     ld   HL, wProjectileRuntimeData                    ;; 09:4016 $21 $c0 $c5
     ld   B, $03                                        ;; 09:4019 $06 $03
     ld   C, $0a                                        ;; 09:401b $0e $0a
     push BC                                            ;; 09:401d $c5
     jr   .jr_09_4024                                   ;; 09:401e $18 $04
-.jr_09_4020:
+.loop:
     push BC                                            ;; 09:4020 $c5
     ld   B, $00                                        ;; 09:4021 $06 $00
     add  HL, BC                                        ;; 09:4023 $09
@@ -42,7 +42,7 @@ checkProjectileCollisions:
     jr   NZ, .jr_09_4020                               ;; 09:402e $20 $f0
     ret                                                ;; 09:4030 $c9
 
-call_09_4031:
+projectileRunLogic:
     inc  HL                                            ;; 09:4031 $23
     dec  [HL]                                          ;; 09:4032 $35
     ret  NZ                                            ;; 09:4033 $c0
@@ -364,7 +364,7 @@ call_09_41d3:
     ld   E, A                                          ;; 09:41e7 $5f
     ret                                                ;; 09:41e8 $c9
 
-call_09_41e9:
+projectileLoadTiles:
     cp   A, $ff                                        ;; 09:41e9 $fe $ff
     ret  Z                                             ;; 09:41eb $c8
     ld   L, A                                          ;; 09:41ec $6f
@@ -400,7 +400,7 @@ call_09_41e9:
     add  A, A                                          ;; 09:4213 $87
     pop  DE                                            ;; 09:4214 $d1
     ret  Z                                             ;; 09:4215 $c8
-.jr_09_4216:
+.loop:
     push AF                                            ;; 09:4216 $f5
     ld   A, [HL+]                                      ;; 09:4217 $2a
     push HL                                            ;; 09:4218 $e5
@@ -564,7 +564,7 @@ call_09_42aa:
     sub  A, E                                          ;; 09:42ec $93
     ld   E, A                                          ;; 09:42ed $5f
     ld   B, $06                                        ;; 09:42ee $06 $06
-.jr_09_42f0:
+.loop_1:
     ld   A, D                                          ;; 09:42f0 $7a
     and  A, $c0                                        ;; 09:42f1 $e6 $c0
     cp   A, $80                                        ;; 09:42f3 $fe $80
@@ -631,13 +631,13 @@ call_09_42aa:
     ld   A, H                                          ;; 09:434b $7c
     ld   HL, .data_09_4376                             ;; 09:434c $21 $76 $43
     ld   B, $04                                        ;; 09:434f $06 $04
-.jr_09_4351:
+.loop_2:
     cp   A, [HL]                                       ;; 09:4351 $be
     jr   NC, .jr_09_4358                               ;; 09:4352 $30 $04
     inc  HL                                            ;; 09:4354 $23
     dec  B                                             ;; 09:4355 $05
     jr   NZ, .jr_09_4351                               ;; 09:4356 $20 $f9
-.jr_09_4358:
+.break:
     ld   A, $04                                        ;; 09:4358 $3e $04
     add  A, B                                          ;; 09:435a $80
     pop  HL                                            ;; 09:435b $e1
@@ -665,7 +665,7 @@ getProjectileRuntimeEntryByIndexA:
     ld   B, $03                                        ;; 09:437a $06 $03
     ld   HL, wProjectileRuntimeData                    ;; 09:437c $21 $c0 $c5
     ld   DE, $0a                                       ;; 09:437f $11 $0a $00
-.jr_09_4382:
+.loop:
     cp   A, [HL]                                       ;; 09:4382 $be
     ret  Z                                             ;; 09:4383 $c8
     add  HL, DE                                        ;; 09:4384 $19

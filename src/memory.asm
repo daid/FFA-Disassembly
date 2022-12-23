@@ -429,7 +429,10 @@ wC480:
 wC4A0:
     ds 1                                               ;; c4a0
 
-wC4A1:
+; "It takes all the running you can do, to keep in the same place.
+;  If you want to get somewhere else, you must run at least twice as fast as that!"
+; The rate sprites are moved during a screen scroll in order to keep their position relative to the background.
+wSpriteScrollSpeed:
     ds 1                                               ;; c4a1
 
 ; Sprites are hidden by moving them offscreen vertically.
@@ -468,7 +471,8 @@ wNpcRuntimeData:
 .statsTablePointer:
     ds 176                                             ;; c4f0
 
-wC5A0:
+; Everything is paused during a script, so if an object needs to move it gets added to this list for processing
+wObjectsMovingDuringScript:
     ds 8                                               ;; c5a0
 
 ; List of 3 random NPC types, one per entry of the selected NPCSpawnPointers, selected from the 4 options
@@ -486,6 +490,8 @@ wC5B0:
     ds 16                                              ;; c5b0
 
 ; 3 records of $0a size, related to projectiles
+; 01: Delay until next move (initialized from 02)
+; 02: Movement speed
 ; 08-09: Projectile data table entry pointer
 wProjectileRuntimeData:
     ds 32                                              ;; c5c0
@@ -553,7 +559,7 @@ wCF5A:
 wCF5B:
     ds 1                                               ;; cf5b
 
-wCF5C:
+wPlayerCurrentAttackTypeAndFacing:
     ds 1                                               ;; cf5c
 
 wCF5D:
@@ -697,7 +703,7 @@ wBossSpeedTimer:
 wBossIframes:
     ds 1                                               ;; d3eb
 
-wD3EC:
+wBossCurrentPatternStep:
     ds 1                                               ;; d3ec
 
 wD3ED:
@@ -735,22 +741,19 @@ wCurrentBossPatternPointer:
 .high:
     ds 1                                               ;; d43b
 
-wD43C:
+wBossCurrentKeyframePointer:
     ds 1                                               ;; d43c
-
-wD43D:
+.high:
     ds 1                                               ;; d43d
 
-wD43E:
+wBossCurrentHeadActionPointer:
     ds 1                                               ;; d43e
-
-wD43F:
+.head:
     ds 1                                               ;; d43f
 
-wD440:
+wBossCurrentMetatileListPointer:
     ds 1                                               ;; d440
-
-wD441:
+.high:
     ds 1                                               ;; d441
 
 ; Six bytes each, 14 total, but the largest boss only uses 11.
@@ -1169,7 +1172,7 @@ wD850:
 wEquippedItemElements:
     ds 2                                               ;; d851
 
-wD853:
+wMenuStateCurrentFunction:
     ds 1                                               ;; d853
 
 wDrawWindowStep:
@@ -1577,19 +1580,24 @@ hWaveTablePointer:
 hSoundEffectLoopCounterChannel1:
     ds 1                                               ;; ff9c
 
+; One byte long
 hSoundEffectLoopCounterChannel4:
     ds 93                                              ;; ff9d
 
-hFFFA:
+; Unused. Two's complement fffa is equal to -6
+hNegative6:
     ds 2                                               ;; fffa
 
-hFFFC:
+; Unused. Two's complement fffa is equal to -4
+hNegative4:
     ds 1                                               ;; fffc
 
-hFFFD:
+; Unused. Two's complement fffa is equal to -3
+hNegative3:
     ds 1                                               ;; fffd
 
-hFFFE:
+; Used as the stack location at init for exactly one call, but also used as -2.
+hNegative2:
     ds 1                                               ;; fffe
 
 SECTION "vram", VRAM[$8000]
