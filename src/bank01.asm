@@ -12,7 +12,7 @@ data_01_4000:
     call_to_bank_target runMainInputHandler            ;; 01:4000 pP
     call_to_bank_target call_01_48be                   ;; 01:4002 pP
     call_to_bank_target call_01_4996                   ;; 01:4004 pP
-    call_to_bank_target call_01_498e                   ;; 01:4006 pP
+    call_to_bank_target updatePlayerPostion            ;; 01:4006 pP
     call_to_bank_target createPlayerObject             ;; 01:4008 pP
     call_to_bank_target call_01_4f7b                   ;; 01:400a pP
     call_to_bank_target doSwordFlyingAttack            ;; 01:400c ??
@@ -30,7 +30,7 @@ data_01_4000:
     call_to_bank_target closeMinimap                   ;; 01:4024 pP
     call_to_bank_target prepareIntroScrollEffect       ;; 01:4026 pP
     call_to_bank_target call_01_40d8                   ;; 01:4028 pP
-    call_to_bank_target call_01_40f3                   ;; 01:402a pP
+    call_to_bank_target setDefaultLCDEffectAndBGP      ;; 01:402a pP
     call_to_bank_target prepareLetterboxEffect         ;; 01:402c ??
     call_to_bank_target prepareDefaultEffect           ;; 01:402e ??
     call_to_bank_target scrollRoom                     ;; 01:4030 pP
@@ -80,7 +80,7 @@ prepareLetterboxEffect:
     pop  BC                                            ;; 01:4089 $c1
     inc  E                                             ;; 01:408a $1c
     dec  B                                             ;; 01:408b $05
-    jr   NZ, .jr_01_4082                               ;; 01:408c $20 $f4
+    jr   NZ, prepareLetterboxEffect.loop_1             ;; 01:408c $20 $f4
     ld   DE, $100                                      ;; 01:408e $11 $00 $01
     ld   B, $14                                        ;; 01:4091 $06 $14
 .loop_2:
@@ -92,7 +92,7 @@ prepareLetterboxEffect:
     pop  BC                                            ;; 01:409a $c1
     inc  E                                             ;; 01:409b $1c
     dec  B                                             ;; 01:409c $05
-    jr   NZ, .jr_01_4093                               ;; 01:409d $20 $f4
+    jr   NZ, prepareLetterboxEffect.loop_2             ;; 01:409d $20 $f4
     ret                                                ;; 01:409f $c9
 
 prepareDefaultEffect:
@@ -134,7 +134,7 @@ call_01_40d8:
     ld   [HL], A                                       ;; 01:40ed $77
     add  HL, DE                                        ;; 01:40ee $19
     dec  B                                             ;; 01:40ef $05
-    jr   NZ, .jr_01_40e9                               ;; 01:40f0 $20 $f7
+    jr   NZ, call_01_40d8.loop                         ;; 01:40f0 $20 $f7
     ret                                                ;; 01:40f2 $c9
 
 setDefaultLCDEffectAndBGP:
@@ -412,7 +412,7 @@ call_01_42b2:
     add  HL, BC                                        ;; 01:42cb $09
     pop  BC                                            ;; 01:42cc $c1
     dec  B                                             ;; 01:42cd $05
-    jr   NZ, .jr_01_42bc                               ;; 01:42ce $20 $ec
+    jr   NZ, call_01_42b2.loop                         ;; 01:42ce $20 $ec
     ret                                                ;; 01:42d0 $c9
 
 call_01_42d1:
@@ -535,7 +535,7 @@ call_01_43a3:
     jr   NZ, .jr_01_43cc                               ;; 01:43b1 $20 $19
     ld   C, $00                                        ;; 01:43b3 $0e $00
     push HL                                            ;; 01:43b5 $e5
-    call call_00_289b                                  ;; 01:43b6 $cd $9b $28
+    call checkForMovingObjects                         ;; 01:43b6 $cd $9b $28
     pop  HL                                            ;; 01:43b9 $e1
     jr   NZ, .jr_01_43cc                               ;; 01:43ba $20 $10
     ld   A, H                                          ;; 01:43bc $7c
@@ -583,7 +583,7 @@ call_01_43ee:
     jr   NZ, .jr_01_4417                               ;; 01:43fc $20 $19
     ld   C, $00                                        ;; 01:43fe $0e $00
     push HL                                            ;; 01:4400 $e5
-    call call_00_289b                                  ;; 01:4401 $cd $9b $28
+    call checkForMovingObjects                         ;; 01:4401 $cd $9b $28
     pop  HL                                            ;; 01:4404 $e1
     jr   NZ, .jr_01_4417                               ;; 01:4405 $20 $10
     ld   A, H                                          ;; 01:4407 $7c
@@ -710,7 +710,7 @@ call_01_44a5:
     pop  DE                                            ;; 01:44ca $d1
     ld   B, $00                                        ;; 01:44cb $06 $00
     or   A, $10                                        ;; 01:44cd $f6 $10
-    call call_00_023e                                  ;; 01:44cf $cd $3e $02
+    call updatePlayerPostion_trampoline                ;; 01:44cf $cd $3e $02
     pop  AF                                            ;; 01:44d2 $f1
     ld   [wMainGameStateFlags], A                      ;; 01:44d3 $ea $a1 $c0
     pop  HL                                            ;; 01:44d6 $e1
@@ -773,7 +773,7 @@ scrollRoom:
     cp   A, $00                                        ;; 01:4544 $fe $00
     jr   NZ, .jr_01_4569                               ;; 01:4546 $20 $21
     ld   A, D                                          ;; 01:4548 $7a
-    call call_00_044d                                  ;; 01:4549 $cd $4d $04
+    call setSpriteScrollSpeed                          ;; 01:4549 $cd $4d $04
     ld   A, [wNextRoomOverride]                        ;; 01:454c $fa $44 $c3
     ld   E, A                                          ;; 01:454f $5f
     ld   A, [wNextRoomOverride.x]                      ;; 01:4550 $fa $45 $c3
@@ -807,7 +807,7 @@ scrollRoom:
     ld   [wBackgroundDrawPositionX], A                 ;; 01:4584 $ea $42 $c3
 .jr_01_4587:
     ld   A, $b1                                        ;; 01:4587 $3e $b1
-    call call_00_0429                                  ;; 01:4589 $cd $29 $04
+    call scrollMoveSprites_trampoline                  ;; 01:4589 $cd $29 $04
     pop  DE                                            ;; 01:458c $d1
     ld   A, D                                          ;; 01:458d $7a
     cpl                                                ;; 01:458e $2f
@@ -821,7 +821,7 @@ scrollRoom:
     cp   A, $00                                        ;; 01:459a $fe $00
     jr   NZ, .jr_01_45bf                               ;; 01:459c $20 $21
     ld   A, D                                          ;; 01:459e $7a
-    call call_00_044d                                  ;; 01:459f $cd $4d $04
+    call setSpriteScrollSpeed                          ;; 01:459f $cd $4d $04
     ld   A, [wNextRoomOverride]                        ;; 01:45a2 $fa $44 $c3
     ld   E, A                                          ;; 01:45a5 $5f
     ld   A, [wNextRoomOverride.x]                      ;; 01:45a6 $fa $45 $c3
@@ -853,7 +853,7 @@ scrollRoom:
     ld   [wBackgroundDrawPositionX], A                 ;; 01:45d7 $ea $42 $c3
 .jr_01_45da:
     ld   A, $b2                                        ;; 01:45da $3e $b2
-    call call_00_0429                                  ;; 01:45dc $cd $29 $04
+    call scrollMoveSprites_trampoline                  ;; 01:45dc $cd $29 $04
     pop  DE                                            ;; 01:45df $d1
     ld   E, D                                          ;; 01:45e0 $5a
     ld   D, $00                                        ;; 01:45e1 $16 $00
@@ -864,7 +864,7 @@ scrollRoom:
     cp   A, $00                                        ;; 01:45ea $fe $00
     jr   NZ, .jr_01_460f                               ;; 01:45ec $20 $21
     ld   A, D                                          ;; 01:45ee $7a
-    call call_00_044d                                  ;; 01:45ef $cd $4d $04
+    call setSpriteScrollSpeed                          ;; 01:45ef $cd $4d $04
     ld   A, [wNextRoomOverride]                        ;; 01:45f2 $fa $44 $c3
     ld   E, A                                          ;; 01:45f5 $5f
     ld   A, [wNextRoomOverride.x]                      ;; 01:45f6 $fa $45 $c3
@@ -898,7 +898,7 @@ scrollRoom:
     ld   [wBackgroundDrawPositionY], A                 ;; 01:462b $ea $43 $c3
 .jr_01_462e:
     ld   A, $b4                                        ;; 01:462e $3e $b4
-    call call_00_0429                                  ;; 01:4630 $cd $29 $04
+    call scrollMoveSprites_trampoline                  ;; 01:4630 $cd $29 $04
     pop  DE                                            ;; 01:4633 $d1
     ld   E, $00                                        ;; 01:4634 $1e $00
     call call_01_46c4                                  ;; 01:4636 $cd $c4 $46
@@ -908,7 +908,7 @@ scrollRoom:
     cp   A, $00                                        ;; 01:463d $fe $00
     jr   NZ, .jr_01_4662                               ;; 01:463f $20 $21
     ld   A, D                                          ;; 01:4641 $7a
-    call call_00_044d                                  ;; 01:4642 $cd $4d $04
+    call setSpriteScrollSpeed                          ;; 01:4642 $cd $4d $04
     ld   A, [wNextRoomOverride]                        ;; 01:4645 $fa $44 $c3
     ld   E, A                                          ;; 01:4648 $5f
     ld   A, [wNextRoomOverride.x]                      ;; 01:4649 $fa $45 $c3
@@ -942,7 +942,7 @@ scrollRoom:
     ld   [wBackgroundDrawPositionY], A                 ;; 01:467d $ea $43 $c3
 .jr_01_4680:
     ld   A, $b8                                        ;; 01:4680 $3e $b8
-    call call_00_0429                                  ;; 01:4682 $cd $29 $04
+    call scrollMoveSprites_trampoline                  ;; 01:4682 $cd $29 $04
     pop  DE                                            ;; 01:4685 $d1
     ld   A, D                                          ;; 01:4686 $7a
     cpl                                                ;; 01:4687 $2f
@@ -1028,7 +1028,7 @@ call_01_46c4:
     cp   A, C                                          ;; 01:46f2 $b9
     ret  C                                             ;; 01:46f3 $d8
     ld   A, $00                                        ;; 01:46f4 $3e $00
-    call call_00_044d                                  ;; 01:46f6 $cd $4d $04
+    call setSpriteScrollSpeed                          ;; 01:46f6 $cd $4d $04
     call call_00_2ef1                                  ;; 01:46f9 $cd $f1 $2e
     ld   A, [wMainGameStateFlags.nextFrame]            ;; 01:46fc $fa $a2 $c0
     res  0, A                                          ;; 01:46ff $cb $87
@@ -1070,10 +1070,10 @@ drawRoom:
     pop  BC                                            ;; 01:4745 $c1
     inc  E                                             ;; 01:4746 $1c
     dec  B                                             ;; 01:4747 $05
-    jr   NZ, .jr_01_473a                               ;; 01:4748 $20 $f0
+    jr   NZ, drawRoom.loop_inner                       ;; 01:4748 $20 $f0
     inc  D                                             ;; 01:474a $14
     dec  C                                             ;; 01:474b $0d
-    jr   NZ, .jr_01_4736                               ;; 01:474c $20 $e8
+    jr   NZ, drawRoom.loop_outer                       ;; 01:474c $20 $e8
     call call_00_2926                                  ;; 01:474e $cd $26 $29
     ret                                                ;; 01:4751 $c9
 
@@ -1149,7 +1149,7 @@ call_01_48be:
     ld   A, C                                          ;; 01:48d9 $79
     bit  5, A                                          ;; 01:48da $cb $6f
     jr   Z, .jr_01_48e1                                ;; 01:48dc $28 $03
-    call call_00_29e4                                  ;; 01:48de $cd $e4 $29
+    call objectReverseDirection                        ;; 01:48de $cd $e4 $29
 .jr_01_48e1:
     ld   C, A                                          ;; 01:48e1 $4f
     ld   A, [wMainGameStateFlags]                      ;; 01:48e2 $fa $a1 $c0
@@ -1307,7 +1307,7 @@ runMainInputHandler:
 
 gameStateNormal:
     push DE                                            ;; 01:49d1 $d5
-    call npcRunBehaviorForAll_trampoline               ;; 01:49d2 $cd $ce $27
+    call updateNPCsAndBoss                             ;; 01:49d2 $cd $ce $27
     pop  DE                                            ;; 01:49d5 $d1
     ld   A, D                                          ;; 01:49d6 $7a
     and  A, $0f                                        ;; 01:49d7 $e6 $0f
@@ -1329,7 +1329,7 @@ gameStateNormal:
     push DE                                            ;; 01:49f2 $d5
     push BC                                            ;; 01:49f3 $c5
     ld   C, $04                                        ;; 01:49f4 $0e $04
-    call call_00_0c0c                                  ;; 01:49f6 $cd $0c $0c
+    call checkStepAnimation                            ;; 01:49f6 $cd $0c $0c
     pop  BC                                            ;; 01:49f9 $c1
     pop  DE                                            ;; 01:49fa $d1
     jr   Z, .jr_01_49ff                                ;; 01:49fb $28 $02
@@ -1542,7 +1542,7 @@ playerDamagedEffect:
     call setObjectSpeed                                ;; 01:4b78 $cd $5d $0c
     ld   C, $04                                        ;; 01:4b7b $0e $04
     call getObjectDirection                            ;; 01:4b7d $cd $99 $0c
-    call call_00_29e4                                  ;; 01:4b80 $cd $e4 $29
+    call objectReverseDirection                        ;; 01:4b80 $cd $e4 $29
     ld   C, $04                                        ;; 01:4b83 $0e $04
     call setObjectDirection                            ;; 01:4b85 $cd $a6 $0c
     ld   C, $04                                        ;; 01:4b88 $0e $04
@@ -1555,7 +1555,7 @@ playerDamagedEffect:
 
 gameStateChocobo:
     push DE                                            ;; 01:4b94 $d5
-    call npcRunBehaviorForAll_trampoline               ;; 01:4b95 $cd $ce $27
+    call updateNPCsAndBoss                             ;; 01:4b95 $cd $ce $27
     pop  DE                                            ;; 01:4b98 $d1
     ld   A, D                                          ;; 01:4b99 $7a
     and  A, $0f                                        ;; 01:4b9a $e6 $0f
@@ -1577,7 +1577,7 @@ gameStateChocobo:
     push DE                                            ;; 01:4bb5 $d5
     push BC                                            ;; 01:4bb6 $c5
     ld   C, $04                                        ;; 01:4bb7 $0e $04
-    call call_00_0c0c                                  ;; 01:4bb9 $cd $0c $0c
+    call checkStepAnimation                            ;; 01:4bb9 $cd $0c $0c
     pop  BC                                            ;; 01:4bbc $c1
     pop  DE                                            ;; 01:4bbd $d1
     jr   Z, jr_01_4bc7                                 ;; 01:4bbe $28 $07
@@ -1596,7 +1596,7 @@ jr_01_4bc7:
 
 gameStateChocobot:
     push DE                                            ;; 01:4bd4 $d5
-    call npcRunBehaviorForAll_trampoline               ;; 01:4bd5 $cd $ce $27
+    call updateNPCsAndBoss                             ;; 01:4bd5 $cd $ce $27
     pop  DE                                            ;; 01:4bd8 $d1
     ld   A, D                                          ;; 01:4bd9 $7a
     and  A, $0f                                        ;; 01:4bda $e6 $0f
@@ -1618,7 +1618,7 @@ gameStateChocobot:
     push DE                                            ;; 01:4bf5 $d5
     push BC                                            ;; 01:4bf6 $c5
     ld   C, $04                                        ;; 01:4bf7 $0e $04
-    call call_00_0c0c                                  ;; 01:4bf9 $cd $0c $0c
+    call checkStepAnimation                            ;; 01:4bf9 $cd $0c $0c
     pop  BC                                            ;; 01:4bfc $c1
     pop  DE                                            ;; 01:4bfd $d1
     jr   Z, jr_01_4bc7                                 ;; 01:4bfe $28 $c7
@@ -1631,7 +1631,7 @@ gameStateChocobot:
 
 gameStateChocoboat:
     push DE                                            ;; 01:4c09 $d5
-    call npcRunBehaviorForAll_trampoline               ;; 01:4c0a $cd $ce $27
+    call updateNPCsAndBoss                             ;; 01:4c0a $cd $ce $27
     pop  DE                                            ;; 01:4c0d $d1
     ld   A, D                                          ;; 01:4c0e $7a
     and  A, $0f                                        ;; 01:4c0f $e6 $0f
@@ -1653,7 +1653,7 @@ gameStateChocoboat:
     push DE                                            ;; 01:4c2a $d5
     push BC                                            ;; 01:4c2b $c5
     ld   C, $04                                        ;; 01:4c2c $0e $04
-    call call_00_0c0c                                  ;; 01:4c2e $cd $0c $0c
+    call checkStepAnimation                            ;; 01:4c2e $cd $0c $0c
     pop  BC                                            ;; 01:4c31 $c1
     pop  DE                                            ;; 01:4c32 $d1
     jr   Z, jr_01_4bc7                                 ;; 01:4c33 $28 $92
@@ -1666,7 +1666,7 @@ gameStateChocoboat:
 
 gameStateFireAutoTarget:
     push DE                                            ;; 01:4c3e $d5
-    call npcRunBehaviorForAll_trampoline               ;; 01:4c3f $cd $ce $27
+    call updateNPCsAndBoss                             ;; 01:4c3f $cd $ce $27
     pop  DE                                            ;; 01:4c42 $d1
     ld   A, [wMainGameState]                           ;; 01:4c43 $fa $a0 $c0
     cp   A, $06                                        ;; 01:4c46 $fe $06
@@ -1682,7 +1682,7 @@ gameStateFireAutoTarget:
     ret                                                ;; 01:4c5c $c9
 
 gameStateSpecialAttackFlyingSwordReturn:
-    call npcRunBehaviorForAll_trampoline               ;; 01:4c5d $cd $ce $27
+    call updateNPCsAndBoss                             ;; 01:4c5d $cd $ce $27
     ld   A, [wMainGameState]                           ;; 01:4c60 $fa $a0 $c0
     cp   A, $04                                        ;; 01:4c63 $fe $04
     ret  NZ                                            ;; 01:4c65 $c0
@@ -1871,7 +1871,7 @@ call_01_4d35:
     ret                                                ;; 01:4d8e $c9
 
 gameStateSpecialAttackFlyingSword:
-    call npcRunBehaviorForAll_trampoline               ;; 01:4d8f $cd $ce $27
+    call updateNPCsAndBoss                             ;; 01:4d8f $cd $ce $27
     ld   A, [wMainGameState]                           ;; 01:4d92 $fa $a0 $c0
     cp   A, $03                                        ;; 01:4d95 $fe $03
     ret  NZ                                            ;; 01:4d97 $c0
@@ -1881,7 +1881,7 @@ gameStateSpecialAttackFlyingSword:
     ret                                                ;; 01:4da0 $c9
 .jr_01_4da1:
     call getPlayerDirection                            ;; 01:4da1 $cd $ab $02
-    call call_00_29e4                                  ;; 01:4da4 $cd $e4 $29
+    call objectReverseDirection                        ;; 01:4da4 $cd $e4 $29
     push AF                                            ;; 01:4da7 $f5
     call setPlayerDirection                            ;; 01:4da8 $cd $b1 $02
     pop  AF                                            ;; 01:4dab $f1
@@ -1905,7 +1905,7 @@ gameStateSpecialAttackFlyingSword:
 
 gameStateSpecialAttack:
     push DE                                            ;; 01:4dcb $d5
-    call npcRunBehaviorForAll_trampoline               ;; 01:4dcc $cd $ce $27
+    call updateNPCsAndBoss                             ;; 01:4dcc $cd $ce $27
     pop  DE                                            ;; 01:4dcf $d1
     ld   A, [wMainGameState]                           ;; 01:4dd0 $fa $a0 $c0
     cp   A, $05                                        ;; 01:4dd3 $fe $05
@@ -2031,7 +2031,7 @@ gameStateSpecialAttack:
 
 gameStateAttack:
     push DE                                            ;; 01:4ea9 $d5
-    call npcRunBehaviorForAll_trampoline               ;; 01:4eaa $cd $ce $27
+    call updateNPCsAndBoss                             ;; 01:4eaa $cd $ce $27
     pop  DE                                            ;; 01:4ead $d1
     ld   A, [wMainGameState]                           ;; 01:4eae $fa $a0 $c0
     cp   A, $02                                        ;; 01:4eb1 $fe $02
@@ -2136,9 +2136,9 @@ call_01_4f65:
     call getPlayerCollisionFlags                       ;; 01:4f65 $cd $b7 $02
     and  A, $f0                                        ;; 01:4f68 $e6 $f0
     cp   A, $e0                                        ;; 01:4f6a $fe $e0
-    jr   Z, .jr_01_4f75                                ;; 01:4f6c $28 $07
+    jr   Z, .chocobo                                   ;; 01:4f6c $28 $07
     cp   A, $f0                                        ;; 01:4f6e $fe $f0
-    jr   Z, .jr_01_4f78                                ;; 01:4f70 $28 $06
+    jr   Z, .chocobot                                  ;; 01:4f70 $28 $06
     ld   B, $00                                        ;; 01:4f72 $06 $00
     ret                                                ;; 01:4f74 $c9
 .chocobo:
@@ -2182,7 +2182,7 @@ call_01_4f7b:
     ld   B, C                                          ;; 01:4fb6 $41
     ld   C, $04                                        ;; 01:4fb7 $0e $04
     call call_00_039a                                  ;; 01:4fb9 $cd $9a $03
-    call call_00_29e4                                  ;; 01:4fbc $cd $e4 $29
+    call objectReverseDirection                        ;; 01:4fbc $cd $e4 $29
     call setPlayerDirection                            ;; 01:4fbf $cd $b1 $02
     ld   C, $04                                        ;; 01:4fc2 $0e $04
     call snapObjectToNearestTile8                      ;; 01:4fc4 $cd $ba $29
@@ -2463,7 +2463,7 @@ call_01_5196:
     ret  Z                                             ;; 01:519b $c8
     push AF                                            ;; 01:519c $f5
     ld   C, $04                                        ;; 01:519d $0e $04
-    call call_00_0c0c                                  ;; 01:519f $cd $0c $0c
+    call checkStepAnimation                            ;; 01:519f $cd $0c $0c
     ld   B, $00                                        ;; 01:51a2 $06 $00
     jr   Z, .jr_01_51a8                                ;; 01:51a4 $28 $02
     ld   B, $10                                        ;; 01:51a6 $06 $10
@@ -2474,7 +2474,7 @@ call_01_5196:
     call getPlayerDirection                            ;; 01:51ad $cd $ab $02
     bit  5, A                                          ;; 01:51b0 $cb $6f
     ret  Z                                             ;; 01:51b2 $c8
-    call call_00_29e4                                  ;; 01:51b3 $cd $e4 $29
+    call objectReverseDirection                        ;; 01:51b3 $cd $e4 $29
     call setPlayerDirection                            ;; 01:51b6 $cd $b1 $02
     xor  A, A                                          ;; 01:51b9 $af
     ret                                                ;; 01:51ba $c9
@@ -2548,7 +2548,7 @@ attackTileChain:
     cp   A, $03                                        ;; 01:5215 $fe $03
     ret  NZ                                            ;; 01:5217 $c0
     ld   C, $03                                        ;; 01:5218 $0e $03
-    ld   A, [wCF5C]                                    ;; 01:521a $fa $5c $cf
+    ld   A, [wPlayerCurrentAttackTypeAndFacing]        ;; 01:521a $fa $5c $cf
     cp   A, $1a                                        ;; 01:521d $fe $1a
     jr   C, .jr_01_5223                                ;; 01:521f $38 $02
     ld   C, $04                                        ;; 01:5221 $0e $04
@@ -2564,7 +2564,7 @@ attackTileChain:
     ld   A, $10                                        ;; 01:5230 $3e $10
     call setPlayerSpeed                                ;; 01:5232 $cd $a5 $02
     push AF                                            ;; 01:5235 $f5
-    ld   A, [wCF5C]                                    ;; 01:5236 $fa $5c $cf
+    ld   A, [wPlayerCurrentAttackTypeAndFacing]        ;; 01:5236 $fa $5c $cf
     sub  A, $0a                                        ;; 01:5239 $d6 $0a
     srl  A                                             ;; 01:523b $cb $3f
     call getA_And3Power2                               ;; 01:523d $cd $9a $29
@@ -2655,7 +2655,7 @@ call_01_52b3:
 .jr_01_52c5:
     pop  HL                                            ;; 01:52c5 $e1
     dec  B                                             ;; 01:52c6 $05
-    jr   NZ, .jr_01_52ba                               ;; 01:52c7 $20 $f1
+    jr   NZ, call_01_52b3.loop                         ;; 01:52c7 $20 $f1
     ld   A, C                                          ;; 01:52c9 $79
     cp   A, $00                                        ;; 01:52ca $fe $00
     ret                                                ;; 01:52cc $c9
@@ -4198,7 +4198,7 @@ call_01_5b46:
     ld   A, [wCF5A]                                    ;; 01:5b4c $fa $5a $cf
     ld   E, A                                          ;; 01:5b4f $5f
     push DE                                            ;; 01:5b50 $d5
-    ld   A, [wCF5C]                                    ;; 01:5b51 $fa $5c $cf
+    ld   A, [wPlayerCurrentAttackTypeAndFacing]        ;; 01:5b51 $fa $5c $cf
     ld   C, A                                          ;; 01:5b54 $4f
     ld   A, B                                          ;; 01:5b55 $78
     call playerUseWeaponOrItem                         ;; 01:5b56 $cd $6d $5b
@@ -4223,7 +4223,7 @@ playerUseWeaponOrItem:
     ld   E, A                                          ;; 01:5b71 $5f
     ld   D, $00                                        ;; 01:5b72 $16 $00
     ld   A, C                                          ;; 01:5b74 $79
-    ld   [wCF5C], A                                    ;; 01:5b75 $ea $5c $cf
+    ld   [wPlayerCurrentAttackTypeAndFacing], A        ;; 01:5b75 $ea $5c $cf
     ld   HL, attackFrames                              ;; 01:5b78 $21 $1d $5e
     add  HL, DE                                        ;; 01:5b7b $19
     ld   A, [HL+]                                      ;; 01:5b7c $2a
@@ -4285,7 +4285,7 @@ playerUseWeaponOrItem:
     pop  BC                                            ;; 01:5bcb $c1
     call setObjectMetaspritePointer                    ;; 01:5bcc $cd $ba $0c
     pop  HL                                            ;; 01:5bcf $e1
-    ld   A, [wCF5C]                                    ;; 01:5bd0 $fa $5c $cf
+    ld   A, [wPlayerCurrentAttackTypeAndFacing]        ;; 01:5bd0 $fa $5c $cf
     ld   C, A                                          ;; 01:5bd3 $4f
     ld   B, $00                                        ;; 01:5bd4 $06 $00
     add  HL, BC                                        ;; 01:5bd6 $09
@@ -4435,7 +4435,7 @@ call_01_5c9f:
     ld   A, [wCF5A]                                    ;; 01:5ca5 $fa $5a $cf
     ld   E, A                                          ;; 01:5ca8 $5f
     push DE                                            ;; 01:5ca9 $d5
-    ld   A, [wCF5C]                                    ;; 01:5caa $fa $5c $cf
+    ld   A, [wPlayerCurrentAttackTypeAndFacing]        ;; 01:5caa $fa $5c $cf
     ld   C, A                                          ;; 01:5cad $4f
     ld   A, B                                          ;; 01:5cae $78
     call playerUseWeaponOrItem                         ;; 01:5caf $cd $6d $5b
@@ -4562,9 +4562,9 @@ call_01_5d64:
     cp   A, $07                                        ;; 01:5d75 $fe $07
     jr   NC, .jr_01_5d7d                               ;; 01:5d77 $30 $04
     dec  B                                             ;; 01:5d79 $05
-    jr   NZ, .jr_01_5d68                               ;; 01:5d7a $20 $ec
+    jr   NZ, call_01_5d64.loop                         ;; 01:5d7a $20 $ec
     ret                                                ;; 01:5d7c $c9
-.jr_01_4d7d:
+.jr_01_5d7d:
     ld   C, A                                          ;; 01:5d7d $4f
     call destroyObject                                 ;; 01:5d7e $cd $e3 $0a
     ret                                                ;; 01:5d81 $c9
@@ -4583,7 +4583,7 @@ playerAttackDestroy:
     pop  BC                                            ;; 01:5d92 $c1
     inc  C                                             ;; 01:5d93 $0c
     dec  B                                             ;; 01:5d94 $05
-    jr   NZ, .jr_01_5d89                               ;; 01:5d95 $20 $f2
+    jr   NZ, playerAttackDestroy.loop                  ;; 01:5d95 $20 $f2
     ret                                                ;; 01:5d97 $c9
 
 call_01_5d98:
@@ -4615,7 +4615,7 @@ call_01_5db6:
     ld   [wCF5D], A                                    ;; 01:5db8 $ea $5d $cf
     call playerAttackDestroy                           ;; 01:5dbb $cd $82 $5d
     ld   A, $0a                                        ;; 01:5dbe $3e $0a
-    ld   [wCF5C], A                                    ;; 01:5dc0 $ea $5c $cf
+    ld   [wPlayerCurrentAttackTypeAndFacing], A        ;; 01:5dc0 $ea $5c $cf
     pop  AF                                            ;; 01:5dc3 $f1
     sub  A, $10                                        ;; 01:5dc4 $d6 $10
     ld   [wPlayerAttackAnimationFrame], A              ;; 01:5dc6 $ea $5f $cf

@@ -105,9 +105,9 @@ musicInitChannels:
     ld   [HL+], A                                      ;; 0f:4095 $22
     inc  E                                             ;; 0f:4096 $1c
     dec  C                                             ;; 0f:4097 $0d
-    jr   NZ, .jr_0f_4094                               ;; 0f:4098 $20 $fa
+    jr   NZ, musicInitChannels.loop_inner              ;; 0f:4098 $20 $fa
     dec  B                                             ;; 0f:409a $05
-    jr   NZ, .jr_0f_408f                               ;; 0f:409b $20 $f2
+    jr   NZ, musicInitChannels.loop_outer              ;; 0f:409b $20 $f2
     ret                                                ;; 0f:409d $c9
 
 musicSongInit:
@@ -1156,7 +1156,7 @@ musicLoadWaveTable:
     ldh  [C], A                                        ;; 0f:47b5 $e2
     inc  C                                             ;; 0f:47b6 $0c
     dec  B                                             ;; 0f:47b7 $05
-    jr   NZ, .jr_0f_47b4                               ;; 0f:47b8 $20 $fa
+    jr   NZ, musicLoadWaveTable.loop                   ;; 0f:47b8 $20 $fa
     ld   A, $80                                        ;; 0f:47ba $3e $80
     ldh  [rNR30], A                                    ;; 0f:47bc $e0 $1a
     ld   A, $00                                        ;; 0f:47be $3e $00

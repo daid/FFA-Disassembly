@@ -7,9 +7,9 @@ INCLUDE "include/constants.inc"
 
 SECTION "bank09", ROMX[$4000], BANK[$09]
 ;@call_to_bank_jumptable
-    call_to_bank_target checkProjectileCollisions      ;; 09:4000 pP
+    call_to_bank_target projectileRunLogicForAll       ;; 09:4000 pP
     call_to_bank_target call_09_4012                   ;; 09:4002 pP
-    call_to_bank_target call_09_41e9                   ;; 09:4004 pP
+    call_to_bank_target projectileLoadTiles            ;; 09:4004 pP
     call_to_bank_target projectileDestroy              ;; 09:4006 pP
     call_to_bank_target spawnProjectile                ;; 09:4008 pP
     call_to_bank_target getProjectileOffset02          ;; 09:400a ??
@@ -35,11 +35,11 @@ projectileRunLogicForAll:
     push HL                                            ;; 09:4024 $e5
     ld   A, [HL]                                       ;; 09:4025 $7e
     cp   A, $ff                                        ;; 09:4026 $fe $ff
-    call NZ, call_09_4031                              ;; 09:4028 $c4 $31 $40
+    call NZ, projectileRunLogic                        ;; 09:4028 $c4 $31 $40
     pop  HL                                            ;; 09:402b $e1
     pop  BC                                            ;; 09:402c $c1
     dec  B                                             ;; 09:402d $05
-    jr   NZ, .jr_09_4020                               ;; 09:402e $20 $f0
+    jr   NZ, projectileRunLogicForAll.loop             ;; 09:402e $20 $f0
     ret                                                ;; 09:4030 $c9
 
 projectileRunLogic:
@@ -425,7 +425,7 @@ projectileLoadTiles:
     pop  HL                                            ;; 09:4233 $e1
     pop  AF                                            ;; 09:4234 $f1
     dec  A                                             ;; 09:4235 $3d
-    jr   NZ, .jr_09_4216                               ;; 09:4236 $20 $de
+    jr   NZ, projectileLoadTiles.loop                  ;; 09:4236 $20 $de
     ret                                                ;; 09:4238 $c9
 
 spawnProjectile:
@@ -580,7 +580,7 @@ call_09_42aa:
     rlc  D                                             ;; 09:4306 $cb $02
     rlc  E                                             ;; 09:4308 $cb $03
     dec  B                                             ;; 09:430a $05
-    jr   NZ, .jr_09_42f0                               ;; 09:430b $20 $e3
+    jr   NZ, call_09_42aa.loop_1                       ;; 09:430b $20 $e3
     ld   A, D                                          ;; 09:430d $7a
     cpl                                                ;; 09:430e $2f
     srl  A                                             ;; 09:430f $cb $3f
@@ -600,7 +600,7 @@ call_09_42aa:
     ld   A, E                                          ;; 09:4320 $7b
     ld   [HL+], A                                      ;; 09:4321 $22
     push HL                                            ;; 09:4322 $e5
-    ld   BC, hFFFC                                     ;; 09:4323 $01 $fc $ff
+    ld   BC, hNegative4                                ;; 09:4323 $01 $fc $ff
     add  HL, BC                                        ;; 09:4326 $09
     push HL                                            ;; 09:4327 $e5
     push DE                                            ;; 09:4328 $d5
@@ -633,10 +633,10 @@ call_09_42aa:
     ld   B, $04                                        ;; 09:434f $06 $04
 .loop_2:
     cp   A, [HL]                                       ;; 09:4351 $be
-    jr   NC, .jr_09_4358                               ;; 09:4352 $30 $04
+    jr   NC, call_09_42aa.break                        ;; 09:4352 $30 $04
     inc  HL                                            ;; 09:4354 $23
     dec  B                                             ;; 09:4355 $05
-    jr   NZ, .jr_09_4351                               ;; 09:4356 $20 $f9
+    jr   NZ, call_09_42aa.loop_2                       ;; 09:4356 $20 $f9
 .break:
     ld   A, $04                                        ;; 09:4358 $3e $04
     add  A, B                                          ;; 09:435a $80
@@ -670,7 +670,7 @@ getProjectileRuntimeEntryByIndexA:
     ret  Z                                             ;; 09:4383 $c8
     add  HL, DE                                        ;; 09:4384 $19
     dec  B                                             ;; 09:4385 $05
-    jr   NZ, .jr_09_4382                               ;; 09:4386 $20 $fa
+    jr   NZ, getProjectileRuntimeEntryByIndexA.loop    ;; 09:4386 $20 $fa
     dec  B                                             ;; 09:4388 $05
     ret                                                ;; 09:4389 $c9
 
@@ -727,7 +727,7 @@ projectileCollisionHandling:
     jr   NC, projectileCollisionHandling.not_immune    ;; 09:43d1 $30 $37
     push HL                                            ;; 09:43d3 $e5
     call call_00_039a                                  ;; 09:43d4 $cd $9a $03
-    call call_00_29e4                                  ;; 09:43d7 $cd $e4 $29
+    call objectReverseDirection                        ;; 09:43d7 $cd $e4 $29
     push AF                                            ;; 09:43da $f5
     call getPlayerDirection                            ;; 09:43db $cd $ab $02
     and  A, $0f                                        ;; 09:43de $e6 $0f

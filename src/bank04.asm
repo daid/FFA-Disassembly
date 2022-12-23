@@ -7,7 +7,7 @@ INCLUDE "include/constants.inc"
 
 SECTION "bank04", ROMX[$4000], BANK[$04]
 ;@call_to_bank_jumptable amount=7
-    call_to_bank_target call_04_4090                   ;; 04:4000 pP
+    call_to_bank_target bossRunLogic                   ;; 04:4000 pP
     call_to_bank_target spawnBoss                      ;; 04:4002 pP
     call_to_bank_target bossClearStatsObjects          ;; 04:4004 ??
     call_to_bank_target bossTakeDamage                 ;; 04:4006 pP
@@ -119,7 +119,7 @@ bossRunLogic:
     add  HL, DE                                        ;; 04:409b $19
     ld   A, [HL]                                       ;; 04:409c $7e
     ld   [wBossSpeedTimer], A                          ;; 04:409d $ea $e9 $d3
-    call call_04_40a4                                  ;; 04:40a0 $cd $a4 $40
+    call bossLogic                                     ;; 04:40a0 $cd $a4 $40
     ret                                                ;; 04:40a3 $c9
 
 bossLogic:
@@ -128,9 +128,9 @@ bossLogic:
     ld   L, A                                          ;; 04:40a8 $6f
     ld   H, $00                                        ;; 04:40a9 $26 $00
     add  HL, HL                                        ;; 04:40ab $29
-    ld   A, [wD43F]                                    ;; 04:40ac $fa $3f $d4
+    ld   A, [wBossCurrentHeadActionPointer.head]       ;; 04:40ac $fa $3f $d4
     ld   D, A                                          ;; 04:40af $57
-    ld   A, [wD43E]                                    ;; 04:40b0 $fa $3e $d4
+    ld   A, [wBossCurrentHeadActionPointer]            ;; 04:40b0 $fa $3e $d4
     ld   E, A                                          ;; 04:40b3 $5f
     add  HL, DE                                        ;; 04:40b4 $19
     ld   A, [HL+]                                      ;; 04:40b5 $2a
@@ -184,9 +184,9 @@ call_04_40f3:
     add  HL, DE                                        ;; 04:4102 $19
     add  HL, DE                                        ;; 04:4103 $19
     call MultiplyHL_by_A                               ;; 04:4104 $cd $7b $2b
-    ld   A, [wD441]                                    ;; 04:4107 $fa $41 $d4
+    ld   A, [wBossCurrentMetatileListPointer.high]     ;; 04:4107 $fa $41 $d4
     ld   D, A                                          ;; 04:410a $57
-    ld   A, [wD440]                                    ;; 04:410b $fa $40 $d4
+    ld   A, [wBossCurrentMetatileListPointer]          ;; 04:410b $fa $40 $d4
     ld   E, A                                          ;; 04:410e $5f
     add  HL, DE                                        ;; 04:410f $19
     ld   A, [HL]                                       ;; 04:4110 $7e
@@ -228,7 +228,7 @@ call_04_40f3:
     pop  DE                                            ;; 04:413e $d1
     pop  BC                                            ;; 04:413f $c1
     dec  B                                             ;; 04:4140 $05
-    jr   NZ, .jr_04_411b                               ;; 04:4141 $20 $d8
+    jr   NZ, call_04_40f3.loop                         ;; 04:4141 $20 $d8
     ld   HL, wD3EF                                     ;; 04:4143 $21 $ef $d3
     inc  [HL]                                          ;; 04:4146 $34
     ret                                                ;; 04:4147 $c9
@@ -236,9 +236,9 @@ call_04_40f3:
 call_04_4148:
     ld   A, $00                                        ;; 04:4148 $3e $00
     ld   [wD3EF], A                                    ;; 04:414a $ea $ef $d3
-    ld   A, [wD441]                                    ;; 04:414d $fa $41 $d4
+    ld   A, [wBossCurrentMetatileListPointer.high]     ;; 04:414d $fa $41 $d4
     ld   H, A                                          ;; 04:4150 $67
-    ld   A, [wD440]                                    ;; 04:4151 $fa $40 $d4
+    ld   A, [wBossCurrentMetatileListPointer]          ;; 04:4151 $fa $40 $d4
     ld   L, A                                          ;; 04:4154 $6f
     ret                                                ;; 04:4155 $c9
 
@@ -382,9 +382,9 @@ call_04_4209:
     ld   A, $00                                        ;; 04:4210 $3e $00
     ld   [wD3EE], A                                    ;; 04:4212 $ea $ee $d3
     ld   [wD3EF], A                                    ;; 04:4215 $ea $ef $d3
-    ld   A, [wD43F]                                    ;; 04:4218 $fa $3f $d4
+    ld   A, [wBossCurrentHeadActionPointer.head]       ;; 04:4218 $fa $3f $d4
     ld   H, A                                          ;; 04:421b $67
-    ld   A, [wD43E]                                    ;; 04:421c $fa $3e $d4
+    ld   A, [wBossCurrentHeadActionPointer]            ;; 04:421c $fa $3e $d4
     ld   L, A                                          ;; 04:421f $6f
     ld   A, [HL+]                                      ;; 04:4220 $2a
     ret                                                ;; 04:4221 $c9
@@ -397,14 +397,14 @@ call_04_4222:
     add  A, L                                          ;; 04:4228 $85
     ld   L, A                                          ;; 04:4229 $6f
     ld   H, $00                                        ;; 04:422a $26 $00
-    ld   A, [wD43D]                                    ;; 04:422c $fa $3d $d4
+    ld   A, [wBossCurrentKeyframePointer.high]         ;; 04:422c $fa $3d $d4
     ld   D, A                                          ;; 04:422f $57
-    ld   A, [wD43C]                                    ;; 04:4230 $fa $3c $d4
+    ld   A, [wBossCurrentKeyframePointer]              ;; 04:4230 $fa $3c $d4
     ld   E, A                                          ;; 04:4233 $5f
     add  HL, DE                                        ;; 04:4234 $19
     ld   A, [HL+]                                      ;; 04:4235 $2a
     cp   A, $ff                                        ;; 04:4236 $fe $ff
-    call Z, call_04_425f                               ;; 04:4238 $cc $5f $42
+    call Z, bossChoosePattern                          ;; 04:4238 $cc $5f $42
     ret  Z                                             ;; 04:423b $c8
     call call_04_4240                                  ;; 04:423c $cd $40 $42
     ret                                                ;; 04:423f $c9
@@ -416,16 +416,16 @@ call_04_4240:
     ld   D, [HL]                                       ;; 04:4245 $56
     inc  HL                                            ;; 04:4246 $23
     ld   A, D                                          ;; 04:4247 $7a
-    ld   [wD43F], A                                    ;; 04:4248 $ea $3f $d4
+    ld   [wBossCurrentHeadActionPointer.head], A       ;; 04:4248 $ea $3f $d4
     ld   A, E                                          ;; 04:424b $7b
-    ld   [wD43E], A                                    ;; 04:424c $ea $3e $d4
+    ld   [wBossCurrentHeadActionPointer], A            ;; 04:424c $ea $3e $d4
     ld   A, [HL+]                                      ;; 04:424f $2a
     ld   H, [HL]                                       ;; 04:4250 $66
     ld   L, A                                          ;; 04:4251 $6f
     ld   A, H                                          ;; 04:4252 $7c
-    ld   [wD441], A                                    ;; 04:4253 $ea $41 $d4
+    ld   [wBossCurrentMetatileListPointer.high], A     ;; 04:4253 $ea $41 $d4
     ld   A, L                                          ;; 04:4256 $7d
-    ld   [wD440], A                                    ;; 04:4257 $ea $40 $d4
+    ld   [wBossCurrentMetatileListPointer], A          ;; 04:4257 $ea $40 $d4
     ld   HL, wD3ED                                     ;; 04:425a $21 $ed $d3
     inc  [HL]                                          ;; 04:425d $34
     ret                                                ;; 04:425e $c9
@@ -434,7 +434,7 @@ bossChoosePattern:
     ld   A, [wCurrentBossHP.high]                      ;; 04:425f $fa $f5 $d3
     bit  7, A                                          ;; 04:4262 $cb $7f
     jr   NZ, .dead                                     ;; 04:4264 $20 $46
-    ld   A, [wD3EC]                                    ;; 04:4266 $fa $ec $d3
+    ld   A, [wBossCurrentPatternStep]                  ;; 04:4266 $fa $ec $d3
     ld   L, A                                          ;; 04:4269 $6f
     add  A, A                                          ;; 04:426a $87
     add  A, A                                          ;; 04:426b $87
@@ -491,10 +491,10 @@ bossChoosePattern:
 call_04_42b0:
     push HL                                            ;; 04:42b0 $e5
     ld   A, H                                          ;; 04:42b1 $7c
-    ld   [wD43D], A                                    ;; 04:42b2 $ea $3d $d4
+    ld   [wBossCurrentKeyframePointer.high], A         ;; 04:42b2 $ea $3d $d4
     ld   A, L                                          ;; 04:42b5 $7d
-    ld   [wD43C], A                                    ;; 04:42b6 $ea $3c $d4
-    ld   HL, wD3EC                                     ;; 04:42b9 $21 $ec $d3
+    ld   [wBossCurrentKeyframePointer], A              ;; 04:42b6 $ea $3c $d4
+    ld   HL, wBossCurrentPatternStep                   ;; 04:42b9 $21 $ec $d3
     inc  [HL]                                          ;; 04:42bc $34
     ld   A, $00                                        ;; 04:42bd $3e $00
     ld   [wD3ED], A                                    ;; 04:42bf $ea $ed $d3
@@ -521,7 +521,7 @@ setBossMovement:
     ld   A, L                                          ;; 04:42dc $7d
     ld   [wCurrentBossPatternPointer], A               ;; 04:42dd $ea $3a $d4
     ld   A, $00                                        ;; 04:42e0 $3e $00
-    ld   [wD3EC], A                                    ;; 04:42e2 $ea $ec $d3
+    ld   [wBossCurrentPatternStep], A                  ;; 04:42e2 $ea $ec $d3
     ret                                                ;; 04:42e5 $c9
 
 call_04_42e6:
@@ -556,7 +556,7 @@ spawnBoss:
     ld   [wCurrentBossDataPointer], A                  ;; 04:430a $ea $38 $d4
     ld   D, H                                          ;; 04:430d $54
     ld   E, L                                          ;; 04:430e $5d
-    call bossLoadProjectile                            ;; 04:430f $cd $73 $43
+    call bossLoadTiles                                 ;; 04:430f $cd $73 $43
     call bossCreateObjects                             ;; 04:4312 $cd $cd $43
     call bossInitStatsObjectsRuntimeData               ;; 04:4315 $cd $ff $43
     call rollBossHP                                    ;; 04:4318 $cd $34 $43
@@ -569,7 +569,7 @@ spawnBoss:
     ld   [wD3F0], A                                    ;; 04:4324 $ea $f0 $d3
     ld   [wBossSpeedTimer], A                          ;; 04:4327 $ea $e9 $d3
     call setBossMovement                               ;; 04:432a $cd $d8 $42
-    call call_04_425f                                  ;; 04:432d $cd $5f $42
+    call bossChoosePattern                             ;; 04:432d $cd $5f $42
     call call_04_4209                                  ;; 04:4330 $cd $09 $42
     ret                                                ;; 04:4333 $c9
 
@@ -619,7 +619,7 @@ bossLoadTiles:
     add  HL, DE                                        ;; 04:4376 $19
     ld   A, [HL]                                       ;; 04:4377 $7e
     push DE                                            ;; 04:4378 $d5
-    call call_00_2bdd                                  ;; 04:4379 $cd $dd $2b
+    call projectileLoadTiles_trampoline                ;; 04:4379 $cd $dd $2b
     pop  DE                                            ;; 04:437c $d1
     push DE                                            ;; 04:437d $d5
     ld   HL, $08                                       ;; 04:437e $21 $08 $00
@@ -678,7 +678,7 @@ bossLoadTiles:
     pop  HL                                            ;; 04:43c6 $e1
     pop  AF                                            ;; 04:43c7 $f1
     dec  A                                             ;; 04:43c8 $3d
-    jr   NZ, .jr_04_439c                               ;; 04:43c9 $20 $d1
+    jr   NZ, bossLoadTiles.loop                        ;; 04:43c9 $20 $d1
     pop  DE                                            ;; 04:43cb $d1
     ret                                                ;; 04:43cc $c9
 
@@ -1031,10 +1031,10 @@ bossTakeDamage:
     or   A, L                                          ;; 04:4610 $b5
     ret  Z                                             ;; 04:4611 $c8
     call subHPBoss                                     ;; 04:4612 $cd $0b $47
-    jr   Z, .jr_04_4618                                ;; 04:4615 $28 $01
+    jr   Z, .killed                                    ;; 04:4615 $28 $01
     ret  NC                                            ;; 04:4617 $d0
 .killed:
-    call call_04_45c9                                  ;; 04:4618 $cd $c9 $45
+    call bossKilled                                    ;; 04:4618 $cd $c9 $45
     ret                                                ;; 04:461b $c9
 
 call_04_461c:

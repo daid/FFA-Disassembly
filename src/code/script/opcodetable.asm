@@ -146,7 +146,7 @@ scriptOpcodeTable:
     dw   scriptOpCodeFullHealDummyFA                   ;; 02:468e ??
     dw   scriptOpCodeFullHealDummyFA                   ;; 02:4690 ??
     dw   scriptOpCodeFullHealDummyFA                   ;; 02:4692 ??
-    dw   scriptOpCode8F                                ;; 02:4694 ??
+    dw   scriptOpWaitWhileMovement                     ;; 02:4694 ??
     dw   scriptOpCodeFollowerStepForward               ;; 02:4696 ??
     dw   scriptOpCodeFollowerStepBackwards             ;; 02:4698 ??
     dw   scriptOpCodeFullHealDummyFA                   ;; 02:469a ??

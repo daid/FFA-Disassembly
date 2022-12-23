@@ -21,11 +21,11 @@ SECTION "bank03", ROMX[$4000], BANK[$03]
     call_to_bank_target call_03_4aed                   ;; 03:4016 pP
     call_to_bank_target updateObjectPosition_3         ;; 03:4018 pP
     call_to_bank_target call_03_4af9                   ;; 03:401a pP
-    call_to_bank_target call_03_4b4f                   ;; 03:401c pP
+    call_to_bank_target moveObjectsDuringScript        ;; 03:401c pP
     call_to_bank_target giveFollower                   ;; 03:401e pP
     call_to_bank_target inflictVulnerableNpcsSlep      ;; 03:4020 ??
     call_to_bank_target inflictVulnerableNpcsMute      ;; 03:4022 ??
-    call_to_bank_target call_03_4b62                   ;; 03:4024 pP
+    call_to_bank_target getEmptyObjectsMovingDuringScriptSlot ;; 03:4024 pP
     call_to_bank_target runRoomScriptIfAllEnemiesDefeated ;; 03:4026 pP
     call_to_bank_target call_03_4c38                   ;; 03:4028 pP
     call_to_bank_target getNpcScriptIndex              ;; 03:402a pP
@@ -48,8 +48,8 @@ npcRunBehaviorForAll:
     pop  HL                                            ;; 03:4041 $e1
     pop  BC                                            ;; 03:4042 $c1
     dec  B                                             ;; 03:4043 $05
-    jr   NZ, .jr_03_4036                               ;; 03:4044 $20 $f0
-    call checkProjectileCollisions_trampoline          ;; 03:4046 $cd $d1 $2b
+    jr   NZ, npcRunBehaviorForAll.loop                 ;; 03:4044 $20 $f0
+    call projectileRunLogicForAll_trampoline           ;; 03:4046 $cd $d1 $2b
     ret                                                ;; 03:4049 $c9
 
 npcRunBehavior:
@@ -176,7 +176,7 @@ jr_03_40c7:
     cp   A, $00                                        ;; 03:40f0 $fe $00
     ret  NZ                                            ;; 03:40f2 $c0
     ld   [HL], A                                       ;; 03:40f3 $77
-    ld   DE, hFFFD                                     ;; 03:40f4 $11 $fd $ff
+    ld   DE, hNegative3                                ;; 03:40f4 $11 $fd $ff
     add  HL, DE                                        ;; 03:40f7 $19
     ld   [HL], $01                                     ;; 03:40f8 $36 $01
     ret                                                ;; 03:40fa $c9
@@ -264,7 +264,7 @@ call_03_4107:
     push DE                                            ;; 03:4165 $d5
     push BC                                            ;; 03:4166 $c5
     call getObjectDirection                            ;; 03:4167 $cd $99 $0c
-    call call_00_29e4                                  ;; 03:416a $cd $e4 $29
+    call objectReverseDirection                        ;; 03:416a $cd $e4 $29
     pop  BC                                            ;; 03:416d $c1
     push BC                                            ;; 03:416e $c5
     call setObjectDirection                            ;; 03:416f $cd $a6 $0c
@@ -457,7 +457,7 @@ call_03_425b:
     ld   A, [DE]                                       ;; 03:4288 $1a
     ld   C, A                                          ;; 03:4289 $4f
     push DE                                            ;; 03:428a $d5
-    call call_00_0c0c                                  ;; 03:428b $cd $0c $0c
+    call checkStepAnimation                            ;; 03:428b $cd $0c $0c
     pop  DE                                            ;; 03:428e $d1
     ld   A, $00                                        ;; 03:428f $3e $00
     ret  Z                                             ;; 03:4291 $c8
@@ -479,7 +479,7 @@ getNpcRuntimeDataByID:
     ret  Z                                             ;; 03:42a4 $c8
     add  HL, DE                                        ;; 03:42a5 $19
     dec  B                                             ;; 03:42a6 $05
-    jr   NZ, .jr_03_42a3                               ;; 03:42a7 $20 $fa
+    jr   NZ, getNpcRuntimeDataByID.loop                ;; 03:42a7 $20 $fa
     xor  A, A                                          ;; 03:42a9 $af
     inc  A                                             ;; 03:42aa $3c
     ret                                                ;; 03:42ab $c9
@@ -710,7 +710,7 @@ npcLoadTiles:
     ld   DE, $09                                       ;; 03:43f3 $11 $09 $00
     add  HL, DE                                        ;; 03:43f6 $19
     ld   A, [HL]                                       ;; 03:43f7 $7e
-    call call_00_2bdd                                  ;; 03:43f8 $cd $dd $2b
+    call projectileLoadTiles_trampoline                ;; 03:43f8 $cd $dd $2b
     pop  HL                                            ;; 03:43fb $e1
     ld   DE, $02                                       ;; 03:43fc $11 $02 $00
     add  HL, DE                                        ;; 03:43ff $19
@@ -768,7 +768,7 @@ npcLoadTiles:
     pop  HL                                            ;; 03:4444 $e1
     pop  AF                                            ;; 03:4445 $f1
     dec  A                                             ;; 03:4446 $3d
-    jr   NZ, .jr_03_441a                               ;; 03:4447 $20 $d1
+    jr   NZ, npcLoadTiles.loop                         ;; 03:4447 $20 $d1
     ret                                                ;; 03:4449 $c9
 
 setNpcSpawnTable:
@@ -809,7 +809,7 @@ setNpcSpawnTable:
     add  HL, DE                                        ;; 03:4479 $19
     ld   [HL], A                                       ;; 03:447a $77
     push BC                                            ;; 03:447b $c5
-    call call_03_43dc                                  ;; 03:447c $cd $dc $43
+    call npcLoadTiles                                  ;; 03:447c $cd $dc $43
     pop  BC                                            ;; 03:447f $c1
     pop  HL                                            ;; 03:4480 $e1
     inc  HL                                            ;; 03:4481 $23
@@ -838,7 +838,7 @@ call_03_4488:
     ld   A, [HL]                                       ;; 03:449a $7e
     pop  DE                                            ;; 03:449b $d1
     push DE                                            ;; 03:449c $d5
-    call call_00_18c0                                  ;; 03:449d $cd $c0 $18
+    call checkObjectTileCollisions                     ;; 03:449d $cd $c0 $18
     pop  DE                                            ;; 03:44a0 $d1
     pop  BC                                            ;; 03:44a1 $c1
     pop  HL                                            ;; 03:44a2 $e1
@@ -950,7 +950,7 @@ spawnNpcsFromTable:
     ld   E, A                                          ;; 03:4525 $5f
     ld   A, B                                          ;; 03:4526 $78
     or   A, A                                          ;; 03:4527 $b7
-    jr   Z, .jr_03_4549                                ;; 03:4528 $28 $1f
+    jr   Z, spawnNpcsFromTable.return                  ;; 03:4528 $28 $1f
     push HL                                            ;; 03:452a $e5
     ld   D, $00                                        ;; 03:452b $16 $00
     ld   HL, wNPCSpawnTypes                            ;; 03:452d $21 $a8 $c5
@@ -973,7 +973,7 @@ spawnNpcsFromTable:
     pop  HL                                            ;; 03:4544 $e1
     pop  BC                                            ;; 03:4545 $c1
     dec  B                                             ;; 03:4546 $05
-    jr   NZ, .jr_03_4533                               ;; 03:4547 $20 $ea
+    jr   NZ, spawnNpcsFromTable.loop                   ;; 03:4547 $20 $ea
 .return:
     pop  HL                                            ;; 03:4549 $e1
     ret                                                ;; 03:454a $c9
@@ -1162,7 +1162,7 @@ enemyCollisionHandling:
     cp   A, $02                                        ;; 03:465d $fe $02
     jr   NC, .jr_03_46d4                               ;; 03:465f $30 $73
     call call_00_039a                                  ;; 03:4661 $cd $9a $03
-    call call_00_29e4                                  ;; 03:4664 $cd $e4 $29
+    call objectReverseDirection                        ;; 03:4664 $cd $e4 $29
     push AF                                            ;; 03:4667 $f5
     call getPlayerDirection                            ;; 03:4668 $cd $ab $02
     and  A, $0f                                        ;; 03:466b $e6 $0f
@@ -1264,16 +1264,16 @@ enemyCollisionHandling:
     push BC                                            ;; 03:4709 $c5
     push DE                                            ;; 03:470a $d5
     ld   BC, $07                                       ;; 03:470b $01 $07 $00
-    ; Get enemy DP in E, divided by 4 if vulnerable
-    call bonusDamageIfVulnerableNpc                    ;; 03:470e $cd $6e $49
+; Get enemy DP in E, divided by 4 if vulnerable
+    call getEnemyDPIncludingVulnerability              ;; 03:470e $cd $6e $49
     push DE                                            ;; 03:4711 $d5
-    ; Get total AP (the number shown in the EQUIP screen) in A
+; Get total AP (the number shown in the EQUIP screen) in A
     call getTotalAP                                    ;; 03:4712 $cd $0e $3d
-    ; Move AP into HL, and multiply by 3/4 for certain special attacks
+; Move AP into HL, and multiply by 3/4 for certain special attacks
     call specialAttack2Power75inHLNpc                  ;; 03:4715 $cd $85 $49
     pop  DE                                            ;; 03:4718 $d1
-    ; HL = (HL - E) + (HL - E) * (ChargePercent) + (HL - E) * (random between 0 and 25%)
-    call call_03_499b                                  ;; 03:4719 $cd $9b $49
+; HL = (HL - E) + (HL - E) * (ChargePercent) + (HL - E) * (random between 0 and 25%)
+    call calculateWeaponDamageToNPC                    ;; 03:4719 $cd $9b $49
     pop  DE                                            ;; 03:471c $d1
     pop  BC                                            ;; 03:471d $c1
     jp   Z, enemyCollisionHandling.immune              ;; 03:471e $ca $eb $47
@@ -1332,7 +1332,7 @@ enemyCollisionHandling:
     push BC                                            ;; 03:4777 $c5
     push DE                                            ;; 03:4778 $d5
     ld   BC, $08                                       ;; 03:4779 $01 $08 $00
-    call bonusDamageIfVulnerableNpc                    ;; 03:477c $cd $6e $49
+    call getEnemyDPIncludingVulnerability              ;; 03:477c $cd $6e $49
     push DE                                            ;; 03:477f $d5
     call getTotalMagicPower                            ;; 03:4780 $cd $af $3d
     call specialAttack2Power75inHLNpc                  ;; 03:4783 $cd $85 $49
@@ -1384,7 +1384,7 @@ enemyCollisionHandling:
     push DE                                            ;; 03:47d0 $d5
     ld   D, H                                          ;; 03:47d1 $54
     ld   E, L                                          ;; 03:47d2 $5d
-    call add25rndHLtoDE_3                              ;; 03:47d3 $cd $f6 $49
+    call add25rndDEtoHL_3                              ;; 03:47d3 $cd $f6 $49
     pop  DE                                            ;; 03:47d6 $d1
     pop  BC                                            ;; 03:47d7 $c1
     jr   Z, enemyCollisionHandling.immune              ;; 03:47d8 $28 $11
@@ -1470,7 +1470,7 @@ processNpcDeath:
     jr   Z, .jr_03_4863                                ;; 03:4859 $28 $08
     inc  HL                                            ;; 03:485b $23
     dec  B                                             ;; 03:485c $05
-    jr   NZ, .jr_03_4858                               ;; 03:485d $20 $f9
+    jr   NZ, processNpcDeath.loop                      ;; 03:485d $20 $f9
     ld   A, $00                                        ;; 03:485f $3e $00
     jr   .jr_03_4866                                   ;; 03:4861 $18 $03
 .jr_03_4863:
@@ -1732,7 +1732,7 @@ specialAttack2Power75inHLNpc:
 calculateWeaponDamageToNPC:
     ld   D, $00                                        ;; 03:499b $16 $00
     call sub_HL_DE                                     ;; 03:499d $cd $ab $2b
-    jr   C, .jr_03_49c1                                ;; 03:49a0 $38 $1f
+    jr   C, .damage_negative                           ;; 03:49a0 $38 $1f
     ret  Z                                             ;; 03:49a2 $c8
     push HL                                            ;; 03:49a3 $e5
     ld   A, [wCurrentPlayerAttackWillCharge]           ;; 03:49a4 $fa $63 $cf
@@ -1749,7 +1749,7 @@ calculateWeaponDamageToNPC:
     pop  HL                                            ;; 03:49ba $e1
     add  HL, DE                                        ;; 03:49bb $19
     pop  DE                                            ;; 03:49bc $d1
-    call add25rndHLtoDE_3                              ;; 03:49bd $cd $f6 $49
+    call add25rndDEtoHL_3                              ;; 03:49bd $cd $f6 $49
     ret                                                ;; 03:49c0 $c9
 .damage_negative:
     ld   HL, $00                                       ;; 03:49c1 $21 $00 $00
@@ -1780,7 +1780,7 @@ call_03_49c6:
     pop  HL                                            ;; 03:49ea $e1
     add  HL, DE                                        ;; 03:49eb $19
     pop  DE                                            ;; 03:49ec $d1
-    call add25rndHLtoDE_3                              ;; 03:49ed $cd $f6 $49
+    call add25rndDEtoHL_3                              ;; 03:49ed $cd $f6 $49
     ret                                                ;; 03:49f0 $c9
 .jr_03_49f1:
     ld   HL, $00                                       ;; 03:49f1 $21 $00 $00
@@ -1921,7 +1921,7 @@ inflictVulnerableNpcsSlep:
     jr   NZ, .jr_03_4ab7                               ;; 03:4aad $20 $08
     pop  DE                                            ;; 03:4aaf $d1
     push DE                                            ;; 03:4ab0 $d5
-    ld   HL, hFFFA                                     ;; 03:4ab1 $21 $fa $ff
+    ld   HL, hNegative6                                ;; 03:4ab1 $21 $fa $ff
     add  HL, DE                                        ;; 03:4ab4 $19
     set  7, [HL]                                       ;; 03:4ab5 $cb $fe
 .jr_03_4ab7:
@@ -1930,7 +1930,7 @@ inflictVulnerableNpcsSlep:
     ld   DE, $18                                       ;; 03:4ab9 $11 $18 $00
     add  HL, DE                                        ;; 03:4abc $19
     dec  B                                             ;; 03:4abd $05
-    jr   NZ, .jr_03_4aa8                               ;; 03:4abe $20 $e8
+    jr   NZ, inflictVulnerableNpcsSlep.loop            ;; 03:4abe $20 $e8
     ret                                                ;; 03:4ac0 $c9
 
 inflictVulnerableNpcsMute:
@@ -1945,7 +1945,7 @@ inflictVulnerableNpcsMute:
     jr   NZ, .jr_03_4ad9                               ;; 03:4acf $20 $08
     pop  DE                                            ;; 03:4ad1 $d1
     push DE                                            ;; 03:4ad2 $d5
-    ld   HL, hFFFA                                     ;; 03:4ad3 $21 $fa $ff
+    ld   HL, hNegative6                                ;; 03:4ad3 $21 $fa $ff
     add  HL, DE                                        ;; 03:4ad6 $19
     set  6, [HL]                                       ;; 03:4ad7 $cb $f6
 .jr_03_4ad9:
@@ -1954,7 +1954,7 @@ inflictVulnerableNpcsMute:
     ld   DE, $18                                       ;; 03:4adb $11 $18 $00
     add  HL, DE                                        ;; 03:4ade $19
     dec  B                                             ;; 03:4adf $05
-    jr   NZ, .jr_03_4aca                               ;; 03:4ae0 $20 $e8
+    jr   NZ, inflictVulnerableNpcsMute.loop            ;; 03:4ae0 $20 $e8
     ret                                                ;; 03:4ae2 $c9
 
 ; C = player attack elements
@@ -2011,7 +2011,7 @@ moveObjectDuringScript:
     push BC                                            ;; 03:4b1a $c5
     push HL                                            ;; 03:4b1b $e5
     cp   A, $ff                                        ;; 03:4b1c $fe $ff
-    jr   Z, .jr_03_4b42                                ;; 03:4b1e $28 $22
+    jr   Z, .player                                    ;; 03:4b1e $28 $22
     call getNpcRuntimeDataByID                         ;; 03:4b20 $cd $9b $42
     ld   A, [HL]                                       ;; 03:4b23 $7e
     cp   A, $ff                                        ;; 03:4b24 $fe $ff
@@ -2048,28 +2048,28 @@ moveObjectDuringScript:
     ret                                                ;; 03:4b4e $c9
 
 moveObjectsDuringScript:
-    ld   HL, wC5A0                                     ;; 03:4b4f $21 $a0 $c5
+    ld   HL, wObjectsMovingDuringScript                ;; 03:4b4f $21 $a0 $c5
     ld   B, $08                                        ;; 03:4b52 $06 $08
     ld   C, $00                                        ;; 03:4b54 $0e $00
 .loop:
     ld   A, [HL+]                                      ;; 03:4b56 $2a
     cp   A, $00                                        ;; 03:4b57 $fe $00
-    call NZ, call_03_4b19                              ;; 03:4b59 $c4 $19 $4b
+    call NZ, moveObjectDuringScript                    ;; 03:4b59 $c4 $19 $4b
     dec  B                                             ;; 03:4b5c $05
-    jr   NZ, .jr_03_4b56                               ;; 03:4b5d $20 $f7
+    jr   NZ, moveObjectsDuringScript.loop              ;; 03:4b5d $20 $f7
     ld   A, C                                          ;; 03:4b5f $79
     or   A, C                                          ;; 03:4b60 $b1
     ret                                                ;; 03:4b61 $c9
 
 getEmptyObjectsMovingDuringScriptSlot:
-    ld   HL, wC5A0                                     ;; 03:4b62 $21 $a0 $c5
+    ld   HL, wObjectsMovingDuringScript                ;; 03:4b62 $21 $a0 $c5
     ld   B, $08                                        ;; 03:4b65 $06 $08
 .loop:
     cp   A, [HL]                                       ;; 03:4b67 $be
     ret  Z                                             ;; 03:4b68 $c8
     inc  HL                                            ;; 03:4b69 $23
     dec  B                                             ;; 03:4b6a $05
-    jr   NZ, .jr_03_4b67                               ;; 03:4b6b $20 $fa
+    jr   NZ, getEmptyObjectsMovingDuringScriptSlot.loop ;; 03:4b6b $20 $fa
     xor  A, A                                          ;; 03:4b6d $af
     inc  A                                             ;; 03:4b6e $3c
     ret                                                ;; 03:4b6f $c9
@@ -2102,13 +2102,13 @@ objectBehaviorMove:
     push BC                                            ;; 03:4b91 $c5
     push DE                                            ;; 03:4b92 $d5
     ld   A, [DE]                                       ;; 03:4b93 $1a
-    call call_03_4b62                                  ;; 03:4b94 $cd $62 $4b
+    call getEmptyObjectsMovingDuringScriptSlot         ;; 03:4b94 $cd $62 $4b
     pop  DE                                            ;; 03:4b97 $d1
     pop  BC                                            ;; 03:4b98 $c1
     jr   Z, .jr_03_4bdd                                ;; 03:4b99 $28 $42
     push BC                                            ;; 03:4b9b $c5
     ld   A, $00                                        ;; 03:4b9c $3e $00
-    call call_03_4b62                                  ;; 03:4b9e $cd $62 $4b
+    call getEmptyObjectsMovingDuringScriptSlot         ;; 03:4b9e $cd $62 $4b
     pop  BC                                            ;; 03:4ba1 $c1
     ret  NZ                                            ;; 03:4ba2 $c0
     ld   [HL], C                                       ;; 03:4ba3 $71
@@ -2119,7 +2119,7 @@ objectBehaviorMove:
     ld   [HL], B                                       ;; 03:4baa $70
     push BC                                            ;; 03:4bab $c5
     ld   A, $00                                        ;; 03:4bac $3e $00
-    call call_03_4b62                                  ;; 03:4bae $cd $62 $4b
+    call getEmptyObjectsMovingDuringScriptSlot         ;; 03:4bae $cd $62 $4b
     pop  BC                                            ;; 03:4bb1 $c1
     ret  NZ                                            ;; 03:4bb2 $c0
     ld   [HL], C                                       ;; 03:4bb3 $71
@@ -2130,10 +2130,10 @@ objectBehaviorMove:
     jr   Z, .jr_03_4bce                                ;; 03:4bba $28 $12
     pop  AF                                            ;; 03:4bbc $f1
     ld   A, $ff                                        ;; 03:4bbd $3e $ff
-    call call_03_4b62                                  ;; 03:4bbf $cd $62 $4b
+    call getEmptyObjectsMovingDuringScriptSlot         ;; 03:4bbf $cd $62 $4b
     jr   Z, .jr_03_4bdd                                ;; 03:4bc2 $28 $19
     ld   A, $00                                        ;; 03:4bc4 $3e $00
-    call call_03_4b62                                  ;; 03:4bc6 $cd $62 $4b
+    call getEmptyObjectsMovingDuringScriptSlot         ;; 03:4bc6 $cd $62 $4b
     ret  NZ                                            ;; 03:4bc9 $c0
     ld   [HL], $ff                                     ;; 03:4bca $36 $ff
     jr   .jr_03_4bdd                                   ;; 03:4bcc $18 $0f
@@ -2142,7 +2142,7 @@ objectBehaviorMove:
     ld   B, $00                                        ;; 03:4bcf $06 $00
     call call_00_0232                                  ;; 03:4bd1 $cd $32 $02
     ld   A, $00                                        ;; 03:4bd4 $3e $00
-    call call_03_4b62                                  ;; 03:4bd6 $cd $62 $4b
+    call getEmptyObjectsMovingDuringScriptSlot         ;; 03:4bd6 $cd $62 $4b
     ret  NZ                                            ;; 03:4bd9 $c0
     ld   [HL], $ff                                     ;; 03:4bda $36 $ff
     ret                                                ;; 03:4bdc $c9
@@ -2187,17 +2187,17 @@ call_03_4be0:
     pop  AF                                            ;; 03:4c11 $f1
     add  HL, DE                                        ;; 03:4c12 $19
     dec  B                                             ;; 03:4c13 $05
-    jr   NZ, .jr_03_4bf4                               ;; 03:4c14 $20 $de
+    jr   NZ, call_03_4be0.loop                         ;; 03:4c14 $20 $de
     ld   A, [wC5AF]                                    ;; 03:4c16 $fa $af $c5
     cp   A, C                                          ;; 03:4c19 $b9
-    jr   Z, .jr_03_4c2d                                ;; 03:4c1a $28 $11
+    jr   Z, call_03_4be0.return_01                     ;; 03:4c1a $28 $11
     ld   A, C                                          ;; 03:4c1c $79
     ld   [wC5AF], A                                    ;; 03:4c1d $ea $af $c5
     cp   A, $01                                        ;; 03:4c20 $fe $01
-    jr   NC, .jr_03_4c2d                               ;; 03:4c22 $30 $09
-    jr   NZ, .jr_03_4c2b                               ;; 03:4c24 $20 $05
+    jr   NC, call_03_4be0.return_01                    ;; 03:4c22 $30 $09
+    jr   NZ, call_03_4be0.return_00                    ;; 03:4c24 $20 $05
     call checkForFollower                              ;; 03:4c26 $cd $c2 $28
-    jr   NZ, .jr_03_4c2d                               ;; 03:4c29 $20 $02
+    jr   NZ, call_03_4be0.return_01                    ;; 03:4c29 $20 $02
 .return_00:
     xor  A, A                                          ;; 03:4c2b $af
     ret                                                ;; 03:4c2c $c9
@@ -2231,9 +2231,9 @@ call_03_4c38:
 
 ;@jumptable amount=224
 npcBehaviorJumptable:
-    dw   call_03_4eb3                                  ;; 03:4c55 ??
+    dw   ld_C_into_A                                   ;; 03:4c55 ??
     dw   call_03_4e7c                                  ;; 03:4c57 pP
-    dw   call_03_4ec9                                  ;; 03:4c59 pP
+    dw   npcBehaviorSpawnProjectile                    ;; 03:4c59 pP
     dw   call_03_4ef0                                  ;; 03:4c5b pP
     dw   npcStepForward                                ;; 03:4c5d pP
     dw   npcStepBackward                               ;; 03:4c5f pP
@@ -2253,11 +2253,11 @@ npcBehaviorJumptable:
     dw   call_03_5031                                  ;; 03:4c7b pP
     dw   call_03_503d                                  ;; 03:4c7d ??
     dw   call_03_5049                                  ;; 03:4c7f ??
-    dw   call_03_4eb3                                  ;; 03:4c81 ??
-    dw   call_03_4eb3                                  ;; 03:4c83 ??
-    dw   call_03_4eb3                                  ;; 03:4c85 ??
-    dw   call_03_4eb3                                  ;; 03:4c87 ??
-    dw   call_03_4eb3                                  ;; 03:4c89 ??
+    dw   ld_C_into_A                                   ;; 03:4c81 ??
+    dw   ld_C_into_A                                   ;; 03:4c83 ??
+    dw   ld_C_into_A                                   ;; 03:4c85 ??
+    dw   ld_C_into_A                                   ;; 03:4c87 ??
+    dw   ld_C_into_A                                   ;; 03:4c89 ??
     dw   call_03_4eb5                                  ;; 03:4c8b ??
     dw   npcFaceEast                                   ;; 03:4c8d pP
     dw   npcFaceWest                                   ;; 03:4c8f pP
@@ -2295,10 +2295,10 @@ npcBehaviorJumptable:
     dw   call_03_5135                                  ;; 03:4ccf ??
     dw   call_03_5139                                  ;; 03:4cd1 ??
     dw   call_03_513d                                  ;; 03:4cd3 ??
-    dw   call_03_4eb3                                  ;; 03:4cd5 ??
-    dw   call_03_4eb3                                  ;; 03:4cd7 ??
-    dw   call_03_4eb3                                  ;; 03:4cd9 ??
-    dw   call_03_4eb3                                  ;; 03:4cdb ??
+    dw   ld_C_into_A                                   ;; 03:4cd5 ??
+    dw   ld_C_into_A                                   ;; 03:4cd7 ??
+    dw   ld_C_into_A                                   ;; 03:4cd9 ??
+    dw   ld_C_into_A                                   ;; 03:4cdb ??
     dw   call_03_5151                                  ;; 03:4cdd ??
     dw   call_03_5155                                  ;; 03:4cdf ??
     dw   call_03_5159                                  ;; 03:4ce1 ??
@@ -2327,10 +2327,10 @@ npcBehaviorJumptable:
     dw   call_03_51b5                                  ;; 03:4d0f ??
     dw   call_03_51b9                                  ;; 03:4d11 ??
     dw   call_03_51bd                                  ;; 03:4d13 ??
-    dw   call_03_4eb3                                  ;; 03:4d15 ??
-    dw   call_03_4eb3                                  ;; 03:4d17 ??
-    dw   call_03_4eb3                                  ;; 03:4d19 ??
-    dw   call_03_4eb3                                  ;; 03:4d1b ??
+    dw   ld_C_into_A                                   ;; 03:4d15 ??
+    dw   ld_C_into_A                                   ;; 03:4d17 ??
+    dw   ld_C_into_A                                   ;; 03:4d19 ??
+    dw   ld_C_into_A                                   ;; 03:4d1b ??
     dw   call_03_51d1                                  ;; 03:4d1d ??
     dw   call_03_51d5                                  ;; 03:4d1f ??
     dw   call_03_51d9                                  ;; 03:4d21 ??
@@ -2359,22 +2359,22 @@ npcBehaviorJumptable:
     dw   call_03_5235                                  ;; 03:4d4f ??
     dw   call_03_5239                                  ;; 03:4d51 ??
     dw   call_03_523d                                  ;; 03:4d53 ??
-    dw   call_03_4eb3                                  ;; 03:4d55 ??
-    dw   call_03_4eb3                                  ;; 03:4d57 ??
-    dw   call_03_4eb3                                  ;; 03:4d59 ??
-    dw   call_03_4eb3                                  ;; 03:4d5b ??
-    dw   call_03_4eb3                                  ;; 03:4d5d ??
-    dw   call_03_4eb3                                  ;; 03:4d5f ??
-    dw   call_03_4eb3                                  ;; 03:4d61 ??
-    dw   call_03_4eb3                                  ;; 03:4d63 ??
-    dw   call_03_4eb3                                  ;; 03:4d65 ??
-    dw   call_03_4eb3                                  ;; 03:4d67 ??
-    dw   call_03_4eb3                                  ;; 03:4d69 ??
-    dw   call_03_4eb3                                  ;; 03:4d6b ??
-    dw   call_03_4eb3                                  ;; 03:4d6d ??
-    dw   call_03_4eb3                                  ;; 03:4d6f ??
-    dw   call_03_4eb3                                  ;; 03:4d71 ??
-    dw   call_03_4eb3                                  ;; 03:4d73 ??
+    dw   ld_C_into_A                                   ;; 03:4d55 ??
+    dw   ld_C_into_A                                   ;; 03:4d57 ??
+    dw   ld_C_into_A                                   ;; 03:4d59 ??
+    dw   ld_C_into_A                                   ;; 03:4d5b ??
+    dw   ld_C_into_A                                   ;; 03:4d5d ??
+    dw   ld_C_into_A                                   ;; 03:4d5f ??
+    dw   ld_C_into_A                                   ;; 03:4d61 ??
+    dw   ld_C_into_A                                   ;; 03:4d63 ??
+    dw   ld_C_into_A                                   ;; 03:4d65 ??
+    dw   ld_C_into_A                                   ;; 03:4d67 ??
+    dw   ld_C_into_A                                   ;; 03:4d69 ??
+    dw   ld_C_into_A                                   ;; 03:4d6b ??
+    dw   ld_C_into_A                                   ;; 03:4d6d ??
+    dw   ld_C_into_A                                   ;; 03:4d6f ??
+    dw   ld_C_into_A                                   ;; 03:4d71 ??
+    dw   ld_C_into_A                                   ;; 03:4d73 ??
     dw   call_03_5264                                  ;; 03:4d75 ??
     dw   call_03_5268                                  ;; 03:4d77 ??
     dw   call_03_526c                                  ;; 03:4d79 ??
@@ -2391,22 +2391,22 @@ npcBehaviorJumptable:
     dw   call_03_5298                                  ;; 03:4d8f ??
     dw   call_03_529c                                  ;; 03:4d91 ??
     dw   call_03_52a0                                  ;; 03:4d93 ??
-    dw   call_03_4eb3                                  ;; 03:4d95 ??
-    dw   call_03_4eb3                                  ;; 03:4d97 ??
-    dw   call_03_4eb3                                  ;; 03:4d99 ??
-    dw   call_03_4eb3                                  ;; 03:4d9b ??
-    dw   call_03_4eb3                                  ;; 03:4d9d ??
-    dw   call_03_4eb3                                  ;; 03:4d9f ??
-    dw   call_03_4eb3                                  ;; 03:4da1 ??
-    dw   call_03_4eb3                                  ;; 03:4da3 ??
-    dw   call_03_4eb3                                  ;; 03:4da5 ??
-    dw   call_03_4eb3                                  ;; 03:4da7 ??
-    dw   call_03_4eb3                                  ;; 03:4da9 ??
-    dw   call_03_4eb3                                  ;; 03:4dab ??
-    dw   call_03_4eb3                                  ;; 03:4dad ??
-    dw   call_03_4eb3                                  ;; 03:4daf ??
-    dw   call_03_4eb3                                  ;; 03:4db1 ??
-    dw   call_03_4eb3                                  ;; 03:4db3 ??
+    dw   ld_C_into_A                                   ;; 03:4d95 ??
+    dw   ld_C_into_A                                   ;; 03:4d97 ??
+    dw   ld_C_into_A                                   ;; 03:4d99 ??
+    dw   ld_C_into_A                                   ;; 03:4d9b ??
+    dw   ld_C_into_A                                   ;; 03:4d9d ??
+    dw   ld_C_into_A                                   ;; 03:4d9f ??
+    dw   ld_C_into_A                                   ;; 03:4da1 ??
+    dw   ld_C_into_A                                   ;; 03:4da3 ??
+    dw   ld_C_into_A                                   ;; 03:4da5 ??
+    dw   ld_C_into_A                                   ;; 03:4da7 ??
+    dw   ld_C_into_A                                   ;; 03:4da9 ??
+    dw   ld_C_into_A                                   ;; 03:4dab ??
+    dw   ld_C_into_A                                   ;; 03:4dad ??
+    dw   ld_C_into_A                                   ;; 03:4daf ??
+    dw   ld_C_into_A                                   ;; 03:4db1 ??
+    dw   ld_C_into_A                                   ;; 03:4db3 ??
     dw   call_03_5377                                  ;; 03:4db5 ??
     dw   call_03_537b                                  ;; 03:4db7 ??
     dw   call_03_537f                                  ;; 03:4db9 ??
@@ -2423,10 +2423,10 @@ npcBehaviorJumptable:
     dw   call_03_53ab                                  ;; 03:4dcf ??
     dw   call_03_53af                                  ;; 03:4dd1 ??
     dw   call_03_53b3                                  ;; 03:4dd3 ??
-    dw   call_03_4eb3                                  ;; 03:4dd5 ??
-    dw   call_03_4eb3                                  ;; 03:4dd7 ??
-    dw   call_03_4eb3                                  ;; 03:4dd9 ??
-    dw   call_03_4eb3                                  ;; 03:4ddb ??
+    dw   ld_C_into_A                                   ;; 03:4dd5 ??
+    dw   ld_C_into_A                                   ;; 03:4dd7 ??
+    dw   ld_C_into_A                                   ;; 03:4dd9 ??
+    dw   ld_C_into_A                                   ;; 03:4ddb ??
     dw   call_03_5419                                  ;; 03:4ddd ??
     dw   call_03_541d                                  ;; 03:4ddf ??
     dw   call_03_5421                                  ;; 03:4de1 ??
@@ -3839,7 +3839,7 @@ call_03_5499:
     push DE                                            ;; 03:5507 $d5
     call getObjectCollisionFlags                       ;; 03:5508 $cd $6d $0c
     pop  DE                                            ;; 03:550b $d1
-    call call_00_18c0                                  ;; 03:550c $cd $c0 $18
+    call checkObjectTileCollisions                     ;; 03:550c $cd $c0 $18
     jr   Z, .jr_03_5530                                ;; 03:550f $28 $1f
     pop  AF                                            ;; 03:5511 $f1
     pop  DE                                            ;; 03:5512 $d1
