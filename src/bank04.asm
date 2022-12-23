@@ -110,7 +110,7 @@ call_04_400e:
     or   A, A                                          ;; 04:408e $b7
     ret                                                ;; 04:408f $c9
 
-call_04_4090:
+bossRunLogic:
     ld   A, [wCurrentBossDataPointer.high]             ;; 04:4090 $fa $39 $d4
     ld   D, A                                          ;; 04:4093 $57
     ld   A, [wCurrentBossDataPointer]                  ;; 04:4094 $fa $38 $d4
@@ -122,7 +122,7 @@ call_04_4090:
     call call_04_40a4                                  ;; 04:40a0 $cd $a4 $40
     ret                                                ;; 04:40a3 $c9
 
-call_04_40a4:
+bossLogic:
     push DE                                            ;; 04:40a4 $d5
     ld   A, [wD3EE]                                    ;; 04:40a5 $fa $ee $d3
     ld   L, A                                          ;; 04:40a8 $6f
@@ -195,7 +195,7 @@ call_04_40f3:
     pop  AF                                            ;; 04:4116 $f1
     ld   B, A                                          ;; 04:4117 $47
     ld   DE, wBossObjectsStatsRuntimeData              ;; 04:4118 $11 $42 $d4
-.jr_04_411b:
+.loop:
     push BC                                            ;; 04:411b $c5
     ld   B, [HL]                                       ;; 04:411c $46
     inc  HL                                            ;; 04:411d $23
@@ -430,7 +430,7 @@ call_04_4240:
     inc  [HL]                                          ;; 04:425d $34
     ret                                                ;; 04:425e $c9
 
-call_04_425f:
+bossChoosePattern:
     ld   A, [wCurrentBossHP.high]                      ;; 04:425f $fa $f5 $d3
     bit  7, A                                          ;; 04:4262 $cb $7f
     jr   NZ, .dead                                     ;; 04:4264 $20 $46
@@ -614,7 +614,7 @@ rollBossHP:
     pop  DE                                            ;; 04:4371 $d1
     ret                                                ;; 04:4372 $c9
 
-bossLoadProjectile:
+bossLoadTiles:
     ld   HL, $05                                       ;; 04:4373 $21 $05 $00
     add  HL, DE                                        ;; 04:4376 $19
     ld   A, [HL]                                       ;; 04:4377 $7e
@@ -646,7 +646,7 @@ bossLoadProjectile:
     ld   A, E                                          ;; 04:4399 $7b
     add  A, A                                          ;; 04:439a $87
     pop  DE                                            ;; 04:439b $d1
-.jr_04_439c:
+.loop:
     push AF                                            ;; 04:439c $f5
     ld   A, [HL+]                                      ;; 04:439d $2a
     push HL                                            ;; 04:439e $e5
@@ -988,7 +988,7 @@ add12_5rnd_bank4:
     add  HL, DE                                        ;; 04:45c7 $19
     ret                                                ;; 04:45c8 $c9
 
-call_04_45c9:
+bossKilled:
     ld   A, [wBossFirstObjectID]                       ;; 04:45c9 $fa $e8 $d3
     ld   C, A                                          ;; 04:45cc $4f
     push BC                                            ;; 04:45cd $c5
@@ -1033,7 +1033,7 @@ bossTakeDamage:
     call subHPBoss                                     ;; 04:4612 $cd $0b $47
     jr   Z, .jr_04_4618                                ;; 04:4615 $28 $01
     ret  NC                                            ;; 04:4617 $d0
-.jr_04_4618:
+.killed:
     call call_04_45c9                                  ;; 04:4618 $cd $c9 $45
     ret                                                ;; 04:461b $c9
 

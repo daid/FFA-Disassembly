@@ -97,10 +97,10 @@ musicInitChannels:
     ld   A, $3c                                        ;; 0f:408a $3e $3c
     ld   [HL+], A                                      ;; 0f:408c $22
     ld   B, $03                                        ;; 0f:408d $06 $03
-.jr_0f_408f:
+.loop_outer:
     ld   DE, musicChannelInitData                      ;; 0f:408f $11 $7a $41
     ld   C, $18                                        ;; 0f:4092 $0e $18
-.jr_0f_4094:
+.loop_inner:
     ld   A, [DE]                                       ;; 0f:4094 $1a
     ld   [HL+], A                                      ;; 0f:4095 $22
     inc  E                                             ;; 0f:4096 $1c
@@ -1151,7 +1151,7 @@ musicLoadWaveTable:
     ldh  [rNR30], A                                    ;; 0f:47ae $e0 $1a
     ld   C, $30                                        ;; 0f:47b0 $0e $30
     ld   B, $10                                        ;; 0f:47b2 $06 $10
-.jr_0f_47b4:
+.loop:
     ld   A, [HL+]                                      ;; 0f:47b4 $2a
     ldh  [C], A                                        ;; 0f:47b5 $e2
     inc  C                                             ;; 0f:47b6 $0c

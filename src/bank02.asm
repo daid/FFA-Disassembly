@@ -101,7 +101,7 @@ animateTilesIncrementUnusedCounter:
 
 animateTilesTwoframe_TileCopy:
     ld   B, $04                                        ;; 02:40a9 $06 $04
-.jr_02_40ab:
+.loop:
     push DE                                            ;; 02:40ab $d5
     ld   A, [DE]                                       ;; 02:40ac $1a
     cp   A, $00                                        ;; 02:40ad $fe $00
@@ -277,7 +277,7 @@ animateTileRiver:
     ret  Z                                             ;; 02:41d3 $c8
     ld   HL, wAnimatedTileRiver                        ;; 02:41d4 $21 $70 $d3
     ld   B, $10                                        ;; 02:41d7 $06 $10
-.jr_02_41d9:
+.loop:
     rrc  [HL]                                          ;; 02:41d9 $cb $0e
     inc  HL                                            ;; 02:41db $23
     dec  B                                             ;; 02:41dc $05
@@ -291,7 +291,7 @@ animateTilesRight:
     ld   D, H                                          ;; 02:41e9 $54
     ld   E, L                                          ;; 02:41ea $5d
     ld   B, $10                                        ;; 02:41eb $06 $10
-.jr_02_41ed:
+.loop:
     ld   A, [DE]                                       ;; 02:41ed $1a
     ld   C, A                                          ;; 02:41ee $4f
     ld   HL, $10                                       ;; 02:41ef $21 $10 $00
@@ -345,7 +345,7 @@ updateJoypadInput:
     swap A                                             ;; 02:4229 $cb $37
     ld   C, A                                          ;; 02:422b $4f
     ld   B, $08                                        ;; 02:422c $06 $08
-.jr_02_422e:
+.loop:
     ld   A, [HL]                                       ;; 02:422e $7e
     dec  B                                             ;; 02:422f $05
     jr   NZ, .jr_02_422e                               ;; 02:4230 $20 $fc
@@ -640,7 +640,7 @@ call_02_435e:
     pop  AF                                            ;; 02:43db $f1
     ret                                                ;; 02:43dc $c9
 
-call_02_43dd:
+scrollMoveSprites:
     push AF                                            ;; 02:43dd $f5
     ld   A, [wC4A1]                                    ;; 02:43de $fa $a1 $c4
     ld   B, A                                          ;; 02:43e1 $47
@@ -649,7 +649,7 @@ call_02_43dd:
     call call_02_435e                                  ;; 02:43e5 $cd $5e $43
     push AF                                            ;; 02:43e8 $f5
     ld   C, $07                                        ;; 02:43e9 $0e $07
-.jr_02_43eb:
+.loop:
     pop  AF                                            ;; 02:43eb $f1
     call call_02_435e                                  ;; 02:43ec $cd $5e $43
     push AF                                            ;; 02:43ef $f5
@@ -711,7 +711,7 @@ hideSpritesBehindWindow:
     push BC                                            ;; 02:4436 $c5
     ld   HL, wOAMBuffer                                ;; 02:4437 $21 $00 $c0
     ld   B, $28                                        ;; 02:443a $06 $28
-.jr_02_443c:
+.loop:
     ld   A, [HL]                                       ;; 02:443c $7e
     cp   A, E                                          ;; 02:443d $bb
     jr   C, .jr_02_4460                                ;; 02:443e $38 $20
@@ -758,7 +758,7 @@ showSpritesBehindWindow:
     push BC                                            ;; 02:4474 $c5
     ld   HL, hiddenSpritesYPositions                   ;; 02:4475 $21 $a2 $c4
     ld   B, $28                                        ;; 02:4478 $06 $28
-.jr_02_447a:
+.loop:
     ld   A, [HL+]                                      ;; 02:447a $2a
     cp   A, E                                          ;; 02:447b $bb
     jr   C, .jr_02_44ac                                ;; 02:447c $38 $2e
@@ -822,7 +822,7 @@ call_02_44c4:
     ld   B, $28                                        ;; 02:44c7 $06 $28
     ld   A, $ce                                        ;; 02:44c9 $3e $ce
     ld   DE, $04                                       ;; 02:44cb $11 $04 $00
-.jr_02_44ce:
+.loop:
     cp   A, [HL]                                       ;; 02:44ce $be
     call Z, call_02_44b1                               ;; 02:44cf $cc $b1 $44
     add  HL, DE                                        ;; 02:44d2 $19
@@ -858,7 +858,7 @@ call_02_44fa:
     ld   HL, wC480                                     ;; 02:44fa $21 $80 $c4
     ld   B, $14                                        ;; 02:44fd $06 $14
     ld   A, $00                                        ;; 02:44ff $3e $00
-.jr_02_4501:
+.loop_1:
     ld   [HL+], A                                      ;; 02:4501 $22
     dec  B                                             ;; 02:4502 $05
     jr   NZ, .jr_02_4501                               ;; 02:4503 $20 $fc
@@ -868,7 +868,7 @@ call_02_44fa:
     ld   [wC4A0], A                                    ;; 02:450b $ea $a0 $c4
     ld   H, $c0                                        ;; 02:450e $26 $c0
     ld   B, $28                                        ;; 02:4510 $06 $28
-.jr_02_4512:
+.loop_2:
     ld   L, C                                          ;; 02:4512 $69
     ld   A, [HL]                                       ;; 02:4513 $7e
     or   A, A                                          ;; 02:4514 $b7
@@ -964,7 +964,7 @@ call_02_478e:
     pop  DE                                            ;; 02:4796 $d1
     pop  BC                                            ;; 02:4797 $c1
     pop  AF                                            ;; 02:4798 $f1
-.jr_02_4799:
+.loop:
     push BC                                            ;; 02:4799 $c5
     push AF                                            ;; 02:479a $f5
     ld   E, [HL]                                       ;; 02:479b $5e
@@ -2216,7 +2216,7 @@ call_02_5062:
     ld   HL, wLevelUpStatChoicesCopy                   ;; 02:507b $21 $31 $d8
     ld   B, $10                                        ;; 02:507e $06 $10
     xor  A, A                                          ;; 02:5080 $af
-.jr_02_5081:
+.loop:
     ld   [HL+], A                                      ;; 02:5081 $22
     dec  B                                             ;; 02:5082 $05
     jr   NZ, .jr_02_5081                               ;; 02:5083 $20 $fc
@@ -2292,7 +2292,7 @@ call_02_50b5:
     push HL                                            ;; 02:50f7 $e5
     pop  DE                                            ;; 02:50f8 $d1
     ld   B, $05                                        ;; 02:50f9 $06 $05
-.jr_02_50fb:
+.loop_1:
     ld   A, $7f                                        ;; 02:50fb $3e $7f
     call storeTileAatDialogPositionDE                  ;; 02:50fd $cd $44 $38
     dec  E                                             ;; 02:5100 $1d
@@ -2322,7 +2322,7 @@ call_02_50b5:
     ld   [wMoneyLow], A                                ;; 02:5124 $ea $be $d7
     ld   DE, $206                                      ;; 02:5127 $11 $06 $02
     ld   B, $05                                        ;; 02:512a $06 $05
-.jr_02_512c:
+.loop_2:
     ld   A, $7f                                        ;; 02:512c $3e $7f
     push DE                                            ;; 02:512e $d5
     push BC                                            ;; 02:512f $c5
@@ -2354,7 +2354,7 @@ clearStatusBar:
     ld   [wVideoWYBackup], A                           ;; 02:515a $ea $84 $d8
     ld   B, $40                                        ;; 02:515d $06 $40
     ld   HL, $9c00                                     ;; 02:515f $21 $00 $9c
-.jr_02_5162:
+.loop:
     push BC                                            ;; 02:5162 $c5
     push HL                                            ;; 02:5163 $e5
     ld   A, $7f                                        ;; 02:5164 $3e $7f
@@ -2619,7 +2619,7 @@ jp_02_531c:
     ld   B, $04                                        ;; 02:5326 $06 $04
     ld   DE, wStatStamina                              ;; 02:5328 $11 $c1 $d7
     ld   HL, wStatStaminaLevelUpTmp                    ;; 02:532b $21 $8f $d7
-.jr_02_532e:
+.loop:
     ld   A, [HL+]                                      ;; 02:532e $2a
     ld   [DE], A                                       ;; 02:532f $12
     inc  DE                                            ;; 02:5330 $13
@@ -2687,7 +2687,7 @@ increaseLevel:
     ld   HL, levelUpStatChoices                        ;; 02:53a7 $21 $fe $5c
     ld   DE, wLevelUpStatChoicesCopy                   ;; 02:53aa $11 $31 $d8
     ld   B, $10                                        ;; 02:53ad $06 $10
-.jr_02_53af:
+.loop:
     ld   A, [HL+]                                      ;; 02:53af $2a
     ld   [DE], A                                       ;; 02:53b0 $12
     inc  DE                                            ;; 02:53b1 $13
@@ -2871,7 +2871,7 @@ jp_02_54a6:
     ld   HL, wD70F                                     ;; 02:54b6 $21 $0f $d7
     push HL                                            ;; 02:54b9 $e5
     xor  A, A                                          ;; 02:54ba $af
-.jr_02_54bb:
+.loop_1:
     ld   [HL+], A                                      ;; 02:54bb $22
     dec  B                                             ;; 02:54bc $05
     jr   NZ, .jr_02_54bb                               ;; 02:54bd $20 $fc
@@ -2965,7 +2965,7 @@ jp_02_54a6:
     push BC                                            ;; 02:553f $c5
     ld   B, $40                                        ;; 02:5540 $06 $40
     xor  A, A                                          ;; 02:5542 $af
-.jr_02_5543:
+.loop_2:
     ld   [DE], A                                       ;; 02:5543 $12
     inc  DE                                            ;; 02:5544 $13
     dec  B                                             ;; 02:5545 $05
@@ -2981,7 +2981,7 @@ jp_02_54a6:
     ld   C, A                                          ;; 02:5551 $4f
     ld   HL, wD6F3                                     ;; 02:5552 $21 $f3 $d6
     ld   B, $07                                        ;; 02:5555 $06 $07
-.jr_02_5557:
+.loop_3:
     ld   A, [HL+]                                      ;; 02:5557 $2a
     cp   A, C                                          ;; 02:5558 $b9
     jr   Z, .jr_02_5564                                ;; 02:5559 $28 $09
@@ -3076,7 +3076,7 @@ call_02_55c6:
     add  HL, BC                                        ;; 02:55d5 $09
     ld   B, $07                                        ;; 02:55d6 $06 $07
     ld   DE, $00                                       ;; 02:55d8 $11 $00 $00
-.jr_02_55db:
+.loop_1:
     ld   A, [HL+]                                      ;; 02:55db $2a
     push HL                                            ;; 02:55dc $e5
     inc  A                                             ;; 02:55dd $3c
@@ -3098,7 +3098,7 @@ call_02_55c6:
     jr   NZ, .jr_02_55db                               ;; 02:55f2 $20 $e7
     ld   B, $07                                        ;; 02:55f4 $06 $07
     ld   C, $00                                        ;; 02:55f6 $0e $00
-.jr_02_55f8:
+.loop_2:
     push BC                                            ;; 02:55f8 $c5
     ld   B, $00                                        ;; 02:55f9 $06 $00
     ld   HL, wD6F3                                     ;; 02:55fb $21 $f3 $d6
@@ -3119,7 +3119,7 @@ call_02_55c6:
     jr   NZ, .jr_02_55f8                               ;; 02:5610 $20 $e6
     ld   B, $07                                        ;; 02:5612 $06 $07
     ld   C, $00                                        ;; 02:5614 $0e $00
-.jr_02_5616:
+.loop_3:
     push BC                                            ;; 02:5616 $c5
     ld   B, $00                                        ;; 02:5617 $06 $00
     ld   HL, wD6F3                                     ;; 02:5619 $21 $f3 $d6
@@ -3181,12 +3181,12 @@ clearVRAMArea:
     ld   HL, wVRAMClearFakeTile                        ;; 02:566c $21 $c7 $d8
     push HL                                            ;; 02:566f $e5
     ld   C, $10                                        ;; 02:5670 $0e $10
-.jr_02_5672:
+.loop_1:
     ld   [HL+], A                                      ;; 02:5672 $22
     dec  C                                             ;; 02:5673 $0d
     jr   NZ, .jr_02_5672                               ;; 02:5674 $20 $fc
     pop  HL                                            ;; 02:5676 $e1
-.jr_02_5677:
+.loop_2:
     push HL                                            ;; 02:5677 $e5
     push BC                                            ;; 02:5678 $c5
     push DE                                            ;; 02:5679 $d5
@@ -3336,14 +3336,14 @@ call_02_5709:
     ld   HL, wItemInventory                            ;; 02:575e $21 $c5 $d6
     ld   DE, wItemInventoryAmount                      ;; 02:5761 $11 $9b $d6
     ld   B, $18                                        ;; 02:5764 $06 $18
-.jr_02_5766:
+.loop:
     ld   A, [HL+]                                      ;; 02:5766 $2a
     inc  DE                                            ;; 02:5767 $13
     cp   A, $80                                        ;; 02:5768 $fe $80
     jr   Z, .jr_02_576f                                ;; 02:576a $28 $03
     dec  B                                             ;; 02:576c $05
     jr   NZ, .jr_02_5766                               ;; 02:576d $20 $f7
-.jr_02_576f:
+.break:
     ld   A, [wEquippedItem]                            ;; 02:576f $fa $ef $d6
     cp   A, $09                                        ;; 02:5772 $fe $09
     jr   C, .jr_02_5778                                ;; 02:5774 $38 $02
@@ -3715,7 +3715,7 @@ drawNumber24bitOnDialog:
     inc  HL                                            ;; 02:59cf $23
     ld   B, $07                                        ;; 02:59d0 $06 $07
     pop  DE                                            ;; 02:59d2 $d1
-.jr_02_59d3:
+.loop:
     ld   A, [wMiscFlags]                               ;; 02:59d3 $fa $6f $d8
     bit  7, A                                          ;; 02:59d6 $cb $7f
     jr   Z, .jr_02_59e2                                ;; 02:59d8 $28 $08
@@ -3765,7 +3765,7 @@ call_02_5a18:
     push BC                                            ;; 02:5a18 $c5
     ld   E, $0a                                        ;; 02:5a19 $1e $0a
     ld   B, $09                                        ;; 02:5a1b $06 $09
-.jr_02_5a1d:
+.loop_1:
     ld   A, $7f                                        ;; 02:5a1d $3e $7f
     call storeTileAatDialogPositionDE                  ;; 02:5a1f $cd $44 $38
     inc  E                                             ;; 02:5a22 $1c
@@ -3799,7 +3799,7 @@ call_02_5a18:
 .jr_02_5a50:
     ld   B, $06                                        ;; 02:5a50 $06 $06
     inc  DE                                            ;; 02:5a52 $13
-.jr_02_5a53:
+.loop_2:
     push DE                                            ;; 02:5a53 $d5
     push BC                                            ;; 02:5a54 $c5
     ld   A, $7f                                        ;; 02:5a55 $3e $7f
@@ -3862,13 +3862,13 @@ call_02_5aaf:
     ld   B, $04                                        ;; 02:5ab0 $06 $04
     ld   C, $00                                        ;; 02:5ab2 $0e $00
     ld   A, [wStatusEffect]                            ;; 02:5ab4 $fa $c0 $d7
-.jr_02_5ab7:
+.loop:
     rrca                                               ;; 02:5ab7 $0f
     jr   C, .jr_02_5abe                                ;; 02:5ab8 $38 $04
     inc  C                                             ;; 02:5aba $0c
     dec  B                                             ;; 02:5abb $05
     jr   NZ, .jr_02_5ab7                               ;; 02:5abc $20 $f9
-.jr_02_5abe:
+.break:
     ld   H, $00                                        ;; 02:5abe $26 $00
     ld   L, C                                          ;; 02:5ac0 $69
     add  HL, HL                                        ;; 02:5ac1 $29
@@ -4263,7 +4263,7 @@ drawEmptyWillBar:
     ld   HL, .emptyWillBarTiles                        ;; 02:65fa $21 $0f $66
     ld   DE, $100                                      ;; 02:65fd $11 $00 $01
     ld   B, $14                                        ;; 02:6600 $06 $14
-.jr_02_6602:
+.loop:
     ld   A, [HL+]                                      ;; 02:6602 $2a
     push HL                                            ;; 02:6603 $e5
     push DE                                            ;; 02:6604 $d5
@@ -4345,6 +4345,7 @@ call_02_667a:
     ld   A, [wD859]                                    ;; 02:667d $fa $59 $d8
     call callJumptable_02                              ;; 02:6680 $cd $75 $48
     ret                                                ;; 02:6683 $c9
+;@jumptable amount=2
 .data_02_6684:
     dw   .data_02_6688                                 ;; 02:6684 pP
     dw   .data_02_66ab                                 ;; 02:6686 pP
@@ -4369,7 +4370,7 @@ call_02_667a:
     call loadRegisterState2                            ;; 02:66ab $cd $a7 $6d
     push DE                                            ;; 02:66ae $d5
     push BC                                            ;; 02:66af $c5
-.jr_02_66b0:
+.loop:
     ld   A, [HL+]                                      ;; 02:66b0 $2a
     call storeTileAatScreenPositionDE                  ;; 02:66b1 $cd $91 $38
     inc  E                                             ;; 02:66b4 $1c
@@ -4559,6 +4560,7 @@ jr_02_67b7:
     ld   [wDrawWindowStep], A                          ;; 02:67f1 $ea $54 $d8
     ret                                                ;; 02:67f4 $c9
 
+;@jumptable amount=2
 data_02_67f5:
     dw   data_02_680e                                  ;; 02:67f5 pP
     dw   data_02_6840                                  ;; 02:67f7 pP
@@ -4621,7 +4623,7 @@ drawDialogCenterLine:
     ld   [HL+], A                                      ;; 02:685a $22
     dec  C                                             ;; 02:685b $0d
     inc  E                                             ;; 02:685c $1c
-.jr_02_685d:
+.loop:
     ld   A, $7f                                        ;; 02:685d $3e $7f
     call storeTileAatScreenPositionDE                  ;; 02:685f $cd $91 $38
     ld   [HL+], A                                      ;; 02:6862 $22
@@ -4645,7 +4647,7 @@ drawDialogTopOrBottomLine:
     ld   [wDialogBorderTile], A                        ;; 02:6878 $ea $63 $d8
     inc  E                                             ;; 02:687b $1c
     dec  C                                             ;; 02:687c $0d
-.jr_02_687d:
+.loop:
     ld   A, [wDialogBorderTile]                        ;; 02:687d $fa $63 $d8
     push AF                                            ;; 02:6880 $f5
     call storeTileAatScreenPositionDE                  ;; 02:6881 $cd $91 $38
@@ -4790,7 +4792,7 @@ jp_02_6943:
     push AF                                            ;; 02:695e $f5
     jr   Z, .jr_02_6964                                ;; 02:695f $28 $03
     ld   DE, wGirlName                                 ;; 02:6961 $11 $a2 $d7
-.jr_02_6964:
+.loop_1:
     ld   A, [HL+]                                      ;; 02:6964 $2a
     ld   [DE], A                                       ;; 02:6965 $12
     inc  DE                                            ;; 02:6966 $13
@@ -4800,7 +4802,7 @@ jp_02_6943:
     ld   [HL], A                                       ;; 02:696b $77
     ld   HL, wD7A7                                     ;; 02:696c $21 $a7 $d7
     ld   B, $04                                        ;; 02:696f $06 $04
-.jr_02_6971:
+.loop_2:
     ld   [HL+], A                                      ;; 02:6971 $22
     dec  B                                             ;; 02:6972 $05
     jr   NZ, .jr_02_6971                               ;; 02:6973 $20 $fc
@@ -5105,7 +5107,7 @@ call_02_6b3a:
     ld   [wOAMBuffer], A                               ;; 02:6b4d $ea $00 $c0
     ret                                                ;; 02:6b50 $c9
 
-call_02_6b51:
+hideAndSaveMenuMetasprites:
     push HL                                            ;; 02:6b51 $e5
     push DE                                            ;; 02:6b52 $d5
     push BC                                            ;; 02:6b53 $c5
@@ -5124,7 +5126,7 @@ call_02_6b51:
     ld   [wD872], A                                    ;; 02:6b70 $ea $72 $d8
     ret                                                ;; 02:6b73 $c9
 
-call_02_6b74:
+clearThirdMetasprite:
     ld   A, [wD849]                                    ;; 02:6b74 $fa $49 $d8
     and  A, $7f                                        ;; 02:6b77 $e6 $7f
     ld   [wD849], A                                    ;; 02:6b79 $ea $49 $d8
@@ -5134,14 +5136,16 @@ call_02_6b74:
     ld   HL, wOAMBuffer._10                            ;; 02:6b7f $21 $10 $c0
     jr   jr_02_6b95                                    ;; 02:6b82 $18 $11
 
-call_02_6b84:
+; Used for a hand sprite in menus where there are two hands.
+clearFirstMetasprite:
     push HL                                            ;; 02:6b84 $e5
     push DE                                            ;; 02:6b85 $d5
     push BC                                            ;; 02:6b86 $c5
     ld   HL, wOAMBuffer                                ;; 02:6b87 $21 $00 $c0
     jr   jr_02_6b95                                    ;; 02:6b8a $18 $09
 
-call_02_6b8c:
+; Used for a hand sprite in menus
+clearSecondMetasprite:
     push HL                                            ;; 02:6b8c $e5
     push DE                                            ;; 02:6b8d $d5
     push BC                                            ;; 02:6b8e $c5
@@ -5149,10 +5153,10 @@ call_02_6b8c:
     ld   B, $08                                        ;; 02:6b92 $06 $08
     xor  A, A                                          ;; 02:6b94 $af
 
-jr_02_6b95:
+clearMetasprite:
     ld   B, $08                                        ;; 02:6b95 $06 $08
     xor  A, A                                          ;; 02:6b97 $af
-.jr_02_6b98:
+.loop:
     ld   [HL+], A                                      ;; 02:6b98 $22
     dec  B                                             ;; 02:6b99 $05
     jr   NZ, .jr_02_6b98                               ;; 02:6b9a $20 $fc
@@ -5161,7 +5165,7 @@ jr_02_6b95:
     pop  HL                                            ;; 02:6b9e $e1
     ret                                                ;; 02:6b9f $c9
 
-call_02_6ba0:
+showMenuFingerPointing_2:
     ld   A, [wOAMBuffer]                               ;; 02:6ba0 $fa $00 $c0
     and  A, A                                          ;; 02:6ba3 $a7
     ret  Z                                             ;; 02:6ba4 $c8
@@ -5171,7 +5175,7 @@ call_02_6ba0:
     ld   HL, wOAMBuffer                                ;; 02:6ba8 $21 $00 $c0
     jr   jr_02_6bca                                    ;; 02:6bab $18 $1d
 
-call_02_6bad:
+showMenuFingerCurled:
     ld   A, [wDialogType]                              ;; 02:6bad $fa $4a $d8
     cp   A, $15                                        ;; 02:6bb0 $fe $15
     ret  Z                                             ;; 02:6bb2 $c8
@@ -5182,7 +5186,7 @@ call_02_6bad:
     ld   BC, menuFingerCurledTiles                     ;; 02:6bb9 $01 $b6 $47
     jr   jr_02_6bcd                                    ;; 02:6bbc $18 $0f
 
-call_02_6bbe:
+showMenuFingerPointing_1:
     ld   A, [wDialogType]                              ;; 02:6bbe $fa $4a $d8
     cp   A, $15                                        ;; 02:6bc1 $fe $15
     ret  Z                                             ;; 02:6bc3 $c8
@@ -5191,10 +5195,10 @@ call_02_6bbe:
     push BC                                            ;; 02:6bc6 $c5
     ld   HL, wOAMBuffer._08                            ;; 02:6bc7 $21 $08 $c0
 
-jr_02_6bca:
+showMenuFingerPointing:
     ld   BC, menuFingerPointingTiles                   ;; 02:6bca $01 $b4 $47
 
-jr_02_6bcd:
+showMenuFinger:
     call windowShowSprite                              ;; 02:6bcd $cd $d8 $6b
     inc  E                                             ;; 02:6bd0 $1c
     call windowShowSprite                              ;; 02:6bd1 $cd $d8 $6b
@@ -5235,7 +5239,7 @@ call_02_6be8:
     ld   B, $08                                        ;; 02:6bf9 $06 $08
     ld   DE, wOAMBuffer._08                            ;; 02:6bfb $11 $08 $c0
     ld   HL, wOAMBuffer                                ;; 02:6bfe $21 $00 $c0
-.jr_02_6c01:
+.loop:
     ld   A, [DE]                                       ;; 02:6c01 $1a
     ld   [HL+], A                                      ;; 02:6c02 $22
     inc  DE                                            ;; 02:6c03 $13
@@ -5402,7 +5406,7 @@ call_02_6ce4:
     ld   C, $20                                        ;; 02:6ce6 $0e $20
     push HL                                            ;; 02:6ce8 $e5
     pop  DE                                            ;; 02:6ce9 $d1
-.jr_02_6cea:
+.loop_1:
     ld   A, [HL+]                                      ;; 02:6cea $2a
     dec  B                                             ;; 02:6ceb $05
     jr   Z, .jr_02_6cf6                                ;; 02:6cec $28 $08
@@ -5412,7 +5416,7 @@ call_02_6ce4:
     inc  DE                                            ;; 02:6cf2 $13
     dec  C                                             ;; 02:6cf3 $0d
     jr   .jr_02_6cea                                   ;; 02:6cf4 $18 $f4
-.jr_02_6cf6:
+.loop_2:
     xor  A, A                                          ;; 02:6cf6 $af
     ld   [DE], A                                       ;; 02:6cf7 $12
     inc  DE                                            ;; 02:6cf8 $13
@@ -5426,7 +5430,7 @@ copyStatsToLevelUpTmp:
     ld   HL, wStatStamina                              ;; 02:6d0b $21 $c1 $d7
     ld   DE, wStatStaminaLevelUpTmp                    ;; 02:6d0e $11 $8f $d7
     ld   B, $04                                        ;; 02:6d11 $06 $04
-.jr_02_6d13:
+.loop:
     ld   A, [HL+]                                      ;; 02:6d13 $2a
     ld   [DE], A                                       ;; 02:6d14 $12
     inc  DE                                            ;; 02:6d15 $13
@@ -5614,24 +5618,24 @@ getSpellOrBookPower:
 .itemsListSpellBooksDamage:
     db   $17, $18, $19, $1a, $1b, $1c, $00             ;; 02:6e1e ???????
 
-setStartingStats:
+initStartingStatsAndTimers:
     ld   B, $2e                                        ;; 02:6e25 $06 $2e
     xor  A, A                                          ;; 02:6e27 $af
     ld   HL, wItemInventoryAmount                      ;; 02:6e28 $21 $9b $d6
-.jr_02_6e2b:
+.loop_1:
     ld   [HL+], A                                      ;; 02:6e2b $22
     dec  B                                             ;; 02:6e2c $05
     jr   NZ, .jr_02_6e2b                               ;; 02:6e2d $20 $fc
     ld   B, $2e                                        ;; 02:6e2f $06 $2e
     ld   HL, wItemInventory                            ;; 02:6e31 $21 $c5 $d6
-.jr_02_6e34:
+.loop_2:
     ld   [HL+], A                                      ;; 02:6e34 $22
     dec  B                                             ;; 02:6e35 $05
     jr   NZ, .jr_02_6e34                               ;; 02:6e36 $20 $fc
     ld   DE, wEquippedWeapon                           ;; 02:6e38 $11 $e9 $d6
     ld   HL, data_02_6f10                              ;; 02:6e3b $21 $10 $6f
     ld   B, $06                                        ;; 02:6e3e $06 $06
-.jr_02_6e40:
+.loop_3:
     ld   A, [HL+]                                      ;; 02:6e40 $2a
     ld   [DE], A                                       ;; 02:6e41 $12
     inc  DE                                            ;; 02:6e42 $13
@@ -5640,7 +5644,7 @@ setStartingStats:
     ld   B, $06                                        ;; 02:6e46 $06 $06
     ld   HL, wEquippedWeapon                           ;; 02:6e48 $21 $e9 $d6
     ld   DE, wEquippedWeaponPower                      ;; 02:6e4b $11 $bf $d6
-.jr_02_6e4e:
+.loop_4:
     ld   A, [HL+]                                      ;; 02:6e4e $2a
     and  A, $7f                                        ;; 02:6e4f $e6 $7f
     push HL                                            ;; 02:6e51 $e5
@@ -5659,7 +5663,7 @@ setStartingStats:
     ld   B, $04                                        ;; 02:6e68 $06 $04
     ld   A, $02                                        ;; 02:6e6a $3e $02
     ld   HL, wStatStamina                              ;; 02:6e6c $21 $c1 $d7
-.jr_02_6e6f:
+.loop_5:
     ld   [HL+], A                                      ;; 02:6e6f $22
     dec  B                                             ;; 02:6e70 $05
     jr   NZ, .jr_02_6e6f                               ;; 02:6e71 $20 $fc
@@ -5720,11 +5724,11 @@ setStartingStats:
     call call_02_6ee2                                  ;; 02:6ede $cd $e2 $6e
     ret                                                ;; 02:6ee1 $c9
 
-call_02_6ee2:
+initTimers:
     ld   HL, $1e0                                      ;; 02:6ee2 $21 $e0 $01
     ld   DE, wPoisStatusEffectTimerNumber              ;; 02:6ee5 $11 $79 $d8
     ld   B, $05                                        ;; 02:6ee8 $06 $05
-.jr_02_6eea:
+.loop:
     call timerNew                                      ;; 02:6eea $cd $9e $2f
     ld   [DE], A                                       ;; 02:6eed $12
     inc  DE                                            ;; 02:6eee $13
@@ -5750,7 +5754,7 @@ drawDefaultStatusBar:
     ld   DE, $00                                       ;; 02:6f16 $11 $00 $00
     ld   B, $14                                        ;; 02:6f19 $06 $14
     ld   HL, statusBarTopRowDefault                    ;; 02:6f1b $21 $97 $6f
-.jr_02_6f1e:
+.loop:
     ld   A, [HL+]                                      ;; 02:6f1e $2a
     push DE                                            ;; 02:6f1f $d5
     call storeTileAatWindowPositionDE                  ;; 02:6f20 $cd $66 $38
@@ -5988,7 +5992,7 @@ doSpellOrItemEffect:
     ld   DE, wStatStaminaBuffBackup                    ;; 02:7096 $11 $d8 $d7
     push HL                                            ;; 02:7099 $e5
     ld   B, $04                                        ;; 02:709a $06 $04
-.jr_02_709c:
+.loop:
     ld   A, [HL+]                                      ;; 02:709c $2a
     ld   [DE], A                                       ;; 02:709d $12
     inc  DE                                            ;; 02:709e $13
@@ -6308,7 +6312,7 @@ jp_02_71fb:
     pop  BC                                            ;; 02:72aa $c1
     ret                                                ;; 02:72ab $c9
 
-call_02_72ac:
+dismissSaveScreen:
     call call_02_6b51                                  ;; 02:72ac $cd $51 $6b
     call clearLoadScreen                               ;; 02:72af $cd $4c $56
     ret                                                ;; 02:72b2 $c9
@@ -6392,7 +6396,7 @@ call_02_7322:
     ld   HL, wMagicInventory                           ;; 02:7340 $21 $d5 $d6
     ld   DE, wKnownMagicSpells                         ;; 02:7343 $11 $ab $d6
     ld   B, $08                                        ;; 02:7346 $06 $08
-.jr_02_7348:
+.loop_1:
     xor  A, A                                          ;; 02:7348 $af
     ld   [DE], A                                       ;; 02:7349 $12
     ld   A, [HL+]                                      ;; 02:734a $2a
@@ -6407,7 +6411,7 @@ call_02_7322:
     ld   HL, wEquipmentInventory                       ;; 02:7355 $21 $dd $d6
     ld   DE, wEquipmentInventoryPowers                 ;; 02:7358 $11 $b3 $d6
     ld   B, $0c                                        ;; 02:735b $06 $0c
-.jr_02_735d:
+.loop_2:
     push BC                                            ;; 02:735d $c5
     ld   A, [HL]                                       ;; 02:735e $7e
     call getItemFlags1And2                             ;; 02:735f $cd $9c $56
@@ -6467,7 +6471,7 @@ call_02_7322:
     push DE                                            ;; 02:73bf $d5
     ld   DE, .data_02_7406                             ;; 02:73c0 $11 $06 $74
     ld   B, $07                                        ;; 02:73c3 $06 $07
-.jr_02_73c5:
+.loop_3:
     rlca                                               ;; 02:73c5 $07
     jr   C, .jr_02_73d8                                ;; 02:73c6 $38 $10
     inc  DE                                            ;; 02:73c8 $13
@@ -6665,7 +6669,7 @@ drawSaveNameFromSRAM:
     ld   B, $04                                        ;; 02:74d5 $06 $04
     ld   DE, wD7AA                                     ;; 02:74d7 $11 $aa $d7
     push DE                                            ;; 02:74da $d5
-.jr_02_74db:
+.loop:
     call readSRAMByte                                  ;; 02:74db $cd $6f $74
     ld   [DE], A                                       ;; 02:74de $12
     inc  DE                                            ;; 02:74df $13
@@ -7111,7 +7115,7 @@ calculateChecksum:
     pop  HL                                            ;; 02:77a1 $e1
     ret                                                ;; 02:77a2 $c9
 
-call_02_77a3:
+calculateChecksumForRange:
     ld   A, [HL+]                                      ;; 02:77a3 $2a
     add  A, E                                          ;; 02:77a4 $83
     ld   E, A                                          ;; 02:77a5 $5f
@@ -7168,14 +7172,14 @@ call_02_77f1:
     ret  NC                                            ;; 02:77fd $d0
     ld   B, A                                          ;; 02:77fe $47
     ld   DE, $00                                       ;; 02:77ff $11 $00 $00
-.jr_02_7802:
+.loop:
     dec  B                                             ;; 02:7802 $05
     jr   Z, .jr_02_780b                                ;; 02:7803 $28 $06
     ld   A, $04                                        ;; 02:7805 $3e $04
     add  A, E                                          ;; 02:7807 $83
     ld   E, A                                          ;; 02:7808 $5f
     jr   .jr_02_7802                                   ;; 02:7809 $18 $f7
-.jr_02_780b:
+.break:
     ld   HL, statusEffectLabels                        ;; 02:780b $21 $e5 $7d
     add  HL, DE                                        ;; 02:780e $19
     ld   DE, $202                                      ;; 02:780f $11 $02 $02
@@ -7462,7 +7466,7 @@ clearStatusEffects:
 pauseTimers:
     ld   HL, wPoisStatusEffectTimerNumber              ;; 02:79e7 $21 $79 $d8
     ld   B, $05                                        ;; 02:79ea $06 $05
-.jr_02_79ec:
+.loop:
     ld   A, [HL+]                                      ;; 02:79ec $2a
     call timerDeactivate                               ;; 02:79ed $cd $f6 $2f
     dec  B                                             ;; 02:79f0 $05
@@ -7478,7 +7482,7 @@ unpauseTimers:
     ld   C, A                                          ;; 02:7a03 $4f
     ld   B, $05                                        ;; 02:7a04 $06 $05
     ld   HL, wPoisStatusEffectTimerNumber              ;; 02:7a06 $21 $79 $d8
-.jr_02_7a09:
+.loop:
     ld   A, [HL+]                                      ;; 02:7a09 $2a
     rrc  C                                             ;; 02:7a0a $cb $09
     call C, timerActivate                              ;; 02:7a0c $dc $00 $30
@@ -7528,7 +7532,7 @@ call_02_7a4e:
     push BC                                            ;; 02:7a4f $c5
     ld   HL, wLCDCEffectBuffer                         ;; 02:7a50 $21 $a0 $d3
     ld   B, $10                                        ;; 02:7a53 $06 $10
-.jr_02_7a55:
+.loop:
     ld   A, [HL+]                                      ;; 02:7a55 $2a
     cp   A, D                                          ;; 02:7a56 $ba
     jr   Z, .jr_02_7a62                                ;; 02:7a57 $28 $09
@@ -7580,7 +7584,7 @@ call_02_7a7f:
     ld   A, $f4                                        ;; 02:7a82 $3e $f4
     ld   [HL+], A                                      ;; 02:7a84 $22
     ld   B, $04                                        ;; 02:7a85 $06 $04
-.jr_02_7a87:
+.loop:
     ld   A, [DE]                                       ;; 02:7a87 $1a
     ld   [HL+], A                                      ;; 02:7a88 $22
     inc  DE                                            ;; 02:7a89 $13
@@ -7750,17 +7754,17 @@ showTitleScreenMenu:
     ld   [wIntroScrollState], A                        ;; 02:7b98 $ea $86 $d8
     ret                                                ;; 02:7b9b $c9
 
+;    sSET_MUSIC 1
+;    sEND
 startTitleScreenMusicScript:
     db   $f8, $01, $00                                 ;; 02:7b9c ...
 
-;    sSET_MUSIC 1
-;    sEND
 jp_02_7b9f:
     call call_02_6b51                                  ;; 02:7b9f $cd $51 $6b
     ld   A, $7f                                        ;; 02:7ba2 $3e $7f
     ld   B, $3c                                        ;; 02:7ba4 $06 $3c
     ld   HL, wWindowBackgroundSaveBuffer               ;; 02:7ba6 $21 $ab $d4
-.jr_02_7ba9:
+.loop:
     ld   [HL+], A                                      ;; 02:7ba9 $22
     dec  B                                             ;; 02:7baa $05
     jr   NZ, .jr_02_7ba9                               ;; 02:7bab $20 $fc
