@@ -12388,7 +12388,7 @@ soundEffectDataChannel1:
 soundEffectDataChannel4:
     dw   soundEffect00_Channel4                        ;; 0f:7b86 .. $00
     dw   soundEffect01_Channel4                        ;; 0f:7b88 .. $01
-    dw   soundEffect02_Channel1                        ;; 0f:7b8a ?? $02
+    dw   soundEffect02_Channel4                        ;; 0f:7b8a ?? $02
     dw   soundEffect03_Channel4                        ;; 0f:7b8c ?? $03
     dw   soundEffectChannelUnused                      ;; 0f:7b8e .. $04
     dw   data_0f_7c3c                                  ;; 0f:7b90 ?? $05
@@ -12449,17 +12449,17 @@ soundEffect03_Channel4:
     db   $37, $05, $f4, $71, $05, $d7, $30, $2b        ;; 0f:7c05 ????????
     db   $f3, $37, $00                                 ;; 0f:7c0d ???
 
-data_0f_7c10:
+soundEffect04_Channel1:
     db   $31, $47, $80, $f5, $a0, $86, $15, $00        ;; 0f:7c10 ........
     db   $40, $d2, $d9, $87, $00                       ;; 0f:7c18 .....
 
-data_0f_7c1d:
+soundEffect05_Channel1:
     db   $03, $00, $80, $72, $7a, $87, $03, $00        ;; 0f:7c1d ????????
     db   $80, $92, $8a, $87, $03, $00, $80, $b2        ;; 0f:7c25 ????????
     db   $9a, $87, $03, $00, $80, $d2, $b0, $87        ;; 0f:7c2d ????????
     db   $08, $00, $80, $f2, $cc, $87, $00             ;; 0f:7c35 ???????
 
-data_0f_7c3c:
+soundEffect05_Channel4:
     db   $03, $92, $08, $03, $a2, $08, $03, $b2        ;; 0f:7c3c ????????
     db   $08, $03, $c2, $08, $07, $d2, $08, $00        ;; 0f:7c44 ????????
 
