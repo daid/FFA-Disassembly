@@ -102,19 +102,17 @@ wMusicInstructionPointerChannel2:
 .high:
     ds 1                                               ;; c105
 
-wC106:
+wMusicVibratoDurationChannel2:
     ds 1                                               ;; c106
 
-wC107:
+wMusicVibratoEnvelopeChannel2:
     ds 1                                               ;; c107
-
-wC108:
+.high:
     ds 1                                               ;; c108
 
-wC109:
+wMusicVibratoEnvelopePointerChannel2:
     ds 1                                               ;; c109
-
-wC10A:
+.high:
     ds 1                                               ;; c10a
 
 wMusicOctaveChannel2:
@@ -128,10 +126,10 @@ wMusicCurrentPitchChannel2:
 .high:
     ds 1                                               ;; c10e
 
-wC10F:
+wMusicLoopCounter1Channel2:
     ds 1                                               ;; c10f
 
-wC110:
+wMusicNR22DefaultVolumeChannel2:
     ds 1                                               ;; c110
 
 wMusicNotePitchChannel2:
@@ -140,22 +138,20 @@ wMusicNotePitchChannel2:
 wMusicEndedOnChannel2:
     ds 1                                               ;; c113
 
-wC114:
+wMusicVolumeDurationChannel2:
     ds 1                                               ;; c114
 
-wC115:
+wMusicVolumeEnvelopeChannel2:
     ds 1                                               ;; c115
-
-wC116:
+.high:
     ds 1                                               ;; c116
 
-wC117:
+wMusicVolumeEnvelopePointerChannel2:
     ds 1                                               ;; c117
-
-wC118:
+.high:
     ds 1                                               ;; c118
 
-wC119:
+wMusicLoopCounter2Channel2:
     ds 1                                               ;; c119
 
 wSoundEffectDurationChannel1:
@@ -169,19 +165,17 @@ wMusicInstructionPointerChannel1:
 .high:
     ds 1                                               ;; c11d
 
-wC11E:
+wMusicVolumeDurationChannel1:
     ds 1                                               ;; c11e
 
-wC11F:
+wMusicVolumeEnvelopeChannel1:
     ds 1                                               ;; c11f
-
-wC120:
+.high:
     ds 1                                               ;; c120
 
-wC121:
+wMusicVolumeEnvelopePointerChannel1:
     ds 1                                               ;; c121
-
-wC122:
+.high:
     ds 1                                               ;; c122
 
 wMusicOctaveChannel1:
@@ -190,16 +184,15 @@ wMusicOctaveChannel1:
 wMusicNR11DutyCycleChannel1:
     ds 1                                               ;; c124
 
-wC125:
+wMusicCurrentPitchChannel1:
     ds 1                                               ;; c125
-
-wC126:
+.high:
     ds 1                                               ;; c126
 
-wC127:
+wMusicLoopCounter1Channel1:
     ds 1                                               ;; c127
 
-wC128:
+wMusicNR12DefaultVolumeChannel1:
     ds 1                                               ;; c128
 
 wMusicNotePitchChannel1:
@@ -211,22 +204,20 @@ wMusicStereoPanChannel1:
 wMusicEndedOnChannel1:
     ds 1                                               ;; c12b
 
-wC12C:
+wMusicVolumeDurationChannel1:
     ds 1                                               ;; c12c
 
-wC12D:
+wMusicVolumeEnvelopeChannel1:
     ds 1                                               ;; c12d
-
-wC12E:
+.high:
     ds 1                                               ;; c12e
 
-wC12F:
+wMusicVolumeEnvelopePointerChannel1:
     ds 1                                               ;; c12f
-
-wC130:
+.high:
     ds 1                                               ;; c130
 
-wC131:
+wMusicLoopCounter2Channel1:
     ds 1                                               ;; c131
 
 ; Sound effects do not use channel 3
@@ -241,31 +232,30 @@ wMusicInstructionPointerChannel3:
 .high:
     ds 1                                               ;; c135
 
-wC136:
+wMusicVibratoDurationChannel3:
     ds 1                                               ;; c136
 
-wC137:
+wMusicVibratoEnvelopeChannel3:
     ds 1                                               ;; c137
 
-wC138:
+.high:
     ds 1                                               ;; c138
 
-wC139:
+wMusicVibratoEnvelopePointerChannel3:
     ds 1                                               ;; c139
 
-wC13A:
+.high:
     ds 1                                               ;; c13a
 
 wMusicOctaveChannel3:
     ds 2                                               ;; c13b
 
-wC13D:
+wMusicCurrentPitchChannel3:
     ds 1                                               ;; c13d
-
-wC13E:
+.high:
     ds 1                                               ;; c13e
 
-wC13F:
+wMusicLoopCounter1Channel3:
     ds 1                                               ;; c13f
 
 wMusicVolumeChannel3:
@@ -277,12 +267,13 @@ wMusicNotePitchChannel3:
 wMusicEndedOnChannel3:
     ds 6                                               ;; c143
 
-wC149:
+wMusicLoopCounter2Channel3:
     ds 1                                               ;; c149
 
 wSoundEffectDurationChannel4:
     ds 17                                              ;; c14a
 
+; One byte long
 ; Channel 4 is not used for music, only sound effects
 wMusicEndedOnChannel4:
     ds 7                                               ;; c15b
@@ -304,10 +295,18 @@ wSoundEffectInstructionPointerChannel4:
 wMusicBrokenDoubleTimeMode:
     ds 1                                               ;; c1c8
 
-wC1C9:
+; This is another slightly broken music/sound feature.
+; This is written to the "rest pitch" (too high to be heard) whenever a rest is encountered on channel 1.
+; It is never otherwise written, so it takes on this value at the beginning of the title screen song, and never changes.
+; After a sound effect is played which uses channel 1, this value is written as the new pitch of channel 1.
+; That means that any note that would otherwise be underway is muted, unless/until the vibrato envelope ticks.
+;
+; It looks like the code was designed to save all pitch changes to this so the note would restore instantly, but that isn't what happens.
+; It may be that there were audible glitches with instant restore, or it may just not have been worth the effort or CPU overhead.
+wSoundsMusicRestorePitchChannel1:
     ds 1                                               ;; c1c9
-
-wC1CA:
+; One byte long
+.high:
     ds 54                                              ;; c1ca
 
 ; 16 bytes per object, or potentially 16x16 sprite?
@@ -1547,7 +1546,9 @@ hBankStackPointer:
 hCurrentMusic:
     ds 1                                               ;; ff90
 
-hFF91:
+; Unused feature.
+; Would have allowed things like status condition music to continue the interrupted track instead of restarting.
+hMusicSpecialSongRequest:
     ds 1                                               ;; ff91
 
 hSFX:
@@ -1569,7 +1570,8 @@ hMusicNoteDurationChannel1Copy:
 hMusicNoteDurationChannel3Copy:
     ds 2                                               ;; ff97
 
-hFF99:
+; Unused feature.
+hMusicSpecialSongPlaying:
     ds 1                                               ;; ff99
 
 hWaveTablePointer:
