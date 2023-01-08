@@ -237,13 +237,11 @@ wMusicVibratoDurationChannel3:
 
 wMusicVibratoEnvelopeChannel3:
     ds 1                                               ;; c137
-
 .high:
     ds 1                                               ;; c138
 
 wMusicVibratoEnvelopePointerChannel3:
     ds 1                                               ;; c139
-
 .high:
     ds 1                                               ;; c13a
 
