@@ -165,15 +165,15 @@ wMusicInstructionPointerChannel1:
 .high:
     ds 1                                               ;; c11d
 
-wMusicVolumeDurationChannel1:
+wMusicVibratoDurationChannel1:
     ds 1                                               ;; c11e
 
-wMusicVolumeEnvelopeChannel1:
+wMusicVibratoEnvelopeChannel1:
     ds 1                                               ;; c11f
 .high:
     ds 1                                               ;; c120
 
-wMusicVolumeEnvelopePointerChannel1:
+wMusicVibratoEnvelopePointerChannel1:
     ds 1                                               ;; c121
 .high:
     ds 1                                               ;; c122
