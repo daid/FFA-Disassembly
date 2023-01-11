@@ -3806,7 +3806,7 @@ scriptOpWaitWhileMovement:
 ; Return: HL = tile attributes
 getRoomMetaTileAttributes:
     push DE                                            ;; 00:16af $d5
-    ld   A, $08                                        ;; 00:16b0 $3e $08
+    ld   A, BANK(metatilesOutdoor) ;@=bank metatilesOutdoor ;; 00:16b0 $3e $08
     call pushBankNrAndSwitch                           ;; 00:16b2 $cd $fb $29
     pop  DE                                            ;; 00:16b5 $d1
     ld   A, E                                          ;; 00:16b6 $7b
@@ -3945,7 +3945,7 @@ call_00_177e:
     dec  E                                             ;; 00:178b $1d
     push DE                                            ;; 00:178c $d5
     push BC                                            ;; 00:178d $c5
-    ld   A, $08                                        ;; 00:178e $3e $08
+    ld   A, BANK(metatilesOutdoor) ;@=bank metatilesOutdoor ;; 00:178e $3e $08
     call pushBankNrAndSwitch                           ;; 00:1790 $cd $fb $29
     pop  BC                                            ;; 00:1793 $c1
     push BC                                            ;; 00:1794 $c5
