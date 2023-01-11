@@ -176,7 +176,7 @@ jr_03_40c7:
     cp   A, $00                                        ;; 03:40f0 $fe $00
     ret  NZ                                            ;; 03:40f2 $c0
     ld   [HL], A                                       ;; 03:40f3 $77
-    ld   DE, hNegative3                                ;; 03:40f4 $11 $fd $ff
+    ld   DE, -3 ;@=value signed=True                   ;; 03:40f4 $11 $fd $ff
     add  HL, DE                                        ;; 03:40f7 $19
     ld   [HL], $01                                     ;; 03:40f8 $36 $01
     ret                                                ;; 03:40fa $c9

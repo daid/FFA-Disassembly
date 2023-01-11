@@ -31,7 +31,7 @@
     IF !DEF(HARDWARE_INC)
 HARDWARE_INC = 1
 
-rev_Check_hardware_inc : MACRO
+MACRO rev_Check_hardware_inc
 ;NOTE: REVISION NUMBER CHANGES MUST BE ADDED
 ;TO SECOND PARAMETER IN FOLLOWING LINE.
     IF  \1 > 3.0 ;PUT REVISION NUMBER HERE
@@ -898,7 +898,7 @@ OAMB_BANK1      EQU 3 ; Bank number; 0,1 (GBC)
 ;* Nintendo scrolling logo
 ;* (Code won't work on a real GameBoy)
 ;* (if next lines are altered.)
-NINTENDO_LOGO : MACRO
+MACRO NINTENDO_LOGO
     DB  $CE,$ED,$66,$66,$CC,$0D,$00,$0B,$03,$73,$00,$83,$00,$0C,$00,$0D
     DB  $00,$08,$11,$1F,$88,$89,$00,$0E,$DC,$CC,$6E,$E6,$DD,$DD,$D9,$99
     DB  $BB,$BB,$67,$63,$6E,$0E,$EC,$CC,$DD,$DC,$99,$9F,$BB,$B9,$33,$3E
