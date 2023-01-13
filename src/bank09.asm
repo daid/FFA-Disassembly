@@ -42,6 +42,7 @@ projectileRunLogicForAll:
     jr   NZ, projectileRunLogicForAll.loop             ;; 09:402e $20 $f0
     ret                                                ;; 09:4030 $c9
 
+; HL = projectile runtime data pointer
 projectileRunLogic:
     inc  HL                                            ;; 09:4031 $23
     dec  [HL]                                          ;; 09:4032 $35
@@ -57,12 +58,14 @@ projectileRunLogic:
     inc  HL                                            ;; 09:403e $23
     ld   B, [HL]                                       ;; 09:403f $46
     ld   A, [BC]                                       ;; 09:4040 $0a
+; Compare against the projectile's collision flags
     cp   A, $62                                        ;; 09:4041 $fe $62
     jp   Z, .jp_09_40be                                ;; 09:4043 $ca $be $40
     cp   A, $72                                        ;; 09:4046 $fe $72
     jp   Z, .jp_09_4142                                ;; 09:4048 $ca $42 $41
     cp   A, $3a                                        ;; 09:404b $fe $3a
     jp   Z, .jp_09_40be                                ;; 09:404d $ca $be $40
+; All other values ($38 and $60) are melee range attacks
     ld   HL, $03                                       ;; 09:4050 $21 $03 $00
     add  HL, DE                                        ;; 09:4053 $19
     ld   A, [HL]                                       ;; 09:4054 $7e
@@ -141,7 +144,7 @@ projectileRunLogic:
     ld   B, $00                                        ;; 09:40b8 $06 $00
     call call_00_08d4                                  ;; 09:40ba $cd $d4 $08
     ret                                                ;; 09:40bd $c9
-.jp_09_40be:
+.cardinal_direction:
     ld   HL, $03                                       ;; 09:40be $21 $03 $00
     add  HL, DE                                        ;; 09:40c1 $19
     ld   A, [HL]                                       ;; 09:40c2 $7e
@@ -236,7 +239,7 @@ projectileRunLogic:
     ld   C, A                                          ;; 09:413d $4f
     call destroyObject                                 ;; 09:413e $cd $e3 $0a
     ret                                                ;; 09:4141 $c9
-.jp_09_4142:
+.free_direction:
     ld   HL, $03                                       ;; 09:4142 $21 $03 $00
     add  HL, DE                                        ;; 09:4145 $19
     ld   A, [HL]                                       ;; 09:4146 $7e
@@ -505,7 +508,7 @@ spawnProjectile:
     inc  HL                                            ;; 09:429e $23
     ld   [HL], D                                       ;; 09:429f $72
     ret                                                ;; 09:42a0 $c9
-.jr_09_42a1:
+.failed:
     pop  BC                                            ;; 09:42a1 $c1
     call destroyObject                                 ;; 09:42a2 $cd $e3 $0a
     pop  DE                                            ;; 09:42a5 $d1
@@ -514,7 +517,8 @@ spawnProjectile:
     xor  A, A                                          ;; 09:42a8 $af
     ret                                                ;; 09:42a9 $c9
 
-call_09_42aa:
+; A = projectile collision flags
+projectileInitLogic:
     cp   A, $62                                        ;; 09:42aa $fe $62
     jr   Z, .jr_09_42ba                                ;; 09:42ac $28 $0c
     cp   A, $72                                        ;; 09:42ae $fe $72
@@ -525,7 +529,7 @@ call_09_42aa:
     inc  HL                                            ;; 09:42b7 $23
     xor  A, A                                          ;; 09:42b8 $af
     ret                                                ;; 09:42b9 $c9
-.jr_09_42ba:
+.cardinal_direction:
     push HL                                            ;; 09:42ba $e5
     push BC                                            ;; 09:42bb $c5
     call GetObjectY                                    ;; 09:42bc $cd $3e $0c
@@ -539,7 +543,7 @@ call_09_42aa:
     xor  A, A                                          ;; 09:42c8 $af
     dec  A                                             ;; 09:42c9 $3d
     ret                                                ;; 09:42ca $c9
-.jr_09_42cb:
+.free_direction:
     push HL                                            ;; 09:42cb $e5
     push BC                                            ;; 09:42cc $c5
     call GetObjectY                                    ;; 09:42cd $cd $3e $0c

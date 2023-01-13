@@ -485,21 +485,21 @@ LCDCInterrupt:
     bit  7, A                                          ;; 00:035a $cb $7f
     jr   Z, .jr_00_036a                                ;; 00:035c $28 $0c
     ld   C, $41                                        ;; 00:035e $0e $41
-.jr_00_0360:
+.loop_while_mode_0:
     ldh  A, [C]                                        ;; 00:0360 $f2
     and  A, $03                                        ;; 00:0361 $e6 $03
     jr   Z, .jr_00_0360                                ;; 00:0363 $28 $fb
-.jr_00_0365:
+.loop_until_mode_0:
     ldh  A, [C]                                        ;; 00:0365 $f2
     and  A, $03                                        ;; 00:0366 $e6 $03
     jr   NZ, .jr_00_0365                               ;; 00:0368 $20 $fb
-.jr_00_036a:
+.ready_to_write:
     ld   [HL], D                                       ;; 00:036a $72
     ld   A, E                                          ;; 00:036b $7b
     ldh  [rBGP], A                                     ;; 00:036c $e0 $47
     ret                                                ;; 00:036e $c9
 
-call_00_036f:
+checkPlayfieldBoundaryCollision_trampoline:
     jp_to_bank 04, call_04_400e                        ;; 00:036f $f5 $3e $06 $c3 $64 $1f
 
 call_00_0375:
@@ -1043,7 +1043,12 @@ updateObjectPosition:
     ld   [HL], A                                       ;; 00:0676 $77
     ret                                                ;; 00:0677 $c9
 
-call_00_0678:
+; HL = pointer to an object's runtime data
+; Return: A = x position ored with y position
+; Return: B object's collision flags
+; Return: D = (y / 8) - 2
+; Return: E = (x / 8) - 1
+getObjectPositionAndCollisionInfo:
     ld   BC, $04                                       ;; 00:0678 $01 $04 $00
     add  HL, BC                                        ;; 00:067b $09
     ld   A, [HL+]                                      ;; 00:067c $2a
@@ -1146,6 +1151,7 @@ call_00_0695:
     jr   NZ, .jr_00_0774                               ;; 00:0702 $20 $70
     bit  2, C                                          ;; 00:0704 $cb $51
     jp   NZ, .jp_00_07ab                               ;; 00:0706 $c2 $ab $07
+; .down:
     ld   D, B                                          ;; 00:0709 $50
     ld   E, $00                                        ;; 00:070a $1e $00
     ld   A, [wMainGameStateFlags]                      ;; 00:070c $fa $a1 $c0
@@ -1174,7 +1180,7 @@ call_00_0695:
 .jp_00_073b:
     call call_00_0961                                  ;; 00:073b $cd $61 $09
     ret                                                ;; 00:073e $c9
-.jr_00_073f:
+.right:
     ld   E, B                                          ;; 00:073f $58
     ld   D, $00                                        ;; 00:0740 $16 $00
     ld   A, [wMainGameStateFlags]                      ;; 00:0742 $fa $a1 $c0
@@ -1203,7 +1209,7 @@ call_00_0695:
 .jr_00_0770:
     call call_00_0961                                  ;; 00:0770 $cd $61 $09
     ret                                                ;; 00:0773 $c9
-.jr_00_0774:
+.left:
     ld   A, B                                          ;; 00:0774 $78
     cpl                                                ;; 00:0775 $2f
     inc  A                                             ;; 00:0776 $3c
@@ -1235,7 +1241,7 @@ call_00_0695:
 .jr_00_07a7:
     call call_00_0961                                  ;; 00:07a7 $cd $61 $09
     ret                                                ;; 00:07aa $c9
-.jp_00_07ab:
+.up:
     ld   A, B                                          ;; 00:07ab $78
     cpl                                                ;; 00:07ac $2f
     inc  A                                             ;; 00:07ad $3c
@@ -1267,7 +1273,7 @@ call_00_0695:
 .jr_00_07dc:
     call call_00_0961                                  ;; 00:07dc $cd $61 $09
     ret                                                ;; 00:07df $c9
-.jp_00_07e0:
+.blocked:
     pop  DE                                            ;; 00:07e0 $d1
     pop  HL                                            ;; 00:07e1 $e1
     push HL                                            ;; 00:07e2 $e5
@@ -1429,6 +1435,8 @@ pixelToTilePosition:
     dec  E                                             ;; 00:08d2 $1d
     ret                                                ;; 00:08d3 $c9
 
+; Probably related to hit detection
+; C = Object ID for the changed/checked object
 call_00_08d4:
     ld   L, A                                          ;; 00:08d4 $6f
     ld   A, C                                          ;; 00:08d5 $79
@@ -2320,7 +2328,7 @@ prepareDefaultEffect_trampoline:
 prepareIntroScrollEffect_trampoline:
     jp_to_bank 01, prepareIntroScrollEffect            ;; 00:0daa $f5 $3e $13 $c3 $d7 $1e
 
-call_00_0db0:
+introScrollEffectUpdateLCDEffect_trampoline:
     jp_to_bank 01, call_01_40d8                        ;; 00:0db0 $f5 $3e $14 $c3 $d7 $1e
 
 setDefaultLCDEffectAndBGP_trampoline:
@@ -2342,12 +2350,12 @@ scriptOpCodeWaitMapClose:
     call call_00_0695                                  ;; 00:0dd5 $cd $95 $06
     pop  HL                                            ;; 00:0dd8 $e1
     ret                                                ;; 00:0dd9 $c9
-.jr_00_0dda:
+.hide_marker:
     ld   C, $00                                        ;; 00:0dda $0e $00
     call hideMinimapFlashingMarker                     ;; 00:0ddc $cd $cd $05
     pop  HL                                            ;; 00:0ddf $e1
     ret                                                ;; 00:0de0 $c9
-.jr_00_0de1:
+.button_pressed:
     pop  HL                                            ;; 00:0de1 $e1
     call getNextScriptInstruction                      ;; 00:0de2 $cd $27 $37
     ret                                                ;; 00:0de5 $c9
@@ -2856,7 +2864,7 @@ scriptOpCodeFadeToNormal:
     pop  HL                                            ;; 00:1117 $e1
     call fadeEffectAdjustCounters                      ;; 00:1118 $cd $42 $11
     ret                                                ;; 00:111b $c9
-.jr_00_111c:
+.fade_from_white:
     ld   HL, fadeToWhiteBGP                            ;; 00:111c $21 $7b $10
     add  HL, DE                                        ;; 00:111f $19
     ld   C, [HL]                                       ;; 00:1120 $4e
@@ -4408,14 +4416,19 @@ call_00_1a30:
     call fillMemory                                    ;; 00:1a37 $cd $5d $2b
     ret                                                ;; 00:1a3a $c9
 
-call_00_1a3b:
+; A = tile number
+; Return: A = VRAM tile number of the loaded tile
+loadMinimapTile:
     call call_00_1ba1                                  ;; 00:1a3b $cd $a1 $1b
     ld   DE, $ff00                                     ;; 00:1a3e $11 $00 $ff
     add  HL, DE                                        ;; 00:1a41 $19
     ld   A, [HL]                                       ;; 00:1a42 $7e
     ret                                                ;; 00:1a43 $c9
 
-call_00_1a44:
+; Checks the tile state cache for each tile in a metatile, refreshing it if it is already cached
+; A = metatile number
+; Return: Z if all tiles are already cached, NZ if not
+mapGraphicsStateCheckCache:
     push AF                                            ;; 00:1a44 $f5
     ld   A, $08                                        ;; 00:1a45 $3e $08
     call pushBankNrAndSwitch                           ;; 00:1a47 $cd $fb $29
@@ -4606,7 +4619,7 @@ call_00_1b2b:
     jr   NZ, call_00_1b2b.loop_outer                   ;; 00:1b4b $20 $e0
     ret                                                ;; 00:1b4d $c9
 
-call_00_1b4e:
+mapGraphicsStateUpdateCache:
     ld   HL, wBackgroundGraphicsTileState              ;; 00:1b4e $21 $70 $d1
     ld   B, $00                                        ;; 00:1b51 $06 $00
 .loop:
@@ -4627,13 +4640,14 @@ call_00_1b4e:
     ld   [HL], $00                                     ;; 00:1b6a $36 $00
     pop  HL                                            ;; 00:1b6c $e1
     ld   A, $00                                        ;; 00:1b6d $3e $00
-.jr_00_1b6f:
+.next:
     ld   [HL+], A                                      ;; 00:1b6f $22
     dec  B                                             ;; 00:1b70 $05
     jr   NZ, call_00_1b4e.loop                         ;; 00:1b71 $20 $e0
     ret                                                ;; 00:1b73 $c9
 
-call_00_1b74:
+; Ensures all needed tiles are loaded for the room's metatiles
+loadRoomTiles:
     push HL                                            ;; 00:1b74 $e5
     ld   A, $08                                        ;; 00:1b75 $3e $08
     call pushBankNrAndSwitch                           ;; 00:1b77 $cd $fb $29
@@ -4663,7 +4677,10 @@ call_00_1b74:
     call popBankNrAndSwitch                            ;; 00:1b9d $cd $0a $2a
     ret                                                ;; 00:1ba0 $c9
 
-call_00_1ba1:
+; Loads one tile and updates caching records. Has some extra logic for animated tiles.
+; A = tile number
+; Return: HL = wBackgroundGraphicsTileState address
+loadRoomTile:
     ld   E, A                                          ;; 00:1ba1 $5f
     ld   D, $00                                        ;; 00:1ba2 $16 $00
     ld   HL, wBackgroundGraphicsTileState              ;; 00:1ba4 $21 $70 $d1
@@ -4673,12 +4690,12 @@ call_00_1ba1:
     jr   Z, .jr_00_1bb0                                ;; 00:1bab $28 $03
     ld   [HL], $0f                                     ;; 00:1bad $36 $0f
     ret                                                ;; 00:1baf $c9
-.jr_00_1bb0:
+.tile_not_loaded:
     ld   A, $00                                        ;; 00:1bb0 $3e $00
     push HL                                            ;; 00:1bb2 $e5
     ld   D, $70                                        ;; 00:1bb3 $16 $70
     ld   HL, wBackgroundGraphicsTileUsed               ;; 00:1bb5 $21 $70 $d2
-.jr_00_1bb8:
+.loop:
     cp   A, [HL]                                       ;; 00:1bb8 $be
     jr   Z, .jr_00_1bc7                                ;; 00:1bb9 $28 $0c
     inc  HL                                            ;; 00:1bbb $23
@@ -4689,7 +4706,7 @@ call_00_1ba1:
     pop  DE                                            ;; 00:1bc3 $d1
     pop  HL                                            ;; 00:1bc4 $e1
     jr   .jr_00_1bb0                                   ;; 00:1bc5 $18 $e9
-.jr_00_1bc7:
+.space_found:
     ld   [HL], $01                                     ;; 00:1bc7 $36 $01
     ld   A, $f0                                        ;; 00:1bc9 $3e $f0
     sub  A, D                                          ;; 00:1bcb $92
@@ -4710,7 +4727,7 @@ call_00_1ba1:
     pop  DE                                            ;; 00:1be0 $d1
     push DE                                            ;; 00:1be1 $d5
     push HL                                            ;; 00:1be2 $e5
-; Not a pointer, not sure what the constant is used for. But this code has to do something with loading graphics for the background map.
+; $2e90 == $10000 - $d170, so (HL + DE) is equal to the index in wBackgroundGraphicsTileState
     ld   HL, $2e90                                     ;; 00:1be3 $21 $90 $2e
     add  HL, DE                                        ;; 00:1be6 $19
     add  HL, HL                                        ;; 00:1be7 $29
@@ -4723,6 +4740,7 @@ call_00_1ba1:
     ld   E, A                                          ;; 00:1bf2 $5f
     add  HL, DE                                        ;; 00:1bf3 $19
     pop  DE                                            ;; 00:1bf4 $d1
+; Background tile graphics start at the beginning of bank c, then continue into bank b
     ld   A, $0c                                        ;; 00:1bf5 $3e $0c
     push HL                                            ;; 00:1bf7 $e5
     bit  7, H                                          ;; 00:1bf8 $cb $7c
@@ -4748,10 +4766,14 @@ call_00_1ba1:
     ld   A, L                                          ;; 00:1c1b $7d
     cp   A, $90                                        ;; 00:1c1c $fe $90
     jr   NC, .jr_00_1c3a                               ;; 00:1c1e $30 $1a
+; If the tile should be animated, also copy it into SRAM
     ld   DE, wAnimatedTileWaterfall1                   ;; 00:1c20 $11 $f0 $d2
     add  HL, DE                                        ;; 00:1c23 $19
     push BC                                            ;; 00:1c24 $c5
     push HL                                            ;; 00:1c25 $e5
+; Background tile graphics start at the beginning of bank c, then continue into bank b
+; but this code does not properly adjust the address for bank b, which doesn't matter
+; because animated tiles are not used by the titlescreen, ending, or map screens
     ld   A, $0c                                        ;; 00:1c26 $3e $0c
     bit  7, B                                          ;; 00:1c28 $cb $78
     jr   Z, .jr_00_1c2d                                ;; 00:1c2a $28 $01
@@ -4763,7 +4785,7 @@ call_00_1ba1:
     ld   B, $10                                        ;; 00:1c32 $06 $10
     call copyHLtoDE                                    ;; 00:1c34 $cd $49 $2b
     call popBankNrAndSwitch                            ;; 00:1c37 $cd $0a $2a
-.jr_00_1c3a:
+.done:
     pop  HL                                            ;; 00:1c3a $e1
     ret                                                ;; 00:1c3b $c9
     db   $1a, $e6, $0f, $be, $c0, $13, $23, $05        ;; 00:1c3c ????????
@@ -5869,7 +5891,7 @@ getRoomMetaTile:
     ret                                                ;; 00:242a $c9
 
 ; Load the metatiles from RLE data at HL into wRoomTiles
-loadRoomTilesRLE:
+loadRoomMetaTilesRLE:
     push HL                                            ;; 00:242b $e5
     ld   A, $07                                        ;; 00:242c $3e $07
     call clearScriptFlag                               ;; 00:242e $cd $ee $3b
@@ -5880,7 +5902,7 @@ loadRoomTilesRLE:
     pop  DE                                            ;; 00:243c $d1
     ld   HL, wRoomTiles                                ;; 00:243d $21 $50 $c3
     ld   B, $50                                        ;; 00:2440 $06 $50
-.jr_00_2442:
+.loop_outer:
     ld   A, [DE]                                       ;; 00:2442 $1a
     bit  7, A                                          ;; 00:2443 $cb $7f
     jr   Z, .jr_00_2457                                ;; 00:2445 $28 $10
@@ -5888,7 +5910,7 @@ loadRoomTilesRLE:
     ld   C, A                                          ;; 00:244a $4f
     ld   A, [DE]                                       ;; 00:244b $1a
     and  A, $7f                                        ;; 00:244c $e6 $7f
-.jr_00_244e:
+.loop_inner:
     dec  C                                             ;; 00:244e $0d
     jr   Z, .jr_00_2457                                ;; 00:244f $28 $06
     ld   [HL+], A                                      ;; 00:2451 $22
@@ -6058,7 +6080,7 @@ call_00_2546:
     add  HL, DE                                        ;; 00:255b $19
     ret                                                ;; 00:255c $c9
 
-loadRoomTilesTemplated:
+loadRoomMetaTilesTemplated:
     push DE                                            ;; 00:255d $d5
     push HL                                            ;; 00:255e $e5
     call objectReverseDirection                        ;; 00:255f $cd $e4 $29
@@ -6711,7 +6733,8 @@ inflictVulnerableNpcsMute_trampoline:
 getEmptyObjectsMovingDuringScriptSlot_trampoline:
     jp_to_bank 03, getEmptyObjectsMovingDuringScriptSlot ;; 00:2938 $f5 $3e $12 $c3 $35 $1f
 
-call_00_293e:
+; Converts a 24 bit number (in CDE) to an eight digit Binary Coded Decimal packed in four bytes at HL
+convertToPackedBCD:
     push HL                                            ;; 00:293e $e5
     ld   B, $18                                        ;; 00:293f $06 $18
     xor  A, A                                          ;; 00:2941 $af
@@ -6746,7 +6769,8 @@ call_00_293e:
     pop  HL                                            ;; 00:2961 $e1
     ret                                                ;; 00:2962 $c9
 
-call_00_2963:
+; Converts a 24 bit number (in CDE) to an eight digit Binary Coded Decimal in eight bytes at HL
+convertToUnpackedBCD:
     call call_00_293e                                  ;; 00:2963 $cd $3e $29
     dec  HL                                            ;; 00:2966 $2b
     ld   BC, $04                                       ;; 00:2967 $01 $04 $00
@@ -7300,7 +7324,7 @@ call_00_2d22:
     ret  Z                                             ;; 00:2d31 $c8
     call enemyCollisionHandling_trampoline             ;; 00:2d32 $cd $b6 $28
     ret                                                ;; 00:2d35 $c9
-.jr_00_2d36:
+.ice:
     ld   A, $00                                        ;; 00:2d36 $3e $00
     ret                                                ;; 00:2d38 $c9
 .player:
@@ -7933,7 +7957,7 @@ drawEmptyWillBar_trampoline:
 InitPostIntEnable_trampoline:
     jp_to_bank 02, InitPostIntEnable                   ;; 00:3153 $f5 $3e $30 $c3 $06 $1f
 
-introScrollHandler_trampoline:
+gameStateTitleScreen_trampoline:
     jp_to_bank 02, introScrollHandler                  ;; 00:3159 $f5 $3e $31 $c3 $06 $1f
 
 castEquippedSpellIfSufficientMana_trampoline:
@@ -8580,7 +8604,7 @@ textCtrlCodeYesNo:
     pop  HL                                            ;; 00:3545 $e1
     ret                                                ;; 00:3546 $c9
 
-call_00_3547:
+yesNoWindowFinish:
     ld   B, $a4                                        ;; 00:3547 $06 $a4
     ld   DE, wDialogX                                  ;; 00:3549 $11 $a7 $d4
     ld   HL, wD56E                                     ;; 00:354c $21 $6e $d5
@@ -8944,7 +8968,7 @@ getDialogTextInsertionPoint:
 ; B = size of text to draw (but not always?, whole interaction is more complex)
 drawText:
     call getDialogTextInsertionPoint                   ;; 00:3777 $cd $4d $37
-.jr_00_377a:
+.loop_1:
     push AF                                            ;; 00:377a $f5
     ld   A, [HL+]                                      ;; 00:377b $2a
     cp   A, $7f                                        ;; 00:377c $fe $7f
@@ -9016,7 +9040,7 @@ drawText:
     ld   A, [wDialogType]                              ;; 00:37e9 $fa $4a $d8
     cp   A, $11                                        ;; 00:37ec $fe $11
     jr   Z, .jr_00_3800                                ;; 00:37ee $28 $10
-.jr_00_37f0:
+.loop_2:
     dec  D                                             ;; 00:37f0 $15
     ld   A, $7f                                        ;; 00:37f1 $3e $7f
     call storeTileAatDialogPositionDE                  ;; 00:37f3 $cd $44 $38
@@ -9884,7 +9908,7 @@ scriptResumeAfterWindow:
     call hideAndSaveMenuMetasprites_trampoline         ;; 00:3d01 $cd $63 $30
     ret                                                ;; 00:3d04 $c9
 
-call_00_3d05:
+runVirualScriptOpCodeFFIfMenuStateCurrentFuctionBit7:
     ld   A, [wMenuStateCurrentFunction]                ;; 00:3d05 $fa $53 $d8
     rlca                                               ;; 00:3d08 $07
     ret  C                                             ;; 00:3d09 $d8

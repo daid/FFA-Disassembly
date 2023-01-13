@@ -3,7 +3,12 @@
 
 ;@data format=bbbbbbbbpppp amount=40
 ; Projectile data.
-; 0) Collision flags
+; 0) Collision flags. Valid options:
+;    $38: friendly melee (Bogard)
+;    $3a: friendly ranged (four cardinal directions)
+;    $60: enemy melee
+;    $62: enemy ranged (four cardinal directions)
+;    $72: enemy ranged (any angle)
 ; 1) Speed, lower = faster.
 ; 2) ?
 ; 3) Element

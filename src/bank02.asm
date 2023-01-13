@@ -940,7 +940,7 @@ getScriptOpcodeFunction:
 
 INCLUDE "code/script/opcodetable.asm"
 
-call_02_4776:
+menuTrashCanLoadTiles:
     ld   A, [wD872]                                    ;; 02:4776 $fa $72 $d8
     bit  2, A                                          ;; 02:4779 $cb $57
     ret  NZ                                            ;; 02:477b $c0
@@ -954,7 +954,8 @@ call_02_4776:
     pop  HL                                            ;; 02:478c $e1
     ret                                                ;; 02:478d $c9
 
-call_02_478e:
+; Used only for the trash can tiles
+menuLoadTiles:
     push AF                                            ;; 02:478e $f5
     push BC                                            ;; 02:478f $c5
     push DE                                            ;; 02:4790 $d5
@@ -997,7 +998,8 @@ menuFingerPointingTiles:
 menuFingerCurledTiles:
     db   $12, $16                                      ;; 02:47b6 ..
 
-data_02_47b8:
+;@data format=pp amount=4
+menuTrashCanTileLoads:
     dw   $80c0                                         ;; 02:47b8 pP
     db   $00, $4c                                      ;; 02:47ba ..
     dw   $80d0                                         ;; 02:47bc pP
@@ -1115,7 +1117,7 @@ callJumptable_02:
     ld   L, A                                          ;; 02:487c $6f
     jp   HL                                            ;; 02:487d $e9
 
-call_02_487e:
+windowInitMenuSelectionMoveRepeatDelay:
     ld   A, $01                                        ;; 02:487e $3e $01
     ld   [wD857], A                                    ;; 02:4880 $ea $57 $d8
     ld   A, $01                                        ;; 02:4883 $3e $01
@@ -1352,7 +1354,7 @@ call_02_4a14:
     jr   Z, .jr_02_4a53                                ;; 02:4a31 $28 $20
     ld   DE, $a00                                      ;; 02:4a33 $11 $00 $0a
     jr   .jr_02_4a58                                   ;; 02:4a36 $18 $20
-.jr_02_4a38:
+.vendor_sell_menu_top:
     ld   A, [wD8D9]                                    ;; 02:4a38 $fa $d9 $d8
     ld   [wD868], A                                    ;; 02:4a3b $ea $68 $d8
     ld   A, [wD876]                                    ;; 02:4a3e $fa $76 $d8
@@ -3154,7 +3156,7 @@ jp_02_5638:
     call clearLoadScreen                               ;; 02:5648 $cd $4c $56
     ret                                                ;; 02:564b $c9
 
-clearLoadScreen:
+clearSaveLoadScreen:
     call drawDefaultStatusBar                          ;; 02:564c $cd $16 $6f
     call drawHPOnStatuBar                              ;; 02:564f $cd $29 $6f
     call drawManaOnStatusBar                           ;; 02:5652 $cd $3f $6f
@@ -3443,7 +3445,8 @@ call_02_57fe:
     ld   DE, $202                                      ;; 02:5807 $11 $02 $02
     ret                                                ;; 02:580a $c9
 
-call_02_580b:
+; Handles swapping slots in ITEM or EQUIP
+inventoryMoveItems:
     ld   A, [wD895]                                    ;; 02:580b $fa $95 $d8
     ld   H, A                                          ;; 02:580e $67
     ld   A, [wD894]                                    ;; 02:580f $fa $94 $d8
@@ -3455,8 +3458,7 @@ call_02_580b:
     ld   L, A                                          ;; 02:581d $6f
     call call_02_5822                                  ;; 02:581e $cd $22 $58
     ret                                                ;; 02:5821 $c9
-
-call_02_5822:
+.swap:
     push DE                                            ;; 02:5822 $d5
     push HL                                            ;; 02:5823 $e5
     ld   A, [wSelectedMenuIndex]                       ;; 02:5824 $fa $4b $d8
@@ -3545,7 +3547,7 @@ call_02_5895:
     ld   A, [wDialogType]                              ;; 02:5895 $fa $4a $d8
     ld   B, A                                          ;; 02:5898 $47
     ld   HL, .data_02_58a7                             ;; 02:5899 $21 $a7 $58
-.jr_02_589c:
+.loop:
     ld   A, [HL+]                                      ;; 02:589c $2a
     inc  A                                             ;; 02:589d $3c
     jr   Z, .jr_02_58b7                                ;; 02:589e $28 $17
@@ -3707,7 +3709,7 @@ drawNumber24bitOnDialog:
     pop  BC                                            ;; 02:59c4 $c1
     inc  E                                             ;; 02:59c5 $1c
     ret                                                ;; 02:59c6 $c9
-.jr_02_59c7:
+.not_zero:
     ld   HL, wD7A8                                     ;; 02:59c7 $21 $a8 $d7
     push HL                                            ;; 02:59ca $e5
     call call_00_2963                                  ;; 02:59cb $cd $63 $29
@@ -3812,16 +3814,16 @@ call_02_5a18:
     pop  DE                                            ;; 02:5a60 $d1
     ret                                                ;; 02:5a61 $c9
 
-jp_02_5a62:
+drawLoadSaveWindowContents_top:
     ld   HL, sSave1Body                                ;; 02:5a62 $21 $06 $a0
     ld   B, $08                                        ;; 02:5a65 $06 $08
     jr   jr_02_5a6e                                    ;; 02:5a67 $18 $05
 
-jp_02_5a69:
+drawLoadSaveWindowContents_bottom:
     ld   HL, sSave2Body                                ;; 02:5a69 $21 $06 $a1
     ld   B, $10                                        ;; 02:5a6c $06 $10
 
-jr_02_5a6e:
+drawLoadSaveWindowContents_common:
     ld   A, [wWindowFlags]                             ;; 02:5a6e $fa $74 $d8
     and  A, B                                          ;; 02:5a71 $a0
     jr   Z, .jr_02_5a8d                                ;; 02:5a72 $28 $19
@@ -4532,7 +4534,7 @@ windowDrawMiddle:
 windowDrawBottom:
     call drawWindowTopOrBottom                         ;; 02:67b4 $cd $83 $67
 
-jr_02_67b7:
+windowDrawFinished:
     ld   A, D                                          ;; 02:67b7 $7a
     cp   A, $0f                                        ;; 02:67b8 $fe $0f
     call NC, call_02_7a44                              ;; 02:67ba $d4 $44 $7a
@@ -4555,7 +4557,7 @@ jr_02_67b7:
     ld   A, $03                                        ;; 02:67e4 $3e $03
     ld   [wDialogType], A                              ;; 02:67e6 $ea $4a $d8
     ret                                                ;; 02:67e9 $c9
-.jr_02_67ea:
+.draw_equipment_screen_bottom:
     ld   A, $04                                        ;; 02:67ea $3e $04
     ld   [wDialogType], A                              ;; 02:67ec $ea $4a $d8
     ld   A, $02                                        ;; 02:67ef $3e $02
@@ -4637,8 +4639,9 @@ drawDialogCenterLine:
     ld   [HL+], A                                      ;; 02:686c $22
     ret                                                ;; 02:686d $c9
 
-; DE=position on the screen
 ; C=width of line
+; DE=position on the screen
+; HL=backup location for overwritten tiles
 drawDialogTopOrBottomLine:
     ld   A, [wDialogBorderTile]                        ;; 02:686e $fa $63 $d8
     push AF                                            ;; 02:6871 $f5
@@ -4676,13 +4679,14 @@ processWindowInput:
     jp   NZ, jp_02_692d                                ;; 02:68a4 $c2 $2d $69
     bit  3, C                                          ;; 02:68a7 $cb $59
     jp   NZ, jp_02_6938                                ;; 02:68a9 $c2 $38 $69
-.jr_02_68ac:
+.check_buttons:
     bit  4, C                                          ;; 02:68ac $cb $61
     jr   NZ, jp_02_68c4                                ;; 02:68ae $20 $14
     bit  7, C                                          ;; 02:68b0 $cb $79
     jp   NZ, jp_02_6943                                ;; 02:68b2 $c2 $43 $69
     bit  5, C                                          ;; 02:68b5 $cb $69
     ret  Z                                             ;; 02:68b7 $c8
+; B button
     ld   A, [wDialogType]                              ;; 02:68b8 $fa $4a $d8
     cp   A, $18                                        ;; 02:68bb $fe $18
     ret  Z                                             ;; 02:68bd $c8
@@ -4690,7 +4694,7 @@ processWindowInput:
     ld   [wD7B1], A                                    ;; 02:68bf $ea $b1 $d7
     ld   H, $ff                                        ;; 02:68c2 $26 $ff
 
-jp_02_68c4:
+.button:
     ld   A, [wD849]                                    ;; 02:68c4 $fa $49 $d8
     or   A, $08                                        ;; 02:68c7 $f6 $08
     ld   [wD849], A                                    ;; 02:68c9 $ea $49 $d8
@@ -4702,7 +4706,7 @@ jp_02_68c4:
     call playSFX                                       ;; 02:68d7 $cd $7d $29
     ret                                                ;; 02:68da $c9
 
-call_02_68db:
+.dpad_right:
     ld   A, [wD849]                                    ;; 02:68db $fa $49 $d8
     rrca                                               ;; 02:68de $0f
     ret  NC                                            ;; 02:68df $d0
@@ -4731,7 +4735,7 @@ call_02_68db:
     dec  E                                             ;; 02:6904 $1d
     ret                                                ;; 02:6905 $c9
 
-jr_02_6906:
+.dpad_left:
     ld   A, [wD849]                                    ;; 02:6906 $fa $49 $d8
     rrca                                               ;; 02:6909 $0f
     ret  NC                                            ;; 02:690a $d0
@@ -4758,7 +4762,7 @@ jr_02_6906:
     inc  E                                             ;; 02:692b $1c
     ret                                                ;; 02:692c $c9
 
-jp_02_692d:
+.dpad_up:
     call call_02_6a59                                  ;; 02:692d $cd $59 $6a
     push HL                                            ;; 02:6930 $e5
     push DE                                            ;; 02:6931 $d5
@@ -4767,7 +4771,7 @@ jp_02_692d:
     pop  HL                                            ;; 02:6936 $e1
     ret                                                ;; 02:6937 $c9
 
-jp_02_6938:
+.dpad_down:
     call call_02_69aa                                  ;; 02:6938 $cd $aa $69
     push HL                                            ;; 02:693b $e5
     push DE                                            ;; 02:693c $d5
@@ -4776,7 +4780,7 @@ jp_02_6938:
     pop  HL                                            ;; 02:6941 $e1
     ret                                                ;; 02:6942 $c9
 
-jp_02_6943:
+.start_button:
     ld   A, [wDialogType]                              ;; 02:6943 $fa $4a $d8
     cp   A, $1e                                        ;; 02:6946 $fe $1e
     ret  NZ                                            ;; 02:6948 $c0
@@ -4794,7 +4798,7 @@ jp_02_6943:
     push AF                                            ;; 02:695e $f5
     jr   Z, .loop_1                                    ;; 02:695f $28 $03
     ld   DE, wGirlName                                 ;; 02:6961 $11 $a2 $d7
-.loop_1:
+.copy_name_loop:
     ld   A, [HL+]                                      ;; 02:6964 $2a
     ld   [DE], A                                       ;; 02:6965 $12
     inc  DE                                            ;; 02:6966 $13
@@ -4804,7 +4808,7 @@ jp_02_6943:
     ld   [HL], A                                       ;; 02:696b $77
     ld   HL, wD7A7                                     ;; 02:696c $21 $a7 $d7
     ld   B, $04                                        ;; 02:696f $06 $04
-.loop_2:
+.clear_scratch_loop:
     ld   [HL+], A                                      ;; 02:6971 $22
     dec  B                                             ;; 02:6972 $05
     jr   NZ, jp_02_6943.loop_2                         ;; 02:6973 $20 $fc
@@ -5749,7 +5753,7 @@ initTimers:
     call getEquippedWeaponElements                     ;; 02:6f0c $cd $56 $71
     ret                                                ;; 02:6f0f $c9
 
-data_02_6f10:
+startingEquipment:
     db   $01, $27, $af, $11, $b0, $1c                  ;; 02:6f10 ......
 
 drawDefaultStatusBar:
@@ -6220,7 +6224,7 @@ openSaveScreen:
     ld   HL, wWindowFlags                              ;; 02:71e4 $21 $74 $d8
     res  2, [HL]                                       ;; 02:71e7 $cb $96
 
-jr_02_71e9:
+openLoadSaveScreen_common:
     call call_02_667a                                  ;; 02:71e9 $cd $7a $66
     ret  NZ                                            ;; 02:71ec $c0
     call clearStatusBar                                ;; 02:71ed $cd $57 $51
@@ -7513,7 +7517,7 @@ call_02_7a27:
     call showSpritesBehindWindow_trampoline            ;; 02:7a36 $cd $35 $04
     ret                                                ;; 02:7a39 $c9
 
-call_02_7a3a:
+showStatusBar:
     push DE                                            ;; 02:7a3a $d5
     ld   D, $8e                                        ;; 02:7a3b $16 $8e
     ld   E, $7e                                        ;; 02:7a3d $1e $7e
@@ -7521,7 +7525,7 @@ call_02_7a3a:
     pop  DE                                            ;; 02:7a42 $d1
     ret                                                ;; 02:7a43 $c9
 
-call_02_7a44:
+hideStatusBar:
     push DE                                            ;; 02:7a44 $d5
     ld   D, $7e                                        ;; 02:7a45 $16 $7e
     ld   E, $8e                                        ;; 02:7a47 $1e $8e
@@ -7529,7 +7533,8 @@ call_02_7a44:
     pop  DE                                            ;; 02:7a4c $d1
     ret                                                ;; 02:7a4d $c9
 
-call_02_7a4e:
+; Used to hide/show the status bar
+lcdcEffectChangeLCY:
     push HL                                            ;; 02:7a4e $e5
     push BC                                            ;; 02:7a4f $c5
     ld   HL, wLCDCEffectBuffer                         ;; 02:7a50 $21 $a0 $d3
@@ -7546,7 +7551,7 @@ call_02_7a4e:
     pop  BC                                            ;; 02:7a5f $c1
     pop  HL                                            ;; 02:7a60 $e1
     ret                                                ;; 02:7a61 $c9
-.jr_02_7a62:
+.change:
     dec  HL                                            ;; 02:7a62 $2b
     ld   [HL], E                                       ;; 02:7a63 $73
     pop  BC                                            ;; 02:7a64 $c1
@@ -7706,7 +7711,7 @@ itemsListCrystal:
 itemsListDamage:
     db   $05, $07, $08, $17, $18, $00                  ;; 02:7b36 ......
 
-InitPostIntEnable:
+titleScreenInit:
     ld   A, $11                                        ;; 02:7b3c $3e $11
     ld   [wMainGameState], A                           ;; 02:7b3e $ea $a0 $c0
     ld   A, $3c                                        ;; 02:7b41 $3e $3c
@@ -7723,7 +7728,7 @@ InitPostIntEnable:
     ld   [wRndState1], A                               ;; 02:7b5b $ea $b1 $c0
     ld   HL, wOpenChestScript1                         ;; 02:7b5e $21 $13 $d6
     ld   DE, startTitleScreenMusicScript               ;; 02:7b61 $11 $9c $7b
-.jr_02_7b64:
+.loop:
     ld   A, [DE]                                       ;; 02:7b64 $1a
     ld   [HL+], A                                      ;; 02:7b65 $22
     inc  DE                                            ;; 02:7b66 $13
@@ -7743,7 +7748,7 @@ InitPostIntEnable:
     ld   [wIntroScrollState], A                        ;; 02:7b81 $ea $86 $d8
     ret                                                ;; 02:7b84 $c9
 
-showTitleScreenMenu:
+titleScreenShowMenu:
     ld   HL, wTitleScreenDelay                         ;; 02:7b85 $21 $8c $d8
     dec  [HL]                                          ;; 02:7b88 $35
     ret  NZ                                            ;; 02:7b89 $c0
@@ -7756,12 +7761,13 @@ showTitleScreenMenu:
     ld   [wIntroScrollState], A                        ;; 02:7b98 $ea $86 $d8
     ret                                                ;; 02:7b9b $c9
 
+; This is a short script used to start the music on the title screen
 ;    sSET_MUSIC 1
 ;    sEND
 startTitleScreenMusicScript:
     db   $f8, $01, $00                                 ;; 02:7b9c ...
 
-jp_02_7b9f:
+menuSelectionTitleScreen:
     call hideAndSaveMenuMetasprites                    ;; 02:7b9f $cd $51 $6b
     ld   A, $7f                                        ;; 02:7ba2 $3e $7f
     ld   B, $3c                                        ;; 02:7ba4 $06 $3c
@@ -7773,7 +7779,7 @@ jp_02_7b9f:
     ld   A, [wSelectedMenuIndex]                       ;; 02:7bad $fa $4b $d8
     and  A, A                                          ;; 02:7bb0 $a7
     jr   NZ, .jr_02_7bc3                               ;; 02:7bb1 $20 $10
-.jr_02_7bb3:
+.new_game:
     xor  A, A                                          ;; 02:7bb3 $af
     ld   [wMenuStateCurrentFunction], A                ;; 02:7bb4 $ea $53 $d8
     ld   A, [wMainGameState]                           ;; 02:7bb7 $fa $a0 $c0
@@ -7781,7 +7787,7 @@ jp_02_7b9f:
     ld   A, $11                                        ;; 02:7bbd $3e $11
     ld   [wMainGameState], A                           ;; 02:7bbf $ea $a0 $c0
     ret                                                ;; 02:7bc2 $c9
-.jr_02_7bc3:
+.continue:
     ld   A, [wWindowFlags]                             ;; 02:7bc3 $fa $74 $d8
     and  A, $18                                        ;; 02:7bc6 $e6 $18
     jr   Z, .jr_02_7bb3                                ;; 02:7bc8 $28 $e9
@@ -7793,7 +7799,7 @@ jp_02_7b9f:
     call call_02_6c98                                  ;; 02:7bd7 $cd $98 $6c
     jp   openLoadScreen                                ;; 02:7bda $c3 $dd $71
 
-introScrollHandler:
+gameStateTitleScreen:
     ld   A, [wIntroScrollState]                        ;; 02:7bdd $fa $86 $d8
     add  A, A                                          ;; 02:7be0 $87
     ld   HL, .data_02_7bec                             ;; 02:7be1 $21 $ec $7b
@@ -7805,14 +7811,15 @@ introScrollHandler:
     ld   L, A                                          ;; 02:7bea $6f
     jp   HL                                            ;; 02:7beb $e9
 ;@jumptable
-.data_02_7bec:
+.titleScreenStatesJumptable:
     dw   call_02_7bf6                                  ;; 02:7bec pP
     dw   call_02_7c3f                                  ;; 02:7bee pP
     dw   introScrollLoop                               ;; 02:7bf0 pP
     dw   call_02_7cc9                                  ;; 02:7bf2 pP
     dw   showTitleScreenMenu                           ;; 02:7bf4 pP
 
-call_02_7bf6:
+; Called when New Game is selected
+titleScreenIntroScrollStart:
     ld   HL, wVideoSCY                                 ;; 02:7bf6 $21 $a7 $c0
     ld   A, [HL]                                       ;; 02:7bf9 $7e
     ld   [wD888], A                                    ;; 02:7bfa $ea $88 $d8
@@ -7846,7 +7853,7 @@ call_02_7bf6:
     call prepareIntroScrollEffect_trampoline           ;; 02:7c3b $cd $aa $0d
     ret                                                ;; 02:7c3e $c9
 
-call_02_7c3f:
+titleScreenIntroScrollPrintLine:
     ld   A, [wD88F]                                    ;; 02:7c3f $fa $8f $d8
     ld   H, A                                          ;; 02:7c42 $67
     ld   A, [wD88E]                                    ;; 02:7c43 $fa $8e $d8
@@ -7889,7 +7896,7 @@ call_02_7c3f:
     ld   [wIntroScrollState], A                        ;; 02:7c8b $ea $86 $d8
     ret                                                ;; 02:7c8e $c9
 
-introScrollLoop:
+titleScreenIntroScrollLoop:
     call updateJoypadInput_trampoline                  ;; 02:7c8f $cd $d1 $1e
     bit  4, C                                          ;; 02:7c92 $cb $61
     jr   NZ, .jr_02_7cbb                               ;; 02:7c94 $20 $25
@@ -7911,7 +7918,7 @@ introScrollLoop:
     ld   A, $01                                        ;; 02:7cb5 $3e $01
     ld   [wIntroScrollState], A                        ;; 02:7cb7 $ea $86 $d8
     ret                                                ;; 02:7cba $c9
-.jr_02_7cbb:
+.a_button:
     ld   B, $24                                        ;; 02:7cbb $06 $24
     ld   DE, $9800                                     ;; 02:7cbd $11 $00 $98
     call clearVRAMArea                                 ;; 02:7cc0 $cd $6a $56
@@ -7919,7 +7926,7 @@ introScrollLoop:
     ld   [wIntroScrollState], A                        ;; 02:7cc5 $ea $86 $d8
     ret                                                ;; 02:7cc8 $c9
 
-call_02_7cc9:
+titleScreenIntroScrollInterupted:
     ld   A, [wD888]                                    ;; 02:7cc9 $fa $88 $d8
     ld   [wVideoSCY], A                                ;; 02:7ccc $ea $a7 $c0
     call call_02_667a                                  ;; 02:7ccf $cd $7a $66
@@ -7927,7 +7934,7 @@ call_02_7cc9:
     and  A, $80                                        ;; 02:7cd5 $e6 $80
     ret  NZ                                            ;; 02:7cd7 $c0
 
-jp_02_7cd8:
+titleScreenIntroScrollEnd:
     xor  A, A                                          ;; 02:7cd8 $af
     ld   [wIntroScrollState], A                        ;; 02:7cd9 $ea $86 $d8
     ld   A, [wVideoWYBackup]                           ;; 02:7cdc $fa $84 $d8
