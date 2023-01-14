@@ -29,7 +29,7 @@ data_01_4000:
     call_to_bank_target openMinimap                    ;; 01:4022 pP
     call_to_bank_target closeMinimap                   ;; 01:4024 pP
     call_to_bank_target prepareIntroScrollEffect       ;; 01:4026 pP
-    call_to_bank_target call_01_40d8                   ;; 01:4028 pP
+    call_to_bank_target introScrollEffectUpdateLCDEffect ;; 01:4028 pP
     call_to_bank_target setDefaultLCDEffectAndBGP      ;; 01:402a pP
     call_to_bank_target prepareLetterboxEffect         ;; 01:402c ??
     call_to_bank_target prepareDefaultEffect           ;; 01:402e ??
@@ -134,7 +134,7 @@ introScrollEffectUpdateLCDEffect:
     ld   [HL], A                                       ;; 01:40ed $77
     add  HL, DE                                        ;; 01:40ee $19
     dec  B                                             ;; 01:40ef $05
-    jr   NZ, call_01_40d8.loop                         ;; 01:40f0 $20 $f7
+    jr   NZ, introScrollEffectUpdateLCDEffect.loop     ;; 01:40f0 $20 $f7
     ret                                                ;; 01:40f2 $c9
 
 setDefaultLCDEffectAndBGP:
@@ -485,7 +485,7 @@ call_01_433e:
     ld   B, $50                                        ;; 01:4358 $06 $50
     call copyHLtoDE                                    ;; 01:435a $cd $49 $2b
     ld   HL, wRoomTiles                                ;; 01:435d $21 $50 $c3
-    call call_00_1b74                                  ;; 01:4360 $cd $74 $1b
+    call loadRoomTiles                                 ;; 01:4360 $cd $74 $1b
     ld   A, [wDoorStatesMinimapBackup]                 ;; 01:4363 $fa $a4 $d4
     ld   [wDoorStates], A                              ;; 01:4366 $ea $f4 $c3
     call drawRoom_trampoline                           ;; 01:4369 $cd $a4 $04
@@ -1301,7 +1301,7 @@ runMainInputHandler:
     dw   gameStateChocoboat                            ;; 01:49c9 ??
     dw   gameStateMenu_trampoline                      ;; 01:49cb pP
     dw   gameStateScript                               ;; 01:49cd pP
-    dw   introScrollHandler_trampoline                 ;; 01:49cf pP
+    dw   gameStateTitleScreen_trampoline               ;; 01:49cf pP
 
 ; D = pressed buttons
 ; E = newly pressed buttons
@@ -1396,7 +1396,7 @@ gameStateNormal:
 .right:
     push BC                                            ;; 01:4a6c $c5
     ld   C, $04                                        ;; 01:4a6d $0e $04
-    call call_00_036f                                  ;; 01:4a6f $cd $6f $03
+    call checkPlayfieldBoundaryCollision_trampoline    ;; 01:4a6f $cd $6f $03
     ld   A, B                                          ;; 01:4a72 $78
     pop  BC                                            ;; 01:4a73 $c1
     jp   NZ, .jp_01_4b18                               ;; 01:4a74 $c2 $18 $4b
@@ -1417,7 +1417,7 @@ gameStateNormal:
 .left:
     push BC                                            ;; 01:4a9a $c5
     ld   C, $04                                        ;; 01:4a9b $0e $04
-    call call_00_036f                                  ;; 01:4a9d $cd $6f $03
+    call checkPlayfieldBoundaryCollision_trampoline    ;; 01:4a9d $cd $6f $03
     ld   A, B                                          ;; 01:4aa0 $78
     pop  BC                                            ;; 01:4aa1 $c1
     jr   NZ, .jp_01_4b18                               ;; 01:4aa2 $20 $74
@@ -1438,7 +1438,7 @@ gameStateNormal:
 .up:
     push BC                                            ;; 01:4ac4 $c5
     ld   C, $04                                        ;; 01:4ac5 $0e $04
-    call call_00_036f                                  ;; 01:4ac7 $cd $6f $03
+    call checkPlayfieldBoundaryCollision_trampoline    ;; 01:4ac7 $cd $6f $03
     ld   A, B                                          ;; 01:4aca $78
     pop  BC                                            ;; 01:4acb $c1
     jr   NZ, .jp_01_4b18                               ;; 01:4acc $20 $4a
@@ -1459,7 +1459,7 @@ gameStateNormal:
 .down:
     push BC                                            ;; 01:4aee $c5
     ld   C, $04                                        ;; 01:4aef $0e $04
-    call call_00_036f                                  ;; 01:4af1 $cd $6f $03
+    call checkPlayfieldBoundaryCollision_trampoline    ;; 01:4af1 $cd $6f $03
     ld   A, B                                          ;; 01:4af4 $78
     pop  BC                                            ;; 01:4af5 $c1
     jr   NZ, .jp_01_4b18                               ;; 01:4af6 $20 $20
@@ -1958,7 +1958,7 @@ gameStateSpecialAttack:
     jr   .jr_01_4e68                                   ;; 01:4e2a $18 $3c
 .jr_01_4e2c:
     ld   C, $04                                        ;; 01:4e2c $0e $04
-    call call_00_036f                                  ;; 01:4e2e $cd $6f $03
+    call checkPlayfieldBoundaryCollision_trampoline    ;; 01:4e2e $cd $6f $03
     ld   A, B                                          ;; 01:4e31 $78
     jr   NZ, .jr_01_4e68                               ;; 01:4e32 $20 $34
     bit  0, A                                          ;; 01:4e34 $cb $47
@@ -1967,7 +1967,7 @@ gameStateSpecialAttack:
     jr   .jr_01_4e7a                                   ;; 01:4e39 $18 $3f
 .jr_01_4e3b:
     ld   C, $04                                        ;; 01:4e3b $0e $04
-    call call_00_036f                                  ;; 01:4e3d $cd $6f $03
+    call checkPlayfieldBoundaryCollision_trampoline    ;; 01:4e3d $cd $6f $03
     ld   A, B                                          ;; 01:4e40 $78
     jr   NZ, .jr_01_4e68                               ;; 01:4e41 $20 $25
     bit  1, A                                          ;; 01:4e43 $cb $4f
@@ -1976,7 +1976,7 @@ gameStateSpecialAttack:
     jr   .jr_01_4e7a                                   ;; 01:4e48 $18 $30
 .jr_01_4e4a:
     ld   C, $04                                        ;; 01:4e4a $0e $04
-    call call_00_036f                                  ;; 01:4e4c $cd $6f $03
+    call checkPlayfieldBoundaryCollision_trampoline    ;; 01:4e4c $cd $6f $03
     ld   A, B                                          ;; 01:4e4f $78
     jr   NZ, .jr_01_4e68                               ;; 01:4e50 $20 $16
     bit  2, A                                          ;; 01:4e52 $cb $57
@@ -1985,7 +1985,7 @@ gameStateSpecialAttack:
     jr   .jr_01_4e7a                                   ;; 01:4e57 $18 $21
 .jr_01_4e59:
     ld   C, $04                                        ;; 01:4e59 $0e $04
-    call call_00_036f                                  ;; 01:4e5b $cd $6f $03
+    call checkPlayfieldBoundaryCollision_trampoline    ;; 01:4e5b $cd $6f $03
     ld   A, B                                          ;; 01:4e5e $78
     jr   NZ, .jr_01_4e68                               ;; 01:4e5f $20 $07
     bit  3, A                                          ;; 01:4e61 $cb $5f
@@ -2516,7 +2516,7 @@ attackTile:
     ld   B, A                                          ;; 01:51e7 $47
     ld   A, C                                          ;; 01:51e8 $79
     and  A, $07                                        ;; 01:51e9 $e6 $07
-    ld   HL, .data_01_51f2                             ;; 01:51eb $21 $f2 $51
+    ld   HL, .attackTileJumptable                      ;; 01:51eb $21 $f2 $51
     call callJumptable                                 ;; 01:51ee $cd $70 $2b
     ret                                                ;; 01:51f1 $c9
 ;@jumptable amount=8
@@ -4090,77 +4090,77 @@ useSpecialAttack:
 useWeaponItemOrSpecial:
     call getPlayerDirection                            ;; 01:5a95 $cd $ab $02
     bit  0, A                                          ;; 01:5a98 $cb $47
-    jr   NZ, .playerFacingWest                         ;; 01:5a9a $20 $0f
+    jr   NZ, .playerFacingEast                         ;; 01:5a9a $20 $0f
     bit  1, A                                          ;; 01:5a9c $cb $4f
-    jr   NZ, .playerFacingEast                         ;; 01:5a9e $20 $25
+    jr   NZ, .playerFacingWest                         ;; 01:5a9e $20 $25
     bit  2, A                                          ;; 01:5aa0 $cb $57
-    jr   NZ, .playerFacingSouth                        ;; 01:5aa2 $20 $3b
+    jr   NZ, .playerFacingNorth                        ;; 01:5aa2 $20 $3b
     bit  3, A                                          ;; 01:5aa4 $cb $5f
-    jp   NZ, .playerFacingNorth                        ;; 01:5aa6 $c2 $f9 $5a
+    jp   NZ, .playerFacingSouth                        ;; 01:5aa6 $c2 $f9 $5a
     pop  DE                                            ;; 01:5aa9 $d1
     ret                                                ;; 01:5aaa $c9
 .playerFacingEast:
     pop  DE                                            ;; 01:5aab $d1
     ld   A, D                                          ;; 01:5aac $7a
     bit  7, E                                          ;; 01:5aad $cb $7b
-    jr   NZ, useWeaponItemOrSpecial.specialAttackWest  ;; 01:5aaf $20 $0a
+    jr   NZ, useWeaponItemOrSpecial.specialAttackEast  ;; 01:5aaf $20 $0a
     ld   C, $0a                                        ;; 01:5ab1 $0e $0a
     and  A, $0f                                        ;; 01:5ab3 $e6 $0f
-    jr   NZ, .jr_01_5b11                               ;; 01:5ab5 $20 $5a
+    jr   NZ, useWeaponItemOrSpecial.do_attack          ;; 01:5ab5 $20 $5a
     ld   C, $12                                        ;; 01:5ab7 $0e $12
-    jr   .jr_01_5b11                                   ;; 01:5ab9 $18 $56
+    jr   useWeaponItemOrSpecial.do_attack              ;; 01:5ab9 $18 $56
 .specialAttackEast:
     ld   C, $1a                                        ;; 01:5abb $0e $1a
     and  A, $0f                                        ;; 01:5abd $e6 $0f
-    jr   NZ, .jr_01_5b11                               ;; 01:5abf $20 $50
+    jr   NZ, useWeaponItemOrSpecial.do_attack          ;; 01:5abf $20 $50
     ld   C, $22                                        ;; 01:5ac1 $0e $22
-    jr   .jr_01_5b11                                   ;; 01:5ac3 $18 $4c
+    jr   useWeaponItemOrSpecial.do_attack              ;; 01:5ac3 $18 $4c
 .playerFacingWest:
     pop  DE                                            ;; 01:5ac5 $d1
     ld   A, D                                          ;; 01:5ac6 $7a
     bit  7, E                                          ;; 01:5ac7 $cb $7b
-    jr   NZ, useWeaponItemOrSpecial.specialAttackEast  ;; 01:5ac9 $20 $0a
+    jr   NZ, useWeaponItemOrSpecial.specialAttackWest  ;; 01:5ac9 $20 $0a
     ld   C, $0c                                        ;; 01:5acb $0e $0c
     and  A, $0f                                        ;; 01:5acd $e6 $0f
-    jr   NZ, .jr_01_5b11                               ;; 01:5acf $20 $40
+    jr   NZ, useWeaponItemOrSpecial.do_attack          ;; 01:5acf $20 $40
     ld   C, $14                                        ;; 01:5ad1 $0e $14
-    jr   .jr_01_5b11                                   ;; 01:5ad3 $18 $3c
+    jr   useWeaponItemOrSpecial.do_attack              ;; 01:5ad3 $18 $3c
 .specialAttackWest:
     ld   C, $1c                                        ;; 01:5ad5 $0e $1c
     and  A, $0f                                        ;; 01:5ad7 $e6 $0f
-    jr   NZ, .jr_01_5b11                               ;; 01:5ad9 $20 $36
+    jr   NZ, useWeaponItemOrSpecial.do_attack          ;; 01:5ad9 $20 $36
     ld   C, $24                                        ;; 01:5adb $0e $24
-    jr   .jr_01_5b11                                   ;; 01:5add $18 $32
+    jr   useWeaponItemOrSpecial.do_attack              ;; 01:5add $18 $32
 .playerFacingNorth:
     pop  DE                                            ;; 01:5adf $d1
     ld   A, D                                          ;; 01:5ae0 $7a
     bit  7, E                                          ;; 01:5ae1 $cb $7b
-    jr   NZ, useWeaponItemOrSpecial.specialAttackSouth ;; 01:5ae3 $20 $0a
+    jr   NZ, useWeaponItemOrSpecial.specialAttackNorth ;; 01:5ae3 $20 $0a
     ld   C, $0e                                        ;; 01:5ae5 $0e $0e
     and  A, $0f                                        ;; 01:5ae7 $e6 $0f
-    jr   NZ, .jr_01_5b11                               ;; 01:5ae9 $20 $26
+    jr   NZ, useWeaponItemOrSpecial.do_attack          ;; 01:5ae9 $20 $26
     ld   C, $16                                        ;; 01:5aeb $0e $16
-    jr   .jr_01_5b11                                   ;; 01:5aed $18 $22
+    jr   useWeaponItemOrSpecial.do_attack              ;; 01:5aed $18 $22
 .specialAttackNorth:
     ld   C, $1e                                        ;; 01:5aef $0e $1e
     and  A, $0f                                        ;; 01:5af1 $e6 $0f
-    jr   NZ, .jr_01_5b11                               ;; 01:5af3 $20 $1c
+    jr   NZ, useWeaponItemOrSpecial.do_attack          ;; 01:5af3 $20 $1c
     ld   C, $26                                        ;; 01:5af5 $0e $26
-    jr   .jr_01_5b11                                   ;; 01:5af7 $18 $18
+    jr   useWeaponItemOrSpecial.do_attack              ;; 01:5af7 $18 $18
 .playerFacingSouth:
     pop  DE                                            ;; 01:5af9 $d1
     ld   A, D                                          ;; 01:5afa $7a
     bit  7, E                                          ;; 01:5afb $cb $7b
-    jr   NZ, useWeaponItemOrSpecial.specialAttackNorth ;; 01:5afd $20 $0a
+    jr   NZ, useWeaponItemOrSpecial.specialAttackSouth ;; 01:5afd $20 $0a
     ld   C, $10                                        ;; 01:5aff $0e $10
     and  A, $0f                                        ;; 01:5b01 $e6 $0f
-    jr   NZ, .jr_01_5b11                               ;; 01:5b03 $20 $0c
+    jr   NZ, useWeaponItemOrSpecial.do_attack          ;; 01:5b03 $20 $0c
     ld   C, $18                                        ;; 01:5b05 $0e $18
-    jr   .jr_01_5b11                                   ;; 01:5b07 $18 $08
+    jr   useWeaponItemOrSpecial.do_attack              ;; 01:5b07 $18 $08
 .specialAttackSouth:
     ld   C, $20                                        ;; 01:5b09 $0e $20
     and  A, $0f                                        ;; 01:5b0b $e6 $0f
-    jr   NZ, .jr_01_5b11                               ;; 01:5b0d $20 $02
+    jr   NZ, useWeaponItemOrSpecial.do_attack          ;; 01:5b0d $20 $02
     ld   C, $28                                        ;; 01:5b0f $0e $28
 .do_attack:
     push BC                                            ;; 01:5b11 $c5
@@ -4171,7 +4171,7 @@ useWeaponItemOrSpecial:
     call doSpellOrItemEffect_trampoline                ;; 01:5b1b $cd $1d $31
     ld   [wCurrentPlayerAttackWillCharge], A           ;; 01:5b1e $ea $63 $cf
     ld   A, [wEquippedItemAnimationType]               ;; 01:5b21 $fa $59 $cf
-    jr   .jr_01_5b2f                                   ;; 01:5b24 $18 $09
+    jr   useWeaponItemOrSpecial.attack_common          ;; 01:5b24 $18 $09
 .weapon:
     call attackWithWeaponUseWill_trampoline            ;; 01:5b26 $cd $29 $31
     ld   [wCurrentPlayerAttackWillCharge], A           ;; 01:5b29 $ea $63 $cf

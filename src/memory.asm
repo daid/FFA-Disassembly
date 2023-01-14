@@ -966,17 +966,14 @@ wGirlName:
 ; Used as one byte to store a save file's current level between showing the level and E to next level on the Save/Load screen
 wSRAMSaveHeader:
     ds 1                                               ;; d7a7
-
 ; Used as two bytes to store the checksum before writing a save to SRAM
 ; Used as eight bytes for BCD conversion of Experience values for display
 ._1:
     ds 2                                               ;; d7a8
-
 ; Used as eight bytes to load and save the names in SRAM
 ; Between loading and saving, names are copied to d79d and d7a2, and this space may be used for scratch
 ._3:
     ds 7                                               ;; d7aa
-
 ; Used to save and restore the finger position on the naming screen when you press the B button
 ._a:
     ds 1                                               ;; d7b1
@@ -1421,7 +1418,7 @@ wD89E:
 wD89F:
     ds 3                                               ;; d89f
 
-wRegisterSave1.L:
+wRegisterSave1:
     ds 1                                               ;; d8a2
 .H:
     ds 1                                               ;; d8a3
@@ -1438,7 +1435,7 @@ wRegisterSave1.L:
 .A:
     ds 1                                               ;; d8a9
 
-wRegisterSave2.L:
+wRegisterSave2:
     ds 1                                               ;; d8aa
 .H:
     ds 1                                               ;; d8ab

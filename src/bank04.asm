@@ -13,7 +13,7 @@ SECTION "bank04", ROMX[$4000], BANK[$04]
     call_to_bank_target bossTakeDamage                 ;; 04:4006 pP
     call_to_bank_target call_04_4735                   ;; 04:4008 ??
     call_to_bank_target bossCollisionHandling          ;; 04:400a pP
-    call_to_bank_target call_04_400e                   ;; 04:400c pP
+    call_to_bank_target checkPlayfieldBoundaryCollision ;; 04:400c pP
 
 ; Calculates the object's distance to the nearest playfield border
 ; Player and followers (Collision Flags bit 6 set) are allowed to step half way off the screen edges
@@ -137,7 +137,7 @@ bossLogic:
     ld   L, A                                          ;; 04:40a8 $6f
     ld   H, $00                                        ;; 04:40a9 $26 $00
     add  HL, HL                                        ;; 04:40ab $29
-    ld   A, [wBossCurrentHeadActionPointer.head]       ;; 04:40ac $fa $3f $d4
+    ld   A, [wBossCurrentHeadActionPointer.high]       ;; 04:40ac $fa $3f $d4
     ld   D, A                                          ;; 04:40af $57
     ld   A, [wBossCurrentHeadActionPointer]            ;; 04:40b0 $fa $3e $d4
     ld   E, A                                          ;; 04:40b3 $5f
@@ -391,7 +391,7 @@ call_04_4209:
     ld   A, $00                                        ;; 04:4210 $3e $00
     ld   [wD3EE], A                                    ;; 04:4212 $ea $ee $d3
     ld   [wD3EF], A                                    ;; 04:4215 $ea $ef $d3
-    ld   A, [wBossCurrentHeadActionPointer.head]       ;; 04:4218 $fa $3f $d4
+    ld   A, [wBossCurrentHeadActionPointer.high]       ;; 04:4218 $fa $3f $d4
     ld   H, A                                          ;; 04:421b $67
     ld   A, [wBossCurrentHeadActionPointer]            ;; 04:421c $fa $3e $d4
     ld   L, A                                          ;; 04:421f $6f
@@ -425,7 +425,7 @@ call_04_4240:
     ld   D, [HL]                                       ;; 04:4245 $56
     inc  HL                                            ;; 04:4246 $23
     ld   A, D                                          ;; 04:4247 $7a
-    ld   [wBossCurrentHeadActionPointer.head], A       ;; 04:4248 $ea $3f $d4
+    ld   [wBossCurrentHeadActionPointer.high], A       ;; 04:4248 $ea $3f $d4
     ld   A, E                                          ;; 04:424b $7b
     ld   [wBossCurrentHeadActionPointer], A            ;; 04:424c $ea $3e $d4
     ld   A, [HL+]                                      ;; 04:424f $2a
