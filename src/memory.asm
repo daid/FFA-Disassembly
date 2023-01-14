@@ -1585,22 +1585,10 @@ hSoundEffectLoopCounterChannel1:
 ; END OF AUDIO ENGINE HRAM (ff9e is not included)
 ; One byte long
 hSoundEffectLoopCounterChannel4:
-    ds 93                                              ;; ff9d
-
-; Unused. Two's complement fffa is equal to -6
-hNegative6:
-    ds 2                                               ;; fffa
-
-; Unused. Two's complement fffa is equal to -4
-hNegative4:
-    ds 1                                               ;; fffc
-
-; Unused. Two's complement fffa is equal to -3
-hNegative3:
-    ds 1                                               ;; fffd
+    ds 97                                              ;; ff9d
 
 ; Used as the stack location at init for exactly one call, but also used as -2.
-hNegative2:
+hInitialSP:
     ds 1                                               ;; fffe
 
 SECTION "vram", VRAM[$8000]

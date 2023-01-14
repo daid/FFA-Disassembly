@@ -1921,7 +1921,7 @@ inflictVulnerableNpcsSlep:
     jr   NZ, .jr_03_4ab7                               ;; 03:4aad $20 $08
     pop  DE                                            ;; 03:4aaf $d1
     push DE                                            ;; 03:4ab0 $d5
-    ld   HL, hNegative6                                ;; 03:4ab1 $21 $fa $ff
+    ld   HL, -6 ;@=value signed=True                   ;; 03:4ab1 $21 $fa $ff
     add  HL, DE                                        ;; 03:4ab4 $19
     set  7, [HL]                                       ;; 03:4ab5 $cb $fe
 .jr_03_4ab7:
@@ -1945,7 +1945,7 @@ inflictVulnerableNpcsMute:
     jr   NZ, .jr_03_4ad9                               ;; 03:4acf $20 $08
     pop  DE                                            ;; 03:4ad1 $d1
     push DE                                            ;; 03:4ad2 $d5
-    ld   HL, hNegative6                                ;; 03:4ad3 $21 $fa $ff
+    ld   HL, -6 ;@=value signed=True                   ;; 03:4ad3 $21 $fa $ff
     add  HL, DE                                        ;; 03:4ad6 $19
     set  6, [HL]                                       ;; 03:4ad7 $cb $f6
 .jr_03_4ad9:

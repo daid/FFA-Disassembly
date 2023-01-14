@@ -1055,7 +1055,7 @@ getObjectPositionAndCollisionInfo:
     ld   D, A                                          ;; 00:067d $57
     ld   E, [HL]                                       ;; 00:067e $5e
     or   A, E                                          ;; 00:067f $b3
-    ld   BC, hNegative3                                ;; 00:0680 $01 $fd $ff
+    ld   BC, -3 ;@=value signed=True                   ;; 00:0680 $01 $fd $ff
     add  HL, BC                                        ;; 00:0683 $09
     ld   B, [HL]                                       ;; 00:0684 $46
     srl  D                                             ;; 00:0685 $cb $3a
@@ -1565,7 +1565,7 @@ call_00_0961:
     swap A                                             ;; 00:097e $cb $37
     ld   C, A                                          ;; 00:0980 $4f
     pop  HL                                            ;; 00:0981 $e1
-    ld   DE, hNegative2                                ;; 00:0982 $11 $fe $ff
+    ld   DE, -2 ;@=value signed=True                   ;; 00:0982 $11 $fe $ff
     add  HL, DE                                        ;; 00:0985 $19
     ld   A, [HL]                                       ;; 00:0986 $7e
     pop  DE                                            ;; 00:0987 $d1
@@ -4420,7 +4420,7 @@ call_00_1a30:
 ; Return: A = VRAM tile number of the loaded tile
 loadMinimapTile:
     call loadRoomTile                                  ;; 00:1a3b $cd $a1 $1b
-    ld   DE, $ff00                                     ;; 00:1a3e $11 $00 $ff
+    ld   DE, -$0100 ;@=value signed=True               ;; 00:1a3e $11 $00 $ff
     add  HL, DE                                        ;; 00:1a41 $19
     ld   A, [HL]                                       ;; 00:1a42 $7e
     ret                                                ;; 00:1a43 $c9
@@ -4430,7 +4430,7 @@ loadMinimapTile:
 ; Return: Z if all tiles are already cached, NZ if not
 mapGraphicsStateCheckCache:
     push AF                                            ;; 00:1a44 $f5
-    ld   A, $08                                        ;; 00:1a45 $3e $08
+    ld   A, BANK(metatilesOutdoor) ;@=bank metatilesOutdoor ;; 00:1a45 $3e $08
     call pushBankNrAndSwitch                           ;; 00:1a47 $cd $fb $29
     pop  AF                                            ;; 00:1a4a $f1
     call getTileInfoPointer                            ;; 00:1a4b $cd $19 $1b
@@ -4629,7 +4629,7 @@ mapGraphicsStateUpdateCache:
     dec  A                                             ;; 00:1b58 $3d
     jr   NZ, mapGraphicsStateUpdateCache.next          ;; 00:1b59 $20 $14
     push HL                                            ;; 00:1b5b $e5
-    ld   DE, $ff00                                     ;; 00:1b5c $11 $00 $ff
+    ld   DE, -$0100 ;@=value signed=True                ;; 00:1b5c $11 $00 $ff
     add  HL, DE                                        ;; 00:1b5f $19
     ld   A, $80                                        ;; 00:1b60 $3e $80
     add  A, [HL]                                       ;; 00:1b62 $86
@@ -4649,7 +4649,7 @@ mapGraphicsStateUpdateCache:
 ; Ensures all needed tiles are loaded for the room's metatiles
 loadRoomTiles:
     push HL                                            ;; 00:1b74 $e5
-    ld   A, $08                                        ;; 00:1b75 $3e $08
+    ld   A, BANK(metatilesOutdoor) ;@=bank metatilesOutdoor ;; 00:1b75 $3e $08
     call pushBankNrAndSwitch                           ;; 00:1b77 $cd $fb $29
     pop  HL                                            ;; 00:1b7a $e1
     push HL                                            ;; 00:1b7b $e5
@@ -4713,7 +4713,7 @@ loadRoomTile:
     pop  HL                                            ;; 00:1bcc $e1
     push HL                                            ;; 00:1bcd $e5
     ld   [HL], $0f                                     ;; 00:1bce $36 $0f
-    ld   DE, $ff00                                     ;; 00:1bd0 $11 $00 $ff
+    ld   DE, -$0100 ;@=value signed=True                ;; 00:1bd0 $11 $00 $ff
     add  HL, DE                                        ;; 00:1bd3 $19
     ld   [HL], A                                       ;; 00:1bd4 $77
     ld   L, A                                          ;; 00:1bd5 $6f
@@ -4741,7 +4741,7 @@ loadRoomTile:
     add  HL, DE                                        ;; 00:1bf3 $19
     pop  DE                                            ;; 00:1bf4 $d1
 ; Background tile graphics start at the beginning of bank c, then continue into bank b
-    ld   A, $0c                                        ;; 00:1bf5 $3e $0c
+    ld   A, BANK(tilesetGfxOutdoor) ;@=bank tilesetGfxOutdoor ;; 00:1bf5 $3e $0c
     push HL                                            ;; 00:1bf7 $e5
     bit  7, H                                          ;; 00:1bf8 $cb $7c
     jr   Z, .jr_00_1c01                                ;; 00:1bfa $28 $05
@@ -4752,7 +4752,7 @@ loadRoomTile:
     call addTileGraphicCopyRequest                     ;; 00:1c01 $cd $f5 $2d
     pop  HL                                            ;; 00:1c04 $e1
     push HL                                            ;; 00:1c05 $e5
-    ld   DE, hOAM_DMA_Routine                          ;; 00:1c06 $11 $80 $ff
+    ld   DE, -$80 ;@=value signed=True                 ;; 00:1c06 $11 $80 $ff
     add  HL, DE                                        ;; 00:1c09 $19
     ld   A, [wMapGraphicsPointer.High]                 ;; 00:1c0a $fa $91 $d3
     ld   D, A                                          ;; 00:1c0d $57
@@ -4774,7 +4774,7 @@ loadRoomTile:
 ; Background tile graphics start at the beginning of bank c, then continue into bank b
 ; but this code does not properly adjust the address for bank b, which doesn't matter
 ; because animated tiles are not used by the titlescreen, ending, or map screens
-    ld   A, $0c                                        ;; 00:1c26 $3e $0c
+    ld   A, BANK(tilesetGfxOutdoor) ;@=bank tilesetGfxOutdoor ;; 00:1c26 $3e $0c
     bit  7, B                                          ;; 00:1c28 $cb $78
     jr   Z, .jr_00_1c2d                                ;; 00:1c2a $28 $01
     dec  A                                             ;; 00:1c2c $3d
@@ -5233,7 +5233,7 @@ returnFromBankCall:
 
 Init:
     di                                                 ;; 00:1fca $f3
-    ld   SP, hNegative2                                ;; 00:1fcb $31 $fe $ff
+    ld   SP, hInitialSP                                ;; 00:1fcb $31 $fe $ff
     call InitPreIntEnable                              ;; 00:1fce $cd $f0 $1f
     ei                                                 ;; 00:1fd1 $fb
     call InitPostIntEnable_trampoline                  ;; 00:1fd2 $cd $53 $31
@@ -5271,7 +5271,7 @@ InitPreIntEnable:
     ld   [HL], $01                                     ;; 00:2014 $36 $01
     ld   A, L                                          ;; 00:2016 $7d
     ldh  [hBankStackPointer], A                        ;; 00:2017 $e0 $8a
-    ld   A, $08                                        ;; 00:2019 $3e $08
+    ld   A, BANK(gfxStatusBar) ;@=bank gfxStatusBar    ;; 00:2019 $3e $08
     ld   [$2100], A                                    ;; 00:201b $ea $00 $21
     ld   HL, gfxStatusBar                              ;; 00:201e $21 $00 $67
     ld   DE, $8f00                                     ;; 00:2021 $11 $00 $8f
@@ -5292,7 +5292,7 @@ InitPreIntEnable:
     ld   DE, hOAM_DMA_Routine                          ;; 00:204a $11 $80 $ff
     ld   B, $08                                        ;; 00:204d $06 $08
     call copyHLtoDE                                    ;; 00:204f $cd $49 $2b
-    ld   A, $0f                                        ;; 00:2052 $3e $0f
+    ld   A, BANK(initSoundEngine) ;@=bank initSoundEngine ;; 00:2052 $3e $0f
     ld   [$2100], A                                    ;; 00:2054 $ea $00 $21
     call initSoundEngine                               ;; 00:2057 $cd $03 $40
     ld   A, $e4                                        ;; 00:205a $3e $e4
@@ -5420,7 +5420,7 @@ DisableLCD:
     ret                                                ;; 00:217a $c9
 
 mainLoopPreInput:
-    ld   A, $0f                                        ;; 00:217b $3e $0f
+    ld   A, BANK(runSoundEngine) ;@=bank runSoundEngine ;; 00:217b $3e $0f
     call pushBankNrAndSwitch                           ;; 00:217d $cd $fb $29
     call runSoundEngine                                ;; 00:2180 $cd $00 $40
     call popBankNrAndSwitch                            ;; 00:2183 $cd $0a $2a
@@ -9800,7 +9800,7 @@ getBankNrForScript:
     ld   L, A                                          ;; 00:3c4b $6f
     ld   A, H                                          ;; 00:3c4c $7c
     cp   A, $80                                        ;; 00:3c4d $fe $80
-    ld   B, $0d                                        ;; 00:3c4f $06 $0d
+    ld   B, BANK(script_0000) ;@=bank script_0000      ;; 00:3c4f $06 $0d
     jr   C, .jr_00_3c5c                                ;; 00:3c51 $38 $09
     ld   B, $0e                                        ;; 00:3c53 $06 $0e
     sub  A, $40                                        ;; 00:3c55 $d6 $40

@@ -108,7 +108,7 @@ animateTilesTwoframe_TileCopy:
     jr   Z, .jr_02_40bf                                ;; 02:40af $28 $0e
     push BC                                            ;; 02:40b1 $c5
     push HL                                            ;; 02:40b2 $e5
-    ld   HL, $ff00                                     ;; 02:40b3 $21 $00 $ff
+    ld   HL, -$0100 ;@=value signed=True               ;; 02:40b3 $21 $00 $ff
     add  HL, DE                                        ;; 02:40b6 $19
     ld   A, [HL]                                       ;; 02:40b7 $7e
     pop  BC                                            ;; 02:40b8 $c1
@@ -321,7 +321,7 @@ requestBackgroundTileCopy:
     ld   E, L                                          ;; 02:420a $5d
     ld   H, B                                          ;; 02:420b $60
     ld   L, C                                          ;; 02:420c $69
-    ld   A, $0c                                        ;; 02:420d $3e $0c
+    ld   A, BANK(tilesetGfxOutdoor) ;@=bank tilesetGfxOutdoor ;; 02:420d $3e $0c
     call addTileGraphicCopyRequest                     ;; 02:420f $cd $f5 $2d
     ret                                                ;; 02:4212 $c9
 
