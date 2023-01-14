@@ -445,13 +445,11 @@ setDefaultLCDCEffect:
     ld   A, $00                                        ;; 00:0317 $3e $00
     ld   [wLCDCEffectIndex], A                         ;; 00:0319 $ea $e2 $d3
     ld   DE, wLCDCEffectBuffer                         ;; 00:031c $11 $a0 $d3
-; Relocation issue: lcdcDefaultEffect
-    ld   HL, $328                                      ;; 00:031f $21 $28 $03
+    ld   HL, .lcdcDefaultEffect ;@=ptr .lcdcDefaultEffect ;; 00:031f $21 $28 $03
     ld   B, $05                                        ;; 00:0322 $06 $05
     call copyHLtoDE                                    ;; 00:0324 $cd $49 $2b
     ret                                                ;; 00:0327 $c9
-
-lcdcDefaultEffect:
+.lcdcDefaultEffect:
     db   $7e, $fc, $01, $e4, $ff                       ;; 00:0328 .....
 
 LCDCInterrupt:
@@ -2019,8 +2017,7 @@ initObjects:
     push BC                                            ;; 00:0bfb $c5
     ld   A, $01                                        ;; 00:0bfc $3e $01
     ld   DE, $fefe                                     ;; 00:0bfe $11 $fe $fe
-; Relocation issue: playerMetaspriteTable_bank0
-    ld   HL, $bc5                                      ;; 00:0c01 $21 $c5 $0b
+    ld   HL, playerMetaspriteTable_bank0 ;@=ptr playerMetaspriteTable_bank0 ;; 00:0c01 $21 $c5 $0b
     call createObject                                  ;; 00:0c04 $cd $74 $0a
     pop  BC                                            ;; 00:0c07 $c1
     dec  B                                             ;; 00:0c08 $05
@@ -2513,8 +2510,7 @@ scriptOpCodeCreateEffect:
     ld   D, H                                          ;; 00:0eb2 $54
     ld   E, L                                          ;; 00:0eb3 $5d
     ld   A, [wScriptOpCounter]                         ;; 00:0eb4 $fa $99 $d4
-; Relocation issue: specialEffectJumptable
-    ld   HL, $eca                                      ;; 00:0eb7 $21 $ca $0e
+    ld   HL, specialEffectJumptable ;@=ptr specialEffectJumptable ;; 00:0eb7 $21 $ca $0e
     call callJumptable                                 ;; 00:0eba $cd $70 $2b
     ret                                                ;; 00:0ebd $c9
 
@@ -2537,8 +2533,7 @@ specialEffectInit:
     inc  HL                                            ;; 00:0ed4 $23
     push HL                                            ;; 00:0ed5 $e5
     push AF                                            ;; 00:0ed6 $f5
-; Relocation issue: specialEffectMetatileTable
-    ld   HL, $ebe                                      ;; 00:0ed7 $21 $be $0e
+    ld   HL, specialEffectMetatileTable ;@=ptr specialEffectMetatileTable ;; 00:0ed7 $21 $be $0e
     ld   C, $07                                        ;; 00:0eda $0e $07
     ld   A, $00                                        ;; 00:0edc $3e $00
     call createObject                                  ;; 00:0ede $cd $74 $0a
