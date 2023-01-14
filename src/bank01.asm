@@ -1209,14 +1209,12 @@ call_01_48be:
     ld   L, A                                          ;; 01:4939 $6f
     ld   DE, playerTileNumbers                         ;; 01:493a $11 $5e $47
     add  HL, DE                                        ;; 01:493d $19
-;TODO: 5a40 is a pointer to gfxPlayer in bank 8, but badboy cannot handle this right now
-    ld   DE, $5a40                                     ;; 01:493e $11 $40 $5a
+    ld   DE, gfxPlayer ;@=ptr gfxPlayer                ;; 01:493e $11 $40 $5a
     ld   C, $04                                        ;; 01:4941 $0e $04
     ld   B, $00                                        ;; 01:4943 $06 $00
     xor  A, A                                          ;; 01:4945 $af
     call call_00_1a76                                  ;; 01:4946 $cd $76 $1a
-;TODO: 5a40 is a pointer to gfxPlayer in bank 8, but badboy cannot handle this right now
-    ld   DE, $5a40                                     ;; 01:4949 $11 $40 $5a
+    ld   DE, gfxPlayer ;@=ptr gfxPlayer                ;; 01:4949 $11 $40 $5a
     ld   C, $04                                        ;; 01:494c $0e $04
     ld   B, $20                                        ;; 01:494e $06 $20
     xor  A, A                                          ;; 01:4950 $af

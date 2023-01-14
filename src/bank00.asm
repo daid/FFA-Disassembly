@@ -780,7 +780,7 @@ drawMetaTile:
     push DE                                            ;; 00:051d $d5
     call getTileInfoPointer2                           ;; 00:051e $cd $bb $05
     push HL                                            ;; 00:0521 $e5
-    ld   A, $08                                        ;; 00:0522 $3e $08
+    ld   A, BANK(metatilesOutdoor) ;@=bank metatilesOutdoor ;; 00:0522 $3e $08
     call pushBankNrAndSwitch                           ;; 00:0524 $cd $fb $29
     pop  HL                                            ;; 00:0527 $e1
     pop  DE                                            ;; 00:0528 $d1
@@ -840,7 +840,7 @@ drawMetaTile_immediate:
     push DE                                            ;; 00:056c $d5
     call getTileInfoPointer2                           ;; 00:056d $cd $bb $05
     push HL                                            ;; 00:0570 $e5
-    ld   A, $08                                        ;; 00:0571 $3e $08
+    ld   A, BANK(metatilesOutdoor) ;@=bank metatilesOutdoor ;; 00:0571 $3e $08
     call pushBankNrAndSwitch                           ;; 00:0573 $cd $fb $29
     pop  HL                                            ;; 00:0576 $e1
     pop  DE                                            ;; 00:0577 $d1
@@ -3814,7 +3814,7 @@ scriptOpWaitWhileMovement:
 ; Return: HL = tile attributes
 getRoomMetaTileAttributes:
     push DE                                            ;; 00:16af $d5
-    ld   A, $08                                        ;; 00:16b0 $3e $08
+    ld   A, BANK(metatilesOutdoor) ;@=bank metatilesOutdoor ;; 00:16b0 $3e $08
     call pushBankNrAndSwitch                           ;; 00:16b2 $cd $fb $29
     pop  DE                                            ;; 00:16b5 $d1
     ld   A, E                                          ;; 00:16b6 $7b
@@ -3953,7 +3953,7 @@ call_00_177e:
     dec  E                                             ;; 00:178b $1d
     push DE                                            ;; 00:178c $d5
     push BC                                            ;; 00:178d $c5
-    ld   A, $08                                        ;; 00:178e $3e $08
+    ld   A, BANK(metatilesOutdoor) ;@=bank metatilesOutdoor ;; 00:178e $3e $08
     call pushBankNrAndSwitch                           ;; 00:1790 $cd $fb $29
     pop  BC                                            ;; 00:1793 $c1
     push BC                                            ;; 00:1794 $c5
