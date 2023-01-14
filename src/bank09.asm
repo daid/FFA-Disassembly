@@ -604,7 +604,7 @@ projectileInitLogic:
     ld   A, E                                          ;; 09:4320 $7b
     ld   [HL+], A                                      ;; 09:4321 $22
     push HL                                            ;; 09:4322 $e5
-    ld   BC, hNegative4                                ;; 09:4323 $01 $fc $ff
+    ld   BC, -4 ;@=value signed=True                   ;; 09:4323 $01 $fc $ff
     add  HL, BC                                        ;; 09:4326 $09
     push HL                                            ;; 09:4327 $e5
     push DE                                            ;; 09:4328 $d5
