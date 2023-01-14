@@ -84,6 +84,7 @@ wScratchBankCallH:
 wBankStack:
     ds 64                                              ;; c0c0
 
+; START OF AUDIO ENGINE SRAM
 wMusicTempoTimeCounter:
     ds 1                                               ;; c100
 
@@ -304,6 +305,7 @@ wMusicBrokenDoubleTimeMode:
 wSoundsMusicRestorePitchChannel1:
     ds 1                                               ;; c1c9
 ; One byte long
+; END OF AUDIO ENGINE SRAM  (c1cb is not included)
 .high:
     ds 54                                              ;; c1ca
 
@@ -348,7 +350,8 @@ wNextRoomOverride:
 wScrollPixelCounter:
     ds 1                                               ;; c348
 
-wC349:
+; One byte long
+wObjectIDCopy:
     ds 7                                               ;; c349
 
 wRoomTiles:
@@ -480,7 +483,7 @@ wNPCSpawnTypes:
 wNPCSpawnTableIndex:
     ds 1                                               ;; c5ae
 
-wC5AF:
+wNumberOfLivingEnemies:
     ds 1                                               ;; c5af
 
 wC5B0:
@@ -745,7 +748,7 @@ wBossCurrentKeyframePointer:
 
 wBossCurrentHeadActionPointer:
     ds 1                                               ;; d43e
-.head:
+.high:
     ds 1                                               ;; d43f
 
 wBossCurrentMetatileListPointer:
@@ -819,17 +822,14 @@ wDialogW:
 wDialogH:
     ds 1                                               ;; d4aa
 
-; At least 60 bytes long, probably more than 155
+; 360 bytes long so it can store the full screen
 wWindowBackgroundSaveBuffer:
     ds 155                                             ;; d4ab
-
-wD546:
+._09b:
     ds 40                                              ;; d546
-
-wD56E:
+._0c3:
     ds 62                                              ;; d56e
-
-wD5AC:
+._101:
     ds 103                                             ;; d5ac
 
 ; Script that is run when you open a chest. Actual script code is stored in here,
@@ -860,10 +860,12 @@ wD637:
 wScriptStackTop:
     ds 24                                              ;; d683
 
+; START OF SRAM PART 3
 ; Amount of the same type of item in inventory. wItemInventory indicates the type, wItemInventoryAmount indicates the amount
 wItemInventoryAmount:
     ds 16                                              ;; d69b
 
+; END OF SRAM PART 3 (d6ab is not saved)
 ; Technically these are quantities, but since you can only ever have one of any spell, it's just whether you have it
 wKnownMagicSpells:
     ds 8                                               ;; d6ab
@@ -871,6 +873,7 @@ wKnownMagicSpells:
 wEquipmentInventoryPowers:
     ds 12                                              ;; d6b3
 
+; START OF SRAM PART 2
 wEquippedWeaponPower:
     ds 1                                               ;; d6bf
 
@@ -916,6 +919,7 @@ wEquippedItem:
 wEquippedItemAmount:
     ds 1                                               ;; d6f0
 
+; END OF SRAM PART 2 (d6f1 is not saved)
 wEquippedItemAndWeaponCopy:
     ds 2                                               ;; d6f1
 
@@ -946,7 +950,7 @@ wStatPowerLevelUpTmp:
 wStatWisdomLevelUpTmp:
     ds 2                                               ;; d791
 
-wD793:
+wStatusHPMPCurrentAndMax:
     ds 10                                              ;; d793
 
 wBoyName:
@@ -955,16 +959,26 @@ wBoyName:
 wGirlName:
     ds 5                                               ;; d7a2
 
-wD7A7:
+; START OF SRAM PART 1
+; Used as 49 bytes when writing a save to SRAM
+; Used as one byte to store the "magic number" before writing a save to SRAM
+; Used as four bytes to store the name during naming entry
+; Used as one byte to store a save file's current level between showing the level and E to next level on the Save/Load screen
+wSRAMSaveHeader:
     ds 1                                               ;; d7a7
 
-wD7A8:
+; Used as two bytes to store the checksum before writing a save to SRAM
+; Used as eight bytes for BCD conversion of Experience values for display
+._1:
     ds 2                                               ;; d7a8
 
-wD7AA:
+; Used as eight bytes to load and save the names in SRAM
+; Between loading and saving, names are copied to d79d and d7a2, and this space may be used for scratch
+._3:
     ds 7                                               ;; d7aa
 
-wD7B1:
+; Used to save and restore the finger position on the naming screen when you press the B button
+._a:
     ds 1                                               ;; d7b1
 
 wHPLow:
@@ -1092,6 +1106,7 @@ wCurrentMagicPower:
 wEquippedWeaponElements:
     ds 1                                               ;; d7d7
 
+; END OF SRAM PART 1 (d7d8 is not saved)
 wStatStaminaBuffBackup:
     ds 5                                               ;; d7d8
 
@@ -1169,6 +1184,7 @@ wD850:
 wEquippedItemElements:
     ds 2                                               ;; d851
 
+; bit 7 is used as a flag
 wMenuStateCurrentFunction:
     ds 1                                               ;; d853
 
@@ -1178,7 +1194,7 @@ wDrawWindowStep:
 wD856:
     ds 1                                               ;; d856
 
-wD857:
+wMenuSelectionMoveRepeatDelay:
     ds 1                                               ;; d857
 
 ; Amount of special attack charge, from $00 to $40.
@@ -1267,10 +1283,12 @@ wD872:
 wScriptPlayerFacingDirection:
     ds 1                                               ;; d873
 
-; bit 7: running script
-; bit 5: naming screen Girl (instead of Boy)
-; bit 2: Load screen (instead of Save)
 ; bit 1: text speed lock
+; bit 2: Load screen (instead of Save)
+; bit 3: Save 1
+; bit 4: Save 2
+; bit 5: naming screen Girl (instead of Boy)
+; bit 7: running script
 wWindowFlags:
     ds 2                                               ;; d874
 
@@ -1324,16 +1342,16 @@ wVideoWYBackup:
 wD885:
     ds 1                                               ;; d885
 
-wIntroScrollState:
+wTitleScreenState:
     ds 1                                               ;; d886
 
-wD887:
+wIntroScrollCounter2:
     ds 1                                               ;; d887
 
-wD888:
+wIntroScrollSCYBackup:
     ds 1                                               ;; d888
 
-wD889:
+wIntroScrollCounter1:
     ds 1                                               ;; d889
 
 wD88A:
@@ -1349,10 +1367,9 @@ wTitleScreenDelay:
 wD88D:
     ds 1                                               ;; d88d
 
-wD88E:
+wIntroScrollTextPointer:
     ds 1                                               ;; d88e
-
-wD88F:
+.high:
     ds 1                                               ;; d88f
 
 ; Used to point to inventory/equipment/equipped for the two script opcodes that search player posessions.
@@ -1400,55 +1417,42 @@ wD89D:
 wD89E:
     ds 1                                               ;; d89e
 
+; One byte long
 wD89F:
     ds 3                                               ;; d89f
 
-wD8A2:
+wRegisterSave1.L:
     ds 1                                               ;; d8a2
-
-wD8A3:
+.H:
     ds 1                                               ;; d8a3
-
-wD8A4:
+.E:
     ds 1                                               ;; d8a4
-
-wD8A5:
+.D:
     ds 1                                               ;; d8a5
-
-wD8A6:
+.C:
     ds 1                                               ;; d8a6
-
-wD8A7:
+.B:
     ds 1                                               ;; d8a7
-
-wD8A8:
+.F:
     ds 1                                               ;; d8a8
-
-wD8A9:
+.A:
     ds 1                                               ;; d8a9
 
-wD8AA:
+wRegisterSave2.L:
     ds 1                                               ;; d8aa
-
-wD8AB:
+.H:
     ds 1                                               ;; d8ab
-
-wD8AC:
+.E:
     ds 1                                               ;; d8ac
-
-wD8AD:
+.D:
     ds 1                                               ;; d8ad
-
-wD8AE:
+.C:
     ds 1                                               ;; d8ae
-
-wD8AF:
+.B:
     ds 1                                               ;; d8af
-
-wD8B0:
+.F:
     ds 1                                               ;; d8b0
-
-wD8B1:
+.A:
     ds 1                                               ;; d8b1
 
 wWindowClearX:
@@ -1541,6 +1545,7 @@ hOAM_DMA_Routine:
 hBankStackPointer:
     ds 6                                               ;; ff8a
 
+; START OF AUDIO ENGINE HRAM
 hCurrentMusic:
     ds 1                                               ;; ff90
 
@@ -1580,6 +1585,7 @@ hWaveTablePointer:
 hSoundEffectLoopCounterChannel1:
     ds 1                                               ;; ff9c
 
+; END OF AUDIO ENGINE HRAM (ff9e is not included)
 ; One byte long
 hSoundEffectLoopCounterChannel4:
     ds 93                                              ;; ff9d

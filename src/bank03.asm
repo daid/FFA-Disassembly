@@ -2151,7 +2151,8 @@ objectBehaviorMove:
     inc  A                                             ;; 03:4bde $3c
     ret                                                ;; 03:4bdf $c9
 
-call_03_4be0:
+; Return: A=0 and Z set once (and only once) after the last enemy is defeated, or A=1 and NZ
+checkAllEnemiesDefeated:
     ld   HL, wNpcRuntimeData                           ;; 03:4be0 $21 $e0 $c4
     ld   DE, $18                                       ;; 03:4be3 $11 $18 $00
     ld   B, $08                                        ;; 03:4be6 $06 $08
@@ -2181,7 +2182,7 @@ call_03_4be0:
     jr   Z, .jr_03_4c10                                ;; 03:4c0a $28 $04
     cp   A, $10                                        ;; 03:4c0c $fe $10
     jr   NZ, .jr_03_4c11                               ;; 03:4c0e $20 $01
-.jr_03_4c10:
+.enemy:
     inc  C                                             ;; 03:4c10 $0c
 .jr_03_4c11:
     pop  AF                                            ;; 03:4c11 $f1

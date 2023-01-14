@@ -118,7 +118,7 @@ prepareIntroScrollEffect:
     ld   [wVideoBGP], A                                ;; 01:40d4 $ea $aa $c0
     ret                                                ;; 01:40d7 $c9
 
-call_01_40d8:
+introScrollEffectUpdateLCDEffect:
     ld   A, [wVideoSCY]                                ;; 01:40d8 $fa $a7 $c0
     add  A, $09                                        ;; 01:40db $c6 $09
     cpl                                                ;; 01:40dd $2f
@@ -1303,6 +1303,8 @@ runMainInputHandler:
     dw   gameStateScript                               ;; 01:49cd pP
     dw   introScrollHandler_trampoline                 ;; 01:49cf pP
 
+; D = pressed buttons
+; E = newly pressed buttons
 gameStateNormal:
     push DE                                            ;; 01:49d1 $d5
     call updateNPCsAndBoss                             ;; 01:49d2 $cd $ce $27
@@ -2518,7 +2520,7 @@ attackTile:
     call callJumptable                                 ;; 01:51ee $cd $70 $2b
     ret                                                ;; 01:51f1 $c9
 ;@jumptable amount=8
-.data_01_51f2:
+.attackTileJumptable:
     dw   attackTileNop                                 ;; 01:51f2 ??
     dw   attackTileChain                               ;; 01:51f4 ??
     dw   attackTileMattok                              ;; 01:51f6 pP
@@ -4083,6 +4085,8 @@ useSpecialAttack:
     ld   A, [wSpecialAttackTimerNumber]                ;; 01:5a8f $fa $62 $cf
     call timerStart                                    ;; 01:5a92 $cd $d4 $2f
 
+; D = pressed buttons
+; E = newly pressed buttons, except bit 7 indicates special attack (instead of Start button)
 useWeaponItemOrSpecial:
     call getPlayerDirection                            ;; 01:5a95 $cd $ab $02
     bit  0, A                                          ;; 01:5a98 $cb $47
@@ -4095,7 +4099,7 @@ useWeaponItemOrSpecial:
     jp   NZ, .playerFacingNorth                        ;; 01:5aa6 $c2 $f9 $5a
     pop  DE                                            ;; 01:5aa9 $d1
     ret                                                ;; 01:5aaa $c9
-.playerFacingWest:
+.playerFacingEast:
     pop  DE                                            ;; 01:5aab $d1
     ld   A, D                                          ;; 01:5aac $7a
     bit  7, E                                          ;; 01:5aad $cb $7b
@@ -4105,13 +4109,13 @@ useWeaponItemOrSpecial:
     jr   NZ, .jr_01_5b11                               ;; 01:5ab5 $20 $5a
     ld   C, $12                                        ;; 01:5ab7 $0e $12
     jr   .jr_01_5b11                                   ;; 01:5ab9 $18 $56
-.specialAttackWest:
+.specialAttackEast:
     ld   C, $1a                                        ;; 01:5abb $0e $1a
     and  A, $0f                                        ;; 01:5abd $e6 $0f
     jr   NZ, .jr_01_5b11                               ;; 01:5abf $20 $50
     ld   C, $22                                        ;; 01:5ac1 $0e $22
     jr   .jr_01_5b11                                   ;; 01:5ac3 $18 $4c
-.playerFacingEast:
+.playerFacingWest:
     pop  DE                                            ;; 01:5ac5 $d1
     ld   A, D                                          ;; 01:5ac6 $7a
     bit  7, E                                          ;; 01:5ac7 $cb $7b
@@ -4121,13 +4125,13 @@ useWeaponItemOrSpecial:
     jr   NZ, .jr_01_5b11                               ;; 01:5acf $20 $40
     ld   C, $14                                        ;; 01:5ad1 $0e $14
     jr   .jr_01_5b11                                   ;; 01:5ad3 $18 $3c
-.specialAttackEast:
+.specialAttackWest:
     ld   C, $1c                                        ;; 01:5ad5 $0e $1c
     and  A, $0f                                        ;; 01:5ad7 $e6 $0f
     jr   NZ, .jr_01_5b11                               ;; 01:5ad9 $20 $36
     ld   C, $24                                        ;; 01:5adb $0e $24
     jr   .jr_01_5b11                                   ;; 01:5add $18 $32
-.playerFacingSouth:
+.playerFacingNorth:
     pop  DE                                            ;; 01:5adf $d1
     ld   A, D                                          ;; 01:5ae0 $7a
     bit  7, E                                          ;; 01:5ae1 $cb $7b
@@ -4137,13 +4141,13 @@ useWeaponItemOrSpecial:
     jr   NZ, .jr_01_5b11                               ;; 01:5ae9 $20 $26
     ld   C, $16                                        ;; 01:5aeb $0e $16
     jr   .jr_01_5b11                                   ;; 01:5aed $18 $22
-.specialAttackSouth:
+.specialAttackNorth:
     ld   C, $1e                                        ;; 01:5aef $0e $1e
     and  A, $0f                                        ;; 01:5af1 $e6 $0f
     jr   NZ, .jr_01_5b11                               ;; 01:5af3 $20 $1c
     ld   C, $26                                        ;; 01:5af5 $0e $26
     jr   .jr_01_5b11                                   ;; 01:5af7 $18 $18
-.playerFacingNorth:
+.playerFacingSouth:
     pop  DE                                            ;; 01:5af9 $d1
     ld   A, D                                          ;; 01:5afa $7a
     bit  7, E                                          ;; 01:5afb $cb $7b
@@ -4153,12 +4157,12 @@ useWeaponItemOrSpecial:
     jr   NZ, .jr_01_5b11                               ;; 01:5b03 $20 $0c
     ld   C, $18                                        ;; 01:5b05 $0e $18
     jr   .jr_01_5b11                                   ;; 01:5b07 $18 $08
-.specialAttackNorth:
+.specialAttackSouth:
     ld   C, $20                                        ;; 01:5b09 $0e $20
     and  A, $0f                                        ;; 01:5b0b $e6 $0f
     jr   NZ, .jr_01_5b11                               ;; 01:5b0d $20 $02
     ld   C, $28                                        ;; 01:5b0f $0e $28
-.jr_01_5b11:
+.do_attack:
     push BC                                            ;; 01:5b11 $c5
     bit  4, E                                          ;; 01:5b12 $cb $63
     jr   NZ, useWeaponItemOrSpecial.weapon             ;; 01:5b14 $20 $10
@@ -4172,7 +4176,7 @@ useWeaponItemOrSpecial:
     call attackWithWeaponUseWill_trampoline            ;; 01:5b26 $cd $29 $31
     ld   [wCurrentPlayerAttackWillCharge], A           ;; 01:5b29 $ea $63 $cf
     ld   A, [wEquippedWeaponAnimationType]             ;; 01:5b2c $fa $58 $cf
-.jr_01_5b2f:
+.attack_common:
     pop  BC                                            ;; 01:5b2f $c1
     call playerUseWeaponOrItem                         ;; 01:5b30 $cd $6d $5b
     ld   HL, wCEF0                                     ;; 01:5b33 $21 $f0 $ce
@@ -4214,7 +4218,8 @@ call_01_5b46:
     ret                                                ;; 01:5b6c $c9
 
 ; A = type
-; C = special or normal, type, and facing
+; C = special or normal, moving or still, and facing
+; Returns: A = 7 - object id, BC = object id
 playerUseWeaponOrItem:
     ld   [wPlayerAttackAnimationFrame], A              ;; 01:5b6d $ea $5f $cf
     add  A, A                                          ;; 01:5b70 $87
@@ -4241,6 +4246,7 @@ playerUseWeaponOrItem:
     add  HL, BC                                        ;; 01:5b8d $09
     ld   [HL], $ff                                     ;; 01:5b8e $36 $ff
     pop  HL                                            ;; 01:5b90 $e1
+; This is the object id
     ld   A, [HL+]                                      ;; 01:5b91 $2a
     ld   C, A                                          ;; 01:5b92 $4f
     ld   B, $00                                        ;; 01:5b93 $06 $00
@@ -4299,6 +4305,7 @@ playerUseWeaponOrItem:
     ld   [HL], E                                       ;; 01:5be2 $73
     inc  HL                                            ;; 01:5be3 $23
     ld   [HL], D                                       ;; 01:5be4 $72
+; The SFX number is two before the base pointer
     dec  DE                                            ;; 01:5be5 $1b
     dec  DE                                            ;; 01:5be6 $1b
     ld   A, [DE]                                       ;; 01:5be7 $1a
@@ -4856,6 +4863,14 @@ data_01_60c1:
     db   $02, $06, $01, $06, $02, $06, $00, $06        ;; 01:60f1 ????????
     db   $01, $07, $00, $06, $00, $00                  ;; 01:60f9 ??????
 
+; offset 0: unknown
+; offset 1: collision flags
+; offset 2: metasprite table
+; offset 3: object id
+; offset 4: unknown
+; offset 5: never accessed
+; offset 6-7: graphics pointer
+; offset 8 to $24: pointers to data on different attack types and directions
 attackSwordFrame1:
     db   $04, $48, $02, $05, $0a, $00                  ;; 01:60ff .....?
     dw   gfxAttackSword, data_01_68df                  ;; 01:6105 ....

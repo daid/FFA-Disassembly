@@ -15,7 +15,16 @@ SECTION "bank04", ROMX[$4000], BANK[$04]
     call_to_bank_target bossCollisionHandling          ;; 04:400a pP
     call_to_bank_target call_04_400e                   ;; 04:400c pP
 
-call_04_400e:
+; Calculates the object's distance to the nearest playfield border
+; Player and followers (Collision Flags bit 6 set) are allowed to step half way off the screen edges
+; All others must keep their sprite fully on screen
+;
+; Also worth noting, this is the only function in this bank that is unrelated to boss handling
+; In fact, bosses do not use this function at all
+; C = Object ID
+; Return: A = distance to nearest border
+; Return: Z = at limit
+checkPlayfieldBoundaryCollision:
     push BC                                            ;; 04:400e $c5
     call getObjectCollisionFlags                       ;; 04:400f $cd $6d $0c
     pop  BC                                            ;; 04:4012 $c1
