@@ -8,7 +8,7 @@ INCLUDE "include/constants.inc"
 SECTION "bank0e", ROMX[$4000], BANK[$0e]
 
 script_0294:
-    sIF_0B $c9                                         ;; 0e:4000 $0b $c9 $00 $33
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4000 $0b $c9 $00 $33
       sIF_FLAG wScriptFlags0A.2, !wScriptFlags09.0     ;; 0e:4004 $08 $52 $c8 $00 $25
         sMSG                                           ;; 0e:4009 $04
           db "<10>Man:Didn't you\n come here to get\n the Mirror?<12>"
@@ -24,7 +24,7 @@ script_0294:
     sEND                                               ;; 0e:4037 $00
 
 script_0295:
-    sIF_0B $c9, $c1                                    ;; 0e:4038 $0b $c9 $c1 $00 $12
+    sIF_TRIGGERED_ON_BY $c9, $c1                       ;; 0e:4038 $0b $c9 $c1 $00 $12
       sLOAD_ROOM 0, $dc, 9, 8                          ;; 0e:403d $f4 $00 $dc $09 $08
       sIF_FLAG wScriptFlags02.0, !wScriptFlags02.1     ;; 0e:4042 $08 $10 $91 $00 $05
         sCALL script_053b                              ;; 0e:4047 $02 $6b $04
@@ -39,7 +39,7 @@ script_0296:
     sEND                                               ;; 0e:4050 $00
 
 script_0297:
-    sIF_0B $c9                                         ;; 0e:4051 $0b $c9 $00 $09
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4051 $0b $c9 $00 $09
       sLOAD_ROOM 0, $9e, 16, 4                         ;; 0e:4055 $f4 $00 $9e $10 $04
       sSET_MUSIC 20                                    ;; 0e:405a $f8 $14
       sCLEAR_ROOM_HISTORY                              ;; 0e:405c $ab
@@ -48,7 +48,7 @@ script_0297:
     sEND                                               ;; 0e:405e $00
 
 script_0298:
-    sIF_0B $c9                                         ;; 0e:405f $0b $c9 $00 $09
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:405f $0b $c9 $00 $09
       sLOAD_ROOM 0, $9b, 4, 6                          ;; 0e:4063 $f4 $00 $9b $04 $06
       sSET_MUSIC 20                                    ;; 0e:4068 $f8 $14
       sCLEAR_ROOM_HISTORY                              ;; 0e:406a $ab
@@ -57,7 +57,7 @@ script_0298:
     sEND                                               ;; 0e:406c $00
 
 script_0299:
-    sIF_0B $c9                                         ;; 0e:406d $0b $c9 $00 $09
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:406d $0b $c9 $00 $09
       sLOAD_ROOM 0, $8b, 12, 4                         ;; 0e:4071 $f4 $00 $8b $0c $04
       sSET_MUSIC 20                                    ;; 0e:4076 $f8 $14
       sCLEAR_ROOM_HISTORY                              ;; 0e:4078 $ab
@@ -66,7 +66,7 @@ script_0299:
     sEND                                               ;; 0e:407a $00
 
 script_029a:
-    sIF_0B $c9                                         ;; 0e:407b $0b $c9 $00 $37
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:407b $0b $c9 $00 $37
       sLOAD_ROOM 0, $8d, 6, 8                          ;; 0e:407f $f4 $00 $8d $06 $08
       sSET_MUSIC 20                                    ;; 0e:4084 $f8 $14
       sIF_FLAG !wScriptFlags0A.4, !wScriptFlags02.6    ;; 0e:4086 $08 $d4 $96 $00 $2a
@@ -107,14 +107,14 @@ script_029b:
     sEND                                               ;; 0e:415b $00
 
 script_029c:
-    sIF_0B $c9                                         ;; 0e:415c $0b $c9 $00 $06
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:415c $0b $c9 $00 $06
       sSET_ROOM_TILE $02, 8, 6                         ;; 0e:4160 $b0 $02 $08 $06
       sSFX 24                                          ;; 0e:4164 $f9 $18
     sENDIF                                             ;; 0e:4166
     sEND                                               ;; 0e:4166 $00
 
 script_029d:
-    sIF_0B $c9, $c1                                    ;; 0e:4167 $0b $c9 $c1 $00 $08
+    sIF_TRIGGERED_ON_BY $c9, $c1                       ;; 0e:4167 $0b $c9 $c1 $00 $08
       sLOAD_ROOM 0, $49, 8, 2                          ;; 0e:416c $f4 $00 $49 $08 $02
       sSET_MUSIC 20                                    ;; 0e:4171 $f8 $14
       sRUN_ROOM_SCRIPT                                 ;; 0e:4173 $ec
@@ -122,7 +122,7 @@ script_029d:
     sEND                                               ;; 0e:4174 $00
 
 script_029e:
-    sIF_0B $c9, $c1                                    ;; 0e:4175 $0b $c9 $c1 $00 $08
+    sIF_TRIGGERED_ON_BY $c9, $c1                       ;; 0e:4175 $0b $c9 $c1 $00 $08
       sLOAD_ROOM 0, $18, 9, 8                          ;; 0e:417a $f4 $00 $18 $09 $08
       sSET_MUSIC 20                                    ;; 0e:417f $f8 $14
       sRUN_ROOM_SCRIPT                                 ;; 0e:4181 $ec
@@ -130,7 +130,7 @@ script_029e:
     sEND                                               ;; 0e:4182 $00
 
 script_029f:
-    sIF_0B $c9                                         ;; 0e:4183 $0b $c9 $00 $33
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4183 $0b $c9 $00 $33
       sIF_FLAG wScriptFlags0A.5, !wScriptFlags04.7     ;; 0e:4187 $08 $55 $a7 $00 $25
         sMSG                                           ;; 0e:418c $04
           db "<10>Amanda:Won't you\n come along with\n me, <BOY>?<12>"
@@ -147,7 +147,7 @@ script_029f:
     sEND                                               ;; 0e:41ba $00
 
 script_02a0:
-    sIF_0B $c9                                         ;; 0e:41bb $0b $c9 $00 $10
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:41bb $0b $c9 $00 $10
       sIF_FLAG !wScriptFlags03.7                       ;; 0e:41bf $08 $9f $00 $07
         sLOAD_ROOM 15, $65, 4, 12                      ;; 0e:41c3 $f4 $0f $65 $04 $0c
       sELSE                                            ;; 0e:41c8 $01 $05
@@ -157,7 +157,7 @@ script_02a0:
     sEND                                               ;; 0e:41cf $00
 
 script_02a1:
-    sIF_0B $c9, $c1                                    ;; 0e:41d0 $0b $c9 $c1 $00 $08
+    sIF_TRIGGERED_ON_BY $c9, $c1                       ;; 0e:41d0 $0b $c9 $c1 $00 $08
       sLOAD_ROOM 0, $92, 10, 6                         ;; 0e:41d5 $f4 $00 $92 $0a $06
       sSET_MUSIC 25                                    ;; 0e:41da $f8 $19
       sRUN_ROOM_SCRIPT                                 ;; 0e:41dc $ec
@@ -165,19 +165,19 @@ script_02a1:
     sEND                                               ;; 0e:41dd $00
 
 script_02a2:
-    sIF_0B $c9                                         ;; 0e:41de $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:41de $0b $c9 $00 $05
       sLOAD_ROOM 14, $57, 2, 12                        ;; 0e:41e2 $f4 $0e $57 $02 $0c
     sENDIF                                             ;; 0e:41e7
     sEND                                               ;; 0e:41e7 $00
 
 script_02a3:
-    sIF_0B $c9                                         ;; 0e:41e8 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:41e8 $0b $c9 $00 $05
       sLOAD_ROOM 1, $07, 2, 2                          ;; 0e:41ec $f4 $01 $07 $02 $02
     sENDIF                                             ;; 0e:41f1
     sEND                                               ;; 0e:41f1 $00
 
 script_02a4:
-    sIF_0B $c9                                         ;; 0e:41f2 $0b $c9 $00 $09
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:41f2 $0b $c9 $00 $09
       sLOAD_ROOM 0, $0e, 12, 12                        ;; 0e:41f6 $f4 $00 $0e $0c $0c
       sSET_MUSIC 25                                    ;; 0e:41fb $f8 $19
       sCLEAR_ROOM_HISTORY                              ;; 0e:41fd $ab
@@ -186,7 +186,7 @@ script_02a4:
     sEND                                               ;; 0e:41ff $00
 
 script_02a5:
-    sIF_0B $c9                                         ;; 0e:4200 $0b $c9 $00 $07
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4200 $0b $c9 $00 $07
       sLOAD_ROOM 1, $52, 9, 4                          ;; 0e:4204 $f4 $01 $52 $09 $04
       sCLEAR_ROOM_HISTORY                              ;; 0e:4209 $ab
       sRUN_ROOM_SCRIPT                                 ;; 0e:420a $ec
@@ -194,7 +194,7 @@ script_02a5:
     sEND                                               ;; 0e:420b $00
 
 script_02a6:
-    sIF_0B $c9                                         ;; 0e:420c $0b $c9 $00 $08
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:420c $0b $c9 $00 $08
       sUNK_C5 0                                        ;; 0e:4210 $c5 $00
       sLOAD_ROOM 2, $00, 9, 12                         ;; 0e:4212 $f4 $02 $00 $09 $0c
       sRUN_ROOM_SCRIPT                                 ;; 0e:4217 $ec
@@ -202,7 +202,7 @@ script_02a6:
     sEND                                               ;; 0e:4218 $00
 
 script_02a7:
-    sIF_0B $c9                                         ;; 0e:4219 $0b $c9 $00 $08
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4219 $0b $c9 $00 $08
       sUNK_C5 0                                        ;; 0e:421d $c5 $00
       sLOAD_ROOM 2, $01, 9, 12                         ;; 0e:421f $f4 $02 $01 $09 $0c
       sRUN_ROOM_SCRIPT                                 ;; 0e:4224 $ec
@@ -210,7 +210,7 @@ script_02a7:
     sEND                                               ;; 0e:4225 $00
 
 script_02a8:
-    sIF_0B $c9                                         ;; 0e:4226 $0b $c9 $00 $08
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4226 $0b $c9 $00 $08
       sUNK_C5 12                                       ;; 0e:422a $c5 $0c
       sLOAD_ROOM 4, $01, 9, 12                         ;; 0e:422c $f4 $04 $01 $09 $0c
       sRUN_ROOM_SCRIPT                                 ;; 0e:4231 $ec
@@ -218,7 +218,7 @@ script_02a8:
     sEND                                               ;; 0e:4232 $00
 
 script_02a9:
-    sIF_0B $c9                                         ;; 0e:4233 $0b $c9 $00 $08
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4233 $0b $c9 $00 $08
       sUNK_C5 12                                       ;; 0e:4237 $c5 $0c
       sLOAD_ROOM 3, $00, 9, 12                         ;; 0e:4239 $f4 $03 $00 $09 $0c
       sRUN_ROOM_SCRIPT                                 ;; 0e:423e $ec
@@ -226,7 +226,7 @@ script_02a9:
     sEND                                               ;; 0e:423f $00
 
 script_02aa:
-    sIF_0B $c9                                         ;; 0e:4240 $0b $c9 $00 $08
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4240 $0b $c9 $00 $08
       sUNK_C5 10                                       ;; 0e:4244 $c5 $0a
       sLOAD_ROOM 3, $01, 9, 12                         ;; 0e:4246 $f4 $03 $01 $09 $0c
       sRUN_ROOM_SCRIPT                                 ;; 0e:424b $ec
@@ -237,7 +237,7 @@ script_02ab:
     sEND                                               ;; 0e:424d $00
 
 script_02ac:
-    sIF_0B $c9                                         ;; 0e:424e $0b $c9 $00 $08
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:424e $0b $c9 $00 $08
       sUNK_C5 2                                        ;; 0e:4252 $c5 $02
       sLOAD_ROOM 2, $00, 9, 12                         ;; 0e:4254 $f4 $02 $00 $09 $0c
       sRUN_ROOM_SCRIPT                                 ;; 0e:4259 $ec
@@ -245,7 +245,7 @@ script_02ac:
     sEND                                               ;; 0e:425a $00
 
 script_02ad:
-    sIF_0B $c9                                         ;; 0e:425b $0b $c9 $00 $08
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:425b $0b $c9 $00 $08
       sUNK_C5 1                                        ;; 0e:425f $c5 $01
       sLOAD_ROOM 2, $01, 9, 12                         ;; 0e:4261 $f4 $02 $01 $09 $0c
       sRUN_ROOM_SCRIPT                                 ;; 0e:4266 $ec
@@ -253,7 +253,7 @@ script_02ad:
     sEND                                               ;; 0e:4267 $00
 
 script_02ae:
-    sIF_0B $c9                                         ;; 0e:4268 $0b $c9 $00 $08
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4268 $0b $c9 $00 $08
       sUNK_C5 13                                       ;; 0e:426c $c5 $0d
       sLOAD_ROOM 4, $01, 9, 12                         ;; 0e:426e $f4 $04 $01 $09 $0c
       sRUN_ROOM_SCRIPT                                 ;; 0e:4273 $ec
@@ -261,7 +261,7 @@ script_02ae:
     sEND                                               ;; 0e:4274 $00
 
 script_02af:
-    sIF_0B $c9                                         ;; 0e:4275 $0b $c9 $00 $08
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4275 $0b $c9 $00 $08
       sUNK_C5 13                                       ;; 0e:4279 $c5 $0d
       sLOAD_ROOM 3, $00, 9, 12                         ;; 0e:427b $f4 $03 $00 $09 $0c
       sRUN_ROOM_SCRIPT                                 ;; 0e:4280 $ec
@@ -269,7 +269,7 @@ script_02af:
     sEND                                               ;; 0e:4281 $00
 
 script_02b0:
-    sIF_0B $c9                                         ;; 0e:4282 $0b $c9 $00 $08
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4282 $0b $c9 $00 $08
       sUNK_C5 11                                       ;; 0e:4286 $c5 $0b
       sLOAD_ROOM 3, $01, 9, 12                         ;; 0e:4288 $f4 $03 $01 $09 $0c
       sRUN_ROOM_SCRIPT                                 ;; 0e:428d $ec
@@ -277,7 +277,7 @@ script_02b0:
     sEND                                               ;; 0e:428e $00
 
 script_02b1:
-    sIF_0B $c9                                         ;; 0e:428f $0b $c9 $00 $08
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:428f $0b $c9 $00 $08
       sUNK_C5 4                                        ;; 0e:4293 $c5 $04
       sLOAD_ROOM 2, $00, 9, 12                         ;; 0e:4295 $f4 $02 $00 $09 $0c
       sRUN_ROOM_SCRIPT                                 ;; 0e:429a $ec
@@ -285,7 +285,7 @@ script_02b1:
     sEND                                               ;; 0e:429b $00
 
 script_02b2:
-    sIF_0B $c9                                         ;; 0e:429c $0b $c9 $00 $08
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:429c $0b $c9 $00 $08
       sUNK_C5 3                                        ;; 0e:42a0 $c5 $03
       sLOAD_ROOM 2, $01, 9, 12                         ;; 0e:42a2 $f4 $02 $01 $09 $0c
       sRUN_ROOM_SCRIPT                                 ;; 0e:42a7 $ec
@@ -293,14 +293,14 @@ script_02b2:
     sEND                                               ;; 0e:42a8 $00
 
 script_02b3:
-    sIF_0B $c9                                         ;; 0e:42a9 $0b $c9 $00 $07
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:42a9 $0b $c9 $00 $07
       sUNK_C5 7                                        ;; 0e:42ad $c5 $07
       sLOAD_ROOM 4, $00, 9, 12                         ;; 0e:42af $f4 $04 $00 $09 $0c
     sENDIF                                             ;; 0e:42b4
     sEND                                               ;; 0e:42b4 $00
 
 script_02b4:
-    sIF_0B $c9                                         ;; 0e:42b5 $0b $c9 $00 $08
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:42b5 $0b $c9 $00 $08
       sUNK_C5 13                                       ;; 0e:42b9 $c5 $0d
       sLOAD_ROOM 3, $01, 9, 12                         ;; 0e:42bb $f4 $03 $01 $09 $0c
       sRUN_ROOM_SCRIPT                                 ;; 0e:42c0 $ec
@@ -308,7 +308,7 @@ script_02b4:
     sEND                                               ;; 0e:42c1 $00
 
 script_02b5:
-    sIF_0B $c9                                         ;; 0e:42c2 $0b $c9 $00 $08
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:42c2 $0b $c9 $00 $08
       sUNK_C5 5                                        ;; 0e:42c6 $c5 $05
       sLOAD_ROOM 2, $00, 9, 12                         ;; 0e:42c8 $f4 $02 $00 $09 $0c
       sRUN_ROOM_SCRIPT                                 ;; 0e:42cd $ec
@@ -316,7 +316,7 @@ script_02b5:
     sEND                                               ;; 0e:42ce $00
 
 script_02b6:
-    sIF_0B $c9                                         ;; 0e:42cf $0b $c9 $00 $08
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:42cf $0b $c9 $00 $08
       sUNK_C5 4                                        ;; 0e:42d3 $c5 $04
       sLOAD_ROOM 2, $01, 9, 12                         ;; 0e:42d5 $f4 $02 $01 $09 $0c
       sRUN_ROOM_SCRIPT                                 ;; 0e:42da $ec
@@ -324,7 +324,7 @@ script_02b6:
     sEND                                               ;; 0e:42db $00
 
 script_02b7:
-    sIF_0B $c9                                         ;; 0e:42dc $0b $c9 $00 $08
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:42dc $0b $c9 $00 $08
       sUNK_C5 9                                        ;; 0e:42e0 $c5 $09
       sLOAD_ROOM 4, $01, 9, 12                         ;; 0e:42e2 $f4 $04 $01 $09 $0c
       sRUN_ROOM_SCRIPT                                 ;; 0e:42e7 $ec
@@ -332,7 +332,7 @@ script_02b7:
     sEND                                               ;; 0e:42e8 $00
 
 script_02b8:
-    sIF_0B $c9                                         ;; 0e:42e9 $0b $c9 $00 $08
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:42e9 $0b $c9 $00 $08
       sUNK_C5 14                                       ;; 0e:42ed $c5 $0e
       sLOAD_ROOM 3, $00, 9, 12                         ;; 0e:42ef $f4 $03 $00 $09 $0c
       sRUN_ROOM_SCRIPT                                 ;; 0e:42f4 $ec
@@ -340,7 +340,7 @@ script_02b8:
     sEND                                               ;; 0e:42f5 $00
 
 script_02b9:
-    sIF_0B $c9                                         ;; 0e:42f6 $0b $c9 $00 $08
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:42f6 $0b $c9 $00 $08
       sUNK_C5 12                                       ;; 0e:42fa $c5 $0c
       sLOAD_ROOM 3, $01, 9, 12                         ;; 0e:42fc $f4 $03 $01 $09 $0c
       sRUN_ROOM_SCRIPT                                 ;; 0e:4301 $ec
@@ -348,7 +348,7 @@ script_02b9:
     sEND                                               ;; 0e:4302 $00
 
 script_02ba:
-    sIF_0B $c9                                         ;; 0e:4303 $0b $c9 $00 $08
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4303 $0b $c9 $00 $08
       sUNK_C5 15                                       ;; 0e:4307 $c5 $0f
       sLOAD_ROOM 2, $00, 9, 12                         ;; 0e:4309 $f4 $02 $00 $09 $0c
       sRUN_ROOM_SCRIPT                                 ;; 0e:430e $ec
@@ -356,7 +356,7 @@ script_02ba:
     sEND                                               ;; 0e:430f $00
 
 script_02bb:
-    sIF_0B $c9                                         ;; 0e:4310 $0b $c9 $00 $08
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4310 $0b $c9 $00 $08
       sUNK_C5 6                                        ;; 0e:4314 $c5 $06
       sLOAD_ROOM 2, $01, 9, 12                         ;; 0e:4316 $f4 $02 $01 $09 $0c
       sRUN_ROOM_SCRIPT                                 ;; 0e:431b $ec
@@ -364,7 +364,7 @@ script_02bb:
     sEND                                               ;; 0e:431c $00
 
 script_02bc:
-    sIF_0B $c9                                         ;; 0e:431d $0b $c9 $00 $08
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:431d $0b $c9 $00 $08
       sUNK_C5 11                                       ;; 0e:4321 $c5 $0b
       sLOAD_ROOM 4, $01, 9, 12                         ;; 0e:4323 $f4 $04 $01 $09 $0c
       sRUN_ROOM_SCRIPT                                 ;; 0e:4328 $ec
@@ -372,7 +372,7 @@ script_02bc:
     sEND                                               ;; 0e:4329 $00
 
 script_02bd:
-    sIF_0B $c9                                         ;; 0e:432a $0b $c9 $00 $08
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:432a $0b $c9 $00 $08
       sUNK_C5 14                                       ;; 0e:432e $c5 $0e
       sLOAD_ROOM 3, $01, 9, 12                         ;; 0e:4330 $f4 $03 $01 $09 $0c
       sRUN_ROOM_SCRIPT                                 ;; 0e:4335 $ec
@@ -380,7 +380,7 @@ script_02bd:
     sEND                                               ;; 0e:4336 $00
 
 script_02be:
-    sIF_0B $c9                                         ;; 0e:4337 $0b $c9 $00 $22
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4337 $0b $c9 $00 $22
       sUNK_C5 9                                        ;; 0e:433b $c5 $09
       sIF_FLAG wScriptFlags03.7, !wScriptFlags04.1     ;; 0e:433d $08 $1f $a1 $00 $15
         sSET_MUSIC 0                                   ;; 0e:4342 $f8 $00
@@ -400,38 +400,38 @@ script_02be:
     sEND                                               ;; 0e:435d $00
 
 script_02bf:
-    sIF_0B $c9                                         ;; 0e:435e $0b $c9 $00 $07
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:435e $0b $c9 $00 $07
       sLOAD_ROOM 0, $9b, 4, 5                          ;; 0e:4362 $f4 $00 $9b $04 $05
       sSET_MUSIC 20                                    ;; 0e:4367 $f8 $14
     sENDIF                                             ;; 0e:4369
     sEND                                               ;; 0e:4369 $00
 
 script_02c0:
-    sIF_0B $c9                                         ;; 0e:436a $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:436a $0b $c9 $00 $05
       sLOAD_ROOM 1, $57, 14, 12                        ;; 0e:436e $f4 $01 $57 $0e $0c
     sENDIF                                             ;; 0e:4373
     sEND                                               ;; 0e:4373 $00
 
 script_02c1:
-    sIF_0B $c9                                         ;; 0e:4374 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4374 $0b $c9 $00 $05
       sLOAD_ROOM 1, $71, 2, 6                          ;; 0e:4378 $f4 $01 $71 $02 $06
     sENDIF                                             ;; 0e:437d
     sEND                                               ;; 0e:437d $00
 
 script_02c2:
-    sIF_0B $c9                                         ;; 0e:437e $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:437e $0b $c9 $00 $05
       sLOAD_ROOM 1, $71, 8, 4                          ;; 0e:4382 $f4 $01 $71 $08 $04
     sENDIF                                             ;; 0e:4387
     sEND                                               ;; 0e:4387 $00
 
 script_02c3:
-    sIF_0B $c9                                         ;; 0e:4388 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4388 $0b $c9 $00 $05
       sLOAD_ROOM 1, $71, 16, 6                         ;; 0e:438c $f4 $01 $71 $10 $06
     sENDIF                                             ;; 0e:4391
     sEND                                               ;; 0e:4391 $00
 
 script_02c4:
-    sIF_0B $c9                                         ;; 0e:4392 $0b $c9 $00 $20
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4392 $0b $c9 $00 $20
       sLOAD_ROOM 1, $36, 14, 254                       ;; 0e:4396 $f4 $01 $36 $0e $fe
       sSET_PLAYER_DIRECTION_UP                         ;; 0e:439b $84
       sDELAY 30                                        ;; 0e:439c $f0 $1e
@@ -459,170 +459,170 @@ script_02c5:
     sEND                                               ;; 0e:43b7 $00
 
 script_02c6:
-    sIF_0B $c9, $c1                                    ;; 0e:43b8 $0b $c9 $c1 $00 $05
+    sIF_TRIGGERED_ON_BY $c9, $c1                       ;; 0e:43b8 $0b $c9 $c1 $00 $05
       sLOAD_ROOM 1, $46, 7, 8                          ;; 0e:43bd $f4 $01 $46 $07 $08
     sENDIF                                             ;; 0e:43c2
     sEND                                               ;; 0e:43c2 $00
 
 script_02c7:
-    sIF_0B $c9                                         ;; 0e:43c3 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:43c3 $0b $c9 $00 $05
       sLOAD_ROOM 1, $45, 7, 12                         ;; 0e:43c7 $f4 $01 $45 $07 $0c
     sENDIF                                             ;; 0e:43cc
     sEND                                               ;; 0e:43cc $00
 
 script_02c8:
-    sIF_0B $c9                                         ;; 0e:43cd $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:43cd $0b $c9 $00 $05
       sLOAD_ROOM 15, $04, 14, 12                       ;; 0e:43d1 $f4 $0f $04 $0e $0c
     sENDIF                                             ;; 0e:43d6
     sEND                                               ;; 0e:43d6 $00
 
 script_02c9:
-    sIF_0B $c9                                         ;; 0e:43d7 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:43d7 $0b $c9 $00 $05
       sLOAD_ROOM 1, $24, 6, 2                          ;; 0e:43db $f4 $01 $24 $06 $02
     sENDIF                                             ;; 0e:43e0
     sEND                                               ;; 0e:43e0 $00
 
 script_02ca:
-    sIF_0B $c9                                         ;; 0e:43e1 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:43e1 $0b $c9 $00 $05
       sLOAD_ROOM 15, $32, 16, 10                       ;; 0e:43e5 $f4 $0f $32 $10 $0a
     sENDIF                                             ;; 0e:43ea
     sEND                                               ;; 0e:43ea $00
 
 script_02cb:
-    sIF_0B $c9                                         ;; 0e:43eb $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:43eb $0b $c9 $00 $05
       sLOAD_ROOM 15, $33, 14, 12                       ;; 0e:43ef $f4 $0f $33 $0e $0c
     sENDIF                                             ;; 0e:43f4
     sEND                                               ;; 0e:43f4 $00
 
 script_02cc:
-    sIF_0B $c9                                         ;; 0e:43f5 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:43f5 $0b $c9 $00 $05
       sLOAD_ROOM 5, $02, 16, 12                        ;; 0e:43f9 $f4 $05 $02 $10 $0c
     sENDIF                                             ;; 0e:43fe
     sEND                                               ;; 0e:43fe $00
 
 script_02cd:
-    sIF_0B $c9                                         ;; 0e:43ff $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:43ff $0b $c9 $00 $05
       sLOAD_ROOM 4, $02, 16, 12                        ;; 0e:4403 $f4 $04 $02 $10 $0c
     sENDIF                                             ;; 0e:4408
     sEND                                               ;; 0e:4408 $00
 
 script_02ce:
-    sIF_0B $c9                                         ;; 0e:4409 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4409 $0b $c9 $00 $05
       sLOAD_ROOM 6, $03, 16, 2                         ;; 0e:440d $f4 $06 $03 $10 $02
     sENDIF                                             ;; 0e:4412
     sEND                                               ;; 0e:4412 $00
 
 script_02cf:
-    sIF_0B $c9                                         ;; 0e:4413 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4413 $0b $c9 $00 $05
       sLOAD_ROOM 5, $03, 16, 2                         ;; 0e:4417 $f4 $05 $03 $10 $02
     sENDIF                                             ;; 0e:441c
     sEND                                               ;; 0e:441c $00
 
 script_02d0:
-    sIF_0B $c9                                         ;; 0e:441d $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:441d $0b $c9 $00 $05
       sLOAD_ROOM 6, $42, 16, 2                         ;; 0e:4421 $f4 $06 $42 $10 $02
     sENDIF                                             ;; 0e:4426
     sEND                                               ;; 0e:4426 $00
 
 script_02d1:
-    sIF_0B $c9                                         ;; 0e:4427 $0b $c9 $00 $06
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4427 $0b $c9 $00 $06
       sLOAD_ROOM 5, $42, 16, 2                         ;; 0e:442b $f4 $05 $42 $10 $02
       sRUN_ROOM_SCRIPT                                 ;; 0e:4430 $ec
     sENDIF                                             ;; 0e:4431
     sEND                                               ;; 0e:4431 $00
 
 script_02d2:
-    sIF_0B $c9                                         ;; 0e:4432 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4432 $0b $c9 $00 $05
       sLOAD_ROOM 5, $51, 16, 2                         ;; 0e:4436 $f4 $05 $51 $10 $02
     sENDIF                                             ;; 0e:443b
     sEND                                               ;; 0e:443b $00
 
 script_02d3:
-    sIF_0B $c9                                         ;; 0e:443c $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:443c $0b $c9 $00 $05
       sLOAD_ROOM 4, $51, 16, 2                         ;; 0e:4440 $f4 $04 $51 $10 $02
     sENDIF                                             ;; 0e:4445
     sEND                                               ;; 0e:4445 $00
 
 script_02d4:
-    sIF_0B $c9                                         ;; 0e:4446 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4446 $0b $c9 $00 $05
       sLOAD_ROOM 5, $32, 16, 12                        ;; 0e:444a $f4 $05 $32 $10 $0c
     sENDIF                                             ;; 0e:444f
     sEND                                               ;; 0e:444f $00
 
 script_02d5:
-    sIF_0B $c9                                         ;; 0e:4450 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4450 $0b $c9 $00 $05
       sLOAD_ROOM 4, $32, 16, 12                        ;; 0e:4454 $f4 $04 $32 $10 $0c
     sENDIF                                             ;; 0e:4459
     sEND                                               ;; 0e:4459 $00
 
 script_02d6:
-    sIF_0B $c9                                         ;; 0e:445a $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:445a $0b $c9 $00 $05
       sLOAD_ROOM 4, $21, 10, 8                         ;; 0e:445e $f4 $04 $21 $0a $08
     sENDIF                                             ;; 0e:4463
     sEND                                               ;; 0e:4463 $00
 
 script_02d7:
-    sIF_0B $c9                                         ;; 0e:4464 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4464 $0b $c9 $00 $05
       sLOAD_ROOM 5, $21, 10, 6                         ;; 0e:4468 $f4 $05 $21 $0a $06
     sENDIF                                             ;; 0e:446d
     sEND                                               ;; 0e:446d $00
 
 script_02d8:
-    sIF_0B $c9                                         ;; 0e:446e $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:446e $0b $c9 $00 $05
       sLOAD_ROOM 6, $71, 2, 2                          ;; 0e:4472 $f4 $06 $71 $02 $02
     sENDIF                                             ;; 0e:4477
     sEND                                               ;; 0e:4477 $00
 
 script_02d9:
-    sIF_0B $c9                                         ;; 0e:4478 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4478 $0b $c9 $00 $05
       sLOAD_ROOM 15, $30, 14, 6                        ;; 0e:447c $f4 $0f $30 $0e $06
     sENDIF                                             ;; 0e:4481
     sEND                                               ;; 0e:4481 $00
 
 script_02da:
-    sIF_0B $c9                                         ;; 0e:4482 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4482 $0b $c9 $00 $05
       sLOAD_ROOM 15, $54, 2, 12                        ;; 0e:4486 $f4 $0f $54 $02 $0c
     sENDIF                                             ;; 0e:448b
     sEND                                               ;; 0e:448b $00
 
 script_02db:
-    sIF_0B $c9                                         ;; 0e:448c $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:448c $0b $c9 $00 $05
       sLOAD_ROOM 15, $64, 14, 2                        ;; 0e:4490 $f4 $0f $64 $0e $02
     sENDIF                                             ;; 0e:4495
     sEND                                               ;; 0e:4495 $00
 
 script_02dc:
-    sIF_0B $c9                                         ;; 0e:4496 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4496 $0b $c9 $00 $05
       sLOAD_ROOM 5, $72, 16, 12                        ;; 0e:449a $f4 $05 $72 $10 $0c
     sENDIF                                             ;; 0e:449f
     sEND                                               ;; 0e:449f $00
 
 script_02dd:
-    sIF_0B $c9                                         ;; 0e:44a0 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:44a0 $0b $c9 $00 $05
       sLOAD_ROOM 5, $70, 16, 12                        ;; 0e:44a4 $f4 $05 $70 $10 $0c
     sENDIF                                             ;; 0e:44a9
     sEND                                               ;; 0e:44a9 $00
 
 script_02de:
-    sIF_0B $c9                                         ;; 0e:44aa $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:44aa $0b $c9 $00 $05
       sLOAD_ROOM 5, $70, 16, 2                         ;; 0e:44ae $f4 $05 $70 $10 $02
     sENDIF                                             ;; 0e:44b3
     sEND                                               ;; 0e:44b3 $00
 
 script_02df:
-    sIF_0B $c9                                         ;; 0e:44b4 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:44b4 $0b $c9 $00 $05
       sLOAD_ROOM 15, $31, 10, 4                        ;; 0e:44b8 $f4 $0f $31 $0a $04
     sENDIF                                             ;; 0e:44bd
     sEND                                               ;; 0e:44bd $00
 
 script_02e0:
-    sIF_0B $c9                                         ;; 0e:44be $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:44be $0b $c9 $00 $05
       sLOAD_ROOM 1, $03, 9, 4                          ;; 0e:44c2 $f4 $01 $03 $09 $04
     sENDIF                                             ;; 0e:44c7
     sEND                                               ;; 0e:44c7 $00
 
 script_02e1:
-    sIF_0B $c9                                         ;; 0e:44c8 $0b $c9 $00 $08
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:44c8 $0b $c9 $00 $08
       sUNK_C5 6                                        ;; 0e:44cc $c5 $06
       sLOAD_ROOM 5, $00, 9, 12                         ;; 0e:44ce $f4 $05 $00 $09 $0c
       sRUN_ROOM_SCRIPT                                 ;; 0e:44d3 $ec
@@ -630,25 +630,25 @@ script_02e1:
     sEND                                               ;; 0e:44d4 $00
 
 script_02e2:
-    sIF_0B $c9                                         ;; 0e:44d5 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:44d5 $0b $c9 $00 $05
       sLOAD_ROOM 15, $02, 16, 8                        ;; 0e:44d9 $f4 $0f $02 $10 $08
     sENDIF                                             ;; 0e:44de
     sEND                                               ;; 0e:44de $00
 
 script_02e3:
-    sIF_0B $c9                                         ;; 0e:44df $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:44df $0b $c9 $00 $05
       sLOAD_ROOM 4, $04, 16, 12                        ;; 0e:44e3 $f4 $04 $04 $10 $0c
     sENDIF                                             ;; 0e:44e8
     sEND                                               ;; 0e:44e8 $00
 
 script_02e4:
-    sIF_0B $c9                                         ;; 0e:44e9 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:44e9 $0b $c9 $00 $05
       sLOAD_ROOM 1, $03, 9, 4                          ;; 0e:44ed $f4 $01 $03 $09 $04
     sENDIF                                             ;; 0e:44f2
     sEND                                               ;; 0e:44f2 $00
 
 script_02e5:
-    sIF_0B $c9                                         ;; 0e:44f3 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:44f3 $0b $c9 $00 $05
       sLOAD_ROOM 1, $33, 11, 4                         ;; 0e:44f7 $f4 $01 $33 $0b $04
     sENDIF                                             ;; 0e:44fc
     sEND                                               ;; 0e:44fc $00
@@ -657,50 +657,50 @@ script_02e6:
     sEND                                               ;; 0e:44fd $00
 
 script_02e7:
-    sIF_0B $c9                                         ;; 0e:44fe $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:44fe $0b $c9 $00 $05
       sLOAD_ROOM 15, $62, 2, 4                         ;; 0e:4502 $f4 $0f $62 $02 $04
     sENDIF                                             ;; 0e:4507
     sEND                                               ;; 0e:4507 $00
 
 script_02e8:
-    sIF_0B $c9                                         ;; 0e:4508 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4508 $0b $c9 $00 $05
       sLOAD_ROOM 15, $63, 2, 6                         ;; 0e:450c $f4 $0f $63 $02 $06
     sENDIF                                             ;; 0e:4511
     sEND                                               ;; 0e:4511 $00
 
 script_02e9:
-    sIF_0B $c9                                         ;; 0e:4512 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4512 $0b $c9 $00 $05
       sLOAD_ROOM 5, $14, 2, 2                          ;; 0e:4516 $f4 $05 $14 $02 $02
     sENDIF                                             ;; 0e:451b
     sEND                                               ;; 0e:451b $00
 
 script_02ea:
-    sIF_0B $c9                                         ;; 0e:451c $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:451c $0b $c9 $00 $05
       sLOAD_ROOM 6, $14, 16, 2                         ;; 0e:4520 $f4 $06 $14 $10 $02
     sENDIF                                             ;; 0e:4525
     sEND                                               ;; 0e:4525 $00
 
 script_02eb:
-    sIF_0B $c9                                         ;; 0e:4526 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4526 $0b $c9 $00 $05
       sLOAD_ROOM 15, $53, 16, 6                        ;; 0e:452a $f4 $0f $53 $10 $06
     sENDIF                                             ;; 0e:452f
     sEND                                               ;; 0e:452f $00
 
 script_02ec:
-    sIF_0B $c9                                         ;; 0e:4530 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4530 $0b $c9 $00 $05
       sLOAD_ROOM 15, $52, 16, 4                        ;; 0e:4534 $f4 $0f $52 $10 $04
     sENDIF                                             ;; 0e:4539
     sEND                                               ;; 0e:4539 $00
 
 script_02ed:
-    sIF_0B $c9                                         ;; 0e:453a $0b $c9 $00 $09
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:453a $0b $c9 $00 $09
       sLOAD_ROOM 3, $06, 16, 12                        ;; 0e:453e $f4 $03 $06 $10 $0c
       sSET_ROOM_TILE $02, 8, 6                         ;; 0e:4543 $b0 $02 $08 $06
     sENDIF                                             ;; 0e:4547
     sEND                                               ;; 0e:4547 $00
 
 script_02ee:
-    sIF_0B $c9                                         ;; 0e:4548 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4548 $0b $c9 $00 $05
       sLOAD_ROOM 4, $06, 16, 12                        ;; 0e:454c $f4 $04 $06 $10 $0c
     sENDIF                                             ;; 0e:4551
     sEND                                               ;; 0e:4551 $00
@@ -712,32 +712,32 @@ script_02f0:
     sEND                                               ;; 0e:4553 $00
 
 script_02f1:
-    sIF_0B $c9                                         ;; 0e:4554 $0b $c9 $00 $06
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4554 $0b $c9 $00 $06
       sLOAD_ROOM 2, $06, 16, 2                         ;; 0e:4558 $f4 $02 $06 $10 $02
       sRUN_ROOM_SCRIPT                                 ;; 0e:455d $ec
     sENDIF                                             ;; 0e:455e
     sEND                                               ;; 0e:455e $00
 
 script_02f2:
-    sIF_0B $c9                                         ;; 0e:455f $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:455f $0b $c9 $00 $05
       sLOAD_ROOM 3, $06, 16, 2                         ;; 0e:4563 $f4 $03 $06 $10 $02
     sENDIF                                             ;; 0e:4568
     sEND                                               ;; 0e:4568 $00
 
 script_02f3:
-    sIF_0B $c9                                         ;; 0e:4569 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4569 $0b $c9 $00 $05
       sLOAD_ROOM 2, $05, 16, 2                         ;; 0e:456d $f4 $02 $05 $10 $02
     sENDIF                                             ;; 0e:4572
     sEND                                               ;; 0e:4572 $00
 
 script_02f4:
-    sIF_0B $c9                                         ;; 0e:4573 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4573 $0b $c9 $00 $05
       sLOAD_ROOM 1, $40, 14, 1                         ;; 0e:4577 $f4 $01 $40 $0e $01
     sENDIF                                             ;; 0e:457c
     sEND                                               ;; 0e:457c $00
 
 script_02f5:
-    sIF_0B $c9, $c1                                    ;; 0e:457d $0b $c9 $c1 $00 $2a
+    sIF_TRIGGERED_ON_BY $c9, $c1                       ;; 0e:457d $0b $c9 $c1 $00 $2a
       sIF_FLAG wScriptFlags0E.2, wScriptFlags0E.3, !wScriptFlags0E.4, wScriptFlags0E.5, !wScriptFlags0E.6, wScriptFlags0E.7 ;; 0e:4582 $08 $72 $73 $f4 $75 $f6 $77 $00 $05
         sLOAD_ROOM 2, $74, 14, 4                       ;; 0e:458b $f4 $02 $74 $0e $04
       sENDIF                                           ;; 0e:4590
@@ -751,14 +751,14 @@ script_02f5:
     sEND                                               ;; 0e:45ac $00
 
 script_02f6:
-    sIF_0B $c9                                         ;; 0e:45ad $0b $c9 $00 $06
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:45ad $0b $c9 $00 $06
       sSET_ROOM_TILE $02, 8, 6                         ;; 0e:45b1 $b0 $02 $08 $06
       sSFX 24                                          ;; 0e:45b5 $f9 $18
     sENDIF                                             ;; 0e:45b7
     sEND                                               ;; 0e:45b7 $00
 
 script_02f7:
-    sIF_0B $c9                                         ;; 0e:45b8 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:45b8 $0b $c9 $00 $05
       sLOAD_ROOM 2, $52, 16, 2                         ;; 0e:45bc $f4 $02 $52 $10 $02
     sENDIF                                             ;; 0e:45c1
     sEND                                               ;; 0e:45c1 $00
@@ -773,141 +773,141 @@ script_02fa:
     sEND                                               ;; 0e:45c4 $00
 
 script_02fb:
-    sIF_0B $c9                                         ;; 0e:45c5 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:45c5 $0b $c9 $00 $05
       sLOAD_ROOM 15, $35, 14, 6                        ;; 0e:45c9 $f4 $0f $35 $0e $06
     sENDIF                                             ;; 0e:45ce
     sEND                                               ;; 0e:45ce $00
 
 script_02fc:
-    sIF_0B $c9                                         ;; 0e:45cf $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:45cf $0b $c9 $00 $05
       sLOAD_ROOM 2, $16, 16, 12                        ;; 0e:45d3 $f4 $02 $16 $10 $0c
     sENDIF                                             ;; 0e:45d8
     sEND                                               ;; 0e:45d8 $00
 
 script_02fd:
-    sIF_0B $c9                                         ;; 0e:45d9 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:45d9 $0b $c9 $00 $05
       sLOAD_ROOM 8, $62, 16, 2                         ;; 0e:45dd $f4 $08 $62 $10 $02
     sENDIF                                             ;; 0e:45e2
     sEND                                               ;; 0e:45e2 $00
 
 script_02fe:
-    sIF_0B $c9                                         ;; 0e:45e3 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:45e3 $0b $c9 $00 $05
       sLOAD_ROOM 14, $36, 8, 5                         ;; 0e:45e7 $f4 $0e $36 $08 $05
     sENDIF                                             ;; 0e:45ec
     sEND                                               ;; 0e:45ec $00
 
 script_02ff:
-    sIF_0B $c9                                         ;; 0e:45ed $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:45ed $0b $c9 $00 $05
       sLOAD_ROOM 2, $50, 16, 2                         ;; 0e:45f1 $f4 $02 $50 $10 $02
     sENDIF                                             ;; 0e:45f6
     sEND                                               ;; 0e:45f6 $00
 
 script_0300:
-    sIF_0B $c9                                         ;; 0e:45f7 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:45f7 $0b $c9 $00 $05
       sLOAD_ROOM 3, $50, 16, 2                         ;; 0e:45fb $f4 $03 $50 $10 $02
     sENDIF                                             ;; 0e:4600
     sEND                                               ;; 0e:4600 $00
 
 script_0301:
-    sIF_0B $c9                                         ;; 0e:4601 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4601 $0b $c9 $00 $05
       sLOAD_ROOM 2, $62, 16, 12                        ;; 0e:4605 $f4 $02 $62 $10 $0c
     sENDIF                                             ;; 0e:460a
     sEND                                               ;; 0e:460a $00
 
 script_0302:
-    sIF_0B $c9                                         ;; 0e:460b $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:460b $0b $c9 $00 $05
       sLOAD_ROOM 3, $62, 16, 12                        ;; 0e:460f $f4 $03 $62 $10 $0c
     sENDIF                                             ;; 0e:4614
     sEND                                               ;; 0e:4614 $00
 
 script_0303:
-    sIF_0B $c9                                         ;; 0e:4615 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4615 $0b $c9 $00 $05
       sLOAD_ROOM 2, $10, 16, 2                         ;; 0e:4619 $f4 $02 $10 $10 $02
     sENDIF                                             ;; 0e:461e
     sEND                                               ;; 0e:461e $00
 
 script_0304:
-    sIF_0B $c9                                         ;; 0e:461f $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:461f $0b $c9 $00 $05
       sLOAD_ROOM 3, $10, 16, 2                         ;; 0e:4623 $f4 $03 $10 $10 $02
     sENDIF                                             ;; 0e:4628
     sEND                                               ;; 0e:4628 $00
 
 script_0305:
-    sIF_0B $c9                                         ;; 0e:4629 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4629 $0b $c9 $00 $05
       sLOAD_ROOM 2, $20, 16, 2                         ;; 0e:462d $f4 $02 $20 $10 $02
     sENDIF                                             ;; 0e:4632
     sEND                                               ;; 0e:4632 $00
 
 script_0306:
-    sIF_0B $c9                                         ;; 0e:4633 $0b $c9 $00 $06
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4633 $0b $c9 $00 $06
       sLOAD_ROOM 3, $20, 16, 2                         ;; 0e:4637 $f4 $03 $20 $10 $02
       sRUN_ROOM_SCRIPT                                 ;; 0e:463c $ec
     sENDIF                                             ;; 0e:463d
     sEND                                               ;; 0e:463d $00
 
 script_0307:
-    sIF_0B $c9                                         ;; 0e:463e $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:463e $0b $c9 $00 $05
       sLOAD_ROOM 5, $20, 16, 12                        ;; 0e:4642 $f4 $05 $20 $10 $0c
     sENDIF                                             ;; 0e:4647
     sEND                                               ;; 0e:4647 $00
 
 script_0308:
-    sIF_0B $c9                                         ;; 0e:4648 $0b $c9 $00 $09
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4648 $0b $c9 $00 $09
       sLOAD_ROOM 3, $20, 16, 12                        ;; 0e:464c $f4 $03 $20 $10 $0c
       sSET_ROOM_TILE $02, 8, 6                         ;; 0e:4651 $b0 $02 $08 $06
     sENDIF                                             ;; 0e:4655
     sEND                                               ;; 0e:4655 $00
 
 script_0309:
-    sIF_0B $c9                                         ;; 0e:4656 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4656 $0b $c9 $00 $05
       sLOAD_ROOM 14, $51, 8, 6                         ;; 0e:465a $f4 $0e $51 $08 $06
     sENDIF                                             ;; 0e:465f
     sEND                                               ;; 0e:465f $00
 
 script_030a:
-    sIF_0B $c9                                         ;; 0e:4660 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4660 $0b $c9 $00 $05
       sLOAD_ROOM 2, $73, 16, 2                         ;; 0e:4664 $f4 $02 $73 $10 $02
     sENDIF                                             ;; 0e:4669
     sEND                                               ;; 0e:4669 $00
 
 script_030b:
-    sIF_0B $c9                                         ;; 0e:466a $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:466a $0b $c9 $00 $05
       sLOAD_ROOM 3, $04, 16, 12                        ;; 0e:466e $f4 $03 $04 $10 $0c
     sENDIF                                             ;; 0e:4673
     sEND                                               ;; 0e:4673 $00
 
 script_030c:
-    sIF_0B $c9                                         ;; 0e:4674 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4674 $0b $c9 $00 $05
       sLOAD_ROOM 2, $04, 16, 12                        ;; 0e:4678 $f4 $02 $04 $10 $0c
     sENDIF                                             ;; 0e:467d
     sEND                                               ;; 0e:467d $00
 
 script_030d:
-    sIF_0B $c9                                         ;; 0e:467e $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:467e $0b $c9 $00 $05
       sLOAD_ROOM 3, $32, 16, 2                         ;; 0e:4682 $f4 $03 $32 $10 $02
     sENDIF                                             ;; 0e:4687
     sEND                                               ;; 0e:4687 $00
 
 script_030e:
-    sIF_0B $c9                                         ;; 0e:4688 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4688 $0b $c9 $00 $05
       sLOAD_ROOM 2, $32, 16, 2                         ;; 0e:468c $f4 $02 $32 $10 $02
     sENDIF                                             ;; 0e:4691
     sEND                                               ;; 0e:4691 $00
 
 script_030f:
-    sIF_0B $c9                                         ;; 0e:4692 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4692 $0b $c9 $00 $05
       sLOAD_ROOM 4, $43, 16, 12                        ;; 0e:4696 $f4 $04 $43 $10 $0c
     sENDIF                                             ;; 0e:469b
     sEND                                               ;; 0e:469b $00
 
 script_0310:
-    sIF_0B $c9                                         ;; 0e:469c $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:469c $0b $c9 $00 $05
       sLOAD_ROOM 3, $52, 16, 2                         ;; 0e:46a0 $f4 $03 $52 $10 $02
     sENDIF                                             ;; 0e:46a5
     sEND                                               ;; 0e:46a5 $00
 
 script_0311:
-    sIF_0B $c9                                         ;; 0e:46a6 $0b $c9 $00 $0d
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:46a6 $0b $c9 $00 $0d
       sUNK_C5 3                                        ;; 0e:46aa $c5 $03
       sCLEAR_FLAG wScriptFlags0F.0                     ;; 0e:46ac $db $78
       sCLEAR_FLAG wScriptFlags0F.1                     ;; 0e:46ae $db $79
@@ -917,88 +917,88 @@ script_0311:
     sEND                                               ;; 0e:46b7 $00
 
 script_0312:
-    sIF_0B $c9                                         ;; 0e:46b8 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:46b8 $0b $c9 $00 $05
       sLOAD_ROOM 2, $35, 16, 2                         ;; 0e:46bc $f4 $02 $35 $10 $02
     sENDIF                                             ;; 0e:46c1
     sEND                                               ;; 0e:46c1 $00
 
 script_0313:
-    sIF_0B $c9                                         ;; 0e:46c2 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:46c2 $0b $c9 $00 $05
       sLOAD_ROOM 3, $35, 16, 2                         ;; 0e:46c6 $f4 $03 $35 $10 $02
     sENDIF                                             ;; 0e:46cb
     sEND                                               ;; 0e:46cb $00
 
 script_0314:
-    sIF_0B $c9                                         ;; 0e:46cc $0b $c9 $00 $06
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:46cc $0b $c9 $00 $06
       sLOAD_ROOM 2, $55, 16, 12                        ;; 0e:46d0 $f4 $02 $55 $10 $0c
       sRUN_ROOM_SCRIPT                                 ;; 0e:46d5 $ec
     sENDIF                                             ;; 0e:46d6
     sEND                                               ;; 0e:46d6 $00
 
 script_0315:
-    sIF_0B $c9                                         ;; 0e:46d7 $0b $c9 $00 $07
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:46d7 $0b $c9 $00 $07
       sLOAD_ROOM 3, $55, 16, 12                        ;; 0e:46db $f4 $03 $55 $10 $0c
       sCLEAR_FLAG wScriptFlags0F.0                     ;; 0e:46e0 $db $78
     sENDIF                                             ;; 0e:46e2
     sEND                                               ;; 0e:46e2 $00
 
 script_0316:
-    sIF_0B $c9                                         ;; 0e:46e3 $0b $c9 $00 $06
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:46e3 $0b $c9 $00 $06
       sLOAD_ROOM 2, $66, 16, 12                        ;; 0e:46e7 $f4 $02 $66 $10 $0c
       sRUN_ROOM_SCRIPT                                 ;; 0e:46ec $ec
     sENDIF                                             ;; 0e:46ed
     sEND                                               ;; 0e:46ed $00
 
 script_0317:
-    sIF_0B $c9                                         ;; 0e:46ee $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:46ee $0b $c9 $00 $05
       sLOAD_ROOM 3, $66, 16, 12                        ;; 0e:46f2 $f4 $03 $66 $10 $0c
     sENDIF                                             ;; 0e:46f7
     sEND                                               ;; 0e:46f7 $00
 
 script_0318:
-    sIF_0B $c9                                         ;; 0e:46f8 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:46f8 $0b $c9 $00 $05
       sLOAD_ROOM 2, $64, 16, 2                         ;; 0e:46fc $f4 $02 $64 $10 $02
     sENDIF                                             ;; 0e:4701
     sEND                                               ;; 0e:4701 $00
 
 script_0319:
-    sIF_0B $c9                                         ;; 0e:4702 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4702 $0b $c9 $00 $05
       sLOAD_ROOM 3, $64, 16, 2                         ;; 0e:4706 $f4 $03 $64 $10 $02
     sENDIF                                             ;; 0e:470b
     sEND                                               ;; 0e:470b $00
 
 script_031a:
-    sIF_0B $c9                                         ;; 0e:470c $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:470c $0b $c9 $00 $05
       sLOAD_ROOM 2, $24, 16, 12                        ;; 0e:4710 $f4 $02 $24 $10 $0c
     sENDIF                                             ;; 0e:4715
     sEND                                               ;; 0e:4715 $00
 
 script_031b:
-    sIF_0B $c9                                         ;; 0e:4716 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4716 $0b $c9 $00 $05
       sLOAD_ROOM 3, $24, 16, 12                        ;; 0e:471a $f4 $03 $24 $10 $0c
     sENDIF                                             ;; 0e:471f
     sEND                                               ;; 0e:471f $00
 
 script_031c:
-    sIF_0B $c9                                         ;; 0e:4720 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4720 $0b $c9 $00 $05
       sLOAD_ROOM 2, $26, 16, 12                        ;; 0e:4724 $f4 $02 $26 $10 $0c
     sENDIF                                             ;; 0e:4729
     sEND                                               ;; 0e:4729 $00
 
 script_031d:
-    sIF_0B $c9                                         ;; 0e:472a $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:472a $0b $c9 $00 $05
       sLOAD_ROOM 3, $26, 16, 12                        ;; 0e:472e $f4 $03 $26 $10 $0c
     sENDIF                                             ;; 0e:4733
     sEND                                               ;; 0e:4733 $00
 
 script_031e:
-    sIF_0B $c9                                         ;; 0e:4734 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4734 $0b $c9 $00 $05
       sLOAD_ROOM 2, $25, 16, 2                         ;; 0e:4738 $f4 $02 $25 $10 $02
     sENDIF                                             ;; 0e:473d
     sEND                                               ;; 0e:473d $00
 
 script_031f:
-    sIF_0B $c9                                         ;; 0e:473e $0b $c9 $00 $2a
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:473e $0b $c9 $00 $2a
       sIF_FLAG wScriptFlags0E.2, wScriptFlags0E.3, !wScriptFlags0E.4, wScriptFlags0E.5, wScriptFlags0E.6, wScriptFlags0E.7 ;; 0e:4742 $08 $72 $73 $f4 $75 $76 $77 $00 $05
         sLOAD_ROOM 1, $10, 6, 8                        ;; 0e:474b $f4 $01 $10 $06 $08
       sENDIF                                           ;; 0e:4750
@@ -1012,91 +1012,91 @@ script_031f:
     sEND                                               ;; 0e:476c $00
 
 script_0320:
-    sIF_0B $c9                                         ;; 0e:476d $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:476d $0b $c9 $00 $05
       sLOAD_ROOM 1, $20, 12, 8                         ;; 0e:4771 $f4 $01 $20 $0c $08
     sENDIF                                             ;; 0e:4776
     sEND                                               ;; 0e:4776 $00
 
 script_0321:
-    sIF_0B $c9                                         ;; 0e:4777 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4777 $0b $c9 $00 $05
       sLOAD_ROOM 6, $75, 9, 7                          ;; 0e:477b $f4 $06 $75 $09 $07
     sENDIF                                             ;; 0e:4780
     sEND                                               ;; 0e:4780 $00
 
 script_0322:
-    sIF_0B $c9                                         ;; 0e:4781 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4781 $0b $c9 $00 $05
       sLOAD_ROOM 6, $44, 9, 7                          ;; 0e:4785 $f4 $06 $44 $09 $07
     sENDIF                                             ;; 0e:478a
     sEND                                               ;; 0e:478a $00
 
 script_0323:
-    sIF_0B $c9                                         ;; 0e:478b $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:478b $0b $c9 $00 $05
       sLOAD_ROOM 1, $21, 12, 8                         ;; 0e:478f $f4 $01 $21 $0c $08
     sENDIF                                             ;; 0e:4794
     sEND                                               ;; 0e:4794 $00
 
 script_0324:
-    sIF_0B $c9                                         ;; 0e:4795 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4795 $0b $c9 $00 $05
       sLOAD_ROOM 1, $11, 6, 8                          ;; 0e:4799 $f4 $01 $11 $06 $08
     sENDIF                                             ;; 0e:479e
     sEND                                               ;; 0e:479e $00
 
 script_0325:
-    sIF_0B $c9                                         ;; 0e:479f $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:479f $0b $c9 $00 $05
       sLOAD_ROOM 1, $50, 6, 8                          ;; 0e:47a3 $f4 $01 $50 $06 $08
     sENDIF                                             ;; 0e:47a8
     sEND                                               ;; 0e:47a8 $00
 
 script_0326:
-    sIF_0B $c9                                         ;; 0e:47a9 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:47a9 $0b $c9 $00 $05
       sLOAD_ROOM 1, $60, 12, 8                         ;; 0e:47ad $f4 $01 $60 $0c $08
     sENDIF                                             ;; 0e:47b2
     sEND                                               ;; 0e:47b2 $00
 
 script_0327:
-    sIF_0B $c9                                         ;; 0e:47b3 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:47b3 $0b $c9 $00 $05
       sLOAD_ROOM 4, $67, 9, 7                          ;; 0e:47b7 $f4 $04 $67 $09 $07
     sENDIF                                             ;; 0e:47bc
     sEND                                               ;; 0e:47bc $00
 
 script_0328:
-    sIF_0B $c9                                         ;; 0e:47bd $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:47bd $0b $c9 $00 $05
       sLOAD_ROOM 6, $53, 9, 7                          ;; 0e:47c1 $f4 $06 $53 $09 $07
     sENDIF                                             ;; 0e:47c6
     sEND                                               ;; 0e:47c6 $00
 
 script_0329:
-    sIF_0B $c9                                         ;; 0e:47c7 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:47c7 $0b $c9 $00 $05
       sLOAD_ROOM 4, $45, 9, 7                          ;; 0e:47cb $f4 $04 $45 $09 $07
     sENDIF                                             ;; 0e:47d0
     sEND                                               ;; 0e:47d0 $00
 
 script_032a:
-    sIF_0B $c9                                         ;; 0e:47d1 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:47d1 $0b $c9 $00 $05
       sLOAD_ROOM 5, $46, 9, 7                          ;; 0e:47d5 $f4 $05 $46 $09 $07
     sENDIF                                             ;; 0e:47da
     sEND                                               ;; 0e:47da $00
 
 script_032b:
-    sIF_0B $c9                                         ;; 0e:47db $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:47db $0b $c9 $00 $05
       sLOAD_ROOM 4, $65, 9, 7                          ;; 0e:47df $f4 $04 $65 $09 $07
     sENDIF                                             ;; 0e:47e4
     sEND                                               ;; 0e:47e4 $00
 
 script_032c:
-    sIF_0B $c9                                         ;; 0e:47e5 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:47e5 $0b $c9 $00 $05
       sLOAD_ROOM 5, $63, 9, 7                          ;; 0e:47e9 $f4 $05 $63 $09 $07
     sENDIF                                             ;; 0e:47ee
     sEND                                               ;; 0e:47ee $00
 
 script_032d:
-    sIF_0B $c9                                         ;; 0e:47ef $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:47ef $0b $c9 $00 $05
       sLOAD_ROOM 5, $40, 9, 7                          ;; 0e:47f3 $f4 $05 $40 $09 $07
     sENDIF                                             ;; 0e:47f8
     sEND                                               ;; 0e:47f8 $00
 
 script_032e:
-    sIF_0B $c9                                         ;; 0e:47f9 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:47f9 $0b $c9 $00 $05
       sLOAD_ROOM 5, $52, 9, 7                          ;; 0e:47fd $f4 $05 $52 $09 $07
     sENDIF                                             ;; 0e:4802
     sEND                                               ;; 0e:4802 $00
@@ -1105,156 +1105,156 @@ script_032f:
     sEND                                               ;; 0e:4803 $00
 
 script_0330:
-    sIF_0B $c9                                         ;; 0e:4804 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4804 $0b $c9 $00 $05
       sLOAD_ROOM 1, $51, 6, 8                          ;; 0e:4808 $f4 $01 $51 $06 $08
     sENDIF                                             ;; 0e:480d
     sEND                                               ;; 0e:480d $00
 
 script_0331:
-    sIF_0B $c9                                         ;; 0e:480e $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:480e $0b $c9 $00 $05
       sLOAD_ROOM 2, $46, 9, 7                          ;; 0e:4812 $f4 $02 $46 $09 $07
     sENDIF                                             ;; 0e:4817
     sEND                                               ;; 0e:4817 $00
 
 script_0332:
-    sIF_0B $c9                                         ;; 0e:4818 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4818 $0b $c9 $00 $05
       sLOAD_ROOM 3, $33, 9, 7                          ;; 0e:481c $f4 $03 $33 $09 $07
     sENDIF                                             ;; 0e:4821
     sEND                                               ;; 0e:4821 $00
 
 script_0333:
-    sIF_0B $c9                                         ;; 0e:4822 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4822 $0b $c9 $00 $05
       sLOAD_ROOM 1, $02, 6, 8                          ;; 0e:4826 $f4 $01 $02 $06 $08
     sENDIF                                             ;; 0e:482b
     sEND                                               ;; 0e:482b $00
 
 script_0334:
-    sIF_0B $c9                                         ;; 0e:482c $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:482c $0b $c9 $00 $05
       sLOAD_ROOM 1, $12, 12, 8                         ;; 0e:4830 $f4 $01 $12 $0c $08
     sENDIF                                             ;; 0e:4835
     sEND                                               ;; 0e:4835 $00
 
 script_0335:
-    sIF_0B $c9                                         ;; 0e:4836 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4836 $0b $c9 $00 $05
       sLOAD_ROOM 1, $16, 12, 8                         ;; 0e:483a $f4 $01 $16 $0c $08
     sENDIF                                             ;; 0e:483f
     sEND                                               ;; 0e:483f $00
 
 script_0336:
-    sIF_0B $c9                                         ;; 0e:4840 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4840 $0b $c9 $00 $05
       sLOAD_ROOM 1, $06, 6, 8                          ;; 0e:4844 $f4 $01 $06 $06 $08
     sENDIF                                             ;; 0e:4849
     sEND                                               ;; 0e:4849 $00
 
 script_0337:
-    sIF_0B $c9                                         ;; 0e:484a $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:484a $0b $c9 $00 $05
       sLOAD_ROOM 2, $17, 9, 7                          ;; 0e:484e $f4 $02 $17 $09 $07
     sENDIF                                             ;; 0e:4853
     sEND                                               ;; 0e:4853 $00
 
 script_0338:
-    sIF_0B $c9                                         ;; 0e:4854 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4854 $0b $c9 $00 $05
       sLOAD_ROOM 6, $21, 9, 7                          ;; 0e:4858 $f4 $06 $21 $09 $07
     sENDIF                                             ;; 0e:485d
     sEND                                               ;; 0e:485d $00
 
 script_0339:
-    sIF_0B $c9                                         ;; 0e:485e $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:485e $0b $c9 $00 $05
       sLOAD_ROOM 15, $56, 14, 4                        ;; 0e:4862 $f4 $0f $56 $0e $04
     sENDIF                                             ;; 0e:4867
     sEND                                               ;; 0e:4867 $00
 
 script_033a:
-    sIF_0B $c9                                         ;; 0e:4868 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4868 $0b $c9 $00 $05
       sLOAD_ROOM 3, $56, 16, 2                         ;; 0e:486c $f4 $03 $56 $10 $02
     sENDIF                                             ;; 0e:4871
     sEND                                               ;; 0e:4871 $00
 
 script_033b:
-    sIF_0B $c9, $c1                                    ;; 0e:4872 $0b $c9 $c1 $00 $06
+    sIF_TRIGGERED_ON_BY $c9, $c1                       ;; 0e:4872 $0b $c9 $c1 $00 $06
       sLOAD_ROOM 1, $15, 9, 12                         ;; 0e:4877 $f4 $01 $15 $09 $0c
       sRUN_ROOM_SCRIPT                                 ;; 0e:487c $ec
     sENDIF                                             ;; 0e:487d
     sEND                                               ;; 0e:487d $00
 
 script_033c:
-    sIF_0B $c9, $c1                                    ;; 0e:487e $0b $c9 $c1 $00 $06
+    sIF_TRIGGERED_ON_BY $c9, $c1                       ;; 0e:487e $0b $c9 $c1 $00 $06
       sLOAD_ROOM 14, $16, 9, 2                         ;; 0e:4883 $f4 $0e $16 $09 $02
       sRUN_ROOM_SCRIPT                                 ;; 0e:4888 $ec
     sENDIF                                             ;; 0e:4889
     sEND                                               ;; 0e:4889 $00
 
 script_033d:
-    sIF_0B $c9                                         ;; 0e:488a $0b $c9 $00 $07
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:488a $0b $c9 $00 $07
       sUNK_C5 5                                        ;; 0e:488e $c5 $05
       sLOAD_ROOM 4, $63, 9, 12                         ;; 0e:4890 $f4 $04 $63 $09 $0c
     sENDIF                                             ;; 0e:4895
     sEND                                               ;; 0e:4895 $00
 
 script_033e:
-    sIF_0B $c9                                         ;; 0e:4896 $0b $c9 $00 $07
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4896 $0b $c9 $00 $07
       sUNK_C5 35                                       ;; 0e:489a $c5 $23
       sLOAD_ROOM 6, $46, 16, 2                         ;; 0e:489c $f4 $06 $46 $10 $02
     sENDIF                                             ;; 0e:48a1
     sEND                                               ;; 0e:48a1 $00
 
 script_033f:
-    sIF_0B $c9                                         ;; 0e:48a2 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:48a2 $0b $c9 $00 $05
       sLOAD_ROOM 2, $46, 16, 2                         ;; 0e:48a6 $f4 $02 $46 $10 $02
     sENDIF                                             ;; 0e:48ab
     sEND                                               ;; 0e:48ab $00
 
 script_0340:
-    sIF_0B $c9                                         ;; 0e:48ac $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:48ac $0b $c9 $00 $05
       sLOAD_ROOM 4, $67, 16, 2                         ;; 0e:48b0 $f4 $04 $67 $10 $02
     sENDIF                                             ;; 0e:48b5
     sEND                                               ;; 0e:48b5 $00
 
 script_0341:
-    sIF_0B $c9                                         ;; 0e:48b6 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:48b6 $0b $c9 $00 $05
       sLOAD_ROOM 4, $65, 16, 2                         ;; 0e:48ba $f4 $04 $65 $10 $02
     sENDIF                                             ;; 0e:48bf
     sEND                                               ;; 0e:48bf $00
 
 script_0342:
-    sIF_0B $c9                                         ;; 0e:48c0 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:48c0 $0b $c9 $00 $05
       sLOAD_ROOM 6, $75, 16, 2                         ;; 0e:48c4 $f4 $06 $75 $10 $02
     sENDIF                                             ;; 0e:48c9
     sEND                                               ;; 0e:48c9 $00
 
 script_0343:
-    sIF_0B $c9                                         ;; 0e:48ca $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:48ca $0b $c9 $00 $05
       sLOAD_ROOM 15, $66, 8, 8                         ;; 0e:48ce $f4 $0f $66 $08 $08
     sENDIF                                             ;; 0e:48d3
     sEND                                               ;; 0e:48d3 $00
 
 script_0344:
-    sIF_0B $c9, $c1                                    ;; 0e:48d4 $0b $c9 $c1 $00 $05
+    sIF_TRIGGERED_ON_BY $c9, $c1                       ;; 0e:48d4 $0b $c9 $c1 $00 $05
       sLOAD_ROOM 1, $72, 10, 2                         ;; 0e:48d9 $f4 $01 $72 $0a $02
     sENDIF                                             ;; 0e:48de
     sEND                                               ;; 0e:48de $00
 
 script_0345:
-    sIF_0B $c9                                         ;; 0e:48df $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:48df $0b $c9 $00 $05
       sLOAD_ROOM 1, $74, 16, 12                        ;; 0e:48e3 $f4 $01 $74 $10 $0c
     sENDIF                                             ;; 0e:48e8
     sEND                                               ;; 0e:48e8 $00
 
 script_0346:
-    sIF_0B $c9                                         ;; 0e:48e9 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:48e9 $0b $c9 $00 $05
       sLOAD_ROOM 6, $57, 16, 2                         ;; 0e:48ed $f4 $06 $57 $10 $02
     sENDIF                                             ;; 0e:48f2
     sEND                                               ;; 0e:48f2 $00
 
 script_0347:
-    sIF_0B $c9                                         ;; 0e:48f3 $0b $c9 $00 $06
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:48f3 $0b $c9 $00 $06
       sLOAD_ROOM 1, $14, 16, 12                        ;; 0e:48f7 $f4 $01 $14 $10 $0c
       sRUN_ROOM_SCRIPT                                 ;; 0e:48fc $ec
     sENDIF                                             ;; 0e:48fd
     sEND                                               ;; 0e:48fd $00
 
 script_0348:
-    sIF_0B $c9                                         ;; 0e:48fe $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:48fe $0b $c9 $00 $05
       sLOAD_ROOM 1, $03, 2, 12                         ;; 0e:4902 $f4 $01 $03 $02 $0c
     sENDIF                                             ;; 0e:4907
     sEND                                               ;; 0e:4907 $00
@@ -1263,7 +1263,7 @@ script_0349:
     sEND                                               ;; 0e:4908 $00
 
 script_034a:
-    sIF_0B $c9                                         ;; 0e:4909 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4909 $0b $c9 $00 $05
       sLOAD_ROOM 1, $04, 6, 4                          ;; 0e:490d $f4 $01 $04 $06 $04
     sENDIF                                             ;; 0e:4912
     sEND                                               ;; 0e:4912 $00
@@ -1272,7 +1272,7 @@ script_034b:
     sEND                                               ;; 0e:4913 $00
 
 script_034c:
-    sIF_0B $c9                                         ;; 0e:4914 $0b $c9 $00 $07
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4914 $0b $c9 $00 $07
       sUNK_C5 53                                       ;; 0e:4918 $c5 $35
       sLOAD_ROOM 1, $01, 16, 12                        ;; 0e:491a $f4 $01 $01 $10 $0c
     sENDIF                                             ;; 0e:491f
@@ -1294,7 +1294,7 @@ script_0351:
     sEND                                               ;; 0e:4924 $00
 
 script_0352:
-    sIF_0B $c9                                         ;; 0e:4925 $0b $c9 $00 $60
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4925 $0b $c9 $00 $60
       sIF_FLAG !wScriptFlags06.7                       ;; 0e:4929 $08 $b7 $00 $55
         sSFX 37                                        ;; 0e:492d $f9 $25
         sSHAKE_SCREEN                                  ;; 0e:492f $fb
@@ -1333,7 +1333,7 @@ script_0352:
     sEND                                               ;; 0e:4989 $00
 
 script_0353:
-    sIF_0B $c9                                         ;; 0e:498a $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:498a $0b $c9 $00 $05
       sLOAD_ROOM 9, $40, 16, 2                         ;; 0e:498e $f4 $09 $40 $10 $02
     sENDIF                                             ;; 0e:4993
     sEND                                               ;; 0e:4993 $00
@@ -1345,7 +1345,7 @@ script_0355:
     sEND                                               ;; 0e:4995 $00
 
 script_0356:
-    sIF_0B $c9                                         ;; 0e:4996 $0b $c9 $00 $09
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4996 $0b $c9 $00 $09
       sLOAD_ROOM 0, $51, 14, 8                         ;; 0e:499a $f4 $00 $51 $0e $08
       sSET_MUSIC 20                                    ;; 0e:499f $f8 $14
       sCLEAR_ROOM_HISTORY                              ;; 0e:49a1 $ab
@@ -1354,118 +1354,118 @@ script_0356:
     sEND                                               ;; 0e:49a3 $00
 
 script_0357:
-    sIF_0B $c9                                         ;; 0e:49a4 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:49a4 $0b $c9 $00 $05
       sLOAD_ROOM 1, $34, 2, 12                         ;; 0e:49a8 $f4 $01 $34 $02 $0c
     sENDIF                                             ;; 0e:49ad
     sEND                                               ;; 0e:49ad $00
 
 script_0358:
-    sIF_0B $c9                                         ;; 0e:49ae $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:49ae $0b $c9 $00 $05
       sLOAD_ROOM 14, $55, 16, 4                        ;; 0e:49b2 $f4 $0e $55 $10 $04
     sENDIF                                             ;; 0e:49b7
     sEND                                               ;; 0e:49b7 $00
 
 script_0359:
-    sIF_0B $c9                                         ;; 0e:49b8 $0b $c9 $00 $06
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:49b8 $0b $c9 $00 $06
       sLOAD_ROOM 9, $41, 16, 2                         ;; 0e:49bc $f4 $09 $41 $10 $02
       sRUN_ROOM_SCRIPT                                 ;; 0e:49c1 $ec
     sENDIF                                             ;; 0e:49c2
     sEND                                               ;; 0e:49c2 $00
 
 script_035a:
-    sIF_0B $c9                                         ;; 0e:49c3 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:49c3 $0b $c9 $00 $05
       sLOAD_ROOM 8, $24, 16, 2                         ;; 0e:49c7 $f4 $08 $24 $10 $02
     sENDIF                                             ;; 0e:49cc
     sEND                                               ;; 0e:49cc $00
 
 script_035b:
-    sIF_0B $c9, $c1                                    ;; 0e:49cd $0b $c9 $c1 $00 $05
+    sIF_TRIGGERED_ON_BY $c9, $c1                       ;; 0e:49cd $0b $c9 $c1 $00 $05
       sLOAD_ROOM 11, $36, 16, 12                       ;; 0e:49d2 $f4 $0b $36 $10 $0c
     sENDIF                                             ;; 0e:49d7
     sEND                                               ;; 0e:49d7 $00
 
 script_035c:
-    sIF_0B $c9                                         ;; 0e:49d8 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:49d8 $0b $c9 $00 $05
       sLOAD_ROOM 14, $56, 10, 2                        ;; 0e:49dc $f4 $0e $56 $0a $02
     sENDIF                                             ;; 0e:49e1
     sEND                                               ;; 0e:49e1 $00
 
 script_035d:
-    sIF_0B $c9                                         ;; 0e:49e2 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:49e2 $0b $c9 $00 $05
       sLOAD_ROOM 8, $51, 16, 2                         ;; 0e:49e6 $f4 $08 $51 $10 $02
     sENDIF                                             ;; 0e:49eb
     sEND                                               ;; 0e:49eb $00
 
 script_035e:
-    sIF_0B $c9                                         ;; 0e:49ec $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:49ec $0b $c9 $00 $05
       sLOAD_ROOM 8, $57, 16, 2                         ;; 0e:49f0 $f4 $08 $57 $10 $02
     sENDIF                                             ;; 0e:49f5
     sEND                                               ;; 0e:49f5 $00
 
 script_035f:
-    sIF_0B $c9                                         ;; 0e:49f6 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:49f6 $0b $c9 $00 $05
       sLOAD_ROOM 3, $43, 16, 12                        ;; 0e:49fa $f4 $03 $43 $10 $0c
     sENDIF                                             ;; 0e:49ff
     sEND                                               ;; 0e:49ff $00
 
 script_0360:
-    sIF_0B $c9                                         ;; 0e:4a00 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4a00 $0b $c9 $00 $05
       sLOAD_ROOM 11, $17, 9, 7                         ;; 0e:4a04 $f4 $0b $17 $09 $07
     sENDIF                                             ;; 0e:4a09
     sEND                                               ;; 0e:4a09 $00
 
 script_0361:
-    sIF_0B $c9                                         ;; 0e:4a0a $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4a0a $0b $c9 $00 $05
       sLOAD_ROOM 15, $56, 16, 2                        ;; 0e:4a0e $f4 $0f $56 $10 $02
     sENDIF                                             ;; 0e:4a13
     sEND                                               ;; 0e:4a13 $00
 
 script_0362:
-    sIF_0B $c9                                         ;; 0e:4a14 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4a14 $0b $c9 $00 $05
       sLOAD_ROOM 15, $47, 4, 6                         ;; 0e:4a18 $f4 $0f $47 $04 $06
     sENDIF                                             ;; 0e:4a1d
     sEND                                               ;; 0e:4a1d $00
 
 script_0363:
-    sIF_0B $c9                                         ;; 0e:4a1e $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4a1e $0b $c9 $00 $05
       sLOAD_ROOM 15, $66, 4, 2                         ;; 0e:4a22 $f4 $0f $66 $04 $02
     sENDIF                                             ;; 0e:4a27
     sEND                                               ;; 0e:4a27 $00
 
 script_0364:
-    sIF_0B $c9                                         ;; 0e:4a28 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4a28 $0b $c9 $00 $05
       sLOAD_ROOM 15, $66, 14, 10                       ;; 0e:4a2c $f4 $0f $66 $0e $0a
     sENDIF                                             ;; 0e:4a31
     sEND                                               ;; 0e:4a31 $00
 
 script_0365:
-    sIF_0B $c9                                         ;; 0e:4a32 $0b $c9 $00 $06
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4a32 $0b $c9 $00 $06
       sLOAD_ROOM 10, $51, 16, 2                        ;; 0e:4a36 $f4 $0a $51 $10 $02
       sRUN_ROOM_SCRIPT                                 ;; 0e:4a3b $ec
     sENDIF                                             ;; 0e:4a3c
     sEND                                               ;; 0e:4a3c $00
 
 script_0366:
-    sIF_0B $c9                                         ;; 0e:4a3d $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4a3d $0b $c9 $00 $05
       sLOAD_ROOM 9, $21, 16, 2                         ;; 0e:4a41 $f4 $09 $21 $10 $02
     sENDIF                                             ;; 0e:4a46
     sEND                                               ;; 0e:4a46 $00
 
 script_0367:
-    sIF_0B $c9                                         ;; 0e:4a47 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4a47 $0b $c9 $00 $05
       sLOAD_ROOM 15, $67, 4, 2                         ;; 0e:4a4b $f4 $0f $67 $04 $02
     sENDIF                                             ;; 0e:4a50
     sEND                                               ;; 0e:4a50 $00
 
 script_0368:
-    sIF_0B $c9, $c1                                    ;; 0e:4a51 $0b $c9 $c1 $00 $06
+    sIF_TRIGGERED_ON_BY $c9, $c1                       ;; 0e:4a51 $0b $c9 $c1 $00 $06
       sLOAD_ROOM 10, $41, 16, 12                       ;; 0e:4a56 $f4 $0a $41 $10 $0c
       sRUN_ROOM_SCRIPT                                 ;; 0e:4a5b $ec
     sENDIF                                             ;; 0e:4a5c
     sEND                                               ;; 0e:4a5c $00
 
 script_0369:
-    sIF_0B $c9                                         ;; 0e:4a5d $0b $c9 $00 $09
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4a5d $0b $c9 $00 $09
       sLOAD_ROOM 0, $12, 12, 6                         ;; 0e:4a61 $f4 $00 $12 $0c $06
       sCLEAR_ROOM_HISTORY                              ;; 0e:4a66 $ab
       sSET_MUSIC 20                                    ;; 0e:4a67 $f8 $14
@@ -1474,118 +1474,118 @@ script_0369:
     sEND                                               ;; 0e:4a6a $00
 
 script_036a:
-    sIF_0B $c9                                         ;; 0e:4a6b $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4a6b $0b $c9 $00 $05
       sLOAD_ROOM 9, $33, 16, 2                         ;; 0e:4a6f $f4 $09 $33 $10 $02
     sENDIF                                             ;; 0e:4a74
     sEND                                               ;; 0e:4a74 $00
 
 script_036b:
-    sIF_0B $c9                                         ;; 0e:4a75 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4a75 $0b $c9 $00 $05
       sLOAD_ROOM 12, $00, 16, 2                        ;; 0e:4a79 $f4 $0c $00 $10 $02
     sENDIF                                             ;; 0e:4a7e
     sEND                                               ;; 0e:4a7e $00
 
 script_036c:
-    sIF_0B $c9                                         ;; 0e:4a7f $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4a7f $0b $c9 $00 $05
       sLOAD_ROOM 13, $00, 16, 2                        ;; 0e:4a83 $f4 $0d $00 $10 $02
     sENDIF                                             ;; 0e:4a88
     sEND                                               ;; 0e:4a88 $00
 
 script_036d:
-    sIF_0B $c9                                         ;; 0e:4a89 $0b $c9 $00 $09
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4a89 $0b $c9 $00 $09
       sLOAD_ROOM 12, $32, 16, 12                       ;; 0e:4a8d $f4 $0c $32 $10 $0c
       sSET_ROOM_TILE $02, 8, 6                         ;; 0e:4a92 $b0 $02 $08 $06
     sENDIF                                             ;; 0e:4a96
     sEND                                               ;; 0e:4a96 $00
 
 script_036e:
-    sIF_0B $c9                                         ;; 0e:4a97 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4a97 $0b $c9 $00 $05
       sLOAD_ROOM 13, $32, 16, 12                       ;; 0e:4a9b $f4 $0d $32 $10 $0c
     sENDIF                                             ;; 0e:4aa0
     sEND                                               ;; 0e:4aa0 $00
 
 script_036f:
-    sIF_0B $c9                                         ;; 0e:4aa1 $0b $c9 $00 $06
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4aa1 $0b $c9 $00 $06
       sLOAD_ROOM 11, $11, 16, 2                        ;; 0e:4aa5 $f4 $0b $11 $10 $02
       sRUN_ROOM_SCRIPT                                 ;; 0e:4aaa $ec
     sENDIF                                             ;; 0e:4aab
     sEND                                               ;; 0e:4aab $00
 
 script_0370:
-    sIF_0B $c9                                         ;; 0e:4aac $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4aac $0b $c9 $00 $05
       sLOAD_ROOM 12, $11, 16, 2                        ;; 0e:4ab0 $f4 $0c $11 $10 $02
     sENDIF                                             ;; 0e:4ab5
     sEND                                               ;; 0e:4ab5 $00
 
 script_0371:
-    sIF_0B $c9                                         ;; 0e:4ab6 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4ab6 $0b $c9 $00 $05
       sLOAD_ROOM 14, $44, 4, 4                         ;; 0e:4aba $f4 $0e $44 $04 $04
     sENDIF                                             ;; 0e:4abf
     sEND                                               ;; 0e:4abf $00
 
 script_0372:
-    sIF_0B $c9                                         ;; 0e:4ac0 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4ac0 $0b $c9 $00 $05
       sLOAD_ROOM 14, $54, 14, 2                        ;; 0e:4ac4 $f4 $0e $54 $0e $02
     sENDIF                                             ;; 0e:4ac9
     sEND                                               ;; 0e:4ac9 $00
 
 script_0373:
-    sIF_0B $c9                                         ;; 0e:4aca $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4aca $0b $c9 $00 $05
       sLOAD_ROOM 1, $33, 8, 2                          ;; 0e:4ace $f4 $01 $33 $08 $02
     sENDIF                                             ;; 0e:4ad3
     sEND                                               ;; 0e:4ad3 $00
 
 script_0374:
-    sIF_0B $c9                                         ;; 0e:4ad4 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4ad4 $0b $c9 $00 $05
       sLOAD_ROOM 1, $23, 16, 12                        ;; 0e:4ad8 $f4 $01 $23 $10 $0c
     sENDIF                                             ;; 0e:4add
     sEND                                               ;; 0e:4add $00
 
 script_0375:
-    sIF_0B $c9                                         ;; 0e:4ade $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4ade $0b $c9 $00 $05
       sLOAD_ROOM 1, $41, 14, 8                         ;; 0e:4ae2 $f4 $01 $41 $0e $08
     sENDIF                                             ;; 0e:4ae7
     sEND                                               ;; 0e:4ae7 $00
 
 script_0376:
-    sIF_0B $c9                                         ;; 0e:4ae8 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4ae8 $0b $c9 $00 $05
       sLOAD_ROOM 1, $31, 6, 2                          ;; 0e:4aec $f4 $01 $31 $06 $02
     sENDIF                                             ;; 0e:4af1
     sEND                                               ;; 0e:4af1 $00
 
 script_0377:
-    sIF_0B $c9                                         ;; 0e:4af2 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4af2 $0b $c9 $00 $05
       sLOAD_ROOM 1, $70, 6, 6                          ;; 0e:4af6 $f4 $01 $70 $06 $06
     sENDIF                                             ;; 0e:4afb
     sEND                                               ;; 0e:4afb $00
 
 script_0378:
-    sIF_0B $c9                                         ;; 0e:4afc $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4afc $0b $c9 $00 $05
       sLOAD_ROOM 1, $70, 12, 2                         ;; 0e:4b00 $f4 $01 $70 $0c $02
     sENDIF                                             ;; 0e:4b05
     sEND                                               ;; 0e:4b05 $00
 
 script_0379:
-    sIF_0B $c9                                         ;; 0e:4b06 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4b06 $0b $c9 $00 $05
       sLOAD_ROOM 1, $71, 8, 12                         ;; 0e:4b0a $f4 $01 $71 $08 $0c
     sENDIF                                             ;; 0e:4b0f
     sEND                                               ;; 0e:4b0f $00
 
 script_037a:
-    sIF_0B $c9                                         ;; 0e:4b10 $0b $c9 $00 $09
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4b10 $0b $c9 $00 $09
       sLOAD_ROOM 13, $73, 16, 12                       ;; 0e:4b14 $f4 $0d $73 $10 $0c
       sSET_ROOM_TILE $02, 8, 6                         ;; 0e:4b19 $b0 $02 $08 $06
     sENDIF                                             ;; 0e:4b1d
     sEND                                               ;; 0e:4b1d $00
 
 script_037b:
-    sIF_0B $c9                                         ;; 0e:4b1e $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4b1e $0b $c9 $00 $05
       sLOAD_ROOM 14, $12, 10, 2                        ;; 0e:4b22 $f4 $0e $12 $0a $02
     sENDIF                                             ;; 0e:4b27
     sEND                                               ;; 0e:4b27 $00
 
 script_037c:
-    sIF_0B $c9                                         ;; 0e:4b28 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4b28 $0b $c9 $00 $05
       sLOAD_ROOM 14, $45, 2, 8                         ;; 0e:4b2c $f4 $0e $45 $02 $08
     sENDIF                                             ;; 0e:4b31
     sEND                                               ;; 0e:4b31 $00
@@ -1600,7 +1600,7 @@ script_037f:
     sEND                                               ;; 0e:4b34 $00
 
 script_0380:
-    sIF_0B $c9                                         ;; 0e:4b35 $0b $c9 $00 $08
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4b35 $0b $c9 $00 $08
       sUNK_C5 11                                       ;; 0e:4b39 $c5 $0b
       sLOAD_ROOM 3, $00, 9, 12                         ;; 0e:4b3b $f4 $03 $00 $09 $0c
       sRUN_ROOM_SCRIPT                                 ;; 0e:4b40 $ec
@@ -1608,7 +1608,7 @@ script_0380:
     sEND                                               ;; 0e:4b41 $00
 
 script_0381:
-    sIF_0B $c9                                         ;; 0e:4b42 $0b $c9 $00 $08
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4b42 $0b $c9 $00 $08
       sUNK_C5 7                                        ;; 0e:4b46 $c5 $07
       sLOAD_ROOM 2, $00, 9, 12                         ;; 0e:4b48 $f4 $02 $00 $09 $0c
       sRUN_ROOM_SCRIPT                                 ;; 0e:4b4d $ec
@@ -1616,7 +1616,7 @@ script_0381:
     sEND                                               ;; 0e:4b4e $00
 
 script_0382:
-    sIF_0B $c9                                         ;; 0e:4b4f $0b $c9 $00 $08
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4b4f $0b $c9 $00 $08
       sUNK_C5 6                                        ;; 0e:4b53 $c5 $06
       sLOAD_ROOM 2, $00, 9, 12                         ;; 0e:4b55 $f4 $02 $00 $09 $0c
       sRUN_ROOM_SCRIPT                                 ;; 0e:4b5a $ec
@@ -1624,7 +1624,7 @@ script_0382:
     sEND                                               ;; 0e:4b5b $00
 
 script_0383:
-    sIF_0B $c9                                         ;; 0e:4b5c $0b $c9 $00 $08
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4b5c $0b $c9 $00 $08
       sUNK_C5 7                                        ;; 0e:4b60 $c5 $07
       sLOAD_ROOM 2, $01, 9, 12                         ;; 0e:4b62 $f4 $02 $01 $09 $0c
       sRUN_ROOM_SCRIPT                                 ;; 0e:4b67 $ec
@@ -1632,7 +1632,7 @@ script_0383:
     sEND                                               ;; 0e:4b68 $00
 
 script_0384:
-    sIF_0B $c9                                         ;; 0e:4b69 $0b $c9 $00 $08
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4b69 $0b $c9 $00 $08
       sUNK_C5 10                                       ;; 0e:4b6d $c5 $0a
       sLOAD_ROOM 3, $00, 9, 12                         ;; 0e:4b6f $f4 $03 $00 $09 $0c
       sRUN_ROOM_SCRIPT                                 ;; 0e:4b74 $ec
@@ -1640,7 +1640,7 @@ script_0384:
     sEND                                               ;; 0e:4b75 $00
 
 script_0385:
-    sIF_0B $c9                                         ;; 0e:4b76 $0b $c9 $00 $08
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4b76 $0b $c9 $00 $08
       sUNK_C5 9                                        ;; 0e:4b7a $c5 $09
       sLOAD_ROOM 3, $00, 9, 12                         ;; 0e:4b7c $f4 $03 $00 $09 $0c
       sRUN_ROOM_SCRIPT                                 ;; 0e:4b81 $ec
@@ -1648,7 +1648,7 @@ script_0385:
     sEND                                               ;; 0e:4b82 $00
 
 script_0386:
-    sIF_0B $c9                                         ;; 0e:4b83 $0b $c9 $00 $08
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4b83 $0b $c9 $00 $08
       sUNK_C5 8                                        ;; 0e:4b87 $c5 $08
       sLOAD_ROOM 3, $00, 9, 12                         ;; 0e:4b89 $f4 $03 $00 $09 $0c
       sRUN_ROOM_SCRIPT                                 ;; 0e:4b8e $ec
@@ -1656,7 +1656,7 @@ script_0386:
     sEND                                               ;; 0e:4b8f $00
 
 script_0387:
-    sIF_0B $c9                                         ;; 0e:4b90 $0b $c9 $00 $08
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4b90 $0b $c9 $00 $08
       sUNK_C5 14                                       ;; 0e:4b94 $c5 $0e
       sLOAD_ROOM 4, $01, 9, 12                         ;; 0e:4b96 $f4 $04 $01 $09 $0c
       sRUN_ROOM_SCRIPT                                 ;; 0e:4b9b $ec
@@ -1664,7 +1664,7 @@ script_0387:
     sEND                                               ;; 0e:4b9c $00
 
 script_0388:
-    sIF_0B $c9                                         ;; 0e:4b9d $0b $c9 $00 $08
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4b9d $0b $c9 $00 $08
       sUNK_C5 2                                        ;; 0e:4ba1 $c5 $02
       sLOAD_ROOM 2, $01, 9, 12                         ;; 0e:4ba3 $f4 $02 $01 $09 $0c
       sRUN_ROOM_SCRIPT                                 ;; 0e:4ba8 $ec
@@ -1672,7 +1672,7 @@ script_0388:
     sEND                                               ;; 0e:4ba9 $00
 
 script_0389:
-    sIF_0B $c9                                         ;; 0e:4baa $0b $c9 $00 $08
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4baa $0b $c9 $00 $08
       sUNK_C5 8                                        ;; 0e:4bae $c5 $08
       sLOAD_ROOM 2, $00, 9, 12                         ;; 0e:4bb0 $f4 $02 $00 $09 $0c
       sRUN_ROOM_SCRIPT                                 ;; 0e:4bb5 $ec
@@ -1680,7 +1680,7 @@ script_0389:
     sEND                                               ;; 0e:4bb6 $00
 
 script_038a:
-    sIF_0B $c9                                         ;; 0e:4bb7 $0b $c9 $00 $08
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4bb7 $0b $c9 $00 $08
       sUNK_C5 15                                       ;; 0e:4bbb $c5 $0f
       sLOAD_ROOM 4, $01, 9, 12                         ;; 0e:4bbd $f4 $04 $01 $09 $0c
       sRUN_ROOM_SCRIPT                                 ;; 0e:4bc2 $ec
@@ -1688,7 +1688,7 @@ script_038a:
     sEND                                               ;; 0e:4bc3 $00
 
 script_038b:
-    sIF_0B $c9                                         ;; 0e:4bc4 $0b $c9 $00 $08
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4bc4 $0b $c9 $00 $08
       sUNK_C5 10                                       ;; 0e:4bc8 $c5 $0a
       sLOAD_ROOM 4, $01, 9, 12                         ;; 0e:4bca $f4 $04 $01 $09 $0c
       sRUN_ROOM_SCRIPT                                 ;; 0e:4bcf $ec
@@ -1696,7 +1696,7 @@ script_038b:
     sEND                                               ;; 0e:4bd0 $00
 
 script_038c:
-    sIF_0B $c9                                         ;; 0e:4bd1 $0b $c9 $00 $08
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4bd1 $0b $c9 $00 $08
       sUNK_C5 8                                        ;; 0e:4bd5 $c5 $08
       sLOAD_ROOM 2, $01, 9, 12                         ;; 0e:4bd7 $f4 $02 $01 $09 $0c
       sRUN_ROOM_SCRIPT                                 ;; 0e:4bdc $ec
@@ -1704,7 +1704,7 @@ script_038c:
     sEND                                               ;; 0e:4bdd $00
 
 script_038d:
-    sIF_0B $c9                                         ;; 0e:4bde $0b $c9 $00 $08
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4bde $0b $c9 $00 $08
       sUNK_C5 3                                        ;; 0e:4be2 $c5 $03
       sLOAD_ROOM 2, $00, 9, 12                         ;; 0e:4be4 $f4 $02 $00 $09 $0c
       sRUN_ROOM_SCRIPT                                 ;; 0e:4be9 $ec
@@ -1718,25 +1718,25 @@ script_038f:
     sEND                                               ;; 0e:4bec $00
 
 script_0390:
-    sIF_0B $c9                                         ;; 0e:4bed $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4bed $0b $c9 $00 $05
       sLOAD_ROOM 3, $02, 16, 12                        ;; 0e:4bf1 $f4 $03 $02 $10 $0c
     sENDIF                                             ;; 0e:4bf6
     sEND                                               ;; 0e:4bf6 $00
 
 script_0391:
-    sIF_0B $c9                                         ;; 0e:4bf7 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4bf7 $0b $c9 $00 $05
       sLOAD_ROOM 14, $31, 4, 2                         ;; 0e:4bfb $f4 $0e $31 $04 $02
     sENDIF                                             ;; 0e:4c00
     sEND                                               ;; 0e:4c00 $00
 
 script_0392:
-    sIF_0B $c9                                         ;; 0e:4c01 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4c01 $0b $c9 $00 $05
       sLOAD_ROOM 2, $02, 16, 12                        ;; 0e:4c05 $f4 $02 $02 $10 $0c
     sENDIF                                             ;; 0e:4c0a
     sEND                                               ;; 0e:4c0a $00
 
 script_0393:
-    sIF_0B $c9                                         ;; 0e:4c0b $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4c0b $0b $c9 $00 $05
       sLOAD_ROOM 2, $02, 16, 2                         ;; 0e:4c0f $f4 $02 $02 $10 $02
     sENDIF                                             ;; 0e:4c14
     sEND                                               ;; 0e:4c14 $00
@@ -1748,21 +1748,21 @@ script_0395:
     sEND                                               ;; 0e:4c16 $00
 
 script_0396:
-    sIF_0B $c9                                         ;; 0e:4c17 $0b $c9 $00 $07
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4c17 $0b $c9 $00 $07
       sUNK_C5 54                                       ;; 0e:4c1b $c5 $36
       sLOAD_ROOM 1, $01, 16, 12                        ;; 0e:4c1d $f4 $01 $01 $10 $0c
     sENDIF                                             ;; 0e:4c22
     sEND                                               ;; 0e:4c22 $00
 
 script_0397:
-    sIF_0B $c9                                         ;; 0e:4c23 $0b $c9 $00 $07
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4c23 $0b $c9 $00 $07
       sUNK_C5 55                                       ;; 0e:4c27 $c5 $37
       sLOAD_ROOM 1, $01, 16, 12                        ;; 0e:4c29 $f4 $01 $01 $10 $0c
     sENDIF                                             ;; 0e:4c2e
     sEND                                               ;; 0e:4c2e $00
 
 script_0398:
-    sIF_0B $c9                                         ;; 0e:4c2f $0b $c9 $00 $09
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4c2f $0b $c9 $00 $09
       sLOAD_ROOM 0, $43, 16, 8                         ;; 0e:4c33 $f4 $00 $43 $10 $08
       sCLEAR_ROOM_HISTORY                              ;; 0e:4c38 $ab
       sSET_MUSIC 20                                    ;; 0e:4c39 $f8 $14
@@ -1771,46 +1771,46 @@ script_0398:
     sEND                                               ;; 0e:4c3c $00
 
 script_0399:
-    sIF_0B $c9                                         ;; 0e:4c3d $0b $c9 $00 $06
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4c3d $0b $c9 $00 $06
       sLOAD_ROOM 13, $37, 2, 12                        ;; 0e:4c41 $f4 $0d $37 $02 $0c
       sRUN_ROOM_SCRIPT                                 ;; 0e:4c46 $ec
     sENDIF                                             ;; 0e:4c47
     sEND                                               ;; 0e:4c47 $00
 
 script_039a:
-    sIF_0B $c9                                         ;; 0e:4c48 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4c48 $0b $c9 $00 $05
       sLOAD_ROOM 15, $25, 12, 6                        ;; 0e:4c4c $f4 $0f $25 $0c $06
     sENDIF                                             ;; 0e:4c51
     sEND                                               ;; 0e:4c51 $00
 
 script_039b:
-    sIF_0B $c9                                         ;; 0e:4c52 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4c52 $0b $c9 $00 $05
       sLOAD_ROOM 13, $05, 16, 2                        ;; 0e:4c56 $f4 $0d $05 $10 $02
     sENDIF                                             ;; 0e:4c5b
     sEND                                               ;; 0e:4c5b $00
 
 script_039c:
-    sIF_0B $c9                                         ;; 0e:4c5c $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4c5c $0b $c9 $00 $05
       sLOAD_ROOM 13, $07, 16, 12                       ;; 0e:4c60 $f4 $0d $07 $10 $0c
     sENDIF                                             ;; 0e:4c65
     sEND                                               ;; 0e:4c65 $00
 
 script_039d:
-    sIF_0B $c9                                         ;; 0e:4c66 $0b $c9 $00 $06
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4c66 $0b $c9 $00 $06
       sLOAD_ROOM 0, $95, 12, 8                         ;; 0e:4c6a $f4 $00 $95 $0c $08
       sCLEAR_ROOM_HISTORY                              ;; 0e:4c6f $ab
     sENDIF                                             ;; 0e:4c70
     sEND                                               ;; 0e:4c70 $00
 
 script_039e:
-    sIF_0B $c9                                         ;; 0e:4c71 $0b $c9 $00 $06
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4c71 $0b $c9 $00 $06
       sLOAD_ROOM 0, $96, 12, 2                         ;; 0e:4c75 $f4 $00 $96 $0c $02
       sCLEAR_ROOM_HISTORY                              ;; 0e:4c7a $ab
     sENDIF                                             ;; 0e:4c7b
     sEND                                               ;; 0e:4c7b $00
 
 script_039f:
-    sIF_0B $c9                                         ;; 0e:4c7c $0b $c9 $00 $11
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4c7c $0b $c9 $00 $11
       sIF_FLAG wScriptFlags0B.0                        ;; 0e:4c80 $08 $58 $00 $05
         sCALL script_0473                              ;; 0e:4c84 $02 $5a $e2
         sSET_FLAG wScriptFlags0D.1                     ;; 0e:4c87 $da $69
@@ -1822,7 +1822,7 @@ script_039f:
     sEND                                               ;; 0e:4c91 $00
 
 script_03a0:
-    sIF_0B $c9                                         ;; 0e:4c92 $0b $c9 $00 $09
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4c92 $0b $c9 $00 $09
       sLOAD_ROOM 0, $3e, 12, 6                         ;; 0e:4c96 $f4 $00 $3e $0c $06
       sSET_MUSIC 25                                    ;; 0e:4c9b $f8 $19
       sCLEAR_ROOM_HISTORY                              ;; 0e:4c9d $ab
@@ -1831,7 +1831,7 @@ script_03a0:
     sEND                                               ;; 0e:4c9f $00
 
 script_03a1:
-    sIF_0B $c9                                         ;; 0e:4ca0 $0b $c9 $00 $08
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4ca0 $0b $c9 $00 $08
       sLOAD_ROOM 2, $00, 9, 12                         ;; 0e:4ca4 $f4 $02 $00 $09 $0c
       sUNK_C5 1                                        ;; 0e:4ca9 $c5 $01
       sRUN_ROOM_SCRIPT                                 ;; 0e:4cab $ec
@@ -1839,40 +1839,40 @@ script_03a1:
     sEND                                               ;; 0e:4cac $00
 
 script_03a2:
-    sIF_0B $c9                                         ;; 0e:4cad $0b $c9 $00 $06
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4cad $0b $c9 $00 $06
       sLOAD_ROOM 12, $07, 16, 2                        ;; 0e:4cb1 $f4 $0c $07 $10 $02
       sRUN_ROOM_SCRIPT                                 ;; 0e:4cb6 $ec
     sENDIF                                             ;; 0e:4cb7
     sEND                                               ;; 0e:4cb7 $00
 
 script_03a3:
-    sIF_0B $c9                                         ;; 0e:4cb8 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4cb8 $0b $c9 $00 $05
       sLOAD_ROOM 12, $06, 16, 12                       ;; 0e:4cbc $f4 $0c $06 $10 $0c
     sENDIF                                             ;; 0e:4cc1
     sEND                                               ;; 0e:4cc1 $00
 
 script_03a4:
-    sIF_0B $c9                                         ;; 0e:4cc2 $0b $c9 $00 $06
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4cc2 $0b $c9 $00 $06
       sLOAD_ROOM 14, $35, 16, 1                        ;; 0e:4cc6 $f4 $0e $35 $10 $01
       sRUN_ROOM_SCRIPT                                 ;; 0e:4ccb $ec
     sENDIF                                             ;; 0e:4ccc
     sEND                                               ;; 0e:4ccc $00
 
 script_03a5:
-    sIF_0B $c9, $c1                                    ;; 0e:4ccd $0b $c9 $c1 $00 $05
+    sIF_TRIGGERED_ON_BY $c9, $c1                       ;; 0e:4ccd $0b $c9 $c1 $00 $05
       sLOAD_ROOM 12, $07, 16, 12                       ;; 0e:4cd2 $f4 $0c $07 $10 $0c
     sENDIF                                             ;; 0e:4cd7
     sEND                                               ;; 0e:4cd7 $00
 
 script_03a6:
-    sIF_0B $c9                                         ;; 0e:4cd8 $0b $c9 $00 $07
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4cd8 $0b $c9 $00 $07
       sLOAD_ROOM 0, $69, 14, 2                         ;; 0e:4cdc $f4 $00 $69 $0e $02
       sSET_MUSIC 20                                    ;; 0e:4ce1 $f8 $14
     sENDIF                                             ;; 0e:4ce3
     sEND                                               ;; 0e:4ce3 $00
 
 script_03a7:
-    sIF_0B $c9                                         ;; 0e:4ce4 $0b $c9 $00 $09
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4ce4 $0b $c9 $00 $09
       sLOAD_ROOM 0, $d3, 12, 5                         ;; 0e:4ce8 $f4 $00 $d3 $0c $05
       sSET_MUSIC 25                                    ;; 0e:4ced $f8 $19
       sCLEAR_ROOM_HISTORY                              ;; 0e:4cef $ab
@@ -1881,19 +1881,19 @@ script_03a7:
     sEND                                               ;; 0e:4cf1 $00
 
 script_03a8:
-    sIF_0B $c9, $c1                                    ;; 0e:4cf2 $0b $c9 $c1 $00 $05
+    sIF_TRIGGERED_ON_BY $c9, $c1                       ;; 0e:4cf2 $0b $c9 $c1 $00 $05
       sLOAD_ROOM 4, $50, 16, 2                         ;; 0e:4cf7 $f4 $04 $50 $10 $02
     sENDIF                                             ;; 0e:4cfc
     sEND                                               ;; 0e:4cfc $00
 
 script_03a9:
-    sIF_0B $c9                                         ;; 0e:4cfd $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4cfd $0b $c9 $00 $05
       sLOAD_ROOM 6, $46, 16, 2                         ;; 0e:4d01 $f4 $06 $46 $10 $02
     sENDIF                                             ;; 0e:4d06
     sEND                                               ;; 0e:4d06 $00
 
 script_03aa:
-    sIF_0B $c9                                         ;; 0e:4d07 $0b $c9 $00 $08
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4d07 $0b $c9 $00 $08
       sUNK_C5 55                                       ;; 0e:4d0b $c5 $37
       sLOAD_ROOM 1, $00, 16, 2                         ;; 0e:4d0d $f4 $01 $00 $10 $02
       sRUN_ROOM_SCRIPT                                 ;; 0e:4d12 $ec
@@ -1901,37 +1901,37 @@ script_03aa:
     sEND                                               ;; 0e:4d13 $00
 
 script_03ab:
-    sIF_0B $c9                                         ;; 0e:4d14 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4d14 $0b $c9 $00 $05
       sLOAD_ROOM 6, $72, 9, 7                          ;; 0e:4d18 $f4 $06 $72 $09 $07
     sENDIF                                             ;; 0e:4d1d
     sEND                                               ;; 0e:4d1d $00
 
 script_03ac:
-    sIF_0B $c9                                         ;; 0e:4d1e $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4d1e $0b $c9 $00 $05
       sLOAD_ROOM 6, $60, 9, 7                          ;; 0e:4d22 $f4 $06 $60 $09 $07
     sENDIF                                             ;; 0e:4d27
     sEND                                               ;; 0e:4d27 $00
 
 script_03ad:
-    sIF_0B $c9                                         ;; 0e:4d28 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4d28 $0b $c9 $00 $05
       sLOAD_ROOM 5, $71, 9, 7                          ;; 0e:4d2c $f4 $05 $71 $09 $07
     sENDIF                                             ;; 0e:4d31
     sEND                                               ;; 0e:4d31 $00
 
 script_03ae:
-    sIF_0B $c9                                         ;; 0e:4d32 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4d32 $0b $c9 $00 $05
       sLOAD_ROOM 6, $41, 9, 7                          ;; 0e:4d36 $f4 $06 $41 $09 $07
     sENDIF                                             ;; 0e:4d3b
     sEND                                               ;; 0e:4d3b $00
 
 script_03af:
-    sIF_0B $c9                                         ;; 0e:4d3c $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4d3c $0b $c9 $00 $05
       sLOAD_ROOM 5, $74, 9, 7                          ;; 0e:4d40 $f4 $05 $74 $09 $07
     sENDIF                                             ;; 0e:4d45
     sEND                                               ;; 0e:4d45 $00
 
 script_03b0:
-    sIF_0B $c9                                         ;; 0e:4d46 $0b $c9 $00 $08
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4d46 $0b $c9 $00 $08
       sUNK_C5 54                                       ;; 0e:4d4a $c5 $36
       sLOAD_ROOM 1, $00, 16, 2                         ;; 0e:4d4c $f4 $01 $00 $10 $02
       sRUN_ROOM_SCRIPT                                 ;; 0e:4d51 $ec
@@ -1939,74 +1939,74 @@ script_03b0:
     sEND                                               ;; 0e:4d52 $00
 
 script_03b1:
-    sIF_0B $c9                                         ;; 0e:4d53 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4d53 $0b $c9 $00 $05
       sLOAD_ROOM 3, $45, 9, 7                          ;; 0e:4d57 $f4 $03 $45 $09 $07
     sENDIF                                             ;; 0e:4d5c
     sEND                                               ;; 0e:4d5c $00
 
 script_03b2:
-    sIF_0B $c9                                         ;; 0e:4d5d $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4d5d $0b $c9 $00 $05
       sLOAD_ROOM 3, $53, 9, 7                          ;; 0e:4d61 $f4 $03 $53 $09 $07
     sENDIF                                             ;; 0e:4d66
     sEND                                               ;; 0e:4d66 $00
 
 script_03b3:
-    sIF_0B $c9                                         ;; 0e:4d67 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4d67 $0b $c9 $00 $05
       sLOAD_ROOM 6, $00, 9, 7                          ;; 0e:4d6b $f4 $06 $00 $09 $07
     sENDIF                                             ;; 0e:4d70
     sEND                                               ;; 0e:4d70 $00
 
 script_03b4:
-    sIF_0B $c9                                         ;; 0e:4d71 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4d71 $0b $c9 $00 $05
       sLOAD_ROOM 6, $12, 9, 7                          ;; 0e:4d75 $f4 $06 $12 $09 $07
     sENDIF                                             ;; 0e:4d7a
     sEND                                               ;; 0e:4d7a $00
 
 script_03b5:
-    sIF_0B $c9                                         ;; 0e:4d7b $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4d7b $0b $c9 $00 $05
       sLOAD_ROOM 2, $27, 9, 7                          ;; 0e:4d7f $f4 $02 $27 $09 $07
     sENDIF                                             ;; 0e:4d84
     sEND                                               ;; 0e:4d84 $00
 
 script_03b6:
-    sIF_0B $c9                                         ;; 0e:4d85 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4d85 $0b $c9 $00 $05
       sLOAD_ROOM 13, $43, 16, 2                        ;; 0e:4d89 $f4 $0d $43 $10 $02
     sENDIF                                             ;; 0e:4d8e
     sEND                                               ;; 0e:4d8e $00
 
 script_03b7:
-    sIF_0B $c9                                         ;; 0e:4d8f $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4d8f $0b $c9 $00 $05
       sLOAD_ROOM 12, $43, 16, 2                        ;; 0e:4d93 $f4 $0c $43 $10 $02
     sENDIF                                             ;; 0e:4d98
     sEND                                               ;; 0e:4d98 $00
 
 script_03b8:
-    sIF_0B $c9, $c1                                    ;; 0e:4d99 $0b $c9 $c1 $00 $09
+    sIF_TRIGGERED_ON_BY $c9, $c1                       ;; 0e:4d99 $0b $c9 $c1 $00 $09
       sLOAD_ROOM 13, $73, 16, 12                       ;; 0e:4d9e $f4 $0d $73 $10 $0c
       sSET_ROOM_TILE $02, 8, 6                         ;; 0e:4da3 $b0 $02 $08 $06
     sENDIF                                             ;; 0e:4da7
     sEND                                               ;; 0e:4da7 $00
 
 script_03b9:
-    sIF_0B $c9                                         ;; 0e:4da8 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4da8 $0b $c9 $00 $05
       sLOAD_ROOM 13, $54, 16, 2                        ;; 0e:4dac $f4 $0d $54 $10 $02
     sENDIF                                             ;; 0e:4db1
     sEND                                               ;; 0e:4db1 $00
 
 script_03ba:
-    sIF_0B $c9                                         ;; 0e:4db2 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4db2 $0b $c9 $00 $05
       sLOAD_ROOM 13, $74, 16, 2                        ;; 0e:4db6 $f4 $0d $74 $10 $02
     sENDIF                                             ;; 0e:4dbb
     sEND                                               ;; 0e:4dbb $00
 
 script_03bb:
-    sIF_0B $c9                                         ;; 0e:4dbc $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4dbc $0b $c9 $00 $05
       sLOAD_ROOM 13, $50, 16, 2                        ;; 0e:4dc0 $f4 $0d $50 $10 $02
     sENDIF                                             ;; 0e:4dc5
     sEND                                               ;; 0e:4dc5 $00
 
 script_03bc:
-    sIF_0B $c9, $c1                                    ;; 0e:4dc6 $0b $c9 $c1 $00 $08
+    sIF_TRIGGERED_ON_BY $c9, $c1                       ;; 0e:4dc6 $0b $c9 $c1 $00 $08
       sUNK_C5 53                                       ;; 0e:4dcb $c5 $35
       sLOAD_ROOM 1, $00, 16, 2                         ;; 0e:4dcd $f4 $01 $00 $10 $02
       sRUN_ROOM_SCRIPT                                 ;; 0e:4dd2 $ec
@@ -2014,7 +2014,7 @@ script_03bc:
     sEND                                               ;; 0e:4dd3 $00
 
 script_03bd:
-    sIF_0B $c9, $c1                                    ;; 0e:4dd4 $0b $c9 $c1 $00 $05
+    sIF_TRIGGERED_ON_BY $c9, $c1                       ;; 0e:4dd4 $0b $c9 $c1 $00 $05
       sLOAD_ROOM 15, $73, 8, 8                         ;; 0e:4dd9 $f4 $0f $73 $08 $08
     sENDIF                                             ;; 0e:4dde
     sEND                                               ;; 0e:4dde $00
@@ -2026,31 +2026,31 @@ script_03bf:
     sEND                                               ;; 0e:4de0 $00
 
 script_03c0:
-    sIF_0B $c9                                         ;; 0e:4de1 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4de1 $0b $c9 $00 $05
       sLOAD_ROOM 9, $40, 16, 2                         ;; 0e:4de5 $f4 $09 $40 $10 $02
     sENDIF                                             ;; 0e:4dea
     sEND                                               ;; 0e:4dea $00
 
 script_03c1:
-    sIF_0B $c9                                         ;; 0e:4deb $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4deb $0b $c9 $00 $05
       sLOAD_ROOM 12, $46, 16, 12                       ;; 0e:4def $f4 $0c $46 $10 $0c
     sENDIF                                             ;; 0e:4df4
     sEND                                               ;; 0e:4df4 $00
 
 script_03c2:
-    sIF_0B $c9                                         ;; 0e:4df5 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4df5 $0b $c9 $00 $05
       sLOAD_ROOM 11, $46, 16, 12                       ;; 0e:4df9 $f4 $0b $46 $10 $0c
     sENDIF                                             ;; 0e:4dfe
     sEND                                               ;; 0e:4dfe $00
 
 script_03c3:
-    sIF_0B $c9, $c1                                    ;; 0e:4dff $0b $c9 $c1 $00 $05
+    sIF_TRIGGERED_ON_BY $c9, $c1                       ;; 0e:4dff $0b $c9 $c1 $00 $05
       sLOAD_ROOM 11, $32, 16, 2                        ;; 0e:4e04 $f4 $0b $32 $10 $02
     sENDIF                                             ;; 0e:4e09
     sEND                                               ;; 0e:4e09 $00
 
 script_03c4:
-    sIF_0B $c9                                         ;; 0e:4e0a $0b $c9 $00 $09
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4e0a $0b $c9 $00 $09
       sLOAD_ROOM 0, $0e, 14, 4                         ;; 0e:4e0e $f4 $00 $0e $0e $04
       sCLEAR_ROOM_HISTORY                              ;; 0e:4e13 $ab
       sSET_MUSIC 25                                    ;; 0e:4e14 $f8 $19
@@ -2059,13 +2059,13 @@ script_03c4:
     sEND                                               ;; 0e:4e17 $00
 
 script_03c5:
-    sIF_0B $c9                                         ;; 0e:4e18 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4e18 $0b $c9 $00 $05
       sLOAD_ROOM 8, $47, 16, 2                         ;; 0e:4e1c $f4 $08 $47 $10 $02
     sENDIF                                             ;; 0e:4e21
     sEND                                               ;; 0e:4e21 $00
 
 script_03c6:
-    sIF_0B $c9, $c1                                    ;; 0e:4e22 $0b $c9 $c1 $00 $95
+    sIF_TRIGGERED_ON_BY $c9, $c1                       ;; 0e:4e22 $0b $c9 $c1 $00 $95
       sLOAD_ROOM 4, $10, 16, 2                         ;; 0e:4e27 $f4 $04 $10 $10 $02
       sIF_FLAG wScriptFlags05.4, !wScriptFlags03.7     ;; 0e:4e2c $08 $2c $9f $00 $8b
         sSET_PLAYER_DIRECTION_DOWN                     ;; 0e:4e31 $85
@@ -2111,19 +2111,19 @@ script_03c6:
     sEND                                               ;; 0e:4ebc $00
 
 script_03c7:
-    sIF_0B $c9                                         ;; 0e:4ebd $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4ebd $0b $c9 $00 $05
       sLOAD_ROOM 10, $62, 16, 2                        ;; 0e:4ec1 $f4 $0a $62 $10 $02
     sENDIF                                             ;; 0e:4ec6
     sEND                                               ;; 0e:4ec6 $00
 
 script_03c8:
-    sIF_0B $c9, $c1                                    ;; 0e:4ec7 $0b $c9 $c1 $00 $05
+    sIF_TRIGGERED_ON_BY $c9, $c1                       ;; 0e:4ec7 $0b $c9 $c1 $00 $05
       sLOAD_ROOM 8, $63, 10, 6                         ;; 0e:4ecc $f4 $08 $63 $0a $06
     sENDIF                                             ;; 0e:4ed1
     sEND                                               ;; 0e:4ed1 $00
 
 script_03c9:
-    sIF_0B $c9, $c1                                    ;; 0e:4ed2 $0b $c9 $c1 $00 $0b
+    sIF_TRIGGERED_ON_BY $c9, $c1                       ;; 0e:4ed2 $0b $c9 $c1 $00 $0b
       sLOAD_ROOM 2, $22, 16, 2                         ;; 0e:4ed7 $f4 $02 $22 $10 $02
       sSET_NPC_TYPES 7                                 ;; 0e:4edc $fc $07
       sSPAWN_NPC 0                                     ;; 0e:4ede $fd $00
@@ -2132,37 +2132,37 @@ script_03c9:
     sEND                                               ;; 0e:4ee2 $00
 
 script_03ca:
-    sIF_0B $c9, $c1                                    ;; 0e:4ee3 $0b $c9 $c1 $00 $05
+    sIF_TRIGGERED_ON_BY $c9, $c1                       ;; 0e:4ee3 $0b $c9 $c1 $00 $05
       sLOAD_ROOM 2, $62, 16, 2                         ;; 0e:4ee8 $f4 $02 $62 $10 $02
     sENDIF                                             ;; 0e:4eed
     sEND                                               ;; 0e:4eed $00
 
 script_03cb:
-    sIF_0B $c9                                         ;; 0e:4eee $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4eee $0b $c9 $00 $05
       sLOAD_ROOM 13, $40, 16, 2                        ;; 0e:4ef2 $f4 $0d $40 $10 $02
     sENDIF                                             ;; 0e:4ef7
     sEND                                               ;; 0e:4ef7 $00
 
 script_03cc:
-    sIF_0B $c9                                         ;; 0e:4ef8 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4ef8 $0b $c9 $00 $05
       sLOAD_ROOM 11, $20, 16, 2                        ;; 0e:4efc $f4 $0b $20 $10 $02
     sENDIF                                             ;; 0e:4f01
     sEND                                               ;; 0e:4f01 $00
 
 script_03cd:
-    sIF_0B $c9                                         ;; 0e:4f02 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4f02 $0b $c9 $00 $05
       sLOAD_ROOM 10, $20, 16, 2                        ;; 0e:4f06 $f4 $0a $20 $10 $02
     sENDIF                                             ;; 0e:4f0b
     sEND                                               ;; 0e:4f0b $00
 
 script_03ce:
-    sIF_0B $c9                                         ;; 0e:4f0c $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4f0c $0b $c9 $00 $05
       sLOAD_ROOM 10, $14, 16, 2                        ;; 0e:4f10 $f4 $0a $14 $10 $02
     sENDIF                                             ;; 0e:4f15
     sEND                                               ;; 0e:4f15 $00
 
 script_03cf:
-    sIF_0B $c9                                         ;; 0e:4f16 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:4f16 $0b $c9 $00 $05
       sLOAD_ROOM 10, $53, 16, 2                        ;; 0e:4f1a $f4 $0a $53 $10 $02
     sENDIF                                             ;; 0e:4f1f
     sEND                                               ;; 0e:4f1f $00
@@ -2469,7 +2469,7 @@ script_03ff:
     sEND                                               ;; 0e:5118 $00
 
 script_0400:
-    sIF_0B $c9                                         ;; 0e:5119 $0b $c9 $00 $15
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:5119 $0b $c9 $00 $15
       sSET_PLAYER_POSITION 8, 3                        ;; 0e:511d $8a $08 $03
       sSET_PLAYER_DIRECTION_RIGHT                      ;; 0e:5120 $86
       sDELAY 10                                        ;; 0e:5121 $f0 $0a
@@ -2486,7 +2486,7 @@ script_0400:
     sEND                                               ;; 0e:5132 $00
 
 script_0401:
-    sIF_0B $c9                                         ;; 0e:5133 $0b $c9 $00 $b6
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:5133 $0b $c9 $00 $b6
       sSFX 12                                          ;; 0e:5137 $f9 $0c
       sSET_PLAYER_DIRECTION_LEFT                       ;; 0e:5139 $87
       sSET_FAST_MOVEMENT                               ;; 0e:513a $88
@@ -2546,7 +2546,7 @@ script_0402:
     sEND                                               ;; 0e:51ee $00
 
 script_0403:
-    sIF_0B $c9                                         ;; 0e:51ef $0b $c9 $00 $06
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:51ef $0b $c9 $00 $06
       sFADE_TO_BLACK                                   ;; 0e:51f3 $bd
       sFULL_HP                                         ;; 0e:51f4 $c0
       sFULL_MANA                                       ;; 0e:51f5 $c1
@@ -2572,7 +2572,7 @@ script_0405:
     sEND                                               ;; 0e:5211 $00
 
 script_0406:
-    sIF_0B $c9                                         ;; 0e:5212 $0b $c9 $00 $0a
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:5212 $0b $c9 $00 $0a
       sSFX 24                                          ;; 0e:5216 $f9 $18
       sSET_ROOM_TILE $46, 4, 6                         ;; 0e:5218 $b0 $46 $04 $06
       sSET_ROOM_TILE $46, 5, 6                         ;; 0e:521c $b0 $46 $05 $06
@@ -2580,7 +2580,7 @@ script_0406:
     sEND                                               ;; 0e:5220 $00
 
 script_0407:
-    sIF_0B $c9                                         ;; 0e:5221 $0b $c9 $00 $0a
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:5221 $0b $c9 $00 $0a
       sSFX 24                                          ;; 0e:5225 $f9 $18
       sSET_ROOM_TILE $00, 4, 6                         ;; 0e:5227 $b0 $00 $04 $06
       sSET_ROOM_TILE $00, 5, 6                         ;; 0e:522b $b0 $00 $05 $06
@@ -2594,7 +2594,7 @@ script_0409:
     sEND                                               ;; 0e:5231 $00
 
 script_040a:
-    sIF_0B $c9                                         ;; 0e:5232 $0b $c9 $00 $68
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:5232 $0b $c9 $00 $68
       sIF_EQUIPED INV_SWORD_RUSTY                      ;; 0e:5236 $09 $4f $00 $64
         sSET_MUSIC 0                                   ;; 0e:523a $f8 $00
         sMSG                                           ;; 0e:523c $04
@@ -2623,7 +2623,7 @@ script_040b:
     sEND                                               ;; 0e:529f $00
 
 script_040c:
-    sIF_0B $c9                                         ;; 0e:52a0 $0b $c9 $00 $19
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:52a0 $0b $c9 $00 $19
       sIF_FLAG wScriptFlags0F.0, wScriptFlags0F.1, wScriptFlags0F.2, !wScriptFlags0F.3 ;; 0e:52a4 $08 $78 $79 $7a $fb $00 $0a
         sCREATE_EFFECT $10, $0e, $02                   ;; 0e:52ab $ba $10 $0e $02
         sSET_ROOM_TILE $4c, 7, 1                       ;; 0e:52af $b0 $4c $07 $01
@@ -2637,7 +2637,7 @@ script_040c:
     sEND                                               ;; 0e:52bd $00
 
 script_040d:
-    sIF_0B $c9                                         ;; 0e:52be $0b $c9 $00 $1e
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:52be $0b $c9 $00 $1e
       sIF_FLAG !wScriptFlags0F.0, !wScriptFlags0F.1, !wScriptFlags0F.2, !wScriptFlags0F.3 ;; 0e:52c2 $08 $f8 $f9 $fa $fb $00 $04
         sSET_FLAG wScriptFlags0F.0                     ;; 0e:52c9 $da $78
       sELSE                                            ;; 0e:52cb $01 $13
@@ -2654,7 +2654,7 @@ script_040d:
     sEND                                               ;; 0e:52e0 $00
 
 script_040e:
-    sIF_0B $c9                                         ;; 0e:52e1 $0b $c9 $00 $13
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:52e1 $0b $c9 $00 $13
       sIF_FLAG wScriptFlags0F.0, !wScriptFlags0F.1, !wScriptFlags0F.2, !wScriptFlags0F.3 ;; 0e:52e5 $08 $78 $f9 $fa $fb $00 $04
         sSET_FLAG wScriptFlags0F.1                     ;; 0e:52ec $da $79
       sELSE                                            ;; 0e:52ee $01 $08
@@ -3601,11 +3601,11 @@ script_0473:
     sEND                                               ;; 0e:5af1 $00
 
 script_0474:
-    sIF_0B $f1                                         ;; 0e:5af2 $0b $f1 $00 $03
+    sIF_TRIGGERED_ON_BY $f1                            ;; 0e:5af2 $0b $f1 $00 $03
       sPLAYER_ON_CHOCOBOT_WATER                        ;; 0e:5af6 $a2
       sSET_FLAG wScriptFlags0E.0                       ;; 0e:5af7 $da $70
     sENDIF                                             ;; 0e:5af9
-    sIF_0B $f5                                         ;; 0e:5af9 $0b $f5 $00 $03
+    sIF_TRIGGERED_ON_BY $f5                            ;; 0e:5af9 $0b $f5 $00 $03
       sPLAYER_ON_CHOCOBOT                              ;; 0e:5afd $a1
       sCLEAR_FLAG wScriptFlags0E.0                     ;; 0e:5afe $db $70
     sENDIF                                             ;; 0e:5b00
@@ -3876,10 +3876,10 @@ script_04af:
     sEND                                               ;; 0e:5bfd $00
 
 script_04b0:
-    sIF_0B $f1                                         ;; 0e:5bfe $0b $f1 $00 $03
+    sIF_TRIGGERED_ON_BY $f1                            ;; 0e:5bfe $0b $f1 $00 $03
       sCALL script_0470                                ;; 0e:5c02 $02 $5a $3f
     sENDIF                                             ;; 0e:5c05
-    sIF_0B $c9, $c1, $f1                               ;; 0e:5c05 $0b $c9 $c1 $f1 $00 $32
+    sIF_TRIGGERED_ON_BY $c9, $c1, $f1                  ;; 0e:5c05 $0b $c9 $c1 $f1 $00 $32
       sIF_FLAG wScriptFlags0B.0                        ;; 0e:5c0b $08 $58 $00 $2e
         sMSG                                           ;; 0e:5c0f $04
           db "<10>It's too cold for\nyou ahead.\nWait for me here.<12>"
@@ -3896,7 +3896,7 @@ script_04b0:
     sEND                                               ;; 0e:5c3d $00
 
 script_04d0:
-    sIF_0B $a9                                         ;; 0e:5c3e $0b $a9 $00 $03
+    sIF_TRIGGERED_ON_BY $a9                            ;; 0e:5c3e $0b $a9 $00 $03
       sSFX 16                                          ;; 0e:5c42 $f9 $10
       sOPEN_EAST_DOOR                                  ;; 0e:5c44 $e4
     sENDIF                                             ;; 0e:5c45
@@ -3906,13 +3906,13 @@ script_04d1:
     sEND                                               ;; 0e:5c46 $00
 
 script_04d2:
-    sIF_0B $c9, $c1                                    ;; 0e:5c47 $0b $c9 $c1 $00 $05
+    sIF_TRIGGERED_ON_BY $c9, $c1                       ;; 0e:5c47 $0b $c9 $c1 $00 $05
       sLOAD_ROOM 4, $57, 16, 12                        ;; 0e:5c4c $f4 $04 $57 $10 $0c
     sENDIF                                             ;; 0e:5c51
     sEND                                               ;; 0e:5c51 $00
 
 script_04d3:
-    sIF_0B $c9, $c1                                    ;; 0e:5c52 $0b $c9 $c1 $00 $0c
+    sIF_TRIGGERED_ON_BY $c9, $c1                       ;; 0e:5c52 $0b $c9 $c1 $00 $0c
       sLOAD_ROOM 0, $70, 14, 10                        ;; 0e:5c57 $f4 $00 $70 $0e $0a
       sSET_MUSIC 25                                    ;; 0e:5c5c $f8 $19
       sSET_ROOM_TILE $4b, 7, 5                         ;; 0e:5c5e $b0 $4b $07 $05
@@ -3921,37 +3921,37 @@ script_04d3:
     sEND                                               ;; 0e:5c63 $00
 
 script_04d4:
-    sIF_0B $c9                                         ;; 0e:5c64 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:5c64 $0b $c9 $00 $05
       sLOAD_ROOM 5, $27, 8, 6                          ;; 0e:5c68 $f4 $05 $27 $08 $06
     sENDIF                                             ;; 0e:5c6d
     sEND                                               ;; 0e:5c6d $00
 
 script_04d5:
-    sIF_0B $c9                                         ;; 0e:5c6e $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:5c6e $0b $c9 $00 $05
       sLOAD_ROOM 4, $27, 8, 8                          ;; 0e:5c72 $f4 $04 $27 $08 $08
     sENDIF                                             ;; 0e:5c77
     sEND                                               ;; 0e:5c77 $00
 
 script_04d6:
-    sIF_0B $c9                                         ;; 0e:5c78 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:5c78 $0b $c9 $00 $05
       sLOAD_ROOM 6, $34, 16, 2                         ;; 0e:5c7c $f4 $06 $34 $10 $02
     sENDIF                                             ;; 0e:5c81
     sEND                                               ;; 0e:5c81 $00
 
 script_04d7:
-    sIF_0B $c9                                         ;; 0e:5c82 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:5c82 $0b $c9 $00 $05
       sLOAD_ROOM 5, $34, 16, 2                         ;; 0e:5c86 $f4 $05 $34 $10 $02
     sENDIF                                             ;; 0e:5c8b
     sEND                                               ;; 0e:5c8b $00
 
 script_04d8:
-    sIF_0B $c9, $c1                                    ;; 0e:5c8c $0b $c9 $c1 $00 $05
+    sIF_TRIGGERED_ON_BY $c9, $c1                       ;; 0e:5c8c $0b $c9 $c1 $00 $05
       sLOAD_ROOM 8, $00, 2, 2                          ;; 0e:5c91 $f4 $08 $00 $02 $02
     sENDIF                                             ;; 0e:5c96
     sEND                                               ;; 0e:5c96 $00
 
 script_04d9:
-    sIF_0B $c9, $c1                                    ;; 0e:5c97 $0b $c9 $c1 $00 $74
+    sIF_TRIGGERED_ON_BY $c9, $c1                       ;; 0e:5c97 $0b $c9 $c1 $00 $74
       sLOAD_ROOM 5, $72, 16, 2                         ;; 0e:5c9c $f4 $05 $72 $10 $02
       sIF_FLAG !wScriptFlags03.6                       ;; 0e:5ca1 $08 $9e $00 $6b
         sSET_NPC_TYPES 50                              ;; 0e:5ca5 $fc $32
@@ -3981,38 +3981,38 @@ script_04d9:
     sEND                                               ;; 0e:5d10 $00
 
 script_04da:
-    sIF_0B $c9, $c1                                    ;; 0e:5d11 $0b $c9 $c1 $00 $05
+    sIF_TRIGGERED_ON_BY $c9, $c1                       ;; 0e:5d11 $0b $c9 $c1 $00 $05
       sLOAD_ROOM 6, $71, 16, 2                         ;; 0e:5d16 $f4 $06 $71 $10 $02
     sENDIF                                             ;; 0e:5d1b
     sEND                                               ;; 0e:5d1b $00
 
 script_04db:
-    sIF_0B $c9                                         ;; 0e:5d1c $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:5d1c $0b $c9 $00 $05
       sLOAD_ROOM 10, $40, 16, 2                        ;; 0e:5d20 $f4 $0a $40 $10 $02
     sENDIF                                             ;; 0e:5d25
     sEND                                               ;; 0e:5d25 $00
 
 script_04dc:
-    sIF_0B $c9, $c1                                    ;; 0e:5d26 $0b $c9 $c1 $00 $09
+    sIF_TRIGGERED_ON_BY $c9, $c1                       ;; 0e:5d26 $0b $c9 $c1 $00 $09
       sLOAD_ROOM 9, $10, 16, 2                         ;; 0e:5d2b $f4 $09 $10 $10 $02
       sSET_ROOM_TILE $02, 8, 1                         ;; 0e:5d30 $b0 $02 $08 $01
     sENDIF                                             ;; 0e:5d34
     sEND                                               ;; 0e:5d34 $00
 
 script_04dd:
-    sIF_0B $c9                                         ;; 0e:5d35 $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:5d35 $0b $c9 $00 $05
       sLOAD_ROOM 9, $20, 2, 2                          ;; 0e:5d39 $f4 $09 $20 $02 $02
     sENDIF                                             ;; 0e:5d3e
     sEND                                               ;; 0e:5d3e $00
 
 script_04de:
-    sIF_0B $c9                                         ;; 0e:5d3f $0b $c9 $00 $05
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:5d3f $0b $c9 $00 $05
       sLOAD_ROOM 10, $50, 2, 2                         ;; 0e:5d43 $f4 $0a $50 $02 $02
     sENDIF                                             ;; 0e:5d48
     sEND                                               ;; 0e:5d48 $00
 
 script_04df:
-    sIF_0B $c9                                         ;; 0e:5d49 $0b $c9 $00 $08
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:5d49 $0b $c9 $00 $08
       sUNK_C5 5                                        ;; 0e:5d4d $c5 $05
       sLOAD_ROOM 2, $01, 9, 12                         ;; 0e:5d4f $f4 $02 $01 $09 $0c
       sRUN_ROOM_SCRIPT                                 ;; 0e:5d54 $ec
@@ -4020,24 +4020,24 @@ script_04df:
     sEND                                               ;; 0e:5d55 $00
 
 script_04e0:
-    sIF_0B $c9, $91, $a9                               ;; 0e:5d56 $0b $c9 $91 $a9 $00 $06
+    sIF_TRIGGERED_ON_BY $c9, $91, $a9                  ;; 0e:5d56 $0b $c9 $91 $a9 $00 $06
       sSFX 24                                          ;; 0e:5d5c $f9 $18
       sSET_ROOM_TILE $02, 8, 1                         ;; 0e:5d5e $b0 $02 $08 $01
     sENDIF                                             ;; 0e:5d62
-    sIF_0C $c9, $91, $a9                               ;; 0e:5d62 $0c $c9 $91 $a9 $00 $06
+    sIF_TRIGGERED_OFF_BY $c9, $91, $a9                 ;; 0e:5d62 $0c $c9 $91 $a9 $00 $06
       sSFX 24                                          ;; 0e:5d68 $f9 $18
       sSET_ROOM_TILE $00, 8, 1                         ;; 0e:5d6a $b0 $00 $08 $01
     sENDIF                                             ;; 0e:5d6e
     sEND                                               ;; 0e:5d6e $00
 
 script_04e1:
-    sIF_0B $c9                                         ;; 0e:5d6f $0b $c9 $00 $02
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:5d6f $0b $c9 $00 $02
       sSET_FLAG wScriptFlags0F.0                       ;; 0e:5d73 $da $78
     sENDIF                                             ;; 0e:5d75
     sEND                                               ;; 0e:5d75 $00
 
 script_04e2:
-    sIF_0B $c9                                         ;; 0e:5d76 $0b $c9 $00 $0a
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:5d76 $0b $c9 $00 $0a
       sSET_FLAG wScriptFlags0F.1                       ;; 0e:5d7a $da $79
       sIF_FLAG !wScriptFlags0F.0                       ;; 0e:5d7c $08 $f8 $00 $04
         sCLEAR_FLAG wScriptFlags0F.1                   ;; 0e:5d80 $db $79
@@ -4047,7 +4047,7 @@ script_04e2:
     sEND                                               ;; 0e:5d84 $00
 
 script_04e3:
-    sIF_0B $c9                                         ;; 0e:5d85 $0b $c9 $00 $12
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:5d85 $0b $c9 $00 $12
       sSET_FLAG wScriptFlags0F.2                       ;; 0e:5d89 $da $7a
       sIF_FLAG !wScriptFlags0F.0                       ;; 0e:5d8b $08 $f8 $00 $04
         sCLEAR_FLAG wScriptFlags0F.1                   ;; 0e:5d8f $db $79
@@ -4061,7 +4061,7 @@ script_04e3:
     sEND                                               ;; 0e:5d9b $00
 
 script_04e4:
-    sIF_0B $c9                                         ;; 0e:5d9c $0b $c9 $00 $14
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:5d9c $0b $c9 $00 $14
       sIF_FLAG wScriptFlags0F.0, wScriptFlags0F.1, wScriptFlags0F.2 ;; 0e:5da0 $08 $78 $79 $7a $00 $08
         sSFX 24                                        ;; 0e:5da6 $f9 $18
         sSET_ROOM_TILE $02, 8, 6                       ;; 0e:5da8 $b0 $02 $08 $06
@@ -4074,21 +4074,21 @@ script_04e4:
     sEND                                               ;; 0e:5db4 $00
 
 script_04e5:
-    sIF_0B $c9                                         ;; 0e:5db5 $0b $c9 $00 $06
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:5db5 $0b $c9 $00 $06
       sSFX 24                                          ;; 0e:5db9 $f9 $18
       sSET_ROOM_TILE $00, 8, 1                         ;; 0e:5dbb $b0 $00 $08 $01
     sENDIF                                             ;; 0e:5dbf
     sEND                                               ;; 0e:5dbf $00
 
 script_04e6:
-    sIF_0B $c9                                         ;; 0e:5dc0 $0b $c9 $00 $06
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:5dc0 $0b $c9 $00 $06
       sSFX 24                                          ;; 0e:5dc4 $f9 $18
       sSET_ROOM_TILE $02, 8, 1                         ;; 0e:5dc6 $b0 $02 $08 $01
     sENDIF                                             ;; 0e:5dca
     sEND                                               ;; 0e:5dca $00
 
 script_04e7:
-    sIF_0B $c9                                         ;; 0e:5dcb $0b $c9 $00 $1a
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:5dcb $0b $c9 $00 $1a
       sSFX 16                                          ;; 0e:5dcf $f9 $10
       sSET_ROOM_TILE $00, 2, 1                         ;; 0e:5dd1 $b0 $00 $02 $01
       sSET_ROOM_TILE $00, 2, 2                         ;; 0e:5dd5 $b0 $00 $02 $02
@@ -4100,46 +4100,46 @@ script_04e7:
     sEND                                               ;; 0e:5de9 $00
 
 script_04e8:
-    sIF_0B $c9                                         ;; 0e:5dea $0b $c9 $00 $06
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:5dea $0b $c9 $00 $06
       sSFX 24                                          ;; 0e:5dee $f9 $18
       sSET_ROOM_TILE $02, 8, 6                         ;; 0e:5df0 $b0 $02 $08 $06
     sENDIF                                             ;; 0e:5df4
     sEND                                               ;; 0e:5df4 $00
 
 script_04e9:
-    sIF_0B $c9                                         ;; 0e:5df5 $0b $c9 $00 $04
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:5df5 $0b $c9 $00 $04
       sSET_ROOM_TILE $02, 8, 6                         ;; 0e:5df9 $b0 $02 $08 $06
     sENDIF                                             ;; 0e:5dfd
     sEND                                               ;; 0e:5dfd $00
 
 script_04ea:
-    sIF_0B $a9, $a9                                    ;; 0e:5dfe $0b $a9 $a9 $00 $0c
+    sIF_TRIGGERED_ON_BY $a9, $a9                       ;; 0e:5dfe $0b $a9 $a9 $00 $0c
       sSET_FLAG wScriptFlags0F.0                       ;; 0e:5e03 $da $78
       sIF_FLAG wScriptFlags0F.1                        ;; 0e:5e05 $08 $79 $00 $06
         sSFX 24                                        ;; 0e:5e09 $f9 $18
         sSET_ROOM_TILE $02, 8, 6                       ;; 0e:5e0b $b0 $02 $08 $06
       sENDIF                                           ;; 0e:5e0f
     sENDIF                                             ;; 0e:5e0f
-    sIF_0C $a9, $a9                                    ;; 0e:5e0f $0c $a9 $a9 $00 $02
+    sIF_TRIGGERED_OFF_BY $a9, $a9                      ;; 0e:5e0f $0c $a9 $a9 $00 $02
       sCLEAR_FLAG wScriptFlags0F.0                     ;; 0e:5e14 $db $78
     sENDIF                                             ;; 0e:5e16
     sEND                                               ;; 0e:5e16 $00
 
 script_04eb:
-    sIF_0B $a9, $a9                                    ;; 0e:5e17 $0b $a9 $a9 $00 $0c
+    sIF_TRIGGERED_ON_BY $a9, $a9                       ;; 0e:5e17 $0b $a9 $a9 $00 $0c
       sSET_FLAG wScriptFlags0F.1                       ;; 0e:5e1c $da $79
       sIF_FLAG wScriptFlags0F.0                        ;; 0e:5e1e $08 $78 $00 $06
         sSFX 24                                        ;; 0e:5e22 $f9 $18
         sSET_ROOM_TILE $02, 8, 6                       ;; 0e:5e24 $b0 $02 $08 $06
       sENDIF                                           ;; 0e:5e28
     sENDIF                                             ;; 0e:5e28
-    sIF_0C $a9, $a9                                    ;; 0e:5e28 $0c $a9 $a9 $00 $02
+    sIF_TRIGGERED_OFF_BY $a9, $a9                      ;; 0e:5e28 $0c $a9 $a9 $00 $02
       sCLEAR_FLAG wScriptFlags0F.1                     ;; 0e:5e2d $db $79
     sENDIF                                             ;; 0e:5e2f
     sEND                                               ;; 0e:5e2f $00
 
 script_04ec:
-    sIF_0C $a9                                         ;; 0e:5e30 $0c $a9 $00 $04
+    sIF_TRIGGERED_OFF_BY $a9                           ;; 0e:5e30 $0c $a9 $00 $04
       sSET_ROOM_TILE $00, 8, 1                         ;; 0e:5e34 $b0 $00 $08 $01
     sENDIF                                             ;; 0e:5e38
     sEND                                               ;; 0e:5e38 $00
@@ -4157,13 +4157,13 @@ script_04ef:
     sEND                                               ;; 0e:5e41 $00
 
 script_04f0:
-    sIF_0B $c9                                         ;; 0e:5e42 $0b $c9 $00 $02
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:5e42 $0b $c9 $00 $02
       sSET_FLAG wScriptFlags0F.0                       ;; 0e:5e46 $da $78
     sENDIF                                             ;; 0e:5e48
     sEND                                               ;; 0e:5e48 $00
 
 script_04f1:
-    sIF_0B $c9                                         ;; 0e:5e49 $0b $c9 $00 $0a
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:5e49 $0b $c9 $00 $0a
       sIF_FLAG wScriptFlags0F.0                        ;; 0e:5e4d $08 $78 $00 $06
         sSFX 24                                        ;; 0e:5e51 $f9 $18
         sSET_ROOM_TILE $02, 8, 6                       ;; 0e:5e53 $b0 $02 $08 $06
@@ -4185,7 +4185,7 @@ script_04f4:
     sEND                                               ;; 0e:5e62 $00
 
 script_04f5:
-    sIF_0B $87, $a9                                    ;; 0e:5e63 $0b $87 $a9 $00 $0c
+    sIF_TRIGGERED_ON_BY $87, $a9                       ;; 0e:5e63 $0b $87 $a9 $00 $0c
       sSET_FLAG wScriptFlags0F.0                       ;; 0e:5e68 $da $78
       sIF_FLAG wScriptFlags0F.1                        ;; 0e:5e6a $08 $79 $00 $06
         sSFX 24                                        ;; 0e:5e6e $f9 $18
@@ -4195,7 +4195,7 @@ script_04f5:
     sEND                                               ;; 0e:5e74 $00
 
 script_04f6:
-    sIF_0B $87, $a9                                    ;; 0e:5e75 $0b $87 $a9 $00 $0c
+    sIF_TRIGGERED_ON_BY $87, $a9                       ;; 0e:5e75 $0b $87 $a9 $00 $0c
       sSET_FLAG wScriptFlags0F.1                       ;; 0e:5e7a $da $79
       sIF_FLAG wScriptFlags0F.0                        ;; 0e:5e7c $08 $78 $00 $06
         sSFX 24                                        ;; 0e:5e80 $f9 $18
@@ -4205,55 +4205,55 @@ script_04f6:
     sEND                                               ;; 0e:5e86 $00
 
 script_04f7:
-    sIF_0B $a9                                         ;; 0e:5e87 $0b $a9 $00 $09
+    sIF_TRIGGERED_ON_BY $a9                            ;; 0e:5e87 $0b $a9 $00 $09
       sSET_FLAG wScriptFlags0F.0                       ;; 0e:5e8b $da $78
       sIF_FLAG wScriptFlags0F.1                        ;; 0e:5e8d $08 $79 $00 $03
         sSFX 16                                        ;; 0e:5e91 $f9 $10
         sOPEN_NORTH_DOOR                               ;; 0e:5e93 $e0
       sENDIF                                           ;; 0e:5e94
     sENDIF                                             ;; 0e:5e94
-    sIF_0C $a9                                         ;; 0e:5e94 $0c $a9 $00 $02
+    sIF_TRIGGERED_OFF_BY $a9                           ;; 0e:5e94 $0c $a9 $00 $02
       sCLEAR_FLAG wScriptFlags0F.0                     ;; 0e:5e98 $db $78
     sENDIF                                             ;; 0e:5e9a
     sEND                                               ;; 0e:5e9a $00
 
 script_04f8:
-    sIF_0B $a9                                         ;; 0e:5e9b $0b $a9 $00 $09
+    sIF_TRIGGERED_ON_BY $a9                            ;; 0e:5e9b $0b $a9 $00 $09
       sSET_FLAG wScriptFlags0F.1                       ;; 0e:5e9f $da $79
       sIF_FLAG wScriptFlags0F.0                        ;; 0e:5ea1 $08 $78 $00 $03
         sSFX 16                                        ;; 0e:5ea5 $f9 $10
         sOPEN_NORTH_DOOR                               ;; 0e:5ea7 $e0
       sENDIF                                           ;; 0e:5ea8
     sENDIF                                             ;; 0e:5ea8
-    sIF_0C $a9                                         ;; 0e:5ea8 $0c $a9 $00 $02
+    sIF_TRIGGERED_OFF_BY $a9                           ;; 0e:5ea8 $0c $a9 $00 $02
       sCLEAR_FLAG wScriptFlags0F.1                     ;; 0e:5eac $db $79
     sENDIF                                             ;; 0e:5eae
     sEND                                               ;; 0e:5eae $00
 
 script_04f9:
-    sIF_0B $a9, $87                                    ;; 0e:5eaf $0b $a9 $87 $00 $03
+    sIF_TRIGGERED_ON_BY $a9, $87                       ;; 0e:5eaf $0b $a9 $87 $00 $03
       sSFX 16                                          ;; 0e:5eb4 $f9 $10
       sOPEN_NORTH_DOOR                                 ;; 0e:5eb6 $e0
     sENDIF                                             ;; 0e:5eb7
-    sIF_0C $a9, $87                                    ;; 0e:5eb7 $0c $a9 $87 $00 $03
+    sIF_TRIGGERED_OFF_BY $a9, $87                      ;; 0e:5eb7 $0c $a9 $87 $00 $03
       sSFX 16                                          ;; 0e:5ebc $f9 $10
       sCLOSE_NORTH_DOOR                                ;; 0e:5ebe $e1
     sENDIF                                             ;; 0e:5ebf
     sEND                                               ;; 0e:5ebf $00
 
 script_04fa:
-    sIF_0B $a9, $87                                    ;; 0e:5ec0 $0b $a9 $87 $00 $03
+    sIF_TRIGGERED_ON_BY $a9, $87                       ;; 0e:5ec0 $0b $a9 $87 $00 $03
       sSFX 16                                          ;; 0e:5ec5 $f9 $10
       sOPEN_EAST_DOOR                                  ;; 0e:5ec7 $e4
     sENDIF                                             ;; 0e:5ec8
-    sIF_0C $a9, $87                                    ;; 0e:5ec8 $0c $a9 $87 $00 $03
+    sIF_TRIGGERED_OFF_BY $a9, $87                      ;; 0e:5ec8 $0c $a9 $87 $00 $03
       sSFX 16                                          ;; 0e:5ecd $f9 $10
       sCLOSE_EAST_DOOR                                 ;; 0e:5ecf $e5
     sENDIF                                             ;; 0e:5ed0
     sEND                                               ;; 0e:5ed0 $00
 
 script_04fb:
-    sIF_0C $91                                         ;; 0e:5ed1 $0c $91 $00 $0b
+    sIF_TRIGGERED_OFF_BY $91                           ;; 0e:5ed1 $0c $91 $00 $0b
       sSET_FLAG wScriptFlags0F.0                       ;; 0e:5ed5 $da $78
       sIF_FLAG wScriptFlags0F.1                        ;; 0e:5ed7 $08 $79 $00 $03
         sSFX 16                                        ;; 0e:5edb $f9 $10
@@ -4265,7 +4265,7 @@ script_04fb:
     sEND                                               ;; 0e:5ee2 $00
 
 script_04fc:
-    sIF_0C $91                                         ;; 0e:5ee3 $0c $91 $00 $0b
+    sIF_TRIGGERED_OFF_BY $91                           ;; 0e:5ee3 $0c $91 $00 $0b
       sSET_FLAG wScriptFlags0F.1                       ;; 0e:5ee7 $da $79
       sIF_FLAG wScriptFlags0F.0                        ;; 0e:5ee9 $08 $78 $00 $03
         sSFX 16                                        ;; 0e:5eed $f9 $10
@@ -4277,7 +4277,7 @@ script_04fc:
     sEND                                               ;; 0e:5ef4 $00
 
 script_04fd:
-    sIF_0B $c9                                         ;; 0e:5ef5 $0b $c9 $00 $02
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:5ef5 $0b $c9 $00 $02
       sSET_FLAG wScriptFlags0F.0                       ;; 0e:5ef9 $da $78
     sENDIF                                             ;; 0e:5efb
     sIF_FLAG wScriptFlags0F.1, wScriptFlags0F.2, wScriptFlags0F.3 ;; 0e:5efb $08 $79 $7a $7b $00 $03
@@ -4287,7 +4287,7 @@ script_04fd:
     sEND                                               ;; 0e:5f04 $00
 
 script_04fe:
-    sIF_0B $c9                                         ;; 0e:5f05 $0b $c9 $00 $02
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:5f05 $0b $c9 $00 $02
       sSET_FLAG wScriptFlags0F.1                       ;; 0e:5f09 $da $79
     sENDIF                                             ;; 0e:5f0b
     sIF_FLAG wScriptFlags0F.0, wScriptFlags0F.2, wScriptFlags0F.3 ;; 0e:5f0b $08 $78 $7a $7b $00 $03
@@ -4297,7 +4297,7 @@ script_04fe:
     sEND                                               ;; 0e:5f14 $00
 
 script_04ff:
-    sIF_0B $c9                                         ;; 0e:5f15 $0b $c9 $00 $02
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:5f15 $0b $c9 $00 $02
       sSET_FLAG wScriptFlags0F.2                       ;; 0e:5f19 $da $7a
     sENDIF                                             ;; 0e:5f1b
     sIF_FLAG wScriptFlags0F.0, wScriptFlags0F.1, wScriptFlags0F.3 ;; 0e:5f1b $08 $78 $79 $7b $00 $03
@@ -4307,7 +4307,7 @@ script_04ff:
     sEND                                               ;; 0e:5f24 $00
 
 script_0500:
-    sIF_0B $c9                                         ;; 0e:5f25 $0b $c9 $00 $02
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:5f25 $0b $c9 $00 $02
       sSET_FLAG wScriptFlags0F.3                       ;; 0e:5f29 $da $7b
     sENDIF                                             ;; 0e:5f2b
     sIF_FLAG wScriptFlags0F.0, wScriptFlags0F.1, wScriptFlags0F.2 ;; 0e:5f2b $08 $78 $79 $7a $00 $03
@@ -4317,32 +4317,32 @@ script_0500:
     sEND                                               ;; 0e:5f34 $00
 
 script_0501:
-    sIF_0B $c9                                         ;; 0e:5f35 $0b $c9 $00 $03
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:5f35 $0b $c9 $00 $03
       sSFX 16                                          ;; 0e:5f39 $f9 $10
       sOPEN_EAST_DOOR                                  ;; 0e:5f3b $e4
     sENDIF                                             ;; 0e:5f3c
     sEND                                               ;; 0e:5f3c $00
 
 script_0502:
-    sIF_0B $c9                                         ;; 0e:5f3d $0b $c9 $00 $03
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:5f3d $0b $c9 $00 $03
       sSFX 16                                          ;; 0e:5f41 $f9 $10
       sCLOSE_EAST_DOOR                                 ;; 0e:5f43 $e5
     sENDIF                                             ;; 0e:5f44
     sEND                                               ;; 0e:5f44 $00
 
 script_0503:
-    sIF_0C $a9                                         ;; 0e:5f45 $0c $a9 $00 $03
+    sIF_TRIGGERED_OFF_BY $a9                           ;; 0e:5f45 $0c $a9 $00 $03
       sSFX 16                                          ;; 0e:5f49 $f9 $10
       sOPEN_NORTH_DOOR                                 ;; 0e:5f4b $e0
     sENDIF                                             ;; 0e:5f4c
     sEND                                               ;; 0e:5f4c $00
 
 script_0504:
-    sIF_0B $c9, $a9                                    ;; 0e:5f4d $0b $c9 $a9 $00 $03
+    sIF_TRIGGERED_ON_BY $c9, $a9                       ;; 0e:5f4d $0b $c9 $a9 $00 $03
       sSFX 16                                          ;; 0e:5f52 $f9 $10
       sOPEN_NORTH_DOOR                                 ;; 0e:5f54 $e0
     sENDIF                                             ;; 0e:5f55
-    sIF_0C $c9, $a9                                    ;; 0e:5f55 $0c $c9 $a9 $00 $03
+    sIF_TRIGGERED_OFF_BY $c9, $a9                      ;; 0e:5f55 $0c $c9 $a9 $00 $03
       sSFX 16                                          ;; 0e:5f5a $f9 $10
       sCLOSE_NORTH_DOOR                                ;; 0e:5f5c $e1
     sENDIF                                             ;; 0e:5f5d
@@ -4355,7 +4355,7 @@ script_0506:
     sEND                                               ;; 0e:5f5f $00
 
 script_0507:
-    sIF_0B $c9                                         ;; 0e:5f60 $0b $c9 $00 $0c
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:5f60 $0b $c9 $00 $0c
       sSET_ROOM_TILE $00, 1, 5                         ;; 0e:5f64 $b0 $00 $01 $05
       sSET_ROOM_TILE $00, 4, 1                         ;; 0e:5f68 $b0 $00 $04 $01
       sSET_ROOM_TILE $00, 5, 1                         ;; 0e:5f6c $b0 $00 $05 $01
@@ -4363,14 +4363,14 @@ script_0507:
     sEND                                               ;; 0e:5f70 $00
 
 script_0508:
-    sIF_0B $c9                                         ;; 0e:5f71 $0b $c9 $00 $03
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:5f71 $0b $c9 $00 $03
       sSFX 16                                          ;; 0e:5f75 $f9 $10
       sOPEN_SOUTH_DOOR                                 ;; 0e:5f77 $e2
     sENDIF                                             ;; 0e:5f78
     sEND                                               ;; 0e:5f78 $00
 
 script_0509:
-    sIF_0B $c9                                         ;; 0e:5f79 $0b $c9 $00 $10
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:5f79 $0b $c9 $00 $10
       sSET_ROOM_TILE $00, 4, 3                         ;; 0e:5f7d $b0 $00 $04 $03
       sSET_ROOM_TILE $00, 5, 3                         ;; 0e:5f81 $b0 $00 $05 $03
       sSET_ROOM_TILE $00, 4, 4                         ;; 0e:5f85 $b0 $00 $04 $04
@@ -4379,7 +4379,7 @@ script_0509:
     sEND                                               ;; 0e:5f8d $00
 
 script_050a:
-    sIF_0B $c9                                         ;; 0e:5f8e $0b $c9 $00 $13
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:5f8e $0b $c9 $00 $13
       sSFX 16                                          ;; 0e:5f92 $f9 $10
       sOPEN_EAST_DOOR                                  ;; 0e:5f94 $e4
       sSET_ROOM_TILE $00, 4, 3                         ;; 0e:5f95 $b0 $00 $04 $03
@@ -4390,19 +4390,19 @@ script_050a:
     sEND                                               ;; 0e:5fa5 $00
 
 script_050b:
-    sIF_0B $a9                                         ;; 0e:5fa6 $0b $a9 $00 $03
+    sIF_TRIGGERED_ON_BY $a9                            ;; 0e:5fa6 $0b $a9 $00 $03
       sSFX 16                                          ;; 0e:5faa $f9 $10
       sOPEN_EAST_DOOR                                  ;; 0e:5fac $e4
     sENDIF                                             ;; 0e:5fad
-    sIF_0B $c9                                         ;; 0e:5fad $0b $c9 $00 $06
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:5fad $0b $c9 $00 $06
       sSFX 24                                          ;; 0e:5fb1 $f9 $18
       sSET_ROOM_TILE $59, 4, 4                         ;; 0e:5fb3 $b0 $59 $04 $04
     sENDIF                                             ;; 0e:5fb7
     sEND                                               ;; 0e:5fb7 $00
 
 script_050c:
-    sIF_0B $c9                                         ;; 0e:5fb8 $0b $c9 $00 $14
-      sIF_0B $c9                                       ;; 0e:5fbc $0b $c9 $00 $10
+    sIF_TRIGGERED_ON_BY $c9                            ;; 0e:5fb8 $0b $c9 $00 $14
+      sIF_TRIGGERED_ON_BY $c9                          ;; 0e:5fbc $0b $c9 $00 $10
         sIF_FLAG wScriptFlags0F.0                      ;; 0e:5fc0 $08 $78 $00 $07
           sCLEAR_FLAG wScriptFlags0F.0                 ;; 0e:5fc4 $db $78
           sSFX 16                                      ;; 0e:5fc6 $f9 $10

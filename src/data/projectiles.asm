@@ -3,12 +3,17 @@
 
 ;@data format=bbbbbbbbpppp amount=40
 ; Projectile data.
-; 0) Something with behavour of the projectile
+; 0) Collision flags. Valid options:
+;    $38: friendly melee (Bogard)
+;    $3a: friendly ranged (four cardinal directions)
+;    $60: enemy melee
+;    $62: enemy ranged (four cardinal directions)
+;    $72: enemy ranged (any angle)
 ; 1) Speed, lower = faster.
 ; 2) ?
-; 3) ?
+; 3) Element
 ; 4) Damage
-; 5) ?
+; 5) Status Effect inflicted
 ; 6) Graphics Tile Load Index
 ; 7) Graphics Tile Load Count
 ; 8-9) Graphics pointer

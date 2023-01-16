@@ -7,27 +7,27 @@ INCLUDE "include/constants.inc"
 
 SECTION "bank09", ROMX[$4000], BANK[$09]
 ;@call_to_bank_jumptable
-    call_to_bank_target call_09_4016                   ;; 09:4000 pP
+    call_to_bank_target projectileRunLogicForAll       ;; 09:4000 pP
     call_to_bank_target call_09_4012                   ;; 09:4002 pP
-    call_to_bank_target call_09_41e9                   ;; 09:4004 pP
-    call_to_bank_target call_09_438a                   ;; 09:4006 pP
+    call_to_bank_target projectileLoadTiles            ;; 09:4004 pP
+    call_to_bank_target projectileDestroy              ;; 09:4006 pP
     call_to_bank_target spawnProjectile                ;; 09:4008 pP
-    call_to_bank_target call_09_445e                   ;; 09:400a ??
-    call_to_bank_target call_09_4467                   ;; 09:400c ??
-    call_to_bank_target call_09_4470                   ;; 09:400e ??
-    call_to_bank_target call_09_4399                   ;; 09:4010 pP
+    call_to_bank_target getProjectileOffset02          ;; 09:400a ??
+    call_to_bank_target getProjectileElement           ;; 09:400c ??
+    call_to_bank_target getProjectilePower             ;; 09:400e ??
+    call_to_bank_target projectileCollisionHandling    ;; 09:4010 pP
 
 call_09_4012:
     call call_00_0695                                  ;; 09:4012 $cd $95 $06
     ret                                                ;; 09:4015 $c9
 
-call_09_4016:
-    ld   HL, wC5C0                                     ;; 09:4016 $21 $c0 $c5
+projectileRunLogicForAll:
+    ld   HL, wProjectileRuntimeData                    ;; 09:4016 $21 $c0 $c5
     ld   B, $03                                        ;; 09:4019 $06 $03
     ld   C, $0a                                        ;; 09:401b $0e $0a
     push BC                                            ;; 09:401d $c5
     jr   .jr_09_4024                                   ;; 09:401e $18 $04
-.jr_09_4020:
+.loop:
     push BC                                            ;; 09:4020 $c5
     ld   B, $00                                        ;; 09:4021 $06 $00
     add  HL, BC                                        ;; 09:4023 $09
@@ -35,14 +35,15 @@ call_09_4016:
     push HL                                            ;; 09:4024 $e5
     ld   A, [HL]                                       ;; 09:4025 $7e
     cp   A, $ff                                        ;; 09:4026 $fe $ff
-    call NZ, call_09_4031                              ;; 09:4028 $c4 $31 $40
+    call NZ, projectileRunLogic                        ;; 09:4028 $c4 $31 $40
     pop  HL                                            ;; 09:402b $e1
     pop  BC                                            ;; 09:402c $c1
     dec  B                                             ;; 09:402d $05
-    jr   NZ, .jr_09_4020                               ;; 09:402e $20 $f0
+    jr   NZ, projectileRunLogicForAll.loop             ;; 09:402e $20 $f0
     ret                                                ;; 09:4030 $c9
 
-call_09_4031:
+; HL = projectile runtime data pointer
+projectileRunLogic:
     inc  HL                                            ;; 09:4031 $23
     dec  [HL]                                          ;; 09:4032 $35
     ret  NZ                                            ;; 09:4033 $c0
@@ -57,12 +58,14 @@ call_09_4031:
     inc  HL                                            ;; 09:403e $23
     ld   B, [HL]                                       ;; 09:403f $46
     ld   A, [BC]                                       ;; 09:4040 $0a
+; Compare against the projectile's collision flags
     cp   A, $62                                        ;; 09:4041 $fe $62
-    jp   Z, .jp_09_40be                                ;; 09:4043 $ca $be $40
+    jp   Z, .cardinal_direction                        ;; 09:4043 $ca $be $40
     cp   A, $72                                        ;; 09:4046 $fe $72
-    jp   Z, .jp_09_4142                                ;; 09:4048 $ca $42 $41
+    jp   Z, .free_direction                            ;; 09:4048 $ca $42 $41
     cp   A, $3a                                        ;; 09:404b $fe $3a
-    jp   Z, .jp_09_40be                                ;; 09:404d $ca $be $40
+    jp   Z, .cardinal_direction                        ;; 09:404d $ca $be $40
+; All other values ($38 and $60) are melee range attacks
     ld   HL, $03                                       ;; 09:4050 $21 $03 $00
     add  HL, DE                                        ;; 09:4053 $19
     ld   A, [HL]                                       ;; 09:4054 $7e
@@ -132,7 +135,7 @@ call_09_4031:
     ld   C, A                                          ;; 09:40aa $4f
     call call_00_2982                                  ;; 09:40ab $cd $82 $29
     add  A, B                                          ;; 09:40ae $80
-    call call_00_299a                                  ;; 09:40af $cd $9a $29
+    call getA_And3Power2                               ;; 09:40af $cd $9a $29
     ld   B, A                                          ;; 09:40b2 $47
     ld   A, C                                          ;; 09:40b3 $79
     and  A, $f0                                        ;; 09:40b4 $e6 $f0
@@ -141,7 +144,7 @@ call_09_4031:
     ld   B, $00                                        ;; 09:40b8 $06 $00
     call call_00_08d4                                  ;; 09:40ba $cd $d4 $08
     ret                                                ;; 09:40bd $c9
-.jp_09_40be:
+.cardinal_direction:
     ld   HL, $03                                       ;; 09:40be $21 $03 $00
     add  HL, DE                                        ;; 09:40c1 $19
     ld   A, [HL]                                       ;; 09:40c2 $7e
@@ -216,7 +219,7 @@ call_09_4031:
     ld   C, A                                          ;; 09:4121 $4f
     call call_00_2982                                  ;; 09:4122 $cd $82 $29
     add  A, B                                          ;; 09:4125 $80
-    call call_00_299a                                  ;; 09:4126 $cd $9a $29
+    call getA_And3Power2                               ;; 09:4126 $cd $9a $29
     ld   B, A                                          ;; 09:4129 $47
     ld   A, C                                          ;; 09:412a $79
     and  A, $f0                                        ;; 09:412b $e6 $f0
@@ -229,14 +232,14 @@ call_09_4031:
 .jp_09_4136:
     ld   A, [DE]                                       ;; 09:4136 $1a
     ld   C, A                                          ;; 09:4137 $4f
-    call call_00_0ae3                                  ;; 09:4138 $cd $e3 $0a
+    call destroyObject                                 ;; 09:4138 $cd $e3 $0a
     ret                                                ;; 09:413b $c9
 .jr_09_413c:
     ld   A, [BC]                                       ;; 09:413c $0a
     ld   C, A                                          ;; 09:413d $4f
-    call call_00_0ae3                                  ;; 09:413e $cd $e3 $0a
+    call destroyObject                                 ;; 09:413e $cd $e3 $0a
     ret                                                ;; 09:4141 $c9
-.jp_09_4142:
+.free_direction:
     ld   HL, $03                                       ;; 09:4142 $21 $03 $00
     add  HL, DE                                        ;; 09:4145 $19
     ld   A, [HL]                                       ;; 09:4146 $7e
@@ -265,7 +268,7 @@ call_09_4031:
     ld   B, $00                                        ;; 09:4166 $06 $00
     ld   A, L                                          ;; 09:4168 $7d
     srl  A                                             ;; 09:4169 $cb $3f
-    call call_00_299a                                  ;; 09:416b $cd $9a $29
+    call getA_And3Power2                               ;; 09:416b $cd $9a $29
     bit  0, L                                          ;; 09:416e $cb $45
     jr   Z, .jr_09_4174                                ;; 09:4170 $28 $02
     ld   B, $01                                        ;; 09:4172 $06 $01
@@ -289,7 +292,7 @@ call_09_4031:
     jr   C, .jr_09_4193                                ;; 09:4190 $38 $01
     ret                                                ;; 09:4192 $c9
 .jr_09_4193:
-    call call_00_0ae3                                  ;; 09:4193 $cd $e3 $0a
+    call destroyObject                                 ;; 09:4193 $cd $e3 $0a
     ret                                                ;; 09:4196 $c9
 
 call_09_4197:
@@ -364,7 +367,7 @@ call_09_41d3:
     ld   E, A                                          ;; 09:41e7 $5f
     ret                                                ;; 09:41e8 $c9
 
-call_09_41e9:
+projectileLoadTiles:
     cp   A, $ff                                        ;; 09:41e9 $fe $ff
     ret  Z                                             ;; 09:41eb $c8
     ld   L, A                                          ;; 09:41ec $6f
@@ -400,7 +403,7 @@ call_09_41e9:
     add  A, A                                          ;; 09:4213 $87
     pop  DE                                            ;; 09:4214 $d1
     ret  Z                                             ;; 09:4215 $c8
-.jr_09_4216:
+.loop:
     push AF                                            ;; 09:4216 $f5
     ld   A, [HL+]                                      ;; 09:4217 $2a
     push HL                                            ;; 09:4218 $e5
@@ -425,7 +428,7 @@ call_09_41e9:
     pop  HL                                            ;; 09:4233 $e1
     pop  AF                                            ;; 09:4234 $f1
     dec  A                                             ;; 09:4235 $3d
-    jr   NZ, .jr_09_4216                               ;; 09:4236 $20 $de
+    jr   NZ, projectileLoadTiles.loop                  ;; 09:4236 $20 $de
     ret                                                ;; 09:4238 $c9
 
 spawnProjectile:
@@ -457,7 +460,7 @@ spawnProjectile:
     pop  BC                                            ;; 09:425d $c1
     ld   B, A                                          ;; 09:425e $47
     push BC                                            ;; 09:425f $c5
-    call call_00_05ef                                  ;; 09:4260 $cd $ef $05
+    call getObjectNearestTilePosition                  ;; 09:4260 $cd $ef $05
     pop  BC                                            ;; 09:4263 $c1
     ld   A, B                                          ;; 09:4264 $78
     and  A, $0f                                        ;; 09:4265 $e6 $0f
@@ -472,10 +475,10 @@ spawnProjectile:
     pop  BC                                            ;; 09:4273 $c1
     ld   C, A                                          ;; 09:4274 $4f
     push BC                                            ;; 09:4275 $c5
-    jr   Z, .jr_09_42a1                                ;; 09:4276 $28 $29
+    jr   Z, .failed                                    ;; 09:4276 $28 $29
     ld   A, $ff                                        ;; 09:4278 $3e $ff
-    call call_09_437a                                  ;; 09:427a $cd $7a $43
-    jr   NZ, .jr_09_42a1                               ;; 09:427d $20 $22
+    call getProjectileRuntimeEntryByIndexA             ;; 09:427a $cd $7a $43
+    jr   NZ, .failed                                   ;; 09:427d $20 $22
     pop  BC                                            ;; 09:427f $c1
     ld   A, C                                          ;; 09:4280 $79
     ld   [HL+], A                                      ;; 09:4281 $22
@@ -494,7 +497,7 @@ spawnProjectile:
     pop  DE                                            ;; 09:4291 $d1
     ld   A, [DE]                                       ;; 09:4292 $1a
     push DE                                            ;; 09:4293 $d5
-    call call_09_42aa                                  ;; 09:4294 $cd $aa $42
+    call projectileInitLogic                           ;; 09:4294 $cd $aa $42
     pop  DE                                            ;; 09:4297 $d1
     pop  BC                                            ;; 09:4298 $c1
     ld   [HL], C                                       ;; 09:4299 $71
@@ -505,27 +508,28 @@ spawnProjectile:
     inc  HL                                            ;; 09:429e $23
     ld   [HL], D                                       ;; 09:429f $72
     ret                                                ;; 09:42a0 $c9
-.jr_09_42a1:
+.failed:
     pop  BC                                            ;; 09:42a1 $c1
-    call call_00_0ae3                                  ;; 09:42a2 $cd $e3 $0a
+    call destroyObject                                 ;; 09:42a2 $cd $e3 $0a
     pop  DE                                            ;; 09:42a5 $d1
     pop  DE                                            ;; 09:42a6 $d1
     pop  DE                                            ;; 09:42a7 $d1
     xor  A, A                                          ;; 09:42a8 $af
     ret                                                ;; 09:42a9 $c9
 
-call_09_42aa:
+; A = projectile collision flags
+projectileInitLogic:
     cp   A, $62                                        ;; 09:42aa $fe $62
-    jr   Z, .jr_09_42ba                                ;; 09:42ac $28 $0c
+    jr   Z, .cardinal_direction                        ;; 09:42ac $28 $0c
     cp   A, $72                                        ;; 09:42ae $fe $72
-    jr   Z, .jr_09_42cb                                ;; 09:42b0 $28 $19
+    jr   Z, .free_direction                            ;; 09:42b0 $28 $19
     cp   A, $3a                                        ;; 09:42b2 $fe $3a
-    jr   Z, .jr_09_42ba                                ;; 09:42b4 $28 $04
+    jr   Z, .cardinal_direction                        ;; 09:42b4 $28 $04
     inc  HL                                            ;; 09:42b6 $23
     inc  HL                                            ;; 09:42b7 $23
     xor  A, A                                          ;; 09:42b8 $af
     ret                                                ;; 09:42b9 $c9
-.jr_09_42ba:
+.cardinal_direction:
     push HL                                            ;; 09:42ba $e5
     push BC                                            ;; 09:42bb $c5
     call GetObjectY                                    ;; 09:42bc $cd $3e $0c
@@ -539,7 +543,7 @@ call_09_42aa:
     xor  A, A                                          ;; 09:42c8 $af
     dec  A                                             ;; 09:42c9 $3d
     ret                                                ;; 09:42ca $c9
-.jr_09_42cb:
+.free_direction:
     push HL                                            ;; 09:42cb $e5
     push BC                                            ;; 09:42cc $c5
     call GetObjectY                                    ;; 09:42cd $cd $3e $0c
@@ -564,7 +568,7 @@ call_09_42aa:
     sub  A, E                                          ;; 09:42ec $93
     ld   E, A                                          ;; 09:42ed $5f
     ld   B, $06                                        ;; 09:42ee $06 $06
-.jr_09_42f0:
+.loop_1:
     ld   A, D                                          ;; 09:42f0 $7a
     and  A, $c0                                        ;; 09:42f1 $e6 $c0
     cp   A, $80                                        ;; 09:42f3 $fe $80
@@ -580,7 +584,7 @@ call_09_42aa:
     rlc  D                                             ;; 09:4306 $cb $02
     rlc  E                                             ;; 09:4308 $cb $03
     dec  B                                             ;; 09:430a $05
-    jr   NZ, .jr_09_42f0                               ;; 09:430b $20 $e3
+    jr   NZ, projectileInitLogic.loop_1                ;; 09:430b $20 $e3
     ld   A, D                                          ;; 09:430d $7a
     cpl                                                ;; 09:430e $2f
     srl  A                                             ;; 09:430f $cb $3f
@@ -600,7 +604,7 @@ call_09_42aa:
     ld   A, E                                          ;; 09:4320 $7b
     ld   [HL+], A                                      ;; 09:4321 $22
     push HL                                            ;; 09:4322 $e5
-    ld   BC, hFFFC                                     ;; 09:4323 $01 $fc $ff
+    ld   BC, -4 ;@=value signed=True                   ;; 09:4323 $01 $fc $ff
     add  HL, BC                                        ;; 09:4326 $09
     push HL                                            ;; 09:4327 $e5
     push DE                                            ;; 09:4328 $d5
@@ -631,13 +635,13 @@ call_09_42aa:
     ld   A, H                                          ;; 09:434b $7c
     ld   HL, .data_09_4376                             ;; 09:434c $21 $76 $43
     ld   B, $04                                        ;; 09:434f $06 $04
-.jr_09_4351:
+.loop_2:
     cp   A, [HL]                                       ;; 09:4351 $be
-    jr   NC, .jr_09_4358                               ;; 09:4352 $30 $04
+    jr   NC, projectileInitLogic.break                 ;; 09:4352 $30 $04
     inc  HL                                            ;; 09:4354 $23
     dec  B                                             ;; 09:4355 $05
-    jr   NZ, .jr_09_4351                               ;; 09:4356 $20 $f9
-.jr_09_4358:
+    jr   NZ, projectileInitLogic.loop_2                ;; 09:4356 $20 $f9
+.break:
     ld   A, $04                                        ;; 09:4358 $3e $04
     add  A, B                                          ;; 09:435a $80
     pop  HL                                            ;; 09:435b $e1
@@ -661,33 +665,33 @@ call_09_42aa:
 .data_09_4376:
     db   $40, $31, $24, $19                            ;; 09:4376 ????
 
-call_09_437a:
+getProjectileRuntimeEntryByIndexA:
     ld   B, $03                                        ;; 09:437a $06 $03
-    ld   HL, wC5C0                                     ;; 09:437c $21 $c0 $c5
+    ld   HL, wProjectileRuntimeData                    ;; 09:437c $21 $c0 $c5
     ld   DE, $0a                                       ;; 09:437f $11 $0a $00
-.jr_09_4382:
+.loop:
     cp   A, [HL]                                       ;; 09:4382 $be
     ret  Z                                             ;; 09:4383 $c8
     add  HL, DE                                        ;; 09:4384 $19
     dec  B                                             ;; 09:4385 $05
-    jr   NZ, .jr_09_4382                               ;; 09:4386 $20 $fa
+    jr   NZ, getProjectileRuntimeEntryByIndexA.loop    ;; 09:4386 $20 $fa
     dec  B                                             ;; 09:4388 $05
     ret                                                ;; 09:4389 $c9
 
-call_09_438a:
+projectileDestroy:
     ld   A, C                                          ;; 09:438a $79
     cp   A, $ff                                        ;; 09:438b $fe $ff
     ret  Z                                             ;; 09:438d $c8
-    call call_09_437a                                  ;; 09:438e $cd $7a $43
+    call getProjectileRuntimeEntryByIndexA             ;; 09:438e $cd $7a $43
     ret  NZ                                            ;; 09:4391 $c0
     ld   C, [HL]                                       ;; 09:4392 $4e
     ld   [HL], $ff                                     ;; 09:4393 $36 $ff
-    call call_00_0ae3                                  ;; 09:4395 $cd $e3 $0a
+    call destroyObject                                 ;; 09:4395 $cd $e3 $0a
     ret                                                ;; 09:4398 $c9
 
-call_09_4399:
+projectileCollisionHandling:
     cp   A, $c9                                        ;; 09:4399 $fe $c9
-    jr   Z, .jr_09_43ac                                ;; 09:439b $28 $0f
+    jr   Z, .player                                    ;; 09:439b $28 $0f
     ld   B, A                                          ;; 09:439d $47
     and  A, $f0                                        ;; 09:439e $e6 $f0
     cp   A, $40                                        ;; 09:43a0 $fe $40
@@ -697,11 +701,11 @@ call_09_4399:
 .jp_09_43aa:
     xor  A, A                                          ;; 09:43aa $af
     ret                                                ;; 09:43ab $c9
-.jr_09_43ac:
+.player:
     push BC                                            ;; 09:43ac $c5
     push DE                                            ;; 09:43ad $d5
     ld   A, C                                          ;; 09:43ae $79
-    call call_09_437a                                  ;; 09:43af $cd $7a $43
+    call getProjectileRuntimeEntryByIndexA             ;; 09:43af $cd $7a $43
     ld   D, H                                          ;; 09:43b2 $54
     ld   E, L                                          ;; 09:43b3 $5d
     ld   HL, $08                                       ;; 09:43b4 $21 $08 $00
@@ -722,12 +726,12 @@ call_09_4399:
     cp   A, E                                          ;; 09:43c8 $bb
     jr   C, .jp_09_43aa                                ;; 09:43c9 $38 $df
     push BC                                            ;; 09:43cb $c5
-    ld   A, [wC0A0]                                    ;; 09:43cc $fa $a0 $c0
+    ld   A, [wMainGameState]                           ;; 09:43cc $fa $a0 $c0
     cp   A, $02                                        ;; 09:43cf $fe $02
-    jr   NC, .jr_09_440a                               ;; 09:43d1 $30 $37
+    jr   NC, projectileCollisionHandling.not_immune    ;; 09:43d1 $30 $37
     push HL                                            ;; 09:43d3 $e5
     call call_00_039a                                  ;; 09:43d4 $cd $9a $03
-    call call_00_29e4                                  ;; 09:43d7 $cd $e4 $29
+    call objectReverseDirection                        ;; 09:43d7 $cd $e4 $29
     push AF                                            ;; 09:43da $f5
     call getPlayerDirection                            ;; 09:43db $cd $ab $02
     and  A, $0f                                        ;; 09:43de $e6 $0f
@@ -735,12 +739,12 @@ call_09_4399:
     pop  AF                                            ;; 09:43e1 $f1
     and  A, B                                          ;; 09:43e2 $a0
     pop  DE                                            ;; 09:43e3 $d1
-    jr   Z, .jr_09_440a                                ;; 09:43e4 $28 $24
+    jr   Z, projectileCollisionHandling.not_immune     ;; 09:43e4 $28 $24
     push DE                                            ;; 09:43e6 $d5
-    call call_00_3dcd                                  ;; 09:43e7 $cd $cd $3d
+    call getEquippedShieldBlockElements_SaveBC         ;; 09:43e7 $cd $cd $3d
     pop  DE                                            ;; 09:43ea $d1
     or   A, A                                          ;; 09:43eb $b7
-    jr   Z, .jr_09_440a                                ;; 09:43ec $28 $1c
+    jr   Z, projectileCollisionHandling.not_immune     ;; 09:43ec $28 $1c
     push AF                                            ;; 09:43ee $f5
     ld   HL, $08                                       ;; 09:43ef $21 $08 $00
     add  HL, DE                                        ;; 09:43f2 $19
@@ -752,19 +756,19 @@ call_09_4399:
     ld   B, [HL]                                       ;; 09:43fa $46
     pop  AF                                            ;; 09:43fb $f1
     and  A, B                                          ;; 09:43fc $a0
-    jr   Z, .jr_09_440a                                ;; 09:43fd $28 $0b
+    jr   Z, projectileCollisionHandling.not_immune     ;; 09:43fd $28 $0b
     pop  BC                                            ;; 09:43ff $c1
-    call call_00_0ae3                                  ;; 09:4400 $cd $e3 $0a
+    call destroyObject                                 ;; 09:4400 $cd $e3 $0a
     ld   A, $15                                        ;; 09:4403 $3e $15
     call playSFX                                       ;; 09:4405 $cd $7d $29
     xor  A, A                                          ;; 09:4408 $af
     ret                                                ;; 09:4409 $c9
-.jr_09_440a:
-    call call_00_3dd3                                  ;; 09:440a $cd $d3 $3d
+.not_immune:
+    call getEquippedElementalResistances               ;; 09:440a $cd $d3 $3d
     pop  BC                                            ;; 09:440d $c1
     push AF                                            ;; 09:440e $f5
     ld   A, C                                          ;; 09:440f $79
-    call call_09_437a                                  ;; 09:4410 $cd $7a $43
+    call getProjectileRuntimeEntryByIndexA             ;; 09:4410 $cd $7a $43
     ld   DE, $08                                       ;; 09:4413 $11 $08 $00
     add  HL, DE                                        ;; 09:4416 $19
     ld   E, [HL]                                       ;; 09:4417 $5e
@@ -790,7 +794,7 @@ call_09_4399:
     ld   HL, $05                                       ;; 09:4431 $21 $05 $00
     add  HL, DE                                        ;; 09:4434 $19
     ld   C, [HL]                                       ;; 09:4435 $4e
-    call call_00_0256                                  ;; 09:4436 $cd $56 $02
+    call playerHit_trampoline                          ;; 09:4436 $cd $56 $02
     ld   A, $c9                                        ;; 09:4439 $3e $c9
     ret                                                ;; 09:443b $c9
 .jp_09_443c:
@@ -801,13 +805,13 @@ call_09_4399:
     cp   A, E                                          ;; 09:4446 $bb
     jp   C, .jp_09_43aa                                ;; 09:4447 $da $aa $43
     push BC                                            ;; 09:444a $c5
-    call call_00_0ae3                                  ;; 09:444b $cd $e3 $0a
+    call destroyObject                                 ;; 09:444b $cd $e3 $0a
     pop  BC                                            ;; 09:444e $c1
     ld   A, B                                          ;; 09:444f $78
     ret                                                ;; 09:4450 $c9
 
-call_09_4451:
-    call call_09_437a                                  ;; 09:4451 $cd $7a $43
+getProjectileDataTableEntry:
+    call getProjectileRuntimeEntryByIndexA             ;; 09:4451 $cd $7a $43
     ld   D, H                                          ;; 09:4454 $54
     ld   E, L                                          ;; 09:4455 $5d
     ld   HL, $08                                       ;; 09:4456 $21 $08 $00
@@ -817,22 +821,22 @@ call_09_4451:
     ld   D, [HL]                                       ;; 09:445c $56
     ret                                                ;; 09:445d $c9
 
-call_09_445e:
-    call call_09_4451                                  ;; 09:445e $cd $51 $44
+getProjectileOffset02:
+    call getProjectileDataTableEntry                   ;; 09:445e $cd $51 $44
     ld   HL, $02                                       ;; 09:4461 $21 $02 $00
     add  HL, DE                                        ;; 09:4464 $19
     ld   A, [HL]                                       ;; 09:4465 $7e
     ret                                                ;; 09:4466 $c9
 
-call_09_4467:
-    call call_09_4451                                  ;; 09:4467 $cd $51 $44
+getProjectileElement:
+    call getProjectileDataTableEntry                   ;; 09:4467 $cd $51 $44
     ld   HL, $03                                       ;; 09:446a $21 $03 $00
     add  HL, DE                                        ;; 09:446d $19
     ld   A, [HL]                                       ;; 09:446e $7e
     ret                                                ;; 09:446f $c9
 
-call_09_4470:
-    call call_09_4451                                  ;; 09:4470 $cd $51 $44
+getProjectilePower:
+    call getProjectileDataTableEntry                   ;; 09:4470 $cd $51 $44
     ld   HL, $04                                       ;; 09:4473 $21 $04 $00
     add  HL, DE                                        ;; 09:4476 $19
     ld   A, [HL]                                       ;; 09:4477 $7e

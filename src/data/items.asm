@@ -1,8 +1,43 @@
 ;; Disassembled with BadBoy Disassembler: https://github.com/daid/BadBoy
 
 
+; offset 0: ID
+; offset 1-8: Name
+; offset 9:
+; bit 0-4: mana cost, allowing costs up to 31 (though highest mana cost is 3)
+; bit 5: unknown (probably unused)
+; bit 6: cannot be sold or trashed
+; bit 7: multiuse (shows in ITEMS with a number after it)
+; offset a:
+; bit 0: weapon (equipment only)
+; bit 1: armor (equipment only)
+; bit 2: helm (equipment only)
+; bit 3: shield (equipment only)
+; bit 4-6: unknown
+; bit 7: useable (items and spells only)
+; offset b: player attack elements (weapons, spells, and offensive items)
+; bit 0: basic physical
+; bit 1: mithril
+; bit 2: mattok/star
+; bit 3: fire
+; bit 4: ice
+; bit 5: electric
+; bit 6: nuke
+; bit 7: sleep/mute
+; offset b: DP (helms and armor only)
+; offset b: player shield elemental immunity
+; bit 0: level 1 projectiles (weakest)
+; bit 1: level 2 projectiles
+; bit 2: level 3 projectiles
+; bit 3: level 4 projectiles
+; bit 4: ice
+; bit 5: fire
+; bit 6: level 5 projectiles
+; bit 7: always set
+; offset c: element resistances/bonuses
+; offset d: power (AP weapons and spells, DP duplicate armor and helms)
+; offset e-f: price to buy from a shop
 ;@item_data amount=8
-; +9) value & 1F = Mana cost
 spellDataTable:
     ITEM_DATA $00, "Cure<00><00><00><00>"                  , $42, $10, $14, $00, $00, $00, $00 ;; 02:5dda ????????????????
     ITEM_DATA $01, "Heal<00><00><00><00>"                  , $41, $10, $00, $00, $00, $00, $00 ;; 02:5dea ????????????????
@@ -121,3 +156,10 @@ equipmentDataTable:
     ITEM_DATA $2b, "<HELM>Samurai"                         , $00, $14, $19, $00, $19, $68, $10 ;; 02:649a ????????????????
     ITEM_DATA $2c, "<8f><51><9d>n<64><83><00><00>"         , $00, $14, $03, $00, $00, $ff, $ff ;; 02:64aa ????????????????
     ITEM_DATA $2d, "<8f><51><9d>n<64><84><00><00>"         , $00, $14, $03, $00, $00, $ff, $ff ;; 02:64ba ????????????????
+
+; Psuedo items used for labels in the EQUIP screen
+;@item_data amount=2
+itemAPDPLabelsDataTable:
+    ITEM_DATA $00, "AP  <00><00><00><00>"                  , $40, $00, $00, $00, $00, $00, $00 ;; 02:64ca ?.....???????.??
+    ITEM_DATA $00, "DP  <00><00><00><00>"                  , $40, $00, $00, $00, $00, $00, $00 ;; 02:64da ?.....???????.??
+    db   $00, $00                                      ;; 02:64ea ??

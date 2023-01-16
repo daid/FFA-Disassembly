@@ -16,13 +16,15 @@ wOAMBuffer:
 ._10:
     ds 144                                             ;; c010
 
-wC0A0:
+wMainGameState:
     ds 1                                               ;; c0a0
 
-wC0A1:
+; bit 0: unknown
+; bit 1-3: certain script types running
+; bit 4-7: scrolling direction (nibbles are swapped for this)
+wMainGameStateFlags:
     ds 1                                               ;; c0a1
-
-wC0A2:
+.nextFrame:
     ds 2                                               ;; c0a2
 
 wOAM_MemoryHighAddress:
@@ -82,255 +84,255 @@ wScratchBankCallH:
 wBankStack:
     ds 64                                              ;; c0c0
 
-wC100:
+; START OF AUDIO ENGINE SRAM
+wMusicTempoTimeCounter:
     ds 1                                               ;; c100
 
-wC101:
+wMusicTempo:
     ds 1                                               ;; c101
 
-wC102:
+; Sound effects do not use channel
+wSoundEffectDurationChannel2:
     ds 1                                               ;; c102
 
-wC103:
+wMusicNoteDurationChannel2:
     ds 1                                               ;; c103
 
-wMusicInstructionPointerLow:
+wMusicInstructionPointerChannel2:
     ds 1                                               ;; c104
-
-wMusicInstructionPointerHigh:
+.high:
     ds 1                                               ;; c105
 
-wC106:
+wMusicVibratoDurationChannel2:
     ds 1                                               ;; c106
 
-wC107:
+wMusicVibratoEnvelopeChannel2:
     ds 1                                               ;; c107
-
-wC108:
+.high:
     ds 1                                               ;; c108
 
-wC109:
+wMusicVibratoEnvelopePointerChannel2:
     ds 1                                               ;; c109
-
-wC10A:
+.high:
     ds 1                                               ;; c10a
 
-wC10B:
+wMusicOctaveChannel2:
     ds 1                                               ;; c10b
 
-wC10C:
+wMusicNR21DutyCycleChannel2:
     ds 1                                               ;; c10c
 
-wC10D:
+wMusicCurrentPitchChannel2:
     ds 1                                               ;; c10d
-
-wC10E:
+.high:
     ds 1                                               ;; c10e
 
-wC10F:
+wMusicLoopCounter1Channel2:
     ds 1                                               ;; c10f
 
-wC110:
+wMusicNR22DefaultVolumeChannel2:
     ds 1                                               ;; c110
 
-wC111:
+wMusicNotePitchChannel2:
     ds 2                                               ;; c111
 
-wC113:
+wMusicEndedOnChannel2:
     ds 1                                               ;; c113
 
-wC114:
+wMusicVolumeDurationChannel2:
     ds 1                                               ;; c114
 
-wC115:
+wMusicVolumeEnvelopeChannel2:
     ds 1                                               ;; c115
-
-wC116:
+.high:
     ds 1                                               ;; c116
 
-wC117:
+wMusicVolumeEnvelopePointerChannel2:
     ds 1                                               ;; c117
-
-wC118:
+.high:
     ds 1                                               ;; c118
 
-wC119:
+wMusicLoopCounter2Channel2:
     ds 1                                               ;; c119
 
-wC11A:
+wSoundEffectDurationChannel1:
     ds 1                                               ;; c11a
 
-wC11B:
+wMusicNoteDurationChannel1:
     ds 1                                               ;; c11b
 
-wC11C:
+wMusicInstructionPointerChannel1:
     ds 1                                               ;; c11c
-
-wC11D:
+.high:
     ds 1                                               ;; c11d
 
-wC11E:
+wMusicVibratoDurationChannel1:
     ds 1                                               ;; c11e
 
-wC11F:
+wMusicVibratoEnvelopeChannel1:
     ds 1                                               ;; c11f
-
-wC120:
+.high:
     ds 1                                               ;; c120
 
-wC121:
+wMusicVibratoEnvelopePointerChannel1:
     ds 1                                               ;; c121
-
-wC122:
+.high:
     ds 1                                               ;; c122
 
-wC123:
+wMusicOctaveChannel1:
     ds 1                                               ;; c123
 
-wC124:
+wMusicNR11DutyCycleChannel1:
     ds 1                                               ;; c124
 
-wC125:
+wMusicCurrentPitchChannel1:
     ds 1                                               ;; c125
-
-wC126:
+.high:
     ds 1                                               ;; c126
 
-wC127:
+wMusicLoopCounter1Channel1:
     ds 1                                               ;; c127
 
-wC128:
+wMusicNR12DefaultVolumeChannel1:
     ds 1                                               ;; c128
 
-wC129:
+wMusicNotePitchChannel1:
     ds 1                                               ;; c129
 
-wC12A:
+wMusicStereoPanChannel1:
     ds 1                                               ;; c12a
 
-wC12B:
+wMusicEndedOnChannel1:
     ds 1                                               ;; c12b
 
-wC12C:
+wMusicVolumeDurationChannel1:
     ds 1                                               ;; c12c
 
-wC12D:
+wMusicVolumeEnvelopeChannel1:
     ds 1                                               ;; c12d
-
-wC12E:
+.high:
     ds 1                                               ;; c12e
 
-wC12F:
+wMusicVolumeEnvelopePointerChannel1:
     ds 1                                               ;; c12f
-
-wC130:
+.high:
     ds 1                                               ;; c130
 
-wC131:
+wMusicLoopCounter2Channel1:
     ds 1                                               ;; c131
 
-wC132:
+; Sound effects do not use channel 3
+wSoundEffectDurationChannel3:
     ds 1                                               ;; c132
 
-wC133:
+wMusicNoteDurationChannel3:
     ds 1                                               ;; c133
 
-wC134:
+wMusicInstructionPointerChannel3:
     ds 1                                               ;; c134
-
-wC135:
+.high:
     ds 1                                               ;; c135
 
-wC136:
+wMusicVibratoDurationChannel3:
     ds 1                                               ;; c136
 
-wC137:
+wMusicVibratoEnvelopeChannel3:
     ds 1                                               ;; c137
-
-wC138:
+.high:
     ds 1                                               ;; c138
 
-wC139:
+wMusicVibratoEnvelopePointerChannel3:
     ds 1                                               ;; c139
-
-wC13A:
+.high:
     ds 1                                               ;; c13a
 
-wC13B:
+wMusicOctaveChannel3:
     ds 2                                               ;; c13b
 
-wC13D:
+wMusicCurrentPitchChannel3:
     ds 1                                               ;; c13d
-
-wC13E:
+.high:
     ds 1                                               ;; c13e
 
-wC13F:
+wMusicLoopCounter1Channel3:
     ds 1                                               ;; c13f
 
-wC140:
+wMusicVolumeChannel3:
     ds 1                                               ;; c140
 
-wC141:
+wMusicNotePitchChannel3:
     ds 2                                               ;; c141
 
-wC143:
+wMusicEndedOnChannel3:
     ds 6                                               ;; c143
 
-wC149:
+wMusicLoopCounter2Channel3:
     ds 1                                               ;; c149
 
-wC14A:
+wSoundEffectDurationChannel4:
     ds 17                                              ;; c14a
 
-wC15B:
+; One byte long
+; Channel 4 is not used for music, only sound effects
+wMusicEndedOnChannel4:
     ds 7                                               ;; c15b
 
-wC162:
+; Used to back up everything from c100 to c161, or it would if the functions were ever called
+wMusicDataBackup:
     ds 98                                              ;; c162
 
-wC1C4:
+wSoundEffectInstructionPointerChannel1:
     ds 1                                               ;; c1c4
-
-wC1C5:
+.high:
     ds 1                                               ;; c1c5
 
-wC1C6:
+wSoundEffectInstructionPointerChannel4:
     ds 1                                               ;; c1c6
-
-wC1C7:
+.high:
     ds 1                                               ;; c1c7
 
-wC1C8:
+wMusicBrokenDoubleTimeMode:
     ds 1                                               ;; c1c8
 
-wC1C9:
+; This is another slightly broken music/sound feature.
+; This is written to the "rest pitch" (too high to be heard) whenever a rest is encountered on channel 1.
+; It is never otherwise written, so it takes on this value at the beginning of the title screen song, and never changes.
+; After a sound effect is played which uses channel 1, this value is written as the new pitch of channel 1.
+; That means that any note that would otherwise be underway is muted, unless/until the vibrato envelope ticks.
+;
+; It looks like the code was designed to save all pitch changes to this so the note would restore instantly, but that isn't what happens.
+; It may be that there were audible glitches with instant restore, or it may just not have been worth the effort or CPU overhead.
+wSoundsMusicRestorePitchChannel1:
     ds 1                                               ;; c1c9
-
-wC1CA:
+; One byte long
+; END OF AUDIO ENGINE SRAM  (c1cb is not included)
+.high:
     ds 54                                              ;; c1ca
 
 ; 16 bytes per object, or potentially 16x16 sprite?
-; 00: Lower nibble, orientation. $80=walking, other bits unknown ($ff indicates unused)
+; 00: Lower nibble, orientation. bit7=not aligned to 8x8 grid, other bits unknown ($ff indicates unused)
+;  *  bit0: East, bit1: West, bit2: North, bit3: South
 ; 01: Movement speed
-; 02: Something collision related ($01: blocked by walls, $80 blocks player, $10 can be pushed by player or take damage on touch?)
+; 02: Collision flags ($01: blocked by walls, $80 blocks player, $10 can be pushed by player or take damage on touch?)
 ; 03: Unknown
 ; 04: Y position
 ; 05: X position
-; 06-07: Something sprite related (meta sprite pointer?)
+; 06-07: Meta sprite pointer
 ; 08-09: Shadow OAM memory location
-; 09-15: Unknown
-; (wC270 seems just more of this data)
+; 0a-15: Unknown
+; The seventh entry is either the first Npc or your follower, if present.
 wObjectRuntimeData:
     ds 112                                             ;; c200
-
-wC270:
+.npc1:
     ds 208                                             ;; c270
 
-wC340:
+; This is set to 16 and never changed.
+; Room width is hardcoded as 0xa1 for boundary checks, but height is checked as [$c340] * 8 + 1
+wRoomHeightInTiles:
     ds 1                                               ;; c340
 
-wC341:
+; 1=west, 2=east, 4=south, 8=north
+wScrollDirection:
     ds 1                                               ;; c341
 
 wBackgroundDrawPositionX:
@@ -345,31 +347,36 @@ wNextRoomOverride:
 .x:
     ds 3                                               ;; c345
 
-wC348:
+wScrollPixelCounter:
     ds 1                                               ;; c348
 
-wC349:
+; One byte long
+wObjectIDCopy:
     ds 7                                               ;; c349
 
 wRoomTiles:
     ds 80                                              ;; c350
 
-wC3A0:
+; wRoomTiles is copied to the backup when the minimap is opened
+wRoomTilesBackup:
     ds 80                                              ;; c3a0
 
 wMapTableBankNr:
     ds 1                                               ;; c3f0
 
-wC3F1:
+; There is an unused system for turning on/off the darkness effect via script.
+; This can be overridden with two unused items: Torch and Dwarf Lamp.
+wScriptDarknessEffect:
     ds 1                                               ;; c3f1
 
-wMapTablePointerLow:
+wMapTablePointer:
     ds 1                                               ;; c3f2
-
-wMapTablePointerHigh:
+.high:
     ds 1                                               ;; c3f3
 
-wC3F4:
+; bit 0 east, bit 1 west, bit 2 north, bit 3 south.
+; bits are set for open doors, cleared for closed.
+wDoorStates:
     ds 1                                               ;; c3f4
 
 wMapNumber:
@@ -381,7 +388,9 @@ wRoomX:
 wRoomY:
     ds 1                                               ;; c3f7
 
-wC3F8:
+; 00 = RLE encoded map
+; 01 = Template encoded map
+wMapEncodingType:
     ds 1                                               ;; c3f8
 
 wMapTileRLECount:
@@ -393,10 +402,10 @@ wMapHeight:
 wMapWidth:
     ds 1                                               ;; c3fb
 
-wC3FC:
+; The wRoomTileDataPointer is only used for templated rooms, and stores a pointer to the per room door data/tile overrides
+wRoomTileDataPointer:
     ds 1                                               ;; c3fc
-
-wC3FD:
+.high:
     ds 1                                               ;; c3fd
 
 ; Points at the mapXX_roomXX_XX_script label of the current room
@@ -420,32 +429,50 @@ wC480:
 wC4A0:
     ds 1                                               ;; c4a0
 
-wC4A1:
+; "It takes all the running you can do, to keep in the same place.
+;  If you want to get somewhere else, you must run at least twice as fast as that!"
+; The rate sprites are moved during a screen scroll in order to keep their position relative to the background.
+wSpriteScrollSpeed:
     ds 1                                               ;; c4a1
 
-wC4A2:
+; Sprites are hidden by moving them offscreen vertically.
+hiddenSpritesYPositions:
     ds 46                                              ;; c4a2
 
-wC4D0:
+wFlyingSwordSpecialOriginalLocationX:
     ds 1                                               ;; c4d0
 
-wC4D1:
+wFlyingSwordSpecialOriginalLocationY:
     ds 1                                               ;; c4d1
 
-wC4D2:
+wPlayerDamagedTimer:
     ds 2                                               ;; c4d2
 
-wC4D4:
+;Bit0: ?
+;Bit1: Dark
+;Bit2: Ston
+;Bit3: Moog
+;Bit4: Player Minecart Sprite
+;Bit5: Player Hurt Sprite
+;Bit6: Player Down Sprite
+;Bit7: ?
+wPlayerSpecialFlags:
     ds 12                                              ;; c4d4
 
 ; 8 records of $18 size, related to NPCs
+; 0: wObjectRuntimeData entry index
+; 2: Movement speed
+; 10: Status (bit7: Slep, bit6: Mute)
 ; 12-13: HP
-wC4E0:
+; 16-17: npcStatsTable entry pointer
+; 18-19: npcDataTable entry pointer
+wNpcRuntimeData:
     ds 16                                              ;; c4e0
-._10:
+.statsTablePointer:
     ds 176                                             ;; c4f0
 
-wC5A0:
+; Everything is paused during a script, so if an object needs to move it gets added to this list for processing
+wObjectsMovingDuringScript:
     ds 8                                               ;; c5a0
 
 ; List of 3 random NPC types, one per entry of the selected NPCSpawnPointers, selected from the 4 options
@@ -456,13 +483,17 @@ wNPCSpawnTypes:
 wNPCSpawnTableIndex:
     ds 1                                               ;; c5ae
 
-wC5AF:
+wNumberOfLivingEnemies:
     ds 1                                               ;; c5af
 
 wC5B0:
     ds 16                                              ;; c5b0
 
-wC5C0:
+; 3 records of $0a size, related to projectiles
+; 01: Delay until next move (initialized from 02)
+; 02: Movement speed
+; 08-09: Projectile data table entry pointer
+wProjectileRuntimeData:
     ds 32                                              ;; c5c0
 
 wTileCopyRequestData:
@@ -516,10 +547,10 @@ wCF48:
 wCF50:
     ds 8                                               ;; cf50
 
-wCF58:
+wEquippedWeaponAnimationType:
     ds 1                                               ;; cf58
 
-wCF59:
+wEquippedItemAnimationType:
     ds 1                                               ;; cf59
 
 wCF5A:
@@ -528,7 +559,7 @@ wCF5A:
 wCF5B:
     ds 1                                               ;; cf5b
 
-wCF5C:
+wPlayerCurrentAttackTypeAndFacing:
     ds 1                                               ;; cf5c
 
 wCF5D:
@@ -537,112 +568,96 @@ wCF5D:
 wCF5E:
     ds 1                                               ;; cf5e
 
-wCF5F:
+wPlayerAttackAnimationFrame:
     ds 1                                               ;; cf5f
 
-wCF60:
+wSlepTimerNumber:
     ds 1                                               ;; cf60
 
-wCF61:
+wMuteTimerNumber:
     ds 1                                               ;; cf61
 
-wCF62:
+wSpecialAttackTimerNumber:
     ds 1                                               ;; cf62
 
-wCF63:
+wCurrentPlayerAttackWillCharge:
     ds 269                                             ;; cf63
-
-wD070:
-    ds 8                                               ;; d070
-
-wD078:
-    ds 1                                               ;; d078
-
-wD079:
-    ds 1                                               ;; d079
-
-wD07A:
-    ds 1                                               ;; d07a
-
-wD07B:
-    ds 1                                               ;; d07b
-
-wD07C:
-    ds 1                                               ;; d07c
-
-wD07D:
-    ds 1                                               ;; d07d
-
-wD07E:
-    ds 1                                               ;; d07e
-
-wD07F:
-    ds 1                                               ;; d07f
 
 ; Loopup of graphics tile number -> VRAM tile number
 wBackgroundGraphicsTileMapping:
+    ds 8                                               ;; d070
+._08:
+    ds 1                                               ;; d078
+._09:
+    ds 1                                               ;; d079
+._0A:
+    ds 1                                               ;; d07a
+._0B:
+    ds 1                                               ;; d07b
+._0C:
+    ds 1                                               ;; d07c
+._0D:
+    ds 1                                               ;; d07d
+._0E:
+    ds 1                                               ;; d07e
+._0F:
+    ds 1                                               ;; d07f
+._10:
     ds 240                                             ;; d080
 
-wD170:
-    ds 4                                               ;; d170
-
-wD174:
-    ds 4                                               ;; d174
-
-wD178:
-    ds 2                                               ;; d178
-
-wD17A:
-    ds 2                                               ;; d17a
-
-wD17C:
-    ds 2                                               ;; d17c
-
-wD17E:
-    ds 2                                               ;; d17e
-
 ; Written to $0F when this graphic tile index is loaded into VRAM
+; Decreases by one every screen scroll if unused resulting in the tile eventually "aging out"
 wBackgroundGraphicsTileState:
+    ds 4                                               ;; d170
+._04:
+    ds 4                                               ;; d174
+._08:
+    ds 2                                               ;; d178
+._0A:
+    ds 2                                               ;; d17a
+._0C:
+    ds 2                                               ;; d17c
+._0E:
+    ds 2                                               ;; d17e
+._10:
     ds 240                                             ;; d180
 
 ; Written to $01 when a VRAM tile is used, starting from tile $80
 wBackgroundGraphicsTileUsed:
     ds 128                                             ;; d270
 
-wD2F0:
+wAnimatedTileWaterfall1:
     ds 16                                              ;; d2f0
 
-wD300:
+wAnimatedTileWaterfall2:
     ds 16                                              ;; d300
 
-wD310:
+wAnimatedTileWaterfallReversed1:
     ds 16                                              ;; d310
 
-wD320:
+wAnimatedTileWaterfallReversed2:
     ds 16                                              ;; d320
 
-wD330:
+wAnimatedTileOcean1:
     ds 16                                              ;; d330
 
-wD340:
+wAnimatedTileOcean2:
     ds 16                                              ;; d340
 
-wD350:
+wAnimatedTileOcean3:
     ds 16                                              ;; d350
 
-wD360:
+wAnimatedTileOcean4:
     ds 16                                              ;; d360
 
-wD370:
+wAnimatedTileRiver:
     ds 16                                              ;; d370
 
-wD380:
+wAnimatedTileScratchpad:
     ds 14                                              ;; d380
-
-wD38E:
+._0E:
     ds 1                                               ;; d38e
-
-wD38F:
+._0F:
     ds 1                                               ;; d38f
 
 ; Points to graphics in bank $0B or $0C as a packed pointer from the map header.
@@ -659,10 +674,10 @@ wTileDataTablePointer:
 wD394:
     ds 4                                               ;; d394
 
-wD398:
+wTileAnimationCounter_Unused:
     ds 1                                               ;; d398
 
-wD399:
+wTileAnimationCounter:
     ds 7                                               ;; d399
 
 ; Buffer containing LCDC effects. 4 bytes per entry:
@@ -679,16 +694,16 @@ wLCDCEffectBuffer:
 wLCDCEffectIndex:
     ds 6                                               ;; d3e2
 
-wD3E8:
+wBossFirstObjectID:
     ds 1                                               ;; d3e8
 
-wD3E9:
+wBossSpeedTimer:
     ds 2                                               ;; d3e9
 
 wBossIframes:
     ds 1                                               ;; d3eb
 
-wD3EC:
+wBossCurrentPatternStep:
     ds 1                                               ;; d3ec
 
 wD3ED:
@@ -703,16 +718,14 @@ wD3EF:
 wD3F0:
     ds 2                                               ;; d3f0
 
-wD3F2:
+wDamageDoneToBoss:
     ds 1                                               ;; d3f2
-
-wD3F3:
+.high:
     ds 1                                               ;; d3f3
 
-wD3F4:
+wCurrentBossHP:
     ds 1                                               ;; d3f4
-
-wD3F5:
+.high:
     ds 1                                               ;; d3f5
 
 wD3F6:
@@ -723,37 +736,36 @@ wCurrentBossDataPointer:
 .high:
     ds 1                                               ;; d439
 
-wD43A:
+wCurrentBossPatternPointer:
     ds 1                                               ;; d43a
-
-wD43B:
+.high:
     ds 1                                               ;; d43b
 
-wD43C:
+wBossCurrentKeyframePointer:
     ds 1                                               ;; d43c
-
-wD43D:
+.high:
     ds 1                                               ;; d43d
 
-wD43E:
+wBossCurrentHeadActionPointer:
     ds 1                                               ;; d43e
-
-wD43F:
+.high:
     ds 1                                               ;; d43f
 
-wD440:
+wBossCurrentMetatileListPointer:
     ds 1                                               ;; d440
-
-wD441:
+.high:
     ds 1                                               ;; d441
 
-wD442:
+; Six bytes each, 14 total, but the largest boss only uses 11.
+; 0: Object ID of the normal object
+; 1-2: Stats pointer
+; 3-5: Unknown
+wBossObjectsStatsRuntimeData:
     ds 4                                               ;; d442
-
-wD446:
+._04:
     ds 82                                              ;; d446
 
-wD498:
+wPlayerJumpArg:
     ds 1                                               ;; d498
 
 ; Counter used in various script opcodes, left at 0 after opcode is done.
@@ -763,34 +775,39 @@ wScriptOpCounter:
 wScriptOpCounter2:
     ds 1                                               ;; d49a
 
-wD49B:
+; This is the track that will play if not prempted by level up fanfare or status effect
+wMusic:
     ds 1                                               ;; d49b
 
-wD49C:
+wVideoLCDCBackup:
     ds 1                                               ;; d49c
 
-wD49D:
+; Current map number, copied from wMapNumber, used during minimap drawing
+wMapNumberTmp:
     ds 1                                               ;; d49d
 
-wD49E:
+; Room XY number, copied from wRoomX and wRoomY, used during minimap drawing
+wRoomXYTmp:
     ds 1                                               ;; d49e
 
-wD49F:
+; Current map width, copied from wMapWidth, used during minimap drawing
+wMapWidthTmp:
     ds 1                                               ;; d49f
 
-wD4A0:
+; Current map bank number, copied from wMapBankNr, used during minimap drawing
+wMapTableBankNrTmp:
     ds 1                                               ;; d4a0
 
-wD4A1:
+wDynamicMinimapMapTablePointer:
     ds 1                                               ;; d4a1
-
-wD4A2:
+.high:
     ds 1                                               ;; d4a2
 
-wD4A3:
+; Used while afflicted with Pois, Dark, Ston, or Moog
+wCurrentMusicStatusEffectBackup:
     ds 1                                               ;; d4a3
 
-wD4A4:
+wDoorStatesMinimapBackup:
     ds 3                                               ;; d4a4
 
 wDialogX:
@@ -799,22 +816,20 @@ wDialogX:
 wDialogY:
     ds 1                                               ;; d4a8
 
-wD4A9:
+wDialogW:
     ds 1                                               ;; d4a9
 
-wD4AA:
+wDialogH:
     ds 1                                               ;; d4aa
 
-wD4AB:
+; 360 bytes long so it can store the full screen
+wWindowBackgroundSaveBuffer:
     ds 155                                             ;; d4ab
-
-wD546:
+._09b:
     ds 40                                              ;; d546
-
-wD56E:
+._0c3:
     ds 62                                              ;; d56e
-
-wD5AC:
+._101:
     ds 103                                             ;; d5ac
 
 ; Script that is run when you open a chest. Actual script code is stored in here,
@@ -833,7 +848,7 @@ wD617:
 wOpenChestScript2:
     ds 16                                              ;; d623
 
-wD633:
+wOpenChestScript3:
     ds 4                                               ;; d633
 
 wD637:
@@ -845,31 +860,35 @@ wD637:
 wScriptStackTop:
     ds 24                                              ;; d683
 
+; START OF SRAM PART 3
 ; Amount of the same type of item in inventory. wItemInventory indicates the type, wItemInventoryAmount indicates the amount
 wItemInventoryAmount:
     ds 16                                              ;; d69b
 
-wD6AB:
+; END OF SRAM PART 3 (d6ab is not saved)
+; Technically these are quantities, but since you can only ever have one of any spell, it's just whether you have it
+wKnownMagicSpells:
     ds 8                                               ;; d6ab
 
-wD6B3:
+wEquipmentInventoryPowers:
     ds 12                                              ;; d6b3
 
-wD6BF:
+; START OF SRAM PART 2
+wEquippedWeaponPower:
     ds 1                                               ;; d6bf
 
-wD6C0:
+wEquippedHelmetDefense:
     ds 1                                               ;; d6c0
 
 ;Alternative totalAP location?
-wD6C1:
+wDupTotalAP:
     ds 1                                               ;; d6c1
 
-wD6C2:
+wEquippedArmorDefense:
     ds 1                                               ;; d6c2
 
 ;Alternative totalDP location?
-wD6C3:
+wDupTotalDP:
     ds 2                                               ;; d6c3
 
 ; List if item IDs in your current inventory. ItemID has $80 added to it if it has a usage counter.
@@ -882,25 +901,26 @@ wMagicInventory:
 wEquipmentInventory:
     ds 12                                              ;; d6dd
 
-wEquipedWeapon:
+wEquippedWeapon:
     ds 1                                               ;; d6e9
 
-wEquipedHelm:
+wEquippedHelm:
     ds 2                                               ;; d6ea
 
-wEquipedArmor:
+wEquippedArmor:
     ds 2                                               ;; d6ec
 
-wEquipedShield:
+wEquippedShield:
     ds 1                                               ;; d6ee
 
-wEquipedItem:
+wEquippedItem:
     ds 1                                               ;; d6ef
 
-wEquipedItemAmount:
+wEquippedItemAmount:
     ds 1                                               ;; d6f0
 
-wD6F1:
+; END OF SRAM PART 2 (d6f1 is not saved)
+wEquippedItemAndWeaponCopy:
     ds 2                                               ;; d6f1
 
 wD6F3:
@@ -921,16 +941,16 @@ wD72F:
 wD74F:
     ds 64                                              ;; d74f
 
-wD78F:
+wStatStaminaLevelUpTmp:
     ds 1                                               ;; d78f
 
-wD790:
+wStatPowerLevelUpTmp:
     ds 1                                               ;; d790
 
-wD791:
+wStatWisdomLevelUpTmp:
     ds 2                                               ;; d791
 
-wD793:
+wStatusHPMPCurrentAndMax:
     ds 10                                              ;; d793
 
 wBoyName:
@@ -939,16 +959,23 @@ wBoyName:
 wGirlName:
     ds 5                                               ;; d7a2
 
-wD7A7:
+; START OF SRAM PART 1
+; Used as 49 bytes when writing a save to SRAM
+; Used as one byte to store the "magic number" before writing a save to SRAM
+; Used as four bytes to store the name during naming entry
+; Used as one byte to store a save file's current level between showing the level and E to next level on the Save/Load screen
+wSRAMSaveHeader:
     ds 1                                               ;; d7a7
-
-wD7A8:
+; Used as two bytes to store the checksum before writing a save to SRAM
+; Used as eight bytes for BCD conversion of Experience values for display
+._1:
     ds 2                                               ;; d7a8
-
-wD7AA:
+; Used as eight bytes to load and save the names in SRAM
+; Between loading and saving, names are copied to d79d and d7a2, and this space may be used for scratch
+._3:
     ds 7                                               ;; d7aa
-
-wD7B1:
+; Used to save and restore the finger position on the naming screen when you press the B button
+._a:
     ds 1                                               ;; d7b1
 
 wHPLow:
@@ -994,11 +1021,11 @@ wMoneyHigh:
     ds 1                                               ;; d7bf
 
 ; Status that the player currently has
-;Bit0: ?
+;Bit0: Pois
 ;Bit1: Dark
-;Bit2: ?
-;Bit3: ?
-;Bit4: ?
+;Bit2: Ston
+;Bit3: Moog
+;Bit4: Fuji's ASK
 ;Bit5: ?
 ;Bit6: ?
 ;Bit7: ?
@@ -1070,13 +1097,14 @@ wScriptFlags0E:
 wScriptFlags0F:
     ds 1                                               ;; d7d5
 
-wD7D6:
+wCurrentMagicPower:
     ds 1                                               ;; d7d6
 
-wD7D7:
+wEquippedWeaponElements:
     ds 1                                               ;; d7d7
 
-wD7D8:
+; END OF SRAM PART 1 (d7d8 is not saved)
+wStatStaminaBuffBackup:
     ds 5                                               ;; d7d8
 
 wD7DD:
@@ -1090,22 +1118,30 @@ wTotalAP:
 wTotalDP:
     ds 1                                               ;; d7e0
 
-wD7E1:
+;Each timer is five bytes
+; offset 0:
+; bit 0: unknown
+; bit 1: expired
+; bit 7: active
+; offset 1-2: time remaining
+; offset 3-4: starting time
+wTimers:
     ds 80                                              ;; d7e1
 
-wD831:
+wLevelUpStatChoicesCopy:
     ds 17                                              ;; d831
 
-wD842:
+; Used during the level up fanfare
+wCurrentMusicLevelUpBackup:
     ds 1                                               ;; d842
 
 wD843:
     ds 1                                               ;; d843
 
-wD844:
+wWindowFingerBlinkTimerNumber:
     ds 1                                               ;; d844
 
-wD845:
+wWindowNumberOfSelections:
     ds 1                                               ;; d845
 
 wD846:
@@ -1130,7 +1166,7 @@ wSelectedMenuIndex:
 wSelectedMenuIndex2:
     ds 1                                               ;; d84c
 
-wD84D:
+wScriptDelayOpCodeTimerNumber:
     ds 1                                               ;; d84d
 
 wD84E:
@@ -1142,19 +1178,20 @@ wD84F:
 wD850:
     ds 1                                               ;; d850
 
-wD851:
+wEquippedItemElements:
     ds 2                                               ;; d851
 
-wD853:
+; bit 7 is used as a flag
+wMenuStateCurrentFunction:
     ds 1                                               ;; d853
 
-wD854:
+wDrawWindowStep:
     ds 2                                               ;; d854
 
 wD856:
     ds 1                                               ;; d856
 
-wD857:
+wMenuSelectionMoveRepeatDelay:
     ds 1                                               ;; d857
 
 ; Amount of special attack charge, from $00 to $40.
@@ -1182,24 +1219,24 @@ wD85F:
 wD860:
     ds 2                                               ;; d860
 
-wD862:
+wWindowMainGameStateBackup:
     ds 1                                               ;; d862
 
 ; Dialog border tile, depending on it if it drawing the top or bottom row, different tile numbers are stored here
 wDialogBorderTile:
     ds 1                                               ;; d863
 
-wD864:
+wTextSpeedTimer:
     ds 1                                               ;; d864
 
 ; Amount of pushes done on the script stack
 wScriptStackCount:
     ds 1                                               ;; d865
 
-wD866:
+wCursorColumns:
     ds 1                                               ;; d866
 
-wD867:
+wCursorColumnWidth:
     ds 1                                               ;; d867
 
 wD868:
@@ -1211,100 +1248,113 @@ wD869:
 wScriptBank:
     ds 1                                               ;; d86a
 
-wD86B:
+wVirtualScriptOpCodeFFArgument:
     ds 1                                               ;; d86b
 
-wD86C:
+wScriptSavedNextOpcode:
     ds 1                                               ;; d86c
 
-wD86D:
+wVendorNumber:
     ds 1                                               ;; d86d
 
-wD86E:
+wScriptMainGameStateBackup:
     ds 1                                               ;; d86e
 
-wD86F:
+; bit 0: unknown
+; bit 1: cant carry (and maybe not enough money)
+; bit 6: attacking with spell/item (not weapon)
+; bit 7: used as a temporary in drawNumber24bitOnDialog
+wMiscFlags:
     ds 1                                               ;; d86f
 
-wD870:
+; Used by the two script opcodes that search player posessions
+wSearchInventoryLength:
     ds 1                                               ;; d870
 
-wD871:
+wScriptTriggerCollisionFlags:
     ds 1                                               ;; d871
 
 wD872:
     ds 1                                               ;; d872
 
-wD873:
+wScriptPlayerFacingDirection:
     ds 1                                               ;; d873
 
-wD874:
+; bit 1: text speed lock
+; bit 2: Load screen (instead of Save)
+; bit 3: Save 1
+; bit 4: Save 2
+; bit 5: naming screen Girl (instead of Boy)
+; bit 7: running script
+wWindowFlags:
     ds 2                                               ;; d874
 
 wD876:
     ds 1                                               ;; d876
 
-wD877:
+wPoisStatusEffectTimeBeforeNextTick:
     ds 1                                               ;; d877
 
-wD878:
+wFujiStatusEffectTimeBeforeNextTick:
     ds 1                                               ;; d878
 
-wD879:
+wPoisStatusEffectTimerNumber:
     ds 1                                               ;; d879
 
-wD87A:
+wDarkStatusEffectTimerNumber:
     ds 1                                               ;; d87a
 
-wD87B:
+wStonStatusEffectTimerNumber:
     ds 1                                               ;; d87b
 
-wD87C:
+wMoogStatusEffectTimerNumber:
     ds 1                                               ;; d87c
 
-wD87D:
+wFujiStatusEffectTimerNumber:
     ds 1                                               ;; d87d
 
-wD87E:
+wNectarStaminaTimerNumber:
     ds 1                                               ;; d87e
 
-wD87F:
+; On level up, wait a number of frames while the fanfare music plays.
+wLevelUpFanfareDelay:
     ds 1                                               ;; d87f
 
-wD880:
+; Whenever this passes 150 wWillCharge is incremented.
+wWillChargeSubPoint:
     ds 1                                               ;; d880
 
-wD881:
+wLightStatusEffectTimerNumber:
     ds 1                                               ;; d881
 
-wD882:
+wMoogleSavedDp:
     ds 1                                               ;; d882
 
-wD883:
+wDualCharacterPosition:
     ds 1                                               ;; d883
 
-wD884:
+wVideoWYBackup:
     ds 1                                               ;; d884
 
 wD885:
     ds 1                                               ;; d885
 
-wIntroScrollState:
+wTitleScreenState:
     ds 1                                               ;; d886
 
-wD887:
+wIntroScrollCounter2:
     ds 1                                               ;; d887
 
-wD888:
+wIntroScrollSCYBackup:
     ds 1                                               ;; d888
 
-wD889:
+wIntroScrollCounter1:
     ds 1                                               ;; d889
 
 wD88A:
     ds 1                                               ;; d88a
 
-wD88B:
+wCurrentItemOrSpellInUse:
     ds 1                                               ;; d88b
 
 ; On the title screen, wait a number of frames before the new game and continue options are shown.
@@ -1314,16 +1364,15 @@ wTitleScreenDelay:
 wD88D:
     ds 1                                               ;; d88d
 
-wD88E:
+wIntroScrollTextPointer:
     ds 1                                               ;; d88e
-
-wD88F:
+.high:
     ds 1                                               ;; d88f
 
-wD890:
+; Used to point to inventory/equipment/equipped for the two script opcodes that search player posessions.
+wItemSearchList:
     ds 1                                               ;; d890
-
-wD891:
+.high:
     ds 1                                               ;; d891
 
 wD892:
@@ -1350,10 +1399,10 @@ wD898:
 wD899:
     ds 1                                               ;; d899
 
-wD89A:
+wWindowTextRows:
     ds 1                                               ;; d89a
 
-wD89B:
+wWindowTextLength:
     ds 1                                               ;; d89b
 
 wD89C:
@@ -1365,67 +1414,54 @@ wD89D:
 wD89E:
     ds 1                                               ;; d89e
 
+; One byte long
 wD89F:
     ds 3                                               ;; d89f
 
-wD8A2:
+wRegisterSave1:
     ds 1                                               ;; d8a2
-
-wD8A3:
+.H:
     ds 1                                               ;; d8a3
-
-wD8A4:
+.E:
     ds 1                                               ;; d8a4
-
-wD8A5:
+.D:
     ds 1                                               ;; d8a5
-
-wD8A6:
+.C:
     ds 1                                               ;; d8a6
-
-wD8A7:
+.B:
     ds 1                                               ;; d8a7
-
-wD8A8:
+.F:
     ds 1                                               ;; d8a8
-
-wD8A9:
+.A:
     ds 1                                               ;; d8a9
 
-wD8AA:
+wRegisterSave2:
     ds 1                                               ;; d8aa
-
-wD8AB:
+.H:
     ds 1                                               ;; d8ab
-
-wD8AC:
+.E:
     ds 1                                               ;; d8ac
-
-wD8AD:
+.D:
     ds 1                                               ;; d8ad
-
-wD8AE:
+.C:
     ds 1                                               ;; d8ae
-
-wD8AF:
+.B:
     ds 1                                               ;; d8af
-
-wD8B0:
+.F:
     ds 1                                               ;; d8b0
-
-wD8B1:
+.A:
     ds 1                                               ;; d8b1
 
-wD8B2:
+wWindowClearX:
     ds 1                                               ;; d8b2
 
-wD8B3:
+wWindowClearY:
     ds 1                                               ;; d8b3
 
-wD8B4:
+wWindowClearW:
     ds 1                                               ;; d8b4
 
-wD8B5:
+wWindowClearH:
     ds 1                                               ;; d8b5
 
 wScriptPointerLow:
@@ -1434,16 +1470,16 @@ wScriptPointerLow:
 wScriptPointerHigh:
     ds 1                                               ;; d8b7
 
-wD8B8:
+wWindowTextInsertionPointX:
     ds 1                                               ;; d8b8
 
-wD8B9:
+wWindowTextInsertionPointY:
     ds 1                                               ;; d8b9
 
-wD8BA:
+wWindowTextSpaceLeftOnLine:
     ds 1                                               ;; d8ba
 
-wD8BB:
+wWindowTextLinesLeft:
     ds 1                                               ;; d8bb
 
 ; Pointer to the script stack.
@@ -1479,7 +1515,7 @@ wD8C5:
 wD8C6:
     ds 1                                               ;; d8c6
 
-wD8C7:
+wVRAMClearFakeTile:
     ds 16                                              ;; d8c7
 
 wD8D7:
@@ -1494,7 +1530,8 @@ wD8D9:
 wD8DA:
     ds 1                                               ;; d8da
 
-wD8DB:
+; Three bytes long
+wDualCharacterScratch:
     ds 1829                                            ;; d8db
 
 SECTION "hram", HRAM[$ff80]
@@ -1505,43 +1542,49 @@ hOAM_DMA_Routine:
 hBankStackPointer:
     ds 6                                               ;; ff8a
 
+; START OF AUDIO ENGINE HRAM
 hCurrentMusic:
     ds 1                                               ;; ff90
 
-hFF91:
+; Unused feature.
+; Would have allowed things like status condition music to continue the interrupted track instead of restarting.
+hMusicSpecialSongRequest:
     ds 1                                               ;; ff91
 
 hSFX:
     ds 1                                               ;; ff92
 
-hFF93:
+hPlayingMusic:
     ds 1                                               ;; ff93
 
-hFF94:
+; Only one of the three channels is checked for vibrato and volume updates each frame
+hVibratoVolumeChannelSelection:
     ds 1                                               ;; ff94
 
-hFF95:
+hMusicNoteDurationChannel2Copy:
     ds 1                                               ;; ff95
 
-hFF96:
+hMusicNoteDurationChannel1Copy:
     ds 1                                               ;; ff96
 
-hFF97:
+hMusicNoteDurationChannel3Copy:
     ds 2                                               ;; ff97
 
-hFF99:
+; Unused feature.
+hMusicSpecialSongPlaying:
     ds 1                                               ;; ff99
 
-hFF9A:
+hWaveTablePointer:
     ds 1                                               ;; ff9a
-
-hFF9B:
+.high:
     ds 1                                               ;; ff9b
 
-hFF9C:
+hSoundEffectLoopCounterChannel1:
     ds 1                                               ;; ff9c
 
-hFF9D:
+; END OF AUDIO ENGINE HRAM (ff9e is not included)
+; One byte long
+hSoundEffectLoopCounterChannel4:
     ds 10                                               ;; ff9d
 
 hCurBGPal:
@@ -1558,19 +1601,23 @@ hFFFC:
 hFFFD:
     ds 1                                               ;; fffd
 
-hFFFE:
+; Used as the stack location at init for exactly one call, but also used as -2.
+hInitialSP:
     ds 1                                               ;; fffe
+
+SECTION "vram", VRAM[$8000]
+    ds 8192                                            ;; 8000
 
 SECTION "sram", SRAM[$a000]
 
-sA000:
+sSave1Header:
     ds 6                                               ;; a000
 
-sA006:
+sSave1Body:
     ds 250                                             ;; a006
 
-sA100:
+sSave2Header:
     ds 6                                               ;; a100
 
-sA106:
+sSave2Body:
     ds 7930                                            ;; a106
