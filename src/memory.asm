@@ -1585,7 +1585,16 @@ hSoundEffectLoopCounterChannel1:
 ; END OF AUDIO ENGINE HRAM (ff9e is not included)
 ; One byte long
 hSoundEffectLoopCounterChannel4:
-    ds 97                                              ;; ff9d
+    ds 93                                              ;; ff9d
+
+hFFFA:
+    ds 2                                               ;; fffa
+
+hFFFC:
+    ds 1                                               ;; fffc
+
+hFFFD:
+    ds 1                                               ;; fffd
 
 ; Used as the stack location at init for exactly one call, but also used as -2.
 hInitialSP:

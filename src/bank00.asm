@@ -4415,7 +4415,7 @@ call_00_1a30:
 ; Return: A = VRAM tile number of the loaded tile
 loadMinimapTile:
     call loadRoomTile                                  ;; 00:1a3b $cd $a1 $1b
-    ld   DE, -$0100 ;@=value signed=True               ;; 00:1a3e $11 $00 $ff
+    ld   DE, -256 ;@=value signed=True                 ;; 00:1a3e $11 $00 $ff
     add  HL, DE                                        ;; 00:1a41 $19
     ld   A, [HL]                                       ;; 00:1a42 $7e
     ret                                                ;; 00:1a43 $c9
@@ -4624,7 +4624,7 @@ mapGraphicsStateUpdateCache:
     dec  A                                             ;; 00:1b58 $3d
     jr   NZ, mapGraphicsStateUpdateCache.next          ;; 00:1b59 $20 $14
     push HL                                            ;; 00:1b5b $e5
-    ld   DE, -$0100 ;@=value signed=True                ;; 00:1b5c $11 $00 $ff
+    ld   DE, -256 ;@=value signed=True                 ;; 00:1b5c $11 $00 $ff
     add  HL, DE                                        ;; 00:1b5f $19
     ld   A, $80                                        ;; 00:1b60 $3e $80
     add  A, [HL]                                       ;; 00:1b62 $86
@@ -4708,7 +4708,7 @@ loadRoomTile:
     pop  HL                                            ;; 00:1bcc $e1
     push HL                                            ;; 00:1bcd $e5
     ld   [HL], $0f                                     ;; 00:1bce $36 $0f
-    ld   DE, -$0100 ;@=value signed=True                ;; 00:1bd0 $11 $00 $ff
+    ld   DE, -256 ;@=value signed=True                 ;; 00:1bd0 $11 $00 $ff
     add  HL, DE                                        ;; 00:1bd3 $19
     ld   [HL], A                                       ;; 00:1bd4 $77
     ld   L, A                                          ;; 00:1bd5 $6f
@@ -4747,7 +4747,7 @@ loadRoomTile:
     call addTileGraphicCopyRequest                     ;; 00:1c01 $cd $f5 $2d
     pop  HL                                            ;; 00:1c04 $e1
     push HL                                            ;; 00:1c05 $e5
-    ld   DE, -$80 ;@=value signed=True                 ;; 00:1c06 $11 $80 $ff
+    ld   DE, -128 ;@=value signed=True                 ;; 00:1c06 $11 $80 $ff
     add  HL, DE                                        ;; 00:1c09 $19
     ld   A, [wMapGraphicsPointer.High]                 ;; 00:1c0a $fa $91 $d3
     ld   D, A                                          ;; 00:1c0d $57

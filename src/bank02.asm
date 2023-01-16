@@ -108,7 +108,7 @@ animateTilesTwoframe_TileCopy:
     jr   Z, .jr_02_40bf                                ;; 02:40af $28 $0e
     push BC                                            ;; 02:40b1 $c5
     push HL                                            ;; 02:40b2 $e5
-    ld   HL, -$0100 ;@=value signed=True               ;; 02:40b3 $21 $00 $ff
+    ld   HL, -256 ;@=value signed=True                 ;; 02:40b3 $21 $00 $ff
     add  HL, DE                                        ;; 02:40b6 $19
     ld   A, [HL]                                       ;; 02:40b7 $7e
     pop  BC                                            ;; 02:40b8 $c1
