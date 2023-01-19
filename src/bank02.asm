@@ -499,51 +499,51 @@ call_02_42a5:
     call bossCollisionHandling_trampoline              ;; 02:42fe $cd $11 $05
     ret                                                ;; 02:4301 $c9
 
-call_02_4302:
+processPhysicsForObjectDependingOnCollisionFlags:
     ld   B, A                                          ;; 02:4302 $47
     push BC                                            ;; 02:4303 $c5
     call getObjectCollisionFlags                       ;; 02:4304 $cd $6d $0c
     pop  BC                                            ;; 02:4307 $c1
     and  A, $f0                                        ;; 02:4308 $e6 $f0
     cp   A, $c0                                        ;; 02:430a $fe $c0
-    jr   Z, .jr_02_4349                                ;; 02:430c $28 $3b
+    jr   Z, .player                                    ;; 02:430c $28 $3b
     cp   A, $e0                                        ;; 02:430e $fe $e0
-    jr   Z, .jr_02_4349                                ;; 02:4310 $28 $37
+    jr   Z, .player                                    ;; 02:4310 $28 $37
     cp   A, $f0                                        ;; 02:4312 $fe $f0
-    jr   Z, .jr_02_4349                                ;; 02:4314 $28 $33
+    jr   Z, .player                                    ;; 02:4314 $28 $33
     cp   A, $40                                        ;; 02:4316 $fe $40
-    jr   Z, .jr_02_4349                                ;; 02:4318 $28 $2f
+    jr   Z, .player                                    ;; 02:4318 $28 $2f
     cp   A, $50                                        ;; 02:431a $fe $50
-    jr   Z, .jr_02_4349                                ;; 02:431c $28 $2b
+    jr   Z, .player                                    ;; 02:431c $28 $2b
     cp   A, $a0                                        ;; 02:431e $fe $a0
-    jr   Z, .jr_02_4342                                ;; 02:4320 $28 $20
+    jr   Z, .npc                                       ;; 02:4320 $28 $20
     cp   A, $b0                                        ;; 02:4322 $fe $b0
-    jr   Z, .jr_02_4342                                ;; 02:4324 $28 $1c
+    jr   Z, .npc                                       ;; 02:4324 $28 $1c
     cp   A, $80                                        ;; 02:4326 $fe $80
-    jr   Z, .jr_02_4342                                ;; 02:4328 $28 $18
+    jr   Z, .npc                                       ;; 02:4328 $28 $18
     cp   A, $90                                        ;; 02:432a $fe $90
-    jr   Z, .jr_02_4342                                ;; 02:432c $28 $14
+    jr   Z, .npc                                       ;; 02:432c $28 $14
     cp   A, $10                                        ;; 02:432e $fe $10
-    jr   Z, .jr_02_4342                                ;; 02:4330 $28 $10
+    jr   Z, .npc                                       ;; 02:4330 $28 $10
     cp   A, $30                                        ;; 02:4332 $fe $30
-    jr   Z, .jr_02_4350                                ;; 02:4334 $28 $1a
+    jr   Z, .projectile                                ;; 02:4334 $28 $1a
     cp   A, $60                                        ;; 02:4336 $fe $60
-    jr   Z, .jr_02_4350                                ;; 02:4338 $28 $16
+    jr   Z, .projectile                                ;; 02:4338 $28 $16
     cp   A, $70                                        ;; 02:433a $fe $70
-    jr   Z, .jr_02_4350                                ;; 02:433c $28 $12
+    jr   Z, .projectile                                ;; 02:433c $28 $12
     cp   A, $20                                        ;; 02:433e $fe $20
     jr   Z, .boss                                      ;; 02:4340 $28 $15
-.jr_02_4342:
+.npc:
     ld   A, B                                          ;; 02:4342 $78
     ld   B, $00                                        ;; 02:4343 $06 $00
     call processPhysicsForObject_3_trampoline          ;; 02:4345 $cd $d7 $27
     ret                                                ;; 02:4348 $c9
-.jr_02_4349:
+.player:
     ld   A, B                                          ;; 02:4349 $78
     ld   B, $00                                        ;; 02:434a $06 $00
     call processPhysicsForPlayer_1_trampoline          ;; 02:434c $cd $38 $02
     ret                                                ;; 02:434f $c9
-.jr_02_4350:
+.projectile:
     ld   A, B                                          ;; 02:4350 $78
     ld   B, $00                                        ;; 02:4351 $06 $00
     call processPhysicsForObject_9_trampoline          ;; 02:4353 $cd $d7 $2b
@@ -577,7 +577,7 @@ call_02_435e:
     pop  AF                                            ;; 02:437c $f1
     push AF                                            ;; 02:437d $f5
     push BC                                            ;; 02:437e $c5
-    call call_02_4302                                  ;; 02:437f $cd $02 $43
+    call processPhysicsForObjectDependingOnCollisionFlags ;; 02:437f $cd $02 $43
     pop  BC                                            ;; 02:4382 $c1
     push BC                                            ;; 02:4383 $c5
     ld   A, B                                          ;; 02:4384 $78
