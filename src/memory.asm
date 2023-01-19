@@ -555,7 +555,9 @@ wEquippedWeaponAnimationType:
 wEquippedItemAnimationType:
     ds 1                                               ;; cf59
 
-wCF5A:
+; Might only be used by player attacks.
+; Since attacks can be made up of many objects (such as the four sparkles when casting a spell) this tracks the one code is currently focussing on.
+wSelectedObjectID:
     ds 1                                               ;; cf5a
 
 wCF5B:

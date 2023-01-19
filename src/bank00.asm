@@ -7575,13 +7575,13 @@ setAToZero:
     ld   A, $00                                        ;; 00:2f09 $3e $00
     ret                                                ;; 00:2f0b $c9
 
-call_00_2f0c:
+getSelectedX:
     ld   A, [wCF5A]                                    ;; 00:2f0c $fa $5a $cf
     ld   C, A                                          ;; 00:2f0f $4f
     call GetObjectX                                    ;; 00:2f10 $cd $2d $0c
     ret                                                ;; 00:2f13 $c9
 
-call_00_2f14:
+getSelectedY:
     ld   A, [wCF5A]                                    ;; 00:2f14 $fa $5a $cf
     ld   C, A                                          ;; 00:2f17 $4f
     call GetObjectY                                    ;; 00:2f18 $cd $3e $0c
@@ -7589,7 +7589,7 @@ call_00_2f14:
     db   $fa, $5a, $cf, $4f, $cd, $4f, $0c, $c9        ;; 00:2f1c ????????
     db   $21, $5a, $cf, $4e, $cd, $5d, $0c, $c9        ;; 00:2f24 ????????
 
-call_00_2f2c:
+getSelectedDirection:
     ld   A, [wCF5A]                                    ;; 00:2f2c $fa $5a $cf
     ld   C, A                                          ;; 00:2f2f $4f
     call getObjectDirection                            ;; 00:2f30 $cd $99 $0c
