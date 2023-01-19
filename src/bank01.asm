@@ -2303,7 +2303,7 @@ call_01_4f7b:
     ld   HL, $00                                       ;; 01:5084 $21 $00 $00
     ret                                                ;; 01:5087 $c9
 
-call_01_5088:
+snapPositionToNearestTile8_1:
     and  A, $fc                                        ;; 01:5088 $e6 $fc
     bit  2, A                                          ;; 01:508a $cb $57
     ret  Z                                             ;; 01:508c $c8

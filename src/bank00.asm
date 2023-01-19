@@ -6660,7 +6660,8 @@ checkForFollower:
     ld   A, $01                                        ;; 00:28d2 $3e $01
     ret                                                ;; 00:28d4 $c9
 
-call_00_28d5:
+; Used when you ASK your Chocobo/Chocobot/Chocoboat
+hideFollower:
     call checkForFollower                              ;; 00:28d5 $cd $c2 $28
     ret  NZ                                            ;; 00:28d8 $c0
     ld   A, $00                                        ;; 00:28d9 $3e $00
@@ -6681,7 +6682,8 @@ call_00_28d5:
     ld   [HL+], A                                      ;; 00:28ee $22
     ret                                                ;; 00:28ef $c9
 
-call_00_28f0:
+; Used when you dismount your Chocobo/Chocobot/Chocoboat
+showFollower:
     call checkForFollower                              ;; 00:28f0 $cd $c2 $28
     ret  NZ                                            ;; 00:28f3 $c0
     ld   A, $00                                        ;; 00:28f4 $3e $00
@@ -9690,7 +9692,7 @@ clearNamesAndScriptFlags:
     jr   NZ, clearNamesAndScriptFlags.loop_flags       ;; 00:3bc8 $20 $fc
     ret                                                ;; 00:3bca $c9
 
-opCodeFFPrintTextOption:
+opCodeFFPrintMenuText:
     pop  HL                                            ;; 00:3bcb $e1
     call call_00_30b7                                  ;; 00:3bcc $cd $b7 $30
     ret                                                ;; 00:3bcf $c9
@@ -9809,7 +9811,8 @@ runVirtualScriptOpCodeFF:
     ld   [wScriptCommand], A                           ;; 00:3c6f $ea $5a $d8
     ret                                                ;; 00:3c72 $c9
 
-call_00_3c73:
+; Trampoline handling does not preserve the value of F, so F is fixed after the call.
+saveRegisterState2_bank0:
     push AF                                            ;; 00:3c73 $f5
     push AF                                            ;; 00:3c74 $f5
     call saveRegisterState2_trampoline                 ;; 00:3c75 $cd $99 $30
@@ -9825,7 +9828,8 @@ call_00_3c73:
     pop  AF                                            ;; 00:3c85 $f1
     ret                                                ;; 00:3c86 $c9
 
-call_00_3c87:
+; Trampoline handling does not preserve the value of F, so F is fixed after the call.
+loadRegisterState2_bank0:
     call loadRegisterState2_trampoline                 ;; 00:3c87 $cd $81 $30
     push BC                                            ;; 00:3c8a $c5
     ld   A, [wRegisterSave2.A]                         ;; 00:3c8b $fa $b1 $d8
