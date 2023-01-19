@@ -536,22 +536,22 @@ call_02_4302:
 .jr_02_4342:
     ld   A, B                                          ;; 02:4342 $78
     ld   B, $00                                        ;; 02:4343 $06 $00
-    call call_00_27d7                                  ;; 02:4345 $cd $d7 $27
+    call processPhysicsForObject_3_trampoline          ;; 02:4345 $cd $d7 $27
     ret                                                ;; 02:4348 $c9
 .jr_02_4349:
     ld   A, B                                          ;; 02:4349 $78
     ld   B, $00                                        ;; 02:434a $06 $00
-    call call_00_0238                                  ;; 02:434c $cd $38 $02
+    call processPhysicsForPlayer_1_trampoline          ;; 02:434c $cd $38 $02
     ret                                                ;; 02:434f $c9
 .jr_02_4350:
     ld   A, B                                          ;; 02:4350 $78
     ld   B, $00                                        ;; 02:4351 $06 $00
-    call call_00_2bd7                                  ;; 02:4353 $cd $d7 $2b
+    call processPhysicsForObject_9_trampoline          ;; 02:4353 $cd $d7 $2b
     ret                                                ;; 02:4356 $c9
 .boss:
     ld   A, B                                          ;; 02:4357 $78
     ld   B, $00                                        ;; 02:4358 $06 $00
-    call call_00_0517                                  ;; 02:435a $cd $17 $05
+    call processPhysicsForObject_4_trampoline          ;; 02:435a $cd $17 $05
     ret                                                ;; 02:435d $c9
 
 call_02_435e:

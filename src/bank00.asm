@@ -283,7 +283,7 @@ runMainInputHandler_trampoline:
 call_00_0232:
     jp_to_bank 01, call_01_48be                        ;; 00:0232 $f5 $3e $01 $c3 $d7 $1e
 
-call_00_0238:
+processPhysicsForPlayer_1_trampoline:
     jp_to_bank 01, processPhysicsForPlayer             ;; 00:0238 $f5 $3e $02 $c3 $d7 $1e
 
 updatePlayerPostion_trampoline:
@@ -769,7 +769,7 @@ bossClearObjectsTracking:
 bossCollisionHandling_trampoline:
     jp_to_bank 04, bossCollisionHandling               ;; 00:0511 $f5 $3e $05 $c3 $64 $1f
 
-call_00_0517:
+processPhysicsForObject_4_trampoline:
     jp_to_bank 04, processPhysicsForObject_4           ;; 00:0517 $f5 $3e $04 $c3 $64 $1f
 
 ; Draw the meta tile A (metatile index) at DE (YX tile number)
@@ -6500,7 +6500,7 @@ updateNPCsAndBoss:
     call bossUpdate                                    ;; 00:27ce $cd $aa $04
     jp_to_bank 03, npcRunBehaviorForAll                ;; 00:27d1 $f5 $3e $00 $c3 $35 $1f
 
-call_00_27d7:
+processPhysicsForObject_3_trampoline:
     jp_to_bank 03, processPhysicsForObject_3           ;; 00:27d7 $f5 $3e $01 $c3 $35 $1f
 
 spawnNPC_trampoline:
@@ -7119,7 +7119,7 @@ sub_HL_DE:
 projectileRunLogicForAll_trampoline:
     jp_to_bank 09, projectileRunLogicForAll            ;; 00:2bd1 $f5 $3e $00 $c3 $93 $1f
 
-call_00_2bd7:
+processPhysicsForObject_9_trampoline:
     jp_to_bank 09, processPhysicsForObject_9           ;; 00:2bd7 $f5 $3e $01 $c3 $93 $1f
 
 projectileLoadTiles_trampoline:
