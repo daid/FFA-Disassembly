@@ -283,7 +283,7 @@ runMainInputHandler_trampoline:
 call_00_0232:
     jp_to_bank 01, call_01_48be                        ;; 00:0232 $f5 $3e $01 $c3 $d7 $1e
 
-processPhysicsForPlayer_1_trampoline:
+processPhysicsForPlayer_trampoline:
     jp_to_bank 01, processPhysicsForPlayer             ;; 00:0238 $f5 $3e $02 $c3 $d7 $1e
 
 updatePlayerPostion_trampoline:
@@ -525,7 +525,11 @@ call_00_0375:
     jr   NZ, call_00_0375.loop                         ;; 00:0397 $20 $e0
     ret                                                ;; 00:0399 $c9
 
-call_00_039a:
+; B = object number b
+; C = object number c
+; Return: DE = Y and X distances between the two objects.
+; Return: A = flags (unknown)
+checkObjectsCollisionDirection:
     push BC                                            ;; 00:039a $c5
     call GetObjectY                                    ;; 00:039b $cd $3e $0c
     ld   D, A                                          ;; 00:039e $57
@@ -576,7 +580,7 @@ call_00_039a:
     and  A, $0f                                        ;; 00:03da $e6 $0f
     pop  DE                                            ;; 00:03dc $d1
     ret                                                ;; 00:03dd $c9
-.jr_00_03de:
+.b_leftof_c:
     ld   A, E                                          ;; 00:03de $7b
     cpl                                                ;; 00:03df $2f
     inc  A                                             ;; 00:03e0 $3c
@@ -589,7 +593,7 @@ call_00_039a:
 .jr_00_03e9:
     ld   A, $0a                                        ;; 00:03e9 $3e $0a
     ret                                                ;; 00:03eb $c9
-.jr_00_03ec:
+.b_below_c:
     bit  7, E                                          ;; 00:03ec $cb $7b
     jr   NZ, .jr_00_03fe                               ;; 00:03ee $20 $0e
     ld   A, D                                          ;; 00:03f0 $7a
@@ -604,7 +608,7 @@ call_00_039a:
 .jr_00_03fb:
     ld   A, $05                                        ;; 00:03fb $3e $05
     ret                                                ;; 00:03fd $c9
-.jr_00_03fe:
+.b_below_and_leftof_c:
     ld   A, E                                          ;; 00:03fe $7b
     cp   A, D                                          ;; 00:03ff $ba
     jr   Z, .jr_00_0407                                ;; 00:0400 $28 $05
@@ -7902,7 +7906,7 @@ getEquippedWeaponBonusTypes_trampoline:
     jp_to_bank 02, getEquippedWeaponBonusTypes         ;; 00:30f3 $f5 $3e $20 $c3 $06 $1f
     db   $f5, $3e, $21, $c3, $06, $1f                  ;; 00:30f9 ??????
 
-clearStatusBarTrampoline:
+showFullscreenWindow_trampoline:
     jp_to_bank 02, showFullscreenWindow                ;; 00:30ff $f5 $3e $22 $c3 $06 $1f
     db   $f5, $3e, $23, $c3, $06, $1f                  ;; 00:3105 ??????
 

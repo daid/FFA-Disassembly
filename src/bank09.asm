@@ -347,7 +347,8 @@ call_09_41ad:
     ld   D, A                                          ;; 09:41d1 $57
     ret                                                ;; 09:41d2 $c9
 
-call_09_41d3:
+; A = object number
+getDEMinusObjectYX:
     ld   C, A                                          ;; 09:41d3 $4f
     push DE                                            ;; 09:41d4 $d5
     push BC                                            ;; 09:41d5 $c5

@@ -7516,8 +7516,7 @@ hideFullscreenWindow:
     call showSpritesBehindWindow_trampoline            ;; 02:7a36 $cd $35 $04
     ret                                                ;; 02:7a39 $c9
 
-; If there's a window open (like the SELECT window) it would be inconvenient to have its sprites hidden.
-disableStatusBarEffect:
+enableStatusBarEffect:
     push DE                                            ;; 02:7a3a $d5
     ld   D, $8e                                        ;; 02:7a3b $16 $8e
     ld   E, $7e                                        ;; 02:7a3d $1e $7e
@@ -7525,7 +7524,8 @@ disableStatusBarEffect:
     pop  DE                                            ;; 02:7a42 $d1
     ret                                                ;; 02:7a43 $c9
 
-enableStatusBarEffect:
+; If there's a window open (like the SELECT window) it would be inconvenient to have its sprites hidden.
+disableStatusBarEffect:
     push DE                                            ;; 02:7a44 $d5
     ld   D, $7e                                        ;; 02:7a45 $16 $7e
     ld   E, $8e                                        ;; 02:7a47 $1e $8e
