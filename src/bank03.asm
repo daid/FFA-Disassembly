@@ -8,7 +8,7 @@ INCLUDE "include/constants.inc"
 SECTION "bank03", ROMX[$4000], BANK[$03]
 ;@call_to_bank_jumptable
     call_to_bank_target npcRunBehaviorForAll           ;; 03:4000 pP
-    call_to_bank_target call_03_4af5                   ;; 03:4002 pP
+    call_to_bank_target processPhysicsForObject_3      ;; 03:4002 pP
     call_to_bank_target spawnNPC                       ;; 03:4004 pP
     call_to_bank_target destroyNPC                     ;; 03:4006 pP
     call_to_bank_target spawnNpcsFromTable             ;; 03:4008 pP
@@ -1978,7 +1978,7 @@ updateObjectPosition_3:
     ret                                                ;; 03:4af4 $c9
 
 processPhysicsForObject_3:
-    call call_00_0695                                  ;; 03:4af5 $cd $95 $06
+    call processPhysicsForObject                       ;; 03:4af5 $cd $95 $06
     ret                                                ;; 03:4af8 $c9
 
 call_03_4af9:
@@ -2507,7 +2507,7 @@ npcKilledExplosion:
     ld   A, $02                                        ;; 03:4e6c $3e $02
 .jr_03_4e6e:
     ld   B, $00                                        ;; 03:4e6e $06 $00
-    call call_00_0695                                  ;; 03:4e70 $cd $95 $06
+    call processPhysicsForObject                       ;; 03:4e70 $cd $95 $06
     pop  AF                                            ;; 03:4e73 $f1
     inc  A                                             ;; 03:4e74 $3c
     ret                                                ;; 03:4e75 $c9
@@ -2563,7 +2563,7 @@ call_03_4eb5:
     ld   C, A                                          ;; 03:4ebc $4f
     ld   B, $00                                        ;; 03:4ebd $06 $00
     ld   A, $00                                        ;; 03:4ebf $3e $00
-    call call_00_0695                                  ;; 03:4ec1 $cd $95 $06
+    call processPhysicsForObject                       ;; 03:4ec1 $cd $95 $06
     ld   A, $00                                        ;; 03:4ec4 $3e $00
     ret  Z                                             ;; 03:4ec6 $c8
     inc  A                                             ;; 03:4ec7 $3c
@@ -2606,7 +2606,7 @@ call_03_4ef0:
     call getObjectDirection                            ;; 03:4efc $cd $99 $0c
     and  A, $0f                                        ;; 03:4eff $e6 $0f
     pop  BC                                            ;; 03:4f01 $c1
-    call call_00_0695                                  ;; 03:4f02 $cd $95 $06
+    call processPhysicsForObject                       ;; 03:4f02 $cd $95 $06
     pop  AF                                            ;; 03:4f05 $f1
     ret                                                ;; 03:4f06 $c9
 
@@ -2666,7 +2666,7 @@ call_03_4f4d:
     push BC                                            ;; 03:4f4f $c5
     call call_03_5574                                  ;; 03:4f50 $cd $74 $55
     pop  BC                                            ;; 03:4f53 $c1
-    call call_00_0695                                  ;; 03:4f54 $cd $95 $06
+    call processPhysicsForObject                       ;; 03:4f54 $cd $95 $06
     ld   A, $00                                        ;; 03:4f57 $3e $00
     ret                                                ;; 03:4f59 $c9
 
@@ -2676,7 +2676,7 @@ call_03_4f5a:
     push BC                                            ;; 03:4f5c $c5
     call call_03_5591                                  ;; 03:4f5d $cd $91 $55
     pop  BC                                            ;; 03:4f60 $c1
-    call call_00_0695                                  ;; 03:4f61 $cd $95 $06
+    call processPhysicsForObject                       ;; 03:4f61 $cd $95 $06
     ld   A, $00                                        ;; 03:4f64 $3e $00
     ret                                                ;; 03:4f66 $c9
 
@@ -2686,7 +2686,7 @@ call_03_4f67:
     push BC                                            ;; 03:4f69 $c5
     call call_03_55ae                                  ;; 03:4f6a $cd $ae $55
     pop  BC                                            ;; 03:4f6d $c1
-    call call_00_0695                                  ;; 03:4f6e $cd $95 $06
+    call processPhysicsForObject                       ;; 03:4f6e $cd $95 $06
     ld   A, $00                                        ;; 03:4f71 $3e $00
     ret                                                ;; 03:4f73 $c9
 
@@ -2702,7 +2702,7 @@ call_03_4f74:
     push BC                                            ;; 03:4f7d $c5
     call call_03_5574                                  ;; 03:4f7e $cd $74 $55
     pop  BC                                            ;; 03:4f81 $c1
-    call call_00_0695                                  ;; 03:4f82 $cd $95 $06
+    call processPhysicsForObject                       ;; 03:4f82 $cd $95 $06
     pop  AF                                            ;; 03:4f85 $f1
     dec  A                                             ;; 03:4f86 $3d
     ret                                                ;; 03:4f87 $c9
@@ -2723,7 +2723,7 @@ call_03_4f88:
 .jr_03_4f9b:
     ld   A, B                                          ;; 03:4f9b $78
     pop  BC                                            ;; 03:4f9c $c1
-    call call_00_0695                                  ;; 03:4f9d $cd $95 $06
+    call processPhysicsForObject                       ;; 03:4f9d $cd $95 $06
     ld   A, $00                                        ;; 03:4fa0 $3e $00
     ret                                                ;; 03:4fa2 $c9
 
@@ -2743,7 +2743,7 @@ call_03_4fa3:
 .jr_03_4fb6:
     ld   A, B                                          ;; 03:4fb6 $78
     pop  BC                                            ;; 03:4fb7 $c1
-    call call_00_0695                                  ;; 03:4fb8 $cd $95 $06
+    call processPhysicsForObject                       ;; 03:4fb8 $cd $95 $06
     ld   A, $00                                        ;; 03:4fbb $3e $00
     ret                                                ;; 03:4fbd $c9
 
@@ -2763,7 +2763,7 @@ call_03_4fbe:
 .jr_03_4fd1:
     ld   A, B                                          ;; 03:4fd1 $78
     pop  BC                                            ;; 03:4fd2 $c1
-    call call_00_0695                                  ;; 03:4fd3 $cd $95 $06
+    call processPhysicsForObject                       ;; 03:4fd3 $cd $95 $06
     ld   A, $00                                        ;; 03:4fd6 $3e $00
     ret                                                ;; 03:4fd8 $c9
 
@@ -2783,7 +2783,7 @@ call_03_4fd9:
 .jr_03_4fec:
     ld   A, B                                          ;; 03:4fec $78
     pop  BC                                            ;; 03:4fed $c1
-    call call_00_0695                                  ;; 03:4fee $cd $95 $06
+    call processPhysicsForObject                       ;; 03:4fee $cd $95 $06
     ld   A, $00                                        ;; 03:4ff1 $3e $00
     ret                                                ;; 03:4ff3 $c9
 
@@ -2859,7 +2859,7 @@ npcFaceEast:
     ld   A, [DE]                                       ;; 03:5055 $1a
     ld   C, A                                          ;; 03:5056 $4f
     ld   A, $01                                        ;; 03:5057 $3e $01
-    call call_00_0695                                  ;; 03:5059 $cd $95 $06
+    call processPhysicsForObject                       ;; 03:5059 $cd $95 $06
     ld   A, $00                                        ;; 03:505c $3e $00
     ret                                                ;; 03:505e $c9
 
@@ -2867,7 +2867,7 @@ npcFaceWest:
     ld   A, [DE]                                       ;; 03:505f $1a
     ld   C, A                                          ;; 03:5060 $4f
     ld   A, $02                                        ;; 03:5061 $3e $02
-    call call_00_0695                                  ;; 03:5063 $cd $95 $06
+    call processPhysicsForObject                       ;; 03:5063 $cd $95 $06
     ld   A, $00                                        ;; 03:5066 $3e $00
     ret                                                ;; 03:5068 $c9
 
@@ -2875,7 +2875,7 @@ npcFaceNorth:
     ld   A, [DE]                                       ;; 03:5069 $1a
     ld   C, A                                          ;; 03:506a $4f
     ld   A, $04                                        ;; 03:506b $3e $04
-    call call_00_0695                                  ;; 03:506d $cd $95 $06
+    call processPhysicsForObject                       ;; 03:506d $cd $95 $06
     ld   A, $00                                        ;; 03:5070 $3e $00
     ret                                                ;; 03:5072 $c9
 
@@ -2883,7 +2883,7 @@ npcFaceSouth:
     ld   A, [DE]                                       ;; 03:5073 $1a
     ld   C, A                                          ;; 03:5074 $4f
     ld   A, $08                                        ;; 03:5075 $3e $08
-    call call_00_0695                                  ;; 03:5077 $cd $95 $06
+    call processPhysicsForObject                       ;; 03:5077 $cd $95 $06
     ld   A, $00                                        ;; 03:507a $3e $00
     ret                                                ;; 03:507c $c9
 
@@ -3915,7 +3915,7 @@ call_03_555e:
     swap A                                             ;; 03:5568 $cb $37
     and  A, $0f                                        ;; 03:556a $e6 $0f
     ld   B, $00                                        ;; 03:556c $06 $00
-    call call_00_0695                                  ;; 03:556e $cd $95 $06
+    call processPhysicsForObject                       ;; 03:556e $cd $95 $06
     ld   A, $00                                        ;; 03:5571 $3e $00
     ret                                                ;; 03:5573 $c9
 
@@ -4010,7 +4010,7 @@ call_03_55df:
     call getObjectDirection                            ;; 03:55e5 $cd $99 $0c
     and  A, $0f                                        ;; 03:55e8 $e6 $0f
     pop  BC                                            ;; 03:55ea $c1
-    call call_00_0695                                  ;; 03:55eb $cd $95 $06
+    call processPhysicsForObject                       ;; 03:55eb $cd $95 $06
     pop  DE                                            ;; 03:55ee $d1
     pop  AF                                            ;; 03:55ef $f1
     bit  0, A                                          ;; 03:55f0 $cb $47
@@ -4064,7 +4064,7 @@ call_03_55fb:
 .jr_03_5639:
     pop  AF                                            ;; 03:5639 $f1
 .jr_03_563a:
-    call call_00_0695                                  ;; 03:563a $cd $95 $06
+    call processPhysicsForObject                       ;; 03:563a $cd $95 $06
     ret                                                ;; 03:563d $c9
 
 ;@data format=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb amount=30

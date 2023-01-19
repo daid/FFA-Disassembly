@@ -11,7 +11,7 @@ SECTION "bank04", ROMX[$4000], BANK[$04]
     call_to_bank_target spawnBoss                      ;; 04:4002 pP
     call_to_bank_target bossClearStatsObjects          ;; 04:4004 ??
     call_to_bank_target bossTakeDamage                 ;; 04:4006 pP
-    call_to_bank_target call_04_4735                   ;; 04:4008 ??
+    call_to_bank_target processPhysicsForObject_4      ;; 04:4008 ??
     call_to_bank_target bossCollisionHandling          ;; 04:400a pP
     call_to_bank_target checkPlayfieldBoundaryCollision ;; 04:400c pP
 
@@ -334,7 +334,7 @@ call_04_419e:
     pop  BC                                            ;; 04:41be $c1
     pop  HL                                            ;; 04:41bf $e1
     ld   A, C                                          ;; 04:41c0 $79
-    call getA_And3Power2                               ;; 04:41c1 $cd $9a $29
+    call getBitValue                                   ;; 04:41c1 $cd $9a $29
     ret                                                ;; 04:41c4 $c9
 ;@jumptable amount=4
 .data_04_41c5:
@@ -373,7 +373,7 @@ runBossDeathScript:
     ld   H, [HL]                                       ;; 04:41f5 $66
     ld   L, A                                          ;; 04:41f6 $6f
     ld   A, C                                          ;; 04:41f7 $79
-    call getA_And3Power2                               ;; 04:41f8 $cd $9a $29
+    call getBitValue                                   ;; 04:41f8 $cd $9a $29
     ld   C, $20                                        ;; 04:41fb $0e $20
     call runScriptByIndex                              ;; 04:41fd $cd $ad $31
     pop  DE                                            ;; 04:4200 $d1
@@ -1251,7 +1251,7 @@ processHitBoss:
     ret                                                ;; 04:4734 $c9
 
 processPhysicsForObject_4:
-    call call_00_0695                                  ;; 04:4735 $cd $95 $06
+    call processPhysicsForObject                       ;; 04:4735 $cd $95 $06
     ret                                                ;; 04:4738 $c9
 
 INCLUDE "data/boss.asm"

@@ -9,8 +9,8 @@ SECTION "bank02", ROMX[$4000], BANK[$02]
 ;@call_to_bank_jumptable amount=58
     call_to_bank_target animateTiles                   ;; 02:4000 pP
     call_to_bank_target updateJoypadInput              ;; 02:4002 pP
-    call_to_bank_target call_02_44fa                   ;; 02:4004 pP
-    call_to_bank_target call_02_44c4                   ;; 02:4006 pP
+    call_to_bank_target spriteShuffleDoFlash           ;; 02:4004 pP
+    call_to_bank_target spriteShuffleShowHidden        ;; 02:4006 pP
     call_to_bank_target hideSpritesBehindWindow        ;; 02:4008 pP
     call_to_bank_target showSpritesBehindWindow        ;; 02:400a pP
     call_to_bank_target scrollMoveSprites              ;; 02:400c pP
@@ -29,7 +29,7 @@ SECTION "bank02", ROMX[$4000], BANK[$02]
     call_to_bank_target call_02_667a                   ;; 02:4026 pP
     call_to_bank_target drawWindow                     ;; 02:4028 pP
     call_to_bank_target windowMenuStartSpecial         ;; 02:402a pP
-    call_to_bank_target call_02_5b68                   ;; 02:402c ??
+    call_to_bank_target windowPrintMenuText            ;; 02:402c ??
     call_to_bank_target initStartingStatsAndTimers     ;; 02:402e pP
     call_to_bank_target giveItem                       ;; 02:4030 pP
     call_to_bank_target giveMagic                      ;; 02:4032 ??
@@ -41,7 +41,7 @@ SECTION "bank02", ROMX[$4000], BANK[$02]
     call_to_bank_target getEquippedShieldBlockElements ;; 02:403e pP
     call_to_bank_target getEquippedWeaponBonusTypes    ;; 02:4040 pP
     call_to_bank_target getSpellOrBookPower            ;; 02:4042 ??
-    call_to_bank_target clearStatusBar                 ;; 02:4044 pP
+    call_to_bank_target showFullscreenWindow           ;; 02:4044 pP
     call_to_bank_target drawDefaultStatusBar           ;; 02:4046 ??
     call_to_bank_target drawHPOnStatuBar               ;; 02:4048 pP
     call_to_bank_target drawManaOnStatusBar            ;; 02:404a pP
@@ -729,7 +729,7 @@ hideSpritesBehindWindow:
     srl  L                                             ;; 02:4450 $cb $3d
     srl  L                                             ;; 02:4452 $cb $3d
     ld   H, $00                                        ;; 02:4454 $26 $00
-    ld   DE, hiddenSpritesYPositions                   ;; 02:4456 $11 $a2 $c4
+    ld   DE, wSpriteShufflehiddenSpritesYPositions     ;; 02:4456 $11 $a2 $c4
     add  HL, DE                                        ;; 02:4459 $19
     ld   [HL], A                                       ;; 02:445a $77
     pop  HL                                            ;; 02:445b $e1
@@ -756,7 +756,7 @@ showSpritesBehindWindow:
     ret  NC                                            ;; 02:4470 $d0
     call call_02_43f8                                  ;; 02:4471 $cd $f8 $43
     push BC                                            ;; 02:4474 $c5
-    ld   HL, hiddenSpritesYPositions                   ;; 02:4475 $21 $a2 $c4
+    ld   HL, wSpriteShufflehiddenSpritesYPositions     ;; 02:4475 $21 $a2 $c4
     ld   B, $28                                        ;; 02:4478 $06 $28
 .loop:
     ld   A, [HL+]                                      ;; 02:447a $2a
@@ -771,7 +771,7 @@ showSpritesBehindWindow:
     dec  HL                                            ;; 02:4485 $2b
     push HL                                            ;; 02:4486 $e5
     push BC                                            ;; 02:4487 $c5
-    ld   DE, hiddenSpritesYPositions                   ;; 02:4488 $11 $a2 $c4
+    ld   DE, wSpriteShufflehiddenSpritesYPositions     ;; 02:4488 $11 $a2 $c4
     call sub_HL_DE                                     ;; 02:448b $cd $ab $2b
     pop  BC                                            ;; 02:448e $c1
     sla  L                                             ;; 02:448f $cb $25
@@ -809,7 +809,7 @@ spriteShuffleShowSprite:
     srl  L                                             ;; 02:44b4 $cb $3d
     srl  L                                             ;; 02:44b6 $cb $3d
     ld   H, $00                                        ;; 02:44b8 $26 $00
-    ld   DE, hiddenSpritesYPositions                   ;; 02:44ba $11 $a2 $c4
+    ld   DE, wSpriteShufflehiddenSpritesYPositions     ;; 02:44ba $11 $a2 $c4
     add  HL, DE                                        ;; 02:44bd $19
     ld   A, [HL]                                       ;; 02:44be $7e
     pop  HL                                            ;; 02:44bf $e1
@@ -826,18 +826,18 @@ spriteShuffleShowHidden:
     ld   DE, $04                                       ;; 02:44cb $11 $04 $00
 .loop:
     cp   A, [HL]                                       ;; 02:44ce $be
-    call Z, call_02_44b1                               ;; 02:44cf $cc $b1 $44
+    call Z, spriteShuffleShowSprite                    ;; 02:44cf $cc $b1 $44
     add  HL, DE                                        ;; 02:44d2 $19
     dec  B                                             ;; 02:44d3 $05
-    jr   NZ, call_02_44c4.loop                         ;; 02:44d4 $20 $f8
+    jr   NZ, spriteShuffleShowHidden.loop              ;; 02:44d4 $20 $f8
     ret                                                ;; 02:44d6 $c9
 
 spriteShuffleHideSprite:
-    ld   A, [wC4A0]                                    ;; 02:44d7 $fa $a0 $c4
+    ld   A, [wSpriteShuffleHiddenSpriteAddressLow]     ;; 02:44d7 $fa $a0 $c4
     cp   A, $ff                                        ;; 02:44da $fe $ff
     jr   NZ, .jr_02_44e2                               ;; 02:44dc $20 $04
     ld   A, C                                          ;; 02:44de $79
-    ld   [wC4A0], A                                    ;; 02:44df $ea $a0 $c4
+    ld   [wSpriteShuffleHiddenSpriteAddressLow], A     ;; 02:44df $ea $a0 $c4
 .jr_02_44e2:
     push HL                                            ;; 02:44e2 $e5
     ld   L, C                                          ;; 02:44e3 $69
@@ -849,7 +849,7 @@ spriteShuffleHideSprite:
     srl  L                                             ;; 02:44ed $cb $3d
     srl  L                                             ;; 02:44ef $cb $3d
     ld   H, $00                                        ;; 02:44f1 $26 $00
-    ld   DE, hiddenSpritesYPositions                   ;; 02:44f3 $11 $a2 $c4
+    ld   DE, wSpriteShufflehiddenSpritesYPositions     ;; 02:44f3 $11 $a2 $c4
     add  HL, DE                                        ;; 02:44f6 $19
     ld   [HL], A                                       ;; 02:44f7 $77
 .jr_02_44f8:
@@ -857,17 +857,17 @@ spriteShuffleHideSprite:
     ret                                                ;; 02:44f9 $c9
 
 spriteShuffleDoFlash:
-    ld   HL, wC480                                     ;; 02:44fa $21 $80 $c4
+    ld   HL, wSpriteShuffleScratch                     ;; 02:44fa $21 $80 $c4
     ld   B, $14                                        ;; 02:44fd $06 $14
     ld   A, $00                                        ;; 02:44ff $3e $00
 .loop_1:
     ld   [HL+], A                                      ;; 02:4501 $22
     dec  B                                             ;; 02:4502 $05
-    jr   NZ, call_02_44fa.loop_1                       ;; 02:4503 $20 $fc
-    ld   A, [wC4A0]                                    ;; 02:4505 $fa $a0 $c4
+    jr   NZ, spriteShuffleDoFlash.loop_1               ;; 02:4503 $20 $fc
+    ld   A, [wSpriteShuffleHiddenSpriteAddressLow]     ;; 02:4505 $fa $a0 $c4
     ld   C, A                                          ;; 02:4508 $4f
     ld   A, $ff                                        ;; 02:4509 $3e $ff
-    ld   [wC4A0], A                                    ;; 02:450b $ea $a0 $c4
+    ld   [wSpriteShuffleHiddenSpriteAddressLow], A     ;; 02:450b $ea $a0 $c4
     ld   H, $c0                                        ;; 02:450e $26 $c0
     ld   B, $28                                        ;; 02:4510 $06 $28
 .loop_2:
@@ -885,18 +885,18 @@ spriteShuffleDoFlash:
     srl  A                                             ;; 02:4522 $cb $3f
     ld   L, A                                          ;; 02:4524 $6f
     ld   H, $00                                        ;; 02:4525 $26 $00
-    ld   DE, wC480                                     ;; 02:4527 $11 $80 $c4
+    ld   DE, wSpriteShuffleScratch                     ;; 02:4527 $11 $80 $c4
     add  HL, DE                                        ;; 02:452a $19
     ld   A, [HL]                                       ;; 02:452b $7e
     inc  A                                             ;; 02:452c $3c
     ld   [HL+], A                                      ;; 02:452d $22
     cp   A, $0b                                        ;; 02:452e $fe $0b
-    call NC, call_02_44d7                              ;; 02:4530 $d4 $d7 $44
+    call NC, spriteShuffleHideSprite                   ;; 02:4530 $d4 $d7 $44
     ld   A, [HL]                                       ;; 02:4533 $7e
     inc  A                                             ;; 02:4534 $3c
     ld   [HL+], A                                      ;; 02:4535 $22
     cp   A, $0b                                        ;; 02:4536 $fe $0b
-    call NC, call_02_44d7                              ;; 02:4538 $d4 $d7 $44
+    call NC, spriteShuffleHideSprite                   ;; 02:4538 $d4 $d7 $44
     pop  DE                                            ;; 02:453b $d1
     ld   A, E                                          ;; 02:453c $7b
     ld   E, C                                          ;; 02:453d $59
@@ -907,7 +907,7 @@ spriteShuffleDoFlash:
     inc  A                                             ;; 02:4544 $3c
     ld   [HL+], A                                      ;; 02:4545 $22
     cp   A, $0b                                        ;; 02:4546 $fe $0b
-    call NC, call_02_44d7                              ;; 02:4548 $d4 $d7 $44
+    call NC, spriteShuffleHideSprite                   ;; 02:4548 $d4 $d7 $44
 .jr_02_454b:
     pop  BC                                            ;; 02:454b $c1
 .jr_02_454c:
@@ -920,12 +920,12 @@ spriteShuffleDoFlash:
     ld   C, A                                          ;; 02:4555 $4f
     ld   H, $c0                                        ;; 02:4556 $26 $c0
     dec  B                                             ;; 02:4558 $05
-    jr   NZ, call_02_44fa.loop_2                       ;; 02:4559 $20 $b7
-    ld   A, [wC4A0]                                    ;; 02:455b $fa $a0 $c4
+    jr   NZ, spriteShuffleDoFlash.loop_2               ;; 02:4559 $20 $b7
+    ld   A, [wSpriteShuffleHiddenSpriteAddressLow]     ;; 02:455b $fa $a0 $c4
     cp   A, $ff                                        ;; 02:455e $fe $ff
     ret  NZ                                            ;; 02:4560 $c0
     ld   A, $00                                        ;; 02:4561 $3e $00
-    ld   [wC4A0], A                                    ;; 02:4563 $ea $a0 $c4
+    ld   [wSpriteShuffleHiddenSpriteAddressLow], A     ;; 02:4563 $ea $a0 $c4
     ret                                                ;; 02:4566 $c9
 
 getScriptOpcodeFunction:
@@ -1033,7 +1033,7 @@ gameStateMenuJumptable:
     dw   call_02_4fe8                                  ;; 02:47f2 ??
     dw   call_02_4e37                                  ;; 02:47f4 pP
     dw   call_02_5895                                  ;; 02:47f6 pP
-    dw   call_02_5b68                                  ;; 02:47f8 pP
+    dw   windowPrintMenuText                           ;; 02:47f8 pP
     dw   call_02_4aa2                                  ;; 02:47fa ??
     dw   call_02_4c79                                  ;; 02:47fc ??
     dw   call_02_4a14                                  ;; 02:47fe pP
@@ -1045,7 +1045,7 @@ gameStateMenuJumptable:
     dw   call_02_4b72                                  ;; 02:480a pP
     dw   call_02_4b2e                                  ;; 02:480c pP
     dw   call_02_4b93                                  ;; 02:480e pP
-    dw   call_02_5174                                  ;; 02:4810 pP
+    dw   vendorShowBuyMessage                          ;; 02:4810 pP
     dw   call_02_5182                                  ;; 02:4812 pP
     dw   call_02_51d5                                  ;; 02:4814 pP
     dw   call_02_5475                                  ;; 02:4816 ??
@@ -1996,7 +1996,7 @@ openLevelUpStatusScreen:
     ld   [wMenuStateCurrentFunction], A                ;; 02:4ee3 $ea $53 $d8
     call call_02_667a                                  ;; 02:4ee6 $cd $7a $66
     ret  NZ                                            ;; 02:4ee9 $c0
-    call clearStatusBar                                ;; 02:4eea $cd $57 $51
+    call showFullscreenWindow                          ;; 02:4eea $cd $57 $51
     ld   A, $12                                        ;; 02:4eed $3e $12
     ld   [wDialogType], A                              ;; 02:4eef $ea $4a $d8
     ld   A, $01                                        ;; 02:4ef2 $3e $01
@@ -2008,7 +2008,7 @@ openLevelUpStatusScreen:
 openStatusScreen:
     call call_02_667a                                  ;; 02:4efd $cd $7a $66
     ret  NZ                                            ;; 02:4f00 $c0
-    call clearStatusBar                                ;; 02:4f01 $cd $57 $51
+    call showFullscreenWindow                          ;; 02:4f01 $cd $57 $51
     ld   A, $12                                        ;; 02:4f04 $3e $12
     ld   [wDialogType], A                              ;; 02:4f06 $ea $4a $d8
     call hideAndSaveMenuMetasprites                    ;; 02:4f09 $cd $51 $6b
@@ -2206,7 +2206,7 @@ call_02_504f:
 call_02_5062:
     call hideAndSaveMenuMetasprites                    ;; 02:5062 $cd $51 $6b
     call clearSaveLoadScreen                           ;; 02:5065 $cd $4c $56
-    call call_02_7a27                                  ;; 02:5068 $cd $27 $7a
+    call hideFullscreenWindow                          ;; 02:5068 $cd $27 $7a
     ld   A, [wDialogType]                              ;; 02:506b $fa $4a $d8
     cp   A, $1b                                        ;; 02:506e $fe $1b
     jr   Z, .jr_02_507b                                ;; 02:5070 $28 $09
@@ -2356,7 +2356,7 @@ showFullscreenWindow:
     ld   A, [wVideoWY]                                 ;; 02:5157 $fa $a9 $c0
     ld   [wVideoWYBackup], A                           ;; 02:515a $ea $84 $d8
     ld   B, $40                                        ;; 02:515d $06 $40
-    ld   HL, $9c00 ;@=ptr _SCRN1                       ;; 02:515f $21 $00 $9c
+    ld   HL, _SCRN1 ;@=ptr _SCRN1                      ;; 02:515f $21 $00 $9c
 .loop:
     push BC                                            ;; 02:5162 $c5
     push HL                                            ;; 02:5163 $e5
@@ -2366,7 +2366,7 @@ showFullscreenWindow:
     pop  BC                                            ;; 02:516a $c1
     inc  HL                                            ;; 02:516b $23
     dec  B                                             ;; 02:516c $05
-    jr   NZ, clearStatusBar.loop                       ;; 02:516d $20 $f3
+    jr   NZ, showFullscreenWindow.loop                 ;; 02:516d $20 $f3
     xor  A, A                                          ;; 02:516f $af
     ld   [wVideoWY], A                                 ;; 02:5170 $ea $a9 $c0
     ret                                                ;; 02:5173 $c9
@@ -3976,7 +3976,7 @@ jp_02_5b2c:
     ld   A, [wWindowTextRows]                          ;; 02:5b53 $fa $9a $d8
     ld   C, A                                          ;; 02:5b56 $4f
     call saveRegisterState2                            ;; 02:5b57 $cd $80 $6d
-    call call_02_762d                                  ;; 02:5b5a $cd $2d $76
+    call initStatusHPMPCurrentAndMax                   ;; 02:5b5a $cd $2d $76
     ld   A, $98                                        ;; 02:5b5d $3e $98
     ld   [wMenuStateCurrentFunction], A                ;; 02:5b5f $ea $53 $d8
     ld   A, $0a                                        ;; 02:5b62 $3e $0a
@@ -3992,9 +3992,9 @@ windowPrintMenuText:
     push HL                                            ;; 02:5b70 $e5
     ld   A, [wDialogType]                              ;; 02:5b71 $fa $4a $d8
     cp   A, $14                                        ;; 02:5b74 $fe $14
-    call Z, call_02_765c                               ;; 02:5b76 $cc $5c $76
+    call Z, statusWindowPrintHPMPCurOrMax              ;; 02:5b76 $cc $5c $76
     cp   A, $12                                        ;; 02:5b79 $fe $12
-    call Z, call_02_5acf                               ;; 02:5b7b $cc $cf $5a
+    call Z, windowStatusScreenPrintStatValue           ;; 02:5b7b $cc $cf $5a
     ld   HL, wD846                                     ;; 02:5b7e $21 $46 $d8
     inc  [HL]                                          ;; 02:5b81 $34
     pop  HL                                            ;; 02:5b82 $e1
@@ -4390,7 +4390,7 @@ jmp_02_66ab:
     ret  NZ                                            ;; 02:66bf $c0
     ld   A, D                                          ;; 02:66c0 $7a
     cp   A, $0f                                        ;; 02:66c1 $fe $0f
-    call NC, showStatusBar                             ;; 02:66c3 $d4 $3a $7a
+    call NC, disableStatusBarEffect                    ;; 02:66c3 $d4 $3a $7a
     ld   A, [wMenuStateCurrentFunction]                ;; 02:66c6 $fa $53 $d8
     and  A, $7f                                        ;; 02:66c9 $e6 $7f
     ld   [wMenuStateCurrentFunction], A                ;; 02:66cb $ea $53 $d8
@@ -4539,7 +4539,7 @@ windowDrawBottom:
 windowDrawFinished:
     ld   A, D                                          ;; 02:67b7 $7a
     cp   A, $0f                                        ;; 02:67b8 $fe $0f
-    call NC, hideStatusBar                             ;; 02:67ba $d4 $44 $7a
+    call NC, enableStatusBarEffect                     ;; 02:67ba $d4 $44 $7a
     ld   A, $03                                        ;; 02:67bd $3e $03
     ld   [wDrawWindowStep], A                          ;; 02:67bf $ea $54 $d8
     ld   DE, $800                                      ;; 02:67c2 $11 $00 $08
@@ -6223,7 +6223,7 @@ openSaveScreen:
 openLoadSaveScreen_common:
     call call_02_667a                                  ;; 02:71e9 $cd $7a $66
     ret  NZ                                            ;; 02:71ec $c0
-    call clearStatusBar                                ;; 02:71ed $cd $57 $51
+    call showFullscreenWindow                          ;; 02:71ed $cd $57 $51
     ld   A, $1b                                        ;; 02:71f0 $3e $1b
     ld   [wDialogType], A                              ;; 02:71f2 $ea $4a $d8
     ld   B, $01                                        ;; 02:71f5 $06 $01
@@ -6274,7 +6274,7 @@ jp_02_71fb:
     ld   HL, wGirlName                                 ;; 02:724f $21 $a2 $d7
     ld   B, $04                                        ;; 02:7252 $06 $04
     call copyHLtoDEtimesB                              ;; 02:7254 $cd $51 $74
-    call call_02_7735                                  ;; 02:7257 $cd $35 $77
+    call getGraphicsAndMusicState                      ;; 02:7257 $cd $35 $77
     ld   HL, wSRAMSaveHeader                           ;; 02:725a $21 $a7 $d7
     call formatSaveHeader                              ;; 02:725d $cd $72 $77
     push HL                                            ;; 02:7260 $e5
@@ -6538,7 +6538,7 @@ call_02_7421:
     call getEquippedItemAnimationType_trampoline       ;; 02:742d $cd $df $2e
     call hideAndSaveMenuMetasprites                    ;; 02:7430 $cd $51 $6b
     call clearSaveLoadScreen                           ;; 02:7433 $cd $4c $56
-    call call_02_7a27                                  ;; 02:7436 $cd $27 $7a
+    call hideFullscreenWindow                          ;; 02:7436 $cd $27 $7a
     ld   B, $00                                        ;; 02:7439 $06 $00
     call call_02_6c98                                  ;; 02:743b $cd $98 $6c
     ret                                                ;; 02:743e $c9
@@ -7508,7 +7508,7 @@ playWindowErrorSound:
     ret                                                ;; 02:7a26 $c9
 
 hideFullscreenWindow:
-    call showStatusBar                                 ;; 02:7a27 $cd $3a $7a
+    call disableStatusBarEffect                        ;; 02:7a27 $cd $3a $7a
     ld   A, [wVideoWYBackup]                           ;; 02:7a2a $fa $84 $d8
     ld   [wVideoWY], A                                 ;; 02:7a2d $ea $a9 $c0
     ld   DE, $00                                       ;; 02:7a30 $11 $00 $00
@@ -7521,7 +7521,7 @@ disableStatusBarEffect:
     push DE                                            ;; 02:7a3a $d5
     ld   D, $8e                                        ;; 02:7a3b $16 $8e
     ld   E, $7e                                        ;; 02:7a3d $1e $7e
-    call lcdcEffectChangeLCY                           ;; 02:7a3f $cd $4e $7a
+    call lcdcEffectChangeLYC                           ;; 02:7a3f $cd $4e $7a
     pop  DE                                            ;; 02:7a42 $d1
     ret                                                ;; 02:7a43 $c9
 
@@ -7529,7 +7529,7 @@ enableStatusBarEffect:
     push DE                                            ;; 02:7a44 $d5
     ld   D, $7e                                        ;; 02:7a45 $16 $7e
     ld   E, $8e                                        ;; 02:7a47 $1e $8e
-    call lcdcEffectChangeLCY                           ;; 02:7a49 $cd $4e $7a
+    call lcdcEffectChangeLYC                           ;; 02:7a49 $cd $4e $7a
     pop  DE                                            ;; 02:7a4c $d1
     ret                                                ;; 02:7a4d $c9
 
@@ -7544,12 +7544,12 @@ lcdcEffectChangeLYC:
 .loop:
     ld   A, [HL+]                                      ;; 02:7a55 $2a
     cp   A, D                                          ;; 02:7a56 $ba
-    jr   Z, lcdcEffectChangeLCY.change                 ;; 02:7a57 $28 $09
+    jr   Z, lcdcEffectChangeLYC.change                 ;; 02:7a57 $28 $09
     inc  HL                                            ;; 02:7a59 $23
     inc  HL                                            ;; 02:7a5a $23
     inc  HL                                            ;; 02:7a5b $23
     dec  B                                             ;; 02:7a5c $05
-    jr   NZ, lcdcEffectChangeLCY.loop                  ;; 02:7a5d $20 $f6
+    jr   NZ, lcdcEffectChangeLYC.loop                  ;; 02:7a5d $20 $f6
     pop  BC                                            ;; 02:7a5f $c1
     pop  HL                                            ;; 02:7a60 $e1
     ret                                                ;; 02:7a61 $c9
@@ -7922,7 +7922,7 @@ titleScreenIntroScrollLoop:
     ret                                                ;; 02:7cba $c9
 .a_button:
     ld   B, $24                                        ;; 02:7cbb $06 $24
-    ld   DE, $9800 ;@=ptr _SCRN0                       ;; 02:7cbd $11 $00 $98
+    ld   DE, _SCRN0 ;@=ptr _SCRN0                      ;; 02:7cbd $11 $00 $98
     call clearVRAMArea                                 ;; 02:7cc0 $cd $6a $56
     ld   A, $03                                        ;; 02:7cc3 $3e $03
     ld   [wTitleScreenState], A                        ;; 02:7cc5 $ea $86 $d8

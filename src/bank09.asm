@@ -8,7 +8,7 @@ INCLUDE "include/constants.inc"
 SECTION "bank09", ROMX[$4000], BANK[$09]
 ;@call_to_bank_jumptable
     call_to_bank_target projectileRunLogicForAll       ;; 09:4000 pP
-    call_to_bank_target call_09_4012                   ;; 09:4002 pP
+    call_to_bank_target processPhysicsForObject_9      ;; 09:4002 pP
     call_to_bank_target projectileLoadTiles            ;; 09:4004 pP
     call_to_bank_target projectileDestroy              ;; 09:4006 pP
     call_to_bank_target spawnProjectile                ;; 09:4008 pP
@@ -18,7 +18,7 @@ SECTION "bank09", ROMX[$4000], BANK[$09]
     call_to_bank_target projectileCollisionHandling    ;; 09:4010 pP
 
 processPhysicsForObject_9:
-    call call_00_0695                                  ;; 09:4012 $cd $95 $06
+    call processPhysicsForObject                       ;; 09:4012 $cd $95 $06
     ret                                                ;; 09:4015 $c9
 
 projectileRunLogicForAll:
@@ -108,7 +108,7 @@ projectileRunLogic:
     push DE                                            ;; 09:4085 $d5
     push BC                                            ;; 09:4086 $c5
     call getObjectDirection                            ;; 09:4087 $cd $99 $0c
-    call call_00_2982                                  ;; 09:408a $cd $82 $29
+    call getBitNumber                                  ;; 09:408a $cd $82 $29
     pop  BC                                            ;; 09:408d $c1
     ld   B, A                                          ;; 09:408e $47
     push BC                                            ;; 09:408f $c5
@@ -133,9 +133,9 @@ projectileRunLogic:
     pop  HL                                            ;; 09:40a8 $e1
     pop  AF                                            ;; 09:40a9 $f1
     ld   C, A                                          ;; 09:40aa $4f
-    call call_00_2982                                  ;; 09:40ab $cd $82 $29
+    call getBitNumber                                  ;; 09:40ab $cd $82 $29
     add  A, B                                          ;; 09:40ae $80
-    call getA_And3Power2                               ;; 09:40af $cd $9a $29
+    call getBitValue                                   ;; 09:40af $cd $9a $29
     ld   B, A                                          ;; 09:40b2 $47
     ld   A, C                                          ;; 09:40b3 $79
     and  A, $f0                                        ;; 09:40b4 $e6 $f0
@@ -210,16 +210,16 @@ projectileRunLogic:
     push DE                                            ;; 09:4114 $d5
     ld   C, [HL]                                       ;; 09:4115 $4e
     call getObjectDirection                            ;; 09:4116 $cd $99 $0c
-    call call_00_2982                                  ;; 09:4119 $cd $82 $29
+    call getBitNumber                                  ;; 09:4119 $cd $82 $29
     ld   B, A                                          ;; 09:411c $47
     pop  DE                                            ;; 09:411d $d1
     pop  HL                                            ;; 09:411e $e1
     pop  AF                                            ;; 09:411f $f1
     push HL                                            ;; 09:4120 $e5
     ld   C, A                                          ;; 09:4121 $4f
-    call call_00_2982                                  ;; 09:4122 $cd $82 $29
+    call getBitNumber                                  ;; 09:4122 $cd $82 $29
     add  A, B                                          ;; 09:4125 $80
-    call getA_And3Power2                               ;; 09:4126 $cd $9a $29
+    call getBitValue                                   ;; 09:4126 $cd $9a $29
     ld   B, A                                          ;; 09:4129 $47
     ld   A, C                                          ;; 09:412a $79
     and  A, $f0                                        ;; 09:412b $e6 $f0
@@ -268,7 +268,7 @@ projectileRunLogic:
     ld   B, $00                                        ;; 09:4166 $06 $00
     ld   A, L                                          ;; 09:4168 $7d
     srl  A                                             ;; 09:4169 $cb $3f
-    call getA_And3Power2                               ;; 09:416b $cd $9a $29
+    call getBitValue                                   ;; 09:416b $cd $9a $29
     bit  0, L                                          ;; 09:416e $cb $45
     jr   Z, .jr_09_4174                                ;; 09:4170 $28 $02
     ld   B, $01                                        ;; 09:4172 $06 $01

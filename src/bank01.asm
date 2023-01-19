@@ -11,7 +11,7 @@ SECTION "bank01", ROMX[$4000], BANK[$01]
 data_01_4000:
     call_to_bank_target runMainInputHandler            ;; 01:4000 pP
     call_to_bank_target call_01_48be                   ;; 01:4002 pP
-    call_to_bank_target call_01_4996                   ;; 01:4004 pP
+    call_to_bank_target processPhysicsForPlayer        ;; 01:4004 pP
     call_to_bank_target updatePlayerPostion            ;; 01:4006 pP
     call_to_bank_target createPlayerObject             ;; 01:4008 pP
     call_to_bank_target call_01_4f7b                   ;; 01:400a pP
@@ -1223,7 +1223,7 @@ call_01_48be:
     ld   C, $04                                        ;; 01:4954 $0e $04
     ld   B, $00                                        ;; 01:4956 $06 $00
     pop  AF                                            ;; 01:4958 $f1
-    call call_00_0695                                  ;; 01:4959 $cd $95 $06
+    call processPhysicsForObject                       ;; 01:4959 $cd $95 $06
     ret                                                ;; 01:495c $c9
 
 getModifiedPlayerState:
@@ -1271,7 +1271,7 @@ updatePlayerPostion:
 processPhysicsForPlayer:
     ld   B, $00                                        ;; 01:4996 $06 $00
     ld   C, $04                                        ;; 01:4998 $0e $04
-    call call_00_0695                                  ;; 01:499a $cd $95 $06
+    call processPhysicsForObject                       ;; 01:499a $cd $95 $06
     ret                                                ;; 01:499d $c9
 
 runMainInputHandler:
@@ -2256,7 +2256,7 @@ call_01_4f7b:
     ld   D, A                                          ;; 01:503b $57
     push DE                                            ;; 01:503c $d5
     call GetObjectX                                    ;; 01:503d $cd $2d $0c
-    call call_01_5088                                  ;; 01:5040 $cd $88 $50
+    call snapPositionToNearestTile8_1                  ;; 01:5040 $cd $88 $50
     pop  DE                                            ;; 01:5043 $d1
     ld   E, A                                          ;; 01:5044 $5f
     ld   A, $04                                        ;; 01:5045 $3e $04
@@ -2267,7 +2267,7 @@ call_01_4f7b:
     ld   E, A                                          ;; 01:504c $5f
     push DE                                            ;; 01:504d $d5
     call GetObjectY                                    ;; 01:504e $cd $3e $0c
-    call call_01_5088                                  ;; 01:5051 $cd $88 $50
+    call snapPositionToNearestTile8_1                  ;; 01:5051 $cd $88 $50
     pop  DE                                            ;; 01:5054 $d1
     ld   D, A                                          ;; 01:5055 $57
     ld   A, $02                                        ;; 01:5056 $3e $02
@@ -2278,7 +2278,7 @@ call_01_4f7b:
     ld   E, A                                          ;; 01:505d $5f
     push DE                                            ;; 01:505e $d5
     call GetObjectY                                    ;; 01:505f $cd $3e $0c
-    call call_01_5088                                  ;; 01:5062 $cd $88 $50
+    call snapPositionToNearestTile8_1                  ;; 01:5062 $cd $88 $50
     pop  DE                                            ;; 01:5065 $d1
     ld   D, A                                          ;; 01:5066 $57
     ld   A, $01                                        ;; 01:5067 $3e $01
@@ -2289,7 +2289,7 @@ call_01_4f7b:
     ld   D, A                                          ;; 01:506e $57
     push DE                                            ;; 01:506f $d5
     call GetObjectX                                    ;; 01:5070 $cd $2d $0c
-    call call_01_5088                                  ;; 01:5073 $cd $88 $50
+    call snapPositionToNearestTile8_1                  ;; 01:5073 $cd $88 $50
     pop  DE                                            ;; 01:5076 $d1
     ld   E, A                                          ;; 01:5077 $5f
     ld   A, $08                                        ;; 01:5078 $3e $08
@@ -2400,7 +2400,7 @@ setPlayerNormalSprite:
     ld   E, A                                          ;; 01:5122 $5f
     push DE                                            ;; 01:5123 $d5
     call getPlayerDirection                            ;; 01:5124 $cd $ab $02
-    call call_00_28f0                                  ;; 01:5127 $cd $f0 $28
+    call showFollower                                  ;; 01:5127 $cd $f0 $28
     pop  DE                                            ;; 01:512a $d1
     ret  NZ                                            ;; 01:512b $c0
     and  A, $0f                                        ;; 01:512c $e6 $0f
@@ -2422,7 +2422,7 @@ setPlayerOnChocobo:
     call setObjectCollisionFlags                       ;; 01:514b $cd $86 $0c
     xor  A, A                                          ;; 01:514e $af
     ld   [wPlayerDamagedTimer], A                      ;; 01:514f $ea $d2 $c4
-    call call_00_28d5                                  ;; 01:5152 $cd $d5 $28
+    call hideFollower                                  ;; 01:5152 $cd $d5 $28
     ret                                                ;; 01:5155 $c9
 
 setPlayerOnChocobot:
@@ -2438,7 +2438,7 @@ setPlayerOnChocobot:
     call setObjectCollisionFlags                       ;; 01:516b $cd $86 $0c
     xor  A, A                                          ;; 01:516e $af
     ld   [wPlayerDamagedTimer], A                      ;; 01:516f $ea $d2 $c4
-    call call_00_28d5                                  ;; 01:5172 $cd $d5 $28
+    call hideFollower                                  ;; 01:5172 $cd $d5 $28
     ret                                                ;; 01:5175 $c9
 
 setPlayerOnChocoboat:
@@ -2454,7 +2454,7 @@ setPlayerOnChocoboat:
     call setObjectCollisionFlags                       ;; 01:518b $cd $86 $0c
     xor  A, A                                          ;; 01:518e $af
     ld   [wPlayerDamagedTimer], A                      ;; 01:518f $ea $d2 $c4
-    call call_00_28d5                                  ;; 01:5192 $cd $d5 $28
+    call hideFollower                                  ;; 01:5192 $cd $d5 $28
     ret                                                ;; 01:5195 $c9
 
 call_01_5196:
@@ -2567,7 +2567,7 @@ attackTileChain:
     ld   A, [wPlayerCurrentAttackTypeAndFacing]        ;; 01:5236 $fa $5c $cf
     sub  A, $0a                                        ;; 01:5239 $d6 $0a
     srl  A                                             ;; 01:523b $cb $3f
-    call getA_And3Power2                               ;; 01:523d $cd $9a $29
+    call getBitValue                                   ;; 01:523d $cd $9a $29
     or   A, $10                                        ;; 01:5240 $f6 $10
     ld   C, A                                          ;; 01:5242 $4f
     ld   A, [wMainGameStateFlags]                      ;; 01:5243 $fa $a1 $c0
@@ -2579,7 +2579,7 @@ attackTileChain:
     ld   A, C                                          ;; 01:5250 $79
     ld   C, $04                                        ;; 01:5251 $0e $04
     ld   B, $00                                        ;; 01:5253 $06 $00
-    call call_00_0695                                  ;; 01:5255 $cd $95 $06
+    call processPhysicsForObject                       ;; 01:5255 $cd $95 $06
     ld   C, $04                                        ;; 01:5258 $0e $04
     call snapObjectToNearestTile8                      ;; 01:525a $cd $ba $29
     pop  AF                                            ;; 01:525d $f1
