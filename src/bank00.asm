@@ -636,13 +636,13 @@ hideSpritesBehindWindow_trampoline:
 showSpritesBehindWindow_trampoline:
     jp_to_bank 02, showSpritesBehindWindow             ;; 00:0435 $f5 $3e $05 $c3 $06 $1f
 
-call_00_043b:
+spriteShuffleDoFlash_trampoline:
     ld   A, [wBossFirstObjectID]                       ;; 00:043b $fa $e8 $d3
     cp   A, $ff                                        ;; 00:043e $fe $ff
     ret  NZ                                            ;; 00:0440 $c0
     jp_to_bank 02, call_02_44fa                        ;; 00:0441 $f5 $3e $02 $c3 $06 $1f
 
-call_00_0447:
+spriteShuffleShowHidden_trampoline:
     jp_to_bank 02, call_02_44c4                        ;; 00:0447 $f5 $3e $03 $c3 $06 $1f
 
 setSpriteScrollSpeed:
@@ -678,7 +678,7 @@ getBackgroundDrawAddress:
     ld   C, A                                          ;; 00:0473 $4f
     ld   B, $00                                        ;; 00:0474 $06 $00
     add  HL, BC                                        ;; 00:0476 $09
-    ld   BC, $9800                                     ;; 00:0477 $01 $00 $98
+    ld   BC, $9800 ;@=ptr _SCRN0                       ;; 00:0477 $01 $00 $98
     add  HL, BC                                        ;; 00:047a $09
     ret                                                ;; 00:047b $c9
 
@@ -962,6 +962,7 @@ getObjectNearestTilePosition:
     ret                                                ;; 00:0610 $c9
 
 ; Update the object at index C to the position at D,E
+; Object orientation/flags set to A & 7f
 ; Also does something with B
 updateObjectPosition:
     ld   L, A                                          ;; 00:0611 $6f
@@ -1067,11 +1068,10 @@ getObjectPositionAndCollisionInfo:
     dec  E                                             ;; 00:0693 $1d
     ret                                                ;; 00:0694 $c9
 
-; Main entry point for hit detection? Or possibly it's an "updateObjects" function?
 ; A = ?
 ; B = ?
 ; C = Object ID for the changed/checked object
-call_00_0695:
+processPhysicsForObject:
     ld   D, A                                          ;; 00:0695 $57
     ld   E, B                                          ;; 00:0696 $58
     ld   A, C                                          ;; 00:0697 $79
@@ -5274,7 +5274,7 @@ InitPreIntEnable:
     call CopyHL_to_DE_size_BC                          ;; 00:2027 $cd $40 $2b
     call copyInitialVRAMTiles                          ;; 00:202a $cd $40 $21
     ld   A, $7f                                        ;; 00:202d $3e $7f
-    ld   HL, $9800                                     ;; 00:202f $21 $00 $98
+    ld   HL, $9800 ;@=ptr _SCRN0                       ;; 00:202f $21 $00 $98
     ld   BC, $800                                      ;; 00:2032 $01 $00 $08
     call FillHL_with_A_times_BC                        ;; 00:2035 $cd $54 $2b
     ld   A, $00                                        ;; 00:2038 $3e $00
@@ -6791,58 +6791,47 @@ playSFX:
     ldh  [hSFX], A                                     ;; 00:297f $e0 $92
     ret                                                ;; 00:2981 $c9
 
-; 0 -> 3
-; 1 -> 0
-; 2 -> 1
-; 3 -> 0
-; 4 -> 2
-; 5 -> 0
-; 6 -> 1
-; 7 -> 0
-; ... etc
-; All in all it returns 50% 0, 25% 1, 12.5% 2, and 12.5% 3
-; Gets the lowest set bit number of the first three bits, with 0 treated as 8.
-call_00_2982:
+; 01->00, 02->01, 04->02, 08->03
+; Only works for the lowest set bit of bits 0 to 3.
+getBitNumber:
     bit  0, A                                          ;; 00:2982 $cb $47
     jr   NZ, .jr_00_2991                               ;; 00:2984 $20 $0b
     bit  1, A                                          ;; 00:2986 $cb $4f
     jr   NZ, .jr_00_2994                               ;; 00:2988 $20 $0a
     bit  2, A                                          ;; 00:298a $cb $57
     jr   NZ, .jr_00_2997                               ;; 00:298c $20 $09
+;.bit_3:
     ld   A, $03                                        ;; 00:298e $3e $03
     ret                                                ;; 00:2990 $c9
-.jr_00_2991:
+.bit_0:
     ld   A, $00                                        ;; 00:2991 $3e $00
     ret                                                ;; 00:2993 $c9
-.jr_00_2994:
+.bit_1:
     ld   A, $01                                        ;; 00:2994 $3e $01
     ret                                                ;; 00:2996 $c9
-.jr_00_2997:
+.bit_2:
     ld   A, $02                                        ;; 00:2997 $3e $02
     ret                                                ;; 00:2999 $c9
 
-; A & 3:
-; 0 -> 1
-; 1 -> 2
-; 2 -> 4
-; 3 -> 8
-; Probably considered the inverse of the above function
-getA_And3Power2:
+; 00->01, 01->02, 02->04, 03->08
+; Only works for bits 0 to 3.
+getBitValue:
     and  A, $03                                        ;; 00:299a $e6 $03
     jr   Z, .jr_00_29a9                                ;; 00:299c $28 $0b
     cp   A, $01                                        ;; 00:299e $fe $01
     jr   Z, .jr_00_29ac                                ;; 00:29a0 $28 $0a
     cp   A, $02                                        ;; 00:29a2 $fe $02
     jr   Z, .jr_00_29af                                ;; 00:29a4 $28 $09
+;.bit_3:
     ld   A, $08                                        ;; 00:29a6 $3e $08
     ret                                                ;; 00:29a8 $c9
-.jr_00_29a9:
+.bit_0:
     ld   A, $01                                        ;; 00:29a9 $3e $01
     ret                                                ;; 00:29ab $c9
-.jr_00_29ac:
+.bit_1:
     ld   A, $02                                        ;; 00:29ac $3e $02
     ret                                                ;; 00:29ae $c9
-.jr_00_29af:
+.bit_2:
     ld   A, $04                                        ;; 00:29af $3e $04
     ret                                                ;; 00:29b1 $c9
 
@@ -7877,7 +7866,7 @@ drawWindow_trampoline:
 windowMenuStartSpecial_trampoline:
     jp_to_bank 02, windowMenuStartSpecial              ;; 00:30b1 $f5 $3e $15 $c3 $06 $1f
 
-call_00_30b7:
+windowPrintMenuText_trampoline:
     jp_to_bank 02, call_02_5b68                        ;; 00:30b7 $f5 $3e $16 $c3 $06 $1f
 
 initStartingStatsAndTimers_trampoline:
@@ -7949,7 +7938,7 @@ drawWillBarCharge_trampoline:
 drawEmptyWillBar_trampoline:
     jp_to_bank 02, drawEmptyWillBar                    ;; 00:314d $f5 $3e $2f $c3 $06 $1f
 
-InitPostIntEnable_trampoline:
+titleScreenInit_trampoline:
     jp_to_bank 02, titleScreenInit                     ;; 00:3153 $f5 $3e $30 $c3 $06 $1f
 
 gameStateTitleScreen_trampoline:
@@ -9183,7 +9172,7 @@ tilePositionToWindowVRAMaddress:
     add  A, L                                          ;; 00:38d5 $85
     ld   E, A                                          ;; 00:38d6 $5f
     ld   D, H                                          ;; 00:38d7 $54
-    ld   HL, $9c00                                     ;; 00:38d8 $21 $00 $9c
+    ld   HL, $9c00 ;@=ptr _SCRN1                       ;; 00:38d8 $21 $00 $9c
     add  HL, DE                                        ;; 00:38db $19
     scf                                                ;; 00:38dc $37
     ret                                                ;; 00:38dd $c9
@@ -9701,7 +9690,7 @@ clearNamesAndScriptFlags:
     jr   NZ, clearNamesAndScriptFlags.loop_flags       ;; 00:3bc8 $20 $fc
     ret                                                ;; 00:3bca $c9
 
-call_00_3bcb:
+opCodeFFPrintTextOption:
     pop  HL                                            ;; 00:3bcb $e1
     call call_00_30b7                                  ;; 00:3bcc $cd $b7 $30
     ret                                                ;; 00:3bcf $c9

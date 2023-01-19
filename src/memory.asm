@@ -423,10 +423,11 @@ wRoomScriptTableHigh:
 wRoomClearedStatus:
     ds 128                                             ;; c400
 
-wC480:
+; Sprite shuffling to flash instead of permanently hide is implemented by moving them offscreen in rotation if there are two many on a line.
+wSpriteShuffleScratch:
     ds 32                                              ;; c480
 
-wC4A0:
+wSpriteShuffleHiddenSpriteAddressLow:
     ds 1                                               ;; c4a0
 
 ; "It takes all the running you can do, to keep in the same place.
@@ -436,7 +437,8 @@ wSpriteScrollSpeed:
     ds 1                                               ;; c4a1
 
 ; Sprites are hidden by moving them offscreen vertically.
-hiddenSpritesYPositions:
+; This is used to shuffle sprites so they flash instead of just disappearing when the line limit is exceeded.
+wSpriteShufflehiddenSpritesYPositions:
     ds 46                                              ;; c4a2
 
 wFlyingSwordSpecialOriginalLocationX:
@@ -1587,13 +1589,14 @@ hSoundEffectLoopCounterChannel1:
 hSoundEffectLoopCounterChannel4:
     ds 93                                              ;; ff9d
 
-hFFFA:
+; These next three are used as values for signed math. BadBoy understands this, yet still adds them here.
+hUnusedFFFA:
     ds 2                                               ;; fffa
 
-hFFFC:
+hUnusedFFFC:
     ds 1                                               ;; fffc
 
-hFFFD:
+hUnusedFFFD:
     ds 1                                               ;; fffd
 
 ; Used as the stack location at init for exactly one call, but also used as -2.

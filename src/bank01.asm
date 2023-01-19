@@ -1268,7 +1268,7 @@ updatePlayerPostion:
     call updateObjectPosition                          ;; 01:4992 $cd $11 $06
     ret                                                ;; 01:4995 $c9
 
-call_01_4996:
+processPhysicsForPlayer:
     ld   B, $00                                        ;; 01:4996 $06 $00
     ld   C, $04                                        ;; 01:4998 $0e $04
     call call_00_0695                                  ;; 01:499a $cd $95 $06

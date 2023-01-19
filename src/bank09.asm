@@ -17,7 +17,7 @@ SECTION "bank09", ROMX[$4000], BANK[$09]
     call_to_bank_target getProjectilePower             ;; 09:400e ??
     call_to_bank_target projectileCollisionHandling    ;; 09:4010 pP
 
-call_09_4012:
+processPhysicsForObject_9:
     call call_00_0695                                  ;; 09:4012 $cd $95 $06
     ret                                                ;; 09:4015 $c9
 

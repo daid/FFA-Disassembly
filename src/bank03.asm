@@ -1977,7 +1977,7 @@ updateObjectPosition_3:
     call updateObjectPosition                          ;; 03:4af1 $cd $11 $06
     ret                                                ;; 03:4af4 $c9
 
-call_03_4af5:
+processPhysicsForObject_3:
     call call_00_0695                                  ;; 03:4af5 $cd $95 $06
     ret                                                ;; 03:4af8 $c9
 
