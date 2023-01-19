@@ -801,7 +801,8 @@ showSpritesBehindWindow:
     pop  BC                                            ;; 02:44af $c1
     ret                                                ;; 02:44b0 $c9
 
-call_02_44b1:
+; HL = OAM location of sprite's Y coordinate
+spriteShuffleShowSprite:
     push AF                                            ;; 02:44b1 $f5
     push DE                                            ;; 02:44b2 $d5
     push HL                                            ;; 02:44b3 $e5
@@ -817,7 +818,8 @@ call_02_44b1:
     pop  AF                                            ;; 02:44c2 $f1
     ret                                                ;; 02:44c3 $c9
 
-call_02_44c4:
+; Sprites hidden by the shuffling routine are moved to y=$ce so any sprites with that y value should be restored.
+spriteShuffleShowHidden:
     ld   HL, wOAMBuffer                                ;; 02:44c4 $21 $00 $c0
     ld   B, $28                                        ;; 02:44c7 $06 $28
     ld   A, $ce                                        ;; 02:44c9 $3e $ce
@@ -830,7 +832,7 @@ call_02_44c4:
     jr   NZ, call_02_44c4.loop                         ;; 02:44d4 $20 $f8
     ret                                                ;; 02:44d6 $c9
 
-call_02_44d7:
+spriteShuffleHideSprite:
     ld   A, [wC4A0]                                    ;; 02:44d7 $fa $a0 $c4
     cp   A, $ff                                        ;; 02:44da $fe $ff
     jr   NZ, .jr_02_44e2                               ;; 02:44dc $20 $04
@@ -854,7 +856,7 @@ call_02_44d7:
     pop  HL                                            ;; 02:44f8 $e1
     ret                                                ;; 02:44f9 $c9
 
-call_02_44fa:
+spriteShuffleDoFlash:
     ld   HL, wC480                                     ;; 02:44fa $21 $80 $c4
     ld   B, $14                                        ;; 02:44fd $06 $14
     ld   A, $00                                        ;; 02:44ff $3e $00
@@ -2349,11 +2351,12 @@ call_02_50b5:
     ld   [wMenuStateCurrentFunction], A                ;; 02:5153 $ea $53 $d8
     ret                                                ;; 02:5156 $c9
 
-clearStatusBar:
+; Used by Save/Load/Status windows to fullscreen the hardware Window
+showFullscreenWindow:
     ld   A, [wVideoWY]                                 ;; 02:5157 $fa $a9 $c0
     ld   [wVideoWYBackup], A                           ;; 02:515a $ea $84 $d8
     ld   B, $40                                        ;; 02:515d $06 $40
-    ld   HL, $9c00                                     ;; 02:515f $21 $00 $9c
+    ld   HL, $9c00 ;@=ptr _SCRN1                       ;; 02:515f $21 $00 $9c
 .loop:
     push BC                                            ;; 02:5162 $c5
     push HL                                            ;; 02:5163 $e5
@@ -2368,7 +2371,7 @@ clearStatusBar:
     ld   [wVideoWY], A                                 ;; 02:5170 $ea $a9 $c0
     ret                                                ;; 02:5173 $c9
 
-call_02_5174:
+vendorShowBuyMessage:
     ld   A, $0f                                        ;; 02:5174 $3e $0f
     ld   [wDialogType], A                              ;; 02:5176 $ea $4a $d8
     call drawWindow                                    ;; 02:5179 $cd $00 $67
@@ -3880,7 +3883,7 @@ call_02_5aaf:
     call drawText                                      ;; 02:5ac9 $cd $77 $37
     jp   jp_02_5922                                    ;; 02:5acc $c3 $22 $59
 
-call_02_5acf:
+windowStatusScreenPrintStatValue:
     ld   A, [wD846]                                    ;; 02:5acf $fa $46 $d8
     ld   C, A                                          ;; 02:5ad2 $4f
     ld   B, $00                                        ;; 02:5ad3 $06 $00
@@ -3980,7 +3983,8 @@ jp_02_5b2c:
     ld   B, A                                          ;; 02:5b64 $47
     call runVirtualScriptOpCodeFF                      ;; 02:5b65 $cd $69 $3c
 
-call_02_5b68:
+; This isn't the only way of printing text to a window, but it is commonly used for plain text.
+windowPrintMenuText:
     push HL                                            ;; 02:5b68 $e5
     call loadRegisterState2                            ;; 02:5b69 $cd $a7 $6d
     push BC                                            ;; 02:5b6c $c5
@@ -6874,7 +6878,8 @@ call_02_75f4:
     call drawText                                      ;; 02:7629 $cd $77 $37
     ret                                                ;; 02:762c $c9
 
-call_02_762d:
+; Formatted for display in the Status window, with a blank in the middle
+initStatusHPMPCurrentAndMax:
     ld   HL, wStatusHPMPCurrentAndMax                  ;; 02:762d $21 $93 $d7
     ld   A, [wHPHigh]                                  ;; 02:7630 $fa $b3 $d7
     ld   D, A                                          ;; 02:7633 $57
@@ -6908,7 +6913,8 @@ call_02_762d:
     ld   [HL], D                                       ;; 02:765a $72
     ret                                                ;; 02:765b $c9
 
-call_02_765c:
+; Called five times to print HP, Max HP, Nothing, MP, Max MP
+statusWindowPrintHPMPCurOrMax:
     push AF                                            ;; 02:765c $f5
     push HL                                            ;; 02:765d $e5
     push BC                                            ;; 02:765e $c5
@@ -7042,7 +7048,8 @@ call_02_7693:
     xor  A, A                                          ;; 02:7733 $af
     ret                                                ;; 02:7734 $c9
 
-call_02_7735:
+; Used to save game
+getGraphicsAndMusicState:
     ld   HL, wDialogX                                  ;; 02:7735 $21 $a7 $d4
     push HL                                            ;; 02:7738 $e5
     call getMapNumber                                  ;; 02:7739 $cd $0a $22
@@ -7500,7 +7507,7 @@ playWindowErrorSound:
     pop  AF                                            ;; 02:7a25 $f1
     ret                                                ;; 02:7a26 $c9
 
-call_02_7a27:
+hideFullscreenWindow:
     call showStatusBar                                 ;; 02:7a27 $cd $3a $7a
     ld   A, [wVideoWYBackup]                           ;; 02:7a2a $fa $84 $d8
     ld   [wVideoWY], A                                 ;; 02:7a2d $ea $a9 $c0
@@ -7509,7 +7516,8 @@ call_02_7a27:
     call showSpritesBehindWindow_trampoline            ;; 02:7a36 $cd $35 $04
     ret                                                ;; 02:7a39 $c9
 
-showStatusBar:
+; If there's a window open (like the SELECT window) it would be inconvenient to have its sprites hidden.
+disableStatusBarEffect:
     push DE                                            ;; 02:7a3a $d5
     ld   D, $8e                                        ;; 02:7a3b $16 $8e
     ld   E, $7e                                        ;; 02:7a3d $1e $7e
@@ -7517,7 +7525,7 @@ showStatusBar:
     pop  DE                                            ;; 02:7a42 $d1
     ret                                                ;; 02:7a43 $c9
 
-hideStatusBar:
+enableStatusBarEffect:
     push DE                                            ;; 02:7a44 $d5
     ld   D, $7e                                        ;; 02:7a45 $16 $7e
     ld   E, $8e                                        ;; 02:7a47 $1e $8e
@@ -7526,7 +7534,9 @@ hideStatusBar:
     ret                                                ;; 02:7a4d $c9
 
 ; Used to hide/show the status bar
-lcdcEffectChangeLCY:
+; D = search (old) value
+; E = new value
+lcdcEffectChangeLYC:
     push HL                                            ;; 02:7a4e $e5
     push BC                                            ;; 02:7a4f $c5
     ld   HL, wLCDCEffectBuffer                         ;; 02:7a50 $21 $a0 $d3
@@ -7912,7 +7922,7 @@ titleScreenIntroScrollLoop:
     ret                                                ;; 02:7cba $c9
 .a_button:
     ld   B, $24                                        ;; 02:7cbb $06 $24
-    ld   DE, $9800                                     ;; 02:7cbd $11 $00 $98
+    ld   DE, $9800 ;@=ptr _SCRN0                       ;; 02:7cbd $11 $00 $98
     call clearVRAMArea                                 ;; 02:7cc0 $cd $6a $56
     ld   A, $03                                        ;; 02:7cc3 $3e $03
     ld   [wTitleScreenState], A                        ;; 02:7cc5 $ea $86 $d8

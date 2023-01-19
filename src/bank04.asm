@@ -1250,7 +1250,7 @@ processHitBoss:
     ld   A, $40                                        ;; 04:4732 $3e $40
     ret                                                ;; 04:4734 $c9
 
-call_04_4735:
+processPhysicsForObject_4:
     call call_00_0695                                  ;; 04:4735 $cd $95 $06
     ret                                                ;; 04:4738 $c9
 
