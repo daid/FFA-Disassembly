@@ -500,7 +500,8 @@ LCDCInterrupt:
 checkPlayfieldBoundaryCollision_trampoline:
     jp_to_bank 04, checkPlayfieldBoundaryCollision     ;; 00:036f $f5 $3e $06 $c3 $64 $1f
 
-call_00_0375:
+; Calls destoryObject on most objects, except the player, companion, their attacks, and reserved (0 to 6) objects.
+removeNpcObjects:
     ld   C, $00                                        ;; 00:0375 $0e $00
     ld   B, $14                                        ;; 00:0377 $06 $14
 .loop:
@@ -1987,6 +1988,7 @@ playerMetaspriteTable_bank0:
     db   $20, $02, $00, $00, $00, $02, $00, $00        ;; 00:0bc5 ????????
     db   $02, $00, $00, $02                            ;; 00:0bcd ?...
 
+; Initializes all 20 objects and then reserves the first seven
 initObjects:
     ld   HL, wObjectRuntimeData                        ;; 00:0bd1 $21 $00 $c2
     ld   DE, wOAMBuffer                                ;; 00:0bd4 $11 $00 $c0
