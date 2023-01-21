@@ -3783,6 +3783,7 @@ call_03_5499:
     jr   NZ, .jr_03_54de                               ;; 03:54b8 $20 $24
     bit  2, A                                          ;; 03:54ba $cb $57
     jr   NZ, .jr_03_54ee                               ;; 03:54bc $20 $30
+; .south:
     ld   A, D                                          ;; 03:54be $7a
     add  A, H                                          ;; 03:54bf $84
     ld   D, A                                          ;; 03:54c0 $57
@@ -3794,7 +3795,7 @@ call_03_5499:
     jr   Z, .jr_03_54fc                                ;; 03:54c8 $28 $32
     ld   A, $18                                        ;; 03:54ca $3e $18
     jr   .jr_03_54fc                                   ;; 03:54cc $18 $2e
-.jr_03_54ce:
+.east:
     ld   A, D                                          ;; 03:54ce $7a
     add  A, L                                          ;; 03:54cf $85
     ld   D, A                                          ;; 03:54d0 $57
@@ -3806,7 +3807,7 @@ call_03_5499:
     jr   Z, .jr_03_54fc                                ;; 03:54d8 $28 $22
     ld   A, $41                                        ;; 03:54da $3e $41
     jr   .jr_03_54fc                                   ;; 03:54dc $18 $1e
-.jr_03_54de:
+.west:
     ld   A, D                                          ;; 03:54de $7a
     sub  A, L                                          ;; 03:54df $95
     ld   D, A                                          ;; 03:54e0 $57
@@ -3818,7 +3819,7 @@ call_03_5499:
     jr   Z, .jr_03_54fc                                ;; 03:54e8 $28 $12
     ld   A, $82                                        ;; 03:54ea $3e $82
     jr   .jr_03_54fc                                   ;; 03:54ec $18 $0e
-.jr_03_54ee:
+.north:
     ld   A, D                                          ;; 03:54ee $7a
     sub  A, H                                          ;; 03:54ef $94
     ld   D, A                                          ;; 03:54f0 $57
@@ -3919,7 +3920,9 @@ call_03_555e:
     ld   A, $00                                        ;; 03:5571 $3e $00
     ret                                                ;; 03:5573 $c9
 
-call_03_5574:
+; C = object number
+; Return: A = object direction rotated 90 degrees clockwise
+getObjectDirectionRotatedClockwise:
     call getObjectDirection                            ;; 03:5574 $cd $99 $0c
     and  A, $0f                                        ;; 03:5577 $e6 $0f
     bit  0, A                                          ;; 03:5579 $cb $47
@@ -3928,19 +3931,22 @@ call_03_5574:
     jr   NZ, .jr_03_558b                               ;; 03:557f $20 $0a
     bit  2, A                                          ;; 03:5581 $cb $57
     jr   NZ, .jr_03_558e                               ;; 03:5583 $20 $09
+; .south:
     ld   A, $02                                        ;; 03:5585 $3e $02
     ret                                                ;; 03:5587 $c9
-.jr_03_5588:
+.east:
     ld   A, $08                                        ;; 03:5588 $3e $08
     ret                                                ;; 03:558a $c9
-.jr_03_558b:
+.west:
     ld   A, $04                                        ;; 03:558b $3e $04
     ret                                                ;; 03:558d $c9
-.jr_03_558e:
+.north:
     ld   A, $01                                        ;; 03:558e $3e $01
     ret                                                ;; 03:5590 $c9
 
-call_03_5591:
+; C = object number
+; Return: A = object direction rotated 90 degrees counterclockwise
+getObjectDirectionRotatedCounterclockwise:
     call getObjectDirection                            ;; 03:5591 $cd $99 $0c
     and  A, $0f                                        ;; 03:5594 $e6 $0f
     bit  0, A                                          ;; 03:5596 $cb $47
@@ -3949,19 +3955,22 @@ call_03_5591:
     jr   NZ, .jr_03_55a8                               ;; 03:559c $20 $0a
     bit  2, A                                          ;; 03:559e $cb $57
     jr   NZ, .jr_03_55ab                               ;; 03:55a0 $20 $09
+; .south:
     ld   A, $01                                        ;; 03:55a2 $3e $01
     ret                                                ;; 03:55a4 $c9
-.jr_03_55a5:
+.east:
     ld   A, $04                                        ;; 03:55a5 $3e $04
     ret                                                ;; 03:55a7 $c9
-.jr_03_55a8:
+.west:
     ld   A, $08                                        ;; 03:55a8 $3e $08
     ret                                                ;; 03:55aa $c9
-.jr_03_55ab:
+.north:
     ld   A, $02                                        ;; 03:55ab $3e $02
     ret                                                ;; 03:55ad $c9
 
-call_03_55ae:
+; C = object number
+; Return: A = object direction rotated 180 degrees
+getObjectDirectionReversed:
     call getObjectDirection                            ;; 03:55ae $cd $99 $0c
     and  A, $0f                                        ;; 03:55b1 $e6 $0f
     bit  0, A                                          ;; 03:55b3 $cb $47
@@ -3970,15 +3979,16 @@ call_03_55ae:
     jr   NZ, .jr_03_55c5                               ;; 03:55b9 $20 $0a
     bit  2, A                                          ;; 03:55bb $cb $57
     jr   NZ, .jr_03_55c8                               ;; 03:55bd $20 $09
+; .south:
     ld   A, $04                                        ;; 03:55bf $3e $04
     ret                                                ;; 03:55c1 $c9
-.jr_03_55c2:
+.east:
     ld   A, $02                                        ;; 03:55c2 $3e $02
     ret                                                ;; 03:55c4 $c9
-.jr_03_55c5:
+.west:
     ld   A, $01                                        ;; 03:55c5 $3e $01
     ret                                                ;; 03:55c7 $c9
-.jr_03_55c8:
+.north:
     ld   A, $08                                        ;; 03:55c8 $3e $08
     ret                                                ;; 03:55ca $c9
 
