@@ -1981,7 +1981,11 @@ processPhysicsForObject_3:
     call processPhysicsForObject                       ;; 03:4af5 $cd $95 $06
     ret                                                ;; 03:4af8 $c9
 
-call_03_4af9:
+; C = npc number
+; DE = YX coordinates
+; This seems to be a wrapper for updateObjectPosition that takes a npc number instead of an object number.
+; As far as I can tell, it's only used for companion npcs, which always have the same object number anyway.
+updateNpcPosition:
     push DE                                            ;; 03:4af9 $d5
     ld   A, C                                          ;; 03:4afa $79
     ld   L, A                                          ;; 03:4afb $6f
@@ -2213,7 +2217,10 @@ runRoomScriptIfAllEnemiesDefeated:
     call runRoomScriptOnAllEnemiesDefeated             ;; 03:4c34 $cd $a7 $24
     ret                                                ;; 03:4c37 $c9
 
-call_03_4c38:
+; Called when entering any new room.
+; The call to checkAllEnemiesDefeated is probably necessary so the script does not fire in an empty room.
+; If you have a follower it also teleports them to your location.
+initEnemiesCounterAndMoveFolower:
     call checkAllEnemiesDefeated                       ;; 03:4c38 $cd $e0 $4b
     ld   C, $07                                        ;; 03:4c3b $0e $07
     call getObjectCollisionFlags                       ;; 03:4c3d $cd $6d $0c

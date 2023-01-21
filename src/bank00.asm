@@ -6634,7 +6634,7 @@ checkForMovingObjects:
     or   A, A                                          ;; 00:28a8 $b7
     ret                                                ;; 00:28a9 $c9
 
-call_00_28aa:
+updateNpcPosition_trampoline:
     jp_to_bank 03, call_03_4af9                        ;; 00:28aa $f5 $3e $0d $c3 $35 $1f
 
 moveObjectsDuringScript_trampoline:
@@ -6724,7 +6724,7 @@ runRoomScriptIfAllEnemiesDefeated_trampoline:
     ret  NZ                                            ;; 00:291f $c0
     jp_to_bank 03, runRoomScriptIfAllEnemiesDefeated   ;; 00:2920 $f5 $3e $13 $c3 $35 $1f
 
-call_00_2926:
+initEnemiesCounterAndMoveFolower_trampoline:
     jp_to_bank 03, call_03_4c38                        ;; 00:2926 $f5 $3e $14 $c3 $35 $1f
 
 inflictVulnerableNpcsSlep_trampoline:
