@@ -1956,7 +1956,7 @@ gameStateSpecialAttack:
     bit  3, D                                          ;; 01:4e26 $cb $5a
     jr   NZ, .jr_01_4e59                               ;; 01:4e28 $20 $2f
     jr   .jr_01_4e68                                   ;; 01:4e2a $18 $3c
-.jr_01_4e2c:
+.east:
     ld   C, $04                                        ;; 01:4e2c $0e $04
     call checkPlayfieldBoundaryCollision_trampoline    ;; 01:4e2e $cd $6f $03
     ld   A, B                                          ;; 01:4e31 $78
@@ -1965,7 +1965,7 @@ gameStateSpecialAttack:
     jr   Z, .jr_01_4e68                                ;; 01:4e36 $28 $30
     pop  AF                                            ;; 01:4e38 $f1
     jr   .jr_01_4e7a                                   ;; 01:4e39 $18 $3f
-.jr_01_4e3b:
+.west:
     ld   C, $04                                        ;; 01:4e3b $0e $04
     call checkPlayfieldBoundaryCollision_trampoline    ;; 01:4e3d $cd $6f $03
     ld   A, B                                          ;; 01:4e40 $78
@@ -1974,7 +1974,7 @@ gameStateSpecialAttack:
     jr   Z, .jr_01_4e68                                ;; 01:4e45 $28 $21
     pop  AF                                            ;; 01:4e47 $f1
     jr   .jr_01_4e7a                                   ;; 01:4e48 $18 $30
-.jr_01_4e4a:
+.north:
     ld   C, $04                                        ;; 01:4e4a $0e $04
     call checkPlayfieldBoundaryCollision_trampoline    ;; 01:4e4c $cd $6f $03
     ld   A, B                                          ;; 01:4e4f $78
@@ -1983,7 +1983,7 @@ gameStateSpecialAttack:
     jr   Z, .jr_01_4e68                                ;; 01:4e54 $28 $12
     pop  AF                                            ;; 01:4e56 $f1
     jr   .jr_01_4e7a                                   ;; 01:4e57 $18 $21
-.jr_01_4e59:
+.south:
     ld   C, $04                                        ;; 01:4e59 $0e $04
     call checkPlayfieldBoundaryCollision_trampoline    ;; 01:4e5b $cd $6f $03
     ld   A, B                                          ;; 01:4e5e $78
@@ -3563,21 +3563,22 @@ call_01_579c:
     jr   NZ, .jr_01_57ce                               ;; 01:57b8 $20 $14
     bit  2, C                                          ;; 01:57ba $cb $51
     jr   NZ, .jr_01_57d6                               ;; 01:57bc $20 $18
+; .south:
     call call_01_571c                                  ;; 01:57be $cd $1c $57
     ret  NZ                                            ;; 01:57c1 $c0
     call call_01_575b                                  ;; 01:57c2 $cd $5b $57
     ret                                                ;; 01:57c5 $c9
-.jr_01_57c6:
+.east:
     call call_01_5661                                  ;; 01:57c6 $cd $61 $56
     ret  NZ                                            ;; 01:57c9 $c0
     call call_01_56a0                                  ;; 01:57ca $cd $a0 $56
     ret                                                ;; 01:57cd $c9
-.jr_01_57ce:
+.west:
     call call_01_56a0                                  ;; 01:57ce $cd $a0 $56
     ret  NZ                                            ;; 01:57d1 $c0
     call call_01_5661                                  ;; 01:57d2 $cd $61 $56
     ret                                                ;; 01:57d5 $c9
-.jr_01_57d6:
+.north:
     call call_01_575b                                  ;; 01:57d6 $cd $5b $57
     ret  NZ                                            ;; 01:57d9 $c0
     call call_01_571c                                  ;; 01:57da $cd $1c $57

@@ -283,7 +283,7 @@ runMainInputHandler_trampoline:
 call_00_0232:
     jp_to_bank 01, call_01_48be                        ;; 00:0232 $f5 $3e $01 $c3 $d7 $1e
 
-processPhysicsForPlayer_1_trampoline:
+processPhysicsForPlayer_trampoline:
     jp_to_bank 01, processPhysicsForPlayer             ;; 00:0238 $f5 $3e $02 $c3 $d7 $1e
 
 updatePlayerPostion_trampoline:
@@ -500,7 +500,8 @@ LCDCInterrupt:
 checkPlayfieldBoundaryCollision_trampoline:
     jp_to_bank 04, checkPlayfieldBoundaryCollision     ;; 00:036f $f5 $3e $06 $c3 $64 $1f
 
-call_00_0375:
+; Calls destoryObject on most objects, except the player, companion, their attacks, and reserved (0 to 6) objects.
+removeNpcObjects:
     ld   C, $00                                        ;; 00:0375 $0e $00
     ld   B, $14                                        ;; 00:0377 $06 $14
 .loop:
@@ -525,7 +526,11 @@ call_00_0375:
     jr   NZ, call_00_0375.loop                         ;; 00:0397 $20 $e0
     ret                                                ;; 00:0399 $c9
 
-call_00_039a:
+; B = object number b
+; C = object number c
+; Return: DE = Y and X distances between the two objects.
+; Return: A = flags (unknown)
+checkObjectsCollisionDirection:
     push BC                                            ;; 00:039a $c5
     call GetObjectY                                    ;; 00:039b $cd $3e $0c
     ld   D, A                                          ;; 00:039e $57
@@ -576,7 +581,7 @@ call_00_039a:
     and  A, $0f                                        ;; 00:03da $e6 $0f
     pop  DE                                            ;; 00:03dc $d1
     ret                                                ;; 00:03dd $c9
-.jr_00_03de:
+.b_leftof_c:
     ld   A, E                                          ;; 00:03de $7b
     cpl                                                ;; 00:03df $2f
     inc  A                                             ;; 00:03e0 $3c
@@ -589,7 +594,7 @@ call_00_039a:
 .jr_00_03e9:
     ld   A, $0a                                        ;; 00:03e9 $3e $0a
     ret                                                ;; 00:03eb $c9
-.jr_00_03ec:
+.b_below_c:
     bit  7, E                                          ;; 00:03ec $cb $7b
     jr   NZ, .jr_00_03fe                               ;; 00:03ee $20 $0e
     ld   A, D                                          ;; 00:03f0 $7a
@@ -604,7 +609,7 @@ call_00_039a:
 .jr_00_03fb:
     ld   A, $05                                        ;; 00:03fb $3e $05
     ret                                                ;; 00:03fd $c9
-.jr_00_03fe:
+.b_below_and_leftof_c:
     ld   A, E                                          ;; 00:03fe $7b
     cp   A, D                                          ;; 00:03ff $ba
     jr   Z, .jr_00_0407                                ;; 00:0400 $28 $05
@@ -1983,6 +1988,7 @@ playerMetaspriteTable_bank0:
     db   $20, $02, $00, $00, $00, $02, $00, $00        ;; 00:0bc5 ????????
     db   $02, $00, $00, $02                            ;; 00:0bcd ?...
 
+; Initializes all 20 objects and then reserves the first seven
 initObjects:
     ld   HL, wObjectRuntimeData                        ;; 00:0bd1 $21 $00 $c2
     ld   DE, wOAMBuffer                                ;; 00:0bd4 $11 $00 $c0
@@ -2185,7 +2191,7 @@ setObjectMetaspritePointer:
     ld   [HL], D                                       ;; 00:0cd1 $72
     ret                                                ;; 00:0cd2 $c9
 
-getObjectOffset0a:
+getObjectSliding:
     ld   L, C                                          ;; 00:0cd3 $69
     ld   H, $00                                        ;; 00:0cd4 $26 $00
     add  HL, HL                                        ;; 00:0cd6 $29
@@ -2199,7 +2205,7 @@ getObjectOffset0a:
     ld   A, [HL-]                                      ;; 00:0ce2 $3a
     ret                                                ;; 00:0ce3 $c9
 
-setObjectOffset0a:
+setObjectSliding:
     ld   L, C                                          ;; 00:0ce4 $69
     ld   H, $00                                        ;; 00:0ce5 $26 $00
     add  HL, HL                                        ;; 00:0ce7 $29
@@ -4931,7 +4937,7 @@ processBackgroundRenderRequests:
     ld   A, [wBackgroundRenderRequestCount]            ;; 00:1df0 $fa $e8 $ce
     ld   B, A                                          ;; 00:1df3 $47
     ld   HL, wBackgroundRenderRequests                 ;; 00:1df4 $21 $e8 $c8
-.jr_00_1df7:
+.loop_outer:
     push BC                                            ;; 00:1df7 $c5
     push HL                                            ;; 00:1df8 $e5
     ld   C, [HL]                                       ;; 00:1df9 $4e
@@ -4951,7 +4957,7 @@ processBackgroundRenderRequests:
     ld   [$2100], A                                    ;; 00:1e09 $ea $00 $21
     ld   C, $44                                        ;; 00:1e0c $0e $44
 ; check rLY
-.jr_00_1e0e:
+.loop_inner:
     ldh  A, [C]                                        ;; 00:1e0e $f2
     cp   A, $8c                                        ;; 00:1e0f $fe $8c
     jr   NC, .jr_00_1e49                               ;; 00:1e11 $30 $36
@@ -5278,7 +5284,7 @@ InitPreIntEnable:
     ld   BC, $800                                      ;; 00:2032 $01 $00 $08
     call FillHL_with_A_times_BC                        ;; 00:2035 $cd $54 $2b
     ld   A, $00                                        ;; 00:2038 $3e $00
-    ld   HL, $fe00                                     ;; 00:203a $21 $00 $fe
+    ld   HL, _OAMRAM ;@=ptr _OAMRAM                      ;; 00:203a $21 $00 $fe
     ld   B, $a0                                        ;; 00:203d $06 $a0
     call fillMemory                                    ;; 00:203f $cd $5d $2b
     ld   A, $c0                                        ;; 00:2042 $3e $c0
@@ -5374,7 +5380,7 @@ initialVRAMLoad:
     dw   $87f0, gfxChest + $30                         ;; 00:213c pP.. $1b
 
 copyInitialVRAMTiles:
-    ld   A, $08                                        ;; 00:2140 $3e $08
+    ld   A, BANK(gfxHand) ;@=bank gfxHand              ;; 00:2140 $3e $08
     ld   [$2100], A                                    ;; 00:2142 $ea $00 $21
     ld   HL, initialVRAMLoad                           ;; 00:2145 $21 $d0 $20
     ld   B, $1c                                        ;; 00:2148 $06 $1c
@@ -5405,7 +5411,7 @@ DisableLCD:
     ldh  A, [rLY]                                      ;; 00:2168 $f0 $44
     cp   A, $92                                        ;; 00:216a $fe $92
     jr   NC, DisableLCD                                ;; 00:216c $30 $fa
-.jr_00_216e:
+.loop:
     ldh  A, [rLY]                                      ;; 00:216e $f0 $44
     cp   A, $92                                        ;; 00:2170 $fe $92
     jr   C, .jr_00_216e                                ;; 00:2172 $38 $fa
@@ -6628,7 +6634,7 @@ checkForMovingObjects:
     or   A, A                                          ;; 00:28a8 $b7
     ret                                                ;; 00:28a9 $c9
 
-call_00_28aa:
+updateNpcPosition_trampoline:
     jp_to_bank 03, call_03_4af9                        ;; 00:28aa $f5 $3e $0d $c3 $35 $1f
 
 moveObjectsDuringScript_trampoline:
@@ -6718,7 +6724,7 @@ runRoomScriptIfAllEnemiesDefeated_trampoline:
     ret  NZ                                            ;; 00:291f $c0
     jp_to_bank 03, runRoomScriptIfAllEnemiesDefeated   ;; 00:2920 $f5 $3e $13 $c3 $35 $1f
 
-call_00_2926:
+initEnemiesCounterAndMoveFolower_trampoline:
     jp_to_bank 03, call_03_4c38                        ;; 00:2926 $f5 $3e $14 $c3 $35 $1f
 
 inflictVulnerableNpcsSlep_trampoline:
@@ -7571,13 +7577,13 @@ setAToZero:
     ld   A, $00                                        ;; 00:2f09 $3e $00
     ret                                                ;; 00:2f0b $c9
 
-call_00_2f0c:
+getSelectedX:
     ld   A, [wCF5A]                                    ;; 00:2f0c $fa $5a $cf
     ld   C, A                                          ;; 00:2f0f $4f
     call GetObjectX                                    ;; 00:2f10 $cd $2d $0c
     ret                                                ;; 00:2f13 $c9
 
-call_00_2f14:
+getSelectedY:
     ld   A, [wCF5A]                                    ;; 00:2f14 $fa $5a $cf
     ld   C, A                                          ;; 00:2f17 $4f
     call GetObjectY                                    ;; 00:2f18 $cd $3e $0c
@@ -7585,7 +7591,7 @@ call_00_2f14:
     db   $fa, $5a, $cf, $4f, $cd, $4f, $0c, $c9        ;; 00:2f1c ????????
     db   $21, $5a, $cf, $4e, $cd, $5d, $0c, $c9        ;; 00:2f24 ????????
 
-call_00_2f2c:
+getSelectedDirection:
     ld   A, [wCF5A]                                    ;; 00:2f2c $fa $5a $cf
     ld   C, A                                          ;; 00:2f2f $4f
     call getObjectDirection                            ;; 00:2f30 $cd $99 $0c
@@ -7902,7 +7908,7 @@ getEquippedWeaponBonusTypes_trampoline:
     jp_to_bank 02, getEquippedWeaponBonusTypes         ;; 00:30f3 $f5 $3e $20 $c3 $06 $1f
     db   $f5, $3e, $21, $c3, $06, $1f                  ;; 00:30f9 ??????
 
-clearStatusBarTrampoline:
+showFullscreenWindow_trampoline:
     jp_to_bank 02, showFullscreenWindow                ;; 00:30ff $f5 $3e $22 $c3 $06 $1f
     db   $f5, $3e, $23, $c3, $06, $1f                  ;; 00:3105 ??????
 

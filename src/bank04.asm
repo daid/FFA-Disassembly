@@ -497,7 +497,7 @@ bossChoosePattern:
     call processBossDeath                              ;; 04:42ac $cd $75 $45
     ret                                                ;; 04:42af $c9
 
-call_04_42b0:
+bossNextPatternStep:
     push HL                                            ;; 04:42b0 $e5
     ld   A, H                                          ;; 04:42b1 $7c
     ld   [wBossCurrentKeyframePointer.high], A         ;; 04:42b2 $ea $3d $d4
@@ -533,7 +533,10 @@ setBossMovement:
     ld   [wBossCurrentPatternStep], A                  ;; 04:42e2 $ea $ec $d3
     ret                                                ;; 04:42e5 $c9
 
-call_04_42e6:
+; A = object number
+; Return: HL = Stats Runtime Data pointer
+; Return: Z on success, NZ if not found
+getBossStatsRuntimeDataByObjectID:
     ld   B, $0e                                        ;; 04:42e6 $06 $0e
     ld   HL, wBossObjectsStatsRuntimeData              ;; 04:42e8 $21 $42 $d4
     ld   DE, $06                                       ;; 04:42eb $11 $06 $00

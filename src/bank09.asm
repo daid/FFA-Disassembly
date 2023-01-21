@@ -295,6 +295,10 @@ projectileRunLogic:
     call destroyObject                                 ;; 09:4193 $cd $e3 $0a
     ret                                                ;; 09:4196 $c9
 
+; DE = projectile runtime data pointer
+; Sets projectile runtime data offset 3 to zero
+; Return: HL = projectile data 0e+1 pointer
+; Return: A = first byte from that data structure
 call_09_4197:
     ld   HL, $03                                       ;; 09:4197 $21 $03 $00
     add  HL, DE                                        ;; 09:419a $19
@@ -312,6 +316,7 @@ call_09_4197:
     ld   A, [HL+]                                      ;; 09:41ab $2a
     ret                                                ;; 09:41ac $c9
 
+; A = object number
 call_09_41ad:
     push DE                                            ;; 09:41ad $d5
     ld   C, A                                          ;; 09:41ae $4f
@@ -323,13 +328,14 @@ call_09_41ad:
     jr   NZ, .jr_09_41c4                               ;; 09:41b8 $20 $0a
     bit  2, A                                          ;; 09:41ba $cb $57
     jr   NZ, .jr_09_41cd                               ;; 09:41bc $20 $0f
+; .south:
     ld   A, D                                          ;; 09:41be $7a
     cpl                                                ;; 09:41bf $2f
     inc  A                                             ;; 09:41c0 $3c
     ld   D, E                                          ;; 09:41c1 $53
     ld   E, A                                          ;; 09:41c2 $5f
     ret                                                ;; 09:41c3 $c9
-.jr_09_41c4:
+.west:
     ld   A, D                                          ;; 09:41c4 $7a
     cpl                                                ;; 09:41c5 $2f
     inc  A                                             ;; 09:41c6 $3c
@@ -339,7 +345,7 @@ call_09_41ad:
     inc  A                                             ;; 09:41ca $3c
     ld   E, A                                          ;; 09:41cb $5f
     ret                                                ;; 09:41cc $c9
-.jr_09_41cd:
+.north:
     ld   A, E                                          ;; 09:41cd $7b
     cpl                                                ;; 09:41ce $2f
     inc  A                                             ;; 09:41cf $3c
@@ -347,7 +353,8 @@ call_09_41ad:
     ld   D, A                                          ;; 09:41d1 $57
     ret                                                ;; 09:41d2 $c9
 
-call_09_41d3:
+; A = object number
+getDEMinusObjectYX:
     ld   C, A                                          ;; 09:41d3 $4f
     push DE                                            ;; 09:41d4 $d5
     push BC                                            ;; 09:41d5 $c5

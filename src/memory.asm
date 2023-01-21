@@ -319,7 +319,8 @@ wSoundsMusicRestorePitchChannel1:
 ; 05: X position
 ; 06-07: Meta sprite pointer
 ; 08-09: Shadow OAM memory location
-; 0a-15: Unknown
+; 0a: Sliding on ice or in the minecart. If sliding the top nibble is set to 9 and bottom is set to a direction same as offset 00
+; 0b-15: Unknown
 ; The seventh entry is either the first Npc or your follower, if present.
 wObjectRuntimeData:
     ds 112                                             ;; c200
@@ -437,8 +438,8 @@ wSpriteScrollSpeed:
     ds 1                                               ;; c4a1
 
 ; Sprites are hidden by moving them offscreen vertically.
-; This is used to shuffle sprites so they flash instead of just disappearing when the line limit is exceeded.
-wSpriteShufflehiddenSpritesYPositions:
+; This is used to hide sprites behind windows and to flash sprites when the line limit is exceeded.
+hiddenSpritesYPositions:
     ds 46                                              ;; c4a2
 
 wFlyingSwordSpecialOriginalLocationX:
@@ -555,7 +556,9 @@ wEquippedWeaponAnimationType:
 wEquippedItemAnimationType:
     ds 1                                               ;; cf59
 
-wCF5A:
+; Might only be used by player attacks.
+; Since attacks can be made up of many objects (such as the four sparkles when casting a spell) this tracks the one code is currently focussing on.
+wSelectedObjectID:
     ds 1                                               ;; cf5a
 
 wCF5B:
@@ -708,16 +711,16 @@ wBossIframes:
 wBossCurrentPatternStep:
     ds 1                                               ;; d3ec
 
-wD3ED:
+wBossCurrentKeyframeStep:
     ds 1                                               ;; d3ed
 
-wD3EE:
+wBoosCurrentHeadActionStep:
     ds 1                                               ;; d3ee
 
 wD3EF:
     ds 1                                               ;; d3ef
 
-wD3F0:
+wBossCurrentKeyframeHoldtime:
     ds 2                                               ;; d3f0
 
 wDamageDoneToBoss:

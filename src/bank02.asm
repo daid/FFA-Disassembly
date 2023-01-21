@@ -5359,7 +5359,11 @@ getWindowData:
     pop  DE                                            ;; 02:6c96 $d1
     ret                                                ;; 02:6c97 $c9
 
-call_02_6c98:
+; Only does the set if the previous function finished (bit 7 is clear).
+; If the new function is 0 it also does some some processing to resume the game.
+; B = new function number
+; Return: nothing, but callers often check wMenuStateCurrentFunction afterwards.
+setMenuStateCurrentFunction:
     push AF                                            ;; 02:6c98 $f5
     ld   A, [wMenuStateCurrentFunction]                ;; 02:6c99 $fa $53 $d8
     and  A, $80                                        ;; 02:6c9c $e6 $80
@@ -5378,7 +5382,8 @@ call_02_6c98:
     pop  AF                                            ;; 02:6cb9 $f1
     ret                                                ;; 02:6cba $c9
 
-call_02_6cbb:
+; When you select something in the ITEM or MAGIC window this equips it.
+menuSelectButtonBItemOrSpell:
     ld   A, [wEquippedWeapon]                          ;; 02:6cbb $fa $e9 $d6
     dec  A                                             ;; 02:6cbe $3d
     call getEquippedWeaponAnimationType_trampoline     ;; 02:6cbf $cd $d9 $2e
@@ -7516,8 +7521,7 @@ hideFullscreenWindow:
     call showSpritesBehindWindow_trampoline            ;; 02:7a36 $cd $35 $04
     ret                                                ;; 02:7a39 $c9
 
-; If there's a window open (like the SELECT window) it would be inconvenient to have its sprites hidden.
-disableStatusBarEffect:
+enableStatusBarEffect:
     push DE                                            ;; 02:7a3a $d5
     ld   D, $8e                                        ;; 02:7a3b $16 $8e
     ld   E, $7e                                        ;; 02:7a3d $1e $7e
@@ -7525,7 +7529,8 @@ disableStatusBarEffect:
     pop  DE                                            ;; 02:7a42 $d1
     ret                                                ;; 02:7a43 $c9
 
-enableStatusBarEffect:
+; If there's a window open (like the SELECT window) it would be inconvenient to have its sprites hidden.
+disableStatusBarEffect:
     push DE                                            ;; 02:7a44 $d5
     ld   D, $7e                                        ;; 02:7a45 $16 $7e
     ld   E, $8e                                        ;; 02:7a47 $1e $8e
