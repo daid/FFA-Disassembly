@@ -710,16 +710,16 @@ wBossIframes:
 wBossCurrentPatternStep:
     ds 1                                               ;; d3ec
 
-wD3ED:
+wBossCurrentKeyframeStep:
     ds 1                                               ;; d3ed
 
-wD3EE:
+wBoosCurrentHeadActionStep:
     ds 1                                               ;; d3ee
 
 wD3EF:
     ds 1                                               ;; d3ef
 
-wD3F0:
+wBossCurrentKeyframeHoldtime:
     ds 2                                               ;; d3f0
 
 wDamageDoneToBoss:
