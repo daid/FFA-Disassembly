@@ -2191,7 +2191,7 @@ setObjectMetaspritePointer:
     ld   [HL], D                                       ;; 00:0cd1 $72
     ret                                                ;; 00:0cd2 $c9
 
-getObjectOffset0a:
+getObjectSliding:
     ld   L, C                                          ;; 00:0cd3 $69
     ld   H, $00                                        ;; 00:0cd4 $26 $00
     add  HL, HL                                        ;; 00:0cd6 $29
@@ -2205,7 +2205,7 @@ getObjectOffset0a:
     ld   A, [HL-]                                      ;; 00:0ce2 $3a
     ret                                                ;; 00:0ce3 $c9
 
-setObjectOffset0a:
+setObjectSliding:
     ld   L, C                                          ;; 00:0ce4 $69
     ld   H, $00                                        ;; 00:0ce5 $26 $00
     add  HL, HL                                        ;; 00:0ce7 $29
@@ -4937,7 +4937,7 @@ processBackgroundRenderRequests:
     ld   A, [wBackgroundRenderRequestCount]            ;; 00:1df0 $fa $e8 $ce
     ld   B, A                                          ;; 00:1df3 $47
     ld   HL, wBackgroundRenderRequests                 ;; 00:1df4 $21 $e8 $c8
-.jr_00_1df7:
+.loop_outer:
     push BC                                            ;; 00:1df7 $c5
     push HL                                            ;; 00:1df8 $e5
     ld   C, [HL]                                       ;; 00:1df9 $4e
@@ -4957,7 +4957,7 @@ processBackgroundRenderRequests:
     ld   [$2100], A                                    ;; 00:1e09 $ea $00 $21
     ld   C, $44                                        ;; 00:1e0c $0e $44
 ; check rLY
-.jr_00_1e0e:
+.loop_inner:
     ldh  A, [C]                                        ;; 00:1e0e $f2
     cp   A, $8c                                        ;; 00:1e0f $fe $8c
     jr   NC, .jr_00_1e49                               ;; 00:1e11 $30 $36
@@ -5284,7 +5284,7 @@ InitPreIntEnable:
     ld   BC, $800                                      ;; 00:2032 $01 $00 $08
     call FillHL_with_A_times_BC                        ;; 00:2035 $cd $54 $2b
     ld   A, $00                                        ;; 00:2038 $3e $00
-    ld   HL, $fe00                                     ;; 00:203a $21 $00 $fe
+    ld   HL, _OAMRAM ;@=ptr _OAMRAM                      ;; 00:203a $21 $00 $fe
     ld   B, $a0                                        ;; 00:203d $06 $a0
     call fillMemory                                    ;; 00:203f $cd $5d $2b
     ld   A, $c0                                        ;; 00:2042 $3e $c0
@@ -5380,7 +5380,7 @@ initialVRAMLoad:
     dw   $87f0, gfxChest + $30                         ;; 00:213c pP.. $1b
 
 copyInitialVRAMTiles:
-    ld   A, $08                                        ;; 00:2140 $3e $08
+    ld   A, BANK(gfxHand) ;@=bank gfxHand              ;; 00:2140 $3e $08
     ld   [$2100], A                                    ;; 00:2142 $ea $00 $21
     ld   HL, initialVRAMLoad                           ;; 00:2145 $21 $d0 $20
     ld   B, $1c                                        ;; 00:2148 $06 $1c
@@ -5411,7 +5411,7 @@ DisableLCD:
     ldh  A, [rLY]                                      ;; 00:2168 $f0 $44
     cp   A, $92                                        ;; 00:216a $fe $92
     jr   NC, DisableLCD                                ;; 00:216c $30 $fa
-.jr_00_216e:
+.loop:
     ldh  A, [rLY]                                      ;; 00:216e $f0 $44
     cp   A, $92                                        ;; 00:2170 $fe $92
     jr   C, .jr_00_216e                                ;; 00:2172 $38 $fa
