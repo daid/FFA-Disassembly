@@ -20,14 +20,14 @@ SECTION "bank03", ROMX[$4000], BANK[$03]
     call_to_bank_target objectBehaviorMove             ;; 03:4014 pP
     call_to_bank_target call_03_4aed                   ;; 03:4016 pP
     call_to_bank_target updateObjectPosition_3         ;; 03:4018 pP
-    call_to_bank_target call_03_4af9                   ;; 03:401a pP
+    call_to_bank_target updateNpcPosition              ;; 03:401a pP
     call_to_bank_target moveObjectsDuringScript        ;; 03:401c pP
     call_to_bank_target giveFollower                   ;; 03:401e pP
     call_to_bank_target inflictVulnerableNpcsSlep      ;; 03:4020 ??
     call_to_bank_target inflictVulnerableNpcsMute      ;; 03:4022 ??
     call_to_bank_target getEmptyObjectsMovingDuringScriptSlot ;; 03:4024 pP
     call_to_bank_target runRoomScriptIfAllEnemiesDefeated ;; 03:4026 pP
-    call_to_bank_target call_03_4c38                   ;; 03:4028 pP
+    call_to_bank_target initEnemiesCounterAndMoveFolower ;; 03:4028 pP
     call_to_bank_target getNpcScriptIndex              ;; 03:402a pP
 
 npcRunBehaviorForAll:
@@ -90,7 +90,7 @@ npcRunBehavior:
     or   A, D                                          ;; 03:4079 $b2
     jr   Z, jr_03_40fb                                 ;; 03:407a $28 $7f
     push DE                                            ;; 03:407c $d5
-    call getObjectOffset0a                             ;; 03:407d $cd $d3 $0c
+    call getObjectSliding                              ;; 03:407d $cd $d3 $0c
     pop  DE                                            ;; 03:4080 $d1
     cp   A, $00                                        ;; 03:4081 $fe $00
     jp   NZ, jp_03_40ff                                ;; 03:4083 $c2 $ff $40
@@ -1023,7 +1023,7 @@ call_03_4561:
     pop  BC                                            ;; 03:4587 $c1
     push HL                                            ;; 03:4588 $e5
     push BC                                            ;; 03:4589 $c5
-    call call_00_039a                                  ;; 03:458a $cd $9a $03
+    call checkObjectsCollisionDirection                ;; 03:458a $cd $9a $03
     pop  BC                                            ;; 03:458d $c1
     ld   B, A                                          ;; 03:458e $47
     push BC                                            ;; 03:458f $c5
@@ -1161,7 +1161,7 @@ enemyCollisionHandling:
     ld   A, [wMainGameState]                           ;; 03:465a $fa $a0 $c0
     cp   A, $02                                        ;; 03:465d $fe $02
     jr   NC, .jr_03_46d4                               ;; 03:465f $30 $73
-    call call_00_039a                                  ;; 03:4661 $cd $9a $03
+    call checkObjectsCollisionDirection                ;; 03:4661 $cd $9a $03
     call objectReverseDirection                        ;; 03:4664 $cd $e4 $29
     push AF                                            ;; 03:4667 $f5
     call getPlayerDirection                            ;; 03:4668 $cd $ab $02
@@ -1651,7 +1651,7 @@ call_03_4931:
     ret  Z                                             ;; 03:4943 $c8
     push DE                                            ;; 03:4944 $d5
     push BC                                            ;; 03:4945 $c5
-    call call_00_039a                                  ;; 03:4946 $cd $9a $03
+    call checkObjectsCollisionDirection                ;; 03:4946 $cd $9a $03
     pop  BC                                            ;; 03:4949 $c1
     push BC                                            ;; 03:494a $c5
     push AF                                            ;; 03:494b $f5
@@ -1868,7 +1868,7 @@ processHitNpc:
     ld   L, E                                          ;; 03:4a60 $6b
     pop  BC                                            ;; 03:4a61 $c1
     push HL                                            ;; 03:4a62 $e5
-    call call_00_039a                                  ;; 03:4a63 $cd $9a $03
+    call checkObjectsCollisionDirection                ;; 03:4a63 $cd $9a $03
     pop  HL                                            ;; 03:4a66 $e1
     ld   C, [HL]                                       ;; 03:4a67 $4e
     call setObjectDirection                            ;; 03:4a68 $cd $a6 $0c
@@ -2234,7 +2234,7 @@ initEnemiesCounterAndMoveFolower:
     pop  DE                                            ;; 03:4c4d $d1
     ld   E, A                                          ;; 03:4c4e $5f
     ld   C, $00                                        ;; 03:4c4f $0e $00
-    call call_03_4af9                                  ;; 03:4c51 $cd $f9 $4a
+    call updateNpcPosition                             ;; 03:4c51 $cd $f9 $4a
     ret                                                ;; 03:4c54 $c9
 
 ;@jumptable amount=224
@@ -2650,7 +2650,7 @@ npcStepBackward:
     ld   A, [DE]                                       ;; 03:4f2f $1a
     ld   C, A                                          ;; 03:4f30 $4f
     push BC                                            ;; 03:4f31 $c5
-    call call_03_55ae                                  ;; 03:4f32 $cd $ae $55
+    call getObjectDirectionReversed                    ;; 03:4f32 $cd $ae $55
     pop  BC                                            ;; 03:4f35 $c1
 .jr_03_4f36:
     and  A, $0f                                        ;; 03:4f36 $e6 $0f
@@ -2661,7 +2661,7 @@ npcStepBackward:
     ld   A, $01                                        ;; 03:4f3f $3e $01
     ret  NZ                                            ;; 03:4f41 $c0
     push BC                                            ;; 03:4f42 $c5
-    call call_03_55ae                                  ;; 03:4f43 $cd $ae $55
+    call getObjectDirectionReversed                    ;; 03:4f43 $cd $ae $55
     pop  BC                                            ;; 03:4f46 $c1
     call setObjectDirection                            ;; 03:4f47 $cd $a6 $0c
     ld   A, $02                                        ;; 03:4f4a $3e $02
@@ -2671,7 +2671,7 @@ call_03_4f4d:
     ld   A, [DE]                                       ;; 03:4f4d $1a
     ld   C, A                                          ;; 03:4f4e $4f
     push BC                                            ;; 03:4f4f $c5
-    call call_03_5574                                  ;; 03:4f50 $cd $74 $55
+    call getObjectDirectionRotatedClockwise            ;; 03:4f50 $cd $74 $55
     pop  BC                                            ;; 03:4f53 $c1
     call processPhysicsForObject                       ;; 03:4f54 $cd $95 $06
     ld   A, $00                                        ;; 03:4f57 $3e $00
@@ -2681,7 +2681,7 @@ call_03_4f5a:
     ld   A, [DE]                                       ;; 03:4f5a $1a
     ld   C, A                                          ;; 03:4f5b $4f
     push BC                                            ;; 03:4f5c $c5
-    call call_03_5591                                  ;; 03:4f5d $cd $91 $55
+    call getObjectDirectionRotatedCounterclockwise     ;; 03:4f5d $cd $91 $55
     pop  BC                                            ;; 03:4f60 $c1
     call processPhysicsForObject                       ;; 03:4f61 $cd $95 $06
     ld   A, $00                                        ;; 03:4f64 $3e $00
@@ -2691,7 +2691,7 @@ call_03_4f67:
     ld   A, [DE]                                       ;; 03:4f67 $1a
     ld   C, A                                          ;; 03:4f68 $4f
     push BC                                            ;; 03:4f69 $c5
-    call call_03_55ae                                  ;; 03:4f6a $cd $ae $55
+    call getObjectDirectionReversed                    ;; 03:4f6a $cd $ae $55
     pop  BC                                            ;; 03:4f6d $c1
     call processPhysicsForObject                       ;; 03:4f6e $cd $95 $06
     ld   A, $00                                        ;; 03:4f71 $3e $00
@@ -2707,7 +2707,7 @@ call_03_4f74:
     ld   A, [DE]                                       ;; 03:4f7b $1a
     ld   C, A                                          ;; 03:4f7c $4f
     push BC                                            ;; 03:4f7d $c5
-    call call_03_5574                                  ;; 03:4f7e $cd $74 $55
+    call getObjectDirectionRotatedClockwise            ;; 03:4f7e $cd $74 $55
     pop  BC                                            ;; 03:4f81 $c1
     call processPhysicsForObject                       ;; 03:4f82 $cd $95 $06
     pop  AF                                            ;; 03:4f85 $f1
@@ -3785,11 +3785,11 @@ call_03_5499:
     pop  BC                                            ;; 03:54b0 $c1
     pop  HL                                            ;; 03:54b1 $e1
     bit  0, A                                          ;; 03:54b2 $cb $47
-    jr   NZ, .jr_03_54ce                               ;; 03:54b4 $20 $18
+    jr   NZ, .east                                     ;; 03:54b4 $20 $18
     bit  1, A                                          ;; 03:54b6 $cb $4f
-    jr   NZ, .jr_03_54de                               ;; 03:54b8 $20 $24
+    jr   NZ, .west                                     ;; 03:54b8 $20 $24
     bit  2, A                                          ;; 03:54ba $cb $57
-    jr   NZ, .jr_03_54ee                               ;; 03:54bc $20 $30
+    jr   NZ, .north                                    ;; 03:54bc $20 $30
 ; .south:
     ld   A, D                                          ;; 03:54be $7a
     add  A, H                                          ;; 03:54bf $84
@@ -3933,11 +3933,11 @@ getObjectDirectionRotatedClockwise:
     call getObjectDirection                            ;; 03:5574 $cd $99 $0c
     and  A, $0f                                        ;; 03:5577 $e6 $0f
     bit  0, A                                          ;; 03:5579 $cb $47
-    jr   NZ, .jr_03_5588                               ;; 03:557b $20 $0b
+    jr   NZ, .east                                     ;; 03:557b $20 $0b
     bit  1, A                                          ;; 03:557d $cb $4f
-    jr   NZ, .jr_03_558b                               ;; 03:557f $20 $0a
+    jr   NZ, .west                                     ;; 03:557f $20 $0a
     bit  2, A                                          ;; 03:5581 $cb $57
-    jr   NZ, .jr_03_558e                               ;; 03:5583 $20 $09
+    jr   NZ, .north                                    ;; 03:5583 $20 $09
 ; .south:
     ld   A, $02                                        ;; 03:5585 $3e $02
     ret                                                ;; 03:5587 $c9
@@ -3957,11 +3957,11 @@ getObjectDirectionRotatedCounterclockwise:
     call getObjectDirection                            ;; 03:5591 $cd $99 $0c
     and  A, $0f                                        ;; 03:5594 $e6 $0f
     bit  0, A                                          ;; 03:5596 $cb $47
-    jr   NZ, .jr_03_55a5                               ;; 03:5598 $20 $0b
+    jr   NZ, .east                                     ;; 03:5598 $20 $0b
     bit  1, A                                          ;; 03:559a $cb $4f
-    jr   NZ, .jr_03_55a8                               ;; 03:559c $20 $0a
+    jr   NZ, .west                                     ;; 03:559c $20 $0a
     bit  2, A                                          ;; 03:559e $cb $57
-    jr   NZ, .jr_03_55ab                               ;; 03:55a0 $20 $09
+    jr   NZ, .north                                    ;; 03:55a0 $20 $09
 ; .south:
     ld   A, $01                                        ;; 03:55a2 $3e $01
     ret                                                ;; 03:55a4 $c9
@@ -3981,11 +3981,11 @@ getObjectDirectionReversed:
     call getObjectDirection                            ;; 03:55ae $cd $99 $0c
     and  A, $0f                                        ;; 03:55b1 $e6 $0f
     bit  0, A                                          ;; 03:55b3 $cb $47
-    jr   NZ, .jr_03_55c2                               ;; 03:55b5 $20 $0b
+    jr   NZ, .east                                     ;; 03:55b5 $20 $0b
     bit  1, A                                          ;; 03:55b7 $cb $4f
-    jr   NZ, .jr_03_55c5                               ;; 03:55b9 $20 $0a
+    jr   NZ, .west                                     ;; 03:55b9 $20 $0a
     bit  2, A                                          ;; 03:55bb $cb $57
-    jr   NZ, .jr_03_55c8                               ;; 03:55bd $20 $09
+    jr   NZ, .north                                    ;; 03:55bd $20 $09
 ; .south:
     ld   A, $04                                        ;; 03:55bf $3e $04
     ret                                                ;; 03:55c1 $c9

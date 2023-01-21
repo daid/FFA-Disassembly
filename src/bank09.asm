@@ -128,7 +128,7 @@ projectileRunLogic:
     add  A, E                                          ;; 09:40a1 $83
     ld   E, A                                          ;; 09:40a2 $5f
     ld   A, [HL]                                       ;; 09:40a3 $7e
-    call call_09_41d3                                  ;; 09:40a4 $cd $d3 $41
+    call getDEMinusObjectYX                            ;; 09:40a4 $cd $d3 $41
     pop  BC                                            ;; 09:40a7 $c1
     pop  HL                                            ;; 09:40a8 $e1
     pop  AF                                            ;; 09:40a9 $f1
@@ -204,7 +204,7 @@ projectileRunLogic:
     push HL                                            ;; 09:410c $e5
     ld   A, [BC]                                       ;; 09:410d $0a
     push BC                                            ;; 09:410e $c5
-    call call_09_41d3                                  ;; 09:410f $cd $d3 $41
+    call getDEMinusObjectYX                            ;; 09:410f $cd $d3 $41
     pop  HL                                            ;; 09:4112 $e1
     push HL                                            ;; 09:4113 $e5
     push DE                                            ;; 09:4114 $d5
@@ -325,9 +325,9 @@ call_09_41ad:
     bit  0, A                                          ;; 09:41b3 $cb $47
     ret  NZ                                            ;; 09:41b5 $c0
     bit  1, A                                          ;; 09:41b6 $cb $4f
-    jr   NZ, .jr_09_41c4                               ;; 09:41b8 $20 $0a
+    jr   NZ, .west                                     ;; 09:41b8 $20 $0a
     bit  2, A                                          ;; 09:41ba $cb $57
-    jr   NZ, .jr_09_41cd                               ;; 09:41bc $20 $0f
+    jr   NZ, .north                                    ;; 09:41bc $20 $0f
 ; .south:
     ld   A, D                                          ;; 09:41be $7a
     cpl                                                ;; 09:41bf $2f
@@ -737,7 +737,7 @@ projectileCollisionHandling:
     cp   A, $02                                        ;; 09:43cf $fe $02
     jr   NC, projectileCollisionHandling.not_immune    ;; 09:43d1 $30 $37
     push HL                                            ;; 09:43d3 $e5
-    call call_00_039a                                  ;; 09:43d4 $cd $9a $03
+    call checkObjectsCollisionDirection                ;; 09:43d4 $cd $9a $03
     call objectReverseDirection                        ;; 09:43d7 $cd $e4 $29
     push AF                                            ;; 09:43da $f5
     call getPlayerDirection                            ;; 09:43db $cd $ab $02

@@ -133,7 +133,7 @@ bossRunLogic:
 
 bossLogic:
     push DE                                            ;; 04:40a4 $d5
-    ld   A, [wD3EE]                                    ;; 04:40a5 $fa $ee $d3
+    ld   A, [wBoosCurrentHeadActionStep]               ;; 04:40a5 $fa $ee $d3
     ld   L, A                                          ;; 04:40a8 $6f
     ld   H, $00                                        ;; 04:40a9 $26 $00
     add  HL, HL                                        ;; 04:40ab $29
@@ -172,7 +172,7 @@ bossLogic:
     call updateObjectPosition                          ;; 04:40e5 $cd $11 $06
     pop  DE                                            ;; 04:40e8 $d1
     call call_04_40f3                                  ;; 04:40e9 $cd $f3 $40
-    ld   HL, wD3EE                                     ;; 04:40ec $21 $ee $d3
+    ld   HL, wBoosCurrentHeadActionStep                ;; 04:40ec $21 $ee $d3
     inc  [HL]                                          ;; 04:40ef $34
     ret                                                ;; 04:40f0 $c9
 .jr_04_40f1:
@@ -385,11 +385,11 @@ call_04_4205:
     ret                                                ;; 04:4208 $c9
 
 call_04_4209:
-    ld   HL, wD3F0                                     ;; 04:4209 $21 $f0 $d3
+    ld   HL, wBossCurrentKeyframeHoldtime              ;; 04:4209 $21 $f0 $d3
     dec  [HL]                                          ;; 04:420c $35
     call Z, call_04_4222                               ;; 04:420d $cc $22 $42
     ld   A, $00                                        ;; 04:4210 $3e $00
-    ld   [wD3EE], A                                    ;; 04:4212 $ea $ee $d3
+    ld   [wBoosCurrentHeadActionStep], A               ;; 04:4212 $ea $ee $d3
     ld   [wD3EF], A                                    ;; 04:4215 $ea $ef $d3
     ld   A, [wBossCurrentHeadActionPointer.high]       ;; 04:4218 $fa $3f $d4
     ld   H, A                                          ;; 04:421b $67
@@ -399,7 +399,7 @@ call_04_4209:
     ret                                                ;; 04:4221 $c9
 
 call_04_4222:
-    ld   A, [wD3ED]                                    ;; 04:4222 $fa $ed $d3
+    ld   A, [wBossCurrentKeyframeStep]                 ;; 04:4222 $fa $ed $d3
     ld   L, A                                          ;; 04:4225 $6f
     add  A, A                                          ;; 04:4226 $87
     add  A, A                                          ;; 04:4227 $87
@@ -419,7 +419,7 @@ call_04_4222:
     ret                                                ;; 04:423f $c9
 
 call_04_4240:
-    ld   [wD3F0], A                                    ;; 04:4240 $ea $f0 $d3
+    ld   [wBossCurrentKeyframeHoldtime], A             ;; 04:4240 $ea $f0 $d3
     ld   E, [HL]                                       ;; 04:4243 $5e
     inc  HL                                            ;; 04:4244 $23
     ld   D, [HL]                                       ;; 04:4245 $56
@@ -435,7 +435,7 @@ call_04_4240:
     ld   [wBossCurrentMetatileListPointer.high], A     ;; 04:4253 $ea $41 $d4
     ld   A, L                                          ;; 04:4256 $7d
     ld   [wBossCurrentMetatileListPointer], A          ;; 04:4257 $ea $40 $d4
-    ld   HL, wD3ED                                     ;; 04:425a $21 $ed $d3
+    ld   HL, wBossCurrentKeyframeStep                  ;; 04:425a $21 $ed $d3
     inc  [HL]                                          ;; 04:425d $34
     ret                                                ;; 04:425e $c9
 
@@ -491,7 +491,7 @@ bossChoosePattern:
     ld   A, [HL+]                                      ;; 04:42a5 $2a
     ld   H, [HL]                                       ;; 04:42a6 $66
     ld   L, A                                          ;; 04:42a7 $6f
-    call call_04_42b0                                  ;; 04:42a8 $cd $b0 $42
+    call bossNextPatternStep                           ;; 04:42a8 $cd $b0 $42
     ret                                                ;; 04:42ab $c9
 .dead:
     call processBossDeath                              ;; 04:42ac $cd $75 $45
@@ -506,7 +506,7 @@ bossNextPatternStep:
     ld   HL, wBossCurrentPatternStep                   ;; 04:42b9 $21 $ec $d3
     inc  [HL]                                          ;; 04:42bc $34
     ld   A, $00                                        ;; 04:42bd $3e $00
-    ld   [wD3ED], A                                    ;; 04:42bf $ea $ed $d3
+    ld   [wBossCurrentKeyframeStep], A                 ;; 04:42bf $ea $ed $d3
     pop  HL                                            ;; 04:42c2 $e1
     ld   A, [HL+]                                      ;; 04:42c3 $2a
     ret                                                ;; 04:42c4 $c9
@@ -545,7 +545,7 @@ getBossStatsRuntimeDataByObjectID:
     ret  Z                                             ;; 04:42ef $c8
     add  HL, DE                                        ;; 04:42f0 $19
     dec  B                                             ;; 04:42f1 $05
-    jr   NZ, call_04_42e6.loop                         ;; 04:42f2 $20 $fa
+    jr   NZ, getBossStatsRuntimeDataByObjectID.loop    ;; 04:42f2 $20 $fa
     xor  A, A                                          ;; 04:42f4 $af
     inc  A                                             ;; 04:42f5 $3c
     ret                                                ;; 04:42f6 $c9
@@ -578,7 +578,7 @@ spawnBoss:
     ld   H, [HL]                                       ;; 04:4320 $66
     ld   L, A                                          ;; 04:4321 $6f
     ld   A, $01                                        ;; 04:4322 $3e $01
-    ld   [wD3F0], A                                    ;; 04:4324 $ea $f0 $d3
+    ld   [wBossCurrentKeyframeHoldtime], A             ;; 04:4324 $ea $f0 $d3
     ld   [wBossSpeedTimer], A                          ;; 04:4327 $ea $e9 $d3
     call setBossMovement                               ;; 04:432a $cd $d8 $42
     call bossChoosePattern                             ;; 04:432d $cd $5f $42
@@ -802,7 +802,7 @@ bossCollisionHandling:
     cp   A, $00                                        ;; 04:4461 $fe $00
     jr   NZ, .jp_04_445b                               ;; 04:4463 $20 $f6
     ld   A, C                                          ;; 04:4465 $79
-    call call_04_42e6                                  ;; 04:4466 $cd $e6 $42
+    call getBossStatsRuntimeDataByObjectID             ;; 04:4466 $cd $e6 $42
     ld   DE, $01                                       ;; 04:4469 $11 $01 $00
     add  HL, DE                                        ;; 04:446c $19
     ld   E, [HL]                                       ;; 04:446d $5e
@@ -1022,9 +1022,9 @@ bossKilled:
     ld   H, [HL]                                       ;; 04:45e9 $66
     ld   L, A                                          ;; 04:45ea $6f
     ld   A, $01                                        ;; 04:45eb $3e $01
-    ld   [wD3F0], A                                    ;; 04:45ed $ea $f0 $d3
+    ld   [wBossCurrentKeyframeHoldtime], A             ;; 04:45ed $ea $f0 $d3
     ld   [wBossSpeedTimer], A                          ;; 04:45f0 $ea $e9 $d3
-    call call_04_42b0                                  ;; 04:45f3 $cd $b0 $42
+    call bossNextPatternStep                           ;; 04:45f3 $cd $b0 $42
     call call_04_4209                                  ;; 04:45f6 $cd $09 $42
     ret                                                ;; 04:45f9 $c9
 
@@ -1060,7 +1060,7 @@ call_04_461c:
     jr   C, .jr_04_4633                                ;; 04:462a $38 $07
     push BC                                            ;; 04:462c $c5
     ld   A, C                                          ;; 04:462d $79
-    call call_04_42e6                                  ;; 04:462e $cd $e6 $42
+    call getBossStatsRuntimeDataByObjectID             ;; 04:462e $cd $e6 $42
     pop  BC                                            ;; 04:4631 $c1
     ret                                                ;; 04:4632 $c9
 .jr_04_4633:
@@ -1084,7 +1084,7 @@ call_04_4636:
     jr   C, .jr_04_4652                                ;; 04:4649 $38 $07
     push BC                                            ;; 04:464b $c5
     ld   A, C                                          ;; 04:464c $79
-    call call_04_42e6                                  ;; 04:464d $cd $e6 $42
+    call getBossStatsRuntimeDataByObjectID             ;; 04:464d $cd $e6 $42
     pop  BC                                            ;; 04:4650 $c1
     ret                                                ;; 04:4651 $c9
 .jr_04_4652:

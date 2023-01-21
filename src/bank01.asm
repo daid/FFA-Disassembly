@@ -526,7 +526,7 @@ drawRoomFromMap:
 call_01_43a3:
     push DE                                            ;; 01:43a3 $d5
     push BC                                            ;; 01:43a4 $c5
-    call call_00_0375                                  ;; 01:43a5 $cd $75 $03
+    call removeNpcObjects                              ;; 01:43a5 $cd $75 $03
     pop  BC                                            ;; 01:43a8 $c1
     push BC                                            ;; 01:43a9 $c5
     call call_01_44a5                                  ;; 01:43aa $cd $a5 $44
@@ -551,7 +551,7 @@ call_01_43a3:
     add  A, A                                          ;; 01:43c6 $87
     add  A, A                                          ;; 01:43c7 $87
     ld   D, A                                          ;; 01:43c8 $57
-    call call_00_28aa                                  ;; 01:43c9 $cd $aa $28
+    call updateNpcPosition_trampoline                  ;; 01:43c9 $cd $aa $28
 .jr_01_43cc:
     ld   HL, lcdcShutterEffectOpen                     ;; 01:43cc $21 $09 $41
     ld   A, [wPlayerSpecialFlags]                      ;; 01:43cf $fa $d4 $c4
@@ -574,7 +574,7 @@ call_01_43a3:
 call_01_43ee:
     push DE                                            ;; 01:43ee $d5
     push BC                                            ;; 01:43ef $c5
-    call call_00_0375                                  ;; 01:43f0 $cd $75 $03
+    call removeNpcObjects                              ;; 01:43f0 $cd $75 $03
     pop  BC                                            ;; 01:43f3 $c1
     push BC                                            ;; 01:43f4 $c5
     call call_01_44a5                                  ;; 01:43f5 $cd $a5 $44
@@ -599,7 +599,7 @@ call_01_43ee:
     add  A, A                                          ;; 01:4411 $87
     add  A, A                                          ;; 01:4412 $87
     ld   D, A                                          ;; 01:4413 $57
-    call call_00_28aa                                  ;; 01:4414 $cd $aa $28
+    call updateNpcPosition_trampoline                  ;; 01:4414 $cd $aa $28
 .jr_01_4417:
     call playerAttackDestroy_trampoline                ;; 01:4417 $cd $f7 $2e
     ld   HL, wScriptOpCounter                          ;; 01:441a $21 $99 $d4
@@ -762,7 +762,7 @@ scrollRoom:
     swap A                                             ;; 01:452b $cb $37
     ld   [wMainGameStateFlags.nextFrame], A            ;; 01:452d $ea $a2 $c0
     ld   [wMainGameStateFlags], A                      ;; 01:4530 $ea $a1 $c0
-    call call_00_2926                                  ;; 01:4533 $cd $26 $29
+    call initEnemiesCounterAndMoveFolower_trampoline   ;; 01:4533 $cd $26 $29
     ld   A, $ff                                        ;; 01:4536 $3e $ff
     ld   [wD394], A                                    ;; 01:4538 $ea $94 $d3
     ld   A, $00                                        ;; 01:453b $3e $00
@@ -1038,7 +1038,7 @@ call_01_46c4:
     swap A                                             ;; 01:4707 $cb $37
     ld   [wMainGameStateFlags.nextFrame], A            ;; 01:4709 $ea $a2 $c0
     ld   [wMainGameStateFlags], A                      ;; 01:470c $ea $a1 $c0
-    call call_00_2926                                  ;; 01:470f $cd $26 $29
+    call initEnemiesCounterAndMoveFolower_trampoline   ;; 01:470f $cd $26 $29
     ld   A, $ff                                        ;; 01:4712 $3e $ff
     ld   [wD394], A                                    ;; 01:4714 $ea $94 $d3
     ld   A, $00                                        ;; 01:4717 $3e $00
@@ -1074,7 +1074,7 @@ drawRoom:
     inc  D                                             ;; 01:474a $14
     dec  C                                             ;; 01:474b $0d
     jr   NZ, drawRoom.loop_outer                       ;; 01:474c $20 $e8
-    call call_00_2926                                  ;; 01:474e $cd $26 $29
+    call initEnemiesCounterAndMoveFolower_trampoline   ;; 01:474e $cd $26 $29
     ret                                                ;; 01:4751 $c9
 
 playerMetaspriteTable:
@@ -1320,7 +1320,7 @@ gameStateNormal:
     push DE                                            ;; 01:49e5 $d5
     push BC                                            ;; 01:49e6 $c5
     ld   C, $04                                        ;; 01:49e7 $0e $04
-    call getObjectOffset0a                             ;; 01:49e9 $cd $d3 $0c
+    call getObjectSliding                              ;; 01:49e9 $cd $d3 $0c
     pop  BC                                            ;; 01:49ec $c1
     pop  DE                                            ;; 01:49ed $d1
     cp   A, $00                                        ;; 01:49ee $fe $00
@@ -1492,7 +1492,7 @@ call_01_4b24:
     cp   A, $ff                                        ;; 01:4b27 $fe $ff
     jr   Z, .jr_01_4b31                                ;; 01:4b29 $28 $06
     call bossClearStatsObjects_trampoline              ;; 01:4b2b $cd $e8 $04
-    call call_00_2926                                  ;; 01:4b2e $cd $26 $29
+    call initEnemiesCounterAndMoveFolower_trampoline   ;; 01:4b2e $cd $26 $29
 .jr_01_4b31:
     call playerAttackDestroy_trampoline                ;; 01:4b31 $cd $f7 $2e
     call runRoomScriptOnRoomExit                       ;; 01:4b34 $cd $83 $24
@@ -1568,7 +1568,7 @@ gameStateChocobo:
     push DE                                            ;; 01:4ba8 $d5
     push BC                                            ;; 01:4ba9 $c5
     ld   C, $04                                        ;; 01:4baa $0e $04
-    call getObjectOffset0a                             ;; 01:4bac $cd $d3 $0c
+    call getObjectSliding                              ;; 01:4bac $cd $d3 $0c
     pop  BC                                            ;; 01:4baf $c1
     pop  DE                                            ;; 01:4bb0 $d1
     cp   A, $00                                        ;; 01:4bb1 $fe $00
@@ -1609,7 +1609,7 @@ gameStateChocobot:
     push DE                                            ;; 01:4be8 $d5
     push BC                                            ;; 01:4be9 $c5
     ld   C, $04                                        ;; 01:4bea $0e $04
-    call getObjectOffset0a                             ;; 01:4bec $cd $d3 $0c
+    call getObjectSliding                              ;; 01:4bec $cd $d3 $0c
     pop  BC                                            ;; 01:4bef $c1
     pop  DE                                            ;; 01:4bf0 $d1
     cp   A, $00                                        ;; 01:4bf1 $fe $00
@@ -1644,7 +1644,7 @@ gameStateChocoboat:
     push DE                                            ;; 01:4c1d $d5
     push BC                                            ;; 01:4c1e $c5
     ld   C, $04                                        ;; 01:4c1f $0e $04
-    call getObjectOffset0a                             ;; 01:4c21 $cd $d3 $0c
+    call getObjectSliding                              ;; 01:4c21 $cd $d3 $0c
     pop  BC                                            ;; 01:4c24 $c1
     pop  DE                                            ;; 01:4c25 $d1
     cp   A, $00                                        ;; 01:4c26 $fe $00
@@ -1817,17 +1817,17 @@ call_01_4d35:
     pop  DE                                            ;; 01:4d3d $d1
     ld   E, A                                          ;; 01:4d3e $5f
     push DE                                            ;; 01:4d3f $d5
-    call call_00_2f14                                  ;; 01:4d40 $cd $14 $2f
+    call getSelectedY                                  ;; 01:4d40 $cd $14 $2f
     pop  DE                                            ;; 01:4d43 $d1
     sub  A, D                                          ;; 01:4d44 $92
     ld   D, A                                          ;; 01:4d45 $57
     push DE                                            ;; 01:4d46 $d5
-    call call_00_2f0c                                  ;; 01:4d47 $cd $0c $2f
+    call getSelectedX                                  ;; 01:4d47 $cd $0c $2f
     pop  DE                                            ;; 01:4d4a $d1
     sub  A, E                                          ;; 01:4d4b $93
     ld   E, A                                          ;; 01:4d4c $5f
     push DE                                            ;; 01:4d4d $d5
-    call call_00_2f2c                                  ;; 01:4d4e $cd $2c $2f
+    call getSelectedDirection                          ;; 01:4d4e $cd $2c $2f
     ld   C, A                                          ;; 01:4d51 $4f
     pop  DE                                            ;; 01:4d52 $d1
     bit  0, A                                          ;; 01:4d53 $cb $47
@@ -1927,7 +1927,7 @@ gameStateSpecialAttack:
     jr   NZ, .jr_01_4e06                               ;; 01:4df6 $20 $0e
     push DE                                            ;; 01:4df8 $d5
     ld   C, $04                                        ;; 01:4df9 $0e $04
-    call getObjectOffset0a                             ;; 01:4dfb $cd $d3 $0c
+    call getObjectSliding                              ;; 01:4dfb $cd $d3 $0c
     pop  DE                                            ;; 01:4dfe $d1
     cp   A, $00                                        ;; 01:4dff $fe $00
     jr   Z, .jr_01_4e06                                ;; 01:4e01 $28 $03
@@ -1948,13 +1948,13 @@ gameStateSpecialAttack:
     push DE                                            ;; 01:4e18 $d5
     push AF                                            ;; 01:4e19 $f5
     bit  0, D                                          ;; 01:4e1a $cb $42
-    jr   NZ, .jr_01_4e2c                               ;; 01:4e1c $20 $0e
+    jr   NZ, gameStateSpecialAttack.east               ;; 01:4e1c $20 $0e
     bit  1, D                                          ;; 01:4e1e $cb $4a
-    jr   NZ, .jr_01_4e3b                               ;; 01:4e20 $20 $19
+    jr   NZ, gameStateSpecialAttack.west               ;; 01:4e20 $20 $19
     bit  2, D                                          ;; 01:4e22 $cb $52
-    jr   NZ, .jr_01_4e4a                               ;; 01:4e24 $20 $24
+    jr   NZ, gameStateSpecialAttack.north              ;; 01:4e24 $20 $24
     bit  3, D                                          ;; 01:4e26 $cb $5a
-    jr   NZ, .jr_01_4e59                               ;; 01:4e28 $20 $2f
+    jr   NZ, gameStateSpecialAttack.south              ;; 01:4e28 $20 $2f
     jr   .jr_01_4e68                                   ;; 01:4e2a $18 $3c
 .east:
     ld   C, $04                                        ;; 01:4e2c $0e $04
@@ -2005,7 +2005,7 @@ gameStateSpecialAttack:
     call setObjectDirection                            ;; 01:4e77 $cd $a6 $0c
 .jr_01_4e7a:
     pop  DE                                            ;; 01:4e7a $d1
-    call call_00_2f2c                                  ;; 01:4e7b $cd $2c $2f
+    call getSelectedDirection                          ;; 01:4e7b $cd $2c $2f
     and  A, $0f                                        ;; 01:4e7e $e6 $0f
     push AF                                            ;; 01:4e80 $f5
     call call_00_2f3e                                  ;; 01:4e81 $cd $3e $2f
@@ -2181,7 +2181,7 @@ call_01_4f7b:
     push AF                                            ;; 01:4fb5 $f5
     ld   B, C                                          ;; 01:4fb6 $41
     ld   C, $04                                        ;; 01:4fb7 $0e $04
-    call call_00_039a                                  ;; 01:4fb9 $cd $9a $03
+    call checkObjectsCollisionDirection                ;; 01:4fb9 $cd $9a $03
     call objectReverseDirection                        ;; 01:4fbc $cd $e4 $29
     call setPlayerDirection                            ;; 01:4fbf $cd $b1 $02
     ld   C, $04                                        ;; 01:4fc2 $0e $04
@@ -2234,7 +2234,7 @@ call_01_4f7b:
     push BC                                            ;; 01:5017 $c5
     ld   B, C                                          ;; 01:5018 $41
     ld   C, $04                                        ;; 01:5019 $0e $04
-    call call_00_039a                                  ;; 01:501b $cd $9a $03
+    call checkObjectsCollisionDirection                ;; 01:501b $cd $9a $03
     push AF                                            ;; 01:501e $f5
     call getPlayerY                                    ;; 01:501f $cd $99 $02
     ld   D, A                                          ;; 01:5022 $57
@@ -2553,7 +2553,7 @@ attackTileChain:
     jr   C, .jr_01_5223                                ;; 01:521f $38 $02
     ld   C, $04                                        ;; 01:5221 $0e $04
 .jr_01_5223:
-    ld   A, [wCF5A]                                    ;; 01:5223 $fa $5a $cf
+    ld   A, [wSelectedObjectID]                        ;; 01:5223 $fa $5a $cf
     ld   E, A                                          ;; 01:5226 $5f
     ld   D, $00                                        ;; 01:5227 $16 $00
     ld   HL, wCEF8                                     ;; 01:5229 $21 $f8 $ce
@@ -2588,7 +2588,7 @@ attackTileChain:
     call setPlayerSpeed                                ;; 01:5262 $cd $a5 $02
     ld   A, $00                                        ;; 01:5265 $3e $00
     ld   C, $04                                        ;; 01:5267 $0e $04
-    call setObjectOffset0a                             ;; 01:5269 $cd $e4 $0c
+    call setObjectSliding                              ;; 01:5269 $cd $e4 $0c
     ret                                                ;; 01:526c $c9
 
 attackTileMattok:
@@ -2796,7 +2796,7 @@ call_01_5391:
 call_01_53a0:
     ld   A, $07                                        ;; 01:53a0 $3e $07
     sub  A, B                                          ;; 01:53a2 $90
-    ld   [wCF5A], A                                    ;; 01:53a3 $ea $5a $cf
+    ld   [wSelectedObjectID], A                        ;; 01:53a3 $ea $5a $cf
     ld   C, A                                          ;; 01:53a6 $4f
     ld   B, $00                                        ;; 01:53a7 $06 $00
     ld   HL, wCF00                                     ;; 01:53a9 $21 $00 $cf
@@ -2942,21 +2942,21 @@ call_01_53f2:
     jr   C, .jr_01_54ac                                ;; 01:545f $38 $4b
     push HL                                            ;; 01:5461 $e5
     push DE                                            ;; 01:5462 $d5
-    call call_00_2f14                                  ;; 01:5463 $cd $14 $2f
+    call getSelectedY                                  ;; 01:5463 $cd $14 $2f
     pop  DE                                            ;; 01:5466 $d1
     sub  A, D                                          ;; 01:5467 $92
     cpl                                                ;; 01:5468 $2f
     inc  A                                             ;; 01:5469 $3c
     ld   D, A                                          ;; 01:546a $57
     push DE                                            ;; 01:546b $d5
-    call call_00_2f0c                                  ;; 01:546c $cd $0c $2f
+    call getSelectedX                                  ;; 01:546c $cd $0c $2f
     pop  DE                                            ;; 01:546f $d1
     pop  HL                                            ;; 01:5470 $e1
     sub  A, E                                          ;; 01:5471 $93
     cpl                                                ;; 01:5472 $2f
     inc  A                                             ;; 01:5473 $3c
     ld   E, A                                          ;; 01:5474 $5f
-    ld   A, [wCF5A]                                    ;; 01:5475 $fa $5a $cf
+    ld   A, [wSelectedObjectID]                        ;; 01:5475 $fa $5a $cf
     ld   C, A                                          ;; 01:5478 $4f
     dec  HL                                            ;; 01:5479 $2b
     ld   A, [HL+]                                      ;; 01:547a $2a
@@ -2968,7 +2968,7 @@ call_01_53f2:
 .jr_01_5485:
     call call_00_08d4                                  ;; 01:5485 $cd $d4 $08
     jr   Z, .jr_01_54ac                                ;; 01:5488 $28 $22
-    ld   A, [wCF5A]                                    ;; 01:548a $fa $5a $cf
+    ld   A, [wSelectedObjectID]                        ;; 01:548a $fa $5a $cf
     ld   C, A                                          ;; 01:548d $4f
     ld   B, $00                                        ;; 01:548e $06 $00
     ld   HL, wCEF0                                     ;; 01:5490 $21 $f0 $ce
@@ -2991,10 +2991,10 @@ call_01_53f2:
     ret                                                ;; 01:54ab $c9
 .jr_01_54ac:
     pop  HL                                            ;; 01:54ac $e1
-    ld   A, [wCF5A]                                    ;; 01:54ad $fa $5a $cf
+    ld   A, [wSelectedObjectID]                        ;; 01:54ad $fa $5a $cf
     ld   C, A                                          ;; 01:54b0 $4f
     call call_01_59d0                                  ;; 01:54b1 $cd $d0 $59
-    ld   A, [wCF5A]                                    ;; 01:54b4 $fa $5a $cf
+    ld   A, [wSelectedObjectID]                        ;; 01:54b4 $fa $5a $cf
     dec  A                                             ;; 01:54b7 $3d
     dec  A                                             ;; 01:54b8 $3d
     ld   C, A                                          ;; 01:54b9 $4f
@@ -3090,7 +3090,7 @@ jp_01_5538:
     push HL                                            ;; 01:553c $e5
     add  A, [HL]                                       ;; 01:553d $86
     push AF                                            ;; 01:553e $f5
-    call call_00_2f14                                  ;; 01:553f $cd $14 $2f
+    call getSelectedY                                  ;; 01:553f $cd $14 $2f
     ld   C, A                                          ;; 01:5542 $4f
     pop  AF                                            ;; 01:5543 $f1
     sub  A, C                                          ;; 01:5544 $91
@@ -3104,14 +3104,14 @@ jp_01_5538:
     inc  HL                                            ;; 01:554e $23
     add  A, [HL]                                       ;; 01:554f $86
     push AF                                            ;; 01:5550 $f5
-    call call_00_2f0c                                  ;; 01:5551 $cd $0c $2f
+    call getSelectedX                                  ;; 01:5551 $cd $0c $2f
     ld   C, A                                          ;; 01:5554 $4f
     pop  AF                                            ;; 01:5555 $f1
     pop  DE                                            ;; 01:5556 $d1
     pop  HL                                            ;; 01:5557 $e1
     sub  A, C                                          ;; 01:5558 $91
     ld   E, A                                          ;; 01:5559 $5f
-    ld   A, [wCF5A]                                    ;; 01:555a $fa $5a $cf
+    ld   A, [wSelectedObjectID]                        ;; 01:555a $fa $5a $cf
     ld   C, A                                          ;; 01:555d $4f
     dec  HL                                            ;; 01:555e $2b
     ld   A, [HL+]                                      ;; 01:555f $2a
@@ -3123,7 +3123,7 @@ jp_01_5538:
 .jr_01_556a:
     call call_00_08d4                                  ;; 01:556a $cd $d4 $08
     jr   Z, jp_01_5592                                 ;; 01:556d $28 $23
-    ld   A, [wCF5A]                                    ;; 01:556f $fa $5a $cf
+    ld   A, [wSelectedObjectID]                        ;; 01:556f $fa $5a $cf
     ld   C, A                                          ;; 01:5572 $4f
     ld   B, $00                                        ;; 01:5573 $06 $00
     ld   HL, wCEF0                                     ;; 01:5575 $21 $f0 $ce
@@ -3147,7 +3147,7 @@ jp_01_5538:
 
 jp_01_5592:
     pop  HL                                            ;; 01:5592 $e1
-    ld   A, [wCF5A]                                    ;; 01:5593 $fa $5a $cf
+    ld   A, [wSelectedObjectID]                        ;; 01:5593 $fa $5a $cf
     ld   C, A                                          ;; 01:5596 $4f
     call call_01_59d0                                  ;; 01:5597 $cd $d0 $59
     pop  BC                                            ;; 01:559a $c1
@@ -3558,11 +3558,11 @@ call_01_579c:
     ld   C, A                                          ;; 01:57af $4f
     ld   A, $01                                        ;; 01:57b0 $3e $01
     bit  0, C                                          ;; 01:57b2 $cb $41
-    jr   NZ, .jr_01_57c6                               ;; 01:57b4 $20 $10
+    jr   NZ, .east                                     ;; 01:57b4 $20 $10
     bit  1, C                                          ;; 01:57b6 $cb $49
-    jr   NZ, .jr_01_57ce                               ;; 01:57b8 $20 $14
+    jr   NZ, .west                                     ;; 01:57b8 $20 $14
     bit  2, C                                          ;; 01:57ba $cb $51
-    jr   NZ, .jr_01_57d6                               ;; 01:57bc $20 $18
+    jr   NZ, .north                                    ;; 01:57bc $20 $18
 ; .south:
     call call_01_571c                                  ;; 01:57be $cd $1c $57
     ret  NZ                                            ;; 01:57c1 $c0
@@ -3632,7 +3632,7 @@ call_01_581e:
     push BC                                            ;; 01:581e $c5
     ld   A, $07                                        ;; 01:581f $3e $07
     sub  A, B                                          ;; 01:5821 $90
-    ld   [wCF5A], A                                    ;; 01:5822 $ea $5a $cf
+    ld   [wSelectedObjectID], A                        ;; 01:5822 $ea $5a $cf
     ld   C, A                                          ;; 01:5825 $4f
     ld   B, $00                                        ;; 01:5826 $06 $00
     ld   HL, wCF48                                     ;; 01:5828 $21 $48 $cf
@@ -3790,7 +3790,7 @@ call_01_5903:
     push BC                                            ;; 01:5903 $c5
     ld   A, $07                                        ;; 01:5904 $3e $07
     sub  A, B                                          ;; 01:5906 $90
-    ld   [wCF5A], A                                    ;; 01:5907 $ea $5a $cf
+    ld   [wSelectedObjectID], A                        ;; 01:5907 $ea $5a $cf
     ld   C, A                                          ;; 01:590a $4f
     ld   B, $00                                        ;; 01:590b $06 $00
     ld   HL, wCF00                                     ;; 01:590d $21 $00 $cf
@@ -4198,7 +4198,7 @@ call_01_5b46:
     ld   A, [wPlayerAttackAnimationFrame]              ;; 01:5b46 $fa $5f $cf
     add  A, $10                                        ;; 01:5b49 $c6 $10
     ld   B, A                                          ;; 01:5b4b $47
-    ld   A, [wCF5A]                                    ;; 01:5b4c $fa $5a $cf
+    ld   A, [wSelectedObjectID]                        ;; 01:5b4c $fa $5a $cf
     ld   E, A                                          ;; 01:5b4f $5f
     push DE                                            ;; 01:5b50 $d5
     ld   A, [wPlayerCurrentAttackTypeAndFacing]        ;; 01:5b51 $fa $5c $cf
@@ -4215,7 +4215,7 @@ call_01_5b46:
     or   A, A                                          ;; 01:5b66 $b7
     pop  DE                                            ;; 01:5b67 $d1
     ld   A, E                                          ;; 01:5b68 $7b
-    ld   [wCF5A], A                                    ;; 01:5b69 $ea $5a $cf
+    ld   [wSelectedObjectID], A                        ;; 01:5b69 $ea $5a $cf
     ret                                                ;; 01:5b6c $c9
 
 ; A = type
@@ -4361,7 +4361,7 @@ call_01_5bf1:
     push HL                                            ;; 01:5c2a $e5
     add  A, [HL]                                       ;; 01:5c2b $86
     push AF                                            ;; 01:5c2c $f5
-    call call_00_2f14                                  ;; 01:5c2d $cd $14 $2f
+    call getSelectedY                                  ;; 01:5c2d $cd $14 $2f
     ld   C, A                                          ;; 01:5c30 $4f
     pop  AF                                            ;; 01:5c31 $f1
     sub  A, C                                          ;; 01:5c32 $91
@@ -4377,14 +4377,14 @@ call_01_5bf1:
     inc  HL                                            ;; 01:5c40 $23
     add  A, [HL]                                       ;; 01:5c41 $86
     push AF                                            ;; 01:5c42 $f5
-    call call_00_2f0c                                  ;; 01:5c43 $cd $0c $2f
+    call getSelectedX                                  ;; 01:5c43 $cd $0c $2f
     ld   C, A                                          ;; 01:5c46 $4f
     pop  AF                                            ;; 01:5c47 $f1
     pop  DE                                            ;; 01:5c48 $d1
     pop  HL                                            ;; 01:5c49 $e1
     sub  A, C                                          ;; 01:5c4a $91
     ld   E, A                                          ;; 01:5c4b $5f
-    ld   A, [wCF5A]                                    ;; 01:5c4c $fa $5a $cf
+    ld   A, [wSelectedObjectID]                        ;; 01:5c4c $fa $5a $cf
     ld   C, A                                          ;; 01:5c4f $4f
     dec  HL                                            ;; 01:5c50 $2b
     ld   A, [HL+]                                      ;; 01:5c51 $2a
@@ -4396,7 +4396,7 @@ call_01_5bf1:
 .jr_01_5c5c:
     call call_00_08d4                                  ;; 01:5c5c $cd $d4 $08
     pop  HL                                            ;; 01:5c5f $e1
-    ld   A, [wCF5A]                                    ;; 01:5c60 $fa $5a $cf
+    ld   A, [wSelectedObjectID]                        ;; 01:5c60 $fa $5a $cf
     ld   C, A                                          ;; 01:5c63 $4f
     ld   B, $00                                        ;; 01:5c64 $06 $00
     ld   A, [HL]                                       ;; 01:5c66 $7e
@@ -4413,7 +4413,7 @@ call_01_5bf1:
     ret                                                ;; 01:5c77 $c9
 .jp_01_5c78:
     pop  HL                                            ;; 01:5c78 $e1
-    ld   A, [wCF5A]                                    ;; 01:5c79 $fa $5a $cf
+    ld   A, [wSelectedObjectID]                        ;; 01:5c79 $fa $5a $cf
     ld   C, A                                          ;; 01:5c7c $4f
     call getObjectCollisionFlags                       ;; 01:5c7d $cd $6d $0c
     cp   A, $50                                        ;; 01:5c80 $fe $50
@@ -4438,7 +4438,7 @@ call_01_5c9f:
     ld   A, [wPlayerAttackAnimationFrame]              ;; 01:5c9f $fa $5f $cf
     add  A, $10                                        ;; 01:5ca2 $c6 $10
     ld   B, A                                          ;; 01:5ca4 $47
-    ld   A, [wCF5A]                                    ;; 01:5ca5 $fa $5a $cf
+    ld   A, [wSelectedObjectID]                        ;; 01:5ca5 $fa $5a $cf
     ld   E, A                                          ;; 01:5ca8 $5f
     push DE                                            ;; 01:5ca9 $d5
     ld   A, [wPlayerCurrentAttackTypeAndFacing]        ;; 01:5caa $fa $5c $cf
@@ -4455,7 +4455,7 @@ call_01_5c9f:
     or   A, A                                          ;; 01:5cbf $b7
     pop  DE                                            ;; 01:5cc0 $d1
     ld   A, E                                          ;; 01:5cc1 $7b
-    ld   [wCF5A], A                                    ;; 01:5cc2 $ea $5a $cf
+    ld   [wSelectedObjectID], A                        ;; 01:5cc2 $ea $5a $cf
     ret                                                ;; 01:5cc5 $c9
 
 playerOrFriendlyAttackCollisionHandling:
@@ -4593,7 +4593,7 @@ playerAttackDestroy:
     ret                                                ;; 01:5d97 $c9
 
 call_01_5d98:
-    ld   A, [wCF5A]                                    ;; 01:5d98 $fa $5a $cf
+    ld   A, [wSelectedObjectID]                        ;; 01:5d98 $fa $5a $cf
     ld   C, A                                          ;; 01:5d9b $4f
     ld   B, $00                                        ;; 01:5d9c $06 $00
     ld   HL, wCEF8                                     ;; 01:5d9e $21 $f8 $ce

@@ -541,7 +541,7 @@ processPhysicsForObjectDependingOnCollisionFlags:
 .player:
     ld   A, B                                          ;; 02:4349 $78
     ld   B, $00                                        ;; 02:434a $06 $00
-    call processPhysicsForPlayer_1_trampoline          ;; 02:434c $cd $38 $02
+    call processPhysicsForPlayer_trampoline            ;; 02:434c $cd $38 $02
     ret                                                ;; 02:434f $c9
 .projectile:
     ld   A, B                                          ;; 02:4350 $78
@@ -729,7 +729,7 @@ hideSpritesBehindWindow:
     srl  L                                             ;; 02:4450 $cb $3d
     srl  L                                             ;; 02:4452 $cb $3d
     ld   H, $00                                        ;; 02:4454 $26 $00
-    ld   DE, wSpriteShufflehiddenSpritesYPositions     ;; 02:4456 $11 $a2 $c4
+    ld   DE, hiddenSpritesYPositions                   ;; 02:4456 $11 $a2 $c4
     add  HL, DE                                        ;; 02:4459 $19
     ld   [HL], A                                       ;; 02:445a $77
     pop  HL                                            ;; 02:445b $e1
@@ -756,7 +756,7 @@ showSpritesBehindWindow:
     ret  NC                                            ;; 02:4470 $d0
     call call_02_43f8                                  ;; 02:4471 $cd $f8 $43
     push BC                                            ;; 02:4474 $c5
-    ld   HL, wSpriteShufflehiddenSpritesYPositions     ;; 02:4475 $21 $a2 $c4
+    ld   HL, hiddenSpritesYPositions                   ;; 02:4475 $21 $a2 $c4
     ld   B, $28                                        ;; 02:4478 $06 $28
 .loop:
     ld   A, [HL+]                                      ;; 02:447a $2a
@@ -771,7 +771,7 @@ showSpritesBehindWindow:
     dec  HL                                            ;; 02:4485 $2b
     push HL                                            ;; 02:4486 $e5
     push BC                                            ;; 02:4487 $c5
-    ld   DE, wSpriteShufflehiddenSpritesYPositions     ;; 02:4488 $11 $a2 $c4
+    ld   DE, hiddenSpritesYPositions                   ;; 02:4488 $11 $a2 $c4
     call sub_HL_DE                                     ;; 02:448b $cd $ab $2b
     pop  BC                                            ;; 02:448e $c1
     sla  L                                             ;; 02:448f $cb $25
@@ -809,7 +809,7 @@ spriteShuffleShowSprite:
     srl  L                                             ;; 02:44b4 $cb $3d
     srl  L                                             ;; 02:44b6 $cb $3d
     ld   H, $00                                        ;; 02:44b8 $26 $00
-    ld   DE, wSpriteShufflehiddenSpritesYPositions     ;; 02:44ba $11 $a2 $c4
+    ld   DE, hiddenSpritesYPositions                   ;; 02:44ba $11 $a2 $c4
     add  HL, DE                                        ;; 02:44bd $19
     ld   A, [HL]                                       ;; 02:44be $7e
     pop  HL                                            ;; 02:44bf $e1
@@ -849,7 +849,7 @@ spriteShuffleHideSprite:
     srl  L                                             ;; 02:44ed $cb $3d
     srl  L                                             ;; 02:44ef $cb $3d
     ld   H, $00                                        ;; 02:44f1 $26 $00
-    ld   DE, wSpriteShufflehiddenSpritesYPositions     ;; 02:44f3 $11 $a2 $c4
+    ld   DE, hiddenSpritesYPositions                   ;; 02:44f3 $11 $a2 $c4
     add  HL, DE                                        ;; 02:44f6 $19
     ld   [HL], A                                       ;; 02:44f7 $77
 .jr_02_44f8:
@@ -1133,7 +1133,7 @@ call_02_4889:
     ld   A, [wDialogType]                              ;; 02:4898 $fa $4a $d8
     call drawWindow                                    ;; 02:489b $cd $00 $67
     ld   B, $13                                        ;; 02:489e $06 $13
-    call call_02_6c98                                  ;; 02:48a0 $cd $98 $6c
+    call setMenuStateCurrentFunction                   ;; 02:48a0 $cd $98 $6c
     ld   A, [wMenuStateCurrentFunction]                ;; 02:48a3 $fa $53 $d8
     and  A, $80                                        ;; 02:48a6 $e6 $80
     ret  NZ                                            ;; 02:48a8 $c0
@@ -1162,7 +1162,7 @@ openLoadSaveBottomWindow:
     ld   A, $1c                                        ;; 02:48cd $3e $1c
     ld   [wDialogType], A                              ;; 02:48cf $ea $4a $d8
     ld   B, $01                                        ;; 02:48d2 $06 $01
-    call call_02_6c98                                  ;; 02:48d4 $cd $98 $6c
+    call setMenuStateCurrentFunction                   ;; 02:48d4 $cd $98 $6c
     ret                                                ;; 02:48d7 $c9
 
 jr_02_48d8:
@@ -1178,7 +1178,7 @@ jr_02_48e4:
     ld   HL, wDialogX                                  ;; 02:48e4 $21 $a7 $d4
     call copyHLtoDE                                    ;; 02:48e7 $cd $49 $2b
     ld   B, $2a                                        ;; 02:48ea $06 $2a
-    call call_02_6c98                                  ;; 02:48ec $cd $98 $6c
+    call setMenuStateCurrentFunction                   ;; 02:48ec $cd $98 $6c
     ret                                                ;; 02:48ef $c9
 
 call_02_48f0:
@@ -1210,7 +1210,7 @@ call_02_48f0:
     ld   A, E                                          ;; 02:4921 $7b
     ld   [wD894], A                                    ;; 02:4922 $ea $94 $d8
     ld   B, $2b                                        ;; 02:4925 $06 $2b
-    call call_02_6c98                                  ;; 02:4927 $cd $98 $6c
+    call setMenuStateCurrentFunction                   ;; 02:4927 $cd $98 $6c
     ret                                                ;; 02:492a $c9
 
 call_02_492b:
@@ -1268,7 +1268,7 @@ call_02_492b:
     ld   A, E                                          ;; 02:4982 $7b
     ld   [wD894], A                                    ;; 02:4983 $ea $94 $d8
     ld   B, $2b                                        ;; 02:4986 $06 $2b
-    call call_02_6c98                                  ;; 02:4988 $cd $98 $6c
+    call setMenuStateCurrentFunction                   ;; 02:4988 $cd $98 $6c
     ret                                                ;; 02:498b $c9
 
 call_02_498c:
@@ -1374,7 +1374,7 @@ call_02_4a14:
     call saveRegisterState1                            ;; 02:4a5b $cd $34 $6d
     ld   B, $03                                        ;; 02:4a5e $06 $03
     ld   A, B                                          ;; 02:4a60 $78
-    call call_02_6c98                                  ;; 02:4a61 $cd $98 $6c
+    call setMenuStateCurrentFunction                   ;; 02:4a61 $cd $98 $6c
     ld   A, [wDialogType]                              ;; 02:4a64 $fa $4a $d8
     cp   A, $1f                                        ;; 02:4a67 $fe $1f
     ret  NZ                                            ;; 02:4a69 $c0
@@ -1423,7 +1423,7 @@ call_02_4aa2:
     inc  A                                             ;; 02:4abd $3c
     push BC                                            ;; 02:4abe $c5
     ld   B, $03                                        ;; 02:4abf $06 $03
-    call call_02_6c98                                  ;; 02:4ac1 $cd $98 $6c
+    call setMenuStateCurrentFunction                   ;; 02:4ac1 $cd $98 $6c
     pop  BC                                            ;; 02:4ac4 $c1
     ret  NZ                                            ;; 02:4ac5 $c0
     ld   A, [wDialogType]                              ;; 02:4ac6 $fa $4a $d8
@@ -1435,11 +1435,11 @@ call_02_4aa2:
     jr   Z, .jr_02_4ade                                ;; 02:4ad5 $28 $07
     inc  A                                             ;; 02:4ad7 $3c
     ld   B, $04                                        ;; 02:4ad8 $06 $04
-    call call_02_6c98                                  ;; 02:4ada $cd $98 $6c
+    call setMenuStateCurrentFunction                   ;; 02:4ada $cd $98 $6c
     ret  Z                                             ;; 02:4add $c8
 .jr_02_4ade:
     ld   B, $05                                        ;; 02:4ade $06 $05
-    call call_02_6c98                                  ;; 02:4ae0 $cd $98 $6c
+    call setMenuStateCurrentFunction                   ;; 02:4ae0 $cd $98 $6c
     ret                                                ;; 02:4ae3 $c9
 
 call_02_4ae4:
@@ -1485,7 +1485,7 @@ call_02_4ae4:
     ld   B, $23                                        ;; 02:4b24 $06 $23
     ld   A, B                                          ;; 02:4b26 $78
     ld   [wD85E], A                                    ;; 02:4b27 $ea $5e $d8
-    call call_02_6c98                                  ;; 02:4b2a $cd $98 $6c
+    call setMenuStateCurrentFunction                   ;; 02:4b2a $cd $98 $6c
     ret  NZ                                            ;; 02:4b2d $c0
 
 call_02_4b2e:
@@ -1495,12 +1495,12 @@ call_02_4b2e:
     cp   A, $00                                        ;; 02:4b36 $fe $00
     ld   A, [wD85E]                                    ;; 02:4b38 $fa $5e $d8
     ld   B, A                                          ;; 02:4b3b $47
-    call call_02_6c98                                  ;; 02:4b3c $cd $98 $6c
+    call setMenuStateCurrentFunction                   ;; 02:4b3c $cd $98 $6c
     ret  NZ                                            ;; 02:4b3f $c0
     ld   A, $02                                        ;; 02:4b40 $3e $02
     ld   [wD85C], A                                    ;; 02:4b42 $ea $5c $d8
     ld   B, $20                                        ;; 02:4b45 $06 $20
-    call call_02_6c98                                  ;; 02:4b47 $cd $98 $6c
+    call setMenuStateCurrentFunction                   ;; 02:4b47 $cd $98 $6c
     ret                                                ;; 02:4b4a $c9
 
 call_02_4b4b:
@@ -1523,7 +1523,7 @@ call_02_4b4b:
     ld   DE, wDialogX                                  ;; 02:4b60 $11 $a7 $d4
     call copyHLtoDE                                    ;; 02:4b63 $cd $49 $2b
     ld   B, $21                                        ;; 02:4b66 $06 $21
-    call call_02_6c98                                  ;; 02:4b68 $cd $98 $6c
+    call setMenuStateCurrentFunction                   ;; 02:4b68 $cd $98 $6c
     ret                                                ;; 02:4b6b $c9
 .data_02_4b6c:
     db   $58, $d5, $54, $ac, $d5, $20                  ;; 02:4b6c ......
@@ -1531,7 +1531,7 @@ call_02_4b4b:
 call_02_4b72:
     call call_02_667a                                  ;; 02:4b72 $cd $7a $66
     ld   B, $10                                        ;; 02:4b75 $06 $10
-    call call_02_6c98                                  ;; 02:4b77 $cd $98 $6c
+    call setMenuStateCurrentFunction                   ;; 02:4b77 $cd $98 $6c
     ret                                                ;; 02:4b7a $c9
 
 call_02_4b7b:
@@ -1541,17 +1541,17 @@ call_02_4b7b:
     dec  A                                             ;; 02:4b81 $3d
     ld   [wD85C], A                                    ;; 02:4b82 $ea $5c $d8
     ld   B, $20                                        ;; 02:4b85 $06 $20
-    call call_02_6c98                                  ;; 02:4b87 $cd $98 $6c
+    call setMenuStateCurrentFunction                   ;; 02:4b87 $cd $98 $6c
     ret  NZ                                            ;; 02:4b8a $c0
 .jr_02_4b8b:
     ld   A, [wD85E]                                    ;; 02:4b8b $fa $5e $d8
     ld   B, A                                          ;; 02:4b8e $47
-    call call_02_6c98                                  ;; 02:4b8f $cd $98 $6c
+    call setMenuStateCurrentFunction                   ;; 02:4b8f $cd $98 $6c
     ret                                                ;; 02:4b92 $c9
 
 call_02_4b93:
     ld   B, $00                                        ;; 02:4b93 $06 $00
-    call call_02_6c98                                  ;; 02:4b95 $cd $98 $6c
+    call setMenuStateCurrentFunction                   ;; 02:4b95 $cd $98 $6c
     ld   A, [wDialogType]                              ;; 02:4b98 $fa $4a $d8
     cp   A, $0b                                        ;; 02:4b9b $fe $0b
     jp   Z, jp_02_5638                                 ;; 02:4b9d $ca $38 $56
@@ -1617,7 +1617,7 @@ call_02_4c0e:
     call call_02_56c9                                  ;; 02:4c0e $cd $c9 $56
     ret  NZ                                            ;; 02:4c11 $c0
     ld   B, $08                                        ;; 02:4c12 $06 $08
-    call call_02_6c98                                  ;; 02:4c14 $cd $98 $6c
+    call setMenuStateCurrentFunction                   ;; 02:4c14 $cd $98 $6c
     ld   A, [wD849]                                    ;; 02:4c17 $fa $49 $d8
     bit  1, A                                          ;; 02:4c1a $cb $4f
     ret  Z                                             ;; 02:4c1c $c8
@@ -1638,7 +1638,7 @@ data_02_4c20:
     cp   A, $18                                        ;; 02:4c3d $fe $18
     jp   Z, jp_02_4f19                                 ;; 02:4c3f $ca $19 $4f
     ld   B, $06                                        ;; 02:4c42 $06 $06
-    call call_02_6c98                                  ;; 02:4c44 $cd $98 $6c
+    call setMenuStateCurrentFunction                   ;; 02:4c44 $cd $98 $6c
     ld   A, [wD849]                                    ;; 02:4c47 $fa $49 $d8
     bit  7, A                                          ;; 02:4c4a $cb $7f
     ret  Z                                             ;; 02:4c4c $c8
@@ -1653,7 +1653,7 @@ call_02_4c53:
     call saveRegisterState1                            ;; 02:4c5a $cd $34 $6d
     ld   B, $07                                        ;; 02:4c5d $06 $07
     ld   A, B                                          ;; 02:4c5f $78
-    call call_02_6c98                                  ;; 02:4c60 $cd $98 $6c
+    call setMenuStateCurrentFunction                   ;; 02:4c60 $cd $98 $6c
     ret                                                ;; 02:4c63 $c9
 
 call_02_4c64:
@@ -1672,7 +1672,7 @@ call_02_4c79:
     inc  A                                             ;; 02:4c7d $3c
     push BC                                            ;; 02:4c7e $c5
     ld   B, $07                                        ;; 02:4c7f $06 $07
-    call call_02_6c98                                  ;; 02:4c81 $cd $98 $6c
+    call setMenuStateCurrentFunction                   ;; 02:4c81 $cd $98 $6c
     pop  BC                                            ;; 02:4c84 $c1
     ret  NZ                                            ;; 02:4c85 $c0
     ld   A, B                                          ;; 02:4c86 $78
@@ -1680,10 +1680,10 @@ call_02_4c79:
     call saveRegisterState1                            ;; 02:4c8a $cd $34 $6d
     inc  A                                             ;; 02:4c8d $3c
     ld   B, $08                                        ;; 02:4c8e $06 $08
-    call call_02_6c98                                  ;; 02:4c90 $cd $98 $6c
+    call setMenuStateCurrentFunction                   ;; 02:4c90 $cd $98 $6c
     ret  NZ                                            ;; 02:4c93 $c0
     ld   B, $09                                        ;; 02:4c94 $06 $09
-    call call_02_6c98                                  ;; 02:4c96 $cd $98 $6c
+    call setMenuStateCurrentFunction                   ;; 02:4c96 $cd $98 $6c
     ret                                                ;; 02:4c99 $c9
 
 call_02_4c9a:
@@ -1728,7 +1728,7 @@ call_02_4cc7:
     ld   H, A                                          ;; 02:4ced $67
     call saveRegisterState1                            ;; 02:4cee $cd $34 $6d
     ld   B, $03                                        ;; 02:4cf1 $06 $03
-    call call_02_6c98                                  ;; 02:4cf3 $cd $98 $6c
+    call setMenuStateCurrentFunction                   ;; 02:4cf3 $cd $98 $6c
     ret                                                ;; 02:4cf6 $c9
 
 call_02_4cf7:
@@ -1753,10 +1753,10 @@ call_02_4cf7:
     call call_02_4fc8                                  ;; 02:4d24 $cd $c8 $4f
     call saveRegisterState1                            ;; 02:4d27 $cd $34 $6d
     ld   B, $06                                        ;; 02:4d2a $06 $06
-    call call_02_6c98                                  ;; 02:4d2c $cd $98 $6c
+    call setMenuStateCurrentFunction                   ;; 02:4d2c $cd $98 $6c
     ret  Z                                             ;; 02:4d2f $c8
     ld   B, $0b                                        ;; 02:4d30 $06 $0b
-    call call_02_6c98                                  ;; 02:4d32 $cd $98 $6c
+    call setMenuStateCurrentFunction                   ;; 02:4d32 $cd $98 $6c
     ret                                                ;; 02:4d35 $c9
 
 call_02_4d36:
@@ -1805,12 +1805,12 @@ call_02_4d77:
     call call_02_4fe8                                  ;; 02:4d77 $cd $e8 $4f
     call saveRegisterState1                            ;; 02:4d7a $cd $34 $6d
     ld   B, $03                                        ;; 02:4d7d $06 $03
-    call call_02_6c98                                  ;; 02:4d7f $cd $98 $6c
+    call setMenuStateCurrentFunction                   ;; 02:4d7f $cd $98 $6c
     ret                                                ;; 02:4d82 $c9
 
 jr_02_4d83:
     ld   B, $0c                                        ;; 02:4d83 $06 $0c
-    call call_02_6c98                                  ;; 02:4d85 $cd $98 $6c
+    call setMenuStateCurrentFunction                   ;; 02:4d85 $cd $98 $6c
     ret                                                ;; 02:4d88 $c9
 
 call_02_4d89:
@@ -1820,7 +1820,7 @@ call_02_4d89:
     jr   NZ, .jr_02_4d99                               ;; 02:4d90 $20 $07
     rrca                                               ;; 02:4d92 $0f
     ld   B, $0d                                        ;; 02:4d93 $06 $0d
-    call call_02_6c98                                  ;; 02:4d95 $cd $98 $6c
+    call setMenuStateCurrentFunction                   ;; 02:4d95 $cd $98 $6c
     ret                                                ;; 02:4d98 $c9
 .jr_02_4d99:
     call inventoryMoveItems                            ;; 02:4d99 $cd $0b $58
@@ -1832,7 +1832,7 @@ call_02_4da4:
     call call_02_4fe8                                  ;; 02:4da4 $cd $e8 $4f
     call saveRegisterState1                            ;; 02:4da7 $cd $34 $6d
     ld   B, $03                                        ;; 02:4daa $06 $03
-    call call_02_6c98                                  ;; 02:4dac $cd $98 $6c
+    call setMenuStateCurrentFunction                   ;; 02:4dac $cd $98 $6c
     ret                                                ;; 02:4daf $c9
 
 call_02_4db0:
@@ -1918,10 +1918,10 @@ call_02_4e37:
 jp_02_4e4c:
     call saveRegisterState1                            ;; 02:4e4c $cd $34 $6d
     ld   B, $03                                        ;; 02:4e4f $06 $03
-    call call_02_6c98                                  ;; 02:4e51 $cd $98 $6c
+    call setMenuStateCurrentFunction                   ;; 02:4e51 $cd $98 $6c
     ret  Z                                             ;; 02:4e54 $c8
     ld   B, $0e                                        ;; 02:4e55 $06 $0e
-    call call_02_6c98                                  ;; 02:4e57 $cd $98 $6c
+    call setMenuStateCurrentFunction                   ;; 02:4e57 $cd $98 $6c
     ret                                                ;; 02:4e5a $c9
 
 call_02_4e5b:
@@ -1929,15 +1929,15 @@ call_02_4e5b:
     call call_02_4fff                                  ;; 02:4e5e $cd $ff $4f
     call saveRegisterState1                            ;; 02:4e61 $cd $34 $6d
     ld   B, $0f                                        ;; 02:4e64 $06 $0f
-    call call_02_6c98                                  ;; 02:4e66 $cd $98 $6c
+    call setMenuStateCurrentFunction                   ;; 02:4e66 $cd $98 $6c
     ret  NZ                                            ;; 02:4e69 $c0
     ld   A, [wD849]                                    ;; 02:4e6a $fa $49 $d8
     bit  1, A                                          ;; 02:4e6d $cb $4f
     ld   B, $03                                        ;; 02:4e6f $06 $03
-    call call_02_6c98                                  ;; 02:4e71 $cd $98 $6c
+    call setMenuStateCurrentFunction                   ;; 02:4e71 $cd $98 $6c
     ret  Z                                             ;; 02:4e74 $c8
     ld   B, $06                                        ;; 02:4e75 $06 $06
-    call call_02_6c98                                  ;; 02:4e77 $cd $98 $6c
+    call setMenuStateCurrentFunction                   ;; 02:4e77 $cd $98 $6c
     ret                                                ;; 02:4e7a $c9
 
 call_02_4e7b:
@@ -1948,10 +1948,10 @@ call_02_4e7b:
     ld   B, $11                                        ;; 02:4e86 $06 $11
     ld   A, B                                          ;; 02:4e88 $78
     ld   [wD85E], A                                    ;; 02:4e89 $ea $5e $d8
-    call call_02_6c98                                  ;; 02:4e8c $cd $98 $6c
+    call setMenuStateCurrentFunction                   ;; 02:4e8c $cd $98 $6c
     ret  NZ                                            ;; 02:4e8f $c0
     ld   B, $22                                        ;; 02:4e90 $06 $22
-    call call_02_6c98                                  ;; 02:4e92 $cd $98 $6c
+    call setMenuStateCurrentFunction                   ;; 02:4e92 $cd $98 $6c
     ld   A, [wDialogType]                              ;; 02:4e95 $fa $4a $d8
     cp   A, $07                                        ;; 02:4e98 $fe $07
     ret  NZ                                            ;; 02:4e9a $c0
@@ -1968,13 +1968,13 @@ jp_02_4ea7:
     ld   [wSelectedMenuIndex], A                       ;; 02:4eaa $ea $4b $d8
     ld   A, [wSelectedMenuIndex2]                      ;; 02:4ead $fa $4c $d8
     ld   B, $34                                        ;; 02:4eb0 $06 $34
-    call call_02_6c98                                  ;; 02:4eb2 $cd $98 $6c
+    call setMenuStateCurrentFunction                   ;; 02:4eb2 $cd $98 $6c
     and  A, A                                          ;; 02:4eb5 $a7
     jp   Z, openSaveScreen                             ;; 02:4eb6 $ca $e4 $71
     dec  A                                             ;; 02:4eb9 $3d
     jr   Z, runMinimapScript                           ;; 02:4eba $28 $07
     ld   B, $2d                                        ;; 02:4ebc $06 $2d
-    call call_02_6c98                                  ;; 02:4ebe $cd $98 $6c
+    call setMenuStateCurrentFunction                   ;; 02:4ebe $cd $98 $6c
     jr   openStatusScreen                              ;; 02:4ec1 $18 $3a
 
 runMinimapScript:
@@ -1986,7 +1986,7 @@ runMinimapScript:
     ld   A, [wWindowMainGameStateBackup]               ;; 02:4ecf $fa $62 $d8
     ld   [wMainGameState], A                           ;; 02:4ed2 $ea $a0 $c0
     ld   B, $00                                        ;; 02:4ed5 $06 $00
-    call call_02_6c98                                  ;; 02:4ed7 $cd $98 $6c
+    call setMenuStateCurrentFunction                   ;; 02:4ed7 $cd $98 $6c
     ld   HL, $1f                                       ;; 02:4eda $21 $1f $00
     call runScriptByIndex                              ;; 02:4edd $cd $ad $31
     ret                                                ;; 02:4ee0 $c9
@@ -2213,7 +2213,7 @@ call_02_5062:
     ld   A, $00                                        ;; 02:5072 $3e $00
     ld   [wMenuStateCurrentFunction], A                ;; 02:5074 $ea $53 $d8
     ld   B, A                                          ;; 02:5077 $47
-    call call_02_6c98                                  ;; 02:5078 $cd $98 $6c
+    call setMenuStateCurrentFunction                   ;; 02:5078 $cd $98 $6c
 .jr_02_507b:
     ld   HL, wLevelUpStatChoicesCopy                   ;; 02:507b $21 $31 $d8
     ld   B, $10                                        ;; 02:507e $06 $10
@@ -2252,7 +2252,7 @@ jr_02_5086:
     ld   HL, wMiscFlags                                ;; 02:50aa $21 $6f $d8
     set  0, [HL]                                       ;; 02:50ad $cb $c6
     ld   B, $a4                                        ;; 02:50af $06 $a4
-    call call_02_6c98                                  ;; 02:50b1 $cd $98 $6c
+    call setMenuStateCurrentFunction                   ;; 02:50b1 $cd $98 $6c
     ret                                                ;; 02:50b4 $c9
 
 call_02_50b5:
@@ -2338,7 +2338,7 @@ call_02_50b5:
     ld   [wDialogType], A                              ;; 02:513b $ea $4a $d8
     call call_02_75f4                                  ;; 02:513e $cd $f4 $75
     ld   B, $a4                                        ;; 02:5141 $06 $a4
-    call call_02_6c98                                  ;; 02:5143 $cd $98 $6c
+    call setMenuStateCurrentFunction                   ;; 02:5143 $cd $98 $6c
     ret                                                ;; 02:5146 $c9
 .jr_02_5147:
     pop  AF                                            ;; 02:5147 $f1
@@ -2376,7 +2376,7 @@ vendorShowBuyMessage:
     ld   [wDialogType], A                              ;; 02:5176 $ea $4a $d8
     call drawWindow                                    ;; 02:5179 $cd $00 $67
     ld   B, $25                                        ;; 02:517c $06 $25
-    call call_02_6c98                                  ;; 02:517e $cd $98 $6c
+    call setMenuStateCurrentFunction                   ;; 02:517e $cd $98 $6c
     ret                                                ;; 02:5181 $c9
 
 call_02_5182:
@@ -2418,7 +2418,7 @@ call_02_5182:
 .vendorCannotAfford:
     call drawText                                      ;; 02:51ca $cd $77 $37
     ld   B, $26                                        ;; 02:51cd $06 $26
-    call call_02_6c98                                  ;; 02:51cf $cd $98 $6c
+    call setMenuStateCurrentFunction                   ;; 02:51cf $cd $98 $6c
     ret                                                ;; 02:51d2 $c9
 .data_02_51d3:
     db   $f0, $00                                      ;; 02:51d3 ..
@@ -2561,7 +2561,7 @@ call_02_5292:
     ld   [wDialogType], A                              ;; 02:52ba $ea $4a $d8
     call drawWindow                                    ;; 02:52bd $cd $00 $67
     ld   B, $93                                        ;; 02:52c0 $06 $93
-    call call_02_6c98                                  ;; 02:52c2 $cd $98 $6c
+    call setMenuStateCurrentFunction                   ;; 02:52c2 $cd $98 $6c
     ret                                                ;; 02:52c5 $c9
 
 jp_02_52c6:
@@ -2617,7 +2617,7 @@ jp_02_531c:
     call getSelectedMenuIndexes                        ;; 02:531c $cd $b0 $57
     dec  A                                             ;; 02:531f $3d
     ld   B, $31                                        ;; 02:5320 $06 $31
-    call call_02_6c98                                  ;; 02:5322 $cd $98 $6c
+    call setMenuStateCurrentFunction                   ;; 02:5322 $cd $98 $6c
     ret  Z                                             ;; 02:5325 $c8
     ld   B, $04                                        ;; 02:5326 $06 $04
     ld   DE, wStatStamina                              ;; 02:5328 $11 $c1 $d7
@@ -2836,7 +2836,7 @@ giveEquipmentItemMagic:
 call_02_5475:
     call drawWindow                                    ;; 02:5475 $cd $00 $67
     ld   B, $28                                        ;; 02:5478 $06 $28
-    call call_02_6c98                                  ;; 02:547a $cd $98 $6c
+    call setMenuStateCurrentFunction                   ;; 02:547a $cd $98 $6c
     ret                                                ;; 02:547d $c9
 
 call_02_547e:
@@ -3062,7 +3062,7 @@ jp_02_54a6:
     ld   A, $0e                                        ;; 02:55bb $3e $0e
     ld   [wDialogType], A                              ;; 02:55bd $ea $4a $d8
     ld   B, $81                                        ;; 02:55c0 $06 $81
-    call call_02_6c98                                  ;; 02:55c2 $cd $98 $6c
+    call setMenuStateCurrentFunction                   ;; 02:55c2 $cd $98 $6c
     ret                                                ;; 02:55c5 $c9
 
 call_02_55c6:
@@ -3290,7 +3290,7 @@ call_02_56c9:
 
 call_02_5709:
     ld   B, $01                                        ;; 02:5709 $06 $01
-    call call_02_6c98                                  ;; 02:570b $cd $98 $6c
+    call setMenuStateCurrentFunction                   ;; 02:570b $cd $98 $6c
     ld   A, [wSelectedMenuIndex]                       ;; 02:570e $fa $4b $d8
     inc  A                                             ;; 02:5711 $3c
     ld   B, A                                          ;; 02:5712 $47
@@ -3303,7 +3303,7 @@ call_02_5709:
     cp   A, $04                                        ;; 02:571f $fe $04
     ret  NZ                                            ;; 02:5721 $c0
     ld   B, $00                                        ;; 02:5722 $06 $00
-    call call_02_6c98                                  ;; 02:5724 $cd $98 $6c
+    call setMenuStateCurrentFunction                   ;; 02:5724 $cd $98 $6c
     call getFollowerScript                             ;; 02:5727 $cd $0d $29
     ld   A, L                                          ;; 02:572a $7d
     or   A, H                                          ;; 02:572b $b4
@@ -3374,7 +3374,7 @@ call_02_5709:
     ld   A, $80                                        ;; 02:5794 $3e $80
     ld   [HL], A                                       ;; 02:5796 $77
     ld   B, $12                                        ;; 02:5797 $06 $12
-    call call_02_6c98                                  ;; 02:5799 $cd $98 $6c
+    call setMenuStateCurrentFunction                   ;; 02:5799 $cd $98 $6c
     call saveRegisterState1                            ;; 02:579c $cd $34 $6d
     ret                                                ;; 02:579f $c9
 
@@ -3384,7 +3384,7 @@ call_02_57a0:
     ld   B, $23                                        ;; 02:57a6 $06 $23
     ld   A, B                                          ;; 02:57a8 $78
     ld   [wD85E], A                                    ;; 02:57a9 $ea $5e $d8
-    call call_02_6c98                                  ;; 02:57ac $cd $98 $6c
+    call setMenuStateCurrentFunction                   ;; 02:57ac $cd $98 $6c
     ret                                                ;; 02:57af $c9
 
 getSelectedMenuIndexes:
@@ -4390,7 +4390,7 @@ jmp_02_66ab:
     ret  NZ                                            ;; 02:66bf $c0
     ld   A, D                                          ;; 02:66c0 $7a
     cp   A, $0f                                        ;; 02:66c1 $fe $0f
-    call NC, disableStatusBarEffect                    ;; 02:66c3 $d4 $3a $7a
+    call NC, enableStatusBarEffect                     ;; 02:66c3 $d4 $3a $7a
     ld   A, [wMenuStateCurrentFunction]                ;; 02:66c6 $fa $53 $d8
     and  A, $7f                                        ;; 02:66c9 $e6 $7f
     ld   [wMenuStateCurrentFunction], A                ;; 02:66cb $ea $53 $d8
@@ -4539,7 +4539,7 @@ windowDrawBottom:
 windowDrawFinished:
     ld   A, D                                          ;; 02:67b7 $7a
     cp   A, $0f                                        ;; 02:67b8 $fe $0f
-    call NC, enableStatusBarEffect                     ;; 02:67ba $d4 $44 $7a
+    call NC, disableStatusBarEffect                    ;; 02:67ba $d4 $44 $7a
     ld   A, $03                                        ;; 02:67bd $3e $03
     ld   [wDrawWindowStep], A                          ;; 02:67bf $ea $54 $d8
     ld   DE, $800                                      ;; 02:67c2 $11 $00 $08
@@ -5372,7 +5372,7 @@ setMenuStateCurrentFunction:
     ld   [wMenuStateCurrentFunction], A                ;; 02:6ca1 $ea $53 $d8
     and  A, A                                          ;; 02:6ca4 $a7
     jr   NZ, .jr_02_6cb9                               ;; 02:6ca5 $20 $12
-    call call_02_6cbb                                  ;; 02:6ca7 $cd $bb $6c
+    call menuSelectButtonBItemOrSpell                  ;; 02:6ca7 $cd $bb $6c
     call getEquippedWeaponElements                     ;; 02:6caa $cd $56 $71
     call getEquippedItemElements                       ;; 02:6cad $cd $65 $71
     call unpauseTimers                                 ;; 02:6cb0 $cd $00 $7a
@@ -6232,7 +6232,7 @@ openLoadSaveScreen_common:
     ld   A, $1b                                        ;; 02:71f0 $3e $1b
     ld   [wDialogType], A                              ;; 02:71f2 $ea $4a $d8
     ld   B, $01                                        ;; 02:71f5 $06 $01
-    call call_02_6c98                                  ;; 02:71f7 $cd $98 $6c
+    call setMenuStateCurrentFunction                   ;; 02:71f7 $cd $98 $6c
     ret                                                ;; 02:71fa $c9
 
 jp_02_71fb:
@@ -6545,7 +6545,7 @@ call_02_7421:
     call clearSaveLoadScreen                           ;; 02:7433 $cd $4c $56
     call hideFullscreenWindow                          ;; 02:7436 $cd $27 $7a
     ld   B, $00                                        ;; 02:7439 $06 $00
-    call call_02_6c98                                  ;; 02:743b $cd $98 $6c
+    call setMenuStateCurrentFunction                   ;; 02:743b $cd $98 $6c
     ret                                                ;; 02:743e $c9
 
 ; Read a block of SRAM into memory pointing at DE
@@ -7294,7 +7294,7 @@ startPoisStatusEffect:
 
 startFujiStatusEffectContinued:
     ld   B, $00                                        ;; 02:78af $06 $00
-    call call_02_6c98                                  ;; 02:78b1 $cd $98 $6c
+    call setMenuStateCurrentFunction                   ;; 02:78b1 $cd $98 $6c
     ret                                                ;; 02:78b4 $c9
 
 setupMoogStatusEffect:
@@ -7513,7 +7513,7 @@ playWindowErrorSound:
     ret                                                ;; 02:7a26 $c9
 
 hideFullscreenWindow:
-    call disableStatusBarEffect                        ;; 02:7a27 $cd $3a $7a
+    call enableStatusBarEffect                         ;; 02:7a27 $cd $3a $7a
     ld   A, [wVideoWYBackup]                           ;; 02:7a2a $fa $84 $d8
     ld   [wVideoWY], A                                 ;; 02:7a2d $ea $a9 $c0
     ld   DE, $00                                       ;; 02:7a30 $11 $00 $00
@@ -7803,7 +7803,7 @@ menuSelectionTitleScreen:
     ld   A, $0f                                        ;; 02:7bd0 $3e $0f
     ld   [wMainGameState], A                           ;; 02:7bd2 $ea $a0 $c0
     ld   B, $35                                        ;; 02:7bd5 $06 $35
-    call call_02_6c98                                  ;; 02:7bd7 $cd $98 $6c
+    call setMenuStateCurrentFunction                   ;; 02:7bd7 $cd $98 $6c
     jp   openLoadScreen                                ;; 02:7bda $c3 $dd $71
 
 gameStateTitleScreen:

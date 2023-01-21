@@ -523,7 +523,7 @@ removeNpcObjects:
     pop  BC                                            ;; 00:0394 $c1
     inc  C                                             ;; 00:0395 $0c
     dec  B                                             ;; 00:0396 $05
-    jr   NZ, call_00_0375.loop                         ;; 00:0397 $20 $e0
+    jr   NZ, removeNpcObjects.loop                     ;; 00:0397 $20 $e0
     ret                                                ;; 00:0399 $c9
 
 ; B = object number b
@@ -559,9 +559,9 @@ checkObjectsCollisionDirection:
     sub  A, E                                          ;; 00:03bb $93
     ld   E, A                                          ;; 00:03bc $5f
     bit  7, D                                          ;; 00:03bd $cb $7a
-    jr   NZ, .jr_00_03ec                               ;; 00:03bf $20 $2b
+    jr   NZ, .b_below_c                                ;; 00:03bf $20 $2b
     bit  7, E                                          ;; 00:03c1 $cb $7b
-    jr   NZ, .jr_00_03de                               ;; 00:03c3 $20 $19
+    jr   NZ, .b_leftof_c                               ;; 00:03c3 $20 $19
     ld   A, D                                          ;; 00:03c5 $7a
     cp   A, E                                          ;; 00:03c6 $bb
     jr   Z, .jr_00_03ce                                ;; 00:03c7 $28 $05
@@ -596,7 +596,7 @@ checkObjectsCollisionDirection:
     ret                                                ;; 00:03eb $c9
 .b_below_c:
     bit  7, E                                          ;; 00:03ec $cb $7b
-    jr   NZ, .jr_00_03fe                               ;; 00:03ee $20 $0e
+    jr   NZ, checkObjectsCollisionDirection.b_below_and_leftof_c ;; 00:03ee $20 $0e
     ld   A, D                                          ;; 00:03f0 $7a
     cpl                                                ;; 00:03f1 $2f
     inc  A                                             ;; 00:03f2 $3c
@@ -3070,7 +3070,7 @@ call_00_123e:
     add  A, A                                          ;; 00:1251 $87
     add  A, A                                          ;; 00:1252 $87
     ld   D, A                                          ;; 00:1253 $57
-    call call_00_28aa                                  ;; 00:1254 $cd $aa $28
+    call updateNpcPosition_trampoline                  ;; 00:1254 $cd $aa $28
     pop  HL                                            ;; 00:1257 $e1
     call getNextScriptInstruction                      ;; 00:1258 $cd $27 $37
     ret                                                ;; 00:125b $c9
@@ -3960,7 +3960,7 @@ call_00_177e:
     push BC                                            ;; 00:1794 $c5
     ld   A, $00                                        ;; 00:1795 $3e $00
     ld   C, B                                          ;; 00:1797 $48
-    call setObjectOffset0a                             ;; 00:1798 $cd $e4 $0c
+    call setObjectSliding                              ;; 00:1798 $cd $e4 $0c
     ld   L, A                                          ;; 00:179b $6f
     pop  BC                                            ;; 00:179c $c1
     pop  DE                                            ;; 00:179d $d1
@@ -4023,7 +4023,7 @@ jr_00_17f5:
     ld   A, $90                                        ;; 00:17f5 $3e $90
     or   A, B                                          ;; 00:17f7 $b0
     push BC                                            ;; 00:17f8 $c5
-    call setObjectOffset0a                             ;; 00:17f9 $cd $e4 $0c
+    call setObjectSliding                              ;; 00:17f9 $cd $e4 $0c
     pop  BC                                            ;; 00:17fc $c1
     ld   A, $02                                        ;; 00:17fd $3e $02
     call setObjectOffset0b                             ;; 00:17ff $cd $08 $0d
@@ -4977,14 +4977,14 @@ processBackgroundRenderRequests:
     pop  DE                                            ;; 00:1e23 $d1
     pop  BC                                            ;; 00:1e24 $c1
     dec  B                                             ;; 00:1e25 $05
-    jr   NZ, .jr_00_1e0e                               ;; 00:1e26 $20 $e6
+    jr   NZ, processBackgroundRenderRequests.loop_inner ;; 00:1e26 $20 $e6
 .jr_00_1e28:
     pop  HL                                            ;; 00:1e28 $e1
     pop  BC                                            ;; 00:1e29 $c1
     ld   DE, $06                                       ;; 00:1e2a $11 $06 $00
     add  HL, DE                                        ;; 00:1e2d $19
     dec  B                                             ;; 00:1e2e $05
-    jr   NZ, .jr_00_1df7                               ;; 00:1e2f $20 $c6
+    jr   NZ, processBackgroundRenderRequests.loop_outer ;; 00:1e2f $20 $c6
     ld   A, $00                                        ;; 00:1e31 $3e $00
     ld   [wBackgroundRenderRequestCount], A            ;; 00:1e33 $ea $e8 $ce
     call popBankNrAndSwitch                            ;; 00:1e36 $cd $0a $2a
@@ -5284,7 +5284,7 @@ InitPreIntEnable:
     ld   BC, $800                                      ;; 00:2032 $01 $00 $08
     call FillHL_with_A_times_BC                        ;; 00:2035 $cd $54 $2b
     ld   A, $00                                        ;; 00:2038 $3e $00
-    ld   HL, _OAMRAM ;@=ptr _OAMRAM                      ;; 00:203a $21 $00 $fe
+    ld   HL, _OAMRAM ;@=ptr _OAMRAM                    ;; 00:203a $21 $00 $fe
     ld   B, $a0                                        ;; 00:203d $06 $a0
     call fillMemory                                    ;; 00:203f $cd $5d $2b
     ld   A, $c0                                        ;; 00:2042 $3e $c0
@@ -5414,7 +5414,7 @@ DisableLCD:
 .loop:
     ldh  A, [rLY]                                      ;; 00:216e $f0 $44
     cp   A, $92                                        ;; 00:2170 $fe $92
-    jr   C, .jr_00_216e                                ;; 00:2172 $38 $fa
+    jr   C, DisableLCD.loop                            ;; 00:2172 $38 $fa
     ldh  A, [rLCDC]                                    ;; 00:2174 $f0 $40
     and  A, $7f                                        ;; 00:2176 $e6 $7f
     ldh  [rLCDC], A                                    ;; 00:2178 $e0 $40
@@ -6635,7 +6635,7 @@ checkForMovingObjects:
     ret                                                ;; 00:28a9 $c9
 
 updateNpcPosition_trampoline:
-    jp_to_bank 03, call_03_4af9                        ;; 00:28aa $f5 $3e $0d $c3 $35 $1f
+    jp_to_bank 03, updateNpcPosition                   ;; 00:28aa $f5 $3e $0d $c3 $35 $1f
 
 moveObjectsDuringScript_trampoline:
     jp_to_bank 03, moveObjectsDuringScript             ;; 00:28b0 $f5 $3e $0e $c3 $35 $1f
@@ -6725,7 +6725,7 @@ runRoomScriptIfAllEnemiesDefeated_trampoline:
     jp_to_bank 03, runRoomScriptIfAllEnemiesDefeated   ;; 00:2920 $f5 $3e $13 $c3 $35 $1f
 
 initEnemiesCounterAndMoveFolower_trampoline:
-    jp_to_bank 03, call_03_4c38                        ;; 00:2926 $f5 $3e $14 $c3 $35 $1f
+    jp_to_bank 03, initEnemiesCounterAndMoveFolower    ;; 00:2926 $f5 $3e $14 $c3 $35 $1f
 
 inflictVulnerableNpcsSlep_trampoline:
     jp_to_bank 03, inflictVulnerableNpcsSlep           ;; 00:292c $f5 $3e $10 $c3 $35 $1f
@@ -7324,7 +7324,7 @@ call_00_2d22:
     ld   A, B                                          ;; 00:2d3a $78
     ld   B, C                                          ;; 00:2d3b $41
     ld   C, A                                          ;; 00:2d3c $4f
-    call call_00_039a                                  ;; 00:2d3d $cd $9a $03
+    call checkObjectsCollisionDirection                ;; 00:2d3d $cd $9a $03
     pop  BC                                            ;; 00:2d40 $c1
     push BC                                            ;; 00:2d41 $c5
     call call_00_2c2d                                  ;; 00:2d42 $cd $2d $2c
@@ -7578,13 +7578,13 @@ setAToZero:
     ret                                                ;; 00:2f0b $c9
 
 getSelectedX:
-    ld   A, [wCF5A]                                    ;; 00:2f0c $fa $5a $cf
+    ld   A, [wSelectedObjectID]                        ;; 00:2f0c $fa $5a $cf
     ld   C, A                                          ;; 00:2f0f $4f
     call GetObjectX                                    ;; 00:2f10 $cd $2d $0c
     ret                                                ;; 00:2f13 $c9
 
 getSelectedY:
-    ld   A, [wCF5A]                                    ;; 00:2f14 $fa $5a $cf
+    ld   A, [wSelectedObjectID]                        ;; 00:2f14 $fa $5a $cf
     ld   C, A                                          ;; 00:2f17 $4f
     call GetObjectY                                    ;; 00:2f18 $cd $3e $0c
     ret                                                ;; 00:2f1b $c9
@@ -7592,7 +7592,7 @@ getSelectedY:
     db   $21, $5a, $cf, $4e, $cd, $5d, $0c, $c9        ;; 00:2f24 ????????
 
 getSelectedDirection:
-    ld   A, [wCF5A]                                    ;; 00:2f2c $fa $5a $cf
+    ld   A, [wSelectedObjectID]                        ;; 00:2f2c $fa $5a $cf
     ld   C, A                                          ;; 00:2f2f $4f
     call getObjectDirection                            ;; 00:2f30 $cd $99 $0c
     ret                                                ;; 00:2f33 $c9
@@ -9353,7 +9353,7 @@ scriptOpCodeStartNameEntry:
     ld   [wWindowMainGameStateBackup], A               ;; 00:39cf $ea $62 $d8
     ld   A, [HL+]                                      ;; 00:39d2 $2a
     ld   [wScriptSavedNextOpcode], A                   ;; 00:39d3 $ea $6c $d8
-    call clearStatusBarTrampoline                      ;; 00:39d6 $cd $ff $30
+    call showFullscreenWindow_trampoline               ;; 00:39d6 $cd $ff $30
     ld   A, $01                                        ;; 00:39d9 $3e $01
     ld   [wMenuStateCurrentFunction], A                ;; 00:39db $ea $53 $d8
     ld   A, $1d                                        ;; 00:39de $3e $1d
@@ -9855,7 +9855,7 @@ scriptOpCodeOpenShop:
     ld   [wVendorNumber], A                            ;; 00:3c9f $ea $6d $d8
     ld   A, [HL+]                                      ;; 00:3ca2 $2a
     ld   [wScriptSavedNextOpcode], A                   ;; 00:3ca3 $ea $6c $d8
-    call clearStatusBarTrampoline                      ;; 00:3ca6 $cd $ff $30
+    call showFullscreenWindow_trampoline               ;; 00:3ca6 $cd $ff $30
     ld   HL, wD8D7                                     ;; 00:3ca9 $21 $d7 $d8
     xor  A, A                                          ;; 00:3cac $af
     ld   B, $04                                        ;; 00:3cad $06 $04
