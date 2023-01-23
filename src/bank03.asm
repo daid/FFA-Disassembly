@@ -1081,7 +1081,7 @@ call_03_4561:
 .jr_03_45e8:
     ld   E, A                                          ;; 03:45e8 $5f
     ld   A, C                                          ;; 03:45e9 $79
-    ld   [wC5B0], A                                    ;; 03:45ea $ea $b0 $c5
+    ld   [wNPCDroppingChest], A                        ;; 03:45ea $ea $b0 $c5
     ld   A, B                                          ;; 03:45ed $78
     or   A, $00                                        ;; 03:45ee $f6 $00
     ld   C, $81                                        ;; 03:45f0 $0e $81

@@ -491,7 +491,8 @@ wNPCSpawnTableIndex:
 wNumberOfLivingEnemies:
     ds 1                                               ;; c5af
 
-wC5B0:
+; One byte long
+wNPCDroppingChest:
     ds 16                                              ;; c5b0
 
 ; 3 records of $0a size, related to projectiles

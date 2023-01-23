@@ -7268,7 +7268,7 @@ spawnEmptyChest:
 
 scriptOpCodeChangeIntoEmptyChest:
     push HL                                            ;; 00:2ce7 $e5
-    ld   A, [wC5B0]                                    ;; 00:2ce8 $fa $b0 $c5
+    ld   A, [wNPCDroppingChest]                        ;; 00:2ce8 $fa $b0 $c5
     ld   C, A                                          ;; 00:2ceb $4f
     push BC                                            ;; 00:2cec $c5
     call getObjectNearestTilePosition                  ;; 00:2ced $cd $ef $05
