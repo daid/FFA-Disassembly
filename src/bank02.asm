@@ -3075,7 +3075,7 @@ call_02_55c6:
     add  HL, HL                                        ;; 02:55cf $29
     push HL                                            ;; 02:55d0 $e5
     pop  BC                                            ;; 02:55d1 $c1
-    ld   HL, vendorInventories                         ;; 02:55d2 $21 $ec $64
+    ld   HL, vendorInventories.items                   ;; 02:55d2 $21 $ec $64
     add  HL, BC                                        ;; 02:55d5 $09
     ld   B, $07                                        ;; 02:55d6 $06 $07
     ld   DE, $00                                       ;; 02:55d8 $11 $00 $00
@@ -4231,7 +4231,14 @@ windowTextStrings:
 
 INCLUDE "data/items.asm"
 
+; Vendor inventories allow seven items/weapons/spells.
+; They start with two bytes giving the vendor number, but this is unused by code.
+; After that each item is followed by the byte $0a.
+; If a vendor sells fewer than seven things, that entry is $ff, $00.
+;@data format=wbbbbbbbbbbbbbb amount=17
 vendorInventories:
+    db   $00, $00                                      ;; 02:64ea ??
+.items:
     db   $00, $0a, $05, $0a, $06, $0a, $16, $0a        ;; 02:64ec ........
     db   $ff, $00, $ff, $00, $ff, $00, $01, $01        ;; 02:64f4 ......??
     db   $00, $0a, $05, $0a, $06, $0a, $16, $0a        ;; 02:64fc ........
