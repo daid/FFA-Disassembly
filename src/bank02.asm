@@ -1878,7 +1878,7 @@ call_02_4db0:
     ld   [DE], A                                       ;; 02:4df4 $12
 .jr_02_4df5:
     ld   A, [wMenuFlags]                               ;; 02:4df5 $fa $49 $d8
-    ld   [wwMenuFlagsBackup], A                        ;; 02:4df8 $ea $4e $d8
+    ld   [wMenuFlagsBackup], A                        ;; 02:4df8 $ea $4e $d8
     ld   A, [wD848]                                    ;; 02:4dfb $fa $48 $d8
     ld   [wD84F], A                                    ;; 02:4dfe $ea $4f $d8
     ld   A, $03                                        ;; 02:4e01 $3e $03
