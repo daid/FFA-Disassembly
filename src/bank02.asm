@@ -2226,7 +2226,7 @@ call_02_5062:
 
 jr_02_5086:
     ld   B, $00                                        ;; 02:5086 $06 $00
-    ld   HL, wD701                                     ;; 02:5088 $21 $01 $d7
+    ld   HL, wVendorSalePrices                         ;; 02:5088 $21 $01 $d7
     add  HL, BC                                        ;; 02:508b $09
     add  HL, BC                                        ;; 02:508c $09
     ld   A, [HL+]                                      ;; 02:508d $2a
@@ -2260,7 +2260,7 @@ call_02_50b5:
     res  0, [HL]                                       ;; 02:50b8 $cb $86
     ld   C, A                                          ;; 02:50ba $4f
     ld   B, $00                                        ;; 02:50bb $06 $00
-    ld   HL, wD6F3                                     ;; 02:50bd $21 $f3 $d6
+    ld   HL, wVendorSaleIDs                            ;; 02:50bd $21 $f3 $d6
     add  HL, BC                                        ;; 02:50c0 $09
     ld   A, [HL]                                       ;; 02:50c1 $7e
     and  A, $7f                                        ;; 02:50c2 $e6 $7f
@@ -2302,7 +2302,7 @@ call_02_50b5:
     jr   NZ, call_02_50b5.loop_1                       ;; 02:5102 $20 $f7
     call getSelectedMenuIndexes                        ;; 02:5104 $cd $b0 $57
     ld   B, $00                                        ;; 02:5107 $06 $00
-    ld   HL, wD701                                     ;; 02:5109 $21 $01 $d7
+    ld   HL, wVendorSalePrices                         ;; 02:5109 $21 $01 $d7
     add  HL, BC                                        ;; 02:510c $09
     add  HL, BC                                        ;; 02:510d $09
     ld   A, [HL+]                                      ;; 02:510e $2a
@@ -2982,7 +2982,7 @@ jp_02_54a6:
     push HL                                            ;; 02:554f $e5
     push DE                                            ;; 02:5550 $d5
     ld   C, A                                          ;; 02:5551 $4f
-    ld   HL, wD6F3                                     ;; 02:5552 $21 $f3 $d6
+    ld   HL, wVendorSaleIDs                            ;; 02:5552 $21 $f3 $d6
     ld   B, $07                                        ;; 02:5555 $06 $07
 .loop_3:
     ld   A, [HL+]                                      ;; 02:5557 $2a
@@ -2998,7 +2998,7 @@ jp_02_54a6:
     sub  A, B                                          ;; 02:5566 $90
     ld   E, A                                          ;; 02:5567 $5f
     ld   D, $00                                        ;; 02:5568 $16 $00
-    ld   HL, wD701                                     ;; 02:556a $21 $01 $d7
+    ld   HL, wVendorSalePrices                         ;; 02:556a $21 $01 $d7
     add  HL, DE                                        ;; 02:556d $19
     add  HL, DE                                        ;; 02:556e $19
     ld   A, [HL+]                                      ;; 02:556f $2a
@@ -3086,13 +3086,13 @@ call_02_55c6:
     jr   NZ, .jr_02_55e2                               ;; 02:55de $20 $02
     ld   A, $80                                        ;; 02:55e0 $3e $80
 .jr_02_55e2:
-    ld   HL, wD6F3                                     ;; 02:55e2 $21 $f3 $d6
+    ld   HL, wVendorSaleIDs                            ;; 02:55e2 $21 $f3 $d6
     add  HL, DE                                        ;; 02:55e5 $19
     ld   [HL], A                                       ;; 02:55e6 $77
     pop  HL                                            ;; 02:55e7 $e1
     ld   A, [HL+]                                      ;; 02:55e8 $2a
     push HL                                            ;; 02:55e9 $e5
-    ld   HL, wD6FA                                     ;; 02:55ea $21 $fa $d6
+    ld   HL, wVendorSaleQuantities                     ;; 02:55ea $21 $fa $d6
     add  HL, DE                                        ;; 02:55ed $19
     ld   [HL], A                                       ;; 02:55ee $77
     pop  HL                                            ;; 02:55ef $e1
@@ -3104,13 +3104,13 @@ call_02_55c6:
 .loop_2:
     push BC                                            ;; 02:55f8 $c5
     ld   B, $00                                        ;; 02:55f9 $06 $00
-    ld   HL, wD6F3                                     ;; 02:55fb $21 $f3 $d6
+    ld   HL, wVendorSaleIDs                            ;; 02:55fb $21 $f3 $d6
     add  HL, BC                                        ;; 02:55fe $09
     ld   A, [HL]                                       ;; 02:55ff $7e
     call getBuyFromVendorPrice                         ;; 02:5600 $cd $b1 $56
     push HL                                            ;; 02:5603 $e5
     pop  DE                                            ;; 02:5604 $d1
-    ld   HL, wD701                                     ;; 02:5605 $21 $01 $d7
+    ld   HL, wVendorSalePrices                         ;; 02:5605 $21 $01 $d7
     add  HL, BC                                        ;; 02:5608 $09
     add  HL, BC                                        ;; 02:5609 $09
     ld   [HL], E                                       ;; 02:560a $73
@@ -3125,7 +3125,7 @@ call_02_55c6:
 .loop_3:
     push BC                                            ;; 02:5616 $c5
     ld   B, $00                                        ;; 02:5617 $06 $00
-    ld   HL, wD6F3                                     ;; 02:5619 $21 $f3 $d6
+    ld   HL, wVendorSaleIDs                            ;; 02:5619 $21 $f3 $d6
     add  HL, BC                                        ;; 02:561c $09
     ld   A, [HL]                                       ;; 02:561d $7e
     push BC                                            ;; 02:561e $c5
@@ -3138,7 +3138,7 @@ call_02_55c6:
     pop  BC                                            ;; 02:5628 $c1
     and  A, $70                                        ;; 02:5629 $e6 $70
     swap A                                             ;; 02:562b $cb $37
-    ld   HL, wD6FA                                     ;; 02:562d $21 $fa $d6
+    ld   HL, wVendorSaleQuantities                     ;; 02:562d $21 $fa $d6
     add  HL, BC                                        ;; 02:5630 $09
     ld   [HL], A                                       ;; 02:5631 $77
     pop  BC                                            ;; 02:5632 $c1
@@ -3777,7 +3777,7 @@ call_02_5a18:
     pop  BC                                            ;; 02:5a26 $c1
     ld   E, $10                                        ;; 02:5a27 $1e $10
     push DE                                            ;; 02:5a29 $d5
-    ld   HL, wD701                                     ;; 02:5a2a $21 $01 $d7
+    ld   HL, wVendorSalePrices                         ;; 02:5a2a $21 $01 $d7
     ld   A, [wDialogType]                              ;; 02:5a2d $fa $4a $d8
     cp   A, $0e                                        ;; 02:5a30 $fe $0e
     jr   Z, .jr_02_5a37                                ;; 02:5a32 $28 $03
@@ -4171,7 +4171,7 @@ data_02_5d52:
     dw   $0000                                         ;; 02:5d68 .. $0b
     dw   $0000                                         ;; 02:5d6a .. $0c
     dw   wD72F                                         ;; 02:5d6c .. $0d
-    dw   wD6FA                                         ;; 02:5d6e .. $0e
+    dw   wVendorSaleQuantities                         ;; 02:5d6e .. $0e
     dw   $0000                                         ;; 02:5d70 .. $0f
     dw   $0000                                         ;; 02:5d72 .. $10
     dw   $0000                                         ;; 02:5d74 .. $11
@@ -4208,7 +4208,7 @@ windowTextStrings:
     dw   vendorOptions                                 ;; 02:5dac .. $0b
     dw   $0000                                         ;; 02:5dae .. $0c
     dw   wD70F                                         ;; 02:5db0 .. $0d
-    dw   wD6F3                                         ;; 02:5db2 .. $0e
+    dw   wVendorSaleIDs                                ;; 02:5db2 .. $0e
     dw   venderGreetingText                            ;; 02:5db4 .. $0f
     dw   venderConfirmSell                             ;; 02:5db6 .. $10
     dw   selectMenuOptions                             ;; 02:5db8 .. $11

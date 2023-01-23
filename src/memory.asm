@@ -932,13 +932,13 @@ wEquippedItemAmount:
 wEquippedItemAndWeaponCopy:
     ds 2                                               ;; d6f1
 
-wD6F3:
+wVendorSaleIDs:
     ds 7                                               ;; d6f3
 
-wD6FA:
+wVendorSaleQuantities:
     ds 7                                               ;; d6fa
 
-wD701:
+wVendorSalePrices:
     ds 14                                              ;; d701
 
 wD70F:
