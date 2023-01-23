@@ -9057,7 +9057,7 @@ drawText:
 call_00_380b:
     ld   A, [wWindowTextLength]                        ;; 00:380b $fa $9b $d8
     ld   B, A                                          ;; 00:380e $47
-    ld   A, [wD849]                                    ;; 00:380f $fa $49 $d8
+    ld   A, [wMenuFlags]                               ;; 00:380f $fa $49 $d8
     rrca                                               ;; 00:3812 $0f
     jr   NC, .jr_00_382c                               ;; 00:3813 $30 $17
     ld   A, [wDialogType]                              ;; 00:3815 $fa $4a $d8

@@ -1156,7 +1156,13 @@ wD846:
 wD848:
     ds 1                                               ;; d848
 
-wD849:
+; bit 0: seems related to having multiple columns, but it's set on the START menu
+; bit 1: has trash can
+; bit 3: button pressed
+; bit 4: scrolling down
+; bit 5: scrolling up
+; bit 7: showing trash can
+wMenuFlags:
     ds 1                                               ;; d849
 
 ; Indicates which dialog is being opened. For example $11 = select menu (save/map/status)
@@ -1175,7 +1181,7 @@ wSelectedMenuIndex2:
 wScriptDelayOpCodeTimerNumber:
     ds 1                                               ;; d84d
 
-wD84E:
+wMenuFlagsBackup:
     ds 1                                               ;; d84e
 
 wD84F:
