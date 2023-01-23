@@ -20,8 +20,9 @@ wMainGameState:
     ds 1                                               ;; c0a0
 
 ; bit 0: unknown
-; bit 1-3: certain script types running
-; bit 4-7: scrolling direction (nibbles are swapped for this)
+; bit 1-2: used by scripts and other events that take control from the player
+; bit 3: used to freeze the player by both scripts and scrolling
+; bit 4-7: scrolling direction
 wMainGameStateFlags:
     ds 1                                               ;; c0a1
 .nextFrame:
