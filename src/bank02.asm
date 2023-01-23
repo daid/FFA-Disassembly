@@ -3397,7 +3397,7 @@ getSelectedMenuIndexes:
 call_02_57b9:
     ld   A, $04                                        ;; 02:57b9 $3e $04
     push AF                                            ;; 02:57bb $f5
-    ld   HL, windowData.euipmentScreenBottom           ;; 02:57bc $21 $d2 $5b
+    ld   HL, windowData.equipmentScreenBottom          ;; 02:57bc $21 $d2 $5b
     call call_02_57c4                                  ;; 02:57bf $cd $c4 $57
     pop  AF                                            ;; 02:57c2 $f1
     ret                                                ;; 02:57c3 $c9
@@ -4029,7 +4029,7 @@ getEquippedWeaponAP:
     pop  HL                                            ;; 02:5ba8 $e1
     ret                                                ;; 02:5ba9 $c9
 
-;@data amount=24 format=bbbbbbbbbb
+;@data amount=34 format=bbbbbbbbbb
 ; Window data for size/height/cursor.
 ;0-3: x, y, w, h
 ;4: Amount of rows to draw with text
@@ -4047,7 +4047,7 @@ windowData:
     db   $05, $01, $0d, $09, $04, $04, $08, $01, $02, $06 ;; 02:5bbe .......... $02
 .equipmentScreenTop:
     db   $00, $00, $13, $07, $03, $08, $0e, $01, $00, $00 ;; 02:5bc8 .......... $03
-.euipmentScreenBottom:
+.equipmentScreenBottom:
     db   $00, $08, $13, $09, $04, $08, $0c, $03, $02, $09 ;; 02:5bd2 .......... $04
 ; Unused:
     db   $00, $00, $13, $08, $03, $08, $00, $00, $00, $00 ;; 02:5bdc ?????????? $05
@@ -4091,8 +4091,12 @@ windowData:
     db   $00                                           ;; 02:5c9a .
 .selectLevelupStatsY:
     db   $00, $13, $05, $04, $07, $04, $03, $02        ;; 02:5c9b ........
-    db   $09, $00, $06, $09, $05, $02, $05, $02        ;; 02:5ca3 ........
-    db   $02, $01, $00, $00, $0b, $06, $09, $02        ;; 02:5cab ........
+    db   $09
+; Levelup Yes, No:
+    db   $00, $06, $09, $05, $02, $05, $02             ;; 02:5ca4 ........
+    db   $02, $01, $00
+; Status screen AP, DP (this has an invisible border, but is a different window):
+    db   $00, $0b, $06, $09, $02        ;; 02:5cae ........
     db   $05, $02, $00, $01, $00, $00, $02, $13        ;; 02:5cb3 ........
     db   $06, $01, $0f, $02, $00, $02, $00, $00        ;; 02:5cbb ........
     db   $0a, $13, $06, $01, $0f, $02, $00, $02        ;; 02:5cc3 ........
