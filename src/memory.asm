@@ -462,13 +462,14 @@ wPlayerDamagedTimer:
 wPlayerSpecialFlags:
     ds 12                                              ;; c4d4
 
-; 8 records of $18 size, related to NPCs
-; 0: wObjectRuntimeData entry index
-; 2: Movement speed
-; 10: Status (bit7: Slep, bit6: Mute)
-; 12-13: HP
-; 16-17: npcStatsTable entry pointer
-; 18-19: npcDataTable entry pointer
+; 08 records of $18 size, related to NPCs
+; 00: wObjectRuntimeData entry index
+; 01: Delay until next move (initialized from 02)
+; 02: Movement speed
+; 0a: Status (bit7: Slep, bit6: Mute)
+; 0c-0d: HP
+; 10-11: npcStatsTable entry pointer
+; 12-13: npcDataTable entry pointer
 wNpcRuntimeData:
     ds 16                                              ;; c4e0
 .statsTablePointer:
@@ -714,7 +715,7 @@ wBossCurrentPatternStep:
 wBossCurrentKeyframeStep:
     ds 1                                               ;; d3ed
 
-wBoosCurrentHeadActionStep:
+wBossCurrentHeadActionStep:
     ds 1                                               ;; d3ee
 
 wD3EF:

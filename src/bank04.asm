@@ -133,7 +133,7 @@ bossRunLogic:
 
 bossLogic:
     push DE                                            ;; 04:40a4 $d5
-    ld   A, [wBoosCurrentHeadActionStep]               ;; 04:40a5 $fa $ee $d3
+    ld   A, [wBossCurrentHeadActionStep]               ;; 04:40a5 $fa $ee $d3
     ld   L, A                                          ;; 04:40a8 $6f
     ld   H, $00                                        ;; 04:40a9 $26 $00
     add  HL, HL                                        ;; 04:40ab $29
@@ -172,7 +172,7 @@ bossLogic:
     call updateObjectPosition                          ;; 04:40e5 $cd $11 $06
     pop  DE                                            ;; 04:40e8 $d1
     call call_04_40f3                                  ;; 04:40e9 $cd $f3 $40
-    ld   HL, wBoosCurrentHeadActionStep                ;; 04:40ec $21 $ee $d3
+    ld   HL, wBossCurrentHeadActionStep                ;; 04:40ec $21 $ee $d3
     inc  [HL]                                          ;; 04:40ef $34
     ret                                                ;; 04:40f0 $c9
 .jr_04_40f1:
@@ -389,7 +389,7 @@ call_04_4209:
     dec  [HL]                                          ;; 04:420c $35
     call Z, call_04_4222                               ;; 04:420d $cc $22 $42
     ld   A, $00                                        ;; 04:4210 $3e $00
-    ld   [wBoosCurrentHeadActionStep], A               ;; 04:4212 $ea $ee $d3
+    ld   [wBossCurrentHeadActionStep], A               ;; 04:4212 $ea $ee $d3
     ld   [wD3EF], A                                    ;; 04:4215 $ea $ef $d3
     ld   A, [wBossCurrentHeadActionPointer.high]       ;; 04:4218 $fa $3f $d4
     ld   H, A                                          ;; 04:421b $67

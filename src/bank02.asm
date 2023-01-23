@@ -315,7 +315,7 @@ requestBackgroundTileCopy:
     add  HL, HL                                        ;; 02:4202 $29
     add  HL, HL                                        ;; 02:4203 $29
     add  HL, HL                                        ;; 02:4204 $29
-    ld   DE, $8000                                     ;; 02:4205 $11 $00 $80
+    ld   DE, _VRAM8000 ;@=ptr _VRAM8000                ;; 02:4205 $11 $00 $80
     add  HL, DE                                        ;; 02:4208 $19
     ld   D, H                                          ;; 02:4209 $54
     ld   E, L                                          ;; 02:420a $5d
@@ -5362,7 +5362,9 @@ getWindowData:
 ; Only does the set if the previous function finished (bit 7 is clear).
 ; If the new function is 0 it also does some some processing to resume the game.
 ; B = new function number
-; Return: nothing, but callers often check wMenuStateCurrentFunction afterwards.
+; Return: NZ unless the new function is 0, and also (as far as I can tell) if the Slep spell is not currently active it returns Z.
+; The Slep related behavior is almost certainly a bug, unless the game is very careful to only test the return when Slep can't be active.
+; Callers also often check wMenuStateCurrentFunction afterwards.
 setMenuStateCurrentFunction:
     push AF                                            ;; 02:6c98 $f5
     ld   A, [wMenuStateCurrentFunction]                ;; 02:6c99 $fa $53 $d8

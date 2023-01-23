@@ -2284,17 +2284,17 @@ scriptOpCodeCheckIfCanOpenMap:
     push HL                                            ;; 00:0d5f $e5
     call getMapNumber                                  ;; 00:0d60 $cd $0a $22
     cp   A, $01                                        ;; 00:0d63 $fe $01
-    jr   Z, .jr_00_0d79                                ;; 00:0d65 $28 $12
+    jr   Z, .no_minimap                                ;; 00:0d65 $28 $12
     cp   A, $0e                                        ;; 00:0d67 $fe $0e
-    jr   Z, .jr_00_0d79                                ;; 00:0d69 $28 $0e
+    jr   Z, .no_minimap                                ;; 00:0d69 $28 $0e
     cp   A, $0f                                        ;; 00:0d6b $fe $0f
-    jr   Z, .jr_00_0d79                                ;; 00:0d6d $28 $0a
+    jr   Z, .no_minimap                                ;; 00:0d6d $28 $0a
     ld   A, $7f                                        ;; 00:0d6f $3e $7f
     call setScriptFlag                                 ;; 00:0d71 $cd $e4 $3b
     pop  HL                                            ;; 00:0d74 $e1
     call getNextScriptInstruction                      ;; 00:0d75 $cd $27 $37
     ret                                                ;; 00:0d78 $c9
-.jr_00_0d79:
+.no_minimap:
     ld   A, $7f                                        ;; 00:0d79 $3e $7f
     call clearScriptFlag                               ;; 00:0d7b $cd $ee $3b
     pop  HL                                            ;; 00:0d7e $e1
@@ -3764,11 +3764,11 @@ noFollower:
 
 scriptOpCodeFollowerSetPosition:
     call checkForFollower                              ;; 00:1663 $cd $c2 $28
-    jr   NZ, .jr_00_166e                               ;; 00:1666 $20 $06
+    jr   NZ, .no_follower                              ;; 00:1666 $20 $06
     ld   C, $00                                        ;; 00:1668 $0e $00
     call call_00_123e                                  ;; 00:166a $cd $3e $12
     ret                                                ;; 00:166d $c9
-.jr_00_166e:
+.no_follower:
     inc  HL                                            ;; 00:166e $23
     inc  HL                                            ;; 00:166f $23
     call getNextScriptInstruction                      ;; 00:1670 $cd $27 $37
@@ -4500,7 +4500,7 @@ call_00_1a8c:
     push HL                                            ;; 00:1aa4 $e5
     ld   A, B                                          ;; 00:1aa5 $78
     ld   B, $00                                        ;; 00:1aa6 $06 $00
-    ld   HL, $8000                                     ;; 00:1aa8 $21 $00 $80
+    ld   HL, _VRAM8000 ;@=ptr _VRAM8000                ;; 00:1aa8 $21 $00 $80
     add  HL, BC                                        ;; 00:1aab $09
     ld   D, H                                          ;; 00:1aac $54
     ld   E, L                                          ;; 00:1aad $5d
@@ -4531,7 +4531,7 @@ call_00_1acd:
     push DE                                            ;; 00:1acd $d5
     push HL                                            ;; 00:1ace $e5
     ld   B, $00                                        ;; 00:1acf $06 $00
-    ld   HL, $8000                                     ;; 00:1ad1 $21 $00 $80
+    ld   HL, _VRAM8000 ;@=ptr _VRAM8000                ;; 00:1ad1 $21 $00 $80
     add  HL, BC                                        ;; 00:1ad4 $09
     ld   D, H                                          ;; 00:1ad5 $54
     ld   E, L                                          ;; 00:1ad6 $5d
@@ -4723,7 +4723,7 @@ loadRoomTile:
     add  HL, HL                                        ;; 00:1bd9 $29
     add  HL, HL                                        ;; 00:1bda $29
     add  HL, HL                                        ;; 00:1bdb $29
-    ld   DE, $8000                                     ;; 00:1bdc $11 $00 $80
+    ld   DE, _VRAM8000 ;@=ptr _VRAM8000                ;; 00:1bdc $11 $00 $80
     add  HL, DE                                        ;; 00:1bdf $19
     pop  DE                                            ;; 00:1be0 $d1
     push DE                                            ;; 00:1be1 $d5
@@ -5500,7 +5500,7 @@ getRoomClearedStatusAndUpdateList:
 checkRoomVisited:
     ld   B, $40                                        ;; 00:21f6 $06 $40
     ld   HL, wRoomClearedStatus                        ;; 00:21f8 $21 $00 $c4
-.jr_00_21fb:
+.loop:
     ld   A, [HL+]                                      ;; 00:21fb $2a
     and  A, $7f                                        ;; 00:21fc $e6 $7f
     cp   A, D                                          ;; 00:21fe $ba
@@ -5511,7 +5511,7 @@ checkRoomVisited:
 .jr_00_2204:
     inc  HL                                            ;; 00:2204 $23
     dec  B                                             ;; 00:2205 $05
-    jr   NZ, .jr_00_21fb                               ;; 00:2206 $20 $f3
+    jr   NZ, .loop                                     ;; 00:2206 $20 $f3
     dec  B                                             ;; 00:2208 $05
     ret                                                ;; 00:2209 $c9
 
@@ -5529,28 +5529,22 @@ LoadRoomXY_to_A:
     or   A, C                                          ;; 00:221b $b1
     ret                                                ;; 00:221c $c9
 
-; Offsets into wRoomTiles for door tiles
-label_unknown_221d:
+; Offsets into wRoomTiles for door metatiles, and the xy  coordinates of each
+;@data amount=4 format=ppbb
+doorMetatileLocation:
     dw   $c39b                                         ;; 00:221d pP
     dw   $c39a                                         ;; 00:221f pP
-
-label_unknown_2221:
+.southXYs:
     db   $05, $07, $04, $07                            ;; 00:2221 ....
-
-; Offsets into wRoomTiles for door tiles
-label_unknown_2225:
+.north:
     dw   $c355                                         ;; 00:2225 pP
     dw   $c354                                         ;; 00:2227 pP
     db   $05, $00, $04, $00                            ;; 00:2229 ....
-
-; Offsets into wRoomTiles for door tiles
-label_unknown_222d:
+.west:
     dw   $c378                                         ;; 00:222d pP
     dw   $c36e                                         ;; 00:222f pP
     db   $00, $04, $00, $03                            ;; 00:2231 ....
-
-; Offsets into wRoomTiles for door tiles
-label_unknown_2235:
+.east:
     dw   $c381                                         ;; 00:2235 pP
     dw   $c377                                         ;; 00:2237 pP
     db   $09, $04, $09, $03, $9b, $c3, $9a, $c3        ;; 00:2239 ....????
@@ -5559,8 +5553,11 @@ label_unknown_2235:
     db   $ff, $04, $ff, $03, $81, $c3, $77, $c3        ;; 00:2251 .?.?????
     db   $0a, $04, $0a, $03                            ;; 00:2259 ...?
 
-call_00_225d:
-    ld   HL, label_unknown_221d                        ;; 00:225d $21 $1d $22
+; A is direction, E=1, W=2, N=4, S=8
+; Return: HL = pointer to offsets into wRoomTiles for door metatiles:
+; Return: C = direction bit number
+getDoorLocationPointers:
+    ld   HL, doorMetatileLocation                      ;; 00:225d $21 $1d $22
     bit  0, A                                          ;; 00:2260 $cb $47
     jr   NZ, .east                                     ;; 00:2262 $20 $0b
     bit  1, A                                          ;; 00:2264 $cb $4f
@@ -5570,19 +5567,22 @@ call_00_225d:
     ld   C, $03                                        ;; 00:226c $0e $03
     ret                                                ;; 00:226e $c9
 .east:
-    ld   HL, label_unknown_2235                        ;; 00:226f $21 $35 $22
+    ld   HL, doorMetatileLocation.east                 ;; 00:226f $21 $35 $22
     ld   C, $00                                        ;; 00:2272 $0e $00
     ret                                                ;; 00:2274 $c9
 .west:
-    ld   HL, label_unknown_222d                        ;; 00:2275 $21 $2d $22
+    ld   HL, doorMetatileLocation.west                 ;; 00:2275 $21 $2d $22
     ld   C, $01                                        ;; 00:2278 $0e $01
     ret                                                ;; 00:227a $c9
 .north:
-    ld   HL, label_unknown_2225                        ;; 00:227b $21 $25 $22
+    ld   HL, doorMetatileLocation.north                ;; 00:227b $21 $25 $22
     ld   C, $02                                        ;; 00:227e $0e $02
     ret                                                ;; 00:2280 $c9
 
-call_00_2281:
+; Draws a door open or closed
+; DE = pointer to offsets into wRoomTiles for door metatiles
+; HL = offset into the map's door metatile data
+drawDoorMetaTiles:
     push DE                                            ;; 00:2281 $d5
     ld   A, [wMapTablePointer.high]                    ;; 00:2282 $fa $f3 $c3
     ld   D, A                                          ;; 00:2285 $57
@@ -5683,7 +5683,7 @@ closeDoor:
     push AF                                            ;; 00:22fe $f5
     ld   A, [wMapEncodingType]                         ;; 00:22ff $fa $f8 $c3
     cp   A, $00                                        ;; 00:2302 $fe $00
-    jr   Z, .jr_00_2359                                ;; 00:2304 $28 $53
+    jr   Z, .unsupported                                     ;; 00:2304 $28 $53
     ld   A, [wMapTableBankNr]                          ;; 00:2306 $fa $f0 $c3
     call pushBankNrAndSwitch                           ;; 00:2309 $cd $fb $29
     pop  AF                                            ;; 00:230c $f1
@@ -5695,7 +5695,7 @@ closeDoor:
     ld   [wDoorStates], A                              ;; 00:2314 $ea $f4 $c3
     ld   A, C                                          ;; 00:2317 $79
     cpl                                                ;; 00:2318 $2f
-    call call_00_225d                                  ;; 00:2319 $cd $5d $22
+    call getDoorLocationPointers                       ;; 00:2319 $cd $5d $22
     push HL                                            ;; 00:231c $e5
     ld   A, [wRoomTileDataPointer.high]                ;; 00:231d $fa $fd $c3
     ld   H, A                                          ;; 00:2320 $67
@@ -5713,7 +5713,7 @@ closeDoor:
     add  HL, BC                                        ;; 00:2331 $09
     add  HL, BC                                        ;; 00:2332 $09
     pop  DE                                            ;; 00:2333 $d1
-    call call_00_2281                                  ;; 00:2334 $cd $81 $22
+    call drawDoorMetaTiles                             ;; 00:2334 $cd $81 $22
     pop  AF                                            ;; 00:2337 $f1
     call objectReverseDirection                        ;; 00:2338 $cd $e4 $29
     ld   B, A                                          ;; 00:233b $47
@@ -5731,7 +5731,7 @@ closeDoor:
     call Z, updateObjectPosition_3_trampoline          ;; 00:2352 $cc $8f $28
     call popBankNrAndSwitch                            ;; 00:2355 $cd $0a $2a
     ret                                                ;; 00:2358 $c9
-.jr_00_2359:
+.unsupported:
     pop  AF                                            ;; 00:2359 $f1
     ret                                                ;; 00:235a $c9
 
@@ -5740,7 +5740,7 @@ openDoor:
     push AF                                            ;; 00:235b $f5
     ld   A, [wMapEncodingType]                         ;; 00:235c $fa $f8 $c3
     cp   A, $00                                        ;; 00:235f $fe $00
-    jr   Z, .jr_00_2383                                ;; 00:2361 $28 $20
+    jr   Z, .unsupported                               ;; 00:2361 $28 $20
     ld   A, [wMapTableBankNr]                          ;; 00:2363 $fa $f0 $c3
     call pushBankNrAndSwitch                           ;; 00:2366 $cd $fb $29
     pop  AF                                            ;; 00:2369 $f1
@@ -5749,24 +5749,24 @@ openDoor:
     or   A, C                                          ;; 00:236e $b1
     ld   [wDoorStates], A                              ;; 00:236f $ea $f4 $c3
     ld   A, C                                          ;; 00:2372 $79
-    call call_00_225d                                  ;; 00:2373 $cd $5d $22
+    call getDoorLocationPointers                       ;; 00:2373 $cd $5d $22
     ld   E, L                                          ;; 00:2376 $5d
     ld   D, H                                          ;; 00:2377 $54
     ld   L, C                                          ;; 00:2378 $69
     ld   H, $00                                        ;; 00:2379 $26 $00
     add  HL, HL                                        ;; 00:237b $29
-    call call_00_2281                                  ;; 00:237c $cd $81 $22
+    call drawDoorMetaTiles                             ;; 00:237c $cd $81 $22
     call popBankNrAndSwitch                            ;; 00:237f $cd $0a $2a
     ret                                                ;; 00:2382 $c9
-.jr_00_2383:
+.unsupported:
     pop  AF                                            ;; 00:2383 $f1
     ret                                                ;; 00:2384 $c9
 
 call_00_2385:
     ld   C, $08                                        ;; 00:2385 $0e $08
     ld   B, $08                                        ;; 00:2387 $06 $08
-    ld   HL, label_unknown_2221                        ;; 00:2389 $21 $21 $22
-.jr_00_238c:
+    ld   HL, doorMetatileLocation.southXYs             ;; 00:2389 $21 $21 $22
+.loop:
     ld   A, [HL+]                                      ;; 00:238c $2a
     cp   A, E                                          ;; 00:238d $bb
     jr   NZ, .jr_00_2394                               ;; 00:238e $20 $04
@@ -5794,7 +5794,7 @@ call_00_2385:
     ld   C, $08                                        ;; 00:23aa $0e $08
 .jr_00_23ac:
     dec  B                                             ;; 00:23ac $05
-    jr   NZ, .jr_00_238c                               ;; 00:23ad $20 $dd
+    jr   NZ, .loop                                     ;; 00:23ad $20 $dd
     xor  A, A                                          ;; 00:23af $af
     inc  A                                             ;; 00:23b0 $3c
     ret                                                ;; 00:23b1 $c9
@@ -6062,7 +6062,9 @@ runRoomAllKilledScript:
     pop  HL                                            ;; 00:2544 $e1
     ret                                                ;; 00:2545 $c9
 
-call_00_2546:
+; A = YX tile location (Y in top nibble, X in bottom nibble)
+; Return: HL pointer to the metatile in wRoomTiles
+getRoomMetaTilePointerYXinA:
     ld   D, A                                          ;; 00:2546 $57
     and  A, $0f                                        ;; 00:2547 $e6 $0f
     ld   E, A                                          ;; 00:2549 $5f
@@ -6125,7 +6127,7 @@ loadRoomMetaTilesTemplated:
     add  HL, HL                                        ;; 00:2594 $29
     add  HL, HL                                        ;; 00:2595 $29
     add  HL, HL                                        ;; 00:2596 $29
-    ld   DE, label_unknown_221d                        ;; 00:2597 $11 $1d $22
+    ld   DE, doorMetatileLocation                      ;; 00:2597 $11 $1d $22
     add  HL, DE                                        ;; 00:259a $19
     ld   E, [HL]                                       ;; 00:259b $5e
     inc  HL                                            ;; 00:259c $23
@@ -6163,7 +6165,7 @@ loadRoomMetaTilesTemplated:
     ld   C, A                                          ;; 00:25c3 $4f
     ld   A, [HL+]                                      ;; 00:25c4 $2a
     push HL                                            ;; 00:25c5 $e5
-    call call_00_2546                                  ;; 00:25c6 $cd $46 $25
+    call getRoomMetaTilePointerYXinA                   ;; 00:25c6 $cd $46 $25
     ld   [HL], C                                       ;; 00:25c9 $71
     pop  HL                                            ;; 00:25ca $e1
     jr   loadRoomMetaTilesTemplated.tileOverrideLoop   ;; 00:25cb $18 $f1
@@ -8146,7 +8148,7 @@ scriptOpCodeEND:
     ret  NZ                                            ;; 00:329c $c0
     ld   A, [wScriptStackCount]                        ;; 00:329d $fa $65 $d8
     and  A, A                                          ;; 00:32a0 $a7
-    jr   NZ, .op_return                                ;; 00:32a1 $20 $1d
+    jr   NZ, .script_stack_not_empty                   ;; 00:32a1 $20 $1d
     xor  A, A                                          ;; 00:32a3 $af
     ld   [wScriptCommand], A                           ;; 00:32a4 $ea $5a $d8
     ld   A, [wScriptMainGameStateBackup]               ;; 00:32a7 $fa $6e $d8
@@ -8160,17 +8162,17 @@ scriptOpCodeEND:
     res  3, [HL]                                       ;; 00:32bb $cb $9e
     res  2, [HL]                                       ;; 00:32bd $cb $96
     ret                                                ;; 00:32bf $c9
-.op_return:
+.script_stack_not_empty:
     push HL                                            ;; 00:32c0 $e5
     call popBCDEfromScriptStack                        ;; 00:32c1 $cd $05 $37
     pop  HL                                            ;; 00:32c4 $e1
     ld   A, B                                          ;; 00:32c5 $78
     cp   A, $03                                        ;; 00:32c6 $fe $03
-    jr   Z, .jr_00_32e3                                ;; 00:32c8 $28 $19
+    jr   Z, .loop                                      ;; 00:32c8 $28 $19
     cp   A, $02                                        ;; 00:32ca $fe $02
-    jr   Z, .jr_00_32cf                                ;; 00:32cc $28 $01
+    jr   Z, .return_from_call                          ;; 00:32cc $28 $01
     ret                                                ;; 00:32ce $c9
-.jr_00_32cf:
+.return_from_call:
     push DE                                            ;; 00:32cf $d5
     pop  HL                                            ;; 00:32d0 $e1
     ld   A, H                                          ;; 00:32d1 $7c
@@ -8181,15 +8183,15 @@ scriptOpCodeEND:
     call getBankNrForScript                            ;; 00:32dc $cd $44 $3c
     call getNextScriptInstruction                      ;; 00:32df $cd $27 $37
     ret                                                ;; 00:32e2 $c9
-.jr_00_32e3:
+.loop:
     dec  C                                             ;; 00:32e3 $0d
-    jr   Z, .jr_00_32ef                                ;; 00:32e4 $28 $09
+    jr   Z, .loop_end                                ;; 00:32e4 $28 $09
     push DE                                            ;; 00:32e6 $d5
     pop  HL                                            ;; 00:32e7 $e1
-    call pushBCDEtoScriptStack                         ;; 00:32e8 $cd $df $36
+    call pushBCHLtoScriptStack                         ;; 00:32e8 $cd $df $36
     call getNextScriptInstruction                      ;; 00:32eb $cd $27 $37
     ret                                                ;; 00:32ee $c9
-.jr_00_32ef:
+.loop_end:
     call getNextScriptInstruction                      ;; 00:32ef $cd $27 $37
     ret                                                ;; 00:32f2 $c9
 
@@ -8223,7 +8225,7 @@ jumpToScriptAtAddressDE:
     ld   DE, mapRoomPointers_03                        ;; 00:3311 $11 $00 $40
     add  HL, DE                                        ;; 00:3314 $19
 .jr_00_3315:
-    call pushBCDEtoScriptStack                         ;; 00:3315 $cd $df $36
+    call pushBCHLtoScriptStack                         ;; 00:3315 $cd $df $36
     pop  HL                                            ;; 00:3318 $e1
     ld   DE, mapRoomPointers_00                        ;; 00:3319 $11 $00 $40
     add  HL, DE                                        ;; 00:331c $19
@@ -8241,7 +8243,7 @@ scriptOpCodeLoop:
     ld   B, $03                                        ;; 00:3332 $06 $03
     ld   C, A                                          ;; 00:3334 $4f
     inc  HL                                            ;; 00:3335 $23
-    call pushBCDEtoScriptStack                         ;; 00:3336 $cd $df $36
+    call pushBCHLtoScriptStack                         ;; 00:3336 $cd $df $36
     call getNextScriptInstruction                      ;; 00:3339 $cd $27 $37
     ret                                                ;; 00:333c $c9
 
@@ -8367,18 +8369,18 @@ findSpellItemOrEquipment:
     ld   L, A                                          ;; 00:33f9 $6f
     ld   A, [wSearchInventoryLength]                   ;; 00:33fa $fa $70 $d8
     ld   B, A                                          ;; 00:33fd $47
-.jr_00_33fe:
+.loop_1:
     ld   A, [HL+]                                      ;; 00:33fe $2a
     and  A, $7f                                        ;; 00:33ff $e6 $7f
     cp   A, C                                          ;; 00:3401 $b9
     jr   Z, .jr_00_340e                                ;; 00:3402 $28 $0a
     dec  B                                             ;; 00:3404 $05
-    jr   NZ, .jr_00_33fe                               ;; 00:3405 $20 $f7
+    jr   NZ, .loop_1                               ;; 00:3405 $20 $f7
     pop  HL                                            ;; 00:3407 $e1
-.jr_00_3408:
+.loop_2:
     ld   A, [HL+]                                      ;; 00:3408 $2a
     or   A, A                                          ;; 00:3409 $b7
-    jr   NZ, .jr_00_3408                               ;; 00:340a $20 $fc
+    jr   NZ, .loop_2                                   ;; 00:340a $20 $fc
     dec  A                                             ;; 00:340c $3d
     ret                                                ;; 00:340d $c9
 .jr_00_340e:
@@ -8651,7 +8653,7 @@ call_00_3597:
     jr   NZ, .jr_00_35ae                               ;; 00:35a5 $20 $07
     ld   A, $01                                        ;; 00:35a7 $3e $01
     ld   [wTextSpeedTimer], A                          ;; 00:35a9 $ea $64 $d8
-    jr   jr_00_35e4                                    ;; 00:35ac $18 $36
+    jr   moveInsertionPointCommon                      ;; 00:35ac $18 $36
 .jr_00_35ae:
     pop  HL                                            ;; 00:35ae $e1
     ret                                                ;; 00:35af $c9
@@ -8674,13 +8676,13 @@ textCtrlCodeMoveInsertionPointRight:
     call loadRegisterState2_bank0                      ;; 00:35c6 $cd $87 $3c
     inc  E                                             ;; 00:35c9 $1c
     dec  C                                             ;; 00:35ca $0d
-    jr   jr_00_35e4                                    ;; 00:35cb $18 $17
+    jr   moveInsertionPointCommon                      ;; 00:35cb $18 $17
 
 textCtrlCodeMoveInsertionPointLeft:
     call loadRegisterState2_bank0                      ;; 00:35cd $cd $87 $3c
     dec  E                                             ;; 00:35d0 $1d
     inc  C                                             ;; 00:35d1 $0c
-    jr   jr_00_35e4                                    ;; 00:35d2 $18 $10
+    jr   moveInsertionPointCommon                      ;; 00:35d2 $18 $10
 
 textCtrlCodeMoveInsertionPointUp:
     call loadRegisterState2_bank0                      ;; 00:35d4 $cd $87 $3c
@@ -8688,7 +8690,7 @@ textCtrlCodeMoveInsertionPointUp:
     dec  D                                             ;; 00:35d8 $15
     inc  B                                             ;; 00:35d9 $04
     inc  B                                             ;; 00:35da $04
-    jr   jr_00_35e4                                    ;; 00:35db $18 $07
+    jr   moveInsertionPointCommon                      ;; 00:35db $18 $07
 
 textCtrlCodeMoveInsertionPointDown:
     call loadRegisterState2_bank0                      ;; 00:35dd $cd $87 $3c
@@ -8697,7 +8699,7 @@ textCtrlCodeMoveInsertionPointDown:
     dec  B                                             ;; 00:35e2 $05
     dec  B                                             ;; 00:35e3 $05
 
-jr_00_35e4:
+moveInsertionPointCommon:
     call setDialogTextInsertionPoint                   ;; 00:35e4 $cd $36 $37
     call saveRegisterState2_bank0                      ;; 00:35e7 $cd $73 $3c
     pop  HL                                            ;; 00:35ea $e1
@@ -8867,7 +8869,7 @@ startDialog:
     ret                                                ;; 00:36de $c9
 
 ; push 4 bytes to the script stack (not interrupt safe!)
-pushBCDEtoScriptStack:
+pushBCHLtoScriptStack:
     push HL                                            ;; 00:36df $e5
     pop  DE                                            ;; 00:36e0 $d1
     ld   [wStackBackup], SP                            ;; 00:36e1 $08 $be $d8

@@ -1324,7 +1324,7 @@ gameStateNormal:
     pop  BC                                            ;; 01:49ec $c1
     pop  DE                                            ;; 01:49ed $d1
     cp   A, $00                                        ;; 01:49ee $fe $00
-    jr   NZ, .jr_01_4a09                               ;; 01:49f0 $20 $17
+    jr   NZ, .sliding                                  ;; 01:49f0 $20 $17
 .jr_01_49f2:
     push DE                                            ;; 01:49f2 $d5
     push BC                                            ;; 01:49f3 $c5
@@ -1339,7 +1339,7 @@ gameStateNormal:
     cp   A, $00                                        ;; 01:4a02 $fe $00
     call NZ, playerDamagedEffect                       ;; 01:4a04 $c4 $38 $4b
     jr   .jr_01_4a16                                   ;; 01:4a07 $18 $0d
-.jr_01_4a09:
+.sliding:
     push AF                                            ;; 01:4a09 $f5
     ld   A, [wPlayerDamagedTimer]                      ;; 01:4a0a $fa $d2 $c4
     cp   A, $00                                        ;; 01:4a0d $fe $00
@@ -1434,7 +1434,7 @@ gameStateNormal:
     ld   A, $08                                        ;; 01:4abb $3e $08
     ld   [wMainGameState], A                           ;; 01:4abd $ea $a0 $c0
     call call_01_4b24                                  ;; 01:4ac0 $cd $24 $4b
-    ret                                                ;; 01:4ac3 $c9
+    ret                                      ;; 01:4ac3 $c9
 .up:
     push BC                                            ;; 01:4ac4 $c5
     ld   C, $04                                        ;; 01:4ac5 $0e $04
