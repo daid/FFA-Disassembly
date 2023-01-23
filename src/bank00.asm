@@ -4231,15 +4231,15 @@ checkTileCollision:
     cp   A, $00                                        ;; 00:1913 $fe $00
     jr   Z, .jr_00_192f                                ;; 00:1915 $28 $18
     cp   A, $03                                        ;; 00:1917 $fe $03
-    jr   Z, .jr_00_1936                                ;; 00:1919 $28 $1b
+    jr   Z, .air                                       ;; 00:1919 $28 $1b
     cp   A, $04                                        ;; 00:191b $fe $04
     jr   Z, .jr_00_1941                                ;; 00:191d $28 $22
     cp   A, $02                                        ;; 00:191f $fe $02
     jr   Z, .jr_00_194c                                ;; 00:1921 $28 $29
     cp   A, $05                                        ;; 00:1923 $fe $05
-    jr   Z, .jr_00_1957                                ;; 00:1925 $28 $30
+    jr   Z, .water                                     ;; 00:1925 $28 $30
     cp   A, $01                                        ;; 00:1927 $fe $01
-    jr   Z, .jr_00_1983                                ;; 00:1929 $28 $58
+    jr   Z, .land                                      ;; 00:1929 $28 $58
     pop  HL                                            ;; 00:192b $e1
     pop  DE                                            ;; 00:192c $d1
     xor  A, A                                          ;; 00:192d $af
@@ -4251,7 +4251,7 @@ checkTileCollision:
     inc  A                                             ;; 00:1932 $3c
     ld   B, $00                                        ;; 00:1933 $06 $00
     ret                                                ;; 00:1935 $c9
-.jr_00_1936:
+.air:
     pop  HL                                            ;; 00:1936 $e1
     ld   DE, $400                                      ;; 00:1937 $11 $00 $04
     call HLandDE                                       ;; 00:193a $cd $b2 $29
@@ -4272,7 +4272,7 @@ checkTileCollision:
     pop  DE                                            ;; 00:1953 $d1
     ld   B, $00                                        ;; 00:1954 $06 $00
     ret                                                ;; 00:1956 $c9
-.jr_00_1957:
+.water:
     pop  HL                                            ;; 00:1957 $e1
     ld   DE, $c0                                       ;; 00:1958 $11 $c0 $00
     call HLandDE                                       ;; 00:195b $cd $b2 $29
@@ -4299,7 +4299,7 @@ checkTileCollision:
     bit  0, D                                          ;; 00:197e $cb $42
     ld   B, $00                                        ;; 00:1980 $06 $00
     ret                                                ;; 00:1982 $c9
-.jr_00_1983:
+.land:
     pop  HL                                            ;; 00:1983 $e1
     ld   DE, $30                                       ;; 00:1984 $11 $30 $00
     call HLandDE                                       ;; 00:1987 $cd $b2 $29
@@ -4311,7 +4311,7 @@ checkTileCollision:
     push DE                                            ;; 00:1991 $d5
     sra  D                                             ;; 00:1992 $cb $2a
     sra  E                                             ;; 00:1994 $cb $2b
-    call call_00_23b9                                  ;; 00:1996 $cd $b9 $23
+    call getDoorStatus                                 ;; 00:1996 $cd $b9 $23
     pop  DE                                            ;; 00:1999 $d1
     jr   Z, .jr_00_19d8                                ;; 00:199a $28 $3c
     push DE                                            ;; 00:199c $d5
@@ -4325,7 +4325,7 @@ checkTileCollision:
     push DE                                            ;; 00:19a9 $d5
     sra  D                                             ;; 00:19aa $cb $2a
     sra  E                                             ;; 00:19ac $cb $2b
-    call call_00_23b9                                  ;; 00:19ae $cd $b9 $23
+    call getDoorStatus                                 ;; 00:19ae $cd $b9 $23
     pop  DE                                            ;; 00:19b1 $d1
     jr   NZ, .jr_00_19ee                               ;; 00:19b2 $20 $3a
     bit  2, C                                          ;; 00:19b4 $cb $51
@@ -4357,7 +4357,7 @@ checkTileCollision:
     push DE                                            ;; 00:19da $d5
     sra  D                                             ;; 00:19db $cb $2a
     sra  E                                             ;; 00:19dd $cb $2b
-    call call_00_23b9                                  ;; 00:19df $cd $b9 $23
+    call getDoorStatus                                 ;; 00:19df $cd $b9 $23
     pop  DE                                            ;; 00:19e2 $d1
     pop  BC                                            ;; 00:19e3 $c1
     jr   Z, .jr_00_19f1                                ;; 00:19e4 $28 $0b
@@ -5762,7 +5762,11 @@ openDoor:
     pop  AF                                            ;; 00:2383 $f1
     ret                                                ;; 00:2384 $c9
 
-call_00_2385:
+; D = y metatile coordinate
+; E = x metatile coordinate
+; Return: If true, Z, A = direction bit number (0 = e, 1 = w, 2 = n, 3 = s), C = bit 7 set if second metatile and lower nibble direction value
+; Return: if false, NZ, A = $ff, C = 8
+checkMovingInPossibleDoorLocation:
     ld   C, $08                                        ;; 00:2385 $0e $08
     ld   B, $08                                        ;; 00:2387 $06 $08
     ld   HL, doorMetatileLocation.southXYs             ;; 00:2389 $21 $21 $22
@@ -5772,7 +5776,7 @@ call_00_2385:
     jr   NZ, .jr_00_2394                               ;; 00:238e $20 $04
     ld   A, [HL]                                       ;; 00:2390 $7e
     cp   A, D                                          ;; 00:2391 $ba
-    jr   Z, .jr_00_23b2                                ;; 00:2392 $28 $1e
+    jr   Z, .true                                      ;; 00:2392 $28 $1e
 .jr_00_2394:
     inc  HL                                            ;; 00:2394 $23
     set  7, C                                          ;; 00:2395 $cb $f9
@@ -5781,7 +5785,7 @@ call_00_2385:
     jr   NZ, .jr_00_239f                               ;; 00:2399 $20 $04
     ld   A, [HL]                                       ;; 00:239b $7e
     cp   A, D                                          ;; 00:239c $ba
-    jr   Z, .jr_00_23b2                                ;; 00:239d $28 $13
+    jr   Z, .true                                      ;; 00:239d $28 $13
 .jr_00_239f:
     inc  HL                                            ;; 00:239f $23
     inc  HL                                            ;; 00:23a0 $23
@@ -5798,14 +5802,20 @@ call_00_2385:
     xor  A, A                                          ;; 00:23af $af
     inc  A                                             ;; 00:23b0 $3c
     ret                                                ;; 00:23b1 $c9
-.jr_00_23b2:
+.true:
     ld   A, B                                          ;; 00:23b2 $78
     dec  A                                             ;; 00:23b3 $3d
     and  A, $03                                        ;; 00:23b4 $e6 $03
     bit  7, A                                          ;; 00:23b6 $cb $7f
     ret                                                ;; 00:23b8 $c9
 
-call_00_23b9:
+; D = y metatile coordinate
+; E = x metatile coordinate
+; Return:
+; If not a possible door location: NZ, A = 1, B = 0, C = 8
+; If it is listed as open: Z, A = 0, B = 0, C = bit 7 set if second metatile and lower nibble direction value
+; Otherwise: Z, A = 0, B = initial value from map data, C = bit 7 set if second metatile and lower nibble direction value
+getDoorStatus:
     ld   A, [wMapEncodingType]                         ;; 00:23b9 $fa $f8 $c3
     cp   A, $00                                        ;; 00:23bc $fe $00
     ld   B, $00                                        ;; 00:23be $06 $00
@@ -5814,14 +5824,15 @@ call_00_23b9:
     ld   A, [wMapTableBankNr]                          ;; 00:23c2 $fa $f0 $c3
     call pushBankNrAndSwitch                           ;; 00:23c5 $cd $fb $29
     pop  DE                                            ;; 00:23c8 $d1
-    call call_00_2385                                  ;; 00:23c9 $cd $85 $23
-    jr   NZ, .jr_00_23ea                               ;; 00:23cc $20 $1c
+    call checkMovingInPossibleDoorLocation             ;; 00:23c9 $cd $85 $23
+    jr   NZ, .not_possible_door_location               ;; 00:23cc $20 $1c
     ld   E, A                                          ;; 00:23ce $5f
     ld   D, $00                                        ;; 00:23cf $16 $00
     ld   B, $00                                        ;; 00:23d1 $06 $00
     ld   A, [wDoorStates]                              ;; 00:23d3 $fa $f4 $c3
     and  A, C                                          ;; 00:23d6 $a1
     jr   NZ, .jr_00_23e3                               ;; 00:23d7 $20 $0a
+; If it's not marked as open in door states, get its initial value from the map.
     ld   A, [wRoomTileDataPointer.high]                ;; 00:23d9 $fa $fd $c3
     ld   H, A                                          ;; 00:23dc $67
     ld   A, [wRoomTileDataPointer]                     ;; 00:23dd $fa $fc $c3
@@ -5834,7 +5845,7 @@ call_00_23b9:
     pop  BC                                            ;; 00:23e7 $c1
     xor  A, A                                          ;; 00:23e8 $af
     ret                                                ;; 00:23e9 $c9
-.jr_00_23ea:
+.not_possible_door_location:
     call popBankNrAndSwitch                            ;; 00:23ea $cd $0a $2a
     xor  A, A                                          ;; 00:23ed $af
     ld   B, A                                          ;; 00:23ee $47
