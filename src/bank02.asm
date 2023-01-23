@@ -962,7 +962,7 @@ menuLoadTiles:
     push BC                                            ;; 02:478f $c5
     push DE                                            ;; 02:4790 $d5
     push HL                                            ;; 02:4791 $e5
-    call call_00_1a30                                  ;; 02:4792 $cd $30 $1a
+    call clearPlayerAnimation                          ;; 02:4792 $cd $30 $1a
     pop  HL                                            ;; 02:4795 $e1
     pop  DE                                            ;; 02:4796 $d1
     pop  BC                                            ;; 02:4797 $c1

@@ -764,7 +764,7 @@ scrollRoom:
     ld   [wMainGameStateFlags], A                      ;; 01:4530 $ea $a1 $c0
     call initEnemiesCounterAndMoveFolower_trampoline   ;; 01:4533 $cd $26 $29
     ld   A, $ff                                        ;; 01:4536 $3e $ff
-    ld   [wD394], A                                    ;; 01:4538 $ea $94 $d3
+    ld   [wPlayerAnimation], A                         ;; 01:4538 $ea $94 $d3
     ld   A, $00                                        ;; 01:453b $3e $00
     ld   [wScrollDirection], A                         ;; 01:453d $ea $41 $c3
     ret                                                ;; 01:4540 $c9
@@ -1040,7 +1040,7 @@ call_01_46c4:
     ld   [wMainGameStateFlags], A                      ;; 01:470c $ea $a1 $c0
     call initEnemiesCounterAndMoveFolower_trampoline   ;; 01:470f $cd $26 $29
     ld   A, $ff                                        ;; 01:4712 $3e $ff
-    ld   [wD394], A                                    ;; 01:4714 $ea $94 $d3
+    ld   [wPlayerAnimation], A                         ;; 01:4714 $ea $94 $d3
     ld   A, $00                                        ;; 01:4717 $3e $00
     ld   [wScrollDirection], A                         ;; 01:4719 $ea $41 $c3
     ret                                                ;; 01:471c $c9
@@ -1190,7 +1190,7 @@ call_01_48be:
 .jr_01_491a:
     add  A, B                                          ;; 01:491a $80
     ld   E, A                                          ;; 01:491b $5f
-    ld   A, [wD394]                                    ;; 01:491c $fa $94 $d3
+    ld   A, [wPlayerAnimation]                         ;; 01:491c $fa $94 $d3
     cp   A, $ff                                        ;; 01:491f $fe $ff
     jr   NZ, .jr_01_492c                               ;; 01:4921 $20 $09
     ld   A, [wTileCopyRequestCount]                    ;; 01:4923 $fa $e0 $c8
@@ -1201,7 +1201,7 @@ call_01_48be:
     cp   A, E                                          ;; 01:492c $bb
     jr   Z, .jr_01_4954                                ;; 01:492d $28 $25
     ld   A, E                                          ;; 01:492f $7b
-    ld   [wD394], A                                    ;; 01:4930 $ea $94 $d3
+    ld   [wPlayerAnimation], A                         ;; 01:4930 $ea $94 $d3
     and  A, $03                                        ;; 01:4933 $e6 $03
     ld   H, A                                          ;; 01:4935 $67
     ld   A, E                                          ;; 01:4936 $7b
@@ -2324,7 +2324,7 @@ createPlayerObject:
     ld   A, $00                                        ;; 01:50a1 $3e $00
     ld   [wMainGameState], A                           ;; 01:50a3 $ea $a0 $c0
     ld   A, $ff                                        ;; 01:50a6 $3e $ff
-    ld   [wD394], A                                    ;; 01:50a8 $ea $94 $d3
+    ld   [wPlayerAnimation], A                         ;; 01:50a8 $ea $94 $d3
     ret                                                ;; 01:50ab $c9
 
 ; B = power
@@ -4027,7 +4027,7 @@ call_01_59ea:
     swap E                                             ;; 01:5a41 $cb $33
     srl  E                                             ;; 01:5a43 $cb $3b
     srl  E                                             ;; 01:5a45 $cb $3b
-    ld   HL, wD394                                     ;; 01:5a47 $21 $94 $d3
+    ld   HL, wPlayerAnimation                          ;; 01:5a47 $21 $94 $d3
     add  HL, DE                                        ;; 01:5a4a $19
     ld   A, [HL]                                       ;; 01:5a4b $7e
     cp   A, C                                          ;; 01:5a4c $b9
@@ -4245,7 +4245,7 @@ playerUseWeaponOrItem:
     push HL                                            ;; 01:5b86 $e5
     ld   C, A                                          ;; 01:5b87 $4f
     ld   B, $00                                        ;; 01:5b88 $06 $00
-    ld   HL, wD394                                     ;; 01:5b8a $21 $94 $d3
+    ld   HL, wPlayerAnimation                          ;; 01:5b8a $21 $94 $d3
     add  HL, BC                                        ;; 01:5b8d $09
     ld   [HL], $ff                                     ;; 01:5b8e $36 $ff
     pop  HL                                            ;; 01:5b90 $e1

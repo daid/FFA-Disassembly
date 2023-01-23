@@ -679,7 +679,8 @@ wTileDataTablePointer:
 .High:
     ds 1                                               ;; d393
 
-wD394:
+; Request a new frame, or set to $ff for no request. Byte past the first are not well understood.
+wPlayerAnimation:
     ds 4                                               ;; d394
 
 wTileAnimationCounter_Unused:

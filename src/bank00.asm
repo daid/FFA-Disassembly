@@ -4410,8 +4410,8 @@ call_00_1a0b:
     ld   B, $00                                        ;; 00:1a2d $06 $00
     ret                                                ;; 00:1a2f $c9
 
-call_00_1a30:
-    ld   HL, wD394                                     ;; 00:1a30 $21 $94 $d3
+clearPlayerAnimation:
+    ld   HL, wPlayerAnimation                          ;; 00:1a30 $21 $94 $d3
     ld   B, $04                                        ;; 00:1a33 $06 $04
     ld   A, $ff                                        ;; 00:1a35 $3e $ff
     call fillMemory                                    ;; 00:1a37 $cd $5d $2b
