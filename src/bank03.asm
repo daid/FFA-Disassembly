@@ -524,12 +524,12 @@ spawnNPC:
     ld   A, $02                                        ;; 03:42d8 $3e $02
     call createObject                                  ;; 03:42da $cd $74 $0a
     cp   A, $ff                                        ;; 03:42dd $fe $ff
-    jr   Z, .jr_03_435b                                ;; 03:42df $28 $7a
+    jr   Z, .failed                                    ;; 03:42df $28 $7a
     push BC                                            ;; 03:42e1 $c5
     ld   A, $ff                                        ;; 03:42e2 $3e $ff
     call getNpcRuntimeDataByID                         ;; 03:42e4 $cd $9b $42
     pop  BC                                            ;; 03:42e7 $c1
-    jr   NZ, .jr_03_435b                               ;; 03:42e8 $20 $71
+    jr   NZ, .failed                                   ;; 03:42e8 $20 $71
     ld   [HL], C                                       ;; 03:42ea $71
     ld   D, H                                          ;; 03:42eb $54
     ld   E, L                                          ;; 03:42ec $5d
@@ -607,7 +607,7 @@ spawnNPC:
     ld   A, [DE]                                       ;; 03:4358 $1a
     ld   C, A                                          ;; 03:4359 $4f
     ret                                                ;; 03:435a $c9
-.jr_03_435b:
+.failed:
     pop  DE                                            ;; 03:435b $d1
     ld   C, $ff                                        ;; 03:435c $0e $ff
     ret                                                ;; 03:435e $c9
@@ -2236,7 +2236,7 @@ initEnemiesCounterAndMoveFolower:
 ;@jumptable amount=224
 npcBehaviorJumptable:
     dw   ld_C_into_A                                   ;; 03:4c55 ??
-    dw   call_03_4e7c                                  ;; 03:4c57 pP
+    dw   npcBehaviorDeath                              ;; 03:4c57 pP
     dw   npcBehaviorSpawnProjectile                    ;; 03:4c59 pP
     dw   call_03_4ef0                                  ;; 03:4c5b pP
     dw   npcStepForward                                ;; 03:4c5d pP
@@ -2502,7 +2502,7 @@ npcKilledExplosion:
     call Z, npcKilledExplosionInit                     ;; 03:4e5d $cc $4a $4e
     ld   A, B                                          ;; 03:4e60 $78
     cp   A, $02                                        ;; 03:4e61 $fe $02
-    jr   Z, .jr_03_4e76                                ;; 03:4e63 $28 $11
+    jr   Z, .finished                                  ;; 03:4e63 $28 $11
     push AF                                            ;; 03:4e65 $f5
     cp   A, $01                                        ;; 03:4e66 $fe $01
     ld   A, $01                                        ;; 03:4e68 $3e $01
@@ -2514,15 +2514,15 @@ npcKilledExplosion:
     pop  AF                                            ;; 03:4e73 $f1
     inc  A                                             ;; 03:4e74 $3c
     ret                                                ;; 03:4e75 $c9
-.jr_03_4e76:
+.finished:
     call processNpcDeath                               ;; 03:4e76 $cd $0a $48
     ld   A, $00                                        ;; 03:4e79 $3e $00
     ret                                                ;; 03:4e7b $c9
 
-call_03_4e7c:
+npcBehaviorDeath:
     ld   A, [DE]                                       ;; 03:4e7c $1a
     cp   A, $ff                                        ;; 03:4e7d $fe $ff
-    jr   Z, .jr_03_4eaa                                ;; 03:4e7f $28 $29
+    jr   Z, .invalid                                   ;; 03:4e7f $28 $29
     ld   B, C                                          ;; 03:4e81 $41
     ld   C, A                                          ;; 03:4e82 $4f
     push DE                                            ;; 03:4e83 $d5
@@ -2534,11 +2534,11 @@ call_03_4e7c:
     cp   A, $d0                                        ;; 03:4e8c $fe $d0
     jr   Z, .follower                                  ;; 03:4e8e $28 $10
     cp   A, $a0                                        ;; 03:4e90 $fe $a0
-    jr   Z, .jr_03_4ead                                ;; 03:4e92 $28 $19
+    jr   Z, .no_explosion                              ;; 03:4e92 $28 $19
     cp   A, $b0                                        ;; 03:4e94 $fe $b0
-    jr   Z, .jr_03_4ead                                ;; 03:4e96 $28 $15
+    jr   Z, .no_explosion                              ;; 03:4e96 $28 $15
     cp   A, $00                                        ;; 03:4e98 $fe $00
-    jr   Z, .jr_03_4ead                                ;; 03:4e9a $28 $11
+    jr   Z, .no_explosion                              ;; 03:4e9a $28 $11
     call npcKilledExplosion                            ;; 03:4e9c $cd $5a $4e
     ret                                                ;; 03:4e9f $c9
 .follower:
@@ -2546,10 +2546,10 @@ call_03_4e7c:
     ld   B, $00                                        ;; 03:4ea3 $06 $00
     ld   A, $00                                        ;; 03:4ea5 $3e $00
     call updateObjectPosition                          ;; 03:4ea7 $cd $11 $06
-.jr_03_4eaa:
+.invalid:
     ld   A, $00                                        ;; 03:4eaa $3e $00
     ret                                                ;; 03:4eac $c9
-.jr_03_4ead:
+.no_explosion:
     call processNpcDeath                               ;; 03:4ead $cd $0a $48
     ld   A, $00                                        ;; 03:4eb0 $3e $00
     ret                                                ;; 03:4eb2 $c9
