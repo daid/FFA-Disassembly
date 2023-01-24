@@ -21,7 +21,7 @@ SECTION "bank02", ROMX[$4000], BANK[$02]
     call_to_bank_target call_02_67f9                   ;; 02:4016 ??
     call_to_bank_target loadRegisterState1             ;; 02:4018 ??
     call_to_bank_target loadRegisterState2             ;; 02:401a pP
-    call_to_bank_target call_02_7693                   ;; 02:401c pP
+    call_to_bank_target windowInitContents             ;; 02:401c pP
     call_to_bank_target indexIntoTable                 ;; 02:401e ??
     call_to_bank_target saveRegisterState1             ;; 02:4020 ??
     call_to_bank_target saveRegisterState2             ;; 02:4022 pP
@@ -1009,8 +1009,8 @@ menuTrashCanTileLoads:
 
 ;@jumptable amount=59
 gameStateMenuJumptable:
-    dw   windowInitMenuSelectionMoveRepeatDelay        ;; 02:47c8 pP
-    dw   call_02_4889                                  ;; 02:47ca pP
+    dw   windowInitMenu                                ;; 02:47c8 pP
+    dw   windowInitMain                                ;; 02:47ca pP
     dw   call_02_49c7                                  ;; 02:47cc pP
     dw   call_02_4a79                                  ;; 02:47ce pP
     dw   call_02_4ae4                                  ;; 02:47d0 pP
@@ -1028,7 +1028,7 @@ gameStateMenuJumptable:
     dw   call_02_4b7b                                  ;; 02:47e8 pP
     dw   call_02_5709                                  ;; 02:47ea pP
     dw   call_02_57a0                                  ;; 02:47ec pP
-    dw   call_02_48a9                                  ;; 02:47ee pP
+    dw   windowInitExistingFrame                       ;; 02:47ee pP
     dw   call_02_4e14                                  ;; 02:47f0 pP
     dw   call_02_4fe8                                  ;; 02:47f2 ??
     dw   call_02_4e37                                  ;; 02:47f4 pP
@@ -1115,14 +1115,14 @@ callJumptable_02:
     ld   L, A                                          ;; 02:487c $6f
     jp   HL                                            ;; 02:487d $e9
 
-windowInitMenuSelectionMoveRepeatDelay:
+windowInitMenu:
     ld   A, $01                                        ;; 02:487e $3e $01
     ld   [wMenuSelectionMoveRepeatDelay], A            ;; 02:4880 $ea $57 $d8
     ld   A, $01                                        ;; 02:4883 $3e $01
     ld   [wMenuStateCurrentFunction], A                ;; 02:4885 $ea $53 $d8
     ret                                                ;; 02:4888 $c9
 
-call_02_4889:
+windowInitMain:
     ld   HL, wEquippedItemAndWeaponCopy                ;; 02:4889 $21 $f1 $d6
     ld   A, [wEquippedItem]                            ;; 02:488c $fa $ef $d6
     ld   [HL+], A                                      ;; 02:488f $22
@@ -1138,23 +1138,23 @@ call_02_4889:
     and  A, $80                                        ;; 02:48a6 $e6 $80
     ret  NZ                                            ;; 02:48a8 $c0
 
-call_02_48a9:
+windowInitExistingFrame:
     ld   A, [wDialogType]                              ;; 02:48a9 $fa $4a $d8
     push AF                                            ;; 02:48ac $f5
-    call call_02_7693                                  ;; 02:48ad $cd $93 $76
+    call windowInitContents                            ;; 02:48ad $cd $93 $76
     pop  AF                                            ;; 02:48b0 $f1
     cp   A, $1b                                        ;; 02:48b1 $fe $1b
-    jr   Z, .jr_02_48c8                                ;; 02:48b3 $28 $13
+    jr   Z, .saveload_top_window                       ;; 02:48b3 $28 $13
     cp   A, $09                                        ;; 02:48b5 $fe $09
-    jr   Z, jr_02_48d8                                 ;; 02:48b7 $28 $1f
+    jr   Z, start_menu_status_effect_window            ;; 02:48b7 $28 $1f
     cp   A, $0f                                        ;; 02:48b9 $fe $0f
-    jr   Z, jr_02_48df                                 ;; 02:48bb $28 $22
+    jr   Z, vendor_text_menu                           ;; 02:48bb $28 $22
     cp   A, $1d                                        ;; 02:48bd $fe $1d
     jr   Z, call_02_48f0                               ;; 02:48bf $28 $2f
     cp   A, $12                                        ;; 02:48c1 $fe $12
     jr   Z, call_02_48f0                               ;; 02:48c3 $28 $2b
     jp   call_02_49c7                                  ;; 02:48c5 $c3 $c7 $49
-.jr_02_48c8:
+.saveload_top_window:
     ld   A, $33                                        ;; 02:48c8 $3e $33
     jp   jp_02_5877                                    ;; 02:48ca $c3 $77 $58
 
@@ -1165,12 +1165,12 @@ openLoadSaveBottomWindow:
     call setMenuStateCurrentFunction                   ;; 02:48d4 $cd $98 $6c
     ret                                                ;; 02:48d7 $c9
 
-jr_02_48d8:
+start_menu_status_effect_window:
     ld   B, $20                                        ;; 02:48d8 $06 $20
     ld   DE, wWindowBackgroundSaveBuffer._101          ;; 02:48da $11 $ac $d5
     jr   jr_02_48e4                                    ;; 02:48dd $18 $05
 
-jr_02_48df:
+vendor_text_menu:
     ld   B, $cc                                        ;; 02:48df $06 $cc
     ld   DE, wWindowBackgroundSaveBuffer._09b          ;; 02:48e1 $11 $46 $d5
 
@@ -1206,9 +1206,9 @@ call_02_48f0:
     ld   A, L                                          ;; 02:4919 $7d
     ld   [wRegisterSave1], A                           ;; 02:491a $ea $a2 $d8
     ld   A, D                                          ;; 02:491d $7a
-    ld   [wD895], A                                    ;; 02:491e $ea $95 $d8
+    ld   [wWindowSecondPointer.high], A                ;; 02:491e $ea $95 $d8
     ld   A, E                                          ;; 02:4921 $7b
-    ld   [wD894], A                                    ;; 02:4922 $ea $94 $d8
+    ld   [wWindowSecondPointer], A                     ;; 02:4922 $ea $94 $d8
     ld   B, $2b                                        ;; 02:4925 $06 $2b
     call setMenuStateCurrentFunction                   ;; 02:4927 $cd $98 $6c
     ret                                                ;; 02:492a $c9
@@ -1226,7 +1226,7 @@ call_02_492b:
     ret  NZ                                            ;; 02:493f $c0
     push HL                                            ;; 02:4940 $e5
     ld   A, [wDialogType]                              ;; 02:4941 $fa $4a $d8
-    call call_02_7693                                  ;; 02:4944 $cd $93 $76
+    call windowInitContents                            ;; 02:4944 $cd $93 $76
     pop  HL                                            ;; 02:4947 $e1
     inc  HL                                            ;; 02:4948 $23
     ld   A, [HL]                                       ;; 02:4949 $7e
@@ -1238,13 +1238,13 @@ call_02_492b:
     ld   L, A                                          ;; 02:4951 $6f
     push HL                                            ;; 02:4952 $e5
     ld   A, [wDialogType]                              ;; 02:4953 $fa $4a $d8
-    call call_02_7693                                  ;; 02:4956 $cd $93 $76
+    call windowInitContents                            ;; 02:4956 $cd $93 $76
     pop  HL                                            ;; 02:4959 $e1
     call saveRegisterState1                            ;; 02:495a $cd $34 $6d
     ld   A, H                                          ;; 02:495d $7c
-    ld   [wD895], A                                    ;; 02:495e $ea $95 $d8
+    ld   [wWindowSecondPointer.high], A                ;; 02:495e $ea $95 $d8
     ld   A, L                                          ;; 02:4961 $7d
-    ld   [wD894], A                                    ;; 02:4962 $ea $94 $d8
+    ld   [wWindowSecondPointer], A                     ;; 02:4962 $ea $94 $d8
     jp   jp_02_49f7                                    ;; 02:4965 $c3 $f7 $49
 .jp_02_4968:
     dec  A                                             ;; 02:4968 $3d
@@ -1264,9 +1264,9 @@ call_02_492b:
     inc  HL                                            ;; 02:497a $23
     call saveRegisterState1                            ;; 02:497b $cd $34 $6d
     ld   A, D                                          ;; 02:497e $7a
-    ld   [wD895], A                                    ;; 02:497f $ea $95 $d8
+    ld   [wWindowSecondPointer.high], A                ;; 02:497f $ea $95 $d8
     ld   A, E                                          ;; 02:4982 $7b
-    ld   [wD894], A                                    ;; 02:4983 $ea $94 $d8
+    ld   [wWindowSecondPointer], A                     ;; 02:4983 $ea $94 $d8
     ld   B, $2b                                        ;; 02:4986 $06 $2b
     call setMenuStateCurrentFunction                   ;; 02:4988 $cd $98 $6c
     ret                                                ;; 02:498b $c9
@@ -1301,7 +1301,7 @@ call_02_49c7:
     push AF                                            ;; 02:49ca $f5
     cp   A, $04                                        ;; 02:49cb $fe $04
     call Z, call_02_57b9                               ;; 02:49cd $cc $b9 $57
-    call call_02_7693                                  ;; 02:49d0 $cd $93 $76
+    call windowInitContents                            ;; 02:49d0 $cd $93 $76
     call saveRegisterState2                            ;; 02:49d3 $cd $80 $6d
     pop  AF                                            ;; 02:49d6 $f1
     cp   A, $11                                        ;; 02:49d7 $fe $11
@@ -1309,9 +1309,9 @@ call_02_49c7:
     push AF                                            ;; 02:49db $f5
     ld   HL, selectMenuOptions                         ;; 02:49dc $21 $09 $7d
     ld   A, H                                          ;; 02:49df $7c
-    ld   [wD895], A                                    ;; 02:49e0 $ea $95 $d8
+    ld   [wWindowSecondPointer.high], A                ;; 02:49e0 $ea $95 $d8
     ld   A, L                                          ;; 02:49e3 $7d
-    ld   [wD894], A                                    ;; 02:49e4 $ea $94 $d8
+    ld   [wWindowSecondPointer], A                     ;; 02:49e4 $ea $94 $d8
     pop  AF                                            ;; 02:49e7 $f1
 .jr_02_49e8:
     cp   A, $03                                        ;; 02:49e8 $fe $03
@@ -1770,9 +1770,9 @@ call_02_4d36:
     ld   C, B                                          ;; 02:4d44 $48
 .jr_02_4d45:
     ld   B, $00                                        ;; 02:4d45 $06 $00
-    ld   A, [wD895]                                    ;; 02:4d47 $fa $95 $d8
+    ld   A, [wWindowSecondPointer.high]                ;; 02:4d47 $fa $95 $d8
     ld   H, A                                          ;; 02:4d4a $67
-    ld   A, [wD894]                                    ;; 02:4d4b $fa $94 $d8
+    ld   A, [wWindowSecondPointer]                     ;; 02:4d4b $fa $94 $d8
     ld   L, A                                          ;; 02:4d4e $6f
     add  HL, BC                                        ;; 02:4d4f $09
     ld   A, [HL]                                       ;; 02:4d50 $7e
@@ -1788,9 +1788,9 @@ call_02_4d36:
     push BC                                            ;; 02:4d60 $c5
     xor  A, A                                          ;; 02:4d61 $af
     ld   [HL], A                                       ;; 02:4d62 $77
-    ld   A, [wD893]                                    ;; 02:4d63 $fa $93 $d8
+    ld   A, [wWindowFirstPointer.high]                 ;; 02:4d63 $fa $93 $d8
     ld   H, A                                          ;; 02:4d66 $67
-    ld   A, [wD892]                                    ;; 02:4d67 $fa $92 $d8
+    ld   A, [wWindowFirstPointer]                      ;; 02:4d67 $fa $92 $d8
     ld   L, A                                          ;; 02:4d6a $6f
     pop  BC                                            ;; 02:4d6b $c1
     add  HL, BC                                        ;; 02:4d6c $09
@@ -1842,9 +1842,9 @@ call_02_4db0:
     jp   NZ, jp_02_4e4c                                ;; 02:4db8 $c2 $4c $4e
     call saveRegisterState1                            ;; 02:4dbb $cd $34 $6d
     call getSelectedMenuIndexes                        ;; 02:4dbe $cd $b0 $57
-    ld   A, [wD893]                                    ;; 02:4dc1 $fa $93 $d8
+    ld   A, [wWindowFirstPointer.high]                 ;; 02:4dc1 $fa $93 $d8
     ld   H, A                                          ;; 02:4dc4 $67
-    ld   A, [wD892]                                    ;; 02:4dc5 $fa $92 $d8
+    ld   A, [wWindowFirstPointer]                      ;; 02:4dc5 $fa $92 $d8
     ld   L, A                                          ;; 02:4dc8 $6f
     ld   B, $00                                        ;; 02:4dc9 $06 $00
     add  HL, BC                                        ;; 02:4dcb $09
@@ -1858,9 +1858,9 @@ call_02_4db0:
     ld   [HL], A                                       ;; 02:4dd7 $77
     ld   A, B                                          ;; 02:4dd8 $78
     ld   [DE], A                                       ;; 02:4dd9 $12
-    ld   A, [wD895]                                    ;; 02:4dda $fa $95 $d8
+    ld   A, [wWindowSecondPointer.high]                ;; 02:4dda $fa $95 $d8
     ld   H, A                                          ;; 02:4ddd $67
-    ld   A, [wD894]                                    ;; 02:4dde $fa $94 $d8
+    ld   A, [wWindowSecondPointer]                     ;; 02:4dde $fa $94 $d8
     ld   L, A                                          ;; 02:4de1 $6f
     pop  BC                                            ;; 02:4de2 $c1
     add  HL, BC                                        ;; 02:4de3 $09
@@ -1884,20 +1884,20 @@ call_02_4db0:
     ld   A, $03                                        ;; 02:4e01 $3e $03
     ld   HL, windowData.equipmentScreenTop             ;; 02:4e03 $21 $c8 $5b
     call call_02_57c4                                  ;; 02:4e06 $cd $c4 $57
-    call call_02_7693                                  ;; 02:4e09 $cd $93 $76
+    call windowInitContents                            ;; 02:4e09 $cd $93 $76
     call saveRegisterState2                            ;; 02:4e0c $cd $80 $6d
     ld   A, $14                                        ;; 02:4e0f $3e $14
     jp   jp_02_5877                                    ;; 02:4e11 $c3 $77 $58
 
 call_02_4e14:
     ld   A, $04                                        ;; 02:4e14 $3e $04
-    call call_02_7693                                  ;; 02:4e16 $cd $93 $76
+    call windowInitContents                            ;; 02:4e16 $cd $93 $76
     ld   A, [wD84F]                                    ;; 02:4e19 $fa $4f $d8
     ld   [wD848], A                                    ;; 02:4e1c $ea $48 $d8
     ld   [wD846], A                                    ;; 02:4e1f $ea $46 $d8
     rrca                                               ;; 02:4e22 $0f
     call call_02_57b9                                  ;; 02:4e23 $cd $b9 $57
-    call Z, call_02_7693                               ;; 02:4e26 $cc $93 $76
+    call Z, windowInitContents                         ;; 02:4e26 $cc $93 $76
     ld   A, [wD869]                                    ;; 02:4e29 $fa $69 $d8
     ld   [wD868], A                                    ;; 02:4e2c $ea $68 $d8
     call saveRegisterState2                            ;; 02:4e2f $cd $80 $6d
@@ -2031,7 +2031,7 @@ jp_02_4f19:
     call setWindowDimensions                           ;; 02:4f23 $cd $73 $7a
     ld   A, $12                                        ;; 02:4f26 $3e $12
     ld   [wDialogType], A                              ;; 02:4f28 $ea $4a $d8
-    call call_02_7693                                  ;; 02:4f2b $cd $93 $76
+    call windowInitContents                            ;; 02:4f2b $cd $93 $76
     ld   A, [wD872]                                    ;; 02:4f2e $fa $72 $d8
     bit  6, A                                          ;; 02:4f31 $cb $77
     jr   NZ, .jr_02_4f5a                               ;; 02:4f33 $20 $25
@@ -2068,7 +2068,7 @@ openLoadSaveScreen:
     ld   A, $1a                                        ;; 02:4f5f $3e $1a
     ld   [wDialogType], A                              ;; 02:4f61 $ea $4a $d8
     call drawWindow                                    ;; 02:4f64 $cd $00 $67
-    call call_02_7693                                  ;; 02:4f67 $cd $93 $76
+    call windowInitContents                            ;; 02:4f67 $cd $93 $76
     ld   HL, wTotalAP                                  ;; 02:4f6a $21 $df $d7
     ld   A, [wStatPowerLevelUpTmp]                     ;; 02:4f6d $fa $90 $d7
     ld   B, A                                          ;; 02:4f70 $47
@@ -2108,13 +2108,13 @@ call_02_4f97:
     set  6, [HL]                                       ;; 02:4fb2 $cb $f6
     ld   A, $19                                        ;; 02:4fb4 $3e $19
     ld   [wDialogType], A                              ;; 02:4fb6 $ea $4a $d8
-    jp   call_02_4889                                  ;; 02:4fb9 $c3 $89 $48
+    jp   windowInitMain                                ;; 02:4fb9 $c3 $89 $48
 .jr_02_4fbc:
     res  6, [HL]                                       ;; 02:4fbc $cb $b6
     res  7, [HL]                                       ;; 02:4fbe $cb $be
     ld   A, $18                                        ;; 02:4fc0 $3e $18
     ld   [wDialogType], A                              ;; 02:4fc2 $ea $4a $d8
-    jp   call_02_4889                                  ;; 02:4fc5 $c3 $89 $48
+    jp   windowInitMain                                ;; 02:4fc5 $c3 $89 $48
 
 call_02_4fc8:
     call getSelectedMenuIndexes                        ;; 02:4fc8 $cd $b0 $57
@@ -2170,9 +2170,9 @@ call_02_4fff:
     cp   A, $10                                        ;; 02:5022 $fe $10
     jp   Z, jp_02_51fb                                 ;; 02:5024 $ca $fb $51
     ld   B, $00                                        ;; 02:5027 $06 $00
-    ld   A, [wD895]                                    ;; 02:5029 $fa $95 $d8
+    ld   A, [wWindowSecondPointer.high]                ;; 02:5029 $fa $95 $d8
     ld   H, A                                          ;; 02:502c $67
-    ld   A, [wD894]                                    ;; 02:502d $fa $94 $d8
+    ld   A, [wWindowSecondPointer]                     ;; 02:502d $fa $94 $d8
     ld   L, A                                          ;; 02:5030 $6f
     add  HL, BC                                        ;; 02:5031 $09
     ld   A, [HL]                                       ;; 02:5032 $7e
@@ -2199,7 +2199,7 @@ call_02_504f:
     rlca                                               ;; 02:5055 $07
     ret  C                                             ;; 02:5056 $d8
     ld   A, [wDialogType]                              ;; 02:5057 $fa $4a $d8
-    call call_02_7693                                  ;; 02:505a $cd $93 $76
+    call windowInitContents                            ;; 02:505a $cd $93 $76
     ld   A, $26                                        ;; 02:505d $3e $26
     jp   jp_02_5877                                    ;; 02:505f $c3 $77 $58
 
@@ -2381,7 +2381,7 @@ vendorShowBuyMessage:
 
 call_02_5182:
     ld   A, [wDialogType]                              ;; 02:5182 $fa $4a $d8
-    call call_02_7693                                  ;; 02:5185 $cd $93 $76
+    call windowInitContents                            ;; 02:5185 $cd $93 $76
     ld   A, [wMiscFlags]                               ;; 02:5188 $fa $6f $d8
     and  A, $01                                        ;; 02:518b $e6 $01
     ld   HL, venderNotEnoughMoneyText                  ;; 02:518d $21 $76 $7d
@@ -2841,7 +2841,7 @@ call_02_5475:
 
 call_02_547e:
     ld   A, [wDialogType]                              ;; 02:547e $fa $4a $d8
-    call call_02_7693                                  ;; 02:5481 $cd $93 $76
+    call windowInitContents                            ;; 02:5481 $cd $93 $76
     ld   HL, cantCarryTextLabel                        ;; 02:5484 $21 $10 $3f
     call drawText                                      ;; 02:5487 $cd $77 $37
     ld   A, $29                                        ;; 02:548a $3e $29
@@ -3318,17 +3318,17 @@ call_02_5709:
     ld   A, [wSelectedMenuIndex2]                      ;; 02:5738 $fa $4c $d8
     ld   C, A                                          ;; 02:573b $4f
     ld   B, $00                                        ;; 02:573c $06 $00
-    ld   A, [wD895]                                    ;; 02:573e $fa $95 $d8
+    ld   A, [wWindowSecondPointer.high]                ;; 02:573e $fa $95 $d8
     ld   H, A                                          ;; 02:5741 $67
-    ld   A, [wD894]                                    ;; 02:5742 $fa $94 $d8
+    ld   A, [wWindowSecondPointer]                     ;; 02:5742 $fa $94 $d8
     ld   L, A                                          ;; 02:5745 $6f
     add  HL, BC                                        ;; 02:5746 $09
     ld   A, [HL]                                       ;; 02:5747 $7e
     ld   [wSelectedMenuIndex2], A                      ;; 02:5748 $ea $4c $d8
     push HL                                            ;; 02:574b $e5
-    ld   A, [wD893]                                    ;; 02:574c $fa $93 $d8
+    ld   A, [wWindowFirstPointer.high]                 ;; 02:574c $fa $93 $d8
     ld   H, A                                          ;; 02:574f $67
-    ld   A, [wD892]                                    ;; 02:5750 $fa $92 $d8
+    ld   A, [wWindowFirstPointer]                      ;; 02:5750 $fa $92 $d8
     ld   L, A                                          ;; 02:5753 $6f
     add  HL, BC                                        ;; 02:5754 $09
     ld   A, [HL]                                       ;; 02:5755 $7e
@@ -3360,9 +3360,9 @@ call_02_5709:
     jr   .jr_02_578f                                   ;; 02:577f $18 $0e
 .jr_02_5781:
     ld   [HL], A                                       ;; 02:5781 $77
-    ld   A, [wD893]                                    ;; 02:5782 $fa $93 $d8
+    ld   A, [wWindowFirstPointer.high]                 ;; 02:5782 $fa $93 $d8
     ld   H, A                                          ;; 02:5785 $67
-    ld   A, [wD892]                                    ;; 02:5786 $fa $92 $d8
+    ld   A, [wWindowFirstPointer]                      ;; 02:5786 $fa $92 $d8
     ld   L, A                                          ;; 02:5789 $6f
     add  HL, BC                                        ;; 02:578a $09
     ld   A, [wEquippedItemAmount]                      ;; 02:578b $fa $f0 $d6
@@ -3448,14 +3448,14 @@ call_02_57fe:
 
 ; Handles swapping slots in ITEM or EQUIP
 inventoryMoveItems:
-    ld   A, [wD895]                                    ;; 02:580b $fa $95 $d8
+    ld   A, [wWindowSecondPointer.high]                ;; 02:580b $fa $95 $d8
     ld   H, A                                          ;; 02:580e $67
-    ld   A, [wD894]                                    ;; 02:580f $fa $94 $d8
+    ld   A, [wWindowSecondPointer]                     ;; 02:580f $fa $94 $d8
     ld   L, A                                          ;; 02:5812 $6f
     call .swap                                         ;; 02:5813 $cd $22 $58
-    ld   A, [wD893]                                    ;; 02:5816 $fa $93 $d8
+    ld   A, [wWindowFirstPointer.high]                 ;; 02:5816 $fa $93 $d8
     ld   H, A                                          ;; 02:5819 $67
-    ld   A, [wD892]                                    ;; 02:581a $fa $92 $d8
+    ld   A, [wWindowFirstPointer]                      ;; 02:581a $fa $92 $d8
     ld   L, A                                          ;; 02:581d $6f
     call .swap                                         ;; 02:581e $cd $22 $58
     ret                                                ;; 02:5821 $c9
@@ -3745,9 +3745,9 @@ drawNumber24bitOnDialog:
     ret                                                ;; 02:59fd $c9
 
 call_02_59fe:
-    ld   A, [wD895]                                    ;; 02:59fe $fa $95 $d8
+    ld   A, [wWindowSecondPointer.high]                ;; 02:59fe $fa $95 $d8
     ld   H, A                                          ;; 02:5a01 $67
-    ld   A, [wD894]                                    ;; 02:5a02 $fa $94 $d8
+    ld   A, [wWindowSecondPointer]                     ;; 02:5a02 $fa $94 $d8
     ld   L, A                                          ;; 02:5a05 $6f
     ld   A, [wD846]                                    ;; 02:5a06 $fa $46 $d8
     dec  A                                             ;; 02:5a09 $3d
@@ -3928,9 +3928,9 @@ jr_02_5b09:
     rrc  E                                             ;; 02:5b09 $cb $0b
 
 jr_02_5b0b:
-    ld   A, [wD893]                                    ;; 02:5b0b $fa $93 $d8
+    ld   A, [wWindowFirstPointer.high]                 ;; 02:5b0b $fa $93 $d8
     ld   H, A                                          ;; 02:5b0e $67
-    ld   A, [wD892]                                    ;; 02:5b0f $fa $92 $d8
+    ld   A, [wWindowFirstPointer]                      ;; 02:5b0f $fa $92 $d8
     ld   L, A                                          ;; 02:5b12 $6f
     add  HL, BC                                        ;; 02:5b13 $09
     ld   A, [HL]                                       ;; 02:5b14 $7e
@@ -3955,9 +3955,9 @@ drawNumberAtDialogPositionDE:
 
 jp_02_5b2c:
     call loadRegisterState2                            ;; 02:5b2c $cd $a7 $6d
-    ld   A, [wD895]                                    ;; 02:5b2f $fa $95 $d8
+    ld   A, [wWindowSecondPointer.high]                ;; 02:5b2f $fa $95 $d8
     ld   H, A                                          ;; 02:5b32 $67
-    ld   A, [wD894]                                    ;; 02:5b33 $fa $94 $d8
+    ld   A, [wWindowSecondPointer]                     ;; 02:5b33 $fa $94 $d8
     ld   L, A                                          ;; 02:5b36 $6f
     ld   A, [wDialogType]                              ;; 02:5b37 $fa $4a $d8
     push AF                                            ;; 02:5b3a $f5
@@ -4035,8 +4035,10 @@ getEquippedWeaponAP:
 ;4: Amount of rows to draw with text
 ;5: Length of each text to draw
 ;6: Amount of cursor positions
-;7: Not sure, something with cursor behaviour
-;8: Amount of corsor columns
+;7: Initial Flags:
+;   bit 0: seems related to having multiple columns, but it's set on the START menu and a few others
+;   bit 1: probably related to items. used by trash can logic.
+;8: Amount of cursor columns
 ;9: Horizontal cursor shift for columns
 ; Start menu (ITEM MAGIC EQUIP ASK):
 windowData:
@@ -4118,8 +4120,10 @@ levelUpStatChoices:
     db   $02, $01, $00, $01                            ;; 02:5d06 .... $02
     db   $01, $00, $01, $02                            ;; 02:5d0a .... $03
 
+; These three tables store pointers to tables or text used by windows.
+; Each of the windows have their own entry.
 ;@data format=p amount=34
-data_02_5d0e:
+windowThirdPointers:
     dw   startMenuOptions                              ;; 02:5d0e .. $00
     dw   itemDataTable                                 ;; 02:5d10 .. $01
     dw   spellDataTable                                ;; 02:5d12 .. $02
@@ -4156,7 +4160,7 @@ data_02_5d0e:
     dw   levelUpText1                                  ;; 02:5d50 .. $21
 
 ;@data format=p amount=34
-data_02_5d52:
+windowFirstPointers:
     dw   $0000                                         ;; 02:5d52 .. $00
     dw   wItemInventoryAmount                          ;; 02:5d54 .. $01
     dw   wKnownMagicSpells                             ;; 02:5d56 .. $02
@@ -4193,7 +4197,7 @@ data_02_5d52:
     dw   $0000                                         ;; 02:5d94 .. $21
 
 ;@data format=p amount=34
-windowTextStrings:
+windowSecondPointers:
     dw   startMenuOptions                              ;; 02:5d96 .. $00
     dw   wItemInventory                                ;; 02:5d98 .. $01
     dw   wMagicInventory                               ;; 02:5d9a .. $02
@@ -6829,9 +6833,9 @@ drawExperienceFromSRAM:
 
 call_02_75c5:
     push BC                                            ;; 02:75c5 $c5
-    ld   A, [wD895]                                    ;; 02:75c6 $fa $95 $d8
+    ld   A, [wWindowSecondPointer.high]                ;; 02:75c6 $fa $95 $d8
     ld   H, A                                          ;; 02:75c9 $67
-    ld   A, [wD894]                                    ;; 02:75ca $fa $94 $d8
+    ld   A, [wWindowSecondPointer]                     ;; 02:75ca $fa $94 $d8
     ld   L, A                                          ;; 02:75cd $6f
     ld   A, [wD846]                                    ;; 02:75ce $fa $46 $d8
     ld   C, A                                          ;; 02:75d1 $4f
@@ -6847,9 +6851,9 @@ call_02_75c5:
     and  A, $7f                                        ;; 02:75e0 $e6 $7f
     ret  Z                                             ;; 02:75e2 $c8
     push AF                                            ;; 02:75e3 $f5
-    ld   A, [wD897]                                    ;; 02:75e4 $fa $97 $d8
+    ld   A, [wWindowThirdPointer.high]                 ;; 02:75e4 $fa $97 $d8
     ld   H, A                                          ;; 02:75e7 $67
-    ld   A, [wD896]                                    ;; 02:75e8 $fa $96 $d8
+    ld   A, [wWindowThirdPointer]                      ;; 02:75e8 $fa $96 $d8
     ld   L, A                                          ;; 02:75eb $6f
     pop  AF                                            ;; 02:75ec $f1
     push AF                                            ;; 02:75ed $f5
@@ -6862,7 +6866,7 @@ call_02_75c5:
 call_02_75f4:
     ld   A, [wDialogType]                              ;; 02:75f4 $fa $4a $d8
     push AF                                            ;; 02:75f7 $f5
-    call call_02_7693                                  ;; 02:75f8 $cd $93 $76
+    call windowInitContents                            ;; 02:75f8 $cd $93 $76
     ld   DE, $207                                      ;; 02:75fb $11 $07 $02
     pop  AF                                            ;; 02:75fe $f1
     cp   A, $13                                        ;; 02:75ff $fe $13
@@ -6979,33 +6983,34 @@ indexIntoTable:
     pop  DE                                            ;; 02:7691 $d1
     ret                                                ;; 02:7692 $c9
 
-call_02_7693:
+; A = window number
+windowInitContents:
     push AF                                            ;; 02:7693 $f5
-    ld   HL, data_02_5d0e                              ;; 02:7694 $21 $0e $5d
+    ld   HL, windowThirdPointers                       ;; 02:7694 $21 $0e $5d
     call indexPointerTable                             ;; 02:7697 $cd $7d $6c
     xor  A, A                                          ;; 02:769a $af
     ld   [wD848], A                                    ;; 02:769b $ea $48 $d8
     ld   A, H                                          ;; 02:769e $7c
-    ld   [wD897], A                                    ;; 02:769f $ea $97 $d8
+    ld   [wWindowThirdPointer.high], A                 ;; 02:769f $ea $97 $d8
     ld   A, L                                          ;; 02:76a2 $7d
-    ld   [wD896], A                                    ;; 02:76a3 $ea $96 $d8
+    ld   [wWindowThirdPointer], A                      ;; 02:76a3 $ea $96 $d8
     ld   DE, $202                                      ;; 02:76a6 $11 $02 $02
     pop  AF                                            ;; 02:76a9 $f1
     push AF                                            ;; 02:76aa $f5
-    ld   HL, windowTextStrings                         ;; 02:76ab $21 $96 $5d
+    ld   HL, windowSecondPointers                      ;; 02:76ab $21 $96 $5d
     call indexPointerTable                             ;; 02:76ae $cd $7d $6c
     ld   A, H                                          ;; 02:76b1 $7c
-    ld   [wD895], A                                    ;; 02:76b2 $ea $95 $d8
+    ld   [wWindowSecondPointer.high], A                ;; 02:76b2 $ea $95 $d8
     ld   A, L                                          ;; 02:76b5 $7d
-    ld   [wD894], A                                    ;; 02:76b6 $ea $94 $d8
+    ld   [wWindowSecondPointer], A                     ;; 02:76b6 $ea $94 $d8
     pop  AF                                            ;; 02:76b9 $f1
     push AF                                            ;; 02:76ba $f5
-    ld   HL, data_02_5d52                              ;; 02:76bb $21 $52 $5d
+    ld   HL, windowFirstPointers                       ;; 02:76bb $21 $52 $5d
     call indexPointerTable                             ;; 02:76be $cd $7d $6c
     ld   A, H                                          ;; 02:76c1 $7c
-    ld   [wD893], A                                    ;; 02:76c2 $ea $93 $d8
+    ld   [wWindowFirstPointer.high], A                 ;; 02:76c2 $ea $93 $d8
     ld   A, L                                          ;; 02:76c5 $7d
-    ld   [wD892], A                                    ;; 02:76c6 $ea $92 $d8
+    ld   [wWindowFirstPointer], A                      ;; 02:76c6 $ea $92 $d8
     pop  AF                                            ;; 02:76c9 $f1
     call getWindowData                                 ;; 02:76ca $cd $88 $6c
     ld   BC, $04                                       ;; 02:76cd $01 $04 $00
@@ -7033,16 +7038,16 @@ call_02_7693:
     ld   A, [wDialogW]                                 ;; 02:76f6 $fa $a9 $d4
     add  A, H                                          ;; 02:76f9 $84
     cp   A, $0e                                        ;; 02:76fa $fe $0e
-    jr   C, .jr_02_76fe                                ;; 02:76fc $38 $00
-.jr_02_76fe:
+    jr   C, .here                                      ;; 02:76fc $38 $00
+.here:
     ld   A, [wD848]                                    ;; 02:76fe $fa $48 $d8
     ld   [wD846], A                                    ;; 02:7701 $ea $46 $d8
     ld   A, [wDialogType]                              ;; 02:7704 $fa $4a $d8
     cp   A, $06                                        ;; 02:7707 $fe $06
-    jr   NZ, .jr_02_7710                               ;; 02:7709 $20 $05
+    jr   NZ, .not_dialog                               ;; 02:7709 $20 $05
     ld   DE, $201                                      ;; 02:770b $11 $01 $02
     jr   .jr_02_7720                                   ;; 02:770e $18 $10
-.jr_02_7710:
+.not_dialog:
     cp   A, $14                                        ;; 02:7710 $fe $14
     jr   Z, .jr_02_771f                                ;; 02:7712 $28 $0b
     cp   A, $12                                        ;; 02:7714 $fe $12
@@ -7182,7 +7187,7 @@ call_02_77d8:
     ld   A, $39                                        ;; 02:77e5 $3e $39
     ld   [wMenuStateCurrentFunction], A                ;; 02:77e7 $ea $53 $d8
     ld   A, [wDialogType]                              ;; 02:77ea $fa $4a $d8
-    call call_02_7693                                  ;; 02:77ed $cd $93 $76
+    call windowInitContents                            ;; 02:77ed $cd $93 $76
     ret                                                ;; 02:77f0 $c9
 
 call_02_77f1:

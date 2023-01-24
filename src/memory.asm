@@ -1391,22 +1391,19 @@ wItemSearchList:
 .high:
     ds 1                                               ;; d891
 
-wD892:
+wWindowFirstPointer:
     ds 1                                               ;; d892
-
-wD893:
+.high:
     ds 1                                               ;; d893
 
-wD894:
+wWindowSecondPointer:
     ds 1                                               ;; d894
-
-wD895:
+.high:
     ds 1                                               ;; d895
 
-wD896:
+wWindowThirdPointer:
     ds 1                                               ;; d896
-
-wD897:
+.high:
     ds 1                                               ;; d897
 
 wD898:

@@ -7869,8 +7869,8 @@ hideAndSaveMenuMetasprites_trampoline:
 loadRegisterState2_trampoline:
     jp_to_bank 02, loadRegisterState2                  ;; 00:3081 $f5 $3e $0d $c3 $06 $1f
 
-call_00_3087:
-    jp_to_bank 02, call_02_7693                        ;; 00:3087 $f5 $3e $0e $c3 $06 $1f
+windowInitContents_trampoline:
+    jp_to_bank 02, windowInitContents                  ;; 00:3087 $f5 $3e $0e $c3 $06 $1f
     db   $f5, $3e, $0f, $c3, $06, $1f, $f5, $3e        ;; 00:308d ????????
     db   $10, $c3, $06, $1f                            ;; 00:3095 ????
 
@@ -8630,7 +8630,7 @@ yesNoWindowFinish:
     pop  AF                                            ;; 00:356a $f1
     push BC                                            ;; 00:356b $c5
     push DE                                            ;; 00:356c $d5
-    call call_00_3087                                  ;; 00:356d $cd $87 $30
+    call windowInitContents_trampoline                 ;; 00:356d $cd $87 $30
     pop  DE                                            ;; 00:3570 $d1
     pop  BC                                            ;; 00:3571 $c1
     call setDialogTextInsertionPoint                   ;; 00:3572 $cd $36 $37
@@ -8777,7 +8777,7 @@ call_00_3627:
     and  A, $80                                        ;; 00:362d $e6 $80
     ret  NZ                                            ;; 00:362f $c0
     ld   A, [wDialogType]                              ;; 00:3630 $fa $4a $d8
-    call call_00_3087                                  ;; 00:3633 $cd $87 $30
+    call windowInitContents_trampoline                 ;; 00:3633 $cd $87 $30
     ld   A, B                                          ;; 00:3636 $78
     ld   [wWindowTextLength], A                        ;; 00:3637 $ea $9b $d8
     ld   A, C                                          ;; 00:363a $79
