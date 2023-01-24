@@ -721,7 +721,8 @@ wBossCurrentKeyframeStep:
 wBossCurrentHeadActionStep:
     ds 1                                               ;; d3ee
 
-wD3EF:
+; The head actions only have one step each, but it looks like they were desinged to have more.
+wBossCurrentHeadActionSubstep:
     ds 1                                               ;; d3ef
 
 wBossCurrentKeyframeHoldtime:
