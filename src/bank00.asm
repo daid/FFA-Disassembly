@@ -529,7 +529,7 @@ removeNpcObjects:
 ; B = object number b
 ; C = object number c
 ; Return: DE = Y and X distances between the two objects.
-; Return: A = flags (unknown)
+; Return: A = direction bits b would travel to reach c, including diagonals.
 checkObjectsCollisionDirection:
     push BC                                            ;; 00:039a $c5
     call GetObjectY                                    ;; 00:039b $cd $3e $0c
@@ -559,65 +559,67 @@ checkObjectsCollisionDirection:
     sub  A, E                                          ;; 00:03bb $93
     ld   E, A                                          ;; 00:03bc $5f
     bit  7, D                                          ;; 00:03bd $cb $7a
-    jr   NZ, .b_below_c                                ;; 00:03bf $20 $2b
+    jr   NZ, .c_n_of_b                                 ;; 00:03bf $20 $2b
     bit  7, E                                          ;; 00:03c1 $cb $7b
-    jr   NZ, .b_leftof_c                               ;; 00:03c3 $20 $19
+    jr   NZ, .c_w_of_b                                 ;; 00:03c3 $20 $19
     ld   A, D                                          ;; 00:03c5 $7a
     cp   A, E                                          ;; 00:03c6 $bb
-    jr   Z, .jr_00_03ce                                ;; 00:03c7 $28 $05
-    jr   NC, .jr_00_03e6                               ;; 00:03c9 $30 $1b
-.jr_00_03cb:
+    jr   Z, .c_exactly_se_of_b                         ;; 00:03c7 $28 $05
+    jr   NC, .ret_south                                ;; 00:03c9 $30 $1b
+.ret_east:
     ld   A, $01                                        ;; 00:03cb $3e $01
     ret                                                ;; 00:03cd $c9
-.jr_00_03ce:
+.c_exactly_se_of_b:
     cp   A, $00                                        ;; 00:03ce $fe $00
-    jr   Z, .jr_00_03d5                                ;; 00:03d0 $28 $03
+    jr   Z, .c_same_location_of_b                      ;; 00:03d0 $28 $03
+;.ret_southeast:
     ld   A, $09                                        ;; 00:03d2 $3e $09
     ret                                                ;; 00:03d4 $c9
-.jr_00_03d5:
+.c_same_location_of_b:
+; If the two objects share the exact same coordinates, return object b's facing direction
     push DE                                            ;; 00:03d5 $d5
     ld   C, B                                          ;; 00:03d6 $48
     call getObjectDirection                            ;; 00:03d7 $cd $99 $0c
     and  A, $0f                                        ;; 00:03da $e6 $0f
     pop  DE                                            ;; 00:03dc $d1
     ret                                                ;; 00:03dd $c9
-.b_leftof_c:
+.c_w_of_b:
     ld   A, E                                          ;; 00:03de $7b
     cpl                                                ;; 00:03df $2f
     inc  A                                             ;; 00:03e0 $3c
     cp   A, D                                          ;; 00:03e1 $ba
-    jr   Z, .jr_00_03e9                                ;; 00:03e2 $28 $05
-    jr   NC, .jr_00_0404                               ;; 00:03e4 $30 $1e
-.jr_00_03e6:
+    jr   Z, .ret_southwest                             ;; 00:03e2 $28 $05
+    jr   NC, .ret_west                                 ;; 00:03e4 $30 $1e
+.ret_south:
     ld   A, $08                                        ;; 00:03e6 $3e $08
     ret                                                ;; 00:03e8 $c9
-.jr_00_03e9:
+.ret_southwest:
     ld   A, $0a                                        ;; 00:03e9 $3e $0a
     ret                                                ;; 00:03eb $c9
-.b_below_c:
+.c_n_of_b:
     bit  7, E                                          ;; 00:03ec $cb $7b
-    jr   NZ, checkObjectsCollisionDirection.b_below_and_leftof_c ;; 00:03ee $20 $0e
+    jr   NZ, checkObjectsCollisionDirection.c_nw_of_b  ;; 00:03ee $20 $0e
     ld   A, D                                          ;; 00:03f0 $7a
     cpl                                                ;; 00:03f1 $2f
     inc  A                                             ;; 00:03f2 $3c
     cp   A, E                                          ;; 00:03f3 $bb
-    jr   Z, .jr_00_03fb                                ;; 00:03f4 $28 $05
-    jr   C, .jr_00_03cb                                ;; 00:03f6 $38 $d3
-.jr_00_03f8:
+    jr   Z, .ret_northeast                             ;; 00:03f4 $28 $05
+    jr   C, .ret_east                                  ;; 00:03f6 $38 $d3
+.ret_north:
     ld   A, $04                                        ;; 00:03f8 $3e $04
     ret                                                ;; 00:03fa $c9
-.jr_00_03fb:
+.ret_northeast:
     ld   A, $05                                        ;; 00:03fb $3e $05
     ret                                                ;; 00:03fd $c9
-.b_below_and_leftof_c:
+.c_nw_of_b:
     ld   A, E                                          ;; 00:03fe $7b
     cp   A, D                                          ;; 00:03ff $ba
-    jr   Z, .jr_00_0407                                ;; 00:0400 $28 $05
-    jr   NC, .jr_00_03f8                               ;; 00:0402 $30 $f4
-.jr_00_0404:
+    jr   Z, .ret_northwest                             ;; 00:0400 $28 $05
+    jr   NC, .ret_north                                ;; 00:0402 $30 $f4
+.ret_west:
     ld   A, $02                                        ;; 00:0404 $3e $02
     ret                                                ;; 00:0406 $c9
-.jr_00_0407:
+.ret_northwest:
     ld   A, $06                                        ;; 00:0407 $3e $06
     ret                                                ;; 00:0409 $c9
     db   $f5, $c5, $3e, $03, $cd, $fb, $29, $c1        ;; 00:040a ????????
