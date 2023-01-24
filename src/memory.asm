@@ -20,8 +20,9 @@ wMainGameState:
     ds 1                                               ;; c0a0
 
 ; bit 0: unknown
-; bit 1-3: certain script types running
-; bit 4-7: scrolling direction (nibbles are swapped for this)
+; bit 1-2: used by scripts and other events that take control from the player
+; bit 3: used to freeze the player by both scripts and scrolling
+; bit 4-7: scrolling direction
 wMainGameStateFlags:
     ds 1                                               ;; c0a1
 .nextFrame:
@@ -462,13 +463,14 @@ wPlayerDamagedTimer:
 wPlayerSpecialFlags:
     ds 12                                              ;; c4d4
 
-; 8 records of $18 size, related to NPCs
-; 0: wObjectRuntimeData entry index
-; 2: Movement speed
-; 10: Status (bit7: Slep, bit6: Mute)
-; 12-13: HP
-; 16-17: npcStatsTable entry pointer
-; 18-19: npcDataTable entry pointer
+; 08 records of $18 size, related to NPCs
+; 00: wObjectRuntimeData entry index
+; 01: Delay until next move (initialized from 02)
+; 02: Movement speed
+; 0a: Status (bit7: Slep, bit6: Mute)
+; 0c-0d: HP
+; 10-11: npcStatsTable entry pointer
+; 12-13: npcDataTable entry pointer
 wNpcRuntimeData:
     ds 16                                              ;; c4e0
 .statsTablePointer:
@@ -489,7 +491,8 @@ wNPCSpawnTableIndex:
 wNumberOfLivingEnemies:
     ds 1                                               ;; c5af
 
-wC5B0:
+; One byte long
+wNPCDroppingChest:
     ds 16                                              ;; c5b0
 
 ; 3 records of $0a size, related to projectiles
@@ -676,7 +679,8 @@ wTileDataTablePointer:
 .High:
     ds 1                                               ;; d393
 
-wD394:
+; Request a new frame, or set to $ff for no request. Byte past the first are not well understood.
+wPlayerAnimation:
     ds 4                                               ;; d394
 
 wTileAnimationCounter_Unused:
@@ -714,7 +718,7 @@ wBossCurrentPatternStep:
 wBossCurrentKeyframeStep:
     ds 1                                               ;; d3ed
 
-wBoosCurrentHeadActionStep:
+wBossCurrentHeadActionStep:
     ds 1                                               ;; d3ee
 
 wD3EF:
@@ -928,22 +932,22 @@ wEquippedItemAmount:
 wEquippedItemAndWeaponCopy:
     ds 2                                               ;; d6f1
 
-wD6F3:
+wVendorBuyIDs:
     ds 7                                               ;; d6f3
 
-wD6FA:
+wVendorBuyQuantities:
     ds 7                                               ;; d6fa
 
-wD701:
+wVendorBuyPrices:
     ds 14                                              ;; d701
 
-wD70F:
+wVendorSellIDs:
     ds 32                                              ;; d70f
 
-wD72F:
+wVendorSellQuantities:
     ds 32                                              ;; d72f
 
-wD74F:
+wVendorSellPrices:
     ds 64                                              ;; d74f
 
 wStatStaminaLevelUpTmp:
@@ -1155,7 +1159,13 @@ wD846:
 wD848:
     ds 1                                               ;; d848
 
-wD849:
+; bit 0: seems related to having multiple columns, but it's set on the START menu
+; bit 1: has trash can
+; bit 3: button pressed
+; bit 4: scrolling down
+; bit 5: scrolling up
+; bit 7: showing trash can
+wMenuFlags:
     ds 1                                               ;; d849
 
 ; Indicates which dialog is being opened. For example $11 = select menu (save/map/status)
@@ -1174,7 +1184,7 @@ wSelectedMenuIndex2:
 wScriptDelayOpCodeTimerNumber:
     ds 1                                               ;; d84d
 
-wD84E:
+wMenuFlagsBackup:
     ds 1                                               ;; d84e
 
 wD84F:

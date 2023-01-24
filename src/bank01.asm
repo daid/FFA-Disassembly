@@ -764,7 +764,7 @@ scrollRoom:
     ld   [wMainGameStateFlags], A                      ;; 01:4530 $ea $a1 $c0
     call initEnemiesCounterAndMoveFolower_trampoline   ;; 01:4533 $cd $26 $29
     ld   A, $ff                                        ;; 01:4536 $3e $ff
-    ld   [wD394], A                                    ;; 01:4538 $ea $94 $d3
+    ld   [wPlayerAnimation], A                         ;; 01:4538 $ea $94 $d3
     ld   A, $00                                        ;; 01:453b $3e $00
     ld   [wScrollDirection], A                         ;; 01:453d $ea $41 $c3
     ret                                                ;; 01:4540 $c9
@@ -1040,7 +1040,7 @@ call_01_46c4:
     ld   [wMainGameStateFlags], A                      ;; 01:470c $ea $a1 $c0
     call initEnemiesCounterAndMoveFolower_trampoline   ;; 01:470f $cd $26 $29
     ld   A, $ff                                        ;; 01:4712 $3e $ff
-    ld   [wD394], A                                    ;; 01:4714 $ea $94 $d3
+    ld   [wPlayerAnimation], A                         ;; 01:4714 $ea $94 $d3
     ld   A, $00                                        ;; 01:4717 $3e $00
     ld   [wScrollDirection], A                         ;; 01:4719 $ea $41 $c3
     ret                                                ;; 01:471c $c9
@@ -1190,7 +1190,7 @@ call_01_48be:
 .jr_01_491a:
     add  A, B                                          ;; 01:491a $80
     ld   E, A                                          ;; 01:491b $5f
-    ld   A, [wD394]                                    ;; 01:491c $fa $94 $d3
+    ld   A, [wPlayerAnimation]                         ;; 01:491c $fa $94 $d3
     cp   A, $ff                                        ;; 01:491f $fe $ff
     jr   NZ, .jr_01_492c                               ;; 01:4921 $20 $09
     ld   A, [wTileCopyRequestCount]                    ;; 01:4923 $fa $e0 $c8
@@ -1201,7 +1201,7 @@ call_01_48be:
     cp   A, E                                          ;; 01:492c $bb
     jr   Z, .jr_01_4954                                ;; 01:492d $28 $25
     ld   A, E                                          ;; 01:492f $7b
-    ld   [wD394], A                                    ;; 01:4930 $ea $94 $d3
+    ld   [wPlayerAnimation], A                         ;; 01:4930 $ea $94 $d3
     and  A, $03                                        ;; 01:4933 $e6 $03
     ld   H, A                                          ;; 01:4935 $67
     ld   A, E                                          ;; 01:4936 $7b
@@ -1236,6 +1236,7 @@ getModifiedPlayerState:
     call NZ, getPlayerStateOffsetDown                  ;; 01:496a $c4 $8b $49
     bit  3, L                                          ;; 01:496d $cb $5d
     jr   Z, .jr_01_4979                                ;; 01:496f $28 $08
+; Moogle
     ld   A, B                                          ;; 01:4971 $78
     cp   A, $40                                        ;; 01:4972 $fe $40
     jr   NC, .jr_01_4979                               ;; 01:4974 $30 $03
@@ -1246,6 +1247,7 @@ getModifiedPlayerState:
     bit  3, A                                          ;; 01:497c $cb $5f
     ret  NZ                                            ;; 01:497e $c0
     bit  2, L                                          ;; 01:497f $cb $55
+; Stone
     ret  Z                                             ;; 01:4981 $c8
     res  4, C                                          ;; 01:4982 $cb $a1
     ret                                                ;; 01:4984 $c9
@@ -1316,7 +1318,7 @@ gameStateNormal:
     ld   B, $00                                        ;; 01:49dc $06 $00
     ld   A, [wMainGameStateFlags]                      ;; 01:49de $fa $a1 $c0
     bit  3, A                                          ;; 01:49e1 $cb $5f
-    jr   NZ, .jr_01_49f2                               ;; 01:49e3 $20 $0d
+    jr   NZ, .not_sliding                              ;; 01:49e3 $20 $0d
     push DE                                            ;; 01:49e5 $d5
     push BC                                            ;; 01:49e6 $c5
     ld   C, $04                                        ;; 01:49e7 $0e $04
@@ -1324,8 +1326,8 @@ gameStateNormal:
     pop  BC                                            ;; 01:49ec $c1
     pop  DE                                            ;; 01:49ed $d1
     cp   A, $00                                        ;; 01:49ee $fe $00
-    jr   NZ, .jr_01_4a09                               ;; 01:49f0 $20 $17
-.jr_01_49f2:
+    jr   NZ, .sliding                                  ;; 01:49f0 $20 $17
+.not_sliding:
     push DE                                            ;; 01:49f2 $d5
     push BC                                            ;; 01:49f3 $c5
     ld   C, $04                                        ;; 01:49f4 $0e $04
@@ -1339,7 +1341,7 @@ gameStateNormal:
     cp   A, $00                                        ;; 01:4a02 $fe $00
     call NZ, playerDamagedEffect                       ;; 01:4a04 $c4 $38 $4b
     jr   .jr_01_4a16                                   ;; 01:4a07 $18 $0d
-.jr_01_4a09:
+.sliding:
     push AF                                            ;; 01:4a09 $f5
     ld   A, [wPlayerDamagedTimer]                      ;; 01:4a0a $fa $d2 $c4
     cp   A, $00                                        ;; 01:4a0d $fe $00
@@ -1434,7 +1436,7 @@ gameStateNormal:
     ld   A, $08                                        ;; 01:4abb $3e $08
     ld   [wMainGameState], A                           ;; 01:4abd $ea $a0 $c0
     call call_01_4b24                                  ;; 01:4ac0 $cd $24 $4b
-    ret                                                ;; 01:4ac3 $c9
+    ret                                      ;; 01:4ac3 $c9
 .up:
     push BC                                            ;; 01:4ac4 $c5
     ld   C, $04                                        ;; 01:4ac5 $0e $04
@@ -1564,7 +1566,7 @@ gameStateChocobo:
     ld   B, $01                                        ;; 01:4b9f $06 $01
     ld   A, [wMainGameStateFlags]                      ;; 01:4ba1 $fa $a1 $c0
     bit  3, A                                          ;; 01:4ba4 $cb $5f
-    jr   NZ, .jr_01_4bb5                               ;; 01:4ba6 $20 $0d
+    jr   NZ, .not_sliding                              ;; 01:4ba6 $20 $0d
     push DE                                            ;; 01:4ba8 $d5
     push BC                                            ;; 01:4ba9 $c5
     ld   C, $04                                        ;; 01:4baa $0e $04
@@ -1572,8 +1574,8 @@ gameStateChocobo:
     pop  BC                                            ;; 01:4baf $c1
     pop  DE                                            ;; 01:4bb0 $d1
     cp   A, $00                                        ;; 01:4bb1 $fe $00
-    jr   NZ, .jr_01_4bc4                               ;; 01:4bb3 $20 $0f
-.jr_01_4bb5:
+    jr   NZ, .sliding                                  ;; 01:4bb3 $20 $0f
+.not_sliding:
     push DE                                            ;; 01:4bb5 $d5
     push BC                                            ;; 01:4bb6 $c5
     ld   C, $04                                        ;; 01:4bb7 $0e $04
@@ -1583,7 +1585,7 @@ gameStateChocobo:
     jr   Z, jr_01_4bc7                                 ;; 01:4bbe $28 $07
     ld   B, $11                                        ;; 01:4bc0 $06 $11
     jr   jr_01_4bc7                                    ;; 01:4bc2 $18 $03
-.jr_01_4bc4:
+.sliding:
     and  A, $0f                                        ;; 01:4bc4 $e6 $0f
     ld   D, A                                          ;; 01:4bc6 $57
 
@@ -1605,7 +1607,7 @@ gameStateChocobot:
     ld   B, $21                                        ;; 01:4bdf $06 $21
     ld   A, [wMainGameStateFlags]                      ;; 01:4be1 $fa $a1 $c0
     bit  3, A                                          ;; 01:4be4 $cb $5f
-    jr   NZ, .jr_01_4bf5                               ;; 01:4be6 $20 $0d
+    jr   NZ, .not_sliding                              ;; 01:4be6 $20 $0d
     push DE                                            ;; 01:4be8 $d5
     push BC                                            ;; 01:4be9 $c5
     ld   C, $04                                        ;; 01:4bea $0e $04
@@ -1613,8 +1615,8 @@ gameStateChocobot:
     pop  BC                                            ;; 01:4bef $c1
     pop  DE                                            ;; 01:4bf0 $d1
     cp   A, $00                                        ;; 01:4bf1 $fe $00
-    jr   NZ, .jr_01_4c04                               ;; 01:4bf3 $20 $0f
-.jr_01_4bf5:
+    jr   NZ, .sliding                               ;; 01:4bf3 $20 $0f
+.not_sliding:
     push DE                                            ;; 01:4bf5 $d5
     push BC                                            ;; 01:4bf6 $c5
     ld   C, $04                                        ;; 01:4bf7 $0e $04
@@ -1624,7 +1626,7 @@ gameStateChocobot:
     jr   Z, jr_01_4bc7                                 ;; 01:4bfe $28 $c7
     ld   B, $31                                        ;; 01:4c00 $06 $31
     jr   jr_01_4bc7                                    ;; 01:4c02 $18 $c3
-.jr_01_4c04:
+.sliding:
     and  A, $0f                                        ;; 01:4c04 $e6 $0f
     ld   D, A                                          ;; 01:4c06 $57
     jr   jr_01_4bc7                                    ;; 01:4c07 $18 $be
@@ -1640,7 +1642,7 @@ gameStateChocoboat:
     ld   B, $41                                        ;; 01:4c14 $06 $41
     ld   A, [wMainGameStateFlags]                      ;; 01:4c16 $fa $a1 $c0
     bit  3, A                                          ;; 01:4c19 $cb $5f
-    jr   NZ, .jr_01_4c2a                               ;; 01:4c1b $20 $0d
+    jr   NZ, .not_sliding                              ;; 01:4c1b $20 $0d
     push DE                                            ;; 01:4c1d $d5
     push BC                                            ;; 01:4c1e $c5
     ld   C, $04                                        ;; 01:4c1f $0e $04
@@ -1648,8 +1650,8 @@ gameStateChocoboat:
     pop  BC                                            ;; 01:4c24 $c1
     pop  DE                                            ;; 01:4c25 $d1
     cp   A, $00                                        ;; 01:4c26 $fe $00
-    jr   NZ, .jr_01_4c39                               ;; 01:4c28 $20 $0f
-.jr_01_4c2a:
+    jr   NZ, .sliding                                  ;; 01:4c28 $20 $0f
+.not_sliding:
     push DE                                            ;; 01:4c2a $d5
     push BC                                            ;; 01:4c2b $c5
     ld   C, $04                                        ;; 01:4c2c $0e $04
@@ -1659,7 +1661,7 @@ gameStateChocoboat:
     jr   Z, jr_01_4bc7                                 ;; 01:4c33 $28 $92
     ld   B, $51                                        ;; 01:4c35 $06 $51
     jr   jr_01_4bc7                                    ;; 01:4c37 $18 $8e
-.jr_01_4c39:
+.sliding:
     and  A, $0f                                        ;; 01:4c39 $e6 $0f
     ld   D, A                                          ;; 01:4c3b $57
     jr   jr_01_4bc7                                    ;; 01:4c3c $18 $89
@@ -2322,7 +2324,7 @@ createPlayerObject:
     ld   A, $00                                        ;; 01:50a1 $3e $00
     ld   [wMainGameState], A                           ;; 01:50a3 $ea $a0 $c0
     ld   A, $ff                                        ;; 01:50a6 $3e $ff
-    ld   [wD394], A                                    ;; 01:50a8 $ea $94 $d3
+    ld   [wPlayerAnimation], A                         ;; 01:50a8 $ea $94 $d3
     ret                                                ;; 01:50ab $c9
 
 ; B = power
@@ -4025,7 +4027,7 @@ call_01_59ea:
     swap E                                             ;; 01:5a41 $cb $33
     srl  E                                             ;; 01:5a43 $cb $3b
     srl  E                                             ;; 01:5a45 $cb $3b
-    ld   HL, wD394                                     ;; 01:5a47 $21 $94 $d3
+    ld   HL, wPlayerAnimation                          ;; 01:5a47 $21 $94 $d3
     add  HL, DE                                        ;; 01:5a4a $19
     ld   A, [HL]                                       ;; 01:5a4b $7e
     cp   A, C                                          ;; 01:5a4c $b9
@@ -4243,7 +4245,7 @@ playerUseWeaponOrItem:
     push HL                                            ;; 01:5b86 $e5
     ld   C, A                                          ;; 01:5b87 $4f
     ld   B, $00                                        ;; 01:5b88 $06 $00
-    ld   HL, wD394                                     ;; 01:5b8a $21 $94 $d3
+    ld   HL, wPlayerAnimation                          ;; 01:5b8a $21 $94 $d3
     add  HL, BC                                        ;; 01:5b8d $09
     ld   [HL], $ff                                     ;; 01:5b8e $36 $ff
     pop  HL                                            ;; 01:5b90 $e1

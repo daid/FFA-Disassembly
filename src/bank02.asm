@@ -315,7 +315,7 @@ requestBackgroundTileCopy:
     add  HL, HL                                        ;; 02:4202 $29
     add  HL, HL                                        ;; 02:4203 $29
     add  HL, HL                                        ;; 02:4204 $29
-    ld   DE, $8000                                     ;; 02:4205 $11 $00 $80
+    ld   DE, _VRAM8000 ;@=ptr _VRAM8000                ;; 02:4205 $11 $00 $80
     add  HL, DE                                        ;; 02:4208 $19
     ld   D, H                                          ;; 02:4209 $54
     ld   E, L                                          ;; 02:420a $5d
@@ -962,7 +962,7 @@ menuLoadTiles:
     push BC                                            ;; 02:478f $c5
     push DE                                            ;; 02:4790 $d5
     push HL                                            ;; 02:4791 $e5
-    call call_00_1a30                                  ;; 02:4792 $cd $30 $1a
+    call clearPlayerAnimation                          ;; 02:4792 $cd $30 $1a
     pop  HL                                            ;; 02:4795 $e1
     pop  DE                                            ;; 02:4796 $d1
     pop  BC                                            ;; 02:4797 $c1
@@ -1401,7 +1401,7 @@ call_02_4a79:
     ld   B, $19                                        ;; 02:4a90 $06 $19
     call call_02_67f9                                  ;; 02:4a92 $cd $f9 $67
     call saveRegisterState1                            ;; 02:4a95 $cd $34 $6d
-    ld   A, [wD849]                                    ;; 02:4a98 $fa $49 $d8
+    ld   A, [wMenuFlags]                               ;; 02:4a98 $fa $49 $d8
     and  A, $30                                        ;; 02:4a9b $e6 $30
     ld   A, $03                                        ;; 02:4a9d $3e $03
     jp   NZ, jp_02_5877                                ;; 02:4a9f $c2 $77 $58
@@ -1618,7 +1618,7 @@ call_02_4c0e:
     ret  NZ                                            ;; 02:4c11 $c0
     ld   B, $08                                        ;; 02:4c12 $06 $08
     call setMenuStateCurrentFunction                   ;; 02:4c14 $cd $98 $6c
-    ld   A, [wD849]                                    ;; 02:4c17 $fa $49 $d8
+    ld   A, [wMenuFlags]                               ;; 02:4c17 $fa $49 $d8
     bit  1, A                                          ;; 02:4c1a $cb $4f
     ret  Z                                             ;; 02:4c1c $c8
     call loadRegisterState1                            ;; 02:4c1d $cd $5b $6d
@@ -1639,11 +1639,11 @@ data_02_4c20:
     jp   Z, jp_02_4f19                                 ;; 02:4c3f $ca $19 $4f
     ld   B, $06                                        ;; 02:4c42 $06 $06
     call setMenuStateCurrentFunction                   ;; 02:4c44 $cd $98 $6c
-    ld   A, [wD849]                                    ;; 02:4c47 $fa $49 $d8
+    ld   A, [wMenuFlags]                               ;; 02:4c47 $fa $49 $d8
     bit  7, A                                          ;; 02:4c4a $cb $7f
     ret  Z                                             ;; 02:4c4c $c8
     set  6, A                                          ;; 02:4c4d $cb $f7
-    ld   [wD849], A                                    ;; 02:4c4f $ea $49 $d8
+    ld   [wMenuFlags], A                               ;; 02:4c4f $ea $49 $d8
     ret                                                ;; 02:4c52 $c9
 
 call_02_4c53:
@@ -1661,7 +1661,7 @@ call_02_4c64:
     ld   B, $1a                                        ;; 02:4c67 $06 $1a
     call call_02_67f9                                  ;; 02:4c69 $cd $f9 $67
     call saveRegisterState1                            ;; 02:4c6c $cd $34 $6d
-    ld   A, [wD849]                                    ;; 02:4c6f $fa $49 $d8
+    ld   A, [wMenuFlags]                               ;; 02:4c6f $fa $49 $d8
     and  A, $30                                        ;; 02:4c72 $e6 $30
     ld   A, $07                                        ;; 02:4c74 $3e $07
     jp   NZ, jp_02_5877                                ;; 02:4c76 $c2 $77 $58
@@ -1709,15 +1709,15 @@ call_02_4cba:
     jp   jp_02_4f19                                    ;; 02:4cc4 $c3 $19 $4f
 
 call_02_4cc7:
-    ld   A, [wD849]                                    ;; 02:4cc7 $fa $49 $d8
+    ld   A, [wMenuFlags]                               ;; 02:4cc7 $fa $49 $d8
     and  A, $40                                        ;; 02:4cca $e6 $40
     push AF                                            ;; 02:4ccc $f5
     call NZ, call_02_6c0b                              ;; 02:4ccd $c4 $0b $6c
     pop  AF                                            ;; 02:4cd0 $f1
     call Z, clearThirdMetasprite                       ;; 02:4cd1 $cc $74 $6b
-    ld   A, [wD849]                                    ;; 02:4cd4 $fa $49 $d8
+    ld   A, [wMenuFlags]                               ;; 02:4cd4 $fa $49 $d8
     and  A, $bf                                        ;; 02:4cd7 $e6 $bf
-    ld   [wD849], A                                    ;; 02:4cd9 $ea $49 $d8
+    ld   [wMenuFlags], A                               ;; 02:4cd9 $ea $49 $d8
     ld   A, [wD869]                                    ;; 02:4cdc $fa $69 $d8
     ld   [wD868], A                                    ;; 02:4cdf $ea $68 $d8
     ld   A, [wD89D]                                    ;; 02:4ce2 $fa $9d $d8
@@ -1732,7 +1732,7 @@ call_02_4cc7:
     ret                                                ;; 02:4cf6 $c9
 
 call_02_4cf7:
-    ld   A, [wD849]                                    ;; 02:4cf7 $fa $49 $d8
+    ld   A, [wMenuFlags]                               ;; 02:4cf7 $fa $49 $d8
     and  A, $02                                        ;; 02:4cfa $e6 $02
     call NZ, call_02_56c9                              ;; 02:4cfc $c4 $c9 $56
     ret  NZ                                            ;; 02:4cff $c0
@@ -1877,8 +1877,8 @@ call_02_4db0:
     ld   A, B                                          ;; 02:4df3 $78
     ld   [DE], A                                       ;; 02:4df4 $12
 .jr_02_4df5:
-    ld   A, [wD849]                                    ;; 02:4df5 $fa $49 $d8
-    ld   [wD84E], A                                    ;; 02:4df8 $ea $4e $d8
+    ld   A, [wMenuFlags]                               ;; 02:4df5 $fa $49 $d8
+    ld   [wMenuFlagsBackup], A                        ;; 02:4df8 $ea $4e $d8
     ld   A, [wD848]                                    ;; 02:4dfb $fa $48 $d8
     ld   [wD84F], A                                    ;; 02:4dfe $ea $4f $d8
     ld   A, $03                                        ;; 02:4e01 $3e $03
@@ -1905,8 +1905,8 @@ call_02_4e14:
     jp   jp_02_5877                                    ;; 02:4e34 $c3 $77 $58
 
 call_02_4e37:
-    ld   A, [wD84E]                                    ;; 02:4e37 $fa $4e $d8
-    ld   [wD849], A                                    ;; 02:4e3a $ea $49 $d8
+    ld   A, [wMenuFlagsBackup]                         ;; 02:4e37 $fa $4e $d8
+    ld   [wMenuFlags], A                               ;; 02:4e3a $ea $49 $d8
     rlca                                               ;; 02:4e3d $07
     call C, call_02_6c0b                               ;; 02:4e3e $dc $0b $6c
     call clearFirstMetasprite                          ;; 02:4e41 $cd $84 $6b
@@ -1931,7 +1931,7 @@ call_02_4e5b:
     ld   B, $0f                                        ;; 02:4e64 $06 $0f
     call setMenuStateCurrentFunction                   ;; 02:4e66 $cd $98 $6c
     ret  NZ                                            ;; 02:4e69 $c0
-    ld   A, [wD849]                                    ;; 02:4e6a $fa $49 $d8
+    ld   A, [wMenuFlags]                               ;; 02:4e6a $fa $49 $d8
     bit  1, A                                          ;; 02:4e6d $cb $4f
     ld   B, $03                                        ;; 02:4e6f $06 $03
     call setMenuStateCurrentFunction                   ;; 02:4e71 $cd $98 $6c
@@ -2139,7 +2139,7 @@ call_02_4fd3:
 
 call_02_4fe8:
     call clearFirstMetasprite                          ;; 02:4fe8 $cd $84 $6b
-    ld   A, [wD849]                                    ;; 02:4feb $fa $49 $d8
+    ld   A, [wMenuFlags]                               ;; 02:4feb $fa $49 $d8
     rlca                                               ;; 02:4fee $07
     call C, call_02_6c0b                               ;; 02:4fef $dc $0b $6c
     ld   A, [wSelectedMenuIndex2]                      ;; 02:4ff2 $fa $4c $d8
@@ -2226,7 +2226,7 @@ call_02_5062:
 
 jr_02_5086:
     ld   B, $00                                        ;; 02:5086 $06 $00
-    ld   HL, wD701                                     ;; 02:5088 $21 $01 $d7
+    ld   HL, wVendorBuyPrices                          ;; 02:5088 $21 $01 $d7
     add  HL, BC                                        ;; 02:508b $09
     add  HL, BC                                        ;; 02:508c $09
     ld   A, [HL+]                                      ;; 02:508d $2a
@@ -2260,7 +2260,7 @@ call_02_50b5:
     res  0, [HL]                                       ;; 02:50b8 $cb $86
     ld   C, A                                          ;; 02:50ba $4f
     ld   B, $00                                        ;; 02:50bb $06 $00
-    ld   HL, wD6F3                                     ;; 02:50bd $21 $f3 $d6
+    ld   HL, wVendorBuyIDs                             ;; 02:50bd $21 $f3 $d6
     add  HL, BC                                        ;; 02:50c0 $09
     ld   A, [HL]                                       ;; 02:50c1 $7e
     and  A, $7f                                        ;; 02:50c2 $e6 $7f
@@ -2302,7 +2302,7 @@ call_02_50b5:
     jr   NZ, call_02_50b5.loop_1                       ;; 02:5102 $20 $f7
     call getSelectedMenuIndexes                        ;; 02:5104 $cd $b0 $57
     ld   B, $00                                        ;; 02:5107 $06 $00
-    ld   HL, wD701                                     ;; 02:5109 $21 $01 $d7
+    ld   HL, wVendorBuyPrices                          ;; 02:5109 $21 $01 $d7
     add  HL, BC                                        ;; 02:510c $09
     add  HL, BC                                        ;; 02:510d $09
     ld   A, [HL+]                                      ;; 02:510e $2a
@@ -2453,7 +2453,7 @@ jp_02_51fb:
     ld   A, [wD876]                                    ;; 02:5202 $fa $76 $d8
     ld   C, A                                          ;; 02:5205 $4f
     ld   B, $00                                        ;; 02:5206 $06 $00
-    ld   HL, wD74F                                     ;; 02:5208 $21 $4f $d7
+    ld   HL, wVendorSellPrices                         ;; 02:5208 $21 $4f $d7
     add  HL, BC                                        ;; 02:520b $09
     add  HL, BC                                        ;; 02:520c $09
     xor  A, A                                          ;; 02:520d $af
@@ -2871,7 +2871,7 @@ jp_02_54a6:
     dec  C                                             ;; 02:54b0 $0d
     jp   NZ, jp_02_5638                                ;; 02:54b1 $c2 $38 $56
     ld   B, $40                                        ;; 02:54b4 $06 $40
-    ld   HL, wD70F                                     ;; 02:54b6 $21 $0f $d7
+    ld   HL, wVendorSellIDs                            ;; 02:54b6 $21 $0f $d7
     push HL                                            ;; 02:54b9 $e5
     xor  A, A                                          ;; 02:54ba $af
 .loop_1:
@@ -2881,7 +2881,7 @@ jp_02_54a6:
     pop  DE                                            ;; 02:54bf $d1
     ld   C, $00                                        ;; 02:54c0 $0e $00
     ld   B, $00                                        ;; 02:54c2 $06 $00
-    ld   HL, wD72F                                     ;; 02:54c4 $21 $2f $d7
+    ld   HL, wVendorSellQuantities                     ;; 02:54c4 $21 $2f $d7
 .jr_02_54c7:
     push HL                                            ;; 02:54c7 $e5
     ld   HL, wItemInventory                            ;; 02:54c8 $21 $c5 $d6
@@ -2958,12 +2958,12 @@ jp_02_54a6:
     ld   A, C                                          ;; 02:5527 $79
     cp   A, $0c                                        ;; 02:5528 $fe $0c
     jr   NZ, .jr_02_54ff                               ;; 02:552a $20 $d3
-    ld   HL, wD70F                                     ;; 02:552c $21 $0f $d7
+    ld   HL, wVendorSellIDs                            ;; 02:552c $21 $0f $d7
     call call_02_6ce4                                  ;; 02:552f $cd $e4 $6c
-    ld   HL, wD72F                                     ;; 02:5532 $21 $2f $d7
+    ld   HL, wVendorSellQuantities                     ;; 02:5532 $21 $2f $d7
     call call_02_6ce4                                  ;; 02:5535 $cd $e4 $6c
-    ld   HL, wD70F                                     ;; 02:5538 $21 $0f $d7
-    ld   DE, wD74F                                     ;; 02:553b $11 $4f $d7
+    ld   HL, wVendorSellIDs                            ;; 02:5538 $21 $0f $d7
+    ld   DE, wVendorSellPrices                         ;; 02:553b $11 $4f $d7
     push DE                                            ;; 02:553e $d5
     push BC                                            ;; 02:553f $c5
     ld   B, $40                                        ;; 02:5540 $06 $40
@@ -2982,7 +2982,7 @@ jp_02_54a6:
     push HL                                            ;; 02:554f $e5
     push DE                                            ;; 02:5550 $d5
     ld   C, A                                          ;; 02:5551 $4f
-    ld   HL, wD6F3                                     ;; 02:5552 $21 $f3 $d6
+    ld   HL, wVendorBuyIDs                             ;; 02:5552 $21 $f3 $d6
     ld   B, $07                                        ;; 02:5555 $06 $07
 .loop_3:
     ld   A, [HL+]                                      ;; 02:5557 $2a
@@ -2998,7 +2998,7 @@ jp_02_54a6:
     sub  A, B                                          ;; 02:5566 $90
     ld   E, A                                          ;; 02:5567 $5f
     ld   D, $00                                        ;; 02:5568 $16 $00
-    ld   HL, wD701                                     ;; 02:556a $21 $01 $d7
+    ld   HL, wVendorBuyPrices                          ;; 02:556a $21 $01 $d7
     add  HL, DE                                        ;; 02:556d $19
     add  HL, DE                                        ;; 02:556e $19
     ld   A, [HL+]                                      ;; 02:556f $2a
@@ -3025,8 +3025,8 @@ jp_02_54a6:
     pop  HL                                            ;; 02:558b $e1
     jr   .jr_02_554a                                   ;; 02:558c $18 $bc
 .jr_02_558e:
-    ld   HL, wD74F                                     ;; 02:558e $21 $4f $d7
-    ld   DE, wD72F                                     ;; 02:5591 $11 $2f $d7
+    ld   HL, wVendorSellPrices                         ;; 02:558e $21 $4f $d7
+    ld   DE, wVendorSellQuantities                     ;; 02:5591 $11 $2f $d7
 .jr_02_5594:
     ld   A, [DE]                                       ;; 02:5594 $1a
     and  A, A                                          ;; 02:5595 $a7
@@ -3075,7 +3075,7 @@ call_02_55c6:
     add  HL, HL                                        ;; 02:55cf $29
     push HL                                            ;; 02:55d0 $e5
     pop  BC                                            ;; 02:55d1 $c1
-    ld   HL, vendorInventories                         ;; 02:55d2 $21 $ec $64
+    ld   HL, vendorInventories.items                   ;; 02:55d2 $21 $ec $64
     add  HL, BC                                        ;; 02:55d5 $09
     ld   B, $07                                        ;; 02:55d6 $06 $07
     ld   DE, $00                                       ;; 02:55d8 $11 $00 $00
@@ -3086,13 +3086,13 @@ call_02_55c6:
     jr   NZ, .jr_02_55e2                               ;; 02:55de $20 $02
     ld   A, $80                                        ;; 02:55e0 $3e $80
 .jr_02_55e2:
-    ld   HL, wD6F3                                     ;; 02:55e2 $21 $f3 $d6
+    ld   HL, wVendorBuyIDs                             ;; 02:55e2 $21 $f3 $d6
     add  HL, DE                                        ;; 02:55e5 $19
     ld   [HL], A                                       ;; 02:55e6 $77
     pop  HL                                            ;; 02:55e7 $e1
     ld   A, [HL+]                                      ;; 02:55e8 $2a
     push HL                                            ;; 02:55e9 $e5
-    ld   HL, wD6FA                                     ;; 02:55ea $21 $fa $d6
+    ld   HL, wVendorBuyQuantities                     ;; 02:55ea $21 $fa $d6
     add  HL, DE                                        ;; 02:55ed $19
     ld   [HL], A                                       ;; 02:55ee $77
     pop  HL                                            ;; 02:55ef $e1
@@ -3104,13 +3104,13 @@ call_02_55c6:
 .loop_2:
     push BC                                            ;; 02:55f8 $c5
     ld   B, $00                                        ;; 02:55f9 $06 $00
-    ld   HL, wD6F3                                     ;; 02:55fb $21 $f3 $d6
+    ld   HL, wVendorBuyIDs                             ;; 02:55fb $21 $f3 $d6
     add  HL, BC                                        ;; 02:55fe $09
     ld   A, [HL]                                       ;; 02:55ff $7e
     call getBuyFromVendorPrice                         ;; 02:5600 $cd $b1 $56
     push HL                                            ;; 02:5603 $e5
     pop  DE                                            ;; 02:5604 $d1
-    ld   HL, wD701                                     ;; 02:5605 $21 $01 $d7
+    ld   HL, wVendorBuyPrices                          ;; 02:5605 $21 $01 $d7
     add  HL, BC                                        ;; 02:5608 $09
     add  HL, BC                                        ;; 02:5609 $09
     ld   [HL], E                                       ;; 02:560a $73
@@ -3125,7 +3125,7 @@ call_02_55c6:
 .loop_3:
     push BC                                            ;; 02:5616 $c5
     ld   B, $00                                        ;; 02:5617 $06 $00
-    ld   HL, wD6F3                                     ;; 02:5619 $21 $f3 $d6
+    ld   HL, wVendorBuyIDs                             ;; 02:5619 $21 $f3 $d6
     add  HL, BC                                        ;; 02:561c $09
     ld   A, [HL]                                       ;; 02:561d $7e
     push BC                                            ;; 02:561e $c5
@@ -3138,7 +3138,7 @@ call_02_55c6:
     pop  BC                                            ;; 02:5628 $c1
     and  A, $70                                        ;; 02:5629 $e6 $70
     swap A                                             ;; 02:562b $cb $37
-    ld   HL, wD6FA                                     ;; 02:562d $21 $fa $d6
+    ld   HL, wVendorBuyQuantities                      ;; 02:562d $21 $fa $d6
     add  HL, BC                                        ;; 02:5630 $09
     ld   [HL], A                                       ;; 02:5631 $77
     pop  BC                                            ;; 02:5632 $c1
@@ -3397,7 +3397,7 @@ getSelectedMenuIndexes:
 call_02_57b9:
     ld   A, $04                                        ;; 02:57b9 $3e $04
     push AF                                            ;; 02:57bb $f5
-    ld   HL, windowData.euipmentScreenBottom           ;; 02:57bc $21 $d2 $5b
+    ld   HL, windowData.equipmentScreenBottom          ;; 02:57bc $21 $d2 $5b
     call call_02_57c4                                  ;; 02:57bf $cd $c4 $57
     pop  AF                                            ;; 02:57c2 $f1
     ret                                                ;; 02:57c3 $c9
@@ -3638,9 +3638,9 @@ jp_02_5922:
     ld   [wMenuStateCurrentFunction], A                ;; 02:5948 $ea $53 $d8
     ld   B, A                                          ;; 02:594b $47
     call runVirtualScriptOpCodeFF                      ;; 02:594c $cd $69 $3c
-    ld   A, [wD849]                                    ;; 02:594f $fa $49 $d8
+    ld   A, [wMenuFlags]                               ;; 02:594f $fa $49 $d8
     and  A, $cf                                        ;; 02:5952 $e6 $cf
-    ld   [wD849], A                                    ;; 02:5954 $ea $49 $d8
+    ld   [wMenuFlags], A                               ;; 02:5954 $ea $49 $d8
     pop  HL                                            ;; 02:5957 $e1
     ret                                                ;; 02:5958 $c9
 
@@ -3777,11 +3777,11 @@ call_02_5a18:
     pop  BC                                            ;; 02:5a26 $c1
     ld   E, $10                                        ;; 02:5a27 $1e $10
     push DE                                            ;; 02:5a29 $d5
-    ld   HL, wD701                                     ;; 02:5a2a $21 $01 $d7
+    ld   HL, wVendorBuyPrices                          ;; 02:5a2a $21 $01 $d7
     ld   A, [wDialogType]                              ;; 02:5a2d $fa $4a $d8
     cp   A, $0e                                        ;; 02:5a30 $fe $0e
     jr   Z, .jr_02_5a37                                ;; 02:5a32 $28 $03
-    ld   HL, wD74F                                     ;; 02:5a34 $21 $4f $d7
+    ld   HL, wVendorSellPrices                         ;; 02:5a34 $21 $4f $d7
 .jr_02_5a37:
     add  HL, BC                                        ;; 02:5a37 $09
     add  HL, BC                                        ;; 02:5a38 $09
@@ -4029,7 +4029,7 @@ getEquippedWeaponAP:
     pop  HL                                            ;; 02:5ba8 $e1
     ret                                                ;; 02:5ba9 $c9
 
-;@data amount=24 format=bbbbbbbbbb
+;@data amount=34 format=bbbbbbbbbb
 ; Window data for size/height/cursor.
 ;0-3: x, y, w, h
 ;4: Amount of rows to draw with text
@@ -4047,7 +4047,7 @@ windowData:
     db   $05, $01, $0d, $09, $04, $04, $08, $01, $02, $06 ;; 02:5bbe .......... $02
 .equipmentScreenTop:
     db   $00, $00, $13, $07, $03, $08, $0e, $01, $00, $00 ;; 02:5bc8 .......... $03
-.euipmentScreenBottom:
+.equipmentScreenBottom:
     db   $00, $08, $13, $09, $04, $08, $0c, $03, $02, $09 ;; 02:5bd2 .......... $04
 ; Unused:
     db   $00, $00, $13, $08, $03, $08, $00, $00, $00, $00 ;; 02:5bdc ?????????? $05
@@ -4091,8 +4091,12 @@ windowData:
     db   $00                                           ;; 02:5c9a .
 .selectLevelupStatsY:
     db   $00, $13, $05, $04, $07, $04, $03, $02        ;; 02:5c9b ........
-    db   $09, $00, $06, $09, $05, $02, $05, $02        ;; 02:5ca3 ........
-    db   $02, $01, $00, $00, $0b, $06, $09, $02        ;; 02:5cab ........
+    db   $09
+; Levelup Yes, No:
+    db   $00, $06, $09, $05, $02, $05, $02             ;; 02:5ca4 ........
+    db   $02, $01, $00
+; Status screen AP, DP (this has an invisible border, but is a different window):
+    db   $00, $0b, $06, $09, $02        ;; 02:5cae ........
     db   $05, $02, $00, $01, $00, $00, $02, $13        ;; 02:5cb3 ........
     db   $06, $01, $0f, $02, $00, $02, $00, $00        ;; 02:5cbb ........
     db   $0a, $13, $06, $01, $0f, $02, $00, $02        ;; 02:5cc3 ........
@@ -4166,8 +4170,8 @@ data_02_5d52:
     dw   wEquippedItemAmount                           ;; 02:5d66 .. $0a
     dw   $0000                                         ;; 02:5d68 .. $0b
     dw   $0000                                         ;; 02:5d6a .. $0c
-    dw   wD72F                                         ;; 02:5d6c .. $0d
-    dw   wD6FA                                         ;; 02:5d6e .. $0e
+    dw   wVendorSellQuantities                         ;; 02:5d6c .. $0d
+    dw   wVendorBuyQuantities                          ;; 02:5d6e .. $0e
     dw   $0000                                         ;; 02:5d70 .. $0f
     dw   $0000                                         ;; 02:5d72 .. $10
     dw   $0000                                         ;; 02:5d74 .. $11
@@ -4203,8 +4207,8 @@ windowTextStrings:
     dw   wEquippedItemAndWeaponCopy                    ;; 02:5daa .. $0a
     dw   vendorOptions                                 ;; 02:5dac .. $0b
     dw   $0000                                         ;; 02:5dae .. $0c
-    dw   wD70F                                         ;; 02:5db0 .. $0d
-    dw   wD6F3                                         ;; 02:5db2 .. $0e
+    dw   wVendorSellIDs                                ;; 02:5db0 .. $0d
+    dw   wVendorBuyIDs                                 ;; 02:5db2 .. $0e
     dw   venderGreetingText                            ;; 02:5db4 .. $0f
     dw   venderConfirmSell                             ;; 02:5db6 .. $10
     dw   selectMenuOptions                             ;; 02:5db8 .. $11
@@ -4227,7 +4231,14 @@ windowTextStrings:
 
 INCLUDE "data/items.asm"
 
+; Vendor inventories allow seven items/weapons/spells.
+; They start with two bytes giving the vendor number, but this is unused by code.
+; After that each item is followed by the byte $0a.
+; If a vendor sells fewer than seven things, that entry is $ff, $00.
+;@data format=wbbbbbbbbbbbbbb amount=17
 vendorInventories:
+    db   $00, $00                                      ;; 02:64ea ??
+.items:
     db   $00, $0a, $05, $0a, $06, $0a, $16, $0a        ;; 02:64ec ........
     db   $ff, $00, $ff, $00, $ff, $00, $01, $01        ;; 02:64f4 ......??
     db   $00, $0a, $05, $0a, $06, $0a, $16, $0a        ;; 02:64fc ........
@@ -4395,7 +4406,7 @@ jmp_02_66ab:
     and  A, $7f                                        ;; 02:66c9 $e6 $7f
     ld   [wMenuStateCurrentFunction], A                ;; 02:66cb $ea $53 $d8
     xor  A, A                                          ;; 02:66ce $af
-    ld   [wD849], A                                    ;; 02:66cf $ea $49 $d8
+    ld   [wMenuFlags], A                               ;; 02:66cf $ea $49 $d8
     ld   [wD859], A                                    ;; 02:66d2 $ea $59 $d8
     call getWindowDimensions                           ;; 02:66d5 $cd $67 $7a
     inc  B                                             ;; 02:66d8 $04
@@ -4585,9 +4596,9 @@ call_02_680e:
     ld   A, B                                          ;; 02:680e $78
     ld   [wD850], A                                    ;; 02:680f $ea $50 $d8
     call loadRegisterState2                            ;; 02:6812 $cd $a7 $6d
-    ld   A, [wD849]                                    ;; 02:6815 $fa $49 $d8
+    ld   A, [wMenuFlags]                               ;; 02:6815 $fa $49 $d8
     and  A, $cf                                        ;; 02:6818 $e6 $cf
-    ld   [wD849], A                                    ;; 02:681a $ea $49 $d8
+    ld   [wMenuFlags], A                               ;; 02:681a $ea $49 $d8
     push HL                                            ;; 02:681d $e5
     push DE                                            ;; 02:681e $d5
     call updateJoypadInput_trampoline                  ;; 02:681f $cd $d1 $1e
@@ -4604,7 +4615,7 @@ call_02_680e:
     call saveRegisterState1                            ;; 02:6832 $cd $34 $6d
     ld   A, $01                                        ;; 02:6835 $3e $01
     ld   [wD856], A                                    ;; 02:6837 $ea $56 $d8
-    ld   A, [wD849]                                    ;; 02:683a $fa $49 $d8
+    ld   A, [wMenuFlags]                               ;; 02:683a $fa $49 $d8
     and  A, $30                                        ;; 02:683d $e6 $30
     ret                                                ;; 02:683f $c9
 
@@ -4696,9 +4707,9 @@ processWindowInput:
     ld   [wSRAMSaveHeader._a], A                       ;; 02:68bf $ea $b1 $d7
     ld   H, $ff                                        ;; 02:68c2 $26 $ff
 .button:
-    ld   A, [wD849]                                    ;; 02:68c4 $fa $49 $d8
+    ld   A, [wMenuFlags]                               ;; 02:68c4 $fa $49 $d8
     or   A, $08                                        ;; 02:68c7 $f6 $08
-    ld   [wD849], A                                    ;; 02:68c9 $ea $49 $d8
+    ld   [wMenuFlags], A                               ;; 02:68c9 $ea $49 $d8
     ld   B, H                                          ;; 02:68cc $44
     ld   H, $ff                                        ;; 02:68cd $26 $ff
     ld   A, [wD88D]                                    ;; 02:68cf $fa $8d $d8
@@ -4707,7 +4718,7 @@ processWindowInput:
     call playSFX                                       ;; 02:68d7 $cd $7d $29
     ret                                                ;; 02:68da $c9
 .dpad_right:
-    ld   A, [wD849]                                    ;; 02:68db $fa $49 $d8
+    ld   A, [wMenuFlags]                               ;; 02:68db $fa $49 $d8
     rrca                                               ;; 02:68de $0f
     ret  NC                                            ;; 02:68df $d0
     ld   A, [wWindowNumberOfSelections]                ;; 02:68e0 $fa $45 $d8
@@ -4735,7 +4746,7 @@ processWindowInput:
     dec  E                                             ;; 02:6904 $1d
     ret                                                ;; 02:6905 $c9
 .dpad_left:
-    ld   A, [wD849]                                    ;; 02:6906 $fa $49 $d8
+    ld   A, [wMenuFlags]                               ;; 02:6906 $fa $49 $d8
     rrca                                               ;; 02:6909 $0f
     ret  NC                                            ;; 02:690a $d0
     ld   A, [wWindowNumberOfSelections]                ;; 02:690b $fa $45 $d8
@@ -4854,7 +4865,7 @@ call_02_69aa:
     ld   A, $09                                        ;; 02:69c2 $3e $09
     jr   .jr_02_69cc                                   ;; 02:69c4 $18 $06
 .jr_02_69c6:
-    ld   A, [wD849]                                    ;; 02:69c6 $fa $49 $d8
+    ld   A, [wMenuFlags]                               ;; 02:69c6 $fa $49 $d8
     and  A, $01                                        ;; 02:69c9 $e6 $01
     inc  A                                             ;; 02:69cb $3c
 .jr_02_69cc:
@@ -4867,7 +4878,7 @@ call_02_69aa:
     ld   A, [wDialogType]                              ;; 02:69d5 $fa $4a $d8
     and  A, A                                          ;; 02:69d8 $a7
     ret  Z                                             ;; 02:69d9 $c8
-    ld   A, [wD849]                                    ;; 02:69da $fa $49 $d8
+    ld   A, [wMenuFlags]                               ;; 02:69da $fa $49 $d8
     and  A, $02                                        ;; 02:69dd $e6 $02
     ccf                                                ;; 02:69df $3f
     ret  Z                                             ;; 02:69e0 $c8
@@ -4905,14 +4916,14 @@ call_02_69aa:
     ret                                                ;; 02:6a08 $c9
 
 call_02_6a09:
-    ld   A, [wD849]                                    ;; 02:6a09 $fa $49 $d8
+    ld   A, [wMenuFlags]                               ;; 02:6a09 $fa $49 $d8
     or   A, $10                                        ;; 02:6a0c $f6 $10
-    ld   [wD849], A                                    ;; 02:6a0e $ea $49 $d8
+    ld   [wMenuFlags], A                               ;; 02:6a0e $ea $49 $d8
     ld   L, $01                                        ;; 02:6a11 $2e $01
     ld   A, [wDialogType]                              ;; 02:6a13 $fa $4a $d8
     cp   A, $1e                                        ;; 02:6a16 $fe $1e
     jr   Z, .jr_02_6a21                                ;; 02:6a18 $28 $07
-    ld   A, [wD849]                                    ;; 02:6a1a $fa $49 $d8
+    ld   A, [wMenuFlags]                               ;; 02:6a1a $fa $49 $d8
     and  A, $01                                        ;; 02:6a1d $e6 $01
     inc  A                                             ;; 02:6a1f $3c
     ld   L, A                                          ;; 02:6a20 $6f
@@ -4930,10 +4941,10 @@ call_02_6a35:
     ld   A, [wD899]                                    ;; 02:6a35 $fa $99 $d8
     add  A, $02                                        ;; 02:6a38 $c6 $02
     ld   [wD899], A                                    ;; 02:6a3a $ea $99 $d8
-    ld   A, [wD849]                                    ;; 02:6a3d $fa $49 $d8
+    ld   A, [wMenuFlags]                               ;; 02:6a3d $fa $49 $d8
     and  A, $7f                                        ;; 02:6a40 $e6 $7f
     or   A, $20                                        ;; 02:6a42 $f6 $20
-    ld   [wD849], A                                    ;; 02:6a44 $ea $49 $d8
+    ld   [wMenuFlags], A                               ;; 02:6a44 $ea $49 $d8
 
 jr_02_6a47:
     call call_02_6ae7                                  ;; 02:6a47 $cd $e7 $6a
@@ -4954,7 +4965,7 @@ call_02_6a59:
     ld   A, $09                                        ;; 02:6a64 $3e $09
     jr   .jr_02_6a6e                                   ;; 02:6a66 $18 $06
 .jr_02_6a68:
-    ld   A, [wD849]                                    ;; 02:6a68 $fa $49 $d8
+    ld   A, [wMenuFlags]                               ;; 02:6a68 $fa $49 $d8
     and  A, $01                                        ;; 02:6a6b $e6 $01
     inc  A                                             ;; 02:6a6d $3c
 .jr_02_6a6e:
@@ -4962,7 +4973,7 @@ call_02_6a59:
     ld   A, H                                          ;; 02:6a6f $7c
     sub  A, L                                          ;; 02:6a70 $95
     ret  C                                             ;; 02:6a71 $d8
-    ld   A, [wD849]                                    ;; 02:6a72 $fa $49 $d8
+    ld   A, [wMenuFlags]                               ;; 02:6a72 $fa $49 $d8
     and  A, $01                                        ;; 02:6a75 $e6 $01
     inc  A                                             ;; 02:6a77 $3c
     ld   L, A                                          ;; 02:6a78 $6f
@@ -5014,7 +5025,7 @@ call_02_6a59:
     ld   A, $09                                        ;; 02:6abc $3e $09
     jr   .jr_02_6ac6                                   ;; 02:6abe $18 $06
 .jr_02_6ac0:
-    ld   A, [wD849]                                    ;; 02:6ac0 $fa $49 $d8
+    ld   A, [wMenuFlags]                               ;; 02:6ac0 $fa $49 $d8
     and  A, $01                                        ;; 02:6ac3 $e6 $01
     inc  A                                             ;; 02:6ac5 $3c
 .jr_02_6ac6:
@@ -5129,9 +5140,9 @@ hideAndSaveMenuMetasprites:
     ret                                                ;; 02:6b73 $c9
 
 clearThirdMetasprite:
-    ld   A, [wD849]                                    ;; 02:6b74 $fa $49 $d8
+    ld   A, [wMenuFlags]                               ;; 02:6b74 $fa $49 $d8
     and  A, $7f                                        ;; 02:6b77 $e6 $7f
-    ld   [wD849], A                                    ;; 02:6b79 $ea $49 $d8
+    ld   [wMenuFlags], A                               ;; 02:6b79 $ea $49 $d8
     push HL                                            ;; 02:6b7c $e5
     push DE                                            ;; 02:6b7d $d5
     push BC                                            ;; 02:6b7e $c5
@@ -5253,7 +5264,7 @@ call_02_6be8:
     ret                                                ;; 02:6c0a $c9
 
 call_02_6c0b:
-    ld   A, [wD849]                                    ;; 02:6c0b $fa $49 $d8
+    ld   A, [wMenuFlags]                               ;; 02:6c0b $fa $49 $d8
     and  A, $02                                        ;; 02:6c0e $e6 $02
     ret  Z                                             ;; 02:6c10 $c8
     push HL                                            ;; 02:6c11 $e5
@@ -5280,9 +5291,9 @@ call_02_6c0b:
     call windowShowSprite                              ;; 02:6c38 $cd $d8 $6b
     inc  E                                             ;; 02:6c3b $1c
     call windowShowSprite                              ;; 02:6c3c $cd $d8 $6b
-    ld   A, [wD849]                                    ;; 02:6c3f $fa $49 $d8
+    ld   A, [wMenuFlags]                               ;; 02:6c3f $fa $49 $d8
     or   A, $80                                        ;; 02:6c42 $f6 $80
-    ld   [wD849], A                                    ;; 02:6c44 $ea $49 $d8
+    ld   [wMenuFlags], A                               ;; 02:6c44 $ea $49 $d8
     pop  BC                                            ;; 02:6c47 $c1
     pop  DE                                            ;; 02:6c48 $d1
     pop  HL                                            ;; 02:6c49 $e1
@@ -5362,7 +5373,9 @@ getWindowData:
 ; Only does the set if the previous function finished (bit 7 is clear).
 ; If the new function is 0 it also does some some processing to resume the game.
 ; B = new function number
-; Return: nothing, but callers often check wMenuStateCurrentFunction afterwards.
+; Return: NZ unless the new function is 0, and also (as far as I can tell) if the Slep spell is not currently active it returns Z.
+; The Slep related behavior is almost certainly a bug, unless the game is very careful to only test the return when Slep can't be active.
+; Callers also often check wMenuStateCurrentFunction afterwards.
 setMenuStateCurrentFunction:
     push AF                                            ;; 02:6c98 $f5
     ld   A, [wMenuStateCurrentFunction]                ;; 02:6c99 $fa $53 $d8
@@ -7008,7 +7021,7 @@ call_02_7693:
     ld   A, [HL+]                                      ;; 02:76dd $2a
     ld   [wWindowNumberOfSelections], A                ;; 02:76de $ea $45 $d8
     ld   A, [HL+]                                      ;; 02:76e1 $2a
-    ld   [wD849], A                                    ;; 02:76e2 $ea $49 $d8
+    ld   [wMenuFlags], A                               ;; 02:76e2 $ea $49 $d8
     ld   A, [HL+]                                      ;; 02:76e5 $2a
     ld   [wCursorColumns], A                           ;; 02:76e6 $ea $66 $d8
     ld   A, $01                                        ;; 02:76e9 $3e $01
@@ -7832,7 +7845,7 @@ titleScreenIntroScrollStart:
     ld   [wIntroScrollSCYBackup], A                    ;; 02:7bfa $ea $88 $d8
     xor  A, A                                          ;; 02:7bfd $af
     ld   [HL], A                                       ;; 02:7bfe $77
-    ld   [wD849], A                                    ;; 02:7bff $ea $49 $d8
+    ld   [wMenuFlags], A                               ;; 02:7bff $ea $49 $d8
     ld   DE, $01                                       ;; 02:7c02 $11 $01 $00
     ld   BC, $1301                                     ;; 02:7c05 $01 $01 $13
     call setWindowDimensions                           ;; 02:7c08 $cd $73 $7a

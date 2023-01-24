@@ -52,6 +52,7 @@ npcRunBehaviorForAll:
     call projectileRunLogicForAll_trampoline           ;; 03:4046 $cd $d1 $2b
     ret                                                ;; 03:4049 $c9
 
+; HL = Npc Runtime Data entry pointer
 npcRunBehavior:
     inc  HL                                            ;; 03:404a $23
     dec  [HL]                                          ;; 03:404b $35
@@ -73,7 +74,7 @@ npcRunBehavior:
     ld   A, [HL+]                                      ;; 03:4062 $2a
     ld   C, [HL]                                       ;; 03:4063 $4e
     cp   A, $00                                        ;; 03:4064 $fe $00
-    jr   NZ, jr_03_40c7                                ;; 03:4066 $20 $5f
+    jr   NZ, .jr_03_40c7                               ;; 03:4066 $20 $5f
     ld   A, [DE]                                       ;; 03:4068 $1a
     ld   C, A                                          ;; 03:4069 $4f
     push BC                                            ;; 03:406a $c5
@@ -88,12 +89,12 @@ npcRunBehavior:
     ld   D, [HL]                                       ;; 03:4077 $56
     ld   A, E                                          ;; 03:4078 $7b
     or   A, D                                          ;; 03:4079 $b2
-    jr   Z, jr_03_40fb                                 ;; 03:407a $28 $7f
+    jr   Z, .jr_03_40fb                                ;; 03:407a $28 $7f
     push DE                                            ;; 03:407c $d5
     call getObjectSliding                              ;; 03:407d $cd $d3 $0c
     pop  DE                                            ;; 03:4080 $d1
     cp   A, $00                                        ;; 03:4081 $fe $00
-    jp   NZ, jp_03_40ff                                ;; 03:4083 $c2 $ff $40
+    jp   NZ, .jp_03_40ff                               ;; 03:4083 $c2 $ff $40
     pop  HL                                            ;; 03:4086 $e1
     push HL                                            ;; 03:4087 $e5
     call call_03_41fc                                  ;; 03:4088 $cd $fc $41
@@ -132,9 +133,8 @@ npcRunBehavior:
     pop  DE                                            ;; 03:40b6 $d1
     push DE                                            ;; 03:40b7 $d5
     call call_03_418b                                  ;; 03:40b8 $cd $8b $41
-    jr   Z, jr_03_4103                                 ;; 03:40bb $28 $46
-
-jr_03_40bd:
+    jr   Z, .slep_or_mute                              ;; 03:40bb $28 $46
+.jr_03_40bd:
     pop  HL                                            ;; 03:40bd $e1
     push HL                                            ;; 03:40be $e5
     ld   DE, $04                                       ;; 03:40bf $11 $04 $00
@@ -142,8 +142,7 @@ jr_03_40bd:
     ld   [HL+], A                                      ;; 03:40c3 $22
     ld   C, $00                                        ;; 03:40c4 $0e $00
     ld   [HL], C                                       ;; 03:40c6 $71
-
-jr_03_40c7:
+.jr_03_40c7:
     pop  DE                                            ;; 03:40c7 $d1
     push DE                                            ;; 03:40c8 $d5
     push AF                                            ;; 03:40c9 $f5
@@ -180,18 +179,15 @@ jr_03_40c7:
     add  HL, DE                                        ;; 03:40f7 $19
     ld   [HL], $01                                     ;; 03:40f8 $36 $01
     ret                                                ;; 03:40fa $c9
-
-jr_03_40fb:
+.jr_03_40fb:
     ld   A, $01                                        ;; 03:40fb $3e $01
-    jr   jr_03_40bd                                    ;; 03:40fd $18 $be
-
-jp_03_40ff:
+    jr   .jr_03_40bd                                   ;; 03:40fd $18 $be
+.jp_03_40ff:
     ld   A, $1b                                        ;; 03:40ff $3e $1b
-    jr   jr_03_40bd                                    ;; 03:4101 $18 $ba
-
-jr_03_4103:
+    jr   .jr_03_40bd                                   ;; 03:4101 $18 $ba
+.slep_or_mute:
     ld   A, $00                                        ;; 03:4103 $3e $00
-    jr   jr_03_40bd                                    ;; 03:4105 $18 $b6
+    jr   .jr_03_40bd                                   ;; 03:4105 $18 $b6
 
 call_03_4107:
     cp   A, $2c                                        ;; 03:4107 $fe $2c
@@ -528,12 +524,12 @@ spawnNPC:
     ld   A, $02                                        ;; 03:42d8 $3e $02
     call createObject                                  ;; 03:42da $cd $74 $0a
     cp   A, $ff                                        ;; 03:42dd $fe $ff
-    jr   Z, .jr_03_435b                                ;; 03:42df $28 $7a
+    jr   Z, .failed                                    ;; 03:42df $28 $7a
     push BC                                            ;; 03:42e1 $c5
     ld   A, $ff                                        ;; 03:42e2 $3e $ff
     call getNpcRuntimeDataByID                         ;; 03:42e4 $cd $9b $42
     pop  BC                                            ;; 03:42e7 $c1
-    jr   NZ, .jr_03_435b                               ;; 03:42e8 $20 $71
+    jr   NZ, .failed                                   ;; 03:42e8 $20 $71
     ld   [HL], C                                       ;; 03:42ea $71
     ld   D, H                                          ;; 03:42eb $54
     ld   E, L                                          ;; 03:42ec $5d
@@ -611,7 +607,7 @@ spawnNPC:
     ld   A, [DE]                                       ;; 03:4358 $1a
     ld   C, A                                          ;; 03:4359 $4f
     ret                                                ;; 03:435a $c9
-.jr_03_435b:
+.failed:
     pop  DE                                            ;; 03:435b $d1
     ld   C, $ff                                        ;; 03:435c $0e $ff
     ret                                                ;; 03:435e $c9
@@ -1085,7 +1081,7 @@ call_03_4561:
 .jr_03_45e8:
     ld   E, A                                          ;; 03:45e8 $5f
     ld   A, C                                          ;; 03:45e9 $79
-    ld   [wC5B0], A                                    ;; 03:45ea $ea $b0 $c5
+    ld   [wNPCDroppingChest], A                        ;; 03:45ea $ea $b0 $c5
     ld   A, B                                          ;; 03:45ed $78
     or   A, $00                                        ;; 03:45ee $f6 $00
     ld   C, $81                                        ;; 03:45f0 $0e $81
@@ -2240,14 +2236,14 @@ initEnemiesCounterAndMoveFolower:
 ;@jumptable amount=224
 npcBehaviorJumptable:
     dw   ld_C_into_A                                   ;; 03:4c55 ??
-    dw   call_03_4e7c                                  ;; 03:4c57 pP
+    dw   npcBehaviorDeath                              ;; 03:4c57 pP
     dw   npcBehaviorSpawnProjectile                    ;; 03:4c59 pP
     dw   call_03_4ef0                                  ;; 03:4c5b pP
     dw   npcStepForward                                ;; 03:4c5d pP
     dw   npcStepBackward                               ;; 03:4c5f pP
-    dw   call_03_4f4d                                  ;; 03:4c61 pP
-    dw   call_03_4f5a                                  ;; 03:4c63 pP
-    dw   call_03_4f67                                  ;; 03:4c65 pP
+    dw   npcTurnRight                                  ;; 03:4c61 pP
+    dw   npcTurnLeft                                   ;; 03:4c63 pP
+    dw   npcReverseDirection                           ;; 03:4c65 pP
     dw   call_03_4f74                                  ;; 03:4c67 pP
     dw   call_03_4f88                                  ;; 03:4c69 pP
     dw   call_03_4fa3                                  ;; 03:4c6b pP
@@ -2506,7 +2502,7 @@ npcKilledExplosion:
     call Z, npcKilledExplosionInit                     ;; 03:4e5d $cc $4a $4e
     ld   A, B                                          ;; 03:4e60 $78
     cp   A, $02                                        ;; 03:4e61 $fe $02
-    jr   Z, .jr_03_4e76                                ;; 03:4e63 $28 $11
+    jr   Z, .finished                                  ;; 03:4e63 $28 $11
     push AF                                            ;; 03:4e65 $f5
     cp   A, $01                                        ;; 03:4e66 $fe $01
     ld   A, $01                                        ;; 03:4e68 $3e $01
@@ -2518,15 +2514,15 @@ npcKilledExplosion:
     pop  AF                                            ;; 03:4e73 $f1
     inc  A                                             ;; 03:4e74 $3c
     ret                                                ;; 03:4e75 $c9
-.jr_03_4e76:
+.finished:
     call processNpcDeath                               ;; 03:4e76 $cd $0a $48
     ld   A, $00                                        ;; 03:4e79 $3e $00
     ret                                                ;; 03:4e7b $c9
 
-call_03_4e7c:
+npcBehaviorDeath:
     ld   A, [DE]                                       ;; 03:4e7c $1a
     cp   A, $ff                                        ;; 03:4e7d $fe $ff
-    jr   Z, .jr_03_4eaa                                ;; 03:4e7f $28 $29
+    jr   Z, .invalid                                   ;; 03:4e7f $28 $29
     ld   B, C                                          ;; 03:4e81 $41
     ld   C, A                                          ;; 03:4e82 $4f
     push DE                                            ;; 03:4e83 $d5
@@ -2538,11 +2534,11 @@ call_03_4e7c:
     cp   A, $d0                                        ;; 03:4e8c $fe $d0
     jr   Z, .follower                                  ;; 03:4e8e $28 $10
     cp   A, $a0                                        ;; 03:4e90 $fe $a0
-    jr   Z, .jr_03_4ead                                ;; 03:4e92 $28 $19
+    jr   Z, .no_explosion                              ;; 03:4e92 $28 $19
     cp   A, $b0                                        ;; 03:4e94 $fe $b0
-    jr   Z, .jr_03_4ead                                ;; 03:4e96 $28 $15
+    jr   Z, .no_explosion                              ;; 03:4e96 $28 $15
     cp   A, $00                                        ;; 03:4e98 $fe $00
-    jr   Z, .jr_03_4ead                                ;; 03:4e9a $28 $11
+    jr   Z, .no_explosion                              ;; 03:4e9a $28 $11
     call npcKilledExplosion                            ;; 03:4e9c $cd $5a $4e
     ret                                                ;; 03:4e9f $c9
 .follower:
@@ -2550,10 +2546,10 @@ call_03_4e7c:
     ld   B, $00                                        ;; 03:4ea3 $06 $00
     ld   A, $00                                        ;; 03:4ea5 $3e $00
     call updateObjectPosition                          ;; 03:4ea7 $cd $11 $06
-.jr_03_4eaa:
+.invalid:
     ld   A, $00                                        ;; 03:4eaa $3e $00
     ret                                                ;; 03:4eac $c9
-.jr_03_4ead:
+.no_explosion:
     call processNpcDeath                               ;; 03:4ead $cd $0a $48
     ld   A, $00                                        ;; 03:4eb0 $3e $00
     ret                                                ;; 03:4eb2 $c9
@@ -2667,7 +2663,7 @@ npcStepBackward:
     ld   A, $02                                        ;; 03:4f4a $3e $02
     ret                                                ;; 03:4f4c $c9
 
-call_03_4f4d:
+npcTurnRight:
     ld   A, [DE]                                       ;; 03:4f4d $1a
     ld   C, A                                          ;; 03:4f4e $4f
     push BC                                            ;; 03:4f4f $c5
@@ -2677,7 +2673,7 @@ call_03_4f4d:
     ld   A, $00                                        ;; 03:4f57 $3e $00
     ret                                                ;; 03:4f59 $c9
 
-call_03_4f5a:
+npcTurnLeft:
     ld   A, [DE]                                       ;; 03:4f5a $1a
     ld   C, A                                          ;; 03:4f5b $4f
     push BC                                            ;; 03:4f5c $c5
@@ -2687,7 +2683,7 @@ call_03_4f5a:
     ld   A, $00                                        ;; 03:4f64 $3e $00
     ret                                                ;; 03:4f66 $c9
 
-call_03_4f67:
+npcReverseDirection:
     ld   A, [DE]                                       ;; 03:4f67 $1a
     ld   C, A                                          ;; 03:4f68 $4f
     push BC                                            ;; 03:4f69 $c5
