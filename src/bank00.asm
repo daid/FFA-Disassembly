@@ -6585,8 +6585,8 @@ spawnNpcsFromTable_trampoline:
 setHLToZero_3_trampoline:
     jp_to_bank 03, setHLToZero_3                       ;; 00:2847 $f5 $3e $06 $c3 $35 $1f
 
-call_00_284d:
-    jp_to_bank 03, call_03_4561                        ;; 00:284d $f5 $3e $08 $c3 $35 $1f
+friendlyCollisionHandling_trampoline:
+    jp_to_bank 03, friendlyCollisionHandling           ;; 00:284d $f5 $3e $08 $c3 $35 $1f
 
 damageNpc_trampoline:
     jp_to_bank 03, damageNpc                           ;; 00:2853 $f5 $3e $09 $c3 $35 $1f

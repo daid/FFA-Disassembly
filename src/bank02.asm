@@ -480,7 +480,7 @@ call_02_42a5:
     ret                                                ;; 02:42e8 $c9
 .npcScriptOnTouch:
     pop  AF                                            ;; 02:42e9 $f1
-    call call_00_284d                                  ;; 02:42ea $cd $4d $28
+    call friendlyCollisionHandling_trampoline          ;; 02:42ea $cd $4d $28
     ret                                                ;; 02:42ed $c9
 .npcDamageOnTouch:
     pop  AF                                            ;; 02:42ee $f1

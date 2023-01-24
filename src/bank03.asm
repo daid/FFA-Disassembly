@@ -15,7 +15,7 @@ SECTION "bank03", ROMX[$4000], BANK[$03]
     call_to_bank_target setNpcSpawnTable               ;; 03:400a pP
     call_to_bank_target setHLToZero_3                  ;; 03:400c ??
     call_to_bank_target enemyCollisionHandling         ;; 03:400e pP
-    call_to_bank_target call_03_4561                   ;; 03:4010 pP
+    call_to_bank_target friendlyCollisionHandling      ;; 03:4010 pP
     call_to_bank_target damageNpc                      ;; 03:4012 ??
     call_to_bank_target objectBehaviorMove             ;; 03:4014 pP
     call_to_bank_target call_03_4aed                   ;; 03:4016 pP
@@ -989,7 +989,11 @@ setHLToZero_3:
     ld   HL, $00                                       ;; 03:455d $21 $00 $00
     ret                                                ;; 03:4560 $c9
 
-call_03_4561:
+; Handles collisions with objects that run a script when touched.
+; A = interacting object's collision flags
+; B = interacting  object's ID
+; C = target object's ID
+friendlyCollisionHandling:
     cp   A, $c9                                        ;; 03:4561 $fe $c9
     jr   Z, .player                                    ;; 03:4563 $28 $0f
     ld   L, A                                          ;; 03:4565 $6f
