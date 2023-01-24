@@ -186,7 +186,7 @@ call_04_40f3:
     dec  A                                             ;; 04:40f8 $3d
     push AF                                            ;; 04:40f9 $f5
     ld   L, A                                          ;; 04:40fa $6f
-    ld   A, [wD3EF]                                    ;; 04:40fb $fa $ef $d3
+    ld   A, [wBossCurrentHeadActionSubstep]            ;; 04:40fb $fa $ef $d3
     ld   H, $00                                        ;; 04:40fe $26 $00
     ld   E, L                                          ;; 04:4100 $5d
     ld   D, H                                          ;; 04:4101 $54
@@ -238,13 +238,13 @@ call_04_40f3:
     pop  BC                                            ;; 04:413f $c1
     dec  B                                             ;; 04:4140 $05
     jr   NZ, call_04_40f3.loop                         ;; 04:4141 $20 $d8
-    ld   HL, wD3EF                                     ;; 04:4143 $21 $ef $d3
+    ld   HL, wBossCurrentHeadActionSubstep             ;; 04:4143 $21 $ef $d3
     inc  [HL]                                          ;; 04:4146 $34
     ret                                                ;; 04:4147 $c9
 
 call_04_4148:
     ld   A, $00                                        ;; 04:4148 $3e $00
-    ld   [wD3EF], A                                    ;; 04:414a $ea $ef $d3
+    ld   [wBossCurrentHeadActionSubstep], A            ;; 04:414a $ea $ef $d3
     ld   A, [wBossCurrentMetatileListPointer.high]     ;; 04:414d $fa $41 $d4
     ld   H, A                                          ;; 04:4150 $67
     ld   A, [wBossCurrentMetatileListPointer]          ;; 04:4151 $fa $40 $d4
@@ -390,7 +390,7 @@ call_04_4209:
     call Z, call_04_4222                               ;; 04:420d $cc $22 $42
     ld   A, $00                                        ;; 04:4210 $3e $00
     ld   [wBossCurrentHeadActionStep], A               ;; 04:4212 $ea $ee $d3
-    ld   [wD3EF], A                                    ;; 04:4215 $ea $ef $d3
+    ld   [wBossCurrentHeadActionSubstep], A            ;; 04:4215 $ea $ef $d3
     ld   A, [wBossCurrentHeadActionPointer.high]       ;; 04:4218 $fa $3f $d4
     ld   H, A                                          ;; 04:421b $67
     ld   A, [wBossCurrentHeadActionPointer]            ;; 04:421c $fa $3e $d4
