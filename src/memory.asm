@@ -932,22 +932,22 @@ wEquippedItemAmount:
 wEquippedItemAndWeaponCopy:
     ds 2                                               ;; d6f1
 
-wVendorSaleIDs:
+wVendorBuyIDs:
     ds 7                                               ;; d6f3
 
-wVendorSaleQuantities:
+wVendorBuyQuantities:
     ds 7                                               ;; d6fa
 
-wVendorSalePrices:
+wVendorBuyPrices:
     ds 14                                              ;; d701
 
-wD70F:
+wVendorSellIDs:
     ds 32                                              ;; d70f
 
-wD72F:
+wVendorSellQuantities:
     ds 32                                              ;; d72f
 
-wD74F:
+wVendorSellPrices:
     ds 64                                              ;; d74f
 
 wStatStaminaLevelUpTmp:
