@@ -815,7 +815,11 @@ setNpcSpawnTable:
     pop  HL                                            ;; 03:4486 $e1
     ret                                                ;; 03:4487 $c9
 
-call_03_4488:
+; C = npc type
+; DE = yx tile coordinate
+; Checks that the given coordinate is valid for the given npc type to move on, and that it is a minimum distance from the player.
+; Return: Z, fail, NZ, success.
+checkNpcPotentialPlacement:
     push HL                                            ;; 03:4488 $e5
     push BC                                            ;; 03:4489 $c5
     push DE                                            ;; 03:448a $d5
@@ -853,7 +857,7 @@ call_03_4488:
     inc  A                                             ;; 03:44b3 $3c
 .jr_03_44b4:
     cp   A, $04                                        ;; 03:44b4 $fe $04
-    jr   NC, .jr_03_44c7                               ;; 03:44b6 $30 $0f
+    jr   NC, .success                                  ;; 03:44b6 $30 $0f
     ld   A, E                                          ;; 03:44b8 $7b
     sub  A, L                                          ;; 03:44b9 $95
     jr   NC, .jr_03_44be                               ;; 03:44ba $30 $02
@@ -861,13 +865,13 @@ call_03_4488:
     inc  A                                             ;; 03:44bd $3c
 .jr_03_44be:
     cp   A, $04                                        ;; 03:44be $fe $04
-    jr   NC, .jr_03_44c7                               ;; 03:44c0 $30 $05
+    jr   NC, .success                                  ;; 03:44c0 $30 $05
     xor  A, A                                          ;; 03:44c2 $af
     pop  DE                                            ;; 03:44c3 $d1
     pop  BC                                            ;; 03:44c4 $c1
     pop  HL                                            ;; 03:44c5 $e1
     ret                                                ;; 03:44c6 $c9
-.jr_03_44c7:
+.success:
     xor  A, A                                          ;; 03:44c7 $af
     dec  A                                             ;; 03:44c8 $3d
     pop  DE                                            ;; 03:44c9 $d1
@@ -875,22 +879,23 @@ call_03_4488:
     pop  HL                                            ;; 03:44cb $e1
     ret                                                ;; 03:44cc $c9
 
-call_03_44cd:
+; Return: DE = random yx tile number between (02,02) and ($10,$0d)
+getRandomTile:
     push HL                                            ;; 03:44cd $e5
     push BC                                            ;; 03:44ce $c5
-.jr_03_44cf:
+.loop_1:
     call getRandomByte                                 ;; 03:44cf $cd $1e $2b
     and  A, $0f                                        ;; 03:44d2 $e6 $0f
     cp   A, $0f                                        ;; 03:44d4 $fe $0f
-    jr   NC, .jr_03_44cf                               ;; 03:44d6 $30 $f7
+    jr   NC, .loop_1                                   ;; 03:44d6 $30 $f7
     add  A, $02                                        ;; 03:44d8 $c6 $02
     ld   E, A                                          ;; 03:44da $5f
     push DE                                            ;; 03:44db $d5
-.jr_03_44dc:
+.loop_2:
     call getRandomByte                                 ;; 03:44dc $cd $1e $2b
     and  A, $0f                                        ;; 03:44df $e6 $0f
     cp   A, $0b                                        ;; 03:44e1 $fe $0b
-    jr   NC, .jr_03_44dc                               ;; 03:44e3 $30 $f7
+    jr   NC, .loop_2                                   ;; 03:44e3 $30 $f7
     add  A, $02                                        ;; 03:44e5 $c6 $02
     pop  DE                                            ;; 03:44e7 $d1
     ld   D, A                                          ;; 03:44e8 $57
@@ -960,9 +965,9 @@ spawnNpcsFromTable:
     inc  HL                                            ;; 03:4536 $23
     ld   A, $80                                        ;; 03:4537 $3e $80
     cp   A, D                                          ;; 03:4539 $ba
-    jr   Z, .jr_03_454b                                ;; 03:453a $28 $0f
+    jr   Z, .random_location                           ;; 03:453a $28 $0f
     cp   A, E                                          ;; 03:453c $bb
-    jr   Z, .jr_03_454b                                ;; 03:453d $28 $0c
+    jr   Z, .random_location                           ;; 03:453d $28 $0c
     push BC                                            ;; 03:453f $c5
     push HL                                            ;; 03:4540 $e5
     call spawnNPC                                      ;; 03:4541 $cd $bd $42
@@ -973,15 +978,15 @@ spawnNpcsFromTable:
 .return:
     pop  HL                                            ;; 03:4549 $e1
     ret                                                ;; 03:454a $c9
-.jr_03_454b:
-    call call_03_44cd                                  ;; 03:454b $cd $cd $44
-    call call_03_4488                                  ;; 03:454e $cd $88 $44
-    jr   Z, .jr_03_454b                                ;; 03:4551 $28 $f8
+.random_location:
+    call getRandomTile                                 ;; 03:454b $cd $cd $44
+    call checkNpcPotentialPlacement                    ;; 03:454e $cd $88 $44
+    jr   Z, .random_location                           ;; 03:4551 $28 $f8
     push BC                                            ;; 03:4553 $c5
     call spawnNPC                                      ;; 03:4554 $cd $bd $42
     pop  BC                                            ;; 03:4557 $c1
     dec  B                                             ;; 03:4558 $05
-    jr   NZ, .jr_03_454b                               ;; 03:4559 $20 $f0
+    jr   NZ, .random_location                          ;; 03:4559 $20 $f0
     pop  HL                                            ;; 03:455b $e1
     ret                                                ;; 03:455c $c9
 
