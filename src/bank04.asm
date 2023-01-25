@@ -1061,8 +1061,8 @@ bossTakeDamage:
 bossTestHit:
     ld   A, [wBossIframes]                             ;; 04:461c $fa $eb $d3
     cp   A, $00                                        ;; 04:461f $fe $00
-    jr   NZ, .jr_04_4633                               ;; 04:4621 $20 $10
-    ld   A, [wCF5B]                                    ;; 04:4623 $fa $5b $cf
+    jr   NZ, .not_hit                                  ;; 04:4621 $20 $10
+    ld   A, [wAttackRange]                             ;; 04:4623 $fa $5b $cf
     cp   A, D                                          ;; 04:4626 $ba
     jr   C, .not_hit                                   ;; 04:4627 $38 $0a
     cp   A, E                                          ;; 04:4629 $bb

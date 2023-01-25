@@ -1158,7 +1158,7 @@ enemyCollisionHandling:
     jp   Z, .followerAttack                            ;; 03:464e $ca $9d $47
     cp   A, $50                                        ;; 03:4651 $fe $50
     jp   Z, .spell                                     ;; 03:4653 $ca $4a $47
-.jp_03_4656:
+.no_effect:
     ld   A, $00                                        ;; 03:4656 $3e $00
     ret                                                ;; 03:4658 $c9
 .player:
@@ -1255,8 +1255,8 @@ enemyCollisionHandling:
     ld   A, $c9                                        ;; 03:46ed $3e $c9
     ret                                                ;; 03:46ef $c9
 .weapon:
-    call call_03_4906                                  ;; 03:46f0 $cd $06 $49
-    jp   NZ, .jp_03_4656                               ;; 03:46f3 $c2 $56 $46
+    call npcTestHit                                    ;; 03:46f0 $cd $06 $49
+    jp   NZ, .no_effect                                ;; 03:46f3 $c2 $56 $46
     call call_03_4931                                  ;; 03:46f6 $cd $31 $49
     jp   NZ, enemyCollisionHandling.immune             ;; 03:46f9 $c2 $eb $47
     push BC                                            ;; 03:46fc $c5
@@ -1310,8 +1310,8 @@ enemyCollisionHandling:
     call processHitNpc                                 ;; 03:4746 $cd $26 $4a
     ret                                                ;; 03:4749 $c9
 .spell:
-    call call_03_4906                                  ;; 03:474a $cd $06 $49
-    jp   NZ, .jp_03_4656                               ;; 03:474d $c2 $56 $46
+    call npcTestHit                                    ;; 03:474a $cd $06 $49
+    jp   NZ, .no_effect                                ;; 03:474d $c2 $56 $46
     call call_03_4931                                  ;; 03:4750 $cd $31 $49
     jr   NZ, .jr_03_4769                               ;; 03:4753 $20 $14
     push BC                                            ;; 03:4755 $c5
@@ -1359,7 +1359,7 @@ enemyCollisionHandling:
     ret                                                ;; 03:479c $c9
 .followerAttack:
     call call_03_4919                                  ;; 03:479d $cd $19 $49
-    jp   NZ, .jp_03_4656                               ;; 03:47a0 $c2 $56 $46
+    jp   NZ, .no_effect                                ;; 03:47a0 $c2 $56 $46
     call call_03_4931                                  ;; 03:47a3 $cd $31 $49
     jp   NZ, enemyCollisionHandling.immune             ;; 03:47a6 $c2 $eb $47
     push BC                                            ;; 03:47a9 $c5
@@ -1602,18 +1602,18 @@ damageNpc:
     pop  HL                                            ;; 03:4904 $e1
     ret                                                ;; 03:4905 $c9
 
-call_03_4906:
-    ld   A, [wCF5B]                                    ;; 03:4906 $fa $5b $cf
+npcTestHit:
+    ld   A, [wAttackRange]                             ;; 03:4906 $fa $5b $cf
     cp   A, D                                          ;; 03:4909 $ba
-    jr   C, .jr_03_4916                                ;; 03:490a $38 $0a
+    jr   C, .not_hit                                   ;; 03:490a $38 $0a
     cp   A, E                                          ;; 03:490c $bb
-    jr   C, .jr_03_4916                                ;; 03:490d $38 $07
+    jr   C, .not_hit                                   ;; 03:490d $38 $07
     push BC                                            ;; 03:490f $c5
     ld   A, C                                          ;; 03:4910 $79
     call getNpcRuntimeDataByID                         ;; 03:4911 $cd $9b $42
     pop  BC                                            ;; 03:4914 $c1
     ret                                                ;; 03:4915 $c9
-.jr_03_4916:
+.not_hit:
     xor  A, A                                          ;; 03:4916 $af
     inc  A                                             ;; 03:4917 $3c
     ret                                                ;; 03:4918 $c9

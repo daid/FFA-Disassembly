@@ -702,10 +702,10 @@ projectileCollisionHandling:
     ld   B, A                                          ;; 09:439d $47
     and  A, $f0                                        ;; 09:439e $e6 $f0
     cp   A, $40                                        ;; 09:43a0 $fe $40
-    jp   Z, .jp_09_443c                                ;; 09:43a2 $ca $3c $44
+    jp   Z, .test_hit                                  ;; 09:43a2 $ca $3c $44
     cp   A, $50                                        ;; 09:43a5 $fe $50
-    jp   Z, .jp_09_443c                                ;; 09:43a7 $ca $3c $44
-.jp_09_43aa:
+    jp   Z, .test_hit                                  ;; 09:43a7 $ca $3c $44
+.no_effect:
     xor  A, A                                          ;; 09:43aa $af
     ret                                                ;; 09:43ab $c9
 .player:
@@ -729,9 +729,9 @@ projectileCollisionHandling:
     ld   A, C                                          ;; 09:43c3 $79
     pop  BC                                            ;; 09:43c4 $c1
     cp   A, D                                          ;; 09:43c5 $ba
-    jr   C, .jp_09_43aa                                ;; 09:43c6 $38 $e2
+    jr   C, .no_effect                                 ;; 09:43c6 $38 $e2
     cp   A, E                                          ;; 09:43c8 $bb
-    jr   C, .jp_09_43aa                                ;; 09:43c9 $38 $df
+    jr   C, .no_effect                                 ;; 09:43c9 $38 $df
     push BC                                            ;; 09:43cb $c5
     ld   A, [wMainGameState]                           ;; 09:43cc $fa $a0 $c0
     cp   A, $02                                        ;; 09:43cf $fe $02
@@ -804,13 +804,13 @@ projectileCollisionHandling:
     call playerHit_trampoline                          ;; 09:4436 $cd $56 $02
     ld   A, $c9                                        ;; 09:4439 $3e $c9
     ret                                                ;; 09:443b $c9
-.jp_09_443c:
-    ld   A, [wCF5B]                                    ;; 09:443c $fa $5b $cf
+.test_hit:
+    ld   A, [wAttackRange]                             ;; 09:443c $fa $5b $cf
     cp   A, D                                          ;; 09:443f $ba
-    jp   C, .jp_09_43aa                                ;; 09:4440 $da $aa $43
-    ld   A, [wCF5B]                                    ;; 09:4443 $fa $5b $cf
+    jp   C, .no_effect                                 ;; 09:4440 $da $aa $43
+    ld   A, [wAttackRange]                             ;; 09:4443 $fa $5b $cf
     cp   A, E                                          ;; 09:4446 $bb
-    jp   C, .jp_09_43aa                                ;; 09:4447 $da $aa $43
+    jp   C, .no_effect                                 ;; 09:4447 $da $aa $43
     push BC                                            ;; 09:444a $c5
     call destroyObject                                 ;; 09:444b $cd $e3 $0a
     pop  BC                                            ;; 09:444e $c1

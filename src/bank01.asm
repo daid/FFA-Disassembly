@@ -4256,7 +4256,7 @@ playerUseWeaponOrItem:
     ld   A, [HL+]                                      ;; 01:5b95 $2a
     cp   A, $ff                                        ;; 01:5b96 $fe $ff
     jr   Z, .jr_01_5b9d                                ;; 01:5b98 $28 $03
-    ld   [wCF5B], A                                    ;; 01:5b9a $ea $5b $cf
+    ld   [wAttackRange], A                             ;; 01:5b9a $ea $5b $cf
 .jr_01_5b9d:
     ld   HL, wCF08                                     ;; 01:5b9d $21 $08 $cf
     add  HL, BC                                        ;; 01:5ba0 $09
@@ -4465,25 +4465,25 @@ playerOrFriendlyAttackCollisionHandling:
     ld   A, B                                          ;; 01:5cc7 $78
     and  A, $f0                                        ;; 01:5cc8 $e6 $f0
     cp   A, $90                                        ;; 01:5cca $fe $90
-    jr   Z, .jr_01_5ce4                                ;; 01:5ccc $28 $16
+    jr   Z, .test_hit                                  ;; 01:5ccc $28 $16
     cp   A, $20                                        ;; 01:5cce $fe $20
-    jr   Z, .jr_01_5ce4                                ;; 01:5cd0 $28 $12
+    jr   Z, .test_hit                                  ;; 01:5cd0 $28 $12
     cp   A, $10                                        ;; 01:5cd2 $fe $10
-    jr   Z, .jr_01_5ce4                                ;; 01:5cd4 $28 $0e
+    jr   Z, .test_hit                                  ;; 01:5cd4 $28 $0e
     cp   A, $a0                                        ;; 01:5cd6 $fe $a0
-    jr   Z, .jr_01_5ce4                                ;; 01:5cd8 $28 $0a
+    jr   Z, .test_hit                                  ;; 01:5cd8 $28 $0a
     cp   A, $b0                                        ;; 01:5cda $fe $b0
-    jr   Z, .jr_01_5ce4                                ;; 01:5cdc $28 $06
+    jr   Z, .test_hit                                  ;; 01:5cdc $28 $06
     cp   A, $80                                        ;; 01:5cde $fe $80
-    jr   Z, .jr_01_5ce4                                ;; 01:5ce0 $28 $02
+    jr   Z, .test_hit                                  ;; 01:5ce0 $28 $02
     pop  AF                                            ;; 01:5ce2 $f1
     ret                                                ;; 01:5ce3 $c9
-.jr_01_5ce4:
-    ld   A, [wCF5B]                                    ;; 01:5ce4 $fa $5b $cf
+.test_hit:
+    ld   A, [wAttackRange]                             ;; 01:5ce4 $fa $5b $cf
     cp   A, D                                          ;; 01:5ce7 $ba
-    jr   C, .jr_01_5d62                                ;; 01:5ce8 $38 $78
+    jr   C, .not_hit                                   ;; 01:5ce8 $38 $78
     cp   A, E                                          ;; 01:5cea $bb
-    jr   C, .jr_01_5d62                                ;; 01:5ceb $38 $75
+    jr   C, .not_hit                                   ;; 01:5ceb $38 $75
     pop  AF                                            ;; 01:5ced $f1
     cp   A, $5a                                        ;; 01:5cee $fe $5a
     jr   Z, playerOrFriendlyAttackCollisionHandling.ice ;; 01:5cf0 $28 $14
@@ -4553,7 +4553,7 @@ playerOrFriendlyAttackCollisionHandling:
 .jr_01_5d60:
     pop  HL                                            ;; 01:5d60 $e1
     ret                                                ;; 01:5d61 $c9
-.jr_01_5d62:
+.not_hit:
     pop  AF                                            ;; 01:5d62 $f1
     ret                                                ;; 01:5d63 $c9
 
@@ -4870,7 +4870,7 @@ data_01_60c1:
 ; offset 1: collision flags
 ; offset 2: metasprite table
 ; offset 3: object id
-; offset 4: unknown
+; offset 4: attack range in pixels
 ; offset 5: never accessed
 ; offset 6-7: graphics pointer
 ; offset 8 to $24: pointers to data on different attack types and directions

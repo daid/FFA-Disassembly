@@ -564,7 +564,9 @@ wEquippedItemAnimationType:
 wSelectedObjectID:
     ds 1                                               ;; cf5a
 
-wCF5B:
+; The current attack's range in pixels.
+; Objects are first tested for overlap, then their distance is tested against this.
+wAttackRange:
     ds 1                                               ;; cf5b
 
 wPlayerCurrentAttackTypeAndFacing:
