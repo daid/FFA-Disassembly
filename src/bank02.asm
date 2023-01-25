@@ -554,12 +554,17 @@ processPhysicsForObjectDependingOnCollisionFlags:
     call processPhysicsForObject_4_trampoline          ;; 02:435a $cd $17 $05
     ret                                                ;; 02:435d $c9
 
-call_02_435e:
+; Move objects with screenscroll. Destroy those that fall behind.
+; Enemies and NPCs are meant to be left behind but jumpers can survive the scroll.
+; A = room scroll sprite speed
+; B = room scroll sprite speed?
+; C = object ID
+scrollMoveObject:
     push AF                                            ;; 02:435e $f5
     push BC                                            ;; 02:435f $c5
     call getObjectDirection                            ;; 02:4360 $cd $99 $0c
     cp   A, $ff                                        ;; 02:4363 $fe $ff
-    jr   Z, .playerOrChocobo                           ;; 02:4365 $28 $5f
+    jr   Z, .move                                      ;; 02:4365 $28 $5f
     pop  BC                                            ;; 02:4367 $c1
     push BC                                            ;; 02:4368 $c5
     and  A, $7f                                        ;; 02:4369 $e6 $7f
@@ -591,7 +596,7 @@ call_02_435e:
     push BC                                            ;; 02:4390 $c5
     call GetObjectX                                    ;; 02:4391 $cd $2d $0c
     cp   A, $a1                                        ;; 02:4394 $fe $a1
-    jr   NC, .jr_02_43aa                               ;; 02:4396 $30 $12
+    jr   NC, .offscreen                                ;; 02:4396 $30 $12
     pop  BC                                            ;; 02:4398 $c1
     push BC                                            ;; 02:4399 $c5
     call GetObjectY                                    ;; 02:439a $cd $3e $0c
@@ -603,28 +608,29 @@ call_02_435e:
     add  A, A                                          ;; 02:43a5 $87
     inc  A                                             ;; 02:43a6 $3c
     cp   A, D                                          ;; 02:43a7 $ba
-    jr   NC, call_02_435e.playerOrChocobo              ;; 02:43a8 $30 $1c
-.jr_02_43aa:
+    jr   NC, scrollMoveObject.move                     ;; 02:43a8 $30 $1c
+.offscreen:
     pop  BC                                            ;; 02:43aa $c1
     push BC                                            ;; 02:43ab $c5
     call getObjectCollisionFlags                       ;; 02:43ac $cd $6d $0c
     and  A, $f0                                        ;; 02:43af $e6 $f0
     cp   A, $c0                                        ;; 02:43b1 $fe $c0
-    jr   Z, call_02_435e.playerOrChocobo               ;; 02:43b3 $28 $11
+    jr   Z, scrollMoveObject.move                      ;; 02:43b3 $28 $11
     cp   A, $e0                                        ;; 02:43b5 $fe $e0
-    jr   Z, call_02_435e.playerOrChocobo               ;; 02:43b7 $28 $0d
+    jr   Z, scrollMoveObject.move                      ;; 02:43b7 $28 $0d
     cp   A, $f0                                        ;; 02:43b9 $fe $f0
-    jr   Z, call_02_435e.playerOrChocobo               ;; 02:43bb $28 $09
+    jr   Z, scrollMoveObject.move                      ;; 02:43bb $28 $09
     cp   A, $d0                                        ;; 02:43bd $fe $d0
-    jr   Z, call_02_435e.follower                      ;; 02:43bf $28 $08
+    jr   Z, scrollMoveObject.follower                  ;; 02:43bf $28 $08
     pop  BC                                            ;; 02:43c1 $c1
     push BC                                            ;; 02:43c2 $c5
     call destroyObject                                 ;; 02:43c3 $cd $e3 $0a
-.playerOrChocobo:
+.move:
     pop  BC                                            ;; 02:43c6 $c1
     pop  AF                                            ;; 02:43c7 $f1
     ret                                                ;; 02:43c8 $c9
 .follower:
+; Teleport to the player
     call getPlayerY                                    ;; 02:43c9 $cd $99 $02
     ld   D, A                                          ;; 02:43cc $57
     push DE                                            ;; 02:43cd $d5
@@ -640,18 +646,20 @@ call_02_435e:
     pop  AF                                            ;; 02:43db $f1
     ret                                                ;; 02:43dc $c9
 
+; Manages objects during the screen scroll transition.
+; Enemies and NPCs are meant to be left behind but jumpers can survive the scroll, which is a bug.
 scrollMoveSprites:
     push AF                                            ;; 02:43dd $f5
     ld   A, [wSpriteScrollSpeed]                       ;; 02:43de $fa $a1 $c4
     ld   B, A                                          ;; 02:43e1 $47
     ld   C, $04                                        ;; 02:43e2 $0e $04
     pop  AF                                            ;; 02:43e4 $f1
-    call call_02_435e                                  ;; 02:43e5 $cd $5e $43
+    call scrollMoveObject                              ;; 02:43e5 $cd $5e $43
     push AF                                            ;; 02:43e8 $f5
     ld   C, $07                                        ;; 02:43e9 $0e $07
 .loop:
     pop  AF                                            ;; 02:43eb $f1
-    call call_02_435e                                  ;; 02:43ec $cd $5e $43
+    call scrollMoveObject                              ;; 02:43ec $cd $5e $43
     push AF                                            ;; 02:43ef $f5
     inc  C                                             ;; 02:43f0 $0c
     ld   A, C                                          ;; 02:43f1 $79
