@@ -408,7 +408,7 @@ call_02_4244:
     push DE                                            ;; 02:427b $d5
     ld   HL, SP+9                                      ;; 02:427c $f8 $09
     ld   A, [HL]                                       ;; 02:427e $7e
-    call call_02_42a5                                  ;; 02:427f $cd $a5 $42
+    call mainCollisionHandling                         ;; 02:427f $cd $a5 $42
     pop  HL                                            ;; 02:4282 $e1
     pop  BC                                            ;; 02:4283 $c1
     pop  DE                                            ;; 02:4284 $d1
@@ -437,7 +437,7 @@ call_02_4244:
     ld   A, $00                                        ;; 02:42a2 $3e $00
     ret                                                ;; 02:42a4 $c9
 
-call_02_42a5:
+mainCollisionHandling:
     push AF                                            ;; 02:42a5 $f5
     push BC                                            ;; 02:42a6 $c5
     push DE                                            ;; 02:42a7 $d5
@@ -454,9 +454,9 @@ call_02_42a5:
     cp   A, $30                                        ;; 02:42bb $fe $30
     jr   Z, .playerOrFollowerAttack                    ;; 02:42bd $28 $25
     cp   A, $a0                                        ;; 02:42bf $fe $a0
-    jr   Z, .jr_02_42f3                                ;; 02:42c1 $28 $30
+    jr   Z, .pushable                                  ;; 02:42c1 $28 $30
     cp   A, $b0                                        ;; 02:42c3 $fe $b0
-    jr   Z, .jr_02_42f3                                ;; 02:42c5 $28 $2c
+    jr   Z, .pushable                                  ;; 02:42c5 $28 $2c
     cp   A, $80                                        ;; 02:42c7 $fe $80
     jr   Z, .npcScriptOnTouch                          ;; 02:42c9 $28 $1e
     cp   A, $90                                        ;; 02:42cb $fe $90
@@ -486,9 +486,9 @@ call_02_42a5:
     pop  AF                                            ;; 02:42ee $f1
     call enemyCollisionHandling_trampoline             ;; 02:42ef $cd $b6 $28
     ret                                                ;; 02:42f2 $c9
-.jr_02_42f3:
+.pushable:
     pop  AF                                            ;; 02:42f3 $f1
-    call call_00_2d22                                  ;; 02:42f4 $cd $22 $2d
+    call pushableCollisionHandling                     ;; 02:42f4 $cd $22 $2d
     ret                                                ;; 02:42f7 $c9
 .enemyProjectile:
     pop  AF                                            ;; 02:42f8 $f1

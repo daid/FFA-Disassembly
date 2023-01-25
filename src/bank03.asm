@@ -1218,7 +1218,7 @@ enemyCollisionHandling:
     xor  A, $80                                        ;; 03:46bb $ee $80
     pop  BC                                            ;; 03:46bd $c1
     push BC                                            ;; 03:46be $c5
-    call call_00_2c2d                                  ;; 03:46bf $cd $2d $2c
+    call pushObject                                    ;; 03:46bf $cd $2d $2c
     pop  BC                                            ;; 03:46c2 $c1
     jr   Z, .jr_03_46d1                                ;; 03:46c3 $28 $0c
     push BC                                            ;; 03:46c5 $c5

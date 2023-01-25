@@ -23,6 +23,7 @@ SECTION "bank04", ROMX[$4000], BANK[$04]
 ; In fact, bosses do not use this function at all
 ; C = Object ID
 ; Return: A = distance to nearest border
+; Return: B = direction of the nearest wall
 ; Return: Z = at limit
 checkPlayfieldBoundaryCollision:
     push BC                                            ;; 04:400e $c5

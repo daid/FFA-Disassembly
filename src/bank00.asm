@@ -7190,66 +7190,69 @@ call_00_2c21:
 objectJumpHandler_trampoline:
     jp_to_bank 01, objectJumpHandler                   ;; 00:2c27 $f5 $3e $1c $c3 $d7 $1e
 
-call_00_2c2d:
+; A = player facing direction
+; C = object id
+; Return: Z if blocked
+pushObject:
     bit  0, A                                          ;; 00:2c2d $cb $47
-    jr   NZ, .jr_00_2c43                               ;; 00:2c2f $20 $12
+    jr   NZ, .east                                     ;; 00:2c2f $20 $12
     bit  1, A                                          ;; 00:2c31 $cb $4f
-    jr   NZ, .jr_00_2c57                               ;; 00:2c33 $20 $22
+    jr   NZ, .west                                     ;; 00:2c33 $20 $22
     bit  2, A                                          ;; 00:2c35 $cb $57
-    jr   NZ, .jr_00_2c6b                               ;; 00:2c37 $20 $32
+    jr   NZ, .north                                    ;; 00:2c37 $20 $32
     bit  3, A                                          ;; 00:2c39 $cb $5f
-    jr   NZ, .jr_00_2c7f                               ;; 00:2c3b $20 $42
+    jr   NZ, .south                                    ;; 00:2c3b $20 $42
     ld   A, $00                                        ;; 00:2c3d $3e $00
     call processPhysicsForObject                       ;; 00:2c3f $cd $95 $06
     ret                                                ;; 00:2c42 $c9
-.jr_00_2c43:
+.east:
     call checkPlayfieldBoundaryCollision_trampoline    ;; 00:2c43 $cd $6f $03
     ld   A, B                                          ;; 00:2c46 $78
-    jr   NZ, .jr_00_2c4f                               ;; 00:2c47 $20 $06
+    jr   NZ, .push_east                                ;; 00:2c47 $20 $06
     bit  0, A                                          ;; 00:2c49 $cb $47
-    jr   Z, .jr_00_2c4f                                ;; 00:2c4b $28 $02
+    jr   Z, .push_east                                 ;; 00:2c4b $28 $02
     xor  A, A                                          ;; 00:2c4d $af
     ret                                                ;; 00:2c4e $c9
-.jr_00_2c4f:
+.push_east:
     ld   A, $91                                        ;; 00:2c4f $3e $91
     ld   B, $00                                        ;; 00:2c51 $06 $00
     call processPhysicsForObject                       ;; 00:2c53 $cd $95 $06
     ret                                                ;; 00:2c56 $c9
-.jr_00_2c57:
+.west:
     call checkPlayfieldBoundaryCollision_trampoline    ;; 00:2c57 $cd $6f $03
     ld   A, B                                          ;; 00:2c5a $78
-    jr   NZ, .jr_00_2c63                               ;; 00:2c5b $20 $06
+    jr   NZ, .push_west                                ;; 00:2c5b $20 $06
     bit  1, A                                          ;; 00:2c5d $cb $4f
-    jr   Z, .jr_00_2c63                                ;; 00:2c5f $28 $02
+    jr   Z, .push_west                                 ;; 00:2c5f $28 $02
     xor  A, A                                          ;; 00:2c61 $af
     ret                                                ;; 00:2c62 $c9
-.jr_00_2c63:
+.push_west:
     ld   A, $92                                        ;; 00:2c63 $3e $92
     ld   B, $00                                        ;; 00:2c65 $06 $00
     call processPhysicsForObject                       ;; 00:2c67 $cd $95 $06
     ret                                                ;; 00:2c6a $c9
-.jr_00_2c6b:
+.north:
     call checkPlayfieldBoundaryCollision_trampoline    ;; 00:2c6b $cd $6f $03
     ld   A, B                                          ;; 00:2c6e $78
-    jr   NZ, .jr_00_2c77                               ;; 00:2c6f $20 $06
+    jr   NZ, .push_north                               ;; 00:2c6f $20 $06
     bit  2, A                                          ;; 00:2c71 $cb $57
-    jr   Z, .jr_00_2c77                                ;; 00:2c73 $28 $02
+    jr   Z, .push_north                                ;; 00:2c73 $28 $02
     xor  A, A                                          ;; 00:2c75 $af
     ret                                                ;; 00:2c76 $c9
-.jr_00_2c77:
+.push_north:
     ld   A, $94                                        ;; 00:2c77 $3e $94
     ld   B, $00                                        ;; 00:2c79 $06 $00
     call processPhysicsForObject                       ;; 00:2c7b $cd $95 $06
     ret                                                ;; 00:2c7e $c9
-.jr_00_2c7f:
+.south:
     call checkPlayfieldBoundaryCollision_trampoline    ;; 00:2c7f $cd $6f $03
     ld   A, B                                          ;; 00:2c82 $78
-    jr   NZ, .jr_00_2c8b                               ;; 00:2c83 $20 $06
+    jr   NZ, .push_south                               ;; 00:2c83 $20 $06
     bit  3, A                                          ;; 00:2c85 $cb $5f
-    jr   Z, .jr_00_2c8b                                ;; 00:2c87 $28 $02
+    jr   Z, .push_south                                ;; 00:2c87 $28 $02
     xor  A, A                                          ;; 00:2c89 $af
     ret                                                ;; 00:2c8a $c9
-.jr_00_2c8b:
+.push_south:
     ld   A, $98                                        ;; 00:2c8b $3e $98
     ld   B, $00                                        ;; 00:2c8d $06 $00
     call processPhysicsForObject                       ;; 00:2c8f $cd $95 $06
@@ -7319,7 +7322,8 @@ setHLToZero:
     ld   HL, $00                                       ;; 00:2d1e $21 $00 $00
     ret                                                ;; 00:2d21 $c9
 
-call_00_2d22:
+; Handles empty chests and Ice spell snowmen
+pushableCollisionHandling:
     cp   A, $5a                                        ;; 00:2d22 $fe $5a
     jr   Z, .ice                                       ;; 00:2d24 $28 $10
     and  A, $f0                                        ;; 00:2d26 $e6 $f0
@@ -7342,9 +7346,9 @@ call_00_2d22:
     call checkObjectsCollisionDirection                ;; 00:2d3d $cd $9a $03
     pop  BC                                            ;; 00:2d40 $c1
     push BC                                            ;; 00:2d41 $c5
-    call call_00_2c2d                                  ;; 00:2d42 $cd $2d $2c
+    call pushObject                                    ;; 00:2d42 $cd $2d $2c
     pop  BC                                            ;; 00:2d45 $c1
-    jr   Z, .jr_00_2d54                                ;; 00:2d46 $28 $0c
+    jr   Z, .blocked                                   ;; 00:2d46 $28 $0c
     push BC                                            ;; 00:2d48 $c5
     ld   C, B                                          ;; 00:2d49 $48
     call getObjectDirection                            ;; 00:2d4a $cd $99 $0c
@@ -7352,7 +7356,7 @@ call_00_2d22:
     or   A, $40                                        ;; 00:2d4e $f6 $40
     ld   C, B                                          ;; 00:2d50 $48
     call setObjectDirection                            ;; 00:2d51 $cd $a6 $0c
-.jr_00_2d54:
+.blocked:
     ld   A, $c9                                        ;; 00:2d54 $3e $c9
     ret                                                ;; 00:2d56 $c9
 
