@@ -668,7 +668,10 @@ scrollMoveSprites:
     pop  AF                                            ;; 02:43f6 $f1
     ret                                                ;; 02:43f7 $c9
 
-call_02_43f8:
+; DE = window yx tile coordinate
+; HL = window yx tile dimensions (minus one)
+; Return: Pixel coordinates, BC = right+8,left+1, DE = bottom+16,top+1
+windowBorderConvertToPixelCoords:
     sla  D                                             ;; 02:43f8 $cb $22
     sla  D                                             ;; 02:43fa $cb $22
     sla  D                                             ;; 02:43fc $cb $22
@@ -715,7 +718,7 @@ hideSpritesBehindWindow:
     ld   A, E                                          ;; 02:442f $7b
     cp   A, $14                                        ;; 02:4430 $fe $14
     ret  NC                                            ;; 02:4432 $d0
-    call call_02_43f8                                  ;; 02:4433 $cd $f8 $43
+    call windowBorderConvertToPixelCoords              ;; 02:4433 $cd $f8 $43
     push BC                                            ;; 02:4436 $c5
     ld   HL, wOAMBuffer                                ;; 02:4437 $21 $00 $c0
     ld   B, $28                                        ;; 02:443a $06 $28
@@ -762,7 +765,7 @@ showSpritesBehindWindow:
     ld   A, E                                          ;; 02:446d $7b
     cp   A, $14                                        ;; 02:446e $fe $14
     ret  NC                                            ;; 02:4470 $d0
-    call call_02_43f8                                  ;; 02:4471 $cd $f8 $43
+    call windowBorderConvertToPixelCoords              ;; 02:4471 $cd $f8 $43
     push BC                                            ;; 02:4474 $c5
     ld   HL, hiddenSpritesYPositions                   ;; 02:4475 $21 $a2 $c4
     ld   B, $28                                        ;; 02:4478 $06 $28
