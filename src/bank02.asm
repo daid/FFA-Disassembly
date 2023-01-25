@@ -14,7 +14,7 @@ SECTION "bank02", ROMX[$4000], BANK[$02]
     call_to_bank_target hideSpritesBehindWindow        ;; 02:4008 pP
     call_to_bank_target showSpritesBehindWindow        ;; 02:400a pP
     call_to_bank_target scrollMoveSprites              ;; 02:400c pP
-    call_to_bank_target call_02_4244                   ;; 02:400e pP
+    call_to_bank_target checkNpcsForCollisions         ;; 02:400e pP
     call_to_bank_target hideAndSaveMenuMetasprites     ;; 02:4010 pP
     call_to_bank_target showMenuFingerPointing_1       ;; 02:4012 ??
     call_to_bank_target menuTrashCanLoadTiles          ;; 02:4014 ??
@@ -362,19 +362,25 @@ updateJoypadInput:
     ld   [wJoypadInput], A                             ;; 02:4240 $ea $af $c0
     ret                                                ;; 02:4243 $c9
 
-call_02_4244:
+; Given an object, check if it overlaps any of the Npc objects.
+; Technically, this includes followers, non-player projectiles, and bosses as well.
+; If a collision is found it stops searching, which may be the source of certain bugs.
+; A = object collision flags
+; C = object id
+; DE = object yx location
+checkNpcsForCollisions:
     push AF                                            ;; 02:4244 $f5
     ld   B, C                                          ;; 02:4245 $41
     ld   C, $07                                        ;; 02:4246 $0e $07
     ld   A, C                                          ;; 02:4248 $79
     push DE                                            ;; 02:4249 $d5
     ld   DE, wObjectRuntimeData.npc1                   ;; 02:424a $11 $70 $c2
-.jr_02_424d:
+.loop:
     cp   A, B                                          ;; 02:424d $b8
-    jr   Z, .jr_02_4294                                ;; 02:424e $28 $44
+    jr   Z, .next                                      ;; 02:424e $28 $44
     ld   A, [DE]                                       ;; 02:4250 $1a
     cp   A, $ff                                        ;; 02:4251 $fe $ff
-    jr   Z, .jr_02_4294                                ;; 02:4253 $28 $3f
+    jr   Z, .next                                      ;; 02:4253 $28 $3f
     ld   HL, $04                                       ;; 02:4255 $21 $04 $00
     add  HL, DE                                        ;; 02:4258 $19
     ld   A, [HL]                                       ;; 02:4259 $7e
@@ -387,7 +393,7 @@ call_02_4244:
 .jr_02_4261:
     ld   H, A                                          ;; 02:4261 $67
     cp   A, $10                                        ;; 02:4262 $fe $10
-    jr   NC, .jr_02_4294                               ;; 02:4264 $30 $2e
+    jr   NC, .next                                     ;; 02:4264 $30 $2e
     push HL                                            ;; 02:4266 $e5
     ld   HL, $05                                       ;; 02:4267 $21 $05 $00
     add  HL, DE                                        ;; 02:426a $19
@@ -400,7 +406,7 @@ call_02_4244:
 .jr_02_4272:
     ld   L, A                                          ;; 02:4272 $6f
     cp   A, $10                                        ;; 02:4273 $fe $10
-    jr   NC, .jr_02_4294                               ;; 02:4275 $30 $1d
+    jr   NC, .next                                     ;; 02:4275 $30 $1d
     push DE                                            ;; 02:4277 $d5
     push HL                                            ;; 02:4278 $e5
     pop  DE                                            ;; 02:4279 $d1
@@ -413,7 +419,7 @@ call_02_4244:
     pop  BC                                            ;; 02:4283 $c1
     pop  DE                                            ;; 02:4284 $d1
     cp   A, $00                                        ;; 02:4285 $fe $00
-    jr   Z, .jr_02_4294                                ;; 02:4287 $28 $0b
+    jr   Z, .next                                      ;; 02:4287 $28 $0b
     pop  DE                                            ;; 02:4289 $d1
     push HL                                            ;; 02:428a $e5
     push BC                                            ;; 02:428b $c5
@@ -423,7 +429,7 @@ call_02_4244:
     pop  DE                                            ;; 02:4291 $d1
     pop  AF                                            ;; 02:4292 $f1
     ret                                                ;; 02:4293 $c9
-.jr_02_4294:
+.next:
     ld   HL, $10                                       ;; 02:4294 $21 $10 $00
     add  HL, DE                                        ;; 02:4297 $19
     ld   D, H                                          ;; 02:4298 $54
@@ -431,7 +437,7 @@ call_02_4244:
     inc  C                                             ;; 02:429a $0c
     ld   A, C                                          ;; 02:429b $79
     cp   A, $14                                        ;; 02:429c $fe $14
-    jr   C, .jr_02_424d                                ;; 02:429e $38 $ad
+    jr   C, .loop                                      ;; 02:429e $38 $ad
     pop  HL                                            ;; 02:42a0 $e1
     pop  AF                                            ;; 02:42a1 $f1
     ld   A, $00                                        ;; 02:42a2 $3e $00

@@ -626,13 +626,13 @@ checkObjectsCollisionDirection:
     db   $f1, $cd, $95, $06, $f5, $cd, $0a, $2a        ;; 00:0412 ????????
     db   $f1, $c9                                      ;; 00:041a ??
 
-call_00_041c:
+checkNpcsForCollisions_trampoline:
     ld   L, A                                          ;; 00:041c $6f
     bit  3, A                                          ;; 00:041d $cb $5f
     ld   A, $00                                        ;; 00:041f $3e $00
     ret  Z                                             ;; 00:0421 $c8
     ld   A, L                                          ;; 00:0422 $7d
-    jp_to_bank 02, call_02_4244                        ;; 00:0423 $f5 $3e $07 $c3 $06 $1f
+    jp_to_bank 02, checkNpcsForCollisions              ;; 00:0423 $f5 $3e $07 $c3 $06 $1f
 
 scrollMoveSprites_trampoline:
     jp_to_bank 02, scrollMoveSprites                   ;; 00:0429 $f5 $3e $06 $c3 $06 $1f
@@ -1574,7 +1574,7 @@ call_00_0961:
     add  HL, DE                                        ;; 00:0985 $19
     ld   A, [HL]                                       ;; 00:0986 $7e
     pop  DE                                            ;; 00:0987 $d1
-    call call_00_041c                                  ;; 00:0988 $cd $1c $04
+    call checkNpcsForCollisions_trampoline             ;; 00:0988 $cd $1c $04
     pop  HL                                            ;; 00:098b $e1
     cp   A, $00                                        ;; 00:098c $fe $00
     call NZ, call_00_0a33                              ;; 00:098e $c4 $33 $0a
