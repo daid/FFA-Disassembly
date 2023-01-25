@@ -803,13 +803,13 @@ bossCollisionHandling:
     jp   Z, .spell                                     ;; 04:4453 $ca $d3 $44
     cp   A, $30                                        ;; 04:4456 $fe $30
     jp   Z, .followerAttack                            ;; 04:4458 $ca $0e $45
-.jp_04_445b:
+.no_effect:
     ld   A, $00                                        ;; 04:445b $3e $00
     ret                                                ;; 04:445d $c9
 .player:
     ld   A, [wBossIframes]                             ;; 04:445e $fa $eb $d3
     cp   A, $00                                        ;; 04:4461 $fe $00
-    jr   NZ, .jp_04_445b                               ;; 04:4463 $20 $f6
+    jr   NZ, .no_effect                                ;; 04:4463 $20 $f6
     ld   A, C                                          ;; 04:4465 $79
     call getBossStatsRuntimeDataByObjectID             ;; 04:4466 $cd $e6 $42
     ld   DE, $01                                       ;; 04:4469 $11 $01 $00
@@ -827,8 +827,8 @@ bossCollisionHandling:
     ld   A, $c9                                        ;; 04:447d $3e $c9
     ret                                                ;; 04:447f $c9
 .weapon:
-    call call_04_461c                                  ;; 04:4480 $cd $1c $46
-    jp   NZ, .jp_04_445b                               ;; 04:4483 $c2 $5b $44
+    call bossTestHit                                   ;; 04:4480 $cd $1c $46
+    jp   NZ, .no_effect                                ;; 04:4483 $c2 $5b $44
     push BC                                            ;; 04:4486 $c5
     push HL                                            ;; 04:4487 $e5
     call getPlayerAttackElements                       ;; 04:4488 $cd $c0 $3d
@@ -873,8 +873,8 @@ bossCollisionHandling:
     call processHitBoss                                ;; 04:44cf $cd $28 $47
     ret                                                ;; 04:44d2 $c9
 .spell:
-    call call_04_461c                                  ;; 04:44d3 $cd $1c $46
-    jp   NZ, .jp_04_445b                               ;; 04:44d6 $c2 $5b $44
+    call bossTestHit                                   ;; 04:44d3 $cd $1c $46
+    jp   NZ, .no_effect                                ;; 04:44d6 $c2 $5b $44
     push BC                                            ;; 04:44d9 $c5
     push HL                                            ;; 04:44da $e5
     call getPlayerAttackElements                       ;; 04:44db $cd $c0 $3d
@@ -906,7 +906,7 @@ bossCollisionHandling:
     ret                                                ;; 04:450d $c9
 .followerAttack:
     call call_04_4636                                  ;; 04:450e $cd $36 $46
-    jp   NZ, .jp_04_445b                               ;; 04:4511 $c2 $5b $44
+    jp   NZ, .no_effect                                ;; 04:4511 $c2 $5b $44
     push BC                                            ;; 04:4514 $c5
     push HL                                            ;; 04:4515 $e5
     ld   A, B                                          ;; 04:4516 $78
@@ -1058,21 +1058,21 @@ bossTakeDamage:
     call bossKilled                                    ;; 04:4618 $cd $c9 $45
     ret                                                ;; 04:461b $c9
 
-call_04_461c:
+bossTestHit:
     ld   A, [wBossIframes]                             ;; 04:461c $fa $eb $d3
     cp   A, $00                                        ;; 04:461f $fe $00
     jr   NZ, .jr_04_4633                               ;; 04:4621 $20 $10
     ld   A, [wCF5B]                                    ;; 04:4623 $fa $5b $cf
     cp   A, D                                          ;; 04:4626 $ba
-    jr   C, .jr_04_4633                                ;; 04:4627 $38 $0a
+    jr   C, .not_hit                                   ;; 04:4627 $38 $0a
     cp   A, E                                          ;; 04:4629 $bb
-    jr   C, .jr_04_4633                                ;; 04:462a $38 $07
+    jr   C, .not_hit                                   ;; 04:462a $38 $07
     push BC                                            ;; 04:462c $c5
     ld   A, C                                          ;; 04:462d $79
     call getBossStatsRuntimeDataByObjectID             ;; 04:462e $cd $e6 $42
     pop  BC                                            ;; 04:4631 $c1
     ret                                                ;; 04:4632 $c9
-.jr_04_4633:
+.not_hit:
     xor  A, A                                          ;; 04:4633 $af
     inc  A                                             ;; 04:4634 $3c
     ret                                                ;; 04:4635 $c9
