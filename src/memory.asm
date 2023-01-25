@@ -738,7 +738,8 @@ wCurrentBossHP:
 .high:
     ds 1                                               ;; d3f5
 
-wD3F6:
+; Used by most bosses to track one head object's location, but also used heavily by Megapede.
+wBossCurrentHeadYX:
     ds 66                                              ;; d3f6
 
 wCurrentBossDataPointer:
@@ -769,10 +770,12 @@ wBossCurrentMetatileListPointer:
 ; Six bytes each, 14 total, but the largest boss only uses 11.
 ; 0: Object ID of the normal object
 ; 1-2: Stats pointer
-; 3-5: Unknown
+; 3: Unknown
+; 4: Probably always zero. Used as an index into d3f6.
+; 5: Unknown
 wBossObjectsStatsRuntimeData:
     ds 4                                               ;; d442
-._04:
+.XYSaveIndex:
     ds 82                                              ;; d446
 
 wPlayerJumpArg:

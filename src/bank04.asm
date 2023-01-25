@@ -145,10 +145,10 @@ bossLogic:
     add  HL, DE                                        ;; 04:40b4 $19
     ld   A, [HL+]                                      ;; 04:40b5 $2a
     cp   A, $ff                                        ;; 04:40b6 $fe $ff
-    call Z, call_04_4209                               ;; 04:40b8 $cc $09 $42
-    jr   Z, .jr_04_40f1                                ;; 04:40bb $28 $34
+    call Z, bossNextHeadAction                         ;; 04:40b8 $cc $09 $42
+    jr   Z, .return                                    ;; 04:40bb $28 $34
     ld   DE, wBossObjectsStatsRuntimeData              ;; 04:40bd $11 $42 $d4
-    call call_04_419e                                  ;; 04:40c0 $cd $9e $41
+    call bossDoHeadAction                              ;; 04:40c0 $cd $9e $41
     push AF                                            ;; 04:40c3 $f5
     ld   A, [HL+]                                      ;; 04:40c4 $2a
     ld   C, A                                          ;; 04:40c5 $4f
@@ -166,21 +166,21 @@ bossLogic:
     sra  A                                             ;; 04:40d9 $cb $2f
     add  A, D                                          ;; 04:40db $82
     ld   D, A                                          ;; 04:40dc $57
-    call call_04_4188                                  ;; 04:40dd $cd $88 $41
+    call setBossCurrentHeadYX                          ;; 04:40dd $cd $88 $41
     ld   A, [wBossFirstObjectID]                       ;; 04:40e0 $fa $e8 $d3
     ld   C, A                                          ;; 04:40e3 $4f
     pop  AF                                            ;; 04:40e4 $f1
     call updateObjectPosition                          ;; 04:40e5 $cd $11 $06
     pop  DE                                            ;; 04:40e8 $d1
-    call call_04_40f3                                  ;; 04:40e9 $cd $f3 $40
+    call bossMoveBodyObjects                           ;; 04:40e9 $cd $f3 $40
     ld   HL, wBossCurrentHeadActionStep                ;; 04:40ec $21 $ee $d3
     inc  [HL]                                          ;; 04:40ef $34
     ret                                                ;; 04:40f0 $c9
-.jr_04_40f1:
+.return:
     pop  DE                                            ;; 04:40f1 $d1
     ret                                                ;; 04:40f2 $c9
 
-call_04_40f3:
+bossMoveBodyObjects:
     ld   HL, $04                                       ;; 04:40f3 $21 $04 $00
     add  HL, DE                                        ;; 04:40f6 $19
     ld   A, [HL]                                       ;; 04:40f7 $7e
@@ -193,6 +193,7 @@ call_04_40f3:
     ld   D, H                                          ;; 04:4101 $54
     add  HL, DE                                        ;; 04:4102 $19
     add  HL, DE                                        ;; 04:4103 $19
+; A is always zero at this point.
     call MultiplyHL_by_A                               ;; 04:4104 $cd $7b $2b
     ld   A, [wBossCurrentMetatileListPointer.high]     ;; 04:4107 $fa $41 $d4
     ld   D, A                                          ;; 04:410a $57
@@ -201,7 +202,7 @@ call_04_40f3:
     add  HL, DE                                        ;; 04:410f $19
     ld   A, [HL]                                       ;; 04:4110 $7e
     cp   A, $ff                                        ;; 04:4111 $fe $ff
-    call Z, call_04_4148                               ;; 04:4113 $cc $48 $41
+    call Z, bossUnusedFunction                         ;; 04:4113 $cc $48 $41
     pop  AF                                            ;; 04:4116 $f1
     ld   B, A                                          ;; 04:4117 $47
     ld   DE, wBossObjectsStatsRuntimeData              ;; 04:4118 $11 $42 $d4
@@ -221,7 +222,7 @@ call_04_40f3:
     push HL                                            ;; 04:4129 $e5
     ld   L, C                                          ;; 04:412a $69
     ld   A, B                                          ;; 04:412b $78
-    call call_04_419e                                  ;; 04:412c $cd $9e $41
+    call bossDoHeadAction                              ;; 04:412c $cd $9e $41
     ld   C, L                                          ;; 04:412f $4d
     pop  HL                                            ;; 04:4130 $e1
     push AF                                            ;; 04:4131 $f5
@@ -238,12 +239,13 @@ call_04_40f3:
     pop  DE                                            ;; 04:413e $d1
     pop  BC                                            ;; 04:413f $c1
     dec  B                                             ;; 04:4140 $05
-    jr   NZ, call_04_40f3.loop                         ;; 04:4141 $20 $d8
+    jr   NZ, bossMoveBodyObjects.loop                  ;; 04:4141 $20 $d8
     ld   HL, wBossCurrentHeadActionSubstep             ;; 04:4143 $21 $ef $d3
     inc  [HL]                                          ;; 04:4146 $34
     ret                                                ;; 04:4147 $c9
 
-call_04_4148:
+; Never called in my playthrough.
+bossUnusedFunction:
     ld   A, $00                                        ;; 04:4148 $3e $00
     ld   [wBossCurrentHeadActionSubstep], A            ;; 04:414a $ea $ef $d3
     ld   A, [wBossCurrentMetatileListPointer.high]     ;; 04:414d $fa $41 $d4
@@ -252,7 +254,7 @@ call_04_4148:
     ld   L, A                                          ;; 04:4154 $6f
     ret                                                ;; 04:4155 $c9
 
-call_04_4156:
+getBossCurrentHeadYX:
     push HL                                            ;; 04:4156 $e5
     push AF                                            ;; 04:4157 $f5
     ld   HL, $04                                       ;; 04:4158 $21 $04 $00
@@ -260,7 +262,7 @@ call_04_4156:
     ld   A, [HL]                                       ;; 04:415c $7e
     ld   E, A                                          ;; 04:415d $5f
     ld   D, $00                                        ;; 04:415e $16 $00
-    ld   HL, wD3F6                                     ;; 04:4160 $21 $f6 $d3
+    ld   HL, wBossCurrentHeadYX                        ;; 04:4160 $21 $f6 $d3
     add  HL, DE                                        ;; 04:4163 $19
     add  HL, DE                                        ;; 04:4164 $19
     ld   E, [HL]                                       ;; 04:4165 $5e
@@ -270,7 +272,9 @@ call_04_4156:
     pop  HL                                            ;; 04:4169 $e1
     ret                                                ;; 04:416a $c9
 
-call_04_416b:
+; Used by Megapede to make every body link follow the head.
+; Unused Megapede graphics show this may have had limitations.
+getBossCurrentHeadXYAndIncrementStep:
     push HL                                            ;; 04:416b $e5
     push AF                                            ;; 04:416c $f5
     ld   HL, $04                                       ;; 04:416d $21 $04 $00
@@ -284,7 +288,7 @@ call_04_416b:
 .jr_04_417a:
     ld   [HL], A                                       ;; 04:417a $77
     ld   D, $00                                        ;; 04:417b $16 $00
-    ld   HL, wD3F6                                     ;; 04:417d $21 $f6 $d3
+    ld   HL, wBossCurrentHeadYX                        ;; 04:417d $21 $f6 $d3
     add  HL, DE                                        ;; 04:4180 $19
     add  HL, DE                                        ;; 04:4181 $19
     ld   E, [HL]                                       ;; 04:4182 $5e
@@ -294,16 +298,16 @@ call_04_416b:
     pop  HL                                            ;; 04:4186 $e1
     ret                                                ;; 04:4187 $c9
 
-call_04_4188:
+setBossCurrentHeadYX:
     push HL                                            ;; 04:4188 $e5
     push AF                                            ;; 04:4189 $f5
     push DE                                            ;; 04:418a $d5
-    ld   HL, wBossObjectsStatsRuntimeData._04          ;; 04:418b $21 $46 $d4
+    ld   HL, wBossObjectsStatsRuntimeData.XYSaveIndex  ;; 04:418b $21 $46 $d4
     ld   A, [HL]                                       ;; 04:418e $7e
     add  A, A                                          ;; 04:418f $87
     ld   E, A                                          ;; 04:4190 $5f
     ld   D, $00                                        ;; 04:4191 $16 $00
-    ld   HL, wD3F6                                     ;; 04:4193 $21 $f6 $d3
+    ld   HL, wBossCurrentHeadYX                        ;; 04:4193 $21 $f6 $d3
     add  HL, DE                                        ;; 04:4196 $19
     pop  DE                                            ;; 04:4197 $d1
     ld   [HL], E                                       ;; 04:4198 $73
@@ -313,7 +317,10 @@ call_04_4188:
     pop  HL                                            ;; 04:419c $e1
     ret                                                ;; 04:419d $c9
 
-call_04_419e:
+; A = first byte of a head action
+; DE = stats runtime data address for the current head
+; Return: DE = head location yx
+bossDoHeadAction:
     ld   C, A                                          ;; 04:419e $4f
     and  A, $3c                                        ;; 04:419f $e6 $3c
     srl  A                                             ;; 04:41a1 $cb $3f
@@ -330,7 +337,7 @@ call_04_419e:
     srl  A                                             ;; 04:41b4 $cb $3f
     push HL                                            ;; 04:41b6 $e5
     push BC                                            ;; 04:41b7 $c5
-    ld   HL, .data_04_41c5                             ;; 04:41b8 $21 $c5 $41
+    ld   HL, .headActionTypeJumptable                  ;; 04:41b8 $21 $c5 $41
     call callJumptable                                 ;; 04:41bb $cd $70 $2b
     pop  BC                                            ;; 04:41be $c1
     pop  HL                                            ;; 04:41bf $e1
@@ -338,17 +345,17 @@ call_04_419e:
     call getBitValue                                   ;; 04:41c1 $cd $9a $29
     ret                                                ;; 04:41c4 $c9
 ;@jumptable amount=4
-.data_04_41c5:
-    dw   call_04_41cd                                  ;; 04:41c5 pP
-    dw   spawnProjectileBoss                           ;; 04:41c7 ??
-    dw   runBossDeathScript                            ;; 04:41c9 pP
-    dw   call_04_4205                                  ;; 04:41cb ??
+.headActionTypeJumptable:
+    dw   bossHeadActionGetHeadLocation                 ;; 04:41c5 pP
+    dw   bossHeadActionSpawnProjectile                 ;; 04:41c7 ??
+    dw   bossHeadActionStartDeathScript                ;; 04:41c9 pP
+    dw   bossHeadActionGetHeadLocationAndStartNewHead  ;; 04:41cb ??
 
-call_04_41cd:
-    call call_04_4156                                  ;; 04:41cd $cd $56 $41
+bossHeadActionGetHeadLocation:
+    call getBossCurrentHeadYX                          ;; 04:41cd $cd $56 $41
     ret                                                ;; 04:41d0 $c9
 
-spawnProjectileBoss:
+bossHeadActionSpawnProjectile:
     ld   A, [wCurrentBossDataPointer.high]             ;; 04:41d1 $fa $39 $d4
     ld   H, A                                          ;; 04:41d4 $67
     ld   A, [wCurrentBossDataPointer]                  ;; 04:41d5 $fa $38 $d4
@@ -359,10 +366,10 @@ spawnProjectileBoss:
     push DE                                            ;; 04:41de $d5
     call spawnProjectile_trampoline                    ;; 04:41df $cd $ec $2b
     pop  DE                                            ;; 04:41e2 $d1
-    call call_04_4156                                  ;; 04:41e3 $cd $56 $41
+    call getBossCurrentHeadYX                          ;; 04:41e3 $cd $56 $41
     ret                                                ;; 04:41e6 $c9
 
-runBossDeathScript:
+bossHeadActionStartDeathScript:
     push DE                                            ;; 04:41e7 $d5
     ld   A, [wCurrentBossDataPointer.high]             ;; 04:41e8 $fa $39 $d4
     ld   H, A                                          ;; 04:41eb $67
@@ -378,17 +385,18 @@ runBossDeathScript:
     ld   C, $20                                        ;; 04:41fb $0e $20
     call runScriptByIndex                              ;; 04:41fd $cd $ad $31
     pop  DE                                            ;; 04:4200 $d1
-    call call_04_4156                                  ;; 04:4201 $cd $56 $41
+    call getBossCurrentHeadYX                          ;; 04:4201 $cd $56 $41
     ret                                                ;; 04:4204 $c9
 
-call_04_4205:
-    call call_04_416b                                  ;; 04:4205 $cd $6b $41
+; Used by Megapede
+bossHeadActionGetHeadLocationAndStartNewHead:
+    call getBossCurrentHeadXYAndIncrementStep          ;; 04:4205 $cd $6b $41
     ret                                                ;; 04:4208 $c9
 
-call_04_4209:
+bossNextHeadAction:
     ld   HL, wBossCurrentKeyframeHoldtime              ;; 04:4209 $21 $f0 $d3
     dec  [HL]                                          ;; 04:420c $35
-    call Z, call_04_4222                               ;; 04:420d $cc $22 $42
+    call Z, bossNextKeyframe                           ;; 04:420d $cc $22 $42
     ld   A, $00                                        ;; 04:4210 $3e $00
     ld   [wBossCurrentHeadActionStep], A               ;; 04:4212 $ea $ee $d3
     ld   [wBossCurrentHeadActionSubstep], A            ;; 04:4215 $ea $ef $d3
@@ -399,7 +407,7 @@ call_04_4209:
     ld   A, [HL+]                                      ;; 04:4220 $2a
     ret                                                ;; 04:4221 $c9
 
-call_04_4222:
+bossNextKeyframe:
     ld   A, [wBossCurrentKeyframeStep]                 ;; 04:4222 $fa $ed $d3
     ld   L, A                                          ;; 04:4225 $6f
     add  A, A                                          ;; 04:4226 $87
@@ -416,10 +424,10 @@ call_04_4222:
     cp   A, $ff                                        ;; 04:4236 $fe $ff
     call Z, bossChoosePattern                          ;; 04:4238 $cc $5f $42
     ret  Z                                             ;; 04:423b $c8
-    call call_04_4240                                  ;; 04:423c $cd $40 $42
+    call bossInitPattern                                ;; 04:423c $cd $40 $42
     ret                                                ;; 04:423f $c9
 
-call_04_4240:
+bossInitPattern:
     ld   [wBossCurrentKeyframeHoldtime], A             ;; 04:4240 $ea $f0 $d3
     ld   E, [HL]                                       ;; 04:4243 $5e
     inc  HL                                            ;; 04:4244 $23
@@ -481,7 +489,7 @@ bossChoosePattern:
     add  A, A                                          ;; 04:4294 $87
     add  A, A                                          ;; 04:4295 $87
     ld   D, A                                          ;; 04:4296 $57
-    call call_04_4188                                  ;; 04:4297 $cd $88 $41
+    call setBossCurrentHeadYX                          ;; 04:4297 $cd $88 $41
     call getRandomByte                                 ;; 04:429a $cd $1e $2b
     and  A, $03                                        ;; 04:429d $e6 $03
     add  A, A                                          ;; 04:429f $87
@@ -583,7 +591,7 @@ spawnBoss:
     ld   [wBossSpeedTimer], A                          ;; 04:4327 $ea $e9 $d3
     call setBossMovement                               ;; 04:432a $cd $d8 $42
     call bossChoosePattern                             ;; 04:432d $cd $5f $42
-    call call_04_4209                                  ;; 04:4330 $cd $09 $42
+    call bossNextHeadAction                            ;; 04:4330 $cd $09 $42
     ret                                                ;; 04:4333 $c9
 
 rollBossHP:
@@ -1012,7 +1020,7 @@ bossKilled:
     call GetObjectX                                    ;; 04:45d4 $cd $2d $0c
     pop  DE                                            ;; 04:45d7 $d1
     ld   E, A                                          ;; 04:45d8 $5f
-    call call_04_4188                                  ;; 04:45d9 $cd $88 $41
+    call setBossCurrentHeadYX                          ;; 04:45d9 $cd $88 $41
     ld   A, [wCurrentBossDataPointer.high]             ;; 04:45dc $fa $39 $d4
     ld   D, A                                          ;; 04:45df $57
     ld   A, [wCurrentBossDataPointer]                  ;; 04:45e0 $fa $38 $d4
@@ -1026,7 +1034,7 @@ bossKilled:
     ld   [wBossCurrentKeyframeHoldtime], A             ;; 04:45ed $ea $f0 $d3
     ld   [wBossSpeedTimer], A                          ;; 04:45f0 $ea $e9 $d3
     call bossNextPatternStep                           ;; 04:45f3 $cd $b0 $42
-    call call_04_4209                                  ;; 04:45f6 $cd $09 $42
+    call bossNextHeadAction                            ;; 04:45f6 $cd $09 $42
     ret                                                ;; 04:45f9 $c9
 
 bossTakeDamage:
