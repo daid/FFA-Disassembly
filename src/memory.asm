@@ -542,7 +542,8 @@ wAttackFrameSpeedTimers:
 wAttackFramePointers:
     ds 16                                              ;; cf08
 
-wCF18:
+; This stores a pointer to the individual special/normal facing/walking directional attack type for each object.
+wAttackFrameTypePointers:
     ds 16                                              ;; cf18
 
 wCF28:

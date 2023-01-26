@@ -2783,11 +2783,11 @@ call_01_52e0:
     pop  BC                                            ;; 01:538f $c1
     ret                                                ;; 01:5390 $c9
 
-call_01_5391:
+getAttackFrameTypePointer:
     ld   HL, wAttackFrameSteps                         ;; 01:5391 $21 $f8 $ce
     add  HL, BC                                        ;; 01:5394 $09
     ld   [HL], $00                                     ;; 01:5395 $36 $00
-    ld   HL, wCF18                                     ;; 01:5397 $21 $18 $cf
+    ld   HL, wAttackFrameTypePointers                  ;; 01:5397 $21 $18 $cf
     add  HL, BC                                        ;; 01:539a $09
     add  HL, BC                                        ;; 01:539b $09
     ld   A, [HL+]                                      ;; 01:539c $2a
@@ -2828,7 +2828,7 @@ call_01_53bd:
     inc  C                                             ;; 01:53c4 $0c
     ret                                                ;; 01:53c5 $c9
 .jr_01_53c6:
-    ld   HL, wCF18                                     ;; 01:53c6 $21 $18 $cf
+    ld   HL, wAttackFrameTypePointers                  ;; 01:53c6 $21 $18 $cf
     add  HL, BC                                        ;; 01:53c9 $09
     add  HL, BC                                        ;; 01:53ca $09
     ld   E, [HL]                                       ;; 01:53cb $5e
@@ -2844,7 +2844,7 @@ call_01_53bd:
     add  HL, DE                                        ;; 01:53d8 $19
     ld   A, [HL]                                       ;; 01:53d9 $7e
     cp   A, $00                                        ;; 01:53da $fe $00
-    call Z, call_01_5391                               ;; 01:53dc $cc $91 $53
+    call Z, getAttackFrameTypePointer                  ;; 01:53dc $cc $91 $53
     push HL                                            ;; 01:53df $e5
     inc  HL                                            ;; 01:53e0 $23
     push HL                                            ;; 01:53e1 $e5
@@ -2869,7 +2869,7 @@ call_01_53f2:
     ret                                                ;; 01:53fa $c9
 .jr_01_53fb:
     srl  [HL]                                          ;; 01:53fb $cb $3e
-    ld   HL, wCF18                                     ;; 01:53fd $21 $18 $cf
+    ld   HL, wAttackFrameTypePointers                  ;; 01:53fd $21 $18 $cf
     add  HL, BC                                        ;; 01:5400 $09
     add  HL, BC                                        ;; 01:5401 $09
     ld   E, [HL]                                       ;; 01:5402 $5e
@@ -2886,7 +2886,7 @@ call_01_53f2:
     add  HL, DE                                        ;; 01:5410 $19
     ld   A, [HL]                                       ;; 01:5411 $7e
     cp   A, $00                                        ;; 01:5412 $fe $00
-    call Z, call_01_5391                               ;; 01:5414 $cc $91 $53
+    call Z, getAttackFrameTypePointer                  ;; 01:5414 $cc $91 $53
     push HL                                            ;; 01:5417 $e5
     inc  HL                                            ;; 01:5418 $23
     push HL                                            ;; 01:5419 $e5
@@ -3027,7 +3027,7 @@ call_01_54d5:
     inc  C                                             ;; 01:54dc $0c
     ret                                                ;; 01:54dd $c9
 .jr_01_54de:
-    ld   HL, wCF18                                     ;; 01:54de $21 $18 $cf
+    ld   HL, wAttackFrameTypePointers                  ;; 01:54de $21 $18 $cf
     add  HL, BC                                        ;; 01:54e1 $09
     add  HL, BC                                        ;; 01:54e2 $09
     ld   E, [HL]                                       ;; 01:54e3 $5e
@@ -3179,7 +3179,7 @@ jr_01_55a9:
     add  HL, BC                                        ;; 01:55bc $09
     ld   [HL], A                                       ;; 01:55bd $77
     pop  DE                                            ;; 01:55be $d1
-    ld   HL, wCF18                                     ;; 01:55bf $21 $18 $cf
+    ld   HL, wAttackFrameTypePointers                  ;; 01:55bf $21 $18 $cf
     add  HL, BC                                        ;; 01:55c2 $09
     add  HL, BC                                        ;; 01:55c3 $09
     ld   [HL], E                                       ;; 01:55c4 $73
@@ -4304,7 +4304,7 @@ playerUseWeaponOrItem:
     pop  BC                                            ;; 01:5bda $c1
     ld   D, H                                          ;; 01:5bdb $54
     ld   E, L                                          ;; 01:5bdc $5d
-    ld   HL, wCF18                                     ;; 01:5bdd $21 $18 $cf
+    ld   HL, wAttackFrameTypePointers                  ;; 01:5bdd $21 $18 $cf
     add  HL, BC                                        ;; 01:5be0 $09
     add  HL, BC                                        ;; 01:5be1 $09
     ld   [HL], E                                       ;; 01:5be2 $73
@@ -4329,7 +4329,7 @@ call_01_5bf1:
     inc  C                                             ;; 01:5bf8 $0c
     ret                                                ;; 01:5bf9 $c9
 .jr_01_5bfa:
-    ld   HL, wCF18                                     ;; 01:5bfa $21 $18 $cf
+    ld   HL, wAttackFrameTypePointers                  ;; 01:5bfa $21 $18 $cf
     add  HL, BC                                        ;; 01:5bfd $09
     add  HL, BC                                        ;; 01:5bfe $09
     ld   E, [HL]                                       ;; 01:5bff $5e
@@ -4608,7 +4608,7 @@ call_01_5d98:
     dec  A                                             ;; 01:5da5 $3d
     ld   E, A                                          ;; 01:5da6 $5f
     ld   D, $00                                        ;; 01:5da7 $16 $00
-    ld   HL, wCF18                                     ;; 01:5da9 $21 $18 $cf
+    ld   HL, wAttackFrameTypePointers                  ;; 01:5da9 $21 $18 $cf
     add  HL, BC                                        ;; 01:5dac $09
     add  HL, BC                                        ;; 01:5dad $09
     ld   A, [HL+]                                      ;; 01:5dae $2a
@@ -4876,7 +4876,23 @@ data_01_60c1:
 ; offset 5: never accessed
 ; offset 6-7: graphics pointer
 ; offset 8-9: tile indexes
-; offset $0a to $24: pointers to data on different attack types and directions
+; offset $0a to $29: pointers to data on different attack types and directions:
+; 0a: normal holding east
+; 0c: normal holding west
+; 0e: normal holding north
+; 10: normal holding south
+; 12: normal east
+; 14: normal west
+; 16: normal north
+; 18: normal south
+; 1a: special holding east
+; 1c: special holding west
+; 1e: special holding north
+; 20: special holding south
+; 22: special east
+; 24: special west
+; 26: special north
+; 28: special south
 attackSwordFrame1:
     db   $04, $48, $02, $05, $0a, $00                  ;; 01:60ff .....?
     dw   gfxAttackSword, data_01_68df                  ;; 01:6105 ....
