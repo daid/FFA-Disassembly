@@ -22,7 +22,7 @@ data_01_4000:
     call_to_bank_target setPlayerOnChocobot            ;; 01:4014 ??
     call_to_bank_target setPlayerOnChocoboat           ;; 01:4016 ??
     call_to_bank_target call_01_5196                   ;; 01:4018 pP
-    call_to_bank_target call_01_51bb                   ;; 01:401a pP
+    call_to_bank_target runScriptAndStopKnockback      ;; 01:401a pP
     call_to_bank_target openWindowsStartButton         ;; 01:401c ??
     call_to_bank_target loadMapWithShutterEffectSequence ;; 01:401e pP
     call_to_bank_target loadMapInstantSequence         ;; 01:4020 pP
@@ -2481,7 +2481,10 @@ call_01_5196:
     xor  A, A                                          ;; 01:51b9 $af
     ret                                                ;; 01:51ba $c9
 
-call_01_51bb:
+; Probably only for running script 1 to open doors
+; B = script number
+; C = player facing direction (towards the door)
+runScriptAndStopKnockback:
     push HL                                            ;; 01:51bb $e5
     ld   L, B                                          ;; 01:51bc $68
     ld   H, $00                                        ;; 01:51bd $26 $00

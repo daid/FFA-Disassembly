@@ -376,8 +376,8 @@ setPlayerCollisionFlags:
 call_00_02c3:
     jp_to_bank 01, call_01_5196                        ;; 00:02c3 $f5 $3e $0c $c3 $d7 $1e
 
-call_00_02c9:
-    jp_to_bank 01, call_01_51bb                        ;; 00:02c9 $f5 $3e $0d $c3 $d7 $1e
+runScriptAndStopKnockback_trampoline:
+    jp_to_bank 01, runScriptAndStopKnockback           ;; 00:02c9 $f5 $3e $0d $c3 $d7 $1e
 
 getMainGameStateForPlayerForm:
     call getPlayerCollisionFlags                       ;; 00:02cf $cd $b7 $02
@@ -1299,7 +1299,7 @@ processPhysicsForObject:
     dec  HL                                            ;; 00:07fb $2b
     and  A, $f0                                        ;; 00:07fc $e6 $f0
     cp   A, $c0                                        ;; 00:07fe $fe $c0
-    call Z, call_00_02c9                               ;; 00:0800 $cc $c9 $02
+    call Z, runScriptAndStopKnockback_trampoline       ;; 00:0800 $cc $c9 $02
 .jp_00_0803:
     ld   DE, $00                                       ;; 00:0803 $11 $00 $00
     ld   A, [wMainGameStateFlags]                      ;; 00:0806 $fa $a1 $c0
