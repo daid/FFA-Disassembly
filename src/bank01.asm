@@ -2558,7 +2558,7 @@ attackTileChain:
     ld   A, [wSelectedObjectID]                        ;; 01:5223 $fa $5a $cf
     ld   E, A                                          ;; 01:5226 $5f
     ld   D, $00                                        ;; 01:5227 $16 $00
-    ld   HL, wCEF8                                     ;; 01:5229 $21 $f8 $ce
+    ld   HL, wAttackFrameSteps                         ;; 01:5229 $21 $f8 $ce
     add  HL, DE                                        ;; 01:522c $19
     ld   A, [HL]                                       ;; 01:522d $7e
     cp   A, C                                          ;; 01:522e $b9
@@ -2678,7 +2678,7 @@ call_01_52df:
 
 call_01_52e0:
     push BC                                            ;; 01:52e0 $c5
-    call call_01_53a0                                  ;; 01:52e1 $cd $a0 $53
+    call attackFrameSpeedTick                          ;; 01:52e1 $cd $a0 $53
     jr   Z, .jr_01_52e9                                ;; 01:52e4 $28 $03
     pop  BC                                            ;; 01:52e6 $c1
     inc  C                                             ;; 01:52e7 $0c
@@ -2784,7 +2784,7 @@ call_01_52e0:
     ret                                                ;; 01:5390 $c9
 
 call_01_5391:
-    ld   HL, wCEF8                                     ;; 01:5391 $21 $f8 $ce
+    ld   HL, wAttackFrameSteps                         ;; 01:5391 $21 $f8 $ce
     add  HL, BC                                        ;; 01:5394 $09
     ld   [HL], $00                                     ;; 01:5395 $36 $00
     ld   HL, wCF18                                     ;; 01:5397 $21 $18 $cf
@@ -2795,18 +2795,20 @@ call_01_5391:
     ld   L, A                                          ;; 01:539e $6f
     ret                                                ;; 01:539f $c9
 
-call_01_53a0:
+; Check a given attack frame object's speed.
+; Return: Z delay expired, NZ still delaying.
+attackFrameSpeedTick:
     ld   A, $07                                        ;; 01:53a0 $3e $07
     sub  A, B                                          ;; 01:53a2 $90
     ld   [wSelectedObjectID], A                        ;; 01:53a3 $ea $5a $cf
     ld   C, A                                          ;; 01:53a6 $4f
     ld   B, $00                                        ;; 01:53a7 $06 $00
-    ld   HL, wCF00                                     ;; 01:53a9 $21 $00 $cf
+    ld   HL, wAttackFrameSpeedTimers                   ;; 01:53a9 $21 $00 $cf
     add  HL, BC                                        ;; 01:53ac $09
     dec  [HL]                                          ;; 01:53ad $35
     ret  NZ                                            ;; 01:53ae $c0
     push HL                                            ;; 01:53af $e5
-    ld   HL, wCF08                                     ;; 01:53b0 $21 $08 $cf
+    ld   HL, wAttackFramePointers               ;; 01:53b0 $21 $08 $cf
     add  HL, BC                                        ;; 01:53b3 $09
     add  HL, BC                                        ;; 01:53b4 $09
     ld   A, [HL+]                                      ;; 01:53b5 $2a
@@ -2820,7 +2822,7 @@ call_01_53a0:
 
 call_01_53bd:
     push BC                                            ;; 01:53bd $c5
-    call call_01_53a0                                  ;; 01:53be $cd $a0 $53
+    call attackFrameSpeedTick                          ;; 01:53be $cd $a0 $53
     jr   Z, .jr_01_53c6                                ;; 01:53c1 $28 $03
     pop  BC                                            ;; 01:53c3 $c1
     inc  C                                             ;; 01:53c4 $0c
@@ -2832,7 +2834,7 @@ call_01_53bd:
     ld   E, [HL]                                       ;; 01:53cb $5e
     inc  HL                                            ;; 01:53cc $23
     ld   D, [HL]                                       ;; 01:53cd $56
-    ld   HL, wCEF8                                     ;; 01:53ce $21 $f8 $ce
+    ld   HL, wAttackFrameSteps                         ;; 01:53ce $21 $f8 $ce
     add  HL, BC                                        ;; 01:53d1 $09
     ld   A, [HL]                                       ;; 01:53d2 $7e
     add  A, A                                          ;; 01:53d3 $87
@@ -2860,7 +2862,7 @@ call_01_53bd:
 
 call_01_53f2:
     push BC                                            ;; 01:53f2 $c5
-    call call_01_53a0                                  ;; 01:53f3 $cd $a0 $53
+    call attackFrameSpeedTick                          ;; 01:53f3 $cd $a0 $53
     jr   Z, .jr_01_53fb                                ;; 01:53f6 $28 $03
     pop  BC                                            ;; 01:53f8 $c1
     inc  C                                             ;; 01:53f9 $0c
@@ -2873,7 +2875,7 @@ call_01_53f2:
     ld   E, [HL]                                       ;; 01:5402 $5e
     inc  HL                                            ;; 01:5403 $23
     ld   D, [HL]                                       ;; 01:5404 $56
-    ld   HL, wCEF8                                     ;; 01:5405 $21 $f8 $ce
+    ld   HL, wAttackFrameSteps                         ;; 01:5405 $21 $f8 $ce
     add  HL, BC                                        ;; 01:5408 $09
     ld   A, [HL]                                       ;; 01:5409 $7e
     ld   L, A                                          ;; 01:540a $6f
@@ -2987,7 +2989,7 @@ call_01_53f2:
     sub  A, B                                          ;; 01:54a2 $90
     ld   E, A                                          ;; 01:54a3 $5f
     ld   D, $00                                        ;; 01:54a4 $16 $00
-    ld   HL, wCEF8                                     ;; 01:54a6 $21 $f8 $ce
+    ld   HL, wAttackFrameSteps                         ;; 01:54a6 $21 $f8 $ce
     add  HL, DE                                        ;; 01:54a9 $19
     inc  [HL]                                          ;; 01:54aa $34
     ret                                                ;; 01:54ab $c9
@@ -3011,7 +3013,7 @@ call_01_53f2:
     sub  A, B                                          ;; 01:54c9 $90
     ld   E, A                                          ;; 01:54ca $5f
     ld   D, $00                                        ;; 01:54cb $16 $00
-    ld   HL, wCEF8                                     ;; 01:54cd $21 $f8 $ce
+    ld   HL, wAttackFrameSteps                         ;; 01:54cd $21 $f8 $ce
     add  HL, DE                                        ;; 01:54d0 $19
     ld   [HL], $00                                     ;; 01:54d1 $36 $00
     xor  A, A                                          ;; 01:54d3 $af
@@ -3019,7 +3021,7 @@ call_01_53f2:
 
 call_01_54d5:
     push BC                                            ;; 01:54d5 $c5
-    call call_01_53a0                                  ;; 01:54d6 $cd $a0 $53
+    call attackFrameSpeedTick                          ;; 01:54d6 $cd $a0 $53
     jr   Z, .jr_01_54de                                ;; 01:54d9 $28 $03
     pop  BC                                            ;; 01:54db $c1
     inc  C                                             ;; 01:54dc $0c
@@ -3031,7 +3033,7 @@ call_01_54d5:
     ld   E, [HL]                                       ;; 01:54e3 $5e
     inc  HL                                            ;; 01:54e4 $23
     ld   D, [HL]                                       ;; 01:54e5 $56
-    ld   HL, wCEF8                                     ;; 01:54e6 $21 $f8 $ce
+    ld   HL, wAttackFrameSteps                         ;; 01:54e6 $21 $f8 $ce
     add  HL, BC                                        ;; 01:54e9 $09
     ld   A, [HL]                                       ;; 01:54ea $7e
     add  A, A                                          ;; 01:54eb $87
@@ -3142,7 +3144,7 @@ jp_01_5538:
     sub  A, B                                          ;; 01:5588 $90
     ld   E, A                                          ;; 01:5589 $5f
     ld   D, $00                                        ;; 01:558a $16 $00
-    ld   HL, wCEF8                                     ;; 01:558c $21 $f8 $ce
+    ld   HL, wAttackFrameSteps                         ;; 01:558c $21 $f8 $ce
     add  HL, DE                                        ;; 01:558f $19
     inc  [HL]                                          ;; 01:5590 $34
     ret                                                ;; 01:5591 $c9
@@ -3157,7 +3159,7 @@ jp_01_5592:
     sub  A, B                                          ;; 01:559d $90
     ld   E, A                                          ;; 01:559e $5f
     ld   D, $00                                        ;; 01:559f $16 $00
-    ld   HL, wCEF8                                     ;; 01:55a1 $21 $f8 $ce
+    ld   HL, wAttackFrameSteps                         ;; 01:55a1 $21 $f8 $ce
     add  HL, DE                                        ;; 01:55a4 $19
     ld   [HL], $00                                     ;; 01:55a5 $36 $00
     xor  A, A                                          ;; 01:55a7 $af
@@ -3200,10 +3202,10 @@ jr_01_55a9:
     ld   HL, wCEF0                                     ;; 01:55db $21 $f0 $ce
     add  HL, BC                                        ;; 01:55de $09
     ld   [HL], $02                                     ;; 01:55df $36 $02
-    ld   HL, wCEF8                                     ;; 01:55e1 $21 $f8 $ce
+    ld   HL, wAttackFrameSteps                         ;; 01:55e1 $21 $f8 $ce
     add  HL, BC                                        ;; 01:55e4 $09
     ld   [HL], $00                                     ;; 01:55e5 $36 $00
-    ld   HL, wCF00                                     ;; 01:55e7 $21 $00 $cf
+    ld   HL, wAttackFrameSpeedTimers                  ;; 01:55e7 $21 $00 $cf
     add  HL, BC                                        ;; 01:55ea $09
     ld   [HL], $01                                     ;; 01:55eb $36 $01
     push BC                                            ;; 01:55ed $c5
@@ -3598,7 +3600,7 @@ notEnemyPushableOrBoss:
 
 call_01_57ec:
     push BC                                            ;; 01:57ec $c5
-    call call_01_53a0                                  ;; 01:57ed $cd $a0 $53
+    call attackFrameSpeedTick                          ;; 01:57ed $cd $a0 $53
     jr   Z, .jr_01_57f4                                ;; 01:57f0 $28 $02
     pop  BC                                            ;; 01:57f2 $c1
     ret                                                ;; 01:57f3 $c9
@@ -3771,10 +3773,10 @@ call_01_581e:
     ld   HL, wCEF0                                     ;; 01:58e6 $21 $f0 $ce
     add  HL, BC                                        ;; 01:58e9 $09
     ld   [HL], $06                                     ;; 01:58ea $36 $06
-    ld   HL, wCEF8                                     ;; 01:58ec $21 $f8 $ce
+    ld   HL, wAttackFrameSteps                         ;; 01:58ec $21 $f8 $ce
     add  HL, BC                                        ;; 01:58ef $09
     ld   [HL], $00                                     ;; 01:58f0 $36 $00
-    ld   HL, wCF00                                     ;; 01:58f2 $21 $00 $cf
+    ld   HL, wAttackFrameSpeedTimers                   ;; 01:58f2 $21 $00 $cf
     add  HL, BC                                        ;; 01:58f5 $09
     ld   [HL], $01                                     ;; 01:58f6 $36 $01
     pop  BC                                            ;; 01:58f8 $c1
@@ -3795,7 +3797,7 @@ call_01_5903:
     ld   [wSelectedObjectID], A                        ;; 01:5907 $ea $5a $cf
     ld   C, A                                          ;; 01:590a $4f
     ld   B, $00                                        ;; 01:590b $06 $00
-    ld   HL, wCF00                                     ;; 01:590d $21 $00 $cf
+    ld   HL, wAttackFrameSpeedTimers                   ;; 01:590d $21 $00 $cf
     add  HL, BC                                        ;; 01:5910 $09
     dec  [HL]                                          ;; 01:5911 $35
     jp   NZ, .jp_01_59be                               ;; 01:5912 $c2 $be $59
@@ -3809,7 +3811,7 @@ call_01_5903:
     ld   E, [HL]                                       ;; 01:5922 $5e
     inc  HL                                            ;; 01:5923 $23
     ld   D, [HL]                                       ;; 01:5924 $56
-    ld   HL, wCEF8                                     ;; 01:5925 $21 $f8 $ce
+    ld   HL, wAttackFrameSteps                         ;; 01:5925 $21 $f8 $ce
     add  HL, BC                                        ;; 01:5928 $09
     ld   A, [HL]                                       ;; 01:5929 $7e
     inc  [HL]                                          ;; 01:592a $34
@@ -3959,7 +3961,7 @@ call_01_59d0:
 
 call_01_59ea:
     push AF                                            ;; 01:59ea $f5
-    ld   HL, wCF08                                     ;; 01:59eb $21 $08 $cf
+    ld   HL, wAttackFramePointers               ;; 01:59eb $21 $08 $cf
     add  HL, BC                                        ;; 01:59ee $09
     add  HL, BC                                        ;; 01:59ef $09
     ld   A, [HL+]                                      ;; 01:59f0 $2a
@@ -4258,7 +4260,7 @@ playerUseWeaponOrItem:
     jr   Z, .jr_01_5b9d                                ;; 01:5b98 $28 $03
     ld   [wAttackRange], A                             ;; 01:5b9a $ea $5b $cf
 .jr_01_5b9d:
-    ld   HL, wCF08                                     ;; 01:5b9d $21 $08 $cf
+    ld   HL, wAttackFramePointers               ;; 01:5b9d $21 $08 $cf
     add  HL, BC                                        ;; 01:5ba0 $09
     add  HL, BC                                        ;; 01:5ba1 $09
     pop  DE                                            ;; 01:5ba2 $d1
@@ -4267,10 +4269,10 @@ playerUseWeaponOrItem:
     ld   [HL], D                                       ;; 01:5ba5 $72
     push BC                                            ;; 01:5ba6 $c5
     push DE                                            ;; 01:5ba7 $d5
-    ld   HL, wCF00                                     ;; 01:5ba8 $21 $00 $cf
+    ld   HL, wAttackFrameSpeedTimers                   ;; 01:5ba8 $21 $00 $cf
     add  HL, BC                                        ;; 01:5bab $09
     ld   [HL], $01                                     ;; 01:5bac $36 $01
-    ld   HL, wCEF8                                     ;; 01:5bae $21 $f8 $ce
+    ld   HL, wAttackFrameSteps                         ;; 01:5bae $21 $f8 $ce
     add  HL, BC                                        ;; 01:5bb1 $09
     ld   [HL], $00                                     ;; 01:5bb2 $36 $00
     pop  HL                                            ;; 01:5bb4 $e1
@@ -4321,7 +4323,7 @@ playerUseWeaponOrItem:
 
 call_01_5bf1:
     push BC                                            ;; 01:5bf1 $c5
-    call call_01_53a0                                  ;; 01:5bf2 $cd $a0 $53
+    call attackFrameSpeedTick                          ;; 01:5bf2 $cd $a0 $53
     jr   Z, .jr_01_5bfa                                ;; 01:5bf5 $28 $03
     pop  BC                                            ;; 01:5bf7 $c1
     inc  C                                             ;; 01:5bf8 $0c
@@ -4333,7 +4335,7 @@ call_01_5bf1:
     ld   E, [HL]                                       ;; 01:5bff $5e
     inc  HL                                            ;; 01:5c00 $23
     ld   D, [HL]                                       ;; 01:5c01 $56
-    ld   HL, wCEF8                                     ;; 01:5c02 $21 $f8 $ce
+    ld   HL, wAttackFrameSteps                         ;; 01:5c02 $21 $f8 $ce
     add  HL, BC                                        ;; 01:5c05 $09
     ld   A, [HL]                                       ;; 01:5c06 $7e
     add  A, A                                          ;; 01:5c07 $87
@@ -4409,7 +4411,7 @@ call_01_5bf1:
     sub  A, B                                          ;; 01:5c6e $90
     ld   E, A                                          ;; 01:5c6f $5f
     ld   D, $00                                        ;; 01:5c70 $16 $00
-    ld   HL, wCEF8                                     ;; 01:5c72 $21 $f8 $ce
+    ld   HL, wAttackFrameSteps                         ;; 01:5c72 $21 $f8 $ce
     add  HL, DE                                        ;; 01:5c75 $19
     inc  [HL]                                          ;; 01:5c76 $34
     ret                                                ;; 01:5c77 $c9
@@ -4430,7 +4432,7 @@ call_01_5bf1:
     sub  A, B                                          ;; 01:5c93 $90
     ld   E, A                                          ;; 01:5c94 $5f
     ld   D, $00                                        ;; 01:5c95 $16 $00
-    ld   HL, wCEF8                                     ;; 01:5c97 $21 $f8 $ce
+    ld   HL, wAttackFrameSteps                         ;; 01:5c97 $21 $f8 $ce
     add  HL, DE                                        ;; 01:5c9a $19
     ld   [HL], $00                                     ;; 01:5c9b $36 $00
     xor  A, A                                          ;; 01:5c9d $af
@@ -4598,7 +4600,7 @@ call_01_5d98:
     ld   A, [wSelectedObjectID]                        ;; 01:5d98 $fa $5a $cf
     ld   C, A                                          ;; 01:5d9b $4f
     ld   B, $00                                        ;; 01:5d9c $06 $00
-    ld   HL, wCEF8                                     ;; 01:5d9e $21 $f8 $ce
+    ld   HL, wAttackFrameSteps                         ;; 01:5d9e $21 $f8 $ce
     add  HL, BC                                        ;; 01:5da1 $09
     ld   A, [HL]                                       ;; 01:5da2 $7e
     add  A, A                                          ;; 01:5da3 $87
@@ -4866,14 +4868,15 @@ data_01_60c1:
     db   $02, $06, $01, $06, $02, $06, $00, $06        ;; 01:60f1 ????????
     db   $01, $07, $00, $06, $00, $00                  ;; 01:60f9 ??????
 
-; offset 0: unknown
+; offset 0: speed
 ; offset 1: collision flags
 ; offset 2: metasprite table
 ; offset 3: object id
 ; offset 4: attack range in pixels
 ; offset 5: never accessed
 ; offset 6-7: graphics pointer
-; offset 8 to $24: pointers to data on different attack types and directions
+; offset 8-9: tile indexes
+; offset $0a to $24: pointers to data on different attack types and directions
 attackSwordFrame1:
     db   $04, $48, $02, $05, $0a, $00                  ;; 01:60ff .....?
     dw   gfxAttackSword, data_01_68df                  ;; 01:6105 ....

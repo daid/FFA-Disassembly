@@ -532,13 +532,14 @@ wBackgroundRenderRequestCount:
 wCEF0:
     ds 8                                               ;; cef0
 
-wCEF8:
+wAttackFrameSteps:
     ds 8                                               ;; cef8
 
-wCF00:
+wAttackFrameSpeedTimers:
     ds 8                                               ;; cf00
 
-wCF08:
+; This stores pointers from the attackFrames table, one for each object that could possible be involved.
+wAttackFramePointers:
     ds 16                                              ;; cf08
 
 wCF18:
