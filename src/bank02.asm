@@ -26,7 +26,7 @@ SECTION "bank02", ROMX[$4000], BANK[$02]
     call_to_bank_target saveRegisterState1             ;; 02:4020 ??
     call_to_bank_target saveRegisterState2             ;; 02:4022 pP
     call_to_bank_target gameStateMenu                  ;; 02:4024 pP
-    call_to_bank_target call_02_667a                   ;; 02:4026 pP
+    call_to_bank_target windowCloseAndRestoreHidden    ;; 02:4026 pP
     call_to_bank_target drawWindow                     ;; 02:4028 pP
     call_to_bank_target windowMenuStartSpecial         ;; 02:402a pP
     call_to_bank_target windowPrintMenuText            ;; 02:402c ??
@@ -1498,7 +1498,7 @@ call_02_4ae4:
     dw   call_02_4a14                                  ;; 02:4b1d ??
     dw   reopenSelectWindowAfterSaveScreen             ;; 02:4b1f pP
 .jr_02_4b21:
-    call call_02_667a                                  ;; 02:4b21 $cd $7a $66
+    call windowCloseAndRestoreHidden                   ;; 02:4b21 $cd $7a $66
     ld   B, $23                                        ;; 02:4b24 $06 $23
     ld   A, B                                          ;; 02:4b26 $78
     ld   [wD85E], A                                    ;; 02:4b27 $ea $5e $d8
@@ -1546,7 +1546,7 @@ call_02_4b4b:
     db   $58, $d5, $54, $ac, $d5, $20                  ;; 02:4b6c ......
 
 call_02_4b72:
-    call call_02_667a                                  ;; 02:4b72 $cd $7a $66
+    call windowCloseAndRestoreHidden                   ;; 02:4b72 $cd $7a $66
     ld   B, $10                                        ;; 02:4b75 $06 $10
     call setMenuStateCurrentFunction                   ;; 02:4b77 $cd $98 $6c
     ret                                                ;; 02:4b7a $c9
@@ -1719,7 +1719,7 @@ call_02_4c9a:
     jp   jp_02_5877                                    ;; 02:4cb7 $c3 $77 $58
 
 call_02_4cba:
-    call call_02_667a                                  ;; 02:4cba $cd $7a $66
+    call windowCloseAndRestoreHidden                   ;; 02:4cba $cd $7a $66
     ret  NZ                                            ;; 02:4cbd $c0
     call hideAndSaveMenuMetasprites                    ;; 02:4cbe $cd $51 $6b
     call copyStatsToLevelUpTmp                         ;; 02:4cc1 $cd $0b $6d
@@ -1961,7 +1961,7 @@ call_02_4e7b:
     ld   A, [wMenuStateCurrentFunction]                ;; 02:4e7b $fa $53 $d8
     bit  7, A                                          ;; 02:4e7e $cb $7f
     call Z, hideAndSaveMenuMetasprites                 ;; 02:4e80 $cc $51 $6b
-    call call_02_667a                                  ;; 02:4e83 $cd $7a $66
+    call windowCloseAndRestoreHidden                   ;; 02:4e83 $cd $7a $66
     ld   B, $11                                        ;; 02:4e86 $06 $11
     ld   A, B                                          ;; 02:4e88 $78
     ld   [wD85E], A                                    ;; 02:4e89 $ea $5e $d8
@@ -1997,7 +1997,7 @@ jp_02_4ea7:
 runMinimapScript:
     ld   A, $36                                        ;; 02:4ec3 $3e $36
     ld   [wMenuStateCurrentFunction], A                ;; 02:4ec5 $ea $53 $d8
-    call call_02_667a                                  ;; 02:4ec8 $cd $7a $66
+    call windowCloseAndRestoreHidden                   ;; 02:4ec8 $cd $7a $66
     ret  NZ                                            ;; 02:4ecb $c0
     call hideAndSaveMenuMetasprites                    ;; 02:4ecc $cd $51 $6b
     ld   A, [wWindowMainGameStateBackup]               ;; 02:4ecf $fa $62 $d8
@@ -2011,7 +2011,7 @@ runMinimapScript:
 openLevelUpStatusScreen:
     ld   A, $37                                        ;; 02:4ee1 $3e $37
     ld   [wMenuStateCurrentFunction], A                ;; 02:4ee3 $ea $53 $d8
-    call call_02_667a                                  ;; 02:4ee6 $cd $7a $66
+    call windowCloseAndRestoreHidden                   ;; 02:4ee6 $cd $7a $66
     ret  NZ                                            ;; 02:4ee9 $c0
     call showFullscreenWindow                          ;; 02:4eea $cd $57 $51
     ld   A, $12                                        ;; 02:4eed $3e $12
@@ -2023,7 +2023,7 @@ openLevelUpStatusScreen:
     ret                                                ;; 02:4efc $c9
 
 openStatusScreen:
-    call call_02_667a                                  ;; 02:4efd $cd $7a $66
+    call windowCloseAndRestoreHidden                   ;; 02:4efd $cd $7a $66
     ret  NZ                                            ;; 02:4f00 $c0
     call showFullscreenWindow                          ;; 02:4f01 $cd $57 $51
     ld   A, $12                                        ;; 02:4f04 $3e $12
@@ -3397,7 +3397,7 @@ call_02_5709:
 
 call_02_57a0:
     call hideAndSaveMenuMetasprites                    ;; 02:57a0 $cd $51 $6b
-    call call_02_667a                                  ;; 02:57a3 $cd $7a $66
+    call windowCloseAndRestoreHidden                   ;; 02:57a3 $cd $7a $66
     ld   B, $23                                        ;; 02:57a6 $06 $23
     ld   A, B                                          ;; 02:57a8 $78
     ld   [wD85E], A                                    ;; 02:57a9 $ea $5e $d8
@@ -4376,17 +4376,18 @@ castEquippedSpellIfSufficientMana:
     scf                                                ;; 02:6678 $37
     ret                                                ;; 02:6679 $c9
 
-call_02_667a:
-    ld   HL, .data_02_6684                             ;; 02:667a $21 $84 $66
-    ld   A, [wD859]                                    ;; 02:667d $fa $59 $d8
+; Takes care of restoring the background, the status bar, and  hidden sprites.
+windowCloseAndRestoreHidden:
+    ld   HL, .windowCloseJumptable                     ;; 02:667a $21 $84 $66
+    ld   A, [wWindowCloseStep]                         ;; 02:667d $fa $59 $d8
     call callJumptable_02                              ;; 02:6680 $cd $75 $48
     ret                                                ;; 02:6683 $c9
 ;@jumptable amount=2
-.data_02_6684:
-    dw   jmp_02_6688                                   ;; 02:6684 pP
-    dw   jmp_02_66ab                                   ;; 02:6686 pP
+.windowCloseJumptable:
+    dw   windowCloseInit                               ;; 02:6684 pP
+    dw   windowCloseMain                               ;; 02:6686 pP
 
-jmp_02_6688:
+windowCloseInit:
     ld   A, [wMenuStateCurrentFunction]                ;; 02:6688 $fa $53 $d8
     or   A, $80                                        ;; 02:668b $f6 $80
     ld   [wMenuStateCurrentFunction], A                ;; 02:668d $ea $53 $d8
@@ -4401,10 +4402,10 @@ jmp_02_6688:
     inc  C                                             ;; 02:66a1 $0c
     call saveRegisterState2                            ;; 02:66a2 $cd $80 $6d
     ld   A, $01                                        ;; 02:66a5 $3e $01
-    ld   [wD859], A                                    ;; 02:66a7 $ea $59 $d8
+    ld   [wWindowCloseStep], A                         ;; 02:66a7 $ea $59 $d8
     ret                                                ;; 02:66aa $c9
 
-jmp_02_66ab:
+windowCloseMain:
     call loadRegisterState2                            ;; 02:66ab $cd $a7 $6d
     push DE                                            ;; 02:66ae $d5
     push BC                                            ;; 02:66af $c5
@@ -4413,7 +4414,7 @@ jmp_02_66ab:
     call storeTileAatScreenPositionDE                  ;; 02:66b1 $cd $91 $38
     inc  E                                             ;; 02:66b4 $1c
     dec  C                                             ;; 02:66b5 $0d
-    jr   NZ, jmp_02_66ab.loop                          ;; 02:66b6 $20 $f8
+    jr   NZ, windowCloseMain.loop                      ;; 02:66b6 $20 $f8
     pop  BC                                            ;; 02:66b8 $c1
     pop  DE                                            ;; 02:66b9 $d1
     inc  D                                             ;; 02:66ba $14
@@ -4428,7 +4429,7 @@ jmp_02_66ab:
     ld   [wMenuStateCurrentFunction], A                ;; 02:66cb $ea $53 $d8
     xor  A, A                                          ;; 02:66ce $af
     ld   [wMenuFlags], A                               ;; 02:66cf $ea $49 $d8
-    ld   [wD859], A                                    ;; 02:66d2 $ea $59 $d8
+    ld   [wWindowCloseStep], A                         ;; 02:66d2 $ea $59 $d8
     call getWindowDimensions                           ;; 02:66d5 $cd $67 $7a
     inc  B                                             ;; 02:66d8 $04
     inc  C                                             ;; 02:66d9 $0c
@@ -6260,7 +6261,7 @@ openSaveScreen:
     res  2, [HL]                                       ;; 02:71e7 $cb $96
 
 openLoadSaveScreen_common:
-    call call_02_667a                                  ;; 02:71e9 $cd $7a $66
+    call windowCloseAndRestoreHidden                   ;; 02:71e9 $cd $7a $66
     ret  NZ                                            ;; 02:71ec $c0
     call showFullscreenWindow                          ;; 02:71ed $cd $57 $51
     ld   A, $1b                                        ;; 02:71f0 $3e $1b
@@ -7237,7 +7238,7 @@ call_02_77f1:
 call_02_781e:
     ld   A, $3a                                        ;; 02:781e $3e $3a
     ld   [wMenuStateCurrentFunction], A                ;; 02:7820 $ea $53 $d8
-    call call_02_667a                                  ;; 02:7823 $cd $7a $66
+    call windowCloseAndRestoreHidden                   ;; 02:7823 $cd $7a $66
     ret  NZ                                            ;; 02:7826 $c0
 
 jr_02_7827:
@@ -7600,8 +7601,8 @@ lcdcEffectChangeLYC:
     pop  HL                                            ;; 02:7a65 $e1
     ret                                                ;; 02:7a66 $c9
 
-; e=x, d=y, c=width, b=height
-; Also, the final value of HL may be used afterwards
+; Return: e=x, d=y, c=width, b=height
+; Return: HL = beginning of window backup buffer
 getWindowDimensions:
     ld   HL, wDialogX                                  ;; 02:7a67 $21 $a7 $d4
     ld   E, [HL]                                       ;; 02:7a6a $5e
@@ -7971,7 +7972,7 @@ titleScreenIntroScrollLoop:
 titleScreenIntroScrollInterupted:
     ld   A, [wIntroScrollSCYBackup]                    ;; 02:7cc9 $fa $88 $d8
     ld   [wVideoSCY], A                                ;; 02:7ccc $ea $a7 $c0
-    call call_02_667a                                  ;; 02:7ccf $cd $7a $66
+    call windowCloseAndRestoreHidden                   ;; 02:7ccf $cd $7a $66
     ld   A, [wMenuStateCurrentFunction]                ;; 02:7cd2 $fa $53 $d8
     and  A, $80                                        ;; 02:7cd5 $e6 $80
     ret  NZ                                            ;; 02:7cd7 $c0

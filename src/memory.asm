@@ -1221,7 +1221,7 @@ wMenuSelectionMoveRepeatDelay:
 wWillCharge:
     ds 1                                               ;; d858
 
-wD859:
+wWindowCloseStep:
     ds 1                                               ;; d859
 
 wScriptCommand:

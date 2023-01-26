@@ -7580,8 +7580,8 @@ useEquippedWeaponOrItem_trampoline:
 useSpecialAttack_trampoline:
     jp_to_bank 01, useSpecialAttack                    ;; 00:2eeb $f5 $3e $23 $c3 $d7 $1e
 
-call_00_2ef1:
-    jp_to_bank 01, call_01_5d64                        ;; 00:2ef1 $f5 $3e $1e $c3 $d7 $1e
+ensureReservedObjectsExist_trampoline:
+    jp_to_bank 01, ensureReservedObjectsExist          ;; 00:2ef1 $f5 $3e $1e $c3 $d7 $1e
 
 playerAttackDestroy_trampoline:
     jp_to_bank 01, playerAttackDestroy                 ;; 00:2ef7 $f5 $3e $1f $c3 $d7 $1e
@@ -7884,8 +7884,8 @@ saveRegisterState2_trampoline:
 gameStateMenu_trampoline:
     jp_to_bank 02, gameStateMenu                       ;; 00:309f $f5 $3e $12 $c3 $06 $1f
 
-call_00_30a5:
-    jp_to_bank 02, call_02_667a                        ;; 00:30a5 $f5 $3e $13 $c3 $06 $1f
+windowCloseAndRestoreHidden_trampoline:
+    jp_to_bank 02, windowCloseAndRestoreHidden         ;; 00:30a5 $f5 $3e $13 $c3 $06 $1f
 
 drawWindow_trampoline:
     jp_to_bank 02, drawWindow                          ;; 00:30ab $f5 $3e $14 $c3 $06 $1f
@@ -8566,7 +8566,7 @@ textCtrlCodeOpenDialogWindow:
     ret                                                ;; 00:34f3 $c9
 
 textCtrlCodeCloseDialogWindow:
-    call call_00_30a5                                  ;; 00:34f4 $cd $a5 $30
+    call windowCloseAndRestoreHidden_trampoline        ;; 00:34f4 $cd $a5 $30
     ld   A, [wMenuStateCurrentFunction]                ;; 00:34f7 $fa $53 $d8
     and  A, $80                                        ;; 00:34fa $e6 $80
     pop  HL                                            ;; 00:34fc $e1
@@ -9590,8 +9590,8 @@ call_00_3b0d:
     call runVirtualScriptOpCodeFF                      ;; 00:3b1d $cd $69 $3c
     ret                                                ;; 00:3b20 $c9
 
-call_00_3b21:
-    call call_00_30a5                                  ;; 00:3b21 $cd $a5 $30
+opCodeFFCloseWindow:
+    call windowCloseAndRestoreHidden_trampoline        ;; 00:3b21 $cd $a5 $30
     ld   A, [wMenuStateCurrentFunction]                ;; 00:3b24 $fa $53 $d8
     and  A, $80                                        ;; 00:3b27 $e6 $80
     pop  HL                                            ;; 00:3b29 $e1
@@ -9696,7 +9696,7 @@ scriptOpCodeFFJumpTable:
     dw   scriptResumeAfterWindow                       ;; 00:3bab pP
     dw   vendorCantCarry                               ;; 00:3bad ??
     dw   call_00_3b0d                                  ;; 00:3baf ??
-    dw   call_00_3b21                                  ;; 00:3bb1 ??
+    dw   opCodeFFCloseWindow                           ;; 00:3bb1 ??
     dw   copyMainGameStateBackupFromScriptToWindow     ;; 00:3bb3 pP
     dw   opCodeFFPrintMenuText                         ;; 00:3bb5 ??
 

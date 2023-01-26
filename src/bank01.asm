@@ -39,7 +39,7 @@ data_01_4000:
     call_to_bank_target call_01_7639                   ;; 01:4036 pP
     call_to_bank_target objectJumpHandler              ;; 01:4038 pP
     call_to_bank_target call_01_52b3                   ;; 01:403a pP
-    call_to_bank_target call_01_5d64                   ;; 01:403c pP
+    call_to_bank_target ensureReservedObjectsExist     ;; 01:403c pP
     call_to_bank_target playerAttackDestroy            ;; 01:403e pP
     call_to_bank_target getEquippedWeaponAnimationType ;; 01:4040 pP
     call_to_bank_target getEquippedItemAnimationType   ;; 01:4042 pP
@@ -1029,7 +1029,7 @@ call_01_46c4:
     ret  C                                             ;; 01:46f3 $d8
     ld   A, $00                                        ;; 01:46f4 $3e $00
     call setSpriteScrollSpeed                          ;; 01:46f6 $cd $4d $04
-    call call_00_2ef1                                  ;; 01:46f9 $cd $f1 $2e
+    call ensureReservedObjectsExist_trampoline         ;; 01:46f9 $cd $f1 $2e
     ld   A, [wMainGameStateFlags.nextFrame]            ;; 01:46fc $fa $a2 $c0
     res  0, A                                          ;; 01:46ff $cb $87
     res  1, A                                          ;; 01:4701 $cb $8f
@@ -4559,7 +4559,9 @@ playerOrFriendlyAttackCollisionHandling:
     pop  AF                                            ;; 01:5d62 $f1
     ret                                                ;; 01:5d63 $c9
 
-call_01_5d64:
+; Attempts to create up to six objects with IDs less than seven.
+; In normal conditions this should never be necessary.
+ensureReservedObjectsExist:
     ld   B, $06                                        ;; 01:5d64 $06 $06
     ld   C, $40                                        ;; 01:5d66 $0e $40
 .loop:
@@ -4572,7 +4574,7 @@ call_01_5d64:
     cp   A, $07                                        ;; 01:5d75 $fe $07
     jr   NC, .jr_01_5d7d                               ;; 01:5d77 $30 $04
     dec  B                                             ;; 01:5d79 $05
-    jr   NZ, call_01_5d64.loop                         ;; 01:5d7a $20 $ec
+    jr   NZ, ensureReservedObjectsExist.loop           ;; 01:5d7a $20 $ec
     ret                                                ;; 01:5d7c $c9
 .jr_01_5d7d:
     ld   C, A                                          ;; 01:5d7d $4f
