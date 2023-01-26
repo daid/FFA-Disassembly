@@ -3299,7 +3299,7 @@ call_01_5661:
     ld   C, $07                                        ;; 01:5662 $0e $07
     ld   B, $00                                        ;; 01:5664 $06 $00
     ld   HL, rIE                                       ;; 01:5666 $21 $ff $ff
-.jr_01_5669:
+.loop:
     push HL                                            ;; 01:5669 $e5
     push BC                                            ;; 01:566a $c5
     push DE                                            ;; 01:566b $d5
@@ -3338,7 +3338,7 @@ call_01_5661:
     inc  C                                             ;; 01:5696 $0c
     ld   A, C                                          ;; 01:5697 $79
     cp   A, $14                                        ;; 01:5698 $fe $14
-    jr   C, .jr_01_5669                                ;; 01:569a $38 $cd
+    jr   C, .loop                                      ;; 01:569a $38 $cd
     pop  AF                                            ;; 01:569c $f1
     ld   A, B                                          ;; 01:569d $78
     or   A, A                                          ;; 01:569e $b7
@@ -3349,7 +3349,7 @@ call_01_56a0:
     ld   C, $07                                        ;; 01:56a1 $0e $07
     ld   B, $00                                        ;; 01:56a3 $06 $00
     ld   HL, rIE                                       ;; 01:56a5 $21 $ff $ff
-.jr_01_56a8:
+.loop:
     push HL                                            ;; 01:56a8 $e5
     push BC                                            ;; 01:56a9 $c5
     push DE                                            ;; 01:56aa $d5
@@ -3390,7 +3390,7 @@ call_01_56a0:
     inc  C                                             ;; 01:56d7 $0c
     ld   A, C                                          ;; 01:56d8 $79
     cp   A, $14                                        ;; 01:56d9 $fe $14
-    jr   C, .jr_01_56a8                                ;; 01:56db $38 $cb
+    jr   C, .loop                                      ;; 01:56db $38 $cb
     pop  AF                                            ;; 01:56dd $f1
     ld   A, B                                          ;; 01:56de $78
     or   A, A                                          ;; 01:56df $b7
@@ -3448,7 +3448,7 @@ call_01_571c:
     ld   C, $07                                        ;; 01:571d $0e $07
     ld   B, $00                                        ;; 01:571f $06 $00
     ld   HL, rIE                                       ;; 01:5721 $21 $ff $ff
-.jr_01_5724:
+.loop:
     push HL                                            ;; 01:5724 $e5
     push BC                                            ;; 01:5725 $c5
     push DE                                            ;; 01:5726 $d5
@@ -3487,7 +3487,7 @@ call_01_571c:
     inc  C                                             ;; 01:5751 $0c
     ld   A, C                                          ;; 01:5752 $79
     cp   A, $14                                        ;; 01:5753 $fe $14
-    jr   C, .jr_01_5724                                ;; 01:5755 $38 $cd
+    jr   C, .loop                                      ;; 01:5755 $38 $cd
     pop  AF                                            ;; 01:5757 $f1
     ld   A, B                                          ;; 01:5758 $78
     or   A, A                                          ;; 01:5759 $b7
@@ -3498,7 +3498,7 @@ call_01_575b:
     ld   C, $07                                        ;; 01:575c $0e $07
     ld   B, $00                                        ;; 01:575e $06 $00
     ld   HL, rIE                                       ;; 01:5760 $21 $ff $ff
-.jr_01_5763:
+.loop:
     push HL                                            ;; 01:5763 $e5
     push BC                                            ;; 01:5764 $c5
     push DE                                            ;; 01:5765 $d5
@@ -3539,7 +3539,7 @@ call_01_575b:
     inc  C                                             ;; 01:5792 $0c
     ld   A, C                                          ;; 01:5793 $79
     cp   A, $14                                        ;; 01:5794 $fe $14
-    jr   C, .jr_01_5763                                ;; 01:5796 $38 $cb
+    jr   C, .loop                                      ;; 01:5796 $38 $cb
     pop  AF                                            ;; 01:5798 $f1
     ld   A, B                                          ;; 01:5799 $78
     or   A, A                                          ;; 01:579a $b7
@@ -3609,7 +3609,7 @@ call_01_57ec:
     ld   C, $04                                        ;; 01:57f5 $0e $04
     call call_01_579c                                  ;; 01:57f7 $cd $9c $57
     jr   Z, .jr_01_5818                                ;; 01:57fa $28 $1c
-    ld   [wCF5D], A                                    ;; 01:57fc $ea $5d $cf
+    ld   [wFireHomingTarget], A                        ;; 01:57fc $ea $5d $cf
     pop  BC                                            ;; 01:57ff $c1
     push BC                                            ;; 01:5800 $c5
     call getObjectDirection                            ;; 01:5801 $cd $99 $0c
@@ -3658,12 +3658,12 @@ call_01_581e:
     pop  DE                                            ;; 01:5842 $d1
     ld   E, A                                          ;; 01:5843 $5f
     push DE                                            ;; 01:5844 $d5
-    ld   A, [wCF5D]                                    ;; 01:5845 $fa $5d $cf
+    ld   A, [wFireHomingTarget]                        ;; 01:5845 $fa $5d $cf
     ld   C, A                                          ;; 01:5848 $4f
     call getObjectDirection                            ;; 01:5849 $cd $99 $0c
     cp   A, $ff                                        ;; 01:584c $fe $ff
     jp   Z, .jp_01_58fb                                ;; 01:584e $ca $fb $58
-    ld   A, [wCF5D]                                    ;; 01:5851 $fa $5d $cf
+    ld   A, [wFireHomingTarget]                        ;; 01:5851 $fa $5d $cf
     ld   C, A                                          ;; 01:5854 $4f
     call GetObjectY                                    ;; 01:5855 $cd $3e $0c
     srl  A                                             ;; 01:5858 $cb $3f
@@ -3671,7 +3671,7 @@ call_01_581e:
     sub  A, D                                          ;; 01:585b $92
     ld   D, A                                          ;; 01:585c $57
     push DE                                            ;; 01:585d $d5
-    ld   A, [wCF5D]                                    ;; 01:585e $fa $5d $cf
+    ld   A, [wFireHomingTarget]                        ;; 01:585e $fa $5d $cf
     ld   C, A                                          ;; 01:5861 $4f
     call GetObjectX                                    ;; 01:5862 $cd $2d $0c
     srl  A                                             ;; 01:5865 $cb $3f
@@ -4358,7 +4358,7 @@ call_01_5bf1:
     call NZ, call_01_5c9f                              ;; 01:5c1d $c4 $9f $5c
     pop  BC                                            ;; 01:5c20 $c1
     pop  HL                                            ;; 01:5c21 $e1
-    ld   A, [wCF5D]                                    ;; 01:5c22 $fa $5d $cf
+    ld   A, [wFireHomingTarget]                        ;; 01:5c22 $fa $5d $cf
     ld   C, A                                          ;; 01:5c25 $4f
     call GetObjectY                                    ;; 01:5c26 $cd $3e $0c
     pop  HL                                            ;; 01:5c29 $e1
@@ -4371,7 +4371,7 @@ call_01_5bf1:
     sub  A, C                                          ;; 01:5c32 $91
     ld   D, A                                          ;; 01:5c33 $57
     push DE                                            ;; 01:5c34 $d5
-    ld   A, [wCF5D]                                    ;; 01:5c35 $fa $5d $cf
+    ld   A, [wFireHomingTarget]                        ;; 01:5c35 $fa $5d $cf
     ld   C, A                                          ;; 01:5c38 $4f
     call GetObjectX                                    ;; 01:5c39 $cd $2d $0c
     pop  DE                                            ;; 01:5c3c $d1
@@ -4422,7 +4422,7 @@ call_01_5bf1:
     call getObjectCollisionFlags                       ;; 01:5c7d $cd $6d $0c
     cp   A, $50                                        ;; 01:5c80 $fe $50
     jr   NZ, .jr_01_5c8d                               ;; 01:5c82 $20 $09
-    ld   A, [wCF5D]                                    ;; 01:5c84 $fa $5d $cf
+    ld   A, [wFireHomingTarget]                        ;; 01:5c84 $fa $5d $cf
     call damageNpc_trampoline                          ;; 01:5c87 $cd $53 $28
     call bossTakeDamage_trampoline                     ;; 01:5c8a $cd $f4 $04
 .jr_01_5c8d:
@@ -4496,7 +4496,7 @@ playerOrFriendlyAttackCollisionHandling:
 .jr_01_5cf9:
     push HL                                            ;; 01:5cf9 $e5
     ld   A, C                                          ;; 01:5cfa $79
-    ld   [wCF5D], A                                    ;; 01:5cfb $ea $5d $cf
+    ld   [wFireHomingTarget], A                        ;; 01:5cfb $ea $5d $cf
     call playerAttackDestroy                           ;; 01:5cfe $cd $82 $5d
     call call_01_5c9f                                  ;; 01:5d01 $cd $9f $5c
     pop  HL                                            ;; 01:5d04 $e1
@@ -4526,10 +4526,10 @@ playerOrFriendlyAttackCollisionHandling:
     pop  DE                                            ;; 01:5d29 $d1
     push DE                                            ;; 01:5d2a $d5
     call spawnSnowman                                  ;; 01:5d2b $cd $03 $2d
-    ld   [wCF5D], A                                    ;; 01:5d2e $ea $5d $cf
+    ld   [wFireHomingTarget], A                        ;; 01:5d2e $ea $5d $cf
     call playerAttackDestroy                           ;; 01:5d31 $cd $82 $5d
     pop  DE                                            ;; 01:5d34 $d1
-    ld   A, [wCF5D]                                    ;; 01:5d35 $fa $5d $cf
+    ld   A, [wFireHomingTarget]                        ;; 01:5d35 $fa $5d $cf
     cp   A, $ff                                        ;; 01:5d38 $fe $ff
     jr   Z, .jr_01_5d60                                ;; 01:5d3a $28 $24
     push DE                                            ;; 01:5d3c $d5
@@ -4624,7 +4624,7 @@ call_01_5d98:
 call_01_5db6:
     push AF                                            ;; 01:5db6 $f5
     ld   A, C                                          ;; 01:5db7 $79
-    ld   [wCF5D], A                                    ;; 01:5db8 $ea $5d $cf
+    ld   [wFireHomingTarget], A                        ;; 01:5db8 $ea $5d $cf
     call playerAttackDestroy                           ;; 01:5dbb $cd $82 $5d
     ld   A, $0a                                        ;; 01:5dbe $3e $0a
     ld   [wPlayerCurrentAttackTypeAndFacing], A        ;; 01:5dc0 $ea $5c $cf

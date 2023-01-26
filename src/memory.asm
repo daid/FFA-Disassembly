@@ -574,7 +574,7 @@ wAttackRange:
 wPlayerCurrentAttackTypeAndFacing:
     ds 1                                               ;; cf5c
 
-wCF5D:
+wFireHomingTarget:
     ds 1                                               ;; cf5d
 
 wCF5E:
