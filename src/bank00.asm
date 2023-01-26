@@ -7172,8 +7172,8 @@ NOOP:
 projectileCollisionHandling_trampoline:
     jp_to_bank 09, projectileCollisionHandling         ;; 00:2c03 $f5 $3e $08 $c3 $93 $1f
 
-getProjectileOffset02_trampoline:
-    jp_to_bank 09, getProjectileOffset02               ;; 00:2c09 $f5 $3e $05 $c3 $93 $1f
+getProjectileSize_trampoline:
+    jp_to_bank 09, getProjectileSize                   ;; 00:2c09 $f5 $3e $05 $c3 $93 $1f
 
 getProjectileElement_trampoline:
     jp_to_bank 09, getProjectileElement                ;; 00:2c0f $f5 $3e $06 $c3 $93 $1f

@@ -833,7 +833,7 @@ bossCollisionHandling:
     push HL                                            ;; 04:4487 $e5
     call getPlayerAttackElements                       ;; 04:4488 $cd $c0 $3d
     pop  DE                                            ;; 04:448b $d1
-    call call_04_4655                                  ;; 04:448c $cd $55 $46
+    call bossCheckElementalImunities                   ;; 04:448c $cd $55 $46
     pop  BC                                            ;; 04:448f $c1
     jp   NZ, bossCollisionHandling.immune              ;; 04:4490 $c2 $54 $45
     push BC                                            ;; 04:4493 $c5
@@ -844,7 +844,7 @@ bossCollisionHandling:
     call getTotalAP                                    ;; 04:449c $cd $0e $3d
     call specialAttack2Power75inHLBoss                 ;; 04:449f $cd $85 $46
     pop  DE                                            ;; 04:44a2 $d1
-    call call_04_469b                                  ;; 04:44a3 $cd $9b $46
+    call bossWeaponDamage                              ;; 04:44a3 $cd $9b $46
     pop  DE                                            ;; 04:44a6 $d1
     pop  BC                                            ;; 04:44a7 $c1
     jp   Z, bossCollisionHandling.immune               ;; 04:44a8 $ca $54 $45
@@ -879,11 +879,12 @@ bossCollisionHandling:
     push HL                                            ;; 04:44da $e5
     call getPlayerAttackElements                       ;; 04:44db $cd $c0 $3d
     pop  DE                                            ;; 04:44de $d1
-    call call_04_4655                                  ;; 04:44df $cd $55 $46
+    call bossCheckElementalImunities                   ;; 04:44df $cd $55 $46
     pop  BC                                            ;; 04:44e2 $c1
     jr   Z, .jr_04_44eb                                ;; 04:44e3 $28 $06
     cp   A, $12                                        ;; 04:44e5 $fe $12
-    jr   Z, .jr_04_4567                                ;; 04:44e7 $28 $7e
+; Branch if imunities are $12 and only $12. This combo isn't used on any boss.
+    jr   Z, .unused                                    ;; 04:44e7 $28 $7e
     jr   bossCollisionHandling.immune                  ;; 04:44e9 $18 $69
 .jr_04_44eb:
     push BC                                            ;; 04:44eb $c5
@@ -894,7 +895,7 @@ bossCollisionHandling:
     call getTotalMagicPower                            ;; 04:44f4 $cd $af $3d
     call specialAttack2Power75inHLBoss                 ;; 04:44f7 $cd $85 $46
     pop  DE                                            ;; 04:44fa $d1
-    call call_04_46c6                                  ;; 04:44fb $cd $c6 $46
+    call bossSpellDamage                               ;; 04:44fb $cd $c6 $46
     pop  DE                                            ;; 04:44fe $d1
     pop  BC                                            ;; 04:44ff $c1
     jr   Z, bossCollisionHandling.immune               ;; 04:4500 $28 $52
@@ -905,21 +906,21 @@ bossCollisionHandling:
     call processHitBoss                                ;; 04:450a $cd $28 $47
     ret                                                ;; 04:450d $c9
 .followerAttack:
-    call call_04_4636                                  ;; 04:450e $cd $36 $46
+    call bossTestFollowerHit                           ;; 04:450e $cd $36 $46
     jp   NZ, .no_effect                                ;; 04:4511 $c2 $5b $44
     push BC                                            ;; 04:4514 $c5
     push HL                                            ;; 04:4515 $e5
     ld   A, B                                          ;; 04:4516 $78
     call getProjectileElement_trampoline               ;; 04:4517 $cd $0f $2c
     pop  DE                                            ;; 04:451a $d1
-    call call_04_4655                                  ;; 04:451b $cd $55 $46
+    call bossCheckElementalImunities                   ;; 04:451b $cd $55 $46
     pop  BC                                            ;; 04:451e $c1
     jr   NZ, bossCollisionHandling.immune              ;; 04:451f $20 $33
     push BC                                            ;; 04:4521 $c5
     push DE                                            ;; 04:4522 $d5
     ld   A, B                                          ;; 04:4523 $78
     push AF                                            ;; 04:4524 $f5
-    call call_04_4668                                  ;; 04:4525 $cd $68 $46
+    call getBossDP                                     ;; 04:4525 $cd $68 $46
     pop  AF                                            ;; 04:4528 $f1
     push DE                                            ;; 04:4529 $d5
     call getProjectilePower_trampoline                 ;; 04:452a $cd $15 $2c
@@ -955,7 +956,7 @@ bossCollisionHandling:
     call playSFX                                       ;; 04:4561 $cd $7d $29
     ld   A, $40                                        ;; 04:4564 $3e $40
     ret                                                ;; 04:4566 $c9
-.jr_04_4567:
+.unused:
     ld   HL, $00                                       ;; 04:4567 $21 $00 $00
     ld   A, H                                          ;; 04:456a $7c
     ld   [wDamageDoneToBoss.high], A                   ;; 04:456b $ea $f3 $d3
@@ -1077,31 +1078,34 @@ bossTestHit:
     inc  A                                             ;; 04:4634 $3c
     ret                                                ;; 04:4635 $c9
 
-call_04_4636:
+bossTestFollowerHit:
     ld   A, [wBossIframes]                             ;; 04:4636 $fa $eb $d3
     cp   A, $00                                        ;; 04:4639 $fe $00
-    jr   NZ, .jr_04_4652                               ;; 04:463b $20 $15
+    jr   NZ, .no_hit                                   ;; 04:463b $20 $15
     push DE                                            ;; 04:463d $d5
     push BC                                            ;; 04:463e $c5
     ld   A, B                                          ;; 04:463f $78
-    call getProjectileOffset02_trampoline              ;; 04:4640 $cd $09 $2c
+    call getProjectileSize_trampoline              ;; 04:4640 $cd $09 $2c
     pop  BC                                            ;; 04:4643 $c1
     pop  DE                                            ;; 04:4644 $d1
     cp   A, D                                          ;; 04:4645 $ba
-    jr   C, .jr_04_4652                                ;; 04:4646 $38 $0a
+    jr   C, .no_hit                                    ;; 04:4646 $38 $0a
     cp   A, E                                          ;; 04:4648 $bb
-    jr   C, .jr_04_4652                                ;; 04:4649 $38 $07
+    jr   C, .no_hit                                    ;; 04:4649 $38 $07
     push BC                                            ;; 04:464b $c5
     ld   A, C                                          ;; 04:464c $79
     call getBossStatsRuntimeDataByObjectID             ;; 04:464d $cd $e6 $42
     pop  BC                                            ;; 04:4650 $c1
     ret                                                ;; 04:4651 $c9
-.jr_04_4652:
+.no_hit:
     xor  A, A                                          ;; 04:4652 $af
     inc  A                                             ;; 04:4653 $3c
     ret                                                ;; 04:4654 $c9
 
-call_04_4655:
+; A = attack elements
+; HL = boss object stats
+; Return: Z, not immune, NZ, immune.
+bossCheckElementalImunities:
     ld   HL, $01                                       ;; 04:4655 $21 $01 $00
     add  HL, DE                                        ;; 04:4658 $19
     ld   C, [HL]                                       ;; 04:4659 $4e
@@ -1118,12 +1122,13 @@ call_04_4655:
     ld   A, B                                          ;; 04:4666 $78
     ret                                                ;; 04:4667 $c9
 
-call_04_4668:
+getBossDP:
     ld   DE, $04                                       ;; 04:4668 $11 $04 $00
     add  HL, DE                                        ;; 04:466b $19
     ld   E, [HL]                                       ;; 04:466c $5e
     ret                                                ;; 04:466d $c9
 
+; Return: E = boss DP, divided by four if vulnerable.
 bonusDamageIfVulnerableBoss:
     push HL                                            ;; 04:466e $e5
     add  HL, BC                                        ;; 04:466f $09
@@ -1159,10 +1164,13 @@ specialAttack2Power75inHLBoss:
     rr   L                                             ;; 04:4698 $cb $1d
     ret                                                ;; 04:469a $c9
 
-call_04_469b:
+; E = DP
+; HL = raw damage so far
+; Return: HL = damage value
+bossWeaponDamage:
     ld   D, $00                                        ;; 04:469b $16 $00
     call sub_HL_DE                                     ;; 04:469d $cd $ab $2b
-    jr   C, .jr_04_46c1                                ;; 04:46a0 $38 $1f
+    jr   C, .no_damage                                 ;; 04:46a0 $38 $1f
     ret  Z                                             ;; 04:46a2 $c8
     push HL                                            ;; 04:46a3 $e5
     ld   A, [wCurrentPlayerAttackWillCharge]           ;; 04:46a4 $fa $63 $cf
@@ -1181,20 +1189,24 @@ call_04_469b:
     pop  DE                                            ;; 04:46bc $d1
     call add25rndHLtoDE_4                              ;; 04:46bd $cd $f6 $46
     ret                                                ;; 04:46c0 $c9
-.jr_04_46c1:
+.no_damage:
     ld   HL, $00                                       ;; 04:46c1 $21 $00 $00
     xor  A, A                                          ;; 04:46c4 $af
     ret                                                ;; 04:46c5 $c9
 
-call_04_46c6:
+; E = DP
+; HL = raw damage calculation so far
+; Return: HL = damage value
+bossSpellDamage:
     ld   D, $00                                        ;; 04:46c6 $16 $00
     call sub_HL_DE                                     ;; 04:46c8 $cd $ab $2b
-    jr   C, .jr_04_46f1                                ;; 04:46cb $38 $24
+    jr   C, .no_damage                                 ;; 04:46cb $38 $24
     ret  Z                                             ;; 04:46cd $c8
     push HL                                            ;; 04:46ce $e5
     ld   A, [wCurrentPlayerAttackWillCharge]           ;; 04:46cf $fa $63 $cf
     cp   A, $40                                        ;; 04:46d2 $fe $40
     jr   NZ, .jr_04_46d7                               ;; 04:46d4 $20 $01
+; Spell damage is different from weapon damage in this doubling for max will charge.
     add  HL, HL                                        ;; 04:46d6 $29
 .jr_04_46d7:
     push HL                                            ;; 04:46d7 $e5
@@ -1212,7 +1224,7 @@ call_04_46c6:
     pop  DE                                            ;; 04:46ec $d1
     call add25rndHLtoDE_4                              ;; 04:46ed $cd $f6 $46
     ret                                                ;; 04:46f0 $c9
-.jr_04_46f1:
+.no_damage:
     ld   HL, $00                                       ;; 04:46f1 $21 $00 $00
     xor  A, A                                          ;; 04:46f4 $af
     ret                                                ;; 04:46f5 $c9

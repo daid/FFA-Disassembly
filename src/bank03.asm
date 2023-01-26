@@ -1358,7 +1358,7 @@ enemyCollisionHandling:
     call processHitNpc                                 ;; 03:4799 $cd $26 $4a
     ret                                                ;; 03:479c $c9
 .followerAttack:
-    call call_03_4919                                  ;; 03:479d $cd $19 $49
+    call npcTestFollowerHit                            ;; 03:479d $cd $19 $49
     jp   NZ, .no_effect                                ;; 03:47a0 $c2 $56 $46
     call call_03_4931                                  ;; 03:47a3 $cd $31 $49
     jp   NZ, enemyCollisionHandling.immune             ;; 03:47a6 $c2 $eb $47
@@ -1618,23 +1618,23 @@ npcTestHit:
     inc  A                                             ;; 03:4917 $3c
     ret                                                ;; 03:4918 $c9
 
-call_03_4919:
+npcTestFollowerHit:
     push DE                                            ;; 03:4919 $d5
     push BC                                            ;; 03:491a $c5
     ld   A, B                                          ;; 03:491b $78
-    call getProjectileOffset02_trampoline              ;; 03:491c $cd $09 $2c
+    call getProjectileSize_trampoline                  ;; 03:491c $cd $09 $2c
     pop  BC                                            ;; 03:491f $c1
     pop  DE                                            ;; 03:4920 $d1
     cp   A, D                                          ;; 03:4921 $ba
-    jr   C, .jr_03_492e                                ;; 03:4922 $38 $0a
+    jr   C, .not_hit                                   ;; 03:4922 $38 $0a
     cp   A, E                                          ;; 03:4924 $bb
-    jr   C, .jr_03_492e                                ;; 03:4925 $38 $07
+    jr   C, .not_hit                                   ;; 03:4925 $38 $07
     push BC                                            ;; 03:4927 $c5
     ld   A, C                                          ;; 03:4928 $79
     call getNpcRuntimeDataByID                         ;; 03:4929 $cd $9b $42
     pop  BC                                            ;; 03:492c $c1
     ret                                                ;; 03:492d $c9
-.jr_03_492e:
+.not_hit:
     xor  A, A                                          ;; 03:492e $af
     inc  A                                             ;; 03:492f $3c
     ret                                                ;; 03:4930 $c9

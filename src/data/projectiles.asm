@@ -10,7 +10,7 @@
 ;    $62: enemy ranged (four cardinal directions)
 ;    $72: enemy ranged (any angle)
 ; 1) Speed, lower = faster.
-; 2) ?
+; 2) Size (for collision calculations)
 ; 3) Element
 ; 4) Damage
 ; 5) Status Effect inflicted

@@ -12,7 +12,7 @@ SECTION "bank09", ROMX[$4000], BANK[$09]
     call_to_bank_target projectileLoadTiles            ;; 09:4004 pP
     call_to_bank_target projectileDestroy              ;; 09:4006 pP
     call_to_bank_target spawnProjectile                ;; 09:4008 pP
-    call_to_bank_target getProjectileOffset02          ;; 09:400a ??
+    call_to_bank_target getProjectileSize              ;; 09:400a ??
     call_to_bank_target getProjectileElement           ;; 09:400c ??
     call_to_bank_target getProjectilePower             ;; 09:400e ??
     call_to_bank_target projectileCollisionHandling    ;; 09:4010 pP
@@ -828,7 +828,7 @@ getProjectileDataTableEntry:
     ld   D, [HL]                                       ;; 09:445c $56
     ret                                                ;; 09:445d $c9
 
-getProjectileOffset02:
+getProjectileSize:
     call getProjectileDataTableEntry                   ;; 09:445e $cd $51 $44
     ld   HL, $02                                       ;; 09:4461 $21 $02 $00
     add  HL, DE                                        ;; 09:4464 $19
