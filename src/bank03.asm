@@ -635,7 +635,7 @@ destroyNPC:
     jr   NZ, .jr_03_43a8                               ;; 03:4380 $20 $26
 .jr_03_4382:
     push BC                                            ;; 03:4382 $c5
-    call call_00_0b6f                                  ;; 03:4383 $cd $6f $0b
+    call objectCheckTriggerScriptOrSpikeTile           ;; 03:4383 $cd $6f $0b
     pop  BC                                            ;; 03:4386 $c1
     pop  DE                                            ;; 03:4387 $d1
     push DE                                            ;; 03:4388 $d5

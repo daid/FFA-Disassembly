@@ -4550,11 +4550,11 @@ playerOrFriendlyAttackCollisionHandling:
     push BC                                            ;; 01:5d50 $c5
     inc  D                                             ;; 01:5d51 $14
     push DE                                            ;; 01:5d52 $d5
-    call call_00_1700                                  ;; 01:5d53 $cd $00 $17
+    call tileScriptOrSpikeDamage                        ;; 01:5d53 $cd $00 $17
     pop  DE                                            ;; 01:5d56 $d1
     pop  BC                                            ;; 01:5d57 $c1
     inc  E                                             ;; 01:5d58 $1c
-    call call_00_1700                                  ;; 01:5d59 $cd $00 $17
+    call tileScriptOrSpikeDamage                       ;; 01:5d59 $cd $00 $17
     pop  AF                                            ;; 01:5d5c $f1
     ld   [wMainGameStateFlags], A                      ;; 01:5d5d $ea $a1 $c0
 .jr_01_5d60:

@@ -1441,6 +1441,8 @@ pixelToTilePosition:
     ret                                                ;; 00:08d3 $c9
 
 ; Probably related to hit detection
+; A = object direction, possibly with bit 7 set
+; B = ???
 ; C = Object ID for the changed/checked object
 call_00_08d4:
     ld   L, A                                          ;; 00:08d4 $6f
@@ -1896,9 +1898,9 @@ destroyObject:
     cp   A, $80                                        ;; 00:0b42 $fe $80
     jr   Z, .npc                                       ;; 00:0b44 $28 $19
     cp   A, $a0                                        ;; 00:0b46 $fe $a0
-    jr   Z, .friendly                                  ;; 00:0b48 $28 $21
+    jr   Z, .pushable                                  ;; 00:0b48 $28 $21
     cp   A, $b0                                        ;; 00:0b4a $fe $b0
-    jr   Z, .friendly                                  ;; 00:0b4c $28 $1d
+    jr   Z, .pushable                                  ;; 00:0b4c $28 $1d
     cp   A, $d0                                        ;; 00:0b4e $fe $d0
     jr   Z, .npc                                       ;; 00:0b50 $28 $0d
     cp   A, $c0                                        ;; 00:0b52 $fe $c0
@@ -1919,13 +1921,14 @@ destroyObject:
 .enemyProjectile:
     call projectileDestroy_trampoline                  ;; 00:0b67 $cd $e6 $2b
     ret                                                ;; 00:0b6a $c9
-.friendly:
-    call call_00_2d13                                  ;; 00:0b6b $cd $13 $2d
+.pushable:
+    call destroyPushableObject                         ;; 00:0b6b $cd $13 $2d
     ret                                                ;; 00:0b6e $c9
 
-call_00_0b6f:
+; C = object id
+objectCheckTriggerScriptOrSpikeTile:
     push BC                                            ;; 00:0b6f $c5
-    call call_00_0baa                                  ;; 00:0b70 $cd $aa $0b
+    call getFacingOrSlidingDirection                   ;; 00:0b70 $cd $aa $0b
     ld   HL, $04                                       ;; 00:0b73 $21 $04 $00
     add  HL, DE                                        ;; 00:0b76 $19
     ld   D, [HL]                                       ;; 00:0b77 $56
@@ -1958,14 +1961,17 @@ call_00_0b6f:
     ld   C, B                                          ;; 00:0b9d $48
     ld   B, L                                          ;; 00:0b9e $45
     push BC                                            ;; 00:0b9f $c5
-    call call_00_1700                                  ;; 00:0ba0 $cd $00 $17
+    call tileScriptOrSpikeDamage                       ;; 00:0ba0 $cd $00 $17
     pop  BC                                            ;; 00:0ba3 $c1
     pop  DE                                            ;; 00:0ba4 $d1
     inc  E                                             ;; 00:0ba5 $1c
-    call call_00_1700                                  ;; 00:0ba6 $cd $00 $17
+    call tileScriptOrSpikeDamage                       ;; 00:0ba6 $cd $00 $17
     ret                                                ;; 00:0ba9 $c9
 
-call_00_0baa:
+; C = object id
+; Return: A = facing direction, unless sliding
+; Return: DE = object runtime data address
+getFacingOrSlidingDirection:
     ld   L, C                                          ;; 00:0baa $69
     ld   H, $00                                        ;; 00:0bab $26 $00
     add  HL, HL                                        ;; 00:0bad $29
@@ -3867,14 +3873,19 @@ getRoomMetaTileAttributes:
     ret                                                ;; 00:16f8 $c9
     db   $cd, $0a, $2a, $21, $00, $00, $c9             ;; 00:16f9 ???????
 
-call_00_1700:
+; B = object direction bits. If bit 7 is set then the player will not take spike damage.
+; C = object collision flags
+; DE = object metatile location
+; If the metatile being checked has the script bit set, run any associated script.
+; Otherwise, run the spike damage routine. Spike damage is bits and $30, swapped, multiplied by the player level.
+tileScriptOrSpikeDamage:
     push BC                                            ;; 00:1700 $c5
     push DE                                            ;; 00:1701 $d5
     call getRoomMetaTileAttributes                     ;; 00:1702 $cd $af $16
     pop  DE                                            ;; 00:1705 $d1
     pop  BC                                            ;; 00:1706 $c1
     bit  7, H                                          ;; 00:1707 $cb $7c
-    jr   Z, .jr_00_1746                                ;; 00:1709 $28 $3b
+    jr   Z, .no_script_bit                             ;; 00:1709 $28 $3b
     ld   A, [wMainGameStateFlags]                      ;; 00:170b $fa $a1 $c0
     bit  1, A                                          ;; 00:170e $cb $4f
     ret  NZ                                            ;; 00:1710 $c0
@@ -3896,7 +3907,7 @@ call_00_1700:
     pop  HL                                            ;; 00:172c $e1
     pop  DE                                            ;; 00:172d $d1
     pop  BC                                            ;; 00:172e $c1
-.jr_00_172f:
+.loop:
     ld   A, [HL+]                                      ;; 00:172f $2a
     cp   A, $ff                                        ;; 00:1730 $fe $ff
     jr   Z, .jr_00_1742                                ;; 00:1732 $28 $0e
@@ -3904,7 +3915,7 @@ call_00_1700:
     jr   Z, .jr_00_173b                                ;; 00:1735 $28 $04
     inc  HL                                            ;; 00:1737 $23
     inc  HL                                            ;; 00:1738 $23
-    jr   .jr_00_172f                                   ;; 00:1739 $18 $f4
+    jr   .loop                                         ;; 00:1739 $18 $f4
 .jr_00_173b:
     ld   A, [HL+]                                      ;; 00:173b $2a
     ld   H, [HL]                                       ;; 00:173c $66
@@ -3914,7 +3925,7 @@ call_00_1700:
 .jr_00_1742:
     call popBankNrAndSwitch                            ;; 00:1742 $cd $0a $2a
     ret                                                ;; 00:1745 $c9
-.jr_00_1746:
+.no_script_bit:
     ld   A, [wMainGameStateFlags]                      ;; 00:1746 $fa $a1 $c0
     bit  3, A                                          ;; 00:1749 $cb $5f
     ret  NZ                                            ;; 00:174b $c0
@@ -4080,12 +4091,12 @@ call_00_1815:
     jr   NZ, .jr_00_184f                               ;; 00:1845 $20 $08
     dec  E                                             ;; 00:1847 $1d
     ld   B, $81                                        ;; 00:1848 $06 $81
-    call call_00_1700                                  ;; 00:184a $cd $00 $17
+    call tileScriptOrSpikeDamage                       ;; 00:184a $cd $00 $17
     jr   .jr_00_18b9                                   ;; 00:184d $18 $6a
 .jr_00_184f:
     inc  E                                             ;; 00:184f $1c
     ld   B, $01                                        ;; 00:1850 $06 $01
-    call call_00_1700                                  ;; 00:1852 $cd $00 $17
+    call tileScriptOrSpikeDamage                       ;; 00:1852 $cd $00 $17
     jr   .jr_00_18b9                                   ;; 00:1855 $18 $62
 .jr_00_1857:
     bit  0, E                                          ;; 00:1857 $cb $43
@@ -4093,11 +4104,11 @@ call_00_1815:
     inc  E                                             ;; 00:185b $1c
     inc  E                                             ;; 00:185c $1c
     ld   B, $82                                        ;; 00:185d $06 $82
-    call call_00_1700                                  ;; 00:185f $cd $00 $17
+    call tileScriptOrSpikeDamage                       ;; 00:185f $cd $00 $17
     jr   .jr_00_18b9                                   ;; 00:1862 $18 $55
 .jr_00_1864:
     ld   B, $02                                        ;; 00:1864 $06 $02
-    call call_00_1700                                  ;; 00:1866 $cd $00 $17
+    call tileScriptOrSpikeDamage                       ;; 00:1866 $cd $00 $17
     jr   .jr_00_18b9                                   ;; 00:1869 $18 $4e
 .jr_00_186b:
     bit  0, D                                          ;; 00:186b $cb $42
@@ -4108,20 +4119,20 @@ call_00_1815:
     inc  E                                             ;; 00:1874 $1c
     push DE                                            ;; 00:1875 $d5
     ld   B, $04                                        ;; 00:1876 $06 $04
-    call call_00_1700                                  ;; 00:1878 $cd $00 $17
+    call tileScriptOrSpikeDamage                       ;; 00:1878 $cd $00 $17
     pop  DE                                            ;; 00:187b $d1
     inc  D                                             ;; 00:187c $14
     ld   B, $84                                        ;; 00:187d $06 $84
-    call call_00_1700                                  ;; 00:187f $cd $00 $17
+    call tileScriptOrSpikeDamage                       ;; 00:187f $cd $00 $17
     pop  DE                                            ;; 00:1882 $d1
 .jr_00_1883:
     push DE                                            ;; 00:1883 $d5
     ld   B, $04                                        ;; 00:1884 $06 $04
-    call call_00_1700                                  ;; 00:1886 $cd $00 $17
+    call tileScriptOrSpikeDamage                       ;; 00:1886 $cd $00 $17
     pop  DE                                            ;; 00:1889 $d1
     inc  D                                             ;; 00:188a $14
     ld   B, $84                                        ;; 00:188b $06 $84
-    call call_00_1700                                  ;; 00:188d $cd $00 $17
+    call tileScriptOrSpikeDamage                       ;; 00:188d $cd $00 $17
     jr   .jr_00_18b9                                   ;; 00:1890 $18 $27
 .jr_00_1892:
     bit  0, D                                          ;; 00:1892 $cb $42
@@ -4132,20 +4143,20 @@ call_00_1815:
     inc  E                                             ;; 00:189b $1c
     push DE                                            ;; 00:189c $d5
     ld   B, $08                                        ;; 00:189d $06 $08
-    call call_00_1700                                  ;; 00:189f $cd $00 $17
+    call tileScriptOrSpikeDamage                       ;; 00:189f $cd $00 $17
     pop  DE                                            ;; 00:18a2 $d1
     dec  D                                             ;; 00:18a3 $15
     ld   B, $88                                        ;; 00:18a4 $06 $88
-    call call_00_1700                                  ;; 00:18a6 $cd $00 $17
+    call tileScriptOrSpikeDamage                       ;; 00:18a6 $cd $00 $17
     pop  DE                                            ;; 00:18a9 $d1
 .jr_00_18aa:
     push DE                                            ;; 00:18aa $d5
     ld   B, $08                                        ;; 00:18ab $06 $08
-    call call_00_1700                                  ;; 00:18ad $cd $00 $17
+    call tileScriptOrSpikeDamage                       ;; 00:18ad $cd $00 $17
     pop  DE                                            ;; 00:18b0 $d1
     dec  D                                             ;; 00:18b1 $15
     ld   B, $88                                        ;; 00:18b2 $06 $88
-    call call_00_1700                                  ;; 00:18b4 $cd $00 $17
+    call tileScriptOrSpikeDamage                       ;; 00:18b4 $cd $00 $17
     jr   .jr_00_18b9                                   ;; 00:18b7 $18 $00
 .jr_00_18b9:
     call popBankNrAndSwitch                            ;; 00:18b9 $cd $0a $2a
@@ -6247,6 +6258,9 @@ getRoomPointerRLERoom:
     ld   L, A                                          ;; 00:2615 $6f
     ret                                                ;; 00:2616 $c9
 
+; D = metatile y (top nibble) x (bottom nibble) location
+; E = metatile x address
+; Seems to have several functions, but at its most basic (A=0) it gets the room pointers for the current room.
 call_00_2617:
     ld   H, D                                          ;; 00:2617 $62
     ld   L, E                                          ;; 00:2618 $6b
@@ -6309,7 +6323,7 @@ call_00_2617:
     pop  AF                                            ;; 00:2670 $f1
     ld   C, A                                          ;; 00:2671 $4f
     bit  4, A                                          ;; 00:2672 $cb $67
-    jr   Z, .jr_00_26c5                                ;; 00:2674 $28 $4f
+    jr   Z, .get_room_pointer                          ;; 00:2674 $28 $4f
     ld   A, D                                          ;; 00:2676 $7a
     ld   [wRoomY], A                                   ;; 00:2677 $ea $f7 $c3
     ld   A, E                                          ;; 00:267a $7b
@@ -6354,7 +6368,7 @@ call_00_2617:
     pop  DE                                            ;; 00:26c2 $d1
     pop  HL                                            ;; 00:26c3 $e1
     ret                                                ;; 00:26c4 $c9
-.jr_00_26c5:
+.get_room_pointer:
     ld   A, [wMapEncodingType]                         ;; 00:26c5 $fa $f8 $c3
     cp   A, $00                                        ;; 00:26c8 $fe $00
     jr   NZ, .jr_00_26d1                               ;; 00:26ca $20 $05
@@ -7291,7 +7305,7 @@ scriptOpCodeChangeIntoEmptyChest:
     call getObjectNearestTilePosition                  ;; 00:2ced $cd $ef $05
     pop  BC                                            ;; 00:2cf0 $c1
     push DE                                            ;; 00:2cf1 $d5
-    call call_00_2d13                                  ;; 00:2cf2 $cd $13 $2d
+    call destroyPushableObject                         ;; 00:2cf2 $cd $13 $2d
     pop  DE                                            ;; 00:2cf5 $d1
     call spawnEmptyChest                               ;; 00:2cf6 $cd $e1 $2c
     ld   A, $0f                                        ;; 00:2cf9 $3e $0f
@@ -7311,10 +7325,12 @@ spawnSnowman:
     pop  AF                                            ;; 00:2d11 $f1
     ret                                                ;; 00:2d12 $c9
 
-call_00_2d13:
+; This makes sure that if the snowman/chest/emptychest is sitting on a script tile, it gets triggered.
+; In theory all NPCs destroyed on script tiles should trigger the script, but it doesn't hurt to make sure.
+destroyPushableObject:
     push BC                                            ;; 00:2d13 $c5
     ld   B, $a9                                        ;; 00:2d14 $06 $a9
-    call call_00_0b6f                                  ;; 00:2d16 $cd $6f $0b
+    call objectCheckTriggerScriptOrSpikeTile           ;; 00:2d16 $cd $6f $0b
     pop  BC                                            ;; 00:2d19 $c1
     call destroyNPC_trampoline                         ;; 00:2d1a $cd $e3 $27
     ret                                                ;; 00:2d1d $c9
