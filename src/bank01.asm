@@ -2198,19 +2198,20 @@ playerCollisionHandling:
 ;.south_hit:
     call getPlayerY                                    ;; 01:4fd4 $cd $99 $02
     and  A, $07                                        ;; 01:4fd7 $e6 $07
-    jr   Z, .jr_01_500c                                ;; 01:4fd9 $28 $31
+    jr   Z, .on_grid                                   ;; 01:4fd9 $28 $31
     cpl                                                ;; 01:4fdb $2f
     inc  A                                             ;; 01:4fdc $3c
     ld   H, A                                          ;; 01:4fdd $67
     ld   L, $00                                        ;; 01:4fde $2e $00
     ret                                                ;; 01:4fe0 $c9
-; This looks like code intended for either east or west. Is there a bug here?
+; Q: This looks like code intended for either east or west. Is there a bug here?
+; A: No, because getPlayerX and getPlayerY always return the player's location as if on-grid, so execution always skips to $500c.
     db   $cd, $93, $02, $e6, $07, $28, $24, $2f        ;; 01:4fe1 ????????
     db   $3c, $6f, $26, $00, $c9                       ;; 01:4fe9 ?????
 .eastwest_hit:
     call getPlayerX                                    ;; 01:4fee $cd $93 $02
     and  A, $07                                        ;; 01:4ff1 $e6 $07
-    jr   Z, .jr_01_500c                                ;; 01:4ff3 $28 $17
+    jr   Z, .on_grid                                   ;; 01:4ff3 $28 $17
     cpl                                                ;; 01:4ff5 $2f
     inc  A                                             ;; 01:4ff6 $3c
     and  A, $07                                        ;; 01:4ff7 $e6 $07
@@ -2220,14 +2221,14 @@ playerCollisionHandling:
 .north_hit:
     call getPlayerY                                    ;; 01:4ffd $cd $99 $02
     and  A, $07                                        ;; 01:5000 $e6 $07
-    jr   Z, .jr_01_500c                                ;; 01:5002 $28 $08
+    jr   Z, .on_grid                                   ;; 01:5002 $28 $08
     cpl                                                ;; 01:5004 $2f
     inc  A                                             ;; 01:5005 $3c
     and  A, $07                                        ;; 01:5006 $e6 $07
     ld   H, A                                          ;; 01:5008 $67
     ld   L, $00                                        ;; 01:5009 $2e $00
     ret                                                ;; 01:500b $c9
-.jr_01_500c:
+.on_grid:
     ld   HL, $00                                       ;; 01:500c $21 $00 $00
     ret                                                ;; 01:500f $c9
 .scriptOnTouch:
