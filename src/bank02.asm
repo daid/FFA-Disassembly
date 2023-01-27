@@ -368,6 +368,7 @@ updateJoypadInput:
 ; A = object collision flags
 ; C = object id
 ; DE = object yx location
+; Return: A = unmodified if a collision is found, otherwise set to 0.
 checkNpcsForCollisions:
     push AF                                            ;; 02:4244 $f5
     ld   B, C                                          ;; 02:4245 $41

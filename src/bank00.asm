@@ -1577,7 +1577,7 @@ call_00_0961:
     call checkNpcsForCollisions_trampoline             ;; 00:0988 $cd $1c $04
     pop  HL                                            ;; 00:098b $e1
     cp   A, $00                                        ;; 00:098c $fe $00
-    call NZ, call_00_0a33                              ;; 00:098e $c4 $33 $0a
+    call NZ, secondaryCollisionHandling                ;; 00:098e $c4 $33 $0a
     ld   D, H                                          ;; 00:0991 $54
     ld   E, L                                          ;; 00:0992 $5d
     pop  HL                                            ;; 00:0993 $e1
@@ -1700,7 +1700,8 @@ call_00_0961:
     res  6, [HL]                                       ;; 00:0a30 $cb $b6
     ret                                                ;; 00:0a32 $c9
 
-call_00_0a33:
+; This only gets run if a collision has already been found and checked.
+secondaryCollisionHandling:
     push AF                                            ;; 00:0a33 $f5
     and  A, $f0                                        ;; 00:0a34 $e6 $f0
     cp   A, $c0                                        ;; 00:0a36 $fe $c0
