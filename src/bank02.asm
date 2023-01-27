@@ -1463,7 +1463,7 @@ call_02_4aa2:
 call_02_4ae4:
     ld   A, [wDialogType]                              ;; 02:4ae4 $fa $4a $d8
     cp   A, $1e                                        ;; 02:4ae7 $fe $1e
-    jp   Z, jp_02_4ba1                                 ;; 02:4ae9 $ca $a1 $4b
+    jp   Z, windowNamingEntryRubLetter                 ;; 02:4ae9 $ca $a1 $4b
     push AF                                            ;; 02:4aec $f5
     call hideAndSaveMenuMetasprites                    ;; 02:4aed $cd $51 $6b
     pop  AF                                            ;; 02:4af0 $f1
@@ -1576,17 +1576,17 @@ windowDismiss:
     jp   Z, windowReturnToScript                       ;; 02:4b9d $ca $38 $56
     ret                                                ;; 02:4ba0 $c9
 
-jp_02_4ba1:
+windowNamingEntryRubLetter:
     ld   A, [wSRAMSaveHeader._a]                       ;; 02:4ba1 $fa $b1 $d7
     ld   [wSelectedMenuIndex2], A                      ;; 02:4ba4 $ea $4c $d8
-    ld   A, [wD885]                                    ;; 02:4ba7 $fa $85 $d8
+    ld   A, [wNameEntryNameLength]                     ;; 02:4ba7 $fa $85 $d8
     and  A, A                                          ;; 02:4baa $a7
     jr   Z, .jr_02_4bdf                                ;; 02:4bab $28 $32
     dec  A                                             ;; 02:4bad $3d
     push AF                                            ;; 02:4bae $f5
-    ld   [wD885], A                                    ;; 02:4baf $ea $85 $d8
+    ld   [wNameEntryNameLength], A                     ;; 02:4baf $ea $85 $d8
     ld   HL, wSRAMSaveHeader                           ;; 02:4bb2 $21 $a7 $d7
-    ld   A, [wD885]                                    ;; 02:4bb5 $fa $85 $d8
+    ld   A, [wNameEntryNameLength]                     ;; 02:4bb5 $fa $85 $d8
     ld   E, A                                          ;; 02:4bb8 $5f
     ld   D, $00                                        ;; 02:4bb9 $16 $00
     add  HL, DE                                        ;; 02:4bbb $19
@@ -1765,7 +1765,7 @@ call_02_4cf7:
     cp   A, $1b                                        ;; 02:4d12 $fe $1b
     jp   Z, jp_02_71fb                                 ;; 02:4d14 $ca $fb $71
     cp   A, $1e                                        ;; 02:4d17 $fe $1e
-    jp   Z, jp_02_52c6                                 ;; 02:4d19 $ca $c6 $52
+    jp   Z, windowNamingEntryAddLetter                 ;; 02:4d19 $ca $c6 $52
     cp   A, $1f                                        ;; 02:4d1c $fe $1f
     jp   Z, menuSelectionTitleScreen                   ;; 02:4d1e $ca $9f $7b
     call loadRegisterState1                            ;; 02:4d21 $cd $5b $6d
@@ -2583,7 +2583,7 @@ call_02_5292:
     call setMenuStateCurrentFunction                   ;; 02:52c2 $cd $98 $6c
     ret                                                ;; 02:52c5 $c9
 
-jp_02_52c6:
+windowNamingEntryAddLetter:
     call getSelectedMenuIndexes                        ;; 02:52c6 $cd $b0 $57
     push DE                                            ;; 02:52c9 $d5
     push HL                                            ;; 02:52ca $e5
@@ -2597,7 +2597,7 @@ jp_02_52c6:
     ld   HL, windowData.namingScreenTop                ;; 02:52d6 $21 $cc $5c
     call call_02_57c4                                  ;; 02:52d9 $cd $c4 $57
     ld   DE, $208                                      ;; 02:52dc $11 $08 $02
-    ld   HL, wD885                                     ;; 02:52df $21 $85 $d8
+    ld   HL, wNameEntryNameLength                      ;; 02:52df $21 $85 $d8
     ld   A, [HL]                                       ;; 02:52e2 $7e
     inc  A                                             ;; 02:52e3 $3c
     cp   A, $05                                        ;; 02:52e4 $fe $05
@@ -2614,7 +2614,7 @@ jp_02_52c6:
     add  HL, DE                                        ;; 02:52f4 $19
     ld   A, C                                          ;; 02:52f5 $79
     ld   [HL], A                                       ;; 02:52f6 $77
-    ld   A, [wD885]                                    ;; 02:52f7 $fa $85 $d8
+    ld   A, [wNameEntryNameLength]                     ;; 02:52f7 $fa $85 $d8
     ld   B, A                                          ;; 02:52fa $47
     ld   C, $01                                        ;; 02:52fb $0e $01
     ld   HL, wSRAMSaveHeader                           ;; 02:52fd $21 $a7 $d7
@@ -4817,7 +4817,7 @@ processWindowInput:
     cp   A, $1e                                        ;; 02:6946 $fe $1e
     ret  NZ                                            ;; 02:6948 $c0
 ; Everything from here on deals with the naming screen
-    ld   A, [wD885]                                    ;; 02:6949 $fa $85 $d8
+    ld   A, [wNameEntryNameLength]                     ;; 02:6949 $fa $85 $d8
     and  A, A                                          ;; 02:694c $a7
     ret  Z                                             ;; 02:694d $c8
     push HL                                            ;; 02:694e $e5
@@ -4856,7 +4856,7 @@ processWindowInput:
     ld   [wWindowFlags], A                             ;; 02:6981 $ea $74 $d8
     xor  A, A                                          ;; 02:6984 $af
     ld   [wDrawWindowStep], A                          ;; 02:6985 $ea $54 $d8
-    ld   [wD885], A                                    ;; 02:6988 $ea $85 $d8
+    ld   [wNameEntryNameLength], A                     ;; 02:6988 $ea $85 $d8
     jp   processWindowInput.button                     ;; 02:698b $c3 $c4 $68
 .dismiss_naming_screen:
     xor  A, A                                          ;; 02:698e $af

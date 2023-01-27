@@ -1358,7 +1358,7 @@ wDualCharacterPosition:
 wVideoWYBackup:
     ds 1                                               ;; d884
 
-wD885:
+wNameEntryNameLength:
     ds 1                                               ;; d885
 
 wTitleScreenState:

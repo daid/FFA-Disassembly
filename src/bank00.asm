@@ -9402,7 +9402,7 @@ scriptOpCodeStartNameEntry:
     ld   HL, wWindowFlags                              ;; 00:39e8 $21 $74 $d8
     res  5, [HL]                                       ;; 00:39eb $cb $ae
     xor  A, A                                          ;; 00:39ed $af
-    ld   [wD885], A                                    ;; 00:39ee $ea $85 $d8
+    ld   [wNameEntryNameLength], A                     ;; 00:39ee $ea $85 $d8
     ld   HL, wSRAMSaveHeader                           ;; 00:39f1 $21 $a7 $d7
     ld   B, $04                                        ;; 00:39f4 $06 $04
 .loop:
