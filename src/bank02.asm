@@ -1062,7 +1062,7 @@ gameStateMenuJumptable:
     dw   call_02_4b4b                                  ;; 02:4808 pP
     dw   call_02_4b72                                  ;; 02:480a pP
     dw   call_02_4b2e                                  ;; 02:480c pP
-    dw   call_02_4b93                                  ;; 02:480e pP
+    dw   windowDismiss                                 ;; 02:480e pP
     dw   vendorShowBuyMessage                          ;; 02:4810 pP
     dw   call_02_5182                                  ;; 02:4812 pP
     dw   call_02_51d5                                  ;; 02:4814 pP
@@ -1567,12 +1567,13 @@ call_02_4b7b:
     call setMenuStateCurrentFunction                   ;; 02:4b8f $cd $98 $6c
     ret                                                ;; 02:4b92 $c9
 
-call_02_4b93:
+windowDismiss:
     ld   B, $00                                        ;; 02:4b93 $06 $00
     call setMenuStateCurrentFunction                   ;; 02:4b95 $cd $98 $6c
     ld   A, [wDialogType]                              ;; 02:4b98 $fa $4a $d8
     cp   A, $0b                                        ;; 02:4b9b $fe $0b
-    jp   Z, jp_02_5638                                 ;; 02:4b9d $ca $38 $56
+; Vendor
+    jp   Z, windowReturnToScript                       ;; 02:4b9d $ca $38 $56
     ret                                                ;; 02:4ba0 $c9
 
 jp_02_4ba1:
@@ -2887,7 +2888,7 @@ jp_02_54a6:
     dec  C                                             ;; 02:54ac $0d
     jp   Z, .jp_02_55bb                                ;; 02:54ad $ca $bb $55
     dec  C                                             ;; 02:54b0 $0d
-    jp   NZ, jp_02_5638                                ;; 02:54b1 $c2 $38 $56
+    jp   NZ, windowReturnToScript                      ;; 02:54b1 $c2 $38 $56
     ld   B, $40                                        ;; 02:54b4 $06 $40
     ld   HL, wVendorSellIDs                            ;; 02:54b6 $21 $0f $d7
     push HL                                            ;; 02:54b9 $e5
@@ -3165,7 +3166,8 @@ call_02_55c6:
     jr   NZ, call_02_55c6.loop_3                       ;; 02:5635 $20 $df
     ret                                                ;; 02:5637 $c9
 
-jp_02_5638:
+; Used by script triggered windows (naming, save/load, and status) to continue the script.
+windowReturnToScript:
     ld   A, [wWindowMainGameStateBackup]               ;; 02:5638 $fa $62 $d8
     ld   [wMainGameState], A                           ;; 02:563b $ea $a0 $c0
     ld   A, $05                                        ;; 02:563e $3e $05
@@ -4814,6 +4816,7 @@ processWindowInput:
     ld   A, [wDialogType]                              ;; 02:6943 $fa $4a $d8
     cp   A, $1e                                        ;; 02:6946 $fe $1e
     ret  NZ                                            ;; 02:6948 $c0
+; Everything from here on deals with the naming screen
     ld   A, [wD885]                                    ;; 02:6949 $fa $85 $d8
     and  A, A                                          ;; 02:694c $a7
     ret  Z                                             ;; 02:694d $c8
@@ -4847,7 +4850,7 @@ processWindowInput:
     pop  DE                                            ;; 02:6977 $d1
     pop  HL                                            ;; 02:6978 $e1
     bit  5, A                                          ;; 02:6979 $cb $6f
-    jr   NZ, .jr_02_698e                               ;; 02:697b $20 $11
+    jr   NZ, .dismiss_naming_screen                    ;; 02:697b $20 $11
     set  5, A                                          ;; 02:697d $cb $ef
     set  6, A                                          ;; 02:697f $cb $f7
     ld   [wWindowFlags], A                             ;; 02:6981 $ea $74 $d8
@@ -4855,7 +4858,7 @@ processWindowInput:
     ld   [wDrawWindowStep], A                          ;; 02:6985 $ea $54 $d8
     ld   [wD885], A                                    ;; 02:6988 $ea $85 $d8
     jp   processWindowInput.button                     ;; 02:698b $c3 $c4 $68
-.jr_02_698e:
+.dismiss_naming_screen:
     xor  A, A                                          ;; 02:698e $af
     ld   [wDrawWindowStep], A                          ;; 02:698f $ea $54 $d8
     ld   [wMenuStateCurrentFunction], A                ;; 02:6992 $ea $53 $d8
@@ -4869,7 +4872,7 @@ processWindowInput:
     ld   [wScriptPointerHigh], A                       ;; 02:69a0 $ea $b7 $d8
     ld   A, L                                          ;; 02:69a3 $7d
     ld   [wScriptPointerLow], A                        ;; 02:69a4 $ea $b6 $d8
-    jp   jp_02_5638                                    ;; 02:69a7 $c3 $38 $56
+    jp   windowReturnToScript                          ;; 02:69a7 $c3 $38 $56
 
 call_02_69aa:
     ld   A, [wDialogType]                              ;; 02:69aa $fa $4a $d8
