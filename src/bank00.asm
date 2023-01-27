@@ -289,8 +289,8 @@ processPhysicsForPlayer_trampoline:
 updatePlayerPostion_trampoline:
     jp_to_bank 01, updatePlayerPostion                 ;; 00:023e $f5 $3e $03 $c3 $d7 $1e
 
-call_00_0244:
-    jp_to_bank 01, call_01_4f7b                        ;; 00:0244 $f5 $3e $05 $c3 $d7 $1e
+playerCollisionHandling_trampoline:
+    jp_to_bank 01, playerCollisionHandling             ;; 00:0244 $f5 $3e $05 $c3 $d7 $1e
 
 doSwordFlyingAttack_trampoline:
     jp_to_bank 01, doSwordFlyingAttack                 ;; 00:024a $f5 $3e $06 $c3 $d7 $1e
@@ -1724,7 +1724,7 @@ call_00_0a33:
     ret                                                ;; 00:0a5a $c9
 .player:
     pop  AF                                            ;; 00:0a5b $f1
-    call call_00_0244                                  ;; 00:0a5c $cd $44 $02
+    call playerCollisionHandling_trampoline            ;; 00:0a5c $cd $44 $02
     ret                                                ;; 00:0a5f $c9
 .playerOrFollowerAttack:
     pop  AF                                            ;; 00:0a60 $f1

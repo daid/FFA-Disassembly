@@ -14,7 +14,7 @@ data_01_4000:
     call_to_bank_target processPhysicsForPlayer        ;; 01:4004 pP
     call_to_bank_target updatePlayerPostion            ;; 01:4006 pP
     call_to_bank_target createPlayerObject             ;; 01:4008 pP
-    call_to_bank_target call_01_4f7b                   ;; 01:400a pP
+    call_to_bank_target playerCollisionHandling        ;; 01:400a pP
     call_to_bank_target doSwordFlyingAttack            ;; 01:400c ??
     call_to_bank_target playerHit                      ;; 01:400e pP
     call_to_bank_target setPlayerNormalSprite          ;; 01:4010 pP
@@ -2150,7 +2150,7 @@ call_01_4f65:
     ld   B, $21                                        ;; 01:4f78 $06 $21
     ret                                                ;; 01:4f7a $c9
 
-call_01_4f7b:
+playerCollisionHandling:
     ld   A, B                                          ;; 01:4f7b $78
     and  A, $f0                                        ;; 01:4f7c $e6 $f0
     cp   A, $90                                        ;; 01:4f7e $fe $90
@@ -2158,15 +2158,15 @@ call_01_4f7b:
     cp   A, $20                                        ;; 01:4f82 $fe $20
     jr   Z, .playerHit                                 ;; 01:4f84 $28 $17
     cp   A, $a0                                        ;; 01:4f86 $fe $a0
-    jp   Z, .jp_01_5084                                ;; 01:4f88 $ca $84 $50
+    jp   Z, .pushable                                  ;; 01:4f88 $ca $84 $50
     cp   A, $b0                                        ;; 01:4f8b $fe $b0
-    jp   Z, .jp_01_5084                                ;; 01:4f8d $ca $84 $50
+    jp   Z, .pushable                                  ;; 01:4f8d $ca $84 $50
     cp   A, $60                                        ;; 01:4f90 $fe $60
     jr   Z, .playerHit                                 ;; 01:4f92 $28 $09
     cp   A, $70                                        ;; 01:4f94 $fe $70
     jr   Z, .playerHit                                 ;; 01:4f96 $28 $05
     cp   A, $80                                        ;; 01:4f98 $fe $80
-    jr   Z, .jr_01_5010                                ;; 01:4f9a $28 $74
+    jr   Z, .scriptOnTouch                             ;; 01:4f9a $28 $74
     ret                                                ;; 01:4f9c $c9
 .playerHit:
     push BC                                            ;; 01:4f9d $c5
@@ -2190,11 +2190,12 @@ call_01_4f7b:
     call snapObjectToNearestTile8                      ;; 01:4fc4 $cd $ba $29
     pop  AF                                            ;; 01:4fc7 $f1
     bit  0, A                                          ;; 01:4fc8 $cb $47
-    jr   NZ, .jr_01_4fee                               ;; 01:4fca $20 $22
+    jr   NZ, .eastwest_hit                             ;; 01:4fca $20 $22
     bit  1, A                                          ;; 01:4fcc $cb $4f
-    jr   NZ, .jr_01_4fee                               ;; 01:4fce $20 $1e
+    jr   NZ, .eastwest_hit                             ;; 01:4fce $20 $1e
     bit  2, A                                          ;; 01:4fd0 $cb $57
-    jr   NZ, .jr_01_4ffd                               ;; 01:4fd2 $20 $29
+    jr   NZ, .north_hit                                ;; 01:4fd2 $20 $29
+;.south_hit:
     call getPlayerY                                    ;; 01:4fd4 $cd $99 $02
     and  A, $07                                        ;; 01:4fd7 $e6 $07
     jr   Z, .jr_01_500c                                ;; 01:4fd9 $28 $31
@@ -2203,9 +2204,10 @@ call_01_4f7b:
     ld   H, A                                          ;; 01:4fdd $67
     ld   L, $00                                        ;; 01:4fde $2e $00
     ret                                                ;; 01:4fe0 $c9
+; This looks like code intended for either east or west. Is there a bug here?
     db   $cd, $93, $02, $e6, $07, $28, $24, $2f        ;; 01:4fe1 ????????
     db   $3c, $6f, $26, $00, $c9                       ;; 01:4fe9 ?????
-.jr_01_4fee:
+.eastwest_hit:
     call getPlayerX                                    ;; 01:4fee $cd $93 $02
     and  A, $07                                        ;; 01:4ff1 $e6 $07
     jr   Z, .jr_01_500c                                ;; 01:4ff3 $28 $17
@@ -2215,7 +2217,7 @@ call_01_4f7b:
     ld   L, A                                          ;; 01:4ff9 $6f
     ld   H, $00                                        ;; 01:4ffa $26 $00
     ret                                                ;; 01:4ffc $c9
-.jr_01_4ffd:
+.north_hit:
     call getPlayerY                                    ;; 01:4ffd $cd $99 $02
     and  A, $07                                        ;; 01:5000 $e6 $07
     jr   Z, .jr_01_500c                                ;; 01:5002 $28 $08
@@ -2228,7 +2230,7 @@ call_01_4f7b:
 .jr_01_500c:
     ld   HL, $00                                       ;; 01:500c $21 $00 $00
     ret                                                ;; 01:500f $c9
-.jr_01_5010:
+.scriptOnTouch:
     push BC                                            ;; 01:5010 $c5
     ld   C, $04                                        ;; 01:5011 $0e $04
     call snapObjectToNearestTile8                      ;; 01:5013 $cd $ba $29
@@ -2301,7 +2303,7 @@ call_01_4f7b:
     call updateObjectPosition_3_trampoline             ;; 01:507d $cd $8f $28
     ld   HL, $00                                       ;; 01:5080 $21 $00 $00
     ret                                                ;; 01:5083 $c9
-.jp_01_5084:
+.pushable:
     ld   HL, $00                                       ;; 01:5084 $21 $00 $00
     ret                                                ;; 01:5087 $c9
 
