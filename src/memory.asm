@@ -85,7 +85,7 @@ wScratchBankCallH:
 wBankStack:
     ds 64                                              ;; c0c0
 
-; START OF AUDIO ENGINE SRAM
+; START OF AUDIO ENGINE WRAM
 wMusicTempoTimeCounter:
     ds 1                                               ;; c100
 
@@ -306,7 +306,7 @@ wMusicBrokenDoubleTimeMode:
 wSoundsMusicRestorePitchChannel1:
     ds 1                                               ;; c1c9
 ; One byte long
-; END OF AUDIO ENGINE SRAM  (c1cb is not included)
+; END OF AUDIO ENGINE WRAM  (c1cb is not included)
 .high:
     ds 54                                              ;; c1ca
 
@@ -1122,7 +1122,8 @@ wEquippedWeaponElements:
 wStatStaminaBuffBackup:
     ds 5                                               ;; d7d8
 
-wD7DD:
+; Two blank lines before AP and DP
+wStatusScreenAPDP:
     ds 2                                               ;; d7dd
 
 ;Attack power, depending on stats and equiped weapon

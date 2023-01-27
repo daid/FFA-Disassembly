@@ -1312,7 +1312,7 @@ data_02_49af:
     data_pbbp statusScreenStatLabels, $13, $01, $d612  ;; 02:49af ....pP $00
     data_pbbp $0000, $14, $01, $d612                   ;; 02:49b5 ....pP $01
     data_pbbp statusScreenHPLabel, $1a, $01, $d612     ;; 02:49bb ....pP $02
-    data_pbbp wD7DD, $15, $ff, $0000                   ;; 02:49c1 ...... $03
+    data_pbbp wStatusScreenAPDP, $15, $ff, $0000       ;; 02:49c1 ...... $03
 
 call_02_49c7:
     ld   A, [wDialogType]                              ;; 02:49c7 $fa $4a $d8
@@ -4242,7 +4242,7 @@ windowSecondPointers:
     dw   levelUpText2                                  ;; 02:5dc4 .. $17
     dw   levelUpStatOptions                            ;; 02:5dc6 .. $18
     dw   yesNoOptions                                  ;; 02:5dc8 .. $19
-    dw   wD7DD                                         ;; 02:5dca .. $1a
+    dw   wStatusScreenAPDP                             ;; 02:5dca .. $1a
     dw   $0000                                         ;; 02:5dcc .. $1b
     dw   $0000                                         ;; 02:5dce .. $1c
     dw   boyLabel                                      ;; 02:5dd0 .. $1d
@@ -5728,7 +5728,7 @@ initStartingStatsAndTimers:
     ld   [HL], E                                       ;; 02:6e8a $73
     inc  HL                                            ;; 02:6e8b $23
     ld   [HL], D                                       ;; 02:6e8c $72
-    ld   HL, wD7DD                                     ;; 02:6e8d $21 $dd $d7
+    ld   HL, wStatusScreenAPDP                         ;; 02:6e8d $21 $dd $d7
     ld   A, $81                                        ;; 02:6e90 $3e $81
     ld   [HL+], A                                      ;; 02:6e92 $22
     inc  A                                             ;; 02:6e93 $3c
@@ -6482,7 +6482,7 @@ loadSRAMInitGame:
     pop  BC                                            ;; 02:737d $c1
     dec  B                                             ;; 02:737e $05
     jr   NZ, loadSRAMInitGame.loop_2                   ;; 02:737f $20 $dc
-    ld   HL, wD7DD                                     ;; 02:7381 $21 $dd $d7
+    ld   HL, wStatusScreenAPDP                         ;; 02:7381 $21 $dd $d7
     ld   A, $81                                        ;; 02:7384 $3e $81
     ld   [HL+], A                                      ;; 02:7386 $22
     inc  A                                             ;; 02:7387 $3c
@@ -6495,7 +6495,7 @@ loadSRAMInitGame:
     ld   A, [wStatusEffect]                            ;; 02:7394 $fa $c0 $d7
     ld   C, A                                          ;; 02:7397 $4f
     ld   B, $00                                        ;; 02:7398 $06 $00
-    call call_02_7859                                  ;; 02:739a $cd $59 $78
+    call startStatusEffects                            ;; 02:739a $cd $59 $78
     ld   A, [wLevel]                                   ;; 02:739d $fa $ba $d7
     call setNextXPLevel                                ;; 02:73a0 $cd $a3 $3e
     pop  HL                                            ;; 02:73a3 $e1
@@ -7268,7 +7268,7 @@ jr_02_7827:
     ld   A, [wStatusEffect]                            ;; 02:783d $fa $c0 $d7
     ld   B, A                                          ;; 02:7840 $47
     and  A, C                                          ;; 02:7841 $a1
-    jr   Z, call_02_7859                               ;; 02:7842 $28 $15
+    jr   Z, startStatusEffects                         ;; 02:7842 $28 $15
     ld   A, C                                          ;; 02:7844 $79
     cpl                                                ;; 02:7845 $2f
     rrca                                               ;; 02:7846 $0f
@@ -7282,7 +7282,8 @@ jr_02_7827:
     rrca                                               ;; 02:7856 $0f
     jr   startFujiStatusEffect                         ;; 02:7857 $18 $17
 
-call_02_7859:
+; B and C are both status effect bytes, one original and one new.
+startStatusEffects:
     ld   A, B                                          ;; 02:7859 $78
     or   A, C                                          ;; 02:785a $b1
     ld   [wStatusEffect], A                            ;; 02:785b $ea $c0 $d7
