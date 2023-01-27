@@ -854,11 +854,9 @@ wWindowBackgroundSaveBuffer:
 ; but with only 3 bytes storage, it just calls an actual script in one of the script banks.
 wOpenChestScript1:
     ds 3                                               ;; d613
-
-wD616:
+._3:
     ds 1                                               ;; d616
-
-wD617:
+._4:
     ds 12                                              ;; d617
 
 ; Script that is run when you open a chest. Actual script code is stored in here,
@@ -868,8 +866,7 @@ wOpenChestScript2:
 
 wOpenChestScript3:
     ds 4                                               ;; d633
-
-wD637:
+._4:
     ds 76                                              ;; d637
 
 ; End of the script stack, used by script call/loop operations

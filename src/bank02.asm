@@ -6414,13 +6414,14 @@ jp_02_72be:
     ld   B, $08                                        ;; 02:730d $06 $08
     call readDEtimesBtoSRAM                            ;; 02:730f $cd $3f $74
     call disableSRAM                                   ;; 02:7312 $cd $5e $74
-    call call_02_7322                                  ;; 02:7315 $cd $22 $73
+    call loadSRAMInitGame                              ;; 02:7315 $cd $22 $73
     call getEquippedWeaponElements                     ;; 02:7318 $cd $56 $71
     call getEquippedItemElements                       ;; 02:731b $cd $65 $71
     call call_02_7421                                  ;; 02:731e $cd $21 $74
     ret                                                ;; 02:7321 $c9
 
-call_02_7322:
+; Inits most of the game related things. Creates a script to load the proper room, follower, and more.
+loadSRAMInitGame:
     ld   HL, wOpenChestScript1                         ;; 02:7322 $21 $13 $d6
     push HL                                            ;; 02:7325 $e5
     ld   HL, wSRAMSaveHeader._3                        ;; 02:7326 $21 $aa $d7
@@ -6444,13 +6445,13 @@ call_02_7322:
     ld   [DE], A                                       ;; 02:7349 $12
     ld   A, [HL+]                                      ;; 02:734a $2a
     and  A, A                                          ;; 02:734b $a7
-    jr   Z, call_02_7322.initEquipmentInventoryPowers  ;; 02:734c $28 $03
+    jr   Z, loadSRAMInitGame.init_power                ;; 02:734c $28 $03
     ld   A, $01                                        ;; 02:734e $3e $01
     ld   [DE], A                                       ;; 02:7350 $12
-.initEquipmentInventoryPowers:
+.init_power:
     inc  DE                                            ;; 02:7351 $13
     dec  B                                             ;; 02:7352 $05
-    jr   NZ, call_02_7322.loop_1                       ;; 02:7353 $20 $f3
+    jr   NZ, loadSRAMInitGame.loop_1                   ;; 02:7353 $20 $f3
     ld   HL, wEquipmentInventory                       ;; 02:7355 $21 $dd $d6
     ld   DE, wEquipmentInventoryPowers                 ;; 02:7358 $11 $b3 $d6
     ld   B, $0c                                        ;; 02:735b $06 $0c
@@ -6480,7 +6481,7 @@ call_02_7322:
     inc  DE                                            ;; 02:737c $13
     pop  BC                                            ;; 02:737d $c1
     dec  B                                             ;; 02:737e $05
-    jr   NZ, call_02_7322.loop_2                       ;; 02:737f $20 $dc
+    jr   NZ, loadSRAMInitGame.loop_2                   ;; 02:737f $20 $dc
     ld   HL, wD7DD                                     ;; 02:7381 $21 $dd $d7
     ld   A, $81                                        ;; 02:7384 $3e $81
     ld   [HL+], A                                      ;; 02:7386 $22
@@ -6499,10 +6500,10 @@ call_02_7322:
     call setNextXPLevel                                ;; 02:73a0 $cd $a3 $3e
     pop  HL                                            ;; 02:73a3 $e1
     call loadSRAMCreateInitScript                      ;; 02:73a4 $cd $7f $7a
-    call call_02_7abf                                  ;; 02:73a7 $cd $bf $7a
-    ld   A, [wD617]                                    ;; 02:73aa $fa $17 $d6
+    call loadSRAMInitScriptOpenDoorIfInDoorway         ;; 02:73a7 $cd $bf $7a
+    ld   A, [wOpenChestScript1._4]                     ;; 02:73aa $fa $17 $d6
     ld   D, A                                          ;; 02:73ad $57
-    ld   A, [wD616]                                    ;; 02:73ae $fa $16 $d6
+    ld   A, [wOpenChestScript1._3]                     ;; 02:73ae $fa $16 $d6
     ld   E, A                                          ;; 02:73b1 $5f
     ld   A, [wScriptFlags0B]                           ;; 02:73b2 $fa $d1 $d7
     ld   B, A                                          ;; 02:73b5 $47
@@ -6512,7 +6513,7 @@ call_02_7322:
     and  A, A                                          ;; 02:73bc $a7
     jr   Z, .jr_02_73f1                                ;; 02:73bd $28 $32
     push DE                                            ;; 02:73bf $d5
-    ld   DE, .data_02_7406                             ;; 02:73c0 $11 $06 $74
+    ld   DE, .followerInitArgs                         ;; 02:73c0 $11 $06 $74
     ld   B, $07                                        ;; 02:73c3 $06 $07
 .loop_3:
     rlca                                               ;; 02:73c5 $07
@@ -6521,7 +6522,7 @@ call_02_7322:
     inc  DE                                            ;; 02:73c9 $13
     inc  DE                                            ;; 02:73ca $13
     dec  B                                             ;; 02:73cb $05
-    jr   NZ, call_02_7322.loop_3                       ;; 02:73cc $20 $f7
+    jr   NZ, loadSRAMInitGame.loop_3                   ;; 02:73cc $20 $f7
     ld   A, [wScriptFlags04]                           ;; 02:73ce $fa $ca $d7
     bit  6, A                                          ;; 02:73d1 $cb $77
     jr   NZ, .jr_02_73d8                               ;; 02:73d3 $20 $03
@@ -6529,20 +6530,24 @@ call_02_7322:
     inc  DE                                            ;; 02:73d6 $13
     inc  DE                                            ;; 02:73d7 $13
 .jr_02_73d8:
+; $fc = scriptOpCodeSetNPCTypes
     ld   A, $fc                                        ;; 02:73d8 $3e $fc
     ld   [HL+], A                                      ;; 02:73da $22
     ld   A, [DE]                                       ;; 02:73db $1a
     ld   [HL+], A                                      ;; 02:73dc $22
     inc  DE                                            ;; 02:73dd $13
+; $fd = scriptOpCodeSpawnNPC
     ld   A, $fd                                        ;; 02:73de $3e $fd
     ld   [HL+], A                                      ;; 02:73e0 $22
     ld   A, [DE]                                       ;; 02:73e1 $1a
     ld   [HL+], A                                      ;; 02:73e2 $22
     inc  DE                                            ;; 02:73e3 $13
+; $9c = scriptOpCodeGiveFollower
     ld   A, $9c                                        ;; 02:73e4 $3e $9c
     ld   [HL+], A                                      ;; 02:73e6 $22
     ld   A, [DE]                                       ;; 02:73e7 $1a
     ld   [HL+], A                                      ;; 02:73e8 $22
+; $99 = scriptOpCodeFollowerSetPosition
     ld   A, $99                                        ;; 02:73e9 $3e $99
     ld   [HL+], A                                      ;; 02:73eb $22
     pop  DE                                            ;; 02:73ec $d1
@@ -6551,20 +6556,23 @@ call_02_7322:
     ld   [HL], D                                       ;; 02:73ef $72
     inc  HL                                            ;; 02:73f0 $23
 .jr_02_73f1:
-    ld   A, [wD637]                                    ;; 02:73f1 $fa $37 $d6
+    ld   A, [wOpenChestScript3._4]                     ;; 02:73f1 $fa $37 $d6
     and  A, A                                          ;; 02:73f4 $a7
     jr   Z, .jr_02_73fa                                ;; 02:73f5 $28 $03
+; $9f + 1 = scriptOpCodePlayerOnChocobo, and other forms follow from there.
     add  A, $9f                                        ;; 02:73f7 $c6 $9f
     ld   [HL+], A                                      ;; 02:73f9 $22
 .jr_02_73fa:
+; $ec = scriptOpCodeRunRoomScript
     ld   A, $ec                                        ;; 02:73fa $3e $ec
     ld   [HL+], A                                      ;; 02:73fc $22
+; $00 = scriptOpCodeEND
     xor  A, A                                          ;; 02:73fd $af
     ld   [HL], A                                       ;; 02:73fe $77
     ld   HL, $0b                                       ;; 02:73ff $21 $0b $00
     call runScriptByIndex                              ;; 02:7402 $cd $ad $31
     ret                                                ;; 02:7405 $c9
-.data_02_7406:
+.followerInitArgs:
     db   $32, $01, $01, $4d, $00, $02, $4e, $02        ;; 02:7406 ????????
     db   $03, $4f, $00, $04, $51, $00, $05, $41        ;; 02:740e ????????
     db   $02, $06, $52, $00, $07, $65, $00, $08        ;; 02:7416 ????????
@@ -7677,7 +7685,7 @@ loadSRAMInitScriptDisplayMetaTile:
     inc  DE                                            ;; 02:7aac $13
     push DE                                            ;; 02:7aad $d5
     ld   [HL+], A                                      ;; 02:7aae $22
-    ld   DE, wD616                                     ;; 02:7aaf $11 $16 $d6
+    ld   DE, wOpenChestScript1._3                      ;; 02:7aaf $11 $16 $d6
     ld   A, [DE]                                       ;; 02:7ab2 $1a
     inc  DE                                            ;; 02:7ab3 $13
     ld   B, A                                          ;; 02:7ab4 $47
@@ -7691,45 +7699,47 @@ loadSRAMInitScriptDisplayMetaTile:
     pop  DE                                            ;; 02:7abd $d1
     ret                                                ;; 02:7abe $c9
 
-call_02_7abf:
+; Checks whether you are standing in a doorway and if so generates an open door script command for it.
+loadSRAMInitScriptOpenDoorIfInDoorway:
     push HL                                            ;; 02:7abf $e5
-    ld   A, [wD617]                                    ;; 02:7ac0 $fa $17 $d6
+    ld   A, [wOpenChestScript1._4]                     ;; 02:7ac0 $fa $17 $d6
     ld   D, A                                          ;; 02:7ac3 $57
-    ld   A, [wD616]                                    ;; 02:7ac4 $fa $16 $d6
+    ld   A, [wOpenChestScript1._3]                     ;; 02:7ac4 $fa $16 $d6
     ld   E, A                                          ;; 02:7ac7 $5f
+; $e0 = scriptOpCodeOpenNorthDoor
     ld   C, $e0                                        ;; 02:7ac8 $0e $e0
     ld   B, $04                                        ;; 02:7aca $06 $04
-    ld   HL, .data_02_7aed                             ;; 02:7acc $21 $ed $7a
-.jr_02_7acf:
+    ld   HL, .doorTileLocations                        ;; 02:7acc $21 $ed $7a
+.loop_outer:
     push BC                                            ;; 02:7acf $c5
-.jr_02_7ad0:
+.loop_inner:
     ld   C, [HL]                                       ;; 02:7ad0 $4e
     inc  HL                                            ;; 02:7ad1 $23
     ld   B, [HL]                                       ;; 02:7ad2 $46
     inc  HL                                            ;; 02:7ad3 $23
     ld   A, B                                          ;; 02:7ad4 $78
     or   A, C                                          ;; 02:7ad5 $b1
-    jr   Z, .jr_02_7ae5                                ;; 02:7ad6 $28 $0d
+    jr   Z, .break_inner                               ;; 02:7ad6 $28 $0d
     ld   A, B                                          ;; 02:7ad8 $78
     cp   A, D                                          ;; 02:7ad9 $ba
-    jr   NZ, .jr_02_7ad0                               ;; 02:7ada $20 $f4
+    jr   NZ, .loop_inner                               ;; 02:7ada $20 $f4
     ld   A, C                                          ;; 02:7adc $79
     cp   A, E                                          ;; 02:7add $bb
-    jr   NZ, .jr_02_7ad0                               ;; 02:7ade $20 $f0
+    jr   NZ, .loop_inner                               ;; 02:7ade $20 $f0
     pop  BC                                            ;; 02:7ae0 $c1
     pop  HL                                            ;; 02:7ae1 $e1
     ld   [HL], C                                       ;; 02:7ae2 $71
     inc  HL                                            ;; 02:7ae3 $23
     ret                                                ;; 02:7ae4 $c9
-.jr_02_7ae5:
+.break_inner:
     pop  BC                                            ;; 02:7ae5 $c1
     inc  C                                             ;; 02:7ae6 $0c
     inc  C                                             ;; 02:7ae7 $0c
     dec  B                                             ;; 02:7ae8 $05
-    jr   NZ, .jr_02_7acf                               ;; 02:7ae9 $20 $e4
+    jr   NZ, .loop_outer                               ;; 02:7ae9 $20 $e4
     pop  HL                                            ;; 02:7aeb $e1
     ret                                                ;; 02:7aec $c9
-.data_02_7aed:
+.doorTileLocations:
     db   $09, $00, $09, $ff, $00, $00, $09, $0d        ;; 02:7aed ????????
     db   $09, $0e, $09, $0f, $00, $00, $11, $06        ;; 02:7af5 ????????
     db   $12, $06, $13, $06, $11, $07, $12, $07        ;; 02:7afd ????????
