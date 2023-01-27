@@ -6019,6 +6019,7 @@ call_01_7639:
     ld   E, [HL]                                       ;; 01:7645 $5e
     ret                                                ;; 01:7646 $c9
 
+; Some alternate jumping routine
 call_01_7647:
     push AF                                            ;; 01:7647 $f5
     push BC                                            ;; 01:7648 $c5
@@ -6044,23 +6045,24 @@ call_01_7647:
     pop  BC                                            ;; 01:7660 $c1
     ld   A, $80                                        ;; 01:7661 $3e $80
     cp   A, E                                          ;; 01:7663 $bb
-    jr   Z, .jr_01_76a7                                ;; 01:7664 $28 $41
+    jr   Z, .finished                                  ;; 01:7664 $28 $41
     ld   A, L                                          ;; 01:7666 $7d
     bit  0, A                                          ;; 01:7667 $cb $47
-    jr   NZ, .jr_01_767a                               ;; 01:7669 $20 $0f
+    jr   NZ, .east                                     ;; 01:7669 $20 $0f
     bit  1, A                                          ;; 01:766b $cb $4f
-    jr   NZ, .jr_01_767c                               ;; 01:766d $20 $0d
+    jr   NZ, .west                                     ;; 01:766d $20 $0d
     bit  2, A                                          ;; 01:766f $cb $57
-    jr   NZ, .jr_01_7686                               ;; 01:7671 $20 $13
+    jr   NZ, .north                                    ;; 01:7671 $20 $13
+;.south:
     ld   A, D                                          ;; 01:7673 $7a
     cpl                                                ;; 01:7674 $2f
     inc  A                                             ;; 01:7675 $3c
     ld   D, E                                          ;; 01:7676 $53
     ld   E, A                                          ;; 01:7677 $5f
     jr   .jr_01_768b                                   ;; 01:7678 $18 $11
-.jr_01_767a:
+.east:
     jr   .jr_01_768b                                   ;; 01:767a $18 $0f
-.jr_01_767c:
+.west:
     ld   A, D                                          ;; 01:767c $7a
     cpl                                                ;; 01:767d $2f
     inc  A                                             ;; 01:767e $3c
@@ -6070,7 +6072,7 @@ call_01_7647:
     inc  A                                             ;; 01:7682 $3c
     ld   E, A                                          ;; 01:7683 $5f
     jr   .jr_01_768b                                   ;; 01:7684 $18 $05
-.jr_01_7686:
+.north:
     ld   A, E                                          ;; 01:7686 $7b
     cpl                                                ;; 01:7687 $2f
     inc  A                                             ;; 01:7688 $3c
@@ -6098,11 +6100,15 @@ call_01_7647:
     pop  AF                                            ;; 01:76a4 $f1
     inc  A                                             ;; 01:76a5 $3c
     ret                                                ;; 01:76a6 $c9
-.jr_01_76a7:
+.finished:
     pop  AF                                            ;; 01:76a7 $f1
     ld   A, $00                                        ;; 01:76a8 $3e $00
     ret                                                ;; 01:76aa $c9
 
+; A = step counter
+; C = object id
+; D = object direction
+; E = some form of argument--for scripts it's the byte value minus $20
 objectJumpHandler:
     push AF                                            ;; 01:76ab $f5
     push BC                                            ;; 01:76ac $c5
@@ -6144,27 +6150,28 @@ objectJumpHandler:
     ld   D, [HL]                                       ;; 01:76d9 $56
     ld   A, $80                                        ;; 01:76da $3e $80
     cp   A, E                                          ;; 01:76dc $bb
-    jr   Z, .jr_01_772a                                ;; 01:76dd $28 $4b
+    jr   Z, .finished                                  ;; 01:76dd $28 $4b
     ld   L, C                                          ;; 01:76df $69
     ld   A, B                                          ;; 01:76e0 $78
     pop  BC                                            ;; 01:76e1 $c1
     push HL                                            ;; 01:76e2 $e5
     ld   L, A                                          ;; 01:76e3 $6f
     bit  0, A                                          ;; 01:76e4 $cb $47
-    jr   NZ, .jr_01_76f7                               ;; 01:76e6 $20 $0f
+    jr   NZ, .east                                     ;; 01:76e6 $20 $0f
     bit  1, A                                          ;; 01:76e8 $cb $4f
-    jr   NZ, .jr_01_76f9                               ;; 01:76ea $20 $0d
+    jr   NZ, .west                                     ;; 01:76ea $20 $0d
     bit  2, A                                          ;; 01:76ec $cb $57
-    jr   NZ, .jr_01_7703                               ;; 01:76ee $20 $13
+    jr   NZ, .north                               ;; 01:76ee $20 $13
+;.south:
     ld   A, D                                          ;; 01:76f0 $7a
     cpl                                                ;; 01:76f1 $2f
     inc  A                                             ;; 01:76f2 $3c
     ld   D, E                                          ;; 01:76f3 $53
     ld   E, A                                          ;; 01:76f4 $5f
     jr   .jr_01_7708                                   ;; 01:76f5 $18 $11
-.jr_01_76f7:
+.east:
     jr   .jr_01_7708                                   ;; 01:76f7 $18 $0f
-.jr_01_76f9:
+.west:
     ld   A, D                                          ;; 01:76f9 $7a
     cpl                                                ;; 01:76fa $2f
     inc  A                                             ;; 01:76fb $3c
@@ -6174,7 +6181,7 @@ objectJumpHandler:
     inc  A                                             ;; 01:76ff $3c
     ld   E, A                                          ;; 01:7700 $5f
     jr   .jr_01_7708                                   ;; 01:7701 $18 $05
-.jr_01_7703:
+.north:
     ld   A, E                                          ;; 01:7703 $7b
     cpl                                                ;; 01:7704 $2f
     inc  A                                             ;; 01:7705 $3c
@@ -6208,7 +6215,7 @@ objectJumpHandler:
     pop  AF                                            ;; 01:7727 $f1
     inc  A                                             ;; 01:7728 $3c
     ret                                                ;; 01:7729 $c9
-.jr_01_772a:
+.finished:
     pop  BC                                            ;; 01:772a $c1
     pop  AF                                            ;; 01:772b $f1
     ld   A, $00                                        ;; 01:772c $3e $00

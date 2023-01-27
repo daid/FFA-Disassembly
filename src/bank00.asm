@@ -2265,11 +2265,11 @@ scriptOpCodePlayerJump:
     pop  HL                                            ;; 00:0d3f $e1
     ld   [wScriptOpCounter], A                         ;; 00:0d40 $ea $99 $d4
     cp   A, $00                                        ;; 00:0d43 $fe $00
-    jr   Z, .jr_00_0d4d                                ;; 00:0d45 $28 $06
+    jr   Z, .done                                      ;; 00:0d45 $28 $06
     ld   A, $08                                        ;; 00:0d47 $3e $08
     ld   [wScriptOpCounter2], A                        ;; 00:0d49 $ea $9a $d4
     ret                                                ;; 00:0d4c $c9
-.jr_00_0d4d:
+.done:
     call getNextScriptInstruction                      ;; 00:0d4d $cd $27 $37
     ret                                                ;; 00:0d50 $c9
 
