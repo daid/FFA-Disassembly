@@ -6498,7 +6498,7 @@ call_02_7322:
     ld   A, [wLevel]                                   ;; 02:739d $fa $ba $d7
     call setNextXPLevel                                ;; 02:73a0 $cd $a3 $3e
     pop  HL                                            ;; 02:73a3 $e1
-    call call_02_7a7f                                  ;; 02:73a4 $cd $7f $7a
+    call loadSRAMCreateInitScript                      ;; 02:73a4 $cd $7f $7a
     call call_02_7abf                                  ;; 02:73a7 $cd $bf $7a
     ld   A, [wD617]                                    ;; 02:73aa $fa $17 $d6
     ld   D, A                                          ;; 02:73ad $57
@@ -7630,8 +7630,11 @@ setWindowDimensions:
     inc  HL                                            ;; 02:7a7d $23
     ret                                                ;; 02:7a7e $c9
 
-call_02_7a7f:
+; Loading a save writes some data into the third temporary script.
+; This copies it and adds opcodes to turn it into a real script.
+loadSRAMCreateInitScript:
     ld   DE, wOpenChestScript3                         ;; 02:7a7f $11 $33 $d6
+; $f4 = scriptOpCodeLoadRoom
     ld   A, $f4                                        ;; 02:7a82 $3e $f4
     ld   [HL+], A                                      ;; 02:7a84 $22
     ld   B, $04                                        ;; 02:7a85 $06 $04
@@ -7640,21 +7643,22 @@ call_02_7a7f:
     ld   [HL+], A                                      ;; 02:7a88 $22
     inc  DE                                            ;; 02:7a89 $13
     dec  B                                             ;; 02:7a8a $05
-    jr   NZ, call_02_7a7f.loop                         ;; 02:7a8b $20 $fa
+    jr   NZ, loadSRAMCreateInitScript.loop             ;; 02:7a8b $20 $fa
     inc  DE                                            ;; 02:7a8d $13
     ld   A, [DE]                                       ;; 02:7a8e $1a
     inc  DE                                            ;; 02:7a8f $13
     ld   B, A                                          ;; 02:7a90 $47
+; $f8 = scriptOpCodeSetMusic
     ld   A, $f8                                        ;; 02:7a91 $3e $f8
     ld   [HL+], A                                      ;; 02:7a93 $22
     ld   [HL], B                                       ;; 02:7a94 $70
     inc  HL                                            ;; 02:7a95 $23
-    call call_02_7aa8                                  ;; 02:7a96 $cd $a8 $7a
+    call loadSRAMInitScriptDisplayMetaTile             ;; 02:7a96 $cd $a8 $7a
     ld   A, B                                          ;; 02:7a99 $78
     srl  A                                             ;; 02:7a9a $cb $3f
     ld   [HL+], A                                      ;; 02:7a9c $22
     inc  HL                                            ;; 02:7a9d $23
-    call call_02_7aa8                                  ;; 02:7a9e $cd $a8 $7a
+    call loadSRAMInitScriptDisplayMetaTile             ;; 02:7a9e $cd $a8 $7a
     ld   A, B                                          ;; 02:7aa1 $78
     inc  A                                             ;; 02:7aa2 $3c
     srl  A                                             ;; 02:7aa3 $cb $3f
@@ -7662,7 +7666,11 @@ call_02_7a7f:
     inc  HL                                            ;; 02:7aa6 $23
     ret                                                ;; 02:7aa7 $c9
 
-call_02_7aa8:
+; Adds a script opcode to display a metatile
+; Then adds the tile number and the y coordinate (but not the x).
+; Return: B = x coordinate
+loadSRAMInitScriptDisplayMetaTile:
+; $b0 = scriptOpCodeSetRoomTile
     ld   A, $b0                                        ;; 02:7aa8 $3e $b0
     ld   [HL+], A                                      ;; 02:7aaa $22
     ld   A, [DE]                                       ;; 02:7aab $1a
