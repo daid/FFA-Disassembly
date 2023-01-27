@@ -496,6 +496,7 @@ wNPCDroppingChest:
     ds 16                                              ;; c5b0
 
 ; 3 records of $0a size, related to projectiles
+; 00: Object ID of the normal object
 ; 01: Delay until next move (initialized from 02)
 ; 02: Movement speed
 ; 08-09: Projectile data table entry pointer

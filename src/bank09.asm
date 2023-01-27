@@ -102,7 +102,7 @@ projectileRunLogic:
     ld   A, [DE]                                       ;; 09:407d $1a
     pop  DE                                            ;; 09:407e $d1
     push AF                                            ;; 09:407f $f5
-    call call_09_41ad                                  ;; 09:4080 $cd $ad $41
+    call rotateVector                                  ;; 09:4080 $cd $ad $41
     pop  AF                                            ;; 09:4083 $f1
     ld   C, A                                          ;; 09:4084 $4f
     push DE                                            ;; 09:4085 $d5
@@ -171,13 +171,13 @@ projectileRunLogic:
     ld   E, [HL]                                       ;; 09:40dd $5e
     inc  HL                                            ;; 09:40de $23
     ld   D, [HL]                                       ;; 09:40df $56
-    call call_09_41ad                                  ;; 09:40e0 $cd $ad $41
+    call rotateVector                                  ;; 09:40e0 $cd $ad $41
     pop  BC                                            ;; 09:40e3 $c1
     push DE                                            ;; 09:40e4 $d5
     push BC                                            ;; 09:40e5 $c5
     ld   A, [BC]                                       ;; 09:40e6 $0a
     ld   DE, $08                                       ;; 09:40e7 $11 $08 $00
-    call call_09_41ad                                  ;; 09:40ea $cd $ad $41
+    call rotateVector                                  ;; 09:40ea $cd $ad $41
     pop  BC                                            ;; 09:40ed $c1
     ld   HL, $04                                       ;; 09:40ee $21 $04 $00
     add  HL, BC                                        ;; 09:40f1 $09
@@ -317,7 +317,9 @@ call_09_4197:
     ret                                                ;; 09:41ac $c9
 
 ; A = object number
-call_09_41ad:
+; DE = yx speeds in pixels for a projectile heading east
+; Return: DE = yx speeds in pixels corrected for direciton
+rotateVector:
     push DE                                            ;; 09:41ad $d5
     ld   C, A                                          ;; 09:41ae $4f
     call getObjectDirection                            ;; 09:41af $cd $99 $0c
@@ -329,6 +331,7 @@ call_09_41ad:
     bit  2, A                                          ;; 09:41ba $cb $57
     jr   NZ, .north                                    ;; 09:41bc $20 $0f
 ; .south:
+; x = y, y = -x
     ld   A, D                                          ;; 09:41be $7a
     cpl                                                ;; 09:41bf $2f
     inc  A                                             ;; 09:41c0 $3c
@@ -336,6 +339,7 @@ call_09_41ad:
     ld   E, A                                          ;; 09:41c2 $5f
     ret                                                ;; 09:41c3 $c9
 .west:
+; x = -x, y = -y
     ld   A, D                                          ;; 09:41c4 $7a
     cpl                                                ;; 09:41c5 $2f
     inc  A                                             ;; 09:41c6 $3c
@@ -346,6 +350,7 @@ call_09_41ad:
     ld   E, A                                          ;; 09:41cb $5f
     ret                                                ;; 09:41cc $c9
 .north:
+; x = -y, y = x
     ld   A, E                                          ;; 09:41cd $7b
     cpl                                                ;; 09:41ce $2f
     inc  A                                             ;; 09:41cf $3c
@@ -525,6 +530,7 @@ spawnProjectile:
     ret                                                ;; 09:42a9 $c9
 
 ; A = projectile collision flags
+; C = object id
 projectileInitLogic:
     cp   A, $62                                        ;; 09:42aa $fe $62
     jr   Z, .cardinal_direction                        ;; 09:42ac $28 $0c
@@ -532,6 +538,7 @@ projectileInitLogic:
     jr   Z, .free_direction                            ;; 09:42b0 $28 $19
     cp   A, $3a                                        ;; 09:42b2 $fe $3a
     jr   Z, .cardinal_direction                        ;; 09:42b4 $28 $04
+;.melee:
     inc  HL                                            ;; 09:42b6 $23
     inc  HL                                            ;; 09:42b7 $23
     xor  A, A                                          ;; 09:42b8 $af
