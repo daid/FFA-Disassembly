@@ -1444,6 +1444,7 @@ pixelToTilePosition:
 ; A = object direction, possibly with bit 7 set
 ; B = ???
 ; C = Object ID for the changed/checked object
+; Return: Z = collision
 call_00_08d4:
     ld   L, A                                          ;; 00:08d4 $6f
     ld   A, C                                          ;; 00:08d5 $79
@@ -1520,7 +1521,7 @@ call_00_08d4:
     call pixelToTilePosition                           ;; 00:0934 $cd $c4 $08
     ld   A, B                                          ;; 00:0937 $78
     call checkProjectileTileCollisions                 ;; 00:0938 $cd $dd $18
-    jr   Z, .jr_00_095c                                ;; 00:093b $28 $1f
+    jr   Z, .collision                                 ;; 00:093b $28 $1f
     call attackTile_trampoline                         ;; 00:093d $cd $76 $2f
     pop  BC                                            ;; 00:0940 $c1
     pop  DE                                            ;; 00:0941 $d1
@@ -1540,7 +1541,7 @@ call_00_08d4:
     xor  A, A                                          ;; 00:0959 $af
     inc  A                                             ;; 00:095a $3c
     ret                                                ;; 00:095b $c9
-.jr_00_095c:
+.collision:
     pop  BC                                            ;; 00:095c $c1
     pop  DE                                            ;; 00:095d $d1
     pop  HL                                            ;; 00:095e $e1
@@ -1750,6 +1751,7 @@ secondaryCollisionHandling:
 ; C  = object type ("collision flags")
 ; DE = position in tiles
 ; HL = metatile pointer
+; Return: C = object id
 createObject:
     push DE                                            ;; 00:0a74 $d5
     push HL                                            ;; 00:0a75 $e5
@@ -4194,6 +4196,7 @@ checkObjectTileCollisions:
 ; A = object collision flags
 ; D = object y tile coordinate
 ; E = object x tile coordinate
+; Return: Z = collision, B = ?, A = unused?
 checkProjectileTileCollisions:
     push AF                                            ;; 00:18dd $f5
     ld   C, A                                          ;; 00:18de $4f
