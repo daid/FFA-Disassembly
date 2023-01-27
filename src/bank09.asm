@@ -12,7 +12,7 @@ SECTION "bank09", ROMX[$4000], BANK[$09]
     call_to_bank_target projectileLoadTiles            ;; 09:4004 pP
     call_to_bank_target projectileDestroy              ;; 09:4006 pP
     call_to_bank_target spawnProjectile                ;; 09:4008 pP
-    call_to_bank_target getProjectileOffset02          ;; 09:400a ??
+    call_to_bank_target getProjectileSize              ;; 09:400a ??
     call_to_bank_target getProjectileElement           ;; 09:400c ??
     call_to_bank_target getProjectilePower             ;; 09:400e ??
     call_to_bank_target projectileCollisionHandling    ;; 09:4010 pP
@@ -102,7 +102,7 @@ projectileRunLogic:
     ld   A, [DE]                                       ;; 09:407d $1a
     pop  DE                                            ;; 09:407e $d1
     push AF                                            ;; 09:407f $f5
-    call call_09_41ad                                  ;; 09:4080 $cd $ad $41
+    call rotateVector                                  ;; 09:4080 $cd $ad $41
     pop  AF                                            ;; 09:4083 $f1
     ld   C, A                                          ;; 09:4084 $4f
     push DE                                            ;; 09:4085 $d5
@@ -171,13 +171,13 @@ projectileRunLogic:
     ld   E, [HL]                                       ;; 09:40dd $5e
     inc  HL                                            ;; 09:40de $23
     ld   D, [HL]                                       ;; 09:40df $56
-    call call_09_41ad                                  ;; 09:40e0 $cd $ad $41
+    call rotateVector                                  ;; 09:40e0 $cd $ad $41
     pop  BC                                            ;; 09:40e3 $c1
     push DE                                            ;; 09:40e4 $d5
     push BC                                            ;; 09:40e5 $c5
     ld   A, [BC]                                       ;; 09:40e6 $0a
     ld   DE, $08                                       ;; 09:40e7 $11 $08 $00
-    call call_09_41ad                                  ;; 09:40ea $cd $ad $41
+    call rotateVector                                  ;; 09:40ea $cd $ad $41
     pop  BC                                            ;; 09:40ed $c1
     ld   HL, $04                                       ;; 09:40ee $21 $04 $00
     add  HL, BC                                        ;; 09:40f1 $09
@@ -317,7 +317,9 @@ call_09_4197:
     ret                                                ;; 09:41ac $c9
 
 ; A = object number
-call_09_41ad:
+; DE = yx speeds in pixels for a projectile heading east
+; Return: DE = yx speeds in pixels corrected for direciton
+rotateVector:
     push DE                                            ;; 09:41ad $d5
     ld   C, A                                          ;; 09:41ae $4f
     call getObjectDirection                            ;; 09:41af $cd $99 $0c
@@ -329,6 +331,7 @@ call_09_41ad:
     bit  2, A                                          ;; 09:41ba $cb $57
     jr   NZ, .north                                    ;; 09:41bc $20 $0f
 ; .south:
+; x = y, y = -x
     ld   A, D                                          ;; 09:41be $7a
     cpl                                                ;; 09:41bf $2f
     inc  A                                             ;; 09:41c0 $3c
@@ -336,6 +339,7 @@ call_09_41ad:
     ld   E, A                                          ;; 09:41c2 $5f
     ret                                                ;; 09:41c3 $c9
 .west:
+; x = -x, y = -y
     ld   A, D                                          ;; 09:41c4 $7a
     cpl                                                ;; 09:41c5 $2f
     inc  A                                             ;; 09:41c6 $3c
@@ -346,6 +350,7 @@ call_09_41ad:
     ld   E, A                                          ;; 09:41cb $5f
     ret                                                ;; 09:41cc $c9
 .north:
+; x = -y, y = x
     ld   A, E                                          ;; 09:41cd $7b
     cpl                                                ;; 09:41ce $2f
     inc  A                                             ;; 09:41cf $3c
@@ -525,6 +530,7 @@ spawnProjectile:
     ret                                                ;; 09:42a9 $c9
 
 ; A = projectile collision flags
+; C = object id
 projectileInitLogic:
     cp   A, $62                                        ;; 09:42aa $fe $62
     jr   Z, .cardinal_direction                        ;; 09:42ac $28 $0c
@@ -532,6 +538,7 @@ projectileInitLogic:
     jr   Z, .free_direction                            ;; 09:42b0 $28 $19
     cp   A, $3a                                        ;; 09:42b2 $fe $3a
     jr   Z, .cardinal_direction                        ;; 09:42b4 $28 $04
+;.melee:
     inc  HL                                            ;; 09:42b6 $23
     inc  HL                                            ;; 09:42b7 $23
     xor  A, A                                          ;; 09:42b8 $af
@@ -702,10 +709,10 @@ projectileCollisionHandling:
     ld   B, A                                          ;; 09:439d $47
     and  A, $f0                                        ;; 09:439e $e6 $f0
     cp   A, $40                                        ;; 09:43a0 $fe $40
-    jp   Z, .jp_09_443c                                ;; 09:43a2 $ca $3c $44
+    jp   Z, .test_hit                                  ;; 09:43a2 $ca $3c $44
     cp   A, $50                                        ;; 09:43a5 $fe $50
-    jp   Z, .jp_09_443c                                ;; 09:43a7 $ca $3c $44
-.jp_09_43aa:
+    jp   Z, .test_hit                                  ;; 09:43a7 $ca $3c $44
+.no_effect:
     xor  A, A                                          ;; 09:43aa $af
     ret                                                ;; 09:43ab $c9
 .player:
@@ -729,9 +736,9 @@ projectileCollisionHandling:
     ld   A, C                                          ;; 09:43c3 $79
     pop  BC                                            ;; 09:43c4 $c1
     cp   A, D                                          ;; 09:43c5 $ba
-    jr   C, .jp_09_43aa                                ;; 09:43c6 $38 $e2
+    jr   C, .no_effect                                 ;; 09:43c6 $38 $e2
     cp   A, E                                          ;; 09:43c8 $bb
-    jr   C, .jp_09_43aa                                ;; 09:43c9 $38 $df
+    jr   C, .no_effect                                 ;; 09:43c9 $38 $df
     push BC                                            ;; 09:43cb $c5
     ld   A, [wMainGameState]                           ;; 09:43cc $fa $a0 $c0
     cp   A, $02                                        ;; 09:43cf $fe $02
@@ -804,13 +811,13 @@ projectileCollisionHandling:
     call playerHit_trampoline                          ;; 09:4436 $cd $56 $02
     ld   A, $c9                                        ;; 09:4439 $3e $c9
     ret                                                ;; 09:443b $c9
-.jp_09_443c:
-    ld   A, [wCF5B]                                    ;; 09:443c $fa $5b $cf
+.test_hit:
+    ld   A, [wAttackRange]                             ;; 09:443c $fa $5b $cf
     cp   A, D                                          ;; 09:443f $ba
-    jp   C, .jp_09_43aa                                ;; 09:4440 $da $aa $43
-    ld   A, [wCF5B]                                    ;; 09:4443 $fa $5b $cf
+    jp   C, .no_effect                                 ;; 09:4440 $da $aa $43
+    ld   A, [wAttackRange]                             ;; 09:4443 $fa $5b $cf
     cp   A, E                                          ;; 09:4446 $bb
-    jp   C, .jp_09_43aa                                ;; 09:4447 $da $aa $43
+    jp   C, .no_effect                                 ;; 09:4447 $da $aa $43
     push BC                                            ;; 09:444a $c5
     call destroyObject                                 ;; 09:444b $cd $e3 $0a
     pop  BC                                            ;; 09:444e $c1
@@ -828,7 +835,7 @@ getProjectileDataTableEntry:
     ld   D, [HL]                                       ;; 09:445c $56
     ret                                                ;; 09:445d $c9
 
-getProjectileOffset02:
+getProjectileSize:
     call getProjectileDataTableEntry                   ;; 09:445e $cd $51 $44
     ld   HL, $02                                       ;; 09:4461 $21 $02 $00
     add  HL, DE                                        ;; 09:4464 $19

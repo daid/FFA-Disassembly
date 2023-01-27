@@ -496,6 +496,7 @@ wNPCDroppingChest:
     ds 16                                              ;; c5b0
 
 ; 3 records of $0a size, related to projectiles
+; 00: Object ID of the normal object
 ; 01: Delay until next move (initialized from 02)
 ; 02: Movement speed
 ; 08-09: Projectile data table entry pointer
@@ -532,16 +533,18 @@ wBackgroundRenderRequestCount:
 wCEF0:
     ds 8                                               ;; cef0
 
-wCEF8:
+wAttackFrameSteps:
     ds 8                                               ;; cef8
 
-wCF00:
+wAttackFrameSpeedTimers:
     ds 8                                               ;; cf00
 
-wCF08:
+; This stores pointers from the attackFrames table, one for each object that could possible be involved.
+wAttackFramePointers:
     ds 16                                              ;; cf08
 
-wCF18:
+; This stores a pointer to the individual special/normal facing/walking directional attack type for each object.
+wAttackFrameTypePointers:
     ds 16                                              ;; cf18
 
 wCF28:
@@ -564,13 +567,15 @@ wEquippedItemAnimationType:
 wSelectedObjectID:
     ds 1                                               ;; cf5a
 
-wCF5B:
+; The current attack's range in pixels.
+; Objects are first tested for overlap, then their distance is tested against this.
+wAttackRange:
     ds 1                                               ;; cf5b
 
 wPlayerCurrentAttackTypeAndFacing:
     ds 1                                               ;; cf5c
 
-wCF5D:
+wFireHomingTarget:
     ds 1                                               ;; cf5d
 
 wCF5E:
@@ -738,7 +743,8 @@ wCurrentBossHP:
 .high:
     ds 1                                               ;; d3f5
 
-wD3F6:
+; Used by most bosses to track one head object's location, but also used heavily by Megapede.
+wBossCurrentHeadYX:
     ds 66                                              ;; d3f6
 
 wCurrentBossDataPointer:
@@ -769,10 +775,12 @@ wBossCurrentMetatileListPointer:
 ; Six bytes each, 14 total, but the largest boss only uses 11.
 ; 0: Object ID of the normal object
 ; 1-2: Stats pointer
-; 3-5: Unknown
+; 3: Unknown
+; 4: Probably always zero. Used as an index into d3f6.
+; 5: Unknown
 wBossObjectsStatsRuntimeData:
     ds 4                                               ;; d442
-._04:
+.XYSaveIndex:
     ds 82                                              ;; d446
 
 wPlayerJumpArg:
@@ -1214,7 +1222,7 @@ wMenuSelectionMoveRepeatDelay:
 wWillCharge:
     ds 1                                               ;; d858
 
-wD859:
+wWindowCloseStep:
     ds 1                                               ;; d859
 
 wScriptCommand:
@@ -1391,22 +1399,19 @@ wItemSearchList:
 .high:
     ds 1                                               ;; d891
 
-wD892:
+wWindowFirstPointer:
     ds 1                                               ;; d892
-
-wD893:
+.high:
     ds 1                                               ;; d893
 
-wD894:
+wWindowSecondPointer:
     ds 1                                               ;; d894
-
-wD895:
+.high:
     ds 1                                               ;; d895
 
-wD896:
+wWindowThirdPointer:
     ds 1                                               ;; d896
-
-wD897:
+.high:
     ds 1                                               ;; d897
 
 wD898:
