@@ -2045,7 +2045,7 @@ moveObjectDuringScript:
     pop  BC                                            ;; 03:4b40 $c1
     ret                                                ;; 03:4b41 $c9
 .player:
-    call call_00_02c3                                  ;; 03:4b42 $cd $c3 $02
+    call movePlayerDuringScript_trampoline             ;; 03:4b42 $cd $c3 $02
     jr   NZ, .jr_03_4b3f                               ;; 03:4b45 $20 $f8
 .jr_03_4b47:
     pop  HL                                            ;; 03:4b47 $e1

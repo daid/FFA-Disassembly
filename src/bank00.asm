@@ -373,8 +373,8 @@ setPlayerCollisionFlags:
     call setObjectCollisionFlags                       ;; 00:02bf $cd $86 $0c
     ret                                                ;; 00:02c2 $c9
 
-call_00_02c3:
-    jp_to_bank 01, call_01_5196                        ;; 00:02c3 $f5 $3e $0c $c3 $d7 $1e
+movePlayerDuringScript_trampoline:
+    jp_to_bank 01, movePlayerDuringScript              ;; 00:02c3 $f5 $3e $0c $c3 $d7 $1e
 
 runScriptAndStopKnockback_trampoline:
     jp_to_bank 01, runScriptAndStopKnockback           ;; 00:02c9 $f5 $3e $0d $c3 $d7 $1e
