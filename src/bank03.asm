@@ -3624,7 +3624,7 @@ jr_03_53da:
     and  A, $7f                                        ;; 03:53f8 $e6 $7f
     cp   A, [HL]                                       ;; 03:53fa $be
     call NZ, call_03_5403                              ;; 03:53fb $c4 $03 $54
-    call call_00_28bc                                  ;; 03:53fe $cd $bc $28
+    call getValueFromDEAddOffset03                     ;; 03:53fe $cd $bc $28
     pop  AF                                            ;; 03:5401 $f1
     ret                                                ;; 03:5402 $c9
 
@@ -4039,7 +4039,7 @@ call_03_55df:
     ret  Z                                             ;; 03:55f2 $c8
     push AF                                            ;; 03:55f3 $f5
     ld   A, $01                                        ;; 03:55f4 $3e $01
-    call call_00_28bc                                  ;; 03:55f6 $cd $bc $28
+    call getValueFromDEAddOffset03                     ;; 03:55f6 $cd $bc $28
     pop  AF                                            ;; 03:55f9 $f1
     ret                                                ;; 03:55fa $c9
 

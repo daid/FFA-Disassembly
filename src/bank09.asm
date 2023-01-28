@@ -98,7 +98,7 @@ projectileRunLogic:
     ld   E, [HL]                                       ;; 09:4077 $5e
     inc  HL                                            ;; 09:4078 $23
     ld   D, [HL]                                       ;; 09:4079 $56
-    call call_00_28bc                                  ;; 09:407a $cd $bc $28
+    call getValueFromDEAddOffset03                     ;; 09:407a $cd $bc $28
     ld   A, [DE]                                       ;; 09:407d $1a
     pop  DE                                            ;; 09:407e $d1
     push AF                                            ;; 09:407f $f5

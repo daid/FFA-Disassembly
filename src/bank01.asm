@@ -614,7 +614,7 @@ call_01_4422:
     ld   A, [wMapWidthTmp]                             ;; 01:4423 $fa $9f $d4
     cp   A, $00                                        ;; 01:4426 $fe $00
     jr   Z, .jr_01_442d                                ;; 01:4428 $28 $03
-    call call_00_0de6                                  ;; 01:442a $cd $e6 $0d
+    call drawMinimap                                   ;; 01:442a $cd $e6 $0d
 .jr_01_442d:
     ld   HL, lcdcShutterEffectOpen                     ;; 01:442d $21 $09 $41
     ld   A, [wPlayerSpecialFlags]                      ;; 01:4430 $fa $d4 $c4
