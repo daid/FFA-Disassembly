@@ -961,11 +961,11 @@ getScriptOpcodeFunction:
 INCLUDE "code/script/opcodetable.asm"
 
 menuTrashCanLoadTiles:
-    ld   A, [wD872]                                    ;; 02:4776 $fa $72 $d8
+    ld   A, [wWindowSecondaryFlags]                    ;; 02:4776 $fa $72 $d8
     bit  2, A                                          ;; 02:4779 $cb $57
     ret  NZ                                            ;; 02:477b $c0
     set  2, A                                          ;; 02:477c $cb $d7
-    ld   [wD872], A                                    ;; 02:477e $ea $72 $d8
+    ld   [wWindowSecondaryFlags], A                    ;; 02:477e $ea $72 $d8
     push HL                                            ;; 02:4781 $e5
     ld   HL, menuTrashCanTileLoads                     ;; 02:4782 $21 $b8 $47
     ld   B, $04                                        ;; 02:4785 $06 $04
@@ -1365,7 +1365,7 @@ call_02_4a14:
     jr   Z, .vendor_sell_menu_top                      ;; 02:4a26 $28 $10
     cp   A, $1b                                        ;; 02:4a28 $fe $1b
     jr   NZ, .jr_02_4a53                               ;; 02:4a2a $20 $27
-    ld   A, [wD872]                                    ;; 02:4a2c $fa $72 $d8
+    ld   A, [wWindowSecondaryFlags]                    ;; 02:4a2c $fa $72 $d8
     bit  5, A                                          ;; 02:4a2f $cb $6f
     jr   Z, .jr_02_4a53                                ;; 02:4a31 $28 $20
     ld   DE, $a00                                      ;; 02:4a33 $11 $00 $0a
@@ -2031,7 +2031,7 @@ openStatusScreen:
     ld   A, $12                                        ;; 02:4f04 $3e $12
     ld   [wDialogType], A                              ;; 02:4f06 $ea $4a $d8
     call hideAndSaveMenuMetasprites                    ;; 02:4f09 $cd $51 $6b
-    ld   HL, wD872                                     ;; 02:4f0c $21 $72 $d8
+    ld   HL, wWindowSecondaryFlags                     ;; 02:4f0c $21 $72 $d8
     set  0, [HL]                                       ;; 02:4f0f $cb $c6
     res  1, [HL]                                       ;; 02:4f11 $cb $8e
     ld   A, $01                                        ;; 02:4f13 $3e $01
@@ -2051,7 +2051,7 @@ jp_02_4f19:
     ld   A, $12                                        ;; 02:4f26 $3e $12
     ld   [wDialogType], A                              ;; 02:4f28 $ea $4a $d8
     call windowInitContents                            ;; 02:4f2b $cd $93 $76
-    ld   A, [wD872]                                    ;; 02:4f2e $fa $72 $d8
+    ld   A, [wWindowSecondaryFlags]                    ;; 02:4f2e $fa $72 $d8
     bit  6, A                                          ;; 02:4f31 $cb $77
     jr   NZ, .jr_02_4f5a                               ;; 02:4f33 $20 $25
     ld   A, [wSelectedMenuIndex]                       ;; 02:4f35 $fa $4b $d8
@@ -2121,7 +2121,7 @@ call_02_4f97:
     ld   [wD8C3], A                                    ;; 02:4fa4 $ea $c3 $d8
     xor  A, A                                          ;; 02:4fa7 $af
     ld   [wSelectedMenuIndex], A                       ;; 02:4fa8 $ea $4b $d8
-    ld   HL, wD872                                     ;; 02:4fab $21 $72 $d8
+    ld   HL, wWindowSecondaryFlags                     ;; 02:4fab $21 $72 $d8
     bit  6, [HL]                                       ;; 02:4fae $cb $76
     jr   NZ, .jr_02_4fbc                               ;; 02:4fb0 $20 $0a
     set  6, [HL]                                       ;; 02:4fb2 $cb $f6
@@ -2202,7 +2202,7 @@ call_02_4fff:
     ret                                                ;; 02:5039 $c9
 
 jp_02_503a:
-    ld   HL, wD872                                     ;; 02:503a $21 $72 $d8
+    ld   HL, wWindowSecondaryFlags                     ;; 02:503a $21 $72 $d8
     bit  0, [HL]                                       ;; 02:503d $cb $46
     jr   NZ, call_02_5062                              ;; 02:503f $20 $21
     call increaseLevel                                 ;; 02:5041 $cd $99 $53
@@ -2691,7 +2691,7 @@ jp_02_531c:
     ld   [wManaLow], A                                 ;; 02:537e $ea $b6 $d7
     call NOOP_2                                        ;; 02:5381 $cd $ae $77
     call hideAndSaveMenuMetasprites                    ;; 02:5384 $cd $51 $6b
-    ld   HL, wD872                                     ;; 02:5387 $21 $72 $d8
+    ld   HL, wWindowSecondaryFlags                     ;; 02:5387 $21 $72 $d8
     set  0, [HL]                                       ;; 02:538a $cb $c6
     res  1, [HL]                                       ;; 02:538c $cb $8e
     ld   A, $12                                        ;; 02:538e $3e $12
@@ -5101,7 +5101,7 @@ call_02_6ae7:
     cp   A, D                                          ;; 02:6b04 $ba
     jr   C, .jr_02_6b12                                ;; 02:6b05 $38 $0b
     call showMenuFingerPointing_2                      ;; 02:6b07 $cd $a0 $6b
-    ld   HL, wD872                                     ;; 02:6b0a $21 $72 $d8
+    ld   HL, wWindowSecondaryFlags                     ;; 02:6b0a $21 $72 $d8
     res  7, [HL]                                       ;; 02:6b0d $cb $be
     pop  DE                                            ;; 02:6b0f $d1
     pop  HL                                            ;; 02:6b10 $e1
@@ -5114,7 +5114,7 @@ call_02_6ae7:
 
 call_02_6b18:
     push HL                                            ;; 02:6b18 $e5
-    ld   HL, wD872                                     ;; 02:6b19 $21 $72 $d8
+    ld   HL, wWindowSecondaryFlags                     ;; 02:6b19 $21 $72 $d8
     set  7, [HL]                                       ;; 02:6b1c $cb $fe
     pop  HL                                            ;; 02:6b1e $e1
     ret                                                ;; 02:6b1f $c9
@@ -5162,9 +5162,9 @@ hideAndSaveMenuMetasprites:
     pop  BC                                            ;; 02:6b68 $c1
     pop  DE                                            ;; 02:6b69 $d1
     pop  HL                                            ;; 02:6b6a $e1
-    ld   A, [wD872]                                    ;; 02:6b6b $fa $72 $d8
+    ld   A, [wWindowSecondaryFlags]                    ;; 02:6b6b $fa $72 $d8
     res  2, A                                          ;; 02:6b6e $cb $97
-    ld   [wD872], A                                    ;; 02:6b70 $ea $72 $d8
+    ld   [wWindowSecondaryFlags], A                    ;; 02:6b70 $ea $72 $d8
     ret                                                ;; 02:6b73 $c9
 
 clearThirdMetasprite:
@@ -5348,7 +5348,7 @@ windowClearLine:
 windowGetOffsetXYPosition:
     push HL                                            ;; 02:6c5d $e5
     ld   HL, wDialogY                                  ;; 02:6c5e $21 $a8 $d4
-    ld   A, [wD872]                                    ;; 02:6c61 $fa $72 $d8
+    ld   A, [wWindowSecondaryFlags]                    ;; 02:6c61 $fa $72 $d8
     bit  7, A                                          ;; 02:6c64 $cb $7f
     jr   Z, .jr_02_6c6b                                ;; 02:6c66 $28 $03
     ld   HL, windowData.selectLevelupStatsY            ;; 02:6c68 $21 $9b $5c
@@ -6280,14 +6280,14 @@ jp_02_71fb:
     ld   HL, wWindowFlags                              ;; 02:71fb $21 $74 $d8
     bit  2, [HL]                                       ;; 02:71fe $cb $56
     jp   NZ, jp_02_72be                                ;; 02:7200 $c2 $be $72
-    ld   HL, wD872                                     ;; 02:7203 $21 $72 $d8
+    ld   HL, wWindowSecondaryFlags                     ;; 02:7203 $21 $72 $d8
     res  5, [HL]                                       ;; 02:7206 $cb $ae
     ld   HL, sSave1Header                              ;; 02:7208 $21 $00 $a0
     ld   A, [wSelectedMenuIndex]                       ;; 02:720b $fa $4b $d8
     and  A, A                                          ;; 02:720e $a7
     ld   B, $08                                        ;; 02:720f $06 $08
     jr   Z, .jr_02_721d                                ;; 02:7211 $28 $0a
-    ld   HL, wD872                                     ;; 02:7213 $21 $72 $d8
+    ld   HL, wWindowSecondaryFlags                     ;; 02:7213 $21 $72 $d8
     set  5, [HL]                                       ;; 02:7216 $cb $ee
     ld   HL, sSave2Header                              ;; 02:7218 $21 $00 $a1
     ld   B, $10                                        ;; 02:721b $06 $10
@@ -6379,7 +6379,7 @@ swapHL_DE:
     ret                                                ;; 02:72bd $c9
 
 jp_02_72be:
-    ld   DE, wD872                                     ;; 02:72be $11 $72 $d8
+    ld   DE, wWindowSecondaryFlags                     ;; 02:72be $11 $72 $d8
     ld   A, [DE]                                       ;; 02:72c1 $1a
     res  5, A                                          ;; 02:72c2 $cb $af
     ld   [DE], A                                       ;; 02:72c4 $12

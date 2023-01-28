@@ -10177,7 +10177,7 @@ startLevelUp:
     ld   A, $21                                        ;; 00:3e7d $3e $21
     ld   [wDialogType], A                              ;; 00:3e7f $ea $4a $d8
     call windowMenuStartSpecial_trampoline             ;; 00:3e82 $cd $b1 $30
-    ld   HL, wD872                                     ;; 00:3e85 $21 $72 $d8
+    ld   HL, wWindowSecondaryFlags                     ;; 00:3e85 $21 $72 $d8
     set  1, [HL]                                       ;; 00:3e88 $cb $ce
     res  0, [HL]                                       ;; 00:3e8a $cb $86
     res  6, [HL]                                       ;; 00:3e8c $cb $b6

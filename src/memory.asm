@@ -1296,7 +1296,13 @@ wSearchInventoryLength:
 wScriptTriggerCollisionFlags:
     ds 1                                               ;; d871
 
-wD872:
+; bit 0: unknown
+; bit 1: unknown
+; bit 2: trash can tiles are loaded
+; bit 5: unknown
+; bit 6: unknown
+; bit 7: unknown
+wWindowSecondaryFlags:
     ds 1                                               ;; d872
 
 wScriptPlayerFacingDirection:
