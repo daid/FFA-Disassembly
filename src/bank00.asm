@@ -9895,7 +9895,7 @@ scriptOpCodeOpenShop:
     ld   A, [HL+]                                      ;; 00:3ca2 $2a
     ld   [wScriptSavedNextOpcode], A                   ;; 00:3ca3 $ea $6c $d8
     call showFullscreenWindow_trampoline               ;; 00:3ca6 $cd $ff $30
-    ld   HL, wD8D7                                     ;; 00:3ca9 $21 $d7 $d8
+    ld   HL, wWindowVendorSellPointerSavedX            ;; 00:3ca9 $21 $d7 $d8
     xor  A, A                                          ;; 00:3cac $af
     ld   B, $04                                        ;; 00:3cad $06 $04
 .loop:
@@ -9904,7 +9904,7 @@ scriptOpCodeOpenShop:
     jr   NZ, scriptOpCodeOpenShop.loop                 ;; 00:3cb1 $20 $fc
     ld   [wD876], A                                    ;; 00:3cb3 $ea $76 $d8
     ld   A, $02                                        ;; 00:3cb6 $3e $02
-    ld   [wD8D8], A                                    ;; 00:3cb8 $ea $d8 $d8
+    ld   [wWindowVendorSellPointerSavedY], A           ;; 00:3cb8 $ea $d8 $d8
     ld   A, $01                                        ;; 00:3cbb $3e $01
     ld   [wMenuStateCurrentFunction], A                ;; 00:3cbd $ea $53 $d8
     ld   A, $0f                                        ;; 00:3cc0 $3e $0f

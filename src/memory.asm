@@ -1539,10 +1539,12 @@ wWindowTextInsertionPointFinalY:
 wVRAMClearFakeTile:
     ds 16                                              ;; d8c7
 
-wD8D7:
+; Used by the code that opens to the same place in the menu after selling once to the vendor.
+wWindowVendorSellPointerSavedX:
     ds 1                                               ;; d8d7
 
-wD8D8:
+; Used by the code that opens to the same place in the menu after selling once to the vendor.
+wWindowVendorSellPointerSavedY:
     ds 1                                               ;; d8d8
 
 wD8D9:

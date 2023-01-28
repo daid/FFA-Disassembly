@@ -1375,9 +1375,9 @@ call_02_4a14:
     ld   [wD868], A                                    ;; 02:4a3b $ea $68 $d8
     ld   A, [wD876]                                    ;; 02:4a3e $fa $76 $d8
     ld   H, A                                          ;; 02:4a41 $67
-    ld   A, [wD8D8]                                    ;; 02:4a42 $fa $d8 $d8
+    ld   A, [wWindowVendorSellPointerSavedY]           ;; 02:4a42 $fa $d8 $d8
     ld   D, A                                          ;; 02:4a45 $57
-    ld   A, [wD8D7]                                    ;; 02:4a46 $fa $d7 $d8
+    ld   A, [wWindowVendorSellPointerSavedX]           ;; 02:4a46 $fa $d7 $d8
     ld   E, A                                          ;; 02:4a49 $5f
     jr   .jr_02_4a58                                   ;; 02:4a4a $18 $0c
 .jr_02_4a4c:
@@ -2565,9 +2565,9 @@ call_02_5292:
     bit  7, A                                          ;; 02:5295 $cb $7f
     jr   NZ, .jr_02_52ad                               ;; 02:5297 $20 $14
     ld   A, D                                          ;; 02:5299 $7a
-    ld   [wD8D8], A                                    ;; 02:529a $ea $d8 $d8
+    ld   [wWindowVendorSellPointerSavedY], A           ;; 02:529a $ea $d8 $d8
     ld   A, E                                          ;; 02:529d $7b
-    ld   [wD8D7], A                                    ;; 02:529e $ea $d7 $d8
+    ld   [wWindowVendorSellPointerSavedX], A           ;; 02:529e $ea $d7 $d8
     ld   A, [wD848]                                    ;; 02:52a1 $fa $48 $d8
     ld   [wD8DA], A                                    ;; 02:52a4 $ea $da $d8
     ld   A, [wD868]                                    ;; 02:52a7 $fa $68 $d8
