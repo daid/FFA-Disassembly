@@ -2149,7 +2149,7 @@ objectBehaviorMove:
 .jr_03_4bce:
     pop  AF                                            ;; 03:4bce $f1
     ld   B, $00                                        ;; 03:4bcf $06 $00
-    call call_00_0232                                  ;; 03:4bd1 $cd $32 $02
+    call playerSpritesLoadPlayerSpriteTiles_trampoline ;; 03:4bd1 $cd $32 $02
     ld   A, $00                                        ;; 03:4bd4 $3e $00
     call getEmptyObjectsMovingDuringScriptSlot         ;; 03:4bd6 $cd $62 $4b
     ret  NZ                                            ;; 03:4bd9 $c0

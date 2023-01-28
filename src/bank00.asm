@@ -280,8 +280,8 @@ removeMoogEffectFlag:
 runMainInputHandler_trampoline:
     jp_to_bank 01, runMainInputHandler                 ;; 00:022c $f5 $3e $00 $c3 $d7 $1e
 
-call_00_0232:
-    jp_to_bank 01, call_01_48be                        ;; 00:0232 $f5 $3e $01 $c3 $d7 $1e
+playerSpritesLoadPlayerSpriteTiles_trampoline:
+    jp_to_bank 01, playerSpritesLoadPlayerSpriteTiles ;; 00:0232 $f5 $3e $01 $c3 $d7 $1e
 
 processPhysicsForPlayer_trampoline:
     jp_to_bank 01, processPhysicsForPlayer             ;; 00:0238 $f5 $3e $02 $c3 $d7 $1e
@@ -2614,7 +2614,7 @@ scriptOpCodeScrollRoomLeft:
     push HL                                            ;; 00:0f2c $e5
     ld   B, $00                                        ;; 00:0f2d $06 $00
     ld   A, $82                                        ;; 00:0f2f $3e $82
-    call call_00_0232                                  ;; 00:0f31 $cd $32 $02
+    call playerSpritesLoadPlayerSpriteTiles_trampoline ;; 00:0f31 $cd $32 $02
     ld   D, $04                                        ;; 00:0f34 $16 $04
     ld   A, $01                                        ;; 00:0f36 $3e $01
     call scrollRoom_trampoline                         ;; 00:0f38 $cd $9e $04
@@ -2628,7 +2628,7 @@ scriptOpCodeScrollRoomRight:
     push HL                                            ;; 00:0f43 $e5
     ld   B, $00                                        ;; 00:0f44 $06 $00
     ld   A, $81                                        ;; 00:0f46 $3e $81
-    call call_00_0232                                  ;; 00:0f48 $cd $32 $02
+    call playerSpritesLoadPlayerSpriteTiles_trampoline ;; 00:0f48 $cd $32 $02
     ld   D, $04                                        ;; 00:0f4b $16 $04
     ld   A, $02                                        ;; 00:0f4d $3e $02
     call scrollRoom_trampoline                         ;; 00:0f4f $cd $9e $04
@@ -2642,7 +2642,7 @@ scriptOpCodeScrollRoomDown:
     push HL                                            ;; 00:0f5a $e5
     ld   B, $00                                        ;; 00:0f5b $06 $00
     ld   A, $88                                        ;; 00:0f5d $3e $88
-    call call_00_0232                                  ;; 00:0f5f $cd $32 $02
+    call playerSpritesLoadPlayerSpriteTiles_trampoline ;; 00:0f5f $cd $32 $02
     ld   D, $04                                        ;; 00:0f62 $16 $04
     ld   A, $04                                        ;; 00:0f64 $3e $04
     call scrollRoom_trampoline                         ;; 00:0f66 $cd $9e $04
@@ -2656,7 +2656,7 @@ scriptOpCodeScrollRoomUp:
     push HL                                            ;; 00:0f71 $e5
     ld   B, $00                                        ;; 00:0f72 $06 $00
     ld   A, $84                                        ;; 00:0f74 $3e $84
-    call call_00_0232                                  ;; 00:0f76 $cd $32 $02
+    call playerSpritesLoadPlayerSpriteTiles_trampoline ;; 00:0f76 $cd $32 $02
     ld   D, $04                                        ;; 00:0f79 $16 $04
     ld   A, $08                                        ;; 00:0f7b $3e $08
     call scrollRoom_trampoline                         ;; 00:0f7d $cd $9e $04
@@ -3052,7 +3052,7 @@ call_00_120b:
     ld   B, $00                                        ;; 00:1227 $06 $00
     and  A, $0f                                        ;; 00:1229 $e6 $0f
     push AF                                            ;; 00:122b $f5
-    call call_00_0232                                  ;; 00:122c $cd $32 $02
+    call playerSpritesLoadPlayerSpriteTiles_trampoline ;; 00:122c $cd $32 $02
     pop  AF                                            ;; 00:122f $f1
     pop  DE                                            ;; 00:1230 $d1
     ld   B, $00                                        ;; 00:1231 $06 $00
@@ -4484,25 +4484,36 @@ mapGraphicsStateCheckCache:
 animateTiles_trampoline:
     jp_to_bank 02, animateTiles                        ;; 00:1a70 $f5 $3e $00 $c3 $06 $1f
 
-call_00_1a76:
+; Loads two tiles (for one 8*16 sprite) from bank 8.
+; Used to load in the player and player attack graphics.
+; The first 16 tiles of the sprite VRAM are loaded with this.
+; B = VRAM offset from $8000
+; DE = base address for tile data
+; HL = index into tile data (multiplied by 16)
+playerSpritesLoadDoubleTile:
     push HL                                            ;; 00:1a76 $e5
     ld   C, B                                          ;; 00:1a77 $48
     ld   B, $10                                        ;; 00:1a78 $06 $10
-    call call_00_1a8c                                  ;; 00:1a7a $cd $8c $1a
+    call playerSpritesLoadTile                         ;; 00:1a7a $cd $8c $1a
     ld   A, $10                                        ;; 00:1a7d $3e $10
     add  A, C                                          ;; 00:1a7f $81
     ld   C, A                                          ;; 00:1a80 $4f
     ld   B, $10                                        ;; 00:1a81 $06 $10
-    call call_00_1a8c                                  ;; 00:1a83 $cd $8c $1a
+    call playerSpritesLoadTile                         ;; 00:1a83 $cd $8c $1a
     pop  HL                                            ;; 00:1a86 $e1
     ld   DE, $02                                       ;; 00:1a87 $11 $02 $00
     add  HL, DE                                        ;; 00:1a8a $19
     ret                                                ;; 00:1a8b $c9
 
-call_00_1a8c:
+; Loads a tile from bank 8. Has a fallback for non-tile sized chunks that is never used.
+; B = $10 (size of one tile)
+; C = VRAM offset from $8000
+; DE = base address for tile data
+; HL = index into tile data (multiplied by $10)
+playerSpritesLoadTile:
     ld   A, [HL+]                                      ;; 00:1a8c $2a
     cp   A, $ff                                        ;; 00:1a8d $fe $ff
-    jr   Z, .jr_00_1ac4                                ;; 00:1a8f $28 $33
+    jr   Z, .blank                                     ;; 00:1a8f $28 $33
     push BC                                            ;; 00:1a91 $c5
     push DE                                            ;; 00:1a92 $d5
     push HL                                            ;; 00:1a93 $e5
@@ -4528,27 +4539,29 @@ call_00_1a8c:
     pop  HL                                            ;; 00:1aae $e1
     ld   B, A                                          ;; 00:1aaf $47
     cp   A, $10                                        ;; 00:1ab0 $fe $10
-    jr   Z, .jr_00_1abb                                ;; 00:1ab2 $28 $07
+    jr   Z, .tile_sized                                ;; 00:1ab2 $28 $07
     ld   A, $08                                        ;; 00:1ab4 $3e $08
     call requestCopyToVRAM                             ;; 00:1ab6 $cd $6f $1e
-    jr   .jr_00_1ac0                                   ;; 00:1ab9 $18 $05
-.jr_00_1abb:
+    jr   .return                                       ;; 00:1ab9 $18 $05
+.tile_sized:
     ld   A, $08                                        ;; 00:1abb $3e $08
     call addTileGraphicCopyRequest                     ;; 00:1abd $cd $f5 $2d
-.jr_00_1ac0:
+.return:
     pop  HL                                            ;; 00:1ac0 $e1
     pop  DE                                            ;; 00:1ac1 $d1
     pop  BC                                            ;; 00:1ac2 $c1
     ret                                                ;; 00:1ac3 $c9
-.jr_00_1ac4:
+.blank:
     ld   A, B                                          ;; 00:1ac4 $78
     srl  A                                             ;; 00:1ac5 $cb $3f
     cpl                                                ;; 00:1ac7 $2f
     inc  A                                             ;; 00:1ac8 $3c
-    call call_00_1acd                                  ;; 00:1ac9 $cd $cd $1a
+    call playerSpritesLoadBlankTile                    ;; 00:1ac9 $cd $cd $1a
     ret                                                ;; 00:1acc $c9
 
-call_00_1acd:
+; A = -8 (if A != -8 it uses a generic VRAM copy routine instead of the tile routine, but that never happens.
+; C = VRAM offset from $8000
+playerSpritesLoadBlankTile:
     push DE                                            ;; 00:1acd $d5
     push HL                                            ;; 00:1ace $e5
     ld   B, $00                                        ;; 00:1acf $06 $00
@@ -4563,14 +4576,14 @@ call_00_1acd:
     ld   B, A                                          ;; 00:1add $47
     push BC                                            ;; 00:1ade $c5
     cp   A, $10                                        ;; 00:1adf $fe $10
-    jr   Z, .jr_00_1aea                                ;; 00:1ae1 $28 $07
+    jr   Z, .tile_sized                                ;; 00:1ae1 $28 $07
     ld   A, $08                                        ;; 00:1ae3 $3e $08
     call requestCopyToVRAM                             ;; 00:1ae5 $cd $6f $1e
-    jr   .jr_00_1aef                                   ;; 00:1ae8 $18 $05
-.jr_00_1aea:
+    jr   .return                                       ;; 00:1ae8 $18 $05
+.tile_sized:
     ld   A, $08                                        ;; 00:1aea $3e $08
     call addTileGraphicCopyRequest                     ;; 00:1aec $cd $f5 $2d
-.jr_00_1aef:
+.return:
     pop  BC                                            ;; 00:1aef $c1
     pop  HL                                            ;; 00:1af0 $e1
     pop  DE                                            ;; 00:1af1 $d1

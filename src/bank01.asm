@@ -10,7 +10,7 @@ SECTION "bank01", ROMX[$4000], BANK[$01]
 ;@call_to_bank_jumptable amount=40
 data_01_4000:
     call_to_bank_target runMainInputHandler            ;; 01:4000 pP
-    call_to_bank_target call_01_48be                   ;; 01:4002 pP
+    call_to_bank_target playerSpritesLoadPlayerSpriteTiles ;; 01:4002 pP
     call_to_bank_target processPhysicsForPlayer        ;; 01:4004 pP
     call_to_bank_target updatePlayerPostion            ;; 01:4006 pP
     call_to_bank_target createPlayerObject             ;; 01:4008 pP
@@ -705,7 +705,7 @@ call_01_44a5:
     ld   B, $00                                        ;; 01:44c1 $06 $00
     and  A, $0f                                        ;; 01:44c3 $e6 $0f
     push AF                                            ;; 01:44c5 $f5
-    call call_00_0232                                  ;; 01:44c6 $cd $32 $02
+    call playerSpritesLoadPlayerSpriteTiles_trampoline ;; 01:44c6 $cd $32 $02
     pop  AF                                            ;; 01:44c9 $f1
     pop  DE                                            ;; 01:44ca $d1
     ld   B, $00                                        ;; 01:44cb $06 $00
@@ -1127,7 +1127,8 @@ playerTileNumbers:
     db   $c8, $ca, $c9, $cb, $c8, $ca, $c9, $cb        ;; 01:48ae ????????
     db   $c0, $c2, $c1, $c3, $b8, $ba, $b9, $bb        ;; 01:48b6 ????????
 
-call_01_48be:
+; Loads tiles for the current frame of the player sprite
+playerSpritesLoadPlayerSpriteTiles:
     ld   C, A                                          ;; 01:48be $4f
     ld   A, [wPlayerSpecialFlags]                      ;; 01:48bf $fa $d4 $c4
     and  A, $fc                                        ;; 01:48c2 $e6 $fc
@@ -1168,24 +1169,24 @@ call_01_48be:
 .jr_01_48fd:
     ld   A, C                                          ;; 01:48fd $79
     rrca                                               ;; 01:48fe $0f
-    jr   C, .jr_01_490c                                ;; 01:48ff $38 $0b
+    jr   C, .east                                      ;; 01:48ff $38 $0b
     rrca                                               ;; 01:4901 $0f
-    jr   C, .jr_01_4910                                ;; 01:4902 $38 $0c
+    jr   C, .west                                      ;; 01:4902 $38 $0c
     rrca                                               ;; 01:4904 $0f
-    jr   C, .jr_01_4914                                ;; 01:4905 $38 $0d
+    jr   C, .north                                     ;; 01:4905 $38 $0d
     rrca                                               ;; 01:4907 $0f
-    jr   C, .jr_01_4918                                ;; 01:4908 $38 $0e
+    jr   C, .south                                     ;; 01:4908 $38 $0e
     jr   .jr_01_4954                                   ;; 01:490a $18 $48
-.jr_01_490c:
+.east:
     ld   A, $00                                        ;; 01:490c $3e $00
     jr   .jr_01_491a                                   ;; 01:490e $18 $0a
-.jr_01_4910:
+.west:
     ld   A, $04                                        ;; 01:4910 $3e $04
     jr   .jr_01_491a                                   ;; 01:4912 $18 $06
-.jr_01_4914:
+.north:
     ld   A, $08                                        ;; 01:4914 $3e $08
     jr   .jr_01_491a                                   ;; 01:4916 $18 $02
-.jr_01_4918:
+.south:
     ld   A, $0c                                        ;; 01:4918 $3e $0c
 .jr_01_491a:
     add  A, B                                          ;; 01:491a $80
@@ -1213,12 +1214,12 @@ call_01_48be:
     ld   C, $04                                        ;; 01:4941 $0e $04
     ld   B, $00                                        ;; 01:4943 $06 $00
     xor  A, A                                          ;; 01:4945 $af
-    call call_00_1a76                                  ;; 01:4946 $cd $76 $1a
+    call playerSpritesLoadDoubleTile                   ;; 01:4946 $cd $76 $1a
     ld   DE, gfxPlayer ;@=ptr gfxPlayer                ;; 01:4949 $11 $40 $5a
     ld   C, $04                                        ;; 01:494c $0e $04
     ld   B, $20                                        ;; 01:494e $06 $20
     xor  A, A                                          ;; 01:4950 $af
-    call call_00_1a76                                  ;; 01:4951 $cd $76 $1a
+    call playerSpritesLoadDoubleTile                   ;; 01:4951 $cd $76 $1a
 .jr_01_4954:
     ld   C, $04                                        ;; 01:4954 $0e $04
     ld   B, $00                                        ;; 01:4956 $06 $00
@@ -1377,13 +1378,13 @@ gameStateNormal:
     bit  3, D                                          ;; 01:4a45 $cb $5a
     jp   NZ, gameStateNormal.down                      ;; 01:4a47 $c2 $ee $4a
     xor  A, A                                          ;; 01:4a4a $af
-    call call_01_48be                                  ;; 01:4a4b $cd $be $48
+    call playerSpritesLoadPlayerSpriteTiles            ;; 01:4a4b $cd $be $48
     ret                                                ;; 01:4a4e $c9
 .a_or_b_button:
     push DE                                            ;; 01:4a4f $d5
     ld   A, C                                          ;; 01:4a50 $79
     and  A, $0f                                        ;; 01:4a51 $e6 $0f
-    call call_01_48be                                  ;; 01:4a53 $cd $be $48
+    call playerSpritesLoadPlayerSpriteTiles            ;; 01:4a53 $cd $be $48
     pop  DE                                            ;; 01:4a56 $d1
     ld   A, $02                                        ;; 01:4a57 $3e $02
     ld   [wMainGameState], A                           ;; 01:4a59 $ea $a0 $c0
@@ -1481,12 +1482,12 @@ gameStateNormal:
     ret                                                ;; 01:4b17 $c9
 .jp_01_4b18:
     ld   A, C                                          ;; 01:4b18 $79
-    call call_01_48be                                  ;; 01:4b19 $cd $be $48
+    call playerSpritesLoadPlayerSpriteTiles            ;; 01:4b19 $cd $be $48
     ret                                                ;; 01:4b1c $c9
 .jp_01_4b1d:
     ld   A, C                                          ;; 01:4b1d $79
     and  A, $0f                                        ;; 01:4b1e $e6 $0f
-    call call_01_48be                                  ;; 01:4b20 $cd $be $48
+    call playerSpritesLoadPlayerSpriteTiles            ;; 01:4b20 $cd $be $48
     ret                                                ;; 01:4b23 $c9
 
 call_01_4b24:
@@ -1680,7 +1681,7 @@ gameStateFireAutoTarget:
     call getPlayerDirection                            ;; 01:4c52 $cd $ab $02
     and  A, $0f                                        ;; 01:4c55 $e6 $0f
     ld   B, $00                                        ;; 01:4c57 $06 $00
-    call call_01_48be                                  ;; 01:4c59 $cd $be $48
+    call playerSpritesLoadPlayerSpriteTiles            ;; 01:4c59 $cd $be $48
     ret                                                ;; 01:4c5c $c9
 
 gameStateSpecialAttackFlyingSwordReturn:
@@ -1786,7 +1787,7 @@ gameStateSpecialAttackFlyingSwordReturn:
     call getPlayerDirection                            ;; 01:4d00 $cd $ab $02
     or   A, $90                                        ;; 01:4d03 $f6 $90
     ld   B, $00                                        ;; 01:4d05 $06 $00
-    call call_01_48be                                  ;; 01:4d07 $cd $be $48
+    call playerSpritesLoadPlayerSpriteTiles            ;; 01:4d07 $cd $be $48
     ret                                                ;; 01:4d0a $c9
 
 doSwordFlyingAttack:
@@ -1808,7 +1809,7 @@ doSwordFlyingAttack:
     call getPlayerDirection                            ;; 01:4d2a $cd $ab $02
     and  A, $0f                                        ;; 01:4d2d $e6 $0f
     ld   B, $60                                        ;; 01:4d2f $06 $60
-    call call_01_48be                                  ;; 01:4d31 $cd $be $48
+    call playerSpritesLoadPlayerSpriteTiles            ;; 01:4d31 $cd $be $48
     ret                                                ;; 01:4d34 $c9
 
 call_01_4d35:
@@ -1869,7 +1870,7 @@ call_01_4d35:
     call call_00_08d4                                  ;; 01:4d85 $cd $d4 $08
     pop  AF                                            ;; 01:4d88 $f1
     ld   B, $60                                        ;; 01:4d89 $06 $60
-    call call_01_48be                                  ;; 01:4d8b $cd $be $48
+    call playerSpritesLoadPlayerSpriteTiles            ;; 01:4d8b $cd $be $48
     ret                                                ;; 01:4d8e $c9
 
 gameStateSpecialAttackFlyingSword:
@@ -2013,7 +2014,7 @@ gameStateSpecialAttack:
     call call_00_2f3e                                  ;; 01:4e81 $cd $3e $2f
     ld   B, A                                          ;; 01:4e84 $47
     pop  AF                                            ;; 01:4e85 $f1
-    call call_01_48be                                  ;; 01:4e86 $cd $be $48
+    call playerSpritesLoadPlayerSpriteTiles            ;; 01:4e86 $cd $be $48
     call call_00_2ed3                                  ;; 01:4e89 $cd $d3 $2e
     ret                                                ;; 01:4e8c $c9
 .jp_01_4e8d:
@@ -2023,7 +2024,7 @@ gameStateSpecialAttack:
     ld   C, $04                                        ;; 01:4e93 $0e $04
     ld   A, B                                          ;; 01:4e95 $78
     ld   B, $00                                        ;; 01:4e96 $06 $00
-    call call_01_48be                                  ;; 01:4e98 $cd $be $48
+    call playerSpritesLoadPlayerSpriteTiles            ;; 01:4e98 $cd $be $48
     ld   A, $00                                        ;; 01:4e9b $3e $00
     ld   [wMainGameState], A                           ;; 01:4e9d $ea $a0 $c0
     call playerAttackDestroy_trampoline                ;; 01:4ea0 $cd $f7 $2e
@@ -2048,7 +2049,7 @@ gameStateAttack:
     call getPlayerDirection                            ;; 01:4ec0 $cd $ab $02
     pop  BC                                            ;; 01:4ec3 $c1
     and  A, $0f                                        ;; 01:4ec4 $e6 $0f
-    call call_01_48be                                  ;; 01:4ec6 $cd $be $48
+    call playerSpritesLoadPlayerSpriteTiles            ;; 01:4ec6 $cd $be $48
 .jr_01_4ec9:
     pop  DE                                            ;; 01:4ec9 $d1
     call call_00_2ed3                                  ;; 01:4eca $cd $d3 $2e
@@ -2059,7 +2060,7 @@ gameStateAttack:
     ld   C, $04                                        ;; 01:4ed4 $0e $04
     ld   A, B                                          ;; 01:4ed6 $78
     ld   B, $00                                        ;; 01:4ed7 $06 $00
-    call call_01_48be                                  ;; 01:4ed9 $cd $be $48
+    call playerSpritesLoadPlayerSpriteTiles            ;; 01:4ed9 $cd $be $48
     ld   A, $00                                        ;; 01:4edc $3e $00
     ld   [wMainGameState], A                           ;; 01:4ede $ea $a0 $c0
     ret                                                ;; 01:4ee1 $c9
@@ -2067,7 +2068,7 @@ gameStateAttack:
 gameStateScrollLeft:
     call call_01_4f65                                  ;; 01:4ee2 $cd $65 $4f
     ld   A, $82                                        ;; 01:4ee5 $3e $82
-    call call_01_48be                                  ;; 01:4ee7 $cd $be $48
+    call playerSpritesLoadPlayerSpriteTiles            ;; 01:4ee7 $cd $be $48
     ld   D, $04                                        ;; 01:4eea $16 $04
     ld   A, $01                                        ;; 01:4eec $3e $01
     call scrollRoom                                    ;; 01:4eee $cd $d8 $44
@@ -2080,7 +2081,7 @@ gameStateScrollLeft:
 gameStateScrollRight:
     call call_01_4f65                                  ;; 01:4efb $cd $65 $4f
     ld   A, $81                                        ;; 01:4efe $3e $81
-    call call_01_48be                                  ;; 01:4f00 $cd $be $48
+    call playerSpritesLoadPlayerSpriteTiles            ;; 01:4f00 $cd $be $48
     ld   D, $04                                        ;; 01:4f03 $16 $04
     ld   A, $02                                        ;; 01:4f05 $3e $02
     call scrollRoom                                    ;; 01:4f07 $cd $d8 $44
@@ -2097,7 +2098,7 @@ gameStateScrollDown:
     push AF                                            ;; 01:4f1b $f5
     call call_01_4f65                                  ;; 01:4f1c $cd $65 $4f
     ld   A, $88                                        ;; 01:4f1f $3e $88
-    call call_01_48be                                  ;; 01:4f21 $cd $be $48
+    call playerSpritesLoadPlayerSpriteTiles            ;; 01:4f21 $cd $be $48
     pop  AF                                            ;; 01:4f24 $f1
     cp   A, $00                                        ;; 01:4f25 $fe $00
     ret  NZ                                            ;; 01:4f27 $c0
@@ -2108,7 +2109,7 @@ gameStateScrollDown:
 gameStateScrollUp:
     call call_01_4f65                                  ;; 01:4f2f $cd $65 $4f
     ld   A, $84                                        ;; 01:4f32 $3e $84
-    call call_01_48be                                  ;; 01:4f34 $cd $be $48
+    call playerSpritesLoadPlayerSpriteTiles            ;; 01:4f34 $cd $be $48
     ld   D, $04                                        ;; 01:4f37 $16 $04
     ld   A, $08                                        ;; 01:4f39 $3e $08
     call scrollRoom                                    ;; 01:4f3b $cd $d8 $44
@@ -2474,7 +2475,7 @@ call_01_5196:
     ld   B, $10                                        ;; 01:51a6 $06 $10
 .jr_01_51a8:
     pop  AF                                            ;; 01:51a8 $f1
-    call call_01_48be                                  ;; 01:51a9 $cd $be $48
+    call playerSpritesLoadPlayerSpriteTiles            ;; 01:51a9 $cd $be $48
     ret  NZ                                            ;; 01:51ac $c0
     call getPlayerDirection                            ;; 01:51ad $cd $ab $02
     bit  5, A                                          ;; 01:51b0 $cb $6f
@@ -2775,7 +2776,7 @@ call_01_52e0:
     jr   NC, .jp_01_538a                               ;; 01:537b $30 $0d
     pop  AF                                            ;; 01:537d $f1
     push BC                                            ;; 01:537e $c5
-    call call_01_59ea                                  ;; 01:537f $cd $ea $59
+    call playerSpritesLoadAttackSpriteTiles            ;; 01:537f $cd $ea $59
     pop  BC                                            ;; 01:5382 $c1
     pop  AF                                            ;; 01:5383 $f1
     call setObjectDirection                            ;; 01:5384 $cd $a6 $0c
@@ -2988,7 +2989,7 @@ call_01_53f2:
     jr   Z, .jr_01_54ac                                ;; 01:5497 $28 $13
     pop  HL                                            ;; 01:5499 $e1
     ld   A, [HL]                                       ;; 01:549a $7e
-    call call_01_59ea                                  ;; 01:549b $cd $ea $59
+    call playerSpritesLoadAttackSpriteTiles            ;; 01:549b $cd $ea $59
     pop  BC                                            ;; 01:549e $c1
     inc  C                                             ;; 01:549f $0c
     ld   A, $07                                        ;; 01:54a0 $3e $07
@@ -3143,7 +3144,7 @@ jp_01_5538:
     jp   Z, jp_01_5592                                 ;; 01:557c $ca $92 $55
     pop  HL                                            ;; 01:557f $e1
     ld   A, [HL]                                       ;; 01:5580 $7e
-    call call_01_59ea                                  ;; 01:5581 $cd $ea $59
+    call playerSpritesLoadAttackSpriteTiles            ;; 01:5581 $cd $ea $59
     pop  BC                                            ;; 01:5584 $c1
     inc  C                                             ;; 01:5585 $0c
     ld   A, $07                                        ;; 01:5586 $3e $07
@@ -3965,9 +3966,10 @@ call_01_59d0:
     ld   [HL], $00                                     ;; 01:59e7 $36 $00
     ret                                                ;; 01:59e9 $c9
 
-call_01_59ea:
+; Loads tiles for the current attack
+playerSpritesLoadAttackSpriteTiles:
     push AF                                            ;; 01:59ea $f5
-    ld   HL, wAttackFramePointers               ;; 01:59eb $21 $08 $cf
+    ld   HL, wAttackFramePointers                      ;; 01:59eb $21 $08 $cf
     add  HL, BC                                        ;; 01:59ee $09
     add  HL, BC                                        ;; 01:59ef $09
     ld   A, [HL+]                                      ;; 01:59f0 $2a
@@ -4039,7 +4041,7 @@ call_01_59ea:
     add  HL, DE                                        ;; 01:5a4a $19
     ld   A, [HL]                                       ;; 01:5a4b $7e
     cp   A, C                                          ;; 01:5a4c $b9
-    jr   Z, .jr_01_5a66                                ;; 01:5a4d $28 $17
+    jr   Z, .return                                    ;; 01:5a4d $28 $17
     ld   [HL], C                                       ;; 01:5a4f $71
     pop  HL                                            ;; 01:5a50 $e1
     ld   A, [HL]                                       ;; 01:5a51 $7e
@@ -4049,16 +4051,16 @@ call_01_59ea:
     push AF                                            ;; 01:5a55 $f5
     push BC                                            ;; 01:5a56 $c5
     push DE                                            ;; 01:5a57 $d5
-    call call_00_1a76                                  ;; 01:5a58 $cd $76 $1a
+    call playerSpritesLoadDoubleTile                   ;; 01:5a58 $cd $76 $1a
     pop  DE                                            ;; 01:5a5b $d1
     pop  BC                                            ;; 01:5a5c $c1
     ld   A, $20                                        ;; 01:5a5d $3e $20
     add  A, B                                          ;; 01:5a5f $80
     ld   B, A                                          ;; 01:5a60 $47
     pop  AF                                            ;; 01:5a61 $f1
-    call call_00_1a76                                  ;; 01:5a62 $cd $76 $1a
+    call playerSpritesLoadDoubleTile                   ;; 01:5a62 $cd $76 $1a
     ret                                                ;; 01:5a65 $c9
-.jr_01_5a66:
+.return:
     pop  DE                                            ;; 01:5a66 $d1
     pop  DE                                            ;; 01:5a67 $d1
     pop  DE                                            ;; 01:5a68 $d1
@@ -4410,7 +4412,7 @@ call_01_5bf1:
     ld   C, A                                          ;; 01:5c63 $4f
     ld   B, $00                                        ;; 01:5c64 $06 $00
     ld   A, [HL]                                       ;; 01:5c66 $7e
-    call call_01_59ea                                  ;; 01:5c67 $cd $ea $59
+    call playerSpritesLoadAttackSpriteTiles            ;; 01:5c67 $cd $ea $59
     pop  BC                                            ;; 01:5c6a $c1
     inc  C                                             ;; 01:5c6b $0c
     ld   A, $07                                        ;; 01:5c6c $3e $07
