@@ -1229,7 +1229,7 @@ wScriptCommand:
 wD85C:
     ds 1                                               ;; d85c
 
-wD85D:
+wVendorPurchaseID:
     ds 1                                               ;; d85d
 
 wD85E:
@@ -1528,10 +1528,12 @@ wD8C3:
 wD8C4:
     ds 1                                               ;; d8c4
 
-wD8C5:
+; Used only by the vendor buy message
+wWindowTextInsertionPointFinalX:
     ds 1                                               ;; d8c5
 
-wD8C6:
+; Used only by the vendor buy message
+wWindowTextInsertionPointFinalY:
     ds 1                                               ;; d8c6
 
 wVRAMClearFakeTile:

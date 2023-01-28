@@ -9044,9 +9044,9 @@ drawText:
     dec  B                                             ;; 00:37b9 $05
     jr   NZ, drawText.loop_1                           ;; 00:37ba $20 $be
     ld   A, D                                          ;; 00:37bc $7a
-    ld   [wD8C6], A                                    ;; 00:37bd $ea $c6 $d8
+    ld   [wWindowTextInsertionPointFinalY], A          ;; 00:37bd $ea $c6 $d8
     ld   A, E                                          ;; 00:37c0 $7b
-    ld   [wD8C5], A                                    ;; 00:37c1 $ea $c5 $d8
+    ld   [wWindowTextInsertionPointFinalX], A          ;; 00:37c1 $ea $c5 $d8
     ld   A, [wDialogType]                              ;; 00:37c4 $fa $4a $d8
     cp   A, $06                                        ;; 00:37c7 $fe $06
     call NZ, call_00_380b                              ;; 00:37c9 $c4 $0b $38
@@ -9063,9 +9063,9 @@ drawText:
     ret                                                ;; 00:37db $c9
 .jp_00_37dc:
     ld   A, D                                          ;; 00:37dc $7a
-    ld   [wD8C6], A                                    ;; 00:37dd $ea $c6 $d8
+    ld   [wWindowTextInsertionPointFinalY], A          ;; 00:37dd $ea $c6 $d8
     ld   A, E                                          ;; 00:37e0 $7b
-    ld   [wD8C5], A                                    ;; 00:37e1 $ea $c5 $d8
+    ld   [wWindowTextInsertionPointFinalX], A          ;; 00:37e1 $ea $c5 $d8
     call setDialogTextInsertionPoint                   ;; 00:37e4 $cd $36 $37
     jr   Z, .jr_00_3804                                ;; 00:37e7 $28 $1b
     ld   A, [wDialogType]                              ;; 00:37e9 $fa $4a $d8

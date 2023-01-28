@@ -1063,8 +1063,8 @@ gameStateMenuJumptable:
     dw   call_02_4b72                                  ;; 02:480a pP
     dw   call_02_4b2e                                  ;; 02:480c pP
     dw   windowDismiss                                 ;; 02:480e pP
-    dw   vendorShowBuyMessage                          ;; 02:4810 pP
-    dw   call_02_5182                                  ;; 02:4812 pP
+    dw   windowVendorShowBuyMessageWindow              ;; 02:4810 pP
+    dw   windowVendorShowBuyMessage                    ;; 02:4812 pP
     dw   call_02_51d5                                  ;; 02:4814 pP
     dw   call_02_5475                                  ;; 02:4816 ??
     dw   call_02_547e                                  ;; 02:4818 ??
@@ -2284,7 +2284,7 @@ call_02_50b5:
     ld   A, [HL]                                       ;; 02:50c1 $7e
     and  A, $7f                                        ;; 02:50c2 $e6 $7f
     jp   Z, .jp_02_5149                                ;; 02:50c4 $ca $49 $51
-    ld   [wD85D], A                                    ;; 02:50c7 $ea $5d $d8
+    ld   [wVendorPurchaseID], A                        ;; 02:50c7 $ea $5d $d8
     cp   A, $3a                                        ;; 02:50ca $fe $3a
     ld   A, [HL]                                       ;; 02:50cc $7e
     push AF                                            ;; 02:50cd $f5
@@ -2390,7 +2390,7 @@ showFullscreenWindow:
     ld   [wVideoWY], A                                 ;; 02:5170 $ea $a9 $c0
     ret                                                ;; 02:5173 $c9
 
-vendorShowBuyMessage:
+windowVendorShowBuyMessageWindow:
     ld   A, $0f                                        ;; 02:5174 $3e $0f
     ld   [wDialogType], A                              ;; 02:5176 $ea $4a $d8
     call drawWindow                                    ;; 02:5179 $cd $00 $67
@@ -2398,7 +2398,7 @@ vendorShowBuyMessage:
     call setMenuStateCurrentFunction                   ;; 02:517e $cd $98 $6c
     ret                                                ;; 02:5181 $c9
 
-call_02_5182:
+windowVendorShowBuyMessage:
     ld   A, [wDialogType]                              ;; 02:5182 $fa $4a $d8
     call windowInitContents                            ;; 02:5185 $cd $93 $76
     ld   A, [wMiscFlags]                               ;; 02:5188 $fa $6f $d8
@@ -2406,7 +2406,7 @@ call_02_5182:
     ld   HL, venderNotEnoughMoneyText                  ;; 02:518d $21 $76 $7d
     ld   B, $10                                        ;; 02:5190 $06 $10
     jr   NZ, .vendorCannotAfford                       ;; 02:5192 $20 $36
-    ld   A, [wD85D]                                    ;; 02:5194 $fa $5d $d8
+    ld   A, [wVendorPurchaseID]                        ;; 02:5194 $fa $5d $d8
     ld   HL, itemDataTable                             ;; 02:5197 $21 $5a $5e
     cp   A, $3a                                        ;; 02:519a $fe $3a
     jr   C, .jr_02_51a3                                ;; 02:519c $38 $05
@@ -2428,19 +2428,20 @@ call_02_5182:
     ld   E, A                                          ;; 02:51b7 $5f
     ld   B, $08                                        ;; 02:51b8 $06 $08
     call drawText                                      ;; 02:51ba $cd $77 $37
-    ld   A, [wD8C6]                                    ;; 02:51bd $fa $c6 $d8
+    ld   A, [wWindowTextInsertionPointFinalY]          ;; 02:51bd $fa $c6 $d8
     ld   D, A                                          ;; 02:51c0 $57
-    ld   A, [wD8C5]                                    ;; 02:51c1 $fa $c5 $d8
+    ld   A, [wWindowTextInsertionPointFinalX]          ;; 02:51c1 $fa $c5 $d8
     ld   E, A                                          ;; 02:51c4 $5f
-    ld   HL, .data_02_51d3                             ;; 02:51c5 $21 $d3 $51
+    ld   HL, .period                                   ;; 02:51c5 $21 $d3 $51
     ld   B, $02                                        ;; 02:51c8 $06 $02
 .vendorCannotAfford:
     call drawText                                      ;; 02:51ca $cd $77 $37
     ld   B, $26                                        ;; 02:51cd $06 $26
     call setMenuStateCurrentFunction                   ;; 02:51cf $cd $98 $6c
     ret                                                ;; 02:51d2 $c9
-.data_02_51d3:
-    db   $f0, $00                                      ;; 02:51d3 ..
+.period:
+;@ffa_text
+    TXT  ".<00>"                                       ;; 02:51d3 ..
 
 call_02_51d5:
     call updateJoypadInput_trampoline                  ;; 02:51d5 $cd $d1 $1e
