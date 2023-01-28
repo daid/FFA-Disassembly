@@ -1311,7 +1311,7 @@ wScriptPlayerFacingDirection:
 wWindowFlags:
     ds 2                                               ;; d874
 
-wD876:
+wWindowVendorSellItemIndex:
     ds 1                                               ;; d876
 
 wPoisStatusEffectTimeBeforeNextTick:

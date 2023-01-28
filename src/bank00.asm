@@ -9902,7 +9902,7 @@ scriptOpCodeOpenShop:
     ld   [HL+], A                                      ;; 00:3caf $22
     dec  B                                             ;; 00:3cb0 $05
     jr   NZ, scriptOpCodeOpenShop.loop                 ;; 00:3cb1 $20 $fc
-    ld   [wD876], A                                    ;; 00:3cb3 $ea $76 $d8
+    ld   [wWindowVendorSellItemIndex], A               ;; 00:3cb3 $ea $76 $d8
     ld   A, $02                                        ;; 00:3cb6 $3e $02
     ld   [wWindowVendorSellPointerSavedY], A           ;; 00:3cb8 $ea $d8 $d8
     ld   A, $01                                        ;; 00:3cbb $3e $01

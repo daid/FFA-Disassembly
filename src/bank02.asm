@@ -1373,7 +1373,7 @@ call_02_4a14:
 .vendor_sell_menu_top:
     ld   A, [wD8D9]                                    ;; 02:4a38 $fa $d9 $d8
     ld   [wD868], A                                    ;; 02:4a3b $ea $68 $d8
-    ld   A, [wD876]                                    ;; 02:4a3e $fa $76 $d8
+    ld   A, [wWindowVendorSellItemIndex]               ;; 02:4a3e $fa $76 $d8
     ld   H, A                                          ;; 02:4a41 $67
     ld   A, [wWindowVendorSellPointerSavedY]           ;; 02:4a42 $fa $d8 $d8
     ld   D, A                                          ;; 02:4a45 $57
@@ -2470,7 +2470,7 @@ jp_02_51fb:
     call getSelectedMenuIndexes                        ;; 02:51fb $cd $b0 $57
     cp   A, $00                                        ;; 02:51fe $fe $00
     jr   NZ, call_02_522d                              ;; 02:5200 $20 $2b
-    ld   A, [wD876]                                    ;; 02:5202 $fa $76 $d8
+    ld   A, [wWindowVendorSellItemIndex]               ;; 02:5202 $fa $76 $d8
     ld   C, A                                          ;; 02:5205 $4f
     ld   B, $00                                        ;; 02:5206 $06 $00
     ld   HL, wVendorSellPrices                         ;; 02:5208 $21 $4f $d7
@@ -2495,7 +2495,7 @@ jp_02_51fb:
     ld   [wMoneyHigh], A                               ;; 02:5223 $ea $bf $d7
     ld   A, L                                          ;; 02:5226 $7d
     ld   [wMoneyLow], A                                ;; 02:5227 $ea $be $d7
-    call call_02_523c                                  ;; 02:522a $cd $3c $52
+    call vendorRemoveSoldItem                          ;; 02:522a $cd $3c $52
 
 call_02_522d:
     xor  A, A                                          ;; 02:522d $af
@@ -2506,44 +2506,45 @@ call_02_522d:
     ld   [wMenuStateCurrentFunction], A                ;; 02:5238 $ea $53 $d8
     ret                                                ;; 02:523b $c9
 
-call_02_523c:
-    ld   A, [wD876]                                    ;; 02:523c $fa $76 $d8
+vendorRemoveSoldItem:
+    ld   A, [wWindowVendorSellItemIndex]               ;; 02:523c $fa $76 $d8
     inc  A                                             ;; 02:523f $3c
     ld   C, A                                          ;; 02:5240 $4f
     ld   HL, wItemInventory                            ;; 02:5241 $21 $c5 $d6
     ld   DE, wItemInventoryAmount                      ;; 02:5244 $11 $9b $d6
     ld   B, $11                                        ;; 02:5247 $06 $11
-    call call_02_525c                                  ;; 02:5249 $cd $5c $52
+    call vendorFindAndRemoveSoldItem                   ;; 02:5249 $cd $5c $52
     and  A, A                                          ;; 02:524c $a7
     ret  Z                                             ;; 02:524d $c8
     ld   HL, wEquipmentInventory                       ;; 02:524e $21 $dd $d6
     ld   DE, wEquipmentInventoryPowers                 ;; 02:5251 $11 $b3 $d6
     ld   B, $0d                                        ;; 02:5254 $06 $0d
     set  7, C                                          ;; 02:5256 $cb $f9
-    call call_02_525c                                  ;; 02:5258 $cd $5c $52
+    call vendorFindAndRemoveSoldItem                   ;; 02:5258 $cd $5c $52
     ret                                                ;; 02:525b $c9
 
-call_02_525c:
+; Calls its self recursively rather than looping
+vendorFindAndRemoveSoldItem:
     ld   A, [HL+]                                      ;; 02:525c $2a
     inc  DE                                            ;; 02:525d $13
     dec  B                                             ;; 02:525e $05
-    jr   Z, .jr_02_5278                                ;; 02:525f $28 $17
+    jr   Z, .not_found                                 ;; 02:525f $28 $17
     and  A, $7f                                        ;; 02:5261 $e6 $7f
-    jr   Z, call_02_525c                               ;; 02:5263 $28 $f7
+    jr   Z, vendorFindAndRemoveSoldItem                ;; 02:5263 $28 $f7
     call getItemOrEquipmentFlags1                      ;; 02:5265 $cd $7b $52
     bit  6, A                                          ;; 02:5268 $cb $77
-    jr   NZ, call_02_525c                              ;; 02:526a $20 $f0
+    jr   NZ, vendorFindAndRemoveSoldItem               ;; 02:526a $20 $f0
     dec  C                                             ;; 02:526c $0d
     ld   A, C                                          ;; 02:526d $79
     and  A, $7f                                        ;; 02:526e $e6 $7f
-    jr   NZ, call_02_525c                              ;; 02:5270 $20 $ea
+    jr   NZ, vendorFindAndRemoveSoldItem               ;; 02:5270 $20 $ea
     xor  A, A                                          ;; 02:5272 $af
     dec  HL                                            ;; 02:5273 $2b
     dec  DE                                            ;; 02:5274 $1b
     ld   [HL], A                                       ;; 02:5275 $77
     ld   [DE], A                                       ;; 02:5276 $12
     ret                                                ;; 02:5277 $c9
-.jr_02_5278:
+.not_found:
     ld   A, $01                                        ;; 02:5278 $3e $01
     ret                                                ;; 02:527a $c9
 
@@ -2574,7 +2575,7 @@ call_02_5292:
     ld   [wD8D9], A                                    ;; 02:52aa $ea $d9 $d8
 .jr_02_52ad:
     ld   A, [wSelectedMenuIndex]                       ;; 02:52ad $fa $4b $d8
-    ld   [wD876], A                                    ;; 02:52b0 $ea $76 $d8
+    ld   [wWindowVendorSellItemIndex], A               ;; 02:52b0 $ea $76 $d8
     ld   A, $b2                                        ;; 02:52b3 $3e $b2
     ld   [wMenuStateCurrentFunction], A                ;; 02:52b5 $ea $53 $d8
     ld   A, $10                                        ;; 02:52b8 $3e $10
