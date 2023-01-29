@@ -85,7 +85,7 @@ wScratchBankCallH:
 wBankStack:
     ds 64                                              ;; c0c0
 
-; START OF AUDIO ENGINE SRAM
+; START OF AUDIO ENGINE WRAM
 wMusicTempoTimeCounter:
     ds 1                                               ;; c100
 
@@ -306,7 +306,7 @@ wMusicBrokenDoubleTimeMode:
 wSoundsMusicRestorePitchChannel1:
     ds 1                                               ;; c1c9
 ; One byte long
-; END OF AUDIO ENGINE SRAM  (c1cb is not included)
+; END OF AUDIO ENGINE WRAM  (c1cb is not included)
 .high:
     ds 54                                              ;; c1ca
 
@@ -499,6 +499,8 @@ wNPCDroppingChest:
 ; 00: Object ID of the normal object
 ; 01: Delay until next move (initialized from 02)
 ; 02: Movement speed
+; 04: Y coordinate
+; 05: X coordinate
 ; 08-09: Projectile data table entry pointer
 wProjectileRuntimeData:
     ds 32                                              ;; c5c0
@@ -854,11 +856,9 @@ wWindowBackgroundSaveBuffer:
 ; but with only 3 bytes storage, it just calls an actual script in one of the script banks.
 wOpenChestScript1:
     ds 3                                               ;; d613
-
-wD616:
+._3:
     ds 1                                               ;; d616
-
-wD617:
+._4:
     ds 12                                              ;; d617
 
 ; Script that is run when you open a chest. Actual script code is stored in here,
@@ -868,8 +868,7 @@ wOpenChestScript2:
 
 wOpenChestScript3:
     ds 4                                               ;; d633
-
-wD637:
+._4:
     ds 76                                              ;; d637
 
 ; End of the script stack, used by script call/loop operations
@@ -1125,7 +1124,8 @@ wEquippedWeaponElements:
 wStatStaminaBuffBackup:
     ds 5                                               ;; d7d8
 
-wD7DD:
+; Two blank lines before AP and DP
+wStatusScreenAPDP:
     ds 2                                               ;; d7dd
 
 ;Attack power, depending on stats and equiped weapon
@@ -1231,7 +1231,7 @@ wScriptCommand:
 wD85C:
     ds 1                                               ;; d85c
 
-wD85D:
+wVendorPurchaseID:
     ds 1                                               ;; d85d
 
 wD85E:
@@ -1298,7 +1298,13 @@ wSearchInventoryLength:
 wScriptTriggerCollisionFlags:
     ds 1                                               ;; d871
 
-wD872:
+; bit 0: unknown
+; bit 1: unknown
+; bit 2: trash can tiles are loaded
+; bit 5: unknown
+; bit 6: unknown
+; bit 7: unknown
+wWindowSecondaryFlags:
     ds 1                                               ;; d872
 
 wScriptPlayerFacingDirection:
@@ -1313,7 +1319,7 @@ wScriptPlayerFacingDirection:
 wWindowFlags:
     ds 2                                               ;; d874
 
-wD876:
+wWindowVendorSellItemIndex:
     ds 1                                               ;; d876
 
 wPoisStatusEffectTimeBeforeNextTick:
@@ -1360,7 +1366,7 @@ wDualCharacterPosition:
 wVideoWYBackup:
     ds 1                                               ;; d884
 
-wD885:
+wNameEntryNameLength:
     ds 1                                               ;; d885
 
 wTitleScreenState:
@@ -1530,19 +1536,23 @@ wD8C3:
 wD8C4:
     ds 1                                               ;; d8c4
 
-wD8C5:
+; Used only by the vendor buy message
+wWindowTextInsertionPointFinalX:
     ds 1                                               ;; d8c5
 
-wD8C6:
+; Used only by the vendor buy message
+wWindowTextInsertionPointFinalY:
     ds 1                                               ;; d8c6
 
 wVRAMClearFakeTile:
     ds 16                                              ;; d8c7
 
-wD8D7:
+; Used by the code that opens to the same place in the menu after selling once to the vendor.
+wWindowVendorSellPointerSavedX:
     ds 1                                               ;; d8d7
 
-wD8D8:
+; Used by the code that opens to the same place in the menu after selling once to the vendor.
+wWindowVendorSellPointerSavedY:
     ds 1                                               ;; d8d8
 
 wD8D9:

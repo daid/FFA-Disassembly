@@ -10,7 +10,7 @@ SECTION "bank01", ROMX[$4000], BANK[$01]
 ;@call_to_bank_jumptable amount=40
 data_01_4000:
     call_to_bank_target runMainInputHandler            ;; 01:4000 pP
-    call_to_bank_target call_01_48be                   ;; 01:4002 pP
+    call_to_bank_target playerSpritesLoadPlayerSpriteTiles ;; 01:4002 pP
     call_to_bank_target processPhysicsForPlayer        ;; 01:4004 pP
     call_to_bank_target updatePlayerPostion            ;; 01:4006 pP
     call_to_bank_target createPlayerObject             ;; 01:4008 pP
@@ -21,7 +21,7 @@ data_01_4000:
     call_to_bank_target setPlayerOnChocobo             ;; 01:4012 ??
     call_to_bank_target setPlayerOnChocobot            ;; 01:4014 ??
     call_to_bank_target setPlayerOnChocoboat           ;; 01:4016 ??
-    call_to_bank_target call_01_5196                   ;; 01:4018 pP
+    call_to_bank_target movePlayerDuringScript         ;; 01:4018 pP
     call_to_bank_target runScriptAndStopKnockback      ;; 01:401a pP
     call_to_bank_target openWindowsStartButton         ;; 01:401c ??
     call_to_bank_target loadMapWithShutterEffectSequence ;; 01:401e pP
@@ -186,7 +186,7 @@ loadMapInstantSequence:
     ret                                                ;; 01:4157 $c9
 ;@jumptable amount=6
 .loadMapInstantJumptable:
-    dw   call_01_41ca                                  ;; 01:4158 pP
+    dw   scriptCountersInit                            ;; 01:4158 pP
     dw   advanceScriptOpWhenVRAMCopiesDone             ;; 01:415a pP
     dw   drawRoomFromMap                               ;; 01:415c pP
     dw   advanceScriptOpWhenVRAMCopiesDone             ;; 01:415e pP
@@ -223,9 +223,9 @@ closeMinimap:
     dw   prepareShutterEffect                          ;; 01:418c pP
     dw   advanceScriptOpWhenVRAMCopiesDone             ;; 01:418e pP
     dw   shutterEffectClose                            ;; 01:4190 pP
-    dw   call_01_433e                                  ;; 01:4192 pP
+    dw   minimapCloseRestoreRoom                       ;; 01:4192 pP
     dw   advanceScriptOpWhenVRAMCopiesDone             ;; 01:4194 pP
-    dw   call_01_4456                                  ;; 01:4196 pP
+    dw   shutterEffectOpenInit                         ;; 01:4196 pP
     dw   shutterEffectOpen                             ;; 01:4198 pP
     dw   LoadMapEnd                                    ;; 01:419a pP
 
@@ -252,7 +252,7 @@ prepareShutterEffect:
     pop  HL                                            ;; 01:41c8 $e1
     ret                                                ;; 01:41c9 $c9
 
-call_01_41ca:
+scriptCountersInit:
     push DE                                            ;; 01:41ca $d5
     ld   A, $00                                        ;; 01:41cb $3e $00
     ld   [wScriptOpCounter2], A                        ;; 01:41cd $ea $9a $d4
@@ -357,10 +357,11 @@ loadFixedMinimap:
     ld   A, [wMapNumberTmp]                            ;; 01:426b $fa $9d $d4
     cp   A, $00                                        ;; 01:426e $fe $00
     jr   Z, .jr_01_4274                                ;; 01:4270 $28 $02
+; Not used for map 00 (overworld)
     ld   A, $44                                        ;; 01:4272 $3e $44
 .jr_01_4274:
     add  A, C                                          ;; 01:4274 $81
-    call call_01_42d1                                  ;; 01:4275 $cd $d1 $42
+    call minimapFlashingMarkerInit                     ;; 01:4275 $cd $d1 $42
     ret                                                ;; 01:4278 $c9
 
 ; This only loads the empty minimap background and sets up graphic tiles
@@ -386,16 +387,16 @@ drawDynamicMinimapBackground:
     call drawRoom_trampoline                           ;; 01:42a3 $cd $a4 $04
     ld   A, [wRoomXYTmp]                               ;; 01:42a6 $fa $9e $d4
     add  A, $44                                        ;; 01:42a9 $c6 $44
-    call call_01_42d1                                  ;; 01:42ab $cd $d1 $42
-    call call_01_42b2                                  ;; 01:42ae $cd $b2 $42
+    call minimapFlashingMarkerInit                     ;; 01:42ab $cd $d1 $42
+    call minimapCopyBlankTiles                         ;; 01:42ae $cd $b2 $42
     ret                                                ;; 01:42b1 $c9
 
-; Copy the first 16 tiles from the title_end.png graphics to $8900
-; But these tiles are all empty...
-call_01_42b2:
-    ld   HL, data_01_4000                              ;; 01:42b2 $21 $00 $40
+; Copy the first 16 tiles from the minimap tileset
+; These tiles in a tileset are usually reserved for tile animation, but the minimap tileset does not use animation, and in fact the animation code does not work with it.
+minimapCopyBlankTiles:
+    ld   HL, tilesetGfxTitle ;@ptr tilesetGfxTitle     ;; 01:42b2 $21 $00 $40
     ld   DE, $8900                                     ;; 01:42b5 $11 $00 $89
-    ld   C, $0b                                        ;; 01:42b8 $0e $0b
+    ld   C, BANK(tilesetGfxTitle) ;@bank tilesetGfxTitle ;; 01:42b8 $0e $0b
     ld   B, $10                                        ;; 01:42ba $06 $10
 .loop:
     push BC                                            ;; 01:42bc $c5
@@ -412,10 +413,11 @@ call_01_42b2:
     add  HL, BC                                        ;; 01:42cb $09
     pop  BC                                            ;; 01:42cc $c1
     dec  B                                             ;; 01:42cd $05
-    jr   NZ, call_01_42b2.loop                         ;; 01:42ce $20 $ec
+    jr   NZ, minimapCopyBlankTiles.loop                ;; 01:42ce $20 $ec
     ret                                                ;; 01:42d0 $c9
 
-call_01_42d1:
+; A = xy of current room
+minimapFlashingMarkerInit:
     push AF                                            ;; 01:42d1 $f5
     ld   HL, .minimapFlashingMarkerMetaspriteTable     ;; 01:42d2 $21 $25 $43
     ld   C, $00                                        ;; 01:42d5 $0e $00
@@ -442,19 +444,19 @@ call_01_42d1:
     call updateObjectPosition                          ;; 01:42f5 $cd $11 $06
     ld   HL, $4260                                     ;; 01:42f8 $21 $60 $42
     ld   DE, $8080                                     ;; 01:42fb $11 $80 $80
-    ld   A, $0c                                        ;; 01:42fe $3e $0c
+    ld   A, BANK(tilesetGfxOutdoor) ;@bank tilesetGfxOutdoor ;; 01:42fe $3e $0c
     call addTileGraphicCopyRequest                     ;; 01:4300 $cd $f5 $2d
     ld   HL, data_01_4250                              ;; 01:4303 $21 $50 $42
     ld   DE, $8090                                     ;; 01:4306 $11 $90 $80
-    ld   A, $0c                                        ;; 01:4309 $3e $0c
+    ld   A, BANK(tilesetGfxOutdoor) ;@bank tilesetGfxOutdoor ;; 01:4309 $3e $0c
     call addTileGraphicCopyRequest                     ;; 01:430b $cd $f5 $2d
     ld   HL, data_01_4250                              ;; 01:430e $21 $50 $42
     ld   DE, $80a0                                     ;; 01:4311 $11 $a0 $80
-    ld   A, $0c                                        ;; 01:4314 $3e $0c
+    ld   A, BANK(tilesetGfxOutdoor) ;@bank tilesetGfxOutdoor ;; 01:4314 $3e $0c
     call addTileGraphicCopyRequest                     ;; 01:4316 $cd $f5 $2d
     ld   HL, data_01_4250                              ;; 01:4319 $21 $50 $42
     ld   DE, $80b0                                     ;; 01:431c $11 $b0 $80
-    ld   A, $0c                                        ;; 01:431f $3e $0c
+    ld   A, BANK(tilesetGfxOutdoor) ;@bank tilesetGfxOutdoor ;; 01:431f $3e $0c
     call addTileGraphicCopyRequest                     ;; 01:4321 $cd $f5 $2d
     ret                                                ;; 01:4324 $c9
 .minimapFlashingMarkerMetaspriteTable:
@@ -468,7 +470,7 @@ minimapCopyMapNumberAndXY:
     ld   [wRoomXYTmp], A                               ;; 01:433a $ea $9e $d4
     ret                                                ;; 01:433d $c9
 
-call_01_433e:
+minimapCloseRestoreRoom:
     push DE                                            ;; 01:433e $d5
     ld   A, [wRoomXYTmp]                               ;; 01:433f $fa $9e $d4
     ld   E, A                                          ;; 01:4342 $5f
@@ -614,7 +616,7 @@ call_01_4422:
     ld   A, [wMapWidthTmp]                             ;; 01:4423 $fa $9f $d4
     cp   A, $00                                        ;; 01:4426 $fe $00
     jr   Z, .jr_01_442d                                ;; 01:4428 $28 $03
-    call call_00_0de6                                  ;; 01:442a $cd $e6 $0d
+    call drawMinimap                                   ;; 01:442a $cd $e6 $0d
 .jr_01_442d:
     ld   HL, lcdcShutterEffectOpen                     ;; 01:442d $21 $09 $41
     ld   A, [wPlayerSpecialFlags]                      ;; 01:4430 $fa $d4 $c4
@@ -635,7 +637,7 @@ call_01_4422:
     pop  HL                                            ;; 01:4454 $e1
     ret                                                ;; 01:4455 $c9
 
-call_01_4456:
+shutterEffectOpenInit:
     push DE                                            ;; 01:4456 $d5
     ld   HL, lcdcShutterEffectOpen                     ;; 01:4457 $21 $09 $41
     ld   A, [wPlayerSpecialFlags]                      ;; 01:445a $fa $d4 $c4
@@ -705,7 +707,7 @@ call_01_44a5:
     ld   B, $00                                        ;; 01:44c1 $06 $00
     and  A, $0f                                        ;; 01:44c3 $e6 $0f
     push AF                                            ;; 01:44c5 $f5
-    call call_00_0232                                  ;; 01:44c6 $cd $32 $02
+    call playerSpritesLoadPlayerSpriteTiles_trampoline ;; 01:44c6 $cd $32 $02
     pop  AF                                            ;; 01:44c9 $f1
     pop  DE                                            ;; 01:44ca $d1
     ld   B, $00                                        ;; 01:44cb $06 $00
@@ -814,7 +816,7 @@ scrollRoom:
     inc  A                                             ;; 01:458f $3c
     ld   E, A                                          ;; 01:4590 $5f
     ld   D, $00                                        ;; 01:4591 $16 $00
-    call call_01_46c4                                  ;; 01:4593 $cd $c4 $46
+    call scrollRoomScroll                              ;; 01:4593 $cd $c4 $46
     ret                                                ;; 01:4596 $c9
 .east:
     ld   A, [wScrollPixelCounter]                      ;; 01:4597 $fa $48 $c3
@@ -857,7 +859,7 @@ scrollRoom:
     pop  DE                                            ;; 01:45df $d1
     ld   E, D                                          ;; 01:45e0 $5a
     ld   D, $00                                        ;; 01:45e1 $16 $00
-    call call_01_46c4                                  ;; 01:45e3 $cd $c4 $46
+    call scrollRoomScroll                              ;; 01:45e3 $cd $c4 $46
     ret                                                ;; 01:45e6 $c9
 .south:
     ld   A, [wScrollPixelCounter]                      ;; 01:45e7 $fa $48 $c3
@@ -901,7 +903,7 @@ scrollRoom:
     call scrollMoveSprites_trampoline                  ;; 01:4630 $cd $29 $04
     pop  DE                                            ;; 01:4633 $d1
     ld   E, $00                                        ;; 01:4634 $1e $00
-    call call_01_46c4                                  ;; 01:4636 $cd $c4 $46
+    call scrollRoomScroll                              ;; 01:4636 $cd $c4 $46
     ret                                                ;; 01:4639 $c9
 .north:
     ld   A, [wScrollPixelCounter]                      ;; 01:463a $fa $48 $c3
@@ -949,7 +951,7 @@ scrollRoom:
     inc  A                                             ;; 01:4688 $3c
     ld   D, A                                          ;; 01:4689 $57
     ld   E, $00                                        ;; 01:468a $1e $00
-    call call_01_46c4                                  ;; 01:468c $cd $c4 $46
+    call scrollRoomScroll                              ;; 01:468c $cd $c4 $46
     ret                                                ;; 01:468f $c9
 
 drawRoomMetaTilesColumn:
@@ -996,7 +998,8 @@ drawRoomMetatilesRow:
     jr   C, .jr_01_46ac                                ;; 01:46c1 $38 $e9
     ret                                                ;; 01:46c3 $c9
 
-call_01_46c4:
+; DE = yx scroll distances
+scrollRoomScroll:
     ld   A, [wVideoSCX]                                ;; 01:46c4 $fa $a6 $c0
     add  A, E                                          ;; 01:46c7 $83
     ld   [wVideoSCX], A                                ;; 01:46c8 $ea $a6 $c0
@@ -1017,13 +1020,13 @@ call_01_46c4:
     ld   C, $a0                                        ;; 01:46e2 $0e $a0
     xor  A, A                                          ;; 01:46e4 $af
     cp   A, E                                          ;; 01:46e5 $bb
-    jr   NZ, .jr_01_46ef                               ;; 01:46e6 $20 $07
+    jr   NZ, .check_finished                           ;; 01:46e6 $20 $07
     ld   A, [wRoomHeightInTiles]                       ;; 01:46e8 $fa $40 $c3
     add  A, A                                          ;; 01:46eb $87
     add  A, A                                          ;; 01:46ec $87
     add  A, A                                          ;; 01:46ed $87
     ld   C, A                                          ;; 01:46ee $4f
-.jr_01_46ef:
+.check_finished:
     ld   A, [wScrollPixelCounter]                      ;; 01:46ef $fa $48 $c3
     cp   A, C                                          ;; 01:46f2 $b9
     ret  C                                             ;; 01:46f3 $d8
@@ -1127,7 +1130,10 @@ playerTileNumbers:
     db   $c8, $ca, $c9, $cb, $c8, $ca, $c9, $cb        ;; 01:48ae ????????
     db   $c0, $c2, $c1, $c3, $b8, $ba, $b9, $bb        ;; 01:48b6 ????????
 
-call_01_48be:
+; Loads tiles for the current frame of the player sprite
+; A = direction
+; B = base sprite offset in the table, except the lowest two bits are actually the highest ($21 = $0120)
+playerSpritesLoadPlayerSpriteTiles:
     ld   C, A                                          ;; 01:48be $4f
     ld   A, [wPlayerSpecialFlags]                      ;; 01:48bf $fa $d4 $c4
     and  A, $fc                                        ;; 01:48c2 $e6 $fc
@@ -1168,24 +1174,24 @@ call_01_48be:
 .jr_01_48fd:
     ld   A, C                                          ;; 01:48fd $79
     rrca                                               ;; 01:48fe $0f
-    jr   C, .jr_01_490c                                ;; 01:48ff $38 $0b
+    jr   C, .east                                      ;; 01:48ff $38 $0b
     rrca                                               ;; 01:4901 $0f
-    jr   C, .jr_01_4910                                ;; 01:4902 $38 $0c
+    jr   C, .west                                      ;; 01:4902 $38 $0c
     rrca                                               ;; 01:4904 $0f
-    jr   C, .jr_01_4914                                ;; 01:4905 $38 $0d
+    jr   C, .north                                     ;; 01:4905 $38 $0d
     rrca                                               ;; 01:4907 $0f
-    jr   C, .jr_01_4918                                ;; 01:4908 $38 $0e
+    jr   C, .south                                     ;; 01:4908 $38 $0e
     jr   .jr_01_4954                                   ;; 01:490a $18 $48
-.jr_01_490c:
+.east:
     ld   A, $00                                        ;; 01:490c $3e $00
     jr   .jr_01_491a                                   ;; 01:490e $18 $0a
-.jr_01_4910:
+.west:
     ld   A, $04                                        ;; 01:4910 $3e $04
     jr   .jr_01_491a                                   ;; 01:4912 $18 $06
-.jr_01_4914:
+.north:
     ld   A, $08                                        ;; 01:4914 $3e $08
     jr   .jr_01_491a                                   ;; 01:4916 $18 $02
-.jr_01_4918:
+.south:
     ld   A, $0c                                        ;; 01:4918 $3e $0c
 .jr_01_491a:
     add  A, B                                          ;; 01:491a $80
@@ -1213,12 +1219,12 @@ call_01_48be:
     ld   C, $04                                        ;; 01:4941 $0e $04
     ld   B, $00                                        ;; 01:4943 $06 $00
     xor  A, A                                          ;; 01:4945 $af
-    call call_00_1a76                                  ;; 01:4946 $cd $76 $1a
+    call playerSpritesLoadDoubleTile                   ;; 01:4946 $cd $76 $1a
     ld   DE, gfxPlayer ;@=ptr gfxPlayer                ;; 01:4949 $11 $40 $5a
     ld   C, $04                                        ;; 01:494c $0e $04
     ld   B, $20                                        ;; 01:494e $06 $20
     xor  A, A                                          ;; 01:4950 $af
-    call call_00_1a76                                  ;; 01:4951 $cd $76 $1a
+    call playerSpritesLoadDoubleTile                   ;; 01:4951 $cd $76 $1a
 .jr_01_4954:
     ld   C, $04                                        ;; 01:4954 $0e $04
     ld   B, $00                                        ;; 01:4956 $06 $00
@@ -1377,13 +1383,13 @@ gameStateNormal:
     bit  3, D                                          ;; 01:4a45 $cb $5a
     jp   NZ, gameStateNormal.down                      ;; 01:4a47 $c2 $ee $4a
     xor  A, A                                          ;; 01:4a4a $af
-    call call_01_48be                                  ;; 01:4a4b $cd $be $48
+    call playerSpritesLoadPlayerSpriteTiles            ;; 01:4a4b $cd $be $48
     ret                                                ;; 01:4a4e $c9
 .a_or_b_button:
     push DE                                            ;; 01:4a4f $d5
     ld   A, C                                          ;; 01:4a50 $79
     and  A, $0f                                        ;; 01:4a51 $e6 $0f
-    call call_01_48be                                  ;; 01:4a53 $cd $be $48
+    call playerSpritesLoadPlayerSpriteTiles            ;; 01:4a53 $cd $be $48
     pop  DE                                            ;; 01:4a56 $d1
     ld   A, $02                                        ;; 01:4a57 $3e $02
     ld   [wMainGameState], A                           ;; 01:4a59 $ea $a0 $c0
@@ -1414,7 +1420,7 @@ gameStateNormal:
     call setPlayerDirection                            ;; 01:4a8e $cd $b1 $02
     ld   A, $09                                        ;; 01:4a91 $3e $09
     ld   [wMainGameState], A                           ;; 01:4a93 $ea $a0 $c0
-    call call_01_4b24                                  ;; 01:4a96 $cd $24 $4b
+    call roomExitScreenScrollPrep                      ;; 01:4a96 $cd $24 $4b
     ret                                                ;; 01:4a99 $c9
 .left:
     push BC                                            ;; 01:4a9a $c5
@@ -1435,7 +1441,7 @@ gameStateNormal:
     call setPlayerDirection                            ;; 01:4ab8 $cd $b1 $02
     ld   A, $08                                        ;; 01:4abb $3e $08
     ld   [wMainGameState], A                           ;; 01:4abd $ea $a0 $c0
-    call call_01_4b24                                  ;; 01:4ac0 $cd $24 $4b
+    call roomExitScreenScrollPrep                      ;; 01:4ac0 $cd $24 $4b
     ret                                      ;; 01:4ac3 $c9
 .up:
     push BC                                            ;; 01:4ac4 $c5
@@ -1456,7 +1462,7 @@ gameStateNormal:
     call setPlayerDirection                            ;; 01:4ae2 $cd $b1 $02
     ld   A, $0b                                        ;; 01:4ae5 $3e $0b
     ld   [wMainGameState], A                           ;; 01:4ae7 $ea $a0 $c0
-    call call_01_4b24                                  ;; 01:4aea $cd $24 $4b
+    call roomExitScreenScrollPrep                      ;; 01:4aea $cd $24 $4b
     ret                                                ;; 01:4aed $c9
 .down:
     push BC                                            ;; 01:4aee $c5
@@ -1477,19 +1483,19 @@ gameStateNormal:
     call setPlayerDirection                            ;; 01:4b0c $cd $b1 $02
     ld   A, $0a                                        ;; 01:4b0f $3e $0a
     ld   [wMainGameState], A                           ;; 01:4b11 $ea $a0 $c0
-    call call_01_4b24                                  ;; 01:4b14 $cd $24 $4b
+    call roomExitScreenScrollPrep                      ;; 01:4b14 $cd $24 $4b
     ret                                                ;; 01:4b17 $c9
 .jp_01_4b18:
     ld   A, C                                          ;; 01:4b18 $79
-    call call_01_48be                                  ;; 01:4b19 $cd $be $48
+    call playerSpritesLoadPlayerSpriteTiles            ;; 01:4b19 $cd $be $48
     ret                                                ;; 01:4b1c $c9
 .jp_01_4b1d:
     ld   A, C                                          ;; 01:4b1d $79
     and  A, $0f                                        ;; 01:4b1e $e6 $0f
-    call call_01_48be                                  ;; 01:4b20 $cd $be $48
+    call playerSpritesLoadPlayerSpriteTiles            ;; 01:4b20 $cd $be $48
     ret                                                ;; 01:4b23 $c9
 
-call_01_4b24:
+roomExitScreenScrollPrep:
     ld   A, [wBossFirstObjectID]                       ;; 01:4b24 $fa $e8 $d3
     cp   A, $ff                                        ;; 01:4b27 $fe $ff
     jr   Z, .jr_01_4b31                                ;; 01:4b29 $28 $06
@@ -1680,7 +1686,7 @@ gameStateFireAutoTarget:
     call getPlayerDirection                            ;; 01:4c52 $cd $ab $02
     and  A, $0f                                        ;; 01:4c55 $e6 $0f
     ld   B, $00                                        ;; 01:4c57 $06 $00
-    call call_01_48be                                  ;; 01:4c59 $cd $be $48
+    call playerSpritesLoadPlayerSpriteTiles            ;; 01:4c59 $cd $be $48
     ret                                                ;; 01:4c5c $c9
 
 gameStateSpecialAttackFlyingSwordReturn:
@@ -1786,7 +1792,7 @@ gameStateSpecialAttackFlyingSwordReturn:
     call getPlayerDirection                            ;; 01:4d00 $cd $ab $02
     or   A, $90                                        ;; 01:4d03 $f6 $90
     ld   B, $00                                        ;; 01:4d05 $06 $00
-    call call_01_48be                                  ;; 01:4d07 $cd $be $48
+    call playerSpritesLoadPlayerSpriteTiles            ;; 01:4d07 $cd $be $48
     ret                                                ;; 01:4d0a $c9
 
 doSwordFlyingAttack:
@@ -1808,7 +1814,7 @@ doSwordFlyingAttack:
     call getPlayerDirection                            ;; 01:4d2a $cd $ab $02
     and  A, $0f                                        ;; 01:4d2d $e6 $0f
     ld   B, $60                                        ;; 01:4d2f $06 $60
-    call call_01_48be                                  ;; 01:4d31 $cd $be $48
+    call playerSpritesLoadPlayerSpriteTiles            ;; 01:4d31 $cd $be $48
     ret                                                ;; 01:4d34 $c9
 
 call_01_4d35:
@@ -1869,7 +1875,7 @@ call_01_4d35:
     call call_00_08d4                                  ;; 01:4d85 $cd $d4 $08
     pop  AF                                            ;; 01:4d88 $f1
     ld   B, $60                                        ;; 01:4d89 $06 $60
-    call call_01_48be                                  ;; 01:4d8b $cd $be $48
+    call playerSpritesLoadPlayerSpriteTiles            ;; 01:4d8b $cd $be $48
     ret                                                ;; 01:4d8e $c9
 
 gameStateSpecialAttackFlyingSword:
@@ -2013,7 +2019,7 @@ gameStateSpecialAttack:
     call call_00_2f3e                                  ;; 01:4e81 $cd $3e $2f
     ld   B, A                                          ;; 01:4e84 $47
     pop  AF                                            ;; 01:4e85 $f1
-    call call_01_48be                                  ;; 01:4e86 $cd $be $48
+    call playerSpritesLoadPlayerSpriteTiles            ;; 01:4e86 $cd $be $48
     call call_00_2ed3                                  ;; 01:4e89 $cd $d3 $2e
     ret                                                ;; 01:4e8c $c9
 .jp_01_4e8d:
@@ -2023,7 +2029,7 @@ gameStateSpecialAttack:
     ld   C, $04                                        ;; 01:4e93 $0e $04
     ld   A, B                                          ;; 01:4e95 $78
     ld   B, $00                                        ;; 01:4e96 $06 $00
-    call call_01_48be                                  ;; 01:4e98 $cd $be $48
+    call playerSpritesLoadPlayerSpriteTiles            ;; 01:4e98 $cd $be $48
     ld   A, $00                                        ;; 01:4e9b $3e $00
     ld   [wMainGameState], A                           ;; 01:4e9d $ea $a0 $c0
     call playerAttackDestroy_trampoline                ;; 01:4ea0 $cd $f7 $2e
@@ -2048,7 +2054,7 @@ gameStateAttack:
     call getPlayerDirection                            ;; 01:4ec0 $cd $ab $02
     pop  BC                                            ;; 01:4ec3 $c1
     and  A, $0f                                        ;; 01:4ec4 $e6 $0f
-    call call_01_48be                                  ;; 01:4ec6 $cd $be $48
+    call playerSpritesLoadPlayerSpriteTiles            ;; 01:4ec6 $cd $be $48
 .jr_01_4ec9:
     pop  DE                                            ;; 01:4ec9 $d1
     call call_00_2ed3                                  ;; 01:4eca $cd $d3 $2e
@@ -2059,15 +2065,15 @@ gameStateAttack:
     ld   C, $04                                        ;; 01:4ed4 $0e $04
     ld   A, B                                          ;; 01:4ed6 $78
     ld   B, $00                                        ;; 01:4ed7 $06 $00
-    call call_01_48be                                  ;; 01:4ed9 $cd $be $48
+    call playerSpritesLoadPlayerSpriteTiles            ;; 01:4ed9 $cd $be $48
     ld   A, $00                                        ;; 01:4edc $3e $00
     ld   [wMainGameState], A                           ;; 01:4ede $ea $a0 $c0
     ret                                                ;; 01:4ee1 $c9
 
 gameStateScrollLeft:
-    call call_01_4f65                                  ;; 01:4ee2 $cd $65 $4f
+    call getChocoFormTileOffset                        ;; 01:4ee2 $cd $65 $4f
     ld   A, $82                                        ;; 01:4ee5 $3e $82
-    call call_01_48be                                  ;; 01:4ee7 $cd $be $48
+    call playerSpritesLoadPlayerSpriteTiles            ;; 01:4ee7 $cd $be $48
     ld   D, $04                                        ;; 01:4eea $16 $04
     ld   A, $01                                        ;; 01:4eec $3e $01
     call scrollRoom                                    ;; 01:4eee $cd $d8 $44
@@ -2078,9 +2084,9 @@ gameStateScrollLeft:
     ret                                                ;; 01:4efa $c9
 
 gameStateScrollRight:
-    call call_01_4f65                                  ;; 01:4efb $cd $65 $4f
+    call getChocoFormTileOffset                        ;; 01:4efb $cd $65 $4f
     ld   A, $81                                        ;; 01:4efe $3e $81
-    call call_01_48be                                  ;; 01:4f00 $cd $be $48
+    call playerSpritesLoadPlayerSpriteTiles            ;; 01:4f00 $cd $be $48
     ld   D, $04                                        ;; 01:4f03 $16 $04
     ld   A, $02                                        ;; 01:4f05 $3e $02
     call scrollRoom                                    ;; 01:4f07 $cd $d8 $44
@@ -2095,9 +2101,9 @@ gameStateScrollDown:
     ld   A, $04                                        ;; 01:4f16 $3e $04
     call scrollRoom                                    ;; 01:4f18 $cd $d8 $44
     push AF                                            ;; 01:4f1b $f5
-    call call_01_4f65                                  ;; 01:4f1c $cd $65 $4f
+    call getChocoFormTileOffset                        ;; 01:4f1c $cd $65 $4f
     ld   A, $88                                        ;; 01:4f1f $3e $88
-    call call_01_48be                                  ;; 01:4f21 $cd $be $48
+    call playerSpritesLoadPlayerSpriteTiles            ;; 01:4f21 $cd $be $48
     pop  AF                                            ;; 01:4f24 $f1
     cp   A, $00                                        ;; 01:4f25 $fe $00
     ret  NZ                                            ;; 01:4f27 $c0
@@ -2106,9 +2112,9 @@ gameStateScrollDown:
     ret                                                ;; 01:4f2e $c9
 
 gameStateScrollUp:
-    call call_01_4f65                                  ;; 01:4f2f $cd $65 $4f
+    call getChocoFormTileOffset                        ;; 01:4f2f $cd $65 $4f
     ld   A, $84                                        ;; 01:4f32 $3e $84
-    call call_01_48be                                  ;; 01:4f34 $cd $be $48
+    call playerSpritesLoadPlayerSpriteTiles            ;; 01:4f34 $cd $be $48
     ld   D, $04                                        ;; 01:4f37 $16 $04
     ld   A, $08                                        ;; 01:4f39 $3e $08
     call scrollRoom                                    ;; 01:4f3b $cd $d8 $44
@@ -2134,7 +2140,11 @@ call_01_4f48:
     ld   [wMainGameState], A                           ;; 01:4f61 $ea $a0 $c0
     ret                                                ;; 01:4f64 $c9
 
-call_01_4f65:
+; Only used during screen scroll.
+; Does not handle Chocoboat, which means Chocobot is shown while the screen scrolls.
+; That could be a bug, or it could be that they only wanted to use the Chocoboat frames when you are moving.
+; Return B: offset into tile numbers, except the lowest two bits are actually the highest. (Chocobot's offset is $0120.)
+getChocoFormTileOffset:
     call getPlayerCollisionFlags                       ;; 01:4f65 $cd $b7 $02
     and  A, $f0                                        ;; 01:4f68 $e6 $f0
     cp   A, $e0                                        ;; 01:4f6a $fe $e0
@@ -2198,19 +2208,20 @@ playerCollisionHandling:
 ;.south_hit:
     call getPlayerY                                    ;; 01:4fd4 $cd $99 $02
     and  A, $07                                        ;; 01:4fd7 $e6 $07
-    jr   Z, .jr_01_500c                                ;; 01:4fd9 $28 $31
+    jr   Z, .on_grid                                   ;; 01:4fd9 $28 $31
     cpl                                                ;; 01:4fdb $2f
     inc  A                                             ;; 01:4fdc $3c
     ld   H, A                                          ;; 01:4fdd $67
     ld   L, $00                                        ;; 01:4fde $2e $00
     ret                                                ;; 01:4fe0 $c9
-; This looks like code intended for either east or west. Is there a bug here?
+; Q: This looks like code intended for either east or west. Is there a bug here?
+; A: No, because getPlayerX and getPlayerY always return the player's location as if on-grid, so execution always skips to $500c.
     db   $cd, $93, $02, $e6, $07, $28, $24, $2f        ;; 01:4fe1 ????????
     db   $3c, $6f, $26, $00, $c9                       ;; 01:4fe9 ?????
 .eastwest_hit:
     call getPlayerX                                    ;; 01:4fee $cd $93 $02
     and  A, $07                                        ;; 01:4ff1 $e6 $07
-    jr   Z, .jr_01_500c                                ;; 01:4ff3 $28 $17
+    jr   Z, .on_grid                                   ;; 01:4ff3 $28 $17
     cpl                                                ;; 01:4ff5 $2f
     inc  A                                             ;; 01:4ff6 $3c
     and  A, $07                                        ;; 01:4ff7 $e6 $07
@@ -2220,14 +2231,14 @@ playerCollisionHandling:
 .north_hit:
     call getPlayerY                                    ;; 01:4ffd $cd $99 $02
     and  A, $07                                        ;; 01:5000 $e6 $07
-    jr   Z, .jr_01_500c                                ;; 01:5002 $28 $08
+    jr   Z, .on_grid                                   ;; 01:5002 $28 $08
     cpl                                                ;; 01:5004 $2f
     inc  A                                             ;; 01:5005 $3c
     and  A, $07                                        ;; 01:5006 $e6 $07
     ld   H, A                                          ;; 01:5008 $67
     ld   L, $00                                        ;; 01:5009 $2e $00
     ret                                                ;; 01:500b $c9
-.jr_01_500c:
+.on_grid:
     ld   HL, $00                                       ;; 01:500c $21 $00 $00
     ret                                                ;; 01:500f $c9
 .scriptOnTouch:
@@ -2461,7 +2472,7 @@ setPlayerOnChocoboat:
     call hideFollower                                  ;; 01:5192 $cd $d5 $28
     ret                                                ;; 01:5195 $c9
 
-call_01_5196:
+movePlayerDuringScript:
     call getPlayerDirection                            ;; 01:5196 $cd $ab $02
     bit  7, A                                          ;; 01:5199 $cb $7f
     ret  Z                                             ;; 01:519b $c8
@@ -2473,7 +2484,7 @@ call_01_5196:
     ld   B, $10                                        ;; 01:51a6 $06 $10
 .jr_01_51a8:
     pop  AF                                            ;; 01:51a8 $f1
-    call call_01_48be                                  ;; 01:51a9 $cd $be $48
+    call playerSpritesLoadPlayerSpriteTiles            ;; 01:51a9 $cd $be $48
     ret  NZ                                            ;; 01:51ac $c0
     call getPlayerDirection                            ;; 01:51ad $cd $ab $02
     bit  5, A                                          ;; 01:51b0 $cb $6f
@@ -2774,7 +2785,7 @@ call_01_52e0:
     jr   NC, .jp_01_538a                               ;; 01:537b $30 $0d
     pop  AF                                            ;; 01:537d $f1
     push BC                                            ;; 01:537e $c5
-    call call_01_59ea                                  ;; 01:537f $cd $ea $59
+    call playerSpritesLoadAttackSpriteTiles            ;; 01:537f $cd $ea $59
     pop  BC                                            ;; 01:5382 $c1
     pop  AF                                            ;; 01:5383 $f1
     call setObjectDirection                            ;; 01:5384 $cd $a6 $0c
@@ -2987,7 +2998,7 @@ call_01_53f2:
     jr   Z, .jr_01_54ac                                ;; 01:5497 $28 $13
     pop  HL                                            ;; 01:5499 $e1
     ld   A, [HL]                                       ;; 01:549a $7e
-    call call_01_59ea                                  ;; 01:549b $cd $ea $59
+    call playerSpritesLoadAttackSpriteTiles            ;; 01:549b $cd $ea $59
     pop  BC                                            ;; 01:549e $c1
     inc  C                                             ;; 01:549f $0c
     ld   A, $07                                        ;; 01:54a0 $3e $07
@@ -3142,7 +3153,7 @@ jp_01_5538:
     jp   Z, jp_01_5592                                 ;; 01:557c $ca $92 $55
     pop  HL                                            ;; 01:557f $e1
     ld   A, [HL]                                       ;; 01:5580 $7e
-    call call_01_59ea                                  ;; 01:5581 $cd $ea $59
+    call playerSpritesLoadAttackSpriteTiles            ;; 01:5581 $cd $ea $59
     pop  BC                                            ;; 01:5584 $c1
     inc  C                                             ;; 01:5585 $0c
     ld   A, $07                                        ;; 01:5586 $3e $07
@@ -3964,9 +3975,10 @@ call_01_59d0:
     ld   [HL], $00                                     ;; 01:59e7 $36 $00
     ret                                                ;; 01:59e9 $c9
 
-call_01_59ea:
+; Loads tiles for the current attack
+playerSpritesLoadAttackSpriteTiles:
     push AF                                            ;; 01:59ea $f5
-    ld   HL, wAttackFramePointers               ;; 01:59eb $21 $08 $cf
+    ld   HL, wAttackFramePointers                      ;; 01:59eb $21 $08 $cf
     add  HL, BC                                        ;; 01:59ee $09
     add  HL, BC                                        ;; 01:59ef $09
     ld   A, [HL+]                                      ;; 01:59f0 $2a
@@ -4038,7 +4050,7 @@ call_01_59ea:
     add  HL, DE                                        ;; 01:5a4a $19
     ld   A, [HL]                                       ;; 01:5a4b $7e
     cp   A, C                                          ;; 01:5a4c $b9
-    jr   Z, .jr_01_5a66                                ;; 01:5a4d $28 $17
+    jr   Z, .return                                    ;; 01:5a4d $28 $17
     ld   [HL], C                                       ;; 01:5a4f $71
     pop  HL                                            ;; 01:5a50 $e1
     ld   A, [HL]                                       ;; 01:5a51 $7e
@@ -4048,16 +4060,16 @@ call_01_59ea:
     push AF                                            ;; 01:5a55 $f5
     push BC                                            ;; 01:5a56 $c5
     push DE                                            ;; 01:5a57 $d5
-    call call_00_1a76                                  ;; 01:5a58 $cd $76 $1a
+    call playerSpritesLoadDoubleTile                   ;; 01:5a58 $cd $76 $1a
     pop  DE                                            ;; 01:5a5b $d1
     pop  BC                                            ;; 01:5a5c $c1
     ld   A, $20                                        ;; 01:5a5d $3e $20
     add  A, B                                          ;; 01:5a5f $80
     ld   B, A                                          ;; 01:5a60 $47
     pop  AF                                            ;; 01:5a61 $f1
-    call call_00_1a76                                  ;; 01:5a62 $cd $76 $1a
+    call playerSpritesLoadDoubleTile                   ;; 01:5a62 $cd $76 $1a
     ret                                                ;; 01:5a65 $c9
-.jr_01_5a66:
+.return:
     pop  DE                                            ;; 01:5a66 $d1
     pop  DE                                            ;; 01:5a67 $d1
     pop  DE                                            ;; 01:5a68 $d1
@@ -4409,7 +4421,7 @@ call_01_5bf1:
     ld   C, A                                          ;; 01:5c63 $4f
     ld   B, $00                                        ;; 01:5c64 $06 $00
     ld   A, [HL]                                       ;; 01:5c66 $7e
-    call call_01_59ea                                  ;; 01:5c67 $cd $ea $59
+    call playerSpritesLoadAttackSpriteTiles            ;; 01:5c67 $cd $ea $59
     pop  BC                                            ;; 01:5c6a $c1
     inc  C                                             ;; 01:5c6b $0c
     ld   A, $07                                        ;; 01:5c6c $3e $07

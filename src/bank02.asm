@@ -961,11 +961,11 @@ getScriptOpcodeFunction:
 INCLUDE "code/script/opcodetable.asm"
 
 menuTrashCanLoadTiles:
-    ld   A, [wD872]                                    ;; 02:4776 $fa $72 $d8
+    ld   A, [wWindowSecondaryFlags]                    ;; 02:4776 $fa $72 $d8
     bit  2, A                                          ;; 02:4779 $cb $57
     ret  NZ                                            ;; 02:477b $c0
     set  2, A                                          ;; 02:477c $cb $d7
-    ld   [wD872], A                                    ;; 02:477e $ea $72 $d8
+    ld   [wWindowSecondaryFlags], A                    ;; 02:477e $ea $72 $d8
     push HL                                            ;; 02:4781 $e5
     ld   HL, menuTrashCanTileLoads                     ;; 02:4782 $21 $b8 $47
     ld   B, $04                                        ;; 02:4785 $06 $04
@@ -1062,9 +1062,9 @@ gameStateMenuJumptable:
     dw   call_02_4b4b                                  ;; 02:4808 pP
     dw   call_02_4b72                                  ;; 02:480a pP
     dw   call_02_4b2e                                  ;; 02:480c pP
-    dw   call_02_4b93                                  ;; 02:480e pP
-    dw   vendorShowBuyMessage                          ;; 02:4810 pP
-    dw   call_02_5182                                  ;; 02:4812 pP
+    dw   windowDismiss                                 ;; 02:480e pP
+    dw   windowVendorShowBuyMessageWindow              ;; 02:4810 pP
+    dw   windowVendorShowBuyMessage                    ;; 02:4812 pP
     dw   call_02_51d5                                  ;; 02:4814 pP
     dw   call_02_5475                                  ;; 02:4816 ??
     dw   call_02_547e                                  ;; 02:4818 ??
@@ -1312,7 +1312,7 @@ data_02_49af:
     data_pbbp statusScreenStatLabels, $13, $01, $d612  ;; 02:49af ....pP $00
     data_pbbp $0000, $14, $01, $d612                   ;; 02:49b5 ....pP $01
     data_pbbp statusScreenHPLabel, $1a, $01, $d612     ;; 02:49bb ....pP $02
-    data_pbbp wD7DD, $15, $ff, $0000                   ;; 02:49c1 ...... $03
+    data_pbbp wStatusScreenAPDP, $15, $ff, $0000       ;; 02:49c1 ...... $03
 
 call_02_49c7:
     ld   A, [wDialogType]                              ;; 02:49c7 $fa $4a $d8
@@ -1365,7 +1365,7 @@ call_02_4a14:
     jr   Z, .vendor_sell_menu_top                      ;; 02:4a26 $28 $10
     cp   A, $1b                                        ;; 02:4a28 $fe $1b
     jr   NZ, .jr_02_4a53                               ;; 02:4a2a $20 $27
-    ld   A, [wD872]                                    ;; 02:4a2c $fa $72 $d8
+    ld   A, [wWindowSecondaryFlags]                    ;; 02:4a2c $fa $72 $d8
     bit  5, A                                          ;; 02:4a2f $cb $6f
     jr   Z, .jr_02_4a53                                ;; 02:4a31 $28 $20
     ld   DE, $a00                                      ;; 02:4a33 $11 $00 $0a
@@ -1373,11 +1373,11 @@ call_02_4a14:
 .vendor_sell_menu_top:
     ld   A, [wD8D9]                                    ;; 02:4a38 $fa $d9 $d8
     ld   [wD868], A                                    ;; 02:4a3b $ea $68 $d8
-    ld   A, [wD876]                                    ;; 02:4a3e $fa $76 $d8
+    ld   A, [wWindowVendorSellItemIndex]               ;; 02:4a3e $fa $76 $d8
     ld   H, A                                          ;; 02:4a41 $67
-    ld   A, [wD8D8]                                    ;; 02:4a42 $fa $d8 $d8
+    ld   A, [wWindowVendorSellPointerSavedY]           ;; 02:4a42 $fa $d8 $d8
     ld   D, A                                          ;; 02:4a45 $57
-    ld   A, [wD8D7]                                    ;; 02:4a46 $fa $d7 $d8
+    ld   A, [wWindowVendorSellPointerSavedX]           ;; 02:4a46 $fa $d7 $d8
     ld   E, A                                          ;; 02:4a49 $5f
     jr   .jr_02_4a58                                   ;; 02:4a4a $18 $0c
 .jr_02_4a4c:
@@ -1463,7 +1463,7 @@ call_02_4aa2:
 call_02_4ae4:
     ld   A, [wDialogType]                              ;; 02:4ae4 $fa $4a $d8
     cp   A, $1e                                        ;; 02:4ae7 $fe $1e
-    jp   Z, jp_02_4ba1                                 ;; 02:4ae9 $ca $a1 $4b
+    jp   Z, windowNamingEntryRubLetter                 ;; 02:4ae9 $ca $a1 $4b
     push AF                                            ;; 02:4aec $f5
     call hideAndSaveMenuMetasprites                    ;; 02:4aed $cd $51 $6b
     pop  AF                                            ;; 02:4af0 $f1
@@ -1567,25 +1567,26 @@ call_02_4b7b:
     call setMenuStateCurrentFunction                   ;; 02:4b8f $cd $98 $6c
     ret                                                ;; 02:4b92 $c9
 
-call_02_4b93:
+windowDismiss:
     ld   B, $00                                        ;; 02:4b93 $06 $00
     call setMenuStateCurrentFunction                   ;; 02:4b95 $cd $98 $6c
     ld   A, [wDialogType]                              ;; 02:4b98 $fa $4a $d8
     cp   A, $0b                                        ;; 02:4b9b $fe $0b
-    jp   Z, jp_02_5638                                 ;; 02:4b9d $ca $38 $56
+; Vendor
+    jp   Z, windowReturnToScript                       ;; 02:4b9d $ca $38 $56
     ret                                                ;; 02:4ba0 $c9
 
-jp_02_4ba1:
+windowNamingEntryRubLetter:
     ld   A, [wSRAMSaveHeader._a]                       ;; 02:4ba1 $fa $b1 $d7
     ld   [wSelectedMenuIndex2], A                      ;; 02:4ba4 $ea $4c $d8
-    ld   A, [wD885]                                    ;; 02:4ba7 $fa $85 $d8
+    ld   A, [wNameEntryNameLength]                     ;; 02:4ba7 $fa $85 $d8
     and  A, A                                          ;; 02:4baa $a7
     jr   Z, .jr_02_4bdf                                ;; 02:4bab $28 $32
     dec  A                                             ;; 02:4bad $3d
     push AF                                            ;; 02:4bae $f5
-    ld   [wD885], A                                    ;; 02:4baf $ea $85 $d8
+    ld   [wNameEntryNameLength], A                     ;; 02:4baf $ea $85 $d8
     ld   HL, wSRAMSaveHeader                           ;; 02:4bb2 $21 $a7 $d7
-    ld   A, [wD885]                                    ;; 02:4bb5 $fa $85 $d8
+    ld   A, [wNameEntryNameLength]                     ;; 02:4bb5 $fa $85 $d8
     ld   E, A                                          ;; 02:4bb8 $5f
     ld   D, $00                                        ;; 02:4bb9 $16 $00
     add  HL, DE                                        ;; 02:4bbb $19
@@ -1764,7 +1765,7 @@ call_02_4cf7:
     cp   A, $1b                                        ;; 02:4d12 $fe $1b
     jp   Z, jp_02_71fb                                 ;; 02:4d14 $ca $fb $71
     cp   A, $1e                                        ;; 02:4d17 $fe $1e
-    jp   Z, jp_02_52c6                                 ;; 02:4d19 $ca $c6 $52
+    jp   Z, windowNamingEntryAddLetter                 ;; 02:4d19 $ca $c6 $52
     cp   A, $1f                                        ;; 02:4d1c $fe $1f
     jp   Z, menuSelectionTitleScreen                   ;; 02:4d1e $ca $9f $7b
     call loadRegisterState1                            ;; 02:4d21 $cd $5b $6d
@@ -2030,7 +2031,7 @@ openStatusScreen:
     ld   A, $12                                        ;; 02:4f04 $3e $12
     ld   [wDialogType], A                              ;; 02:4f06 $ea $4a $d8
     call hideAndSaveMenuMetasprites                    ;; 02:4f09 $cd $51 $6b
-    ld   HL, wD872                                     ;; 02:4f0c $21 $72 $d8
+    ld   HL, wWindowSecondaryFlags                     ;; 02:4f0c $21 $72 $d8
     set  0, [HL]                                       ;; 02:4f0f $cb $c6
     res  1, [HL]                                       ;; 02:4f11 $cb $8e
     ld   A, $01                                        ;; 02:4f13 $3e $01
@@ -2050,7 +2051,7 @@ jp_02_4f19:
     ld   A, $12                                        ;; 02:4f26 $3e $12
     ld   [wDialogType], A                              ;; 02:4f28 $ea $4a $d8
     call windowInitContents                            ;; 02:4f2b $cd $93 $76
-    ld   A, [wD872]                                    ;; 02:4f2e $fa $72 $d8
+    ld   A, [wWindowSecondaryFlags]                    ;; 02:4f2e $fa $72 $d8
     bit  6, A                                          ;; 02:4f31 $cb $77
     jr   NZ, .jr_02_4f5a                               ;; 02:4f33 $20 $25
     ld   A, [wSelectedMenuIndex]                       ;; 02:4f35 $fa $4b $d8
@@ -2120,7 +2121,7 @@ call_02_4f97:
     ld   [wD8C3], A                                    ;; 02:4fa4 $ea $c3 $d8
     xor  A, A                                          ;; 02:4fa7 $af
     ld   [wSelectedMenuIndex], A                       ;; 02:4fa8 $ea $4b $d8
-    ld   HL, wD872                                     ;; 02:4fab $21 $72 $d8
+    ld   HL, wWindowSecondaryFlags                     ;; 02:4fab $21 $72 $d8
     bit  6, [HL]                                       ;; 02:4fae $cb $76
     jr   NZ, .jr_02_4fbc                               ;; 02:4fb0 $20 $0a
     set  6, [HL]                                       ;; 02:4fb2 $cb $f6
@@ -2201,7 +2202,7 @@ call_02_4fff:
     ret                                                ;; 02:5039 $c9
 
 jp_02_503a:
-    ld   HL, wD872                                     ;; 02:503a $21 $72 $d8
+    ld   HL, wWindowSecondaryFlags                     ;; 02:503a $21 $72 $d8
     bit  0, [HL]                                       ;; 02:503d $cb $46
     jr   NZ, call_02_5062                              ;; 02:503f $20 $21
     call increaseLevel                                 ;; 02:5041 $cd $99 $53
@@ -2283,7 +2284,7 @@ call_02_50b5:
     ld   A, [HL]                                       ;; 02:50c1 $7e
     and  A, $7f                                        ;; 02:50c2 $e6 $7f
     jp   Z, .jp_02_5149                                ;; 02:50c4 $ca $49 $51
-    ld   [wD85D], A                                    ;; 02:50c7 $ea $5d $d8
+    ld   [wVendorPurchaseID], A                        ;; 02:50c7 $ea $5d $d8
     cp   A, $3a                                        ;; 02:50ca $fe $3a
     ld   A, [HL]                                       ;; 02:50cc $7e
     push AF                                            ;; 02:50cd $f5
@@ -2389,7 +2390,7 @@ showFullscreenWindow:
     ld   [wVideoWY], A                                 ;; 02:5170 $ea $a9 $c0
     ret                                                ;; 02:5173 $c9
 
-vendorShowBuyMessage:
+windowVendorShowBuyMessageWindow:
     ld   A, $0f                                        ;; 02:5174 $3e $0f
     ld   [wDialogType], A                              ;; 02:5176 $ea $4a $d8
     call drawWindow                                    ;; 02:5179 $cd $00 $67
@@ -2397,7 +2398,7 @@ vendorShowBuyMessage:
     call setMenuStateCurrentFunction                   ;; 02:517e $cd $98 $6c
     ret                                                ;; 02:5181 $c9
 
-call_02_5182:
+windowVendorShowBuyMessage:
     ld   A, [wDialogType]                              ;; 02:5182 $fa $4a $d8
     call windowInitContents                            ;; 02:5185 $cd $93 $76
     ld   A, [wMiscFlags]                               ;; 02:5188 $fa $6f $d8
@@ -2405,7 +2406,7 @@ call_02_5182:
     ld   HL, venderNotEnoughMoneyText                  ;; 02:518d $21 $76 $7d
     ld   B, $10                                        ;; 02:5190 $06 $10
     jr   NZ, .vendorCannotAfford                       ;; 02:5192 $20 $36
-    ld   A, [wD85D]                                    ;; 02:5194 $fa $5d $d8
+    ld   A, [wVendorPurchaseID]                        ;; 02:5194 $fa $5d $d8
     ld   HL, itemDataTable                             ;; 02:5197 $21 $5a $5e
     cp   A, $3a                                        ;; 02:519a $fe $3a
     jr   C, .jr_02_51a3                                ;; 02:519c $38 $05
@@ -2427,19 +2428,20 @@ call_02_5182:
     ld   E, A                                          ;; 02:51b7 $5f
     ld   B, $08                                        ;; 02:51b8 $06 $08
     call drawText                                      ;; 02:51ba $cd $77 $37
-    ld   A, [wD8C6]                                    ;; 02:51bd $fa $c6 $d8
+    ld   A, [wWindowTextInsertionPointFinalY]          ;; 02:51bd $fa $c6 $d8
     ld   D, A                                          ;; 02:51c0 $57
-    ld   A, [wD8C5]                                    ;; 02:51c1 $fa $c5 $d8
+    ld   A, [wWindowTextInsertionPointFinalX]          ;; 02:51c1 $fa $c5 $d8
     ld   E, A                                          ;; 02:51c4 $5f
-    ld   HL, .data_02_51d3                             ;; 02:51c5 $21 $d3 $51
+    ld   HL, .period                                   ;; 02:51c5 $21 $d3 $51
     ld   B, $02                                        ;; 02:51c8 $06 $02
 .vendorCannotAfford:
     call drawText                                      ;; 02:51ca $cd $77 $37
     ld   B, $26                                        ;; 02:51cd $06 $26
     call setMenuStateCurrentFunction                   ;; 02:51cf $cd $98 $6c
     ret                                                ;; 02:51d2 $c9
-.data_02_51d3:
-    db   $f0, $00                                      ;; 02:51d3 ..
+.period:
+;@ffa_text
+    TXT  ".<00>"                                       ;; 02:51d3 ..
 
 call_02_51d5:
     call updateJoypadInput_trampoline                  ;; 02:51d5 $cd $d1 $1e
@@ -2468,7 +2470,7 @@ jp_02_51fb:
     call getSelectedMenuIndexes                        ;; 02:51fb $cd $b0 $57
     cp   A, $00                                        ;; 02:51fe $fe $00
     jr   NZ, call_02_522d                              ;; 02:5200 $20 $2b
-    ld   A, [wD876]                                    ;; 02:5202 $fa $76 $d8
+    ld   A, [wWindowVendorSellItemIndex]               ;; 02:5202 $fa $76 $d8
     ld   C, A                                          ;; 02:5205 $4f
     ld   B, $00                                        ;; 02:5206 $06 $00
     ld   HL, wVendorSellPrices                         ;; 02:5208 $21 $4f $d7
@@ -2493,7 +2495,7 @@ jp_02_51fb:
     ld   [wMoneyHigh], A                               ;; 02:5223 $ea $bf $d7
     ld   A, L                                          ;; 02:5226 $7d
     ld   [wMoneyLow], A                                ;; 02:5227 $ea $be $d7
-    call call_02_523c                                  ;; 02:522a $cd $3c $52
+    call vendorRemoveSoldItem                          ;; 02:522a $cd $3c $52
 
 call_02_522d:
     xor  A, A                                          ;; 02:522d $af
@@ -2504,44 +2506,45 @@ call_02_522d:
     ld   [wMenuStateCurrentFunction], A                ;; 02:5238 $ea $53 $d8
     ret                                                ;; 02:523b $c9
 
-call_02_523c:
-    ld   A, [wD876]                                    ;; 02:523c $fa $76 $d8
+vendorRemoveSoldItem:
+    ld   A, [wWindowVendorSellItemIndex]               ;; 02:523c $fa $76 $d8
     inc  A                                             ;; 02:523f $3c
     ld   C, A                                          ;; 02:5240 $4f
     ld   HL, wItemInventory                            ;; 02:5241 $21 $c5 $d6
     ld   DE, wItemInventoryAmount                      ;; 02:5244 $11 $9b $d6
     ld   B, $11                                        ;; 02:5247 $06 $11
-    call call_02_525c                                  ;; 02:5249 $cd $5c $52
+    call vendorFindAndRemoveSoldItem                   ;; 02:5249 $cd $5c $52
     and  A, A                                          ;; 02:524c $a7
     ret  Z                                             ;; 02:524d $c8
     ld   HL, wEquipmentInventory                       ;; 02:524e $21 $dd $d6
     ld   DE, wEquipmentInventoryPowers                 ;; 02:5251 $11 $b3 $d6
     ld   B, $0d                                        ;; 02:5254 $06 $0d
     set  7, C                                          ;; 02:5256 $cb $f9
-    call call_02_525c                                  ;; 02:5258 $cd $5c $52
+    call vendorFindAndRemoveSoldItem                   ;; 02:5258 $cd $5c $52
     ret                                                ;; 02:525b $c9
 
-call_02_525c:
+; Calls its self recursively rather than looping
+vendorFindAndRemoveSoldItem:
     ld   A, [HL+]                                      ;; 02:525c $2a
     inc  DE                                            ;; 02:525d $13
     dec  B                                             ;; 02:525e $05
-    jr   Z, .jr_02_5278                                ;; 02:525f $28 $17
+    jr   Z, .not_found                                 ;; 02:525f $28 $17
     and  A, $7f                                        ;; 02:5261 $e6 $7f
-    jr   Z, call_02_525c                               ;; 02:5263 $28 $f7
+    jr   Z, vendorFindAndRemoveSoldItem                ;; 02:5263 $28 $f7
     call getItemOrEquipmentFlags1                      ;; 02:5265 $cd $7b $52
     bit  6, A                                          ;; 02:5268 $cb $77
-    jr   NZ, call_02_525c                              ;; 02:526a $20 $f0
+    jr   NZ, vendorFindAndRemoveSoldItem               ;; 02:526a $20 $f0
     dec  C                                             ;; 02:526c $0d
     ld   A, C                                          ;; 02:526d $79
     and  A, $7f                                        ;; 02:526e $e6 $7f
-    jr   NZ, call_02_525c                              ;; 02:5270 $20 $ea
+    jr   NZ, vendorFindAndRemoveSoldItem               ;; 02:5270 $20 $ea
     xor  A, A                                          ;; 02:5272 $af
     dec  HL                                            ;; 02:5273 $2b
     dec  DE                                            ;; 02:5274 $1b
     ld   [HL], A                                       ;; 02:5275 $77
     ld   [DE], A                                       ;; 02:5276 $12
     ret                                                ;; 02:5277 $c9
-.jr_02_5278:
+.not_found:
     ld   A, $01                                        ;; 02:5278 $3e $01
     ret                                                ;; 02:527a $c9
 
@@ -2563,16 +2566,16 @@ call_02_5292:
     bit  7, A                                          ;; 02:5295 $cb $7f
     jr   NZ, .jr_02_52ad                               ;; 02:5297 $20 $14
     ld   A, D                                          ;; 02:5299 $7a
-    ld   [wD8D8], A                                    ;; 02:529a $ea $d8 $d8
+    ld   [wWindowVendorSellPointerSavedY], A           ;; 02:529a $ea $d8 $d8
     ld   A, E                                          ;; 02:529d $7b
-    ld   [wD8D7], A                                    ;; 02:529e $ea $d7 $d8
+    ld   [wWindowVendorSellPointerSavedX], A           ;; 02:529e $ea $d7 $d8
     ld   A, [wD848]                                    ;; 02:52a1 $fa $48 $d8
     ld   [wD8DA], A                                    ;; 02:52a4 $ea $da $d8
     ld   A, [wD868]                                    ;; 02:52a7 $fa $68 $d8
     ld   [wD8D9], A                                    ;; 02:52aa $ea $d9 $d8
 .jr_02_52ad:
     ld   A, [wSelectedMenuIndex]                       ;; 02:52ad $fa $4b $d8
-    ld   [wD876], A                                    ;; 02:52b0 $ea $76 $d8
+    ld   [wWindowVendorSellItemIndex], A               ;; 02:52b0 $ea $76 $d8
     ld   A, $b2                                        ;; 02:52b3 $3e $b2
     ld   [wMenuStateCurrentFunction], A                ;; 02:52b5 $ea $53 $d8
     ld   A, $10                                        ;; 02:52b8 $3e $10
@@ -2582,7 +2585,7 @@ call_02_5292:
     call setMenuStateCurrentFunction                   ;; 02:52c2 $cd $98 $6c
     ret                                                ;; 02:52c5 $c9
 
-jp_02_52c6:
+windowNamingEntryAddLetter:
     call getSelectedMenuIndexes                        ;; 02:52c6 $cd $b0 $57
     push DE                                            ;; 02:52c9 $d5
     push HL                                            ;; 02:52ca $e5
@@ -2596,7 +2599,7 @@ jp_02_52c6:
     ld   HL, windowData.namingScreenTop                ;; 02:52d6 $21 $cc $5c
     call call_02_57c4                                  ;; 02:52d9 $cd $c4 $57
     ld   DE, $208                                      ;; 02:52dc $11 $08 $02
-    ld   HL, wD885                                     ;; 02:52df $21 $85 $d8
+    ld   HL, wNameEntryNameLength                      ;; 02:52df $21 $85 $d8
     ld   A, [HL]                                       ;; 02:52e2 $7e
     inc  A                                             ;; 02:52e3 $3c
     cp   A, $05                                        ;; 02:52e4 $fe $05
@@ -2613,7 +2616,7 @@ jp_02_52c6:
     add  HL, DE                                        ;; 02:52f4 $19
     ld   A, C                                          ;; 02:52f5 $79
     ld   [HL], A                                       ;; 02:52f6 $77
-    ld   A, [wD885]                                    ;; 02:52f7 $fa $85 $d8
+    ld   A, [wNameEntryNameLength]                     ;; 02:52f7 $fa $85 $d8
     ld   B, A                                          ;; 02:52fa $47
     ld   C, $01                                        ;; 02:52fb $0e $01
     ld   HL, wSRAMSaveHeader                           ;; 02:52fd $21 $a7 $d7
@@ -2688,7 +2691,7 @@ jp_02_531c:
     ld   [wManaLow], A                                 ;; 02:537e $ea $b6 $d7
     call NOOP_2                                        ;; 02:5381 $cd $ae $77
     call hideAndSaveMenuMetasprites                    ;; 02:5384 $cd $51 $6b
-    ld   HL, wD872                                     ;; 02:5387 $21 $72 $d8
+    ld   HL, wWindowSecondaryFlags                     ;; 02:5387 $21 $72 $d8
     set  0, [HL]                                       ;; 02:538a $cb $c6
     res  1, [HL]                                       ;; 02:538c $cb $8e
     ld   A, $12                                        ;; 02:538e $3e $12
@@ -2887,7 +2890,7 @@ jp_02_54a6:
     dec  C                                             ;; 02:54ac $0d
     jp   Z, .jp_02_55bb                                ;; 02:54ad $ca $bb $55
     dec  C                                             ;; 02:54b0 $0d
-    jp   NZ, jp_02_5638                                ;; 02:54b1 $c2 $38 $56
+    jp   NZ, windowReturnToScript                      ;; 02:54b1 $c2 $38 $56
     ld   B, $40                                        ;; 02:54b4 $06 $40
     ld   HL, wVendorSellIDs                            ;; 02:54b6 $21 $0f $d7
     push HL                                            ;; 02:54b9 $e5
@@ -3165,7 +3168,8 @@ call_02_55c6:
     jr   NZ, call_02_55c6.loop_3                       ;; 02:5635 $20 $df
     ret                                                ;; 02:5637 $c9
 
-jp_02_5638:
+; Used by script triggered windows (naming, save/load, and status) to continue the script.
+windowReturnToScript:
     ld   A, [wWindowMainGameStateBackup]               ;; 02:5638 $fa $62 $d8
     ld   [wMainGameState], A                           ;; 02:563b $ea $a0 $c0
     ld   A, $05                                        ;; 02:563e $3e $05
@@ -4242,7 +4246,7 @@ windowSecondPointers:
     dw   levelUpText2                                  ;; 02:5dc4 .. $17
     dw   levelUpStatOptions                            ;; 02:5dc6 .. $18
     dw   yesNoOptions                                  ;; 02:5dc8 .. $19
-    dw   wD7DD                                         ;; 02:5dca .. $1a
+    dw   wStatusScreenAPDP                             ;; 02:5dca .. $1a
     dw   $0000                                         ;; 02:5dcc .. $1b
     dw   $0000                                         ;; 02:5dce .. $1c
     dw   boyLabel                                      ;; 02:5dd0 .. $1d
@@ -4814,7 +4818,8 @@ processWindowInput:
     ld   A, [wDialogType]                              ;; 02:6943 $fa $4a $d8
     cp   A, $1e                                        ;; 02:6946 $fe $1e
     ret  NZ                                            ;; 02:6948 $c0
-    ld   A, [wD885]                                    ;; 02:6949 $fa $85 $d8
+; Everything from here on deals with the naming screen
+    ld   A, [wNameEntryNameLength]                     ;; 02:6949 $fa $85 $d8
     and  A, A                                          ;; 02:694c $a7
     ret  Z                                             ;; 02:694d $c8
     push HL                                            ;; 02:694e $e5
@@ -4847,15 +4852,15 @@ processWindowInput:
     pop  DE                                            ;; 02:6977 $d1
     pop  HL                                            ;; 02:6978 $e1
     bit  5, A                                          ;; 02:6979 $cb $6f
-    jr   NZ, .jr_02_698e                               ;; 02:697b $20 $11
+    jr   NZ, .dismiss_naming_screen                    ;; 02:697b $20 $11
     set  5, A                                          ;; 02:697d $cb $ef
     set  6, A                                          ;; 02:697f $cb $f7
     ld   [wWindowFlags], A                             ;; 02:6981 $ea $74 $d8
     xor  A, A                                          ;; 02:6984 $af
     ld   [wDrawWindowStep], A                          ;; 02:6985 $ea $54 $d8
-    ld   [wD885], A                                    ;; 02:6988 $ea $85 $d8
+    ld   [wNameEntryNameLength], A                     ;; 02:6988 $ea $85 $d8
     jp   processWindowInput.button                     ;; 02:698b $c3 $c4 $68
-.jr_02_698e:
+.dismiss_naming_screen:
     xor  A, A                                          ;; 02:698e $af
     ld   [wDrawWindowStep], A                          ;; 02:698f $ea $54 $d8
     ld   [wMenuStateCurrentFunction], A                ;; 02:6992 $ea $53 $d8
@@ -4869,7 +4874,7 @@ processWindowInput:
     ld   [wScriptPointerHigh], A                       ;; 02:69a0 $ea $b7 $d8
     ld   A, L                                          ;; 02:69a3 $7d
     ld   [wScriptPointerLow], A                        ;; 02:69a4 $ea $b6 $d8
-    jp   jp_02_5638                                    ;; 02:69a7 $c3 $38 $56
+    jp   windowReturnToScript                          ;; 02:69a7 $c3 $38 $56
 
 call_02_69aa:
     ld   A, [wDialogType]                              ;; 02:69aa $fa $4a $d8
@@ -5096,7 +5101,7 @@ call_02_6ae7:
     cp   A, D                                          ;; 02:6b04 $ba
     jr   C, .jr_02_6b12                                ;; 02:6b05 $38 $0b
     call showMenuFingerPointing_2                      ;; 02:6b07 $cd $a0 $6b
-    ld   HL, wD872                                     ;; 02:6b0a $21 $72 $d8
+    ld   HL, wWindowSecondaryFlags                     ;; 02:6b0a $21 $72 $d8
     res  7, [HL]                                       ;; 02:6b0d $cb $be
     pop  DE                                            ;; 02:6b0f $d1
     pop  HL                                            ;; 02:6b10 $e1
@@ -5109,7 +5114,7 @@ call_02_6ae7:
 
 call_02_6b18:
     push HL                                            ;; 02:6b18 $e5
-    ld   HL, wD872                                     ;; 02:6b19 $21 $72 $d8
+    ld   HL, wWindowSecondaryFlags                     ;; 02:6b19 $21 $72 $d8
     set  7, [HL]                                       ;; 02:6b1c $cb $fe
     pop  HL                                            ;; 02:6b1e $e1
     ret                                                ;; 02:6b1f $c9
@@ -5157,9 +5162,9 @@ hideAndSaveMenuMetasprites:
     pop  BC                                            ;; 02:6b68 $c1
     pop  DE                                            ;; 02:6b69 $d1
     pop  HL                                            ;; 02:6b6a $e1
-    ld   A, [wD872]                                    ;; 02:6b6b $fa $72 $d8
+    ld   A, [wWindowSecondaryFlags]                    ;; 02:6b6b $fa $72 $d8
     res  2, A                                          ;; 02:6b6e $cb $97
-    ld   [wD872], A                                    ;; 02:6b70 $ea $72 $d8
+    ld   [wWindowSecondaryFlags], A                    ;; 02:6b70 $ea $72 $d8
     ret                                                ;; 02:6b73 $c9
 
 clearThirdMetasprite:
@@ -5343,7 +5348,7 @@ windowClearLine:
 windowGetOffsetXYPosition:
     push HL                                            ;; 02:6c5d $e5
     ld   HL, wDialogY                                  ;; 02:6c5e $21 $a8 $d4
-    ld   A, [wD872]                                    ;; 02:6c61 $fa $72 $d8
+    ld   A, [wWindowSecondaryFlags]                    ;; 02:6c61 $fa $72 $d8
     bit  7, A                                          ;; 02:6c64 $cb $7f
     jr   Z, .jr_02_6c6b                                ;; 02:6c66 $28 $03
     ld   HL, windowData.selectLevelupStatsY            ;; 02:6c68 $21 $9b $5c
@@ -5728,7 +5733,7 @@ initStartingStatsAndTimers:
     ld   [HL], E                                       ;; 02:6e8a $73
     inc  HL                                            ;; 02:6e8b $23
     ld   [HL], D                                       ;; 02:6e8c $72
-    ld   HL, wD7DD                                     ;; 02:6e8d $21 $dd $d7
+    ld   HL, wStatusScreenAPDP                         ;; 02:6e8d $21 $dd $d7
     ld   A, $81                                        ;; 02:6e90 $3e $81
     ld   [HL+], A                                      ;; 02:6e92 $22
     inc  A                                             ;; 02:6e93 $3c
@@ -6275,14 +6280,14 @@ jp_02_71fb:
     ld   HL, wWindowFlags                              ;; 02:71fb $21 $74 $d8
     bit  2, [HL]                                       ;; 02:71fe $cb $56
     jp   NZ, jp_02_72be                                ;; 02:7200 $c2 $be $72
-    ld   HL, wD872                                     ;; 02:7203 $21 $72 $d8
+    ld   HL, wWindowSecondaryFlags                     ;; 02:7203 $21 $72 $d8
     res  5, [HL]                                       ;; 02:7206 $cb $ae
     ld   HL, sSave1Header                              ;; 02:7208 $21 $00 $a0
     ld   A, [wSelectedMenuIndex]                       ;; 02:720b $fa $4b $d8
     and  A, A                                          ;; 02:720e $a7
     ld   B, $08                                        ;; 02:720f $06 $08
     jr   Z, .jr_02_721d                                ;; 02:7211 $28 $0a
-    ld   HL, wD872                                     ;; 02:7213 $21 $72 $d8
+    ld   HL, wWindowSecondaryFlags                     ;; 02:7213 $21 $72 $d8
     set  5, [HL]                                       ;; 02:7216 $cb $ee
     ld   HL, sSave2Header                              ;; 02:7218 $21 $00 $a1
     ld   B, $10                                        ;; 02:721b $06 $10
@@ -6374,7 +6379,7 @@ swapHL_DE:
     ret                                                ;; 02:72bd $c9
 
 jp_02_72be:
-    ld   DE, wD872                                     ;; 02:72be $11 $72 $d8
+    ld   DE, wWindowSecondaryFlags                     ;; 02:72be $11 $72 $d8
     ld   A, [DE]                                       ;; 02:72c1 $1a
     res  5, A                                          ;; 02:72c2 $cb $af
     ld   [DE], A                                       ;; 02:72c4 $12
@@ -6414,13 +6419,14 @@ jp_02_72be:
     ld   B, $08                                        ;; 02:730d $06 $08
     call readDEtimesBtoSRAM                            ;; 02:730f $cd $3f $74
     call disableSRAM                                   ;; 02:7312 $cd $5e $74
-    call call_02_7322                                  ;; 02:7315 $cd $22 $73
+    call loadSRAMInitGame                              ;; 02:7315 $cd $22 $73
     call getEquippedWeaponElements                     ;; 02:7318 $cd $56 $71
     call getEquippedItemElements                       ;; 02:731b $cd $65 $71
     call call_02_7421                                  ;; 02:731e $cd $21 $74
     ret                                                ;; 02:7321 $c9
 
-call_02_7322:
+; Inits most of the game related things. Creates a script to load the proper room, follower, and more.
+loadSRAMInitGame:
     ld   HL, wOpenChestScript1                         ;; 02:7322 $21 $13 $d6
     push HL                                            ;; 02:7325 $e5
     ld   HL, wSRAMSaveHeader._3                        ;; 02:7326 $21 $aa $d7
@@ -6444,13 +6450,13 @@ call_02_7322:
     ld   [DE], A                                       ;; 02:7349 $12
     ld   A, [HL+]                                      ;; 02:734a $2a
     and  A, A                                          ;; 02:734b $a7
-    jr   Z, call_02_7322.initEquipmentInventoryPowers  ;; 02:734c $28 $03
+    jr   Z, loadSRAMInitGame.init_power                ;; 02:734c $28 $03
     ld   A, $01                                        ;; 02:734e $3e $01
     ld   [DE], A                                       ;; 02:7350 $12
-.initEquipmentInventoryPowers:
+.init_power:
     inc  DE                                            ;; 02:7351 $13
     dec  B                                             ;; 02:7352 $05
-    jr   NZ, call_02_7322.loop_1                       ;; 02:7353 $20 $f3
+    jr   NZ, loadSRAMInitGame.loop_1                   ;; 02:7353 $20 $f3
     ld   HL, wEquipmentInventory                       ;; 02:7355 $21 $dd $d6
     ld   DE, wEquipmentInventoryPowers                 ;; 02:7358 $11 $b3 $d6
     ld   B, $0c                                        ;; 02:735b $06 $0c
@@ -6480,8 +6486,8 @@ call_02_7322:
     inc  DE                                            ;; 02:737c $13
     pop  BC                                            ;; 02:737d $c1
     dec  B                                             ;; 02:737e $05
-    jr   NZ, call_02_7322.loop_2                       ;; 02:737f $20 $dc
-    ld   HL, wD7DD                                     ;; 02:7381 $21 $dd $d7
+    jr   NZ, loadSRAMInitGame.loop_2                   ;; 02:737f $20 $dc
+    ld   HL, wStatusScreenAPDP                         ;; 02:7381 $21 $dd $d7
     ld   A, $81                                        ;; 02:7384 $3e $81
     ld   [HL+], A                                      ;; 02:7386 $22
     inc  A                                             ;; 02:7387 $3c
@@ -6494,15 +6500,15 @@ call_02_7322:
     ld   A, [wStatusEffect]                            ;; 02:7394 $fa $c0 $d7
     ld   C, A                                          ;; 02:7397 $4f
     ld   B, $00                                        ;; 02:7398 $06 $00
-    call call_02_7859                                  ;; 02:739a $cd $59 $78
+    call startStatusEffects                            ;; 02:739a $cd $59 $78
     ld   A, [wLevel]                                   ;; 02:739d $fa $ba $d7
     call setNextXPLevel                                ;; 02:73a0 $cd $a3 $3e
     pop  HL                                            ;; 02:73a3 $e1
     call loadSRAMCreateInitScript                      ;; 02:73a4 $cd $7f $7a
-    call call_02_7abf                                  ;; 02:73a7 $cd $bf $7a
-    ld   A, [wD617]                                    ;; 02:73aa $fa $17 $d6
+    call loadSRAMInitScriptOpenDoorIfInDoorway         ;; 02:73a7 $cd $bf $7a
+    ld   A, [wOpenChestScript1._4]                     ;; 02:73aa $fa $17 $d6
     ld   D, A                                          ;; 02:73ad $57
-    ld   A, [wD616]                                    ;; 02:73ae $fa $16 $d6
+    ld   A, [wOpenChestScript1._3]                     ;; 02:73ae $fa $16 $d6
     ld   E, A                                          ;; 02:73b1 $5f
     ld   A, [wScriptFlags0B]                           ;; 02:73b2 $fa $d1 $d7
     ld   B, A                                          ;; 02:73b5 $47
@@ -6512,7 +6518,7 @@ call_02_7322:
     and  A, A                                          ;; 02:73bc $a7
     jr   Z, .jr_02_73f1                                ;; 02:73bd $28 $32
     push DE                                            ;; 02:73bf $d5
-    ld   DE, .data_02_7406                             ;; 02:73c0 $11 $06 $74
+    ld   DE, .followerInitArgs                         ;; 02:73c0 $11 $06 $74
     ld   B, $07                                        ;; 02:73c3 $06 $07
 .loop_3:
     rlca                                               ;; 02:73c5 $07
@@ -6521,7 +6527,7 @@ call_02_7322:
     inc  DE                                            ;; 02:73c9 $13
     inc  DE                                            ;; 02:73ca $13
     dec  B                                             ;; 02:73cb $05
-    jr   NZ, call_02_7322.loop_3                       ;; 02:73cc $20 $f7
+    jr   NZ, loadSRAMInitGame.loop_3                   ;; 02:73cc $20 $f7
     ld   A, [wScriptFlags04]                           ;; 02:73ce $fa $ca $d7
     bit  6, A                                          ;; 02:73d1 $cb $77
     jr   NZ, .jr_02_73d8                               ;; 02:73d3 $20 $03
@@ -6529,20 +6535,24 @@ call_02_7322:
     inc  DE                                            ;; 02:73d6 $13
     inc  DE                                            ;; 02:73d7 $13
 .jr_02_73d8:
+; $fc = scriptOpCodeSetNPCTypes
     ld   A, $fc                                        ;; 02:73d8 $3e $fc
     ld   [HL+], A                                      ;; 02:73da $22
     ld   A, [DE]                                       ;; 02:73db $1a
     ld   [HL+], A                                      ;; 02:73dc $22
     inc  DE                                            ;; 02:73dd $13
+; $fd = scriptOpCodeSpawnNPC
     ld   A, $fd                                        ;; 02:73de $3e $fd
     ld   [HL+], A                                      ;; 02:73e0 $22
     ld   A, [DE]                                       ;; 02:73e1 $1a
     ld   [HL+], A                                      ;; 02:73e2 $22
     inc  DE                                            ;; 02:73e3 $13
+; $9c = scriptOpCodeGiveFollower
     ld   A, $9c                                        ;; 02:73e4 $3e $9c
     ld   [HL+], A                                      ;; 02:73e6 $22
     ld   A, [DE]                                       ;; 02:73e7 $1a
     ld   [HL+], A                                      ;; 02:73e8 $22
+; $99 = scriptOpCodeFollowerSetPosition
     ld   A, $99                                        ;; 02:73e9 $3e $99
     ld   [HL+], A                                      ;; 02:73eb $22
     pop  DE                                            ;; 02:73ec $d1
@@ -6551,20 +6561,23 @@ call_02_7322:
     ld   [HL], D                                       ;; 02:73ef $72
     inc  HL                                            ;; 02:73f0 $23
 .jr_02_73f1:
-    ld   A, [wD637]                                    ;; 02:73f1 $fa $37 $d6
+    ld   A, [wOpenChestScript3._4]                     ;; 02:73f1 $fa $37 $d6
     and  A, A                                          ;; 02:73f4 $a7
     jr   Z, .jr_02_73fa                                ;; 02:73f5 $28 $03
+; $9f + 1 = scriptOpCodePlayerOnChocobo, and other forms follow from there.
     add  A, $9f                                        ;; 02:73f7 $c6 $9f
     ld   [HL+], A                                      ;; 02:73f9 $22
 .jr_02_73fa:
+; $ec = scriptOpCodeRunRoomScript
     ld   A, $ec                                        ;; 02:73fa $3e $ec
     ld   [HL+], A                                      ;; 02:73fc $22
+; $00 = scriptOpCodeEND
     xor  A, A                                          ;; 02:73fd $af
     ld   [HL], A                                       ;; 02:73fe $77
     ld   HL, $0b                                       ;; 02:73ff $21 $0b $00
     call runScriptByIndex                              ;; 02:7402 $cd $ad $31
     ret                                                ;; 02:7405 $c9
-.data_02_7406:
+.followerInitArgs:
     db   $32, $01, $01, $4d, $00, $02, $4e, $02        ;; 02:7406 ????????
     db   $03, $4f, $00, $04, $51, $00, $05, $41        ;; 02:740e ????????
     db   $02, $06, $52, $00, $07, $65, $00, $08        ;; 02:7416 ????????
@@ -7260,7 +7273,7 @@ jr_02_7827:
     ld   A, [wStatusEffect]                            ;; 02:783d $fa $c0 $d7
     ld   B, A                                          ;; 02:7840 $47
     and  A, C                                          ;; 02:7841 $a1
-    jr   Z, call_02_7859                               ;; 02:7842 $28 $15
+    jr   Z, startStatusEffects                         ;; 02:7842 $28 $15
     ld   A, C                                          ;; 02:7844 $79
     cpl                                                ;; 02:7845 $2f
     rrca                                               ;; 02:7846 $0f
@@ -7274,7 +7287,8 @@ jr_02_7827:
     rrca                                               ;; 02:7856 $0f
     jr   startFujiStatusEffect                         ;; 02:7857 $18 $17
 
-call_02_7859:
+; B and C are both status effect bytes, one original and one new.
+startStatusEffects:
     ld   A, B                                          ;; 02:7859 $78
     or   A, C                                          ;; 02:785a $b1
     ld   [wStatusEffect], A                            ;; 02:785b $ea $c0 $d7
@@ -7677,7 +7691,7 @@ loadSRAMInitScriptDisplayMetaTile:
     inc  DE                                            ;; 02:7aac $13
     push DE                                            ;; 02:7aad $d5
     ld   [HL+], A                                      ;; 02:7aae $22
-    ld   DE, wD616                                     ;; 02:7aaf $11 $16 $d6
+    ld   DE, wOpenChestScript1._3                      ;; 02:7aaf $11 $16 $d6
     ld   A, [DE]                                       ;; 02:7ab2 $1a
     inc  DE                                            ;; 02:7ab3 $13
     ld   B, A                                          ;; 02:7ab4 $47
@@ -7691,45 +7705,47 @@ loadSRAMInitScriptDisplayMetaTile:
     pop  DE                                            ;; 02:7abd $d1
     ret                                                ;; 02:7abe $c9
 
-call_02_7abf:
+; Checks whether you are standing in a doorway and if so generates an open door script command for it.
+loadSRAMInitScriptOpenDoorIfInDoorway:
     push HL                                            ;; 02:7abf $e5
-    ld   A, [wD617]                                    ;; 02:7ac0 $fa $17 $d6
+    ld   A, [wOpenChestScript1._4]                     ;; 02:7ac0 $fa $17 $d6
     ld   D, A                                          ;; 02:7ac3 $57
-    ld   A, [wD616]                                    ;; 02:7ac4 $fa $16 $d6
+    ld   A, [wOpenChestScript1._3]                     ;; 02:7ac4 $fa $16 $d6
     ld   E, A                                          ;; 02:7ac7 $5f
+; $e0 = scriptOpCodeOpenNorthDoor
     ld   C, $e0                                        ;; 02:7ac8 $0e $e0
     ld   B, $04                                        ;; 02:7aca $06 $04
-    ld   HL, .data_02_7aed                             ;; 02:7acc $21 $ed $7a
-.jr_02_7acf:
+    ld   HL, .doorTileLocations                        ;; 02:7acc $21 $ed $7a
+.loop_outer:
     push BC                                            ;; 02:7acf $c5
-.jr_02_7ad0:
+.loop_inner:
     ld   C, [HL]                                       ;; 02:7ad0 $4e
     inc  HL                                            ;; 02:7ad1 $23
     ld   B, [HL]                                       ;; 02:7ad2 $46
     inc  HL                                            ;; 02:7ad3 $23
     ld   A, B                                          ;; 02:7ad4 $78
     or   A, C                                          ;; 02:7ad5 $b1
-    jr   Z, .jr_02_7ae5                                ;; 02:7ad6 $28 $0d
+    jr   Z, .break_inner                               ;; 02:7ad6 $28 $0d
     ld   A, B                                          ;; 02:7ad8 $78
     cp   A, D                                          ;; 02:7ad9 $ba
-    jr   NZ, .jr_02_7ad0                               ;; 02:7ada $20 $f4
+    jr   NZ, .loop_inner                               ;; 02:7ada $20 $f4
     ld   A, C                                          ;; 02:7adc $79
     cp   A, E                                          ;; 02:7add $bb
-    jr   NZ, .jr_02_7ad0                               ;; 02:7ade $20 $f0
+    jr   NZ, .loop_inner                               ;; 02:7ade $20 $f0
     pop  BC                                            ;; 02:7ae0 $c1
     pop  HL                                            ;; 02:7ae1 $e1
     ld   [HL], C                                       ;; 02:7ae2 $71
     inc  HL                                            ;; 02:7ae3 $23
     ret                                                ;; 02:7ae4 $c9
-.jr_02_7ae5:
+.break_inner:
     pop  BC                                            ;; 02:7ae5 $c1
     inc  C                                             ;; 02:7ae6 $0c
     inc  C                                             ;; 02:7ae7 $0c
     dec  B                                             ;; 02:7ae8 $05
-    jr   NZ, .jr_02_7acf                               ;; 02:7ae9 $20 $e4
+    jr   NZ, .loop_outer                               ;; 02:7ae9 $20 $e4
     pop  HL                                            ;; 02:7aeb $e1
     ret                                                ;; 02:7aec $c9
-.data_02_7aed:
+.doorTileLocations:
     db   $09, $00, $09, $ff, $00, $00, $09, $0d        ;; 02:7aed ????????
     db   $09, $0e, $09, $0f, $00, $00, $11, $06        ;; 02:7af5 ????????
     db   $12, $06, $13, $06, $11, $07, $12, $07        ;; 02:7afd ????????
