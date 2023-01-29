@@ -499,6 +499,8 @@ wNPCDroppingChest:
 ; 00: Object ID of the normal object
 ; 01: Delay until next move (initialized from 02)
 ; 02: Movement speed
+; 04: Y coordinate
+; 05: X coordinate
 ; 08-09: Projectile data table entry pointer
 wProjectileRuntimeData:
     ds 32                                              ;; c5c0
