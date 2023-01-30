@@ -8069,22 +8069,22 @@ runScriptFromScriptByIndex:
     ld   [wTextSpeedTimer], A                          ;; 00:31c9 $ea $64 $d8
     ld   A, H                                          ;; 00:31cc $7c
     and  A, A                                          ;; 00:31cd $a7
-    jr   NZ, .jr_00_31ea                               ;; 00:31ce $20 $1a
+    jr   NZ, .normal_script                            ;; 00:31ce $20 $1a
     ld   A, L                                          ;; 00:31d0 $7d
     ld   DE, wOpenChestScript1                         ;; 00:31d1 $11 $13 $d6
     sub  A, $0b                                        ;; 00:31d4 $d6 $0b
-    jr   Z, .jr_00_31e6                                ;; 00:31d6 $28 $0e
+    jr   Z, .dynamic_script                            ;; 00:31d6 $28 $0e
     ld   DE, wOpenChestScript2                         ;; 00:31d8 $11 $23 $d6
     sub  A, $04                                        ;; 00:31db $d6 $04
-    jr   Z, .jr_00_31e6                                ;; 00:31dd $28 $07
+    jr   Z, .dynamic_script                            ;; 00:31dd $28 $07
     ld   DE, wOpenChestScript3                         ;; 00:31df $11 $33 $d6
     sub  A, $04                                        ;; 00:31e2 $d6 $04
-    jr   NZ, .jr_00_31ea                               ;; 00:31e4 $20 $04
-.jr_00_31e6:
+    jr   NZ, .normal_script                            ;; 00:31e4 $20 $04
+.dynamic_script:
     push DE                                            ;; 00:31e6 $d5
     pop  HL                                            ;; 00:31e7 $e1
     jr   .jr_00_31f1                                   ;; 00:31e8 $18 $07
-.jr_00_31ea:
+.normal_script:
     call getScriptPointerFromScriptPointerTable        ;; 00:31ea $cd $82 $32
     ld   DE, data_01_4000                              ;; 00:31ed $11 $00 $40
     add  HL, DE                                        ;; 00:31f0 $19
