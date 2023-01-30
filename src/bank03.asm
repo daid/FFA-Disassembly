@@ -1257,7 +1257,7 @@ enemyCollisionHandling:
 .weapon:
     call npcTestHit                                    ;; 03:46f0 $cd $06 $49
     jp   NZ, .no_effect                                ;; 03:46f3 $c2 $56 $46
-    call call_03_4931                                  ;; 03:46f6 $cd $31 $49
+    call npcTestShield                                 ;; 03:46f6 $cd $31 $49
     jp   NZ, .immune                                   ;; 03:46f9 $c2 $eb $47
     push BC                                            ;; 03:46fc $c5
     push DE                                            ;; 03:46fd $d5
@@ -1312,7 +1312,7 @@ enemyCollisionHandling:
 .spell:
     call npcTestHit                                    ;; 03:474a $cd $06 $49
     jp   NZ, .no_effect                                ;; 03:474d $c2 $56 $46
-    call call_03_4931                                  ;; 03:4750 $cd $31 $49
+    call npcTestShield                                 ;; 03:4750 $cd $31 $49
     jr   NZ, .jr_03_4769                               ;; 03:4753 $20 $14
     push BC                                            ;; 03:4755 $c5
     push DE                                            ;; 03:4756 $d5
@@ -1360,7 +1360,7 @@ enemyCollisionHandling:
 .followerAttack:
     call npcTestFollowerHit                            ;; 03:479d $cd $19 $49
     jp   NZ, .no_effect                                ;; 03:47a0 $c2 $56 $46
-    call call_03_4931                                  ;; 03:47a3 $cd $31 $49
+    call npcTestShield                                 ;; 03:47a3 $cd $31 $49
     jp   NZ, .immune                                   ;; 03:47a6 $c2 $eb $47
     push BC                                            ;; 03:47a9 $c5
     push DE                                            ;; 03:47aa $d5
@@ -1639,7 +1639,9 @@ npcTestFollowerHit:
     inc  A                                             ;; 03:492f $3c
     ret                                                ;; 03:4930 $c9
 
-call_03_4931:
+; Tests whether the enemy has a directional shield, and if so checks whether it is facing the attack.
+; Return: NZ = shielded, Z = no shield or not facing the attack
+npcTestShield:
     ld   D, H                                          ;; 03:4931 $54
     ld   E, L                                          ;; 03:4932 $5d
     push BC                                            ;; 03:4933 $c5
