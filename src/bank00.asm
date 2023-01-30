@@ -423,7 +423,7 @@ loadLCDCEffectBuffer:
     ld   L, C                                          ;; 00:0301 $69
     ld   B, A                                          ;; 00:0302 $47
     cp   A, $00                                        ;; 00:0303 $fe $00
-    jr   Z, .jr_00_030f                                ;; 00:0305 $28 $08
+    jr   Z, .write_terminator                          ;; 00:0305 $28 $08
     dec  HL                                            ;; 00:0307 $2b
 .loop:
     ld   A, [HL-]                                      ;; 00:0308 $3a
@@ -432,7 +432,7 @@ loadLCDCEffectBuffer:
     dec  B                                             ;; 00:030b $05
     jr   NZ, .loop                                     ;; 00:030c $20 $fa
     dec  DE                                            ;; 00:030e $1b
-.jr_00_030f:
+.write_terminator:
     ld   A, $ff                                        ;; 00:030f $3e $ff
     ld   [DE], A                                       ;; 00:0311 $12
     ret                                                ;; 00:0312 $c9
@@ -501,6 +501,7 @@ checkPlayfieldBoundaryCollision_trampoline:
     jp_to_bank 04, checkPlayfieldBoundaryCollision     ;; 00:036f $f5 $3e $06 $c3 $64 $1f
 
 ; Calls destoryObject on most objects, except the player, companion, their attacks, and reserved (0 to 6) objects.
+; Fails to identify the player riding a Chcobo
 removeNpcObjects:
     ld   C, $00                                        ;; 00:0375 $0e $00
     ld   B, $14                                        ;; 00:0377 $06 $14
@@ -509,17 +510,17 @@ removeNpcObjects:
     call getObjectCollisionFlags                       ;; 00:037a $cd $6d $0c
     and  A, $f0                                        ;; 00:037d $e6 $f0
     cp   A, $c0                                        ;; 00:037f $fe $c0
-    jr   Z, .jr_00_0394                                ;; 00:0381 $28 $11
+    jr   Z, .next                                      ;; 00:0381 $28 $11
     cp   A, $d0                                        ;; 00:0383 $fe $d0
-    jr   Z, .jr_00_0394                                ;; 00:0385 $28 $0d
+    jr   Z, .next                                      ;; 00:0385 $28 $0d
     cp   A, $40                                        ;; 00:0387 $fe $40
-    jr   Z, .jr_00_0394                                ;; 00:0389 $28 $09
+    jr   Z, .next                                      ;; 00:0389 $28 $09
     cp   A, $50                                        ;; 00:038b $fe $50
-    jr   Z, .jr_00_0394                                ;; 00:038d $28 $05
+    jr   Z, .next                                      ;; 00:038d $28 $05
     pop  BC                                            ;; 00:038f $c1
     push BC                                            ;; 00:0390 $c5
     call destroyObject                                 ;; 00:0391 $cd $e3 $0a
-.jr_00_0394:
+.next:
     pop  BC                                            ;; 00:0394 $c1
     inc  C                                             ;; 00:0395 $0c
     dec  B                                             ;; 00:0396 $05
@@ -9184,10 +9185,10 @@ storeTileAatScreenPositionDE:
     ld   B, A                                          ;; 00:3894 $47
     call tilePositionToWindowVRAMaddress               ;; 00:3895 $cd $bb $38
     ld   A, B                                          ;; 00:3898 $78
-    jr   C, .jr_00_38a0                                ;; 00:3899 $38 $05
+    jr   C, .not_on_window                             ;; 00:3899 $38 $05
     call storeBatBackgroundDrawPosition                ;; 00:389b $cd $7c $04
     jr   .jr_00_38a3                                   ;; 00:389e $18 $03
-.jr_00_38a0:
+.not_on_window:
     call storeBatHLinVRAM                              ;; 00:38a0 $cd $5e $1d
 .jr_00_38a3:
     pop  HL                                            ;; 00:38a3 $e1
@@ -9511,11 +9512,11 @@ scriptOpCodeTakeMoney:
     ld   A, H                                          ;; 00:3a7a $7c
     sbc  A, D                                          ;; 00:3a7b $9a
     ld   H, A                                          ;; 00:3a7c $67
-    jr   NC, .jr_00_3a86                               ;; 00:3a7d $30 $07
+    jr   NC, .have_enough                              ;; 00:3a7d $30 $07
     ld   A, $06                                        ;; 00:3a7f $3e $06
     call setScriptFlag                                 ;; 00:3a81 $cd $e4 $3b
     jr   .jr_00_3a93                                   ;; 00:3a84 $18 $0d
-.jr_00_3a86:
+.have_enough:
     ld   A, H                                          ;; 00:3a86 $7c
     ld   [wMoneyHigh], A                               ;; 00:3a87 $ea $bf $d7
     ld   A, L                                          ;; 00:3a8a $7d
@@ -9941,8 +9942,8 @@ scriptResumeAfterWindow:
     ld   A, [wDialogType]                              ;; 00:3cf7 $fa $4a $d8
     cp   A, $1e                                        ;; 00:3cfa $fe $1e
     call Z, getNextScriptInstruction                   ;; 00:3cfc $cc $27 $37
-    jr   Z, .jr_00_3d01                                ;; 00:3cff $28 $00
-.jr_00_3d01:
+    jr   Z, .here                                      ;; 00:3cff $28 $00
+.here:
     call hideAndSaveMenuMetasprites_trampoline         ;; 00:3d01 $cd $63 $30
     ret                                                ;; 00:3d04 $c9
 
