@@ -39,7 +39,7 @@ projectileRunLogicForAll:
     pop  HL                                            ;; 09:402b $e1
     pop  BC                                            ;; 09:402c $c1
     dec  B                                             ;; 09:402d $05
-    jr   NZ, projectileRunLogicForAll.loop             ;; 09:402e $20 $f0
+    jr   NZ, .loop                                     ;; 09:402e $20 $f0
     ret                                                ;; 09:4030 $c9
 
 ; HL = projectile runtime data pointer
@@ -338,8 +338,8 @@ rotateVector:
     ld   D, E                                          ;; 09:41c1 $53
     ld   E, A                                          ;; 09:41c2 $5f
     ret                                                ;; 09:41c3 $c9
-.west:
 ; x = -x, y = -y
+.west:
     ld   A, D                                          ;; 09:41c4 $7a
     cpl                                                ;; 09:41c5 $2f
     inc  A                                             ;; 09:41c6 $3c
@@ -349,8 +349,8 @@ rotateVector:
     inc  A                                             ;; 09:41ca $3c
     ld   E, A                                          ;; 09:41cb $5f
     ret                                                ;; 09:41cc $c9
-.north:
 ; x = -y, y = x
+.north:
     ld   A, E                                          ;; 09:41cd $7b
     cpl                                                ;; 09:41ce $2f
     inc  A                                             ;; 09:41cf $3c
@@ -440,7 +440,7 @@ projectileLoadTiles:
     pop  HL                                            ;; 09:4233 $e1
     pop  AF                                            ;; 09:4234 $f1
     dec  A                                             ;; 09:4235 $3d
-    jr   NZ, projectileLoadTiles.loop                  ;; 09:4236 $20 $de
+    jr   NZ, .loop                                     ;; 09:4236 $20 $de
     ret                                                ;; 09:4238 $c9
 
 spawnProjectile:
@@ -598,7 +598,7 @@ projectileInitLogic:
     rlc  D                                             ;; 09:4306 $cb $02
     rlc  E                                             ;; 09:4308 $cb $03
     dec  B                                             ;; 09:430a $05
-    jr   NZ, projectileInitLogic.loop_1                ;; 09:430b $20 $e3
+    jr   NZ, .loop_1                                   ;; 09:430b $20 $e3
     ld   A, D                                          ;; 09:430d $7a
     cpl                                                ;; 09:430e $2f
     srl  A                                             ;; 09:430f $cb $3f
@@ -651,10 +651,10 @@ projectileInitLogic:
     ld   B, $04                                        ;; 09:434f $06 $04
 .loop_2:
     cp   A, [HL]                                       ;; 09:4351 $be
-    jr   NC, projectileInitLogic.break                 ;; 09:4352 $30 $04
+    jr   NC, .break                                    ;; 09:4352 $30 $04
     inc  HL                                            ;; 09:4354 $23
     dec  B                                             ;; 09:4355 $05
-    jr   NZ, projectileInitLogic.loop_2                ;; 09:4356 $20 $f9
+    jr   NZ, .loop_2                                   ;; 09:4356 $20 $f9
 .break:
     ld   A, $04                                        ;; 09:4358 $3e $04
     add  A, B                                          ;; 09:435a $80
@@ -688,7 +688,7 @@ getProjectileRuntimeEntryByIndexA:
     ret  Z                                             ;; 09:4383 $c8
     add  HL, DE                                        ;; 09:4384 $19
     dec  B                                             ;; 09:4385 $05
-    jr   NZ, getProjectileRuntimeEntryByIndexA.loop    ;; 09:4386 $20 $fa
+    jr   NZ, .loop                                     ;; 09:4386 $20 $fa
     dec  B                                             ;; 09:4388 $05
     ret                                                ;; 09:4389 $c9
 
@@ -742,7 +742,7 @@ projectileCollisionHandling:
     push BC                                            ;; 09:43cb $c5
     ld   A, [wMainGameState]                           ;; 09:43cc $fa $a0 $c0
     cp   A, $02                                        ;; 09:43cf $fe $02
-    jr   NC, projectileCollisionHandling.not_immune    ;; 09:43d1 $30 $37
+    jr   NC, .not_immune                               ;; 09:43d1 $30 $37
     push HL                                            ;; 09:43d3 $e5
     call checkObjectsCollisionDirection                ;; 09:43d4 $cd $9a $03
     call objectReverseDirection                        ;; 09:43d7 $cd $e4 $29
@@ -753,12 +753,12 @@ projectileCollisionHandling:
     pop  AF                                            ;; 09:43e1 $f1
     and  A, B                                          ;; 09:43e2 $a0
     pop  DE                                            ;; 09:43e3 $d1
-    jr   Z, projectileCollisionHandling.not_immune     ;; 09:43e4 $28 $24
+    jr   Z, .not_immune                                ;; 09:43e4 $28 $24
     push DE                                            ;; 09:43e6 $d5
     call getEquippedShieldBlockElements_SaveBC         ;; 09:43e7 $cd $cd $3d
     pop  DE                                            ;; 09:43ea $d1
     or   A, A                                          ;; 09:43eb $b7
-    jr   Z, projectileCollisionHandling.not_immune     ;; 09:43ec $28 $1c
+    jr   Z, .not_immune                                ;; 09:43ec $28 $1c
     push AF                                            ;; 09:43ee $f5
     ld   HL, $08                                       ;; 09:43ef $21 $08 $00
     add  HL, DE                                        ;; 09:43f2 $19
@@ -770,7 +770,7 @@ projectileCollisionHandling:
     ld   B, [HL]                                       ;; 09:43fa $46
     pop  AF                                            ;; 09:43fb $f1
     and  A, B                                          ;; 09:43fc $a0
-    jr   Z, projectileCollisionHandling.not_immune     ;; 09:43fd $28 $0b
+    jr   Z, .not_immune                                ;; 09:43fd $28 $0b
     pop  BC                                            ;; 09:43ff $c1
     call destroyObject                                 ;; 09:4400 $cd $e3 $0a
     ld   A, $15                                        ;; 09:4403 $3e $15

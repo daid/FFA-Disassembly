@@ -281,7 +281,7 @@ runMainInputHandler_trampoline:
     jp_to_bank 01, runMainInputHandler                 ;; 00:022c $f5 $3e $00 $c3 $d7 $1e
 
 playerSpritesLoadPlayerSpriteTiles_trampoline:
-    jp_to_bank 01, playerSpritesLoadPlayerSpriteTiles ;; 00:0232 $f5 $3e $01 $c3 $d7 $1e
+    jp_to_bank 01, playerSpritesLoadPlayerSpriteTiles  ;; 00:0232 $f5 $3e $01 $c3 $d7 $1e
 
 processPhysicsForPlayer_trampoline:
     jp_to_bank 01, processPhysicsForPlayer             ;; 00:0238 $f5 $3e $02 $c3 $d7 $1e
@@ -430,7 +430,7 @@ loadLCDCEffectBuffer:
     dec  DE                                            ;; 00:0309 $1b
     ld   [DE], A                                       ;; 00:030a $12
     dec  B                                             ;; 00:030b $05
-    jr   NZ, loadLCDCEffectBuffer.loop                 ;; 00:030c $20 $fa
+    jr   NZ, .loop                                     ;; 00:030c $20 $fa
     dec  DE                                            ;; 00:030e $1b
 .jr_00_030f:
     ld   A, $ff                                        ;; 00:030f $3e $ff
@@ -481,16 +481,16 @@ LCDCInterrupt:
     ld   HL, rLCDC                                     ;; 00:0355 $21 $40 $ff
     ldh  A, [rLCDC]                                    ;; 00:0358 $f0 $40
     bit  7, A                                          ;; 00:035a $cb $7f
-    jr   Z, LCDCInterrupt.ready_to_write               ;; 00:035c $28 $0c
+    jr   Z, .ready_to_write                            ;; 00:035c $28 $0c
     ld   C, $41                                        ;; 00:035e $0e $41
 .loop_while_mode_0:
     ldh  A, [C]                                        ;; 00:0360 $f2
     and  A, $03                                        ;; 00:0361 $e6 $03
-    jr   Z, LCDCInterrupt.loop_while_mode_0            ;; 00:0363 $28 $fb
+    jr   Z, .loop_while_mode_0                         ;; 00:0363 $28 $fb
 .loop_until_mode_0:
     ldh  A, [C]                                        ;; 00:0365 $f2
     and  A, $03                                        ;; 00:0366 $e6 $03
-    jr   NZ, LCDCInterrupt.loop_until_mode_0           ;; 00:0368 $20 $fb
+    jr   NZ, .loop_until_mode_0                        ;; 00:0368 $20 $fb
 .ready_to_write:
     ld   [HL], D                                       ;; 00:036a $72
     ld   A, E                                          ;; 00:036b $7b
@@ -523,7 +523,7 @@ removeNpcObjects:
     pop  BC                                            ;; 00:0394 $c1
     inc  C                                             ;; 00:0395 $0c
     dec  B                                             ;; 00:0396 $05
-    jr   NZ, removeNpcObjects.loop                     ;; 00:0397 $20 $e0
+    jr   NZ, .loop                                     ;; 00:0397 $20 $e0
     ret                                                ;; 00:0399 $c9
 
 ; B = object number b
@@ -575,8 +575,8 @@ checkObjectsCollisionDirection:
 ;.ret_southeast:
     ld   A, $09                                        ;; 00:03d2 $3e $09
     ret                                                ;; 00:03d4 $c9
-.c_same_location_of_b:
 ; If the two objects share the exact same coordinates, return object b's facing direction
+.c_same_location_of_b:
     push DE                                            ;; 00:03d5 $d5
     ld   C, B                                          ;; 00:03d6 $48
     call getObjectDirection                            ;; 00:03d7 $cd $99 $0c
@@ -598,7 +598,7 @@ checkObjectsCollisionDirection:
     ret                                                ;; 00:03eb $c9
 .c_n_of_b:
     bit  7, E                                          ;; 00:03ec $cb $7b
-    jr   NZ, checkObjectsCollisionDirection.c_nw_of_b  ;; 00:03ee $20 $0e
+    jr   NZ, .c_nw_of_b                                ;; 00:03ee $20 $0e
     ld   A, D                                          ;; 00:03f0 $7a
     cpl                                                ;; 00:03f1 $2f
     inc  A                                             ;; 00:03f2 $3c
@@ -769,7 +769,7 @@ bossClearObjectsTracking:
     ld   [HL], A                                       ;; 00:0507 $77
     add  HL, DE                                        ;; 00:0508 $19
     dec  B                                             ;; 00:0509 $05
-    jr   NZ, bossClearObjectsTracking.loop             ;; 00:050a $20 $fb
+    jr   NZ, .loop                                     ;; 00:050a $20 $fb
     ret                                                ;; 00:050c $c9
     db   $21, $00, $00, $c9                            ;; 00:050d ????
 
@@ -1151,11 +1151,11 @@ processPhysicsForObject:
     ld   B, A                                          ;; 00:06fb $47
 .jr_00_06fc:
     bit  0, C                                          ;; 00:06fc $cb $41
-    jr   NZ, processPhysicsForObject.right             ;; 00:06fe $20 $3f
+    jr   NZ, .right                                    ;; 00:06fe $20 $3f
     bit  1, C                                          ;; 00:0700 $cb $49
-    jr   NZ, processPhysicsForObject.left              ;; 00:0702 $20 $70
+    jr   NZ, .left                                     ;; 00:0702 $20 $70
     bit  2, C                                          ;; 00:0704 $cb $51
-    jp   NZ, processPhysicsForObject.up                ;; 00:0706 $c2 $ab $07
+    jp   NZ, .up                                       ;; 00:0706 $c2 $ab $07
 ; .down:
     ld   D, B                                          ;; 00:0709 $50
     ld   E, $00                                        ;; 00:070a $1e $00
@@ -1169,16 +1169,16 @@ processPhysicsForObject:
     and  A, $07                                        ;; 00:071a $e6 $07
     ld   A, B                                          ;; 00:071c $78
     call Z, checkObjectTileCollisions                  ;; 00:071d $cc $c0 $18
-    jp   Z, processPhysicsForObject.blocked            ;; 00:0720 $ca $e0 $07
+    jp   Z, .blocked                                   ;; 00:0720 $ca $e0 $07
     call ifPlayerThen_A_Equal_B_Minus_1_And_F0         ;; 00:0723 $cd $1d $08
-    jp   Z, processPhysicsForObject.blocked            ;; 00:0726 $ca $e0 $07
+    jp   Z, .blocked                                   ;; 00:0726 $ca $e0 $07
     ld   A, [wObjectIDCopy]                            ;; 00:0729 $fa $49 $c3
     ld   C, A                                          ;; 00:072c $4f
     call checkPlayfieldBoundaryCollision_trampoline    ;; 00:072d $cd $6f $03
     jr   NZ, .jr_00_0739                               ;; 00:0730 $20 $07
     bit  3, B                                          ;; 00:0732 $cb $58
     ld   B, $00                                        ;; 00:0734 $06 $00
-    jp   NZ, processPhysicsForObject.blocked           ;; 00:0736 $c2 $e0 $07
+    jp   NZ, .blocked                                  ;; 00:0736 $c2 $e0 $07
 .jr_00_0739:
     pop  DE                                            ;; 00:0739 $d1
     pop  HL                                            ;; 00:073a $e1
@@ -1198,16 +1198,16 @@ processPhysicsForObject:
     and  A, $07                                        ;; 00:074f $e6 $07
     ld   A, B                                          ;; 00:0751 $78
     call Z, checkObjectTileCollisions                  ;; 00:0752 $cc $c0 $18
-    jp   Z, processPhysicsForObject.blocked            ;; 00:0755 $ca $e0 $07
+    jp   Z, .blocked                                   ;; 00:0755 $ca $e0 $07
     call ifPlayerThen_A_Equal_B_Minus_1_And_F0         ;; 00:0758 $cd $1d $08
-    jp   Z, processPhysicsForObject.blocked            ;; 00:075b $ca $e0 $07
+    jp   Z, .blocked                                   ;; 00:075b $ca $e0 $07
     ld   A, [wObjectIDCopy]                            ;; 00:075e $fa $49 $c3
     ld   C, A                                          ;; 00:0761 $4f
     call checkPlayfieldBoundaryCollision_trampoline    ;; 00:0762 $cd $6f $03
     jr   NZ, .jr_00_076e                               ;; 00:0765 $20 $07
     bit  0, B                                          ;; 00:0767 $cb $40
     ld   B, $00                                        ;; 00:0769 $06 $00
-    jp   NZ, processPhysicsForObject.blocked           ;; 00:076b $c2 $e0 $07
+    jp   NZ, .blocked                                  ;; 00:076b $c2 $e0 $07
 .jr_00_076e:
     pop  DE                                            ;; 00:076e $d1
     pop  HL                                            ;; 00:076f $e1
@@ -1230,16 +1230,16 @@ processPhysicsForObject:
     and  A, $07                                        ;; 00:0787 $e6 $07
     ld   A, B                                          ;; 00:0789 $78
     call Z, checkObjectTileCollisions                  ;; 00:078a $cc $c0 $18
-    jp   Z, processPhysicsForObject.blocked            ;; 00:078d $ca $e0 $07
+    jp   Z, .blocked                                   ;; 00:078d $ca $e0 $07
     call ifPlayerThen_A_Equal_B_Minus_1_And_F0         ;; 00:0790 $cd $1d $08
-    jp   Z, processPhysicsForObject.blocked            ;; 00:0793 $ca $e0 $07
+    jp   Z, .blocked                                   ;; 00:0793 $ca $e0 $07
     ld   A, [wObjectIDCopy]                            ;; 00:0796 $fa $49 $c3
     ld   C, A                                          ;; 00:0799 $4f
     call checkPlayfieldBoundaryCollision_trampoline    ;; 00:079a $cd $6f $03
     jr   NZ, .jr_00_07a5                               ;; 00:079d $20 $06
     bit  1, B                                          ;; 00:079f $cb $48
     ld   B, $00                                        ;; 00:07a1 $06 $00
-    jr   NZ, processPhysicsForObject.blocked           ;; 00:07a3 $20 $3b
+    jr   NZ, .blocked                                  ;; 00:07a3 $20 $3b
 .jr_00_07a5:
     pop  DE                                            ;; 00:07a5 $d1
     pop  HL                                            ;; 00:07a6 $e1
@@ -1262,16 +1262,16 @@ processPhysicsForObject:
     and  A, $07                                        ;; 00:07be $e6 $07
     ld   A, B                                          ;; 00:07c0 $78
     call Z, checkObjectTileCollisions                  ;; 00:07c1 $cc $c0 $18
-    jr   Z, processPhysicsForObject.blocked            ;; 00:07c4 $28 $1a
+    jr   Z, .blocked                                   ;; 00:07c4 $28 $1a
     call ifPlayerThen_A_Equal_B_Minus_1_And_F0         ;; 00:07c6 $cd $1d $08
-    jr   Z, processPhysicsForObject.blocked            ;; 00:07c9 $28 $15
+    jr   Z, .blocked                                   ;; 00:07c9 $28 $15
     ld   A, [wObjectIDCopy]                            ;; 00:07cb $fa $49 $c3
     ld   C, A                                          ;; 00:07ce $4f
     call checkPlayfieldBoundaryCollision_trampoline    ;; 00:07cf $cd $6f $03
     jr   NZ, .jr_00_07da                               ;; 00:07d2 $20 $06
     bit  2, B                                          ;; 00:07d4 $cb $50
     ld   B, $00                                        ;; 00:07d6 $06 $00
-    jr   NZ, processPhysicsForObject.blocked           ;; 00:07d8 $20 $06
+    jr   NZ, .blocked                                  ;; 00:07d8 $20 $06
 .jr_00_07da:
     pop  DE                                            ;; 00:07da $d1
     pop  HL                                            ;; 00:07db $e1
@@ -1765,7 +1765,7 @@ createObject:
     jr   Z, .jr_00_0a8e                                ;; 00:0a82 $28 $0a
     add  HL, DE                                        ;; 00:0a84 $19
     dec  B                                             ;; 00:0a85 $05
-    jr   NZ, createObject.loop                         ;; 00:0a86 $20 $f9
+    jr   NZ, .loop                                     ;; 00:0a86 $20 $f9
     pop  AF                                            ;; 00:0a88 $f1
     pop  HL                                            ;; 00:0a89 $e1
     pop  DE                                            ;; 00:0a8a $d1
@@ -2027,7 +2027,7 @@ initObjects:
     add  HL, DE                                        ;; 00:0bf2 $19
     pop  DE                                            ;; 00:0bf3 $d1
     dec  B                                             ;; 00:0bf4 $05
-    jr   NZ, initObjects.loop_1                        ;; 00:0bf5 $20 $e4
+    jr   NZ, .loop_1                                   ;; 00:0bf5 $20 $e4
     ld   B, $07                                        ;; 00:0bf7 $06 $07
     ld   C, $40                                        ;; 00:0bf9 $0e $40
 .loop_2:
@@ -2038,7 +2038,7 @@ initObjects:
     call createObject                                  ;; 00:0c04 $cd $74 $0a
     pop  BC                                            ;; 00:0c07 $c1
     dec  B                                             ;; 00:0c08 $05
-    jr   NZ, initObjects.loop_2                        ;; 00:0c09 $20 $f0
+    jr   NZ, .loop_2                                   ;; 00:0c09 $20 $f0
     ret                                                ;; 00:0c0b $c9
 
 ; When moving between two eight pixel tiles, the middle four pixels use the other walking frame.
@@ -2390,13 +2390,13 @@ drawMinimap:
     inc  E                                             ;; 00:0dfd $1c
     pop  BC                                            ;; 00:0dfe $c1
     dec  C                                             ;; 00:0dff $0d
-    jr   NZ, drawMinimap.loop_inner                    ;; 00:0e00 $20 $f4
+    jr   NZ, .loop_inner                               ;; 00:0e00 $20 $f4
     ld   A, E                                          ;; 00:0e02 $7b
     and  A, $f0                                        ;; 00:0e03 $e6 $f0
     add  A, $10                                        ;; 00:0e05 $c6 $10
     ld   E, A                                          ;; 00:0e07 $5f
     dec  B                                             ;; 00:0e08 $05
-    jr   NZ, drawMinimap.loop_outer                    ;; 00:0e09 $20 $e9
+    jr   NZ, .loop_outer                               ;; 00:0e09 $20 $e9
     call popBankNrAndSwitch                            ;; 00:0e0b $cd $0a $2a
     ret                                                ;; 00:0e0e $c9
 
@@ -2421,7 +2421,7 @@ drawMinimapRoomTile:
 .jr_00_0e29:
     srl  C                                             ;; 00:0e29 $cb $39
     dec  B                                             ;; 00:0e2b $05
-    jr   NZ, drawMinimapRoomTile.loop                  ;; 00:0e2c $20 $f4
+    jr   NZ, .loop                                     ;; 00:0e2c $20 $f4
     ld   A, $11                                        ;; 00:0e2e $3e $11
     add  A, C                                          ;; 00:0e30 $81
     call loadMinimapTile                               ;; 00:0e31 $cd $3b $1a
@@ -2540,8 +2540,8 @@ specialEffectMetatileTable:
 
 ;@jumptable amount=2
 specialEffectJumptable:
-    dw   specialEffectInit                             ;; 00:0eca ??
-    dw   specialEffectAnimate                          ;; 00:0ecc ??
+    dw   specialEffectInit                             ;; 00:0eca ?? $00
+    dw   specialEffectAnimate                          ;; 00:0ecc ?? $01
 
 specialEffectInit:
     ld   H, D                                          ;; 00:0ece $62
@@ -3813,9 +3813,9 @@ scriptOpWaitWhileMovement:
 .loop:
     ld   A, [HL+]                                      ;; 00:1694 $2a
     cp   A, $00                                        ;; 00:1695 $fe $00
-    jr   NZ, scriptOpWaitWhileMovement.wait            ;; 00:1697 $20 $08
+    jr   NZ, .wait                                     ;; 00:1697 $20 $08
     dec  B                                             ;; 00:1699 $05
-    jr   NZ, scriptOpWaitWhileMovement.loop            ;; 00:169a $20 $f8
+    jr   NZ, .loop                                     ;; 00:169a $20 $f8
     pop  HL                                            ;; 00:169c $e1
     call getNextScriptInstruction                      ;; 00:169d $cd $27 $37
     ret                                                ;; 00:16a0 $c9
@@ -3986,7 +3986,7 @@ call_00_177e:
     pop  DE                                            ;; 00:179d $d1
     ld   A, [wMainGameStateFlags]                      ;; 00:179e $fa $a1 $c0
     bit  3, A                                          ;; 00:17a1 $cb $5f
-    jr   NZ, jr_00_1802                                ;; 00:17a3 $20 $5d
+    jr   NZ, .jr_00_1802                               ;; 00:17a3 $20 $5d
     ld   A, C                                          ;; 00:17a5 $79
     and  A, $07                                        ;; 00:17a6 $e6 $07
     cp   A, $01                                        ;; 00:17a8 $fe $01
@@ -3994,7 +3994,7 @@ call_00_177e:
     cp   A, $04                                        ;; 00:17ac $fe $04
     jr   Z, .jr_00_17b4                                ;; 00:17ae $28 $04
     cp   A, $05                                        ;; 00:17b0 $fe $05
-    jr   NZ, jr_00_1802                                ;; 00:17b2 $20 $4e
+    jr   NZ, .jr_00_1802                               ;; 00:17b2 $20 $4e
 .jr_00_17b4:
     ld   C, B                                          ;; 00:17b4 $48
     ld   B, L                                          ;; 00:17b5 $45
@@ -4004,7 +4004,7 @@ call_00_177e:
     pop  DE                                            ;; 00:17bb $d1
     pop  BC                                            ;; 00:17bc $c1
     bit  6, H                                          ;; 00:17bd $cb $74
-    jr   Z, jr_00_1802                                 ;; 00:17bf $28 $41
+    jr   Z, .jr_00_1802                                ;; 00:17bf $28 $41
     inc  E                                             ;; 00:17c1 $1c
     push BC                                            ;; 00:17c2 $c5
     push HL                                            ;; 00:17c3 $e5
@@ -4012,7 +4012,7 @@ call_00_177e:
     pop  DE                                            ;; 00:17c7 $d1
     pop  BC                                            ;; 00:17c8 $c1
     bit  6, H                                          ;; 00:17c9 $cb $74
-    jr   Z, jr_00_1802                                 ;; 00:17cb $28 $35
+    jr   Z, .jr_00_1802                                ;; 00:17cb $28 $35
     ld   A, H                                          ;; 00:17cd $7c
     swap A                                             ;; 00:17ce $cb $37
     and  A, $03                                        ;; 00:17d0 $e6 $03
@@ -4021,7 +4021,7 @@ call_00_177e:
     swap A                                             ;; 00:17d4 $cb $37
     and  A, $03                                        ;; 00:17d6 $e6 $03
     cp   A, L                                          ;; 00:17d8 $bd
-    jr   NZ, jr_00_1806                                ;; 00:17d9 $20 $2b
+    jr   NZ, .jr_00_1806                               ;; 00:17d9 $20 $2b
     cp   A, $00                                        ;; 00:17db $fe $00
     jr   Z, .jr_00_17eb                                ;; 00:17dd $28 $0c
     cp   A, $01                                        ;; 00:17df $fe $01
@@ -4029,17 +4029,16 @@ call_00_177e:
     cp   A, $02                                        ;; 00:17e3 $fe $02
     jr   Z, .jr_00_17f3                                ;; 00:17e5 $28 $0c
     ld   B, $08                                        ;; 00:17e7 $06 $08
-    jr   jr_00_17f5                                    ;; 00:17e9 $18 $0a
+    jr   .jr_00_17f5                                   ;; 00:17e9 $18 $0a
 .jr_00_17eb:
     ld   B, $01                                        ;; 00:17eb $06 $01
-    jr   jr_00_17f5                                    ;; 00:17ed $18 $06
+    jr   .jr_00_17f5                                   ;; 00:17ed $18 $06
 .jr_00_17ef:
     ld   B, $02                                        ;; 00:17ef $06 $02
-    jr   jr_00_17f5                                    ;; 00:17f1 $18 $02
+    jr   .jr_00_17f5                                   ;; 00:17f1 $18 $02
 .jr_00_17f3:
     ld   B, $04                                        ;; 00:17f3 $06 $04
-
-jr_00_17f5:
+.jr_00_17f5:
     ld   A, $90                                        ;; 00:17f5 $3e $90
     or   A, B                                          ;; 00:17f7 $b0
     push BC                                            ;; 00:17f8 $c5
@@ -4047,21 +4046,19 @@ jr_00_17f5:
     pop  BC                                            ;; 00:17fc $c1
     ld   A, $02                                        ;; 00:17fd $3e $02
     call setObjectOffset0b                             ;; 00:17ff $cd $08 $0d
-
-jr_00_1802:
+.jr_00_1802:
     call popBankNrAndSwitch                            ;; 00:1802 $cd $0a $2a
     ret                                                ;; 00:1805 $c9
-
-jr_00_1806:
+.jr_00_1806:
     ld   A, B                                          ;; 00:1806 $78
     cp   A, $00                                        ;; 00:1807 $fe $00
-    jr   NZ, jr_00_17f5                                ;; 00:1809 $20 $ea
+    jr   NZ, .jr_00_17f5                               ;; 00:1809 $20 $ea
     push BC                                            ;; 00:180b $c5
     call getObjectDirection                            ;; 00:180c $cd $99 $0c
     pop  BC                                            ;; 00:180f $c1
     and  A, $0f                                        ;; 00:1810 $e6 $0f
     ld   B, A                                          ;; 00:1812 $47
-    jr   jr_00_17f5                                    ;; 00:1813 $18 $e0
+    jr   .jr_00_17f5                                   ;; 00:1813 $18 $e0
 
 call_00_1815:
     push DE                                            ;; 00:1815 $d5
@@ -4473,7 +4470,7 @@ mapGraphicsStateCheckCache:
 .jr_00_1a63:
     pop  HL                                            ;; 00:1a63 $e1
     dec  B                                             ;; 00:1a64 $05
-    jr   NZ, mapGraphicsStateCheckCache.loop           ;; 00:1a65 $20 $eb
+    jr   NZ, .loop                                     ;; 00:1a65 $20 $eb
     ld   A, C                                          ;; 00:1a67 $79
     cp   A, $00                                        ;; 00:1a68 $fe $00
     push AF                                            ;; 00:1a6a $f5
@@ -4648,10 +4645,10 @@ mapGraphicsStateRefreshTiles:
 .next:
     pop  HL                                            ;; 00:1b45 $e1
     dec  C                                             ;; 00:1b46 $0d
-    jr   NZ, mapGraphicsStateRefreshTiles.loop_inner   ;; 00:1b47 $20 $eb
+    jr   NZ, .loop_inner                               ;; 00:1b47 $20 $eb
     pop  HL                                            ;; 00:1b49 $e1
     dec  B                                             ;; 00:1b4a $05
-    jr   NZ, mapGraphicsStateRefreshTiles.loop_outer   ;; 00:1b4b $20 $e0
+    jr   NZ, .loop_outer                               ;; 00:1b4b $20 $e0
     ret                                                ;; 00:1b4d $c9
 
 mapGraphicsStateUpdateCache:
@@ -4660,9 +4657,9 @@ mapGraphicsStateUpdateCache:
 .loop:
     ld   A, [HL]                                       ;; 00:1b53 $7e
     cp   A, $00                                        ;; 00:1b54 $fe $00
-    jr   Z, mapGraphicsStateUpdateCache.next           ;; 00:1b56 $28 $17
+    jr   Z, .next                                      ;; 00:1b56 $28 $17
     dec  A                                             ;; 00:1b58 $3d
-    jr   NZ, mapGraphicsStateUpdateCache.next          ;; 00:1b59 $20 $14
+    jr   NZ, .next                                     ;; 00:1b59 $20 $14
     push HL                                            ;; 00:1b5b $e5
     ld   DE, -256 ;@=value signed=True                 ;; 00:1b5c $11 $00 $ff
     add  HL, DE                                        ;; 00:1b5f $19
@@ -4678,7 +4675,7 @@ mapGraphicsStateUpdateCache:
 .next:
     ld   [HL+], A                                      ;; 00:1b6f $22
     dec  B                                             ;; 00:1b70 $05
-    jr   NZ, mapGraphicsStateUpdateCache.loop          ;; 00:1b71 $20 $e0
+    jr   NZ, .loop                                     ;; 00:1b71 $20 $e0
     ret                                                ;; 00:1b73 $c9
 
 ; Ensures all needed tiles are loaded for the room's metatiles
@@ -4705,10 +4702,10 @@ loadRoomTiles:
     pop  BC                                            ;; 00:1b92 $c1
     pop  HL                                            ;; 00:1b93 $e1
     dec  C                                             ;; 00:1b94 $0d
-    jp   NZ, loadRoomTiles.loop_inner                  ;; 00:1b95 $c2 $8c $1b
+    jp   NZ, .loop_inner                               ;; 00:1b95 $c2 $8c $1b
     pop  HL                                            ;; 00:1b98 $e1
     dec  B                                             ;; 00:1b99 $05
-    jp   NZ, loadRoomTiles.loop_outer                  ;; 00:1b9a $c2 $85 $1b
+    jp   NZ, .loop_outer                               ;; 00:1b9a $c2 $85 $1b
     call popBankNrAndSwitch                            ;; 00:1b9d $cd $0a $2a
     ret                                                ;; 00:1ba0 $c9
 
@@ -4732,15 +4729,15 @@ loadRoomTile:
     ld   HL, wBackgroundGraphicsTileUsed               ;; 00:1bb5 $21 $70 $d2
 .loop:
     cp   A, [HL]                                       ;; 00:1bb8 $be
-    jr   Z, loadRoomTile.space_found                   ;; 00:1bb9 $28 $0c
+    jr   Z, .space_found                               ;; 00:1bb9 $28 $0c
     inc  HL                                            ;; 00:1bbb $23
     dec  D                                             ;; 00:1bbc $15
-    jr   NZ, loadRoomTile.loop                         ;; 00:1bbd $20 $f9
+    jr   NZ, .loop                                     ;; 00:1bbd $20 $f9
     push DE                                            ;; 00:1bbf $d5
     call mapGraphicsStateUpdateCache                   ;; 00:1bc0 $cd $4e $1b
     pop  DE                                            ;; 00:1bc3 $d1
     pop  HL                                            ;; 00:1bc4 $e1
-    jr   loadRoomTile.tile_not_loaded                  ;; 00:1bc5 $18 $e9
+    jr   .tile_not_loaded                              ;; 00:1bc5 $18 $e9
 .space_found:
     ld   [HL], $01                                     ;; 00:1bc7 $36 $01
     ld   A, $f0                                        ;; 00:1bc9 $3e $f0
@@ -4797,10 +4794,10 @@ loadRoomTile:
     pop  BC                                            ;; 00:1c15 $c1
     ld   A, H                                          ;; 00:1c16 $7c
     cp   A, $00                                        ;; 00:1c17 $fe $00
-    jr   NZ, loadRoomTile.done                         ;; 00:1c19 $20 $1f
+    jr   NZ, .done                                     ;; 00:1c19 $20 $1f
     ld   A, L                                          ;; 00:1c1b $7d
     cp   A, $90                                        ;; 00:1c1c $fe $90
-    jr   NC, loadRoomTile.done                         ;; 00:1c1e $30 $1a
+    jr   NC, .done                                     ;; 00:1c1e $30 $1a
 ; If the tile should be animated, also copy it into SRAM
     ld   DE, wAnimatedTileWaterfall1                   ;; 00:1c20 $11 $f0 $d2
     add  HL, DE                                        ;; 00:1c23 $19
@@ -4887,7 +4884,7 @@ clearItemBuff:
     ld   [DE], A                                       ;; 00:1d4d $12
     inc  DE                                            ;; 00:1d4e $13
     dec  B                                             ;; 00:1d4f $05
-    jr   NZ, clearItemBuff.loop                        ;; 00:1d50 $20 $fa
+    jr   NZ, .loop                                     ;; 00:1d50 $20 $fa
     ld   A, [wNectarStaminaTimerNumber]                ;; 00:1d52 $fa $7e $d8
     call timerFree                                     ;; 00:1d55 $cd $ca $2f
     ld   A, $ff                                        ;; 00:1d58 $3e $ff
@@ -5011,14 +5008,14 @@ processBackgroundRenderRequests:
     pop  DE                                            ;; 00:1e23 $d1
     pop  BC                                            ;; 00:1e24 $c1
     dec  B                                             ;; 00:1e25 $05
-    jr   NZ, processBackgroundRenderRequests.loop_inner ;; 00:1e26 $20 $e6
+    jr   NZ, .loop_inner                               ;; 00:1e26 $20 $e6
 .jr_00_1e28:
     pop  HL                                            ;; 00:1e28 $e1
     pop  BC                                            ;; 00:1e29 $c1
     ld   DE, $06                                       ;; 00:1e2a $11 $06 $00
     add  HL, DE                                        ;; 00:1e2d $19
     dec  B                                             ;; 00:1e2e $05
-    jr   NZ, processBackgroundRenderRequests.loop_outer ;; 00:1e2f $20 $c6
+    jr   NZ, .loop_outer                               ;; 00:1e2f $20 $c6
     ld   A, $00                                        ;; 00:1e31 $3e $00
     ld   [wBackgroundRenderRequestCount], A            ;; 00:1e33 $ea $e8 $ce
     call popBankNrAndSwitch                            ;; 00:1e36 $cd $0a $2a
@@ -5284,7 +5281,7 @@ MainLoop:
     call mainLoopPostInput                             ;; 00:1fe4 $cd $90 $21
     ld   HL, wVBlankDone                               ;; 00:1fe7 $21 $ad $c0
     dec  [HL]                                          ;; 00:1fea $35
-    jr   NZ, MainLoop.skipVBlankWait                   ;; 00:1feb $20 $f1
+    jr   NZ, .skipVBlankWait                           ;; 00:1feb $20 $f1
     jp   MainLoop                                      ;; 00:1fed $c3 $d5 $1f
 
 InitPreIntEnable:
@@ -5435,7 +5432,7 @@ copyInitialVRAMTiles:
     inc  HL                                            ;; 00:215a $23
     pop  BC                                            ;; 00:215b $c1
     dec  B                                             ;; 00:215c $05
-    jr   NZ, copyInitialVRAMTiles.loop                 ;; 00:215d $20 $eb
+    jr   NZ, .loop                                     ;; 00:215d $20 $eb
     ret                                                ;; 00:215f $c9
 
 OAM_DMA_Routine:
@@ -5448,7 +5445,7 @@ DisableLCD:
 .loop:
     ldh  A, [rLY]                                      ;; 00:216e $f0 $44
     cp   A, $92                                        ;; 00:2170 $fe $92
-    jr   C, DisableLCD.loop                            ;; 00:2172 $38 $fa
+    jr   C, .loop                                      ;; 00:2172 $38 $fa
     ldh  A, [rLCDC]                                    ;; 00:2174 $f0 $40
     and  A, $7f                                        ;; 00:2176 $e6 $7f
     ldh  [rLCDC], A                                    ;; 00:2178 $e0 $40
@@ -5512,7 +5509,7 @@ getRoomClearedStatusAndUpdateList:
     jr   Z, .jr_00_21e0                                ;; 00:21da $28 $04
 .jr_00_21dc:
     dec  B                                             ;; 00:21dc $05
-    jr   NZ, getRoomClearedStatusAndUpdateList.loop    ;; 00:21dd $20 $eb
+    jr   NZ, .loop                                     ;; 00:21dd $20 $eb
     ret                                                ;; 00:21df $c9
 .jr_00_21e0:
     ld   A, D                                          ;; 00:21e0 $7a
@@ -5564,28 +5561,19 @@ LoadRoomXY_to_A:
     ret                                                ;; 00:221c $c9
 
 ; Offsets into wRoomTiles for door metatiles, and the xy  coordinates of each
-;@data amount=4 format=ppbb
+;@data amount=4 format=ppbbbb
 doorMetatileLocation:
-    dw   $c39b                                         ;; 00:221d pP
-    dw   $c39a                                         ;; 00:221f pP
-.southXYs:
-    db   $05, $07, $04, $07                            ;; 00:2221 ....
+    data_ppbbbb $c39b, $c39a, $05, $07, $04, $07       ;; 00:221d pPpP.... $00
 .north:
-    dw   $c355                                         ;; 00:2225 pP
-    dw   $c354                                         ;; 00:2227 pP
-    db   $05, $00, $04, $00                            ;; 00:2229 ....
+    data_ppbbbb $c355, $c354, $05, $00, $04, $00       ;; 00:2225 pPpP.... $01
 .west:
-    dw   $c378                                         ;; 00:222d pP
-    dw   $c36e                                         ;; 00:222f pP
-    db   $00, $04, $00, $03                            ;; 00:2231 ....
+    data_ppbbbb $c378, $c36e, $00, $04, $00, $03       ;; 00:222d pPpP.... $02
 .east:
-    dw   $c381                                         ;; 00:2235 pP
-    dw   $c377                                         ;; 00:2237 pP
-    db   $09, $04, $09, $03, $9b, $c3, $9a, $c3        ;; 00:2239 ....????
-    db   $05, $08, $04, $08, $55, $c3, $54, $c3        ;; 00:2241 ....????
-    db   $05, $ff, $04, $ff, $78, $c3, $6e, $c3        ;; 00:2249 ....????
-    db   $ff, $04, $ff, $03, $81, $c3, $77, $c3        ;; 00:2251 .?.?????
-    db   $0a, $04, $0a, $03                            ;; 00:2259 ...?
+    data_ppbbbb $c381, $c377, $09, $04, $09, $03       ;; 00:2235 pPpP.... $03
+    db   $9b, $c3, $9a, $c3, $05, $08, $04, $08        ;; 00:223d ????....
+    db   $55, $c3, $54, $c3, $05, $ff, $04, $ff        ;; 00:2245 ????....
+    db   $78, $c3, $6e, $c3, $ff, $04, $ff, $03        ;; 00:224d ????.?.?
+    db   $81, $c3, $77, $c3, $0a, $04, $0a, $03        ;; 00:2255 ????...?
 
 ; A is direction, E=1, W=2, N=4, S=8
 ; Return: HL = pointer to offsets into wRoomTiles for door metatiles:
@@ -5717,7 +5705,7 @@ closeDoor:
     push AF                                            ;; 00:22fe $f5
     ld   A, [wMapEncodingType]                         ;; 00:22ff $fa $f8 $c3
     cp   A, $00                                        ;; 00:2302 $fe $00
-    jr   Z, .unsupported                                     ;; 00:2304 $28 $53
+    jr   Z, .unsupported                               ;; 00:2304 $28 $53
     ld   A, [wMapTableBankNr]                          ;; 00:2306 $fa $f0 $c3
     call pushBankNrAndSwitch                           ;; 00:2309 $cd $fb $29
     pop  AF                                            ;; 00:230c $f1
@@ -5803,7 +5791,7 @@ openDoor:
 checkMovingInPossibleDoorLocation:
     ld   C, $08                                        ;; 00:2385 $0e $08
     ld   B, $08                                        ;; 00:2387 $06 $08
-    ld   HL, doorMetatileLocation.southXYs             ;; 00:2389 $21 $21 $22
+    ld   HL, doorMetatileLocation + $04                ;; 00:2389 $21 $21 $22
 .loop:
     ld   A, [HL+]                                      ;; 00:238c $2a
     cp   A, E                                          ;; 00:238d $bb
@@ -5961,13 +5949,13 @@ loadRoomMetaTilesRLE:
     jr   Z, .jr_00_2457                                ;; 00:244f $28 $06
     ld   [HL+], A                                      ;; 00:2451 $22
     dec  B                                             ;; 00:2452 $05
-    jr   NZ, loadRoomMetaTilesRLE.loop_inner           ;; 00:2453 $20 $f9
+    jr   NZ, .loop_inner                               ;; 00:2453 $20 $f9
     jr   .jr_00_245c                                   ;; 00:2455 $18 $05
 .jr_00_2457:
     ld   [HL+], A                                      ;; 00:2457 $22
     inc  DE                                            ;; 00:2458 $13
     dec  B                                             ;; 00:2459 $05
-    jr   NZ, loadRoomMetaTilesRLE.loop_outer           ;; 00:245a $20 $e6
+    jr   NZ, .loop_outer                               ;; 00:245a $20 $e6
 .jr_00_245c:
     ld   HL, wRoomTiles                                ;; 00:245c $21 $50 $c3
     ret                                                ;; 00:245f $c9
@@ -6201,19 +6189,19 @@ loadRoomMetaTilesTemplated:
     pop  DE                                            ;; 00:25ba $d1
 .jr_00_25bb:
     dec  B                                             ;; 00:25bb $05
-    jr   NZ, loadRoomMetaTilesTemplated.loadDoorTilesLoop ;; 00:25bc $20 $b8
+    jr   NZ, .loadDoorTilesLoop                        ;; 00:25bc $20 $b8
 ; Load the remaining tile overrides
 .tileOverrideLoop:
     ld   A, [HL+]                                      ;; 00:25be $2a
     cp   A, $ff                                        ;; 00:25bf $fe $ff
-    jr   Z, loadRoomMetaTilesTemplated.tileOverrideFinished ;; 00:25c1 $28 $0a
+    jr   Z, .tileOverrideFinished                      ;; 00:25c1 $28 $0a
     ld   C, A                                          ;; 00:25c3 $4f
     ld   A, [HL+]                                      ;; 00:25c4 $2a
     push HL                                            ;; 00:25c5 $e5
     call getRoomMetaTilePointerYXinA                   ;; 00:25c6 $cd $46 $25
     ld   [HL], C                                       ;; 00:25c9 $71
     pop  HL                                            ;; 00:25ca $e1
-    jr   loadRoomMetaTilesTemplated.tileOverrideLoop   ;; 00:25cb $18 $f1
+    jr   .tileOverrideLoop                             ;; 00:25cb $18 $f1
 .tileOverrideFinished:
     ld   HL, wRoomTiles                                ;; 00:25cd $21 $50 $c3
     ret                                                ;; 00:25d0 $c9
@@ -6529,7 +6517,7 @@ getNumberOfEnemies:
     ld   DE, $18                                       ;; 00:27a9 $11 $18 $00
     add  HL, DE                                        ;; 00:27ac $19
     dec  B                                             ;; 00:27ad $05
-    jr   NZ, getNumberOfEnemies.loop                   ;; 00:27ae $20 $e6
+    jr   NZ, .loop                                     ;; 00:27ae $20 $e6
     ld   A, [wBossFirstObjectID]                       ;; 00:27b0 $fa $e8 $d3
     cp   A, $ff                                        ;; 00:27b3 $fe $ff
     jr   Z, .jr_00_27b8                                ;; 00:27b5 $28 $01
@@ -6574,7 +6562,7 @@ initNpcRuntimeData:
     ld   [HL], A                                       ;; 00:27f3 $77
     add  HL, DE                                        ;; 00:27f4 $19
     dec  B                                             ;; 00:27f5 $05
-    jr   NZ, initNpcRuntimeData.loop                   ;; 00:27f6 $20 $fb
+    jr   NZ, .loop                                     ;; 00:27f6 $20 $fb
     ret                                                ;; 00:27f8 $c9
 
 scriptOpCodeSetNPCTypes:
@@ -6680,7 +6668,7 @@ checkForMovingObjects:
     or   A, C                                          ;; 00:28a3 $b1
     ld   C, A                                          ;; 00:28a4 $4f
     dec  B                                             ;; 00:28a5 $05
-    jr   NZ, checkForMovingObjects.loop                ;; 00:28a6 $20 $fa
+    jr   NZ, .loop                                     ;; 00:28a6 $20 $fa
     or   A, A                                          ;; 00:28a8 $b7
     ret                                                ;; 00:28a9 $c9
 
@@ -6818,7 +6806,7 @@ convertToPackedBCD:
     ld   [HL-], A                                      ;; 00:295c $32
     pop  HL                                            ;; 00:295d $e1
     dec  B                                             ;; 00:295e $05
-    jr   NZ, convertToPackedBCD.loop                   ;; 00:295f $20 $e5
+    jr   NZ, .loop                                     ;; 00:295f $20 $e5
     pop  HL                                            ;; 00:2961 $e1
     ret                                                ;; 00:2962 $c9
 
@@ -6841,7 +6829,7 @@ convertToUnpackedBCD:
     ld   [HL-], A                                      ;; 00:2977 $32
     dec  DE                                            ;; 00:2978 $1b
     dec  C                                             ;; 00:2979 $0d
-    jr   NZ, convertToUnpackedBCD.loop                 ;; 00:297a $20 $f2
+    jr   NZ, .loop                                     ;; 00:297a $20 $f2
     ret                                                ;; 00:297c $c9
 
 playSFX:
@@ -7063,7 +7051,7 @@ copyHLtoDE:
     ld   [DE], A                                       ;; 00:2b4e $12
     inc  DE                                            ;; 00:2b4f $13
     dec  B                                             ;; 00:2b50 $05
-    jr   NZ, copyHLtoDE.loop                           ;; 00:2b51 $20 $fa
+    jr   NZ, .loop                                     ;; 00:2b51 $20 $fa
     ret                                                ;; 00:2b53 $c9
 
 FillHL_with_A_times_BC:
@@ -7075,7 +7063,7 @@ FillHL_with_A_times_BC:
     ld   [HL], D                                       ;; 00:2b58 $72
     inc  HL                                            ;; 00:2b59 $23
     dec  BC                                            ;; 00:2b5a $0b
-    jr   FillHL_with_A_times_BC.loop                   ;; 00:2b5b $18 $f8
+    jr   .loop                                         ;; 00:2b5b $18 $f8
 
 ;write A B times at HL
 fillMemory:
@@ -7084,7 +7072,7 @@ fillMemory:
     dec  B                                             ;; 00:2b5e $05
     ret  Z                                             ;; 00:2b5f $c8
     ld   [HL+], A                                      ;; 00:2b60 $22
-    jr   fillMemory.loop                               ;; 00:2b61 $18 $fb
+    jr   .loop                                         ;; 00:2b61 $18 $fb
 
 getPointerFromHL:
     add  A, A                                          ;; 00:2b63 $87
@@ -7118,7 +7106,7 @@ MultiplyHL_by_A:
     add  HL, DE                                        ;; 00:2b86 $19
 .jr_00_2b87:
     dec  B                                             ;; 00:2b87 $05
-    jr   NZ, MultiplyHL_by_A.loop                      ;; 00:2b88 $20 $f8
+    jr   NZ, .loop                                     ;; 00:2b88 $20 $f8
     ret                                                ;; 00:2b8a $c9
 
 ; modulo function:
@@ -7146,7 +7134,7 @@ divMod:
     set  0, L                                          ;; 00:2ba5 $cb $c5
 .jr_00_2ba7:
     dec  B                                             ;; 00:2ba7 $05
-    jr   NZ, divMod.loop                               ;; 00:2ba8 $20 $ee
+    jr   NZ, .loop                                     ;; 00:2ba8 $20 $ee
     ret                                                ;; 00:2baa $c9
 
 ; HL -= DE
@@ -7198,7 +7186,7 @@ initProjectileRuntimeData:
     ld   [HL], A                                       ;; 00:2bfc $77
     add  HL, DE                                        ;; 00:2bfd $19
     dec  B                                             ;; 00:2bfe $05
-    jr   NZ, initProjectileRuntimeData.loop            ;; 00:2bff $20 $fb
+    jr   NZ, .loop                                     ;; 00:2bff $20 $fb
     ret                                                ;; 00:2c01 $c9
 
 NOOP:
@@ -7480,7 +7468,7 @@ vblankGraphicsVRAMCopy:
     ld   A, [HL+]                                      ;; 00:2dbb $2a
     ld   [DE], A                                       ;; 00:2dbc $12
     dec  B                                             ;; 00:2dbd $05
-    jr   NZ, vblankGraphicsVRAMCopy.loop               ;; 00:2dbe $20 $c3
+    jr   NZ, .loop                                     ;; 00:2dbe $20 $c3
 .jr_00_2dc0:
     ld   A, B                                          ;; 00:2dc0 $78
     ld   [wTileCopyRequestCount], A                    ;; 00:2dc1 $ea $e0 $c8
@@ -7712,7 +7700,7 @@ initTimerIDsNamesAndScriptFlags:
     inc  HL                                            ;; 00:2f93 $23
     inc  HL                                            ;; 00:2f94 $23
     dec  B                                             ;; 00:2f95 $05
-    jr   NZ, initTimerIDsNamesAndScriptFlags.loop      ;; 00:2f96 $20 $f8
+    jr   NZ, .loop                                     ;; 00:2f96 $20 $f8
     pop  BC                                            ;; 00:2f98 $c1
     pop  HL                                            ;; 00:2f99 $e1
     call clearNamesAndScriptFlags                      ;; 00:2f9a $cd $b7 $3b
@@ -7732,7 +7720,7 @@ timerNew:
     inc  HL                                            ;; 00:2fab $23
     inc  HL                                            ;; 00:2fac $23
     dec  B                                             ;; 00:2fad $05
-    jr   NZ, timerNew.loop                             ;; 00:2fae $20 $f5
+    jr   NZ, .loop                                     ;; 00:2fae $20 $f5
     pop  HL                                            ;; 00:2fb0 $e1
     pop  BC                                            ;; 00:2fb1 $c1
     scf                                                ;; 00:2fb2 $37
@@ -7863,7 +7851,7 @@ timerCheckExpiredOrTickAllTimers:
     ld   DE, $04                                       ;; 00:303a $11 $04 $00
     add  HL, DE                                        ;; 00:303d $19
     dec  B                                             ;; 00:303e $05
-    jr   NZ, timerCheckExpiredOrTickAllTimers.loop     ;; 00:303f $20 $e1
+    jr   NZ, .loop                                     ;; 00:303f $20 $e1
     pop  BC                                            ;; 00:3041 $c1
     pop  DE                                            ;; 00:3042 $d1
     pop  HL                                            ;; 00:3043 $e1
@@ -8159,7 +8147,7 @@ gameStateScript:
     set  0, [HL]                                       ;; 00:325e $cb $c6
 .jr_00_3260:
     call switchToScriptBank                            ;; 00:3260 $cd $60 $3c
-    ld   HL, gameStateScript.ret_by_push               ;; 00:3263 $21 $74 $32
+    ld   HL, .ret_by_push                              ;; 00:3263 $21 $74 $32
     push HL                                            ;; 00:3266 $e5
     call getScriptOpcodeFunctionTrampoline             ;; 00:3267 $cd $65 $31
     push HL                                            ;; 00:326a $e5
@@ -8239,7 +8227,7 @@ scriptOpCodeEND:
     ret                                                ;; 00:32e2 $c9
 .loop:
     dec  C                                             ;; 00:32e3 $0d
-    jr   Z, .loop_end                                ;; 00:32e4 $28 $09
+    jr   Z, .loop_end                                  ;; 00:32e4 $28 $09
     push DE                                            ;; 00:32e6 $d5
     pop  HL                                            ;; 00:32e7 $e1
     call pushBCHLtoScriptStack                         ;; 00:32e8 $cd $df $36
@@ -8315,7 +8303,7 @@ scriptOpCodeMsg:
     jp   scriptOpCodeMsg_HandleDualCharacters          ;; 00:3353 $c3 $a4 $34
 .jr_00_3356:
     and  A, A                                          ;; 00:3356 $a7
-    jr   NZ, scriptOpCodeMsg.handleCtrlCodes           ;; 00:3357 $20 $05
+    jr   NZ, .handleCtrlCodes                          ;; 00:3357 $20 $05
     inc  HL                                            ;; 00:3359 $23
     call getNextScriptInstruction                      ;; 00:335a $cd $27 $37
     ret                                                ;; 00:335d $c9
@@ -8429,7 +8417,7 @@ findSpellItemOrEquipment:
     cp   A, C                                          ;; 00:3401 $b9
     jr   Z, .jr_00_340e                                ;; 00:3402 $28 $0a
     dec  B                                             ;; 00:3404 $05
-    jr   NZ, .loop_1                               ;; 00:3405 $20 $f7
+    jr   NZ, .loop_1                                   ;; 00:3405 $20 $f7
     pop  HL                                            ;; 00:3407 $e1
 .loop_2:
     ld   A, [HL+]                                      ;; 00:3408 $2a
@@ -8439,7 +8427,7 @@ findSpellItemOrEquipment:
     ret                                                ;; 00:340d $c9
 .jr_00_340e:
     pop  HL                                            ;; 00:340e $e1
-    jr   findSpellItemOrEquipment.findItemsFromList    ;; 00:340f $18 $dc
+    jr   .findItemsFromList                            ;; 00:340f $18 $dc
 
 revertItemIDs:
     push HL                                            ;; 00:3411 $e5
@@ -8809,7 +8797,7 @@ getScriptFlag:
 .loop:
     rlca                                               ;; 00:3622 $07
     dec  B                                             ;; 00:3623 $05
-    jr   NZ, getScriptFlag.loop                        ;; 00:3624 $20 $fc
+    jr   NZ, .loop                                     ;; 00:3624 $20 $fc
     ret                                                ;; 00:3626 $c9
 
 windowOpenDialog:
@@ -8871,7 +8859,7 @@ windowClearRectangle:
     call storeTileAatDialogPositionDE                  ;; 00:3689 $cd $44 $38
     inc  E                                             ;; 00:368c $1c
     dec  C                                             ;; 00:368d $0d
-    jr   NZ, windowClearRectangle.loop                 ;; 00:368e $20 $f7
+    jr   NZ, .loop                                     ;; 00:368e $20 $f7
     pop  DE                                            ;; 00:3690 $d1
     pop  BC                                            ;; 00:3691 $c1
     inc  D                                             ;; 00:3692 $14
@@ -9059,7 +9047,7 @@ drawText:
 .jr_00_37b8:
     inc  E                                             ;; 00:37b8 $1c
     dec  B                                             ;; 00:37b9 $05
-    jr   NZ, drawText.loop_1                           ;; 00:37ba $20 $be
+    jr   NZ, .loop_1                                   ;; 00:37ba $20 $be
     ld   A, D                                          ;; 00:37bc $7a
     ld   [wWindowTextInsertionPointFinalY], A          ;; 00:37bd $ea $c6 $d8
     ld   A, E                                          ;; 00:37c0 $7b
@@ -9097,7 +9085,7 @@ drawText:
     call storeTileAatDialogPositionDE                  ;; 00:37f9 $cd $44 $38
     inc  E                                             ;; 00:37fc $1c
     dec  B                                             ;; 00:37fd $05
-    jr   NZ, drawText.loop_2                           ;; 00:37fe $20 $f0
+    jr   NZ, .loop_2                                   ;; 00:37fe $20 $f0
 .jr_00_3800:
     call call_00_380b                                  ;; 00:3800 $cd $0b $38
     inc  HL                                            ;; 00:3803 $23
@@ -9259,22 +9247,22 @@ scriptOpCodeFF:
 
 ;@jumptable amount=16
 textCtrlCodes:
-    dw   textCtrlCodeOpenDialogWindow                  ;; 00:38ee pP
-    dw   textCtrlCodeCloseDialogWindow                 ;; 00:38f0 pP
-    dw   textCtrlCodeWaitInput                         ;; 00:38f2 pP
-    dw   textCtrlCodeYesNo                             ;; 00:38f4 pP
-    dw   textCtrlCodePrintHeroName                     ;; 00:38f6 pP
-    dw   textCtrlCodePrintHeroineName                  ;; 00:38f8 pP
-    dw   $0000                                         ;; 00:38fa ??
-    dw   $0000                                         ;; 00:38fc ??
-    dw   $0000                                         ;; 00:38fe ??
-    dw   $0000                                         ;; 00:3900 ??
-    dw   textCtrlCodeNewline                           ;; 00:3902 pP
-    dw   textCtrlCodeClearDialog                       ;; 00:3904 pP
-    dw   textCtrlCodeMoveInsertionPointRight           ;; 00:3906 ??
-    dw   textCtrlCodeMoveInsertionPointLeft            ;; 00:3908 ??
-    dw   textCtrlCodeMoveInsertionPointUp              ;; 00:390a ??
-    dw   textCtrlCodeMoveInsertionPointDown            ;; 00:390c ??
+    dw   textCtrlCodeOpenDialogWindow                  ;; 00:38ee pP $00
+    dw   textCtrlCodeCloseDialogWindow                 ;; 00:38f0 pP $01
+    dw   textCtrlCodeWaitInput                         ;; 00:38f2 pP $02
+    dw   textCtrlCodeYesNo                             ;; 00:38f4 pP $03
+    dw   textCtrlCodePrintHeroName                     ;; 00:38f6 pP $04
+    dw   textCtrlCodePrintHeroineName                  ;; 00:38f8 pP $05
+    dw   $0000                                         ;; 00:38fa ?? $06
+    dw   $0000                                         ;; 00:38fc ?? $07
+    dw   $0000                                         ;; 00:38fe ?? $08
+    dw   $0000                                         ;; 00:3900 ?? $09
+    dw   textCtrlCodeNewline                           ;; 00:3902 pP $0a
+    dw   textCtrlCodeClearDialog                       ;; 00:3904 pP $0b
+    dw   textCtrlCodeMoveInsertionPointRight           ;; 00:3906 ?? $0c
+    dw   textCtrlCodeMoveInsertionPointLeft            ;; 00:3908 ?? $0d
+    dw   textCtrlCodeMoveInsertionPointUp              ;; 00:390a ?? $0e
+    dw   textCtrlCodeMoveInsertionPointDown            ;; 00:390c ?? $0f
 
 scriptOpCodeSetChestOpenScript1:
     ld   A, [HL+]                                      ;; 00:390e $2a
@@ -9425,7 +9413,7 @@ scriptOpCodeStartNameEntry:
 .loop:
     ld   [HL+], A                                      ;; 00:39f6 $22
     dec  B                                             ;; 00:39f7 $05
-    jr   NZ, scriptOpCodeStartNameEntry.loop           ;; 00:39f8 $20 $fc
+    jr   NZ, .loop                                     ;; 00:39f8 $20 $fc
     ld   B, $05                                        ;; 00:39fa $06 $05
     call runVirualScriptOpCodeFFIfMenuStateCurrentFuctionBit7 ;; 00:39fc $cd $05 $3d
     pop  HL                                            ;; 00:39ff $e1
@@ -9710,7 +9698,7 @@ scriptOpCodeTakeEquipedItem:
     cp   A, $80                                        ;; 00:3b8f $fe $80
     jr   Z, .jr_00_3b96                                ;; 00:3b91 $28 $03
     dec  B                                             ;; 00:3b93 $05
-    jr   NZ, scriptOpCodeTakeEquipedItem.loop          ;; 00:3b94 $20 $f8
+    jr   NZ, .loop                                     ;; 00:3b94 $20 $f8
 .jr_00_3b96:
     xor  A, A                                          ;; 00:3b96 $af
     dec  HL                                            ;; 00:3b97 $2b
@@ -9725,17 +9713,17 @@ scriptOpCodeResetGame:
 
 ;@jumptable amount=11
 scriptOpCodeFFJumpTable:
-    dw   yesNoWindowFinish                             ;; 00:3ba1 pP
-    dw   call_00_3597                                  ;; 00:3ba3 pP
-    dw   windowClearRectangle                          ;; 00:3ba5 pP
-    dw   checkScriptDelayTimer                         ;; 00:3ba7 pP
-    dw   call_00_350f                                  ;; 00:3ba9 pP
-    dw   scriptResumeAfterWindow                       ;; 00:3bab pP
-    dw   vendorCantCarry                               ;; 00:3bad ??
-    dw   call_00_3b0d                                  ;; 00:3baf ??
-    dw   opCodeFFCloseWindow                           ;; 00:3bb1 ??
-    dw   copyMainGameStateBackupFromScriptToWindow     ;; 00:3bb3 pP
-    dw   opCodeFFPrintMenuText                         ;; 00:3bb5 ??
+    dw   yesNoWindowFinish                             ;; 00:3ba1 pP $00
+    dw   call_00_3597                                  ;; 00:3ba3 pP $01
+    dw   windowClearRectangle                          ;; 00:3ba5 pP $02
+    dw   checkScriptDelayTimer                         ;; 00:3ba7 pP $03
+    dw   call_00_350f                                  ;; 00:3ba9 pP $04
+    dw   scriptResumeAfterWindow                       ;; 00:3bab pP $05
+    dw   vendorCantCarry                               ;; 00:3bad ?? $06
+    dw   call_00_3b0d                                  ;; 00:3baf ?? $07
+    dw   opCodeFFCloseWindow                           ;; 00:3bb1 ?? $08
+    dw   copyMainGameStateBackupFromScriptToWindow     ;; 00:3bb3 pP $09
+    dw   opCodeFFPrintMenuText                         ;; 00:3bb5 ?? $0a
 
 ; Clears the boy and girl name, and all the script flags.
 clearNamesAndScriptFlags:
@@ -9745,13 +9733,13 @@ clearNamesAndScriptFlags:
 .loop_names:
     ld   [HL+], A                                      ;; 00:3bbd $22
     dec  B                                             ;; 00:3bbe $05
-    jr   NZ, clearNamesAndScriptFlags.loop_names       ;; 00:3bbf $20 $fc
+    jr   NZ, .loop_names                               ;; 00:3bbf $20 $fc
     ld   HL, wScriptFlags                              ;; 00:3bc1 $21 $c6 $d7
     ld   B, $10                                        ;; 00:3bc4 $06 $10
 .loop_flags:
     ld   [HL+], A                                      ;; 00:3bc6 $22
     dec  B                                             ;; 00:3bc7 $05
-    jr   NZ, clearNamesAndScriptFlags.loop_flags       ;; 00:3bc8 $20 $fc
+    jr   NZ, .loop_flags                               ;; 00:3bc8 $20 $fc
     ret                                                ;; 00:3bca $c9
 
 opCodeFFPrintMenuText:
@@ -9827,7 +9815,7 @@ setDirectionScriptFlags:
     rrca                                               ;; 00:3c29 $0f
     rl   C                                             ;; 00:3c2a $cb $11
     dec  B                                             ;; 00:3c2c $05
-    jr   NZ, setDirectionScriptFlags.loop              ;; 00:3c2d $20 $fa
+    jr   NZ, .loop                                     ;; 00:3c2d $20 $fa
     rl   C                                             ;; 00:3c2f $cb $11
     rl   C                                             ;; 00:3c31 $cb $11
     rl   C                                             ;; 00:3c33 $cb $11
@@ -9918,7 +9906,7 @@ scriptOpCodeOpenShop:
 .loop:
     ld   [HL+], A                                      ;; 00:3caf $22
     dec  B                                             ;; 00:3cb0 $05
-    jr   NZ, scriptOpCodeOpenShop.loop                 ;; 00:3cb1 $20 $fc
+    jr   NZ, .loop                                     ;; 00:3cb1 $20 $fc
     ld   [wWindowVendorSellItemIndex], A               ;; 00:3cb3 $ea $76 $d8
     ld   A, $02                                        ;; 00:3cb6 $3e $02
     ld   [wWindowVendorSellPointerSavedY], A           ;; 00:3cb8 $ea $d8 $d8

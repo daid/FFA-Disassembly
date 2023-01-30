@@ -30,17 +30,17 @@ runSoundEngineReal:
     jr   .audioPlayStep                                ;; 0f:4017 $18 $24
 .specialMusicStart:
     call musicSpecialSongStart                         ;; 0f:4019 $cd $ee $40
-    jr   runSoundEngineReal.audioPlayStep              ;; 0f:401c $18 $1f
+    jr   .audioPlayStep                                ;; 0f:401c $18 $1f
 .noSpecialMusic:
     ldh  A, [hMusicSpecialSongPlaying]                 ;; 0f:401e $f0 $99
     or   A, A                                          ;; 0f:4020 $b7
-    jr   Z, runSoundEngineReal.startMusic              ;; 0f:4021 $28 $05
+    jr   Z, .startMusic                                ;; 0f:4021 $28 $05
     call musicSpecialSongResumeSavedSong               ;; 0f:4023 $cd $20 $41
-    jr   runSoundEngineReal.audioPlayStep              ;; 0f:4026 $18 $15
+    jr   .audioPlayStep                                ;; 0f:4026 $18 $15
 .startMusic:
     ld   A, [wSoundEffectDurationChannel1]             ;; 0f:4028 $fa $1a $c1
     or   A, A                                          ;; 0f:402b $b7
-    jr   NZ, runSoundEngineReal.startSoundEffect       ;; 0f:402c $20 $09
+    jr   NZ, .startSoundEffect                         ;; 0f:402c $20 $09
     ldh  A, [hPlayingMusic]                            ;; 0f:402e $f0 $93
     ld   B, A                                          ;; 0f:4030 $47
     ldh  A, [hCurrentMusic]                            ;; 0f:4031 $f0 $90
@@ -86,7 +86,7 @@ initSoundEngineReal:
 .loop:
     ld   [HL+], A                                      ;; 0f:407c $22
     dec  C                                             ;; 0f:407d $0d
-    jr   NZ, initSoundEngineReal.loop                  ;; 0f:407e $20 $fc
+    jr   NZ, .loop                                     ;; 0f:407e $20 $fc
     ld   [wMusicBrokenDoubleTimeMode], A               ;; 0f:4080 $ea $c8 $c1
     ret                                                ;; 0f:4083 $c9
 
@@ -105,9 +105,9 @@ musicInitChannels:
     ld   [HL+], A                                      ;; 0f:4095 $22
     inc  E                                             ;; 0f:4096 $1c
     dec  C                                             ;; 0f:4097 $0d
-    jr   NZ, musicInitChannels.loop_inner              ;; 0f:4098 $20 $fa
+    jr   NZ, .loop_inner                               ;; 0f:4098 $20 $fa
     dec  B                                             ;; 0f:409a $05
-    jr   NZ, musicInitChannels.loop_outer              ;; 0f:409b $20 $f2
+    jr   NZ, .loop_outer                               ;; 0f:409b $20 $f2
     ret                                                ;; 0f:409d $c9
 
 musicSongInit:
@@ -177,7 +177,7 @@ musicSpecialSongStart:
     ld   [DE], A                                       ;; 0f:4101 $12
     inc  E                                             ;; 0f:4102 $1c
     dec  C                                             ;; 0f:4103 $0d
-    jr   NZ, musicSpecialSongStart.loop                ;; 0f:4104 $20 $fa
+    jr   NZ, .loop                                     ;; 0f:4104 $20 $fa
     ldh  A, [hMusicSpecialSongRequest]                 ;; 0f:4106 $f0 $91
     call musicSongPlay                                 ;; 0f:4108 $cd $a7 $40
     ld   A, $01                                        ;; 0f:410b $3e $01
@@ -208,7 +208,7 @@ musicSpecialSongResumeSavedSong:
     ld   [HL+], A                                      ;; 0f:412c $22
     inc  E                                             ;; 0f:412d $1c
     dec  C                                             ;; 0f:412e $0d
-    jr   NZ, musicSpecialSongResumeSavedSong.loop      ;; 0f:412f $20 $fa
+    jr   NZ, .loop                                     ;; 0f:412f $20 $fa
     xor  A, A                                          ;; 0f:4131 $af
     ldh  [hMusicSpecialSongRequest], A                 ;; 0f:4132 $e0 $91
     ldh  [hMusicSpecialSongPlaying], A                 ;; 0f:4134 $e0 $99
@@ -314,7 +314,7 @@ musicPlayStep:
     ldh  A, [hVibratoVolumeChannelSelection]           ;; 0f:426e $f0 $94
     inc  A                                             ;; 0f:4270 $3c
     cp   A, $03                                        ;; 0f:4271 $fe $03
-    jr   NZ, musicPlayStep.vibratoAndVolumeSingleChannel ;; 0f:4273 $20 $01
+    jr   NZ, .vibratoAndVolumeSingleChannel            ;; 0f:4273 $20 $01
     xor  A, A                                          ;; 0f:4275 $af
 ; Envelopes are checked on one of the three channels each time
 .vibratoAndVolumeSingleChannel:
@@ -343,7 +343,7 @@ musicTempoPlayNotes:
     call getNextMusicInstructionChannel2               ;; 0f:429f $cd $d9 $47
     ld   E, A                                          ;; 0f:42a2 $5f
     cp   A, $d0                                        ;; 0f:42a3 $fe $d0
-    jr   NC, musicTempoPlayNotes.notNote               ;; 0f:42a5 $30 $6a
+    jr   NC, .notNote                                  ;; 0f:42a5 $30 $6a
     and  A, $f0                                        ;; 0f:42a7 $e6 $f0
     swap A                                             ;; 0f:42a9 $cb $37
     ld   C, A                                          ;; 0f:42ab $4f
@@ -358,7 +358,7 @@ musicTempoPlayNotes:
     cp   A, $0e                                        ;; 0f:42bc $fe $0e
     jp   Z, musicTempoPlayNotes_Channel1               ;; 0f:42be $ca $e2 $44
     cp   A, $0f                                        ;; 0f:42c1 $fe $0f
-    jr   NZ, musicTempoPlayNotes.playNote              ;; 0f:42c3 $20 $0b
+    jr   NZ, .playNote                                 ;; 0f:42c3 $20 $0b
 ; Rest note by maxing frequency
     ld   A, $ff                                        ;; 0f:42c5 $3e $ff
     ldh  [rNR23], A                                    ;; 0f:42c7 $e0 $18
@@ -401,7 +401,7 @@ musicTempoPlayNotes:
     jp   musicTempoPlayNotes_Channel1                  ;; 0f:430e $c3 $e2 $44
 .notNote:
     cp   A, $ff                                        ;; 0f:4311 $fe $ff
-    jr   NZ, musicTempoPlayNotes.notTerminator         ;; 0f:4313 $20 $0c
+    jr   NZ, .notTerminator                            ;; 0f:4313 $20 $0c
     ld   [wMusicEndedOnChannel2], A                    ;; 0f:4315 $ea $13 $c1
     ldh  [rNR23], A                                    ;; 0f:4318 $e0 $18
     ld   A, $07                                        ;; 0f:431a $3e $07
@@ -409,10 +409,10 @@ musicTempoPlayNotes:
     jp   musicTempoPlayNotes_Channel1                  ;; 0f:431e $c3 $e2 $44
 .notTerminator:
     cp   A, $e0                                        ;; 0f:4321 $fe $e0
-    jr   NC, musicTempoPlayNotes.opCode                ;; 0f:4323 $30 $26
+    jr   NC, .opCode                                   ;; 0f:4323 $30 $26
 ; Octave change
     bit  3, A                                          ;; 0f:4325 $cb $5f
-    jr   NZ, musicTempoPlayNotes.relativeOctave        ;; 0f:4327 $20 $0e
+    jr   NZ, .relativeOctave                           ;; 0f:4327 $20 $0e
     and  A, $07                                        ;; 0f:4329 $e6 $07
     add  A, A                                          ;; 0f:432b $87
     add  A, A                                          ;; 0f:432c $87
@@ -421,7 +421,7 @@ musicTempoPlayNotes:
     add  A, A                                          ;; 0f:432f $87
     add  A, E                                          ;; 0f:4330 $83
     ld   [wMusicOctaveChannel2], A                     ;; 0f:4331 $ea $0b $c1
-    jp   musicTempoPlayNotes.nextMusicInstruction      ;; 0f:4334 $c3 $9f $42
+    jp   .nextMusicInstruction                         ;; 0f:4334 $c3 $9f $42
 .relativeOctave:
     and  A, $07                                        ;; 0f:4337 $e6 $07
     ld   E, A                                          ;; 0f:4339 $5f
@@ -432,7 +432,7 @@ musicTempoPlayNotes:
     ld   A, [wMusicOctaveChannel2]                     ;; 0f:4341 $fa $0b $c1
     add  A, E                                          ;; 0f:4344 $83
     ld   [wMusicOctaveChannel2], A                     ;; 0f:4345 $ea $0b $c1
-    jp   musicTempoPlayNotes.nextMusicInstruction      ;; 0f:4348 $c3 $9f $42
+    jp   .nextMusicInstruction                         ;; 0f:4348 $c3 $9f $42
 .opCode:
     and  A, $0f                                        ;; 0f:434b $e6 $0f
     add  A, A                                          ;; 0f:434d $87
@@ -441,7 +441,7 @@ musicTempoPlayNotes:
     ld   D, $00                                        ;; 0f:4352 $16 $00
     add  HL, DE                                        ;; 0f:4354 $19
     call musicCallOpCode                               ;; 0f:4355 $cd $5b $43
-    jp   musicTempoPlayNotes.nextMusicInstruction      ;; 0f:4358 $c3 $9f $42
+    jp   .nextMusicInstruction                         ;; 0f:4358 $c3 $9f $42
 
 musicCallOpCode:
     ld   A, [HL+]                                      ;; 0f:435b $2a
@@ -458,19 +458,19 @@ musicOpCodeHalt:
 ;@jumptable amount=13
 ; Jump table for $E0-$ED music "opcodes", guess is that these are flow control codes.
 musicOpCodeTableChannel2:
-    dw   musicOpCodeSetChannel2VolumeEnvelope          ;; 0f:4365 pP
-    dw   musicOpCodeChannel2Jump                       ;; 0f:4367 pP
-    dw   musicOpCodeChannel2LoopCounter1               ;; 0f:4369 pP
-    dw   musicOpCodeSetChannel2LoopCounter1            ;; 0f:436b pP
-    dw   musicOpCodeSetChannel2VibratoEnvelope         ;; 0f:436d pP
-    dw   musicChannel2SetDutyCycle                     ;; 0f:436f pP
-    dw   musicOpCodeSetChannel2StereoPan               ;; 0f:4371 pP
-    dw   musicOpCodeSetTempo                           ;; 0f:4373 pP
-    dw   musicOpCodeHalt                               ;; 0f:4375 ??
-    dw   musicOpCodeChannel2LoopCounter2               ;; 0f:4377 ??
-    dw   musicOpCodeSetChannel2LoopCounter2            ;; 0f:4379 ??
-    dw   musicOpCodeIfChannel2LoopCounter1Equal        ;; 0f:437b pP
-    dw   musicOpCodeSetDoubletimeMode                  ;; 0f:437d ??
+    dw   musicOpCodeSetChannel2VolumeEnvelope          ;; 0f:4365 pP $00
+    dw   musicOpCodeChannel2Jump                       ;; 0f:4367 pP $01
+    dw   musicOpCodeChannel2LoopCounter1               ;; 0f:4369 pP $02
+    dw   musicOpCodeSetChannel2LoopCounter1            ;; 0f:436b pP $03
+    dw   musicOpCodeSetChannel2VibratoEnvelope         ;; 0f:436d pP $04
+    dw   musicChannel2SetDutyCycle                     ;; 0f:436f pP $05
+    dw   musicOpCodeSetChannel2StereoPan               ;; 0f:4371 pP $06
+    dw   musicOpCodeSetTempo                           ;; 0f:4373 pP $07
+    dw   musicOpCodeHalt                               ;; 0f:4375 ?? $08
+    dw   musicOpCodeChannel2LoopCounter2               ;; 0f:4377 ?? $09
+    dw   musicOpCodeSetChannel2LoopCounter2            ;; 0f:4379 ?? $0a
+    dw   musicOpCodeIfChannel2LoopCounter1Equal        ;; 0f:437b pP $0b
+    dw   musicOpCodeSetDoubletimeMode                  ;; 0f:437d ?? $0c
 
 ; Does not actually do anything because the check is broken leading to permanent doubletime
 musicOpCodeSetDoubletimeMode:
@@ -727,7 +727,7 @@ musicTempoPlayNotes_Channel1:
     call getNextMusicInstructionChannel1               ;; 0f:44f6 $cd $e5 $47
     ld   E, A                                          ;; 0f:44f9 $5f
     cp   A, $d0                                        ;; 0f:44fa $fe $d0
-    jr   NC, musicTempoPlayNotes_Channel1.notNote      ;; 0f:44fc $30 $79
+    jr   NC, .notNote                                  ;; 0f:44fc $30 $79
     and  A, $f0                                        ;; 0f:44fe $e6 $f0
     swap A                                             ;; 0f:4500 $cb $37
     ld   C, A                                          ;; 0f:4502 $4f
@@ -747,7 +747,7 @@ musicTempoPlayNotes_Channel1:
     jp   NZ, musicTempoPlayNotes_Channel3              ;; 0f:451d $c2 $68 $46
     ld   A, C                                          ;; 0f:4520 $79
     cp   A, $0f                                        ;; 0f:4521 $fe $0f
-    jr   NZ, musicTempoPlayNotes_Channel1.playNote     ;; 0f:4523 $20 $11
+    jr   NZ, .playNote                                 ;; 0f:4523 $20 $11
 ; Rest note by maxing frequency
     ld   A, $ff                                        ;; 0f:4525 $3e $ff
     ldh  [rNR13], A                                    ;; 0f:4527 $e0 $13
@@ -792,7 +792,7 @@ musicTempoPlayNotes_Channel1:
     jp   musicTempoPlayNotes_Channel3                  ;; 0f:4574 $c3 $68 $46
 .notNote:
     cp   A, $ff                                        ;; 0f:4577 $fe $ff
-    jr   NZ, musicTempoPlayNotes_Channel1.notTerminator ;; 0f:4579 $20 $0c
+    jr   NZ, .notTerminator                            ;; 0f:4579 $20 $0c
     ld   [wMusicEndedOnChannel1], A                    ;; 0f:457b $ea $2b $c1
     ldh  [rNR23], A                                    ;; 0f:457e $e0 $18
     ld   A, $07                                        ;; 0f:4580 $3e $07
@@ -800,10 +800,10 @@ musicTempoPlayNotes_Channel1:
     jp   musicTempoPlayNotes_Channel3                  ;; 0f:4584 $c3 $68 $46
 .notTerminator:
     cp   A, $e0                                        ;; 0f:4587 $fe $e0
-    jr   NC, musicTempoPlayNotes_Channel1.opCode       ;; 0f:4589 $30 $26
+    jr   NC, .opCode                                   ;; 0f:4589 $30 $26
 ; Octave change
     bit  3, A                                          ;; 0f:458b $cb $5f
-    jr   NZ, musicTempoPlayNotes_Channel1.relativeOctave ;; 0f:458d $20 $0e
+    jr   NZ, .relativeOctave                           ;; 0f:458d $20 $0e
     and  A, $07                                        ;; 0f:458f $e6 $07
     add  A, A                                          ;; 0f:4591 $87
     add  A, A                                          ;; 0f:4592 $87
@@ -812,7 +812,7 @@ musicTempoPlayNotes_Channel1:
     add  A, A                                          ;; 0f:4595 $87
     add  A, E                                          ;; 0f:4596 $83
     ld   [wMusicOctaveChannel1], A                     ;; 0f:4597 $ea $23 $c1
-    jp   musicTempoPlayNotes_Channel1.nextMusicInstruction ;; 0f:459a $c3 $f6 $44
+    jp   .nextMusicInstruction                         ;; 0f:459a $c3 $f6 $44
 .relativeOctave:
     and  A, $07                                        ;; 0f:459d $e6 $07
     ld   E, A                                          ;; 0f:459f $5f
@@ -823,7 +823,7 @@ musicTempoPlayNotes_Channel1:
     ld   A, [wMusicOctaveChannel1]                     ;; 0f:45a7 $fa $23 $c1
     add  A, E                                          ;; 0f:45aa $83
     ld   [wMusicOctaveChannel1], A                     ;; 0f:45ab $ea $23 $c1
-    jp   musicTempoPlayNotes_Channel1.nextMusicInstruction ;; 0f:45ae $c3 $f6 $44
+    jp   .nextMusicInstruction                         ;; 0f:45ae $c3 $f6 $44
 .opCode:
     and  A, $0f                                        ;; 0f:45b1 $e6 $0f
     add  A, A                                          ;; 0f:45b3 $87
@@ -832,7 +832,7 @@ musicTempoPlayNotes_Channel1:
     ld   D, $00                                        ;; 0f:45b8 $16 $00
     add  HL, DE                                        ;; 0f:45ba $19
     call musicCallOpCode_DupChannel1                   ;; 0f:45bb $cd $c1 $45
-    jp   musicTempoPlayNotes_Channel1.nextMusicInstruction ;; 0f:45be $c3 $f6 $44
+    jp   .nextMusicInstruction                         ;; 0f:45be $c3 $f6 $44
 
 musicCallOpCode_DupChannel1:
     ld   A, [HL+]                                      ;; 0f:45c1 $2a
@@ -844,18 +844,18 @@ musicCallOpCode_DupChannel1:
 
 ;@jumptable amount=12
 musicOpCodeTableChannel1:
-    dw   musicOpCodeSetChannel1VolumeEnvelope          ;; 0f:45c7 pP
-    dw   musicOpCodeChannel1Jump                       ;; 0f:45c9 pP
-    dw   musicOpCodeChannel1LoopCounter1               ;; 0f:45cb pP
-    dw   musicOpCodeSetChannel1LoopCounter1            ;; 0f:45cd pP
-    dw   musicOpCodeSetChannel1VibratoEnvelope         ;; 0f:45cf pP
-    dw   musicChannel1SetDutyCycle                     ;; 0f:45d1 pP
-    dw   musicOpCodeSetChannel1StereoPan               ;; 0f:45d3 pP
-    dw   musicOpCodeHalt                               ;; 0f:45d5 ??
-    dw   musicOpCodeHalt                               ;; 0f:45d7 ??
-    dw   musicOpCodeChannel1LoopCounter2               ;; 0f:45d9 ??
-    dw   musicOpCodeSetChannel1LoopCounter2            ;; 0f:45db ??
-    dw   musicOpCodeIfChannel1LoopCounter1Equal        ;; 0f:45dd pP
+    dw   musicOpCodeSetChannel1VolumeEnvelope          ;; 0f:45c7 pP $00
+    dw   musicOpCodeChannel1Jump                       ;; 0f:45c9 pP $01
+    dw   musicOpCodeChannel1LoopCounter1               ;; 0f:45cb pP $02
+    dw   musicOpCodeSetChannel1LoopCounter1            ;; 0f:45cd pP $03
+    dw   musicOpCodeSetChannel1VibratoEnvelope         ;; 0f:45cf pP $04
+    dw   musicChannel1SetDutyCycle                     ;; 0f:45d1 pP $05
+    dw   musicOpCodeSetChannel1StereoPan               ;; 0f:45d3 pP $06
+    dw   musicOpCodeHalt                               ;; 0f:45d5 ?? $07
+    dw   musicOpCodeHalt                               ;; 0f:45d7 ?? $08
+    dw   musicOpCodeChannel1LoopCounter2               ;; 0f:45d9 ?? $09
+    dw   musicOpCodeSetChannel1LoopCounter2            ;; 0f:45db ?? $0a
+    dw   musicOpCodeIfChannel1LoopCounter1Equal        ;; 0f:45dd pP $0b
 
 musicOpCodeSetChannel1VolumeEnvelope:
     ld   HL, wMusicInstructionPointerChannel1          ;; 0f:45df $21 $1c $c1
@@ -963,7 +963,7 @@ musicTempoPlayNotes_Channel3:
     call getNextMusicInstructionChannel3               ;; 0f:467c $cd $ea $47
     ld   E, A                                          ;; 0f:467f $5f
     cp   A, $d0                                        ;; 0f:4680 $fe $d0
-    jr   NC, musicTempoPlayNotes_Channel3.notNote      ;; 0f:4682 $30 $4e
+    jr   NC, .notNote                                  ;; 0f:4682 $30 $4e
     and  A, $f0                                        ;; 0f:4684 $e6 $f0
     swap A                                             ;; 0f:4686 $cb $37
     ld   C, A                                          ;; 0f:4688 $4f
@@ -978,7 +978,7 @@ musicTempoPlayNotes_Channel3:
     cp   A, $0e                                        ;; 0f:4699 $fe $0e
     jp   Z, return                                     ;; 0f:469b $ca $c7 $47
     cp   A, $0f                                        ;; 0f:469e $fe $0f
-    jr   NZ, musicTempoPlayNotes_Channel3.playNote     ;; 0f:46a0 $20 $07
+    jr   NZ, .playNote                                 ;; 0f:46a0 $20 $07
 ; Rest note
     ld   A, $00                                        ;; 0f:46a2 $3e $00
     ldh  [rNR32], A                                    ;; 0f:46a4 $e0 $1c
@@ -1006,7 +1006,7 @@ musicTempoPlayNotes_Channel3:
     jp   return                                        ;; 0f:46cf $c3 $c7 $47
 .notNote:
     cp   A, $ff                                        ;; 0f:46d2 $fe $ff
-    jr   NZ, musicTempoPlayNotes_Channel3.notTerminator ;; 0f:46d4 $20 $0c
+    jr   NZ, .notTerminator                            ;; 0f:46d4 $20 $0c
     ld   [wMusicEndedOnChannel3], A                    ;; 0f:46d6 $ea $43 $c1
     ldh  [rNR33], A                                    ;; 0f:46d9 $e0 $1d
     ld   A, $07                                        ;; 0f:46db $3e $07
@@ -1014,10 +1014,10 @@ musicTempoPlayNotes_Channel3:
     jp   return                                        ;; 0f:46df $c3 $c7 $47
 .notTerminator:
     cp   A, $e0                                        ;; 0f:46e2 $fe $e0
-    jr   NC, musicTempoPlayNotes_Channel3.opCode       ;; 0f:46e4 $30 $26
+    jr   NC, .opCode                                   ;; 0f:46e4 $30 $26
 ; Octave change
     bit  3, A                                          ;; 0f:46e6 $cb $5f
-    jr   NZ, musicTempoPlayNotes_Channel3.relativeOctave ;; 0f:46e8 $20 $0e
+    jr   NZ, .relativeOctave                           ;; 0f:46e8 $20 $0e
     and  A, $07                                        ;; 0f:46ea $e6 $07
     add  A, A                                          ;; 0f:46ec $87
     add  A, A                                          ;; 0f:46ed $87
@@ -1026,7 +1026,7 @@ musicTempoPlayNotes_Channel3:
     add  A, A                                          ;; 0f:46f0 $87
     add  A, E                                          ;; 0f:46f1 $83
     ld   [wMusicOctaveChannel3], A                     ;; 0f:46f2 $ea $3b $c1
-    jp   musicTempoPlayNotes_Channel3.nextMusicInstruction ;; 0f:46f5 $c3 $7c $46
+    jp   .nextMusicInstruction                         ;; 0f:46f5 $c3 $7c $46
 .relativeOctave:
     and  A, $07                                        ;; 0f:46f8 $e6 $07
     ld   E, A                                          ;; 0f:46fa $5f
@@ -1037,7 +1037,7 @@ musicTempoPlayNotes_Channel3:
     ld   A, [wMusicOctaveChannel3]                     ;; 0f:4702 $fa $3b $c1
     add  A, E                                          ;; 0f:4705 $83
     ld   [wMusicOctaveChannel3], A                     ;; 0f:4706 $ea $3b $c1
-    jp   musicTempoPlayNotes_Channel3.nextMusicInstruction ;; 0f:4709 $c3 $7c $46
+    jp   .nextMusicInstruction                         ;; 0f:4709 $c3 $7c $46
 .opCode:
     and  A, $0f                                        ;; 0f:470c $e6 $0f
     add  A, A                                          ;; 0f:470e $87
@@ -1046,7 +1046,7 @@ musicTempoPlayNotes_Channel3:
     ld   D, $00                                        ;; 0f:4713 $16 $00
     add  HL, DE                                        ;; 0f:4715 $19
     call musicCallOpCode_DupChannel3                   ;; 0f:4716 $cd $1c $47
-    jp   musicTempoPlayNotes_Channel3.nextMusicInstruction ;; 0f:4719 $c3 $7c $46
+    jp   .nextMusicInstruction                         ;; 0f:4719 $c3 $7c $46
 
 musicCallOpCode_DupChannel3:
     ld   A, [HL+]                                      ;; 0f:471c $2a
@@ -1058,18 +1058,18 @@ musicCallOpCode_DupChannel3:
 
 ;@jumptable amount=12
 musicOpCodeTableChannel3:
-    dw   musicOpCodeSetChannel3Volume                  ;; 0f:4722 pP
-    dw   musicOpCodeChannel3Jump                       ;; 0f:4724 pP
-    dw   musicOpCodeChannel3LoopCounter1               ;; 0f:4726 pP
-    dw   musicOpCodeSetChannel3LoopCounter1            ;; 0f:4728 pP
-    dw   musicOpCodeSetChannel3VibratoEnvelope         ;; 0f:472a pP
-    dw   musicOpCodeHalt                               ;; 0f:472c ??
-    dw   musicOpCodeSetChannel3StereoPan               ;; 0f:472e pP
-    dw   musicOpCodeHalt                               ;; 0f:4730 ??
-    dw   musicOpCodeChannel3LoadWaveTable              ;; 0f:4732 pP
-    dw   musicOpCodeChannel3LoopCounter2               ;; 0f:4734 ??
-    dw   musicOpCodeSetChannel3LoopCounter2            ;; 0f:4736 ??
-    dw   musicOpCodeIfChannel3LoopCounter1Equal        ;; 0f:4738 ??
+    dw   musicOpCodeSetChannel3Volume                  ;; 0f:4722 pP $00
+    dw   musicOpCodeChannel3Jump                       ;; 0f:4724 pP $01
+    dw   musicOpCodeChannel3LoopCounter1               ;; 0f:4726 pP $02
+    dw   musicOpCodeSetChannel3LoopCounter1            ;; 0f:4728 pP $03
+    dw   musicOpCodeSetChannel3VibratoEnvelope         ;; 0f:472a pP $04
+    dw   musicOpCodeHalt                               ;; 0f:472c ?? $05
+    dw   musicOpCodeSetChannel3StereoPan               ;; 0f:472e pP $06
+    dw   musicOpCodeHalt                               ;; 0f:4730 ?? $07
+    dw   musicOpCodeChannel3LoadWaveTable              ;; 0f:4732 pP $08
+    dw   musicOpCodeChannel3LoopCounter2               ;; 0f:4734 ?? $09
+    dw   musicOpCodeSetChannel3LoopCounter2            ;; 0f:4736 ?? $0a
+    dw   musicOpCodeIfChannel3LoopCounter1Equal        ;; 0f:4738 ?? $0b
 
 musicOpCodeSetChannel3Volume:
     call getNextMusicInstructionChannel3               ;; 0f:473a $cd $ea $47
@@ -1163,7 +1163,7 @@ musicLoadWaveTable:
     ldh  [C], A                                        ;; 0f:47b5 $e2
     inc  C                                             ;; 0f:47b6 $0c
     dec  B                                             ;; 0f:47b7 $05
-    jr   NZ, musicLoadWaveTable.loop                   ;; 0f:47b8 $20 $fa
+    jr   NZ, .loop                                     ;; 0f:47b8 $20 $fa
     ld   A, $80                                        ;; 0f:47ba $3e $80
     ldh  [rNR30], A                                    ;; 0f:47bc $e0 $1a
     ld   A, $00                                        ;; 0f:47be $3e $00
@@ -1453,12 +1453,12 @@ soundEffectPlayStep:
     ld   A, [HL+]                                      ;; 0f:497b $2a
     ld   [wSoundEffectDurationChannel1], A             ;; 0f:497c $ea $1a $c1
     or   A, A                                          ;; 0f:497f $b7
-    jr   NZ, soundEffectPlayStep.notTerminatorChannel1 ;; 0f:4980 $20 $05
+    jr   NZ, .notTerminatorChannel1                    ;; 0f:4980 $20 $05
     call soundEffectRestoreChannel1                    ;; 0f:4982 $cd $4d $41
-    jr   soundEffectPlayStep.channel4                  ;; 0f:4985 $18 $35
+    jr   .channel4                                     ;; 0f:4985 $18 $35
 .notTerminatorChannel1:
     cp   A, $ef                                        ;; 0f:4987 $fe $ef
-    jr   NZ, soundEffectPlayStep.notLoopChannel1       ;; 0f:4989 $20 $0f
+    jr   NZ, .notLoopChannel1                          ;; 0f:4989 $20 $0f
     ld   A, [HL+]                                      ;; 0f:498b $2a
     ld   C, A                                          ;; 0f:498c $4f
     ld   A, [HL+]                                      ;; 0f:498d $2a
@@ -1466,16 +1466,16 @@ soundEffectPlayStep:
     ldh  A, [hSoundEffectLoopCounterChannel1]          ;; 0f:498f $f0 $9c
     dec  A                                             ;; 0f:4991 $3d
     ldh  [hSoundEffectLoopCounterChannel1], A          ;; 0f:4992 $e0 $9c
-    jr   Z, soundEffectPlayStep.nextInstructionChannel1 ;; 0f:4994 $28 $e5
+    jr   Z, .nextInstructionChannel1                   ;; 0f:4994 $28 $e5
     ld   L, C                                          ;; 0f:4996 $69
     ld   H, B                                          ;; 0f:4997 $60
-    jr   soundEffectPlayStep.nextInstructionChannel1   ;; 0f:4998 $18 $e1
+    jr   .nextInstructionChannel1                      ;; 0f:4998 $18 $e1
 .notLoopChannel1:
     cp   A, $f0                                        ;; 0f:499a $fe $f0
-    jr   C, soundEffectPlayStep.playChannel1           ;; 0f:499c $38 $06
+    jr   C, .playChannel1                              ;; 0f:499c $38 $06
     and  A, $0f                                        ;; 0f:499e $e6 $0f
     ldh  [hSoundEffectLoopCounterChannel1], A          ;; 0f:49a0 $e0 $9c
-    jr   soundEffectPlayStep.nextInstructionChannel1   ;; 0f:49a2 $18 $d7
+    jr   .nextInstructionChannel1                      ;; 0f:49a2 $18 $d7
 .playChannel1:
     ld   C, $10                                        ;; 0f:49a4 $0e $10
     ld   B, $05                                        ;; 0f:49a6 $06 $05
@@ -1484,7 +1484,7 @@ soundEffectPlayStep:
     ldh  [C], A                                        ;; 0f:49a9 $e2
     inc  C                                             ;; 0f:49aa $0c
     dec  B                                             ;; 0f:49ab $05
-    jr   NZ, soundEffectPlayStep.copyLoop              ;; 0f:49ac $20 $fa
+    jr   NZ, .copyLoop                                 ;; 0f:49ac $20 $fa
     ldh  A, [rNR51]                                    ;; 0f:49ae $f0 $25
     or   A, $11                                        ;; 0f:49b0 $f6 $11
     ldh  [rNR51], A                                    ;; 0f:49b2 $e0 $25
@@ -1495,10 +1495,10 @@ soundEffectPlayStep:
 .channel4:
     ld   A, [wSoundEffectDurationChannel4]             ;; 0f:49bc $fa $4a $c1
     or   A, A                                          ;; 0f:49bf $b7
-    jr   Z, soundEffectPlayStep.return                 ;; 0f:49c0 $28 $4f
+    jr   Z, .return                                    ;; 0f:49c0 $28 $4f
     dec  A                                             ;; 0f:49c2 $3d
     ld   [wSoundEffectDurationChannel4], A             ;; 0f:49c3 $ea $4a $c1
-    jr   NZ, soundEffectPlayStep.return                ;; 0f:49c6 $20 $49
+    jr   NZ, .return                                   ;; 0f:49c6 $20 $49
     ld   A, [wSoundEffectInstructionPointerChannel4]   ;; 0f:49c8 $fa $c6 $c1
     ld   L, A                                          ;; 0f:49cb $6f
     ld   A, [wSoundEffectInstructionPointerChannel4.high] ;; 0f:49cc $fa $c7 $c1
@@ -1507,12 +1507,12 @@ soundEffectPlayStep:
     ld   A, [HL+]                                      ;; 0f:49d0 $2a
     ld   [wSoundEffectDurationChannel4], A             ;; 0f:49d1 $ea $4a $c1
     or   A, A                                          ;; 0f:49d4 $b7
-    jr   NZ, soundEffectPlayStep.notTerminatorChannel4 ;; 0f:49d5 $20 $05
+    jr   NZ, .notTerminatorChannel4                    ;; 0f:49d5 $20 $05
     call soundEffectMuteChannel4                       ;; 0f:49d7 $cd $70 $41
-    jr   soundEffectPlayStep.return                    ;; 0f:49da $18 $35
+    jr   .return                                       ;; 0f:49da $18 $35
 .notTerminatorChannel4:
     cp   A, $ef                                        ;; 0f:49dc $fe $ef
-    jr   NZ, soundEffectPlayStep.notLoopChannel4       ;; 0f:49de $20 $0f
+    jr   NZ, .notLoopChannel4                          ;; 0f:49de $20 $0f
     ld   A, [HL+]                                      ;; 0f:49e0 $2a
     ld   C, A                                          ;; 0f:49e1 $4f
     ld   A, [HL+]                                      ;; 0f:49e2 $2a
@@ -1520,16 +1520,16 @@ soundEffectPlayStep:
     ldh  A, [hSoundEffectLoopCounterChannel4]          ;; 0f:49e4 $f0 $9d
     dec  A                                             ;; 0f:49e6 $3d
     ldh  [hSoundEffectLoopCounterChannel4], A          ;; 0f:49e7 $e0 $9d
-    jr   Z, soundEffectPlayStep.nextInstructionChannel4 ;; 0f:49e9 $28 $e5
+    jr   Z, .nextInstructionChannel4                   ;; 0f:49e9 $28 $e5
     ld   L, C                                          ;; 0f:49eb $69
     ld   H, B                                          ;; 0f:49ec $60
-    jr   soundEffectPlayStep.nextInstructionChannel4   ;; 0f:49ed $18 $e1
+    jr   .nextInstructionChannel4                      ;; 0f:49ed $18 $e1
 .notLoopChannel4:
     cp   A, $f0                                        ;; 0f:49ef $fe $f0
-    jr   C, soundEffectPlayStep.notSetCounterChannel4  ;; 0f:49f1 $38 $06
+    jr   C, .notSetCounterChannel4                     ;; 0f:49f1 $38 $06
     and  A, $0f                                        ;; 0f:49f3 $e6 $0f
     ldh  [hSoundEffectLoopCounterChannel4], A          ;; 0f:49f5 $e0 $9d
-    jr   soundEffectPlayStep.nextInstructionChannel4   ;; 0f:49f7 $18 $d7
+    jr   .nextInstructionChannel4                      ;; 0f:49f7 $18 $d7
 .notSetCounterChannel4:
     ld   A, [HL+]                                      ;; 0f:49f9 $2a
     ldh  [rNR42], A                                    ;; 0f:49fa $e0 $21

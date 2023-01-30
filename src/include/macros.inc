@@ -148,6 +148,52 @@ shift
 dw \1
 shift
 ENDM
+MACRO data_ppbbbb
+dw \1
+shift
+dw \1
+shift
+db \1
+shift
+db \1
+shift
+db \1
+shift
+db \1
+shift
+ENDM
+MACRO data_wbbbbbbbbbbbbbb
+dw \1
+shift
+db \1
+shift
+db \1
+shift
+db \1
+shift
+db \1
+shift
+db \1
+shift
+db \1
+shift
+db \1
+shift
+db \1
+shift
+db \1
+shift
+db \1
+shift
+db \1
+shift
+db \1
+shift
+db \1
+shift
+db \1
+shift
+ENDM
 MACRO jp_to_bank
 
             push af

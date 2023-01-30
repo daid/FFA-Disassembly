@@ -80,7 +80,7 @@ prepareLetterboxEffect:
     pop  BC                                            ;; 01:4089 $c1
     inc  E                                             ;; 01:408a $1c
     dec  B                                             ;; 01:408b $05
-    jr   NZ, prepareLetterboxEffect.loop_1             ;; 01:408c $20 $f4
+    jr   NZ, .loop_1                                   ;; 01:408c $20 $f4
     ld   DE, $100                                      ;; 01:408e $11 $00 $01
     ld   B, $14                                        ;; 01:4091 $06 $14
 .loop_2:
@@ -92,7 +92,7 @@ prepareLetterboxEffect:
     pop  BC                                            ;; 01:409a $c1
     inc  E                                             ;; 01:409b $1c
     dec  B                                             ;; 01:409c $05
-    jr   NZ, prepareLetterboxEffect.loop_2             ;; 01:409d $20 $f4
+    jr   NZ, .loop_2                                   ;; 01:409d $20 $f4
     ret                                                ;; 01:409f $c9
 
 prepareDefaultEffect:
@@ -134,7 +134,7 @@ introScrollEffectUpdateLCDEffect:
     ld   [HL], A                                       ;; 01:40ed $77
     add  HL, DE                                        ;; 01:40ee $19
     dec  B                                             ;; 01:40ef $05
-    jr   NZ, introScrollEffectUpdateLCDEffect.loop     ;; 01:40f0 $20 $f7
+    jr   NZ, .loop                                     ;; 01:40f0 $20 $f7
     ret                                                ;; 01:40f2 $c9
 
 setDefaultLCDEffectAndBGP:
@@ -168,14 +168,14 @@ loadMapWithShutterEffectSequence:
     ret                                                ;; 01:413b $c9
 ;@jumptable amount=8
 .loadMapWithShutterEffectJumptable:
-    dw   prepareShutterEffect                          ;; 01:413c pP
-    dw   advanceScriptOpWhenVRAMCopiesDone             ;; 01:413e pP
-    dw   shutterEffectClose                            ;; 01:4140 pP
-    dw   drawRoomFromMap                               ;; 01:4142 pP
-    dw   advanceScriptOpWhenVRAMCopiesDone             ;; 01:4144 pP
-    dw   call_01_43a3                                  ;; 01:4146 pP
-    dw   shutterEffectOpen                             ;; 01:4148 pP
-    dw   LoadMapEnd                                    ;; 01:414a pP
+    dw   prepareShutterEffect                          ;; 01:413c pP $00
+    dw   advanceScriptOpWhenVRAMCopiesDone             ;; 01:413e pP $01
+    dw   shutterEffectClose                            ;; 01:4140 pP $02
+    dw   drawRoomFromMap                               ;; 01:4142 pP $03
+    dw   advanceScriptOpWhenVRAMCopiesDone             ;; 01:4144 pP $04
+    dw   call_01_43a3                                  ;; 01:4146 pP $05
+    dw   shutterEffectOpen                             ;; 01:4148 pP $06
+    dw   LoadMapEnd                                    ;; 01:414a pP $07
 
 loadMapInstantSequence:
     ld   D, H                                          ;; 01:414c $54
@@ -186,12 +186,12 @@ loadMapInstantSequence:
     ret                                                ;; 01:4157 $c9
 ;@jumptable amount=6
 .loadMapInstantJumptable:
-    dw   scriptCountersInit                            ;; 01:4158 pP
-    dw   advanceScriptOpWhenVRAMCopiesDone             ;; 01:415a pP
-    dw   drawRoomFromMap                               ;; 01:415c pP
-    dw   advanceScriptOpWhenVRAMCopiesDone             ;; 01:415e pP
-    dw   call_01_43ee                                  ;; 01:4160 pP
-    dw   LoadMapEnd                                    ;; 01:4162 pP
+    dw   scriptCountersInit                            ;; 01:4158 pP $00
+    dw   advanceScriptOpWhenVRAMCopiesDone             ;; 01:415a pP $01
+    dw   drawRoomFromMap                               ;; 01:415c pP $02
+    dw   advanceScriptOpWhenVRAMCopiesDone             ;; 01:415e pP $03
+    dw   call_01_43ee                                  ;; 01:4160 pP $04
+    dw   LoadMapEnd                                    ;; 01:4162 pP $05
 
 openMinimap:
     ld   D, H                                          ;; 01:4164 $54
@@ -202,14 +202,14 @@ openMinimap:
     ret                                                ;; 01:416f $c9
 ;@jumptable amount=8
 .openMinimapJumptable:
-    dw   prepareShutterEffect                          ;; 01:4170 pP
-    dw   advanceScriptOpWhenVRAMCopiesDone             ;; 01:4172 pP
-    dw   shutterEffectClose                            ;; 01:4174 pP
-    dw   loadMinimapToBackground                       ;; 01:4176 pP
-    dw   advanceScriptOpWhenVRAMCopiesDone             ;; 01:4178 pP
-    dw   call_01_4422                                  ;; 01:417a pP
-    dw   shutterEffectOpen                             ;; 01:417c pP
-    dw   LoadMapEnd                                    ;; 01:417e pP
+    dw   prepareShutterEffect                          ;; 01:4170 pP $00
+    dw   advanceScriptOpWhenVRAMCopiesDone             ;; 01:4172 pP $01
+    dw   shutterEffectClose                            ;; 01:4174 pP $02
+    dw   loadMinimapToBackground                       ;; 01:4176 pP $03
+    dw   advanceScriptOpWhenVRAMCopiesDone             ;; 01:4178 pP $04
+    dw   call_01_4422                                  ;; 01:417a pP $05
+    dw   shutterEffectOpen                             ;; 01:417c pP $06
+    dw   LoadMapEnd                                    ;; 01:417e pP $07
 
 closeMinimap:
     ld   D, H                                          ;; 01:4180 $54
@@ -220,14 +220,14 @@ closeMinimap:
     ret                                                ;; 01:418b $c9
 ;@jumptable amount=8
 .closeMinimapJumptable:
-    dw   prepareShutterEffect                          ;; 01:418c pP
-    dw   advanceScriptOpWhenVRAMCopiesDone             ;; 01:418e pP
-    dw   shutterEffectClose                            ;; 01:4190 pP
-    dw   minimapCloseRestoreRoom                       ;; 01:4192 pP
-    dw   advanceScriptOpWhenVRAMCopiesDone             ;; 01:4194 pP
-    dw   shutterEffectOpenInit                         ;; 01:4196 pP
-    dw   shutterEffectOpen                             ;; 01:4198 pP
-    dw   LoadMapEnd                                    ;; 01:419a pP
+    dw   prepareShutterEffect                          ;; 01:418c pP $00
+    dw   advanceScriptOpWhenVRAMCopiesDone             ;; 01:418e pP $01
+    dw   shutterEffectClose                            ;; 01:4190 pP $02
+    dw   minimapCloseRestoreRoom                       ;; 01:4192 pP $03
+    dw   advanceScriptOpWhenVRAMCopiesDone             ;; 01:4194 pP $04
+    dw   shutterEffectOpenInit                         ;; 01:4196 pP $05
+    dw   shutterEffectOpen                             ;; 01:4198 pP $06
+    dw   LoadMapEnd                                    ;; 01:419a pP $07
 
 prepareShutterEffect:
     push DE                                            ;; 01:419c $d5
@@ -394,9 +394,9 @@ drawDynamicMinimapBackground:
 ; Copy the first 16 tiles from the minimap tileset
 ; These tiles in a tileset are usually reserved for tile animation, but the minimap tileset does not use animation, and in fact the animation code does not work with it.
 minimapCopyBlankTiles:
-    ld   HL, tilesetGfxTitle ;@ptr tilesetGfxTitle     ;; 01:42b2 $21 $00 $40
+    ld   HL, tilesetGfxTitle ;@=ptr tilesetGfxTitle    ;; 01:42b2 $21 $00 $40
     ld   DE, $8900                                     ;; 01:42b5 $11 $00 $89
-    ld   C, BANK(tilesetGfxTitle) ;@bank tilesetGfxTitle ;; 01:42b8 $0e $0b
+    ld   C, BANK(tilesetGfxTitle) ;@=bank tilesetGfxTitle ;; 01:42b8 $0e $0b
     ld   B, $10                                        ;; 01:42ba $06 $10
 .loop:
     push BC                                            ;; 01:42bc $c5
@@ -413,7 +413,7 @@ minimapCopyBlankTiles:
     add  HL, BC                                        ;; 01:42cb $09
     pop  BC                                            ;; 01:42cc $c1
     dec  B                                             ;; 01:42cd $05
-    jr   NZ, minimapCopyBlankTiles.loop                ;; 01:42ce $20 $ec
+    jr   NZ, .loop                                     ;; 01:42ce $20 $ec
     ret                                                ;; 01:42d0 $c9
 
 ; A = xy of current room
@@ -444,19 +444,19 @@ minimapFlashingMarkerInit:
     call updateObjectPosition                          ;; 01:42f5 $cd $11 $06
     ld   HL, $4260                                     ;; 01:42f8 $21 $60 $42
     ld   DE, $8080                                     ;; 01:42fb $11 $80 $80
-    ld   A, BANK(tilesetGfxOutdoor) ;@bank tilesetGfxOutdoor ;; 01:42fe $3e $0c
+    ld   A, BANK(tilesetGfxOutdoor) ;@=bank tilesetGfxOutdoor ;; 01:42fe $3e $0c
     call addTileGraphicCopyRequest                     ;; 01:4300 $cd $f5 $2d
     ld   HL, data_01_4250                              ;; 01:4303 $21 $50 $42
     ld   DE, $8090                                     ;; 01:4306 $11 $90 $80
-    ld   A, BANK(tilesetGfxOutdoor) ;@bank tilesetGfxOutdoor ;; 01:4309 $3e $0c
+    ld   A, BANK(tilesetGfxOutdoor) ;@=bank tilesetGfxOutdoor ;; 01:4309 $3e $0c
     call addTileGraphicCopyRequest                     ;; 01:430b $cd $f5 $2d
     ld   HL, data_01_4250                              ;; 01:430e $21 $50 $42
     ld   DE, $80a0                                     ;; 01:4311 $11 $a0 $80
-    ld   A, BANK(tilesetGfxOutdoor) ;@bank tilesetGfxOutdoor ;; 01:4314 $3e $0c
+    ld   A, BANK(tilesetGfxOutdoor) ;@=bank tilesetGfxOutdoor ;; 01:4314 $3e $0c
     call addTileGraphicCopyRequest                     ;; 01:4316 $cd $f5 $2d
     ld   HL, data_01_4250                              ;; 01:4319 $21 $50 $42
     ld   DE, $80b0                                     ;; 01:431c $11 $b0 $80
-    ld   A, BANK(tilesetGfxOutdoor) ;@bank tilesetGfxOutdoor ;; 01:431f $3e $0c
+    ld   A, BANK(tilesetGfxOutdoor) ;@=bank tilesetGfxOutdoor ;; 01:431f $3e $0c
     call addTileGraphicCopyRequest                     ;; 01:4321 $cd $f5 $2d
     ret                                                ;; 01:4324 $c9
 .minimapFlashingMarkerMetaspriteTable:
@@ -748,13 +748,13 @@ scrollRoom:
     ld   A, E                                          ;; 01:450a $7b
     push DE                                            ;; 01:450b $d5
     bit  0, A                                          ;; 01:450c $cb $47
-    jr   NZ, scrollRoom.west                           ;; 01:450e $20 $31
+    jr   NZ, .west                                     ;; 01:450e $20 $31
     bit  1, A                                          ;; 01:4510 $cb $4f
-    jp   NZ, scrollRoom.east                           ;; 01:4512 $c2 $97 $45
+    jp   NZ, .east                                     ;; 01:4512 $c2 $97 $45
     bit  2, A                                          ;; 01:4515 $cb $57
-    jp   NZ, scrollRoom.south                          ;; 01:4517 $c2 $e7 $45
+    jp   NZ, .south                                    ;; 01:4517 $c2 $e7 $45
     bit  3, A                                          ;; 01:451a $cb $5f
-    jp   NZ, scrollRoom.north                          ;; 01:451c $c2 $3a $46
+    jp   NZ, .north                                    ;; 01:451c $c2 $3a $46
     pop  DE                                            ;; 01:451f $d1
     ld   A, [wMainGameStateFlags.nextFrame]            ;; 01:4520 $fa $a2 $c0
     res  0, A                                          ;; 01:4523 $cb $87
@@ -1073,10 +1073,10 @@ drawRoom:
     pop  BC                                            ;; 01:4745 $c1
     inc  E                                             ;; 01:4746 $1c
     dec  B                                             ;; 01:4747 $05
-    jr   NZ, drawRoom.loop_inner                       ;; 01:4748 $20 $f0
+    jr   NZ, .loop_inner                               ;; 01:4748 $20 $f0
     inc  D                                             ;; 01:474a $14
     dec  C                                             ;; 01:474b $0d
-    jr   NZ, drawRoom.loop_outer                       ;; 01:474c $20 $e8
+    jr   NZ, .loop_outer                               ;; 01:474c $20 $e8
     call initEnemiesCounterAndMoveFolower_trampoline   ;; 01:474e $cd $26 $29
     ret                                                ;; 01:4751 $c9
 
@@ -1292,24 +1292,24 @@ runMainInputHandler:
     ret                                                ;; 01:49ac $c9
 ;@jumptable amount=18
 .gameStatesJumptable:
-    dw   gameStateNormal                               ;; 01:49ad pP
-    dw   gameStateNormal                               ;; 01:49af ??
-    dw   gameStateAttack                               ;; 01:49b1 pP
-    dw   gameStateSpecialAttackFlyingSword             ;; 01:49b3 ??
-    dw   gameStateSpecialAttackFlyingSwordReturn       ;; 01:49b5 ??
-    dw   gameStateSpecialAttack                        ;; 01:49b7 ??
-    dw   gameStateFireAutoTarget                       ;; 01:49b9 ??
-    dw   gameStateNormal                               ;; 01:49bb ??
-    dw   gameStateScrollLeft                           ;; 01:49bd pP
-    dw   gameStateScrollRight                          ;; 01:49bf pP
-    dw   gameStateScrollDown                           ;; 01:49c1 pP
-    dw   gameStateScrollUp                             ;; 01:49c3 pP
-    dw   gameStateChocobo                              ;; 01:49c5 ??
-    dw   gameStateChocobot                             ;; 01:49c7 ??
-    dw   gameStateChocoboat                            ;; 01:49c9 ??
-    dw   gameStateMenu_trampoline                      ;; 01:49cb pP
-    dw   gameStateScript                               ;; 01:49cd pP
-    dw   gameStateTitleScreen_trampoline               ;; 01:49cf pP
+    dw   gameStateNormal                               ;; 01:49ad pP $00
+    dw   gameStateNormal                               ;; 01:49af ?? $01
+    dw   gameStateAttack                               ;; 01:49b1 pP $02
+    dw   gameStateSpecialAttackFlyingSword             ;; 01:49b3 ?? $03
+    dw   gameStateSpecialAttackFlyingSwordReturn       ;; 01:49b5 ?? $04
+    dw   gameStateSpecialAttack                        ;; 01:49b7 ?? $05
+    dw   gameStateFireAutoTarget                       ;; 01:49b9 ?? $06
+    dw   gameStateNormal                               ;; 01:49bb ?? $07
+    dw   gameStateScrollLeft                           ;; 01:49bd pP $08
+    dw   gameStateScrollRight                          ;; 01:49bf pP $09
+    dw   gameStateScrollDown                           ;; 01:49c1 pP $0a
+    dw   gameStateScrollUp                             ;; 01:49c3 pP $0b
+    dw   gameStateChocobo                              ;; 01:49c5 ?? $0c
+    dw   gameStateChocobot                             ;; 01:49c7 ?? $0d
+    dw   gameStateChocoboat                            ;; 01:49c9 ?? $0e
+    dw   gameStateMenu_trampoline                      ;; 01:49cb pP $0f
+    dw   gameStateScript                               ;; 01:49cd pP $10
+    dw   gameStateTitleScreen_trampoline               ;; 01:49cf pP $11
 
 ; D = pressed buttons
 ; E = newly pressed buttons
@@ -1361,27 +1361,27 @@ gameStateNormal:
     call call_00_2ed3                                  ;; 01:4a18 $cd $d3 $2e
     pop  BC                                            ;; 01:4a1b $c1
     pop  DE                                            ;; 01:4a1c $d1
-    jr   NZ, gameStateNormal.dpad                      ;; 01:4a1d $20 $19
+    jr   NZ, .dpad                                     ;; 01:4a1d $20 $19
     bit  7, E                                          ;; 01:4a1f $cb $7b
     jp   NZ, openWindowsStartButton                    ;; 01:4a21 $c2 $d5 $51
     bit  6, E                                          ;; 01:4a24 $cb $73
     jp   NZ, openWindowsSelectButton                   ;; 01:4a26 $c2 $db $51
     ld   A, [wPlayerSpecialFlags]                      ;; 01:4a29 $fa $d4 $c4
     bit  3, A                                          ;; 01:4a2c $cb $5f
-    jr   NZ, gameStateNormal.dpad                      ;; 01:4a2e $20 $08
+    jr   NZ, .dpad                                     ;; 01:4a2e $20 $08
     bit  4, E                                          ;; 01:4a30 $cb $63
-    jr   NZ, gameStateNormal.a_or_b_button             ;; 01:4a32 $20 $1b
+    jr   NZ, .a_or_b_button                            ;; 01:4a32 $20 $1b
     bit  5, E                                          ;; 01:4a34 $cb $6b
-    jr   NZ, gameStateNormal.a_or_b_button             ;; 01:4a36 $20 $17
+    jr   NZ, .a_or_b_button                            ;; 01:4a36 $20 $17
 .dpad:
     bit  0, D                                          ;; 01:4a38 $cb $42
-    jr   NZ, gameStateNormal.right                     ;; 01:4a3a $20 $30
+    jr   NZ, .right                                    ;; 01:4a3a $20 $30
     bit  1, D                                          ;; 01:4a3c $cb $4a
-    jr   NZ, gameStateNormal.left                      ;; 01:4a3e $20 $5a
+    jr   NZ, .left                                     ;; 01:4a3e $20 $5a
     bit  2, D                                          ;; 01:4a40 $cb $52
-    jp   NZ, gameStateNormal.up                        ;; 01:4a42 $c2 $c4 $4a
+    jp   NZ, .up                                       ;; 01:4a42 $c2 $c4 $4a
     bit  3, D                                          ;; 01:4a45 $cb $5a
-    jp   NZ, gameStateNormal.down                      ;; 01:4a47 $c2 $ee $4a
+    jp   NZ, .down                                     ;; 01:4a47 $c2 $ee $4a
     xor  A, A                                          ;; 01:4a4a $af
     call playerSpritesLoadPlayerSpriteTiles            ;; 01:4a4b $cd $be $48
     ret                                                ;; 01:4a4e $c9
@@ -1442,7 +1442,7 @@ gameStateNormal:
     ld   A, $08                                        ;; 01:4abb $3e $08
     ld   [wMainGameState], A                           ;; 01:4abd $ea $a0 $c0
     call roomExitScreenScrollPrep                      ;; 01:4ac0 $cd $24 $4b
-    ret                                      ;; 01:4ac3 $c9
+    ret                                                ;; 01:4ac3 $c9
 .up:
     push BC                                            ;; 01:4ac4 $c5
     ld   C, $04                                        ;; 01:4ac5 $0e $04
@@ -1621,7 +1621,7 @@ gameStateChocobot:
     pop  BC                                            ;; 01:4bef $c1
     pop  DE                                            ;; 01:4bf0 $d1
     cp   A, $00                                        ;; 01:4bf1 $fe $00
-    jr   NZ, .sliding                               ;; 01:4bf3 $20 $0f
+    jr   NZ, .sliding                                  ;; 01:4bf3 $20 $0f
 .not_sliding:
     push DE                                            ;; 01:4bf5 $d5
     push BC                                            ;; 01:4bf6 $c5
@@ -1956,13 +1956,13 @@ gameStateSpecialAttack:
     push DE                                            ;; 01:4e18 $d5
     push AF                                            ;; 01:4e19 $f5
     bit  0, D                                          ;; 01:4e1a $cb $42
-    jr   NZ, gameStateSpecialAttack.east               ;; 01:4e1c $20 $0e
+    jr   NZ, .east                                     ;; 01:4e1c $20 $0e
     bit  1, D                                          ;; 01:4e1e $cb $4a
-    jr   NZ, gameStateSpecialAttack.west               ;; 01:4e20 $20 $19
+    jr   NZ, .west                                     ;; 01:4e20 $20 $19
     bit  2, D                                          ;; 01:4e22 $cb $52
-    jr   NZ, gameStateSpecialAttack.north              ;; 01:4e24 $20 $24
+    jr   NZ, .north                                    ;; 01:4e24 $20 $24
     bit  3, D                                          ;; 01:4e26 $cb $5a
-    jr   NZ, gameStateSpecialAttack.south              ;; 01:4e28 $20 $2f
+    jr   NZ, .south                                    ;; 01:4e28 $20 $2f
     jr   .jr_01_4e68                                   ;; 01:4e2a $18 $3c
 .east:
     ld   C, $04                                        ;; 01:4e2c $0e $04
@@ -2539,14 +2539,14 @@ attackTile:
     ret                                                ;; 01:51f1 $c9
 ;@jumptable amount=8
 .attackTileJumptable:
-    dw   attackTileNop                                 ;; 01:51f2 ??
-    dw   attackTileChain                               ;; 01:51f4 ??
-    dw   attackTileMattok                              ;; 01:51f6 pP
-    dw   attackTileMattokWithStairs                    ;; 01:51f8 ??
-    dw   attackTileAxeWithStump                        ;; 01:51fa pP
-    dw   attackTileAxe                                 ;; 01:51fc ??
-    dw   attackTileSickle                              ;; 01:51fe pP
-    dw   attackTileRunScript                           ;; 01:5200 ??
+    dw   attackTileNop                                 ;; 01:51f2 ?? $00
+    dw   attackTileChain                               ;; 01:51f4 ?? $01
+    dw   attackTileMattok                              ;; 01:51f6 pP $02
+    dw   attackTileMattokWithStairs                    ;; 01:51f8 ?? $03
+    dw   attackTileAxeWithStump                        ;; 01:51fa pP $04
+    dw   attackTileAxe                                 ;; 01:51fc ?? $05
+    dw   attackTileSickle                              ;; 01:51fe pP $06
+    dw   attackTileRunScript                           ;; 01:5200 ?? $07
 
 attackTileNop:
     ret                                                ;; 01:5202 $c9
@@ -2673,21 +2673,21 @@ call_01_52b3:
 .jr_01_52c5:
     pop  HL                                            ;; 01:52c5 $e1
     dec  B                                             ;; 01:52c6 $05
-    jr   NZ, call_01_52b3.loop                         ;; 01:52c7 $20 $f1
+    jr   NZ, .loop                                     ;; 01:52c7 $20 $f1
     ld   A, C                                          ;; 01:52c9 $79
     cp   A, $00                                        ;; 01:52ca $fe $00
     ret                                                ;; 01:52cc $c9
 ;@jumptable amount=9
 .data_01_52cd:
-    dw   call_01_52df                                  ;; 01:52cd ??
-    dw   call_01_54d5                                  ;; 01:52cf pP
-    dw   call_01_53f2                                  ;; 01:52d1 ??
-    dw   call_01_53bd                                  ;; 01:52d3 ??
-    dw   call_01_57ec                                  ;; 01:52d5 ??
-    dw   call_01_581e                                  ;; 01:52d7 ??
-    dw   call_01_5903                                  ;; 01:52d9 ??
-    dw   call_01_5bf1                                  ;; 01:52db ??
-    dw   call_01_52e0                                  ;; 01:52dd ??
+    dw   call_01_52df                                  ;; 01:52cd ?? $00
+    dw   call_01_54d5                                  ;; 01:52cf pP $01
+    dw   call_01_53f2                                  ;; 01:52d1 ?? $02
+    dw   call_01_53bd                                  ;; 01:52d3 ?? $03
+    dw   call_01_57ec                                  ;; 01:52d5 ?? $04
+    dw   call_01_581e                                  ;; 01:52d7 ?? $05
+    dw   call_01_5903                                  ;; 01:52d9 ?? $06
+    dw   call_01_5bf1                                  ;; 01:52db ?? $07
+    dw   call_01_52e0                                  ;; 01:52dd ?? $08
 
 call_01_52df:
     ret                                                ;; 01:52df $c9
@@ -2824,7 +2824,7 @@ attackFrameSpeedTick:
     dec  [HL]                                          ;; 01:53ad $35
     ret  NZ                                            ;; 01:53ae $c0
     push HL                                            ;; 01:53af $e5
-    ld   HL, wAttackFramePointers               ;; 01:53b0 $21 $08 $cf
+    ld   HL, wAttackFramePointers                      ;; 01:53b0 $21 $08 $cf
     add  HL, BC                                        ;; 01:53b3 $09
     add  HL, BC                                        ;; 01:53b4 $09
     ld   A, [HL+]                                      ;; 01:53b5 $2a
@@ -3074,7 +3074,7 @@ call_01_54d5:
     push DE                                            ;; 01:5505 $d5
     and  A, $07                                        ;; 01:5506 $e6 $07
     cp   A, $05                                        ;; 01:5508 $fe $05
-    jr   Z, call_01_54d5.attackSwordSpecialFlying      ;; 01:550a $28 $10
+    jr   Z, .attackSwordSpecialFlying                  ;; 01:550a $28 $10
     cp   A, $01                                        ;; 01:550c $fe $01
     jr   Z, .jr_01_5521                                ;; 01:550e $28 $11
     cp   A, $02                                        ;; 01:5510 $fe $02
@@ -3221,7 +3221,7 @@ jr_01_55a9:
     ld   HL, wAttackFrameSteps                         ;; 01:55e1 $21 $f8 $ce
     add  HL, BC                                        ;; 01:55e4 $09
     ld   [HL], $00                                     ;; 01:55e5 $36 $00
-    ld   HL, wAttackFrameSpeedTimers                  ;; 01:55e7 $21 $00 $cf
+    ld   HL, wAttackFrameSpeedTimers                   ;; 01:55e7 $21 $00 $cf
     add  HL, BC                                        ;; 01:55ea $09
     ld   [HL], $01                                     ;; 01:55eb $36 $01
     push BC                                            ;; 01:55ed $c5
@@ -4125,75 +4125,75 @@ useWeaponItemOrSpecial:
     pop  DE                                            ;; 01:5aab $d1
     ld   A, D                                          ;; 01:5aac $7a
     bit  7, E                                          ;; 01:5aad $cb $7b
-    jr   NZ, useWeaponItemOrSpecial.specialAttackEast  ;; 01:5aaf $20 $0a
+    jr   NZ, .specialAttackEast                        ;; 01:5aaf $20 $0a
     ld   C, $0a                                        ;; 01:5ab1 $0e $0a
     and  A, $0f                                        ;; 01:5ab3 $e6 $0f
-    jr   NZ, useWeaponItemOrSpecial.do_attack          ;; 01:5ab5 $20 $5a
+    jr   NZ, .do_attack                                ;; 01:5ab5 $20 $5a
     ld   C, $12                                        ;; 01:5ab7 $0e $12
-    jr   useWeaponItemOrSpecial.do_attack              ;; 01:5ab9 $18 $56
+    jr   .do_attack                                    ;; 01:5ab9 $18 $56
 .specialAttackEast:
     ld   C, $1a                                        ;; 01:5abb $0e $1a
     and  A, $0f                                        ;; 01:5abd $e6 $0f
-    jr   NZ, useWeaponItemOrSpecial.do_attack          ;; 01:5abf $20 $50
+    jr   NZ, .do_attack                                ;; 01:5abf $20 $50
     ld   C, $22                                        ;; 01:5ac1 $0e $22
-    jr   useWeaponItemOrSpecial.do_attack              ;; 01:5ac3 $18 $4c
+    jr   .do_attack                                    ;; 01:5ac3 $18 $4c
 .playerFacingWest:
     pop  DE                                            ;; 01:5ac5 $d1
     ld   A, D                                          ;; 01:5ac6 $7a
     bit  7, E                                          ;; 01:5ac7 $cb $7b
-    jr   NZ, useWeaponItemOrSpecial.specialAttackWest  ;; 01:5ac9 $20 $0a
+    jr   NZ, .specialAttackWest                        ;; 01:5ac9 $20 $0a
     ld   C, $0c                                        ;; 01:5acb $0e $0c
     and  A, $0f                                        ;; 01:5acd $e6 $0f
-    jr   NZ, useWeaponItemOrSpecial.do_attack          ;; 01:5acf $20 $40
+    jr   NZ, .do_attack                                ;; 01:5acf $20 $40
     ld   C, $14                                        ;; 01:5ad1 $0e $14
-    jr   useWeaponItemOrSpecial.do_attack              ;; 01:5ad3 $18 $3c
+    jr   .do_attack                                    ;; 01:5ad3 $18 $3c
 .specialAttackWest:
     ld   C, $1c                                        ;; 01:5ad5 $0e $1c
     and  A, $0f                                        ;; 01:5ad7 $e6 $0f
-    jr   NZ, useWeaponItemOrSpecial.do_attack          ;; 01:5ad9 $20 $36
+    jr   NZ, .do_attack                                ;; 01:5ad9 $20 $36
     ld   C, $24                                        ;; 01:5adb $0e $24
-    jr   useWeaponItemOrSpecial.do_attack              ;; 01:5add $18 $32
+    jr   .do_attack                                    ;; 01:5add $18 $32
 .playerFacingNorth:
     pop  DE                                            ;; 01:5adf $d1
     ld   A, D                                          ;; 01:5ae0 $7a
     bit  7, E                                          ;; 01:5ae1 $cb $7b
-    jr   NZ, useWeaponItemOrSpecial.specialAttackNorth ;; 01:5ae3 $20 $0a
+    jr   NZ, .specialAttackNorth                       ;; 01:5ae3 $20 $0a
     ld   C, $0e                                        ;; 01:5ae5 $0e $0e
     and  A, $0f                                        ;; 01:5ae7 $e6 $0f
-    jr   NZ, useWeaponItemOrSpecial.do_attack          ;; 01:5ae9 $20 $26
+    jr   NZ, .do_attack                                ;; 01:5ae9 $20 $26
     ld   C, $16                                        ;; 01:5aeb $0e $16
-    jr   useWeaponItemOrSpecial.do_attack              ;; 01:5aed $18 $22
+    jr   .do_attack                                    ;; 01:5aed $18 $22
 .specialAttackNorth:
     ld   C, $1e                                        ;; 01:5aef $0e $1e
     and  A, $0f                                        ;; 01:5af1 $e6 $0f
-    jr   NZ, useWeaponItemOrSpecial.do_attack          ;; 01:5af3 $20 $1c
+    jr   NZ, .do_attack                                ;; 01:5af3 $20 $1c
     ld   C, $26                                        ;; 01:5af5 $0e $26
-    jr   useWeaponItemOrSpecial.do_attack              ;; 01:5af7 $18 $18
+    jr   .do_attack                                    ;; 01:5af7 $18 $18
 .playerFacingSouth:
     pop  DE                                            ;; 01:5af9 $d1
     ld   A, D                                          ;; 01:5afa $7a
     bit  7, E                                          ;; 01:5afb $cb $7b
-    jr   NZ, useWeaponItemOrSpecial.specialAttackSouth ;; 01:5afd $20 $0a
+    jr   NZ, .specialAttackSouth                       ;; 01:5afd $20 $0a
     ld   C, $10                                        ;; 01:5aff $0e $10
     and  A, $0f                                        ;; 01:5b01 $e6 $0f
-    jr   NZ, useWeaponItemOrSpecial.do_attack          ;; 01:5b03 $20 $0c
+    jr   NZ, .do_attack                                ;; 01:5b03 $20 $0c
     ld   C, $18                                        ;; 01:5b05 $0e $18
-    jr   useWeaponItemOrSpecial.do_attack              ;; 01:5b07 $18 $08
+    jr   .do_attack                                    ;; 01:5b07 $18 $08
 .specialAttackSouth:
     ld   C, $20                                        ;; 01:5b09 $0e $20
     and  A, $0f                                        ;; 01:5b0b $e6 $0f
-    jr   NZ, useWeaponItemOrSpecial.do_attack          ;; 01:5b0d $20 $02
+    jr   NZ, .do_attack                                ;; 01:5b0d $20 $02
     ld   C, $28                                        ;; 01:5b0f $0e $28
 .do_attack:
     push BC                                            ;; 01:5b11 $c5
     bit  4, E                                          ;; 01:5b12 $cb $63
-    jr   NZ, useWeaponItemOrSpecial.weapon             ;; 01:5b14 $20 $10
+    jr   NZ, .weapon                                   ;; 01:5b14 $20 $10
     call castEquippedSpellIfSufficientMana_trampoline  ;; 01:5b16 $cd $5f $31
-    jr   C, useWeaponItemOrSpecial.insuficientMana     ;; 01:5b19 $38 $28
+    jr   C, .insuficientMana                           ;; 01:5b19 $38 $28
     call doSpellOrItemEffect_trampoline                ;; 01:5b1b $cd $1d $31
     ld   [wCurrentPlayerAttackWillCharge], A           ;; 01:5b1e $ea $63 $cf
     ld   A, [wEquippedItemAnimationType]               ;; 01:5b21 $fa $59 $cf
-    jr   useWeaponItemOrSpecial.attack_common          ;; 01:5b24 $18 $09
+    jr   .attack_common                                ;; 01:5b24 $18 $09
 .weapon:
     call attackWithWeaponUseWill_trampoline            ;; 01:5b26 $cd $29 $31
     ld   [wCurrentPlayerAttackWillCharge], A           ;; 01:5b29 $ea $63 $cf
@@ -4277,7 +4277,7 @@ playerUseWeaponOrItem:
     jr   Z, .jr_01_5b9d                                ;; 01:5b98 $28 $03
     ld   [wAttackRange], A                             ;; 01:5b9a $ea $5b $cf
 .jr_01_5b9d:
-    ld   HL, wAttackFramePointers               ;; 01:5b9d $21 $08 $cf
+    ld   HL, wAttackFramePointers                      ;; 01:5b9d $21 $08 $cf
     add  HL, BC                                        ;; 01:5ba0 $09
     add  HL, BC                                        ;; 01:5ba1 $09
     pop  DE                                            ;; 01:5ba2 $d1
@@ -4505,7 +4505,7 @@ playerOrFriendlyAttackCollisionHandling:
     jr   C, .not_hit                                   ;; 01:5ceb $38 $75
     pop  AF                                            ;; 01:5ced $f1
     cp   A, $5a                                        ;; 01:5cee $fe $5a
-    jr   Z, playerOrFriendlyAttackCollisionHandling.ice ;; 01:5cf0 $28 $14
+    jr   Z, .ice                                       ;; 01:5cf0 $28 $14
     and  A, $f0                                        ;; 01:5cf2 $e6 $f0
     cp   A, $50                                        ;; 01:5cf4 $fe $50
     jr   Z, .jr_01_5cf9                                ;; 01:5cf6 $28 $01
@@ -4562,7 +4562,7 @@ playerOrFriendlyAttackCollisionHandling:
     push BC                                            ;; 01:5d50 $c5
     inc  D                                             ;; 01:5d51 $14
     push DE                                            ;; 01:5d52 $d5
-    call tileScriptOrSpikeDamage                        ;; 01:5d53 $cd $00 $17
+    call tileScriptOrSpikeDamage                       ;; 01:5d53 $cd $00 $17
     pop  DE                                            ;; 01:5d56 $d1
     pop  BC                                            ;; 01:5d57 $c1
     inc  E                                             ;; 01:5d58 $1c
@@ -4591,7 +4591,7 @@ ensureReservedObjectsExist:
     cp   A, $07                                        ;; 01:5d75 $fe $07
     jr   NC, .jr_01_5d7d                               ;; 01:5d77 $30 $04
     dec  B                                             ;; 01:5d79 $05
-    jr   NZ, ensureReservedObjectsExist.loop           ;; 01:5d7a $20 $ec
+    jr   NZ, .loop                                     ;; 01:5d7a $20 $ec
     ret                                                ;; 01:5d7c $c9
 .jr_01_5d7d:
     ld   C, A                                          ;; 01:5d7d $4f
@@ -4612,7 +4612,7 @@ playerAttackDestroy:
     pop  BC                                            ;; 01:5d92 $c1
     inc  C                                             ;; 01:5d93 $0c
     dec  B                                             ;; 01:5d94 $05
-    jr   NZ, playerAttackDestroy.loop                  ;; 01:5d95 $20 $f2
+    jr   NZ, .loop                                     ;; 01:5d95 $20 $f2
     ret                                                ;; 01:5d97 $c9
 
 call_01_5d98:
@@ -6175,7 +6175,7 @@ objectJumpHandler:
     bit  1, A                                          ;; 01:76e8 $cb $4f
     jr   NZ, .west                                     ;; 01:76ea $20 $0d
     bit  2, A                                          ;; 01:76ec $cb $57
-    jr   NZ, .north                               ;; 01:76ee $20 $13
+    jr   NZ, .north                                    ;; 01:76ee $20 $13
 ;.south:
     ld   A, D                                          ;; 01:76f0 $7a
     cpl                                                ;; 01:76f1 $2f

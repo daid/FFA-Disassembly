@@ -48,7 +48,7 @@ npcRunBehaviorForAll:
     pop  HL                                            ;; 03:4041 $e1
     pop  BC                                            ;; 03:4042 $c1
     dec  B                                             ;; 03:4043 $05
-    jr   NZ, npcRunBehaviorForAll.loop                 ;; 03:4044 $20 $f0
+    jr   NZ, .loop                                     ;; 03:4044 $20 $f0
     call projectileRunLogicForAll_trampoline           ;; 03:4046 $cd $d1 $2b
     ret                                                ;; 03:4049 $c9
 
@@ -475,7 +475,7 @@ getNpcRuntimeDataByID:
     ret  Z                                             ;; 03:42a4 $c8
     add  HL, DE                                        ;; 03:42a5 $19
     dec  B                                             ;; 03:42a6 $05
-    jr   NZ, getNpcRuntimeDataByID.loop                ;; 03:42a7 $20 $fa
+    jr   NZ, .loop                                     ;; 03:42a7 $20 $fa
     xor  A, A                                          ;; 03:42a9 $af
     inc  A                                             ;; 03:42aa $3c
     ret                                                ;; 03:42ab $c9
@@ -764,7 +764,7 @@ npcLoadTiles:
     pop  HL                                            ;; 03:4444 $e1
     pop  AF                                            ;; 03:4445 $f1
     dec  A                                             ;; 03:4446 $3d
-    jr   NZ, npcLoadTiles.loop                         ;; 03:4447 $20 $d1
+    jr   NZ, .loop                                     ;; 03:4447 $20 $d1
     ret                                                ;; 03:4449 $c9
 
 setNpcSpawnTable:
@@ -811,7 +811,7 @@ setNpcSpawnTable:
     inc  HL                                            ;; 03:4481 $23
     inc  HL                                            ;; 03:4482 $23
     dec  B                                             ;; 03:4483 $05
-    jr   NZ, setNpcSpawnTable.loop                     ;; 03:4484 $20 $d6
+    jr   NZ, .loop                                     ;; 03:4484 $20 $d6
     pop  HL                                            ;; 03:4486 $e1
     ret                                                ;; 03:4487 $c9
 
@@ -951,7 +951,7 @@ spawnNpcsFromTable:
     ld   E, A                                          ;; 03:4525 $5f
     ld   A, B                                          ;; 03:4526 $78
     or   A, A                                          ;; 03:4527 $b7
-    jr   Z, spawnNpcsFromTable.return                  ;; 03:4528 $28 $1f
+    jr   Z, .return                                    ;; 03:4528 $28 $1f
     push HL                                            ;; 03:452a $e5
     ld   D, $00                                        ;; 03:452b $16 $00
     ld   HL, wNPCSpawnTypes                            ;; 03:452d $21 $a8 $c5
@@ -974,7 +974,7 @@ spawnNpcsFromTable:
     pop  HL                                            ;; 03:4544 $e1
     pop  BC                                            ;; 03:4545 $c1
     dec  B                                             ;; 03:4546 $05
-    jr   NZ, spawnNpcsFromTable.loop                   ;; 03:4547 $20 $ea
+    jr   NZ, .loop                                     ;; 03:4547 $20 $ea
 .return:
     pop  HL                                            ;; 03:4549 $e1
     ret                                                ;; 03:454a $c9
@@ -1258,14 +1258,14 @@ enemyCollisionHandling:
     call npcTestHit                                    ;; 03:46f0 $cd $06 $49
     jp   NZ, .no_effect                                ;; 03:46f3 $c2 $56 $46
     call call_03_4931                                  ;; 03:46f6 $cd $31 $49
-    jp   NZ, enemyCollisionHandling.immune             ;; 03:46f9 $c2 $eb $47
+    jp   NZ, .immune                                   ;; 03:46f9 $c2 $eb $47
     push BC                                            ;; 03:46fc $c5
     push DE                                            ;; 03:46fd $d5
     call getPlayerAttackElements                       ;; 03:46fe $cd $c0 $3d
     pop  DE                                            ;; 03:4701 $d1
     call testNpcElementalImmunity                      ;; 03:4702 $cd $55 $49
     pop  BC                                            ;; 03:4705 $c1
-    jp   NZ, enemyCollisionHandling.immune             ;; 03:4706 $c2 $eb $47
+    jp   NZ, .immune                                   ;; 03:4706 $c2 $eb $47
     push BC                                            ;; 03:4709 $c5
     push DE                                            ;; 03:470a $d5
     ld   BC, $07                                       ;; 03:470b $01 $07 $00
@@ -1281,13 +1281,13 @@ enemyCollisionHandling:
     call calculateWeaponDamageToNPC                    ;; 03:4719 $cd $9b $49
     pop  DE                                            ;; 03:471c $d1
     pop  BC                                            ;; 03:471d $c1
-    jp   Z, enemyCollisionHandling.immune              ;; 03:471e $ca $eb $47
+    jp   Z, .immune                                    ;; 03:471e $ca $eb $47
     push BC                                            ;; 03:4721 $c5
     push DE                                            ;; 03:4722 $d5
     push HL                                            ;; 03:4723 $e5
     call getEquippedWeaponMinusOne                     ;; 03:4724 $cd $05 $3f
     cp   A, $08                                        ;; 03:4727 $fe $08
-    jr   NZ, enemyCollisionHandling.finishedBloodSwordHeal ;; 03:4729 $20 $0d
+    jr   NZ, .finishedBloodSwordHeal                   ;; 03:4729 $20 $0d
     pop  HL                                            ;; 03:472b $e1
     push HL                                            ;; 03:472c $e5
     srl  H                                             ;; 03:472d $cb $3c
@@ -1323,7 +1323,7 @@ enemyCollisionHandling:
     jr   Z, .jr_03_4777                                ;; 03:475f $28 $16
     cp   A, $12                                        ;; 03:4761 $fe $12
     jp   Z, .jp_03_47fd                                ;; 03:4763 $ca $fd $47
-    jp   enemyCollisionHandling.immune                 ;; 03:4766 $c3 $eb $47
+    jp   .immune                                       ;; 03:4766 $c3 $eb $47
 .jr_03_4769:
     push BC                                            ;; 03:4769 $c5
     push DE                                            ;; 03:476a $d5
@@ -1332,7 +1332,7 @@ enemyCollisionHandling:
     pop  BC                                            ;; 03:476f $c1
     cp   A, $12                                        ;; 03:4770 $fe $12
     jp   Z, .jp_03_47fd                                ;; 03:4772 $ca $fd $47
-    jr   enemyCollisionHandling.immune                 ;; 03:4775 $18 $74
+    jr   .immune                                       ;; 03:4775 $18 $74
 .jr_03_4777:
     push BC                                            ;; 03:4777 $c5
     push DE                                            ;; 03:4778 $d5
@@ -1345,7 +1345,7 @@ enemyCollisionHandling:
     call call_03_49c6                                  ;; 03:4787 $cd $c6 $49
     pop  DE                                            ;; 03:478a $d1
     pop  BC                                            ;; 03:478b $c1
-    jr   Z, enemyCollisionHandling.immune              ;; 03:478c $28 $5d
+    jr   Z, .immune                                    ;; 03:478c $28 $5d
     push BC                                            ;; 03:478e $c5
     ld   B, H                                          ;; 03:478f $44
     ld   C, L                                          ;; 03:4790 $4d
@@ -1361,7 +1361,7 @@ enemyCollisionHandling:
     call npcTestFollowerHit                            ;; 03:479d $cd $19 $49
     jp   NZ, .no_effect                                ;; 03:47a0 $c2 $56 $46
     call call_03_4931                                  ;; 03:47a3 $cd $31 $49
-    jp   NZ, enemyCollisionHandling.immune             ;; 03:47a6 $c2 $eb $47
+    jp   NZ, .immune                                   ;; 03:47a6 $c2 $eb $47
     push BC                                            ;; 03:47a9 $c5
     push DE                                            ;; 03:47aa $d5
     ld   A, B                                          ;; 03:47ab $78
@@ -1369,7 +1369,7 @@ enemyCollisionHandling:
     pop  DE                                            ;; 03:47af $d1
     call testNpcElementalImmunity                      ;; 03:47b0 $cd $55 $49
     pop  BC                                            ;; 03:47b3 $c1
-    jr   NZ, enemyCollisionHandling.immune             ;; 03:47b4 $20 $35
+    jr   NZ, .immune                                   ;; 03:47b4 $20 $35
     push BC                                            ;; 03:47b6 $c5
     push DE                                            ;; 03:47b7 $d5
     ld   A, B                                          ;; 03:47b8 $78
@@ -1384,7 +1384,7 @@ enemyCollisionHandling:
     call sub_HL_DE                                     ;; 03:47c8 $cd $ab $2b
     pop  DE                                            ;; 03:47cb $d1
     pop  BC                                            ;; 03:47cc $c1
-    jr   C, enemyCollisionHandling.immune              ;; 03:47cd $38 $1c
+    jr   C, .immune                                    ;; 03:47cd $38 $1c
     push BC                                            ;; 03:47cf $c5
     push DE                                            ;; 03:47d0 $d5
     ld   D, H                                          ;; 03:47d1 $54
@@ -1392,7 +1392,7 @@ enemyCollisionHandling:
     call add25rndDEtoHL_3                              ;; 03:47d3 $cd $f6 $49
     pop  DE                                            ;; 03:47d6 $d1
     pop  BC                                            ;; 03:47d7 $c1
-    jr   Z, enemyCollisionHandling.immune              ;; 03:47d8 $28 $11
+    jr   Z, .immune                                    ;; 03:47d8 $28 $11
     push BC                                            ;; 03:47da $c5
     set  7, H                                          ;; 03:47db $cb $fc
     ld   B, H                                          ;; 03:47dd $44
@@ -1475,7 +1475,7 @@ processNpcDeath:
     jr   Z, .jr_03_4863                                ;; 03:4859 $28 $08
     inc  HL                                            ;; 03:485b $23
     dec  B                                             ;; 03:485c $05
-    jr   NZ, processNpcDeath.loop                      ;; 03:485d $20 $f9
+    jr   NZ, .loop                                     ;; 03:485d $20 $f9
     ld   A, $00                                        ;; 03:485f $3e $00
     jr   .jr_03_4866                                   ;; 03:4861 $18 $03
 .jr_03_4863:
@@ -1935,7 +1935,7 @@ inflictVulnerableNpcsSlep:
     ld   DE, $18                                       ;; 03:4ab9 $11 $18 $00
     add  HL, DE                                        ;; 03:4abc $19
     dec  B                                             ;; 03:4abd $05
-    jr   NZ, inflictVulnerableNpcsSlep.loop            ;; 03:4abe $20 $e8
+    jr   NZ, .loop                                     ;; 03:4abe $20 $e8
     ret                                                ;; 03:4ac0 $c9
 
 inflictVulnerableNpcsMute:
@@ -1959,7 +1959,7 @@ inflictVulnerableNpcsMute:
     ld   DE, $18                                       ;; 03:4adb $11 $18 $00
     add  HL, DE                                        ;; 03:4ade $19
     dec  B                                             ;; 03:4adf $05
-    jr   NZ, inflictVulnerableNpcsMute.loop            ;; 03:4ae0 $20 $e8
+    jr   NZ, .loop                                     ;; 03:4ae0 $20 $e8
     ret                                                ;; 03:4ae2 $c9
 
 ; C = player attack elements
@@ -2065,7 +2065,7 @@ moveObjectsDuringScript:
     cp   A, $00                                        ;; 03:4b57 $fe $00
     call NZ, moveObjectDuringScript                    ;; 03:4b59 $c4 $19 $4b
     dec  B                                             ;; 03:4b5c $05
-    jr   NZ, moveObjectsDuringScript.loop              ;; 03:4b5d $20 $f7
+    jr   NZ, .loop                                     ;; 03:4b5d $20 $f7
     ld   A, C                                          ;; 03:4b5f $79
     or   A, C                                          ;; 03:4b60 $b1
     ret                                                ;; 03:4b61 $c9
@@ -2078,7 +2078,7 @@ getEmptyObjectsMovingDuringScriptSlot:
     ret  Z                                             ;; 03:4b68 $c8
     inc  HL                                            ;; 03:4b69 $23
     dec  B                                             ;; 03:4b6a $05
-    jr   NZ, getEmptyObjectsMovingDuringScriptSlot.loop ;; 03:4b6b $20 $fa
+    jr   NZ, .loop                                     ;; 03:4b6b $20 $fa
     xor  A, A                                          ;; 03:4b6d $af
     inc  A                                             ;; 03:4b6e $3c
     ret                                                ;; 03:4b6f $c9
@@ -2186,9 +2186,9 @@ checkAllEnemiesDefeated:
     pop  HL                                            ;; 03:4c01 $e1
     and  A, $f0                                        ;; 03:4c02 $e6 $f0
     cp   A, $90                                        ;; 03:4c04 $fe $90
-    jr   Z, checkAllEnemiesDefeated.enemy              ;; 03:4c06 $28 $08
+    jr   Z, .enemy                                     ;; 03:4c06 $28 $08
     cp   A, $b0                                        ;; 03:4c08 $fe $b0
-    jr   Z, checkAllEnemiesDefeated.enemy              ;; 03:4c0a $28 $04
+    jr   Z, .enemy                                     ;; 03:4c0a $28 $04
     cp   A, $10                                        ;; 03:4c0c $fe $10
     jr   NZ, .jr_03_4c11                               ;; 03:4c0e $20 $01
 .enemy:
@@ -2197,17 +2197,17 @@ checkAllEnemiesDefeated:
     pop  AF                                            ;; 03:4c11 $f1
     add  HL, DE                                        ;; 03:4c12 $19
     dec  B                                             ;; 03:4c13 $05
-    jr   NZ, checkAllEnemiesDefeated.loop              ;; 03:4c14 $20 $de
+    jr   NZ, .loop                                     ;; 03:4c14 $20 $de
     ld   A, [wNumberOfLivingEnemies]                   ;; 03:4c16 $fa $af $c5
     cp   A, C                                          ;; 03:4c19 $b9
-    jr   Z, checkAllEnemiesDefeated.return_01          ;; 03:4c1a $28 $11
+    jr   Z, .return_01                                 ;; 03:4c1a $28 $11
     ld   A, C                                          ;; 03:4c1c $79
     ld   [wNumberOfLivingEnemies], A                   ;; 03:4c1d $ea $af $c5
     cp   A, $01                                        ;; 03:4c20 $fe $01
-    jr   NC, checkAllEnemiesDefeated.return_01         ;; 03:4c22 $30 $09
-    jr   NZ, checkAllEnemiesDefeated.return_00         ;; 03:4c24 $20 $05
+    jr   NC, .return_01                                ;; 03:4c22 $30 $09
+    jr   NZ, .return_00                                ;; 03:4c24 $20 $05
     call checkForFollower                              ;; 03:4c26 $cd $c2 $28
-    jr   NZ, checkAllEnemiesDefeated.return_01         ;; 03:4c29 $20 $02
+    jr   NZ, .return_01                                ;; 03:4c29 $20 $02
 .return_00:
     xor  A, A                                          ;; 03:4c2b $af
     ret                                                ;; 03:4c2c $c9
@@ -2244,230 +2244,230 @@ initEnemiesCounterAndMoveFolower:
 
 ;@jumptable amount=224
 npcBehaviorJumptable:
-    dw   ld_C_into_A                                   ;; 03:4c55 ??
-    dw   npcBehaviorDeath                              ;; 03:4c57 pP
-    dw   npcBehaviorSpawnProjectile                    ;; 03:4c59 pP
-    dw   call_03_4ef0                                  ;; 03:4c5b pP
-    dw   npcStepForward                                ;; 03:4c5d pP
-    dw   npcStepBackward                               ;; 03:4c5f pP
-    dw   npcTurnRight                                  ;; 03:4c61 pP
-    dw   npcTurnLeft                                   ;; 03:4c63 pP
-    dw   npcReverseDirection                           ;; 03:4c65 pP
-    dw   call_03_4f74                                  ;; 03:4c67 pP
-    dw   call_03_4f88                                  ;; 03:4c69 pP
-    dw   call_03_4fa3                                  ;; 03:4c6b pP
-    dw   call_03_4fbe                                  ;; 03:4c6d ??
-    dw   call_03_4fd9                                  ;; 03:4c6f ??
-    dw   npcWalkSpeed4                                 ;; 03:4c71 pP
-    dw   npcWalkSpeedDefault                           ;; 03:4c73 pP
-    dw   call_03_500d                                  ;; 03:4c75 pP
-    dw   call_03_5019                                  ;; 03:4c77 pP
-    dw   call_03_5025                                  ;; 03:4c79 ??
-    dw   call_03_5031                                  ;; 03:4c7b pP
-    dw   call_03_503d                                  ;; 03:4c7d ??
-    dw   call_03_5049                                  ;; 03:4c7f ??
-    dw   ld_C_into_A                                   ;; 03:4c81 ??
-    dw   ld_C_into_A                                   ;; 03:4c83 ??
-    dw   ld_C_into_A                                   ;; 03:4c85 ??
-    dw   ld_C_into_A                                   ;; 03:4c87 ??
-    dw   ld_C_into_A                                   ;; 03:4c89 ??
-    dw   call_03_4eb5                                  ;; 03:4c8b ??
-    dw   npcFaceEast                                   ;; 03:4c8d pP
-    dw   npcFaceWest                                   ;; 03:4c8f pP
-    dw   npcFaceNorth                                  ;; 03:4c91 pP
-    dw   npcFaceSouth                                  ;; 03:4c93 pP
-    dw   call_03_507d                                  ;; 03:4c95 pP
-    dw   call_03_5092                                  ;; 03:4c97 ??
-    dw   call_03_50a7                                  ;; 03:4c99 pP
-    dw   call_03_50bc                                  ;; 03:4c9b ??
-    dw   call_03_50d1                                  ;; 03:4c9d pP
-    dw   call_03_50d5                                  ;; 03:4c9f ??
-    dw   call_03_50d9                                  ;; 03:4ca1 ??
-    dw   call_03_50dd                                  ;; 03:4ca3 ??
-    dw   call_03_50e1                                  ;; 03:4ca5 pP
-    dw   call_03_50e5                                  ;; 03:4ca7 ??
-    dw   call_03_50e9                                  ;; 03:4ca9 ??
-    dw   call_03_50ed                                  ;; 03:4cab ??
-    dw   call_03_50f1                                  ;; 03:4cad ??
-    dw   call_03_50f5                                  ;; 03:4caf ??
-    dw   call_03_50f9                                  ;; 03:4cb1 ??
-    dw   call_03_50fd                                  ;; 03:4cb3 ??
-    dw   call_03_5101                                  ;; 03:4cb5 ??
-    dw   call_03_5105                                  ;; 03:4cb7 ??
-    dw   call_03_5109                                  ;; 03:4cb9 ??
-    dw   call_03_510d                                  ;; 03:4cbb ??
-    dw   call_03_5111                                  ;; 03:4cbd ??
-    dw   call_03_5115                                  ;; 03:4cbf ??
-    dw   call_03_5119                                  ;; 03:4cc1 ??
-    dw   call_03_511d                                  ;; 03:4cc3 ??
-    dw   call_03_5121                                  ;; 03:4cc5 ??
-    dw   call_03_5125                                  ;; 03:4cc7 ??
-    dw   call_03_5129                                  ;; 03:4cc9 ??
-    dw   call_03_512d                                  ;; 03:4ccb ??
-    dw   call_03_5131                                  ;; 03:4ccd ??
-    dw   call_03_5135                                  ;; 03:4ccf ??
-    dw   call_03_5139                                  ;; 03:4cd1 ??
-    dw   call_03_513d                                  ;; 03:4cd3 ??
-    dw   ld_C_into_A                                   ;; 03:4cd5 ??
-    dw   ld_C_into_A                                   ;; 03:4cd7 ??
-    dw   ld_C_into_A                                   ;; 03:4cd9 ??
-    dw   ld_C_into_A                                   ;; 03:4cdb ??
-    dw   call_03_5151                                  ;; 03:4cdd ??
-    dw   call_03_5155                                  ;; 03:4cdf ??
-    dw   call_03_5159                                  ;; 03:4ce1 ??
-    dw   call_03_515d                                  ;; 03:4ce3 ??
-    dw   call_03_5161                                  ;; 03:4ce5 pP
-    dw   call_03_5165                                  ;; 03:4ce7 pP
-    dw   call_03_5169                                  ;; 03:4ce9 pP
-    dw   call_03_516d                                  ;; 03:4ceb pP
-    dw   call_03_5171                                  ;; 03:4ced pP
-    dw   call_03_5175                                  ;; 03:4cef pP
-    dw   call_03_5179                                  ;; 03:4cf1 pP
-    dw   call_03_517d                                  ;; 03:4cf3 pP
-    dw   call_03_5181                                  ;; 03:4cf5 ??
-    dw   call_03_5185                                  ;; 03:4cf7 ??
-    dw   call_03_5189                                  ;; 03:4cf9 ??
-    dw   call_03_518d                                  ;; 03:4cfb ??
-    dw   call_03_5191                                  ;; 03:4cfd pP
-    dw   call_03_5195                                  ;; 03:4cff pP
-    dw   call_03_5199                                  ;; 03:4d01 ??
-    dw   call_03_519d                                  ;; 03:4d03 ??
-    dw   call_03_51a1                                  ;; 03:4d05 ??
-    dw   call_03_51a5                                  ;; 03:4d07 ??
-    dw   call_03_51a9                                  ;; 03:4d09 ??
-    dw   call_03_51ad                                  ;; 03:4d0b ??
-    dw   call_03_51b1                                  ;; 03:4d0d ??
-    dw   call_03_51b5                                  ;; 03:4d0f ??
-    dw   call_03_51b9                                  ;; 03:4d11 ??
-    dw   call_03_51bd                                  ;; 03:4d13 ??
-    dw   ld_C_into_A                                   ;; 03:4d15 ??
-    dw   ld_C_into_A                                   ;; 03:4d17 ??
-    dw   ld_C_into_A                                   ;; 03:4d19 ??
-    dw   ld_C_into_A                                   ;; 03:4d1b ??
-    dw   call_03_51d1                                  ;; 03:4d1d ??
-    dw   call_03_51d5                                  ;; 03:4d1f ??
-    dw   call_03_51d9                                  ;; 03:4d21 ??
-    dw   call_03_51dd                                  ;; 03:4d23 ??
-    dw   call_03_51e1                                  ;; 03:4d25 ??
-    dw   call_03_51e5                                  ;; 03:4d27 pP
-    dw   call_03_51e9                                  ;; 03:4d29 ??
-    dw   call_03_51ed                                  ;; 03:4d2b ??
-    dw   call_03_51f1                                  ;; 03:4d2d pP
-    dw   call_03_51f5                                  ;; 03:4d2f pP
-    dw   call_03_51f9                                  ;; 03:4d31 pP
-    dw   call_03_51fd                                  ;; 03:4d33 pP
-    dw   call_03_5201                                  ;; 03:4d35 pP
-    dw   call_03_5205                                  ;; 03:4d37 ??
-    dw   call_03_5209                                  ;; 03:4d39 ??
-    dw   call_03_520d                                  ;; 03:4d3b pP
-    dw   call_03_5211                                  ;; 03:4d3d pP
-    dw   call_03_5215                                  ;; 03:4d3f pP
-    dw   call_03_5219                                  ;; 03:4d41 ??
-    dw   call_03_521d                                  ;; 03:4d43 ??
-    dw   call_03_5221                                  ;; 03:4d45 pP
-    dw   call_03_5225                                  ;; 03:4d47 pP
-    dw   call_03_5229                                  ;; 03:4d49 pP
-    dw   call_03_522d                                  ;; 03:4d4b pP
-    dw   call_03_5231                                  ;; 03:4d4d ??
-    dw   call_03_5235                                  ;; 03:4d4f ??
-    dw   call_03_5239                                  ;; 03:4d51 ??
-    dw   call_03_523d                                  ;; 03:4d53 ??
-    dw   ld_C_into_A                                   ;; 03:4d55 ??
-    dw   ld_C_into_A                                   ;; 03:4d57 ??
-    dw   ld_C_into_A                                   ;; 03:4d59 ??
-    dw   ld_C_into_A                                   ;; 03:4d5b ??
-    dw   ld_C_into_A                                   ;; 03:4d5d ??
-    dw   ld_C_into_A                                   ;; 03:4d5f ??
-    dw   ld_C_into_A                                   ;; 03:4d61 ??
-    dw   ld_C_into_A                                   ;; 03:4d63 ??
-    dw   ld_C_into_A                                   ;; 03:4d65 ??
-    dw   ld_C_into_A                                   ;; 03:4d67 ??
-    dw   ld_C_into_A                                   ;; 03:4d69 ??
-    dw   ld_C_into_A                                   ;; 03:4d6b ??
-    dw   ld_C_into_A                                   ;; 03:4d6d ??
-    dw   ld_C_into_A                                   ;; 03:4d6f ??
-    dw   ld_C_into_A                                   ;; 03:4d71 ??
-    dw   ld_C_into_A                                   ;; 03:4d73 ??
-    dw   call_03_5264                                  ;; 03:4d75 ??
-    dw   call_03_5268                                  ;; 03:4d77 ??
-    dw   call_03_526c                                  ;; 03:4d79 ??
-    dw   call_03_5270                                  ;; 03:4d7b ??
-    dw   call_03_5274                                  ;; 03:4d7d ??
-    dw   call_03_5278                                  ;; 03:4d7f pP
-    dw   call_03_527c                                  ;; 03:4d81 ??
-    dw   call_03_5280                                  ;; 03:4d83 ??
-    dw   call_03_5284                                  ;; 03:4d85 ??
-    dw   call_03_5288                                  ;; 03:4d87 ??
-    dw   call_03_528c                                  ;; 03:4d89 pP
-    dw   call_03_5290                                  ;; 03:4d8b pP
-    dw   call_03_5294                                  ;; 03:4d8d ??
-    dw   call_03_5298                                  ;; 03:4d8f ??
-    dw   call_03_529c                                  ;; 03:4d91 ??
-    dw   call_03_52a0                                  ;; 03:4d93 ??
-    dw   ld_C_into_A                                   ;; 03:4d95 ??
-    dw   ld_C_into_A                                   ;; 03:4d97 ??
-    dw   ld_C_into_A                                   ;; 03:4d99 ??
-    dw   ld_C_into_A                                   ;; 03:4d9b ??
-    dw   ld_C_into_A                                   ;; 03:4d9d ??
-    dw   ld_C_into_A                                   ;; 03:4d9f ??
-    dw   ld_C_into_A                                   ;; 03:4da1 ??
-    dw   ld_C_into_A                                   ;; 03:4da3 ??
-    dw   ld_C_into_A                                   ;; 03:4da5 ??
-    dw   ld_C_into_A                                   ;; 03:4da7 ??
-    dw   ld_C_into_A                                   ;; 03:4da9 ??
-    dw   ld_C_into_A                                   ;; 03:4dab ??
-    dw   ld_C_into_A                                   ;; 03:4dad ??
-    dw   ld_C_into_A                                   ;; 03:4daf ??
-    dw   ld_C_into_A                                   ;; 03:4db1 ??
-    dw   ld_C_into_A                                   ;; 03:4db3 ??
-    dw   call_03_5377                                  ;; 03:4db5 ??
-    dw   call_03_537b                                  ;; 03:4db7 ??
-    dw   call_03_537f                                  ;; 03:4db9 ??
-    dw   call_03_5383                                  ;; 03:4dbb ??
-    dw   call_03_5387                                  ;; 03:4dbd pP
-    dw   call_03_538b                                  ;; 03:4dbf pP
-    dw   call_03_538f                                  ;; 03:4dc1 ??
-    dw   call_03_5393                                  ;; 03:4dc3 ??
-    dw   call_03_5397                                  ;; 03:4dc5 pP
-    dw   call_03_539b                                  ;; 03:4dc7 ??
-    dw   call_03_539f                                  ;; 03:4dc9 ??
-    dw   call_03_53a3                                  ;; 03:4dcb ??
-    dw   call_03_53a7                                  ;; 03:4dcd ??
-    dw   call_03_53ab                                  ;; 03:4dcf ??
-    dw   call_03_53af                                  ;; 03:4dd1 ??
-    dw   call_03_53b3                                  ;; 03:4dd3 ??
-    dw   ld_C_into_A                                   ;; 03:4dd5 ??
-    dw   ld_C_into_A                                   ;; 03:4dd7 ??
-    dw   ld_C_into_A                                   ;; 03:4dd9 ??
-    dw   ld_C_into_A                                   ;; 03:4ddb ??
-    dw   call_03_5419                                  ;; 03:4ddd ??
-    dw   call_03_541d                                  ;; 03:4ddf ??
-    dw   call_03_5421                                  ;; 03:4de1 ??
-    dw   call_03_5425                                  ;; 03:4de3 ??
-    dw   call_03_5429                                  ;; 03:4de5 ??
-    dw   call_03_542d                                  ;; 03:4de7 ??
-    dw   call_03_5431                                  ;; 03:4de9 ??
-    dw   call_03_5435                                  ;; 03:4deb ??
-    dw   call_03_5439                                  ;; 03:4ded ??
-    dw   call_03_543d                                  ;; 03:4def ??
-    dw   call_03_5441                                  ;; 03:4df1 ??
-    dw   call_03_5445                                  ;; 03:4df3 ??
-    dw   call_03_5449                                  ;; 03:4df5 ??
-    dw   call_03_544d                                  ;; 03:4df7 ??
-    dw   call_03_5451                                  ;; 03:4df9 ??
-    dw   call_03_5455                                  ;; 03:4dfb ??
-    dw   call_03_5459                                  ;; 03:4dfd ??
-    dw   call_03_545d                                  ;; 03:4dff ??
-    dw   call_03_5461                                  ;; 03:4e01 ??
-    dw   call_03_5465                                  ;; 03:4e03 ??
-    dw   call_03_5469                                  ;; 03:4e05 ??
-    dw   call_03_546d                                  ;; 03:4e07 ??
-    dw   call_03_5471                                  ;; 03:4e09 ??
-    dw   call_03_5475                                  ;; 03:4e0b ??
-    dw   call_03_5479                                  ;; 03:4e0d ??
-    dw   call_03_547d                                  ;; 03:4e0f ??
-    dw   call_03_5481                                  ;; 03:4e11 ??
-    dw   call_03_5485                                  ;; 03:4e13 ??
+    dw   ld_C_into_A                                   ;; 03:4c55 ?? $00
+    dw   npcBehaviorDeath                              ;; 03:4c57 pP $01
+    dw   npcBehaviorSpawnProjectile                    ;; 03:4c59 pP $02
+    dw   call_03_4ef0                                  ;; 03:4c5b pP $03
+    dw   npcStepForward                                ;; 03:4c5d pP $04
+    dw   npcStepBackward                               ;; 03:4c5f pP $05
+    dw   npcTurnRight                                  ;; 03:4c61 pP $06
+    dw   npcTurnLeft                                   ;; 03:4c63 pP $07
+    dw   npcReverseDirection                           ;; 03:4c65 pP $08
+    dw   call_03_4f74                                  ;; 03:4c67 pP $09
+    dw   call_03_4f88                                  ;; 03:4c69 pP $0a
+    dw   call_03_4fa3                                  ;; 03:4c6b pP $0b
+    dw   call_03_4fbe                                  ;; 03:4c6d ?? $0c
+    dw   call_03_4fd9                                  ;; 03:4c6f ?? $0d
+    dw   npcWalkSpeed4                                 ;; 03:4c71 pP $0e
+    dw   npcWalkSpeedDefault                           ;; 03:4c73 pP $0f
+    dw   call_03_500d                                  ;; 03:4c75 pP $10
+    dw   call_03_5019                                  ;; 03:4c77 pP $11
+    dw   call_03_5025                                  ;; 03:4c79 ?? $12
+    dw   call_03_5031                                  ;; 03:4c7b pP $13
+    dw   call_03_503d                                  ;; 03:4c7d ?? $14
+    dw   call_03_5049                                  ;; 03:4c7f ?? $15
+    dw   ld_C_into_A                                   ;; 03:4c81 ?? $16
+    dw   ld_C_into_A                                   ;; 03:4c83 ?? $17
+    dw   ld_C_into_A                                   ;; 03:4c85 ?? $18
+    dw   ld_C_into_A                                   ;; 03:4c87 ?? $19
+    dw   ld_C_into_A                                   ;; 03:4c89 ?? $1a
+    dw   call_03_4eb5                                  ;; 03:4c8b ?? $1b
+    dw   npcFaceEast                                   ;; 03:4c8d pP $1c
+    dw   npcFaceWest                                   ;; 03:4c8f pP $1d
+    dw   npcFaceNorth                                  ;; 03:4c91 pP $1e
+    dw   npcFaceSouth                                  ;; 03:4c93 pP $1f
+    dw   call_03_507d                                  ;; 03:4c95 pP $20
+    dw   call_03_5092                                  ;; 03:4c97 ?? $21
+    dw   call_03_50a7                                  ;; 03:4c99 pP $22
+    dw   call_03_50bc                                  ;; 03:4c9b ?? $23
+    dw   call_03_50d1                                  ;; 03:4c9d pP $24
+    dw   call_03_50d5                                  ;; 03:4c9f ?? $25
+    dw   call_03_50d9                                  ;; 03:4ca1 ?? $26
+    dw   call_03_50dd                                  ;; 03:4ca3 ?? $27
+    dw   call_03_50e1                                  ;; 03:4ca5 pP $28
+    dw   call_03_50e5                                  ;; 03:4ca7 ?? $29
+    dw   call_03_50e9                                  ;; 03:4ca9 ?? $2a
+    dw   call_03_50ed                                  ;; 03:4cab ?? $2b
+    dw   call_03_50f1                                  ;; 03:4cad ?? $2c
+    dw   call_03_50f5                                  ;; 03:4caf ?? $2d
+    dw   call_03_50f9                                  ;; 03:4cb1 ?? $2e
+    dw   call_03_50fd                                  ;; 03:4cb3 ?? $2f
+    dw   call_03_5101                                  ;; 03:4cb5 ?? $30
+    dw   call_03_5105                                  ;; 03:4cb7 ?? $31
+    dw   call_03_5109                                  ;; 03:4cb9 ?? $32
+    dw   call_03_510d                                  ;; 03:4cbb ?? $33
+    dw   call_03_5111                                  ;; 03:4cbd ?? $34
+    dw   call_03_5115                                  ;; 03:4cbf ?? $35
+    dw   call_03_5119                                  ;; 03:4cc1 ?? $36
+    dw   call_03_511d                                  ;; 03:4cc3 ?? $37
+    dw   call_03_5121                                  ;; 03:4cc5 ?? $38
+    dw   call_03_5125                                  ;; 03:4cc7 ?? $39
+    dw   call_03_5129                                  ;; 03:4cc9 ?? $3a
+    dw   call_03_512d                                  ;; 03:4ccb ?? $3b
+    dw   call_03_5131                                  ;; 03:4ccd ?? $3c
+    dw   call_03_5135                                  ;; 03:4ccf ?? $3d
+    dw   call_03_5139                                  ;; 03:4cd1 ?? $3e
+    dw   call_03_513d                                  ;; 03:4cd3 ?? $3f
+    dw   ld_C_into_A                                   ;; 03:4cd5 ?? $40
+    dw   ld_C_into_A                                   ;; 03:4cd7 ?? $41
+    dw   ld_C_into_A                                   ;; 03:4cd9 ?? $42
+    dw   ld_C_into_A                                   ;; 03:4cdb ?? $43
+    dw   call_03_5151                                  ;; 03:4cdd ?? $44
+    dw   call_03_5155                                  ;; 03:4cdf ?? $45
+    dw   call_03_5159                                  ;; 03:4ce1 ?? $46
+    dw   call_03_515d                                  ;; 03:4ce3 ?? $47
+    dw   call_03_5161                                  ;; 03:4ce5 pP $48
+    dw   call_03_5165                                  ;; 03:4ce7 pP $49
+    dw   call_03_5169                                  ;; 03:4ce9 pP $4a
+    dw   call_03_516d                                  ;; 03:4ceb pP $4b
+    dw   call_03_5171                                  ;; 03:4ced pP $4c
+    dw   call_03_5175                                  ;; 03:4cef pP $4d
+    dw   call_03_5179                                  ;; 03:4cf1 pP $4e
+    dw   call_03_517d                                  ;; 03:4cf3 pP $4f
+    dw   call_03_5181                                  ;; 03:4cf5 ?? $50
+    dw   call_03_5185                                  ;; 03:4cf7 ?? $51
+    dw   call_03_5189                                  ;; 03:4cf9 ?? $52
+    dw   call_03_518d                                  ;; 03:4cfb ?? $53
+    dw   call_03_5191                                  ;; 03:4cfd pP $54
+    dw   call_03_5195                                  ;; 03:4cff pP $55
+    dw   call_03_5199                                  ;; 03:4d01 ?? $56
+    dw   call_03_519d                                  ;; 03:4d03 ?? $57
+    dw   call_03_51a1                                  ;; 03:4d05 ?? $58
+    dw   call_03_51a5                                  ;; 03:4d07 ?? $59
+    dw   call_03_51a9                                  ;; 03:4d09 ?? $5a
+    dw   call_03_51ad                                  ;; 03:4d0b ?? $5b
+    dw   call_03_51b1                                  ;; 03:4d0d ?? $5c
+    dw   call_03_51b5                                  ;; 03:4d0f ?? $5d
+    dw   call_03_51b9                                  ;; 03:4d11 ?? $5e
+    dw   call_03_51bd                                  ;; 03:4d13 ?? $5f
+    dw   ld_C_into_A                                   ;; 03:4d15 ?? $60
+    dw   ld_C_into_A                                   ;; 03:4d17 ?? $61
+    dw   ld_C_into_A                                   ;; 03:4d19 ?? $62
+    dw   ld_C_into_A                                   ;; 03:4d1b ?? $63
+    dw   call_03_51d1                                  ;; 03:4d1d ?? $64
+    dw   call_03_51d5                                  ;; 03:4d1f ?? $65
+    dw   call_03_51d9                                  ;; 03:4d21 ?? $66
+    dw   call_03_51dd                                  ;; 03:4d23 ?? $67
+    dw   call_03_51e1                                  ;; 03:4d25 ?? $68
+    dw   call_03_51e5                                  ;; 03:4d27 pP $69
+    dw   call_03_51e9                                  ;; 03:4d29 ?? $6a
+    dw   call_03_51ed                                  ;; 03:4d2b ?? $6b
+    dw   call_03_51f1                                  ;; 03:4d2d pP $6c
+    dw   call_03_51f5                                  ;; 03:4d2f pP $6d
+    dw   call_03_51f9                                  ;; 03:4d31 pP $6e
+    dw   call_03_51fd                                  ;; 03:4d33 pP $6f
+    dw   call_03_5201                                  ;; 03:4d35 pP $70
+    dw   call_03_5205                                  ;; 03:4d37 ?? $71
+    dw   call_03_5209                                  ;; 03:4d39 ?? $72
+    dw   call_03_520d                                  ;; 03:4d3b pP $73
+    dw   call_03_5211                                  ;; 03:4d3d pP $74
+    dw   call_03_5215                                  ;; 03:4d3f pP $75
+    dw   call_03_5219                                  ;; 03:4d41 ?? $76
+    dw   call_03_521d                                  ;; 03:4d43 ?? $77
+    dw   call_03_5221                                  ;; 03:4d45 pP $78
+    dw   call_03_5225                                  ;; 03:4d47 pP $79
+    dw   call_03_5229                                  ;; 03:4d49 pP $7a
+    dw   call_03_522d                                  ;; 03:4d4b pP $7b
+    dw   call_03_5231                                  ;; 03:4d4d ?? $7c
+    dw   call_03_5235                                  ;; 03:4d4f ?? $7d
+    dw   call_03_5239                                  ;; 03:4d51 ?? $7e
+    dw   call_03_523d                                  ;; 03:4d53 ?? $7f
+    dw   ld_C_into_A                                   ;; 03:4d55 ?? $80
+    dw   ld_C_into_A                                   ;; 03:4d57 ?? $81
+    dw   ld_C_into_A                                   ;; 03:4d59 ?? $82
+    dw   ld_C_into_A                                   ;; 03:4d5b ?? $83
+    dw   ld_C_into_A                                   ;; 03:4d5d ?? $84
+    dw   ld_C_into_A                                   ;; 03:4d5f ?? $85
+    dw   ld_C_into_A                                   ;; 03:4d61 ?? $86
+    dw   ld_C_into_A                                   ;; 03:4d63 ?? $87
+    dw   ld_C_into_A                                   ;; 03:4d65 ?? $88
+    dw   ld_C_into_A                                   ;; 03:4d67 ?? $89
+    dw   ld_C_into_A                                   ;; 03:4d69 ?? $8a
+    dw   ld_C_into_A                                   ;; 03:4d6b ?? $8b
+    dw   ld_C_into_A                                   ;; 03:4d6d ?? $8c
+    dw   ld_C_into_A                                   ;; 03:4d6f ?? $8d
+    dw   ld_C_into_A                                   ;; 03:4d71 ?? $8e
+    dw   ld_C_into_A                                   ;; 03:4d73 ?? $8f
+    dw   call_03_5264                                  ;; 03:4d75 ?? $90
+    dw   call_03_5268                                  ;; 03:4d77 ?? $91
+    dw   call_03_526c                                  ;; 03:4d79 ?? $92
+    dw   call_03_5270                                  ;; 03:4d7b ?? $93
+    dw   call_03_5274                                  ;; 03:4d7d ?? $94
+    dw   call_03_5278                                  ;; 03:4d7f pP $95
+    dw   call_03_527c                                  ;; 03:4d81 ?? $96
+    dw   call_03_5280                                  ;; 03:4d83 ?? $97
+    dw   call_03_5284                                  ;; 03:4d85 ?? $98
+    dw   call_03_5288                                  ;; 03:4d87 ?? $99
+    dw   call_03_528c                                  ;; 03:4d89 pP $9a
+    dw   call_03_5290                                  ;; 03:4d8b pP $9b
+    dw   call_03_5294                                  ;; 03:4d8d ?? $9c
+    dw   call_03_5298                                  ;; 03:4d8f ?? $9d
+    dw   call_03_529c                                  ;; 03:4d91 ?? $9e
+    dw   call_03_52a0                                  ;; 03:4d93 ?? $9f
+    dw   ld_C_into_A                                   ;; 03:4d95 ?? $a0
+    dw   ld_C_into_A                                   ;; 03:4d97 ?? $a1
+    dw   ld_C_into_A                                   ;; 03:4d99 ?? $a2
+    dw   ld_C_into_A                                   ;; 03:4d9b ?? $a3
+    dw   ld_C_into_A                                   ;; 03:4d9d ?? $a4
+    dw   ld_C_into_A                                   ;; 03:4d9f ?? $a5
+    dw   ld_C_into_A                                   ;; 03:4da1 ?? $a6
+    dw   ld_C_into_A                                   ;; 03:4da3 ?? $a7
+    dw   ld_C_into_A                                   ;; 03:4da5 ?? $a8
+    dw   ld_C_into_A                                   ;; 03:4da7 ?? $a9
+    dw   ld_C_into_A                                   ;; 03:4da9 ?? $aa
+    dw   ld_C_into_A                                   ;; 03:4dab ?? $ab
+    dw   ld_C_into_A                                   ;; 03:4dad ?? $ac
+    dw   ld_C_into_A                                   ;; 03:4daf ?? $ad
+    dw   ld_C_into_A                                   ;; 03:4db1 ?? $ae
+    dw   ld_C_into_A                                   ;; 03:4db3 ?? $af
+    dw   call_03_5377                                  ;; 03:4db5 ?? $b0
+    dw   call_03_537b                                  ;; 03:4db7 ?? $b1
+    dw   call_03_537f                                  ;; 03:4db9 ?? $b2
+    dw   call_03_5383                                  ;; 03:4dbb ?? $b3
+    dw   call_03_5387                                  ;; 03:4dbd pP $b4
+    dw   call_03_538b                                  ;; 03:4dbf pP $b5
+    dw   call_03_538f                                  ;; 03:4dc1 ?? $b6
+    dw   call_03_5393                                  ;; 03:4dc3 ?? $b7
+    dw   call_03_5397                                  ;; 03:4dc5 pP $b8
+    dw   call_03_539b                                  ;; 03:4dc7 ?? $b9
+    dw   call_03_539f                                  ;; 03:4dc9 ?? $ba
+    dw   call_03_53a3                                  ;; 03:4dcb ?? $bb
+    dw   call_03_53a7                                  ;; 03:4dcd ?? $bc
+    dw   call_03_53ab                                  ;; 03:4dcf ?? $bd
+    dw   call_03_53af                                  ;; 03:4dd1 ?? $be
+    dw   call_03_53b3                                  ;; 03:4dd3 ?? $bf
+    dw   ld_C_into_A                                   ;; 03:4dd5 ?? $c0
+    dw   ld_C_into_A                                   ;; 03:4dd7 ?? $c1
+    dw   ld_C_into_A                                   ;; 03:4dd9 ?? $c2
+    dw   ld_C_into_A                                   ;; 03:4ddb ?? $c3
+    dw   call_03_5419                                  ;; 03:4ddd ?? $c4
+    dw   call_03_541d                                  ;; 03:4ddf ?? $c5
+    dw   call_03_5421                                  ;; 03:4de1 ?? $c6
+    dw   call_03_5425                                  ;; 03:4de3 ?? $c7
+    dw   call_03_5429                                  ;; 03:4de5 ?? $c8
+    dw   call_03_542d                                  ;; 03:4de7 ?? $c9
+    dw   call_03_5431                                  ;; 03:4de9 ?? $ca
+    dw   call_03_5435                                  ;; 03:4deb ?? $cb
+    dw   call_03_5439                                  ;; 03:4ded ?? $cc
+    dw   call_03_543d                                  ;; 03:4def ?? $cd
+    dw   call_03_5441                                  ;; 03:4df1 ?? $ce
+    dw   call_03_5445                                  ;; 03:4df3 ?? $cf
+    dw   call_03_5449                                  ;; 03:4df5 ?? $d0
+    dw   call_03_544d                                  ;; 03:4df7 ?? $d1
+    dw   call_03_5451                                  ;; 03:4df9 ?? $d2
+    dw   call_03_5455                                  ;; 03:4dfb ?? $d3
+    dw   call_03_5459                                  ;; 03:4dfd ?? $d4
+    dw   call_03_545d                                  ;; 03:4dff ?? $d5
+    dw   call_03_5461                                  ;; 03:4e01 ?? $d6
+    dw   call_03_5465                                  ;; 03:4e03 ?? $d7
+    dw   call_03_5469                                  ;; 03:4e05 ?? $d8
+    dw   call_03_546d                                  ;; 03:4e07 ?? $d9
+    dw   call_03_5471                                  ;; 03:4e09 ?? $da
+    dw   call_03_5475                                  ;; 03:4e0b ?? $db
+    dw   call_03_5479                                  ;; 03:4e0d ?? $dc
+    dw   call_03_547d                                  ;; 03:4e0f ?? $dd
+    dw   call_03_5481                                  ;; 03:4e11 ?? $de
+    dw   call_03_5485                                  ;; 03:4e13 ?? $df
 
 call_03_4e15:
     ld   HL, $04                                       ;; 03:4e15 $21 $04 $00
