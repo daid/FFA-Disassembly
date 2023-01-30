@@ -2569,7 +2569,7 @@ specialEffectInit:
 
 specialEffectAnimate:
     push DE                                            ;; 00:0eef $d5
-    call call_00_2ed3                                  ;; 00:0ef0 $cd $d3 $2e
+    call runPlayerAttackObjectFunctions_trampoline     ;; 00:0ef0 $cd $d3 $2e
     pop  HL                                            ;; 00:0ef3 $e1
     ret  NZ                                            ;; 00:0ef4 $c0
     push HL                                            ;; 00:0ef5 $e5
@@ -7591,8 +7591,8 @@ initSpecialAttackTimer:
     ld   [wSpecialAttackTimerNumber], A                ;; 00:2ecf $ea $62 $cf
     ret                                                ;; 00:2ed2 $c9
 
-call_00_2ed3:
-    jp_to_bank 01, call_01_52b3                        ;; 00:2ed3 $f5 $3e $1d $c3 $d7 $1e
+runPlayerAttackObjectFunctions_trampoline:
+    jp_to_bank 01, runPlayerAttackObjectFunctions      ;; 00:2ed3 $f5 $3e $1d $c3 $d7 $1e
 
 getEquippedWeaponAnimationType_trampoline:
     jp_to_bank 01, getEquippedWeaponAnimationType      ;; 00:2ed9 $f5 $3e $20 $c3 $d7 $1e

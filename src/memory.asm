@@ -532,7 +532,9 @@ wBackgroundRenderRequests:
 wBackgroundRenderRequestCount:
     ds 8                                               ;; cee8
 
-wCEF0:
+; Player attacks can use any of the first eight objects for their animation/hit boxes.
+; Each object in use has an associated function that manages it. This tracks the function jumptable indexes.
+wAttackFrameFunctions:
     ds 8                                               ;; cef0
 
 wAttackFrameSteps:
