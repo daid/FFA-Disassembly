@@ -239,7 +239,7 @@ bossMoveBodyObjects:
     pop  DE                                            ;; 04:413e $d1
     pop  BC                                            ;; 04:413f $c1
     dec  B                                             ;; 04:4140 $05
-    jr   NZ, bossMoveBodyObjects.loop                  ;; 04:4141 $20 $d8
+    jr   NZ, .loop                                     ;; 04:4141 $20 $d8
     ld   HL, wBossCurrentHeadActionSubstep             ;; 04:4143 $21 $ef $d3
     inc  [HL]                                          ;; 04:4146 $34
     ret                                                ;; 04:4147 $c9
@@ -346,10 +346,10 @@ bossDoHeadAction:
     ret                                                ;; 04:41c4 $c9
 ;@jumptable amount=4
 .headActionTypeJumptable:
-    dw   bossHeadActionGetHeadLocation                 ;; 04:41c5 pP
-    dw   bossHeadActionSpawnProjectile                 ;; 04:41c7 ??
-    dw   bossHeadActionStartDeathScript                ;; 04:41c9 pP
-    dw   bossHeadActionGetHeadLocationAndStartNewHead  ;; 04:41cb ??
+    dw   bossHeadActionGetHeadLocation                 ;; 04:41c5 pP $00
+    dw   bossHeadActionSpawnProjectile                 ;; 04:41c7 ?? $01
+    dw   bossHeadActionStartDeathScript                ;; 04:41c9 pP $02
+    dw   bossHeadActionGetHeadLocationAndStartNewHead  ;; 04:41cb ?? $03
 
 bossHeadActionGetHeadLocation:
     call getBossCurrentHeadYX                          ;; 04:41cd $cd $56 $41
@@ -424,7 +424,7 @@ bossNextKeyframe:
     cp   A, $ff                                        ;; 04:4236 $fe $ff
     call Z, bossChoosePattern                          ;; 04:4238 $cc $5f $42
     ret  Z                                             ;; 04:423b $c8
-    call bossInitPattern                                ;; 04:423c $cd $40 $42
+    call bossInitPattern                               ;; 04:423c $cd $40 $42
     ret                                                ;; 04:423f $c9
 
 bossInitPattern:
@@ -554,7 +554,7 @@ getBossStatsRuntimeDataByObjectID:
     ret  Z                                             ;; 04:42ef $c8
     add  HL, DE                                        ;; 04:42f0 $19
     dec  B                                             ;; 04:42f1 $05
-    jr   NZ, getBossStatsRuntimeDataByObjectID.loop    ;; 04:42f2 $20 $fa
+    jr   NZ, .loop                                     ;; 04:42f2 $20 $fa
     xor  A, A                                          ;; 04:42f4 $af
     inc  A                                             ;; 04:42f5 $3c
     ret                                                ;; 04:42f6 $c9
@@ -699,7 +699,7 @@ bossLoadTiles:
     pop  HL                                            ;; 04:43c6 $e1
     pop  AF                                            ;; 04:43c7 $f1
     dec  A                                             ;; 04:43c8 $3d
-    jr   NZ, bossLoadTiles.loop                        ;; 04:43c9 $20 $d1
+    jr   NZ, .loop                                     ;; 04:43c9 $20 $d1
     pop  DE                                            ;; 04:43cb $d1
     ret                                                ;; 04:43cc $c9
 
@@ -732,7 +732,7 @@ bossCreateObjects:
     pop  DE                                            ;; 04:43f2 $d1
     pop  BC                                            ;; 04:43f3 $c1
     dec  B                                             ;; 04:43f4 $05
-    jr   NZ, bossCreateObjects.loop                    ;; 04:43f5 $20 $e8
+    jr   NZ, .loop                                     ;; 04:43f5 $20 $e8
     pop  DE                                            ;; 04:43f7 $d1
     ld   A, [wBossObjectsStatsRuntimeData]             ;; 04:43f8 $fa $42 $d4
     ld   [wBossFirstObjectID], A                       ;; 04:43fb $ea $e8 $d3
@@ -766,7 +766,7 @@ bossInitStatsObjectsRuntimeData:
     ld   E, L                                          ;; 04:441e $5d
     pop  HL                                            ;; 04:441f $e1
     dec  B                                             ;; 04:4420 $05
-    jr   NZ, bossInitStatsObjectsRuntimeData.loop      ;; 04:4421 $20 $ec
+    jr   NZ, .loop                                     ;; 04:4421 $20 $ec
     pop  DE                                            ;; 04:4423 $d1
     ret                                                ;; 04:4424 $c9
 
@@ -790,7 +790,7 @@ bossClearStatsObjects:
     ld   DE, $06                                       ;; 04:443e $11 $06 $00
     add  HL, DE                                        ;; 04:4441 $19
     dec  B                                             ;; 04:4442 $05
-    jr   NZ, bossClearStatsObjects.loop                ;; 04:4443 $20 $ea
+    jr   NZ, .loop                                     ;; 04:4443 $20 $ea
     ret                                                ;; 04:4445 $c9
 
 bossCollisionHandling:
@@ -835,7 +835,7 @@ bossCollisionHandling:
     pop  DE                                            ;; 04:448b $d1
     call bossCheckElementalImunities                   ;; 04:448c $cd $55 $46
     pop  BC                                            ;; 04:448f $c1
-    jp   NZ, bossCollisionHandling.immune              ;; 04:4490 $c2 $54 $45
+    jp   NZ, .immune                                   ;; 04:4490 $c2 $54 $45
     push BC                                            ;; 04:4493 $c5
     push DE                                            ;; 04:4494 $d5
     ld   BC, $04                                       ;; 04:4495 $01 $04 $00
@@ -847,13 +847,13 @@ bossCollisionHandling:
     call bossWeaponDamage                              ;; 04:44a3 $cd $9b $46
     pop  DE                                            ;; 04:44a6 $d1
     pop  BC                                            ;; 04:44a7 $c1
-    jp   Z, bossCollisionHandling.immune               ;; 04:44a8 $ca $54 $45
+    jp   Z, .immune                                    ;; 04:44a8 $ca $54 $45
     push BC                                            ;; 04:44ab $c5
     push DE                                            ;; 04:44ac $d5
     push HL                                            ;; 04:44ad $e5
     call getEquippedWeaponMinusOne                     ;; 04:44ae $cd $05 $3f
     cp   A, $08                                        ;; 04:44b1 $fe $08
-    jr   NZ, bossCollisionHandling.finishedBloodSwordHeal ;; 04:44b3 $20 $0d
+    jr   NZ, .finishedBloodSwordHeal                   ;; 04:44b3 $20 $0d
     pop  HL                                            ;; 04:44b5 $e1
     push HL                                            ;; 04:44b6 $e5
     srl  H                                             ;; 04:44b7 $cb $3c
@@ -885,7 +885,7 @@ bossCollisionHandling:
     cp   A, $12                                        ;; 04:44e5 $fe $12
 ; Branch if imunities are $12 and only $12. This combo isn't used on any boss.
     jr   Z, .unused                                    ;; 04:44e7 $28 $7e
-    jr   bossCollisionHandling.immune                  ;; 04:44e9 $18 $69
+    jr   .immune                                       ;; 04:44e9 $18 $69
 .jr_04_44eb:
     push BC                                            ;; 04:44eb $c5
     push DE                                            ;; 04:44ec $d5
@@ -898,7 +898,7 @@ bossCollisionHandling:
     call bossSpellDamage                               ;; 04:44fb $cd $c6 $46
     pop  DE                                            ;; 04:44fe $d1
     pop  BC                                            ;; 04:44ff $c1
-    jr   Z, bossCollisionHandling.immune               ;; 04:4500 $28 $52
+    jr   Z, .immune                                    ;; 04:4500 $28 $52
     ld   A, H                                          ;; 04:4502 $7c
     ld   [wDamageDoneToBoss.high], A                   ;; 04:4503 $ea $f3 $d3
     ld   A, L                                          ;; 04:4506 $7d
@@ -915,7 +915,7 @@ bossCollisionHandling:
     pop  DE                                            ;; 04:451a $d1
     call bossCheckElementalImunities                   ;; 04:451b $cd $55 $46
     pop  BC                                            ;; 04:451e $c1
-    jr   NZ, bossCollisionHandling.immune              ;; 04:451f $20 $33
+    jr   NZ, .immune                                   ;; 04:451f $20 $33
     push BC                                            ;; 04:4521 $c5
     push DE                                            ;; 04:4522 $d5
     ld   A, B                                          ;; 04:4523 $78
@@ -930,7 +930,7 @@ bossCollisionHandling:
     call sub_HL_DE                                     ;; 04:4533 $cd $ab $2b
     pop  DE                                            ;; 04:4536 $d1
     pop  BC                                            ;; 04:4537 $c1
-    jr   C, bossCollisionHandling.immune               ;; 04:4538 $38 $1a
+    jr   C, .immune                                    ;; 04:4538 $38 $1a
     push BC                                            ;; 04:453a $c5
     push DE                                            ;; 04:453b $d5
     ld   D, H                                          ;; 04:453c $54
@@ -938,7 +938,7 @@ bossCollisionHandling:
     call add25rndHLtoDE_4                              ;; 04:453e $cd $f6 $46
     pop  DE                                            ;; 04:4541 $d1
     pop  BC                                            ;; 04:4542 $c1
-    jp   Z, bossCollisionHandling.immune               ;; 04:4543 $ca $54 $45
+    jp   Z, .immune                                    ;; 04:4543 $ca $54 $45
     set  7, H                                          ;; 04:4546 $cb $fc
     ld   A, H                                          ;; 04:4548 $7c
     ld   [wDamageDoneToBoss.high], A                   ;; 04:4549 $ea $f3 $d3
@@ -1085,7 +1085,7 @@ bossTestFollowerHit:
     push DE                                            ;; 04:463d $d5
     push BC                                            ;; 04:463e $c5
     ld   A, B                                          ;; 04:463f $78
-    call getProjectileSize_trampoline              ;; 04:4640 $cd $09 $2c
+    call getProjectileSize_trampoline                  ;; 04:4640 $cd $09 $2c
     pop  BC                                            ;; 04:4643 $c1
     pop  DE                                            ;; 04:4644 $d1
     cp   A, D                                          ;; 04:4645 $ba
