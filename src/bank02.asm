@@ -4051,7 +4051,8 @@ getEquippedWeaponAP:
     pop  HL                                            ;; 02:5ba8 $e1
     ret                                                ;; 02:5ba9 $c9
 
-;@data amount=23 format=bbbbbbbbbb
+; There is a break in the table due to a non-aligned label that BadBoy doesn't handle. Real size is 34.
+;@data amount=24 format=bbbbbbbbbb
 ; Window data for size/height/cursor.
 ;0-3: x, y, w, h
 ;4: Amount of rows to draw with text
@@ -4109,23 +4110,32 @@ windowData:
     db   $00, $00, $13, $05, $02, $04, $02, $01, $00, $00 ;; 02:5c7c .......... $15
 ; Unused:
     db   $0e, $00, $05, $03, $01, $04, $01, $00, $00, $00 ;; 02:5c86 ?????????? $16
-    db   $00, $00, $13, $05, $02, $11, $02, $00        ;; 02:5c90 ........
-    db   $00, $00                                      ;; 02:5c98 ..
+; Levelup message ("Level up! Select your growth type."):
+    db   $00, $00, $13, $05, $02, $11, $02, $00, $00, $00 ;; 02:5c90 .......... $17
+; There is a break in the table due to a non-aligned label that BadBoy doesn't handle
 ;@data amount=10 format=bbbbbbbbbb
+; (#18)
 .selectLevelupStats:
     db   $00, $00, $13, $05, $04, $07, $04, $03, $02, $09 ;; 02:5c9a .......... $00
-; Levelup Yes, No:
+; (#19) Levelup Yes, No: (#19)
     db   $00, $06, $09, $05, $02, $05, $02, $02, $01, $00 ;; 02:5ca4 .......... $01
-; Status screen AP, DP (this has an invisible border, but is a different window):
+; (#1a) Status screen AP, DP (this has an invisible border, but is a different window):
     db   $00, $0b, $06, $09, $02, $05, $02, $00, $01, $00 ;; 02:5cae .......... $02
+; (#1b) Save/Load top window:
     db   $00, $02, $13, $06, $01, $0f, $02, $00, $02, $00 ;; 02:5cb8 .......... $03
+; (#1c) Save/Load bottom window:
     db   $00, $0a, $13, $06, $01, $0f, $02, $00, $02, $00 ;; 02:5cc2 .......... $04
+; (#1d)
 .namingScreenTop:
     db   $00, $00, $0e, $03, $01, $04, $01, $00, $00, $00 ;; 02:5ccc .......... $05
+; (#1e)
 .namingScreenBottom:
     db   $00, $04, $13, $0d, $06, $09, $51, $01, $09, $02 ;; 02:5cd6 .......... $06
+; (#1f) Title screen menu (New Game, Continue):
     db   $05, $09, $09, $05, $02, $08, $02, $00, $01, $00 ;; 02:5ce0 .......... $07
+; (#20) Status effect inflicted message (Pois, Ston, Moog, Dark):
     db   $0b, $01, $07, $03, $01, $04, $01, $00, $00, $00 ;; 02:5cea ?????????? $08
+; (#21) Levelup HP/MP recovered message:
     db   $00, $0a, $13, $07, $03, $10, $04, $00, $00, $00 ;; 02:5cf4 .......... $09
 
 ;@data amount=4 format=bbbb
