@@ -8086,7 +8086,7 @@ runScriptFromScriptByIndex:
     jr   .jr_00_31f1                                   ;; 00:31e8 $18 $07
 .normal_script:
     call getScriptPointerFromScriptPointerTable        ;; 00:31ea $cd $82 $32
-    ld   DE, data_01_4000                              ;; 00:31ed $11 $00 $40
+    ld   DE, $4000 ;@=value                            ;; 00:31ed $11 $00 $40
     add  HL, DE                                        ;; 00:31f0 $19
 .jr_00_31f1:
     ld   A, H                                          ;; 00:31f1 $7c
