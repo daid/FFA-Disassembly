@@ -332,6 +332,7 @@ animateTilesIncrementCounter:
 
 ; Return: A = pressed buttons
 ; Return: B = newly pressed buttons
+; Return: C = pressed buttons (copy)
 updateJoypadInput:
     ld   HL, $ff00                                     ;; 02:4218 $21 $00 $ff
     ld   [HL], $10                                     ;; 02:421b $36 $10

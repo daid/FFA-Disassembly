@@ -9026,15 +9026,17 @@ drawText:
     xor  A, $80                                        ;; 00:3794 $ee $80
     call storeTileAatDialogPositionDE                  ;; 00:3796 $cd $44 $38
     ld   A, [wDialogType]                              ;; 00:3799 $fa $4a $d8
-    cp   A, $1e                                        ;; 00:379c $fe $1e
+    cp   A, $1e ; Naming screen                        ;; 00:379c $fe $1e
     jr   NZ, .jr_00_37a1                               ;; 00:379e $20 $01
+; Naming screen puts a space between each character
+; And also prints as if the player was holding a button down
     inc  E                                             ;; 00:37a0 $1c
 .jr_00_37a1:
     pop  AF                                            ;; 00:37a1 $f1
-    jr   NZ, .jr_00_37b8                               ;; 00:37a2 $20 $14
+    jr   NZ, .print_more_text                          ;; 00:37a2 $20 $14
     ld   A, [wWindowFlags]                             ;; 00:37a4 $fa $74 $d8
     bit  1, A                                          ;; 00:37a7 $cb $4f
-    jr   NZ, .jr_00_37d4                               ;; 00:37a9 $20 $29
+    jr   NZ, .finished                                 ;; 00:37a9 $20 $29
     push HL                                            ;; 00:37ab $e5
     push DE                                            ;; 00:37ac $d5
     push BC                                            ;; 00:37ad $c5
@@ -9044,8 +9046,8 @@ drawText:
     pop  BC                                            ;; 00:37b3 $c1
     pop  DE                                            ;; 00:37b4 $d1
     pop  HL                                            ;; 00:37b5 $e1
-    jr   Z, .jr_00_37d4                                ;; 00:37b6 $28 $1c
-.jr_00_37b8:
+    jr   Z, .finished                                  ;; 00:37b6 $28 $1c
+.print_more_text:
     inc  E                                             ;; 00:37b8 $1c
     dec  B                                             ;; 00:37b9 $05
     jr   NZ, .loop_1                                   ;; 00:37ba $20 $be
@@ -9060,7 +9062,7 @@ drawText:
     ld   [wDualCharacterPosition], A                   ;; 00:37cd $ea $83 $d8
     call setDialogTextInsertionPoint                   ;; 00:37d0 $cd $36 $37
     ret                                                ;; 00:37d3 $c9
-.jr_00_37d4:
+.finished:
     inc  E                                             ;; 00:37d4 $1c
     dec  B                                             ;; 00:37d5 $05
     push AF                                            ;; 00:37d6 $f5
