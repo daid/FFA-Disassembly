@@ -15,6 +15,7 @@
 ; bit 7: fire
 ;offset4: Element immunities
 ;offset5: Touch damage elements
+; bit 6: might be related to enemies with shields
 ;offset6: Touch damage
 ;offset7: Defense
 ;offset9: Projectile type

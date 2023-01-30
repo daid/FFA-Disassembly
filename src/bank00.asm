@@ -8170,7 +8170,7 @@ gameStateScript:
 ; Output: HL, script pointer value
 getScriptPointerFromScriptPointerTable:
     push HL                                            ;; 00:3282 $e5
-    ld   A, $08                                        ;; 00:3283 $3e $08
+    ld   A, BANK(scriptPointersTable) ;@=bank scriptPointersTable ;; 00:3283 $3e $08
     call pushBankNrAndSwitch                           ;; 00:3285 $cd $fb $29
     pop  BC                                            ;; 00:3288 $c1
     ld   HL, scriptPointersTable                       ;; 00:3289 $21 $05 $4f
@@ -10204,7 +10204,7 @@ setWillBarMax:
 setNextXPLevel:
     push BC                                            ;; 00:3ea3 $c5
     push AF                                            ;; 00:3ea4 $f5
-    ld   A, $08                                        ;; 00:3ea5 $3e $08
+    ld   A, BANK(xpPerLevelTable) ;@=bank xpPerLevelTable ;; 00:3ea5 $3e $08
     call pushBankNrAndSwitch                           ;; 00:3ea7 $cd $fb $29
     pop  AF                                            ;; 00:3eaa $f1
     ld   HL, xpPerLevelTable                           ;; 00:3eab $21 $d6 $4d

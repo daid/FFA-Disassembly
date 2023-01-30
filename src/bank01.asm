@@ -65,7 +65,7 @@ prepareLetterboxEffect:
     call loadLCDCEffectBuffer                          ;; 01:406d $cd $f3 $02
     ld   HL, $4260                                     ;; 01:4070 $21 $60 $42
     ld   DE, $8f00                                     ;; 01:4073 $11 $00 $8f
-    ld   A, $0c                                        ;; 01:4076 $3e $0c
+    ld   A, BANK(tilesetGfxOutdoor) ;@=bank tilesetGfxOutdoor ;; 01:4076 $3e $0c
     call addTileGraphicCopyRequest                     ;; 01:4078 $cd $f5 $2d
     ld   C, $f0                                        ;; 01:407b $0e $f0
     ld   DE, $00                                       ;; 01:407d $11 $00 $00
