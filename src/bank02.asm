@@ -706,16 +706,16 @@ windowBorderConvertToPixelCoords:
     ld   D, A                                          ;; 02:441d $57
     ret                                                ;; 02:441e $c9
 
-call_02_441f:
+checkSpriteXBetweenCAndB:
     inc  HL                                            ;; 02:441f $23
     ld   A, [HL-]                                      ;; 02:4420 $3a
     cp   A, C                                          ;; 02:4421 $b9
-    jr   C, .jr_02_4429                                ;; 02:4422 $38 $05
+    jr   C, .outside_bounds                            ;; 02:4422 $38 $05
     cp   A, B                                          ;; 02:4424 $b8
-    jr   NC, .jr_02_4429                               ;; 02:4425 $30 $02
+    jr   NC, .outside_bounds                           ;; 02:4425 $30 $02
     or   A, A                                          ;; 02:4427 $b7
     ret                                                ;; 02:4428 $c9
-.jr_02_4429:
+.outside_bounds:
     xor  A, A                                          ;; 02:4429 $af
     ret                                                ;; 02:442a $c9
 
@@ -740,7 +740,7 @@ hideSpritesBehindWindow:
     pop  BC                                            ;; 02:4444 $c1
     push AF                                            ;; 02:4445 $f5
     push DE                                            ;; 02:4446 $d5
-    call call_02_441f                                  ;; 02:4447 $cd $1f $44
+    call checkSpriteXBetweenCAndB                      ;; 02:4447 $cd $1f $44
     jr   Z, .jr_02_445c                                ;; 02:444a $28 $10
     ld   A, [HL]                                       ;; 02:444c $7e
     ld   [HL], $cf                                     ;; 02:444d $36 $cf
@@ -799,7 +799,7 @@ showSpritesBehindWindow:
     ld   A, [HL]                                       ;; 02:4495 $7e
     cp   A, $cf                                        ;; 02:4496 $fe $cf
     jr   NZ, .jr_02_44a6                               ;; 02:4498 $20 $0c
-    call call_02_441f                                  ;; 02:449a $cd $1f $44
+    call checkSpriteXBetweenCAndB                      ;; 02:449a $cd $1f $44
     jr   Z, .jr_02_44a6                                ;; 02:449d $28 $07
     pop  DE                                            ;; 02:449f $d1
     push DE                                            ;; 02:44a0 $d5
