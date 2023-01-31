@@ -2379,6 +2379,7 @@ playerHit:
     cpl                                                ;; 01:50e4 $2f
     and  A, C                                          ;; 01:50e5 $a1
     ret  Z                                             ;; 01:50e6 $c8
+; This is calculating a 25% chance of giving any status effect an enemy is capable of by anding two random bits.
     ld   C, A                                          ;; 01:50e7 $4f
     push BC                                            ;; 01:50e8 $c5
     call getRandomByte                                 ;; 01:50e9 $cd $1e $2b

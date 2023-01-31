@@ -1239,7 +1239,8 @@ wVendorPurchaseID:
 wD85E:
     ds 1                                               ;; d85e
 
-wD85F:
+; Used when a status is inflicted in combat. If the effect is not Fuji's, it is nibble swaped.
+wStatusEffectNew:
     ds 1                                               ;; d85f
 
 wD860:
@@ -1383,7 +1384,8 @@ wIntroScrollSCYBackup:
 wIntroScrollCounter1:
     ds 1                                               ;; d889
 
-wD88A:
+; Initialized with the number of possible status effects (five), then decremented until the newly inflicted is found.
+wStatusEffectLabelIndex:
     ds 1                                               ;; d88a
 
 wCurrentItemOrSpellInUse:

@@ -1066,7 +1066,7 @@ gameStateMenuJumptable:
     dw   windowDismiss                                 ;; 02:480e pP $23
     dw   windowVendorShowBuyMessageWindow              ;; 02:4810 pP $24
     dw   windowVendorShowBuyMessage                    ;; 02:4812 pP $25
-    dw   call_02_51d5                                  ;; 02:4814 pP $26
+    dw   windowWaitForAnyButton                        ;; 02:4814 pP $26
     dw   call_02_5475                                  ;; 02:4816 ?? $27
     dw   call_02_547e                                  ;; 02:4818 ?? $28
     dw   call_02_5490                                  ;; 02:481a ?? $29
@@ -1084,9 +1084,9 @@ gameStateMenuJumptable:
     dw   openLoadScreen                                ;; 02:4832 ?? $35
     dw   runMinimapScript                              ;; 02:4834 pP $36
     dw   openLevelUpStatusScreen                       ;; 02:4836 pP $37
-    dw   call_02_77d8                                  ;; 02:4838 ?? $38
-    dw   call_02_77f1                                  ;; 02:483a ?? $39
-    dw   call_02_781e                                  ;; 02:483c ?? $3a
+    dw   windowOpenStatusEffectInflicted               ;; 02:4838 ?? $38
+    dw   windowStatusEffectInflictedDrawStatus         ;; 02:483a ?? $39
+    dw   windowCloseStatusEffectInflicted              ;; 02:483c ?? $3a
 
 ; Used by START, SELECT, and leveling up
 ; a = window number
@@ -2444,7 +2444,7 @@ windowVendorShowBuyMessage:
 .period:
     TXT  ".<00>"                                       ;; 02:51d3 ..
 
-call_02_51d5:
+windowWaitForAnyButton:
     call updateJoypadInput_trampoline                  ;; 02:51d5 $cd $d1 $1e
     ld   A, E                                          ;; 02:51d8 $7b
     and  A, D                                          ;; 02:51d9 $a2
@@ -2452,7 +2452,7 @@ call_02_51d5:
     ld   B, $0f                                        ;; 02:51db $06 $0f
     ld   A, [wDialogType]                              ;; 02:51dd $fa $4a $d8
     cp   A, $20                                        ;; 02:51e0 $fe $20
-    jp   Z, .jp_02_51f5                                ;; 02:51e2 $ca $f5 $51
+    jp   Z, .window_status_effect_inflicted            ;; 02:51e2 $ca $f5 $51
     cp   A, $17                                        ;; 02:51e5 $fe $17
     jr   NZ, .jr_02_51eb                               ;; 02:51e7 $20 $02
     ld   B, $18                                        ;; 02:51e9 $06 $18
@@ -2462,7 +2462,7 @@ call_02_51d5:
     ld   A, $81                                        ;; 02:51ef $3e $81
     ld   [wMenuStateCurrentFunction], A                ;; 02:51f1 $ea $53 $d8
     ret                                                ;; 02:51f4 $c9
-.jp_02_51f5:
+.window_status_effect_inflicted:
     ld   A, $39                                        ;; 02:51f5 $3e $39
     ld   [wMenuStateCurrentFunction], A                ;; 02:51f7 $ea $53 $d8
     ret                                                ;; 02:51fa $c9
@@ -7181,11 +7181,11 @@ giveStatusEffect:
     ld   A, $0f                                        ;; 02:77b6 $3e $0f
     ld   [wMainGameState], A                           ;; 02:77b8 $ea $a0 $c0
     pop  AF                                            ;; 02:77bb $f1
-    ld   [wD85F], A                                    ;; 02:77bc $ea $5f $d8
+    ld   [wStatusEffectNew], A                         ;; 02:77bc $ea $5f $d8
     bit  4, A                                          ;; 02:77bf $cb $67
-    jr   NZ, jr_02_7827                                ;; 02:77c1 $20 $64
+    jr   NZ, startStatusEffectAfterWindow              ;; 02:77c1 $20 $64
     swap A                                             ;; 02:77c3 $cb $37
-    ld   [wD85F], A                                    ;; 02:77c5 $ea $5f $d8
+    ld   [wStatusEffectNew], A                         ;; 02:77c5 $ea $5f $d8
     ld   A, $06                                        ;; 02:77c8 $3e $06
     call playSFX                                       ;; 02:77ca $cd $7d $29
     ld   A, $38                                        ;; 02:77cd $3e $38
@@ -7194,25 +7194,26 @@ giveStatusEffect:
     ld   [wDialogType], A                              ;; 02:77d4 $ea $4a $d8
     ret                                                ;; 02:77d7 $c9
 
-call_02_77d8:
+windowOpenStatusEffectInflicted:
     call drawWindow                                    ;; 02:77d8 $cd $00 $67
     ld   A, [wMenuStateCurrentFunction]                ;; 02:77db $fa $53 $d8
     rlca                                               ;; 02:77de $07
     ret  C                                             ;; 02:77df $d8
     ld   A, $05                                        ;; 02:77e0 $3e $05
-    ld   [wD88A], A                                    ;; 02:77e2 $ea $8a $d8
+    ld   [wStatusEffectLabelIndex], A                  ;; 02:77e2 $ea $8a $d8
     ld   A, $39                                        ;; 02:77e5 $3e $39
     ld   [wMenuStateCurrentFunction], A                ;; 02:77e7 $ea $53 $d8
     ld   A, [wDialogType]                              ;; 02:77ea $fa $4a $d8
     call windowInitContents                            ;; 02:77ed $cd $93 $76
     ret                                                ;; 02:77f0 $c9
 
-call_02_77f1:
-    ld   HL, wD88A                                     ;; 02:77f1 $21 $8a $d8
+; Only checks one status each time it's called, so Pois takes a full three frames more than Moog.
+windowStatusEffectInflictedDrawStatus:
+    ld   HL, wStatusEffectLabelIndex                   ;; 02:77f1 $21 $8a $d8
     dec  [HL]                                          ;; 02:77f4 $35
     ld   A, [HL]                                       ;; 02:77f5 $7e
-    jr   Z, call_02_781e                               ;; 02:77f6 $28 $26
-    ld   HL, wD85F                                     ;; 02:77f8 $21 $5f $d8
+    jr   Z, windowCloseStatusEffectInflicted           ;; 02:77f6 $28 $26
+    ld   HL, wStatusEffectNew                          ;; 02:77f8 $21 $5f $d8
     rlc  [HL]                                          ;; 02:77fb $cb $06
     ret  NC                                            ;; 02:77fd $d0
     ld   B, A                                          ;; 02:77fe $47
@@ -7234,14 +7235,14 @@ call_02_77f1:
     ld   [wMenuStateCurrentFunction], A                ;; 02:781a $ea $53 $d8
     ret                                                ;; 02:781d $c9
 
-call_02_781e:
+windowCloseStatusEffectInflicted:
     ld   A, $3a                                        ;; 02:781e $3e $3a
     ld   [wMenuStateCurrentFunction], A                ;; 02:7820 $ea $53 $d8
     call windowCloseAndRestoreHidden                   ;; 02:7823 $cd $7a $66
     ret  NZ                                            ;; 02:7826 $c0
 
-jr_02_7827:
-    ld   A, [wD85F]                                    ;; 02:7827 $fa $5f $d8
+startStatusEffectAfterWindow:
+    ld   A, [wStatusEffectNew]                         ;; 02:7827 $fa $5f $d8
     push AF                                            ;; 02:782a $f5
     and  A, $0f                                        ;; 02:782b $e6 $0f
     jr   Z, .jr_02_783b                                ;; 02:782d $28 $0c
