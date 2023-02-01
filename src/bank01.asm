@@ -172,7 +172,7 @@ loadMapWithShutterEffectSequence:
     dw   shutterEffectClose                            ;; 01:4140 pP $02
     dw   drawRoomFromMap                               ;; 01:4142 pP $03
     dw   advanceScriptOpWhenVRAMCopiesDone             ;; 01:4144 pP $04
-    dw   call_01_43a3                                  ;; 01:4146 pP $05
+    dw   loadMapWithShutterFinalSetup                  ;; 01:4146 pP $05
     dw   shutterEffectOpen                             ;; 01:4148 pP $06
     dw   LoadMapEnd                                    ;; 01:414a pP $07
 
@@ -189,7 +189,7 @@ loadMapInstantSequence:
     dw   advanceScriptOpWhenVRAMCopiesDone             ;; 01:415a pP $01
     dw   drawRoomFromMap                               ;; 01:415c pP $02
     dw   advanceScriptOpWhenVRAMCopiesDone             ;; 01:415e pP $03
-    dw   call_01_43ee                                  ;; 01:4160 pP $04
+    dw   loadMapInstantFinalSetup                      ;; 01:4160 pP $04
     dw   LoadMapEnd                                    ;; 01:4162 pP $05
 
 openMinimap:
@@ -206,7 +206,7 @@ openMinimap:
     dw   shutterEffectClose                            ;; 01:4174 pP $02
     dw   loadMinimapToBackground                       ;; 01:4176 pP $03
     dw   advanceScriptOpWhenVRAMCopiesDone             ;; 01:4178 pP $04
-    dw   call_01_4422                                  ;; 01:417a pP $05
+    dw   openMinimapFinalSetup                         ;; 01:417a pP $05
     dw   shutterEffectOpen                             ;; 01:417c pP $06
     dw   LoadMapEnd                                    ;; 01:417e pP $07
 
@@ -524,13 +524,14 @@ drawRoomFromMap:
     inc  HL                                            ;; 01:43a1 $23
     ret                                                ;; 01:43a2 $c9
 
-call_01_43a3:
+; Removes previous screen's objects, positions the player and any follower, and inits the shutter open effect.
+loadMapWithShutterFinalSetup:
     push DE                                            ;; 01:43a3 $d5
     push BC                                            ;; 01:43a4 $c5
     call removeNpcObjects                              ;; 01:43a5 $cd $75 $03
     pop  BC                                            ;; 01:43a8 $c1
     push BC                                            ;; 01:43a9 $c5
-    call call_01_44a5                                  ;; 01:43aa $cd $a5 $44
+    call showPlayerAtTile                              ;; 01:43aa $cd $a5 $44
     call checkForFollower                              ;; 01:43ad $cd $c2 $28
     pop  HL                                            ;; 01:43b0 $e1
     jr   NZ, .jr_01_43cc                               ;; 01:43b1 $20 $19
@@ -572,13 +573,14 @@ call_01_43a3:
     inc  HL                                            ;; 01:43ec $23
     ret                                                ;; 01:43ed $c9
 
-call_01_43ee:
+; Removes previous screen's objects and positions the player and any follower.
+loadMapInstantFinalSetup:
     push DE                                            ;; 01:43ee $d5
     push BC                                            ;; 01:43ef $c5
     call removeNpcObjects                              ;; 01:43f0 $cd $75 $03
     pop  BC                                            ;; 01:43f3 $c1
     push BC                                            ;; 01:43f4 $c5
-    call call_01_44a5                                  ;; 01:43f5 $cd $a5 $44
+    call showPlayerAtTile                              ;; 01:43f5 $cd $a5 $44
     call checkForFollower                              ;; 01:43f8 $cd $c2 $28
     pop  HL                                            ;; 01:43fb $e1
     jr   NZ, .jr_01_4417                               ;; 01:43fc $20 $19
@@ -610,7 +612,8 @@ call_01_43ee:
     inc  HL                                            ;; 01:4420 $23
     ret                                                ;; 01:4421 $c9
 
-call_01_4422:
+; Draws the minimap if not on the overworld, inits the shutter open effect, hides all sprites, and makes sure to end any player attack.
+openMinimapFinalSetup:
     push DE                                            ;; 01:4422 $d5
     ld   A, [wMapWidthTmp]                             ;; 01:4423 $fa $9f $d4
     cp   A, $00                                        ;; 01:4426 $fe $00
@@ -683,7 +686,8 @@ LoadMapEnd:
     pop  HL                                            ;; 01:44a3 $e1
     ret                                                ;; 01:44a4 $c9
 
-call_01_44a5:
+; BC = yx tile location
+showPlayerAtTile:
     ld   A, B                                          ;; 01:44a5 $78
     add  A, A                                          ;; 01:44a6 $87
     add  A, A                                          ;; 01:44a7 $87
