@@ -1201,7 +1201,7 @@ wMenuFlagsBackup:
 wD84F:
     ds 1                                               ;; d84f
 
-wD850:
+wMenuStateFunctionNew:
     ds 1                                               ;; d850
 
 wEquippedItemElements:

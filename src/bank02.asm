@@ -3551,7 +3551,7 @@ currentlyEquippedEquipmentList:
     dw   wEquippedShield                               ;; 02:5875 ?? $03
 
 jp_02_5877:
-    ld   [wD850], A                                    ;; 02:5877 $ea $50 $d8
+    ld   [wMenuStateFunctionNew], A                    ;; 02:5877 $ea $50 $d8
     ld   A, [wDialogType]                              ;; 02:587a $fa $4a $d8
     call calulateAPDP                                  ;; 02:587d $cd $d6 $57
 
@@ -3657,7 +3657,7 @@ jp_02_5922:
     ld   BC, $1f01                                     ;; 02:593e $01 $01 $1f
     pop  AF                                            ;; 02:5941 $f1
     call Z, drawText                                   ;; 02:5942 $cc $77 $37
-    ld   A, [wD850]                                    ;; 02:5945 $fa $50 $d8
+    ld   A, [wMenuStateFunctionNew]                    ;; 02:5945 $fa $50 $d8
     ld   [wMenuStateCurrentFunction], A                ;; 02:5948 $ea $53 $d8
     ld   B, A                                          ;; 02:594b $47
     call runVirtualScriptOpCodeFF                      ;; 02:594c $cd $69 $3c
@@ -3861,7 +3861,7 @@ drawLoadSaveWindowContents_common:
     call drawExperienceFromSRAM                        ;; 02:5a87 $cd $89 $75
     call disableSRAM                                   ;; 02:5a8a $cd $5e $74
 .jr_02_5a8d:
-    ld   A, [wD850]                                    ;; 02:5a8d $fa $50 $d8
+    ld   A, [wMenuStateFunctionNew]                    ;; 02:5a8d $fa $50 $d8
     ld   [wMenuStateCurrentFunction], A                ;; 02:5a90 $ea $53 $d8
     ld   A, [wDialogType]                              ;; 02:5a93 $fa $4a $d8
     cp   A, $1c                                        ;; 02:5a96 $fe $1c
@@ -4606,7 +4606,7 @@ call_02_67f9:
 
 call_02_680e:
     ld   A, B                                          ;; 02:680e $78
-    ld   [wD850], A                                    ;; 02:680f $ea $50 $d8
+    ld   [wMenuStateFunctionNew], A                    ;; 02:680f $ea $50 $d8
     call loadRegisterState2                            ;; 02:6812 $cd $a7 $6d
     ld   A, [wMenuFlags]                               ;; 02:6815 $fa $49 $d8
     and  A, $cf                                        ;; 02:6818 $e6 $cf
