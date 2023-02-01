@@ -1549,6 +1549,7 @@ call_00_08d4:
     pop  DE                                            ;; 00:095f $d1
     ret                                                ;; 00:0960 $c9
 
+; HL = object runtime data pointer for selected object
 call_00_0961:
     push HL                                            ;; 00:0961 $e5
     push DE                                            ;; 00:0962 $d5
@@ -3917,19 +3918,19 @@ tileScriptOrSpikeDamage:
 .loop:
     ld   A, [HL+]                                      ;; 00:172f $2a
     cp   A, $ff                                        ;; 00:1730 $fe $ff
-    jr   Z, .jr_00_1742                                ;; 00:1732 $28 $0e
+    jr   Z, .pop_bank_and_return                       ;; 00:1732 $28 $0e
     cp   A, D                                          ;; 00:1734 $ba
-    jr   Z, .jr_00_173b                                ;; 00:1735 $28 $04
+    jr   Z, .break                                     ;; 00:1735 $28 $04
     inc  HL                                            ;; 00:1737 $23
     inc  HL                                            ;; 00:1738 $23
     jr   .loop                                         ;; 00:1739 $18 $f4
-.jr_00_173b:
+.break:
     ld   A, [HL+]                                      ;; 00:173b $2a
     ld   H, [HL]                                       ;; 00:173c $66
     ld   L, A                                          ;; 00:173d $6f
     ld   A, B                                          ;; 00:173e $78
     call runScriptByIndex                              ;; 00:173f $cd $ad $31
-.jr_00_1742:
+.pop_bank_and_return:
     call popBankNrAndSwitch                            ;; 00:1742 $cd $0a $2a
     ret                                                ;; 00:1745 $c9
 .no_script_bit:
@@ -3987,7 +3988,7 @@ call_00_177e:
     pop  DE                                            ;; 00:179d $d1
     ld   A, [wMainGameStateFlags]                      ;; 00:179e $fa $a1 $c0
     bit  3, A                                          ;; 00:17a1 $cb $5f
-    jr   NZ, .jr_00_1802                               ;; 00:17a3 $20 $5d
+    jr   NZ, .pop_bank_and_return                      ;; 00:17a3 $20 $5d
     ld   A, C                                          ;; 00:17a5 $79
     and  A, $07                                        ;; 00:17a6 $e6 $07
     cp   A, $01                                        ;; 00:17a8 $fe $01
@@ -3995,7 +3996,7 @@ call_00_177e:
     cp   A, $04                                        ;; 00:17ac $fe $04
     jr   Z, .jr_00_17b4                                ;; 00:17ae $28 $04
     cp   A, $05                                        ;; 00:17b0 $fe $05
-    jr   NZ, .jr_00_1802                               ;; 00:17b2 $20 $4e
+    jr   NZ, .pop_bank_and_return                      ;; 00:17b2 $20 $4e
 .jr_00_17b4:
     ld   C, B                                          ;; 00:17b4 $48
     ld   B, L                                          ;; 00:17b5 $45
@@ -4005,7 +4006,7 @@ call_00_177e:
     pop  DE                                            ;; 00:17bb $d1
     pop  BC                                            ;; 00:17bc $c1
     bit  6, H                                          ;; 00:17bd $cb $74
-    jr   Z, .jr_00_1802                                ;; 00:17bf $28 $41
+    jr   Z, .pop_bank_and_return                       ;; 00:17bf $28 $41
     inc  E                                             ;; 00:17c1 $1c
     push BC                                            ;; 00:17c2 $c5
     push HL                                            ;; 00:17c3 $e5
@@ -4013,7 +4014,7 @@ call_00_177e:
     pop  DE                                            ;; 00:17c7 $d1
     pop  BC                                            ;; 00:17c8 $c1
     bit  6, H                                          ;; 00:17c9 $cb $74
-    jr   Z, .jr_00_1802                                ;; 00:17cb $28 $35
+    jr   Z, .pop_bank_and_return                       ;; 00:17cb $28 $35
     ld   A, H                                          ;; 00:17cd $7c
     swap A                                             ;; 00:17ce $cb $37
     and  A, $03                                        ;; 00:17d0 $e6 $03
@@ -4030,16 +4031,16 @@ call_00_177e:
     cp   A, $02                                        ;; 00:17e3 $fe $02
     jr   Z, .jr_00_17f3                                ;; 00:17e5 $28 $0c
     ld   B, $08                                        ;; 00:17e7 $06 $08
-    jr   .jr_00_17f5                                   ;; 00:17e9 $18 $0a
+    jr   .finish                                       ;; 00:17e9 $18 $0a
 .jr_00_17eb:
     ld   B, $01                                        ;; 00:17eb $06 $01
-    jr   .jr_00_17f5                                   ;; 00:17ed $18 $06
+    jr   .finish                                       ;; 00:17ed $18 $06
 .jr_00_17ef:
     ld   B, $02                                        ;; 00:17ef $06 $02
-    jr   .jr_00_17f5                                   ;; 00:17f1 $18 $02
+    jr   .finish                                       ;; 00:17f1 $18 $02
 .jr_00_17f3:
     ld   B, $04                                        ;; 00:17f3 $06 $04
-.jr_00_17f5:
+.finish:
     ld   A, $90                                        ;; 00:17f5 $3e $90
     or   A, B                                          ;; 00:17f7 $b0
     push BC                                            ;; 00:17f8 $c5
@@ -4047,19 +4048,19 @@ call_00_177e:
     pop  BC                                            ;; 00:17fc $c1
     ld   A, $02                                        ;; 00:17fd $3e $02
     call setObjectOffset0b                             ;; 00:17ff $cd $08 $0d
-.jr_00_1802:
+.pop_bank_and_return:
     call popBankNrAndSwitch                            ;; 00:1802 $cd $0a $2a
     ret                                                ;; 00:1805 $c9
 .jr_00_1806:
     ld   A, B                                          ;; 00:1806 $78
     cp   A, $00                                        ;; 00:1807 $fe $00
-    jr   NZ, .jr_00_17f5                               ;; 00:1809 $20 $ea
+    jr   NZ, .finish                                   ;; 00:1809 $20 $ea
     push BC                                            ;; 00:180b $c5
     call getObjectDirection                            ;; 00:180c $cd $99 $0c
     pop  BC                                            ;; 00:180f $c1
     and  A, $0f                                        ;; 00:1810 $e6 $0f
     ld   B, A                                          ;; 00:1812 $47
-    jr   .jr_00_17f5                                   ;; 00:1813 $18 $e0
+    jr   .finish                                       ;; 00:1813 $18 $e0
 
 call_00_1815:
     push DE                                            ;; 00:1815 $d5
