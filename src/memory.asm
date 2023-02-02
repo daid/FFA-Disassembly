@@ -314,7 +314,11 @@ wSoundsMusicRestorePitchChannel1:
 ; 00: Lower nibble, orientation. bit7=not aligned to 8x8 grid, other bits unknown ($ff indicates unused)
 ;  *  bit0: East, bit1: West, bit2: North, bit3: South
 ; 01: Movement speed
-; 02: Collision flags ($01: blocked by walls, $80 blocks player, $10 can be pushed by player or take damage on touch?)
+; 02: Collision flags:
+; bit 0: blocked by walls
+; bit 2: walk on water (and not on land)
+; bit 4: can be pushed by player or take damage on touch?
+; bit 7: blocks player
 ; 03: Unknown
 ; 04: Y position
 ; 05: X position

@@ -1076,7 +1076,7 @@ getObjectPositionAndCollisionInfo:
     dec  E                                             ;; 00:0693 $1d
     ret                                                ;; 00:0694 $c9
 
-; A = ?
+; A = 00 if not moving. Direction byte, upper niblle is 9 if requesting move
 ; B = ?
 ; C = Object ID for the changed/checked object
 processPhysicsForObject:
@@ -1102,12 +1102,13 @@ processPhysicsForObject:
     push HL                                            ;; 00:06b1 $e5
     ld   A, [wMainGameStateFlags]                      ;; 00:06b2 $fa $a1 $c0
     bit  3, A                                          ;; 00:06b5 $cb $5f
-    jr   NZ, .jr_00_06d8                               ;; 00:06b7 $20 $1f
+    jr   NZ, .normal_movement                          ;; 00:06b7 $20 $1f
     ld   BC, $0a                                       ;; 00:06b9 $01 $0a $00
     add  HL, BC                                        ;; 00:06bc $09
     ld   A, [HL+]                                      ;; 00:06bd $2a
     bit  7, A                                          ;; 00:06be $cb $7f
-    jr   Z, .jr_00_06d8                                ;; 00:06c0 $28 $16
+    jr   Z, .normal_movement                           ;; 00:06c0 $28 $16
+; .sliding:
     ld   C, A                                          ;; 00:06c2 $4f
     ld   B, [HL]                                       ;; 00:06c3 $46
     pop  HL                                            ;; 00:06c4 $e1
@@ -1124,7 +1125,7 @@ processPhysicsForObject:
     call call_00_0828                                  ;; 00:06d2 $cd $28 $08
     pop  BC                                            ;; 00:06d5 $c1
     jr   .jr_00_06fc                                   ;; 00:06d6 $18 $24
-.jr_00_06d8:
+.normal_movement:
     pop  HL                                            ;; 00:06d8 $e1
     ld   A, D                                          ;; 00:06d9 $7a
     or   A, D                                          ;; 00:06da $b2
@@ -1152,12 +1153,12 @@ processPhysicsForObject:
     ld   B, A                                          ;; 00:06fb $47
 .jr_00_06fc:
     bit  0, C                                          ;; 00:06fc $cb $41
-    jr   NZ, .right                                    ;; 00:06fe $20 $3f
+    jr   NZ, .east                                     ;; 00:06fe $20 $3f
     bit  1, C                                          ;; 00:0700 $cb $49
-    jr   NZ, .left                                     ;; 00:0702 $20 $70
+    jr   NZ, .west                                     ;; 00:0702 $20 $70
     bit  2, C                                          ;; 00:0704 $cb $51
-    jp   NZ, .up                                       ;; 00:0706 $c2 $ab $07
-; .down:
+    jp   NZ, .north                                    ;; 00:0706 $c2 $ab $07
+; .south:
     ld   D, B                                          ;; 00:0709 $50
     ld   E, $00                                        ;; 00:070a $1e $00
     ld   A, [wMainGameStateFlags]                      ;; 00:070c $fa $a1 $c0
@@ -1184,9 +1185,9 @@ processPhysicsForObject:
     pop  DE                                            ;; 00:0739 $d1
     pop  HL                                            ;; 00:073a $e1
 .jp_00_073b:
-    call call_00_0961                                  ;; 00:073b $cd $61 $09
+    call moveObject                                    ;; 00:073b $cd $61 $09
     ret                                                ;; 00:073e $c9
-.right:
+.east:
     ld   E, B                                          ;; 00:073f $58
     ld   D, $00                                        ;; 00:0740 $16 $00
     ld   A, [wMainGameStateFlags]                      ;; 00:0742 $fa $a1 $c0
@@ -1213,9 +1214,9 @@ processPhysicsForObject:
     pop  DE                                            ;; 00:076e $d1
     pop  HL                                            ;; 00:076f $e1
 .jr_00_0770:
-    call call_00_0961                                  ;; 00:0770 $cd $61 $09
+    call moveObject                                    ;; 00:0770 $cd $61 $09
     ret                                                ;; 00:0773 $c9
-.left:
+.west:
     ld   A, B                                          ;; 00:0774 $78
     cpl                                                ;; 00:0775 $2f
     inc  A                                             ;; 00:0776 $3c
@@ -1245,9 +1246,9 @@ processPhysicsForObject:
     pop  DE                                            ;; 00:07a5 $d1
     pop  HL                                            ;; 00:07a6 $e1
 .jr_00_07a7:
-    call call_00_0961                                  ;; 00:07a7 $cd $61 $09
+    call moveObject                                    ;; 00:07a7 $cd $61 $09
     ret                                                ;; 00:07aa $c9
-.up:
+.north:
     ld   A, B                                          ;; 00:07ab $78
     cpl                                                ;; 00:07ac $2f
     inc  A                                             ;; 00:07ad $3c
@@ -1277,7 +1278,7 @@ processPhysicsForObject:
     pop  DE                                            ;; 00:07da $d1
     pop  HL                                            ;; 00:07db $e1
 .jr_00_07dc:
-    call call_00_0961                                  ;; 00:07dc $cd $61 $09
+    call moveObject                                    ;; 00:07dc $cd $61 $09
     ret                                                ;; 00:07df $c9
 .blocked:
     pop  DE                                            ;; 00:07e0 $d1
@@ -1307,7 +1308,7 @@ processPhysicsForObject:
     push AF                                            ;; 00:0809 $f5
     set  1, A                                          ;; 00:080a $cb $cf
     ld   [wMainGameStateFlags], A                      ;; 00:080c $ea $a1 $c0
-    call call_00_0961                                  ;; 00:080f $cd $61 $09
+    call moveObject                                    ;; 00:080f $cd $61 $09
     ld   A, [wMainGameStateFlags.nextFrame]            ;; 00:0812 $fa $a2 $c0
     ld   C, A                                          ;; 00:0815 $4f
     pop  AF                                            ;; 00:0816 $f1
@@ -1316,6 +1317,10 @@ processPhysicsForObject:
     xor  A, A                                          ;; 00:081b $af
     ret                                                ;; 00:081c $c9
 
+; This is used to check collision flags.
+; Return: Z if testing player and either:
+; 1) top nibble 0 and bottom nibble != 0
+; 2) collision flags equal to $10
 ifPlayerThen_A_Equal_B_Minus_1_And_F0:
     ld   A, [wObjectIDCopy]                            ;; 00:081d $fa $49 $c3
     cp   A, $04                                        ;; 00:0820 $fe $04
@@ -1533,7 +1538,7 @@ call_00_08d4:
     push AF                                            ;; 00:0947 $f5
     set  1, A                                          ;; 00:0948 $cb $cf
     ld   [wMainGameStateFlags], A                      ;; 00:094a $ea $a1 $c0
-    call call_00_0961                                  ;; 00:094d $cd $61 $09
+    call moveObject                                    ;; 00:094d $cd $61 $09
     ld   A, [wMainGameStateFlags.nextFrame]            ;; 00:0950 $fa $a2 $c0
     ld   C, A                                          ;; 00:0953 $4f
     pop  AF                                            ;; 00:0954 $f1
@@ -1549,8 +1554,9 @@ call_00_08d4:
     pop  DE                                            ;; 00:095f $d1
     ret                                                ;; 00:0960 $c9
 
+; DE = yx object distance and direction to move
 ; HL = object runtime data pointer for selected object
-call_00_0961:
+moveObject:
     push HL                                            ;; 00:0961 $e5
     push DE                                            ;; 00:0962 $d5
     ld   BC, $04                                       ;; 00:0963 $01 $04 $00
@@ -1568,16 +1574,19 @@ call_00_0961:
     push BC                                            ;; 00:0975 $c5
     push DE                                            ;; 00:0976 $d5
     push HL                                            ;; 00:0977 $e5
+; $3dfc = -$c204
     ld   DE, $3dfc                                     ;; 00:0978 $11 $fc $3d
     add  HL, DE                                        ;; 00:097b $19
     ld   A, L                                          ;; 00:097c $7d
     or   A, H                                          ;; 00:097d $b4
     swap A                                             ;; 00:097e $cb $37
     ld   C, A                                          ;; 00:0980 $4f
+; C = object id
     pop  HL                                            ;; 00:0981 $e1
     ld   DE, -2 ;@=value signed=True                   ;; 00:0982 $11 $fe $ff
     add  HL, DE                                        ;; 00:0985 $19
     ld   A, [HL]                                       ;; 00:0986 $7e
+; A = object collision flags
     pop  DE                                            ;; 00:0987 $d1
     call checkNpcsForCollisions_trampoline             ;; 00:0988 $cd $1c $04
     pop  HL                                            ;; 00:098b $e1
@@ -1614,6 +1623,7 @@ call_00_0961:
     ld   A, [HL+]                                      ;; 00:09b0 $2a
     ld   H, [HL]                                       ;; 00:09b1 $66
     ld   L, A                                          ;; 00:09b2 $6f
+; HL = sprite shadow OAM address for the first sprite of this object
     ld   A, E                                          ;; 00:09b3 $7b
     add  A, $08                                        ;; 00:09b4 $c6 $08
     ld   [HL], D                                       ;; 00:09b6 $72
@@ -1632,6 +1642,7 @@ call_00_0961:
     ld   A, E                                          ;; 00:09c5 $7b
     or   A, D                                          ;; 00:09c6 $b2
     and  A, $07                                        ;; 00:09c7 $e6 $07
+; return if not aligned to the eight pixel grid
     ret  NZ                                            ;; 00:09c9 $c0
     res  7, [HL]                                       ;; 00:09ca $cb $be
     push BC                                            ;; 00:09cc $c5
@@ -1815,7 +1826,7 @@ createObject:
     set  1, A                                          ;; 00:0ac0 $cb $cf
     ld   [wMainGameStateFlags], A                      ;; 00:0ac2 $ea $a1 $c0
     push BC                                            ;; 00:0ac5 $c5
-    call call_00_0961                                  ;; 00:0ac6 $cd $61 $09
+    call moveObject                                    ;; 00:0ac6 $cd $61 $09
     pop  BC                                            ;; 00:0ac9 $c1
     ld   A, $14                                        ;; 00:0aca $3e $14
     jr   C, .jr_00_0ad6                                ;; 00:0acc $38 $08

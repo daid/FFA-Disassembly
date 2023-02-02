@@ -363,7 +363,7 @@ updateJoypadInput:
     ld   [wJoypadInput], A                             ;; 02:4240 $ea $af $c0
     ret                                                ;; 02:4243 $c9
 
-; Given an object, check if it overlaps any of the Npc objects.
+; Given an object, check if it overlaps any of the Npc objects (objects 7 and up).
 ; Technically, this includes followers, non-player projectiles, and bosses as well.
 ; If a collision is found it stops searching, which may be the source of certain bugs.
 ; A = object collision flags
