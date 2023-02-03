@@ -18,7 +18,7 @@ SECTION "bank03", ROMX[$4000], BANK[$03]
     call_to_bank_target friendlyCollisionHandling      ;; 03:4010 pP
     call_to_bank_target damageNpc                      ;; 03:4012 ??
     call_to_bank_target objectBehaviorMove             ;; 03:4014 pP
-    call_to_bank_target call_03_4aed                   ;; 03:4016 pP
+    call_to_bank_target moveGridlessObject_3           ;; 03:4016 pP
     call_to_bank_target updateObjectPosition_3         ;; 03:4018 pP
     call_to_bank_target updateNpcPosition              ;; 03:401a pP
     call_to_bank_target moveObjectsDuringScript        ;; 03:401c pP
@@ -1126,7 +1126,7 @@ friendlyCollisionHandling:
     or   A, $30                                        ;; 03:461d $f6 $30
     push BC                                            ;; 03:461f $c5
     ld   B, $00                                        ;; 03:4620 $06 $00
-    call call_00_08d4                                  ;; 03:4622 $cd $d4 $08
+    call moveGridlessObject                            ;; 03:4622 $cd $d4 $08
     pop  BC                                            ;; 03:4625 $c1
     pop  AF                                            ;; 03:4626 $f1
     ld   [wMainGameStateFlags], A                      ;; 03:4627 $ea $a1 $c0
@@ -1976,8 +1976,8 @@ getNpcElementalImmunities:
     and  A, C                                          ;; 03:4aeb $a1
     ret                                                ;; 03:4aec $c9
 
-call_03_4aed:
-    call call_00_08d4                                  ;; 03:4aed $cd $d4 $08
+moveGridlessObject_3:
+    call moveGridlessObject                            ;; 03:4aed $cd $d4 $08
     ret                                                ;; 03:4af0 $c9
 
 updateObjectPosition_3:
@@ -3454,7 +3454,7 @@ call_03_52f8:
     and  A, $0f                                        ;; 03:530f $e6 $0f
     or   A, $10                                        ;; 03:5311 $f6 $10
     ld   DE, $8080                                     ;; 03:5313 $11 $80 $80
-    call call_00_08d4                                  ;; 03:5316 $cd $d4 $08
+    call moveGridlessObject                            ;; 03:5316 $cd $d4 $08
     pop  DE                                            ;; 03:5319 $d1
     pop  AF                                            ;; 03:531a $f1
     pop  BC                                            ;; 03:531b $c1
@@ -3641,7 +3641,7 @@ call_03_5403:
     and  A, $0f                                        ;; 03:540c $e6 $0f
     or   A, $10                                        ;; 03:540e $f6 $10
     ld   DE, $8080                                     ;; 03:5410 $11 $80 $80
-    call call_00_08d4                                  ;; 03:5413 $cd $d4 $08
+    call moveGridlessObject                            ;; 03:5413 $cd $d4 $08
     pop  DE                                            ;; 03:5416 $d1
     pop  AF                                            ;; 03:5417 $f1
     ret                                                ;; 03:5418 $c9

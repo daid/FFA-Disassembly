@@ -1077,7 +1077,7 @@ getObjectPositionAndCollisionInfo:
     ret                                                ;; 00:0694 $c9
 
 ; A = 00 if not moving. Direction byte, upper niblle is 9 if requesting move
-; B = ?
+; B = metasprite table row
 ; C = Object ID for the changed/checked object
 processPhysicsForObject:
     ld   D, A                                          ;; 00:0695 $57
@@ -1122,7 +1122,7 @@ processPhysicsForObject:
     ld   E, $00                                        ;; 00:06ce $1e $00
     push BC                                            ;; 00:06d0 $c5
     ld   B, A                                          ;; 00:06d1 $47
-    call call_00_0828                                  ;; 00:06d2 $cd $28 $08
+    call setFrameForObject                             ;; 00:06d2 $cd $28 $08
     pop  BC                                            ;; 00:06d5 $c1
     jr   .jr_00_06fc                                   ;; 00:06d6 $18 $24
 .normal_movement:
@@ -1144,7 +1144,7 @@ processPhysicsForObject:
     ld   B, C                                          ;; 00:06ee $41
 .jr_00_06ef:
     push BC                                            ;; 00:06ef $c5
-    call call_00_0828                                  ;; 00:06f0 $cd $28 $08
+    call setFrameForObject                             ;; 00:06f0 $cd $28 $08
     pop  BC                                            ;; 00:06f3 $c1
     bit  4, C                                          ;; 00:06f4 $cb $61
     jp   Z, .jp_00_0803                                ;; 00:06f6 $ca $03 $08
@@ -1330,7 +1330,11 @@ ifPlayerThen_A_Equal_B_Minus_1_And_F0:
     and  A, $f0                                        ;; 00:0825 $e6 $f0
     ret                                                ;; 00:0827 $c9
 
-call_00_0828:
+; Used for the player, follower, and NPCs.
+; B = object direction
+; E = metasprite table row
+; HL = object runtime pointer
+setFrameForObject:
     push HL                                            ;; 00:0828 $e5
     ld   A, B                                          ;; 00:0829 $78
     bit  5, A                                          ;; 00:082a $cb $6f
@@ -1359,23 +1363,25 @@ call_00_0828:
     call HLandDE                                       ;; 00:0855 $cd $b2 $29
     pop  DE                                            ;; 00:0858 $d1
     jr   Z, .jr_00_085d                                ;; 00:0859 $28 $02
+; If on a vine, then face north
     ld   D, $04                                        ;; 00:085b $16 $04
 .jr_00_085d:
     bit  0, D                                          ;; 00:085d $cb $42
-    jr   NZ, .jr_00_086d                               ;; 00:085f $20 $0c
+    jr   NZ, .east                                     ;; 00:085f $20 $0c
     bit  1, D                                          ;; 00:0861 $cb $4a
-    jr   NZ, .jr_00_0871                               ;; 00:0863 $20 $0c
+    jr   NZ, .west                                     ;; 00:0863 $20 $0c
     bit  2, D                                          ;; 00:0865 $cb $52
-    jr   NZ, .jr_00_0875                               ;; 00:0867 $20 $0c
+    jr   NZ, .north                                    ;; 00:0867 $20 $0c
+; .south:
     ld   A, $03                                        ;; 00:0869 $3e $03
     jr   .jr_00_0877                                   ;; 00:086b $18 $0a
-.jr_00_086d:
+.east:
     ld   A, $00                                        ;; 00:086d $3e $00
     jr   .jr_00_0877                                   ;; 00:086f $18 $06
-.jr_00_0871:
+.west:
     ld   A, $01                                        ;; 00:0871 $3e $01
     jr   .jr_00_0877                                   ;; 00:0873 $18 $02
-.jr_00_0875:
+.north:
     ld   A, $02                                        ;; 00:0875 $3e $02
 .jr_00_0877:
     sla  E                                             ;; 00:0877 $cb $23
@@ -1446,12 +1452,13 @@ pixelToTilePosition:
     dec  E                                             ;; 00:08d2 $1d
     ret                                                ;; 00:08d3 $c9
 
-; Probably related to hit detection
-; A = object direction, possibly with bit 7 set
-; B = ???
-; C = Object ID for the changed/checked object
+; Deals with anything unconstrained by the 8x8 grid: projectiles, player attacks, and also jumping objects.
+; A = object direction
+; B = metasprite table row. Each row has four entries, one for each of the four directions.
+; C = object ID
+; DE = yx object distance and direction to move
 ; Return: Z = collision
-call_00_08d4:
+moveGridlessObject:
     ld   L, A                                          ;; 00:08d4 $6f
     ld   A, C                                          ;; 00:08d5 $79
     cp   A, $14                                        ;; 00:08d6 $fe $14
@@ -1472,6 +1479,7 @@ call_00_08d4:
     ld   A, [HL]                                       ;; 00:08eb $7e
     cp   A, $ff                                        ;; 00:08ec $fe $ff
     ret  Z                                             ;; 00:08ee $c8
+; C = direction
     ld   [HL], C                                       ;; 00:08ef $71
     res  7, [HL]                                       ;; 00:08f0 $cb $be
     push DE                                            ;; 00:08f2 $d5
@@ -1509,6 +1517,7 @@ call_00_08d4:
     inc  HL                                            ;; 00:0920 $23
     ld   A, [HL+]                                      ;; 00:0921 $2a
     ld   B, A                                          ;; 00:0922 $47
+; B = collision flags
     inc  HL                                            ;; 00:0923 $23
     ld   A, [HL+]                                      ;; 00:0924 $2a
     add  A, D                                          ;; 00:0925 $82
@@ -6663,8 +6672,8 @@ scriptObjectBehaviorMove:
 objectBehaviorMove_trampoline:
     jp_to_bank 03, objectBehaviorMove                  ;; 00:2883 $f5 $3e $0a $c3 $35 $1f
 
-call_00_2889:
-    jp_to_bank 03, call_03_4aed                        ;; 00:2889 $f5 $3e $0b $c3 $35 $1f
+moveGridlessObject_3_trampoline:
+    jp_to_bank 03, moveGridlessObject_3                ;; 00:2889 $f5 $3e $0b $c3 $35 $1f
 
 updateObjectPosition_3_trampoline:
     jp_to_bank 03, updateObjectPosition_3              ;; 00:288f $f5 $3e $0c $c3 $35 $1f

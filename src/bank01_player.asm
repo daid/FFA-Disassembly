@@ -1771,7 +1771,7 @@ gameStateSpecialAttackFlyingSwordReturn:
     pop  DE                                            ;; 01:4ccf $d1
     ld   C, $04                                        ;; 01:4cd0 $0e $04
     ld   B, $00                                        ;; 01:4cd2 $06 $00
-    call call_00_08d4                                  ;; 01:4cd4 $cd $d4 $08
+    call moveGridlessObject                            ;; 01:4cd4 $cd $d4 $08
     ld   A, [wFlyingSwordSpecialOriginalLocationY]     ;; 01:4cd7 $fa $d1 $c4
     ld   H, A                                          ;; 01:4cda $67
     ld   A, [wFlyingSwordSpecialOriginalLocationX]     ;; 01:4cdb $fa $d0 $c4
@@ -1875,7 +1875,7 @@ call_01_4d35:
     and  A, $0f                                        ;; 01:4d80 $e6 $0f
     push AF                                            ;; 01:4d82 $f5
     ld   C, $04                                        ;; 01:4d83 $0e $04
-    call call_00_08d4                                  ;; 01:4d85 $cd $d4 $08
+    call moveGridlessObject                            ;; 01:4d85 $cd $d4 $08
     pop  AF                                            ;; 01:4d88 $f1
     ld   B, $60                                        ;; 01:4d89 $06 $60
     call playerSpritesLoadPlayerSpriteTiles            ;; 01:4d8b $cd $be $48
@@ -2770,7 +2770,7 @@ attackObjectFunction08:
 .jr_01_535b:
     push AF                                            ;; 01:535b $f5
     push BC                                            ;; 01:535c $c5
-    call call_00_08d4                                  ;; 01:535d $cd $d4 $08
+    call moveGridlessObject                            ;; 01:535d $cd $d4 $08
     pop  BC                                            ;; 01:5360 $c1
     ld   B, $00                                        ;; 01:5361 $06 $00
     jp   Z, .jp_01_538a                                ;; 01:5363 $ca $8a $53
@@ -2990,7 +2990,7 @@ attackObjectFunction02:
     ld   B, $01                                        ;; 01:5481 $06 $01
     res  7, A                                          ;; 01:5483 $cb $bf
 .jr_01_5485:
-    call call_00_08d4                                  ;; 01:5485 $cd $d4 $08
+    call moveGridlessObject                            ;; 01:5485 $cd $d4 $08
     jr   Z, .jr_01_54ac                                ;; 01:5488 $28 $22
     ld   A, [wSelectedObjectID]                        ;; 01:548a $fa $5a $cf
     ld   C, A                                          ;; 01:548d $4f
@@ -3145,7 +3145,7 @@ jp_01_5538:
     ld   B, $01                                        ;; 01:5566 $06 $01
     res  7, A                                          ;; 01:5568 $cb $bf
 .jr_01_556a:
-    call call_00_08d4                                  ;; 01:556a $cd $d4 $08
+    call moveGridlessObject                            ;; 01:556a $cd $d4 $08
     jr   Z, jp_01_5592                                 ;; 01:556d $28 $23
     ld   A, [wSelectedObjectID]                        ;; 01:556f $fa $5a $cf
     ld   C, A                                          ;; 01:5572 $4f
@@ -3922,7 +3922,7 @@ attackObjectFunction06:
     and  A, $0f                                        ;; 01:5993 $e6 $0f
     or   A, $10                                        ;; 01:5995 $f6 $10
     push BC                                            ;; 01:5997 $c5
-    call call_00_08d4                                  ;; 01:5998 $cd $d4 $08
+    call moveGridlessObject                            ;; 01:5998 $cd $d4 $08
     pop  BC                                            ;; 01:599b $c1
     ld   A, [wVideoWY]                                 ;; 01:599c $fa $a9 $c0
     inc  A                                             ;; 01:599f $3c
@@ -4420,7 +4420,7 @@ attackObjectFunction07:
     ld   B, $01                                        ;; 01:5c58 $06 $01
     res  7, A                                          ;; 01:5c5a $cb $bf
 .jr_01_5c5c:
-    call call_00_08d4                                  ;; 01:5c5c $cd $d4 $08
+    call moveGridlessObject                            ;; 01:5c5c $cd $d4 $08
     pop  HL                                            ;; 01:5c5f $e1
     ld   A, [wSelectedObjectID]                        ;; 01:5c60 $fa $5a $cf
     ld   C, A                                          ;; 01:5c63 $4f
@@ -6107,14 +6107,14 @@ call_01_7647:
     cp   A, $07                                        ;; 01:7693 $fe $07
     jr   NC, .jr_01_769f                               ;; 01:7695 $30 $08
     ld   A, L                                          ;; 01:7697 $7d
-    call call_00_08d4                                  ;; 01:7698 $cd $d4 $08
+    call moveGridlessObject                            ;; 01:7698 $cd $d4 $08
     pop  BC                                            ;; 01:769b $c1
     pop  AF                                            ;; 01:769c $f1
     inc  A                                             ;; 01:769d $3c
     ret                                                ;; 01:769e $c9
 .jr_01_769f:
     ld   A, L                                          ;; 01:769f $7d
-    call call_00_2889                                  ;; 01:76a0 $cd $89 $28
+    call moveGridlessObject_3_trampoline               ;; 01:76a0 $cd $89 $28
     pop  BC                                            ;; 01:76a3 $c1
     pop  AF                                            ;; 01:76a4 $f1
     inc  A                                             ;; 01:76a5 $3c
@@ -6222,14 +6222,14 @@ objectJumpHandler:
     cp   A, $07                                        ;; 01:7716 $fe $07
     jr   NC, .jr_01_7722                               ;; 01:7718 $30 $08
     ld   A, L                                          ;; 01:771a $7d
-    call call_00_08d4                                  ;; 01:771b $cd $d4 $08
+    call moveGridlessObject                            ;; 01:771b $cd $d4 $08
     pop  BC                                            ;; 01:771e $c1
     pop  AF                                            ;; 01:771f $f1
     inc  A                                             ;; 01:7720 $3c
     ret                                                ;; 01:7721 $c9
 .jr_01_7722:
     ld   A, L                                          ;; 01:7722 $7d
-    call call_00_2889                                  ;; 01:7723 $cd $89 $28
+    call moveGridlessObject_3_trampoline               ;; 01:7723 $cd $89 $28
     pop  BC                                            ;; 01:7726 $c1
     pop  AF                                            ;; 01:7727 $f1
     inc  A                                             ;; 01:7728 $3c
