@@ -601,6 +601,7 @@ wMuteTimerNumber:
 wSpecialAttackTimerNumber:
     ds 1                                               ;; cf62
 
+; One byte long
 wCurrentPlayerAttackWillCharge:
     ds 269                                             ;; cf63
 
