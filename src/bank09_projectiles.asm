@@ -6,7 +6,9 @@ INCLUDE "include/charmaps.inc"
 INCLUDE "include/constants.inc"
 
 SECTION "bank09", ROMX[$4000], BANK[$09]
+
 ;@call_to_bank_jumptable
+entryPointTableBank09:
     call_to_bank_target projectileRunLogicForAll       ;; 09:4000 pP
     call_to_bank_target processPhysicsForObject_9      ;; 09:4002 pP
     call_to_bank_target projectileLoadTiles            ;; 09:4004 pP

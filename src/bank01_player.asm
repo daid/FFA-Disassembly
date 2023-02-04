@@ -8,6 +8,7 @@ INCLUDE "include/constants.inc"
 SECTION "bank01", ROMX[$4000], BANK[$01]
 
 ;@call_to_bank_jumptable amount=40
+entryPointTableBank01:
     call_to_bank_target runMainInputHandler            ;; 01:4000 pP
     call_to_bank_target playerSpritesLoadPlayerSpriteTiles ;; 01:4002 pP
     call_to_bank_target processPhysicsForPlayer        ;; 01:4004 pP

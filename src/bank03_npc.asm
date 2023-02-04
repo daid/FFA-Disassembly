@@ -6,7 +6,9 @@ INCLUDE "include/charmaps.inc"
 INCLUDE "include/constants.inc"
 
 SECTION "bank03", ROMX[$4000], BANK[$03]
+
 ;@call_to_bank_jumptable
+entryPointTableBank03:
     call_to_bank_target npcRunBehaviorForAll           ;; 03:4000 pP
     call_to_bank_target processPhysicsForObject_3      ;; 03:4002 pP
     call_to_bank_target spawnNPC                       ;; 03:4004 pP

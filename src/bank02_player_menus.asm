@@ -6,7 +6,9 @@ INCLUDE "include/charmaps.inc"
 INCLUDE "include/constants.inc"
 
 SECTION "bank02", ROMX[$4000], BANK[$02]
+
 ;@call_to_bank_jumptable amount=58
+entryPointTableBank02:
     call_to_bank_target animateTiles                   ;; 02:4000 pP
     call_to_bank_target updateJoypadInput              ;; 02:4002 pP
     call_to_bank_target spriteShuffleDoFlash           ;; 02:4004 pP

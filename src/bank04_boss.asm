@@ -6,7 +6,9 @@ INCLUDE "include/charmaps.inc"
 INCLUDE "include/constants.inc"
 
 SECTION "bank04", ROMX[$4000], BANK[$04]
+
 ;@call_to_bank_jumptable amount=7
+entryPointTableBank04:
     call_to_bank_target bossRunLogic                   ;; 04:4000 pP
     call_to_bank_target spawnBoss                      ;; 04:4002 pP
     call_to_bank_target bossClearStatsObjects          ;; 04:4004 ??
