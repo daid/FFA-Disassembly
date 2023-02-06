@@ -2186,11 +2186,11 @@ call_02_4fff:
     cp   A, $0b                                        ;; 02:5014 $fe $0b
     jp   Z, jp_02_54a6                                 ;; 02:5016 $ca $a6 $54
     cp   A, $0e                                        ;; 02:5019 $fe $0e
-    jr   Z, jr_02_5086                                 ;; 02:501b $28 $69
+    jr   Z, purchaseFromVendor                         ;; 02:501b $28 $69
     cp   A, $0d                                        ;; 02:501d $fe $0d
     jp   Z, call_02_5292                               ;; 02:501f $ca $92 $52
     cp   A, $10                                        ;; 02:5022 $fe $10
-    jp   Z, jp_02_51fb                                 ;; 02:5024 $ca $fb $51
+    jp   Z, sellToVendor                               ;; 02:5024 $ca $fb $51
     ld   B, $00                                        ;; 02:5027 $06 $00
     ld   A, [wWindowSecondPointer.high]                ;; 02:5029 $fa $95 $d8
     ld   H, A                                          ;; 02:502c $67
@@ -2246,7 +2246,7 @@ call_02_5062:
     jr   NZ, .loop                                     ;; 02:5083 $20 $fc
     ret                                                ;; 02:5085 $c9
 
-jr_02_5086:
+purchaseFromVendor:
     ld   B, $00                                        ;; 02:5086 $06 $00
     ld   HL, wVendorBuyPrices                          ;; 02:5088 $21 $01 $d7
     add  HL, BC                                        ;; 02:508b $09
@@ -2260,24 +2260,24 @@ jr_02_5086:
     ld   E, A                                          ;; 02:5097 $5f
     ld   A, D                                          ;; 02:5098 $7a
     cp   A, H                                          ;; 02:5099 $bc
-    jp   C, .jp_02_50aa                                ;; 02:509a $da $aa $50
-    jr   NZ, .jr_02_50a4                               ;; 02:509d $20 $05
+    jp   C, .not_enough_money                          ;; 02:509a $da $aa $50
+    jr   NZ, .continue_purchase                        ;; 02:509d $20 $05
     ld   A, E                                          ;; 02:509f $7b
     cp   A, L                                          ;; 02:50a0 $bd
-    jp   C, .jp_02_50aa                                ;; 02:50a1 $da $aa $50
-.jr_02_50a4:
+    jp   C, .not_enough_money                          ;; 02:50a1 $da $aa $50
+.continue_purchase:
     ld   A, C                                          ;; 02:50a4 $79
-    call call_02_50b5                                  ;; 02:50a5 $cd $b5 $50
+    call finalizePurchase                              ;; 02:50a5 $cd $b5 $50
     xor  A, A                                          ;; 02:50a8 $af
     ret                                                ;; 02:50a9 $c9
-.jp_02_50aa:
+.not_enough_money:
     ld   HL, wMiscFlags                                ;; 02:50aa $21 $6f $d8
     set  0, [HL]                                       ;; 02:50ad $cb $c6
     ld   B, $a4                                        ;; 02:50af $06 $a4
     call setMenuStateCurrentFunction                   ;; 02:50b1 $cd $98 $6c
     ret                                                ;; 02:50b4 $c9
 
-call_02_50b5:
+finalizePurchase:
     ld   HL, wMiscFlags                                ;; 02:50b5 $21 $6f $d8
     res  0, [HL]                                       ;; 02:50b8 $cb $86
     ld   C, A                                          ;; 02:50ba $4f
@@ -2358,7 +2358,7 @@ call_02_50b5:
     jr   NZ, .loop_2                                   ;; 02:5137 $20 $f3
     ld   A, $0c                                        ;; 02:5139 $3e $0c
     ld   [wDialogType], A                              ;; 02:513b $ea $4a $d8
-    call call_02_75f4                                  ;; 02:513e $cd $f4 $75
+    call drawMoneyOnDialog                             ;; 02:513e $cd $f4 $75
     ld   B, $a4                                        ;; 02:5141 $06 $a4
     call setMenuStateCurrentFunction                   ;; 02:5143 $cd $98 $6c
     ret                                                ;; 02:5146 $c9
@@ -2469,7 +2469,7 @@ windowWaitForAnyButton:
     ld   [wMenuStateCurrentFunction], A                ;; 02:51f7 $ea $53 $d8
     ret                                                ;; 02:51fa $c9
 
-jp_02_51fb:
+sellToVendor:
     call getSelectedMenuIndexes                        ;; 02:51fb $cd $b0 $57
     cp   A, $00                                        ;; 02:51fe $fe $00
     jr   NZ, call_02_522d                              ;; 02:5200 $20 $2b
@@ -3599,7 +3599,7 @@ call_02_5895:
     cp   A, $0c                                        ;; 02:58d1 $fe $0c
     jp   NZ, .jp_02_58db                               ;; 02:58d3 $c2 $db $58
 .jp_02_58d6:
-    call call_02_75f4                                  ;; 02:58d6 $cd $f4 $75
+    call drawMoneyOnDialog                             ;; 02:58d6 $cd $f4 $75
     jr   jp_02_5922                                    ;; 02:58d9 $18 $47
 .jp_02_58db:
     call loadRegisterState2                            ;; 02:58db $cd $a7 $6d
@@ -6882,7 +6882,7 @@ call_02_75c5:
 .data_02_75f3:
     db   $00                                           ;; 02:75f3 .
 
-call_02_75f4:
+drawMoneyOnDialog:
     ld   A, [wDialogType]                              ;; 02:75f4 $fa $4a $d8
     push AF                                            ;; 02:75f7 $f5
     call windowInitContents                            ;; 02:75f8 $cd $93 $76
