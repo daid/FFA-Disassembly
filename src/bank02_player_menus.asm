@@ -6061,13 +6061,13 @@ useNectarOrStamina:
     push AF                                            ;; 02:70c8 $f5
     swap A                                             ;; 02:70c9 $cb $37
     and  A, $0f                                        ;; 02:70cb $e6 $0f
-    call call_02_70d7                                  ;; 02:70cd $cd $d7 $70
+    call applyBuff                                     ;; 02:70cd $cd $d7 $70
     pop  AF                                            ;; 02:70d0 $f1
     and  A, $0f                                        ;; 02:70d1 $e6 $0f
-    call call_02_70d7                                  ;; 02:70d3 $cd $d7 $70
+    call applyBuff                                     ;; 02:70d3 $cd $d7 $70
     ret                                                ;; 02:70d6 $c9
 
-call_02_70d7:
+applyBuff:
     ld   B, A                                          ;; 02:70d7 $47
     ld   A, [DE]                                       ;; 02:70d8 $1a
     add  A, B                                          ;; 02:70d9 $80
