@@ -423,7 +423,7 @@ loadLCDCEffectBuffer:
     ld   L, C                                          ;; 00:0301 $69
     ld   B, A                                          ;; 00:0302 $47
     cp   A, $00                                        ;; 00:0303 $fe $00
-    jr   Z, .jr_00_030f                                ;; 00:0305 $28 $08
+    jr   Z, .write_terminator                          ;; 00:0305 $28 $08
     dec  HL                                            ;; 00:0307 $2b
 .loop:
     ld   A, [HL-]                                      ;; 00:0308 $3a
@@ -432,7 +432,7 @@ loadLCDCEffectBuffer:
     dec  B                                             ;; 00:030b $05
     jr   NZ, .loop                                     ;; 00:030c $20 $fa
     dec  DE                                            ;; 00:030e $1b
-.jr_00_030f:
+.write_terminator:
     ld   A, $ff                                        ;; 00:030f $3e $ff
     ld   [DE], A                                       ;; 00:0311 $12
     ret                                                ;; 00:0312 $c9
@@ -501,6 +501,7 @@ checkPlayfieldBoundaryCollision_trampoline:
     jp_to_bank 04, checkPlayfieldBoundaryCollision     ;; 00:036f $f5 $3e $06 $c3 $64 $1f
 
 ; Calls destoryObject on most objects, except the player, companion, their attacks, and reserved (0 to 6) objects.
+; Fails to identify the player riding a Chcobo
 removeNpcObjects:
     ld   C, $00                                        ;; 00:0375 $0e $00
     ld   B, $14                                        ;; 00:0377 $06 $14
@@ -509,17 +510,17 @@ removeNpcObjects:
     call getObjectCollisionFlags                       ;; 00:037a $cd $6d $0c
     and  A, $f0                                        ;; 00:037d $e6 $f0
     cp   A, $c0                                        ;; 00:037f $fe $c0
-    jr   Z, .jr_00_0394                                ;; 00:0381 $28 $11
+    jr   Z, .next                                      ;; 00:0381 $28 $11
     cp   A, $d0                                        ;; 00:0383 $fe $d0
-    jr   Z, .jr_00_0394                                ;; 00:0385 $28 $0d
+    jr   Z, .next                                      ;; 00:0385 $28 $0d
     cp   A, $40                                        ;; 00:0387 $fe $40
-    jr   Z, .jr_00_0394                                ;; 00:0389 $28 $09
+    jr   Z, .next                                      ;; 00:0389 $28 $09
     cp   A, $50                                        ;; 00:038b $fe $50
-    jr   Z, .jr_00_0394                                ;; 00:038d $28 $05
+    jr   Z, .next                                      ;; 00:038d $28 $05
     pop  BC                                            ;; 00:038f $c1
     push BC                                            ;; 00:0390 $c5
     call destroyObject                                 ;; 00:0391 $cd $e3 $0a
-.jr_00_0394:
+.next:
     pop  BC                                            ;; 00:0394 $c1
     inc  C                                             ;; 00:0395 $0c
     dec  B                                             ;; 00:0396 $05
@@ -1075,8 +1076,8 @@ getObjectPositionAndCollisionInfo:
     dec  E                                             ;; 00:0693 $1d
     ret                                                ;; 00:0694 $c9
 
-; A = ?
-; B = ?
+; A = 00 if not moving. Direction byte, upper niblle is 9 if requesting move
+; B = metasprite table row
 ; C = Object ID for the changed/checked object
 processPhysicsForObject:
     ld   D, A                                          ;; 00:0695 $57
@@ -1101,12 +1102,13 @@ processPhysicsForObject:
     push HL                                            ;; 00:06b1 $e5
     ld   A, [wMainGameStateFlags]                      ;; 00:06b2 $fa $a1 $c0
     bit  3, A                                          ;; 00:06b5 $cb $5f
-    jr   NZ, .jr_00_06d8                               ;; 00:06b7 $20 $1f
+    jr   NZ, .normal_movement                          ;; 00:06b7 $20 $1f
     ld   BC, $0a                                       ;; 00:06b9 $01 $0a $00
     add  HL, BC                                        ;; 00:06bc $09
     ld   A, [HL+]                                      ;; 00:06bd $2a
     bit  7, A                                          ;; 00:06be $cb $7f
-    jr   Z, .jr_00_06d8                                ;; 00:06c0 $28 $16
+    jr   Z, .normal_movement                           ;; 00:06c0 $28 $16
+; .sliding:
     ld   C, A                                          ;; 00:06c2 $4f
     ld   B, [HL]                                       ;; 00:06c3 $46
     pop  HL                                            ;; 00:06c4 $e1
@@ -1120,10 +1122,10 @@ processPhysicsForObject:
     ld   E, $00                                        ;; 00:06ce $1e $00
     push BC                                            ;; 00:06d0 $c5
     ld   B, A                                          ;; 00:06d1 $47
-    call call_00_0828                                  ;; 00:06d2 $cd $28 $08
+    call setFrameForObject                             ;; 00:06d2 $cd $28 $08
     pop  BC                                            ;; 00:06d5 $c1
     jr   .jr_00_06fc                                   ;; 00:06d6 $18 $24
-.jr_00_06d8:
+.normal_movement:
     pop  HL                                            ;; 00:06d8 $e1
     ld   A, D                                          ;; 00:06d9 $7a
     or   A, D                                          ;; 00:06da $b2
@@ -1142,7 +1144,7 @@ processPhysicsForObject:
     ld   B, C                                          ;; 00:06ee $41
 .jr_00_06ef:
     push BC                                            ;; 00:06ef $c5
-    call call_00_0828                                  ;; 00:06f0 $cd $28 $08
+    call setFrameForObject                             ;; 00:06f0 $cd $28 $08
     pop  BC                                            ;; 00:06f3 $c1
     bit  4, C                                          ;; 00:06f4 $cb $61
     jp   Z, .jp_00_0803                                ;; 00:06f6 $ca $03 $08
@@ -1151,12 +1153,12 @@ processPhysicsForObject:
     ld   B, A                                          ;; 00:06fb $47
 .jr_00_06fc:
     bit  0, C                                          ;; 00:06fc $cb $41
-    jr   NZ, .right                                    ;; 00:06fe $20 $3f
+    jr   NZ, .east                                     ;; 00:06fe $20 $3f
     bit  1, C                                          ;; 00:0700 $cb $49
-    jr   NZ, .left                                     ;; 00:0702 $20 $70
+    jr   NZ, .west                                     ;; 00:0702 $20 $70
     bit  2, C                                          ;; 00:0704 $cb $51
-    jp   NZ, .up                                       ;; 00:0706 $c2 $ab $07
-; .down:
+    jp   NZ, .north                                    ;; 00:0706 $c2 $ab $07
+; .south:
     ld   D, B                                          ;; 00:0709 $50
     ld   E, $00                                        ;; 00:070a $1e $00
     ld   A, [wMainGameStateFlags]                      ;; 00:070c $fa $a1 $c0
@@ -1183,9 +1185,9 @@ processPhysicsForObject:
     pop  DE                                            ;; 00:0739 $d1
     pop  HL                                            ;; 00:073a $e1
 .jp_00_073b:
-    call call_00_0961                                  ;; 00:073b $cd $61 $09
+    call moveObject                                    ;; 00:073b $cd $61 $09
     ret                                                ;; 00:073e $c9
-.right:
+.east:
     ld   E, B                                          ;; 00:073f $58
     ld   D, $00                                        ;; 00:0740 $16 $00
     ld   A, [wMainGameStateFlags]                      ;; 00:0742 $fa $a1 $c0
@@ -1212,9 +1214,9 @@ processPhysicsForObject:
     pop  DE                                            ;; 00:076e $d1
     pop  HL                                            ;; 00:076f $e1
 .jr_00_0770:
-    call call_00_0961                                  ;; 00:0770 $cd $61 $09
+    call moveObject                                    ;; 00:0770 $cd $61 $09
     ret                                                ;; 00:0773 $c9
-.left:
+.west:
     ld   A, B                                          ;; 00:0774 $78
     cpl                                                ;; 00:0775 $2f
     inc  A                                             ;; 00:0776 $3c
@@ -1244,9 +1246,9 @@ processPhysicsForObject:
     pop  DE                                            ;; 00:07a5 $d1
     pop  HL                                            ;; 00:07a6 $e1
 .jr_00_07a7:
-    call call_00_0961                                  ;; 00:07a7 $cd $61 $09
+    call moveObject                                    ;; 00:07a7 $cd $61 $09
     ret                                                ;; 00:07aa $c9
-.up:
+.north:
     ld   A, B                                          ;; 00:07ab $78
     cpl                                                ;; 00:07ac $2f
     inc  A                                             ;; 00:07ad $3c
@@ -1276,7 +1278,7 @@ processPhysicsForObject:
     pop  DE                                            ;; 00:07da $d1
     pop  HL                                            ;; 00:07db $e1
 .jr_00_07dc:
-    call call_00_0961                                  ;; 00:07dc $cd $61 $09
+    call moveObject                                    ;; 00:07dc $cd $61 $09
     ret                                                ;; 00:07df $c9
 .blocked:
     pop  DE                                            ;; 00:07e0 $d1
@@ -1306,7 +1308,7 @@ processPhysicsForObject:
     push AF                                            ;; 00:0809 $f5
     set  1, A                                          ;; 00:080a $cb $cf
     ld   [wMainGameStateFlags], A                      ;; 00:080c $ea $a1 $c0
-    call call_00_0961                                  ;; 00:080f $cd $61 $09
+    call moveObject                                    ;; 00:080f $cd $61 $09
     ld   A, [wMainGameStateFlags.nextFrame]            ;; 00:0812 $fa $a2 $c0
     ld   C, A                                          ;; 00:0815 $4f
     pop  AF                                            ;; 00:0816 $f1
@@ -1315,6 +1317,10 @@ processPhysicsForObject:
     xor  A, A                                          ;; 00:081b $af
     ret                                                ;; 00:081c $c9
 
+; This is used to check collision flags.
+; Return: Z if testing player and either:
+; 1) top nibble 0 and bottom nibble != 0
+; 2) collision flags equal to $10
 ifPlayerThen_A_Equal_B_Minus_1_And_F0:
     ld   A, [wObjectIDCopy]                            ;; 00:081d $fa $49 $c3
     cp   A, $04                                        ;; 00:0820 $fe $04
@@ -1324,7 +1330,11 @@ ifPlayerThen_A_Equal_B_Minus_1_And_F0:
     and  A, $f0                                        ;; 00:0825 $e6 $f0
     ret                                                ;; 00:0827 $c9
 
-call_00_0828:
+; Used for the player, follower, and NPCs.
+; B = object direction
+; E = metasprite table row
+; HL = object runtime pointer
+setFrameForObject:
     push HL                                            ;; 00:0828 $e5
     ld   A, B                                          ;; 00:0829 $78
     bit  5, A                                          ;; 00:082a $cb $6f
@@ -1353,23 +1363,25 @@ call_00_0828:
     call HLandDE                                       ;; 00:0855 $cd $b2 $29
     pop  DE                                            ;; 00:0858 $d1
     jr   Z, .jr_00_085d                                ;; 00:0859 $28 $02
+; If on a vine, then face north
     ld   D, $04                                        ;; 00:085b $16 $04
 .jr_00_085d:
     bit  0, D                                          ;; 00:085d $cb $42
-    jr   NZ, .jr_00_086d                               ;; 00:085f $20 $0c
+    jr   NZ, .east                                     ;; 00:085f $20 $0c
     bit  1, D                                          ;; 00:0861 $cb $4a
-    jr   NZ, .jr_00_0871                               ;; 00:0863 $20 $0c
+    jr   NZ, .west                                     ;; 00:0863 $20 $0c
     bit  2, D                                          ;; 00:0865 $cb $52
-    jr   NZ, .jr_00_0875                               ;; 00:0867 $20 $0c
+    jr   NZ, .north                                    ;; 00:0867 $20 $0c
+; .south:
     ld   A, $03                                        ;; 00:0869 $3e $03
     jr   .jr_00_0877                                   ;; 00:086b $18 $0a
-.jr_00_086d:
+.east:
     ld   A, $00                                        ;; 00:086d $3e $00
     jr   .jr_00_0877                                   ;; 00:086f $18 $06
-.jr_00_0871:
+.west:
     ld   A, $01                                        ;; 00:0871 $3e $01
     jr   .jr_00_0877                                   ;; 00:0873 $18 $02
-.jr_00_0875:
+.north:
     ld   A, $02                                        ;; 00:0875 $3e $02
 .jr_00_0877:
     sla  E                                             ;; 00:0877 $cb $23
@@ -1440,12 +1452,13 @@ pixelToTilePosition:
     dec  E                                             ;; 00:08d2 $1d
     ret                                                ;; 00:08d3 $c9
 
-; Probably related to hit detection
-; A = object direction, possibly with bit 7 set
-; B = ???
-; C = Object ID for the changed/checked object
+; Deals with anything unconstrained by the 8x8 grid: projectiles, player attacks, and also jumping objects.
+; A = object direction
+; B = metasprite table row. Each row has four entries, one for each of the four directions.
+; C = object ID
+; DE = yx object distance and direction to move
 ; Return: Z = collision
-call_00_08d4:
+moveGridlessObject:
     ld   L, A                                          ;; 00:08d4 $6f
     ld   A, C                                          ;; 00:08d5 $79
     cp   A, $14                                        ;; 00:08d6 $fe $14
@@ -1466,6 +1479,7 @@ call_00_08d4:
     ld   A, [HL]                                       ;; 00:08eb $7e
     cp   A, $ff                                        ;; 00:08ec $fe $ff
     ret  Z                                             ;; 00:08ee $c8
+; C = direction
     ld   [HL], C                                       ;; 00:08ef $71
     res  7, [HL]                                       ;; 00:08f0 $cb $be
     push DE                                            ;; 00:08f2 $d5
@@ -1503,6 +1517,7 @@ call_00_08d4:
     inc  HL                                            ;; 00:0920 $23
     ld   A, [HL+]                                      ;; 00:0921 $2a
     ld   B, A                                          ;; 00:0922 $47
+; B = collision flags
     inc  HL                                            ;; 00:0923 $23
     ld   A, [HL+]                                      ;; 00:0924 $2a
     add  A, D                                          ;; 00:0925 $82
@@ -1532,7 +1547,7 @@ call_00_08d4:
     push AF                                            ;; 00:0947 $f5
     set  1, A                                          ;; 00:0948 $cb $cf
     ld   [wMainGameStateFlags], A                      ;; 00:094a $ea $a1 $c0
-    call call_00_0961                                  ;; 00:094d $cd $61 $09
+    call moveObject                                    ;; 00:094d $cd $61 $09
     ld   A, [wMainGameStateFlags.nextFrame]            ;; 00:0950 $fa $a2 $c0
     ld   C, A                                          ;; 00:0953 $4f
     pop  AF                                            ;; 00:0954 $f1
@@ -1548,7 +1563,9 @@ call_00_08d4:
     pop  DE                                            ;; 00:095f $d1
     ret                                                ;; 00:0960 $c9
 
-call_00_0961:
+; DE = yx object distance and direction to move
+; HL = object runtime data pointer for selected object
+moveObject:
     push HL                                            ;; 00:0961 $e5
     push DE                                            ;; 00:0962 $d5
     ld   BC, $04                                       ;; 00:0963 $01 $04 $00
@@ -1566,16 +1583,19 @@ call_00_0961:
     push BC                                            ;; 00:0975 $c5
     push DE                                            ;; 00:0976 $d5
     push HL                                            ;; 00:0977 $e5
+; $3dfc = -$c204
     ld   DE, $3dfc                                     ;; 00:0978 $11 $fc $3d
     add  HL, DE                                        ;; 00:097b $19
     ld   A, L                                          ;; 00:097c $7d
     or   A, H                                          ;; 00:097d $b4
     swap A                                             ;; 00:097e $cb $37
     ld   C, A                                          ;; 00:0980 $4f
+; C = object id
     pop  HL                                            ;; 00:0981 $e1
     ld   DE, -2 ;@=value signed=True                   ;; 00:0982 $11 $fe $ff
     add  HL, DE                                        ;; 00:0985 $19
     ld   A, [HL]                                       ;; 00:0986 $7e
+; A = object collision flags
     pop  DE                                            ;; 00:0987 $d1
     call checkNpcsForCollisions_trampoline             ;; 00:0988 $cd $1c $04
     pop  HL                                            ;; 00:098b $e1
@@ -1612,6 +1632,7 @@ call_00_0961:
     ld   A, [HL+]                                      ;; 00:09b0 $2a
     ld   H, [HL]                                       ;; 00:09b1 $66
     ld   L, A                                          ;; 00:09b2 $6f
+; HL = sprite shadow OAM address for the first sprite of this object
     ld   A, E                                          ;; 00:09b3 $7b
     add  A, $08                                        ;; 00:09b4 $c6 $08
     ld   [HL], D                                       ;; 00:09b6 $72
@@ -1630,6 +1651,7 @@ call_00_0961:
     ld   A, E                                          ;; 00:09c5 $7b
     or   A, D                                          ;; 00:09c6 $b2
     and  A, $07                                        ;; 00:09c7 $e6 $07
+; return if not aligned to the eight pixel grid
     ret  NZ                                            ;; 00:09c9 $c0
     res  7, [HL]                                       ;; 00:09ca $cb $be
     push BC                                            ;; 00:09cc $c5
@@ -1813,7 +1835,7 @@ createObject:
     set  1, A                                          ;; 00:0ac0 $cb $cf
     ld   [wMainGameStateFlags], A                      ;; 00:0ac2 $ea $a1 $c0
     push BC                                            ;; 00:0ac5 $c5
-    call call_00_0961                                  ;; 00:0ac6 $cd $61 $09
+    call moveObject                                    ;; 00:0ac6 $cd $61 $09
     pop  BC                                            ;; 00:0ac9 $c1
     ld   A, $14                                        ;; 00:0aca $3e $14
     jr   C, .jr_00_0ad6                                ;; 00:0acc $38 $08
@@ -2568,7 +2590,7 @@ specialEffectInit:
 
 specialEffectAnimate:
     push DE                                            ;; 00:0eef $d5
-    call call_00_2ed3                                  ;; 00:0ef0 $cd $d3 $2e
+    call runPlayerAttackObjectFunctions_trampoline     ;; 00:0ef0 $cd $d3 $2e
     pop  HL                                            ;; 00:0ef3 $e1
     ret  NZ                                            ;; 00:0ef4 $c0
     push HL                                            ;; 00:0ef5 $e5
@@ -3916,19 +3938,19 @@ tileScriptOrSpikeDamage:
 .loop:
     ld   A, [HL+]                                      ;; 00:172f $2a
     cp   A, $ff                                        ;; 00:1730 $fe $ff
-    jr   Z, .jr_00_1742                                ;; 00:1732 $28 $0e
+    jr   Z, .pop_bank_and_return                       ;; 00:1732 $28 $0e
     cp   A, D                                          ;; 00:1734 $ba
-    jr   Z, .jr_00_173b                                ;; 00:1735 $28 $04
+    jr   Z, .break                                     ;; 00:1735 $28 $04
     inc  HL                                            ;; 00:1737 $23
     inc  HL                                            ;; 00:1738 $23
     jr   .loop                                         ;; 00:1739 $18 $f4
-.jr_00_173b:
+.break:
     ld   A, [HL+]                                      ;; 00:173b $2a
     ld   H, [HL]                                       ;; 00:173c $66
     ld   L, A                                          ;; 00:173d $6f
     ld   A, B                                          ;; 00:173e $78
     call runScriptByIndex                              ;; 00:173f $cd $ad $31
-.jr_00_1742:
+.pop_bank_and_return:
     call popBankNrAndSwitch                            ;; 00:1742 $cd $0a $2a
     ret                                                ;; 00:1745 $c9
 .no_script_bit:
@@ -3986,7 +4008,7 @@ call_00_177e:
     pop  DE                                            ;; 00:179d $d1
     ld   A, [wMainGameStateFlags]                      ;; 00:179e $fa $a1 $c0
     bit  3, A                                          ;; 00:17a1 $cb $5f
-    jr   NZ, .jr_00_1802                               ;; 00:17a3 $20 $5d
+    jr   NZ, .pop_bank_and_return                      ;; 00:17a3 $20 $5d
     ld   A, C                                          ;; 00:17a5 $79
     and  A, $07                                        ;; 00:17a6 $e6 $07
     cp   A, $01                                        ;; 00:17a8 $fe $01
@@ -3994,7 +4016,7 @@ call_00_177e:
     cp   A, $04                                        ;; 00:17ac $fe $04
     jr   Z, .jr_00_17b4                                ;; 00:17ae $28 $04
     cp   A, $05                                        ;; 00:17b0 $fe $05
-    jr   NZ, .jr_00_1802                               ;; 00:17b2 $20 $4e
+    jr   NZ, .pop_bank_and_return                      ;; 00:17b2 $20 $4e
 .jr_00_17b4:
     ld   C, B                                          ;; 00:17b4 $48
     ld   B, L                                          ;; 00:17b5 $45
@@ -4004,7 +4026,7 @@ call_00_177e:
     pop  DE                                            ;; 00:17bb $d1
     pop  BC                                            ;; 00:17bc $c1
     bit  6, H                                          ;; 00:17bd $cb $74
-    jr   Z, .jr_00_1802                                ;; 00:17bf $28 $41
+    jr   Z, .pop_bank_and_return                       ;; 00:17bf $28 $41
     inc  E                                             ;; 00:17c1 $1c
     push BC                                            ;; 00:17c2 $c5
     push HL                                            ;; 00:17c3 $e5
@@ -4012,7 +4034,7 @@ call_00_177e:
     pop  DE                                            ;; 00:17c7 $d1
     pop  BC                                            ;; 00:17c8 $c1
     bit  6, H                                          ;; 00:17c9 $cb $74
-    jr   Z, .jr_00_1802                                ;; 00:17cb $28 $35
+    jr   Z, .pop_bank_and_return                       ;; 00:17cb $28 $35
     ld   A, H                                          ;; 00:17cd $7c
     swap A                                             ;; 00:17ce $cb $37
     and  A, $03                                        ;; 00:17d0 $e6 $03
@@ -4029,16 +4051,16 @@ call_00_177e:
     cp   A, $02                                        ;; 00:17e3 $fe $02
     jr   Z, .jr_00_17f3                                ;; 00:17e5 $28 $0c
     ld   B, $08                                        ;; 00:17e7 $06 $08
-    jr   .jr_00_17f5                                   ;; 00:17e9 $18 $0a
+    jr   .finish                                       ;; 00:17e9 $18 $0a
 .jr_00_17eb:
     ld   B, $01                                        ;; 00:17eb $06 $01
-    jr   .jr_00_17f5                                   ;; 00:17ed $18 $06
+    jr   .finish                                       ;; 00:17ed $18 $06
 .jr_00_17ef:
     ld   B, $02                                        ;; 00:17ef $06 $02
-    jr   .jr_00_17f5                                   ;; 00:17f1 $18 $02
+    jr   .finish                                       ;; 00:17f1 $18 $02
 .jr_00_17f3:
     ld   B, $04                                        ;; 00:17f3 $06 $04
-.jr_00_17f5:
+.finish:
     ld   A, $90                                        ;; 00:17f5 $3e $90
     or   A, B                                          ;; 00:17f7 $b0
     push BC                                            ;; 00:17f8 $c5
@@ -4046,19 +4068,19 @@ call_00_177e:
     pop  BC                                            ;; 00:17fc $c1
     ld   A, $02                                        ;; 00:17fd $3e $02
     call setObjectOffset0b                             ;; 00:17ff $cd $08 $0d
-.jr_00_1802:
+.pop_bank_and_return:
     call popBankNrAndSwitch                            ;; 00:1802 $cd $0a $2a
     ret                                                ;; 00:1805 $c9
 .jr_00_1806:
     ld   A, B                                          ;; 00:1806 $78
     cp   A, $00                                        ;; 00:1807 $fe $00
-    jr   NZ, .jr_00_17f5                               ;; 00:1809 $20 $ea
+    jr   NZ, .finish                                   ;; 00:1809 $20 $ea
     push BC                                            ;; 00:180b $c5
     call getObjectDirection                            ;; 00:180c $cd $99 $0c
     pop  BC                                            ;; 00:180f $c1
     and  A, $0f                                        ;; 00:1810 $e6 $0f
     ld   B, A                                          ;; 00:1812 $47
-    jr   .jr_00_17f5                                   ;; 00:1813 $18 $e0
+    jr   .finish                                       ;; 00:1813 $18 $e0
 
 call_00_1815:
     push DE                                            ;; 00:1815 $d5
@@ -5126,7 +5148,7 @@ callFunctionInBank01:
     ld   [wScratchBankCallL], A                        ;; 00:1ee3 $ea $b4 $c0
     ld   HL, returnFromBankCall                        ;; 00:1ee6 $21 $c2 $1f
     push HL                                            ;; 00:1ee9 $e5
-    ld   A, $01                                        ;; 00:1eea $3e $01
+    ld   A, BANK(entryPointTableBank01) ;@=bank entryPointTableBank01 ;; 00:1eea $3e $01
     call pushBankNrAndSwitch                           ;; 00:1eec $cd $fb $29
     ld   A, [wScratchBankCallFunctionNumber]           ;; 00:1eef $fa $b2 $c0
     add  A, A                                          ;; 00:1ef2 $87
@@ -5154,7 +5176,7 @@ callFunctionInBank02:
     ld   [wScratchBankCallL], A                        ;; 00:1f12 $ea $b4 $c0
     ld   HL, returnFromBankCall                        ;; 00:1f15 $21 $c2 $1f
     push HL                                            ;; 00:1f18 $e5
-    ld   A, $02                                        ;; 00:1f19 $3e $02
+    ld   A, BANK(entryPointTableBank02) ;@=bank entryPointTableBank02 ;; 00:1f19 $3e $02
     call pushBankNrAndSwitch                           ;; 00:1f1b $cd $fb $29
     ld   A, [wScratchBankCallFunctionNumber]           ;; 00:1f1e $fa $b2 $c0
     add  A, A                                          ;; 00:1f21 $87
@@ -5182,7 +5204,7 @@ callFunctionInBank03:
     ld   [wScratchBankCallL], A                        ;; 00:1f41 $ea $b4 $c0
     ld   HL, returnFromBankCall                        ;; 00:1f44 $21 $c2 $1f
     push HL                                            ;; 00:1f47 $e5
-    ld   A, $03                                        ;; 00:1f48 $3e $03
+    ld   A, BANK(entryPointTableBank03) ;@=bank entryPointTableBank03 ;; 00:1f48 $3e $03
     call pushBankNrAndSwitch                           ;; 00:1f4a $cd $fb $29
     ld   A, [wScratchBankCallFunctionNumber]           ;; 00:1f4d $fa $b2 $c0
     add  A, A                                          ;; 00:1f50 $87
@@ -5210,7 +5232,7 @@ callFunctionInBank04:
     ld   [wScratchBankCallL], A                        ;; 00:1f70 $ea $b4 $c0
     ld   HL, returnFromBankCall                        ;; 00:1f73 $21 $c2 $1f
     push HL                                            ;; 00:1f76 $e5
-    ld   A, $04                                        ;; 00:1f77 $3e $04
+    ld   A, BANK(entryPointTableBank04) ;@=bank entryPointTableBank04 ;; 00:1f77 $3e $04
     call pushBankNrAndSwitch                           ;; 00:1f79 $cd $fb $29
     ld   A, [wScratchBankCallFunctionNumber]           ;; 00:1f7c $fa $b2 $c0
     add  A, A                                          ;; 00:1f7f $87
@@ -5238,7 +5260,7 @@ callFunctionInBank09:
     ld   [wScratchBankCallL], A                        ;; 00:1f9f $ea $b4 $c0
     ld   HL, returnFromBankCall                        ;; 00:1fa2 $21 $c2 $1f
     push HL                                            ;; 00:1fa5 $e5
-    ld   A, $09                                        ;; 00:1fa6 $3e $09
+    ld   A, BANK(entryPointTableBank09) ;@=bank entryPointTableBank09 ;; 00:1fa6 $3e $09
     call pushBankNrAndSwitch                           ;; 00:1fa8 $cd $fb $29
     ld   A, [wScratchBankCallFunctionNumber]           ;; 00:1fab $fa $b2 $c0
     add  A, A                                          ;; 00:1fae $87
@@ -6650,8 +6672,8 @@ scriptObjectBehaviorMove:
 objectBehaviorMove_trampoline:
     jp_to_bank 03, objectBehaviorMove                  ;; 00:2883 $f5 $3e $0a $c3 $35 $1f
 
-call_00_2889:
-    jp_to_bank 03, call_03_4aed                        ;; 00:2889 $f5 $3e $0b $c3 $35 $1f
+moveGridlessObject_3_trampoline:
+    jp_to_bank 03, moveGridlessObject_3                ;; 00:2889 $f5 $3e $0b $c3 $35 $1f
 
 updateObjectPosition_3_trampoline:
     jp_to_bank 03, updateObjectPosition_3              ;; 00:288f $f5 $3e $0c $c3 $35 $1f
@@ -7590,8 +7612,8 @@ initSpecialAttackTimer:
     ld   [wSpecialAttackTimerNumber], A                ;; 00:2ecf $ea $62 $cf
     ret                                                ;; 00:2ed2 $c9
 
-call_00_2ed3:
-    jp_to_bank 01, call_01_52b3                        ;; 00:2ed3 $f5 $3e $1d $c3 $d7 $1e
+runPlayerAttackObjectFunctions_trampoline:
+    jp_to_bank 01, runPlayerAttackObjectFunctions      ;; 00:2ed3 $f5 $3e $1d $c3 $d7 $1e
 
 getEquippedWeaponAnimationType_trampoline:
     jp_to_bank 01, getEquippedWeaponAnimationType      ;; 00:2ed9 $f5 $3e $20 $c3 $d7 $1e
@@ -8057,24 +8079,24 @@ runScriptFromScriptByIndex:
     ld   [wTextSpeedTimer], A                          ;; 00:31c9 $ea $64 $d8
     ld   A, H                                          ;; 00:31cc $7c
     and  A, A                                          ;; 00:31cd $a7
-    jr   NZ, .jr_00_31ea                               ;; 00:31ce $20 $1a
+    jr   NZ, .normal_script                            ;; 00:31ce $20 $1a
     ld   A, L                                          ;; 00:31d0 $7d
     ld   DE, wOpenChestScript1                         ;; 00:31d1 $11 $13 $d6
     sub  A, $0b                                        ;; 00:31d4 $d6 $0b
-    jr   Z, .jr_00_31e6                                ;; 00:31d6 $28 $0e
+    jr   Z, .dynamic_script                            ;; 00:31d6 $28 $0e
     ld   DE, wOpenChestScript2                         ;; 00:31d8 $11 $23 $d6
     sub  A, $04                                        ;; 00:31db $d6 $04
-    jr   Z, .jr_00_31e6                                ;; 00:31dd $28 $07
+    jr   Z, .dynamic_script                            ;; 00:31dd $28 $07
     ld   DE, wOpenChestScript3                         ;; 00:31df $11 $33 $d6
     sub  A, $04                                        ;; 00:31e2 $d6 $04
-    jr   NZ, .jr_00_31ea                               ;; 00:31e4 $20 $04
-.jr_00_31e6:
+    jr   NZ, .normal_script                            ;; 00:31e4 $20 $04
+.dynamic_script:
     push DE                                            ;; 00:31e6 $d5
     pop  HL                                            ;; 00:31e7 $e1
     jr   .jr_00_31f1                                   ;; 00:31e8 $18 $07
-.jr_00_31ea:
+.normal_script:
     call getScriptPointerFromScriptPointerTable        ;; 00:31ea $cd $82 $32
-    ld   DE, data_01_4000                              ;; 00:31ed $11 $00 $40
+    ld   DE, $4000 ;@=value                            ;; 00:31ed $11 $00 $40
     add  HL, DE                                        ;; 00:31f0 $19
 .jr_00_31f1:
     ld   A, H                                          ;; 00:31f1 $7c
@@ -8170,7 +8192,7 @@ gameStateScript:
 ; Output: HL, script pointer value
 getScriptPointerFromScriptPointerTable:
     push HL                                            ;; 00:3282 $e5
-    ld   A, $08                                        ;; 00:3283 $3e $08
+    ld   A, BANK(scriptPointersTable) ;@=bank scriptPointersTable ;; 00:3283 $3e $08
     call pushBankNrAndSwitch                           ;; 00:3285 $cd $fb $29
     pop  BC                                            ;; 00:3288 $c1
     ld   HL, scriptPointersTable                       ;; 00:3289 $21 $05 $4f
@@ -9025,15 +9047,17 @@ drawText:
     xor  A, $80                                        ;; 00:3794 $ee $80
     call storeTileAatDialogPositionDE                  ;; 00:3796 $cd $44 $38
     ld   A, [wDialogType]                              ;; 00:3799 $fa $4a $d8
-    cp   A, $1e                                        ;; 00:379c $fe $1e
+    cp   A, $1e ; Naming screen                        ;; 00:379c $fe $1e
     jr   NZ, .jr_00_37a1                               ;; 00:379e $20 $01
+; Naming screen puts a space between each character
+; And also prints as if the player was holding a button down
     inc  E                                             ;; 00:37a0 $1c
 .jr_00_37a1:
     pop  AF                                            ;; 00:37a1 $f1
-    jr   NZ, .jr_00_37b8                               ;; 00:37a2 $20 $14
+    jr   NZ, .print_more_text                          ;; 00:37a2 $20 $14
     ld   A, [wWindowFlags]                             ;; 00:37a4 $fa $74 $d8
     bit  1, A                                          ;; 00:37a7 $cb $4f
-    jr   NZ, .jr_00_37d4                               ;; 00:37a9 $20 $29
+    jr   NZ, .finished                                 ;; 00:37a9 $20 $29
     push HL                                            ;; 00:37ab $e5
     push DE                                            ;; 00:37ac $d5
     push BC                                            ;; 00:37ad $c5
@@ -9043,8 +9067,8 @@ drawText:
     pop  BC                                            ;; 00:37b3 $c1
     pop  DE                                            ;; 00:37b4 $d1
     pop  HL                                            ;; 00:37b5 $e1
-    jr   Z, .jr_00_37d4                                ;; 00:37b6 $28 $1c
-.jr_00_37b8:
+    jr   Z, .finished                                  ;; 00:37b6 $28 $1c
+.print_more_text:
     inc  E                                             ;; 00:37b8 $1c
     dec  B                                             ;; 00:37b9 $05
     jr   NZ, .loop_1                                   ;; 00:37ba $20 $be
@@ -9059,7 +9083,7 @@ drawText:
     ld   [wDualCharacterPosition], A                   ;; 00:37cd $ea $83 $d8
     call setDialogTextInsertionPoint                   ;; 00:37d0 $cd $36 $37
     ret                                                ;; 00:37d3 $c9
-.jr_00_37d4:
+.finished:
     inc  E                                             ;; 00:37d4 $1c
     dec  B                                             ;; 00:37d5 $05
     push AF                                            ;; 00:37d6 $f5
@@ -9184,10 +9208,10 @@ storeTileAatScreenPositionDE:
     ld   B, A                                          ;; 00:3894 $47
     call tilePositionToWindowVRAMaddress               ;; 00:3895 $cd $bb $38
     ld   A, B                                          ;; 00:3898 $78
-    jr   C, .jr_00_38a0                                ;; 00:3899 $38 $05
+    jr   C, .not_on_window                             ;; 00:3899 $38 $05
     call storeBatBackgroundDrawPosition                ;; 00:389b $cd $7c $04
     jr   .jr_00_38a3                                   ;; 00:389e $18 $03
-.jr_00_38a0:
+.not_on_window:
     call storeBatHLinVRAM                              ;; 00:38a0 $cd $5e $1d
 .jr_00_38a3:
     pop  HL                                            ;; 00:38a3 $e1
@@ -9511,11 +9535,11 @@ scriptOpCodeTakeMoney:
     ld   A, H                                          ;; 00:3a7a $7c
     sbc  A, D                                          ;; 00:3a7b $9a
     ld   H, A                                          ;; 00:3a7c $67
-    jr   NC, .jr_00_3a86                               ;; 00:3a7d $30 $07
+    jr   NC, .have_enough                              ;; 00:3a7d $30 $07
     ld   A, $06                                        ;; 00:3a7f $3e $06
     call setScriptFlag                                 ;; 00:3a81 $cd $e4 $3b
     jr   .jr_00_3a93                                   ;; 00:3a84 $18 $0d
-.jr_00_3a86:
+.have_enough:
     ld   A, H                                          ;; 00:3a86 $7c
     ld   [wMoneyHigh], A                               ;; 00:3a87 $ea $bf $d7
     ld   A, L                                          ;; 00:3a8a $7d
@@ -9941,8 +9965,8 @@ scriptResumeAfterWindow:
     ld   A, [wDialogType]                              ;; 00:3cf7 $fa $4a $d8
     cp   A, $1e                                        ;; 00:3cfa $fe $1e
     call Z, getNextScriptInstruction                   ;; 00:3cfc $cc $27 $37
-    jr   Z, .jr_00_3d01                                ;; 00:3cff $28 $00
-.jr_00_3d01:
+    jr   Z, .here                                      ;; 00:3cff $28 $00
+.here:
     call hideAndSaveMenuMetasprites_trampoline         ;; 00:3d01 $cd $63 $30
     ret                                                ;; 00:3d04 $c9
 
@@ -10204,7 +10228,7 @@ setWillBarMax:
 setNextXPLevel:
     push BC                                            ;; 00:3ea3 $c5
     push AF                                            ;; 00:3ea4 $f5
-    ld   A, $08                                        ;; 00:3ea5 $3e $08
+    ld   A, BANK(xpPerLevelTable) ;@=bank xpPerLevelTable ;; 00:3ea5 $3e $08
     call pushBankNrAndSwitch                           ;; 00:3ea7 $cd $fb $29
     pop  AF                                            ;; 00:3eaa $f1
     ld   HL, xpPerLevelTable                           ;; 00:3eab $21 $d6 $4d

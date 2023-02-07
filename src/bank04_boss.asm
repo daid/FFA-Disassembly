@@ -6,7 +6,9 @@ INCLUDE "include/charmaps.inc"
 INCLUDE "include/constants.inc"
 
 SECTION "bank04", ROMX[$4000], BANK[$04]
+
 ;@call_to_bank_jumptable amount=7
+entryPointTableBank04:
     call_to_bank_target bossRunLogic                   ;; 04:4000 pP
     call_to_bank_target spawnBoss                      ;; 04:4002 pP
     call_to_bank_target bossClearStatsObjects          ;; 04:4004 ??
@@ -660,13 +662,17 @@ bossLoadTiles:
     ld   C, [HL]                                       ;; 04:4392 $4e
     inc  HL                                            ;; 04:4393 $23
     ld   B, [HL]                                       ;; 04:4394 $46
+; BC = offset from beginning of bank 8 to load tiles from
     inc  HL                                            ;; 04:4395 $23
     ld   A, [HL+]                                      ;; 04:4396 $2a
     ld   H, [HL]                                       ;; 04:4397 $66
     ld   L, A                                          ;; 04:4398 $6f
+; HL = pointer to the tile numbers to load
     ld   A, E                                          ;; 04:4399 $7b
     add  A, A                                          ;; 04:439a $87
+; A = number of tiles to transfer
     pop  DE                                            ;; 04:439b $d1
+; DE = tile VRAM load location
 .loop:
     push AF                                            ;; 04:439c $f5
     ld   A, [HL+]                                      ;; 04:439d $2a

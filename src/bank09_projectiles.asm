@@ -6,7 +6,9 @@ INCLUDE "include/charmaps.inc"
 INCLUDE "include/constants.inc"
 
 SECTION "bank09", ROMX[$4000], BANK[$09]
+
 ;@call_to_bank_jumptable
+entryPointTableBank09:
     call_to_bank_target projectileRunLogicForAll       ;; 09:4000 pP
     call_to_bank_target processPhysicsForObject_9      ;; 09:4002 pP
     call_to_bank_target projectileLoadTiles            ;; 09:4004 pP
@@ -142,7 +144,7 @@ projectileRunLogic:
     or   A, B                                          ;; 09:40b6 $b0
     ld   C, [HL]                                       ;; 09:40b7 $4e
     ld   B, $00                                        ;; 09:40b8 $06 $00
-    call call_00_08d4                                  ;; 09:40ba $cd $d4 $08
+    call moveGridlessObject                            ;; 09:40ba $cd $d4 $08
     ret                                                ;; 09:40bd $c9
 .cardinal_direction:
     ld   HL, $03                                       ;; 09:40be $21 $03 $00
@@ -226,7 +228,7 @@ projectileRunLogic:
     or   A, B                                          ;; 09:412d $b0
     ld   C, [HL]                                       ;; 09:412e $4e
     ld   B, $00                                        ;; 09:412f $06 $00
-    call call_00_08d4                                  ;; 09:4131 $cd $d4 $08
+    call moveGridlessObject                            ;; 09:4131 $cd $d4 $08
     pop  DE                                            ;; 09:4134 $d1
     ret  NZ                                            ;; 09:4135 $c0
 .jp_09_4136:
@@ -274,7 +276,7 @@ projectileRunLogic:
     ld   B, $01                                        ;; 09:4172 $06 $01
 .jr_09_4174:
     push BC                                            ;; 09:4174 $c5
-    call call_00_08d4                                  ;; 09:4175 $cd $d4 $08
+    call moveGridlessObject                            ;; 09:4175 $cd $d4 $08
     pop  BC                                            ;; 09:4178 $c1
     jr   Z, .jr_09_4193                                ;; 09:4179 $28 $18
     push BC                                            ;; 09:417b $c5

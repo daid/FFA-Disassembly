@@ -6,7 +6,9 @@ INCLUDE "include/charmaps.inc"
 INCLUDE "include/constants.inc"
 
 SECTION "bank03", ROMX[$4000], BANK[$03]
+
 ;@call_to_bank_jumptable
+entryPointTableBank03:
     call_to_bank_target npcRunBehaviorForAll           ;; 03:4000 pP
     call_to_bank_target processPhysicsForObject_3      ;; 03:4002 pP
     call_to_bank_target spawnNPC                       ;; 03:4004 pP
@@ -18,7 +20,7 @@ SECTION "bank03", ROMX[$4000], BANK[$03]
     call_to_bank_target friendlyCollisionHandling      ;; 03:4010 pP
     call_to_bank_target damageNpc                      ;; 03:4012 ??
     call_to_bank_target objectBehaviorMove             ;; 03:4014 pP
-    call_to_bank_target call_03_4aed                   ;; 03:4016 pP
+    call_to_bank_target moveGridlessObject_3           ;; 03:4016 pP
     call_to_bank_target updateObjectPosition_3         ;; 03:4018 pP
     call_to_bank_target updateNpcPosition              ;; 03:401a pP
     call_to_bank_target moveObjectsDuringScript        ;; 03:401c pP
@@ -1126,7 +1128,7 @@ friendlyCollisionHandling:
     or   A, $30                                        ;; 03:461d $f6 $30
     push BC                                            ;; 03:461f $c5
     ld   B, $00                                        ;; 03:4620 $06 $00
-    call call_00_08d4                                  ;; 03:4622 $cd $d4 $08
+    call moveGridlessObject                            ;; 03:4622 $cd $d4 $08
     pop  BC                                            ;; 03:4625 $c1
     pop  AF                                            ;; 03:4626 $f1
     ld   [wMainGameStateFlags], A                      ;; 03:4627 $ea $a1 $c0
@@ -1257,7 +1259,7 @@ enemyCollisionHandling:
 .weapon:
     call npcTestHit                                    ;; 03:46f0 $cd $06 $49
     jp   NZ, .no_effect                                ;; 03:46f3 $c2 $56 $46
-    call call_03_4931                                  ;; 03:46f6 $cd $31 $49
+    call npcTestShield                                 ;; 03:46f6 $cd $31 $49
     jp   NZ, .immune                                   ;; 03:46f9 $c2 $eb $47
     push BC                                            ;; 03:46fc $c5
     push DE                                            ;; 03:46fd $d5
@@ -1312,7 +1314,7 @@ enemyCollisionHandling:
 .spell:
     call npcTestHit                                    ;; 03:474a $cd $06 $49
     jp   NZ, .no_effect                                ;; 03:474d $c2 $56 $46
-    call call_03_4931                                  ;; 03:4750 $cd $31 $49
+    call npcTestShield                                 ;; 03:4750 $cd $31 $49
     jr   NZ, .jr_03_4769                               ;; 03:4753 $20 $14
     push BC                                            ;; 03:4755 $c5
     push DE                                            ;; 03:4756 $d5
@@ -1360,7 +1362,7 @@ enemyCollisionHandling:
 .followerAttack:
     call npcTestFollowerHit                            ;; 03:479d $cd $19 $49
     jp   NZ, .no_effect                                ;; 03:47a0 $c2 $56 $46
-    call call_03_4931                                  ;; 03:47a3 $cd $31 $49
+    call npcTestShield                                 ;; 03:47a3 $cd $31 $49
     jp   NZ, .immune                                   ;; 03:47a6 $c2 $eb $47
     push BC                                            ;; 03:47a9 $c5
     push DE                                            ;; 03:47aa $d5
@@ -1639,7 +1641,9 @@ npcTestFollowerHit:
     inc  A                                             ;; 03:492f $3c
     ret                                                ;; 03:4930 $c9
 
-call_03_4931:
+; Tests whether the enemy has a directional shield, and if so checks whether it is facing the attack.
+; Return: NZ = shielded, Z = no shield or not facing the attack
+npcTestShield:
     ld   D, H                                          ;; 03:4931 $54
     ld   E, L                                          ;; 03:4932 $5d
     push BC                                            ;; 03:4933 $c5
@@ -1974,8 +1978,8 @@ getNpcElementalImmunities:
     and  A, C                                          ;; 03:4aeb $a1
     ret                                                ;; 03:4aec $c9
 
-call_03_4aed:
-    call call_00_08d4                                  ;; 03:4aed $cd $d4 $08
+moveGridlessObject_3:
+    call moveGridlessObject                            ;; 03:4aed $cd $d4 $08
     ret                                                ;; 03:4af0 $c9
 
 updateObjectPosition_3:
@@ -3452,7 +3456,7 @@ call_03_52f8:
     and  A, $0f                                        ;; 03:530f $e6 $0f
     or   A, $10                                        ;; 03:5311 $f6 $10
     ld   DE, $8080                                     ;; 03:5313 $11 $80 $80
-    call call_00_08d4                                  ;; 03:5316 $cd $d4 $08
+    call moveGridlessObject                            ;; 03:5316 $cd $d4 $08
     pop  DE                                            ;; 03:5319 $d1
     pop  AF                                            ;; 03:531a $f1
     pop  BC                                            ;; 03:531b $c1
@@ -3639,7 +3643,7 @@ call_03_5403:
     and  A, $0f                                        ;; 03:540c $e6 $0f
     or   A, $10                                        ;; 03:540e $f6 $10
     ld   DE, $8080                                     ;; 03:5410 $11 $80 $80
-    call call_00_08d4                                  ;; 03:5413 $cd $d4 $08
+    call moveGridlessObject                            ;; 03:5413 $cd $d4 $08
     pop  DE                                            ;; 03:5416 $d1
     pop  AF                                            ;; 03:5417 $f1
     ret                                                ;; 03:5418 $c9

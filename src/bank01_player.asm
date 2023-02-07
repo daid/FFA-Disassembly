@@ -8,7 +8,7 @@ INCLUDE "include/constants.inc"
 SECTION "bank01", ROMX[$4000], BANK[$01]
 
 ;@call_to_bank_jumptable amount=40
-data_01_4000:
+entryPointTableBank01:
     call_to_bank_target runMainInputHandler            ;; 01:4000 pP
     call_to_bank_target playerSpritesLoadPlayerSpriteTiles ;; 01:4002 pP
     call_to_bank_target processPhysicsForPlayer        ;; 01:4004 pP
@@ -38,7 +38,7 @@ data_01_4000:
     call_to_bank_target call_01_7647                   ;; 01:4034 pP
     call_to_bank_target call_01_7639                   ;; 01:4036 pP
     call_to_bank_target objectJumpHandler              ;; 01:4038 pP
-    call_to_bank_target call_01_52b3                   ;; 01:403a pP
+    call_to_bank_target runPlayerAttackObjectFunctions ;; 01:403a pP
     call_to_bank_target ensureReservedObjectsExist     ;; 01:403c pP
     call_to_bank_target playerAttackDestroy            ;; 01:403e pP
     call_to_bank_target getEquippedWeaponAnimationType ;; 01:4040 pP
@@ -66,7 +66,7 @@ prepareLetterboxEffect:
     call loadLCDCEffectBuffer                          ;; 01:406d $cd $f3 $02
     ld   HL, $4260                                     ;; 01:4070 $21 $60 $42
     ld   DE, $8f00                                     ;; 01:4073 $11 $00 $8f
-    ld   A, $0c                                        ;; 01:4076 $3e $0c
+    ld   A, BANK(tilesetGfxOutdoor) ;@=bank tilesetGfxOutdoor ;; 01:4076 $3e $0c
     call addTileGraphicCopyRequest                     ;; 01:4078 $cd $f5 $2d
     ld   C, $f0                                        ;; 01:407b $0e $f0
     ld   DE, $00                                       ;; 01:407d $11 $00 $00
@@ -173,7 +173,7 @@ loadMapWithShutterEffectSequence:
     dw   shutterEffectClose                            ;; 01:4140 pP $02
     dw   drawRoomFromMap                               ;; 01:4142 pP $03
     dw   advanceScriptOpWhenVRAMCopiesDone             ;; 01:4144 pP $04
-    dw   call_01_43a3                                  ;; 01:4146 pP $05
+    dw   loadMapWithShutterFinalSetup                  ;; 01:4146 pP $05
     dw   shutterEffectOpen                             ;; 01:4148 pP $06
     dw   LoadMapEnd                                    ;; 01:414a pP $07
 
@@ -190,7 +190,7 @@ loadMapInstantSequence:
     dw   advanceScriptOpWhenVRAMCopiesDone             ;; 01:415a pP $01
     dw   drawRoomFromMap                               ;; 01:415c pP $02
     dw   advanceScriptOpWhenVRAMCopiesDone             ;; 01:415e pP $03
-    dw   call_01_43ee                                  ;; 01:4160 pP $04
+    dw   loadMapInstantFinalSetup                      ;; 01:4160 pP $04
     dw   LoadMapEnd                                    ;; 01:4162 pP $05
 
 openMinimap:
@@ -207,7 +207,7 @@ openMinimap:
     dw   shutterEffectClose                            ;; 01:4174 pP $02
     dw   loadMinimapToBackground                       ;; 01:4176 pP $03
     dw   advanceScriptOpWhenVRAMCopiesDone             ;; 01:4178 pP $04
-    dw   call_01_4422                                  ;; 01:417a pP $05
+    dw   openMinimapFinalSetup                         ;; 01:417a pP $05
     dw   shutterEffectOpen                             ;; 01:417c pP $06
     dw   LoadMapEnd                                    ;; 01:417e pP $07
 
@@ -525,13 +525,14 @@ drawRoomFromMap:
     inc  HL                                            ;; 01:43a1 $23
     ret                                                ;; 01:43a2 $c9
 
-call_01_43a3:
+; Removes previous screen's objects, positions the player and any follower, and inits the shutter open effect.
+loadMapWithShutterFinalSetup:
     push DE                                            ;; 01:43a3 $d5
     push BC                                            ;; 01:43a4 $c5
     call removeNpcObjects                              ;; 01:43a5 $cd $75 $03
     pop  BC                                            ;; 01:43a8 $c1
     push BC                                            ;; 01:43a9 $c5
-    call call_01_44a5                                  ;; 01:43aa $cd $a5 $44
+    call showPlayerAtTile                              ;; 01:43aa $cd $a5 $44
     call checkForFollower                              ;; 01:43ad $cd $c2 $28
     pop  HL                                            ;; 01:43b0 $e1
     jr   NZ, .jr_01_43cc                               ;; 01:43b1 $20 $19
@@ -573,13 +574,14 @@ call_01_43a3:
     inc  HL                                            ;; 01:43ec $23
     ret                                                ;; 01:43ed $c9
 
-call_01_43ee:
+; Removes previous screen's objects and positions the player and any follower.
+loadMapInstantFinalSetup:
     push DE                                            ;; 01:43ee $d5
     push BC                                            ;; 01:43ef $c5
     call removeNpcObjects                              ;; 01:43f0 $cd $75 $03
     pop  BC                                            ;; 01:43f3 $c1
     push BC                                            ;; 01:43f4 $c5
-    call call_01_44a5                                  ;; 01:43f5 $cd $a5 $44
+    call showPlayerAtTile                              ;; 01:43f5 $cd $a5 $44
     call checkForFollower                              ;; 01:43f8 $cd $c2 $28
     pop  HL                                            ;; 01:43fb $e1
     jr   NZ, .jr_01_4417                               ;; 01:43fc $20 $19
@@ -611,7 +613,8 @@ call_01_43ee:
     inc  HL                                            ;; 01:4420 $23
     ret                                                ;; 01:4421 $c9
 
-call_01_4422:
+; Draws the minimap if not on the overworld, inits the shutter open effect, hides all sprites, and makes sure to end any player attack.
+openMinimapFinalSetup:
     push DE                                            ;; 01:4422 $d5
     ld   A, [wMapWidthTmp]                             ;; 01:4423 $fa $9f $d4
     cp   A, $00                                        ;; 01:4426 $fe $00
@@ -684,7 +687,8 @@ LoadMapEnd:
     pop  HL                                            ;; 01:44a3 $e1
     ret                                                ;; 01:44a4 $c9
 
-call_01_44a5:
+; BC = yx tile location
+showPlayerAtTile:
     ld   A, B                                          ;; 01:44a5 $78
     add  A, A                                          ;; 01:44a6 $87
     add  A, A                                          ;; 01:44a7 $87
@@ -1358,7 +1362,7 @@ gameStateNormal:
 .jr_01_4a16:
     push DE                                            ;; 01:4a16 $d5
     push BC                                            ;; 01:4a17 $c5
-    call call_00_2ed3                                  ;; 01:4a18 $cd $d3 $2e
+    call runPlayerAttackObjectFunctions_trampoline     ;; 01:4a18 $cd $d3 $2e
     pop  BC                                            ;; 01:4a1b $c1
     pop  DE                                            ;; 01:4a1c $d1
     jr   NZ, .dpad                                     ;; 01:4a1d $20 $19
@@ -1679,7 +1683,7 @@ gameStateFireAutoTarget:
     ld   A, [wMainGameState]                           ;; 01:4c43 $fa $a0 $c0
     cp   A, $06                                        ;; 01:4c46 $fe $06
     ret  NZ                                            ;; 01:4c48 $c0
-    call call_00_2ed3                                  ;; 01:4c49 $cd $d3 $2e
+    call runPlayerAttackObjectFunctions_trampoline     ;; 01:4c49 $cd $d3 $2e
     ret  NZ                                            ;; 01:4c4c $c0
     ld   A, $00                                        ;; 01:4c4d $3e $00
     ld   [wMainGameState], A                           ;; 01:4c4f $ea $a0 $c0
@@ -1694,7 +1698,7 @@ gameStateSpecialAttackFlyingSwordReturn:
     ld   A, [wMainGameState]                           ;; 01:4c60 $fa $a0 $c0
     cp   A, $04                                        ;; 01:4c63 $fe $04
     ret  NZ                                            ;; 01:4c65 $c0
-    call call_00_2ed3                                  ;; 01:4c66 $cd $d3 $2e
+    call runPlayerAttackObjectFunctions_trampoline     ;; 01:4c66 $cd $d3 $2e
     jr   Z, .jr_01_4cb1                                ;; 01:4c69 $28 $46
     call call_01_4d35                                  ;; 01:4c6b $cd $35 $4d
     call getPlayerY                                    ;; 01:4c6e $cd $99 $02
@@ -1768,7 +1772,7 @@ gameStateSpecialAttackFlyingSwordReturn:
     pop  DE                                            ;; 01:4ccf $d1
     ld   C, $04                                        ;; 01:4cd0 $0e $04
     ld   B, $00                                        ;; 01:4cd2 $06 $00
-    call call_00_08d4                                  ;; 01:4cd4 $cd $d4 $08
+    call moveGridlessObject                            ;; 01:4cd4 $cd $d4 $08
     ld   A, [wFlyingSwordSpecialOriginalLocationY]     ;; 01:4cd7 $fa $d1 $c4
     ld   H, A                                          ;; 01:4cda $67
     ld   A, [wFlyingSwordSpecialOriginalLocationX]     ;; 01:4cdb $fa $d0 $c4
@@ -1872,7 +1876,7 @@ call_01_4d35:
     and  A, $0f                                        ;; 01:4d80 $e6 $0f
     push AF                                            ;; 01:4d82 $f5
     ld   C, $04                                        ;; 01:4d83 $0e $04
-    call call_00_08d4                                  ;; 01:4d85 $cd $d4 $08
+    call moveGridlessObject                            ;; 01:4d85 $cd $d4 $08
     pop  AF                                            ;; 01:4d88 $f1
     ld   B, $60                                        ;; 01:4d89 $06 $60
     call playerSpritesLoadPlayerSpriteTiles            ;; 01:4d8b $cd $be $48
@@ -1883,7 +1887,7 @@ gameStateSpecialAttackFlyingSword:
     ld   A, [wMainGameState]                           ;; 01:4d92 $fa $a0 $c0
     cp   A, $03                                        ;; 01:4d95 $fe $03
     ret  NZ                                            ;; 01:4d97 $c0
-    call call_00_2ed3                                  ;; 01:4d98 $cd $d3 $2e
+    call runPlayerAttackObjectFunctions_trampoline     ;; 01:4d98 $cd $d3 $2e
     jr   Z, .jr_01_4da1                                ;; 01:4d9b $28 $04
     call call_01_4d35                                  ;; 01:4d9d $cd $35 $4d
     ret                                                ;; 01:4da0 $c9
@@ -2020,7 +2024,7 @@ gameStateSpecialAttack:
     ld   B, A                                          ;; 01:4e84 $47
     pop  AF                                            ;; 01:4e85 $f1
     call playerSpritesLoadPlayerSpriteTiles            ;; 01:4e86 $cd $be $48
-    call call_00_2ed3                                  ;; 01:4e89 $cd $d3 $2e
+    call runPlayerAttackObjectFunctions_trampoline     ;; 01:4e89 $cd $d3 $2e
     ret                                                ;; 01:4e8c $c9
 .jp_01_4e8d:
     call getPlayerDirection                            ;; 01:4e8d $cd $ab $02
@@ -2057,7 +2061,7 @@ gameStateAttack:
     call playerSpritesLoadPlayerSpriteTiles            ;; 01:4ec6 $cd $be $48
 .jr_01_4ec9:
     pop  DE                                            ;; 01:4ec9 $d1
-    call call_00_2ed3                                  ;; 01:4eca $cd $d3 $2e
+    call runPlayerAttackObjectFunctions_trampoline     ;; 01:4eca $cd $d3 $2e
     ret  NZ                                            ;; 01:4ecd $c0
     call getPlayerDirection                            ;; 01:4ece $cd $ab $02
     and  A, $0f                                        ;; 01:4ed1 $e6 $0f
@@ -2380,6 +2384,7 @@ playerHit:
     cpl                                                ;; 01:50e4 $2f
     and  A, C                                          ;; 01:50e5 $a1
     ret  Z                                             ;; 01:50e6 $c8
+; This is calculating a 25% chance of giving any status effect an enemy is capable of by anding two random bits.
     ld   C, A                                          ;; 01:50e7 $4f
     push BC                                            ;; 01:50e8 $c5
     call getRandomByte                                 ;; 01:50e9 $cd $1e $2b
@@ -2659,16 +2664,16 @@ attackTileSickle:
     call setRoomTile                                   ;; 01:52af $cd $00 $24
     ret                                                ;; 01:52b2 $c9
 
-call_01_52b3:
+runPlayerAttackObjectFunctions:
     ld   C, $00                                        ;; 01:52b3 $0e $00
     ld   B, $07                                        ;; 01:52b5 $06 $07
-    ld   HL, wCEF0                                     ;; 01:52b7 $21 $f0 $ce
+    ld   HL, wAttackFrameFunctions                     ;; 01:52b7 $21 $f0 $ce
 .loop:
     ld   A, [HL+]                                      ;; 01:52ba $2a
     push HL                                            ;; 01:52bb $e5
     or   A, A                                          ;; 01:52bc $b7
     jr   Z, .jr_01_52c5                                ;; 01:52bd $28 $06
-    ld   HL, .data_01_52cd                             ;; 01:52bf $21 $cd $52
+    ld   HL, .attackObjectFunctionsJumptable           ;; 01:52bf $21 $cd $52
     call callJumptable                                 ;; 01:52c2 $cd $70 $2b
 .jr_01_52c5:
     pop  HL                                            ;; 01:52c5 $e1
@@ -2678,21 +2683,21 @@ call_01_52b3:
     cp   A, $00                                        ;; 01:52ca $fe $00
     ret                                                ;; 01:52cc $c9
 ;@jumptable amount=9
-.data_01_52cd:
-    dw   call_01_52df                                  ;; 01:52cd ?? $00
-    dw   call_01_54d5                                  ;; 01:52cf pP $01
-    dw   call_01_53f2                                  ;; 01:52d1 ?? $02
-    dw   call_01_53bd                                  ;; 01:52d3 ?? $03
-    dw   call_01_57ec                                  ;; 01:52d5 ?? $04
-    dw   call_01_581e                                  ;; 01:52d7 ?? $05
-    dw   call_01_5903                                  ;; 01:52d9 ?? $06
-    dw   call_01_5bf1                                  ;; 01:52db ?? $07
-    dw   call_01_52e0                                  ;; 01:52dd ?? $08
+.attackObjectFunctionsJumptable:
+    dw   attackObjectFunctionNop                       ;; 01:52cd ?? $00
+    dw   attackObjectFunctionNormal                    ;; 01:52cf pP $01
+    dw   attackObjectFunction02                        ;; 01:52d1 ?? $02
+    dw   attackObjectFunction03                        ;; 01:52d3 ?? $03
+    dw   attackObjectFunction04                        ;; 01:52d5 ?? $04
+    dw   attackObjectFunction05                        ;; 01:52d7 ?? $05
+    dw   attackObjectFunction06                        ;; 01:52d9 ?? $06
+    dw   attackObjectFunction07                        ;; 01:52db ?? $07
+    dw   attackObjectFunction08                        ;; 01:52dd ?? $08
 
-call_01_52df:
+attackObjectFunctionNop:
     ret                                                ;; 01:52df $c9
 
-call_01_52e0:
+attackObjectFunction08:
     push BC                                            ;; 01:52e0 $c5
     call attackFrameSpeedTick                          ;; 01:52e1 $cd $a0 $53
     jr   Z, .jr_01_52e9                                ;; 01:52e4 $28 $03
@@ -2766,7 +2771,7 @@ call_01_52e0:
 .jr_01_535b:
     push AF                                            ;; 01:535b $f5
     push BC                                            ;; 01:535c $c5
-    call call_00_08d4                                  ;; 01:535d $cd $d4 $08
+    call moveGridlessObject                            ;; 01:535d $cd $d4 $08
     pop  BC                                            ;; 01:5360 $c1
     ld   B, $00                                        ;; 01:5361 $06 $00
     jp   Z, .jp_01_538a                                ;; 01:5363 $ca $8a $53
@@ -2795,7 +2800,7 @@ call_01_52e0:
 .jp_01_538a:
     pop  AF                                            ;; 01:538a $f1
     pop  AF                                            ;; 01:538b $f1
-    call call_01_59d0                                  ;; 01:538c $cd $d0 $59
+    call playerAttackObjectInit                        ;; 01:538c $cd $d0 $59
     pop  BC                                            ;; 01:538f $c1
     ret                                                ;; 01:5390 $c9
 
@@ -2836,7 +2841,7 @@ attackFrameSpeedTick:
     xor  A, A                                          ;; 01:53bb $af
     ret                                                ;; 01:53bc $c9
 
-call_01_53bd:
+attackObjectFunction03:
     push BC                                            ;; 01:53bd $c5
     call attackFrameSpeedTick                          ;; 01:53be $cd $a0 $53
     jr   Z, .jr_01_53c6                                ;; 01:53c1 $28 $03
@@ -2876,7 +2881,7 @@ call_01_53bd:
     pop  HL                                            ;; 01:53ee $e1
     jp   jp_01_5538                                    ;; 01:53ef $c3 $38 $55
 
-call_01_53f2:
+attackObjectFunction02:
     push BC                                            ;; 01:53f2 $c5
     call attackFrameSpeedTick                          ;; 01:53f3 $cd $a0 $53
     jr   Z, .jr_01_53fb                                ;; 01:53f6 $28 $03
@@ -2986,12 +2991,12 @@ call_01_53f2:
     ld   B, $01                                        ;; 01:5481 $06 $01
     res  7, A                                          ;; 01:5483 $cb $bf
 .jr_01_5485:
-    call call_00_08d4                                  ;; 01:5485 $cd $d4 $08
+    call moveGridlessObject                            ;; 01:5485 $cd $d4 $08
     jr   Z, .jr_01_54ac                                ;; 01:5488 $28 $22
     ld   A, [wSelectedObjectID]                        ;; 01:548a $fa $5a $cf
     ld   C, A                                          ;; 01:548d $4f
     ld   B, $00                                        ;; 01:548e $06 $00
-    ld   HL, wCEF0                                     ;; 01:5490 $21 $f0 $ce
+    ld   HL, wAttackFrameFunctions                     ;; 01:5490 $21 $f0 $ce
     add  HL, BC                                        ;; 01:5493 $09
     ld   A, [HL]                                       ;; 01:5494 $7e
     cp   A, $00                                        ;; 01:5495 $fe $00
@@ -3013,7 +3018,7 @@ call_01_53f2:
     pop  HL                                            ;; 01:54ac $e1
     ld   A, [wSelectedObjectID]                        ;; 01:54ad $fa $5a $cf
     ld   C, A                                          ;; 01:54b0 $4f
-    call call_01_59d0                                  ;; 01:54b1 $cd $d0 $59
+    call playerAttackObjectInit                        ;; 01:54b1 $cd $d0 $59
     ld   A, [wSelectedObjectID]                        ;; 01:54b4 $fa $5a $cf
     dec  A                                             ;; 01:54b7 $3d
     dec  A                                             ;; 01:54b8 $3d
@@ -3023,7 +3028,7 @@ call_01_53f2:
     and  A, $f0                                        ;; 01:54be $e6 $f0
     pop  BC                                            ;; 01:54c0 $c1
     cp   A, $40                                        ;; 01:54c1 $fe $40
-    call Z, call_01_59d0                               ;; 01:54c3 $cc $d0 $59
+    call Z, playerAttackObjectInit                     ;; 01:54c3 $cc $d0 $59
     pop  BC                                            ;; 01:54c6 $c1
     ld   A, $07                                        ;; 01:54c7 $3e $07
     sub  A, B                                          ;; 01:54c9 $90
@@ -3035,7 +3040,7 @@ call_01_53f2:
     xor  A, A                                          ;; 01:54d3 $af
     ret                                                ;; 01:54d4 $c9
 
-call_01_54d5:
+attackObjectFunctionNormal:
     push BC                                            ;; 01:54d5 $c5
     call attackFrameSpeedTick                          ;; 01:54d6 $cd $a0 $53
     jr   Z, .jr_01_54de                                ;; 01:54d9 $28 $03
@@ -3091,7 +3096,7 @@ call_01_54d5:
     pop  BC                                            ;; 01:5525 $c1
     push BC                                            ;; 01:5526 $c5
     push DE                                            ;; 01:5527 $d5
-    ld   HL, wCEF0                                     ;; 01:5528 $21 $f0 $ce
+    ld   HL, wAttackFrameFunctions                     ;; 01:5528 $21 $f0 $ce
     add  HL, BC                                        ;; 01:552b $09
     ld   [HL], $03                                     ;; 01:552c $36 $03
     jr   jp_01_5530                                    ;; 01:552e $18 $00
@@ -3141,12 +3146,12 @@ jp_01_5538:
     ld   B, $01                                        ;; 01:5566 $06 $01
     res  7, A                                          ;; 01:5568 $cb $bf
 .jr_01_556a:
-    call call_00_08d4                                  ;; 01:556a $cd $d4 $08
+    call moveGridlessObject                            ;; 01:556a $cd $d4 $08
     jr   Z, jp_01_5592                                 ;; 01:556d $28 $23
     ld   A, [wSelectedObjectID]                        ;; 01:556f $fa $5a $cf
     ld   C, A                                          ;; 01:5572 $4f
     ld   B, $00                                        ;; 01:5573 $06 $00
-    ld   HL, wCEF0                                     ;; 01:5575 $21 $f0 $ce
+    ld   HL, wAttackFrameFunctions                     ;; 01:5575 $21 $f0 $ce
     add  HL, BC                                        ;; 01:5578 $09
     ld   A, [HL]                                       ;; 01:5579 $7e
     cp   A, $00                                        ;; 01:557a $fe $00
@@ -3169,7 +3174,7 @@ jp_01_5592:
     pop  HL                                            ;; 01:5592 $e1
     ld   A, [wSelectedObjectID]                        ;; 01:5593 $fa $5a $cf
     ld   C, A                                          ;; 01:5596 $4f
-    call call_01_59d0                                  ;; 01:5597 $cd $d0 $59
+    call playerAttackObjectInit                        ;; 01:5597 $cd $d0 $59
     pop  BC                                            ;; 01:559a $c1
     ld   A, $07                                        ;; 01:559b $3e $07
     sub  A, B                                          ;; 01:559d $90
@@ -3215,7 +3220,7 @@ jr_01_55a9:
     ld   [HL], E                                       ;; 01:55d8 $73
     inc  HL                                            ;; 01:55d9 $23
     ld   [HL], D                                       ;; 01:55da $72
-    ld   HL, wCEF0                                     ;; 01:55db $21 $f0 $ce
+    ld   HL, wAttackFrameFunctions                     ;; 01:55db $21 $f0 $ce
     add  HL, BC                                        ;; 01:55de $09
     ld   [HL], $02                                     ;; 01:55df $36 $02
     ld   HL, wAttackFrameSteps                         ;; 01:55e1 $21 $f8 $ce
@@ -3238,7 +3243,7 @@ jr_01_55a9:
     pop  HL                                            ;; 01:5601 $e1
     pop  BC                                            ;; 01:5602 $c1
     push BC                                            ;; 01:5603 $c5
-    call call_01_53f2                                  ;; 01:5604 $cd $f2 $53
+    call attackObjectFunction02                        ;; 01:5604 $cd $f2 $53
     pop  BC                                            ;; 01:5607 $c1
     ret                                                ;; 01:5608 $c9
 
@@ -3248,7 +3253,7 @@ attackFireAutoTarget:
     pop  BC                                            ;; 01:560d $c1
     push BC                                            ;; 01:560e $c5
     push DE                                            ;; 01:560f $d5
-    ld   HL, wCEF0                                     ;; 01:5610 $21 $f0 $ce
+    ld   HL, wAttackFrameFunctions                     ;; 01:5610 $21 $f0 $ce
     add  HL, BC                                        ;; 01:5613 $09
     ld   [HL], $04                                     ;; 01:5614 $36 $04
     jp   jp_01_5530                                    ;; 01:5616 $c3 $30 $55
@@ -3258,7 +3263,7 @@ jp_01_5619:
     pop  BC                                            ;; 01:561a $c1
     push BC                                            ;; 01:561b $c5
     push DE                                            ;; 01:561c $d5
-    ld   HL, wCEF0                                     ;; 01:561d $21 $f0 $ce
+    ld   HL, wAttackFrameFunctions                     ;; 01:561d $21 $f0 $ce
     add  HL, BC                                        ;; 01:5620 $09
     ld   [HL], $08                                     ;; 01:5621 $36 $08
     jp   jp_01_5530                                    ;; 01:5623 $c3 $30 $55
@@ -3614,7 +3619,7 @@ notEnemyPushableOrBoss:
     cp   A, $20                                        ;; 01:57e9 $fe $20
     ret                                                ;; 01:57eb $c9
 
-call_01_57ec:
+attackObjectFunction04:
     push BC                                            ;; 01:57ec $c5
     call attackFrameSpeedTick                          ;; 01:57ed $cd $a0 $53
     jr   Z, .jr_01_57f4                                ;; 01:57f0 $28 $02
@@ -3637,18 +3642,18 @@ call_01_57ec:
     ld   HL, wCF48                                     ;; 01:580b $21 $48 $cf
     add  HL, BC                                        ;; 01:580e $09
     ld   [HL], A                                       ;; 01:580f $77
-    ld   HL, wCEF0                                     ;; 01:5810 $21 $f0 $ce
+    ld   HL, wAttackFrameFunctions                     ;; 01:5810 $21 $f0 $ce
     add  HL, BC                                        ;; 01:5813 $09
     ld   [HL], $05                                     ;; 01:5814 $36 $05
     pop  BC                                            ;; 01:5816 $c1
     ret                                                ;; 01:5817 $c9
 .jr_01_5818:
     pop  BC                                            ;; 01:5818 $c1
-    call call_01_59d0                                  ;; 01:5819 $cd $d0 $59
+    call playerAttackObjectInit                        ;; 01:5819 $cd $d0 $59
     pop  BC                                            ;; 01:581c $c1
     ret                                                ;; 01:581d $c9
 
-call_01_581e:
+attackObjectFunction05:
     push BC                                            ;; 01:581e $c5
     ld   A, $07                                        ;; 01:581f $3e $07
     sub  A, B                                          ;; 01:5821 $90
@@ -3786,7 +3791,7 @@ call_01_581e:
     or   A, E                                          ;; 01:58e4 $b3
     ld   [HL], A                                       ;; 01:58e5 $77
 .jr_01_58e6:
-    ld   HL, wCEF0                                     ;; 01:58e6 $21 $f0 $ce
+    ld   HL, wAttackFrameFunctions                     ;; 01:58e6 $21 $f0 $ce
     add  HL, BC                                        ;; 01:58e9 $09
     ld   [HL], $06                                     ;; 01:58ea $36 $06
     ld   HL, wAttackFrameSteps                         ;; 01:58ec $21 $f8 $ce
@@ -3801,12 +3806,12 @@ call_01_581e:
 .jp_01_58fb:
     pop  DE                                            ;; 01:58fb $d1
     pop  BC                                            ;; 01:58fc $c1
-    call call_01_59d0                                  ;; 01:58fd $cd $d0 $59
+    call playerAttackObjectInit                        ;; 01:58fd $cd $d0 $59
     pop  HL                                            ;; 01:5900 $e1
     pop  BC                                            ;; 01:5901 $c1
     ret                                                ;; 01:5902 $c9
 
-call_01_5903:
+attackObjectFunction06:
     push BC                                            ;; 01:5903 $c5
     ld   A, $07                                        ;; 01:5904 $3e $07
     sub  A, B                                          ;; 01:5906 $90
@@ -3918,7 +3923,7 @@ call_01_5903:
     and  A, $0f                                        ;; 01:5993 $e6 $0f
     or   A, $10                                        ;; 01:5995 $f6 $10
     push BC                                            ;; 01:5997 $c5
-    call call_00_08d4                                  ;; 01:5998 $cd $d4 $08
+    call moveGridlessObject                            ;; 01:5998 $cd $d4 $08
     pop  BC                                            ;; 01:599b $c1
     ld   A, [wVideoWY]                                 ;; 01:599c $fa $a9 $c0
     inc  A                                             ;; 01:599f $3c
@@ -3947,7 +3952,7 @@ call_01_5903:
     inc  C                                             ;; 01:59bf $0c
     ret                                                ;; 01:59c0 $c9
 .jr_01_59c1:
-    ld   HL, wCEF0                                     ;; 01:59c1 $21 $f0 $ce
+    ld   HL, wAttackFrameFunctions                     ;; 01:59c1 $21 $f0 $ce
     add  HL, BC                                        ;; 01:59c4 $09
     ld   [HL], $05                                     ;; 01:59c5 $36 $05
     pop  BC                                            ;; 01:59c7 $c1
@@ -3955,11 +3960,12 @@ call_01_5903:
     ret                                                ;; 01:59c9 $c9
 .jr_01_59ca:
     pop  HL                                            ;; 01:59ca $e1
-    call call_01_59d0                                  ;; 01:59cb $cd $d0 $59
+    call playerAttackObjectInit                        ;; 01:59cb $cd $d0 $59
     pop  BC                                            ;; 01:59ce $c1
     ret                                                ;; 01:59cf $c9
 
-call_01_59d0:
+; The objects reserved for the players attacks are never really destroyed, just moved offscreen.
+playerAttackObjectInit:
     push BC                                            ;; 01:59d0 $c5
     ld   A, $40                                        ;; 01:59d1 $3e $40
     call setObjectCollisionFlags                       ;; 01:59d3 $cd $86 $0c
@@ -3970,7 +3976,7 @@ call_01_59d0:
     push BC                                            ;; 01:59de $c5
     call updateObjectPosition                          ;; 01:59df $cd $11 $06
     pop  BC                                            ;; 01:59e2 $c1
-    ld   HL, wCEF0                                     ;; 01:59e3 $21 $f0 $ce
+    ld   HL, wAttackFrameFunctions                     ;; 01:59e3 $21 $f0 $ce
     add  HL, BC                                        ;; 01:59e6 $09
     ld   [HL], $00                                     ;; 01:59e7 $36 $00
     ret                                                ;; 01:59e9 $c9
@@ -4201,12 +4207,12 @@ useWeaponItemOrSpecial:
 .attack_common:
     pop  BC                                            ;; 01:5b2f $c1
     call playerUseWeaponOrItem                         ;; 01:5b30 $cd $6d $5b
-    ld   HL, wCEF0                                     ;; 01:5b33 $21 $f0 $ce
+    ld   HL, wAttackFrameFunctions                     ;; 01:5b33 $21 $f0 $ce
     add  HL, BC                                        ;; 01:5b36 $09
     ld   [HL], $01                                     ;; 01:5b37 $36 $01
     ld   B, A                                          ;; 01:5b39 $47
     ld   C, $00                                        ;; 01:5b3a $0e $00
-    call call_01_54d5                                  ;; 01:5b3c $cd $d5 $54
+    call attackObjectFunctionNormal                    ;; 01:5b3c $cd $d5 $54
     ld   A, C                                          ;; 01:5b3f $79
     or   A, $00                                        ;; 01:5b40 $f6 $00
     ret                                                ;; 01:5b42 $c9
@@ -4226,12 +4232,12 @@ call_01_5b46:
     ld   C, A                                          ;; 01:5b54 $4f
     ld   A, B                                          ;; 01:5b55 $78
     call playerUseWeaponOrItem                         ;; 01:5b56 $cd $6d $5b
-    ld   HL, wCEF0                                     ;; 01:5b59 $21 $f0 $ce
+    ld   HL, wAttackFrameFunctions                     ;; 01:5b59 $21 $f0 $ce
     add  HL, BC                                        ;; 01:5b5c $09
     ld   [HL], $01                                     ;; 01:5b5d $36 $01
     ld   B, A                                          ;; 01:5b5f $47
     ld   C, $00                                        ;; 01:5b60 $0e $00
-    call call_01_54d5                                  ;; 01:5b62 $cd $d5 $54
+    call attackObjectFunctionNormal                    ;; 01:5b62 $cd $d5 $54
     ld   A, C                                          ;; 01:5b65 $79
     or   A, A                                          ;; 01:5b66 $b7
     pop  DE                                            ;; 01:5b67 $d1
@@ -4239,7 +4245,7 @@ call_01_5b46:
     ld   [wSelectedObjectID], A                        ;; 01:5b69 $ea $5a $cf
     ret                                                ;; 01:5b6c $c9
 
-; A = type
+; A = type and step. Type is in the low nibble, step is in the high.
 ; C = special or normal, moving or still, and facing
 ; Returns: A = 7 - object id, BC = object id
 playerUseWeaponOrItem:
@@ -4338,7 +4344,7 @@ playerUseWeaponOrItem:
     sub  A, C                                          ;; 01:5bef $91
     ret                                                ;; 01:5bf0 $c9
 
-call_01_5bf1:
+attackObjectFunction07:
     push BC                                            ;; 01:5bf1 $c5
     call attackFrameSpeedTick                          ;; 01:5bf2 $cd $a0 $53
     jr   Z, .jr_01_5bfa                                ;; 01:5bf5 $28 $03
@@ -4415,7 +4421,7 @@ call_01_5bf1:
     ld   B, $01                                        ;; 01:5c58 $06 $01
     res  7, A                                          ;; 01:5c5a $cb $bf
 .jr_01_5c5c:
-    call call_00_08d4                                  ;; 01:5c5c $cd $d4 $08
+    call moveGridlessObject                            ;; 01:5c5c $cd $d4 $08
     pop  HL                                            ;; 01:5c5f $e1
     ld   A, [wSelectedObjectID]                        ;; 01:5c60 $fa $5a $cf
     ld   C, A                                          ;; 01:5c63 $4f
@@ -4466,12 +4472,12 @@ call_01_5c9f:
     ld   C, A                                          ;; 01:5cad $4f
     ld   A, B                                          ;; 01:5cae $78
     call playerUseWeaponOrItem                         ;; 01:5caf $cd $6d $5b
-    ld   HL, wCEF0                                     ;; 01:5cb2 $21 $f0 $ce
+    ld   HL, wAttackFrameFunctions                     ;; 01:5cb2 $21 $f0 $ce
     add  HL, BC                                        ;; 01:5cb5 $09
     ld   [HL], $07                                     ;; 01:5cb6 $36 $07
     ld   B, A                                          ;; 01:5cb8 $47
     ld   C, $00                                        ;; 01:5cb9 $0e $00
-    call call_01_5bf1                                  ;; 01:5cbb $cd $f1 $5b
+    call attackObjectFunction07                        ;; 01:5cbb $cd $f1 $5b
     ld   A, C                                          ;; 01:5cbe $79
     or   A, A                                          ;; 01:5cbf $b7
     pop  DE                                            ;; 01:5cc0 $d1
@@ -4599,7 +4605,7 @@ ensureReservedObjectsExist:
     ret                                                ;; 01:5d81 $c9
 
 playerAttackDestroy:
-    ld   HL, wCEF0                                     ;; 01:5d82 $21 $f0 $ce
+    ld   HL, wAttackFrameFunctions                     ;; 01:5d82 $21 $f0 $ce
     ld   C, $00                                        ;; 01:5d85 $0e $00
     ld   B, $07                                        ;; 01:5d87 $06 $07
 .loop:
@@ -4607,7 +4613,7 @@ playerAttackDestroy:
     ld   A, [HL+]                                      ;; 01:5d8a $2a
     push HL                                            ;; 01:5d8b $e5
     cp   A, $00                                        ;; 01:5d8c $fe $00
-    call NZ, call_01_59d0                              ;; 01:5d8e $c4 $d0 $59
+    call NZ, playerAttackObjectInit                    ;; 01:5d8e $c4 $d0 $59
     pop  HL                                            ;; 01:5d91 $e1
     pop  BC                                            ;; 01:5d92 $c1
     inc  C                                             ;; 01:5d93 $0c
@@ -6102,14 +6108,14 @@ call_01_7647:
     cp   A, $07                                        ;; 01:7693 $fe $07
     jr   NC, .jr_01_769f                               ;; 01:7695 $30 $08
     ld   A, L                                          ;; 01:7697 $7d
-    call call_00_08d4                                  ;; 01:7698 $cd $d4 $08
+    call moveGridlessObject                            ;; 01:7698 $cd $d4 $08
     pop  BC                                            ;; 01:769b $c1
     pop  AF                                            ;; 01:769c $f1
     inc  A                                             ;; 01:769d $3c
     ret                                                ;; 01:769e $c9
 .jr_01_769f:
     ld   A, L                                          ;; 01:769f $7d
-    call call_00_2889                                  ;; 01:76a0 $cd $89 $28
+    call moveGridlessObject_3_trampoline               ;; 01:76a0 $cd $89 $28
     pop  BC                                            ;; 01:76a3 $c1
     pop  AF                                            ;; 01:76a4 $f1
     inc  A                                             ;; 01:76a5 $3c
@@ -6217,14 +6223,14 @@ objectJumpHandler:
     cp   A, $07                                        ;; 01:7716 $fe $07
     jr   NC, .jr_01_7722                               ;; 01:7718 $30 $08
     ld   A, L                                          ;; 01:771a $7d
-    call call_00_08d4                                  ;; 01:771b $cd $d4 $08
+    call moveGridlessObject                            ;; 01:771b $cd $d4 $08
     pop  BC                                            ;; 01:771e $c1
     pop  AF                                            ;; 01:771f $f1
     inc  A                                             ;; 01:7720 $3c
     ret                                                ;; 01:7721 $c9
 .jr_01_7722:
     ld   A, L                                          ;; 01:7722 $7d
-    call call_00_2889                                  ;; 01:7723 $cd $89 $28
+    call moveGridlessObject_3_trampoline               ;; 01:7723 $cd $89 $28
     pop  BC                                            ;; 01:7726 $c1
     pop  AF                                            ;; 01:7727 $f1
     inc  A                                             ;; 01:7728 $3c

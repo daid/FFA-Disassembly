@@ -314,7 +314,11 @@ wSoundsMusicRestorePitchChannel1:
 ; 00: Lower nibble, orientation. bit7=not aligned to 8x8 grid, other bits unknown ($ff indicates unused)
 ;  *  bit0: East, bit1: West, bit2: North, bit3: South
 ; 01: Movement speed
-; 02: Collision flags ($01: blocked by walls, $80 blocks player, $10 can be pushed by player or take damage on touch?)
+; 02: Collision flags:
+; bit 0: blocked by walls
+; bit 2: walk on water (and not on land)
+; bit 4: can be pushed by player or take damage on touch?
+; bit 7: blocks player
 ; 03: Unknown
 ; 04: Y position
 ; 05: X position
@@ -532,7 +536,9 @@ wBackgroundRenderRequests:
 wBackgroundRenderRequestCount:
     ds 8                                               ;; cee8
 
-wCEF0:
+; Player attacks can use any of the first eight objects for their animation/hit boxes.
+; Each object in use has an associated function that manages it. This tracks the function jumptable indexes.
+wAttackFrameFunctions:
     ds 8                                               ;; cef0
 
 wAttackFrameSteps:
@@ -595,6 +601,7 @@ wMuteTimerNumber:
 wSpecialAttackTimerNumber:
     ds 1                                               ;; cf62
 
+; One byte long
 wCurrentPlayerAttackWillCharge:
     ds 269                                             ;; cf63
 
@@ -1199,7 +1206,7 @@ wMenuFlagsBackup:
 wD84F:
     ds 1                                               ;; d84f
 
-wD850:
+wMenuStateFunctionNew:
     ds 1                                               ;; d850
 
 wEquippedItemElements:
@@ -1237,7 +1244,8 @@ wVendorPurchaseID:
 wD85E:
     ds 1                                               ;; d85e
 
-wD85F:
+; Used when a status is inflicted in combat. If the effect is not Fuji's, it is nibble swaped.
+wStatusEffectNew:
     ds 1                                               ;; d85f
 
 wD860:
@@ -1381,7 +1389,8 @@ wIntroScrollSCYBackup:
 wIntroScrollCounter1:
     ds 1                                               ;; d889
 
-wD88A:
+; Initialized with the number of possible status effects (five), then decremented until the newly inflicted is found.
+wStatusEffectLabelIndex:
     ds 1                                               ;; d88a
 
 wCurrentItemOrSpellInUse:

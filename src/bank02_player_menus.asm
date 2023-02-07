@@ -6,7 +6,9 @@ INCLUDE "include/charmaps.inc"
 INCLUDE "include/constants.inc"
 
 SECTION "bank02", ROMX[$4000], BANK[$02]
+
 ;@call_to_bank_jumptable amount=58
+entryPointTableBank02:
     call_to_bank_target animateTiles                   ;; 02:4000 pP
     call_to_bank_target updateJoypadInput              ;; 02:4002 pP
     call_to_bank_target spriteShuffleDoFlash           ;; 02:4004 pP
@@ -332,6 +334,7 @@ animateTilesIncrementCounter:
 
 ; Return: A = pressed buttons
 ; Return: B = newly pressed buttons
+; Return: C = pressed buttons (copy)
 updateJoypadInput:
     ld   HL, $ff00                                     ;; 02:4218 $21 $00 $ff
     ld   [HL], $10                                     ;; 02:421b $36 $10
@@ -362,7 +365,7 @@ updateJoypadInput:
     ld   [wJoypadInput], A                             ;; 02:4240 $ea $af $c0
     ret                                                ;; 02:4243 $c9
 
-; Given an object, check if it overlaps any of the Npc objects.
+; Given an object, check if it overlaps any of the Npc objects (objects 7 and up).
 ; Technically, this includes followers, non-player projectiles, and bosses as well.
 ; If a collision is found it stops searching, which may be the source of certain bugs.
 ; A = object collision flags
@@ -705,16 +708,16 @@ windowBorderConvertToPixelCoords:
     ld   D, A                                          ;; 02:441d $57
     ret                                                ;; 02:441e $c9
 
-call_02_441f:
+checkSpriteXBetweenCAndB:
     inc  HL                                            ;; 02:441f $23
     ld   A, [HL-]                                      ;; 02:4420 $3a
     cp   A, C                                          ;; 02:4421 $b9
-    jr   C, .jr_02_4429                                ;; 02:4422 $38 $05
+    jr   C, .outside_bounds                            ;; 02:4422 $38 $05
     cp   A, B                                          ;; 02:4424 $b8
-    jr   NC, .jr_02_4429                               ;; 02:4425 $30 $02
+    jr   NC, .outside_bounds                           ;; 02:4425 $30 $02
     or   A, A                                          ;; 02:4427 $b7
     ret                                                ;; 02:4428 $c9
-.jr_02_4429:
+.outside_bounds:
     xor  A, A                                          ;; 02:4429 $af
     ret                                                ;; 02:442a $c9
 
@@ -739,7 +742,7 @@ hideSpritesBehindWindow:
     pop  BC                                            ;; 02:4444 $c1
     push AF                                            ;; 02:4445 $f5
     push DE                                            ;; 02:4446 $d5
-    call call_02_441f                                  ;; 02:4447 $cd $1f $44
+    call checkSpriteXBetweenCAndB                      ;; 02:4447 $cd $1f $44
     jr   Z, .jr_02_445c                                ;; 02:444a $28 $10
     ld   A, [HL]                                       ;; 02:444c $7e
     ld   [HL], $cf                                     ;; 02:444d $36 $cf
@@ -798,7 +801,7 @@ showSpritesBehindWindow:
     ld   A, [HL]                                       ;; 02:4495 $7e
     cp   A, $cf                                        ;; 02:4496 $fe $cf
     jr   NZ, .jr_02_44a6                               ;; 02:4498 $20 $0c
-    call call_02_441f                                  ;; 02:449a $cd $1f $44
+    call checkSpriteXBetweenCAndB                      ;; 02:449a $cd $1f $44
     jr   Z, .jr_02_44a6                                ;; 02:449d $28 $07
     pop  DE                                            ;; 02:449f $d1
     push DE                                            ;; 02:44a0 $d5
@@ -1065,7 +1068,7 @@ gameStateMenuJumptable:
     dw   windowDismiss                                 ;; 02:480e pP $23
     dw   windowVendorShowBuyMessageWindow              ;; 02:4810 pP $24
     dw   windowVendorShowBuyMessage                    ;; 02:4812 pP $25
-    dw   call_02_51d5                                  ;; 02:4814 pP $26
+    dw   windowWaitForAnyButton                        ;; 02:4814 pP $26
     dw   call_02_5475                                  ;; 02:4816 ?? $27
     dw   call_02_547e                                  ;; 02:4818 ?? $28
     dw   call_02_5490                                  ;; 02:481a ?? $29
@@ -1083,9 +1086,9 @@ gameStateMenuJumptable:
     dw   openLoadScreen                                ;; 02:4832 ?? $35
     dw   runMinimapScript                              ;; 02:4834 pP $36
     dw   openLevelUpStatusScreen                       ;; 02:4836 pP $37
-    dw   call_02_77d8                                  ;; 02:4838 ?? $38
-    dw   call_02_77f1                                  ;; 02:483a ?? $39
-    dw   call_02_781e                                  ;; 02:483c ?? $3a
+    dw   windowOpenStatusEffectInflicted               ;; 02:4838 ?? $38
+    dw   windowStatusEffectInflictedDrawStatus         ;; 02:483a ?? $39
+    dw   windowCloseStatusEffectInflicted              ;; 02:483c ?? $3a
 
 ; Used by START, SELECT, and leveling up
 ; a = window number
@@ -2443,7 +2446,7 @@ windowVendorShowBuyMessage:
 .period:
     TXT  ".<00>"                                       ;; 02:51d3 ..
 
-call_02_51d5:
+windowWaitForAnyButton:
     call updateJoypadInput_trampoline                  ;; 02:51d5 $cd $d1 $1e
     ld   A, E                                          ;; 02:51d8 $7b
     and  A, D                                          ;; 02:51d9 $a2
@@ -2451,7 +2454,7 @@ call_02_51d5:
     ld   B, $0f                                        ;; 02:51db $06 $0f
     ld   A, [wDialogType]                              ;; 02:51dd $fa $4a $d8
     cp   A, $20                                        ;; 02:51e0 $fe $20
-    jp   Z, .jp_02_51f5                                ;; 02:51e2 $ca $f5 $51
+    jp   Z, .window_status_effect_inflicted            ;; 02:51e2 $ca $f5 $51
     cp   A, $17                                        ;; 02:51e5 $fe $17
     jr   NZ, .jr_02_51eb                               ;; 02:51e7 $20 $02
     ld   B, $18                                        ;; 02:51e9 $06 $18
@@ -2461,7 +2464,7 @@ call_02_51d5:
     ld   A, $81                                        ;; 02:51ef $3e $81
     ld   [wMenuStateCurrentFunction], A                ;; 02:51f1 $ea $53 $d8
     ret                                                ;; 02:51f4 $c9
-.jp_02_51f5:
+.window_status_effect_inflicted:
     ld   A, $39                                        ;; 02:51f5 $3e $39
     ld   [wMenuStateCurrentFunction], A                ;; 02:51f7 $ea $53 $d8
     ret                                                ;; 02:51fa $c9
@@ -3550,7 +3553,7 @@ currentlyEquippedEquipmentList:
     dw   wEquippedShield                               ;; 02:5875 ?? $03
 
 jp_02_5877:
-    ld   [wD850], A                                    ;; 02:5877 $ea $50 $d8
+    ld   [wMenuStateFunctionNew], A                    ;; 02:5877 $ea $50 $d8
     ld   A, [wDialogType]                              ;; 02:587a $fa $4a $d8
     call calulateAPDP                                  ;; 02:587d $cd $d6 $57
 
@@ -3656,7 +3659,7 @@ jp_02_5922:
     ld   BC, $1f01                                     ;; 02:593e $01 $01 $1f
     pop  AF                                            ;; 02:5941 $f1
     call Z, drawText                                   ;; 02:5942 $cc $77 $37
-    ld   A, [wD850]                                    ;; 02:5945 $fa $50 $d8
+    ld   A, [wMenuStateFunctionNew]                    ;; 02:5945 $fa $50 $d8
     ld   [wMenuStateCurrentFunction], A                ;; 02:5948 $ea $53 $d8
     ld   B, A                                          ;; 02:594b $47
     call runVirtualScriptOpCodeFF                      ;; 02:594c $cd $69 $3c
@@ -3860,7 +3863,7 @@ drawLoadSaveWindowContents_common:
     call drawExperienceFromSRAM                        ;; 02:5a87 $cd $89 $75
     call disableSRAM                                   ;; 02:5a8a $cd $5e $74
 .jr_02_5a8d:
-    ld   A, [wD850]                                    ;; 02:5a8d $fa $50 $d8
+    ld   A, [wMenuStateFunctionNew]                    ;; 02:5a8d $fa $50 $d8
     ld   [wMenuStateCurrentFunction], A                ;; 02:5a90 $ea $53 $d8
     ld   A, [wDialogType]                              ;; 02:5a93 $fa $4a $d8
     cp   A, $1c                                        ;; 02:5a96 $fe $1c
@@ -4051,7 +4054,8 @@ getEquippedWeaponAP:
     pop  HL                                            ;; 02:5ba8 $e1
     ret                                                ;; 02:5ba9 $c9
 
-;@data amount=23 format=bbbbbbbbbb
+; There is a break in the table due to a non-aligned label that BadBoy doesn't handle. Real size is 34.
+;@data amount=24 format=bbbbbbbbbb
 ; Window data for size/height/cursor.
 ;0-3: x, y, w, h
 ;4: Amount of rows to draw with text
@@ -4109,23 +4113,32 @@ windowData:
     db   $00, $00, $13, $05, $02, $04, $02, $01, $00, $00 ;; 02:5c7c .......... $15
 ; Unused:
     db   $0e, $00, $05, $03, $01, $04, $01, $00, $00, $00 ;; 02:5c86 ?????????? $16
-    db   $00, $00, $13, $05, $02, $11, $02, $00        ;; 02:5c90 ........
-    db   $00, $00                                      ;; 02:5c98 ..
+; Levelup message ("Level up! Select your growth type."):
+    db   $00, $00, $13, $05, $02, $11, $02, $00, $00, $00 ;; 02:5c90 .......... $17
+; There is a break in the table due to a non-aligned label that BadBoy doesn't handle
 ;@data amount=10 format=bbbbbbbbbb
+; (#18)
 .selectLevelupStats:
     db   $00, $00, $13, $05, $04, $07, $04, $03, $02, $09 ;; 02:5c9a .......... $00
-; Levelup Yes, No:
+; (#19) Levelup Yes, No: (#19)
     db   $00, $06, $09, $05, $02, $05, $02, $02, $01, $00 ;; 02:5ca4 .......... $01
-; Status screen AP, DP (this has an invisible border, but is a different window):
+; (#1a) Status screen AP, DP (this has an invisible border, but is a different window):
     db   $00, $0b, $06, $09, $02, $05, $02, $00, $01, $00 ;; 02:5cae .......... $02
+; (#1b) Save/Load top window:
     db   $00, $02, $13, $06, $01, $0f, $02, $00, $02, $00 ;; 02:5cb8 .......... $03
+; (#1c) Save/Load bottom window:
     db   $00, $0a, $13, $06, $01, $0f, $02, $00, $02, $00 ;; 02:5cc2 .......... $04
+; (#1d)
 .namingScreenTop:
     db   $00, $00, $0e, $03, $01, $04, $01, $00, $00, $00 ;; 02:5ccc .......... $05
+; (#1e)
 .namingScreenBottom:
     db   $00, $04, $13, $0d, $06, $09, $51, $01, $09, $02 ;; 02:5cd6 .......... $06
+; (#1f) Title screen menu (New Game, Continue):
     db   $05, $09, $09, $05, $02, $08, $02, $00, $01, $00 ;; 02:5ce0 .......... $07
+; (#20) Status effect inflicted message (Pois, Ston, Moog, Dark):
     db   $0b, $01, $07, $03, $01, $04, $01, $00, $00, $00 ;; 02:5cea ?????????? $08
+; (#21) Levelup HP/MP recovered message:
     db   $00, $0a, $13, $07, $03, $10, $04, $00, $00, $00 ;; 02:5cf4 .......... $09
 
 ;@data amount=4 format=bbbb
@@ -4595,7 +4608,7 @@ call_02_67f9:
 
 call_02_680e:
     ld   A, B                                          ;; 02:680e $78
-    ld   [wD850], A                                    ;; 02:680f $ea $50 $d8
+    ld   [wMenuStateFunctionNew], A                    ;; 02:680f $ea $50 $d8
     call loadRegisterState2                            ;; 02:6812 $cd $a7 $6d
     ld   A, [wMenuFlags]                               ;; 02:6815 $fa $49 $d8
     and  A, $cf                                        ;; 02:6818 $e6 $cf
@@ -6048,13 +6061,13 @@ useNectarOrStamina:
     push AF                                            ;; 02:70c8 $f5
     swap A                                             ;; 02:70c9 $cb $37
     and  A, $0f                                        ;; 02:70cb $e6 $0f
-    call call_02_70d7                                  ;; 02:70cd $cd $d7 $70
+    call applyBuff                                     ;; 02:70cd $cd $d7 $70
     pop  AF                                            ;; 02:70d0 $f1
     and  A, $0f                                        ;; 02:70d1 $e6 $0f
-    call call_02_70d7                                  ;; 02:70d3 $cd $d7 $70
+    call applyBuff                                     ;; 02:70d3 $cd $d7 $70
     ret                                                ;; 02:70d6 $c9
 
-call_02_70d7:
+applyBuff:
     ld   B, A                                          ;; 02:70d7 $47
     ld   A, [DE]                                       ;; 02:70d8 $1a
     add  A, B                                          ;; 02:70d9 $80
@@ -7170,11 +7183,11 @@ giveStatusEffect:
     ld   A, $0f                                        ;; 02:77b6 $3e $0f
     ld   [wMainGameState], A                           ;; 02:77b8 $ea $a0 $c0
     pop  AF                                            ;; 02:77bb $f1
-    ld   [wD85F], A                                    ;; 02:77bc $ea $5f $d8
+    ld   [wStatusEffectNew], A                         ;; 02:77bc $ea $5f $d8
     bit  4, A                                          ;; 02:77bf $cb $67
-    jr   NZ, jr_02_7827                                ;; 02:77c1 $20 $64
+    jr   NZ, startStatusEffectAfterWindow              ;; 02:77c1 $20 $64
     swap A                                             ;; 02:77c3 $cb $37
-    ld   [wD85F], A                                    ;; 02:77c5 $ea $5f $d8
+    ld   [wStatusEffectNew], A                         ;; 02:77c5 $ea $5f $d8
     ld   A, $06                                        ;; 02:77c8 $3e $06
     call playSFX                                       ;; 02:77ca $cd $7d $29
     ld   A, $38                                        ;; 02:77cd $3e $38
@@ -7183,25 +7196,26 @@ giveStatusEffect:
     ld   [wDialogType], A                              ;; 02:77d4 $ea $4a $d8
     ret                                                ;; 02:77d7 $c9
 
-call_02_77d8:
+windowOpenStatusEffectInflicted:
     call drawWindow                                    ;; 02:77d8 $cd $00 $67
     ld   A, [wMenuStateCurrentFunction]                ;; 02:77db $fa $53 $d8
     rlca                                               ;; 02:77de $07
     ret  C                                             ;; 02:77df $d8
     ld   A, $05                                        ;; 02:77e0 $3e $05
-    ld   [wD88A], A                                    ;; 02:77e2 $ea $8a $d8
+    ld   [wStatusEffectLabelIndex], A                  ;; 02:77e2 $ea $8a $d8
     ld   A, $39                                        ;; 02:77e5 $3e $39
     ld   [wMenuStateCurrentFunction], A                ;; 02:77e7 $ea $53 $d8
     ld   A, [wDialogType]                              ;; 02:77ea $fa $4a $d8
     call windowInitContents                            ;; 02:77ed $cd $93 $76
     ret                                                ;; 02:77f0 $c9
 
-call_02_77f1:
-    ld   HL, wD88A                                     ;; 02:77f1 $21 $8a $d8
+; Only checks one status each time it's called, so Pois takes a full three frames more than Moog.
+windowStatusEffectInflictedDrawStatus:
+    ld   HL, wStatusEffectLabelIndex                   ;; 02:77f1 $21 $8a $d8
     dec  [HL]                                          ;; 02:77f4 $35
     ld   A, [HL]                                       ;; 02:77f5 $7e
-    jr   Z, call_02_781e                               ;; 02:77f6 $28 $26
-    ld   HL, wD85F                                     ;; 02:77f8 $21 $5f $d8
+    jr   Z, windowCloseStatusEffectInflicted           ;; 02:77f6 $28 $26
+    ld   HL, wStatusEffectNew                          ;; 02:77f8 $21 $5f $d8
     rlc  [HL]                                          ;; 02:77fb $cb $06
     ret  NC                                            ;; 02:77fd $d0
     ld   B, A                                          ;; 02:77fe $47
@@ -7223,14 +7237,14 @@ call_02_77f1:
     ld   [wMenuStateCurrentFunction], A                ;; 02:781a $ea $53 $d8
     ret                                                ;; 02:781d $c9
 
-call_02_781e:
+windowCloseStatusEffectInflicted:
     ld   A, $3a                                        ;; 02:781e $3e $3a
     ld   [wMenuStateCurrentFunction], A                ;; 02:7820 $ea $53 $d8
     call windowCloseAndRestoreHidden                   ;; 02:7823 $cd $7a $66
     ret  NZ                                            ;; 02:7826 $c0
 
-jr_02_7827:
-    ld   A, [wD85F]                                    ;; 02:7827 $fa $5f $d8
+startStatusEffectAfterWindow:
+    ld   A, [wStatusEffectNew]                         ;; 02:7827 $fa $5f $d8
     push AF                                            ;; 02:782a $f5
     and  A, $0f                                        ;; 02:782b $e6 $0f
     jr   Z, .jr_02_783b                                ;; 02:782d $28 $0c
