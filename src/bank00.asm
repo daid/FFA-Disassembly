@@ -3051,7 +3051,7 @@ scriptOpCodeCloseMap:
 closeMinimap_trampoline:
     jp_to_bank 01, closeMinimap                        ;; 00:1205 $f5 $3e $12 $c3 $d7 $1e
 
-call_00_120b:
+scriptPlayerSetPosition:
     ld   A, [HL+]                                      ;; 00:120b $2a
     add  A, A                                          ;; 00:120c $87
     add  A, A                                          ;; 00:120d $87
@@ -3085,7 +3085,8 @@ call_00_120b:
     pop  HL                                            ;; 00:123c $e1
     ret                                                ;; 00:123d $c9
 
-call_00_123e:
+; C = npc number (object number - 7)
+scriptNpcSetPosition:
     push HL                                            ;; 00:123e $e5
     push BC                                            ;; 00:123f $c5
     call checkForMovingObjects                         ;; 00:1240 $cd $9b $28
@@ -3170,7 +3171,7 @@ scriptOpCodeNpc1SetPosition:
     call checkForFollower                              ;; 00:12ae $cd $c2 $28
     add  A, $00                                        ;; 00:12b1 $c6 $00
     ld   C, A                                          ;; 00:12b3 $4f
-    call call_00_123e                                  ;; 00:12b4 $cd $3e $12
+    call scriptNpcSetPosition                          ;; 00:12b4 $cd $3e $12
     ret                                                ;; 00:12b7 $c9
 
 scriptOpCodeNpc1WalkSpeed4:
@@ -3248,7 +3249,7 @@ scriptOpCodeNpc2SetPosition:
     call checkForFollower                              ;; 00:1322 $cd $c2 $28
     add  A, $01                                        ;; 00:1325 $c6 $01
     ld   C, A                                          ;; 00:1327 $4f
-    call call_00_123e                                  ;; 00:1328 $cd $3e $12
+    call scriptNpcSetPosition                          ;; 00:1328 $cd $3e $12
     ret                                                ;; 00:132b $c9
 
 scriptOpCodeNpc2WalkSpeed4:
@@ -3326,7 +3327,7 @@ scriptOpCodeNpc3SetPosition:
     call checkForFollower                              ;; 00:1396 $cd $c2 $28
     add  A, $02                                        ;; 00:1399 $c6 $02
     ld   C, A                                          ;; 00:139b $4f
-    call call_00_123e                                  ;; 00:139c $cd $3e $12
+    call scriptNpcSetPosition                          ;; 00:139c $cd $3e $12
     ret                                                ;; 00:139f $c9
 
 scriptOpCodeNpc3WalkSpeed4:
@@ -3404,7 +3405,7 @@ scriptOpCodeNpc4SetPosition:
     call checkForFollower                              ;; 00:140a $cd $c2 $28
     add  A, $03                                        ;; 00:140d $c6 $03
     ld   C, A                                          ;; 00:140f $4f
-    call call_00_123e                                  ;; 00:1410 $cd $3e $12
+    call scriptNpcSetPosition                          ;; 00:1410 $cd $3e $12
     ret                                                ;; 00:1413 $c9
 
 scriptOpCodeNpc4WalkSpeed4:
@@ -3482,7 +3483,7 @@ scriptOpCodeNpc5SetPosition:
     call checkForFollower                              ;; 00:147e $cd $c2 $28
     add  A, $04                                        ;; 00:1481 $c6 $04
     ld   C, A                                          ;; 00:1483 $4f
-    call call_00_123e                                  ;; 00:1484 $cd $3e $12
+    call scriptNpcSetPosition                          ;; 00:1484 $cd $3e $12
     ret                                                ;; 00:1487 $c9
 
 scriptOpCodeNpc5WalkSpeed4:
@@ -3560,7 +3561,7 @@ scriptOpCodeNpc6SetPosition:
     call checkForFollower                              ;; 00:14f2 $cd $c2 $28
     add  A, $05                                        ;; 00:14f5 $c6 $05
     ld   C, A                                          ;; 00:14f7 $4f
-    call call_00_123e                                  ;; 00:14f8 $cd $3e $12
+    call scriptNpcSetPosition                          ;; 00:14f8 $cd $3e $12
     ret                                                ;; 00:14fb $c9
 
 scriptOpCodeNpc6WalkSpeed4:
@@ -3638,7 +3639,7 @@ scriptOpCodeNpc7SetPosition:
     call checkForFollower                              ;; 00:1566 $cd $c2 $28
     add  A, $06                                        ;; 00:1569 $c6 $06
     ld   C, A                                          ;; 00:156b $4f
-    call call_00_123e                                  ;; 00:156c $cd $3e $12
+    call scriptNpcSetPosition                          ;; 00:156c $cd $3e $12
     ret                                                ;; 00:156f $c9
 
 scriptOpCodeNpc7WalkSpeed4:
@@ -3736,7 +3737,7 @@ scriptOpCodePlayerDirectionDown:
 scriptOpCodePlayerSetPosition:
     call scriptPlayerFinishAction                      ;; 00:15fb $cd $88 $15
     ret  NZ                                            ;; 00:15fe $c0
-    call call_00_120b                                  ;; 00:15ff $cd $0b $12
+    call scriptPlayerSetPosition                       ;; 00:15ff $cd $0b $12
     call getNextScriptInstruction                      ;; 00:1602 $cd $27 $37
     ret                                                ;; 00:1605 $c9
 
@@ -3803,7 +3804,7 @@ scriptOpCodeFollowerSetPosition:
     call checkForFollower                              ;; 00:1663 $cd $c2 $28
     jr   NZ, .no_follower                              ;; 00:1666 $20 $06
     ld   C, $00                                        ;; 00:1668 $0e $00
-    call call_00_123e                                  ;; 00:166a $cd $3e $12
+    call scriptNpcSetPosition                          ;; 00:166a $cd $3e $12
     ret                                                ;; 00:166d $c9
 .no_follower:
     inc  HL                                            ;; 00:166e $23
