@@ -6704,7 +6704,7 @@ moveObjectsDuringScript_trampoline:
 enemyCollisionHandling_trampoline:
     jp_to_bank 03, enemyCollisionHandling              ;; 00:28b6 $f5 $3e $07 $c3 $35 $1f
 
-getValueFromDEAddOffset03:
+npcSetMeleeState:
     ld   HL, $03                                       ;; 00:28bc $21 $03 $00
     add  HL, DE                                        ;; 00:28bf $19
     ld   [HL], A                                       ;; 00:28c0 $77

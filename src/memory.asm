@@ -471,6 +471,7 @@ wPlayerSpecialFlags:
 ; 00: wObjectRuntimeData entry index
 ; 01: Delay until next move (initialized from 02)
 ; 02: Movement speed
+; 03: Melee state? Set to 01 on using a melee projectile, 04 while it's active, and ff otherwise. Likely to keep the NPC from moving?
 ; 0a: Status (bit7: Slep, bit6: Mute)
 ; 0c-0d: HP
 ; 10-11: npcStatsTable entry pointer
@@ -503,8 +504,10 @@ wNPCDroppingChest:
 ; 00: Object ID of the normal object
 ; 01: Delay until next move (initialized from 02)
 ; 02: Movement speed
+; 03: Current pattern step
 ; 04: Y coordinate
 ; 05: X coordinate
+; 06-07: NPC runtime data table entry pointer for the spawning NPC
 ; 08-09: Projectile data table entry pointer
 wProjectileRuntimeData:
     ds 32                                              ;; c5c0
