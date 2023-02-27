@@ -70,7 +70,7 @@ npcRunBehavior:
     add  HL, DE                                        ;; 03:4057 $19
     ld   A, [HL]                                       ;; 03:4058 $7e
     cp   A, $00                                        ;; 03:4059 $fe $00
-    call NZ, call_03_4107                              ;; 03:405b $c4 $07 $41
+    call NZ, npcDamageKnockback                        ;; 03:405b $c4 $07 $41
     ld   HL, $04                                       ;; 03:405e $21 $04 $00
     add  HL, DE                                        ;; 03:4061 $19
     ld   A, [HL+]                                      ;; 03:4062 $2a
@@ -191,7 +191,7 @@ npcRunBehavior:
     ld   A, $00                                        ;; 03:4103 $3e $00
     jr   .jr_03_40bd                                   ;; 03:4105 $18 $b6
 
-call_03_4107:
+npcDamageKnockback:
     cp   A, $2c                                        ;; 03:4107 $fe $2c
     jr   C, .jr_03_411f                                ;; 03:4109 $38 $14
     jr   Z, .jr_03_4153                                ;; 03:410b $28 $46
