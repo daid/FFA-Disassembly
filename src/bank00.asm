@@ -8632,7 +8632,7 @@ textCtrlCodeWaitInput:
     call runVirtualScriptOpCodeFF                      ;; 00:350b $cd $69 $3c
     ret                                                ;; 00:350e $c9
 
-call_00_350f:
+opCodeFFWaitInput:
     call updateJoypadInput_trampoline                  ;; 00:350f $cd $d1 $1e
     pop  HL                                            ;; 00:3512 $e1
     ld   A, C                                          ;; 00:3513 $79
@@ -8709,7 +8709,7 @@ printName:
     pop  BC                                            ;; 00:3593 $c1
     call saveRegisterState2_bank0                      ;; 00:3594 $cd $73 $3c
 
-call_00_3597:
+opCodeFFPrintName:
     call textDelay                                     ;; 00:3597 $cd $c2 $36
     jr   NZ, .jr_00_35ae                               ;; 00:359a $20 $12
     call loadRegisterState2_bank0                      ;; 00:359c $cd $87 $3c
@@ -9626,7 +9626,7 @@ vendorCantCarry:
     call runVirtualScriptOpCodeFF                      ;; 00:3b09 $cd $69 $3c
     ret                                                ;; 00:3b0c $c9
 
-call_00_3b0d:
+opCodeFFWaitCantCarry:
     call updateJoypadInput_trampoline                  ;; 00:3b0d $cd $d1 $1e
     pop  HL                                            ;; 00:3b10 $e1
     ld   A, D                                          ;; 00:3b11 $7a
@@ -9739,13 +9739,13 @@ scriptOpCodeResetGame:
 ;@jumptable amount=11
 scriptOpCodeFFJumpTable:
     dw   yesNoWindowFinish                             ;; 00:3ba1 pP $00
-    dw   call_00_3597                                  ;; 00:3ba3 pP $01
+    dw   opCodeFFPrintName                              ;; 00:3ba3 pP $01
     dw   windowClearRectangle                          ;; 00:3ba5 pP $02
     dw   checkScriptDelayTimer                         ;; 00:3ba7 pP $03
-    dw   call_00_350f                                  ;; 00:3ba9 pP $04
+    dw   opCodeFFWaitInput                             ;; 00:3ba9 pP $04
     dw   scriptResumeAfterWindow                       ;; 00:3bab pP $05
     dw   vendorCantCarry                               ;; 00:3bad ?? $06
-    dw   call_00_3b0d                                  ;; 00:3baf ?? $07
+    dw   opCodeFFWaitCantCarry                         ;; 00:3baf ?? $07
     dw   opCodeFFCloseWindow                           ;; 00:3bb1 ?? $08
     dw   copyMainGameStateBackupFromScriptToWindow     ;; 00:3bb3 pP $09
     dw   opCodeFFPrintMenuText                         ;; 00:3bb5 ?? $0a
