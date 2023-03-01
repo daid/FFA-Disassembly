@@ -3640,7 +3640,7 @@ call_02_5895:
     call Z, call_02_5a18                               ;; 02:5918 $cc $18 $5a
     pop  BC                                            ;; 02:591b $c1
     pop  DE                                            ;; 02:591c $d1
-    call call_00_380b                                  ;; 02:591d $cd $0b $38
+    call menuNextItemPosition                          ;; 02:591d $cd $0b $38
     scf                                                ;; 02:5920 $37
     ret  NZ                                            ;; 02:5921 $c0
 
@@ -3691,7 +3691,7 @@ jp_02_5959:
     push DE                                            ;; 02:5979 $d5
     call call_02_5aaf                                  ;; 02:597a $cd $af $5a
     pop  DE                                            ;; 02:597d $d1
-    call call_00_380b                                  ;; 02:597e $cd $0b $38
+    call menuNextItemPosition                          ;; 02:597e $cd $0b $38
     ld   A, $3e                                        ;; 02:5981 $3e $3e
     call storeTileAatDialogPositionDE                  ;; 02:5983 $cd $44 $38
     inc  E                                             ;; 02:5986 $1c
@@ -3916,7 +3916,7 @@ windowStatusScreenPrintStatValue:
     add  A, $06                                        ;; 02:5ad6 $c6 $06
     ld   E, A                                          ;; 02:5ad8 $5f
     call call_02_5b05                                  ;; 02:5ad9 $cd $05 $5b
-    call call_00_380b                                  ;; 02:5adc $cd $0b $38
+    call menuNextItemPosition                          ;; 02:5adc $cd $0b $38
     ret                                                ;; 02:5adf $c9
 
 call_02_5ae0:
@@ -6977,7 +6977,7 @@ statusWindowPrintHPMPCurOrMax:
     pop  AF                                            ;; 02:7674 $f1
     cp   A, $02                                        ;; 02:7675 $fe $02
     call NZ, drawNumberAtDialogPositionDE              ;; 02:7677 $c4 $18 $5b
-    call call_00_380b                                  ;; 02:767a $cd $0b $38
+    call menuNextItemPosition                          ;; 02:767a $cd $0b $38
     dec  D                                             ;; 02:767d $15
     pop  BC                                            ;; 02:767e $c1
     pop  HL                                            ;; 02:767f $e1

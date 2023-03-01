@@ -8725,7 +8725,7 @@ opCodeFFPrintName:
 
 textCtrlCodeNewline:
     call loadRegisterState2_bank0                      ;; 00:35b0 $cd $87 $3c
-    call call_00_380b                                  ;; 00:35b3 $cd $0b $38
+    call menuNextItemPosition                          ;; 00:35b3 $cd $0b $38
     call saveRegisterState2_bank0                      ;; 00:35b6 $cd $73 $3c
     call setDialogTextInsertionPoint                   ;; 00:35b9 $cd $36 $37
     pop  HL                                            ;; 00:35bc $e1
@@ -9030,6 +9030,7 @@ drawText:
 .loop_1:
     push AF                                            ;; 00:377a $f5
     ld   A, [HL+]                                      ;; 00:377b $2a
+; Special case for the copyright symbol
     cp   A, $7f                                        ;; 00:377c $fe $7f
     jr   Z, .jr_00_3785                                ;; 00:377e $28 $05
     cp   A, $a0                                        ;; 00:3780 $fe $a0
@@ -9079,7 +9080,7 @@ drawText:
     ld   [wWindowTextInsertionPointFinalX], A          ;; 00:37c1 $ea $c5 $d8
     ld   A, [wDialogType]                              ;; 00:37c4 $fa $4a $d8
     cp   A, $06                                        ;; 00:37c7 $fe $06
-    call NZ, call_00_380b                              ;; 00:37c9 $c4 $0b $38
+    call NZ, menuNextItemPosition                      ;; 00:37c9 $c4 $0b $38
     xor  A, A                                          ;; 00:37cc $af
     ld   [wDualCharacterPosition], A                   ;; 00:37cd $ea $83 $d8
     call setDialogTextInsertionPoint                   ;; 00:37d0 $cd $36 $37
@@ -9112,7 +9113,7 @@ drawText:
     dec  B                                             ;; 00:37fd $05
     jr   NZ, .loop_2                                   ;; 00:37fe $20 $f0
 .jr_00_3800:
-    call call_00_380b                                  ;; 00:3800 $cd $0b $38
+    call menuNextItemPosition                          ;; 00:3800 $cd $0b $38
     inc  HL                                            ;; 00:3803 $23
 .jr_00_3804:
     dec  HL                                            ;; 00:3804 $2b
@@ -9121,12 +9122,13 @@ drawText:
     pop  AF                                            ;; 00:3809 $f1
     ret                                                ;; 00:380a $c9
 
-call_00_380b:
+; Handles special cases for the SELECT menu (three columns), the dialog and intro scroll (less indented).
+menuNextItemPosition:
     ld   A, [wWindowTextLength]                        ;; 00:380b $fa $9b $d8
     ld   B, A                                          ;; 00:380e $47
     ld   A, [wMenuFlags]                               ;; 00:380f $fa $49 $d8
     rrca                                               ;; 00:3812 $0f
-    jr   NC, .jr_00_382c                               ;; 00:3813 $30 $17
+    jr   NC, .newline                                  ;; 00:3813 $30 $17
     ld   A, [wDialogType]                              ;; 00:3815 $fa $4a $d8
     cp   A, $11                                        ;; 00:3818 $fe $11
     jr   Z, .jr_00_3827                                ;; 00:381a $28 $0b
@@ -9135,20 +9137,20 @@ call_00_380b:
     inc  A                                             ;; 00:3820 $3c
     srl  A                                             ;; 00:3821 $cb $3f
     cp   A, E                                          ;; 00:3823 $bb
-    jr   C, .jr_00_382c                                ;; 00:3824 $38 $06
+    jr   C, .new_line                                  ;; 00:3824 $38 $06
     ld   E, A                                          ;; 00:3826 $5f
 .jr_00_3827:
     inc  E                                             ;; 00:3827 $1c
     call saveRegisterState2_bank0                      ;; 00:3828 $cd $73 $3c
     ret                                                ;; 00:382b $c9
-.jr_00_382c:
+.new_line:
     ld   E, $02                                        ;; 00:382c $1e $02
     ld   A, [wDialogType]                              ;; 00:382e $fa $4a $d8
     cp   A, $ff                                        ;; 00:3831 $fe $ff
-    jr   Z, .jr_00_3839                                ;; 00:3833 $28 $04
+    jr   Z, .small_indent                              ;; 00:3833 $28 $04
     cp   A, $06                                        ;; 00:3835 $fe $06
     jr   NZ, .jr_00_383b                               ;; 00:3837 $20 $02
-.jr_00_3839:
+.small_indent:
     ld   E, $01                                        ;; 00:3839 $1e $01
 .jr_00_383b:
     inc  D                                             ;; 00:383b $14
