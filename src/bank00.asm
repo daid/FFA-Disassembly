@@ -9128,7 +9128,7 @@ menuNextItemPosition:
     ld   B, A                                          ;; 00:380e $47
     ld   A, [wMenuFlags]                               ;; 00:380f $fa $49 $d8
     rrca                                               ;; 00:3812 $0f
-    jr   NC, .newline                                  ;; 00:3813 $30 $17
+    jr   NC, .new_line                                 ;; 00:3813 $30 $17
     ld   A, [wDialogType]                              ;; 00:3815 $fa $4a $d8
     cp   A, $11                                        ;; 00:3818 $fe $11
     jr   Z, .jr_00_3827                                ;; 00:381a $28 $0b
