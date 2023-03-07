@@ -8990,6 +8990,7 @@ getNextScriptInstruction:
     pop  AF                                            ;; 00:3734 $f1
     ret                                                ;; 00:3735 $c9
 
+; Return: Z set for dialog, clear for other windows.
 setDialogTextInsertionPoint:
     ld   A, [wDialogType]                              ;; 00:3736 $fa $4a $d8
     cp   A, $06                                        ;; 00:3739 $fe $06
@@ -9004,6 +9005,7 @@ setDialogTextInsertionPoint:
     ld   [wWindowTextSpaceLeftOnLine], A               ;; 00:3749 $ea $ba $d8
     ret                                                ;; 00:374c $c9
 
+; Return: Z set and DE BC set to distance from edges if the current window is dialog.
 getDialogTextInsertionPoint:
     ld   A, [wDialogType]                              ;; 00:374d $fa $4a $d8
     cp   A, $06                                        ;; 00:3750 $fe $06
@@ -9032,19 +9034,19 @@ drawText:
     ld   A, [HL+]                                      ;; 00:377b $2a
 ; Special case for the copyright symbol
     cp   A, $7f                                        ;; 00:377c $fe $7f
-    jr   Z, .jr_00_3785                                ;; 00:377e $28 $05
+    jr   Z, .printable                                 ;; 00:377e $28 $05
     cp   A, $a0                                        ;; 00:3780 $fe $a0
-    jp   C, .jp_00_37dc                                ;; 00:3782 $da $dc $37
-.jr_00_3785:
+    jp   C, .terminator                                ;; 00:3782 $da $dc $37
+.printable:
     push AF                                            ;; 00:3785 $f5
     ld   A, [wDialogType]                              ;; 00:3786 $fa $4a $d8
     inc  A                                             ;; 00:3789 $3c
-    jr   NZ, .jr_00_3793                               ;; 00:378a $20 $07
+    jr   NZ, .print                                    ;; 00:378a $20 $07
     dec  D                                             ;; 00:378c $15
     ld   A, $7f                                        ;; 00:378d $3e $7f
     call storeTileAatDialogPositionDE                  ;; 00:378f $cd $44 $38
     inc  D                                             ;; 00:3792 $14
-.jr_00_3793:
+.print:
     pop  AF                                            ;; 00:3793 $f1
     xor  A, $80                                        ;; 00:3794 $ee $80
     call storeTileAatDialogPositionDE                  ;; 00:3796 $cd $44 $38
@@ -9052,10 +9054,10 @@ drawText:
     cp   A, $1e ; Naming screen                        ;; 00:379c $fe $1e
     jr   NZ, .jr_00_37a1                               ;; 00:379e $20 $01
 ; Naming screen puts a space between each character
-; And also prints as if the player was holding a button down
     inc  E                                             ;; 00:37a0 $1c
 .jr_00_37a1:
     pop  AF                                            ;; 00:37a1 $f1
+; Windows other than the script dialog window print continuously until finished.
     jr   NZ, .print_more_text                          ;; 00:37a2 $20 $14
     ld   A, [wWindowFlags]                             ;; 00:37a4 $fa $74 $d8
     bit  1, A                                          ;; 00:37a7 $cb $4f
@@ -9092,7 +9094,7 @@ drawText:
     call setDialogTextInsertionPoint                   ;; 00:37d7 $cd $36 $37
     pop  AF                                            ;; 00:37da $f1
     ret                                                ;; 00:37db $c9
-.jp_00_37dc:
+.terminator:
     ld   A, D                                          ;; 00:37dc $7a
     ld   [wWindowTextInsertionPointFinalY], A          ;; 00:37dd $ea $c6 $d8
     ld   A, E                                          ;; 00:37e0 $7b
