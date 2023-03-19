@@ -33,7 +33,7 @@ bossDataTable:
       BOSS_HEADER_GFX $40, $18, bossGfxMedusa, data_04_7987, data_04_7bfe ;; 04:4771 ????????
       dw data_04_49e1, data_04_4e75, data_04_4e75, data_04_5503 ;; 04:4779 ????????
     BOSS_HEADER $0a, $1c, $2c, $96, $0b, $16, script_0246 ;; 04:4781 ????????
-      BOSS_HEADER_GFX $40, $10, bossGfxMegapepe, data_04_7987, data_04_7f25 ;; 04:4789 ????????
+      BOSS_HEADER_GFX $40, $10, bossGfxMegapede, data_04_7987, data_04_7f25 ;; 04:4789 ????????
       dw data_04_4cc1, data_04_525b, data_04_4e09, data_04_5541 ;; 04:4791 ????????
     BOSS_HEADER $08, $4b, $5a, $64, $08, $26, script_0246 ;; 04:4799 ????????
       BOSS_HEADER_GFX $40, $14, bossGfxDavias, data_04_79f3, data_04_7c3a ;; 04:47a1 ????????

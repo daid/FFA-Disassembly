@@ -28,7 +28,7 @@ bossGfxGolem:
     INCBIN "boss/golem.bin"                            ;; 0b:5040
 
 ;@gfximg name=boss/megapede width=2 height=16
-bossGfxMegapepe:
+bossGfxMegapede:
     INCBIN "boss/megapede.bin"                         ;; 0b:5240
     db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:5440 ????????
     db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0b:5448 ????????
