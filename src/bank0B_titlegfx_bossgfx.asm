@@ -99,9 +99,9 @@ bossGfxKraken:
 bossGfxMetalCrab:
     INCBIN "boss/metak_crab.bin"                       ;; 0b:7140
 
-;@gfximg name=boss/julius2 width=4 height=8
-bossGfxJulius2:
-    INCBIN "boss/julius2.bin"                          ;; 0b:7300
+;@gfximg name=boss/julius3 width=4 height=8
+bossGfxJulius3:
+    INCBIN "boss/julius3.bin"                          ;; 0b:7300
 
 ;@gfximg name=boss/mantis_ant width=2 height=24
 bossGfxMantisAnt:

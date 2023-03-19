@@ -860,9 +860,9 @@ getProjectilePower:
 
 INCLUDE "data/projectiles.asm"
 
-;@gfximg name=boss/julius width=2 height=16
-bossGfxJulius:
-    INCBIN "boss/julius.bin"                           ;; 09:4900
+;@gfximg name=boss/julius2 width=2 height=16
+bossGfxJulius2:
+    INCBIN "boss/julius2.bin"                           ;; 09:4900
     db   $fb, $9f, $fd, $cf, $32, $ff, $0f, $ff        ;; 09:4b00 ????????
     db   $07, $ff, $86, $7b, $fe, $87, $fc, $ff        ;; 09:4b08 ????????
     db   $f9, $f9, $f0, $f0, $e1, $e1, $c0, $c0        ;; 09:4b10 ????????

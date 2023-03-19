@@ -66,7 +66,7 @@ bossDataTable:
       BOSS_HEADER_GFX $38, $1c, bossGfxDragon, tileorderDragon, metaspritesDragon ;; 04:4879 ????????
       dw data_04_4bf1, data_04_5165, data_04_5165, data_04_56ab ;; 04:4881 ????????
     BOSS_HEADER $05, $da, $00, $a0, $0b, $24, script_0246 ;; 04:4889 ????????
-      BOSS_HEADER_GFX $40, $12, bossGfxJulius, tileorderJulius, metaspritesJulius ;; 04:4891 ????????
+      BOSS_HEADER_GFX $40, $12, bossGfxJulius2, tileorderJulius2, metaspritesJulius2 ;; 04:4891 ????????
       dw data_04_4a71, data_04_4f77, data_04_4f77, data_04_55f1 ;; 04:4899 ????????
     BOSS_HEADER $08, $ce, $00, $fa, $07, $27, script_0247 ;; 04:48a1 ????????
       BOSS_HEADER_GFX $40, $18, bossGfxDragonZombie, tileorderHydraDragonZombie, metaspritesHydraDragonZombie ;; 04:48a9 ????????
@@ -75,7 +75,7 @@ bossDataTable:
       BOSS_HEADER_GFX $40, $10, bossGfxJackal, tileorderCommon, metaspritesGolemJackal ;; 04:48c1 ........
       dw data_04_4d19, data_04_4f4d, data_04_4e15, data_04_5473 ;; 04:48c9 ........
     BOSS_HEADER $04, $ff, $00, $a0, $08, $25, script_0246 ;; 04:48d1 ????????
-      BOSS_HEADER_GFX $40, $10, bossGfxJulius2, tileorderJulius2, metaspritesJulius2 ;; 04:48d9 ????????
+      BOSS_HEADER_GFX $40, $10, bossGfxJulius3, tileorderJulius3, metaspritesJulius3 ;; 04:48d9 ????????
       dw data_04_4d49, data_04_531b, data_04_531b, data_04_562f ;; 04:48e1 ????????
     BOSS_HEADER $0a, $51, $64, $64, $07, $16, script_0247 ;; 04:48e9 ????????
       BOSS_HEADER_GFX $40, $18, bossGfxMetalCrab, tileorderIflyteMetalCrab, metaspritesIflyteMetalCrab ;; 04:48f1 ????????
@@ -4449,7 +4449,7 @@ tileorderDavias:
     db   $60, $0f, $0e, $10, $11, $13, $12, $14        ;; 04:7a03 ????????
     db   $15, $16, $60, $17, $18, $1a, $19, $1b        ;; 04:7a0b ????????
 
-tileorderJulius:
+tileorderJulius2:
     db   $00, $02, $01, $03, $04, $06, $05, $07        ;; 04:7a13 ????????
     db   $08, $0a, $09, $0b, $0c, $0e, $0d, $0f        ;; 04:7a1b ????????
     db   $10, $12, $11, $13, $14, $16, $15, $17        ;; 04:7a23 ????????
@@ -4512,7 +4512,7 @@ tileorderKraken:
     db   $25, $27, $28, $2a, $29, $2b, $2c, $2e        ;; 04:7b79 ????????
     db   $2d, $2f, $30, $32, $31, $33                  ;; 04:7b81 ??????
 
-tileorderJulius2:
+tileorderJulius3:
     db   $00, $04, $01, $05, $02, $06, $03, $07        ;; 04:7b87 ????????
     db   $08, $0c, $09, $0d, $0a, $0e, $0b, $0f        ;; 04:7b8f ????????
     db   $10, $14, $11, $15, $12, $16, $13, $17        ;; 04:7b97 ????????
@@ -4561,7 +4561,7 @@ metaspritesGolemJackal:
     db   $5e, $10, $58, $5a, $10, $38, $3a, $10        ;; 04:7c90 ........
     db   $3c, $3e                                      ;; 04:7c98 ..
 
-metaspritesJulius:
+metaspritesJulius2:
     db   $10, $40, $42, $10, $44, $46, $10, $60        ;; 04:7c9a ????????
     db   $62, $10, $5c, $5e, $10, $48, $4a, $30        ;; 04:7ca2 ????????
     db   $42, $40, $30, $62, $60, $30, $62, $60        ;; 04:7caa ????????
@@ -4672,7 +4672,7 @@ metaspritesMegapede:
     db   $5e, $10, $38, $3a, $10, $38, $3a, $10        ;; 04:7f45 ????????
     db   $3c, $3e                                      ;; 04:7f4d ??
 
-metaspritesJulius2:
+metaspritesJulius3:
     db   $10, $44, $46, $10, $40, $42, $10, $48        ;; 04:7f4f ????????
     db   $4a, $10, $4c, $4e, $10, $50, $52, $10        ;; 04:7f57 ????????
     db   $54, $56, $10, $58, $5a, $10, $5c, $5e        ;; 04:7f5f ????????
