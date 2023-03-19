@@ -4471,7 +4471,7 @@ drawWindowStart:
     cp   A, $21                                        ;; 02:6720 $fe $21
     jr   Z, .moveWindowIfOverlapsPlayer                ;; 02:6722 $28 $04
     cp   A, $06                                        ;; 02:6724 $fe $06
-    jr   NZ, .jr_02_6739                               ;; 02:6726 $20 $11
+    jr   NZ, .set_dimensions                           ;; 02:6726 $20 $11
 .moveWindowIfOverlapsPlayer:
     push DE                                            ;; 02:6728 $d5
     push HL                                            ;; 02:6729 $e5
@@ -4483,9 +4483,9 @@ drawWindowStart:
     pop  HL                                            ;; 02:6732 $e1
     pop  DE                                            ;; 02:6733 $d1
     cp   A, D                                          ;; 02:6734 $ba
-    jr   C, .jr_02_6739                                ;; 02:6735 $38 $02
+    jr   C, .set_dimensions                            ;; 02:6735 $38 $02
     ld   D, $00                                        ;; 02:6737 $16 $00
-.jr_02_6739:
+.set_dimensions:
     inc  HL                                            ;; 02:6739 $23
     ld   C, [HL]                                       ;; 02:673a $4e
     inc  HL                                            ;; 02:673b $23
