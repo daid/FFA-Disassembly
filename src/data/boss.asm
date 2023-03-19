@@ -30,61 +30,61 @@ bossDataTable:
       BOSS_HEADER_GFX $40, $18, gfxBossHydra, tileorderHydraDragonZombie, metaspritesHydraDragonZombie ;; 04:4759 ????????
       dw data_04_4971, data_04_4e37, data_04_4e37, data_04_54bb ;; 04:4761 ????????
     BOSS_HEADER $06, $3b, $55, $46, $04, $20, script_0246 ;; 04:4769 ????????
-      BOSS_HEADER_GFX $40, $18, bossGfxMedusa, data_04_7987, data_04_7bfe ;; 04:4771 ????????
+      BOSS_HEADER_GFX $40, $18, bossGfxMedusa, tileorderCommon, metaspritesMedusa ;; 04:4771 ????????
       dw data_04_49e1, data_04_4e75, data_04_4e75, data_04_5503 ;; 04:4779 ????????
     BOSS_HEADER $0a, $1c, $2c, $96, $0b, $16, script_0246 ;; 04:4781 ????????
-      BOSS_HEADER_GFX $40, $10, bossGfxMegapede, data_04_7987, data_04_7f25 ;; 04:4789 ????????
+      BOSS_HEADER_GFX $40, $10, bossGfxMegapede, tileorderCommon, metaspritesMegapede ;; 04:4789 ????????
       dw data_04_4cc1, data_04_525b, data_04_4e09, data_04_5541 ;; 04:4791 ????????
     BOSS_HEADER $08, $4b, $5a, $64, $08, $26, script_0246 ;; 04:4799 ????????
-      BOSS_HEADER_GFX $40, $14, bossGfxDavias, data_04_79f3, data_04_7c3a ;; 04:47a1 ????????
+      BOSS_HEADER_GFX $40, $14, bossGfxDavias, tileorderDavias, metaspritesDavias ;; 04:47a1 ????????
       dw data_04_4a01, data_04_4edb, data_04_4edb, data_04_5575 ;; 04:47a9 ????????
     BOSS_HEADER $04, $8f, $60, $a0, $06, $16, script_0246 ;; 04:47b1 ????????
-      BOSS_HEADER_GFX $40, $10, bossGfxGolem, data_04_7987, data_04_7c70 ;; 04:47b9 ????????
+      BOSS_HEADER_GFX $40, $10, bossGfxGolem, tileorderCommon, metaspritesGolemJackal ;; 04:47b9 ????????
       dw data_04_4a41, data_04_4ee7, data_04_4ee7, data_04_5473 ;; 04:47c1 ????????
     BOSS_HEADER $06, $6f, $46, $3c, $07, $ff, script_0247 ;; 04:47c9 ????????
-      BOSS_HEADER_GFX $30, $1d, bossGfxCyclops, data_04_7a37, data_04_7cd6 ;; 04:47d1 ????????
+      BOSS_HEADER_GFX $30, $1d, bossGfxCyclops, tileorderCyclops, metaspritesCyclops ;; 04:47d1 ????????
       dw data_04_4ac9, data_04_4fdd, data_04_4fdd, data_04_5435 ;; 04:47d9 ????????
     BOSS_HEADER $04, $70, $14, $58, $06, $23, script_0246 ;; 04:47e1 ????????
-      BOSS_HEADER_GFX $40, $18, bossGfxChimera, data_04_7987, data_04_7d06 ;; 04:47e9 ????????
+      BOSS_HEADER_GFX $40, $18, bossGfxChimera, tileorderCommon, metaspritesChimeraMantisAnt ;; 04:47e9 ????????
       dw data_04_4b01, data_04_504d, data_04_504d, data_04_55b3 ;; 04:47f1 ????????
     BOSS_HEADER $08, $79, $a6, $78, $09, $0d, script_024f ;; 04:47f9 ????????
-      BOSS_HEADER_GFX $3c, $1a, bossGfxKary, data_04_7a71, data_04_7d36 ;; 04:4801 ????????
+      BOSS_HEADER_GFX $3c, $1a, bossGfxKary, tileorderKary, metaspritesKary ;; 04:4801 ????????
       dw data_04_4b31, data_04_509f, data_04_509f, data_04_56b2 ;; 04:4809 ????????
     BOSS_HEADER $0c, $7d, $be, $78, $0a, $14, script_0247 ;; 04:4811 ????????
-      BOSS_HEADER_GFX $3a, $1b, bossGfxKraken, data_04_7b51, data_04_7ec8 ;; 04:4819 ????????
+      BOSS_HEADER_GFX $3a, $1b, bossGfxKraken, tileorderKraken, metaspritesKraken ;; 04:4819 ????????
       dw data_04_4c71, data_04_5231, data_04_4dfd, data_04_56b9 ;; 04:4821 ????????
     BOSS_HEADER $06, $92, $c8, $fa, $07, $16, script_0247 ;; 04:4829 ????????
-      BOSS_HEADER_GFX $40, $18, bossGfxIflyte, data_04_79c7, data_04_7d78 ;; 04:4831 ????????
+      BOSS_HEADER_GFX $40, $18, bossGfxIflyte, tileorderIflyteMetalCrab, metaspritesIflyteMetalCrab ;; 04:4831 ????????
       dw data_04_4b79, data_04_50f1, data_04_50f1, data_04_566d ;; 04:4839 ????????
     BOSS_HEADER $0a, $76, $b2, $c8, $07, $22, script_0247 ;; 04:4841 ????????
-      BOSS_HEADER_GFX $38, $1c, bossGfxLich, data_04_7b19, data_04_7e74 ;; 04:4849 ????????
+      BOSS_HEADER_GFX $38, $1c, bossGfxLich, tileorderLich, metaspritesLich ;; 04:4849 ????????
       dw data_04_4c39, data_04_5171, data_04_5171, data_04_5435 ;; 04:4851 ????????
     BOSS_HEADER $04, $bb, $d2, $fa, $08, $21, script_0247 ;; 04:4859 ????????
-      BOSS_HEADER_GFX $34, $1e, bossGfxGaruda, data_04_7aa5, data_04_7dc6 ;; 04:4861 ????????
+      BOSS_HEADER_GFX $34, $1e, bossGfxGaruda, tileorderGaruda, metaspritesGaruda ;; 04:4861 ????????
       dw data_04_4bb1, data_04_5127, data_04_5127, data_04_5435 ;; 04:4869 ????????
     BOSS_HEADER $08, $6a, $00, $fa, $09, $14, script_024f ;; 04:4871 ????????
-      BOSS_HEADER_GFX $38, $1c, bossGfxDragon, data_04_7ae1, data_04_7e20 ;; 04:4879 ????????
+      BOSS_HEADER_GFX $38, $1c, bossGfxDragon, tileorderDragon, metaspritesDragon ;; 04:4879 ????????
       dw data_04_4bf1, data_04_5165, data_04_5165, data_04_56ab ;; 04:4881 ????????
     BOSS_HEADER $05, $da, $00, $a0, $0b, $24, script_0246 ;; 04:4889 ????????
-      BOSS_HEADER_GFX $40, $12, bossGfxJulius, data_04_7a13, data_04_7c9a ;; 04:4891 ????????
+      BOSS_HEADER_GFX $40, $12, bossGfxJulius, tileorderJulius, metaspritesJulius ;; 04:4891 ????????
       dw data_04_4a71, data_04_4f77, data_04_4f77, data_04_55f1 ;; 04:4899 ????????
     BOSS_HEADER $08, $ce, $00, $fa, $07, $27, script_0247 ;; 04:48a1 ????????
       BOSS_HEADER_GFX $40, $18, bossGfxDragonZombie, tileorderHydraDragonZombie, metaspritesHydraDragonZombie ;; 04:48a9 ????????
       dw data_04_49a9, data_04_4e37, data_04_4e37, data_04_54bb ;; 04:48b1 ????????
     BOSS_HEADER $05, $02, $00, $00, $06, $16, script_0246 ;; 04:48b9 ........
-      BOSS_HEADER_GFX $40, $10, bossGfxJackal, data_04_7987, data_04_7c70 ;; 04:48c1 ........
+      BOSS_HEADER_GFX $40, $10, bossGfxJackal, tileorderCommon, metaspritesGolemJackal ;; 04:48c1 ........
       dw data_04_4d19, data_04_4f4d, data_04_4e15, data_04_5473 ;; 04:48c9 ........
     BOSS_HEADER $04, $ff, $00, $a0, $08, $25, script_0246 ;; 04:48d1 ????????
-      BOSS_HEADER_GFX $40, $10, bossGfxJulius2, data_04_7b87, data_04_7f4f ;; 04:48d9 ????????
+      BOSS_HEADER_GFX $40, $10, bossGfxJulius2, tileorderJulius2, metaspritesJulius2 ;; 04:48d9 ????????
       dw data_04_4d49, data_04_531b, data_04_531b, data_04_562f ;; 04:48e1 ????????
     BOSS_HEADER $0a, $51, $64, $64, $07, $16, script_0247 ;; 04:48e9 ????????
-      BOSS_HEADER_GFX $40, $18, bossGfxMetalCrab, data_04_79c7, data_04_7d78 ;; 04:48f1 ????????
+      BOSS_HEADER_GFX $40, $18, bossGfxMetalCrab, tileorderIflyteMetalCrab, metaspritesIflyteMetalCrab ;; 04:48f1 ????????
       dw data_04_4d89, data_04_50fd, data_04_50fd, data_04_566d ;; 04:48f9 ????????
     BOSS_HEADER $08, $af, $c7, $dc, $06, $ff, script_0246 ;; 04:4901 ????????
-      BOSS_HEADER_GFX $40, $18, bossGfxMantisAnt, data_04_7987, data_04_7d06 ;; 04:4909 ????????
+      BOSS_HEADER_GFX $40, $18, bossGfxMantisAnt, tileorderCommon, metaspritesChimeraMantisAnt ;; 04:4909 ????????
       dw data_04_4dc1, data_04_504d, data_04_504d, data_04_55b3 ;; 04:4911 ????????
     BOSS_HEADER $08, $bb, $00, $fa, $09, $14, script_024f ;; 04:4919 ????????
-      BOSS_HEADER_GFX $38, $1c, bossGfxDragon, data_04_7ae1, data_04_7e20 ;; 04:4921 ????????
+      BOSS_HEADER_GFX $38, $1c, bossGfxDragon, tileorderDragon, metaspritesDragon ;; 04:4921 ????????
       dw data_04_4bf1, data_04_5165, data_04_5165, data_04_56ab ;; 04:4929 ????????
 
 data_04_4931:
@@ -4425,7 +4425,7 @@ tileorderHydraDragonZombie:
     db   $1f, $21, $20, $22, $23, $25, $24, $26        ;; 04:7977 ????????
     db   $27, $29, $28, $2a, $2b, $2d, $2c, $2e        ;; 04:797f ????????
 
-data_04_7987:
+tileorderCommon:
     db   $00, $02, $01, $03, $04, $06, $05, $07        ;; 04:7987 ........
     db   $08, $0a, $09, $0b, $0c, $0e, $0d, $0f        ;; 04:798f ........
     db   $10, $12, $11, $13, $14, $16, $15, $17        ;; 04:7997 ........
@@ -4435,7 +4435,7 @@ data_04_7987:
     db   $30, $32, $31, $33, $34, $36, $35, $37        ;; 04:79b7 ????????
     db   $38, $3a, $39, $3b, $20, $22, $21, $23        ;; 04:79bf ????????
 
-data_04_79c7:
+tileorderIflyteMetalCrab:
     db   $00, $02, $01, $03, $04, $06, $05, $07        ;; 04:79c7 ????????
     db   $08, $0a, $09, $0b, $0c, $0e, $0d, $0f        ;; 04:79cf ????????
     db   $10, $12, $11, $13, $14, $16, $15, $17        ;; 04:79d7 ????????
@@ -4443,20 +4443,20 @@ data_04_79c7:
     db   $21, $23, $22, $24, $25, $27, $26, $28        ;; 04:79e7 ????????
     db   $29, $2b, $2a, $2c                            ;; 04:79ef ????
 
-data_04_79f3:
+tileorderDavias:
     db   $60, $01, $00, $02, $03, $05, $04, $06        ;; 04:79f3 ????????
     db   $07, $08, $60, $09, $0a, $0c, $0b, $0d        ;; 04:79fb ????????
     db   $60, $0f, $0e, $10, $11, $13, $12, $14        ;; 04:7a03 ????????
     db   $15, $16, $60, $17, $18, $1a, $19, $1b        ;; 04:7a0b ????????
 
-data_04_7a13:
+tileorderJulius:
     db   $00, $02, $01, $03, $04, $06, $05, $07        ;; 04:7a13 ????????
     db   $08, $0a, $09, $0b, $0c, $0e, $0d, $0f        ;; 04:7a1b ????????
     db   $10, $12, $11, $13, $14, $16, $15, $17        ;; 04:7a23 ????????
     db   $18, $1a, $19, $1b, $1c, $6c, $1d, $1e        ;; 04:7a2b ????????
     db   $1f, $21, $20, $22                            ;; 04:7a33 ????
 
-data_04_7a37:
+tileorderCyclops:
     db   $00, $02, $01, $03, $04, $53, $05, $06        ;; 04:7a37 ????????
     db   $07, $08, $53, $09, $0a, $0c, $0b, $0d        ;; 04:7a3f ????????
     db   $0e, $10, $0f, $11, $12, $14, $13, $15        ;; 04:7a47 ????????
@@ -4466,7 +4466,7 @@ data_04_7a37:
     db   $2d, $2f, $2e, $30, $31, $33, $32, $34        ;; 04:7a67 ????????
     db   $35, $36                                      ;; 04:7a6f ??
 
-data_04_7a71:
+tileorderKary:
     db   $0d, $2a, $0e, $2b, $00, $01, $7f, $02        ;; 04:7a71 ????????
     db   $03, $05, $04, $06, $7f, $7f, $07, $08        ;; 04:7a79 ????????
     db   $09, $0b, $0a, $0c, $0d, $0f, $0e, $10        ;; 04:7a81 ????????
@@ -4475,7 +4475,7 @@ data_04_7a71:
     db   $7f, $20, $7f, $21, $22, $24, $23, $25        ;; 04:7a99 ????????
     db   $26, $28, $27, $29                            ;; 04:7aa1 ????
 
-data_04_7aa5:
+tileorderGaruda:
     db   $00, $02, $01, $03, $04, $06, $05, $07        ;; 04:7aa5 ????????
     db   $08, $0a, $09, $0b, $0c, $0e, $0d, $0f        ;; 04:7aad ????????
     db   $10, $12, $11, $13, $14, $16, $15, $17        ;; 04:7ab5 ????????
@@ -4485,7 +4485,7 @@ data_04_7aa5:
     db   $30, $31, $37, $32, $33, $35, $34, $37        ;; 04:7ad5 ????????
     db   $36, $37, $37, $37                            ;; 04:7add ????
 
-data_04_7ae1:
+tileorderDragon:
     db   $00, $06, $01, $07, $02, $08, $03, $09        ;; 04:7ae1 ????????
     db   $04, $0a, $05, $0b, $0c, $12, $0d, $13        ;; 04:7ae9 ????????
     db   $0e, $14, $0f, $15, $10, $16, $11, $17        ;; 04:7af1 ????????
@@ -4494,7 +4494,7 @@ data_04_7ae1:
     db   $28, $2a, $29, $2b, $2c, $32, $2d, $33        ;; 04:7b09 ????????
     db   $2e, $34, $2f, $35, $30, $36, $31, $37        ;; 04:7b11 ????????
 
-data_04_7b19:
+tileorderLich:
     db   $00, $04, $01, $05, $02, $06, $03, $07        ;; 04:7b19 ????????
     db   $08, $0c, $09, $0d, $0a, $0e, $0b, $0f        ;; 04:7b21 ????????
     db   $10, $14, $11, $15, $12, $16, $13, $17        ;; 04:7b29 ????????
@@ -4503,7 +4503,7 @@ data_04_7b19:
     db   $28, $2c, $29, $2d, $2a, $2e, $2b, $2f        ;; 04:7b41 ????????
     db   $30, $34, $31, $35, $32, $36, $33, $37        ;; 04:7b49 ????????
 
-data_04_7b51:
+tileorderKraken:
     db   $38, $38, $00, $03, $01, $04, $02, $05        ;; 04:7b51 ????????
     db   $06, $0a, $07, $0b, $08, $0c, $09, $0d        ;; 04:7b59 ????????
     db   $0e, $11, $0f, $12, $10, $13, $14, $16        ;; 04:7b61 ????????
@@ -4512,7 +4512,7 @@ data_04_7b51:
     db   $25, $27, $28, $2a, $29, $2b, $2c, $2e        ;; 04:7b79 ????????
     db   $2d, $2f, $30, $32, $31, $33                  ;; 04:7b81 ??????
 
-data_04_7b87:
+tileorderJulius2:
     db   $00, $04, $01, $05, $02, $06, $03, $07        ;; 04:7b87 ????????
     db   $08, $0c, $09, $0d, $0a, $0e, $0b, $0f        ;; 04:7b8f ????????
     db   $10, $14, $11, $15, $12, $16, $13, $17        ;; 04:7b97 ????????
@@ -4534,7 +4534,7 @@ metaspritesHydraDragonZombie:
     db   $5e, $10, $64, $66, $10, $38, $3a, $10        ;; 04:7bf1 ????????
     db   $38, $3a, $10, $3c, $3e                       ;; 04:7bf9 ?????
 
-data_04_7bfe:
+metaspritesMedusa:
     db   $10, $4c, $4e, $10, $44, $46, $30, $46        ;; 04:7bfe ????????
     db   $44, $10, $6c, $6e, $10, $64, $66, $30        ;; 04:7c06 ????????
     db   $66, $64, $10, $50, $52, $10, $58, $5a        ;; 04:7c0e ????????
@@ -4544,7 +4544,7 @@ data_04_7bfe:
     db   $10, $54, $56, $30, $4e, $4c, $10, $40        ;; 04:7c2e ????????
     db   $42, $10, $48, $4a                            ;; 04:7c36 ????
 
-data_04_7c3a:
+metaspritesDavias:
     db   $10, $4c, $4e, $30, $4e, $4c, $30, $46        ;; 04:7c3a ????????
     db   $44, $30, $4a, $48, $30, $42, $40, $10        ;; 04:7c42 ????????
     db   $40, $42, $10, $5c, $5e, $10, $44, $46        ;; 04:7c4a ????????
@@ -4553,7 +4553,7 @@ data_04_7c3a:
     db   $3c, $3e, $10, $30, $32, $10, $34, $36        ;; 04:7c62 ????????
     db   $10, $54, $56, $10, $44, $46                  ;; 04:7c6a ??????
 
-data_04_7c70:
+metaspritesGolemJackal:
     db   $10, $40, $42, $10, $44, $46, $10, $48        ;; 04:7c70 ........
     db   $4a, $30, $4e, $4c, $30, $4a, $48, $30        ;; 04:7c78 ........
     db   $42, $40, $10, $4c, $4e, $30, $46, $44        ;; 04:7c80 ........
@@ -4561,7 +4561,7 @@ data_04_7c70:
     db   $5e, $10, $58, $5a, $10, $38, $3a, $10        ;; 04:7c90 ........
     db   $3c, $3e                                      ;; 04:7c98 ..
 
-data_04_7c9a:
+metaspritesJulius:
     db   $10, $40, $42, $10, $44, $46, $10, $60        ;; 04:7c9a ????????
     db   $62, $10, $5c, $5e, $10, $48, $4a, $30        ;; 04:7ca2 ????????
     db   $42, $40, $30, $62, $60, $30, $62, $60        ;; 04:7caa ????????
@@ -4571,7 +4571,7 @@ data_04_7c9a:
     db   $30, $4a, $48, $10, $54, $56, $10, $58        ;; 04:7cca ????????
     db   $5a, $10, $50, $52                            ;; 04:7cd2 ????
 
-data_04_7cd6:
+metaspritesCyclops:
     db   $10, $30, $32, $10, $34, $36, $10, $38        ;; 04:7cd6 ????????
     db   $3a, $10, $3c, $3e, $10, $40, $42, $10        ;; 04:7cde ????????
     db   $44, $46, $10, $48, $4a, $10, $54, $56        ;; 04:7ce6 ????????
@@ -4579,7 +4579,7 @@ data_04_7cd6:
     db   $5a, $10, $5c, $5e, $10, $60, $62, $10        ;; 04:7cf6 ????????
     db   $64, $66, $30, $66, $64, $10, $68, $68        ;; 04:7cfe ????????
 
-data_04_7d06:
+metaspritesChimeraMantisAnt:
     db   $10, $50, $52, $10, $40, $42, $10, $68        ;; 04:7d06 ????????
     db   $6a, $10, $6c, $6e, $10, $48, $4a, $10        ;; 04:7d0e ????????
     db   $4c, $4e, $10, $50, $52, $10, $68, $6a        ;; 04:7d16 ????????
@@ -4587,7 +4587,7 @@ data_04_7d06:
     db   $62, $10, $58, $5a, $10, $38, $3a, $10        ;; 04:7d26 ????????
     db   $3c, $3e, $10, $64, $66, $10, $44, $46        ;; 04:7d2e ????????
 
-data_04_7d36:
+metaspritesKary:
     db   $10, $4c, $4e, $10, $50, $52, $10, $3c        ;; 04:7d36 ????????
     db   $3e, $10, $48, $4a, $10, $54, $56, $30        ;; 04:7d3e ????????
     db   $5a, $58, $10, $58, $5a, $10, $5c, $5e        ;; 04:7d46 ????????
@@ -4598,7 +4598,7 @@ data_04_7d36:
     db   $6a, $10, $6c, $6e, $30, $62, $60, $10        ;; 04:7d6e ????????
     db   $60, $62                                      ;; 04:7d76 ??
 
-data_04_7d78:
+metaspritesIflyteMetalCrab:
     db   $10, $50, $52, $10, $40, $42, $30, $52        ;; 04:7d78 ????????
     db   $50, $10, $44, $46, $10, $48, $4a, $10        ;; 04:7d80 ????????
     db   $4c, $4e, $10, $62, $68, $30, $68, $62        ;; 04:7d88 ????????
@@ -4610,7 +4610,7 @@ data_04_7d78:
     db   $6a, $68, $10, $54, $56, $10, $58, $5a        ;; 04:7db8 ????????
     db   $30, $56, $54, $30, $5a, $58                  ;; 04:7dc0 ??????
 
-data_04_7dc6:
+metaspritesGaruda:
     db   $10, $40, $42, $10, $34, $36, $10, $5c        ;; 04:7dc6 ????????
     db   $5e, $10, $38, $3a, $10, $3c, $3e, $10        ;; 04:7dce ????????
     db   $44, $46, $10, $48, $4a, $10, $4c, $4e        ;; 04:7dd6 ????????
@@ -4624,7 +4624,7 @@ data_04_7dc6:
     db   $60, $30, $66, $64, $30, $6a, $68, $30        ;; 04:7e16 ????????
     db   $6e, $6c                                      ;; 04:7e1e ??
 
-data_04_7e20:
+metaspritesDragon:
     db   $10, $48, $4a, $10, $38, $3a, $30, $4a        ;; 04:7e20 ????????
     db   $48, $10, $3c, $3e, $10, $40, $42, $10        ;; 04:7e28 ????????
     db   $44, $46, $10, $4c, $4e, $10, $50, $52        ;; 04:7e30 ????????
@@ -4637,7 +4637,7 @@ data_04_7e20:
     db   $30, $62, $60, $30, $66, $64, $30, $6a        ;; 04:7e68 ????????
     db   $68, $30, $6e, $6c                            ;; 04:7e70 ????
 
-data_04_7e74:
+metaspritesLich:
     db   $10, $38, $3a, $10, $3c, $3e, $10, $40        ;; 04:7e74 ????????
     db   $42, $10, $44, $46, $10, $48, $4a, $10        ;; 04:7e7c ????????
     db   $4c, $4e, $10, $50, $52, $10, $54, $56        ;; 04:7e84 ????????
@@ -4650,7 +4650,7 @@ data_04_7e74:
     db   $30, $62, $60, $30, $66, $64, $30, $6a        ;; 04:7ebc ????????
     db   $68, $30, $6e, $6c                            ;; 04:7ec4 ????
 
-data_04_7ec8:
+metaspritesKraken:
     db   $10, $46, $48, $10, $3a, $3c, $30, $44        ;; 04:7ec8 ????????
     db   $42, $10, $3e, $40, $10, $42, $44, $10        ;; 04:7ed0 ????????
     db   $3a, $4a, $10, $4c, $4e, $30, $4a, $3a        ;; 04:7ed8 ????????
@@ -4664,7 +4664,7 @@ data_04_7ec8:
     db   $68, $30, $6e, $6c, $30, $66, $64, $10        ;; 04:7f18 ????????
     db   $60, $62, $10, $64, $66                       ;; 04:7f20 ?????
 
-data_04_7f25:
+metaspritesMegapede:
     db   $10, $40, $42, $10, $44, $46, $10, $48        ;; 04:7f25 ????????
     db   $4a, $50, $40, $42, $30, $46, $44, $30        ;; 04:7f2d ????????
     db   $4a, $48, $10, $50, $52, $10, $4c, $4e        ;; 04:7f35 ????????
@@ -4672,7 +4672,7 @@ data_04_7f25:
     db   $5e, $10, $38, $3a, $10, $38, $3a, $10        ;; 04:7f45 ????????
     db   $3c, $3e                                      ;; 04:7f4d ??
 
-data_04_7f4f:
+metaspritesJulius2:
     db   $10, $44, $46, $10, $40, $42, $10, $48        ;; 04:7f4f ????????
     db   $4a, $10, $4c, $4e, $10, $50, $52, $10        ;; 04:7f57 ????????
     db   $54, $56, $10, $58, $5a, $10, $5c, $5e        ;; 04:7f5f ????????
