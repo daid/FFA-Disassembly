@@ -1,3 +1,3 @@
 # FFA-Disassembly
 
-Discord: https://discord.gg/khqXGDktl
+Discord: https://discord.gg/CFdyrbWsWZ
