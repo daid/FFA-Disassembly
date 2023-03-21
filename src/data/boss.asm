@@ -4535,7 +4535,7 @@ metaspritesVampire:
     db   $10, $38, $3a                                 ;; 04:7bcb ??? $0c
     db   $10, $3c, $3e                                 ;; 04:7bce ??? $0d
 
-;@data format=bbb amount=14
+;@data format=bbb amount=15
 metaspritesHydraDragonZombie:
     db   $10, $58, $5a                                 ;; 04:7bd1 ??? $00
     db   $10, $48, $4a                                 ;; 04:7bd4 ??? $01
@@ -4551,7 +4551,7 @@ metaspritesHydraDragonZombie:
     db   $10, $64, $66                                 ;; 04:7bf2 ??? $0b
     db   $10, $38, $3a                                 ;; 04:7bf5 ??? $0c
     db   $10, $38, $3a                                 ;; 04:7bf8 ??? $0d
-    db   $10, $3c, $3e                                 ;; 04:7bfb ???
+    db   $10, $3c, $3e                                 ;; 04:7bfb ??? $0e
 
 ;@data format=bbb amount=20
 metaspritesMedusa:
