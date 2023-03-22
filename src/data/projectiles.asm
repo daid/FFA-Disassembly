@@ -21,46 +21,46 @@
 ; 12-13) Metatiles
 ; 14-15) ?
 projectileDataTable:
-    data_bbbbbbbbpppp $62, $08, $08, $01, $0a, $00, $30, $04, gfxProjectileKnife, data_09_46f9, data_09_4771, data_09_48c3 ;; 09:4479 ................ $00
-    data_bbbbbbbbpppp $72, $08, $08, $04, $20, $00, $30, $04, gfxProjectileSun, data_09_46f9, data_09_47b9, data_09_48c3 ;; 09:4489 ???????????????? $01
-    data_bbbbbbbbpppp $62, $08, $08, $04, $1e, $00, $38, $04, gfxProjectileNeedles, data_09_46f9, data_09_4789, data_09_48c3 ;; 09:4499 ???????????????? $02
-    data_bbbbbbbbpppp $62, $08, $08, $04, $1e, $00, $30, $04, gfxProjectilePitchfork, data_09_46f9, data_09_4771, data_09_48c3 ;; 09:44a9 ..????.......... $03
-    data_bbbbbbbbpppp $72, $08, $08, $40, $50, $00, $38, $04, gfxProjectileMirrorImage, data_09_46f9, data_09_47d1, data_09_48c3 ;; 09:44b9 ???????????????? $04
-    data_bbbbbbbbpppp $62, $08, $08, $40, $64, $00, $68, $04, gfxProjectileLaser, data_09_46f9, data_09_47a1, data_09_48c3 ;; 09:44c9 ???????????????? $05
-    data_bbbbbbbbpppp $72, $08, $08, $08, $46, $00, $38, $04, gfxProjectileAxe, data_09_46f9, data_09_4801, data_09_48c3 ;; 09:44d9 ???????????????? $06
-    data_bbbbbbbbpppp $72, $0a, $08, $04, $1c, $00, $38, $04, gfxProjectileClaw, data_09_46f9, data_09_4801, data_09_48c3 ;; 09:44e9 ???????????????? $07
-    data_bbbbbbbbpppp $72, $08, $08, $08, $32, $08, $30, $04, gfxProjectileRing, data_09_46f9, data_09_47b9, data_09_48c3 ;; 09:44f9 ???????????????? $08
-    data_bbbbbbbbpppp $62, $08, $08, $08, $46, $00, $30, $04, gfxProjectileRock, data_09_46f9, data_09_47e9, data_09_48c3 ;; 09:4509 ???????????????? $09
-    data_bbbbbbbbpppp $72, $08, $08, $40, $89, $00, $38, $04, gfxProjectileNinjaStar, data_09_46f9, data_09_4831, data_09_48c3 ;; 09:4519 ???????????????? $0a
-    data_bbbbbbbbpppp $72, $08, $08, $40, $3e, $04, $30, $04, gfxProjectileOrb, data_09_46f9, data_09_4819, data_09_48c3 ;; 09:4529 ???????????????? $0b
-    data_bbbbbbbbpppp $72, $08, $08, $10, $50, $00, $38, $04, gfxProjectileFire, data_09_46f9, data_09_4789, data_09_48c3 ;; 09:4539 ???????????????? $0c
-    data_bbbbbbbbpppp $62, $08, $08, $20, $5f, $00, $30, $04, gfxProjectileIce, data_09_46f9, data_09_4771, data_09_48c3 ;; 09:4549 ???????????????? $0d
-    data_bbbbbbbbpppp $62, $08, $08, $40, $30, $00, $38, $04, gfxProjectileLightning, data_09_46f9, data_09_4789, data_09_48c3 ;; 09:4559 ???????????????? $0e
-    data_bbbbbbbbpppp $62, $08, $08, $04, $21, $01, $30, $04, gfxProjectileWind, data_09_46f9, data_09_4771, data_09_48c3 ;; 09:4569 ???????????????? $0f
-    data_bbbbbbbbpppp $60, $08, $08, $01, $0f, $00, $30, $04, gfxProjectileArrow, data_09_46f9, data_09_4771, data_09_48a9 ;; 09:4579 ??????......???? $10
-    data_bbbbbbbbpppp $60, $08, $08, $08, $46, $00, $38, $04, gfxProjectileSword, data_09_46f9, data_09_4789, data_09_48a9 ;; 09:4589 ??????......???? $11
-    data_bbbbbbbbpppp $60, $0a, $08, $02, $14, $00, $38, $04, gfxProjectileNeedle, data_09_46f9, data_09_4789, data_09_48a9 ;; 09:4599 ???????????????? $12
-    data_bbbbbbbbpppp $60, $0a, $08, $04, $2d, $01, $38, $04, gfxProjectileNail, data_09_46f9, data_09_4849, data_09_48b6 ;; 09:45a9 ???????????????? $13
-    data_bbbbbbbbpppp $72, $0a, $08, $40, $5f, $00, $30, $04, gfxProjectileFire2, data_09_46f9, data_09_47e9, data_09_48c3 ;; 09:45b9 ???????????????? $14
-    data_bbbbbbbbpppp $60, $08, $08, $04, $26, $02, $38, $04, gfxProjectileWave, data_09_46f9, data_09_4861, data_09_48a9 ;; 09:45c9 ???????????????? $15
-    data_bbbbbbbbpppp $72, $08, $08, $40, $63, $00, $38, $04, gfxProjectileExplosion, data_09_46f9, data_09_4831, data_09_48c3 ;; 09:45d9 ??????......???? $16
-    data_bbbbbbbbpppp $60, $08, $08, $01, $1e, $00, $38, $04, gfxProjectileChestBite, data_09_46f9, data_09_4849, data_09_48c7 ;; 09:45e9 ???????????????? $17
-    data_bbbbbbbbpppp $38, $08, $0c, $01, $27, $00, $18, $04, gfxProjectileSword, data_09_46f9, data_09_4879, data_09_48a9 ;; 09:45f9 ???????????????? $18
-    data_bbbbbbbbpppp $3a, $0a, $0c, $01, $19, $00, $18, $04, gfxProjectileAxe, data_09_46f9, data_09_4891, data_09_48c3 ;; 09:4609 ???????????????? $19
-    data_bbbbbbbbpppp $3a, $08, $0c, $01, $2b, $00, $18, $04, gfxProjectileKnife, data_09_46f9, data_09_4879, data_09_48c3 ;; 09:4619 ???????????????? $1a
-    data_bbbbbbbbpppp $3a, $08, $0c, $01, $2c, $00, $18, $04, gfxProjectileArrow, data_09_46f9, data_09_4879, data_09_48c3 ;; 09:4629 ???????????????? $1b
-    data_bbbbbbbbpppp $3a, $08, $0c, $01, $5f, $00, $18, $04, gfxProjectileLaser, data_09_46f9, data_09_4879, data_09_48c3 ;; 09:4639 ???????????????? $1c
-    data_bbbbbbbbpppp $3a, $06, $08, $08, $0d, $00, $18, $04, gfxProjectileFire, data_09_46f9, data_09_4879, data_09_48c3 ;; 09:4649 ???????????????? $1d
-    data_bbbbbbbbpppp $72, $08, $08, $02, $1e, $00, $30, $08, gfxProjectileExplosion, data_09_4701, data_09_4819, data_09_48c3 ;; 09:4659 ???????????????? $1e
-    data_bbbbbbbbpppp $62, $0c, $08, $80, $17, $00, $30, $08, gfxProjectileExplosion, data_09_4711, data_09_4771, data_09_48c3 ;; 09:4669 ???????????????? $1f
-    data_bbbbbbbbpppp $72, $0a, $08, $04, $40, $04, $30, $08, gfxProjectileExplosion, data_09_4721, data_09_4819, data_09_48c3 ;; 09:4679 ???????????????? $20
-    data_bbbbbbbbpppp $72, $0a, $08, $40, $a0, $00, $30, $02, gfxProjectileFeather2, data_09_46f9, data_09_47b9, data_09_48c3 ;; 09:4689 ???????????????? $21
-    data_bbbbbbbbpppp $72, $0a, $08, $40, $a6, $00, $30, $02, gfxProjectileSkull, data_09_46f9, data_09_47b9, data_09_48c3 ;; 09:4699 ???????????????? $22
-    data_bbbbbbbbpppp $62, $08, $08, $40, $50, $00, $30, $08, gfxProjectileExplosion, data_09_4731, data_09_4771, data_09_48c3 ;; 09:46a9 ???????????????? $23
-    data_bbbbbbbbpppp $62, $08, $08, $40, $a8, $00, $30, $08, gfxProjectileLightning, data_09_4741, data_09_4771, data_09_48c3 ;; 09:46b9 ???????????????? $24
-    data_bbbbbbbbpppp $72, $08, $0a, $40, $a3, $00, $30, $08, gfxProjectileExplosion, data_09_4751, data_09_4819, data_09_48c3 ;; 09:46c9 ???????????????? $25
-    data_bbbbbbbbpppp $72, $0a, $08, $40, $4f, $00, $30, $08, gfxProjectileExplosion, data_09_4761, data_09_47b9, data_09_48c3 ;; 09:46d9 ???????????????? $26
-    data_bbbbbbbbpppp $72, $0a, $08, $40, $88, $00, $30, $08, gfxProjectileExplosion, data_09_4761, data_09_47b9, data_09_48c3 ;; 09:46e9 ???????????????? $27
+    data_bbbbbbbbpppp $62, $08, $08, $01, $0a, $00, $30, $04, gfxProjectileKnife, data_09_46f9, data_09_4771, pattern_simple ;; 09:4479 ................ $00
+    data_bbbbbbbbpppp $72, $08, $08, $04, $20, $00, $30, $04, gfxProjectileSun, data_09_46f9, data_09_47b9, pattern_simple ;; 09:4489 ???????????????? $01
+    data_bbbbbbbbpppp $62, $08, $08, $04, $1e, $00, $38, $04, gfxProjectileNeedles, data_09_46f9, data_09_4789, pattern_simple ;; 09:4499 ???????????????? $02
+    data_bbbbbbbbpppp $62, $08, $08, $04, $1e, $00, $30, $04, gfxProjectilePitchfork, data_09_46f9, data_09_4771, pattern_simple ;; 09:44a9 ..????.......... $03
+    data_bbbbbbbbpppp $72, $08, $08, $40, $50, $00, $38, $04, gfxProjectileMirrorImage, data_09_46f9, data_09_47d1, pattern_simple ;; 09:44b9 ???????????????? $04
+    data_bbbbbbbbpppp $62, $08, $08, $40, $64, $00, $68, $04, gfxProjectileLaser, data_09_46f9, data_09_47a1, pattern_simple ;; 09:44c9 ???????????????? $05
+    data_bbbbbbbbpppp $72, $08, $08, $08, $46, $00, $38, $04, gfxProjectileAxe, data_09_46f9, data_09_4801, pattern_simple ;; 09:44d9 ???????????????? $06
+    data_bbbbbbbbpppp $72, $0a, $08, $04, $1c, $00, $38, $04, gfxProjectileClaw, data_09_46f9, data_09_4801, pattern_simple ;; 09:44e9 ???????????????? $07
+    data_bbbbbbbbpppp $72, $08, $08, $08, $32, $08, $30, $04, gfxProjectileRing, data_09_46f9, data_09_47b9, pattern_simple ;; 09:44f9 ???????????????? $08
+    data_bbbbbbbbpppp $62, $08, $08, $08, $46, $00, $30, $04, gfxProjectileRock, data_09_46f9, data_09_47e9, pattern_simple ;; 09:4509 ???????????????? $09
+    data_bbbbbbbbpppp $72, $08, $08, $40, $89, $00, $38, $04, gfxProjectileNinjaStar, data_09_46f9, data_09_4831, pattern_simple ;; 09:4519 ???????????????? $0a
+    data_bbbbbbbbpppp $72, $08, $08, $40, $3e, $04, $30, $04, gfxProjectileOrb, data_09_46f9, data_09_4819, pattern_simple ;; 09:4529 ???????????????? $0b
+    data_bbbbbbbbpppp $72, $08, $08, $10, $50, $00, $38, $04, gfxProjectileFire, data_09_46f9, data_09_4789, pattern_simple ;; 09:4539 ???????????????? $0c
+    data_bbbbbbbbpppp $62, $08, $08, $20, $5f, $00, $30, $04, gfxProjectileIce, data_09_46f9, data_09_4771, pattern_simple ;; 09:4549 ???????????????? $0d
+    data_bbbbbbbbpppp $62, $08, $08, $40, $30, $00, $38, $04, gfxProjectileLightning, data_09_46f9, data_09_4789, pattern_simple ;; 09:4559 ???????????????? $0e
+    data_bbbbbbbbpppp $62, $08, $08, $04, $21, $01, $30, $04, gfxProjectileWind, data_09_46f9, data_09_4771, pattern_simple ;; 09:4569 ???????????????? $0f
+    data_bbbbbbbbpppp $60, $08, $08, $01, $0f, $00, $30, $04, gfxProjectileArrow, data_09_46f9, data_09_4771, pattern_melee ;; 09:4579 ??????......???? $10
+    data_bbbbbbbbpppp $60, $08, $08, $08, $46, $00, $38, $04, gfxProjectileSword, data_09_46f9, data_09_4789, pattern_melee ;; 09:4589 ??????......???? $11
+    data_bbbbbbbbpppp $60, $0a, $08, $02, $14, $00, $38, $04, gfxProjectileNeedle, data_09_46f9, data_09_4789, pattern_melee ;; 09:4599 ???????????????? $12
+    data_bbbbbbbbpppp $60, $0a, $08, $04, $2d, $01, $38, $04, gfxProjectileNail, data_09_46f9, data_09_4849, pattern_scorpion_tail ;; 09:45a9 ???????????????? $13
+    data_bbbbbbbbpppp $72, $0a, $08, $40, $5f, $00, $30, $04, gfxProjectileFire2, data_09_46f9, data_09_47e9, pattern_simple ;; 09:45b9 ???????????????? $14
+    data_bbbbbbbbpppp $60, $08, $08, $04, $26, $02, $38, $04, gfxProjectileWave, data_09_46f9, data_09_4861, pattern_melee ;; 09:45c9 ???????????????? $15
+    data_bbbbbbbbpppp $72, $08, $08, $40, $63, $00, $38, $04, gfxProjectileExplosion, data_09_46f9, data_09_4831, pattern_simple ;; 09:45d9 ??????......???? $16
+    data_bbbbbbbbpppp $60, $08, $08, $01, $1e, $00, $38, $04, gfxProjectileChestBite, data_09_46f9, data_09_4849, pattern_chest_bite ;; 09:45e9 ???????????????? $17
+    data_bbbbbbbbpppp $38, $08, $0c, $01, $27, $00, $18, $04, gfxProjectileSword, data_09_46f9, data_09_4879, pattern_melee ;; 09:45f9 ???????????????? $18
+    data_bbbbbbbbpppp $3a, $0a, $0c, $01, $19, $00, $18, $04, gfxProjectileAxe, data_09_46f9, data_09_4891, pattern_simple ;; 09:4609 ???????????????? $19
+    data_bbbbbbbbpppp $3a, $08, $0c, $01, $2b, $00, $18, $04, gfxProjectileKnife, data_09_46f9, data_09_4879, pattern_simple ;; 09:4619 ???????????????? $1a
+    data_bbbbbbbbpppp $3a, $08, $0c, $01, $2c, $00, $18, $04, gfxProjectileArrow, data_09_46f9, data_09_4879, pattern_simple ;; 09:4629 ???????????????? $1b
+    data_bbbbbbbbpppp $3a, $08, $0c, $01, $5f, $00, $18, $04, gfxProjectileLaser, data_09_46f9, data_09_4879, pattern_simple ;; 09:4639 ???????????????? $1c
+    data_bbbbbbbbpppp $3a, $06, $08, $08, $0d, $00, $18, $04, gfxProjectileFire, data_09_46f9, data_09_4879, pattern_simple ;; 09:4649 ???????????????? $1d
+    data_bbbbbbbbpppp $72, $08, $08, $02, $1e, $00, $30, $08, gfxProjectileExplosion, data_09_4701, data_09_4819, pattern_simple ;; 09:4659 ???????????????? $1e
+    data_bbbbbbbbpppp $62, $0c, $08, $80, $17, $00, $30, $08, gfxProjectileExplosion, data_09_4711, data_09_4771, pattern_simple ;; 09:4669 ???????????????? $1f
+    data_bbbbbbbbpppp $72, $0a, $08, $04, $40, $04, $30, $08, gfxProjectileExplosion, data_09_4721, data_09_4819, pattern_simple ;; 09:4679 ???????????????? $20
+    data_bbbbbbbbpppp $72, $0a, $08, $40, $a0, $00, $30, $02, gfxProjectileFeather2, data_09_46f9, data_09_47b9, pattern_simple ;; 09:4689 ???????????????? $21
+    data_bbbbbbbbpppp $72, $0a, $08, $40, $a6, $00, $30, $02, gfxProjectileSkull, data_09_46f9, data_09_47b9, pattern_simple ;; 09:4699 ???????????????? $22
+    data_bbbbbbbbpppp $62, $08, $08, $40, $50, $00, $30, $08, gfxProjectileExplosion, data_09_4731, data_09_4771, pattern_simple ;; 09:46a9 ???????????????? $23
+    data_bbbbbbbbpppp $62, $08, $08, $40, $a8, $00, $30, $08, gfxProjectileLightning, data_09_4741, data_09_4771, pattern_simple ;; 09:46b9 ???????????????? $24
+    data_bbbbbbbbpppp $72, $08, $0a, $40, $a3, $00, $30, $08, gfxProjectileExplosion, data_09_4751, data_09_4819, pattern_simple ;; 09:46c9 ???????????????? $25
+    data_bbbbbbbbpppp $72, $0a, $08, $40, $4f, $00, $30, $08, gfxProjectileExplosion, data_09_4761, data_09_47b9, pattern_simple ;; 09:46d9 ???????????????? $26
+    data_bbbbbbbbpppp $72, $0a, $08, $40, $88, $00, $30, $08, gfxProjectileExplosion, data_09_4761, data_09_47b9, pattern_simple ;; 09:46e9 ???????????????? $27
 
 data_09_46f9:
     db   $00, $02, $01, $03, $04, $06, $05, $07        ;; 09:46f9 ........
@@ -158,18 +158,42 @@ data_09_4891:
     db   $1a, $60, $1a, $18, $20, $1a, $18, $40        ;; 09:4899 ????????
     db   $18, $1a, $00, $18, $1a, $60, $1a, $18        ;; 09:48a1 ????????
 
-data_09_48a9:
+; A simple stab pattern.
+; First byte is default direction flags.
+; Second and third bytes are default vector.
+; Fourth byte is unknown but always 4.
+; Null terminated
+;@data amount=3 format=bbbb
+pattern_melee:
     db   $11, $08, $00, $04, $11, $10, $00, $04        ;; 09:48a9 ????????
     db   $11, $08, $00, $04, $00                       ;; 09:48b1 ?????
 
-data_09_48b6:
+; Starts at maximum range and then draws closer.
+; First byte is default direction flags.
+; Second and third bytes are default vector.
+; Fourth byte is unknown but always 4.
+; Null terminated
+;@data amount=3 format=bbbb
+pattern_scorpion_tail:
     db   $11, $16, $00, $04, $11, $13, $00, $04        ;; 09:48b6 ????????
     db   $11, $10, $00, $04, $00                       ;; 09:48be ?????
 
-data_09_48c3:
+; First byte is default direction flags.
+; Second and third bytes are default vector. (Moves eight pixels each tick.)
+; This is used by all npc projectiles and attacks except the melee types.
+; Null terminated
+;@data amount=1 format=bbb
+pattern_simple:
     db   $11, $08, $00, $00                            ;; 09:48c3 ....
 
-data_09_48c7:
+; Used by the mimics.
+; There's nothing obvious here to make the direction always north, so that is probably in the enemy logic.
+; First byte is default direction flags.
+; Second and third bytes are default vector.
+; Fourth byte is unknown but always 4.
+; Null terminated
+;@data amount=2 format=bbbb
+pattern_chest_bite:
     db   $11, $f0, $00, $04, $11, $f0, $00, $04        ;; 09:48c7 ????????
     db   $00, $17, $31, $50, $56, $14, $40, $90        ;; 09:48cf ????????
     db   $12, $30, $50, $11, $32, $50, $10, $20        ;; 09:48d7 ????????

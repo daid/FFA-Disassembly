@@ -86,7 +86,7 @@ projectileRunLogic:
     add  HL, BC                                        ;; 09:4064 $09
     ld   A, [HL+]                                      ;; 09:4065 $2a
     cp   A, $00                                        ;; 09:4066 $fe $00
-    jp   Z, .jp_09_4136                                ;; 09:4068 $ca $36 $41
+    jp   Z, .melee_finished                            ;; 09:4068 $ca $36 $41
     push AF                                            ;; 09:406b $f5
     push DE                                            ;; 09:406c $d5
     ld   C, [HL]                                       ;; 09:406d $4e
@@ -100,7 +100,7 @@ projectileRunLogic:
     ld   E, [HL]                                       ;; 09:4077 $5e
     inc  HL                                            ;; 09:4078 $23
     ld   D, [HL]                                       ;; 09:4079 $56
-    call getValueFromDEAddOffset03                     ;; 09:407a $cd $bc $28
+    call npcSetMeleeState                              ;; 09:407a $cd $bc $28
     ld   A, [DE]                                       ;; 09:407d $1a
     pop  DE                                            ;; 09:407e $d1
     push AF                                            ;; 09:407f $f5
@@ -166,7 +166,7 @@ projectileRunLogic:
     add  HL, BC                                        ;; 09:40d3 $09
     ld   A, [HL+]                                      ;; 09:40d4 $2a
     cp   A, $00                                        ;; 09:40d5 $fe $00
-    call Z, call_09_4197                               ;; 09:40d7 $cc $97 $41
+    call Z, projectileLoopPattern                      ;; 09:40d7 $cc $97 $41
     push AF                                            ;; 09:40da $f5
     push DE                                            ;; 09:40db $d5
     ld   A, [DE]                                       ;; 09:40dc $1a
@@ -198,11 +198,11 @@ projectileRunLogic:
     ld   E, A                                          ;; 09:40fe $5f
     pop  HL                                            ;; 09:40ff $e1
     cp   A, $a8                                        ;; 09:4100 $fe $a8
-    jr   NC, .jr_09_413c                               ;; 09:4102 $30 $38
+    jr   NC, .cardinal_direction_finished              ;; 09:4102 $30 $38
     ld   A, [wVideoWY]                                 ;; 09:4104 $fa $a9 $c0
     add  A, $08                                        ;; 09:4107 $c6 $08
     cp   A, D                                          ;; 09:4109 $ba
-    jr   C, .jr_09_413c                                ;; 09:410a $38 $30
+    jr   C, .cardinal_direction_finished               ;; 09:410a $38 $30
     push HL                                            ;; 09:410c $e5
     ld   A, [BC]                                       ;; 09:410d $0a
     push BC                                            ;; 09:410e $c5
@@ -231,12 +231,12 @@ projectileRunLogic:
     call moveGridlessObject                            ;; 09:4131 $cd $d4 $08
     pop  DE                                            ;; 09:4134 $d1
     ret  NZ                                            ;; 09:4135 $c0
-.jp_09_4136:
+.melee_finished:
     ld   A, [DE]                                       ;; 09:4136 $1a
     ld   C, A                                          ;; 09:4137 $4f
     call destroyObject                                 ;; 09:4138 $cd $e3 $0a
     ret                                                ;; 09:413b $c9
-.jr_09_413c:
+.cardinal_direction_finished:
     ld   A, [BC]                                       ;; 09:413c $0a
     ld   C, A                                          ;; 09:413d $4f
     call destroyObject                                 ;; 09:413e $cd $e3 $0a
@@ -278,12 +278,12 @@ projectileRunLogic:
     push BC                                            ;; 09:4174 $c5
     call moveGridlessObject                            ;; 09:4175 $cd $d4 $08
     pop  BC                                            ;; 09:4178 $c1
-    jr   Z, .jr_09_4193                                ;; 09:4179 $28 $18
+    jr   Z, .free_direction_finished                   ;; 09:4179 $28 $18
     push BC                                            ;; 09:417b $c5
     call GetObjectX                                    ;; 09:417c $cd $2d $0c
     pop  BC                                            ;; 09:417f $c1
     cp   A, $a8                                        ;; 09:4180 $fe $a8
-    jr   NC, .jr_09_4193                               ;; 09:4182 $30 $0f
+    jr   NC, .free_direction_finished                  ;; 09:4182 $30 $0f
     push BC                                            ;; 09:4184 $c5
     call GetObjectY                                    ;; 09:4185 $cd $3e $0c
     pop  BC                                            ;; 09:4188 $c1
@@ -291,17 +291,17 @@ projectileRunLogic:
     ld   A, [wVideoWY]                                 ;; 09:418a $fa $a9 $c0
     add  A, $08                                        ;; 09:418d $c6 $08
     cp   A, B                                          ;; 09:418f $b8
-    jr   C, .jr_09_4193                                ;; 09:4190 $38 $01
+    jr   C, .free_direction_finished                   ;; 09:4190 $38 $01
     ret                                                ;; 09:4192 $c9
-.jr_09_4193:
+.free_direction_finished:
     call destroyObject                                 ;; 09:4193 $cd $e3 $0a
     ret                                                ;; 09:4196 $c9
 
 ; DE = projectile runtime data pointer
-; Sets projectile runtime data offset 3 to zero
-; Return: HL = projectile data 0e+1 pointer
-; Return: A = first byte from that data structure
-call_09_4197:
+; Sets pattern step to zero
+; Return: HL = pointer to beginning of projectile's pattern
+; Return: A = first byte of the pattern (direction)
+projectileLoopPattern:
     ld   HL, $03                                       ;; 09:4197 $21 $03 $00
     add  HL, DE                                        ;; 09:419a $19
     ld   [HL], $00                                     ;; 09:419b $36 $00
@@ -860,9 +860,9 @@ getProjectilePower:
 
 INCLUDE "data/projectiles.asm"
 
-;@gfximg name=boss/julius width=2 height=16
-bossGfxJulius:
-    INCBIN "boss/julius.bin"                           ;; 09:4900
+;@gfximg name=boss/julius2 width=2 height=16
+bossGfxJulius2:
+    INCBIN "boss/julius2.bin"                           ;; 09:4900
     db   $fb, $9f, $fd, $cf, $32, $ff, $0f, $ff        ;; 09:4b00 ????????
     db   $07, $ff, $86, $7b, $fe, $87, $fc, $ff        ;; 09:4b08 ????????
     db   $f9, $f9, $f0, $f0, $e1, $e1, $c0, $c0        ;; 09:4b10 ????????

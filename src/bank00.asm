@@ -3051,7 +3051,7 @@ scriptOpCodeCloseMap:
 closeMinimap_trampoline:
     jp_to_bank 01, closeMinimap                        ;; 00:1205 $f5 $3e $12 $c3 $d7 $1e
 
-call_00_120b:
+scriptPlayerSetPosition:
     ld   A, [HL+]                                      ;; 00:120b $2a
     add  A, A                                          ;; 00:120c $87
     add  A, A                                          ;; 00:120d $87
@@ -3085,7 +3085,8 @@ call_00_120b:
     pop  HL                                            ;; 00:123c $e1
     ret                                                ;; 00:123d $c9
 
-call_00_123e:
+; C = npc number (object number - 7)
+scriptNpcSetPosition:
     push HL                                            ;; 00:123e $e5
     push BC                                            ;; 00:123f $c5
     call checkForMovingObjects                         ;; 00:1240 $cd $9b $28
@@ -3170,7 +3171,7 @@ scriptOpCodeNpc1SetPosition:
     call checkForFollower                              ;; 00:12ae $cd $c2 $28
     add  A, $00                                        ;; 00:12b1 $c6 $00
     ld   C, A                                          ;; 00:12b3 $4f
-    call call_00_123e                                  ;; 00:12b4 $cd $3e $12
+    call scriptNpcSetPosition                          ;; 00:12b4 $cd $3e $12
     ret                                                ;; 00:12b7 $c9
 
 scriptOpCodeNpc1WalkSpeed4:
@@ -3248,7 +3249,7 @@ scriptOpCodeNpc2SetPosition:
     call checkForFollower                              ;; 00:1322 $cd $c2 $28
     add  A, $01                                        ;; 00:1325 $c6 $01
     ld   C, A                                          ;; 00:1327 $4f
-    call call_00_123e                                  ;; 00:1328 $cd $3e $12
+    call scriptNpcSetPosition                          ;; 00:1328 $cd $3e $12
     ret                                                ;; 00:132b $c9
 
 scriptOpCodeNpc2WalkSpeed4:
@@ -3326,7 +3327,7 @@ scriptOpCodeNpc3SetPosition:
     call checkForFollower                              ;; 00:1396 $cd $c2 $28
     add  A, $02                                        ;; 00:1399 $c6 $02
     ld   C, A                                          ;; 00:139b $4f
-    call call_00_123e                                  ;; 00:139c $cd $3e $12
+    call scriptNpcSetPosition                          ;; 00:139c $cd $3e $12
     ret                                                ;; 00:139f $c9
 
 scriptOpCodeNpc3WalkSpeed4:
@@ -3404,7 +3405,7 @@ scriptOpCodeNpc4SetPosition:
     call checkForFollower                              ;; 00:140a $cd $c2 $28
     add  A, $03                                        ;; 00:140d $c6 $03
     ld   C, A                                          ;; 00:140f $4f
-    call call_00_123e                                  ;; 00:1410 $cd $3e $12
+    call scriptNpcSetPosition                          ;; 00:1410 $cd $3e $12
     ret                                                ;; 00:1413 $c9
 
 scriptOpCodeNpc4WalkSpeed4:
@@ -3482,7 +3483,7 @@ scriptOpCodeNpc5SetPosition:
     call checkForFollower                              ;; 00:147e $cd $c2 $28
     add  A, $04                                        ;; 00:1481 $c6 $04
     ld   C, A                                          ;; 00:1483 $4f
-    call call_00_123e                                  ;; 00:1484 $cd $3e $12
+    call scriptNpcSetPosition                          ;; 00:1484 $cd $3e $12
     ret                                                ;; 00:1487 $c9
 
 scriptOpCodeNpc5WalkSpeed4:
@@ -3560,7 +3561,7 @@ scriptOpCodeNpc6SetPosition:
     call checkForFollower                              ;; 00:14f2 $cd $c2 $28
     add  A, $05                                        ;; 00:14f5 $c6 $05
     ld   C, A                                          ;; 00:14f7 $4f
-    call call_00_123e                                  ;; 00:14f8 $cd $3e $12
+    call scriptNpcSetPosition                          ;; 00:14f8 $cd $3e $12
     ret                                                ;; 00:14fb $c9
 
 scriptOpCodeNpc6WalkSpeed4:
@@ -3638,7 +3639,7 @@ scriptOpCodeNpc7SetPosition:
     call checkForFollower                              ;; 00:1566 $cd $c2 $28
     add  A, $06                                        ;; 00:1569 $c6 $06
     ld   C, A                                          ;; 00:156b $4f
-    call call_00_123e                                  ;; 00:156c $cd $3e $12
+    call scriptNpcSetPosition                          ;; 00:156c $cd $3e $12
     ret                                                ;; 00:156f $c9
 
 scriptOpCodeNpc7WalkSpeed4:
@@ -3736,7 +3737,7 @@ scriptOpCodePlayerDirectionDown:
 scriptOpCodePlayerSetPosition:
     call scriptPlayerFinishAction                      ;; 00:15fb $cd $88 $15
     ret  NZ                                            ;; 00:15fe $c0
-    call call_00_120b                                  ;; 00:15ff $cd $0b $12
+    call scriptPlayerSetPosition                       ;; 00:15ff $cd $0b $12
     call getNextScriptInstruction                      ;; 00:1602 $cd $27 $37
     ret                                                ;; 00:1605 $c9
 
@@ -3803,7 +3804,7 @@ scriptOpCodeFollowerSetPosition:
     call checkForFollower                              ;; 00:1663 $cd $c2 $28
     jr   NZ, .no_follower                              ;; 00:1666 $20 $06
     ld   C, $00                                        ;; 00:1668 $0e $00
-    call call_00_123e                                  ;; 00:166a $cd $3e $12
+    call scriptNpcSetPosition                          ;; 00:166a $cd $3e $12
     ret                                                ;; 00:166d $c9
 .no_follower:
     inc  HL                                            ;; 00:166e $23
@@ -6703,7 +6704,7 @@ moveObjectsDuringScript_trampoline:
 enemyCollisionHandling_trampoline:
     jp_to_bank 03, enemyCollisionHandling              ;; 00:28b6 $f5 $3e $07 $c3 $35 $1f
 
-getValueFromDEAddOffset03:
+npcSetMeleeState:
     ld   HL, $03                                       ;; 00:28bc $21 $03 $00
     add  HL, DE                                        ;; 00:28bf $19
     ld   [HL], A                                       ;; 00:28c0 $77
@@ -8631,7 +8632,7 @@ textCtrlCodeWaitInput:
     call runVirtualScriptOpCodeFF                      ;; 00:350b $cd $69 $3c
     ret                                                ;; 00:350e $c9
 
-call_00_350f:
+opCodeFFWaitInput:
     call updateJoypadInput_trampoline                  ;; 00:350f $cd $d1 $1e
     pop  HL                                            ;; 00:3512 $e1
     ld   A, C                                          ;; 00:3513 $79
@@ -8708,7 +8709,7 @@ printName:
     pop  BC                                            ;; 00:3593 $c1
     call saveRegisterState2_bank0                      ;; 00:3594 $cd $73 $3c
 
-call_00_3597:
+opCodeFFPrintName:
     call textDelay                                     ;; 00:3597 $cd $c2 $36
     jr   NZ, .jr_00_35ae                               ;; 00:359a $20 $12
     call loadRegisterState2_bank0                      ;; 00:359c $cd $87 $3c
@@ -8724,7 +8725,7 @@ call_00_3597:
 
 textCtrlCodeNewline:
     call loadRegisterState2_bank0                      ;; 00:35b0 $cd $87 $3c
-    call call_00_380b                                  ;; 00:35b3 $cd $0b $38
+    call menuNextItemPosition                          ;; 00:35b3 $cd $0b $38
     call saveRegisterState2_bank0                      ;; 00:35b6 $cd $73 $3c
     call setDialogTextInsertionPoint                   ;; 00:35b9 $cd $36 $37
     pop  HL                                            ;; 00:35bc $e1
@@ -8989,6 +8990,7 @@ getNextScriptInstruction:
     pop  AF                                            ;; 00:3734 $f1
     ret                                                ;; 00:3735 $c9
 
+; Return: Z set for dialog, clear for other windows.
 setDialogTextInsertionPoint:
     ld   A, [wDialogType]                              ;; 00:3736 $fa $4a $d8
     cp   A, $06                                        ;; 00:3739 $fe $06
@@ -9003,6 +9005,7 @@ setDialogTextInsertionPoint:
     ld   [wWindowTextSpaceLeftOnLine], A               ;; 00:3749 $ea $ba $d8
     ret                                                ;; 00:374c $c9
 
+; Return: Z set and DE BC set to distance from edges if the current window is dialog.
 getDialogTextInsertionPoint:
     ld   A, [wDialogType]                              ;; 00:374d $fa $4a $d8
     cp   A, $06                                        ;; 00:3750 $fe $06
@@ -9029,20 +9032,21 @@ drawText:
 .loop_1:
     push AF                                            ;; 00:377a $f5
     ld   A, [HL+]                                      ;; 00:377b $2a
+; Special case for the copyright symbol
     cp   A, $7f                                        ;; 00:377c $fe $7f
-    jr   Z, .jr_00_3785                                ;; 00:377e $28 $05
+    jr   Z, .printable                                 ;; 00:377e $28 $05
     cp   A, $a0                                        ;; 00:3780 $fe $a0
-    jp   C, .jp_00_37dc                                ;; 00:3782 $da $dc $37
-.jr_00_3785:
+    jp   C, .terminator                                ;; 00:3782 $da $dc $37
+.printable:
     push AF                                            ;; 00:3785 $f5
     ld   A, [wDialogType]                              ;; 00:3786 $fa $4a $d8
     inc  A                                             ;; 00:3789 $3c
-    jr   NZ, .jr_00_3793                               ;; 00:378a $20 $07
+    jr   NZ, .print                                    ;; 00:378a $20 $07
     dec  D                                             ;; 00:378c $15
     ld   A, $7f                                        ;; 00:378d $3e $7f
     call storeTileAatDialogPositionDE                  ;; 00:378f $cd $44 $38
     inc  D                                             ;; 00:3792 $14
-.jr_00_3793:
+.print:
     pop  AF                                            ;; 00:3793 $f1
     xor  A, $80                                        ;; 00:3794 $ee $80
     call storeTileAatDialogPositionDE                  ;; 00:3796 $cd $44 $38
@@ -9050,10 +9054,10 @@ drawText:
     cp   A, $1e ; Naming screen                        ;; 00:379c $fe $1e
     jr   NZ, .jr_00_37a1                               ;; 00:379e $20 $01
 ; Naming screen puts a space between each character
-; And also prints as if the player was holding a button down
     inc  E                                             ;; 00:37a0 $1c
 .jr_00_37a1:
     pop  AF                                            ;; 00:37a1 $f1
+; Windows other than the script dialog window print continuously until finished.
     jr   NZ, .print_more_text                          ;; 00:37a2 $20 $14
     ld   A, [wWindowFlags]                             ;; 00:37a4 $fa $74 $d8
     bit  1, A                                          ;; 00:37a7 $cb $4f
@@ -9078,7 +9082,7 @@ drawText:
     ld   [wWindowTextInsertionPointFinalX], A          ;; 00:37c1 $ea $c5 $d8
     ld   A, [wDialogType]                              ;; 00:37c4 $fa $4a $d8
     cp   A, $06                                        ;; 00:37c7 $fe $06
-    call NZ, call_00_380b                              ;; 00:37c9 $c4 $0b $38
+    call NZ, menuNextItemPosition                      ;; 00:37c9 $c4 $0b $38
     xor  A, A                                          ;; 00:37cc $af
     ld   [wDualCharacterPosition], A                   ;; 00:37cd $ea $83 $d8
     call setDialogTextInsertionPoint                   ;; 00:37d0 $cd $36 $37
@@ -9090,7 +9094,7 @@ drawText:
     call setDialogTextInsertionPoint                   ;; 00:37d7 $cd $36 $37
     pop  AF                                            ;; 00:37da $f1
     ret                                                ;; 00:37db $c9
-.jp_00_37dc:
+.terminator:
     ld   A, D                                          ;; 00:37dc $7a
     ld   [wWindowTextInsertionPointFinalY], A          ;; 00:37dd $ea $c6 $d8
     ld   A, E                                          ;; 00:37e0 $7b
@@ -9111,7 +9115,7 @@ drawText:
     dec  B                                             ;; 00:37fd $05
     jr   NZ, .loop_2                                   ;; 00:37fe $20 $f0
 .jr_00_3800:
-    call call_00_380b                                  ;; 00:3800 $cd $0b $38
+    call menuNextItemPosition                          ;; 00:3800 $cd $0b $38
     inc  HL                                            ;; 00:3803 $23
 .jr_00_3804:
     dec  HL                                            ;; 00:3804 $2b
@@ -9120,12 +9124,13 @@ drawText:
     pop  AF                                            ;; 00:3809 $f1
     ret                                                ;; 00:380a $c9
 
-call_00_380b:
+; Handles special cases for the SELECT menu (three columns), the dialog and intro scroll (less indented).
+menuNextItemPosition:
     ld   A, [wWindowTextLength]                        ;; 00:380b $fa $9b $d8
     ld   B, A                                          ;; 00:380e $47
     ld   A, [wMenuFlags]                               ;; 00:380f $fa $49 $d8
     rrca                                               ;; 00:3812 $0f
-    jr   NC, .jr_00_382c                               ;; 00:3813 $30 $17
+    jr   NC, .new_line                                 ;; 00:3813 $30 $17
     ld   A, [wDialogType]                              ;; 00:3815 $fa $4a $d8
     cp   A, $11                                        ;; 00:3818 $fe $11
     jr   Z, .jr_00_3827                                ;; 00:381a $28 $0b
@@ -9134,20 +9139,20 @@ call_00_380b:
     inc  A                                             ;; 00:3820 $3c
     srl  A                                             ;; 00:3821 $cb $3f
     cp   A, E                                          ;; 00:3823 $bb
-    jr   C, .jr_00_382c                                ;; 00:3824 $38 $06
+    jr   C, .new_line                                  ;; 00:3824 $38 $06
     ld   E, A                                          ;; 00:3826 $5f
 .jr_00_3827:
     inc  E                                             ;; 00:3827 $1c
     call saveRegisterState2_bank0                      ;; 00:3828 $cd $73 $3c
     ret                                                ;; 00:382b $c9
-.jr_00_382c:
+.new_line:
     ld   E, $02                                        ;; 00:382c $1e $02
     ld   A, [wDialogType]                              ;; 00:382e $fa $4a $d8
     cp   A, $ff                                        ;; 00:3831 $fe $ff
-    jr   Z, .jr_00_3839                                ;; 00:3833 $28 $04
+    jr   Z, .small_indent                              ;; 00:3833 $28 $04
     cp   A, $06                                        ;; 00:3835 $fe $06
     jr   NZ, .jr_00_383b                               ;; 00:3837 $20 $02
-.jr_00_3839:
+.small_indent:
     ld   E, $01                                        ;; 00:3839 $1e $01
 .jr_00_383b:
     inc  D                                             ;; 00:383b $14
@@ -9625,7 +9630,7 @@ vendorCantCarry:
     call runVirtualScriptOpCodeFF                      ;; 00:3b09 $cd $69 $3c
     ret                                                ;; 00:3b0c $c9
 
-call_00_3b0d:
+opCodeFFWaitCantCarry:
     call updateJoypadInput_trampoline                  ;; 00:3b0d $cd $d1 $1e
     pop  HL                                            ;; 00:3b10 $e1
     ld   A, D                                          ;; 00:3b11 $7a
@@ -9738,13 +9743,13 @@ scriptOpCodeResetGame:
 ;@jumptable amount=11
 scriptOpCodeFFJumpTable:
     dw   yesNoWindowFinish                             ;; 00:3ba1 pP $00
-    dw   call_00_3597                                  ;; 00:3ba3 pP $01
+    dw   opCodeFFPrintName                              ;; 00:3ba3 pP $01
     dw   windowClearRectangle                          ;; 00:3ba5 pP $02
     dw   checkScriptDelayTimer                         ;; 00:3ba7 pP $03
-    dw   call_00_350f                                  ;; 00:3ba9 pP $04
+    dw   opCodeFFWaitInput                             ;; 00:3ba9 pP $04
     dw   scriptResumeAfterWindow                       ;; 00:3bab pP $05
     dw   vendorCantCarry                               ;; 00:3bad ?? $06
-    dw   call_00_3b0d                                  ;; 00:3baf ?? $07
+    dw   opCodeFFWaitCantCarry                         ;; 00:3baf ?? $07
     dw   opCodeFFCloseWindow                           ;; 00:3bb1 ?? $08
     dw   copyMainGameStateBackupFromScriptToWindow     ;; 00:3bb3 pP $09
     dw   opCodeFFPrintMenuText                         ;; 00:3bb5 ?? $0a

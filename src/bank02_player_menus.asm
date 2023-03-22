@@ -3640,7 +3640,7 @@ call_02_5895:
     call Z, call_02_5a18                               ;; 02:5918 $cc $18 $5a
     pop  BC                                            ;; 02:591b $c1
     pop  DE                                            ;; 02:591c $d1
-    call call_00_380b                                  ;; 02:591d $cd $0b $38
+    call menuNextItemPosition                          ;; 02:591d $cd $0b $38
     scf                                                ;; 02:5920 $37
     ret  NZ                                            ;; 02:5921 $c0
 
@@ -3691,7 +3691,7 @@ jp_02_5959:
     push DE                                            ;; 02:5979 $d5
     call call_02_5aaf                                  ;; 02:597a $cd $af $5a
     pop  DE                                            ;; 02:597d $d1
-    call call_00_380b                                  ;; 02:597e $cd $0b $38
+    call menuNextItemPosition                          ;; 02:597e $cd $0b $38
     ld   A, $3e                                        ;; 02:5981 $3e $3e
     call storeTileAatDialogPositionDE                  ;; 02:5983 $cd $44 $38
     inc  E                                             ;; 02:5986 $1c
@@ -3916,7 +3916,7 @@ windowStatusScreenPrintStatValue:
     add  A, $06                                        ;; 02:5ad6 $c6 $06
     ld   E, A                                          ;; 02:5ad8 $5f
     call call_02_5b05                                  ;; 02:5ad9 $cd $05 $5b
-    call call_00_380b                                  ;; 02:5adc $cd $0b $38
+    call menuNextItemPosition                          ;; 02:5adc $cd $0b $38
     ret                                                ;; 02:5adf $c9
 
 call_02_5ae0:
@@ -4471,7 +4471,7 @@ drawWindowStart:
     cp   A, $21                                        ;; 02:6720 $fe $21
     jr   Z, .moveWindowIfOverlapsPlayer                ;; 02:6722 $28 $04
     cp   A, $06                                        ;; 02:6724 $fe $06
-    jr   NZ, .jr_02_6739                               ;; 02:6726 $20 $11
+    jr   NZ, .set_dimensions                           ;; 02:6726 $20 $11
 .moveWindowIfOverlapsPlayer:
     push DE                                            ;; 02:6728 $d5
     push HL                                            ;; 02:6729 $e5
@@ -4483,9 +4483,9 @@ drawWindowStart:
     pop  HL                                            ;; 02:6732 $e1
     pop  DE                                            ;; 02:6733 $d1
     cp   A, D                                          ;; 02:6734 $ba
-    jr   C, .jr_02_6739                                ;; 02:6735 $38 $02
+    jr   C, .set_dimensions                            ;; 02:6735 $38 $02
     ld   D, $00                                        ;; 02:6737 $16 $00
-.jr_02_6739:
+.set_dimensions:
     inc  HL                                            ;; 02:6739 $23
     ld   C, [HL]                                       ;; 02:673a $4e
     inc  HL                                            ;; 02:673b $23
@@ -6427,33 +6427,36 @@ loadSRAMInitGame:
     call copyHLtoDEtimesB                              ;; 02:7336 $cd $51 $74
     xor  A, A                                          ;; 02:7339 $af
     ld   [DE], A                                       ;; 02:733a $12
+; Init the attack gauge.
     ld   A, $01                                        ;; 02:733b $3e $01
     ld   [wWillCharge], A                              ;; 02:733d $ea $58 $d8
+; Init known magic spells from the magic inventory.
     ld   HL, wMagicInventory                           ;; 02:7340 $21 $d5 $d6
     ld   DE, wKnownMagicSpells                         ;; 02:7343 $11 $ab $d6
     ld   B, $08                                        ;; 02:7346 $06 $08
-.loop_1:
+.loop_magic:
     xor  A, A                                          ;; 02:7348 $af
     ld   [DE], A                                       ;; 02:7349 $12
     ld   A, [HL+]                                      ;; 02:734a $2a
     and  A, A                                          ;; 02:734b $a7
-    jr   Z, .init_power                                ;; 02:734c $28 $03
+    jr   Z, .next_magic                                ;; 02:734c $28 $03
     ld   A, $01                                        ;; 02:734e $3e $01
     ld   [DE], A                                       ;; 02:7350 $12
-.init_power:
+.next_magic:
     inc  DE                                            ;; 02:7351 $13
     dec  B                                             ;; 02:7352 $05
-    jr   NZ, .loop_1                                   ;; 02:7353 $20 $f3
+    jr   NZ, .loop_magic                               ;; 02:7353 $20 $f3
+; Init equipment powers from equipment inventory.
     ld   HL, wEquipmentInventory                       ;; 02:7355 $21 $dd $d6
     ld   DE, wEquipmentInventoryPowers                 ;; 02:7358 $11 $b3 $d6
     ld   B, $0c                                        ;; 02:735b $06 $0c
-.loop_2:
+.loop_equipment:
     push BC                                            ;; 02:735d $c5
     ld   A, [HL]                                       ;; 02:735e $7e
     call getItemFlags1And2                             ;; 02:735f $cd $9c $56
     ld   A, B                                          ;; 02:7362 $78
     inc  C                                             ;; 02:7363 $0c
-    jr   Z, .jr_02_737b                                ;; 02:7364 $28 $15
+    jr   Z, .equipment_next                            ;; 02:7364 $28 $15
     ld   A, [HL+]                                      ;; 02:7366 $2a
     and  A, $7f                                        ;; 02:7367 $e6 $7f
     push HL                                            ;; 02:7369 $e5
@@ -6461,19 +6464,19 @@ loadSRAMInitGame:
     call indexIntoTable                                ;; 02:736d $cd $82 $76
     ld   A, B                                          ;; 02:7370 $78
     cp   A, $11                                        ;; 02:7371 $fe $11
-    jr   NZ, .jr_02_7379                               ;; 02:7373 $20 $04
+    jr   NZ, .equipment_set_power                      ;; 02:7373 $20 $04
     ld   A, [HL]                                       ;; 02:7375 $7e
     pop  HL                                            ;; 02:7376 $e1
-    jr   .jr_02_737b                                   ;; 02:7377 $18 $02
-.jr_02_7379:
+    jr   .equipment_next                               ;; 02:7377 $18 $02
+.equipment_set_power:
     ld   A, [HL]                                       ;; 02:7379 $7e
     pop  HL                                            ;; 02:737a $e1
-.jr_02_737b:
+.equipment_next:
     ld   [DE], A                                       ;; 02:737b $12
     inc  DE                                            ;; 02:737c $13
     pop  BC                                            ;; 02:737d $c1
     dec  B                                             ;; 02:737e $05
-    jr   NZ, .loop_2                                   ;; 02:737f $20 $dc
+    jr   NZ, .loop_equipment                           ;; 02:737f $20 $dc
     ld   HL, wStatusScreenAPDP                         ;; 02:7381 $21 $dd $d7
     ld   A, $81                                        ;; 02:7384 $3e $81
     ld   [HL+], A                                      ;; 02:7386 $22
@@ -6977,7 +6980,7 @@ statusWindowPrintHPMPCurOrMax:
     pop  AF                                            ;; 02:7674 $f1
     cp   A, $02                                        ;; 02:7675 $fe $02
     call NZ, drawNumberAtDialogPositionDE              ;; 02:7677 $c4 $18 $5b
-    call call_00_380b                                  ;; 02:767a $cd $0b $38
+    call menuNextItemPosition                          ;; 02:767a $cd $0b $38
     dec  D                                             ;; 02:767d $15
     pop  BC                                            ;; 02:767e $c1
     pop  HL                                            ;; 02:767f $e1

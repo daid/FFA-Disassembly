@@ -1411,15 +1411,15 @@ gameStateNormal:
     call checkPlayfieldBoundaryCollision_trampoline    ;; 01:4a6f $cd $6f $03
     ld   A, B                                          ;; 01:4a72 $78
     pop  BC                                            ;; 01:4a73 $c1
-    jp   NZ, .jp_01_4b18                               ;; 01:4a74 $c2 $18 $4b
+    jp   NZ, .walk                                     ;; 01:4a74 $c2 $18 $4b
     bit  0, A                                          ;; 01:4a77 $cb $47
-    jp   Z, .jp_01_4b18                                ;; 01:4a79 $ca $18 $4b
+    jp   Z, .walk                                      ;; 01:4a79 $ca $18 $4b
     ld   A, [wPlayerDamagedTimer]                      ;; 01:4a7c $fa $d2 $c4
     cp   A, $34                                        ;; 01:4a7f $fe $34
-    jp   NC, .jp_01_4b1d                               ;; 01:4a81 $d2 $1d $4b
+    jp   NC, .face                                     ;; 01:4a81 $d2 $1d $4b
     ld   A, [wMainGameStateFlags]                      ;; 01:4a84 $fa $a1 $c0
     bit  1, A                                          ;; 01:4a87 $cb $4f
-    jp   NZ, .jp_01_4b1d                               ;; 01:4a89 $c2 $1d $4b
+    jp   NZ, .face                                     ;; 01:4a89 $c2 $1d $4b
     ld   A, $01                                        ;; 01:4a8c $3e $01
     call setPlayerDirection                            ;; 01:4a8e $cd $b1 $02
     ld   A, $09                                        ;; 01:4a91 $3e $09
@@ -1432,15 +1432,15 @@ gameStateNormal:
     call checkPlayfieldBoundaryCollision_trampoline    ;; 01:4a9d $cd $6f $03
     ld   A, B                                          ;; 01:4aa0 $78
     pop  BC                                            ;; 01:4aa1 $c1
-    jr   NZ, .jp_01_4b18                               ;; 01:4aa2 $20 $74
+    jr   NZ, .walk                                     ;; 01:4aa2 $20 $74
     bit  1, A                                          ;; 01:4aa4 $cb $4f
-    jr   Z, .jp_01_4b18                                ;; 01:4aa6 $28 $70
+    jr   Z, .walk                                      ;; 01:4aa6 $28 $70
     ld   A, [wPlayerDamagedTimer]                      ;; 01:4aa8 $fa $d2 $c4
     cp   A, $34                                        ;; 01:4aab $fe $34
-    jr   NC, .jp_01_4b1d                               ;; 01:4aad $30 $6e
+    jr   NC, .face                                     ;; 01:4aad $30 $6e
     ld   A, [wMainGameStateFlags]                      ;; 01:4aaf $fa $a1 $c0
     bit  1, A                                          ;; 01:4ab2 $cb $4f
-    jr   NZ, .jp_01_4b1d                               ;; 01:4ab4 $20 $67
+    jr   NZ, .face                                     ;; 01:4ab4 $20 $67
     ld   A, $02                                        ;; 01:4ab6 $3e $02
     call setPlayerDirection                            ;; 01:4ab8 $cd $b1 $02
     ld   A, $08                                        ;; 01:4abb $3e $08
@@ -1453,15 +1453,15 @@ gameStateNormal:
     call checkPlayfieldBoundaryCollision_trampoline    ;; 01:4ac7 $cd $6f $03
     ld   A, B                                          ;; 01:4aca $78
     pop  BC                                            ;; 01:4acb $c1
-    jr   NZ, .jp_01_4b18                               ;; 01:4acc $20 $4a
+    jr   NZ, .walk                                     ;; 01:4acc $20 $4a
     bit  2, A                                          ;; 01:4ace $cb $57
-    jr   Z, .jp_01_4b18                                ;; 01:4ad0 $28 $46
+    jr   Z, .walk                                      ;; 01:4ad0 $28 $46
     ld   A, [wPlayerDamagedTimer]                      ;; 01:4ad2 $fa $d2 $c4
     cp   A, $34                                        ;; 01:4ad5 $fe $34
-    jr   NC, .jp_01_4b1d                               ;; 01:4ad7 $30 $44
+    jr   NC, .face                                     ;; 01:4ad7 $30 $44
     ld   A, [wMainGameStateFlags]                      ;; 01:4ad9 $fa $a1 $c0
     bit  1, A                                          ;; 01:4adc $cb $4f
-    jr   NZ, .jp_01_4b1d                               ;; 01:4ade $20 $3d
+    jr   NZ, .face                                     ;; 01:4ade $20 $3d
     ld   A, $04                                        ;; 01:4ae0 $3e $04
     call setPlayerDirection                            ;; 01:4ae2 $cd $b1 $02
     ld   A, $0b                                        ;; 01:4ae5 $3e $0b
@@ -1474,26 +1474,26 @@ gameStateNormal:
     call checkPlayfieldBoundaryCollision_trampoline    ;; 01:4af1 $cd $6f $03
     ld   A, B                                          ;; 01:4af4 $78
     pop  BC                                            ;; 01:4af5 $c1
-    jr   NZ, .jp_01_4b18                               ;; 01:4af6 $20 $20
+    jr   NZ, .walk                                     ;; 01:4af6 $20 $20
     bit  3, A                                          ;; 01:4af8 $cb $5f
-    jr   Z, .jp_01_4b18                                ;; 01:4afa $28 $1c
+    jr   Z, .walk                                      ;; 01:4afa $28 $1c
     ld   A, [wPlayerDamagedTimer]                      ;; 01:4afc $fa $d2 $c4
     cp   A, $34                                        ;; 01:4aff $fe $34
-    jr   NC, .jp_01_4b1d                               ;; 01:4b01 $30 $1a
+    jr   NC, .face                                     ;; 01:4b01 $30 $1a
     ld   A, [wMainGameStateFlags]                      ;; 01:4b03 $fa $a1 $c0
     bit  1, A                                          ;; 01:4b06 $cb $4f
-    jr   NZ, .jp_01_4b1d                               ;; 01:4b08 $20 $13
+    jr   NZ, .face                                     ;; 01:4b08 $20 $13
     ld   A, $08                                        ;; 01:4b0a $3e $08
     call setPlayerDirection                            ;; 01:4b0c $cd $b1 $02
     ld   A, $0a                                        ;; 01:4b0f $3e $0a
     ld   [wMainGameState], A                           ;; 01:4b11 $ea $a0 $c0
     call roomExitScreenScrollPrep                      ;; 01:4b14 $cd $24 $4b
     ret                                                ;; 01:4b17 $c9
-.jp_01_4b18:
+.walk:
     ld   A, C                                          ;; 01:4b18 $79
     call playerSpritesLoadPlayerSpriteTiles            ;; 01:4b19 $cd $be $48
     ret                                                ;; 01:4b1c $c9
-.jp_01_4b1d:
+.face:
     ld   A, C                                          ;; 01:4b1d $79
     and  A, $0f                                        ;; 01:4b1e $e6 $0f
     call playerSpritesLoadPlayerSpriteTiles            ;; 01:4b20 $cd $be $48
@@ -1510,10 +1510,15 @@ roomExitScreenScrollPrep:
     call runRoomScriptOnRoomExit                       ;; 01:4b34 $cd $83 $24
     ret                                                ;; 01:4b37 $c9
 
+; Being damaged causes two effects. First comes knockback with loss of control.
+; Then for almost a second the player sprite blinks and is invulnerable.
+; A = wPlayerDamagedTimer
+; Return: B = base sprite offset in the table
+; Return: D = direction bits at least some of the time. Unusued except one caller starts to use them but then throws them away.
 playerDamagedEffect:
     cp   A, $34                                        ;; 01:4b38 $fe $34
-    jr   C, .jr_01_4b4f                                ;; 01:4b3a $38 $13
-    jr   Z, .stopMotion                                ;; 01:4b3c $28 $34
+    jr   C, .blinking                                  ;; 01:4b3a $38 $13
+    jr   Z, .stop_knockback                            ;; 01:4b3c $28 $34
     push DE                                            ;; 01:4b3e $d5
     push BC                                            ;; 01:4b3f $c5
     ld   C, $04                                        ;; 01:4b40 $0e $04
@@ -1525,11 +1530,11 @@ playerDamagedEffect:
     or   A, $b0                                        ;; 01:4b4a $f6 $b0
     ld   C, A                                          ;; 01:4b4c $4f
     ld   B, $20                                        ;; 01:4b4d $06 $20
-.jr_01_4b4f:
+.blinking:
     bit  3, A                                          ;; 01:4b4f $cb $5f
-    jr   Z, .jr_01_4b55                                ;; 01:4b51 $28 $02
+    jr   Z, .handle_timer                              ;; 01:4b51 $28 $02
     ld   B, $30                                        ;; 01:4b53 $06 $30
-.jr_01_4b55:
+.handle_timer:
     ld   HL, wPlayerDamagedTimer                       ;; 01:4b55 $21 $d2 $c4
     dec  [HL]                                          ;; 01:4b58 $35
     ret  NZ                                            ;; 01:4b59 $c0
@@ -1546,7 +1551,7 @@ playerDamagedEffect:
     pop  BC                                            ;; 01:4b6f $c1
     pop  DE                                            ;; 01:4b70 $d1
     ret                                                ;; 01:4b71 $c9
-.stopMotion:
+.stop_knockback:
     push DE                                            ;; 01:4b72 $d5
     push BC                                            ;; 01:4b73 $c5
     ld   A, $01                                        ;; 01:4b74 $3e $01
