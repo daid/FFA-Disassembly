@@ -4133,10 +4133,10 @@ INCLUDE "data/npc/main.asm"
 
 INCLUDE "data/npc/spawn.asm"
 
-data_03_7b56:
+tileorderOpenChest:
     db   $04, $02, $05, $03                            ;; 03:7b56 ????
 
-data_03_7b5a:
+tileorderNpc:
     db   $00, $02, $01, $03, $04, $06, $05, $07        ;; 03:7b5a ........
     db   $08, $0a, $09, $0b, $0c, $0e, $0d, $0f        ;; 03:7b62 ........
     db   $10, $12, $11, $13, $14, $16, $15, $17        ;; 03:7b6a ........
