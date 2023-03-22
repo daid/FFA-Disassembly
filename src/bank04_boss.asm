@@ -1285,7 +1285,6 @@ processPhysicsForObject_4:
     ret                                                ;; 04:4738 $c9
 
 INCLUDE "data/boss.asm"
-
     db   $4c, $ff, $4e, $ff, $4e, $ff, $27, $00        ;; 04:7f79 ????????
     db   $00, $10, $00, $38, $10, $7e, $30, $7f        ;; 04:7f81 ????????
     db   $22, $7f, $32, $ff, $33, $ff, $73, $ff        ;; 04:7f89 ????????

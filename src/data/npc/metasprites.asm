@@ -1,9 +1,11 @@
+;; Disassembled with BadBoy Disassembler: https://github.com/daid/BadBoy
+
+
 ; These metasprite tables are 12 entries of [attr, tile1, tile2].
 ; The first four entries are for standing facing the four directions.
 ; The second four entries are for stepping in those directions.
 ; The next four are for any special poses an NPC may or may not have.
 ; Many of these could be shortened to only eight or four entires.
-
 ;@data format=bbb amount=12
 data_03_7b72:
     db   $30, $42, $40                                 ;; 03:7b72 ... $00

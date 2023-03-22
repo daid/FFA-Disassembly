@@ -8097,7 +8097,7 @@ runScriptFromScriptByIndex:
     jr   .jr_00_31f1                                   ;; 00:31e8 $18 $07
 .normal_script:
     call getScriptPointerFromScriptPointerTable        ;; 00:31ea $cd $82 $32
-    ld   DE, $4000 ;@=value                            ;; 00:31ed $11 $00 $40
+    ld   DE, $4000 ;@=value hex=True                   ;; 00:31ed $11 $00 $40
     add  HL, DE                                        ;; 00:31f0 $19
 .jr_00_31f1:
     ld   A, H                                          ;; 00:31f1 $7c
@@ -9743,7 +9743,7 @@ scriptOpCodeResetGame:
 ;@jumptable amount=11
 scriptOpCodeFFJumpTable:
     dw   yesNoWindowFinish                             ;; 00:3ba1 pP $00
-    dw   opCodeFFPrintName                              ;; 00:3ba3 pP $01
+    dw   opCodeFFPrintName                             ;; 00:3ba3 pP $01
     dw   windowClearRectangle                          ;; 00:3ba5 pP $02
     dw   checkScriptDelayTimer                         ;; 00:3ba7 pP $03
     dw   opCodeFFWaitInput                             ;; 00:3ba9 pP $04
