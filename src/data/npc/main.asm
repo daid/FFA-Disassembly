@@ -11,7 +11,10 @@
 ; Offset $06: Pointer to tile index order to load
 ; Offset $08: Pointer to metasprites
 ; Offset $0A-$0F: Unknown
-; Offset $10: Movement pattern, one selected at random (4 bytes)
+; Offset $10: Behavior when player HP >= NPC HP
+; Offset $11: Behavior when player HP < NPC HP
+; Offset $12: Behavior when player X position is within +/- 8 pixels of NPC X position (takes precedence over other behaviors)
+; Offset $13: Behavior when player Y position is within +/- 8 pixels of NPC Y position (takes precedence over other behaviors)
 ; Offset $14: script index value (2 bytes)
 ; Offset $16: chest script index value, or zero if never drops a chest (2 bytes)
 npcDataTable:
