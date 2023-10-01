@@ -4147,4 +4147,3 @@ tileorderNpc:
     db   $10, $12, $11, $13, $14, $16, $15, $17        ;; 03:7b6a ........
 
 INCLUDE "data/npc/metasprites.asm"
-
