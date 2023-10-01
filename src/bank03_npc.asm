@@ -116,7 +116,7 @@ npcRunBehavior:
     add  HL, HL                                        ;; 03:409b $29
     add  HL, HL                                        ;; 03:409c $29
     add  HL, HL                                        ;; 03:409d $29
-    ld   DE, data_03_563e                              ;; 03:409e $11 $3e $56
+    ld   DE, npcBehaviorTable                          ;; 03:409e $11 $3e $56
     add  HL, DE                                        ;; 03:40a1 $19
     push HL                                            ;; 03:40a2 $e5
     call getRandomByte                                 ;; 03:40a3 $cd $1e $2b
@@ -155,7 +155,7 @@ npcRunBehavior:
     pop  AF                                            ;; 03:40d0 $f1
     pop  DE                                            ;; 03:40d1 $d1
     push DE                                            ;; 03:40d2 $d5
-    ld   HL, npcBehaviorJumptable                      ;; 03:40d3 $21 $55 $4c
+    ld   HL, npcActionJumptable                        ;; 03:40d3 $21 $55 $4c
     call callJumptable                                 ;; 03:40d6 $cd $70 $2b
     pop  DE                                            ;; 03:40d9 $d1
     push DE                                            ;; 03:40da $d5
@@ -2247,10 +2247,10 @@ initEnemiesCounterAndMoveFolower:
     ret                                                ;; 03:4c54 $c9
 
 ;@jumptable amount=224
-npcBehaviorJumptable:
+npcActionJumptable:
     dw   ld_C_into_A                                   ;; 03:4c55 ?? $00
-    dw   npcBehaviorDeath                              ;; 03:4c57 pP $01
-    dw   npcBehaviorSpawnProjectile                    ;; 03:4c59 pP $02
+    dw   npcDeathAction                                ;; 03:4c57 pP $01
+    dw   npcSpawnProjectileAction                      ;; 03:4c59 pP $02
     dw   call_03_4ef0                                  ;; 03:4c5b pP $03
     dw   npcStepForward                                ;; 03:4c5d pP $04
     dw   npcStepBackward                               ;; 03:4c5f pP $05
@@ -2264,12 +2264,12 @@ npcBehaviorJumptable:
     dw   call_03_4fd9                                  ;; 03:4c6f ?? $0d
     dw   npcWalkSpeed4                                 ;; 03:4c71 pP $0e
     dw   npcWalkSpeedDefault                           ;; 03:4c73 pP $0f
-    dw   call_03_500d                                  ;; 03:4c75 pP $10
-    dw   call_03_5019                                  ;; 03:4c77 pP $11
-    dw   call_03_5025                                  ;; 03:4c79 ?? $12
-    dw   call_03_5031                                  ;; 03:4c7b pP $13
-    dw   call_03_503d                                  ;; 03:4c7d ?? $14
-    dw   call_03_5049                                  ;; 03:4c7f ?? $15
+    dw   npcWalkInPlace1                               ;; 03:4c75 pP $10
+    dw   npcWalkInPlace2                               ;; 03:4c77 pP $11
+    dw   npcWalkInPlace3                               ;; 03:4c79 ?? $12
+    dw   npcWalkInPlace4                               ;; 03:4c7b pP $13
+    dw   npcWalkInPlace5                               ;; 03:4c7d ?? $14
+    dw   npcWalkInPlace6                               ;; 03:4c7f ?? $15
     dw   ld_C_into_A                                   ;; 03:4c81 ?? $16
     dw   ld_C_into_A                                   ;; 03:4c83 ?? $17
     dw   ld_C_into_A                                   ;; 03:4c85 ?? $18
@@ -2532,7 +2532,7 @@ npcKilledExplosion:
     ld   A, $00                                        ;; 03:4e79 $3e $00
     ret                                                ;; 03:4e7b $c9
 
-npcBehaviorDeath:
+npcDeathAction:
     ld   A, [DE]                                       ;; 03:4e7c $1a
     cp   A, $ff                                        ;; 03:4e7d $fe $ff
     jr   Z, .invalid                                   ;; 03:4e7f $28 $29
@@ -2585,7 +2585,7 @@ call_03_4eb5:
     inc  A                                             ;; 03:4ec7 $3c
     ret                                                ;; 03:4ec8 $c9
 
-npcBehaviorSpawnProjectile:
+npcSpawnProjectileAction:
     call npcSpawnProjectile                            ;; 03:4ec9 $cd $ba $27
     ret  Z                                             ;; 03:4ecc $c8
     ld   HL, $04                                       ;; 03:4ecd $21 $04 $00
@@ -2823,52 +2823,52 @@ npcWalkSpeedDefault:
     ld   A, $00                                        ;; 03:500a $3e $00
     ret                                                ;; 03:500c $c9
 
-call_03_500d:
+npcWalkInPlace1:
     ld   A, C                                          ;; 03:500d $79
     cp   A, $00                                        ;; 03:500e $fe $00
     ld   C, $1e                                        ;; 03:5010 $0e $1e
     call Z, call_03_55cb                               ;; 03:5012 $cc $cb $55
-    call call_03_55df                                  ;; 03:5015 $cd $df $55
+    call processDelay                                  ;; 03:5015 $cd $df $55
     ret                                                ;; 03:5018 $c9
 
-call_03_5019:
+npcWalkInPlace2:
     ld   A, C                                          ;; 03:5019 $79
     cp   A, $00                                        ;; 03:501a $fe $00
     ld   C, $3c                                        ;; 03:501c $0e $3c
     call Z, call_03_55cb                               ;; 03:501e $cc $cb $55
-    call call_03_55df                                  ;; 03:5021 $cd $df $55
+    call processDelay                                  ;; 03:5021 $cd $df $55
     ret                                                ;; 03:5024 $c9
 
-call_03_5025:
+npcWalkInPlace3:
     ld   A, C                                          ;; 03:5025 $79
     cp   A, $00                                        ;; 03:5026 $fe $00
     ld   C, $5a                                        ;; 03:5028 $0e $5a
     call Z, call_03_55cb                               ;; 03:502a $cc $cb $55
-    call call_03_55df                                  ;; 03:502d $cd $df $55
+    call processDelay                                  ;; 03:502d $cd $df $55
     ret                                                ;; 03:5030 $c9
 
-call_03_5031:
+npcWalkInPlace4:
     ld   A, C                                          ;; 03:5031 $79
     cp   A, $00                                        ;; 03:5032 $fe $00
     ld   C, $78                                        ;; 03:5034 $0e $78
     call Z, call_03_55cb                               ;; 03:5036 $cc $cb $55
-    call call_03_55df                                  ;; 03:5039 $cd $df $55
+    call processDelay                                  ;; 03:5039 $cd $df $55
     ret                                                ;; 03:503c $c9
 
-call_03_503d:
+npcWalkInPlace5:
     ld   A, C                                          ;; 03:503d $79
     cp   A, $00                                        ;; 03:503e $fe $00
     ld   C, $96                                        ;; 03:5040 $0e $96
     call Z, call_03_55cb                               ;; 03:5042 $cc $cb $55
-    call call_03_55df                                  ;; 03:5045 $cd $df $55
+    call processDelay                                  ;; 03:5045 $cd $df $55
     ret                                                ;; 03:5048 $c9
 
-call_03_5049:
+npcWalkInPlace6:
     ld   A, C                                          ;; 03:5049 $79
     cp   A, $00                                        ;; 03:504a $fe $00
     ld   C, $b4                                        ;; 03:504c $0e $b4
     call Z, call_03_55cb                               ;; 03:504e $cc $cb $55
-    call call_03_55df                                  ;; 03:5051 $cd $df $55
+    call processDelay                                  ;; 03:5051 $cd $df $55
     ret                                                ;; 03:5054 $c9
 
 npcFaceEast:
@@ -4026,7 +4026,8 @@ call_03_55cb:
     ld   A, L                                          ;; 03:55dd $7d
     ret                                                ;; 03:55de $c9
 
-call_03_55df:
+; Decrement delay timer and handle walk in place action
+processDelay:
     dec  A                                             ;; 03:55df $3d
     push AF                                            ;; 03:55e0 $f5
     push DE                                            ;; 03:55e1 $d5
@@ -4094,8 +4095,12 @@ call_03_55fb:
     ret                                                ;; 03:563d $c9
 
 ;@data format=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb amount=30
-; Table usage unknown, record size gained from code.
-data_03_563e:
+; Each row of 32 bytes provides a collection of actions an NPC may take.
+; Each NPC is created with 4 of these behaviors in offset $10-$13 of npcDataTable.
+; Each byte corresponds to an action in the npcActionJumptable.
+; The first 16 actions are common and each occur with 15/256 chance.
+; The latter 16 actions are rare and each occur with 1/256 chance.
+npcBehaviorTable:
     db   $11, $11, $11, $11, $11, $11, $11, $11, $11, $08, $06, $06, $06, $07, $07, $07, $11, $11, $11, $11, $11, $11, $11, $11, $11, $11, $11, $11, $11, $11, $11, $11 ;; 03:563e ................??.?..????.????. $00
     db   $11, $11, $11, $11, $11, $08, $06, $06, $06, $07, $07, $07, $02, $02, $02, $02, $11, $11, $11, $11, $11, $11, $11, $11, $11, $11, $11, $11, $11, $11, $11, $11 ;; 03:565e ???????????????????????????????? $01
     db   $07, $06, $07, $06, $07, $08, $04, $04, $04, $04, $04, $04, $04, $04, $0f, $0f, $09, $09, $09, $09, $10, $10, $10, $10, $10, $10, $10, $10, $10, $10, $10, $10 ;; 03:567e ............................?... $02
