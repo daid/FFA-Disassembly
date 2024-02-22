@@ -186,21 +186,21 @@ def script_pointers(memory, addr, *, amount):
         # !wScriptFlagXX.Y which is a "not" for jump checks.
         RomInfo.macros["FLAG_TO_IDX"] = r"""
 assert STRSUB("\1", STRLEN("\1") - 1, 1) == "."
-LBL equs STRSUB("\1", 1, STRLEN("\1") - 2)
-IDX = STRSUB("\1", STRLEN("\1")) - "0"
+  DEF LBL equs STRSUB("\1", 1, STRLEN("\1") - 2)
+  DEF IDX = STRSUB("\1", STRLEN("\1")) - "0"
   db (LBL - wScriptFlags) * 8 + (IDX)
 PURGE LBL
 """
         RomInfo.macros["FLAG_CONDITION_TO_IDX"] = r"""
 assert STRSUB("\1", STRLEN("\1") - 1, 1) == "."
 IF STRCMP(STRSUB("\1", 1, 1), "!") == 0
-LBL equs STRSUB("\1", 2, STRLEN("\1") - 3)
-IDX = STRSUB("\1", STRLEN("\1")) - "0"
+  DEF LBL equs STRSUB("\1", 2, STRLEN("\1") - 3)
+  DEF IDX = STRSUB("\1", STRLEN("\1")) - "0"
   db (LBL - wScriptFlags) * 8 + (IDX) | $80
 PURGE LBL
 ELSE
-LBL equs STRSUB("\1", 1, STRLEN("\1") - 2)
-IDX = STRSUB("\1", STRLEN("\1")) - "0"
+  DEF LBL equs STRSUB("\1", 1, STRLEN("\1") - 2)
+  DEF IDX = STRSUB("\1", STRLEN("\1")) - "0"
   db (LBL - wScriptFlags) * 8 + (IDX)
 PURGE LBL
 ENDC
