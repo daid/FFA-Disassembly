@@ -19,7 +19,7 @@ $(ROM): $(patsubst src/%.asm,.obj/%.o,$(SRCS))
 
 .obj/%.o $(DEPDIR)/%.mk: src/%.asm $(patsubst gfx/%.png,.gfx/%.bin,$(GFXS))
 	@mkdir -p $(dir .obj/$* .dep/$*)
-	rgbasm -Wall -Wextra --export-all -Isrc -I.gfx -M .dep/$*.mk -MP -MQ .obj/$*.o -MQ .dep/$*.mk -o .obj/$*.o $<
+	rgbasm --halt-without-nop --preserve-ld -Wall -Wextra --export-all -Isrc -I.gfx -M .dep/$*.mk -MP -MQ .obj/$*.o -MQ .dep/$*.mk -o .obj/$*.o $<
 
 .gfx/%.bin: gfx/%.png
 	@mkdir -p $(dir .gfx/$*)

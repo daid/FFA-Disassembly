@@ -5294,7 +5294,8 @@ Init:
     call titleScreenInit_trampoline                    ;; 00:1fd2 $cd $53 $31
 
 MainLoop:
-    halt                                               ;; 00:1fd5 $76 $00
+    halt                                               ;; 00:1fd5 $76
+    nop                                                ;; 00:1fd6 $00
     ld   A, [wVBlankDone]                              ;; 00:1fd7 $fa $ad $c0
     cp   A, $01                                        ;; 00:1fda $fe $01
     jr   C, MainLoop                                   ;; 00:1fdc $38 $f7
