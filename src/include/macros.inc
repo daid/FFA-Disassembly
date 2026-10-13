@@ -10,24 +10,24 @@ MACRO BOSS_HEADER_GFX
 ENDM
 MACRO FLAG_CONDITION_TO_IDX
 
-assert STRSUB("\1", STRLEN("\1") - 1, 1) == "."
-IF STRCMP(STRSUB("\1", 1, 1), "!") == 0
-  DEF LBL equs STRSUB("\1", 2, STRLEN("\1") - 3)
-  DEF IDX = STRSUB("\1", STRLEN("\1")) - "0"
+assert STRSLICE("\1", STRLEN("\1") - 2, STRLEN("\1") - 1) === "."
+IF STRSLICE("\1", 0, 1) === "!"
+  DEF LBL equs STRSLICE("\1", 1, STRLEN("\1") - 2)
+  DEF IDX = STRBYTE(STRSLICE("\1", STRLEN("\1") - 1), 0) - STRBYTE("0", 0)
   db (LBL - wScriptFlags) * 8 + (IDX) | $80
 PURGE LBL
 ELSE
-  DEF LBL equs STRSUB("\1", 1, STRLEN("\1") - 2)
-  DEF IDX = STRSUB("\1", STRLEN("\1")) - "0"
+  DEF LBL equs STRSLICE("\1", 0, STRLEN("\1") - 2)
+  DEF IDX = STRBYTE(STRSLICE("\1", STRLEN("\1") - 1), 0) - STRBYTE("0", 0)
   db (LBL - wScriptFlags) * 8 + (IDX)
 PURGE LBL
 ENDC
 ENDM
 MACRO FLAG_TO_IDX
 
-assert STRSUB("\1", STRLEN("\1") - 1, 1) == "."
-  DEF LBL equs STRSUB("\1", 1, STRLEN("\1") - 2)
-  DEF IDX = STRSUB("\1", STRLEN("\1")) - "0"
+assert STRSLICE("\1", STRLEN("\1") - 2, STRLEN("\1") - 1) === "."
+  DEF LBL equs STRSLICE("\1", 0, STRLEN("\1") - 2)
+  DEF IDX = STRBYTE(STRSLICE("\1", STRLEN("\1") - 1), 0) - STRBYTE("0", 0)
   db (LBL - wScriptFlags) * 8 + (IDX)
 PURGE LBL
 ENDM
@@ -1008,7 +1008,7 @@ MACRO sELSE
 db $01
 
   DEF TMP equs "{IF_LABELS}"
-  REDEF IF_LABELS equs STRSUB("{IF_LABELS}", 1, STRRIN("{IF_LABELS}", "X") - 1)
+  REDEF IF_LABELS equs STRSLICE("{IF_LABELS}", 0, STRRFIND("{IF_LABELS}", "X"))
   REDEF IF_LABELS equs STRCAT("{IF_LABELS}", "X", "\@")
   db .{IF_LABELS} - @ - 1
   .{TMP}:
@@ -1020,7 +1020,7 @@ ENDM
 MACRO sENDIF
 
   .{IF_LABELS}:
-  REDEF IF_LABELS equs STRSUB("{IF_LABELS}", 1, STRRIN("{IF_LABELS}", "X") - 1)
+  REDEF IF_LABELS equs STRSLICE("{IF_LABELS}", 0, STRRFIND("{IF_LABELS}", "X"))
 ENDM
 MACRO sENTER_PLAYER_AND_GIRL_NAME
 db $c6
