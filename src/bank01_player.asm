@@ -47,7 +47,7 @@ entryPointTableBank01:
     call_to_bank_target useSpecialAttack               ;; 01:4046 ??
     call_to_bank_target call_01_5d98                   ;; 01:4048 pP
     call_to_bank_target playerOrFriendlyAttackCollisionHandling ;; 01:404a pP
-    call_to_bank_target call_01_5db6                   ;; 01:404c ??
+    call_to_bank_target createSpecialEffect            ;; 01:404c ??
     call_to_bank_target attackTile                     ;; 01:404e pP
 
 lcdcLetterboxEffect:
@@ -2881,7 +2881,7 @@ attackObjectFunction03:
     push BC                                            ;; 01:53e6 $c5
     ld   D, A                                          ;; 01:53e7 $57
     and  A, $08                                        ;; 01:53e8 $e6 $08
-    call NZ, call_01_5b46                              ;; 01:53ea $c4 $46 $5b
+    call NZ, advanceAttackFrameAndCallFunctionNormal   ;; 01:53ea $c4 $46 $5b
     pop  BC                                            ;; 01:53ed $c1
     pop  HL                                            ;; 01:53ee $e1
     jp   jp_01_5538                                    ;; 01:53ef $c3 $38 $55
@@ -3092,7 +3092,7 @@ attackObjectFunctionNormal:
     push BC                                            ;; 01:54fd $c5
     ld   D, A                                          ;; 01:54fe $57
     and  A, $08                                        ;; 01:54ff $e6 $08
-    call NZ, call_01_5b46                              ;; 01:5501 $c4 $46 $5b
+    call NZ, advanceAttackFrameAndCallFunctionNormal   ;; 01:5501 $c4 $46 $5b
     ld   A, D                                          ;; 01:5504 $7a
     push DE                                            ;; 01:5505 $d5
     and  A, $07                                        ;; 01:5506 $e6 $07
@@ -4239,7 +4239,7 @@ useWeaponItemOrSpecial:
     xor  A, A                                          ;; 01:5b44 $af
     ret                                                ;; 01:5b45 $c9
 
-call_01_5b46:
+advanceAttackFrameAndCallFunctionNormal:
     ld   A, [wPlayerAttackAnimationFrame]              ;; 01:5b46 $fa $5f $cf
     add  A, $10                                        ;; 01:5b49 $c6 $10
     ld   B, A                                          ;; 01:5b4b $47
@@ -4396,7 +4396,7 @@ attackObjectFunction07:
     push BC                                            ;; 01:5c19 $c5
     ld   D, A                                          ;; 01:5c1a $57
     and  A, $08                                        ;; 01:5c1b $e6 $08
-    call NZ, call_01_5c9f                              ;; 01:5c1d $c4 $9f $5c
+    call NZ, advanceAttackFrameAndCallFunction07       ;; 01:5c1d $c4 $9f $5c
     pop  BC                                            ;; 01:5c20 $c1
     pop  HL                                            ;; 01:5c21 $e1
     ld   A, [wFireHomingTarget]                        ;; 01:5c22 $fa $5d $cf
@@ -4479,7 +4479,7 @@ attackObjectFunction07:
     xor  A, A                                          ;; 01:5c9d $af
     ret                                                ;; 01:5c9e $c9
 
-call_01_5c9f:
+advanceAttackFrameAndCallFunction07:
     ld   A, [wPlayerAttackAnimationFrame]              ;; 01:5c9f $fa $5f $cf
     add  A, $10                                        ;; 01:5ca2 $c6 $10
     ld   B, A                                          ;; 01:5ca4 $47
@@ -4539,7 +4539,7 @@ playerOrFriendlyAttackCollisionHandling:
     ld   A, C                                          ;; 01:5cfa $79
     ld   [wFireHomingTarget], A                        ;; 01:5cfb $ea $5d $cf
     call playerAttackDestroy                           ;; 01:5cfe $cd $82 $5d
-    call call_01_5c9f                                  ;; 01:5d01 $cd $9f $5c
+    call advanceAttackFrameAndCallFunction07           ;; 01:5d01 $cd $9f $5c
     pop  HL                                            ;; 01:5d04 $e1
     ret                                                ;; 01:5d05 $c9
 .ice:
@@ -4575,7 +4575,7 @@ playerOrFriendlyAttackCollisionHandling:
     jr   Z, .jr_01_5d60                                ;; 01:5d3a $28 $24
     push DE                                            ;; 01:5d3c $d5
     ld   C, A                                          ;; 01:5d3d $4f
-    call call_01_5c9f                                  ;; 01:5d3e $cd $9f $5c
+    call advanceAttackFrameAndCallFunction07           ;; 01:5d3e $cd $9f $5c
     pop  DE                                            ;; 01:5d41 $d1
     ld   A, [wMainGameStateFlags]                      ;; 01:5d42 $fa $a1 $c0
     push AF                                            ;; 01:5d45 $f5
@@ -4662,7 +4662,7 @@ call_01_5d98:
     and  A, $f0                                        ;; 01:5db3 $e6 $f0
     ret                                                ;; 01:5db5 $c9
 
-call_01_5db6:
+createSpecialEffect:
     push AF                                            ;; 01:5db6 $f5
     ld   A, C                                          ;; 01:5db7 $79
     ld   [wFireHomingTarget], A                        ;; 01:5db8 $ea $5d $cf
@@ -4672,7 +4672,7 @@ call_01_5db6:
     pop  AF                                            ;; 01:5dc3 $f1
     sub  A, $10                                        ;; 01:5dc4 $d6 $10
     ld   [wPlayerAttackAnimationFrame], A              ;; 01:5dc6 $ea $5f $cf
-    call call_01_5c9f                                  ;; 01:5dc9 $cd $9f $5c
+    call advanceAttackFrameAndCallFunction07           ;; 01:5dc9 $cd $9f $5c
     ret                                                ;; 01:5dcc $c9
 
 weaponAnimations:
@@ -4703,72 +4703,72 @@ attackFrames:
     dw   attackHealFrame1                              ;; 01:5e2f ?? $09
     dw   attackMuteFrame1                              ;; 01:5e31 ?? $0a
     dw   attackSleepFrame1                             ;; 01:5e33 ?? $0b
-    dw   attackFireIceThnderNukeFrame1                 ;; 01:5e35 ?? $0c
-    dw   attackFireIceThnderNukeFrame1                 ;; 01:5e37 ?? $0d
-    dw   attackFireIceThnderNukeFrame1                 ;; 01:5e39 ?? $0e
-    dw   attackFireIceThnderNukeFrame1                 ;; 01:5e3b ?? $0f
-    dw   data_01_6861                                  ;; 01:5e3d ?? $10
-    dw   data_01_641d                                  ;; 01:5e3f ?? $11
+    dw   attackFireIceLitNukeFrame1                    ;; 01:5e35 ?? $0c
+    dw   attackFireIceLitNukeFrame1                    ;; 01:5e37 ?? $0d
+    dw   attackFireIceLitNukeFrame1                    ;; 01:5e39 ?? $0e
+    dw   attackFireIceLitNukeFrame1                    ;; 01:5e3b ?? $0f
+    dw   attackExplosionFrame1                         ;; 01:5e3d ?? $10
+    dw   attackUnusedFrame                             ;; 01:5e3f ?? $11
     dw   $0000                                         ;; 01:5e41 ?? $12
-    dw   data_01_66bd                                  ;; 01:5e43 ?? $13
-    dw   data_01_678f                                  ;; 01:5e45 ?? $14
+    dw   attackChainFrame2                             ;; 01:5e43 ?? $13
+    dw   attackSickleFrame2                            ;; 01:5e45 ?? $14
     dw   attackSpearFrame2                             ;; 01:5e47 ?? $15
-    dw   data_01_6711                                  ;; 01:5e49 ?? $16
+    dw   attackMorningstarChainExtension1              ;; 01:5e49 ?? $16
     dw   $0000                                         ;; 01:5e4b ?? $17
-    dw   data_01_62cd                                  ;; 01:5e4d pP $18
-    dw   data_01_6375                                  ;; 01:5e4f ?? $19
-    dw   data_01_6519                                  ;; 01:5e51 ?? $1a
-    dw   data_01_6471                                  ;; 01:5e53 ?? $1b
+    dw   attackCureFrame2                              ;; 01:5e4d pP $18
+    dw   attackHealFrame2                              ;; 01:5e4f ?? $19
+    dw   attackMuteFrame2                              ;; 01:5e51 ?? $1a
+    dw   attackSleepFrame2                             ;; 01:5e53 ?? $1b
     dw   attackFireAutoTargetFrame                     ;; 01:5e55 ?? $1c
-    dw   data_01_617d                                  ;; 01:5e57 ?? $1d
-    dw   data_01_65eb                                  ;; 01:5e59 ?? $1e
-    dw   data_01_6597                                  ;; 01:5e5b ?? $1f
-    dw   data_01_688b                                  ;; 01:5e5d ?? $20
+    dw   attackIceFrame1                               ;; 01:5e57 ?? $1d
+    dw   attackLitFrame1                               ;; 01:5e59 ?? $1e
+    dw   attackNukeFrame1                              ;; 01:5e5b ?? $1f
+    dw   attackExplosionFrame2                         ;; 01:5e5d ?? $20
     dw   $0000                                         ;; 01:5e5f ?? $21
     dw   $0000                                         ;; 01:5e61 ?? $22
-    dw   data_01_66e7                                  ;; 01:5e63 ?? $23
+    dw   attackChainFrame3                             ;; 01:5e63 ?? $23
     dw   $0000                                         ;; 01:5e65 ?? $24
     dw   $0000                                         ;; 01:5e67 ?? $25
-    dw   data_01_673b                                  ;; 01:5e69 ?? $26
+    dw   attackMorningstarChainExtension2              ;; 01:5e69 ?? $26
     dw   $0000                                         ;; 01:5e6b ?? $27
-    dw   data_01_62f7                                  ;; 01:5e6d pP $28
-    dw   data_01_639f                                  ;; 01:5e6f ?? $29
-    dw   data_01_6543                                  ;; 01:5e71 ?? $2a
-    dw   data_01_649b                                  ;; 01:5e73 ?? $2b
-    dw   data_01_61a7                                  ;; 01:5e75 ?? $2c
-    dw   data_01_61fb                                  ;; 01:5e77 ?? $2d
-    dw   data_01_6615                                  ;; 01:5e79 ?? $2e
-    dw   data_01_65c1                                  ;; 01:5e7b ?? $2f
-    dw   data_01_68b5                                  ;; 01:5e7d ?? $30
+    dw   attackCureFrame3                              ;; 01:5e6d pP $28
+    dw   attackHealFrame3                              ;; 01:5e6f ?? $29
+    dw   attackMuteFrame3                              ;; 01:5e71 ?? $2a
+    dw   attackSleepFrame3                             ;; 01:5e73 ?? $2b
+    dw   attackFireFrame1                              ;; 01:5e75 ?? $2c
+    dw   attackIceFrame2                               ;; 01:5e77 ?? $2d
+    dw   attackLitFrame2                               ;; 01:5e79 ?? $2e
+    dw   attackNukeFrame2                              ;; 01:5e7b ?? $2f
+    dw   attackExplosionFrame3                         ;; 01:5e7d ?? $30
     dw   $0000                                         ;; 01:5e7f ?? $31
     dw   $0000                                         ;; 01:5e81 ?? $32
-    dw   data_01_6711                                  ;; 01:5e83 ?? $33
+    dw   attackMorningstarChainExtension1              ;; 01:5e83 ?? $33
     dw   $0000                                         ;; 01:5e85 ?? $34
     dw   $0000                                         ;; 01:5e87 ?? $35
     dw   $0000                                         ;; 01:5e89 ?? $36
     dw   $0000                                         ;; 01:5e8b ?? $37
-    dw   data_01_6321                                  ;; 01:5e8d pP $38
-    dw   data_01_63c9                                  ;; 01:5e8f ?? $39
-    dw   data_01_656d                                  ;; 01:5e91 ?? $3a
-    dw   data_01_64c5                                  ;; 01:5e93 ?? $3b
-    dw   data_01_61d1                                  ;; 01:5e95 ?? $3c
-    dw   data_01_6225                                  ;; 01:5e97 ?? $3d
-    dw   data_01_663f                                  ;; 01:5e99 ?? $3e
+    dw   attackCureFrame4                              ;; 01:5e8d pP $38
+    dw   attackHealFrame4                              ;; 01:5e8f ?? $39
+    dw   attackMuteFrame4                              ;; 01:5e91 ?? $3a
+    dw   attackSleepFrame4                             ;; 01:5e93 ?? $3b
+    dw   attackFireFrame2                              ;; 01:5e95 ?? $3c
+    dw   attackIceFrame3                               ;; 01:5e97 ?? $3d
+    dw   attackLitFrame3                               ;; 01:5e99 ?? $3e
     dw   $0000                                         ;; 01:5e9b ?? $3f
     dw   $0000                                         ;; 01:5e9d ?? $40
     dw   $0000                                         ;; 01:5e9f ?? $41
     dw   $0000                                         ;; 01:5ea1 ?? $42
-    dw   data_01_673b                                  ;; 01:5ea3 ?? $43
+    dw   attackMorningstarChainExtension2              ;; 01:5ea3 ?? $43
     dw   $0000                                         ;; 01:5ea5 ?? $44
     dw   $0000                                         ;; 01:5ea7 ?? $45
-    dw   data_01_6837                                  ;; 01:5ea9 pP $46
+    dw   attackMattokFrame1                            ;; 01:5ea9 pP $46
     dw   $0000                                         ;; 01:5eab ?? $47
     dw   $0000                                         ;; 01:5ead ?? $48
-    dw   data_01_63f3                                  ;; 01:5eaf ?? $49
+    dw   attackHealFrame5                              ;; 01:5eaf ?? $49
     dw   $0000                                         ;; 01:5eb1 ?? $4a
     dw   $0000                                         ;; 01:5eb3 ?? $4b
     dw   $0000                                         ;; 01:5eb5 ?? $4c
-    dw   data_01_624f                                  ;; 01:5eb7 ?? $4d
+    dw   attackIceFrame4                               ;; 01:5eb7 ?? $4d
     dw   $0000                                         ;; 01:5eb9 ?? $4e
     dw   $0000                                         ;; 01:5ebb ?? $4f
     dw   $0000                                         ;; 01:5ebd ?? $50
@@ -4784,7 +4784,7 @@ attackFrames:
     dw   $0000                                         ;; 01:5ed1 ?? $5a
     dw   $0000                                         ;; 01:5ed3 ?? $5b
     dw   $0000                                         ;; 01:5ed5 ?? $5c
-    dw   data_01_6279                                  ;; 01:5ed7 ?? $5d
+    dw   attackIceFrame5                               ;; 01:5ed7 ?? $5d
     dw   $0000                                         ;; 01:5ed9 ?? $5e
     dw   $0000                                         ;; 01:5edb ?? $5f
 
@@ -4944,7 +4944,7 @@ attackSwordFrame1:
     dw   data_01_6a29, data_01_6a30, data_01_6a37, data_01_6a3e ;; 01:6119 ????????
     dw   data_01_6a45, data_01_6a68, data_01_6a8b, data_01_6aae ;; 01:6121 ????????
 
-attackFireIceThnderNukeFrame1:
+attackFireIceLitNukeFrame1:
     db   $06, $50, $03, $06, $00, $00                  ;; 01:6129 ??????
     dw   data_08_7580, data_01_6903                    ;; 01:612f ????
     dw   data_01_6ad1, data_01_6ae8, data_01_6aff, data_01_6b16 ;; 01:6133 ????????
@@ -4960,7 +4960,7 @@ attackFireAutoTargetFrame:
     dw   data_01_6b2d, data_01_6b34, data_01_6b3b, data_01_6b42 ;; 01:616d ????????
     dw   data_01_6b2d, data_01_6b34, data_01_6b3b, data_01_6b42 ;; 01:6175 ????????
 
-data_01_617d:
+attackIceFrame1:
     db   $03, $5a, $02, $05, $0c, $00                  ;; 01:617d ??????
     dw   gfxAttackIce, data_01_68df                    ;; 01:6183 ????
     dw   data_01_6b7f, data_01_6b86, data_01_6b8d, data_01_6b94 ;; 01:6187 ????????
@@ -4968,7 +4968,7 @@ data_01_617d:
     dw   data_01_6b7f, data_01_6b86, data_01_6b8d, data_01_6b94 ;; 01:6197 ????????
     dw   data_01_6b7f, data_01_6b86, data_01_6b8d, data_01_6b94 ;; 01:619f ????????
 
-data_01_61a7:
+attackFireFrame1:
     db   $06, $50, $02, $06, $00, $00                  ;; 01:61a7 ??????
     dw   gfxAttackFire, data_01_691b                   ;; 01:61ad ????
     dw   data_01_6b49, data_01_6b49, data_01_6b49, data_01_6b49 ;; 01:61b1 ????????
@@ -4976,7 +4976,7 @@ data_01_61a7:
     dw   data_01_6b49, data_01_6b49, data_01_6b49, data_01_6b49 ;; 01:61c1 ????????
     dw   data_01_6b49, data_01_6b49, data_01_6b49, data_01_6b49 ;; 01:61c9 ????????
 
-data_01_61d1:
+attackFireFrame2:
     db   $06, $50, $03, $05, $00, $00                  ;; 01:61d1 ??????
     dw   gfxAttackFire, data_01_6927                   ;; 01:61d7 ????
     dw   data_01_6b6c, data_01_6b6c, data_01_6b6c, data_01_6b6c ;; 01:61db ????????
@@ -4984,7 +4984,7 @@ data_01_61d1:
     dw   data_01_6b6c, data_01_6b6c, data_01_6b6c, data_01_6b6c ;; 01:61eb ????????
     dw   data_01_6b6c, data_01_6b6c, data_01_6b6c, data_01_6b6c ;; 01:61f3 ????????
 
-data_01_61fb:
+attackIceFrame2:
     db   $04, $40, $02, $03, $00, $00                  ;; 01:61fb ??????
     dw   gfxAttackIce, data_01_6933                    ;; 01:6201 ????
     dw   data_01_731f, data_01_731f, data_01_731f, data_01_731f ;; 01:6205 ????????
@@ -4992,7 +4992,7 @@ data_01_61fb:
     dw   data_01_731f, data_01_731f, data_01_731f, data_01_731f ;; 01:6215 ????????
     dw   data_01_731f, data_01_731f, data_01_731f, data_01_731f ;; 01:621d ????????
 
-data_01_6225:
+attackIceFrame3:
     db   $04, $40, $02, $02, $00, $00                  ;; 01:6225 ??????
     dw   gfxAttackIce, data_01_6933                    ;; 01:622b ????
     dw   data_01_73a0, data_01_73a0, data_01_73a0, data_01_73a0 ;; 01:622f ????????
@@ -5000,7 +5000,7 @@ data_01_6225:
     dw   data_01_73a0, data_01_73a0, data_01_73a0, data_01_73a0 ;; 01:623f ????????
     dw   data_01_73a0, data_01_73a0, data_01_73a0, data_01_73a0 ;; 01:6247 ????????
 
-data_01_624f:
+attackIceFrame4:
     db   $04, $40, $02, $01, $00, $00                  ;; 01:624f ??????
     dw   gfxAttackIce, data_01_6933                    ;; 01:6255 ????
     dw   data_01_734a, data_01_734a, data_01_734a, data_01_734a ;; 01:6259 ????????
@@ -5008,7 +5008,7 @@ data_01_624f:
     dw   data_01_734a, data_01_734a, data_01_734a, data_01_734a ;; 01:6269 ????????
     dw   data_01_734a, data_01_734a, data_01_734a, data_01_734a ;; 01:6271 ????????
 
-data_01_6279:
+attackIceFrame5:
     db   $04, $40, $02, $00, $00, $00                  ;; 01:6279 ??????
     dw   gfxAttackIce, data_01_6933                    ;; 01:627f ????
     dw   data_01_7375, data_01_7375, data_01_7375, data_01_7375 ;; 01:6283 ????????
@@ -5024,7 +5024,7 @@ attackCureFrame1:
     dw   data_01_7230, data_01_7230, data_01_7230, data_01_7230 ;; 01:62bd ????????
     dw   data_01_7230, data_01_7230, data_01_7230, data_01_7230 ;; 01:62c5 ????????
 
-data_01_62cd:
+attackCureFrame2:
     db   $04, $50, $03, $02, $00, $00                  ;; 01:62cd .....?
     dw   data_08_7500, data_01_693f                    ;; 01:62d3 ....
     dw   data_01_72bd, data_01_72bd, data_01_72bd, data_01_72bd ;; 01:62d7 ????????
@@ -5032,7 +5032,7 @@ data_01_62cd:
     dw   data_01_72bd, data_01_72bd, data_01_72bd, data_01_72bd ;; 01:62e7 ????????
     dw   data_01_72bd, data_01_72bd, data_01_72bd, data_01_72bd ;; 01:62ef ????????
 
-data_01_62f7:
+attackCureFrame3:
     db   $04, $50, $02, $01, $00, $00                  ;; 01:62f7 .....?
     dw   data_08_7500, data_01_693f                    ;; 01:62fd ....
     dw   data_01_725f, data_01_725f, data_01_725f, data_01_725f ;; 01:6301 ????????
@@ -5040,7 +5040,7 @@ data_01_62f7:
     dw   data_01_725f, data_01_725f, data_01_725f, data_01_725f ;; 01:6311 ????????
     dw   data_01_725f, data_01_725f, data_01_725f, data_01_725f ;; 01:6319 ????????
 
-data_01_6321:
+attackCureFrame4:
     db   $04, $50, $03, $00, $00, $00                  ;; 01:6321 .....?
     dw   data_08_7500, data_01_693f                    ;; 01:6327 ....
     dw   data_01_728e, data_01_728e, data_01_728e, data_01_728e ;; 01:632b ????????
@@ -5056,7 +5056,7 @@ attackHealFrame1:
     dw   data_01_72ec, data_01_72ec, data_01_72ec, data_01_72ec ;; 01:6365 ????????
     dw   data_01_72ec, data_01_72ec, data_01_72ec, data_01_72ec ;; 01:636d ????????
 
-data_01_6375:
+attackHealFrame2:
     db   $04, $50, $02, $03, $00, $00                  ;; 01:6375 ??????
     dw   data_08_7940, data_01_694b                    ;; 01:637b ????
     dw   data_01_731f, data_01_731f, data_01_731f, data_01_731f ;; 01:637f ????????
@@ -5064,7 +5064,7 @@ data_01_6375:
     dw   data_01_731f, data_01_731f, data_01_731f, data_01_731f ;; 01:638f ????????
     dw   data_01_731f, data_01_731f, data_01_731f, data_01_731f ;; 01:6397 ????????
 
-data_01_639f:
+attackHealFrame3:
     db   $04, $50, $02, $02, $00, $00                  ;; 01:639f ??????
     dw   data_08_7940, data_01_694b                    ;; 01:63a5 ????
     dw   data_01_73a0, data_01_73a0, data_01_73a0, data_01_73a0 ;; 01:63a9 ????????
@@ -5072,7 +5072,7 @@ data_01_639f:
     dw   data_01_73a0, data_01_73a0, data_01_73a0, data_01_73a0 ;; 01:63b9 ????????
     dw   data_01_73a0, data_01_73a0, data_01_73a0, data_01_73a0 ;; 01:63c1 ????????
 
-data_01_63c9:
+attackHealFrame4:
     db   $04, $50, $02, $01, $00, $00                  ;; 01:63c9 ??????
     dw   data_08_7940, data_01_694b                    ;; 01:63cf ????
     dw   data_01_734a, data_01_734a, data_01_734a, data_01_734a ;; 01:63d3 ????????
@@ -5080,7 +5080,7 @@ data_01_63c9:
     dw   data_01_734a, data_01_734a, data_01_734a, data_01_734a ;; 01:63e3 ????????
     dw   data_01_734a, data_01_734a, data_01_734a, data_01_734a ;; 01:63eb ????????
 
-data_01_63f3:
+attackHealFrame5:
     db   $04, $50, $02, $00, $00, $00                  ;; 01:63f3 ??????
     dw   data_08_7940, data_01_694b                    ;; 01:63f9 ????
     dw   data_01_7375, data_01_7375, data_01_7375, data_01_7375 ;; 01:63fd ????????
@@ -5088,7 +5088,8 @@ data_01_63f3:
     dw   data_01_7375, data_01_7375, data_01_7375, data_01_7375 ;; 01:640d ????????
     dw   data_01_7375, data_01_7375, data_01_7375, data_01_7375 ;; 01:6415 ????????
 
-data_01_641d:
+; appears to be unreachable data
+attackUnusedFrame:
     db   $04, $48, $00, $04, $ff, $00                  ;; 01:641d ??????
     dw   gfxPlayer, data_01_6957                       ;; 01:6423 ????
     dw   data_01_69a1, data_01_69b0, data_01_69bf, data_01_69ce ;; 01:6427 ????????
@@ -5104,7 +5105,7 @@ attackSleepFrame1:
     dw   data_01_73cb, data_01_73cb, data_01_73cb, data_01_73cb ;; 01:6461 ????????
     dw   data_01_73cb, data_01_73cb, data_01_73cb, data_01_73cb ;; 01:6469 ????????
 
-data_01_6471:
+attackSleepFrame2:
     db   $04, $50, $02, $02, $00, $00                  ;; 01:6471 ??????
     dw   data_08_7990, data_01_6903                    ;; 01:6477 ????
     dw   data_01_7470, data_01_7470, data_01_7470, data_01_7470 ;; 01:647b ????????
@@ -5112,7 +5113,7 @@ data_01_6471:
     dw   data_01_7470, data_01_7470, data_01_7470, data_01_7470 ;; 01:648b ????????
     dw   data_01_7470, data_01_7470, data_01_7470, data_01_7470 ;; 01:6493 ????????
 
-data_01_649b:
+attackSleepFrame3:
     db   $04, $50, $02, $01, $00, $00                  ;; 01:649b ??????
     dw   data_08_7990, data_01_6903                    ;; 01:64a1 ????
     dw   data_01_7402, data_01_7402, data_01_7402, data_01_7402 ;; 01:64a5 ????????
@@ -5120,7 +5121,7 @@ data_01_649b:
     dw   data_01_7402, data_01_7402, data_01_7402, data_01_7402 ;; 01:64b5 ????????
     dw   data_01_7402, data_01_7402, data_01_7402, data_01_7402 ;; 01:64bd ????????
 
-data_01_64c5:
+attackSleepFrame4:
     db   $04, $50, $02, $00, $00, $00                  ;; 01:64c5 ??????
     dw   data_08_7990, data_01_6903                    ;; 01:64cb ????
     dw   data_01_7439, data_01_7439, data_01_7439, data_01_7439 ;; 01:64cf ????????
@@ -5136,7 +5137,7 @@ attackMuteFrame1:
     dw   data_01_74df, data_01_74df, data_01_74df, data_01_74df ;; 01:6509 ????????
     dw   data_01_74df, data_01_74df, data_01_74df, data_01_74df ;; 01:6511 ????????
 
-data_01_6519:
+attackMuteFrame2:
     db   $04, $50, $02, $02, $00, $00                  ;; 01:6519 ??????
     dw   data_08_7950, data_01_6903                    ;; 01:651f ????
     dw   data_01_7516, data_01_7516, data_01_7516, data_01_7516 ;; 01:6523 ????????
@@ -5144,7 +5145,7 @@ data_01_6519:
     dw   data_01_7516, data_01_7516, data_01_7516, data_01_7516 ;; 01:6533 ????????
     dw   data_01_7516, data_01_7516, data_01_7516, data_01_7516 ;; 01:653b ????????
 
-data_01_6543:
+attackMuteFrame3:
     db   $04, $50, $02, $01, $00, $00                  ;; 01:6543 ??????
     dw   data_08_7950, data_01_6903                    ;; 01:6549 ????
     dw   data_01_754d, data_01_754d, data_01_754d, data_01_754d ;; 01:654d ????????
@@ -5152,7 +5153,7 @@ data_01_6543:
     dw   data_01_754d, data_01_754d, data_01_754d, data_01_754d ;; 01:655d ????????
     dw   data_01_754d, data_01_754d, data_01_754d, data_01_754d ;; 01:6565 ????????
 
-data_01_656d:
+attackMuteFrame4:
     db   $04, $50, $02, $00, $00, $00                  ;; 01:656d ??????
     dw   data_08_7950, data_01_6903                    ;; 01:6573 ????
     dw   data_01_7584, data_01_7584, data_01_7584, data_01_7584 ;; 01:6577 ????????
@@ -5160,7 +5161,7 @@ data_01_656d:
     dw   data_01_7584, data_01_7584, data_01_7584, data_01_7584 ;; 01:6587 ????????
     dw   data_01_7584, data_01_7584, data_01_7584, data_01_7584 ;; 01:658f ????????
 
-data_01_6597:
+attackNukeFrame1:
     db   $07, $58, $02, $05, $0e, $00                  ;; 01:6597 ??????
     dw   data_08_7db0, data_01_693f                    ;; 01:659d ????
     dw   data_01_74a7, data_01_74b5, data_01_74c3, data_01_74d1 ;; 01:65a1 ????????
@@ -5168,7 +5169,7 @@ data_01_6597:
     dw   data_01_74a7, data_01_74b5, data_01_74c3, data_01_74d1 ;; 01:65b1 ????????
     dw   data_01_74a7, data_01_74b5, data_01_74c3, data_01_74d1 ;; 01:65b9 ????????
 
-data_01_65c1:
+attackNukeFrame2:
     db   $04, $50, $02, $02, $00, $00                  ;; 01:65c1 ??????
     dw   data_08_7db0, data_01_6903                    ;; 01:65c7 ????
     dw   data_01_75bb, data_01_75bb, data_01_75bb, data_01_75bb ;; 01:65cb ????????
@@ -5176,7 +5177,7 @@ data_01_65c1:
     dw   data_01_75bb, data_01_75bb, data_01_75bb, data_01_75bb ;; 01:65db ????????
     dw   data_01_75bb, data_01_75bb, data_01_75bb, data_01_75bb ;; 01:65e3 ????????
 
-data_01_65eb:
+attackLitFrame1:
     db   $04, $58, $02, $05, $0a, $00                  ;; 01:65eb ??????
     dw   data_08_79d0, data_01_68eb                    ;; 01:65f1 ????
     dw   data_01_6ed8, data_01_6ee7, data_01_6ef6, data_01_6f05 ;; 01:65f5 ????????
@@ -5184,7 +5185,7 @@ data_01_65eb:
     dw   data_01_6ed8, data_01_6ee7, data_01_6ef6, data_01_6f05 ;; 01:6605 ????????
     dw   data_01_6ed8, data_01_6ee7, data_01_6ef6, data_01_6f05 ;; 01:660d ????????
 
-data_01_6615:
+attackLitFrame2:
     db   $04, $50, $03, $03, $0a, $00                  ;; 01:6615 ??????
     dw   data_08_79d0, data_01_68f7                    ;; 01:661b ????
     dw   data_01_6f14, data_01_6f1b, data_01_6f22, data_01_6f29 ;; 01:661f ????????
@@ -5192,7 +5193,7 @@ data_01_6615:
     dw   data_01_6f14, data_01_6f1b, data_01_6f22, data_01_6f29 ;; 01:662f ????????
     dw   data_01_6f14, data_01_6f1b, data_01_6f22, data_01_6f29 ;; 01:6637 ????????
 
-data_01_663f:
+attackLitFrame3:
     db   $04, $50, $02, $02, $00, $00                  ;; 01:663f ??????
     dw   data_08_7580, data_01_6903                    ;; 01:6645 ????
     dw   data_01_75bb, data_01_75bb, data_01_75bb, data_01_75bb ;; 01:6649 ????????
@@ -5216,7 +5217,7 @@ attackChainFrame1:
     dw   data_01_6f9c, data_01_6fbf, data_01_6fe2, data_01_7005 ;; 01:66ad ????????
     dw   data_01_6f9c, data_01_6fbf, data_01_6fe2, data_01_7005 ;; 01:66b5 ????????
 
-data_01_66bd:
+attackChainFrame2:
     db   $04, $40, $03, $05, $ff, $00                  ;; 01:66bd ??????
     dw   gfxAttackSickle, data_01_6987                 ;; 01:66c3 ????
     dw   data_01_7160, data_01_7167, data_01_716e, data_01_7175 ;; 01:66c7 ????????
@@ -5224,7 +5225,7 @@ data_01_66bd:
     dw   data_01_7160, data_01_7167, data_01_716e, data_01_7175 ;; 01:66d7 ????????
     dw   data_01_7160, data_01_7167, data_01_716e, data_01_7175 ;; 01:66df ????????
 
-data_01_66e7:
+attackChainFrame3:
     db   $04, $40, $03, $03, $ff, $00                  ;; 01:66e7 ??????
     dw   gfxAttackSickle, data_01_6987                 ;; 01:66ed ????
     dw   data_01_7198, data_01_71a7, data_01_71b6, data_01_71c5 ;; 01:66f1 ????????
@@ -5232,7 +5233,7 @@ data_01_66e7:
     dw   data_01_71d4, data_01_71eb, data_01_7202, data_01_7219 ;; 01:6701 ????????
     dw   data_01_71d4, data_01_71eb, data_01_7202, data_01_7219 ;; 01:6709 ????????
 
-data_01_6711:
+attackMorningstarChainExtension1:
     db   $04, $40, $03, $02, $ff, $00                  ;; 01:6711 ??????
     dw   gfxAttackSickle, data_01_6987                 ;; 01:6717 ????
     dw   data_01_717c, data_01_7183, data_01_718a, data_01_7191 ;; 01:671b ????????
@@ -5240,7 +5241,7 @@ data_01_6711:
     dw   data_01_7198, data_01_71a7, data_01_71b6, data_01_71c5 ;; 01:672b ????????
     dw   data_01_7198, data_01_71a7, data_01_71b6, data_01_71c5 ;; 01:6733 ????????
 
-data_01_673b:
+attackMorningstarChainExtension2:
     db   $04, $40, $03, $01, $ff, $00                  ;; 01:673b ??????
     dw   gfxAttackSickle, data_01_6987                 ;; 01:6741 ????
     dw   data_01_717c, data_01_7183, data_01_718a, data_01_7191 ;; 01:6745 ????????
@@ -5256,7 +5257,7 @@ attackSickleFrame1:
     dw   data_01_6da0, data_01_6dcf, data_01_6dfe, data_01_6e2d ;; 01:677f ????????
     dw   data_01_6da0, data_01_6dcf, data_01_6dfe, data_01_6e2d ;; 01:6787 ????????
 
-data_01_678f:
+attackSickleFrame2:
     db   $03, $40, $03, $05, $ff, $00                  ;; 01:678f ??????
     dw   gfxAttackSickle, data_01_697b                 ;; 01:6795 ????
     dw   data_01_6ce4, data_01_6d13, data_01_6d42, data_01_6d71 ;; 01:6799 ????????
@@ -5288,7 +5289,7 @@ attackMorningstarFrame1:
     dw   data_01_70b4, data_01_70df, data_01_710a, data_01_7135 ;; 01:6827 ????????
     dw   data_01_70b4, data_01_70df, data_01_710a, data_01_7135 ;; 01:682f ????????
 
-data_01_6837:
+attackMattokFrame1:
     db   $06, $48, $02, $05, $0c, $00                  ;; 01:6837 .....?
     dw   gfxAttackMattok, data_01_68df                 ;; 01:683d ....
     dw   data_01_69dd, data_01_69f0, data_01_6a03, data_01_6a16 ;; 01:6841 ????????
@@ -5296,7 +5297,7 @@ data_01_6837:
     dw   data_01_69dd, data_01_69f0, data_01_6a03, data_01_6a16 ;; 01:6851 ????????
     dw   data_01_69dd, data_01_69f0, data_01_6a03, data_01_6a16 ;; 01:6859 ????????
 
-data_01_6861:
+attackExplosionFrame1:
     db   $04, $50, $02, $06, $00, $00                  ;; 01:6861 ??????
     dw   data_08_7840, data_01_6903                    ;; 01:6867 ????
     dw   data_01_75d6, data_01_75d6, data_01_75d6, data_01_75d6 ;; 01:686b ????????
@@ -5304,7 +5305,7 @@ data_01_6861:
     dw   data_01_75d6, data_01_75d6, data_01_75d6, data_01_75d6 ;; 01:687b ????????
     dw   data_01_75d6, data_01_75d6, data_01_75d6, data_01_75d6 ;; 01:6883 ????????
 
-data_01_688b:
+attackExplosionFrame2:
     db   $04, $50, $02, $05, $00, $00                  ;; 01:688b ??????
     dw   data_08_7840, data_01_6903                    ;; 01:6891 ????
     dw   data_01_75f5, data_01_75f5, data_01_75f5, data_01_75f5 ;; 01:6895 ????????
@@ -5312,7 +5313,7 @@ data_01_688b:
     dw   data_01_75f5, data_01_75f5, data_01_75f5, data_01_75f5 ;; 01:68a5 ????????
     dw   data_01_75f5, data_01_75f5, data_01_75f5, data_01_75f5 ;; 01:68ad ????????
 
-data_01_68b5:
+attackExplosionFrame3:
     db   $04, $50, $02, $03, $00, $00                  ;; 01:68b5 ??????
     dw   data_08_7840, data_01_6903                    ;; 01:68bb ????
     dw   data_01_7618, data_01_7618, data_01_7618, data_01_7618 ;; 01:68bf ????????
@@ -5360,6 +5361,7 @@ data_01_694b:
     db   $00, $ff, $ff, $ff, $ff, $ff, $ff, $ff        ;; 01:694b ????????
     db   $ff, $ff, $ff, $ff                            ;; 01:6953 ????
 
+; appears to be unreachable data
 data_01_6957:
     db   $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff        ;; 01:6957 ????????
     db   $ff, $ff, $ff, $ff                            ;; 01:695f ????

@@ -2582,7 +2582,7 @@ specialEffectInit:
     ld   [wScriptOpCounter2], A                        ;; 00:0ee1 $ea $9a $d4
     ld   C, A                                          ;; 00:0ee4 $4f
     pop  AF                                            ;; 00:0ee5 $f1
-    call call_00_2f03                                  ;; 00:0ee6 $cd $03 $2f
+    call createSpecialEffect_trampoline                ;; 00:0ee6 $cd $03 $2f
     ld   HL, wScriptOpCounter                          ;; 00:0ee9 $21 $99 $d4
     inc  [HL]                                          ;; 00:0eec $34
     pop  HL                                            ;; 00:0eed $e1
@@ -7639,8 +7639,8 @@ playerAttackDestroy_trampoline:
 playerOrFriendlyAttackCollisionHandling_trampoline:
     jp_to_bank 01, playerOrFriendlyAttackCollisionHandling ;; 00:2efd $f5 $3e $25 $c3 $d7 $1e
 
-call_00_2f03:
-    jp_to_bank 01, call_01_5db6                        ;; 00:2f03 $f5 $3e $26 $c3 $d7 $1e
+createSpecialEffect_trampoline:
+    jp_to_bank 01, createSpecialEffect                 ;; 00:2f03 $f5 $3e $26 $c3 $d7 $1e
 
 setAToZero:
     ld   A, $00                                        ;; 00:2f09 $3e $00
